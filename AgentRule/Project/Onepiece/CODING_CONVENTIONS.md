@@ -1,15 +1,15 @@
-# YiSan 프로젝트 코딩 컨벤션 (Project-Specific Rules)
+# Onepiece 프로젝트 코딩 컨벤션 (Project-Specific Rules)
 
-**[Base Rules]** `Common/UnrealEngine/ue_coding_conventions.md`
+**[Base Rules]** `Project/ue_coding_conventions.md`
 
-이 문서는 YiSan 프로젝트 고유의 코딩 컨벤션을 정의합니다. 모든 기본 Unreal Engine C++ 코딩 규칙은 `Common/UnrealEngine/ue_coding_conventions.md`에서 상속받으며, 아래에는 YiSan 프로젝트에만 적용되는 특화 규칙을 기술합니다.
+이 문서는 Onepiece 프로젝트 고유의 코딩 컨벤션을 정의합니다. 모든 기본 Unreal Engine C++ 코딩 규칙은 `Project/ue_coding_conventions.md`에서 상속받으며, 아래에는 Onepiece 프로젝트에만 적용되는 특화 규칙을 기술합니다.
 
 ---
 
 ## 1. 프로젝트 정보
 
-- **프로젝트명**: YiSan
-- **모듈명**: YISAN
+- **프로젝트명**: Onepiece
+- **모듈명**: ONEPIECE
 - **주요 라이브러리**: CoffeeLibrary, LatteLibrary
 
 ---
@@ -44,7 +44,7 @@
 
 ## 4. 네트워크 모듈 컨벤션 (Network Module Conventions)
 
-YiSan 프로젝트는 CoffeeLibrary와 LatteLibrary를 활용한 네트워크 시스템을 사용합니다.
+Onepiece 프로젝트는 CoffeeLibrary와 LatteLibrary를 활용한 네트워크 시스템을 사용합니다.
 
 ### 4.1. 서브시스템 활용
 
@@ -158,11 +158,11 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnHealthResponseBP, bool, bSuccess
 
 ### 5.1. API 매크로
 
-프로젝트 전역에서 `YISAN_API` 매크로를 사용하여 클래스를 외부에 공개합니다.
+프로젝트 전역에서 `ONEPIECE_API` 매크로를 사용하여 클래스를 외부에 공개합니다.
 
 ```cpp
 UCLASS()
-class YISAN_API AMyActor : public AActor
+class ONEPIECE_API AMyActor : public AActor
 {
     GENERATED_BODY()
     // ...
@@ -177,13 +177,13 @@ class YISAN_API AMyActor : public AActor
 
 ```cpp
 UCLASS()
-class YISAN_API UYiSanNetworkSubsystem : public UGameInstanceSubsystem
+class ONEPIECE_API UOnepieceNetworkSubsystem : public UGameInstanceSubsystem
 {
     GENERATED_BODY()
 
 public:
     // 서브시스템 전역 접근자
-    DEFINE_SUBSYSTEM_GETTER_INLINE(UYiSanNetworkSubsystem)
+    DEFINE_SUBSYSTEM_GETTER_INLINE(UOnepieceNetworkSubsystem)
 
     // HTTP GET 요청
     void RequestHealth(FOnHealthResponse Callback);
@@ -199,7 +199,7 @@ protected:
 ### 6.2. 네트워크 응답 처리 예시
 
 ```cpp
-void UYiSanNetworkSubsystem::RequestHealth(FOnHealthResponse Callback)
+void UOnepieceNetworkSubsystem::RequestHealth(FOnHealthResponse Callback)
 {
     FString Url = NetworkConfig::GetFullUrl(RequestAPI::Health);
 
