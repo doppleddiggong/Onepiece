@@ -17,7 +17,7 @@
 
 <p align="center">
   <a href="https://youtu.be/iJ_77rZhphI">
-    <img src="https://github.com/doppleddiggong/Onepiece/blob/main/Documents/Reference/book1.png?raw=true"
+    <img src="https://github.com/doppleddiggong/Onepiece/blob/main/Documents/Preference/book1.png?raw=true"
          width="500"
          alt="Game Title">
   </a>
