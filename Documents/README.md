@@ -27,18 +27,26 @@ GitHub Actions를 통해 매일 자동으로 생성되는 개발 일지입니다
 - **주요 기능:**
   - **Daily Log:** 매일 오전 9시(KST)에 자동으로 생성되는 일일 개발 로그
   - **Weekly Summary:** 매주 일요일 밤에 생성되는 주간 요약 리포트
-  - **[자동화 가이드 &raquo;](DevLog/WORKFLOW_GUIDE.md)**: 개발 로그를 포함한 전체 자동화 워크플로우 상세 가이드
 
-### 4. 📖 가이드 (Guide)
-프로젝트 관련 가이드, 평가 기준, 참고 자료 등을 보관합니다.
+### 4. 🤖 에이전트 규칙 & 워크플로우 (AgentRule)
+프로젝트에서 활동하는 모든 에이전트가 따라야 할 규칙과 공용 워크플로우를 한눈에 확인할 수 있도록 정리했습니다. 자세한 설명과 최신
+버전은 각 문서를 직접 확인하세요.
 
-- **POTENUP 프로젝트 평가**: 단계별 평가 기준 및 일정
+| 구분 | 문서 | 설명 |
+| --- | --- | --- |
+| 규칙 | [Onepiece Agent 공통 가이드](../AgentRule/Project/Onepiece/AGENT_GUIDE.md) | 에이전트 공통 규칙, 프로젝트 범위, 문서화 정책 |
+| 규칙 | [코딩 컨벤션](../AgentRule/Project/Onepiece/CODING_CONVENTIONS.md) | Onepiece 전용 C++/언리얼 스타일, 로깅 및 매크로 정책 |
+| 규칙 | [프로젝트 개요](../AgentRule/Project/Onepiece/PROJECT_OVERVIEW.md) | 프로젝트 목표, 모듈 구조, 일정 요약 |
+| 규칙 | [Doxygen 설정 가이드](../AgentRule/Project/Onepiece/DOXYGEN_SETUP.md) | 문서화 파이프라인과 비공개 문서 관리 절차 |
+| 워크플로우 | [커밋 메시지 작성 워크플로우](../AgentRule/Common/Workflows/commit_agent.md) | Conventional Commits 포맷, 메시지 작성 규칙 |
+| 워크플로우 | [코드 생성 절차](../AgentRule/Common/Workflows/code_generate.md) | 대규모 기능 구현 시 계획·구현·검증 단계 |
+| 워크플로우 | [디버깅 가이드](../AgentRule/Common/Workflows/debug_guide.md) | 버그 재현, 로깅, 원인 파악을 위한 체크리스트 |
+| 워크플로우 | [에이전트 상호작용 가이드](../AgentRule/Common/Workflows/agent_interaction_guide.md) | 명확한 프롬프트 작성과 협업 커뮤니케이션 방법 |
+| 워크플로우 | [Agent Log 작성 규칙](../AgentRule/Common/Workflows/agents_log.md) | AgentLog 기록 포맷, TODO 관리 방법 |
 
-### 5. 🎮 마스터 데이터 (MasterData)
-게임 데이터, 설정 파일, 테이블 등을 관리합니다.
+- **모든 문서 모음:** [에이전트 규칙 모음](Guide/AgentRuleIndex.md)
 
-### 6. ⚙️ 환경 설정 (Preference)
-개발 환경 설정, 툴 설정 등을 기록합니다.
+> 에이전트 문서는 내부 협업용으로만 제공되며, Doxygen 공개 문서에는 포함되지 않습니다.
 
 ---
 

@@ -141,6 +141,15 @@ GRAPHICAL_HIERARCHY    = YES
 DIRECTORY_GRAPH        = YES
 ```
 
+### AgentRule 문서 비포함
+
+에이전트별 가이드는 내부 업무 참고용이며, 공개 API 문서에는 노출하지 않습니다. 따라서 `INPUT` 항목에는 `AgentRule/` 디렉터리와 루트의
+에이전트 가이드(`AGENTS.md`, `CLAUDE.md`, `GEMINI.md`)를 추가하지 마세요. 기본 Doxyfile은 게임 소스와 공개 참고 자료(`Documents`
+폴더 내 DoxygenPage/Reference)만 포함하도록 구성되어 있습니다.
+
+필요에 따라 로컬에서 검토하고 싶다면 임시 브랜치에서만 `INPUT` 목록을 수정하고, 메인 브랜치에 병합하기 전 반드시 되돌려 공용 문서에
+에이전트 자료가 노출되지 않도록 합니다.
+
 ## 4. GitHub Actions 워크플로우 (`doxygen.yml`) 설정
 
 `.github/workflows/doxygen.yml` 파일을 생성하여 Doxygen 문서 생성 및 GitHub Pages 배포를 자동화합니다.

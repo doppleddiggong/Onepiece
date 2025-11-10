@@ -11,33 +11,15 @@
 *이 섹션에는 Gemini 에이전트 모델에만 해당하는 고유한 지침, 기능 또는 제약 사항을 기술합니다.*
 
 
-이 저장소는 **Onepiece** 프로젝트입니다. 다음 문서를 참조하세요:
+이 저장소는 **Onepiece** 프로젝트입니다. Gemini 에이전트는 다음 문서를 반드시 확인하세요:
 
-- **프로젝트 개요**: `AgentRule/Project/Onepiece/PROJECT_OVERVIEW.md`
-  - 프로젝트 정보 (UE 5.6.1, POTENUP 최종 프로젝트)
-  - 프로젝트 일정 및 평가 기준
-  - 모듈 구조 (`Onepiece`, `CoffeeLibrary`, `LatteLibrary`)
-  - 개발 환경 및 빌드 설정
-
-- **코딩 컨벤션**: `AgentRule/Project/Onepiece/CODING_CONVENTIONS.md`
-  - Onepiece 프로젝트 전용 규칙
-  - 네트워크 모듈 컨벤션
-  - `ONEPIECE_API` 매크로 사용
-  - 로깅 시스템 (`PRINTLOG`, `NETWORK_LOG`)
-
-- **Doxygen 설정**: `AgentRule/Project/Onepiece/DOXYGEN_SETUP.md`
-  - 문서화 시스템 구성
-  - GitHub Pages 배포 가이드
-
-### 범용 Unreal Engine 규칙
-
-모든 Unreal Engine 프로젝트에 공통적으로 적용되는 규칙:
-
+- **Onepiece Agent 공통 가이드**: `AgentRule/Project/Onepiece/AGENT_GUIDE.md`
+  - 프로젝트 개요, 코딩 컨벤션, Doxygen 정책 등 모든 에이전트가 공유하는 정보를 제공합니다.
 - **UE 코딩 컨벤션**: `AgentRule/Project/ue_coding_conventions.md`
+  - 언리얼 엔진 전반에 적용되는 규칙이 정리되어 있습니다.
 
 ### 작업 시 주의사항
 
-1. **프로젝트 컨텍스트 확인**: 작업 시작 전 `PROJECT_OVERVIEW.md`를 참조하여 프로젝트 구조 파악
-2. **모듈명 사용**: `ONEPIECE_API` 매크로 사용, `LogOnepiece` 로그 카테고리 사용
-3. **라이브러리 활용**: `CoffeeLibrary`(공용 유틸리티), `LatteLibrary`(게임플레이 로직) 적절히 활용
-4. **문서화**: Doxygen 주석 규칙 준수
+1. **공통 지침 동기화**: 작업 전 `AgentRule/Project/Onepiece/AGENT_GUIDE.md`와 연동 문서를 통해 최신 프로젝트 정책을 확인합니다.
+2. **모듈 접근**: `ONEPIECE_API` 매크로와 `LogOnepiece` 카테고리를 사용하며, CoffeeLibrary와 LatteLibrary의 역할을 구분합니다.
+3. **문서화**: `AgentRule/Project/Onepiece/DOXYGEN_SETUP.md`를 참고해 Doxygen 공개 문서에서 에이전트 자료가 노출되지 않도록 합니다.
