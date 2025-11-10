@@ -19,7 +19,7 @@
 #include "Engine/World.h"
 #include "Onepiece/Onepiece.h"
 
-#define LOADINGCIRCLEWIDGET_PATH TEXT("/Game/CustomContents/UI/WBP_NetworkLoading.WBP_NetworkLoading_C")
+#define LOADINGCIRCLEWIDGET_PATH TEXT("/Game/CustomContents/UI/WBP_LoadingCircle.WBP_LoadingCircle_C")
 
 ULoadingCircleManager::ULoadingCircleManager()
 {

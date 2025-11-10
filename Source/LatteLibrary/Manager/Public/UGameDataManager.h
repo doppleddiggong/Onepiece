@@ -8,8 +8,6 @@
 
 #include "CoreMinimal.h"
 #include "Macro.h"
-#include "FBuildingData.h"
-#include "FBuildingAssetData.h"
 
 #include "FHitStopData.h"
 #include "FKnockbackData.h"
@@ -38,42 +36,6 @@ public:
 
 	UFUNCTION(Exec)
 	void ReloadMasterData();
-
-#pragma region BUILDING_DATA
-public:
-	UPROPERTY(EditAnywhere, Category="MasterData|BuildingData")
-	TSoftObjectPtr<UDataTable> BuildingDataTable;
-
-	UFUNCTION(BlueprintCallable, Category="MasterData|BuildingData")
-	bool GetBuildingData(EBuildingType Type, UPARAM(ref) FBuildingData& Out) const;
-	UFUNCTION(BlueprintCallable, BlueprintPure, Category="MasterData|BuildingData")
-	FString GetBuildingDataName(EBuildingType Type) const;
-
-private:
-	void Clear_BuildingDataTable();
-	void LoadData_BuildingDataTable();
-	bool bLoadBuildingData = false;
-
-	UPROPERTY(VisibleAnywhere, Category = "Cache", meta = (AllowPrivateAccess = "true"))
-	TMap<EBuildingType, FBuildingData> BuildingDataCache;
-#pragma endregion BUILDING_DATA
-
-#pragma region BUILDING_ASSET_DATA
-public:
-	UPROPERTY(EditAnywhere, Category="MasterData|BuildingAsset")
-	TSoftObjectPtr<UDataTable> BuildingAssetTable;
-
-	UFUNCTION(BlueprintCallable, Category="MasterData|BuildingAsset")
-	bool GetBuildingAssetData(EBuildingType Type, FBuildingAssetData& Out) const;
-
-private:
-	void Clear_BuildingAssetData();
-	void LoadData_BuildingAssetData();
-	bool bLoadBuildingAsset = false;
-
-	UPROPERTY(VisibleAnywhere, Category = "Cache", meta = (AllowPrivateAccess = "true"))
-	TMap<EBuildingType, FBuildingAssetData> BuildingAssetCache;
-#pragma endregion BUILDING_ASSET_DATA
 
 #pragma region HIT_STOP
 public:
