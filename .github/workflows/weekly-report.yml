@@ -133,10 +133,7 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
           # 생성된 파일 추가
-          git add -f \
-            Documents/DevLog/Weekly/*.md \
-            Documents/SUMMARY.md \
-            Documents/HonkitPage/SUMMARY.md
+          git add -f Documents/DevLog/Weekly/*.md Documents/SUMMARY.md
 
           if git diff --staged --quiet; then
             echo "No changes to commit"
