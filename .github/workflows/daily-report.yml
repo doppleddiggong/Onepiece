@@ -101,7 +101,6 @@ jobs:
           python .github/scripts/devlog/generate_gpt_feedback.py \
             --devlog-file "Documents/DevLog/Daily/${{ steps.date.outputs.today }}.md" \
             --since "${{ steps.date.outputs.today }} 00:00" \
-            --until "${{ steps.date.outputs.today }} 23:59" \
             --output "Documents/DevLog/Daily/${{ steps.date.outputs.today }}-feedback.md"
 
       - name: Merge DevLog and Feedback
