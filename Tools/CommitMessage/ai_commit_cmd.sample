@@ -1,0 +1,12 @@
+cd "${repo:path}"
+
+"Tools/CommitMessage/venv/Scripts/python.exe" \
+    Tools/CommitMessage/fork_gen_commit_msg.py \
+    -MsgPath Tools/CommitMessage/commit_message.txt \
+    -ToClipboard
+
+if [ $? -eq 0 ]; then
+    echo "✅ 커밋 메시지가 생성되어 클립보드에 복사되었습니다."
+else
+    echo "❌ 커밋 메시지 생성 중 오류가 발생했습니다."
+fi
