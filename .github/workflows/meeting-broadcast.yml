@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
     inputs:
       meeting_log_path:
-        description: '알림을 보낼 회의록 파일 경로 (예: Documents/Meeting/2025-11-11-MyMeeting.md)'
+        description: '알림을 보낼 회의록 파일 경로 (예: Documents/Meeting/Meeting_251112.md)'
         required: true
       force_send:
         description: 'config.yml 설정을 무시하고 강제로 알림을 보낼지 여부'
@@ -66,11 +66,18 @@ jobs:
           elif [ -z "${{ steps.file_info.outputs.changed_file }}" ]; then
             echo "⚠️ 변경된 회의록 파일이 없습니다. 알림을 건너뜁니다."
           else
+            # Honkit URL 생성 (예: Documents/Meeting/Meeting_251112.md -> Meeting/Meeting_251112.html)
+            FILE_PATH="${{ steps.file_info.outputs.changed_file }}"
+            HTML_PATH="${FILE_PATH#Documents/}" # 'Documents/' 접두사 제거
+            HTML_PATH="${HTML_PATH%.md}.html"   # 확장자를 .html로 변경
+            HONKIT_URL="https://doppleddiggong.github.io/Onepiece/docs/${HTML_PATH}"
+
             chmod +x .github/scripts/devlog/send_discord.py
             python .github/scripts/devlog/send_discord.py \
               --webhook-url "$DISCORD_WEBHOOK" \
               --type "meeting_log" \
-              --devlog-file "${{ steps.file_info.outputs.changed_file }}"
+              --devlog-file "$FILE_PATH" \
+              --devlog-url "$HONKIT_URL"
           fi
 
   # daily-report.yml을 참조하여 config를 읽는 setup job 추가

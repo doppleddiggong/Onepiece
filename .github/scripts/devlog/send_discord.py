@@ -247,7 +247,7 @@ def create_weekly_embed(week_label, summary, devlog_url):
 
     return embed
 
-def create_meeting_log_embed(summary):
+def create_meeting_log_embed(summary, devlog_url):
     """회의록 공유용 Discord Embed 생성"""
     color = 0x9B59B6  # 보라색
 
@@ -270,11 +270,11 @@ def create_meeting_log_embed(summary):
         "timestamp": datetime.utcnow().isoformat()
     }
 
-    # 커밋 URL이 있으면 URL 필드에 추가
-    if summary.get('commit_url'):
+    # Honkit URL이 있으면 최우선으로 사용, 없으면 커밋 URL 사용
+    if devlog_url:
+        embed['url'] = devlog_url
+    elif summary.get('commit_url'):
         embed['url'] = summary.get('commit_url')
-    # 회의록 파일 자체의 URL이 있다면 여기에 추가할 수 있습니다.
-    # 예: if summary.get('log_url'): embed['url'] = summary.get('log_url')
 
     return embed
 
@@ -319,7 +319,7 @@ def main():
         username = "Weekly Report Bot 📊"
     elif args.type == "meeting_log":
         summary = extract_summary_from_meeting_log(devlog_path)
-        embed = create_meeting_log_embed(summary)
+        embed = create_meeting_log_embed(summary, args.devlog_url)
         username = "회의록 알리미 ✍️"
 
     # Webhook 페이로드 구성
