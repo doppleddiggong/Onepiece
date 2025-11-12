@@ -60,12 +60,14 @@ jobs:
           fi
           
           echo "changed_file=$CHANGED_FILE" >> $GITHUB_OUTPUT
-          
+
           COMMIT_URL="${{ github.server_url }}/${{ github.repository }}/commit/$COMMIT_SHA"
           echo "commit_url=$COMMIT_URL" >> $GITHUB_OUTPUT
-          
+
           COMMIT_MESSAGE=$(git log -1 --pretty=%B $COMMIT_SHA | tr -d '\n' | tr -d '\r')
           echo "commit_message=$COMMIT_MESSAGE" >> $GITHUB_OUTPUT
+
+          echo "commit_sha=$COMMIT_SHA" >> $GITHUB_OUTPUT
 
       - name: Determine HonKit keep_files flag
         id: honkit_flag
@@ -82,6 +84,7 @@ jobs:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_MEETING_URL || secrets.DISCORD_WEBHOOK }}
           COMMIT_URL: ${{ steps.file_info.outputs.commit_url }}
           COMMIT_MESSAGE: ${{ steps.file_info.outputs.commit_message }}
+          COMMIT_SHA: ${{ steps.file_info.outputs.commit_sha }}
         run: |
           if [ -z "$DISCORD_WEBHOOK" ]; then
             echo "⚠️ DISCORD_WEBHOOK secret이 설정되지 않았습니다. Discord 알림을 건너뜁니다."
@@ -93,6 +96,21 @@ jobs:
             HTML_PATH="${FILE_PATH#Documents/}" # 'Documents/' 접두사 제거
             HTML_PATH="${HTML_PATH%.md}.html"   # 확장자를 .html로 변경
             HONKIT_URL="https://doppleddiggong.github.io/Onepiece/docs/${HTML_PATH}"
+
+            if [ ! -f "$FILE_PATH" ]; then
+              if [ -z "$COMMIT_SHA" ]; then
+                echo "❌ COMMIT_SHA를 확인할 수 없습니다."
+                exit 1
+              fi
+
+              if git cat-file -e "$COMMIT_SHA:$FILE_PATH" 2>/dev/null; then
+                mkdir -p "$(dirname "$FILE_PATH")"
+                git show "$COMMIT_SHA:$FILE_PATH" > "$FILE_PATH"
+              else
+                echo "❌ 회의록 파일을 커밋 $COMMIT_SHA 에서 찾을 수 없습니다: $FILE_PATH"
+                exit 1
+              fi
+            fi
 
             chmod +x .github/scripts/devlog/send_discord.py
             python .github/scripts/devlog/send_discord.py \

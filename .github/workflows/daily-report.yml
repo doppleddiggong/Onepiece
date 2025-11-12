@@ -91,7 +91,9 @@ jobs:
             --until "${{ steps.date.outputs.today }} 23:59" \
             --branch "${{ steps.date.outputs.branch }}" \
             --base "origin/main" \
-            --out "Documents/DevLog/Daily/${{ steps.date.outputs.today }}.md"
+            --out "Documents/DevLog/Daily/${{ steps.date.outputs.today }}.md" \
+            --metrics "Documents/DevLog/Daily/${{ steps.date.outputs.today }}.metrics.json" \
+            --metrics-out "Documents/DevLog/Daily/${{ steps.date.outputs.today }}.metrics.json"
 
       - name: Generate GPT Feedback (Optional)
         if: steps.config.outputs.use_gpt == 'true' || steps.config.outputs.use_gpt == 'True'
@@ -114,12 +116,6 @@ jobs:
             cat "$FEEDBACK_FILE" >> "$BASE_FILE"
             rm "$FEEDBACK_FILE"
             echo "✅ GPT feedback merged into DevLog"
-          fi
-
-      - name: Create empty metrics file
-        run: |
-          if [ ! -f "Documents/DevLog/Daily/${{ steps.date.outputs.today }}.metrics.json" ]; then
-            echo '{}' > "Documents/DevLog/Daily/${{ steps.date.outputs.today }}.metrics.json"
           fi
 
       - name: Update SUMMARY.md
