@@ -281,11 +281,16 @@ def create_weekly_embed(week_label, summary, devlog_url):
 
     return embed
 
-def create_meeting_log_embed(summary, devlog_url):
+def create_meeting_log_embed(summary, devlog_url, notice=None):
     """회의록 공유용 Discord Embed 생성"""
     color = 0x9B59B6  # 보라색
 
     description = summary.get('description') or "회의록이 업데이트되었습니다."
+
+    if notice:
+        notice_text = notice.strip()
+        if notice_text:
+            description = f"{notice_text}\n\n{description}"
 
     embed = {
         "title": f"📚 {summary.get('title', '새로운 회의록')}",
@@ -330,6 +335,7 @@ def main():
     ap.add_argument("--devlog-file", help="DevLog 파일 경로")
     ap.add_argument("--date", help="날짜 또는 주차 (YYYY-MM-DD, YYYY-WXX 등)")
     ap.add_argument("--devlog-url", help="DevLog 온라인 URL")
+    ap.add_argument("--notice", help="추가 안내 문구 (회의록 다중 변경 등)")
     args = ap.parse_args()
 
     # DevLog 파일 확인
@@ -353,7 +359,7 @@ def main():
         username = "Weekly Report Bot 📊"
     elif args.type == "meeting_log":
         summary = extract_summary_from_meeting_log(devlog_path)
-        embed = create_meeting_log_embed(summary, args.devlog_url)
+        embed = create_meeting_log_embed(summary, args.devlog_url, notice=args.notice)
         username = "회의록 알리미 ✍️"
 
     # Webhook 페이로드 구성
