@@ -104,13 +104,30 @@ def format_title(filename):
 
     return title
 
+def scan_meetings(meeting_dir):
+    """Meeting 폴더 스캔"""
+    meeting_path = Path(meeting_dir)
+    if not meeting_path.exists():
+        return []
+
+    meeting_logs = []
+    for md_file in sorted(meeting_path.glob("*.md"), reverse=True):
+        filename = md_file.stem
+        # 'Meeting_' 또는 '회의록_' 접두사를 제거하고 제목으로 사용
+        title = re.sub(r'^(Meeting_|회의록_)', '', filename)
+        meeting_logs.append((title, f"Meeting/{md_file.name}"))
+    
+    return meeting_logs
+
 def generate_summary(docs_root):
     """SUMMARY.md 생성"""
     devlog_dir = Path(docs_root) / "DevLog"
     planning_dir = Path(docs_root) / "Planning"
+    meeting_dir = Path(docs_root) / "Meeting"
 
     devlog_data = scan_devlog(devlog_dir)
     planning_data = scan_planning(planning_dir)
+    meeting_data = scan_meetings(meeting_dir)
 
     lines = ["# Summary\n"]
 
@@ -148,6 +165,14 @@ def generate_summary(docs_root):
             title = format_title(filename)
             lines.append(f"* [{title}](DevLog/{name})")
         lines.append("")
+
+    # 회의록 섹션 추가
+    if meeting_data:
+        lines.append("## 회의록\n")
+        for title, path in meeting_data:
+            lines.append(f"* [{title}]({path})")
+        lines.append("")
+
 
     # Planning 섹션
     lines.append("## Planning\n")

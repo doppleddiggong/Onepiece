@@ -80,6 +80,13 @@ jobs:
               --devlog-url "$HONKIT_URL"
           fi
 
+      - name: Trigger HonKit Build
+        uses: peter-evans/repository-dispatch@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          event-type: honkit-build
+          client-payload: '{"ref": "docs", "trigger": "meeting-broadcast"}'
+
   # daily-report.yml을 참조하여 config를 읽는 setup job 추가
   setup:
     runs-on: ubuntu-latest
