@@ -132,7 +132,7 @@ def extract_summary_from_meeting_log(md_path):
         summary['title'] = md_path.stem # 제목이 없으면 파일명을 사용
 
     # "핵심 프로젝트 아이디어" 또는 "정리 요약" 섹션 추출
-    summary_match = re.search(r'#### 6. 핵심 프로젝트 아이디어\n\n> “(.+?)”|정리 요약:**\n(.+)', content, re.DOTALL)
+    summary_match = re.search(r'#### 6\. 핵심 프로젝트 아이디어\n\n> “(.+?)”|\*\*정리 요약:\*\*\n(.+)', content, re.DOTALL)
     if summary_match:
         # 그룹 1 또는 그룹 2 중 내용이 있는 것을 요약으로 사용
         summary_text = summary_match.group(1) or summary_match.group(2)
