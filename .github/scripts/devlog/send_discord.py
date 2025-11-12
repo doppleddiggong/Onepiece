@@ -119,6 +119,38 @@ def extract_summary_from_weekly(md_path):
 
     return summary
 
+def extract_summary_from_meeting_log(md_path):
+    """회의록 파일에서 제목과 요약 추출"""
+    content = Path(md_path).read_text(encoding='utf-8')
+    summary = {}
+
+    # 첫 번째 H3 헤더를 제목으로 사용
+    title_match = re.search(r'^###\s*(.+)', content, re.MULTILINE)
+    if title_match:
+        summary['title'] = title_match.group(1).strip()
+    else:
+        summary['title'] = md_path.stem # 제목이 없으면 파일명을 사용
+
+    # "핵심 프로젝트 아이디어" 또는 "정리 요약" 섹션 추출
+    summary_match = re.search(r'#### 6. 핵심 프로젝트 아이디어\n\n> “(.+?)”|정리 요약:**\n(.+)', content, re.DOTALL)
+    if summary_match:
+        # 그룹 1 또는 그룹 2 중 내용이 있는 것을 요약으로 사용
+        summary_text = summary_match.group(1) or summary_match.group(2)
+        summary['summary'] = summary_text.strip().split('\n')[0] # 첫 줄만 사용
+    else:
+        summary['summary'] = "자세한 내용은 문서를 확인해주세요."
+
+    # 커밋 메시지 추출 (환경 변수에서)
+    commit_message = os.getenv('COMMIT_MESSAGE', 'N/A')
+    summary['commit_message'] = commit_message.split('\n')[0] # 첫 줄만 사용
+
+    # 커밋 URL 추출 (환경 변수에서)
+    commit_url = os.getenv('COMMIT_URL', '')
+    summary['commit_url'] = commit_url
+
+    return summary
+
+
 def create_daily_embed(date, summary, devlog_url):
     """Daily DevLog용 Discord Embed 생성"""
     color = 0x5865F2  # Discord 블루
@@ -214,6 +246,38 @@ def create_weekly_embed(week_label, summary, devlog_url):
 
     return embed
 
+def create_meeting_log_embed(summary):
+    """회의록 공유용 Discord Embed 생성"""
+    color = 0x9B59B6  # 보라색
+
+    description = f"**{summary.get('summary', '회의록이 업데이트되었습니다.')}**"
+
+    embed = {
+        "title": f"📚 {summary.get('title', '새로운 회의록')}",
+        "description": description,
+        "color": color,
+        "fields": [
+            {
+                "name": "📝 Commit Message",
+                "value": summary.get('commit_message', 'N/A'),
+                "inline": False
+            }
+        ],
+        "footer": {
+            "text": "자세한 내용은 링크를 클릭하여 확인하세요."
+        },
+        "timestamp": datetime.utcnow().isoformat()
+    }
+
+    # 커밋 URL이 있으면 URL 필드에 추가
+    if summary.get('commit_url'):
+        embed['url'] = summary.get('commit_url')
+    # 회의록 파일 자체의 URL이 있다면 여기에 추가할 수 있습니다.
+    # 예: if summary.get('log_url'): embed['url'] = summary.get('log_url')
+
+    return embed
+
+
 def create_feedback_thread(webhook_url, message_content):
     """피드백 스레드 메시지 생성"""
     # Discord에서는 webhook으로 직접 스레드를 만들 수 없으므로
@@ -227,27 +291,35 @@ def create_feedback_thread(webhook_url, message_content):
 def main():
     ap = argparse.ArgumentParser(description="Discord Webhook Sender")
     ap.add_argument("--webhook-url", required=True, help="Discord Webhook URL")
-    ap.add_argument("--type", choices=["daily", "weekly"], required=True, help="리포트 타입")
-    ap.add_argument("--devlog-file", required=True, help="DevLog 파일 경로")
-    ap.add_argument("--date", help="날짜 또는 주차 (YYYY-MM-DD 또는 YYYY-WXX)")
+    ap.add_argument("--type", choices=["daily", "weekly", "meeting_log"], required=True, help="리포트 또는 메시지 타입")
+    ap.add_argument("--devlog-file", help="DevLog 파일 경로")
+    ap.add_argument("--date", help="날짜 또는 주차 (YYYY-MM-DD, YYYY-WXX 등)")
     ap.add_argument("--devlog-url", help="DevLog 온라인 URL")
     args = ap.parse_args()
 
     # DevLog 파일 확인
-    devlog_path = Path(args.devlog_file)
-    if not devlog_path.exists():
-        print(f"❌ DevLog 파일을 찾을 수 없습니다: {args.devlog_file}")
-        return 1
+    if args.type in ["daily", "weekly", "meeting_log"]:
+        if not args.devlog_file:
+            print(f"❌ --type이 {args.type}일 경우 --devlog-file은 필수입니다.")
+            return 1
+        devlog_path = Path(args.devlog_file)
+        if not devlog_path.exists():
+            print(f"❌ DevLog 파일을 찾을 수 없습니다: {args.devlog_file}")
+            return 1
 
     # 요약 정보 추출
     if args.type == "daily":
         summary = extract_summary_from_daily(devlog_path)
         embed = create_daily_embed(args.date, summary, args.devlog_url)
         username = "DevLog Bot 📅"
-    else:  # weekly
+    elif args.type == "weekly":
         summary = extract_summary_from_weekly(devlog_path)
         embed = create_weekly_embed(args.date, summary, args.devlog_url)
         username = "Weekly Report Bot 📊"
+    elif args.type == "meeting_log":
+        summary = extract_summary_from_meeting_log(devlog_path)
+        embed = create_meeting_log_embed(summary)
+        username = "회의록 알리미 ✍️"
 
     # Webhook 페이로드 구성
     payload = {

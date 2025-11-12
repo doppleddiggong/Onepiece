@@ -2,34 +2,78 @@ name: Meeting Log Broadcast
 
 on:
   push:
-    branches: [ main ]
+    branches: [ docs ] # daily-report.yml 과 동일하게 docs 브랜치를 사용하도록 수정
     paths:
       - 'Documents/Meeting/**'
 
 jobs:
   broadcast:
     runs-on: ubuntu-latest
+    # daily-report.yml을 참조하여 discord.enabled 설정이 true일 때만 실행되도록 조건 추가
+    if: fromJSON(needs.setup.outputs.config).discord_enabled == true
+
+    needs: setup
+
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
+          ref: docs
           fetch-depth: 0
 
-      - name: Get Commit Info
-        id: commit
+      - name: Get changed file and commit info
+        id: file_info
         run: |
-          echo "COMMIT_URL=$(git log -1 --pretty=format:'%H' | xargs -I {} echo ${{ github.server_url }}/${{ github.repository }}/commit/{})" >> $GITHUB_OUTPUT
-          echo "COMMIT_MESSAGE=$(git log -1 --pretty=%B)" >> $GITHUB_OUTPUT
+          # 푸시된 커밋에서 변경된 회의록 파일 찾기
+          CHANGED_FILE=$(git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | grep 'Documents/Meeting/')
+          echo "changed_file=$CHANGED_FILE" >> $GITHUB_OUTPUT
+          
+          COMMIT_URL="${{ github.server_url }}/${{ github.repository }}/commit/${{ github.sha }}"
+          echo "commit_url=$COMMIT_URL" >> $GITHUB_OUTPUT
+          
+          # 커밋 메시지를 한 줄로 만듦
+          COMMIT_MESSAGE=$(git log -1 --pretty=%B | tr -d '\n' | tr -d '\r')
+          echo "commit_message=$COMMIT_MESSAGE" >> $GITHUB_OUTPUT
 
       - name: Discord Notification
-        uses: naveto/action-discord-notify@v2
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_MEETING_URL || secrets.DISCORD_WEBHOOK }}
+          COMMIT_URL: ${{ steps.file_info.outputs.commit_url }}
+          COMMIT_MESSAGE: ${{ steps.file_info.outputs.commit_message }}
+        run: |
+          if [ -z "$DISCORD_WEBHOOK" ]; then
+            echo "⚠️ DISCORD_WEBHOOK secret이 설정되지 않았습니다. Discord 알림을 건너뜁니다."
+          elif [ -z "${{ steps.file_info.outputs.changed_file }}" ]; then
+            echo "⚠️ 변경된 회의록 파일이 없습니다. 알림을 건너뜁니다."
+          else
+            chmod +x .github/scripts/devlog/send_discord.py
+            python .github/scripts/devlog/send_discord.py \
+              --webhook-url "$DISCORD_WEBHOOK" \
+              --type "meeting_log" \
+              --devlog-file "${{ steps.file_info.outputs.changed_file }}"
+          fi
+
+  # daily-report.yml을 참조하여 config를 읽는 setup job 추가
+  setup:
+    runs-on: ubuntu-latest
+    outputs:
+      config: ${{ steps.config.outputs.json_config }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
         with:
-          webhook_url: ${{ secrets.DISCORD_WEBHOOK_MEETING_URL }}
-          message: |
-            [Onepiece] 📚 새로운 회의록이 추가/수정되었습니다.
-            
-            **Commit:** ${{ steps.commit.outputs.COMMIT_MESSAGE }}
-            
-            [변경사항 확인하기](${{ steps.commit.outputs.COMMIT_URL }})
-          username: Onepiece Git
-          avatar_url: https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png
+          ref: docs
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Python dependencies
+        run: pip install pyyaml
+
+      - name: Load config and output as JSON
+        id: config
+        run: |
+          CONFIG_JSON=$(python3 -c "import yaml, json; print(json.dumps(yaml.safe_load(open('.github/config.yml'))))")
+          echo "json_config=$CONFIG_JSON" >> $GITHUB_OUTPUT
