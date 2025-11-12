@@ -17,6 +17,10 @@ on:
         description: 'config.yml 설정을 무시하고 강제로 알림을 보낼지 여부'
         type: boolean
         default: true
+      honkit_keep_files:
+        description: 'HonKit 배포 시 기존 파일을 유지할지 여부 (false = 정리 후 배포)'
+        type: boolean
+        default: true
 
 permissions:
   contents: write
@@ -63,6 +67,16 @@ jobs:
           COMMIT_MESSAGE=$(git log -1 --pretty=%B $COMMIT_SHA | tr -d '\n' | tr -d '\r')
           echo "commit_message=$COMMIT_MESSAGE" >> $GITHUB_OUTPUT
 
+      - name: Determine HonKit keep_files flag
+        id: honkit_flag
+        run: |
+          if [ "${{ github.event_name }}" == "workflow_dispatch" ] && [ -n "${{ github.event.inputs.honkit_keep_files }}" ]; then
+            KEEP_FILES="${{ github.event.inputs.honkit_keep_files }}"
+          else
+            KEEP_FILES="true"
+          fi
+          echo "keep_files=$KEEP_FILES" >> $GITHUB_OUTPUT
+
       - name: Discord Notification
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_MEETING_URL || secrets.DISCORD_WEBHOOK }}
@@ -93,7 +107,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           event-type: honkit-build
-          client-payload: '{"ref": "docs", "trigger": "meeting-broadcast"}'
+          client-payload: '{"ref": "docs", "trigger": "meeting-broadcast", "keep_files": ${{ steps.honkit_flag.outputs.keep_files }}}'
 
   # daily-report.yml을 참조하여 config를 읽는 setup job 추가
   setup:
