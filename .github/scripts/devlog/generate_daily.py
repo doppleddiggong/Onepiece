@@ -9,7 +9,7 @@ import subprocess
 import json
 import re
 import datetime
-import os
+from collections import Counter
 from pathlib import Path
 from jinja2 import Template
 
@@ -34,6 +34,9 @@ def git_stats(commits):
     added = deleted = 0
     details = []
     hotspot_files = {}
+    files_touched = set()
+    authors = set()
+    commit_types = Counter()
 
     for h in commits:
         # 커밋 메타데이터 가져오기
@@ -42,6 +45,7 @@ def git_stats(commits):
             continue
 
         subject, short, author = meta.split("||") if "||" in meta else (meta, h[:7], "Unknown")
+        authors.add(author)
 
         # 변경 파일 통계
         numstat = sh(f'git show --numstat --format="" {h}')
@@ -55,9 +59,11 @@ def git_stats(commits):
                 deleted += int(d)
                 # Hotspot 파일 추적
                 hotspot_files[f] = hotspot_files.get(f, 0) + int(a) + int(d)
+                files_touched.add(f)
 
         # Conventional Commits 파싱
         commit_type = parse_commit_type(subject)
+        commit_types[commit_type] += 1
 
         details.append({
             "hash": short,
@@ -75,7 +81,10 @@ def git_stats(commits):
         "deleted": deleted,
         "details": details,
         "count": len(commits),
-        "hotspot_files": hotspot_list
+        "hotspot_files": hotspot_list,
+        "files_changed": len(files_touched),
+        "authors": sorted(authors),
+        "commit_types": dict(commit_types)
     }
 
 def parse_commit_type(subject):
@@ -229,6 +238,7 @@ def main():
     ap.add_argument("--test_xml", default="", help="테스트 결과 XML 경로")
     ap.add_argument("--static_report", default="", help="정적분석 리포트 경로")
     ap.add_argument("--metrics", default="", help="메트릭 JSON 경로")
+    ap.add_argument("--metrics-out", default="", help="메트릭 JSON 출력 경로")
     args = ap.parse_args()
 
     # 템플릿 경로 설정
@@ -253,6 +263,39 @@ def main():
     yesterday = today - datetime.timedelta(days=1)
     weekday_names = ["월", "화", "수", "목", "금", "토", "일"]
 
+    # 메트릭 구성
+    kst = datetime.timezone(datetime.timedelta(hours=9))
+    now_kst = datetime.datetime.now(tz=kst)
+    metrics_output = dict(met)
+    metrics_output.update({
+        "date": today.isoformat(),
+        "generated_at": now_kst.isoformat(),
+        "period": {
+            "since": args.since,
+            "until": args.until if args.until else f"{today.isoformat()} 23:59"
+        },
+        "branch": args.branch,
+        "base_branch": args.base,
+        "commit_count": gstats["count"],
+        "author_count": len(gstats["authors"]),
+        "authors": gstats["authors"],
+        "commit_types": gstats["commit_types"],
+        "additions": gstats["added"],
+        "deletions": gstats["deleted"],
+        "net_lines": gstats["added"] - gstats["deleted"],
+        "files_changed": gstats["files_changed"],
+        "hotspot_files": gstats["hotspot_files"],
+        "top_changes": top_changes,
+        "ubt": ubt,
+        "cook": cook,
+        "tests": tests,
+        "static_analysis": srep,
+    })
+
+    metrics_path = Path(args.metrics_out) if args.metrics_out else Path(args.out).with_suffix(".metrics.json")
+    metrics_path.parent.mkdir(parents=True, exist_ok=True)
+    metrics_path.write_text(json.dumps(metrics_output, ensure_ascii=False, indent=2), encoding="utf-8")
+
     # 컨텍스트 구성
     ctx = {
         "date": today.isoformat(),
@@ -261,7 +304,7 @@ def main():
         "date_to": today.isoformat(),
         "branch": args.branch,
         "base_branch": args.base,
-        "release_tag": met.get("release_tag", "N/A"),
+        "release_tag": metrics_output.get("release_tag", "N/A"),
         "commit_count": gstats["count"],
         "added": gstats["added"],
         "deleted": gstats["deleted"],
@@ -272,26 +315,26 @@ def main():
         "pass": tests.get("pass"),
         "fail": tests.get("fail"),
         "coverage": tests.get("coverage"),
-        "warn_now": srep.get("warn_now"),
-        "warn_prev": srep.get("warn_prev", 0),
-        "high_new": srep.get("high_new", 0),
-        "load_time_prev": met.get("load_time_prev"),
-        "load_time_now": met.get("load_time_now"),
-        "delta_pct": met.get("delta_pct"),
-        "crash_prev": met.get("crash_prev"),
-        "crash_now": met.get("crash_now"),
-        "build_fail_count": met.get("build_fail_count", 0),
-        "rtt_ms": met.get("rtt_ms"),
-        "net_fail_pct": met.get("net_fail_pct"),
-        "api_added": met.get("api_added", 0),
-        "api_changed": met.get("api_changed", 0),
-        "api_removed": met.get("api_removed", 0),
-        "notable_api_list": met.get("notable_api_list", []),
-        "refactor_items": met.get("refactor_items", []),
-        "risk_items": met.get("risk_items", []),
-        "mitigation": met.get("mitigation", ""),
-        "next_items": met.get("next_items", []),
-        "pending_items": met.get("pending_items", []),
+        "warn_now": metrics_output.get("static_analysis", {}).get("warn_now"),
+        "warn_prev": metrics_output.get("static_analysis", {}).get("warn_prev", 0),
+        "high_new": metrics_output.get("static_analysis", {}).get("high_new", 0),
+        "load_time_prev": metrics_output.get("load_time_prev"),
+        "load_time_now": metrics_output.get("load_time_now"),
+        "delta_pct": metrics_output.get("delta_pct"),
+        "crash_prev": metrics_output.get("crash_prev"),
+        "crash_now": metrics_output.get("crash_now"),
+        "build_fail_count": metrics_output.get("build_fail_count", 0),
+        "rtt_ms": metrics_output.get("rtt_ms"),
+        "net_fail_pct": metrics_output.get("net_fail_pct"),
+        "api_added": metrics_output.get("api_added", 0),
+        "api_changed": metrics_output.get("api_changed", 0),
+        "api_removed": metrics_output.get("api_removed", 0),
+        "notable_api_list": metrics_output.get("notable_api_list", []),
+        "refactor_items": metrics_output.get("refactor_items", []),
+        "risk_items": metrics_output.get("risk_items", []),
+        "mitigation": metrics_output.get("mitigation", ""),
+        "next_items": metrics_output.get("next_items", []),
+        "pending_items": metrics_output.get("pending_items", []),
         "generation_time": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     }
 
@@ -299,6 +342,7 @@ def main():
     render(ctx, args.template, args.out)
     print(f"✅ Daily DevLog generated: {args.out}")
     print(f"   Commits: {gstats['count']}, +{gstats['added']}/-{gstats['deleted']}")
+    print(f"   Metrics saved: {metrics_path}")
 
 if __name__ == "__main__":
     main()
