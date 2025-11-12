@@ -8,6 +8,8 @@ on:
       - docs
     paths:
       - 'Documents/DevLog/**'
+      - 'Documents/Meeting/**'
+      - 'Documents/meeting/**'
       - 'Documents/Planning/**'
       - 'Documents/book.json'
       - '.github/scripts/generate_summary.py'
@@ -34,6 +36,106 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Collect meeting log changes
+        id: meeting_changes
+        if: github.event_name == 'push'
+        env:
+          BEFORE_SHA: ${{ github.event.before }}
+          AFTER_SHA: ${{ github.sha }}
+        run: |
+          python3 <<'PY'
+import json
+import os
+import subprocess
+from pathlib import Path
+
+before = os.environ.get('BEFORE_SHA')
+after = os.environ.get('AFTER_SHA')
+
+def run_git(command):
+    result = subprocess.run(command, check=True, text=True, capture_output=True)
+    return result.stdout
+
+def gather_changed_lines(before_sha: str | None, after_sha: str) -> list[str]:
+    zero_before = not before_sha or set(before_sha) == {'0'}
+    if zero_before:
+        cmd = ['git', 'show', '--name-status', after_sha]
+    else:
+        cmd = ['git', 'diff', '--name-status', before_sha, after_sha]
+    output = run_git(cmd)
+    return [line.strip() for line in output.splitlines() if line.strip()]
+
+changed_lines = gather_changed_lines(before, after)
+
+meeting_files: list[str] = []
+for line in changed_lines:
+    parts = line.split('\t')
+    if len(parts) < 2:
+        continue
+    status = parts[0]
+    new_path = parts[-1]
+    if not status:
+        continue
+    if status[0] not in {'A', 'M', 'R', 'C'}:
+        continue
+    lowered = new_path.lower()
+    if not lowered.startswith('documents/meeting/'):
+        continue
+    if not lowered.endswith('.md'):
+        continue
+    if new_path not in meeting_files:
+        meeting_files.append(new_path)
+
+file_infos: list[dict[str, str | int]] = []
+
+for file_path in meeting_files:
+    log_cmd = ['git', 'log', '-1', '--format=%H%n%ct%n%B', after, '--', file_path]
+    log_output = run_git(log_cmd).strip()
+    lines = [entry.strip() for entry in log_output.splitlines()]
+
+    if len(lines) >= 2:
+        commit_sha = lines[0]
+        try:
+            timestamp = int(lines[1])
+        except ValueError:
+            timestamp = 0
+        message_lines = lines[2:]
+    else:
+        commit_sha = after
+        timestamp = 0
+        message_lines = []
+
+    message_compact = ' '.join(line for line in message_lines if line)
+    if not message_compact:
+        subject_cmd = ['git', 'log', '-1', '--format=%s', after, '--', file_path]
+        message_compact = run_git(subject_cmd).strip()
+
+    file_infos.append(
+        {
+            'path': file_path,
+            'sha': commit_sha,
+            'timestamp': timestamp,
+            'message': message_compact,
+        }
+    )
+
+latest_info = None
+if file_infos:
+    latest_info = max(file_infos, key=lambda info: (int(info.get('timestamp', 0)), str(info.get('path'))))
+
+output_path = Path(os.environ['GITHUB_OUTPUT'])
+with output_path.open('a', encoding='utf-8') as fh:
+    fh.write(f"changed_count={len(file_infos)}\n")
+    if file_infos:
+        fh.write('changed_files_json<<EOF\n')
+        fh.write(json.dumps(file_infos))
+        fh.write('\nEOF\n')
+    if latest_info:
+        fh.write(f"latest_file={latest_info['path']}\n")
+        fh.write(f"latest_commit_sha={latest_info['sha']}\n")
+        fh.write(f"latest_commit_message={latest_info['message']}\n")
+PY
+
       - name: Sync docs branch content
         run: |
           git fetch origin docs
@@ -44,10 +146,104 @@ jobs:
         with:
           python-version: '3.11'
 
+      - name: Load notification config
+        id: config
+        run: |
+          python3 <<'PY'
+import os
+from pathlib import Path
+
+config_path = Path('.github/config.yml')
+discord_enabled = False
+meeting_enabled = False
+current_section = None
+
+if config_path.exists():
+    for raw_line in config_path.read_text(encoding='utf-8').splitlines():
+        stripped = raw_line.strip()
+        if not stripped or stripped.startswith('#'):
+            continue
+        if raw_line.startswith((' ', '\t')):
+            if current_section != 'discord':
+                continue
+            if ':' not in stripped:
+                continue
+            key, value = [part.strip() for part in stripped.split(':', 1)]
+            lowered = value.lower()
+            if key == 'enabled':
+                discord_enabled = lowered in {'true', 'yes', 'on', '1'}
+            elif key == 'meeting_log_enabled':
+                meeting_enabled = lowered in {'true', 'yes', 'on', '1'}
+        else:
+            current_section = stripped.rstrip(':')
+
+output_path = Path(os.environ['GITHUB_OUTPUT'])
+with output_path.open('a', encoding='utf-8') as fh:
+    fh.write(f"discord_enabled={'true' if discord_enabled else 'false'}\n")
+    fh.write(f"discord_meeting_log_enabled={'true' if meeting_enabled else 'false'}\n")
+PY
+
       - name: Generate SUMMARY.md
         run: |
           python .github/scripts/generate_summary.py
           echo "✅ SUMMARY.md has been generated"
+
+      - name: Discord Notification for Meeting Logs
+        if: steps.config.outputs.discord_enabled == 'true' && steps.config.outputs.discord_meeting_log_enabled == 'true' && steps.meeting_changes.outputs.changed_count != '' && steps.meeting_changes.outputs.changed_count != '0'
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_MEETING_URL || secrets.DISCORD_WEBHOOK }}
+          CHANGED_COUNT: ${{ steps.meeting_changes.outputs.changed_count }}
+          CHANGED_FILE: ${{ steps.meeting_changes.outputs.latest_file }}
+          COMMIT_SHA: ${{ steps.meeting_changes.outputs.latest_commit_sha }}
+          COMMIT_MESSAGE: ${{ steps.meeting_changes.outputs.latest_commit_message }}
+          COMMIT_URL: ${{ github.server_url }}/${{ github.repository }}/commit/${{ steps.meeting_changes.outputs.latest_commit_sha }}
+        run: |
+          if [ -z "$DISCORD_WEBHOOK" ]; then
+            echo "⚠️ DISCORD_WEBHOOK secret이 설정되지 않았습니다. Discord 알림을 건너뜁니다."
+            exit 0
+          fi
+
+          if [ -z "$CHANGED_FILE" ]; then
+            echo "⚠️ 회의록 변경 파일 정보를 찾을 수 없습니다. 알림을 건너뜁니다."
+            exit 0
+          fi
+
+          FILE_PATH="$CHANGED_FILE"
+          HTML_PATH="${FILE_PATH#Documents/}"
+          HTML_PATH="${HTML_PATH%.md}.html"
+          HONKIT_URL="https://doppleddiggong.github.io/Onepiece/docs/${HTML_PATH}"
+
+          if [ ! -f "$FILE_PATH" ]; then
+            if [ -z "$COMMIT_SHA" ]; then
+              echo "❌ COMMIT_SHA를 확인할 수 없습니다."
+              exit 1
+            fi
+
+            if git cat-file -e "$COMMIT_SHA:$FILE_PATH" 2>/dev/null; then
+              mkdir -p "$(dirname "$FILE_PATH")"
+              git show "$COMMIT_SHA:$FILE_PATH" > "$FILE_PATH"
+            else
+              echo "❌ 회의록 파일을 커밋 $COMMIT_SHA 에서 찾을 수 없습니다: $FILE_PATH"
+              exit 1
+            fi
+          fi
+
+          chmod +x .github/scripts/devlog/send_discord.py
+
+          if [ "$CHANGED_COUNT" = "1" ]; then
+            python .github/scripts/devlog/send_discord.py \
+              --webhook-url "$DISCORD_WEBHOOK" \
+              --type "meeting_log" \
+              --devlog-file "$FILE_PATH" \
+              --devlog-url "$HONKIT_URL"
+          else
+            python .github/scripts/devlog/send_discord.py \
+              --webhook-url "$DISCORD_WEBHOOK" \
+              --type "meeting_log" \
+              --devlog-file "$FILE_PATH" \
+              --devlog-url "$HONKIT_URL" \
+              --notice "최근에 등록된 회의록이 다수 존재합니다. 가장 최근 문서를 안내드립니다."
+          fi
 
       - name: Setup Node.js
         uses: actions/setup-node@v4

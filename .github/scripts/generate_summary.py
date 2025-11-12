@@ -16,7 +16,10 @@ class SummaryGenerator:
         self.honkit_dir = self.base_dir  # HonKit root는 Documents
         self.devlog_dir = self.base_dir / "DevLog"
         self.planning_dir = self.base_dir / "Planning"
-        self.meeting_dir = self.base_dir / "Meeting"
+        # Meeting 디렉터리는 대소문자 혼용을 지원
+        self.meeting_dirs = [
+            path for path in [self.base_dir / "Meeting", self.base_dir / "meeting"]
+        ]
 
     def scan_devlog_files(self) -> Dict[str, List[Path]]:
         """DevLog 폴더의 파일들을 카테고리별로 스캔"""
@@ -65,9 +68,21 @@ class SummaryGenerator:
 
     def scan_meeting_files(self) -> List[Path]:
         """회의록 파일 목록을 최신순으로 스캔"""
-        if not self.meeting_dir.exists():
+        meeting_files = []
+
+        for meeting_dir in self.meeting_dirs:
+            if meeting_dir.exists():
+                meeting_files.extend(meeting_dir.glob("*.md"))
+
+        if not meeting_files:
             return []
-        return sorted(self.meeting_dir.glob("*.md"), reverse=True)
+
+        # 경로 문자열을 기준으로 중복 제거 후 정렬
+        unique_files = {}
+        for file_path in meeting_files:
+            unique_files[file_path.as_posix()] = file_path
+
+        return sorted(unique_files.values(), reverse=True)
 
     def scan_planning_files(self) -> Dict[str, List[Path]]:
         """Planning 폴더의 파일들을 카테고리별로 스캔"""
