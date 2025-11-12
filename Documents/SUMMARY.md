@@ -18,7 +18,8 @@
 
 ## 회의록
 
-* [25.11.12 회의록 요약](Meeting/Meeting_251112.md)
+* [AI 파트 회의록 요약 (2025-11-12)](Meeting/Meeting_251112_Project.md)
+* [데일리 회의록 요약 (2025-11-12)](Meeting/Meeting_251112_Daily.md)
 
 ## Planning
 

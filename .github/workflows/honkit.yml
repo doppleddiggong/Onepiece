@@ -75,6 +75,17 @@ jobs:
         run: |
           honkit build
 
+      - name: Resolve keep_files flag
+        id: keepflag
+        env:
+          PAYLOAD_KEEP_FILES: ${{ github.event.client_payload.keep_files }}
+        run: |
+          KEEP_FILES="true"
+          if [ -n "${PAYLOAD_KEEP_FILES}" ]; then
+            KEEP_FILES="${PAYLOAD_KEEP_FILES}"
+          fi
+          echo "keep_files=$KEEP_FILES" >> $GITHUB_OUTPUT
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
@@ -84,7 +95,7 @@ jobs:
           destination_dir: docs
           enable_jekyll: false
           force_orphan: false
-          keep_files: true
+          keep_files: ${{ steps.keepflag.outputs.keep_files == 'true' }}
 
       - name: Summary
         run: |
