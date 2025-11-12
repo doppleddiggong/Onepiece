@@ -1,0 +1,35 @@
+name: Meeting Log Broadcast
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'Documents/Meeting/**'
+
+jobs:
+  broadcast:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Get Commit Info
+        id: commit
+        run: |
+          echo "COMMIT_URL=$(git log -1 --pretty=format:'%H' | xargs -I {} echo ${{ github.server_url }}/${{ github.repository }}/commit/{})" >> $GITHUB_OUTPUT
+          echo "COMMIT_MESSAGE=$(git log -1 --pretty=%B)" >> $GITHUB_OUTPUT
+
+      - name: Discord Notification
+        uses: naveto/action-discord-notify@v2
+        with:
+          webhook_url: ${{ secrets.DISCORD_WEBHOOK_MEETING_URL }}
+          message: |
+            [Onepiece] 📚 새로운 회의록이 추가/수정되었습니다.
+            
+            **Commit:** ${{ steps.commit.outputs.COMMIT_MESSAGE }}
+            
+            [변경사항 확인하기](${{ steps.commit.outputs.COMMIT_URL }})
+          username: Onepiece Git
+          avatar_url: https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png

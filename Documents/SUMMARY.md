@@ -16,6 +16,9 @@
 ### Weekly Summary
 * [주간 개발 요약 (2025-11-10 ~ 2025-11-16)](DevLog/Weekly/2025-W46-Summary.md)
 
+## 회의록
+* [251112 회의](Meeting/Meeting_251112.md)
+
 ## Planning
 
 ## External Links
