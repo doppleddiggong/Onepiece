@@ -29,7 +29,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          ref: docs  # docs 브랜치에서 직접 실행
           fetch-depth: 0  # 전체 히스토리 가져오기
 
       - name: Setup Python
@@ -145,8 +144,8 @@ jobs:
           Co-Authored-By: Claude <noreply@anthropic.com>"
 
             # rebase 후 push (충돌 방지)
-            git pull --rebase origin docs || true
-            git push origin docs --force-with-lease
+            git pull --rebase origin main || true
+            git push origin main --force-with-lease
           fi
 
       - name: Send Discord Notification
@@ -171,7 +170,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           event-type: honkit-build
-          client-payload: '{"ref": "docs", "trigger": "weekly-report"}'
+          client-payload: '{"ref": "main", "trigger": "weekly-report"}'
 
       - name: Summary
         run: |

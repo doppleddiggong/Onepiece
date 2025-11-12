@@ -36,11 +36,6 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Sync docs branch content
-        run: |
-          git fetch origin docs
-          git checkout docs
-
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
