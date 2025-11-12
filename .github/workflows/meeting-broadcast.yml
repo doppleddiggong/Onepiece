@@ -5,12 +5,24 @@ on:
     branches: [ docs ] # daily-report.yml 과 동일하게 docs 브랜치를 사용하도록 수정
     paths:
       - 'Documents/Meeting/**'
+  
+  # 수동 실행을 위한 workflow_dispatch 추가
+  workflow_dispatch:
+    inputs:
+      meeting_log_path:
+        description: '알림을 보낼 회의록 파일 경로 (예: Documents/Meeting/2025-11-11-MyMeeting.md)'
+        required: true
+      force_send:
+        description: 'config.yml 설정을 무시하고 강제로 알림을 보낼지 여부'
+        type: boolean
+        default: true
 
 jobs:
   broadcast:
     runs-on: ubuntu-latest
-    # daily-report.yml을 참조하여 discord.enabled 설정이 true일 때만 실행되도록 조건 추가
-    if: fromJSON(needs.setup.outputs.config).discord_enabled == true
+    # config.yml의 전체 알림(enabled)과 회의록 알림(meeting_log_enabled)이 모두 true일 때 실행
+    # 또는 수동 실행 시 force_send가 true이면 config 설정을 무시하고 실행
+    if: (fromJSON(needs.setup.outputs.config).discord_enabled == true && fromJSON(needs.setup.outputs.config).discord_meeting_log_enabled == true) || (github.event_name == 'workflow_dispatch' && github.event.inputs.force_send == 'true')
 
     needs: setup
 
@@ -25,14 +37,22 @@ jobs:
         id: file_info
         run: |
           # 푸시된 커밋에서 변경된 회의록 파일 찾기
-          CHANGED_FILE=$(git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | grep 'Documents/Meeting/')
+          if [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
+            # 수동 실행 시 입력받은 경로 사용
+            CHANGED_FILE="${{ github.event.inputs.meeting_log_path }}"
+            COMMIT_SHA=$(git rev-parse HEAD) # 현재 브랜치의 최신 커밋 사용
+          else
+            # 푸시 이벤트 시 기존 로직 사용
+            CHANGED_FILE=$(git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | grep 'Documents/Meeting/')
+            COMMIT_SHA="${{ github.sha }}"
+          fi
+          
           echo "changed_file=$CHANGED_FILE" >> $GITHUB_OUTPUT
           
-          COMMIT_URL="${{ github.server_url }}/${{ github.repository }}/commit/${{ github.sha }}"
+          COMMIT_URL="${{ github.server_url }}/${{ github.repository }}/commit/$COMMIT_SHA"
           echo "commit_url=$COMMIT_URL" >> $GITHUB_OUTPUT
           
-          # 커밋 메시지를 한 줄로 만듦
-          COMMIT_MESSAGE=$(git log -1 --pretty=%B | tr -d '\n' | tr -d '\r')
+          COMMIT_MESSAGE=$(git log -1 --pretty=%B $COMMIT_SHA | tr -d '\n' | tr -d '\r')
           echo "commit_message=$COMMIT_MESSAGE" >> $GITHUB_OUTPUT
 
       - name: Discord Notification
@@ -75,5 +95,5 @@ jobs:
       - name: Load config and output as JSON
         id: config
         run: |
-          CONFIG_JSON=$(python3 -c "import yaml, json; print(json.dumps(yaml.safe_load(open('.github/config.yml'))))")
+          CONFIG_JSON=$(python3 -c "import yaml, json; config = yaml.safe_load(open('.github/config.yml')); print(json.dumps({'discord_enabled': config.get('discord', {}).get('enabled', False), 'discord_meeting_log_enabled': config.get('discord', {}).get('meeting_log_enabled', False)}))")
           echo "json_config=$CONFIG_JSON" >> $GITHUB_OUTPUT
