@@ -120,30 +120,64 @@ def extract_summary_from_weekly(md_path):
 
     return summary
 
+def _extract_first_text_line(content: str) -> str:
+    """Extract the first meaningful line of text from markdown content."""
+
+    cleaned_content = re.sub(r'\*\*(.*?)\*\*', r'\1', content)
+
+    for raw_line in cleaned_content.splitlines():
+        line = raw_line.strip()
+        if not line:
+            continue
+        if line.startswith('#'):
+            continue
+        if line.startswith('```'):
+            # Skip fenced code blocks headers
+            continue
+        if line.startswith('>'):
+            line = line.lstrip('> ').strip()
+        line = re.sub(r'^[\-*\d\.)\s]+', '', line)
+        line = re.sub(r'\s+', ' ', line).strip()
+        if line:
+            return line
+
+    return "자세한 내용은 문서를 확인해주세요."
+
+
+def _truncate_sentence(text: str, max_length: int = 140) -> str:
+    """Return the first sentence (or truncated text) within the max length."""
+
+    sentence = re.split(r'(?<=[.!?])\s+', text)[0].strip()
+    if not sentence:
+        sentence = text.strip()
+
+    if len(sentence) > max_length:
+        truncated = sentence[:max_length].rstrip()
+        if not truncated.endswith('…'):
+            truncated += '…'
+        return truncated
+
+    return sentence
+
+
 def extract_summary_from_meeting_log(md_path):
     """회의록 파일에서 제목과 요약 추출"""
     content = Path(md_path).read_text(encoding='utf-8')
     summary = {}
 
-    # 첫 번째 H3 헤더를 제목으로 사용
-    title_match = re.search(r'^###\s*(.+)', content, re.MULTILINE)
-    if title_match:
-        summary['title'] = title_match.group(1).strip()
-    else:
-        summary['title'] = md_path.stem # 제목이 없으면 파일명을 사용
+    # 최상단 H1을 제목으로 사용, 없으면 이전 로직으로 대체
+    title_match = re.search(r'^#\s*(.+)', content, re.MULTILINE)
+    if not title_match:
+        title_match = re.search(r'^###\s*(.+)', content, re.MULTILINE)
+    summary['title'] = title_match.group(1).strip() if title_match else md_path.stem
 
-    # "핵심 프로젝트 아이디어" 또는 "정리 요약" 섹션 추출
-    summary_match = re.search(r'#### 6\. 핵심 프로젝트 아이디어\n\n> “(.+?)”|\*\*정리 요약:\*\*\n(.+)', content, re.DOTALL)
-    if summary_match:
-        # 그룹 1 또는 그룹 2 중 내용이 있는 것을 요약으로 사용
-        summary_text = summary_match.group(1) or summary_match.group(2)
-        summary['summary'] = summary_text.strip().split('\n')[0] # 첫 줄만 사용
-    else:
-        summary['summary'] = "자세한 내용은 문서를 확인해주세요."
+    # 본문에서 첫 문장을 추출하여 설명으로 사용
+    first_line = _extract_first_text_line(content)
+    summary['description'] = _truncate_sentence(first_line, max_length=140)
 
     # 커밋 메시지 추출 (환경 변수에서)
     commit_message = os.getenv('COMMIT_MESSAGE', 'N/A')
-    summary['commit_message'] = commit_message.split('\n')[0] # 첫 줄만 사용
+    summary['commit_message'] = commit_message.split('\n')[0]
 
     # 커밋 URL 추출 (환경 변수에서)
     commit_url = os.getenv('COMMIT_URL', '')
@@ -251,7 +285,7 @@ def create_meeting_log_embed(summary, devlog_url):
     """회의록 공유용 Discord Embed 생성"""
     color = 0x9B59B6  # 보라색
 
-    description = f"**{summary.get('summary', '회의록이 업데이트되었습니다.')}**"
+    description = summary.get('description') or "회의록이 업데이트되었습니다."
 
     embed = {
         "title": f"📚 {summary.get('title', '새로운 회의록')}",
