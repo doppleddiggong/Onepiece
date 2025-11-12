@@ -121,6 +121,12 @@ jobs:
         run: |
           python .github/scripts/generate_summary.py
 
+      - name: Update Daily DevLog with Metrics & Meeting Insights
+        run: |
+          python .github/scripts/devlog/update_devlog.py \
+            --mode daily \
+            --date "${{ steps.date.outputs.today }}"
+
       - name: Commit and Push
         run: |
           git config user.name "github-actions[bot]"

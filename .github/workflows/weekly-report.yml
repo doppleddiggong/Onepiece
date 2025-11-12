@@ -126,6 +126,12 @@ jobs:
         run: |
           python .github/scripts/generate_summary.py
 
+      - name: Update Weekly DevLog with Metrics & Meeting Insights
+        run: |
+          python .github/scripts/devlog/update_devlog.py \
+            --mode weekly \
+            --range "${{ steps.weekly.outputs.week_label }}"
+
       - name: Commit and Push
         run: |
           git config user.name "github-actions[bot]"
