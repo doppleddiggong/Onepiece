@@ -13,6 +13,10 @@ on:
       meeting_log_path:
         description: '알림을 보낼 회의록 파일 경로 (예: Documents/Meeting/Meeting_251112_Daily.md)'
         required: true
+      source_branch:
+        description: '회의록 파일이 위치한 브랜치 (예: main, docs)'
+        required: false
+        default: 'main'
       force_send:
         description: 'config.yml 설정을 무시하고 강제로 알림을 보낼지 여부'
         type: boolean
@@ -38,7 +42,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          ref: docs
+          ref: ${{ inputs.source_branch || github.ref }}
           fetch-depth: 0
 
       - name: Get changed file and commit info
@@ -118,7 +122,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          ref: docs
+          ref: ${{ inputs.source_branch || github.ref }}
+          fetch-depth: 0
 
       - name: Setup Python
         uses: actions/setup-python@v5
