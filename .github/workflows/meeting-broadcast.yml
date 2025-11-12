@@ -40,6 +40,8 @@ jobs:
       - name: Get changed file and commit info
         id: file_info
         run: |
+          set -e
+
           # 푸시된 커밋에서 변경된 회의록 파일 찾기
           if [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
             # 수동 실행 시 입력받은 경로 사용
@@ -47,7 +49,9 @@ jobs:
             COMMIT_SHA=$(git rev-parse HEAD) # 현재 브랜치의 최신 커밋 사용
           else
             # 푸시 이벤트 시 기존 로직 사용
-            CHANGED_FILE=$(git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | grep 'Documents/Meeting/')
+            # -M 옵션으로 리네임을 단일 라인으로 감지하고, 마지막 필드만 추출해 신규 경로만 가져온다
+            CHANGED_FILE=$(git diff-tree -M --no-commit-id --name-status -r ${{ github.sha }} \
+              | awk '$NF ~ /^Documents\/Meeting\// { print $NF; exit }')
             COMMIT_SHA="${{ github.sha }}"
           fi
           
