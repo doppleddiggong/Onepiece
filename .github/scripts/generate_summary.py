@@ -16,6 +16,7 @@ class SummaryGenerator:
         self.honkit_dir = self.base_dir  # HonKit root는 Documents
         self.devlog_dir = self.base_dir / "DevLog"
         self.planning_dir = self.base_dir / "Planning"
+        self.meeting_dir = self.base_dir / "Meeting"
 
     def scan_devlog_files(self) -> Dict[str, List[Path]]:
         """DevLog 폴더의 파일들을 카테고리별로 스캔"""
@@ -61,6 +62,12 @@ class SummaryGenerator:
                 result["meta"].append(meta_path)
 
         return result
+
+    def scan_meeting_files(self) -> List[Path]:
+        """회의록 파일 목록을 최신순으로 스캔"""
+        if not self.meeting_dir.exists():
+            return []
+        return sorted(self.meeting_dir.glob("*.md"), reverse=True)
 
     def scan_planning_files(self) -> Dict[str, List[Path]]:
         """Planning 폴더의 파일들을 카테고리별로 스캔"""
@@ -124,6 +131,15 @@ class SummaryGenerator:
 
         # 파일명에서 제목 생성
         return file_path.stem
+
+    def format_meeting_log_title(self, file_path: Path) -> str:
+        """회의록에 사용할 제목 생성"""
+        title_from_file = self.get_title_from_file(file_path)
+        if title_from_file and title_from_file != file_path.stem:
+            return title_from_file
+
+        stem = re.sub(r'^(Meeting_|회의록_)', '', file_path.stem)
+        return stem.replace('_', ' ')
 
     def format_agent_log_title(self, file_path: Path) -> str:
         """AgentLog 파일명을 읽기 좋은 제목으로 변환"""
@@ -214,6 +230,17 @@ class SummaryGenerator:
             lines.append("### Documentation")
             for file in devlog_files["meta"]:
                 title = self.get_title_from_file(file)
+                rel_path = self.get_relative_path(file)
+                lines.append(f"* [{title}]({rel_path})")
+            lines.append("")
+
+        # Meeting 섹션
+        meeting_files = self.scan_meeting_files()
+        if meeting_files:
+            lines.append("## 회의록")
+            lines.append("")
+            for file in meeting_files:
+                title = self.format_meeting_log_title(file)
                 rel_path = self.get_relative_path(file)
                 lines.append(f"* [{title}]({rel_path})")
             lines.append("")
