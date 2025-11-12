@@ -1,0 +1,40 @@
+name: Notify Meeting Updates
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'Documents/Meeting/**'
+
+permissions:
+  contents: read
+
+jobs:
+  notify-meeting:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Detect changed meeting files
+        id: detect
+        run: |
+          FILES=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep -i '^Documents/Meeting/.*\.md$' || true)
+          COUNT=$(echo "$FILES" | grep -c '^' || echo 0)
+          echo "changed_count=$COUNT" >> $GITHUB_OUTPUT
+          FIRST_FILE=$(echo "$FILES" | head -n1)
+          echo "latest_file=$FIRST_FILE" >> $GITHUB_OUTPUT
+
+      - name: Trigger HonKit Build
+        if: steps.detect.outputs.changed_count != '0'
+        uses: peter-evans/repository-dispatch@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          event-type: honkit-build
+          client-payload: >
+            {"ref": "docs",
+             "trigger": "meeting-update",
+             "latest_file": "${{ steps.detect.outputs.latest_file }}"}

@@ -20,6 +20,7 @@
 
 * [AI 파트 회의록 요약 (2025-11-12)](Meeting/Meeting_251112_Project.md)
 * [데일리 회의록 요약 (2025-11-12)](Meeting/Meeting_251112_Daily.md)
+* [브레인스토밍 1차 회의록 요약 (2025-11-10)](Meeting/Meeting_251110_Project.md)
 
 ## Planning
 
