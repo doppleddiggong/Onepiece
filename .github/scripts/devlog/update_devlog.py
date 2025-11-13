@@ -10,9 +10,10 @@ import argparse
 import json
 import os
 import re
+import shutil
 from pathlib import Path
-from datetime import datetime, timedelta
-from typing import Dict, Optional, Tuple
+from datetime import datetime, timedelta, timezone
+from typing import Dict, Optional, Sequence, Tuple
 
 PROMPT_TEMPLATES = {
     "daily": Path(__file__).parent / "prompt_templates" / "daily.txt",
@@ -81,6 +82,45 @@ def extract_meeting_keywords(path: Path) -> Tuple[str, str]:
     return keywords, actions
 
 
+def ensure_metrics_file(primary: Path, fallbacks: Sequence[Path]) -> Path:
+    """Ensure metrics file exists by copying from known fallbacks if needed."""
+
+    if primary.exists():
+        return primary
+
+    for candidate in fallbacks:
+        if candidate.exists():
+            primary.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copyfile(candidate, primary)
+            print(f"Synced metrics from fallback: {candidate} -> {primary}")
+            return primary
+
+    fallback_list = ", ".join(str(p) for p in fallbacks)
+    raise FileNotFoundError(
+        f"Metrics file not found: {primary} (checked fallbacks: {fallback_list})"
+    )
+
+
+def resolve_meeting_file(meeting_key: str) -> Optional[Path]:
+    """Resolve meeting markdown path supporting legacy Meeting_YYMMDD naming."""
+
+    canonical = Path(f"Documents/Meeting/{meeting_key}.md")
+    if canonical.exists():
+        return canonical
+
+    meeting_dir = Path("Documents/Meeting")
+    if not meeting_dir.exists():
+        return None
+
+    try:
+        short_key = datetime.strptime(meeting_key, "%Y-%m-%d").strftime("%y%m%d")
+    except ValueError:
+        return None
+
+    matches = sorted(meeting_dir.glob(f"Meeting_{short_key}_*.md"))
+    return matches[0] if matches else None
+
+
 def load_metrics(path: Path) -> Dict:
     with path.open(encoding="utf-8") as fh:
         return json.load(fh)
@@ -141,7 +181,7 @@ def update_markdown(
 
 
 def build_generated_at() -> str:
-    return datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S UTC")
+    return datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC")
 
 
 def main():
@@ -155,18 +195,20 @@ def main():
     if args.mode == "daily":
         if not args.date:
             raise ValueError("daily mode requires --date")
-        metrics_path = Path(f"Documents/DevLog/Metrics/{args.date}.json")
+        metrics_primary = Path(f"Documents/DevLog/Metrics/{args.date}.json")
+        fallback_candidates = [Path(f"Documents/DevLog/Daily/{args.date}.metrics.json")]
+        metrics_path = ensure_metrics_file(metrics_primary, fallback_candidates)
         target = Path(f"Documents/DevLog/Daily/{args.date}.md")
         meeting_key = args.meeting_date or (datetime.strptime(args.date, "%Y-%m-%d") - timedelta(days=1)).strftime("%Y-%m-%d")
     else:
         if not args.range:
             raise ValueError("weekly mode requires --range")
-        metrics_path = Path(f"Documents/DevLog/Metrics/{args.range}.json")
+        metrics_primary = Path(f"Documents/DevLog/Metrics/{args.range}.json")
+        fallback_candidates = [Path(f"Documents/DevLog/Weekly/{args.range}.metrics.json")]
+        metrics_path = ensure_metrics_file(metrics_primary, fallback_candidates)
         target = Path(f"Documents/DevLog/Weekly/{args.range}.md")
         meeting_key = args.meeting_date or None
 
-    if not metrics_path.exists():
-        raise FileNotFoundError(f"Metrics file not found: {metrics_path}")
     metrics = load_metrics(metrics_path)
     top_changes = format_top_changes(metrics.get("top_changes", []))
     summary_context = {
@@ -180,16 +222,19 @@ def main():
 
     meeting_link = ""
     if meeting_key:
-        meeting_file = Path(f"Documents/Meeting/{meeting_key}.md")
-        keywords, actions = extract_meeting_keywords(meeting_file)
-        meeting_context = {
-            "meeting_date": meeting_key,
-            "keywords": keywords,
-            "actions": actions,
-            "metrics_top": top_changes,
-        }
-        link_prompt = read_prompt("meeting_link", meeting_context)
-        meeting_link = call_gpt(link_prompt)
+        meeting_file = resolve_meeting_file(meeting_key)
+        if meeting_file:
+            keywords, actions = extract_meeting_keywords(meeting_file)
+            meeting_context = {
+                "meeting_date": meeting_key,
+                "keywords": keywords,
+                "actions": actions,
+                "metrics_top": top_changes,
+            }
+            link_prompt = read_prompt("meeting_link", meeting_context)
+            meeting_link = call_gpt(link_prompt)
+        else:
+            print(f"No meeting note found for key {meeting_key}")
 
     generated = f"생성 시간: {build_generated_at()}"
     update_markdown(target, metrics, gpt_summary, meeting_link, generated)
