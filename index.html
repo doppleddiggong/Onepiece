@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Onepiece Project Documentation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            width: 100%;
+        }
+
+        header {
+            text-align: center;
+            color: white;
+            margin-bottom: 50px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .docs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .doc-card {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .doc-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .doc-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+
+        .doc-card h2 {
+            font-size: 1.8rem;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .doc-card p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .doc-tag {
+            display: inline-block;
+            background: #f0f0f0;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: #555;
+            margin: 5px;
+        }
+
+        .doxygen-card {
+            border-top: 5px solid #2563eb;
+        }
+
+        .honkit-card {
+            border-top: 5px solid #10b981;
+        }
+
+        footer {
+            text-align: center;
+            color: white;
+            opacity: 0.8;
+            margin-top: 30px;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+            border-bottom: 1px solid white;
+        }
+
+        footer a:hover {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎮 Onepiece Project</h1>
+            <p class="subtitle">Unreal Engine 5 Multiplayer Game Development Documentation</p>
+        </header>
+
+        <div class="docs-grid">
+            <a href="./doxygen/index.html" class="doc-card doxygen-card">
+                <div class="doc-icon">📚</div>
+                <h2>API Documentation</h2>
+                <p>Unreal Engine C++ 코드의 자동 생성된 API 문서입니다. 클래스, 함수, 변수 등의 상세 레퍼런스를 확인할 수 있습니다.</p>
+                <div>
+                    <span class="doc-tag">Doxygen</span>
+                    <span class="doc-tag">C++</span>
+                    <span class="doc-tag">API Reference</span>
+                </div>
+            </a>
+
+            <a href="./docs/index.html" class="doc-card honkit-card">
+                <div class="doc-icon">📝</div>
+                <h2>DevLog & Planning</h2>
+                <p>개발 일지, 기획 문서, 시스템 설계 문서를 확인할 수 있습니다. 프로젝트의 진행 과정과 의사결정을 투명하게 기록합니다.</p>
+                <div>
+                    <span class="doc-tag">HonKit</span>
+                    <span class="doc-tag">DevLog</span>
+                    <span class="doc-tag">Planning</span>
+                </div>
+            </a>
+        </div>
+
+        <footer>
+            <p>
+                <a href="https://github.com/doppleddiggong/Onepiece" target="_blank">GitHub Repository</a>
+                · Auto-generated documentation by GitHub Actions
+            </p>
+        </footer>
+    </div>
+</body>
+</html>
