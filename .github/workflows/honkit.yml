@@ -9,7 +9,6 @@ on:
     paths:
       - 'Documents/DevLog/**'
       - 'Documents/Meeting/**'
-      - 'Documents/meeting/**'
       - 'Documents/Planning/**'
       - 'Documents/book.json'
       - '.github/scripts/generate_summary.py'
@@ -153,7 +152,7 @@ jobs:
             if [ -z "$RANGE_BEFORE" ]; then
               RANGE_BEFORE="HEAD~1"
             fi
-            FILE_PATH=$(git diff --name-only "$RANGE_BEFORE" "$RANGE_AFTER" | head -n1 || true)
+            FILE_PATH=$(git diff --name-only "$RANGE_BEFORE" "$RANGE_AFTER" | grep '\.md$' | head -n1 || true)
           fi
 
           if [ -n "$FILE_PATH" ]; then
