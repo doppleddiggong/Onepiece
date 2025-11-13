@@ -1,0 +1,98 @@
+name: Deploy to GitHub Pages
+
+on:
+  # `honkit.yml`의 `build` 잡이 성공적으로 완료되면 자동으로 실행
+  workflow_run:
+    workflows: ["Generate HonKit"]
+    types:
+      - completed
+
+  # 수동으로 배포할 때 사용
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+  notify:
+    needs: deploy
+    runs-on: ubuntu-latest
+    if: success()
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Download artifact metadata
+        id: artifact_meta
+        uses: dawidd6/action-download-artifact@v6
+        with:
+          workflow: honkit.yml
+          workflow_conclusion: success
+          name: github-pages
+          path: .
+          
+      - name: Send Discord Notification
+        env:
+          EVENT_NAME: ${{ fromJson(steps.artifact_meta.outputs.artifact_entries)[0].source_workflow_run.event }}
+          TRIGGER: ${{ fromJson(fromJson(steps.artifact_meta.outputs.artifact_entries)[0].source_workflow_run.triggering_actor.payload).client_payload.trigger || '' }}
+          LATEST_FILE: ${{ fromJson(fromJson(steps.artifact_meta.outputs.artifact_entries)[0].source_workflow_run.triggering_actor.payload).client_payload.latest_file || '' }}
+          DISCORD_WEBHOOK_DEFAULT: ${{ secrets.DISCORD_WEBHOOK }}
+          DISCORD_WEBHOOK_MEETING: ${{ secrets.DISCORD_WEBHOOK_MEETING_URL }}
+        run: |
+          set -euo pipefail
+
+          WEBHOOK="$DISCORD_WEBHOOK_DEFAULT"
+          LABEL="문서"
+          ICON="✅"
+          TITLE="문서"
+          URL="https://doppleddiggong.github.io/Onepiece/docs/"
+
+          case "$TRIGGER" in
+            "meeting-update")
+              WEBHOOK="${DISCORD_WEBHOOK_MEETING:-$DISCORD_WEBHOOK_DEFAULT}"
+              LABEL="회의록"
+              ICON="📘"
+              ;;
+            "daily-update")
+              LABEL="일일 일지"
+              ICON="🗓️"
+              ;;
+            "weekly-update")
+              LABEL="주간 일지"
+              ICON="📅"
+              ;;
+          esac
+
+          if [ -n "$LATEST_FILE" ]; then
+            TITLE=$(basename "$LATEST_FILE")
+            URL="https://doppleddiggong.github.io/Onepiece/docs/${LATEST_FILE#Documents/}"
+            URL="${URL%.md}.html"
+          fi
+
+          MSG="${ICON} ${LABEL} **${TITLE}** 가 배포되었습니다!\n🔗 바로가기"
+
+          if [ -z "$WEBHOOK" ]; then
+            echo "⚠️ Discord 웹훅이 설정되지 않았습니다. 알림 생략"
+            exit 0
+          fi
+
+          curl -X POST -H "Content-Type: application/json" \
+            -d "{\"content\": \"$MSG\"}" "$WEBHOOK"
