@@ -70,5 +70,11 @@ jobs:
         with:
           path: ./_artifact
           
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
       - name: Summary
-        run: echo "✅ HonKit documentation has been built and uploaded as an artifact."
+        run: |
+          echo "✅ HonKit documentation has been built and deployed!"
+          echo "🔗 URL: ${{ steps.deployment.outputs.page_url }}"
