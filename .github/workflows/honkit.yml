@@ -60,14 +60,15 @@ jobs:
         run: |
           honkit build
 
+      - name: Prepare artifact for /docs/ path
+        run: |
+          mkdir -p _artifact
+          mv Documents/_book _artifact/docs
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Automatically uploads the './_site' directory
-          path: ./Documents/_book
+          path: ./_artifact
           
       - name: Summary
         run: echo "✅ HonKit documentation has been built and uploaded as an artifact."
-
-      - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v4
