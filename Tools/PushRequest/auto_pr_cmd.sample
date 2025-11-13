@@ -1,0 +1,12 @@
+cd "${repo:path}"
+
+CHANGED=$(git diff --name-only HEAD)
+
+python Tools/PushRequest/gen_pr_body.py --files "$CHANGED" > Tools/PushRequest/auto_pr_body.txt
+
+TITLE=$(git log -1 --pretty=format:%s)
+
+gh pr create \
+    --title "$TITLE" \
+    --body-file Tools/PushRequest/auto_pr_body.txt \
+    --fill
