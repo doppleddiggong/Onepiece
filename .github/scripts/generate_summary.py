@@ -66,23 +66,29 @@ class SummaryGenerator:
 
         return result
 
-    def scan_meeting_files(self) -> List[Path]:
-        """회의록 파일 목록을 최신순으로 스캔"""
-        meeting_files = []
+    def scan_meeting_files(self) -> Dict[str, List[Path]]:
+        """회의록 파일들을 카테고리(Daily, Common)별로 스캔"""
+        result = {"daily": [], "common": []}
+        
+        # 대소문자 'Meeting' 폴더 경로 모두 확인
+        meeting_base_dirs = [
+            path for path in [self.base_dir / "Meeting", self.base_dir / "meeting"] if path.exists()
+        ]
 
-        for meeting_dir in self.meeting_dirs:
-            if meeting_dir.exists():
-                meeting_files.extend(meeting_dir.glob("*.md"))
+        for base_dir in meeting_base_dirs:
+            # Daily 회의록 스캔
+            daily_dir = base_dir / "Daily"
+            if daily_dir.exists():
+                result["daily"].extend(daily_dir.glob("*.md"))
 
-        if not meeting_files:
-            return []
+            # Common 회의록 스캔
+            common_dir = base_dir / "Common"
+            if common_dir.exists():
+                result["common"].extend(common_dir.glob("*.md"))
 
-        # 경로 문자열을 기준으로 중복 제거 후 정렬
-        unique_files = {}
-        for file_path in meeting_files:
-            unique_files[file_path.as_posix()] = file_path
-
-        return sorted(unique_files.values(), reverse=True)
+        result["daily"] = sorted(list(set(result["daily"])), reverse=True)
+        result["common"] = sorted(list(set(result["common"])), reverse=True)
+        return result
 
     def scan_planning_files(self) -> Dict[str, List[Path]]:
         """Planning 폴더의 파일들을 카테고리별로 스캔"""
@@ -251,14 +257,23 @@ class SummaryGenerator:
 
         # Meeting 섹션
         meeting_files = self.scan_meeting_files()
-        if meeting_files:
+        if meeting_files["daily"] or meeting_files["common"]:
             lines.append("## 회의록")
             lines.append("")
-            for file in meeting_files:
-                title = self.format_meeting_log_title(file)
-                rel_path = self.get_relative_path(file)
-                lines.append(f"* [{title}]({rel_path})")
-            lines.append("")
+            if meeting_files["daily"]:
+                lines.append("### 일일 회의록")
+                for file in meeting_files["daily"]:
+                    title = self.format_meeting_log_title(file)
+                    rel_path = self.get_relative_path(file)
+                    lines.append(f"* [{title}]({rel_path})")
+                lines.append("")
+            if meeting_files["common"]:
+                lines.append("### 일반 회의록")
+                for file in meeting_files["common"]:
+                    title = self.format_meeting_log_title(file)
+                    rel_path = self.get_relative_path(file)
+                    lines.append(f"* [{title}]({rel_path})")
+                lines.append("")
 
         # Planning 섹션
         lines.append("## Planning")

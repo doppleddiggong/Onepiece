@@ -143,24 +143,24 @@ jobs:
               ;;
           esac
 
-          FILE_PATH=""
           if [ -n "$LATEST_FILE" ]; then
-            FILE_PATH="$LATEST_FILE"
+            MD_FILE_PATH="$LATEST_FILE"
           else
             RANGE_BEFORE="$EVENT_BEFORE"
             RANGE_AFTER="$EVENT_AFTER"
             if [ -z "$RANGE_BEFORE" ]; then
               RANGE_BEFORE="HEAD~1"
             fi
-            FILE_PATH=$(git diff --name-only "$RANGE_BEFORE" "$RANGE_AFTER" | grep '\.md$' | head -n1 || true)
+            MD_FILE_PATH=$(git diff --name-only "$RANGE_BEFORE" "$RANGE_AFTER" | grep '\.md$' | head -n1 || true)
           fi
 
-          if [ -n "$FILE_PATH" ]; then
-            TITLE=$(basename "$FILE_PATH")
-            URL="https://doppleddiggong.github.io/Onepiece/docs/${FILE_PATH#Documents/}"
-            URL="${URL%.md}.html"
+          if [ -z "$MD_FILE_PATH" ]; then
+            echo "✅ .md 파일 변경사항이 없어 알림을 생략합니다."
+            exit 0
           else
-            TITLE="문서"
+            TITLE=$(basename "$MD_FILE_PATH")
+            URL="https://doppleddiggong.github.io/Onepiece/docs/${MD_FILE_PATH#Documents/}"
+            URL="${URL%.md}.html"
           fi
 
           MSG="${ICON} ${LABEL} **${TITLE}** 가 배포되었습니다!\n🔗 [바로가기](${URL})"

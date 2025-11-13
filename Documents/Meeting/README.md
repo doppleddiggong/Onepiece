@@ -22,6 +22,21 @@
 Honkit은 각 회의록 상단에 **YAML Front Matter** 블록(`---`으로 시작/종료)을 요구합니다.
 프론트 매터가 없으면 목록(`*`, `-`) 첫 줄을 YAML 앨리어스로 해석해 아래와 같은 오류가 발생합니다.
 
+## 3. 폴더 및 파일명 규칙
+
+회의록은 목적에 따라 다음 두 폴더로 분류하여 저장합니다. 이 구조는 Honkit 사이드바에 자동으로 반영됩니다.
+
+- **`Documents/Meeting/Daily/`**: 매일 정해진 시간에 진행되는 **데일리 스크럼(Daily Scrum)** 회의록만 저장합니다.
+  - 파일명 예시: `Meeting_251114_Daily.md`
+- **`Documents/Meeting/Common/`**: **데일리 스크럼을 제외한 모든 회의록**을 저장합니다.
+  - 데일리 스크럼 이후에 진행된 개별 주제 회의, 기술 리뷰, 기획 회의, 1:1 미팅 등이 모두 여기에 해당합니다.
+  - 파일명 예시: `Meeting_2511_Week2_Summary.md`, `Meeting_RAG_Tech_Review.md`
+
+
+## 4. Honkit Front Matter 규칙
+Honkit은 각 회의록 상단에 **YAML Front Matter** 블록(`---`으로 시작/종료)을 요구합니다.
+프론트 매터가 없으면 목록(`*`, `-`) 첫 줄을 YAML 앨리어스로 해석해 아래와 같은 오류가 발생합니다.
+
 ```
 YAMLException: name of an alias node must contain at least one character
 ```
