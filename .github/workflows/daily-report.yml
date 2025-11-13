@@ -138,11 +138,7 @@ jobs:
           if git diff --staged --quiet; then
             echo "No changes to commit"
           else
-            git commit -m "chore(devlog): daily devlog ${{ steps.date.outputs.today }}
-
-          🤖 Generated with [Claude Code](https://claude.com/claude-code)
-
-          Co-Authored-By: Claude <noreply@anthropic.com>"
+            git commit -m "chore(devlog): daily devlog ${{ steps.date.outputs.today }}"
 
             # rebase 후 push (충돌 방지)
             git pull --rebase origin main || true

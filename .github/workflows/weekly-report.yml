@@ -143,11 +143,7 @@ jobs:
           if git diff --staged --quiet; then
             echo "No changes to commit"
           else
-            git commit -m "chore(devlog): weekly report ${{ steps.weekly.outputs.week_label }}
-
-          🤖 Generated with [Claude Code](https://claude.com/claude-code)
-
-          Co-Authored-By: Claude <noreply@anthropic.com>"
+            git commit -m "chore(devlog): weekly report ${{ steps.weekly.outputs.week_label }}"
 
             # rebase 후 push (충돌 방지)
             git pull --rebase origin main || true
