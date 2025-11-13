@@ -102,16 +102,6 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           event-type: honkit-build
           client-payload: '{"ref": "main", "trigger": "daily-update"}'
-            OPT="--use-gpt"
-          fi
-
-          python .github/scripts/devlog/build_daily_log.py \
-              --date "${{ steps.date.outputs.today }}" \
-              --branch "main" \
-              $OPT
-
-      - name: Update SUMMARY.md
-        run: python .github/scripts/generate_summary.py
 
       - name: Commit and Push (Safe Rebase)
         run: |
