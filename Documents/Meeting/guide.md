@@ -18,10 +18,43 @@
 
 없으면 템플릿 전체를 생성하고, 있으면 해당 블록만 replace합니다.
 
-## 3. 회의록 연결 (Meeting Template)
+## 3. Honkit Front Matter 규칙
+Honkit은 각 회의록 상단에 **YAML Front Matter** 블록(`---`으로 시작/종료)을 요구합니다.
+프론트 매터가 없으면 목록(`*`, `-`) 첫 줄을 YAML 앨리어스로 해석해 아래와 같은 오류가 발생합니다.
+
+```
+YAMLException: name of an alias node must contain at least one character
+```
+
+모든 회의 파일을 다음 구조처럼 작성해 주세요.
+
+```markdown
+---
+title: "251113_데일리 회의"
+date: "2025-11-13"
+attendees:
+  - "전 팀 전체"
+keywords:
+  - "OT(온보딩)"
+---
+
+# 251113_데일리 회의
+...
+```
+
+## 4. 회의록 연결 (Meeting Template)
 다음 템플릿을 회의록으로 유지하면 자동 연결이 쉬워집니다.
 
 ```
+---
+title: "회의 제목"
+date: "{{ date }}"
+attendees:
+  - "{{ attendees }}"
+keywords:
+  - "{{ keywords }}"
+---
+
 ## 개요
 - 날짜: {{ date }}
 - 참석: {{ attendees }}

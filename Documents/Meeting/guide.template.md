@@ -3,7 +3,14 @@
 이 템플릿은 `Documents/meeting/guide.md`를 참고하여 자동화된 DevLog 생성기가 매일 회의 내용을 읽고 `## 3. 회의 연계 분석` 섹션을 만든 뒤에 사용할 수 있도록 구성된 예시입니다.
 
 ```
-# 회의록 — {{date}}
+---
+title: "회의록 — {{date}}"
+date: "{{date}}"
+attendees:
+  - "{{attendees}}"
+keywords:
+  - "{{keywords}}"
+---
 
 ## 개요
 - 프로젝트: {{project}}
