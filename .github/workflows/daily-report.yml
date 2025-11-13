@@ -1,7 +1,7 @@
 name: Report Daily
 
 on:
-  # 매일 KST 기준 오전 9시에 실행 (UTC 00:00)
+  # 매일 KST 오전 9시 (UTC 00:00)
   schedule:
     - cron: '0 0 * * *'
 
@@ -9,11 +9,11 @@ on:
   workflow_dispatch:
     inputs:
       date:
-        description: '생성할 날짜 (YYYY-MM-DD, 비워두면 오늘)'
+        description: '기준 날짜 (YYYY-MM-DD, 비워두면 오늘)'
         required: false
         type: string
       use_gpt:
-        description: 'GPT 피드백 사용 (개발자 성장 피드백 포함)'
+        description: 'GPT 피드백 사용'
         required: false
         type: boolean
         default: false
@@ -29,33 +29,29 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # 전체 히스토리 가져오기
+          fetch-depth: 0
 
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
-      - name: Install Python dependencies
+      - name: Install requirements
         run: pip install -r .github/scripts/requirements.txt
 
-      - name: Load config
+      - name: Load Config
         id: config
         run: |
-          # config.yml에서 설정 읽기
           DAILY_GPT_ENABLED=$(python3 -c "import yaml; print(yaml.safe_load(open('.github/config.yml'))['gpt']['daily_enabled'])")
-          DISCORD_ENABLED=$(python3 -c "import yaml; print(yaml.safe_load(open('.github/config.yml'))['discord']['enabled'])")
-
           echo "daily_gpt_enabled=$DAILY_GPT_ENABLED" >> $GITHUB_OUTPUT
-          echo "discord_enabled=$DISCORD_ENABLED" >> $GITHUB_OUTPUT
-
+          
           # 수동 실행 시 입력값이 config 우선
           if [ "${{ github.event_name }}" == "workflow_dispatch" ] && [ -n "${{ github.event.inputs.use_gpt }}" ]; then
             USE_GPT="${{ github.event.inputs.use_gpt }}"
           else
             USE_GPT="$DAILY_GPT_ENABLED"
           fi
-
+          
           echo "use_gpt=$USE_GPT" >> $GITHUB_OUTPUT
           echo "📋 Config loaded: daily_gpt=$DAILY_GPT_ENABLED, use_gpt=$USE_GPT"
 
@@ -65,14 +61,9 @@ jobs:
           if [ -n "${{ github.event.inputs.date }}" ]; then
             echo "today=${{ github.event.inputs.date }}" >> $GITHUB_OUTPUT
           else
-            echo "today=$(date +%Y-%m-%d)" >> $GITHUB_OUTPUT
+            echo "today=$(TZ=Asia/Seoul date +%Y-%m-%d)" >> $GITHUB_OUTPUT
           fi
-          echo "branch=$(git rev-parse --abbrev-ref HEAD)" >> $GITHUB_OUTPUT
-
-      - name: Make scripts executable
-        run: |
-          chmod +x .github/scripts/devlog/build_daily_log.py
-          chmod +x .github/scripts/generate_summary.py
+          echo "branch=main" >> $GITHUB_OUTPUT
 
       - name: Build Daily DevLog
         env:
@@ -82,7 +73,10 @@ jobs:
           if [ "${{ steps.config.outputs.use_gpt }}" == "true" ]; then
             GPT_ARG="--use-gpt"
           fi
-          python .github/scripts/devlog/build_daily_log.py --date "${{ steps.date.outputs.today }}" --branch "${{ steps.date.outputs.branch }}" $GPT_ARG
+          python .github/scripts/devlog/build_daily_log.py \
+            --date "${{ steps.date.outputs.today }}" \
+            --branch "${{ steps.date.outputs.branch }}" \
+            $GPT_ARG
 
       - name: Update SUMMARY.md
         run: python .github/scripts/generate_summary.py
@@ -92,35 +86,50 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          # 생성된 파일 추가
-          git add -f Documents/DevLog/Daily/*.md Documents/DevLog/Daily/*.json Documents/SUMMARY.md
+          git add Documents/DevLog/Daily/*.md Documents/DevLog/Daily/*.json Documents/SUMMARY.md || true
 
           if git diff --staged --quiet; then
             echo "No changes to commit"
-          else
-            git commit -m "chore(devlog): daily devlog ${{ steps.date.outputs.today }}"
-
-            # rebase 후 push (충돌 방지)
-            git pull --rebase origin main || true
-            git push origin main --force-with-lease
+            exit 0
           fi
 
-      - name: Send Discord Notification
-        if: success() && (steps.config.outputs.discord_enabled == 'true' || steps.config.outputs.discord_enabled == 'True')
-        env:
-          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
-        run: |
-          if [ -z "$DISCORD_WEBHOOK" ]; then
-            echo "⚠️ DISCORD_WEBHOOK secret이 설정되지 않았습니다. Discord 알림을 건너뜁니다."
-          else
-            chmod +x .github/scripts/devlog/send_discord.py
-            python .github/scripts/devlog/send_discord.py \
-              --webhook-url "$DISCORD_WEBHOOK" \
-              --type "daily" \
-              --devlog-file "Documents/DevLog/Daily/${{ steps.date.outputs.today }}.md" \
+          git commit -m "chore(devlog): daily devlog ${{ steps.date.outputs.today }}"
+          git push origin main
+
+      - name: Trigger HonKit Build
+        uses: peter-evans/repository-dispatch@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          event-type: honkit-build
+          client-payload: '{"ref": "main", "trigger": "daily-update"}'
+            OPT="--use-gpt"
+          fi
+
+          python .github/scripts/devlog/build_daily_log.py \
               --date "${{ steps.date.outputs.today }}" \
-              --devlog-url "https://doppleddiggong.github.io/Onepiece/docs/DevLog/Daily/${{ steps.date.outputs.today }}.html"
+              --branch "main" \
+              $OPT
+
+      - name: Update SUMMARY.md
+        run: python .github/scripts/generate_summary.py
+
+      - name: Commit and Push (Safe Rebase)
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git add Documents/DevLog/Daily/*.md Documents/DevLog/Daily/*.json Documents/SUMMARY.md || true
+
+          if git diff --staged --quiet; then
+            echo "No changes"
+            exit 0
           fi
+
+          git commit -m "chore(devlog): daily devlog ${{ steps.date.outputs.today }}"
+
+          # main branch에만 push (이벤트 충돌 없음)
+          git pull --rebase origin main || true
+          git push origin main
 
       - name: Trigger HonKit Build
         uses: peter-evans/repository-dispatch@v2
@@ -128,10 +137,3 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           event-type: honkit-build
           client-payload: '{"ref": "main", "trigger": "daily-report"}'
-
-      - name: Summary
-        run: |
-          echo "✅ Daily DevLog has been generated!"
-          echo "📅 Date: ${{ steps.date.outputs.today }}"
-          echo "📝 File: Documents/DevLog/Daily/${{ steps.date.outputs.today }}.md"
-          echo "🔗 URL: https://doppleddiggong.github.io/Onepiece/docs/DevLog/Daily/${{ steps.date.outputs.today }}.html"

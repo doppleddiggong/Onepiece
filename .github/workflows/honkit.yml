@@ -1,23 +1,11 @@
 name: Generate HonKit
 
 on:
-  # DevLog 또는 Planning 폴더가 업데이트될 때 자동 실행
-  push:
-    branches:
-      - main
-    paths:
-      - 'Documents/DevLog/**'
-      - 'Documents/Meeting/**'
-      - 'Documents/Planning/**'
-      - 'Documents/book.json'
-      - '.github/scripts/generate_summary.py'
-      - '.github/workflows/honkit.yml'
-
-  # Daily/Weekly report 완료 후 트리거
+  # 다른 워크플로우(Daily/Weekly/Meeting)로부터 빌드 요청을 받을 때만 실행
   repository_dispatch:
     types: [honkit-build]
 
-  # 수동 실행 가능
+  # 수동으로 문서를 빌드하고 배포할 때 사용
   workflow_dispatch:
 
 permissions:
