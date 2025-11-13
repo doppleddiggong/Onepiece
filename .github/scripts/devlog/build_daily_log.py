@@ -181,7 +181,7 @@ def get_meeting_analysis(target_date: datetime, top_changes_formatted: str) -> s
         metrics_top=top_changes_formatted
     )
 
-    return call_gpt("You are a concise DevLog summarizer.", prompt)
+    return call_gpt("당신은 DevLog의 내용을 분석하고 한국어로 간결하게 요약하는 AI 어시스턴트입니다.", prompt)
 
 
 def main():
