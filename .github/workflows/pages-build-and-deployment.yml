@@ -29,20 +29,49 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Download artifact metadata
-        id: artifact_meta
+      - name: Download GitHub Pages artifact
+        id: download_artifact
         uses: dawidd6/action-download-artifact@v6
+        continue-on-error: true
         with:
           workflow: honkit.yml
           workflow_conclusion: success
           name: github-pages
-          path: .
-          
+          path: ./downloaded
+
+      - name: Extract deployment metadata
+        id: metadata
+        run: |
+          set -euo pipefail
+
+          EVENT_NAME=""
+          TRIGGER=""
+          LATEST_FILE=""
+
+          if [ -d downloaded ]; then
+            METADATA_FILE=""
+            if [ -f downloaded/github-pages/metadata.json ]; then
+              METADATA_FILE="downloaded/github-pages/metadata.json"
+            elif [ -f downloaded/metadata.json ]; then
+              METADATA_FILE="downloaded/metadata.json"
+            fi
+
+            if [ -n "$METADATA_FILE" ]; then
+              EVENT_NAME=$(jq -r '.event_name // ""' "$METADATA_FILE")
+              TRIGGER=$(jq -r '.trigger // ""' "$METADATA_FILE")
+              LATEST_FILE=$(jq -r '.latest_file // ""' "$METADATA_FILE")
+            fi
+          fi
+
+          echo "event_name=$EVENT_NAME" >> $GITHUB_OUTPUT
+          echo "trigger=$TRIGGER" >> $GITHUB_OUTPUT
+          echo "latest_file=$LATEST_FILE" >> $GITHUB_OUTPUT
+
       - name: Send Discord Notification
         env:
-          EVENT_NAME: ${{ fromJson(steps.artifact_meta.outputs.artifact_entries)[0].source_workflow_run.event }}
-          TRIGGER: ${{ fromJson(fromJson(steps.artifact_meta.outputs.artifact_entries)[0].source_workflow_run.triggering_actor.payload).client_payload.trigger || '' }}
-          LATEST_FILE: ${{ fromJson(fromJson(steps.artifact_meta.outputs.artifact_entries)[0].source_workflow_run.triggering_actor.payload).client_payload.latest_file || '' }}
+          EVENT_NAME: ${{ steps.metadata.outputs.event_name }}
+          TRIGGER: ${{ steps.metadata.outputs.trigger }}
+          LATEST_FILE: ${{ steps.metadata.outputs.latest_file }}
           DISCORD_WEBHOOK_DEFAULT: ${{ secrets.DISCORD_WEBHOOK }}
           DISCORD_WEBHOOK_MEETING: ${{ secrets.DISCORD_WEBHOOK_MEETING_URL }}
         run: |
