@@ -1,11 +1,12 @@
 name: Notify Meeting Updates
 
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - 'Documents/Meeting/**'
+  workflow_dispatch:
+    inputs:
+      file_path:
+        description: '알림을 보낼 회의록 파일 경로 (예: Documents/Meeting/Daily/Meeting_251113_Daily.md)'
+        required: true
+        type: string
 
 permissions:
   contents: write
@@ -16,20 +17,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Detect changed meeting files
-        id: detect
-        run: |
-          FILES=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep -i '^Documents/Meeting/.*\.md$' || true)
-          COUNT=$(echo "$FILES" | grep -c '^' || echo 0)
-          echo "changed_count=$COUNT" >> $GITHUB_OUTPUT
-          FIRST_FILE=$(echo "$FILES" | head -n1)
-          echo "latest_file=$FIRST_FILE" >> $GITHUB_OUTPUT
 
       - name: Trigger HonKit Build
-        if: steps.detect.outputs.changed_count != '0'
         uses: peter-evans/repository-dispatch@v2
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -37,4 +26,4 @@ jobs:
           client-payload: >
             {"ref": "main",
              "trigger": "meeting-update",
-             "latest_file": "${{ steps.detect.outputs.latest_file }}"}
+             "latest_file": "${{ github.event.inputs.file_path }}"}
