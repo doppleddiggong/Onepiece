@@ -36,10 +36,6 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Install Python dependencies first
-        run: |
-          pip install pyyaml
-
       - name: Load config
         id: config
         run: |
@@ -61,11 +57,7 @@ jobs:
           echo "📋 Config loaded: daily_gpt=$DAILY_GPT_ENABLED, use_gpt=$USE_GPT"
 
       - name: Install Python dependencies
-        run: |
-          pip install jinja2 pyyaml
-          if [ "${{ steps.config.outputs.use_gpt }}" == "true" ] || [ "${{ steps.config.outputs.use_gpt }}" == "True" ]; then
-            pip install openai
-          fi
+        run: pip install -r .github/scripts/requirements.txt
 
       - name: Get current date
         id: date
@@ -79,53 +71,21 @@ jobs:
 
       - name: Make scripts executable
         run: |
-          chmod +x .github/scripts/devlog/generate_daily.py
+          chmod +x .github/scripts/devlog/build_daily_log.py
           chmod +x .github/scripts/generate_summary.py
 
-      - name: Generate Daily DevLog
-        run: |
-          # 해당 날짜의 00:00 ~ 23:59 커밋만 수집
-          python .github/scripts/devlog/generate_daily.py \
-            --since "${{ steps.date.outputs.today }} 00:00" \
-            --until "${{ steps.date.outputs.today }} 23:59" \
-            --branch "${{ steps.date.outputs.branch }}" \
-            --base "origin/main" \
-            --out "Documents/DevLog/Daily/${{ steps.date.outputs.today }}.md" \
-            --metrics "Documents/DevLog/Daily/${{ steps.date.outputs.today }}.metrics.json" \
-            --metrics-out "Documents/DevLog/Daily/${{ steps.date.outputs.today }}.metrics.json"
-
-      - name: Generate GPT Feedback (Optional)
-        if: steps.config.outputs.use_gpt == 'true' || steps.config.outputs.use_gpt == 'True'
+      - name: Build Daily DevLog
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: |
-          python .github/scripts/devlog/generate_gpt_feedback.py \
-            --devlog-file "Documents/DevLog/Daily/${{ steps.date.outputs.today }}.md" \
-            --since "${{ steps.date.outputs.today }} 00:00" \
-            --output "Documents/DevLog/Daily/${{ steps.date.outputs.today }}-feedback.md"
-
-      - name: Merge DevLog and Feedback
-        if: steps.config.outputs.use_gpt == 'true' || steps.config.outputs.use_gpt == 'True'
-        run: |
-          BASE_FILE="Documents/DevLog/Daily/${{ steps.date.outputs.today }}.md"
-          FEEDBACK_FILE="Documents/DevLog/Daily/${{ steps.date.outputs.today }}-feedback.md"
-
-          if [ -f "$FEEDBACK_FILE" ]; then
-            # 기본 DevLog + GPT 피드백 병합
-            cat "$FEEDBACK_FILE" >> "$BASE_FILE"
-            rm "$FEEDBACK_FILE"
-            echo "✅ GPT feedback merged into DevLog"
+          GPT_ARG=""
+          if [ "${{ steps.config.outputs.use_gpt }}" == "true" ]; then
+            GPT_ARG="--use-gpt"
           fi
+          python .github/scripts/devlog/build_daily_log.py --date "${{ steps.date.outputs.today }}" --branch "${{ steps.date.outputs.branch }}" $GPT_ARG
 
       - name: Update SUMMARY.md
-        run: |
-          python .github/scripts/generate_summary.py
-
-      - name: Update Daily DevLog with Metrics & Meeting Insights
-        run: |
-          python .github/scripts/devlog/update_devlog.py \
-            --mode daily \
-            --date "${{ steps.date.outputs.today }}"
+        run: python .github/scripts/generate_summary.py
 
       - name: Commit and Push
         run: |
