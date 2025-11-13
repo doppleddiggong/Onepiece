@@ -36,6 +36,9 @@ jobs:
         with:
           python-version: '3.11'
 
+      - name: Install Python dependencies
+        run: pip install -r .github/scripts/requirements.txt
+
       - name: Load config
         id: config
         run: |
@@ -55,9 +58,6 @@ jobs:
 
           echo "use_gpt=$USE_GPT" >> $GITHUB_OUTPUT
           echo "📋 Config loaded: daily_gpt=$DAILY_GPT_ENABLED, use_gpt=$USE_GPT"
-
-      - name: Install Python dependencies
-        run: pip install -r .github/scripts/requirements.txt
 
       - name: Get current date
         id: date
