@@ -1,0 +1,884 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Onepiece Project Documentation: FHttpMultipartFormData 클래스 참조</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript">
+window.MathJax = {
+  options: {
+    ignoreHtmlClass: 'tex2jax_ignore',
+    processHtmlClass: 'tex2jax_process'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<script type="text/javascript" src="darkmode_toggle.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Onepiece Project Documentation<span id="projectnumber">&#160;1.0.0</span>
+   </div>
+   <div id="projectbrief">Unreal Engine 5.6 C++ Project Documentation</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 다음에 의해 생성됨 :  Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','검색');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('classFHttpMultipartFormData.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">로딩중...</div>
+<div class="SRStatus" id="Searching">검색중...</div>
+<div class="SRStatus" id="NoMatches">일치하는것 없음</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">클래스</a> &#124;
+<a href="#pub-methods">Public 멤버 함수</a> &#124;
+<a href="#pri-methods">Private 멤버 함수</a> &#124;
+<a href="#pri-static-methods">정적 Private 멤버 함수</a> &#124;
+<a href="#pri-attribs">Private 속성</a> &#124;
+<a href="classFHttpMultipartFormData-members.html">모든 멤버 목록</a>  </div>
+  <div class="headertitle"><div class="title">FHttpMultipartFormData 클래스 참조</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>언리얼 엔진에 기본 제공되지 않는 multipart/form-data 빌더의 경량 구현입니다.  
+ <a href="classFHttpMultipartFormData.html#details">더 자세히 ...</a></p>
+
+<p><code>#include &lt;<a class="el" href="FHttpMultipartFormData_8h_source.html">FHttpMultipartFormData.h</a>&gt;</code></p>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> FHttpMultipartFormData에 대한 협력 다이어그램:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classFHttpMultipartFormData__coll__graph.svg" width="227" height="336"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+클래스</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structFHttpMultipartFormData_1_1FFilePart.html">FFilePart</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structFHttpMultipartFormData_1_1FTextPart.html">FTextPart</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public 멤버 함수</h2></td></tr>
+<tr class="memitem:a94623a35d57cad7dbcf1c2e97f814584" id="r_a94623a35d57cad7dbcf1c2e97f814584"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFHttpMultipartFormData.html#a94623a35d57cad7dbcf1c2e97f814584">FHttpMultipartFormData</a> ()</td></tr>
+<tr class="separator:a94623a35d57cad7dbcf1c2e97f814584"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afcc209c61ee7449848e0f85c98752a74" id="r_afcc209c61ee7449848e0f85c98752a74"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFHttpMultipartFormData.html#afcc209c61ee7449848e0f85c98752a74">AddFile</a> (const FString &amp;FieldName, const FString &amp;FilePath, const FString &amp;MimeType=TEXT(&quot;&quot;))</td></tr>
+<tr class="memdesc:afcc209c61ee7449848e0f85c98752a74"><td class="mdescLeft">&#160;</td><td class="mdescRight">파일 데이터를 multipart 본문에 추가합니다.  <br /></td></tr>
+<tr class="separator:afcc209c61ee7449848e0f85c98752a74"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8380919cfcb7c7a23c9e95c3c4cef04c" id="r_a8380919cfcb7c7a23c9e95c3c4cef04c"><td class="memItemLeft" align="right" valign="top">FORCEINLINE void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFHttpMultipartFormData.html#a8380919cfcb7c7a23c9e95c3c4cef04c">AddStringField</a> (const FString &amp;FieldName, const FString &amp;Value)</td></tr>
+<tr class="memdesc:a8380919cfcb7c7a23c9e95c3c4cef04c"><td class="mdescLeft">&#160;</td><td class="mdescRight">문자열 필드를 추가하는 편의 래퍼입니다.  <br /></td></tr>
+<tr class="separator:a8380919cfcb7c7a23c9e95c3c4cef04c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7883c51726b656e58cb4d8bf0129048c" id="r_a7883c51726b656e58cb4d8bf0129048c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFHttpMultipartFormData.html#a7883c51726b656e58cb4d8bf0129048c">AddText</a> (const FString &amp;FieldName, const FString &amp;Value)</td></tr>
+<tr class="memdesc:a7883c51726b656e58cb4d8bf0129048c"><td class="mdescLeft">&#160;</td><td class="mdescRight">간단한 텍스트 필드를 추가합니다.  <br /></td></tr>
+<tr class="separator:a7883c51726b656e58cb4d8bf0129048c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad89b2c9d6fc7ab7fc3f1228dd36ca03b" id="r_ad89b2c9d6fc7ab7fc3f1228dd36ca03b"><td class="memItemLeft" align="right" valign="top">const FString &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFHttpMultipartFormData.html#ad89b2c9d6fc7ab7fc3f1228dd36ca03b">GetBoundary</a> () const</td></tr>
+<tr class="memdesc:ad89b2c9d6fc7ab7fc3f1228dd36ca03b"><td class="mdescLeft">&#160;</td><td class="mdescRight">현재 사용 중인 경계 문자열입니다.  <br /></td></tr>
+<tr class="separator:ad89b2c9d6fc7ab7fc3f1228dd36ca03b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac04f689b467e11152fc8ec18aa072a66" id="r_ac04f689b467e11152fc8ec18aa072a66"><td class="memItemLeft" align="right" valign="top">const TArray&lt; uint8 &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFHttpMultipartFormData.html#ac04f689b467e11152fc8ec18aa072a66">GetBuiltBody</a> () const</td></tr>
+<tr class="memdesc:ac04f689b467e11152fc8ec18aa072a66"><td class="mdescLeft">&#160;</td><td class="mdescRight">직렬화된 multipart 본문 데이터입니다.  <br /></td></tr>
+<tr class="separator:ac04f689b467e11152fc8ec18aa072a66"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aceb421a2053762a2e8ff832a974bd7c6" id="r_aceb421a2053762a2e8ff832a974bd7c6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFHttpMultipartFormData.html#aceb421a2053762a2e8ff832a974bd7c6">Reset</a> ()</td></tr>
+<tr class="memdesc:aceb421a2053762a2e8ff832a974bd7c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">모든 파트를 제거하고 경계를 재생성합니다.  <br /></td></tr>
+<tr class="separator:aceb421a2053762a2e8ff832a974bd7c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed2d6c5d4f82b2ad0b51ec457f967f07" id="r_aed2d6c5d4f82b2ad0b51ec457f967f07"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFHttpMultipartFormData.html#aed2d6c5d4f82b2ad0b51ec457f967f07">SetupHttpRequest</a> (const TSharedRef&lt; IHttpRequest, ESPMode::ThreadSafe &gt; &amp;Request)</td></tr>
+<tr class="memdesc:aed2d6c5d4f82b2ad0b51ec457f967f07"><td class="mdescLeft">&#160;</td><td class="mdescRight">HTTP 요청에 Content-Type 헤더와 본문을 설정합니다.  <br /></td></tr>
+<tr class="separator:aed2d6c5d4f82b2ad0b51ec457f967f07"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Private 멤버 함수</h2></td></tr>
+<tr class="memitem:a625dacf8abb09a68d89736334af2e273" id="r_a625dacf8abb09a68d89736334af2e273"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFHttpMultipartFormData.html#a625dacf8abb09a68d89736334af2e273">BuildBody</a> ()</td></tr>
+<tr class="memdesc:a625dacf8abb09a68d89736334af2e273"><td class="mdescLeft">&#160;</td><td class="mdescRight">등록된 파트를 기반으로 HTTP 본문을 구성합니다.  <br /></td></tr>
+<tr class="separator:a625dacf8abb09a68d89736334af2e273"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-methods" name="pri-static-methods"></a>
+정적 Private 멤버 함수</h2></td></tr>
+<tr class="memitem:a45725b7f05bae49e0c6db3d24c6342ee" id="r_a45725b7f05bae49e0c6db3d24c6342ee"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFHttpMultipartFormData.html#a45725b7f05bae49e0c6db3d24c6342ee">AppendUtf8</a> (TArray&lt; uint8 &gt; &amp;Dest, const FString &amp;Str)</td></tr>
+<tr class="memdesc:a45725b7f05bae49e0c6db3d24c6342ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">문자열을 UTF-8로 변환해 버퍼에 추가합니다.  <br /></td></tr>
+<tr class="separator:a45725b7f05bae49e0c6db3d24c6342ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ea64e32c0af057a86744e32adb7d096" id="r_a8ea64e32c0af057a86744e32adb7d096"><td class="memItemLeft" align="right" valign="top">static FString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFHttpMultipartFormData.html#a8ea64e32c0af057a86744e32adb7d096">DetectMimeFromExtension</a> (const FString &amp;FileName)</td></tr>
+<tr class="memdesc:a8ea64e32c0af057a86744e32adb7d096"><td class="mdescLeft">&#160;</td><td class="mdescRight">파일 확장자를 기반으로 MIME 타입을 추론합니다.  <br /></td></tr>
+<tr class="separator:a8ea64e32c0af057a86744e32adb7d096"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private 속성</h2></td></tr>
+<tr class="memitem:a59fc6872975d1177ed7255ed124ea1a3" id="r_a59fc6872975d1177ed7255ed124ea1a3"><td class="memItemLeft" align="right" valign="top">FString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFHttpMultipartFormData.html#a59fc6872975d1177ed7255ed124ea1a3">Boundary</a></td></tr>
+<tr class="separator:a59fc6872975d1177ed7255ed124ea1a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a94601907a48475a18267f9f13782be02" id="r_a94601907a48475a18267f9f13782be02"><td class="memItemLeft" align="right" valign="top">TArray&lt; uint8 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFHttpMultipartFormData.html#a94601907a48475a18267f9f13782be02">BuiltBody</a></td></tr>
+<tr class="separator:a94601907a48475a18267f9f13782be02"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae0402af318f01a5f2151f2159c04f57" id="r_aae0402af318f01a5f2151f2159c04f57"><td class="memItemLeft" align="right" valign="top">TArray&lt; <a class="el" href="structFHttpMultipartFormData_1_1FFilePart.html">FFilePart</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFHttpMultipartFormData.html#aae0402af318f01a5f2151f2159c04f57">FileParts</a></td></tr>
+<tr class="separator:aae0402af318f01a5f2151f2159c04f57"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a349e8b4fcfe06693393806fb106b4581" id="r_a349e8b4fcfe06693393806fb106b4581"><td class="memItemLeft" align="right" valign="top">TArray&lt; <a class="el" href="structFHttpMultipartFormData_1_1FTextPart.html">FTextPart</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFHttpMultipartFormData.html#a349e8b4fcfe06693393806fb106b4581">TextParts</a></td></tr>
+<tr class="separator:a349e8b4fcfe06693393806fb106b4581"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">상세한 설명</h2>
+<div class="textblock"><p>언리얼 엔진에 기본 제공되지 않는 multipart/form-data 빌더의 경량 구현입니다. </p>
+<ul>
+<li>경계(boundary)를 자동으로 생성합니다.</li>
+<li>텍스트 및 파일 필드를 추가할 수 있습니다.</li>
+<li>RFC 7578 규격에 맞는 HTTP 본문을 생성합니다. </li>
+</ul>
+
+<p class="definition"><a class="el" href="FHttpMultipartFormData_8h_source.html">FHttpMultipartFormData.h</a> 파일의 <a class="el" href="FHttpMultipartFormData_8h_source.html#l00017">17</a> 번째 라인에서 정의되었습니다.</p>
+</div><h2 class="groupheader">생성자 &amp; 소멸자 문서화</h2>
+<a id="a94623a35d57cad7dbcf1c2e97f814584" name="a94623a35d57cad7dbcf1c2e97f814584"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a94623a35d57cad7dbcf1c2e97f814584">&#9670;&#160;</a></span>FHttpMultipartFormData()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">FHttpMultipartFormData::FHttpMultipartFormData </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="FHttpMultipartFormData_8cpp_source.html">FHttpMultipartFormData.cpp</a> 파일의 <a class="el" href="FHttpMultipartFormData_8cpp_source.html#l00013">13</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   14</span>{</div>
+<div class="line"><span class="lineno">   15</span>    <a class="code hl_function" href="classFHttpMultipartFormData.html#aceb421a2053762a2e8ff832a974bd7c6">Reset</a>();</div>
+<div class="line"><span class="lineno">   16</span>}</div>
+<div class="ttc" id="aclassFHttpMultipartFormData_html_aceb421a2053762a2e8ff832a974bd7c6"><div class="ttname"><a href="classFHttpMultipartFormData.html#aceb421a2053762a2e8ff832a974bd7c6">FHttpMultipartFormData::Reset</a></div><div class="ttdeci">void Reset()</div><div class="ttdoc">모든 파트를 제거하고 경계를 재생성합니다.</div><div class="ttdef"><b>Definition</b> <a href="FHttpMultipartFormData_8cpp_source.html#l00018">FHttpMultipartFormData.cpp:18</a></div></div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="FHttpMultipartFormData_8cpp_source.html#l00018">Reset()</a>.</p>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classFHttpMultipartFormData_a94623a35d57cad7dbcf1c2e97f814584_cgraph.svg" width="430" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">멤버 함수 문서화</h2>
+<a id="afcc209c61ee7449848e0f85c98752a74" name="afcc209c61ee7449848e0f85c98752a74"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afcc209c61ee7449848e0f85c98752a74">&#9670;&#160;</a></span>AddFile()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool FHttpMultipartFormData::AddFile </td>
+          <td>(</td>
+          <td class="paramtype">const FString &amp;&#160;</td>
+          <td class="paramname"><em>FieldName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const FString &amp;&#160;</td>
+          <td class="paramname"><em>FilePath</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const FString &amp;&#160;</td>
+          <td class="paramname"><em>MimeType</em> = <code>TEXT(&quot;&quot;)</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>파일 데이터를 multipart 본문에 추가합니다. </p>
+<dl class="params"><dt>매개변수</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">FieldName</td><td>[in] 폼 필드 이름입니다. </td></tr>
+    <tr><td class="paramname">FilePath</td><td>[in] 읽어올 파일 경로입니다. </td></tr>
+    <tr><td class="paramname">MimeType</td><td>[in] 명시적 MIME 타입(비어있으면 자동 추론)입니다. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>반환값</dt><dd>파일 로드 및 추가에 성공하면 true입니다. </dd></dl>
+
+<p class="definition"><a class="el" href="FHttpMultipartFormData_8cpp_source.html">FHttpMultipartFormData.cpp</a> 파일의 <a class="el" href="FHttpMultipartFormData_8cpp_source.html#l00033">33</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   34</span>{</div>
+<div class="line"><span class="lineno">   35</span>    TArray&lt;uint8&gt; FileBytes;</div>
+<div class="line"><span class="lineno">   36</span>    <span class="keywordflow">if</span> (!FFileHelper::LoadFileToArray(FileBytes, *FilePath))</div>
+<div class="line"><span class="lineno">   37</span>    {</div>
+<div class="line"><span class="lineno">   38</span>        UE_LOG(LogTemp, Warning, TEXT(<span class="stringliteral">&quot;[HttpMultipartFormData] Failed to load file: %s&quot;</span>), *FilePath);</div>
+<div class="line"><span class="lineno">   39</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   40</span>    }</div>
+<div class="line"><span class="lineno">   41</span> </div>
+<div class="line"><span class="lineno">   42</span>    FString FileNameOnly = FPaths::GetCleanFilename(FilePath);</div>
+<div class="line"><span class="lineno">   43</span>    FString Mime = InMimeType.IsEmpty() ? <a class="code hl_function" href="classFHttpMultipartFormData.html#a8ea64e32c0af057a86744e32adb7d096">DetectMimeFromExtension</a>(FileNameOnly) : InMimeType;</div>
+<div class="line"><span class="lineno">   44</span> </div>
+<div class="line"><span class="lineno">   45</span>    <a class="code hl_variable" href="classFHttpMultipartFormData.html#aae0402af318f01a5f2151f2159c04f57">FileParts</a>.Add({ FieldName, FileNameOnly, Mime, MoveTemp(FileBytes) });</div>
+<div class="line"><span class="lineno">   46</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   47</span>}</div>
+<div class="ttc" id="aclassFHttpMultipartFormData_html_a8ea64e32c0af057a86744e32adb7d096"><div class="ttname"><a href="classFHttpMultipartFormData.html#a8ea64e32c0af057a86744e32adb7d096">FHttpMultipartFormData::DetectMimeFromExtension</a></div><div class="ttdeci">static FString DetectMimeFromExtension(const FString &amp;FileName)</div><div class="ttdoc">파일 확장자를 기반으로 MIME 타입을 추론합니다.</div><div class="ttdef"><b>Definition</b> <a href="FHttpMultipartFormData_8cpp_source.html#l00115">FHttpMultipartFormData.cpp:115</a></div></div>
+<div class="ttc" id="aclassFHttpMultipartFormData_html_aae0402af318f01a5f2151f2159c04f57"><div class="ttname"><a href="classFHttpMultipartFormData.html#aae0402af318f01a5f2151f2159c04f57">FHttpMultipartFormData::FileParts</a></div><div class="ttdeci">TArray&lt; FFilePart &gt; FileParts</div><div class="ttdef"><b>Definition</b> <a href="FHttpMultipartFormData_8h_source.html#l00081">FHttpMultipartFormData.h:81</a></div></div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="FHttpMultipartFormData_8cpp_source.html#l00115">DetectMimeFromExtension()</a>, <a class="el" href="FHttpMultipartFormData_8h_source.html#l00081">FileParts</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classFHttpMultipartFormData_afcc209c61ee7449848e0f85c98752a74_cgraph.svg" width="447" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a8380919cfcb7c7a23c9e95c3c4cef04c" name="a8380919cfcb7c7a23c9e95c3c4cef04c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8380919cfcb7c7a23c9e95c3c4cef04c">&#9670;&#160;</a></span>AddStringField()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">FORCEINLINE void FHttpMultipartFormData::AddStringField </td>
+          <td>(</td>
+          <td class="paramtype">const FString &amp;&#160;</td>
+          <td class="paramname"><em>FieldName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const FString &amp;&#160;</td>
+          <td class="paramname"><em>Value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>문자열 필드를 추가하는 편의 래퍼입니다. </p>
+
+<p class="definition"><a class="el" href="FHttpMultipartFormData_8h_source.html">FHttpMultipartFormData.h</a> 파일의 <a class="el" href="FHttpMultipartFormData_8h_source.html#l00028">28</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   29</span>    {</div>
+<div class="line"><span class="lineno">   30</span>        <a class="code hl_function" href="classFHttpMultipartFormData.html#a7883c51726b656e58cb4d8bf0129048c">AddText</a>(FieldName, Value);</div>
+<div class="line"><span class="lineno">   31</span>    }</div>
+<div class="ttc" id="aclassFHttpMultipartFormData_html_a7883c51726b656e58cb4d8bf0129048c"><div class="ttname"><a href="classFHttpMultipartFormData.html#a7883c51726b656e58cb4d8bf0129048c">FHttpMultipartFormData::AddText</a></div><div class="ttdeci">void AddText(const FString &amp;FieldName, const FString &amp;Value)</div><div class="ttdoc">간단한 텍스트 필드를 추가합니다.</div><div class="ttdef"><b>Definition</b> <a href="FHttpMultipartFormData_8cpp_source.html#l00028">FHttpMultipartFormData.cpp:28</a></div></div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="FHttpMultipartFormData_8cpp_source.html#l00028">AddText()</a>.</p>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classFHttpMultipartFormData_a8380919cfcb7c7a23c9e95c3c4cef04c_cgraph.svg" width="422" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a7883c51726b656e58cb4d8bf0129048c" name="a7883c51726b656e58cb4d8bf0129048c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7883c51726b656e58cb4d8bf0129048c">&#9670;&#160;</a></span>AddText()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void FHttpMultipartFormData::AddText </td>
+          <td>(</td>
+          <td class="paramtype">const FString &amp;&#160;</td>
+          <td class="paramname"><em>FieldName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const FString &amp;&#160;</td>
+          <td class="paramname"><em>Value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>간단한 텍스트 필드를 추가합니다. </p>
+<dl class="params"><dt>매개변수</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">FieldName</td><td>[in] 폼 필드 이름입니다. </td></tr>
+    <tr><td class="paramname">Value</td><td>[in] 필드에 저장할 문자열 값입니다. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition"><a class="el" href="FHttpMultipartFormData_8cpp_source.html">FHttpMultipartFormData.cpp</a> 파일의 <a class="el" href="FHttpMultipartFormData_8cpp_source.html#l00028">28</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   29</span>{</div>
+<div class="line"><span class="lineno">   30</span>    <a class="code hl_variable" href="classFHttpMultipartFormData.html#a349e8b4fcfe06693393806fb106b4581">TextParts</a>.Add({ FieldName, Value });</div>
+<div class="line"><span class="lineno">   31</span>}</div>
+<div class="ttc" id="aclassFHttpMultipartFormData_html_a349e8b4fcfe06693393806fb106b4581"><div class="ttname"><a href="classFHttpMultipartFormData.html#a349e8b4fcfe06693393806fb106b4581">FHttpMultipartFormData::TextParts</a></div><div class="ttdeci">TArray&lt; FTextPart &gt; TextParts</div><div class="ttdef"><b>Definition</b> <a href="FHttpMultipartFormData_8h_source.html#l00080">FHttpMultipartFormData.h:80</a></div></div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="FHttpMultipartFormData_8h_source.html#l00080">TextParts</a>.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="FHttpMultipartFormData_8h_source.html#l00028">AddStringField()</a>.</p>
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classFHttpMultipartFormData_a7883c51726b656e58cb4d8bf0129048c_icgraph.svg" width="422" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a45725b7f05bae49e0c6db3d24c6342ee" name="a45725b7f05bae49e0c6db3d24c6342ee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a45725b7f05bae49e0c6db3d24c6342ee">&#9670;&#160;</a></span>AppendUtf8()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void FHttpMultipartFormData::AppendUtf8 </td>
+          <td>(</td>
+          <td class="paramtype">TArray&lt; uint8 &gt; &amp;&#160;</td>
+          <td class="paramname"><em>Dest</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const FString &amp;&#160;</td>
+          <td class="paramname"><em>Str</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>문자열을 UTF-8로 변환해 버퍼에 추가합니다. </p>
+
+<p class="definition"><a class="el" href="FHttpMultipartFormData_8cpp_source.html">FHttpMultipartFormData.cpp</a> 파일의 <a class="el" href="FHttpMultipartFormData_8cpp_source.html#l00109">109</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  110</span>{</div>
+<div class="line"><span class="lineno">  111</span>    FTCHARToUTF8 Conv(*Str);</div>
+<div class="line"><span class="lineno">  112</span>    Dest.Append(<span class="keyword">reinterpret_cast&lt;</span><span class="keyword">const </span>uint8*<span class="keyword">&gt;</span>(Conv.Get()), Conv.Length());</div>
+<div class="line"><span class="lineno">  113</span>}</div>
+</div><!-- fragment -->
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="FHttpMultipartFormData_8cpp_source.html#l00063">BuildBody()</a>.</p>
+<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-5-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classFHttpMultipartFormData_a45725b7f05bae49e0c6db3d24c6342ee_icgraph.svg" width="651" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a625dacf8abb09a68d89736334af2e273" name="a625dacf8abb09a68d89736334af2e273"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a625dacf8abb09a68d89736334af2e273">&#9670;&#160;</a></span>BuildBody()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void FHttpMultipartFormData::BuildBody </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>등록된 파트를 기반으로 HTTP 본문을 구성합니다. </p>
+
+<p class="definition"><a class="el" href="FHttpMultipartFormData_8cpp_source.html">FHttpMultipartFormData.cpp</a> 파일의 <a class="el" href="FHttpMultipartFormData_8cpp_source.html#l00063">63</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   64</span>{</div>
+<div class="line"><span class="lineno">   65</span>    <a class="code hl_variable" href="classFHttpMultipartFormData.html#a94601907a48475a18267f9f13782be02">BuiltBody</a>.Reset();</div>
+<div class="line"><span class="lineno">   66</span> </div>
+<div class="line"><span class="lineno">   67</span>    <span class="keyword">auto</span> Add = [](TArray&lt;uint8&gt;&amp; Dest, <span class="keyword">const</span> FString&amp; S)</div>
+<div class="line"><span class="lineno">   68</span>    {</div>
+<div class="line"><span class="lineno">   69</span>        <a class="code hl_function" href="classFHttpMultipartFormData.html#a45725b7f05bae49e0c6db3d24c6342ee">AppendUtf8</a>(Dest, S);</div>
+<div class="line"><span class="lineno">   70</span>    };</div>
+<div class="line"><span class="lineno">   71</span> </div>
+<div class="line"><span class="lineno">   72</span>    <span class="keyword">const</span> FString LineEnd = TEXT(<span class="stringliteral">&quot;\r\n&quot;</span>);</div>
+<div class="line"><span class="lineno">   73</span>    <span class="keyword">const</span> FString BoundaryLine = TEXT(<span class="stringliteral">&quot;--&quot;</span>) + <a class="code hl_variable" href="classFHttpMultipartFormData.html#a59fc6872975d1177ed7255ed124ea1a3">Boundary</a>;</div>
+<div class="line"><span class="lineno">   74</span> </div>
+<div class="line"><span class="lineno">   75</span>    <span class="comment">// 텍스트 파트</span></div>
+<div class="line"><span class="lineno">   76</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> FTextPart&amp; P : <a class="code hl_variable" href="classFHttpMultipartFormData.html#a349e8b4fcfe06693393806fb106b4581">TextParts</a>)</div>
+<div class="line"><span class="lineno">   77</span>    {</div>
+<div class="line"><span class="lineno">   78</span>        Add(<a class="code hl_variable" href="classFHttpMultipartFormData.html#a94601907a48475a18267f9f13782be02">BuiltBody</a>, BoundaryLine + LineEnd);</div>
+<div class="line"><span class="lineno">   79</span>        Add(<a class="code hl_variable" href="classFHttpMultipartFormData.html#a94601907a48475a18267f9f13782be02">BuiltBody</a>, FString::Printf(</div>
+<div class="line"><span class="lineno">   80</span>            TEXT(<span class="stringliteral">&quot;Content-Disposition: form-data; name=\&quot;%s\&quot;%s&quot;</span>),</div>
+<div class="line"><span class="lineno">   81</span>            *P.Name, *LineEnd));</div>
+<div class="line"><span class="lineno">   82</span>        Add(<a class="code hl_variable" href="classFHttpMultipartFormData.html#a94601907a48475a18267f9f13782be02">BuiltBody</a>, LineEnd);          <span class="comment">// 헤더와 값 사이의 빈 줄</span></div>
+<div class="line"><span class="lineno">   83</span>        Add(<a class="code hl_variable" href="classFHttpMultipartFormData.html#a94601907a48475a18267f9f13782be02">BuiltBody</a>, P.Value + LineEnd);</div>
+<div class="line"><span class="lineno">   84</span>    }</div>
+<div class="line"><span class="lineno">   85</span> </div>
+<div class="line"><span class="lineno">   86</span>    <span class="comment">// 파일 파트</span></div>
+<div class="line"><span class="lineno">   87</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> FFilePart&amp; P : <a class="code hl_variable" href="classFHttpMultipartFormData.html#aae0402af318f01a5f2151f2159c04f57">FileParts</a>)</div>
+<div class="line"><span class="lineno">   88</span>    {</div>
+<div class="line"><span class="lineno">   89</span>        Add(<a class="code hl_variable" href="classFHttpMultipartFormData.html#a94601907a48475a18267f9f13782be02">BuiltBody</a>, BoundaryLine + LineEnd);</div>
+<div class="line"><span class="lineno">   90</span>        Add(<a class="code hl_variable" href="classFHttpMultipartFormData.html#a94601907a48475a18267f9f13782be02">BuiltBody</a>, FString::Printf(</div>
+<div class="line"><span class="lineno">   91</span>            TEXT(<span class="stringliteral">&quot;Content-Disposition: form-data; name=\&quot;%s\&quot;; filename=\&quot;%s\&quot;%s&quot;</span>),</div>
+<div class="line"><span class="lineno">   92</span>            *P.Name, *P.FileName, *LineEnd));</div>
+<div class="line"><span class="lineno">   93</span>        Add(<a class="code hl_variable" href="classFHttpMultipartFormData.html#a94601907a48475a18267f9f13782be02">BuiltBody</a>, FString::Printf(</div>
+<div class="line"><span class="lineno">   94</span>            TEXT(<span class="stringliteral">&quot;Content-Type: %s%s&quot;</span>),</div>
+<div class="line"><span class="lineno">   95</span>            *P.MimeType, *LineEnd));</div>
+<div class="line"><span class="lineno">   96</span>        Add(<a class="code hl_variable" href="classFHttpMultipartFormData.html#a94601907a48475a18267f9f13782be02">BuiltBody</a>, LineEnd);          <span class="comment">// 바이너리 데이터 앞의 빈 줄</span></div>
+<div class="line"><span class="lineno">   97</span> </div>
+<div class="line"><span class="lineno">   98</span>        <span class="comment">// 바이너리 데이터</span></div>
+<div class="line"><span class="lineno">   99</span>        <a class="code hl_variable" href="classFHttpMultipartFormData.html#a94601907a48475a18267f9f13782be02">BuiltBody</a>.Append(P.Data);</div>
+<div class="line"><span class="lineno">  100</span> </div>
+<div class="line"><span class="lineno">  101</span>        <span class="comment">// 파일 내용 뒤의 CRLF</span></div>
+<div class="line"><span class="lineno">  102</span>        <a class="code hl_function" href="classFHttpMultipartFormData.html#a45725b7f05bae49e0c6db3d24c6342ee">AppendUtf8</a>(<a class="code hl_variable" href="classFHttpMultipartFormData.html#a94601907a48475a18267f9f13782be02">BuiltBody</a>, LineEnd);</div>
+<div class="line"><span class="lineno">  103</span>    }</div>
+<div class="line"><span class="lineno">  104</span> </div>
+<div class="line"><span class="lineno">  105</span>    <span class="comment">// 닫는 경계</span></div>
+<div class="line"><span class="lineno">  106</span>    Add(<a class="code hl_variable" href="classFHttpMultipartFormData.html#a94601907a48475a18267f9f13782be02">BuiltBody</a>, BoundaryLine + TEXT(<span class="stringliteral">&quot;--&quot;</span>) + LineEnd);</div>
+<div class="line"><span class="lineno">  107</span>}</div>
+<div class="ttc" id="aclassFHttpMultipartFormData_html_a45725b7f05bae49e0c6db3d24c6342ee"><div class="ttname"><a href="classFHttpMultipartFormData.html#a45725b7f05bae49e0c6db3d24c6342ee">FHttpMultipartFormData::AppendUtf8</a></div><div class="ttdeci">static void AppendUtf8(TArray&lt; uint8 &gt; &amp;Dest, const FString &amp;Str)</div><div class="ttdoc">문자열을 UTF-8로 변환해 버퍼에 추가합니다.</div><div class="ttdef"><b>Definition</b> <a href="FHttpMultipartFormData_8cpp_source.html#l00109">FHttpMultipartFormData.cpp:109</a></div></div>
+<div class="ttc" id="aclassFHttpMultipartFormData_html_a59fc6872975d1177ed7255ed124ea1a3"><div class="ttname"><a href="classFHttpMultipartFormData.html#a59fc6872975d1177ed7255ed124ea1a3">FHttpMultipartFormData::Boundary</a></div><div class="ttdeci">FString Boundary</div><div class="ttdef"><b>Definition</b> <a href="FHttpMultipartFormData_8h_source.html#l00079">FHttpMultipartFormData.h:79</a></div></div>
+<div class="ttc" id="aclassFHttpMultipartFormData_html_a94601907a48475a18267f9f13782be02"><div class="ttname"><a href="classFHttpMultipartFormData.html#a94601907a48475a18267f9f13782be02">FHttpMultipartFormData::BuiltBody</a></div><div class="ttdeci">TArray&lt; uint8 &gt; BuiltBody</div><div class="ttdef"><b>Definition</b> <a href="FHttpMultipartFormData_8h_source.html#l00082">FHttpMultipartFormData.h:82</a></div></div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="FHttpMultipartFormData_8cpp_source.html#l00109">AppendUtf8()</a>, <a class="el" href="FHttpMultipartFormData_8h_source.html#l00079">Boundary</a>, <a class="el" href="FHttpMultipartFormData_8h_source.html#l00082">BuiltBody</a>, <a class="el" href="FHttpMultipartFormData_8h_source.html#l00081">FileParts</a>, <a class="el" href="FHttpMultipartFormData_8h_source.html#l00080">TextParts</a>.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="FHttpMultipartFormData_8cpp_source.html#l00049">SetupHttpRequest()</a>.</p>
+<div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-6-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-6-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-6-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classFHttpMultipartFormData_a625dacf8abb09a68d89736334af2e273_cgraph.svg" width="422" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-7-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-7-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-7-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classFHttpMultipartFormData_a625dacf8abb09a68d89736334af2e273_icgraph.svg" width="422" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a8ea64e32c0af057a86744e32adb7d096" name="a8ea64e32c0af057a86744e32adb7d096"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ea64e32c0af057a86744e32adb7d096">&#9670;&#160;</a></span>DetectMimeFromExtension()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">FString FHttpMultipartFormData::DetectMimeFromExtension </td>
+          <td>(</td>
+          <td class="paramtype">const FString &amp;&#160;</td>
+          <td class="paramname"><em>FileName</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>파일 확장자를 기반으로 MIME 타입을 추론합니다. </p>
+
+<p class="definition"><a class="el" href="FHttpMultipartFormData_8cpp_source.html">FHttpMultipartFormData.cpp</a> 파일의 <a class="el" href="FHttpMultipartFormData_8cpp_source.html#l00115">115</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  116</span>{</div>
+<div class="line"><span class="lineno">  117</span>    <span class="keyword">const</span> FString Ext = FPaths::GetExtension(FileName, <span class="comment">/*bIncludeDot*/</span> <span class="keyword">false</span>).ToLower();</div>
+<div class="line"><span class="lineno">  118</span> </div>
+<div class="line"><span class="lineno">  119</span>    <span class="comment">// 일반적인 오디오 타입</span></div>
+<div class="line"><span class="lineno">  120</span>    <span class="keywordflow">if</span> (Ext == TEXT(<span class="stringliteral">&quot;mp3&quot;</span>))  <span class="keywordflow">return</span> TEXT(<span class="stringliteral">&quot;audio/mpeg&quot;</span>);</div>
+<div class="line"><span class="lineno">  121</span>    <span class="keywordflow">if</span> (Ext == TEXT(<span class="stringliteral">&quot;wav&quot;</span>))  <span class="keywordflow">return</span> TEXT(<span class="stringliteral">&quot;audio/wav&quot;</span>);</div>
+<div class="line"><span class="lineno">  122</span>    <span class="keywordflow">if</span> (Ext == TEXT(<span class="stringliteral">&quot;ogg&quot;</span>))  <span class="keywordflow">return</span> TEXT(<span class="stringliteral">&quot;audio/ogg&quot;</span>);</div>
+<div class="line"><span class="lineno">  123</span>    <span class="keywordflow">if</span> (Ext == TEXT(<span class="stringliteral">&quot;flac&quot;</span>)) <span class="keywordflow">return</span> TEXT(<span class="stringliteral">&quot;audio/flac&quot;</span>);</div>
+<div class="line"><span class="lineno">  124</span>    <span class="keywordflow">if</span> (Ext == TEXT(<span class="stringliteral">&quot;m4a&quot;</span>))  <span class="keywordflow">return</span> TEXT(<span class="stringliteral">&quot;audio/mp4&quot;</span>);</div>
+<div class="line"><span class="lineno">  125</span> </div>
+<div class="line"><span class="lineno">  126</span>    <span class="comment">// 대체 타입</span></div>
+<div class="line"><span class="lineno">  127</span>    <span class="keywordflow">if</span> (Ext == TEXT(<span class="stringliteral">&quot;txt&quot;</span>))  <span class="keywordflow">return</span> TEXT(<span class="stringliteral">&quot;text/plain&quot;</span>);</div>
+<div class="line"><span class="lineno">  128</span>    <span class="keywordflow">if</span> (Ext == TEXT(<span class="stringliteral">&quot;json&quot;</span>)) <span class="keywordflow">return</span> TEXT(<span class="stringliteral">&quot;application/json&quot;</span>);</div>
+<div class="line"><span class="lineno">  129</span> </div>
+<div class="line"><span class="lineno">  130</span>    <span class="comment">// 기본 타입</span></div>
+<div class="line"><span class="lineno">  131</span>    <span class="keywordflow">return</span> TEXT(<span class="stringliteral">&quot;application/octet-stream&quot;</span>);</div>
+<div class="line"><span class="lineno">  132</span>}</div>
+</div><!-- fragment -->
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="FHttpMultipartFormData_8cpp_source.html#l00033">AddFile()</a>.</p>
+<div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-8-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-8-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-8-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classFHttpMultipartFormData_a8ea64e32c0af057a86744e32adb7d096_icgraph.svg" width="447" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="ad89b2c9d6fc7ab7fc3f1228dd36ca03b" name="ad89b2c9d6fc7ab7fc3f1228dd36ca03b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad89b2c9d6fc7ab7fc3f1228dd36ca03b">&#9670;&#160;</a></span>GetBoundary()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const FString &amp; FHttpMultipartFormData::GetBoundary </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>현재 사용 중인 경계 문자열입니다. </p>
+
+<p class="definition"><a class="el" href="FHttpMultipartFormData_8h_source.html">FHttpMultipartFormData.h</a> 파일의 <a class="el" href="FHttpMultipartFormData_8h_source.html#l00048">48</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   48</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classFHttpMultipartFormData.html#a59fc6872975d1177ed7255ed124ea1a3">Boundary</a>; }</div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="FHttpMultipartFormData_8h_source.html#l00079">Boundary</a>.</p>
+
+</div>
+</div>
+<a id="ac04f689b467e11152fc8ec18aa072a66" name="ac04f689b467e11152fc8ec18aa072a66"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac04f689b467e11152fc8ec18aa072a66">&#9670;&#160;</a></span>GetBuiltBody()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const TArray&lt; uint8 &gt; &amp; FHttpMultipartFormData::GetBuiltBody </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>직렬화된 multipart 본문 데이터입니다. </p>
+
+<p class="definition"><a class="el" href="FHttpMultipartFormData_8h_source.html">FHttpMultipartFormData.h</a> 파일의 <a class="el" href="FHttpMultipartFormData_8h_source.html#l00051">51</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   51</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classFHttpMultipartFormData.html#a94601907a48475a18267f9f13782be02">BuiltBody</a>; }</div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="FHttpMultipartFormData_8h_source.html#l00082">BuiltBody</a>.</p>
+
+</div>
+</div>
+<a id="aceb421a2053762a2e8ff832a974bd7c6" name="aceb421a2053762a2e8ff832a974bd7c6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aceb421a2053762a2e8ff832a974bd7c6">&#9670;&#160;</a></span>Reset()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void FHttpMultipartFormData::Reset </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>모든 파트를 제거하고 경계를 재생성합니다. </p>
+
+<p class="definition"><a class="el" href="FHttpMultipartFormData_8cpp_source.html">FHttpMultipartFormData.cpp</a> 파일의 <a class="el" href="FHttpMultipartFormData_8cpp_source.html#l00018">18</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   19</span>{</div>
+<div class="line"><span class="lineno">   20</span>    <a class="code hl_variable" href="classFHttpMultipartFormData.html#a349e8b4fcfe06693393806fb106b4581">TextParts</a>.Reset();</div>
+<div class="line"><span class="lineno">   21</span>    <a class="code hl_variable" href="classFHttpMultipartFormData.html#aae0402af318f01a5f2151f2159c04f57">FileParts</a>.Reset();</div>
+<div class="line"><span class="lineno">   22</span>    <a class="code hl_variable" href="classFHttpMultipartFormData.html#a94601907a48475a18267f9f13782be02">BuiltBody</a>.Reset();</div>
+<div class="line"><span class="lineno">   23</span> </div>
+<div class="line"><span class="lineno">   24</span>    <span class="comment">// 어떤 고유한 토큰이든 괜찮습니다. 디버깅을 위해 읽기 쉽게 유지합니다.</span></div>
+<div class="line"><span class="lineno">   25</span>    <a class="code hl_variable" href="classFHttpMultipartFormData.html#a59fc6872975d1177ed7255ed124ea1a3">Boundary</a> = TEXT(<span class="stringliteral">&quot;----UE_Multipart_&quot;</span>) + FGuid::NewGuid().ToString(EGuidFormats::Digits);</div>
+<div class="line"><span class="lineno">   26</span>}</div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="FHttpMultipartFormData_8h_source.html#l00079">Boundary</a>, <a class="el" href="FHttpMultipartFormData_8h_source.html#l00082">BuiltBody</a>, <a class="el" href="FHttpMultipartFormData_8h_source.html#l00081">FileParts</a>, <a class="el" href="FHttpMultipartFormData_8h_source.html#l00080">TextParts</a>.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="FHttpMultipartFormData_8cpp_source.html#l00013">FHttpMultipartFormData()</a>.</p>
+<div id="dynsection-9" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-9-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-9-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-9-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classFHttpMultipartFormData_aceb421a2053762a2e8ff832a974bd7c6_icgraph.svg" width="430" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="aed2d6c5d4f82b2ad0b51ec457f967f07" name="aed2d6c5d4f82b2ad0b51ec457f967f07"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aed2d6c5d4f82b2ad0b51ec457f967f07">&#9670;&#160;</a></span>SetupHttpRequest()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void FHttpMultipartFormData::SetupHttpRequest </td>
+          <td>(</td>
+          <td class="paramtype">const TSharedRef&lt; IHttpRequest, ESPMode::ThreadSafe &gt; &amp;&#160;</td>
+          <td class="paramname"><em>Request</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>HTTP 요청에 Content-Type 헤더와 본문을 설정합니다. </p>
+<dl class="params"><dt>매개변수</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Request</td><td>[in] 전송할 HTTP 요청 객체입니다. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition"><a class="el" href="FHttpMultipartFormData_8cpp_source.html">FHttpMultipartFormData.cpp</a> 파일의 <a class="el" href="FHttpMultipartFormData_8cpp_source.html#l00049">49</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   50</span>{</div>
+<div class="line"><span class="lineno">   51</span>    <a class="code hl_function" href="classFHttpMultipartFormData.html#a625dacf8abb09a68d89736334af2e273">BuildBody</a>();</div>
+<div class="line"><span class="lineno">   52</span> </div>
+<div class="line"><span class="lineno">   53</span>    <span class="comment">// 경계를 포함한 Content-Type</span></div>
+<div class="line"><span class="lineno">   54</span>    Request-&gt;SetHeader(TEXT(<span class="stringliteral">&quot;Content-Type&quot;</span>),</div>
+<div class="line"><span class="lineno">   55</span>        FString::Printf(TEXT(<span class="stringliteral">&quot;multipart/form-data; boundary=%s&quot;</span>), *<a class="code hl_variable" href="classFHttpMultipartFormData.html#a59fc6872975d1177ed7255ed124ea1a3">Boundary</a>));</div>
+<div class="line"><span class="lineno">   56</span> </div>
+<div class="line"><span class="lineno">   57</span>    <span class="comment">// 참고: Accept 헤더는 호출자가 설정해야 합니다. 많은 STT 엔드포인트는 JSON을 기대합니다.</span></div>
+<div class="line"><span class="lineno">   58</span>    <span class="comment">// Request-&gt;SetHeader(TEXT(&quot;Accept&quot;), TEXT(&quot;application/json&quot;));</span></div>
+<div class="line"><span class="lineno">   59</span> </div>
+<div class="line"><span class="lineno">   60</span>    Request-&gt;SetContent(<a class="code hl_variable" href="classFHttpMultipartFormData.html#a94601907a48475a18267f9f13782be02">BuiltBody</a>);</div>
+<div class="line"><span class="lineno">   61</span>}</div>
+<div class="ttc" id="aclassFHttpMultipartFormData_html_a625dacf8abb09a68d89736334af2e273"><div class="ttname"><a href="classFHttpMultipartFormData.html#a625dacf8abb09a68d89736334af2e273">FHttpMultipartFormData::BuildBody</a></div><div class="ttdeci">void BuildBody()</div><div class="ttdoc">등록된 파트를 기반으로 HTTP 본문을 구성합니다.</div><div class="ttdef"><b>Definition</b> <a href="FHttpMultipartFormData_8cpp_source.html#l00063">FHttpMultipartFormData.cpp:63</a></div></div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="FHttpMultipartFormData_8h_source.html#l00079">Boundary</a>, <a class="el" href="FHttpMultipartFormData_8cpp_source.html#l00063">BuildBody()</a>, <a class="el" href="FHttpMultipartFormData_8h_source.html#l00082">BuiltBody</a>.</p>
+<div id="dynsection-10" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-10-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-10-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-10-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classFHttpMultipartFormData_aed2d6c5d4f82b2ad0b51ec457f967f07_cgraph.svg" width="651" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">멤버 데이터 문서화</h2>
+<a id="a59fc6872975d1177ed7255ed124ea1a3" name="a59fc6872975d1177ed7255ed124ea1a3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a59fc6872975d1177ed7255ed124ea1a3">&#9670;&#160;</a></span>Boundary</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">FString FHttpMultipartFormData::Boundary</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="FHttpMultipartFormData_8h_source.html">FHttpMultipartFormData.h</a> 파일의 <a class="el" href="FHttpMultipartFormData_8h_source.html#l00079">79</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="FHttpMultipartFormData_8cpp_source.html#l00063">BuildBody()</a>, <a class="el" href="FHttpMultipartFormData_8h_source.html#l00048">GetBoundary()</a>, <a class="el" href="FHttpMultipartFormData_8cpp_source.html#l00018">Reset()</a>, <a class="el" href="FHttpMultipartFormData_8cpp_source.html#l00049">SetupHttpRequest()</a>.</p>
+
+</div>
+</div>
+<a id="a94601907a48475a18267f9f13782be02" name="a94601907a48475a18267f9f13782be02"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a94601907a48475a18267f9f13782be02">&#9670;&#160;</a></span>BuiltBody</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">TArray&lt;uint8&gt; FHttpMultipartFormData::BuiltBody</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="FHttpMultipartFormData_8h_source.html">FHttpMultipartFormData.h</a> 파일의 <a class="el" href="FHttpMultipartFormData_8h_source.html#l00082">82</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="FHttpMultipartFormData_8cpp_source.html#l00063">BuildBody()</a>, <a class="el" href="FHttpMultipartFormData_8h_source.html#l00051">GetBuiltBody()</a>, <a class="el" href="FHttpMultipartFormData_8cpp_source.html#l00018">Reset()</a>, <a class="el" href="FHttpMultipartFormData_8cpp_source.html#l00049">SetupHttpRequest()</a>.</p>
+
+</div>
+</div>
+<a id="aae0402af318f01a5f2151f2159c04f57" name="aae0402af318f01a5f2151f2159c04f57"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aae0402af318f01a5f2151f2159c04f57">&#9670;&#160;</a></span>FileParts</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">TArray&lt;<a class="el" href="structFHttpMultipartFormData_1_1FFilePart.html">FFilePart</a>&gt; FHttpMultipartFormData::FileParts</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="FHttpMultipartFormData_8h_source.html">FHttpMultipartFormData.h</a> 파일의 <a class="el" href="FHttpMultipartFormData_8h_source.html#l00081">81</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="FHttpMultipartFormData_8cpp_source.html#l00033">AddFile()</a>, <a class="el" href="FHttpMultipartFormData_8cpp_source.html#l00063">BuildBody()</a>, <a class="el" href="FHttpMultipartFormData_8cpp_source.html#l00018">Reset()</a>.</p>
+
+</div>
+</div>
+<a id="a349e8b4fcfe06693393806fb106b4581" name="a349e8b4fcfe06693393806fb106b4581"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a349e8b4fcfe06693393806fb106b4581">&#9670;&#160;</a></span>TextParts</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">TArray&lt;<a class="el" href="structFHttpMultipartFormData_1_1FTextPart.html">FTextPart</a>&gt; FHttpMultipartFormData::TextParts</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="FHttpMultipartFormData_8h_source.html">FHttpMultipartFormData.h</a> 파일의 <a class="el" href="FHttpMultipartFormData_8h_source.html#l00080">80</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="FHttpMultipartFormData_8cpp_source.html#l00028">AddText()</a>, <a class="el" href="FHttpMultipartFormData_8cpp_source.html#l00063">BuildBody()</a>, <a class="el" href="FHttpMultipartFormData_8cpp_source.html#l00018">Reset()</a>.</p>
+
+</div>
+</div>
+<hr/>이 클래스에 대한 문서화 페이지는 다음의 파일들로부터 생성되었습니다.:<ul>
+<li>Source/Onepiece/Network/Public/<a class="el" href="FHttpMultipartFormData_8h_source.html">FHttpMultipartFormData.h</a></li>
+<li>Source/Onepiece/Network/Private/<a class="el" href="FHttpMultipartFormData_8cpp_source.html">FHttpMultipartFormData.cpp</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="classFHttpMultipartFormData.html">FHttpMultipartFormData</a></li>
+    <li class="footer">생성시간 : 목 11월 13 2025 16:22:32, 프로젝트명 : Onepiece Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,213 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Onepiece Project Documentation: Source/LatteLibrary/Manager/Private/UGameVFXManager.cpp 소스 파일</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript">
+window.MathJax = {
+  options: {
+    ignoreHtmlClass: 'tex2jax_ignore',
+    processHtmlClass: 'tex2jax_process'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<script type="text/javascript" src="darkmode_toggle.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Onepiece Project Documentation<span id="projectnumber">&#160;1.0.0</span>
+   </div>
+   <div id="projectbrief">Unreal Engine 5.6 C++ Project Documentation</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 다음에 의해 생성됨 :  Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','검색');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(0); });
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('UGameVFXManager_8cpp_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">로딩중...</div>
+<div class="SRStatus" id="Searching">검색중...</div>
+<div class="SRStatus" id="NoMatches">일치하는것 없음</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">UGameVFXManager.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="UGameVFXManager_8cpp.html">이 파일의 문서화 페이지로 가기</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;<a class="code" href="UGameVFXManager_8h.html">UGameVFXManager.h</a>&quot;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;<a class="code" href="EDamageType_8h.html">EDamageType.h</a>&quot;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;<a class="code" href="GameLogging_8h.html">GameLogging.h</a>&quot;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;<a class="code" href="UVFXDataAsset_8h.html">UVFXDataAsset.h</a>&quot;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;NiagaraFunctionLibrary.h&quot;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;<a class="code" href="FComponentHelper_8h.html">FComponentHelper.h</a>&quot;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="UGameVFXManager_8cpp.html#a60500bf10a75f419a7e7fee524b208af">   15</a></span><span class="preprocessor">#define VFX_DATA_PATH TEXT(&quot;/Game/CustomContents/MasterData/VFX_Data.VFX_Data&quot;)</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
+<div class="foldopen" id="foldopen00017" data-start="{" data-end="}">
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="classUGameVFXManager.html#a36f7d7d4e4b07418214f460ac8f9812f">   17</a></span><a class="code hl_function" href="classUGameVFXManager.html#a36f7d7d4e4b07418214f460ac8f9812f">UGameVFXManager::UGameVFXManager</a>()</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>{</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> LoadedAsset = <a class="code hl_function" href="structFComponentHelper.html#ac37cef436e9aaef1f0c655d781a95e66">FComponentHelper::LoadAsset&lt;UVFXDataAsset&gt;</a>(<a class="code hl_define" href="UGameVFXManager_8cpp.html#a60500bf10a75f419a7e7fee524b208af">VFX_DATA_PATH</a>))</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    {</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>        <a class="code hl_variable" href="classUGameVFXManager.html#aca745efb451e8000491a3d262f15724b">VFXAsset</a> = LoadedAsset;</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        <a class="code hl_variable" href="classUGameVFXManager.html#aaa8a39ad90780ff3bffc4af06971f806">VFXDataMap</a> = <a class="code hl_variable" href="classUGameVFXManager.html#aca745efb451e8000491a3d262f15724b">VFXAsset</a>-&gt;VFXData;</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    }</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>}</div>
+</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="foldopen" id="foldopen00026" data-start="{" data-end="}">
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="classUGameVFXManager.html#a82ec4762316fce080ebf78579154ef30">   26</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUGameVFXManager.html#a82ec4762316fce080ebf78579154ef30">UGameVFXManager::Initialize</a>(FSubsystemCollectionBase&amp; Collection)</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>{</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    Super::Initialize(Collection);</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classUGameVFXManager.html#aca745efb451e8000491a3d262f15724b">VFXAsset</a>)</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    {</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        UE_LOG(LogTemp, Error, TEXT(<span class="stringliteral">&quot;Failed to load VFXDataAsset from path&quot;</span>));</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    }</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>}</div>
+</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
+<div class="foldopen" id="foldopen00037" data-start="{" data-end="}">
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="classUGameVFXManager.html#a4f7a82ca570424be468311bcba163759">   37</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="classUGameVFXManager.html#a4f7a82ca570424be468311bcba163759">UGameVFXManager::GetVFXData</a>(<a class="code hl_enumeration" href="EVFXType_8h.html#af8435b1c8c0e40b2bbdf03bb1ca6b4db">EVFXType</a> Type, <a class="code hl_struct" href="structFVFXData.html">FVFXData</a>&amp; Out)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="keyword"></span>{</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="keywordflow">if</span> (<span class="keyword">const</span> <a class="code hl_struct" href="structFVFXData.html">FVFXData</a>* Found = <a class="code hl_variable" href="classUGameVFXManager.html#aaa8a39ad90780ff3bffc4af06971f806">VFXDataMap</a>.Find(Type))</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    {</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        Out = *Found;</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    }</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;DataGetFail : %s&quot;</span>), *UEnum::GetValueAsString(Type) );</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>}</div>
+</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
+<div class="foldopen" id="foldopen00049" data-start="{" data-end="}">
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="classUGameVFXManager.html#a1911c371a4f46d408add1283d701aafd">   49</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUGameVFXManager.html#a1911c371a4f46d408add1283d701aafd">UGameVFXManager::ShowVFX</a>( <a class="code hl_enumeration" href="EVFXType_8h.html#af8435b1c8c0e40b2bbdf03bb1ca6b4db">EVFXType</a> Type,</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    FVector Location, FRotator Rotator, FVector Scale)</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>{</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <a class="code hl_struct" href="structFVFXData.html">FVFXData</a> Params;</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="keywordflow">if</span> (!this-&gt;<a class="code hl_function" href="classUGameVFXManager.html#a4f7a82ca570424be468311bcba163759">GetVFXData</a>(Type, Params))</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    UNiagaraFunctionLibrary::SpawnSystemAtLocation(</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        GetWorld(),</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        Params.<a class="code hl_variable" href="structFVFXData.html#af261eaf6fac7df787bb2f290c456123f">VFXAsset</a>,</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        Location + Params.<a class="code hl_variable" href="structFVFXData.html#a945ead1eeb298be70cd434019b8ce9ba">LocationOffset</a>,</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        Rotator + Params.<a class="code hl_variable" href="structFVFXData.html#ac890ab57708ba9a560918e626822022f">RotatorOffset</a>,</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        Scale * Params.<a class="code hl_variable" href="structFVFXData.html#a4639a82bb96c85b413933695345392ec">Scale</a>,</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        <span class="keyword">true</span>,</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        <span class="keyword">true</span>,</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        ENCPoolMethod::None,</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        <span class="keyword">true</span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    );</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>}</div>
+</div>
+<div class="ttc" id="aEDamageType_8h_html"><div class="ttname"><a href="EDamageType_8h.html">EDamageType.h</a></div><div class="ttdoc">EDamageType 클래스를 선언합니다.</div></div>
+<div class="ttc" id="aEVFXType_8h_html_af8435b1c8c0e40b2bbdf03bb1ca6b4db"><div class="ttname"><a href="EVFXType_8h.html#af8435b1c8c0e40b2bbdf03bb1ca6b4db">EVFXType</a></div><div class="ttdeci">EVFXType</div><div class="ttdef"><b>Definition</b> <a href="EVFXType_8h_source.html#l00008">EVFXType.h:9</a></div></div>
+<div class="ttc" id="aFComponentHelper_8h_html"><div class="ttname"><a href="FComponentHelper_8h.html">FComponentHelper.h</a></div><div class="ttdoc">FComponentHelper 구조체를 선언합니다.</div></div>
+<div class="ttc" id="aGameLogging_8h_html"><div class="ttname"><a href="GameLogging_8h.html">GameLogging.h</a></div><div class="ttdoc">YiSan 전반에서 사용하는 공용 인터페이스를 선언합니다.</div></div>
+<div class="ttc" id="aGameLogging_8h_html_a9998c8beb11a6bad6ffada2e701fc0cf"><div class="ttname"><a href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a></div><div class="ttdeci">#define PRINTLOG(fmt,...)</div><div class="ttdef"><b>Definition</b> <a href="GameLogging_8h_source.html#l00030">GameLogging.h:30</a></div></div>
+<div class="ttc" id="aUGameVFXManager_8cpp_html_a60500bf10a75f419a7e7fee524b208af"><div class="ttname"><a href="UGameVFXManager_8cpp.html#a60500bf10a75f419a7e7fee524b208af">VFX_DATA_PATH</a></div><div class="ttdeci">#define VFX_DATA_PATH</div><div class="ttdef"><b>Definition</b> <a href="UGameVFXManager_8cpp_source.html#l00015">UGameVFXManager.cpp:15</a></div></div>
+<div class="ttc" id="aUGameVFXManager_8h_html"><div class="ttname"><a href="UGameVFXManager_8h.html">UGameVFXManager.h</a></div><div class="ttdoc">UGameVFXManager 클래스를 선언합니다.</div></div>
+<div class="ttc" id="aUVFXDataAsset_8h_html"><div class="ttname"><a href="UVFXDataAsset_8h.html">UVFXDataAsset.h</a></div><div class="ttdoc">UNiagaraSystem 클래스를 선언합니다.</div></div>
+<div class="ttc" id="aclassUGameVFXManager_html_a1911c371a4f46d408add1283d701aafd"><div class="ttname"><a href="classUGameVFXManager.html#a1911c371a4f46d408add1283d701aafd">UGameVFXManager::ShowVFX</a></div><div class="ttdeci">void ShowVFX(EVFXType Type, FVector Location, FRotator Rotator, FVector Scale)</div><div class="ttdef"><b>Definition</b> <a href="UGameVFXManager_8cpp_source.html#l00049">UGameVFXManager.cpp:49</a></div></div>
+<div class="ttc" id="aclassUGameVFXManager_html_a36f7d7d4e4b07418214f460ac8f9812f"><div class="ttname"><a href="classUGameVFXManager.html#a36f7d7d4e4b07418214f460ac8f9812f">UGameVFXManager::UGameVFXManager</a></div><div class="ttdeci">UGameVFXManager()</div><div class="ttdef"><b>Definition</b> <a href="UGameVFXManager_8cpp_source.html#l00017">UGameVFXManager.cpp:17</a></div></div>
+<div class="ttc" id="aclassUGameVFXManager_html_a4f7a82ca570424be468311bcba163759"><div class="ttname"><a href="classUGameVFXManager.html#a4f7a82ca570424be468311bcba163759">UGameVFXManager::GetVFXData</a></div><div class="ttdeci">bool GetVFXData(EVFXType Type, FVFXData &amp;Out) const</div><div class="ttdef"><b>Definition</b> <a href="UGameVFXManager_8cpp_source.html#l00037">UGameVFXManager.cpp:37</a></div></div>
+<div class="ttc" id="aclassUGameVFXManager_html_a82ec4762316fce080ebf78579154ef30"><div class="ttname"><a href="classUGameVFXManager.html#a82ec4762316fce080ebf78579154ef30">UGameVFXManager::Initialize</a></div><div class="ttdeci">virtual void Initialize(FSubsystemCollectionBase &amp;Collection) override</div><div class="ttdef"><b>Definition</b> <a href="UGameVFXManager_8cpp_source.html#l00026">UGameVFXManager.cpp:26</a></div></div>
+<div class="ttc" id="aclassUGameVFXManager_html_aaa8a39ad90780ff3bffc4af06971f806"><div class="ttname"><a href="classUGameVFXManager.html#aaa8a39ad90780ff3bffc4af06971f806">UGameVFXManager::VFXDataMap</a></div><div class="ttdeci">TMap&lt; EVFXType, FVFXData &gt; VFXDataMap</div><div class="ttdef"><b>Definition</b> <a href="UGameVFXManager_8h_source.html#l00043">UGameVFXManager.h:43</a></div></div>
+<div class="ttc" id="aclassUGameVFXManager_html_aca745efb451e8000491a3d262f15724b"><div class="ttname"><a href="classUGameVFXManager.html#aca745efb451e8000491a3d262f15724b">UGameVFXManager::VFXAsset</a></div><div class="ttdeci">TObjectPtr&lt; class UVFXDataAsset &gt; VFXAsset</div><div class="ttdef"><b>Definition</b> <a href="UGameVFXManager_8h_source.html#l00040">UGameVFXManager.h:40</a></div></div>
+<div class="ttc" id="astructFComponentHelper_html_ac37cef436e9aaef1f0c655d781a95e66"><div class="ttname"><a href="structFComponentHelper.html#ac37cef436e9aaef1f0c655d781a95e66">FComponentHelper::LoadAsset</a></div><div class="ttdeci">static T * LoadAsset(const TCHAR *Path)</div><div class="ttdef"><b>Definition</b> <a href="FComponentHelper_8h_source.html#l00016">FComponentHelper.h:16</a></div></div>
+<div class="ttc" id="astructFVFXData_html"><div class="ttname"><a href="structFVFXData.html">FVFXData</a></div><div class="ttdef"><b>Definition</b> <a href="UVFXDataAsset_8h_source.html#l00015">UVFXDataAsset.h:16</a></div></div>
+<div class="ttc" id="astructFVFXData_html_a4639a82bb96c85b413933695345392ec"><div class="ttname"><a href="structFVFXData.html#a4639a82bb96c85b413933695345392ec">FVFXData::Scale</a></div><div class="ttdeci">float Scale</div><div class="ttdef"><b>Definition</b> <a href="UVFXDataAsset_8h_source.html#l00029">UVFXDataAsset.h:29</a></div></div>
+<div class="ttc" id="astructFVFXData_html_a945ead1eeb298be70cd434019b8ce9ba"><div class="ttname"><a href="structFVFXData.html#a945ead1eeb298be70cd434019b8ce9ba">FVFXData::LocationOffset</a></div><div class="ttdeci">FVector LocationOffset</div><div class="ttdef"><b>Definition</b> <a href="UVFXDataAsset_8h_source.html#l00023">UVFXDataAsset.h:23</a></div></div>
+<div class="ttc" id="astructFVFXData_html_ac890ab57708ba9a560918e626822022f"><div class="ttname"><a href="structFVFXData.html#ac890ab57708ba9a560918e626822022f">FVFXData::RotatorOffset</a></div><div class="ttdeci">FRotator RotatorOffset</div><div class="ttdef"><b>Definition</b> <a href="UVFXDataAsset_8h_source.html#l00026">UVFXDataAsset.h:26</a></div></div>
+<div class="ttc" id="astructFVFXData_html_af261eaf6fac7df787bb2f290c456123f"><div class="ttname"><a href="structFVFXData.html#af261eaf6fac7df787bb2f290c456123f">FVFXData::VFXAsset</a></div><div class="ttdeci">TObjectPtr&lt; class UNiagaraSystem &gt; VFXAsset</div><div class="ttdef"><b>Definition</b> <a href="UVFXDataAsset_8h_source.html#l00020">UVFXDataAsset.h:20</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_399370037b6f5ff6b0840148d18ec8d9.html">LatteLibrary</a></li><li class="navelem"><a class="el" href="dir_3895d977c26767e128462eaa7d00849f.html">Manager</a></li><li class="navelem"><a class="el" href="dir_cd5a37b525b446288dd6b9c7de7bfc6f.html">Private</a></li><li class="navelem"><a class="el" href="UGameVFXManager_8cpp.html">UGameVFXManager.cpp</a></li>
+    <li class="footer">생성시간 : 목 11월 13 2025 16:22:31, 프로젝트명 : Onepiece Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
+</body>
+</html>

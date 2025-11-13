@@ -1,0 +1,281 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Onepiece Project Documentation: Source/Onepiece/Network/Private/FHttpMultipartFormData.cpp 소스 파일</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript">
+window.MathJax = {
+  options: {
+    ignoreHtmlClass: 'tex2jax_ignore',
+    processHtmlClass: 'tex2jax_process'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<script type="text/javascript" src="darkmode_toggle.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Onepiece Project Documentation<span id="projectnumber">&#160;1.0.0</span>
+   </div>
+   <div id="projectbrief">Unreal Engine 5.6 C++ Project Documentation</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 다음에 의해 생성됨 :  Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','검색');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(0); });
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('FHttpMultipartFormData_8cpp_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">로딩중...</div>
+<div class="SRStatus" id="Searching">검색중...</div>
+<div class="SRStatus" id="NoMatches">일치하는것 없음</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">FHttpMultipartFormData.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="FHttpMultipartFormData_8cpp.html">이 파일의 문서화 페이지로 가기</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;<a class="code" href="FHttpMultipartFormData_8h.html">FHttpMultipartFormData.h</a>&quot;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;Misc/FileHelper.h&quot;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;Misc/Guid.h&quot;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;Misc/Paths.h&quot;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
+<div class="foldopen" id="foldopen00013" data-start="{" data-end="}">
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="classFHttpMultipartFormData.html#a94623a35d57cad7dbcf1c2e97f814584">   13</a></span><a class="code hl_function" href="classFHttpMultipartFormData.html#a94623a35d57cad7dbcf1c2e97f814584">FHttpMultipartFormData::FHttpMultipartFormData</a>()</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>{</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <a class="code hl_function" href="classFHttpMultipartFormData.html#aceb421a2053762a2e8ff832a974bd7c6">Reset</a>();</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>}</div>
+</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="foldopen" id="foldopen00018" data-start="{" data-end="}">
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="classFHttpMultipartFormData.html#aceb421a2053762a2e8ff832a974bd7c6">   18</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classFHttpMultipartFormData.html#aceb421a2053762a2e8ff832a974bd7c6">FHttpMultipartFormData::Reset</a>()</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>{</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <a class="code hl_variable" href="classFHttpMultipartFormData.html#a349e8b4fcfe06693393806fb106b4581">TextParts</a>.Reset();</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <a class="code hl_variable" href="classFHttpMultipartFormData.html#aae0402af318f01a5f2151f2159c04f57">FileParts</a>.Reset();</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <a class="code hl_variable" href="classFHttpMultipartFormData.html#a94601907a48475a18267f9f13782be02">BuiltBody</a>.Reset();</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="comment">// 어떤 고유한 토큰이든 괜찮습니다. 디버깅을 위해 읽기 쉽게 유지합니다.</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <a class="code hl_variable" href="classFHttpMultipartFormData.html#a59fc6872975d1177ed7255ed124ea1a3">Boundary</a> = TEXT(<span class="stringliteral">&quot;----UE_Multipart_&quot;</span>) + FGuid::NewGuid().ToString(EGuidFormats::Digits);</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>}</div>
+</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="foldopen" id="foldopen00028" data-start="{" data-end="}">
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="classFHttpMultipartFormData.html#a7883c51726b656e58cb4d8bf0129048c">   28</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classFHttpMultipartFormData.html#a7883c51726b656e58cb4d8bf0129048c">FHttpMultipartFormData::AddText</a>(<span class="keyword">const</span> FString&amp; FieldName, <span class="keyword">const</span> FString&amp; Value)</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>{</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <a class="code hl_variable" href="classFHttpMultipartFormData.html#a349e8b4fcfe06693393806fb106b4581">TextParts</a>.Add({ FieldName, Value });</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>}</div>
+</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="foldopen" id="foldopen00033" data-start="{" data-end="}">
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="classFHttpMultipartFormData.html#afcc209c61ee7449848e0f85c98752a74">   33</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="classFHttpMultipartFormData.html#afcc209c61ee7449848e0f85c98752a74">FHttpMultipartFormData::AddFile</a>(<span class="keyword">const</span> FString&amp; FieldName, <span class="keyword">const</span> FString&amp; FilePath, <span class="keyword">const</span> FString&amp; InMimeType)</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>{</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    TArray&lt;uint8&gt; FileBytes;</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="keywordflow">if</span> (!FFileHelper::LoadFileToArray(FileBytes, *FilePath))</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    {</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        UE_LOG(LogTemp, Warning, TEXT(<span class="stringliteral">&quot;[HttpMultipartFormData] Failed to load file: %s&quot;</span>), *FilePath);</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    }</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    FString FileNameOnly = FPaths::GetCleanFilename(FilePath);</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    FString Mime = InMimeType.IsEmpty() ? <a class="code hl_function" href="classFHttpMultipartFormData.html#a8ea64e32c0af057a86744e32adb7d096">DetectMimeFromExtension</a>(FileNameOnly) : InMimeType;</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <a class="code hl_variable" href="classFHttpMultipartFormData.html#aae0402af318f01a5f2151f2159c04f57">FileParts</a>.Add({ FieldName, FileNameOnly, Mime, MoveTemp(FileBytes) });</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>}</div>
+</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
+<div class="foldopen" id="foldopen00049" data-start="{" data-end="}">
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="classFHttpMultipartFormData.html#aed2d6c5d4f82b2ad0b51ec457f967f07">   49</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classFHttpMultipartFormData.html#aed2d6c5d4f82b2ad0b51ec457f967f07">FHttpMultipartFormData::SetupHttpRequest</a>(<span class="keyword">const</span> TSharedRef&lt;IHttpRequest, ESPMode::ThreadSafe&gt;&amp; Request)</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>{</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <a class="code hl_function" href="classFHttpMultipartFormData.html#a625dacf8abb09a68d89736334af2e273">BuildBody</a>();</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="comment">// 경계를 포함한 Content-Type</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    Request-&gt;SetHeader(TEXT(<span class="stringliteral">&quot;Content-Type&quot;</span>),</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        FString::Printf(TEXT(<span class="stringliteral">&quot;multipart/form-data; boundary=%s&quot;</span>), *<a class="code hl_variable" href="classFHttpMultipartFormData.html#a59fc6872975d1177ed7255ed124ea1a3">Boundary</a>));</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="comment">// 참고: Accept 헤더는 호출자가 설정해야 합니다. 많은 STT 엔드포인트는 JSON을 기대합니다.</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="comment">// Request-&gt;SetHeader(TEXT(&quot;Accept&quot;), TEXT(&quot;application/json&quot;));</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    Request-&gt;SetContent(<a class="code hl_variable" href="classFHttpMultipartFormData.html#a94601907a48475a18267f9f13782be02">BuiltBody</a>);</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>}</div>
+</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
+<div class="foldopen" id="foldopen00063" data-start="{" data-end="}">
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="classFHttpMultipartFormData.html#a625dacf8abb09a68d89736334af2e273">   63</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classFHttpMultipartFormData.html#a625dacf8abb09a68d89736334af2e273">FHttpMultipartFormData::BuildBody</a>()</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>{</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <a class="code hl_variable" href="classFHttpMultipartFormData.html#a94601907a48475a18267f9f13782be02">BuiltBody</a>.Reset();</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <span class="keyword">auto</span> Add = [](TArray&lt;uint8&gt;&amp; Dest, <span class="keyword">const</span> FString&amp; S)</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    {</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        <a class="code hl_function" href="classFHttpMultipartFormData.html#a45725b7f05bae49e0c6db3d24c6342ee">AppendUtf8</a>(Dest, S);</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    };</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    <span class="keyword">const</span> FString LineEnd = TEXT(<span class="stringliteral">&quot;\r\n&quot;</span>);</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    <span class="keyword">const</span> FString BoundaryLine = TEXT(<span class="stringliteral">&quot;--&quot;</span>) + <a class="code hl_variable" href="classFHttpMultipartFormData.html#a59fc6872975d1177ed7255ed124ea1a3">Boundary</a>;</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    <span class="comment">// 텍스트 파트</span></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <a class="code hl_struct" href="structFHttpMultipartFormData_1_1FTextPart.html">FTextPart</a>&amp; P : <a class="code hl_variable" href="classFHttpMultipartFormData.html#a349e8b4fcfe06693393806fb106b4581">TextParts</a>)</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    {</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        Add(<a class="code hl_variable" href="classFHttpMultipartFormData.html#a94601907a48475a18267f9f13782be02">BuiltBody</a>, BoundaryLine + LineEnd);</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        Add(<a class="code hl_variable" href="classFHttpMultipartFormData.html#a94601907a48475a18267f9f13782be02">BuiltBody</a>, FString::Printf(</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>            TEXT(<span class="stringliteral">&quot;Content-Disposition: form-data; name=\&quot;%s\&quot;%s&quot;</span>),</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>            *P.Name, *LineEnd));</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        Add(<a class="code hl_variable" href="classFHttpMultipartFormData.html#a94601907a48475a18267f9f13782be02">BuiltBody</a>, LineEnd);          <span class="comment">// 헤더와 값 사이의 빈 줄</span></div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        Add(<a class="code hl_variable" href="classFHttpMultipartFormData.html#a94601907a48475a18267f9f13782be02">BuiltBody</a>, P.Value + LineEnd);</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    }</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    <span class="comment">// 파일 파트</span></div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <a class="code hl_struct" href="structFHttpMultipartFormData_1_1FFilePart.html">FFilePart</a>&amp; P : <a class="code hl_variable" href="classFHttpMultipartFormData.html#aae0402af318f01a5f2151f2159c04f57">FileParts</a>)</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    {</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>        Add(<a class="code hl_variable" href="classFHttpMultipartFormData.html#a94601907a48475a18267f9f13782be02">BuiltBody</a>, BoundaryLine + LineEnd);</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>        Add(<a class="code hl_variable" href="classFHttpMultipartFormData.html#a94601907a48475a18267f9f13782be02">BuiltBody</a>, FString::Printf(</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>            TEXT(<span class="stringliteral">&quot;Content-Disposition: form-data; name=\&quot;%s\&quot;; filename=\&quot;%s\&quot;%s&quot;</span>),</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>            *P.Name, *P.FileName, *LineEnd));</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>        Add(<a class="code hl_variable" href="classFHttpMultipartFormData.html#a94601907a48475a18267f9f13782be02">BuiltBody</a>, FString::Printf(</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>            TEXT(<span class="stringliteral">&quot;Content-Type: %s%s&quot;</span>),</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>            *P.MimeType, *LineEnd));</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        Add(<a class="code hl_variable" href="classFHttpMultipartFormData.html#a94601907a48475a18267f9f13782be02">BuiltBody</a>, LineEnd);          <span class="comment">// 바이너리 데이터 앞의 빈 줄</span></div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>        <span class="comment">// 바이너리 데이터</span></div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>        <a class="code hl_variable" href="classFHttpMultipartFormData.html#a94601907a48475a18267f9f13782be02">BuiltBody</a>.Append(P.Data);</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span> </div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>        <span class="comment">// 파일 내용 뒤의 CRLF</span></div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>        <a class="code hl_function" href="classFHttpMultipartFormData.html#a45725b7f05bae49e0c6db3d24c6342ee">AppendUtf8</a>(<a class="code hl_variable" href="classFHttpMultipartFormData.html#a94601907a48475a18267f9f13782be02">BuiltBody</a>, LineEnd);</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    }</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span> </div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    <span class="comment">// 닫는 경계</span></div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    Add(<a class="code hl_variable" href="classFHttpMultipartFormData.html#a94601907a48475a18267f9f13782be02">BuiltBody</a>, BoundaryLine + TEXT(<span class="stringliteral">&quot;--&quot;</span>) + LineEnd);</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>}</div>
+</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span> </div>
+<div class="foldopen" id="foldopen00109" data-start="{" data-end="}">
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno"><a class="line" href="classFHttpMultipartFormData.html#a45725b7f05bae49e0c6db3d24c6342ee">  109</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classFHttpMultipartFormData.html#a45725b7f05bae49e0c6db3d24c6342ee">FHttpMultipartFormData::AppendUtf8</a>(TArray&lt;uint8&gt;&amp; Dest, <span class="keyword">const</span> FString&amp; Str)</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>{</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    FTCHARToUTF8 Conv(*Str);</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    Dest.Append(<span class="keyword">reinterpret_cast&lt;</span><span class="keyword">const </span>uint8*<span class="keyword">&gt;</span>(Conv.Get()), Conv.Length());</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>}</div>
+</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span> </div>
+<div class="foldopen" id="foldopen00115" data-start="{" data-end="}">
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno"><a class="line" href="classFHttpMultipartFormData.html#a8ea64e32c0af057a86744e32adb7d096">  115</a></span>FString <a class="code hl_function" href="classFHttpMultipartFormData.html#a8ea64e32c0af057a86744e32adb7d096">FHttpMultipartFormData::DetectMimeFromExtension</a>(<span class="keyword">const</span> FString&amp; FileName)</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>{</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>    <span class="keyword">const</span> FString Ext = FPaths::GetExtension(FileName, <span class="comment">/*bIncludeDot*/</span> <span class="keyword">false</span>).ToLower();</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span> </div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    <span class="comment">// 일반적인 오디오 타입</span></div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    <span class="keywordflow">if</span> (Ext == TEXT(<span class="stringliteral">&quot;mp3&quot;</span>))  <span class="keywordflow">return</span> TEXT(<span class="stringliteral">&quot;audio/mpeg&quot;</span>);</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    <span class="keywordflow">if</span> (Ext == TEXT(<span class="stringliteral">&quot;wav&quot;</span>))  <span class="keywordflow">return</span> TEXT(<span class="stringliteral">&quot;audio/wav&quot;</span>);</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>    <span class="keywordflow">if</span> (Ext == TEXT(<span class="stringliteral">&quot;ogg&quot;</span>))  <span class="keywordflow">return</span> TEXT(<span class="stringliteral">&quot;audio/ogg&quot;</span>);</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>    <span class="keywordflow">if</span> (Ext == TEXT(<span class="stringliteral">&quot;flac&quot;</span>)) <span class="keywordflow">return</span> TEXT(<span class="stringliteral">&quot;audio/flac&quot;</span>);</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>    <span class="keywordflow">if</span> (Ext == TEXT(<span class="stringliteral">&quot;m4a&quot;</span>))  <span class="keywordflow">return</span> TEXT(<span class="stringliteral">&quot;audio/mp4&quot;</span>);</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span> </div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>    <span class="comment">// 대체 타입</span></div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>    <span class="keywordflow">if</span> (Ext == TEXT(<span class="stringliteral">&quot;txt&quot;</span>))  <span class="keywordflow">return</span> TEXT(<span class="stringliteral">&quot;text/plain&quot;</span>);</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>    <span class="keywordflow">if</span> (Ext == TEXT(<span class="stringliteral">&quot;json&quot;</span>)) <span class="keywordflow">return</span> TEXT(<span class="stringliteral">&quot;application/json&quot;</span>);</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span> </div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>    <span class="comment">// 기본 타입</span></div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>    <span class="keywordflow">return</span> TEXT(<span class="stringliteral">&quot;application/octet-stream&quot;</span>);</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>}</div>
+</div>
+<div class="ttc" id="aFHttpMultipartFormData_8h_html"><div class="ttname"><a href="FHttpMultipartFormData_8h.html">FHttpMultipartFormData.h</a></div><div class="ttdoc">FHttpMultipartFormData 클래스를 선언합니다.</div></div>
+<div class="ttc" id="aclassFHttpMultipartFormData_html_a349e8b4fcfe06693393806fb106b4581"><div class="ttname"><a href="classFHttpMultipartFormData.html#a349e8b4fcfe06693393806fb106b4581">FHttpMultipartFormData::TextParts</a></div><div class="ttdeci">TArray&lt; FTextPart &gt; TextParts</div><div class="ttdef"><b>Definition</b> <a href="FHttpMultipartFormData_8h_source.html#l00080">FHttpMultipartFormData.h:80</a></div></div>
+<div class="ttc" id="aclassFHttpMultipartFormData_html_a45725b7f05bae49e0c6db3d24c6342ee"><div class="ttname"><a href="classFHttpMultipartFormData.html#a45725b7f05bae49e0c6db3d24c6342ee">FHttpMultipartFormData::AppendUtf8</a></div><div class="ttdeci">static void AppendUtf8(TArray&lt; uint8 &gt; &amp;Dest, const FString &amp;Str)</div><div class="ttdoc">문자열을 UTF-8로 변환해 버퍼에 추가합니다.</div><div class="ttdef"><b>Definition</b> <a href="FHttpMultipartFormData_8cpp_source.html#l00109">FHttpMultipartFormData.cpp:109</a></div></div>
+<div class="ttc" id="aclassFHttpMultipartFormData_html_a59fc6872975d1177ed7255ed124ea1a3"><div class="ttname"><a href="classFHttpMultipartFormData.html#a59fc6872975d1177ed7255ed124ea1a3">FHttpMultipartFormData::Boundary</a></div><div class="ttdeci">FString Boundary</div><div class="ttdef"><b>Definition</b> <a href="FHttpMultipartFormData_8h_source.html#l00079">FHttpMultipartFormData.h:79</a></div></div>
+<div class="ttc" id="aclassFHttpMultipartFormData_html_a625dacf8abb09a68d89736334af2e273"><div class="ttname"><a href="classFHttpMultipartFormData.html#a625dacf8abb09a68d89736334af2e273">FHttpMultipartFormData::BuildBody</a></div><div class="ttdeci">void BuildBody()</div><div class="ttdoc">등록된 파트를 기반으로 HTTP 본문을 구성합니다.</div><div class="ttdef"><b>Definition</b> <a href="FHttpMultipartFormData_8cpp_source.html#l00063">FHttpMultipartFormData.cpp:63</a></div></div>
+<div class="ttc" id="aclassFHttpMultipartFormData_html_a7883c51726b656e58cb4d8bf0129048c"><div class="ttname"><a href="classFHttpMultipartFormData.html#a7883c51726b656e58cb4d8bf0129048c">FHttpMultipartFormData::AddText</a></div><div class="ttdeci">void AddText(const FString &amp;FieldName, const FString &amp;Value)</div><div class="ttdoc">간단한 텍스트 필드를 추가합니다.</div><div class="ttdef"><b>Definition</b> <a href="FHttpMultipartFormData_8cpp_source.html#l00028">FHttpMultipartFormData.cpp:28</a></div></div>
+<div class="ttc" id="aclassFHttpMultipartFormData_html_a8ea64e32c0af057a86744e32adb7d096"><div class="ttname"><a href="classFHttpMultipartFormData.html#a8ea64e32c0af057a86744e32adb7d096">FHttpMultipartFormData::DetectMimeFromExtension</a></div><div class="ttdeci">static FString DetectMimeFromExtension(const FString &amp;FileName)</div><div class="ttdoc">파일 확장자를 기반으로 MIME 타입을 추론합니다.</div><div class="ttdef"><b>Definition</b> <a href="FHttpMultipartFormData_8cpp_source.html#l00115">FHttpMultipartFormData.cpp:115</a></div></div>
+<div class="ttc" id="aclassFHttpMultipartFormData_html_a94601907a48475a18267f9f13782be02"><div class="ttname"><a href="classFHttpMultipartFormData.html#a94601907a48475a18267f9f13782be02">FHttpMultipartFormData::BuiltBody</a></div><div class="ttdeci">TArray&lt; uint8 &gt; BuiltBody</div><div class="ttdef"><b>Definition</b> <a href="FHttpMultipartFormData_8h_source.html#l00082">FHttpMultipartFormData.h:82</a></div></div>
+<div class="ttc" id="aclassFHttpMultipartFormData_html_a94623a35d57cad7dbcf1c2e97f814584"><div class="ttname"><a href="classFHttpMultipartFormData.html#a94623a35d57cad7dbcf1c2e97f814584">FHttpMultipartFormData::FHttpMultipartFormData</a></div><div class="ttdeci">FHttpMultipartFormData()</div><div class="ttdef"><b>Definition</b> <a href="FHttpMultipartFormData_8cpp_source.html#l00013">FHttpMultipartFormData.cpp:13</a></div></div>
+<div class="ttc" id="aclassFHttpMultipartFormData_html_aae0402af318f01a5f2151f2159c04f57"><div class="ttname"><a href="classFHttpMultipartFormData.html#aae0402af318f01a5f2151f2159c04f57">FHttpMultipartFormData::FileParts</a></div><div class="ttdeci">TArray&lt; FFilePart &gt; FileParts</div><div class="ttdef"><b>Definition</b> <a href="FHttpMultipartFormData_8h_source.html#l00081">FHttpMultipartFormData.h:81</a></div></div>
+<div class="ttc" id="aclassFHttpMultipartFormData_html_aceb421a2053762a2e8ff832a974bd7c6"><div class="ttname"><a href="classFHttpMultipartFormData.html#aceb421a2053762a2e8ff832a974bd7c6">FHttpMultipartFormData::Reset</a></div><div class="ttdeci">void Reset()</div><div class="ttdoc">모든 파트를 제거하고 경계를 재생성합니다.</div><div class="ttdef"><b>Definition</b> <a href="FHttpMultipartFormData_8cpp_source.html#l00018">FHttpMultipartFormData.cpp:18</a></div></div>
+<div class="ttc" id="aclassFHttpMultipartFormData_html_aed2d6c5d4f82b2ad0b51ec457f967f07"><div class="ttname"><a href="classFHttpMultipartFormData.html#aed2d6c5d4f82b2ad0b51ec457f967f07">FHttpMultipartFormData::SetupHttpRequest</a></div><div class="ttdeci">void SetupHttpRequest(const TSharedRef&lt; IHttpRequest, ESPMode::ThreadSafe &gt; &amp;Request)</div><div class="ttdoc">HTTP 요청에 Content-Type 헤더와 본문을 설정합니다.</div><div class="ttdef"><b>Definition</b> <a href="FHttpMultipartFormData_8cpp_source.html#l00049">FHttpMultipartFormData.cpp:49</a></div></div>
+<div class="ttc" id="aclassFHttpMultipartFormData_html_afcc209c61ee7449848e0f85c98752a74"><div class="ttname"><a href="classFHttpMultipartFormData.html#afcc209c61ee7449848e0f85c98752a74">FHttpMultipartFormData::AddFile</a></div><div class="ttdeci">bool AddFile(const FString &amp;FieldName, const FString &amp;FilePath, const FString &amp;MimeType=TEXT(&quot;&quot;))</div><div class="ttdoc">파일 데이터를 multipart 본문에 추가합니다.</div><div class="ttdef"><b>Definition</b> <a href="FHttpMultipartFormData_8cpp_source.html#l00033">FHttpMultipartFormData.cpp:33</a></div></div>
+<div class="ttc" id="astructFHttpMultipartFormData_1_1FFilePart_html"><div class="ttname"><a href="structFHttpMultipartFormData_1_1FFilePart.html">FHttpMultipartFormData::FFilePart</a></div><div class="ttdef"><b>Definition</b> <a href="FHttpMultipartFormData_8h_source.html#l00060">FHttpMultipartFormData.h:61</a></div></div>
+<div class="ttc" id="astructFHttpMultipartFormData_1_1FTextPart_html"><div class="ttname"><a href="structFHttpMultipartFormData_1_1FTextPart.html">FHttpMultipartFormData::FTextPart</a></div><div class="ttdef"><b>Definition</b> <a href="FHttpMultipartFormData_8h_source.html#l00054">FHttpMultipartFormData.h:55</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_db6231b890a14ef22abfc7e4cac87d3d.html">Network</a></li><li class="navelem"><a class="el" href="dir_b16031943cc461ca19dafbeb0c146ace.html">Private</a></li><li class="navelem"><a class="el" href="FHttpMultipartFormData_8cpp.html">FHttpMultipartFormData.cpp</a></li>
+    <li class="footer">생성시간 : 목 11월 13 2025 16:22:31, 프로젝트명 : Onepiece Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
+</body>
+</html>

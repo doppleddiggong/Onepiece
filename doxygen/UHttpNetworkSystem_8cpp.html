@@ -1,0 +1,186 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Onepiece Project Documentation: Source/Onepiece/Network/Private/UHttpNetworkSystem.cpp 파일 참조</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript">
+window.MathJax = {
+  options: {
+    ignoreHtmlClass: 'tex2jax_ignore',
+    processHtmlClass: 'tex2jax_process'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<script type="text/javascript" src="darkmode_toggle.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Onepiece Project Documentation<span id="projectnumber">&#160;1.0.0</span>
+   </div>
+   <div id="projectbrief">Unreal Engine 5.6 C++ Project Documentation</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 다음에 의해 생성됨 :  Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','검색');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('UHttpNetworkSystem_8cpp.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">로딩중...</div>
+<div class="SRStatus" id="Searching">검색중...</div>
+<div class="SRStatus" id="NoMatches">일치하는것 없음</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#define-members">매크로</a>  </div>
+  <div class="headertitle"><div class="title">UHttpNetworkSystem.cpp 파일 참조</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>UHttpNetworkSystem의 동작을 구현합니다.  
+<a href="#details">더 자세히 ...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="UHttpNetworkSystem_8h_source.html">UHttpNetworkSystem.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="NetworkLog_8h_source.html">NetworkLog.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="ENetworkLogType_8h_source.html">ENetworkLogType.h</a>&quot;</code><br />
+<code>#include &quot;HttpModule.h&quot;</code><br />
+<code>#include &quot;<a class="el" href="FHttpMultipartFormData_8h_source.html">FHttpMultipartFormData.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="GameLogging_8h_source.html">GameLogging.h</a>&quot;</code><br />
+<code>#include &quot;JsonObjectConverter.h&quot;</code><br />
+<code>#include &quot;<a class="el" href="UBroadcastManager_8h_source.html">UBroadcastManager.h</a>&quot;</code><br />
+<code>#include &quot;Interfaces/IHttpRequest.h&quot;</code><br />
+<code>#include &quot;Interfaces/IHttpResponse.h&quot;</code><br />
+</div><div class="textblock"><div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> UHttpNetworkSystem.cpp에 대한 include 의존 그래프</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="UHttpNetworkSystem_8cpp__incl.svg" width="100%" height="558"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+</div>
+<p><a href="UHttpNetworkSystem_8cpp_source.html">이 파일의 소스 코드 페이지로 가기</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+매크로</h2></td></tr>
+<tr class="memitem:a6bd9e0c8add7ea4b4e756a2b78fb54f7" id="r_a6bd9e0c8add7ea4b4e756a2b78fb54f7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="UHttpNetworkSystem_8cpp.html#a6bd9e0c8add7ea4b4e756a2b78fb54f7">NETWORK_GET</a>&#160;&#160;&#160;TEXT(&quot;GET&quot;)</td></tr>
+<tr class="separator:a6bd9e0c8add7ea4b4e756a2b78fb54f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a46a23e536f557ad9a916633c05d6167b" id="r_a46a23e536f557ad9a916633c05d6167b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="UHttpNetworkSystem_8cpp.html#a46a23e536f557ad9a916633c05d6167b">NETWORK_POST</a>&#160;&#160;&#160;TEXT(&quot;POST&quot;)</td></tr>
+<tr class="separator:a46a23e536f557ad9a916633c05d6167b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">상세한 설명</h2>
+<div class="textblock"><p>UHttpNetworkSystem의 동작을 구현합니다. </p>
+
+<p class="definition"><a class="el" href="UHttpNetworkSystem_8cpp_source.html">UHttpNetworkSystem.cpp</a> 파일에서 정의되었습니다.</p>
+</div><h2 class="groupheader">매크로 문서화</h2>
+<a id="a6bd9e0c8add7ea4b4e756a2b78fb54f7" name="a6bd9e0c8add7ea4b4e756a2b78fb54f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6bd9e0c8add7ea4b4e756a2b78fb54f7">&#9670;&#160;</a></span>NETWORK_GET</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define NETWORK_GET&#160;&#160;&#160;TEXT(&quot;GET&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="UHttpNetworkSystem_8cpp_source.html">UHttpNetworkSystem.cpp</a> 파일의 <a class="el" href="UHttpNetworkSystem_8cpp_source.html#l00019">19</a> 번째 라인에서 정의되었습니다.</p>
+
+</div>
+</div>
+<a id="a46a23e536f557ad9a916633c05d6167b" name="a46a23e536f557ad9a916633c05d6167b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a46a23e536f557ad9a916633c05d6167b">&#9670;&#160;</a></span>NETWORK_POST</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define NETWORK_POST&#160;&#160;&#160;TEXT(&quot;POST&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="UHttpNetworkSystem_8cpp_source.html">UHttpNetworkSystem.cpp</a> 파일의 <a class="el" href="UHttpNetworkSystem_8cpp_source.html#l00020">20</a> 번째 라인에서 정의되었습니다.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_db6231b890a14ef22abfc7e4cac87d3d.html">Network</a></li><li class="navelem"><a class="el" href="dir_b16031943cc461ca19dafbeb0c146ace.html">Private</a></li><li class="navelem"><a class="el" href="UHttpNetworkSystem_8cpp.html">UHttpNetworkSystem.cpp</a></li>
+    <li class="footer">생성시간 : 목 11월 13 2025 16:22:31, 프로젝트명 : Onepiece Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,286 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Onepiece Project Documentation: Source/LatteLibrary/Manager/Private/UGameSoundManager.cpp 소스 파일</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript">
+window.MathJax = {
+  options: {
+    ignoreHtmlClass: 'tex2jax_ignore',
+    processHtmlClass: 'tex2jax_process'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<script type="text/javascript" src="darkmode_toggle.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Onepiece Project Documentation<span id="projectnumber">&#160;1.0.0</span>
+   </div>
+   <div id="projectbrief">Unreal Engine 5.6 C++ Project Documentation</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 다음에 의해 생성됨 :  Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','검색');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(0); });
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('UGameSoundManager_8cpp_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">로딩중...</div>
+<div class="SRStatus" id="Searching">검색중...</div>
+<div class="SRStatus" id="NoMatches">일치하는것 없음</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">UGameSoundManager.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="UGameSoundManager_8cpp.html">이 파일의 문서화 페이지로 가기</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;<a class="code" href="UGameSoundManager_8h.html">UGameSoundManager.h</a>&quot;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;<a class="code" href="USoundData_8h.html">USoundData.h</a>&quot;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;Components/AudioComponent.h&quot;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;Kismet/GameplayStatics.h&quot;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;<a class="code" href="FComponentHelper_8h.html">FComponentHelper.h</a>&quot;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="UGameSoundManager_8cpp.html#a8de4cccde467748c9d1ad2c2d9508528">   13</a></span><span class="preprocessor">#define SOUND_DATA_PATH TEXT(&quot;/Game/CustomContents/MasterData/DA_Sound.DA_Sound&quot;)</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="foldopen" id="foldopen00015" data-start="{" data-end="}">
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="classUGameSoundManager.html#aab6849192a6de76b26e716e21038f83c">   15</a></span><a class="code hl_function" href="classUGameSoundManager.html#aab6849192a6de76b26e716e21038f83c">UGameSoundManager::UGameSoundManager</a>()</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>{</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <span class="comment">// FComponentHelper를 사용해 생성자에서 안전하게 에셋을 로드합니다.</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> LoadedAsset = <a class="code hl_function" href="structFComponentHelper.html#ac37cef436e9aaef1f0c655d781a95e66">FComponentHelper::LoadAsset&lt;USoundData&gt;</a>(<a class="code hl_define" href="UGameSoundManager_8cpp.html#a8de4cccde467748c9d1ad2c2d9508528">SOUND_DATA_PATH</a>))</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    {</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; Pair : LoadedAsset-&gt;SoundData)</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>        {</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>            <a class="code hl_variable" href="classUGameSoundManager.html#a5521b1278e08cc4c580b8f5ee38a4d72">SoundAsset</a> = LoadedAsset;</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>            <a class="code hl_variable" href="classUGameSoundManager.html#a0b791c1a35e60cb66a969d5a5939928c">SoundData</a> = <a class="code hl_variable" href="classUGameSoundManager.html#a5521b1278e08cc4c580b8f5ee38a4d72">SoundAsset</a>-&gt;SoundData;</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>            </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>            TSoftObjectPtr&lt;USoundBase&gt; SoundAssetPtr = Pair.Value;</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>            <span class="keywordflow">if</span> (!SoundAssetPtr.IsNull()) {</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>                <a class="code hl_variable" href="classUGameSoundManager.html#a0b791c1a35e60cb66a969d5a5939928c">SoundData</a>.Add(Pair.Key, SoundAssetPtr.LoadSynchronous());</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>            }</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        }</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    }</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    {</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        <span class="comment">// 실패 시, 에디터 실행 시 Output Log에 에러를 출력합니다.</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        UE_LOG(LogTemp, Error, TEXT(<span class="stringliteral">&quot;UGameSoundManager failed to load USoundData at path: %s&quot;</span>), <a class="code hl_define" href="UGameSoundManager_8cpp.html#a8de4cccde467748c9d1ad2c2d9508528">SOUND_DATA_PATH</a>);</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    }</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>}</div>
+</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="foldopen" id="foldopen00038" data-start="{" data-end="}">
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="classUGameSoundManager.html#a2ca17df93035004f10b6169e92394ba9">   38</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUGameSoundManager.html#a2ca17df93035004f10b6169e92394ba9">UGameSoundManager::Initialize</a>(FSubsystemCollectionBase&amp; Collection)</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>{</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    Super::Initialize(Collection);</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="comment">// FSoftObjectPath AssetPath(SOUND_DATA_PATH);</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="comment">// USoundData* LoadedAsset = Cast&lt;USoundData&gt;(StaticLoadObject(USoundData::StaticClass(), nullptr, *AssetPath.ToString()));</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="comment">//</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="comment">// if (LoadedAsset)</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="comment">// {</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="comment">//  for (const auto&amp; Pair : LoadedAsset-&gt;SoundData)</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="comment">//  {</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="comment">//      SoundAsset = LoadedAsset;</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="comment">//      SoundData = SoundAsset-&gt;SoundData;</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="comment">//      </span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="comment">//      TSoftObjectPtr&lt;USoundBase&gt; SoundAssetPtr = Pair.Value;</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="comment">//      if (!SoundAssetPtr.IsNull())</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="comment">//      {</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="comment">//          SoundData.Add(Pair.Key, SoundAssetPtr.LoadSynchronous());</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <span class="comment">//      }</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="comment">//  }</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="comment">// }</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="comment">// else</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classUGameSoundManager.html#a5521b1278e08cc4c580b8f5ee38a4d72">SoundAsset</a>)</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    {</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        UE_LOG(LogTemp, Error, TEXT(<span class="stringliteral">&quot;Failed to load SoundDataAsset from path&quot;</span>));</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    }</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>}</div>
+</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
+<div class="foldopen" id="foldopen00066" data-start="{" data-end="}">
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="classUGameSoundManager.html#a4274d4edaf4b461a5f4ba8f1b05767d4">   66</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUGameSoundManager.html#a4274d4edaf4b461a5f4ba8f1b05767d4">UGameSoundManager::PlaySound</a>(<span class="keyword">const</span> <a class="code hl_enumeration" href="EGameSoundType_8h.html#af4a7536fe94049720d6e9d21c1b2ec80">EGameSoundType</a> Type, <span class="keyword">const</span> FVector Location)</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>{</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <span class="keywordflow">if</span> (TObjectPtr&lt;USoundBase&gt;* FoundSound = <a class="code hl_variable" href="classUGameSoundManager.html#a0b791c1a35e60cb66a969d5a5939928c">SoundData</a>.Find(Type))</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    {</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        <span class="keywordflow">if</span> (*FoundSound)</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        {</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>            UGameplayStatics::PlaySoundAtLocation(GetWorld(), *FoundSound, Location);</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        }</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    }</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>}</div>
+</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
+<div class="foldopen" id="foldopen00078" data-start="{" data-end="}">
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno"><a class="line" href="classUGameSoundManager.html#a9202062e3e23eb341dc1ee7fc5ce3063">   78</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUGameSoundManager.html#a9202062e3e23eb341dc1ee7fc5ce3063">UGameSoundManager::PlaySound2D</a>(<span class="keyword">const</span> <a class="code hl_enumeration" href="EGameSoundType_8h.html#af4a7536fe94049720d6e9d21c1b2ec80">EGameSoundType</a> Type)</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>{</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    <span class="keywordflow">if</span> (TObjectPtr&lt;USoundBase&gt;* FoundSound = <a class="code hl_variable" href="classUGameSoundManager.html#a0b791c1a35e60cb66a969d5a5939928c">SoundData</a>.Find(Type))</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    {</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        <span class="keywordflow">if</span> (*FoundSound)</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        {</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>            <span class="comment">// 이미 재생 중인 사운드가 있다면 멈추고 제거</span></div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>            <span class="keywordflow">if</span> (UAudioComponent* ExistingComp = <a class="code hl_variable" href="classUGameSoundManager.html#a014ed49d2c5bdea3e3c8584c959cbbc7">ActiveSounds</a>.FindRef(Type))</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>            {</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>                ExistingComp-&gt;Stop();</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>                <a class="code hl_variable" href="classUGameSoundManager.html#a014ed49d2c5bdea3e3c8584c959cbbc7">ActiveSounds</a>.Remove(Type);</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>            }</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>            <span class="comment">// 새로운 사운드 재생 및 저장</span></div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>            <span class="keywordflow">if</span> (UAudioComponent* NewComp = UGameplayStatics::SpawnSound2D(GetWorld(), *FoundSound))</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>            {</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>                <a class="code hl_variable" href="classUGameSoundManager.html#a014ed49d2c5bdea3e3c8584c959cbbc7">ActiveSounds</a>.Add(Type, NewComp);</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>            }</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        }</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    }</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>}</div>
+</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span> </div>
+<div class="foldopen" id="foldopen00100" data-start="{" data-end="}">
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno"><a class="line" href="classUGameSoundManager.html#a1bc8389aa356e01fcdc563e01813ed02">  100</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUGameSoundManager.html#a1bc8389aa356e01fcdc563e01813ed02">UGameSoundManager::StopSound2D</a>(<span class="keyword">const</span> <a class="code hl_enumeration" href="EGameSoundType_8h.html#af4a7536fe94049720d6e9d21c1b2ec80">EGameSoundType</a> Type)</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>{</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    <span class="keywordflow">if</span> (UAudioComponent* Comp = <a class="code hl_variable" href="classUGameSoundManager.html#a014ed49d2c5bdea3e3c8584c959cbbc7">ActiveSounds</a>.FindRef(Type))</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    {</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>        Comp-&gt;Stop();</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>        <a class="code hl_variable" href="classUGameSoundManager.html#a014ed49d2c5bdea3e3c8584c959cbbc7">ActiveSounds</a>.Remove(Type);</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    }</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>}</div>
+</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span> </div>
+<div class="foldopen" id="foldopen00109" data-start="{" data-end="}">
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno"><a class="line" href="classUGameSoundManager.html#a6e36a7389b3e835022d7fc4d2054451b">  109</a></span>UAudioComponent* <a class="code hl_function" href="classUGameSoundManager.html#a6e36a7389b3e835022d7fc4d2054451b">UGameSoundManager::PlayConversationVoice</a>(USoundBase* Sound)</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>{</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    <span class="keywordflow">if</span> (!Sound)</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span> </div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    <span class="comment">// 기존 대화 음성이 재생 중이면 중지</span></div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>    <a class="code hl_function" href="classUGameSoundManager.html#a2e6af49b820e18a84cb3739d42c781c6">StopConversationVoice</a>();</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span> </div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>    <span class="comment">// 새로운 대화 음성 재생</span></div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    <a class="code hl_variable" href="classUGameSoundManager.html#ab01f0437cce0f942aa4d89445ba1fe8f">ConversationVoice</a> = UGameplayStatics::SpawnSound2D(GetWorld(), Sound);</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classUGameSoundManager.html#ab01f0437cce0f942aa4d89445ba1fe8f">ConversationVoice</a>;</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>}</div>
+</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span> </div>
+<div class="foldopen" id="foldopen00122" data-start="{" data-end="}">
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno"><a class="line" href="classUGameSoundManager.html#a2e6af49b820e18a84cb3739d42c781c6">  122</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUGameSoundManager.html#a2e6af49b820e18a84cb3739d42c781c6">UGameSoundManager::StopConversationVoice</a>()</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>{</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUGameSoundManager.html#ab01f0437cce0f942aa4d89445ba1fe8f">ConversationVoice</a> &amp;&amp; <a class="code hl_variable" href="classUGameSoundManager.html#ab01f0437cce0f942aa4d89445ba1fe8f">ConversationVoice</a>-&gt;IsPlaying())</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>    {</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>        <a class="code hl_variable" href="classUGameSoundManager.html#ab01f0437cce0f942aa4d89445ba1fe8f">ConversationVoice</a>-&gt;Stop();</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>    }</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>    <a class="code hl_variable" href="classUGameSoundManager.html#ab01f0437cce0f942aa4d89445ba1fe8f">ConversationVoice</a> = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>}</div>
+</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span> </div>
+<div class="foldopen" id="foldopen00131" data-start="{" data-end="}">
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno"><a class="line" href="classUGameSoundManager.html#aa9bad4fe4971faa5fad6a47afaf7255d">  131</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="classUGameSoundManager.html#aa9bad4fe4971faa5fad6a47afaf7255d">UGameSoundManager::IsConversationVoicePlaying</a>()<span class="keyword"> const</span></div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span><span class="keyword"></span>{</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classUGameSoundManager.html#ab01f0437cce0f942aa4d89445ba1fe8f">ConversationVoice</a> &amp;&amp; <a class="code hl_variable" href="classUGameSoundManager.html#ab01f0437cce0f942aa4d89445ba1fe8f">ConversationVoice</a>-&gt;IsPlaying();</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>}</div>
+</div>
+<div class="ttc" id="aEGameSoundType_8h_html_af4a7536fe94049720d6e9d21c1b2ec80"><div class="ttname"><a href="EGameSoundType_8h.html#af4a7536fe94049720d6e9d21c1b2ec80">EGameSoundType</a></div><div class="ttdeci">EGameSoundType</div><div class="ttdef"><b>Definition</b> <a href="EGameSoundType_8h_source.html#l00008">EGameSoundType.h:9</a></div></div>
+<div class="ttc" id="aFComponentHelper_8h_html"><div class="ttname"><a href="FComponentHelper_8h.html">FComponentHelper.h</a></div><div class="ttdoc">FComponentHelper 구조체를 선언합니다.</div></div>
+<div class="ttc" id="aUGameSoundManager_8cpp_html_a8de4cccde467748c9d1ad2c2d9508528"><div class="ttname"><a href="UGameSoundManager_8cpp.html#a8de4cccde467748c9d1ad2c2d9508528">SOUND_DATA_PATH</a></div><div class="ttdeci">#define SOUND_DATA_PATH</div><div class="ttdef"><b>Definition</b> <a href="UGameSoundManager_8cpp_source.html#l00013">UGameSoundManager.cpp:13</a></div></div>
+<div class="ttc" id="aUGameSoundManager_8h_html"><div class="ttname"><a href="UGameSoundManager_8h.html">UGameSoundManager.h</a></div><div class="ttdoc">UGameSoundManager 클래스를 선언합니다.</div></div>
+<div class="ttc" id="aUSoundData_8h_html"><div class="ttname"><a href="USoundData_8h.html">USoundData.h</a></div><div class="ttdoc">USoundData 클래스를 선언합니다.</div></div>
+<div class="ttc" id="aclassUGameSoundManager_html_a014ed49d2c5bdea3e3c8584c959cbbc7"><div class="ttname"><a href="classUGameSoundManager.html#a014ed49d2c5bdea3e3c8584c959cbbc7">UGameSoundManager::ActiveSounds</a></div><div class="ttdeci">TMap&lt; EGameSoundType, UAudioComponent * &gt; ActiveSounds</div><div class="ttdef"><b>Definition</b> <a href="UGameSoundManager_8h_source.html#l00060">UGameSoundManager.h:60</a></div></div>
+<div class="ttc" id="aclassUGameSoundManager_html_a0b791c1a35e60cb66a969d5a5939928c"><div class="ttname"><a href="classUGameSoundManager.html#a0b791c1a35e60cb66a969d5a5939928c">UGameSoundManager::SoundData</a></div><div class="ttdeci">TMap&lt; EGameSoundType, TObjectPtr&lt; class USoundBase &gt; &gt; SoundData</div><div class="ttdef"><b>Definition</b> <a href="UGameSoundManager_8h_source.html#l00057">UGameSoundManager.h:57</a></div></div>
+<div class="ttc" id="aclassUGameSoundManager_html_a1bc8389aa356e01fcdc563e01813ed02"><div class="ttname"><a href="classUGameSoundManager.html#a1bc8389aa356e01fcdc563e01813ed02">UGameSoundManager::StopSound2D</a></div><div class="ttdeci">void StopSound2D(const EGameSoundType Type)</div><div class="ttdef"><b>Definition</b> <a href="UGameSoundManager_8cpp_source.html#l00100">UGameSoundManager.cpp:100</a></div></div>
+<div class="ttc" id="aclassUGameSoundManager_html_a2ca17df93035004f10b6169e92394ba9"><div class="ttname"><a href="classUGameSoundManager.html#a2ca17df93035004f10b6169e92394ba9">UGameSoundManager::Initialize</a></div><div class="ttdeci">virtual void Initialize(FSubsystemCollectionBase &amp;Collection) override</div><div class="ttdef"><b>Definition</b> <a href="UGameSoundManager_8cpp_source.html#l00038">UGameSoundManager.cpp:38</a></div></div>
+<div class="ttc" id="aclassUGameSoundManager_html_a2e6af49b820e18a84cb3739d42c781c6"><div class="ttname"><a href="classUGameSoundManager.html#a2e6af49b820e18a84cb3739d42c781c6">UGameSoundManager::StopConversationVoice</a></div><div class="ttdeci">void StopConversationVoice()</div><div class="ttdef"><b>Definition</b> <a href="UGameSoundManager_8cpp_source.html#l00122">UGameSoundManager.cpp:122</a></div></div>
+<div class="ttc" id="aclassUGameSoundManager_html_a4274d4edaf4b461a5f4ba8f1b05767d4"><div class="ttname"><a href="classUGameSoundManager.html#a4274d4edaf4b461a5f4ba8f1b05767d4">UGameSoundManager::PlaySound</a></div><div class="ttdeci">void PlaySound(EGameSoundType Type, FVector Location)</div><div class="ttdef"><b>Definition</b> <a href="UGameSoundManager_8cpp_source.html#l00066">UGameSoundManager.cpp:66</a></div></div>
+<div class="ttc" id="aclassUGameSoundManager_html_a5521b1278e08cc4c580b8f5ee38a4d72"><div class="ttname"><a href="classUGameSoundManager.html#a5521b1278e08cc4c580b8f5ee38a4d72">UGameSoundManager::SoundAsset</a></div><div class="ttdeci">TObjectPtr&lt; class USoundData &gt; SoundAsset</div><div class="ttdef"><b>Definition</b> <a href="UGameSoundManager_8h_source.html#l00054">UGameSoundManager.h:54</a></div></div>
+<div class="ttc" id="aclassUGameSoundManager_html_a6e36a7389b3e835022d7fc4d2054451b"><div class="ttname"><a href="classUGameSoundManager.html#a6e36a7389b3e835022d7fc4d2054451b">UGameSoundManager::PlayConversationVoice</a></div><div class="ttdeci">UAudioComponent * PlayConversationVoice(USoundBase *Sound)</div><div class="ttdef"><b>Definition</b> <a href="UGameSoundManager_8cpp_source.html#l00109">UGameSoundManager.cpp:109</a></div></div>
+<div class="ttc" id="aclassUGameSoundManager_html_a9202062e3e23eb341dc1ee7fc5ce3063"><div class="ttname"><a href="classUGameSoundManager.html#a9202062e3e23eb341dc1ee7fc5ce3063">UGameSoundManager::PlaySound2D</a></div><div class="ttdeci">void PlaySound2D(EGameSoundType Type)</div><div class="ttdef"><b>Definition</b> <a href="UGameSoundManager_8cpp_source.html#l00078">UGameSoundManager.cpp:78</a></div></div>
+<div class="ttc" id="aclassUGameSoundManager_html_aa9bad4fe4971faa5fad6a47afaf7255d"><div class="ttname"><a href="classUGameSoundManager.html#aa9bad4fe4971faa5fad6a47afaf7255d">UGameSoundManager::IsConversationVoicePlaying</a></div><div class="ttdeci">bool IsConversationVoicePlaying() const</div><div class="ttdef"><b>Definition</b> <a href="UGameSoundManager_8cpp_source.html#l00131">UGameSoundManager.cpp:131</a></div></div>
+<div class="ttc" id="aclassUGameSoundManager_html_aab6849192a6de76b26e716e21038f83c"><div class="ttname"><a href="classUGameSoundManager.html#aab6849192a6de76b26e716e21038f83c">UGameSoundManager::UGameSoundManager</a></div><div class="ttdeci">UGameSoundManager()</div><div class="ttdef"><b>Definition</b> <a href="UGameSoundManager_8cpp_source.html#l00015">UGameSoundManager.cpp:15</a></div></div>
+<div class="ttc" id="aclassUGameSoundManager_html_ab01f0437cce0f942aa4d89445ba1fe8f"><div class="ttname"><a href="classUGameSoundManager.html#ab01f0437cce0f942aa4d89445ba1fe8f">UGameSoundManager::ConversationVoice</a></div><div class="ttdeci">TObjectPtr&lt; UAudioComponent &gt; ConversationVoice</div><div class="ttdef"><b>Definition</b> <a href="UGameSoundManager_8h_source.html#l00064">UGameSoundManager.h:64</a></div></div>
+<div class="ttc" id="astructFComponentHelper_html_ac37cef436e9aaef1f0c655d781a95e66"><div class="ttname"><a href="structFComponentHelper.html#ac37cef436e9aaef1f0c655d781a95e66">FComponentHelper::LoadAsset</a></div><div class="ttdeci">static T * LoadAsset(const TCHAR *Path)</div><div class="ttdef"><b>Definition</b> <a href="FComponentHelper_8h_source.html#l00016">FComponentHelper.h:16</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_399370037b6f5ff6b0840148d18ec8d9.html">LatteLibrary</a></li><li class="navelem"><a class="el" href="dir_3895d977c26767e128462eaa7d00849f.html">Manager</a></li><li class="navelem"><a class="el" href="dir_cd5a37b525b446288dd6b9c7de7bfc6f.html">Private</a></li><li class="navelem"><a class="el" href="UGameSoundManager_8cpp.html">UGameSoundManager.cpp</a></li>
+    <li class="footer">생성시간 : 목 11월 13 2025 16:22:31, 프로젝트명 : Onepiece Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
+</body>
+</html>

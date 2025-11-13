@@ -1,0 +1,1275 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Onepiece Project Documentation: UGameDataManager 클래스 참조</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript">
+window.MathJax = {
+  options: {
+    ignoreHtmlClass: 'tex2jax_ignore',
+    processHtmlClass: 'tex2jax_process'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<script type="text/javascript" src="darkmode_toggle.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Onepiece Project Documentation<span id="projectnumber">&#160;1.0.0</span>
+   </div>
+   <div id="projectbrief">Unreal Engine 5.6 C++ Project Documentation</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 다음에 의해 생성됨 :  Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','검색');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('classUGameDataManager.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">로딩중...</div>
+<div class="SRStatus" id="Searching">검색중...</div>
+<div class="SRStatus" id="NoMatches">일치하는것 없음</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public 멤버 함수</a> &#124;
+<a href="#pub-attribs">Public 속성</a> &#124;
+<a href="#pri-methods">Private 멤버 함수</a> &#124;
+<a href="#pri-attribs">Private 속성</a> &#124;
+<a href="classUGameDataManager-members.html">모든 멤버 목록</a>  </div>
+  <div class="headertitle"><div class="title">UGameDataManager 클래스 참조</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>데이터 테이블(.csv)에서 게임 데이터를 로드하고 캐시하여 런타임에 빠르게 접근할 수 있도록 제공하는 데이터 관리 서브시스템입니다.  
+ <a href="classUGameDataManager.html#details">더 자세히 ...</a></p>
+
+<p><code>#include &lt;<a class="el" href="UGameDataManager_8h_source.html">UGameDataManager.h</a>&gt;</code></p>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> UGameDataManager에 대한 상속 다이어그램 : </div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classUGameDataManager__inherit__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> UGameDataManager에 대한 협력 다이어그램:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classUGameDataManager__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public 멤버 함수</h2></td></tr>
+<tr class="memitem:a5d0c96aebf3e41ce7bfa468a101fffa2" id="r_a5d0c96aebf3e41ce7bfa468a101fffa2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUGameDataManager.html#a5d0c96aebf3e41ce7bfa468a101fffa2">UGameDataManager</a> ()</td></tr>
+<tr class="separator:a5d0c96aebf3e41ce7bfa468a101fffa2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb8a914f73efb6e77f0aae46dabeeb19" id="r_aeb8a914f73efb6e77f0aae46dabeeb19"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUGameDataManager.html#aeb8a914f73efb6e77f0aae46dabeeb19">DEFINE_SUBSYSTEM_GETTER_INLINE</a> (<a class="el" href="classUGameDataManager.html">UGameDataManager</a>)</td></tr>
+<tr class="separator:aeb8a914f73efb6e77f0aae46dabeeb19"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c3eca529cf08f2f8adf424b7ce0efe2" id="r_a0c3eca529cf08f2f8adf424b7ce0efe2"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUGameDataManager.html#a0c3eca529cf08f2f8adf424b7ce0efe2">Deinitialize</a> () override</td></tr>
+<tr class="separator:a0c3eca529cf08f2f8adf424b7ce0efe2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b39f383f53d32c9af6c6dda0a293f45" id="r_a8b39f383f53d32c9af6c6dda0a293f45"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUGameDataManager.html#a8b39f383f53d32c9af6c6dda0a293f45">GetCharacterAssetData</a> (<a class="el" href="ECharacterType_8h.html#ad34afea9f542b01a1f4e6d48fdfe1be3">ECharacterType</a> Type, <a class="el" href="structFCharacterAssetData.html">FCharacterAssetData</a> &amp;Out) const</td></tr>
+<tr class="separator:a8b39f383f53d32c9af6c6dda0a293f45"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e70302d20d134bac5c5212492097e74" id="r_a6e70302d20d134bac5c5212492097e74"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUGameDataManager.html#a6e70302d20d134bac5c5212492097e74">GetCharacterInfoData</a> (<a class="el" href="ECharacterType_8h.html#ad34afea9f542b01a1f4e6d48fdfe1be3">ECharacterType</a> Type, <a class="el" href="structFCharacterInfoData.html">FCharacterInfoData</a> &amp;Out) const</td></tr>
+<tr class="separator:a6e70302d20d134bac5c5212492097e74"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa83c00fd215eabdac542661dd7893b14" id="r_aa83c00fd215eabdac542661dd7893b14"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUGameDataManager.html#aa83c00fd215eabdac542661dd7893b14">GetHitStopData</a> (<a class="el" href="EDamageType_8h.html#ab5bf7dde87ef933ba244eba8c39e7e9b">EDamageType</a> Type, UPARAM(ref) <a class="el" href="structFHitStopData.html">FHitStopData</a> &amp;Out) const</td></tr>
+<tr class="separator:aa83c00fd215eabdac542661dd7893b14"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8595beb01f133cdb7dde472486ef258b" id="r_a8595beb01f133cdb7dde472486ef258b"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUGameDataManager.html#a8595beb01f133cdb7dde472486ef258b">GetHitStopDelayTime</a> (<a class="el" href="EDamageType_8h.html#ab5bf7dde87ef933ba244eba8c39e7e9b">EDamageType</a> Type) const</td></tr>
+<tr class="separator:a8595beb01f133cdb7dde472486ef258b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a232e5189f2a87b8d1a31f2e1c0db314e" id="r_a232e5189f2a87b8d1a31f2e1c0db314e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUGameDataManager.html#a232e5189f2a87b8d1a31f2e1c0db314e">GetKnockbackData</a> (<a class="el" href="EDamageType_8h.html#ab5bf7dde87ef933ba244eba8c39e7e9b">EDamageType</a> Type, <a class="el" href="structFKnockbackData.html">FKnockbackData</a> &amp;Out) const</td></tr>
+<tr class="separator:a232e5189f2a87b8d1a31f2e1c0db314e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a013d5de56f83c3409ea138d830ac50fc" id="r_a013d5de56f83c3409ea138d830ac50fc"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUGameDataManager.html#a013d5de56f83c3409ea138d830ac50fc">Initialize</a> (FSubsystemCollectionBase &amp;Collection) override</td></tr>
+<tr class="separator:a013d5de56f83c3409ea138d830ac50fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ef2615c011d32aff77fff4d5ccaf627" id="r_a1ef2615c011d32aff77fff4d5ccaf627"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUGameDataManager.html#a1ef2615c011d32aff77fff4d5ccaf627">ReloadMasterData</a> ()</td></tr>
+<tr class="separator:a1ef2615c011d32aff77fff4d5ccaf627"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Public 속성</h2></td></tr>
+<tr class="memitem:a7d5f4b7321bc2405f3ff9f696b7ddd75" id="r_a7d5f4b7321bc2405f3ff9f696b7ddd75"><td class="memItemLeft" align="right" valign="top">TSoftObjectPtr&lt; UDataTable &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUGameDataManager.html#a7d5f4b7321bc2405f3ff9f696b7ddd75">CharacterAssetTable</a></td></tr>
+<tr class="separator:a7d5f4b7321bc2405f3ff9f696b7ddd75"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a52a1a40b1f8d3c2e4595cc124eb0ab33" id="r_a52a1a40b1f8d3c2e4595cc124eb0ab33"><td class="memItemLeft" align="right" valign="top">TSoftObjectPtr&lt; UDataTable &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUGameDataManager.html#a52a1a40b1f8d3c2e4595cc124eb0ab33">CharacterInfoTable</a></td></tr>
+<tr class="separator:a52a1a40b1f8d3c2e4595cc124eb0ab33"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa934e5d7830bd86c2a8cad2df2e70596" id="r_aa934e5d7830bd86c2a8cad2df2e70596"><td class="memItemLeft" align="right" valign="top">TSoftObjectPtr&lt; UDataTable &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUGameDataManager.html#aa934e5d7830bd86c2a8cad2df2e70596">HitStopTable</a></td></tr>
+<tr class="separator:aa934e5d7830bd86c2a8cad2df2e70596"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd8b13957d84c801426442eb8bd70e78" id="r_acd8b13957d84c801426442eb8bd70e78"><td class="memItemLeft" align="right" valign="top">TSoftObjectPtr&lt; UDataTable &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUGameDataManager.html#acd8b13957d84c801426442eb8bd70e78">KnockbackTable</a></td></tr>
+<tr class="separator:acd8b13957d84c801426442eb8bd70e78"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Private 멤버 함수</h2></td></tr>
+<tr class="memitem:a651c5e84a9c1e17ee397dea01d441c97" id="r_a651c5e84a9c1e17ee397dea01d441c97"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUGameDataManager.html#a651c5e84a9c1e17ee397dea01d441c97">Clear_CharacterAssetData</a> ()</td></tr>
+<tr class="separator:a651c5e84a9c1e17ee397dea01d441c97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abec7a7c40f37b2513959155f13786c4a" id="r_abec7a7c40f37b2513959155f13786c4a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUGameDataManager.html#abec7a7c40f37b2513959155f13786c4a">Clear_CharacterInfoData</a> ()</td></tr>
+<tr class="separator:abec7a7c40f37b2513959155f13786c4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed049a64af050a3183acfa2b63eeba24" id="r_aed049a64af050a3183acfa2b63eeba24"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUGameDataManager.html#aed049a64af050a3183acfa2b63eeba24">Clear_HitStopTable</a> ()</td></tr>
+<tr class="separator:aed049a64af050a3183acfa2b63eeba24"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab12673657aa350898fe7b77c9718bf78" id="r_ab12673657aa350898fe7b77c9718bf78"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUGameDataManager.html#ab12673657aa350898fe7b77c9718bf78">Clear_KnockbackTable</a> ()</td></tr>
+<tr class="separator:ab12673657aa350898fe7b77c9718bf78"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a17795ed84fef2f5fbb76d7da26d52447" id="r_a17795ed84fef2f5fbb76d7da26d52447"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUGameDataManager.html#a17795ed84fef2f5fbb76d7da26d52447">LoadData_CharacterAssetData</a> ()</td></tr>
+<tr class="separator:a17795ed84fef2f5fbb76d7da26d52447"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad849e286b5e7c53cb21b2d193eb58dbe" id="r_ad849e286b5e7c53cb21b2d193eb58dbe"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUGameDataManager.html#ad849e286b5e7c53cb21b2d193eb58dbe">LoadData_CharacterInfoData</a> ()</td></tr>
+<tr class="separator:ad849e286b5e7c53cb21b2d193eb58dbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf72cf62298bc613581042c7e86bfbde" id="r_adf72cf62298bc613581042c7e86bfbde"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUGameDataManager.html#adf72cf62298bc613581042c7e86bfbde">LoadData_HitStopTable</a> ()</td></tr>
+<tr class="separator:adf72cf62298bc613581042c7e86bfbde"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac3bde7d40542b59a0ce72d0b070d3a8e" id="r_ac3bde7d40542b59a0ce72d0b070d3a8e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUGameDataManager.html#ac3bde7d40542b59a0ce72d0b070d3a8e">LoadData_KnockbackTable</a> ()</td></tr>
+<tr class="separator:ac3bde7d40542b59a0ce72d0b070d3a8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private 속성</h2></td></tr>
+<tr class="memitem:a1ec0dc6c78fc238ae1e13376ada078c3" id="r_a1ec0dc6c78fc238ae1e13376ada078c3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUGameDataManager.html#a1ec0dc6c78fc238ae1e13376ada078c3">bLoadCharacterAsset</a> = false</td></tr>
+<tr class="separator:a1ec0dc6c78fc238ae1e13376ada078c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af754622372c01421abd03ade37082afa" id="r_af754622372c01421abd03ade37082afa"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUGameDataManager.html#af754622372c01421abd03ade37082afa">bLoadCharacterInfo</a> = false</td></tr>
+<tr class="separator:af754622372c01421abd03ade37082afa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0afdc5d050bc45ed28b51fd8df0e40d7" id="r_a0afdc5d050bc45ed28b51fd8df0e40d7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUGameDataManager.html#a0afdc5d050bc45ed28b51fd8df0e40d7">bLoadHitStop</a> = false</td></tr>
+<tr class="separator:a0afdc5d050bc45ed28b51fd8df0e40d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aadbfbcb1f8c50ba7799087a97c0965f0" id="r_aadbfbcb1f8c50ba7799087a97c0965f0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUGameDataManager.html#aadbfbcb1f8c50ba7799087a97c0965f0">bLoadKnockback</a> = false</td></tr>
+<tr class="separator:aadbfbcb1f8c50ba7799087a97c0965f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a06126e08dc91b9b5ec64805f5c3774bf" id="r_a06126e08dc91b9b5ec64805f5c3774bf"><td class="memItemLeft" align="right" valign="top">TMap&lt; <a class="el" href="ECharacterType_8h.html#ad34afea9f542b01a1f4e6d48fdfe1be3">ECharacterType</a>, <a class="el" href="structFCharacterAssetData.html">FCharacterAssetData</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUGameDataManager.html#a06126e08dc91b9b5ec64805f5c3774bf">CharacterAssetCache</a></td></tr>
+<tr class="separator:a06126e08dc91b9b5ec64805f5c3774bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac072e508a8482203271383317a87189f" id="r_ac072e508a8482203271383317a87189f"><td class="memItemLeft" align="right" valign="top">TMap&lt; <a class="el" href="ECharacterType_8h.html#ad34afea9f542b01a1f4e6d48fdfe1be3">ECharacterType</a>, <a class="el" href="structFCharacterInfoData.html">FCharacterInfoData</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUGameDataManager.html#ac072e508a8482203271383317a87189f">CharacterInfoCache</a></td></tr>
+<tr class="separator:ac072e508a8482203271383317a87189f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad418eb713320dab67b86e69ba43db077" id="r_ad418eb713320dab67b86e69ba43db077"><td class="memItemLeft" align="right" valign="top">TMap&lt; <a class="el" href="EDamageType_8h.html#ab5bf7dde87ef933ba244eba8c39e7e9b">EDamageType</a>, <a class="el" href="structFHitStopData.html">FHitStopData</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUGameDataManager.html#ad418eb713320dab67b86e69ba43db077">HitStopCache</a></td></tr>
+<tr class="separator:ad418eb713320dab67b86e69ba43db077"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a49d5db070298ec55d4b65af85aa40ae9" id="r_a49d5db070298ec55d4b65af85aa40ae9"><td class="memItemLeft" align="right" valign="top">TMap&lt; <a class="el" href="EDamageType_8h.html#ab5bf7dde87ef933ba244eba8c39e7e9b">EDamageType</a>, <a class="el" href="structFKnockbackData.html">FKnockbackData</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUGameDataManager.html#a49d5db070298ec55d4b65af85aa40ae9">KnockbackCache</a></td></tr>
+<tr class="separator:a49d5db070298ec55d4b65af85aa40ae9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">상세한 설명</h2>
+<div class="textblock"><p>데이터 테이블(.csv)에서 게임 데이터를 로드하고 캐시하여 런타임에 빠르게 접근할 수 있도록 제공하는 데이터 관리 서브시스템입니다. </p>
+<p>캐릭터 정보, 건물 데이터, 히트스톱, 넉백 등 다양한 마스터 데이터를 관리하며, 필요 시 데이터를 리로드하는 기능을 제공합니다. </p>
+
+<p class="definition"><a class="el" href="UGameDataManager_8h_source.html">UGameDataManager.h</a> 파일의 <a class="el" href="UGameDataManager_8h_source.html#l00025">25</a> 번째 라인에서 정의되었습니다.</p>
+</div><h2 class="groupheader">생성자 &amp; 소멸자 문서화</h2>
+<a id="a5d0c96aebf3e41ce7bfa468a101fffa2" name="a5d0c96aebf3e41ce7bfa468a101fffa2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5d0c96aebf3e41ce7bfa468a101fffa2">&#9670;&#160;</a></span>UGameDataManager()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">UGameDataManager::UGameDataManager </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="UGameDataManager_8cpp_source.html">UGameDataManager.cpp</a> 파일의 <a class="el" href="UGameDataManager_8cpp_source.html#l00017">17</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   18</span>{</div>
+<div class="line"><span class="lineno">   19</span>    <span class="comment">// HitStopTable = FComponentHelper::LoadAsset&lt;UDataTable&gt;(HITSTOP_PATH);</span></div>
+<div class="line"><span class="lineno">   20</span>    <span class="comment">// KnockbackTable  = FComponentHelper::LoadAsset&lt;UDataTable&gt;(KNOCKBACK_PATH);</span></div>
+<div class="line"><span class="lineno">   21</span>    <span class="comment">// CharacterInfoTable  = FComponentHelper::LoadAsset&lt;UDataTable&gt;(CHARACTERINFO_PATH);</span></div>
+<div class="line"><span class="lineno">   22</span>    <span class="comment">// CharacterAssetTable = FComponentHelper::LoadAsset&lt;UDataTable&gt;(CHARACTERASSET_PATH);</span></div>
+<div class="line"><span class="lineno">   23</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">멤버 함수 문서화</h2>
+<a id="a651c5e84a9c1e17ee397dea01d441c97" name="a651c5e84a9c1e17ee397dea01d441c97"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a651c5e84a9c1e17ee397dea01d441c97">&#9670;&#160;</a></span>Clear_CharacterAssetData()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void UGameDataManager::Clear_CharacterAssetData </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="UGameDataManager_8cpp_source.html">UGameDataManager.cpp</a> 파일의 <a class="el" href="UGameDataManager_8cpp_source.html#l00204">204</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  205</span>{</div>
+<div class="line"><span class="lineno">  206</span>    <a class="code hl_variable" href="classUGameDataManager.html#a06126e08dc91b9b5ec64805f5c3774bf">CharacterAssetCache</a>.Reset();</div>
+<div class="line"><span class="lineno">  207</span>    <a class="code hl_variable" href="classUGameDataManager.html#a1ec0dc6c78fc238ae1e13376ada078c3">bLoadCharacterAsset</a> = <span class="keyword">false</span>;   </div>
+<div class="line"><span class="lineno">  208</span>}</div>
+<div class="ttc" id="aclassUGameDataManager_html_a06126e08dc91b9b5ec64805f5c3774bf"><div class="ttname"><a href="classUGameDataManager.html#a06126e08dc91b9b5ec64805f5c3774bf">UGameDataManager::CharacterAssetCache</a></div><div class="ttdeci">TMap&lt; ECharacterType, FCharacterAssetData &gt; CharacterAssetCache</div><div class="ttdef"><b>Definition</b> <a href="UGameDataManager_8h_source.html#l00107">UGameDataManager.h:107</a></div></div>
+<div class="ttc" id="aclassUGameDataManager_html_a1ec0dc6c78fc238ae1e13376ada078c3"><div class="ttname"><a href="classUGameDataManager.html#a1ec0dc6c78fc238ae1e13376ada078c3">UGameDataManager::bLoadCharacterAsset</a></div><div class="ttdeci">bool bLoadCharacterAsset</div><div class="ttdef"><b>Definition</b> <a href="UGameDataManager_8h_source.html#l00104">UGameDataManager.h:104</a></div></div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="UGameDataManager_8h_source.html#l00104">bLoadCharacterAsset</a>, <a class="el" href="UGameDataManager_8h_source.html#l00107">CharacterAssetCache</a>.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UGameDataManager_8cpp_source.html#l00032">Deinitialize()</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classUGameDataManager_a651c5e84a9c1e17ee397dea01d441c97_icgraph.svg" width="502" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="abec7a7c40f37b2513959155f13786c4a" name="abec7a7c40f37b2513959155f13786c4a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abec7a7c40f37b2513959155f13786c4a">&#9670;&#160;</a></span>Clear_CharacterInfoData()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void UGameDataManager::Clear_CharacterInfoData </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="UGameDataManager_8cpp_source.html">UGameDataManager.cpp</a> 파일의 <a class="el" href="UGameDataManager_8cpp_source.html#l00157">157</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  158</span>{</div>
+<div class="line"><span class="lineno">  159</span>    <a class="code hl_variable" href="classUGameDataManager.html#ac072e508a8482203271383317a87189f">CharacterInfoCache</a>.Reset();</div>
+<div class="line"><span class="lineno">  160</span>    <a class="code hl_variable" href="classUGameDataManager.html#af754622372c01421abd03ade37082afa">bLoadCharacterInfo</a> = <span class="keyword">false</span>;   </div>
+<div class="line"><span class="lineno">  161</span>}</div>
+<div class="ttc" id="aclassUGameDataManager_html_ac072e508a8482203271383317a87189f"><div class="ttname"><a href="classUGameDataManager.html#ac072e508a8482203271383317a87189f">UGameDataManager::CharacterInfoCache</a></div><div class="ttdeci">TMap&lt; ECharacterType, FCharacterInfoData &gt; CharacterInfoCache</div><div class="ttdef"><b>Definition</b> <a href="UGameDataManager_8h_source.html#l00090">UGameDataManager.h:90</a></div></div>
+<div class="ttc" id="aclassUGameDataManager_html_af754622372c01421abd03ade37082afa"><div class="ttname"><a href="classUGameDataManager.html#af754622372c01421abd03ade37082afa">UGameDataManager::bLoadCharacterInfo</a></div><div class="ttdeci">bool bLoadCharacterInfo</div><div class="ttdef"><b>Definition</b> <a href="UGameDataManager_8h_source.html#l00087">UGameDataManager.h:87</a></div></div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="UGameDataManager_8h_source.html#l00087">bLoadCharacterInfo</a>, <a class="el" href="UGameDataManager_8h_source.html#l00090">CharacterInfoCache</a>.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UGameDataManager_8cpp_source.html#l00032">Deinitialize()</a>.</p>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classUGameDataManager_abec7a7c40f37b2513959155f13786c4a_icgraph.svg" width="502" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="aed049a64af050a3183acfa2b63eeba24" name="aed049a64af050a3183acfa2b63eeba24"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aed049a64af050a3183acfa2b63eeba24">&#9670;&#160;</a></span>Clear_HitStopTable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void UGameDataManager::Clear_HitStopTable </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="UGameDataManager_8cpp_source.html">UGameDataManager.cpp</a> 파일의 <a class="el" href="UGameDataManager_8cpp_source.html#l00051">51</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   52</span>{</div>
+<div class="line"><span class="lineno">   53</span>    <a class="code hl_variable" href="classUGameDataManager.html#ad418eb713320dab67b86e69ba43db077">HitStopCache</a>.Reset();</div>
+<div class="line"><span class="lineno">   54</span>    <a class="code hl_variable" href="classUGameDataManager.html#a0afdc5d050bc45ed28b51fd8df0e40d7">bLoadHitStop</a> = <span class="keyword">false</span>;   </div>
+<div class="line"><span class="lineno">   55</span>}</div>
+<div class="ttc" id="aclassUGameDataManager_html_a0afdc5d050bc45ed28b51fd8df0e40d7"><div class="ttname"><a href="classUGameDataManager.html#a0afdc5d050bc45ed28b51fd8df0e40d7">UGameDataManager::bLoadHitStop</a></div><div class="ttdeci">bool bLoadHitStop</div><div class="ttdef"><b>Definition</b> <a href="UGameDataManager_8h_source.html#l00053">UGameDataManager.h:53</a></div></div>
+<div class="ttc" id="aclassUGameDataManager_html_ad418eb713320dab67b86e69ba43db077"><div class="ttname"><a href="classUGameDataManager.html#ad418eb713320dab67b86e69ba43db077">UGameDataManager::HitStopCache</a></div><div class="ttdeci">TMap&lt; EDamageType, FHitStopData &gt; HitStopCache</div><div class="ttdef"><b>Definition</b> <a href="UGameDataManager_8h_source.html#l00056">UGameDataManager.h:56</a></div></div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="UGameDataManager_8h_source.html#l00053">bLoadHitStop</a>, <a class="el" href="UGameDataManager_8h_source.html#l00056">HitStopCache</a>.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UGameDataManager_8cpp_source.html#l00032">Deinitialize()</a>.</p>
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classUGameDataManager_aed049a64af050a3183acfa2b63eeba24_icgraph.svg" width="502" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="ab12673657aa350898fe7b77c9718bf78" name="ab12673657aa350898fe7b77c9718bf78"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab12673657aa350898fe7b77c9718bf78">&#9670;&#160;</a></span>Clear_KnockbackTable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void UGameDataManager::Clear_KnockbackTable </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="UGameDataManager_8cpp_source.html">UGameDataManager.cpp</a> 파일의 <a class="el" href="UGameDataManager_8cpp_source.html#l00110">110</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  111</span>{</div>
+<div class="line"><span class="lineno">  112</span>    <a class="code hl_variable" href="classUGameDataManager.html#a49d5db070298ec55d4b65af85aa40ae9">KnockbackCache</a>.Reset();</div>
+<div class="line"><span class="lineno">  113</span>    <a class="code hl_variable" href="classUGameDataManager.html#aadbfbcb1f8c50ba7799087a97c0965f0">bLoadKnockback</a> = <span class="keyword">false</span>;   </div>
+<div class="line"><span class="lineno">  114</span>}</div>
+<div class="ttc" id="aclassUGameDataManager_html_a49d5db070298ec55d4b65af85aa40ae9"><div class="ttname"><a href="classUGameDataManager.html#a49d5db070298ec55d4b65af85aa40ae9">UGameDataManager::KnockbackCache</a></div><div class="ttdeci">TMap&lt; EDamageType, FKnockbackData &gt; KnockbackCache</div><div class="ttdef"><b>Definition</b> <a href="UGameDataManager_8h_source.html#l00073">UGameDataManager.h:73</a></div></div>
+<div class="ttc" id="aclassUGameDataManager_html_aadbfbcb1f8c50ba7799087a97c0965f0"><div class="ttname"><a href="classUGameDataManager.html#aadbfbcb1f8c50ba7799087a97c0965f0">UGameDataManager::bLoadKnockback</a></div><div class="ttdeci">bool bLoadKnockback</div><div class="ttdef"><b>Definition</b> <a href="UGameDataManager_8h_source.html#l00070">UGameDataManager.h:70</a></div></div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="UGameDataManager_8h_source.html#l00070">bLoadKnockback</a>, <a class="el" href="UGameDataManager_8h_source.html#l00073">KnockbackCache</a>.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UGameDataManager_8cpp_source.html#l00032">Deinitialize()</a>.</p>
+<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-5-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classUGameDataManager_ab12673657aa350898fe7b77c9718bf78_icgraph.svg" width="502" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="aeb8a914f73efb6e77f0aae46dabeeb19" name="aeb8a914f73efb6e77f0aae46dabeeb19"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb8a914f73efb6e77f0aae46dabeeb19">&#9670;&#160;</a></span>DEFINE_SUBSYSTEM_GETTER_INLINE()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">UGameDataManager::DEFINE_SUBSYSTEM_GETTER_INLINE </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classUGameDataManager.html">UGameDataManager</a>&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0c3eca529cf08f2f8adf424b7ce0efe2" name="a0c3eca529cf08f2f8adf424b7ce0efe2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0c3eca529cf08f2f8adf424b7ce0efe2">&#9670;&#160;</a></span>Deinitialize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void UGameDataManager::Deinitialize </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="UGameDataManager_8cpp_source.html">UGameDataManager.cpp</a> 파일의 <a class="el" href="UGameDataManager_8cpp_source.html#l00032">32</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   33</span>{</div>
+<div class="line"><span class="lineno">   34</span>    <a class="code hl_function" href="classUGameDataManager.html#aed049a64af050a3183acfa2b63eeba24">Clear_HitStopTable</a>();</div>
+<div class="line"><span class="lineno">   35</span>    <a class="code hl_function" href="classUGameDataManager.html#ab12673657aa350898fe7b77c9718bf78">Clear_KnockbackTable</a>();</div>
+<div class="line"><span class="lineno">   36</span>    <a class="code hl_function" href="classUGameDataManager.html#abec7a7c40f37b2513959155f13786c4a">Clear_CharacterInfoData</a>();</div>
+<div class="line"><span class="lineno">   37</span>    <a class="code hl_function" href="classUGameDataManager.html#a651c5e84a9c1e17ee397dea01d441c97">Clear_CharacterAssetData</a>();</div>
+<div class="line"><span class="lineno">   38</span>    </div>
+<div class="line"><span class="lineno">   39</span>    Super::Deinitialize();</div>
+<div class="line"><span class="lineno">   40</span>}</div>
+<div class="ttc" id="aclassUGameDataManager_html_a651c5e84a9c1e17ee397dea01d441c97"><div class="ttname"><a href="classUGameDataManager.html#a651c5e84a9c1e17ee397dea01d441c97">UGameDataManager::Clear_CharacterAssetData</a></div><div class="ttdeci">void Clear_CharacterAssetData()</div><div class="ttdef"><b>Definition</b> <a href="UGameDataManager_8cpp_source.html#l00204">UGameDataManager.cpp:204</a></div></div>
+<div class="ttc" id="aclassUGameDataManager_html_ab12673657aa350898fe7b77c9718bf78"><div class="ttname"><a href="classUGameDataManager.html#ab12673657aa350898fe7b77c9718bf78">UGameDataManager::Clear_KnockbackTable</a></div><div class="ttdeci">void Clear_KnockbackTable()</div><div class="ttdef"><b>Definition</b> <a href="UGameDataManager_8cpp_source.html#l00110">UGameDataManager.cpp:110</a></div></div>
+<div class="ttc" id="aclassUGameDataManager_html_abec7a7c40f37b2513959155f13786c4a"><div class="ttname"><a href="classUGameDataManager.html#abec7a7c40f37b2513959155f13786c4a">UGameDataManager::Clear_CharacterInfoData</a></div><div class="ttdeci">void Clear_CharacterInfoData()</div><div class="ttdef"><b>Definition</b> <a href="UGameDataManager_8cpp_source.html#l00157">UGameDataManager.cpp:157</a></div></div>
+<div class="ttc" id="aclassUGameDataManager_html_aed049a64af050a3183acfa2b63eeba24"><div class="ttname"><a href="classUGameDataManager.html#aed049a64af050a3183acfa2b63eeba24">UGameDataManager::Clear_HitStopTable</a></div><div class="ttdeci">void Clear_HitStopTable()</div><div class="ttdef"><b>Definition</b> <a href="UGameDataManager_8cpp_source.html#l00051">UGameDataManager.cpp:51</a></div></div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="UGameDataManager_8cpp_source.html#l00204">Clear_CharacterAssetData()</a>, <a class="el" href="UGameDataManager_8cpp_source.html#l00157">Clear_CharacterInfoData()</a>, <a class="el" href="UGameDataManager_8cpp_source.html#l00051">Clear_HitStopTable()</a>, <a class="el" href="UGameDataManager_8cpp_source.html#l00110">Clear_KnockbackTable()</a>.</p>
+<div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-6-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-6-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-6-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classUGameDataManager_a0c3eca529cf08f2f8adf424b7ce0efe2_cgraph.svg" width="502" height="243"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a8b39f383f53d32c9af6c6dda0a293f45" name="a8b39f383f53d32c9af6c6dda0a293f45"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b39f383f53d32c9af6c6dda0a293f45">&#9670;&#160;</a></span>GetCharacterAssetData()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool UGameDataManager::GetCharacterAssetData </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="ECharacterType_8h.html#ad34afea9f542b01a1f4e6d48fdfe1be3">ECharacterType</a>&#160;</td>
+          <td class="paramname"><em>Type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structFCharacterAssetData.html">FCharacterAssetData</a> &amp;&#160;</td>
+          <td class="paramname"><em>Out</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="UGameDataManager_8cpp_source.html">UGameDataManager.cpp</a> 파일의 <a class="el" href="UGameDataManager_8cpp_source.html#l00234">234</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  235</span>{</div>
+<div class="line"><span class="lineno">  236</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classUGameDataManager.html#a1ec0dc6c78fc238ae1e13376ada078c3">bLoadCharacterAsset</a>)</div>
+<div class="line"><span class="lineno">  237</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  238</span> </div>
+<div class="line"><span class="lineno">  239</span>    <span class="keywordflow">if</span> (<span class="keyword">const</span> <a class="code hl_struct" href="structFCharacterAssetData.html">FCharacterAssetData</a>* Found = <a class="code hl_variable" href="classUGameDataManager.html#a06126e08dc91b9b5ec64805f5c3774bf">CharacterAssetCache</a>.Find(Type))</div>
+<div class="line"><span class="lineno">  240</span>    {</div>
+<div class="line"><span class="lineno">  241</span>        Out = *Found;</div>
+<div class="line"><span class="lineno">  242</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  243</span>    }</div>
+<div class="line"><span class="lineno">  244</span> </div>
+<div class="line"><span class="lineno">  245</span>    <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;DataGetFail : %s&quot;</span>), *UEnum::GetValueAsString(Type) );</div>
+<div class="line"><span class="lineno">  246</span>    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  247</span>}</div>
+<div class="ttc" id="aGameLogging_8h_html_a9998c8beb11a6bad6ffada2e701fc0cf"><div class="ttname"><a href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a></div><div class="ttdeci">#define PRINTLOG(fmt,...)</div><div class="ttdef"><b>Definition</b> <a href="GameLogging_8h_source.html#l00030">GameLogging.h:30</a></div></div>
+<div class="ttc" id="astructFCharacterAssetData_html"><div class="ttname"><a href="structFCharacterAssetData.html">FCharacterAssetData</a></div><div class="ttdef"><b>Definition</b> <a href="FCharacterAssetData_8h_source.html#l00013">FCharacterAssetData.h:14</a></div></div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="UGameDataManager_8h_source.html#l00104">bLoadCharacterAsset</a>, <a class="el" href="UGameDataManager_8h_source.html#l00107">CharacterAssetCache</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>.</p>
+
+</div>
+</div>
+<a id="a6e70302d20d134bac5c5212492097e74" name="a6e70302d20d134bac5c5212492097e74"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6e70302d20d134bac5c5212492097e74">&#9670;&#160;</a></span>GetCharacterInfoData()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool UGameDataManager::GetCharacterInfoData </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="ECharacterType_8h.html#ad34afea9f542b01a1f4e6d48fdfe1be3">ECharacterType</a>&#160;</td>
+          <td class="paramname"><em>Type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structFCharacterInfoData.html">FCharacterInfoData</a> &amp;&#160;</td>
+          <td class="paramname"><em>Out</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="UGameDataManager_8cpp_source.html">UGameDataManager.cpp</a> 파일의 <a class="el" href="UGameDataManager_8cpp_source.html#l00187">187</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  188</span>{</div>
+<div class="line"><span class="lineno">  189</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classUGameDataManager.html#af754622372c01421abd03ade37082afa">bLoadCharacterInfo</a>)</div>
+<div class="line"><span class="lineno">  190</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  191</span> </div>
+<div class="line"><span class="lineno">  192</span>    <span class="keywordflow">if</span> (<span class="keyword">const</span> <a class="code hl_struct" href="structFCharacterInfoData.html">FCharacterInfoData</a>* Found = <a class="code hl_variable" href="classUGameDataManager.html#ac072e508a8482203271383317a87189f">CharacterInfoCache</a>.Find(Type))</div>
+<div class="line"><span class="lineno">  193</span>    {</div>
+<div class="line"><span class="lineno">  194</span>        Out = *Found;</div>
+<div class="line"><span class="lineno">  195</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  196</span>    }</div>
+<div class="line"><span class="lineno">  197</span> </div>
+<div class="line"><span class="lineno">  198</span>    <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;DataGetFail : %s&quot;</span>), *UEnum::GetValueAsString(Type) );</div>
+<div class="line"><span class="lineno">  199</span>    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  200</span>}</div>
+<div class="ttc" id="astructFCharacterInfoData_html"><div class="ttname"><a href="structFCharacterInfoData.html">FCharacterInfoData</a></div><div class="ttdef"><b>Definition</b> <a href="FCharacterInfoData_8h_source.html#l00013">FCharacterInfoData.h:14</a></div></div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="UGameDataManager_8h_source.html#l00087">bLoadCharacterInfo</a>, <a class="el" href="UGameDataManager_8h_source.html#l00090">CharacterInfoCache</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>.</p>
+
+</div>
+</div>
+<a id="aa83c00fd215eabdac542661dd7893b14" name="aa83c00fd215eabdac542661dd7893b14"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa83c00fd215eabdac542661dd7893b14">&#9670;&#160;</a></span>GetHitStopData()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool UGameDataManager::GetHitStopData </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="EDamageType_8h.html#ab5bf7dde87ef933ba244eba8c39e7e9b">EDamageType</a>&#160;</td>
+          <td class="paramname"><em>Type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">UPARAM(ref) <a class="el" href="structFHitStopData.html">FHitStopData</a> &amp;&#160;</td>
+          <td class="paramname"><em>Out</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="UGameDataManager_8cpp_source.html">UGameDataManager.cpp</a> 파일의 <a class="el" href="UGameDataManager_8cpp_source.html#l00081">81</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   82</span>{</div>
+<div class="line"><span class="lineno">   83</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classUGameDataManager.html#a0afdc5d050bc45ed28b51fd8df0e40d7">bLoadHitStop</a>)</div>
+<div class="line"><span class="lineno">   84</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   85</span> </div>
+<div class="line"><span class="lineno">   86</span>    <span class="keywordflow">if</span> (<span class="keyword">const</span> <a class="code hl_struct" href="structFHitStopData.html">FHitStopData</a>* Found = <a class="code hl_variable" href="classUGameDataManager.html#ad418eb713320dab67b86e69ba43db077">HitStopCache</a>.Find(Type))</div>
+<div class="line"><span class="lineno">   87</span>    {</div>
+<div class="line"><span class="lineno">   88</span>        Out = *Found;</div>
+<div class="line"><span class="lineno">   89</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   90</span>    }</div>
+<div class="line"><span class="lineno">   91</span> </div>
+<div class="line"><span class="lineno">   92</span>    <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;DataGetFail : %s&quot;</span>), *UEnum::GetValueAsString(Type) );</div>
+<div class="line"><span class="lineno">   93</span>    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   94</span>}</div>
+<div class="ttc" id="astructFHitStopData_html"><div class="ttname"><a href="structFHitStopData.html">FHitStopData</a></div><div class="ttdef"><b>Definition</b> <a href="FHitStopData_8h_source.html#l00015">FHitStopData.h:16</a></div></div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="UGameDataManager_8h_source.html#l00053">bLoadHitStop</a>, <a class="el" href="UGameDataManager_8h_source.html#l00056">HitStopCache</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>.</p>
+
+</div>
+</div>
+<a id="a8595beb01f133cdb7dde472486ef258b" name="a8595beb01f133cdb7dde472486ef258b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8595beb01f133cdb7dde472486ef258b">&#9670;&#160;</a></span>GetHitStopDelayTime()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float UGameDataManager::GetHitStopDelayTime </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="EDamageType_8h.html#ab5bf7dde87ef933ba244eba8c39e7e9b">EDamageType</a>&#160;</td>
+          <td class="paramname"><em>Type</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="UGameDataManager_8cpp_source.html">UGameDataManager.cpp</a> 파일의 <a class="el" href="UGameDataManager_8cpp_source.html#l00096">96</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   97</span>{</div>
+<div class="line"><span class="lineno">   98</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classUGameDataManager.html#a0afdc5d050bc45ed28b51fd8df0e40d7">bLoadHitStop</a>)</div>
+<div class="line"><span class="lineno">   99</span>        <span class="keywordflow">return</span> 0.0f;</div>
+<div class="line"><span class="lineno">  100</span> </div>
+<div class="line"><span class="lineno">  101</span>    <span class="keywordflow">if</span> (<span class="keyword">const</span> <a class="code hl_struct" href="structFHitStopData.html">FHitStopData</a>* Found = <a class="code hl_variable" href="classUGameDataManager.html#ad418eb713320dab67b86e69ba43db077">HitStopCache</a>.Find(Type))</div>
+<div class="line"><span class="lineno">  102</span>        <span class="keywordflow">return</span> Found-&gt;Duration;</div>
+<div class="line"><span class="lineno">  103</span>    </div>
+<div class="line"><span class="lineno">  104</span>    <span class="keywordflow">return</span> 0.0f;</div>
+<div class="line"><span class="lineno">  105</span>}</div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="UGameDataManager_8h_source.html#l00053">bLoadHitStop</a>, <a class="el" href="UGameDataManager_8h_source.html#l00056">HitStopCache</a>.</p>
+
+</div>
+</div>
+<a id="a232e5189f2a87b8d1a31f2e1c0db314e" name="a232e5189f2a87b8d1a31f2e1c0db314e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a232e5189f2a87b8d1a31f2e1c0db314e">&#9670;&#160;</a></span>GetKnockbackData()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool UGameDataManager::GetKnockbackData </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="EDamageType_8h.html#ab5bf7dde87ef933ba244eba8c39e7e9b">EDamageType</a>&#160;</td>
+          <td class="paramname"><em>Type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structFKnockbackData.html">FKnockbackData</a> &amp;&#160;</td>
+          <td class="paramname"><em>Out</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="UGameDataManager_8cpp_source.html">UGameDataManager.cpp</a> 파일의 <a class="el" href="UGameDataManager_8cpp_source.html#l00140">140</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  141</span>{</div>
+<div class="line"><span class="lineno">  142</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classUGameDataManager.html#aadbfbcb1f8c50ba7799087a97c0965f0">bLoadKnockback</a>)</div>
+<div class="line"><span class="lineno">  143</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  144</span> </div>
+<div class="line"><span class="lineno">  145</span>    <span class="keywordflow">if</span> (<span class="keyword">const</span> <a class="code hl_struct" href="structFKnockbackData.html">FKnockbackData</a>* Found = <a class="code hl_variable" href="classUGameDataManager.html#a49d5db070298ec55d4b65af85aa40ae9">KnockbackCache</a>.Find(Type))</div>
+<div class="line"><span class="lineno">  146</span>    {</div>
+<div class="line"><span class="lineno">  147</span>        Out = *Found;</div>
+<div class="line"><span class="lineno">  148</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  149</span>    }</div>
+<div class="line"><span class="lineno">  150</span> </div>
+<div class="line"><span class="lineno">  151</span>    <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;DataGetFail : %s&quot;</span>), *UEnum::GetValueAsString(Type) );</div>
+<div class="line"><span class="lineno">  152</span>    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  153</span>}</div>
+<div class="ttc" id="astructFKnockbackData_html"><div class="ttname"><a href="structFKnockbackData.html">FKnockbackData</a></div><div class="ttdef"><b>Definition</b> <a href="FKnockbackData_8h_source.html#l00013">FKnockbackData.h:14</a></div></div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="UGameDataManager_8h_source.html#l00070">bLoadKnockback</a>, <a class="el" href="UGameDataManager_8h_source.html#l00073">KnockbackCache</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>.</p>
+
+</div>
+</div>
+<a id="a013d5de56f83c3409ea138d830ac50fc" name="a013d5de56f83c3409ea138d830ac50fc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a013d5de56f83c3409ea138d830ac50fc">&#9670;&#160;</a></span>Initialize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void UGameDataManager::Initialize </td>
+          <td>(</td>
+          <td class="paramtype">FSubsystemCollectionBase &amp;&#160;</td>
+          <td class="paramname"><em>Collection</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="UGameDataManager_8cpp_source.html">UGameDataManager.cpp</a> 파일의 <a class="el" href="UGameDataManager_8cpp_source.html#l00025">25</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   26</span>{</div>
+<div class="line"><span class="lineno">   27</span>    Super::Initialize(Collection);</div>
+<div class="line"><span class="lineno">   28</span> </div>
+<div class="line"><span class="lineno">   29</span>    <a class="code hl_function" href="classUGameDataManager.html#a1ef2615c011d32aff77fff4d5ccaf627">ReloadMasterData</a>();</div>
+<div class="line"><span class="lineno">   30</span>}</div>
+<div class="ttc" id="aclassUGameDataManager_html_a1ef2615c011d32aff77fff4d5ccaf627"><div class="ttname"><a href="classUGameDataManager.html#a1ef2615c011d32aff77fff4d5ccaf627">UGameDataManager::ReloadMasterData</a></div><div class="ttdeci">void ReloadMasterData()</div><div class="ttdef"><b>Definition</b> <a href="UGameDataManager_8cpp_source.html#l00042">UGameDataManager.cpp:42</a></div></div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="UGameDataManager_8cpp_source.html#l00042">ReloadMasterData()</a>.</p>
+<div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-7-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-7-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-7-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classUGameDataManager_a013d5de56f83c3409ea138d830ac50fc_cgraph.svg" width="494" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a17795ed84fef2f5fbb76d7da26d52447" name="a17795ed84fef2f5fbb76d7da26d52447"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a17795ed84fef2f5fbb76d7da26d52447">&#9670;&#160;</a></span>LoadData_CharacterAssetData()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void UGameDataManager::LoadData_CharacterAssetData </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="UGameDataManager_8cpp_source.html">UGameDataManager.cpp</a> 파일의 <a class="el" href="UGameDataManager_8cpp_source.html#l00210">210</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  211</span>{</div>
+<div class="line"><span class="lineno">  212</span>    <a class="code hl_variable" href="classUGameDataManager.html#a06126e08dc91b9b5ec64805f5c3774bf">CharacterAssetCache</a>.Reset();</div>
+<div class="line"><span class="lineno">  213</span>    <a class="code hl_variable" href="classUGameDataManager.html#a1ec0dc6c78fc238ae1e13376ada078c3">bLoadCharacterAsset</a> = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  214</span> </div>
+<div class="line"><span class="lineno">  215</span>    UDataTable* TableObj = <a class="code hl_variable" href="classUGameDataManager.html#a7d5f4b7321bc2405f3ff9f696b7ddd75">CharacterAssetTable</a>.LoadSynchronous();</div>
+<div class="line"><span class="lineno">  216</span>    <span class="keywordflow">if</span> (!TableObj)</div>
+<div class="line"><span class="lineno">  217</span>    {</div>
+<div class="line"><span class="lineno">  218</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;Load failed: %s&quot;</span>), *<a class="code hl_variable" href="classUGameDataManager.html#a7d5f4b7321bc2405f3ff9f696b7ddd75">CharacterAssetTable</a>.ToString());</div>
+<div class="line"><span class="lineno">  219</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  220</span>    }</div>
+<div class="line"><span class="lineno">  221</span> </div>
+<div class="line"><span class="lineno">  222</span>    <span class="keyword">static</span> <span class="keyword">const</span> FString ContextString(TEXT(<span class="stringliteral">&quot;CharacterAssetTable&quot;</span>));</div>
+<div class="line"><span class="lineno">  223</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> FName&amp; RowName : TableObj-&gt;GetRowNames() )</div>
+<div class="line"><span class="lineno">  224</span>    {</div>
+<div class="line"><span class="lineno">  225</span>        <span class="keywordflow">if</span> (<span class="keyword">const</span> <a class="code hl_struct" href="structFCharacterAssetData.html">FCharacterAssetData</a>* Row = TableObj-&gt;FindRow&lt;<a class="code hl_struct" href="structFCharacterAssetData.html">FCharacterAssetData</a>&gt;(RowName, ContextString, <span class="keyword">true</span>))</div>
+<div class="line"><span class="lineno">  226</span>        {</div>
+<div class="line"><span class="lineno">  227</span>            <a class="code hl_variable" href="classUGameDataManager.html#a06126e08dc91b9b5ec64805f5c3774bf">CharacterAssetCache</a>.Add(Row-&gt;CharacterType, *Row);</div>
+<div class="line"><span class="lineno">  228</span>        }</div>
+<div class="line"><span class="lineno">  229</span>    }</div>
+<div class="line"><span class="lineno">  230</span> </div>
+<div class="line"><span class="lineno">  231</span>    <a class="code hl_variable" href="classUGameDataManager.html#a1ec0dc6c78fc238ae1e13376ada078c3">bLoadCharacterAsset</a> = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  232</span>}</div>
+<div class="ttc" id="aclassUGameDataManager_html_a7d5f4b7321bc2405f3ff9f696b7ddd75"><div class="ttname"><a href="classUGameDataManager.html#a7d5f4b7321bc2405f3ff9f696b7ddd75">UGameDataManager::CharacterAssetTable</a></div><div class="ttdeci">TSoftObjectPtr&lt; UDataTable &gt; CharacterAssetTable</div><div class="ttdef"><b>Definition</b> <a href="UGameDataManager_8h_source.html#l00096">UGameDataManager.h:96</a></div></div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="UGameDataManager_8h_source.html#l00104">bLoadCharacterAsset</a>, <a class="el" href="UGameDataManager_8h_source.html#l00107">CharacterAssetCache</a>, <a class="el" href="UGameDataManager_8h_source.html#l00096">CharacterAssetTable</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>.</p>
+
+</div>
+</div>
+<a id="ad849e286b5e7c53cb21b2d193eb58dbe" name="ad849e286b5e7c53cb21b2d193eb58dbe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad849e286b5e7c53cb21b2d193eb58dbe">&#9670;&#160;</a></span>LoadData_CharacterInfoData()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void UGameDataManager::LoadData_CharacterInfoData </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="UGameDataManager_8cpp_source.html">UGameDataManager.cpp</a> 파일의 <a class="el" href="UGameDataManager_8cpp_source.html#l00163">163</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  164</span>{</div>
+<div class="line"><span class="lineno">  165</span>    <a class="code hl_variable" href="classUGameDataManager.html#ac072e508a8482203271383317a87189f">CharacterInfoCache</a>.Reset();</div>
+<div class="line"><span class="lineno">  166</span>    <a class="code hl_variable" href="classUGameDataManager.html#af754622372c01421abd03ade37082afa">bLoadCharacterInfo</a> = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  167</span> </div>
+<div class="line"><span class="lineno">  168</span>    UDataTable* TableObj = <a class="code hl_variable" href="classUGameDataManager.html#a52a1a40b1f8d3c2e4595cc124eb0ab33">CharacterInfoTable</a>.LoadSynchronous();</div>
+<div class="line"><span class="lineno">  169</span>    <span class="keywordflow">if</span> (!TableObj)</div>
+<div class="line"><span class="lineno">  170</span>    {</div>
+<div class="line"><span class="lineno">  171</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;Load failed: %s&quot;</span>), *<a class="code hl_variable" href="classUGameDataManager.html#a52a1a40b1f8d3c2e4595cc124eb0ab33">CharacterInfoTable</a>.ToString());</div>
+<div class="line"><span class="lineno">  172</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  173</span>    }</div>
+<div class="line"><span class="lineno">  174</span> </div>
+<div class="line"><span class="lineno">  175</span>    <span class="keyword">static</span> <span class="keyword">const</span> FString ContextString(TEXT(<span class="stringliteral">&quot;CharacterInfoTable&quot;</span>));</div>
+<div class="line"><span class="lineno">  176</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> FName&amp; RowName : TableObj-&gt;GetRowNames() )</div>
+<div class="line"><span class="lineno">  177</span>    {</div>
+<div class="line"><span class="lineno">  178</span>        <span class="keywordflow">if</span> (<span class="keyword">const</span> <a class="code hl_struct" href="structFCharacterInfoData.html">FCharacterInfoData</a>* Row = TableObj-&gt;FindRow&lt;<a class="code hl_struct" href="structFCharacterInfoData.html">FCharacterInfoData</a>&gt;(RowName, ContextString, <span class="keyword">true</span>))</div>
+<div class="line"><span class="lineno">  179</span>        {</div>
+<div class="line"><span class="lineno">  180</span>            <a class="code hl_variable" href="classUGameDataManager.html#ac072e508a8482203271383317a87189f">CharacterInfoCache</a>.Add(Row-&gt;Type, *Row);</div>
+<div class="line"><span class="lineno">  181</span>        }</div>
+<div class="line"><span class="lineno">  182</span>    }</div>
+<div class="line"><span class="lineno">  183</span> </div>
+<div class="line"><span class="lineno">  184</span>    <a class="code hl_variable" href="classUGameDataManager.html#af754622372c01421abd03ade37082afa">bLoadCharacterInfo</a> = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  185</span>}</div>
+<div class="ttc" id="aclassUGameDataManager_html_a52a1a40b1f8d3c2e4595cc124eb0ab33"><div class="ttname"><a href="classUGameDataManager.html#a52a1a40b1f8d3c2e4595cc124eb0ab33">UGameDataManager::CharacterInfoTable</a></div><div class="ttdeci">TSoftObjectPtr&lt; UDataTable &gt; CharacterInfoTable</div><div class="ttdef"><b>Definition</b> <a href="UGameDataManager_8h_source.html#l00079">UGameDataManager.h:79</a></div></div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="UGameDataManager_8h_source.html#l00087">bLoadCharacterInfo</a>, <a class="el" href="UGameDataManager_8h_source.html#l00090">CharacterInfoCache</a>, <a class="el" href="UGameDataManager_8h_source.html#l00079">CharacterInfoTable</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>.</p>
+
+</div>
+</div>
+<a id="adf72cf62298bc613581042c7e86bfbde" name="adf72cf62298bc613581042c7e86bfbde"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adf72cf62298bc613581042c7e86bfbde">&#9670;&#160;</a></span>LoadData_HitStopTable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void UGameDataManager::LoadData_HitStopTable </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="UGameDataManager_8cpp_source.html">UGameDataManager.cpp</a> 파일의 <a class="el" href="UGameDataManager_8cpp_source.html#l00057">57</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   58</span>{</div>
+<div class="line"><span class="lineno">   59</span>    <a class="code hl_variable" href="classUGameDataManager.html#ad418eb713320dab67b86e69ba43db077">HitStopCache</a>.Reset();</div>
+<div class="line"><span class="lineno">   60</span>    <a class="code hl_variable" href="classUGameDataManager.html#a0afdc5d050bc45ed28b51fd8df0e40d7">bLoadHitStop</a> = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   61</span> </div>
+<div class="line"><span class="lineno">   62</span>    UDataTable* TableObj = <a class="code hl_variable" href="classUGameDataManager.html#aa934e5d7830bd86c2a8cad2df2e70596">HitStopTable</a>.LoadSynchronous();</div>
+<div class="line"><span class="lineno">   63</span>    <span class="keywordflow">if</span> (!TableObj)</div>
+<div class="line"><span class="lineno">   64</span>    {</div>
+<div class="line"><span class="lineno">   65</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;Load failed: %s&quot;</span>), *<a class="code hl_variable" href="classUGameDataManager.html#aa934e5d7830bd86c2a8cad2df2e70596">HitStopTable</a>.ToString());</div>
+<div class="line"><span class="lineno">   66</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   67</span>    }</div>
+<div class="line"><span class="lineno">   68</span> </div>
+<div class="line"><span class="lineno">   69</span>    <span class="keyword">static</span> <span class="keyword">const</span> FString ContextString(TEXT(<span class="stringliteral">&quot;HitStopTable&quot;</span>));</div>
+<div class="line"><span class="lineno">   70</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> FName&amp; RowName : TableObj-&gt;GetRowNames() )</div>
+<div class="line"><span class="lineno">   71</span>    {</div>
+<div class="line"><span class="lineno">   72</span>        <span class="keywordflow">if</span> (<span class="keyword">const</span> <a class="code hl_struct" href="structFHitStopData.html">FHitStopData</a>* Row = TableObj-&gt;FindRow&lt;<a class="code hl_struct" href="structFHitStopData.html">FHitStopData</a>&gt;(RowName, ContextString, <span class="keyword">true</span>))</div>
+<div class="line"><span class="lineno">   73</span>        {</div>
+<div class="line"><span class="lineno">   74</span>            <a class="code hl_variable" href="classUGameDataManager.html#ad418eb713320dab67b86e69ba43db077">HitStopCache</a>.Add(Row-&gt;Type, *Row);</div>
+<div class="line"><span class="lineno">   75</span>        }</div>
+<div class="line"><span class="lineno">   76</span>    }</div>
+<div class="line"><span class="lineno">   77</span> </div>
+<div class="line"><span class="lineno">   78</span>    <a class="code hl_variable" href="classUGameDataManager.html#a0afdc5d050bc45ed28b51fd8df0e40d7">bLoadHitStop</a> = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   79</span>}</div>
+<div class="ttc" id="aclassUGameDataManager_html_aa934e5d7830bd86c2a8cad2df2e70596"><div class="ttname"><a href="classUGameDataManager.html#aa934e5d7830bd86c2a8cad2df2e70596">UGameDataManager::HitStopTable</a></div><div class="ttdeci">TSoftObjectPtr&lt; UDataTable &gt; HitStopTable</div><div class="ttdef"><b>Definition</b> <a href="UGameDataManager_8h_source.html#l00043">UGameDataManager.h:43</a></div></div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="UGameDataManager_8h_source.html#l00053">bLoadHitStop</a>, <a class="el" href="UGameDataManager_8h_source.html#l00056">HitStopCache</a>, <a class="el" href="UGameDataManager_8h_source.html#l00043">HitStopTable</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>.</p>
+
+</div>
+</div>
+<a id="ac3bde7d40542b59a0ce72d0b070d3a8e" name="ac3bde7d40542b59a0ce72d0b070d3a8e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac3bde7d40542b59a0ce72d0b070d3a8e">&#9670;&#160;</a></span>LoadData_KnockbackTable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void UGameDataManager::LoadData_KnockbackTable </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="UGameDataManager_8cpp_source.html">UGameDataManager.cpp</a> 파일의 <a class="el" href="UGameDataManager_8cpp_source.html#l00116">116</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  117</span>{</div>
+<div class="line"><span class="lineno">  118</span>    <a class="code hl_variable" href="classUGameDataManager.html#a49d5db070298ec55d4b65af85aa40ae9">KnockbackCache</a>.Reset();</div>
+<div class="line"><span class="lineno">  119</span>    <a class="code hl_variable" href="classUGameDataManager.html#aadbfbcb1f8c50ba7799087a97c0965f0">bLoadKnockback</a> = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  120</span> </div>
+<div class="line"><span class="lineno">  121</span>    UDataTable* TableObj = <a class="code hl_variable" href="classUGameDataManager.html#acd8b13957d84c801426442eb8bd70e78">KnockbackTable</a>.LoadSynchronous();</div>
+<div class="line"><span class="lineno">  122</span>    <span class="keywordflow">if</span> (!TableObj)</div>
+<div class="line"><span class="lineno">  123</span>    {</div>
+<div class="line"><span class="lineno">  124</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;Load failed: %s&quot;</span>), *<a class="code hl_variable" href="classUGameDataManager.html#acd8b13957d84c801426442eb8bd70e78">KnockbackTable</a>.ToString());</div>
+<div class="line"><span class="lineno">  125</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  126</span>    }</div>
+<div class="line"><span class="lineno">  127</span> </div>
+<div class="line"><span class="lineno">  128</span>    <span class="keyword">static</span> <span class="keyword">const</span> FString ContextString(TEXT(<span class="stringliteral">&quot;KnockbackTable&quot;</span>));</div>
+<div class="line"><span class="lineno">  129</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> FName&amp; RowName : TableObj-&gt;GetRowNames() )</div>
+<div class="line"><span class="lineno">  130</span>    {</div>
+<div class="line"><span class="lineno">  131</span>        <span class="keywordflow">if</span> (<span class="keyword">const</span> <a class="code hl_struct" href="structFKnockbackData.html">FKnockbackData</a>* Row = TableObj-&gt;FindRow&lt;<a class="code hl_struct" href="structFKnockbackData.html">FKnockbackData</a>&gt;(RowName, ContextString, <span class="keyword">true</span>))</div>
+<div class="line"><span class="lineno">  132</span>        {</div>
+<div class="line"><span class="lineno">  133</span>            <a class="code hl_variable" href="classUGameDataManager.html#a49d5db070298ec55d4b65af85aa40ae9">KnockbackCache</a>.Add(Row-&gt;Type, *Row);</div>
+<div class="line"><span class="lineno">  134</span>        }</div>
+<div class="line"><span class="lineno">  135</span>    }</div>
+<div class="line"><span class="lineno">  136</span> </div>
+<div class="line"><span class="lineno">  137</span>    <a class="code hl_variable" href="classUGameDataManager.html#aadbfbcb1f8c50ba7799087a97c0965f0">bLoadKnockback</a> = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  138</span>}</div>
+<div class="ttc" id="aclassUGameDataManager_html_acd8b13957d84c801426442eb8bd70e78"><div class="ttname"><a href="classUGameDataManager.html#acd8b13957d84c801426442eb8bd70e78">UGameDataManager::KnockbackTable</a></div><div class="ttdeci">TSoftObjectPtr&lt; UDataTable &gt; KnockbackTable</div><div class="ttdef"><b>Definition</b> <a href="UGameDataManager_8h_source.html#l00062">UGameDataManager.h:62</a></div></div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="UGameDataManager_8h_source.html#l00070">bLoadKnockback</a>, <a class="el" href="UGameDataManager_8h_source.html#l00073">KnockbackCache</a>, <a class="el" href="UGameDataManager_8h_source.html#l00062">KnockbackTable</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>.</p>
+
+</div>
+</div>
+<a id="a1ef2615c011d32aff77fff4d5ccaf627" name="a1ef2615c011d32aff77fff4d5ccaf627"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ef2615c011d32aff77fff4d5ccaf627">&#9670;&#160;</a></span>ReloadMasterData()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void UGameDataManager::ReloadMasterData </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="UGameDataManager_8cpp_source.html">UGameDataManager.cpp</a> 파일의 <a class="el" href="UGameDataManager_8cpp_source.html#l00042">42</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   43</span>{</div>
+<div class="line"><span class="lineno">   44</span>    <span class="comment">// LoadData_HitStopTable();</span></div>
+<div class="line"><span class="lineno">   45</span>    <span class="comment">// LoadData_KnockbackTable();</span></div>
+<div class="line"><span class="lineno">   46</span>    <span class="comment">// LoadData_CharacterInfoData();</span></div>
+<div class="line"><span class="lineno">   47</span>    <span class="comment">// LoadData_CharacterAssetData();</span></div>
+<div class="line"><span class="lineno">   48</span>}</div>
+</div><!-- fragment -->
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UGameDataManager_8cpp_source.html#l00025">Initialize()</a>.</p>
+<div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-8-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-8-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-8-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classUGameDataManager_a1ef2615c011d32aff77fff4d5ccaf627_icgraph.svg" width="494" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">멤버 데이터 문서화</h2>
+<a id="a1ec0dc6c78fc238ae1e13376ada078c3" name="a1ec0dc6c78fc238ae1e13376ada078c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ec0dc6c78fc238ae1e13376ada078c3">&#9670;&#160;</a></span>bLoadCharacterAsset</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool UGameDataManager::bLoadCharacterAsset = false</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="UGameDataManager_8h_source.html">UGameDataManager.h</a> 파일의 <a class="el" href="UGameDataManager_8h_source.html#l00104">104</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UGameDataManager_8cpp_source.html#l00204">Clear_CharacterAssetData()</a>, <a class="el" href="UGameDataManager_8cpp_source.html#l00234">GetCharacterAssetData()</a>, <a class="el" href="UGameDataManager_8cpp_source.html#l00210">LoadData_CharacterAssetData()</a>.</p>
+
+</div>
+</div>
+<a id="af754622372c01421abd03ade37082afa" name="af754622372c01421abd03ade37082afa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af754622372c01421abd03ade37082afa">&#9670;&#160;</a></span>bLoadCharacterInfo</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool UGameDataManager::bLoadCharacterInfo = false</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="UGameDataManager_8h_source.html">UGameDataManager.h</a> 파일의 <a class="el" href="UGameDataManager_8h_source.html#l00087">87</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UGameDataManager_8cpp_source.html#l00157">Clear_CharacterInfoData()</a>, <a class="el" href="UGameDataManager_8cpp_source.html#l00187">GetCharacterInfoData()</a>, <a class="el" href="UGameDataManager_8cpp_source.html#l00163">LoadData_CharacterInfoData()</a>.</p>
+
+</div>
+</div>
+<a id="a0afdc5d050bc45ed28b51fd8df0e40d7" name="a0afdc5d050bc45ed28b51fd8df0e40d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0afdc5d050bc45ed28b51fd8df0e40d7">&#9670;&#160;</a></span>bLoadHitStop</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool UGameDataManager::bLoadHitStop = false</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="UGameDataManager_8h_source.html">UGameDataManager.h</a> 파일의 <a class="el" href="UGameDataManager_8h_source.html#l00053">53</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UGameDataManager_8cpp_source.html#l00051">Clear_HitStopTable()</a>, <a class="el" href="UGameDataManager_8cpp_source.html#l00081">GetHitStopData()</a>, <a class="el" href="UGameDataManager_8cpp_source.html#l00096">GetHitStopDelayTime()</a>, <a class="el" href="UGameDataManager_8cpp_source.html#l00057">LoadData_HitStopTable()</a>.</p>
+
+</div>
+</div>
+<a id="aadbfbcb1f8c50ba7799087a97c0965f0" name="aadbfbcb1f8c50ba7799087a97c0965f0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aadbfbcb1f8c50ba7799087a97c0965f0">&#9670;&#160;</a></span>bLoadKnockback</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool UGameDataManager::bLoadKnockback = false</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="UGameDataManager_8h_source.html">UGameDataManager.h</a> 파일의 <a class="el" href="UGameDataManager_8h_source.html#l00070">70</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UGameDataManager_8cpp_source.html#l00110">Clear_KnockbackTable()</a>, <a class="el" href="UGameDataManager_8cpp_source.html#l00140">GetKnockbackData()</a>, <a class="el" href="UGameDataManager_8cpp_source.html#l00116">LoadData_KnockbackTable()</a>.</p>
+
+</div>
+</div>
+<a id="a06126e08dc91b9b5ec64805f5c3774bf" name="a06126e08dc91b9b5ec64805f5c3774bf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a06126e08dc91b9b5ec64805f5c3774bf">&#9670;&#160;</a></span>CharacterAssetCache</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">TMap&lt;<a class="el" href="ECharacterType_8h.html#ad34afea9f542b01a1f4e6d48fdfe1be3">ECharacterType</a>, <a class="el" href="structFCharacterAssetData.html">FCharacterAssetData</a>&gt; UGameDataManager::CharacterAssetCache</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="UGameDataManager_8h_source.html">UGameDataManager.h</a> 파일의 <a class="el" href="UGameDataManager_8h_source.html#l00107">107</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UGameDataManager_8cpp_source.html#l00204">Clear_CharacterAssetData()</a>, <a class="el" href="UGameDataManager_8cpp_source.html#l00234">GetCharacterAssetData()</a>, <a class="el" href="UGameDataManager_8cpp_source.html#l00210">LoadData_CharacterAssetData()</a>.</p>
+
+</div>
+</div>
+<a id="a7d5f4b7321bc2405f3ff9f696b7ddd75" name="a7d5f4b7321bc2405f3ff9f696b7ddd75"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7d5f4b7321bc2405f3ff9f696b7ddd75">&#9670;&#160;</a></span>CharacterAssetTable</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TSoftObjectPtr&lt;UDataTable&gt; UGameDataManager::CharacterAssetTable</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="UGameDataManager_8h_source.html">UGameDataManager.h</a> 파일의 <a class="el" href="UGameDataManager_8h_source.html#l00096">96</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UGameDataManager_8cpp_source.html#l00210">LoadData_CharacterAssetData()</a>.</p>
+
+</div>
+</div>
+<a id="ac072e508a8482203271383317a87189f" name="ac072e508a8482203271383317a87189f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac072e508a8482203271383317a87189f">&#9670;&#160;</a></span>CharacterInfoCache</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">TMap&lt;<a class="el" href="ECharacterType_8h.html#ad34afea9f542b01a1f4e6d48fdfe1be3">ECharacterType</a>, <a class="el" href="structFCharacterInfoData.html">FCharacterInfoData</a>&gt; UGameDataManager::CharacterInfoCache</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="UGameDataManager_8h_source.html">UGameDataManager.h</a> 파일의 <a class="el" href="UGameDataManager_8h_source.html#l00090">90</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UGameDataManager_8cpp_source.html#l00157">Clear_CharacterInfoData()</a>, <a class="el" href="UGameDataManager_8cpp_source.html#l00187">GetCharacterInfoData()</a>, <a class="el" href="UGameDataManager_8cpp_source.html#l00163">LoadData_CharacterInfoData()</a>.</p>
+
+</div>
+</div>
+<a id="a52a1a40b1f8d3c2e4595cc124eb0ab33" name="a52a1a40b1f8d3c2e4595cc124eb0ab33"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a52a1a40b1f8d3c2e4595cc124eb0ab33">&#9670;&#160;</a></span>CharacterInfoTable</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TSoftObjectPtr&lt;UDataTable&gt; UGameDataManager::CharacterInfoTable</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="UGameDataManager_8h_source.html">UGameDataManager.h</a> 파일의 <a class="el" href="UGameDataManager_8h_source.html#l00079">79</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UGameDataManager_8cpp_source.html#l00163">LoadData_CharacterInfoData()</a>.</p>
+
+</div>
+</div>
+<a id="ad418eb713320dab67b86e69ba43db077" name="ad418eb713320dab67b86e69ba43db077"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad418eb713320dab67b86e69ba43db077">&#9670;&#160;</a></span>HitStopCache</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">TMap&lt;<a class="el" href="EDamageType_8h.html#ab5bf7dde87ef933ba244eba8c39e7e9b">EDamageType</a>, <a class="el" href="structFHitStopData.html">FHitStopData</a>&gt; UGameDataManager::HitStopCache</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="UGameDataManager_8h_source.html">UGameDataManager.h</a> 파일의 <a class="el" href="UGameDataManager_8h_source.html#l00056">56</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UGameDataManager_8cpp_source.html#l00051">Clear_HitStopTable()</a>, <a class="el" href="UGameDataManager_8cpp_source.html#l00081">GetHitStopData()</a>, <a class="el" href="UGameDataManager_8cpp_source.html#l00096">GetHitStopDelayTime()</a>, <a class="el" href="UGameDataManager_8cpp_source.html#l00057">LoadData_HitStopTable()</a>.</p>
+
+</div>
+</div>
+<a id="aa934e5d7830bd86c2a8cad2df2e70596" name="aa934e5d7830bd86c2a8cad2df2e70596"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa934e5d7830bd86c2a8cad2df2e70596">&#9670;&#160;</a></span>HitStopTable</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TSoftObjectPtr&lt;UDataTable&gt; UGameDataManager::HitStopTable</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="UGameDataManager_8h_source.html">UGameDataManager.h</a> 파일의 <a class="el" href="UGameDataManager_8h_source.html#l00043">43</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UGameDataManager_8cpp_source.html#l00057">LoadData_HitStopTable()</a>.</p>
+
+</div>
+</div>
+<a id="a49d5db070298ec55d4b65af85aa40ae9" name="a49d5db070298ec55d4b65af85aa40ae9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a49d5db070298ec55d4b65af85aa40ae9">&#9670;&#160;</a></span>KnockbackCache</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">TMap&lt;<a class="el" href="EDamageType_8h.html#ab5bf7dde87ef933ba244eba8c39e7e9b">EDamageType</a>, <a class="el" href="structFKnockbackData.html">FKnockbackData</a>&gt; UGameDataManager::KnockbackCache</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="UGameDataManager_8h_source.html">UGameDataManager.h</a> 파일의 <a class="el" href="UGameDataManager_8h_source.html#l00073">73</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UGameDataManager_8cpp_source.html#l00110">Clear_KnockbackTable()</a>, <a class="el" href="UGameDataManager_8cpp_source.html#l00140">GetKnockbackData()</a>, <a class="el" href="UGameDataManager_8cpp_source.html#l00116">LoadData_KnockbackTable()</a>.</p>
+
+</div>
+</div>
+<a id="acd8b13957d84c801426442eb8bd70e78" name="acd8b13957d84c801426442eb8bd70e78"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acd8b13957d84c801426442eb8bd70e78">&#9670;&#160;</a></span>KnockbackTable</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TSoftObjectPtr&lt;UDataTable&gt; UGameDataManager::KnockbackTable</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="UGameDataManager_8h_source.html">UGameDataManager.h</a> 파일의 <a class="el" href="UGameDataManager_8h_source.html#l00062">62</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UGameDataManager_8cpp_source.html#l00116">LoadData_KnockbackTable()</a>.</p>
+
+</div>
+</div>
+<hr/>이 클래스에 대한 문서화 페이지는 다음의 파일들로부터 생성되었습니다.:<ul>
+<li>Source/LatteLibrary/Manager/Public/<a class="el" href="UGameDataManager_8h_source.html">UGameDataManager.h</a></li>
+<li>Source/LatteLibrary/Manager/Private/<a class="el" href="UGameDataManager_8cpp_source.html">UGameDataManager.cpp</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="classUGameDataManager.html">UGameDataManager</a></li>
+    <li class="footer">생성시간 : 목 11월 13 2025 16:22:32, 프로젝트명 : Onepiece Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
+</body>
+</html>

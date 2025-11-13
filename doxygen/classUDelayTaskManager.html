@@ -1,0 +1,751 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Onepiece Project Documentation: UDelayTaskManager 클래스 참조</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript">
+window.MathJax = {
+  options: {
+    ignoreHtmlClass: 'tex2jax_ignore',
+    processHtmlClass: 'tex2jax_process'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<script type="text/javascript" src="darkmode_toggle.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Onepiece Project Documentation<span id="projectnumber">&#160;1.0.0</span>
+   </div>
+   <div id="projectbrief">Unreal Engine 5.6 C++ Project Documentation</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 다음에 의해 생성됨 :  Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','검색');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('classUDelayTaskManager.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">로딩중...</div>
+<div class="SRStatus" id="Searching">검색중...</div>
+<div class="SRStatus" id="NoMatches">일치하는것 없음</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">클래스</a> &#124;
+<a href="#pub-methods">Public 멤버 함수</a> &#124;
+<a href="#pri-methods">Private 멤버 함수</a> &#124;
+<a href="#pri-attribs">Private 속성</a> &#124;
+<a href="classUDelayTaskManager-members.html">모든 멤버 목록</a>  </div>
+  <div class="headertitle"><div class="title">UDelayTaskManager 클래스 참조</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>지정된 시간 후에 함수(콜백)를 실행하는 지연 작업 관리 서브시스템입니다.  
+ <a href="classUDelayTaskManager.html#details">더 자세히 ...</a></p>
+
+<p><code>#include &lt;<a class="el" href="UDelayTaskManager_8h_source.html">UDelayTaskManager.h</a>&gt;</code></p>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> UDelayTaskManager에 대한 상속 다이어그램 : </div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classUDelayTaskManager__inherit__graph.svg" width="232" height="424"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> UDelayTaskManager에 대한 협력 다이어그램:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classUDelayTaskManager__coll__graph.svg" width="232" height="424"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+클래스</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUDelayTaskManager_1_1FEntry.html">FEntry</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public 멤버 함수</h2></td></tr>
+<tr class="memitem:a359e5ddf1d12b6042175f4765d000ed7" id="r_a359e5ddf1d12b6042175f4765d000ed7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUDelayTaskManager.html#a359e5ddf1d12b6042175f4765d000ed7">Cancel</a> (const <a class="el" href="structFDelayHandle.html">FDelayHandle</a> &amp;Handle)</td></tr>
+<tr class="separator:a359e5ddf1d12b6042175f4765d000ed7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a648e0027091d3783817ed4ad414620da" id="r_a648e0027091d3783817ed4ad414620da"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUDelayTaskManager.html#a648e0027091d3783817ed4ad414620da">CancelAll</a> (UObject *Owner)</td></tr>
+<tr class="separator:a648e0027091d3783817ed4ad414620da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a304f3ab272356a43b0b5cdaf3b47251a" id="r_a304f3ab272356a43b0b5cdaf3b47251a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUDelayTaskManager.html#a304f3ab272356a43b0b5cdaf3b47251a">DEFINE_SUBSYSTEM_GETTER_INLINE</a> (<a class="el" href="classUDelayTaskManager.html">UDelayTaskManager</a>)</td></tr>
+<tr class="separator:a304f3ab272356a43b0b5cdaf3b47251a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab7de33edaeb2e60c232a74c3a86ff84f" id="r_ab7de33edaeb2e60c232a74c3a86ff84f"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUDelayTaskManager.html#ab7de33edaeb2e60c232a74c3a86ff84f">Deinitialize</a> () override</td></tr>
+<tr class="separator:ab7de33edaeb2e60c232a74c3a86ff84f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af60e83e9adeabf8b9b309c40da8a60be" id="r_af60e83e9adeabf8b9b309c40da8a60be"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structFDelayHandle.html">FDelayHandle</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUDelayTaskManager.html#af60e83e9adeabf8b9b309c40da8a60be">Delay</a> (UObject *Owner, float Seconds, TFunction&lt; void()&gt; Action)</td></tr>
+<tr class="separator:af60e83e9adeabf8b9b309c40da8a60be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acfa854974c5945327224f2f77287abf2" id="r_acfa854974c5945327224f2f77287abf2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structFDelayHandle.html">FDelayHandle</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUDelayTaskManager.html#acfa854974c5945327224f2f77287abf2">DelayCallBack</a> (UObject *Owner, float Seconds, FDelayCallback Callback)</td></tr>
+<tr class="separator:acfa854974c5945327224f2f77287abf2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afead6ae41bebb72cd3a90cd86fd9eeda" id="r_afead6ae41bebb72cd3a90cd86fd9eeda"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUDelayTaskManager.html#afead6ae41bebb72cd3a90cd86fd9eeda">Initialize</a> (FSubsystemCollectionBase &amp;Collection) override</td></tr>
+<tr class="separator:afead6ae41bebb72cd3a90cd86fd9eeda"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af771ffde302faa23def27e4769f9776e" id="r_af771ffde302faa23def27e4769f9776e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structFDelayHandle.html">FDelayHandle</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUDelayTaskManager.html#af771ffde302faa23def27e4769f9776e">NextTick</a> (UObject *Owner, TFunction&lt; void()&gt; Action)</td></tr>
+<tr class="separator:af771ffde302faa23def27e4769f9776e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Private 멤버 함수</h2></td></tr>
+<tr class="memitem:a607f1cd9f8baf963d1c08038e116e2f7" id="r_a607f1cd9f8baf963d1c08038e116e2f7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUDelayTaskManager.html#a607f1cd9f8baf963d1c08038e116e2f7">ExecuteById</a> (uint64 SeqIndex)</td></tr>
+<tr class="separator:a607f1cd9f8baf963d1c08038e116e2f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e1ff6a0d1d04f8b069b57874d3fc245" id="r_a4e1ff6a0d1d04f8b069b57874d3fc245"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUDelayTaskManager.html#a4e1ff6a0d1d04f8b069b57874d3fc245">RemoveEntryById</a> (uint64 SeqIndex)</td></tr>
+<tr class="separator:a4e1ff6a0d1d04f8b069b57874d3fc245"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private 속성</h2></td></tr>
+<tr class="memitem:afc5800d645cb2888723bee5042181c5b" id="r_afc5800d645cb2888723bee5042181c5b"><td class="memItemLeft" align="right" valign="top">TMap&lt; uint64, <a class="el" href="structUDelayTaskManager_1_1FEntry.html">FEntry</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUDelayTaskManager.html#afc5800d645cb2888723bee5042181c5b">Entries</a></td></tr>
+<tr class="separator:afc5800d645cb2888723bee5042181c5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a560ea4f7c70e08948b591b6615c5f666" id="r_a560ea4f7c70e08948b591b6615c5f666"><td class="memItemLeft" align="right" valign="top">uint64&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUDelayTaskManager.html#a560ea4f7c70e08948b591b6615c5f666">NextSeqIndex</a> = 1</td></tr>
+<tr class="separator:a560ea4f7c70e08948b591b6615c5f666"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a871566c190df1aee76947f4a8a443c80" id="r_a871566c190df1aee76947f4a8a443c80"><td class="memItemLeft" align="right" valign="top">TMultiMap&lt; TWeakObjectPtr&lt; UObject &gt;, uint64 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUDelayTaskManager.html#a871566c190df1aee76947f4a8a443c80">OwnerIndex</a></td></tr>
+<tr class="separator:a871566c190df1aee76947f4a8a443c80"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">상세한 설명</h2>
+<div class="textblock"><p>지정된 시간 후에 함수(콜백)를 실행하는 지연 작업 관리 서브시스템입니다. </p>
+<p>C++ 람다 및 블루프린트 델리게이트를 모두 지원하며, 생성된 작업을 핸들로 제어하거나 특정 오너와 관련된 모든 작업을 한 번에 취소할 수 있습니다. </p>
+
+<p class="definition"><a class="el" href="UDelayTaskManager_8h_source.html">UDelayTaskManager.h</a> 파일의 <a class="el" href="UDelayTaskManager_8h_source.html#l00039">39</a> 번째 라인에서 정의되었습니다.</p>
+</div><h2 class="groupheader">멤버 함수 문서화</h2>
+<a id="a359e5ddf1d12b6042175f4765d000ed7" name="a359e5ddf1d12b6042175f4765d000ed7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a359e5ddf1d12b6042175f4765d000ed7">&#9670;&#160;</a></span>Cancel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool UDelayTaskManager::Cancel </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structFDelayHandle.html">FDelayHandle</a> &amp;&#160;</td>
+          <td class="paramname"><em>Handle</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="UDelayTaskManager_8cpp_source.html">UDelayTaskManager.cpp</a> 파일의 <a class="el" href="UDelayTaskManager_8cpp_source.html#l00101">101</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  102</span>{</div>
+<div class="line"><span class="lineno">  103</span>    <span class="keywordflow">if</span> (!GetWorld() || !Handle.<a class="code hl_function" href="structFDelayHandle.html#a65b5c7cb5e60128f014d7b80122c2a36">IsValid</a>())</div>
+<div class="line"><span class="lineno">  104</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  105</span> </div>
+<div class="line"><span class="lineno">  106</span>    FEntry Entry;</div>
+<div class="line"><span class="lineno">  107</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUDelayTaskManager.html#afc5800d645cb2888723bee5042181c5b">Entries</a>.RemoveAndCopyValue(Handle.<a class="code hl_variable" href="structFDelayHandle.html#a8867e58391e5eb6a8b7567cecba6881b">SeqIndex</a>, Entry))</div>
+<div class="line"><span class="lineno">  108</span>    {</div>
+<div class="line"><span class="lineno">  109</span>        <span class="comment">// 엔진 타이머도 정리</span></div>
+<div class="line"><span class="lineno">  110</span>        GetWorld()-&gt;GetTimerManager().ClearTimer(Entry.TimerHandle);</div>
+<div class="line"><span class="lineno">  111</span>        <a class="code hl_variable" href="classUDelayTaskManager.html#a871566c190df1aee76947f4a8a443c80">OwnerIndex</a>.RemoveSingle(Entry.Owner, Handle.<a class="code hl_variable" href="structFDelayHandle.html#a8867e58391e5eb6a8b7567cecba6881b">SeqIndex</a>);</div>
+<div class="line"><span class="lineno">  112</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  113</span>    }</div>
+<div class="line"><span class="lineno">  114</span> </div>
+<div class="line"><span class="lineno">  115</span>    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  116</span>}</div>
+<div class="ttc" id="aclassUDelayTaskManager_html_a871566c190df1aee76947f4a8a443c80"><div class="ttname"><a href="classUDelayTaskManager.html#a871566c190df1aee76947f4a8a443c80">UDelayTaskManager::OwnerIndex</a></div><div class="ttdeci">TMultiMap&lt; TWeakObjectPtr&lt; UObject &gt;, uint64 &gt; OwnerIndex</div><div class="ttdef"><b>Definition</b> <a href="UDelayTaskManager_8h_source.html#l00084">UDelayTaskManager.h:84</a></div></div>
+<div class="ttc" id="aclassUDelayTaskManager_html_afc5800d645cb2888723bee5042181c5b"><div class="ttname"><a href="classUDelayTaskManager.html#afc5800d645cb2888723bee5042181c5b">UDelayTaskManager::Entries</a></div><div class="ttdeci">TMap&lt; uint64, FEntry &gt; Entries</div><div class="ttdef"><b>Definition</b> <a href="UDelayTaskManager_8h_source.html#l00081">UDelayTaskManager.h:81</a></div></div>
+<div class="ttc" id="astructFDelayHandle_html_a65b5c7cb5e60128f014d7b80122c2a36"><div class="ttname"><a href="structFDelayHandle.html#a65b5c7cb5e60128f014d7b80122c2a36">FDelayHandle::IsValid</a></div><div class="ttdeci">bool IsValid() const</div><div class="ttdef"><b>Definition</b> <a href="UDelayTaskManager_8h_source.html#l00026">UDelayTaskManager.h:26</a></div></div>
+<div class="ttc" id="astructFDelayHandle_html_a8867e58391e5eb6a8b7567cecba6881b"><div class="ttname"><a href="structFDelayHandle.html#a8867e58391e5eb6a8b7567cecba6881b">FDelayHandle::SeqIndex</a></div><div class="ttdeci">uint64 SeqIndex</div><div class="ttdef"><b>Definition</b> <a href="UDelayTaskManager_8h_source.html#l00024">UDelayTaskManager.h:24</a></div></div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="UDelayTaskManager_8h_source.html#l00081">Entries</a>, <a class="el" href="UDelayTaskManager_8h_source.html#l00026">FDelayHandle::IsValid()</a>, <a class="el" href="UDelayTaskManager_8h_source.html#l00073">UDelayTaskManager::FEntry::Owner</a>, <a class="el" href="UDelayTaskManager_8h_source.html#l00084">OwnerIndex</a>, <a class="el" href="UDelayTaskManager_8h_source.html#l00024">FDelayHandle::SeqIndex</a>, <a class="el" href="UDelayTaskManager_8h_source.html#l00077">UDelayTaskManager::FEntry::TimerHandle</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classUDelayTaskManager_a359e5ddf1d12b6042175f4765d000ed7_cgraph.svg" width="388" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a648e0027091d3783817ed4ad414620da" name="a648e0027091d3783817ed4ad414620da"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a648e0027091d3783817ed4ad414620da">&#9670;&#160;</a></span>CancelAll()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void UDelayTaskManager::CancelAll </td>
+          <td>(</td>
+          <td class="paramtype">UObject *&#160;</td>
+          <td class="paramname"><em>Owner</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="UDelayTaskManager_8cpp_source.html">UDelayTaskManager.cpp</a> 파일의 <a class="el" href="UDelayTaskManager_8cpp_source.html#l00118">118</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  119</span>{</div>
+<div class="line"><span class="lineno">  120</span>    <span class="keywordflow">if</span> (!GetWorld() || !Owner)</div>
+<div class="line"><span class="lineno">  121</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  122</span> </div>
+<div class="line"><span class="lineno">  123</span>    TArray&lt;uint64&gt; Ids;</div>
+<div class="line"><span class="lineno">  124</span>    <a class="code hl_variable" href="classUDelayTaskManager.html#a871566c190df1aee76947f4a8a443c80">OwnerIndex</a>.MultiFind(Owner, Ids);</div>
+<div class="line"><span class="lineno">  125</span>    <span class="keywordflow">if</span> (Ids.Num() == 0)</div>
+<div class="line"><span class="lineno">  126</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  127</span> </div>
+<div class="line"><span class="lineno">  128</span>    FTimerManager&amp; TM = GetWorld()-&gt;GetTimerManager();</div>
+<div class="line"><span class="lineno">  129</span> </div>
+<div class="line"><span class="lineno">  130</span>    <span class="keywordflow">for</span> (uint64 Seq : Ids)</div>
+<div class="line"><span class="lineno">  131</span>    {</div>
+<div class="line"><span class="lineno">  132</span>        FEntry Entry;</div>
+<div class="line"><span class="lineno">  133</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUDelayTaskManager.html#afc5800d645cb2888723bee5042181c5b">Entries</a>.RemoveAndCopyValue(Seq, Entry))</div>
+<div class="line"><span class="lineno">  134</span>        {</div>
+<div class="line"><span class="lineno">  135</span>            TM.ClearTimer(Entry.TimerHandle);</div>
+<div class="line"><span class="lineno">  136</span>            <a class="code hl_variable" href="classUDelayTaskManager.html#a871566c190df1aee76947f4a8a443c80">OwnerIndex</a>.RemoveSingle(Entry.Owner, Seq);</div>
+<div class="line"><span class="lineno">  137</span>        }</div>
+<div class="line"><span class="lineno">  138</span>    }</div>
+<div class="line"><span class="lineno">  139</span>}</div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="UDelayTaskManager_8h_source.html#l00081">Entries</a>, <a class="el" href="UDelayTaskManager_8h_source.html#l00073">UDelayTaskManager::FEntry::Owner</a>, <a class="el" href="UDelayTaskManager_8h_source.html#l00084">OwnerIndex</a>, <a class="el" href="UDelayTaskManager_8h_source.html#l00077">UDelayTaskManager::FEntry::TimerHandle</a>.</p>
+
+</div>
+</div>
+<a id="a304f3ab272356a43b0b5cdaf3b47251a" name="a304f3ab272356a43b0b5cdaf3b47251a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a304f3ab272356a43b0b5cdaf3b47251a">&#9670;&#160;</a></span>DEFINE_SUBSYSTEM_GETTER_INLINE()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">UDelayTaskManager::DEFINE_SUBSYSTEM_GETTER_INLINE </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classUDelayTaskManager.html">UDelayTaskManager</a>&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab7de33edaeb2e60c232a74c3a86ff84f" name="ab7de33edaeb2e60c232a74c3a86ff84f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab7de33edaeb2e60c232a74c3a86ff84f">&#9670;&#160;</a></span>Deinitialize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void UDelayTaskManager::Deinitialize </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="UDelayTaskManager_8cpp_source.html">UDelayTaskManager.cpp</a> 파일의 <a class="el" href="UDelayTaskManager_8cpp_source.html#l00016">16</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   17</span>{</div>
+<div class="line"><span class="lineno">   18</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> World = GetWorld())</div>
+<div class="line"><span class="lineno">   19</span>    {</div>
+<div class="line"><span class="lineno">   20</span>        FTimerManager&amp; TM = World-&gt;GetTimerManager();</div>
+<div class="line"><span class="lineno">   21</span>        </div>
+<div class="line"><span class="lineno">   22</span>        <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; KVP : <a class="code hl_variable" href="classUDelayTaskManager.html#afc5800d645cb2888723bee5042181c5b">Entries</a>)</div>
+<div class="line"><span class="lineno">   23</span>        {</div>
+<div class="line"><span class="lineno">   24</span>            FTimerHandle TempHandle = KVP.Value.TimerHandle;</div>
+<div class="line"><span class="lineno">   25</span>            World-&gt;GetTimerManager().ClearTimer(TempHandle);</div>
+<div class="line"><span class="lineno">   26</span>        }</div>
+<div class="line"><span class="lineno">   27</span>    }</div>
+<div class="line"><span class="lineno">   28</span>    <a class="code hl_variable" href="classUDelayTaskManager.html#afc5800d645cb2888723bee5042181c5b">Entries</a>.Empty();</div>
+<div class="line"><span class="lineno">   29</span>    <a class="code hl_variable" href="classUDelayTaskManager.html#a871566c190df1aee76947f4a8a443c80">OwnerIndex</a>.Empty();</div>
+<div class="line"><span class="lineno">   30</span>    </div>
+<div class="line"><span class="lineno">   31</span>    Super::Deinitialize();</div>
+<div class="line"><span class="lineno">   32</span>}</div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="UDelayTaskManager_8h_source.html#l00081">Entries</a>, <a class="el" href="UDelayTaskManager_8h_source.html#l00084">OwnerIndex</a>.</p>
+
+</div>
+</div>
+<a id="af60e83e9adeabf8b9b309c40da8a60be" name="af60e83e9adeabf8b9b309c40da8a60be"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af60e83e9adeabf8b9b309c40da8a60be">&#9670;&#160;</a></span>Delay()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structFDelayHandle.html">FDelayHandle</a> UDelayTaskManager::Delay </td>
+          <td>(</td>
+          <td class="paramtype">UObject *&#160;</td>
+          <td class="paramname"><em>Owner</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>Seconds</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">TFunction&lt; void()&gt;&#160;</td>
+          <td class="paramname"><em>Action</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="UDelayTaskManager_8cpp_source.html">UDelayTaskManager.cpp</a> 파일의 <a class="el" href="UDelayTaskManager_8cpp_source.html#l00042">42</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   43</span>{</div>
+<div class="line"><span class="lineno">   44</span>    <a class="code hl_struct" href="structFDelayHandle.html">FDelayHandle</a> Out;</div>
+<div class="line"><span class="lineno">   45</span>    <span class="keywordflow">if</span> (!GetWorld() || Seconds &lt; 0.f || !Action)</div>
+<div class="line"><span class="lineno">   46</span>        <span class="keywordflow">return</span> Out;</div>
+<div class="line"><span class="lineno">   47</span> </div>
+<div class="line"><span class="lineno">   48</span>    <span class="keyword">const</span> uint64 SeqIndex = <a class="code hl_variable" href="classUDelayTaskManager.html#a560ea4f7c70e08948b591b6615c5f666">NextSeqIndex</a>++;</div>
+<div class="line"><span class="lineno">   49</span> </div>
+<div class="line"><span class="lineno">   50</span>    FTimerHandle Handle;</div>
+<div class="line"><span class="lineno">   51</span>    FTimerDelegate D;</div>
+<div class="line"><span class="lineno">   52</span>    D.BindUObject(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUDelayTaskManager.html#a607f1cd9f8baf963d1c08038e116e2f7">UDelayTaskManager::ExecuteById</a>, SeqIndex); <span class="comment">// 핸들 대신 Seq 바인딩</span></div>
+<div class="line"><span class="lineno">   53</span> </div>
+<div class="line"><span class="lineno">   54</span>    GetWorld()-&gt;GetTimerManager().SetTimer(Handle, D, Seconds, <span class="comment">/*bLoop=*/</span><span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">   55</span> </div>
+<div class="line"><span class="lineno">   56</span>    FEntry&amp; E  = <a class="code hl_variable" href="classUDelayTaskManager.html#afc5800d645cb2888723bee5042181c5b">Entries</a>.Add(SeqIndex);</div>
+<div class="line"><span class="lineno">   57</span>    E.Owner    = Owner;</div>
+<div class="line"><span class="lineno">   58</span>    E.Action   = MoveTemp(Action);</div>
+<div class="line"><span class="lineno">   59</span>    E.SeqIndex = SeqIndex;</div>
+<div class="line"><span class="lineno">   60</span>    E.TimerHandle = Handle;</div>
+<div class="line"><span class="lineno">   61</span> </div>
+<div class="line"><span class="lineno">   62</span>    <span class="keywordflow">if</span> (Owner)</div>
+<div class="line"><span class="lineno">   63</span>    {</div>
+<div class="line"><span class="lineno">   64</span>        <a class="code hl_variable" href="classUDelayTaskManager.html#a871566c190df1aee76947f4a8a443c80">OwnerIndex</a>.Add(Owner, SeqIndex);</div>
+<div class="line"><span class="lineno">   65</span>    }</div>
+<div class="line"><span class="lineno">   66</span> </div>
+<div class="line"><span class="lineno">   67</span>    Out.<a class="code hl_variable" href="structFDelayHandle.html#a8867e58391e5eb6a8b7567cecba6881b">SeqIndex</a> = SeqIndex;</div>
+<div class="line"><span class="lineno">   68</span>    <span class="keywordflow">return</span> Out;</div>
+<div class="line"><span class="lineno">   69</span>}</div>
+<div class="ttc" id="aclassUDelayTaskManager_html_a560ea4f7c70e08948b591b6615c5f666"><div class="ttname"><a href="classUDelayTaskManager.html#a560ea4f7c70e08948b591b6615c5f666">UDelayTaskManager::NextSeqIndex</a></div><div class="ttdeci">uint64 NextSeqIndex</div><div class="ttdef"><b>Definition</b> <a href="UDelayTaskManager_8h_source.html#l00087">UDelayTaskManager.h:87</a></div></div>
+<div class="ttc" id="aclassUDelayTaskManager_html_a607f1cd9f8baf963d1c08038e116e2f7"><div class="ttname"><a href="classUDelayTaskManager.html#a607f1cd9f8baf963d1c08038e116e2f7">UDelayTaskManager::ExecuteById</a></div><div class="ttdeci">void ExecuteById(uint64 SeqIndex)</div><div class="ttdef"><b>Definition</b> <a href="UDelayTaskManager_8cpp_source.html#l00141">UDelayTaskManager.cpp:141</a></div></div>
+<div class="ttc" id="astructFDelayHandle_html"><div class="ttname"><a href="structFDelayHandle.html">FDelayHandle</a></div><div class="ttdoc">UDelayTaskManager에 의해 생성된 지연 작업을 식별하고 제어하기 위한 핸들입니다.</div><div class="ttdef"><b>Definition</b> <a href="UDelayTaskManager_8h_source.html#l00020">UDelayTaskManager.h:21</a></div></div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="UDelayTaskManager_8h_source.html#l00074">UDelayTaskManager::FEntry::Action</a>, <a class="el" href="UDelayTaskManager_8h_source.html#l00081">Entries</a>, <a class="el" href="UDelayTaskManager_8cpp_source.html#l00141">ExecuteById()</a>, <a class="el" href="UDelayTaskManager_8h_source.html#l00087">NextSeqIndex</a>, <a class="el" href="UDelayTaskManager_8h_source.html#l00073">UDelayTaskManager::FEntry::Owner</a>, <a class="el" href="UDelayTaskManager_8h_source.html#l00084">OwnerIndex</a>, <a class="el" href="UDelayTaskManager_8h_source.html#l00024">FDelayHandle::SeqIndex</a>, <a class="el" href="UDelayTaskManager_8h_source.html#l00075">UDelayTaskManager::FEntry::SeqIndex</a>, <a class="el" href="UDelayTaskManager_8h_source.html#l00077">UDelayTaskManager::FEntry::TimerHandle</a>.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UDelayTaskManager_8cpp_source.html#l00034">DelayCallBack()</a>.</p>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classUDelayTaskManager_af60e83e9adeabf8b9b309c40da8a60be_cgraph.svg" width="387" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classUDelayTaskManager_af60e83e9adeabf8b9b309c40da8a60be_icgraph.svg" width="387" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="acfa854974c5945327224f2f77287abf2" name="acfa854974c5945327224f2f77287abf2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acfa854974c5945327224f2f77287abf2">&#9670;&#160;</a></span>DelayCallBack()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structFDelayHandle.html">FDelayHandle</a> UDelayTaskManager::DelayCallBack </td>
+          <td>(</td>
+          <td class="paramtype">UObject *&#160;</td>
+          <td class="paramname"><em>Owner</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>Seconds</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FDelayCallback&#160;</td>
+          <td class="paramname"><em>Callback</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="UDelayTaskManager_8cpp_source.html">UDelayTaskManager.cpp</a> 파일의 <a class="el" href="UDelayTaskManager_8cpp_source.html#l00034">34</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   35</span>{</div>
+<div class="line"><span class="lineno">   36</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classUDelayTaskManager.html#af60e83e9adeabf8b9b309c40da8a60be">Delay</a>(Owner, Seconds, [Callback]() {</div>
+<div class="line"><span class="lineno">   37</span>        <span class="keywordflow">if</span> (Callback.IsBound())</div>
+<div class="line"><span class="lineno">   38</span>            Callback.Execute();</div>
+<div class="line"><span class="lineno">   39</span>    });</div>
+<div class="line"><span class="lineno">   40</span>}</div>
+<div class="ttc" id="aclassUDelayTaskManager_html_af60e83e9adeabf8b9b309c40da8a60be"><div class="ttname"><a href="classUDelayTaskManager.html#af60e83e9adeabf8b9b309c40da8a60be">UDelayTaskManager::Delay</a></div><div class="ttdeci">FDelayHandle Delay(UObject *Owner, float Seconds, TFunction&lt; void()&gt; Action)</div><div class="ttdef"><b>Definition</b> <a href="UDelayTaskManager_8cpp_source.html#l00042">UDelayTaskManager.cpp:42</a></div></div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="UDelayTaskManager_8cpp_source.html#l00042">Delay()</a>.</p>
+<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-5-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classUDelayTaskManager_acfa854974c5945327224f2f77287abf2_cgraph.svg" width="599" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a607f1cd9f8baf963d1c08038e116e2f7" name="a607f1cd9f8baf963d1c08038e116e2f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a607f1cd9f8baf963d1c08038e116e2f7">&#9670;&#160;</a></span>ExecuteById()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void UDelayTaskManager::ExecuteById </td>
+          <td>(</td>
+          <td class="paramtype">uint64&#160;</td>
+          <td class="paramname"><em>SeqIndex</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="UDelayTaskManager_8cpp_source.html">UDelayTaskManager.cpp</a> 파일의 <a class="el" href="UDelayTaskManager_8cpp_source.html#l00141">141</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  142</span>{</div>
+<div class="line"><span class="lineno">  143</span>    FEntry Entry;</div>
+<div class="line"><span class="lineno">  144</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classUDelayTaskManager.html#afc5800d645cb2888723bee5042181c5b">Entries</a>.RemoveAndCopyValue(SeqIndex, Entry))</div>
+<div class="line"><span class="lineno">  145</span>    {</div>
+<div class="line"><span class="lineno">  146</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  147</span>    }</div>
+<div class="line"><span class="lineno">  148</span> </div>
+<div class="line"><span class="lineno">  149</span>    <span class="keyword">const</span> <span class="keywordtype">bool</span> bOwnerValid = Entry.Owner.IsValid();</div>
+<div class="line"><span class="lineno">  150</span>    <span class="keywordflow">if</span> (bOwnerValid  &amp;&amp; Entry.Action )</div>
+<div class="line"><span class="lineno">  151</span>    {</div>
+<div class="line"><span class="lineno">  152</span>        Entry.Action();</div>
+<div class="line"><span class="lineno">  153</span>    }</div>
+<div class="line"><span class="lineno">  154</span> </div>
+<div class="line"><span class="lineno">  155</span>    <a class="code hl_variable" href="classUDelayTaskManager.html#a871566c190df1aee76947f4a8a443c80">OwnerIndex</a>.RemoveSingle(Entry.Owner, SeqIndex);</div>
+<div class="line"><span class="lineno">  156</span>}</div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="UDelayTaskManager_8h_source.html#l00074">UDelayTaskManager::FEntry::Action</a>, <a class="el" href="UDelayTaskManager_8h_source.html#l00081">Entries</a>, <a class="el" href="UDelayTaskManager_8h_source.html#l00073">UDelayTaskManager::FEntry::Owner</a>, <a class="el" href="UDelayTaskManager_8h_source.html#l00084">OwnerIndex</a>.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UDelayTaskManager_8cpp_source.html#l00042">Delay()</a>, <a class="el" href="UDelayTaskManager_8cpp_source.html#l00071">NextTick()</a>.</p>
+<div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-6-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-6-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-6-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classUDelayTaskManager_a607f1cd9f8baf963d1c08038e116e2f7_icgraph.svg" width="599" height="115"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="afead6ae41bebb72cd3a90cd86fd9eeda" name="afead6ae41bebb72cd3a90cd86fd9eeda"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afead6ae41bebb72cd3a90cd86fd9eeda">&#9670;&#160;</a></span>Initialize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void UDelayTaskManager::Initialize </td>
+          <td>(</td>
+          <td class="paramtype">FSubsystemCollectionBase &amp;&#160;</td>
+          <td class="paramname"><em>Collection</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="UDelayTaskManager_8cpp_source.html">UDelayTaskManager.cpp</a> 파일의 <a class="el" href="UDelayTaskManager_8cpp_source.html#l00011">11</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   12</span>{</div>
+<div class="line"><span class="lineno">   13</span>    Super::Initialize(Collection);</div>
+<div class="line"><span class="lineno">   14</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="af771ffde302faa23def27e4769f9776e" name="af771ffde302faa23def27e4769f9776e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af771ffde302faa23def27e4769f9776e">&#9670;&#160;</a></span>NextTick()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structFDelayHandle.html">FDelayHandle</a> UDelayTaskManager::NextTick </td>
+          <td>(</td>
+          <td class="paramtype">UObject *&#160;</td>
+          <td class="paramname"><em>Owner</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">TFunction&lt; void()&gt;&#160;</td>
+          <td class="paramname"><em>Action</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="UDelayTaskManager_8cpp_source.html">UDelayTaskManager.cpp</a> 파일의 <a class="el" href="UDelayTaskManager_8cpp_source.html#l00071">71</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   72</span>{</div>
+<div class="line"><span class="lineno">   73</span>    <a class="code hl_struct" href="structFDelayHandle.html">FDelayHandle</a> Out;</div>
+<div class="line"><span class="lineno">   74</span>    <span class="keywordflow">if</span> (!GetWorld() || !Action)</div>
+<div class="line"><span class="lineno">   75</span>        <span class="keywordflow">return</span> Out;</div>
+<div class="line"><span class="lineno">   76</span> </div>
+<div class="line"><span class="lineno">   77</span>    <span class="keyword">const</span> uint64 SeqIndex = <a class="code hl_variable" href="classUDelayTaskManager.html#a560ea4f7c70e08948b591b6615c5f666">NextSeqIndex</a>++;</div>
+<div class="line"><span class="lineno">   78</span> </div>
+<div class="line"><span class="lineno">   79</span>    <span class="comment">// 다음 틱 보장 &amp; 취소 가능성을 위해 0초 타이머 사용(엔진은 다음 프레임에 실행)</span></div>
+<div class="line"><span class="lineno">   80</span>    FTimerHandle Handle;</div>
+<div class="line"><span class="lineno">   81</span>    FTimerDelegate D;</div>
+<div class="line"><span class="lineno">   82</span>    D.BindUObject(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUDelayTaskManager.html#a607f1cd9f8baf963d1c08038e116e2f7">UDelayTaskManager::ExecuteById</a>, SeqIndex);</div>
+<div class="line"><span class="lineno">   83</span> </div>
+<div class="line"><span class="lineno">   84</span>    GetWorld()-&gt;GetTimerManager().SetTimer(Handle, D, <span class="comment">/*Rate=*/</span>0.0f, <span class="comment">/*bLoop=*/</span><span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">   85</span>    </div>
+<div class="line"><span class="lineno">   86</span>    FEntry&amp; E  = <a class="code hl_variable" href="classUDelayTaskManager.html#afc5800d645cb2888723bee5042181c5b">Entries</a>.Add(SeqIndex);</div>
+<div class="line"><span class="lineno">   87</span>    E.Owner    = Owner;</div>
+<div class="line"><span class="lineno">   88</span>    E.Action   = MoveTemp(Action);</div>
+<div class="line"><span class="lineno">   89</span>    E.SeqIndex = SeqIndex;</div>
+<div class="line"><span class="lineno">   90</span>    E.TimerHandle = Handle;</div>
+<div class="line"><span class="lineno">   91</span> </div>
+<div class="line"><span class="lineno">   92</span>    <span class="keywordflow">if</span> (Owner)</div>
+<div class="line"><span class="lineno">   93</span>    {</div>
+<div class="line"><span class="lineno">   94</span>        <a class="code hl_variable" href="classUDelayTaskManager.html#a871566c190df1aee76947f4a8a443c80">OwnerIndex</a>.Add(Owner, SeqIndex);</div>
+<div class="line"><span class="lineno">   95</span>    }</div>
+<div class="line"><span class="lineno">   96</span>    </div>
+<div class="line"><span class="lineno">   97</span>    Out.<a class="code hl_variable" href="structFDelayHandle.html#a8867e58391e5eb6a8b7567cecba6881b">SeqIndex</a> = SeqIndex;</div>
+<div class="line"><span class="lineno">   98</span>    <span class="keywordflow">return</span> Out;</div>
+<div class="line"><span class="lineno">   99</span>}</div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="UDelayTaskManager_8h_source.html#l00074">UDelayTaskManager::FEntry::Action</a>, <a class="el" href="UDelayTaskManager_8h_source.html#l00081">Entries</a>, <a class="el" href="UDelayTaskManager_8cpp_source.html#l00141">ExecuteById()</a>, <a class="el" href="UDelayTaskManager_8h_source.html#l00087">NextSeqIndex</a>, <a class="el" href="UDelayTaskManager_8h_source.html#l00073">UDelayTaskManager::FEntry::Owner</a>, <a class="el" href="UDelayTaskManager_8h_source.html#l00084">OwnerIndex</a>, <a class="el" href="UDelayTaskManager_8h_source.html#l00024">FDelayHandle::SeqIndex</a>, <a class="el" href="UDelayTaskManager_8h_source.html#l00075">UDelayTaskManager::FEntry::SeqIndex</a>, <a class="el" href="UDelayTaskManager_8h_source.html#l00077">UDelayTaskManager::FEntry::TimerHandle</a>.</p>
+<div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-7-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-7-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-7-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classUDelayTaskManager_af771ffde302faa23def27e4769f9776e_cgraph.svg" width="387" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a4e1ff6a0d1d04f8b069b57874d3fc245" name="a4e1ff6a0d1d04f8b069b57874d3fc245"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4e1ff6a0d1d04f8b069b57874d3fc245">&#9670;&#160;</a></span>RemoveEntryById()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void UDelayTaskManager::RemoveEntryById </td>
+          <td>(</td>
+          <td class="paramtype">uint64&#160;</td>
+          <td class="paramname"><em>SeqIndex</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="UDelayTaskManager_8cpp_source.html">UDelayTaskManager.cpp</a> 파일의 <a class="el" href="UDelayTaskManager_8cpp_source.html#l00158">158</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  159</span>{</div>
+<div class="line"><span class="lineno">  160</span>    <span class="keywordflow">if</span> (FEntry* Found = <a class="code hl_variable" href="classUDelayTaskManager.html#afc5800d645cb2888723bee5042181c5b">Entries</a>.Find(SeqIndex))</div>
+<div class="line"><span class="lineno">  161</span>    {</div>
+<div class="line"><span class="lineno">  162</span>        <a class="code hl_variable" href="classUDelayTaskManager.html#a871566c190df1aee76947f4a8a443c80">OwnerIndex</a>.RemoveSingle(Found-&gt;Owner, SeqIndex);</div>
+<div class="line"><span class="lineno">  163</span>        <a class="code hl_variable" href="classUDelayTaskManager.html#afc5800d645cb2888723bee5042181c5b">Entries</a>.Remove(SeqIndex);</div>
+<div class="line"><span class="lineno">  164</span>    }</div>
+<div class="line"><span class="lineno">  165</span>}</div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="UDelayTaskManager_8h_source.html#l00081">Entries</a>, <a class="el" href="UDelayTaskManager_8h_source.html#l00084">OwnerIndex</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">멤버 데이터 문서화</h2>
+<a id="afc5800d645cb2888723bee5042181c5b" name="afc5800d645cb2888723bee5042181c5b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc5800d645cb2888723bee5042181c5b">&#9670;&#160;</a></span>Entries</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">TMap&lt;uint64, <a class="el" href="structUDelayTaskManager_1_1FEntry.html">FEntry</a>&gt; UDelayTaskManager::Entries</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="UDelayTaskManager_8h_source.html">UDelayTaskManager.h</a> 파일의 <a class="el" href="UDelayTaskManager_8h_source.html#l00081">81</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UDelayTaskManager_8cpp_source.html#l00101">Cancel()</a>, <a class="el" href="UDelayTaskManager_8cpp_source.html#l00118">CancelAll()</a>, <a class="el" href="UDelayTaskManager_8cpp_source.html#l00016">Deinitialize()</a>, <a class="el" href="UDelayTaskManager_8cpp_source.html#l00042">Delay()</a>, <a class="el" href="UDelayTaskManager_8cpp_source.html#l00141">ExecuteById()</a>, <a class="el" href="UDelayTaskManager_8cpp_source.html#l00071">NextTick()</a>, <a class="el" href="UDelayTaskManager_8cpp_source.html#l00158">RemoveEntryById()</a>.</p>
+
+</div>
+</div>
+<a id="a560ea4f7c70e08948b591b6615c5f666" name="a560ea4f7c70e08948b591b6615c5f666"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a560ea4f7c70e08948b591b6615c5f666">&#9670;&#160;</a></span>NextSeqIndex</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint64 UDelayTaskManager::NextSeqIndex = 1</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="UDelayTaskManager_8h_source.html">UDelayTaskManager.h</a> 파일의 <a class="el" href="UDelayTaskManager_8h_source.html#l00087">87</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UDelayTaskManager_8cpp_source.html#l00042">Delay()</a>, <a class="el" href="UDelayTaskManager_8cpp_source.html#l00071">NextTick()</a>.</p>
+
+</div>
+</div>
+<a id="a871566c190df1aee76947f4a8a443c80" name="a871566c190df1aee76947f4a8a443c80"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a871566c190df1aee76947f4a8a443c80">&#9670;&#160;</a></span>OwnerIndex</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">TMultiMap&lt;TWeakObjectPtr&lt;UObject&gt;, uint64&gt; UDelayTaskManager::OwnerIndex</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="UDelayTaskManager_8h_source.html">UDelayTaskManager.h</a> 파일의 <a class="el" href="UDelayTaskManager_8h_source.html#l00084">84</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UDelayTaskManager_8cpp_source.html#l00101">Cancel()</a>, <a class="el" href="UDelayTaskManager_8cpp_source.html#l00118">CancelAll()</a>, <a class="el" href="UDelayTaskManager_8cpp_source.html#l00016">Deinitialize()</a>, <a class="el" href="UDelayTaskManager_8cpp_source.html#l00042">Delay()</a>, <a class="el" href="UDelayTaskManager_8cpp_source.html#l00141">ExecuteById()</a>, <a class="el" href="UDelayTaskManager_8cpp_source.html#l00071">NextTick()</a>, <a class="el" href="UDelayTaskManager_8cpp_source.html#l00158">RemoveEntryById()</a>.</p>
+
+</div>
+</div>
+<hr/>이 클래스에 대한 문서화 페이지는 다음의 파일들로부터 생성되었습니다.:<ul>
+<li>Source/LatteLibrary/Manager/Public/<a class="el" href="UDelayTaskManager_8h_source.html">UDelayTaskManager.h</a></li>
+<li>Source/LatteLibrary/Manager/Private/<a class="el" href="UDelayTaskManager_8cpp_source.html">UDelayTaskManager.cpp</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="classUDelayTaskManager.html">UDelayTaskManager</a></li>
+    <li class="footer">생성시간 : 목 11월 13 2025 16:22:32, 프로젝트명 : Onepiece Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
+</body>
+</html>

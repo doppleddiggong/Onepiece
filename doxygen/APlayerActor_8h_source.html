@@ -1,0 +1,198 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Onepiece Project Documentation: Source/Onepiece/Character/Public/APlayerActor.h 소스 파일</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript">
+window.MathJax = {
+  options: {
+    ignoreHtmlClass: 'tex2jax_ignore',
+    processHtmlClass: 'tex2jax_process'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<script type="text/javascript" src="darkmode_toggle.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Onepiece Project Documentation<span id="projectnumber">&#160;1.0.0</span>
+   </div>
+   <div id="projectbrief">Unreal Engine 5.6 C++ Project Documentation</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 다음에 의해 생성됨 :  Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','검색');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(0); });
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('APlayerActor_8h_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">로딩중...</div>
+<div class="SRStatus" id="Searching">검색중...</div>
+<div class="SRStatus" id="NoMatches">일치하는것 없음</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">APlayerActor.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="APlayerActor_8h.html">이 파일의 문서화 페이지로 가기</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;CoreMinimal.h&quot;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;GameFramework/Character.h&quot;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;<a class="code" href="IControllable_8h.html">IControllable.h</a>&quot;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;APlayerActor.generated.h&quot;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>UCLASS(Blueprintable, BlueprintType, ClassGroup=(Dopple))</div>
+<div class="foldopen" id="foldopen00021" data-start="{" data-end="};">
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="classAPlayerActor.html">   21</a></span>class ONEPIECE_API <a class="code hl_class" href="classAPlayerActor.html">APlayerActor</a> : public ACharacter, public <a class="code hl_class" href="classIControllable.html">IControllable</a></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>{</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    GENERATED_BODY()</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <a class="code hl_class" href="classAPlayerActor.html">APlayerActor</a>();</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> BeginPlay() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> SetupPlayerInputComponent(<span class="keyword">class</span> UInputComponent* PlayerInputComponent) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> Landed(<span class="keyword">const</span> FHitResult&amp; <a class="code hl_enumvalue" href="EVFXType_8h.html#af8435b1c8c0e40b2bbdf03bb1ca6b4dbaebfe5e1791db03c4cd6ab95801e0977d">Hit</a>) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    UFUNCTION(BlueprintCallable, Category=<span class="stringliteral">&quot;Fly&quot;</span>)</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="keywordtype">void</span> SetFlying();</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    UFUNCTION(BlueprintCallable, Category=<span class="stringliteral">&quot;Fly&quot;</span>)</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keywordtype">void</span> SetFallingToWalk();</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    UFUNCTION(BlueprintCallable, Category=<span class="stringliteral">&quot;Command&quot;</span>)</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="keywordtype">void</span> RecoveryMovementMode(<span class="keyword">const</span> EMovementMode InMovementMode);</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category=<span class="stringliteral">&quot;Command&quot;</span>)</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#aacf8441b9a00ddaae3d9b4cba86de883">   44</a></span>    void OnFlyEnd();</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>public:</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=&quot;Components|System&quot;)</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#a80b2ec2f8deaa6794eef01838947169f">   48</a></span>    TObjectPtr&lt;class UFlySystem&gt; FlySystem;</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>protected:</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=&quot;Camera&quot;, meta=(AllowPrivateAccess=&quot;true&quot;))</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#ac6ce7fa6f2c0a29dc386147130c26802">   52</a></span>    TObjectPtr&lt;class USpringArmComponent&gt; SpringArmComp;</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=&quot;Camera&quot;, meta=(AllowPrivateAccess=&quot;true&quot;))</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#a856ef7f26d46648083f0fcacdc3c0b5d">   55</a></span>    TObjectPtr&lt;class UCameraComponent&gt; FollowCamera;</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category=&quot;RushAttack|Owner&quot;)</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#a3fb4598e21a9c5af2d9b3007adab9496">   58</a></span>    TObjectPtr&lt;class UCharacterMovementComponent&gt; MoveComp;</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    UPROPERTY(VisibleAnywhere, BlueprintReadOnly)</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#ab1f95d1f7bf064023276293ae98d4856">   61</a></span>    TEnumAsByte&lt;EMovementMode&gt; PrevMoveMode;</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    </div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>public: <span class="comment">// Control Interface</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category=&quot;Command&quot;)</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#a0db8efea43cc28a694e55d72014642e1">   65</a></span>    <span class="keywordtype">void</span> Cmd_Move(const FVector2D&amp; Axis) override;</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category=&quot;Command&quot;)</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#a21a14eaae23da75b919b848aa87cb535">   67</a></span>    <span class="keywordtype">void</span> Cmd_Look(const FVector2D&amp; Axis) override;</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category=&quot;Command&quot;)</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#a66ac73e897ad069b4015dae80299b1d0">   69</a></span>    <span class="keywordtype">void</span> Cmd_AltitudeUp() override;</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category=&quot;Command&quot;)</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#a2ab9d4338a3cb9cd0545ab79b9726969">   71</a></span>    <span class="keywordtype">void</span> Cmd_AltitudeDown() override;</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category=&quot;Command&quot;)</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#a2fa88e47ce8ebd32a2e5d8b542705b0f">   73</a></span>    <span class="keywordtype">void</span> Cmd_AltitudeReleased() override;</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category=&quot;Command&quot;)</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#a4bbf9c7d111a15814b99b4e32a79cfda">   76</a></span>    <span class="keywordtype">void</span> Cmd_Jump() override;</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category=&quot;Command&quot;)</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#a5ca6e213fdff74bd18044f39ee262930">   79</a></span>    <span class="keywordtype">void</span> Cmd_Landing() override;</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>};</div>
+</div>
+<div class="ttc" id="aEVFXType_8h_html_af8435b1c8c0e40b2bbdf03bb1ca6b4dbaebfe5e1791db03c4cd6ab95801e0977d"><div class="ttname"><a href="EVFXType_8h.html#af8435b1c8c0e40b2bbdf03bb1ca6b4dbaebfe5e1791db03c4cd6ab95801e0977d">EVFXType::Hit</a></div><div class="ttdeci">@ Hit</div></div>
+<div class="ttc" id="aIControllable_8h_html"><div class="ttname"><a href="IControllable_8h.html">IControllable.h</a></div><div class="ttdoc">UControllable 클래스를 선언합니다.</div></div>
+<div class="ttc" id="aclassAPlayerActor_html"><div class="ttname"><a href="classAPlayerActor.html">APlayerActor</a></div><div class="ttdoc">Main character driven directly by the player.</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8h_source.html#l00021">APlayerActor.h:22</a></div></div>
+<div class="ttc" id="aclassIControllable_html"><div class="ttname"><a href="classIControllable.html">IControllable</a></div><div class="ttdef"><b>Definition</b> <a href="IControllable_8h_source.html#l00023">IControllable.h:24</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_71a9f6b769ee24fe8598c19ea2d70480.html">Character</a></li><li class="navelem"><a class="el" href="dir_82ba722683279238407f867a1ffc0276.html">Public</a></li><li class="navelem"><a class="el" href="APlayerActor_8h.html">APlayerActor.h</a></li>
+    <li class="footer">생성시간 : 목 11월 13 2025 16:22:31, 프로젝트명 : Onepiece Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
+</body>
+</html>

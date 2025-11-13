@@ -1,0 +1,170 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Onepiece Project Documentation: Source/Onepiece/Network/Private/UCustomNetworkSettings.cpp 소스 파일</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript">
+window.MathJax = {
+  options: {
+    ignoreHtmlClass: 'tex2jax_ignore',
+    processHtmlClass: 'tex2jax_process'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<script type="text/javascript" src="darkmode_toggle.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Onepiece Project Documentation<span id="projectnumber">&#160;1.0.0</span>
+   </div>
+   <div id="projectbrief">Unreal Engine 5.6 C++ Project Documentation</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 다음에 의해 생성됨 :  Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','검색');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(0); });
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('UCustomNetworkSettings_8cpp_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">로딩중...</div>
+<div class="SRStatus" id="Searching">검색중...</div>
+<div class="SRStatus" id="NoMatches">일치하는것 없음</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">UCustomNetworkSettings.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="UCustomNetworkSettings_8cpp.html">이 파일의 문서화 페이지로 가기</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;<a class="code" href="UCustomNetworkSettings_8h.html">UCustomNetworkSettings.h</a>&quot;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;Misc/CommandLine.h&quot;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
+<div class="foldopen" id="foldopen00010" data-start="{" data-end="}">
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="classUCustomNetworkSettings.html#aa089b67ac992ff3aee3dd62629c0df0a">   10</a></span><a class="code hl_enumeration" href="UCustomNetworkSettings_8h.html#a79cfeb7c9f94018b98c2415dc06d4577">EServerMode</a> <a class="code hl_function" href="classUCustomNetworkSettings.html#aa089b67ac992ff3aee3dd62629c0df0a">UCustomNetworkSettings::GetCurrentServerMode</a>()</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>{</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    FString CmdMode;</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    <span class="keywordflow">if</span> (FParse::Value(FCommandLine::Get(), TEXT(<span class="stringliteral">&quot;ServerMode=&quot;</span>), CmdMode))</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    {</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>        <span class="keywordflow">if</span> (CmdMode.Equals(<span class="stringliteral">&quot;Stage&quot;</span>, ESearchCase::IgnoreCase))</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>        {</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>            <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="UCustomNetworkSettings_8h.html#a79cfeb7c9f94018b98c2415dc06d4577a64c6da2436465d11573858d46056b95d">EServerMode::Stage</a>;</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>        }</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        <span class="keywordflow">if</span> (CmdMode.Equals(<span class="stringliteral">&quot;Live&quot;</span>, ESearchCase::IgnoreCase))</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        {</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>            <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="UCustomNetworkSettings_8h.html#a79cfeb7c9f94018b98c2415dc06d4577a955ad3298db330b5ee880c2c9e6f23a0">EServerMode::Live</a>;</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        }</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    }</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="keywordflow">return</span> GetDefault&lt;UCustomNetworkSettings&gt;()-&gt;DefaultMode;</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>}</div>
+</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="foldopen" id="foldopen00028" data-start="{" data-end="}">
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="classUCustomNetworkSettings.html#aeecf937f9eb9d2c2ef0da26a58a3918f">   28</a></span><span class="keyword">const</span> <a class="code hl_struct" href="structFServerConfig.html">FServerConfig</a>&amp; <a class="code hl_function" href="classUCustomNetworkSettings.html#aeecf937f9eb9d2c2ef0da26a58a3918f">UCustomNetworkSettings::GetConfig</a>(<a class="code hl_enumeration" href="UCustomNetworkSettings_8h.html#a79cfeb7c9f94018b98c2415dc06d4577">EServerMode</a> Mode)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="keyword"></span>{</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="keywordflow">switch</span> (Mode)</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    {</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="UCustomNetworkSettings_8h.html#a79cfeb7c9f94018b98c2415dc06d4577a55f37d1fd483f6a85379640fe51aafa8">EServerMode::Dev</a>:   <span class="keywordflow">return</span> <a class="code hl_variable" href="classUCustomNetworkSettings.html#a0a6b7b5fe0199a1b58cceba3bc07dcae">DevConfig</a>;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="UCustomNetworkSettings_8h.html#a79cfeb7c9f94018b98c2415dc06d4577a64c6da2436465d11573858d46056b95d">EServerMode::Stage</a>: <span class="keywordflow">return</span> <a class="code hl_variable" href="classUCustomNetworkSettings.html#a411b010243a4553694b065c6d9347236">StageConfig</a>;</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="UCustomNetworkSettings_8h.html#a79cfeb7c9f94018b98c2415dc06d4577a955ad3298db330b5ee880c2c9e6f23a0">EServerMode::Live</a>:  <span class="keywordflow">return</span> <a class="code hl_variable" href="classUCustomNetworkSettings.html#a4aec66d37ef6311361d71d07ccd2fc36">LiveConfig</a>;</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="keywordflow">default</span>:                 <span class="keywordflow">return</span> <a class="code hl_variable" href="classUCustomNetworkSettings.html#a0a6b7b5fe0199a1b58cceba3bc07dcae">DevConfig</a>;</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    }</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>}</div>
+</div>
+<div class="ttc" id="aUCustomNetworkSettings_8h_html"><div class="ttname"><a href="UCustomNetworkSettings_8h.html">UCustomNetworkSettings.h</a></div><div class="ttdoc">서버 환경별 네트워크 설정을 노출하는 DeveloperSettings를 선언합니다.</div></div>
+<div class="ttc" id="aUCustomNetworkSettings_8h_html_a79cfeb7c9f94018b98c2415dc06d4577"><div class="ttname"><a href="UCustomNetworkSettings_8h.html#a79cfeb7c9f94018b98c2415dc06d4577">EServerMode</a></div><div class="ttdeci">EServerMode</div><div class="ttdoc">서버 환경(개발/스테이징/라이브)을 나타내는 열거형입니다.</div><div class="ttdef"><b>Definition</b> <a href="UCustomNetworkSettings_8h_source.html#l00013">UCustomNetworkSettings.h:14</a></div></div>
+<div class="ttc" id="aUCustomNetworkSettings_8h_html_a79cfeb7c9f94018b98c2415dc06d4577a55f37d1fd483f6a85379640fe51aafa8"><div class="ttname"><a href="UCustomNetworkSettings_8h.html#a79cfeb7c9f94018b98c2415dc06d4577a55f37d1fd483f6a85379640fe51aafa8">EServerMode::Dev</a></div><div class="ttdeci">@ Dev</div><div class="ttdoc">개발 서버 모드입니다.</div></div>
+<div class="ttc" id="aUCustomNetworkSettings_8h_html_a79cfeb7c9f94018b98c2415dc06d4577a64c6da2436465d11573858d46056b95d"><div class="ttname"><a href="UCustomNetworkSettings_8h.html#a79cfeb7c9f94018b98c2415dc06d4577a64c6da2436465d11573858d46056b95d">EServerMode::Stage</a></div><div class="ttdeci">@ Stage</div><div class="ttdoc">스테이징 서버 모드입니다.</div></div>
+<div class="ttc" id="aUCustomNetworkSettings_8h_html_a79cfeb7c9f94018b98c2415dc06d4577a955ad3298db330b5ee880c2c9e6f23a0"><div class="ttname"><a href="UCustomNetworkSettings_8h.html#a79cfeb7c9f94018b98c2415dc06d4577a955ad3298db330b5ee880c2c9e6f23a0">EServerMode::Live</a></div><div class="ttdeci">@ Live</div><div class="ttdoc">라이브 서버 모드입니다.</div></div>
+<div class="ttc" id="aclassUCustomNetworkSettings_html_a0a6b7b5fe0199a1b58cceba3bc07dcae"><div class="ttname"><a href="classUCustomNetworkSettings.html#a0a6b7b5fe0199a1b58cceba3bc07dcae">UCustomNetworkSettings::DevConfig</a></div><div class="ttdeci">FServerConfig DevConfig</div><div class="ttdef"><b>Definition</b> <a href="UCustomNetworkSettings_8h_source.html#l00062">UCustomNetworkSettings.h:62</a></div></div>
+<div class="ttc" id="aclassUCustomNetworkSettings_html_a411b010243a4553694b065c6d9347236"><div class="ttname"><a href="classUCustomNetworkSettings.html#a411b010243a4553694b065c6d9347236">UCustomNetworkSettings::StageConfig</a></div><div class="ttdeci">FServerConfig StageConfig</div><div class="ttdef"><b>Definition</b> <a href="UCustomNetworkSettings_8h_source.html#l00065">UCustomNetworkSettings.h:65</a></div></div>
+<div class="ttc" id="aclassUCustomNetworkSettings_html_a4aec66d37ef6311361d71d07ccd2fc36"><div class="ttname"><a href="classUCustomNetworkSettings.html#a4aec66d37ef6311361d71d07ccd2fc36">UCustomNetworkSettings::LiveConfig</a></div><div class="ttdeci">FServerConfig LiveConfig</div><div class="ttdef"><b>Definition</b> <a href="UCustomNetworkSettings_8h_source.html#l00068">UCustomNetworkSettings.h:68</a></div></div>
+<div class="ttc" id="aclassUCustomNetworkSettings_html_aa089b67ac992ff3aee3dd62629c0df0a"><div class="ttname"><a href="classUCustomNetworkSettings.html#aa089b67ac992ff3aee3dd62629c0df0a">UCustomNetworkSettings::GetCurrentServerMode</a></div><div class="ttdeci">static EServerMode GetCurrentServerMode()</div><div class="ttdoc">명령줄 또는 설정으로 선택된 서버 모드를 반환합니다.</div><div class="ttdef"><b>Definition</b> <a href="UCustomNetworkSettings_8cpp_source.html#l00010">UCustomNetworkSettings.cpp:10</a></div></div>
+<div class="ttc" id="aclassUCustomNetworkSettings_html_aeecf937f9eb9d2c2ef0da26a58a3918f"><div class="ttname"><a href="classUCustomNetworkSettings.html#aeecf937f9eb9d2c2ef0da26a58a3918f">UCustomNetworkSettings::GetConfig</a></div><div class="ttdeci">const FServerConfig &amp; GetConfig(EServerMode Mode) const</div><div class="ttdoc">서버 모드에 해당하는 설정을 반환합니다.</div><div class="ttdef"><b>Definition</b> <a href="UCustomNetworkSettings_8cpp_source.html#l00028">UCustomNetworkSettings.cpp:28</a></div></div>
+<div class="ttc" id="astructFServerConfig_html"><div class="ttname"><a href="structFServerConfig.html">FServerConfig</a></div><div class="ttdoc">서버 접속 정보를 담는 설정 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="UCustomNetworkSettings_8h_source.html#l00022">UCustomNetworkSettings.h:23</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_db6231b890a14ef22abfc7e4cac87d3d.html">Network</a></li><li class="navelem"><a class="el" href="dir_b16031943cc461ca19dafbeb0c146ace.html">Private</a></li><li class="navelem"><a class="el" href="UCustomNetworkSettings_8cpp.html">UCustomNetworkSettings.cpp</a></li>
+    <li class="footer">생성시간 : 목 11월 13 2025 16:22:31, 프로젝트명 : Onepiece Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
+</body>
+</html>
