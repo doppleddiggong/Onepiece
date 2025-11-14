@@ -29,6 +29,16 @@ def _load_changed_files(diff_file: Path) -> List[str]:
 def _write_outputs(lines: Iterable[str], target_ref: str, output_path: Path) -> None:
     """Append GitHub Actions outputs for the detected file list."""
 
+    def _write_output(handle, name: str, value: str) -> None:
+        text = str(value)
+        if "\n" in text:
+            delimiter = "EOF"
+            while delimiter in text:
+                delimiter = f"EOF_{len(delimiter)}"
+            handle.write(f"{name}<<{delimiter}\n{text}\n{delimiter}\n")
+        else:
+            handle.write(f"{name}={text}\n")
+
     files = list(lines)
     with output_path.open("a", encoding="utf-8") as handle:
         if not files:
@@ -48,8 +58,8 @@ def _write_outputs(lines: Iterable[str], target_ref: str, output_path: Path) -> 
         }
 
         handle.write("has_changes=true\n")
-        handle.write(f"honkit_payload={json.dumps(payload, ensure_ascii=False)}\n")
-        handle.write(f"broadcast_payload={json.dumps(broadcast_payload, ensure_ascii=False)}\n")
+        _write_output(handle, "honkit_payload", json.dumps(payload, ensure_ascii=False))
+        _write_output(handle, "broadcast_payload", json.dumps(broadcast_payload, ensure_ascii=False))
         handle.write(f"file_count={len(files)}\n")
 
 

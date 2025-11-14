@@ -50,10 +50,12 @@ jobs:
         mkdir -p Doxygen/html
         cp -R docs/html/. Doxygen/html/
 
-    - name: Download current GitHub Pages artifact
-      uses: actions/download-pages-artifact@v3
+    - name: Checkout existing GitHub Pages content
+      id: pages-cache
+      uses: actions/checkout@v4
       continue-on-error: true
       with:
+        ref: gh-pages
         path: ./_site
 
     - name: Prepare GitHub Pages content
@@ -62,7 +64,12 @@ jobs:
         mkdir -p public
 
         if [ -d "_site" ]; then
-          cp -R _site/. public/
+          if command -v rsync >/dev/null 2>&1; then
+            rsync -a --exclude '.git' _site/ public/
+          else
+            cp -R _site/. public/
+            rm -rf public/.git
+          fi
         elif [ -f ".github/gh-pages-index.html" ]; then
           cp .github/gh-pages-index.html public/index.html
         fi
