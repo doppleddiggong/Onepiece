@@ -70,13 +70,24 @@ def main() -> None:
         return
 
     files = _load_files(args.manifest)
+    transient_errors: list[str] = []
     for path, message in _iter_messages(files, args.base_url):
         try:
             _send_notification(webhook, message)
             print(f"📨 Discord 알림 전송 완료: {path}")
         except HTTPError as exc:
             print(f"❌ Discord 전송 실패 ({path}): {exc.code} {exc.reason}")
-            raise
+
+            if exc.code >= 500 or exc.code == 429:
+                transient_errors.append(path)
+            else:
+                print("⚠️ 권한 또는 설정 문제로 인해 알림을 건너뜁니다.")
+
+    if transient_errors:
+        raise SystemExit(
+            "일시적인 오류로 인해 일부 알림이 전송되지 않았습니다: "
+            + ", ".join(transient_errors)
+        )
 
 
 if __name__ == "__main__":
