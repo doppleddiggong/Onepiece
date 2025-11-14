@@ -63,21 +63,58 @@ jobs:
         run: |
           honkit build
 
-      - name: Prepare artifact for /docs/ path
-        run: |
-          mkdir -p _artifact
-          mv Documents/_book _artifact/docs
+      - name: Checkout existing GitHub Pages content
+        id: pages-cache
+        uses: actions/checkout@v4
+        continue-on-error: true
+        with:
+          ref: gh-pages
+          path: ./_site
 
-      - name: Upload artifact
+      - name: Prepare GitHub Pages content
+        run: |
+          set -euo pipefail
+          mkdir -p public
+
+          if [ -d "_site" ]; then
+            if command -v rsync >/dev/null 2>&1; then
+              rsync -a --exclude '.git' _site/ public/
+            else
+              cp -R _site/. public/
+              rm -rf public/.git
+            fi
+          elif [ -f ".github/gh-pages-index.html" ]; then
+            cp .github/gh-pages-index.html public/index.html
+          fi
+
+          rm -rf public/docs
+          mkdir -p public/docs
+          cp -R Documents/_book/. public/docs/
+
+      - name: Write deployment metadata
+        env:
+          CLIENT_TRIGGER: ${{ github.event.client_payload.trigger }}
+          CLIENT_LATEST_FILE: ${{ github.event.client_payload.latest_file }}
+          EVENT_NAME: ${{ github.event_name }}
+        run: |
+          python .github/scripts/write_deployment_metadata.py \
+            --output public/metadata.json \
+            --event "$EVENT_NAME" \
+            --trigger "${CLIENT_TRIGGER:-}" \
+            --latest-file "${CLIENT_LATEST_FILE:-}"
+
+      - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./_artifact
-          
+          path: ./public
+
       - name: Deploy to GitHub Pages
+        if: github.ref == 'refs/heads/main'
         id: deployment
         uses: actions/deploy-pages@v4
 
       - name: Summary
+        if: github.ref == 'refs/heads/main'
         run: |
           echo "✅ HonKit documentation has been built and deployed!"
           echo "🔗 URL: ${{ steps.deployment.outputs.page_url }}"

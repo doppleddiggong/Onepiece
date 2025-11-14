@@ -1,29 +1,38 @@
 name: Notify Meeting Updates
 
 on:
+  repository_dispatch:
+    types: [meeting-broadcast]
   workflow_dispatch:
     inputs:
       file_path:
-        description: '알림을 보낼 회의록 파일 경로 (예: Documents/Meeting/Daily/Meeting_251113_Daily.md)'
-        required: true
+        description: '회의록 파일 경로 (여러 개일 경우 줄바꿈으로 구분)'
+        required: false
         type: string
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   notify-meeting:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      - name: Trigger HonKit Build
-        uses: peter-evans/repository-dispatch@v2
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          event-type: honkit-build
-          client-payload: >
-            {"ref": "main",
-             "trigger": "meeting-update",
-             "latest_file": "${{ github.event.inputs.file_path }}"}
+      - name: Prepare meeting file list
+        id: files
+        run: |
+          python .github/scripts/prepare_meeting_broadcast.py \
+            --event-path "$GITHUB_EVENT_PATH" \
+            --manifest meeting_files.txt
+
+      - name: Send Discord notifications
+        if: steps.files.outputs.has_files == 'true'
+        env:
+          DISCORD_WEBHOOK_DEFAULT: ${{ secrets.DISCORD_WEBHOOK }}
+          DISCORD_WEBHOOK_MEETING: ${{ secrets.DISCORD_WEBHOOK_MEETING_URL }}
+        run: |
+          python .github/scripts/send_meeting_notifications.py \
+            --manifest meeting_files.txt
