@@ -148,29 +148,12 @@ jobs:
             git push origin main
           fi
 
-      - name: Send Discord Notification
-        if: success() && (steps.config.outputs.discord_enabled == 'true' || steps.config.outputs.discord_enabled == 'True')
-        env:
-          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
-        run: |
-          if [ -z "$DISCORD_WEBHOOK" ]; then
-            echo "⚠️ DISCORD_WEBHOOK secret이 설정되지 않았습니다. Discord 알림을 건너뜁니다."
-          else
-            chmod +x .github/scripts/devlog/send_discord.py
-            python .github/scripts/devlog/send_discord.py \
-              --webhook-url "$DISCORD_WEBHOOK" \
-              --type "weekly" \
-              --devlog-file "Documents/DevLog/Weekly/${{ steps.weekly.outputs.week_label }}-Summary.md" \
-              --date "${{ steps.weekly.outputs.week_label }}" \
-              --devlog-url "https://doppleddiggong.github.io/Onepiece/docs/DevLog/Weekly/${{ steps.weekly.outputs.week_label }}-Summary.html"
-          fi
-
       - name: Trigger HonKit Build
         uses: peter-evans/repository-dispatch@v2
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           event-type: honkit-build
-          client-payload: '{"ref": "main", "trigger": "weekly-report"}'
+          client-payload: '{"ref": "main", "trigger": "weekly-update", "latest_file": "Documents/DevLog/Weekly/${{ steps.weekly.outputs.week_label }}-Summary.md"}'
 
       - name: Summary
         run: |

@@ -82,35 +82,60 @@ jobs:
           ICON="✅"
           TITLE="문서"
           URL="https://doppleddiggong.github.io/Onepiece/docs/"
+          COLOR="5865242"  # Discord 기본 블루
+          DESCRIPTION="새로운 문서가 배포되었습니다."
 
           case "$TRIGGER" in
             "meeting-update")
               WEBHOOK="${DISCORD_WEBHOOK_MEETING:-$DISCORD_WEBHOOK_DEFAULT}"
               LABEL="회의록"
               ICON="📘"
+              COLOR="10181046"  # 보라색
+              DESCRIPTION="회의록이 업데이트되었습니다."
               ;;
             "daily-update")
-              LABEL="일일 일지"
-              ICON="🗓️"
+              LABEL="Daily DevLog"
+              ICON="📅"
+              COLOR="5865242"  # Discord 블루
+              DESCRIPTION="오늘의 개발 활동이 기록되었습니다."
               ;;
             "weekly-update")
-              LABEL="주간 일지"
-              ICON="📅"
+              LABEL="Weekly Report"
+              ICON="📊"
+              COLOR="16705372"  # Discord 옐로우
+              DESCRIPTION="주간 개발 리포트가 생성되었습니다."
               ;;
           esac
 
           if [ -n "$LATEST_FILE" ]; then
-            TITLE=$(basename "$LATEST_FILE")
+            TITLE=$(basename "$LATEST_FILE" .md)
             URL="https://doppleddiggong.github.io/Onepiece/docs/${LATEST_FILE#Documents/}"
             URL="${URL%.md}.html"
           fi
-
-          MSG="${ICON} ${LABEL} **${TITLE}** 가 배포되었습니다!\n🔗 바로가기"
 
           if [ -z "$WEBHOOK" ]; then
             echo "⚠️ Discord 웹훅이 설정되지 않았습니다. 알림 생략"
             exit 0
           fi
 
+          # Discord Embed 형식으로 메시지 전송
+          PAYLOAD=$(cat <<EOF
+          {
+            "embeds": [{
+              "title": "${ICON} ${LABEL} — ${TITLE}",
+              "description": "${DESCRIPTION}",
+              "url": "${URL}",
+              "color": ${COLOR},
+              "footer": {
+                "text": "자세한 내용은 링크를 클릭하여 확인하세요."
+              },
+              "timestamp": "$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            }]
+          }
+          EOF
+          )
+
           curl -X POST -H "Content-Type: application/json" \
-            -d "{\"content\": \"$MSG\"}" "$WEBHOOK"
+            -d "$PAYLOAD" "$WEBHOOK"
+
+          echo "✅ Discord 알림 전송 완료: ${LABEL} - ${TITLE}"

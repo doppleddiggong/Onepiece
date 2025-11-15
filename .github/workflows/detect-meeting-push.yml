@@ -51,11 +51,3 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           event-type: honkit-build
           client-payload: ${{ steps.changes.outputs.honkit_payload }}
-
-      - name: Trigger meeting broadcast notifications
-        if: steps.changes.outputs.has_changes == 'true'
-        uses: peter-evans/repository-dispatch@v2
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          event-type: meeting-broadcast
-          client-payload: ${{ steps.changes.outputs.broadcast_payload }}
