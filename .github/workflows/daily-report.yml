@@ -61,7 +61,8 @@ jobs:
           if [ -n "${{ github.event.inputs.date }}" ]; then
             echo "today=${{ github.event.inputs.date }}" >> $GITHUB_OUTPUT
           else
-            echo "today=$(TZ=Asia/Seoul date +%Y-%m-%d)" >> $GITHUB_OUTPUT
+            # 전날 날짜로 설정 (오늘 09:00 실행 시 어제의 작업 내용 수집)
+            echo "today=$(TZ=Asia/Seoul date -d 'yesterday' +%Y-%m-%d)" >> $GITHUB_OUTPUT
           fi
           echo "branch=main" >> $GITHUB_OUTPUT
 
