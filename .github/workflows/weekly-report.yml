@@ -126,6 +126,14 @@ jobs:
         run: |
           python .github/scripts/generate_summary.py
 
+      - name: Aggregate Weekly Metrics
+        run: |
+          chmod +x .github/scripts/devlog/generate_weekly_metrics.py
+          python .github/scripts/devlog/generate_weekly_metrics.py \
+            --week-label "${{ steps.weekly.outputs.week_label }}" \
+            --devlog-dir "Documents/DevLog/Daily" \
+            --output "Documents/DevLog/Weekly/${{ steps.weekly.outputs.week_label }}.metrics.json"
+
       - name: Update Weekly DevLog with Metrics & Meeting Insights
         run: |
           python .github/scripts/devlog/update_devlog.py \
