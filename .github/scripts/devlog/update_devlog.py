@@ -206,7 +206,7 @@ def main():
         metrics_primary = Path(f"Documents/DevLog/Metrics/{args.range}.json")
         fallback_candidates = [Path(f"Documents/DevLog/Weekly/{args.range}.metrics.json")]
         metrics_path = ensure_metrics_file(metrics_primary, fallback_candidates)
-        target = Path(f"Documents/DevLog/Weekly/{args.range}.md")
+        target = Path(f"Documents/DevLog/Weekly/{args.range}-Summary.md")
         meeting_key = args.meeting_date or None
 
     metrics = load_metrics(metrics_path)
