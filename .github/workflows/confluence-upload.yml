@@ -1,0 +1,114 @@
+name: Confluence Auto Upload
+
+# Documents 폴더의 .md 파일이 push되면 자동으로 Confluence에 업로드
+on:
+  push:
+    branches:
+      - main
+      - master
+    paths:
+      - 'Documents/Meeting/Daily/**/*.md'
+      - 'Documents/Meeting/Common/**/*.md'
+      - 'Documents/DevLog/Daily/**/*.md'
+      - 'Documents/DevLog/Weekly/**/*.md'
+
+  # 수동 실행 지원 (특정 파일 지정 가능)
+  workflow_dispatch:
+    inputs:
+      file_path:
+        description: 'Markdown file path to upload (e.g., Documents/Meeting/Daily/251117_meeting.md)'
+        required: true
+        type: string
+
+jobs:
+  upload-to-confluence:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2  # Get previous commit for diff
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          pip install -r .github/scripts/confluence/requirements.txt
+
+      - name: Get changed files
+        id: changed-files
+        if: github.event_name == 'push'
+        run: |
+          # Get list of changed .md files in target directories
+          CHANGED_FILES=$(git diff --name-only HEAD~1 HEAD | grep -E '^Documents/(Meeting/(Daily|Common)|DevLog/(Daily|Weekly))/.*\.md$' || true)
+
+          echo "Changed files:"
+          echo "$CHANGED_FILES"
+
+          # Save to output
+          echo "files<<EOF" >> $GITHUB_OUTPUT
+          echo "$CHANGED_FILES" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: Upload changed files to Confluence
+        if: github.event_name == 'push' && steps.changed-files.outputs.files != ''
+        env:
+          JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+        run: |
+          # Read changed files from previous step
+          CHANGED_FILES="${{ steps.changed-files.outputs.files }}"
+
+          # Process each changed file
+          while IFS= read -r file; do
+            if [ -n "$file" ] && [ -f "$file" ]; then
+              echo "📤 Uploading: $file"
+              python .github/scripts/confluence/upload_to_confluence.py "$file"
+              echo "---"
+            fi
+          done <<< "$CHANGED_FILES"
+
+      - name: Upload single file to Confluence (manual)
+        if: github.event_name == 'workflow_dispatch'
+        env:
+          JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+        run: |
+          FILE_PATH="${{ github.event.inputs.file_path }}"
+
+          if [ ! -f "$FILE_PATH" ]; then
+            echo "❌ File not found: $FILE_PATH"
+            exit 1
+          fi
+
+          echo "📤 Uploading: $FILE_PATH"
+          python .github/scripts/confluence/upload_to_confluence.py "$FILE_PATH"
+
+      - name: Summary
+        if: always()
+        run: |
+          echo "## Confluence Upload Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          if [ "${{ github.event_name }}" == "push" ]; then
+            CHANGED_FILES="${{ steps.changed-files.outputs.files }}"
+            if [ -n "$CHANGED_FILES" ]; then
+              echo "### Uploaded Files:" >> $GITHUB_STEP_SUMMARY
+              while IFS= read -r file; do
+                if [ -n "$file" ]; then
+                  echo "- \`$file\`" >> $GITHUB_STEP_SUMMARY
+                fi
+              done <<< "$CHANGED_FILES"
+            else
+              echo "ℹ️ No markdown files were changed in target directories." >> $GITHUB_STEP_SUMMARY
+            fi
+          else
+            echo "### Manually Uploaded:" >> $GITHUB_STEP_SUMMARY
+            echo "- \`${{ github.event.inputs.file_path }}\`" >> $GITHUB_STEP_SUMMARY
+          fi
+
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "✅ Confluence upload completed!" >> $GITHUB_STEP_SUMMARY
