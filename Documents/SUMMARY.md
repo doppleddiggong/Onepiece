@@ -19,6 +19,7 @@
 * [2025-11-10](DevLog/Daily/2025-11-10.md)
 
 ### Weekly Summary
+* [Daily DevLog](DevLog/Weekly/2025-W46.md)
 * [주간 개발 요약 (2025-11-10 ~ 2025-11-16)](DevLog/Weekly/2025-W46-Summary.md)
 
 ## 회의록
