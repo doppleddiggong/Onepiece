@@ -48,3 +48,27 @@ messages:
   daily_commit_prefix: "📝 DevLog:"
   weekly_commit_prefix: "📊 Weekly:"
   no_commits_message: "No commits today"
+
+# Confluence 자동 업로드 설정
+confluence:
+  # Confluence 자동 업로드 사용 여부
+  enabled: true
+
+  # Confluence 도메인 (atlassian.net)
+  domain: "jeonminwoo0625-1762930390335.atlassian.net"
+
+  # Confluence 사용자 이메일
+  email: "ju100.bae@gmail.com"
+
+  # Confluence 스페이스 키
+  space_key: "KLingo"
+
+  # 업로드 대상 부모 페이지 ID 매핑
+  # Documents/Meeting/Daily → CONFLUENCE_PARENT_DAILY
+  # Documents/Meeting/Common → CONFLUENCE_PARENT_COMMON
+  # Documents/DevLog/Daily → CONFLUENCE_PARENT_UE
+  # Documents/DevLog/Weekly → CONFLUENCE_PARENT_UE
+  parent_pages:
+    daily: "2916376"      # Meeting Daily 페이지
+    common: "1900600"     # Meeting Common 페이지
+    ue: "1835026"         # UE DevLog 페이지
