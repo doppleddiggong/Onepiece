@@ -11,6 +11,7 @@
 * [dopple - 2025-11-10](DevLog/AgentLog/dopple/251110.md)
 
 ### Daily Logs (2025-11)
+* [2025-11-18](DevLog/Daily/2025-11-18.md)
 * [2025-11-17](DevLog/Daily/2025-11-17.md)
 * [2025-11-16](DevLog/Daily/2025-11-16.md)
 * [2025-11-15](DevLog/Daily/2025-11-15.md)
@@ -26,6 +27,7 @@
 ## 회의록
 
 ### 일일 회의록
+* [251118 Daily](Meeting/Daily/Meeting_251118_Daily.md)
 * [251117 Daily](Meeting/Daily/Meeting_251117_Daily.md)
 * [251114 Daily](Meeting/Daily/Meeting_251114_Daily.md)
 * [251113 Daily](Meeting/Daily/Meeting_251113_Daily.md)
@@ -41,6 +43,7 @@
 ## Planning
 
 ### Reports
+* [KLingo_251118_Presentation_Report](Planning/Presentation/KLingo_251118_Presentation_Report.md)
 * [HonKit DevLog Pipeline Stabilization](Planning/Report/2025-11-12_Technical_Report.md)
 
 ### Other Documents
