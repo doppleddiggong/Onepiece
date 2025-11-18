@@ -6,10 +6,12 @@
 ## DevLog
 
 ### Agent Logs
+* [dopple - 2025-11-17](DevLog/AgentLog/dopple/251117.md)
 * [dopple - 2025-11-12](DevLog/AgentLog/dopple/251112.md)
 * [dopple - 2025-11-10](DevLog/AgentLog/dopple/251110.md)
 
 ### Daily Logs (2025-11)
+* [2025-11-17](DevLog/Daily/2025-11-17.md)
 * [2025-11-16](DevLog/Daily/2025-11-16.md)
 * [2025-11-15](DevLog/Daily/2025-11-15.md)
 * [2025-11-14](DevLog/Daily/2025-11-14.md)
@@ -19,17 +21,18 @@
 * [2025-11-10](DevLog/Daily/2025-11-10.md)
 
 ### Weekly Summary
-* [Daily DevLog](DevLog/Weekly/2025-W46.md)
 * [주간 개발 요약 (2025-11-10 ~ 2025-11-16)](DevLog/Weekly/2025-W46-Summary.md)
 
 ## 회의록
 
 ### 일일 회의록
+* [251117 Daily](Meeting/Daily/Meeting_251117_Daily.md)
 * [251114 Daily](Meeting/Daily/Meeting_251114_Daily.md)
 * [251113 Daily](Meeting/Daily/Meeting_251113_Daily.md)
 * [251112 Daily](Meeting/Daily/Meeting_251112_Daily.md)
 
 ### 일반 회의록
+* [251117 Project](Meeting/Common/Meeting_251117_Project.md)
 * [251114 Project](Meeting/Common/Meeting_251114_Project.md)
 * [251113 Storyboard](Meeting/Common/Meeting_251113_Storyboard.md)
 * [251112 Project](Meeting/Common/Meeting_251112_Project.md)
