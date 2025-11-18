@@ -2,13 +2,13 @@
 title: "KLingo 기획 발표 — 최종 프로젝트 평가 보고서"
 date: "2025-11-18"
 presenter: "이재진"
-respondent: "배주백"
+respondent: "배주백, 전민우"
 category: "project-presentation"
 ---
 
 # KLingo 기획 발표 — 최종 프로젝트 평가 보고서  
 **발표자:** 이재진  
-**기술 응답 및 보완:** 배주백  
+**기술 응답 및 보완:** 배주백, 전민우  
 **작성일:** 2025.11.18
 
 ---
