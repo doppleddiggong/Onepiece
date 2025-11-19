@@ -8,22 +8,30 @@ import os
 from pathlib import Path
 from typing import Iterable, List
 
+MEETING_PREFIX = "Documents/Meeting/"
 
-def _load_changed_files(diff_file: Path) -> List[str]:
-    """Return sanitized file paths listed in *diff_file*.
-
-    Args:
-        diff_file: Path to the text file produced by ``git diff``.
-
-    Returns:
-        A list of non-empty, stripped file paths.
-    """
-
+def _load_added_meetings(diff_file: Path) -> List[str]:
+    """Return meeting files that were newly added in *diff_file*."""
+    
     if not diff_file.exists():
         return []
 
-    lines = diff_file.read_text(encoding="utf-8").splitlines()
-    return [line.strip() for line in lines if line.strip()]
+    added: List[str] = []
+    for raw_line in diff_file.read_text(encoding="utf-8").splitlines():
+        line = raw_line.strip()
+        if not line:
+            continue
+
+        parts = line.split(maxsplit=1)
+        if len(parts) != 2:
+            continue
+
+        status, file_path = parts
+        normalized = Path(file_path).as_posix()
+        if status == "A" and normalized.startswith(MEETING_PREFIX):
+            added.append(normalized)
+
+    return sorted(added)
 
 
 def _write_outputs(lines: Iterable[str], target_ref: str, output_path: Path) -> None:
@@ -91,7 +99,7 @@ def main() -> None:
     )
     args = parser.parse_args()
 
-    files = _load_changed_files(args.diff_file)
+    files = _load_added_meetings(args.diff_file)
 
     github_output = os.environ.get("GITHUB_OUTPUT")
     if not github_output:
