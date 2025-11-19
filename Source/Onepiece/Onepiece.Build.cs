@@ -57,6 +57,7 @@ public class Onepiece : ModuleRules
 		
 		PublicIncludePaths.AddRange(new string[] {
 			Path.Combine(ModuleDirectory, "Character", "Public"),
+			Path.Combine(ModuleDirectory, "Game", "Public"),
 			Path.Combine(ModuleDirectory, "Network", "Public"),
 			Path.Combine(ModuleDirectory, "UI", "Public"),
 		});

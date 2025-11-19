@@ -39,9 +39,250 @@ namespace RequestAPI
 {
     /// @brief 서버 상태 확인 엔드포인트입니다.
     static FString Health = FString("/health");
+
+    /// @brief KLingo 로그인 엔드포인트입니다.
+    static FString Login = FString("/Login");
+
+    /// @brief KLingo 사용자 생성 엔드포인트입니다.
+    static FString CreateUser = FString("/CreateUserInfo");
+
+    /// @brief KLingo 인터뷰 요청 엔드포인트입니다.
+    static FString Interview = FString("/RequestInterview");
+
+    /// @brief KLingo 인터뷰 제출 엔드포인트입니다.
+    static FString SubmitInterview = FString("/SubmitInterviewAnswer");
+
+    /// @brief KLingo 게임 시작 엔드포인트입니다.
+    static FString StartGame = FString("/StartGame");
+
+    /// @brief KLingo 게임 로그인 엔드포인트입니다.
+    static FString GameLogin = FString("/GameLogin");
+
+    /// @brief KLingo 퀘스트 답변 엔드포인트입니다.
+    static FString QuestAnswer = FString("/QuestAnswer");
+
+    /// @brief KLingo 퀘스트 실패 엔드포인트입니다.
+    static FString QuestFail = FString("/QuestFail");
+
+    /// @brief KLingo Write 퀘스트 엔드포인트입니다.
+    static FString QuestWrite = FString("/QuestWrite");
+
+    /// @brief KLingo Speak 퀘스트 엔드포인트입니다.
+    static FString QuestSpeak = FString("/QuestSpeak");
+
+    /// @brief KLingo 게임 결과 엔드포인트입니다.
+    static FString GameResult = FString("/GameResult");
 }
 
 
+
+// =================================================================================
+// Common Data Structures
+// =================================================================================
+
+/// @brief 플레이어 정보 구조체입니다.
+USTRUCT(BlueprintType)
+struct FPlayerInfo
+{
+	GENERATED_BODY()
+
+	UPROPERTY(BlueprintReadWrite, Category = "PlayerInfo")
+	int32 UserIndex = 0;
+
+	UPROPERTY(BlueprintReadWrite, Category = "PlayerInfo")
+	FString Nickname;
+
+	UPROPERTY(BlueprintReadWrite, Category = "PlayerInfo")
+	int32 Gold = 0;
+
+	UPROPERTY(BlueprintReadWrite, Category = "PlayerInfo")
+	int32 Character = -1;
+
+	UPROPERTY(BlueprintReadWrite, Category = "PlayerInfo")
+	int32 CharacterColor = -1;
+
+	UPROPERTY(BlueprintReadWrite, Category = "PlayerInfo")
+	FString UnlockEquip;
+
+	UPROPERTY(BlueprintReadWrite, Category = "PlayerInfo")
+	bool bLogin = false;
+};
+
+/// @brief 단어 데이터 구조체입니다.
+USTRUCT(BlueprintType)
+struct FWordData
+{
+	GENERATED_BODY()
+
+	UPROPERTY(BlueprintReadWrite, Category = "Word")
+	FString Kor;
+
+	UPROPERTY(BlueprintReadWrite, Category = "Word")
+	FString Eng;
+
+	UPROPERTY(BlueprintReadWrite, Category = "Word")
+	FString Pronunciation;
+};
+
+// =================================================================================
+// Read Quest Structures
+// =================================================================================
+
+/// @brief Read 퀘스트 타겟 데이터입니다.
+USTRUCT(BlueprintType)
+struct FReadTargetData
+{
+	GENERATED_BODY()
+
+	UPROPERTY(BlueprintReadWrite, Category = "KLingo")
+	FString FindSymbol;
+
+	UPROPERTY(BlueprintReadWrite, Category = "KLingo")
+	FString FindColor;
+};
+
+/// @brief Read 퀘스트 정보 구조체입니다.
+USTRUCT(BlueprintType)
+struct FQuestReadInfo
+{
+	GENERATED_BODY()
+
+	UPROPERTY(BlueprintReadWrite, Category = "KLingo")
+	int32 ReadIndex = 0;
+
+	UPROPERTY(BlueprintReadWrite, Category = "KLingo")
+	int32 Difficulty = 0;
+
+	UPROPERTY(BlueprintReadWrite, Category = "KLingo")
+	TArray<FReadTargetData> QuestTarget;
+
+	UPROPERTY(BlueprintReadWrite, Category = "KLingo")
+	int32 CorrectAnswerIndex = 0;
+
+	UPROPERTY(BlueprintReadWrite, Category = "KLingo")
+	FWordData WordData1;
+
+	UPROPERTY(BlueprintReadWrite, Category = "KLingo")
+	FWordData WordData2;
+
+	UPROPERTY(BlueprintReadWrite, Category = "KLingo")
+	FString FullData;
+};
+
+// =================================================================================
+// Listen Quest Structures
+// =================================================================================
+
+/// @brief Listen 퀘스트 타겟 데이터입니다.
+USTRUCT(BlueprintType)
+struct FListenTargetData
+{
+	GENERATED_BODY()
+
+	UPROPERTY(BlueprintReadWrite, Category = "KLingo")
+	FString FindTarget1;
+
+	UPROPERTY(BlueprintReadWrite, Category = "KLingo")
+	FString FindTarget2;
+};
+
+/// @brief Listen 퀘스트 정보 구조체입니다.
+USTRUCT(BlueprintType)
+struct FQuestListenInfo
+{
+	GENERATED_BODY()
+
+	UPROPERTY(BlueprintReadWrite, Category = "KLingo")
+	int32 ListenIndex = 0;
+
+	UPROPERTY(BlueprintReadWrite, Category = "KLingo")
+	int32 Difficulty = 0;
+
+	UPROPERTY(BlueprintReadWrite, Category = "KLingo")
+	TArray<FListenTargetData> QuestTarget;
+
+	UPROPERTY(BlueprintReadWrite, Category = "KLingo")
+	int32 CorrectAnswerIndex = 0;
+
+	UPROPERTY(BlueprintReadWrite, Category = "KLingo")
+	FWordData WordData1;
+
+	UPROPERTY(BlueprintReadWrite, Category = "KLingo")
+	FWordData WordData2;
+
+	UPROPERTY(BlueprintReadWrite, Category = "KLingo")
+	FString FullData;
+};
+
+// =================================================================================
+// Write Quest Structures
+// =================================================================================
+
+/// @brief Write 퀘스트 타겟 데이터입니다.
+USTRUCT(BlueprintType)
+struct FWriteTargetData
+{
+	GENERATED_BODY()
+
+	UPROPERTY(BlueprintReadWrite, Category = "KLingo")
+	FString TextureData;
+};
+
+/// @brief Write 교육 데이터 구조체입니다.
+USTRUCT(BlueprintType)
+struct FWriteTeachData
+{
+	GENERATED_BODY()
+
+	UPROPERTY(BlueprintReadWrite, Category = "KLingo")
+	int32 Index = 0;
+
+	UPROPERTY(BlueprintReadWrite, Category = "KLingo")
+	FString TeachString;
+};
+
+/// @brief Write 퀘스트 정보 구조체입니다.
+USTRUCT(BlueprintType)
+struct FQuestWriteInfo
+{
+	GENERATED_BODY()
+
+	UPROPERTY(BlueprintReadWrite, Category = "KLingo")
+	int32 WriteIndex = 0;
+
+	UPROPERTY(BlueprintReadWrite, Category = "KLingo")
+	int32 Difficulty = 0;
+
+	UPROPERTY(BlueprintReadWrite, Category = "KLingo")
+	TArray<FWriteTargetData> QuestTarget;
+};
+
+// =================================================================================
+// Speak Quest Structures
+// =================================================================================
+
+/// @brief Speak 퀘스트 정보 구조체입니다.
+USTRUCT(BlueprintType)
+struct FQuestSpeakInfo
+{
+	GENERATED_BODY()
+
+	UPROPERTY(BlueprintReadWrite, Category = "KLingo")
+	int32 SpeakIndex = 0;
+
+	UPROPERTY(BlueprintReadWrite, Category = "KLingo")
+	int32 Difficulty = 0;
+
+	UPROPERTY(BlueprintReadWrite, Category = "KLingo")
+	TArray<FString> AnswerPlayer;
+
+	UPROPERTY(BlueprintReadWrite, Category = "KLingo")
+	TArray<FString> QuestTarget;
+};
+
+// =================================================================================
+// Response Structures
+// =================================================================================
 /// @brief 헬스 체크 응답을 전달하는 델리게이트입니다.
 DECLARE_DELEGATE_TwoParams(FResponseHealthDelegate, FResponseHealth&, bool);
 USTRUCT(BlueprintType)
@@ -57,4 +298,179 @@ struct FResponseHealth
 
     /// @brief 디버그 로그에 응답 내용을 출력합니다.
     void PrintData();
+};
+
+/// @brief 로그인 응답 델리게이트입니다.
+DECLARE_DELEGATE_TwoParams(FResponseLoginDelegate, FResponseLogin&, bool);
+/// @brief 로그인 응답 구조체입니다.
+USTRUCT(BlueprintType)
+struct FResponseLogin
+{
+	GENERATED_BODY()
+
+	UPROPERTY(BlueprintReadWrite, Category = "Login")
+	FString Token;
+
+	UPROPERTY(BlueprintReadWrite, Category = "Login")
+	FPlayerInfo PlayerInfo;
+
+	/// @brief HTTP 응답을 파싱해 구조체를 채웁니다.
+	void SetFromHttpResponse(const TSharedPtr<class IHttpResponse, ESPMode::ThreadSafe>& Response);
+
+	/// @brief 디버그 로그에 응답 내용을 출력합니다.
+	void PrintData() const;
+};
+
+/// @brief 사용자 생성 응답 델리게이트입니다.
+DECLARE_DELEGATE_TwoParams(FResponseCreateUserDelegate, FResponseCreateUser&, bool);
+/// @brief 사용자 생성 응답 구조체입니다.
+USTRUCT(BlueprintType)
+struct FResponseCreateUser
+{
+	GENERATED_BODY()
+
+	UPROPERTY(BlueprintReadWrite, Category = "CreateUser")
+	bool bSuccess = false;
+
+	UPROPERTY(BlueprintReadWrite, Category = "CreateUser")
+	FString Message;
+
+	void SetFromHttpResponse(const TSharedPtr<class IHttpResponse, ESPMode::ThreadSafe>& Response);
+	void PrintData() const;
+};
+
+/// @brief 인터뷰 응답 델리게이트입니다.
+DECLARE_DELEGATE_TwoParams(FResponseInterviewDelegate, FResponseInterview&, bool);
+/// @brief 인터뷰 응답 구조체입니다.
+USTRUCT(BlueprintType)
+struct FResponseInterview
+{
+	GENERATED_BODY()
+
+	UPROPERTY(BlueprintReadWrite, Category = "Interview")
+	TArray<FString> Questions;
+
+	void SetFromHttpResponse(const TSharedPtr<class IHttpResponse, ESPMode::ThreadSafe>& Response);
+	void PrintData() const;
+};
+
+/// @brief 게임 시작 응답 델리게이트입니다.
+DECLARE_DELEGATE_TwoParams(FResponseStartGameDelegate, FResponseStartGame&, bool);
+/// @brief 게임 시작 응답 구조체입니다.
+USTRUCT(BlueprintType)
+struct FResponseStartGame
+{
+	GENERATED_BODY()
+
+	UPROPERTY(BlueprintReadWrite, Category = "StartGame")
+	FQuestReadInfo QuestRead;
+
+	UPROPERTY(BlueprintReadWrite, Category = "StartGame")
+	FQuestListenInfo QuestListen;
+
+	UPROPERTY(BlueprintReadWrite, Category = "StartGame")
+	FQuestWriteInfo QuestWrite;
+
+	UPROPERTY(BlueprintReadWrite, Category = "StartGame")
+	FQuestSpeakInfo QuestSpeak;
+
+	void SetFromHttpResponse(const TSharedPtr<class IHttpResponse, ESPMode::ThreadSafe>& Response);
+	void PrintData() const;
+};
+
+/// @brief 게임 로그인 응답 델리게이트입니다.
+DECLARE_DELEGATE_TwoParams(FResponseGameLoginDelegate, FResponseGameLogin&, bool);
+/// @brief 게임 로그인 응답 구조체입니다.
+USTRUCT(BlueprintType)
+struct FResponseGameLogin
+{
+	GENERATED_BODY()
+
+	UPROPERTY(BlueprintReadWrite, Category = "GameLogin")
+	bool bSuccess = false;
+
+	UPROPERTY(BlueprintReadWrite, Category = "GameLogin")
+	FString SessionToken;
+
+	void SetFromHttpResponse(const TSharedPtr<class IHttpResponse, ESPMode::ThreadSafe>& Response);
+	void PrintData() const;
+};
+
+/// @brief 퀘스트 답변 응답 델리게이트입니다.
+DECLARE_DELEGATE_TwoParams(FResponseQuestAnswerDelegate, FResponseQuestAnswer&, bool);
+/// @brief 퀘스트 답변 응답 구조체입니다.
+USTRUCT(BlueprintType)
+struct FResponseQuestAnswer
+{
+	GENERATED_BODY()
+
+	UPROPERTY(BlueprintReadWrite, Category = "QuestAnswer")
+	int32 Result = 0;
+
+	UPROPERTY(BlueprintReadWrite, Category = "QuestAnswer")
+	FString TeachString;
+
+	UPROPERTY(BlueprintReadWrite, Category = "QuestAnswer")
+	int32 FailCount = 0;
+
+	void SetFromHttpResponse(const TSharedPtr<class IHttpResponse, ESPMode::ThreadSafe>& Response);
+	void PrintData() const;
+};
+
+
+/// @brief Write 퀘스트 응답 델리게이트입니다.
+DECLARE_DELEGATE_TwoParams(FResponseQuestWriteDelegate, FResponseQuestWrite&, bool);
+/// @brief Write 퀘스트 응답 구조체입니다.
+USTRUCT(BlueprintType)
+struct FResponseQuestWrite
+{
+	GENERATED_BODY()
+
+	UPROPERTY(BlueprintReadWrite, Category = "QuestWrite")
+	bool bSuccess = false;
+
+	UPROPERTY(BlueprintReadWrite, Category = "QuestWrite")
+	TArray<FWriteTeachData> TeachData;
+
+	void SetFromHttpResponse(const TSharedPtr<class IHttpResponse, ESPMode::ThreadSafe>& Response);
+	void PrintData() const;
+};
+
+/// @brief Speak 퀘스트 응답 델리게이트입니다.
+DECLARE_DELEGATE_TwoParams(FResponseQuestSpeakDelegate, FResponseQuestSpeak&, bool);
+/// @brief Speak 퀘스트 응답 구조체입니다.
+USTRUCT(BlueprintType)
+struct FResponseQuestSpeak
+{
+	GENERATED_BODY()
+
+	UPROPERTY(BlueprintReadWrite, Category = "QuestSpeak")
+	bool bSuccess = false;
+
+	UPROPERTY(BlueprintReadWrite, Category = "QuestSpeak")
+	FString Feedback;
+
+	UPROPERTY(BlueprintReadWrite, Category = "QuestSpeak")
+	int32 Score = 0;
+
+	void SetFromHttpResponse(const TSharedPtr<class IHttpResponse, ESPMode::ThreadSafe>& Response);
+	void PrintData() const;
+};
+
+/// @brief 게임 결과 응답 델리게이트입니다.
+DECLARE_DELEGATE_TwoParams(FResponseGameResultDelegate, FResponseGameResult&, bool);
+/// @brief 게임 결과 응답 구조체입니다.
+USTRUCT(BlueprintType)
+struct FResponseGameResult
+{
+	GENERATED_BODY()
+
+	UPROPERTY(BlueprintReadWrite, Category = "GameResult")
+	FString Grade;
+
+	UPROPERTY(BlueprintReadWrite, Category = "GameResult")
+	TArray<int32> Scores;
+
+	void SetFromHttpResponse(const TSharedPtr<class IHttpResponse, ESPMode::ThreadSafe>& Response);
+	void PrintData() const;
 };

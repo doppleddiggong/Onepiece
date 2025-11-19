@@ -1,0 +1,69 @@
+# ============================================================
+# Serena Project Configuration — UE5.6 + GitHub Actions DevOps
+# ============================================================
+
+[project]
+root = "."
+
+# ------------------------------------------------------------
+# Filesystem Tool
+# UE 프로젝트 및 GitHub Actions 디렉터리 접근 허용
+# ------------------------------------------------------------
+[tools.filesystem]
+enabled = true
+allowed_paths = [
+    "./Source",
+    "./Plugins",
+    "./Config",
+    "./Content",                    # 텍스트 기반 meta 형태는 읽음
+    "./.github/workflows",          # GitHub Actions 분석
+    "./Scripts",                    # 빌드/코드젠/도구 스크립트
+    "./Tools"                       # 프로젝트 보조 툴
+]
+
+# ------------------------------------------------------------
+# Search Tool
+# 프로젝트 전체 구조, 모듈, 워크플로우 자동 분석
+# ------------------------------------------------------------
+[tools.search]
+enabled = true
+
+ignore = [
+    "Binaries",
+    "Intermediate",
+    "DerivedDataCache",
+    "Saved",
+    "Build/Windows",
+    "Build/Linux",
+    "Build/IOS",
+    ".vs",
+    ".vscode",
+    ".idea",
+    ".git",
+    "*.uasset",
+    "*.umap",
+    "*.pdb",
+    "*.dll",
+    "*.exe"
+]
+
+# ------------------------------------------------------------
+# Environment Tool
+# 시스템 환경변수 확인 가능
+# ------------------------------------------------------------
+[tools.env]
+enabled = true
+
+# ------------------------------------------------------------
+# Tasks Tool
+# UE 빌드/테스트/문서화 자동화를 위한 Serena Tasks
+# ------------------------------------------------------------
+[tools.tasks]
+enabled = true
+
+# ------------------------------------------------------------
+# Workflows Tool
+# GitHub Actions 및 로컬 빌드 스크립트 자동 연계
+# ------------------------------------------------------------
+[tools.workflows]
+enabled = true
