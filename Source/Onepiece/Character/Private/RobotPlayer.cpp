@@ -18,13 +18,7 @@ ARobotPlayer::ARobotPlayer()
 	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 	
-	// Constructor Helpers
-	ConstructorHelpers::FObjectFinder<USkeletalMesh> meshRef(TEXT("/Script/Engine.SkeletalMesh'/Game/RadicalMike/Mesh/SKM_MegaMikeZ.SKM_MegaMikeZ'"));
-	if (meshRef.Succeeded())
-	{
-		GetMesh()->SetSkeletalMesh(meshRef.Object);
-	}
-	
+	// Constructor Helpers	
 	ConstructorHelpers::FObjectFinder<UInputMappingContext> imcRef(TEXT("/Script/EnhancedInput.InputMappingContext'/Game/ThirdPerson/Blueprints/Robots/Input/IMC_Robot.IMC_Robot'"));
 	if (imcRef.Succeeded())
 	{
@@ -56,7 +50,6 @@ ARobotPlayer::ARobotPlayer()
 	}
 	
 	// Mesh
-	GetMesh()->SetRelativeLocationAndRotation(FVector(0,0,-70), FRotator(0,-90,0));
 	
 	// Capsule Comp
 	GetCapsuleComponent()->InitCapsuleSize(35.f, 70.0f);
@@ -73,15 +66,14 @@ ARobotPlayer::ARobotPlayer()
 	// Camera Comp
 	CameraBoom = CreateDefaultSubobject<USpringArmComponent>(TEXT("CameraBoom"));
 	CameraBoom->SetupAttachment(RootComponent);
-	CameraBoom->TargetArmLength = 400.f;
+	CameraBoom->TargetArmLength = 250.f;
 	CameraBoom->bUsePawnControlRotation = true;
 	
 	FollowCamera = CreateDefaultSubobject<UCameraComponent>(TEXT("FollowCamera"));
-	FollowCamera->SetupAttachment(CameraBoom);
+	FollowCamera->SetupAttachment(GetMesh(), TEXT("Head"));
 	FollowCamera->bUsePawnControlRotation = false;
 }
 
-// Called when the game starts or when spawned
 void ARobotPlayer::BeginPlay()
 {
 	Super::BeginPlay();
@@ -97,13 +89,11 @@ void ARobotPlayer::BeginPlay()
 	}
 }
 
-// Called every frame
 void ARobotPlayer::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 }
 
-// Called to bind functionality to input
 void ARobotPlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
@@ -168,6 +158,8 @@ void ARobotPlayer::OnJump()
 
 void ARobotPlayer::OnRun()
 {
+	if (bIsJumpStart || GetMovementComponent()->IsFalling()) return;
+	
 	if (bIsRunning)
 	{
 		bIsRunning = false;

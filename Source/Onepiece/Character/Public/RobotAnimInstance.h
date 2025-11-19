@@ -26,15 +26,16 @@ protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Values")
 	bool bIsJumpStart;
 	
-	// 이동 속도
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Values")
 	FVector velocity;
-	// 공중에 있는지 여부
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Values")
-	bool isAir;
-	// 수평 이동 속력
+	bool bIsAir;
+	
+	// Velocity
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Values")
-	float groundSpeed;
+	float horizontal;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Values")
+	float vertical;
 	
 	UFUNCTION()
 	void AnimNotify_OnJumpStart();

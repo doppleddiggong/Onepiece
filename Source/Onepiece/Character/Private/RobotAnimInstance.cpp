@@ -25,15 +25,10 @@ void URobotAnimInstance::NativeUpdateAnimation(float DeltaSeconds)
 	{
 		bIsRunning = OwningRobot->GetIsRunning();
 		bIsJumpStart = OwningRobot->GetIsJumpStart();
-		// 이동 속도 설정
 		velocity = OwningRobot->GetVelocity();
-		// 수평 이동 속력 설정
-		groundSpeed = velocity.Size2D();
-		// 공중 여부 설정
-		isAir = OwningRobot->GetMovementComponent()->IsFalling();
-		// 앞뒤 이동에 따른 값 설정
-		FVector v = velocity;
-		v.Z = 0;
+		horizontal = FVector::DotProduct(velocity, OwningRobot->GetActorRightVector());
+		vertical = FVector::DotProduct(velocity, OwningRobot->GetActorForwardVector());
+		bIsAir = OwningRobot->GetMovementComponent()->IsFalling();
 	}
 }
 
