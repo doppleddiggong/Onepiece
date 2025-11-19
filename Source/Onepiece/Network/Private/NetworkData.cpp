@@ -339,3 +339,58 @@ void FResponseGameResult::PrintData() const
 {
 	NETWORK_LOG( TEXT("[KLingo] GameResult Response - Grade: %s, Scores Count: %d"), *Grade, Scores.Num());
 }
+
+
+TSharedPtr<FJsonObject> FGPTContext::ToJsonObject() const
+{
+	return MakeShared<FJsonObject>();
+}
+
+// --- Ask Endpoint Implementation ---
+bool FRequestASK::ToJsonString(FString& OutJson) const
+{
+	TSharedPtr<FJsonObject> Root = MakeShared<FJsonObject>();
+
+	if (TSharedPtr<FJsonObject> ContextJson = context.ToJsonObject())
+		Root->SetObjectField(TEXT("context"), ContextJson);
+
+	TSharedRef<TJsonWriter<>> Writer = TJsonWriterFactory<>::Create(&OutJson);
+	return FJsonSerializer::Serialize(Root.ToSharedRef(), Writer);
+}
+
+void FResponseAsk::SetFromHttpResponse(const TSharedPtr<IHttpResponse, ESPMode::ThreadSafe>& Response)
+{
+	if (!Response.IsValid())
+	{
+		return;
+	}
+
+	FString ResponseBody = Response->GetContentAsString();
+
+	TSharedPtr<FJsonObject> JsonObject;
+	TSharedRef<TJsonReader<>> Reader = TJsonReaderFactory<>::Create(ResponseBody);
+
+	if (FJsonSerializer::Deserialize(Reader, JsonObject) && JsonObject.IsValid())
+	{
+		JsonObject->TryGetStringField(TEXT("transcribed_text"), transcribed_text);
+		JsonObject->TryGetStringField(TEXT("gpt_response_text"), gpt_response_text);
+
+		gpt_response_text = UCommonFunctionLibrary::RemoveLineBreaks(gpt_response_text);
+
+		FString audio_content;
+		JsonObject->TryGetStringField(TEXT("audio_content"), audio_content);
+		FBase64::Decode(audio_content, audio_data);
+	}
+}
+
+void FResponseAsk::PrintData()
+{
+	FString OutputString;
+	FJsonObjectConverter::UStructToJsonObjectString(
+		*this,
+		OutputString,
+		0,
+		0
+	);
+	NETWORK_LOG( TEXT("[RES] %s"), *OutputString);
+}

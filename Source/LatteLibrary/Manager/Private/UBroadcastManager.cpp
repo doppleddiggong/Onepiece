@@ -34,3 +34,13 @@ void UBroadcastManager::SendKnockback(AActor* Target, AActor* Instigator, EDamag
 {
 	OnKnockback.Broadcast(Target, Instigator, Type, Resistance);
 }
+
+void UBroadcastManager::SendAudioSpectrum(float Spectrum)
+{
+	OnAudioSpectrum.Broadcast(Spectrum);
+}
+
+void UBroadcastManager::SendAudioCapture(bool bRecording)
+{
+	OnAudioCapture.Broadcast(bRecording);
+}
