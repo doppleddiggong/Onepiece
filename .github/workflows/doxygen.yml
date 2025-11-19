@@ -51,33 +51,6 @@ jobs:
           mkdir -p Doxygen/html
           wget https://raw.githubusercontent.com/jothepro/doxygen-awesome-css/main/doxygen-awesome.css -O Doxygen/html/doxygen-awesome.css
 
-      - name: Update documentation links for /doxygen/ base
-        run: |
-          python - <<'PY'
-import pathlib
-import re
-
-root = pathlib.Path('Doxygen/html')
-extensions = {'.html', '.htm', '.md', '.markdown', '.json'}
-patterns = [
-    (re.compile(r'href="/(?!honkit/|doxygen/)'), 'href="/doxygen/'),
-    (re.compile(r'src="/(?!honkit/|doxygen/)'), 'src="/doxygen/'),
-    (re.compile(r'href="docs/'), 'href="/doxygen/'),
-    (re.compile(r'src="docs/'), 'src="/doxygen/'),
-    (re.compile(r'href="(?:\\./|\\../)?docs/'), 'href="/doxygen/'),
-    (re.compile(r'src="(?:\\./|\\../)?docs/'), 'src="/doxygen/'),
-]
-
-for path in root.rglob('*'):
-    if path.is_file() and path.suffix.lower() in extensions:
-        text = path.read_text(encoding='utf-8')
-        updated = text
-        for pattern, replacement in patterns:
-            updated = pattern.sub(replacement, updated)
-        if updated != text:
-            path.write_text(updated, encoding='utf-8')
-PY
-
       - name: Deploy to GitHub Pages
         if: github.event_name != 'pull_request'
         uses: peaceiris/actions-gh-pages@v3
