@@ -48,6 +48,18 @@ public class Onepiece : ModuleRules
 			"DeveloperSettings"
 		});
 		
+		PublicDependencyModuleNames.AddRange(new string[]
+		{
+			"Voice",     
+			"AudioMixer" 
+		});
+		
+		PrivateDependencyModuleNames.AddRange(new string[]
+		{
+			"AudioCapture",
+			"AudioCaptureCore",
+			"AudioPlatformConfiguration",
+		});
 		
 		PrivateDependencyModuleNames.AddRange(new string[]
 		{
@@ -60,6 +72,7 @@ public class Onepiece : ModuleRules
 			Path.Combine(ModuleDirectory, "Game", "Public"),
 			Path.Combine(ModuleDirectory, "Network", "Public"),
 			Path.Combine(ModuleDirectory, "UI", "Public"),
+			Path.Combine(ModuleDirectory, "Voice", "Public"),
 		});
 	}
 }

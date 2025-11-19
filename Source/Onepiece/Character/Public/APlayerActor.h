@@ -57,8 +57,18 @@ protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category="RushAttack|Owner")
 	TObjectPtr<class UCharacterMovementComponent> MoveComp;
 
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Voice", meta=(AllowPrivateAccess="true"))
+	TObjectPtr<class UVoiceConversationSystem> VoiceConversationSystem;
+
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	TEnumAsByte<EMovementMode> PrevMoveMode;
+
+public: // 음성 관련
+	/// @brief TTS 오디오를 재생합니다. VoiceConversationSystem으로 전달합니다.
+	/// @param AudioData [in] TTS로 생성된 오디오 데이터 (WAV)
+	/// @return 재생 성공 여부
+	UFUNCTION(BlueprintCallable, Category = "Voice")
+	void PlayTTSAudio(const TArray<uint8>& AudioData);
 	
 public: // Control Interface
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Command")
@@ -77,4 +87,10 @@ public: // Control Interface
 
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Command")
 	void Cmd_Landing() override;
+
+	/// @brief GPT 상호작용을 위한 음성 캡처를 시작합니다.
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Command")
+	void Cmd_RecordStart() override;
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Command")
+	void Cmd_RecordEnd() override;
 };
