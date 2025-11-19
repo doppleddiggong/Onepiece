@@ -1,17 +1,6 @@
 name: Generate HonKit
 
 on:
-  push:
-    branches:
-      - main
-      - dopple
-      - docs
-    paths:
-      - 'Documents/DevLog/**'
-      - 'Planning/**'
-      - 'Documents/*.md'
-      - 'Documents/book.json'
-      - '.github/workflows/honkit.yml'
   repository_dispatch:
     types: [honkit-build]
   workflow_dispatch:
