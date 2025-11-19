@@ -65,20 +65,34 @@ jobs:
         set -euo pipefail
         mkdir -p public
 
-        if [ -d "_site" ]; then
+        # Copy existing gh-pages content if available
+        if [ -d "_site" ] && [ -n "$(ls -A _site 2>/dev/null)" ]; then
+          echo "📋 Preserving existing GitHub Pages content..."
           if command -v rsync >/dev/null 2>&1; then
             rsync -a --exclude '.git' _site/ public/
           else
             cp -R _site/. public/
             rm -rf public/.git
           fi
-        elif [ -f ".github/gh-pages-index.html" ]; then
-          cp .github/gh-pages-index.html public/index.html
+        else
+          echo "⚠️ No existing content found, creating fresh deployment..."
+          if [ -f ".github/gh-pages-index.html" ]; then
+            cp .github/gh-pages-index.html public/index.html
+          fi
         fi
 
+        # Update doxygen directory (preserve docs/ if exists)
+        echo "📚 Updating Doxygen documentation..."
         rm -rf public/doxygen
         mkdir -p public/doxygen
         cp -R Doxygen/html/. public/doxygen/
+        
+        # Ensure docs directory exists (HonKit content)
+        if [ ! -d "public/docs" ]; then
+          echo "⚠️ HonKit docs not found in gh-pages. HonKit needs to be rebuilt."
+        else
+          echo "✅ HonKit docs preserved at public/docs/"
+        fi
 
     - name: Upload GitHub Pages artifact
       uses: actions/upload-pages-artifact@v3

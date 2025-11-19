@@ -76,20 +76,34 @@ jobs:
           set -euo pipefail
           mkdir -p public
 
-          if [ -d "_site" ]; then
+          # Copy existing gh-pages content if available
+          if [ -d "_site" ] && [ -n "$(ls -A _site 2>/dev/null)" ]; then
+            echo "📋 Preserving existing GitHub Pages content..."
             if command -v rsync >/dev/null 2>&1; then
               rsync -a --exclude '.git' _site/ public/
             else
               cp -R _site/. public/
               rm -rf public/.git
             fi
-          elif [ -f ".github/gh-pages-index.html" ]; then
-            cp .github/gh-pages-index.html public/index.html
+          else
+            echo "⚠️ No existing content found, creating fresh deployment..."
+            if [ -f ".github/gh-pages-index.html" ]; then
+              cp .github/gh-pages-index.html public/index.html
+            fi
           fi
 
+          # Update docs directory (preserve doxygen/ if exists)
+          echo "📚 Updating HonKit documentation..."
           rm -rf public/docs
           mkdir -p public/docs
           cp -R Documents/_book/. public/docs/
+          
+          # Ensure doxygen directory exists
+          if [ ! -d "public/doxygen" ]; then
+            echo "⚠️ Doxygen docs not found in gh-pages. Doxygen needs to be rebuilt."
+          else
+            echo "✅ Doxygen docs preserved at public/doxygen/"
+          fi
 
       - name: Write deployment metadata
         env:
