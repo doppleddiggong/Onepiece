@@ -10,7 +10,7 @@
   <a href="https://doppleddiggong.github.io/Onepiece/doxygen/index.html">
     <img src="https://img.shields.io/badge/API_Docs-Doxygen-blue.svg" alt="API Docs">
   </a>
-  <a href="https://doppleddiggong.github.io/Onepiece/docs/index.html">
+  <a href="https://doppleddiggong.github.io/Onepiece/honkit/">
     <img src="https://img.shields.io/badge/개발_문서-웹사이트-orange.svg" alt="Dev Docs">
   </a>
   <a href="LICENSE">
@@ -156,7 +156,7 @@ Onepiece/
 
 ## 📚 문서
 
-- **[개발 문서 웹사이트](https://doppleddiggong.github.io/Onepiece/docs/)**: DevLog, 회의록, 기획 문서
+- **[개발 문서 웹사이트](https://doppleddiggong.github.io/Onepiece/honkit/)**: DevLog, 회의록, 기획 문서
 - **[API 문서 (Doxygen)](https://doppleddiggong.github.io/Onepiece/doxygen/)**: C++ 클래스 및 함수 레퍼런스
 - **[프로젝트 개요](AgentRule/Project/Onepiece/PROJECT_OVERVIEW.md)**: 상세 프로젝트 정보
 - **[코딩 컨벤션](AgentRule/Project/Onepiece/CODING_CONVENTIONS.md)**: C++ 스타일 가이드
