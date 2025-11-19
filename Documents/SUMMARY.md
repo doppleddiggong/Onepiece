@@ -27,6 +27,7 @@
 ## 회의록
 
 ### 일일 회의록
+* [251119 Daily](Meeting/Daily/Meeting_251119_Daily.md)
 * [251118 Daily](Meeting/Daily/Meeting_251118_Daily.md)
 * [251117 Daily](Meeting/Daily/Meeting_251117_Daily.md)
 * [251114 Daily](Meeting/Daily/Meeting_251114_Daily.md)
@@ -48,6 +49,7 @@
 
 ### Other Documents
 * [HonKit Deployment/DevLog Pipeline Conflict](Planning/Report/2025-11-12_HonKit_Deployment_Issue.md)
+* [Docs & DevLog Automation Summary](Planning/Report/Docs_Update_Summary.md)
 
 ## External Links
 * [GitHub Repository](https://github.com/doppleddiggong/Onepiece)
