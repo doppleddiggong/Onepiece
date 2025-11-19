@@ -63,3 +63,11 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           event-type: meeting-broadcast
           client-payload: ${{ steps.changes.outputs.broadcast_payload }}
+
+      - name: Trigger Confluence Upload
+        if: steps.changes.outputs.has_changes == 'true'
+        uses: peter-evans/repository-dispatch@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          event-type: confluence-upload
+          client-payload: ${{ steps.changes.outputs.confluence_payload }}
