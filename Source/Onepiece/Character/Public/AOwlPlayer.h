@@ -5,7 +5,7 @@
 #include "CoreMinimal.h"
 #include "InputActionValue.h"
 #include "GameFramework/Character.h"
-#include "RobotPlayer.generated.h"
+#include "AOwlPlayer.generated.h"
 
 UCLASS()
 class ONEPIECE_API ARobotPlayer : public ACharacter

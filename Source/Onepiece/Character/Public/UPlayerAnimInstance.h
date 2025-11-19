@@ -4,7 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Animation/AnimInstance.h"
-#include "RobotAnimInstance.generated.h"
+#include "UPlayerAnimInstance.generated.h"
 
 /**
  * 
