@@ -129,3 +129,14 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           event-type: honkit-build
           client-payload: '{"ref": "main", "trigger": "daily-update", "latest_file": "Documents/DevLog/Daily/${{ steps.date.outputs.today }}.md"}'
+
+      - name: Send Discord Notification
+        env:
+          DISCORD_WEBHOOK_DEVLOG: ${{ secrets.DISCORD_WEBHOOK_DEVLOG }}
+        run: |
+          python .github/scripts/devlog/send_discord.py \
+            --webhook-url "$DISCORD_WEBHOOK_DEVLOG" \
+            --type daily \
+            --devlog-file "Documents/DevLog/Daily/${{ steps.date.outputs.today }}.md" \
+            --date "${{ steps.date.outputs.today }}" \
+            --devlog-url "https://doppleddiggong.github.io/Onepiece/docs/DevLog/Daily/${{ steps.date.outputs.today }}.html"
