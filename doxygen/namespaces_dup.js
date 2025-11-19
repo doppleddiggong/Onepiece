@@ -28,6 +28,18 @@ var namespaces_dup =
       [ "GetSocketURL", "namespaceNetworkConfig.html#a948647fad9ed84a91de549757a7a0e74", null ]
     ] ],
     [ "RequestAPI", "namespaceRequestAPI.html", [
-      [ "Health", "namespaceRequestAPI.html#ae1061ff9836b3127b56024d0a0f6fd65", null ]
+      [ "ASK", "namespaceRequestAPI.html#ae56660e3a00ae63d00aa203b797602e9", null ],
+      [ "CreateUser", "namespaceRequestAPI.html#aeb90e47a4772d2d7693418d359d7e6c9", null ],
+      [ "GameLogin", "namespaceRequestAPI.html#a43f5f3ad9619ab35ac8577effc1cac3a", null ],
+      [ "GameResult", "namespaceRequestAPI.html#a3afa54cbe8cd9d3bcc4dd5590b4b05d7", null ],
+      [ "Health", "namespaceRequestAPI.html#ae1061ff9836b3127b56024d0a0f6fd65", null ],
+      [ "Interview", "namespaceRequestAPI.html#af20caf22ad94f74b3bedb680071f929c", null ],
+      [ "Login", "namespaceRequestAPI.html#a92791978d614f1d374b9e182fcc2444b", null ],
+      [ "QuestAnswer", "namespaceRequestAPI.html#a38bb9a4fd0d06d89e280e6da4aaad176", null ],
+      [ "QuestFail", "namespaceRequestAPI.html#a0729dd2af631345e13c8a24b067680f2", null ],
+      [ "QuestSpeak", "namespaceRequestAPI.html#ae987f73b6961656923914572b4d62b85", null ],
+      [ "QuestWrite", "namespaceRequestAPI.html#a4330a153e623c54a126aa7838dc6319a", null ],
+      [ "StartGame", "namespaceRequestAPI.html#ac1d9709c31ab47a176f7dd0bb11dbd45", null ],
+      [ "SubmitInterview", "namespaceRequestAPI.html#a59e119807bb3a0ebb0de1c0865409da8", null ]
     ] ]
 ];

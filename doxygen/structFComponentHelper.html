@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Onepiece Project Documentation: FComponentHelper 구조체 참조</title>
+<title>KLingo Project Documentation: FComponentHelper 구조체 참조</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -36,7 +36,7 @@ window.MathJax = {
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Onepiece Project Documentation<span id="projectnumber">&#160;1.0.0</span>
+   <div id="projectname">KLingo Project Documentation<span id="projectnumber">&#160;1.0.0</span>
    </div>
    <div id="projectbrief">Unreal Engine 5.6 C++ Project Documentation</div>
   </td>
@@ -284,10 +284,10 @@ template&lt;<a class="el" href="structFComponentHelper.html#ac37cef436e9aaef1f0c
 <div class="fragment"><div class="line"><span class="lineno">   74</span>    {</div>
 <div class="line"><span class="lineno">   75</span>        <span class="keyword">static_assert</span>(TIsDerivedFrom&lt;T, AActor&gt;::IsDerived, <span class="stringliteral">&quot;T must derive from AActor&quot;</span>);</div>
 <div class="line"><span class="lineno">   76</span> </div>
-<div class="line"><span class="lineno">   77</span>        <a class="code hl_function" href="structFComponentHelper.html#ac37cef436e9aaef1f0c655d781a95e66">TArray&lt;T*&gt;</a> <a class="code hl_function" href="structFComponentHelper.html#ac37cef436e9aaef1f0c655d781a95e66">Result</a>;</div>
+<div class="line"><span class="lineno">   77</span>        <a class="code hl_function" href="structFComponentHelper.html#ac37cef436e9aaef1f0c655d781a95e66">TArray&lt;T*&gt;</a> Result;</div>
 <div class="line"><span class="lineno">   78</span> </div>
 <div class="line"><span class="lineno">   79</span>        <span class="keywordflow">if</span> (!<a class="code hl_function" href="structFComponentHelper.html#ac37cef436e9aaef1f0c655d781a95e66">World</a>)</div>
-<div class="line"><span class="lineno">   80</span>            <span class="keywordflow">return</span> <a class="code hl_function" href="structFComponentHelper.html#ac37cef436e9aaef1f0c655d781a95e66">Result</a>;</div>
+<div class="line"><span class="lineno">   80</span>            <span class="keywordflow">return</span> Result;</div>
 <div class="line"><span class="lineno">   81</span> </div>
 <div class="line"><span class="lineno">   82</span>        <a class="code hl_function" href="structFComponentHelper.html#ac37cef436e9aaef1f0c655d781a95e66">TArray&lt;AActor*&gt;</a> <a class="code hl_function" href="structFComponentHelper.html#ac37cef436e9aaef1f0c655d781a95e66">FoundActors</a>;</div>
 <div class="line"><span class="lineno">   83</span>        UGameplayStatics::GetAllActorsOfClass(<a class="code hl_function" href="structFComponentHelper.html#ac37cef436e9aaef1f0c655d781a95e66">World</a>, T::StaticClass(), <a class="code hl_function" href="structFComponentHelper.html#ac37cef436e9aaef1f0c655d781a95e66">FoundActors</a>);</div>
@@ -296,11 +296,11 @@ template&lt;<a class="el" href="structFComponentHelper.html#ac37cef436e9aaef1f0c
 <div class="line"><span class="lineno">   86</span>        {</div>
 <div class="line"><span class="lineno">   87</span>            <span class="keywordflow">if</span> (T* <a class="code hl_function" href="structFComponentHelper.html#ac37cef436e9aaef1f0c655d781a95e66">Casted</a> = <a class="code hl_function" href="structFComponentHelper.html#ac37cef436e9aaef1f0c655d781a95e66">Cast&lt;T&gt;</a>(<a class="code hl_function" href="structFComponentHelper.html#ac37cef436e9aaef1f0c655d781a95e66">Actor</a>))</div>
 <div class="line"><span class="lineno">   88</span>            {</div>
-<div class="line"><span class="lineno">   89</span>                <a class="code hl_function" href="structFComponentHelper.html#ac37cef436e9aaef1f0c655d781a95e66">Result</a>.Add(<a class="code hl_function" href="structFComponentHelper.html#ac37cef436e9aaef1f0c655d781a95e66">Casted</a>);</div>
+<div class="line"><span class="lineno">   89</span>                Result.Add(<a class="code hl_function" href="structFComponentHelper.html#ac37cef436e9aaef1f0c655d781a95e66">Casted</a>);</div>
 <div class="line"><span class="lineno">   90</span>            }</div>
 <div class="line"><span class="lineno">   91</span>        }</div>
 <div class="line"><span class="lineno">   92</span> </div>
-<div class="line"><span class="lineno">   93</span>        <span class="keywordflow">return</span> <a class="code hl_function" href="structFComponentHelper.html#ac37cef436e9aaef1f0c655d781a95e66">Result</a>;</div>
+<div class="line"><span class="lineno">   93</span>        <span class="keywordflow">return</span> Result;</div>
 <div class="line"><span class="lineno">   94</span>    }</div>
 </div><!-- fragment -->
 </div>
@@ -339,7 +339,7 @@ template&lt;typename T &gt; </div>
 <div class="line"><span class="lineno">   21</span>        <span class="keywordflow">return</span> <a class="code hl_function" href="structFComponentHelper.html#ac37cef436e9aaef1f0c655d781a95e66">Obj</a>.Succeeded() ? <a class="code hl_function" href="structFComponentHelper.html#ac37cef436e9aaef1f0c655d781a95e66">Obj</a>.Object.Get() : <span class="keyword">nullptr</span>;</div>
 <div class="line"><span class="lineno">   22</span>    }</div>
 </div><!-- fragment -->
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerControl_8cpp_source.html#l00026">APlayerControl::APlayerControl()</a>, <a class="el" href="UDialogManager_8cpp_source.html#l00022">UDialogManager::UDialogManager()</a>, <a class="el" href="UGameSoundManager_8cpp_source.html#l00015">UGameSoundManager::UGameSoundManager()</a>, <a class="el" href="UGameVFXManager_8cpp_source.html#l00017">UGameVFXManager::UGameVFXManager()</a>, <a class="el" href="ULoadingCircleManager_8cpp_source.html#l00024">ULoadingCircleManager::ULoadingCircleManager()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerControl_8cpp_source.html#l00028">APlayerControl::APlayerControl()</a>, <a class="el" href="UDialogManager_8cpp_source.html#l00022">UDialogManager::UDialogManager()</a>, <a class="el" href="UGameSoundManager_8cpp_source.html#l00015">UGameSoundManager::UGameSoundManager()</a>, <a class="el" href="UGameVFXManager_8cpp_source.html#l00017">UGameVFXManager::UGameVFXManager()</a>, <a class="el" href="ULoadingCircleManager_8cpp_source.html#l00024">ULoadingCircleManager::ULoadingCircleManager()</a>.</p>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
@@ -395,7 +395,7 @@ template&lt;<a class="el" href="structFComponentHelper.html#ac37cef436e9aaef1f0c
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="structFComponentHelper.html">FComponentHelper</a></li>
-    <li class="footer">생성시간 : 목 11월 13 2025 16:22:32, 프로젝트명 : Onepiece Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 수 11월 19 2025 23:36:38, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

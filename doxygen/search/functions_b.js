@@ -13,5 +13,8 @@ var searchData=
   ['onlook_10',['OnLook',['../classAPlayerControl.html#a6c7499f4bc744fb6e0920e5195f562c3',1,'APlayerControl']]],
   ['onmessage_5fnative_11',['OnMessage_Native',['../classUWebSocketSystem.html#a193675a8b260eb5d79e535ef3f7f1192',1,'UWebSocketSystem']]],
   ['onmove_12',['OnMove',['../classAPlayerControl.html#a6753258935f617283a3cfb653d32b84b',1,'APlayerControl']]],
-  ['onresponsehealth_13',['OnResponseHealth',['../classANetworkTesterActor.html#af53ab152c1caa8ba9ed79f749aa4b10c',1,'ANetworkTesterActor']]]
+  ['onrecordpressed_13',['OnRecordPressed',['../classAPlayerControl.html#ac1a34aa3e6b5a59c28b7b8ae42c4d75d',1,'APlayerControl']]],
+  ['onrecordreleased_14',['OnRecordReleased',['../classAPlayerControl.html#a0b8363f1c71e6644c0575985fca29ba6',1,'APlayerControl']]],
+  ['onrep_5fcurrentphase_15',['OnRep_CurrentPhase',['../classALingoGameState.html#a9c3c20e280797a60afa14855e746fddf',1,'ALingoGameState']]],
+  ['onresponsehealth_16',['OnResponseHealth',['../classANetworkTesterActor.html#af53ab152c1caa8ba9ed79f749aa4b10c',1,'ANetworkTesterActor']]]
 ];

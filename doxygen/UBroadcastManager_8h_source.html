@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Onepiece Project Documentation: Source/LatteLibrary/Manager/Public/UBroadcastManager.h 소스 파일</title>
+<title>KLingo Project Documentation: Source/LatteLibrary/Manager/Public/UBroadcastManager.h 소스 파일</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -36,7 +36,7 @@ window.MathJax = {
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Onepiece Project Documentation<span id="projectnumber">&#160;1.0.0</span>
+   <div id="projectname">KLingo Project Documentation<span id="projectnumber">&#160;1.0.0</span>
    </div>
    <div id="projectbrief">Unreal Engine 5.6 C++ Project Documentation</div>
   </td>
@@ -165,7 +165,21 @@ $(document).ready(function(){initNavTree('UBroadcastManager_8h_source.html','');
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    UFUNCTION(BlueprintCallable, Category=&quot;Events&quot;)</div>
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <span class="keywordtype">void</span> SendKnockback(AActor* Target, AActor* Instigator, <a class="code hl_enumeration" href="EDamageType_8h.html#ab5bf7dde87ef933ba244eba8c39e7e9b">EDamageType</a> Type, <span class="keywordtype">float</span> Resistance);</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>};</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="classUBroadcastManager.html#a17e0c45851522502899d7d1865845a9f">   67</a></span>    <a class="code hl_function" href="USightSystem_8h.html#a35f3fefc7dc121d5e1364545508b38c1">DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam</a>(FOnAudioSpectrum, <span class="keywordtype">float</span>, Spectrum);</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    UPROPERTY(BlueprintAssignable, Category=&quot;Events&quot;)</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="classUBroadcastManager.html#aa17cf7bbe9f0657ef94594ed525ddd88">   69</a></span>    FOnAudioSpectrum OnAudioSpectrum;</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    </div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    UFUNCTION(BlueprintCallable, Category=&quot;Events&quot;)</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    <span class="keywordtype">void</span> SendAudioSpectrum(<span class="keywordtype">float</span> Spectrum);</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno"><a class="line" href="classUBroadcastManager.html#a4aa5ff0bdcea9a8321bce82f0472501b">   74</a></span>    <a class="code hl_function" href="USightSystem_8h.html#a35f3fefc7dc121d5e1364545508b38c1">DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam</a>(FOnAudioCapture, <span class="keywordtype">bool</span>, bRecording);</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    UPROPERTY(BlueprintAssignable, Category=&quot;Events&quot;)</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno"><a class="line" href="classUBroadcastManager.html#a15ce56190730a87bbd9ea51210a08b14">   76</a></span>    FOnAudioCapture OnAudioCapture;</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    UFUNCTION(BlueprintCallable, Category=&quot;Events&quot;)</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    <span class="keywordtype">void</span> SendAudioCapture(<span class="keywordtype">bool</span> bRecording);</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>};</div>
 </div>
 <div class="ttc" id="aEDamageType_8h_html"><div class="ttname"><a href="EDamageType_8h.html">EDamageType.h</a></div><div class="ttdoc">EDamageType 클래스를 선언합니다.</div></div>
 <div class="ttc" id="aEDamageType_8h_html_ab5bf7dde87ef933ba244eba8c39e7e9b"><div class="ttname"><a href="EDamageType_8h.html#ab5bf7dde87ef933ba244eba8c39e7e9b">EDamageType</a></div><div class="ttdeci">EDamageType</div><div class="ttdef"><b>Definition</b> <a href="EDamageType_8h_source.html#l00008">EDamageType.h:9</a></div></div>
@@ -180,7 +194,7 @@ $(document).ready(function(){initNavTree('UBroadcastManager_8h_source.html','');
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_399370037b6f5ff6b0840148d18ec8d9.html">LatteLibrary</a></li><li class="navelem"><a class="el" href="dir_3895d977c26767e128462eaa7d00849f.html">Manager</a></li><li class="navelem"><a class="el" href="dir_ece11de4a6442a77ccaf0d9d7adf8213.html">Public</a></li><li class="navelem"><a class="el" href="UBroadcastManager_8h.html">UBroadcastManager.h</a></li>
-    <li class="footer">생성시간 : 목 11월 13 2025 16:22:31, 프로젝트명 : Onepiece Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 수 11월 19 2025 23:36:38, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

@@ -7,8 +7,17 @@ var hierarchy =
     [ "ACharacter", null, [
       [ "APlayerActor", "classAPlayerActor.html", null ]
     ] ],
+    [ "AGameMode", null, [
+      [ "ALingoGameMode", "classALingoGameMode.html", null ]
+    ] ],
+    [ "AGameState", null, [
+      [ "ALingoGameState", "classALingoGameState.html", null ]
+    ] ],
     [ "APlayerController", null, [
       [ "APlayerControl", "classAPlayerControl.html", null ]
+    ] ],
+    [ "APlayerState", null, [
+      [ "ALingoPlayerState", "classALingoPlayerState.html", null ]
     ] ],
     [ "FComponentHelper", "structFComponentHelper.html", null ],
     [ "FDelayHandle", "structFDelayHandle.html", null ],
@@ -18,13 +27,35 @@ var hierarchy =
     [ "FEaseVectorTrack", "structFEaseVectorTrack.html", null ],
     [ "UDelayTaskManager::FEntry", "structUDelayTaskManager_1_1FEntry.html", null ],
     [ "FHttpMultipartFormData::FFilePart", "structFHttpMultipartFormData_1_1FFilePart.html", null ],
+    [ "FGPTContext", "structFGPTContext.html", null ],
+    [ "FGPTContextLocation", "structFGPTContextLocation.html", null ],
+    [ "FGPTContextNearBuilding", "structFGPTContextNearBuilding.html", null ],
     [ "FHttpMultipartFormData", "classFHttpMultipartFormData.html", null ],
+    [ "FListenTargetData", "structFListenTargetData.html", null ],
     [ "FLogWriter", "classFLogWriter.html", null ],
     [ "FMaterialHelper", "structFMaterialHelper.html", null ],
     [ "FMathHelper", "structFMathHelper.html", null ],
     [ "FParabolaBallisticTrack", "structFParabolaBallisticTrack.html", null ],
     [ "FParabolaGeometricTrack", "structFParabolaGeometricTrack.html", null ],
+    [ "FPlayerInfo", "structFPlayerInfo.html", null ],
+    [ "FQuestListenInfo", "structFQuestListenInfo.html", null ],
+    [ "FQuestReadInfo", "structFQuestReadInfo.html", null ],
+    [ "FQuestSpeakInfo", "structFQuestSpeakInfo.html", null ],
+    [ "FQuestWriteInfo", "structFQuestWriteInfo.html", null ],
+    [ "FReadTargetData", "structFReadTargetData.html", null ],
+    [ "FRequestASK", "structFRequestASK.html", null ],
+    [ "FRequestGPT", "structFRequestGPT.html", null ],
+    [ "FResponseAsk", "structFResponseAsk.html", null ],
+    [ "FResponseCreateUser", "structFResponseCreateUser.html", null ],
+    [ "FResponseGameLogin", "structFResponseGameLogin.html", null ],
+    [ "FResponseGameResult", "structFResponseGameResult.html", null ],
     [ "FResponseHealth", "structFResponseHealth.html", null ],
+    [ "FResponseInterview", "structFResponseInterview.html", null ],
+    [ "FResponseLogin", "structFResponseLogin.html", null ],
+    [ "FResponseQuestAnswer", "structFResponseQuestAnswer.html", null ],
+    [ "FResponseQuestSpeak", "structFResponseQuestSpeak.html", null ],
+    [ "FResponseQuestWrite", "structFResponseQuestWrite.html", null ],
+    [ "FResponseStartGame", "structFResponseStartGame.html", null ],
     [ "FSequenceCommand", "structFSequenceCommand.html", null ],
     [ "FServerConfig", "structFServerConfig.html", null ],
     [ "FTableRowBase", null, [
@@ -35,6 +66,9 @@ var hierarchy =
     ] ],
     [ "FHttpMultipartFormData::FTextPart", "structFHttpMultipartFormData_1_1FTextPart.html", null ],
     [ "FVFXData", "structFVFXData.html", null ],
+    [ "FWordData", "structFWordData.html", null ],
+    [ "FWriteTargetData", "structFWriteTargetData.html", null ],
+    [ "FWriteTeachData", "structFWriteTeachData.html", null ],
     [ "IControllable", "classIControllable.html", [
       [ "APlayerActor", "classAPlayerActor.html", null ]
     ] ],
@@ -45,7 +79,9 @@ var hierarchy =
     [ "UBlueprintFunctionLibrary", null, [
       [ "UCommonFunctionLibrary", "classUCommonFunctionLibrary.html", null ],
       [ "UEaseFunctionLibrary", "classUEaseFunctionLibrary.html", null ],
-      [ "UGameFunctionLibrary", "classUGameFunctionLibrary.html", null ]
+      [ "UGameFunctionLibrary", "classUGameFunctionLibrary.html", null ],
+      [ "ULingoGameHelper", "classULingoGameHelper.html", null ],
+      [ "UVoiceFunctionLibrary", "classUVoiceFunctionLibrary.html", null ]
     ] ],
     [ "UDamageType", null, [
       [ "UGameDamageType", "classUGameDamageType.html", null ]
@@ -58,6 +94,9 @@ var hierarchy =
     [ "UDeveloperSettings", null, [
       [ "UCustomNetworkSettings", "classUCustomNetworkSettings.html", null ]
     ] ],
+    [ "UGameInstance", null, [
+      [ "ULingoGameInstance", "classULingoGameInstance.html", null ]
+    ] ],
     [ "UGameInstanceSubsystem", null, [
       [ "UBroadcastManager", "classUBroadcastManager.html", null ],
       [ "UDelayTaskManager", "classUDelayTaskManager.html", null ],
@@ -65,6 +104,7 @@ var hierarchy =
       [ "UGameSoundManager", "classUGameSoundManager.html", null ],
       [ "UGameVFXManager", "classUGameVFXManager.html", null ],
       [ "UHttpNetworkSystem", "classUHttpNetworkSystem.html", null ],
+      [ "UKLingoNetworkSystem", "classUKLingoNetworkSystem.html", null ],
       [ "UObjectPoolManager", "classUObjectPoolManager.html", null ],
       [ "USequenceManager", "classUSequenceManager.html", null ],
       [ "UWebSocketSystem", "classUWebSocketSystem.html", null ]

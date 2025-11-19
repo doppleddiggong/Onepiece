@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['value_0',['Value',['../structFHttpMultipartFormData_1_1FTextPart.html#a0c4b245e007c8201f2d06484e10660bc',1,'FHttpMultipartFormData::FTextPart']]],
-  ['vfxasset_1',['vfxasset',['../structFVFXData.html#af261eaf6fac7df787bb2f290c456123f',1,'FVFXData::VFXAsset'],['../classUGameVFXManager.html#aca745efb451e8000491a3d262f15724b',1,'UGameVFXManager::VFXAsset']]],
-  ['vfxdata_2',['VFXData',['../classUVFXDataAsset.html#abff13278bec23a7e68aa4153d8b20153',1,'UVFXDataAsset']]],
-  ['vfxdatamap_3',['VFXDataMap',['../classUGameVFXManager.html#aaa8a39ad90780ff3bffc4af06971f806',1,'UGameVFXManager']]]
+  ['unlockequip_0',['UnlockEquip',['../structFPlayerInfo.html#a6566751cd4dd659cf472e9493dc9afb9',1,'FPlayerInfo']]],
+  ['user_5fquery_1',['user_query',['../structFRequestGPT.html#a6d4d0b33873768b2a82d1f7e49b11a9a',1,'FRequestGPT']]],
+  ['userindex_2',['UserIndex',['../structFPlayerInfo.html#a935464395dc23efef30a9cb0114efd03',1,'FPlayerInfo']]]
 ];

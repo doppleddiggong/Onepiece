@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Onepiece Project Documentation: Source/Onepiece/Network/Public/UHttpNetworkSystem.h 소스 파일</title>
+<title>KLingo Project Documentation: Source/Onepiece/Network/Public/UHttpNetworkSystem.h 소스 파일</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -36,7 +36,7 @@ window.MathJax = {
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Onepiece Project Documentation<span id="projectnumber">&#160;1.0.0</span>
+   <div id="projectname">KLingo Project Documentation<span id="projectnumber">&#160;1.0.0</span>
    </div>
    <div id="projectbrief">Unreal Engine 5.6 C++ Project Documentation</div>
   </td>
@@ -135,16 +135,18 @@ $(document).ready(function(){initNavTree('UHttpNetworkSystem_8h_source.html','')
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="keywordtype">void</span> RequestHealth(FResponseHealthDelegate InDelegate);</div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> LogNetwork(<a class="code hl_enumeration" href="ENetworkLogType_8h.html#a80aaa513e01d2ec2d4421835b09d691f">ENetworkLogType</a> InLogType, <span class="keyword">const</span> FString&amp; URL, <span class="keyword">const</span> FString&amp; Body = <span class="stringliteral">&quot;&quot;</span>);</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="keyword">static</span> <span class="keyword">const</span> TCHAR* GetLogPrefix(<a class="code hl_enumeration" href="ENetworkLogType_8h.html#a80aaa513e01d2ec2d4421835b09d691f">ENetworkLogType</a> InLogType);</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="keywordtype">void</span> AddNetworkWaitCount(<span class="keywordtype">int</span> Value);</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="keywordtype">void</span> RequestASK(<span class="keyword">const</span> FString&amp; FilePath, <span class="keyword">const</span> <a class="code hl_struct" href="structFGPTContext.html">FGPTContext</a>&amp; Context, FResponseAskDelegate InDelegate);</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> LogNetwork(<a class="code hl_enumeration" href="ENetworkLogType_8h.html#a80aaa513e01d2ec2d4421835b09d691f">ENetworkLogType</a> InLogType, <span class="keyword">const</span> FString&amp; URL, <span class="keyword">const</span> FString&amp; Body = <span class="stringliteral">&quot;&quot;</span>);</div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="classUHttpNetworkSystem.html#a87df1b093c1bf8e810b2d35dfb0a5072">   44</a></span>    <span class="keywordtype">int</span> NetworkWaitCount = 0;</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>};</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="keyword">static</span> <span class="keyword">const</span> TCHAR* GetLogPrefix(<a class="code hl_enumeration" href="ENetworkLogType_8h.html#a80aaa513e01d2ec2d4421835b09d691f">ENetworkLogType</a> InLogType);</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="keywordtype">void</span> AddNetworkWaitCount(<span class="keywordtype">int</span> Value);</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="classUHttpNetworkSystem.html#a87df1b093c1bf8e810b2d35dfb0a5072">   50</a></span>    <span class="keywordtype">int</span> NetworkWaitCount = 0;</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>};</div>
 </div>
 <div class="ttc" id="aENetworkLogType_8h_html"><div class="ttname"><a href="ENetworkLogType_8h.html">ENetworkLogType.h</a></div><div class="ttdoc">네트워크 로그 메시지 구분자 열거형을 선언합니다.</div></div>
 <div class="ttc" id="aENetworkLogType_8h_html_a80aaa513e01d2ec2d4421835b09d691f"><div class="ttname"><a href="ENetworkLogType_8h.html#a80aaa513e01d2ec2d4421835b09d691f">ENetworkLogType</a></div><div class="ttdeci">ENetworkLogType</div><div class="ttdoc">네트워크 요청/응답 로그를 구분하는 타입입니다.</div><div class="ttdef"><b>Definition</b> <a href="ENetworkLogType_8h_source.html#l00010">ENetworkLogType.h:11</a></div></div>
@@ -152,13 +154,14 @@ $(document).ready(function(){initNavTree('UHttpNetworkSystem_8h_source.html','')
 <div class="ttc" id="aNetworkData_8h_html"><div class="ttname"><a href="NetworkData_8h.html">NetworkData.h</a></div><div class="ttdoc">네트워크 요청과 응답에 사용되는 구조체 및 설정을 정의합니다.</div></div>
 <div class="ttc" id="aclassUHttpNetworkSystem_html"><div class="ttname"><a href="classUHttpNetworkSystem.html">UHttpNetworkSystem</a></div><div class="ttdef"><b>Definition</b> <a href="UHttpNetworkSystem_8h_source.html#l00015">UHttpNetworkSystem.h:16</a></div></div>
 <div class="ttc" id="aclassUHttpNetworkSystem_html_ad917e50a0d45ca6be25421192238aab3"><div class="ttname"><a href="classUHttpNetworkSystem.html#ad917e50a0d45ca6be25421192238aab3">UHttpNetworkSystem::DEFINE_SUBSYSTEM_GETTER_INLINE</a></div><div class="ttdeci">DEFINE_SUBSYSTEM_GETTER_INLINE(UHttpNetworkSystem)</div></div>
+<div class="ttc" id="astructFGPTContext_html"><div class="ttname"><a href="structFGPTContext.html">FGPTContext</a></div><div class="ttdoc">플레이어 주변 맥락을 GPT에 전달하기 위한 전체 컨텍스트입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00563">NetworkData.h:564</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_db6231b890a14ef22abfc7e4cac87d3d.html">Network</a></li><li class="navelem"><a class="el" href="dir_220b20a97e4e155a19f3af1d93d62cb0.html">Public</a></li><li class="navelem"><a class="el" href="UHttpNetworkSystem_8h.html">UHttpNetworkSystem.h</a></li>
-    <li class="footer">생성시간 : 목 11월 13 2025 16:22:31, 프로젝트명 : Onepiece Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 수 11월 19 2025 23:36:38, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

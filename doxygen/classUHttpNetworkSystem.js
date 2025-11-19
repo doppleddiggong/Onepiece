@@ -6,6 +6,7 @@ var classUHttpNetworkSystem =
     [ "GetLogPrefix", "classUHttpNetworkSystem.html#ac1921af11a0ab9c5c5f0099d732076a3", null ],
     [ "Initialize", "classUHttpNetworkSystem.html#acb88de0059071536c03c69f5fde6a178", null ],
     [ "LogNetwork", "classUHttpNetworkSystem.html#a7e1c4594cecb3e83131e17106e654d07", null ],
+    [ "RequestASK", "classUHttpNetworkSystem.html#a6a3c0a854e47613896fd9056ea767c2e", null ],
     [ "RequestHealth", "classUHttpNetworkSystem.html#a5409712d1a8c7226e51c68335fcc3d48", null ],
     [ "NetworkWaitCount", "classUHttpNetworkSystem.html#a87df1b093c1bf8e810b2d35dfb0a5072", null ]
 ];

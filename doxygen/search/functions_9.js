@@ -8,5 +8,5 @@ var searchData=
   ['loaddata_5fhitstoptable_5',['LoadData_HitStopTable',['../classUGameDataManager.html#adf72cf62298bc613581042c7e86bfbde',1,'UGameDataManager']]],
   ['loaddata_5fknockbacktable_6',['LoadData_KnockbackTable',['../classUGameDataManager.html#ac3bde7d40542b59a0ce72d0b070d3a8e',1,'UGameDataManager']]],
   ['loadidlemontage_7',['LoadIdleMontage',['../classUCharacterData.html#aeabaaf3e50039a6dd4cbe39ac32d77b1',1,'UCharacterData']]],
-  ['lognetwork_8',['lognetwork',['../classUHttpNetworkSystem.html#a7e1c4594cecb3e83131e17106e654d07',1,'UHttpNetworkSystem::LogNetwork()'],['../classUWebSocketSystem.html#a864f4f7d23c89554fbe9a6ddad5aedf1',1,'UWebSocketSystem::LogNetwork()']]]
+  ['lognetwork_8',['lognetwork',['../classUHttpNetworkSystem.html#a7e1c4594cecb3e83131e17106e654d07',1,'UHttpNetworkSystem::LogNetwork()'],['../classUKLingoNetworkSystem.html#ad71f0b7215e0d685a171bc2d8e7a0a3f',1,'UKLingoNetworkSystem::LogNetwork()'],['../classUWebSocketSystem.html#a864f4f7d23c89554fbe9a6ddad5aedf1',1,'UWebSocketSystem::LogNetwork()']]]
 ];

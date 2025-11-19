@@ -10,6 +10,8 @@ var classAPlayerControl =
     [ "OnLanding", "classAPlayerControl.html#ad215a10f787ff7104d339bd49c778a4a", null ],
     [ "OnLook", "classAPlayerControl.html#a6c7499f4bc744fb6e0920e5195f562c3", null ],
     [ "OnMove", "classAPlayerControl.html#a6753258935f617283a3cfb653d32b84b", null ],
+    [ "OnRecordPressed", "classAPlayerControl.html#ac1a34aa3e6b5a59c28b7b8ae42c4d75d", null ],
+    [ "OnRecordReleased", "classAPlayerControl.html#a0b8363f1c71e6644c0575985fca29ba6", null ],
     [ "SetupInputComponent", "classAPlayerControl.html#abede09a391c47bdafb3b34a507c80e9b", null ],
     [ "UPROPERTY", "classAPlayerControl.html#a9fdb376b2be6f019f6f4ca5e6c44d0e8", null ],
     [ "UPROPERTY", "classAPlayerControl.html#af2a7a3d1704e041550106268894f7057", null ],
@@ -17,5 +19,6 @@ var classAPlayerControl =
     [ "UPROPERTY", "classAPlayerControl.html#a40a7c5032606583107febb47988183a4", null ],
     [ "UPROPERTY", "classAPlayerControl.html#add19d4043dc2a7905bde12db5a4aa06e", null ],
     [ "UPROPERTY", "classAPlayerControl.html#a488075f7270924b50ac582e9c3db8410", null ],
+    [ "UPROPERTY", "classAPlayerControl.html#ac1c5f159104d66b0ac570e75210432f1", null ],
     [ "IMC_Default", "classAPlayerControl.html#a76486f75de5e0e9cb22d8c2a7e506d4a", null ]
 ];

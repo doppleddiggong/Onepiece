@@ -6,5 +6,7 @@ var classIControllable =
     [ "Cmd_Jump", "classIControllable.html#ac1d95ea53739c16a86f25e3bb2ee926b", null ],
     [ "Cmd_Landing", "classIControllable.html#a32b1b7dfc4f7bea89132a901bab9bce1", null ],
     [ "Cmd_Look", "classIControllable.html#a45c2124ac1edc67a18538853d12d30bb", null ],
-    [ "Cmd_Move", "classIControllable.html#a19f4250db751284d9964c9a494512fa7", null ]
+    [ "Cmd_Move", "classIControllable.html#a19f4250db751284d9964c9a494512fa7", null ],
+    [ "Cmd_RecordEnd", "classIControllable.html#a8055f9515674a0628221640824ca409e", null ],
+    [ "Cmd_RecordStart", "classIControllable.html#aae8b02c0a353df4a45b12d05a0bb14de", null ]
 ];

@@ -24,7 +24,8 @@
 */
 var NAVTREE =
 [
-  [ "Onepiece Project Documentation", "index.html", [
+  [ "KLingo Project Documentation", "index.html", [
+    [ "KLingo - AI 기반 영어 학습 게임 API 문서", "index.html", "index" ],
     [ "네임스페이스", "namespaces.html", [
       [ "네임스페이스 목록", "namespaces.html", "namespaces_dup" ],
       [ "네임스페이스 멤버", "namespacemembers.html", [
@@ -40,7 +41,7 @@ var NAVTREE =
       [ "클래스 멤버", "functions.html", [
         [ "모두", "functions.html", "functions_dup" ],
         [ "함수", "functions_func.html", "functions_func" ],
-        [ "변수", "functions_vars.html", null ]
+        [ "변수", "functions_vars.html", "functions_vars" ]
       ] ]
     ] ],
     [ "파일들", "files.html", [
@@ -58,10 +59,12 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"AListActorManager_8cpp.html",
-"UGameDataManager_8cpp.html",
-"classUDialogWidget.html#a41af2b60d631b3cb7d0583285c411c35",
-"namespaceGameColor.html#af7d073693f762258d28d399fbb63562f"
+"ALingoGameMode_8cpp.html",
+"UBroadcastManager_8h.html",
+"classAPlayerControl.html#a4cf368d1cfadfd50d83c8af1b10cc623",
+"classULoadginCircle.html#a5654b222ef21cf658e8d44998f747cf0",
+"namespaceRequestAPI.html#ae1061ff9836b3127b56024d0a0f6fd65",
+"structUDelayTaskManager_1_1FEntry.html#a24356fd0a14572e4ad702bcb62cda31f"
 ];
 
 var SYNCONMSG = '패널 동기화를 비활성화하기 위해 클릭하십시오';
