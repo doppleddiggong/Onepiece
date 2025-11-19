@@ -130,6 +130,13 @@ jobs:
           event-type: honkit-build
           client-payload: '{"ref": "main", "trigger": "daily-update", "latest_file": "Documents/DevLog/Daily/${{ steps.date.outputs.today }}.md"}'
 
+      - name: Trigger Confluence Upload
+        uses: peter-evans/repository-dispatch@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          event-type: confluence-upload
+          client-payload: '{"file": "Documents/DevLog/Daily/${{ steps.date.outputs.today }}.md"}'
+
       - name: Send Discord Notification
         env:
           DISCORD_WEBHOOK_DEVLOG: ${{ secrets.DISCORD_WEBHOOK_DEVLOG }}
