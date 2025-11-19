@@ -44,8 +44,7 @@ jobs:
             FILES="${{ github.event.client_payload.file }}"
           elif [ -n "${{ github.event.client_payload.files }}" ]; then
             # Multiple files (from Meeting)
-            FILES=$(echo '${{ toJson(github.event.client_payload.files) }}' | jq -r '.[]' | tr '
-' ' ')
+            FILES=$(echo '${{ toJson(github.event.client_payload.files) }}' | jq -r '.[]' | tr '\n' ' ')
           else
             echo "❌ No files found in payload"
             exit 1
