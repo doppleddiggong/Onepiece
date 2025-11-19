@@ -7,10 +7,10 @@
   <a href="https://isocpp.org/">
     <img src="https://img.shields.io/badge/C++-20-blue.svg" alt="C++20">
   </a>
-  <a href="https://doppleddiggong.github.io/Onepiece/doxygen/">
+  <a href="https://doppleddiggong.github.io/Onepiece/doxygen/index.html">
     <img src="https://img.shields.io/badge/API_Docs-Doxygen-blue.svg" alt="API Docs">
   </a>
-  <a href="https://doppleddiggong.github.io/Onepiece/docs/">
+  <a href="https://doppleddiggong.github.io/Onepiece/docs/index.html">
     <img src="https://img.shields.io/badge/개발_문서-웹사이트-orange.svg" alt="Dev Docs">
   </a>
   <a href="LICENSE">
