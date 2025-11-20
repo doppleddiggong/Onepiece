@@ -59,7 +59,7 @@ def main() -> None:
     parser.add_argument("--manifest", type=Path, required=True, help="Path to meeting file manifest")
     parser.add_argument(
         "--base-url",
-        default="https://doppleddiggong.github.io/Onepiece/docs",
+        default="https://doppleddiggong.github.io/Onepiece/honkit",
         help="Base URL for published HonKit documents",
     )
     args = parser.parse_args()
