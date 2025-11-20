@@ -62,21 +62,18 @@ def _write_outputs(lines: Iterable[str], target_ref: str, output_path: Path) -> 
 
         broadcast_payload = {
             "trigger": "meeting-update",
-            "files": "
-".join(files),
+            "files": "\n".join(files),
         }
 
         confluence_payload = {
             "files": files,
         }
 
-        handle.write("has_changes=true
-")
+        handle.write("has_changes=true\n")
         _write_output(handle, "honkit_payload", json.dumps(payload, ensure_ascii=False))
         _write_output(handle, "broadcast_payload", json.dumps(broadcast_payload, ensure_ascii=False))
         _write_output(handle, "confluence_payload", json.dumps(confluence_payload, ensure_ascii=False))
-        handle.write(f"file_count={len(files)}
-")
+        handle.write(f"file_count={len(files)}\n")
 
 
 def _write_file_list(files: Iterable[str], destination: Path) -> None:
