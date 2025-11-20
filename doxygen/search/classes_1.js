@@ -41,11 +41,14 @@ var searchData=
   ['fresponsequestspeak_38',['FResponseQuestSpeak',['../structFResponseQuestSpeak.html',1,'']]],
   ['fresponsequestwrite_39',['FResponseQuestWrite',['../structFResponseQuestWrite.html',1,'']]],
   ['fresponsestartgame_40',['FResponseStartGame',['../structFResponseStartGame.html',1,'']]],
-  ['fsequencecommand_41',['FSequenceCommand',['../structFSequenceCommand.html',1,'']]],
-  ['fserverconfig_42',['FServerConfig',['../structFServerConfig.html',1,'']]],
-  ['ftextpart_43',['FTextPart',['../structFHttpMultipartFormData_1_1FTextPart.html',1,'FHttpMultipartFormData']]],
-  ['fvfxdata_44',['FVFXData',['../structFVFXData.html',1,'']]],
-  ['fworddata_45',['FWordData',['../structFWordData.html',1,'']]],
-  ['fwritetargetdata_46',['FWriteTargetData',['../structFWriteTargetData.html',1,'']]],
-  ['fwriteteachdata_47',['FWriteTeachData',['../structFWriteTeachData.html',1,'']]]
+  ['fresponseuserme_41',['FResponseUserMe',['../structFResponseUserMe.html',1,'']]],
+  ['fresponseuserregister_42',['FResponseUserRegister',['../structFResponseUserRegister.html',1,'']]],
+  ['fresponseusertoken_43',['FResponseUserToken',['../structFResponseUserToken.html',1,'']]],
+  ['fsequencecommand_44',['FSequenceCommand',['../structFSequenceCommand.html',1,'']]],
+  ['fserverconfig_45',['FServerConfig',['../structFServerConfig.html',1,'']]],
+  ['ftextpart_46',['FTextPart',['../structFHttpMultipartFormData_1_1FTextPart.html',1,'FHttpMultipartFormData']]],
+  ['fvfxdata_47',['FVFXData',['../structFVFXData.html',1,'']]],
+  ['fworddata_48',['FWordData',['../structFWordData.html',1,'']]],
+  ['fwritetargetdata_49',['FWriteTargetData',['../structFWriteTargetData.html',1,'']]],
+  ['fwriteteachdata_50',['FWriteTeachData',['../structFWriteTeachData.html',1,'']]]
 ];

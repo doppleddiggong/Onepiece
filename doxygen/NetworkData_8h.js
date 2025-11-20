@@ -23,6 +23,9 @@ var NetworkData_8h =
     [ "FResponseQuestSpeak", "structFResponseQuestSpeak.html", "structFResponseQuestSpeak" ],
     [ "FResponseQuestWrite", "structFResponseQuestWrite.html", "structFResponseQuestWrite" ],
     [ "FResponseStartGame", "structFResponseStartGame.html", "structFResponseStartGame" ],
+    [ "FResponseUserMe", "structFResponseUserMe.html", "structFResponseUserMe" ],
+    [ "FResponseUserRegister", "structFResponseUserRegister.html", "structFResponseUserRegister" ],
+    [ "FResponseUserToken", "structFResponseUserToken.html", "structFResponseUserToken" ],
     [ "FWordData", "structFWordData.html", "structFWordData" ],
     [ "FWriteTargetData", "structFWriteTargetData.html", "structFWriteTargetData" ],
     [ "FWriteTeachData", "structFWriteTeachData.html", "structFWriteTeachData" ],
@@ -37,6 +40,9 @@ var NetworkData_8h =
     [ "DECLARE_DELEGATE_TwoParams", "NetworkData_8h.html#a108a0185a7abc9febb7492a2e224e6b5", null ],
     [ "DECLARE_DELEGATE_TwoParams", "NetworkData_8h.html#a7b7fde71dfe566638fe4d16a7cf768fa", null ],
     [ "DECLARE_DELEGATE_TwoParams", "NetworkData_8h.html#a8ebd84e3e0f2826020ec5865f44c11a8", null ],
+    [ "DECLARE_DELEGATE_TwoParams", "NetworkData_8h.html#ad6e434b57ae9e95f49e173df35100228", null ],
+    [ "DECLARE_DELEGATE_TwoParams", "NetworkData_8h.html#a83e282ba7f16da7dbce7042becbf3fb4", null ],
+    [ "DECLARE_DELEGATE_TwoParams", "NetworkData_8h.html#a5fedccad4ddcec57d116a9d9654b75fe", null ],
     [ "GetFullUrl", "NetworkData_8h.html#ab5ac57e8f51de6d1740c7a88534a7246", null ],
     [ "GetSocketURL", "NetworkData_8h.html#a948647fad9ed84a91de549757a7a0e74", null ],
     [ "ASK", "NetworkData_8h.html#ae56660e3a00ae63d00aa203b797602e9", null ],
@@ -51,5 +57,8 @@ var NetworkData_8h =
     [ "QuestSpeak", "NetworkData_8h.html#ae987f73b6961656923914572b4d62b85", null ],
     [ "QuestWrite", "NetworkData_8h.html#a4330a153e623c54a126aa7838dc6319a", null ],
     [ "StartGame", "NetworkData_8h.html#ac1d9709c31ab47a176f7dd0bb11dbd45", null ],
-    [ "SubmitInterview", "NetworkData_8h.html#a59e119807bb3a0ebb0de1c0865409da8", null ]
+    [ "SubmitInterview", "NetworkData_8h.html#a59e119807bb3a0ebb0de1c0865409da8", null ],
+    [ "users_me", "NetworkData_8h.html#aee732573aa0bc733fedaab927a273dcd", null ],
+    [ "users_register", "NetworkData_8h.html#a2d4b0c891a96c4ac2d1829ae24d01dc3", null ],
+    [ "users_token", "NetworkData_8h.html#af908b99f78364328aca763f362236454", null ]
 ];

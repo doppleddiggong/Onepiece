@@ -131,7 +131,7 @@ Public 속성</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">상세한 설명</h2>
 <div class="textblock">
-<p class="definition"><a class="el" href="NetworkData_8h_source.html">NetworkData.h</a> 파일의 <a class="el" href="NetworkData_8h_source.html#l00598">598</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="NetworkData_8h_source.html">NetworkData.h</a> 파일의 <a class="el" href="NetworkData_8h_source.html#l00673">673</a> 번째 라인에서 정의되었습니다.</p>
 </div><h2 class="groupheader">멤버 함수 문서화</h2>
 <a id="a6cef70258aea9319cced3f952ea44eaf" name="a6cef70258aea9319cced3f952ea44eaf"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6cef70258aea9319cced3f952ea44eaf">&#9670;&#160;</a></span>ToJsonString()</h2>
@@ -151,20 +151,20 @@ Public 속성</h2></td></tr>
 
 <p>구조체를 JSON 문자열로 직렬화합니다. </p>
 
-<p class="definition"><a class="el" href="NetworkData_8cpp_source.html">NetworkData.cpp</a> 파일의 <a class="el" href="NetworkData_8cpp_source.html#l00350">350</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  351</span>{</div>
-<div class="line"><span class="lineno">  352</span>    TSharedPtr&lt;FJsonObject&gt; Root = MakeShared&lt;FJsonObject&gt;();</div>
-<div class="line"><span class="lineno">  353</span> </div>
-<div class="line"><span class="lineno">  354</span>    <span class="keywordflow">if</span> (TSharedPtr&lt;FJsonObject&gt; ContextJson = <a class="code hl_variable" href="structFRequestASK.html#a359ee975eaaf4300bac81db287a907d9">context</a>.<a class="code hl_function" href="structFGPTContext.html#ad4ea3e7ddf2641cd609b799a013f7ef9">ToJsonObject</a>())</div>
-<div class="line"><span class="lineno">  355</span>        Root-&gt;SetObjectField(TEXT(<span class="stringliteral">&quot;context&quot;</span>), ContextJson);</div>
-<div class="line"><span class="lineno">  356</span> </div>
-<div class="line"><span class="lineno">  357</span>    TSharedRef&lt;TJsonWriter&lt;&gt;&gt; Writer = TJsonWriterFactory&lt;&gt;::Create(&amp;OutJson);</div>
-<div class="line"><span class="lineno">  358</span>    <span class="keywordflow">return</span> FJsonSerializer::Serialize(Root.ToSharedRef(), Writer);</div>
-<div class="line"><span class="lineno">  359</span>}</div>
-<div class="ttc" id="astructFGPTContext_html_ad4ea3e7ddf2641cd609b799a013f7ef9"><div class="ttname"><a href="structFGPTContext.html#ad4ea3e7ddf2641cd609b799a013f7ef9">FGPTContext::ToJsonObject</a></div><div class="ttdeci">TSharedPtr&lt; FJsonObject &gt; ToJsonObject() const</div><div class="ttdoc">JSON 직렬화를 위한 객체를 생성합니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8cpp_source.html#l00344">NetworkData.cpp:344</a></div></div>
-<div class="ttc" id="astructFRequestASK_html_a359ee975eaaf4300bac81db287a907d9"><div class="ttname"><a href="structFRequestASK.html#a359ee975eaaf4300bac81db287a907d9">FRequestASK::context</a></div><div class="ttdeci">FGPTContext context</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00603">NetworkData.h:603</a></div></div>
+<p class="definition"><a class="el" href="NetworkData_8cpp_source.html">NetworkData.cpp</a> 파일의 <a class="el" href="NetworkData_8cpp_source.html#l00446">446</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  447</span>{</div>
+<div class="line"><span class="lineno">  448</span>    TSharedPtr&lt;FJsonObject&gt; Root = MakeShared&lt;FJsonObject&gt;();</div>
+<div class="line"><span class="lineno">  449</span> </div>
+<div class="line"><span class="lineno">  450</span>    <span class="keywordflow">if</span> (TSharedPtr&lt;FJsonObject&gt; ContextJson = <a class="code hl_variable" href="structFRequestASK.html#a359ee975eaaf4300bac81db287a907d9">context</a>.<a class="code hl_function" href="structFGPTContext.html#ad4ea3e7ddf2641cd609b799a013f7ef9">ToJsonObject</a>())</div>
+<div class="line"><span class="lineno">  451</span>        Root-&gt;SetObjectField(TEXT(<span class="stringliteral">&quot;context&quot;</span>), ContextJson);</div>
+<div class="line"><span class="lineno">  452</span> </div>
+<div class="line"><span class="lineno">  453</span>    TSharedRef&lt;TJsonWriter&lt;&gt;&gt; Writer = TJsonWriterFactory&lt;&gt;::Create(&amp;OutJson);</div>
+<div class="line"><span class="lineno">  454</span>    <span class="keywordflow">return</span> FJsonSerializer::Serialize(Root.ToSharedRef(), Writer);</div>
+<div class="line"><span class="lineno">  455</span>}</div>
+<div class="ttc" id="astructFGPTContext_html_ad4ea3e7ddf2641cd609b799a013f7ef9"><div class="ttname"><a href="structFGPTContext.html#ad4ea3e7ddf2641cd609b799a013f7ef9">FGPTContext::ToJsonObject</a></div><div class="ttdeci">TSharedPtr&lt; FJsonObject &gt; ToJsonObject() const</div><div class="ttdoc">JSON 직렬화를 위한 객체를 생성합니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8cpp_source.html#l00440">NetworkData.cpp:440</a></div></div>
+<div class="ttc" id="astructFRequestASK_html_a359ee975eaaf4300bac81db287a907d9"><div class="ttname"><a href="structFRequestASK.html#a359ee975eaaf4300bac81db287a907d9">FRequestASK::context</a></div><div class="ttdeci">FGPTContext context</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00678">NetworkData.h:678</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="NetworkData_8h_source.html#l00603">context</a>, <a class="el" href="NetworkData_8cpp_source.html#l00344">FGPTContext::ToJsonObject()</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="NetworkData_8h_source.html#l00678">context</a>, <a class="el" href="NetworkData_8cpp_source.html#l00440">FGPTContext::ToJsonObject()</a>.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UHttpNetworkSystem_8cpp_source.html#l00098">UHttpNetworkSystem::RequestASK()</a>.</p>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -197,9 +197,9 @@ Public 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="NetworkData_8h_source.html">NetworkData.h</a> 파일의 <a class="el" href="NetworkData_8h_source.html#l00603">603</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="NetworkData_8h_source.html">NetworkData.h</a> 파일의 <a class="el" href="NetworkData_8h_source.html#l00678">678</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UHttpNetworkSystem_8cpp_source.html#l00098">UHttpNetworkSystem::RequestASK()</a>, <a class="el" href="NetworkData_8cpp_source.html#l00350">ToJsonString()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UHttpNetworkSystem_8cpp_source.html#l00098">UHttpNetworkSystem::RequestASK()</a>, <a class="el" href="NetworkData_8cpp_source.html#l00446">ToJsonString()</a>.</p>
 
 </div>
 </div>
@@ -213,7 +213,7 @@ Public 속성</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="structFRequestASK.html">FRequestASK</a></li>
-    <li class="footer">생성시간 : 수 11월 19 2025 23:36:38, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 목 11월 20 2025 08:11:25, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

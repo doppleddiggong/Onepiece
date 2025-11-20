@@ -56,6 +56,9 @@ var hierarchy =
     [ "FResponseQuestSpeak", "structFResponseQuestSpeak.html", null ],
     [ "FResponseQuestWrite", "structFResponseQuestWrite.html", null ],
     [ "FResponseStartGame", "structFResponseStartGame.html", null ],
+    [ "FResponseUserMe", "structFResponseUserMe.html", null ],
+    [ "FResponseUserRegister", "structFResponseUserRegister.html", null ],
+    [ "FResponseUserToken", "structFResponseUserToken.html", null ],
     [ "FSequenceCommand", "structFSequenceCommand.html", null ],
     [ "FServerConfig", "structFServerConfig.html", null ],
     [ "FTableRowBase", null, [

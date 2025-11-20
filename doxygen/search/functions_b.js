@@ -16,5 +16,8 @@ var searchData=
   ['onrecordpressed_13',['OnRecordPressed',['../classAPlayerControl.html#ac1a34aa3e6b5a59c28b7b8ae42c4d75d',1,'APlayerControl']]],
   ['onrecordreleased_14',['OnRecordReleased',['../classAPlayerControl.html#a0b8363f1c71e6644c0575985fca29ba6',1,'APlayerControl']]],
   ['onrep_5fcurrentphase_15',['OnRep_CurrentPhase',['../classALingoGameState.html#a9c3c20e280797a60afa14855e746fddf',1,'ALingoGameState']]],
-  ['onresponsehealth_16',['OnResponseHealth',['../classANetworkTesterActor.html#af53ab152c1caa8ba9ed79f749aa4b10c',1,'ANetworkTesterActor']]]
+  ['onresponsehealth_16',['OnResponseHealth',['../classANetworkTesterActor.html#af53ab152c1caa8ba9ed79f749aa4b10c',1,'ANetworkTesterActor']]],
+  ['onresponseuserme_17',['OnResponseUserMe',['../classANetworkTesterActor.html#afb8a7bf0db529e76c4527c7c1d890571',1,'ANetworkTesterActor']]],
+  ['onresponseuserregister_18',['OnResponseUserRegister',['../classANetworkTesterActor.html#af85fc6f7a9ac286f04aa0027aa75462a',1,'ANetworkTesterActor']]],
+  ['onresponseusertoken_19',['OnResponseUserToken',['../classANetworkTesterActor.html#a3f925eef81e5fdc41ff8bb0e1fea9015',1,'ANetworkTesterActor']]]
 ];

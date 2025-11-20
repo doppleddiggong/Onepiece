@@ -2,7 +2,7 @@ var classFHttpMultipartFormData =
 [
     [ "FFilePart", "structFHttpMultipartFormData_1_1FFilePart.html", "structFHttpMultipartFormData_1_1FFilePart" ],
     [ "FTextPart", "structFHttpMultipartFormData_1_1FTextPart.html", "structFHttpMultipartFormData_1_1FTextPart" ],
-    [ "FHttpMultipartFormData", "classFHttpMultipartFormData.html#a94623a35d57cad7dbcf1c2e97f814584", null ],
+    [ "FHttpMultipartFormData", "classFHttpMultipartFormData.html#adff5451fca928c413cf2f8b819ee353e", null ],
     [ "AddFile", "classFHttpMultipartFormData.html#afcc209c61ee7449848e0f85c98752a74", null ],
     [ "AddStringField", "classFHttpMultipartFormData.html#a8380919cfcb7c7a23c9e95c3c4cef04c", null ],
     [ "AddText", "classFHttpMultipartFormData.html#a7883c51726b656e58cb4d8bf0129048c", null ],
@@ -16,5 +16,6 @@ var classFHttpMultipartFormData =
     [ "Boundary", "classFHttpMultipartFormData.html#a59fc6872975d1177ed7255ed124ea1a3", null ],
     [ "BuiltBody", "classFHttpMultipartFormData.html#a94601907a48475a18267f9f13782be02", null ],
     [ "FileParts", "classFHttpMultipartFormData.html#aae0402af318f01a5f2151f2159c04f57", null ],
+    [ "FormDataType", "classFHttpMultipartFormData.html#aede2d2a1041686ebdb2162ba5c498d0d", null ],
     [ "TextParts", "classFHttpMultipartFormData.html#a349e8b4fcfe06693393806fb106b4581", null ]
 ];
