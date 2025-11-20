@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['일정_0',['📅 개발 일정',['../index.html#autotoc_md27',1,'']]]
+  ['유틸리티_0',['유틸리티',['../index.html#autotoc_md21',1,'']]],
+  ['유틸리티_20라이브러리_3a_20coffeelibrary_1',['☕ 유틸리티 라이브러리: CoffeeLibrary',['../index.html#autotoc_md7',1,'']]]
 ];

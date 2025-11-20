@@ -8,16 +8,18 @@ var searchData=
   ['onconnected_5fnative_5',['OnConnected_Native',['../classUWebSocketSystem.html#a7f1b915b47d4df8053b658927e948009',1,'UWebSocketSystem']]],
   ['onconnectionerror_5fnative_6',['OnConnectionError_Native',['../classUWebSocketSystem.html#a7417991ad9b907b214283443537f567a',1,'UWebSocketSystem']]],
   ['onflyend_7',['OnFlyEnd',['../classAPlayerActor.html#aacf8441b9a00ddaae3d9b4cba86de883',1,'APlayerActor']]],
-  ['onjump_8',['OnJump',['../classAPlayerControl.html#a1bca1ba6619ca2eb51414d2959508433',1,'APlayerControl']]],
+  ['onjump_8',['onjump',['../classARobotPlayer.html#a27b16099ea5401d4854990572309254a',1,'ARobotPlayer::OnJump()'],['../classAPlayerControl.html#a1bca1ba6619ca2eb51414d2959508433',1,'APlayerControl::OnJump(const FInputActionValue &amp;Value)']]],
   ['onlanding_9',['OnLanding',['../classAPlayerControl.html#ad215a10f787ff7104d339bd49c778a4a',1,'APlayerControl']]],
-  ['onlook_10',['OnLook',['../classAPlayerControl.html#a6c7499f4bc744fb6e0920e5195f562c3',1,'APlayerControl']]],
+  ['onlook_10',['onlook',['../classAPlayerControl.html#a6c7499f4bc744fb6e0920e5195f562c3',1,'APlayerControl::OnLook()'],['../classARobotPlayer.html#af64a3130ec7df158dd76ec18c95fcb7d',1,'ARobotPlayer::OnLook()']]],
   ['onmessage_5fnative_11',['OnMessage_Native',['../classUWebSocketSystem.html#a193675a8b260eb5d79e535ef3f7f1192',1,'UWebSocketSystem']]],
-  ['onmove_12',['OnMove',['../classAPlayerControl.html#a6753258935f617283a3cfb653d32b84b',1,'APlayerControl']]],
+  ['onmove_12',['onmove',['../classARobotPlayer.html#ad15c8e84b8989049683d95adcc4663a1',1,'ARobotPlayer::OnMove()'],['../classAPlayerControl.html#a6753258935f617283a3cfb653d32b84b',1,'APlayerControl::OnMove(const FInputActionValue &amp;Value)']]],
   ['onrecordpressed_13',['OnRecordPressed',['../classAPlayerControl.html#ac1a34aa3e6b5a59c28b7b8ae42c4d75d',1,'APlayerControl']]],
   ['onrecordreleased_14',['OnRecordReleased',['../classAPlayerControl.html#a0b8363f1c71e6644c0575985fca29ba6',1,'APlayerControl']]],
   ['onrep_5fcurrentphase_15',['OnRep_CurrentPhase',['../classALingoGameState.html#a9c3c20e280797a60afa14855e746fddf',1,'ALingoGameState']]],
   ['onresponsehealth_16',['OnResponseHealth',['../classANetworkTesterActor.html#af53ab152c1caa8ba9ed79f749aa4b10c',1,'ANetworkTesterActor']]],
   ['onresponseuserme_17',['OnResponseUserMe',['../classANetworkTesterActor.html#afb8a7bf0db529e76c4527c7c1d890571',1,'ANetworkTesterActor']]],
   ['onresponseuserregister_18',['OnResponseUserRegister',['../classANetworkTesterActor.html#af85fc6f7a9ac286f04aa0027aa75462a',1,'ANetworkTesterActor']]],
-  ['onresponseusertoken_19',['OnResponseUserToken',['../classANetworkTesterActor.html#a3f925eef81e5fdc41ff8bb0e1fea9015',1,'ANetworkTesterActor']]]
+  ['onresponseusertoken_19',['OnResponseUserToken',['../classANetworkTesterActor.html#a3f925eef81e5fdc41ff8bb0e1fea9015',1,'ANetworkTesterActor']]],
+  ['onrun_20',['OnRun',['../classARobotPlayer.html#a388909eecef78d9626362da10efa3405',1,'ARobotPlayer']]],
+  ['onstopmove_21',['OnStopMove',['../classARobotPlayer.html#afa49d9972fcd6f43118292ed8501b263',1,'ARobotPlayer']]]
 ];

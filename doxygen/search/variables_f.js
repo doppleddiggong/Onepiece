@@ -1,12 +1,13 @@
 var searchData=
 [
-  ['questanswer_0',['QuestAnswer',['../namespaceRequestAPI.html#a38bb9a4fd0d06d89e280e6da4aaad176',1,'RequestAPI']]],
-  ['questfail_1',['QuestFail',['../namespaceRequestAPI.html#a0729dd2af631345e13c8a24b067680f2',1,'RequestAPI']]],
-  ['questions_2',['Questions',['../structFResponseInterview.html#a58003ab5e2d2d5a31b3ed4790fe9825d',1,'FResponseInterview']]],
-  ['questlisten_3',['QuestListen',['../structFResponseStartGame.html#aafa8ad0c7868d71794bfa09be783e0b6',1,'FResponseStartGame']]],
-  ['questread_4',['QuestRead',['../structFResponseStartGame.html#a792708fe1b6b1265a948ab42703b5660',1,'FResponseStartGame']]],
-  ['questspeak_5',['questspeak',['../structFResponseStartGame.html#a4eba4cbbb29ded216ff4a3f147109ede',1,'FResponseStartGame::QuestSpeak'],['../namespaceRequestAPI.html#ae987f73b6961656923914572b4d62b85',1,'RequestAPI::QuestSpeak']]],
-  ['questtarget_6',['questtarget',['../structFQuestReadInfo.html#ae14e7c073c04ca07d7ca5601f5120df0',1,'FQuestReadInfo::QuestTarget'],['../structFQuestListenInfo.html#a43789bf374e44bb936c042f567ed451d',1,'FQuestListenInfo::QuestTarget'],['../structFQuestWriteInfo.html#a511c18ba01f63e461fd2656145ec8483',1,'FQuestWriteInfo::QuestTarget'],['../structFQuestSpeakInfo.html#a80a3fb8ceb6c45ff95fc8fb9110adeed',1,'FQuestSpeakInfo::QuestTarget']]],
-  ['questwrite_7',['questwrite',['../structFResponseStartGame.html#aa933a9b2a9669b647f554189cad6b40e',1,'FResponseStartGame::QuestWrite'],['../namespaceRequestAPI.html#a4330a153e623c54a126aa7838dc6319a',1,'RequestAPI::QuestWrite']]],
-  ['queue_8',['Queue',['../classUSequenceManager.html#a572cbcf477ac9f6e6b855d49b6b9ca8a',1,'USequenceManager']]]
+  ['player_0',['Player',['../namespaceGameTags.html#a4a81eec617fe2a3746945eb6a5814d21',1,'GameTags']]],
+  ['playerinfo_1',['PlayerInfo',['../structFResponseLogin.html#ae1aef4ea30f77cce284e9fe59656f2cf',1,'FResponseLogin']]],
+  ['playerrole_2',['PlayerRole',['../classALingoPlayerState.html#ab46c3cbd55fd4f7ba22a3d684821a532',1,'ALingoPlayerState']]],
+  ['playerrolemap_3',['PlayerRoleMap',['../classULingoGameInstance.html#acfceb0a51799d2a61878b36789942faa',1,'ULingoGameInstance']]],
+  ['poolmap_4',['PoolMap',['../classUObjectPoolManager.html#a4fc3433c9a3c2fa5f885d391fe920f13',1,'UObjectPoolManager']]],
+  ['port_5',['Port',['../structFServerConfig.html#a0921d17b91705fa9f1ffc75c204daab5',1,'FServerConfig']]],
+  ['previousphase_6',['PreviousPhase',['../classALingoGameState.html#ad8b315fe7559b958a76ffdc68788336d',1,'ALingoGameState']]],
+  ['prevmousepos_7',['prevMousePos',['../classUDrawingBoardWidget.html#ab7b6f878a2113366f4b5b011462ec075',1,'UDrawingBoardWidget']]],
+  ['prevmovemode_8',['PrevMoveMode',['../classAPlayerActor.html#ab1f95d1f7bf064023276293ae98d4856',1,'APlayerActor']]],
+  ['pronunciation_9',['Pronunciation',['../structFWordData.html#a8a359d2cf5e79ca20cbdfe904076dc41',1,'FWordData']]]
 ];

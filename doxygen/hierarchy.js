@@ -5,7 +5,11 @@ var hierarchy =
       [ "ANetworkTesterActor", "classANetworkTesterActor.html", null ]
     ] ],
     [ "ACharacter", null, [
-      [ "APlayerActor", "classAPlayerActor.html", null ]
+      [ "ANPCBase", "classANPCBase.html", [
+        [ "ANPCExaminer", "classANPCExaminer.html", null ]
+      ] ],
+      [ "APlayerActor", "classAPlayerActor.html", null ],
+      [ "ARobotPlayer", "classARobotPlayer.html", null ]
     ] ],
     [ "AGameMode", null, [
       [ "ALingoGameMode", "classALingoGameMode.html", null ]
@@ -14,7 +18,8 @@ var hierarchy =
       [ "ALingoGameState", "classALingoGameState.html", null ]
     ] ],
     [ "APlayerController", null, [
-      [ "APlayerControl", "classAPlayerControl.html", null ]
+      [ "APlayerControl", "classAPlayerControl.html", null ],
+      [ "ARobotPlayerController", "classARobotPlayerController.html", null ]
     ] ],
     [ "APlayerState", null, [
       [ "ALingoPlayerState", "classALingoPlayerState.html", null ]
@@ -77,6 +82,7 @@ var hierarchy =
     ] ],
     [ "ISequenceActivatable", "classISequenceActivatable.html", null ],
     [ "UAnimInstance", null, [
+      [ "URobotAnimInstance", "classURobotAnimInstance.html", null ],
       [ "UTweenAnimInstance", "classUTweenAnimInstance.html", null ]
     ] ],
     [ "UBlueprintFunctionLibrary", null, [
@@ -122,6 +128,7 @@ var hierarchy =
     ] ],
     [ "UUserWidget", null, [
       [ "UDialogWidget", "classUDialogWidget.html", null ],
+      [ "UDrawingBoardWidget", "classUDrawingBoardWidget.html", null ],
       [ "ULoadginCircle", "classULoadginCircle.html", null ]
     ] ]
 ];

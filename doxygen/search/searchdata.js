@@ -1,11 +1,11 @@
 var indexSectionsWithContent =
 {
-  0: "abcdefghiklmnopqrstuvwxyz~☕개게관구기네데라링메모문방빌소스시안언엔영요유일주캐탐프필학핵🏗📄📅📖📚📞📦🚀🛠",
+  0: "abcdefghijklmnopqrstuvwxyz~☕개게관구기네데라링메모문방빌소스시안언엔영요유일주캐탐프필학핵🏗📄📅📖📚📞📦🚀🛠",
   1: "afiu",
   2: "gnr",
-  3: "acefgilmnou",
+  3: "acdefgilmnoru",
   4: "abcdefghilnoprstuvwy~",
-  5: "abcdefghiklmnopqrstuvwxyz",
+  5: "abcdefghijklmnopqrstuvwxyz",
   6: "e",
   7: "cdefghilmnpstuwxyz",
   8: "bcdehiklnpsv",

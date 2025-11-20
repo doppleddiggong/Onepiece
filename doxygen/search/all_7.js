@@ -11,6 +11,7 @@ var searchData=
   ['hitstop_5fpath_8',['HITSTOP_PATH',['../UGameDataManager_8cpp.html#a038c6bb641fabd3ef61115cddfaed945',1,'UGameDataManager.cpp']]],
   ['hitstopcache_9',['HitStopCache',['../classUGameDataManager.html#ad418eb713320dab67b86e69ba43db077',1,'UGameDataManager']]],
   ['hitstoptable_10',['HitStopTable',['../classUGameDataManager.html#aa934e5d7830bd86c2a8cad2df2e70596',1,'UGameDataManager']]],
-  ['hp_11',['HP',['../structFCharacterInfoData.html#aaa15d7a56092cd0d73ea3a7274d92368',1,'FCharacterInfoData']]],
-  ['huge_12',['Huge',['../EDamageType_8h.html#ab5bf7dde87ef933ba244eba8c39e7e9baa2ad65f28a717b0fd2be860a0d8e5c3e',1,'EDamageType.h']]]
+  ['horizontal_11',['horizontal',['../classURobotAnimInstance.html#a3923cdf284a3d58ade05be0329f39fd7',1,'URobotAnimInstance']]],
+  ['hp_12',['HP',['../structFCharacterInfoData.html#aaa15d7a56092cd0d73ea3a7274d92368',1,'FCharacterInfoData']]],
+  ['huge_13',['Huge',['../EDamageType_8h.html#ab5bf7dde87ef933ba244eba8c39e7e9baa2ad65f28a717b0fd2be860a0d8e5c3e',1,'EDamageType.h']]]
 ];

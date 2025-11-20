@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['핵심_20기능_0',['핵심 기능',['../index.html#autotoc_md3',1,'']]]
+  ['학습_20게임_20api_20문서_0',['KLingo - AI 기반 영어 학습 게임 API 문서',['../index.html',1,'']]]
 ];

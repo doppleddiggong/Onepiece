@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['관련_20링크_0',['📞 관련 링크',['../index.html#autotoc_md29',1,'']]],
-  ['관리_1',['데이터 관리',['../index.html#autotoc_md20',1,'']]]
+  ['게임플레이_20라이브러리_3a_20lattelibrary_0',['☕ 게임플레이 라이브러리: LatteLibrary',['../index.html#autotoc_md8',1,'']]],
+  ['게임_20엔진_20언어_1',['게임 엔진 &amp; 언어',['../index.html#autotoc_md11',1,'']]],
+  ['게임_20api_20문서_2',['KLingo - AI 기반 영어 학습 게임 API 문서',['../index.html',1,'']]]
 ];

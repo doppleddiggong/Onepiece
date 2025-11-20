@@ -46,7 +46,7 @@ var searchData=
   ['fmathhelper_43',['FMathHelper',['../structFMathHelper.html',1,'']]],
   ['fmathhelper_2eh_44',['FMathHelper.h',['../FMathHelper_8h.html',1,'']]],
   ['focused_5fobject_45',['focused_object',['../structFGPTContext.html#a416715b9a8094592cb582192c4978d7f',1,'FGPTContext']]],
-  ['followcamera_46',['FollowCamera',['../classAPlayerActor.html#a856ef7f26d46648083f0fcacdc3c0b5d',1,'APlayerActor']]],
+  ['followcamera_46',['followcamera',['../classARobotPlayer.html#a4bebeb9b3a91e7121bd50251797e1710',1,'ARobotPlayer::FollowCamera'],['../classAPlayerActor.html#a856ef7f26d46648083f0fcacdc3c0b5d',1,'APlayerActor::FollowCamera']]],
   ['formdatatype_47',['FormDataType',['../classFHttpMultipartFormData.html#aede2d2a1041686ebdb2162ba5c498d0d',1,'FHttpMultipartFormData']]],
   ['formurlencoded_48',['FormUrlEncoded',['../FHttpMultipartFormData_8h.html#a9478332f7eef11c662f43ecca21be2f1a0421cf7b9c7d5657946d7a37929f1abc',1,'FHttpMultipartFormData.h']]],
   ['fparabolaballistictrack_49',['FParabolaBallisticTrack',['../structFParabolaBallisticTrack.html',1,'']]],

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['📞_20관련_20링크_0',['📞 관련 링크',['../index.html#autotoc_md29',1,'']]]
+  ['📚_20문서_20안내_0',['📚 문서 안내',['../index.html#autotoc_md14',1,'']]]
 ];

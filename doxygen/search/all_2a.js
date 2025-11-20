@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['스택_0',['🛠️ 기술 스택',['../index.html#autotoc_md10',1,'']]]
+  ['소개_0',['📖 프로젝트 소개',['../index.html#autotoc_md2',1,'']]]
 ];

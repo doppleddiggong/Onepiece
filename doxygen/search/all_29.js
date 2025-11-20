@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['소개_0',['📖 프로젝트 소개',['../index.html#autotoc_md2',1,'']]]
+  ['빌드_20방법_0',['빌드 방법',['../index.html#autotoc_md25',1,'']]]
 ];

@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['☕_20게임플레이_20라이브러리_3a_20lattelibrary_0',['☕ 게임플레이 라이브러리: LatteLibrary',['../index.html#autotoc_md8',1,'']]],
-  ['☕_20유틸리티_20라이브러리_3a_20coffeelibrary_1',['☕ 유틸리티 라이브러리: CoffeeLibrary',['../index.html#autotoc_md7',1,'']]]
+  ['_7eflogwriter_0',['~FLogWriter',['../classFLogWriter.html#af7d53c71504f8090cdc6e168ae224d01',1,'FLogWriter']]]
 ];

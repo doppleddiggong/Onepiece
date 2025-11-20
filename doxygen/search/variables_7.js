@@ -4,5 +4,6 @@ var searchData=
   ['hidetimerhandle_1',['HideTimerHandle',['../classUDialogWidget.html#a0ecea9a42f95585624450175e1e30b09',1,'UDialogWidget']]],
   ['hitstopcache_2',['HitStopCache',['../classUGameDataManager.html#ad418eb713320dab67b86e69ba43db077',1,'UGameDataManager']]],
   ['hitstoptable_3',['HitStopTable',['../classUGameDataManager.html#aa934e5d7830bd86c2a8cad2df2e70596',1,'UGameDataManager']]],
-  ['hp_4',['HP',['../structFCharacterInfoData.html#aaa15d7a56092cd0d73ea3a7274d92368',1,'FCharacterInfoData']]]
+  ['horizontal_4',['horizontal',['../classURobotAnimInstance.html#a3923cdf284a3d58ade05be0329f39fd7',1,'URobotAnimInstance']]],
+  ['hp_5',['HP',['../structFCharacterInfoData.html#aaa15d7a56092cd0d73ea3a7274d92368',1,'FCharacterInfoData']]]
 ];
