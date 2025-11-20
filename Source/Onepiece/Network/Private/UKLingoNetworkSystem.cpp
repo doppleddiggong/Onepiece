@@ -718,4 +718,4 @@ void UKLingoNetworkSystem::RequestGameResult(FResponseGameResultDelegate InDeleg
 	Request->ProcessRequest();
 }
 */
-#prgma endregion READY
+#pragma endregion READY

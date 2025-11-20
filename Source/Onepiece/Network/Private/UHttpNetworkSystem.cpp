@@ -95,11 +95,12 @@ void UHttpNetworkSystem::RequestHealth( FResponseHealthDelegate InDelegate )
 }
 
 
-void UHttpNetworkSystem::RequestASK(const FString& FilePath, const FGPTContext& Context, FResponseAskDelegate InDelegate)
+void UHttpNetworkSystem::RequestASK(const FString& FilePath,
+    const FGPTContext& Context, FResponseAskDelegate InDelegate)
 {
     auto HttpRequest = FHttpModule::Get().CreateRequest();
     HttpRequest->SetVerb(NETWORK_POST);
-    HttpRequest->SetURL(NetworkConfig::GetFullUrl(RequestAPI::ASK));
+    HttpRequest->SetURL("https://dasan.fly.dev/ask");
     HttpRequest->SetHeader(TEXT("Accept"), TEXT("application/json"));
 
     FHttpMultipartFormData Form;
