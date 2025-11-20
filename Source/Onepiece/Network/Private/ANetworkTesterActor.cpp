@@ -6,10 +6,9 @@
  */
 #include "ANetworkTesterActor.h"
 #include "UHttpNetworkSystem.h"
+#include "UKLingoNetworkSystem.h"
 #include "GameLogging.h"
 #include "NetworkData.h"
-#include "UGameDataManager.h"
-#include "UGameFunctionLibrary.h"
 #include "Engine/Engine.h"
 
 ANetworkTesterActor::ANetworkTesterActor()
@@ -38,5 +37,96 @@ void ANetworkTesterActor::OnResponseHealth(FResponseHealth& ResponseData, bool b
     else
     {
         PRINTLOG( TEXT("--- Network Response Received (FAIL) ---"));
+    }
+}
+
+// =============================================================================
+// User API Tests
+// =============================================================================
+
+void ANetworkTesterActor::RequestUserRegister()
+{
+    if (auto KLingoNetwork = UKLingoNetworkSystem::Get(GetWorld()))
+    {
+        PRINTLOG(TEXT("[TEST] RequestUserRegister - UserName: %s"), *UserName);
+        KLingoNetwork->RequestUserRegister(
+            UserName,
+            FResponseUserRegisterDelegate::CreateUObject(this, &ANetworkTesterActor::OnResponseUserRegister)
+        );
+    }
+    else
+    {
+        PRINTLOG(TEXT("UKLingoNetworkSystem not found!"));
+    }
+}
+
+void ANetworkTesterActor::RequestUserToken()
+{
+    if (auto KLingoNetwork = UKLingoNetworkSystem::Get(GetWorld()))
+    {
+        PRINTLOG(TEXT("[TEST] RequestUserToken - UserName: %s"), *UserName);
+        KLingoNetwork->RequestUserToken(
+            UserName,
+            FResponseUserTokenDelegate::CreateUObject(this, &ANetworkTesterActor::OnResponseUserToken)
+        );
+    }
+    else
+    {
+        PRINTLOG(TEXT("UKLingoNetworkSystem not found!"));
+    }
+}
+
+void ANetworkTesterActor::RequestUserMe()
+{
+    if (auto KLingoNetwork = UKLingoNetworkSystem::Get(GetWorld()))
+    {
+        PRINTLOG(TEXT("[TEST] RequestUserMe"));
+        KLingoNetwork->RequestUserMe(
+            FResponseUserMeDelegate::CreateUObject(this, &ANetworkTesterActor::OnResponseUserMe)
+        );
+    }
+    else
+    {
+        PRINTLOG(TEXT("UKLingoNetworkSystem not found!"));
+    }
+}
+
+void ANetworkTesterActor::OnResponseUserRegister(FResponseUserRegister& ResponseData, bool bWasSuccessful)
+{
+    if (bWasSuccessful)
+    {
+        PRINTLOG(TEXT("--- User Register SUCCESS ---"));
+        ResponseData.PrintData();
+    }
+    else
+    {
+        PRINTLOG(TEXT("--- User Register FAILED ---"));
+    }
+}
+
+void ANetworkTesterActor::OnResponseUserToken(FResponseUserToken& ResponseData, bool bWasSuccessful)
+{
+    if (bWasSuccessful)
+    {
+        PRINTLOG(TEXT("--- User Token SUCCESS ---"));
+        ResponseData.PrintData();
+        PRINTLOG(TEXT("Token: %s"), *ResponseData.access_token);
+    }
+    else
+    {
+        PRINTLOG(TEXT("--- User Token FAILED ---"));
+    }
+}
+
+void ANetworkTesterActor::OnResponseUserMe(FResponseUserMe& ResponseData, bool bWasSuccessful)
+{
+    if (bWasSuccessful)
+    {
+        PRINTLOG(TEXT("--- User Me SUCCESS ---"));
+        ResponseData.PrintData();
+    }
+    else
+    {
+        PRINTLOG(TEXT("--- User Me FAILED ---"));
     }
 }

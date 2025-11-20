@@ -29,6 +29,13 @@ public:
 	/// @brief 등록된 델리게이트를 정리하고 서브시스템을 종료합니다.
 	virtual void Deinitialize() override;
 
+
+
+	void RequestUserRegister(const FString& UserName, FResponseUserRegisterDelegate InDelegate);
+	void RequestUserToken(const FString& UserName, FResponseUserTokenDelegate InDelegate);
+	void RequestUserMe(FResponseUserMeDelegate InDelegate);
+
+	/*
 	/// @brief 계정으로 로그인 요청을 전송합니다.
 	/// @param Account [in] 사용자 계정 ID입니다.
 	/// @param InDelegate [in] 응답 수신 시 호출될 델리게이트입니다.
@@ -87,6 +94,8 @@ public:
 	/// @param InDelegate [in] 응답 수신 시 호출될 델리게이트입니다.
 	void RequestGameResult(FResponseGameResultDelegate InDelegate);
 
+*/
+	
 private:
 	/// @brief 공통 네트워크 로그 메시지를 출력합니다.
 	/// @param InLogType [in] 로그 타입입니다.
@@ -109,5 +118,5 @@ private:
 	int NetworkWaitCount = 0;
 
 	/// @brief 인증 토큰 (로그인 후 저장)
-	FString AuthToken;
+	FString access_token;
 };

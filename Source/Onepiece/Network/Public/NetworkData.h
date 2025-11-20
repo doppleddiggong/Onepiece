@@ -40,6 +40,14 @@ namespace RequestAPI
     /// @brief 서버 상태 확인 엔드포인트입니다.
     static FString Health = FString("/health");
 
+
+    static FString users_register = FString("/users/register");
+    static FString users_token = FString("/users/token");
+    static FString users_me = FString("/users/me");
+
+
+
+
     /// @brief KLingo 로그인 엔드포인트입니다.
     static FString Login = FString("/Login");
 
@@ -72,6 +80,7 @@ namespace RequestAPI
 
     /// @brief KLingo 게임 결과 엔드포인트입니다.
     static FString GameResult = FString("/GameResult");
+
 
 
 	/// @brief 음성-텍스트-음성을 통합 처리하는 ASK 엔드포인트입니다.
@@ -303,6 +312,72 @@ struct FResponseHealth
     /// @brief 디버그 로그에 응답 내용을 출력합니다.
     void PrintData();
 };
+
+
+
+DECLARE_DELEGATE_TwoParams(FResponseUserRegisterDelegate, FResponseUserRegister&, bool);
+USTRUCT(BlueprintType)
+struct FResponseUserRegister
+{
+	GENERATED_BODY()
+
+	UPROPERTY(BlueprintReadWrite)
+	int32 id = 0;
+
+	UPROPERTY(BlueprintReadWrite)
+	FString username;
+
+	UPROPERTY(BlueprintReadWrite)
+	FString email;
+
+	UPROPERTY(BlueprintReadWrite)
+	bool is_active;
+	
+	/// @brief HTTP 응답을 파싱해 상태 정보를 갱신합니다.
+	void SetFromHttpResponse(const TSharedPtr<class IHttpResponse, ESPMode::ThreadSafe>& Response);
+
+	/// @brief 디버그 로그에 응답 내용을 출력합니다.
+	void PrintData() const;
+};
+
+
+DECLARE_DELEGATE_TwoParams(FResponseUserTokenDelegate, FResponseUserToken&, bool);
+USTRUCT(BlueprintType)
+struct FResponseUserToken
+{
+	GENERATED_BODY()
+
+	UPROPERTY(BlueprintReadWrite, Category = "Token")
+	FString access_token;
+
+	/// @brief HTTP 응답을 파싱해 상태 정보를 갱신합니다.
+	void SetFromHttpResponse(const TSharedPtr<class IHttpResponse, ESPMode::ThreadSafe>& Response);
+
+	/// @brief 디버그 로그에 응답 내용을 출력합니다.
+	void PrintData() const;
+};
+
+
+DECLARE_DELEGATE_TwoParams(FResponseUserMeDelegate, FResponseUserMe&, bool);
+USTRUCT(BlueprintType)
+struct FResponseUserMe
+{
+	GENERATED_BODY()
+
+	UPROPERTY(BlueprintReadWrite, Category = "Me")
+	FString detail;
+
+	/// @brief HTTP 응답을 파싱해 상태 정보를 갱신합니다.
+	void SetFromHttpResponse(const TSharedPtr<class IHttpResponse, ESPMode::ThreadSafe>& Response);
+
+	/// @brief 디버그 로그에 응답 내용을 출력합니다.
+	void PrintData() const;
+};
+
+
+
+
+
 
 /// @brief 로그인 응답 델리게이트입니다.
 DECLARE_DELEGATE_TwoParams(FResponseLoginDelegate, FResponseLogin&, bool);

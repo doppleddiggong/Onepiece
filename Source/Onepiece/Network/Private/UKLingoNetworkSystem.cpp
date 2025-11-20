@@ -67,10 +67,176 @@ TSharedRef<IHttpRequest, ESPMode::ThreadSafe> UKLingoNetworkSystem::SetupHttpReq
 
 	// 기본 헤더
 	RetRequest->SetHeader(TEXT("Content-Type"), TEXT("application/json"));
-	RetRequest->SetHeader(TEXT("Authorization"), FString::Printf(TEXT("Bearer %s"), *AuthToken));
+	RetRequest->SetHeader(TEXT("Authorization"), FString::Printf(TEXT("Bearer %s"), *access_token));
 
 	return RetRequest;
 }
+
+
+// =================================================================================
+// RequestLogin
+// =================================================================================
+
+void UKLingoNetworkSystem::RequestUserRegister(const FString& UserName, FResponseUserRegisterDelegate InDelegate)
+{
+	FString Url = NetworkConfig::GetFullUrl(RequestAPI::users_register);
+	auto Request = SetupHttpRequest( Url, NETWORK_POST );
+	
+	TSharedPtr<FJsonObject> JsonObject = MakeShareable(new FJsonObject);
+	JsonObject->SetStringField(TEXT("username"), UserName);
+	JsonObject->SetStringField(TEXT("email"), UserName + TEXT("@klingo.com"));
+	JsonObject->SetStringField(TEXT("password"), UserName);
+
+	FString RequestBody;
+	TSharedRef<TJsonWriter<>> Writer = TJsonWriterFactory<>::Create(&RequestBody);
+	FJsonSerializer::Serialize(JsonObject.ToSharedRef(), Writer);
+	Request->SetContentAsString(RequestBody);
+
+	LogNetwork(ENetworkLogType::Post, *Request->GetURL(), *RequestBody);
+	
+	Request->OnProcessRequestComplete().BindLambda(
+		[this, InDelegate](FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSuccess)
+		{
+			AddNetworkWaitCount(-1);
+
+			FResponseUserRegister ResponseData;
+
+			if (bSuccess && HttpResponse.IsValid())
+			{
+				const int32 ResponseCode = HttpResponse->GetResponseCode();
+
+				if (ResponseCode == 200)
+				{
+					ResponseData.SetFromHttpResponse(HttpResponse);
+					ResponseData.PrintData();
+					InDelegate.ExecuteIfBound(ResponseData, true);
+				}
+				else
+				{
+					NETWORK_LOG(TEXT("[POST] RequestUserRegister failed - Code: %d, Response: %s"),
+						ResponseCode, *HttpResponse->GetContentAsString());
+					InDelegate.ExecuteIfBound(ResponseData, false);
+				}
+			}
+			else
+			{
+				NETWORK_LOG(TEXT("[POST] RequestUserRegister failed - bSuccess: %s, Response valid: %s"),
+					bSuccess ? TEXT("true") : TEXT("false"),
+					HttpResponse.IsValid() ? TEXT("true") : TEXT("false"));
+				InDelegate.ExecuteIfBound(ResponseData, false);
+			}
+		});
+
+	AddNetworkWaitCount(1);
+	Request->ProcessRequest();
+}
+
+
+
+void UKLingoNetworkSystem::RequestUserToken(const FString& UserName, FResponseUserTokenDelegate InDelegate)
+{
+	FString Url = NetworkConfig::GetFullUrl(RequestAPI::users_token);
+	auto Request = SetupHttpRequest( Url, NETWORK_POST );
+
+	// OAuth2 password flow requires application/x-www-form-urlencoded
+	FHttpMultipartFormData FormData(EFormDataType::FormUrlEncoded);
+	FormData.AddText(TEXT("grant_type"), TEXT("password"));
+	FormData.AddText(TEXT("username"), UserName);
+	FormData.AddText(TEXT("password"), UserName);
+	FormData.SetupHttpRequest(Request);
+
+	LogNetwork(ENetworkLogType::Post, *Request->GetURL(), TEXT("grant_type=password&username=***&password=***"));
+	
+	Request->OnProcessRequestComplete().BindLambda(
+		[this, InDelegate](FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSuccess)
+		{
+			AddNetworkWaitCount(-1);
+
+			FResponseUserToken ResponseData;
+
+			if (bSuccess && HttpResponse.IsValid())
+			{
+				const int32 ResponseCode = HttpResponse->GetResponseCode();
+
+				if (ResponseCode == 200)
+				{
+					ResponseData.SetFromHttpResponse(HttpResponse);
+					ResponseData.PrintData();
+
+					access_token = ResponseData.access_token;
+
+					if (auto PS = ULingoGameHelper::GetLingoPlayerState(this))
+						PS->SetToken(ResponseData.access_token);
+
+					InDelegate.ExecuteIfBound(ResponseData, true);
+				}
+				else
+				{
+					NETWORK_LOG(TEXT("[POST] RequestUserToken failed - Code: %d, Response: %s"),
+						ResponseCode, *HttpResponse->GetContentAsString());
+					InDelegate.ExecuteIfBound(ResponseData, false);
+				}
+			}
+			else
+			{
+				NETWORK_LOG(TEXT("[POST] RequestUserToken failed - bSuccess: %s, Response valid: %s"),
+					bSuccess ? TEXT("true") : TEXT("false"),
+					HttpResponse.IsValid() ? TEXT("true") : TEXT("false"));
+				InDelegate.ExecuteIfBound(ResponseData, false);
+			}
+		});
+
+	AddNetworkWaitCount(1);
+	Request->ProcessRequest();
+}
+
+
+void UKLingoNetworkSystem::RequestUserMe( FResponseUserMeDelegate InDelegate)
+{
+	FString Url = NetworkConfig::GetFullUrl(RequestAPI::users_me);
+	auto Request = SetupHttpRequest( Url, NETWORK_GET );
+	
+	LogNetwork(ENetworkLogType::Get, *Request->GetURL());
+	
+	Request->OnProcessRequestComplete().BindLambda(
+		[this, InDelegate](FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSuccess)
+		{
+			AddNetworkWaitCount(-1);
+
+			FResponseUserMe ResponseData;
+
+			if (bSuccess && HttpResponse.IsValid())
+			{
+				const int32 ResponseCode = HttpResponse->GetResponseCode();
+
+				if (ResponseCode == 200)
+				{
+					ResponseData.SetFromHttpResponse(HttpResponse);
+					ResponseData.PrintData();
+					InDelegate.ExecuteIfBound(ResponseData, true);
+				}
+				else
+				{
+					NETWORK_LOG(TEXT("[GET] RequestUserMe failed - Code: %d, Response: %s"),
+						ResponseCode, *HttpResponse->GetContentAsString());
+					InDelegate.ExecuteIfBound(ResponseData, false);
+				}
+			}
+			else
+			{
+				NETWORK_LOG(TEXT("[GET] RequestUserMe failed - bSuccess: %s, Response valid: %s"),
+					bSuccess ? TEXT("true") : TEXT("false"),
+					HttpResponse.IsValid() ? TEXT("true") : TEXT("false"));
+				InDelegate.ExecuteIfBound(ResponseData, false);
+			}
+		});
+
+	AddNetworkWaitCount(1);
+	Request->ProcessRequest();
+}
+
+#pragma region READY
+/*
 
 // =================================================================================
 // RequestLogin
@@ -103,7 +269,7 @@ void UKLingoNetworkSystem::RequestLogin(const FString& Account, FResponseLoginDe
 				ResponseData.SetFromHttpResponse(HttpResponse);
 				ResponseData.PrintData();
 
-				AuthToken = ResponseData.Token;
+				access_token = ResponseData.Token;
 				
 				if (auto PS = ULingoGameHelper::GetLingoPlayerState(this))
 					PS->SetToken(ResponseData.Token);
@@ -551,3 +717,5 @@ void UKLingoNetworkSystem::RequestGameResult(FResponseGameResultDelegate InDeleg
 	AddNetworkWaitCount(1);
 	Request->ProcessRequest();
 }
+*/
+#prgma endregion READY

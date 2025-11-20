@@ -40,6 +40,102 @@ void FResponseHealth::PrintData()
 
 
 
+void FResponseUserRegister::SetFromHttpResponse(const TSharedPtr<IHttpResponse, ESPMode::ThreadSafe>& Response)
+{
+	if (!Response.IsValid())
+	{
+		return;
+	}
+
+	FString JsonString = Response->GetContentAsString();
+	TSharedPtr<FJsonObject> JsonObject;
+	TSharedRef<TJsonReader<>> Reader = TJsonReaderFactory<>::Create(JsonString);
+
+	if (FJsonSerializer::Deserialize(Reader, JsonObject) && JsonObject.IsValid())
+	{
+		id = JsonObject->GetIntegerField(TEXT("id"));
+		username = JsonObject->GetStringField(TEXT("username"));
+		email = JsonObject->GetStringField(TEXT("email"));
+		is_active = JsonObject->GetBoolField(TEXT("is_active"));
+	}
+}
+
+void FResponseUserRegister::PrintData() const
+{
+	FString OutputString;
+	FJsonObjectConverter::UStructToJsonObjectString(
+		*this,
+		OutputString,
+		0,
+		0
+	);
+	NETWORK_LOG( TEXT("[RES] %s"), *OutputString);
+}
+
+
+void FResponseUserToken::SetFromHttpResponse(const TSharedPtr<IHttpResponse, ESPMode::ThreadSafe>& Response)
+{
+	if (!Response.IsValid())
+	{
+		return;
+	}
+
+	FString JsonString = Response->GetContentAsString();
+	TSharedPtr<FJsonObject> JsonObject;
+	TSharedRef<TJsonReader<>> Reader = TJsonReaderFactory<>::Create(JsonString);
+
+	if (FJsonSerializer::Deserialize(Reader, JsonObject) && JsonObject.IsValid())
+	{
+		access_token = JsonObject->GetStringField(TEXT("access_token"));
+	}
+}
+
+void FResponseUserToken::PrintData() const
+{
+	FString OutputString;
+	FJsonObjectConverter::UStructToJsonObjectString(
+		*this,
+		OutputString,
+		0,
+		0
+	);
+	NETWORK_LOG( TEXT("[RES] %s"), *OutputString);
+}
+
+
+
+void FResponseUserMe::SetFromHttpResponse(const TSharedPtr<IHttpResponse, ESPMode::ThreadSafe>& Response)
+{
+	if (!Response.IsValid())
+	{
+		return;
+	}
+
+	FString JsonString = Response->GetContentAsString();
+	TSharedPtr<FJsonObject> JsonObject;
+	TSharedRef<TJsonReader<>> Reader = TJsonReaderFactory<>::Create(JsonString);
+
+	if (FJsonSerializer::Deserialize(Reader, JsonObject) && JsonObject.IsValid())
+	{
+		detail = JsonObject->GetStringField(TEXT("detail"));
+	}
+}
+
+void FResponseUserMe::PrintData() const
+{
+	FString OutputString;
+	FJsonObjectConverter::UStructToJsonObjectString(
+		*this,
+		OutputString,
+		0,
+		0
+	);
+	NETWORK_LOG( TEXT("[RES] %s"), *OutputString);
+}
+
+
+
+
 // =================================================================================
 // FResponseLogin
 // =================================================================================
