@@ -8,7 +8,7 @@
 
 **Unreal Engine 5.6.1 기반 협동 멀티플레이 영어 학습 게임**
 
-[GitHub Repository](https://github.com/doppleddiggong/Onepiece) | [개발 문서](https://doppleddiggong.github.io/Onepiece/docs/)
+[GitHub Repository](https://github.com/doppleddiggong/Onepiece) | [개발 문서](https://doppleddiggong.github.io/Onepiece/honkit/)
 
 </div>
 
@@ -168,7 +168,7 @@ git lfs pull
 ## 📞 관련 링크
 
 - **GitHub Repository**: [doppleddiggong/Onepiece](https://github.com/doppleddiggong/Onepiece)
-- **개발 문서 웹사이트**: [HonKit 문서](https://doppleddiggong.github.io/Onepiece/docs/)
+- **개발 문서 웹사이트**: [HonKit 문서](https://doppleddiggong.github.io/Onepiece/honkit/)
 - **이슈 트래커**: [GitHub Issues](https://github.com/doppleddiggong/Onepiece/issues)
 
 ---

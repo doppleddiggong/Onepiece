@@ -179,11 +179,11 @@ jobs:
             --type weekly \
             --devlog-file "Documents/DevLog/Weekly/${{ steps.weekly.outputs.week_label }}-Summary.md" \
             --date "${{ steps.weekly.outputs.week_label }}" \
-            --devlog-url "https://doppleddiggong.github.io/Onepiece/docs/DevLog/Weekly/${{ steps.weekly.outputs.week_label }}-Summary.html"
+            --devlog-url "https://doppleddiggong.github.io/Onepiece/honkit/DevLog/Weekly/${{ steps.weekly.outputs.week_label }}-Summary.html"
 
       - name: Summary
         run: |
           echo "✅ Weekly DevLog Report has been generated!"
           echo "📅 Week: ${{ steps.weekly.outputs.week_label }}"
           echo "📝 File: Documents/DevLog/Weekly/${{ steps.weekly.outputs.week_label }}-Summary.md"
-          echo "🔗 URL: https://doppleddiggong.github.io/Onepiece/docs/DevLog/Weekly/${{ steps.weekly.outputs.week_label }}-Summary.html"
+          echo "🔗 URL: https://doppleddiggong.github.io/Onepiece/honkit/DevLog/Weekly/${{ steps.weekly.outputs.week_label }}-Summary.html"
