@@ -88,10 +88,14 @@ public:
 
 	UPROPERTY(EditAnywhere, Config, Category="Network Test", meta=(EditCondition="bEnableNetworkTestFeature"))
 	FString NetworkTestUrl = TEXT("http://127.0.0.1:8000");
-	
+
 	/** @brief 네트워크 테스트에 사용될 API 요청 목록입니다. */
 	UPROPERTY(EditAnywhere, Config, Category="Network Test", meta=(EditCondition="bEnableNetworkTestFeature"))
 	TArray<FApiSendInfo> NetworkTests;
+
+	/** @brief 마지막으로 받은 OAuth2 access_token (자동으로 Authorization 헤더에 사용됨) */
+	UPROPERTY(Config)
+	FString LastAccessToken;
 };
 
 

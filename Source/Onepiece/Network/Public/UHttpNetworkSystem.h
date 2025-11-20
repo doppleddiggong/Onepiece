@@ -29,6 +29,12 @@ public:
     /// @param InDelegate [in] 응답 수신 시 호출될 델리게이트입니다.
     void RequestHealth(FResponseHealthDelegate InDelegate);
 
+    /// @brief 음성 파일과 공간 컨텍스트를 함께 업로드해 ASK 파이프라인을 실행합니다.
+    /// @param FilePath [in] 업로드할 음성 파일 경로입니다.
+    /// @param Context [in] 위치 및 시선 정보를 담은 GPT 컨텍스트입니다.
+    /// @param InDelegate [in] 통합 응답 데이터를 전달받을 델리게이트입니다.
+    void RequestASK(const FString& FilePath, const FGPTContext& Context, FResponseAskDelegate InDelegate);
+    
 private:
     /// @brief 공통 네트워크 로그 메시지를 출력합니다.
     static void LogNetwork(ENetworkLogType InLogType, const FString& URL, const FString& Body = "");

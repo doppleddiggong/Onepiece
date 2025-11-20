@@ -34,4 +34,7 @@ public:
 	virtual void Cmd_AltitudeUp() {};						// 고도 상승
 	virtual void Cmd_AltitudeDown() {};						// 고도 하강
 	virtual void Cmd_AltitudeReleased() {};					// 고도 조절 해제
+
+	virtual void Cmd_RecordStart() {};						// 녹음 시작
+	virtual void Cmd_RecordEnd() {};						// 녹음 종료
 };

@@ -19,6 +19,10 @@ public:
     ANetworkTesterActor();
 
 protected:
+    // =============================================================================
+    // Health Check
+    // =============================================================================
+
     /// @brief 에디터에서 수동으로 /health 요청을 트리거합니다.
     UFUNCTION(CallInEditor, Category = "TEST|RequestHealth")
     void RequestHealth();
@@ -27,4 +31,29 @@ protected:
     /// @param ResponseData [in] 서버에서 전달한 상태 정보입니다.
     /// @param bWasSuccessful [in] HTTP 요청 성공 여부입니다.
     void OnResponseHealth(FResponseHealth& ResponseData, bool bWasSuccessful);
+
+    // =============================================================================
+    // User API Tests
+    // =============================================================================
+
+    /// @brief 테스트에 사용할 사용자 이름입니다.
+    UPROPERTY(EditAnywhere, Category = "TEST|User API")
+    FString UserName = TEXT("test_user");
+
+    /// @brief 사용자 등록 요청을 전송합니다 (POST /users/register).
+    UFUNCTION(CallInEditor, Category = "TEST|User API")
+    void RequestUserRegister();
+
+    /// @brief OAuth2 토큰 발급 요청을 전송합니다 (POST /users/token).
+    UFUNCTION(CallInEditor, Category = "TEST|User API")
+    void RequestUserToken();
+
+    /// @brief 현재 사용자 정보 조회 요청을 전송합니다 (GET /users/me).
+    UFUNCTION(CallInEditor, Category = "TEST|User API")
+    void RequestUserMe();
+
+private:
+    void OnResponseUserRegister(FResponseUserRegister& ResponseData, bool bWasSuccessful);
+    void OnResponseUserToken(FResponseUserToken& ResponseData, bool bWasSuccessful);
+    void OnResponseUserMe(FResponseUserMe& ResponseData, bool bWasSuccessful);
 };
