@@ -9,6 +9,15 @@
 #include "CoreMinimal.h"
 #include "Interfaces/IHttpRequest.h"
 
+/// @brief HTTP 폼 데이터 전송 방식을 정의합니다.
+enum class EFormDataType : uint8
+{
+	/// @brief multipart/form-data (파일 업로드용)
+	Multipart,
+	/// @brief application/x-www-form-urlencoded (OAuth2 등)
+	FormUrlEncoded
+};
+
 /// @brief 언리얼 엔진에 기본 제공되지 않는 multipart/form-data 빌더의 경량 구현입니다.
 /// @details
 /// - 경계(boundary)를 자동으로 생성합니다.
@@ -17,7 +26,9 @@
 class FHttpMultipartFormData
 {
 public:
-    FHttpMultipartFormData();
+    /// @brief FormData 객체를 생성합니다.
+    /// @param Type [in] 전송 방식 (기본값: Multipart)
+    FHttpMultipartFormData(EFormDataType Type = EFormDataType::Multipart);
 
     /// @brief 간단한 텍스트 필드를 추가합니다.
     /// @param FieldName [in] 폼 필드 이름입니다.
@@ -76,6 +87,7 @@ private:
     void BuildBody();
 
 private:
+    EFormDataType FormDataType;
     FString Boundary;
     TArray<FTextPart> TextParts;
     TArray<FFilePart> FileParts;
