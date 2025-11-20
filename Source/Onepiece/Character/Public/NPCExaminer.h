@@ -25,4 +25,20 @@ public:
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+	
+protected:
+	// Material Instance
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	TObjectPtr<class UMaterialInterface> Material2;
+	// Dynamic Material Instance
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	TObjectPtr<class UMaterialInstanceDynamic> DynamicMaterial2;
+	
+	// Eye Color Name
+	FName EyeColorName = FName("EmissiveColor2");
+	FLinearColor EyeColor = FLinearColor::Red;
+	
+	// Change Eye Color Red
+	UFUNCTION(BlueprintCallable)
+	void ChangeEyeColor();
 };

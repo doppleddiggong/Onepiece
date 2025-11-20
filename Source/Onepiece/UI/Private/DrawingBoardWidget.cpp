@@ -3,6 +3,7 @@
 
 #include "DrawingBoardWidget.h"
 
+#include "Components/Button.h"
 #include "Components/Image.h"
 #include "Engine/Canvas.h"
 #include "Kismet/KismetRenderingLibrary.h"
@@ -19,6 +20,14 @@ UDrawingBoardWidget::UDrawingBoardWidget(const FObjectInitializer& ObjectInitial
 	{
 		M_Brush = mBrushRef.Object;
 	}
+}
+
+void UDrawingBoardWidget::NativeConstruct()
+{
+	Super::NativeConstruct();
+	
+	Button_Clear->OnClicked.AddDynamic(this, &UDrawingBoardWidget::ClearCanvas);
+	Button_Save->OnClicked.AddDynamic(this, &UDrawingBoardWidget::SaveCanvas);
 }
 
 FReply UDrawingBoardWidget::NativeOnMouseButtonDown(const FGeometry& InGeometry, const FPointerEvent& InMouseEvent)
@@ -53,7 +62,7 @@ void UDrawingBoardWidget::DrawPoint(FVector2D mousePos)
 	UCanvas* canvas = nullptr;
 	FVector2D size;
 	FDrawToRenderTargetContext context;
-	UKismetRenderingLibrary::BeginDrawCanvasToRenderTarget(GetWorld(), RT_Canvas, canvas, size, context);
+	UKismetRenderingLibrary::BeginDrawCanvasToRenderTarget(this, RT_Canvas, canvas, size, context);
 	
 	// Calculate Draw Positions
 	// 10 : 적당, 20 : 너무 많음(렉)
@@ -71,7 +80,7 @@ void UDrawingBoardWidget::DrawPoint(FVector2D mousePos)
 	}
 	prevMousePos = mousePos;
 	
-	UKismetRenderingLibrary::EndDrawCanvasToRenderTarget(GetWorld(), context);
+	UKismetRenderingLibrary::EndDrawCanvasToRenderTarget(this, context);
 }
 
 FVector2D UDrawingBoardWidget::GetLocalMousePos(FVector2D mousePos)
@@ -80,4 +89,20 @@ FVector2D UDrawingBoardWidget::GetLocalMousePos(FVector2D mousePos)
 	const FGeometry& geometry = Image_Canvas->GetCachedGeometry();
 	FVector2D localPos = geometry.AbsoluteToLocal(mousePos);
 	return localPos;
+}
+
+void UDrawingBoardWidget::ClearCanvas()
+{
+	UKismetRenderingLibrary::ClearRenderTarget2D(this, RT_Canvas, RT_Canvas->ClearColor);
+}
+
+void UDrawingBoardWidget::SaveCanvas()
+{
+	// 저장할 경로 (예: 프로젝트/Saved/화면캡쳐.png)
+	const FString FilePath = FPaths::ProjectSavedDir() / TEXT("WriteImage/");
+	FString FileName = FDateTime::Now().ToString(TEXT("%Y-%m-%d-%H-%M-%S"));
+	FileName += FString(TEXT(".png"));
+	
+	IFileManager::Get().MakeDirectory(*FilePath, true);
+	UKismetRenderingLibrary::ExportRenderTarget(this, RT_Canvas, FilePath, FileName);
 }

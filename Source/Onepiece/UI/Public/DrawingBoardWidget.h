@@ -16,6 +16,7 @@ class ONEPIECE_API UDrawingBoardWidget : public UUserWidget
 	
 public:
 	UDrawingBoardWidget(const FObjectInitializer& ObjectInitializer);
+	virtual void NativeConstruct() override;
 	
 protected:
 	// Objects
@@ -29,6 +30,8 @@ protected:
 	TObjectPtr<class UImage> Image_Canvas;
 	UPROPERTY(BlueprintReadOnly, meta=(BindWidget))
 	TObjectPtr<class UButton> Button_Clear;
+	UPROPERTY(BlueprintReadOnly, meta=(BindWidget))
+	TObjectPtr<class UButton> Button_Save;
 	
 	// Values
 	UPROPERTY(BlueprintReadOnly)
@@ -45,4 +48,11 @@ private:
 	// Draw
 	void DrawPoint(FVector2D mousePos);
 	FVector2D GetLocalMousePos(FVector2D mousePos);
+	
+	// Clear Canvas
+	UFUNCTION()
+	void ClearCanvas();
+	// Save Render Target Canvas
+	UFUNCTION()
+	void SaveCanvas();
 };
