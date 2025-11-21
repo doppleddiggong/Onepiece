@@ -237,7 +237,7 @@ void UKLingoNetworkSystem::RequestUserMe( FResponseUserMeDelegate InDelegate)
 
 void UKLingoNetworkSystem::RequestSpeakingsQuestions(const FString& FilePath, FResponseSpeakingsQuestionsDelegate InDelegate)
 {
-	FString Url = NetworkConfig::GetFullUrl(RequestAPI::users_token);
+	FString Url = NetworkConfig::GetFullUrl(RequestAPI::speakings_questions);
 	auto Request = SetupHttpRequest( Url, NETWORK_POST );
 
 	FHttpMultipartFormData Form;
