@@ -60,6 +60,7 @@ var hierarchy =
     [ "FResponseQuestAnswer", "structFResponseQuestAnswer.html", null ],
     [ "FResponseQuestSpeak", "structFResponseQuestSpeak.html", null ],
     [ "FResponseQuestWrite", "structFResponseQuestWrite.html", null ],
+    [ "FResponseSpeakingsQuestions", "structFResponseSpeakingsQuestions.html", null ],
     [ "FResponseStartGame", "structFResponseStartGame.html", null ],
     [ "FResponseUserMe", "structFResponseUserMe.html", null ],
     [ "FResponseUserRegister", "structFResponseUserRegister.html", null ],

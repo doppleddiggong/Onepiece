@@ -136,7 +136,7 @@ Public 속성</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">상세한 설명</h2>
 <div class="textblock"><p>인터뷰 응답 구조체입니다. </p>
 
-<p class="definition"><a class="el" href="NetworkData_8h_source.html">NetworkData.h</a> 파일의 <a class="el" href="NetworkData_8h_source.html#l00425">425</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="NetworkData_8h_source.html">NetworkData.h</a> 파일의 <a class="el" href="NetworkData_8h_source.html#l00440">440</a> 번째 라인에서 정의되었습니다.</p>
 </div><h2 class="groupheader">멤버 함수 문서화</h2>
 <a id="aa9b2ede109e4352353a67533c39c9d86" name="aa9b2ede109e4352353a67533c39c9d86"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa9b2ede109e4352353a67533c39c9d86">&#9670;&#160;</a></span>PrintData()</h2>
@@ -153,14 +153,14 @@ Public 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="NetworkData_8cpp_source.html">NetworkData.cpp</a> 파일의 <a class="el" href="NetworkData_8cpp_source.html#l00225">225</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  226</span>{</div>
-<div class="line"><span class="lineno">  227</span>    <a class="code hl_define" href="GameLogging_8h.html#ad8e2ccc8c20a63e091e0111987b4d3bc">NETWORK_LOG</a>( TEXT(<span class="stringliteral">&quot;[KLingo] Interview Response - Questions Count: %d&quot;</span>), <a class="code hl_variable" href="structFResponseInterview.html#a58003ab5e2d2d5a31b3ed4790fe9825d">Questions</a>.Num());</div>
-<div class="line"><span class="lineno">  228</span>}</div>
+<p class="definition"><a class="el" href="NetworkData_8cpp_source.html">NetworkData.cpp</a> 파일의 <a class="el" href="NetworkData_8cpp_source.html#l00253">253</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  254</span>{</div>
+<div class="line"><span class="lineno">  255</span>    <a class="code hl_define" href="GameLogging_8h.html#ad8e2ccc8c20a63e091e0111987b4d3bc">NETWORK_LOG</a>( TEXT(<span class="stringliteral">&quot;[KLingo] Interview Response - Questions Count: %d&quot;</span>), <a class="code hl_variable" href="structFResponseInterview.html#a58003ab5e2d2d5a31b3ed4790fe9825d">Questions</a>.Num());</div>
+<div class="line"><span class="lineno">  256</span>}</div>
 <div class="ttc" id="aGameLogging_8h_html_ad8e2ccc8c20a63e091e0111987b4d3bc"><div class="ttname"><a href="GameLogging_8h.html#ad8e2ccc8c20a63e091e0111987b4d3bc">NETWORK_LOG</a></div><div class="ttdeci">#define NETWORK_LOG(fmt,...)</div></div>
-<div class="ttc" id="astructFResponseInterview_html_a58003ab5e2d2d5a31b3ed4790fe9825d"><div class="ttname"><a href="structFResponseInterview.html#a58003ab5e2d2d5a31b3ed4790fe9825d">FResponseInterview::Questions</a></div><div class="ttdeci">TArray&lt; FString &gt; Questions</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00430">NetworkData.h:430</a></div></div>
+<div class="ttc" id="astructFResponseInterview_html_a58003ab5e2d2d5a31b3ed4790fe9825d"><div class="ttname"><a href="structFResponseInterview.html#a58003ab5e2d2d5a31b3ed4790fe9825d">FResponseInterview::Questions</a></div><div class="ttdeci">TArray&lt; FString &gt; Questions</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00445">NetworkData.h:445</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="GameLogging_8h.html#ad8e2ccc8c20a63e091e0111987b4d3bc">NETWORK_LOG</a>, <a class="el" href="NetworkData_8h_source.html#l00430">Questions</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="GameLogging_8h.html#ad8e2ccc8c20a63e091e0111987b4d3bc">NETWORK_LOG</a>, <a class="el" href="NetworkData_8h_source.html#l00445">Questions</a>.</p>
 
 </div>
 </div>
@@ -180,31 +180,31 @@ Public 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="NetworkData_8cpp_source.html">NetworkData.cpp</a> 파일의 <a class="el" href="NetworkData_8cpp_source.html#l00201">201</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  202</span>{</div>
-<div class="line"><span class="lineno">  203</span>    <span class="keywordflow">if</span> (!Response.IsValid())</div>
-<div class="line"><span class="lineno">  204</span>    {</div>
-<div class="line"><span class="lineno">  205</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  206</span>    }</div>
-<div class="line"><span class="lineno">  207</span> </div>
-<div class="line"><span class="lineno">  208</span>    FString JsonString = Response-&gt;GetContentAsString();</div>
-<div class="line"><span class="lineno">  209</span>    TSharedPtr&lt;FJsonObject&gt; JsonObject;</div>
-<div class="line"><span class="lineno">  210</span>    TSharedRef&lt;TJsonReader&lt;&gt;&gt; Reader = TJsonReaderFactory&lt;&gt;::Create(JsonString);</div>
-<div class="line"><span class="lineno">  211</span> </div>
-<div class="line"><span class="lineno">  212</span>    <span class="keywordflow">if</span> (FJsonSerializer::Deserialize(Reader, JsonObject) &amp;&amp; JsonObject.IsValid())</div>
-<div class="line"><span class="lineno">  213</span>    {</div>
-<div class="line"><span class="lineno">  214</span>        <span class="keyword">const</span> TArray&lt;TSharedPtr&lt;FJsonValue&gt;&gt;* QuestionsArray;</div>
-<div class="line"><span class="lineno">  215</span>        <span class="keywordflow">if</span> (JsonObject-&gt;TryGetArrayField(TEXT(<span class="stringliteral">&quot;questions&quot;</span>), QuestionsArray))</div>
-<div class="line"><span class="lineno">  216</span>        {</div>
-<div class="line"><span class="lineno">  217</span>            <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; Item : *QuestionsArray)</div>
-<div class="line"><span class="lineno">  218</span>            {</div>
-<div class="line"><span class="lineno">  219</span>                <a class="code hl_variable" href="structFResponseInterview.html#a58003ab5e2d2d5a31b3ed4790fe9825d">Questions</a>.Add(Item-&gt;AsString());</div>
-<div class="line"><span class="lineno">  220</span>            }</div>
-<div class="line"><span class="lineno">  221</span>        }</div>
-<div class="line"><span class="lineno">  222</span>    }</div>
-<div class="line"><span class="lineno">  223</span>}</div>
+<p class="definition"><a class="el" href="NetworkData_8cpp_source.html">NetworkData.cpp</a> 파일의 <a class="el" href="NetworkData_8cpp_source.html#l00229">229</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  230</span>{</div>
+<div class="line"><span class="lineno">  231</span>    <span class="keywordflow">if</span> (!Response.IsValid())</div>
+<div class="line"><span class="lineno">  232</span>    {</div>
+<div class="line"><span class="lineno">  233</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  234</span>    }</div>
+<div class="line"><span class="lineno">  235</span> </div>
+<div class="line"><span class="lineno">  236</span>    FString JsonString = Response-&gt;GetContentAsString();</div>
+<div class="line"><span class="lineno">  237</span>    TSharedPtr&lt;FJsonObject&gt; JsonObject;</div>
+<div class="line"><span class="lineno">  238</span>    TSharedRef&lt;TJsonReader&lt;&gt;&gt; Reader = TJsonReaderFactory&lt;&gt;::Create(JsonString);</div>
+<div class="line"><span class="lineno">  239</span> </div>
+<div class="line"><span class="lineno">  240</span>    <span class="keywordflow">if</span> (FJsonSerializer::Deserialize(Reader, JsonObject) &amp;&amp; JsonObject.IsValid())</div>
+<div class="line"><span class="lineno">  241</span>    {</div>
+<div class="line"><span class="lineno">  242</span>        <span class="keyword">const</span> TArray&lt;TSharedPtr&lt;FJsonValue&gt;&gt;* QuestionsArray;</div>
+<div class="line"><span class="lineno">  243</span>        <span class="keywordflow">if</span> (JsonObject-&gt;TryGetArrayField(TEXT(<span class="stringliteral">&quot;questions&quot;</span>), QuestionsArray))</div>
+<div class="line"><span class="lineno">  244</span>        {</div>
+<div class="line"><span class="lineno">  245</span>            <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; Item : *QuestionsArray)</div>
+<div class="line"><span class="lineno">  246</span>            {</div>
+<div class="line"><span class="lineno">  247</span>                <a class="code hl_variable" href="structFResponseInterview.html#a58003ab5e2d2d5a31b3ed4790fe9825d">Questions</a>.Add(Item-&gt;AsString());</div>
+<div class="line"><span class="lineno">  248</span>            }</div>
+<div class="line"><span class="lineno">  249</span>        }</div>
+<div class="line"><span class="lineno">  250</span>    }</div>
+<div class="line"><span class="lineno">  251</span>}</div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="NetworkData_8h_source.html#l00430">Questions</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="NetworkData_8h_source.html#l00445">Questions</a>.</p>
 
 </div>
 </div>
@@ -221,9 +221,9 @@ Public 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="NetworkData_8h_source.html">NetworkData.h</a> 파일의 <a class="el" href="NetworkData_8h_source.html#l00430">430</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="NetworkData_8h_source.html">NetworkData.h</a> 파일의 <a class="el" href="NetworkData_8h_source.html#l00445">445</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="NetworkData_8cpp_source.html#l00225">PrintData()</a>, <a class="el" href="NetworkData_8cpp_source.html#l00201">SetFromHttpResponse()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="NetworkData_8cpp_source.html#l00253">PrintData()</a>, <a class="el" href="NetworkData_8cpp_source.html#l00229">SetFromHttpResponse()</a>.</p>
 
 </div>
 </div>
@@ -237,7 +237,7 @@ Public 속성</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="structFResponseInterview.html">FResponseInterview</a></li>
-    <li class="footer">생성시간 : 금 11월 21 2025 00:31:20, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 금 11월 21 2025 03:27:42, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

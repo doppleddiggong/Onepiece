@@ -6,6 +6,7 @@ var classUKLingoNetworkSystem =
     [ "GetLogPrefix", "classUKLingoNetworkSystem.html#a522feb11d8fcfa106b6f735bc3472d6a", null ],
     [ "Initialize", "classUKLingoNetworkSystem.html#ac473610dfbbe9da74f08a1b3e6ec3dc3", null ],
     [ "LogNetwork", "classUKLingoNetworkSystem.html#ad71f0b7215e0d685a171bc2d8e7a0a3f", null ],
+    [ "RequestSpeakingsQuestions", "classUKLingoNetworkSystem.html#af66e00911bc2c147cfee525dce154647", null ],
     [ "RequestUserMe", "classUKLingoNetworkSystem.html#a7bf03fe16be3fddf9a51350248bdf6b4", null ],
     [ "RequestUserRegister", "classUKLingoNetworkSystem.html#a4082666ed951516c06e8dcbfdb20c484", null ],
     [ "RequestUserToken", "classUKLingoNetworkSystem.html#a2f97be279ddf5bd2878f67a55d9b8149", null ],

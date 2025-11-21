@@ -39,6 +39,7 @@ var namespaces_dup =
       [ "QuestFail", "namespaceRequestAPI.html#a0729dd2af631345e13c8a24b067680f2", null ],
       [ "QuestSpeak", "namespaceRequestAPI.html#ae987f73b6961656923914572b4d62b85", null ],
       [ "QuestWrite", "namespaceRequestAPI.html#a4330a153e623c54a126aa7838dc6319a", null ],
+      [ "speakings_questions", "namespaceRequestAPI.html#a444507b7e2261e3f743b40af81e6838a", null ],
       [ "StartGame", "namespaceRequestAPI.html#ac1d9709c31ab47a176f7dd0bb11dbd45", null ],
       [ "SubmitInterview", "namespaceRequestAPI.html#a59e119807bb3a0ebb0de1c0865409da8", null ],
       [ "users_me", "namespaceRequestAPI.html#aee732573aa0bc733fedaab927a273dcd", null ],
