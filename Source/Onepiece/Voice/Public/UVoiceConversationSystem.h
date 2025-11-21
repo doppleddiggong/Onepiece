@@ -58,12 +58,8 @@ private:
     /// @param InSampleRate [in] 샘플레이트입니다.
     void HandleOnCapture(const float* InAudio, int32 InNumFrames, int32 InNumChannels, int32 InSampleRate);
 
-    /// @brief ASK 응답을 수신해 브로드캐스트와 UI를 갱신합니다.
-    /// @param Response [in] STT/GPT/TTS 결과입니다.
-    /// @param bSuccess [in] 요청 성공 여부입니다.
     UFUNCTION()
-    void OnResponseAsk(FResponseAsk& Response, bool bSuccess);
-
+    void OnResponseSpeakingsQuestions(FResponseSpeakingsQuestions& Response, bool bSuccess);
 
 private:
     UPROPERTY()
