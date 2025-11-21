@@ -1,6 +1,6 @@
 # KLingo DevLog 자동 생성 시스템
 
-GPT 기반 지능형 Daily DevLog 자동 생성 시스템입니다.
+GPT 기반 지능형 Daily/Weekly DevLog 자동 생성 시스템입니다.
 
 ## 특징
 
@@ -76,35 +76,64 @@ export JIRA_TOKEN="your-jira-api-token"
 
 ## 사용법
 
-### 기본 실행 (어제 날짜, 현재 브랜치)
+### Daily DevLog 생성
+
+#### 기본 실행 (어제 날짜, 현재 브랜치)
 
 ```bash
 cd .github/scripts/devlog_klingo
 python devlog_generate.py
 ```
 
-### 특정 날짜 지정
+#### 특정 날짜 지정
 
 ```bash
 python devlog_generate.py --date 2025-11-20
 ```
 
-### 특정 브랜치 지정
+#### 특정 브랜치 지정
 
 ```bash
 python devlog_generate.py --branch dopple
 ```
 
-### 설정 파일 지정
+#### 설정 파일 지정
 
 ```bash
 python devlog_generate.py --config custom_config.json
 ```
 
-### 전체 옵션
+#### 전체 옵션
 
 ```bash
 python devlog_generate.py --help
+```
+
+### Weekly DevLog 생성
+
+#### 이번 주 DevLog 생성
+
+```bash
+cd .github/scripts/devlog_klingo
+python weekly_devlog_generate.py
+```
+
+#### 특정 날짜가 속한 주의 DevLog 생성
+
+```bash
+python weekly_devlog_generate.py --date 2025-11-20
+```
+
+#### 특정 주 번호로 생성
+
+```bash
+python weekly_devlog_generate.py --week 2025-W47
+```
+
+#### 전체 옵션
+
+```bash
+python weekly_devlog_generate.py --help
 ```
 
 ## 출력 형식
@@ -153,29 +182,36 @@ python devlog_generate.py --help
 .github/
   scripts/
     devlog_klingo/
-      devlog_generate.py   # 메인 스크립트
-      utils.py             # 유틸리티 (날짜 계산 등)
-      meeting_loader.py    # 회의록 로더
-      diff_loader.py       # Git diff 로더
-      jira_mapper.py       # Jira 매핑
-      gpt_client.py        # GPT 클라이언트
-      config.json          # 설정 파일
-      requirements.txt     # Python 의존성
-      README.md            # 이 파일
-      templates/           # 템플릿 디렉토리
-        devlog_template.md      # DevLog Markdown 템플릿
-        devlog_prompt.txt       # GPT 프롬프트 템플릿
+      devlog_generate.py          # Daily DevLog 생성 스크립트
+      weekly_devlog_generate.py   # Weekly DevLog 생성 스크립트
+      weekly_stats.py             # 주간 통계 분석 모듈
+      utils.py                    # 유틸리티 (날짜 계산 등)
+      meeting_loader.py           # 회의록 로더
+      diff_loader.py              # Git diff 로더
+      jira_mapper.py              # Jira 매핑
+      gpt_client.py               # GPT 클라이언트
+      config.json                 # 설정 파일
+      requirements.txt            # Python 의존성
+      README.md                   # 이 파일
+      templates/                  # 템플릿 디렉토리
+        devlog_template.md             # Daily DevLog 템플릿
+        devlog_prompt.txt              # Daily DevLog GPT 프롬프트
+        weekly_devlog_template.md      # Weekly DevLog 템플릿
+        weekly_devlog_prompt.txt       # Weekly DevLog GPT 프롬프트
   data/
-    developers.csv         # 개발자 정보
-    jira_map_rules.yaml    # Jira 매핑 룰
+    developers.csv              # 개발자 정보
+    jira_map_rules.yaml         # Jira 매핑 룰
 Documents/
   Meeting/
     Daily/
-      Meeting_YYMMDD_Daily.md  # 회의록
+      Meeting_YYMMDD_Daily.md   # 회의록
   DevLog/
     Daily/
-      YYYY-MM-DD.md            # 생성된 DevLog
-      YYYY-MM-DD.metrics.json  # 메트릭 데이터
+      YYYY-MM-DD.md             # 생성된 Daily DevLog
+      YYYY-MM-DD.metrics.json   # Daily 메트릭 데이터
+    Weekly/
+      YYYY-WXX-Summary.md           # 생성된 Weekly DevLog
+      YYYY-WXX-Summary.metrics.json # Weekly 메트릭 데이터
 ```
 
 ## 개별 모듈 테스트
@@ -197,6 +233,9 @@ python jira_mapper.py
 
 # GPT 클라이언트 테스트
 python gpt_client.py
+
+# 주간 통계 모듈 테스트
+python weekly_stats.py
 ```
 
 ## 트러블슈팅

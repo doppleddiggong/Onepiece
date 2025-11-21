@@ -59,15 +59,22 @@ void UDialogWidget::ShowDialog(FString InString)
 	DialogBorder->SetBrushColor(ActivateColor);
 	DialogText->SetText(FText::FromString(InString));
 
-	// 5초 후 숨기는 타이머 설정
+	// 5초 후 숨기는 타이머 설정 (약한 참조 사용)                                                                                                                                       
 	if (UWorld* World = GetWorld())
 	{
-		const FTimerDelegate HideDelegate = FTimerDelegate::CreateUObject(this, &UDialogWidget::HandleHideTimerExpired);
+		TWeakObjectPtr<UDialogWidget> WeakThis(this);
+
 		World->GetTimerManager().SetTimer(
-				HideTimerHandle,
-				HideDelegate,
-				5.0f,
-				false
+			HideTimerHandle,
+			FTimerDelegate::CreateLambda([WeakThis]()
+			{
+				if (WeakThis.IsValid())
+				{
+					WeakThis->HandleHideTimerExpired();
+				}
+			}),
+			5.0f,
+			false                                                                                                                                                                        
 		);
 	}
 }
