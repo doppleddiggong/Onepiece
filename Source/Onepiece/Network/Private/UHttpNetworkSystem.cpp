@@ -93,3 +93,56 @@ void UHttpNetworkSystem::RequestHealth( FResponseHealthDelegate InDelegate )
     AddNetworkWaitCount(1);
     HttpRequest->ProcessRequest();
 }
+
+
+void UHttpNetworkSystem::RequestASK(const FString& FilePath,
+    const FGPTContext& Context, FResponseAskDelegate InDelegate)
+{
+    auto HttpRequest = FHttpModule::Get().CreateRequest();
+    HttpRequest->SetVerb(NETWORK_POST);
+    HttpRequest->SetURL("https://dasan.fly.dev/ask");
+    HttpRequest->SetHeader(TEXT("Accept"), TEXT("application/json"));
+
+    FHttpMultipartFormData Form;
+    if (!Form.AddFile(TEXT("file"), FilePath))
+    {
+        NETWORK_LOG(TEXT("Ask: file load failed: %s"), *FilePath);
+        return;
+    }
+    Form.SetupHttpRequest(HttpRequest);
+
+    FRequestASK RequestData;
+    RequestData.context = Context;
+
+    FString RequestBody;
+    if (!RequestData.ToJsonString(RequestBody))
+    {
+        NETWORK_LOG(TEXT("Failed to serialize FRequestASK to JSON"));
+        return;
+    }
+
+    Form.AddStringField(TEXT("context"), RequestBody);
+    Form.SetupHttpRequest(HttpRequest);
+
+    const FString LogBody = FString::Printf(TEXT("file: %s, context: %s"), *FilePath, *RequestBody);
+    LogNetwork(ENetworkLogType::Post, *HttpRequest->GetURL(), LogBody);
+    
+    HttpRequest->OnProcessRequestComplete().BindLambda(
+        [WeakThis = TWeakObjectPtr<UHttpNetworkSystem>(this), InDelegate](FHttpRequestPtr Req, FHttpResponsePtr ResPtr, bool bWasSuccessful)
+        {
+            if (!WeakThis.IsValid() || IsEngineExitRequested())
+                return;
+            
+            WeakThis->AddNetworkWaitCount(-1);
+            FResponseAsk ResponseData;
+            if (bWasSuccessful && ResPtr.IsValid())
+            {
+                NETWORK_LOG(TEXT("[RES] Ask completed: transcribed_text, gpt_response_text, audio_content"));
+                ResponseData.SetFromHttpResponse(ResPtr);
+            }
+            InDelegate.ExecuteIfBound(ResponseData, bWasSuccessful);
+        });
+
+    AddNetworkWaitCount(1);
+    HttpRequest->ProcessRequest();
+}

@@ -1,0 +1,108 @@
+name: Confluence Auto Upload
+
+# Daily/Weekly 리포트 워크플로우에서 트리거되거나 수동으로 실행
+on:
+  # Daily/Weekly 워크플로우에서 트리거
+  repository_dispatch:
+    types: [confluence-upload]
+
+  # 수동 실행 지원 (특정 파일 지정 가능)
+  workflow_dispatch:
+    inputs:
+      file_path:
+        description: 'Markdown file path to upload (e.g., Documents/Meeting/Daily/251117_meeting.md)'
+        required: true
+        type: string
+
+jobs:
+  upload-to-confluence:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2  # Get previous commit for diff
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          pip install -r .github/scripts/confluence/requirements.txt
+
+      - name: Get files from repository_dispatch
+        id: dispatch-files
+        if: github.event_name == 'repository_dispatch'
+        run: |
+          # Handle both single file (DevLog) and multiple files (Meeting)
+          if [ -n "${{ github.event.client_payload.file }}" ]; then
+            # Single file (from Daily/Weekly DevLog)
+            FILES="${{ github.event.client_payload.file }}"
+          elif [ -n "${{ github.event.client_payload.files }}" ]; then
+            # Multiple files (from Meeting)
+            FILES=$(echo '${{ toJson(github.event.client_payload.files) }}' | jq -r '.[]' | tr '\n' ' ')
+          else
+            echo "❌ No files found in payload"
+            exit 1
+          fi
+          
+          echo "files=$FILES" >> $GITHUB_OUTPUT
+          echo "📋 Files from dispatch: $FILES"
+
+      - name: Upload files to Confluence (from dispatch)
+        if: github.event_name == 'repository_dispatch'
+        env:
+          JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+        run: |
+          FILES="${{ steps.dispatch-files.outputs.files }}"
+          
+          # Process each file
+          for FILE in $FILES; do
+            if [ ! -f "$FILE" ]; then
+              echo "⚠️ File not found: $FILE (skipping)"
+              continue
+            fi
+            
+            echo "📤 Uploading: $FILE"
+            python .github/scripts/confluence/upload_to_confluence.py "$FILE"
+            echo "---"
+          done
+
+      - name: Upload single file to Confluence (manual)
+        if: github.event_name == 'workflow_dispatch'
+        env:
+          JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+        run: |
+          FILE_PATH="${{ github.event.inputs.file_path }}"
+
+          if [ ! -f "$FILE_PATH" ]; then
+            echo "❌ File not found: $FILE_PATH"
+            exit 1
+          fi
+
+          echo "📤 Uploading: $FILE_PATH"
+          python .github/scripts/confluence/upload_to_confluence.py "$FILE_PATH"
+
+      - name: Summary
+        if: always()
+        run: |
+          echo "## Confluence Upload Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          if [ "${{ github.event_name }}" == "repository_dispatch" ]; then
+            echo "### Uploaded from workflow:" >> $GITHUB_STEP_SUMMARY
+            FILES="${{ steps.dispatch-files.outputs.files }}"
+            for FILE in $FILES; do
+              echo "- \`$FILE\`" >> $GITHUB_STEP_SUMMARY
+            done
+          else
+            echo "### Manually Uploaded:" >> $GITHUB_STEP_SUMMARY
+            echo "- \`${{ github.event.inputs.file_path }}\`" >> $GITHUB_STEP_SUMMARY
+          fi
+
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "✅ Confluence upload completed!" >> $GITHUB_STEP_SUMMARY

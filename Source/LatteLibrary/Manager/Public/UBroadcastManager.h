@@ -63,4 +63,18 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category="Events")
 	void SendKnockback(AActor* Target, AActor* Instigator, EDamageType Type, float Resistance);
+
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnAudioSpectrum, float, Spectrum);
+	UPROPERTY(BlueprintAssignable, Category="Events")
+	FOnAudioSpectrum OnAudioSpectrum;
+	
+	UFUNCTION(BlueprintCallable, Category="Events")
+	void SendAudioSpectrum(float Spectrum);
+
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnAudioCapture, bool, bRecording);
+	UPROPERTY(BlueprintAssignable, Category="Events")
+	FOnAudioCapture OnAudioCapture;
+
+	UFUNCTION(BlueprintCallable, Category="Events")
+	void SendAudioCapture(bool bRecording);
 };

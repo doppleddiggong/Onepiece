@@ -2,6 +2,8 @@ name: Detect Meeting Document Updates
 
 on:
   push:
+    branches:
+      - main
     paths:
       - 'Documents/Meeting/**'
 
@@ -26,12 +28,14 @@ jobs:
         run: |
           set -euo pipefail
 
+          git fetch --no-tags --depth=1 origin main
+
           BEFORE="$BEFORE_SHA"
           if [ -z "$BEFORE" ] || [ "$BEFORE" = "0000000000000000000000000000000000000000" ]; then
-            BEFORE=$(git rev-list --max-parents=0 HEAD | tail -n 1)
+            BEFORE=$(git merge-base origin/main HEAD)
           fi
 
-          git diff --name-only "$BEFORE" HEAD -- 'Documents/Meeting/**' > changed_files.txt
+          git diff --name-status "$BEFORE" HEAD -- 'Documents/Meeting/**' > changed_files.txt
 
           python .github/scripts/collect_meeting_changes.py \
             --diff-file changed_files.txt \
@@ -59,3 +63,11 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           event-type: meeting-broadcast
           client-payload: ${{ steps.changes.outputs.broadcast_payload }}
+
+      - name: Trigger Confluence Upload
+        if: steps.changes.outputs.has_changes == 'true'
+        uses: peter-evans/repository-dispatch@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          event-type: confluence-upload
+          client-payload: ${{ steps.changes.outputs.confluence_payload }}

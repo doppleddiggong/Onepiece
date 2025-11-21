@@ -79,6 +79,32 @@ jobs:
             --branch "${{ steps.date.outputs.branch }}" \
             $GPT_ARG
 
+      - name: Load Jira Config
+        id: jira_config
+        run: |
+          JIRA_ENABLED=$(python3 -c "import yaml; print(yaml.safe_load(open('.github/config.yml'))['jira']['enabled'])")
+          JIRA_SITE=$(python3 -c "import yaml; print(yaml.safe_load(open('.github/config.yml'))['jira']['site'])")
+          JIRA_EMAIL=$(python3 -c "import yaml; print(yaml.safe_load(open('.github/config.yml'))['jira']['email'])")
+          JIRA_PROJECT=$(python3 -c "import yaml; print(yaml.safe_load(open('.github/config.yml'))['jira']['project'])")
+
+          echo "jira_enabled=$JIRA_ENABLED" >> $GITHUB_OUTPUT
+          echo "jira_site=$JIRA_SITE" >> $GITHUB_OUTPUT
+          echo "jira_email=$JIRA_EMAIL" >> $GITHUB_OUTPUT
+          echo "jira_project=$JIRA_PROJECT" >> $GITHUB_OUTPUT
+
+          echo "📋 Jira Config loaded: enabled=$JIRA_ENABLED, project=$JIRA_PROJECT"
+
+      - name: Insert Jira Progress into DevLog
+        if: steps.jira_config.outputs.jira_enabled == 'true'
+        env:
+          JIRA_SITE: ${{ steps.jira_config.outputs.jira_site }}
+          JIRA_EMAIL: ${{ steps.jira_config.outputs.jira_email }}
+          JIRA_PROJECT: ${{ steps.jira_config.outputs.jira_project }}
+          JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          python .github/scripts/jira/insert_progress.py --date "${{ steps.date.outputs.today }}" || echo "⚠️ Jira progress insertion failed (non-critical)"
+
       - name: Update SUMMARY.md
         run: python .github/scripts/generate_summary.py
 
@@ -87,7 +113,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          git add Documents/DevLog/Daily/*.md Documents/DevLog/Daily/*.json Documents/SUMMARY.md || true
+          git add Documents/DevLog/Daily/*.md Documents/DevLog/Daily/*.json Documents/DevLog/Metrics/*.json Documents/SUMMARY.md || true
 
           if git diff --staged --quiet; then
             echo "No changes to commit"
@@ -103,3 +129,21 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           event-type: honkit-build
           client-payload: '{"ref": "main", "trigger": "daily-update", "latest_file": "Documents/DevLog/Daily/${{ steps.date.outputs.today }}.md"}'
+
+      - name: Trigger Confluence Upload
+        uses: peter-evans/repository-dispatch@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          event-type: confluence-upload
+          client-payload: '{"file": "Documents/DevLog/Daily/${{ steps.date.outputs.today }}.md"}'
+
+      - name: Send Discord Notification
+        env:
+          DISCORD_WEBHOOK_DEVLOG: ${{ secrets.DISCORD_WEBHOOK_DEVLOG }}
+        run: |
+          python .github/scripts/devlog/send_discord.py \
+            --webhook-url "$DISCORD_WEBHOOK_DEVLOG" \
+            --type daily \
+            --devlog-file "Documents/DevLog/Daily/${{ steps.date.outputs.today }}.md" \
+            --date "${{ steps.date.outputs.today }}" \
+            --devlog-url "https://doppleddiggong.github.io/Onepiece/honkit/DevLog/Daily/${{ steps.date.outputs.today }}.html"

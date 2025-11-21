@@ -12,6 +12,8 @@
 // Shared
 #include "Macro.h"
 #include "InputCoreTypes.h"
+#include "UVoiceConversationSystem.h"
+
 #include "Camera/CameraComponent.h"
 #include "Components/InputComponent.h"
 #include "Components/CapsuleComponent.h"
@@ -38,6 +40,8 @@ APlayerActor::APlayerActor()
 	SpringArmComp->bInheritPitch = true;
 	GetCharacterMovement()->bOrientRotationToMovement = true;
 	GetCharacterMovement()->bUseControllerDesiredRotation = false;
+
+	VoiceConversationSystem = CreateDefaultSubobject<UVoiceConversationSystem>(TEXT("VoiceConversationSystem"));
 }
 
 void APlayerActor::BeginPlay()
@@ -47,6 +51,7 @@ void APlayerActor::BeginPlay()
 	MoveComp = this->GetCharacterMovement();
 	
 	FlySystem->InitSystem(this, BIND_DYNAMIC_DELEGATE(FEndCallback, this, APlayerActor, OnFlyEnd));
+	VoiceConversationSystem->InitSystem(this);
 
 	// --- Architecture Demo Start ---
 	UE_LOG(LogTemp, Log, TEXT("APlayerActor: Setting up one-way dependency demo."));
@@ -113,6 +118,11 @@ void APlayerActor::Landed(const FHitResult& Hit)
 		FlySystem->OnLand(Hit);
 }
 
+void APlayerActor::PlayTTSAudio(const TArray<uint8>& AudioData)
+{
+	VoiceConversationSystem->PlayVoiceAudio(AudioData);
+}
+
 void APlayerActor::Cmd_Move_Implementation(const FVector2D& Axis)
 {
 	if ( !Controller)
@@ -173,6 +183,16 @@ void APlayerActor::Cmd_AltitudeReleased_Implementation()
 void APlayerActor::Cmd_Jump_Implementation()
 {
 	FlySystem->OnJump();
+}
+
+void APlayerActor::Cmd_RecordStart_Implementation()
+{
+	VoiceConversationSystem->StartRecording();
+}
+
+void APlayerActor::Cmd_RecordEnd_Implementation()
+{
+	VoiceConversationSystem->StopRecording();
 }
 
 void APlayerActor::Cmd_Landing_Implementation()

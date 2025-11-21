@@ -163,9 +163,27 @@ jobs:
           event-type: honkit-build
           client-payload: '{"ref": "main", "trigger": "weekly-update", "latest_file": "Documents/DevLog/Weekly/${{ steps.weekly.outputs.week_label }}-Summary.md"}'
 
+      - name: Trigger Confluence Upload
+        uses: peter-evans/repository-dispatch@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          event-type: confluence-upload
+          client-payload: '{"file": "Documents/DevLog/Weekly/${{ steps.weekly.outputs.week_label }}-Summary.md"}'
+
+      - name: Send Discord Notification
+        env:
+          DISCORD_WEBHOOK_DEVLOG: ${{ secrets.DISCORD_WEBHOOK_DEVLOG }}
+        run: |
+          python .github/scripts/devlog/send_discord.py \
+            --webhook-url "$DISCORD_WEBHOOK_DEVLOG" \
+            --type weekly \
+            --devlog-file "Documents/DevLog/Weekly/${{ steps.weekly.outputs.week_label }}-Summary.md" \
+            --date "${{ steps.weekly.outputs.week_label }}" \
+            --devlog-url "https://doppleddiggong.github.io/Onepiece/honkit/DevLog/Weekly/${{ steps.weekly.outputs.week_label }}-Summary.html"
+
       - name: Summary
         run: |
           echo "✅ Weekly DevLog Report has been generated!"
           echo "📅 Week: ${{ steps.weekly.outputs.week_label }}"
           echo "📝 File: Documents/DevLog/Weekly/${{ steps.weekly.outputs.week_label }}-Summary.md"
-          echo "🔗 URL: https://doppleddiggong.github.io/Onepiece/docs/DevLog/Weekly/${{ steps.weekly.outputs.week_label }}-Summary.html"
+          echo "🔗 URL: https://doppleddiggong.github.io/Onepiece/honkit/DevLog/Weekly/${{ steps.weekly.outputs.week_label }}-Summary.html"

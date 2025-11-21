@@ -7,6 +7,7 @@
 #include "Dom/JsonObject.h"
 #include "Serialization/JsonWriter.h"
 #include "Serialization/JsonSerializer.h"
+#include "GenericPlatform/GenericPlatformHttp.h"
 
 #define LOCTEXT_NAMESPACE "FNetworkTestFeature"
 
@@ -103,6 +104,22 @@ void FNetworkTestFeature::ExecuteApiRequest(int32 ApiIndex)
 	Request->SetTimeout(60);
 	Request->SetHeader(TEXT("Accept"), TEXT("application/json"));
 
+	// 커스텀 헤더 추가
+	for (const auto& HeaderPair : ApiInfo.Headers)
+	{
+		Request->SetHeader(HeaderPair.Key, HeaderPair.Value);
+	}
+
+	// 저장된 access_token을 Authorization 헤더로 자동 추가 (이미 설정되지 않은 경우)
+	if (!ApiInfo.Headers.Contains(TEXT("Authorization")) && !Settings->LastAccessToken.IsEmpty())
+	{
+		const FString AuthHeaderValue = FString::Printf(TEXT("Bearer %s"), *Settings->LastAccessToken);
+		Request->SetHeader(TEXT("Authorization"), AuthHeaderValue);
+
+		UE_LOG(LogCoffeeToolbarNetworkTest, Log,
+			TEXT("[Network Test] Auto-applied Authorization header from saved token"));
+	}
+
 	// POST 바디 저장용
 	FString JsonBodyString;
 
@@ -114,36 +131,85 @@ void FNetworkTestFeature::ExecuteApiRequest(int32 ApiIndex)
 	else // POST
 	{
 		Request->SetVerb(TEXT("POST"));
-		Request->SetHeader(TEXT("Content-Type"), TEXT("application/json"));
 
-		// BodyParams를 JSON으로 변환
-		if (ApiInfo.BodyParams.Num() > 0)
+		// ContentType에 따라 다르게 처리
+		if (ApiInfo.ContentType == EApiContentType::FormUrlEncoded)
 		{
-			TSharedPtr<FJsonObject> JsonObject = MakeShareable(new FJsonObject);
-			for (const auto& Pair : ApiInfo.BodyParams)
+			// application/x-www-form-urlencoded
+			Request->SetHeader(TEXT("Content-Type"), TEXT("application/x-www-form-urlencoded"));
+
+			if (ApiInfo.BodyParams.Num() > 0)
 			{
-				JsonObject->SetStringField(Pair.Key, Pair.Value);
+				TArray<FString> FormPairs;
+				for (const auto& Pair : ApiInfo.BodyParams)
+				{
+					FString EncodedKey = FGenericPlatformHttp::UrlEncode(Pair.Key);
+					FString EncodedValue = FGenericPlatformHttp::UrlEncode(Pair.Value);
+					FormPairs.Add(FString::Printf(TEXT("%s=%s"), *EncodedKey, *EncodedValue));
+				}
+				JsonBodyString = FString::Join(FormPairs, TEXT("&"));
+				Request->SetContentAsString(JsonBodyString);
 			}
+		}
+		else // JSON (기본값)
+		{
+			Request->SetHeader(TEXT("Content-Type"), TEXT("application/json"));
 
-			TSharedRef<TJsonWriter<>> Writer = TJsonWriterFactory<>::Create(&JsonBodyString);
-			FJsonSerializer::Serialize(JsonObject.ToSharedRef(), Writer);
+			// BodyParams를 JSON으로 변환
+			if (ApiInfo.BodyParams.Num() > 0)
+			{
+				TSharedPtr<FJsonObject> JsonObject = MakeShareable(new FJsonObject);
+				for (const auto& Pair : ApiInfo.BodyParams)
+				{
+					JsonObject->SetStringField(Pair.Key, Pair.Value);
+				}
 
-			Request->SetContentAsString(JsonBodyString);
+				TSharedRef<TJsonWriter<>> Writer = TJsonWriterFactory<>::Create(&JsonBodyString);
+				FJsonSerializer::Serialize(JsonObject.ToSharedRef(), Writer);
+
+				Request->SetContentAsString(JsonBodyString);
+			}
 		}
 	}
 
 	// 응답 처리
 	Request->OnProcessRequestComplete().BindLambda(
-		[ApiInfo](FHttpRequestPtr Req, FHttpResponsePtr Res, bool bSuccess)
+		[ApiInfo, Settings](FHttpRequestPtr Req, FHttpResponsePtr Res, bool bSuccess) mutable
 		{
 			if (bSuccess && Res.IsValid())
 			{
+				const FString ResponseContent = Res->GetContentAsString();
+
 				UE_LOG(LogCoffeeToolbarNetworkTest, Log,
 					TEXT("[Network Test] %s %s -> %d\n[RES] %s"),
 					*Req->GetVerb(),
 					*Req->GetURL(),
 					Res->GetResponseCode(),
-					*Res->GetContentAsString());
+					*ResponseContent);
+
+				// access_token 추출 및 저장
+				if (Res->GetResponseCode() == 200)
+				{
+					TSharedPtr<FJsonObject> JsonObject;
+					TSharedRef<TJsonReader<>> Reader = TJsonReaderFactory<>::Create(ResponseContent);
+
+					if (FJsonSerializer::Deserialize(Reader, JsonObject) && JsonObject.IsValid())
+					{
+						if (JsonObject->HasField(TEXT("access_token")))
+						{
+							const FString AccessToken = JsonObject->GetStringField(TEXT("access_token"));
+
+							if (UToolbarSettings* MutableSettings = GetMutableDefault<UToolbarSettings>())
+							{
+								MutableSettings->LastAccessToken = AccessToken;
+								MutableSettings->SaveConfig();
+
+								UE_LOG(LogCoffeeToolbarNetworkTest, Log,
+									TEXT("[Network Test] Saved access_token to config"));
+							}
+						}
+					}
+				}
 			}
 			else
 			{

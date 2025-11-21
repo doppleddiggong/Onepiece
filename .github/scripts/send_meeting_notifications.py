@@ -36,7 +36,11 @@ def _to_html_path(meeting_path: str) -> str:
 
 def _send_notification(webhook: str, content: str) -> None:
     body = json.dumps({"content": content}, ensure_ascii=False).encode("utf-8")
-    request = Request(webhook, data=body, headers={"Content-Type": "application/json"})
+    headers = {
+        "Content-Type": "application/json",
+        "User-Agent": "GitHubActionsWebhook/1.0"
+    }
+    request = Request(webhook, data=body, headers=headers)
     with urlopen(request) as response:  # noqa: S310 - GitHub-hosted runner trusted URL
         response.read()
 
@@ -55,7 +59,7 @@ def main() -> None:
     parser.add_argument("--manifest", type=Path, required=True, help="Path to meeting file manifest")
     parser.add_argument(
         "--base-url",
-        default="https://doppleddiggong.github.io/Onepiece/docs",
+        default="https://doppleddiggong.github.io/Onepiece/honkit",
         help="Base URL for published HonKit documents",
     )
     args = parser.parse_args()
