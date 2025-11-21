@@ -9,5 +9,6 @@ var classANetworkTesterActor =
     [ "RequestUserMe", "classANetworkTesterActor.html#aebbe22fc01a47b44f20c3dc5f35aceed", null ],
     [ "RequestUserRegister", "classANetworkTesterActor.html#ae53f27ab3ca6671a7c55a14c055d03a3", null ],
     [ "RequestUserToken", "classANetworkTesterActor.html#a809947b71f79e9024a44a62d0cc20a90", null ],
+    [ "SendToastMessage", "classANetworkTesterActor.html#a80d713e810c0a75f1192667f656bddc1", null ],
     [ "UserName", "classANetworkTesterActor.html#ab5f32b53d6845e92b3bdc278e43c58fa", null ]
 ];

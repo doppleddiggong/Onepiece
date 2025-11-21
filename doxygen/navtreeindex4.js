@@ -1,5 +1,7 @@
 var NAVTREEINDEX4 =
 {
+"functions_h.html":[2,3,0,7],
+"functions_i.html":[2,3,0,8],
 "functions_j.html":[2,3,0,9],
 "functions_k.html":[2,3,0,10],
 "functions_l.html":[2,3,0,11],
@@ -247,7 +249,5 @@ var NAVTREEINDEX4 =
 "structFQuestListenInfo.html":[2,0,32],
 "structFQuestListenInfo.html#a05c5c698f54df45fede343a6a08425db":[2,0,32,6],
 "structFQuestListenInfo.html#a30660f2c732b8ffd87d7e030fcd8dd11":[2,0,32,0],
-"structFQuestListenInfo.html#a3dfd7efad985e5308c7e3b8d2d8d3ee4":[2,0,32,3],
-"structFQuestListenInfo.html#a43789bf374e44bb936c042f567ed451d":[2,0,32,4],
-"structFQuestListenInfo.html#a60280b75f7d37731dc67b1f72cf61243":[2,0,32,1]
+"structFQuestListenInfo.html#a3dfd7efad985e5308c7e3b8d2d8d3ee4":[2,0,32,3]
 };

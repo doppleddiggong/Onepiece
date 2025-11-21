@@ -1,5 +1,7 @@
 var NAVTREEINDEX5 =
 {
+"structFQuestListenInfo.html#a43789bf374e44bb936c042f567ed451d":[2,0,32,4],
+"structFQuestListenInfo.html#a60280b75f7d37731dc67b1f72cf61243":[2,0,32,1],
 "structFQuestListenInfo.html#a9d56ba376ad3f026e1c290fd00ea0928":[2,0,32,5],
 "structFQuestListenInfo.html#a9f6576aae687c376f0853168d4dd1428":[2,0,32,2],
 "structFQuestReadInfo.html":[2,0,33],
