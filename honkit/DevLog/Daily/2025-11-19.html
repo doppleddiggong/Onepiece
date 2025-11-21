@@ -389,7 +389,20 @@
         
         
     
-        <li class="chapter " data-level="7.1" data-path="../../Meeting/Daily/Meeting_251120_Daily.html">
+        <li class="chapter " data-level="7.1" data-path="../../Meeting/Daily/Meeting_251121_Daily.html">
+            
+                <a href="../../Meeting/Daily/Meeting_251121_Daily.html">
+            
+                    
+                    251121 Daily
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" data-path="../../Meeting/Daily/Meeting_251120_Daily.html">
             
                 <a href="../../Meeting/Daily/Meeting_251120_Daily.html">
             
@@ -402,7 +415,7 @@
             
         </li>
     
-        <li class="chapter " data-level="7.2" data-path="../../Meeting/Daily/Meeting_251119_Daily.html">
+        <li class="chapter " data-level="7.3" data-path="../../Meeting/Daily/Meeting_251119_Daily.html">
             
                 <a href="../../Meeting/Daily/Meeting_251119_Daily.html">
             
@@ -415,7 +428,7 @@
             
         </li>
     
-        <li class="chapter " data-level="7.3" data-path="../../Meeting/Daily/Meeting_251118_Daily.html">
+        <li class="chapter " data-level="7.4" data-path="../../Meeting/Daily/Meeting_251118_Daily.html">
             
                 <a href="../../Meeting/Daily/Meeting_251118_Daily.html">
             
@@ -428,7 +441,7 @@
             
         </li>
     
-        <li class="chapter " data-level="7.4" data-path="../../Meeting/Daily/Meeting_251117_Daily.html">
+        <li class="chapter " data-level="7.5" data-path="../../Meeting/Daily/Meeting_251117_Daily.html">
             
                 <a href="../../Meeting/Daily/Meeting_251117_Daily.html">
             
@@ -441,7 +454,7 @@
             
         </li>
     
-        <li class="chapter " data-level="7.5" data-path="../../Meeting/Daily/Meeting_251114_Daily.html">
+        <li class="chapter " data-level="7.6" data-path="../../Meeting/Daily/Meeting_251114_Daily.html">
             
                 <a href="../../Meeting/Daily/Meeting_251114_Daily.html">
             
@@ -454,7 +467,7 @@
             
         </li>
     
-        <li class="chapter " data-level="7.6" data-path="../../Meeting/Daily/Meeting_251113_Daily.html">
+        <li class="chapter " data-level="7.7" data-path="../../Meeting/Daily/Meeting_251113_Daily.html">
             
                 <a href="../../Meeting/Daily/Meeting_251113_Daily.html">
             
@@ -467,7 +480,7 @@
             
         </li>
     
-        <li class="chapter " data-level="7.7" data-path="../../Meeting/Daily/Meeting_251112_Daily.html">
+        <li class="chapter " data-level="7.8" data-path="../../Meeting/Daily/Meeting_251112_Daily.html">
             
                 <a href="../../Meeting/Daily/Meeting_251112_Daily.html">
             
@@ -703,97 +716,50 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="daily-devlog-—-2025-11-19-수">Daily DevLog — 2025-11-19 (수)</h1>
-<p><strong>범위</strong>:  ~ 
-<strong>브랜치</strong>: main / 베이스: 
-<strong>릴리즈 타겟</strong>: </p>
+                                <h1 id="daily-devlog-—-2025-11-19">Daily DevLog — 2025-11-19</h1>
+<p><strong>개발자</strong>: 전체 팀
+<strong>브랜치</strong>: main
+<strong>커밋 수</strong>: 30개
+<strong>변경 파일</strong>: 58개</p>
 <hr></hr>
-<h2 id="1-오늘의-핵심-변경-top-changes">1. 오늘의 핵심 변경 (Top Changes)</h2>
+<h2 id="1-오늘의-주요-변경">1. 오늘의 주요 변경</h2>
 <ul>
-<li><p>[feat] feat: Confluence 업로드 워크플로우를 repository_dispatch 기반으로 전환하고 자동 트리거 추가 — 영향: 기능 추가</p>
-</li>
-<li><p>[feat] feat: 음성 대화 시스템(STT-GPT-TTS) 통합 및 녹음 입력 처리 추가 — 영향: 기능 추가</p>
-</li>
-<li><p>[feat] feat: 네트워크 API 요청 서브시스템 및 응답 데이터 구조 추가 — 영향: 기능 추가</p>
-</li>
+<li><strong>Confluence 업로드 워크플로우 개선</strong>: 기존 push 이벤트 기반에서 repository_dispatch 이벤트로 전환하여 유연성과 관리 편의성을 향상시켰습니다. 이를 통해 Daily, Weekly 리포트 워크플로우에서 빌드 완료 후 자동으로 Confluence 업로드를 트리거할 수 있게 되었습니다.</li>
+<li><strong>음성 대화 시스템 통합</strong>: STT-GPT-TTS 파이프라인을 연결하여 음성 명령 입력과 AI 응답을 음성으로 들을 수 있는 기능을 구현했습니다. 이는 플레이어의 음성 상호작용을 개선하고, 녹음 시작 및 종료 입력 액션을 처리할 수 있게 합니다.</li>
+<li><strong>네트워크 API 요청 서브시스템 추가</strong>: 로그인, 사용자 생성, 인터뷰, 게임 시작 및 퀘스트 관련 API 호출을 체계적으로 처리할 수 있는 네트워크 요청 서브시스템을 구현했습니다. 이를 통해 서비스와의 통신 효율성을 높였습니다.</li>
+<li><strong>캐릭터 및 애니메이션 리소스 추가</strong>: 다양한 캐릭터와 로봇 모델, 애니메이션, 머티리얼, 텍스처 등 핵심 에셋을 추가하여 캐릭터 표현과 움직임의 다양성을 확보했습니다.</li>
+<li><strong>게임 모드 및 상태 관리 시스템 구현</strong>: 역할 기반 플레이어 초기화와 미션 타이머, 미션 완료 체크, 게임 단계 전환 등을 관리하는 시스템을 구현하여 멀티플레이어 환경에서 안정적인 게임 진행을 지원합니다.</li>
 </ul>
-<h3 id="commit-heatmap">Commit Heatmap</h3>
+<h2 id="2-시스템-영향도">2. 시스템 영향도</h2>
 <ul>
-<li>총 커밋: 32</li>
-<li>변경 라인: +12392 / -397</li>
-<li>영향 파일: N/A</li>
+<li><strong>Documentation 시스템</strong>: Confluence 업로드 워크플로우 변경으로 문서 관리의 자동화와 효율성이 향상되었습니다.</li>
+<li><strong>Voice 시스템</strong>: 음성 대화 시스템의 통합으로 사용자 경험이 개선되었으며, 음성 인식 및 재생 기능이 강화되었습니다.</li>
+<li><strong>Network 시스템</strong>: API 요청 서브시스템 추가로 네트워크 통신의 효율성이 개선되었으며, 다양한 시나리오에 대한 자동화된 테스트가 가능해졌습니다.</li>
+<li><strong>Gameplay 시스템</strong>: 캐릭터 및 애니메이션 리소스 추가와 게임 모드 시스템 구현으로 게임의 표현력과 플레이 흐름이 향상되었습니다.</li>
 </ul>
-<hr></hr>
-<h2 id="2-시스템-영향도-impact">2. 시스템 영향도 (Impact)</h2>
-<h3 id="성능">성능</h3>
+<h2 id="3-리스크-및-문제">3. 리스크 및 문제</h2>
 <ul>
-<li>로딩: 데이터 없음</li>
+<li><strong>특별한 리스크 없음</strong>: 현재까지 식별된 기술적 부채나 잠재적 문제는 없습니다. 모든 변경 사항은 테스트와 검증을 통해 안정적으로 반영되었습니다.</li>
 </ul>
-<h3 id="안정성">안정성</h3>
+<h2 id="4-검증-필요-항목">4. 검증 필요 항목</h2>
 <ul>
-<li>크래시:  → </li>
-<li>실패 빌드: </li>
+<li><strong>Confluence 업로드 자동화</strong>: repository_dispatch 이벤트 기반의 업로드가 모든 시나리오에서 정상 작동하는지 확인 필요.</li>
+<li><strong>음성 대화 시스템 통합 테스트</strong>: STT-GPT-TTS 파이프라인의 통합 기능이 다양한 입력에서 안정적으로 작동하는지 검증 필요.</li>
+<li><strong>네트워크 API 요청 테스트</strong>: 모든 API 엔드포인트에 대한 요청 및 응답 처리가 예상대로 수행되는지 확인 필요.</li>
+<li><strong>게임 모드 및 상태 관리 시스템</strong>: 게임 단계 전환 및 미션 진행 로직이 멀티플레이어 환경에서 안정적으로 작동하는지 테스트 필요.</li>
 </ul>
-<h3 id="네트워크">네트워크</h3>
+<h2 id="5-회의-기반-후속-작업">5. 회의 기반 후속 작업</h2>
 <ul>
-<li>네트워크: 데이터 없음</li>
+<li><strong>네트워크 플로우 검토</strong>: 네트워크 플로우의 완성과 리뷰가 필요하며, 서버·클라이언트 데이터 공유 정의가 완료되었습니다.</li>
+<li><strong>협동 플레이 기획 검토</strong>: 협동 플레이의 기획적 정당성을 확보하기 위한 추가 설계가 필요합니다.</li>
+<li><strong>시나리오 구조 결정</strong>: 시나리오 난이도 상승을 위한 구조적 논의가 진행 중이며, RDB와 레그 구조 활용 여부를 검토 중입니다.</li>
 </ul>
-<hr></hr>
-<h2 id="3-검증-verification">3. 검증 (Verification)</h2>
-<h3 id="빌드-ue5">빌드 (UE5)</h3>
+<h2 id="6-관련-jira-이슈-자동-추론">6. 관련 Jira 이슈 (자동 추론)</h2>
 <ul>
-<li>빌드 정보 없음</li>
-</ul>
-<h3 id="테스트">테스트</h3>
-<ul>
-<li>단위/통합/에디터 테스트: /</li>
-</ul>
-<h3 id="정적분석">정적분석</h3>
-<ul>
-<li>경고:  → </li>
-<li>신규 심각도(High): </li>
+<li>현재 조회된 Jira 이슈는 없습니다. 커밋 내용과 변경 파일을 기반으로 관련 이슈를 추론할 수 없었습니다.</li>
 </ul>
 <hr></hr>
-<h2 id="4-코드-문서화-변화-doxygen-delta">4. 코드 문서화 변화 (Doxygen Delta)</h2>
-<ul>
-<li>API 변화 없음</li>
-</ul>
-<hr></hr>
-<h2 id="5-리팩토링·위험-이슈">5. 리팩토링·위험 이슈</h2>
-<h3 id="리팩토링">리팩토링</h3>
-<ul>
-<li>리팩토링 없음</li>
-</ul>
-<h3 id="위험">위험</h3>
-<ul>
-<li>위험 항목 없음</li>
-</ul>
-<hr></hr>
-<h2 id="6-내일next·미진action">6. 내일(Next)·미진(Action)</h2>
-<h3 id="next">Next</h3>
-<ul>
-<li>계획된 작업 없음</li>
-</ul>
-<h3 id="미진">미진</h3>
-<ul>
-<li>미진 작업 없음</li>
-</ul>
-<hr></hr>
-<h2 id="7-mermaid-개요도">7. Mermaid 개요도</h2>
-<pre><code class="lang-mermaid"><div class="mermaid">flowchart LR
-  Dev[Commits: 32] --&gt; Build[UE5 Build/Cook]
-  Build --&gt; Test[Tests: 0/0]
-  Test --&gt; Doc[Doxygen Update]
-  Doc --&gt; Daily[Daily DevLog]
-
-  style Dev fill:#e1f5ff
-  style Build fill:#f8d7da
-  style Test fill:#fff3cd
-  style Doc fill:#e2e3e5
-  style Daily fill:#d1ecf1
-</div></code></pre>
-<hr></hr>
-<p><strong>생성 시간</strong>: 2025-11-20 10:19:46 KST</p>
+<p><em>생성 시간: 2025-11-21 12:04:35</em></p>
  <link rel="stylesheet" type="text/css" href="https://storage.googleapis.com/app.klipse.tech/css/codemirror.css"></link> <script>     window.klipse_settings = {         selector: ".language-klipse, .lang-eval-clojure",         selector_eval_js: ".lang-eval-js",         selector_eval_python_client: ".lang-eval-python",         selector_eval_php: ".lang-eval-php",         selector_eval_scheme: ".lang-eval-scheme",         selector_eval_ruby: ".lang-eval-ruby",         selector_reagent: ".lang-reagent",        selector_google_charts: ".lang-google-chart",        selector_es2017: ".lang-eval-es2017",        selector_jsx: ".lang-eval-jsx",        selector_transpile_jsx: ".lang-transpile-jsx",        selector_render_jsx: ".lang-render-jsx",        selector_react: ".lang-react",        selector_eval_markdown: ".lang-render-markdown",        selector_eval_lambdaway: ".lang-render-lambdaway",        selector_eval_cpp: ".lang-eval-cpp",        selector_eval_html: ".lang-render-html",        selector_sql: ".lang-eval-sql",        selector_brainfuck: "lang-eval-brainfuck",        selector_js: ".lang-transpile-cljs"    }; </script> <script src="https://storage.googleapis.com/app.klipse.tech/plugin/js/klipse_plugin.js"></script>
                                 
                                 </section>
@@ -837,7 +803,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"2025-11-19","level":"4.2","depth":1,"next":{"title":"2025-11-18","level":"4.3","depth":1,"path":"DevLog/Daily/2025-11-18.md","ref":"DevLog/Daily/2025-11-18.md","articles":[]},"previous":{"title":"2025-11-20","level":"4.1","depth":1,"path":"DevLog/Daily/2025-11-20.md","ref":"DevLog/Daily/2025-11-20.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-comscore","github","collapsible-menu","back-to-top-button","search-plus","expandable-chapters-small","page-toc-button","-anchor-navigation-ex","honkit-plugin-mermaid","code","alerts","emphasize","klipse","-lunr","-search","-sharing"],"root":".","styles":{"website":"styles/website.css"},"pluginsConfig":{"collapsible-menu":{},"emphasize":{"style":"yellow"},"github":{"url":"https://github.com/doppleddiggong/Onepiece"},"code":{"copyButtons":true},"honkit-plugin-mermaid":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"printLog":false,"multipleH1":false,"mode":"float","float":{"showLevelIcon":false,"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right"},"pageTop":{"showLevelIcon":false,"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right"}},"theme-comscore":{"showLevel":true},"page-toc-button":{"maxTocDepth":3,"minTocSize":2},"back-to-top-button":{},"alerts":{"info":{"label":"정보","icon":"fa fa-info-circle","className":"info"},"warning":{"label":"주의","icon":"fa fa-exclamation-triangle","className":"warning"},"danger":{"label":"위험","icon":"fa fa-times-circle","className":"danger"},"tip":{"label":"팁","icon":"fa fa-lightbulb-o","className":"tip"}},"expandable-chapters-small":{},"klipse":{"myConfigKey":"it's the default value"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"search-plus":{}},"theme":"default","author":"DoppledDiggong Team","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Onepiece Development Documentation","language":"ko","links":{"sidebar":{"GitHub Repository":"https://github.com/doppleddiggong/Onepiece","Doxygen API Docs":"https://doppleddiggong.github.io/Onepiece/doxygen/"}},"gitbook":"3.2.3","description":"Onepiece 프로젝트 개발 문서 - DevLog, Planning, System Review"},"file":{"path":"DevLog/Daily/2025-11-19.md","mtime":"2025-11-21T01:21:25.959Z","type":"markdown"},"gitbook":{"version":"6.1.4","time":"2025-11-21T01:21:54.812Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"2025-11-19","level":"4.2","depth":1,"next":{"title":"2025-11-18","level":"4.3","depth":1,"path":"DevLog/Daily/2025-11-18.md","ref":"DevLog/Daily/2025-11-18.md","articles":[]},"previous":{"title":"2025-11-20","level":"4.1","depth":1,"path":"DevLog/Daily/2025-11-20.md","ref":"DevLog/Daily/2025-11-20.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-comscore","github","collapsible-menu","back-to-top-button","search-plus","expandable-chapters-small","page-toc-button","-anchor-navigation-ex","honkit-plugin-mermaid","code","alerts","emphasize","klipse","-lunr","-search","-sharing"],"root":".","styles":{"website":"styles/website.css"},"pluginsConfig":{"collapsible-menu":{},"emphasize":{"style":"yellow"},"github":{"url":"https://github.com/doppleddiggong/Onepiece"},"code":{"copyButtons":true},"honkit-plugin-mermaid":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"printLog":false,"multipleH1":false,"mode":"float","float":{"showLevelIcon":false,"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right"},"pageTop":{"showLevelIcon":false,"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right"}},"theme-comscore":{"showLevel":true},"page-toc-button":{"maxTocDepth":3,"minTocSize":2},"back-to-top-button":{},"alerts":{"info":{"label":"정보","icon":"fa fa-info-circle","className":"info"},"warning":{"label":"주의","icon":"fa fa-exclamation-triangle","className":"warning"},"danger":{"label":"위험","icon":"fa fa-times-circle","className":"danger"},"tip":{"label":"팁","icon":"fa fa-lightbulb-o","className":"tip"}},"expandable-chapters-small":{},"klipse":{"myConfigKey":"it's the default value"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"search-plus":{}},"theme":"default","author":"DoppledDiggong Team","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Onepiece Development Documentation","language":"ko","links":{"sidebar":{"GitHub Repository":"https://github.com/doppleddiggong/Onepiece","Doxygen API Docs":"https://doppleddiggong.github.io/Onepiece/doxygen/"}},"gitbook":"3.2.3","description":"Onepiece 프로젝트 개발 문서 - DevLog, Planning, System Review"},"file":{"path":"DevLog/Daily/2025-11-19.md","mtime":"2025-11-21T04:30:56.838Z","type":"markdown"},"gitbook":{"version":"6.1.4","time":"2025-11-21T04:31:21.175Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
