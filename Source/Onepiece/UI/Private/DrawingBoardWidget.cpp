@@ -3,11 +3,11 @@
 
 #include "DrawingBoardWidget.h"
 
+#include "GameLogging.h"
 #include "IImageWrapper.h"
 #include "IImageWrapperModule.h"
 #include "Components/Button.h"
 #include "Components/Image.h"
-#include "Components/SceneCaptureComponent2D.h"
 #include "Engine/Canvas.h"
 #include "Kismet/KismetRenderingLibrary.h"
 
@@ -29,20 +29,36 @@ void UDrawingBoardWidget::NativeConstruct()
 {
 	Super::NativeConstruct();
 	
+	// Button Event
 	Button_Clear->OnClicked.AddDynamic(this, &UDrawingBoardWidget::ClearCanvas);
 	Button_Save->OnClicked.AddDynamic(this, &UDrawingBoardWidget::SaveCanvas);
 }
 
 FReply UDrawingBoardWidget::NativeOnMouseButtonDown(const FGeometry& InGeometry, const FPointerEvent& InMouseEvent)
 {
+	// Get Mouse Position in Local Image Coordinate System
+	// Save Current MousePos to prevMousePos
 	prevMousePos = GetLocalMousePos(InMouseEvent.GetScreenSpacePosition());
 	bIsDrawing = true;
+	
+	// Draw Point Once
+	// PRINT_STRING(TEXT("%s"), *InMouseEvent.GetEffectingButton().GetFName().ToString());
+	if (InMouseEvent.IsMouseButtonDown(EKeys::LeftMouseButton))			// Draw
+	{
+		DrawPoint(GetLocalMousePos(InMouseEvent.GetScreenSpacePosition()), FLinearColor::Black);
+	}
+	else if (InMouseEvent.IsMouseButtonDown(EKeys::RightMouseButton))	// Erase
+	{
+		DrawPoint(GetLocalMousePos(InMouseEvent.GetScreenSpacePosition()), FLinearColor::White);		
+	}
 	
 	return FReply::Handled();
 }
 
 FReply UDrawingBoardWidget::NativeOnMouseButtonUp(const FGeometry& InGeometry, const FPointerEvent& InMouseEvent)
 {
+	// Get Mouse Position in Local Image Coordinate System
+	// Save ZeroVector to prevMousePos
 	prevMousePos = GetLocalMousePos(FVector2D::ZeroVector);
 	bIsDrawing = false;
 	
@@ -51,15 +67,38 @@ FReply UDrawingBoardWidget::NativeOnMouseButtonUp(const FGeometry& InGeometry, c
 
 FReply UDrawingBoardWidget::NativeOnMouseMove(const FGeometry& InGeometry, const FPointerEvent& InMouseEvent)
 {
-	if (bIsDrawing)
+	// return When Mouse Not Pressed
+	if (!bIsDrawing) return Super::NativeOnMouseMove(InGeometry, InMouseEvent);
+	
+	if (InMouseEvent.IsMouseButtonDown(EKeys::LeftMouseButton))			// Draw
 	{
-		DrawPoint(GetLocalMousePos(InMouseEvent.GetScreenSpacePosition()));
+		DrawLines(GetLocalMousePos(InMouseEvent.GetScreenSpacePosition()), FLinearColor::Black);
+	}
+	else if (InMouseEvent.IsMouseButtonDown(EKeys::RightMouseButton))	// Erase
+	{
+		DrawLines(GetLocalMousePos(InMouseEvent.GetScreenSpacePosition()), FLinearColor::White);
 	}
 	
 	return FReply::Handled();
 }
 
-void UDrawingBoardWidget::DrawPoint(FVector2D mousePos)
+void UDrawingBoardWidget::DrawPoint(FVector2D mousePos, FLinearColor drawColor)
+{
+	// Begin Draw Canvas To Render Target
+	UCanvas* canvas = nullptr;
+	FVector2D size;
+	FDrawToRenderTargetContext context;
+	UKismetRenderingLibrary::BeginDrawCanvasToRenderTarget(this, RT_Canvas, canvas, size, context);
+	
+	// Set thickness Whether now in Draw or Erase
+	float thickness = (drawColor == FLinearColor::Black) ? 10 : 30;
+	// Draw Box
+	canvas->K2_DrawBox(mousePos, FVector2D(1, 1), thickness, drawColor);
+	
+	UKismetRenderingLibrary::EndDrawCanvasToRenderTarget(this, context);
+}
+
+void UDrawingBoardWidget::DrawLines(FVector2D mousePos, FLinearColor drawColor)
 {
 	// Begin Draw Canvas To Render Target
 	UCanvas* canvas = nullptr;
@@ -68,9 +107,8 @@ void UDrawingBoardWidget::DrawPoint(FVector2D mousePos)
 	UKismetRenderingLibrary::BeginDrawCanvasToRenderTarget(this, RT_Canvas, canvas, size, context);
 	
 	// Calculate Draw Positions
-	// 10 : 적당, 20 : 너무 많음(렉)
-	int32 div = 15;
 	FVector2D currPos = prevMousePos;
+	int32 div = 64;
 	FVector2D drawOffset = (mousePos - currPos) / div;
 	
 	// Draw
@@ -78,8 +116,10 @@ void UDrawingBoardWidget::DrawPoint(FVector2D mousePos)
 	{
 		currPos = prevMousePos + drawOffset * i;
 		
-		// Draw Material
-		canvas->K2_DrawMaterial(M_Brush, currPos, FVector2D(20, 20), FVector2D::ZeroVector);
+		// Set thickness Whether now in Draw or Erase
+		float thickness = (drawColor == FLinearColor::Black) ? 10 : 30;
+		// Draw Line
+		canvas->K2_DrawLine(prevMousePos, currPos, thickness, drawColor);
 	}
 	prevMousePos = mousePos;
 	
@@ -102,16 +142,16 @@ void UDrawingBoardWidget::ClearCanvas()
 void UDrawingBoardWidget::SaveCanvas()
 {
 	// File Path
-	const FString FilePath = FPaths::ProjectSavedDir() / TEXT("WriteImage/");
-	IFileManager::Get().MakeDirectory(*FilePath, true);
+	const FString filePath = FPaths::ProjectSavedDir() / TEXT("WriteImage/");
+	IFileManager::Get().MakeDirectory(*filePath, true);
 	// File Name
-	FString FileName = FDateTime::Now().ToString(TEXT("%Y_%m_%d_%H_%M_%S.png"));
+	FString fileName = FDateTime::Now().ToString(TEXT("%Y_%m_%d_%H_%M_%S.png"));
 	
 	// Export Render Target to png
-	UKismetRenderingLibrary::ExportRenderTarget(this, RT_Canvas, FilePath, FileName);
-	UE_LOG(LogTemp, Warning, TEXT("%s | %s"), *FilePath, *FileName);
+	UKismetRenderingLibrary::ExportRenderTarget(this, RT_Canvas, filePath, fileName);
+	UE_LOG(LogTemp, Warning, TEXT("%s | %s"), *filePath, *fileName);
 	
-	SaveRenderTargetToPNG(RT_Canvas, FilePath / FileName);
+	SaveRenderTargetToPNG(RT_Canvas, filePath / fileName);
 }
 
 bool UDrawingBoardWidget::SaveRenderTargetToPNG(UTextureRenderTarget2D* RenderTarget, const FString& FullFilePath)
@@ -122,9 +162,11 @@ bool UDrawingBoardWidget::SaveRenderTargetToPNG(UTextureRenderTarget2D* RenderTa
 		return false;
 	}
 
+	// Get Width & Height
 	const int32 Width  = RenderTarget->SizeX;
 	const int32 Height = RenderTarget->SizeY;
 
+	// Set Bitmap array
 	TArray<FColor> Bitmap;
 	Bitmap.AddUninitialized(Width * Height);
 
@@ -152,6 +194,7 @@ bool UDrawingBoardWidget::SaveRenderTargetToPNG(UTextureRenderTarget2D* RenderTa
 		8
 	);
 
+	// Compress to PNG
 	const TArray64<uint8>& PNGData = ImageWrapper->GetCompressed(100);
 
 	// Make Directory

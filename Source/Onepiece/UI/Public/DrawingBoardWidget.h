@@ -45,8 +45,9 @@ protected:
 	virtual FReply NativeOnMouseMove(const FGeometry& InGeometry, const FPointerEvent& InMouseEvent) override;
 	
 private:
-	// Draw
-	void DrawPoint(FVector2D mousePos);
+	// Draw Functions
+	void DrawLines(FVector2D mousePos, FLinearColor drawColor);
+	void DrawPoint(FVector2D mousePos, FLinearColor drawColor);
 	FVector2D GetLocalMousePos(FVector2D mousePos);
 	
 	// Clear Canvas
