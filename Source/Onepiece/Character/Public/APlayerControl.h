@@ -51,13 +51,13 @@ protected:
 	void OnRecordReleased(const FInputActionValue& Value);
 
 	void OnGrab(const FInputActionValue& Value);
-	void OnRelease(const FInputActionValue& Value);
+	void OnGrabRelease(const FInputActionValue& Value);
 
 	UFUNCTION(Server, Reliable)
 	void Server_OnGrab();
 
 	UFUNCTION(Server, Reliable)
-	void Server_OnRelease();
+	void Server_OnGrabRelease();
 	
 private:
     class IControllable* GetControllable() const;

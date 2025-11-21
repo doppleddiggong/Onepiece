@@ -10,6 +10,7 @@
 #include "UFlySystem.h"
 
 // Shared
+#include "APlatformSwitch.h"
 #include "Macro.h"
 #include "InputCoreTypes.h"
 #include "UVoiceConversationSystem.h"
@@ -140,7 +141,8 @@ void APlayerActor::PlayTTSAudio(const TArray<uint8>& AudioData)
 
 void APlayerActor::TryPickUp()
 {
-	if (HoldingInteractable) return;
+	if (HoldingInteractable)
+		return;
 
 	// Ray trace로 InteractableComponent 찾기   
 	UInteractableComponent* FoundInteractable = DetectInteractable();
@@ -152,6 +154,10 @@ void APlayerActor::TryPickUp()
 		// 현재 들고 있는 물체로 저장
 		HoldingInteractable = FoundInteractable;
 	}
+	// else if ( auto PlatformSwitch = DetectPlatformSwitch() )
+	// {
+	// 	PlatformSwitch->ChangeActivateState(true);
+	// }
 }
 
 void APlayerActor::TryDrop()
@@ -181,7 +187,7 @@ UInteractableComponent* APlayerActor::DetectInteractable()
 		HitResult, TraceStart, TraceEnd, ECC_Visibility);
 	
 	DrawDebugLine(GetWorld(), TraceStart, TraceEnd, bHit?FColor::Green : FColor::Red,
-		false, 0.1f, 0, 2.0f);
+		false, 1.0f, 0, 2.0f);
 
 	// Hit한 경우
 	if (bHit && HitResult.GetActor())
@@ -195,6 +201,44 @@ UInteractableComponent* APlayerActor::DetectInteractable()
 
 	return nullptr;
 }
+
+//
+// APlatformSwitch* APlayerActor::DetectPlatformSwitch()
+// {
+// 	FVector CameraLocation = FollowCamera->GetComponentLocation();
+// 	FVector CameraForward = FollowCamera->GetForwardVector();
+//
+// 	FVector TraceStart = CameraLocation;
+// 	FVector TraceEnd = TraceStart + (CameraForward * InteractDistance);
+//
+// 	// Hit 결과
+// 	FHitResult HitResult;
+//
+// 	// Ray trace 실행
+// 	bool bHit = GetWorld()->LineTraceSingleByChannel(
+// 		HitResult, TraceStart, TraceEnd, ECC_Visibility);
+// 	
+// 	DrawDebugLine(GetWorld(),
+// 		TraceStart, TraceEnd,
+// 		bHit  ? FColor::Green : FColor::Red,
+// 		false,
+// 		0.1f, 0, 2.0f);
+//
+// 	if (bHit)
+// 	{
+// 		if ( AActor* HitActor = HitResult.GetActor())
+// 		{
+// 			if (auto Switch = Cast<APlatformSwitch>(HitActor))
+// 			{
+// 				return Switch;
+// 			}
+// 		}
+// 	}
+// 	
+// 	return nullptr;
+// }
+
+
 
 void APlayerActor::OnRep_LookPitch()
 {

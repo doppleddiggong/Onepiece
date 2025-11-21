@@ -114,7 +114,8 @@ public:
 	UPROPERTY(EditDefaultsOnly, Category = "Interaction")
 	float InteractDistance = 1200.0f;
 	
-	UInteractableComponent* DetectInteractable();
+	class UInteractableComponent* DetectInteractable();
+	// class APlatformSwitch* DetectPlatformSwitch();
 
 public:
 	// 서버쪽 pitch 수동으로 동기화
