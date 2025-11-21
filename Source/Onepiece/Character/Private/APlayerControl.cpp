@@ -5,6 +5,8 @@
  * @brief APlayerControl 구현에 대한 Doxygen 주석을 제공합니다.
  */
 #include "APlayerControl.h"
+
+#include "APlayerActor.h"
 #include "IControllable.h"
 
 #include "EnhancedInputSubsystems.h"
@@ -77,6 +79,9 @@ void APlayerControl::SetupInputComponent()
 
 		EIC->BindAction(IA_Record, ETriggerEvent::Started, this, &APlayerControl::OnRecordPressed);
 		EIC->BindAction(IA_Record, ETriggerEvent::Completed, this, &APlayerControl::OnRecordReleased);
+
+		EIC->BindAction(IA_Grab, ETriggerEvent::Started, this, &APlayerControl::OnGrab);
+		EIC->BindAction(IA_Grab, ETriggerEvent::Completed, this, &APlayerControl::OnRelease);
 	}
 }
 
@@ -145,4 +150,32 @@ void APlayerControl::OnRecordReleased(const FInputActionValue& Value)
 {
 	if (IControllable* C = GetControllable())
 		C->Cmd_RecordEnd();
+}
+
+void APlayerControl::OnGrab(const FInputActionValue& Value)
+{
+	Server_OnGrab();
+}
+
+void APlayerControl::OnRelease(const FInputActionValue& Value)
+{
+	Server_OnRelease();
+}
+
+void APlayerControl::Server_OnGrab_Implementation()
+{
+	APlayerActor* MyPlayer = Cast<APlayerActor>(GetPawn());
+	if (MyPlayer)
+	{
+		MyPlayer->TryPickUp();
+	}
+}
+
+void APlayerControl::Server_OnRelease_Implementation()
+{
+	APlayerActor* MyPlayer = Cast<APlayerActor>(GetPawn());
+	if (MyPlayer)
+	{
+		MyPlayer->TryDrop();
+	}
 }
