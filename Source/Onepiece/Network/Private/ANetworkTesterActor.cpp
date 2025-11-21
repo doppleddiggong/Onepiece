@@ -9,11 +9,17 @@
 #include "UKLingoNetworkSystem.h"
 #include "GameLogging.h"
 #include "NetworkData.h"
+#include "UDialogManager.h"
 #include "Engine/Engine.h"
 
 ANetworkTesterActor::ANetworkTesterActor()
 {
     PrimaryActorTick.bCanEverTick = false;
+}
+
+void ANetworkTesterActor::SendToastMessage()
+{
+    UDialogManager::Get(GetWorld())->ShowToast(TEXT("토스트 메세지 샘플"));
 }
 
 void ANetworkTesterActor::RequestHealth()

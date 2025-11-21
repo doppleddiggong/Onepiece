@@ -52,6 +52,9 @@ protected:
     UFUNCTION(CallInEditor, Category = "TEST|User API")
     void RequestUserMe();
 
+    UFUNCTION(CallInEditor, Category = "TEST|ToastMessage")
+    void SendToastMessage();
+
 private:
     void OnResponseUserRegister(FResponseUserRegister& ResponseData, bool bWasSuccessful);
     void OnResponseUserToken(FResponseUserToken& ResponseData, bool bWasSuccessful);

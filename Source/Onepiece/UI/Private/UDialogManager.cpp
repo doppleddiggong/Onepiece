@@ -8,6 +8,7 @@
 
 #include "FComponentHelper.h"
 #include "UDialogWidget.h"
+#include "UObject/Object.h"
 
 #include "GameFramework/PlayerController.h"
 #include "Engine/LocalPlayer.h"
@@ -22,6 +23,27 @@
 UDialogManager::UDialogManager()
 {
 	DialogWidgetClass = FComponentHelper::LoadClass<UDialogWidget>(DIALOGWIDGET_PATH);
+}
+
+void UDialogManager::Deinitialize()
+{
+	// 위젯이 있으면 정리
+	if (DialogWidget)
+	{
+		// 타이머 즉시 정리 (NativeDestruct보다 먼저)
+		DialogWidget->HideDialogImmediately();
+
+		// 뷰포트에서 제거
+		if (DialogWidget->IsInViewport())
+		{
+			DialogWidget->RemoveFromParent();
+		}
+
+		// 참조 해제
+		DialogWidget = nullptr;
+	}
+
+	Super::Deinitialize();
 }
 
 void UDialogManager::EnsureWidgetForWorld(UWorld* World)
