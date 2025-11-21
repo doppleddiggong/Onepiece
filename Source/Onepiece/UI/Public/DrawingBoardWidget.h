@@ -27,6 +27,8 @@ protected:
 	
 	// Widgets
 	UPROPERTY(BlueprintReadOnly, meta=(BindWidget))
+	TObjectPtr<class UOverlay> Overlay_DrawWindow;
+	UPROPERTY(BlueprintReadOnly, meta=(BindWidget))
 	TObjectPtr<class UImage> Image_Canvas;
 	UPROPERTY(BlueprintReadOnly, meta=(BindWidget))
 	TObjectPtr<class UButton> Button_Clear;
@@ -45,6 +47,9 @@ protected:
 	virtual FReply NativeOnMouseMove(const FGeometry& InGeometry, const FPointerEvent& InMouseEvent) override;
 	
 private:
+	// Close Draw Window
+	void CloseDrawWindow();
+	
 	// Draw Functions
 	void DrawLines(FVector2D mousePos, FLinearColor drawColor);
 	void DrawPoint(FVector2D mousePos, FLinearColor drawColor);

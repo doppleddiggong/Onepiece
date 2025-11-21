@@ -8,6 +8,7 @@
 #include "IImageWrapperModule.h"
 #include "Components/Button.h"
 #include "Components/Image.h"
+#include "Components/Overlay.h"
 #include "Engine/Canvas.h"
 #include "Kismet/KismetRenderingLibrary.h"
 
@@ -36,6 +37,13 @@ void UDrawingBoardWidget::NativeConstruct()
 
 FReply UDrawingBoardWidget::NativeOnMouseButtonDown(const FGeometry& InGeometry, const FPointerEvent& InMouseEvent)
 {
+	// Check Mouse is in Canvas
+	const FGeometry CanvasGeometry = Image_Canvas->GetCachedGeometry();
+	if (!CanvasGeometry.IsUnderLocation(InMouseEvent.GetScreenSpacePosition()))
+	{
+		return FReply::Unhandled();
+	}
+	
 	// Get Mouse Position in Local Image Coordinate System
 	// Save Current MousePos to prevMousePos
 	prevMousePos = GetLocalMousePos(InMouseEvent.GetScreenSpacePosition());
@@ -131,6 +139,12 @@ FVector2D UDrawingBoardWidget::GetLocalMousePos(FVector2D mousePos)
 	// Get Absolute Local Pos
 	const FGeometry& geometry = Image_Canvas->GetCachedGeometry();
 	FVector2D localPos = geometry.AbsoluteToLocal(mousePos);
+	
+	// Get Canvas Size
+	const FVector2D canvasSize = geometry.GetLocalSize();
+	// Transform localPos(in Image_Canvas Coord) to RT_Canvas Coord && Clamp upto RT_Canvas' Border
+	localPos.X = FMath::Clamp((localPos.X / canvasSize.X * RT_Canvas->SizeX), 0.f, RT_Canvas->SizeX);
+	localPos.Y = FMath::Clamp((localPos.Y / canvasSize.Y * RT_Canvas->SizeY), 0.f, RT_Canvas->SizeY);
 	return localPos;
 }
 
@@ -149,7 +163,7 @@ void UDrawingBoardWidget::SaveCanvas()
 	
 	// Export Render Target to png
 	UKismetRenderingLibrary::ExportRenderTarget(this, RT_Canvas, filePath, fileName);
-	UE_LOG(LogTemp, Warning, TEXT("%s | %s"), *filePath, *fileName);
+	// UE_LOG(LogTemp, Warning, TEXT("%s | %s"), *filePath, *fileName);
 	
 	SaveRenderTargetToPNG(RT_Canvas, filePath / fileName);
 }
