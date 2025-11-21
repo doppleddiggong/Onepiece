@@ -235,6 +235,41 @@ void UKLingoNetworkSystem::RequestUserMe( FResponseUserMeDelegate InDelegate)
 	Request->ProcessRequest();
 }
 
+void UKLingoNetworkSystem::RequestSpeakingsQuestions(const FString& FilePath, FResponseSpeakingsQuestionsDelegate InDelegate)
+{
+	FString Url = NetworkConfig::GetFullUrl(RequestAPI::users_token);
+	auto Request = SetupHttpRequest( Url, NETWORK_POST );
+
+	FHttpMultipartFormData Form;
+	if (!Form.AddFile(TEXT("file"), FilePath))
+	{
+		NETWORK_LOG(TEXT("question: file load failed: %s"), *FilePath);
+		return;
+	}
+	Form.SetupHttpRequest(Request);
+
+	LogNetwork(ENetworkLogType::Post, *Request->GetURL() );
+    
+	Request->OnProcessRequestComplete().BindLambda(
+		[WeakThis = TWeakObjectPtr<UKLingoNetworkSystem>(this), InDelegate](FHttpRequestPtr Req, FHttpResponsePtr ResPtr, bool bWasSuccessful)
+		{
+			if (!WeakThis.IsValid() || IsEngineExitRequested())
+				return;
+            
+			WeakThis->AddNetworkWaitCount(-1);
+			FResponseSpeakingsQuestions ResponseData;
+			if (bWasSuccessful && ResPtr.IsValid())
+			{
+				NETWORK_LOG(TEXT("[RES] question completed: transcribed_text, gpt_response_text, audio_content"));
+				ResponseData.SetFromHttpResponse(ResPtr);
+			}
+			InDelegate.ExecuteIfBound(ResponseData, bWasSuccessful);
+		});
+
+	AddNetworkWaitCount(1);
+	Request->ProcessRequest();
+}
+
 #pragma region READY
 /*
 

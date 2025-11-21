@@ -45,6 +45,7 @@ namespace RequestAPI
     static FString users_token = FString("/users/token");
     static FString users_me = FString("/users/me");
 
+    static FString speakings_questions = FString("/speaking/questions");
 
 
 
@@ -375,7 +376,21 @@ struct FResponseUserMe
 };
 
 
+DECLARE_DELEGATE_TwoParams(FResponseSpeakingsQuestionsDelegate, FResponseSpeakingsQuestions&, bool);
+USTRUCT(BlueprintType)
+struct FResponseSpeakingsQuestions
+{
+	GENERATED_BODY()
 
+	UPROPERTY(BlueprintReadWrite, Category = "Me")
+	FString detail;
+
+	/// @brief HTTP 응답을 파싱해 상태 정보를 갱신합니다.
+	void SetFromHttpResponse(const TSharedPtr<class IHttpResponse, ESPMode::ThreadSafe>& Response);
+
+	/// @brief 디버그 로그에 응답 내용을 출력합니다.
+	void PrintData() const;
+};
 
 
 
