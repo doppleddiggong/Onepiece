@@ -3,8 +3,11 @@
 
 #include "DrawingBoardWidget.h"
 
+#include "IImageWrapper.h"
+#include "IImageWrapperModule.h"
 #include "Components/Button.h"
 #include "Components/Image.h"
+#include "Components/SceneCaptureComponent2D.h"
 #include "Engine/Canvas.h"
 #include "Kismet/KismetRenderingLibrary.h"
 
@@ -98,11 +101,62 @@ void UDrawingBoardWidget::ClearCanvas()
 
 void UDrawingBoardWidget::SaveCanvas()
 {
-	// 저장할 경로 (예: 프로젝트/Saved/화면캡쳐.png)
+	// File Path
 	const FString FilePath = FPaths::ProjectSavedDir() / TEXT("WriteImage/");
-	FString FileName = FDateTime::Now().ToString(TEXT("%Y-%m-%d-%H-%M-%S"));
-	FileName += FString(TEXT(".png"));
-	
 	IFileManager::Get().MakeDirectory(*FilePath, true);
+	// File Name
+	FString FileName = FDateTime::Now().ToString(TEXT("%Y_%m_%d_%H_%M_%S.png"));
+	
+	// Export Render Target to png
 	UKismetRenderingLibrary::ExportRenderTarget(this, RT_Canvas, FilePath, FileName);
+	UE_LOG(LogTemp, Warning, TEXT("%s | %s"), *FilePath, *FileName);
+	
+	SaveRenderTargetToPNG(RT_Canvas, FilePath / FileName);
+}
+
+bool UDrawingBoardWidget::SaveRenderTargetToPNG(UTextureRenderTarget2D* RenderTarget, const FString& FullFilePath)
+{
+	FTextureRenderTargetResource* RTResource = RenderTarget->GameThread_GetRenderTargetResource();
+	if (!RTResource)
+	{
+		return false;
+	}
+
+	const int32 Width  = RenderTarget->SizeX;
+	const int32 Height = RenderTarget->SizeY;
+
+	TArray<FColor> Bitmap;
+	Bitmap.AddUninitialized(Width * Height);
+
+	// Read BGRA8 pixels in RenderTarget
+	RTResource->ReadPixels(Bitmap);
+
+	// PNG Encoder
+	IImageWrapperModule& ImageWrapperModule =
+		FModuleManager::LoadModuleChecked<IImageWrapperModule>("ImageWrapper");
+
+	TSharedPtr<IImageWrapper> ImageWrapper =
+		ImageWrapperModule.CreateImageWrapper(EImageFormat::PNG);
+
+	if (!ImageWrapper.IsValid())
+	{
+		return false;
+	}
+
+	ImageWrapper->SetRaw(
+		Bitmap.GetData(),
+		Bitmap.GetAllocatedSize(),
+		Width,
+		Height,
+		ERGBFormat::BGRA,
+		8
+	);
+
+	const TArray64<uint8>& PNGData = ImageWrapper->GetCompressed(100);
+
+	// Make Directory
+	const FString Directory = FPaths::GetPath(FullFilePath);
+	IFileManager::Get().MakeDirectory(*Directory, true);
+
+	return FFileHelper::SaveArrayToFile(PNGData, *FullFilePath);
 }

@@ -55,4 +55,6 @@ private:
 	// Save Render Target Canvas
 	UFUNCTION()
 	void SaveCanvas();
+	
+	bool SaveRenderTargetToPNG(UTextureRenderTarget2D* RenderTarget, const FString& FullFilePath);
 };
