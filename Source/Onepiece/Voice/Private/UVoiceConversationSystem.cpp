@@ -15,6 +15,7 @@
 #include "UHttpNetworkSystem.h"
 #include "UVoiceFunctionLibrary.h"
 #include "UGameSoundManager.h"
+#include "UKLingoNetworkSystem.h"
 #include "Kismet/GameplayStatics.h"
 #include "Sound/SoundWaveProcedural.h"
 #include "Components/AudioComponent.h"
@@ -173,7 +174,7 @@ void UVoiceConversationSystem::StopRecording()
 	PRINTLOG(TEXT("[VoiceConversation] Recording stopped. Original: SampleRate=%d, Channels=%d, PCM Size=%d bytes"),
 		LastSampleRate, LastNumChannels, PCMData.Num());
 
-	// NAVER CLOVA STT 최적화: 16kHz로 리샘플링
+	// STT 최적화: 16kHz로 리샘플링
 	TArray<uint8> ProcessedPCM = PCMData;
 	int32 TargetSampleRate = 16000;
 
@@ -194,8 +195,7 @@ void UVoiceConversationSystem::StopRecording()
 		return;
 	}
 	
-	// STT 요청
-	UHttpNetworkSystem* HttpSystem = UHttpNetworkSystem::Get(GetWorld());
+	UKLingoNetworkSystem* HttpSystem = UKLingoNetworkSystem::Get(GetWorld());
 	if (!HttpSystem)
 	{
 		PRINTLOG( TEXT("HttpSystem을 찾을 수 없습니다."));
@@ -203,22 +203,17 @@ void UVoiceConversationSystem::StopRecording()
 		return;
 	}
 
-	HttpSystem->RequestASK(LastRecordedFilePath, FGPTContext(), FResponseAskDelegate::CreateUObject(
-		this, &UVoiceConversationSystem::OnResponseAsk
-	));
+	HttpSystem->RequestSpeakingsQuestions(LastRecordedFilePath,
+		FResponseSpeakingsQuestionsDelegate::CreateUObject(this, &UVoiceConversationSystem::OnResponseSpeakingsQuestions));
 }
 
-void UVoiceConversationSystem::OnResponseAsk(FResponseAsk& Response, bool bSuccess)
+void UVoiceConversationSystem::OnResponseSpeakingsQuestions(FResponseSpeakingsQuestions& Response, bool bSuccess)
 {
 	bIsProcessing = false;
 
 	if (bSuccess)
 	{
-		PRINTLOG(TEXT("OnResponseAsk: Received transcribed_text : %s"), *Response.transcribed_text);
-		PRINTLOG(TEXT("OnResponseAsk: Received gpt_response_text : %s"), *Response.gpt_response_text);
-		PRINTLOG(TEXT("OnResponseAsk: Received audio data size: %d"), Response.audio_data.Num());
-
-		PlayVoiceAudio(Response.audio_data);
+		PRINTLOG( TEXT("--- Network Response Received : %s"), *Response.detail );
 	}
 	else
 	{

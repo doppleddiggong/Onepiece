@@ -34,6 +34,9 @@ public:
 	void RequestUserRegister(const FString& UserName, FResponseUserRegisterDelegate InDelegate);
 	void RequestUserToken(const FString& UserName, FResponseUserTokenDelegate InDelegate);
 	void RequestUserMe(FResponseUserMeDelegate InDelegate);
+    void RequestSpeakingsQuestions(const FString& FilePath, FResponseSpeakingsQuestionsDelegate InDelegate);
+
+
 
 	/*
 	/// @brief 계정으로 로그인 요청을 전송합니다.

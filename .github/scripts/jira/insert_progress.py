@@ -4,12 +4,13 @@
 DevLog Daily 문서에 Jira 진척도와 AI 분석을 자동으로 삽입합니다.
 """
 
+import argparse
 import os
 import sys
 import json
 import subprocess
 from pathlib import Path
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 
 # Windows 콘솔 인코딩 설정
 if sys.platform == 'win32':
@@ -31,12 +32,21 @@ def run_script(script_path):
         print(result.stderr, file=sys.stderr)
     return result.returncode
 
-def get_today_devlog_path():
-    """오늘자 DevLog 파일 경로를 반환합니다."""
-    # 어제 날짜 사용 (Daily DevLog는 전날 작업 내용을 기록)
-    yesterday = (datetime.now() - timedelta(days=1)).strftime("%Y-%m-%d")
-    devlog_path = Path(f"Documents/DevLog/Daily/{yesterday}.md")
-    return devlog_path
+def get_devlog_path(target_date: str | None) -> Path:
+    """Daily DevLog 파일 경로를 반환합니다."""
+    if target_date:
+        resolved_date = target_date
+    else:
+        kst = timezone(timedelta(hours=9))
+        resolved_date = (datetime.now(tz=kst) - timedelta(days=1)).strftime("%Y-%m-%d")
+
+    return Path(f"Documents/DevLog/Daily/{resolved_date}.md")
+
+
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description="Insert Jira progress into a Daily DevLog.")
+    parser.add_argument("--date", help="Target Daily DevLog date (YYYY-MM-DD). Defaults to yesterday (KST) if omitted.")
+    return parser.parse_args()
 
 def load_json_file(file_path):
     """JSON 파일을 읽어 반환합니다."""
@@ -154,10 +164,12 @@ def call_gpt_analysis(progress_data, issues_data, devlog_content):
         print(f"WARNING: Failed to generate AI analysis: {str(e)}")
         return None
 
-def insert_progress_into_devlog():
+def insert_progress_into_devlog(target_date: str | None):
     """DevLog에 Jira 진척도를 삽입하는 메인 함수입니다."""
 
     print("=== Starting Jira Progress Insertion ===")
+    if target_date:
+        print(f"Target date provided: {target_date}")
 
     # 1. fetch_issues.py 실행
     print("\n[1/5] Fetching Jira issues...")
@@ -185,7 +197,7 @@ def insert_progress_into_devlog():
 
     # 3. 오늘자 DevLog 파일 찾기
     print("\n[3/5] Finding today's DevLog...")
-    devlog_path = get_today_devlog_path()
+    devlog_path = get_devlog_path(target_date)
 
     if not devlog_path.exists():
         print(f"WARNING: DevLog file not found: {devlog_path}")
@@ -253,5 +265,10 @@ def insert_progress_into_devlog():
         traceback.print_exc()
         return 1
 
+def main() -> int:
+    args = parse_args()
+    return insert_progress_into_devlog(args.date)
+
+
 if __name__ == "__main__":
-    sys.exit(insert_progress_into_devlog())
+    sys.exit(main())

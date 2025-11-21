@@ -103,7 +103,7 @@ jobs:
           JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: |
-          python .github/scripts/jira/insert_progress.py || echo "⚠️ Jira progress insertion failed (non-critical)"
+          python .github/scripts/jira/insert_progress.py --date "${{ steps.date.outputs.today }}" || echo "⚠️ Jira progress insertion failed (non-critical)"
 
       - name: Update SUMMARY.md
         run: python .github/scripts/generate_summary.py
@@ -146,4 +146,4 @@ jobs:
             --type daily \
             --devlog-file "Documents/DevLog/Daily/${{ steps.date.outputs.today }}.md" \
             --date "${{ steps.date.outputs.today }}" \
-            --devlog-url "https://doppleddiggong.github.io/Onepiece/docs/DevLog/Daily/${{ steps.date.outputs.today }}.html"
+            --devlog-url "https://doppleddiggong.github.io/Onepiece/honkit/DevLog/Daily/${{ steps.date.outputs.today }}.html"
