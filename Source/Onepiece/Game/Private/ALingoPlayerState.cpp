@@ -10,7 +10,6 @@ ALingoPlayerState::ALingoPlayerState()
 {
 	PlayerRole = EPlayerRole::None;
 	bCurrentMissionComplete = false;
-	bIsOutOfOxygen = false;
 }
 
 void ALingoPlayerState::GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const
@@ -19,7 +18,6 @@ void ALingoPlayerState::GetLifetimeReplicatedProps(TArray<class FLifetimePropert
 
 	DOREPLIFETIME(ALingoPlayerState, PlayerRole);
 	DOREPLIFETIME(ALingoPlayerState, bCurrentMissionComplete);
-	DOREPLIFETIME(ALingoPlayerState, bIsOutOfOxygen);
 }
 
 void ALingoPlayerState::SetMissionComplete()
