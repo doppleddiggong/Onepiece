@@ -1,5 +1,7 @@
 var NAVTREEINDEX3 =
 {
+"classUGameDamageType.html":[2,0,71],
+"classUGameDamageType.html#a77d2f7e9d089db5001753dff076da14d":[2,0,71,0],
 "classUGameDataManager.html":[2,0,72],
 "classUGameDataManager.html#a013d5de56f83c3409ea138d830ac50fc":[2,0,72,12],
 "classUGameDataManager.html#a06126e08dc91b9b5ec64805f5c3774bf":[2,0,72,22],
@@ -247,7 +249,5 @@ var NAVTREEINDEX3 =
 "functions_i.html":[2,3,0,8],
 "functions_j.html":[2,3,0,9],
 "functions_k.html":[2,3,0,10],
-"functions_l.html":[2,3,0,11],
-"functions_m.html":[2,3,0,12],
-"functions_n.html":[2,3,0,13]
+"functions_l.html":[2,3,0,11]
 };

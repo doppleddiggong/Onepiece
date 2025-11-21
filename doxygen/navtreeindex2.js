@@ -1,5 +1,6 @@
 var NAVTREEINDEX2 =
 {
+"classANPCBase.html#a4355422ed7ef00077ac860858d37957e":[2,0,5,2],
 "classANPCBase.html#a80b857bd09e3ff5c45e338c93089c1db":[2,0,5,1],
 "classANPCBase.html#ad543f58db89f40e8ca8e7f87c3b81c8c":[2,0,5,3],
 "classANPCExaminer.html":[2,0,6],
@@ -218,18 +219,19 @@ var NAVTREEINDEX2 =
 "classUDialogWidget.html#ad34ce916e1168a64999a2e9dc6cccf62":[2,0,68,7],
 "classUDrawingBoardWidget.html":[2,0,69],
 "classUDrawingBoardWidget.html#a0c0340ecdfa37fbb231f28f795c7cabd":[2,0,69,5],
-"classUDrawingBoardWidget.html#a1c5e4c13d4cec7e07e91b8b2995ce531":[2,0,69,11],
+"classUDrawingBoardWidget.html#a1c5e4c13d4cec7e07e91b8b2995ce531":[2,0,69,12],
 "classUDrawingBoardWidget.html#a4cbb303e9d6407446da87ad61e5e8c80":[2,0,69,0],
-"classUDrawingBoardWidget.html#a54981b1dcdf426fb93fa6aaae7833ce9":[2,0,69,9],
+"classUDrawingBoardWidget.html#a54981b1dcdf426fb93fa6aaae7833ce9":[2,0,69,10],
 "classUDrawingBoardWidget.html#a5a08d898f3f53c1b739140dd2c897133":[2,0,69,2],
 "classUDrawingBoardWidget.html#a7bc566eef2cbf10113ac1344cda7f492":[2,0,69,8],
-"classUDrawingBoardWidget.html#a8c482a5bdf8f1b4054b7f7741fa06372":[2,0,69,13],
-"classUDrawingBoardWidget.html#a9ec1bb4325aa0ca447099b23d3389cfe":[2,0,69,15],
-"classUDrawingBoardWidget.html#aa6868f171742ae8811c83cd9d05bf7c7":[2,0,69,10],
+"classUDrawingBoardWidget.html#a8c482a5bdf8f1b4054b7f7741fa06372":[2,0,69,14],
+"classUDrawingBoardWidget.html#a9ec1bb4325aa0ca447099b23d3389cfe":[2,0,69,16],
+"classUDrawingBoardWidget.html#aa6868f171742ae8811c83cd9d05bf7c7":[2,0,69,11],
 "classUDrawingBoardWidget.html#ab2729c30343566022c0c7353c3edd2f7":[2,0,69,3],
-"classUDrawingBoardWidget.html#ab2b390fe6e2763f892817105a4d7c54b":[2,0,69,12],
+"classUDrawingBoardWidget.html#ab2b390fe6e2763f892817105a4d7c54b":[2,0,69,13],
 "classUDrawingBoardWidget.html#ab5e9a937a5952a30c88df230d8d01d3d":[2,0,69,7],
-"classUDrawingBoardWidget.html#ab7b6f878a2113366f4b5b011462ec075":[2,0,69,14],
+"classUDrawingBoardWidget.html#ab7b6f878a2113366f4b5b011462ec075":[2,0,69,15],
+"classUDrawingBoardWidget.html#ac0167d437e5fbf27bdf77d86744f19bb":[2,0,69,9],
 "classUDrawingBoardWidget.html#acb44790a01391ae44e03a3cc68539655":[2,0,69,4],
 "classUDrawingBoardWidget.html#ae051349c5c8eb0df28c9cb520f3dc541":[2,0,69,1],
 "classUDrawingBoardWidget.html#aeb73e7a6a79f77e6405a5a749d5bdaac":[2,0,69,6],
@@ -247,7 +249,5 @@ var NAVTREEINDEX2 =
 "classUEaseFunctionLibrary.html#ac3b31234f743c15b60f9c4d879474762":[2,0,70,2],
 "classUEaseFunctionLibrary.html#ac815129e39fbc4ab3511fb2cc93ea00b":[2,0,70,4],
 "classUEaseFunctionLibrary.html#af50fd044bea64cb85e25b1af4a42a746":[2,0,70,11],
-"classUEaseFunctionLibrary.html#af5ec1651942866c5a05bd65d69375e68":[2,0,70,6],
-"classUGameDamageType.html":[2,0,71],
-"classUGameDamageType.html#a77d2f7e9d089db5001753dff076da14d":[2,0,71,0]
+"classUEaseFunctionLibrary.html#af5ec1651942866c5a05bd65d69375e68":[2,0,70,6]
 };

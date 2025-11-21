@@ -61,10 +61,10 @@ var NAVTREEINDEX =
 [
 "ALingoGameMode_8cpp.html",
 "NetworkLog_8cpp.html#aff5fdef7dc7d75458cd6641eb8e1ac34",
-"classANPCBase.html#a80b857bd09e3ff5c45e338c93089c1db",
-"classUGameDataManager.html",
-"functions_o.html",
-"structFQuestReadInfo.html#a869772e11b0ea12bdb1fd582d3e5de34"
+"classANPCBase.html#a4355422ed7ef00077ac860858d37957e",
+"classUGameDamageType.html",
+"functions_m.html",
+"structFQuestReadInfo.html#a3e393239d65d1d9f3a6f548fb5d91dae"
 ];
 
 var SYNCONMSG = '패널 동기화를 비활성화하기 위해 클릭하십시오';

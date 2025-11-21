@@ -9,6 +9,7 @@ var classUDrawingBoardWidget =
     [ "NativeOnMouseButtonUp", "classUDrawingBoardWidget.html#aeb73e7a6a79f77e6405a5a749d5bdaac", null ],
     [ "NativeOnMouseMove", "classUDrawingBoardWidget.html#ab5e9a937a5952a30c88df230d8d01d3d", null ],
     [ "SaveCanvas", "classUDrawingBoardWidget.html#a7bc566eef2cbf10113ac1344cda7f492", null ],
+    [ "SaveRenderTargetToPNG", "classUDrawingBoardWidget.html#ac0167d437e5fbf27bdf77d86744f19bb", null ],
     [ "bIsDrawing", "classUDrawingBoardWidget.html#a54981b1dcdf426fb93fa6aaae7833ce9", null ],
     [ "Button_Clear", "classUDrawingBoardWidget.html#aa6868f171742ae8811c83cd9d05bf7c7", null ],
     [ "Button_Save", "classUDrawingBoardWidget.html#a1c5e4c13d4cec7e07e91b8b2995ce531", null ],
