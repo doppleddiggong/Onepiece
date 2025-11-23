@@ -5,7 +5,6 @@
  * @brief ANetworkTesterActor의 동작을 구현합니다.
  */
 #include "ANetworkTesterActor.h"
-#include "UHttpNetworkSystem.h"
 #include "UKLingoNetworkSystem.h"
 #include "GameLogging.h"
 #include "NetworkData.h"
@@ -20,30 +19,6 @@ ANetworkTesterActor::ANetworkTesterActor()
 void ANetworkTesterActor::SendToastMessage()
 {
     UDialogManager::Get(GetWorld())->ShowToast(TEXT("토스트 메세지 샘플"));
-}
-
-void ANetworkTesterActor::RequestHealth()
-{
-    if ( auto ReqNetwork = UHttpNetworkSystem::Get(GetWorld()) )
-    {
-        ReqNetwork->RequestHealth( FResponseHealthDelegate::CreateUObject( this, &ANetworkTesterActor::OnResponseHealth));
-    }
-    else
-    {
-        PRINTLOG( TEXT("UNetworkSystem not found!"));
-    }
-}
-
-void ANetworkTesterActor::OnResponseHealth(FResponseHealth& ResponseData, bool bWasSuccessful)
-{
-    if (bWasSuccessful)
-    {
-        ResponseData.PrintData();
-    }
-    else
-    {
-        PRINTLOG( TEXT("--- Network Response Received (FAIL) ---"));
-    }
 }
 
 // =============================================================================
@@ -134,5 +109,118 @@ void ANetworkTesterActor::OnResponseUserMe(FResponseUserMe& ResponseData, bool b
     else
     {
         PRINTLOG(TEXT("--- User Me FAILED ---"));
+    }
+}
+
+// =============================================================================
+// New API Tests
+// =============================================================================
+
+void ANetworkTesterActor::RequestScenario()
+{
+    if (auto KLingoNetwork = UKLingoNetworkSystem::Get(GetWorld()))
+    {
+        PRINTLOG(TEXT("[TEST] RequestScenario - Index: %d, Difficulty: %d, Lang: %d"), 
+                 ScenarioIndex, ScenarioDifficulty, ScenarioLang);
+        KLingoNetwork->RequestScenario(
+            ScenarioIndex,
+            ScenarioDifficulty,
+            ScenarioLang,
+            FResponseScenarioDelegate::CreateUObject(this, &ANetworkTesterActor::OnResponseScenario)
+        );
+    }
+    else
+    {
+        PRINTLOG(TEXT("UKLingoNetworkSystem not found!"));
+    }
+}
+
+void ANetworkTesterActor::RequestOcrExtract()
+{
+    if (auto KLingoNetwork = UKLingoNetworkSystem::Get(GetWorld()))
+    {
+        PRINTLOG(TEXT("[TEST] RequestOcrExtract - ImagePath: %s"), *OcrImagePath);
+        KLingoNetwork->RequestOcrExtract(
+            OcrImagePath,
+            FResponseOcrExtractDelegate::CreateUObject(this, &ANetworkTesterActor::OnResponseOcrExtract)
+        );
+    }
+    else
+    {
+        PRINTLOG(TEXT("UKLingoNetworkSystem not found!"));
+    }
+}
+
+void ANetworkTesterActor::RequestSpeakingQuestions()
+{
+    if (auto KLingoNetwork = UKLingoNetworkSystem::Get(GetWorld()))
+    {
+        PRINTLOG(TEXT("[TEST] RequestSpeakingQuestions - AudioPath: %s"), *SpeakingAudioPath);
+        KLingoNetwork->RequestSpeakingQuestions(
+            SpeakingAudioPath,
+            FResponseSpeakingQuestionsDelegate::CreateUObject(this, &ANetworkTesterActor::OnResponseSpeakingQuestions)
+        );
+    }
+    else
+    {
+        PRINTLOG(TEXT("UKLingoNetworkSystem not found!"));
+    }
+}
+
+void ANetworkTesterActor::OnResponseScenario(FResponseScenario& ResponseData, bool bWasSuccessful)
+{
+    if (bWasSuccessful)
+    {
+        PRINTLOG(TEXT("--- Scenario SUCCESS ---"));
+        ResponseData.PrintData();
+        PRINTLOG(TEXT("Index: %d, Difficulty: %d"), ResponseData.index, ResponseData.dificulity);
+        PRINTLOG(TEXT("Correct Answer Index: %d"), ResponseData.correct_answer_index);
+        PRINTLOG(TEXT("Target Data Count: %d"), ResponseData.target_data.Num());
+        
+        for (int32 i = 0; i < ResponseData.target_data.Num(); i++)
+        {
+            PRINTLOG(TEXT("  [%d] Symbol: %s, Color: %s"), 
+                     i, *ResponseData.target_data[i].symbol, *ResponseData.target_data[i].color);
+        }
+        
+        PRINTLOG(TEXT("Word Data 1 - Kor: %s, Eng: %s, Pronunciation: %s"), 
+                 *ResponseData.word_data1.Kor, *ResponseData.word_data1.Eng, *ResponseData.word_data1.Pronunciation);
+        PRINTLOG(TEXT("Word Data 2 - Kor: %s, Eng: %s, Pronunciation: %s"), 
+                 *ResponseData.word_data2.Kor, *ResponseData.word_data2.Eng, *ResponseData.word_data2.Pronunciation);
+        PRINTLOG(TEXT("Full Data - Kor: %s, Eng: %s, Pronunciation: %s"),
+                 *ResponseData.full_data.Kor, *ResponseData.full_data.Eng, *ResponseData.full_data.Pronunciation);
+    }
+    else
+    {
+        PRINTLOG(TEXT("--- Scenario FAILED ---"));
+    }
+}
+
+void ANetworkTesterActor::OnResponseOcrExtract(FResponseOcrExtract& ResponseData, bool bWasSuccessful)
+{
+    if (bWasSuccessful)
+    {
+        PRINTLOG(TEXT("--- OCR Extract SUCCESS ---"));
+        ResponseData.PrintData();
+        PRINTLOG(TEXT("Success: %s"), ResponseData.success ? TEXT("true") : TEXT("false"));
+        PRINTLOG(TEXT("Extracted Text: %s"), *ResponseData.extracted_text);
+    }
+    else
+    {
+        PRINTLOG(TEXT("--- OCR Extract FAILED ---"));
+    }
+}
+
+void ANetworkTesterActor::OnResponseSpeakingQuestions(FResponseSpeakingQuestions& ResponseData, bool bWasSuccessful)
+{
+    if (bWasSuccessful)
+    {
+        PRINTLOG(TEXT("--- Speaking Questions SUCCESS ---"));
+        ResponseData.PrintData();
+        PRINTLOG(TEXT("Answer: %s"), *ResponseData.answer);
+    }
+    else
+    {
+        PRINTLOG(TEXT("--- Speaking Questions FAILED ---"));
     }
 }

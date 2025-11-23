@@ -59,7 +59,7 @@ private:
     void HandleOnCapture(const float* InAudio, int32 InNumFrames, int32 InNumChannels, int32 InSampleRate);
 
     UFUNCTION()
-    void OnResponseSpeakingsQuestions(FResponseSpeakingsQuestions& Response, bool bSuccess);
+    void OnResponseSpeakingsQuestions(FResponseSpeakingQuestions& Response, bool bSuccess);
 
 private:
     UPROPERTY()

@@ -19,44 +19,80 @@ public:
     ANetworkTesterActor();
 
 protected:
-    // =============================================================================
-    // Health Check
-    // =============================================================================
-
-    /// @brief 에디터에서 수동으로 /health 요청을 트리거합니다.
-    UFUNCTION(CallInEditor, Category = "TEST|RequestHealth")
-    void RequestHealth();
-
-    /// @brief 헬스 체크 응답을 수신했을 때 결과를 로그로 출력합니다.
-    /// @param ResponseData [in] 서버에서 전달한 상태 정보입니다.
-    /// @param bWasSuccessful [in] HTTP 요청 성공 여부입니다.
-    void OnResponseHealth(FResponseHealth& ResponseData, bool bWasSuccessful);
+    UFUNCTION(CallInEditor, Category = "TEST|ToastMessage")
+    void SendToastMessage();
 
     // =============================================================================
     // User API Tests
     // =============================================================================
 
     /// @brief 테스트에 사용할 사용자 이름입니다.
-    UPROPERTY(EditAnywhere, Category = "TEST|User API")
+    UPROPERTY(EditAnywhere, Category = "TEST|User")
     FString UserName = TEXT("test_user");
 
     /// @brief 사용자 등록 요청을 전송합니다 (POST /users/register).
-    UFUNCTION(CallInEditor, Category = "TEST|User API")
+    UFUNCTION(CallInEditor, Category = "TEST|User")
     void RequestUserRegister();
 
     /// @brief OAuth2 토큰 발급 요청을 전송합니다 (POST /users/token).
-    UFUNCTION(CallInEditor, Category = "TEST|User API")
+    UFUNCTION(CallInEditor, Category = "TEST|User")
     void RequestUserToken();
 
     /// @brief 현재 사용자 정보 조회 요청을 전송합니다 (GET /users/me).
-    UFUNCTION(CallInEditor, Category = "TEST|User API")
+    UFUNCTION(CallInEditor, Category = "TEST|User")
     void RequestUserMe();
 
-    UFUNCTION(CallInEditor, Category = "TEST|ToastMessage")
-    void SendToastMessage();
+    // =============================================================================
+    // Scenario API Tests
+    // =============================================================================
+
+    /// @brief Scenario 조회 테스트용 인덱스입니다.
+    UPROPERTY(EditAnywhere, Category = "TEST|Scenario")
+    int32 ScenarioIndex = 1;
+
+    /// @brief Scenario 조회 테스트용 난이도입니다.
+    UPROPERTY(EditAnywhere, Category = "TEST|Scenario")
+    int32 ScenarioDifficulty = 1;
+
+    /// @brief Scenario 조회 테스트용 언어입니다.
+    UPROPERTY(EditAnywhere, Category = "TEST|Scenario")
+    int32 ScenarioLang = 1;
+
+    /// @brief Scenario 조회 요청을 전송합니다 (GET /scenario/{index}/{dificulity}/{lang}).
+    UFUNCTION(CallInEditor, Category = "TEST|Scenario")
+    void RequestScenario();
+
+    // =============================================================================
+    // OCR API Tests
+    // =============================================================================
+
+    /// @brief OCR 테스트용 이미지 파일 경로입니다 (프로젝트 루트 기준).
+    UPROPERTY(EditAnywhere, Category = "TEST|OCR")
+    FString OcrImagePath = TEXT("Sample/ocr_sample2.png");
+
+    /// @brief OCR 텍스트 추출 요청을 전송합니다 (POST /writes/ocr/extract).
+    UFUNCTION(CallInEditor, Category = "TEST|OCR")
+    void RequestOcrExtract();
+
+    
+    // =============================================================================
+    // OCR Voice Tests
+    // =============================================================================
+    
+    /// @brief Speaking 테스트용 오디오 파일 경로입니다 (프로젝트 루트 기준).
+    UPROPERTY(EditAnywhere, Category = "TEST|Voice")
+    FString SpeakingAudioPath = TEXT("Sample/voice_sample.wav");
+    
+    /// @brief Speaking 답변 요청을 전송합니다 (POST /speakings/questions).
+    UFUNCTION(CallInEditor, Category = "TEST|Voice")
+    void RequestSpeakingQuestions();
 
 private:
     void OnResponseUserRegister(FResponseUserRegister& ResponseData, bool bWasSuccessful);
     void OnResponseUserToken(FResponseUserToken& ResponseData, bool bWasSuccessful);
     void OnResponseUserMe(FResponseUserMe& ResponseData, bool bWasSuccessful);
+
+    void OnResponseScenario(FResponseScenario& ResponseData, bool bWasSuccessful);
+    void OnResponseOcrExtract(FResponseOcrExtract& ResponseData, bool bWasSuccessful);
+    void OnResponseSpeakingQuestions(FResponseSpeakingQuestions& ResponseData, bool bWasSuccessful);
 };

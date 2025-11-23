@@ -133,8 +133,11 @@ void FResponseUserMe::PrintData() const
 	NETWORK_LOG( TEXT("[RES] %s"), *OutputString);
 }
 
+// =================================================================================
+// FResponseScenario
+// =================================================================================
 
-void FResponseSpeakingsQuestions::SetFromHttpResponse(const TSharedPtr<IHttpResponse, ESPMode::ThreadSafe>& Response)
+void FResponseScenario::SetFromHttpResponse(const TSharedPtr<IHttpResponse, ESPMode::ThreadSafe>& Response)
 {
 	if (!Response.IsValid())
 	{
@@ -147,22 +150,110 @@ void FResponseSpeakingsQuestions::SetFromHttpResponse(const TSharedPtr<IHttpResp
 
 	if (FJsonSerializer::Deserialize(Reader, JsonObject) && JsonObject.IsValid())
 	{
-		detail = JsonObject->GetStringField(TEXT("detail"));
+		index = JsonObject->GetIntegerField(TEXT("index"));
+		dificulity = JsonObject->GetIntegerField(TEXT("dificulity"));
+		correct_answer_index = JsonObject->GetIntegerField(TEXT("correct_answer_index"));
+
+		// target_data 배열 파싱
+		const TArray<TSharedPtr<FJsonValue>>* TargetDataArray;
+		if (JsonObject->TryGetArrayField(TEXT("target_data"), TargetDataArray))
+		{
+			for (const auto& Item : *TargetDataArray)
+			{
+				TSharedPtr<FJsonObject> TargetObj = Item->AsObject();
+				if (TargetObj.IsValid())
+				{
+					FScenarioTargetData TargetItem;
+					TargetItem.symbol = TargetObj->GetStringField(TEXT("symbol"));
+					TargetItem.color = TargetObj->GetStringField(TEXT("color"));
+					target_data.Add(TargetItem);
+				}
+			}
+		}
+
+		// word_data1 파싱
+		if (JsonObject->HasTypedField<EJson::Object>(TEXT("word_data1")))
+		{
+			TSharedPtr<FJsonObject> WordData1Obj = JsonObject->GetObjectField(TEXT("word_data1"));
+			FJsonObjectConverter::JsonObjectToUStruct(WordData1Obj.ToSharedRef(), FWordData::StaticStruct(), &word_data1);
+		}
+
+		// word_data2 파싱
+		if (JsonObject->HasTypedField<EJson::Object>(TEXT("word_data2")))
+		{
+			TSharedPtr<FJsonObject> WordData2Obj = JsonObject->GetObjectField(TEXT("word_data2"));
+			FJsonObjectConverter::JsonObjectToUStruct(WordData2Obj.ToSharedRef(), FWordData::StaticStruct(), &word_data2);
+		}
+
+		// full_data 파싱
+		if (JsonObject->HasTypedField<EJson::Object>(TEXT("full_data")))
+		{
+			TSharedPtr<FJsonObject> FullDataObj = JsonObject->GetObjectField(TEXT("full_data"));
+			FJsonObjectConverter::JsonObjectToUStruct(FullDataObj.ToSharedRef(), FWordData::StaticStruct(), &full_data);
+		}
 	}
 }
 
-void FResponseSpeakingsQuestions::PrintData() const
+void FResponseScenario::PrintData() const
 {
-	FString OutputString;
-	FJsonObjectConverter::UStructToJsonObjectString(
-		*this,
-		OutputString,
-		0,
-		0
-	);
-	NETWORK_LOG( TEXT("[RES] %s"), *OutputString);
+	NETWORK_LOG( TEXT("[Scenario] Response - Index: %d, Difficulty: %d, Targets: %d, Correct: %d"),
+		index, dificulity, target_data.Num(), correct_answer_index);
 }
 
+// =================================================================================
+// FResponseOcrExtract
+// =================================================================================
+
+void FResponseOcrExtract::SetFromHttpResponse(const TSharedPtr<IHttpResponse, ESPMode::ThreadSafe>& Response)
+{
+	if (!Response.IsValid())
+	{
+		return;
+	}
+
+	FString JsonString = Response->GetContentAsString();
+	TSharedPtr<FJsonObject> JsonObject;
+	TSharedRef<TJsonReader<>> Reader = TJsonReaderFactory<>::Create(JsonString);
+
+	if (FJsonSerializer::Deserialize(Reader, JsonObject) && JsonObject.IsValid())
+	{
+		success = JsonObject->GetBoolField(TEXT("success"));
+		extracted_text = JsonObject->GetStringField(TEXT("extracted_text"));
+	}
+}
+
+void FResponseOcrExtract::PrintData() const
+{
+	NETWORK_LOG( TEXT("[OCR Extract] Response - Success: %d, Text: %s"), success, *extracted_text);
+}
+
+// =================================================================================
+// FResponseSpeakingQuestions
+// =================================================================================
+
+void FResponseSpeakingQuestions::SetFromHttpResponse(const TSharedPtr<IHttpResponse, ESPMode::ThreadSafe>& Response)
+{
+	if (!Response.IsValid())
+	{
+		return;
+	}
+
+	FString JsonString = Response->GetContentAsString();
+	TSharedPtr<FJsonObject> JsonObject;
+	TSharedRef<TJsonReader<>> Reader = TJsonReaderFactory<>::Create(JsonString);
+
+	if (FJsonSerializer::Deserialize(Reader, JsonObject) && JsonObject.IsValid())
+	{
+		answer = JsonObject->GetStringField(TEXT("answer"));
+	}
+}
+
+void FResponseSpeakingQuestions::PrintData() const
+{
+	NETWORK_LOG( TEXT("[Speaking Questions] Response - Answer: %s"), *answer);
+}
+
+/*
 
 // =================================================================================
 // FResponseLogin
@@ -518,3 +609,4 @@ void FResponseAsk::PrintData()
 	);
 	NETWORK_LOG( TEXT("[RES] %s"), *OutputString);
 }
+*/

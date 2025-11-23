@@ -13,6 +13,7 @@
 #include "NetworkData.h"
 #include "FHttpMultipartFormData.h"
 #include "ULingoGameHelper.h"
+#include "Misc/Paths.h"
 
 #define NETWORK_GET     TEXT("GET")
 #define NETWORK_POST    TEXT("POST")
@@ -235,40 +236,188 @@ void UKLingoNetworkSystem::RequestUserMe( FResponseUserMeDelegate InDelegate)
 	Request->ProcessRequest();
 }
 
-void UKLingoNetworkSystem::RequestSpeakingsQuestions(const FString& FilePath, FResponseSpeakingsQuestionsDelegate InDelegate)
+// =================================================================================
+// RequestScenario
+// =================================================================================
+
+void UKLingoNetworkSystem::RequestScenario(int32 Index, int32 Difficulty, int32 Lang, FResponseScenarioDelegate InDelegate)
 {
-	FString Url = NetworkConfig::GetFullUrl(RequestAPI::speakings_questions);
-	auto Request = SetupHttpRequest( Url, NETWORK_POST );
+	// URL 형식: /scenario/{index}/{dificulity}/{lang}
+	FString Endpoint = FString::Printf(TEXT("%s/%d/%d/%d"), *RequestAPI::scenario, Index, Difficulty, Lang);
+	FString Url = NetworkConfig::GetFullUrl(Endpoint);
+	auto Request = SetupHttpRequest(Url, NETWORK_GET);
 
-	FHttpMultipartFormData Form;
-	if (!Form.AddFile(TEXT("file"), FilePath))
-	{
-		NETWORK_LOG(TEXT("question: file load failed: %s"), *FilePath);
-		return;
-	}
-	Form.SetupHttpRequest(Request);
+	LogNetwork(ENetworkLogType::Get, *Request->GetURL());
 
-	LogNetwork(ENetworkLogType::Post, *Request->GetURL() );
-    
 	Request->OnProcessRequestComplete().BindLambda(
-		[WeakThis = TWeakObjectPtr<UKLingoNetworkSystem>(this), InDelegate](FHttpRequestPtr Req, FHttpResponsePtr ResPtr, bool bWasSuccessful)
+		[this, InDelegate](FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSuccess)
 		{
-			if (!WeakThis.IsValid() || IsEngineExitRequested())
-				return;
-            
-			WeakThis->AddNetworkWaitCount(-1);
-			FResponseSpeakingsQuestions ResponseData;
-			if (bWasSuccessful && ResPtr.IsValid())
+			AddNetworkWaitCount(-1);
+
+			FResponseScenario ResponseData;
+
+			if (bSuccess && HttpResponse.IsValid())
 			{
-				NETWORK_LOG(TEXT("[RES] question completed: transcribed_text, gpt_response_text, audio_content"));
-				ResponseData.SetFromHttpResponse(ResPtr);
+				const int32 ResponseCode = HttpResponse->GetResponseCode();
+
+				if (ResponseCode == 200)
+				{
+					ResponseData.SetFromHttpResponse(HttpResponse);
+					ResponseData.PrintData();
+					InDelegate.ExecuteIfBound(ResponseData, true);
+				}
+				else
+				{
+					NETWORK_LOG(TEXT("[GET] RequestScenario failed - Code: %d, Response: %s"),
+						ResponseCode, *HttpResponse->GetContentAsString());
+					InDelegate.ExecuteIfBound(ResponseData, false);
+				}
 			}
-			InDelegate.ExecuteIfBound(ResponseData, bWasSuccessful);
+			else
+			{
+				NETWORK_LOG(TEXT("[GET] RequestScenario failed - bSuccess: %s, Response valid: %s"),
+					bSuccess ? TEXT("true") : TEXT("false"),
+					HttpResponse.IsValid() ? TEXT("true") : TEXT("false"));
+				InDelegate.ExecuteIfBound(ResponseData, false);
+			}
 		});
 
 	AddNetworkWaitCount(1);
 	Request->ProcessRequest();
 }
+
+// =================================================================================
+// RequestOcrExtract
+// =================================================================================
+
+void UKLingoNetworkSystem::RequestOcrExtract(const FString& ImagePath, FResponseOcrExtractDelegate InDelegate)
+{
+	FString Url = NetworkConfig::GetFullUrl(RequestAPI::writes_ocr_extract);
+	auto Request = SetupHttpRequest(Url, NETWORK_POST);
+
+	// 상대 경로를 절대 경로로 변환
+	FString AbsoluteImagePath = FPaths::IsRelative(ImagePath) 
+		? FPaths::Combine(FPaths::ProjectDir(), ImagePath)
+		: ImagePath;
+	AbsoluteImagePath = FPaths::ConvertRelativePathToFull(AbsoluteImagePath);
+
+	FHttpMultipartFormData Form;
+	if (!Form.AddFile(TEXT("file"), AbsoluteImagePath))
+	{
+		NETWORK_LOG(TEXT("[POST] OCR Extract: file load failed: %s"), *AbsoluteImagePath);
+		FResponseOcrExtract EmptyResponse;
+		InDelegate.ExecuteIfBound(EmptyResponse, false);
+		return;
+	}
+	Form.SetupHttpRequest(Request);
+
+	LogNetwork(ENetworkLogType::Post, *Request->GetURL());
+
+	Request->OnProcessRequestComplete().BindLambda(
+		[WeakThis = TWeakObjectPtr<UKLingoNetworkSystem>(this), InDelegate](FHttpRequestPtr Req, FHttpResponsePtr ResPtr, bool bWasSuccessful)
+		{
+			if (!WeakThis.IsValid() || IsEngineExitRequested())
+				return;
+
+			WeakThis->AddNetworkWaitCount(-1);
+			FResponseOcrExtract ResponseData;
+
+			if (bWasSuccessful && ResPtr.IsValid())
+			{
+				const int32 ResponseCode = ResPtr->GetResponseCode();
+
+				if (ResponseCode == 200)
+				{
+					ResponseData.SetFromHttpResponse(ResPtr);
+					ResponseData.PrintData();
+					InDelegate.ExecuteIfBound(ResponseData, true);
+				}
+				else
+				{
+					NETWORK_LOG(TEXT("[POST] RequestOcrExtract failed - Code: %d, Response: %s"),
+						ResponseCode, *ResPtr->GetContentAsString());
+					InDelegate.ExecuteIfBound(ResponseData, false);
+				}
+			}
+			else
+			{
+				NETWORK_LOG(TEXT("[POST] RequestOcrExtract failed - bSuccess: %s, Response valid: %s"),
+					bWasSuccessful ? TEXT("true") : TEXT("false"),
+					ResPtr.IsValid() ? TEXT("true") : TEXT("false"));
+				InDelegate.ExecuteIfBound(ResponseData, false);
+			}
+		});
+
+	AddNetworkWaitCount(1);
+	Request->ProcessRequest();
+}
+
+// =================================================================================
+// RequestSpeakingQuestions
+// =================================================================================
+
+void UKLingoNetworkSystem::RequestSpeakingQuestions(const FString& AudioPath, FResponseSpeakingQuestionsDelegate InDelegate)
+{
+	FString Url = NetworkConfig::GetFullUrl(RequestAPI::speakings_questions);
+	auto Request = SetupHttpRequest(Url, NETWORK_POST);
+
+	// 상대 경로를 절대 경로로 변환
+	FString AbsoluteAudioPath = FPaths::IsRelative(AudioPath) 
+		? FPaths::Combine(FPaths::ProjectDir(), AudioPath)
+		: AudioPath;
+	AbsoluteAudioPath = FPaths::ConvertRelativePathToFull(AbsoluteAudioPath);
+
+	FHttpMultipartFormData Form;
+	if (!Form.AddFile(TEXT("audio"), AbsoluteAudioPath))
+	{
+		NETWORK_LOG(TEXT("[POST] Speaking Questions: file load failed: %s"), *AudioPath);
+		FResponseSpeakingQuestions EmptyResponse;
+		InDelegate.ExecuteIfBound(EmptyResponse, false);
+		return;
+	}
+	Form.SetupHttpRequest(Request);
+
+	LogNetwork(ENetworkLogType::Post, *Request->GetURL());
+
+	Request->OnProcessRequestComplete().BindLambda(
+		[WeakThis = TWeakObjectPtr<UKLingoNetworkSystem>(this), InDelegate](FHttpRequestPtr Req, FHttpResponsePtr ResPtr, bool bWasSuccessful)
+		{
+			if (!WeakThis.IsValid() || IsEngineExitRequested())
+				return;
+
+			WeakThis->AddNetworkWaitCount(-1);
+			FResponseSpeakingQuestions ResponseData;
+
+			if (bWasSuccessful && ResPtr.IsValid())
+			{
+				const int32 ResponseCode = ResPtr->GetResponseCode();
+
+				if (ResponseCode == 200)
+				{
+					ResponseData.SetFromHttpResponse(ResPtr);
+					ResponseData.PrintData();
+					InDelegate.ExecuteIfBound(ResponseData, true);
+				}
+				else
+				{
+					NETWORK_LOG(TEXT("[POST] RequestSpeakingQuestions failed - Code: %d, Response: %s"),
+						ResponseCode, *ResPtr->GetContentAsString());
+					InDelegate.ExecuteIfBound(ResponseData, false);
+				}
+			}
+			else
+			{
+				NETWORK_LOG(TEXT("[POST] RequestSpeakingQuestions failed - bSuccess: %s, Response valid: %s"),
+					bWasSuccessful ? TEXT("true") : TEXT("false"),
+					ResPtr.IsValid() ? TEXT("true") : TEXT("false"));
+				InDelegate.ExecuteIfBound(ResponseData, false);
+			}
+		});
+
+	AddNetworkWaitCount(1);
+	Request->ProcessRequest();
+}
+
 
 #pragma region READY
 /*
