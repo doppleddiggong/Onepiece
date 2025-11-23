@@ -141,18 +141,13 @@ void AWeightSwitch::Tick(float DeltaTime)
 	if ( DetectTarget == false)
 		return;
 
-	AddElapsedTime();
+	ElapsedTime += GetWorld()->GetDeltaSeconds();
 	
 	if( ActivateTrigger() )
 	{
 		// 물건이 TriggerDelay 타임 이상 올라가면 발동
 		UBroadcastManager::Get(GetWorld())->SendWeightSwitch(ButtonIndex, true);
 	}
-}
-
-void AWeightSwitch::AddElapsedTime()
-{
-	ElapsedTime += GetWorld()->GetDeltaSeconds();
 }
 
 bool AWeightSwitch::ActivateTrigger()

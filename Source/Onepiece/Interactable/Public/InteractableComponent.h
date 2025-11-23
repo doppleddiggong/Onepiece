@@ -6,7 +6,27 @@
 #include "Components/ActorComponent.h"
 #include "InteractableComponent.generated.h"
 
+/**
+ * @brief 상호작용 타입 정의
+ */
+UENUM(BlueprintType)
+enum class EInteractionType : uint8
+{
+	None		UMETA(DisplayName = "None"),
+	PickUp		UMETA(DisplayName = "Pick Up"),		// 집어올리기
+	Button		UMETA(DisplayName = "Button"),			// 버튼 누르기
+};
 
+/**
+ * @brief 상호작용 델리게이트
+ * @param Interactor 상호작용을 시도한 액터
+ */
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnInteractionTriggered, AActor*, Interactor);
+
+/**
+ * @brief 상호작용 가능한 객체의 공통 컴포넌트
+ * @details Overlap 기반 근접 감지 + Player LineTrace 확정 방식 사용
+ */
 UCLASS(ClassGroup=(Custom), meta=(BlueprintSpawnableComponent))
 class ONEPIECE_API UInteractableComponent : public UActorComponent
 {
@@ -16,19 +36,46 @@ public:
 	UInteractableComponent();
 
 protected:
+	virtual void BeginPlay() override;
+	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 	virtual void GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const override;
 
-protected:
-	// Initial State
-	// 집어올린 상태인지 여부
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Interaction")
-	bool bIsPickedUp;
-	
-	// PickUp 전의 원래 Physics simulation 상태
-	bool bOriginalSimulatePhysics;
+public:
+	// ========================================
+	// 상호작용 설정
+	// ========================================
 
-	// PickUp 전의 원래 Collision 설정
-	TEnumAsByte<ECollisionEnabled::Type> OriginalCollisionType;
+	/** 상호작용 타입 */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Interaction")
+	EInteractionType InteractionType = EInteractionType::PickUp;
+
+	/** UI에 표시될 프롬프트 */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Interaction")
+	FString InteractionPrompt = TEXT("Press E to Interact");
+
+	/** 감지 범위 (자동 생성) */
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Interaction")
+	TObjectPtr<class UBoxComponent> DetectionRange;
+
+	/** 상호작용 감지 거리 (cm) */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Interaction")
+	float DetectionDistance = 150.0f;
+
+	/** 디버그 표시 여부 */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Debug")
+	bool bShowDetectionDebug = true;
+
+	/** 상호작용 가능 여부 */
+	UPROPERTY(BlueprintReadOnly, Category = "Interaction")
+	bool bCanInteract = true;
+
+	// ========================================
+	// 델리게이트
+	// ========================================
+
+	/** 상호작용 발생 시 브로드캐스트 */
+	UPROPERTY(BlueprintAssignable, Category = "Interaction")
+	FOnInteractionTriggered OnInteractionTriggered;
 
 public:
 	// Interaction
@@ -60,6 +107,42 @@ public:
 	// 디버그 정보 표시 (타겟팅 중일 때)
 	UFUNCTION(BlueprintCallable, Category = "Debug")
 	void ShowDebugInfo(AActor* ViewerActor);
+
+	/** 감지 거리 변경 (런타임) */
+	UFUNCTION(BlueprintCallable, Category = "Interaction")
+	void SetDetectionDistance(float NewDistance);
+
+	// ========================================
+	// 범용 상호작용
+	// ========================================
+
+	/** 상호작용 트리거 (델리게이트 발생) */
+	UFUNCTION(BlueprintCallable, Category = "Interaction")
+	void TriggerInteraction(AActor* Interactor);
+
+protected:
+	// ========================================
+	// Overlap 콜백 (InteractionSystem 등록)
+	// ========================================
+
+	UFUNCTION()
+	void OnDetectionBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
+	                              UPrimitiveComponent* OtherComp, int32 OtherBodyIndex,
+	                              bool bFromSweep, const FHitResult& SweepResult);
+
+	UFUNCTION()
+	void OnDetectionEndOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
+	                            UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
+
+	// ========================================
+	// Internal
+	// ========================================
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Interaction")
+	bool bIsPickedUp = false;
+
+	bool bOriginalSimulatePhysics = false;
+	TEnumAsByte<ECollisionEnabled::Type> OriginalCollisionType;
 
 protected:
 	// Owner Actor의 PrimitiveComponent 찾기

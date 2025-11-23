@@ -10,11 +10,11 @@
 #include "UFlySystem.h"
 
 // Shared
-#include "APlatformSwitch.h"
 #include "GameLogging.h"
 #include "Macro.h"
 #include "InputCoreTypes.h"
 #include "UVoiceConversationSystem.h"
+#include "UInteractionSystem.h"
 
 #include "Camera/CameraComponent.h"
 #include "Components/InputComponent.h"
@@ -22,13 +22,13 @@
 #include "GameFramework/SpringArmComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Net/UnrealNetwork.h"
-#include "Onepiece/Interactable/Public/InteractableComponent.h"
 
 APlayerActor::APlayerActor()
 {
-	PrimaryActorTick.bCanEverTick = true;
+	PrimaryActorTick.bCanEverTick = false;
 
 	FlySystem = CreateDefaultSubobject<UFlySystem>(TEXT("FlySystem"));
+	InteractionSystem = CreateDefaultSubobject<UInteractionSystem>(TEXT("InteractionSystem"));
 	
 	SpringArmComp = CreateDefaultSubobject<USpringArmComponent>(TEXT("SpringArm"));
 	SpringArmComp->SetupAttachment(GetCapsuleComponent());
@@ -50,7 +50,6 @@ APlayerActor::APlayerActor()
 	HoldPosition = CreateDefaultSubobject<USceneComponent>(TEXT("HoldPosition"));
 	HoldPosition->SetupAttachment(FollowCamera);
 	
-	HoldingInteractable = nullptr;
 	LookPitch = 0.f;
 }
 
@@ -64,22 +63,9 @@ void APlayerActor::BeginPlay()
 	VoiceConversationSystem->InitSystem(this);
 
 	// --- Architecture Demo Start ---
-	UE_LOG(LogTemp, Log, TEXT("APlayerActor: Setting up one-way dependency demo."));
+	PRINTLOG( TEXT("APlayerActor: Setting up one-way dependency demo."));
 }
 
-void APlayerActor::Tick(float DeltaTime)
-{
-	Super::Tick(DeltaTime);
-
-	// 매 프레임 타겟팅 중인 객체 감지 및 디버그 표시
-	UInteractableComponent* TargetedInteractable = DetectInteractable();
-	
-	if (TargetedInteractable)
-	{
-		// InteractableComponent가 자신의 디버그 정보를 직접 표시
-		TargetedInteractable->ShowDebugInfo(this);
-	}
-}
 
 void APlayerActor::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
@@ -154,85 +140,6 @@ void APlayerActor::PlayTTSAudio(const TArray<uint8>& AudioData)
 	VoiceConversationSystem->PlayVoiceAudio(AudioData);
 }
 
-void APlayerActor::TryPickUp()
-{
-	if (HoldingInteractable)
-		return;
-
-	// Ray trace로 InteractableComponent 찾기   
-	UInteractableComponent* FoundInteractable = DetectInteractable();
-	if (FoundInteractable && HoldPosition)
-	{
-		FoundInteractable->HoldingOwner = this;
-		FoundInteractable->PickUp();
-
-		// 현재 들고 있는 물체로 저장
-		HoldingInteractable = FoundInteractable;
-	}
-}
-
-void APlayerActor::TryDrop()
-{
-	if (HoldingInteractable)
-	{
-		HoldingInteractable->Drop();
-		
-		HoldingInteractable->HoldingOwner = nullptr;
-		HoldingInteractable = nullptr;
-	}
-}
-
-UInteractableComponent* APlayerActor::DetectInteractable()
-{
-	// 플레이어 컨트롤러 가져오기
-	APlayerController* PC = Cast<APlayerController>(GetController());
-	if (!PC)
-	{
-		PRINTLOG( TEXT("PlayerController is null"));
-		return nullptr;
-	}
-
-	// 뷰포트 크기 가져오기
-	int32 ViewportSizeX, ViewportSizeY;
-	PC->GetViewportSize(ViewportSizeX, ViewportSizeY);
-	
-	// 화면 중앙 픽셀 좌표
-	float ScreenX = ViewportSizeX * 0.5f;
-	float ScreenY = ViewportSizeY * 0.5f;
-
-	// 화면 좌표에서 월드 좌표와 방향 계산
-	FVector WorldLocation, WorldDirection;
-	if (!PC->DeprojectScreenPositionToWorld(ScreenX, ScreenY, WorldLocation, WorldDirection))
-	{
-		PRINTLOG( TEXT("DeprojectScreenPositionToWorld failed"));
-		return nullptr;
-	}
-
-	// 레이 트레이스 시작/끝 지점
-	FVector TraceStart = WorldLocation;
-	FVector TraceEnd = TraceStart + (WorldDirection * InteractDistance);
-	// Hit 결과
-	FHitResult HitResult;
-
-	// Ray trace 실행
-	bool bHit = GetWorld()->LineTraceSingleByChannel(
-		HitResult, TraceStart, TraceEnd, ECC_Visibility);
-	
-	// 디버그 라인 (항상 표시하여 확인)
-	DrawDebugLine(GetWorld(), TraceStart, TraceEnd, 
-		bHit ? FColor::Green : FColor::Red,
-		false, 0.0f, 0, 0.5f);
-
-	// Hit한 경우
-	if (bHit && HitResult.GetActor())
-	{
-		// Actor에서 InteractableComponent 찾기
-		if ( auto InteractComp = HitResult.GetActor()->FindComponentByClass<UInteractableComponent>() )
-			return InteractComp;
-	}
-
-	return nullptr;
-}
 
 void APlayerActor::OnRep_LookPitch()
 {

@@ -12,11 +12,9 @@ class ONEPIECE_API Aluggage : public AActor
 	GENERATED_BODY()
 
 public:
-	// Sets default values for this actor's properties
 	Aluggage();
 
 public:
-	// Components
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
 	class UStaticMeshComponent* Mesh;
 	

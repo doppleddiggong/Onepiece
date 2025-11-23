@@ -27,7 +27,6 @@ public:
 
 protected:
 	virtual void BeginPlay() override;
-	virtual void Tick(float DeltaTime) override;
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 	virtual void GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const override;
@@ -45,12 +44,16 @@ public:
 
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Command")
 	void OnFlyEnd();
-	
+
+
 public:
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Components|System")
+	TObjectPtr<class UInteractionSystem> InteractionSystem;
+
+protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Components|System")
 	TObjectPtr<class UFlySystem> FlySystem;
 
-protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Camera", meta=(AllowPrivateAccess="true"))
 	TObjectPtr<class USpringArmComponent> SpringArmComp;
 
@@ -99,24 +102,8 @@ public: // Control Interface
 
 public:
 	// grab 시 들어올릴 위치
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category="Grab")
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category="Interaction")
 	USceneComponent* HoldPosition;
-
-	UPROPERTY()
-	class UInteractableComponent* HoldingInteractable;
-
-	UFUNCTION(BlueprintCallable, Category = "Interaction")
-	void TryPickUp();
-
-	UFUNCTION(BlueprintCallable, Category = "Interaction")
-	void TryDrop();
-
-	// Line Trace 최대 거리
-	UPROPERTY(EditDefaultsOnly, Category = "Interaction")
-	float InteractDistance = 1200.0f;
-	
-	class UInteractableComponent* DetectInteractable();
-	// class APlatformSwitch* DetectPlatformSwitch();
 
 public:
 	// 서버쪽 pitch 수동으로 동기화

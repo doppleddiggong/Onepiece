@@ -1,12 +1,10 @@
 // Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
 
 
-#include "Onepiece/Interactable/Public/luggage.h"
+#include "luggage.h"
+#include "InteractableComponent.h"
 
-#include "Onepiece/Interactable/Public/InteractableComponent.h"
 
-
-// Sets default values
 Aluggage::Aluggage()
 {
 	PrimaryActorTick.bCanEverTick = false;
@@ -15,7 +13,9 @@ Aluggage::Aluggage()
 	SetRootComponent(Mesh);
 
 	InteractableComp = CreateDefaultSubobject<UInteractableComponent>(TEXT("Interactable"));
-
+	InteractableComp->InteractionType = EInteractionType::PickUp;
+	InteractableComp->InteractionPrompt = TEXT("Press E to Grap");
+	
 	// Initial settings
 	Mesh->SetSimulatePhysics(true);
 	Mesh->SetEnableGravity(true);

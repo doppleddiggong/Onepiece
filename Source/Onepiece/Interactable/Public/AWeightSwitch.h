@@ -25,7 +25,6 @@ public:
 	void SetActivate(bool State);
 	
 private:
-	void AddElapsedTime();
 	bool ActivateTrigger();
 	
 	UFUNCTION()
