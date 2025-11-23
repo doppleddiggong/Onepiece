@@ -257,7 +257,7 @@ void UInteractableComponent::TriggerInteraction(AActor* Interactor)
 	// 델리게이트 브로드캐스트
 	OnInteractionTriggered.Broadcast(Interactor);
 
-	PRINTLOG( TEXT("InteractableComponent::TriggerInteraction - %s triggered by %s"), 
+	PRINT_STRING( TEXT("InteractableComponent::TriggerInteraction - %s triggered by %s"), 
 	       *GetOwner()->GetName(), *Interactor->GetName());
 }
 

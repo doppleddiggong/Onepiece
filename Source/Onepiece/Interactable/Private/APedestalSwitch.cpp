@@ -1,15 +1,13 @@
 // Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
 
 
-#include "APredestalSwitch.h"
+#include "APedestalSwitch.h"
 
 #include "GameLogging.h"
 #include "UTweenAnimInstance.h"
 #include "InteractableComponent.h"
 
-#define SWITCH_COLLISION_PATH		TEXT("Collision")
-
-APredestalSwitch::APredestalSwitch()
+APedestalSwitch::APedestalSwitch()
 {
 	PrimaryActorTick.bCanEverTick = false;
 
@@ -19,13 +17,12 @@ APredestalSwitch::APredestalSwitch()
 	SwitchBody->SetupAttachment(RootComponent);
 	SwitchBody->SetRelativeLocation(FVector::ZeroVector);
 
-	// InteractableComponent 생성
 	InteractableComp = CreateDefaultSubobject<UInteractableComponent>(TEXT("Interactable"));
 	InteractableComp->InteractionType = EInteractionType::Button;
 	InteractableComp->InteractionPrompt = TEXT("Press E to Activate");
 }
 
-void APredestalSwitch::BeginPlay()
+void APedestalSwitch::BeginPlay()
 {
 	Super::BeginPlay();
 
@@ -33,10 +30,10 @@ void APredestalSwitch::BeginPlay()
 	InitSwitch();
 
 	// 델리게이트 바인딩
-	InteractableComp->OnInteractionTriggered.AddDynamic(this, &APredestalSwitch::OnActivated);
+	InteractableComp->OnInteractionTriggered.AddDynamic(this, &APedestalSwitch::OnInteractionTriggered);
 }
 
-void APredestalSwitch::InitSwitch()
+void APedestalSwitch::InitSwitch()
 {
 	UAnimInstance* AnimInstance = SwitchBody->GetAnimInstance();
 	if (!AnimInstance)
@@ -45,7 +42,6 @@ void APredestalSwitch::InitSwitch()
 		return;
 	}
 
-	// 7. 캐스팅 및 변수 설정
 	UTweenAnimInstance* AnimBP = Cast<UTweenAnimInstance>(AnimInstance);
 	if (AnimBP)
 	{
@@ -57,19 +53,19 @@ void APredestalSwitch::InitSwitch()
 	}
 }
 
-void APredestalSwitch::OnActivated(AActor* Interactor)
+void APedestalSwitch::OnInteractionTriggered(AActor* Interactor)
 {
 	if (AnimBlueprint)
 	{
 		// 버튼 눌림 애니메이션
 		AnimBlueprint->ChangeState(true);
 		
-		// Duration 후에 버튼 리셋
+		// 딜레이후 버튼 리커버리
 		GetWorld()->GetTimerManager().SetTimer(
-			ResetTimerHandle,
+			RecoveryTimerHandle,
 			this,
-			&APredestalSwitch::ResetButton,
-			Duration,
+			&APedestalSwitch::RecoveryButton,
+			RecoveryDelay,
 			false
 		);
 	}
@@ -78,16 +74,17 @@ void APredestalSwitch::OnActivated(AActor* Interactor)
 		PRINTLOG( TEXT("AnimBlueprint is null"));
 	}
 
-	PRINT_STRING(TEXT("PredestalSwitch ACTIVATED"));
-	// 블루프린트에서 추가 기능 구현 가능
+	// PRINT_STRING(TEXT("Pedestal Switch ACTIVATED"));
+	OnActivate();
 }
 
-void APredestalSwitch::ResetButton()
+void APedestalSwitch::RecoveryButton()
 {
-	if (AnimBlueprint)
-	{
-		// 버튼 원래 상태로 복귀
-		AnimBlueprint->ChangeState(false);
-		PRINT_STRING(TEXT("PredestalSwitch RESET"));
-	}
+	AnimBlueprint->ChangeState(false);
+}
+
+void APedestalSwitch::OnActivate_Implementation()
+{
+	// 기본 C++ 동작 (블루프린트에서 오버라이드하지 않았을 경우 실행됨)
+	PRINT_STRING(TEXT("Pedestal Switch Activated"));
 }
