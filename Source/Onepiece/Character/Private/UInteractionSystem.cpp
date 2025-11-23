@@ -94,10 +94,9 @@ void UInteractionSystem::TryPickUp()
 	}
 
 	// 로그 출력 (PickUp 호출 전)
-
 	PRINTLOG( TEXT("UInteractionSystem: Picking up %s"), *TargetOwner->GetName());
 
-	// ⚠️ 중요: PickUp() 호출 전에 HoldingInteractable에 저장
+	// 중요: PickUp() 호출 전에 HoldingInteractable에 저장
 	// PickUp() 과정에서 DetachFromActor로 인해 Overlap이 해제되고
 	// OnDetectionEndOverlap -> UnregisterInteractable 호출로 CurrentTarget이 nullptr이 될 수 있음
 	HoldingInteractable = CurrentTarget;

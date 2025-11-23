@@ -16,7 +16,7 @@ AWeightSwitch::AWeightSwitch()
 	SwitchBody = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("SwitchBody"));
 	SwitchBody->SetupAttachment(RootComponent);
 	SwitchBody->SetRelativeRotation(FRotator(0.f, 0.f, 90.0f));
-	SwitchBody->SetRelativeLocation(FVector::ZeroVector); // 중앙 정렬
+	SwitchBody->SetRelativeLocation(FVector::ZeroVector);
 	SwitchBody->SetRelativeScale3D(FVector(2.f));
 	SwitchBody->SetMobility(EComponentMobility::Movable);
 
@@ -123,6 +123,11 @@ void AWeightSwitch::SetActivate(bool State)
 		PRINTLOG( TEXT("AnimBlueprint is null"));
 	}
 
+	OnActivate(State);
+}
+
+void AWeightSwitch::OnActivate_Implementation(const bool State)
+{
 	if ( State )
 	{
 		PRINT_STRING(TEXT("CLICK ON"));
@@ -130,9 +135,8 @@ void AWeightSwitch::SetActivate(bool State)
 	else
 	{
 		PRINT_STRING(TEXT("CLICK OFF"));
-	}
+	}	
 }
-
 
 void AWeightSwitch::Tick(float DeltaTime)
 {

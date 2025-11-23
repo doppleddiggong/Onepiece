@@ -23,10 +23,12 @@ public:
 
 	void InitSwitch();
 	void SetActivate(bool State);
+
+	UFUNCTION(BlueprintNativeEvent, Category = "Interaction")
+	void OnActivate(const bool State);
+	virtual void OnActivate_Implementation(const bool State);
 	
 private:
-	bool ActivateTrigger();
-	
 	UFUNCTION()
 	void OnBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
 						UPrimitiveComponent* OtherComp, int32 OtherBodyIndex,
@@ -39,9 +41,10 @@ private:
 
 	UFUNCTION(BlueprintCallable, Category="SwitchEvent")
 	void OnWeightSwitch(int InButtonIndex, bool InActive);
+
+	bool ActivateTrigger();
 	
 public:
-	// 컴포넌트
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
 	TObjectPtr<class USkeletalMeshComponent> SwitchBody;
 	

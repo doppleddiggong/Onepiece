@@ -60,7 +60,7 @@ void APedestalSwitch::OnInteractionTriggered(AActor* Interactor)
 		// 버튼 눌림 애니메이션
 		AnimBlueprint->ChangeState(true);
 		
-		// 딜레이후 버튼 리커버리
+		// 딜레이 후 버튼 리커버리
 		GetWorld()->GetTimerManager().SetTimer(
 			RecoveryTimerHandle,
 			this,
@@ -74,7 +74,6 @@ void APedestalSwitch::OnInteractionTriggered(AActor* Interactor)
 		PRINTLOG( TEXT("AnimBlueprint is null"));
 	}
 
-	// PRINT_STRING(TEXT("Pedestal Switch ACTIVATED"));
 	OnActivate();
 }
 
@@ -85,6 +84,5 @@ void APedestalSwitch::RecoveryButton()
 
 void APedestalSwitch::OnActivate_Implementation()
 {
-	// 기본 C++ 동작 (블루프린트에서 오버라이드하지 않았을 경우 실행됨)
 	PRINT_STRING(TEXT("Pedestal Switch Activated"));
 }

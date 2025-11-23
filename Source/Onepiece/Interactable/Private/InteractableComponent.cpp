@@ -224,8 +224,6 @@ UPrimitiveComponent* UInteractableComponent::GetOwnerPrimitiveComponent() const
 	return PrimComp;
 }
 
-
-
 void UInteractableComponent::ShowDebugInfo(AActor* ViewerActor)
 {
 	if (!GetOwner() || !ViewerActor) return;
@@ -257,8 +255,7 @@ void UInteractableComponent::TriggerInteraction(AActor* Interactor)
 	// 델리게이트 브로드캐스트
 	OnInteractionTriggered.Broadcast(Interactor);
 
-	PRINT_STRING( TEXT("InteractableComponent::TriggerInteraction - %s triggered by %s"), 
-	       *GetOwner()->GetName(), *Interactor->GetName());
+	PRINTLOG( TEXT("InteractableComponent::TriggerInteraction - %s triggered by %s"), *GetOwner()->GetName(), *Interactor->GetName());
 }
 
 void UInteractableComponent::OnDetectionBeginOverlap(
