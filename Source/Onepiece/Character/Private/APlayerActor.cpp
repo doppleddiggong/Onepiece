@@ -11,6 +11,7 @@
 
 // Shared
 #include "APlatformSwitch.h"
+#include "GameLogging.h"
 #include "Macro.h"
 #include "InputCoreTypes.h"
 #include "UVoiceConversationSystem.h"
@@ -183,15 +184,33 @@ void APlayerActor::TryDrop()
 
 UInteractableComponent* APlayerActor::DetectInteractable()
 {
-	// 카메라 위치에서 시작하되, 컨트롤러가 바라보는 방향으로 트레이스
-	FVector CameraLocation = FollowCamera->GetComponentLocation();
-	// FVector CameraForward = FollowCamera->GetForwardVector();
-	// 컨트롤러의 회전 방향 사용 (플레이어가 조작하는 시점 방향)
-	FVector ControllerForward = GetControlRotation().Vector();
-	
-	FVector TraceStart = CameraLocation;
-	FVector TraceEnd = TraceStart + (ControllerForward * InteractDistance);
+	// 플레이어 컨트롤러 가져오기
+	APlayerController* PC = Cast<APlayerController>(GetController());
+	if (!PC)
+	{
+		PRINTLOG( TEXT("PlayerController is null"));
+		return nullptr;
+	}
 
+	// 뷰포트 크기 가져오기
+	int32 ViewportSizeX, ViewportSizeY;
+	PC->GetViewportSize(ViewportSizeX, ViewportSizeY);
+	
+	// 화면 중앙 픽셀 좌표
+	float ScreenX = ViewportSizeX * 0.5f;
+	float ScreenY = ViewportSizeY * 0.5f;
+
+	// 화면 좌표에서 월드 좌표와 방향 계산
+	FVector WorldLocation, WorldDirection;
+	if (!PC->DeprojectScreenPositionToWorld(ScreenX, ScreenY, WorldLocation, WorldDirection))
+	{
+		PRINTLOG( TEXT("DeprojectScreenPositionToWorld failed"));
+		return nullptr;
+	}
+
+	// 레이 트레이스 시작/끝 지점
+	FVector TraceStart = WorldLocation;
+	FVector TraceEnd = TraceStart + (WorldDirection * InteractDistance);
 	// Hit 결과
 	FHitResult HitResult;
 
@@ -199,22 +218,17 @@ UInteractableComponent* APlayerActor::DetectInteractable()
 	bool bHit = GetWorld()->LineTraceSingleByChannel(
 		HitResult, TraceStart, TraceEnd, ECC_Visibility);
 	
-	// 디버그 라인 (얇고 짧게, Hit된 경우만 표시)
-	if (bHit)
-	{
-		DrawDebugLine(GetWorld(), TraceStart, HitResult.ImpactPoint, 
-			FColor(0, 255, 0, 100), // 반투명 초록색
-			false, 0.0f, 0, 0.5f); // 매우 얇게
-	}
+	// 디버그 라인 (항상 표시하여 확인)
+	DrawDebugLine(GetWorld(), TraceStart, TraceEnd, 
+		bHit ? FColor::Green : FColor::Red,
+		false, 0.0f, 0, 0.5f);
 
 	// Hit한 경우
 	if (bHit && HitResult.GetActor())
 	{
 		// Actor에서 InteractableComponent 찾기
-		UInteractableComponent* InteractComp =
-			HitResult.GetActor()->FindComponentByClass<UInteractableComponent>();
-
-		if (InteractComp) return InteractComp;
+		if ( auto InteractComp = HitResult.GetActor()->FindComponentByClass<UInteractableComponent>() )
+			return InteractComp;
 	}
 
 	return nullptr;
