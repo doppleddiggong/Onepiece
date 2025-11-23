@@ -9,5 +9,6 @@ var searchData=
   ['interparcsin_6',['InterpArcSin',['../structFMathHelper.html#acdb08b61cfe310f5684d30ebb69204d2',1,'FMathHelper']]],
   ['isconnected_7',['IsConnected',['../classUWebSocketSystem.html#a89bbc98f683cca370ea2e91fbd36ca7b',1,'UWebSocketSystem']]],
   ['isconversationvoiceplaying_8',['IsConversationVoicePlaying',['../classUGameSoundManager.html#aa9bad4fe4971faa5fad6a47afaf7255d',1,'UGameSoundManager']]],
-  ['isvalid_9',['isvalid',['../structFGPTContextLocation.html#a1cdc49a72a614fcd45f7ae01f19a2cb0',1,'FGPTContextLocation::IsValid()'],['../structFGPTContextNearBuilding.html#a3261449c43062cffd3d252522871d4d7',1,'FGPTContextNearBuilding::IsValid()'],['../structFDelayHandle.html#a65b5c7cb5e60128f014d7b80122c2a36',1,'FDelayHandle::IsValid()']]]
+  ['isplayeractor_9',['IsPlayerActor',['../classAGate.html#a0aac26a835f62650db64de1cb0e691f2',1,'AGate']]],
+  ['isvalid_10',['isvalid',['../structFDelayHandle.html#a65b5c7cb5e60128f014d7b80122c2a36',1,'FDelayHandle::IsValid()'],['../structFGPTContextLocation.html#a1cdc49a72a614fcd45f7ae01f19a2cb0',1,'FGPTContextLocation::IsValid()'],['../structFGPTContextNearBuilding.html#a3261449c43062cffd3d252522871d4d7',1,'FGPTContextNearBuilding::IsValid()']]]
 ];

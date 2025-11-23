@@ -1,0 +1,27 @@
+var classAPlatformSwitch =
+[
+    [ "APlatformSwitch", "classAPlatformSwitch.html#ac28871b31cd4157da8cb67d8069677d9", null ],
+    [ "ActivateTrigger", "classAPlatformSwitch.html#a0791d1e2c46429ce0cd6cf2d4074ce94", null ],
+    [ "AddElapsedTime", "classAPlatformSwitch.html#afa4435f3d21e8fd380326b426cf9e5da", null ],
+    [ "BeginPlay", "classAPlatformSwitch.html#a12517714e7e182ad780bfd55ff956860", null ],
+    [ "ChangeActivateState", "classAPlatformSwitch.html#ae5b9d122c8bac3706ad8a4a1e48dc95e", null ],
+    [ "LerpAlpha", "classAPlatformSwitch.html#a7ce14ca7c520f4692dc7a767f818296c", null ],
+    [ "OnBeginOverlap", "classAPlatformSwitch.html#a2986065bca2bb8ebf8b8d4e7dc08d2f1", null ],
+    [ "OnEndOverlap", "classAPlatformSwitch.html#af75ade0ee6e39080058bd2bc5f76ba3c", null ],
+    [ "Tick", "classAPlatformSwitch.html#a3646a26d4bd829e2f0a4eba624120ddd", null ],
+    [ "bActivateState", "classAPlatformSwitch.html#ace0cc688a387ac31f1a0b80cb87df9f0", null ],
+    [ "ColorParam", "classAPlatformSwitch.html#ad7754e0ab71dc889c3557c31e98444a8", null ],
+    [ "DetectTarget", "classAPlatformSwitch.html#a4a45d2bb648190f2e42816b12665e466", null ],
+    [ "Duration", "classAPlatformSwitch.html#ab631b82e5518fbc3803161d51e6be67b", null ],
+    [ "ElapsedTime", "classAPlatformSwitch.html#a27acc11bf4b2131b7c350c9ccc9498d5", null ],
+    [ "EndVector", "classAPlatformSwitch.html#ad4d59cd78312582f4afeb6b3f27b6f99", null ],
+    [ "IdleColor", "classAPlatformSwitch.html#a9c20e494064f1a8783d17dc75c8c5598", null ],
+    [ "InOtherActor", "classAPlatformSwitch.html#a8665cd78b0425243502abd39854ed0bd", null ],
+    [ "MaterialButton", "classAPlatformSwitch.html#ad5f73a1d17956cb4accd346fa7dcaeea", null ],
+    [ "OnChangeSwitchState", "classAPlatformSwitch.html#a94c9f2705a157ba4d2ae229bae123146", null ],
+    [ "OriginVector", "classAPlatformSwitch.html#ae75ee0386af5e9e58629b047e0cebf52", null ],
+    [ "SwitchButton", "classAPlatformSwitch.html#a770b432164e68d6966d32d01203c1c9a", null ],
+    [ "SwitchCollision", "classAPlatformSwitch.html#a71a0f22ce875d07d7f3fd9560c3c97b7", null ],
+    [ "TriggerDelay", "classAPlatformSwitch.html#a7c8656792db5d347dc6029274471af55", null ],
+    [ "WarningColor", "classAPlatformSwitch.html#aec4125272eb80605fb7c8251d753a1e2", null ]
+];

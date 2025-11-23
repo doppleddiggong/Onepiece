@@ -2,7 +2,9 @@ var classUDrawingBoardWidget =
 [
     [ "UDrawingBoardWidget", "classUDrawingBoardWidget.html#a4cbb303e9d6407446da87ad61e5e8c80", null ],
     [ "ClearCanvas", "classUDrawingBoardWidget.html#ae051349c5c8eb0df28c9cb520f3dc541", null ],
-    [ "DrawPoint", "classUDrawingBoardWidget.html#a5a08d898f3f53c1b739140dd2c897133", null ],
+    [ "CloseDrawWindow", "classUDrawingBoardWidget.html#a795b11bfecbc53a377fadf35ad262408", null ],
+    [ "DrawLines", "classUDrawingBoardWidget.html#a14e1c8841d8df9cad180cd6aae43ca53", null ],
+    [ "DrawPoint", "classUDrawingBoardWidget.html#ab85f5149e56cd9bd2c6c159621b9bc18", null ],
     [ "GetLocalMousePos", "classUDrawingBoardWidget.html#ab2729c30343566022c0c7353c3edd2f7", null ],
     [ "NativeConstruct", "classUDrawingBoardWidget.html#acb44790a01391ae44e03a3cc68539655", null ],
     [ "NativeOnMouseButtonDown", "classUDrawingBoardWidget.html#a0c0340ecdfa37fbb231f28f795c7cabd", null ],
@@ -15,6 +17,7 @@ var classUDrawingBoardWidget =
     [ "Button_Save", "classUDrawingBoardWidget.html#a1c5e4c13d4cec7e07e91b8b2995ce531", null ],
     [ "Image_Canvas", "classUDrawingBoardWidget.html#ab2b390fe6e2763f892817105a4d7c54b", null ],
     [ "M_Brush", "classUDrawingBoardWidget.html#a8c482a5bdf8f1b4054b7f7741fa06372", null ],
+    [ "Overlay_DrawWindow", "classUDrawingBoardWidget.html#a3f44533ca743b90104b27ef385acd77a", null ],
     [ "prevMousePos", "classUDrawingBoardWidget.html#ab7b6f878a2113366f4b5b011462ec075", null ],
     [ "RT_Canvas", "classUDrawingBoardWidget.html#a9ec1bb4325aa0ca447099b23d3389cfe", null ]
 ];

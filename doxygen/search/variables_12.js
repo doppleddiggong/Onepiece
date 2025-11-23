@@ -17,5 +17,7 @@ var searchData=
   ['startgame_14',['StartGame',['../namespaceRequestAPI.html#ac1d9709c31ab47a176f7dd0bb11dbd45',1,'RequestAPI']]],
   ['status_15',['status',['../structFResponseHealth.html#a21bcca6ff52ce04957bebbde5e67174e',1,'FResponseHealth']]],
   ['stepinterval_16',['StepInterval',['../classUSequenceManager.html#a8eb73739b36d010f3ed073bb28ab0d3e',1,'USequenceManager']]],
-  ['submitinterview_17',['SubmitInterview',['../namespaceRequestAPI.html#a59e119807bb3a0ebb0de1c0865409da8',1,'RequestAPI']]]
+  ['submitinterview_17',['SubmitInterview',['../namespaceRequestAPI.html#a59e119807bb3a0ebb0de1c0865409da8',1,'RequestAPI']]],
+  ['switchbutton_18',['SwitchButton',['../classAPlatformSwitch.html#a770b432164e68d6966d32d01203c1c9a',1,'APlatformSwitch']]],
+  ['switchcollision_19',['SwitchCollision',['../classAPlatformSwitch.html#a71a0f22ce875d07d7f3fd9560c3c97b7',1,'APlatformSwitch']]]
 ];

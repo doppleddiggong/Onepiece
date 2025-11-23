@@ -1,8 +1,11 @@
 var hierarchy =
 [
     [ "AActor", null, [
+      [ "AGate", "classAGate.html", null ],
       [ "AListActorManager", "classAListActorManager.html", null ],
-      [ "ANetworkTesterActor", "classANetworkTesterActor.html", null ]
+      [ "ANetworkTesterActor", "classANetworkTesterActor.html", null ],
+      [ "APlatformSwitch", "classAPlatformSwitch.html", null ],
+      [ "Aluggage", "classAluggage.html", null ]
     ] ],
     [ "ACharacter", null, [
       [ "ANPCBase", "classANPCBase.html", [
@@ -130,6 +133,8 @@ var hierarchy =
     [ "UUserWidget", null, [
       [ "UDialogWidget", "classUDialogWidget.html", null ],
       [ "UDrawingBoardWidget", "classUDrawingBoardWidget.html", null ],
-      [ "ULoadginCircle", "classULoadginCircle.html", null ]
+      [ "ULoadginCircle", "classULoadginCircle.html", null ],
+      [ "UMessageBox", "classUMessageBox.html", null ],
+      [ "UStartWidget", "classUStartWidget.html", null ]
     ] ]
 ];

@@ -30,9 +30,10 @@ var searchData=
   ['robotimc_27',['RobotIMC',['../classARobotPlayer.html#a257773d4e0786436cfa649cc6e180981',1,'ARobotPlayer']]],
   ['robotplayercontroller_2ecpp_28',['RobotPlayerController.cpp',['../RobotPlayerController_8cpp.html',1,'']]],
   ['robotplayercontroller_2eh_29',['RobotPlayerController.h',['../RobotPlayerController_8h.html',1,'']]],
-  ['rootoverlay_30',['RootOverlay',['../classULoadginCircle.html#a7e714f65f74d3fca56c7e21aa2c49588',1,'ULoadginCircle']]],
-  ['rotatoroffset_31',['RotatorOffset',['../structFVFXData.html#ac890ab57708ba9a560918e626822022f',1,'FVFXData']]],
-  ['rt_5fcanvas_32',['RT_Canvas',['../classUDrawingBoardWidget.html#a9ec1bb4325aa0ca447099b23d3389cfe',1,'UDrawingBoardWidget']]],
-  ['runaction_33',['RunAction',['../classARobotPlayer.html#a4fedbcd2d50b848726df41a8728e487c',1,'ARobotPlayer']]],
-  ['runspeed_34',['RunSpeed',['../classARobotPlayer.html#a463edf34ff935aeaa0e58b9b48259c10',1,'ARobotPlayer']]]
+  ['rootcomp_30',['RootComp',['../classAGate.html#a429a577267caf33a60f87b3bcf7748e8',1,'AGate']]],
+  ['rootoverlay_31',['RootOverlay',['../classULoadginCircle.html#a7e714f65f74d3fca56c7e21aa2c49588',1,'ULoadginCircle']]],
+  ['rotatoroffset_32',['RotatorOffset',['../structFVFXData.html#ac890ab57708ba9a560918e626822022f',1,'FVFXData']]],
+  ['rt_5fcanvas_33',['RT_Canvas',['../classUDrawingBoardWidget.html#a9ec1bb4325aa0ca447099b23d3389cfe',1,'UDrawingBoardWidget']]],
+  ['runaction_34',['RunAction',['../classARobotPlayer.html#a4fedbcd2d50b848726df41a8728e487c',1,'ARobotPlayer']]],
+  ['runspeed_35',['RunSpeed',['../classARobotPlayer.html#a463edf34ff935aeaa0e58b9b48259c10',1,'ARobotPlayer']]]
 ];

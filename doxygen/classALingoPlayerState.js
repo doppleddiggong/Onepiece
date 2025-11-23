@@ -6,7 +6,6 @@ var classALingoPlayerState =
     [ "SetMissionComplete", "classALingoPlayerState.html#a937a1a7eed255d3308a3fc4a0fa84ceb", null ],
     [ "SetToken", "classALingoPlayerState.html#a0c837b780901d63abc02d742d82d34cf", null ],
     [ "bCurrentMissionComplete", "classALingoPlayerState.html#affab0eff08c5896e278fef8c90529ceb", null ],
-    [ "bIsOutOfOxygen", "classALingoPlayerState.html#af9a78834fc1a5e3f066093671fb24585", null ],
     [ "PlayerRole", "classALingoPlayerState.html#ab46c3cbd55fd4f7ba22a3d684821a532", null ],
     [ "Token", "classALingoPlayerState.html#a8feebbab1107b6836379b644d8d02da6", null ]
 ];
