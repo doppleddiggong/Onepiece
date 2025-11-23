@@ -90,12 +90,14 @@ def collect_metrics(daily_dir, start_date, end_date, branch_filter=None):
                     metrics = json.load(f)
 
                     # 브랜치 필터링
+                    should_include = True
                     if branch_filter:
                         metrics_branch = metrics.get('branch', '')
                         if metrics_branch != branch_filter:
-                            continue  # 다른 브랜치면 건너뛰기
+                            should_include = False  # 다른 브랜치면 제외
 
-                    metrics_list.append(metrics)
+                    if should_include:
+                        metrics_list.append(metrics)
             except Exception as e:
                 print(f"[WARN] 메트릭 파일 로딩 실패 ({metrics_file}): {e}")
 
