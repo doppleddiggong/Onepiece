@@ -56,7 +56,7 @@ public:
 	TObjectPtr<class UMaterialInstanceDynamic> EmissiveMaterial;
 
 	UPROPERTY()
-	class AActor* InOtherActor;	
+	TArray<class AActor*> OverlappingActors;	
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Switch")
 	int ButtonIndex = 0;

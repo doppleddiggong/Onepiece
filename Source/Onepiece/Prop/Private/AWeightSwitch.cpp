@@ -172,23 +172,39 @@ void AWeightSwitch::OnBeginOverlap(
 	UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
 	UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
-	this->InOtherActor = OtherActor;
+	if (!OtherActor)
+		return;
 
-	this->DetectTarget = true;
-	this->ElapsedTime = 0.0;
+	// 리스트에 추가 (중복 방지)
+	OverlappingActors.AddUnique(OtherActor);
+
+	// 첫 번째 물체가 올라갔을 때만 타이머 시작
+	if (OverlappingActors.Num() == 1)
+	{
+		this->DetectTarget = true;
+		this->ElapsedTime = 0.0;
+	}
 }
 
 void AWeightSwitch::OnEndOverlap(
 	UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
 	UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
 {
-	this->InOtherActor = nullptr;
+	if (!OtherActor)
+		return;
 
-	this->DetectTarget = false;
-	this->ElapsedTime = 0.0;
+	// 리스트에서 제거
+	OverlappingActors.Remove(OtherActor);
 
-	// 물건이 떨어지면 올라가면 해제
-	UBroadcastManager::Get(GetWorld())->SendWeightSwitch(ButtonIndex, false);
+	// 모든 물체가 내려갔을 때만 비활성화
+	if (OverlappingActors.Num() == 0)
+	{
+		this->DetectTarget = false;
+		this->ElapsedTime = 0.0;
+
+		// 물건이 모두 떨어지면 해제
+		UBroadcastManager::Get(GetWorld())->SendWeightSwitch(ButtonIndex, false);
+	}
 }
 
 
