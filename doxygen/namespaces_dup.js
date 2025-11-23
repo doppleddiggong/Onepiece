@@ -28,22 +28,12 @@ var namespaces_dup =
       [ "GetSocketURL", "namespaceNetworkConfig.html#a948647fad9ed84a91de549757a7a0e74", null ]
     ] ],
     [ "RequestAPI", "namespaceRequestAPI.html", [
-      [ "ASK", "namespaceRequestAPI.html#ae56660e3a00ae63d00aa203b797602e9", null ],
-      [ "CreateUser", "namespaceRequestAPI.html#aeb90e47a4772d2d7693418d359d7e6c9", null ],
-      [ "GameLogin", "namespaceRequestAPI.html#a43f5f3ad9619ab35ac8577effc1cac3a", null ],
-      [ "GameResult", "namespaceRequestAPI.html#a3afa54cbe8cd9d3bcc4dd5590b4b05d7", null ],
       [ "Health", "namespaceRequestAPI.html#ae1061ff9836b3127b56024d0a0f6fd65", null ],
-      [ "Interview", "namespaceRequestAPI.html#af20caf22ad94f74b3bedb680071f929c", null ],
-      [ "Login", "namespaceRequestAPI.html#a92791978d614f1d374b9e182fcc2444b", null ],
-      [ "QuestAnswer", "namespaceRequestAPI.html#a38bb9a4fd0d06d89e280e6da4aaad176", null ],
-      [ "QuestFail", "namespaceRequestAPI.html#a0729dd2af631345e13c8a24b067680f2", null ],
-      [ "QuestSpeak", "namespaceRequestAPI.html#ae987f73b6961656923914572b4d62b85", null ],
-      [ "QuestWrite", "namespaceRequestAPI.html#a4330a153e623c54a126aa7838dc6319a", null ],
+      [ "scenario", "namespaceRequestAPI.html#ae683aef1f6770a15bcad8cce46f40456", null ],
       [ "speakings_questions", "namespaceRequestAPI.html#a444507b7e2261e3f743b40af81e6838a", null ],
-      [ "StartGame", "namespaceRequestAPI.html#ac1d9709c31ab47a176f7dd0bb11dbd45", null ],
-      [ "SubmitInterview", "namespaceRequestAPI.html#a59e119807bb3a0ebb0de1c0865409da8", null ],
       [ "users_me", "namespaceRequestAPI.html#aee732573aa0bc733fedaab927a273dcd", null ],
       [ "users_register", "namespaceRequestAPI.html#a2d4b0c891a96c4ac2d1829ae24d01dc3", null ],
-      [ "users_token", "namespaceRequestAPI.html#af908b99f78364328aca763f362236454", null ]
+      [ "users_token", "namespaceRequestAPI.html#af908b99f78364328aca763f362236454", null ],
+      [ "writes_ocr_extract", "namespaceRequestAPI.html#adb0c390f61c19ef5b70489b76b2e00e6", null ]
     ] ]
 ];
