@@ -13,17 +13,10 @@ class ONEPIECE_API UInteractableComponent : public UActorComponent
 	GENERATED_BODY()
 
 public:
-	// Sets default values for this component's properties
 	UInteractableComponent();
 
 protected:
-	// Called when the game starts
-	virtual void BeginPlay() override;
 	virtual void GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const override;
-	
-public:	
-	// Called every frame
-	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
 protected:
 	// Initial State
@@ -63,6 +56,10 @@ public:
 
 	UFUNCTION(Server, Reliable)
 	void Server_Drop();
+
+	// 디버그 정보 표시 (타겟팅 중일 때)
+	UFUNCTION(BlueprintCallable, Category = "Debug")
+	void ShowDebugInfo(AActor* ViewerActor);
 
 protected:
 	// Owner Actor의 PrimitiveComponent 찾기

@@ -66,6 +66,20 @@ void APlayerActor::BeginPlay()
 	UE_LOG(LogTemp, Log, TEXT("APlayerActor: Setting up one-way dependency demo."));
 }
 
+void APlayerActor::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+
+	// 매 프레임 타겟팅 중인 객체 감지 및 디버그 표시
+	UInteractableComponent* TargetedInteractable = DetectInteractable();
+	
+	if (TargetedInteractable)
+	{
+		// InteractableComponent가 자신의 디버그 정보를 직접 표시
+		TargetedInteractable->ShowDebugInfo(this);
+	}
+}
+
 void APlayerActor::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
@@ -154,10 +168,6 @@ void APlayerActor::TryPickUp()
 		// 현재 들고 있는 물체로 저장
 		HoldingInteractable = FoundInteractable;
 	}
-	// else if ( auto PlatformSwitch = DetectPlatformSwitch() )
-	// {
-	// 	PlatformSwitch->ChangeActivateState(true);
-	// }
 }
 
 void APlayerActor::TryDrop()
@@ -173,11 +183,14 @@ void APlayerActor::TryDrop()
 
 UInteractableComponent* APlayerActor::DetectInteractable()
 {
+	// 카메라 위치에서 시작하되, 컨트롤러가 바라보는 방향으로 트레이스
 	FVector CameraLocation = FollowCamera->GetComponentLocation();
-	FVector CameraForward = FollowCamera->GetForwardVector();
-
+	// FVector CameraForward = FollowCamera->GetForwardVector();
+	// 컨트롤러의 회전 방향 사용 (플레이어가 조작하는 시점 방향)
+	FVector ControllerForward = GetControlRotation().Vector();
+	
 	FVector TraceStart = CameraLocation;
-	FVector TraceEnd = TraceStart + (CameraForward * InteractDistance);
+	FVector TraceEnd = TraceStart + (ControllerForward * InteractDistance);
 
 	// Hit 결과
 	FHitResult HitResult;
@@ -186,8 +199,13 @@ UInteractableComponent* APlayerActor::DetectInteractable()
 	bool bHit = GetWorld()->LineTraceSingleByChannel(
 		HitResult, TraceStart, TraceEnd, ECC_Visibility);
 	
-	DrawDebugLine(GetWorld(), TraceStart, TraceEnd, bHit?FColor::Green : FColor::Red,
-		false, 1.0f, 0, 2.0f);
+	// 디버그 라인 (얇고 짧게, Hit된 경우만 표시)
+	if (bHit)
+	{
+		DrawDebugLine(GetWorld(), TraceStart, HitResult.ImpactPoint, 
+			FColor(0, 255, 0, 100), // 반투명 초록색
+			false, 0.0f, 0, 0.5f); // 매우 얇게
+	}
 
 	// Hit한 경우
 	if (bHit && HitResult.GetActor())
@@ -201,44 +219,6 @@ UInteractableComponent* APlayerActor::DetectInteractable()
 
 	return nullptr;
 }
-
-//
-// APlatformSwitch* APlayerActor::DetectPlatformSwitch()
-// {
-// 	FVector CameraLocation = FollowCamera->GetComponentLocation();
-// 	FVector CameraForward = FollowCamera->GetForwardVector();
-//
-// 	FVector TraceStart = CameraLocation;
-// 	FVector TraceEnd = TraceStart + (CameraForward * InteractDistance);
-//
-// 	// Hit 결과
-// 	FHitResult HitResult;
-//
-// 	// Ray trace 실행
-// 	bool bHit = GetWorld()->LineTraceSingleByChannel(
-// 		HitResult, TraceStart, TraceEnd, ECC_Visibility);
-// 	
-// 	DrawDebugLine(GetWorld(),
-// 		TraceStart, TraceEnd,
-// 		bHit  ? FColor::Green : FColor::Red,
-// 		false,
-// 		0.1f, 0, 2.0f);
-//
-// 	if (bHit)
-// 	{
-// 		if ( AActor* HitActor = HitResult.GetActor())
-// 		{
-// 			if (auto Switch = Cast<APlatformSwitch>(HitActor))
-// 			{
-// 				return Switch;
-// 			}
-// 		}
-// 	}
-// 	
-// 	return nullptr;
-// }
-
-
 
 void APlayerActor::OnRep_LookPitch()
 {

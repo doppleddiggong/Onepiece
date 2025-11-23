@@ -4,16 +4,14 @@
 #include "Onepiece/Interactable/Public/InteractableComponent.h"
 
 #include "APlayerActor.h"
+#include "GameLogging.h"
 #include "Net/UnrealNetwork.h"
 
 
 UInteractableComponent::UInteractableComponent()
 {
-	// Set this component to be initialized when the game starts, and to be ticked every frame.  You can turn these features
-	// off to improve performance if you don't need them.
 	PrimaryComponentTick.bCanEverTick = true;
 
-	// ...
 	bIsPickedUp = false;
 	bOriginalSimulatePhysics = false;
 	OriginalCollisionType = ECollisionEnabled::NoCollision;
@@ -21,29 +19,11 @@ UInteractableComponent::UInteractableComponent()
 	SetIsReplicatedByDefault(true);
 }
 
-
-// Called when the game starts
-void UInteractableComponent::BeginPlay()
-{
-	Super::BeginPlay();
-
-	// ...
-	
-}
-
 void UInteractableComponent::GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const
 {
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
 
 	DOREPLIFETIME(UInteractableComponent, HoldingOwner);
-}
-
-// Called every frame
-void UInteractableComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
-{
-	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
-
-	// ...
 }
 
 void UInteractableComponent::OnRep_HoldingOwner()
@@ -121,8 +101,9 @@ void UInteractableComponent::Server_Drop_Implementation()
 
 	bIsPickedUp = false;
 
-	UE_LOG(LogTemp, Log, TEXT("InteractableComponent::Drop - %s dropped"), *GetOwner()->GetName());
+	PRINTLOG( TEXT("InteractableComponent::Drop - %s dropped"), *GetOwner()->GetName());
 }
+
 
 UPrimitiveComponent* UInteractableComponent::GetOwnerPrimitiveComponent() const
 {
@@ -147,3 +128,34 @@ UPrimitiveComponent* UInteractableComponent::GetOwnerPrimitiveComponent() const
 	return PrimComp;
 }
 
+
+
+void UInteractableComponent::ShowDebugInfo(AActor* ViewerActor)
+{
+	if (!GetOwner() || !ViewerActor) return;
+
+	// 객체 위치 (약간 위쪽에 표시)
+	FVector DebugLocation = GetOwner()->GetActorLocation() + FVector(0.f, 0.f, 100.f);
+	
+	// 거리 계산
+	float Distance = FVector::Dist(ViewerActor->GetActorLocation(), GetOwner()->GetActorLocation());
+	
+	FString DebugMessage = FString::Printf(
+		TEXT("Target: %s\nDistance: %.1f cm\nStatus: %s"),
+		*GetOwner()->GetName(),
+		Distance,
+		bIsPickedUp ? TEXT("Picked Up") : TEXT("Available")
+	);
+	
+	// 3D 공간에 디버그 문자열 표시
+	DrawDebugString(
+		GetWorld(),
+		DebugLocation,
+		DebugMessage,
+		nullptr,
+		bIsPickedUp ? FColor::Yellow : FColor::Green, // 들고 있으면 노란색, 아니면 초록색
+		0.0f, // 매 프레임 갱신
+		true, // 그림자 표시
+		1.2f  // 텍스트 크기
+	);
+}

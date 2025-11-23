@@ -29,19 +29,4 @@ Aluggage::Aluggage()
 	// Replication
 	bReplicates = true;
 	SetReplicateMovement(true);
-
 }
-
-// Called when the game starts or when spawned
-void Aluggage::BeginPlay()
-{
-	Super::BeginPlay();
-	
-}
-
-// Called every frame
-void Aluggage::Tick(float DeltaTime)
-{
-	Super::Tick(DeltaTime);
-}
-
