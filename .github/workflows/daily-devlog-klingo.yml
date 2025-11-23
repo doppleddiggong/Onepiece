@@ -91,6 +91,14 @@ jobs:
           echo "📅 Date: $(cat $GITHUB_OUTPUT | grep '^date=' | cut -d= -f2)"
           echo "🌿 Branch: $(cat $GITHUB_OUTPUT | grep '^branch=' | cut -d= -f2)"
 
+      - name: Test OpenAI API Connection
+        if: steps.config.outputs.use_gpt == 'true'
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          cd .github/scripts/devlog_klingo
+          python test_openai_connection.py || echo "⚠️ OpenAI API test failed (will try DevLog generation anyway)"
+
       - name: Generate Daily DevLog with KLingo
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
