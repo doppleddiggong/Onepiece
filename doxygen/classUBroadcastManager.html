@@ -144,6 +144,8 @@ Public 멤버 함수</h2></td></tr>
 <tr class="separator:a67a295550c1ead6b3224e4e147872c4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a62476f45982ef48ebf95e126d61ab3ce" id="r_a62476f45982ef48ebf95e126d61ab3ce"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUBroadcastManager.html#a62476f45982ef48ebf95e126d61ab3ce">DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams</a> (FOnHitStop, AActor *, Target, <a class="el" href="EDamageType_8h.html#ab5bf7dde87ef933ba244eba8c39e7e9b">EDamageType</a>, Type)</td></tr>
 <tr class="separator:a62476f45982ef48ebf95e126d61ab3ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3429649c7670232f16dacf76d038eed4" id="r_a3429649c7670232f16dacf76d038eed4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUBroadcastManager.html#a3429649c7670232f16dacf76d038eed4">DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams</a> (FWeightSwitch, int, ButtonIndex, bool, bIsActive)</td></tr>
+<tr class="separator:a3429649c7670232f16dacf76d038eed4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6fd36368650ec2a8baa55708efd07b79" id="r_a6fd36368650ec2a8baa55708efd07b79"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUBroadcastManager.html#a6fd36368650ec2a8baa55708efd07b79">DEFINE_SUBSYSTEM_GETTER_INLINE</a> (<a class="el" href="classUBroadcastManager.html">UBroadcastManager</a>)</td></tr>
 <tr class="separator:a6fd36368650ec2a8baa55708efd07b79"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a96140c8f3c51120625b22c402d6dbd58" id="r_a96140c8f3c51120625b22c402d6dbd58"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUBroadcastManager.html#a96140c8f3c51120625b22c402d6dbd58">SendAudioCapture</a> (bool bRecording)</td></tr>
@@ -162,6 +164,8 @@ Public 멤버 함수</h2></td></tr>
 <tr class="separator:a7dd77f4b9d69350f1a86fd1ec70301e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9c69490ebcf0947b36db2264b76a4167" id="r_a9c69490ebcf0947b36db2264b76a4167"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUBroadcastManager.html#a9c69490ebcf0947b36db2264b76a4167">SendNetworkWaitCount</a> (int RequestCount)</td></tr>
 <tr class="separator:a9c69490ebcf0947b36db2264b76a4167"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a1bb7be2130b3367c2183017801b3ed" id="r_a7a1bb7be2130b3367c2183017801b3ed"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUBroadcastManager.html#a7a1bb7be2130b3367c2183017801b3ed">SendWeightSwitch</a> (int InButtonIndex, bool InActive)</td></tr>
+<tr class="separator:a7a1bb7be2130b3367c2183017801b3ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public 속성</h2></td></tr>
@@ -179,6 +183,8 @@ Public 속성</h2></td></tr>
 <tr class="separator:a43a192f0157e3177589f7b09b11a1e84"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2692fc3fbb06745f2cd20e9d5769abb8" id="r_a2692fc3fbb06745f2cd20e9d5769abb8"><td class="memItemLeft" align="right" valign="top">FOnNetworkWaitCount&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUBroadcastManager.html#a2692fc3fbb06745f2cd20e9d5769abb8">OnNetworkWaitCount</a></td></tr>
 <tr class="separator:a2692fc3fbb06745f2cd20e9d5769abb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a756c1c50c99027c954393663b51f9ebd" id="r_a756c1c50c99027c954393663b51f9ebd"><td class="memItemLeft" align="right" valign="top">FWeightSwitch&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUBroadcastManager.html#a756c1c50c99027c954393663b51f9ebd">OnWeightSwitch</a></td></tr>
+<tr class="separator:a756c1c50c99027c954393663b51f9ebd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">상세한 설명</h2>
 <div class="textblock"><p>게임 내 전역 이벤트를 중계하는 중앙 이벤트 버스(Event Bus) 서브시스템입니다. </p>
@@ -393,7 +399,7 @@ Public 속성</h2></td></tr>
 </div>
 </div>
 <a id="a67a295550c1ead6b3224e4e147872c4d" name="a67a295550c1ead6b3224e4e147872c4d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a67a295550c1ead6b3224e4e147872c4d">&#9670;&#160;</a></span>DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a67a295550c1ead6b3224e4e147872c4d">&#9670;&#160;</a></span>DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams() <span class="overload">[1/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -439,7 +445,7 @@ Public 속성</h2></td></tr>
 </div>
 </div>
 <a id="a62476f45982ef48ebf95e126d61ab3ce" name="a62476f45982ef48ebf95e126d61ab3ce"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a62476f45982ef48ebf95e126d61ab3ce">&#9670;&#160;</a></span>DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams() <span class="overload">[2/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a62476f45982ef48ebf95e126d61ab3ce">&#9670;&#160;</a></span>DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams() <span class="overload">[2/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -472,6 +478,52 @@ Public 속성</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">Type&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3429649c7670232f16dacf76d038eed4" name="a3429649c7670232f16dacf76d038eed4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3429649c7670232f16dacf76d038eed4">&#9670;&#160;</a></span>DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">UBroadcastManager::DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams </td>
+          <td>(</td>
+          <td class="paramtype">FWeightSwitch&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ButtonIndex&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bIsActive&#160;</td>
           <td class="paramname">&#160;</td>
         </tr>
         <tr>
@@ -774,6 +826,42 @@ Public 속성</h2></td></tr>
 
 </div>
 </div>
+<a id="a7a1bb7be2130b3367c2183017801b3ed" name="a7a1bb7be2130b3367c2183017801b3ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7a1bb7be2130b3367c2183017801b3ed">&#9670;&#160;</a></span>SendWeightSwitch()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void UBroadcastManager::SendWeightSwitch </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>InButtonIndex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>InActive</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="UBroadcastManager_8cpp_source.html">UBroadcastManager.cpp</a> 파일의 <a class="el" href="UBroadcastManager_8cpp_source.html#l00053">53</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   54</span>{</div>
+<div class="line"><span class="lineno">   55</span>    <a class="code hl_variable" href="classUBroadcastManager.html#a756c1c50c99027c954393663b51f9ebd">OnWeightSwitch</a>.Broadcast(InButtonIndex, InActive);</div>
+<div class="line"><span class="lineno">   56</span>}</div>
+<div class="ttc" id="aclassUBroadcastManager_html_a756c1c50c99027c954393663b51f9ebd"><div class="ttname"><a href="classUBroadcastManager.html#a756c1c50c99027c954393663b51f9ebd">UBroadcastManager::OnWeightSwitch</a></div><div class="ttdeci">FWeightSwitch OnWeightSwitch</div><div class="ttdef"><b>Definition</b> <a href="UBroadcastManager_8h_source.html#l00093">UBroadcastManager.h:93</a></div></div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="UBroadcastManager_8h_source.html#l00093">OnWeightSwitch</a>.</p>
+
+</div>
+</div>
 <h2 class="groupheader">멤버 데이터 문서화</h2>
 <a id="a15ce56190730a87bbd9ea51210a08b14" name="a15ce56190730a87bbd9ea51210a08b14"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a15ce56190730a87bbd9ea51210a08b14">&#9670;&#160;</a></span>OnAudioCapture</h2>
@@ -901,6 +989,24 @@ Public 속성</h2></td></tr>
 
 </div>
 </div>
+<a id="a756c1c50c99027c954393663b51f9ebd" name="a756c1c50c99027c954393663b51f9ebd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a756c1c50c99027c954393663b51f9ebd">&#9670;&#160;</a></span>OnWeightSwitch</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">FWeightSwitch UBroadcastManager::OnWeightSwitch</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="UBroadcastManager_8h_source.html">UBroadcastManager.h</a> 파일의 <a class="el" href="UBroadcastManager_8h_source.html#l00093">93</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UBroadcastManager_8cpp_source.html#l00053">SendWeightSwitch()</a>.</p>
+
+</div>
+</div>
 <hr/>이 클래스에 대한 문서화 페이지는 다음의 파일들로부터 생성되었습니다.:<ul>
 <li>Source/LatteLibrary/Manager/Public/<a class="el" href="UBroadcastManager_8h_source.html">UBroadcastManager.h</a></li>
 <li>Source/LatteLibrary/Manager/Private/<a class="el" href="UBroadcastManager_8cpp_source.html">UBroadcastManager.cpp</a></li>
@@ -911,7 +1017,7 @@ Public 속성</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classUBroadcastManager.html">UBroadcastManager</a></li>
-    <li class="footer">생성시간 : 일 11월 23 2025 00:14:11, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 일 11월 23 2025 11:42:01, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

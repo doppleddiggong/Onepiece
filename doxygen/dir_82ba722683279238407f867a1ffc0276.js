@@ -9,6 +9,7 @@ var dir_82ba722683279238407f867a1ffc0276 =
     [ "RobotPlayerController.h", "RobotPlayerController_8h.html", "RobotPlayerController_8h" ],
     [ "UFlySystem.h", "UFlySystem_8h.html", "UFlySystem_8h" ],
     [ "UHitStopSystem.h", "UHitStopSystem_8h.html", null ],
+    [ "UInteractionSystem.h", "UInteractionSystem_8h.html", null ],
     [ "UKnockbackSystem.h", "UKnockbackSystem_8h.html", null ],
     [ "UPlayerAnimInstance.h", "UPlayerAnimInstance_8h.html", "UPlayerAnimInstance_8h" ]
 ];

@@ -146,84 +146,72 @@ $(document).ready(function(){initNavTree('APlayerActor_8h_source.html',''); init
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category=<span class="stringliteral">&quot;Command&quot;</span>)</div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#aacf8441b9a00ddaae3d9b4cba86de883">   46</a></span>    void OnFlyEnd();</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>public:</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=&quot;Components|System&quot;)</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#a80b2ec2f8deaa6794eef01838947169f">   50</a></span>    TObjectPtr&lt;class UFlySystem&gt; FlySystem;</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>protected:</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=&quot;Camera&quot;, meta=(AllowPrivateAccess=&quot;true&quot;))</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#ac6ce7fa6f2c0a29dc386147130c26802">   54</a></span>    TObjectPtr&lt;class USpringArmComponent&gt; SpringArmComp;</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=&quot;Camera&quot;, meta=(AllowPrivateAccess=&quot;true&quot;))</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#a856ef7f26d46648083f0fcacdc3c0b5d">   57</a></span>    TObjectPtr&lt;class UCameraComponent&gt; FollowCamera;</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category=&quot;RushAttack|Owner&quot;)</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#a3fb4598e21a9c5af2d9b3007adab9496">   60</a></span>    TObjectPtr&lt;class UCharacterMovementComponent&gt; MoveComp;</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = &quot;Voice&quot;, meta=(AllowPrivateAccess=&quot;true&quot;))</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#a0c1400db5f943254071089e512a2bb25">   63</a></span>    TObjectPtr&lt;class UVoiceConversationSystem&gt; VoiceConversationSystem;</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    UPROPERTY(VisibleAnywhere, BlueprintReadOnly)</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#ab1f95d1f7bf064023276293ae98d4856">   66</a></span>    TEnumAsByte&lt;EMovementMode&gt; PrevMoveMode;</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>public: <span class="comment">// 음성 관련</span></div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    UFUNCTION(BlueprintCallable, Category = &quot;Voice&quot;)</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    <span class="keywordtype">void</span> PlayTTSAudio(const TArray&lt;uint8&gt;&amp; AudioData);</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    </div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>public: <span class="comment">// Control Interface</span></div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category=&quot;Command&quot;)</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#a0db8efea43cc28a694e55d72014642e1">   77</a></span>    <span class="keywordtype">void</span> Cmd_Move(const FVector2D&amp; Axis) override;</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category=&quot;Command&quot;)</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#a21a14eaae23da75b919b848aa87cb535">   79</a></span>    <span class="keywordtype">void</span> Cmd_Look(const FVector2D&amp; Axis) override;</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>public:</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=&quot;Components|System&quot;)</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#a64eb3d279996dbda427e45acbc5de350">   51</a></span>    TObjectPtr&lt;class UInteractionSystem&gt; InteractionSystem;</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>protected:</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=&quot;Components|System&quot;)</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#a80b2ec2f8deaa6794eef01838947169f">   55</a></span>    TObjectPtr&lt;class UFlySystem&gt; FlySystem;</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=&quot;Camera&quot;, meta=(AllowPrivateAccess=&quot;true&quot;))</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#ac6ce7fa6f2c0a29dc386147130c26802">   58</a></span>    TObjectPtr&lt;class USpringArmComponent&gt; SpringArmComp;</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=&quot;Camera&quot;, meta=(AllowPrivateAccess=&quot;true&quot;))</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#a856ef7f26d46648083f0fcacdc3c0b5d">   61</a></span>    TObjectPtr&lt;class UCameraComponent&gt; FollowCamera;</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category=&quot;RushAttack|Owner&quot;)</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#a3fb4598e21a9c5af2d9b3007adab9496">   64</a></span>    TObjectPtr&lt;class UCharacterMovementComponent&gt; MoveComp;</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = &quot;Voice&quot;, meta=(AllowPrivateAccess=&quot;true&quot;))</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#a0c1400db5f943254071089e512a2bb25">   67</a></span>    TObjectPtr&lt;class UVoiceConversationSystem&gt; VoiceConversationSystem;</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    UPROPERTY(VisibleAnywhere, BlueprintReadOnly)</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#ab1f95d1f7bf064023276293ae98d4856">   70</a></span>    TEnumAsByte&lt;EMovementMode&gt; PrevMoveMode;</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>public: <span class="comment">// 음성 관련</span></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    UFUNCTION(BlueprintCallable, Category = &quot;Voice&quot;)</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    <span class="keywordtype">void</span> PlayTTSAudio(const TArray&lt;uint8&gt;&amp; AudioData);</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    </div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>public: <span class="comment">// Control Interface</span></div>
 <div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category=&quot;Command&quot;)</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#a66ac73e897ad069b4015dae80299b1d0">   81</a></span>    <span class="keywordtype">void</span> Cmd_AltitudeUp() override;</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#a0db8efea43cc28a694e55d72014642e1">   81</a></span>    <span class="keywordtype">void</span> Cmd_Move(const FVector2D&amp; Axis) override;</div>
 <div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category=&quot;Command&quot;)</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#a2ab9d4338a3cb9cd0545ab79b9726969">   83</a></span>    <span class="keywordtype">void</span> Cmd_AltitudeDown() override;</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#a21a14eaae23da75b919b848aa87cb535">   83</a></span>    <span class="keywordtype">void</span> Cmd_Look(const FVector2D&amp; Axis) override;</div>
 <div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category=&quot;Command&quot;)</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#a2fa88e47ce8ebd32a2e5d8b542705b0f">   85</a></span>    <span class="keywordtype">void</span> Cmd_AltitudeReleased() override;</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category=&quot;Command&quot;)</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#a4bbf9c7d111a15814b99b4e32a79cfda">   88</a></span>    <span class="keywordtype">void</span> Cmd_Jump() override;</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category=&quot;Command&quot;)</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#a5ca6e213fdff74bd18044f39ee262930">   91</a></span>    <span class="keywordtype">void</span> Cmd_Landing() override;</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#a66ac73e897ad069b4015dae80299b1d0">   85</a></span>    <span class="keywordtype">void</span> Cmd_AltitudeUp() override;</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category=&quot;Command&quot;)</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#a2ab9d4338a3cb9cd0545ab79b9726969">   87</a></span>    <span class="keywordtype">void</span> Cmd_AltitudeDown() override;</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category=&quot;Command&quot;)</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#a2fa88e47ce8ebd32a2e5d8b542705b0f">   89</a></span>    <span class="keywordtype">void</span> Cmd_AltitudeReleased() override;</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category=&quot;Command&quot;)</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#a4bbf9c7d111a15814b99b4e32a79cfda">   92</a></span>    <span class="keywordtype">void</span> Cmd_Jump() override;</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span> </div>
 <div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category=&quot;Command&quot;)</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#ab442f15c0b77fdd38f7a5b7280cf2398">   95</a></span>    <span class="keywordtype">void</span> Cmd_RecordStart() override;</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category=&quot;Command&quot;)</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#a728c9b03094ece6b6313636335f4a6a1">   97</a></span>    <span class="keywordtype">void</span> Cmd_RecordEnd() override;</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span> </div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>public:</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    <span class="comment">// grab 시 들어올릴 위치</span></div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category=&quot;Grab&quot;)</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#a9849d2b52db50d66145740c128e26d37">  102</a></span>    USceneComponent* HoldPosition;</div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    UPROPERTY()</div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#a40fac0d08c747c58520ac56079a67798">  105</a></span>    class UInteractableComponent* HoldingInteractable;</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span> </div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    UFUNCTION(BlueprintCallable, Category = &quot;Interaction&quot;)</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    <span class="keywordtype">void</span> TryPickUp();</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span> </div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    UFUNCTION(BlueprintCallable, Category = &quot;Interaction&quot;)</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    <span class="keywordtype">void</span> TryDrop();</div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span> </div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    <span class="comment">// Line Trace 최대 거리</span></div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    UPROPERTY(EditDefaultsOnly, Category = &quot;Interaction&quot;)</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#a6c59c78465104a8c60558b5d5e4586f7">  115</a></span>    <span class="keywordtype">float</span> InteractDistance = 1200.0f;</div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>    </div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>    class UInteractableComponent* DetectInteractable();</div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    <span class="comment">// class APlatformSwitch* DetectPlatformSwitch();</span></div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span> </div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>public:</div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    <span class="comment">// 서버쪽 pitch 수동으로 동기화</span></div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>    <span class="comment">// bUsePawnControlRotation은 서버-&gt;클라로 전달 안됨</span></div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>    UPROPERTY(ReplicatedUsing=OnRep_LookPitch)</div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#a60fe9ba6d54052fad6f9c4a8305fd023">  124</a></span>    <span class="keywordtype">float</span> LookPitch;</div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span> </div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>    UFUNCTION()</div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>    <span class="keywordtype">void</span> OnRep_LookPitch();</div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>};</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#a5ca6e213fdff74bd18044f39ee262930">   95</a></span>    <span class="keywordtype">void</span> Cmd_Landing() override;</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span> </div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category=&quot;Command&quot;)</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#ab442f15c0b77fdd38f7a5b7280cf2398">   99</a></span>    <span class="keywordtype">void</span> Cmd_RecordStart() override;</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category=&quot;Command&quot;)</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#a728c9b03094ece6b6313636335f4a6a1">  101</a></span>    <span class="keywordtype">void</span> Cmd_RecordEnd() override;</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>public:</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    <span class="comment">// grab 시 들어올릴 위치</span></div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category=&quot;Interaction&quot;)</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#a9849d2b52db50d66145740c128e26d37">  106</a></span>    USceneComponent* HoldPosition;</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span> </div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>public:</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    <span class="comment">// 서버쪽 pitch 수동으로 동기화</span></div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    <span class="comment">// bUsePawnControlRotation은 서버-&gt;클라로 전달 안됨</span></div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    UPROPERTY(ReplicatedUsing=OnRep_LookPitch)</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#a60fe9ba6d54052fad6f9c4a8305fd023">  112</a></span>    <span class="keywordtype">float</span> LookPitch;</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span> </div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    UFUNCTION()</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>    <span class="keywordtype">void</span> OnRep_LookPitch();</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>};</div>
 </div>
 <div class="ttc" id="aEVFXType_8h_html_af8435b1c8c0e40b2bbdf03bb1ca6b4dbaebfe5e1791db03c4cd6ab95801e0977d"><div class="ttname"><a href="EVFXType_8h.html#af8435b1c8c0e40b2bbdf03bb1ca6b4dbaebfe5e1791db03c4cd6ab95801e0977d">EVFXType::Hit</a></div><div class="ttdeci">@ Hit</div></div>
 <div class="ttc" id="aIControllable_8h_html"><div class="ttname"><a href="IControllable_8h.html">IControllable.h</a></div><div class="ttdoc">UControllable 클래스를 선언합니다.</div></div>
@@ -235,7 +223,7 @@ $(document).ready(function(){initNavTree('APlayerActor_8h_source.html',''); init
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_71a9f6b769ee24fe8598c19ea2d70480.html">Character</a></li><li class="navelem"><a class="el" href="dir_82ba722683279238407f867a1ffc0276.html">Public</a></li><li class="navelem"><a class="el" href="APlayerActor_8h.html">APlayerActor.h</a></li>
-    <li class="footer">생성시간 : 일 11월 23 2025 00:14:11, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 일 11월 23 2025 11:42:01, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

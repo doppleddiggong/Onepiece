@@ -1,10 +1,12 @@
 var hierarchy =
 [
     [ "AActor", null, [
+      [ "ADoor", "classADoor.html", null ],
       [ "AGate", "classAGate.html", null ],
       [ "AListActorManager", "classAListActorManager.html", null ],
       [ "ANetworkTesterActor", "classANetworkTesterActor.html", null ],
-      [ "APlatformSwitch", "classAPlatformSwitch.html", null ],
+      [ "APedestalSwitch", "classAPedestalSwitch.html", null ],
+      [ "AWeightSwitch", "classAWeightSwitch.html", null ],
       [ "Aluggage", "classAluggage.html", null ]
     ] ],
     [ "ACharacter", null, [

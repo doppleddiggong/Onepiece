@@ -1,14 +1,14 @@
 var searchData=
 [
   ['activate_0',['Activate',['../classISequenceActivatable.html#ac285873d0ade09e1060924adfd5f8e56',1,'ISequenceActivatable']]],
-  ['activatetrigger_1',['ActivateTrigger',['../classAPlatformSwitch.html#a0791d1e2c46429ce0cd6cf2d4074ce94',1,'APlatformSwitch']]],
-  ['addelapsedtime_2',['AddElapsedTime',['../classAPlatformSwitch.html#afa4435f3d21e8fd380326b426cf9e5da',1,'APlatformSwitch']]],
-  ['addfile_3',['AddFile',['../classFHttpMultipartFormData.html#afcc209c61ee7449848e0f85c98752a74',1,'FHttpMultipartFormData']]],
-  ['addnearbybuilding_4',['AddNearbyBuilding',['../structFGPTContext.html#aa0f24b4af499a6ef0ecc4778c9825ebd',1,'FGPTContext']]],
-  ['addnetworkwaitcount_5',['addnetworkwaitcount',['../classUHttpNetworkSystem.html#a81106a2a506eff7c55cf1de50cb73954',1,'UHttpNetworkSystem::AddNetworkWaitCount()'],['../classUKLingoNetworkSystem.html#accbd4084344a72623fe40deab11d1c29',1,'UKLingoNetworkSystem::AddNetworkWaitCount()']]],
-  ['addstringfield_6',['AddStringField',['../classFHttpMultipartFormData.html#a8380919cfcb7c7a23c9e95c3c4cef04c',1,'FHttpMultipartFormData']]],
-  ['addtext_7',['AddText',['../classFHttpMultipartFormData.html#a7883c51726b656e58cb4d8bf0129048c',1,'FHttpMultipartFormData']]],
-  ['addtogameviewport_8',['AddToGameViewport',['../classULoadginCircle.html#ac264c3057320f9a0bb3e25bb6f5ea244',1,'ULoadginCircle']]],
+  ['activatetrigger_1',['ActivateTrigger',['../classAWeightSwitch.html#a0ca5b93964cec02777db87899407db52',1,'AWeightSwitch']]],
+  ['addfile_2',['AddFile',['../classFHttpMultipartFormData.html#afcc209c61ee7449848e0f85c98752a74',1,'FHttpMultipartFormData']]],
+  ['addnearbybuilding_3',['AddNearbyBuilding',['../structFGPTContext.html#aa0f24b4af499a6ef0ecc4778c9825ebd',1,'FGPTContext']]],
+  ['addnetworkwaitcount_4',['addnetworkwaitcount',['../classUHttpNetworkSystem.html#a81106a2a506eff7c55cf1de50cb73954',1,'UHttpNetworkSystem::AddNetworkWaitCount()'],['../classUKLingoNetworkSystem.html#accbd4084344a72623fe40deab11d1c29',1,'UKLingoNetworkSystem::AddNetworkWaitCount()']]],
+  ['addstringfield_5',['AddStringField',['../classFHttpMultipartFormData.html#a8380919cfcb7c7a23c9e95c3c4cef04c',1,'FHttpMultipartFormData']]],
+  ['addtext_6',['AddText',['../classFHttpMultipartFormData.html#a7883c51726b656e58cb4d8bf0129048c',1,'FHttpMultipartFormData']]],
+  ['addtogameviewport_7',['AddToGameViewport',['../classULoadginCircle.html#ac264c3057320f9a0bb3e25bb6f5ea244',1,'ULoadginCircle']]],
+  ['adoor_8',['ADoor',['../classADoor.html#a58a76e91232834c1f9be0f6f0aea3c6e',1,'ADoor']]],
   ['advance_9',['advance',['../structFParabolaBallisticTrack.html#addb0dcba71a55d25e4059695fc5da8d2',1,'FParabolaBallisticTrack::Advance()'],['../structFParabolaGeometricTrack.html#a615f2e19d8ee6d8ff5b391f7c171b52a',1,'FParabolaGeometricTrack::Advance()']]],
   ['advancetonextmission_10',['AdvanceToNextMission',['../classALingoGameMode.html#ac6047cbad0aabecbab74e6c4b095440b',1,'ALingoGameMode']]],
   ['agate_11',['AGate',['../classAGate.html#a1cbee808a8817006d47e687055da4d57',1,'AGate']]],
@@ -20,12 +20,13 @@ var searchData=
   ['animnotify_5fonjumpstart_17',['AnimNotify_OnJumpStart',['../classURobotAnimInstance.html#a364de18ca32606743a722bb846b85210',1,'URobotAnimInstance']]],
   ['anpcbase_18',['ANPCBase',['../classANPCBase.html#a11f0c1e5e196998f61161d46df59db56',1,'ANPCBase']]],
   ['anpcexaminer_19',['ANPCExaminer',['../classANPCExaminer.html#a91eebcacdb25c63e5b5ab88be191e140',1,'ANPCExaminer']]],
-  ['aplatformswitch_20',['APlatformSwitch',['../classAPlatformSwitch.html#ac28871b31cd4157da8cb67d8069677d9',1,'APlatformSwitch']]],
+  ['apedestalswitch_20',['APedestalSwitch',['../classAPedestalSwitch.html#a2f78fa842608b27dfc98c30a112accfd',1,'APedestalSwitch']]],
   ['aplayeractor_21',['APlayerActor',['../classAPlayerActor.html#addb91f2966d3e68a79699ba89be0a659',1,'APlayerActor']]],
   ['aplayercontrol_22',['APlayerControl',['../classAPlayerControl.html#ad52af79fddcd1253723313ab75eec84c',1,'APlayerControl']]],
   ['appendutf8_23',['AppendUtf8',['../classFHttpMultipartFormData.html#a45725b7f05bae49e0c6db3d24c6342ee',1,'FHttpMultipartFormData']]],
   ['applyarcsolution_24',['applyarcsolution',['../structFParabolaBallisticTrack.html#a37af96db8c53c5e99ea5e0634cc6ef17',1,'FParabolaBallisticTrack::ApplyArcSolution()'],['../structFParabolaGeometricTrack.html#ad11200fe6fac153fe60c04cdaf02afe9',1,'FParabolaGeometricTrack::ApplyArcSolution()']]],
   ['applyease_25',['ApplyEase',['../UEaseFunctionLibrary_8cpp.html#ab52a811d7352aa71f72330819491dc0c',1,'UEaseFunctionLibrary.cpp']]],
   ['areallplayersmissioncomplete_26',['AreAllPlayersMissionComplete',['../classALingoGameState.html#aaa34d72cddb634cb0373e3a849258b45',1,'ALingoGameState']]],
-  ['arobotplayer_27',['ARobotPlayer',['../classARobotPlayer.html#a8d5f1ca4cc2e60f2cf07ed8eed3d50e2',1,'ARobotPlayer']]]
+  ['arobotplayer_27',['ARobotPlayer',['../classARobotPlayer.html#a8d5f1ca4cc2e60f2cf07ed8eed3d50e2',1,'ARobotPlayer']]],
+  ['aweightswitch_28',['AWeightSwitch',['../classAWeightSwitch.html#a6fd6bc2fe2d5bb7d408aee25adeca245',1,'AWeightSwitch']]]
 ];

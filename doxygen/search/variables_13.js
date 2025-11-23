@@ -11,7 +11,7 @@ var searchData=
   ['token_8',['token',['../structFResponseLogin.html#a4b82dac5207d8557f981e6aec3ca9751',1,'FResponseLogin::Token'],['../classALingoPlayerState.html#a8feebbab1107b6836379b644d8d02da6',1,'ALingoPlayerState::Token']]],
   ['totalmissions_9',['TotalMissions',['../classALingoGameMode.html#aca7e5417dd01e87eb5b8f68a5b1c9bc2',1,'ALingoGameMode']]],
   ['transcribed_5ftext_10',['transcribed_text',['../structFResponseAsk.html#ae0e70c432ca12983c76da3bf69ce1062',1,'FResponseAsk']]],
-  ['triggerdelay_11',['TriggerDelay',['../classAPlatformSwitch.html#a7c8656792db5d347dc6029274471af55',1,'APlatformSwitch']]],
+  ['triggerdelay_11',['TriggerDelay',['../classAWeightSwitch.html#a85c189dcaeb033a6d640526347e6032b',1,'AWeightSwitch']]],
   ['tweenalpha_12',['TweenAlpha',['../classUTweenAnimInstance.html#a4cc94bed4efc6c745e17b283e89bf359',1,'UTweenAnimInstance']]],
   ['tweenduration_13',['TweenDuration',['../classUTweenAnimInstance.html#afd148d80982189ea3a74b9ecc7f7c1e5',1,'UTweenAnimInstance']]],
   ['txt_5fdescription_14',['Txt_Description',['../classUMessageBox.html#af27c989c9d6844c87f34a2a7eb7c5654',1,'UMessageBox']]],

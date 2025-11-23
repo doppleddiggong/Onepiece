@@ -3,6 +3,7 @@ var APlayerControl_8cpp =
     [ "IA_ALTITUDE_DOWN_PATH", "APlayerControl_8cpp.html#a19bfb122dd94315b80616bab8ac4cf02", null ],
     [ "IA_ALTITUDE_UP_PATH", "APlayerControl_8cpp.html#a90eab7bb6a3908c6761fc89e85c1cc78", null ],
     [ "IA_GRAB_PATH", "APlayerControl_8cpp.html#ae48e8c8531b0052bfe745b145e850c0e", null ],
+    [ "IA_INTERACT_PATH", "APlayerControl_8cpp.html#a3ab8a9725d785bd80a3ec21f7fe064e0", null ],
     [ "IA_JUMP_PATH", "APlayerControl_8cpp.html#a56b2a02cd847f2f8531199c9cb9b066a", null ],
     [ "IA_LANDING_PATH", "APlayerControl_8cpp.html#a058ca28da0676f456e90b3f5c81364fb", null ],
     [ "IA_LOOK_PATH", "APlayerControl_8cpp.html#a8b72b0499e531ce7d87e8a29960cb2e9", null ],

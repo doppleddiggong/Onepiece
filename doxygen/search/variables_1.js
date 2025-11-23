@@ -2,7 +2,7 @@ var searchData=
 [
   ['b_0',['b',['../classUEaseFunctionLibrary.html#a43bd2c3ccefdcd967ff3bd4e020162a6',1,'UEaseFunctionLibrary::B'],['../classUEaseFunctionLibrary.html#a4ada9b43518dc1b3a343c5037571ffa8',1,'UEaseFunctionLibrary::B'],['../classUEaseFunctionLibrary.html#a5989d2d8734d54d7e89e0fa1d2f98301',1,'UEaseFunctionLibrary::B']]],
   ['bactivate_1',['bactivate',['../classUTweenAnimInstance.html#ac0afcfa1ddcfd570f98752ab7550ac07',1,'UTweenAnimInstance::bActivate'],['../structFSequenceCommand.html#a6180c56cf5a536855f4c4d586a91cbe1',1,'FSequenceCommand::bActivate']]],
-  ['bactivatestate_2',['bActivateState',['../classAPlatformSwitch.html#ace0cc688a387ac31f1a0b80cb87df9f0',1,'APlatformSwitch']]],
+  ['bactivatestate_2',['bActivateState',['../classAWeightSwitch.html#a4b828eef7cc6456e5e5833c6d94c79a0',1,'AWeightSwitch']]],
   ['baseurl_3',['BaseUrl',['../structFServerConfig.html#a8abeabc5af6396f784929d66d0bd6ce7',1,'FServerConfig']]],
   ['bcurrentmissioncomplete_4',['bCurrentMissionComplete',['../classALingoPlayerState.html#affab0eff08c5896e278fef8c90529ceb',1,'ALingoPlayerState']]],
   ['bisair_5',['bIsAir',['../classURobotAnimInstance.html#a5fc33cfc25a1240a31b61335e849bd8d',1,'URobotAnimInstance']]],
@@ -29,5 +29,6 @@ var searchData=
   ['builtbody_26',['BuiltBody',['../classFHttpMultipartFormData.html#a94601907a48475a18267f9f13782be02',1,'FHttpMultipartFormData']]],
   ['button_5fclear_27',['Button_Clear',['../classUDrawingBoardWidget.html#aa6868f171742ae8811c83cd9d05bf7c7',1,'UDrawingBoardWidget']]],
   ['button_5fsave_28',['Button_Save',['../classUDrawingBoardWidget.html#a1c5e4c13d4cec7e07e91b8b2995ce531',1,'UDrawingBoardWidget']]],
-  ['bvalid_29',['bvalid',['../structFGPTContextLocation.html#ad1faaf92fb9b0e55d6d4264fea67b165',1,'FGPTContextLocation::bValid'],['../structFGPTContextNearBuilding.html#a35b185aa2160c582cf4302d4a6da98ff',1,'FGPTContextNearBuilding::bValid']]]
+  ['buttonindex_29',['ButtonIndex',['../classAWeightSwitch.html#af8f4523824757b7861cea5e3095f6935',1,'AWeightSwitch']]],
+  ['bvalid_30',['bvalid',['../structFGPTContextLocation.html#ad1faaf92fb9b0e55d6d4264fea67b165',1,'FGPTContextLocation::bValid'],['../structFGPTContextNearBuilding.html#a35b185aa2160c582cf4302d4a6da98ff',1,'FGPTContextNearBuilding::bValid']]]
 ];
