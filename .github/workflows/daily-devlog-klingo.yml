@@ -91,6 +91,14 @@ jobs:
           echo "📅 Date: $(cat $GITHUB_OUTPUT | grep '^date=' | cut -d= -f2)"
           echo "🌿 Branch: $(cat $GITHUB_OUTPUT | grep '^branch=' | cut -d= -f2)"
 
+      - name: Test OpenAI API Connection
+        if: steps.config.outputs.use_gpt == 'true'
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          cd .github/scripts/devlog_klingo
+          python test_openai_connection.py || echo "⚠️ OpenAI API test failed (will try DevLog generation anyway)"
+
       - name: Generate Daily DevLog with KLingo
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
@@ -101,28 +109,64 @@ jobs:
         run: |
           cd .github/scripts/devlog_klingo
 
-          # 환경 변수 확인
-          echo "Checking environment variables..."
+          # 상세 환경 변수 확인
+          echo "========================================="
+          echo "Environment Variables Debug Info"
+          echo "========================================="
+          echo "Config from config.yml:"
+          echo "  - use_gpt (from config): ${{ steps.config.outputs.use_gpt }}"
+          echo "  - jira_enabled: ${{ steps.config.outputs.jira_enabled }}"
+
+          echo ""
+          echo "Secrets Status:"
           if [ -z "$OPENAI_API_KEY" ]; then
-            echo "WARNING: OPENAI_API_KEY is not set. GPT analysis will be disabled."
+            echo "  ❌ OPENAI_API_KEY: NOT SET (GPT will be DISABLED)"
           else
-            echo "OK: OPENAI_API_KEY is set"
+            echo "  ✅ OPENAI_API_KEY: SET (length: ${#OPENAI_API_KEY} chars)"
           fi
+
+          if [ -z "$JIRA_TOKEN" ]; then
+            echo "  ⚠️  JIRA_API_TOKEN: NOT SET"
+          else
+            echo "  ✅ JIRA_API_TOKEN: SET"
+          fi
+
+          echo ""
+          echo "Final GPT Decision:"
+          if [ "${{ steps.config.outputs.use_gpt }}" == "true" ] && [ -n "$OPENAI_API_KEY" ]; then
+            echo "  ✅ GPT WILL BE USED"
+          else
+            echo "  ❌ GPT WILL NOT BE USED"
+            echo "     Reason: config.use_gpt=${{ steps.config.outputs.use_gpt }}, has_key=$([ -n "$OPENAI_API_KEY" ] && echo true || echo false)"
+          fi
+          echo "========================================="
+          echo ""
 
           # config.json을 환경 변수로 업데이트
           python3 << 'EOF'
           import json
           import os
+          import sys
+
+          print("Python Config Generation Debug:")
+          print("-" * 40)
+
+          # 환경 변수 확인
+          openai_key = os.getenv('OPENAI_API_KEY', '')
+          use_gpt_config = '${{ steps.config.outputs.use_gpt }}' == 'true'
+          has_api_key = bool(openai_key.strip())
+
+          print(f"  use_gpt_config: {use_gpt_config}")
+          print(f"  has_api_key: {has_api_key}")
+          print(f"  OPENAI_API_KEY length: {len(openai_key)}")
+          print(f"  OPENAI_API_KEY prefix: {openai_key[:10] if openai_key else '(empty)'}...")
 
           with open('config.json', 'r', encoding='utf-8') as f:
               config = json.load(f)
 
-          # GPT 설정 - config.yml의 설정과 환경 변수 모두 확인
-          use_gpt_config = '${{ steps.config.outputs.use_gpt }}' == 'true'
-          has_api_key = bool(os.getenv('OPENAI_API_KEY', '').strip())
-
+          # GPT 설정
           config['use_gpt'] = use_gpt_config and has_api_key
-          config['openai_api_key'] = os.getenv('OPENAI_API_KEY', '')
+          config['openai_api_key'] = openai_key
 
           # Jira 설정
           config['jira']['url'] = os.getenv('JIRA_URL', '')
@@ -133,7 +177,16 @@ jobs:
           with open('config_runtime.json', 'w', encoding='utf-8') as f:
               json.dump(config, f, indent=2, ensure_ascii=False)
 
-          print(f"Runtime config created: use_gpt={config['use_gpt']}, has_api_key={has_api_key}")
+          print(f"\n✅ Runtime config created:")
+          print(f"   - use_gpt: {config['use_gpt']}")
+          print(f"   - has_api_key: {has_api_key}")
+          print(f"   - api_key_length: {len(config['openai_api_key'])}")
+          print("-" * 40)
+
+          if not has_api_key:
+              print("\n⚠️  WARNING: OPENAI_API_KEY is empty!")
+              print("   GPT analysis will be DISABLED")
+              sys.exit(0)  # Continue but warn
           EOF
 
           # KLingo DevLog 생성
