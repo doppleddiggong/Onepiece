@@ -26,7 +26,8 @@ AWeightSwitch::AWeightSwitch()
 	SwitchCollision->SetRelativeLocation(FVector::ZeroVector);
 	SwitchCollision->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
 	SwitchCollision->SetCollisionResponseToAllChannels(ECollisionResponse::ECR_Ignore);
-	SwitchCollision->SetCollisionResponseToChannel(ECC_Pawn, ECR_Overlap); // 예시
+	SwitchCollision->SetCollisionResponseToChannel(ECC_Pawn, ECR_Overlap);
+	SwitchCollision->SetCollisionResponseToChannel(ECC_PhysicsBody, ECR_Overlap);
 }
 
 void AWeightSwitch::BeginPlay()
