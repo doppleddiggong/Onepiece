@@ -29,6 +29,8 @@ protected:
 	virtual void BeginPlay() override;
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
+	virtual void GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const override;
+	
 public:
 	virtual void Landed(const FHitResult& Hit) override;
 
@@ -93,4 +95,34 @@ public: // Control Interface
 	void Cmd_RecordStart() override;
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Command")
 	void Cmd_RecordEnd() override;
+
+public:
+	// grab 시 들어올릴 위치
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category="Grab")
+	USceneComponent* HoldPosition;
+
+	UPROPERTY()
+	class UInteractableComponent* HoldingInteractable;
+
+	UFUNCTION(BlueprintCallable, Category = "Interaction")
+	void TryPickUp();
+
+	UFUNCTION(BlueprintCallable, Category = "Interaction")
+	void TryDrop();
+
+	// Line Trace 최대 거리
+	UPROPERTY(EditDefaultsOnly, Category = "Interaction")
+	float InteractDistance = 1200.0f;
+	
+	class UInteractableComponent* DetectInteractable();
+	// class APlatformSwitch* DetectPlatformSwitch();
+
+public:
+	// 서버쪽 pitch 수동으로 동기화
+	// bUsePawnControlRotation은 서버->클라로 전달 안됨
+	UPROPERTY(ReplicatedUsing=OnRep_LookPitch)
+	float LookPitch;
+
+	UFUNCTION()
+	void OnRep_LookPitch();
 };

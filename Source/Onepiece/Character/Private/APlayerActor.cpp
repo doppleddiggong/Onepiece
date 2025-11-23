@@ -10,6 +10,7 @@
 #include "UFlySystem.h"
 
 // Shared
+#include "APlatformSwitch.h"
 #include "Macro.h"
 #include "InputCoreTypes.h"
 #include "UVoiceConversationSystem.h"
@@ -19,6 +20,8 @@
 #include "Components/CapsuleComponent.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
+#include "Net/UnrealNetwork.h"
+#include "Onepiece/Interactable/Public/InteractableComponent.h"
 
 APlayerActor::APlayerActor()
 {
@@ -42,6 +45,12 @@ APlayerActor::APlayerActor()
 	GetCharacterMovement()->bUseControllerDesiredRotation = false;
 
 	VoiceConversationSystem = CreateDefaultSubobject<UVoiceConversationSystem>(TEXT("VoiceConversationSystem"));
+
+	HoldPosition = CreateDefaultSubobject<USceneComponent>(TEXT("HoldPosition"));
+	HoldPosition->SetupAttachment(FollowCamera);
+	
+	HoldingInteractable = nullptr;
+	LookPitch = 0.f;
 }
 
 void APlayerActor::BeginPlay()
@@ -60,6 +69,13 @@ void APlayerActor::BeginPlay()
 void APlayerActor::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
+}
+
+void APlayerActor::GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const
+{
+	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+
+	DOREPLIFETIME(APlayerActor, LookPitch);
 }
 
 void APlayerActor::OnFlyEnd_Implementation()
@@ -121,6 +137,120 @@ void APlayerActor::Landed(const FHitResult& Hit)
 void APlayerActor::PlayTTSAudio(const TArray<uint8>& AudioData)
 {
 	VoiceConversationSystem->PlayVoiceAudio(AudioData);
+}
+
+void APlayerActor::TryPickUp()
+{
+	if (HoldingInteractable)
+		return;
+
+	// Ray trace로 InteractableComponent 찾기   
+	UInteractableComponent* FoundInteractable = DetectInteractable();
+	if (FoundInteractable && HoldPosition)
+	{
+		FoundInteractable->HoldingOwner = this;
+		FoundInteractable->PickUp();
+
+		// 현재 들고 있는 물체로 저장
+		HoldingInteractable = FoundInteractable;
+	}
+	// else if ( auto PlatformSwitch = DetectPlatformSwitch() )
+	// {
+	// 	PlatformSwitch->ChangeActivateState(true);
+	// }
+}
+
+void APlayerActor::TryDrop()
+{
+	if (HoldingInteractable)
+	{
+		HoldingInteractable->Drop();
+		
+		HoldingInteractable->HoldingOwner = nullptr;
+		HoldingInteractable = nullptr;
+	}
+}
+
+UInteractableComponent* APlayerActor::DetectInteractable()
+{
+	FVector CameraLocation = FollowCamera->GetComponentLocation();
+	FVector CameraForward = FollowCamera->GetForwardVector();
+
+	FVector TraceStart = CameraLocation;
+	FVector TraceEnd = TraceStart + (CameraForward * InteractDistance);
+
+	// Hit 결과
+	FHitResult HitResult;
+
+	// Ray trace 실행
+	bool bHit = GetWorld()->LineTraceSingleByChannel(
+		HitResult, TraceStart, TraceEnd, ECC_Visibility);
+	
+	DrawDebugLine(GetWorld(), TraceStart, TraceEnd, bHit?FColor::Green : FColor::Red,
+		false, 1.0f, 0, 2.0f);
+
+	// Hit한 경우
+	if (bHit && HitResult.GetActor())
+	{
+		// Actor에서 InteractableComponent 찾기
+		UInteractableComponent* InteractComp =
+			HitResult.GetActor()->FindComponentByClass<UInteractableComponent>();
+
+		if (InteractComp) return InteractComp;
+	}
+
+	return nullptr;
+}
+
+//
+// APlatformSwitch* APlayerActor::DetectPlatformSwitch()
+// {
+// 	FVector CameraLocation = FollowCamera->GetComponentLocation();
+// 	FVector CameraForward = FollowCamera->GetForwardVector();
+//
+// 	FVector TraceStart = CameraLocation;
+// 	FVector TraceEnd = TraceStart + (CameraForward * InteractDistance);
+//
+// 	// Hit 결과
+// 	FHitResult HitResult;
+//
+// 	// Ray trace 실행
+// 	bool bHit = GetWorld()->LineTraceSingleByChannel(
+// 		HitResult, TraceStart, TraceEnd, ECC_Visibility);
+// 	
+// 	DrawDebugLine(GetWorld(),
+// 		TraceStart, TraceEnd,
+// 		bHit  ? FColor::Green : FColor::Red,
+// 		false,
+// 		0.1f, 0, 2.0f);
+//
+// 	if (bHit)
+// 	{
+// 		if ( AActor* HitActor = HitResult.GetActor())
+// 		{
+// 			if (auto Switch = Cast<APlatformSwitch>(HitActor))
+// 			{
+// 				return Switch;
+// 			}
+// 		}
+// 	}
+// 	
+// 	return nullptr;
+// }
+
+
+
+void APlayerActor::OnRep_LookPitch()
+{
+	if (SpringArmComp)
+	{
+		// 다른 클라이언트에서 보이는 서버 캐릭터의 복제본의 설정 변경
+		SpringArmComp->bUsePawnControlRotation = false;
+
+		FRotator CurrentRotation = SpringArmComp->GetRelativeRotation();
+		CurrentRotation.Pitch = LookPitch;
+		SpringArmComp->SetRelativeRotation(CurrentRotation);
+	}
 }
 
 void APlayerActor::Cmd_Move_Implementation(const FVector2D& Axis)

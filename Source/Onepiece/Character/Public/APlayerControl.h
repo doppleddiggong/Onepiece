@@ -34,6 +34,7 @@ protected:
 	UPROPERTY(EditDefaultsOnly, Category="Input") TObjectPtr<class UInputAction> IA_Jump;
 	UPROPERTY(EditDefaultsOnly, Category="Input") TObjectPtr<class UInputAction> IA_Landing;
 	UPROPERTY(EditDefaultsOnly, Category="Input") TObjectPtr<class UInputAction> IA_Record;
+	UPROPERTY(EditDefaultsOnly, Category="Input") TObjectPtr<class UInputAction> IA_Grab;
 
 	// --- Handlers ---
 	void OnMove(const FInputActionValue& Value);
@@ -48,6 +49,15 @@ protected:
 
 	void OnRecordPressed(const FInputActionValue& Value);
 	void OnRecordReleased(const FInputActionValue& Value);
+
+	void OnGrab(const FInputActionValue& Value);
+	void OnGrabRelease(const FInputActionValue& Value);
+
+	UFUNCTION(Server, Reliable)
+	void Server_OnGrab();
+
+	UFUNCTION(Server, Reliable)
+	void Server_OnGrabRelease();
 	
 private:
     class IControllable* GetControllable() const;

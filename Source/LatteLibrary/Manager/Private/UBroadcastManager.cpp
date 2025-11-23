@@ -44,3 +44,8 @@ void UBroadcastManager::SendAudioCapture(bool bRecording)
 {
 	OnAudioCapture.Broadcast(bRecording);
 }
+
+void UBroadcastManager::SendDoorMessage(int InDoorIndex, bool InOpen)
+{
+	OnDoorMessage.Broadcast(InDoorIndex, InOpen);
+}

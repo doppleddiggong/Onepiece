@@ -77,4 +77,13 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category="Events")
 	void SendAudioCapture(bool bRecording);
+
+
+
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnDoorMessage, int, DoorIndex, bool, Open);
+	UPROPERTY(BlueprintAssignable, Category="Events")
+	FOnDoorMessage OnDoorMessage;
+
+	UFUNCTION(BlueprintCallable, Category="Events")
+	void SendDoorMessage(int InDoorIndex, bool InOpen);	
 };

@@ -5,6 +5,8 @@
  * @brief APlayerControl 구현에 대한 Doxygen 주석을 제공합니다.
  */
 #include "APlayerControl.h"
+
+#include "APlayerActor.h"
 #include "IControllable.h"
 
 #include "EnhancedInputSubsystems.h"
@@ -23,6 +25,7 @@
 #define IA_JUMP_PATH				TEXT("/Game/CustomContents/Input/IA_Game_Jump.IA_Game_Jump")
 #define IA_LANDING_PATH				TEXT("/Game/CustomContents/Input/IA_Game_Landing.IA_Game_Landing")
 #define IA_RECORD_PATH				TEXT("/Game/CustomContents/Input/IA_Game_Record.IA_Game_Record")
+#define IA_GRAB_PATH				TEXT("/Game/CustomContents/Input/IA_Game_Grab.IA_Game_Grab")
 
 
 APlayerControl::APlayerControl()
@@ -36,6 +39,7 @@ APlayerControl::APlayerControl()
 	IA_Jump = FComponentHelper::LoadAsset<UInputAction>(IA_JUMP_PATH);
 	IA_Landing = FComponentHelper::LoadAsset<UInputAction>(IA_LANDING_PATH);
 	IA_Record = FComponentHelper::LoadAsset<UInputAction>(IA_RECORD_PATH);
+	IA_Grab = FComponentHelper::LoadAsset<UInputAction>(IA_GRAB_PATH);
 }
 
 void APlayerControl::BeginPlay()
@@ -77,6 +81,9 @@ void APlayerControl::SetupInputComponent()
 
 		EIC->BindAction(IA_Record, ETriggerEvent::Started, this, &APlayerControl::OnRecordPressed);
 		EIC->BindAction(IA_Record, ETriggerEvent::Completed, this, &APlayerControl::OnRecordReleased);
+
+		EIC->BindAction(IA_Grab, ETriggerEvent::Started, this, &APlayerControl::OnGrab);
+		EIC->BindAction(IA_Grab, ETriggerEvent::Completed, this, &APlayerControl::OnGrabRelease);
 	}
 }
 
@@ -145,4 +152,32 @@ void APlayerControl::OnRecordReleased(const FInputActionValue& Value)
 {
 	if (IControllable* C = GetControllable())
 		C->Cmd_RecordEnd();
+}
+
+void APlayerControl::OnGrab(const FInputActionValue& Value)
+{
+	Server_OnGrab();
+}
+
+void APlayerControl::OnGrabRelease(const FInputActionValue& Value)
+{
+	Server_OnGrabRelease();
+}
+
+void APlayerControl::Server_OnGrab_Implementation()
+{
+	APlayerActor* MyPlayer = Cast<APlayerActor>(GetPawn());
+	if (MyPlayer)
+	{
+		MyPlayer->TryPickUp();
+	}
+}
+
+void APlayerControl::Server_OnGrabRelease_Implementation()
+{
+	APlayerActor* MyPlayer = Cast<APlayerActor>(GetPawn());
+	if (MyPlayer)
+	{
+		MyPlayer->TryDrop();
+	}
 }

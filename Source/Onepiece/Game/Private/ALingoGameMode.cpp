@@ -3,11 +3,8 @@
 
 #include "ALingoGameMode.h"
 
-// #include "ASequencePlayer.h"
 #include "ULingoGameInstance.h"
 #include "ALingoGameState.h"
-// #include "FireMan.h"
-// #include "PeopleBase.h"
 #include "GameLogging.h"
 #include "TimerManager.h"
 #include "GameFramework/PlayerStart.h"
@@ -26,7 +23,7 @@ ALingoGameMode::ALingoGameMode()
 	// Tick 비활성화 (Timer 기반으로 동작)
 	PrimaryActorTick.bCanEverTick = false;
 }
-
+/*
 UClass* ALingoGameMode::GetDefaultPawnClassForController_Implementation(AController* InController)
 {
 	// GameInstance에서 PlayerController의 Role 조회
@@ -86,7 +83,7 @@ UClass* ALingoGameMode::GetDefaultPawnClassForController_Implementation(AControl
 
 	return SelectedPawnClass;
 }
-
+*/
 void ALingoGameMode::BeginPlay()
 {
 	Super::BeginPlay();
@@ -99,18 +96,9 @@ void ALingoGameMode::BeginPlay()
 		HouseGS->CurrentMissionIndex = 0;
 		HouseGS->MissionTimeRemaining = 0.f;
 
-		PRINTLOG( TEXT("[HouseGameMode] Waiting to start"));
-
-		// 임시로 여기
-		SetAllPlayersStart();
+		PRINTLOG( TEXT("[LingoGameMode] Waiting to start"));
 		
-		// 시작 시네마틱
-		FTimerHandle TimerHandle;
-		GetWorldTimerManager().SetTimer(TimerHandle, FTimerDelegate::CreateLambda([&]
-		{
-			ChangeGamePhase(EGamePhase::Intro);
-
-		}), 1.f, false);
+		StartGame();
 	}
 }
 
@@ -119,42 +107,36 @@ void ALingoGameMode::StartGame()
 	ALingoGameState* HouseGS = GetGameState<ALingoGameState>();
 	if (!HouseGS) return;
 
-	ChangeGamePhase(EGamePhase::GameStart);
+	ChangeGamePhase(EGamePhase::ChapterStart);
 	
 	HouseGS->MissionTimeRemaining = HouseGS->MissionTimeLimit;
 	
 	FTimerHandle TimerHandle;
 	GetWorldTimerManager().SetTimer(TimerHandle, FTimerDelegate::CreateLambda([&]
 	{
+		// 첫번째 미션 스타트
 		StartMission(0);
 		
 	}),1.f, false);
 
-	GetWorldTimerManager().SetTimer(MissionTimerHandle, this, &ALingoGameMode::UpdateMissionTimer,
-		1.f, true);
+	//GetWorldTimerManager().SetTimer(MissionTimerHandle, this, &ALingoGameMode::UpdateMissionTimer,
+	//	1.f, true);
 }
 
 void ALingoGameMode::UpdateMissionTimer()
 {
 	ALingoGameState* HouseGS = GetGameState<ALingoGameState>();
 	if (!HouseGS) return;
-
+	
 	HouseGS->MissionTimeRemaining -= 1.f;
-
+	
 	if (HouseGS->MissionTimeRemaining <= 0.f)
 	{
 		PRINTLOG( TEXT("[HouseGameMode] Mission failed."));
 		FailMission();
 		return;
 	}
-
-	/*
-	int32 TimeLeft = FMath::FloorToInt(HouseGS->MissionTimeRemaining);
-	if (TimeLeft == 30 || TimeLeft == 10)
-	{
-		UE_LOG(LogTemp, Warning, TEXT("[HouseGameMode] %d seconds remaining!"), TimeLeft);
-	}
-	*/
+	
 }
 
 void ALingoGameMode::ReportMissionComplete(APlayerController* Player)
@@ -165,7 +147,7 @@ void ALingoGameMode::ReportMissionComplete(APlayerController* Player)
 	if (!HousePS) return;
 
 	// PlayerState에서 이미 bCurrentMissionComplete를 설정했으므로 체크만 수행
-	PRINTLOG( TEXT("[HouseGameMode] %s reported mission complete"), *Player->GetName());
+	PRINTLOG( TEXT("[LingoGameMode] %s reported mission complete"), *Player->GetName());
 
 	CheckMissionProgress();
 }
@@ -177,8 +159,6 @@ void ALingoGameMode::StartMission(int32 MissionIndex)
 
 	if (MissionIndex >= TotalMissions) return;
 
-	//ChangeGamePhase(EGamePhase::MissionStart);
-	
 	// 미션 시작
 	HouseGS->CurrentMissionIndex = MissionIndex;
 	
@@ -205,8 +185,9 @@ void ALingoGameMode::CheckMissionProgress()
 	
 	if (HouseGS->AreAllPlayersMissionComplete())
 	{
-		PRINTLOG( TEXT("[CheckMissionProgress] All missions complete, advancing..."));
-		AdvanceToNextMission();
+		PRINTLOG( TEXT("[CheckMissionProgress] All missions complete, Showing result..."));
+		//AdvanceToNextMission();
+		
 	}
 }
 
@@ -220,7 +201,7 @@ void ALingoGameMode::AdvanceToNextMission()
 	if (NextMissionIndex >= TotalMissions)
 	{
 		// 승리!
-		ChangeGamePhase(EGamePhase::Outro);
+		ChangeGamePhase(EGamePhase::ChapterComplete);
 
 		GetWorldTimerManager().ClearTimer(MissionTimerHandle);
 		return;
@@ -239,15 +220,13 @@ void ALingoGameMode::AdvanceToNextMission()
 
 void ALingoGameMode::FailMission()
 {
-	ChangeGamePhase(EGamePhase::GameOver);
-	
 	GetWorldTimerManager().ClearTimer(MissionTimerHandle);
 }
 
 void ALingoGameMode::Victory()
 {
 	// 승리!
-	ChangeGamePhase(EGamePhase::Victory);
+	ChangeGamePhase(EGamePhase::ChapterComplete);
 }
 
 void ALingoGameMode::ChangeGamePhase(EGamePhase NewState)
@@ -266,51 +245,5 @@ void ALingoGameMode::ChangeGamePhase(EGamePhase NewState)
 	}
 }
 
-void ALingoGameMode::SetAllPlayersStart()
-{
-	for (FConstPlayerControllerIterator It = GetWorld()->GetPlayerControllerIterator(); It; ++It)
-	{
-		APlayerController* PC = It->Get();
-		if (!PC || !PC->GetPawn()) continue;
-
-		ALingoPlayerState* HousePS = PC->GetPlayerState<ALingoPlayerState>();
-		if (!HousePS) continue;
-
-		EPlayerRole CurrentRole = HousePS->PlayerRole;
-		FName PlayerStartTag;
-
-		// Role에 따라 찾을 Tag 결정
-		switch (CurrentRole)
-		{
-		case EPlayerRole::Firefighter:
-			PlayerStartTag = FName("Firefighter");
-			break;
-		case EPlayerRole::Citizen:
-			PlayerStartTag = FName("Citizen");
-			break;
-		default:
-			PRINTLOG(TEXT("[HouseGameMode] No role assigned, skipping spawn"));
-			continue;
-		}
-
-		// Tag로 PlayerStart 찾기
-		TArray<AActor*> FoundStarts;
-		UGameplayStatics::GetAllActorsOfClassWithTag(this, APlayerStart::StaticClass(), PlayerStartTag, FoundStarts);
-
-		if (FoundStarts.Num() > 0)
-		{
-			APlayerStart* PlayerStart = Cast<APlayerStart>(FoundStarts[0]);
-			if (PlayerStart)
-			{
-				PC->GetPawn()->SetActorTransform(PlayerStart->GetActorTransform());
-				PC->GetPawn()->SetActorHiddenInGame(false);
-			}
-		}
-		else
-		{
-			PRINTLOG(TEXT("[HouseGameMode] PlayerStart with tag '%s' not found!"), *PlayerStartTag.ToString());
-		}
-	}
-}
 
 

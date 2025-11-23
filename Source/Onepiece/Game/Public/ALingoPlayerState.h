@@ -21,14 +21,12 @@ enum class EPlayerRole : uint8
 UENUM(BlueprintType)
 enum class EGamePhase :uint8
 {
-	WaitingToStart  UMETA(DisplayName = "Waiting"),
-	Intro			UMETA(DisplayName = "Intro"),
-	GameStart       UMETA(DisplayName = "Game Start"),
-	MissionStart    UMETA(DisplayName = "Mission"),
-	MissionComplete UMETA(DisplayName = "Mission Complete"),
-	GameOver        UMETA(DisplayName = "Game Over"),
-	Outro			UMETA(DisplayName = "Outro"),
-	Victory         UMETA(DisplayName = "Victory")
+	WaitingToStart		UMETA(DisplayName = "Waiting"),
+	ChapterStart		UMETA(DisplayName = "Game Start"),
+	MissionStart		UMETA(DisplayName = "Mission"),
+	MissionComplete		UMETA(DisplayName = "Mission Complete"),
+	Result				UMETA(DisplayName = "Result"),
+	ChapterComplete		UMETA(DisplayName = "Chapter Complete"),
 };
 
 UCLASS()
@@ -47,8 +45,6 @@ public:
 	UPROPERTY(Replicated, BlueprintReadOnly, Category = "Player")
 	EPlayerRole PlayerRole = EPlayerRole::None;
 
-	UPROPERTY(Replicated, BlueprintReadOnly, Category = "Player")
-	bool bIsOutOfOxygen = false;
 	
 public:
 	// 미션 상태
