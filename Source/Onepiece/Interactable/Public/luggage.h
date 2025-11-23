@@ -16,8 +16,8 @@ public:
 
 public:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
-	class UStaticMeshComponent* Mesh;
+	TObjectPtr<class UStaticMeshComponent> Mesh;
 	
 	UPROPERTY(VisibleAnywhere)
-	class UInteractableComponent* InteractableComp;
+	TObjectPtr<class UInteractableComponent> InteractableComp;
 };

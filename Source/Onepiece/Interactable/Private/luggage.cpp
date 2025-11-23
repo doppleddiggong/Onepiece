@@ -4,7 +4,6 @@
 #include "luggage.h"
 #include "InteractableComponent.h"
 
-
 Aluggage::Aluggage()
 {
 	PrimaryActorTick.bCanEverTick = false;

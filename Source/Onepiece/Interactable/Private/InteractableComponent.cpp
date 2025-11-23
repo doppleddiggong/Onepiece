@@ -28,7 +28,7 @@ void UInteractableComponent::BeginPlay()
 	AActor* Owner = GetOwner();
 	if (!Owner)
 	{
-		UE_LOG(LogTemp, Error, TEXT("UInteractableComponent::BeginPlay - GetOwner() returned nullptr!"));
+		PRINTLOG( TEXT("UInteractableComponent::BeginPlay - GetOwner() returned nullptr!"));
 		return;
 	}
 
@@ -54,16 +54,16 @@ void UInteractableComponent::BeginPlay()
 			DetectionRange->OnComponentBeginOverlap.AddDynamic(this, &UInteractableComponent::OnDetectionBeginOverlap);
 			DetectionRange->OnComponentEndOverlap.AddDynamic(this, &UInteractableComponent::OnDetectionEndOverlap);
 			
-			UE_LOG(LogTemp, Log, TEXT("UInteractableComponent: DetectionRange created for %s"), *Owner->GetName());
+			PRINTLOG( TEXT("UInteractableComponent: DetectionRange created for %s"), *Owner->GetName());
 		}
 		else
 		{
-			UE_LOG(LogTemp, Error, TEXT("UInteractableComponent: Failed to create DetectionRange for %s"), *Owner->GetName());
+			PRINTLOG( TEXT("UInteractableComponent: Failed to create DetectionRange for %s"), *Owner->GetName());
 		}
 	}
 	else
 	{
-		UE_LOG(LogTemp, Log, TEXT("UInteractableComponent: DetectionRange already exists for %s"), *Owner->GetName());
+		PRINTLOG( TEXT("UInteractableComponent: DetectionRange already exists for %s"), *Owner->GetName());
 	}
 }
 
