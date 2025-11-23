@@ -49,3 +49,8 @@ void UBroadcastManager::SendDoorMessage(int InDoorIndex, bool InOpen)
 {
 	OnDoorMessage.Broadcast(InDoorIndex, InOpen);
 }
+
+void UBroadcastManager::SendWeightSwitch(int InButtonIndex, bool InActive)
+{
+	OnWeightSwitch.Broadcast(InButtonIndex, InActive);
+}

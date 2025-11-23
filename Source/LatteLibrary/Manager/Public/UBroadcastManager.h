@@ -85,5 +85,14 @@ public:
 	FOnDoorMessage OnDoorMessage;
 
 	UFUNCTION(BlueprintCallable, Category="Events")
-	void SendDoorMessage(int InDoorIndex, bool InOpen);	
+	void SendDoorMessage(int InDoorIndex, bool InOpen);
+
+
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FWeightSwitch, int, ButtonIndex, bool, bIsActive);
+	UPROPERTY(BlueprintAssignable, Category="Events")
+	FWeightSwitch OnWeightSwitch;
+
+	UFUNCTION(BlueprintCallable, Category="Events")
+	void SendWeightSwitch(int InButtonIndex, bool InActive);
+
 };
