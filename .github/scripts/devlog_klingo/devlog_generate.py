@@ -176,18 +176,52 @@ def collect_data(config, target_date, branch_name):
     jira_token = jira_config.get('token') or os.getenv('JIRA_TOKEN')
     jira_project = jira_config.get('project') or os.getenv('JIRA_PROJECT')
 
-    if jira_url and jira_email and jira_token and data.get('jira_account'):
+    if jira_url and jira_email and jira_token:
         try:
-            jira_issues = jira_mapper.fetch_jira_issues(
-                jira_url, jira_email, jira_token,
-                data['jira_account'],
-                jira_project=jira_project,
-                max_results=10
-            )
-            data['jira_issues'] = jira_issues
-            print(f"  [OK] Jira 이슈: {len(jira_issues)}개")
-            if jira_project:
-                print(f"       프로젝트: {jira_project}")
+            # main 브랜치인 경우: 모든 개발자의 Jira 이슈 조회
+            if branch_name == 'main':
+                print(f"  [*] main 브랜치: 전체 개발자 Jira 이슈 조회")
+                all_jira_issues = []
+
+                # developers.csv에서 모든 개발자의 jira_account 가져오기
+                for dev in developers:
+                    dev_jira_account = dev.get('jira_account')
+                    if dev_jira_account:
+                        try:
+                            issues = jira_mapper.fetch_jira_issues(
+                                jira_url, jira_email, jira_token,
+                                dev_jira_account,
+                                jira_project=jira_project,
+                                max_results=10
+                            )
+                            # 개발자 정보 추가
+                            for issue in issues:
+                                issue['developer'] = dev.get('developer', 'Unknown')
+                            all_jira_issues.extend(issues)
+                            print(f"      - {dev.get('developer')}: {len(issues)}개 이슈")
+                        except Exception as e:
+                            print(f"      - {dev.get('developer')}: 조회 실패 ({e})")
+
+                data['jira_issues'] = all_jira_issues
+                print(f"  [OK] 전체 Jira 이슈: {len(all_jira_issues)}개")
+                if jira_project:
+                    print(f"       프로젝트: {jira_project}")
+
+            # 개인 브랜치인 경우: 해당 개발자의 Jira 이슈만 조회
+            elif data.get('jira_account'):
+                jira_issues = jira_mapper.fetch_jira_issues(
+                    jira_url, jira_email, jira_token,
+                    data['jira_account'],
+                    jira_project=jira_project,
+                    max_results=10
+                )
+                data['jira_issues'] = jira_issues
+                print(f"  [OK] Jira 이슈: {len(jira_issues)}개")
+                if jira_project:
+                    print(f"       프로젝트: {jira_project}")
+            else:
+                print(f"  [WARN]  개발자 정보를 찾을 수 없습니다")
+                data['jira_issues'] = []
         except Exception as e:
             print(f"  [WARN]  Jira API 호출 실패: {e}")
             data['jira_issues'] = []
