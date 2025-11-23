@@ -12,6 +12,7 @@
 * [dopple - 2025-11-10](DevLog/AgentLog/dopple/251110.md)
 
 ### Daily Logs (2025-11)
+* [2025-11-22](DevLog/Daily/2025-11-22.md)
 * [2025-11-21](DevLog/Daily/2025-11-21.md)
 * [2025-11-20](DevLog/Daily/2025-11-20.md)
 * [2025-11-19](DevLog/Daily/2025-11-19.md)
