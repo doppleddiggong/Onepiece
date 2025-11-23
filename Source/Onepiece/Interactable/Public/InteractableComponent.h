@@ -108,10 +108,6 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Debug")
 	void ShowDebugInfo(AActor* ViewerActor);
 
-	/** 감지 거리 변경 (런타임) */
-	UFUNCTION(BlueprintCallable, Category = "Interaction")
-	void SetDetectionDistance(float NewDistance);
-
 	// ========================================
 	// 범용 상호작용
 	// ========================================
