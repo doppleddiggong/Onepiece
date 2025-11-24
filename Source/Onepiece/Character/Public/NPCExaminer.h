@@ -41,4 +41,22 @@ protected:
 	// Change Eye Color Red
 	UFUNCTION(BlueprintCallable)
 	void ChangeEyeColor();
+	
+	// Near Player Values
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	TObjectPtr<class AOwlPlayer> DetectedPlayer;
+	
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	bool bIsPlayerNear;
+	
+	// Collision
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	TObjectPtr<class USphereComponent> PlayerDetectSphereComp;
+	
+	// Overlap Player
+	UFUNCTION()
+	void OnSphereBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
+	
+	UFUNCTION()
+	void OnSphereEndOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
 };

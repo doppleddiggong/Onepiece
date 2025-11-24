@@ -3,6 +3,10 @@
 
 #include "NPCExaminer.h"
 
+#include "AOwlPlayer.h"
+#include "Components/SphereComponent.h"
+#include "Onepiece/Onepiece.h"
+
 
 // Sets default values
 ANPCExaminer::ANPCExaminer()
@@ -15,6 +19,10 @@ ANPCExaminer::ANPCExaminer()
 	{
 		Material2 = materialRef.Object;
 	}
+	
+	PlayerDetectSphereComp = CreateDefaultSubobject<USphereComponent>(TEXT("PlayerDetectSphereComp"));
+	PlayerDetectSphereComp->SetupAttachment(GetRootComponent());
+	PlayerDetectSphereComp->SetSphereRadius(200.f);
 }
 
 // Called when the game starts or when spawned
@@ -22,8 +30,13 @@ void ANPCExaminer::BeginPlay()
 {
 	Super::BeginPlay();
 	
+	// Set Dynamic Material
 	DynamicMaterial2 = UMaterialInstanceDynamic::Create(Material2, this);
 	GetMesh()->SetMaterial(0, DynamicMaterial2);
+	
+	// Bind Overlap Event
+	PlayerDetectSphereComp->OnComponentBeginOverlap.AddDynamic(this, &ANPCExaminer::OnSphereBeginOverlap);
+	PlayerDetectSphereComp->OnComponentEndOverlap.AddDynamic(this, &ANPCExaminer::OnSphereEndOverlap);
 }
 
 // Called every frame
@@ -47,5 +60,17 @@ void ANPCExaminer::ChangeEyeColor()
 	}
 	
 	DynamicMaterial2->SetVectorParameterValue(EyeColorName, EyeColor);
+}
+
+void ANPCExaminer::OnSphereBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
+{
+	bIsPlayerNear = true;
+	DetectedPlayer = Cast<AOwlPlayer>(OtherActor);
+}
+
+void ANPCExaminer::OnSphereEndOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
+{
+	bIsPlayerNear = false;
+	DetectedPlayer = nullptr;
 }
 

@@ -13,7 +13,7 @@ void URobotAnimInstance::NativeBeginPlay()
 	AActor* owningActor = GetOwningActor();
 	if (owningActor)
 	{
-		OwningRobot = Cast<ARobotPlayer>(owningActor);
+		OwningRobot = Cast<AOwlPlayer>(owningActor);
 	}
 }
 

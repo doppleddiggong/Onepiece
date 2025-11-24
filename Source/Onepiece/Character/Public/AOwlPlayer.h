@@ -8,12 +8,12 @@
 #include "AOwlPlayer.generated.h"
 
 UCLASS()
-class ONEPIECE_API ARobotPlayer : public ACharacter
+class ONEPIECE_API AOwlPlayer : public ACharacter
 {
 	GENERATED_BODY()
 
 public:
-	ARobotPlayer();
+	AOwlPlayer();
 
 protected:
 	virtual void BeginPlay() override;
