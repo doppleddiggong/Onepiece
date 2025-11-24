@@ -13,7 +13,7 @@
 
 
 // Sets default values
-ARobotPlayer::ARobotPlayer()
+AOwlPlayer::AOwlPlayer()
 {
 	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
@@ -50,13 +50,28 @@ ARobotPlayer::ARobotPlayer()
 	}
 	
 	// Mesh
+	// Set Owl Mesh
+	ConstructorHelpers::FObjectFinder<USkeletalMesh> playerMeshRef(TEXT("/Script/Engine.SkeletalMesh'/Game/CustomContents/Character/Asset/Owl/SKM_GreenOwlRobot.SKM_GreenOwlRobot'"));
+	if (playerMeshRef.Succeeded())
+	{
+		GetMesh()->SetSkeletalMesh(playerMeshRef.Object);
+		GetMesh()->SetRelativeLocationAndRotation(FVector(0, 0, -70), FRotator(0, -90, 0));
+	}
+	
+	// ABP
+	// Set ABP_Owl
+	ConstructorHelpers::FClassFinder<UAnimInstance> playerABPRef(TEXT("/Game/CustomContents/Animations/ABP_Owl.ABP_Owl_C"));
+	if (playerABPRef.Succeeded())
+	{
+		GetMesh()->SetAnimInstanceClass(playerABPRef.Class);
+	}
 	
 	// Capsule Comp
 	GetCapsuleComponent()->InitCapsuleSize(35.f, 70.0f);
 	
 	// Movement
 	bUseControllerRotationPitch = false;
-	bUseControllerRotationYaw = false;
+	bUseControllerRotationYaw = true;
 	bUseControllerRotationRoll = false;
 	
 	GetCharacterMovement()->RotationRate = FRotator(0.0f, 500.0f, 0.0f);
@@ -67,14 +82,16 @@ ARobotPlayer::ARobotPlayer()
 	CameraBoom = CreateDefaultSubobject<USpringArmComponent>(TEXT("CameraBoom"));
 	CameraBoom->SetupAttachment(RootComponent);
 	CameraBoom->TargetArmLength = 250.f;
-	CameraBoom->bUsePawnControlRotation = true;
+	CameraBoom->bUsePawnControlRotation = false;
 	
 	FollowCamera = CreateDefaultSubobject<UCameraComponent>(TEXT("FollowCamera"));
 	FollowCamera->SetupAttachment(GetMesh(), TEXT("Head"));
-	FollowCamera->bUsePawnControlRotation = false;
+	// First Person Camera
+	FollowCamera->SetRelativeLocationAndRotation(FVector(0,-14.285715,14.285715), FRotator(90, 90, 0));
+	FollowCamera->bUsePawnControlRotation = true;
 }
 
-void ARobotPlayer::BeginPlay()
+void AOwlPlayer::BeginPlay()
 {
 	Super::BeginPlay();
 	
@@ -89,27 +106,27 @@ void ARobotPlayer::BeginPlay()
 	}
 }
 
-void ARobotPlayer::Tick(float DeltaTime)
+void AOwlPlayer::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 }
 
-void ARobotPlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
+void AOwlPlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 	
 	auto playerInput = Cast<UEnhancedInputComponent>(PlayerInputComponent);
 	if (playerInput)
 	{
-		playerInput->BindAction(MoveAction, ETriggerEvent::Triggered, this, &ARobotPlayer::OnMove);
-		playerInput->BindAction(MoveAction, ETriggerEvent::Completed, this, &ARobotPlayer::OnStopMove);
-		playerInput->BindAction(LookAction, ETriggerEvent::Triggered, this, &ARobotPlayer::OnLook);
-		playerInput->BindAction(JumpAction, ETriggerEvent::Started, this, &ARobotPlayer::OnJump);
-		playerInput->BindAction(RunAction, ETriggerEvent::Started, this, &ARobotPlayer::OnRun);
+		playerInput->BindAction(MoveAction, ETriggerEvent::Triggered, this, &AOwlPlayer::OnMove);
+		playerInput->BindAction(MoveAction, ETriggerEvent::Completed, this, &AOwlPlayer::OnStopMove);
+		playerInput->BindAction(LookAction, ETriggerEvent::Triggered, this, &AOwlPlayer::OnLook);
+		playerInput->BindAction(JumpAction, ETriggerEvent::Started, this, &AOwlPlayer::OnJump);
+		playerInput->BindAction(RunAction, ETriggerEvent::Started, this, &AOwlPlayer::OnRun);
 	}
 }
 
-void ARobotPlayer::OnMove(const FInputActionValue& Value)
+void AOwlPlayer::OnMove(const FInputActionValue& Value)
 {
 	// input is a Vector2D
 	FVector2D MovementVector = Value.Get<FVector2D>();
@@ -132,13 +149,13 @@ void ARobotPlayer::OnMove(const FInputActionValue& Value)
 	}
 }
 
-void ARobotPlayer::OnStopMove()
+void AOwlPlayer::OnStopMove()
 {
 	bIsRunning = false;
 	GetCharacterMovement()->MaxWalkSpeed = WalkSpeed;
 }
 
-void ARobotPlayer::OnLook(const FInputActionValue& Value)
+void AOwlPlayer::OnLook(const FInputActionValue& Value)
 {
 	// input is a Vector2D
 	FVector2D LookAxisVector = Value.Get<FVector2D>();
@@ -151,12 +168,12 @@ void ARobotPlayer::OnLook(const FInputActionValue& Value)
 	}
 }
 
-void ARobotPlayer::OnJump()
+void AOwlPlayer::OnJump()
 {
 	bIsJumpStart = true;
 }
 
-void ARobotPlayer::OnRun()
+void AOwlPlayer::OnRun()
 {
 	if (bIsJumpStart || GetMovementComponent()->IsFalling()) return;
 	
@@ -172,17 +189,17 @@ void ARobotPlayer::OnRun()
 	}
 }
 
-bool ARobotPlayer::GetIsRunning()
+bool AOwlPlayer::GetIsRunning()
 {
 	return bIsRunning;
 }
 
-bool ARobotPlayer::GetIsJumpStart()
+bool AOwlPlayer::GetIsJumpStart()
 {
 	return bIsJumpStart;
 }
 
-void ARobotPlayer::DoJump()
+void AOwlPlayer::DoJump()
 {
 	bIsJumpStart = false;
 	Jump();

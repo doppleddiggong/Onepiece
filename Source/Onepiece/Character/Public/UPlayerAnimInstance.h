@@ -20,7 +20,7 @@ public:
 	
 protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Values")
-	TObjectPtr<class ARobotPlayer> OwningRobot;
+	TObjectPtr<class AOwlPlayer> OwningRobot;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Values")
 	bool bIsRunning;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Values")
