@@ -1,7 +1,7 @@
 var searchData=
 [
   ['cachedgamestate_0',['CachedGameState',['../classUMainWidget.html#aa0abca549ef2be9c4610d4890d5c0448',1,'UMainWidget']]],
-  ['cameraboom_1',['CameraBoom',['../classARobotPlayer.html#ae418c18c4f59ed9eed35da27a294ebe6',1,'ARobotPlayer']]],
+  ['cameraboom_1',['CameraBoom',['../classAOwlPlayer.html#a98b1fae1d8f37fcf5dfbbd8a8ca4f67d',1,'AOwlPlayer']]],
   ['character_2',['Character',['../structFPlayerInfo.html#ab6244d3c543075c81852257fe6ae3fec',1,'FPlayerInfo']]],
   ['characterassetcache_3',['CharacterAssetCache',['../classUGameDataManager.html#a06126e08dc91b9b5ec64805f5c3774bf',1,'UGameDataManager']]],
   ['characterassettable_4',['CharacterAssetTable',['../classUGameDataManager.html#a7d5f4b7321bc2405f3ff9f696b7ddd75',1,'UGameDataManager']]],

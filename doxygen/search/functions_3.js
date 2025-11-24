@@ -15,7 +15,7 @@ var searchData=
   ['delaycallback_12',['DelayCallBack',['../classUDelayTaskManager.html#acfa854974c5945327224f2f77287abf2',1,'UDelayTaskManager']]],
   ['detectmimefromextension_13',['DetectMimeFromExtension',['../classFHttpMultipartFormData.html#a8ea64e32c0af057a86744e32adb7d096',1,'FHttpMultipartFormData']]],
   ['disconnect_14',['Disconnect',['../classUWebSocketSystem.html#a32fee960c1f1aae43fec2dc8ec030d45',1,'UWebSocketSystem']]],
-  ['dojump_15',['DoJump',['../classARobotPlayer.html#a32a125d5a167f7a4652f8ab9d544dddb',1,'ARobotPlayer']]],
+  ['dojump_15',['DoJump',['../classAOwlPlayer.html#abc9f2f980307d9029b521d6f558ca28e',1,'AOwlPlayer']]],
   ['drawlines_16',['DrawLines',['../classUDrawingBoardWidget.html#a14e1c8841d8df9cad180cd6aae43ca53',1,'UDrawingBoardWidget']]],
   ['drawparaboladebug_17',['DrawParabolaDebug',['../structFMathHelper.html#a4baca9166815847daff432d9575a9e60',1,'FMathHelper']]],
   ['drawpoint_18',['DrawPoint',['../classUDrawingBoardWidget.html#ab85f5149e56cd9bd2c6c159621b9bc18',1,'UDrawingBoardWidget']]],

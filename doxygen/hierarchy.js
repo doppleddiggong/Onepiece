@@ -2,6 +2,7 @@ var hierarchy =
 [
     [ "AActor", null, [
       [ "AContactTrigger", "classAContactTrigger.html", null ],
+      [ "AConveyorBelt", "classAConveyorBelt.html", null ],
       [ "ADoor", "classADoor.html", null ],
       [ "AGate", "classAGate.html", null ],
       [ "AListActorManager", "classAListActorManager.html", null ],
@@ -14,8 +15,8 @@ var hierarchy =
       [ "ANPCBase", "classANPCBase.html", [
         [ "ANPCExaminer", "classANPCExaminer.html", null ]
       ] ],
-      [ "APlayerActor", "classAPlayerActor.html", null ],
-      [ "ARobotPlayer", "classARobotPlayer.html", null ]
+      [ "AOwlPlayer", "classAOwlPlayer.html", null ],
+      [ "APlayerActor", "classAPlayerActor.html", null ]
     ] ],
     [ "AGameMode", null, [
       [ "ALingoGameMode", "classALingoGameMode.html", null ]

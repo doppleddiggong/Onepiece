@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['walkspeed_0',['WalkSpeed',['../classARobotPlayer.html#af497a1e5954b587592932776f004941f',1,'ARobotPlayer']]],
+  ['walkspeed_0',['WalkSpeed',['../classAOwlPlayer.html#aeb0f9a393680dd632fbfdb063b067c50',1,'AOwlPlayer']]],
   ['websocket_1',['WebSocket',['../classUWebSocketSystem.html#a6ea6f4303102f95763988ce17e88f4cd',1,'UWebSocketSystem']]],
   ['websocketurl_2',['WebSocketUrl',['../structFServerConfig.html#a192542ce9a719e9f4a9dd468e1e69aea',1,'FServerConfig']]],
   ['white_3',['White',['../namespaceGameColor.html#a85944ad816eb9238756d535533eac5d0',1,'GameColor']]],

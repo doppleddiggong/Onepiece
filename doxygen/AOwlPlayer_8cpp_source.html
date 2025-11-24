@@ -125,7 +125,7 @@ $(document).ready(function(){initNavTree('AOwlPlayer_8cpp_source.html',''); init
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment">// Sets default values</span></div>
 <div class="foldopen" id="foldopen00016" data-start="{" data-end="}">
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="classARobotPlayer.html#a8d5f1ca4cc2e60f2cf07ed8eed3d50e2">   16</a></span><a class="code hl_function" href="classARobotPlayer.html#a8d5f1ca4cc2e60f2cf07ed8eed3d50e2">ARobotPlayer::ARobotPlayer</a>()</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="classAOwlPlayer.html#afbac3ba9e376aedfa2f022e380a99b14">   16</a></span><a class="code hl_function" href="classAOwlPlayer.html#afbac3ba9e376aedfa2f022e380a99b14">AOwlPlayer::AOwlPlayer</a>()</div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>{</div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <span class="comment">// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don&#39;t need it.</span></div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    PrimaryActorTick.bCanEverTick = <span class="keyword">true</span>;</div>
@@ -134,225 +134,242 @@ $(document).ready(function(){initNavTree('AOwlPlayer_8cpp_source.html',''); init
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    ConstructorHelpers::FObjectFinder&lt;UInputMappingContext&gt; imcRef(TEXT(<span class="stringliteral">&quot;/Script/EnhancedInput.InputMappingContext&#39;/Game/ThirdPerson/Blueprints/Robots/Input/IMC_Robot.IMC_Robot&#39;&quot;</span>));</div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="keywordflow">if</span> (imcRef.Succeeded())</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    {</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        <a class="code hl_variable" href="classARobotPlayer.html#a257773d4e0786436cfa649cc6e180981">RobotIMC</a> = imcRef.Object;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        <a class="code hl_variable" href="classAOwlPlayer.html#a195fb98370ddb3790a17a15964335d4c">RobotIMC</a> = imcRef.Object;</div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    }</div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    </div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    ConstructorHelpers::FObjectFinder&lt;UInputAction&gt; moveActionRef(TEXT(<span class="stringliteral">&quot;/Script/EnhancedInput.InputAction&#39;/Game/ThirdPerson/Blueprints/Robots/Input/IA_RobotMove.IA_RobotMove&#39;&quot;</span>));</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="keywordflow">if</span> (moveActionRef.Succeeded())</div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    {</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        <a class="code hl_variable" href="classARobotPlayer.html#a70609937b89d01e47bff342817ccb677">MoveAction</a> = moveActionRef.Object;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        <a class="code hl_variable" href="classAOwlPlayer.html#a5cd45dbeb35bea622072f5fbc01537e1">MoveAction</a> = moveActionRef.Object;</div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    }</div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    </div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    ConstructorHelpers::FObjectFinder&lt;UInputAction&gt; lookActionRef(TEXT(<span class="stringliteral">&quot;/Script/EnhancedInput.InputAction&#39;/Game/ThirdPerson/Blueprints/Robots/Input/IA_RobotLook.IA_RobotLook&#39;&quot;</span>));</div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="keywordflow">if</span> (lookActionRef.Succeeded())</div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    {</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        <a class="code hl_variable" href="classARobotPlayer.html#a4b8b27ee6dba2e6da0f8a741b6d3a0c7">LookAction</a> = lookActionRef.Object;</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        <a class="code hl_variable" href="classAOwlPlayer.html#ad5686cb53777eb24a8c4e4a04a99886f">LookAction</a> = lookActionRef.Object;</div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    }</div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    </div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    ConstructorHelpers::FObjectFinder&lt;UInputAction&gt; jumpActionRef(TEXT(<span class="stringliteral">&quot;/Script/EnhancedInput.InputAction&#39;/Game/ThirdPerson/Blueprints/Robots/Input/IA_RobotJump.IA_RobotJump&#39;&quot;</span>));</div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="keywordflow">if</span> (jumpActionRef.Succeeded())</div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    {</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        <a class="code hl_variable" href="classARobotPlayer.html#af14f01bc542e5c3d95cb9b6b39c3d955">JumpAction</a> = jumpActionRef.Object;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        <a class="code hl_variable" href="classAOwlPlayer.html#acf67a336974d962aae6f0fff6e93e881">JumpAction</a> = jumpActionRef.Object;</div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    }</div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    </div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    ConstructorHelpers::FObjectFinder&lt;UInputAction&gt; runActionRef(TEXT(<span class="stringliteral">&quot;/Script/EnhancedInput.InputAction&#39;/Game/ThirdPerson/Blueprints/Robots/Input/IA_RobotRun.IA_RobotRun&#39;&quot;</span>));</div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keywordflow">if</span> (runActionRef.Succeeded())</div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    {</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        <a class="code hl_variable" href="classARobotPlayer.html#a4fedbcd2d50b848726df41a8728e487c">RunAction</a> = runActionRef.Object;</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        <a class="code hl_variable" href="classAOwlPlayer.html#a3a17273ada64aa8d321b1cc5c5d1b4e3">RunAction</a> = runActionRef.Object;</div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    }</div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    </div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="comment">// Mesh</span></div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    </div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="comment">// Capsule Comp</span></div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    GetCapsuleComponent()-&gt;InitCapsuleSize(35.f, 70.0f);</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    </div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="comment">// Movement</span></div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    bUseControllerRotationPitch = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    bUseControllerRotationYaw = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    bUseControllerRotationRoll = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    </div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    GetCharacterMovement()-&gt;RotationRate = FRotator(0.0f, 500.0f, 0.0f);</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    GetCharacterMovement()-&gt;MaxWalkSpeed = <a class="code hl_variable" href="classARobotPlayer.html#af497a1e5954b587592932776f004941f">WalkSpeed</a>;</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    GetCharacterMovement()-&gt;bOrientRotationToMovement = <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    </div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <span class="comment">// Camera Comp</span></div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <a class="code hl_variable" href="classARobotPlayer.html#ae418c18c4f59ed9eed35da27a294ebe6">CameraBoom</a> = CreateDefaultSubobject&lt;USpringArmComponent&gt;(TEXT(<span class="stringliteral">&quot;CameraBoom&quot;</span>));</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <a class="code hl_variable" href="classARobotPlayer.html#ae418c18c4f59ed9eed35da27a294ebe6">CameraBoom</a>-&gt;SetupAttachment(RootComponent);</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <a class="code hl_variable" href="classARobotPlayer.html#ae418c18c4f59ed9eed35da27a294ebe6">CameraBoom</a>-&gt;TargetArmLength = 250.f;</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <a class="code hl_variable" href="classARobotPlayer.html#ae418c18c4f59ed9eed35da27a294ebe6">CameraBoom</a>-&gt;bUsePawnControlRotation = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="comment">// Set Owl Mesh</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    ConstructorHelpers::FObjectFinder&lt;USkeletalMesh&gt; playerMeshRef(TEXT(<span class="stringliteral">&quot;/Script/Engine.SkeletalMesh&#39;/Game/CustomContents/Character/Asset/Owl/SKM_GreenOwlRobot.SKM_GreenOwlRobot&#39;&quot;</span>));</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="keywordflow">if</span> (playerMeshRef.Succeeded())</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    {</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        GetMesh()-&gt;SetSkeletalMesh(playerMeshRef.Object);</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        GetMesh()-&gt;SetRelativeLocationAndRotation(FVector(0, 0, -70), FRotator(0, -90, 0));</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    }</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    </div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="comment">// ABP</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="comment">// Set ABP_Owl</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    ConstructorHelpers::FClassFinder&lt;UAnimInstance&gt; playerABPRef(TEXT(<span class="stringliteral">&quot;/Game/CustomContents/Animations/ABP_Owl.ABP_Owl_C&quot;</span>));</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    <span class="keywordflow">if</span> (playerABPRef.Succeeded())</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    {</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        GetMesh()-&gt;SetAnimInstanceClass(playerABPRef.Class);</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    }</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <span class="comment">// Capsule Comp</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    GetCapsuleComponent()-&gt;InitCapsuleSize(35.f, 70.0f);</div>
 <div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    </div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    <a class="code hl_variable" href="classARobotPlayer.html#a4bebeb9b3a91e7121bd50251797e1710">FollowCamera</a> = CreateDefaultSubobject&lt;UCameraComponent&gt;(TEXT(<span class="stringliteral">&quot;FollowCamera&quot;</span>));</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    <a class="code hl_variable" href="classARobotPlayer.html#a4bebeb9b3a91e7121bd50251797e1710">FollowCamera</a>-&gt;SetupAttachment(GetMesh(), TEXT(<span class="stringliteral">&quot;Head&quot;</span>));</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    <a class="code hl_variable" href="classARobotPlayer.html#a4bebeb9b3a91e7121bd50251797e1710">FollowCamera</a>-&gt;bUsePawnControlRotation = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>}</div>
-</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
-<div class="foldopen" id="foldopen00077" data-start="{" data-end="}">
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno"><a class="line" href="classARobotPlayer.html#af5e1fe2d8101494e6eb67e3702a6d621">   77</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classARobotPlayer.html#af5e1fe2d8101494e6eb67e3702a6d621">ARobotPlayer::BeginPlay</a>()</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>{</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    Super::BeginPlay();</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    <span class="comment">// Movement</span></div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    bUseControllerRotationPitch = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    bUseControllerRotationYaw = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    bUseControllerRotationRoll = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    </div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    GetCharacterMovement()-&gt;RotationRate = FRotator(0.0f, 500.0f, 0.0f);</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    GetCharacterMovement()-&gt;MaxWalkSpeed = <a class="code hl_variable" href="classAOwlPlayer.html#aeb0f9a393680dd632fbfdb063b067c50">WalkSpeed</a>;</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    GetCharacterMovement()-&gt;bOrientRotationToMovement = <span class="keyword">true</span>;</div>
 <div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    </div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    <span class="keyword">auto</span> pc = Cast&lt;APlayerController&gt;(Controller);</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    <span class="keywordflow">if</span> (pc)</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    {</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        <span class="keyword">auto</span> subsys = ULocalPlayer::GetSubsystem&lt;UEnhancedInputLocalPlayerSubsystem&gt;(pc-&gt;GetLocalPlayer());</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        <span class="keywordflow">if</span> (subsys)</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        {</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>            subsys-&gt;AddMappingContext(<a class="code hl_variable" href="classARobotPlayer.html#a257773d4e0786436cfa649cc6e180981">RobotIMC</a>, 0);</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        }</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    }</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>}</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    <span class="comment">// Camera Comp</span></div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    <a class="code hl_variable" href="classAOwlPlayer.html#a98b1fae1d8f37fcf5dfbbd8a8ca4f67d">CameraBoom</a> = CreateDefaultSubobject&lt;USpringArmComponent&gt;(TEXT(<span class="stringliteral">&quot;CameraBoom&quot;</span>));</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    <a class="code hl_variable" href="classAOwlPlayer.html#a98b1fae1d8f37fcf5dfbbd8a8ca4f67d">CameraBoom</a>-&gt;SetupAttachment(RootComponent);</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    <a class="code hl_variable" href="classAOwlPlayer.html#a98b1fae1d8f37fcf5dfbbd8a8ca4f67d">CameraBoom</a>-&gt;TargetArmLength = 250.f;</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    <a class="code hl_variable" href="classAOwlPlayer.html#a98b1fae1d8f37fcf5dfbbd8a8ca4f67d">CameraBoom</a>-&gt;bUsePawnControlRotation = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    </div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    <a class="code hl_variable" href="classAOwlPlayer.html#aefcaff018a03293b67c7c662a4d57dcf">FollowCamera</a> = CreateDefaultSubobject&lt;UCameraComponent&gt;(TEXT(<span class="stringliteral">&quot;FollowCamera&quot;</span>));</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    <a class="code hl_variable" href="classAOwlPlayer.html#aefcaff018a03293b67c7c662a4d57dcf">FollowCamera</a>-&gt;SetupAttachment(GetMesh(), TEXT(<span class="stringliteral">&quot;Head&quot;</span>));</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    <span class="comment">// First Person Camera</span></div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    <a class="code hl_variable" href="classAOwlPlayer.html#aefcaff018a03293b67c7c662a4d57dcf">FollowCamera</a>-&gt;SetRelativeLocationAndRotation(FVector(0,-14.285715,14.285715), FRotator(90, 90, 0));</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    <a class="code hl_variable" href="classAOwlPlayer.html#aefcaff018a03293b67c7c662a4d57dcf">FollowCamera</a>-&gt;bUsePawnControlRotation = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>}</div>
 </div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
-<div class="foldopen" id="foldopen00092" data-start="{" data-end="}">
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno"><a class="line" href="classARobotPlayer.html#a4b61f105f0a9b09b24dcd092ca0ecdb8">   92</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classARobotPlayer.html#a4b61f105f0a9b09b24dcd092ca0ecdb8">ARobotPlayer::Tick</a>(<span class="keywordtype">float</span> DeltaTime)</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>{</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    Super::Tick(DeltaTime);</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>}</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span> </div>
+<div class="foldopen" id="foldopen00094" data-start="{" data-end="}">
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno"><a class="line" href="classAOwlPlayer.html#aa8bec2e9c4afd39faf926b6faa26b6ab">   94</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAOwlPlayer.html#aa8bec2e9c4afd39faf926b6faa26b6ab">AOwlPlayer::BeginPlay</a>()</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>{</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    Super::BeginPlay();</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    </div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    <span class="keyword">auto</span> pc = Cast&lt;APlayerController&gt;(Controller);</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    <span class="keywordflow">if</span> (pc)</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    {</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>        <span class="keyword">auto</span> subsys = ULocalPlayer::GetSubsystem&lt;UEnhancedInputLocalPlayerSubsystem&gt;(pc-&gt;GetLocalPlayer());</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>        <span class="keywordflow">if</span> (subsys)</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>        {</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>            subsys-&gt;AddMappingContext(<a class="code hl_variable" href="classAOwlPlayer.html#a195fb98370ddb3790a17a15964335d4c">RobotIMC</a>, 0);</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>        }</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    }</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>}</div>
 </div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span> </div>
-<div class="foldopen" id="foldopen00097" data-start="{" data-end="}">
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno"><a class="line" href="classARobotPlayer.html#a3b83bad009a15f71caa5a0804cb8822b">   97</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classARobotPlayer.html#a3b83bad009a15f71caa5a0804cb8822b">ARobotPlayer::SetupPlayerInputComponent</a>(UInputComponent* PlayerInputComponent)</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>{</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    Super::SetupPlayerInputComponent(PlayerInputComponent);</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    </div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    <span class="keyword">auto</span> playerInput = Cast&lt;UEnhancedInputComponent&gt;(PlayerInputComponent);</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    <span class="keywordflow">if</span> (playerInput)</div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    {</div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>        playerInput-&gt;BindAction(<a class="code hl_variable" href="classARobotPlayer.html#a70609937b89d01e47bff342817ccb677">MoveAction</a>, ETriggerEvent::Triggered, <span class="keyword">this</span>, &amp;<a class="code hl_function" href="classARobotPlayer.html#ad15c8e84b8989049683d95adcc4663a1">ARobotPlayer::OnMove</a>);</div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>        playerInput-&gt;BindAction(<a class="code hl_variable" href="classARobotPlayer.html#a70609937b89d01e47bff342817ccb677">MoveAction</a>, ETriggerEvent::Completed, <span class="keyword">this</span>, &amp;<a class="code hl_function" href="classARobotPlayer.html#afa49d9972fcd6f43118292ed8501b263">ARobotPlayer::OnStopMove</a>);</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>        playerInput-&gt;BindAction(<a class="code hl_variable" href="classARobotPlayer.html#a4b8b27ee6dba2e6da0f8a741b6d3a0c7">LookAction</a>, ETriggerEvent::Triggered, <span class="keyword">this</span>, &amp;<a class="code hl_function" href="classARobotPlayer.html#af64a3130ec7df158dd76ec18c95fcb7d">ARobotPlayer::OnLook</a>);</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>        playerInput-&gt;BindAction(<a class="code hl_variable" href="classARobotPlayer.html#af14f01bc542e5c3d95cb9b6b39c3d955">JumpAction</a>, ETriggerEvent::Started, <span class="keyword">this</span>, &amp;<a class="code hl_function" href="classARobotPlayer.html#a27b16099ea5401d4854990572309254a">ARobotPlayer::OnJump</a>);</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>        playerInput-&gt;BindAction(<a class="code hl_variable" href="classARobotPlayer.html#a4fedbcd2d50b848726df41a8728e487c">RunAction</a>, ETriggerEvent::Started, <span class="keyword">this</span>, &amp;<a class="code hl_function" href="classARobotPlayer.html#a388909eecef78d9626362da10efa3405">ARobotPlayer::OnRun</a>);</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    }</div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>}</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span> </div>
+<div class="foldopen" id="foldopen00109" data-start="{" data-end="}">
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno"><a class="line" href="classAOwlPlayer.html#a1fa2fc24768522d9e2bb0d80ff89fd7c">  109</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAOwlPlayer.html#a1fa2fc24768522d9e2bb0d80ff89fd7c">AOwlPlayer::Tick</a>(<span class="keywordtype">float</span> DeltaTime)</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>{</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    Super::Tick(DeltaTime);</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>}</div>
 </div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span> </div>
-<div class="foldopen" id="foldopen00112" data-start="{" data-end="}">
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno"><a class="line" href="classARobotPlayer.html#ad15c8e84b8989049683d95adcc4663a1">  112</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classARobotPlayer.html#ad15c8e84b8989049683d95adcc4663a1">ARobotPlayer::OnMove</a>(<span class="keyword">const</span> FInputActionValue&amp; Value)</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>{</div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    <span class="comment">// input is a Vector2D</span></div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>    FVector2D MovementVector = Value.Get&lt;FVector2D&gt;();</div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>    </div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>    <span class="keywordflow">if</span> (GetController() != <span class="keyword">nullptr</span>)</div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    {</div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>        <span class="comment">// find out which way is forward</span></div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>        <span class="keyword">const</span> FRotator Rotation = GetController()-&gt;GetControlRotation();</div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>        <span class="keyword">const</span> FRotator YawRotation(0, Rotation.Yaw, 0);</div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span> </div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>        <span class="comment">// get forward vector</span></div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>        <span class="keyword">const</span> FVector ForwardDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::X);</div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span> </div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>        <span class="comment">// get right vector </span></div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>        <span class="keyword">const</span> FVector RightDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::Y);</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span> </div>
+<div class="foldopen" id="foldopen00114" data-start="{" data-end="}">
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno"><a class="line" href="classAOwlPlayer.html#adc5417a6e5609dfebc9866a1cd0f471a">  114</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAOwlPlayer.html#adc5417a6e5609dfebc9866a1cd0f471a">AOwlPlayer::SetupPlayerInputComponent</a>(UInputComponent* PlayerInputComponent)</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>{</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>    Super::SetupPlayerInputComponent(PlayerInputComponent);</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>    </div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    <span class="keyword">auto</span> playerInput = Cast&lt;UEnhancedInputComponent&gt;(PlayerInputComponent);</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    <span class="keywordflow">if</span> (playerInput)</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    {</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>        playerInput-&gt;BindAction(<a class="code hl_variable" href="classAOwlPlayer.html#a5cd45dbeb35bea622072f5fbc01537e1">MoveAction</a>, ETriggerEvent::Triggered, <span class="keyword">this</span>, &amp;<a class="code hl_function" href="classAOwlPlayer.html#ae5444600ecc404800053f0f4d3d2cadf">AOwlPlayer::OnMove</a>);</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>        playerInput-&gt;BindAction(<a class="code hl_variable" href="classAOwlPlayer.html#a5cd45dbeb35bea622072f5fbc01537e1">MoveAction</a>, ETriggerEvent::Completed, <span class="keyword">this</span>, &amp;<a class="code hl_function" href="classAOwlPlayer.html#ab4a3b4c712716ce2b342edcac37aeab2">AOwlPlayer::OnStopMove</a>);</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>        playerInput-&gt;BindAction(<a class="code hl_variable" href="classAOwlPlayer.html#ad5686cb53777eb24a8c4e4a04a99886f">LookAction</a>, ETriggerEvent::Triggered, <span class="keyword">this</span>, &amp;<a class="code hl_function" href="classAOwlPlayer.html#af0319e38db820892a8575a62765d9112">AOwlPlayer::OnLook</a>);</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>        playerInput-&gt;BindAction(<a class="code hl_variable" href="classAOwlPlayer.html#acf67a336974d962aae6f0fff6e93e881">JumpAction</a>, ETriggerEvent::Started, <span class="keyword">this</span>, &amp;<a class="code hl_function" href="classAOwlPlayer.html#a379769b4e2ddc861b4662d225352f081">AOwlPlayer::OnJump</a>);</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>        playerInput-&gt;BindAction(<a class="code hl_variable" href="classAOwlPlayer.html#a3a17273ada64aa8d321b1cc5c5d1b4e3">RunAction</a>, ETriggerEvent::Started, <span class="keyword">this</span>, &amp;<a class="code hl_function" href="classAOwlPlayer.html#a7a52a6ef4816f4d9efae51da4b7cd31b">AOwlPlayer::OnRun</a>);</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>    }</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>}</div>
+</div>
 <div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span> </div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>        <span class="comment">// add movement </span></div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>        AddMovementInput(ForwardDirection, MovementVector.Y);</div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>        AddMovementInput(RightDirection, MovementVector.X);</div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    }</div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>}</div>
+<div class="foldopen" id="foldopen00129" data-start="{" data-end="}">
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno"><a class="line" href="classAOwlPlayer.html#ae5444600ecc404800053f0f4d3d2cadf">  129</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAOwlPlayer.html#ae5444600ecc404800053f0f4d3d2cadf">AOwlPlayer::OnMove</a>(<span class="keyword">const</span> FInputActionValue&amp; Value)</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>{</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>    <span class="comment">// input is a Vector2D</span></div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    FVector2D MovementVector = Value.Get&lt;FVector2D&gt;();</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>    </div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>    <span class="keywordflow">if</span> (GetController() != <span class="keyword">nullptr</span>)</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>    {</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>        <span class="comment">// find out which way is forward</span></div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>        <span class="keyword">const</span> FRotator Rotation = GetController()-&gt;GetControlRotation();</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>        <span class="keyword">const</span> FRotator YawRotation(0, Rotation.Yaw, 0);</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span> </div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>        <span class="comment">// get forward vector</span></div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>        <span class="keyword">const</span> FVector ForwardDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::X);</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span> </div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>        <span class="comment">// get right vector </span></div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>        <span class="keyword">const</span> FVector RightDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::Y);</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span> </div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>        <span class="comment">// add movement </span></div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>        AddMovementInput(ForwardDirection, MovementVector.Y);</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>        AddMovementInput(RightDirection, MovementVector.X);</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>    }</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>}</div>
 </div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span> </div>
-<div class="foldopen" id="foldopen00135" data-start="{" data-end="}">
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno"><a class="line" href="classARobotPlayer.html#afa49d9972fcd6f43118292ed8501b263">  135</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classARobotPlayer.html#afa49d9972fcd6f43118292ed8501b263">ARobotPlayer::OnStopMove</a>()</div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>{</div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>    <a class="code hl_variable" href="classARobotPlayer.html#ac164fa466a80d0e681e88b38bc79e3e7">bIsRunning</a> = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>    GetCharacterMovement()-&gt;MaxWalkSpeed = <a class="code hl_variable" href="classARobotPlayer.html#af497a1e5954b587592932776f004941f">WalkSpeed</a>;</div>
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>}</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span> </div>
+<div class="foldopen" id="foldopen00152" data-start="{" data-end="}">
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno"><a class="line" href="classAOwlPlayer.html#ab4a3b4c712716ce2b342edcac37aeab2">  152</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAOwlPlayer.html#ab4a3b4c712716ce2b342edcac37aeab2">AOwlPlayer::OnStopMove</a>()</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>{</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>    <a class="code hl_variable" href="classAOwlPlayer.html#a75d386dcad0f2752a9a2a62e3efacae7">bIsRunning</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>    GetCharacterMovement()-&gt;MaxWalkSpeed = <a class="code hl_variable" href="classAOwlPlayer.html#aeb0f9a393680dd632fbfdb063b067c50">WalkSpeed</a>;</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>}</div>
 </div>
-<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span> </div>
-<div class="foldopen" id="foldopen00141" data-start="{" data-end="}">
-<div class="line"><a id="l00141" name="l00141"></a><span class="lineno"><a class="line" href="classARobotPlayer.html#af64a3130ec7df158dd76ec18c95fcb7d">  141</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classARobotPlayer.html#af64a3130ec7df158dd76ec18c95fcb7d">ARobotPlayer::OnLook</a>(<span class="keyword">const</span> FInputActionValue&amp; Value)</div>
-<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>{</div>
-<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>    <span class="comment">// input is a Vector2D</span></div>
-<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>    FVector2D LookAxisVector = Value.Get&lt;FVector2D&gt;();</div>
-<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>    </div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>    <span class="keywordflow">if</span> (GetController() != <span class="keyword">nullptr</span>)</div>
-<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>    {</div>
-<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>        <span class="comment">// add yaw and pitch input to controller</span></div>
-<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>        AddControllerYawInput(LookAxisVector.X);</div>
-<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>        AddControllerPitchInput(LookAxisVector.Y);</div>
-<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>    }</div>
-<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>}</div>
-</div>
-<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span> </div>
-<div class="foldopen" id="foldopen00154" data-start="{" data-end="}">
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno"><a class="line" href="classARobotPlayer.html#a27b16099ea5401d4854990572309254a">  154</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classARobotPlayer.html#a27b16099ea5401d4854990572309254a">ARobotPlayer::OnJump</a>()</div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>{</div>
-<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>    <a class="code hl_variable" href="classARobotPlayer.html#a2c3bad1b19a3e4d9d8cbdbb2b35ccae6">bIsJumpStart</a> = <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>}</div>
-</div>
-<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span> </div>
-<div class="foldopen" id="foldopen00159" data-start="{" data-end="}">
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno"><a class="line" href="classARobotPlayer.html#a388909eecef78d9626362da10efa3405">  159</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classARobotPlayer.html#a388909eecef78d9626362da10efa3405">ARobotPlayer::OnRun</a>()</div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>{</div>
-<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classARobotPlayer.html#a2c3bad1b19a3e4d9d8cbdbb2b35ccae6">bIsJumpStart</a> || GetMovementComponent()-&gt;IsFalling()) <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span> </div>
+<div class="foldopen" id="foldopen00158" data-start="{" data-end="}">
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno"><a class="line" href="classAOwlPlayer.html#af0319e38db820892a8575a62765d9112">  158</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAOwlPlayer.html#af0319e38db820892a8575a62765d9112">AOwlPlayer::OnLook</a>(<span class="keyword">const</span> FInputActionValue&amp; Value)</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>{</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>    <span class="comment">// input is a Vector2D</span></div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>    FVector2D LookAxisVector = Value.Get&lt;FVector2D&gt;();</div>
 <div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>    </div>
-<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classARobotPlayer.html#ac164fa466a80d0e681e88b38bc79e3e7">bIsRunning</a>)</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>    <span class="keywordflow">if</span> (GetController() != <span class="keyword">nullptr</span>)</div>
 <div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>    {</div>
-<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>        <a class="code hl_variable" href="classARobotPlayer.html#ac164fa466a80d0e681e88b38bc79e3e7">bIsRunning</a> = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>        GetCharacterMovement()-&gt;MaxWalkSpeed = <a class="code hl_variable" href="classARobotPlayer.html#af497a1e5954b587592932776f004941f">WalkSpeed</a>;</div>
-<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>    }</div>
-<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>    <span class="keywordflow">else</span></div>
-<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>    {</div>
-<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>        <a class="code hl_variable" href="classARobotPlayer.html#ac164fa466a80d0e681e88b38bc79e3e7">bIsRunning</a> = <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>        GetCharacterMovement()-&gt;MaxWalkSpeed = <a class="code hl_variable" href="classARobotPlayer.html#a463edf34ff935aeaa0e58b9b48259c10">RunSpeed</a>;</div>
-<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>    }</div>
-<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>}</div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>        <span class="comment">// add yaw and pitch input to controller</span></div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>        AddControllerYawInput(LookAxisVector.X);</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>        AddControllerPitchInput(LookAxisVector.Y);</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>    }</div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>}</div>
 </div>
-<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span> </div>
-<div class="foldopen" id="foldopen00175" data-start="{" data-end="}">
-<div class="line"><a id="l00175" name="l00175"></a><span class="lineno"><a class="line" href="classARobotPlayer.html#aeaa94badaa95d7abf8e69ff9abbada1b">  175</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="classARobotPlayer.html#aeaa94badaa95d7abf8e69ff9abbada1b">ARobotPlayer::GetIsRunning</a>()</div>
-<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>{</div>
-<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classARobotPlayer.html#ac164fa466a80d0e681e88b38bc79e3e7">bIsRunning</a>;</div>
-<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>}</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span> </div>
+<div class="foldopen" id="foldopen00171" data-start="{" data-end="}">
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno"><a class="line" href="classAOwlPlayer.html#a379769b4e2ddc861b4662d225352f081">  171</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAOwlPlayer.html#a379769b4e2ddc861b4662d225352f081">AOwlPlayer::OnJump</a>()</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>{</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>    <a class="code hl_variable" href="classAOwlPlayer.html#aa985739258dc800d4dc57abebd9571c8">bIsJumpStart</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>}</div>
 </div>
-<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span> </div>
-<div class="foldopen" id="foldopen00180" data-start="{" data-end="}">
-<div class="line"><a id="l00180" name="l00180"></a><span class="lineno"><a class="line" href="classARobotPlayer.html#a8cdaeb0c41efc595425db22625e47f23">  180</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="classARobotPlayer.html#a8cdaeb0c41efc595425db22625e47f23">ARobotPlayer::GetIsJumpStart</a>()</div>
-<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>{</div>
-<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classARobotPlayer.html#a2c3bad1b19a3e4d9d8cbdbb2b35ccae6">bIsJumpStart</a>;</div>
-<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>}</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span> </div>
+<div class="foldopen" id="foldopen00176" data-start="{" data-end="}">
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno"><a class="line" href="classAOwlPlayer.html#a7a52a6ef4816f4d9efae51da4b7cd31b">  176</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAOwlPlayer.html#a7a52a6ef4816f4d9efae51da4b7cd31b">AOwlPlayer::OnRun</a>()</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>{</div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAOwlPlayer.html#aa985739258dc800d4dc57abebd9571c8">bIsJumpStart</a> || GetMovementComponent()-&gt;IsFalling()) <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>    </div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAOwlPlayer.html#a75d386dcad0f2752a9a2a62e3efacae7">bIsRunning</a>)</div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>    {</div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>        <a class="code hl_variable" href="classAOwlPlayer.html#a75d386dcad0f2752a9a2a62e3efacae7">bIsRunning</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>        GetCharacterMovement()-&gt;MaxWalkSpeed = <a class="code hl_variable" href="classAOwlPlayer.html#aeb0f9a393680dd632fbfdb063b067c50">WalkSpeed</a>;</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>    }</div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>    <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>    {</div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>        <a class="code hl_variable" href="classAOwlPlayer.html#a75d386dcad0f2752a9a2a62e3efacae7">bIsRunning</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>        GetCharacterMovement()-&gt;MaxWalkSpeed = <a class="code hl_variable" href="classAOwlPlayer.html#a500b33ae297628c2e7a15d49921e1725">RunSpeed</a>;</div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>    }</div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>}</div>
 </div>
-<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span> </div>
-<div class="foldopen" id="foldopen00185" data-start="{" data-end="}">
-<div class="line"><a id="l00185" name="l00185"></a><span class="lineno"><a class="line" href="classARobotPlayer.html#a32a125d5a167f7a4652f8ab9d544dddb">  185</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classARobotPlayer.html#a32a125d5a167f7a4652f8ab9d544dddb">ARobotPlayer::DoJump</a>()</div>
-<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>{</div>
-<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>    <a class="code hl_variable" href="classARobotPlayer.html#a2c3bad1b19a3e4d9d8cbdbb2b35ccae6">bIsJumpStart</a> = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>    Jump();</div>
-<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>}</div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span> </div>
+<div class="foldopen" id="foldopen00192" data-start="{" data-end="}">
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno"><a class="line" href="classAOwlPlayer.html#aa0afae47142b0b924c9bc1e599112f9e">  192</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="classAOwlPlayer.html#aa0afae47142b0b924c9bc1e599112f9e">AOwlPlayer::GetIsRunning</a>()</div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>{</div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classAOwlPlayer.html#a75d386dcad0f2752a9a2a62e3efacae7">bIsRunning</a>;</div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>}</div>
+</div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span> </div>
+<div class="foldopen" id="foldopen00197" data-start="{" data-end="}">
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno"><a class="line" href="classAOwlPlayer.html#a0a4f1ff7ba8c9807aecd40e654914c4f">  197</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="classAOwlPlayer.html#a0a4f1ff7ba8c9807aecd40e654914c4f">AOwlPlayer::GetIsJumpStart</a>()</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>{</div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classAOwlPlayer.html#aa985739258dc800d4dc57abebd9571c8">bIsJumpStart</a>;</div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>}</div>
+</div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span> </div>
+<div class="foldopen" id="foldopen00202" data-start="{" data-end="}">
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno"><a class="line" href="classAOwlPlayer.html#abc9f2f980307d9029b521d6f558ca28e">  202</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAOwlPlayer.html#abc9f2f980307d9029b521d6f558ca28e">AOwlPlayer::DoJump</a>()</div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>{</div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>    <a class="code hl_variable" href="classAOwlPlayer.html#aa985739258dc800d4dc57abebd9571c8">bIsJumpStart</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>    Jump();</div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>}</div>
 </div>
 <div class="ttc" id="aAOwlPlayer_8h_html"><div class="ttname"><a href="AOwlPlayer_8h.html">AOwlPlayer.h</a></div></div>
-<div class="ttc" id="aclassARobotPlayer_html_a257773d4e0786436cfa649cc6e180981"><div class="ttname"><a href="classARobotPlayer.html#a257773d4e0786436cfa649cc6e180981">ARobotPlayer::RobotIMC</a></div><div class="ttdeci">TObjectPtr&lt; class UInputMappingContext &gt; RobotIMC</div><div class="ttdef"><b>Definition</b> <a href="AOwlPlayer_8h_source.html#l00035">AOwlPlayer.h:35</a></div></div>
-<div class="ttc" id="aclassARobotPlayer_html_a27b16099ea5401d4854990572309254a"><div class="ttname"><a href="classARobotPlayer.html#a27b16099ea5401d4854990572309254a">ARobotPlayer::OnJump</a></div><div class="ttdeci">void OnJump()</div><div class="ttdef"><b>Definition</b> <a href="AOwlPlayer_8cpp_source.html#l00154">AOwlPlayer.cpp:154</a></div></div>
-<div class="ttc" id="aclassARobotPlayer_html_a2c3bad1b19a3e4d9d8cbdbb2b35ccae6"><div class="ttname"><a href="classARobotPlayer.html#a2c3bad1b19a3e4d9d8cbdbb2b35ccae6">ARobotPlayer::bIsJumpStart</a></div><div class="ttdeci">bool bIsJumpStart</div><div class="ttdef"><b>Definition</b> <a href="AOwlPlayer_8h_source.html#l00060">AOwlPlayer.h:60</a></div></div>
-<div class="ttc" id="aclassARobotPlayer_html_a32a125d5a167f7a4652f8ab9d544dddb"><div class="ttname"><a href="classARobotPlayer.html#a32a125d5a167f7a4652f8ab9d544dddb">ARobotPlayer::DoJump</a></div><div class="ttdeci">void DoJump()</div><div class="ttdef"><b>Definition</b> <a href="AOwlPlayer_8cpp_source.html#l00185">AOwlPlayer.cpp:185</a></div></div>
-<div class="ttc" id="aclassARobotPlayer_html_a388909eecef78d9626362da10efa3405"><div class="ttname"><a href="classARobotPlayer.html#a388909eecef78d9626362da10efa3405">ARobotPlayer::OnRun</a></div><div class="ttdeci">void OnRun()</div><div class="ttdef"><b>Definition</b> <a href="AOwlPlayer_8cpp_source.html#l00159">AOwlPlayer.cpp:159</a></div></div>
-<div class="ttc" id="aclassARobotPlayer_html_a3b83bad009a15f71caa5a0804cb8822b"><div class="ttname"><a href="classARobotPlayer.html#a3b83bad009a15f71caa5a0804cb8822b">ARobotPlayer::SetupPlayerInputComponent</a></div><div class="ttdeci">virtual void SetupPlayerInputComponent(class UInputComponent *PlayerInputComponent) override</div><div class="ttdef"><b>Definition</b> <a href="AOwlPlayer_8cpp_source.html#l00097">AOwlPlayer.cpp:97</a></div></div>
-<div class="ttc" id="aclassARobotPlayer_html_a463edf34ff935aeaa0e58b9b48259c10"><div class="ttname"><a href="classARobotPlayer.html#a463edf34ff935aeaa0e58b9b48259c10">ARobotPlayer::RunSpeed</a></div><div class="ttdeci">float RunSpeed</div><div class="ttdef"><b>Definition</b> <a href="AOwlPlayer_8h_source.html#l00058">AOwlPlayer.h:58</a></div></div>
-<div class="ttc" id="aclassARobotPlayer_html_a4b61f105f0a9b09b24dcd092ca0ecdb8"><div class="ttname"><a href="classARobotPlayer.html#a4b61f105f0a9b09b24dcd092ca0ecdb8">ARobotPlayer::Tick</a></div><div class="ttdeci">virtual void Tick(float DeltaTime) override</div><div class="ttdef"><b>Definition</b> <a href="AOwlPlayer_8cpp_source.html#l00092">AOwlPlayer.cpp:92</a></div></div>
-<div class="ttc" id="aclassARobotPlayer_html_a4b8b27ee6dba2e6da0f8a741b6d3a0c7"><div class="ttname"><a href="classARobotPlayer.html#a4b8b27ee6dba2e6da0f8a741b6d3a0c7">ARobotPlayer::LookAction</a></div><div class="ttdeci">TObjectPtr&lt; class UInputAction &gt; LookAction</div><div class="ttdef"><b>Definition</b> <a href="AOwlPlayer_8h_source.html#l00041">AOwlPlayer.h:41</a></div></div>
-<div class="ttc" id="aclassARobotPlayer_html_a4bebeb9b3a91e7121bd50251797e1710"><div class="ttname"><a href="classARobotPlayer.html#a4bebeb9b3a91e7121bd50251797e1710">ARobotPlayer::FollowCamera</a></div><div class="ttdeci">TObjectPtr&lt; class UCameraComponent &gt; FollowCamera</div><div class="ttdef"><b>Definition</b> <a href="AOwlPlayer_8h_source.html#l00031">AOwlPlayer.h:31</a></div></div>
-<div class="ttc" id="aclassARobotPlayer_html_a4fedbcd2d50b848726df41a8728e487c"><div class="ttname"><a href="classARobotPlayer.html#a4fedbcd2d50b848726df41a8728e487c">ARobotPlayer::RunAction</a></div><div class="ttdeci">TObjectPtr&lt; class UInputAction &gt; RunAction</div><div class="ttdef"><b>Definition</b> <a href="AOwlPlayer_8h_source.html#l00047">AOwlPlayer.h:47</a></div></div>
-<div class="ttc" id="aclassARobotPlayer_html_a70609937b89d01e47bff342817ccb677"><div class="ttname"><a href="classARobotPlayer.html#a70609937b89d01e47bff342817ccb677">ARobotPlayer::MoveAction</a></div><div class="ttdeci">TObjectPtr&lt; class UInputAction &gt; MoveAction</div><div class="ttdef"><b>Definition</b> <a href="AOwlPlayer_8h_source.html#l00038">AOwlPlayer.h:38</a></div></div>
-<div class="ttc" id="aclassARobotPlayer_html_a8cdaeb0c41efc595425db22625e47f23"><div class="ttname"><a href="classARobotPlayer.html#a8cdaeb0c41efc595425db22625e47f23">ARobotPlayer::GetIsJumpStart</a></div><div class="ttdeci">bool GetIsJumpStart()</div><div class="ttdef"><b>Definition</b> <a href="AOwlPlayer_8cpp_source.html#l00180">AOwlPlayer.cpp:180</a></div></div>
-<div class="ttc" id="aclassARobotPlayer_html_a8d5f1ca4cc2e60f2cf07ed8eed3d50e2"><div class="ttname"><a href="classARobotPlayer.html#a8d5f1ca4cc2e60f2cf07ed8eed3d50e2">ARobotPlayer::ARobotPlayer</a></div><div class="ttdeci">ARobotPlayer()</div><div class="ttdef"><b>Definition</b> <a href="AOwlPlayer_8cpp_source.html#l00016">AOwlPlayer.cpp:16</a></div></div>
-<div class="ttc" id="aclassARobotPlayer_html_ac164fa466a80d0e681e88b38bc79e3e7"><div class="ttname"><a href="classARobotPlayer.html#ac164fa466a80d0e681e88b38bc79e3e7">ARobotPlayer::bIsRunning</a></div><div class="ttdeci">bool bIsRunning</div><div class="ttdef"><b>Definition</b> <a href="AOwlPlayer_8h_source.html#l00059">AOwlPlayer.h:59</a></div></div>
-<div class="ttc" id="aclassARobotPlayer_html_ad15c8e84b8989049683d95adcc4663a1"><div class="ttname"><a href="classARobotPlayer.html#ad15c8e84b8989049683d95adcc4663a1">ARobotPlayer::OnMove</a></div><div class="ttdeci">void OnMove(const FInputActionValue &amp;Value)</div><div class="ttdef"><b>Definition</b> <a href="AOwlPlayer_8cpp_source.html#l00112">AOwlPlayer.cpp:112</a></div></div>
-<div class="ttc" id="aclassARobotPlayer_html_ae418c18c4f59ed9eed35da27a294ebe6"><div class="ttname"><a href="classARobotPlayer.html#ae418c18c4f59ed9eed35da27a294ebe6">ARobotPlayer::CameraBoom</a></div><div class="ttdeci">TObjectPtr&lt; class USpringArmComponent &gt; CameraBoom</div><div class="ttdef"><b>Definition</b> <a href="AOwlPlayer_8h_source.html#l00028">AOwlPlayer.h:28</a></div></div>
-<div class="ttc" id="aclassARobotPlayer_html_aeaa94badaa95d7abf8e69ff9abbada1b"><div class="ttname"><a href="classARobotPlayer.html#aeaa94badaa95d7abf8e69ff9abbada1b">ARobotPlayer::GetIsRunning</a></div><div class="ttdeci">bool GetIsRunning()</div><div class="ttdef"><b>Definition</b> <a href="AOwlPlayer_8cpp_source.html#l00175">AOwlPlayer.cpp:175</a></div></div>
-<div class="ttc" id="aclassARobotPlayer_html_af14f01bc542e5c3d95cb9b6b39c3d955"><div class="ttname"><a href="classARobotPlayer.html#af14f01bc542e5c3d95cb9b6b39c3d955">ARobotPlayer::JumpAction</a></div><div class="ttdeci">TObjectPtr&lt; class UInputAction &gt; JumpAction</div><div class="ttdef"><b>Definition</b> <a href="AOwlPlayer_8h_source.html#l00044">AOwlPlayer.h:44</a></div></div>
-<div class="ttc" id="aclassARobotPlayer_html_af497a1e5954b587592932776f004941f"><div class="ttname"><a href="classARobotPlayer.html#af497a1e5954b587592932776f004941f">ARobotPlayer::WalkSpeed</a></div><div class="ttdeci">float WalkSpeed</div><div class="ttdef"><b>Definition</b> <a href="AOwlPlayer_8h_source.html#l00057">AOwlPlayer.h:57</a></div></div>
-<div class="ttc" id="aclassARobotPlayer_html_af5e1fe2d8101494e6eb67e3702a6d621"><div class="ttname"><a href="classARobotPlayer.html#af5e1fe2d8101494e6eb67e3702a6d621">ARobotPlayer::BeginPlay</a></div><div class="ttdeci">virtual void BeginPlay() override</div><div class="ttdef"><b>Definition</b> <a href="AOwlPlayer_8cpp_source.html#l00077">AOwlPlayer.cpp:77</a></div></div>
-<div class="ttc" id="aclassARobotPlayer_html_af64a3130ec7df158dd76ec18c95fcb7d"><div class="ttname"><a href="classARobotPlayer.html#af64a3130ec7df158dd76ec18c95fcb7d">ARobotPlayer::OnLook</a></div><div class="ttdeci">void OnLook(const FInputActionValue &amp;Value)</div><div class="ttdef"><b>Definition</b> <a href="AOwlPlayer_8cpp_source.html#l00141">AOwlPlayer.cpp:141</a></div></div>
-<div class="ttc" id="aclassARobotPlayer_html_afa49d9972fcd6f43118292ed8501b263"><div class="ttname"><a href="classARobotPlayer.html#afa49d9972fcd6f43118292ed8501b263">ARobotPlayer::OnStopMove</a></div><div class="ttdeci">void OnStopMove()</div><div class="ttdef"><b>Definition</b> <a href="AOwlPlayer_8cpp_source.html#l00135">AOwlPlayer.cpp:135</a></div></div>
+<div class="ttc" id="aclassAOwlPlayer_html_a0a4f1ff7ba8c9807aecd40e654914c4f"><div class="ttname"><a href="classAOwlPlayer.html#a0a4f1ff7ba8c9807aecd40e654914c4f">AOwlPlayer::GetIsJumpStart</a></div><div class="ttdeci">bool GetIsJumpStart()</div><div class="ttdef"><b>Definition</b> <a href="AOwlPlayer_8cpp_source.html#l00197">AOwlPlayer.cpp:197</a></div></div>
+<div class="ttc" id="aclassAOwlPlayer_html_a195fb98370ddb3790a17a15964335d4c"><div class="ttname"><a href="classAOwlPlayer.html#a195fb98370ddb3790a17a15964335d4c">AOwlPlayer::RobotIMC</a></div><div class="ttdeci">TObjectPtr&lt; class UInputMappingContext &gt; RobotIMC</div><div class="ttdef"><b>Definition</b> <a href="AOwlPlayer_8h_source.html#l00035">AOwlPlayer.h:35</a></div></div>
+<div class="ttc" id="aclassAOwlPlayer_html_a1fa2fc24768522d9e2bb0d80ff89fd7c"><div class="ttname"><a href="classAOwlPlayer.html#a1fa2fc24768522d9e2bb0d80ff89fd7c">AOwlPlayer::Tick</a></div><div class="ttdeci">virtual void Tick(float DeltaTime) override</div><div class="ttdef"><b>Definition</b> <a href="AOwlPlayer_8cpp_source.html#l00109">AOwlPlayer.cpp:109</a></div></div>
+<div class="ttc" id="aclassAOwlPlayer_html_a379769b4e2ddc861b4662d225352f081"><div class="ttname"><a href="classAOwlPlayer.html#a379769b4e2ddc861b4662d225352f081">AOwlPlayer::OnJump</a></div><div class="ttdeci">void OnJump()</div><div class="ttdef"><b>Definition</b> <a href="AOwlPlayer_8cpp_source.html#l00171">AOwlPlayer.cpp:171</a></div></div>
+<div class="ttc" id="aclassAOwlPlayer_html_a3a17273ada64aa8d321b1cc5c5d1b4e3"><div class="ttname"><a href="classAOwlPlayer.html#a3a17273ada64aa8d321b1cc5c5d1b4e3">AOwlPlayer::RunAction</a></div><div class="ttdeci">TObjectPtr&lt; class UInputAction &gt; RunAction</div><div class="ttdef"><b>Definition</b> <a href="AOwlPlayer_8h_source.html#l00047">AOwlPlayer.h:47</a></div></div>
+<div class="ttc" id="aclassAOwlPlayer_html_a500b33ae297628c2e7a15d49921e1725"><div class="ttname"><a href="classAOwlPlayer.html#a500b33ae297628c2e7a15d49921e1725">AOwlPlayer::RunSpeed</a></div><div class="ttdeci">float RunSpeed</div><div class="ttdef"><b>Definition</b> <a href="AOwlPlayer_8h_source.html#l00058">AOwlPlayer.h:58</a></div></div>
+<div class="ttc" id="aclassAOwlPlayer_html_a5cd45dbeb35bea622072f5fbc01537e1"><div class="ttname"><a href="classAOwlPlayer.html#a5cd45dbeb35bea622072f5fbc01537e1">AOwlPlayer::MoveAction</a></div><div class="ttdeci">TObjectPtr&lt; class UInputAction &gt; MoveAction</div><div class="ttdef"><b>Definition</b> <a href="AOwlPlayer_8h_source.html#l00038">AOwlPlayer.h:38</a></div></div>
+<div class="ttc" id="aclassAOwlPlayer_html_a75d386dcad0f2752a9a2a62e3efacae7"><div class="ttname"><a href="classAOwlPlayer.html#a75d386dcad0f2752a9a2a62e3efacae7">AOwlPlayer::bIsRunning</a></div><div class="ttdeci">bool bIsRunning</div><div class="ttdef"><b>Definition</b> <a href="AOwlPlayer_8h_source.html#l00059">AOwlPlayer.h:59</a></div></div>
+<div class="ttc" id="aclassAOwlPlayer_html_a7a52a6ef4816f4d9efae51da4b7cd31b"><div class="ttname"><a href="classAOwlPlayer.html#a7a52a6ef4816f4d9efae51da4b7cd31b">AOwlPlayer::OnRun</a></div><div class="ttdeci">void OnRun()</div><div class="ttdef"><b>Definition</b> <a href="AOwlPlayer_8cpp_source.html#l00176">AOwlPlayer.cpp:176</a></div></div>
+<div class="ttc" id="aclassAOwlPlayer_html_a98b1fae1d8f37fcf5dfbbd8a8ca4f67d"><div class="ttname"><a href="classAOwlPlayer.html#a98b1fae1d8f37fcf5dfbbd8a8ca4f67d">AOwlPlayer::CameraBoom</a></div><div class="ttdeci">TObjectPtr&lt; class USpringArmComponent &gt; CameraBoom</div><div class="ttdef"><b>Definition</b> <a href="AOwlPlayer_8h_source.html#l00028">AOwlPlayer.h:28</a></div></div>
+<div class="ttc" id="aclassAOwlPlayer_html_aa0afae47142b0b924c9bc1e599112f9e"><div class="ttname"><a href="classAOwlPlayer.html#aa0afae47142b0b924c9bc1e599112f9e">AOwlPlayer::GetIsRunning</a></div><div class="ttdeci">bool GetIsRunning()</div><div class="ttdef"><b>Definition</b> <a href="AOwlPlayer_8cpp_source.html#l00192">AOwlPlayer.cpp:192</a></div></div>
+<div class="ttc" id="aclassAOwlPlayer_html_aa8bec2e9c4afd39faf926b6faa26b6ab"><div class="ttname"><a href="classAOwlPlayer.html#aa8bec2e9c4afd39faf926b6faa26b6ab">AOwlPlayer::BeginPlay</a></div><div class="ttdeci">virtual void BeginPlay() override</div><div class="ttdef"><b>Definition</b> <a href="AOwlPlayer_8cpp_source.html#l00094">AOwlPlayer.cpp:94</a></div></div>
+<div class="ttc" id="aclassAOwlPlayer_html_aa985739258dc800d4dc57abebd9571c8"><div class="ttname"><a href="classAOwlPlayer.html#aa985739258dc800d4dc57abebd9571c8">AOwlPlayer::bIsJumpStart</a></div><div class="ttdeci">bool bIsJumpStart</div><div class="ttdef"><b>Definition</b> <a href="AOwlPlayer_8h_source.html#l00060">AOwlPlayer.h:60</a></div></div>
+<div class="ttc" id="aclassAOwlPlayer_html_ab4a3b4c712716ce2b342edcac37aeab2"><div class="ttname"><a href="classAOwlPlayer.html#ab4a3b4c712716ce2b342edcac37aeab2">AOwlPlayer::OnStopMove</a></div><div class="ttdeci">void OnStopMove()</div><div class="ttdef"><b>Definition</b> <a href="AOwlPlayer_8cpp_source.html#l00152">AOwlPlayer.cpp:152</a></div></div>
+<div class="ttc" id="aclassAOwlPlayer_html_abc9f2f980307d9029b521d6f558ca28e"><div class="ttname"><a href="classAOwlPlayer.html#abc9f2f980307d9029b521d6f558ca28e">AOwlPlayer::DoJump</a></div><div class="ttdeci">void DoJump()</div><div class="ttdef"><b>Definition</b> <a href="AOwlPlayer_8cpp_source.html#l00202">AOwlPlayer.cpp:202</a></div></div>
+<div class="ttc" id="aclassAOwlPlayer_html_acf67a336974d962aae6f0fff6e93e881"><div class="ttname"><a href="classAOwlPlayer.html#acf67a336974d962aae6f0fff6e93e881">AOwlPlayer::JumpAction</a></div><div class="ttdeci">TObjectPtr&lt; class UInputAction &gt; JumpAction</div><div class="ttdef"><b>Definition</b> <a href="AOwlPlayer_8h_source.html#l00044">AOwlPlayer.h:44</a></div></div>
+<div class="ttc" id="aclassAOwlPlayer_html_ad5686cb53777eb24a8c4e4a04a99886f"><div class="ttname"><a href="classAOwlPlayer.html#ad5686cb53777eb24a8c4e4a04a99886f">AOwlPlayer::LookAction</a></div><div class="ttdeci">TObjectPtr&lt; class UInputAction &gt; LookAction</div><div class="ttdef"><b>Definition</b> <a href="AOwlPlayer_8h_source.html#l00041">AOwlPlayer.h:41</a></div></div>
+<div class="ttc" id="aclassAOwlPlayer_html_adc5417a6e5609dfebc9866a1cd0f471a"><div class="ttname"><a href="classAOwlPlayer.html#adc5417a6e5609dfebc9866a1cd0f471a">AOwlPlayer::SetupPlayerInputComponent</a></div><div class="ttdeci">virtual void SetupPlayerInputComponent(class UInputComponent *PlayerInputComponent) override</div><div class="ttdef"><b>Definition</b> <a href="AOwlPlayer_8cpp_source.html#l00114">AOwlPlayer.cpp:114</a></div></div>
+<div class="ttc" id="aclassAOwlPlayer_html_ae5444600ecc404800053f0f4d3d2cadf"><div class="ttname"><a href="classAOwlPlayer.html#ae5444600ecc404800053f0f4d3d2cadf">AOwlPlayer::OnMove</a></div><div class="ttdeci">void OnMove(const FInputActionValue &amp;Value)</div><div class="ttdef"><b>Definition</b> <a href="AOwlPlayer_8cpp_source.html#l00129">AOwlPlayer.cpp:129</a></div></div>
+<div class="ttc" id="aclassAOwlPlayer_html_aeb0f9a393680dd632fbfdb063b067c50"><div class="ttname"><a href="classAOwlPlayer.html#aeb0f9a393680dd632fbfdb063b067c50">AOwlPlayer::WalkSpeed</a></div><div class="ttdeci">float WalkSpeed</div><div class="ttdef"><b>Definition</b> <a href="AOwlPlayer_8h_source.html#l00057">AOwlPlayer.h:57</a></div></div>
+<div class="ttc" id="aclassAOwlPlayer_html_aefcaff018a03293b67c7c662a4d57dcf"><div class="ttname"><a href="classAOwlPlayer.html#aefcaff018a03293b67c7c662a4d57dcf">AOwlPlayer::FollowCamera</a></div><div class="ttdeci">TObjectPtr&lt; class UCameraComponent &gt; FollowCamera</div><div class="ttdef"><b>Definition</b> <a href="AOwlPlayer_8h_source.html#l00031">AOwlPlayer.h:31</a></div></div>
+<div class="ttc" id="aclassAOwlPlayer_html_af0319e38db820892a8575a62765d9112"><div class="ttname"><a href="classAOwlPlayer.html#af0319e38db820892a8575a62765d9112">AOwlPlayer::OnLook</a></div><div class="ttdeci">void OnLook(const FInputActionValue &amp;Value)</div><div class="ttdef"><b>Definition</b> <a href="AOwlPlayer_8cpp_source.html#l00158">AOwlPlayer.cpp:158</a></div></div>
+<div class="ttc" id="aclassAOwlPlayer_html_afbac3ba9e376aedfa2f022e380a99b14"><div class="ttname"><a href="classAOwlPlayer.html#afbac3ba9e376aedfa2f022e380a99b14">AOwlPlayer::AOwlPlayer</a></div><div class="ttdeci">AOwlPlayer()</div><div class="ttdef"><b>Definition</b> <a href="AOwlPlayer_8cpp_source.html#l00016">AOwlPlayer.cpp:16</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_71a9f6b769ee24fe8598c19ea2d70480.html">Character</a></li><li class="navelem"><a class="el" href="dir_a846a28747c2ebe05b4ec9782ab892b2.html">Private</a></li><li class="navelem"><a class="el" href="AOwlPlayer_8cpp.html">AOwlPlayer.cpp</a></li>
-    <li class="footer">생성시간 : 월 11월 24 2025 08:59:01, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 월 11월 24 2025 11:32:37, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

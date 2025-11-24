@@ -1,6 +1,7 @@
 var annotated_dup =
 [
     [ "AContactTrigger", "classAContactTrigger.html", "classAContactTrigger" ],
+    [ "AConveyorBelt", "classAConveyorBelt.html", "classAConveyorBelt" ],
     [ "ADoor", "classADoor.html", "classADoor" ],
     [ "AGate", "classAGate.html", "classAGate" ],
     [ "ALingoGameMode", "classALingoGameMode.html", "classALingoGameMode" ],
@@ -11,10 +12,10 @@ var annotated_dup =
     [ "ANetworkTesterActor", "classANetworkTesterActor.html", "classANetworkTesterActor" ],
     [ "ANPCBase", "classANPCBase.html", "classANPCBase" ],
     [ "ANPCExaminer", "classANPCExaminer.html", "classANPCExaminer" ],
+    [ "AOwlPlayer", "classAOwlPlayer.html", "classAOwlPlayer" ],
     [ "APedestalSwitch", "classAPedestalSwitch.html", "classAPedestalSwitch" ],
     [ "APlayerActor", "classAPlayerActor.html", "classAPlayerActor" ],
     [ "APlayerControl", "classAPlayerControl.html", "classAPlayerControl" ],
-    [ "ARobotPlayer", "classARobotPlayer.html", "classARobotPlayer" ],
     [ "ARobotPlayerController", "classARobotPlayerController.html", null ],
     [ "AWeightSwitch", "classAWeightSwitch.html", "classAWeightSwitch" ],
     [ "FCharacterAssetData", "structFCharacterAssetData.html", "structFCharacterAssetData" ],
