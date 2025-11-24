@@ -85,7 +85,7 @@ void UKLingoNetworkSystem::RequestUserRegister(const FString& UserName, FRespons
 	
 	TSharedPtr<FJsonObject> JsonObject = MakeShareable(new FJsonObject);
 	JsonObject->SetStringField(TEXT("username"), UserName);
-	JsonObject->SetStringField(TEXT("email"), UserName + TEXT("@klingo.com"));
+	JsonObject->SetStringField(TEXT("fullname"), UserName + TEXT("@klingo.com"));
 	JsonObject->SetStringField(TEXT("password"), UserName);
 
 	FString RequestBody;
