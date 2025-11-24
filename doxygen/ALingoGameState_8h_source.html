@@ -109,77 +109,84 @@ $(document).ready(function(){initNavTree('ALingoGameState_8h_source.html',''); i
   <div class="headertitle"><div class="title">ALingoGameState.h</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="ALingoGameState_8h.html">이 파일의 문서화 페이지로 가기</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">// Fill out your copyright notice in the Description page of Project Settings.</span></div>
+<a href="ALingoGameState_8h.html">이 파일의 문서화 페이지로 가기</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;CoreMinimal.h&quot;</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;GameFramework/GameState.h&quot;</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;<a class="code" href="ALingoPlayerState_8h.html">ALingoPlayerState.h</a>&quot;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;<a class="code" href="NetworkData_8h.html">NetworkData.h</a>&quot;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;GameFramework/GameState.h&quot;</span></div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;ALingoGameState.generated.h&quot;</span></div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="ALingoGameState_8h.html#a2c512c97fbbb4ef0cb96becbf5f262a6">   10</a></span><a class="code hl_function" href="ALingoGameState_8h.html#a2c512c97fbbb4ef0cb96becbf5f262a6">DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam</a>(FOnPhaseChanged, <a class="code hl_enumeration" href="ALingoPlayerState_8h.html#a110fd991750d11dddc7f1f886cdb8dd5">EGamePhase</a>, NewPhase);</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>UCLASS()</div>
-<div class="foldopen" id="foldopen00016" data-start="{" data-end="};">
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="classALingoGameState.html">   16</a></span>class ONEPIECE_API <a class="code hl_class" href="classALingoGameState.html">ALingoGameState</a> : public AGameState</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>{</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    GENERATED_BODY()</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <a class="code hl_class" href="classALingoGameState.html">ALingoGameState</a>();</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="keyword">protected</span>:</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> GetLifetimeReplicatedProps(TArray&lt;FLifetimeProperty&gt;&amp; OutLifetimeProps) <span class="keyword">const override</span>;</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="comment">// Game state</span></div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    UPROPERTY(ReplicatedUsing=OnRep_CurrentPhase, BlueprintReadOnly, Category = <span class="stringliteral">&quot;Game&quot;</span>)</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="classALingoGameState.html#a5da20c0dea1d937ee767ba25b8c741a4">   29</a></span>    <a class="code hl_enumeration" href="ALingoPlayerState_8h.html#a110fd991750d11dddc7f1f886cdb8dd5">EGamePhase</a> CurrentPhase = <a class="code hl_enumeration" href="ALingoPlayerState_8h.html#a110fd991750d11dddc7f1f886cdb8dd5">EGamePhase</a>::WaitingToStart;</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>UCLASS()</div>
+<div class="foldopen" id="foldopen00012" data-start="{" data-end="};">
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="classALingoGameState.html">   12</a></span>class ONEPIECE_API <a class="code hl_class" href="classALingoGameState.html">ALingoGameState</a> : public AGameState</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>{</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    GENERATED_BODY()</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <a class="code hl_class" href="classALingoGameState.html">ALingoGameState</a>();</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> GetLifetimeReplicatedProps(TArray&lt;FLifetimeProperty&gt;&amp; OutLifetimeProps) <span class="keyword">const override</span>;</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> Tick(<span class="keywordtype">float</span> DeltaSeconds) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="keywordtype">void</span> SetStageData(<span class="keyword">const</span> <span class="keywordtype">int</span> InStageIndex, <span class="keyword">const</span> <a class="code hl_struct" href="structFResponseScenario.html">FResponseScenario</a>&amp; InResponseData);</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    UFUNCTION(BlueprintCallable, Category = <span class="stringliteral">&quot;Mission&quot;</span>)</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="keywordtype">void</span> StartMissionTimer(<span class="keywordtype">float</span> TimeLimit);</div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="classALingoGameState.html#ad8b315fe7559b958a76ffdc68788336d">   31</a></span>    <a class="code hl_enumeration" href="ALingoPlayerState_8h.html#a110fd991750d11dddc7f1f886cdb8dd5">EGamePhase</a> PreviousPhase = <a class="code hl_enumeration" href="ALingoPlayerState_8h.html#a110fd991750d11dddc7f1f886cdb8dd5">EGamePhase</a>::WaitingToStart;</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    UFUNCTION()</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="keywordtype">void</span> OnRep_CurrentPhase();</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    </div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="comment">// Phase 변경 delegate</span></div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    UPROPERTY(BlueprintAssignable, Category = &quot;Game&quot;)</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="classALingoGameState.html#ad5121bf85d94cde4716d5397940ea833">   38</a></span>    FOnPhaseChanged OnPhaseChanged;</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>public:</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="comment">// Mission</span></div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    UPROPERTY(Replicated, BlueprintReadOnly, Category = &quot;Mission&quot;)</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="classALingoGameState.html#a2cab376660888de7be219e0b85e5f1f2">   43</a></span>    int32 CurrentMissionIndex = 0;</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="comment">// Mission helper : 모든 플레이어가 미션 완료했는지 순회하여 체크</span></div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    UFUNCTION(BlueprintCallable, Category = &quot;Mission&quot;)</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keywordtype">bool</span> AreAllPlayersMissionComplete() const;</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    </div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>public:</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="comment">// Timer</span></div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    UPROPERTY(Replicated, BlueprintReadOnly, Category = &quot;Mission&quot;)</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="classALingoGameState.html#af490df8b7426f3bbad6f34c404bdde03">   52</a></span>    <span class="keywordtype">float</span> MissionTimeRemaining = 0.f;</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    UPROPERTY(Replicated, BlueprintReadOnly, Category = &quot;Mission&quot;)</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="classALingoGameState.html#a8e899691d22613832ae30c560b95a62b">   55</a></span>    <span class="keywordtype">float</span> MissionTimeLimit = 300.f;</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="comment">// Timer 형식</span></div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    UFUNCTION(BlueprintCallable, Category = &quot;Mission&quot;)</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    FString GetFormattedTimer() const;</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    </div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>};</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    UFUNCTION(BlueprintCallable, Category = <span class="stringliteral">&quot;Mission&quot;</span>)</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="keywordtype">void</span> StopMissionTimer();</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    UFUNCTION(BlueprintCallable, Category = <span class="stringliteral">&quot;Mission&quot;</span>)</div>
+<div class="foldopen" id="foldopen00036" data-start="{" data-end="}">
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="classALingoGameState.html#abec3beeccc38530d9fa06be8b23998b5">   36</a></span>    float GetRemainMissionTime()</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    {</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        <span class="keywordflow">return</span> RemainMissionTime;</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    }</div>
 </div>
-<div class="ttc" id="aALingoGameState_8h_html_a2c512c97fbbb4ef0cb96becbf5f262a6"><div class="ttname"><a href="ALingoGameState_8h.html#a2c512c97fbbb4ef0cb96becbf5f262a6">DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam</a></div><div class="ttdeci">DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnPhaseChanged, EGamePhase, NewPhase)</div></div>
-<div class="ttc" id="aALingoPlayerState_8h_html"><div class="ttname"><a href="ALingoPlayerState_8h.html">ALingoPlayerState.h</a></div></div>
-<div class="ttc" id="aALingoPlayerState_8h_html_a110fd991750d11dddc7f1f886cdb8dd5"><div class="ttname"><a href="ALingoPlayerState_8h.html#a110fd991750d11dddc7f1f886cdb8dd5">EGamePhase</a></div><div class="ttdeci">EGamePhase</div><div class="ttdef"><b>Definition</b> <a href="ALingoPlayerState_8h_source.html#l00022">ALingoPlayerState.h:23</a></div></div>
-<div class="ttc" id="aclassALingoGameState_html"><div class="ttname"><a href="classALingoGameState.html">ALingoGameState</a></div><div class="ttdef"><b>Definition</b> <a href="ALingoGameState_8h_source.html#l00016">ALingoGameState.h:17</a></div></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="keywordtype">void</span> OnMissionTimerEnd();</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    UPROPERTY(Replicated, BlueprintReadOnly, Category = <span class="stringliteral">&quot;Mission&quot;</span>)</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="classALingoGameState.html#abf8b596488b55e3933d5d3fcf016307f">   47</a></span>    float RemainMissionTime = 0.f;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>protected:</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    UPROPERTY(Replicated, BlueprintReadOnly, Category = &quot;Mission&quot;)</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="classALingoGameState.html#ab2b1dfcaf07b61dd099209f135ff97fa">   52</a></span>    <span class="keywordtype">bool</span> bIsTimerActive = false;</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="comment">//--------------------------------------------------------------//</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="comment">// 시나리오 ID</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    UPROPERTY(Replicated, BlueprintReadOnly, Category = &quot;Scenario&quot;)</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="classALingoGameState.html#ad9ab549d6de648690eb3ebb04238b2e6">   57</a></span>    int32 ScenarioIndex = 1;</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="comment">// 스테이지 ID</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    UPROPERTY(Replicated, BlueprintReadOnly, Category = &quot;Scenario&quot;)</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="classALingoGameState.html#aab818a44f5aa9960436010119e4c9899">   60</a></span>    int32 StageIndex = 1;</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="comment">// 레벨(난이도)</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    UPROPERTY(Replicated, BlueprintReadOnly, Category = &quot;Scenario&quot;)</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="classALingoGameState.html#a31e77725a14a39ad4e66764210020a64">   63</a></span>    int32 ScenarioLevel = 1;</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    UPROPERTY(Replicated, BlueprintReadOnly, Category = &quot;Scenario&quot;)</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="classALingoGameState.html#a3cd7a9eb6c217ca289fe7751113a1bef">   67</a></span>    <a class="code hl_struct" href="structFResponseScenario.html">FResponseScenario</a> CurScenarioData;</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <span class="comment">//--------------------------------------------------------------//</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>};</div>
+</div>
+<div class="ttc" id="aNetworkData_8h_html"><div class="ttname"><a href="NetworkData_8h.html">NetworkData.h</a></div><div class="ttdoc">네트워크 요청과 응답에 사용되는 구조체 및 설정을 정의합니다.</div></div>
+<div class="ttc" id="aclassALingoGameState_html"><div class="ttname"><a href="classALingoGameState.html">ALingoGameState</a></div><div class="ttdef"><b>Definition</b> <a href="ALingoGameState_8h_source.html#l00012">ALingoGameState.h:13</a></div></div>
+<div class="ttc" id="astructFResponseScenario_html"><div class="ttname"><a href="structFResponseScenario.html">FResponseScenario</a></div><div class="ttdoc">Scenario 응답 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00407">NetworkData.h:408</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_7fb5e64dcba5cad56d11a2ce531d1e7a.html">Game</a></li><li class="navelem"><a class="el" href="dir_7d5071b022ae16b4c5bc069534dc4de0.html">Public</a></li><li class="navelem"><a class="el" href="ALingoGameState_8h.html">ALingoGameState.h</a></li>
-    <li class="footer">생성시간 : 월 11월 24 2025 00:37:42, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 월 11월 24 2025 07:55:34, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

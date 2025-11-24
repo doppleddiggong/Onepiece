@@ -27,7 +27,20 @@ var menudata={children:[
 {text:"네임스페이스",url:"namespaces.html",children:[
 {text:"네임스페이스 목록",url:"namespaces.html"},
 {text:"네임스페이스 멤버",url:"namespacemembers.html",children:[
-{text:"모두",url:"namespacemembers.html"},
+{text:"모두",url:"namespacemembers.html",children:[
+{text:"b",url:"namespacemembers.html#index_b"},
+{text:"d",url:"namespacemembers.html#index_d"},
+{text:"g",url:"namespacemembers.html#index_g"},
+{text:"h",url:"namespacemembers.html#index_h"},
+{text:"i",url:"namespacemembers.html#index_i"},
+{text:"l",url:"namespacemembers.html#index_l"},
+{text:"o",url:"namespacemembers.html#index_o"},
+{text:"p",url:"namespacemembers.html#index_p"},
+{text:"s",url:"namespacemembers.html#index_s"},
+{text:"t",url:"namespacemembers.html#index_t"},
+{text:"u",url:"namespacemembers.html#index_u"},
+{text:"w",url:"namespacemembers.html#index_w"},
+{text:"y",url:"namespacemembers.html#index_y"}]},
 {text:"함수",url:"namespacemembers_func.html"},
 {text:"변수",url:"namespacemembers_vars.html"}]}]},
 {text:"클래스",url:"annotated.html",children:[
@@ -78,7 +91,6 @@ var menudata={children:[
 {text:"s",url:"functions_func_s.html#index_s"},
 {text:"t",url:"functions_func_t.html#index_t"},
 {text:"u",url:"functions_func_u.html#index_u"},
-{text:"v",url:"functions_func_v.html#index_v"},
 {text:"w",url:"functions_func_w.html#index_w"},
 {text:"~",url:"functions_func_~.html#index__7E"}]},
 {text:"변수",url:"functions_vars.html",children:[
@@ -119,6 +131,7 @@ var menudata={children:[
 {text:"i",url:"globals.html#index_i"},
 {text:"k",url:"globals.html#index_k"},
 {text:"l",url:"globals.html#index_l"},
+{text:"m",url:"globals.html#index_m"},
 {text:"n",url:"globals.html#index_n"},
 {text:"p",url:"globals.html#index_p"},
 {text:"r",url:"globals.html#index_r"},
@@ -137,6 +150,7 @@ var menudata={children:[
 {text:"i",url:"globals_defs.html#index_i"},
 {text:"k",url:"globals_defs.html#index_k"},
 {text:"l",url:"globals_defs.html#index_l"},
+{text:"m",url:"globals_defs.html#index_m"},
 {text:"n",url:"globals_defs.html#index_n"},
 {text:"p",url:"globals_defs.html#index_p"},
 {text:"s",url:"globals_defs.html#index_s"},

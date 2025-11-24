@@ -16,7 +16,15 @@ var namespaces_dup =
       [ "GameEnd", "namespaceGameMessage.html#a2298f260adc739495b1a3938d2335243", null ],
       [ "GameStart", "namespaceGameMessage.html#a5dbedc9538ba6d1baa996c8c59666487", null ],
       [ "IntroStart", "namespaceGameMessage.html#aa9bd2204f84bf0f0e6a421b6c102dc60", null ],
-      [ "OutroStart", "namespaceGameMessage.html#a7c9b2a73fcb8d4b1add212d7c16476c2", null ]
+      [ "OutroStart", "namespaceGameMessage.html#a7c9b2a73fcb8d4b1add212d7c16476c2", null ],
+      [ "Stage1End", "namespaceGameMessage.html#aefbcc921206947c72cb793a252dec10e", null ],
+      [ "Stage1Start", "namespaceGameMessage.html#a326c294d1a911e05f13ee8a200c47fb7", null ],
+      [ "Stage2End", "namespaceGameMessage.html#ada8a22b69a6c116b342407d5e6661134", null ],
+      [ "Stage2Start", "namespaceGameMessage.html#a9a4ef69332e53a7a267594595d377c28", null ],
+      [ "Stage3End", "namespaceGameMessage.html#a1a9311ea6c14b3903f9a3797903e2303", null ],
+      [ "Stage3Start", "namespaceGameMessage.html#a2e7ce013d07feee9b57a7ebed463ac99", null ],
+      [ "Stage4End", "namespaceGameMessage.html#a41af88bcbb76137849dde9e51a36909a", null ],
+      [ "Stage4Start", "namespaceGameMessage.html#a5369db03cb95a068ce7ca975e8e1b55b", null ]
     ] ],
     [ "GameTags", "namespaceGameTags.html", [
       [ "Building", "namespaceGameTags.html#abffb03d97d2c1ee92236896e77b31600", null ],

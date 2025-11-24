@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['print_5fstring_0',['PRINT_STRING',['../GameLogging_8h.html#ac50b407bb34c70a0be1fccc74730d143',1,'GameLogging.h']]],
-  ['printinfo_1',['PRINTINFO',['../GameLogging_8h.html#a09d4c46dea8bd250019ef3935c7d71b6',1,'GameLogging.h']]],
-  ['printlog_2',['PRINTLOG',['../GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf',1,'GameLogging.h']]]
+  ['net_5fcallinfo_0',['NET_CALLINFO',['../NetworkLog_8h.html#a879c9557a0d5e58dae0368f967ccfe93',1,'NetworkLog.h']]],
+  ['network_5fget_1',['NETWORK_GET',['../UKLingoNetworkSystem_8cpp.html#a6bd9e0c8add7ea4b4e756a2b78fb54f7',1,'UKLingoNetworkSystem.cpp']]],
+  ['network_5flog_2',['network_log',['../GameLogging_8h.html#ad8e2ccc8c20a63e091e0111987b4d3bc',1,'NETWORK_LOG:&#160;GameLogging.h'],['../NetworkLog_8h.html#ad8e2ccc8c20a63e091e0111987b4d3bc',1,'NETWORK_LOG:&#160;NetworkLog.h']]],
+  ['network_5fpost_3',['NETWORK_POST',['../UKLingoNetworkSystem_8cpp.html#a46a23e536f557ad9a916633c05d6167b',1,'UKLingoNetworkSystem.cpp']]]
 ];

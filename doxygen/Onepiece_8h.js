@@ -9,5 +9,13 @@ var Onepiece_8h =
     [ "LoadingCircle", "Onepiece_8h.html#a919c4166af88ffa5c2fd2d860c2c40a9", null ],
     [ "OutroStart", "Onepiece_8h.html#a7c9b2a73fcb8d4b1add212d7c16476c2", null ],
     [ "Player", "Onepiece_8h.html#a4a81eec617fe2a3746945eb6a5814d21", null ],
+    [ "Stage1End", "Onepiece_8h.html#aefbcc921206947c72cb793a252dec10e", null ],
+    [ "Stage1Start", "Onepiece_8h.html#a326c294d1a911e05f13ee8a200c47fb7", null ],
+    [ "Stage2End", "Onepiece_8h.html#ada8a22b69a6c116b342407d5e6661134", null ],
+    [ "Stage2Start", "Onepiece_8h.html#a9a4ef69332e53a7a267594595d377c28", null ],
+    [ "Stage3End", "Onepiece_8h.html#a1a9311ea6c14b3903f9a3797903e2303", null ],
+    [ "Stage3Start", "Onepiece_8h.html#a2e7ce013d07feee9b57a7ebed463ac99", null ],
+    [ "Stage4End", "Onepiece_8h.html#a41af88bcbb76137849dde9e51a36909a", null ],
+    [ "Stage4Start", "Onepiece_8h.html#a5369db03cb95a068ce7ca975e8e1b55b", null ],
     [ "ToastManager", "Onepiece_8h.html#a07dfea414258bbc2a9e8f98ced349615", null ]
 ];

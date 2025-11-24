@@ -1,14 +1,17 @@
 var classALingoGameState =
 [
     [ "ALingoGameState", "classALingoGameState.html#ad11efa82f3ac7127c29c98502984a942", null ],
-    [ "AreAllPlayersMissionComplete", "classALingoGameState.html#aaa34d72cddb634cb0373e3a849258b45", null ],
-    [ "GetFormattedTimer", "classALingoGameState.html#a25e1f79296d8a8cfbf29d241607711d6", null ],
     [ "GetLifetimeReplicatedProps", "classALingoGameState.html#aa74b975d34544b911ecaedba36fce70a", null ],
-    [ "OnRep_CurrentPhase", "classALingoGameState.html#a9c3c20e280797a60afa14855e746fddf", null ],
-    [ "CurrentMissionIndex", "classALingoGameState.html#a2cab376660888de7be219e0b85e5f1f2", null ],
-    [ "CurrentPhase", "classALingoGameState.html#a5da20c0dea1d937ee767ba25b8c741a4", null ],
-    [ "MissionTimeLimit", "classALingoGameState.html#a8e899691d22613832ae30c560b95a62b", null ],
-    [ "MissionTimeRemaining", "classALingoGameState.html#af490df8b7426f3bbad6f34c404bdde03", null ],
-    [ "OnPhaseChanged", "classALingoGameState.html#ad5121bf85d94cde4716d5397940ea833", null ],
-    [ "PreviousPhase", "classALingoGameState.html#ad8b315fe7559b958a76ffdc68788336d", null ]
+    [ "GetRemainMissionTime", "classALingoGameState.html#abec3beeccc38530d9fa06be8b23998b5", null ],
+    [ "OnMissionTimerEnd", "classALingoGameState.html#a559e1cc5340dab3ab3fe0baeeea47676", null ],
+    [ "SetStageData", "classALingoGameState.html#a32b39ebcb77c422f322660803478a146", null ],
+    [ "StartMissionTimer", "classALingoGameState.html#adb613d0ae85fcd2a8d8f3f777566c98c", null ],
+    [ "StopMissionTimer", "classALingoGameState.html#a636940358cf8e1fbcb67bd25057a990a", null ],
+    [ "Tick", "classALingoGameState.html#a31fd33726bd2022790f0f3729dbf125d", null ],
+    [ "bIsTimerActive", "classALingoGameState.html#ab2b1dfcaf07b61dd099209f135ff97fa", null ],
+    [ "CurScenarioData", "classALingoGameState.html#a3cd7a9eb6c217ca289fe7751113a1bef", null ],
+    [ "RemainMissionTime", "classALingoGameState.html#abf8b596488b55e3933d5d3fcf016307f", null ],
+    [ "ScenarioIndex", "classALingoGameState.html#ad9ab549d6de648690eb3ebb04238b2e6", null ],
+    [ "ScenarioLevel", "classALingoGameState.html#a31e77725a14a39ad4e66764210020a64", null ],
+    [ "StageIndex", "classALingoGameState.html#aab818a44f5aa9960436010119e4c9899", null ]
 ];

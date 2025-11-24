@@ -17,7 +17,7 @@ var classANetworkTesterActor =
     [ "OcrImagePath", "classANetworkTesterActor.html#a2364f342501971f4ad5935cd3265898f", null ],
     [ "ScenarioDifficulty", "classANetworkTesterActor.html#af3bc9d0671438a2c3e914701fba309a1", null ],
     [ "ScenarioIndex", "classANetworkTesterActor.html#ab440b96d9824011aac1019caecca674a", null ],
-    [ "ScenarioLang", "classANetworkTesterActor.html#a537388cb7b487ac58c71ec19c9333ef8", null ],
+    [ "ScenarioLevel", "classANetworkTesterActor.html#add3837d9fe9455e73574e3a1fd50735d", null ],
     [ "SpeakingAudioPath", "classANetworkTesterActor.html#a63de4f3b4b19044fbe8efcf3b9a5d3ee", null ],
     [ "UserName", "classANetworkTesterActor.html#ab5f32b53d6845e92b3bdc278e43c58fa", null ]
 ];

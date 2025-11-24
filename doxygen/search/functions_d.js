@@ -4,12 +4,12 @@ var searchData=
   ['readuint32_1',['ReadUInt32',['../UVoiceFunctionLibrary_8cpp.html#a69d2a7f8f829c250f27524f00790532f',1,'UVoiceFunctionLibrary.cpp']]],
   ['recoverybutton_2',['RecoveryButton',['../classAPedestalSwitch.html#a449acc40a37cc79da51dbf51b0456f77',1,'APedestalSwitch']]],
   ['recoverymovementmode_3',['RecoveryMovementMode',['../classAPlayerActor.html#a4b7956b192cc40b1b2b5cdf3c43dc408',1,'APlayerActor']]],
-  ['reloadmasterdata_4',['ReloadMasterData',['../classUGameDataManager.html#a1ef2615c011d32aff77fff4d5ccaf627',1,'UGameDataManager']]],
-  ['removeentrybyid_5',['RemoveEntryById',['../classUDelayTaskManager.html#a4e1ff6a0d1d04f8b069b57874d3fc245',1,'UDelayTaskManager']]],
-  ['removelinebreaks_6',['RemoveLineBreaks',['../classUCommonFunctionLibrary.html#ac56071bf50394ef58a818381f44fb587',1,'UCommonFunctionLibrary']]],
-  ['reportmissioncomplete_7',['ReportMissionComplete',['../classALingoGameMode.html#ab33854538e82adeddf46ad7569ddd076',1,'ALingoGameMode']]],
+  ['registerusername_4',['RegisterUserName',['../classUMessageBoxManager.html#a54b4917a29089fcd1526b1282de50722',1,'UMessageBoxManager']]],
+  ['reloadmasterdata_5',['ReloadMasterData',['../classUGameDataManager.html#a1ef2615c011d32aff77fff4d5ccaf627',1,'UGameDataManager']]],
+  ['removeentrybyid_6',['RemoveEntryById',['../classUDelayTaskManager.html#a4e1ff6a0d1d04f8b069b57874d3fc245',1,'UDelayTaskManager']]],
+  ['removelinebreaks_7',['RemoveLineBreaks',['../classUCommonFunctionLibrary.html#ac56071bf50394ef58a818381f44fb587',1,'UCommonFunctionLibrary']]],
   ['requestocrextract_8',['requestocrextract',['../classANetworkTesterActor.html#a02ff1581891a931b644040b2fe7f5959',1,'ANetworkTesterActor::RequestOcrExtract()'],['../classUKLingoNetworkSystem.html#a2b55f61a9ab11131c68a8d9aa947e81b',1,'UKLingoNetworkSystem::RequestOcrExtract(const FString &amp;ImagePath, FResponseOcrExtractDelegate InDelegate)']]],
-  ['requestscenario_9',['requestscenario',['../classUKLingoNetworkSystem.html#a7bb3a953715a2b6ac4e23243dfe8eb65',1,'UKLingoNetworkSystem::RequestScenario()'],['../classANetworkTesterActor.html#ae951945fc42fe14ebc6ee5e40603fbfe',1,'ANetworkTesterActor::RequestScenario()']]],
+  ['requestscenario_9',['requestscenario',['../classUKLingoNetworkSystem.html#a245c519fba6f3d6e6c103770c02b1a1c',1,'UKLingoNetworkSystem::RequestScenario()'],['../classANetworkTesterActor.html#ae951945fc42fe14ebc6ee5e40603fbfe',1,'ANetworkTesterActor::RequestScenario()']]],
   ['requestsequential_10',['RequestSequential',['../classUSequenceManager.html#a65217a3454ccbc465cba8880106c8a94',1,'USequenceManager']]],
   ['requestspeakingquestions_11',['requestspeakingquestions',['../classANetworkTesterActor.html#afecbbceb4620b3230c239edf911dd301',1,'ANetworkTesterActor::RequestSpeakingQuestions()'],['../classUKLingoNetworkSystem.html#a7b9e2c31f43e7c1b129f39446eec5dc0',1,'UKLingoNetworkSystem::RequestSpeakingQuestions()']]],
   ['requestuserme_12',['requestuserme',['../classANetworkTesterActor.html#aebbe22fc01a47b44f20c3dc5f35aceed',1,'ANetworkTesterActor::RequestUserMe()'],['../classUKLingoNetworkSystem.html#a7bf03fe16be3fddf9a51350248bdf6b4',1,'UKLingoNetworkSystem::RequestUserMe()']]],
@@ -18,6 +18,5 @@ var searchData=
   ['resampleaudio_15',['ResampleAudio',['../classUVoiceFunctionLibrary.html#ab7286a2381e79cda24832986f2f70964',1,'UVoiceFunctionLibrary']]],
   ['reset_16',['Reset',['../classFHttpMultipartFormData.html#aceb421a2053762a2e8ff832a974bd7c6',1,'FHttpMultipartFormData']]],
   ['resetalpha_17',['ResetAlpha',['../classUTweenAnimInstance.html#a2ace1c8a60caf1704f0421c4f28c203d',1,'UTweenAnimInstance']]],
-  ['resetfornextmission_18',['ResetForNextMission',['../classALingoPlayerState.html#a4923f62388756da2cf0607947c4f3349',1,'ALingoPlayerState']]],
-  ['returnactortopool_19',['ReturnActorToPool',['../classUObjectPoolManager.html#a490db17b3cd07db69fabddfc7fe98b2d',1,'UObjectPoolManager']]]
+  ['returnactortopool_18',['ReturnActorToPool',['../classUObjectPoolManager.html#a490db17b3cd07db69fabddfc7fe98b2d',1,'UObjectPoolManager']]]
 ];

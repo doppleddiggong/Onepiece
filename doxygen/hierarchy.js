@@ -1,6 +1,7 @@
 var hierarchy =
 [
     [ "AActor", null, [
+      [ "AContactTrigger", "classAContactTrigger.html", null ],
       [ "ADoor", "classADoor.html", null ],
       [ "AGate", "classAGate.html", null ],
       [ "AListActorManager", "classAListActorManager.html", null ],
@@ -117,13 +118,17 @@ var hierarchy =
     ] ],
     [ "ULocalPlayerSubsystem", null, [
       [ "UDialogManager", "classUDialogManager.html", null ],
-      [ "ULoadingCircleManager", "classULoadingCircleManager.html", null ]
+      [ "ULoadingCircleManager", "classULoadingCircleManager.html", null ],
+      [ "UMessageBoxManager", "classUMessageBoxManager.html", null ]
     ] ],
     [ "UUserWidget", null, [
       [ "UDialogWidget", "classUDialogWidget.html", null ],
       [ "UDrawingBoardWidget", "classUDrawingBoardWidget.html", null ],
       [ "ULoadginCircle", "classULoadginCircle.html", null ],
+      [ "UMainWidget", "classUMainWidget.html", null ],
       [ "UMessageBox", "classUMessageBox.html", null ],
-      [ "UStartWidget", "classUStartWidget.html", null ]
+      [ "UPlayTimer", "classUPlayTimer.html", null ],
+      [ "UStartWidget", "classUStartWidget.html", null ],
+      [ "UStateWidget", "classUStateWidget.html", null ]
     ] ]
 ];

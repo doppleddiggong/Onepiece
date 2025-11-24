@@ -9,13 +9,14 @@ var searchData=
   ['onknockback_6',['OnKnockback',['../classUBroadcastManager.html#a7b76f7a9be120cf9d2e22e4cff24778e',1,'UBroadcastManager']]],
   ['onmessage_7',['OnMessage',['../classUBroadcastManager.html#a43a192f0157e3177589f7b09b11a1e84',1,'UBroadcastManager']]],
   ['onnetworkwaitcount_8',['OnNetworkWaitCount',['../classUBroadcastManager.html#a2692fc3fbb06745f2cd20e9d5769abb8',1,'UBroadcastManager']]],
-  ['onphasechanged_9',['OnPhaseChanged',['../classALingoGameState.html#ad5121bf85d94cde4716d5397940ea833',1,'ALingoGameState']]],
-  ['onweightswitch_10',['OnWeightSwitch',['../classUBroadcastManager.html#a756c1c50c99027c954393663b51f9ebd',1,'UBroadcastManager']]],
-  ['outrostart_11',['OutroStart',['../namespaceGameMessage.html#a7c9b2a73fcb8d4b1add212d7c16476c2',1,'GameMessage']]],
-  ['overlappingactors_12',['OverlappingActors',['../classAWeightSwitch.html#a2079b69b39be9a7ce5b48f7f7df3964a',1,'AWeightSwitch']]],
-  ['overlappingpawns_13',['OverlappingPawns',['../classAGate.html#ad2aaa4efd6f4604237d4a6d8532fab23',1,'AGate']]],
-  ['overlay_5fdrawwindow_14',['Overlay_DrawWindow',['../classUDrawingBoardWidget.html#a3f44533ca743b90104b27ef385acd77a',1,'UDrawingBoardWidget']]],
-  ['owner_15',['Owner',['../structUDelayTaskManager_1_1FEntry.html#a24356fd0a14572e4ad702bcb62cda31f',1,'UDelayTaskManager::FEntry']]],
-  ['ownerindex_16',['OwnerIndex',['../classUDelayTaskManager.html#a871566c190df1aee76947f4a8a443c80',1,'UDelayTaskManager']]],
-  ['owningrobot_17',['OwningRobot',['../classURobotAnimInstance.html#a82927311de15ee791797f67e49e31f3a',1,'URobotAnimInstance']]]
+  ['onupdateusername_9',['OnUpdateUserName',['../classUBroadcastManager.html#a730d5a17b3808d4e6f5ac9f380bf0e34',1,'UBroadcastManager']]],
+  ['onusernameregister_10',['OnUserNameRegister',['../classUMessageBox.html#ae61165494255de9c8b45227a6afe93f8',1,'UMessageBox']]],
+  ['onweightswitch_11',['OnWeightSwitch',['../classUBroadcastManager.html#a756c1c50c99027c954393663b51f9ebd',1,'UBroadcastManager']]],
+  ['outrostart_12',['OutroStart',['../namespaceGameMessage.html#a7c9b2a73fcb8d4b1add212d7c16476c2',1,'GameMessage']]],
+  ['overlappingactors_13',['OverlappingActors',['../classAWeightSwitch.html#a2079b69b39be9a7ce5b48f7f7df3964a',1,'AWeightSwitch']]],
+  ['overlappingpawns_14',['OverlappingPawns',['../classAGate.html#ad2aaa4efd6f4604237d4a6d8532fab23',1,'AGate']]],
+  ['overlay_5fdrawwindow_15',['Overlay_DrawWindow',['../classUDrawingBoardWidget.html#a3f44533ca743b90104b27ef385acd77a',1,'UDrawingBoardWidget']]],
+  ['owner_16',['Owner',['../structUDelayTaskManager_1_1FEntry.html#a24356fd0a14572e4ad702bcb62cda31f',1,'UDelayTaskManager::FEntry']]],
+  ['ownerindex_17',['OwnerIndex',['../classUDelayTaskManager.html#a871566c190df1aee76947f4a8a443c80',1,'UDelayTaskManager']]],
+  ['owningrobot_18',['OwningRobot',['../classURobotAnimInstance.html#a82927311de15ee791797f67e49e31f3a',1,'URobotAnimInstance']]]
 ];

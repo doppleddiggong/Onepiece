@@ -5,6 +5,7 @@ var classUBroadcastManager =
     [ "DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam", "classUBroadcastManager.html#a17e0c45851522502899d7d1865845a9f", null ],
     [ "DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam", "classUBroadcastManager.html#a2191d39f5816f0b0d07ea13e4754a160", null ],
     [ "DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam", "classUBroadcastManager.html#a58c5a6f69feddebba2414865dbd885e3", null ],
+    [ "DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam", "classUBroadcastManager.html#a6be6b935aa07360549ca238c86afec85", null ],
     [ "DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams", "classUBroadcastManager.html#a67a295550c1ead6b3224e4e147872c4d", null ],
     [ "DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams", "classUBroadcastManager.html#a62476f45982ef48ebf95e126d61ab3ce", null ],
     [ "DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams", "classUBroadcastManager.html#a3429649c7670232f16dacf76d038eed4", null ],
@@ -17,6 +18,7 @@ var classUBroadcastManager =
     [ "SendKnockback", "classUBroadcastManager.html#a5009c7e9e1252735b18e6b0752060895", null ],
     [ "SendMessage", "classUBroadcastManager.html#a7dd77f4b9d69350f1a86fd1ec70301e1", null ],
     [ "SendNetworkWaitCount", "classUBroadcastManager.html#a9c69490ebcf0947b36db2264b76a4167", null ],
+    [ "SendUserNameChanged", "classUBroadcastManager.html#ae21792c04dbbe2e81c23e682191fbdd1", null ],
     [ "SendWeightSwitch", "classUBroadcastManager.html#a7a1bb7be2130b3367c2183017801b3ed", null ],
     [ "OnAudioCapture", "classUBroadcastManager.html#a15ce56190730a87bbd9ea51210a08b14", null ],
     [ "OnAudioSpectrum", "classUBroadcastManager.html#aa17cf7bbe9f0657ef94594ed525ddd88", null ],
@@ -25,5 +27,6 @@ var classUBroadcastManager =
     [ "OnKnockback", "classUBroadcastManager.html#a7b76f7a9be120cf9d2e22e4cff24778e", null ],
     [ "OnMessage", "classUBroadcastManager.html#a43a192f0157e3177589f7b09b11a1e84", null ],
     [ "OnNetworkWaitCount", "classUBroadcastManager.html#a2692fc3fbb06745f2cd20e9d5769abb8", null ],
+    [ "OnUpdateUserName", "classUBroadcastManager.html#a730d5a17b3808d4e6f5ac9f380bf0e34", null ],
     [ "OnWeightSwitch", "classUBroadcastManager.html#a756c1c50c99027c954393663b51f9ebd", null ]
 ];
