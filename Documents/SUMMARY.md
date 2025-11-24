@@ -6,12 +6,14 @@
 ## DevLog
 
 ### Agent Logs
+* [dopple - 2025-11-23](DevLog/AgentLog/dopple/251123.md)
 * [dopple - 2025-11-19](DevLog/AgentLog/dopple/251119.md)
 * [dopple - 2025-11-17](DevLog/AgentLog/dopple/251117.md)
 * [dopple - 2025-11-12](DevLog/AgentLog/dopple/251112.md)
 * [dopple - 2025-11-10](DevLog/AgentLog/dopple/251110.md)
 
 ### Daily Logs (2025-11)
+* [2025-11-23](DevLog/Daily/2025-11-23.md)
 * [2025-11-22](DevLog/Daily/2025-11-22.md)
 * [2025-11-21](DevLog/Daily/2025-11-21.md)
 * [2025-11-20](DevLog/Daily/2025-11-20.md)
@@ -50,6 +52,9 @@
 * [251110 Project](Meeting/Common/Meeting_251110_Project.md)
 
 ## Planning
+
+### System Design
+* [UInteractionSystem & UInteractableComponent 기술 리포트](Planning/Report/2025-11-23_InteractionSystem_TechReport.md)
 
 ### Reports
 * [KLingo_251118_Presentation_Report](Planning/Presentation/KLingo_251118_Presentation_Report.md)
