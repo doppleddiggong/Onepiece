@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Macro.h"
+#include "NetworkData.h"
 #include "Subsystems/LocalPlayerSubsystem.h"
 #include "MessageBoxManager.generated.h"
 
@@ -14,7 +15,8 @@ UENUM(Blueprintable)
 enum class EMessageBoxType : uint8
 {
 	Info, 
-	Register
+	Register,
+	LogIn
 };
 
 
@@ -49,9 +51,17 @@ public:
 protected:
 	// 월드에 메세지 박스 없을 경우 생성
 	void EnsureWidgetForWorld(UWorld* World);
+	
 	// 이름 네트워크와 연결 헬퍼 함수
+	// Register 타입 Input 처리
 	UFUNCTION()
 	void RegisterUserName(const FString& UserInput);
+	// LogIn 타입 Input 처리
+	UFUNCTION()
+	void GetUserToken(const FString& UserInput);
+	
 	UFUNCTION()
 	void OnResponseUserRegister(FResponseUserRegister& ResponseData, bool bWasSuccessful);
+	UFUNCTION()
+	void OnResponseUserToken(FResponseUserToken& ResponseData, bool bWasSuccessful);
 };

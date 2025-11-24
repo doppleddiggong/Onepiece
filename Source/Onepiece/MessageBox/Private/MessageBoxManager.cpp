@@ -48,6 +48,13 @@ void UMessageBoxManager::ShowMessageBox(EMessageBoxType Type, const FString& Tit
 				MessageBox->OnUserNameRegister.AddDynamic(this, &UMessageBoxManager::RegisterUserName);
 			}
 			break;
+		case EMessageBoxType::LogIn:
+			{
+				MessageBox->SetNameFieldVisibility(true);
+
+				MessageBox->OnUserNameRegister.AddDynamic(this, &UMessageBoxManager::GetUserToken);
+			}
+			break;
 		}
 	}
 }
@@ -128,15 +135,52 @@ void UMessageBoxManager::RegisterUserName(const FString& UserInput)
 	}
 }
 
+void UMessageBoxManager::GetUserToken(const FString& UserInput)
+{
+	if (auto KLingoNetwork = UKLingoNetworkSystem::Get(GetWorld()))
+	{
+		PRINTLOG(TEXT("[TEST] RequestUserToken - UserName: %s"), *UserInput);
+		KLingoNetwork->RequestUserToken(
+			UserInput,
+			FResponseUserTokenDelegate::CreateUObject(this, &UMessageBoxManager::OnResponseUserToken)
+		);
+	}
+	else
+	{
+		PRINTLOG(TEXT("UKLingoNetworkSystem not found!"));
+	}
+	
+}
+
 void UMessageBoxManager::OnResponseUserRegister(FResponseUserRegister& ResponseData, bool bWasSuccessful)
 {
 	if (bWasSuccessful)
 	{
 		PRINTLOG(TEXT("--- User Register SUCCESS ---"));
 		ResponseData.PrintData();
+		
+		// 가입 성공 시 토큰 발급
+		GetUserToken(ResponseData.username);
 	}
 	else
 	{
 		PRINTLOG(TEXT("--- User Register FAILED ---"));
+	}
+}
+
+void UMessageBoxManager::OnResponseUserToken(FResponseUserToken& ResponseData, bool bWasSuccessful)
+{
+	if (bWasSuccessful)
+	{
+		PRINTLOG(TEXT("--- User Token SUCCESS ---"));
+		ResponseData.PrintData();
+		PRINTLOG(TEXT("Token: %s"), *ResponseData.access_token);
+		
+		// 토큰 발급 성공 시 로비맵으로
+		UGameplayStatics::OpenLevel(GetWorld(), TEXT("LobbyMap"));
+	}
+	else
+	{
+		PRINTLOG(TEXT("--- User Token FAILED ---"));
 	}
 }

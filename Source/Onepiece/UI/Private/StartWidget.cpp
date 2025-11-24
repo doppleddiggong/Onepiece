@@ -3,6 +3,8 @@
 
 #include "StartWidget.h"
 
+#include "GameLogging.h"
+#include "UKLingoNetworkSystem.h"
 #include "Components/Button.h"
 #include "Onepiece/MessageBox/Public/MessageBox.h"
 #include "Onepiece/MessageBox/Public/MessageBoxManager.h"
@@ -24,14 +26,21 @@ void UStartWidget::NativeConstruct()
 
 void UStartWidget::OnStartPressed()
 {
-	// 로그인 - 유저 이름 확인?
+	// 로그인
+	UMessageBoxManager* MB = UMessageBoxManager::Get(GetWorld());
+	if (MB)
+	{
+		MB->ShowMessageBox(EMessageBoxType::LogIn,"LogIn", "Please enter your registered name below.");
+	}
 }
 
 void UStartWidget::OnRegistPressed()
 {
+	// 가입
 	UMessageBoxManager* MB = UMessageBoxManager::Get(GetWorld());
 	if (MB)
 	{
 		MB->ShowMessageBox(EMessageBoxType::Register,"Registeration", "Please enter your name below.");
 	}
 }
+
