@@ -121,11 +121,11 @@ void ANetworkTesterActor::RequestScenario()
     if (auto KLingoNetwork = UKLingoNetworkSystem::Get(GetWorld()))
     {
         PRINTLOG(TEXT("[TEST] RequestScenario - Index: %d, Difficulty: %d, Lang: %d"), 
-                 ScenarioIndex, ScenarioDifficulty, ScenarioLang);
+                 ScenarioIndex, ScenarioDifficulty, ScenarioLevel);
         KLingoNetwork->RequestScenario(
             ScenarioIndex,
             ScenarioDifficulty,
-            ScenarioLang,
+            ScenarioLevel,
             FResponseScenarioDelegate::CreateUObject(this, &ANetworkTesterActor::OnResponseScenario)
         );
     }
