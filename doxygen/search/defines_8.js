@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['mainwidget_5fpath_0',['MAINWIDGET_PATH',['../APlayerActor_8cpp.html#a8a594718303599604d201d83db618bae',1,'APlayerActor.cpp']]],
-  ['messagebox_5fpath_1',['MESSAGEBOX_PATH',['../MessageBoxManager_8cpp.html#a5744bbed3624110df8723828b4c59666',1,'MessageBoxManager.cpp']]]
+  ['print_5fstring_0',['PRINT_STRING',['../GameLogging_8h.html#ac50b407bb34c70a0be1fccc74730d143',1,'GameLogging.h']]],
+  ['printinfo_1',['PRINTINFO',['../GameLogging_8h.html#a09d4c46dea8bd250019ef3935c7d71b6',1,'GameLogging.h']]],
+  ['printlog_2',['PRINTLOG',['../GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf',1,'GameLogging.h']]]
 ];

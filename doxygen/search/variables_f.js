@@ -7,5 +7,5 @@ var searchData=
   ['port_4',['Port',['../structFServerConfig.html#a0921d17b91705fa9f1ffc75c204daab5',1,'FServerConfig']]],
   ['prevmousepos_5',['prevMousePos',['../classUDrawingBoardWidget.html#ab7b6f878a2113366f4b5b011462ec075',1,'UDrawingBoardWidget']]],
   ['prevmovemode_6',['PrevMoveMode',['../classAPlayerActor.html#ab1f95d1f7bf064023276293ae98d4856',1,'APlayerActor']]],
-  ['pronunciation_7',['Pronunciation',['../structFWordData.html#a8a359d2cf5e79ca20cbdfe904076dc41',1,'FWordData']]]
+  ['pronunciation_7',['pronunciation',['../structFWordStudyData.html#aeb3e85dc6ad5e931155e69084c27f3df',1,'FWordStudyData::Pronunciation'],['../structFWordData.html#a8a359d2cf5e79ca20cbdfe904076dc41',1,'FWordData::Pronunciation']]]
 ];

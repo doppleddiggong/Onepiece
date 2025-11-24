@@ -1,7 +1,8 @@
 var UGameDataManager_8cpp =
 [
-    [ "CHARACTERASSET_PATH", "UGameDataManager_8cpp.html#a0e6306fe729f4769c0cfcce09e92d147", null ],
-    [ "CHARACTERINFO_PATH", "UGameDataManager_8cpp.html#aa424faa8ab60408aef25c49c7ebf0bb2", null ],
-    [ "HITSTOP_PATH", "UGameDataManager_8cpp.html#a038c6bb641fabd3ef61115cddfaed945", null ],
-    [ "KNOCKBACK_PATH", "UGameDataManager_8cpp.html#a14bf9bb7e6c71e7c6c887cc0054c0607", null ]
+    [ "COLORDATA_PATH", "UGameDataManager_8cpp.html#a0af29362e2cb6c08bd40aeed1111680c", null ],
+    [ "LEVELDATA_PATH", "UGameDataManager_8cpp.html#affad115e3ab2f4304c38c5e6cbfc5346", null ],
+    [ "LISTENDATA_PATH", "UGameDataManager_8cpp.html#ae23d7e0273152b4b27f3c62f3b4b2a15", null ],
+    [ "READDATA_PATH", "UGameDataManager_8cpp.html#a308c9c03df6134c95e6f832a217666a1", null ],
+    [ "WORDDATA_PATH", "UGameDataManager_8cpp.html#a1ff5ef106f9d5772e9e4b49225c68db3", null ]
 ];
