@@ -9,6 +9,7 @@
 
 #include "UFlySystem.h"
 #include "UMainWidget.h"
+#include "FComponentHelper.h"
 
 // Shared
 #include "GameLogging.h"
@@ -27,13 +28,12 @@
 #include "Blueprint/UserWidget.h"
 #include "Onepiece/Onepiece.h"
 
+#define MAINWIDGET_PATH TEXT("/Game/CustomContents/UI/WBP_MainWidget.WBP_MainWidget_C")
+
 APlayerActor::APlayerActor()
 {
 	PrimaryActorTick.bCanEverTick = false;
 
-	FlySystem = CreateDefaultSubobject<UFlySystem>(TEXT("FlySystem"));
-	InteractionSystem = CreateDefaultSubobject<UInteractionSystem>(TEXT("InteractionSystem"));
-	
 	SpringArmComp = CreateDefaultSubobject<USpringArmComponent>(TEXT("SpringArm"));
 	SpringArmComp->SetupAttachment(GetCapsuleComponent());
 	SpringArmComp->TargetArmLength = 400.f;
@@ -49,12 +49,18 @@ APlayerActor::APlayerActor()
 	GetCharacterMovement()->bOrientRotationToMovement = true;
 	GetCharacterMovement()->bUseControllerDesiredRotation = false;
 
-	VoiceConversationSystem = CreateDefaultSubobject<UVoiceConversationSystem>(TEXT("VoiceConversationSystem"));
-
 	HoldPosition = CreateDefaultSubobject<USceneComponent>(TEXT("HoldPosition"));
 	HoldPosition->SetupAttachment(FollowCamera);
-	
+
 	LookPitch = 0.f;
+
+	// System Component
+	FlySystem = CreateDefaultSubobject<UFlySystem>(TEXT("FlySystem"));
+	InteractionSystem = CreateDefaultSubobject<UInteractionSystem>(TEXT("InteractionSystem"));
+	VoiceConversationSystem = CreateDefaultSubobject<UVoiceConversationSystem>(TEXT("VoiceConversationSystem"));
+
+	// MainWidget 클래스 자동 로드
+	MainWidgetClass = FComponentHelper::LoadClass<UMainWidget>(MAINWIDGET_PATH);
 }
 
 void APlayerActor::BeginPlay()

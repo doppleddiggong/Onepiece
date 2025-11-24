@@ -6,6 +6,10 @@
 #include "Blueprint/UserWidget.h"
 #include "UMainWidget.generated.h"
 
+/**
+ * @brief 메인 UI 위젯
+ * @details PlayTimer와 StateWidget을 포함하고 타이머 업데이트를 관리합니다.
+ */
 UCLASS()
 class ONEPIECE_API UMainWidget : public UUserWidget
 {
@@ -15,23 +19,26 @@ public:
 	UMainWidget(const FObjectInitializer& ObjectInitializer);
 
 protected:
-	/// @brief 위젯 초기화와 브로드캐스트 구독을 수행합니다.
+	/// @brief 위젯 초기화
 	virtual void NativeConstruct() override;
 
 	/// @brief 매 프레임 호출되어 타이머를 업데이트합니다.
 	virtual void NativeTick(const FGeometry& MyGeometry, float InDeltaTime) override;
 
-	/// @brief 타이머 텍스트를 업데이트합니다.
-	void UpdateTimerDisplay();
-	
 public:
+	/// @brief 플레이 타이머 위젯 (BindWidget)
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
-	class UTextBlock* RemainPlayTimeText;
+	class UPlayTimer* PlayTimer;
+
+	/// @brief 플레이어 상태 위젯 (BindWidget)
+	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
+	class UStateWidget* StateWidget;
 
 protected:
-	UPROPERTY()
-	TObjectPtr<class UBroadcastManager> BroadcastManager;
-
+	/// @brief GameState 참조 캐싱
 	UPROPERTY()
 	TObjectPtr<class ALingoGameState> CachedGameState;
+
+	/// @brief 타이머 텍스트를 업데이트합니다.
+	void UpdateTimerDisplay();
 };

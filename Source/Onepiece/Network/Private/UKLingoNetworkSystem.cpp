@@ -164,10 +164,10 @@ void UKLingoNetworkSystem::RequestUserToken(const FString& UserName, FResponseUs
 	FormData.AddText(TEXT("password"), UserName);
 	FormData.SetupHttpRequest(Request);
 
-	LogNetwork(ENetworkLogType::Post, *Request->GetURL(), TEXT("grant_type=password&username=***&password=***"));
+	LogNetwork(ENetworkLogType::Post, *Request->GetURL(), *UserName);
 	
 	Request->OnProcessRequestComplete().BindLambda(
-		[this, InDelegate](FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSuccess)
+		[this, InDelegate, UserName](FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSuccess)
 		{
 			AddNetworkWaitCount(-1);
 
@@ -185,7 +185,10 @@ void UKLingoNetworkSystem::RequestUserToken(const FString& UserName, FResponseUs
 					access_token = ResponseData.access_token;
 
 					if (auto PS = ULingoGameHelper::GetLingoPlayerState(this))
+					{
+						PS->SetUserName(UserName);
 						PS->SetToken(ResponseData.access_token);
+					}
 
 					InDelegate.ExecuteIfBound(ResponseData, true);
 				}

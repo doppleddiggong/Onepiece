@@ -31,28 +31,28 @@ void ULoadingCircleManager::Initialize(FSubsystemCollectionBase& Collection)
 {
 	Super::Initialize(Collection);
 
-	// UBroadcastManager의 OnNetworkWaitCount 구독
-	if (UGameInstance* GameInstance = GetWorld()->GetGameInstance() )
-	{
-		if (UBroadcastManager* BroadcastManager = UBroadcastManager::Get(GameInstance))
-		{
-			BroadcastManager->OnNetworkWaitCount.AddDynamic(this, &ULoadingCircleManager::OnNetworkWaitCount);
-			PRINTLOG(TEXT("[LoadingCircleManager] Subscribed to OnNetworkWaitCount"));
-		}
-	}
+	// // UBroadcastManager의 OnNetworkWaitCount 구독
+	// if (UGameInstance* GameInstance = GetWorld()->GetGameInstance() )
+	// {
+	// 	if (UBroadcastManager* BroadcastManager = UBroadcastManager::Get(GameInstance))
+	// 	{
+	// 		BroadcastManager->OnNetworkWaitCount.AddDynamic(this, &ULoadingCircleManager::OnNetworkWaitCount);
+	// 		PRINTLOG(TEXT("[LoadingCircleManager] Subscribed to OnNetworkWaitCount"));
+	// 	}
+	// }
 }
 
 void ULoadingCircleManager::Deinitialize()
 {
-	// OnNetworkWaitCount 구독 해제
-	if (UGameInstance* GameInstance = GetWorld()->GetGameInstance())
-	{
-		if (UBroadcastManager* BroadcastManager = UBroadcastManager::Get(GameInstance))
-		{
-			BroadcastManager->OnNetworkWaitCount.RemoveDynamic(this, &ULoadingCircleManager::OnNetworkWaitCount);
-			PRINTLOG(TEXT("[LoadingCircleManager] Unsubscribed from OnNetworkWaitCount"));
-		}
-	}
+	// // OnNetworkWaitCount 구독 해제
+	// if (UGameInstance* GameInstance = GetWorld()->GetGameInstance())
+	// {
+	// 	if (UBroadcastManager* BroadcastManager = UBroadcastManager::Get(GameInstance))
+	// 	{
+	// 		BroadcastManager->OnNetworkWaitCount.RemoveDynamic(this, &ULoadingCircleManager::OnNetworkWaitCount);
+	// 		PRINTLOG(TEXT("[LoadingCircleManager] Unsubscribed from OnNetworkWaitCount"));
+	// 	}
+	// }
 
 	Super::Deinitialize();
 }

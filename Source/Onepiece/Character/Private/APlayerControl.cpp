@@ -27,7 +27,7 @@
 #define IA_LANDING_PATH				TEXT("/Game/CustomContents/Input/IA_Game_Landing.IA_Game_Landing")
 #define IA_RECORD_PATH				TEXT("/Game/CustomContents/Input/IA_Game_Record.IA_Game_Record")
 #define IA_GRAB_PATH				TEXT("/Game/CustomContents/Input/IA_Game_Grab.IA_Game_Grab")
-	#define IA_INTERACT_PATH			TEXT("/Game/CustomContents/Input/IA_Game_Interact.IA_Game_Interact")
+#define IA_INTERACT_PATH			TEXT("/Game/CustomContents/Input/IA_Game_Interact.IA_Game_Interact")
 
 
 APlayerControl::APlayerControl()

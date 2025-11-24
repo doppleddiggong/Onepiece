@@ -6,36 +6,19 @@
  */
 #include "UStateWidget.h"
 
+#include "ALingoPlayerState.h"
 #include "Blueprint/WidgetTree.h"
 #include "Components/Image.h"
 #include "Components/ProgressBar.h"
 #include "Components/TextBlock.h"
 #include "TimerManager.h"
 #include "UBroadcastManager.h"
+#include "ULingoGameHelper.h"
 #include "Misc/DateTime.h"
 
 void UStateWidget::NativeConstruct()
 {
     Super::NativeConstruct();
-
-    if (LoadingSpinner)
-        LoadingSpinner->SetVisibility(ESlateVisibility::Hidden);
-
-    if (SpectrumProgressBar)
-        SpectrumProgressBar->SetVisibility(ESlateVisibility::Hidden);
-
-    if (CurrentTimeText)
-        CurrentTimeText->SetText(FText::GetEmpty());
-
-    if (UWorld* World = GetWorld())
-        World->GetTimerManager().SetTimer(UpdateTimerHandle, this, &UStateWidget::RefreshTimeText, TimeUpdateInterval, true);
-
-    if (auto EventManager = UBroadcastManager::Get(GetWorld()))
-    {
-        EventManager->OnNetworkWaitCount.AddDynamic(this, &UStateWidget::OnNetworkWaitCount);
-        EventManager->OnAudioCapture.AddDynamic(this, &UStateWidget::OnAudioCapture);
-        EventManager->OnAudioSpectrum.AddDynamic(this, &UStateWidget::OnAudioSpectrum);
-    }
 }
 
 void UStateWidget::NativeDestruct()
@@ -46,19 +29,37 @@ void UStateWidget::NativeDestruct()
     Super::NativeDestruct();
 }
 
+void UStateWidget::InitWidget()
+{
+    if (LoadingSpinner)
+        LoadingSpinner->SetVisibility(ESlateVisibility::Hidden);
+
+    if (SpectrumProgressBar)
+        SpectrumProgressBar->SetVisibility(ESlateVisibility::Hidden);
+
+    if (UserNameText)
+    {
+        if (auto PS = ULingoGameHelper::GetLingoPlayerState(this))
+            UserNameText->SetText( FText::FromString(PS->GetUserName()));
+        else
+            UserNameText->SetText(FText::GetEmpty());
+    }
+
+    if (auto EventManager = UBroadcastManager::Get(GetWorld()))
+    {
+        EventManager->OnNetworkWaitCount.AddDynamic(this, &UStateWidget::OnNetworkWaitCount);
+        EventManager->OnAudioCapture.AddDynamic(this, &UStateWidget::OnAudioCapture);
+        EventManager->OnAudioSpectrum.AddDynamic(this, &UStateWidget::OnAudioSpectrum);
+        EventManager->OnUpdateUserName.AddDynamic(this, &UStateWidget::OnUpdateUserName);
+    }
+}
+
 void UStateWidget::NativeTick(const FGeometry& MyGeometry, float InDeltaTime)
 {
     Super::NativeTick(MyGeometry, InDeltaTime);
 
     UpdateSpectrumVisual(InDeltaTime);
     UpdateLoadingSpinner(InDeltaTime);
-}
-
-void UStateWidget::RefreshTimeText()
-{
-    const FDateTime Now = FDateTime::Now();
-    const FString TimeString = Now.ToString(TEXT("%H:%M:%S"));
-    CurrentTimeText->SetText(FText::FromString(TimeString));
 }
 
 void UStateWidget::UpdateSpectrumVisual(float DeltaTime)
@@ -102,4 +103,9 @@ void UStateWidget::OnAudioCapture(bool bRecording)
 void UStateWidget::OnAudioSpectrum(float Spectrum)
 {
     SpectrumDisplayValue = Spectrum;
+}
+
+void UStateWidget::OnUpdateUserName(FString UserName)
+{
+    UserNameText->SetText(FText::FromString(UserName));
 }

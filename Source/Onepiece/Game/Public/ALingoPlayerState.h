@@ -19,11 +19,12 @@ protected:
 	
 public:
 	void SetToken(FString InToken);
-	FString GetToken()
-	{
-		return AccessToken; 
-	}
+	FString GetToken() { return AccessToken; }
 
+	void SetUserName(FString InUserName);
+	FString GetUserName() { return UserName; } 
+	
 private:
 	FString AccessToken;
+	FString UserName;
 };

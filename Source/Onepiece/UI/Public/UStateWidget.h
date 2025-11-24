@@ -16,10 +16,9 @@ public:
     virtual void NativeDestruct() override;
     virtual void NativeTick(const FGeometry& MyGeometry, float InDeltaTime) override;
 
+    void InitWidget();
+    
 private:
-    UFUNCTION()
-    void RefreshTimeText();
-
     void UpdateSpectrumVisual(float DeltaTime);
     
     void UpdateLoadingSpinner(float DeltaTime);
@@ -33,9 +32,13 @@ private:
     UFUNCTION(BlueprintCallable, Category = "State|AudioCapture")
     void OnAudioSpectrum(float Spectrum);
 
+    UFUNCTION(BlueprintCallable, Category = "State|UserName")
+    void OnUpdateUserName(FString UserName);
+
+    
 protected:
-    UPROPERTY(meta = (BindWidget), BlueprintReadOnly, Category = "State|Time")
-    class UTextBlock* CurrentTimeText = nullptr;
+    UPROPERTY(meta = (BindWidget), BlueprintReadOnly, Category = "State|NickName")
+    class UTextBlock* UserNameText = nullptr;
 
     UPROPERTY(meta = (BindWidgetOptional), BlueprintReadOnly, Category = "State|Network")
     class UImage* LoadingSpinner = nullptr;
@@ -43,12 +46,8 @@ protected:
     UPROPERTY(meta = (BindWidgetOptional), BlueprintReadOnly, Category = "State|Audio")
     class UProgressBar* SpectrumProgressBar = nullptr;
 
-    
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "State|Network")
     float SpinnerRotationSpeed = 90.0f;
-
-    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "State|Time", meta = (ClampMin = "0.05", ClampMax = "5.0"))
-    float TimeUpdateInterval = 0.25f;
 
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "State|Audio", meta = (ClampMin = "0.0"))
     float SpectrumDecaySpeed = 6.0f;
