@@ -17,4 +17,16 @@ class ONEPIECE_API ULingoGameHelper : public UBlueprintFunctionLibrary
 public:
 	UFUNCTION(BlueprintCallable, Category = "Utils")
 	static ALingoPlayerState* GetLingoPlayerState(const UObject* WorldContextObject);
+
+	UFUNCTION(BlueprintCallable, Category = "Utils")
+	static FString GetStageStartMessage(const int StageIndex);
+
+	UFUNCTION(BlueprintCallable, Category = "Utils")
+	static FString GetStageEndMessage(const int StageIndex);
+
+	UFUNCTION(BlueprintCallable, Category = "Utils")
+	static float GetMissionPlayTime(const int Level);
+
+	UFUNCTION(BlueprintCallable, Category = "Utils")
+	static FString GetFormatTimer(const float InRemainTime );
 };

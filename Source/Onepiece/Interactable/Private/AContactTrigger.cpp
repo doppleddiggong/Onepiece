@@ -5,11 +5,11 @@
 #include "DrawDebugHelpers.h"
 #include "APlayerActor.h"
 #include "GameFramework/PlayerController.h"
-#include "Onepiece/Onepiece.h"
 #include "UKLingoNetworkSystem.h"
 #include "NetworkData.h"
 #include "ALingoGameState.h"
 #include "GameLogging.h"
+#include "ULingoGameHelper.h"
 
 AContactTrigger::AContactTrigger()
 {
@@ -33,14 +33,16 @@ AContactTrigger::AContactTrigger()
 	bIsTriggered = false;
 	bShowDebugBox = true;
 	DebugBoxColor = FColor::Green;
-	ScenarioStageIndex = 1;
-	EventMessage = GameMessage::ScenarioStage1Start;
+
+	StageIndex = 1;
 }
 
 void AContactTrigger::BeginPlay()
 {
 	Super::BeginPlay();
 
+	EventMessage = ULingoGameHelper::GetStageStartMessage(StageIndex);
+	
 	// Overlap 이벤트 바인딩
 	if (TriggerBox)
 		TriggerBox->OnComponentBeginOverlap.AddDynamic(this, &AContactTrigger::OnTriggerBeginOverlap);
@@ -131,7 +133,7 @@ void AContactTrigger::ServerRPC_OnTrigger_Implementation(AActor* TriggeringActor
 	bIsTriggered = true;
 
 	// TODO, 나중에 분기 처리를 위해
-	this->OnTriggerScenario(ScenarioStageIndex);
+	this->OnTriggerScenario(StageIndex);
 }
 
 
@@ -146,7 +148,7 @@ void AContactTrigger::OnTriggerScenario(const int InStageIndex)
 		// 파라미터: Index, Difficulty, Level (1: 한국어)
 		KLingoNetwork->RequestScenario(
 		1,
-			ScenarioStageIndex,
+			StageIndex,
 			1,  // Level
 			FResponseScenarioDelegate::CreateUObject(this, &AContactTrigger::OnResponseScenario)
 		);
@@ -174,11 +176,10 @@ void AContactTrigger::OnResponseScenario(FResponseScenario& ResponseData, bool b
 		if (ALingoGameState* LingoGameState = World->GetGameState<ALingoGameState>())
 		{
 			// GameState에 시나리오 정보 저장 (서버에서만 실행되므로 자동으로 복제됨)
-			LingoGameState->ScenarioStageIndex = ScenarioStageIndex;
-			LingoGameState->CurrentScenarioData = ResponseData;
+			LingoGameState->SetStageData(StageIndex, ResponseData);
 
-			PRINTLOG(TEXT("[ContactTrigger] Saved scenario data to GameState - StageIndex: %d, Index: %d, Difficulty: %d"),
-				ScenarioStageIndex, ResponseData.index, ResponseData.dificulity);
+			PRINTLOG(TEXT("[ContactTrigger] Saved scenario data & Started timer (180s) - StageIndex: %d, Index: %d, Difficulty: %d"),
+				StageIndex, ResponseData.index, ResponseData.dificulity);
 		}
 
 		// 모든 플레이어에게 이벤트 메시지 전송

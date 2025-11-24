@@ -8,42 +8,47 @@
 
 ALingoPlayerState::ALingoPlayerState()
 {
-	PlayerRole = EPlayerRole::None;
-	bCurrentMissionComplete = false;
+	// PlayerRole = EPlayerRole::None;
+	// bCurrentMissionComplete = false;
 }
 
 void ALingoPlayerState::GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const
 {
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
 
-	DOREPLIFETIME(ALingoPlayerState, PlayerRole);
-	DOREPLIFETIME(ALingoPlayerState, bCurrentMissionComplete);
+	// DOREPLIFETIME(ALingoPlayerState, PlayerRole);
+	// DOREPLIFETIME(ALingoPlayerState, bCurrentMissionComplete);
 }
+//
+// void ALingoPlayerState::SetMissionComplete()
+// {
+// 	if (HasAuthority())
+// 	{
+// 		bCurrentMissionComplete = true;
+//
+// 		// GameMode에 미션 완료 보고
+// 		ALingoGameMode* GameMode = GetWorld()->GetAuthGameMode<ALingoGameMode>();
+// 		if (GameMode)
+// 		{
+// 			APlayerController* PC = Cast<APlayerController>(GetOwner());
+// 			if (PC)
+// 			{
+// 				GameMode->ReportMissionComplete(PC);
+// 			}
+// 		}
+// 	}
+// }
+//
+// void ALingoPlayerState::ResetForNextMission()
+// {
+// 	if (HasAuthority())
+// 	{
+// 		bCurrentMissionComplete = false;
+// 		UE_LOG(LogTemp, Log, TEXT("[PlayerState] reset for next mission"));
+// 	}
+// }
 
-void ALingoPlayerState::SetMissionComplete()
+void ALingoPlayerState::SetToken(FString InToken)
 {
-	if (HasAuthority())
-	{
-		bCurrentMissionComplete = true;
-
-		// GameMode에 미션 완료 보고
-		ALingoGameMode* GameMode = GetWorld()->GetAuthGameMode<ALingoGameMode>();
-		if (GameMode)
-		{
-			APlayerController* PC = Cast<APlayerController>(GetOwner());
-			if (PC)
-			{
-				GameMode->ReportMissionComplete(PC);
-			}
-		}
-	}
-}
-
-void ALingoPlayerState::ResetForNextMission()
-{
-	if (HasAuthority())
-	{
-		bCurrentMissionComplete = false;
-		UE_LOG(LogTemp, Log, TEXT("[PlayerState] reset for next mission"));
-	}
+	this->AccessToken = InToken;
 }

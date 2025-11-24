@@ -21,6 +21,7 @@ private:
     void RefreshTimeText();
 
     void UpdateSpectrumVisual(float DeltaTime);
+    
     void UpdateLoadingSpinner(float DeltaTime);
 
     UFUNCTION(BlueprintCallable, Category = "State|Network")
@@ -42,6 +43,7 @@ protected:
     UPROPERTY(meta = (BindWidgetOptional), BlueprintReadOnly, Category = "State|Audio")
     class UProgressBar* SpectrumProgressBar = nullptr;
 
+    
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "State|Network")
     float SpinnerRotationSpeed = 90.0f;
 

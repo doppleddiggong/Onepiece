@@ -8,6 +8,7 @@
 #include "APlayerActor.h"
 
 #include "UFlySystem.h"
+#include "UMainWidget.h"
 
 // Shared
 #include "GameLogging.h"
@@ -21,7 +22,9 @@
 #include "Components/CapsuleComponent.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
+#include "GameFramework/PlayerController.h"
 #include "Net/UnrealNetwork.h"
+#include "Blueprint/UserWidget.h"
 #include "Onepiece/Onepiece.h"
 
 APlayerActor::APlayerActor()
@@ -59,9 +62,15 @@ void APlayerActor::BeginPlay()
 	Super::BeginPlay();
 
 	MoveComp = this->GetCharacterMovement();
-	
+
 	FlySystem->InitSystem(this, BIND_DYNAMIC_DELEGATE(FEndCallback, this, APlayerActor, OnFlyEnd));
 	VoiceConversationSystem->InitSystem(this);
+
+	// 로컬 플레이어 컨트롤러인 경우에만 UI 생성
+	if (IsLocallyControlled())
+	{
+		CreateMainWidget();
+	}
 
 	// --- Architecture Demo Start ---
 	PRINTLOG( TEXT("APlayerActor: Setting up one-way dependency demo."));
@@ -236,9 +245,31 @@ void APlayerActor::Cmd_Landing_Implementation()
 void APlayerActor::OnGameMessage(const FString& Message)
 {
 	PRINT_STRING(TEXT("Event Received: %s"), *Message);
+}
 
-	if( Message == GameMessage::ScenarioStage1Start )
+void APlayerActor::CreateMainWidget()
+{
+	if (!MainWidgetClass)
 	{
-		
+		PRINTLOG(TEXT("[PlayerActor] MainWidgetClass is not set!"));
+		return;
+	}
+
+	if (APlayerController* PC = Cast<APlayerController>(GetController()))
+	{
+		MainWidget = CreateWidget<UMainWidget>(PC, MainWidgetClass);
+		if (MainWidget)
+		{
+			MainWidget->AddToViewport();
+			PRINTLOG(TEXT("[PlayerActor] MainWidget created and added to viewport"));
+		}
+		else
+		{
+			PRINTLOG(TEXT("[PlayerActor] Failed to create MainWidget"));
+		}
+	}
+	else
+	{
+		PRINTLOG(TEXT("[PlayerActor] PlayerController not found"));
 	}
 }

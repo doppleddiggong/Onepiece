@@ -111,6 +111,18 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category="Interaction")
 	USceneComponent* HoldPosition;
 
+protected:
+	/// @brief 메인 UI 위젯 인스턴스
+	UPROPERTY()
+	TObjectPtr<class UMainWidget> MainWidget;
+
+	/// @brief 메인 위젯 블루프린트 클래스
+	UPROPERTY(EditDefaultsOnly, Category = "UI")
+	TSubclassOf<class UMainWidget> MainWidgetClass;
+
+	/// @brief 메인 위젯을 생성하고 뷰포트에 추가합니다.
+	void CreateMainWidget();
+
 public:
 	// 서버쪽 pitch 수동으로 동기화
 	// bUsePawnControlRotation은 서버->클라로 전달 안됨

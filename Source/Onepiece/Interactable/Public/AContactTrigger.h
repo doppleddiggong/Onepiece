@@ -31,7 +31,7 @@ protected:
 	TObjectPtr<class UBoxComponent> TriggerBox;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Trigger")
-	int ScenarioStageIndex = 1;
+	int StageIndex = 1;
 
 	/// @brief 플레이어에게 전송할 이벤트 메시지 (Detail 패널에서 설정)
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Trigger")

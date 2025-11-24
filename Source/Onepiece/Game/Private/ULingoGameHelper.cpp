@@ -3,6 +3,7 @@
 
 #include "ULingoGameHelper.h"
 #include "ALingoPlayerState.h"
+#include "Onepiece/Onepiece.h"
 
 ALingoPlayerState* ULingoGameHelper::GetLingoPlayerState(const UObject* WorldContextObject)
 {
@@ -18,4 +19,48 @@ ALingoPlayerState* ULingoGameHelper::GetLingoPlayerState(const UObject* WorldCon
 		return nullptr;
 
 	return Cast<ALingoPlayerState>(PC->PlayerState);
+}
+
+
+FString ULingoGameHelper::GetStageStartMessage(const int StageIndex)
+{
+	switch (StageIndex)
+	{
+	case 1:	return GameMessage::Stage1Start;
+	case 2:	return GameMessage::Stage2Start;
+	case 3: return GameMessage::Stage3Start;
+	case 4: return GameMessage::Stage4Start;
+	default: return GameMessage::GameStart;
+	}
+}
+
+FString ULingoGameHelper::GetStageEndMessage(const int StageIndex)
+{
+	switch (StageIndex)
+	{
+	case 1:	return GameMessage::Stage1End;
+	case 2:	return GameMessage::Stage2End;
+	case 3: return GameMessage::Stage3End;
+	case 4: return GameMessage::Stage4End;
+	default: return GameMessage::GameEnd;
+	}
+}
+
+float ULingoGameHelper::GetMissionPlayTime(const int Level)
+{
+	switch (Level)
+	{
+	case 1:	return 300;
+	case 2:	return 240;
+	case 3: return 180;
+	default: return 180;
+	}	
+}
+
+FString ULingoGameHelper::GetFormatTimer(const float InRemainTime )
+{
+	const int32 Minutes = FMath::FloorToInt(InRemainTime / 60.f);
+	const int32 Seconds = FMath::FloorToInt(InRemainTime) % 60;
+
+	return FString::Printf(TEXT("%02d:%02d"), Minutes, Seconds);
 }
