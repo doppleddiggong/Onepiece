@@ -27,7 +27,21 @@ namespace GameTags
 namespace GameMessage
 {
 	static const FString GameStart = TEXT("GameStart");
-	static const FString GameEnd = TEXT("GameEnd");
+	static const FString GameEnd	= TEXT("GameEnd");
 	static const FString IntroStart = TEXT("IntroStart");
 	static const FString OutroStart = TEXT("OutroStart");    
+
+	static const FString Stage1Start	= TEXT("Stage1Start");    
+	static const FString Stage1End		= TEXT("Stage1End");    
+
+	static const FString Stage2Start	= TEXT("Stage2Start");    
+	static const FString Stage2End		= TEXT("Stage2End");    
+
+	static const FString Stage3Start	= TEXT("Stage3Start");    
+	static const FString Stage3End		= TEXT("Stage3End");    
+
+	static const FString Stage4Start	= TEXT("Stage4Start");    
+	static const FString Stage4End		= TEXT("Stage4End");    
+
+
 }

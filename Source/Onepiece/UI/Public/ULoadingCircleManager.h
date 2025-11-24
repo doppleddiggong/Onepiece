@@ -24,6 +24,9 @@ public:
 
 	ULoadingCircleManager();
 
+	virtual void Initialize(FSubsystemCollectionBase& Collection) override;
+	virtual void Deinitialize() override;
+
 	/// @brief 로딩 카운트를 증가시킵니다.
 	UFUNCTION(BlueprintCallable, Category = "Loading")
 	void Show();
@@ -39,6 +42,10 @@ public:
 protected:
 	/// @brief 현재 월드에 위젯이 없으면 생성하고 Game Viewport에 부착합니다.
 	void EnsureWidgetForWorld(UWorld* World);
+
+	/// @brief OnNetworkWaitCount 델리게이트 핸들러
+	UFUNCTION()
+	void OnNetworkWaitCount(int RequestCount);
 
 protected:
 	UPROPERTY()

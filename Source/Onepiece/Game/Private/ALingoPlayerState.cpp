@@ -1,49 +1,30 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
+// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
 
 #include "ALingoPlayerState.h"
-#include "ALingoGameMode.h"
-
-#include "Net/UnrealNetwork.h"
+#include "UBroadcastManager.h"
 
 ALingoPlayerState::ALingoPlayerState()
 {
-	PlayerRole = EPlayerRole::None;
-	bCurrentMissionComplete = false;
 }
 
 void ALingoPlayerState::GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const
 {
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
-
-	DOREPLIFETIME(ALingoPlayerState, PlayerRole);
-	DOREPLIFETIME(ALingoPlayerState, bCurrentMissionComplete);
 }
 
-void ALingoPlayerState::SetMissionComplete()
+void ALingoPlayerState::SetToken(FString InToken)
 {
-	if (HasAuthority())
-	{
-		bCurrentMissionComplete = true;
+	this->AccessToken = InToken;
+}
 
-		// GameMode에 미션 완료 보고
-		ALingoGameMode* GameMode = GetWorld()->GetAuthGameMode<ALingoGameMode>();
-		if (GameMode)
-		{
-			APlayerController* PC = Cast<APlayerController>(GetOwner());
-			if (PC)
-			{
-				GameMode->ReportMissionComplete(PC);
-			}
-		}
+void ALingoPlayerState::SetUserName(FString InUserName)
+{
+	this->UserName = InUserName;
+
+	// BroadcastManager를 통해 모든 구독자에게 알림
+	if (UBroadcastManager* BroadcastManager = UBroadcastManager::Get(GetWorld()))
+	{
+		BroadcastManager->SendUserNameChanged(UserName);
 	}
 }
-
-void ALingoPlayerState::ResetForNextMission()
-{
-	if (HasAuthority())
-	{
-		bCurrentMissionComplete = false;
-		UE_LOG(LogTemp, Log, TEXT("[PlayerState] reset for next mission"));
-	}
-}
+	

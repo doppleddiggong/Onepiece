@@ -8,6 +8,8 @@
 #include "APlayerActor.h"
 
 #include "UFlySystem.h"
+#include "UMainWidget.h"
+#include "FComponentHelper.h"
 
 // Shared
 #include "GameLogging.h"
@@ -21,15 +23,17 @@
 #include "Components/CapsuleComponent.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
+#include "GameFramework/PlayerController.h"
 #include "Net/UnrealNetwork.h"
+#include "Blueprint/UserWidget.h"
+#include "Onepiece/Onepiece.h"
+
+#define MAINWIDGET_PATH TEXT("/Game/CustomContents/UI/WBP_MainWidget.WBP_MainWidget_C")
 
 APlayerActor::APlayerActor()
 {
 	PrimaryActorTick.bCanEverTick = false;
 
-	FlySystem = CreateDefaultSubobject<UFlySystem>(TEXT("FlySystem"));
-	InteractionSystem = CreateDefaultSubobject<UInteractionSystem>(TEXT("InteractionSystem"));
-	
 	SpringArmComp = CreateDefaultSubobject<USpringArmComponent>(TEXT("SpringArm"));
 	SpringArmComp->SetupAttachment(GetCapsuleComponent());
 	SpringArmComp->TargetArmLength = 400.f;
@@ -45,12 +49,18 @@ APlayerActor::APlayerActor()
 	GetCharacterMovement()->bOrientRotationToMovement = true;
 	GetCharacterMovement()->bUseControllerDesiredRotation = false;
 
-	VoiceConversationSystem = CreateDefaultSubobject<UVoiceConversationSystem>(TEXT("VoiceConversationSystem"));
-
 	HoldPosition = CreateDefaultSubobject<USceneComponent>(TEXT("HoldPosition"));
 	HoldPosition->SetupAttachment(FollowCamera);
-	
+
 	LookPitch = 0.f;
+
+	// System Component
+	FlySystem = CreateDefaultSubobject<UFlySystem>(TEXT("FlySystem"));
+	InteractionSystem = CreateDefaultSubobject<UInteractionSystem>(TEXT("InteractionSystem"));
+	VoiceConversationSystem = CreateDefaultSubobject<UVoiceConversationSystem>(TEXT("VoiceConversationSystem"));
+
+	// MainWidget 클래스 자동 로드
+	MainWidgetClass = FComponentHelper::LoadClass<UMainWidget>(MAINWIDGET_PATH);
 }
 
 void APlayerActor::BeginPlay()
@@ -58,9 +68,15 @@ void APlayerActor::BeginPlay()
 	Super::BeginPlay();
 
 	MoveComp = this->GetCharacterMovement();
-	
+
 	FlySystem->InitSystem(this, BIND_DYNAMIC_DELEGATE(FEndCallback, this, APlayerActor, OnFlyEnd));
 	VoiceConversationSystem->InitSystem(this);
+
+	// 로컬 플레이어 컨트롤러인 경우에만 UI 생성
+	if (IsLocallyControlled())
+	{
+		CreateMainWidget();
+	}
 
 	// --- Architecture Demo Start ---
 	PRINTLOG( TEXT("APlayerActor: Setting up one-way dependency demo."));
@@ -230,4 +246,36 @@ void APlayerActor::Cmd_Landing_Implementation()
 {
 	FHitResult HitResult;
 	FlySystem->OnLand(HitResult);
+}
+
+void APlayerActor::OnGameMessage(const FString& Message)
+{
+	PRINT_STRING(TEXT("Event Received: %s"), *Message);
+}
+
+void APlayerActor::CreateMainWidget()
+{
+	if (!MainWidgetClass)
+	{
+		PRINTLOG(TEXT("[PlayerActor] MainWidgetClass is not set!"));
+		return;
+	}
+
+	if (APlayerController* PC = Cast<APlayerController>(GetController()))
+	{
+		MainWidget = CreateWidget<UMainWidget>(PC, MainWidgetClass);
+		if (MainWidget)
+		{
+			MainWidget->AddToViewport();
+			PRINTLOG(TEXT("[PlayerActor] MainWidget created and added to viewport"));
+		}
+		else
+		{
+			PRINTLOG(TEXT("[PlayerActor] Failed to create MainWidget"));
+		}
+	}
+	else
+	{
+		PRINTLOG(TEXT("[PlayerActor] PlayerController not found"));
+	}
 }

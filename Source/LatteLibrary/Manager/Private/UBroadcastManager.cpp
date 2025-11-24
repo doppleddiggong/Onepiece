@@ -54,3 +54,8 @@ void UBroadcastManager::SendWeightSwitch(int InButtonIndex, bool InActive)
 {
 	OnWeightSwitch.Broadcast(InButtonIndex, InActive);
 }
+
+void UBroadcastManager::SendUserNameChanged(const FString& UserName)
+{
+	OnUpdateUserName.Broadcast(UserName);
+}

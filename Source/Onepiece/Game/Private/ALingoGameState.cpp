@@ -1,63 +1,108 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
 
 
 #include "ALingoGameState.h"
 
 #include "Net/UnrealNetwork.h"
+#include "APlayerActor.h"
+#include "GameLogging.h"
+#include "ULingoGameHelper.h"
+#include "GameFramework/PlayerController.h"
+#include "Engine/World.h"
 
 ALingoGameState::ALingoGameState()
 {
-	CurrentPhase = EGamePhase::WaitingToStart;
-	CurrentMissionIndex = 0;
-	MissionTimeRemaining = 0.f;
-	MissionTimeLimit = 300.f;
+	RemainMissionTime = 0.f;
+	bIsTimerActive = false;
+
+	ScenarioIndex = 1;
+	StageIndex = 1;
+	ScenarioLevel = 1;
+
+	PrimaryActorTick.bCanEverTick = true;
 }
 
 void ALingoGameState::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
 {
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
 
-	DOREPLIFETIME(ALingoGameState, CurrentPhase);
-	DOREPLIFETIME(ALingoGameState, CurrentMissionIndex);
-	DOREPLIFETIME(ALingoGameState, MissionTimeRemaining);
-	DOREPLIFETIME(ALingoGameState, MissionTimeLimit);
+	DOREPLIFETIME(ALingoGameState, RemainMissionTime);
+	DOREPLIFETIME(ALingoGameState, bIsTimerActive);
+
+	DOREPLIFETIME(ALingoGameState, ScenarioIndex);
+	DOREPLIFETIME(ALingoGameState, StageIndex);
+	DOREPLIFETIME(ALingoGameState, ScenarioLevel);
+	DOREPLIFETIME(ALingoGameState, CurScenarioData);
 }
 
-void ALingoGameState::OnRep_CurrentPhase()
+void ALingoGameState::Tick(float DeltaSeconds)
 {
-	if (CurrentPhase != PreviousPhase)
-	{
-		UE_LOG(LogTemp, Warning, TEXT("[HouseGameState] Phase changed from %s to %s"),
-			*UEnum::GetValueAsString(PreviousPhase), *UEnum::GetValueAsString(CurrentPhase));
+	Super::Tick(DeltaSeconds);
 
-		OnPhaseChanged.Broadcast(CurrentPhase);
-		PreviousPhase = CurrentPhase;
+	// 서버에서만 타이머 처리
+	if (!HasAuthority() || !bIsTimerActive)
+		return;
+
+	RemainMissionTime -= DeltaSeconds;
+
+	if (RemainMissionTime <= 0.f)
+	{
+		RemainMissionTime = 0.f;
+		OnMissionTimerEnd();
 	}
 }
 
-bool ALingoGameState::AreAllPlayersMissionComplete() const
+void ALingoGameState::SetStageData(int InStageIndex, const FResponseScenario& InResponseData)
 {
-	if (PlayerArray.Num() == 0) return false;
+	this->StageIndex = InStageIndex;
+	this->CurScenarioData = InResponseData;
+	// 미션 타이머 시작
+	this->StartMissionTimer( ULingoGameHelper::GetMissionPlayTime(ScenarioLevel) );
+}
 
-	for (APlayerState* PS : PlayerArray)
+void ALingoGameState::StartMissionTimer(float TimeLimit)
+{
+	// 서버에서만 실행
+	if (!HasAuthority())
+		return;
+
+	RemainMissionTime = TimeLimit;
+	bIsTimerActive = true;
+
+	PRINTLOG( TEXT("[GameState] Mission Timer Started - %.0f seconds"), TimeLimit);
+}
+
+void ALingoGameState::StopMissionTimer()
+{
+	if (!HasAuthority())
+		return;
+
+	bIsTimerActive = false;
+	PRINTLOG( TEXT("[GameState] Mission Timer Stopped"));
+}
+
+void ALingoGameState::OnMissionTimerEnd()
+{
+	if (!HasAuthority())
+		return;
+
+	bIsTimerActive = false;
+	auto EndMessage = ULingoGameHelper::GetStageEndMessage(StageIndex);
+
+	PRINTLOG( TEXT("[GameState] Mission Timer Ended - Sending: %s"), *EndMessage);
+
+	// 모든 플레이어에게 메시지 전송
+	if (UWorld* World = GetWorld())
 	{
-		ALingoPlayerState* HousePS = Cast<ALingoPlayerState>(PS);
-		if (HousePS)
+		for (FConstPlayerControllerIterator It = World->GetPlayerControllerIterator(); It; ++It)
 		{
-			if (!HousePS->bCurrentMissionComplete)
+			if (APlayerController* PC = It->Get())
 			{
-				return false;
+				if (APlayerActor* PlayerActor = Cast<APlayerActor>(PC->GetPawn()))
+				{
+					PlayerActor->OnGameMessage(EndMessage);
+				}
 			}
 		}
 	}
-	
-	return true;
-}
-
-FString ALingoGameState::GetFormattedTimer() const
-{
-	int32 Minutes = FMath::FloorToInt(MissionTimeRemaining / 60.f);
-	int32 Seconds = FMath::FloorToInt(MissionTimeRemaining) % 60;
-
-	return FString::Printf(TEXT("%02d:%02d"), Minutes, Seconds);
 }

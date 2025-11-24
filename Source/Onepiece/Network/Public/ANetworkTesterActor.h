@@ -18,10 +18,11 @@ public:
     /// @brief 기본 컴포넌트를 구성하는 생성자입니다.
     ANetworkTesterActor();
 
-protected:
-    UFUNCTION(CallInEditor, Category = "TEST|ToastMessage")
+public:
+    UFUNCTION(BlueprintCallable, CallInEditor, Category = "TEST|ToastMessage")
     void SendToastMessage();
 
+    
     // =============================================================================
     // User API Tests
     // =============================================================================
@@ -31,15 +32,15 @@ protected:
     FString UserName = TEXT("test_user");
 
     /// @brief 사용자 등록 요청을 전송합니다 (POST /users/register).
-    UFUNCTION(CallInEditor, Category = "TEST|User")
+    UFUNCTION(BlueprintCallable, CallInEditor, Category = "TEST|User")
     void RequestUserRegister();
 
     /// @brief OAuth2 토큰 발급 요청을 전송합니다 (POST /users/token).
-    UFUNCTION(CallInEditor, Category = "TEST|User")
+    UFUNCTION(BlueprintCallable, CallInEditor, Category = "TEST|User")
     void RequestUserToken();
 
     /// @brief 현재 사용자 정보 조회 요청을 전송합니다 (GET /users/me).
-    UFUNCTION(CallInEditor, Category = "TEST|User")
+    UFUNCTION(BlueprintCallable, CallInEditor, Category = "TEST|User")
     void RequestUserMe();
 
     // =============================================================================
@@ -56,10 +57,10 @@ protected:
 
     /// @brief Scenario 조회 테스트용 언어입니다.
     UPROPERTY(EditAnywhere, Category = "TEST|Scenario")
-    int32 ScenarioLang = 1;
+    int32 ScenarioLevel = 1;
 
     /// @brief Scenario 조회 요청을 전송합니다 (GET /scenario/{index}/{dificulity}/{lang}).
-    UFUNCTION(CallInEditor, Category = "TEST|Scenario")
+    UFUNCTION(BlueprintCallable, CallInEditor, Category = "TEST|Scenario")
     void RequestScenario();
 
     // =============================================================================
@@ -71,7 +72,7 @@ protected:
     FString OcrImagePath = TEXT("Sample/ocr_sample2.png");
 
     /// @brief OCR 텍스트 추출 요청을 전송합니다 (POST /writes/ocr/extract).
-    UFUNCTION(CallInEditor, Category = "TEST|OCR")
+    UFUNCTION(BlueprintCallable, CallInEditor, Category = "TEST|OCR")
     void RequestOcrExtract();
 
     
@@ -84,7 +85,7 @@ protected:
     FString SpeakingAudioPath = TEXT("Sample/voice_sample.wav");
     
     /// @brief Speaking 답변 요청을 전송합니다 (POST /speakings/questions).
-    UFUNCTION(CallInEditor, Category = "TEST|Voice")
+    UFUNCTION(BlueprintCallable, CallInEditor, Category = "TEST|Voice")
     void RequestSpeakingQuestions();
 
 private:

@@ -95,4 +95,12 @@ public:
 	UFUNCTION(BlueprintCallable, Category="Events")
 	void SendWeightSwitch(int InButtonIndex, bool InActive);
 
+
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnUserNameChanged, FString, UserName);
+	UPROPERTY(BlueprintAssignable, Category="Events")
+	FOnUserNameChanged OnUpdateUserName;
+
+	UFUNCTION(BlueprintCallable, Category="Events")
+	void SendUserNameChanged(const FString& UserName);
+
 };

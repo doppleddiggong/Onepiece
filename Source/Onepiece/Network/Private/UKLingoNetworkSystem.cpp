@@ -12,6 +12,8 @@
 #include "NetworkLog.h"
 #include "NetworkData.h"
 #include "FHttpMultipartFormData.h"
+#include "GameLogging.h"
+#include "UBroadcastManager.h"
 #include "ULingoGameHelper.h"
 #include "Misc/Paths.h"
 
@@ -63,7 +65,16 @@ bool UKLingoNetworkSystem::IsResSuccess(const int InCode)
 void UKLingoNetworkSystem::AddNetworkWaitCount(int Value)
 {
 	NetworkWaitCount += Value;
-	NETWORK_LOG( TEXT("[KLingo] Network Wait Count: %d"), NetworkWaitCount);
+
+	UWorld* World = GetWorld();
+	if (!IsValid(World))
+	{
+		PRINTLOG( TEXT("[Network] Invalid World in AddNetworkWaitCount."));
+		return;
+	}
+
+	if ( auto BroadcastManager = UBroadcastManager::Get(World) )
+		BroadcastManager->SendNetworkWaitCount(NetworkWaitCount);
 }
 
 TSharedRef<IHttpRequest, ESPMode::ThreadSafe> UKLingoNetworkSystem::SetupHttpRequest(
@@ -153,10 +164,10 @@ void UKLingoNetworkSystem::RequestUserToken(const FString& UserName, FResponseUs
 	FormData.AddText(TEXT("password"), UserName);
 	FormData.SetupHttpRequest(Request);
 
-	LogNetwork(ENetworkLogType::Post, *Request->GetURL(), TEXT("grant_type=password&username=***&password=***"));
+	LogNetwork(ENetworkLogType::Post, *Request->GetURL(), *UserName);
 	
 	Request->OnProcessRequestComplete().BindLambda(
-		[this, InDelegate](FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSuccess)
+		[this, InDelegate, UserName](FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSuccess)
 		{
 			AddNetworkWaitCount(-1);
 
@@ -174,7 +185,10 @@ void UKLingoNetworkSystem::RequestUserToken(const FString& UserName, FResponseUs
 					access_token = ResponseData.access_token;
 
 					if (auto PS = ULingoGameHelper::GetLingoPlayerState(this))
+					{
+						PS->SetUserName(UserName);
 						PS->SetToken(ResponseData.access_token);
+					}
 
 					InDelegate.ExecuteIfBound(ResponseData, true);
 				}
@@ -247,10 +261,10 @@ void UKLingoNetworkSystem::RequestUserMe( FResponseUserMeDelegate InDelegate)
 // RequestScenario
 // =================================================================================
 
-void UKLingoNetworkSystem::RequestScenario(int32 Index, int32 Difficulty, int32 Lang, FResponseScenarioDelegate InDelegate)
+void UKLingoNetworkSystem::RequestScenario(int32 Index, int32 Difficulty, int32 Level, FResponseScenarioDelegate InDelegate)
 {
 	// URL 형식: /scenario/{index}/{dificulity}/{lang}
-	FString Endpoint = FString::Printf(TEXT("%s/%d/%d/%d"), *RequestAPI::scenario, Index, Difficulty, Lang);
+	FString Endpoint = FString::Printf(TEXT("%s/%d/%d/%d"), *RequestAPI::scenario, Index, Difficulty, Level);
 	FString Url = NetworkConfig::GetFullUrl(Endpoint);
 	auto Request = SetupHttpRequest(Url, NETWORK_GET);
 
