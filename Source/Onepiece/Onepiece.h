@@ -27,7 +27,13 @@ namespace GameTags
 namespace GameMessage
 {
 	static const FString GameStart = TEXT("GameStart");
-	static const FString GameEnd = TEXT("GameEnd");
+	static const FString GameEnd	= TEXT("GameEnd");
 	static const FString IntroStart = TEXT("IntroStart");
 	static const FString OutroStart = TEXT("OutroStart");    
+
+	static const FString ScenarioStage1Start = TEXT("QuestStep1Start");    
+	static const FString QuestStep1End = TEXT("QuestStep1End");    
+
+
+
 }
