@@ -16,8 +16,8 @@ var searchData=
   ['cmd_5faltitudedown_13',['cmd_altitudedown',['../classIControllable.html#a75f8ffaac61945a9d94aabc1c79915b4',1,'IControllable::Cmd_AltitudeDown()'],['../classAPlayerActor.html#a2ab9d4338a3cb9cd0545ab79b9726969',1,'APlayerActor::Cmd_AltitudeDown() override']]],
   ['cmd_5faltitudereleased_14',['cmd_altitudereleased',['../classAPlayerActor.html#a2fa88e47ce8ebd32a2e5d8b542705b0f',1,'APlayerActor::Cmd_AltitudeReleased()'],['../classIControllable.html#a2259b9785864971795930f4b1a1883a7',1,'IControllable::Cmd_AltitudeReleased()']]],
   ['cmd_5faltitudeup_15',['cmd_altitudeup',['../classIControllable.html#afd003c2223b06356d9a827055d939741',1,'IControllable::Cmd_AltitudeUp()'],['../classAPlayerActor.html#a66ac73e897ad069b4015dae80299b1d0',1,'APlayerActor::Cmd_AltitudeUp()']]],
-  ['cmd_5fjump_16',['cmd_jump',['../classIControllable.html#ac1d95ea53739c16a86f25e3bb2ee926b',1,'IControllable::Cmd_Jump()'],['../classAPlayerActor.html#a4bbf9c7d111a15814b99b4e32a79cfda',1,'APlayerActor::Cmd_Jump() override']]],
-  ['cmd_5flanding_17',['cmd_landing',['../classAPlayerActor.html#a5ca6e213fdff74bd18044f39ee262930',1,'APlayerActor::Cmd_Landing()'],['../classIControllable.html#a32b1b7dfc4f7bea89132a901bab9bce1',1,'IControllable::Cmd_Landing()']]],
+  ['cmd_5fjump_16',['cmd_jump',['../classIControllable.html#ac1d95ea53739c16a86f25e3bb2ee926b',1,'IControllable::Cmd_Jump()'],['../classAPlayerActor.html#a4bbf9c7d111a15814b99b4e32a79cfda',1,'APlayerActor::Cmd_Jump()']]],
+  ['cmd_5flanding_17',['cmd_landing',['../classIControllable.html#a32b1b7dfc4f7bea89132a901bab9bce1',1,'IControllable::Cmd_Landing()'],['../classAPlayerActor.html#a5ca6e213fdff74bd18044f39ee262930',1,'APlayerActor::Cmd_Landing() override']]],
   ['cmd_5flook_18',['cmd_look',['../classAPlayerActor.html#a21a14eaae23da75b919b848aa87cb535',1,'APlayerActor::Cmd_Look()'],['../classIControllable.html#a45c2124ac1edc67a18538853d12d30bb',1,'IControllable::Cmd_Look()']]],
   ['cmd_5fmove_19',['cmd_move',['../classAPlayerActor.html#a0db8efea43cc28a694e55d72014642e1',1,'APlayerActor::Cmd_Move()'],['../classIControllable.html#a19f4250db751284d9964c9a494512fa7',1,'IControllable::Cmd_Move()']]],
   ['cmd_5frecordend_20',['cmd_recordend',['../classAPlayerActor.html#a728c9b03094ece6b6313636335f4a6a1',1,'APlayerActor::Cmd_RecordEnd()'],['../classIControllable.html#a8055f9515674a0628221640824ca409e',1,'IControllable::Cmd_RecordEnd()']]],
@@ -25,6 +25,7 @@ var searchData=
   ['connect_22',['Connect',['../classUWebSocketSystem.html#ad8a09ae8c4734c4af887f138e3ccb751',1,'UWebSocketSystem']]],
   ['convertpcm2wav_23',['ConvertPCM2WAV',['../classUVoiceFunctionLibrary.html#aefbf705777114a8667edc76347e70cda',1,'UVoiceFunctionLibrary']]],
   ['createmainwidget_24',['CreateMainWidget',['../classAPlayerActor.html#a63641fed19fdb23e32cb16fed3ba2d79',1,'APlayerActor']]],
-  ['createproceduralsoundwavefromwavdata_25',['CreateProceduralSoundWaveFromWavData',['../classUVoiceFunctionLibrary.html#adf741678fa5eeadc6dbe30624ef6888b',1,'UVoiceFunctionLibrary']]],
-  ['createsoundwavefromwavdata_26',['CreateSoundWaveFromWavData',['../classUVoiceFunctionLibrary.html#a0a42913d3f8f356e575bf9805e6e7af3',1,'UVoiceFunctionLibrary']]]
+  ['createmysession_25',['CreateMySession',['../classULingoGameInstance.html#a094b7b917f1aa7eca5989d86616a69b4',1,'ULingoGameInstance']]],
+  ['createproceduralsoundwavefromwavdata_26',['CreateProceduralSoundWaveFromWavData',['../classUVoiceFunctionLibrary.html#adf741678fa5eeadc6dbe30624ef6888b',1,'UVoiceFunctionLibrary']]],
+  ['createsoundwavefromwavdata_27',['CreateSoundWaveFromWavData',['../classUVoiceFunctionLibrary.html#a0a42913d3f8f356e575bf9805e6e7af3',1,'UVoiceFunctionLibrary']]]
 ];

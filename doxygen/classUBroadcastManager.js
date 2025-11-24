@@ -4,6 +4,7 @@ var classUBroadcastManager =
     [ "DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam", "classUBroadcastManager.html#a4aa5ff0bdcea9a8321bce82f0472501b", null ],
     [ "DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam", "classUBroadcastManager.html#a17e0c45851522502899d7d1865845a9f", null ],
     [ "DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam", "classUBroadcastManager.html#a2191d39f5816f0b0d07ea13e4754a160", null ],
+    [ "DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam", "classUBroadcastManager.html#a1ff16b5629453374bd1631bea935d83e", null ],
     [ "DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam", "classUBroadcastManager.html#a58c5a6f69feddebba2414865dbd885e3", null ],
     [ "DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam", "classUBroadcastManager.html#a6be6b935aa07360549ca238c86afec85", null ],
     [ "DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams", "classUBroadcastManager.html#a67a295550c1ead6b3224e4e147872c4d", null ],
@@ -17,6 +18,7 @@ var classUBroadcastManager =
     [ "SendHitStopPair", "classUBroadcastManager.html#a09bff79efc2de58aaba8c031aeddf7f2", null ],
     [ "SendKnockback", "classUBroadcastManager.html#a5009c7e9e1252735b18e6b0752060895", null ],
     [ "SendMessage", "classUBroadcastManager.html#a7dd77f4b9d69350f1a86fd1ec70301e1", null ],
+    [ "SendMissionTimerStateChanged", "classUBroadcastManager.html#a67743fa089139b0851e75b0045f1f716", null ],
     [ "SendNetworkWaitCount", "classUBroadcastManager.html#a9c69490ebcf0947b36db2264b76a4167", null ],
     [ "SendUserNameChanged", "classUBroadcastManager.html#ae21792c04dbbe2e81c23e682191fbdd1", null ],
     [ "SendWeightSwitch", "classUBroadcastManager.html#a7a1bb7be2130b3367c2183017801b3ed", null ],
@@ -26,6 +28,7 @@ var classUBroadcastManager =
     [ "OnHitStop", "classUBroadcastManager.html#a2b5598be8f701c5292aaa639c1c7f5c6", null ],
     [ "OnKnockback", "classUBroadcastManager.html#a7b76f7a9be120cf9d2e22e4cff24778e", null ],
     [ "OnMessage", "classUBroadcastManager.html#a43a192f0157e3177589f7b09b11a1e84", null ],
+    [ "OnMissionTimerStateChanged", "classUBroadcastManager.html#abb1ef0aaa2367f7f9a655bbc1ad613d8", null ],
     [ "OnNetworkWaitCount", "classUBroadcastManager.html#a2692fc3fbb06745f2cd20e9d5769abb8", null ],
     [ "OnUpdateUserName", "classUBroadcastManager.html#a730d5a17b3808d4e6f5ac9f380bf0e34", null ],
     [ "OnWeightSwitch", "classUBroadcastManager.html#a756c1c50c99027c954393663b51f9ebd", null ]

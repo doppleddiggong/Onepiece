@@ -125,9 +125,11 @@ var hierarchy =
       [ "UDialogWidget", "classUDialogWidget.html", null ],
       [ "UDrawingBoardWidget", "classUDrawingBoardWidget.html", null ],
       [ "ULoadginCircle", "classULoadginCircle.html", null ],
+      [ "ULobbyWidget", "classULobbyWidget.html", null ],
       [ "UMainWidget", "classUMainWidget.html", null ],
       [ "UMessageBox", "classUMessageBox.html", null ],
       [ "UPlayTimer", "classUPlayTimer.html", null ],
+      [ "USessionInfoWidget", "classUSessionInfoWidget.html", null ],
       [ "UStartWidget", "classUStartWidget.html", null ],
       [ "UStateWidget", "classUStateWidget.html", null ]
     ] ]

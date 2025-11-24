@@ -4,10 +4,10 @@ var indexSectionsWithContent =
   1: "afiu",
   2: "gnr",
   3: "acdefgilmnorsu",
-  4: "abcdefghilnoprstuwy~",
+  4: "abcdefghijlnoprstuwy~",
   5: "abcdefghijklmnopqrstuvw",
   6: "e",
-  7: "cdefghilmnprstuwxyz",
+  7: "acdefghilmnoprstuwxyz",
   8: "bcdehiklmnpsv",
   9: "ak게기문영학"
 };

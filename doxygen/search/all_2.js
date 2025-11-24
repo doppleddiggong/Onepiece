@@ -50,9 +50,11 @@ var searchData=
   ['correct_5fanswer_5findex_47',['correct_answer_index',['../structFResponseScenario.html#a5be05dc8bec820793666723afad3fc87',1,'FResponseScenario']]],
   ['correctanswerindex_48',['correctanswerindex',['../structFQuestListenInfo.html#a30660f2c732b8ffd87d7e030fcd8dd11',1,'FQuestListenInfo::CorrectAnswerIndex'],['../structFQuestReadInfo.html#a964a3bbb41579866f6f2d84d7dde6c10',1,'FQuestReadInfo::CorrectAnswerIndex']]],
   ['createmainwidget_49',['CreateMainWidget',['../classAPlayerActor.html#a63641fed19fdb23e32cb16fed3ba2d79',1,'APlayerActor']]],
-  ['createproceduralsoundwavefromwavdata_50',['CreateProceduralSoundWaveFromWavData',['../classUVoiceFunctionLibrary.html#adf741678fa5eeadc6dbe30624ef6888b',1,'UVoiceFunctionLibrary']]],
-  ['createsoundwavefromwavdata_51',['CreateSoundWaveFromWavData',['../classUVoiceFunctionLibrary.html#a0a42913d3f8f356e575bf9805e6e7af3',1,'UVoiceFunctionLibrary']]],
-  ['curcount_52',['CurCount',['../classADoor.html#a83d17f7530a82669aba8055f297aa76a',1,'ADoor']]],
-  ['current_53',['current',['../structFEaseRotatorTrack.html#afbf9eb1055658f780470aa3df5d58017',1,'FEaseRotatorTrack::Current'],['../structFEaseVectorTrack.html#a646594b419cde60080a0ced97322adca',1,'FEaseVectorTrack::Current'],['../structFEaseFloatTrack.html#a7cbfd0a13f8b3a78cabf770251b3be4c',1,'FEaseFloatTrack::Current']]],
-  ['curscenariodata_54',['CurScenarioData',['../classALingoGameState.html#a3cd7a9eb6c217ca289fe7751113a1bef',1,'ALingoGameState']]]
+  ['createmysession_50',['CreateMySession',['../classULingoGameInstance.html#a094b7b917f1aa7eca5989d86616a69b4',1,'ULingoGameInstance']]],
+  ['createproceduralsoundwavefromwavdata_51',['CreateProceduralSoundWaveFromWavData',['../classUVoiceFunctionLibrary.html#adf741678fa5eeadc6dbe30624ef6888b',1,'UVoiceFunctionLibrary']]],
+  ['createsoundwavefromwavdata_52',['CreateSoundWaveFromWavData',['../classUVoiceFunctionLibrary.html#a0a42913d3f8f356e575bf9805e6e7af3',1,'UVoiceFunctionLibrary']]],
+  ['curcount_53',['CurCount',['../classADoor.html#a83d17f7530a82669aba8055f297aa76a',1,'ADoor']]],
+  ['current_54',['current',['../structFEaseVectorTrack.html#a646594b419cde60080a0ced97322adca',1,'FEaseVectorTrack::Current'],['../structFEaseRotatorTrack.html#afbf9eb1055658f780470aa3df5d58017',1,'FEaseRotatorTrack::Current'],['../structFEaseFloatTrack.html#a7cbfd0a13f8b3a78cabf770251b3be4c',1,'FEaseFloatTrack::Current']]],
+  ['currsessionname_55',['currSessionName',['../classULingoGameInstance.html#a17232e7c2128d3f8af2561f649b27473',1,'ULingoGameInstance']]],
+  ['curscenariodata_56',['CurScenarioData',['../classALingoGameState.html#a3cd7a9eb6c217ca289fe7751113a1bef',1,'ALingoGameState']]]
 ];

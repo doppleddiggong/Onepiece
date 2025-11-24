@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['_7eflogwriter_0',['~FLogWriter',['../classFLogWriter.html#af7d53c71504f8090cdc6e168ae224d01',1,'FLogWriter']]]
+  ['yellow_0',['Yellow',['../namespaceGameColor.html#ad8c643df28a67f8c2c5f50ec7594997b',1,'GameColor']]]
 ];

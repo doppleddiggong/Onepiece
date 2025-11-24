@@ -19,5 +19,6 @@ var searchData=
   ['correctanswerindex_16',['correctanswerindex',['../structFQuestReadInfo.html#a964a3bbb41579866f6f2d84d7dde6c10',1,'FQuestReadInfo::CorrectAnswerIndex'],['../structFQuestListenInfo.html#a30660f2c732b8ffd87d7e030fcd8dd11',1,'FQuestListenInfo::CorrectAnswerIndex']]],
   ['curcount_17',['CurCount',['../classADoor.html#a83d17f7530a82669aba8055f297aa76a',1,'ADoor']]],
   ['current_18',['current',['../structFEaseFloatTrack.html#a7cbfd0a13f8b3a78cabf770251b3be4c',1,'FEaseFloatTrack::Current'],['../structFEaseVectorTrack.html#a646594b419cde60080a0ced97322adca',1,'FEaseVectorTrack::Current'],['../structFEaseRotatorTrack.html#afbf9eb1055658f780470aa3df5d58017',1,'FEaseRotatorTrack::Current']]],
-  ['curscenariodata_19',['CurScenarioData',['../classALingoGameState.html#a3cd7a9eb6c217ca289fe7751113a1bef',1,'ALingoGameState']]]
+  ['currsessionname_19',['currSessionName',['../classULingoGameInstance.html#a17232e7c2128d3f8af2561f649b27473',1,'ULingoGameInstance']]],
+  ['curscenariodata_20',['CurScenarioData',['../classALingoGameState.html#a3cd7a9eb6c217ca289fe7751113a1bef',1,'ALingoGameState']]]
 ];

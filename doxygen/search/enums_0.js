@@ -11,6 +11,7 @@ var searchData=
   ['emontagetype_8',['EMontageType',['../EMontageType_8h.html#a33d4f5f333936ce33b59c38e89382372',1,'EMontageType.h']]],
   ['enetworklogtype_9',['ENetworkLogType',['../ENetworkLogType_8h.html#a80aaa513e01d2ec2d4421835b09d691f',1,'ENetworkLogType.h']]],
   ['eparabolatype_10',['EParabolaType',['../UParabolaComponent_8h.html#acb24f37a1795b5e9dfdbb98be4898712',1,'UParabolaComponent.h']]],
-  ['eservermode_11',['EServerMode',['../UCustomNetworkSettings_8h.html#a79cfeb7c9f94018b98c2415dc06d4577',1,'UCustomNetworkSettings.h']]],
-  ['evfxtype_12',['EVFXType',['../EVFXType_8h.html#af8435b1c8c0e40b2bbdf03bb1ca6b4db',1,'EVFXType.h']]]
+  ['eplayerrole_11',['EPlayerRole',['../ULingoGameInstance_8h.html#a19b0ebcc430a73c898b86a0c19a1d74c',1,'ULingoGameInstance.h']]],
+  ['eservermode_12',['EServerMode',['../UCustomNetworkSettings_8h.html#a79cfeb7c9f94018b98c2415dc06d4577',1,'UCustomNetworkSettings.h']]],
+  ['evfxtype_13',['EVFXType',['../EVFXType_8h.html#af8435b1c8c0e40b2bbdf03bb1ca6b4db',1,'EVFXType.h']]]
 ];
