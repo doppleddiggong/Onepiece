@@ -9,17 +9,23 @@
 #include "FCharacterAssetData.h"
 #include "FComponentHelper.h"
 
-#define HITSTOP_PATH    TEXT("/Game/CustomContents/MasterData/DT_HitStop.DT_HitStop")
-#define KNOCKBACK_PATH  TEXT("/Game/CustomContents/MasterData/DT_Knockback.DT_Knockback")
-#define CHARACTERINFO_PATH  TEXT("/Game/CustomContents/MasterData/DT_CharacterInfo.DT_CharacterInfo")
-#define CHARACTERASSET_PATH  TEXT("/Game/CustomContents/MasterData/DT_CharacterAsset.DT_CharacterAsset")
+// #define HITSTOP_PATH    TEXT("/Game/CustomContents/MasterData/DT_HitStop.DT_HitStop")
+// #define KNOCKBACK_PATH  TEXT("/Game/CustomContents/MasterData/DT_Knockback.DT_Knockback")
+// #define CHARACTERINFO_PATH  TEXT("/Game/CustomContents/MasterData/DT_CharacterInfo.DT_CharacterInfo")
+// #define CHARACTERASSET_PATH  TEXT("/Game/CustomContents/MasterData/DT_CharacterAsset.DT_CharacterAsset")
+#define COLORDATA_PATH  TEXT("/Game/CustomContents/MasterData/DT_ColorData.DT_ColorData")
+#define LEVELDATA_PATH  TEXT("/Game/CustomContents/MasterData/DT_LevelData.DT_LevelData")
+#define LISTENDATA_PATH  TEXT("/Game/CustomContents/MasterData/DT_ListenData.DT_ListenData")
+#define READDATA_PATH  TEXT("/Game/CustomContents/MasterData/DT_ReadData.DT_ReadData")
+#define WORDDATA_PATH  TEXT("/Game/CustomContents/MasterData/DT_WordData.DT_WordData")
 
 UGameDataManager::UGameDataManager()
 {
-    // HitStopTable = FComponentHelper::LoadAsset<UDataTable>(HITSTOP_PATH);
-    // KnockbackTable  = FComponentHelper::LoadAsset<UDataTable>(KNOCKBACK_PATH);
-    // CharacterInfoTable  = FComponentHelper::LoadAsset<UDataTable>(CHARACTERINFO_PATH);
-    // CharacterAssetTable = FComponentHelper::LoadAsset<UDataTable>(CHARACTERASSET_PATH);
+    ColorDataTable = FComponentHelper::LoadAsset<UDataTable>(COLORDATA_PATH);
+    LevelDataTable  = FComponentHelper::LoadAsset<UDataTable>(LEVELDATA_PATH);
+    ListenDataTable  = FComponentHelper::LoadAsset<UDataTable>(LISTENDATA_PATH);
+    ReadDataTable = FComponentHelper::LoadAsset<UDataTable>(READDATA_PATH);
+    WordStudyDataTable = FComponentHelper::LoadAsset<UDataTable>(WORDDATA_PATH);
 }
 
 void UGameDataManager::Initialize(FSubsystemCollectionBase& Collection)
@@ -31,10 +37,15 @@ void UGameDataManager::Initialize(FSubsystemCollectionBase& Collection)
 
 void UGameDataManager::Deinitialize()
 {
-    Clear_HitStopTable();
-    Clear_KnockbackTable();
-    Clear_CharacterInfoData();
-    Clear_CharacterAssetData();
+    // Clear_HitStopTable();
+    // Clear_KnockbackTable();
+    // Clear_CharacterInfoData();
+    // Clear_CharacterAssetData();
+    Clear_ColorData();
+    Clear_LevelData();
+    Clear_ListenData();
+    Clear_ReadData();
+    Clear_WordStudyData();
     
     Super::Deinitialize();
 }
@@ -45,6 +56,11 @@ void UGameDataManager::ReloadMasterData()
     // LoadData_KnockbackTable();
     // LoadData_CharacterInfoData();
     // LoadData_CharacterAssetData();
+    LoadData_ColorData();
+    LoadData_LevelData();
+    LoadData_ListenData();
+    LoadData_ReadData();
+    LoadData_WordStudyData();
 }
 
 #pragma region HIT_STOP
@@ -246,3 +262,328 @@ bool UGameDataManager::GetCharacterAssetData(ECharacterType Type, FCharacterAsse
     return false;
 }
 #pragma endregion CHARACTER_ASSET_DATA
+
+#pragma region COLOR_DATA
+void UGameDataManager::Clear_ColorData()
+{
+    ColorDataCache.Reset();
+    bLoadColorData = false;
+}
+
+void UGameDataManager::LoadData_ColorData()
+{
+    ColorDataCache.Reset();
+    bLoadColorData = false;
+
+    UDataTable* TableObj = ColorDataTable.LoadSynchronous();
+    if (!TableObj)
+    {
+        PRINTLOG(TEXT("Load failed: %s"), *ColorDataTable.ToString());
+        return;
+    }
+
+    static const FString ContextString(TEXT("ColorDataTable"));
+    for (const FName& RowName : TableObj->GetRowNames())
+    {
+        if (const FColorData* Row = TableObj->FindRow<FColorData>(RowName, ContextString, true))
+        {
+            ColorDataCache.Add(Row->Index, *Row);
+        }
+    }
+
+    bLoadColorData = true;
+}
+
+bool UGameDataManager::GetColorData(int32 Index, FColorData& Out) const
+{
+    if (!bLoadColorData)
+        return false;
+
+    if (const FColorData* Found = ColorDataCache.Find(Index))
+    {
+        Out = *Found;
+        return true;
+    }
+
+    PRINTLOG(TEXT("DataGetFail : ColorData Index %d"), Index);
+    return false;
+}
+
+TArray<FColorData> UGameDataManager::GetColorDataByLevel(int32 Level) const
+{
+    TArray<FColorData> Result;
+    
+    if (!bLoadColorData)
+        return Result;
+
+    for (const auto& Pair : ColorDataCache)
+    {
+        if (Pair.Value.Level == Level)
+        {
+            Result.Add(Pair.Value);
+        }
+    }
+
+    return Result;
+}
+#pragma endregion COLOR_DATA
+
+#pragma region LEVEL_DATA
+void UGameDataManager::Clear_LevelData()
+{
+    LevelDataCache.Reset();
+    bLoadLevelData = false;
+}
+
+void UGameDataManager::LoadData_LevelData()
+{
+    LevelDataCache.Reset();
+    bLoadLevelData = false;
+
+    UDataTable* TableObj = LevelDataTable.LoadSynchronous();
+    if (!TableObj)
+    {
+        PRINTLOG(TEXT("Load failed: %s"), *LevelDataTable.ToString());
+        return;
+    }
+
+    static const FString ContextString(TEXT("LevelDataTable"));
+    for (const FName& RowName : TableObj->GetRowNames())
+    {
+        if (const FLevelData* Row = TableObj->FindRow<FLevelData>(RowName, ContextString, true))
+        {
+            LevelDataCache.Add(Row->Index, *Row);
+        }
+    }
+
+    bLoadLevelData = true;
+}
+
+bool UGameDataManager::GetLevelData(int32 Step, int32 Level, FLevelData& Out) const
+{
+    if (!bLoadLevelData)
+        return false;
+
+    for (const auto& Pair : LevelDataCache)
+    {
+        if (Pair.Value.Step == Step && Pair.Value.Level == Level)
+        {
+            Out = Pair.Value;
+            return true;
+        }
+    }
+
+    PRINTLOG(TEXT("DataGetFail : LevelData Step %d, Level %d"), Step, Level);
+    return false;
+}
+#pragma endregion LEVEL_DATA
+
+#pragma region LISTEN_DATA
+void UGameDataManager::Clear_ListenData()
+{
+    ListenDataCache.Reset();
+    bLoadListenData = false;
+}
+
+void UGameDataManager::LoadData_ListenData()
+{
+    ListenDataCache.Reset();
+    bLoadListenData = false;
+
+    UDataTable* TableObj = ListenDataTable.LoadSynchronous();
+    if (!TableObj)
+    {
+        PRINTLOG(TEXT("Load failed: %s"), *ListenDataTable.ToString());
+        return;
+    }
+
+    static const FString ContextString(TEXT("ListenDataTable"));
+    for (const FName& RowName : TableObj->GetRowNames())
+    {
+        if (const FListenData* Row = TableObj->FindRow<FListenData>(RowName, ContextString, true))
+        {
+            ListenDataCache.Add(Row->Index, *Row);
+        }
+    }
+
+    bLoadListenData = true;
+}
+
+bool UGameDataManager::GetListenData(int32 Index, FListenData& Out) const
+{
+    if (!bLoadListenData)
+        return false;
+
+    if (const FListenData* Found = ListenDataCache.Find(Index))
+    {
+        Out = *Found;
+        return true;
+    }
+
+    PRINTLOG(TEXT("DataGetFail : ListenData Index %d"), Index);
+    return false;
+}
+
+TArray<FListenData> UGameDataManager::GetListenDataByStepAndLevel(int32 Step, int32 Level) const
+{
+    TArray<FListenData> Result;
+    
+    if (!bLoadListenData)
+        return Result;
+
+    for (const auto& Pair : ListenDataCache)
+    {
+        if (Pair.Value.Step == Step && Pair.Value.Level == Level)
+        {
+            Result.Add(Pair.Value);
+        }
+    }
+
+    return Result;
+}
+
+TArray<FListenData> UGameDataManager::GetListenDataByCategory(const FString& Category) const
+{
+    TArray<FListenData> Result;
+    
+    if (!bLoadListenData)
+        return Result;
+
+    for (const auto& Pair : ListenDataCache)
+    {
+        if (Pair.Value.Category.Equals(Category))
+        {
+            Result.Add(Pair.Value);
+        }
+    }
+
+    return Result;
+}
+#pragma endregion LISTEN_DATA
+
+#pragma region READ_DATA
+void UGameDataManager::Clear_ReadData()
+{
+    ReadDataCache.Reset();
+    bLoadReadData = false;
+}
+
+void UGameDataManager::LoadData_ReadData()
+{
+    ReadDataCache.Reset();
+    bLoadReadData = false;
+
+    UDataTable* TableObj = ReadDataTable.LoadSynchronous();
+    if (!TableObj)
+    {
+        PRINTLOG(TEXT("Load failed: %s"), *ReadDataTable.ToString());
+        return;
+    }
+
+    static const FString ContextString(TEXT("ReadDataTable"));
+    for (const FName& RowName : TableObj->GetRowNames())
+    {
+        if (const FReadData* Row = TableObj->FindRow<FReadData>(RowName, ContextString, true))
+        {
+            ReadDataCache.Add(Row->Index, *Row);
+        }
+    }
+
+    bLoadReadData = true;
+}
+
+bool UGameDataManager::GetReadData(int32 Index, FReadData& Out) const
+{
+    if (!bLoadReadData)
+        return false;
+
+    if (const FReadData* Found = ReadDataCache.Find(Index))
+    {
+        Out = *Found;
+        return true;
+    }
+
+    PRINTLOG(TEXT("DataGetFail : ReadData Index %d"), Index);
+    return false;
+}
+
+TArray<FReadData> UGameDataManager::GetReadDataByLevel(int32 Level) const
+{
+    TArray<FReadData> Result;
+    
+    if (!bLoadReadData)
+        return Result;
+
+    for (const auto& Pair : ReadDataCache)
+    {
+        if (Pair.Value.Level == Level)
+        {
+            Result.Add(Pair.Value);
+        }
+    }
+
+    return Result;
+}
+#pragma endregion READ_DATA
+
+#pragma region WORD_DATA
+void UGameDataManager::Clear_WordStudyData()
+{
+    WordStudyDataCache.Reset();
+    bLoadWordStudyData = false;
+}
+
+void UGameDataManager::LoadData_WordStudyData()
+{
+    WordStudyDataCache.Reset();
+    bLoadWordStudyData = false;
+
+    UDataTable* TableObj = WordStudyDataTable.LoadSynchronous();
+    if (!TableObj)
+    {
+        PRINTLOG(TEXT("Load failed: %s"), *WordStudyDataTable.ToString());
+        return;
+    }
+
+    static const FString ContextString(TEXT("WordStudyDataTable"));
+    for (const FName& RowName : TableObj->GetRowNames())
+    {
+        if (const FWordStudyData* Row = TableObj->FindRow<FWordStudyData>(RowName, ContextString, true))
+        {
+            WordStudyDataCache.Add(Row->Index, *Row);
+        }
+    }
+
+    bLoadWordStudyData = true;
+}
+
+bool UGameDataManager::GetWordStudyData(int32 Index, FWordStudyData& Out) const
+{
+    if (!bLoadWordStudyData)
+        return false;
+
+    if (const FWordStudyData* Found = WordStudyDataCache.Find(Index))
+    {
+        Out = *Found;
+        return true;
+    }
+
+    PRINTLOG(TEXT("DataGetFail : WordData Index %d"), Index);
+    return false;
+}
+
+TArray<FWordStudyData> UGameDataManager::GetAllWordStudyData() const
+{
+    TArray<FWordStudyData> Result;
+    
+    if (!bLoadWordStudyData)
+        return Result;
+
+    for (const auto& Pair : WordStudyDataCache)
+    {
+        Result.Add(Pair.Value);
+    }
+
+    return Result;
+}
+#pragma endregion WORD_DATA

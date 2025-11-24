@@ -13,6 +13,11 @@
 #include "FKnockbackData.h"
 #include "FCharacterInfoData.h"
 #include "FCharacterAssetData.h"
+#include "FColorData.h"
+#include "FLevelData.h"
+#include "FListenData.h"
+#include "FReadData.h"
+#include "FWordStudyData.h"
 
 #include "Subsystems/GameInstanceSubsystem.h"
 #include "UGameDataManager.generated.h"
@@ -106,4 +111,104 @@ private:
 	UPROPERTY(VisibleAnywhere, Category = "Cache", meta = (AllowPrivateAccess = "true"))
 	TMap<ECharacterType, FCharacterAssetData> CharacterAssetCache;
 #pragma endregion CHARACTER_ASSET_DATA
+
+#pragma region COLOR_DATA
+public:
+	UPROPERTY(EditAnywhere, Category="MasterData|Color")
+	TSoftObjectPtr<UDataTable> ColorDataTable;
+
+	UFUNCTION(BlueprintCallable, Category="MasterData|Color")
+	bool GetColorData(int32 Index, FColorData& Out) const;
+
+	UFUNCTION(BlueprintCallable, Category="MasterData|Color")
+	TArray<FColorData> GetColorDataByLevel(int32 Level) const;
+
+private:
+	void Clear_ColorData();
+	void LoadData_ColorData();
+	bool bLoadColorData = false;
+
+	UPROPERTY(VisibleAnywhere, Category = "Cache", meta = (AllowPrivateAccess = "true"))
+	TMap<int32, FColorData> ColorDataCache;
+#pragma endregion COLOR_DATA
+
+#pragma region LEVEL_DATA
+public:
+	UPROPERTY(EditAnywhere, Category="MasterData|Level")
+	TSoftObjectPtr<UDataTable> LevelDataTable;
+
+	UFUNCTION(BlueprintCallable, Category="MasterData|Level")
+	bool GetLevelData(int32 Step, int32 Level, FLevelData& Out) const;
+
+private:
+	void Clear_LevelData();
+	void LoadData_LevelData();
+	bool bLoadLevelData = false;
+
+	UPROPERTY(VisibleAnywhere, Category = "Cache", meta = (AllowPrivateAccess = "true"))
+	TMap<int32, FLevelData> LevelDataCache;
+#pragma endregion LEVEL_DATA
+
+#pragma region LISTEN_DATA
+public:
+	UPROPERTY(EditAnywhere, Category="MasterData|Listen")
+	TSoftObjectPtr<UDataTable> ListenDataTable;
+
+	UFUNCTION(BlueprintCallable, Category="MasterData|Listen")
+	bool GetListenData(int32 Index, FListenData& Out) const;
+
+	UFUNCTION(BlueprintCallable, Category="MasterData|Listen")
+	TArray<FListenData> GetListenDataByStepAndLevel(int32 Step, int32 Level) const;
+
+	UFUNCTION(BlueprintCallable, Category="MasterData|Listen")
+	TArray<FListenData> GetListenDataByCategory(const FString& Category) const;
+
+private:
+	void Clear_ListenData();
+	void LoadData_ListenData();
+	bool bLoadListenData = false;
+
+	UPROPERTY(VisibleAnywhere, Category = "Cache", meta = (AllowPrivateAccess = "true"))
+	TMap<int32, FListenData> ListenDataCache;
+#pragma endregion LISTEN_DATA
+
+#pragma region READ_DATA
+public:
+	UPROPERTY(EditAnywhere, Category="MasterData|Read")
+	TSoftObjectPtr<UDataTable> ReadDataTable;
+
+	UFUNCTION(BlueprintCallable, Category="MasterData|Read")
+	bool GetReadData(int32 Index, FReadData& Out) const;
+
+	UFUNCTION(BlueprintCallable, Category="MasterData|Read")
+	TArray<FReadData> GetReadDataByLevel(int32 Level) const;
+
+private:
+	void Clear_ReadData();
+	void LoadData_ReadData();
+	bool bLoadReadData = false;
+
+	UPROPERTY(VisibleAnywhere, Category = "Cache", meta = (AllowPrivateAccess = "true"))
+	TMap<int32, FReadData> ReadDataCache;
+#pragma endregion READ_DATA
+
+#pragma region WORD_DATA
+public:
+	UPROPERTY(EditAnywhere, Category="MasterData|Word")
+	TSoftObjectPtr<UDataTable> WordStudyDataTable;
+
+	UFUNCTION(BlueprintCallable, Category="MasterData|Word")
+	bool GetWordStudyData(int32 Index, FWordStudyData& Out) const;
+
+	UFUNCTION(BlueprintCallable, Category="MasterData|Word")
+	TArray<FWordStudyData> GetAllWordStudyData() const;
+
+private:
+	void Clear_WordStudyData();
+	void LoadData_WordStudyData();
+	bool bLoadWordStudyData = false;
+
+	UPROPERTY(VisibleAnywhere, Category = "Cache", meta = (AllowPrivateAccess = "true"))
+	TMap<int32, FWordStudyData> WordStudyDataCache;
+#pragma endregion WORD_DATA
 };
