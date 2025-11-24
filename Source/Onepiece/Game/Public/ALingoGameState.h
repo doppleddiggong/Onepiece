@@ -1,17 +1,13 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
 
 #pragma once
 
 #include "CoreMinimal.h"
-#include "GameFramework/GameState.h"
 #include "NetworkData.h"
+#include "GameFramework/GameState.h"
 #include "ALingoGameState.generated.h"
 
-// DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnPhaseChanged, EGamePhase, NewPhase);
 
-/**
- * 
- */
 UCLASS()
 class ONEPIECE_API ALingoGameState : public AGameState
 {
@@ -27,14 +23,6 @@ public:
 	virtual void Tick(float DeltaSeconds) override;
 
 	void SetStageData(const int InStageIndex, const FResponseScenario& InResponseData);
-	
-public:
-	UPROPERTY(Replicated, BlueprintReadOnly, Category = "Mission")
-	float RemainMissionTime = 0.f;
-
-	/// @brief 타이머 활성화 상태
-	UPROPERTY(Replicated, BlueprintReadOnly, Category = "Mission")
-	bool bIsTimerActive = false;
 
 	/// @brief 미션 타이머를 시작합니다 (서버에서만 호출)
 	UFUNCTION(BlueprintCallable, Category = "Mission")
@@ -44,9 +32,24 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Mission")
 	void StopMissionTimer();
 
-protected:
+	UFUNCTION(BlueprintCallable, Category = "Mission")
+	float GetRemainMissionTime()
+	{
+		return RemainMissionTime;
+	}
+
+private:
 	/// @brief 타이머 종료 시 호출됩니다 (서버에서만 실행)
 	void OnMissionTimerEnd();
+	
+public:
+	UPROPERTY(Replicated, BlueprintReadOnly, Category = "Mission")
+	float RemainMissionTime = 0.f;
+
+protected:
+	/// @brief 타이머 활성화 상태
+	UPROPERTY(Replicated, BlueprintReadOnly, Category = "Mission")
+	bool bIsTimerActive = false;
 
 	//--------------------------------------------------------------//
 	// 시나리오 ID
