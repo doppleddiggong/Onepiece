@@ -5,6 +5,7 @@ var classUKLingoNetworkSystem =
     [ "Deinitialize", "classUKLingoNetworkSystem.html#a96e09056706c907baafcf4f01c32c0e1", null ],
     [ "GetLogPrefix", "classUKLingoNetworkSystem.html#a522feb11d8fcfa106b6f735bc3472d6a", null ],
     [ "Initialize", "classUKLingoNetworkSystem.html#ac473610dfbbe9da74f08a1b3e6ec3dc3", null ],
+    [ "IsResSuccess", "classUKLingoNetworkSystem.html#acf7d7ff1c064c3f86698a1fe131c8f00", null ],
     [ "LogNetwork", "classUKLingoNetworkSystem.html#ad71f0b7215e0d685a171bc2d8e7a0a3f", null ],
     [ "RequestOcrExtract", "classUKLingoNetworkSystem.html#a2b55f61a9ab11131c68a8d9aa947e81b", null ],
     [ "RequestScenario", "classUKLingoNetworkSystem.html#a7bb3a953715a2b6ac4e23243dfe8eb65", null ],

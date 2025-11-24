@@ -1,5 +1,6 @@
 var NAVTREEINDEX2 =
 {
+"classAGate.html#a77115a1ffec989893fe6f5887fdf87a2":[2,0,1,9],
 "classAGate.html#a889b91ba704a598adbf0d443b3f74f4c":[2,0,1,4],
 "classAGate.html#a9eaddebb5c5dd0ad38ef60d938813e46":[2,0,1,13],
 "classAGate.html#ab83a2e573215c998455f7edf71aa5807":[2,0,1,2],
@@ -248,6 +249,5 @@ var NAVTREEINDEX2 =
 "classIControllable.html#afd003c2223b06356d9a827055d939741":[2,0,53,2],
 "classISequenceActivatable.html":[2,0,54],
 "classISequenceActivatable.html#ac285873d0ade09e1060924adfd5f8e56":[2,0,54,0],
-"classISequenceActivatable.html#ad4d9bad8a9f054f36c51169446e36b9b":[2,0,54,1],
-"classUBroadcastManager.html":[2,0,55]
+"classISequenceActivatable.html#ad4d9bad8a9f054f36c51169446e36b9b":[2,0,54,1]
 };

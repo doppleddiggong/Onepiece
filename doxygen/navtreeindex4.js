@@ -1,5 +1,7 @@
 var NAVTREEINDEX4 =
 {
+"classUObjectPoolManager.html#a727b94727756e4ad008e81c42f1e431a":[2,0,76,1],
+"classUObjectPoolManager.html#ae87658ccf4030b83071d92ead144330f":[2,0,76,2],
 "classUObjectPoolManager.html#af2760bfdb559d0415a380ceca5c2138a":[2,0,76,4],
 "classURobotAnimInstance.html":[2,0,77],
 "classURobotAnimInstance.html#a19ea367cb23c56dec6813d94ee3f8455":[2,0,77,5],
@@ -247,7 +249,5 @@ var NAVTREEINDEX4 =
 "namespaceRequestAPI.html#a444507b7e2261e3f743b40af81e6838a":[1,0,5,2],
 "namespaceRequestAPI.html#adb0c390f61c19ef5b70489b76b2e00e6":[1,0,5,6],
 "namespaceRequestAPI.html#ae1061ff9836b3127b56024d0a0f6fd65":[1,0,5,0],
-"namespaceRequestAPI.html#ae683aef1f6770a15bcad8cce46f40456":[1,0,5,1],
-"namespaceRequestAPI.html#aee732573aa0bc733fedaab927a273dcd":[1,0,5,3],
-"namespaceRequestAPI.html#af908b99f78364328aca763f362236454":[1,0,5,5]
+"namespaceRequestAPI.html#ae683aef1f6770a15bcad8cce46f40456":[1,0,5,1]
 };

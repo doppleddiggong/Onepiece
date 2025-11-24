@@ -11,5 +11,6 @@ var searchData=
   ['isconnected_8',['IsConnected',['../classUWebSocketSystem.html#a89bbc98f683cca370ea2e91fbd36ca7b',1,'UWebSocketSystem']]],
   ['isconversationvoiceplaying_9',['IsConversationVoicePlaying',['../classUGameSoundManager.html#aa9bad4fe4971faa5fad6a47afaf7255d',1,'UGameSoundManager']]],
   ['isplayeractor_10',['IsPlayerActor',['../classAGate.html#a0aac26a835f62650db64de1cb0e691f2',1,'AGate']]],
-  ['isvalid_11',['IsValid',['../structFDelayHandle.html#a65b5c7cb5e60128f014d7b80122c2a36',1,'FDelayHandle']]]
+  ['isressuccess_11',['IsResSuccess',['../classUKLingoNetworkSystem.html#acf7d7ff1c064c3f86698a1fe131c8f00',1,'UKLingoNetworkSystem']]],
+  ['isvalid_12',['IsValid',['../structFDelayHandle.html#a65b5c7cb5e60128f014d7b80122c2a36',1,'FDelayHandle']]]
 ];
