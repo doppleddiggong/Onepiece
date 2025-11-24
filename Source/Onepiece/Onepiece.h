@@ -31,9 +31,17 @@ namespace GameMessage
 	static const FString IntroStart = TEXT("IntroStart");
 	static const FString OutroStart = TEXT("OutroStart");    
 
-	static const FString ScenarioStage1Start = TEXT("QuestStep1Start");    
-	static const FString QuestStep1End = TEXT("QuestStep1End");    
+	static const FString ScenarioStage1Start = TEXT("ScenarioStage1Start");    
+	static const FString ScenarioStage1End = TEXT("ScenarioStage1End");    
 
+	static const FString ScenarioStage2Start = TEXT("ScenarioStage2Start");    
+	static const FString ScenarioStage2End = TEXT("ScenarioStage2End");    
+
+	static const FString ScenarioStage3Start = TEXT("ScenarioStage3Start");    
+	static const FString ScenarioStage3End = TEXT("ScenarioStage3End");    
+
+	static const FString ScenarioStage4Start = TEXT("ScenarioStage4Start");    
+	static const FString ScenarioStage4End = TEXT("ScenarioStage4End");    
 
 
 }
