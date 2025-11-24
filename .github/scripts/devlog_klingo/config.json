@@ -1,17 +1,22 @@
 {
+  "_comment": "KLingo DevLog Configuration - Environment variables override these values in GitHub Actions",
+
   "project_root": "../../..",
   "developers_csv": ".github/data/developers.csv",
   "meeting_dir": "Documents/Meeting/Daily",
   "jira_rules": ".github/data/jira_map_rules.yaml",
   "output_dir": "Documents/DevLog/Daily",
+  "weekly_output_dir": "Documents/DevLog/Weekly",
 
   "use_gpt": true,
   "gpt_model": "gpt-4o",
 
   "jira": {
+    "_comment": "Leave empty for local use or set via environment variables (JIRA_URL, JIRA_EMAIL, JIRA_TOKEN, JIRA_PROJECT)",
     "url": "",
     "email": "",
-    "token": ""
+    "token": "",
+    "project": ""
   },
 
   "openai_api_key": ""

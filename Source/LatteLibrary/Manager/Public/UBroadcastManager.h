@@ -77,4 +77,22 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category="Events")
 	void SendAudioCapture(bool bRecording);
+
+
+
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnDoorMessage, int, DoorIndex, bool, Open);
+	UPROPERTY(BlueprintAssignable, Category="Events")
+	FOnDoorMessage OnDoorMessage;
+
+	UFUNCTION(BlueprintCallable, Category="Events")
+	void SendDoorMessage(int InDoorIndex, bool InOpen);
+
+
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FWeightSwitch, int, ButtonIndex, bool, bIsActive);
+	UPROPERTY(BlueprintAssignable, Category="Events")
+	FWeightSwitch OnWeightSwitch;
+
+	UFUNCTION(BlueprintCallable, Category="Events")
+	void SendWeightSwitch(int InButtonIndex, bool InActive);
+
 };

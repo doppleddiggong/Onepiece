@@ -7,18 +7,12 @@
 #include "UVoiceConversationSystem.h"
 
 #include "GameLogging.h"
-#include "APlayerActor.h"
-#include "APlayerControl.h"
 #include "UBroadcastManager.h"
-#include "UCommonFunctionLibrary.h"
 #include "UDialogManager.h"
-#include "UHttpNetworkSystem.h"
 #include "UVoiceFunctionLibrary.h"
 #include "UGameSoundManager.h"
 #include "UKLingoNetworkSystem.h"
-#include "Kismet/GameplayStatics.h"
 #include "Sound/SoundWaveProcedural.h"
-#include "Components/AudioComponent.h"
 
 UVoiceConversationSystem::UVoiceConversationSystem()
 {
@@ -203,17 +197,17 @@ void UVoiceConversationSystem::StopRecording()
 		return;
 	}
 
-	HttpSystem->RequestSpeakingsQuestions(LastRecordedFilePath,
-		FResponseSpeakingsQuestionsDelegate::CreateUObject(this, &UVoiceConversationSystem::OnResponseSpeakingsQuestions));
+	HttpSystem->RequestSpeakingQuestions(LastRecordedFilePath,
+		FResponseSpeakingQuestionsDelegate::CreateUObject(this, &UVoiceConversationSystem::OnResponseSpeakingsQuestions));
 }
 
-void UVoiceConversationSystem::OnResponseSpeakingsQuestions(FResponseSpeakingsQuestions& Response, bool bSuccess)
+void UVoiceConversationSystem::OnResponseSpeakingsQuestions(FResponseSpeakingQuestions& Response, bool bSuccess)
 {
 	bIsProcessing = false;
 
 	if (bSuccess)
 	{
-		PRINTLOG( TEXT("--- Network Response Received : %s"), *Response.detail );
+		PRINTLOG( TEXT("--- Network Response Received : %s"), *Response.answer);
 	}
 	else
 	{

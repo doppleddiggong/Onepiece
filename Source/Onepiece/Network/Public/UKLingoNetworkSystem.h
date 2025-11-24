@@ -34,7 +34,23 @@ public:
 	void RequestUserRegister(const FString& UserName, FResponseUserRegisterDelegate InDelegate);
 	void RequestUserToken(const FString& UserName, FResponseUserTokenDelegate InDelegate);
 	void RequestUserMe(FResponseUserMeDelegate InDelegate);
-    void RequestSpeakingsQuestions(const FString& FilePath, FResponseSpeakingsQuestionsDelegate InDelegate);
+
+	/// @brief Scenario 데이터를 조회합니다.
+	/// @param Index [in] 시나리오 인덱스입니다.
+	/// @param Difficulty [in] 난이도입니다.
+	/// @param Lang [in] 언어 설정입니다 (1: 한국어).
+	/// @param InDelegate [in] 응답 수신 시 호출될 델리게이트입니다.
+	void RequestScenario(int32 Index, int32 Difficulty, int32 Lang, FResponseScenarioDelegate InDelegate);
+
+	/// @brief 이미지에서 OCR로 텍스트를 추출합니다.
+	/// @param ImagePath [in] 이미지 파일 경로입니다.
+	/// @param InDelegate [in] 응답 수신 시 호출될 델리게이트입니다.
+	void RequestOcrExtract(const FString& ImagePath, FResponseOcrExtractDelegate InDelegate);
+
+	/// @brief 음성 파일을 전송하고 답변을 받습니다.
+	/// @param AudioPath [in] WAV 오디오 파일 경로입니다.
+	/// @param InDelegate [in] 응답 수신 시 호출될 델리게이트입니다.
+	void RequestSpeakingQuestions(const FString& AudioPath, FResponseSpeakingQuestionsDelegate InDelegate);
 
 
 

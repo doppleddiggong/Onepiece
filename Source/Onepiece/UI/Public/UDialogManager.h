@@ -24,6 +24,8 @@ public:
 
 	UDialogManager();
 
+	virtual void Deinitialize() override;
+
 	// 다이얼로그 요청 함수
 	UFUNCTION(BlueprintCallable, Category = "Dialog")
 	void ShowToast(const FString& Message);

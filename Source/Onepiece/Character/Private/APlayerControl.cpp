@@ -16,6 +16,7 @@
 #include "InputAction.h"
 
 #include "FComponentHelper.h"
+#include "UInteractionSystem.h"
 
 #define IMC_DEFAULT_PATH			TEXT("/Game/CustomContents/Input/IMC_Game_Player.IMC_Game_Player")
 #define IA_MOVE_PATH				TEXT("/Game/CustomContents/Input/IA_Game_Movement.IA_Game_Movement")
@@ -25,6 +26,8 @@
 #define IA_JUMP_PATH				TEXT("/Game/CustomContents/Input/IA_Game_Jump.IA_Game_Jump")
 #define IA_LANDING_PATH				TEXT("/Game/CustomContents/Input/IA_Game_Landing.IA_Game_Landing")
 #define IA_RECORD_PATH				TEXT("/Game/CustomContents/Input/IA_Game_Record.IA_Game_Record")
+#define IA_GRAB_PATH				TEXT("/Game/CustomContents/Input/IA_Game_Grab.IA_Game_Grab")
+	#define IA_INTERACT_PATH			TEXT("/Game/CustomContents/Input/IA_Game_Interact.IA_Game_Interact")
 
 
 APlayerControl::APlayerControl()
@@ -38,6 +41,8 @@ APlayerControl::APlayerControl()
 	IA_Jump = FComponentHelper::LoadAsset<UInputAction>(IA_JUMP_PATH);
 	IA_Landing = FComponentHelper::LoadAsset<UInputAction>(IA_LANDING_PATH);
 	IA_Record = FComponentHelper::LoadAsset<UInputAction>(IA_RECORD_PATH);
+	IA_Grab = FComponentHelper::LoadAsset<UInputAction>(IA_GRAB_PATH);
+	IA_Interact = FComponentHelper::LoadAsset<UInputAction>(IA_INTERACT_PATH);
 }
 
 void APlayerControl::BeginPlay()
@@ -81,7 +86,9 @@ void APlayerControl::SetupInputComponent()
 		EIC->BindAction(IA_Record, ETriggerEvent::Completed, this, &APlayerControl::OnRecordReleased);
 
 		EIC->BindAction(IA_Grab, ETriggerEvent::Started, this, &APlayerControl::OnGrab);
-		EIC->BindAction(IA_Grab, ETriggerEvent::Completed, this, &APlayerControl::OnRelease);
+		EIC->BindAction(IA_Grab, ETriggerEvent::Completed, this, &APlayerControl::OnGrabRelease);
+
+		EIC->BindAction(IA_Interact, ETriggerEvent::Started, this, &APlayerControl::OnInteract);
 	}
 }
 
@@ -157,25 +164,40 @@ void APlayerControl::OnGrab(const FInputActionValue& Value)
 	Server_OnGrab();
 }
 
-void APlayerControl::OnRelease(const FInputActionValue& Value)
+void APlayerControl::OnGrabRelease(const FInputActionValue& Value)
 {
-	Server_OnRelease();
+	Server_OnGrabRelease();
+}
+
+void APlayerControl::OnInteract(const FInputActionValue& Value)
+{
+	Server_OnInteract();
 }
 
 void APlayerControl::Server_OnGrab_Implementation()
 {
 	APlayerActor* MyPlayer = Cast<APlayerActor>(GetPawn());
-	if (MyPlayer)
+	if (MyPlayer && MyPlayer->InteractionSystem)
 	{
-		MyPlayer->TryPickUp();
+		MyPlayer->InteractionSystem->TryPickUp();
 	}
 }
 
-void APlayerControl::Server_OnRelease_Implementation()
+void APlayerControl::Server_OnGrabRelease_Implementation()
 {
 	APlayerActor* MyPlayer = Cast<APlayerActor>(GetPawn());
-	if (MyPlayer)
+	if (MyPlayer && MyPlayer->InteractionSystem)
 	{
-		MyPlayer->TryDrop();
+		MyPlayer->InteractionSystem->TryDrop();
+	}
+}
+
+
+void APlayerControl::Server_OnInteract_Implementation()
+{
+	APlayerActor* MyPlayer = Cast<APlayerActor>(GetPawn());
+	if (MyPlayer && MyPlayer->InteractionSystem)
+	{
+		MyPlayer->InteractionSystem->TryInteract();
 	}
 }

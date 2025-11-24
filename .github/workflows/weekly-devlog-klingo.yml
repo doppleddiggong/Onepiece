@@ -1,0 +1,206 @@
+name: KLingo Weekly DevLog
+
+on:
+  # 매주 일요일 KST 오후 11시 (UTC 14:00)
+  schedule:
+    - cron: '0 14 * * 0'
+
+  # 수동 실행 가능
+  workflow_dispatch:
+    inputs:
+      week:
+        description: '주차 (YYYY-WXX, 비워두면 이번 주)'
+        required: false
+        type: string
+      date:
+        description: '기준 날짜 (YYYY-MM-DD, week 대신 사용 가능)'
+        required: false
+        type: string
+      use_gpt:
+        description: 'GPT 주간 분석 사용'
+        required: false
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
+
+jobs:
+  generate-weekly:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # 전체 히스토리 필요
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install KLingo DevLog dependencies
+        run: |
+          pip install -r .github/scripts/devlog_klingo/requirements.txt
+          pip install pyyaml
+
+      - name: Load Config
+        id: config
+        run: |
+          # config.yml에서 설정 읽기
+          WEEKLY_GPT_ENABLED=$(python3 -c "import yaml; print(yaml.safe_load(open('.github/config.yml'))['gpt']['weekly_enabled'])")
+          JIRA_ENABLED=$(python3 -c "import yaml; print(yaml.safe_load(open('.github/config.yml'))['jira']['enabled'])")
+          JIRA_SITE=$(python3 -c "import yaml; print(yaml.safe_load(open('.github/config.yml'))['jira']['site'])")
+          JIRA_EMAIL=$(python3 -c "import yaml; print(yaml.safe_load(open('.github/config.yml'))['jira']['email'])")
+          JIRA_PROJECT=$(python3 -c "import yaml; print(yaml.safe_load(open('.github/config.yml'))['jira']['project'])")
+
+          echo "weekly_gpt_enabled=$WEEKLY_GPT_ENABLED" >> $GITHUB_OUTPUT
+          echo "jira_enabled=$JIRA_ENABLED" >> $GITHUB_OUTPUT
+          echo "jira_site=$JIRA_SITE" >> $GITHUB_OUTPUT
+          echo "jira_email=$JIRA_EMAIL" >> $GITHUB_OUTPUT
+          echo "jira_project=$JIRA_PROJECT" >> $GITHUB_OUTPUT
+
+          # 수동 실행 시 입력값이 우선
+          if [ "${{ github.event_name }}" == "workflow_dispatch" ] && [ -n "${{ github.event.inputs.use_gpt }}" ]; then
+            USE_GPT="${{ github.event.inputs.use_gpt }}"
+          else
+            USE_GPT="$WEEKLY_GPT_ENABLED"
+          fi
+
+          echo "use_gpt=$USE_GPT" >> $GITHUB_OUTPUT
+          echo "📋 Config loaded: weekly_gpt=$WEEKLY_GPT_ENABLED, use_gpt=$USE_GPT, jira=$JIRA_ENABLED"
+
+      - name: Calculate week label
+        id: params
+        run: |
+          if [ -n "${{ github.event.inputs.week }}" ]; then
+            # 명시적으로 주차가 지정된 경우
+            WEEK_LABEL="${{ github.event.inputs.week }}"
+          elif [ -n "${{ github.event.inputs.date }}" ]; then
+            # 날짜가 지정된 경우 해당 날짜가 속한 주 계산
+            WEEK_LABEL=$(python3 -c "import datetime; d = datetime.datetime.strptime('${{ github.event.inputs.date }}', '%Y-%m-%d').date(); monday = d - datetime.timedelta(days=d.weekday()); print(f'{monday.year}-W{monday.isocalendar()[1]:02d}')")
+          else
+            # 기본: 이번 주
+            WEEK_LABEL=$(python3 -c "import datetime; d = datetime.date.today(); monday = d - datetime.timedelta(days=d.weekday()); print(f'{monday.year}-W{monday.isocalendar()[1]:02d}')")
+          fi
+
+          echo "week_label=$WEEK_LABEL" >> $GITHUB_OUTPUT
+          echo "Week: $WEEK_LABEL"
+
+      - name: Generate Weekly DevLog with KLingo
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          JIRA_URL: https://${{ steps.config.outputs.jira_site }}.atlassian.net
+          JIRA_EMAIL: ${{ steps.config.outputs.jira_email }}
+          JIRA_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+          JIRA_PROJECT: ${{ steps.config.outputs.jira_project }}
+        run: |
+          cd .github/scripts/devlog_klingo
+
+          # 환경 변수 확인
+          echo "Checking environment variables..."
+          if [ -z "$OPENAI_API_KEY" ]; then
+            echo "WARNING: OPENAI_API_KEY is not set. GPT analysis will be disabled."
+          else
+            echo "OK: OPENAI_API_KEY is set"
+          fi
+
+          # config.json을 환경 변수로 업데이트
+          python3 << 'EOF'
+          import json
+          import os
+
+          with open('config.json', 'r', encoding='utf-8') as f:
+              config = json.load(f)
+
+          # GPT 설정 - config.yml의 설정과 환경 변수 모두 확인
+          use_gpt_config = '${{ steps.config.outputs.use_gpt }}' == 'true'
+          has_api_key = bool(os.getenv('OPENAI_API_KEY', '').strip())
+
+          config['use_gpt'] = use_gpt_config and has_api_key
+          config['openai_api_key'] = os.getenv('OPENAI_API_KEY', '')
+
+          # Jira 설정
+          config['jira']['url'] = os.getenv('JIRA_URL', '')
+          config['jira']['email'] = os.getenv('JIRA_EMAIL', '')
+          config['jira']['token'] = os.getenv('JIRA_TOKEN', '')
+          config['jira']['project'] = os.getenv('JIRA_PROJECT', '')
+
+          with open('config_runtime.json', 'w', encoding='utf-8') as f:
+              json.dump(config, f, indent=2, ensure_ascii=False)
+
+          print(f"Runtime config created: use_gpt={config['use_gpt']}, has_api_key={has_api_key}")
+          EOF
+
+          # KLingo Weekly DevLog 생성
+          python weekly_devlog_generate.py \
+            --week "${{ steps.params.outputs.week_label }}" \
+            --config config_runtime.json
+
+          echo "Weekly DevLog generated by KLingo"
+
+      - name: Update SUMMARY.md
+        run: |
+          if [ -f .github/scripts/generate_summary.py ]; then
+            python .github/scripts/generate_summary.py
+            echo "✅ SUMMARY.md updated"
+          else
+            echo "⚠️ generate_summary.py not found, skipping"
+          fi
+
+      - name: Commit and Push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git add Documents/DevLog/Weekly/*.md Documents/DevLog/Weekly/*.json Documents/SUMMARY.md || true
+
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
+
+          git commit -m "chore(devlog): weekly report ${{ steps.params.outputs.week_label }} [KLingo]"
+          git push origin main
+
+      - name: Trigger HonKit Build
+        uses: peter-evans/repository-dispatch@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          event-type: honkit-build
+          client-payload: '{"ref": "main", "trigger": "weekly-update", "latest_file": "Documents/DevLog/Weekly/${{ steps.params.outputs.week_label }}-Summary.md"}'
+
+      - name: Trigger Confluence Upload
+        if: steps.config.outputs.jira_enabled == 'true'
+        uses: peter-evans/repository-dispatch@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          event-type: confluence-upload
+          client-payload: '{"file": "Documents/DevLog/Weekly/${{ steps.params.outputs.week_label }}-Summary.md"}'
+
+      - name: Send Discord Notification
+        if: always()
+        env:
+          DISCORD_WEBHOOK_DEVLOG: ${{ secrets.DISCORD_WEBHOOK_DEVLOG }}
+        run: |
+          if [ -f .github/scripts/devlog/send_discord.py ]; then
+            python .github/scripts/devlog/send_discord.py \
+              --webhook-url "$DISCORD_WEBHOOK_DEVLOG" \
+              --type weekly \
+              --devlog-file "Documents/DevLog/Weekly/${{ steps.params.outputs.week_label }}-Summary.md" \
+              --date "${{ steps.params.outputs.week_label }}" \
+              --devlog-url "https://doppleddiggong.github.io/Onepiece/honkit/DevLog/Weekly/${{ steps.params.outputs.week_label }}-Summary.html" \
+              || echo "⚠️ Discord notification failed (non-critical)"
+          else
+            echo "⚠️ send_discord.py not found, skipping Discord notification"
+          fi
+
+      - name: Summary
+        if: always()
+        run: |
+          echo "✅ KLingo Weekly DevLog workflow completed!"
+          echo "📅 Week: ${{ steps.params.outputs.week_label }}"
+          echo "🤖 GPT Enabled: ${{ steps.config.outputs.use_gpt }}"
+          echo "📝 File: Documents/DevLog/Weekly/${{ steps.params.outputs.week_label }}-Summary.md"
+          echo "🔗 URL: https://doppleddiggong.github.io/Onepiece/honkit/DevLog/Weekly/${{ steps.params.outputs.week_label }}-Summary.html"

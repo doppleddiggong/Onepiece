@@ -29,9 +29,29 @@ python devlog_generate.py --date 2025-11-20 --branch dopple --config config.json
 python devlog_generate.py --date 2025-11-20 --branch cubee --config config.json
 ```
 
+### 4. 주간 DevLog 생성
+
+#### 이번 주 DevLog 생성
+```bash
+cd .github/scripts/devlog_klingo
+python weekly_devlog_generate.py --config config.json
+```
+
+#### 특정 날짜가 속한 주의 DevLog 생성
+```bash
+python weekly_devlog_generate.py --date 2025-11-20 --config config.json
+```
+
+#### 특정 주 번호로 생성
+```bash
+python weekly_devlog_generate.py --week 2025-W47 --config config.json
+```
+
 ---
 
 ## 📁 생성되는 파일
+
+### Daily DevLog
 
 ```
 Documents/DevLog/Daily/
@@ -39,11 +59,21 @@ Documents/DevLog/Daily/
 └── 2025-11-20.metrics.json    # 메트릭 데이터
 ```
 
+### Weekly DevLog
+
+```
+Documents/DevLog/Weekly/
+├── 2025-W47-Summary.md        # 주간 DevLog 본문
+└── 2025-W47-Summary.metrics.json  # 주간 메트릭 데이터
+```
+
 ---
 
 ## 🎯 DevLog 내용
 
-각 DevLog는 다음 항목을 포함합니다:
+### Daily DevLog
+
+각 Daily DevLog는 다음 항목을 포함합니다:
 
 1. **오늘의 주요 변경** - 커밋 내용 기반 핵심 변경사항 요약
 2. **시스템 영향도** - 변경된 시스템별 영향도 분석
@@ -51,6 +81,18 @@ Documents/DevLog/Daily/
 4. **검증 필요 항목** - 테스트가 필요한 부분
 5. **회의 기반 후속 작업** - 회의록과 연계된 작업
 6. **관련 Jira 이슈** - 자동 추론된 관련 이슈
+
+### Weekly DevLog
+
+각 Weekly DevLog는 다음 항목을 포함합니다:
+
+1. **주간 요약** - 이번 주 핵심 성과 3~5개 항목
+2. **일별 주요 변경** - 날짜별 주요 작업 내용 시간순 정리
+3. **시스템별 변경 통계** - 시스템별 영향도 및 목적 분석
+4. **주간 성과 및 달성도** - 목표 대비 달성도 평가
+5. **주요 이슈 및 해결 내역** - 기술적 문제와 해결 방법
+6. **다음 주 계획** - 다음 주 작업 목표 3~5개
+7. **개선 제안 사항** - 프로세스 및 워크플로우 개선 아이디어
 
 ---
 
@@ -98,7 +140,7 @@ DevLog는 다음 6가지 데이터를 통합합니다:
 
 ## 🔧 고급 사용법
 
-### 여러 날짜 일괄 생성
+### Daily DevLog 여러 날짜 일괄 생성
 
 **Windows (PowerShell):**
 ```powershell
@@ -114,6 +156,25 @@ cd .github/scripts/devlog_klingo
 cd .github/scripts/devlog_klingo
 for i in {10..20}; do
     python devlog_generate.py --date 2025-11-$i --branch dopple --config config.json
+done
+```
+
+### Weekly DevLog 여러 주 일괄 생성
+
+**Windows (PowerShell):**
+```powershell
+cd .github/scripts/devlog_klingo
+44..47 | ForEach-Object {
+    $week = "2025-W" + $_.ToString("00")
+    python weekly_devlog_generate.py --week $week --config config.json
+}
+```
+
+**Linux/Mac:**
+```bash
+cd .github/scripts/devlog_klingo
+for i in {44..47}; do
+    python weekly_devlog_generate.py --week 2025-W$i --config config.json
 done
 ```
 

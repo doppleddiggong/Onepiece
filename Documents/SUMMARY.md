@@ -12,6 +12,8 @@
 * [dopple - 2025-11-10](DevLog/AgentLog/dopple/251110.md)
 
 ### Daily Logs (2025-11)
+* [2025-11-22](DevLog/Daily/2025-11-22.md)
+* [2025-11-21](DevLog/Daily/2025-11-21.md)
 * [2025-11-20](DevLog/Daily/2025-11-20.md)
 * [2025-11-19](DevLog/Daily/2025-11-19.md)
 * [2025-11-18](DevLog/Daily/2025-11-18.md)
@@ -25,11 +27,13 @@
 * [2025-11-10](DevLog/Daily/2025-11-10.md)
 
 ### Weekly Summary
-* [주간 개발 요약 (2025-11-10 ~ 2025-11-16)](DevLog/Weekly/2025-W46-Summary.md)
+* [Weekly DevLog — 2025 Week 47](DevLog/Weekly/2025-W47-Summary.md)
+* [Weekly DevLog — 2025 Week 46](DevLog/Weekly/2025-W46-Summary.md)
 
 ## 회의록
 
 ### 일일 회의록
+* [251121 Daily](Meeting/Daily/Meeting_251121_Daily.md)
 * [251120 Daily](Meeting/Daily/Meeting_251120_Daily.md)
 * [251119 Daily](Meeting/Daily/Meeting_251119_Daily.md)
 * [251118 Daily](Meeting/Daily/Meeting_251118_Daily.md)

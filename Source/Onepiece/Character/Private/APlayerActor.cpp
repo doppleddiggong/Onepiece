@@ -10,9 +10,11 @@
 #include "UFlySystem.h"
 
 // Shared
+#include "GameLogging.h"
 #include "Macro.h"
 #include "InputCoreTypes.h"
 #include "UVoiceConversationSystem.h"
+#include "UInteractionSystem.h"
 
 #include "Camera/CameraComponent.h"
 #include "Components/InputComponent.h"
@@ -20,13 +22,13 @@
 #include "GameFramework/SpringArmComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Net/UnrealNetwork.h"
-#include "Onepiece/Interactable/Public/InteractableComponent.h"
 
 APlayerActor::APlayerActor()
 {
-	PrimaryActorTick.bCanEverTick = true;
+	PrimaryActorTick.bCanEverTick = false;
 
 	FlySystem = CreateDefaultSubobject<UFlySystem>(TEXT("FlySystem"));
+	InteractionSystem = CreateDefaultSubobject<UInteractionSystem>(TEXT("InteractionSystem"));
 	
 	SpringArmComp = CreateDefaultSubobject<USpringArmComponent>(TEXT("SpringArm"));
 	SpringArmComp->SetupAttachment(GetCapsuleComponent());
@@ -48,7 +50,6 @@ APlayerActor::APlayerActor()
 	HoldPosition = CreateDefaultSubobject<USceneComponent>(TEXT("HoldPosition"));
 	HoldPosition->SetupAttachment(FollowCamera);
 	
-	HoldingInteractable = nullptr;
 	LookPitch = 0.f;
 }
 
@@ -62,8 +63,9 @@ void APlayerActor::BeginPlay()
 	VoiceConversationSystem->InitSystem(this);
 
 	// --- Architecture Demo Start ---
-	UE_LOG(LogTemp, Log, TEXT("APlayerActor: Setting up one-way dependency demo."));
+	PRINTLOG( TEXT("APlayerActor: Setting up one-way dependency demo."));
 }
+
 
 void APlayerActor::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
@@ -138,63 +140,6 @@ void APlayerActor::PlayTTSAudio(const TArray<uint8>& AudioData)
 	VoiceConversationSystem->PlayVoiceAudio(AudioData);
 }
 
-void APlayerActor::TryPickUp()
-{
-	if (HoldingInteractable) return;
-
-	// Ray trace로 InteractableComponent 찾기   
-	UInteractableComponent* FoundInteractable = DetectInteractable();
-	if (FoundInteractable && HoldPosition)
-	{
-		FoundInteractable->HoldingOwner = this;
-		FoundInteractable->PickUp();
-
-		// 현재 들고 있는 물체로 저장
-		HoldingInteractable = FoundInteractable;
-	}
-}
-
-void APlayerActor::TryDrop()
-{
-	if (HoldingInteractable)
-	{
-		HoldingInteractable->Drop();
-		
-		HoldingInteractable->HoldingOwner = nullptr;
-		HoldingInteractable = nullptr;
-	}
-}
-
-UInteractableComponent* APlayerActor::DetectInteractable()
-{
-	FVector CameraLocation = FollowCamera->GetComponentLocation();
-	FVector CameraForward = FollowCamera->GetForwardVector();
-
-	FVector TraceStart = CameraLocation;
-	FVector TraceEnd = TraceStart + (CameraForward * InteractDistance);
-
-	// Hit 결과
-	FHitResult HitResult;
-
-	// Ray trace 실행
-	bool bHit = GetWorld()->LineTraceSingleByChannel(
-		HitResult, TraceStart, TraceEnd, ECC_Visibility);
-	
-	DrawDebugLine(GetWorld(), TraceStart, TraceEnd, bHit?FColor::Green : FColor::Red,
-		false, 0.1f, 0, 2.0f);
-
-	// Hit한 경우
-	if (bHit && HitResult.GetActor())
-	{
-		// Actor에서 InteractableComponent 찾기
-		UInteractableComponent* InteractComp =
-			HitResult.GetActor()->FindComponentByClass<UInteractableComponent>();
-
-		if (InteractComp) return InteractComp;
-	}
-
-	return nullptr;
-}
 
 void APlayerActor::OnRep_LookPitch()
 {
