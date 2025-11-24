@@ -9,6 +9,7 @@
 #include "FComponentHelper.h"
 #include "GameLogging.h"
 #include "ULoadginCircle.h"
+#include "UBroadcastManager.h"
 
 #include "GameFramework/PlayerController.h"
 #include "Engine/LocalPlayer.h"
@@ -24,6 +25,36 @@
 ULoadingCircleManager::ULoadingCircleManager()
 {
 	CircleWidgetClass = FComponentHelper::LoadClass<ULoadginCircle>(LOADINGCIRCLEWIDGET_PATH);
+}
+
+void ULoadingCircleManager::Initialize(FSubsystemCollectionBase& Collection)
+{
+	Super::Initialize(Collection);
+
+	// UBroadcastManager의 OnNetworkWaitCount 구독
+	if (UGameInstance* GameInstance = GetWorld()->GetGameInstance() )
+	{
+		if (UBroadcastManager* BroadcastManager = UBroadcastManager::Get(GameInstance))
+		{
+			BroadcastManager->OnNetworkWaitCount.AddDynamic(this, &ULoadingCircleManager::OnNetworkWaitCount);
+			PRINTLOG(TEXT("[LoadingCircleManager] Subscribed to OnNetworkWaitCount"));
+		}
+	}
+}
+
+void ULoadingCircleManager::Deinitialize()
+{
+	// OnNetworkWaitCount 구독 해제
+	if (UGameInstance* GameInstance = GetWorld()->GetGameInstance())
+	{
+		if (UBroadcastManager* BroadcastManager = UBroadcastManager::Get(GameInstance))
+		{
+			BroadcastManager->OnNetworkWaitCount.RemoveDynamic(this, &ULoadingCircleManager::OnNetworkWaitCount);
+			PRINTLOG(TEXT("[LoadingCircleManager] Unsubscribed from OnNetworkWaitCount"));
+		}
+	}
+
+	Super::Deinitialize();
 }
 
 void ULoadingCircleManager::EnsureWidgetForWorld(UWorld* World)
@@ -132,4 +163,18 @@ void ULoadingCircleManager::Hide()
 int32 ULoadingCircleManager::GetLoadingCount() const
 {
 	return LoadingCount;
+}
+
+void ULoadingCircleManager::OnNetworkWaitCount(int RequestCount)
+{
+	PRINTLOG(TEXT("[LoadingCircleManager] HandleNetworkWaitCount - RequestCount: %d"), RequestCount);
+
+	if (RequestCount > 0)
+	{
+		Show();
+	}
+	else
+	{
+		Hide();
+	}
 }
