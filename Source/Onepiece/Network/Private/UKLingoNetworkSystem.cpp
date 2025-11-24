@@ -52,6 +52,13 @@ const TCHAR* UKLingoNetworkSystem::GetLogPrefix(ENetworkLogType InLogType)
 	}
 }
 
+bool UKLingoNetworkSystem::IsResSuccess(const int InCode)
+{
+	if ( InCode == 200 || InCode == 201 )
+		return true;
+	return false;
+}
+
 
 void UKLingoNetworkSystem::AddNetworkWaitCount(int Value)
 {
@@ -106,7 +113,7 @@ void UKLingoNetworkSystem::RequestUserRegister(const FString& UserName, FRespons
 			{
 				const int32 ResponseCode = HttpResponse->GetResponseCode();
 
-				if (ResponseCode == 200)
+				if (IsResSuccess(ResponseCode))
 				{
 					ResponseData.SetFromHttpResponse(HttpResponse);
 					ResponseData.PrintData();
@@ -159,7 +166,7 @@ void UKLingoNetworkSystem::RequestUserToken(const FString& UserName, FResponseUs
 			{
 				const int32 ResponseCode = HttpResponse->GetResponseCode();
 
-				if (ResponseCode == 200)
+				if (IsResSuccess(ResponseCode))
 				{
 					ResponseData.SetFromHttpResponse(HttpResponse);
 					ResponseData.PrintData();
@@ -210,7 +217,7 @@ void UKLingoNetworkSystem::RequestUserMe( FResponseUserMeDelegate InDelegate)
 			{
 				const int32 ResponseCode = HttpResponse->GetResponseCode();
 
-				if (ResponseCode == 200)
+				if (IsResSuccess(ResponseCode))
 				{
 					ResponseData.SetFromHttpResponse(HttpResponse);
 					ResponseData.PrintData();
@@ -260,7 +267,7 @@ void UKLingoNetworkSystem::RequestScenario(int32 Index, int32 Difficulty, int32 
 			{
 				const int32 ResponseCode = HttpResponse->GetResponseCode();
 
-				if (ResponseCode == 200)
+				if (IsResSuccess(ResponseCode))
 				{
 					ResponseData.SetFromHttpResponse(HttpResponse);
 					ResponseData.PrintData();
@@ -326,7 +333,7 @@ void UKLingoNetworkSystem::RequestOcrExtract(const FString& ImagePath, FResponse
 			{
 				const int32 ResponseCode = ResPtr->GetResponseCode();
 
-				if (ResponseCode == 200)
+				if (IsResSuccess(ResponseCode))
 				{
 					ResponseData.SetFromHttpResponse(ResPtr);
 					ResponseData.PrintData();
@@ -392,7 +399,7 @@ void UKLingoNetworkSystem::RequestSpeakingQuestions(const FString& AudioPath, FR
 			{
 				const int32 ResponseCode = ResPtr->GetResponseCode();
 
-				if (ResponseCode == 200)
+				if (IsResSuccess(ResponseCode))
 				{
 					ResponseData.SetFromHttpResponse(ResPtr);
 					ResponseData.PrintData();

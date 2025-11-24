@@ -124,6 +124,8 @@ private:
 
 	/// @brief 요청 타입에 맞는 로그 접두사를 반환합니다.
 	static const TCHAR* GetLogPrefix(ENetworkLogType InLogType);
+
+	static bool IsResSuccess(const int InCode);
 	
 	/// @brief 네트워크 처리 대기 카운트를 갱신하고 UI에 통보합니다.
 	/// @param Value [in] 증감할 값입니다.
