@@ -101,6 +101,12 @@ public: // Control Interface
 	void Cmd_RecordEnd() override;
 
 public:
+	/// @brief 게임 이벤트 메시지를 수신합니다.
+	/// @param Message [in] 수신된 이벤트 메시지
+	UFUNCTION(BlueprintCallable, Category="Event")
+	void OnGameMessage(const FString& Message);
+
+public:
 	// grab 시 들어올릴 위치
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category="Interaction")
 	USceneComponent* HoldPosition;

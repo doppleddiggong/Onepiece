@@ -29,8 +29,6 @@ public:
 	/// @brief 등록된 델리게이트를 정리하고 서브시스템을 종료합니다.
 	virtual void Deinitialize() override;
 
-
-
 	void RequestUserRegister(const FString& UserName, FResponseUserRegisterDelegate InDelegate);
 	void RequestUserToken(const FString& UserName, FResponseUserTokenDelegate InDelegate);
 	void RequestUserMe(FResponseUserMeDelegate InDelegate);
@@ -38,9 +36,9 @@ public:
 	/// @brief Scenario 데이터를 조회합니다.
 	/// @param Index [in] 시나리오 인덱스입니다.
 	/// @param Difficulty [in] 난이도입니다.
-	/// @param Lang [in] 언어 설정입니다 (1: 한국어).
+	/// @param Level [in] 레벨 설정입니다 (1: 한국어).
 	/// @param InDelegate [in] 응답 수신 시 호출될 델리게이트입니다.
-	void RequestScenario(int32 Index, int32 Difficulty, int32 Lang, FResponseScenarioDelegate InDelegate);
+	void RequestScenario(int32 Index, int32 Difficulty, int32 Level, FResponseScenarioDelegate InDelegate);
 
 	/// @brief 이미지에서 OCR로 텍스트를 추출합니다.
 	/// @param ImagePath [in] 이미지 파일 경로입니다.

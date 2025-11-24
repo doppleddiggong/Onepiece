@@ -11,6 +11,10 @@ ALingoGameState::ALingoGameState()
 	CurrentMissionIndex = 0;
 	MissionTimeRemaining = 0.f;
 	MissionTimeLimit = 300.f;
+
+	ScenarioIndex = 1;
+	ScenarioStageIndex = 1;
+	ScenarioLevel = 1;
 }
 
 void ALingoGameState::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
@@ -21,6 +25,12 @@ void ALingoGameState::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutL
 	DOREPLIFETIME(ALingoGameState, CurrentMissionIndex);
 	DOREPLIFETIME(ALingoGameState, MissionTimeRemaining);
 	DOREPLIFETIME(ALingoGameState, MissionTimeLimit);
+
+
+	DOREPLIFETIME(ALingoGameState, ScenarioIndex);
+	DOREPLIFETIME(ALingoGameState, ScenarioStageIndex);
+	DOREPLIFETIME(ALingoGameState, ScenarioLevel);
+	DOREPLIFETIME(ALingoGameState, CurrentScenarioData);
 }
 
 void ALingoGameState::OnRep_CurrentPhase()

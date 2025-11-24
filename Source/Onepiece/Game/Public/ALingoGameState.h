@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/GameState.h"
 #include "ALingoPlayerState.h"
+#include "NetworkData.h"
 #include "ALingoGameState.generated.h"
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnPhaseChanged, EGamePhase, NewPhase);
@@ -57,5 +58,21 @@ public:
 	// Timer 형식
 	UFUNCTION(BlueprintCallable, Category = "Mission")
 	FString GetFormattedTimer() const;
-	
+
+
+	//--------------------------------------------------------------//
+	// 시나리오 ID
+	UPROPERTY(Replicated, BlueprintReadOnly, Category = "Scenario")
+	int32 ScenarioIndex = 1;
+	// 스테이지 ID
+	UPROPERTY(Replicated, BlueprintReadOnly, Category = "Scenario")
+	int32 ScenarioStageIndex = 1;
+	// 레벨(난이도)
+	UPROPERTY(Replicated, BlueprintReadOnly, Category = "Scenario")
+	int32 ScenarioLevel = 1;
+
+	/// @brief 서버로부터 받은 시나리오 데이터 전체 (모든 클라이언트에 복제됨)
+	UPROPERTY(Replicated, BlueprintReadOnly, Category = "Scenario")
+	FResponseScenario CurrentScenarioData;
+	//--------------------------------------------------------------//
 };

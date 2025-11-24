@@ -22,6 +22,7 @@
 #include "GameFramework/SpringArmComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Net/UnrealNetwork.h"
+#include "Onepiece/Onepiece.h"
 
 APlayerActor::APlayerActor()
 {
@@ -230,4 +231,14 @@ void APlayerActor::Cmd_Landing_Implementation()
 {
 	FHitResult HitResult;
 	FlySystem->OnLand(HitResult);
+}
+
+void APlayerActor::OnGameMessage(const FString& Message)
+{
+	PRINT_STRING(TEXT("Event Received: %s"), *Message);
+
+	if( Message == GameMessage::ScenarioStage1Start )
+	{
+		
+	}
 }
