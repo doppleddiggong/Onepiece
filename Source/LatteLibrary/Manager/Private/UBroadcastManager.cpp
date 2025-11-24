@@ -59,3 +59,8 @@ void UBroadcastManager::SendUserNameChanged(const FString& UserName)
 {
 	OnUpdateUserName.Broadcast(UserName);
 }
+
+void UBroadcastManager::SendMissionTimerStateChanged(bool bIsActive)
+{
+	OnMissionTimerStateChanged.Broadcast(bIsActive);
+}

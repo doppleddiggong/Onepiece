@@ -18,6 +18,9 @@ class ONEPIECE_API UMainWidget : public UUserWidget
 public:
 	UMainWidget(const FObjectInitializer& ObjectInitializer);
 
+	void StartMissionTimer();
+	void StopMissionTimer();
+	
 protected:
 	/// @brief 위젯 초기화
 	virtual void NativeConstruct() override;
@@ -41,4 +44,8 @@ protected:
 
 	/// @brief 타이머 텍스트를 업데이트합니다.
 	void UpdateTimerDisplay();
+
+	/// @brief 미션 타이머 상태 변경 핸들러
+	UFUNCTION()
+	void OnMissionTimerStateChanged(bool bIsActive);
 };

@@ -15,6 +15,7 @@
 #include "GameLogging.h"
 #include "Macro.h"
 #include "InputCoreTypes.h"
+#include "UDialogManager.h"
 #include "UVoiceConversationSystem.h"
 #include "UInteractionSystem.h"
 
@@ -74,12 +75,27 @@ void APlayerActor::BeginPlay()
 
 	// 로컬 플레이어 컨트롤러인 경우에만 UI 생성
 	if (IsLocallyControlled())
-	{
 		CreateMainWidget();
-	}
 
 	// --- Architecture Demo Start ---
 	PRINTLOG( TEXT("APlayerActor: Setting up one-way dependency demo."));
+}
+
+
+void APlayerActor::CreateMainWidget()
+{
+	if (!MainWidgetClass)
+	{
+		PRINTLOG(TEXT("[PlayerActor] MainWidgetClass is not set!"));
+		return;
+	}
+
+	if (APlayerController* PC = Cast<APlayerController>(GetController()))
+	{
+		MainWidget = CreateWidget<UMainWidget>(PC, MainWidgetClass);
+		if (MainWidget)
+			MainWidget->AddToViewport();
+	}
 }
 
 
@@ -251,31 +267,7 @@ void APlayerActor::Cmd_Landing_Implementation()
 void APlayerActor::OnGameMessage(const FString& Message)
 {
 	PRINT_STRING(TEXT("Event Received: %s"), *Message);
-}
 
-void APlayerActor::CreateMainWidget()
-{
-	if (!MainWidgetClass)
-	{
-		PRINTLOG(TEXT("[PlayerActor] MainWidgetClass is not set!"));
-		return;
-	}
-
-	if (APlayerController* PC = Cast<APlayerController>(GetController()))
-	{
-		MainWidget = CreateWidget<UMainWidget>(PC, MainWidgetClass);
-		if (MainWidget)
-		{
-			MainWidget->AddToViewport();
-			PRINTLOG(TEXT("[PlayerActor] MainWidget created and added to viewport"));
-		}
-		else
-		{
-			PRINTLOG(TEXT("[PlayerActor] Failed to create MainWidget"));
-		}
-	}
-	else
-	{
-		PRINTLOG(TEXT("[PlayerActor] PlayerController not found"));
-	}
+	// 퀘스트 시작이 뜨면 메세지 팝업을 띄우자
+	UDialogManager::Get(GetWorld())->ShowToast(Message);
 }

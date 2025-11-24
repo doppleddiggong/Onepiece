@@ -7,6 +7,7 @@
 #include "APlayerActor.h"
 #include "GameLogging.h"
 #include "ULingoGameHelper.h"
+#include "UBroadcastManager.h"
 #include "GameFramework/PlayerController.h"
 #include "Engine/World.h"
 
@@ -69,6 +70,12 @@ void ALingoGameState::StartMissionTimer(float TimeLimit)
 	RemainMissionTime = TimeLimit;
 	bIsTimerActive = true;
 
+	// BroadcastManager를 통해 타이머 시작 알림
+	if (UBroadcastManager* BroadcastManager = UBroadcastManager::Get(GetWorld()))
+	{
+		BroadcastManager->SendMissionTimerStateChanged(true);
+	}
+
 	PRINTLOG( TEXT("[GameState] Mission Timer Started - %.0f seconds"), TimeLimit);
 }
 
@@ -78,6 +85,13 @@ void ALingoGameState::StopMissionTimer()
 		return;
 
 	bIsTimerActive = false;
+
+	// BroadcastManager를 통해 타이머 중지 알림
+	if (UBroadcastManager* BroadcastManager = UBroadcastManager::Get(GetWorld()))
+	{
+		BroadcastManager->SendMissionTimerStateChanged(false);
+	}
+
 	PRINTLOG( TEXT("[GameState] Mission Timer Stopped"));
 }
 
@@ -87,6 +101,13 @@ void ALingoGameState::OnMissionTimerEnd()
 		return;
 
 	bIsTimerActive = false;
+
+	// BroadcastManager를 통해 타이머 종료 알림
+	if (UBroadcastManager* BroadcastManager = UBroadcastManager::Get(GetWorld()))
+	{
+		BroadcastManager->SendMissionTimerStateChanged(false);
+	}
+
 	auto EndMessage = ULingoGameHelper::GetStageEndMessage(StageIndex);
 
 	PRINTLOG( TEXT("[GameState] Mission Timer Ended - Sending: %s"), *EndMessage);

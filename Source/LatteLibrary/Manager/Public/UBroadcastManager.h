@@ -103,4 +103,12 @@ public:
 	UFUNCTION(BlueprintCallable, Category="Events")
 	void SendUserNameChanged(const FString& UserName);
 
+
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnMissionTimerStateChanged, bool, bIsActive);
+	UPROPERTY(BlueprintAssignable, Category="Events")
+	FOnMissionTimerStateChanged OnMissionTimerStateChanged;
+
+	UFUNCTION(BlueprintCallable, Category="Events")
+	void SendMissionTimerStateChanged(bool bIsActive);
+
 };

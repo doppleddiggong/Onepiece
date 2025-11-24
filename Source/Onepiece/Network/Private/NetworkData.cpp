@@ -196,8 +196,18 @@ void FResponseScenario::SetFromHttpResponse(const TSharedPtr<IHttpResponse, ESPM
 
 void FResponseScenario::PrintData() const
 {
-	NETWORK_LOG( TEXT("[Scenario] Response - Index: %d, Difficulty: %d, Targets: %d, Correct: %d"),
-		index, dificulity, target_data.Num(), correct_answer_index);
+	// NETWORK_LOG( TEXT("[Scenario] Response - Index: %d, Difficulty: %d, Targets: %d, Correct: %d"),
+	// 	index, dificulity, target_data.Num(), correct_answer_index);
+
+	FString OutputString;
+	FJsonObjectConverter::UStructToJsonObjectString(
+		*this,
+		OutputString,
+		0,
+		0
+	);
+	NETWORK_LOG( TEXT("[RES] %s"), *OutputString);
+	
 }
 
 // =================================================================================

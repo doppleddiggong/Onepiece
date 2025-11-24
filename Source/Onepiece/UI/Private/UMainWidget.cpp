@@ -9,12 +9,23 @@
 #include "UPlayTimer.h"
 #include "UStateWidget.h"
 #include "ALingoGameState.h"
+#include "UBroadcastManager.h"
 #include "GameLogging.h"
 #include "ULingoGameHelper.h"
 #include "Engine/World.h"
 
 UMainWidget::UMainWidget(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer)
 {
+}
+
+void UMainWidget::StartMissionTimer()
+{
+	PlayTimer->SetVisibility(ESlateVisibility::Visible);
+}
+
+void UMainWidget::StopMissionTimer()
+{
+	PlayTimer->SetVisibility(ESlateVisibility::Hidden);
 }
 
 void UMainWidget::NativeConstruct()
@@ -36,8 +47,16 @@ void UMainWidget::NativeConstruct()
 		}
 	}
 
-	PlayTimer->SetVisibility(ESlateVisibility::Hidden);
+	// BroadcastManager 이벤트 구독
+	if (UBroadcastManager* BroadcastManager = UBroadcastManager::Get(GetWorld()))
+	{
+		BroadcastManager->OnMissionTimerStateChanged.AddDynamic(this, &UMainWidget::OnMissionTimerStateChanged);
+		PRINTLOG(TEXT("[MainWidget] Subscribed to OnMissionTimerStateChanged"));
+	}
+
 	StateWidget->InitWidget();
+
+	StopMissionTimer();
 }
 
 void UMainWidget::NativeTick(const FGeometry& MyGeometry, float InDeltaTime)
@@ -55,4 +74,18 @@ void UMainWidget::UpdateTimerDisplay()
 	// GameState의 시간을 가져와서 PlayTimer 업데이트
 	FString TimeText = ULingoGameHelper::GetFormatTimer(CachedGameState->RemainMissionTime);
 	PlayTimer->UpdateTimerText(TimeText);
+}
+
+void UMainWidget::OnMissionTimerStateChanged(bool bIsActive)
+{
+	PRINTLOG(TEXT("[MainWidget] Mission Timer State Changed - bIsActive: %s"), bIsActive ? TEXT("true") : TEXT("false"));
+
+	if (bIsActive)
+	{
+		StartMissionTimer();
+	}
+	else
+	{
+		StopMissionTimer();
+	}
 }
