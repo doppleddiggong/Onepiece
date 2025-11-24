@@ -18,6 +18,16 @@ UInteractableComponent::UInteractableComponent()
 	bOriginalSimulatePhysics = false;
 	OriginalCollisionType = ECollisionEnabled::NoCollision;
 
+	// 생성자에서 생성해서 자동 복제
+	DetectionRange = CreateDefaultSubobject<UBoxComponent>(TEXT("DetectionRange"));
+	if (DetectionRange)
+	{
+		DetectionRange->SetBoxExtent(FVector(150.0f)); // DetectionDistance 기본값                                                                 
+		DetectionRange->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
+		DetectionRange->SetCollisionResponseToAllChannels(ECR_Ignore);
+		DetectionRange->SetCollisionResponseToChannel(ECC_Pawn, ECR_Overlap);
+	}
+	
 	SetIsReplicatedByDefault(true);
 }
 
@@ -32,39 +42,35 @@ void UInteractableComponent::BeginPlay()
 		return;
 	}
 
-	// DetectionRange 자동 생성 (Owner Actor에 부착)
-	if (!DetectionRange)
+	this->InitDetectionRange();
+}
+
+void UInteractableComponent::InitDetectionRange()
+{
+	// 1. 컴포넌트 등록                                                                                                                                         
+	if (!DetectionRange->IsRegistered())
 	{
-		DetectionRange = NewObject<UBoxComponent>(Owner, UBoxComponent::StaticClass(), TEXT("DetectionRange"));
-		if (DetectionRange)
-		{
-			DetectionRange->RegisterComponent();
-			DetectionRange->AttachToComponent(Owner->GetRootComponent(), FAttachmentTransformRules::KeepRelativeTransform);
-			
-			// DetectionDistance 기반으로 크기 설정
-			FVector BoxExtent(DetectionDistance, DetectionDistance, DetectionDistance);
-			DetectionRange->SetBoxExtent(BoxExtent);
-			
-			// Overlap 이벤트만 감지
-			DetectionRange->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
-			DetectionRange->SetCollisionResponseToAllChannels(ECR_Ignore);
-			DetectionRange->SetCollisionResponseToChannel(ECC_Pawn, ECR_Overlap);
-			
-			// Overlap 콜백 바인딩
-			DetectionRange->OnComponentBeginOverlap.AddDynamic(this, &UInteractableComponent::OnDetectionBeginOverlap);
-			DetectionRange->OnComponentEndOverlap.AddDynamic(this, &UInteractableComponent::OnDetectionEndOverlap);
-			
-			PRINTLOG( TEXT("UInteractableComponent: DetectionRange created for %s"), *Owner->GetName());
-		}
-		else
-		{
-			PRINTLOG( TEXT("UInteractableComponent: Failed to create DetectionRange for %s"), *Owner->GetName());
-		}
+		DetectionRange->RegisterComponent();
 	}
-	else
+
+	AActor* Owner = GetOwner();
+	
+	// 2. Owner의 RootComponent에 부착                                                                                                                                         
+	if (!DetectionRange->IsAttachedTo(Owner->GetRootComponent()))
 	{
-		PRINTLOG( TEXT("UInteractableComponent: DetectionRange already exists for %s"), *Owner->GetName());
+		DetectionRange->AttachToComponent(
+			Owner->GetRootComponent(),
+			FAttachmentTransformRules::KeepRelativeTransform
+		);
 	}
+	
+	// BoxExtent 설정 업데이트                                                                                                         
+	FVector BoxExtent(DetectionDistance, DetectionDistance, DetectionDistance);
+	DetectionRange->SetBoxExtent(BoxExtent);
+
+	// Overlap 콜백 바인딩                                                                                                                     
+	DetectionRange->OnComponentBeginOverlap.AddDynamic(this, &UInteractableComponent::OnDetectionBeginOverlap);
+	DetectionRange->OnComponentEndOverlap.AddDynamic(this, &UInteractableComponent::OnDetectionEndOverlap);
 }
 
 void UInteractableComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
@@ -139,20 +145,32 @@ void UInteractableComponent::OnRep_HoldingOwner()
 	}
 }
 
-void UInteractableComponent::PickUp()
+void UInteractableComponent::PickUp(AActor* NewHoldingOwner)
 {
-	GetOwner()->SetOwner(HoldingOwner);
-	// 클라에서 이게 실행이 안되는데?
-	Server_PickUp();
+	if (!NewHoldingOwner)
+	{
+		PRINTLOG( TEXT("InteractableComponent::PickUp - NewHoldingOwner is null"));
+		return;
+	}
+
+	Server_PickUp(NewHoldingOwner);
 }
 
-void UInteractableComponent::Server_PickUp_Implementation()
+void UInteractableComponent::Server_PickUp_Implementation(AActor* NewHoldingOwner)
 {
 	if (bIsPickedUp) return;
+
+	HoldingOwner = NewHoldingOwner;
+	if (!HoldingOwner)
+	{
+		PRINTLOG( TEXT("InteractableComponent::PickUp - HoldingOwner is null"));
+		return;
+	}
 	
 	// Owner actor의 PrimitiveComponent 찾기
 	UPrimitiveComponent* PrimComp = GetOwnerPrimitiveComponent();
-	if (!PrimComp) return;
+	if (!PrimComp)
+		return;
 
 	// 원래 상태 저장
 	// Drop 시 원래 상태로 되돌리기 위함
@@ -162,10 +180,7 @@ void UInteractableComponent::Server_PickUp_Implementation()
 	// pick up
 	PrimComp->SetSimulatePhysics(false);
 	
-	if (HoldingOwner->HasAuthority())
-	{
-		OnRep_HoldingOwner();
-	}
+	OnRep_HoldingOwner();
 
 	bIsPickedUp = true;
 	PRINTLOG( TEXT("InteractableComponent::PickUp - %s picked up"), *GetOwner()->GetName());
@@ -174,8 +189,6 @@ void UInteractableComponent::Server_PickUp_Implementation()
 void UInteractableComponent::Drop()
 {
 	Server_Drop();
-
-	GetOwner()->SetOwner(nullptr);
 }
 
 void UInteractableComponent::Server_Drop_Implementation()
@@ -183,10 +196,7 @@ void UInteractableComponent::Server_Drop_Implementation()
 	if (!bIsPickedUp) return;
 
 	// detach
-	if (HoldingOwner->HasAuthority())
-	{
-		GetOwner()->DetachFromActor(FDetachmentTransformRules::KeepWorldTransform);
-	}
+	GetOwner()->DetachFromActor(FDetachmentTransformRules::KeepWorldTransform);
 
 	UPrimitiveComponent* PrimComp = GetOwnerPrimitiveComponent();
 	if (PrimComp)
@@ -204,7 +214,8 @@ void UInteractableComponent::Server_Drop_Implementation()
 UPrimitiveComponent* UInteractableComponent::GetOwnerPrimitiveComponent() const
 {
 	AActor* Owner = GetOwner();
-	if (!Owner) return nullptr;
+	if (!Owner)
+		return nullptr;
 
 	UPrimitiveComponent* PrimComp = Cast<UPrimitiveComponent>(Owner->GetRootComponent());
 

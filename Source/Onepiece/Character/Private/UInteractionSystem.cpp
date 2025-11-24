@@ -11,7 +11,6 @@
 #include "InteractableComponent.h"
 #include "Camera/PlayerCameraManager.h"
 #include "GameFramework/PlayerController.h"
-#include "Kismet/GameplayStatics.h"
 
 UInteractionSystem::UInteractionSystem()
 {
@@ -74,6 +73,8 @@ void UInteractionSystem::TryPickUp()
 	if (HoldingInteractable)
 		return;
 
+	// CurrentTarget = DetectInteractableTarget();
+	
 	// 타겟이 PickUp 타입인지 확인
 	if (!CurrentTarget || CurrentTarget->InteractionType != EInteractionType::PickUp)
 		return;
@@ -96,16 +97,8 @@ void UInteractionSystem::TryPickUp()
 	// 로그 출력 (PickUp 호출 전)
 	PRINTLOG( TEXT("UInteractionSystem: Picking up %s"), *TargetOwner->GetName());
 
-	// 중요: PickUp() 호출 전에 HoldingInteractable에 저장
-	// PickUp() 과정에서 DetachFromActor로 인해 Overlap이 해제되고
-	// OnDetectionEndOverlap -> UnregisterInteractable 호출로 CurrentTarget이 nullptr이 될 수 있음
 	HoldingInteractable = CurrentTarget;
-
-	// PickUp 실행
-	HoldingInteractable->HoldingOwner = OwnerPlayer;
-	HoldingInteractable->PickUp();
-
-	// CurrentTarget은 PickUp 후 nullptr일 수 있으므로 사용하지 않음
+	HoldingInteractable->PickUp(OwnerPlayer);
 }
 
 void UInteractionSystem::TryDrop()
@@ -129,7 +122,6 @@ void UInteractionSystem::TryDrop()
 	}
 	
 	HoldingInteractable->Drop();
-	HoldingInteractable->HoldingOwner = nullptr;
 	HoldingInteractable = nullptr;
 
 	PRINTLOG( TEXT("UInteractionSystem: Drop complete"));
@@ -147,17 +139,6 @@ void UInteractionSystem::RegisterInteractable(UInteractableComponent* Interactab
 		return;
 
 	NearbyInteractables.Add(Interactable);
-	
-	// 안전한 로그 출력
-	AActor* Owner = Interactable->GetOwner();
-	if (Owner && IsValid(Owner))
-	{
-		PRINTLOG( TEXT("UInteractionSystem: Registered %s"), *Owner->GetName());
-	}
-	else
-	{
-		PRINTLOG( TEXT("UInteractionSystem: Registered component with null/invalid owner"));
-	}
 }
 
 void UInteractionSystem::UnregisterInteractable(UInteractableComponent* Interactable)
@@ -171,24 +152,6 @@ void UInteractionSystem::UnregisterInteractable(UInteractableComponent* Interact
 	if (CurrentTarget == Interactable)
 	{
 		CurrentTarget = nullptr;
-	}
-
-	// 안전한 로그 출력
-	if (IsValid(Interactable))
-	{
-		AActor* Owner = Interactable->GetOwner();
-		if (Owner && IsValid(Owner))
-		{
-			PRINTLOG( TEXT("UInteractionSystem: Unregistered %s"), *Owner->GetName());
-		}
-		else
-		{
-			PRINTLOG( TEXT("UInteractionSystem: Unregistered component with null/invalid owner"));
-		}
-	}
-	else
-	{
-		PRINTLOG( TEXT("UInteractionSystem: Unregistered invalid component"));
 	}
 }
 
@@ -236,22 +199,16 @@ bool UInteractionSystem::PerformCenterLineTrace(FHitResult& OutHit)
 	if (!PC)
 		return false;
 
-	// 뷰포트 크기 가져오기
-	int32 ViewportSizeX, ViewportSizeY;
-	PC->GetViewportSize(ViewportSizeX, ViewportSizeY);
-
-	// 화면 중앙 픽셀 좌표
-	float ScreenX = ViewportSizeX * 0.5f;
-	float ScreenY = ViewportSizeY * 0.5f;
-
-	// 화면 좌표에서 월드 좌표와 방향 계산
-	FVector WorldLocation, WorldDirection;
-	if (!PC->DeprojectScreenPositionToWorld(ScreenX, ScreenY, WorldLocation, WorldDirection))
+	APlayerCameraManager* CameraManager = PC->PlayerCameraManager;
+	if (!CameraManager)
 		return false;
 
-	// 레이 트레이스 시작/끝 지점
-	FVector TraceStart = WorldLocation;
-	FVector TraceEnd = TraceStart + (WorldDirection * InteractionDistance);
+	FVector CameraLocation = CameraManager->GetCameraLocation();
+	FVector CameraForward = CameraManager->GetCameraRotation().Vector();
+
+	// 레이 트레이스 시작/끝 지점                                                                                                                                                    
+	FVector TraceStart = CameraLocation;
+	FVector TraceEnd = TraceStart + (CameraForward * InteractionDistance);
 
 	// Ray trace 실행
 	bool bHit = GetWorld()->LineTraceSingleByChannel(

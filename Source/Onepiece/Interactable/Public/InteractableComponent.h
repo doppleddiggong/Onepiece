@@ -40,6 +40,9 @@ protected:
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 	virtual void GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const override;
 
+private:
+	void InitDetectionRange();
+	
 public:
 	// ========================================
 	// 상호작용 설정
@@ -92,10 +95,10 @@ public:
 	
 	// 물체 집어올림
 	UFUNCTION(BlueprintCallable, Category = "Interaction")
-	void PickUp();
+	void PickUp(class AActor* NewHoldingOwner);
 
 	UFUNCTION(Server, Reliable)
-	void Server_PickUp();
+	void Server_PickUp(class AActor* NewHoldingOwner);
 	
 	// 물체 놓음
 	UFUNCTION(BlueprintCallable, Category = "Interaction")
