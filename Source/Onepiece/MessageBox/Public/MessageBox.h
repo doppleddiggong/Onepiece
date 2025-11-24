@@ -9,6 +9,8 @@
 /**
  * 
  */
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnUserNameRegister, const FString&, UserInput);
+
 UCLASS()
 class ONEPIECE_API UMessageBox : public UUserWidget
 {
@@ -34,6 +36,9 @@ public:
 	class UButton* Btn_Cancel;
 
 	UPROPERTY(meta = (BindWidget))
+	class UTextBlock* Txt_Name;
+	
+	UPROPERTY(meta = (BindWidget))
 	class UEditableTextBox* Edt_Name;
 
 	UFUNCTION()
@@ -46,4 +51,13 @@ public:
 	// Set Text
 	void SetTitle(FString InTitle);
 	void SetDescription(FString InDescription);
+
+public:
+	// Set Visibility
+	// Name 입력 부분 표시
+	void SetNameFieldVisibility(bool InVisibility);
+	
+public:
+	// Deligates
+	FOnUserNameRegister OnUserNameRegister;
 };

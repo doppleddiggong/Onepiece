@@ -5,6 +5,7 @@
 
 #include "GameDelegates.h"
 #include "Components/Button.h"
+#include "Components/EditableTextBox.h"
 #include "Components/TextBlock.h"
 
 void UMessageBox::NativeConstruct()
@@ -29,8 +30,9 @@ void UMessageBox::NativeConstruct()
 
 void UMessageBox::OnOkPressed()
 {
-	//Edt_Name->
-
+	FString UserName = Edt_Name->GetText().ToString();
+	OnUserNameRegister.Broadcast(UserName);
+	
 	RemoveFromParent();
 }
 
@@ -47,4 +49,12 @@ void UMessageBox::SetTitle(FString InTitle)
 void UMessageBox::SetDescription(FString InDescription)
 {
 	Txt_Description->SetText(FText::FromString(InDescription));
+}
+
+void UMessageBox::SetNameFieldVisibility(bool InVisibility)
+{
+	ESlateVisibility NewVisibility = InVisibility ? ESlateVisibility::Visible : ESlateVisibility::Collapsed;
+	
+	Txt_Name->SetVisibility(NewVisibility);
+	Edt_Name->SetVisibility(NewVisibility);
 }

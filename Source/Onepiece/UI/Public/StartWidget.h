@@ -29,11 +29,4 @@ public:
 	
 	UFUNCTION()
 	void OnRegistPressed();
-
-public:
-	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "UI")
-	TSubclassOf<UUserWidget> MessageBoxClass;
-
-	UPROPERTY()
-	class UMessageBox* MessageBox;
 };
