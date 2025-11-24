@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "NetworkData.h"
 #include "Blueprint/UserWidget.h"
 #include "StartWidget.generated.h"
 
@@ -23,7 +24,7 @@ public:
 
 	UPROPERTY(meta = (BindWidget))
 	class UButton* Btn_Regist;
-
+	
 	UFUNCTION()
 	void OnStartPressed();
 	
