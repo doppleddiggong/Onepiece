@@ -5,6 +5,7 @@
 
 #include "UHoverButton.h"
 #include "UPopupManager.h"
+#include "UPopup_InputMsg.h"
 
 void UStartWidget::NativeConstruct()
 {
@@ -23,17 +24,22 @@ void UStartWidget::NativeConstruct()
 
 void UStartWidget::OnStartPressed()
 {
-	if (auto MB = UPopupManager::Get(GetWorld()))
+	if (const auto PopupMgr = UPopupManager::Get(GetWorld()))
 	{
-		MB->OpenPopup(EPopupType::Login);
+		if (const auto Popup = Cast<UPopup_InputMsg>(PopupMgr->ShowPopup(EPopupType::InputMsg_Login)))
+		{
+			Popup->InitPopup(EPopupType::InputMsg_Login);
+		}
 	}
 }
 
 void UStartWidget::OnRegistPressed()
 {
-	if (auto MB = UPopupManager::Get(GetWorld()))
+	if (const auto PopupMgr = UPopupManager::Get(GetWorld()))
 	{
-		MB->OpenPopup(EPopupType::Register);
+		if (const auto Popup = Cast<UPopup_InputMsg>(PopupMgr->ShowPopup(EPopupType::InputMsg_Register)))
+		{
+			Popup->InitPopup(EPopupType::InputMsg_Register);
+		}
 	}
 }
-

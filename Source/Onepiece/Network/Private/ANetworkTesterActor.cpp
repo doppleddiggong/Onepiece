@@ -9,6 +9,7 @@
 #include "GameLogging.h"
 #include "NetworkData.h"
 #include "UDialogManager.h"
+#include "UPopupManager.h"
 #include "Engine/Engine.h"
 
 ANetworkTesterActor::ANetworkTesterActor()
@@ -16,10 +17,36 @@ ANetworkTesterActor::ANetworkTesterActor()
     PrimaryActorTick.bCanEverTick = false;
 }
 
-void ANetworkTesterActor::SendToastMessage()
+void ANetworkTesterActor::ToastMsg()
 {
     UDialogManager::Get(GetWorld())->ShowToast(TEXT("토스트 메세지 샘플"));
 }
+
+void ANetworkTesterActor::OKCancelMsgBox()
+{
+    UPopupManager::Get(GetWorld())->ShowMsgBox("알림", "OK_CANCEL 설명문",
+        EMsgBoxType::OK_CANCEL,
+        FOnMsgBoxOkDelegate::CreateUObject(this, &ANetworkTesterActor::OnOK),
+        FOnMsgBoxCancelDelegate::CreateUObject(this, &ANetworkTesterActor::OnCancel));
+}
+
+void ANetworkTesterActor::OKMsgBox()
+{
+    UPopupManager::Get(GetWorld())->ShowMsgBox("알림", "OK 설명문",
+        EMsgBoxType::OK,
+        FOnMsgBoxOkDelegate::CreateUObject(this, &ANetworkTesterActor::OnOK));
+}
+
+void ANetworkTesterActor::OnOK()
+{
+    PRINT_STRING(TEXT("I'M OK"));
+}
+
+void ANetworkTesterActor::OnCancel()
+{
+    PRINT_STRING(TEXT("I'M Cancel"));
+}
+
 
 // =============================================================================
 // User API Tests

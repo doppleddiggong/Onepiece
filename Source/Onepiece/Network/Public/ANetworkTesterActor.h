@@ -19,9 +19,16 @@ public:
     ANetworkTesterActor();
 
 public:
-    UFUNCTION(BlueprintCallable, CallInEditor, Category = "TEST|ToastMessage")
-    void SendToastMessage();
+    UFUNCTION(BlueprintCallable, CallInEditor, Category = "TEST|Message")
+    void ToastMsg();
+    UFUNCTION(BlueprintCallable, CallInEditor, Category = "TEST|Message")
+    void OKCancelMsgBox();
+    UFUNCTION(BlueprintCallable, CallInEditor, Category = "TEST|Message")
+    void OKMsgBox();
 
+    void OnOK();
+    void OnCancel();
+    
     
     // =============================================================================
     // User API Tests
