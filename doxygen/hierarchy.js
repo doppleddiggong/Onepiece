@@ -3,6 +3,7 @@ var hierarchy =
     [ "AActor", null, [
       [ "AContactTrigger", "classAContactTrigger.html", null ],
       [ "AConveyorBelt", "classAConveyorBelt.html", null ],
+      [ "AConveyorButton", "classAConveyorButton.html", null ],
       [ "ADoor", "classADoor.html", null ],
       [ "AGate", "classAGate.html", null ],
       [ "AListActorManager", "classAListActorManager.html", null ],
@@ -85,6 +86,7 @@ var hierarchy =
     ] ],
     [ "ISequenceActivatable", "classISequenceActivatable.html", null ],
     [ "UAnimInstance", null, [
+      [ "UConveryorButtonAnimInstance", "classUConveryorButtonAnimInstance.html", null ],
       [ "URobotAnimInstance", "classURobotAnimInstance.html", null ],
       [ "UTweenAnimInstance", "classUTweenAnimInstance.html", null ]
     ] ],

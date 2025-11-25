@@ -2,6 +2,7 @@ var annotated_dup =
 [
     [ "AContactTrigger", "classAContactTrigger.html", "classAContactTrigger" ],
     [ "AConveyorBelt", "classAConveyorBelt.html", "classAConveyorBelt" ],
+    [ "AConveyorButton", "classAConveyorButton.html", "classAConveyorButton" ],
     [ "ADoor", "classADoor.html", "classADoor" ],
     [ "AGate", "classAGate.html", "classAGate" ],
     [ "ALingoGameMode", "classALingoGameMode.html", "classALingoGameMode" ],
@@ -68,6 +69,7 @@ var annotated_dup =
     [ "UCharacterData", "classUCharacterData.html", "classUCharacterData" ],
     [ "UCommonFunctionLibrary", "classUCommonFunctionLibrary.html", "classUCommonFunctionLibrary" ],
     [ "UControllable", "classUControllable.html", null ],
+    [ "UConveryorButtonAnimInstance", "classUConveryorButtonAnimInstance.html", "classUConveryorButtonAnimInstance" ],
     [ "UCustomNetworkSettings", "classUCustomNetworkSettings.html", "classUCustomNetworkSettings" ],
     [ "UDelayTaskManager", "classUDelayTaskManager.html", "classUDelayTaskManager" ],
     [ "UDialogManager", "classUDialogManager.html", "classUDialogManager" ],
