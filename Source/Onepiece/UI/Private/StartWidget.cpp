@@ -3,12 +3,8 @@
 
 #include "StartWidget.h"
 
-#include "GameLogging.h"
 #include "UHoverButton.h"
-#include "UKLingoNetworkSystem.h"
-#include "Components/Button.h"
-// #include "Onepiece/MessageBox/Public/UPopupInputMsg.h"
-// #include "Onepiece/MessageBox/Public/UMessageBoxManager.h"
+#include "UPopupManager.h"
 
 void UStartWidget::NativeConstruct()
 {
@@ -27,19 +23,17 @@ void UStartWidget::NativeConstruct()
 
 void UStartWidget::OnStartPressed()
 {
-	// 로그인
-	// if (auto MB = UMessageBoxManager::Get(GetWorld()))
-	// {
-	// 	MB->ShowMessageBox(EPopupType::LogIn,"Login", "Please enter your registered name below.");
-	// }
+	if (auto MB = UPopupManager::Get(GetWorld()))
+	{
+		MB->OpenPopup(EPopupType::Login);
+	}
 }
 
 void UStartWidget::OnRegistPressed()
 {
-	// 가입
-	// if (auto MB = UMessageBoxManager::Get(GetWorld()))
-	// {
-	// 	MB->ShowMessageBox(EPopupType::Register,"Registeration", "Please enter your name below.");
-	// }
+	if (auto MB = UPopupManager::Get(GetWorld()))
+	{
+		MB->OpenPopup(EPopupType::Register);
+	}
 }
 
