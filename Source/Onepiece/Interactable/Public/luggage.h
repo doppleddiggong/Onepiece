@@ -55,11 +55,11 @@ public:
 
 	/// @brief 캐리어의 심볼 (문제1 정답)
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Quest")
-	FString Symbol;
+	FString Target1;
 
 	/// @brief 캐리어의 색상 (문제2 정답)
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Quest")
-	FString Color;
+	FString Target2;
 
 	/// @brief 플레이어가 캐리어를 선택했을 때 호출됩니다.
 	/// @param Interactor [in] 상호작용을 시도한 액터 (플레이어)

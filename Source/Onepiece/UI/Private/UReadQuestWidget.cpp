@@ -100,9 +100,9 @@ TArray<FString> UReadQuestWidget::GetUniqueSymbols() const
 	// target_data에서 symbol 필드만 추출하여 중복 제거
 	for (const FScenarioTargetData& TargetData : CachedGameState->CurScenarioData.target_data)
 	{
-		if (!TargetData.symbol.IsEmpty())
+		if (!TargetData.word1.code.IsEmpty())
 		{
-			UniqueSet.Add(TargetData.symbol);
+			UniqueSet.Add(TargetData.word1.code);
 		}
 	}
 
@@ -121,9 +121,9 @@ TArray<FString> UReadQuestWidget::GetUniqueColors() const
 	// target_data에서 color 필드만 추출하여 중복 제거
 	for (const FScenarioTargetData& TargetData : CachedGameState->CurScenarioData.target_data)
 	{
-		if (!TargetData.color.IsEmpty())
+		if (!TargetData.word2.code.IsEmpty())
 		{
-			UniqueSet.Add(TargetData.color);
+			UniqueSet.Add(TargetData.word2.code);
 		}
 	}
 

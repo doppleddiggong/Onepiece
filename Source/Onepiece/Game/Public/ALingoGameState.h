@@ -70,6 +70,7 @@ protected:
 	UPROPERTY(Replicated, BlueprintReadOnly, Category = "Scenario")
 	int32 ScenarioLevel = 1;
 
+public:
 	/// @brief 서버로부터 받은 시나리오 데이터 전체 (모든 클라이언트에 복제됨)
 	UPROPERTY(Replicated, BlueprintReadOnly, Category = "Scenario")
 	FResponseScenario CurScenarioData;

@@ -116,8 +116,8 @@ void ALingoGameMode::HandleCarrierSelection(APlayerState* Player, Aluggage* Carr
 	else
 	{
 		// 틀린 항목 확인
-		bool bSymbolCorrect = (LingoPlayerState->SelectedSymbol == Carrier->Symbol);
-		bool bColorCorrect = (LingoPlayerState->SelectedColor == Carrier->Color);
+		bool bSymbolCorrect = (LingoPlayerState->SelectedSymbol == Carrier->Target1);
+		bool bColorCorrect = (LingoPlayerState->SelectedColor == Carrier->Target2);
 
 		HandleWrongAnswer(LingoPlayerState, bSymbolCorrect, bColorCorrect);
 	}
@@ -128,12 +128,12 @@ bool ALingoGameMode::ValidateAnswer(ALingoPlayerState* Player, Aluggage* Carrier
 	if (!Player || !Carrier)
 		return false;
 
-	bool bSymbolCorrect = (Player->SelectedSymbol == Carrier->Symbol);
-	bool bColorCorrect = (Player->SelectedColor == Carrier->Color);
+	bool bSymbolCorrect = (Player->SelectedSymbol == Carrier->Target1);
+	bool bColorCorrect = (Player->SelectedColor == Carrier->Target2);
 
 	PRINTLOG(TEXT("[GameMode] ValidateAnswer - Symbol: %s vs %s (%s), Color: %s vs %s (%s)"),
-		*Player->SelectedSymbol, *Carrier->Symbol, bSymbolCorrect ? TEXT("Correct") : TEXT("Wrong"),
-		*Player->SelectedColor, *Carrier->Color, bColorCorrect ? TEXT("Correct") : TEXT("Wrong"));
+		*Player->SelectedSymbol, *Carrier->Target1, bSymbolCorrect ? TEXT("Correct") : TEXT("Wrong"),
+		*Player->SelectedColor, *Carrier->Target2, bColorCorrect ? TEXT("Correct") : TEXT("Wrong"));
 
 	return bSymbolCorrect && bColorCorrect;
 }

@@ -6,6 +6,7 @@
 #include "ALingoGameMode.h"
 #include "ALingoPlayerState.h"
 #include "GameLogging.h"
+#include "UGameDataManager.h"
 #include "Net/UnrealNetwork.h"
 #include "GameFramework/PlayerController.h"
 #include "Engine/World.h"
@@ -35,13 +36,14 @@ Aluggage::Aluggage()
 
 	// Replication
 	bReplicates = true;
-	SetReplicateMovement(true);
+
 }
 
 void Aluggage::BeginPlay()
 {
 	Super::BeginPlay();
 
+	SetReplicateMovement(true);
 }
 
 void Aluggage::Tick(float DeltaTime)
@@ -124,7 +126,7 @@ void Aluggage::OnInteract(AActor* Interactor)
 		return;
 	}
 
-	PRINTLOG(TEXT("[Luggage] OnInteract - Player selected luggage with Symbol: %s, Color: %s"), *Symbol, *Color);
+	PRINTLOG(TEXT("[Luggage] OnInteract - Player selected luggage with Target1: %s, Target2: %s"), *Target1, *Target2);
 
 	// 서버에 선택 알림
 	ServerNotifySelection(PS);
