@@ -164,8 +164,29 @@ void FResponseScenario::SetFromHttpResponse(const TSharedPtr<IHttpResponse, ESPM
 				if (TargetObj.IsValid())
 				{
 					FScenarioTargetData TargetItem;
-					TargetItem.symbol = TargetObj->GetStringField(TEXT("symbol"));
-					TargetItem.color = TargetObj->GetStringField(TEXT("color"));
+
+					// word1 파싱                                                                                                                                                                                                         
+					if (TargetObj->HasTypedField<EJson::Object>(TEXT("word1")))
+					{
+						TSharedPtr<FJsonObject> Word1Obj = TargetObj->GetObjectField(TEXT("word1"));
+						if (Word1Obj.IsValid())
+						{
+							TargetItem.word1.name = Word1Obj->GetStringField(TEXT("name"));
+							TargetItem.word1.code = Word1Obj->GetStringField(TEXT("code"));
+						}
+					}
+
+					// word2 파싱                                                                                                                                                           
+					if (TargetObj->HasTypedField<EJson::Object>(TEXT("word2")))
+					{
+						TSharedPtr<FJsonObject> Word2Obj = TargetObj->GetObjectField(TEXT("word2"));
+						if (Word2Obj.IsValid())
+						{
+							TargetItem.word2.name = Word2Obj->GetStringField(TEXT("name"));
+							TargetItem.word2.code = Word2Obj->GetStringField(TEXT("code"));
+						}
+					}
+
 					target_data.Add(TargetItem);
 				}
 			}

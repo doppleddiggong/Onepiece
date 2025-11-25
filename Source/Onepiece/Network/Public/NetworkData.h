@@ -422,6 +422,19 @@ struct FResponseUserMe
 // Scenario API Structures
 // =================================================================================
 
+/// @brief 단어 정보 구조체                                                                                                                                                                                                       
+USTRUCT(BlueprintType)
+struct FWordInfo                                                                                                                                                                                                                  
+{                                                                                                                                                                                                                                 
+	GENERATED_BODY()
+
+	UPROPERTY(BlueprintReadWrite, Category = "Word")
+	FString name;
+
+	UPROPERTY(BlueprintReadWrite, Category = "Word")
+	FString code;
+};
+
 /// @brief Scenario 타겟 데이터입니다.
 USTRUCT(BlueprintType)
 struct FScenarioTargetData
@@ -429,10 +442,10 @@ struct FScenarioTargetData
 	GENERATED_BODY()
 
 	UPROPERTY(BlueprintReadWrite, Category = "Scenario")
-	FString symbol;
+	FWordInfo word1;
 
 	UPROPERTY(BlueprintReadWrite, Category = "Scenario")
-	FString color;
+	FWordInfo word2;
 };
 
 /// @brief Scenario 응답 델리게이트입니다.

@@ -54,6 +54,7 @@ public:
 	UPROPERTY(Replicated, BlueprintReadOnly, Category = "Mission")
 	float RemainMissionTime = 0.f;
 
+protected:
 	/// @brief 타이머 활성화 상태
 	UPROPERTY(Replicated, BlueprintReadOnly, Category = "Mission")
 	bool bIsTimerActive = false;
@@ -73,6 +74,10 @@ public:
 	UPROPERTY(Replicated, BlueprintReadOnly, Category = "Scenario")
 	FResponseScenario CurScenarioData;
 	//--------------------------------------------------------------//
+
+public:
+	FORCEINLINE const FResponseScenario& GetScenarioData() const {return CurScenarioData;}
+
 
 	//--------------------------------------------------------------//
 	// Read Quest Data
