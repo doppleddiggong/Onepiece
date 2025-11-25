@@ -22,14 +22,23 @@ public:
 	virtual void Tick(float DeltaTime) override;
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 	
+public:
+	// Interact System
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Components|System")
+	TObjectPtr<class UInteractionSystem> InteractionSystem;
+	
+	// Hold Position
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Components|Position")
+	TObjectPtr<class USceneComponent> HoldPosition;
+	
 protected:
 	// Camera
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Components", meta = (AllowPrivateAccess = "true"))
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Components|Camera", meta = (AllowPrivateAccess = "true"))
 	TObjectPtr<class USpringArmComponent> CameraBoom;
 
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Components", meta = (AllowPrivateAccess = "true"))
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Components|Camera", meta = (AllowPrivateAccess = "true"))
 	TObjectPtr<class UCameraComponent> FollowCamera;
-	
+		
 	// Input
 	UPROPERTY(EditAnywhere, Category="Input")
 	TObjectPtr<class UInputMappingContext> RobotIMC;
@@ -45,6 +54,9 @@ protected:
 	
 	UPROPERTY(EditAnywhere, Category="Input")
 	TObjectPtr<class UInputAction> RunAction;
+	
+	UPROPERTY(EditAnywhere, Category="Input")
+	TObjectPtr<class UInputAction> InteractAction;
 	
 	void OnMove(const FInputActionValue& Value);
 	void OnStopMove();

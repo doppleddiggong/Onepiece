@@ -5,6 +5,7 @@
 
 #include "ANPCBase.h"
 #include "AOwlPlayer.h"
+#include "GameLogging.h"
 #include "luggage.h"
 #include "Components/ArrowComponent.h"
 #include "Components/BoxComponent.h"
@@ -53,8 +54,17 @@ void AConveyorBelt::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 	
-	MoveOverlappedSkeletals(MoveSpeed * DeltaTime);
-	MoveOverlappedStatics(MoveSpeed * DeltaTime);
+	if (bIsMoving)
+	{
+		MoveOverlappedSkeletals(MoveSpeed * DeltaTime);
+		MoveOverlappedStatics(MoveSpeed * DeltaTime);
+	}
+}
+
+void AConveyorBelt::ChangeConveyorMovement()
+{
+	bIsMoving = !bIsMoving;
+	PRINT_STRING(TEXT("%d"), bIsMoving);
 }
 
 void AConveyorBelt::MoveOverlappedSkeletals(float deltaDistance)

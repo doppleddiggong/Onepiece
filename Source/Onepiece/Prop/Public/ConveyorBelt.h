@@ -20,6 +20,9 @@ protected:
 public:
 	virtual void Tick(float DeltaTime) override;
 	
+	// Movement Func
+	void ChangeConveyorMovement();
+	
 protected:
 	// Components
 	UPROPERTY()
@@ -34,7 +37,9 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	TObjectPtr<class UArrowComponent> MoveDirArrowComp;
 	
-	// Move Speed
+	// Move Values
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	bool bIsMoving = false;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	float MoveSpeed = 100.f;
 	
