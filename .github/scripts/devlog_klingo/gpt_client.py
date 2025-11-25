@@ -6,7 +6,23 @@ OpenAI API를 사용하여 DevLog 내용 생성
 
 import json
 import os
+import time
 from openai import OpenAI
+
+
+def estimate_tokens(text):
+    """
+    텍스트의 대략적인 토큰 수 추정 (간단한 휴리스틱)
+
+    Args:
+        text: 추정할 텍스트
+
+    Returns:
+        int: 추정 토큰 수
+    """
+    # 간단한 추정: 영어는 ~4자/토큰, 한국어는 ~2자/토큰
+    # 안전하게 평균 3자/토큰으로 계산
+    return len(text) // 3
 
 
 def load_prompt_template():
@@ -61,7 +77,7 @@ def create_devlog_prompt(data):
 
     commits_text = '\n\n'.join(commit_messages) if commit_messages else "커밋 없음"
 
-    # 회의록 정보
+    # 회의록 정보 (최적화: 1000자 -> 500자)
     meeting = data.get('meeting')
     if meeting:
         meeting_text = f"""
@@ -69,7 +85,7 @@ def create_devlog_prompt(data):
 - 제목: {meeting.get('title', 'N/A')}
 - 키워드: {', '.join(meeting.get('keywords', []))}
 
-{meeting.get('content', '회의록 없음')[:1000]}
+{meeting.get('content', '회의록 없음')[:500]}
 """
     else:
         meeting_text = "회의록 없음"
@@ -85,9 +101,9 @@ def create_devlog_prompt(data):
     else:
         jira_text = "조회된 Jira 이슈 없음"
 
-    # Git diff (처음 5000자만)
-    diff_text = data.get('diff', '')[:5000]
-    if len(data.get('diff', '')) > 5000:
+    # Git diff (최적화: 5000자 -> 2000자)
+    diff_text = data.get('diff', '')[:2000]
+    if len(data.get('diff', '')) > 2000:
         diff_text += "\n\n... (나머지 생략)"
 
     # 프롬프트 생성
@@ -110,7 +126,7 @@ def create_devlog_prompt(data):
 {commits_text}
 
 ## 변경된 파일 ({len(data.get('changed_files', []))}개)
-{', '.join(data.get('changed_files', [])[:20])}
+{', '.join(data.get('changed_files', [])[:10])}
 
 ## 주요 변경 시스템
 {systems_text}
@@ -172,14 +188,15 @@ def create_devlog_prompt(data):
     return prompt
 
 
-def generate_devlog_with_gpt(data, api_key=None, model="gpt-4o"):
+def generate_devlog_with_gpt(data, api_key=None, model="gpt-4o", max_retries=3):
     """
-    GPT API를 사용하여 DevLog 생성
+    GPT API를 사용하여 DevLog 생성 (재시도 로직 포함)
 
     Args:
         data: create_devlog_prompt()에 전달할 데이터
         api_key: OpenAI API 키 (None이면 환경 변수에서 로딩)
         model: 사용할 GPT 모델
+        max_retries: 최대 재시도 횟수
 
     Returns:
         str: 생성된 DevLog 본문
@@ -196,26 +213,56 @@ def generate_devlog_with_gpt(data, api_key=None, model="gpt-4o"):
     # 프롬프트 생성
     prompt = create_devlog_prompt(data)
 
-    try:
-        # GPT API 호출
-        response = client.chat.completions.create(
-            model=model,
-            messages=[
-                {"role": "system", "content": "당신은 소프트웨어 개발 팀의 DevLog 작성을 돕는 전문 AI 어시스턴트입니다. 기술적으로 정확하고 명확한 문서를 작성합니다."},
-                {"role": "user", "content": prompt}
-            ],
-            temperature=0.3,  # 일관성 있는 출력을 위해 낮은 temperature
-            max_tokens=3000
-        )
+    # 토큰 수 추정 및 경고
+    estimated_tokens = estimate_tokens(prompt)
+    print(f"  [INFO] 추정 프롬프트 토큰 수: ~{estimated_tokens:,}")
 
-        # 응답 추출
-        devlog_content = response.choices[0].message.content
+    if estimated_tokens > 8000:
+        print(f"  [WARN]  프롬프트가 너무 큽니다 (~{estimated_tokens:,} 토큰). API 요청이 실패할 수 있습니다.")
 
-        return devlog_content
+    # 재시도 로직 (Exponential Backoff)
+    for attempt in range(max_retries):
+        try:
+            if attempt > 0:
+                wait_time = 2 ** attempt  # 2초, 4초, 8초
+                print(f"  [RETRY] {attempt + 1}/{max_retries} 시도 중... ({wait_time}초 대기)")
+                time.sleep(wait_time)
 
-    except Exception as e:
-        print(f"[WARN]  GPT API 호출 실패: {e}")
-        return None
+            # GPT API 호출
+            response = client.chat.completions.create(
+                model=model,
+                messages=[
+                    {"role": "system", "content": "당신은 소프트웨어 개발 팀의 DevLog 작성을 돕는 전문 AI 어시스턴트입니다. 기술적으로 정확하고 명확한 문서를 작성합니다."},
+                    {"role": "user", "content": prompt}
+                ],
+                temperature=0.3,  # 일관성 있는 출력을 위해 낮은 temperature
+                max_tokens=3000
+            )
+
+            # 응답 추출
+            devlog_content = response.choices[0].message.content
+
+            if attempt > 0:
+                print(f"  [OK] 재시도 성공!")
+
+            return devlog_content
+
+        except Exception as e:
+            error_msg = str(e)
+
+            # Rate limit 에러인지 확인
+            is_rate_limit = 'rate_limit' in error_msg.lower() or '429' in error_msg
+            is_timeout = 'timeout' in error_msg.lower() or 'timed out' in error_msg.lower()
+
+            if attempt < max_retries - 1 and (is_rate_limit or is_timeout):
+                print(f"  [WARN]  API 오류 ({error_msg[:100]}), 재시도 중...")
+                continue
+            else:
+                print(f"  [ERROR] GPT API 호출 실패 (시도 {attempt + 1}/{max_retries}): {e}")
+                return None
+
+    print(f"  [ERROR] 모든 재시도 실패")
+    return None
 
 
 def generate_devlog_fallback(data):

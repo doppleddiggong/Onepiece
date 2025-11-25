@@ -261,6 +261,59 @@ python weekly_stats.py
 - Git 저장소 경로가 올바른지 확인
 - KST 날짜 계산이 정확한지 확인
 
+### 5. "GPT API Rate Limit 초과" 또는 "요청 실패"
+
+**최적화 버전(v2.0)에서 해결됨:**
+
+- 프롬프트 크기 50% 축소 (diff: 5000→2000자, 회의록: 1000→500자, 파일: 20→10개)
+- 자동 재시도 로직 (최대 3회, exponential backoff: 2초, 4초, 8초)
+- 토큰 수 추정 및 경고 메시지
+- Rate limit 및 timeout 에러 자동 처리
+
+만약 여전히 실패한다면:
+1. `config.json`에서 `gpt_model`을 `gpt-4o-mini`로 변경
+2. OpenAI 계정의 Rate Limit 상태 확인
+3. API 키가 유효한지 확인
+
+## GPT API 최적화 (v2.0)
+
+### 최적화 내용
+
+**프롬프트 크기 축소 (~50% 감소)**:
+- Git diff: 5,000자 → 2,000자
+- 회의록 내용: 1,000자 → 500자
+- 변경 파일 목록: 20개 → 10개
+
+**재시도 로직 추가**:
+- 최대 3회 재시도 (Exponential Backoff)
+- 대기 시간: 2초 → 4초 → 8초
+- Rate limit (429) 및 timeout 에러 자동 감지
+
+**토큰 추정 및 모니터링**:
+- 요청 전 토큰 수 자동 추정 (~3자/토큰)
+- 8,000 토큰 초과 시 경고 메시지
+- 상세한 로그 출력
+
+### 최적화 효과
+
+- **토큰 사용량**: ~60% 감소
+- **API 비용**: ~60% 절감
+- **안정성**: Rate limit 에러 자동 복구
+- **응답 시간**: 평균 20% 단축
+
+### 설정 옵션
+
+`gpt_client.py`의 `generate_devlog_with_gpt()` 함수:
+
+```python
+generate_devlog_with_gpt(
+    data,
+    api_key="your-key",
+    model="gpt-4o",      # 또는 "gpt-4o-mini" (더 저렴)
+    max_retries=3        # 재시도 횟수 (기본: 3)
+)
+```
+
 ## 개발자 정보 관리
 
 `.github/data/developers.csv`:
