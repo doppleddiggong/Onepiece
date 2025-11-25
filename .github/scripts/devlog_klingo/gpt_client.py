@@ -9,6 +9,14 @@ import os
 import time
 from openai import OpenAI
 
+# 캐시 관리자 임포트
+try:
+    from cache_manager import CacheManager
+    CACHE_AVAILABLE = True
+except ImportError:
+    CACHE_AVAILABLE = False
+    print("[WARN] 캐시 관리자를 로드할 수 없습니다. 캐싱 기능이 비활성화됩니다.")
+
 
 def estimate_tokens(text):
     """
@@ -188,19 +196,29 @@ def create_devlog_prompt(data):
     return prompt
 
 
-def generate_devlog_with_gpt(data, api_key=None, model="gpt-4o", max_retries=3):
+def generate_devlog_with_gpt(data, api_key=None, model="gpt-4o", max_retries=3, use_cache=True):
     """
-    GPT API를 사용하여 DevLog 생성 (재시도 로직 포함)
+    GPT API를 사용하여 DevLog 생성 (캐싱 및 재시도 로직 포함)
 
     Args:
         data: create_devlog_prompt()에 전달할 데이터
         api_key: OpenAI API 키 (None이면 환경 변수에서 로딩)
         model: 사용할 GPT 모델
         max_retries: 최대 재시도 횟수
+        use_cache: 캐싱 사용 여부 (기본: True)
 
     Returns:
         str: 생성된 DevLog 본문
     """
+    # 캐시 확인
+    if use_cache and CACHE_AVAILABLE:
+        cache_mgr = CacheManager(ttl_hours=24)
+        cached_content = cache_mgr.get(data)
+
+        if cached_content:
+            print("  [OK] 캐시된 DevLog 사용 (API 호출 생략)")
+            return cached_content
+
     if api_key is None:
         api_key = os.getenv('OPENAI_API_KEY')
 
@@ -244,6 +262,11 @@ def generate_devlog_with_gpt(data, api_key=None, model="gpt-4o", max_retries=3):
 
             if attempt > 0:
                 print(f"  [OK] 재시도 성공!")
+
+            # 캐시에 저장
+            if use_cache and CACHE_AVAILABLE:
+                cache_mgr = CacheManager(ttl_hours=24)
+                cache_mgr.set(data, devlog_content)
 
             return devlog_content
 
