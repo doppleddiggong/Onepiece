@@ -6,6 +6,9 @@
 #include "GameFramework/Actor.h"
 #include "luggage.generated.h"
 
+/// @brief 상호작용 가능한 수하물 액터
+/// @details 플레이어가 선택할 수 있는 수하물 오브젝트입니다.
+///          Read 퀘스트에서는 Symbol과 Color 정보를 추가로 가지며, 정답 판정에 사용됩니다.
 UCLASS()
 class ONEPIECE_API Aluggage : public AActor
 {
@@ -17,7 +20,29 @@ public:
 public:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
 	TObjectPtr<class UStaticMeshComponent> Mesh;
-	
+
 	UPROPERTY(VisibleAnywhere)
 	TObjectPtr<class UInteractableComponent> InteractableComp;
+
+	//--------------------------------------------------------------//
+	// Read Quest Data
+	//--------------------------------------------------------------//
+
+	/// @brief 캐리어의 심볼 (문제1 정답)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Quest")
+	FString Symbol;
+
+	/// @brief 캐리어의 색상 (문제2 정답)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Quest")
+	FString Color;
+
+	/// @brief 플레이어가 캐리어를 선택했을 때 호출됩니다.
+	/// @param Interactor [in] 상호작용을 시도한 액터 (플레이어)
+	UFUNCTION(BlueprintCallable, Category = "Interaction")
+	void OnInteract(AActor* Interactor);
+
+	/// @brief 서버에 캐리어 선택을 알립니다.
+	/// @param Player [in] 선택한 플레이어의 PlayerState
+	UFUNCTION(Server, Reliable, WithValidation)
+	void ServerNotifySelection(class APlayerState* Player);
 };

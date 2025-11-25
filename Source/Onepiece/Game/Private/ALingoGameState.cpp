@@ -34,6 +34,10 @@ void ALingoGameState::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutL
 	DOREPLIFETIME(ALingoGameState, StageIndex);
 	DOREPLIFETIME(ALingoGameState, ScenarioLevel);
 	DOREPLIFETIME(ALingoGameState, CurScenarioData);
+
+	// Read Quest Data
+	DOREPLIFETIME(ALingoGameState, QuestResult);
+	DOREPLIFETIME(ALingoGameState, bQuestSuccess);
 }
 
 void ALingoGameState::Tick(float DeltaSeconds)
@@ -124,6 +128,19 @@ void ALingoGameState::OnMissionTimerEnd()
 					PlayerActor->OnGameMessage(EndMessage);
 				}
 			}
+		}
+	}
+}
+
+void ALingoGameState::OnRep_QuestSuccess()
+{
+	// BroadcastManager를 통해 퀘스트 성공 이벤트 브로드캐스트
+	if (UBroadcastManager* BroadcastManager = UBroadcastManager::Get(GetWorld()))
+	{
+		if (bQuestSuccess)
+		{
+			PRINTLOG(TEXT("[GameState] Quest Success - Broadcasting event"));
+			// 추후 BroadcastManager에 퀘스트 성공 이벤트 추가 필요
 		}
 	}
 }

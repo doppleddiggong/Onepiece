@@ -7,7 +7,7 @@
 #include "ALingoGameMode.generated.h"
 
 /**
- * 
+ *
  */
 UCLASS()
 class ONEPIECE_API ALingoGameMode : public AGameMode
@@ -16,4 +16,30 @@ class ONEPIECE_API ALingoGameMode : public AGameMode
 
 public:
 	ALingoGameMode();
+
+	//--------------------------------------------------------------//
+	// Read Quest Functions
+	//--------------------------------------------------------------//
+
+	/// @brief Read 퀘스트를 시작합니다 (서버에서만 호출)
+	UFUNCTION(BlueprintCallable, Category = "Quest")
+	void StartReadQuest();
+
+	/// @brief 캐리어 선택을 처리합니다 (서버에서만 호출)
+	UFUNCTION()
+	void HandleCarrierSelection(class APlayerState* Player, class Aluggage* Carrier);
+
+	/// @brief 정답을 판정합니다
+	UFUNCTION()
+	bool ValidateAnswer(class ALingoPlayerState* Player, class Aluggage* Carrier);
+
+	/// @brief 정답 처리
+	UFUNCTION()
+	void HandleCorrectAnswer(class ALingoPlayerState* Player);
+
+	/// @brief 오답 처리
+	/// @param bSymbolCorrect [in] 심볼이 맞는지 여부
+	/// @param bColorCorrect [in] 색상이 맞는지 여부
+	UFUNCTION()
+	void HandleWrongAnswer(class ALingoPlayerState* Player, bool bSymbolCorrect, bool bColorCorrect);
 };

@@ -302,6 +302,41 @@ struct FQuestSpeakInfo
 };
 
 // =================================================================================
+// Read Quest Role and Result Structures
+// =================================================================================
+
+/// @brief Read 퀘스트에서 플레이어의 역할을 정의합니다.
+UENUM(BlueprintType)
+enum class EReadQuestRole : uint8
+{
+	Both           UMETA(DisplayName = "Both"),          // 싱글: 문제1, 2 모두 조작
+	OnlyQuestion1  UMETA(DisplayName = "OnlyQuestion1"), // 멀티: 문제1만 조작
+	OnlyQuestion2  UMETA(DisplayName = "OnlyQuestion2")  // 멀티: 문제2만 조작
+};
+
+/// @brief Read 퀘스트의 플레이어 결과 기록입니다.
+USTRUCT(BlueprintType)
+struct FReadQuestResult
+{
+	GENERATED_BODY()
+
+	UPROPERTY(BlueprintReadWrite, Category = "Quest")
+	bool bSuccess = false;  // 성공 여부
+
+	UPROPERTY(BlueprintReadWrite, Category = "Quest")
+	float RemainTime = 0.f;  // 남은 시간
+
+	UPROPERTY(BlueprintReadWrite, Category = "Quest")
+	int32 AttemptCount = 0;  // 시도 횟수
+
+	UPROPERTY(BlueprintReadWrite, Category = "Quest")
+	FString SelectedSymbol;  // 선택한 심볼
+
+	UPROPERTY(BlueprintReadWrite, Category = "Quest")
+	FString SelectedColor;   // 선택한 색상
+};
+
+// =================================================================================
 // Response Structures
 // =================================================================================
 /// @brief 헬스 체크 응답을 전달하는 델리게이트입니다.
