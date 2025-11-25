@@ -848,53 +848,43 @@
 <hr></hr>
 <h2 id="1-오늘의-주요-변경">1. 오늘의 주요 변경</h2>
 <ul>
-<li><p><strong>마스터 데이터 구조체 및 데이터 매니저 기능 추가</strong><br></br>한국어 학습 게임의 마스터 데이터를 체계적으로 관리하기 위해 여러 데이터 구조체를 정의하고, 이를 관리하는 게임 데이터 매니저 기능을 구현했습니다. 색상, 레벨, 듣기, 읽기, 단어 학습 데이터 등 다양한 학습 관련 정보를 효율적으로 처리할 수 있도록 준비했습니다.</p>
-</li>
-<li><p><strong>컨베이어 벨트 이동 로직 및 머티리얼 흐름 구현</strong><br></br>UV panner를 이용하여 컨베이어 벨트의 이동 로직을 구현하고, overlap된 액터와 컴포넌트를 통해 이동시키는 기능을 추가했습니다. 이는 게임 내 물리적 상호작용을 보다 자연스럽게 만들기 위한 개선입니다.</p>
-</li>
-<li><p><strong>온라인 세션 시스템 및 로비 UI 구현</strong><br></br>멀티플레이어 세션 관리 기능을 ULingoGameInstance에 추가하여 세션 생성, 검색, 참여 기능을 지원합니다. Steam/LAN 자동 감지 및 지원을 통해 다양한 네트워크 환경에서의 멀티플레이어 경험을 강화했습니다.</p>
-</li>
-<li><p><strong>로그인 및 토큰 기반 인증 시스템 구현</strong><br></br>사용자 인증 플로우를 완성하여 로그인과 회원가입 후 자동 로그인을 지원합니다. 사용자 토큰 발급 기능을 통해 보안성을 높이고, 로비맵으로 자동 전환되도록 하여 사용자 경험을 개선했습니다.</p>
-</li>
-<li><p><strong>게임 진행 타이머 및 UI 위젯 연동 구현</strong><br></br>게임 내 미션 진행 시간을 관리하는 타이머 기능을 GameState에 추가하고, 이를 UI 위젯과 연동하여 플레이어에게 남은 시간을 실시간으로 보여주도록 개선했습니다. 이는 사용자에게 명확한 게임 진행 정보를 제공하기 위한 것입니다.</p>
-</li>
+<li><code>9224f124</code> feat: 마스터 데이터 구조체 및 데이터 매니저 기능 추가</li>
+<li><code>1fbc6388</code> res : 레퍼런스 이미지</li>
+<li><code>f7758cb3</code> Merge branch 'main' of <a href="https://github.com/doppleddiggong/Onepiece" target="_blank">https://github.com/doppleddiggong/Onepiece</a> into dopple</li>
+<li><code>da7df989</code> Merge branch 'CookieAndJuice' of <a href="https://github.com/doppleddiggong/Onepiece" target="_blank">https://github.com/doppleddiggong/Onepiece</a> into dopple</li>
+<li><code>f57535f5</code> Create daily meeting notes for 2025-11-24</li>
 </ul>
+<p><strong>총 34개 커밋, 2916개 파일 변경</strong></p>
 <h2 id="2-시스템-영향도">2. 시스템 영향도</h2>
 <ul>
-<li><p><strong>데이터 관리 시스템</strong><br></br>마스터 데이터 구조체 및 데이터 매니저 기능 추가로 인해 데이터 관리의 효율성이 증가했습니다. 이는 게임 내 다양한 학습 데이터를 체계적으로 관리하고, 빠르게 조회할 수 있게 합니다.</p>
-</li>
-<li><p><strong>네트워크 및 멀티플레이어 시스템</strong><br></br>온라인 세션 시스템 구현으로 멀티플레이어 기능이 강화되었습니다. 이는 다양한 네트워크 환경에서의 안정적인 멀티플레이어 경험을 지원합니다.</p>
-</li>
-<li><p><strong>UI 및 사용자 경험</strong><br></br>로그인 및 인증 시스템, 게임 진행 타이머 UI 연동으로 사용자 경험이 크게 향상되었습니다. 이는 사용자에게 명확한 인증 절차와 게임 진행 정보를 제공하여 게임의 몰입도를 높입니다.</p>
-</li>
+<li><strong>Documentation</strong>: 2806개 파일 변경</li>
+<li><strong>Content</strong>: 52개 파일 변경</li>
+<li><strong>UI</strong>: 14개 파일 변경</li>
+<li><strong>Gameplay</strong>: 9개 파일 변경</li>
+<li><strong>Network</strong>: 5개 파일 변경</li>
 </ul>
 <h2 id="3-리스크-및-문제">3. 리스크 및 문제</h2>
 <ul>
-<li><p><strong>OCR 문제(500 에러)</strong><br></br>OCR 테스트 중 500 에러가 발생하여 서버 측에서 원인 확인이 필요합니다. 이는 OCR 기능의 안정성을 저해할 수 있는 잠재적 리스크입니다.</p>
-</li>
-<li><p><strong>이미지 전송 규격 논의</strong><br></br>OCR 이미지 전송 방식에 대한 논의가 필요합니다. 글자 단위로 묶어 전송하는 구조와 한 문장 단위 이미지 전송 방식 간의 최적화가 필요합니다.</p>
-</li>
+<li>(GPT 분석 필요)</li>
 </ul>
 <h2 id="4-검증-필요-항목">4. 검증 필요 항목</h2>
 <ul>
-<li><p><strong>OCR 기능 안정성 테스트</strong><br></br>OCR 기능의 500 에러 원인을 파악하고, 다양한 파일 형식 및 크기에 대한 테스트가 필요합니다.</p>
-</li>
-<li><p><strong>멀티플레이어 세션 기능 테스트</strong><br></br>다양한 네트워크 환경에서의 세션 생성, 검색, 참여 기능의 안정성을 검증해야 합니다.</p>
-</li>
-<li><p><strong>게임 진행 타이머 UI 연동 테스트</strong><br></br>타이머 기능이 UI 위젯과 제대로 연동되어 실시간으로 남은 시간을 정확히 표시하는지 확인해야 합니다.</p>
-</li>
+<li>변경된 기능의 단위 테스트</li>
+<li>통합 테스트 실행</li>
+<li>빌드 검증</li>
 </ul>
 <h2 id="5-회의-기반-후속-작업">5. 회의 기반 후속 작업</h2>
 <ul>
-<li><p><strong>스텝1 개발 목표</strong><br></br>이번 주 수요일까지 Step1(읽기 기반 수하물 식별)을 완전히 플레이 가능 상태로 만드는 것이 목표입니다. 트리거 박스, 쪽지 POPUP, 단어장, 캐리어 식별, 상호작용 흐름 구현이 필요합니다.</p>
-</li>
-<li><p><strong>시나리오 데이터 기반 문제 해결</strong><br></br>시나리오 데이터는 테이블 번호 기반으로 변경이 필요하며, 클라이언트에서 처리 불가한 한글 기반 심볼/컬러는 모두 숫자 인덱스로 통일해야 합니다.</p>
-</li>
+<li>(회의록 분석 필요)</li>
 </ul>
 <h2 id="6-관련-jira-이슈-자동-추론">6. 관련 Jira 이슈 (자동 추론)</h2>
-<p>현재 조회된 Jira 이슈는 없습니다. 커밋 메시지와 변경 파일을 기반으로 관련 이슈를 추론할 수 없었습니다. 향후 Jira 이슈와의 연관성을 명확히 하기 위해 커밋 메시지에 관련 이슈 키를 포함하는 것이 좋습니다.</p>
+<ul>
+<li>(Jira API 연동 필요)</li>
+</ul>
 <hr></hr>
-<p><em>생성 시간: 2025-11-25 01:02:14</em></p>
+<p><strong>[WARN] 이 DevLog는 GPT API 없이 자동 생성되었습니다. 수동으로 내용을 보완해주세요.</strong></p>
+<hr></hr>
+<p><em>생성 시간: 2025-11-25 01:42:53</em></p>
  <link rel="stylesheet" type="text/css" href="https://storage.googleapis.com/app.klipse.tech/css/codemirror.css"></link> <script>     window.klipse_settings = {         selector: ".language-klipse, .lang-eval-clojure",         selector_eval_js: ".lang-eval-js",         selector_eval_python_client: ".lang-eval-python",         selector_eval_php: ".lang-eval-php",         selector_eval_scheme: ".lang-eval-scheme",         selector_eval_ruby: ".lang-eval-ruby",         selector_reagent: ".lang-reagent",        selector_google_charts: ".lang-google-chart",        selector_es2017: ".lang-eval-es2017",        selector_jsx: ".lang-eval-jsx",        selector_transpile_jsx: ".lang-transpile-jsx",        selector_render_jsx: ".lang-render-jsx",        selector_react: ".lang-react",        selector_eval_markdown: ".lang-render-markdown",        selector_eval_lambdaway: ".lang-render-lambdaway",        selector_eval_cpp: ".lang-eval-cpp",        selector_eval_html: ".lang-render-html",        selector_sql: ".lang-eval-sql",        selector_brainfuck: "lang-eval-brainfuck",        selector_js: ".lang-transpile-cljs"    }; </script> <script src="https://storage.googleapis.com/app.klipse.tech/plugin/js/klipse_plugin.js"></script>
                                 
                                 </section>
@@ -938,7 +928,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"2025-11-24","level":"4.1","depth":1,"next":{"title":"2025-11-23","level":"4.2","depth":1,"path":"DevLog/Daily/2025-11-23.md","ref":"DevLog/Daily/2025-11-23.md","articles":[]},"previous":{"title":"dopple - 2025-11-10","level":"3.6","depth":1,"path":"DevLog/AgentLog/dopple/251110.md","ref":"DevLog/AgentLog/dopple/251110.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-comscore","github","collapsible-menu","back-to-top-button","search-plus","expandable-chapters-small","page-toc-button","-anchor-navigation-ex","honkit-plugin-mermaid","code","alerts","emphasize","klipse","-lunr","-search","-sharing"],"root":".","styles":{"website":"styles/website.css"},"pluginsConfig":{"collapsible-menu":{},"emphasize":{"style":"yellow"},"github":{"url":"https://github.com/doppleddiggong/Onepiece"},"code":{"copyButtons":true},"honkit-plugin-mermaid":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"printLog":false,"multipleH1":false,"mode":"float","float":{"showLevelIcon":false,"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right"},"pageTop":{"showLevelIcon":false,"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right"}},"theme-comscore":{"showLevel":true},"page-toc-button":{"maxTocDepth":3,"minTocSize":2},"back-to-top-button":{},"alerts":{"info":{"label":"정보","icon":"fa fa-info-circle","className":"info"},"warning":{"label":"주의","icon":"fa fa-exclamation-triangle","className":"warning"},"danger":{"label":"위험","icon":"fa fa-times-circle","className":"danger"},"tip":{"label":"팁","icon":"fa fa-lightbulb-o","className":"tip"}},"expandable-chapters-small":{},"klipse":{"myConfigKey":"it's the default value"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"search-plus":{}},"theme":"default","author":"DoppledDiggong Team","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Onepiece Development Documentation","language":"ko","links":{"sidebar":{"GitHub Repository":"https://github.com/doppleddiggong/Onepiece","Doxygen API Docs":"https://doppleddiggong.github.io/Onepiece/doxygen/"}},"gitbook":"3.2.3","description":"Onepiece 프로젝트 개발 문서 - DevLog, Planning, System Review"},"file":{"path":"DevLog/Daily/2025-11-24.md","mtime":"2025-11-25T01:03:06.900Z","type":"markdown"},"gitbook":{"version":"6.1.4","time":"2025-11-25T01:03:33.324Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"2025-11-24","level":"4.1","depth":1,"next":{"title":"2025-11-23","level":"4.2","depth":1,"path":"DevLog/Daily/2025-11-23.md","ref":"DevLog/Daily/2025-11-23.md","articles":[]},"previous":{"title":"dopple - 2025-11-10","level":"3.6","depth":1,"path":"DevLog/AgentLog/dopple/251110.md","ref":"DevLog/AgentLog/dopple/251110.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-comscore","github","collapsible-menu","back-to-top-button","search-plus","expandable-chapters-small","page-toc-button","-anchor-navigation-ex","honkit-plugin-mermaid","code","alerts","emphasize","klipse","-lunr","-search","-sharing"],"root":".","styles":{"website":"styles/website.css"},"pluginsConfig":{"collapsible-menu":{},"emphasize":{"style":"yellow"},"github":{"url":"https://github.com/doppleddiggong/Onepiece"},"code":{"copyButtons":true},"honkit-plugin-mermaid":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"printLog":false,"multipleH1":false,"mode":"float","float":{"showLevelIcon":false,"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right"},"pageTop":{"showLevelIcon":false,"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right"}},"theme-comscore":{"showLevel":true},"page-toc-button":{"maxTocDepth":3,"minTocSize":2},"back-to-top-button":{},"alerts":{"info":{"label":"정보","icon":"fa fa-info-circle","className":"info"},"warning":{"label":"주의","icon":"fa fa-exclamation-triangle","className":"warning"},"danger":{"label":"위험","icon":"fa fa-times-circle","className":"danger"},"tip":{"label":"팁","icon":"fa fa-lightbulb-o","className":"tip"}},"expandable-chapters-small":{},"klipse":{"myConfigKey":"it's the default value"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"search-plus":{}},"theme":"default","author":"DoppledDiggong Team","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Onepiece Development Documentation","language":"ko","links":{"sidebar":{"GitHub Repository":"https://github.com/doppleddiggong/Onepiece","Doxygen API Docs":"https://doppleddiggong.github.io/Onepiece/doxygen/"}},"gitbook":"3.2.3","description":"Onepiece 프로젝트 개발 문서 - DevLog, Planning, System Review"},"file":{"path":"DevLog/Daily/2025-11-24.md","mtime":"2025-11-25T01:43:42.124Z","type":"markdown"},"gitbook":{"version":"6.1.4","time":"2025-11-25T01:44:11.310Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
