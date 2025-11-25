@@ -1,0 +1,274 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>KLingo Project Documentation: Source/Onepiece/UI/Private/UReadQuestEntryWidget.cpp 소스 파일</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript">
+window.MathJax = {
+  options: {
+    ignoreHtmlClass: 'tex2jax_ignore',
+    processHtmlClass: 'tex2jax_process'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<script type="text/javascript" src="darkmode_toggle.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">KLingo Project Documentation<span id="projectnumber">&#160;1.0.0</span>
+   </div>
+   <div id="projectbrief">Unreal Engine 5.6 C++ Project Documentation</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 다음에 의해 생성됨 :  Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','검색');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(0); });
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('UReadQuestEntryWidget_8cpp_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">로딩중...</div>
+<div class="SRStatus" id="Searching">검색중...</div>
+<div class="SRStatus" id="NoMatches">일치하는것 없음</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">UReadQuestEntryWidget.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="UReadQuestEntryWidget_8cpp.html">이 파일의 문서화 페이지로 가기</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;<a class="code" href="UReadQuestEntryWidget_8h.html">UReadQuestEntryWidget.h</a>&quot;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;Components/Button.h&quot;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;Components/TextBlock.h&quot;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;Components/Image.h&quot;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;<a class="code" href="GameLogging_8h.html">GameLogging.h</a>&quot;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
+<div class="foldopen" id="foldopen00009" data-start="{" data-end="}">
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="classUReadQuestEntryWidget.html#a09a3e4c66517ea8356b33f6daa7edd83">    9</a></span><a class="code hl_function" href="classUReadQuestEntryWidget.html#a09a3e4c66517ea8356b33f6daa7edd83">UReadQuestEntryWidget::UReadQuestEntryWidget</a>(<span class="keyword">const</span> FObjectInitializer&amp; ObjectInitializer)</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    : Super(ObjectInitializer)</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>{</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>}</div>
+</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="foldopen" id="foldopen00014" data-start="{" data-end="}">
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="classUReadQuestEntryWidget.html#a246dfa3b43fb8899789062e64c78ae60">   14</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUReadQuestEntryWidget.html#a246dfa3b43fb8899789062e64c78ae60">UReadQuestEntryWidget::NativeConstruct</a>()</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>{</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    Super::NativeConstruct();</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <span class="comment">// 중복 바인딩 방지</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUReadQuestEntryWidget.html#a06ba3ab63d414caecc2dae83cf82822d">SelectButton</a>)</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    {</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>        <a class="code hl_variable" href="classUReadQuestEntryWidget.html#a06ba3ab63d414caecc2dae83cf82822d">SelectButton</a>-&gt;OnClicked.RemoveDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUReadQuestEntryWidget.html#ae738c996e7b1b7c1bfdb65633beb0683">UReadQuestEntryWidget::OnButtonClicked</a>);</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        <a class="code hl_variable" href="classUReadQuestEntryWidget.html#a06ba3ab63d414caecc2dae83cf82822d">SelectButton</a>-&gt;OnClicked.AddDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUReadQuestEntryWidget.html#ae738c996e7b1b7c1bfdb65633beb0683">UReadQuestEntryWidget::OnButtonClicked</a>);</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    }</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>}</div>
+</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="foldopen" id="foldopen00026" data-start="{" data-end="}">
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="classUReadQuestEntryWidget.html#a5efc1b16ec46d1715231484d93ba879d">   26</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUReadQuestEntryWidget.html#a5efc1b16ec46d1715231484d93ba879d">UReadQuestEntryWidget::InitializeEntry</a>(<span class="keyword">const</span> FString&amp; Value, <span class="keywordtype">bool</span> bEnabled)</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>{</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <a class="code hl_variable" href="classUReadQuestEntryWidget.html#a36c69cd9039392828b12716ce646bea6">ChoiceValue</a> = Value;</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="comment">// 텍스트 설정</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUReadQuestEntryWidget.html#adccb30df359caa345662a6ca3c5539f3">ChoiceText</a>)</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    {</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        <a class="code hl_variable" href="classUReadQuestEntryWidget.html#adccb30df359caa345662a6ca3c5539f3">ChoiceText</a>-&gt;SetText(FText::FromString(Value));</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    }</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="comment">// 버튼 활성화 상태 설정</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUReadQuestEntryWidget.html#a06ba3ab63d414caecc2dae83cf82822d">SelectButton</a>)</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    {</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        <a class="code hl_variable" href="classUReadQuestEntryWidget.html#a06ba3ab63d414caecc2dae83cf82822d">SelectButton</a>-&gt;SetIsEnabled(bEnabled);</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    }</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="comment">// 초기 상태로 설정</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <a class="code hl_variable" href="classUReadQuestEntryWidget.html#a663f6dea74c358b3d4fcfbb9ca0b33f0">bIsSelected</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <a class="code hl_variable" href="classUReadQuestEntryWidget.html#a39b261a05906235690d25a0f9e471ebc">bIsWrong</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <a class="code hl_function" href="classUReadQuestEntryWidget.html#a7434b8353a5584ab7982e26de06966ba">UpdateVisualState</a>();</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[ReadQuestEntry] Initialized with value: %s, enabled: %s&quot;</span>), *Value, bEnabled ? TEXT(<span class="stringliteral">&quot;true&quot;</span>) : TEXT(<span class="stringliteral">&quot;false&quot;</span>));</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>}</div>
+</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="foldopen" id="foldopen00051" data-start="{" data-end="}">
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="classUReadQuestEntryWidget.html#ace17703e48f6d265f1d3f5c40bd433d8">   51</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUReadQuestEntryWidget.html#ace17703e48f6d265f1d3f5c40bd433d8">UReadQuestEntryWidget::SetSelected</a>(<span class="keywordtype">bool</span> bSelected)</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>{</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUReadQuestEntryWidget.html#a663f6dea74c358b3d4fcfbb9ca0b33f0">bIsSelected</a> == bSelected)</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <a class="code hl_variable" href="classUReadQuestEntryWidget.html#a663f6dea74c358b3d4fcfbb9ca0b33f0">bIsSelected</a> = bSelected;</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <a class="code hl_function" href="classUReadQuestEntryWidget.html#a7434b8353a5584ab7982e26de06966ba">UpdateVisualState</a>();</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[ReadQuestEntry] Selection changed: %s, value: %s&quot;</span>), bSelected ? TEXT(<span class="stringliteral">&quot;Selected&quot;</span>) : TEXT(<span class="stringliteral">&quot;Deselected&quot;</span>), *<a class="code hl_variable" href="classUReadQuestEntryWidget.html#a36c69cd9039392828b12716ce646bea6">ChoiceValue</a>);</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>}</div>
+</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+<div class="foldopen" id="foldopen00062" data-start="{" data-end="}">
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="classUReadQuestEntryWidget.html#af06cdcf4d78c4830b9846601849c38ee">   62</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUReadQuestEntryWidget.html#af06cdcf4d78c4830b9846601849c38ee">UReadQuestEntryWidget::SetWrong</a>(<span class="keywordtype">bool</span> bWrong)</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>{</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUReadQuestEntryWidget.html#a39b261a05906235690d25a0f9e471ebc">bIsWrong</a> == bWrong)</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <a class="code hl_variable" href="classUReadQuestEntryWidget.html#a39b261a05906235690d25a0f9e471ebc">bIsWrong</a> = bWrong;</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <a class="code hl_function" href="classUReadQuestEntryWidget.html#a7434b8353a5584ab7982e26de06966ba">UpdateVisualState</a>();</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[ReadQuestEntry] Wrong state changed: %s, value: %s&quot;</span>), bWrong ? TEXT(<span class="stringliteral">&quot;Wrong&quot;</span>) : TEXT(<span class="stringliteral">&quot;Correct&quot;</span>), *<a class="code hl_variable" href="classUReadQuestEntryWidget.html#a36c69cd9039392828b12716ce646bea6">ChoiceValue</a>);</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>}</div>
+</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
+<div class="foldopen" id="foldopen00073" data-start="{" data-end="}">
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno"><a class="line" href="classUReadQuestEntryWidget.html#ae738c996e7b1b7c1bfdb65633beb0683">   73</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUReadQuestEntryWidget.html#ae738c996e7b1b7c1bfdb65633beb0683">UReadQuestEntryWidget::OnButtonClicked</a>()</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>{</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    <span class="comment">// 오답 상태이거나 이미 선택된 상태면 무시</span></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUReadQuestEntryWidget.html#a39b261a05906235690d25a0f9e471ebc">bIsWrong</a>)</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    {</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[ReadQuestEntry] Button clicked but entry is marked as wrong: %s&quot;</span>), *<a class="code hl_variable" href="classUReadQuestEntryWidget.html#a36c69cd9039392828b12716ce646bea6">ChoiceValue</a>);</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    }</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    <span class="comment">// 델리게이트 브로드캐스트</span></div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    <a class="code hl_variable" href="classUReadQuestEntryWidget.html#a81f9badec2aead0a01cb311b4deb30fc">OnEntrySelected</a>.Broadcast(<a class="code hl_variable" href="classUReadQuestEntryWidget.html#a36c69cd9039392828b12716ce646bea6">ChoiceValue</a>, <span class="keyword">this</span>);</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[ReadQuestEntry] Button clicked: %s&quot;</span>), *<a class="code hl_variable" href="classUReadQuestEntryWidget.html#a36c69cd9039392828b12716ce646bea6">ChoiceValue</a>);</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>}</div>
+</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
+<div class="foldopen" id="foldopen00088" data-start="{" data-end="}">
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno"><a class="line" href="classUReadQuestEntryWidget.html#a7434b8353a5584ab7982e26de06966ba">   88</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUReadQuestEntryWidget.html#a7434b8353a5584ab7982e26de06966ba">UReadQuestEntryWidget::UpdateVisualState</a>()</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>{</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classUReadQuestEntryWidget.html#acc0b3bea4e20f6c050a826f4f675ca88">StateImage</a>)</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    <span class="comment">// 상태에 따라 이미지 표시</span></div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUReadQuestEntryWidget.html#a39b261a05906235690d25a0f9e471ebc">bIsWrong</a>)</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    {</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        <span class="comment">// 오답: 빨간색 X 표시 등</span></div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>        <a class="code hl_variable" href="classUReadQuestEntryWidget.html#acc0b3bea4e20f6c050a826f4f675ca88">StateImage</a>-&gt;SetVisibility(ESlateVisibility::Visible);</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>        <a class="code hl_variable" href="classUReadQuestEntryWidget.html#acc0b3bea4e20f6c050a826f4f675ca88">StateImage</a>-&gt;SetColorAndOpacity(FLinearColor::Red);</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    }</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUReadQuestEntryWidget.html#a663f6dea74c358b3d4fcfbb9ca0b33f0">bIsSelected</a>)</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    {</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>        <span class="comment">// 선택됨: 초록색 체크 표시 등</span></div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>        <a class="code hl_variable" href="classUReadQuestEntryWidget.html#acc0b3bea4e20f6c050a826f4f675ca88">StateImage</a>-&gt;SetVisibility(ESlateVisibility::Visible);</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>        <a class="code hl_variable" href="classUReadQuestEntryWidget.html#acc0b3bea4e20f6c050a826f4f675ca88">StateImage</a>-&gt;SetColorAndOpacity(FLinearColor::Green);</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    }</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    {</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>        <span class="comment">// 기본 상태: 이미지 숨김</span></div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>        <a class="code hl_variable" href="classUReadQuestEntryWidget.html#acc0b3bea4e20f6c050a826f4f675ca88">StateImage</a>-&gt;SetVisibility(ESlateVisibility::Hidden);</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    }</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span> </div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    <span class="comment">// 버튼 스타일 변경 (선택적)</span></div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUReadQuestEntryWidget.html#a06ba3ab63d414caecc2dae83cf82822d">SelectButton</a>)</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    {</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>        <span class="comment">// 오답이면 버튼 비활성화</span></div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUReadQuestEntryWidget.html#a39b261a05906235690d25a0f9e471ebc">bIsWrong</a>)</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>        {</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>            <a class="code hl_variable" href="classUReadQuestEntryWidget.html#a06ba3ab63d414caecc2dae83cf82822d">SelectButton</a>-&gt;SetIsEnabled(<span class="keyword">false</span>);</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>        }</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    }</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>}</div>
+</div>
+<div class="ttc" id="aGameLogging_8h_html"><div class="ttname"><a href="GameLogging_8h.html">GameLogging.h</a></div><div class="ttdoc">YiSan 전반에서 사용하는 공용 인터페이스를 선언합니다.</div></div>
+<div class="ttc" id="aGameLogging_8h_html_a9998c8beb11a6bad6ffada2e701fc0cf"><div class="ttname"><a href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a></div><div class="ttdeci">#define PRINTLOG(fmt,...)</div><div class="ttdef"><b>Definition</b> <a href="GameLogging_8h_source.html#l00030">GameLogging.h:30</a></div></div>
+<div class="ttc" id="aUReadQuestEntryWidget_8h_html"><div class="ttname"><a href="UReadQuestEntryWidget_8h.html">UReadQuestEntryWidget.h</a></div></div>
+<div class="ttc" id="aclassUReadQuestEntryWidget_html_a06ba3ab63d414caecc2dae83cf82822d"><div class="ttname"><a href="classUReadQuestEntryWidget.html#a06ba3ab63d414caecc2dae83cf82822d">UReadQuestEntryWidget::SelectButton</a></div><div class="ttdeci">class UButton * SelectButton</div><div class="ttdoc">선택 버튼</div><div class="ttdef"><b>Definition</b> <a href="UReadQuestEntryWidget_8h_source.html#l00029">UReadQuestEntryWidget.h:29</a></div></div>
+<div class="ttc" id="aclassUReadQuestEntryWidget_html_a09a3e4c66517ea8356b33f6daa7edd83"><div class="ttname"><a href="classUReadQuestEntryWidget.html#a09a3e4c66517ea8356b33f6daa7edd83">UReadQuestEntryWidget::UReadQuestEntryWidget</a></div><div class="ttdeci">UReadQuestEntryWidget(const FObjectInitializer &amp;ObjectInitializer)</div><div class="ttdef"><b>Definition</b> <a href="UReadQuestEntryWidget_8cpp_source.html#l00009">UReadQuestEntryWidget.cpp:9</a></div></div>
+<div class="ttc" id="aclassUReadQuestEntryWidget_html_a246dfa3b43fb8899789062e64c78ae60"><div class="ttname"><a href="classUReadQuestEntryWidget.html#a246dfa3b43fb8899789062e64c78ae60">UReadQuestEntryWidget::NativeConstruct</a></div><div class="ttdeci">virtual void NativeConstruct() override</div><div class="ttdef"><b>Definition</b> <a href="UReadQuestEntryWidget_8cpp_source.html#l00014">UReadQuestEntryWidget.cpp:14</a></div></div>
+<div class="ttc" id="aclassUReadQuestEntryWidget_html_a36c69cd9039392828b12716ce646bea6"><div class="ttname"><a href="classUReadQuestEntryWidget.html#a36c69cd9039392828b12716ce646bea6">UReadQuestEntryWidget::ChoiceValue</a></div><div class="ttdeci">FString ChoiceValue</div><div class="ttdoc">선택지 값</div><div class="ttdef"><b>Definition</b> <a href="UReadQuestEntryWidget_8h_source.html#l00046">UReadQuestEntryWidget.h:46</a></div></div>
+<div class="ttc" id="aclassUReadQuestEntryWidget_html_a39b261a05906235690d25a0f9e471ebc"><div class="ttname"><a href="classUReadQuestEntryWidget.html#a39b261a05906235690d25a0f9e471ebc">UReadQuestEntryWidget::bIsWrong</a></div><div class="ttdeci">bool bIsWrong</div><div class="ttdoc">오답 상태</div><div class="ttdef"><b>Definition</b> <a href="UReadQuestEntryWidget_8h_source.html#l00054">UReadQuestEntryWidget.h:54</a></div></div>
+<div class="ttc" id="aclassUReadQuestEntryWidget_html_a5efc1b16ec46d1715231484d93ba879d"><div class="ttname"><a href="classUReadQuestEntryWidget.html#a5efc1b16ec46d1715231484d93ba879d">UReadQuestEntryWidget::InitializeEntry</a></div><div class="ttdeci">void InitializeEntry(const FString &amp;Value, bool bEnabled)</div><div class="ttdoc">엔트리를 초기화합니다.</div><div class="ttdef"><b>Definition</b> <a href="UReadQuestEntryWidget_8cpp_source.html#l00026">UReadQuestEntryWidget.cpp:26</a></div></div>
+<div class="ttc" id="aclassUReadQuestEntryWidget_html_a663f6dea74c358b3d4fcfbb9ca0b33f0"><div class="ttname"><a href="classUReadQuestEntryWidget.html#a663f6dea74c358b3d4fcfbb9ca0b33f0">UReadQuestEntryWidget::bIsSelected</a></div><div class="ttdeci">bool bIsSelected</div><div class="ttdoc">선택 상태</div><div class="ttdef"><b>Definition</b> <a href="UReadQuestEntryWidget_8h_source.html#l00050">UReadQuestEntryWidget.h:50</a></div></div>
+<div class="ttc" id="aclassUReadQuestEntryWidget_html_a7434b8353a5584ab7982e26de06966ba"><div class="ttname"><a href="classUReadQuestEntryWidget.html#a7434b8353a5584ab7982e26de06966ba">UReadQuestEntryWidget::UpdateVisualState</a></div><div class="ttdeci">void UpdateVisualState()</div><div class="ttdoc">UI 스타일을 업데이트합니다</div><div class="ttdef"><b>Definition</b> <a href="UReadQuestEntryWidget_8cpp_source.html#l00088">UReadQuestEntryWidget.cpp:88</a></div></div>
+<div class="ttc" id="aclassUReadQuestEntryWidget_html_a81f9badec2aead0a01cb311b4deb30fc"><div class="ttname"><a href="classUReadQuestEntryWidget.html#a81f9badec2aead0a01cb311b4deb30fc">UReadQuestEntryWidget::OnEntrySelected</a></div><div class="ttdeci">FOnEntrySelected OnEntrySelected</div><div class="ttdef"><b>Definition</b> <a href="UReadQuestEntryWidget_8h_source.html#l00096">UReadQuestEntryWidget.h:96</a></div></div>
+<div class="ttc" id="aclassUReadQuestEntryWidget_html_acc0b3bea4e20f6c050a826f4f675ca88"><div class="ttname"><a href="classUReadQuestEntryWidget.html#acc0b3bea4e20f6c050a826f4f675ca88">UReadQuestEntryWidget::StateImage</a></div><div class="ttdeci">class UImage * StateImage</div><div class="ttdoc">상태 이미지 (정답/오답 표시)</div><div class="ttdef"><b>Definition</b> <a href="UReadQuestEntryWidget_8h_source.html#l00037">UReadQuestEntryWidget.h:37</a></div></div>
+<div class="ttc" id="aclassUReadQuestEntryWidget_html_ace17703e48f6d265f1d3f5c40bd433d8"><div class="ttname"><a href="classUReadQuestEntryWidget.html#ace17703e48f6d265f1d3f5c40bd433d8">UReadQuestEntryWidget::SetSelected</a></div><div class="ttdeci">void SetSelected(bool bSelected)</div><div class="ttdoc">선택 상태를 설정합니다.</div><div class="ttdef"><b>Definition</b> <a href="UReadQuestEntryWidget_8cpp_source.html#l00051">UReadQuestEntryWidget.cpp:51</a></div></div>
+<div class="ttc" id="aclassUReadQuestEntryWidget_html_adccb30df359caa345662a6ca3c5539f3"><div class="ttname"><a href="classUReadQuestEntryWidget.html#adccb30df359caa345662a6ca3c5539f3">UReadQuestEntryWidget::ChoiceText</a></div><div class="ttdeci">class UTextBlock * ChoiceText</div><div class="ttdoc">선택지 텍스트</div><div class="ttdef"><b>Definition</b> <a href="UReadQuestEntryWidget_8h_source.html#l00033">UReadQuestEntryWidget.h:33</a></div></div>
+<div class="ttc" id="aclassUReadQuestEntryWidget_html_ae738c996e7b1b7c1bfdb65633beb0683"><div class="ttname"><a href="classUReadQuestEntryWidget.html#ae738c996e7b1b7c1bfdb65633beb0683">UReadQuestEntryWidget::OnButtonClicked</a></div><div class="ttdeci">void OnButtonClicked()</div><div class="ttdoc">버튼 클릭 콜백</div><div class="ttdef"><b>Definition</b> <a href="UReadQuestEntryWidget_8cpp_source.html#l00073">UReadQuestEntryWidget.cpp:73</a></div></div>
+<div class="ttc" id="aclassUReadQuestEntryWidget_html_af06cdcf4d78c4830b9846601849c38ee"><div class="ttname"><a href="classUReadQuestEntryWidget.html#af06cdcf4d78c4830b9846601849c38ee">UReadQuestEntryWidget::SetWrong</a></div><div class="ttdeci">void SetWrong(bool bWrong)</div><div class="ttdoc">오답 상태를 설정합니다.</div><div class="ttdef"><b>Definition</b> <a href="UReadQuestEntryWidget_8cpp_source.html#l00062">UReadQuestEntryWidget.cpp:62</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_55b064ed9f704d76d3805f2fda876350.html">UI</a></li><li class="navelem"><a class="el" href="dir_550f083bbe519bd985f450628c1369b6.html">Private</a></li><li class="navelem"><a class="el" href="UReadQuestEntryWidget_8cpp.html">UReadQuestEntryWidget.cpp</a></li>
+    <li class="footer">생성시간 : 화 11월 25 2025 16:11:48, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
+</body>
+</html>

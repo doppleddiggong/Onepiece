@@ -1,0 +1,302 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>KLingo Project Documentation: Source/Onepiece/WidgetComponents/Private/UHoverButton.cpp 소스 파일</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript">
+window.MathJax = {
+  options: {
+    ignoreHtmlClass: 'tex2jax_ignore',
+    processHtmlClass: 'tex2jax_process'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<script type="text/javascript" src="darkmode_toggle.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">KLingo Project Documentation<span id="projectnumber">&#160;1.0.0</span>
+   </div>
+   <div id="projectbrief">Unreal Engine 5.6 C++ Project Documentation</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 다음에 의해 생성됨 :  Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','검색');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(0); });
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('UHoverButton_8cpp_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">로딩중...</div>
+<div class="SRStatus" id="Searching">검색중...</div>
+<div class="SRStatus" id="NoMatches">일치하는것 없음</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">UHoverButton.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="UHoverButton_8cpp.html">이 파일의 문서화 페이지로 가기</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;<a class="code" href="UHoverButton_8h.html">UHoverButton.h</a>&quot;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;Components/Button.h&quot;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;Components/Border.h&quot;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;Components/TextBlock.h&quot;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
+<div class="foldopen" id="foldopen00008" data-start="{" data-end="}">
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno"><a class="line" href="classUHoverButton.html#ac4bd19bf68fecc2d9effb088eebc99bc">    8</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUHoverButton.html#ac4bd19bf68fecc2d9effb088eebc99bc">UHoverButton::NativePreConstruct</a>()</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>{</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    Super::NativePreConstruct();</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    <a class="code hl_function" href="classUHoverButton.html#af04af24b8ab1eb2f9b264284b3858d86">ApplyStyle</a>();</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>}</div>
+</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="foldopen" id="foldopen00014" data-start="{" data-end="}">
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="classUHoverButton.html#a750463f69502a3e71e28c917c59950ea">   14</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUHoverButton.html#a750463f69502a3e71e28c917c59950ea">UHoverButton::NativeConstruct</a>()</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>{</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    Super::NativeConstruct();</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>   </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUHoverButton.html#af53cb133619b860ed621047903b79d1f">Button_Main</a>)</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    {</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        <a class="code hl_variable" href="classUHoverButton.html#af53cb133619b860ed621047903b79d1f">Button_Main</a>-&gt;OnHovered.AddDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUHoverButton.html#af632bfb8278f6e64318437bd758ac76e">UHoverButton::HandleHovered</a>);</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>        <a class="code hl_variable" href="classUHoverButton.html#af53cb133619b860ed621047903b79d1f">Button_Main</a>-&gt;OnUnhovered.AddDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUHoverButton.html#abb641982f85b45e5a61e2dc10c0f78cb">UHoverButton::HandleUnhovered</a>);</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        <a class="code hl_variable" href="classUHoverButton.html#af53cb133619b860ed621047903b79d1f">Button_Main</a>-&gt;OnPressed.AddDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUHoverButton.html#a6186a6dd9f13a49c8ecb643022737377">UHoverButton::HandlePressed</a>);</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        <a class="code hl_variable" href="classUHoverButton.html#af53cb133619b860ed621047903b79d1f">Button_Main</a>-&gt;OnReleased.AddDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUHoverButton.html#a1a5c452e769ac14214b2972e89b3884b">UHoverButton::HandleReleased</a>);</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        <a class="code hl_variable" href="classUHoverButton.html#af53cb133619b860ed621047903b79d1f">Button_Main</a>-&gt;OnClicked.AddDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUHoverButton.html#a78d21b0499f79a5fc4cf22744af63ed0">UHoverButton::HandleClicked</a>);</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    }</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>}</div>
+</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="foldopen" id="foldopen00028" data-start="{" data-end="}">
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="classUHoverButton.html#af04af24b8ab1eb2f9b264284b3858d86">   28</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUHoverButton.html#af04af24b8ab1eb2f9b264284b3858d86">UHoverButton::ApplyStyle</a>()</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>{</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classUHoverButton.html#a5e8eb5c34e7690eba3535bea7001e084">Text_Label</a>)</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="comment">// 텍스트 반영</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <a class="code hl_variable" href="classUHoverButton.html#a5e8eb5c34e7690eba3535bea7001e084">Text_Label</a>-&gt;SetText(<a class="code hl_variable" href="classUHoverButton.html#a63fdeb515c966c742a68fc61325111f2">LabelText</a>);</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="comment">// 폰트 크기 반영</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    FSlateFontInfo NewFont = <a class="code hl_variable" href="classUHoverButton.html#a5e8eb5c34e7690eba3535bea7001e084">Text_Label</a>-&gt;GetFont();</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    NewFont.OutlineSettings.OutlineSize = <a class="code hl_variable" href="classUHoverButton.html#a2b4700bb4fb8d923c0500b086f33a39d">FontOutlineSize</a>;     <span class="comment">// 원하는 외곽선 두께</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    NewFont.Size = <a class="code hl_variable" href="classUHoverButton.html#a1f36219bdcdf8782f6068aef9117424a">FontSize</a>;</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <a class="code hl_variable" href="classUHoverButton.html#a5e8eb5c34e7690eba3535bea7001e084">Text_Label</a>-&gt;SetFont(NewFont);</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="comment">// Normal 상태 기본 세팅</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <a class="code hl_variable" href="classUHoverButton.html#a5e8eb5c34e7690eba3535bea7001e084">Text_Label</a>-&gt;SetColorAndOpacity(<a class="code hl_variable" href="classUHoverButton.html#a9f0c73e14ac09f05f205f15ff72abf36">NormalTextColor</a>);</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <a class="code hl_variable" href="classUHoverButton.html#a3987f75658ea4c13d1fa521423e191d5">Border_BG</a>-&gt;SetBrushColor(<a class="code hl_variable" href="classUHoverButton.html#abee1e409c678eb77bb54e8fdd6f65271">NormalButtonColor</a>);</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>}</div>
+</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="foldopen" id="foldopen00047" data-start="{" data-end="}">
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="classUHoverButton.html#a19f78749a7d5a5a7e7d1d26c3b84f9f1">   47</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUHoverButton.html#a19f78749a7d5a5a7e7d1d26c3b84f9f1">UHoverButton::NativeTick</a>(<span class="keyword">const</span> FGeometry&amp; MyGeometry, <span class="keywordtype">float</span> InDeltaTime)</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>{</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    Super::NativeTick(MyGeometry, InDeltaTime);</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="comment">// 스케일 보간</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <a class="code hl_variable" href="classUHoverButton.html#ad3adaebdf420f7c37208a7bf82288edf">CurrentScale</a> = FMath::Vector2DInterpTo(<a class="code hl_variable" href="classUHoverButton.html#ad3adaebdf420f7c37208a7bf82288edf">CurrentScale</a>, <a class="code hl_variable" href="classUHoverButton.html#a2398d637f677184b35d50f2df8aa7d8d">TargetScale</a>, InDeltaTime, <a class="code hl_variable" href="classUHoverButton.html#ab59f09767f0334abd118dd1ecd7f16fc">LerpSpeed</a>);</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    SetRenderScale(<a class="code hl_variable" href="classUHoverButton.html#ad3adaebdf420f7c37208a7bf82288edf">CurrentScale</a>);</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>}</div>
+</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+<div class="foldopen" id="foldopen00056" data-start="{" data-end="}">
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="classUHoverButton.html#af632bfb8278f6e64318437bd758ac76e">   56</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUHoverButton.html#af632bfb8278f6e64318437bd758ac76e">UHoverButton::HandleHovered</a>()</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>{</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classUHoverButton.html#aa226d4e80231b5e13cb43c7ffb88570a">bEnabled</a>)</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    </div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <a class="code hl_variable" href="classUHoverButton.html#a2398d637f677184b35d50f2df8aa7d8d">TargetScale</a> = FVector2D(1.06f, 1.06f);   <span class="comment">// Hover 확대</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <a class="code hl_variable" href="classUHoverButton.html#a5d9bb5d080854ab1ebd63aaaab3a0c37">TargetBrightness</a> = 1.15f;</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <a class="code hl_variable" href="classUHoverButton.html#a5e8eb5c34e7690eba3535bea7001e084">Text_Label</a>-&gt;SetColorAndOpacity(<a class="code hl_variable" href="classUHoverButton.html#a207ba0caf0e2abd24084eedf69c45205">HoverTextColor</a>);</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    <a class="code hl_variable" href="classUHoverButton.html#a3987f75658ea4c13d1fa521423e191d5">Border_BG</a>-&gt;SetBrushColor(<a class="code hl_variable" href="classUHoverButton.html#aa1613f8687681535f17ab6cf8b5f4345">HoverButtonColor</a>);</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>}</div>
+</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
+<div class="foldopen" id="foldopen00067" data-start="{" data-end="}">
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="classUHoverButton.html#abb641982f85b45e5a61e2dc10c0f78cb">   67</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUHoverButton.html#abb641982f85b45e5a61e2dc10c0f78cb">UHoverButton::HandleUnhovered</a>()</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>{</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classUHoverButton.html#aa226d4e80231b5e13cb43c7ffb88570a">bEnabled</a>)</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    <a class="code hl_variable" href="classUHoverButton.html#a2398d637f677184b35d50f2df8aa7d8d">TargetScale</a> = FVector2D(1.0f, 1.0f);</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    <a class="code hl_variable" href="classUHoverButton.html#a5d9bb5d080854ab1ebd63aaaab3a0c37">TargetBrightness</a> = 1.0f;</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    <a class="code hl_variable" href="classUHoverButton.html#a5e8eb5c34e7690eba3535bea7001e084">Text_Label</a>-&gt;SetColorAndOpacity(<a class="code hl_variable" href="classUHoverButton.html#a9f0c73e14ac09f05f205f15ff72abf36">NormalTextColor</a>);</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    <a class="code hl_variable" href="classUHoverButton.html#a3987f75658ea4c13d1fa521423e191d5">Border_BG</a>-&gt;SetBrushColor(<a class="code hl_variable" href="classUHoverButton.html#abee1e409c678eb77bb54e8fdd6f65271">NormalButtonColor</a>);</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>}</div>
+</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
+<div class="foldopen" id="foldopen00078" data-start="{" data-end="}">
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno"><a class="line" href="classUHoverButton.html#a6186a6dd9f13a49c8ecb643022737377">   78</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUHoverButton.html#a6186a6dd9f13a49c8ecb643022737377">UHoverButton::HandlePressed</a>()</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>{</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classUHoverButton.html#aa226d4e80231b5e13cb43c7ffb88570a">bEnabled</a>)</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    </div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    <a class="code hl_variable" href="classUHoverButton.html#a2398d637f677184b35d50f2df8aa7d8d">TargetScale</a> = FVector2D(0.97f, 0.97f);      <span class="comment">// 눌리는 효과</span></div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    <a class="code hl_variable" href="classUHoverButton.html#a5e8eb5c34e7690eba3535bea7001e084">Text_Label</a>-&gt;SetColorAndOpacity(<a class="code hl_variable" href="classUHoverButton.html#a7adc17c16fce25a270933889e23e0f94">PressTextColor</a>);</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    <a class="code hl_variable" href="classUHoverButton.html#a3987f75658ea4c13d1fa521423e191d5">Border_BG</a>-&gt;SetBrushColor(<a class="code hl_variable" href="classUHoverButton.html#a1544723a1b04d904272ef89100c4bbd3">PressButtonColor</a>);</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>}</div>
+</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
+<div class="foldopen" id="foldopen00088" data-start="{" data-end="}">
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno"><a class="line" href="classUHoverButton.html#a1a5c452e769ac14214b2972e89b3884b">   88</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUHoverButton.html#a1a5c452e769ac14214b2972e89b3884b">UHoverButton::HandleReleased</a>()</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>{</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classUHoverButton.html#aa226d4e80231b5e13cb43c7ffb88570a">bEnabled</a>)</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUHoverButton.html#af53cb133619b860ed621047903b79d1f">Button_Main</a>-&gt;IsHovered())</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        <a class="code hl_function" href="classUHoverButton.html#af632bfb8278f6e64318437bd758ac76e">HandleHovered</a>();</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        <a class="code hl_function" href="classUHoverButton.html#abb641982f85b45e5a61e2dc10c0f78cb">HandleUnhovered</a>();</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>}</div>
+</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span> </div>
+<div class="foldopen" id="foldopen00099" data-start="{" data-end="}">
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno"><a class="line" href="classUHoverButton.html#a78d21b0499f79a5fc4cf22744af63ed0">   99</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUHoverButton.html#a78d21b0499f79a5fc4cf22744af63ed0">UHoverButton::HandleClicked</a>()</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>{</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classUHoverButton.html#aa226d4e80231b5e13cb43c7ffb88570a">bEnabled</a>)</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    </div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    <a class="code hl_variable" href="classUHoverButton.html#aa0342f25841a662df6599a83af1684b1">OnButtonClickedEvent</a>.Broadcast();</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>}</div>
+</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span> </div>
+<div class="foldopen" id="foldopen00107" data-start="{" data-end="}">
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno"><a class="line" href="classUHoverButton.html#a2b872a22b40847892cff55e6020d609a">  107</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUHoverButton.html#a2b872a22b40847892cff55e6020d609a">UHoverButton::SetButtonEnabled</a>(<span class="keywordtype">bool</span> bInEnabled)</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>{</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    <a class="code hl_variable" href="classUHoverButton.html#aa226d4e80231b5e13cb43c7ffb88570a">bEnabled</a> = bInEnabled;</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span> </div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    <a class="code hl_variable" href="classUHoverButton.html#af53cb133619b860ed621047903b79d1f">Button_Main</a>-&gt;SetIsEnabled(bInEnabled);</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span> </div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    <span class="keywordflow">if</span> (bInEnabled)</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    {</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>        <a class="code hl_variable" href="classUHoverButton.html#a2398d637f677184b35d50f2df8aa7d8d">TargetScale</a> = FVector2D(1.f, 1.f);</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>        <a class="code hl_variable" href="classUHoverButton.html#a5d9bb5d080854ab1ebd63aaaab3a0c37">TargetBrightness</a> = 1.f;</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span> </div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>        <span class="comment">// 상태가 다시 Normal이므로 색 복구</span></div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>        <a class="code hl_variable" href="classUHoverButton.html#a3987f75658ea4c13d1fa521423e191d5">Border_BG</a>-&gt;SetBrushColor(<a class="code hl_variable" href="classUHoverButton.html#abee1e409c678eb77bb54e8fdd6f65271">NormalButtonColor</a>);</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>        <a class="code hl_variable" href="classUHoverButton.html#a5e8eb5c34e7690eba3535bea7001e084">Text_Label</a>-&gt;SetColorAndOpacity(<a class="code hl_variable" href="classUHoverButton.html#a9f0c73e14ac09f05f205f15ff72abf36">NormalTextColor</a>);</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    }</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>    <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>    {</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>        <a class="code hl_variable" href="classUHoverButton.html#a2398d637f677184b35d50f2df8aa7d8d">TargetScale</a> = FVector2D(1.f, 1.f);</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>        <a class="code hl_variable" href="classUHoverButton.html#a5d9bb5d080854ab1ebd63aaaab3a0c37">TargetBrightness</a> = 0.4f;      <span class="comment">// Disable 톤 다운</span></div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span> </div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>        <span class="comment">// 비활성화 시 조금 어둡게</span></div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>        <a class="code hl_variable" href="classUHoverButton.html#a3987f75658ea4c13d1fa521423e191d5">Border_BG</a>-&gt;SetBrushColor(<a class="code hl_variable" href="classUHoverButton.html#abee1e409c678eb77bb54e8fdd6f65271">NormalButtonColor</a> * 0.5f);</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>        <a class="code hl_variable" href="classUHoverButton.html#a5e8eb5c34e7690eba3535bea7001e084">Text_Label</a>-&gt;SetColorAndOpacity(<a class="code hl_variable" href="classUHoverButton.html#a9f0c73e14ac09f05f205f15ff72abf36">NormalTextColor</a> * 0.5f);</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>    }</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>}</div>
+</div>
+<div class="ttc" id="aUHoverButton_8h_html"><div class="ttname"><a href="UHoverButton_8h.html">UHoverButton.h</a></div></div>
+<div class="ttc" id="aclassUHoverButton_html_a1544723a1b04d904272ef89100c4bbd3"><div class="ttname"><a href="classUHoverButton.html#a1544723a1b04d904272ef89100c4bbd3">UHoverButton::PressButtonColor</a></div><div class="ttdeci">FLinearColor PressButtonColor</div><div class="ttdef"><b>Definition</b> <a href="UHoverButton_8h_source.html#l00073">UHoverButton.h:73</a></div></div>
+<div class="ttc" id="aclassUHoverButton_html_a19f78749a7d5a5a7e7d1d26c3b84f9f1"><div class="ttname"><a href="classUHoverButton.html#a19f78749a7d5a5a7e7d1d26c3b84f9f1">UHoverButton::NativeTick</a></div><div class="ttdeci">virtual void NativeTick(const FGeometry &amp;MyGeometry, float InDeltaTime) override</div><div class="ttdef"><b>Definition</b> <a href="UHoverButton_8cpp_source.html#l00047">UHoverButton.cpp:47</a></div></div>
+<div class="ttc" id="aclassUHoverButton_html_a1a5c452e769ac14214b2972e89b3884b"><div class="ttname"><a href="classUHoverButton.html#a1a5c452e769ac14214b2972e89b3884b">UHoverButton::HandleReleased</a></div><div class="ttdeci">void HandleReleased()</div><div class="ttdef"><b>Definition</b> <a href="UHoverButton_8cpp_source.html#l00088">UHoverButton.cpp:88</a></div></div>
+<div class="ttc" id="aclassUHoverButton_html_a1f36219bdcdf8782f6068aef9117424a"><div class="ttname"><a href="classUHoverButton.html#a1f36219bdcdf8782f6068aef9117424a">UHoverButton::FontSize</a></div><div class="ttdeci">int32 FontSize</div><div class="ttdef"><b>Definition</b> <a href="UHoverButton_8h_source.html#l00051">UHoverButton.h:51</a></div></div>
+<div class="ttc" id="aclassUHoverButton_html_a207ba0caf0e2abd24084eedf69c45205"><div class="ttname"><a href="classUHoverButton.html#a207ba0caf0e2abd24084eedf69c45205">UHoverButton::HoverTextColor</a></div><div class="ttdeci">FLinearColor HoverTextColor</div><div class="ttdef"><b>Definition</b> <a href="UHoverButton_8h_source.html#l00060">UHoverButton.h:60</a></div></div>
+<div class="ttc" id="aclassUHoverButton_html_a2398d637f677184b35d50f2df8aa7d8d"><div class="ttname"><a href="classUHoverButton.html#a2398d637f677184b35d50f2df8aa7d8d">UHoverButton::TargetScale</a></div><div class="ttdeci">FVector2D TargetScale</div><div class="ttdef"><b>Definition</b> <a href="UHoverButton_8h_source.html#l00091">UHoverButton.h:91</a></div></div>
+<div class="ttc" id="aclassUHoverButton_html_a2b4700bb4fb8d923c0500b086f33a39d"><div class="ttname"><a href="classUHoverButton.html#a2b4700bb4fb8d923c0500b086f33a39d">UHoverButton::FontOutlineSize</a></div><div class="ttdeci">int32 FontOutlineSize</div><div class="ttdef"><b>Definition</b> <a href="UHoverButton_8h_source.html#l00054">UHoverButton.h:54</a></div></div>
+<div class="ttc" id="aclassUHoverButton_html_a2b872a22b40847892cff55e6020d609a"><div class="ttname"><a href="classUHoverButton.html#a2b872a22b40847892cff55e6020d609a">UHoverButton::SetButtonEnabled</a></div><div class="ttdeci">void SetButtonEnabled(bool bInEnabled)</div><div class="ttdef"><b>Definition</b> <a href="UHoverButton_8cpp_source.html#l00107">UHoverButton.cpp:107</a></div></div>
+<div class="ttc" id="aclassUHoverButton_html_a3987f75658ea4c13d1fa521423e191d5"><div class="ttname"><a href="classUHoverButton.html#a3987f75658ea4c13d1fa521423e191d5">UHoverButton::Border_BG</a></div><div class="ttdeci">class UBorder * Border_BG</div><div class="ttdef"><b>Definition</b> <a href="UHoverButton_8h_source.html#l00080">UHoverButton.h:80</a></div></div>
+<div class="ttc" id="aclassUHoverButton_html_a5d9bb5d080854ab1ebd63aaaab3a0c37"><div class="ttname"><a href="classUHoverButton.html#a5d9bb5d080854ab1ebd63aaaab3a0c37">UHoverButton::TargetBrightness</a></div><div class="ttdeci">float TargetBrightness</div><div class="ttdef"><b>Definition</b> <a href="UHoverButton_8h_source.html#l00092">UHoverButton.h:92</a></div></div>
+<div class="ttc" id="aclassUHoverButton_html_a5e8eb5c34e7690eba3535bea7001e084"><div class="ttname"><a href="classUHoverButton.html#a5e8eb5c34e7690eba3535bea7001e084">UHoverButton::Text_Label</a></div><div class="ttdeci">class UTextBlock * Text_Label</div><div class="ttdef"><b>Definition</b> <a href="UHoverButton_8h_source.html#l00083">UHoverButton.h:83</a></div></div>
+<div class="ttc" id="aclassUHoverButton_html_a6186a6dd9f13a49c8ecb643022737377"><div class="ttname"><a href="classUHoverButton.html#a6186a6dd9f13a49c8ecb643022737377">UHoverButton::HandlePressed</a></div><div class="ttdeci">void HandlePressed()</div><div class="ttdef"><b>Definition</b> <a href="UHoverButton_8cpp_source.html#l00078">UHoverButton.cpp:78</a></div></div>
+<div class="ttc" id="aclassUHoverButton_html_a63fdeb515c966c742a68fc61325111f2"><div class="ttname"><a href="classUHoverButton.html#a63fdeb515c966c742a68fc61325111f2">UHoverButton::LabelText</a></div><div class="ttdeci">FText LabelText</div><div class="ttdef"><b>Definition</b> <a href="UHoverButton_8h_source.html#l00048">UHoverButton.h:48</a></div></div>
+<div class="ttc" id="aclassUHoverButton_html_a750463f69502a3e71e28c917c59950ea"><div class="ttname"><a href="classUHoverButton.html#a750463f69502a3e71e28c917c59950ea">UHoverButton::NativeConstruct</a></div><div class="ttdeci">virtual void NativeConstruct() override</div><div class="ttdef"><b>Definition</b> <a href="UHoverButton_8cpp_source.html#l00014">UHoverButton.cpp:14</a></div></div>
+<div class="ttc" id="aclassUHoverButton_html_a78d21b0499f79a5fc4cf22744af63ed0"><div class="ttname"><a href="classUHoverButton.html#a78d21b0499f79a5fc4cf22744af63ed0">UHoverButton::HandleClicked</a></div><div class="ttdeci">void HandleClicked()</div><div class="ttdef"><b>Definition</b> <a href="UHoverButton_8cpp_source.html#l00099">UHoverButton.cpp:99</a></div></div>
+<div class="ttc" id="aclassUHoverButton_html_a7adc17c16fce25a270933889e23e0f94"><div class="ttname"><a href="classUHoverButton.html#a7adc17c16fce25a270933889e23e0f94">UHoverButton::PressTextColor</a></div><div class="ttdeci">FLinearColor PressTextColor</div><div class="ttdef"><b>Definition</b> <a href="UHoverButton_8h_source.html#l00063">UHoverButton.h:63</a></div></div>
+<div class="ttc" id="aclassUHoverButton_html_a9f0c73e14ac09f05f205f15ff72abf36"><div class="ttname"><a href="classUHoverButton.html#a9f0c73e14ac09f05f205f15ff72abf36">UHoverButton::NormalTextColor</a></div><div class="ttdeci">FLinearColor NormalTextColor</div><div class="ttdef"><b>Definition</b> <a href="UHoverButton_8h_source.html#l00057">UHoverButton.h:57</a></div></div>
+<div class="ttc" id="aclassUHoverButton_html_aa0342f25841a662df6599a83af1684b1"><div class="ttname"><a href="classUHoverButton.html#aa0342f25841a662df6599a83af1684b1">UHoverButton::OnButtonClickedEvent</a></div><div class="ttdeci">FOnHoverButtonClickedEvent OnButtonClickedEvent</div><div class="ttdef"><b>Definition</b> <a href="UHoverButton_8h_source.html#l00045">UHoverButton.h:45</a></div></div>
+<div class="ttc" id="aclassUHoverButton_html_aa1613f8687681535f17ab6cf8b5f4345"><div class="ttname"><a href="classUHoverButton.html#aa1613f8687681535f17ab6cf8b5f4345">UHoverButton::HoverButtonColor</a></div><div class="ttdeci">FLinearColor HoverButtonColor</div><div class="ttdef"><b>Definition</b> <a href="UHoverButton_8h_source.html#l00070">UHoverButton.h:70</a></div></div>
+<div class="ttc" id="aclassUHoverButton_html_aa226d4e80231b5e13cb43c7ffb88570a"><div class="ttname"><a href="classUHoverButton.html#aa226d4e80231b5e13cb43c7ffb88570a">UHoverButton::bEnabled</a></div><div class="ttdeci">bool bEnabled</div><div class="ttdef"><b>Definition</b> <a href="UHoverButton_8h_source.html#l00097">UHoverButton.h:97</a></div></div>
+<div class="ttc" id="aclassUHoverButton_html_ab59f09767f0334abd118dd1ecd7f16fc"><div class="ttname"><a href="classUHoverButton.html#ab59f09767f0334abd118dd1ecd7f16fc">UHoverButton::LerpSpeed</a></div><div class="ttdeci">float LerpSpeed</div><div class="ttdef"><b>Definition</b> <a href="UHoverButton_8h_source.html#l00095">UHoverButton.h:95</a></div></div>
+<div class="ttc" id="aclassUHoverButton_html_abb641982f85b45e5a61e2dc10c0f78cb"><div class="ttname"><a href="classUHoverButton.html#abb641982f85b45e5a61e2dc10c0f78cb">UHoverButton::HandleUnhovered</a></div><div class="ttdeci">void HandleUnhovered()</div><div class="ttdef"><b>Definition</b> <a href="UHoverButton_8cpp_source.html#l00067">UHoverButton.cpp:67</a></div></div>
+<div class="ttc" id="aclassUHoverButton_html_abee1e409c678eb77bb54e8fdd6f65271"><div class="ttname"><a href="classUHoverButton.html#abee1e409c678eb77bb54e8fdd6f65271">UHoverButton::NormalButtonColor</a></div><div class="ttdeci">FLinearColor NormalButtonColor</div><div class="ttdef"><b>Definition</b> <a href="UHoverButton_8h_source.html#l00067">UHoverButton.h:67</a></div></div>
+<div class="ttc" id="aclassUHoverButton_html_ac4bd19bf68fecc2d9effb088eebc99bc"><div class="ttname"><a href="classUHoverButton.html#ac4bd19bf68fecc2d9effb088eebc99bc">UHoverButton::NativePreConstruct</a></div><div class="ttdeci">virtual void NativePreConstruct() override</div><div class="ttdef"><b>Definition</b> <a href="UHoverButton_8cpp_source.html#l00008">UHoverButton.cpp:8</a></div></div>
+<div class="ttc" id="aclassUHoverButton_html_ad3adaebdf420f7c37208a7bf82288edf"><div class="ttname"><a href="classUHoverButton.html#ad3adaebdf420f7c37208a7bf82288edf">UHoverButton::CurrentScale</a></div><div class="ttdeci">FVector2D CurrentScale</div><div class="ttdef"><b>Definition</b> <a href="UHoverButton_8h_source.html#l00087">UHoverButton.h:87</a></div></div>
+<div class="ttc" id="aclassUHoverButton_html_af04af24b8ab1eb2f9b264284b3858d86"><div class="ttname"><a href="classUHoverButton.html#af04af24b8ab1eb2f9b264284b3858d86">UHoverButton::ApplyStyle</a></div><div class="ttdeci">void ApplyStyle()</div><div class="ttdef"><b>Definition</b> <a href="UHoverButton_8cpp_source.html#l00028">UHoverButton.cpp:28</a></div></div>
+<div class="ttc" id="aclassUHoverButton_html_af53cb133619b860ed621047903b79d1f"><div class="ttname"><a href="classUHoverButton.html#af53cb133619b860ed621047903b79d1f">UHoverButton::Button_Main</a></div><div class="ttdeci">class UButton * Button_Main</div><div class="ttdef"><b>Definition</b> <a href="UHoverButton_8h_source.html#l00077">UHoverButton.h:77</a></div></div>
+<div class="ttc" id="aclassUHoverButton_html_af632bfb8278f6e64318437bd758ac76e"><div class="ttname"><a href="classUHoverButton.html#af632bfb8278f6e64318437bd758ac76e">UHoverButton::HandleHovered</a></div><div class="ttdeci">void HandleHovered()</div><div class="ttdef"><b>Definition</b> <a href="UHoverButton_8cpp_source.html#l00056">UHoverButton.cpp:56</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_b6750dbdff08df84555f1c91e851278f.html">WidgetComponents</a></li><li class="navelem"><a class="el" href="dir_f37bb5af0a6b6a37fa69422f56c0ab7c.html">Private</a></li><li class="navelem"><a class="el" href="UHoverButton_8cpp.html">UHoverButton.cpp</a></li>
+    <li class="footer">생성시간 : 화 11월 25 2025 16:11:48, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
+</body>
+</html>

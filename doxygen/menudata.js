@@ -139,7 +139,14 @@ var menudata={children:[
 {text:"s",url:"globals.html#index_s"},
 {text:"v",url:"globals.html#index_v"},
 {text:"w",url:"globals.html#index_w"}]},
-{text:"함수",url:"globals_func.html"},
+{text:"함수",url:"globals_func.html",children:[
+{text:"a",url:"globals_func.html#index_a"},
+{text:"c",url:"globals_func.html#index_c"},
+{text:"d",url:"globals_func.html#index_d"},
+{text:"g",url:"globals_func.html#index_g"},
+{text:"i",url:"globals_func.html#index_i"},
+{text:"r",url:"globals_func.html#index_r"},
+{text:"w",url:"globals_func.html#index_w"}]},
 {text:"변수",url:"globals_vars.html"},
 {text:"열거형 타입",url:"globals_enum.html"},
 {text:"매크로",url:"globals_defs.html",children:[

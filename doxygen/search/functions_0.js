@@ -28,5 +28,8 @@ var searchData=
   ['appendutf8_25',['AppendUtf8',['../classFHttpMultipartFormData.html#a45725b7f05bae49e0c6db3d24c6342ee',1,'FHttpMultipartFormData']]],
   ['applyarcsolution_26',['applyarcsolution',['../structFParabolaBallisticTrack.html#a37af96db8c53c5e99ea5e0634cc6ef17',1,'FParabolaBallisticTrack::ApplyArcSolution()'],['../structFParabolaGeometricTrack.html#ad11200fe6fac153fe60c04cdaf02afe9',1,'FParabolaGeometricTrack::ApplyArcSolution()']]],
   ['applyease_27',['ApplyEase',['../UEaseFunctionLibrary_8cpp.html#ab52a811d7352aa71f72330819491dc0c',1,'UEaseFunctionLibrary.cpp']]],
-  ['aweightswitch_28',['AWeightSwitch',['../classAWeightSwitch.html#a6fd6bc2fe2d5bb7d408aee25adeca245',1,'AWeightSwitch']]]
+  ['applystyle_28',['applystyle',['../classUHoverButton.html#af04af24b8ab1eb2f9b264284b3858d86',1,'UHoverButton::ApplyStyle()'],['../classUImageButton.html#aa15e0db6eb95e5c65f0c98dd434aa941',1,'UImageButton::ApplyStyle()']]],
+  ['applysymbolcolor_29',['ApplySymbolColor',['../classUTextureButton.html#a2fd3408228fae69f8ce876b027aef1b2',1,'UTextureButton']]],
+  ['applytextures_30',['ApplyTextures',['../classUTextureButton.html#a75d8d7f850efb5dc16b1eaf457c28674',1,'UTextureButton']]],
+  ['aweightswitch_31',['AWeightSwitch',['../classAWeightSwitch.html#a6fd6bc2fe2d5bb7d408aee25adeca245',1,'AWeightSwitch']]]
 ];

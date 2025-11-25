@@ -8,6 +8,7 @@ var dir_86991fbdc3ffccad5ecdd4bba46f6ea3 =
     [ "Prop", "dir_2268d321c547a1269f0f0801cfba1f77.html", "dir_2268d321c547a1269f0f0801cfba1f77" ],
     [ "UI", "dir_55b064ed9f704d76d3805f2fda876350.html", "dir_55b064ed9f704d76d3805f2fda876350" ],
     [ "Voice", "dir_73ed0ee482f9021ceb3f842221665267.html", "dir_73ed0ee482f9021ceb3f842221665267" ],
+    [ "WidgetComponents", "dir_b6750dbdff08df84555f1c91e851278f.html", "dir_b6750dbdff08df84555f1c91e851278f" ],
     [ "Onepiece.cpp", "Onepiece_8cpp.html", "Onepiece_8cpp" ],
     [ "Onepiece.h", "Onepiece_8h.html", "Onepiece_8h" ]
 ];

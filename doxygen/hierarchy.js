@@ -52,6 +52,7 @@ var hierarchy =
     [ "FQuestReadInfo", "structFQuestReadInfo.html", null ],
     [ "FQuestSpeakInfo", "structFQuestSpeakInfo.html", null ],
     [ "FQuestWriteInfo", "structFQuestWriteInfo.html", null ],
+    [ "FReadQuestResult", "structFReadQuestResult.html", null ],
     [ "FReadTargetData", "structFReadTargetData.html", null ],
     [ "FResponseHealth", "structFResponseHealth.html", null ],
     [ "FResponseOcrExtract", "structFResponseOcrExtract.html", null ],
@@ -127,18 +128,25 @@ var hierarchy =
     [ "ULocalPlayerSubsystem", null, [
       [ "UDialogManager", "classUDialogManager.html", null ],
       [ "ULoadingCircleManager", "classULoadingCircleManager.html", null ],
-      [ "UMessageBoxManager", "classUMessageBoxManager.html", null ]
+      [ "UPopupManager", "classUPopupManager.html", null ]
     ] ],
     [ "UUserWidget", null, [
       [ "UDialogWidget", "classUDialogWidget.html", null ],
       [ "UDrawingBoardWidget", "classUDrawingBoardWidget.html", null ],
+      [ "UHoverButton", "classUHoverButton.html", null ],
+      [ "UImageButton", "classUImageButton.html", null ],
       [ "ULoadginCircle", "classULoadginCircle.html", null ],
       [ "ULobbyWidget", "classULobbyWidget.html", null ],
       [ "UMainWidget", "classUMainWidget.html", null ],
       [ "UMessageBox", "classUMessageBox.html", null ],
       [ "UPlayTimer", "classUPlayTimer.html", null ],
+      [ "UPopup_InputMsg", "classUPopup__InputMsg.html", null ],
+      [ "UPopup_MsgBox", "classUPopup__MsgBox.html", null ],
+      [ "UReadQuestEntryWidget", "classUReadQuestEntryWidget.html", null ],
+      [ "UReadQuestWidget", "classUReadQuestWidget.html", null ],
       [ "USessionInfoWidget", "classUSessionInfoWidget.html", null ],
       [ "UStartWidget", "classUStartWidget.html", null ],
-      [ "UStateWidget", "classUStateWidget.html", null ]
+      [ "UStateWidget", "classUStateWidget.html", null ],
+      [ "UTextureButton", "classUTextureButton.html", null ]
     ] ]
 ];

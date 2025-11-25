@@ -6,6 +6,7 @@ var NetworkData_8h =
     [ "FQuestReadInfo", "structFQuestReadInfo.html", "structFQuestReadInfo" ],
     [ "FQuestSpeakInfo", "structFQuestSpeakInfo.html", "structFQuestSpeakInfo" ],
     [ "FQuestWriteInfo", "structFQuestWriteInfo.html", "structFQuestWriteInfo" ],
+    [ "FReadQuestResult", "structFReadQuestResult.html", "structFReadQuestResult" ],
     [ "FReadTargetData", "structFReadTargetData.html", "structFReadTargetData" ],
     [ "FResponseHealth", "structFResponseHealth.html", "structFResponseHealth" ],
     [ "FResponseOcrExtract", "structFResponseOcrExtract.html", "structFResponseOcrExtract" ],
@@ -18,6 +19,11 @@ var NetworkData_8h =
     [ "FWordData", "structFWordData.html", "structFWordData" ],
     [ "FWriteTargetData", "structFWriteTargetData.html", "structFWriteTargetData" ],
     [ "FWriteTeachData", "structFWriteTeachData.html", "structFWriteTeachData" ],
+    [ "EReadQuestRole", "NetworkData_8h.html#a2798a9fa176a1ddb262869e791949226", [
+      [ "UMETA", "NetworkData_8h.html#a2798a9fa176a1ddb262869e791949226aa3f80d8f0f1b4ffa8c475f5d60ea5635", null ],
+      [ "UMETA", "NetworkData_8h.html#a2798a9fa176a1ddb262869e791949226aa3f80d8f0f1b4ffa8c475f5d60ea5635", null ],
+      [ "UMETA", "NetworkData_8h.html#a2798a9fa176a1ddb262869e791949226aa3f80d8f0f1b4ffa8c475f5d60ea5635", null ]
+    ] ],
     [ "DECLARE_DELEGATE_TwoParams", "NetworkData_8h.html#a176f0d72d06ab65295baec529c15ad9f", null ],
     [ "DECLARE_DELEGATE_TwoParams", "NetworkData_8h.html#a81712875ee240f63d517de6759568ba2", null ],
     [ "DECLARE_DELEGATE_TwoParams", "NetworkData_8h.html#a1e62b95dd0fd6eed28382b95d4e43872", null ],

@@ -1,6 +1,10 @@
 var classANetworkTesterActor =
 [
     [ "ANetworkTesterActor", "classANetworkTesterActor.html#add47c5b8d704c70533ebebc39066b9a1", null ],
+    [ "OKCancelMsgBox", "classANetworkTesterActor.html#a82768e2a7414ecbc888c28f6d064f942", null ],
+    [ "OKMsgBox", "classANetworkTesterActor.html#acaa8b4e1d931888aac3b7dd5d2fef84e", null ],
+    [ "OnCancel", "classANetworkTesterActor.html#a2fdadabea62d13c458cd1caafd96d114", null ],
+    [ "OnOK", "classANetworkTesterActor.html#a450d217dbb1fc9390310dcd76f2c7c4a", null ],
     [ "OnResponseOcrExtract", "classANetworkTesterActor.html#ac23b44a6599461d44c6335a9c641b5fb", null ],
     [ "OnResponseScenario", "classANetworkTesterActor.html#a7478bcc337e5700b97371a743a41bdb6", null ],
     [ "OnResponseSpeakingQuestions", "classANetworkTesterActor.html#a3ffbd32884d9184f60c106ef83015497", null ],
@@ -13,7 +17,7 @@ var classANetworkTesterActor =
     [ "RequestUserMe", "classANetworkTesterActor.html#aebbe22fc01a47b44f20c3dc5f35aceed", null ],
     [ "RequestUserRegister", "classANetworkTesterActor.html#ae53f27ab3ca6671a7c55a14c055d03a3", null ],
     [ "RequestUserToken", "classANetworkTesterActor.html#a809947b71f79e9024a44a62d0cc20a90", null ],
-    [ "SendToastMessage", "classANetworkTesterActor.html#a80d713e810c0a75f1192667f656bddc1", null ],
+    [ "ToastMsg", "classANetworkTesterActor.html#a92c7ada2dcfb55514924d82672b19f54", null ],
     [ "OcrImagePath", "classANetworkTesterActor.html#a2364f342501971f4ad5935cd3265898f", null ],
     [ "ScenarioDifficulty", "classANetworkTesterActor.html#af3bc9d0671438a2c3e914701fba309a1", null ],
     [ "ScenarioIndex", "classANetworkTesterActor.html#ab440b96d9824011aac1019caecca674a", null ],

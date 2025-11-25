@@ -7,11 +7,13 @@ var searchData=
   ['eforwardaxis_4',['EForwardAxis',['../UParabolaComponent_8h.html#a160b3db1967ea71bee24abc7f977594f',1,'UParabolaComponent.h']]],
   ['egamesoundtype_5',['EGameSoundType',['../EGameSoundType_8h.html#af4a7536fe94049720d6e9d21c1b2ec80',1,'EGameSoundType.h']]],
   ['einteractiontype_6',['EInteractionType',['../InteractableComponent_8h.html#a02a4406ffa507701cdc869e603666e99',1,'InteractableComponent.h']]],
-  ['emessageboxtype_7',['EMessageBoxType',['../MessageBoxManager_8h.html#a38a97724405ce918aae659b98be1ff60',1,'MessageBoxManager.h']]],
-  ['emontagetype_8',['EMontageType',['../EMontageType_8h.html#a33d4f5f333936ce33b59c38e89382372',1,'EMontageType.h']]],
+  ['emontagetype_7',['EMontageType',['../EMontageType_8h.html#a33d4f5f333936ce33b59c38e89382372',1,'EMontageType.h']]],
+  ['emsgboxtype_8',['EMsgBoxType',['../UPopup__MsgBox_8h.html#a19e1d6071fbd1a8d0f3a0ac7c630df51',1,'UPopup_MsgBox.h']]],
   ['enetworklogtype_9',['ENetworkLogType',['../ENetworkLogType_8h.html#a80aaa513e01d2ec2d4421835b09d691f',1,'ENetworkLogType.h']]],
   ['eparabolatype_10',['EParabolaType',['../UParabolaComponent_8h.html#acb24f37a1795b5e9dfdbb98be4898712',1,'UParabolaComponent.h']]],
   ['eplayerrole_11',['EPlayerRole',['../ULingoGameInstance_8h.html#a19b0ebcc430a73c898b86a0c19a1d74c',1,'ULingoGameInstance.h']]],
-  ['eservermode_12',['EServerMode',['../UCustomNetworkSettings_8h.html#a79cfeb7c9f94018b98c2415dc06d4577',1,'UCustomNetworkSettings.h']]],
-  ['evfxtype_13',['EVFXType',['../EVFXType_8h.html#af8435b1c8c0e40b2bbdf03bb1ca6b4db',1,'EVFXType.h']]]
+  ['epopuptype_12',['EPopupType',['../UPopupManager_8h.html#a3c98e5bec1eb6dee36b07ed62d8fc635',1,'UPopupManager.h']]],
+  ['ereadquestrole_13',['EReadQuestRole',['../NetworkData_8h.html#a2798a9fa176a1ddb262869e791949226',1,'NetworkData.h']]],
+  ['eservermode_14',['EServerMode',['../UCustomNetworkSettings_8h.html#a79cfeb7c9f94018b98c2415dc06d4577',1,'UCustomNetworkSettings.h']]],
+  ['evfxtype_15',['EVFXType',['../EVFXType_8h.html#af8435b1c8c0e40b2bbdf03bb1ca6b4db',1,'EVFXType.h']]]
 ];

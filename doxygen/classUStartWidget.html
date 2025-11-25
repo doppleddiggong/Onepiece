@@ -123,7 +123,7 @@ $(document).ready(function(){initNavTree('classUStartWidget.html',''); initResiz
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classUStartWidget__coll__graph.svg" width="160" height="250"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classUStartWidget__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -135,10 +135,10 @@ Public 멤버 함수</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public 속성</h2></td></tr>
-<tr class="memitem:ac0cc4f70d134abec5cbceb7394c80d85" id="r_ac0cc4f70d134abec5cbceb7394c80d85"><td class="memItemLeft" align="right" valign="top">class UButton *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUStartWidget.html#ac0cc4f70d134abec5cbceb7394c80d85">Btn_Regist</a></td></tr>
-<tr class="separator:ac0cc4f70d134abec5cbceb7394c80d85"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ace150e215107029cd953ad9e7abb65dc" id="r_ace150e215107029cd953ad9e7abb65dc"><td class="memItemLeft" align="right" valign="top">class UButton *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUStartWidget.html#ace150e215107029cd953ad9e7abb65dc">Btn_Start</a></td></tr>
-<tr class="separator:ace150e215107029cd953ad9e7abb65dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a136e702afc103156b9a11938e7ea1308" id="r_a136e702afc103156b9a11938e7ea1308"><td class="memItemLeft" align="right" valign="top">class <a class="el" href="classUHoverButton.html">UHoverButton</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUStartWidget.html#a136e702afc103156b9a11938e7ea1308">HoverBtn_Regist</a></td></tr>
+<tr class="separator:a136e702afc103156b9a11938e7ea1308"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af66e89c351e14fed252ae2f8f971bfd5" id="r_af66e89c351e14fed252ae2f8f971bfd5"><td class="memItemLeft" align="right" valign="top">class <a class="el" href="classUHoverButton.html">UHoverButton</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUStartWidget.html#af66e89c351e14fed252ae2f8f971bfd5">HoverBtn_Start</a></td></tr>
+<tr class="separator:af66e89c351e14fed252ae2f8f971bfd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected 멤버 함수</h2></td></tr>
@@ -172,32 +172,33 @@ Protected 멤버 함수</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="StartWidget_8cpp_source.html">StartWidget.cpp</a> 파일의 <a class="el" href="StartWidget_8cpp_source.html#l00012">12</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   13</span>{</div>
-<div class="line"><span class="lineno">   14</span>    Super::NativeConstruct();</div>
-<div class="line"><span class="lineno">   15</span> </div>
-<div class="line"><span class="lineno">   16</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUStartWidget.html#ace150e215107029cd953ad9e7abb65dc">Btn_Start</a>)</div>
-<div class="line"><span class="lineno">   17</span>    {</div>
-<div class="line"><span class="lineno">   18</span>        <a class="code hl_variable" href="classUStartWidget.html#ace150e215107029cd953ad9e7abb65dc">Btn_Start</a>-&gt;OnPressed.AddDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUStartWidget.html#afc91ca927780f90dd9041c5e5de32c74">UStartWidget::OnStartPressed</a>);</div>
-<div class="line"><span class="lineno">   19</span>    }</div>
-<div class="line"><span class="lineno">   20</span> </div>
-<div class="line"><span class="lineno">   21</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUStartWidget.html#ac0cc4f70d134abec5cbceb7394c80d85">Btn_Regist</a>)</div>
-<div class="line"><span class="lineno">   22</span>    {</div>
-<div class="line"><span class="lineno">   23</span>        <a class="code hl_variable" href="classUStartWidget.html#ac0cc4f70d134abec5cbceb7394c80d85">Btn_Regist</a>-&gt;OnPressed.AddDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUStartWidget.html#a748ed011e4d7b9593458c469ec5d208e">UStartWidget::OnRegistPressed</a>);</div>
-<div class="line"><span class="lineno">   24</span>    }</div>
-<div class="line"><span class="lineno">   25</span>}</div>
-<div class="ttc" id="aclassUStartWidget_html_a748ed011e4d7b9593458c469ec5d208e"><div class="ttname"><a href="classUStartWidget.html#a748ed011e4d7b9593458c469ec5d208e">UStartWidget::OnRegistPressed</a></div><div class="ttdeci">void OnRegistPressed()</div><div class="ttdef"><b>Definition</b> <a href="StartWidget_8cpp_source.html#l00037">StartWidget.cpp:37</a></div></div>
-<div class="ttc" id="aclassUStartWidget_html_ac0cc4f70d134abec5cbceb7394c80d85"><div class="ttname"><a href="classUStartWidget.html#ac0cc4f70d134abec5cbceb7394c80d85">UStartWidget::Btn_Regist</a></div><div class="ttdeci">class UButton * Btn_Regist</div><div class="ttdef"><b>Definition</b> <a href="StartWidget_8h_source.html#l00026">StartWidget.h:26</a></div></div>
-<div class="ttc" id="aclassUStartWidget_html_ace150e215107029cd953ad9e7abb65dc"><div class="ttname"><a href="classUStartWidget.html#ace150e215107029cd953ad9e7abb65dc">UStartWidget::Btn_Start</a></div><div class="ttdeci">class UButton * Btn_Start</div><div class="ttdef"><b>Definition</b> <a href="StartWidget_8h_source.html#l00023">StartWidget.h:23</a></div></div>
-<div class="ttc" id="aclassUStartWidget_html_afc91ca927780f90dd9041c5e5de32c74"><div class="ttname"><a href="classUStartWidget.html#afc91ca927780f90dd9041c5e5de32c74">UStartWidget::OnStartPressed</a></div><div class="ttdeci">void OnStartPressed()</div><div class="ttdef"><b>Definition</b> <a href="StartWidget_8cpp_source.html#l00027">StartWidget.cpp:27</a></div></div>
+<p class="definition"><a class="el" href="StartWidget_8cpp_source.html">StartWidget.cpp</a> 파일의 <a class="el" href="StartWidget_8cpp_source.html#l00010">10</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   11</span>{</div>
+<div class="line"><span class="lineno">   12</span>    Super::NativeConstruct();</div>
+<div class="line"><span class="lineno">   13</span> </div>
+<div class="line"><span class="lineno">   14</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUStartWidget.html#af66e89c351e14fed252ae2f8f971bfd5">HoverBtn_Start</a>)</div>
+<div class="line"><span class="lineno">   15</span>    {</div>
+<div class="line"><span class="lineno">   16</span>        <a class="code hl_variable" href="classUStartWidget.html#af66e89c351e14fed252ae2f8f971bfd5">HoverBtn_Start</a>-&gt;<a class="code hl_variable" href="classUHoverButton.html#aa0342f25841a662df6599a83af1684b1">OnButtonClickedEvent</a>.AddDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUStartWidget.html#afc91ca927780f90dd9041c5e5de32c74">UStartWidget::OnStartPressed</a>);</div>
+<div class="line"><span class="lineno">   17</span>    }</div>
+<div class="line"><span class="lineno">   18</span> </div>
+<div class="line"><span class="lineno">   19</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUStartWidget.html#a136e702afc103156b9a11938e7ea1308">HoverBtn_Regist</a>)</div>
+<div class="line"><span class="lineno">   20</span>    {</div>
+<div class="line"><span class="lineno">   21</span>        <a class="code hl_variable" href="classUStartWidget.html#a136e702afc103156b9a11938e7ea1308">HoverBtn_Regist</a>-&gt;<a class="code hl_variable" href="classUHoverButton.html#aa0342f25841a662df6599a83af1684b1">OnButtonClickedEvent</a>.AddDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUStartWidget.html#a748ed011e4d7b9593458c469ec5d208e">UStartWidget::OnRegistPressed</a>);</div>
+<div class="line"><span class="lineno">   22</span>    }</div>
+<div class="line"><span class="lineno">   23</span>}</div>
+<div class="ttc" id="aclassUHoverButton_html_aa0342f25841a662df6599a83af1684b1"><div class="ttname"><a href="classUHoverButton.html#aa0342f25841a662df6599a83af1684b1">UHoverButton::OnButtonClickedEvent</a></div><div class="ttdeci">FOnHoverButtonClickedEvent OnButtonClickedEvent</div><div class="ttdef"><b>Definition</b> <a href="UHoverButton_8h_source.html#l00045">UHoverButton.h:45</a></div></div>
+<div class="ttc" id="aclassUStartWidget_html_a136e702afc103156b9a11938e7ea1308"><div class="ttname"><a href="classUStartWidget.html#a136e702afc103156b9a11938e7ea1308">UStartWidget::HoverBtn_Regist</a></div><div class="ttdeci">class UHoverButton * HoverBtn_Regist</div><div class="ttdef"><b>Definition</b> <a href="StartWidget_8h_source.html#l00026">StartWidget.h:26</a></div></div>
+<div class="ttc" id="aclassUStartWidget_html_a748ed011e4d7b9593458c469ec5d208e"><div class="ttname"><a href="classUStartWidget.html#a748ed011e4d7b9593458c469ec5d208e">UStartWidget::OnRegistPressed</a></div><div class="ttdeci">void OnRegistPressed()</div><div class="ttdef"><b>Definition</b> <a href="StartWidget_8cpp_source.html#l00036">StartWidget.cpp:36</a></div></div>
+<div class="ttc" id="aclassUStartWidget_html_af66e89c351e14fed252ae2f8f971bfd5"><div class="ttname"><a href="classUStartWidget.html#af66e89c351e14fed252ae2f8f971bfd5">UStartWidget::HoverBtn_Start</a></div><div class="ttdeci">class UHoverButton * HoverBtn_Start</div><div class="ttdef"><b>Definition</b> <a href="StartWidget_8h_source.html#l00023">StartWidget.h:23</a></div></div>
+<div class="ttc" id="aclassUStartWidget_html_afc91ca927780f90dd9041c5e5de32c74"><div class="ttname"><a href="classUStartWidget.html#afc91ca927780f90dd9041c5e5de32c74">UStartWidget::OnStartPressed</a></div><div class="ttdeci">void OnStartPressed()</div><div class="ttdef"><b>Definition</b> <a href="StartWidget_8cpp_source.html#l00025">StartWidget.cpp:25</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="StartWidget_8h_source.html#l00026">Btn_Regist</a>, <a class="el" href="StartWidget_8h_source.html#l00023">Btn_Start</a>, <a class="el" href="StartWidget_8cpp_source.html#l00037">OnRegistPressed()</a>, <a class="el" href="StartWidget_8cpp_source.html#l00027">OnStartPressed()</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="StartWidget_8h_source.html#l00026">HoverBtn_Regist</a>, <a class="el" href="StartWidget_8h_source.html#l00023">HoverBtn_Start</a>, <a class="el" href="UHoverButton_8h_source.html#l00045">UHoverButton::OnButtonClickedEvent</a>, <a class="el" href="StartWidget_8cpp_source.html#l00036">OnRegistPressed()</a>, <a class="el" href="StartWidget_8cpp_source.html#l00025">OnStartPressed()</a>.</p>
 <div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-2-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classUStartWidget_acd4b87b1eecd9e9960a43aba79fd333c_cgraph.svg" width="100%" height="548"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classUStartWidget_acd4b87b1eecd9e9960a43aba79fd333c_cgraph.svg" width="508" height="86"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -217,34 +218,23 @@ Protected 멤버 함수</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="StartWidget_8cpp_source.html">StartWidget.cpp</a> 파일의 <a class="el" href="StartWidget_8cpp_source.html#l00037">37</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   38</span>{</div>
-<div class="line"><span class="lineno">   39</span>    <span class="comment">// 가입</span></div>
-<div class="line"><span class="lineno">   40</span>    <a class="code hl_class" href="classUMessageBoxManager.html">UMessageBoxManager</a>* MB = UMessageBoxManager::Get(GetWorld());</div>
-<div class="line"><span class="lineno">   41</span>    <span class="keywordflow">if</span> (MB)</div>
-<div class="line"><span class="lineno">   42</span>    {</div>
-<div class="line"><span class="lineno">   43</span>        MB-&gt;<a class="code hl_function" href="classUMessageBoxManager.html#a0d71f6cd4f1f48c2b468fd995adb3812">ShowMessageBox</a>(<a class="code hl_enumvalue" href="MessageBoxManager_8h.html#a38a97724405ce918aae659b98be1ff60a0ba7583639a274c434bbe6ef797115a4">EMessageBoxType::Register</a>,<span class="stringliteral">&quot;Registeration&quot;</span>, <span class="stringliteral">&quot;Please enter your name below.&quot;</span>);</div>
+<p class="definition"><a class="el" href="StartWidget_8cpp_source.html">StartWidget.cpp</a> 파일의 <a class="el" href="StartWidget_8cpp_source.html#l00036">36</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   37</span>{</div>
+<div class="line"><span class="lineno">   38</span>    <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> PopupMgr = UPopupManager::Get(GetWorld()))</div>
+<div class="line"><span class="lineno">   39</span>    {</div>
+<div class="line"><span class="lineno">   40</span>        <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> Popup = Cast&lt;UPopup_InputMsg&gt;(PopupMgr-&gt;ShowPopup(EPopupType::InputMsg_Register)))</div>
+<div class="line"><span class="lineno">   41</span>        {</div>
+<div class="line"><span class="lineno">   42</span>            Popup-&gt;InitPopup(EPopupType::InputMsg_Register);</div>
+<div class="line"><span class="lineno">   43</span>        }</div>
 <div class="line"><span class="lineno">   44</span>    }</div>
 <div class="line"><span class="lineno">   45</span>}</div>
-<div class="ttc" id="aMessageBoxManager_8h_html_a38a97724405ce918aae659b98be1ff60a0ba7583639a274c434bbe6ef797115a4"><div class="ttname"><a href="MessageBoxManager_8h.html#a38a97724405ce918aae659b98be1ff60a0ba7583639a274c434bbe6ef797115a4">EMessageBoxType::Register</a></div><div class="ttdeci">@ Register</div></div>
-<div class="ttc" id="aclassUMessageBoxManager_html"><div class="ttname"><a href="classUMessageBoxManager.html">UMessageBoxManager</a></div><div class="ttdef"><b>Definition</b> <a href="MessageBoxManager_8h_source.html#l00024">MessageBoxManager.h:25</a></div></div>
-<div class="ttc" id="aclassUMessageBoxManager_html_a0d71f6cd4f1f48c2b468fd995adb3812"><div class="ttname"><a href="classUMessageBoxManager.html#a0d71f6cd4f1f48c2b468fd995adb3812">UMessageBoxManager::ShowMessageBox</a></div><div class="ttdeci">void ShowMessageBox(EMessageBoxType Type, const FString &amp;Title, const FString &amp;Description)</div><div class="ttdef"><b>Definition</b> <a href="MessageBoxManager_8cpp_source.html#l00019">MessageBoxManager.cpp:19</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="MessageBoxManager_8h.html#a38a97724405ce918aae659b98be1ff60a0ba7583639a274c434bbe6ef797115a4">Register</a>, <a class="el" href="MessageBoxManager_8cpp_source.html#l00019">UMessageBoxManager::ShowMessageBox()</a>.</p>
-
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="StartWidget_8cpp_source.html#l00012">NativeConstruct()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="StartWidget_8cpp_source.html#l00010">NativeConstruct()</a>.</p>
 <div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-3-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classUStartWidget_a748ed011e4d7b9593458c469ec5d208e_cgraph.svg" width="100%" height="548"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
-</div>
-<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
-<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-4-content" class="dyncontent" style="display:none;">
 <div class="center"><iframe scrolling="no" frameborder="0" src="classUStartWidget_a748ed011e4d7b9593458c469ec5d208e_icgraph.svg" width="508" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
@@ -265,71 +255,62 @@ Protected 멤버 함수</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="StartWidget_8cpp_source.html">StartWidget.cpp</a> 파일의 <a class="el" href="StartWidget_8cpp_source.html#l00027">27</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   28</span>{</div>
-<div class="line"><span class="lineno">   29</span>    <span class="comment">// 로그인</span></div>
-<div class="line"><span class="lineno">   30</span>    <a class="code hl_class" href="classUMessageBoxManager.html">UMessageBoxManager</a>* MB = UMessageBoxManager::Get(GetWorld());</div>
-<div class="line"><span class="lineno">   31</span>    <span class="keywordflow">if</span> (MB)</div>
-<div class="line"><span class="lineno">   32</span>    {</div>
-<div class="line"><span class="lineno">   33</span>        MB-&gt;<a class="code hl_function" href="classUMessageBoxManager.html#a0d71f6cd4f1f48c2b468fd995adb3812">ShowMessageBox</a>(<a class="code hl_enumvalue" href="MessageBoxManager_8h.html#a38a97724405ce918aae659b98be1ff60a2f2951c2e84242a4746a6c569b2dd879">EMessageBoxType::LogIn</a>,<span class="stringliteral">&quot;LogIn&quot;</span>, <span class="stringliteral">&quot;Please enter your registered name below.&quot;</span>);</div>
-<div class="line"><span class="lineno">   34</span>    }</div>
-<div class="line"><span class="lineno">   35</span>}</div>
-<div class="ttc" id="aMessageBoxManager_8h_html_a38a97724405ce918aae659b98be1ff60a2f2951c2e84242a4746a6c569b2dd879"><div class="ttname"><a href="MessageBoxManager_8h.html#a38a97724405ce918aae659b98be1ff60a2f2951c2e84242a4746a6c569b2dd879">EMessageBoxType::LogIn</a></div><div class="ttdeci">@ LogIn</div></div>
+<p class="definition"><a class="el" href="StartWidget_8cpp_source.html">StartWidget.cpp</a> 파일의 <a class="el" href="StartWidget_8cpp_source.html#l00025">25</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   26</span>{</div>
+<div class="line"><span class="lineno">   27</span>    <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> PopupMgr = UPopupManager::Get(GetWorld()))</div>
+<div class="line"><span class="lineno">   28</span>    {</div>
+<div class="line"><span class="lineno">   29</span>        <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> Popup = Cast&lt;UPopup_InputMsg&gt;(PopupMgr-&gt;ShowPopup(EPopupType::InputMsg_Login)))</div>
+<div class="line"><span class="lineno">   30</span>        {</div>
+<div class="line"><span class="lineno">   31</span>            Popup-&gt;InitPopup(EPopupType::InputMsg_Login);</div>
+<div class="line"><span class="lineno">   32</span>        }</div>
+<div class="line"><span class="lineno">   33</span>    }</div>
+<div class="line"><span class="lineno">   34</span>}</div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="MessageBoxManager_8h.html#a38a97724405ce918aae659b98be1ff60a2f2951c2e84242a4746a6c569b2dd879">LogIn</a>, <a class="el" href="MessageBoxManager_8cpp_source.html#l00019">UMessageBoxManager::ShowMessageBox()</a>.</p>
-
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="StartWidget_8cpp_source.html#l00012">NativeConstruct()</a>.</p>
-<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
-<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="StartWidget_8cpp_source.html#l00010">NativeConstruct()</a>.</p>
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-5-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classUStartWidget_afc91ca927780f90dd9041c5e5de32c74_cgraph.svg" width="100%" height="548"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
-</div>
-<div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-6-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
-<div id="dynsection-6-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-6-content" class="dyncontent" style="display:none;">
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
 <div class="center"><iframe scrolling="no" frameborder="0" src="classUStartWidget_afc91ca927780f90dd9041c5e5de32c74_icgraph.svg" width="499" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
 </div>
 <h2 class="groupheader">멤버 데이터 문서화</h2>
-<a id="ac0cc4f70d134abec5cbceb7394c80d85" name="ac0cc4f70d134abec5cbceb7394c80d85"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac0cc4f70d134abec5cbceb7394c80d85">&#9670;&#160;</a></span>Btn_Regist</h2>
+<a id="a136e702afc103156b9a11938e7ea1308" name="a136e702afc103156b9a11938e7ea1308"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a136e702afc103156b9a11938e7ea1308">&#9670;&#160;</a></span>HoverBtn_Regist</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">class UButton* UStartWidget::Btn_Regist</td>
+          <td class="memname">class <a class="el" href="classUHoverButton.html">UHoverButton</a>* UStartWidget::HoverBtn_Regist</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p class="definition"><a class="el" href="StartWidget_8h_source.html">StartWidget.h</a> 파일의 <a class="el" href="StartWidget_8h_source.html#l00026">26</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="StartWidget_8cpp_source.html#l00012">NativeConstruct()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="StartWidget_8cpp_source.html#l00010">NativeConstruct()</a>.</p>
 
 </div>
 </div>
-<a id="ace150e215107029cd953ad9e7abb65dc" name="ace150e215107029cd953ad9e7abb65dc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ace150e215107029cd953ad9e7abb65dc">&#9670;&#160;</a></span>Btn_Start</h2>
+<a id="af66e89c351e14fed252ae2f8f971bfd5" name="af66e89c351e14fed252ae2f8f971bfd5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af66e89c351e14fed252ae2f8f971bfd5">&#9670;&#160;</a></span>HoverBtn_Start</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">class UButton* UStartWidget::Btn_Start</td>
+          <td class="memname">class <a class="el" href="classUHoverButton.html">UHoverButton</a>* UStartWidget::HoverBtn_Start</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p class="definition"><a class="el" href="StartWidget_8h_source.html">StartWidget.h</a> 파일의 <a class="el" href="StartWidget_8h_source.html#l00023">23</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="StartWidget_8cpp_source.html#l00012">NativeConstruct()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="StartWidget_8cpp_source.html#l00010">NativeConstruct()</a>.</p>
 
 </div>
 </div>
@@ -343,7 +324,7 @@ Protected 멤버 함수</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classUStartWidget.html">UStartWidget</a></li>
-    <li class="footer">생성시간 : 월 11월 24 2025 16:13:29, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 화 11월 25 2025 16:11:48, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>
