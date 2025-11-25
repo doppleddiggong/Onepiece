@@ -7,5 +7,6 @@ var dir_77257aedd361f850f8a01079e914567e =
     [ "ConveryorButtonAnimInstance.cpp", "ConveryorButtonAnimInstance_8cpp.html", null ],
     [ "ConveyorButton.cpp", "ConveyorButton_8cpp.html", null ],
     [ "InteractableComponent.cpp", "InteractableComponent_8cpp.html", null ],
-    [ "luggage.cpp", "luggage_8cpp.html", null ]
+    [ "luggage.cpp", "luggage_8cpp.html", null ],
+    [ "LuggageManager.cpp", "LuggageManager_8cpp.html", null ]
 ];

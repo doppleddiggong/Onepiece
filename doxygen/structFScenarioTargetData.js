@@ -1,5 +1,5 @@
 var structFScenarioTargetData =
 [
-    [ "color", "structFScenarioTargetData.html#a1045c71be0b9f4464d355183a5016fd1", null ],
-    [ "symbol", "structFScenarioTargetData.html#a5347f42c3a7345d97d2c0233e6e5954e", null ]
+    [ "word1", "structFScenarioTargetData.html#a6527a75fdea3e93009524542d759862b", null ],
+    [ "word2", "structFScenarioTargetData.html#a5532030a3a34b03b3c3aaa2c8e2c0537", null ]
 ];

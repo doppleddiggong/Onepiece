@@ -19,5 +19,6 @@ var searchData=
   ['locationoffset_16',['LocationOffset',['../structFVFXData.html#a945ead1eeb298be70cd434019b8ce9ba',1,'FVFXData']]],
   ['logfile_17',['LogFile',['../classFLogWriter.html#a6a31f068b9e74fb899ae061d250b9913',1,'FLogWriter']]],
   ['lookaction_18',['LookAction',['../classAOwlPlayer.html#ad5686cb53777eb24a8c4e4a04a99886f',1,'AOwlPlayer']]],
-  ['lookpitch_19',['LookPitch',['../classAPlayerActor.html#a60fe9ba6d54052fad6f9c4a8305fd023',1,'APlayerActor']]]
+  ['lookpitch_19',['LookPitch',['../classAPlayerActor.html#a60fe9ba6d54052fad6f9c4a8305fd023',1,'APlayerActor']]],
+  ['luggageclass_20',['LuggageClass',['../classALuggageManager.html#a76e8a5925dfb7005caab1a0b01473ad7',1,'ALuggageManager']]]
 ];

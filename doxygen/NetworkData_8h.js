@@ -17,6 +17,7 @@ var NetworkData_8h =
     [ "FResponseUserToken", "structFResponseUserToken.html", "structFResponseUserToken" ],
     [ "FScenarioTargetData", "structFScenarioTargetData.html", "structFScenarioTargetData" ],
     [ "FWordData", "structFWordData.html", "structFWordData" ],
+    [ "FWordInfo", "structFWordInfo.html", "structFWordInfo" ],
     [ "FWriteTargetData", "structFWriteTargetData.html", "structFWriteTargetData" ],
     [ "FWriteTeachData", "structFWriteTeachData.html", "structFWriteTeachData" ],
     [ "EReadQuestRole", "NetworkData_8h.html#a2798a9fa176a1ddb262869e791949226", [

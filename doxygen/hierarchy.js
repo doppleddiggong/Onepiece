@@ -7,6 +7,7 @@ var hierarchy =
       [ "ADoor", "classADoor.html", null ],
       [ "AGate", "classAGate.html", null ],
       [ "AListActorManager", "classAListActorManager.html", null ],
+      [ "ALuggageManager", "classALuggageManager.html", null ],
       [ "ANetworkBroadcastActor", "classANetworkBroadcastActor.html", null ],
       [ "ANetworkTesterActor", "classANetworkTesterActor.html", null ],
       [ "APedestalSwitch", "classAPedestalSwitch.html", null ],
@@ -79,6 +80,7 @@ var hierarchy =
     [ "FHttpMultipartFormData::FTextPart", "structFHttpMultipartFormData_1_1FTextPart.html", null ],
     [ "FVFXData", "structFVFXData.html", null ],
     [ "FWordData", "structFWordData.html", null ],
+    [ "FWordInfo", "structFWordInfo.html", null ],
     [ "FWriteTargetData", "structFWriteTargetData.html", null ],
     [ "FWriteTeachData", "structFWriteTeachData.html", null ],
     [ "IControllable", "classIControllable.html", [

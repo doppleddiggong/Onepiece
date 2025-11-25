@@ -43,7 +43,8 @@ var searchData=
   ['ftextpart_40',['FTextPart',['../structFHttpMultipartFormData_1_1FTextPart.html',1,'FHttpMultipartFormData']]],
   ['fvfxdata_41',['FVFXData',['../structFVFXData.html',1,'']]],
   ['fworddata_42',['FWordData',['../structFWordData.html',1,'']]],
-  ['fwordstudydata_43',['FWordStudyData',['../structFWordStudyData.html',1,'']]],
-  ['fwritetargetdata_44',['FWriteTargetData',['../structFWriteTargetData.html',1,'']]],
-  ['fwriteteachdata_45',['FWriteTeachData',['../structFWriteTeachData.html',1,'']]]
+  ['fwordinfo_43',['FWordInfo',['../structFWordInfo.html',1,'']]],
+  ['fwordstudydata_44',['FWordStudyData',['../structFWordStudyData.html',1,'']]],
+  ['fwritetargetdata_45',['FWriteTargetData',['../structFWriteTargetData.html',1,'']]],
+  ['fwriteteachdata_46',['FWriteTeachData',['../structFWriteTeachData.html',1,'']]]
 ];
