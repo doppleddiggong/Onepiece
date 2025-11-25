@@ -9,7 +9,9 @@
 #include "NetworkData.h"
 #include "ALingoGameState.h"
 #include "GameLogging.h"
+#include "LuggageManager.h"
 #include "ULingoGameHelper.h"
+#include "Kismet/GameplayStatics.h"
 
 AContactTrigger::AContactTrigger()
 {
@@ -193,6 +195,13 @@ void AContactTrigger::OnResponseScenario(FResponseScenario& ResponseData, bool b
 					PRINTLOG(TEXT("[ContactTrigger] Sent message to player: %s"), *EventMessage);
 				}
 			}
+		}
+
+		ALuggageManager* LuggageManager = Cast<ALuggageManager>(
+			  UGameplayStatics::GetActorOfClass(World, ALuggageManager::StaticClass()));
+		if (LuggageManager)
+		{
+			LuggageManager->SpawnLuggage();
 		}
 	}
 }

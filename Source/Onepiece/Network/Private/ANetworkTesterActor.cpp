@@ -179,8 +179,12 @@ void ANetworkTesterActor::OnResponseScenario(FResponseScenario& ResponseData, bo
         
         for (int32 i = 0; i < ResponseData.target_data.Num(); i++)
         {
-            PRINTLOG(TEXT("  [%d] Symbol: %s, Color: %s"), 
-                     i, *ResponseData.target_data[i].symbol, *ResponseData.target_data[i].color);
+            PRINTLOG(TEXT("  [%d] Word1: %s (Code: %s), Word2: %s (Code: %s)"),
+                     i,
+                     *ResponseData.target_data[i].word1.name,
+                     *ResponseData.target_data[i].word1.code,
+                     *ResponseData.target_data[i].word2.name,
+                     *ResponseData.target_data[i].word2.code);
         }
         
         PRINTLOG(TEXT("Word Data 1 - Kor: %s, Eng: %s, Pronunciation: %s"), 

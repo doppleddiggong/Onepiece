@@ -14,10 +14,27 @@ class ONEPIECE_API Aluggage : public AActor
 public:
 	Aluggage();
 
+	virtual void BeginPlay() override;
+
+	virtual void GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const override;
+	
 public:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
 	TObjectPtr<class UStaticMeshComponent> Mesh;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
+	TObjectPtr<class UStaticMeshComponent> Mesh1Comp;
 	
 	UPROPERTY(VisibleAnywhere)
 	TObjectPtr<class UInteractableComponent> InteractableComp;
+	
+public:
+	// Color
+	UPROPERTY(ReplicatedUsing=OnRep_ColorIndex)
+	int32 ColorIndex = -1;
+
+	UFUNCTION()
+	void OnRep_ColorIndex();
+	
+	void ApplyColorToMesh(int32 InColorIdx);
 };
