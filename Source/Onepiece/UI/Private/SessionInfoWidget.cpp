@@ -12,8 +12,12 @@ void USessionInfoWidget::NativeConstruct()
 {
 	Super::NativeConstruct();
 
-	// 참여 버튼 클릭시 호출되는 함수 등록
-	Btn_Join->OnButtonClickedEvent.AddDynamic(this, &USessionInfoWidget::OnClickJoin);
+	// 중복 바인딩 방지
+	if (Btn_Join)
+	{
+		Btn_Join->OnButtonClickedEvent.RemoveDynamic(this, &USessionInfoWidget::OnClickJoin);
+		Btn_Join->OnButtonClickedEvent.AddDynamic(this, &USessionInfoWidget::OnClickJoin);
+	}
 }
 
 void USessionInfoWidget::OnClickJoin()

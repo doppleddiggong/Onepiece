@@ -12,9 +12,22 @@ void UPopup_MsgBox::NativeConstruct()
 {
 	Super::NativeConstruct();
 
-	if (Btn_Close)	Btn_Close->OnButtonClickedEvent.AddDynamic(this, &UPopup_MsgBox::OnClickCancel);
-	if (Btn_Ok)		Btn_Ok->OnButtonClickedEvent.AddDynamic(this, &UPopup_MsgBox::OnClickOk);
-	if (Btn_Cancel) Btn_Cancel->OnButtonClickedEvent.AddDynamic(this, &UPopup_MsgBox::OnClickCancel);
+	// 중복 바인딩 방지: 기존 바인딩 제거 후 재바인딩
+	if (Btn_Close)
+	{
+		Btn_Close->OnButtonClickedEvent.RemoveDynamic(this, &UPopup_MsgBox::OnClickCancel);
+		Btn_Close->OnButtonClickedEvent.AddDynamic(this, &UPopup_MsgBox::OnClickCancel);
+	}
+	if (Btn_Ok)
+	{
+		Btn_Ok->OnButtonClickedEvent.RemoveDynamic(this, &UPopup_MsgBox::OnClickOk);
+		Btn_Ok->OnButtonClickedEvent.AddDynamic(this, &UPopup_MsgBox::OnClickOk);
+	}
+	if (Btn_Cancel)
+	{
+		Btn_Cancel->OnButtonClickedEvent.RemoveDynamic(this, &UPopup_MsgBox::OnClickCancel);
+		Btn_Cancel->OnButtonClickedEvent.AddDynamic(this, &UPopup_MsgBox::OnClickCancel);
+	}
 }
 
 void UPopup_MsgBox::SetTitle(const FString& InTitle) { Txt_Title->SetText(FText::FromString(InTitle)); }
@@ -56,10 +69,10 @@ void UPopup_MsgBox::OnClickCancel()
 
 
 void UPopup_MsgBox::InitPopup(
-		const FString& InTitle,
-		const FString& InDescription,
-		EMsgBoxType InType,
-		const FOnMsgBoxOkDelegate& InOkDelegate)
+	const FString& InTitle,
+	const FString& InDescription,
+	EMsgBoxType InType,
+	const FOnMsgBoxOkDelegate& InOkDelegate)
 {
 	this->SetTitle(InTitle);
 	this->SetDesc(InDescription);

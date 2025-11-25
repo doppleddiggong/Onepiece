@@ -15,9 +15,10 @@ void UReadQuestEntryWidget::NativeConstruct()
 {
 	Super::NativeConstruct();
 
-	// 버튼 클릭 이벤트 바인딩
+	// 중복 바인딩 방지
 	if (SelectButton)
 	{
+		SelectButton->OnClicked.RemoveDynamic(this, &UReadQuestEntryWidget::OnButtonClicked);
 		SelectButton->OnClicked.AddDynamic(this, &UReadQuestEntryWidget::OnButtonClicked);
 	}
 }

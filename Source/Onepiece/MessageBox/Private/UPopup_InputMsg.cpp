@@ -17,9 +17,22 @@ void UPopup_InputMsg::NativeConstruct()
 {
 	Super::NativeConstruct();
 
-	if (Btn_Close)	Btn_Close->OnButtonClickedEvent.AddDynamic(this, &UPopup_InputMsg::OnClickCancel);
-	if (Btn_Ok)		Btn_Ok->OnButtonClickedEvent.AddDynamic(this, &UPopup_InputMsg::OnClickOk);
-	if (Btn_Cancel) Btn_Cancel->OnButtonClickedEvent.AddDynamic(this, &UPopup_InputMsg::OnClickCancel);
+	// 중복 바인딩 방지: 기존 바인딩 제거 후 재바인딩
+	if (Btn_Close)
+	{
+		Btn_Close->OnButtonClickedEvent.RemoveDynamic(this, &UPopup_InputMsg::OnClickCancel);
+		Btn_Close->OnButtonClickedEvent.AddDynamic(this, &UPopup_InputMsg::OnClickCancel);
+	}
+	if (Btn_Ok)
+	{
+		Btn_Ok->OnButtonClickedEvent.RemoveDynamic(this, &UPopup_InputMsg::OnClickOk);
+		Btn_Ok->OnButtonClickedEvent.AddDynamic(this, &UPopup_InputMsg::OnClickOk);
+	}
+	if (Btn_Cancel)
+	{
+		Btn_Cancel->OnButtonClickedEvent.RemoveDynamic(this, &UPopup_InputMsg::OnClickCancel);
+		Btn_Cancel->OnButtonClickedEvent.AddDynamic(this, &UPopup_InputMsg::OnClickCancel);
+	}
 }
 
 void UPopup_InputMsg::SetTitle(const FString& InTitle) { Txt_Title->SetText(FText::FromString(InTitle)); }
@@ -30,9 +43,9 @@ void UPopup_InputMsg::OnClickOk()
 	const FString InputString = Edit_Name->GetText().ToString();
 
 	if ( PopupType == EPopupType::InputMsg_Login  )
-		RequestUserRegister(InputString);
-	else
 		RequestUserToken(InputString);
+	else
+		RequestUserRegister(InputString);
 	
 	RemoveFromParent();
 }

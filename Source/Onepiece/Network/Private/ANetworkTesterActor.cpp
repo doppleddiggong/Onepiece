@@ -24,7 +24,7 @@ void ANetworkTesterActor::ToastMsg()
 
 void ANetworkTesterActor::OKCancelMsgBox()
 {
-    UPopupManager::Get(GetWorld())->ShowMsgBox("알림", "OK_CANCEL 설명문",
+    UPopupManager::Get(GetWorld())->ShowMsgBox(TEXT("알림"), TEXT("OK_CANCEL 설명문"),
         EMsgBoxType::OK_CANCEL,
         FOnMsgBoxOkDelegate::CreateUObject(this, &ANetworkTesterActor::OnOK),
         FOnMsgBoxCancelDelegate::CreateUObject(this, &ANetworkTesterActor::OnCancel));
@@ -32,7 +32,7 @@ void ANetworkTesterActor::OKCancelMsgBox()
 
 void ANetworkTesterActor::OKMsgBox()
 {
-    UPopupManager::Get(GetWorld())->ShowMsgBox("알림", "OK 설명문",
+    UPopupManager::Get(GetWorld())->ShowMsgBox(TEXT("알림"), TEXT("OK 설명문"),
         EMsgBoxType::OK,
         FOnMsgBoxOkDelegate::CreateUObject(this, &ANetworkTesterActor::OnOK));
 }

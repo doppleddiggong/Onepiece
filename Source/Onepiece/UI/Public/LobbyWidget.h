@@ -56,7 +56,7 @@ public:
 	class UEditableTextBox* EdtTxt_SessionName;
 
 	UPROPERTY(meta = (BindWidget))
-	class UHoverButton* Btn_Create;
+	class UImageButton* Btn_Create;
 
 	UFUNCTION()
 	void OnCreateClicked();
@@ -70,7 +70,7 @@ public:
 	class UScrollBox* Scrl_SessionList;
 
 	UPROPERTY(meta = (BindWidget))
-	class UHoverButton* Btn_Update;
+	class UTextureButton* Btn_Update;
 
 	UPROPERTY(meta = (BindWidget))
 	class UTextBlock* Txt_Update;
@@ -84,6 +84,5 @@ public:
 	// 세션 정보를 받아 SessionInfoWidget 을 만드는 함수
 	// (NetGameInstance 의 onFindComplete 딜리게이트에 등록할 함수)
 	UFUNCTION()
-	void OnFindComplete(int32 idx, FString sessionName);
-	
+	void OnFindComplete(int32 idx, FString sessionName);	
 };

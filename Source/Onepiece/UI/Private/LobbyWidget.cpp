@@ -6,7 +6,9 @@
 #include "SessionInfoWidget.h"
 #include "UDialogManager.h"
 #include "UHoverButton.h"
+#include "UImageButton.h"
 #include "ULingoGameInstance.h"
+#include "UTextureButton.h"
 #include "Components/Button.h"
 #include "Components/EditableTextBox.h"
 #include "Components/ScrollBox.h"
@@ -18,20 +20,50 @@ void ULobbyWidget::NativeConstruct()
 	Super::NativeConstruct();
 
 	GI = Cast<ULingoGameInstance>(GetGameInstance());
+	// 중복 바인딩 방지
+	GI->onFindComplete.Unbind();
 	GI->onFindComplete.BindUObject(this, &ULobbyWidget::OnFindComplete);
 
-	// Lobby Canvas
-	if (Btn_Single) Btn_Single->OnButtonClickedEvent.AddDynamic(this, &ULobbyWidget::OnSingleClicked);
-	if (Btn_Host)	Btn_Host->OnButtonClickedEvent.AddDynamic(this, &ULobbyWidget::OnHostClicked);
-	if (Btn_Join)	Btn_Join->OnButtonClickedEvent.AddDynamic(this, &ULobbyWidget::OnJoinClicked);
-	if (Btn_LogOut)	Btn_LogOut->OnButtonClickedEvent.AddDynamic(this, &ULobbyWidget::OnLogOutClicked);
+	// Lobby Canvas - 중복 바인딩 방지
+	if (Btn_Single)
+	{
+		Btn_Single->OnButtonClickedEvent.RemoveDynamic(this, &ULobbyWidget::OnSingleClicked);
+		Btn_Single->OnButtonClickedEvent.AddDynamic(this, &ULobbyWidget::OnSingleClicked);
+	}
+	if (Btn_Host)
+	{
+		Btn_Host->OnButtonClickedEvent.RemoveDynamic(this, &ULobbyWidget::OnHostClicked);
+		Btn_Host->OnButtonClickedEvent.AddDynamic(this, &ULobbyWidget::OnHostClicked);
+	}
+	if (Btn_Join)
+	{
+		Btn_Join->OnButtonClickedEvent.RemoveDynamic(this, &ULobbyWidget::OnJoinClicked);
+		Btn_Join->OnButtonClickedEvent.AddDynamic(this, &ULobbyWidget::OnJoinClicked);
+	}
+	if (Btn_LogOut)
+	{
+		Btn_LogOut->OnButtonClickedEvent.RemoveDynamic(this, &ULobbyWidget::OnLogOutClicked);
+		Btn_LogOut->OnButtonClickedEvent.AddDynamic(this, &ULobbyWidget::OnLogOutClicked);
+	}
 
-	// Create Canvas
-	if (Btn_Create) Btn_Create->OnButtonClickedEvent.AddDynamic(this, &ULobbyWidget::OnCreateClicked);
-	EdtTxt_SessionName->OnTextChanged.AddDynamic(this, &ULobbyWidget::OnValueChangedSessionName);
+	// Create Canvas - 중복 바인딩 방지
+	if (Btn_Create)
+	{
+		Btn_Create->OnButtonClickedEvent.RemoveDynamic(this, &ULobbyWidget::OnCreateClicked);
+		Btn_Create->OnButtonClickedEvent.AddDynamic(this, &ULobbyWidget::OnCreateClicked);
+	}
+	if (EdtTxt_SessionName)
+	{
+		EdtTxt_SessionName->OnTextChanged.RemoveDynamic(this, &ULobbyWidget::OnValueChangedSessionName);
+		EdtTxt_SessionName->OnTextChanged.AddDynamic(this, &ULobbyWidget::OnValueChangedSessionName);
+	}
 
-	// Join Canvas
-	if (Btn_Update) Btn_Update->OnButtonClickedEvent.AddDynamic(this, &ULobbyWidget::OnClickFind);
+	// Join Canvas - 중복 바인딩 방지
+	if (Btn_Update)
+	{
+		Btn_Update->OnButtonClickedEvent.RemoveDynamic(this, &ULobbyWidget::OnClickFind);
+		Btn_Update->OnButtonClickedEvent.AddDynamic(this, &ULobbyWidget::OnClickFind);
+	}
 }
 
 void ULobbyWidget::OnSingleClicked()
