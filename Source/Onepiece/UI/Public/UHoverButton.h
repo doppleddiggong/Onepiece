@@ -51,6 +51,9 @@ public:
 	int32 FontSize = 48;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Style", meta=(ExposeOnSpawn=true))
+	int32 FontOutlineSize = 0;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Style", meta=(ExposeOnSpawn=true))
 	FLinearColor NormalTextColor = FLinearColor::White;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Style", meta=(ExposeOnSpawn=true))

@@ -4,6 +4,8 @@
 #include "LobbyWidget.h"
 
 #include "SessionInfoWidget.h"
+#include "UDialogManager.h"
+#include "UHoverButton.h"
 #include "ULingoGameInstance.h"
 #include "Components/Button.h"
 #include "Components/EditableTextBox.h"
@@ -19,21 +21,22 @@ void ULobbyWidget::NativeConstruct()
 	GI->onFindComplete.BindUObject(this, &ULobbyWidget::OnFindComplete);
 
 	// Lobby Canvas
-	if (Btn_Single) Btn_Single->OnClicked.AddDynamic(this, &ULobbyWidget::OnSingleClicked);
-	if (Btn_Host)	Btn_Host->OnClicked.AddDynamic(this, &ULobbyWidget::OnHostClicked);
-	if (Btn_Join)	Btn_Join->OnClicked.AddDynamic(this, &ULobbyWidget::OnJoinClicked);
-	if (Btn_LogOut)	Btn_LogOut->OnClicked.AddDynamic(this, &ULobbyWidget::OnLogOutClicked);
+	if (Btn_Single) Btn_Single->OnButtonClickedEvent.AddDynamic(this, &ULobbyWidget::OnSingleClicked);
+	if (Btn_Host)	Btn_Host->OnButtonClickedEvent.AddDynamic(this, &ULobbyWidget::OnHostClicked);
+	if (Btn_Join)	Btn_Join->OnButtonClickedEvent.AddDynamic(this, &ULobbyWidget::OnJoinClicked);
+	if (Btn_LogOut)	Btn_LogOut->OnButtonClickedEvent.AddDynamic(this, &ULobbyWidget::OnLogOutClicked);
 
 	// Create Canvas
-	if (Btn_Create) Btn_Create->OnClicked.AddDynamic(this, &ULobbyWidget::OnCreateClicked);
+	if (Btn_Create) Btn_Create->OnButtonClickedEvent.AddDynamic(this, &ULobbyWidget::OnCreateClicked);
 	EdtTxt_SessionName->OnTextChanged.AddDynamic(this, &ULobbyWidget::OnValueChangedSessionName);
 
 	// Join Canvas
-	if (Btn_Update) Btn_Update->OnClicked.AddDynamic(this, &ULobbyWidget::OnClickFind);
+	if (Btn_Update) Btn_Update->OnButtonClickedEvent.AddDynamic(this, &ULobbyWidget::OnClickFind);
 }
 
 void ULobbyWidget::OnSingleClicked()
 {
+	UDialogManager::Get(GetWorld())->ShowToast(TEXT("OnSingleClicked"));
 }
 
 void ULobbyWidget::OnHostClicked()
@@ -52,6 +55,7 @@ void ULobbyWidget::OnJoinClicked()
 
 void ULobbyWidget::OnLogOutClicked()
 {
+	UDialogManager::Get(GetWorld())->ShowToast(TEXT("OnLogOutClicked"));
 }
 
 void ULobbyWidget::OnCreateClicked()
@@ -98,5 +102,3 @@ void ULobbyWidget::OnFindComplete(int32 idx, FString sessionName)
 		item->SetSessionInfo(idx, sessionName);
 	}
 }
-
-

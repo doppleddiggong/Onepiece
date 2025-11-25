@@ -24,16 +24,16 @@ public:
 	class UTextBlock* Txt_Title;
 
 	UPROPERTY(meta = (BindWidget))
-	class UButton* Btn_X;
+	class UHoverButton* Btn_X;
 
 	UPROPERTY(meta = (BindWidget))
 	class UTextBlock* Txt_Description;
 
 	UPROPERTY(meta = (BindWidget))
-	class UButton* Btn_Ok;
+	class UHoverButton* Btn_Ok;
 
 	UPROPERTY(meta = (BindWidget))
-	class UButton* Btn_Cancel;
+	class UHoverButton* Btn_Cancel;
 
 	UPROPERTY(meta = (BindWidget))
 	class UTextBlock* Txt_Name;

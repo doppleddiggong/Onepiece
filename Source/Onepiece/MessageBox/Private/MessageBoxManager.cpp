@@ -41,17 +41,17 @@ void UMessageBoxManager::ShowMessageBox(EMessageBoxType Type, const FString& Tit
 				MessageBox->SetNameFieldVisibility(false);
 			}
 			break;
+			
 		case EMessageBoxType::Register:
 			{
 				MessageBox->SetNameFieldVisibility(true);
-
 				MessageBox->OnUserNameRegister.AddDynamic(this, &UMessageBoxManager::RegisterUserName);
 			}
 			break;
+			
 		case EMessageBoxType::LogIn:
 			{
 				MessageBox->SetNameFieldVisibility(true);
-
 				MessageBox->OnUserNameRegister.AddDynamic(this, &UMessageBoxManager::GetUserToken);
 			}
 			break;
@@ -62,6 +62,7 @@ void UMessageBoxManager::ShowMessageBox(EMessageBoxType Type, const FString& Tit
 void UMessageBoxManager::HideMessageBox()
 {
 	UWorld* World = GetWorld();
+	
 	if (!World)
 		return;
 

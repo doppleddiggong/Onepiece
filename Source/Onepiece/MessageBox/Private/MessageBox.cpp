@@ -4,6 +4,7 @@
 #include "Onepiece/MessageBox/Public/MessageBox.h"
 
 #include "GameDelegates.h"
+#include "UHoverButton.h"
 #include "Components/Button.h"
 #include "Components/EditableTextBox.h"
 #include "Components/TextBlock.h"
@@ -14,17 +15,17 @@ void UMessageBox::NativeConstruct()
 
 	if (Btn_X)
 	{
-		Btn_X->OnPressed.AddDynamic(this, &UMessageBox::OnCancelPressed);
+		Btn_X->OnButtonClickedEvent.AddDynamic(this, &UMessageBox::OnCancelPressed);
 	}
 
 	if (Btn_Ok)
 	{
-		Btn_Ok->OnPressed.AddDynamic(this, &UMessageBox::OnOkPressed);
+		Btn_Ok->OnButtonClickedEvent.AddDynamic(this, &UMessageBox::OnOkPressed);
 	}
 
 	if (Btn_Cancel)
 	{
-		Btn_Cancel->OnPressed.AddDynamic(this, &UMessageBox::OnCancelPressed);
+		Btn_Cancel->OnButtonClickedEvent.AddDynamic(this, &UMessageBox::OnCancelPressed);
 	}
 }
 

@@ -3,6 +3,7 @@
 
 #include "SessionInfoWidget.h"
 
+#include "UHoverButton.h"
 #include "ULingoGameInstance.h"
 #include "Components/Button.h"
 #include "Components/TextBlock.h"
@@ -12,7 +13,7 @@ void USessionInfoWidget::NativeConstruct()
 	Super::NativeConstruct();
 
 	// 참여 버튼 클릭시 호출되는 함수 등록
-	Btn_Join->OnClicked.AddDynamic(this, &USessionInfoWidget::OnClickJoin);
+	Btn_Join->OnButtonClickedEvent.AddDynamic(this, &USessionInfoWidget::OnClickJoin);
 }
 
 void USessionInfoWidget::OnClickJoin()

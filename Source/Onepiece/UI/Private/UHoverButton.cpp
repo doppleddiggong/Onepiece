@@ -35,6 +35,7 @@ void UHoverButton::ApplyStyle()
 
     // 폰트 크기 반영
     FSlateFontInfo NewFont = Text_Label->GetFont();
+    NewFont.OutlineSettings.OutlineSize = FontOutlineSize;     // 원하는 외곽선 두께
     NewFont.Size = FontSize;
     Text_Label->SetFont(NewFont);
 

@@ -27,16 +27,16 @@ public:
 public:
 	// 0 : Lobby Canvas
 	UPROPERTY(meta = (BindWidget))
-	class UButton* Btn_Single;
+	class UHoverButton* Btn_Single;
 
 	UPROPERTY(meta = (BindWidget))
-	class UButton* Btn_Host;
+	class UHoverButton* Btn_Host;
 
 	UPROPERTY(meta = (BindWidget))
-	class UButton* Btn_Join;
+	class UHoverButton* Btn_Join;
 
 	UPROPERTY(meta = (BindWidget))
-	class UButton* Btn_LogOut;
+	class UHoverButton* Btn_LogOut;
 
 	UFUNCTION()
 	void OnSingleClicked();
@@ -56,7 +56,7 @@ public:
 	class UEditableTextBox* EdtTxt_SessionName;
 
 	UPROPERTY(meta = (BindWidget))
-	class UButton* Btn_Create;
+	class UHoverButton* Btn_Create;
 
 	UFUNCTION()
 	void OnCreateClicked();
@@ -70,7 +70,7 @@ public:
 	class UScrollBox* Scrl_SessionList;
 
 	UPROPERTY(meta = (BindWidget))
-	class UButton* Btn_Update;
+	class UHoverButton* Btn_Update;
 
 	UPROPERTY(meta = (BindWidget))
 	class UTextBlock* Txt_Update;

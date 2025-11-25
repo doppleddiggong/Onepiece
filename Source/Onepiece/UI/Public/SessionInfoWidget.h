@@ -22,7 +22,7 @@ public:
 	class UTextBlock* Txt_SessionName;
 	// 참여 버튼
 	UPROPERTY(meta=(BindWidget))
-	class UButton* Btn_Join;
+	class UHoverButton* Btn_Join;
 
 	// 참여 버튼 클릭 함수
 	UFUNCTION()
