@@ -6,6 +6,8 @@
  */
 
 #include "UInteractionSystem.h"
+
+#include "AOwlPlayer.h"
 #include "APlayerActor.h"
 #include "GameLogging.h"
 #include "InteractableComponent.h"
@@ -23,10 +25,10 @@ void UInteractionSystem::BeginPlay()
 	Super::BeginPlay();
 
 	// Owner PlayerActor 캐싱
-	OwnerPlayer = Cast<APlayerActor>(GetOwner());
+	OwnerPlayer = Cast<AOwlPlayer>(GetOwner());
 	if (!OwnerPlayer)
 	{
-		PRINTLOG( TEXT("UInteractionSystem: Owner is not APlayerActor!"));
+		PRINTLOG( TEXT("UInteractionSystem: Owner is not AOwlPlayer!"));
 		SetComponentTickEnabled(false);
 	}
 }
@@ -48,17 +50,21 @@ void UInteractionSystem::TickComponent(float DeltaTime, ELevelTick TickType,
 
 void UInteractionSystem::TryInteract()
 {
+	PRINT_STRING(TEXT("부엉 부엉 %s"), *CurrentTarget->GetName());
 	if (!CurrentTarget || !CurrentTarget->bCanInteract)
 		return;
 
+	PRINT_STRING(TEXT("부엉 부엉 %s"), *OwnerPlayer->GetName());
 	// 타입별 처리
 	switch (CurrentTarget->InteractionType)
 	{
 		case EInteractionType::PickUp:
+			PRINT_STRING(TEXT("부엉 부엉 %s"), *OwnerPlayer->GetName());
 			TryPickUp();
 			break;
 
 		case EInteractionType::Button:
+			PRINT_STRING(TEXT("부엉 부엉 %s"), *OwnerPlayer->GetName());
 			CurrentTarget->TriggerInteraction(OwnerPlayer);
 			break;
 

@@ -102,5 +102,5 @@ private:
 
 	/** Owner PlayerActor 캐싱 */
 	UPROPERTY()
-	TObjectPtr<class APlayerActor> OwnerPlayer;
+	TObjectPtr<class AOwlPlayer> OwnerPlayer;
 };

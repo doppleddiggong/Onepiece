@@ -6,7 +6,6 @@
 #include "ConveyorBelt.h"
 #include "GameLogging.h"
 #include "InteractableComponent.h"
-#include "NavigationSystemTypes.h"
 #include "Components/BoxComponent.h"
 #include "Kismet/GameplayStatics.h"
 
