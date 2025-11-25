@@ -46,8 +46,11 @@ void ALuggageManager::SpawnLuggage()
 	
 		if (NewLuggage)
 		{
+			// 색상 적용
 			int32 ColorIdx = FCString::Atoi(*SD.word2.code);
 			NewLuggage->ApplyColorToMesh(ColorIdx);
+			// 무늬 적용
+			NewLuggage->ApplyPatternToMesh(SD.word1.name);
 		}
 	}
 }

@@ -5,10 +5,11 @@
 #include "InteractableComponent.h"
 #include "UGameDataManager.h"
 #include "Net/UnrealNetwork.h"
+#include "DrawDebugHelpers.h"
 
 Aluggage::Aluggage()
 {
-	PrimaryActorTick.bCanEverTick = false;
+	PrimaryActorTick.bCanEverTick = true;
 
 	Mesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Mesh"));
 	SetRootComponent(Mesh);
@@ -38,6 +39,18 @@ void Aluggage::BeginPlay()
 {
 	Super::BeginPlay();
 
+}
+
+void Aluggage::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+
+	// Pattern 이름을 luggage 위에 표시
+	if (!PatternName.IsEmpty())
+	{
+		FVector TextLocation = GetActorLocation() + FVector(0, 0, 100);
+		DrawDebugString(GetWorld(), TextLocation, PatternName, nullptr, FColor::White, 0.f, true);
+	}
 }
 
 void Aluggage::GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const
@@ -73,25 +86,9 @@ void Aluggage::ApplyColorToMesh(int32 InColorIdx)
 			}
 		}
 	}
+}
 
-	/*
-	FColorData ColorData;
-	if (UGameDataManager::Get(GetWorld())->GetColorData(InColorIdx, ColorData))
-	{
-		FLinearColor Color = ColorData.GetLinearColor();
-
-		// Dynamic Material Instance 생성 및 색상 적용
-
-		if (Mesh1Comp && NewMaterial)
-		{
-			// "BaseColor" 파라미터에 색상 설정
-			NewMaterial->SetVectorParameterValue(FName(TEXT("BaseColorFactor")), Color);
-			Mesh1Comp->SetMaterial(0, NewMaterial);
-		}
-		else
-		{
-			UE_LOG(LogTemp, Error, TEXT("Material does not exist"));
-		}
-	}
-	*/
+void Aluggage::ApplyPatternToMesh(FString InPattern)
+{
+	PatternName = InPattern;
 }

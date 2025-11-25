@@ -15,6 +15,7 @@ public:
 	Aluggage();
 
 	virtual void BeginPlay() override;
+	virtual void Tick(float DeltaTime) override;
 
 	virtual void GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const override;
 	
@@ -35,6 +36,12 @@ public:
 
 	UFUNCTION()
 	void OnRep_ColorIndex();
-	
+
 	void ApplyColorToMesh(int32 InColorIdx);
+
+	// Pattern
+	UPROPERTY()
+	FString PatternName;
+
+	void ApplyPatternToMesh(FString InPattern);
 };
