@@ -240,7 +240,7 @@ struct FReadQuestResult
   - Replicated 변수 동기화
 
 #### 3. 캐리어 선택 (Carrier Interaction)
-- 플레이어가 맵에 배치된 캐리어(수하물)를 선택합니다.
+- 플레이어가 맵에 배치된 캐리어(수하물 - `Aluggage`)를 선택합니다.
 - `APlayerActor`의 `InteractionSystem`을 활용하여 상호작용합니다.
 - 캐리어 선택 시 서버 RPC 호출 → GameMode에서 정답 판정
 
@@ -433,11 +433,11 @@ void StartReadQuest();
 
 // 캐리어 선택 처리
 UFUNCTION()
-void HandleCarrierSelection(APlayerState* Player, ACarrierActor* Carrier);
+void HandleCarrierSelection(APlayerState* Player, Aluggage* Carrier);
 
 // 정답 판정
 UFUNCTION()
-bool ValidateAnswer(ALingoPlayerState* Player, ACarrierActor* Carrier);
+bool ValidateAnswer(ALingoPlayerState* Player, Aluggage* Carrier);
 
 // 정답 처리
 UFUNCTION()
@@ -448,49 +448,47 @@ UFUNCTION()
 void HandleWrongAnswer(ALingoPlayerState* Player, bool bSymbolCorrect, bool bColorCorrect);
 ```
 
-### 2. 새로운 클래스 (New Classes)
+### 2. 기존 클래스 확장 (Existing Class Extension)
 
-#### ACarrierActor (캐리어 액터)
-**위치**: `Source/Onepiece/Actor/Public/ACarrierActor.h`
+#### Aluggage (Luggage 액터 확장)
+**위치**: `Source/Onepiece/Interactable/Public/luggage.h`
 
-**주요 멤버**:
+**현재 구현**:
 ```cpp
 UCLASS()
-class ONEPIECE_API ACarrierActor : public AActor
+class ONEPIECE_API Aluggage : public AActor
 {
     GENERATED_BODY()
 
 public:
-    ACarrierActor();
-
-protected:
-    virtual void BeginPlay() override;
+    Aluggage();
 
 public:
-    /// @brief 캐리어의 심볼 (문제1 정답)
-    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Carrier")
-    FString Symbol;
+    UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
+    TObjectPtr<class UStaticMeshComponent> Mesh;
 
-    /// @brief 캐리어의 색상 (문제2 정답)
-    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Carrier")
-    FString Color;
-
-    /// @brief 캐리어 상호작용 컴포넌트
-    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
-    TObjectPtr<class UInteractableComponent> InteractableComponent;
-
-    /// @brief 캐리어 메시
-    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
-    TObjectPtr<class UStaticMeshComponent> MeshComponent;
-
-    /// @brief 플레이어가 캐리어를 선택했을 때 호출됩니다.
-    UFUNCTION(BlueprintCallable, Category = "Interaction")
-    void OnInteract(AActor* Interactor);
-
-    /// @brief 서버에 캐리어 선택을 알립니다.
-    UFUNCTION(Server, Reliable, WithValidation)
-    void ServerNotifySelection(APlayerState* Player);
+    UPROPERTY(VisibleAnywhere)
+    TObjectPtr<class UInteractableComponent> InteractableComp;
 };
+```
+
+**추가 필요 멤버**:
+```cpp
+/// @brief 캐리어의 심볼 (문제1 정답)
+UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Quest")
+FString Symbol;
+
+/// @brief 캐리어의 색상 (문제2 정답)
+UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Quest")
+FString Color;
+
+/// @brief 플레이어가 캐리어를 선택했을 때 호출됩니다.
+UFUNCTION(BlueprintCallable, Category = "Interaction")
+void OnInteract(AActor* Interactor);
+
+/// @brief 서버에 캐리어 선택을 알립니다.
+UFUNCTION(Server, Reliable, WithValidation)
+void ServerNotifySelection(APlayerState* Player);
 ```
 
 #### UReadQuestWidget (Read 퀘스트 위젯)
@@ -686,11 +684,11 @@ public:
 
 #### 3. 캐리어 선택
 ```
-1. 플레이어가 InteractionSystem으로 캐리어 상호작용
+1. 플레이어가 InteractionSystem으로 캐리어(Aluggage) 상호작용
    ↓
-2. CarrierActor::OnInteract(Player) 호출
+2. Aluggage::OnInteract(Player) 호출
    ↓
-3. CarrierActor::ServerNotifySelection(PlayerState) RPC 호출
+3. Aluggage::ServerNotifySelection(PlayerState) RPC 호출
    ↓
 4. 서버: GameMode::HandleCarrierSelection(PlayerState, Carrier) 호출
    ↓
@@ -857,17 +855,17 @@ void InitializeQuest();
 ```cpp
 // Copyright (c) 2025 Doppleddiggong. All rights reserved.
 
-/// @file ACarrierActor.h
-/// @brief 캐리어(수하물) 액터를 정의합니다.
+/// @file luggage.h
+/// @brief 수하물(Luggage) 액터를 정의합니다.
 ```
 
 #### 2. 클래스 주석
 ```cpp
-/// @brief Read 퀘스트의 캐리어 액터
+/// @brief 상호작용 가능한 수하물 액터
 /// @details 플레이어가 선택할 수 있는 수하물 오브젝트입니다.
-///          Symbol과 Color 정보를 가지고 있으며, 정답 판정에 사용됩니다.
+///          Read 퀘스트에서는 Symbol과 Color 정보를 추가로 가지며, 정답 판정에 사용됩니다.
 UCLASS()
-class ONEPIECE_API ACarrierActor : public AActor
+class ONEPIECE_API Aluggage : public AActor
 {
     GENERATED_BODY()
 };
@@ -894,7 +892,7 @@ FString Symbol;
 #### 1. 모듈 매크로
 ```cpp
 // 모든 public 클래스에 ONEPIECE_API 매크로 사용
-class ONEPIECE_API ACarrierActor : public AActor
+class ONEPIECE_API Aluggage : public AActor
 ```
 
 #### 2. 로그 카테고리
@@ -938,13 +936,12 @@ PRINTLOG(TEXT("[ReadQuest] Symbol selected: %s"), *Symbol);
   - [ ] `HandleCorrectAnswer()` 구현
   - [ ] `HandleWrongAnswer()` 구현
 
-### Phase 3: 캐리어 액터 구현
-- [ ] `ACarrierActor` 클래스 생성
-  - [ ] `Symbol`, `Color` 프로퍼티 추가
-  - [ ] `InteractableComponent` 추가
-  - [ ] `MeshComponent` 추가
-  - [ ] `OnInteract()` 구현
+### Phase 3: Luggage 액터 확장
+- [ ] `Aluggage` 클래스 확장
+  - [ ] `Symbol`, `Color` 프로퍼티 추가 (Quest 데이터)
+  - [ ] `OnInteract()` 메서드 추가
   - [ ] `ServerNotifySelection()` RPC 구현
+  - [ ] 기존 `InteractableComp`와 연동
 
 ### Phase 4: UI 위젯 구현
 - [ ] `UReadQuestWidget` 클래스 생성
@@ -968,9 +965,9 @@ PRINTLOG(TEXT("[ReadQuest] Symbol selected: %s"), *Symbol);
   - [ ] 레이아웃 구성 (ScrollBox, TextBlock 등)
 - [ ] ReadQuestEntryWidget UMG 블루프린트 생성
   - [ ] 버튼, 텍스트, 이미지 구성
-- [ ] CarrierActor 블루프린트 생성
-  - [ ] 메시 설정
-  - [ ] Symbol, Color 설정
+- [ ] Aluggage 블루프린트 생성 (BP_QuestLuggage 등)
+  - [ ] 기존 메시 활용
+  - [ ] Symbol, Color 프로퍼티 설정 가능하도록 구성
 
 ### Phase 6: 테스트 및 디버깅
 - [ ] 싱글 플레이 테스트
