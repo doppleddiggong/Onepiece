@@ -20,11 +20,11 @@ protected:
 
 public:
 	UPROPERTY(meta = (BindWidget))
-	class UButton* Btn_Start;
+	class UHoverButton* HoverBtn_Start;
 
 	UPROPERTY(meta = (BindWidget))
-	class UButton* Btn_Regist;
-	
+	class UHoverButton* HoverBtn_Regist;
+
 	UFUNCTION()
 	void OnStartPressed();
 	

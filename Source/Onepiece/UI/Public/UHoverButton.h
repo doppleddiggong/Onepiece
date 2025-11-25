@@ -58,7 +58,17 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Style", meta=(ExposeOnSpawn=true))
 	FLinearColor PressTextColor = FLinearColor(0.6f, 0.7f, 1.f);
+
 	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Style", meta=(ExposeOnSpawn=true))
+	FLinearColor NormalButtonColor = FLinearColor(0.1f, 0.1f, 0.1f);
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Style", meta=(ExposeOnSpawn=true))
+	FLinearColor HoverButtonColor = FLinearColor(0.2f, 0.2f, 0.2f);
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Style", meta=(ExposeOnSpawn=true))
+	FLinearColor PressButtonColor = FLinearColor(0.05f, 0.05f, 0.05f);
+
 private:
 	UPROPERTY(meta = (BindWidget))
 	class UButton* Button_Main;

@@ -40,6 +40,7 @@ void UHoverButton::ApplyStyle()
 
     // Normal 상태 기본 세팅
     Text_Label->SetColorAndOpacity(NormalTextColor);
+    Border_BG->SetBrushColor(NormalButtonColor);
 }
 
 void UHoverButton::NativeTick(const FGeometry& MyGeometry, float InDeltaTime)
@@ -49,12 +50,6 @@ void UHoverButton::NativeTick(const FGeometry& MyGeometry, float InDeltaTime)
     // 스케일 보간
     CurrentScale = FMath::Vector2DInterpTo(CurrentScale, TargetScale, InDeltaTime, LerpSpeed);
     SetRenderScale(CurrentScale);
-
-    // 밝기 보간
-    CurrentBrightness = FMath::FInterpTo(CurrentBrightness, TargetBrightness, InDeltaTime, LerpSpeed);
-
-    if (Border_BG)
-        Border_BG->SetBrushColor(FLinearColor(CurrentBrightness, CurrentBrightness, CurrentBrightness));
 }
 
 void UHoverButton::HandleHovered()
@@ -64,7 +59,8 @@ void UHoverButton::HandleHovered()
     
     TargetScale = FVector2D(1.06f, 1.06f);   // Hover 확대
     TargetBrightness = 1.15f;
-    Text_Label->SetColorAndOpacity(HoverTextColor);   // ← 추가
+    Text_Label->SetColorAndOpacity(HoverTextColor);
+    Border_BG->SetBrushColor(HoverButtonColor);
 }
 
 void UHoverButton::HandleUnhovered()
@@ -74,7 +70,8 @@ void UHoverButton::HandleUnhovered()
     
     TargetScale = FVector2D(1.0f, 1.0f);
     TargetBrightness = 1.0f;
-    Text_Label->SetColorAndOpacity(NormalTextColor);  // ← 추가
+    Text_Label->SetColorAndOpacity(NormalTextColor);
+    Border_BG->SetBrushColor(NormalButtonColor);
 }
 
 void UHoverButton::HandlePressed()
@@ -83,7 +80,8 @@ void UHoverButton::HandlePressed()
         return;
     
     TargetScale = FVector2D(0.97f, 0.97f);      // 눌리는 효과
-    Text_Label->SetColorAndOpacity(PressTextColor);   // ← 추가
+    Text_Label->SetColorAndOpacity(PressTextColor);
+    Border_BG->SetBrushColor(PressButtonColor);
 }
 
 void UHoverButton::HandleReleased()
@@ -115,10 +113,18 @@ void UHoverButton::SetButtonEnabled(bool bInEnabled)
     {
         TargetScale = FVector2D(1.f, 1.f);
         TargetBrightness = 1.f;
+
+        // 상태가 다시 Normal이므로 색 복구
+        Border_BG->SetBrushColor(NormalButtonColor);
+        Text_Label->SetColorAndOpacity(NormalTextColor);
     }
     else
     {
         TargetScale = FVector2D(1.f, 1.f);
         TargetBrightness = 0.4f;      // Disable 톤 다운
+
+        // 비활성화 시 조금 어둡게
+        Border_BG->SetBrushColor(NormalButtonColor * 0.5f);
+        Text_Label->SetColorAndOpacity(NormalTextColor * 0.5f);
     }
 }

@@ -4,6 +4,7 @@
 #include "StartWidget.h"
 
 #include "GameLogging.h"
+#include "UHoverButton.h"
 #include "UKLingoNetworkSystem.h"
 #include "Components/Button.h"
 #include "Onepiece/MessageBox/Public/MessageBox.h"
@@ -13,32 +14,30 @@ void UStartWidget::NativeConstruct()
 {
 	Super::NativeConstruct();
 
-	if (Btn_Start)
+	if (HoverBtn_Start)
 	{
-		Btn_Start->OnPressed.AddDynamic(this, &UStartWidget::OnStartPressed);
+		HoverBtn_Start->OnButtonClickedEvent.AddDynamic(this, &UStartWidget::OnStartPressed);
 	}
 
-	if (Btn_Regist)
+	if (HoverBtn_Regist)
 	{
-		Btn_Regist->OnPressed.AddDynamic(this, &UStartWidget::OnRegistPressed);
+		HoverBtn_Regist->OnButtonClickedEvent.AddDynamic(this, &UStartWidget::OnRegistPressed);
 	}
 }
 
 void UStartWidget::OnStartPressed()
 {
 	// 로그인
-	UMessageBoxManager* MB = UMessageBoxManager::Get(GetWorld());
-	if (MB)
+	if (auto MB = UMessageBoxManager::Get(GetWorld()))
 	{
-		MB->ShowMessageBox(EMessageBoxType::LogIn,"LogIn", "Please enter your registered name below.");
+		MB->ShowMessageBox(EMessageBoxType::LogIn,"Login", "Please enter your registered name below.");
 	}
 }
 
 void UStartWidget::OnRegistPressed()
 {
 	// 가입
-	UMessageBoxManager* MB = UMessageBoxManager::Get(GetWorld());
-	if (MB)
+	if (auto MB = UMessageBoxManager::Get(GetWorld()))
 	{
 		MB->ShowMessageBox(EMessageBoxType::Register,"Registeration", "Please enter your name below.");
 	}
