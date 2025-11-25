@@ -87,7 +87,7 @@ AOwlPlayer::AOwlPlayer()
 	FollowCamera = CreateDefaultSubobject<UCameraComponent>(TEXT("FollowCamera"));
 	FollowCamera->SetupAttachment(GetMesh(), TEXT("Head"));
 	// First Person Camera
-	FollowCamera->SetRelativeLocationAndRotation(FVector(0,-14.285715,14.285715), FRotator(90, 90, 0));
+	FollowCamera->SetRelativeLocationAndRotation(FVector(0,-14.285715,21.428572), FRotator(90, 90, 0));
 	FollowCamera->bUsePawnControlRotation = true;
 }
 

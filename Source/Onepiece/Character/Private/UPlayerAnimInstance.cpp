@@ -10,17 +10,13 @@ void URobotAnimInstance::NativeBeginPlay()
 {
 	Super::NativeBeginPlay();
 	
-	AActor* owningActor = GetOwningActor();
-	if (owningActor)
-	{
-		OwningRobot = Cast<AOwlPlayer>(owningActor);
-	}
 }
 
 void URobotAnimInstance::NativeUpdateAnimation(float DeltaSeconds)
 {
 	Super::NativeUpdateAnimation(DeltaSeconds);
 	
+	OwningRobot = Cast<AOwlPlayer>(TryGetPawnOwner());
 	if (OwningRobot)
 	{
 		bIsRunning = OwningRobot->GetIsRunning();
