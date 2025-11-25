@@ -1,7 +1,5 @@
 var NAVTREEINDEX6 =
 {
-"classUSessionInfoWidget.html#a22e57e4bc7caedb331979b3448858fd0":[2,0,104,3],
-"classUSessionInfoWidget.html#a43cdf4dfd3bf7a87cf128adad830a7a6":[2,0,104,5],
 "classUSessionInfoWidget.html#ad7b5ab7bdefcf1215521bca09f37f489":[2,0,104,4],
 "classUSessionInfoWidget.html#af7f908a299b306fe470c54c65da8b61d":[2,0,104,0],
 "classUSoundData.html":[2,0,105],
@@ -223,8 +221,8 @@ var NAVTREEINDEX6 =
 "globals_func.html":[3,1,1],
 "globals_vars.html":[3,1,2],
 "hierarchy.html":[2,2],
-"index.html":[],
 "index.html":[0],
+"index.html":[],
 "index.html#autotoc_md10":[0,2],
 "index.html#autotoc_md11":[0,2,0],
 "index.html#autotoc_md12":[0,2,1],
@@ -249,5 +247,7 @@ var NAVTREEINDEX6 =
 "index.html#autotoc_md7":[0,1,1],
 "index.html#autotoc_md8":[0,1,2],
 "luggage_8cpp.html":[3,0,0,2,2,0,7],
-"luggage_8cpp_source.html":[3,0,0,2,2,0,7]
+"luggage_8cpp_source.html":[3,0,0,2,2,0,7],
+"luggage_8h.html":[3,0,0,2,2,1,7],
+"luggage_8h_source.html":[3,0,0,2,2,1,7]
 };

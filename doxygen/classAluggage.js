@@ -9,11 +9,11 @@ var classAluggage =
     [ "OnRep_ColorIndex", "classAluggage.html#a94be11970ccffa41b862677f0694140b", null ],
     [ "ServerNotifySelection", "classAluggage.html#aefd0f676f44e0e7fcde6f6f29a709b60", null ],
     [ "Tick", "classAluggage.html#aa1d90a7ebc5c838ebe50bfc79dfd6890", null ],
-    [ "Color", "classAluggage.html#a4a47514a5aff8824800c878ed73159c2", null ],
     [ "ColorIndex", "classAluggage.html#a04c2729f66d62f5f46329c0bfae26b49", null ],
     [ "InteractableComp", "classAluggage.html#a555315380e2dd75038c0d2aea8fe9b02", null ],
     [ "Mesh", "classAluggage.html#a14b3fa3c939bf9afe752f80929d06192", null ],
     [ "Mesh1Comp", "classAluggage.html#a17e850881f1e195228802686a326ff09", null ],
     [ "PatternName", "classAluggage.html#ae0dc10fe1295c7222d577fea284ad242", null ],
-    [ "Symbol", "classAluggage.html#aaa03077e18a34b9cebfae7002da8535c", null ]
+    [ "Target1", "classAluggage.html#a3a0e879c75526a459df91a8560504762", null ],
+    [ "Target2", "classAluggage.html#a39a1c8e315d2b3d40ec1956e2390d6d2", null ]
 ];

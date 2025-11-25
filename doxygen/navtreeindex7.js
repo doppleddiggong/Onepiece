@@ -1,7 +1,5 @@
 var NAVTREEINDEX7 =
 {
-"luggage_8h.html":[3,0,0,2,2,1,7],
-"luggage_8h_source.html":[3,0,0,2,2,1,7],
 "namespaceGameColor.html":[1,0,0],
 "namespaceGameColor.html#a347e21752e1aecee7916040063b5915a":[1,0,0,1],
 "namespaceGameColor.html#a85944ad816eb9238756d535533eac5d0":[1,0,0,3],
@@ -249,5 +247,7 @@ var NAVTREEINDEX7 =
 "structFServerConfig.html#a8abeabc5af6396f784929d66d0bd6ce7":[2,0,58,1],
 "structFServerConfig.html#ab65e0b73b4679e5efb155dd6f98bac3d":[2,0,58,0],
 "structFVFXData.html":[2,0,59],
-"structFVFXData.html#a4639a82bb96c85b413933695345392ec":[2,0,59,2]
+"structFVFXData.html#a4639a82bb96c85b413933695345392ec":[2,0,59,2],
+"structFVFXData.html#a945ead1eeb298be70cd434019b8ce9ba":[2,0,59,0],
+"structFVFXData.html#ac890ab57708ba9a560918e626822022f":[2,0,59,1]
 };

@@ -155,6 +155,9 @@ Public 속성</h2></td></tr>
 <tr class="memitem:a4e1e1fc4d3afe87c4241534b52e79c07" id="r_a4e1e1fc4d3afe87c4241534b52e79c07"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classALingoGameState.html#a4e1e1fc4d3afe87c4241534b52e79c07">bQuestSuccess</a> = false</td></tr>
 <tr class="memdesc:a4e1e1fc4d3afe87c4241534b52e79c07"><td class="mdescLeft">&#160;</td><td class="mdescRight">퀘스트 성공 플래그  <br /></td></tr>
 <tr class="separator:a4e1e1fc4d3afe87c4241534b52e79c07"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3cd7a9eb6c217ca289fe7751113a1bef" id="r_a3cd7a9eb6c217ca289fe7751113a1bef"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structFResponseScenario.html">FResponseScenario</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classALingoGameState.html#a3cd7a9eb6c217ca289fe7751113a1bef">CurScenarioData</a></td></tr>
+<tr class="memdesc:a3cd7a9eb6c217ca289fe7751113a1bef"><td class="mdescLeft">&#160;</td><td class="mdescRight">서버로부터 받은 시나리오 데이터 전체 (모든 클라이언트에 복제됨)  <br /></td></tr>
+<tr class="separator:a3cd7a9eb6c217ca289fe7751113a1bef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a88f0dfa033d3c618bfa74a3c6bc4263e" id="r_a88f0dfa033d3c618bfa74a3c6bc4263e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structFReadQuestResult.html">FReadQuestResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classALingoGameState.html#a88f0dfa033d3c618bfa74a3c6bc4263e">QuestResult</a></td></tr>
 <tr class="memdesc:a88f0dfa033d3c618bfa74a3c6bc4263e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Step1(Read) 퀘스트 결과 기록  <br /></td></tr>
 <tr class="separator:a88f0dfa033d3c618bfa74a3c6bc4263e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -171,9 +174,6 @@ Protected 속성</h2></td></tr>
 <tr class="memitem:ab2b1dfcaf07b61dd099209f135ff97fa" id="r_ab2b1dfcaf07b61dd099209f135ff97fa"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classALingoGameState.html#ab2b1dfcaf07b61dd099209f135ff97fa">bIsTimerActive</a> = false</td></tr>
 <tr class="memdesc:ab2b1dfcaf07b61dd099209f135ff97fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">타이머 활성화 상태  <br /></td></tr>
 <tr class="separator:ab2b1dfcaf07b61dd099209f135ff97fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3cd7a9eb6c217ca289fe7751113a1bef" id="r_a3cd7a9eb6c217ca289fe7751113a1bef"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structFResponseScenario.html">FResponseScenario</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classALingoGameState.html#a3cd7a9eb6c217ca289fe7751113a1bef">CurScenarioData</a></td></tr>
-<tr class="memdesc:a3cd7a9eb6c217ca289fe7751113a1bef"><td class="mdescLeft">&#160;</td><td class="mdescRight">서버로부터 받은 시나리오 데이터 전체 (모든 클라이언트에 복제됨)  <br /></td></tr>
-<tr class="separator:a3cd7a9eb6c217ca289fe7751113a1bef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad9ab549d6de648690eb3ebb04238b2e6" id="r_ad9ab549d6de648690eb3ebb04238b2e6"><td class="memItemLeft" align="right" valign="top">int32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classALingoGameState.html#ad9ab549d6de648690eb3ebb04238b2e6">ScenarioIndex</a> = 1</td></tr>
 <tr class="separator:ad9ab549d6de648690eb3ebb04238b2e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a31e77725a14a39ad4e66764210020a64" id="r_a31e77725a14a39ad4e66764210020a64"><td class="memItemLeft" align="right" valign="top">int32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classALingoGameState.html#a31e77725a14a39ad4e66764210020a64">ScenarioLevel</a> = 1</td></tr>
@@ -269,11 +269,11 @@ Private 멤버 함수</h2></td></tr>
 <div class="line"><span class="lineno">   40</span>    DOREPLIFETIME(<a class="code hl_class" href="classALingoGameState.html">ALingoGameState</a>, <a class="code hl_variable" href="classALingoGameState.html#a4e1e1fc4d3afe87c4241534b52e79c07">bQuestSuccess</a>);</div>
 <div class="line"><span class="lineno">   41</span>}</div>
 <div class="ttc" id="aclassALingoGameState_html"><div class="ttname"><a href="classALingoGameState.html">ALingoGameState</a></div><div class="ttdef"><b>Definition</b> <a href="ALingoGameState_8h_source.html#l00012">ALingoGameState.h:13</a></div></div>
-<div class="ttc" id="aclassALingoGameState_html_a3cd7a9eb6c217ca289fe7751113a1bef"><div class="ttname"><a href="classALingoGameState.html#a3cd7a9eb6c217ca289fe7751113a1bef">ALingoGameState::CurScenarioData</a></div><div class="ttdeci">FResponseScenario CurScenarioData</div><div class="ttdoc">서버로부터 받은 시나리오 데이터 전체 (모든 클라이언트에 복제됨)</div><div class="ttdef"><b>Definition</b> <a href="ALingoGameState_8h_source.html#l00075">ALingoGameState.h:75</a></div></div>
-<div class="ttc" id="aclassALingoGameState_html_a4e1e1fc4d3afe87c4241534b52e79c07"><div class="ttname"><a href="classALingoGameState.html#a4e1e1fc4d3afe87c4241534b52e79c07">ALingoGameState::bQuestSuccess</a></div><div class="ttdeci">bool bQuestSuccess</div><div class="ttdoc">퀘스트 성공 플래그</div><div class="ttdef"><b>Definition</b> <a href="ALingoGameState_8h_source.html#l00092">ALingoGameState.h:92</a></div></div>
-<div class="ttc" id="aclassALingoGameState_html_a88f0dfa033d3c618bfa74a3c6bc4263e"><div class="ttname"><a href="classALingoGameState.html#a88f0dfa033d3c618bfa74a3c6bc4263e">ALingoGameState::QuestResult</a></div><div class="ttdeci">FReadQuestResult QuestResult</div><div class="ttdoc">Step1(Read) 퀘스트 결과 기록</div><div class="ttdef"><b>Definition</b> <a href="ALingoGameState_8h_source.html#l00088">ALingoGameState.h:88</a></div></div>
+<div class="ttc" id="aclassALingoGameState_html_a3cd7a9eb6c217ca289fe7751113a1bef"><div class="ttname"><a href="classALingoGameState.html#a3cd7a9eb6c217ca289fe7751113a1bef">ALingoGameState::CurScenarioData</a></div><div class="ttdeci">FResponseScenario CurScenarioData</div><div class="ttdoc">서버로부터 받은 시나리오 데이터 전체 (모든 클라이언트에 복제됨)</div><div class="ttdef"><b>Definition</b> <a href="ALingoGameState_8h_source.html#l00076">ALingoGameState.h:76</a></div></div>
+<div class="ttc" id="aclassALingoGameState_html_a4e1e1fc4d3afe87c4241534b52e79c07"><div class="ttname"><a href="classALingoGameState.html#a4e1e1fc4d3afe87c4241534b52e79c07">ALingoGameState::bQuestSuccess</a></div><div class="ttdeci">bool bQuestSuccess</div><div class="ttdoc">퀘스트 성공 플래그</div><div class="ttdef"><b>Definition</b> <a href="ALingoGameState_8h_source.html#l00093">ALingoGameState.h:93</a></div></div>
+<div class="ttc" id="aclassALingoGameState_html_a88f0dfa033d3c618bfa74a3c6bc4263e"><div class="ttname"><a href="classALingoGameState.html#a88f0dfa033d3c618bfa74a3c6bc4263e">ALingoGameState::QuestResult</a></div><div class="ttdeci">FReadQuestResult QuestResult</div><div class="ttdoc">Step1(Read) 퀘스트 결과 기록</div><div class="ttdef"><b>Definition</b> <a href="ALingoGameState_8h_source.html#l00089">ALingoGameState.h:89</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="ALingoGameState_8h_source.html#l00060">bIsTimerActive</a>, <a class="el" href="ALingoGameState_8h_source.html#l00092">bQuestSuccess</a>, <a class="el" href="ALingoGameState_8h_source.html#l00075">CurScenarioData</a>, <a class="el" href="ALingoGameState_8h_source.html#l00088">QuestResult</a>, <a class="el" href="ALingoGameState_8h_source.html#l00055">RemainMissionTime</a>, <a class="el" href="ALingoGameState_8h_source.html#l00065">ScenarioIndex</a>, <a class="el" href="ALingoGameState_8h_source.html#l00071">ScenarioLevel</a>, <a class="el" href="ALingoGameState_8h_source.html#l00068">StageIndex</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="ALingoGameState_8h_source.html#l00060">bIsTimerActive</a>, <a class="el" href="ALingoGameState_8h_source.html#l00093">bQuestSuccess</a>, <a class="el" href="ALingoGameState_8h_source.html#l00076">CurScenarioData</a>, <a class="el" href="ALingoGameState_8h_source.html#l00089">QuestResult</a>, <a class="el" href="ALingoGameState_8h_source.html#l00055">RemainMissionTime</a>, <a class="el" href="ALingoGameState_8h_source.html#l00065">ScenarioIndex</a>, <a class="el" href="ALingoGameState_8h_source.html#l00071">ScenarioLevel</a>, <a class="el" href="ALingoGameState_8h_source.html#l00068">StageIndex</a>.</p>
 
 </div>
 </div>
@@ -339,8 +339,8 @@ Private 멤버 함수</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ALingoGameState_8h_source.html">ALingoGameState.h</a> 파일의 <a class="el" href="ALingoGameState_8h_source.html#l00079">79</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   79</span>{<span class="keywordflow">return</span> <a class="code hl_variable" href="classALingoGameState.html#a3cd7a9eb6c217ca289fe7751113a1bef">CurScenarioData</a>;}</div>
+<p class="definition"><a class="el" href="ALingoGameState_8h_source.html">ALingoGameState.h</a> 파일의 <a class="el" href="ALingoGameState_8h_source.html#l00080">80</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   80</span>{<span class="keywordflow">return</span> <a class="code hl_variable" href="classALingoGameState.html#a3cd7a9eb6c217ca289fe7751113a1bef">CurScenarioData</a>;}</div>
 </div><!-- fragment -->
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="LuggageManager_8cpp_source.html#l00033">ALuggageManager::SpawnLuggage()</a>.</p>
 <div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -465,7 +465,7 @@ Private 멤버 함수</h2></td></tr>
 <div class="line"><span class="lineno">  145</span>    }</div>
 <div class="line"><span class="lineno">  146</span>}</div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="ALingoGameState_8h_source.html#l00092">bQuestSuccess</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="ALingoGameState_8h_source.html#l00093">bQuestSuccess</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>.</p>
 
 </div>
 </div>
@@ -505,7 +505,7 @@ Private 멤버 함수</h2></td></tr>
 <div class="ttc" id="aclassALingoGameState_html_adb613d0ae85fcd2a8d8f3f777566c98c"><div class="ttname"><a href="classALingoGameState.html#adb613d0ae85fcd2a8d8f3f777566c98c">ALingoGameState::StartMissionTimer</a></div><div class="ttdeci">void StartMissionTimer(float TimeLimit)</div><div class="ttdoc">미션 타이머를 시작합니다 (서버에서만 호출)</div><div class="ttdef"><b>Definition</b> <a href="ALingoGameState_8cpp_source.html#l00068">ALingoGameState.cpp:68</a></div></div>
 <div class="ttc" id="aclassULingoGameHelper_html_a7bcb0275140b94422c2f09b29a0b4d6a"><div class="ttname"><a href="classULingoGameHelper.html#a7bcb0275140b94422c2f09b29a0b4d6a">ULingoGameHelper::GetMissionPlayTime</a></div><div class="ttdeci">static float GetMissionPlayTime(const int Level)</div><div class="ttdef"><b>Definition</b> <a href="ULingoGameHelper_8cpp_source.html#l00049">ULingoGameHelper.cpp:49</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="ALingoGameState_8h_source.html#l00075">CurScenarioData</a>, <a class="el" href="ULingoGameHelper_8cpp_source.html#l00049">ULingoGameHelper::GetMissionPlayTime()</a>, <a class="el" href="ALingoGameState_8h_source.html#l00071">ScenarioLevel</a>, <a class="el" href="ALingoGameState_8h_source.html#l00068">StageIndex</a>, <a class="el" href="ALingoGameState_8cpp_source.html#l00068">StartMissionTimer()</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="ALingoGameState_8h_source.html#l00076">CurScenarioData</a>, <a class="el" href="ULingoGameHelper_8cpp_source.html#l00049">ULingoGameHelper::GetMissionPlayTime()</a>, <a class="el" href="ALingoGameState_8h_source.html#l00071">ScenarioLevel</a>, <a class="el" href="ALingoGameState_8h_source.html#l00068">StageIndex</a>, <a class="el" href="ALingoGameState_8cpp_source.html#l00068">StartMissionTimer()</a>.</p>
 <div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-6-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-6-summary" class="dynsummary" style="display:block;">
@@ -707,7 +707,7 @@ Private 멤버 함수</h2></td></tr>
 
 <p>퀘스트 성공 플래그 </p>
 
-<p class="definition"><a class="el" href="ALingoGameState_8h_source.html">ALingoGameState.h</a> 파일의 <a class="el" href="ALingoGameState_8h_source.html#l00092">92</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="ALingoGameState_8h_source.html">ALingoGameState.h</a> 파일의 <a class="el" href="ALingoGameState_8h_source.html#l00093">93</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALingoGameState_8cpp_source.html#l00026">GetLifetimeReplicatedProps()</a>, <a class="el" href="ALingoGameMode_8cpp_source.html#l00141">ALingoGameMode::HandleCorrectAnswer()</a>, <a class="el" href="ALingoGameState_8cpp_source.html#l00135">OnRep_QuestSuccess()</a>.</p>
 
@@ -718,24 +718,16 @@ Private 멤버 함수</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="structFResponseScenario.html">FResponseScenario</a> ALingoGameState::CurScenarioData</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>서버로부터 받은 시나리오 데이터 전체 (모든 클라이언트에 복제됨) </p>
 
-<p class="definition"><a class="el" href="ALingoGameState_8h_source.html">ALingoGameState.h</a> 파일의 <a class="el" href="ALingoGameState_8h_source.html#l00075">75</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="ALingoGameState_8h_source.html">ALingoGameState.h</a> 파일의 <a class="el" href="ALingoGameState_8h_source.html#l00076">76</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALingoGameState_8cpp_source.html#l00026">GetLifetimeReplicatedProps()</a>, <a class="el" href="ALingoGameState_8cpp_source.html#l00060">SetStageData()</a>.</p>
 
@@ -755,7 +747,7 @@ Private 멤버 함수</h2></td></tr>
 
 <p>Step1(Read) 퀘스트 결과 기록 </p>
 
-<p class="definition"><a class="el" href="ALingoGameState_8h_source.html">ALingoGameState.h</a> 파일의 <a class="el" href="ALingoGameState_8h_source.html#l00088">88</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="ALingoGameState_8h_source.html">ALingoGameState.h</a> 파일의 <a class="el" href="ALingoGameState_8h_source.html#l00089">89</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALingoGameState_8cpp_source.html#l00026">GetLifetimeReplicatedProps()</a>, <a class="el" href="ALingoGameMode_8cpp_source.html#l00141">ALingoGameMode::HandleCorrectAnswer()</a>.</p>
 
@@ -867,7 +859,7 @@ Private 멤버 함수</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classALingoGameState.html">ALingoGameState</a></li>
-    <li class="footer">생성시간 : 화 11월 25 2025 16:18:48, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 화 11월 25 2025 16:31:17, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>
