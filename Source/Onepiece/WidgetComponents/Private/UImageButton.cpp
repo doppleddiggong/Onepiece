@@ -60,7 +60,6 @@ void UImageButton::ApplyStyle()
 			Border_BG->SetBrushColor(NormalButtonColor);
 			bBorderBrushInitialized = false;
 		}
-
 	}
 
 	// ========== 고정 크기 적용 ==========

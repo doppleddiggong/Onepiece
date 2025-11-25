@@ -5,6 +5,8 @@
 
 #include "GameDelegates.h"
 #include "UHoverButton.h"
+#include "UImageButton.h"
+#include "UTextureButton.h"
 #include "Components/Button.h"
 #include "Components/EditableTextBox.h"
 #include "Components/TextBlock.h"
@@ -13,49 +15,47 @@ void UMessageBox::NativeConstruct()
 {
 	Super::NativeConstruct();
 
-	if (Btn_X)
+	if (Btn_Close)
 	{
-		Btn_X->OnButtonClickedEvent.AddDynamic(this, &UMessageBox::OnCancelPressed);
+		Btn_Close->OnButtonClickedEvent.AddDynamic(this, &UMessageBox::OnClickCancel);
 	}
 
 	if (Btn_Ok)
 	{
-		Btn_Ok->OnButtonClickedEvent.AddDynamic(this, &UMessageBox::OnOkPressed);
+		Btn_Ok->OnButtonClickedEvent.AddDynamic(this, &UMessageBox::OnClickOk);
 	}
 
 	if (Btn_Cancel)
 	{
-		Btn_Cancel->OnButtonClickedEvent.AddDynamic(this, &UMessageBox::OnCancelPressed);
+		Btn_Cancel->OnButtonClickedEvent.AddDynamic(this, &UMessageBox::OnClickCancel);
 	}
 }
 
-void UMessageBox::OnOkPressed()
+
+void UMessageBox::SetTitle(const FString& InTitle)
 {
-	FString UserName = Edt_Name->GetText().ToString();
+	Txt_Title->SetText(FText::FromString(InTitle));
+}
+
+void UMessageBox::SetDesc(const FString& InDescription)
+{
+	Txt_Desc->SetText(FText::FromString(InDescription));
+}
+
+void UMessageBox::OnClickOk()
+{
+	FString UserName = Edit_Name->GetText().ToString();
 	OnUserNameRegister.Broadcast(UserName);
 	
 	RemoveFromParent();
 }
 
-void UMessageBox::OnCancelPressed()
+void UMessageBox::OnClickCancel()
 {
 	RemoveFromParent();
 }
 
-void UMessageBox::SetTitle(FString InTitle)
-{
-	Txt_Title->SetText(FText::FromString(InTitle));
-}
-
-void UMessageBox::SetDescription(FString InDescription)
-{
-	Txt_Description->SetText(FText::FromString(InDescription));
-}
-
 void UMessageBox::SetNameFieldVisibility(bool InVisibility)
 {
-	ESlateVisibility NewVisibility = InVisibility ? ESlateVisibility::Visible : ESlateVisibility::Collapsed;
-	
-	Txt_Name->SetVisibility(NewVisibility);
-	Edt_Name->SetVisibility(NewVisibility);
+	Edit_Name->SetVisibility(InVisibility ? ESlateVisibility::Visible : ESlateVisibility::Collapsed);
 }

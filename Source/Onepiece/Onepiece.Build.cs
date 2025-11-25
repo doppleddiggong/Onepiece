@@ -76,6 +76,7 @@ public class Onepiece : ModuleRules
 			Path.Combine(ModuleDirectory, "Prop", "Public"),
 			Path.Combine(ModuleDirectory, "UI", "Public"),
 			Path.Combine(ModuleDirectory, "Voice", "Public"),
+			Path.Combine(ModuleDirectory, "WidgetComponents", "Public"),
 		});
 	}
 }

@@ -30,7 +30,7 @@ void UMessageBoxManager::ShowMessageBox(EMessageBoxType Type, const FString& Tit
 	if (MessageBox)
 	{
 		MessageBox->SetTitle(Title);
-		MessageBox->SetDescription(Description);
+		MessageBox->SetDesc(Description);
 
 		// 타입 별로 다르게 처리
 		switch (Type)
@@ -72,7 +72,7 @@ void UMessageBoxManager::HideMessageBox()
 	if (MessageBox->GetWorld() != World)
 		return;
 
-	MessageBox->OnCancelPressed();
+	MessageBox->OnClickCancel();
 }
 
 void UMessageBoxManager::EnsureWidgetForWorld(UWorld* World)

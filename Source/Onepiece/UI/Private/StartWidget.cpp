@@ -7,8 +7,8 @@
 #include "UHoverButton.h"
 #include "UKLingoNetworkSystem.h"
 #include "Components/Button.h"
-#include "Onepiece/MessageBox/Public/MessageBox.h"
-#include "Onepiece/MessageBox/Public/MessageBoxManager.h"
+// #include "Onepiece/MessageBox/Public/UPopupInputMsg.h"
+// #include "Onepiece/MessageBox/Public/UMessageBoxManager.h"
 
 void UStartWidget::NativeConstruct()
 {
@@ -28,18 +28,18 @@ void UStartWidget::NativeConstruct()
 void UStartWidget::OnStartPressed()
 {
 	// 로그인
-	if (auto MB = UMessageBoxManager::Get(GetWorld()))
-	{
-		MB->ShowMessageBox(EMessageBoxType::LogIn,"Login", "Please enter your registered name below.");
-	}
+	// if (auto MB = UMessageBoxManager::Get(GetWorld()))
+	// {
+	// 	MB->ShowMessageBox(EPopupType::LogIn,"Login", "Please enter your registered name below.");
+	// }
 }
 
 void UStartWidget::OnRegistPressed()
 {
 	// 가입
-	if (auto MB = UMessageBoxManager::Get(GetWorld()))
-	{
-		MB->ShowMessageBox(EMessageBoxType::Register,"Registeration", "Please enter your name below.");
-	}
+	// if (auto MB = UMessageBoxManager::Get(GetWorld()))
+	// {
+	// 	MB->ShowMessageBox(EPopupType::Register,"Registeration", "Please enter your name below.");
+	// }
 }
 

@@ -24,33 +24,29 @@ public:
 	class UTextBlock* Txt_Title;
 
 	UPROPERTY(meta = (BindWidget))
-	class UHoverButton* Btn_X;
+	class UTextBlock* Txt_Desc;
 
 	UPROPERTY(meta = (BindWidget))
-	class UTextBlock* Txt_Description;
+	class UTextureButton* Btn_Close;
 
 	UPROPERTY(meta = (BindWidget))
-	class UHoverButton* Btn_Ok;
+	class UImageButton* Btn_Ok;
 
 	UPROPERTY(meta = (BindWidget))
-	class UHoverButton* Btn_Cancel;
+	class UImageButton* Btn_Cancel;
 
 	UPROPERTY(meta = (BindWidget))
-	class UTextBlock* Txt_Name;
-	
-	UPROPERTY(meta = (BindWidget))
-	class UEditableTextBox* Edt_Name;
+	class UEditableTextBox* Edit_Name;
 
 	UFUNCTION()
-	void OnOkPressed();
+	void OnClickOk();
 	
 	UFUNCTION()
-	void OnCancelPressed();
+	void OnClickCancel();
 
 public:
-	// Set Text
-	void SetTitle(FString InTitle);
-	void SetDescription(FString InDescription);
+	void SetTitle(const FString& InTitle);
+	void SetDesc(const FString& InDescription);
 
 public:
 	// Set Visibility
