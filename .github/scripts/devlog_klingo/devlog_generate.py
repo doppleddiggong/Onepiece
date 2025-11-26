@@ -176,7 +176,7 @@ def collect_data(config, target_date, branch_name):
     jira_token = jira_config.get('token') or os.getenv('JIRA_TOKEN')
     jira_project = jira_config.get('project') or os.getenv('JIRA_PROJECT')
 
-    if jira_url and jira_email and jira_token:
+    if config.get('jira', {}).get('use_jira', True) and jira_url and jira_email and jira_token:
         try:
             # main 브랜치인 경우: 모든 개발자의 Jira 이슈 조회
             if branch_name == 'main':
@@ -184,7 +184,7 @@ def collect_data(config, target_date, branch_name):
                 all_jira_issues = []
 
                 # developers.csv에서 모든 개발자의 jira_account 가져오기
-                for dev in developers:
+                for dev in developers.values():
                     dev_jira_account = dev.get('jira_account')
                     if dev_jira_account:
                         try:

@@ -93,7 +93,7 @@ def fetch_jira_issues(jira_url, jira_email, jira_token, jira_account, jira_proje
     """
     try:
         # Jira REST API 엔드포인트
-        api_url = f"{jira_url}/rest/api/3/search"
+        api_url = f"{jira_url}/rest/api/3/search/jql"
 
         # JQL 쿼리: 특정 작업자에게 할당된 이슈
         if jira_project:
