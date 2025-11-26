@@ -8,6 +8,8 @@
 #include "GameLogging.h"
 #include "ULingoGameHelper.h"
 #include "UBroadcastManager.h"
+#include "UPopupManager.h"
+#include "UPopup_MsgBox.h"
 #include "GameFramework/PlayerController.h"
 #include "Engine/World.h"
 
@@ -16,8 +18,10 @@ ALingoGameState::ALingoGameState()
 	RemainMissionTime = 0.f;
 	bIsTimerActive = false;
 
+	GameState = EGameState::None;
+	
 	ScenarioIndex = 1;
-	StageIndex = 1;
+	StageIndex = 0;
 	ScenarioLevel = 1;
 
 	PrimaryActorTick.bCanEverTick = true;
@@ -27,6 +31,8 @@ void ALingoGameState::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutL
 {
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
 
+	DOREPLIFETIME(ALingoGameState, GameState);
+	
 	DOREPLIFETIME(ALingoGameState, RemainMissionTime);
 	DOREPLIFETIME(ALingoGameState, bIsTimerActive);
 
@@ -59,6 +65,17 @@ void ALingoGameState::Tick(float DeltaSeconds)
 
 void ALingoGameState::SetStageData(int InStageIndex, const FResponseScenario& InResponseData)
 {
+	if ( InStageIndex == 1)
+		GameState = EGameState::Stage1;
+	else if ( InStageIndex == 2)
+		GameState = EGameState::Stage2;
+	else if ( InStageIndex == 3)
+		GameState = EGameState::Stage3;
+	else if ( InStageIndex == 4)
+		GameState = EGameState::Stage4;
+
+	PRINT_STRING(TEXT("%s"), *ENUM_TO_NAME(EGameState, GameState));
+	
 	this->StageIndex = InStageIndex;
 	this->CurScenarioData = InResponseData;
 	// 미션 타이머 시작
@@ -139,8 +156,10 @@ void ALingoGameState::OnRep_QuestSuccess()
 	{
 		if (bQuestSuccess)
 		{
-			PRINTLOG(TEXT("[GameState] Quest Success - Broadcasting event"));
-			// 추후 BroadcastManager에 퀘스트 성공 이벤트 추가 필요
+			UPopupManager::Get(GetWorld())->ShowMsgBoxSimple(
+				TEXT("Success"),
+				TEXT("Quest Clear"),
+				EMsgBoxType::OK);
 		}
 	}
 }

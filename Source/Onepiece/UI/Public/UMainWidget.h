@@ -37,6 +37,10 @@ public:
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
 	class UStateWidget* StateWidget;
 
+	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
+	class UQuestInfoWidget* QuestInfoWidget;
+	
+
 protected:
 	/// @brief GameState 참조 캐싱
 	UPROPERTY()

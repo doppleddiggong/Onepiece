@@ -35,6 +35,10 @@ public:
 	
 	UPROPERTY(VisibleAnywhere)
 	TObjectPtr<class UInteractableComponent> InteractableComp;
+
+public:
+	// Index
+	int32 SpawnIdx = -1;
 	
 public:
 	// Color

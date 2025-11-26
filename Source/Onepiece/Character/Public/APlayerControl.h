@@ -29,27 +29,20 @@ protected:
 
 	UPROPERTY(EditDefaultsOnly, Category="Input") TObjectPtr<class UInputAction> IA_Move;
 	UPROPERTY(EditDefaultsOnly, Category="Input") TObjectPtr<class UInputAction> IA_Look;
-	UPROPERTY(EditDefaultsOnly, Category="Input") TObjectPtr<class UInputAction> IA_AltitudeUp;
-	UPROPERTY(EditDefaultsOnly, Category="Input") TObjectPtr<class UInputAction> IA_AltitudeDown;
 	UPROPERTY(EditDefaultsOnly, Category="Input") TObjectPtr<class UInputAction> IA_Jump;
-	UPROPERTY(EditDefaultsOnly, Category="Input") TObjectPtr<class UInputAction> IA_Landing;
 	UPROPERTY(EditDefaultsOnly, Category="Input") TObjectPtr<class UInputAction> IA_Record;
 	UPROPERTY(EditDefaultsOnly, Category="Input") TObjectPtr<class UInputAction> IA_Grab;
 	UPROPERTY(EditDefaultsOnly, Category="Input") TObjectPtr<class UInputAction> IA_Interact;
 	UPROPERTY(EditDefaultsOnly, Category="Input") TObjectPtr<class UInputAction> IA_Run;
+	UPROPERTY(EditDefaultsOnly, Category="Input") TObjectPtr<class UInputAction> IA_Info;
 
 	// --- Handlers ---
 	void OnMove(const FInputActionValue& Value);
 	void OnLook(const FInputActionValue& Value);
-	void OnAltitudeUp(const FInputActionValue& Value);
-	void OnAltitudeDown(const FInputActionValue& Value);
-	void OnAltitudeReleased(const FInputActionValue& Value);
 	
 	void OnStopMove(const FInputActionValue& Value);
 	void OnJump(const FInputActionValue& Value);
 	void OnRun(const FInputActionValue& Value);
-
-	void OnLanding(const FInputActionValue& Value);
 
 	void OnRecordPressed(const FInputActionValue& Value);
 	void OnRecordReleased(const FInputActionValue& Value);
@@ -58,6 +51,8 @@ protected:
 	void OnGrabRelease(const FInputActionValue& Value);
 
 	void OnInteract(const FInputActionValue& Value);
+
+	void OnInfo(const FInputActionValue& Value);
 
 	UFUNCTION(Server, Reliable)
 	void Server_OnGrab();	

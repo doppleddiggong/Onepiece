@@ -31,12 +31,8 @@ public:
 	virtual void Cmd_Jump() = 0;							// 점프
 	virtual void Cmd_Run() = 0;								// 달리기
 
-	virtual void Cmd_Landing() {};							// 랜딩
-	
-	virtual void Cmd_AltitudeUp() {};						// 고도 상승
-	virtual void Cmd_AltitudeDown() {};						// 고도 하강
-	virtual void Cmd_AltitudeReleased() {};					// 고도 조절 해제
-
 	virtual void Cmd_RecordStart() {};						// 녹음 시작
 	virtual void Cmd_RecordEnd() {};						// 녹음 종료
+
+	virtual void Cmd_Info() {};								// 정보 보기 팝업
 };
