@@ -111,4 +111,12 @@ public:
 	UFUNCTION(BlueprintCallable, Category="Events")
 	void SendMissionTimerStateChanged(bool bIsActive);
 
+
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnStageStarted, int, StageIndex);
+	UPROPERTY(BlueprintAssignable, Category="Events")
+	FOnStageStarted OnStageStarted;
+
+	UFUNCTION(BlueprintCallable, Category="Events")
+	void SendStageStarted(int StageIndex);
+
 };

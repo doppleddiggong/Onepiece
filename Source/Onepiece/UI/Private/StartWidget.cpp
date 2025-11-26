@@ -6,10 +6,14 @@
 #include "UHoverButton.h"
 #include "UPopupManager.h"
 #include "UPopup_InputMsg.h"
+#include "ULingoGameHelper.h"
 
 void UStartWidget::NativeConstruct()
 {
 	Super::NativeConstruct();
+
+	// 마우스 커서 표시
+	ULingoGameHelper::ShowMouseCursor(this);
 
 	if (HoverBtn_Start)
 	{

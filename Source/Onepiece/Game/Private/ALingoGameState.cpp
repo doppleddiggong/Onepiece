@@ -10,6 +10,8 @@
 #include "UBroadcastManager.h"
 #include "UPopupManager.h"
 #include "UPopup_MsgBox.h"
+#include "UPopup_ReadQuest.h"
+#include "ANetworkBroadcastActor.h"
 #include "GameFramework/PlayerController.h"
 #include "Engine/World.h"
 
@@ -65,6 +67,9 @@ void ALingoGameState::Tick(float DeltaSeconds)
 
 void ALingoGameState::SetStageData(int InStageIndex, const FResponseScenario& InResponseData)
 {
+	PRINTLOG(TEXT("[GameState] SetStageData - StageIndex: %d, HasAuthority: %s"), 
+		InStageIndex, HasAuthority() ? TEXT("true") : TEXT("false"));
+	
 	if ( InStageIndex == 1)
 		GameState = EGameState::Stage1;
 	else if ( InStageIndex == 2)
@@ -73,13 +78,23 @@ void ALingoGameState::SetStageData(int InStageIndex, const FResponseScenario& In
 		GameState = EGameState::Stage3;
 	else if ( InStageIndex == 4)
 		GameState = EGameState::Stage4;
-
-	PRINT_STRING(TEXT("%s"), *ENUM_TO_NAME(EGameState, GameState));
+	
+	PRINTLOG(TEXT("[GameState] GameState changed to: %d"), static_cast<int32>(GameState));
 	
 	this->StageIndex = InStageIndex;
 	this->CurScenarioData = InResponseData;
 	// 미션 타이머 시작
 	this->StartMissionTimer( ULingoGameHelper::GetMissionPlayTime(ScenarioLevel) );
+	
+	// 모든 클라이언트에게 스테이지 시작 브로드캐스트
+	if (HasAuthority())
+	{
+		if (ANetworkBroadcastActor* BroadcastActor = ANetworkBroadcastActor::Get(this))
+		{
+			BroadcastActor->SendStageStarted(InStageIndex, this);
+			PRINTLOG(TEXT("[GameState] Broadcasting StageStarted - StageIndex: %d"), InStageIndex);
+		}
+	}
 }
 
 void ALingoGameState::StartMissionTimer(float TimeLimit)

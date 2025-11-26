@@ -31,6 +31,9 @@ protected:
 
 	virtual void OnRep_Controller() override;
 
+	UFUNCTION()
+	void OnRep_LookPitch();
+
 	UFUNCTION(BlueprintCallable, Category="Command")
 	void RecoveryMovementMode(const EMovementMode InMovementMode);
 
@@ -51,13 +54,6 @@ protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Voice", meta=(AllowPrivateAccess="true"))
 	TObjectPtr<class UVoiceConversationSystem> VoiceConversationSystem;
 
-	
-public: // 음성 관련
-	/// @brief TTS 오디오를 재생합니다. VoiceConversationSystem으로 전달합니다.
-	/// @param AudioData [in] TTS로 생성된 오디오 데이터 (WAV)
-	/// @return 재생 성공 여부
-	UFUNCTION(BlueprintCallable, Category = "Voice")
-	void PlayTTSAudio(const TArray<uint8>& AudioData);
 	
 public: // Control Interface
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Command")
@@ -80,22 +76,44 @@ public: // Control Interface
 
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Command")
 	void Cmd_Info() override;
+
+	void DoJump();
 	
 public:
+	FORCEINLINE bool GetIsRunning() { return bIsRunning; }
+	FORCEINLINE bool GetIsJumpStart() { return bIsJumpStart; }
+	
 	/// @brief 게임 이벤트 메시지를 수신합니다.
 	/// @param Message [in] 수신된 이벤트 메시지
 	UFUNCTION(BlueprintCallable, Category="Event")
 	void OnGameMessage(const FString& Message);
+
+	/// @brief 스테이지 시작 이벤트를 처리합니다.
+	/// @param StageIndex [in] 시작된 스테이지 인덱스
+	UFUNCTION()
+	void OnStageStarted(int StageIndex);
+
+	/// @brief TTS 오디오를 재생합니다. VoiceConversationSystem으로 전달합니다.
+	/// @param AudioData [in] TTS로 생성된 오디오 데이터 (WAV)
+	/// @return 재생 성공 여부
+	UFUNCTION(BlueprintCallable, Category = "Voice")
+	void PlayTTSAudio(const TArray<uint8>& AudioData);
+	
+private:
+	/// @brief 메인 위젯을 생성하고 뷰포트에 추가합니다.
+	void CreateMainWidget();
 
 public:
 	// grab 시 들어올릴 위치
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category="Interaction")
 	USceneComponent* HoldPosition;
 
-protected:
-	/// @brief 메인 위젯을 생성하고 뷰포트에 추가합니다.
-	void CreateMainWidget();
+	// 서버쪽 pitch 수동으로 동기화
+	// bUsePawnControlRotation은 서버->클라로 전달 안됨
+	UPROPERTY(ReplicatedUsing=OnRep_LookPitch)
+	float LookPitch;
 
+private:
 	/// @brief 메인 위젯 블루프린트 클래스
 	UPROPERTY(EditDefaultsOnly, Category = "UI")
 	TSubclassOf<class UMainWidget> MainWidgetClass;
@@ -104,25 +122,9 @@ protected:
 	UPROPERTY()
 	TObjectPtr<class UMainWidget> MainWidget;
 	
-private:
 	// Movement 관련 변수
 	float WalkSpeed = 200.f;
 	float RunSpeed = 500.f;
 	bool bIsRunning = false;
 	bool bIsJumpStart = false;
-
-public:
-	UFUNCTION()
-	void OnRep_LookPitch();
-	
-	// 서버쪽 pitch 수동으로 동기화
-	// bUsePawnControlRotation은 서버->클라로 전달 안됨
-	UPROPERTY(ReplicatedUsing=OnRep_LookPitch)
-	float LookPitch;
-
-public:
-	FORCEINLINE bool GetIsRunning() { return bIsRunning; }
-	FORCEINLINE bool GetIsJumpStart() { return bIsJumpStart; }
-
-	void DoJump();
 };

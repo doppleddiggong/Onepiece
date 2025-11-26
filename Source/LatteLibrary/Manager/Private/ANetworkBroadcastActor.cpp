@@ -251,6 +251,49 @@ void ANetworkBroadcastActor::Multicast_SendKnockback_Implementation(AActor* Targ
 }
 
 // ========================================
+// Stage Started
+// ========================================
+
+void ANetworkBroadcastActor::SendStageStarted(int StageIndex, AActor* EventInstigator)
+{
+	if (!EventInstigator)
+	{
+		PRINTLOG(TEXT("NetworkBroadcastActor: SendStageStarted - EventInstigator is null"));
+		return;
+	}
+
+	PRINTLOG(TEXT("NetworkBroadcastActor: SendStageStarted called - StageIndex: %d"), StageIndex);
+
+	Server_SendStageStarted(StageIndex, EventInstigator);
+}
+
+void ANetworkBroadcastActor::Server_SendStageStarted_Implementation(int StageIndex, AActor* EventInstigator)
+{
+	if (!ValidateInstigator(EventInstigator))
+	{
+		PRINTLOG(TEXT("NetworkBroadcastActor: Invalid instigator for StageStarted"));
+		return;
+	}
+
+	PRINTLOG(TEXT("NetworkBroadcastActor: Server received StageStarted - StageIndex: %d"), StageIndex);
+
+	Multicast_SendStageStarted(StageIndex);
+}
+
+void ANetworkBroadcastActor::Multicast_SendStageStarted_Implementation(int StageIndex)
+{
+	PRINTLOG(TEXT("NetworkBroadcastActor: Multicast StageStarted - StageIndex: %d, Role: %s"),
+		StageIndex, GetLocalRole() == ROLE_Authority ? TEXT("Server") : TEXT("Client"));
+
+	UBroadcastManager* LocalBroadcast = GetLocalBroadcastManager();
+	if (LocalBroadcast)
+	{
+		LocalBroadcast->SendStageStarted(StageIndex);
+		PRINTLOG(TEXT("NetworkBroadcastActor: Local BroadcastManager triggered for StageStarted"));
+	}
+}
+
+// ========================================
 // Utility Functions
 // ========================================
 

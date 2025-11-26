@@ -121,6 +121,26 @@ protected:
 	UFUNCTION(NetMulticast, Reliable)
 	void Multicast_SendKnockback(AActor* Target, AActor* KnockbackInstigator, EDamageType Type, float Resistance);
 
+public:
+	// ========================================
+	// Stage Started
+	// ========================================
+
+	/**
+	 * @brief 스테이지 시작 이벤트를 네트워크로 전송
+	 * @param StageIndex 시작된 스테이지 인덱스
+	 * @param EventInstigator 이벤트를 발생시킨 Actor (권한 검증용)
+	 */
+	UFUNCTION(BlueprintCallable, Category = "Network Events")
+	void SendStageStarted(int StageIndex, AActor* EventInstigator);
+
+protected:
+	UFUNCTION(Server, Reliable)
+	void Server_SendStageStarted(int StageIndex, AActor* EventInstigator);
+
+	UFUNCTION(NetMulticast, Reliable)
+	void Multicast_SendStageStarted(int StageIndex);
+
 private:
 	/**
 	 * @brief 로컬 BroadcastManager 가져오기

@@ -20,6 +20,8 @@
 #include "ULingoGameHelper.h"
 #include "UPopupManager.h"
 #include "UPopup_ReadQuest.h"
+#include "UBroadcastManager.h"
+#include "ALingoGameState.h"
 
 #include "Camera/CameraComponent.h"
 #include "Components/InputComponent.h"
@@ -88,9 +90,37 @@ void APlayerActor::BeginPlay()
 	VoiceConversationSystem->InitSystem(this);
 
 	if (IsLocallyControlled())
+	{
 		CreateMainWidget();
+		
+		// BroadcastManager의 OnStageStarted 이벤트 구독
+		if (UBroadcastManager* BroadcastMgr = UBroadcastManager::Get(GetWorld()))
+		{
+			BroadcastMgr->OnStageStarted.AddDynamic(this, &APlayerActor::OnStageStarted);
+			PRINTLOG(TEXT("[PlayerActor] Subscribed to OnStageStarted event"));
+		}
+		
+		// Map1(게임 맵)에서는 마우스 숨기기
+		FString MapName = GetWorld()->GetMapName();
+		// PIE 프리픽스 제거
+		MapName.RemoveFromStart(GetWorld()->StreamingLevelsPrefix);
+		
+		PRINTLOG(TEXT("[PlayerActor] Current Map: %s"), *MapName);
+		
+		if (MapName.Contains(TEXT("Map1")) || MapName.Contains(TEXT("Game")))
+		{
+			ULingoGameHelper::HideMouseCursor(this);
+			PRINTLOG(TEXT("[PlayerActor] Mouse cursor hidden for game map"));
+		}
+	}
 }
 
+void APlayerActor::GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const
+{
+	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+
+	DOREPLIFETIME(APlayerActor, LookPitch);
+}
 
 void APlayerActor::CreateMainWidget()
 {
@@ -111,12 +141,6 @@ void APlayerActor::CreateMainWidget()
 	}
 }
 
-void APlayerActor::GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const
-{
-	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
-
-	DOREPLIFETIME(APlayerActor, LookPitch);
-}
 
 void APlayerActor::OnRep_Controller()
 {
@@ -124,6 +148,19 @@ void APlayerActor::OnRep_Controller()
 
 	if (IsLocallyControlled())
 		CreateMainWidget();
+}
+
+void APlayerActor::OnRep_LookPitch()
+{
+	// if (SpringArmComp)
+	// {
+	// 	// 다른 클라이언트에서 보이는 서버 캐릭터의 복제본의 설정 변경
+	// 	SpringArmComp->bUsePawnControlRotation = false;
+	//
+	// 	FRotator CurrentRotation = SpringArmComp->GetRelativeRotation();
+	// 	CurrentRotation.Pitch = LookPitch;
+	// 	SpringArmComp->SetRelativeRotation(CurrentRotation);
+	// }
 }
 
 void APlayerActor::RecoveryMovementMode(const EMovementMode InMovementMode)
@@ -142,6 +179,13 @@ void APlayerActor::RecoveryMovementMode(const EMovementMode InMovementMode)
 void APlayerActor::PlayTTSAudio(const TArray<uint8>& AudioData)
 {
 	VoiceConversationSystem->PlayVoiceAudio(AudioData);
+}
+
+
+void APlayerActor::DoJump()
+{
+	bIsJumpStart = false;
+	Jump();
 }
 
 void APlayerActor::Cmd_StopMove_Implementation()
@@ -167,18 +211,6 @@ void APlayerActor::Cmd_Run_Implementation()
 }
 
 
-void APlayerActor::OnRep_LookPitch()
-{
-	// if (SpringArmComp)
-	// {
-	// 	// 다른 클라이언트에서 보이는 서버 캐릭터의 복제본의 설정 변경
-	// 	SpringArmComp->bUsePawnControlRotation = false;
-	//
-	// 	FRotator CurrentRotation = SpringArmComp->GetRelativeRotation();
-	// 	CurrentRotation.Pitch = LookPitch;
-	// 	SpringArmComp->SetRelativeRotation(CurrentRotation);
-	// }
-}
 
 void APlayerActor::Cmd_Move_Implementation(const FVector2D& Axis)
 {
@@ -249,8 +281,23 @@ void APlayerActor::OnGameMessage(const FString& Message)
 	UDialogManager::Get(GetWorld())->ShowToast(Message);
 }
 
-void APlayerActor::DoJump()
+void APlayerActor::OnStageStarted(int StageIndex)
 {
-	bIsJumpStart = false;
-	Jump();
+	PRINTLOG(TEXT("[PlayerActor] OnStageStarted - StageIndex: %d"), StageIndex);
+	
+	// Stage1일 때 Read Quest 팝업 표시
+	if (StageIndex == 1)
+	{
+		if (ALingoGameState* GS = ULingoGameHelper::GetLingoGameState(GetWorld()))
+		{
+			if (const auto PopupMgr = UPopupManager::Get(GetWorld()))
+			{
+				if (const auto Popup = Cast<UPopup_ReadQuest>(PopupMgr->ShowPopup(EPopupType::ReadQuest)))
+				{
+					Popup->InitPopup(GS->CurScenarioData);
+					PRINTLOG(TEXT("[PlayerActor] Read Quest Popup displayed for Stage1"));
+				}
+			}
+		}
+	}
 }

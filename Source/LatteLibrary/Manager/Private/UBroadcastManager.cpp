@@ -64,3 +64,8 @@ void UBroadcastManager::SendMissionTimerStateChanged(bool bIsActive)
 {
 	OnMissionTimerStateChanged.Broadcast(bIsActive);
 }
+
+void UBroadcastManager::SendStageStarted(int StageIndex)
+{
+	OnStageStarted.Broadcast(StageIndex);
+}

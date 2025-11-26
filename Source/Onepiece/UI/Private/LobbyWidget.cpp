@@ -8,6 +8,7 @@
 #include "UHoverButton.h"
 #include "UImageButton.h"
 #include "ULingoGameInstance.h"
+#include "ULingoGameHelper.h"
 #include "UTextureButton.h"
 #include "Components/Button.h"
 #include "Components/EditableTextBox.h"
@@ -18,6 +19,9 @@
 void ULobbyWidget::NativeConstruct()
 {
 	Super::NativeConstruct();
+
+	// 마우스 커서 표시
+	ULingoGameHelper::ShowMouseCursor(this);
 
 	GI = Cast<ULingoGameInstance>(GetGameInstance());
 	// 중복 바인딩 방지

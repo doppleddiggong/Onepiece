@@ -73,3 +73,37 @@ FString ULingoGameHelper::GetFormatTimer(const float InRemainTime )
 
 	return FString::Printf(TEXT("%02d:%02d"), Minutes, Seconds);
 }
+
+void ULingoGameHelper::ShowMouseCursor(const UObject* WorldContextObject)
+{
+	if (!WorldContextObject)
+		return;
+
+	UWorld* World = WorldContextObject->GetWorld();
+	if (!World)
+		return;
+
+	APlayerController* PC = World->GetFirstPlayerController();
+	if (!PC)
+		return;
+
+	PC->bShowMouseCursor = true;
+	PC->SetInputMode(FInputModeGameAndUI());
+}
+
+void ULingoGameHelper::HideMouseCursor(const UObject* WorldContextObject)
+{
+	if (!WorldContextObject)
+		return;
+
+	UWorld* World = WorldContextObject->GetWorld();
+	if (!World)
+		return;
+
+	APlayerController* PC = World->GetFirstPlayerController();
+	if (!PC)
+		return;
+
+	PC->bShowMouseCursor = false;
+	PC->SetInputMode(FInputModeGameOnly());
+}
