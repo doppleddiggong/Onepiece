@@ -25,7 +25,7 @@ void UInteractionSystem::BeginPlay()
 	Super::BeginPlay();
 
 	// Owner PlayerActor 캐싱
-	OwnerPlayer = Cast<AOwlPlayer>(GetOwner());
+	OwnerPlayer = Cast<APlayerActor>(GetOwner());
 	if (!OwnerPlayer)
 	{
 		PRINTLOG( TEXT("UInteractionSystem: Owner is not AOwlPlayer!"));
@@ -50,9 +50,10 @@ void UInteractionSystem::TickComponent(float DeltaTime, ELevelTick TickType,
 
 void UInteractionSystem::TryInteract()
 {
-	PRINT_STRING(TEXT("부엉 부엉 %s"), *CurrentTarget->GetName());
 	if (!CurrentTarget || !CurrentTarget->bCanInteract)
 		return;
+
+	PRINT_STRING(TEXT("부엉 부엉 %s"), *CurrentTarget->GetName());
 
 	PRINT_STRING(TEXT("부엉 부엉 %s"), *OwnerPlayer->GetName());
 	// 타입별 처리
