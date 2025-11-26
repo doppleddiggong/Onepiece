@@ -16,6 +16,7 @@ public:
 
 protected:
 	virtual void BeginPlay() override;
+	virtual void GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const override;
 
 public:
 	virtual void Tick(float DeltaTime) override;
@@ -38,12 +39,19 @@ protected:
 	TObjectPtr<class UBoxComponent> BoxComp;
 	
 	// Conveyor Belt Actors
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	UPROPERTY(Replicated, VisibleAnywhere, BlueprintReadOnly)
 	TArray<class AActor*> ConveyorBeltActors;
 	
 	// Interaction
 	UFUNCTION()
 	void OnInteractionTriggered(AActor* Interactor);
 	
+	UFUNCTION(Server, Reliable)
+	void ServerRPC_OnInteractionTriggered(AActor* Interactor);
+	
+	UFUNCTION(NetMulticast, Reliable)
+	void MultiCastRPC_OnInteractionTriggered(AActor* Interactor);
+	
+	UPROPERTY(Replicated)
 	bool bIsButtonOn = false;
 };

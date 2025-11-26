@@ -8,6 +8,7 @@
 #include "InteractableComponent.h"
 #include "Components/BoxComponent.h"
 #include "Kismet/GameplayStatics.h"
+#include "Net/UnrealNetwork.h"
 
 
 // Sets default values
@@ -39,6 +40,8 @@ AConveyorButton::AConveyorButton()
 	BoxComp->SetCollisionEnabled(ECollisionEnabled::Type::QueryOnly);
 	BoxComp->SetCollisionObjectType(ECC_WorldStatic);
 	BoxComp->SetCollisionResponseToAllChannels(ECR_Block);
+	
+	bReplicates = true;
 }
 
 // Called when the game starts or when spawned
@@ -51,6 +54,14 @@ void AConveyorButton::BeginPlay()
 	
 	// Bind Delegate
 	InteractableComp->OnInteractionTriggered.AddDynamic(this, &AConveyorButton::OnInteractionTriggered);
+}
+
+void AConveyorButton::GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const
+{
+	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+	
+	DOREPLIFETIME(AConveyorButton, ConveyorBeltActors);
+	DOREPLIFETIME(AConveyorButton, bIsButtonOn);
 }
 
 // Called every frame
@@ -75,5 +86,15 @@ void AConveyorButton::OnInteractionTriggered(AActor* Interactor)
 		AConveyorBelt* ConveyorBeltActor = Cast<AConveyorBelt>(Belt);
 		ConveyorBeltActor->ChangeConveyorMovement();
 	}
+	
 }
 
+void AConveyorButton::ServerRPC_OnInteractionTriggered_Implementation(AActor* Interactor)
+{
+	
+}
+
+void AConveyorButton::MultiCastRPC_OnInteractionTriggered_Implementation(AActor* Interactor)
+{
+	
+}
