@@ -27,12 +27,9 @@ public:
 
 protected:
 	virtual void BeginPlay() override;
-	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
-
 	virtual void GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const override;
-	
-public:
-	virtual void Landed(const FHitResult& Hit) override;
+
+	virtual void OnRep_Controller() override;
 
 	UFUNCTION(BlueprintCallable, Category="Command")
 	void RecoveryMovementMode(const EMovementMode InMovementMode);

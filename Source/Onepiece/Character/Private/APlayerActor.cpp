@@ -37,7 +37,6 @@ APlayerActor::APlayerActor()
 {
 	PrimaryActorTick.bCanEverTick = false;
 	
-	
 	GetCapsuleComponent()->InitCapsuleSize(45.f, 102.0f);
 	GetMesh()->SetRelativeLocationAndRotation(FVector(0, 0, -100), FRotator(0, -90, 0));
 	GetMesh()->SetRelativeScale3D(FVector(1.5));
@@ -88,12 +87,8 @@ void APlayerActor::BeginPlay()
 
 	VoiceConversationSystem->InitSystem(this);
 
-	// 로컬 플레이어 컨트롤러인 경우에만 UI 생성
 	if (IsLocallyControlled())
 		CreateMainWidget();
-
-	// --- Architecture Demo Start ---
-	PRINTLOG( TEXT("APlayerActor: Setting up one-way dependency demo."));
 }
 
 
@@ -105,6 +100,9 @@ void APlayerActor::CreateMainWidget()
 		return;
 	}
 
+	if(MainWidget)
+		return;
+
 	if (APlayerController* PC = Cast<APlayerController>(GetController()))
 	{
 		MainWidget = CreateWidget<UMainWidget>(PC, MainWidgetClass);
@@ -113,17 +111,19 @@ void APlayerActor::CreateMainWidget()
 	}
 }
 
-
-void APlayerActor::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
-{
-	Super::SetupPlayerInputComponent(PlayerInputComponent);
-}
-
 void APlayerActor::GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const
 {
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
 
 	DOREPLIFETIME(APlayerActor, LookPitch);
+}
+
+void APlayerActor::OnRep_Controller()
+{
+	Super::OnRep_Controller();
+
+	if (IsLocallyControlled())
+		CreateMainWidget();
 }
 
 void APlayerActor::RecoveryMovementMode(const EMovementMode InMovementMode)
@@ -137,12 +137,6 @@ void APlayerActor::RecoveryMovementMode(const EMovementMode InMovementMode)
 	this->bUseControllerRotationYaw = false;
 	this->bUseControllerRotationPitch = false;
 	Movement->bOrientRotationToMovement = true;
-}
-
-
-void APlayerActor::Landed(const FHitResult& Hit)
-{
-	Super::Landed(Hit);
 }
 
 void APlayerActor::PlayTTSAudio(const TArray<uint8>& AudioData)
