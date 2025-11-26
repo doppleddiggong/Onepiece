@@ -38,14 +38,18 @@ void ALuggageManager::SpawnLuggage()
 	if (!GS) return;
 
 	const TArray<FScenarioTargetData>& ScenarioData = GS->GetScenarioData().target_data;
-	
-	for (auto SD : ScenarioData)
+	// auto SD : ScenarioData
+	for (int32 i=0; i<ScenarioData.Num(); i++)
 	{
+		auto SD = ScenarioData[i];
+		
 		Aluggage* NewLuggage = GetWorld()->SpawnActor<Aluggage>(LuggageClass, GetActorLocation(),
 		FRotator::ZeroRotator);
 	
 		if (NewLuggage)
 		{
+			// 인덱스 부여
+			NewLuggage->SpawnIdx = i;
 			// 색상 적용
 			int32 ColorIdx = FCString::Atoi(*SD.word2.code);
 			NewLuggage->ApplyColorToMesh(ColorIdx);
