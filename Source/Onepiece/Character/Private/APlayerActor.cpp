@@ -7,7 +7,6 @@
 
 #include "APlayerActor.h"
 
-#include "UFlySystem.h"
 #include "UMainWidget.h"
 #include "FComponentHelper.h"
 
@@ -34,29 +33,43 @@
 APlayerActor::APlayerActor()
 {
 	PrimaryActorTick.bCanEverTick = false;
-
-	SpringArmComp = CreateDefaultSubobject<USpringArmComponent>(TEXT("SpringArm"));
-	SpringArmComp->SetupAttachment(GetCapsuleComponent());
-	SpringArmComp->TargetArmLength = 400.f;
-	SpringArmComp->bUsePawnControlRotation = true;
-	// SpringArmComp->bInheritPitch = false;
-	SpringArmComp->bInheritRoll = false;
+	
+	
+	GetCapsuleComponent()->InitCapsuleSize(45.f, 102.0f);
+	GetMesh()->SetRelativeLocationAndRotation(FVector(0, 0, -100), FRotator(0, -90, 0));
+	GetMesh()->SetRelativeScale3D(FVector(1.5));
+	
+	// Movement
+	bUseControllerRotationPitch = false;
+	bUseControllerRotationYaw = true;
+	bUseControllerRotationRoll = false;
+	
+	// SpringArmComp = CreateDefaultSubobject<USpringArmComponent>(TEXT("SpringArm"));
+	// SpringArmComp->SetupAttachment(GetMesh(), TEXT("Head"));
+	// SpringArmComp->TargetArmLength = 0;
+	// SpringArmComp->bUsePawnControlRotation = false;
+	// SpringArmComp->SetRelativeLocationAndRotation(FVector(0,-14.285715,21.428572), FRotator(90, 90, 0));
+	// // SpringArmComp->bInheritPitch = false;
+	// SpringArmComp->bInheritRoll = false;
+	// SpringArmComp->bInheritPitch = true;
 
 	FollowCamera = CreateDefaultSubobject<UCameraComponent>(TEXT("FollowCamera"));
-	FollowCamera->SetupAttachment(SpringArmComp, USpringArmComponent::SocketName);
-	FollowCamera->bUsePawnControlRotation = false;
+	// FollowCamera->SetupAttachment(SpringArmComp, USpringArmComponent::SocketName);
+	FollowCamera->SetupAttachment(GetMesh(), TEXT("Head"));
+	FollowCamera->SetRelativeLocationAndRotation(FVector(0,-14.285715,21.428572), FRotator(90, 90, 0));
+	FollowCamera->bUsePawnControlRotation = true;
 
-	SpringArmComp->bInheritPitch = true;
+	GetCharacterMovement()->RotationRate = FRotator(0.0f, 500.0f, 0.0f);
+	GetCharacterMovement()->MaxWalkSpeed = WalkSpeed;
 	GetCharacterMovement()->bOrientRotationToMovement = true;
-	GetCharacterMovement()->bUseControllerDesiredRotation = false;
 
 	HoldPosition = CreateDefaultSubobject<USceneComponent>(TEXT("HoldPosition"));
 	HoldPosition->SetupAttachment(FollowCamera);
+	HoldPosition->SetRelativeLocation(FVector(57.142858,0,-23.809524));
 
 	LookPitch = 0.f;
 
 	// System Component
-	FlySystem = CreateDefaultSubobject<UFlySystem>(TEXT("FlySystem"));
 	InteractionSystem = CreateDefaultSubobject<UInteractionSystem>(TEXT("InteractionSystem"));
 	VoiceConversationSystem = CreateDefaultSubobject<UVoiceConversationSystem>(TEXT("VoiceConversationSystem"));
 
@@ -70,7 +83,6 @@ void APlayerActor::BeginPlay()
 
 	MoveComp = this->GetCharacterMovement();
 
-	FlySystem->InitSystem(this, BIND_DYNAMIC_DELEGATE(FEndCallback, this, APlayerActor, OnFlyEnd));
 	VoiceConversationSystem->InitSystem(this);
 
 	// 로컬 플레이어 컨트롤러인 경우에만 UI 생성
@@ -111,30 +123,6 @@ void APlayerActor::GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& O
 	DOREPLIFETIME(APlayerActor, LookPitch);
 }
 
-void APlayerActor::OnFlyEnd_Implementation()
-{
-}
-
-void APlayerActor::SetFlying()
-{
-	MoveComp->SetMovementMode(MOVE_Flying);
-	PrevMoveMode = EMovementMode::MOVE_Flying;
-
-	this->bUseControllerRotationYaw = true;
-	this->bUseControllerRotationPitch = true;
-	MoveComp->bOrientRotationToMovement = false;
-}
-
-void APlayerActor::SetFallingToWalk()
-{
-	MoveComp->SetMovementMode( EMovementMode::MOVE_Falling );
-	PrevMoveMode = EMovementMode::MOVE_Falling;
-
-	this->bUseControllerRotationYaw = true;
-	this->bUseControllerRotationPitch = false;
-	MoveComp->bOrientRotationToMovement = false;
-}
-
 void APlayerActor::RecoveryMovementMode(const EMovementMode InMovementMode)
 {
 	if ( InMovementMode == MOVE_None)
@@ -142,29 +130,16 @@ void APlayerActor::RecoveryMovementMode(const EMovementMode InMovementMode)
 	
 	auto Movement = this->GetCharacterMovement();
 
-	if ( InMovementMode == MOVE_Flying )
-	{
-		Movement->SetMovementMode( EMovementMode::MOVE_Flying );
-		this->bUseControllerRotationYaw = true;
-		this->bUseControllerRotationPitch = true;
-		Movement->bOrientRotationToMovement = false;
-	}
-	else
-	{
-		Movement->SetMovementMode( InMovementMode );
-		this->bUseControllerRotationYaw = false;
-		this->bUseControllerRotationPitch = false;
-		Movement->bOrientRotationToMovement = true;
-	}
+	Movement->SetMovementMode( InMovementMode );
+	this->bUseControllerRotationYaw = false;
+	this->bUseControllerRotationPitch = false;
+	Movement->bOrientRotationToMovement = true;
 }
 
 
 void APlayerActor::Landed(const FHitResult& Hit)
 {
 	Super::Landed(Hit);
-
-	if (FlySystem)
-		FlySystem->OnLand(Hit);
 }
 
 void APlayerActor::PlayTTSAudio(const TArray<uint8>& AudioData)
@@ -172,18 +147,40 @@ void APlayerActor::PlayTTSAudio(const TArray<uint8>& AudioData)
 	VoiceConversationSystem->PlayVoiceAudio(AudioData);
 }
 
+void APlayerActor::Cmd_StopMove_Implementation()
+{
+	bIsRunning = false;
+	GetCharacterMovement()->MaxWalkSpeed = WalkSpeed;
+}
+
+void APlayerActor::Cmd_Run_Implementation()
+{
+	if (bIsJumpStart || GetMovementComponent()->IsFalling()) return;
+	
+	if (bIsRunning)
+	{
+		bIsRunning = false;
+		GetCharacterMovement()->MaxWalkSpeed = WalkSpeed;
+	}
+	else
+	{
+		bIsRunning = true;
+		GetCharacterMovement()->MaxWalkSpeed = RunSpeed;
+	}
+}
+
 
 void APlayerActor::OnRep_LookPitch()
 {
-	if (SpringArmComp)
-	{
-		// 다른 클라이언트에서 보이는 서버 캐릭터의 복제본의 설정 변경
-		SpringArmComp->bUsePawnControlRotation = false;
-
-		FRotator CurrentRotation = SpringArmComp->GetRelativeRotation();
-		CurrentRotation.Pitch = LookPitch;
-		SpringArmComp->SetRelativeRotation(CurrentRotation);
-	}
+	// if (SpringArmComp)
+	// {
+	// 	// 다른 클라이언트에서 보이는 서버 캐릭터의 복제본의 설정 변경
+	// 	SpringArmComp->bUsePawnControlRotation = false;
+	//
+	// 	FRotator CurrentRotation = SpringArmComp->GetRelativeRotation();
+	// 	CurrentRotation.Pitch = LookPitch;
+	// 	SpringArmComp->SetRelativeRotation(CurrentRotation);
+	// }
 }
 
 void APlayerActor::Cmd_Move_Implementation(const FVector2D& Axis)
@@ -209,17 +206,6 @@ void APlayerActor::Cmd_Move_Implementation(const FVector2D& Axis)
 		AddMovementInput(ForwardDirection, Axis.Y);
 		AddMovementInput(RightDirection, Axis.X);
 	}
-	else if (CurrentMovementMode == MOVE_Flying)
-	{
-		// For flying, use the full 3D rotation of the controller.
-		const FRotator FullRotation(ControlRotation.Pitch, ControlRotation.Yaw, 0.0f);
-
-		const FVector ForwardDirection = FRotationMatrix(FullRotation).GetUnitAxis(EAxis::X);
-		const FVector RightDirection = FRotationMatrix(FullRotation).GetUnitAxis(EAxis::Y);
-
-		AddMovementInput(ForwardDirection, Axis.Y);
-		AddMovementInput(RightDirection, Axis.X);
-	}
 }
 
 void APlayerActor::Cmd_Look_Implementation(const FVector2D& Axis)
@@ -228,24 +214,9 @@ void APlayerActor::Cmd_Look_Implementation(const FVector2D& Axis)
 	AddControllerPitchInput(Axis.Y);
 }
 
-void APlayerActor::Cmd_AltitudeUp_Implementation()
-{
-	FlySystem->OnAltitudePress(true);
-}
-
-void APlayerActor::Cmd_AltitudeDown_Implementation()
-{
-	FlySystem->OnAltitudePress(false);
-}
-
-void APlayerActor::Cmd_AltitudeReleased_Implementation()
-{
-	FlySystem->OnAltitudeRelease();
-}
-
 void APlayerActor::Cmd_Jump_Implementation()
 {
-	FlySystem->OnJump();
+	bIsJumpStart = true;
 }
 
 void APlayerActor::Cmd_RecordStart_Implementation()
@@ -261,7 +232,6 @@ void APlayerActor::Cmd_RecordEnd_Implementation()
 void APlayerActor::Cmd_Landing_Implementation()
 {
 	FHitResult HitResult;
-	FlySystem->OnLand(HitResult);
 }
 
 void APlayerActor::OnGameMessage(const FString& Message)
@@ -270,4 +240,20 @@ void APlayerActor::OnGameMessage(const FString& Message)
 
 	// 퀘스트 시작이 뜨면 메세지 팝업을 띄우자
 	UDialogManager::Get(GetWorld())->ShowToast(Message);
+}
+
+bool APlayerActor::GetIsRunning()
+{
+	return bIsRunning;
+}
+
+bool APlayerActor::GetIsJumpStart()
+{
+	return bIsJumpStart;
+}
+
+void APlayerActor::DoJump()
+{
+	bIsJumpStart = false;
+	Jump();
 }

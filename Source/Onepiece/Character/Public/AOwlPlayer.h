@@ -58,11 +58,19 @@ protected:
 	UPROPERTY(EditAnywhere, Category="Input")
 	TObjectPtr<class UInputAction> InteractAction;
 	
+	// UPROPERTY(EditAnywhere, Category="Input")
+	// TObjectPtr<class UInputAction> GrabAction;
+	
 	void OnMove(const FInputActionValue& Value);
 	void OnStopMove();
 	void OnLook(const FInputActionValue& Value);
 	void OnJump();
 	void OnRun();
+	
+	// Interact
+	// void OnGrab(const FInputActionValue& Value);
+	// void OnGrabRelease(const FInputActionValue& Value);
+	void OnInteract(const FInputActionValue& Value);
 	
 private:
 	// Move Value
