@@ -5,6 +5,7 @@
 
 #include "UImageButton.h"
 #include "UTextureButton.h"
+#include "UPopupManager.h"
 #include "Components/Spacer.h"
 #include "Components/TextBlock.h"
 
@@ -53,7 +54,11 @@ void UPopup_MsgBox::InitButton(EMsgBoxType InType)
 
 void UPopup_MsgBox::OnClickOk()
 {
-	RemoveFromParent();
+	// PopupManager를 통해 팝업 닫기 (마우스 커서 처리 포함)
+	if (UPopupManager* PopupMgr = UPopupManager::Get(GetWorld()))
+	{
+		PopupMgr->HideCurrentPopup();
+	}
 
 	if (OnOkDelegate.IsBound())
 		OnOkDelegate.Execute();
@@ -61,8 +66,12 @@ void UPopup_MsgBox::OnClickOk()
 
 void UPopup_MsgBox::OnClickCancel()
 {
-	RemoveFromParent();
-	
+	// PopupManager를 통해 팝업 닫기 (마우스 커서 처리 포함)
+	if (UPopupManager* PopupMgr = UPopupManager::Get(GetWorld()))
+	{
+		PopupMgr->HideCurrentPopup();
+	}
+
 	if (OnCancelDelegate.IsBound())
 		OnCancelDelegate.Execute();
 }

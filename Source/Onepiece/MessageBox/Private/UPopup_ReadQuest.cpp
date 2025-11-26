@@ -7,6 +7,7 @@
 #include "GameFramework/PlayerController.h"
 #include "GameLogging.h"
 #include "ULingoGameHelper.h"
+#include "UPopupManager.h"
 #include "UTextureButton.h"
 #include "UWordWidget.h"
 
@@ -48,5 +49,9 @@ void UPopup_ReadQuest::InitPopup(const FResponseScenario& InScenarioData)
 
 void UPopup_ReadQuest::OnClickClose()
 {
-	RemoveFromParent();
+	// PopupManager를 통해 팝업 닫기 (마우스 커서 처리 포함)
+	if (UPopupManager* PopupMgr = UPopupManager::Get(GetWorld()))
+	{
+		PopupMgr->HideCurrentPopup();
+	}
 }

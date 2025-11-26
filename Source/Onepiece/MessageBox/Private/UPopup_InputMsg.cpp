@@ -7,6 +7,7 @@
 #include "UHoverButton.h"
 #include "UImageButton.h"
 #include "UKLingoNetworkSystem.h"
+#include "UPopupManager.h"
 #include "UTextureButton.h"
 
 #include "Components/EditableTextBox.h"
@@ -46,13 +47,21 @@ void UPopup_InputMsg::OnClickOk()
 		RequestUserToken(InputString);
 	else
 		RequestUserRegister(InputString);
-	
-	RemoveFromParent();
+
+	// PopupManager를 통해 팝업 닫기 (마우스 커서 처리 포함)
+	if (UPopupManager* PopupMgr = UPopupManager::Get(GetWorld()))
+	{
+		PopupMgr->HideCurrentPopup();
+	}
 }
 
 void UPopup_InputMsg::OnClickCancel()
 {
-	RemoveFromParent();
+	// PopupManager를 통해 팝업 닫기 (마우스 커서 처리 포함)
+	if (UPopupManager* PopupMgr = UPopupManager::Get(GetWorld()))
+	{
+		PopupMgr->HideCurrentPopup();
+	}
 }
 
 void UPopup_InputMsg::InitPopup(const EPopupType InPopupType )

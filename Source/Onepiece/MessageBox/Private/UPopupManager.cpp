@@ -37,6 +37,9 @@ UUserWidget* UPopupManager::ShowPopup(EPopupType Type)
 		return nullptr;
 	}
 
+	// 첫 팝업이 열릴 때 마우스 커서 표시
+	bool bIsFirstPopup = (PopupStack.Num() == 0);
+
 	// 이미 뷰포트에 있으면 스택 맨 위로 이동
 	if (PopupWidget->IsInViewport())
 	{
@@ -59,6 +62,19 @@ UUserWidget* UPopupManager::ShowPopup(EPopupType Type)
 	// 스택에 추가
 	PushPopupToStack(Type);
 
+	// 첫 팝업이 열렸다면 마우스 커서 표시
+	if (bIsFirstPopup)
+	{
+		if (ULocalPlayer* LocalPlayer = GetLocalPlayer())
+		{
+			if (APlayerController* PC = LocalPlayer->GetPlayerController(GetWorld()))
+			{
+				PC->bShowMouseCursor = true;
+				PC->SetInputMode(FInputModeGameAndUI());
+			}
+		}
+	}
+
 	return PopupWidget;
 }
 
@@ -78,6 +94,19 @@ void UPopupManager::HidePopup(EPopupType Type, bool bDestroyWidget)
 
 	// 스택에서 제거
 	RemovePopupFromStack(Type);
+
+	// 모든 팝업이 닫혔다면 마우스 커서 숨기기
+	if (PopupStack.Num() == 0)
+	{
+		if (ULocalPlayer* LocalPlayer = GetLocalPlayer())
+		{
+			if (APlayerController* PC = LocalPlayer->GetPlayerController(GetWorld()))
+			{
+				PC->bShowMouseCursor = false;
+				PC->SetInputMode(FInputModeGameOnly());
+			}
+		}
+	}
 
 	// 위젯 파괴
 	if (bDestroyWidget)
