@@ -9,7 +9,9 @@
 #include "GameFramework/PlayerController.h"
 #include "GameLogging.h"
 #include "ULingoGameHelper.h"
-#include "Kismet/GameplayStatics.h"
+#include "UWordWidget.h"
+#include "Components/Button.h"
+
 
 UPopup_ReadQuest::UPopup_ReadQuest(const FObjectInitializer& ObjectInitializer)
 	: Super(ObjectInitializer)
@@ -20,170 +22,121 @@ void UPopup_ReadQuest::NativeConstruct()
 {
 	Super::NativeConstruct();
 
-	PRINTLOG(TEXT("[ReadQuestWidget] Widget constructed"));
+	if (Btn_Close)
+	{
+		Btn_Close->OnClicked.RemoveDynamic(this, &UPopup_ReadQuest::OnClickClose);
+		Btn_Close->OnClicked.AddDynamic(this, &UPopup_ReadQuest::OnClickClose);
+	}
 }
 
-void UPopup_ReadQuest::InitializeQuest()
+
+void UPopup_ReadQuest::InitPopup(const FResponseScenario& InScenarioData)
 {
-	PRINTLOG(TEXT("[ReadQuestWidget] Initializing quest"));
+	PRINTLOG(TEXT("[ReadQuestWidget] InitPopup quest"));
 
-	// 미션 설명 텍스트 설정
-	if ( CachedGameState->CurScenarioData.word_data1.Eng.Len() > 0)
-	{
-		FString Description = ULingoGameHelper::GetLingoGameState(GetWorld())->CurScenarioData.GetDescription();
-		MissionDescriptionText->SetText(FText::FromString(Description));
-	}
+	this->ScenarioData = InScenarioData;
 
+	// WordWidget 초기화
+	WordWidget->InitWordData(InScenarioData.full_data);
+	Txt_Desc->SetText( FText::FromString(InScenarioData.GetDescription() ));
+	
 	// 선택지 리스트 빌드
-	BuildSymbolList();
-	BuildColorList();
-
-	PRINTLOG(TEXT("[ReadQuestWidget] Quest initialized successfully"));
+	InitWord1List();
+	InitWord2List();
 }
 
-TArray<FString> UPopup_ReadQuest::GetUniqueSymbols() const
+
+void UPopup_ReadQuest::InitWord1List()
 {
-	TSet<FString> UniqueSet;
-	TArray<FString> Result;
-
-	if (!CachedGameState)
-		return Result;
-
-	// target_data에서 symbol 필드만 추출하여 중복 제거
-	for (const FScenarioTargetData& TargetData : CachedGameState->CurScenarioData.target_data)
+	if (!Scroll_Word1 || !EntryWidgetClass)
 	{
-		if (!TargetData.word1.code.IsEmpty())
-		{
-			UniqueSet.Add(TargetData.word1.code);
-		}
-	}
-
-	Result = UniqueSet.Array();
-	return Result;
-}
-
-TArray<FString> UPopup_ReadQuest::GetUniqueColors() const
-{
-	TSet<FString> UniqueSet;
-	TArray<FString> Result;
-
-	if (!CachedGameState)
-		return Result;
-
-	// target_data에서 color 필드만 추출하여 중복 제거
-	for (const FScenarioTargetData& TargetData : CachedGameState->CurScenarioData.target_data)
-	{
-		if (!TargetData.word2.code.IsEmpty())
-		{
-			UniqueSet.Add(TargetData.word2.code);
-		}
-	}
-
-	Result = UniqueSet.Array();
-	return Result;
-}
-
-void UPopup_ReadQuest::BuildSymbolList()
-{
-	if (!SymbolScrollBox || !EntryWidgetClass)
-	{
-		PRINTLOG(TEXT("[ReadQuestWidget] Cannot build symbol list - missing components"));
+		PRINTLOG(TEXT("[ReadQuestWidget] Cannot build Word1 list - missing components"));
 		return;
 	}
 
 	// 기존 엔트리 제거
-	SymbolScrollBox->ClearChildren();
-	SymbolEntries.Empty();
+	Scroll_Word1->ClearChildren();
+	Word1EntryList.Empty();
 
 	// 중복 제거된 심볼 리스트 가져오기
-	TArray<FString> Symbols = GetUniqueSymbols();
+	TArray<FString> List = ScenarioData.GetWord1List();
 
-	PRINTLOG(TEXT("[ReadQuestWidget] Building symbol list with %d items"), Symbols.Num());
-
+	auto PS = ULingoGameHelper::GetLingoPlayerState(GetWorld());
+	
 	// 플레이어 역할 확인 (OnlyQuestion2는 심볼 선택 불가)
-	bool bCanSelectSymbol = (CachedPlayerState && CachedPlayerState->QuestRole != EReadQuestRole::OnlyQuestion2);
+	bool bCanSelectSymbol = (PS && PS->QuestRole != EReadQuestRole::OnlyQuestion2);
 
 	// 엔트리 위젯 생성
-	for (const FString& Symbol : Symbols)
+	for (const FString& Symbol : List)
 	{
 		UPopup_ReadQuestItem* EntryWidget = CreateWidget<UPopup_ReadQuestItem>(GetWorld(), EntryWidgetClass);
 		if (EntryWidget)
 		{
 			EntryWidget->InitializeEntry(Symbol, bCanSelectSymbol);
-			EntryWidget->OnEntrySelected.AddUObject(this, &UPopup_ReadQuest::OnSymbolSelected);
+			EntryWidget->OnEntrySelected.AddUObject(this, &UPopup_ReadQuest::OnSelectWord1);
 
-			SymbolScrollBox->AddChild(EntryWidget);
-			SymbolEntries.Add(EntryWidget);
+			Scroll_Word1->AddChild(EntryWidget);
+			Word1EntryList.Add(EntryWidget);
 		}
 	}
-
-	PRINTLOG(TEXT("[ReadQuestWidget] Symbol list built successfully"));
 }
 
-void UPopup_ReadQuest::BuildColorList()
+void UPopup_ReadQuest::InitWord2List()
 {
-	if (!ColorScrollBox || !EntryWidgetClass)
+	if (!Scroll_Word2 || !EntryWidgetClass)
 	{
-		PRINTLOG(TEXT("[ReadQuestWidget] Cannot build color list - missing components"));
+		PRINTLOG(TEXT("[ReadQuestWidget] Cannot build Word2 list - missing components"));
 		return;
 	}
 
 	// 기존 엔트리 제거
-	ColorScrollBox->ClearChildren();
-	ColorEntries.Empty();
+	Scroll_Word2->ClearChildren();
+	Word2EntryList.Empty();
 
 	// 중복 제거된 색상 리스트 가져오기
-	TArray<FString> Colors = GetUniqueColors();
+	TArray<FString> List = ScenarioData.GetWord2List();
 
-	PRINTLOG(TEXT("[ReadQuestWidget] Building color list with %d items"), Colors.Num());
-
+	auto PS = ULingoGameHelper::GetLingoPlayerState(GetWorld());
 	// 플레이어 역할 확인 (OnlyQuestion1은 색상 선택 불가)
-	bool bCanSelectColor = (CachedPlayerState && CachedPlayerState->QuestRole != EReadQuestRole::OnlyQuestion1);
+	bool bCanSelectColor = (PS && PS->QuestRole != EReadQuestRole::OnlyQuestion1);
 
 	// 엔트리 위젯 생성
-	for (const FString& Color : Colors)
+	for (const FString& Color : List)
 	{
 		UPopup_ReadQuestItem* EntryWidget = CreateWidget<UPopup_ReadQuestItem>(GetWorld(), EntryWidgetClass);
 		if (EntryWidget)
 		{
 			EntryWidget->InitializeEntry(Color, bCanSelectColor);
-			EntryWidget->OnEntrySelected.AddUObject(this, &UPopup_ReadQuest::OnColorSelected);
+			EntryWidget->OnEntrySelected.AddUObject(this, &UPopup_ReadQuest::OnSelectWord2);
 
-			ColorScrollBox->AddChild(EntryWidget);
-			ColorEntries.Add(EntryWidget);
+			Scroll_Word2->AddChild(EntryWidget);
+			Word2EntryList.Add(EntryWidget);
 		}
 	}
-
-	PRINTLOG(TEXT("[ReadQuestWidget] Color list built successfully"));
 }
 
-void UPopup_ReadQuest::OnSymbolSelected(const FString& Symbol, UPopup_ReadQuestItem* EntryWidget)
+void UPopup_ReadQuest::OnSelectWord1(const FString& Symbol, UPopup_ReadQuestItem* EntryWidget)
 {
-	if (!CachedPlayerState || !EntryWidget)
+	if (!EntryWidget)
 		return;
-
-	PRINTLOG(TEXT("[ReadQuestWidget] Symbol selected: %s"), *Symbol);
 
 	// 이전 선택 해제
 	if (SelectedSymbolEntry && SelectedSymbolEntry != EntryWidget)
-	{
 		SelectedSymbolEntry->SetSelected(false);
-	}
 
 	// 새로운 선택
 	SelectedSymbolEntry = EntryWidget;
 	SelectedSymbolEntry->SetSelected(true);
 
 	// 서버에 전송
-	CachedPlayerState->ServerSetSelectedSymbol(Symbol);
+	auto PS = ULingoGameHelper::GetLingoPlayerState(GetWorld());
+	PS->Server_SetSelectedWord1(Symbol);
 }
 
-void UPopup_ReadQuest::OnColorSelected(const FString& Color, UPopup_ReadQuestItem* EntryWidget)
+void UPopup_ReadQuest::OnSelectWord2(const FString& Color, UPopup_ReadQuestItem* EntryWidget)
 {
-	if (!CachedPlayerState || !EntryWidget)
+	if (!EntryWidget)
 		return;
-
-	PRINTLOG(TEXT("[ReadQuestWidget] Color selected: %s"), *Color);
 
 	// 이전 선택 해제
 	if (SelectedColorEntry && SelectedColorEntry != EntryWidget)
@@ -196,22 +149,19 @@ void UPopup_ReadQuest::OnColorSelected(const FString& Color, UPopup_ReadQuestIte
 	SelectedColorEntry->SetSelected(true);
 
 	// 서버에 전송
-	CachedPlayerState->ServerSetSelectedColor(Color);
+	auto PS = ULingoGameHelper::GetLingoPlayerState(GetWorld());
+	PS->Server_SetSelectedWord2(Color);
 }
 
 void UPopup_ReadQuest::OnPlayerStateUpdated()
 {
-	if (!CachedPlayerState)
-		return;
-
-	PRINTLOG(TEXT("[ReadQuestWidget] PlayerState updated - checking for wrong answers"));
-
+	auto PS = ULingoGameHelper::GetLingoPlayerState(GetWorld());
 	// 심볼이 틀렸다면 엔트리 업데이트
-	if (CachedPlayerState->bSymbolWrong)
+	if (PS->bWrongWord1)
 	{
-		for (UPopup_ReadQuestItem* Entry : SymbolEntries)
+		for (UPopup_ReadQuestItem* Entry : Word1EntryList)
 		{
-			if (Entry && Entry->GetChoiceValue() == CachedPlayerState->SelectedSymbol)
+			if (Entry && Entry->GetChoiceValue() == PS->SelectedWord1)
 			{
 				Entry->SetWrong(true);
 				Entry->SetSelected(false);
@@ -222,11 +172,11 @@ void UPopup_ReadQuest::OnPlayerStateUpdated()
 	}
 
 	// 색상이 틀렸다면 엔트리 업데이트
-	if (CachedPlayerState->bColorWrong)
+	if (PS->bWrongWord2)
 	{
-		for (UPopup_ReadQuestItem* Entry : ColorEntries)
+		for (UPopup_ReadQuestItem* Entry : Word2EntryList)
 		{
-			if (Entry && Entry->GetChoiceValue() == CachedPlayerState->SelectedColor)
+			if (Entry && Entry->GetChoiceValue() == PS->SelectedWord2)
 			{
 				Entry->SetWrong(true);
 				Entry->SetSelected(false);
@@ -235,4 +185,9 @@ void UPopup_ReadQuest::OnPlayerStateUpdated()
 			}
 		}
 	}
+}
+
+void UPopup_ReadQuest::OnClickClose()
+{
+	RemoveFromParent();
 }

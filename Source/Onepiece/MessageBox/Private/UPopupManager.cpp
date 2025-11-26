@@ -4,20 +4,24 @@
 #include "UBasePopup.h"
 #include "UPopup_MsgBox.h"
 #include "UPopup_InputMsg.h"
+#include "UPopup_ReadQuest.h"
 
 #include "FComponentHelper.h"
 #include "GameLogging.h"
+
 #include "Onepiece/Onepiece.h"
 
-#define POPUPMSG_PATH TEXT("/Game/CustomContents/UI/Widgets/WBP_PopupMsg.WBP_PopupMsg_C")
-#define INPUT_POPUPMSG_PATH TEXT("/Game/CustomContents/UI/Widgets/WBP_InputPopupMsg.WBP_InputPopupMsg_C")
+#define POPUP_PATH TEXT("/Game/CustomContents/UI/Widgets/WBP_PopupMsg.WBP_PopupMsg_C")
+#define INPUT_POPUP_PATH TEXT("/Game/CustomContents/UI/Widgets/WBP_InputPopupMsg.WBP_InputPopupMsg_C")
+#define READQUEST_POPUP_PATH TEXT("/Game/CustomContents/UI/Widgets/WBP_PopupReadQuest.WBP_PopupReadQuest_C")
 
 UPopupManager::UPopupManager()
 {
 	// 기본 팝업 클래스 등록
-	PopupClassMap.Add(EPopupType::MsgBox, FComponentHelper::LoadClass<UPopup_MsgBox>(POPUPMSG_PATH));
-	PopupClassMap.Add(EPopupType::InputMsg_Register, FComponentHelper::LoadClass<UPopup_InputMsg>(INPUT_POPUPMSG_PATH));
-	PopupClassMap.Add(EPopupType::InputMsg_Login, FComponentHelper::LoadClass<UPopup_InputMsg>(INPUT_POPUPMSG_PATH));
+	PopupClassMap.Add(EPopupType::MsgBox, FComponentHelper::LoadClass<UPopup_MsgBox>(POPUP_PATH));
+	PopupClassMap.Add(EPopupType::Register, FComponentHelper::LoadClass<UPopup_InputMsg>(INPUT_POPUP_PATH));
+	PopupClassMap.Add(EPopupType::Login, FComponentHelper::LoadClass<UPopup_InputMsg>(INPUT_POPUP_PATH));
+	PopupClassMap.Add(EPopupType::ReadQuest, FComponentHelper::LoadClass<UPopup_ReadQuest>(READQUEST_POPUP_PATH));
 }
 
 // ========================================

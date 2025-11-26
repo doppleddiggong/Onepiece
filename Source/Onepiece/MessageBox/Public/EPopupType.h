@@ -16,8 +16,8 @@ enum class EPopupType : uint8
 	MsgBox				UMETA(DisplayName = "Message Box"),
 
 	// 입력 팝업
-	InputMsg_Register	UMETA(DisplayName = "Register"),
-	InputMsg_Login		UMETA(DisplayName = "Login"),
+	Register	UMETA(DisplayName = "Register"),
+	Login		UMETA(DisplayName = "Login"),
 
 	ReadQuest			UMETA(DisplayName = "ReadQuest"),
 };

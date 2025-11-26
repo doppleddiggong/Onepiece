@@ -143,6 +143,8 @@ struct FWordData
 
 	UPROPERTY(BlueprintReadWrite, Category = "Word")
 	FString Pronunciation;
+
+	TArray<FWordData> GetSplitData() const;	
 };
 
 // =================================================================================
@@ -484,6 +486,9 @@ struct FResponseScenario
 	void PrintData() const;
 
 	FString GetDescription() const;
+
+	TArray<FString> GetWord1List() const;
+	TArray<FString> GetWord2List() const;
 };
 
 // =================================================================================

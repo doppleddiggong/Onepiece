@@ -24,9 +24,9 @@ public:
 	// BindWidget Components
 	//--------------------------------------------------------------//
 
-	/// @brief 선택 버튼
+	/// @brief 선택 체크박스
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
-	class UButton* SelectButton;
+	class UCheckBox* SelectCheckBox;
 
 	/// @brief 선택지 텍스트
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
@@ -79,9 +79,9 @@ public:
 	FString GetChoiceValue() const { return ChoiceValue; }
 
 protected:
-	/// @brief 버튼 클릭 콜백
+	/// @brief 체크박스 상태 변경 콜백
 	UFUNCTION()
-	void OnButtonClicked();
+	void OnCheckStateChanged(bool bIsChecked);
 
 	/// @brief UI 스타일을 업데이트합니다
 	void UpdateVisualState();
