@@ -17,6 +17,12 @@ class ONEPIECE_API ULingoGameHelper : public UBlueprintFunctionLibrary
 
 public:
 	UFUNCTION(BlueprintCallable, Category = "Utils")
+	static int GetMultiPlayerCount(const UObject* WorldContextObject);
+
+	UFUNCTION(BlueprintCallable, Category = "Utils")
+	static bool IsMultiPlay(const UObject* WorldContextObject);
+	
+	UFUNCTION(BlueprintCallable, Category = "Utils")
 	static ALingoGameState* GetLingoGameState(const UObject* WorldContextObject);
 	
 	UFUNCTION(BlueprintCallable, Category = "Utils")

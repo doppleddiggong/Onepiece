@@ -8,7 +8,19 @@
 #include "Kismet/GameplayStatics.h"
 #include "Onepiece/Onepiece.h"
 
-// GameState 가져오기
+
+int ULingoGameHelper::GetMultiPlayerCount(const UObject* WorldContextObject)
+{
+	ALingoGameState* GS = Cast<ALingoGameState>(UGameplayStatics::GetGameState(WorldContextObject));
+	int32 NumPlayers = GS ? GS->PlayerArray.Num() : 0;
+	return NumPlayers;
+}
+
+bool ULingoGameHelper::IsMultiPlay(const UObject* WorldContextObject)
+{
+	return GetMultiPlayerCount(WorldContextObject) > 1;
+}
+
 ALingoGameState* ULingoGameHelper::GetLingoGameState(const UObject* WorldContextObject)
 {
 	return Cast<ALingoGameState>(UGameplayStatics::GetGameState(WorldContextObject));

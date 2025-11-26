@@ -33,6 +33,18 @@ void ADoor::BeginPlay()
 	Super::BeginPlay();
 
 	UBroadcastManager::Get(GetWorld())->OnDoorMessage.AddDynamic(this, &ADoor::OnDoorMessage);
+
+	// 맵 배치 시 설정한 초기 상태 적용
+	if (bStartOpened)
+	{
+		Alpha = 1.0f;
+		UpdateDoor(Alpha);
+	}
+	else
+	{
+		Alpha = 0.0f;
+		UpdateDoor(Alpha);
+	}
 }
 
 void ADoor::UpdateDoor(float InAlpha)

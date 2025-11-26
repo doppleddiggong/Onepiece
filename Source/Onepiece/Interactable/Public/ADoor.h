@@ -52,6 +52,10 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	bool OneShot = false;
 
+	/// @brief 맵 배치 시 문이 열린 상태로 시작할지 여부
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Door")
+	bool bStartOpened = false;
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FVector LeftOpen = FVector(-120,0,0);
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
