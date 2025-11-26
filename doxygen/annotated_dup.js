@@ -1,5 +1,6 @@
 var annotated_dup =
 [
+    [ "ABroadcastTrigger", "classABroadcastTrigger.html", "classABroadcastTrigger" ],
     [ "AContactTrigger", "classAContactTrigger.html", "classAContactTrigger" ],
     [ "AConveyorBelt", "classAConveyorBelt.html", "classAConveyorBelt" ],
     [ "AConveyorButton", "classAConveyorButton.html", "classAConveyorButton" ],

@@ -147,60 +147,72 @@ $(document).ready(function(){initNavTree('ADoor_8cpp_source.html',''); initResiz
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    Super::BeginPlay();</div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    UBroadcastManager::Get(GetWorld())-&gt;OnDoorMessage.AddDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classADoor.html#a032c2f3cecd82c880fddd13dea3573cd">ADoor::OnDoorMessage</a>);</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>}</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="comment">// 맵 배치 시 설정한 초기 상태 적용</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classADoor.html#a7da53aef19eba9e0ca4c1368de54f782">bStartOpened</a>)</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    {</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        <a class="code hl_variable" href="classADoor.html#a6a5a3d6a33a240c534fba618ab4ae703">Alpha</a> = 1.0f;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        <a class="code hl_function" href="classADoor.html#a4ba5b25cac1027264fd35252ab18ea12">UpdateDoor</a>(<a class="code hl_variable" href="classADoor.html#a6a5a3d6a33a240c534fba618ab4ae703">Alpha</a>);</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    }</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    {</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        <a class="code hl_variable" href="classADoor.html#a6a5a3d6a33a240c534fba618ab4ae703">Alpha</a> = 0.0f;</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        <a class="code hl_function" href="classADoor.html#a4ba5b25cac1027264fd35252ab18ea12">UpdateDoor</a>(<a class="code hl_variable" href="classADoor.html#a6a5a3d6a33a240c534fba618ab4ae703">Alpha</a>);</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    }</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>}</div>
 </div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
-<div class="foldopen" id="foldopen00038" data-start="{" data-end="}">
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="classADoor.html#a4ba5b25cac1027264fd35252ab18ea12">   38</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classADoor.html#a4ba5b25cac1027264fd35252ab18ea12">ADoor::UpdateDoor</a>(<span class="keywordtype">float</span> InAlpha)</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>{</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <a class="code hl_variable" href="classADoor.html#a6a5a3d6a33a240c534fba618ab4ae703">Alpha</a> = InAlpha; <span class="comment">// Blueprint에서 SET 한 것과 대응</span></div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="comment">// Right</span></div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    {</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        <span class="keyword">const</span> FVector ClosedPos = FVector::ZeroVector;</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        <span class="keyword">const</span> FVector OpenPos   = <a class="code hl_variable" href="classADoor.html#a5062b9cca1f134e98754719512b31ccb">RightOpen</a>;</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        <span class="keyword">const</span> FVector NewPos = FMath::Lerp(ClosedPos, OpenPos, <a class="code hl_variable" href="classADoor.html#a6a5a3d6a33a240c534fba618ab4ae703">Alpha</a>);</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        <a class="code hl_variable" href="classADoor.html#a1abd1e1a41541b79f767fed937f31a54">SM_Right</a>-&gt;SetRelativeLocation(NewPos, <span class="keyword">false</span>, <span class="keyword">nullptr</span>, ETeleportType::None);</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    }</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="comment">// Left</span></div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    {</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        <span class="keyword">const</span> FVector ClosedPos = FVector::ZeroVector;</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        <span class="keyword">const</span> FVector OpenPos   = <a class="code hl_variable" href="classADoor.html#a8ff307d5acd13d7080fdb51f1300d68f">LeftOpen</a>;</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        <span class="keyword">const</span> FVector NewPos = FMath::Lerp(ClosedPos, OpenPos, <a class="code hl_variable" href="classADoor.html#a6a5a3d6a33a240c534fba618ab4ae703">Alpha</a>);</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        <a class="code hl_variable" href="classADoor.html#a2b88304b40b526981227fffdcfe6992a">SM_Left</a>-&gt;SetRelativeLocation(NewPos, <span class="keyword">false</span>, <span class="keyword">nullptr</span>, ETeleportType::None);</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    }</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>}</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="foldopen" id="foldopen00050" data-start="{" data-end="}">
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="classADoor.html#a4ba5b25cac1027264fd35252ab18ea12">   50</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classADoor.html#a4ba5b25cac1027264fd35252ab18ea12">ADoor::UpdateDoor</a>(<span class="keywordtype">float</span> InAlpha)</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>{</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <a class="code hl_variable" href="classADoor.html#a6a5a3d6a33a240c534fba618ab4ae703">Alpha</a> = InAlpha; <span class="comment">// Blueprint에서 SET 한 것과 대응</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="comment">// Right</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    {</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        <span class="keyword">const</span> FVector ClosedPos = FVector::ZeroVector;</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        <span class="keyword">const</span> FVector OpenPos   = <a class="code hl_variable" href="classADoor.html#a5062b9cca1f134e98754719512b31ccb">RightOpen</a>;</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        <span class="keyword">const</span> FVector NewPos = FMath::Lerp(ClosedPos, OpenPos, <a class="code hl_variable" href="classADoor.html#a6a5a3d6a33a240c534fba618ab4ae703">Alpha</a>);</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        <a class="code hl_variable" href="classADoor.html#a1abd1e1a41541b79f767fed937f31a54">SM_Right</a>-&gt;SetRelativeLocation(NewPos, <span class="keyword">false</span>, <span class="keyword">nullptr</span>, ETeleportType::None);</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    }</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <span class="comment">// Left</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    {</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        <span class="keyword">const</span> FVector ClosedPos = FVector::ZeroVector;</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        <span class="keyword">const</span> FVector OpenPos   = <a class="code hl_variable" href="classADoor.html#a8ff307d5acd13d7080fdb51f1300d68f">LeftOpen</a>;</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        <span class="keyword">const</span> FVector NewPos = FMath::Lerp(ClosedPos, OpenPos, <a class="code hl_variable" href="classADoor.html#a6a5a3d6a33a240c534fba618ab4ae703">Alpha</a>);</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        <a class="code hl_variable" href="classADoor.html#a2b88304b40b526981227fffdcfe6992a">SM_Left</a>-&gt;SetRelativeLocation(NewPos, <span class="keyword">false</span>, <span class="keyword">nullptr</span>, ETeleportType::None);</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    }</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>}</div>
 </div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
-<div class="foldopen" id="foldopen00061" data-start="{" data-end="}">
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="classADoor.html#a032c2f3cecd82c880fddd13dea3573cd">   61</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classADoor.html#a032c2f3cecd82c880fddd13dea3573cd">ADoor::OnDoorMessage</a>(int32 InDoorIndex, <span class="keywordtype">bool</span> bInOpen)</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>{</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <span class="keywordflow">if</span> (InDoorIndex != <a class="code hl_variable" href="classADoor.html#a23bedd91319f5420c4ba7c77cfc22db4">DoorIndex</a>)</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <a class="code hl_variable" href="classADoor.html#a83d17f7530a82669aba8055f297aa76a">CurCount</a> += (bInOpen ? 1 : -1);</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <a class="code hl_variable" href="classADoor.html#a83d17f7530a82669aba8055f297aa76a">CurCount</a> = FMath::Clamp(<a class="code hl_variable" href="classADoor.html#a83d17f7530a82669aba8055f297aa76a">CurCount</a>, 0, <a class="code hl_variable" href="classADoor.html#afe5c11c18980cb1f8efc8ae65703cf34">ReqCount</a>); <span class="comment">// 안전</span></div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classADoor.html#a83d17f7530a82669aba8055f297aa76a">CurCount</a> &gt;= <a class="code hl_variable" href="classADoor.html#afe5c11c18980cb1f8efc8ae65703cf34">ReqCount</a>)</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        <a class="code hl_function" href="classADoor.html#aa91e930c088a603a3a07694063bd4b55">OpenDoor</a>();</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    <span class="keywordflow">else</span></div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        <a class="code hl_function" href="classADoor.html#ac83075fce74a091a3316ee4f0a906156">CloseDoor</a>();</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>}</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
+<div class="foldopen" id="foldopen00073" data-start="{" data-end="}">
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno"><a class="line" href="classADoor.html#a032c2f3cecd82c880fddd13dea3573cd">   73</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classADoor.html#a032c2f3cecd82c880fddd13dea3573cd">ADoor::OnDoorMessage</a>(int32 InDoorIndex, <span class="keywordtype">bool</span> bInOpen)</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>{</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    <span class="keywordflow">if</span> (InDoorIndex != <a class="code hl_variable" href="classADoor.html#a23bedd91319f5420c4ba7c77cfc22db4">DoorIndex</a>)</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    <a class="code hl_variable" href="classADoor.html#a83d17f7530a82669aba8055f297aa76a">CurCount</a> += (bInOpen ? 1 : -1);</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    <a class="code hl_variable" href="classADoor.html#a83d17f7530a82669aba8055f297aa76a">CurCount</a> = FMath::Clamp(<a class="code hl_variable" href="classADoor.html#a83d17f7530a82669aba8055f297aa76a">CurCount</a>, 0, <a class="code hl_variable" href="classADoor.html#afe5c11c18980cb1f8efc8ae65703cf34">ReqCount</a>); <span class="comment">// 안전</span></div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classADoor.html#a83d17f7530a82669aba8055f297aa76a">CurCount</a> &gt;= <a class="code hl_variable" href="classADoor.html#afe5c11c18980cb1f8efc8ae65703cf34">ReqCount</a>)</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        <a class="code hl_function" href="classADoor.html#aa91e930c088a603a3a07694063bd4b55">OpenDoor</a>();</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        <a class="code hl_function" href="classADoor.html#ac83075fce74a091a3316ee4f0a906156">CloseDoor</a>();</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>}</div>
 </div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
-<div class="foldopen" id="foldopen00075" data-start="{" data-end="}">
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno"><a class="line" href="classADoor.html#afe9bad8f51e54c0228a79287ce70410b">   75</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classADoor.html#afe9bad8f51e54c0228a79287ce70410b">ADoor::OpenDoor_Implementation</a>()</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>{</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>}</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
+<div class="foldopen" id="foldopen00087" data-start="{" data-end="}">
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno"><a class="line" href="classADoor.html#afe9bad8f51e54c0228a79287ce70410b">   87</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classADoor.html#afe9bad8f51e54c0228a79287ce70410b">ADoor::OpenDoor_Implementation</a>()</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>{</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>}</div>
 </div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
-<div class="foldopen" id="foldopen00079" data-start="{" data-end="}">
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno"><a class="line" href="classADoor.html#a3fd0eaa1a7e1e7aca20d64d89f6192f8">   79</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classADoor.html#a3fd0eaa1a7e1e7aca20d64d89f6192f8">ADoor::CloseDoor_Implementation</a>()</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>{</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>}</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
+<div class="foldopen" id="foldopen00091" data-start="{" data-end="}">
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno"><a class="line" href="classADoor.html#a3fd0eaa1a7e1e7aca20d64d89f6192f8">   91</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classADoor.html#a3fd0eaa1a7e1e7aca20d64d89f6192f8">ADoor::CloseDoor_Implementation</a>()</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>{</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>}</div>
 </div>
 <div class="ttc" id="aADoor_8cpp_html_a12cbbf7eebdd1c62f7f4c003851e77fb"><div class="ttname"><a href="ADoor_8cpp.html#a12cbbf7eebdd1c62f7f4c003851e77fb">DOOR_FRAME_PATH</a></div><div class="ttdeci">#define DOOR_FRAME_PATH</div><div class="ttdef"><b>Definition</b> <a href="ADoor_8cpp_source.html#l00009">ADoor.cpp:9</a></div></div>
 <div class="ttc" id="aADoor_8cpp_html_a25eca509ce7c5c9f746a8c494d886992"><div class="ttname"><a href="ADoor_8cpp.html#a25eca509ce7c5c9f746a8c494d886992">DOOR_LEFT_PATH</a></div><div class="ttdeci">#define DOOR_LEFT_PATH</div><div class="ttdef"><b>Definition</b> <a href="ADoor_8cpp_source.html#l00010">ADoor.cpp:10</a></div></div>
@@ -208,24 +220,25 @@ $(document).ready(function(){initNavTree('ADoor_8cpp_source.html',''); initResiz
 <div class="ttc" id="aADoor_8h_html"><div class="ttname"><a href="ADoor_8h.html">ADoor.h</a></div></div>
 <div class="ttc" id="aFComponentHelper_8h_html"><div class="ttname"><a href="FComponentHelper_8h.html">FComponentHelper.h</a></div><div class="ttdoc">FComponentHelper 구조체를 선언합니다.</div></div>
 <div class="ttc" id="aUBroadcastManager_8h_html"><div class="ttname"><a href="UBroadcastManager_8h.html">UBroadcastManager.h</a></div></div>
-<div class="ttc" id="aclassADoor_html_a032c2f3cecd82c880fddd13dea3573cd"><div class="ttname"><a href="classADoor.html#a032c2f3cecd82c880fddd13dea3573cd">ADoor::OnDoorMessage</a></div><div class="ttdeci">void OnDoorMessage(int32 InDoorIndex, bool bInOpen)</div><div class="ttdef"><b>Definition</b> <a href="ADoor_8cpp_source.html#l00061">ADoor.cpp:61</a></div></div>
+<div class="ttc" id="aclassADoor_html_a032c2f3cecd82c880fddd13dea3573cd"><div class="ttname"><a href="classADoor.html#a032c2f3cecd82c880fddd13dea3573cd">ADoor::OnDoorMessage</a></div><div class="ttdeci">void OnDoorMessage(int32 InDoorIndex, bool bInOpen)</div><div class="ttdef"><b>Definition</b> <a href="ADoor_8cpp_source.html#l00073">ADoor.cpp:73</a></div></div>
 <div class="ttc" id="aclassADoor_html_a1abd1e1a41541b79f767fed937f31a54"><div class="ttname"><a href="classADoor.html#a1abd1e1a41541b79f767fed937f31a54">ADoor::SM_Right</a></div><div class="ttdeci">TObjectPtr&lt; UStaticMeshComponent &gt; SM_Right</div><div class="ttdef"><b>Definition</b> <a href="ADoor_8h_source.html#l00044">ADoor.h:44</a></div></div>
 <div class="ttc" id="aclassADoor_html_a23bedd91319f5420c4ba7c77cfc22db4"><div class="ttname"><a href="classADoor.html#a23bedd91319f5420c4ba7c77cfc22db4">ADoor::DoorIndex</a></div><div class="ttdeci">int32 DoorIndex</div><div class="ttdef"><b>Definition</b> <a href="ADoor_8h_source.html#l00047">ADoor.h:47</a></div></div>
 <div class="ttc" id="aclassADoor_html_a2b88304b40b526981227fffdcfe6992a"><div class="ttname"><a href="classADoor.html#a2b88304b40b526981227fffdcfe6992a">ADoor::SM_Left</a></div><div class="ttdeci">TObjectPtr&lt; UStaticMeshComponent &gt; SM_Left</div><div class="ttdef"><b>Definition</b> <a href="ADoor_8h_source.html#l00042">ADoor.h:42</a></div></div>
 <div class="ttc" id="aclassADoor_html_a3e53623c2ad98795f4560a3bdef648b3"><div class="ttname"><a href="classADoor.html#a3e53623c2ad98795f4560a3bdef648b3">ADoor::SceneRoot</a></div><div class="ttdeci">TObjectPtr&lt; USceneComponent &gt; SceneRoot</div><div class="ttdef"><b>Definition</b> <a href="ADoor_8h_source.html#l00037">ADoor.h:37</a></div></div>
-<div class="ttc" id="aclassADoor_html_a3fd0eaa1a7e1e7aca20d64d89f6192f8"><div class="ttname"><a href="classADoor.html#a3fd0eaa1a7e1e7aca20d64d89f6192f8">ADoor::CloseDoor_Implementation</a></div><div class="ttdeci">virtual void CloseDoor_Implementation()</div><div class="ttdef"><b>Definition</b> <a href="ADoor_8cpp_source.html#l00079">ADoor.cpp:79</a></div></div>
+<div class="ttc" id="aclassADoor_html_a3fd0eaa1a7e1e7aca20d64d89f6192f8"><div class="ttname"><a href="classADoor.html#a3fd0eaa1a7e1e7aca20d64d89f6192f8">ADoor::CloseDoor_Implementation</a></div><div class="ttdeci">virtual void CloseDoor_Implementation()</div><div class="ttdef"><b>Definition</b> <a href="ADoor_8cpp_source.html#l00091">ADoor.cpp:91</a></div></div>
 <div class="ttc" id="aclassADoor_html_a4681e5487aa764433baebfe6f775a074"><div class="ttname"><a href="classADoor.html#a4681e5487aa764433baebfe6f775a074">ADoor::BeginPlay</a></div><div class="ttdeci">virtual void BeginPlay() override</div><div class="ttdef"><b>Definition</b> <a href="ADoor_8cpp_source.html#l00031">ADoor.cpp:31</a></div></div>
-<div class="ttc" id="aclassADoor_html_a4ba5b25cac1027264fd35252ab18ea12"><div class="ttname"><a href="classADoor.html#a4ba5b25cac1027264fd35252ab18ea12">ADoor::UpdateDoor</a></div><div class="ttdeci">void UpdateDoor(float InAlpha)</div><div class="ttdef"><b>Definition</b> <a href="ADoor_8cpp_source.html#l00038">ADoor.cpp:38</a></div></div>
-<div class="ttc" id="aclassADoor_html_a5062b9cca1f134e98754719512b31ccb"><div class="ttname"><a href="classADoor.html#a5062b9cca1f134e98754719512b31ccb">ADoor::RightOpen</a></div><div class="ttdeci">FVector RightOpen</div><div class="ttdef"><b>Definition</b> <a href="ADoor_8h_source.html#l00058">ADoor.h:58</a></div></div>
+<div class="ttc" id="aclassADoor_html_a4ba5b25cac1027264fd35252ab18ea12"><div class="ttname"><a href="classADoor.html#a4ba5b25cac1027264fd35252ab18ea12">ADoor::UpdateDoor</a></div><div class="ttdeci">void UpdateDoor(float InAlpha)</div><div class="ttdef"><b>Definition</b> <a href="ADoor_8cpp_source.html#l00050">ADoor.cpp:50</a></div></div>
+<div class="ttc" id="aclassADoor_html_a5062b9cca1f134e98754719512b31ccb"><div class="ttname"><a href="classADoor.html#a5062b9cca1f134e98754719512b31ccb">ADoor::RightOpen</a></div><div class="ttdeci">FVector RightOpen</div><div class="ttdef"><b>Definition</b> <a href="ADoor_8h_source.html#l00062">ADoor.h:62</a></div></div>
 <div class="ttc" id="aclassADoor_html_a58a76e91232834c1f9be0f6f0aea3c6e"><div class="ttname"><a href="classADoor.html#a58a76e91232834c1f9be0f6f0aea3c6e">ADoor::ADoor</a></div><div class="ttdeci">ADoor()</div><div class="ttdef"><b>Definition</b> <a href="ADoor_8cpp_source.html#l00013">ADoor.cpp:13</a></div></div>
-<div class="ttc" id="aclassADoor_html_a6a5a3d6a33a240c534fba618ab4ae703"><div class="ttname"><a href="classADoor.html#a6a5a3d6a33a240c534fba618ab4ae703">ADoor::Alpha</a></div><div class="ttdeci">float Alpha</div><div class="ttdef"><b>Definition</b> <a href="ADoor_8h_source.html#l00062">ADoor.h:62</a></div></div>
-<div class="ttc" id="aclassADoor_html_a83d17f7530a82669aba8055f297aa76a"><div class="ttname"><a href="classADoor.html#a83d17f7530a82669aba8055f297aa76a">ADoor::CurCount</a></div><div class="ttdeci">int32 CurCount</div><div class="ttdef"><b>Definition</b> <a href="ADoor_8h_source.html#l00061">ADoor.h:61</a></div></div>
-<div class="ttc" id="aclassADoor_html_a8ff307d5acd13d7080fdb51f1300d68f"><div class="ttname"><a href="classADoor.html#a8ff307d5acd13d7080fdb51f1300d68f">ADoor::LeftOpen</a></div><div class="ttdeci">FVector LeftOpen</div><div class="ttdef"><b>Definition</b> <a href="ADoor_8h_source.html#l00056">ADoor.h:56</a></div></div>
+<div class="ttc" id="aclassADoor_html_a6a5a3d6a33a240c534fba618ab4ae703"><div class="ttname"><a href="classADoor.html#a6a5a3d6a33a240c534fba618ab4ae703">ADoor::Alpha</a></div><div class="ttdeci">float Alpha</div><div class="ttdef"><b>Definition</b> <a href="ADoor_8h_source.html#l00066">ADoor.h:66</a></div></div>
+<div class="ttc" id="aclassADoor_html_a7da53aef19eba9e0ca4c1368de54f782"><div class="ttname"><a href="classADoor.html#a7da53aef19eba9e0ca4c1368de54f782">ADoor::bStartOpened</a></div><div class="ttdeci">bool bStartOpened</div><div class="ttdoc">맵 배치 시 문이 열린 상태로 시작할지 여부</div><div class="ttdef"><b>Definition</b> <a href="ADoor_8h_source.html#l00057">ADoor.h:57</a></div></div>
+<div class="ttc" id="aclassADoor_html_a83d17f7530a82669aba8055f297aa76a"><div class="ttname"><a href="classADoor.html#a83d17f7530a82669aba8055f297aa76a">ADoor::CurCount</a></div><div class="ttdeci">int32 CurCount</div><div class="ttdef"><b>Definition</b> <a href="ADoor_8h_source.html#l00065">ADoor.h:65</a></div></div>
+<div class="ttc" id="aclassADoor_html_a8ff307d5acd13d7080fdb51f1300d68f"><div class="ttname"><a href="classADoor.html#a8ff307d5acd13d7080fdb51f1300d68f">ADoor::LeftOpen</a></div><div class="ttdeci">FVector LeftOpen</div><div class="ttdef"><b>Definition</b> <a href="ADoor_8h_source.html#l00060">ADoor.h:60</a></div></div>
 <div class="ttc" id="aclassADoor_html_aa91e930c088a603a3a07694063bd4b55"><div class="ttname"><a href="classADoor.html#aa91e930c088a603a3a07694063bd4b55">ADoor::OpenDoor</a></div><div class="ttdeci">void OpenDoor()</div></div>
 <div class="ttc" id="aclassADoor_html_ac83075fce74a091a3316ee4f0a906156"><div class="ttname"><a href="classADoor.html#ac83075fce74a091a3316ee4f0a906156">ADoor::CloseDoor</a></div><div class="ttdeci">void CloseDoor()</div></div>
 <div class="ttc" id="aclassADoor_html_af8e317782dee5d53afac41f94ac0536c"><div class="ttname"><a href="classADoor.html#af8e317782dee5d53afac41f94ac0536c">ADoor::SM_Frame</a></div><div class="ttdeci">TObjectPtr&lt; UStaticMeshComponent &gt; SM_Frame</div><div class="ttdef"><b>Definition</b> <a href="ADoor_8h_source.html#l00040">ADoor.h:40</a></div></div>
 <div class="ttc" id="aclassADoor_html_afe5c11c18980cb1f8efc8ae65703cf34"><div class="ttname"><a href="classADoor.html#afe5c11c18980cb1f8efc8ae65703cf34">ADoor::ReqCount</a></div><div class="ttdeci">int32 ReqCount</div><div class="ttdef"><b>Definition</b> <a href="ADoor_8h_source.html#l00050">ADoor.h:50</a></div></div>
-<div class="ttc" id="aclassADoor_html_afe9bad8f51e54c0228a79287ce70410b"><div class="ttname"><a href="classADoor.html#afe9bad8f51e54c0228a79287ce70410b">ADoor::OpenDoor_Implementation</a></div><div class="ttdeci">virtual void OpenDoor_Implementation()</div><div class="ttdef"><b>Definition</b> <a href="ADoor_8cpp_source.html#l00075">ADoor.cpp:75</a></div></div>
+<div class="ttc" id="aclassADoor_html_afe9bad8f51e54c0228a79287ce70410b"><div class="ttname"><a href="classADoor.html#afe9bad8f51e54c0228a79287ce70410b">ADoor::OpenDoor_Implementation</a></div><div class="ttdeci">virtual void OpenDoor_Implementation()</div><div class="ttdef"><b>Definition</b> <a href="ADoor_8cpp_source.html#l00087">ADoor.cpp:87</a></div></div>
 <div class="ttc" id="astructFComponentHelper_html_ac37cef436e9aaef1f0c655d781a95e66"><div class="ttname"><a href="structFComponentHelper.html#ac37cef436e9aaef1f0c655d781a95e66">FComponentHelper::LoadAsset</a></div><div class="ttdeci">static T * LoadAsset(const TCHAR *Path)</div><div class="ttdef"><b>Definition</b> <a href="FComponentHelper_8h_source.html#l00016">FComponentHelper.h:16</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
@@ -233,7 +246,7 @@ $(document).ready(function(){initNavTree('ADoor_8cpp_source.html',''); initResiz
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_b7459e4428712e32d7c860db6e401a05.html">Interactable</a></li><li class="navelem"><a class="el" href="dir_77257aedd361f850f8a01079e914567e.html">Private</a></li><li class="navelem"><a class="el" href="ADoor_8cpp.html">ADoor.cpp</a></li>
-    <li class="footer">생성시간 : 수 11월 26 2025 12:32:34, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 수 11월 26 2025 13:43:04, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

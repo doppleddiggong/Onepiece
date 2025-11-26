@@ -1,5 +1,6 @@
 var dir_77257aedd361f850f8a01079e914567e =
 [
+    [ "ABroadcastTrigger.cpp", "ABroadcastTrigger_8cpp.html", null ],
     [ "AContactTrigger.cpp", "AContactTrigger_8cpp.html", null ],
     [ "ADoor.cpp", "ADoor_8cpp.html", "ADoor_8cpp" ],
     [ "APedestalSwitch.cpp", "APedestalSwitch_8cpp.html", null ],

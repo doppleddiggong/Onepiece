@@ -9,6 +9,7 @@ var classADoor =
     [ "OpenDoor_Implementation", "classADoor.html#afe9bad8f51e54c0228a79287ce70410b", null ],
     [ "UpdateDoor", "classADoor.html#a4ba5b25cac1027264fd35252ab18ea12", null ],
     [ "Alpha", "classADoor.html#a6a5a3d6a33a240c534fba618ab4ae703", null ],
+    [ "bStartOpened", "classADoor.html#a7da53aef19eba9e0ca4c1368de54f782", null ],
     [ "CurCount", "classADoor.html#a83d17f7530a82669aba8055f297aa76a", null ],
     [ "DoorIndex", "classADoor.html#a23bedd91319f5420c4ba7c77cfc22db4", null ],
     [ "LeftOpen", "classADoor.html#a8ff307d5acd13d7080fdb51f1300d68f", null ],

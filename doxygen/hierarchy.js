@@ -1,6 +1,7 @@
 var hierarchy =
 [
     [ "AActor", null, [
+      [ "ABroadcastTrigger", "classABroadcastTrigger.html", null ],
       [ "AContactTrigger", "classAContactTrigger.html", null ],
       [ "AConveyorBelt", "classAConveyorBelt.html", null ],
       [ "AConveyorButton", "classAConveyorButton.html", null ],
