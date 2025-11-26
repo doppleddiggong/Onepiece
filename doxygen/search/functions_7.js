@@ -13,6 +13,7 @@ var searchData=
   ['hideallpopups_10',['HideAllPopups',['../classUPopupManager.html#a87fd02614031eb6809cf50df803cddef',1,'UPopupManager']]],
   ['hidecurrentpopup_11',['HideCurrentPopup',['../classUPopupManager.html#adcc326552471b330725da8759d79832e',1,'UPopupManager']]],
   ['hidedialogimmediately_12',['HideDialogImmediately',['../classUDialogWidget.html#acce6f2329eefd1388b774b6b62dcdd83',1,'UDialogWidget']]],
-  ['hidepopup_13',['HidePopup',['../classUPopupManager.html#ad013faab60f2764e32ff7a16d096b20f',1,'UPopupManager']]],
-  ['hidetoastimmediately_14',['HideToastImmediately',['../classUDialogManager.html#a01a895ea8e13cdc6b03f6e2e4e74cea3',1,'UDialogManager']]]
+  ['hidemousecursor_13',['HideMouseCursor',['../classULingoGameHelper.html#a569e70240af4850b5b1a0dafd26d4033',1,'ULingoGameHelper']]],
+  ['hidepopup_14',['HidePopup',['../classUPopupManager.html#ad013faab60f2764e32ff7a16d096b20f',1,'UPopupManager']]],
+  ['hidetoastimmediately_15',['HideToastImmediately',['../classUDialogManager.html#a01a895ea8e13cdc6b03f6e2e4e74cea3',1,'UDialogManager']]]
 ];

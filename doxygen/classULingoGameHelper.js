@@ -5,5 +5,7 @@ var classULingoGameHelper =
     [ "GetLingoPlayerState", "classULingoGameHelper.html#a6117f2f4942b42864305def958e0c108", null ],
     [ "GetMissionPlayTime", "classULingoGameHelper.html#a7bcb0275140b94422c2f09b29a0b4d6a", null ],
     [ "GetStageEndMessage", "classULingoGameHelper.html#ad0262a81ba3a11cd1666a4edd5a91ed5", null ],
-    [ "GetStageStartMessage", "classULingoGameHelper.html#a402b331d7071b55ff971ee1a99d7c026", null ]
+    [ "GetStageStartMessage", "classULingoGameHelper.html#a402b331d7071b55ff971ee1a99d7c026", null ],
+    [ "HideMouseCursor", "classULingoGameHelper.html#a569e70240af4850b5b1a0dafd26d4033", null ],
+    [ "ShowMouseCursor", "classULingoGameHelper.html#af5fbc9538e6adda28f03d547c33ecc48", null ]
 ];

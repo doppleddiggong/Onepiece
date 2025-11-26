@@ -196,6 +196,44 @@ $(document).ready(function(){initNavTree('ULingoGameHelper_8cpp_source.html','')
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    <span class="keywordflow">return</span> FString::Printf(TEXT(<span class="stringliteral">&quot;%02d:%02d&quot;</span>), Minutes, Seconds);</div>
 <div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>}</div>
 </div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
+<div class="foldopen" id="foldopen00077" data-start="{" data-end="}">
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno"><a class="line" href="classULingoGameHelper.html#af5fbc9538e6adda28f03d547c33ecc48">   77</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classULingoGameHelper.html#af5fbc9538e6adda28f03d547c33ecc48">ULingoGameHelper::ShowMouseCursor</a>(<span class="keyword">const</span> UObject* WorldContextObject)</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>{</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    <span class="keywordflow">if</span> (!WorldContextObject)</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    UWorld* World = WorldContextObject-&gt;GetWorld();</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    <span class="keywordflow">if</span> (!World)</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    APlayerController* PC = World-&gt;GetFirstPlayerController();</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    <span class="keywordflow">if</span> (!PC)</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    PC-&gt;bShowMouseCursor = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    PC-&gt;SetInputMode(FInputModeGameAndUI());</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>}</div>
+</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span> </div>
+<div class="foldopen" id="foldopen00094" data-start="{" data-end="}">
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno"><a class="line" href="classULingoGameHelper.html#a569e70240af4850b5b1a0dafd26d4033">   94</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classULingoGameHelper.html#a569e70240af4850b5b1a0dafd26d4033">ULingoGameHelper::HideMouseCursor</a>(<span class="keyword">const</span> UObject* WorldContextObject)</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>{</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    <span class="keywordflow">if</span> (!WorldContextObject)</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span> </div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    UWorld* World = WorldContextObject-&gt;GetWorld();</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    <span class="keywordflow">if</span> (!World)</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    APlayerController* PC = World-&gt;GetFirstPlayerController();</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    <span class="keywordflow">if</span> (!PC)</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span> </div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    PC-&gt;bShowMouseCursor = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    PC-&gt;SetInputMode(FInputModeGameOnly());</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>}</div>
+</div>
 <div class="ttc" id="aALingoGameState_8h_html"><div class="ttname"><a href="ALingoGameState_8h.html">ALingoGameState.h</a></div></div>
 <div class="ttc" id="aALingoPlayerState_8h_html"><div class="ttname"><a href="ALingoPlayerState_8h.html">ALingoPlayerState.h</a></div></div>
 <div class="ttc" id="aOnepiece_8h_html"><div class="ttname"><a href="Onepiece_8h.html">Onepiece.h</a></div></div>
@@ -203,11 +241,13 @@ $(document).ready(function(){initNavTree('ULingoGameHelper_8cpp_source.html','')
 <div class="ttc" id="aclassALingoGameState_html"><div class="ttname"><a href="classALingoGameState.html">ALingoGameState</a></div><div class="ttdef"><b>Definition</b> <a href="ALingoGameState_8h_source.html#l00026">ALingoGameState.h:27</a></div></div>
 <div class="ttc" id="aclassALingoPlayerState_html"><div class="ttname"><a href="classALingoPlayerState.html">ALingoPlayerState</a></div><div class="ttdef"><b>Definition</b> <a href="ALingoPlayerState_8h_source.html#l00011">ALingoPlayerState.h:12</a></div></div>
 <div class="ttc" id="aclassULingoGameHelper_html_a402b331d7071b55ff971ee1a99d7c026"><div class="ttname"><a href="classULingoGameHelper.html#a402b331d7071b55ff971ee1a99d7c026">ULingoGameHelper::GetStageStartMessage</a></div><div class="ttdeci">static FString GetStageStartMessage(const int StageIndex)</div><div class="ttdef"><b>Definition</b> <a href="ULingoGameHelper_8cpp_source.html#l00034">ULingoGameHelper.cpp:34</a></div></div>
+<div class="ttc" id="aclassULingoGameHelper_html_a569e70240af4850b5b1a0dafd26d4033"><div class="ttname"><a href="classULingoGameHelper.html#a569e70240af4850b5b1a0dafd26d4033">ULingoGameHelper::HideMouseCursor</a></div><div class="ttdeci">static void HideMouseCursor(const UObject *WorldContextObject)</div><div class="ttdoc">마우스 커서를 숨기고 게임 전용 입력 모드로 설정합니다.</div><div class="ttdef"><b>Definition</b> <a href="ULingoGameHelper_8cpp_source.html#l00094">ULingoGameHelper.cpp:94</a></div></div>
 <div class="ttc" id="aclassULingoGameHelper_html_a6117f2f4942b42864305def958e0c108"><div class="ttname"><a href="classULingoGameHelper.html#a6117f2f4942b42864305def958e0c108">ULingoGameHelper::GetLingoPlayerState</a></div><div class="ttdeci">static ALingoPlayerState * GetLingoPlayerState(const UObject *WorldContextObject)</div><div class="ttdef"><b>Definition</b> <a href="ULingoGameHelper_8cpp_source.html#l00017">ULingoGameHelper.cpp:17</a></div></div>
 <div class="ttc" id="aclassULingoGameHelper_html_a6da883ca444eb45866e59e95e63836bb"><div class="ttname"><a href="classULingoGameHelper.html#a6da883ca444eb45866e59e95e63836bb">ULingoGameHelper::GetFormatTimer</a></div><div class="ttdeci">static FString GetFormatTimer(const float InRemainTime)</div><div class="ttdef"><b>Definition</b> <a href="ULingoGameHelper_8cpp_source.html#l00069">ULingoGameHelper.cpp:69</a></div></div>
 <div class="ttc" id="aclassULingoGameHelper_html_a7bcb0275140b94422c2f09b29a0b4d6a"><div class="ttname"><a href="classULingoGameHelper.html#a7bcb0275140b94422c2f09b29a0b4d6a">ULingoGameHelper::GetMissionPlayTime</a></div><div class="ttdeci">static float GetMissionPlayTime(const int Level)</div><div class="ttdef"><b>Definition</b> <a href="ULingoGameHelper_8cpp_source.html#l00058">ULingoGameHelper.cpp:58</a></div></div>
 <div class="ttc" id="aclassULingoGameHelper_html_aae5e9443e2249c16219279d75b62cb46"><div class="ttname"><a href="classULingoGameHelper.html#aae5e9443e2249c16219279d75b62cb46">ULingoGameHelper::GetLingoGameState</a></div><div class="ttdeci">static ALingoGameState * GetLingoGameState(const UObject *WorldContextObject)</div><div class="ttdef"><b>Definition</b> <a href="ULingoGameHelper_8cpp_source.html#l00012">ULingoGameHelper.cpp:12</a></div></div>
 <div class="ttc" id="aclassULingoGameHelper_html_ad0262a81ba3a11cd1666a4edd5a91ed5"><div class="ttname"><a href="classULingoGameHelper.html#ad0262a81ba3a11cd1666a4edd5a91ed5">ULingoGameHelper::GetStageEndMessage</a></div><div class="ttdeci">static FString GetStageEndMessage(const int StageIndex)</div><div class="ttdef"><b>Definition</b> <a href="ULingoGameHelper_8cpp_source.html#l00046">ULingoGameHelper.cpp:46</a></div></div>
+<div class="ttc" id="aclassULingoGameHelper_html_af5fbc9538e6adda28f03d547c33ecc48"><div class="ttname"><a href="classULingoGameHelper.html#af5fbc9538e6adda28f03d547c33ecc48">ULingoGameHelper::ShowMouseCursor</a></div><div class="ttdeci">static void ShowMouseCursor(const UObject *WorldContextObject)</div><div class="ttdoc">마우스 커서를 표시하고 게임+UI 입력 모드로 설정합니다.</div><div class="ttdef"><b>Definition</b> <a href="ULingoGameHelper_8cpp_source.html#l00077">ULingoGameHelper.cpp:77</a></div></div>
 <div class="ttc" id="anamespaceGameMessage_html_a1a9311ea6c14b3903f9a3797903e2303"><div class="ttname"><a href="namespaceGameMessage.html#a1a9311ea6c14b3903f9a3797903e2303">GameMessage::Stage3End</a></div><div class="ttdeci">static const FString Stage3End</div><div class="ttdef"><b>Definition</b> <a href="Onepiece_8h_source.html#l00042">Onepiece.h:42</a></div></div>
 <div class="ttc" id="anamespaceGameMessage_html_a2298f260adc739495b1a3938d2335243"><div class="ttname"><a href="namespaceGameMessage.html#a2298f260adc739495b1a3938d2335243">GameMessage::GameEnd</a></div><div class="ttdeci">static const FString GameEnd</div><div class="ttdef"><b>Definition</b> <a href="Onepiece_8h_source.html#l00031">Onepiece.h:31</a></div></div>
 <div class="ttc" id="anamespaceGameMessage_html_a2e7ce013d07feee9b57a7ebed463ac99"><div class="ttname"><a href="namespaceGameMessage.html#a2e7ce013d07feee9b57a7ebed463ac99">GameMessage::Stage3Start</a></div><div class="ttdeci">static const FString Stage3Start</div><div class="ttdef"><b>Definition</b> <a href="Onepiece_8h_source.html#l00041">Onepiece.h:41</a></div></div>
@@ -224,7 +264,7 @@ $(document).ready(function(){initNavTree('ULingoGameHelper_8cpp_source.html','')
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_7fb5e64dcba5cad56d11a2ce531d1e7a.html">Game</a></li><li class="navelem"><a class="el" href="dir_b965da0ac51b1f4cab906cbba28505b1.html">Private</a></li><li class="navelem"><a class="el" href="ULingoGameHelper_8cpp.html">ULingoGameHelper.cpp</a></li>
-    <li class="footer">생성시간 : 수 11월 26 2025 09:07:19, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 수 11월 26 2025 12:32:34, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>
