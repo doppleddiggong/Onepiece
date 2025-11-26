@@ -108,7 +108,7 @@ public:
 	FString StringBase64Decode(FString str);
 
 	// 어떤 캐릭터 선택했는지
-	UPROPERTY()
+	UPROPERTY(Transient)
 	TMap<FString, int32> selectCharacter;
 
 	void SetSelectCharacter(FString userName, int32 characterIdx);

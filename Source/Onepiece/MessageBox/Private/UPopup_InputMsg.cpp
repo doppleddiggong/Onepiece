@@ -42,7 +42,7 @@ void UPopup_InputMsg::OnClickOk()
 {
 	const FString InputString = Edit_Name->GetText().ToString();
 
-	if ( PopupType == EPopupType::InputMsg_Login  )
+	if ( PopupType == EPopupType::Login  )
 		RequestUserToken(InputString);
 	else
 		RequestUserRegister(InputString);
@@ -59,7 +59,7 @@ void UPopup_InputMsg::InitPopup(const EPopupType InPopupType )
 {
 	this->PopupType = InPopupType;
 
-	if ( PopupType == EPopupType::InputMsg_Login  )
+	if ( PopupType == EPopupType::Login  )
 	{
 		this->SetTitle("Login");
 		this->SetDesc("Please enter your registered name below.");	

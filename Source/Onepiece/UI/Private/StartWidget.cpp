@@ -26,9 +26,9 @@ void UStartWidget::OnStartPressed()
 {
 	if (const auto PopupMgr = UPopupManager::Get(GetWorld()))
 	{
-		if (const auto Popup = Cast<UPopup_InputMsg>(PopupMgr->ShowPopup(EPopupType::InputMsg_Login)))
+		if (const auto Popup = Cast<UPopup_InputMsg>(PopupMgr->ShowPopup(EPopupType::Login)))
 		{
-			Popup->InitPopup(EPopupType::InputMsg_Login);
+			Popup->InitPopup(EPopupType::Login);
 		}
 	}
 }
@@ -37,9 +37,9 @@ void UStartWidget::OnRegistPressed()
 {
 	if (const auto PopupMgr = UPopupManager::Get(GetWorld()))
 	{
-		if (const auto Popup = Cast<UPopup_InputMsg>(PopupMgr->ShowPopup(EPopupType::InputMsg_Register)))
+		if (const auto Popup = Cast<UPopup_InputMsg>(PopupMgr->ShowPopup(EPopupType::Register)))
 		{
-			Popup->InitPopup(EPopupType::InputMsg_Register);
+			Popup->InitPopup(EPopupType::Register);
 		}
 	}
 }

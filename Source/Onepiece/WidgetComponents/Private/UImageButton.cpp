@@ -49,7 +49,8 @@ void UImageButton::ApplyStyle()
 		if (BorderImage)
 		{
 			CachedBorderBrush.SetResourceObject(BorderImage);
-			CachedBorderBrush.DrawAs = ESlateBrushDrawType::Image;
+			CachedBorderBrush.DrawAs = BorderDrawAs;
+			CachedBorderBrush.Margin = BorderMargin;
 			CachedBorderBrush.TintColor = FSlateColor(NormalButtonColor);
 			Border_BG->SetBrush(CachedBorderBrush);
 			bBorderBrushInitialized = true;

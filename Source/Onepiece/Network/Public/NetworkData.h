@@ -143,6 +143,8 @@ struct FWordData
 
 	UPROPERTY(BlueprintReadWrite, Category = "Word")
 	FString Pronunciation;
+
+	TArray<FWordData> GetSplitData() const;	
 };
 
 // =================================================================================
@@ -482,6 +484,9 @@ struct FResponseScenario
 
 	/// @brief 디버그 로그에 응답 내용을 출력합니다.
 	void PrintData() const;
+
+	TArray<FString> GetWord1List() const;
+	TArray<FString> GetWord2List() const;
 };
 
 // =================================================================================

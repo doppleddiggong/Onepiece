@@ -51,6 +51,13 @@ public:
 	FString PatternName;
 
 	void ApplyPatternToMesh(FString InPattern);
+
+public:
+	// Outline
+	UFUNCTION(BlueprintCallable, Category = "Outline")
+	void OutlineOn();
+	UFUNCTION(BlueprintCallable, Category = "Outline")
+	void OutlineOff();
 	
 public:
 	//--------------------------------------------------------------//

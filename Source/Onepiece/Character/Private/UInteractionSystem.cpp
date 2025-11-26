@@ -52,6 +52,8 @@ void UInteractionSystem::TryInteract()
 	if (!CurrentTarget || !CurrentTarget->bCanInteract)
 		return;
 
+	PRINT_STRING(TEXT("부엉 부엉 %s"), *CurrentTarget->GetName());
+
 	PRINT_STRING(TEXT("부엉 부엉 %s"), *OwnerPlayer->GetName());
 	// 타입별 처리
 	switch (CurrentTarget->InteractionType)

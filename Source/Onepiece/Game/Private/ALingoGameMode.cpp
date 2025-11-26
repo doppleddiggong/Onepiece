@@ -116,8 +116,8 @@ void ALingoGameMode::HandleCarrierSelection(APlayerState* Player, Aluggage* Carr
 	else
 	{
 		// 틀린 항목 확인
-		bool bSymbolCorrect = (LingoPlayerState->SelectedSymbol == Carrier->Target1);
-		bool bColorCorrect = (LingoPlayerState->SelectedColor == Carrier->Target2);
+		bool bSymbolCorrect = (LingoPlayerState->SelectedWord1 == Carrier->Target1);
+		bool bColorCorrect = (LingoPlayerState->SelectedWord2 == Carrier->Target2);
 
 		HandleWrongAnswer(LingoPlayerState, bSymbolCorrect, bColorCorrect);
 	}
@@ -128,12 +128,12 @@ bool ALingoGameMode::ValidateAnswer(ALingoPlayerState* Player, Aluggage* Carrier
 	if (!Player || !Carrier)
 		return false;
 
-	bool bSymbolCorrect = (Player->SelectedSymbol == Carrier->Target1);
-	bool bColorCorrect = (Player->SelectedColor == Carrier->Target2);
+	bool bSymbolCorrect = (Player->SelectedWord1 == Carrier->Target1);
+	bool bColorCorrect = (Player->SelectedWord2 == Carrier->Target2);
 
 	PRINTLOG(TEXT("[GameMode] ValidateAnswer - Symbol: %s vs %s (%s), Color: %s vs %s (%s)"),
-		*Player->SelectedSymbol, *Carrier->Target1, bSymbolCorrect ? TEXT("Correct") : TEXT("Wrong"),
-		*Player->SelectedColor, *Carrier->Target2, bColorCorrect ? TEXT("Correct") : TEXT("Wrong"));
+		*Player->SelectedWord1, *Carrier->Target1, bSymbolCorrect ? TEXT("Correct") : TEXT("Wrong"),
+		*Player->SelectedWord2, *Carrier->Target2, bColorCorrect ? TEXT("Correct") : TEXT("Wrong"));
 
 	return bSymbolCorrect && bColorCorrect;
 }
@@ -151,8 +151,8 @@ void ALingoGameMode::HandleCorrectAnswer(ALingoPlayerState* Player)
 	LingoGameState->QuestResult.bSuccess = true;
 	LingoGameState->QuestResult.RemainTime = LingoGameState->GetRemainMissionTime();
 	LingoGameState->QuestResult.AttemptCount = Player->AttemptCount;
-	LingoGameState->QuestResult.SelectedSymbol = Player->SelectedSymbol;
-	LingoGameState->QuestResult.SelectedColor = Player->SelectedColor;
+	LingoGameState->QuestResult.SelectedSymbol = Player->SelectedWord1;
+	LingoGameState->QuestResult.SelectedColor = Player->SelectedWord2;
 
 	// 성공 플래그 설정
 	LingoGameState->bQuestSuccess = true;
@@ -188,15 +188,15 @@ void ALingoGameMode::HandleWrongAnswer(ALingoPlayerState* Player, bool bSymbolCo
 	// 틀린 항목 판정
 	if (!bSymbolCorrect)
 	{
-		Player->SelectedSymbol = TEXT("");
-		Player->bSymbolWrong = true;
+		Player->SelectedWord1 = TEXT("");
+		Player->bWrongWord1 = true;
 		PRINTLOG(TEXT("[GameMode] Symbol was wrong - Cleared selection"));
 	}
 
 	if (!bColorCorrect)
 	{
-		Player->SelectedColor = TEXT("");
-		Player->bColorWrong = true;
+		Player->SelectedWord2 = TEXT("");
+		Player->bWrongWord2 = true;
 		PRINTLOG(TEXT("[GameMode] Color was wrong - Cleared selection"));
 	}
 

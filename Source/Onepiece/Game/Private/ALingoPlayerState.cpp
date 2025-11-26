@@ -15,11 +15,12 @@ void ALingoPlayerState::GetLifetimeReplicatedProps(TArray<class FLifetimePropert
 
 	// Read Quest Data
 	DOREPLIFETIME(ALingoPlayerState, QuestRole);
-	DOREPLIFETIME(ALingoPlayerState, SelectedSymbol);
-	DOREPLIFETIME(ALingoPlayerState, SelectedColor);
-	DOREPLIFETIME(ALingoPlayerState, bSymbolWrong);
-	DOREPLIFETIME(ALingoPlayerState, bColorWrong);
 	DOREPLIFETIME(ALingoPlayerState, AttemptCount);
+
+	DOREPLIFETIME(ALingoPlayerState, SelectedWord1);
+	DOREPLIFETIME(ALingoPlayerState, SelectedWord2);
+	DOREPLIFETIME(ALingoPlayerState, bWrongWord1);
+	DOREPLIFETIME(ALingoPlayerState, bWrongWord2);
 }
 
 void ALingoPlayerState::SetToken(FString InToken)
@@ -42,7 +43,7 @@ void ALingoPlayerState::SetUserName(FString InUserName)
 // Read Quest RPC Functions
 //--------------------------------------------------------------//
 
-void ALingoPlayerState::ServerSetSelectedSymbol_Implementation(const FString& Symbol)
+void ALingoPlayerState::Server_SetSelectedWord1_Implementation(const FString& Word1)
 {
 	// Role 검증: OnlyQuestion2 역할은 심볼을 선택할 수 없음
 	if (QuestRole == EReadQuestRole::OnlyQuestion2)
@@ -51,19 +52,19 @@ void ALingoPlayerState::ServerSetSelectedSymbol_Implementation(const FString& Sy
 		return;
 	}
 
-	SelectedSymbol = Symbol;
-	bSymbolWrong = false; // 새로 선택하면 오답 플래그 초기화
+	SelectedWord1 = Word1;
+	bWrongWord1 = false; // 새로 선택하면 오답 플래그 초기화
 
-	PRINTLOG(TEXT("[PlayerState] Symbol selected: %s"), *Symbol);
+	PRINTLOG(TEXT("[PlayerState] Symbol selected: %s"), *Word1);
 }
 
-bool ALingoPlayerState::ServerSetSelectedSymbol_Validate(const FString& Symbol)
+bool ALingoPlayerState::Server_SetSelectedWord1_Validate(const FString& Word1)
 {
 	// 빈 문자열도 허용 (선택 해제)
 	return true;
 }
 
-void ALingoPlayerState::ServerSetSelectedColor_Implementation(const FString& Color)
+void ALingoPlayerState::Server_SetSelectedWord2_Implementation(const FString& Word2)
 {
 	// Role 검증: OnlyQuestion1 역할은 색상을 선택할 수 없음
 	if (QuestRole == EReadQuestRole::OnlyQuestion1)
@@ -72,13 +73,13 @@ void ALingoPlayerState::ServerSetSelectedColor_Implementation(const FString& Col
 		return;
 	}
 
-	SelectedColor = Color;
-	bColorWrong = false; // 새로 선택하면 오답 플래그 초기화
+	SelectedWord2 = Word2;
+	bWrongWord2 = false; // 새로 선택하면 오답 플래그 초기화
 
-	PRINTLOG(TEXT("[PlayerState] Color selected: %s"), *Color);
+	PRINTLOG(TEXT("[PlayerState] Color selected: %s"), *Word2);
 }
 
-bool ALingoPlayerState::ServerSetSelectedColor_Validate(const FString& Color)
+bool ALingoPlayerState::Server_SetSelectedWord2_Validate(const FString& Word2)
 {
 	// 빈 문자열도 허용 (선택 해제)
 	return true;
@@ -88,46 +89,22 @@ bool ALingoPlayerState::ServerSetSelectedColor_Validate(const FString& Color)
 // Read Quest OnRep Callbacks
 //--------------------------------------------------------------//
 
-void ALingoPlayerState::OnRep_SelectedSymbol()
+void ALingoPlayerState::OnRep_SelectedWord1()
 {
-	PRINTLOG(TEXT("[PlayerState] OnRep_SelectedSymbol: %s"), *SelectedSymbol);
-
-	// BroadcastManager를 통해 UI 업데이트 이벤트 브로드캐스트
-	if (UBroadcastManager* BroadcastManager = UBroadcastManager::Get(GetWorld()))
-	{
-		// 추후 BroadcastManager에 퀘스트 선택 상태 변경 이벤트 추가 필요
-	}
+	PRINTLOG(TEXT("[PlayerState] OnRep_SelectedSymbol: %s"), *SelectedWord1);
 }
 
-void ALingoPlayerState::OnRep_SelectedColor()
+void ALingoPlayerState::OnRep_SelectedWord2()
 {
-	PRINTLOG(TEXT("[PlayerState] OnRep_SelectedColor: %s"), *SelectedColor);
-
-	// BroadcastManager를 통해 UI 업데이트 이벤트 브로드캐스트
-	if (UBroadcastManager* BroadcastManager = UBroadcastManager::Get(GetWorld()))
-	{
-		// 추후 BroadcastManager에 퀘스트 선택 상태 변경 이벤트 추가 필요
-	}
+	PRINTLOG(TEXT("[PlayerState] OnRep_SelectedColor: %s"), *SelectedWord2);
 }
 
-void ALingoPlayerState::OnRep_SymbolWrong()
+void ALingoPlayerState::OnRep_WrongWord1()
 {
-	PRINTLOG(TEXT("[PlayerState] OnRep_SymbolWrong: %s"), bSymbolWrong ? TEXT("true") : TEXT("false"));
-
-	// BroadcastManager를 통해 UI 업데이트 이벤트 브로드캐스트
-	if (UBroadcastManager* BroadcastManager = UBroadcastManager::Get(GetWorld()))
-	{
-		// 추후 BroadcastManager에 오답 플래그 변경 이벤트 추가 필요
-	}
+	PRINTLOG(TEXT("[PlayerState] OnRep_SymbolWrong: %s"), bWrongWord1 ? TEXT("true") : TEXT("false"));
 }
 
-void ALingoPlayerState::OnRep_ColorWrong()
+void ALingoPlayerState::OnRep_WrongWord2()
 {
-	PRINTLOG(TEXT("[PlayerState] OnRep_ColorWrong: %s"), bColorWrong ? TEXT("true") : TEXT("false"));
-
-	// BroadcastManager를 통해 UI 업데이트 이벤트 브로드캐스트
-	if (UBroadcastManager* BroadcastManager = UBroadcastManager::Get(GetWorld()))
-	{
-		// 추후 BroadcastManager에 오답 플래그 변경 이벤트 추가 필요
-	}
+	PRINTLOG(TEXT("[PlayerState] OnRep_ColorWrong: %s"), bWrongWord2 ? TEXT("true") : TEXT("false"));
 }

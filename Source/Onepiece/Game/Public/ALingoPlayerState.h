@@ -25,64 +25,60 @@ public:
 	void SetUserName(FString InUserName);
 	FString GetUserName() { return UserName; }
 
+private:
+	FString AccessToken;
+
+	FString UserName;
+
+public:
 	//--------------------------------------------------------------//
 	// Read Quest Functions
 	//--------------------------------------------------------------//
 
 	/// @brief 심볼 선택을 서버에 전송합니다
 	UFUNCTION(Server, Reliable, WithValidation)
-	void ServerSetSelectedSymbol(const FString& Symbol);
+	void Server_SetSelectedWord1(const FString& Word1);
 
 	/// @brief 색상 선택을 서버에 전송합니다
 	UFUNCTION(Server, Reliable, WithValidation)
-	void ServerSetSelectedColor(const FString& Color);
+	void Server_SetSelectedWord2(const FString& Word2);
 
 	/// @brief 심볼 선택 상태 복제 콜백
 	UFUNCTION()
-	void OnRep_SelectedSymbol();
+	void OnRep_SelectedWord1();
 
 	/// @brief 색상 선택 상태 복제 콜백
 	UFUNCTION()
-	void OnRep_SelectedColor();
+	void OnRep_SelectedWord2();
 
 	/// @brief 심볼 오답 플래그 복제 콜백
 	UFUNCTION()
-	void OnRep_SymbolWrong();
+	void OnRep_WrongWord1();
 
 	/// @brief 색상 오답 플래그 복제 콜백
 	UFUNCTION()
-	void OnRep_ColorWrong();
-
-private:
-	FString AccessToken;
-	FString UserName;
-
-	//--------------------------------------------------------------//
-	// Read Quest Data
-	//--------------------------------------------------------------//
-
+	void OnRep_WrongWord2();
+	
 public:
 	/// @brief 플레이어 역할 (싱글/멀티에서 문제1, 문제2 구분)
 	UPROPERTY(Replicated, BlueprintReadOnly, Category = "Quest")
 	EReadQuestRole QuestRole = EReadQuestRole::Both;
 
-	/// @brief 선택한 심볼 (문제1 답변)
-	UPROPERTY(ReplicatedUsing = OnRep_SelectedSymbol, BlueprintReadOnly, Category = "Quest")
-	FString SelectedSymbol;
-
-	/// @brief 선택한 색상 (문제2 답변)
-	UPROPERTY(ReplicatedUsing = OnRep_SelectedColor, BlueprintReadOnly, Category = "Quest")
-	FString SelectedColor;
-
-	/// @brief 심볼 오답 플래그
-	UPROPERTY(ReplicatedUsing = OnRep_SymbolWrong, BlueprintReadOnly, Category = "Quest")
-	bool bSymbolWrong = false;
-
-	/// @brief 색상 오답 플래그
-	UPROPERTY(ReplicatedUsing = OnRep_ColorWrong, BlueprintReadOnly, Category = "Quest")
-	bool bColorWrong = false;
-
 	/// @brief 시도 횟수
 	UPROPERTY(Replicated, BlueprintReadOnly, Category = "Quest")
 	int32 AttemptCount = 0;
+	
+	/// @brief 선택한 심볼 (문제1 답변)
+	UPROPERTY(ReplicatedUsing = OnRep_SelectedWord1, BlueprintReadOnly, Category = "Quest")
+	FString SelectedWord1;
+	/// @brief 심볼 오답 플래그
+	UPROPERTY(ReplicatedUsing = OnRep_WrongWord1, BlueprintReadOnly, Category = "Quest")
+	bool bWrongWord1 = false;
+	
+	/// @brief 선택한 색상 (문제2 답변)
+	UPROPERTY(ReplicatedUsing = OnRep_SelectedWord2, BlueprintReadOnly, Category = "Quest")
+	FString SelectedWord2;
+	/// @brief 색상 오답 플래그
+	UPROPERTY(ReplicatedUsing = OnRep_WrongWord2, BlueprintReadOnly, Category = "Quest")
+	bool bWrongWord2 = false;
 };
