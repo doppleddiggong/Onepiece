@@ -201,7 +201,7 @@ void AContactTrigger::OnResponseScenario(FResponseScenario& ResponseData, bool b
 			  UGameplayStatics::GetActorOfClass(World, ALuggageManager::StaticClass()));
 		if (LuggageManager)
 		{
-			LuggageManager->SpawnLuggage();
+			LuggageManager->StartSpawning();
 		}
 	}
 }

@@ -109,12 +109,12 @@ void Aluggage::ApplyPatternToMesh(FString InPattern)
 
 void Aluggage::OutlineOn()
 {
-	Mesh1Comp->SetRenderCustomDepth(true);
+	Mesh3Comp->SetRenderCustomDepth(true);
 }
 
 void Aluggage::OutlineOff()
 {
-	Mesh1Comp->SetRenderCustomDepth(false);
+	Mesh3Comp->SetRenderCustomDepth(false);
 }
 
 
