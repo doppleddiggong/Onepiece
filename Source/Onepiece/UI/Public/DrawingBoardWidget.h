@@ -22,8 +22,6 @@ protected:
 	// Objects
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	TObjectPtr<class UTextureRenderTarget2D> RT_Canvas;
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
-	TObjectPtr<class UMaterialInterface> M_Brush;
 	
 	// Widgets
 	UPROPERTY(BlueprintReadOnly, meta=(BindWidget))

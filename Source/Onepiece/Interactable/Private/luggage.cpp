@@ -98,6 +98,16 @@ void Aluggage::ApplyPatternToMesh(FString InPattern)
 	PatternName = InPattern;
 }
 
+void Aluggage::OutlineOn()
+{
+	Mesh1Comp->SetRenderCustomDepth(true);
+}
+
+void Aluggage::OutlineOff()
+{
+	Mesh1Comp->SetRenderCustomDepth(false);
+}
+
 
 //--------------------------------------------------------------//
 // Read Quest Interaction

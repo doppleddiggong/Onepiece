@@ -4,6 +4,7 @@
 #include "UPlayerAnimInstance.h"
 
 #include "AOwlPlayer.h"
+#include "APlayerActor.h"
 #include "GameFramework/PawnMovementComponent.h"
 
 void URobotAnimInstance::NativeBeginPlay()
@@ -16,7 +17,7 @@ void URobotAnimInstance::NativeUpdateAnimation(float DeltaSeconds)
 {
 	Super::NativeUpdateAnimation(DeltaSeconds);
 	
-	OwningRobot = Cast<AOwlPlayer>(TryGetPawnOwner());
+	OwningRobot = Cast<APlayerActor>(TryGetPawnOwner());
 	if (OwningRobot)
 	{
 		bIsRunning = OwningRobot->GetIsRunning();

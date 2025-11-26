@@ -55,6 +55,11 @@ AOwlPlayer::AOwlPlayer()
 	{
 		InteractAction = interactActionRef.Object;
 	}
+	// ConstructorHelpers::FObjectFinder<UInputAction> grabActionRef(TEXT("/Script/EnhancedInput.InputAction'/Game/CustomContents/Input/Player/IA_RobotGrab.IA_RobotGrab'"));
+	// if (grabActionRef.Succeeded())
+	// {
+	// 	GrabAction = grabActionRef.Object;
+	// }
 	
 	// Mesh
 	// Set Owl Mesh
@@ -137,6 +142,9 @@ void AOwlPlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent
 		playerInput->BindAction(LookAction, ETriggerEvent::Triggered, this, &AOwlPlayer::OnLook);
 		playerInput->BindAction(JumpAction, ETriggerEvent::Started, this, &AOwlPlayer::OnJump);
 		playerInput->BindAction(RunAction, ETriggerEvent::Started, this, &AOwlPlayer::OnRun);
+		// playerInput->BindAction(GrabAction, ETriggerEvent::Started, this, &AOwlPlayer::OnGrab);
+		// playerInput->BindAction(GrabAction, ETriggerEvent::Completed, this, &AOwlPlayer::OnGrabRelease);
+		playerInput->BindAction(InteractAction, ETriggerEvent::Started, this, &AOwlPlayer::OnInteract);
 	}
 }
 
@@ -201,6 +209,36 @@ void AOwlPlayer::OnRun()
 		bIsRunning = true;
 		GetCharacterMovement()->MaxWalkSpeed = RunSpeed;
 	}
+}
+
+// void AOwlPlayer::OnGrab(const FInputActionValue& Value)
+// {
+// 	// AOwlPlayer* MyPlayer = Cast<AOwlPlayer>(GetPawn());
+// 	// if (MyPlayer && MyPlayer->InteractionSystem)
+// 	// {
+// 	// 	MyPlayer->InteractionSystem->TryPickUp();
+// 	// }
+// 	InteractionSystem->TryPickUp();
+// }
+
+// void AOwlPlayer::OnGrabRelease(const FInputActionValue& Value)
+// {
+// 	// AOwlPlayer* MyPlayer = Cast<AOwlPlayer>(GetPawn());
+// 	// if (MyPlayer && MyPlayer->InteractionSystem)
+// 	// {
+// 	// 	MyPlayer->InteractionSystem->TryDrop();
+// 	// }
+// 	InteractionSystem->TryDrop();
+// }
+
+void AOwlPlayer::OnInteract(const FInputActionValue& Value)
+{
+	// AOwlPlayer* MyPlayer = Cast<AOwlPlayer>(GetPawn());
+	// if (MyPlayer && MyPlayer->InteractionSystem)
+	// {
+	// 	MyPlayer->InteractionSystem->TryInteract();
+	// }
+	InteractionSystem->TryInteract();
 }
 
 bool AOwlPlayer::GetIsRunning()

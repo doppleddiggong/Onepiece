@@ -34,16 +34,9 @@ protected:
 public:
 	virtual void Landed(const FHitResult& Hit) override;
 
-	UFUNCTION(BlueprintCallable, Category="Fly")
-	void SetFlying();
-	UFUNCTION(BlueprintCallable, Category="Fly")
-	void SetFallingToWalk();
-
 	UFUNCTION(BlueprintCallable, Category="Command")
 	void RecoveryMovementMode(const EMovementMode InMovementMode);
 
-	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Command")
-	void OnFlyEnd();
 
 
 public:
@@ -51,9 +44,6 @@ public:
 	TObjectPtr<class UInteractionSystem> InteractionSystem;
 
 protected:
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Components|System")
-	TObjectPtr<class UFlySystem> FlySystem;
-
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Camera", meta=(AllowPrivateAccess="true"))
 	TObjectPtr<class USpringArmComponent> SpringArmComp;
 
@@ -80,16 +70,14 @@ public: // Control Interface
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Command")
 	void Cmd_Move(const FVector2D& Axis) override;
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Command")
+	void Cmd_StopMove() override;
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Command")
 	void Cmd_Look(const FVector2D& Axis) override;
-	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Command")
-	void Cmd_AltitudeUp() override;
-	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Command")
-	void Cmd_AltitudeDown() override;
-	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Command")
-	void Cmd_AltitudeReleased() override;
 
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Command")
 	void Cmd_Jump() override;
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Command")
+	void Cmd_Run() override;
 
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Command")
 	void Cmd_Landing() override;
@@ -123,6 +111,13 @@ protected:
 	/// @brief 메인 UI 위젯 인스턴스
 	UPROPERTY()
 	TObjectPtr<class UMainWidget> MainWidget;
+	
+private:
+	// Movement 관련 변수
+	float WalkSpeed = 200.f;
+	float RunSpeed = 500.f;
+	bool bIsRunning = false;
+	bool bIsJumpStart = false;
 
 public:
 	UFUNCTION()
@@ -132,4 +127,10 @@ public:
 	// bUsePawnControlRotation은 서버->클라로 전달 안됨
 	UPROPERTY(ReplicatedUsing=OnRep_LookPitch)
 	float LookPitch;
+	
+	// Get 함수
+	bool GetIsRunning();
+	bool GetIsJumpStart();
+	
+	void DoJump();
 };
