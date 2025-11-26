@@ -132,5 +132,4 @@ void UKnockbackSystem::RestoreMovement()
 
 void UKnockbackSystem::EnterFlying()
 {
-	Owner->SetFlying();
 }

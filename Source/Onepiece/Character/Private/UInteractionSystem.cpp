@@ -7,7 +7,6 @@
 
 #include "UInteractionSystem.h"
 
-#include "AOwlPlayer.h"
 #include "APlayerActor.h"
 #include "GameLogging.h"
 #include "InteractableComponent.h"
@@ -28,7 +27,7 @@ void UInteractionSystem::BeginPlay()
 	OwnerPlayer = Cast<APlayerActor>(GetOwner());
 	if (!OwnerPlayer)
 	{
-		PRINTLOG( TEXT("UInteractionSystem: Owner is not AOwlPlayer!"));
+		PRINTLOG( TEXT("UInteractionSystem: Owner is not APlayerActor!"));
 		SetComponentTickEnabled(false);
 	}
 }

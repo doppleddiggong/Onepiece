@@ -14,15 +14,10 @@
 
 UDrawingBoardWidget::UDrawingBoardWidget(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer)
 {
-	ConstructorHelpers::FObjectFinder<UTextureRenderTarget2D> rtCanvasRef(TEXT("/Script/Engine.TextureRenderTarget2D'/Game/ThirdPerson/Blueprints/Canvas/RT_Canvas.RT_Canvas'"));
+	ConstructorHelpers::FObjectFinder<UTextureRenderTarget2D> rtCanvasRef(TEXT("/Script/Engine.TextureRenderTarget2D'/Game/CustomContents/UI/DrawingBoard/RT_Canvas.RT_Canvas'"));
 	if (rtCanvasRef.Succeeded())
 	{
 		RT_Canvas = rtCanvasRef.Object;
-	}
-	ConstructorHelpers::FObjectFinder<UMaterialInterface> mBrushRef(TEXT("/Script/Engine.Material'/Game/ThirdPerson/Blueprints/Canvas/M_Brush.M_Brush'"));
-	if (mBrushRef.Succeeded())
-	{
-		M_Brush = mBrushRef.Object;
 	}
 }
 

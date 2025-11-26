@@ -36,6 +36,7 @@ protected:
 	UPROPERTY(EditDefaultsOnly, Category="Input") TObjectPtr<class UInputAction> IA_Record;
 	UPROPERTY(EditDefaultsOnly, Category="Input") TObjectPtr<class UInputAction> IA_Grab;
 	UPROPERTY(EditDefaultsOnly, Category="Input") TObjectPtr<class UInputAction> IA_Interact;
+	UPROPERTY(EditDefaultsOnly, Category="Input") TObjectPtr<class UInputAction> IA_Run;
 
 	// --- Handlers ---
 	void OnMove(const FInputActionValue& Value);
@@ -44,7 +45,9 @@ protected:
 	void OnAltitudeDown(const FInputActionValue& Value);
 	void OnAltitudeReleased(const FInputActionValue& Value);
 	
+	void OnStopMove(const FInputActionValue& Value);
 	void OnJump(const FInputActionValue& Value);
+	void OnRun(const FInputActionValue& Value);
 
 	void OnLanding(const FInputActionValue& Value);
 

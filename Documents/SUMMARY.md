@@ -14,6 +14,7 @@
 * [dopple - 2025-11-10](DevLog/AgentLog/dopple/251110.md)
 
 ### Daily Logs (2025-11)
+* [2025-11-25](DevLog/Daily/2025-11-25.md)
 * [2025-11-24](DevLog/Daily/2025-11-24.md)
 * [2025-11-23](DevLog/Daily/2025-11-23.md)
 * [2025-11-22](DevLog/Daily/2025-11-22.md)
@@ -37,6 +38,7 @@
 ## 회의록
 
 ### 일일 회의록
+* [251125 Daily](Meeting/Daily/Meeting_251125_Daily.md)
 * [251124 Daily](Meeting/Daily/Meeting_251124_Daily.md)
 * [251121 Daily](Meeting/Daily/Meeting_251121_Daily.md)
 * [251120 Daily](Meeting/Daily/Meeting_251120_Daily.md)

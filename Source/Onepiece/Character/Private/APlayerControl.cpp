@@ -28,6 +28,7 @@
 #define IA_RECORD_PATH				TEXT("/Game/CustomContents/Input/IA_Game_Record.IA_Game_Record")
 #define IA_GRAB_PATH				TEXT("/Game/CustomContents/Input/IA_Game_Grab.IA_Game_Grab")
 #define IA_INTERACT_PATH			TEXT("/Game/CustomContents/Input/IA_Game_Interact.IA_Game_Interact")
+#define IA_RUN_PATH					TEXT("/Game/CustomContents/Input/IA_Game_Run.IA_Game_Run")
 
 
 APlayerControl::APlayerControl()
@@ -43,6 +44,7 @@ APlayerControl::APlayerControl()
 	IA_Record = FComponentHelper::LoadAsset<UInputAction>(IA_RECORD_PATH);
 	IA_Grab = FComponentHelper::LoadAsset<UInputAction>(IA_GRAB_PATH);
 	IA_Interact = FComponentHelper::LoadAsset<UInputAction>(IA_INTERACT_PATH);
+	IA_Run = FComponentHelper::LoadAsset<UInputAction>(IA_RUN_PATH);
 }
 
 void APlayerControl::BeginPlay()
@@ -69,6 +71,7 @@ void APlayerControl::SetupInputComponent()
 	if (UEnhancedInputComponent* EIC = Cast<UEnhancedInputComponent>(InputComponent))
 	{
 		EIC->BindAction(IA_Move, ETriggerEvent::Triggered,  this, &APlayerControl::OnMove);
+		EIC->BindAction(IA_Move, ETriggerEvent::Completed,  this, &APlayerControl::OnStopMove);
 		EIC->BindAction(IA_Look, ETriggerEvent::Triggered,  this, &APlayerControl::OnLook);
 
 		EIC->BindAction(IA_AltitudeUp, ETriggerEvent::Started,  this, &APlayerControl::OnAltitudeUp);
@@ -89,6 +92,7 @@ void APlayerControl::SetupInputComponent()
 		EIC->BindAction(IA_Grab, ETriggerEvent::Completed, this, &APlayerControl::OnGrabRelease);
 
 		EIC->BindAction(IA_Interact, ETriggerEvent::Started, this, &APlayerControl::OnInteract);
+		EIC->BindAction(IA_Run, ETriggerEvent::Started, this, &APlayerControl::OnRun);
 	}
 }
 
@@ -135,10 +139,26 @@ void APlayerControl::OnAltitudeReleased(const FInputActionValue& Value)
 		C->Cmd_AltitudeReleased();
 }
 
+void APlayerControl::OnStopMove(const FInputActionValue& Value)
+{
+	if (IControllable* C = GetControllable())
+	{
+		C->Cmd_StopMove();
+	}
+}
+
 void APlayerControl::OnJump(const FInputActionValue&)
 {
 	if (IControllable* C = GetControllable())
 		C->Cmd_Jump();
+}
+
+void APlayerControl::OnRun(const FInputActionValue& Value)
+{
+	if (IControllable* C = GetControllable())
+	{
+		C->Cmd_Run();
+	}
 }
 
 void APlayerControl::OnLanding(const FInputActionValue&)

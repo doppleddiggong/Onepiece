@@ -26,8 +26,10 @@ class ONEPIECE_API IControllable
 
 public:
 	virtual void Cmd_Move(const FVector2D& Axis) = 0;		// 이동
+	virtual void Cmd_StopMove() = 0;						// 정지
 	virtual void Cmd_Look(const FVector2D& Axis) = 0;		// 카메라 회전
 	virtual void Cmd_Jump() = 0;							// 점프
+	virtual void Cmd_Run() = 0;								// 달리기
 
 	virtual void Cmd_Landing() {};							// 랜딩
 	
