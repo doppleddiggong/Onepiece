@@ -5,6 +5,7 @@
 
 #include "APlayerActor.h"
 #include "GameLogging.h"
+#include "luggage.h"
 #include "Net/UnrealNetwork.h"
 #include "Components/BoxComponent.h"
 #include "UInteractionSystem.h"
@@ -287,6 +288,13 @@ void UInteractableComponent::OnDetectionBeginOverlap(
 		{
 			InteractionSystem->RegisterInteractable(this);
 		}
+
+		// Outline 켜기
+		Aluggage* luggage = Cast<Aluggage>(GetOwner());
+		if (luggage && !bIsPickedUp)
+		{
+			luggage->OutlineOn();
+		}
 		
 		PRINTLOG( TEXT("InteractableComponent: Player entered detection range - %s"), *GetOwner()->GetName());
 	}
@@ -309,7 +317,19 @@ void UInteractableComponent::OnDetectionEndOverlap(
 		{
 			InteractionSystem->UnregisterInteractable(this);
 		}
-		
+
 		PRINTLOG( TEXT("InteractableComponent: Player left detection range - %s"), *GetOwner()->GetName());
+
+		// Outline 끄기
+		FTimerHandle TimerHandle;
+		GetWorld()->GetTimerManager().SetTimer(TimerHandle, FTimerDelegate::CreateLambda([this]
+		{
+			Aluggage* luggage = Cast<Aluggage>(GetOwner());
+			if (luggage && !bIsPickedUp)
+			{
+				luggage->OutlineOff();
+			}
+			
+		}), 0.1f, false);
 	}
 }
