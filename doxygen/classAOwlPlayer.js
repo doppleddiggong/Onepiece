@@ -5,6 +5,7 @@ var classAOwlPlayer =
     [ "DoJump", "classAOwlPlayer.html#abc9f2f980307d9029b521d6f558ca28e", null ],
     [ "GetIsJumpStart", "classAOwlPlayer.html#a0a4f1ff7ba8c9807aecd40e654914c4f", null ],
     [ "GetIsRunning", "classAOwlPlayer.html#aa0afae47142b0b924c9bc1e599112f9e", null ],
+    [ "OnInteract", "classAOwlPlayer.html#ad4e0ab222a4d38f818f1015443eaa347", null ],
     [ "OnJump", "classAOwlPlayer.html#a379769b4e2ddc861b4662d225352f081", null ],
     [ "OnLook", "classAOwlPlayer.html#af0319e38db820892a8575a62765d9112", null ],
     [ "OnMove", "classAOwlPlayer.html#ae5444600ecc404800053f0f4d3d2cadf", null ],

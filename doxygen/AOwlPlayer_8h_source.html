@@ -170,27 +170,35 @@ $(document).ready(function(){initNavTree('AOwlPlayer_8h_source.html',''); initRe
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    UPROPERTY(EditAnywhere, Category=&quot;Input&quot;)</div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="classAOwlPlayer.html#a6d2fcd5e951ec9945c834148a803b562">   59</a></span>    TObjectPtr&lt;class UInputAction&gt; InteractAction;</div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    </div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="keywordtype">void</span> OnMove(const FInputActionValue&amp; Value);</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="keywordtype">void</span> OnStopMove();</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <span class="keywordtype">void</span> OnLook(const FInputActionValue&amp; Value);</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    <span class="keywordtype">void</span> OnJump();</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <span class="keywordtype">void</span> OnRun();</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    </div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>private:</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <span class="comment">// Move Value</span></div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="classAOwlPlayer.html#aeb0f9a393680dd632fbfdb063b067c50">   69</a></span>    <span class="keywordtype">float</span> WalkSpeed = 200.f;</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno"><a class="line" href="classAOwlPlayer.html#a500b33ae297628c2e7a15d49921e1725">   70</a></span>    <span class="keywordtype">float</span> RunSpeed = 500.f;</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno"><a class="line" href="classAOwlPlayer.html#a75d386dcad0f2752a9a2a62e3efacae7">   71</a></span>    <span class="keywordtype">bool</span> bIsRunning;</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno"><a class="line" href="classAOwlPlayer.html#aa985739258dc800d4dc57abebd9571c8">   72</a></span>    <span class="keywordtype">bool</span> bIsJumpStart;</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    </div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>public:</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    <span class="comment">// Get Value</span></div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    <span class="keywordtype">bool</span> GetIsRunning();</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    <span class="keywordtype">bool</span> GetIsJumpStart();</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    </div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    <span class="comment">// Jump</span></div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    <span class="keywordtype">void</span> DoJump();</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>};</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="comment">// UPROPERTY(EditAnywhere, Category=&quot;Input&quot;)</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="comment">// TObjectPtr&lt;class UInputAction&gt; GrabAction;</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    </div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    <span class="keywordtype">void</span> OnMove(const FInputActionValue&amp; Value);</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <span class="keywordtype">void</span> OnStopMove();</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <span class="keywordtype">void</span> OnLook(const FInputActionValue&amp; Value);</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <span class="keywordtype">void</span> OnJump();</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <span class="keywordtype">void</span> OnRun();</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    </div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <span class="comment">// Interact</span></div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    <span class="comment">// void OnGrab(const FInputActionValue&amp; Value);</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    <span class="comment">// void OnGrabRelease(const FInputActionValue&amp; Value);</span></div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    <span class="keywordtype">void</span> OnInteract(const FInputActionValue&amp; Value);</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    </div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>private:</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    <span class="comment">// Move Value</span></div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno"><a class="line" href="classAOwlPlayer.html#aeb0f9a393680dd632fbfdb063b067c50">   77</a></span>    <span class="keywordtype">float</span> WalkSpeed = 200.f;</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno"><a class="line" href="classAOwlPlayer.html#a500b33ae297628c2e7a15d49921e1725">   78</a></span>    <span class="keywordtype">float</span> RunSpeed = 500.f;</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno"><a class="line" href="classAOwlPlayer.html#a75d386dcad0f2752a9a2a62e3efacae7">   79</a></span>    <span class="keywordtype">bool</span> bIsRunning;</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno"><a class="line" href="classAOwlPlayer.html#aa985739258dc800d4dc57abebd9571c8">   80</a></span>    <span class="keywordtype">bool</span> bIsJumpStart;</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    </div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>public:</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    <span class="comment">// Get Value</span></div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    <span class="keywordtype">bool</span> GetIsRunning();</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    <span class="keywordtype">bool</span> GetIsJumpStart();</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    </div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    <span class="comment">// Jump</span></div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    <span class="keywordtype">void</span> DoJump();</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>};</div>
 </div>
 <div class="ttc" id="aclassAOwlPlayer_html"><div class="ttname"><a href="classAOwlPlayer.html">AOwlPlayer</a></div><div class="ttdef"><b>Definition</b> <a href="AOwlPlayer_8h_source.html#l00011">AOwlPlayer.h:12</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
@@ -199,7 +207,7 @@ $(document).ready(function(){initNavTree('AOwlPlayer_8h_source.html',''); initRe
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_71a9f6b769ee24fe8598c19ea2d70480.html">Character</a></li><li class="navelem"><a class="el" href="dir_82ba722683279238407f867a1ffc0276.html">Public</a></li><li class="navelem"><a class="el" href="AOwlPlayer_8h.html">AOwlPlayer.h</a></li>
-    <li class="footer">생성시간 : 화 11월 25 2025 16:31:17, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 수 11월 26 2025 05:58:58, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

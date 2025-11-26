@@ -22,5 +22,5 @@ var searchData=
   ['rotatoroffset_19',['RotatorOffset',['../structFVFXData.html#ac890ab57708ba9a560918e626822022f',1,'FVFXData']]],
   ['rt_5fcanvas_20',['RT_Canvas',['../classUDrawingBoardWidget.html#a9ec1bb4325aa0ca447099b23d3389cfe',1,'UDrawingBoardWidget']]],
   ['runaction_21',['RunAction',['../classAOwlPlayer.html#a3a17273ada64aa8d321b1cc5c5d1b4e3',1,'AOwlPlayer']]],
-  ['runspeed_22',['RunSpeed',['../classAOwlPlayer.html#a500b33ae297628c2e7a15d49921e1725',1,'AOwlPlayer']]]
+  ['runspeed_22',['runspeed',['../classAOwlPlayer.html#a500b33ae297628c2e7a15d49921e1725',1,'AOwlPlayer::RunSpeed'],['../classAPlayerActor.html#a0e9166eaab407919546d8accca997855',1,'APlayerActor::RunSpeed']]]
 ];

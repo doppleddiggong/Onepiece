@@ -1,5 +1,11 @@
 var NAVTREEINDEX7 =
 {
+"index.html#autotoc_md7":[0,1,1],
+"index.html#autotoc_md8":[0,1,2],
+"luggage_8cpp.html":[3,0,0,2,2,0,7],
+"luggage_8cpp_source.html":[3,0,0,2,2,0,7],
+"luggage_8h.html":[3,0,0,2,2,1,7],
+"luggage_8h_source.html":[3,0,0,2,2,1,7],
 "namespaceGameColor.html":[1,0,0],
 "namespaceGameColor.html#a347e21752e1aecee7916040063b5915a":[1,0,0,1],
 "namespaceGameColor.html#a85944ad816eb9238756d535533eac5d0":[1,0,0,3],
@@ -243,11 +249,5 @@ var NAVTREEINDEX7 =
 "structFSequenceCommand.html#ad318dca78e6cdc2fb3a5616df5e9eb64":[2,0,57,2],
 "structFServerConfig.html":[2,0,58],
 "structFServerConfig.html#a0921d17b91705fa9f1ffc75c204daab5":[2,0,58,2],
-"structFServerConfig.html#a192542ce9a719e9f4a9dd468e1e69aea":[2,0,58,3],
-"structFServerConfig.html#a8abeabc5af6396f784929d66d0bd6ce7":[2,0,58,1],
-"structFServerConfig.html#ab65e0b73b4679e5efb155dd6f98bac3d":[2,0,58,0],
-"structFVFXData.html":[2,0,59],
-"structFVFXData.html#a4639a82bb96c85b413933695345392ec":[2,0,59,2],
-"structFVFXData.html#a945ead1eeb298be70cd434019b8ce9ba":[2,0,59,0],
-"structFVFXData.html#ac890ab57708ba9a560918e626822022f":[2,0,59,1]
+"structFServerConfig.html#a192542ce9a719e9f4a9dd468e1e69aea":[2,0,58,3]
 };

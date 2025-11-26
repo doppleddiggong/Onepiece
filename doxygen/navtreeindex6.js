@@ -1,5 +1,11 @@
 var NAVTREEINDEX6 =
 {
+"classUSequenceManager.html#aee42f1166a70db3a833074512dc72637":[2,0,103,3],
+"classUSessionInfoWidget.html":[2,0,104],
+"classUSessionInfoWidget.html#a1f92c0fccae94c61e9daa8a9fda4f523":[2,0,104,1],
+"classUSessionInfoWidget.html#a1fcc55f0382d83ce9c94b83cc881d12f":[2,0,104,2],
+"classUSessionInfoWidget.html#a22e57e4bc7caedb331979b3448858fd0":[2,0,104,3],
+"classUSessionInfoWidget.html#a43cdf4dfd3bf7a87cf128adad830a7a6":[2,0,104,5],
 "classUSessionInfoWidget.html#ad7b5ab7bdefcf1215521bca09f37f489":[2,0,104,4],
 "classUSessionInfoWidget.html#af7f908a299b306fe470c54c65da8b61d":[2,0,104,0],
 "classUSoundData.html":[2,0,105],
@@ -143,8 +149,8 @@ var NAVTREEINDEX6 =
 "dir_f5c20ae920c5f83d16e1c5fb9563aee7.html":[3,0,0,1,0,0],
 "dir_f8d1c9eab1fc62a504c69287c791da47.html":[3,0,0,1,1,0],
 "files.html":[3,0],
-"functions.html":[2,3,0],
 "functions.html":[2,3,0,0],
+"functions.html":[2,3,0],
 "functions_b.html":[2,3,0,1],
 "functions_c.html":[2,3,0,2],
 "functions_d.html":[2,3,0,3],
@@ -243,11 +249,5 @@ var NAVTREEINDEX6 =
 "index.html#autotoc_md3":[0,0,0],
 "index.html#autotoc_md31":[0,7],
 "index.html#autotoc_md5":[0,1],
-"index.html#autotoc_md6":[0,1,0],
-"index.html#autotoc_md7":[0,1,1],
-"index.html#autotoc_md8":[0,1,2],
-"luggage_8cpp.html":[3,0,0,2,2,0,7],
-"luggage_8cpp_source.html":[3,0,0,2,2,0,7],
-"luggage_8h.html":[3,0,0,2,2,1,7],
-"luggage_8h_source.html":[3,0,0,2,2,1,7]
+"index.html#autotoc_md6":[0,1,0]
 };

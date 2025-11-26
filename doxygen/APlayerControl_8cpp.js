@@ -9,5 +9,6 @@ var APlayerControl_8cpp =
     [ "IA_LOOK_PATH", "APlayerControl_8cpp.html#a8b72b0499e531ce7d87e8a29960cb2e9", null ],
     [ "IA_MOVE_PATH", "APlayerControl_8cpp.html#aaceac3d5c8c1d183f1a4bff2f3406a09", null ],
     [ "IA_RECORD_PATH", "APlayerControl_8cpp.html#a5f8136d1ae53127439765497cd8488d7", null ],
+    [ "IA_RUN_PATH", "APlayerControl_8cpp.html#aac43679ef0ed684b18eac95ba57da5a7", null ],
     [ "IMC_DEFAULT_PATH", "APlayerControl_8cpp.html#a01c913d4a8c789edd2be9b6893be7176", null ]
 ];

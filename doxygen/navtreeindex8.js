@@ -1,5 +1,11 @@
 var NAVTREEINDEX8 =
 {
+"structFServerConfig.html#a8abeabc5af6396f784929d66d0bd6ce7":[2,0,58,1],
+"structFServerConfig.html#ab65e0b73b4679e5efb155dd6f98bac3d":[2,0,58,0],
+"structFVFXData.html":[2,0,59],
+"structFVFXData.html#a4639a82bb96c85b413933695345392ec":[2,0,59,2],
+"structFVFXData.html#a945ead1eeb298be70cd434019b8ce9ba":[2,0,59,0],
+"structFVFXData.html#ac890ab57708ba9a560918e626822022f":[2,0,59,1],
 "structFVFXData.html#af261eaf6fac7df787bb2f290c456123f":[2,0,59,3],
 "structFWordData.html":[2,0,60],
 "structFWordData.html#a0c48a651223fd58eedb624c3837e8b3b":[2,0,60,1],

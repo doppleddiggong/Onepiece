@@ -16,7 +16,6 @@ var classUDrawingBoardWidget =
     [ "Button_Clear", "classUDrawingBoardWidget.html#aa6868f171742ae8811c83cd9d05bf7c7", null ],
     [ "Button_Save", "classUDrawingBoardWidget.html#a1c5e4c13d4cec7e07e91b8b2995ce531", null ],
     [ "Image_Canvas", "classUDrawingBoardWidget.html#ab2b390fe6e2763f892817105a4d7c54b", null ],
-    [ "M_Brush", "classUDrawingBoardWidget.html#a8c482a5bdf8f1b4054b7f7741fa06372", null ],
     [ "Overlay_DrawWindow", "classUDrawingBoardWidget.html#a3f44533ca743b90104b27ef385acd77a", null ],
     [ "prevMousePos", "classUDrawingBoardWidget.html#ab7b6f878a2113366f4b5b011462ec075", null ],
     [ "RT_Canvas", "classUDrawingBoardWidget.html#a9ec1bb4325aa0ca447099b23d3389cfe", null ]

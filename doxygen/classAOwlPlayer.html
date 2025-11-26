@@ -154,6 +154,8 @@ Public 속성</h2></td></tr>
 Protected 멤버 함수</h2></td></tr>
 <tr class="memitem:aa8bec2e9c4afd39faf926b6faa26b6ab" id="r_aa8bec2e9c4afd39faf926b6faa26b6ab"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAOwlPlayer.html#aa8bec2e9c4afd39faf926b6faa26b6ab">BeginPlay</a> () override</td></tr>
 <tr class="separator:aa8bec2e9c4afd39faf926b6faa26b6ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad4e0ab222a4d38f818f1015443eaa347" id="r_ad4e0ab222a4d38f818f1015443eaa347"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAOwlPlayer.html#ad4e0ab222a4d38f818f1015443eaa347">OnInteract</a> (const FInputActionValue &amp;Value)</td></tr>
+<tr class="separator:ad4e0ab222a4d38f818f1015443eaa347"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a379769b4e2ddc861b4662d225352f081" id="r_a379769b4e2ddc861b4662d225352f081"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAOwlPlayer.html#a379769b4e2ddc861b4662d225352f081">OnJump</a> ()</td></tr>
 <tr class="separator:a379769b4e2ddc861b4662d225352f081"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af0319e38db820892a8575a62765d9112" id="r_af0319e38db820892a8575a62765d9112"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAOwlPlayer.html#af0319e38db820892a8575a62765d9112">OnLook</a> (const FInputActionValue &amp;Value)</td></tr>
@@ -255,55 +257,60 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">   55</span>    {</div>
 <div class="line"><span class="lineno">   56</span>        <a class="code hl_variable" href="classAOwlPlayer.html#a6d2fcd5e951ec9945c834148a803b562">InteractAction</a> = interactActionRef.Object;</div>
 <div class="line"><span class="lineno">   57</span>    }</div>
-<div class="line"><span class="lineno">   58</span>    </div>
-<div class="line"><span class="lineno">   59</span>    <span class="comment">// Mesh</span></div>
-<div class="line"><span class="lineno">   60</span>    <span class="comment">// Set Owl Mesh</span></div>
-<div class="line"><span class="lineno">   61</span>    ConstructorHelpers::FObjectFinder&lt;USkeletalMesh&gt; playerMeshRef(TEXT(<span class="stringliteral">&quot;/Script/Engine.SkeletalMesh&#39;/Game/CustomContents/Character/Asset/Owl/SKM_GreenOwlRobot.SKM_GreenOwlRobot&#39;&quot;</span>));</div>
-<div class="line"><span class="lineno">   62</span>    <span class="keywordflow">if</span> (playerMeshRef.Succeeded())</div>
-<div class="line"><span class="lineno">   63</span>    {</div>
-<div class="line"><span class="lineno">   64</span>        GetMesh()-&gt;SetSkeletalMesh(playerMeshRef.Object);</div>
-<div class="line"><span class="lineno">   65</span>        GetMesh()-&gt;SetRelativeLocationAndRotation(FVector(0, 0, -70), FRotator(0, -90, 0));</div>
-<div class="line"><span class="lineno">   66</span>    }</div>
-<div class="line"><span class="lineno">   67</span>    </div>
-<div class="line"><span class="lineno">   68</span>    <span class="comment">// ABP</span></div>
-<div class="line"><span class="lineno">   69</span>    <span class="comment">// Set ABP_Owl</span></div>
-<div class="line"><span class="lineno">   70</span>    ConstructorHelpers::FClassFinder&lt;UAnimInstance&gt; playerABPRef(TEXT(<span class="stringliteral">&quot;/Game/CustomContents/Animations/ABP_Owl.ABP_Owl_C&quot;</span>));</div>
-<div class="line"><span class="lineno">   71</span>    <span class="keywordflow">if</span> (playerABPRef.Succeeded())</div>
-<div class="line"><span class="lineno">   72</span>    {</div>
-<div class="line"><span class="lineno">   73</span>        GetMesh()-&gt;SetAnimInstanceClass(playerABPRef.Class);</div>
-<div class="line"><span class="lineno">   74</span>    }</div>
-<div class="line"><span class="lineno">   75</span>    </div>
-<div class="line"><span class="lineno">   76</span>    <span class="comment">// Capsule Comp</span></div>
-<div class="line"><span class="lineno">   77</span>    GetCapsuleComponent()-&gt;InitCapsuleSize(35.f, 70.0f);</div>
-<div class="line"><span class="lineno">   78</span>    </div>
-<div class="line"><span class="lineno">   79</span>    <span class="comment">// Movement</span></div>
-<div class="line"><span class="lineno">   80</span>    bUseControllerRotationPitch = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   81</span>    bUseControllerRotationYaw = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   82</span>    bUseControllerRotationRoll = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   58</span>    <span class="comment">// ConstructorHelpers::FObjectFinder&lt;UInputAction&gt; grabActionRef(TEXT(&quot;/Script/EnhancedInput.InputAction&#39;/Game/CustomContents/Input/Player/IA_RobotGrab.IA_RobotGrab&#39;&quot;));</span></div>
+<div class="line"><span class="lineno">   59</span>    <span class="comment">// if (grabActionRef.Succeeded())</span></div>
+<div class="line"><span class="lineno">   60</span>    <span class="comment">// {</span></div>
+<div class="line"><span class="lineno">   61</span>    <span class="comment">//  GrabAction = grabActionRef.Object;</span></div>
+<div class="line"><span class="lineno">   62</span>    <span class="comment">// }</span></div>
+<div class="line"><span class="lineno">   63</span>    </div>
+<div class="line"><span class="lineno">   64</span>    <span class="comment">// Mesh</span></div>
+<div class="line"><span class="lineno">   65</span>    <span class="comment">// Set Owl Mesh</span></div>
+<div class="line"><span class="lineno">   66</span>    ConstructorHelpers::FObjectFinder&lt;USkeletalMesh&gt; playerMeshRef(TEXT(<span class="stringliteral">&quot;/Script/Engine.SkeletalMesh&#39;/Game/CustomContents/Character/Asset/Owl/SKM_GreenOwlRobot.SKM_GreenOwlRobot&#39;&quot;</span>));</div>
+<div class="line"><span class="lineno">   67</span>    <span class="keywordflow">if</span> (playerMeshRef.Succeeded())</div>
+<div class="line"><span class="lineno">   68</span>    {</div>
+<div class="line"><span class="lineno">   69</span>        GetMesh()-&gt;SetSkeletalMesh(playerMeshRef.Object);</div>
+<div class="line"><span class="lineno">   70</span>        GetMesh()-&gt;SetRelativeLocationAndRotation(FVector(0, 0, -70), FRotator(0, -90, 0));</div>
+<div class="line"><span class="lineno">   71</span>    }</div>
+<div class="line"><span class="lineno">   72</span>    </div>
+<div class="line"><span class="lineno">   73</span>    <span class="comment">// ABP</span></div>
+<div class="line"><span class="lineno">   74</span>    <span class="comment">// Set ABP_Owl</span></div>
+<div class="line"><span class="lineno">   75</span>    ConstructorHelpers::FClassFinder&lt;UAnimInstance&gt; playerABPRef(TEXT(<span class="stringliteral">&quot;/Game/CustomContents/Animations/ABP_Owl.ABP_Owl_C&quot;</span>));</div>
+<div class="line"><span class="lineno">   76</span>    <span class="keywordflow">if</span> (playerABPRef.Succeeded())</div>
+<div class="line"><span class="lineno">   77</span>    {</div>
+<div class="line"><span class="lineno">   78</span>        GetMesh()-&gt;SetAnimInstanceClass(playerABPRef.Class);</div>
+<div class="line"><span class="lineno">   79</span>    }</div>
+<div class="line"><span class="lineno">   80</span>    </div>
+<div class="line"><span class="lineno">   81</span>    <span class="comment">// Capsule Comp</span></div>
+<div class="line"><span class="lineno">   82</span>    GetCapsuleComponent()-&gt;InitCapsuleSize(35.f, 70.0f);</div>
 <div class="line"><span class="lineno">   83</span>    </div>
-<div class="line"><span class="lineno">   84</span>    GetCharacterMovement()-&gt;RotationRate = FRotator(0.0f, 500.0f, 0.0f);</div>
-<div class="line"><span class="lineno">   85</span>    GetCharacterMovement()-&gt;MaxWalkSpeed = <a class="code hl_variable" href="classAOwlPlayer.html#aeb0f9a393680dd632fbfdb063b067c50">WalkSpeed</a>;</div>
-<div class="line"><span class="lineno">   86</span>    GetCharacterMovement()-&gt;bOrientRotationToMovement = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   87</span>    </div>
-<div class="line"><span class="lineno">   88</span>    <span class="comment">// InteractionSystem</span></div>
-<div class="line"><span class="lineno">   89</span>    <a class="code hl_variable" href="classAOwlPlayer.html#ab9e18b224cd0c7cfdb419fd11bd8fa2c">InteractionSystem</a> = CreateDefaultSubobject&lt;UInteractionSystem&gt;(TEXT(<span class="stringliteral">&quot;InteractionSystem&quot;</span>));</div>
-<div class="line"><span class="lineno">   90</span>    </div>
-<div class="line"><span class="lineno">   91</span>    <span class="comment">// Hold Position</span></div>
-<div class="line"><span class="lineno">   92</span>    <a class="code hl_variable" href="classAOwlPlayer.html#a80bc80af3b5042a431ae4dff7d21444c">HoldPosition</a> = CreateDefaultSubobject&lt;USceneComponent&gt;(TEXT(<span class="stringliteral">&quot;HoldPosition&quot;</span>));</div>
-<div class="line"><span class="lineno">   93</span>    <a class="code hl_variable" href="classAOwlPlayer.html#a80bc80af3b5042a431ae4dff7d21444c">HoldPosition</a>-&gt;SetupAttachment(GetRootComponent());</div>
-<div class="line"><span class="lineno">   94</span>    </div>
-<div class="line"><span class="lineno">   95</span>    <span class="comment">// Camera Comp</span></div>
-<div class="line"><span class="lineno">   96</span>    <a class="code hl_variable" href="classAOwlPlayer.html#a98b1fae1d8f37fcf5dfbbd8a8ca4f67d">CameraBoom</a> = CreateDefaultSubobject&lt;USpringArmComponent&gt;(TEXT(<span class="stringliteral">&quot;CameraBoom&quot;</span>));</div>
-<div class="line"><span class="lineno">   97</span>    <a class="code hl_variable" href="classAOwlPlayer.html#a98b1fae1d8f37fcf5dfbbd8a8ca4f67d">CameraBoom</a>-&gt;SetupAttachment(RootComponent);</div>
-<div class="line"><span class="lineno">   98</span>    <a class="code hl_variable" href="classAOwlPlayer.html#a98b1fae1d8f37fcf5dfbbd8a8ca4f67d">CameraBoom</a>-&gt;TargetArmLength = 250.f;</div>
-<div class="line"><span class="lineno">   99</span>    <a class="code hl_variable" href="classAOwlPlayer.html#a98b1fae1d8f37fcf5dfbbd8a8ca4f67d">CameraBoom</a>-&gt;bUsePawnControlRotation = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  100</span>    </div>
-<div class="line"><span class="lineno">  101</span>    <a class="code hl_variable" href="classAOwlPlayer.html#aefcaff018a03293b67c7c662a4d57dcf">FollowCamera</a> = CreateDefaultSubobject&lt;UCameraComponent&gt;(TEXT(<span class="stringliteral">&quot;FollowCamera&quot;</span>));</div>
-<div class="line"><span class="lineno">  102</span>    <a class="code hl_variable" href="classAOwlPlayer.html#aefcaff018a03293b67c7c662a4d57dcf">FollowCamera</a>-&gt;SetupAttachment(GetMesh(), TEXT(<span class="stringliteral">&quot;Head&quot;</span>));</div>
-<div class="line"><span class="lineno">  103</span>    <span class="comment">// First Person Camera</span></div>
-<div class="line"><span class="lineno">  104</span>    <a class="code hl_variable" href="classAOwlPlayer.html#aefcaff018a03293b67c7c662a4d57dcf">FollowCamera</a>-&gt;SetRelativeLocationAndRotation(FVector(0,-14.285715,21.428572), FRotator(90, 90, 0));</div>
-<div class="line"><span class="lineno">  105</span>    <a class="code hl_variable" href="classAOwlPlayer.html#aefcaff018a03293b67c7c662a4d57dcf">FollowCamera</a>-&gt;bUsePawnControlRotation = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  106</span>}</div>
+<div class="line"><span class="lineno">   84</span>    <span class="comment">// Movement</span></div>
+<div class="line"><span class="lineno">   85</span>    bUseControllerRotationPitch = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   86</span>    bUseControllerRotationYaw = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   87</span>    bUseControllerRotationRoll = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   88</span>    </div>
+<div class="line"><span class="lineno">   89</span>    GetCharacterMovement()-&gt;RotationRate = FRotator(0.0f, 500.0f, 0.0f);</div>
+<div class="line"><span class="lineno">   90</span>    GetCharacterMovement()-&gt;MaxWalkSpeed = <a class="code hl_variable" href="classAOwlPlayer.html#aeb0f9a393680dd632fbfdb063b067c50">WalkSpeed</a>;</div>
+<div class="line"><span class="lineno">   91</span>    GetCharacterMovement()-&gt;bOrientRotationToMovement = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   92</span>    </div>
+<div class="line"><span class="lineno">   93</span>    <span class="comment">// InteractionSystem</span></div>
+<div class="line"><span class="lineno">   94</span>    <a class="code hl_variable" href="classAOwlPlayer.html#ab9e18b224cd0c7cfdb419fd11bd8fa2c">InteractionSystem</a> = CreateDefaultSubobject&lt;UInteractionSystem&gt;(TEXT(<span class="stringliteral">&quot;InteractionSystem&quot;</span>));</div>
+<div class="line"><span class="lineno">   95</span>    </div>
+<div class="line"><span class="lineno">   96</span>    <span class="comment">// Hold Position</span></div>
+<div class="line"><span class="lineno">   97</span>    <a class="code hl_variable" href="classAOwlPlayer.html#a80bc80af3b5042a431ae4dff7d21444c">HoldPosition</a> = CreateDefaultSubobject&lt;USceneComponent&gt;(TEXT(<span class="stringliteral">&quot;HoldPosition&quot;</span>));</div>
+<div class="line"><span class="lineno">   98</span>    <a class="code hl_variable" href="classAOwlPlayer.html#a80bc80af3b5042a431ae4dff7d21444c">HoldPosition</a>-&gt;SetupAttachment(GetRootComponent());</div>
+<div class="line"><span class="lineno">   99</span>    </div>
+<div class="line"><span class="lineno">  100</span>    <span class="comment">// Camera Comp</span></div>
+<div class="line"><span class="lineno">  101</span>    <a class="code hl_variable" href="classAOwlPlayer.html#a98b1fae1d8f37fcf5dfbbd8a8ca4f67d">CameraBoom</a> = CreateDefaultSubobject&lt;USpringArmComponent&gt;(TEXT(<span class="stringliteral">&quot;CameraBoom&quot;</span>));</div>
+<div class="line"><span class="lineno">  102</span>    <a class="code hl_variable" href="classAOwlPlayer.html#a98b1fae1d8f37fcf5dfbbd8a8ca4f67d">CameraBoom</a>-&gt;SetupAttachment(RootComponent);</div>
+<div class="line"><span class="lineno">  103</span>    <a class="code hl_variable" href="classAOwlPlayer.html#a98b1fae1d8f37fcf5dfbbd8a8ca4f67d">CameraBoom</a>-&gt;TargetArmLength = 250.f;</div>
+<div class="line"><span class="lineno">  104</span>    <a class="code hl_variable" href="classAOwlPlayer.html#a98b1fae1d8f37fcf5dfbbd8a8ca4f67d">CameraBoom</a>-&gt;bUsePawnControlRotation = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  105</span>    </div>
+<div class="line"><span class="lineno">  106</span>    <a class="code hl_variable" href="classAOwlPlayer.html#aefcaff018a03293b67c7c662a4d57dcf">FollowCamera</a> = CreateDefaultSubobject&lt;UCameraComponent&gt;(TEXT(<span class="stringliteral">&quot;FollowCamera&quot;</span>));</div>
+<div class="line"><span class="lineno">  107</span>    <a class="code hl_variable" href="classAOwlPlayer.html#aefcaff018a03293b67c7c662a4d57dcf">FollowCamera</a>-&gt;SetupAttachment(GetMesh(), TEXT(<span class="stringliteral">&quot;Head&quot;</span>));</div>
+<div class="line"><span class="lineno">  108</span>    <span class="comment">// First Person Camera</span></div>
+<div class="line"><span class="lineno">  109</span>    <a class="code hl_variable" href="classAOwlPlayer.html#aefcaff018a03293b67c7c662a4d57dcf">FollowCamera</a>-&gt;SetRelativeLocationAndRotation(FVector(0,-14.285715,21.428572), FRotator(90, 90, 0));</div>
+<div class="line"><span class="lineno">  110</span>    <a class="code hl_variable" href="classAOwlPlayer.html#aefcaff018a03293b67c7c662a4d57dcf">FollowCamera</a>-&gt;bUsePawnControlRotation = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  111</span>}</div>
 <div class="ttc" id="aclassAOwlPlayer_html_a195fb98370ddb3790a17a15964335d4c"><div class="ttname"><a href="classAOwlPlayer.html#a195fb98370ddb3790a17a15964335d4c">AOwlPlayer::RobotIMC</a></div><div class="ttdeci">TObjectPtr&lt; class UInputMappingContext &gt; RobotIMC</div><div class="ttdef"><b>Definition</b> <a href="AOwlPlayer_8h_source.html#l00044">AOwlPlayer.h:44</a></div></div>
 <div class="ttc" id="aclassAOwlPlayer_html_a3a17273ada64aa8d321b1cc5c5d1b4e3"><div class="ttname"><a href="classAOwlPlayer.html#a3a17273ada64aa8d321b1cc5c5d1b4e3">AOwlPlayer::RunAction</a></div><div class="ttdeci">TObjectPtr&lt; class UInputAction &gt; RunAction</div><div class="ttdef"><b>Definition</b> <a href="AOwlPlayer_8h_source.html#l00056">AOwlPlayer.h:56</a></div></div>
 <div class="ttc" id="aclassAOwlPlayer_html_a5cd45dbeb35bea622072f5fbc01537e1"><div class="ttname"><a href="classAOwlPlayer.html#a5cd45dbeb35bea622072f5fbc01537e1">AOwlPlayer::MoveAction</a></div><div class="ttdeci">TObjectPtr&lt; class UInputAction &gt; MoveAction</div><div class="ttdef"><b>Definition</b> <a href="AOwlPlayer_8h_source.html#l00047">AOwlPlayer.h:47</a></div></div>
@@ -313,10 +320,10 @@ Private 속성</h2></td></tr>
 <div class="ttc" id="aclassAOwlPlayer_html_ab9e18b224cd0c7cfdb419fd11bd8fa2c"><div class="ttname"><a href="classAOwlPlayer.html#ab9e18b224cd0c7cfdb419fd11bd8fa2c">AOwlPlayer::InteractionSystem</a></div><div class="ttdeci">TObjectPtr&lt; class UInteractionSystem &gt; InteractionSystem</div><div class="ttdef"><b>Definition</b> <a href="AOwlPlayer_8h_source.html#l00028">AOwlPlayer.h:28</a></div></div>
 <div class="ttc" id="aclassAOwlPlayer_html_acf67a336974d962aae6f0fff6e93e881"><div class="ttname"><a href="classAOwlPlayer.html#acf67a336974d962aae6f0fff6e93e881">AOwlPlayer::JumpAction</a></div><div class="ttdeci">TObjectPtr&lt; class UInputAction &gt; JumpAction</div><div class="ttdef"><b>Definition</b> <a href="AOwlPlayer_8h_source.html#l00053">AOwlPlayer.h:53</a></div></div>
 <div class="ttc" id="aclassAOwlPlayer_html_ad5686cb53777eb24a8c4e4a04a99886f"><div class="ttname"><a href="classAOwlPlayer.html#ad5686cb53777eb24a8c4e4a04a99886f">AOwlPlayer::LookAction</a></div><div class="ttdeci">TObjectPtr&lt; class UInputAction &gt; LookAction</div><div class="ttdef"><b>Definition</b> <a href="AOwlPlayer_8h_source.html#l00050">AOwlPlayer.h:50</a></div></div>
-<div class="ttc" id="aclassAOwlPlayer_html_aeb0f9a393680dd632fbfdb063b067c50"><div class="ttname"><a href="classAOwlPlayer.html#aeb0f9a393680dd632fbfdb063b067c50">AOwlPlayer::WalkSpeed</a></div><div class="ttdeci">float WalkSpeed</div><div class="ttdef"><b>Definition</b> <a href="AOwlPlayer_8h_source.html#l00069">AOwlPlayer.h:69</a></div></div>
+<div class="ttc" id="aclassAOwlPlayer_html_aeb0f9a393680dd632fbfdb063b067c50"><div class="ttname"><a href="classAOwlPlayer.html#aeb0f9a393680dd632fbfdb063b067c50">AOwlPlayer::WalkSpeed</a></div><div class="ttdeci">float WalkSpeed</div><div class="ttdef"><b>Definition</b> <a href="AOwlPlayer_8h_source.html#l00077">AOwlPlayer.h:77</a></div></div>
 <div class="ttc" id="aclassAOwlPlayer_html_aefcaff018a03293b67c7c662a4d57dcf"><div class="ttname"><a href="classAOwlPlayer.html#aefcaff018a03293b67c7c662a4d57dcf">AOwlPlayer::FollowCamera</a></div><div class="ttdeci">TObjectPtr&lt; class UCameraComponent &gt; FollowCamera</div><div class="ttdef"><b>Definition</b> <a href="AOwlPlayer_8h_source.html#l00040">AOwlPlayer.h:40</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="AOwlPlayer_8h_source.html#l00037">CameraBoom</a>, <a class="el" href="AOwlPlayer_8h_source.html#l00040">FollowCamera</a>, <a class="el" href="AOwlPlayer_8h_source.html#l00032">HoldPosition</a>, <a class="el" href="AOwlPlayer_8h_source.html#l00059">InteractAction</a>, <a class="el" href="AOwlPlayer_8h_source.html#l00028">InteractionSystem</a>, <a class="el" href="AOwlPlayer_8h_source.html#l00053">JumpAction</a>, <a class="el" href="AOwlPlayer_8h_source.html#l00050">LookAction</a>, <a class="el" href="AOwlPlayer_8h_source.html#l00047">MoveAction</a>, <a class="el" href="AOwlPlayer_8h_source.html#l00044">RobotIMC</a>, <a class="el" href="AOwlPlayer_8h_source.html#l00056">RunAction</a>, <a class="el" href="AOwlPlayer_8h_source.html#l00069">WalkSpeed</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="AOwlPlayer_8h_source.html#l00037">CameraBoom</a>, <a class="el" href="AOwlPlayer_8h_source.html#l00040">FollowCamera</a>, <a class="el" href="AOwlPlayer_8h_source.html#l00032">HoldPosition</a>, <a class="el" href="AOwlPlayer_8h_source.html#l00059">InteractAction</a>, <a class="el" href="AOwlPlayer_8h_source.html#l00028">InteractionSystem</a>, <a class="el" href="AOwlPlayer_8h_source.html#l00053">JumpAction</a>, <a class="el" href="AOwlPlayer_8h_source.html#l00050">LookAction</a>, <a class="el" href="AOwlPlayer_8h_source.html#l00047">MoveAction</a>, <a class="el" href="AOwlPlayer_8h_source.html#l00044">RobotIMC</a>, <a class="el" href="AOwlPlayer_8h_source.html#l00056">RunAction</a>, <a class="el" href="AOwlPlayer_8h_source.html#l00077">WalkSpeed</a>.</p>
 
 </div>
 </div>
@@ -344,20 +351,20 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="AOwlPlayer_8cpp_source.html">AOwlPlayer.cpp</a> 파일의 <a class="el" href="AOwlPlayer_8cpp_source.html#l00108">108</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  109</span>{</div>
-<div class="line"><span class="lineno">  110</span>    Super::BeginPlay();</div>
-<div class="line"><span class="lineno">  111</span>    </div>
-<div class="line"><span class="lineno">  112</span>    <span class="keyword">auto</span> pc = Cast&lt;APlayerController&gt;(Controller);</div>
-<div class="line"><span class="lineno">  113</span>    <span class="keywordflow">if</span> (pc)</div>
-<div class="line"><span class="lineno">  114</span>    {</div>
-<div class="line"><span class="lineno">  115</span>        <span class="keyword">auto</span> subsys = ULocalPlayer::GetSubsystem&lt;UEnhancedInputLocalPlayerSubsystem&gt;(pc-&gt;GetLocalPlayer());</div>
-<div class="line"><span class="lineno">  116</span>        <span class="keywordflow">if</span> (subsys)</div>
-<div class="line"><span class="lineno">  117</span>        {</div>
-<div class="line"><span class="lineno">  118</span>            subsys-&gt;AddMappingContext(<a class="code hl_variable" href="classAOwlPlayer.html#a195fb98370ddb3790a17a15964335d4c">RobotIMC</a>, 0);</div>
-<div class="line"><span class="lineno">  119</span>        }</div>
-<div class="line"><span class="lineno">  120</span>    }</div>
-<div class="line"><span class="lineno">  121</span>}</div>
+<p class="definition"><a class="el" href="AOwlPlayer_8cpp_source.html">AOwlPlayer.cpp</a> 파일의 <a class="el" href="AOwlPlayer_8cpp_source.html#l00113">113</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  114</span>{</div>
+<div class="line"><span class="lineno">  115</span>    Super::BeginPlay();</div>
+<div class="line"><span class="lineno">  116</span>    </div>
+<div class="line"><span class="lineno">  117</span>    <span class="keyword">auto</span> pc = Cast&lt;APlayerController&gt;(Controller);</div>
+<div class="line"><span class="lineno">  118</span>    <span class="keywordflow">if</span> (pc)</div>
+<div class="line"><span class="lineno">  119</span>    {</div>
+<div class="line"><span class="lineno">  120</span>        <span class="keyword">auto</span> subsys = ULocalPlayer::GetSubsystem&lt;UEnhancedInputLocalPlayerSubsystem&gt;(pc-&gt;GetLocalPlayer());</div>
+<div class="line"><span class="lineno">  121</span>        <span class="keywordflow">if</span> (subsys)</div>
+<div class="line"><span class="lineno">  122</span>        {</div>
+<div class="line"><span class="lineno">  123</span>            subsys-&gt;AddMappingContext(<a class="code hl_variable" href="classAOwlPlayer.html#a195fb98370ddb3790a17a15964335d4c">RobotIMC</a>, 0);</div>
+<div class="line"><span class="lineno">  124</span>        }</div>
+<div class="line"><span class="lineno">  125</span>    }</div>
+<div class="line"><span class="lineno">  126</span>}</div>
 </div><!-- fragment -->
 <p class="reference">다음을 참조함 :  <a class="el" href="AOwlPlayer_8h_source.html#l00044">RobotIMC</a>.</p>
 
@@ -378,14 +385,14 @@ Private 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="AOwlPlayer_8cpp_source.html">AOwlPlayer.cpp</a> 파일의 <a class="el" href="AOwlPlayer_8cpp_source.html#l00216">216</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  217</span>{</div>
-<div class="line"><span class="lineno">  218</span>    <a class="code hl_variable" href="classAOwlPlayer.html#aa985739258dc800d4dc57abebd9571c8">bIsJumpStart</a> = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  219</span>    Jump();</div>
-<div class="line"><span class="lineno">  220</span>}</div>
-<div class="ttc" id="aclassAOwlPlayer_html_aa985739258dc800d4dc57abebd9571c8"><div class="ttname"><a href="classAOwlPlayer.html#aa985739258dc800d4dc57abebd9571c8">AOwlPlayer::bIsJumpStart</a></div><div class="ttdeci">bool bIsJumpStart</div><div class="ttdef"><b>Definition</b> <a href="AOwlPlayer_8h_source.html#l00072">AOwlPlayer.h:72</a></div></div>
+<p class="definition"><a class="el" href="AOwlPlayer_8cpp_source.html">AOwlPlayer.cpp</a> 파일의 <a class="el" href="AOwlPlayer_8cpp_source.html#l00254">254</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  255</span>{</div>
+<div class="line"><span class="lineno">  256</span>    <a class="code hl_variable" href="classAOwlPlayer.html#aa985739258dc800d4dc57abebd9571c8">bIsJumpStart</a> = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  257</span>    Jump();</div>
+<div class="line"><span class="lineno">  258</span>}</div>
+<div class="ttc" id="aclassAOwlPlayer_html_aa985739258dc800d4dc57abebd9571c8"><div class="ttname"><a href="classAOwlPlayer.html#aa985739258dc800d4dc57abebd9571c8">AOwlPlayer::bIsJumpStart</a></div><div class="ttdeci">bool bIsJumpStart</div><div class="ttdef"><b>Definition</b> <a href="AOwlPlayer_8h_source.html#l00080">AOwlPlayer.h:80</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="AOwlPlayer_8h_source.html#l00072">bIsJumpStart</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="AOwlPlayer_8h_source.html#l00080">bIsJumpStart</a>.</p>
 
 </div>
 </div>
@@ -404,12 +411,12 @@ Private 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="AOwlPlayer_8cpp_source.html">AOwlPlayer.cpp</a> 파일의 <a class="el" href="AOwlPlayer_8cpp_source.html#l00211">211</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  212</span>{</div>
-<div class="line"><span class="lineno">  213</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classAOwlPlayer.html#aa985739258dc800d4dc57abebd9571c8">bIsJumpStart</a>;</div>
-<div class="line"><span class="lineno">  214</span>}</div>
+<p class="definition"><a class="el" href="AOwlPlayer_8cpp_source.html">AOwlPlayer.cpp</a> 파일의 <a class="el" href="AOwlPlayer_8cpp_source.html#l00249">249</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  250</span>{</div>
+<div class="line"><span class="lineno">  251</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classAOwlPlayer.html#aa985739258dc800d4dc57abebd9571c8">bIsJumpStart</a>;</div>
+<div class="line"><span class="lineno">  252</span>}</div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="AOwlPlayer_8h_source.html#l00072">bIsJumpStart</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="AOwlPlayer_8h_source.html#l00080">bIsJumpStart</a>.</p>
 
 </div>
 </div>
@@ -428,13 +435,60 @@ Private 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="AOwlPlayer_8cpp_source.html">AOwlPlayer.cpp</a> 파일의 <a class="el" href="AOwlPlayer_8cpp_source.html#l00206">206</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  207</span>{</div>
-<div class="line"><span class="lineno">  208</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classAOwlPlayer.html#a75d386dcad0f2752a9a2a62e3efacae7">bIsRunning</a>;</div>
-<div class="line"><span class="lineno">  209</span>}</div>
-<div class="ttc" id="aclassAOwlPlayer_html_a75d386dcad0f2752a9a2a62e3efacae7"><div class="ttname"><a href="classAOwlPlayer.html#a75d386dcad0f2752a9a2a62e3efacae7">AOwlPlayer::bIsRunning</a></div><div class="ttdeci">bool bIsRunning</div><div class="ttdef"><b>Definition</b> <a href="AOwlPlayer_8h_source.html#l00071">AOwlPlayer.h:71</a></div></div>
+<p class="definition"><a class="el" href="AOwlPlayer_8cpp_source.html">AOwlPlayer.cpp</a> 파일의 <a class="el" href="AOwlPlayer_8cpp_source.html#l00244">244</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  245</span>{</div>
+<div class="line"><span class="lineno">  246</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classAOwlPlayer.html#a75d386dcad0f2752a9a2a62e3efacae7">bIsRunning</a>;</div>
+<div class="line"><span class="lineno">  247</span>}</div>
+<div class="ttc" id="aclassAOwlPlayer_html_a75d386dcad0f2752a9a2a62e3efacae7"><div class="ttname"><a href="classAOwlPlayer.html#a75d386dcad0f2752a9a2a62e3efacae7">AOwlPlayer::bIsRunning</a></div><div class="ttdeci">bool bIsRunning</div><div class="ttdef"><b>Definition</b> <a href="AOwlPlayer_8h_source.html#l00079">AOwlPlayer.h:79</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="AOwlPlayer_8h_source.html#l00071">bIsRunning</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="AOwlPlayer_8h_source.html#l00079">bIsRunning</a>.</p>
+
+</div>
+</div>
+<a id="ad4e0ab222a4d38f818f1015443eaa347" name="ad4e0ab222a4d38f818f1015443eaa347"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad4e0ab222a4d38f818f1015443eaa347">&#9670;&#160;</a></span>OnInteract()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AOwlPlayer::OnInteract </td>
+          <td>(</td>
+          <td class="paramtype">const FInputActionValue &amp;&#160;</td>
+          <td class="paramname"><em>Value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="AOwlPlayer_8cpp_source.html">AOwlPlayer.cpp</a> 파일의 <a class="el" href="AOwlPlayer_8cpp_source.html#l00234">234</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  235</span>{</div>
+<div class="line"><span class="lineno">  236</span>    <span class="comment">// AOwlPlayer* MyPlayer = Cast&lt;AOwlPlayer&gt;(GetPawn());</span></div>
+<div class="line"><span class="lineno">  237</span>    <span class="comment">// if (MyPlayer &amp;&amp; MyPlayer-&gt;InteractionSystem)</span></div>
+<div class="line"><span class="lineno">  238</span>    <span class="comment">// {</span></div>
+<div class="line"><span class="lineno">  239</span>    <span class="comment">//  MyPlayer-&gt;InteractionSystem-&gt;TryInteract();</span></div>
+<div class="line"><span class="lineno">  240</span>    <span class="comment">// }</span></div>
+<div class="line"><span class="lineno">  241</span>    <a class="code hl_variable" href="classAOwlPlayer.html#ab9e18b224cd0c7cfdb419fd11bd8fa2c">InteractionSystem</a>-&gt;TryInteract();</div>
+<div class="line"><span class="lineno">  242</span>}</div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="AOwlPlayer_8h_source.html#l00028">InteractionSystem</a>.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AOwlPlayer_8cpp_source.html#l00133">SetupPlayerInputComponent()</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classAOwlPlayer_ad4e0ab222a4d38f818f1015443eaa347_icgraph.svg" width="448" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -461,19 +515,19 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="AOwlPlayer_8cpp_source.html">AOwlPlayer.cpp</a> 파일의 <a class="el" href="AOwlPlayer_8cpp_source.html#l00185">185</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  186</span>{</div>
-<div class="line"><span class="lineno">  187</span>    <a class="code hl_variable" href="classAOwlPlayer.html#aa985739258dc800d4dc57abebd9571c8">bIsJumpStart</a> = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  188</span>}</div>
+<p class="definition"><a class="el" href="AOwlPlayer_8cpp_source.html">AOwlPlayer.cpp</a> 파일의 <a class="el" href="AOwlPlayer_8cpp_source.html#l00193">193</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  194</span>{</div>
+<div class="line"><span class="lineno">  195</span>    <a class="code hl_variable" href="classAOwlPlayer.html#aa985739258dc800d4dc57abebd9571c8">bIsJumpStart</a> = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  196</span>}</div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="AOwlPlayer_8h_source.html#l00072">bIsJumpStart</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="AOwlPlayer_8h_source.html#l00080">bIsJumpStart</a>.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AOwlPlayer_8cpp_source.html#l00128">SetupPlayerInputComponent()</a>.</p>
-<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
-<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AOwlPlayer_8cpp_source.html#l00133">SetupPlayerInputComponent()</a>.</p>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
 <div class="center"><iframe scrolling="no" frameborder="0" src="classAOwlPlayer_a379769b4e2ddc861b4662d225352f081_icgraph.svg" width="431" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
@@ -503,25 +557,25 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="AOwlPlayer_8cpp_source.html">AOwlPlayer.cpp</a> 파일의 <a class="el" href="AOwlPlayer_8cpp_source.html#l00172">172</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  173</span>{</div>
-<div class="line"><span class="lineno">  174</span>    <span class="comment">// input is a Vector2D</span></div>
-<div class="line"><span class="lineno">  175</span>    FVector2D LookAxisVector = Value.Get&lt;FVector2D&gt;();</div>
-<div class="line"><span class="lineno">  176</span>    </div>
-<div class="line"><span class="lineno">  177</span>    <span class="keywordflow">if</span> (GetController() != <span class="keyword">nullptr</span>)</div>
-<div class="line"><span class="lineno">  178</span>    {</div>
-<div class="line"><span class="lineno">  179</span>        <span class="comment">// add yaw and pitch input to controller</span></div>
-<div class="line"><span class="lineno">  180</span>        AddControllerYawInput(LookAxisVector.X);</div>
-<div class="line"><span class="lineno">  181</span>        AddControllerPitchInput(LookAxisVector.Y);</div>
-<div class="line"><span class="lineno">  182</span>    }</div>
-<div class="line"><span class="lineno">  183</span>}</div>
+<p class="definition"><a class="el" href="AOwlPlayer_8cpp_source.html">AOwlPlayer.cpp</a> 파일의 <a class="el" href="AOwlPlayer_8cpp_source.html#l00180">180</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  181</span>{</div>
+<div class="line"><span class="lineno">  182</span>    <span class="comment">// input is a Vector2D</span></div>
+<div class="line"><span class="lineno">  183</span>    FVector2D LookAxisVector = Value.Get&lt;FVector2D&gt;();</div>
+<div class="line"><span class="lineno">  184</span>    </div>
+<div class="line"><span class="lineno">  185</span>    <span class="keywordflow">if</span> (GetController() != <span class="keyword">nullptr</span>)</div>
+<div class="line"><span class="lineno">  186</span>    {</div>
+<div class="line"><span class="lineno">  187</span>        <span class="comment">// add yaw and pitch input to controller</span></div>
+<div class="line"><span class="lineno">  188</span>        AddControllerYawInput(LookAxisVector.X);</div>
+<div class="line"><span class="lineno">  189</span>        AddControllerPitchInput(LookAxisVector.Y);</div>
+<div class="line"><span class="lineno">  190</span>    }</div>
+<div class="line"><span class="lineno">  191</span>}</div>
 </div><!-- fragment -->
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AOwlPlayer_8cpp_source.html#l00128">SetupPlayerInputComponent()</a>.</p>
-<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
-<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AOwlPlayer_8cpp_source.html#l00133">SetupPlayerInputComponent()</a>.</p>
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
 <div class="center"><iframe scrolling="no" frameborder="0" src="classAOwlPlayer_af0319e38db820892a8575a62765d9112_icgraph.svg" width="430" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
@@ -551,35 +605,35 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="AOwlPlayer_8cpp_source.html">AOwlPlayer.cpp</a> 파일의 <a class="el" href="AOwlPlayer_8cpp_source.html#l00143">143</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  144</span>{</div>
-<div class="line"><span class="lineno">  145</span>    <span class="comment">// input is a Vector2D</span></div>
-<div class="line"><span class="lineno">  146</span>    FVector2D MovementVector = Value.Get&lt;FVector2D&gt;();</div>
-<div class="line"><span class="lineno">  147</span>    </div>
-<div class="line"><span class="lineno">  148</span>    <span class="keywordflow">if</span> (GetController() != <span class="keyword">nullptr</span>)</div>
-<div class="line"><span class="lineno">  149</span>    {</div>
-<div class="line"><span class="lineno">  150</span>        <span class="comment">// find out which way is forward</span></div>
-<div class="line"><span class="lineno">  151</span>        <span class="keyword">const</span> FRotator Rotation = GetController()-&gt;GetControlRotation();</div>
-<div class="line"><span class="lineno">  152</span>        <span class="keyword">const</span> FRotator YawRotation(0, Rotation.Yaw, 0);</div>
-<div class="line"><span class="lineno">  153</span> </div>
-<div class="line"><span class="lineno">  154</span>        <span class="comment">// get forward vector</span></div>
-<div class="line"><span class="lineno">  155</span>        <span class="keyword">const</span> FVector ForwardDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::X);</div>
-<div class="line"><span class="lineno">  156</span> </div>
-<div class="line"><span class="lineno">  157</span>        <span class="comment">// get right vector </span></div>
-<div class="line"><span class="lineno">  158</span>        <span class="keyword">const</span> FVector RightDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::Y);</div>
-<div class="line"><span class="lineno">  159</span> </div>
-<div class="line"><span class="lineno">  160</span>        <span class="comment">// add movement </span></div>
-<div class="line"><span class="lineno">  161</span>        AddMovementInput(ForwardDirection, MovementVector.Y);</div>
-<div class="line"><span class="lineno">  162</span>        AddMovementInput(RightDirection, MovementVector.X);</div>
-<div class="line"><span class="lineno">  163</span>    }</div>
-<div class="line"><span class="lineno">  164</span>}</div>
+<p class="definition"><a class="el" href="AOwlPlayer_8cpp_source.html">AOwlPlayer.cpp</a> 파일의 <a class="el" href="AOwlPlayer_8cpp_source.html#l00151">151</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  152</span>{</div>
+<div class="line"><span class="lineno">  153</span>    <span class="comment">// input is a Vector2D</span></div>
+<div class="line"><span class="lineno">  154</span>    FVector2D MovementVector = Value.Get&lt;FVector2D&gt;();</div>
+<div class="line"><span class="lineno">  155</span>    </div>
+<div class="line"><span class="lineno">  156</span>    <span class="keywordflow">if</span> (GetController() != <span class="keyword">nullptr</span>)</div>
+<div class="line"><span class="lineno">  157</span>    {</div>
+<div class="line"><span class="lineno">  158</span>        <span class="comment">// find out which way is forward</span></div>
+<div class="line"><span class="lineno">  159</span>        <span class="keyword">const</span> FRotator Rotation = GetController()-&gt;GetControlRotation();</div>
+<div class="line"><span class="lineno">  160</span>        <span class="keyword">const</span> FRotator YawRotation(0, Rotation.Yaw, 0);</div>
+<div class="line"><span class="lineno">  161</span> </div>
+<div class="line"><span class="lineno">  162</span>        <span class="comment">// get forward vector</span></div>
+<div class="line"><span class="lineno">  163</span>        <span class="keyword">const</span> FVector ForwardDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::X);</div>
+<div class="line"><span class="lineno">  164</span> </div>
+<div class="line"><span class="lineno">  165</span>        <span class="comment">// get right vector </span></div>
+<div class="line"><span class="lineno">  166</span>        <span class="keyword">const</span> FVector RightDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::Y);</div>
+<div class="line"><span class="lineno">  167</span> </div>
+<div class="line"><span class="lineno">  168</span>        <span class="comment">// add movement </span></div>
+<div class="line"><span class="lineno">  169</span>        AddMovementInput(ForwardDirection, MovementVector.Y);</div>
+<div class="line"><span class="lineno">  170</span>        AddMovementInput(RightDirection, MovementVector.X);</div>
+<div class="line"><span class="lineno">  171</span>    }</div>
+<div class="line"><span class="lineno">  172</span>}</div>
 </div><!-- fragment -->
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AOwlPlayer_8cpp_source.html#l00128">SetupPlayerInputComponent()</a>.</p>
-<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
-<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AOwlPlayer_8cpp_source.html#l00133">SetupPlayerInputComponent()</a>.</p>
+<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div id="dynsection-5-content" class="dyncontent" style="display:none;">
 <div class="center"><iframe scrolling="no" frameborder="0" src="classAOwlPlayer_ae5444600ecc404800053f0f4d3d2cadf_icgraph.svg" width="434" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
@@ -608,31 +662,31 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="AOwlPlayer_8cpp_source.html">AOwlPlayer.cpp</a> 파일의 <a class="el" href="AOwlPlayer_8cpp_source.html#l00190">190</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  191</span>{</div>
-<div class="line"><span class="lineno">  192</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAOwlPlayer.html#aa985739258dc800d4dc57abebd9571c8">bIsJumpStart</a> || GetMovementComponent()-&gt;IsFalling()) <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  193</span>    </div>
-<div class="line"><span class="lineno">  194</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAOwlPlayer.html#a75d386dcad0f2752a9a2a62e3efacae7">bIsRunning</a>)</div>
-<div class="line"><span class="lineno">  195</span>    {</div>
-<div class="line"><span class="lineno">  196</span>        <a class="code hl_variable" href="classAOwlPlayer.html#a75d386dcad0f2752a9a2a62e3efacae7">bIsRunning</a> = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  197</span>        GetCharacterMovement()-&gt;MaxWalkSpeed = <a class="code hl_variable" href="classAOwlPlayer.html#aeb0f9a393680dd632fbfdb063b067c50">WalkSpeed</a>;</div>
-<div class="line"><span class="lineno">  198</span>    }</div>
-<div class="line"><span class="lineno">  199</span>    <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  200</span>    {</div>
-<div class="line"><span class="lineno">  201</span>        <a class="code hl_variable" href="classAOwlPlayer.html#a75d386dcad0f2752a9a2a62e3efacae7">bIsRunning</a> = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  202</span>        GetCharacterMovement()-&gt;MaxWalkSpeed = <a class="code hl_variable" href="classAOwlPlayer.html#a500b33ae297628c2e7a15d49921e1725">RunSpeed</a>;</div>
-<div class="line"><span class="lineno">  203</span>    }</div>
-<div class="line"><span class="lineno">  204</span>}</div>
-<div class="ttc" id="aclassAOwlPlayer_html_a500b33ae297628c2e7a15d49921e1725"><div class="ttname"><a href="classAOwlPlayer.html#a500b33ae297628c2e7a15d49921e1725">AOwlPlayer::RunSpeed</a></div><div class="ttdeci">float RunSpeed</div><div class="ttdef"><b>Definition</b> <a href="AOwlPlayer_8h_source.html#l00070">AOwlPlayer.h:70</a></div></div>
+<p class="definition"><a class="el" href="AOwlPlayer_8cpp_source.html">AOwlPlayer.cpp</a> 파일의 <a class="el" href="AOwlPlayer_8cpp_source.html#l00198">198</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  199</span>{</div>
+<div class="line"><span class="lineno">  200</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAOwlPlayer.html#aa985739258dc800d4dc57abebd9571c8">bIsJumpStart</a> || GetMovementComponent()-&gt;IsFalling()) <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  201</span>    </div>
+<div class="line"><span class="lineno">  202</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAOwlPlayer.html#a75d386dcad0f2752a9a2a62e3efacae7">bIsRunning</a>)</div>
+<div class="line"><span class="lineno">  203</span>    {</div>
+<div class="line"><span class="lineno">  204</span>        <a class="code hl_variable" href="classAOwlPlayer.html#a75d386dcad0f2752a9a2a62e3efacae7">bIsRunning</a> = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  205</span>        GetCharacterMovement()-&gt;MaxWalkSpeed = <a class="code hl_variable" href="classAOwlPlayer.html#aeb0f9a393680dd632fbfdb063b067c50">WalkSpeed</a>;</div>
+<div class="line"><span class="lineno">  206</span>    }</div>
+<div class="line"><span class="lineno">  207</span>    <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  208</span>    {</div>
+<div class="line"><span class="lineno">  209</span>        <a class="code hl_variable" href="classAOwlPlayer.html#a75d386dcad0f2752a9a2a62e3efacae7">bIsRunning</a> = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  210</span>        GetCharacterMovement()-&gt;MaxWalkSpeed = <a class="code hl_variable" href="classAOwlPlayer.html#a500b33ae297628c2e7a15d49921e1725">RunSpeed</a>;</div>
+<div class="line"><span class="lineno">  211</span>    }</div>
+<div class="line"><span class="lineno">  212</span>}</div>
+<div class="ttc" id="aclassAOwlPlayer_html_a500b33ae297628c2e7a15d49921e1725"><div class="ttname"><a href="classAOwlPlayer.html#a500b33ae297628c2e7a15d49921e1725">AOwlPlayer::RunSpeed</a></div><div class="ttdeci">float RunSpeed</div><div class="ttdef"><b>Definition</b> <a href="AOwlPlayer_8h_source.html#l00078">AOwlPlayer.h:78</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="AOwlPlayer_8h_source.html#l00072">bIsJumpStart</a>, <a class="el" href="AOwlPlayer_8h_source.html#l00071">bIsRunning</a>, <a class="el" href="AOwlPlayer_8h_source.html#l00070">RunSpeed</a>, <a class="el" href="AOwlPlayer_8h_source.html#l00069">WalkSpeed</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="AOwlPlayer_8h_source.html#l00080">bIsJumpStart</a>, <a class="el" href="AOwlPlayer_8h_source.html#l00079">bIsRunning</a>, <a class="el" href="AOwlPlayer_8h_source.html#l00078">RunSpeed</a>, <a class="el" href="AOwlPlayer_8h_source.html#l00077">WalkSpeed</a>.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AOwlPlayer_8cpp_source.html#l00128">SetupPlayerInputComponent()</a>.</p>
-<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
-<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AOwlPlayer_8cpp_source.html#l00133">SetupPlayerInputComponent()</a>.</p>
+<div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-6-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-6-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-5-content" class="dyncontent" style="display:none;">
+<div id="dynsection-6-content" class="dyncontent" style="display:none;">
 <div class="center"><iframe scrolling="no" frameborder="0" src="classAOwlPlayer_a7a52a6ef4816f4d9efae51da4b7cd31b_icgraph.svg" width="423" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
@@ -661,20 +715,20 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="AOwlPlayer_8cpp_source.html">AOwlPlayer.cpp</a> 파일의 <a class="el" href="AOwlPlayer_8cpp_source.html#l00166">166</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  167</span>{</div>
-<div class="line"><span class="lineno">  168</span>    <a class="code hl_variable" href="classAOwlPlayer.html#a75d386dcad0f2752a9a2a62e3efacae7">bIsRunning</a> = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  169</span>    GetCharacterMovement()-&gt;MaxWalkSpeed = <a class="code hl_variable" href="classAOwlPlayer.html#aeb0f9a393680dd632fbfdb063b067c50">WalkSpeed</a>;</div>
-<div class="line"><span class="lineno">  170</span>}</div>
+<p class="definition"><a class="el" href="AOwlPlayer_8cpp_source.html">AOwlPlayer.cpp</a> 파일의 <a class="el" href="AOwlPlayer_8cpp_source.html#l00174">174</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  175</span>{</div>
+<div class="line"><span class="lineno">  176</span>    <a class="code hl_variable" href="classAOwlPlayer.html#a75d386dcad0f2752a9a2a62e3efacae7">bIsRunning</a> = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  177</span>    GetCharacterMovement()-&gt;MaxWalkSpeed = <a class="code hl_variable" href="classAOwlPlayer.html#aeb0f9a393680dd632fbfdb063b067c50">WalkSpeed</a>;</div>
+<div class="line"><span class="lineno">  178</span>}</div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="AOwlPlayer_8h_source.html#l00071">bIsRunning</a>, <a class="el" href="AOwlPlayer_8h_source.html#l00069">WalkSpeed</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="AOwlPlayer_8h_source.html#l00079">bIsRunning</a>, <a class="el" href="AOwlPlayer_8h_source.html#l00077">WalkSpeed</a>.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AOwlPlayer_8cpp_source.html#l00128">SetupPlayerInputComponent()</a>.</p>
-<div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-6-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
-<div id="dynsection-6-summary" class="dynsummary" style="display:block;">
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AOwlPlayer_8cpp_source.html#l00133">SetupPlayerInputComponent()</a>.</p>
+<div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-7-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-7-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-6-content" class="dyncontent" style="display:none;">
+<div id="dynsection-7-content" class="dyncontent" style="display:none;">
 <div class="center"><iframe scrolling="no" frameborder="0" src="classAOwlPlayer_ab4a3b4c712716ce2b342edcac37aeab2_icgraph.svg" width="463" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
@@ -704,33 +758,37 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="AOwlPlayer_8cpp_source.html">AOwlPlayer.cpp</a> 파일의 <a class="el" href="AOwlPlayer_8cpp_source.html#l00128">128</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  129</span>{</div>
-<div class="line"><span class="lineno">  130</span>    Super::SetupPlayerInputComponent(PlayerInputComponent);</div>
-<div class="line"><span class="lineno">  131</span>    </div>
-<div class="line"><span class="lineno">  132</span>    <span class="keyword">auto</span> playerInput = Cast&lt;UEnhancedInputComponent&gt;(PlayerInputComponent);</div>
-<div class="line"><span class="lineno">  133</span>    <span class="keywordflow">if</span> (playerInput)</div>
-<div class="line"><span class="lineno">  134</span>    {</div>
-<div class="line"><span class="lineno">  135</span>        playerInput-&gt;BindAction(<a class="code hl_variable" href="classAOwlPlayer.html#a5cd45dbeb35bea622072f5fbc01537e1">MoveAction</a>, ETriggerEvent::Triggered, <span class="keyword">this</span>, &amp;<a class="code hl_function" href="classAOwlPlayer.html#ae5444600ecc404800053f0f4d3d2cadf">AOwlPlayer::OnMove</a>);</div>
-<div class="line"><span class="lineno">  136</span>        playerInput-&gt;BindAction(<a class="code hl_variable" href="classAOwlPlayer.html#a5cd45dbeb35bea622072f5fbc01537e1">MoveAction</a>, ETriggerEvent::Completed, <span class="keyword">this</span>, &amp;<a class="code hl_function" href="classAOwlPlayer.html#ab4a3b4c712716ce2b342edcac37aeab2">AOwlPlayer::OnStopMove</a>);</div>
-<div class="line"><span class="lineno">  137</span>        playerInput-&gt;BindAction(<a class="code hl_variable" href="classAOwlPlayer.html#ad5686cb53777eb24a8c4e4a04a99886f">LookAction</a>, ETriggerEvent::Triggered, <span class="keyword">this</span>, &amp;<a class="code hl_function" href="classAOwlPlayer.html#af0319e38db820892a8575a62765d9112">AOwlPlayer::OnLook</a>);</div>
-<div class="line"><span class="lineno">  138</span>        playerInput-&gt;BindAction(<a class="code hl_variable" href="classAOwlPlayer.html#acf67a336974d962aae6f0fff6e93e881">JumpAction</a>, ETriggerEvent::Started, <span class="keyword">this</span>, &amp;<a class="code hl_function" href="classAOwlPlayer.html#a379769b4e2ddc861b4662d225352f081">AOwlPlayer::OnJump</a>);</div>
-<div class="line"><span class="lineno">  139</span>        playerInput-&gt;BindAction(<a class="code hl_variable" href="classAOwlPlayer.html#a3a17273ada64aa8d321b1cc5c5d1b4e3">RunAction</a>, ETriggerEvent::Started, <span class="keyword">this</span>, &amp;<a class="code hl_function" href="classAOwlPlayer.html#a7a52a6ef4816f4d9efae51da4b7cd31b">AOwlPlayer::OnRun</a>);</div>
-<div class="line"><span class="lineno">  140</span>    }</div>
-<div class="line"><span class="lineno">  141</span>}</div>
-<div class="ttc" id="aclassAOwlPlayer_html_a379769b4e2ddc861b4662d225352f081"><div class="ttname"><a href="classAOwlPlayer.html#a379769b4e2ddc861b4662d225352f081">AOwlPlayer::OnJump</a></div><div class="ttdeci">void OnJump()</div><div class="ttdef"><b>Definition</b> <a href="AOwlPlayer_8cpp_source.html#l00185">AOwlPlayer.cpp:185</a></div></div>
-<div class="ttc" id="aclassAOwlPlayer_html_a7a52a6ef4816f4d9efae51da4b7cd31b"><div class="ttname"><a href="classAOwlPlayer.html#a7a52a6ef4816f4d9efae51da4b7cd31b">AOwlPlayer::OnRun</a></div><div class="ttdeci">void OnRun()</div><div class="ttdef"><b>Definition</b> <a href="AOwlPlayer_8cpp_source.html#l00190">AOwlPlayer.cpp:190</a></div></div>
-<div class="ttc" id="aclassAOwlPlayer_html_ab4a3b4c712716ce2b342edcac37aeab2"><div class="ttname"><a href="classAOwlPlayer.html#ab4a3b4c712716ce2b342edcac37aeab2">AOwlPlayer::OnStopMove</a></div><div class="ttdeci">void OnStopMove()</div><div class="ttdef"><b>Definition</b> <a href="AOwlPlayer_8cpp_source.html#l00166">AOwlPlayer.cpp:166</a></div></div>
-<div class="ttc" id="aclassAOwlPlayer_html_ae5444600ecc404800053f0f4d3d2cadf"><div class="ttname"><a href="classAOwlPlayer.html#ae5444600ecc404800053f0f4d3d2cadf">AOwlPlayer::OnMove</a></div><div class="ttdeci">void OnMove(const FInputActionValue &amp;Value)</div><div class="ttdef"><b>Definition</b> <a href="AOwlPlayer_8cpp_source.html#l00143">AOwlPlayer.cpp:143</a></div></div>
-<div class="ttc" id="aclassAOwlPlayer_html_af0319e38db820892a8575a62765d9112"><div class="ttname"><a href="classAOwlPlayer.html#af0319e38db820892a8575a62765d9112">AOwlPlayer::OnLook</a></div><div class="ttdeci">void OnLook(const FInputActionValue &amp;Value)</div><div class="ttdef"><b>Definition</b> <a href="AOwlPlayer_8cpp_source.html#l00172">AOwlPlayer.cpp:172</a></div></div>
+<p class="definition"><a class="el" href="AOwlPlayer_8cpp_source.html">AOwlPlayer.cpp</a> 파일의 <a class="el" href="AOwlPlayer_8cpp_source.html#l00133">133</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  134</span>{</div>
+<div class="line"><span class="lineno">  135</span>    Super::SetupPlayerInputComponent(PlayerInputComponent);</div>
+<div class="line"><span class="lineno">  136</span>    </div>
+<div class="line"><span class="lineno">  137</span>    <span class="keyword">auto</span> playerInput = Cast&lt;UEnhancedInputComponent&gt;(PlayerInputComponent);</div>
+<div class="line"><span class="lineno">  138</span>    <span class="keywordflow">if</span> (playerInput)</div>
+<div class="line"><span class="lineno">  139</span>    {</div>
+<div class="line"><span class="lineno">  140</span>        playerInput-&gt;BindAction(<a class="code hl_variable" href="classAOwlPlayer.html#a5cd45dbeb35bea622072f5fbc01537e1">MoveAction</a>, ETriggerEvent::Triggered, <span class="keyword">this</span>, &amp;<a class="code hl_function" href="classAOwlPlayer.html#ae5444600ecc404800053f0f4d3d2cadf">AOwlPlayer::OnMove</a>);</div>
+<div class="line"><span class="lineno">  141</span>        playerInput-&gt;BindAction(<a class="code hl_variable" href="classAOwlPlayer.html#a5cd45dbeb35bea622072f5fbc01537e1">MoveAction</a>, ETriggerEvent::Completed, <span class="keyword">this</span>, &amp;<a class="code hl_function" href="classAOwlPlayer.html#ab4a3b4c712716ce2b342edcac37aeab2">AOwlPlayer::OnStopMove</a>);</div>
+<div class="line"><span class="lineno">  142</span>        playerInput-&gt;BindAction(<a class="code hl_variable" href="classAOwlPlayer.html#ad5686cb53777eb24a8c4e4a04a99886f">LookAction</a>, ETriggerEvent::Triggered, <span class="keyword">this</span>, &amp;<a class="code hl_function" href="classAOwlPlayer.html#af0319e38db820892a8575a62765d9112">AOwlPlayer::OnLook</a>);</div>
+<div class="line"><span class="lineno">  143</span>        playerInput-&gt;BindAction(<a class="code hl_variable" href="classAOwlPlayer.html#acf67a336974d962aae6f0fff6e93e881">JumpAction</a>, ETriggerEvent::Started, <span class="keyword">this</span>, &amp;<a class="code hl_function" href="classAOwlPlayer.html#a379769b4e2ddc861b4662d225352f081">AOwlPlayer::OnJump</a>);</div>
+<div class="line"><span class="lineno">  144</span>        playerInput-&gt;BindAction(<a class="code hl_variable" href="classAOwlPlayer.html#a3a17273ada64aa8d321b1cc5c5d1b4e3">RunAction</a>, ETriggerEvent::Started, <span class="keyword">this</span>, &amp;<a class="code hl_function" href="classAOwlPlayer.html#a7a52a6ef4816f4d9efae51da4b7cd31b">AOwlPlayer::OnRun</a>);</div>
+<div class="line"><span class="lineno">  145</span>        <span class="comment">// playerInput-&gt;BindAction(GrabAction, ETriggerEvent::Started, this, &amp;AOwlPlayer::OnGrab);</span></div>
+<div class="line"><span class="lineno">  146</span>        <span class="comment">// playerInput-&gt;BindAction(GrabAction, ETriggerEvent::Completed, this, &amp;AOwlPlayer::OnGrabRelease);</span></div>
+<div class="line"><span class="lineno">  147</span>        playerInput-&gt;BindAction(<a class="code hl_variable" href="classAOwlPlayer.html#a6d2fcd5e951ec9945c834148a803b562">InteractAction</a>, ETriggerEvent::Started, <span class="keyword">this</span>, &amp;<a class="code hl_function" href="classAOwlPlayer.html#ad4e0ab222a4d38f818f1015443eaa347">AOwlPlayer::OnInteract</a>);</div>
+<div class="line"><span class="lineno">  148</span>    }</div>
+<div class="line"><span class="lineno">  149</span>}</div>
+<div class="ttc" id="aclassAOwlPlayer_html_a379769b4e2ddc861b4662d225352f081"><div class="ttname"><a href="classAOwlPlayer.html#a379769b4e2ddc861b4662d225352f081">AOwlPlayer::OnJump</a></div><div class="ttdeci">void OnJump()</div><div class="ttdef"><b>Definition</b> <a href="AOwlPlayer_8cpp_source.html#l00193">AOwlPlayer.cpp:193</a></div></div>
+<div class="ttc" id="aclassAOwlPlayer_html_a7a52a6ef4816f4d9efae51da4b7cd31b"><div class="ttname"><a href="classAOwlPlayer.html#a7a52a6ef4816f4d9efae51da4b7cd31b">AOwlPlayer::OnRun</a></div><div class="ttdeci">void OnRun()</div><div class="ttdef"><b>Definition</b> <a href="AOwlPlayer_8cpp_source.html#l00198">AOwlPlayer.cpp:198</a></div></div>
+<div class="ttc" id="aclassAOwlPlayer_html_ab4a3b4c712716ce2b342edcac37aeab2"><div class="ttname"><a href="classAOwlPlayer.html#ab4a3b4c712716ce2b342edcac37aeab2">AOwlPlayer::OnStopMove</a></div><div class="ttdeci">void OnStopMove()</div><div class="ttdef"><b>Definition</b> <a href="AOwlPlayer_8cpp_source.html#l00174">AOwlPlayer.cpp:174</a></div></div>
+<div class="ttc" id="aclassAOwlPlayer_html_ad4e0ab222a4d38f818f1015443eaa347"><div class="ttname"><a href="classAOwlPlayer.html#ad4e0ab222a4d38f818f1015443eaa347">AOwlPlayer::OnInteract</a></div><div class="ttdeci">void OnInteract(const FInputActionValue &amp;Value)</div><div class="ttdef"><b>Definition</b> <a href="AOwlPlayer_8cpp_source.html#l00234">AOwlPlayer.cpp:234</a></div></div>
+<div class="ttc" id="aclassAOwlPlayer_html_ae5444600ecc404800053f0f4d3d2cadf"><div class="ttname"><a href="classAOwlPlayer.html#ae5444600ecc404800053f0f4d3d2cadf">AOwlPlayer::OnMove</a></div><div class="ttdeci">void OnMove(const FInputActionValue &amp;Value)</div><div class="ttdef"><b>Definition</b> <a href="AOwlPlayer_8cpp_source.html#l00151">AOwlPlayer.cpp:151</a></div></div>
+<div class="ttc" id="aclassAOwlPlayer_html_af0319e38db820892a8575a62765d9112"><div class="ttname"><a href="classAOwlPlayer.html#af0319e38db820892a8575a62765d9112">AOwlPlayer::OnLook</a></div><div class="ttdeci">void OnLook(const FInputActionValue &amp;Value)</div><div class="ttdef"><b>Definition</b> <a href="AOwlPlayer_8cpp_source.html#l00180">AOwlPlayer.cpp:180</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="AOwlPlayer_8h_source.html#l00053">JumpAction</a>, <a class="el" href="AOwlPlayer_8h_source.html#l00050">LookAction</a>, <a class="el" href="AOwlPlayer_8h_source.html#l00047">MoveAction</a>, <a class="el" href="AOwlPlayer_8cpp_source.html#l00185">OnJump()</a>, <a class="el" href="AOwlPlayer_8cpp_source.html#l00172">OnLook()</a>, <a class="el" href="AOwlPlayer_8cpp_source.html#l00143">OnMove()</a>, <a class="el" href="AOwlPlayer_8cpp_source.html#l00190">OnRun()</a>, <a class="el" href="AOwlPlayer_8cpp_source.html#l00166">OnStopMove()</a>, <a class="el" href="AOwlPlayer_8h_source.html#l00056">RunAction</a>.</p>
-<div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-7-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
-<div id="dynsection-7-summary" class="dynsummary" style="display:block;">
+<p class="reference">다음을 참조함 :  <a class="el" href="AOwlPlayer_8h_source.html#l00059">InteractAction</a>, <a class="el" href="AOwlPlayer_8h_source.html#l00053">JumpAction</a>, <a class="el" href="AOwlPlayer_8h_source.html#l00050">LookAction</a>, <a class="el" href="AOwlPlayer_8h_source.html#l00047">MoveAction</a>, <a class="el" href="AOwlPlayer_8cpp_source.html#l00234">OnInteract()</a>, <a class="el" href="AOwlPlayer_8cpp_source.html#l00193">OnJump()</a>, <a class="el" href="AOwlPlayer_8cpp_source.html#l00180">OnLook()</a>, <a class="el" href="AOwlPlayer_8cpp_source.html#l00151">OnMove()</a>, <a class="el" href="AOwlPlayer_8cpp_source.html#l00198">OnRun()</a>, <a class="el" href="AOwlPlayer_8cpp_source.html#l00174">OnStopMove()</a>, <a class="el" href="AOwlPlayer_8h_source.html#l00056">RunAction</a>.</p>
+<div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-8-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-8-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-7-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classAOwlPlayer_adc5417a6e5609dfebc9866a1cd0f471a_cgraph.svg" width="463" height="234"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div id="dynsection-8-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classAOwlPlayer_adc5417a6e5609dfebc9866a1cd0f471a_cgraph.svg" width="463" height="283"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -759,10 +817,10 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="AOwlPlayer_8cpp_source.html">AOwlPlayer.cpp</a> 파일의 <a class="el" href="AOwlPlayer_8cpp_source.html#l00123">123</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  124</span>{</div>
-<div class="line"><span class="lineno">  125</span>    Super::Tick(DeltaTime);</div>
-<div class="line"><span class="lineno">  126</span>}</div>
+<p class="definition"><a class="el" href="AOwlPlayer_8cpp_source.html">AOwlPlayer.cpp</a> 파일의 <a class="el" href="AOwlPlayer_8cpp_source.html#l00128">128</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  129</span>{</div>
+<div class="line"><span class="lineno">  130</span>    Super::Tick(DeltaTime);</div>
+<div class="line"><span class="lineno">  131</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -787,9 +845,9 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="AOwlPlayer_8h_source.html">AOwlPlayer.h</a> 파일의 <a class="el" href="AOwlPlayer_8h_source.html#l00072">72</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="AOwlPlayer_8h_source.html">AOwlPlayer.h</a> 파일의 <a class="el" href="AOwlPlayer_8h_source.html#l00080">80</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AOwlPlayer_8cpp_source.html#l00216">DoJump()</a>, <a class="el" href="AOwlPlayer_8cpp_source.html#l00211">GetIsJumpStart()</a>, <a class="el" href="AOwlPlayer_8cpp_source.html#l00185">OnJump()</a>, <a class="el" href="AOwlPlayer_8cpp_source.html#l00190">OnRun()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AOwlPlayer_8cpp_source.html#l00254">DoJump()</a>, <a class="el" href="AOwlPlayer_8cpp_source.html#l00249">GetIsJumpStart()</a>, <a class="el" href="AOwlPlayer_8cpp_source.html#l00193">OnJump()</a>, <a class="el" href="AOwlPlayer_8cpp_source.html#l00198">OnRun()</a>.</p>
 
 </div>
 </div>
@@ -813,9 +871,9 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="AOwlPlayer_8h_source.html">AOwlPlayer.h</a> 파일의 <a class="el" href="AOwlPlayer_8h_source.html#l00071">71</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="AOwlPlayer_8h_source.html">AOwlPlayer.h</a> 파일의 <a class="el" href="AOwlPlayer_8h_source.html#l00079">79</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AOwlPlayer_8cpp_source.html#l00206">GetIsRunning()</a>, <a class="el" href="AOwlPlayer_8cpp_source.html#l00190">OnRun()</a>, <a class="el" href="AOwlPlayer_8cpp_source.html#l00166">OnStopMove()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AOwlPlayer_8cpp_source.html#l00244">GetIsRunning()</a>, <a class="el" href="AOwlPlayer_8cpp_source.html#l00198">OnRun()</a>, <a class="el" href="AOwlPlayer_8cpp_source.html#l00174">OnStopMove()</a>.</p>
 
 </div>
 </div>
@@ -911,7 +969,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="AOwlPlayer_8h_source.html">AOwlPlayer.h</a> 파일의 <a class="el" href="AOwlPlayer_8h_source.html#l00059">59</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AOwlPlayer_8cpp_source.html#l00017">AOwlPlayer()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AOwlPlayer_8cpp_source.html#l00017">AOwlPlayer()</a>, <a class="el" href="AOwlPlayer_8cpp_source.html#l00133">SetupPlayerInputComponent()</a>.</p>
 
 </div>
 </div>
@@ -929,7 +987,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="AOwlPlayer_8h_source.html">AOwlPlayer.h</a> 파일의 <a class="el" href="AOwlPlayer_8h_source.html#l00028">28</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AOwlPlayer_8cpp_source.html#l00017">AOwlPlayer()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AOwlPlayer_8cpp_source.html#l00017">AOwlPlayer()</a>, <a class="el" href="AOwlPlayer_8cpp_source.html#l00234">OnInteract()</a>.</p>
 
 </div>
 </div>
@@ -955,7 +1013,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="AOwlPlayer_8h_source.html">AOwlPlayer.h</a> 파일의 <a class="el" href="AOwlPlayer_8h_source.html#l00053">53</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AOwlPlayer_8cpp_source.html#l00017">AOwlPlayer()</a>, <a class="el" href="AOwlPlayer_8cpp_source.html#l00128">SetupPlayerInputComponent()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AOwlPlayer_8cpp_source.html#l00017">AOwlPlayer()</a>, <a class="el" href="AOwlPlayer_8cpp_source.html#l00133">SetupPlayerInputComponent()</a>.</p>
 
 </div>
 </div>
@@ -981,7 +1039,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="AOwlPlayer_8h_source.html">AOwlPlayer.h</a> 파일의 <a class="el" href="AOwlPlayer_8h_source.html#l00050">50</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AOwlPlayer_8cpp_source.html#l00017">AOwlPlayer()</a>, <a class="el" href="AOwlPlayer_8cpp_source.html#l00128">SetupPlayerInputComponent()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AOwlPlayer_8cpp_source.html#l00017">AOwlPlayer()</a>, <a class="el" href="AOwlPlayer_8cpp_source.html#l00133">SetupPlayerInputComponent()</a>.</p>
 
 </div>
 </div>
@@ -1007,7 +1065,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="AOwlPlayer_8h_source.html">AOwlPlayer.h</a> 파일의 <a class="el" href="AOwlPlayer_8h_source.html#l00047">47</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AOwlPlayer_8cpp_source.html#l00017">AOwlPlayer()</a>, <a class="el" href="AOwlPlayer_8cpp_source.html#l00128">SetupPlayerInputComponent()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AOwlPlayer_8cpp_source.html#l00017">AOwlPlayer()</a>, <a class="el" href="AOwlPlayer_8cpp_source.html#l00133">SetupPlayerInputComponent()</a>.</p>
 
 </div>
 </div>
@@ -1033,7 +1091,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="AOwlPlayer_8h_source.html">AOwlPlayer.h</a> 파일의 <a class="el" href="AOwlPlayer_8h_source.html#l00044">44</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AOwlPlayer_8cpp_source.html#l00017">AOwlPlayer()</a>, <a class="el" href="AOwlPlayer_8cpp_source.html#l00108">BeginPlay()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AOwlPlayer_8cpp_source.html#l00017">AOwlPlayer()</a>, <a class="el" href="AOwlPlayer_8cpp_source.html#l00113">BeginPlay()</a>.</p>
 
 </div>
 </div>
@@ -1059,7 +1117,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="AOwlPlayer_8h_source.html">AOwlPlayer.h</a> 파일의 <a class="el" href="AOwlPlayer_8h_source.html#l00056">56</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AOwlPlayer_8cpp_source.html#l00017">AOwlPlayer()</a>, <a class="el" href="AOwlPlayer_8cpp_source.html#l00128">SetupPlayerInputComponent()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AOwlPlayer_8cpp_source.html#l00017">AOwlPlayer()</a>, <a class="el" href="AOwlPlayer_8cpp_source.html#l00133">SetupPlayerInputComponent()</a>.</p>
 
 </div>
 </div>
@@ -1083,9 +1141,9 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="AOwlPlayer_8h_source.html">AOwlPlayer.h</a> 파일의 <a class="el" href="AOwlPlayer_8h_source.html#l00070">70</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="AOwlPlayer_8h_source.html">AOwlPlayer.h</a> 파일의 <a class="el" href="AOwlPlayer_8h_source.html#l00078">78</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AOwlPlayer_8cpp_source.html#l00190">OnRun()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AOwlPlayer_8cpp_source.html#l00198">OnRun()</a>.</p>
 
 </div>
 </div>
@@ -1109,9 +1167,9 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="AOwlPlayer_8h_source.html">AOwlPlayer.h</a> 파일의 <a class="el" href="AOwlPlayer_8h_source.html#l00069">69</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="AOwlPlayer_8h_source.html">AOwlPlayer.h</a> 파일의 <a class="el" href="AOwlPlayer_8h_source.html#l00077">77</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AOwlPlayer_8cpp_source.html#l00017">AOwlPlayer()</a>, <a class="el" href="AOwlPlayer_8cpp_source.html#l00190">OnRun()</a>, <a class="el" href="AOwlPlayer_8cpp_source.html#l00166">OnStopMove()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AOwlPlayer_8cpp_source.html#l00017">AOwlPlayer()</a>, <a class="el" href="AOwlPlayer_8cpp_source.html#l00198">OnRun()</a>, <a class="el" href="AOwlPlayer_8cpp_source.html#l00174">OnStopMove()</a>.</p>
 
 </div>
 </div>
@@ -1125,7 +1183,7 @@ Private 속성</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classAOwlPlayer.html">AOwlPlayer</a></li>
-    <li class="footer">생성시간 : 화 11월 25 2025 16:31:17, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 수 11월 26 2025 05:58:58, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

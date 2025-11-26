@@ -15,6 +15,8 @@ var classAPlayerControl =
     [ "OnMove", "classAPlayerControl.html#a6753258935f617283a3cfb653d32b84b", null ],
     [ "OnRecordPressed", "classAPlayerControl.html#ac1a34aa3e6b5a59c28b7b8ae42c4d75d", null ],
     [ "OnRecordReleased", "classAPlayerControl.html#a0b8363f1c71e6644c0575985fca29ba6", null ],
+    [ "OnRun", "classAPlayerControl.html#a8f2701e581dbfc506456578d9870e8ec", null ],
+    [ "OnStopMove", "classAPlayerControl.html#af8c76a593d47ea58362e58220776fef6", null ],
     [ "Server_OnGrab", "classAPlayerControl.html#aa79cca5ec444d9c7add4fcecc5dde23b", null ],
     [ "Server_OnGrabRelease", "classAPlayerControl.html#aeb90da2f39476227c6136a9d78d45c83", null ],
     [ "Server_OnInteract", "classAPlayerControl.html#adbe39822e30958a476131716276b020c", null ],
@@ -28,5 +30,6 @@ var classAPlayerControl =
     [ "UPROPERTY", "classAPlayerControl.html#add19d4043dc2a7905bde12db5a4aa06e", null ],
     [ "UPROPERTY", "classAPlayerControl.html#a488075f7270924b50ac582e9c3db8410", null ],
     [ "UPROPERTY", "classAPlayerControl.html#ac1c5f159104d66b0ac570e75210432f1", null ],
+    [ "UPROPERTY", "classAPlayerControl.html#a964b50a308a69c36ec542af13c4055e7", null ],
     [ "IMC_Default", "classAPlayerControl.html#a76486f75de5e0e9cb22d8c2a7e506d4a", null ]
 ];
