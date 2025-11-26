@@ -1,5 +1,7 @@
 var NAVTREEINDEX7 =
 {
+"index.html#autotoc_md5":[0,1],
+"index.html#autotoc_md6":[0,1,0],
 "index.html#autotoc_md7":[0,1,1],
 "index.html#autotoc_md8":[0,1,2],
 "luggage_8cpp.html":[3,0,0,2,2,0,7],
@@ -247,7 +249,5 @@ var NAVTREEINDEX7 =
 "structFSequenceCommand.html#a6180c56cf5a536855f4c4d586a91cbe1":[2,0,57,0],
 "structFSequenceCommand.html#aa93b55656b1db478843925f298a6ec25":[2,0,57,1],
 "structFSequenceCommand.html#ad318dca78e6cdc2fb3a5616df5e9eb64":[2,0,57,2],
-"structFServerConfig.html":[2,0,58],
-"structFServerConfig.html#a0921d17b91705fa9f1ffc75c204daab5":[2,0,58,2],
-"structFServerConfig.html#a192542ce9a719e9f4a9dd468e1e69aea":[2,0,58,3]
+"structFServerConfig.html":[2,0,58]
 };

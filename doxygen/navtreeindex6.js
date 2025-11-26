@@ -1,5 +1,7 @@
 var NAVTREEINDEX6 =
 {
+"classUSequenceManager.html#a97df9aa97a5aa290313c9504b998738e":[2,0,103,0],
+"classUSequenceManager.html#ae4c67cffa8cb11aaf21f0106dc801521":[2,0,103,2],
 "classUSequenceManager.html#aee42f1166a70db3a833074512dc72637":[2,0,103,3],
 "classUSessionInfoWidget.html":[2,0,104],
 "classUSessionInfoWidget.html#a1f92c0fccae94c61e9daa8a9fda4f523":[2,0,104,1],
@@ -156,8 +158,8 @@ var NAVTREEINDEX6 =
 "functions_d.html":[2,3,0,3],
 "functions_e.html":[2,3,0,4],
 "functions_f.html":[2,3,0,5],
-"functions_func.html":[2,3,1,0],
 "functions_func.html":[2,3,1],
+"functions_func.html":[2,3,1,0],
 "functions_func_b.html":[2,3,1,1],
 "functions_func_c.html":[2,3,1,2],
 "functions_func_d.html":[2,3,1,3],
@@ -227,8 +229,8 @@ var NAVTREEINDEX6 =
 "globals_func.html":[3,1,1],
 "globals_vars.html":[3,1,2],
 "hierarchy.html":[2,2],
-"index.html":[0],
 "index.html":[],
+"index.html":[0],
 "index.html#autotoc_md10":[0,2],
 "index.html#autotoc_md11":[0,2,0],
 "index.html#autotoc_md12":[0,2,1],
@@ -247,7 +249,5 @@ var NAVTREEINDEX6 =
 "index.html#autotoc_md27":[0,5],
 "index.html#autotoc_md29":[0,6],
 "index.html#autotoc_md3":[0,0,0],
-"index.html#autotoc_md31":[0,7],
-"index.html#autotoc_md5":[0,1],
-"index.html#autotoc_md6":[0,1,0]
+"index.html#autotoc_md31":[0,7]
 };

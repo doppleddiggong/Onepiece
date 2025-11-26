@@ -7,6 +7,8 @@ var classAluggage =
     [ "GetLifetimeReplicatedProps", "classAluggage.html#a072cf7b19603d5dd9dd72f90ff5140a3", null ],
     [ "OnInteract", "classAluggage.html#aecbb757aa07316696bb4326f3b8dd74f", null ],
     [ "OnRep_ColorIndex", "classAluggage.html#a94be11970ccffa41b862677f0694140b", null ],
+    [ "OutlineOff", "classAluggage.html#a782c4c541e764b99ac7c2d41c5ddb6e5", null ],
+    [ "OutlineOn", "classAluggage.html#a2ee72cd006dc00ed6f590c5a07bc4d33", null ],
     [ "ServerNotifySelection", "classAluggage.html#aefd0f676f44e0e7fcde6f6f29a709b60", null ],
     [ "Tick", "classAluggage.html#aa1d90a7ebc5c838ebe50bfc79dfd6890", null ],
     [ "ColorIndex", "classAluggage.html#a04c2729f66d62f5f46329c0bfae26b49", null ],
