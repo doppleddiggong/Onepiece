@@ -15,7 +15,12 @@
 #include "GameLogging.h"
 #include "UBroadcastManager.h"
 #include "ULingoGameHelper.h"
+#include "UPopupManager.h"
+#include "UPopup_MsgBox.h"
 #include "Misc/Paths.h"
+#include "Dom/JsonObject.h"
+#include "Serialization/JsonReader.h"
+#include "Serialization/JsonSerializer.h"
 
 #define NETWORK_GET     TEXT("GET")
 #define NETWORK_POST    TEXT("POST")
@@ -77,6 +82,48 @@ void UKLingoNetworkSystem::AddNetworkWaitCount(int Value)
 		BroadcastManager->SendNetworkWaitCount(NetworkWaitCount);
 }
 
+void UKLingoNetworkSystem::ShowNetworkErrorPopup(int32 ResponseCode, const FString& ResponseContent)
+{
+	UWorld* World = GetWorld();
+	if (!IsValid(World))
+	{
+		NETWORK_LOG(TEXT("[Network] Invalid World in ShowNetworkErrorPopup"));
+		return;
+	}
+
+	// JSON 응답 파싱
+	FString ErrorDetail = TEXT("Network request failed");
+	
+	TSharedPtr<FJsonObject> JsonObject;
+	TSharedRef<TJsonReader<>> Reader = TJsonReaderFactory<>::Create(ResponseContent);
+	
+	if (FJsonSerializer::Deserialize(Reader, JsonObject) && JsonObject.IsValid())
+	{
+		// "detail" 필드 추출
+		if (JsonObject->HasField(TEXT("detail")))
+		{
+			ErrorDetail = JsonObject->GetStringField(TEXT("detail"));
+		}
+	}
+	else
+	{
+		// JSON 파싱 실패 시 원본 응답 사용
+		if (!ResponseContent.IsEmpty())
+		{
+			ErrorDetail = ResponseContent;
+		}
+	}
+
+	// 팝업 표시
+	if (UPopupManager* PopupMgr = UPopupManager::Get(World))
+	{
+		FString Title = FString::Printf(TEXT("Error %d"), ResponseCode);
+		PopupMgr->ShowMsgBoxSimple(Title, ErrorDetail, EMsgBoxType::OK);
+		
+		NETWORK_LOG(TEXT("[Network] Error Popup - Code: %d, Detail: %s"), ResponseCode, *ErrorDetail);
+	}
+}
+
 TSharedRef<IHttpRequest, ESPMode::ThreadSafe> UKLingoNetworkSystem::SetupHttpRequest(
 	const FString& Url,	const FString& Verb )
 {
@@ -134,6 +181,7 @@ void UKLingoNetworkSystem::RequestUserRegister(const FString& UserName, FRespons
 				{
 					NETWORK_LOG(TEXT("[POST] RequestUserRegister failed - Code: %d, Response: %s"),
 						ResponseCode, *HttpResponse->GetContentAsString());
+					ShowNetworkErrorPopup(ResponseCode, HttpResponse->GetContentAsString());
 					InDelegate.ExecuteIfBound(ResponseData, false);
 				}
 			}
@@ -142,6 +190,12 @@ void UKLingoNetworkSystem::RequestUserRegister(const FString& UserName, FRespons
 				NETWORK_LOG(TEXT("[POST] RequestUserRegister failed - bSuccess: %s, Response valid: %s"),
 					bSuccess ? TEXT("true") : TEXT("false"),
 					HttpResponse.IsValid() ? TEXT("true") : TEXT("false"));
+				
+				// HTTP 요청 실패 시 팝업 표시
+				int32 ErrorCode = HttpResponse.IsValid() ? HttpResponse->GetResponseCode() : 0;
+				FString ErrorContent = HttpResponse.IsValid() ? HttpResponse->GetContentAsString() : TEXT("Network connection failed");
+				ShowNetworkErrorPopup(ErrorCode, ErrorContent);
+				
 				InDelegate.ExecuteIfBound(ResponseData, false);
 			}
 		});
@@ -196,6 +250,7 @@ void UKLingoNetworkSystem::RequestUserToken(const FString& UserName, FResponseUs
 				{
 					NETWORK_LOG(TEXT("[POST] RequestUserToken failed - Code: %d, Response: %s"),
 						ResponseCode, *HttpResponse->GetContentAsString());
+					ShowNetworkErrorPopup(ResponseCode, HttpResponse->GetContentAsString());
 					InDelegate.ExecuteIfBound(ResponseData, false);
 				}
 			}
@@ -204,6 +259,11 @@ void UKLingoNetworkSystem::RequestUserToken(const FString& UserName, FResponseUs
 				NETWORK_LOG(TEXT("[POST] RequestUserToken failed - bSuccess: %s, Response valid: %s"),
 					bSuccess ? TEXT("true") : TEXT("false"),
 					HttpResponse.IsValid() ? TEXT("true") : TEXT("false"));
+				
+				int32 ErrorCode = HttpResponse.IsValid() ? HttpResponse->GetResponseCode() : 0;
+				FString ErrorContent = HttpResponse.IsValid() ? HttpResponse->GetContentAsString() : TEXT("Network connection failed");
+				ShowNetworkErrorPopup(ErrorCode, ErrorContent);
+				
 				InDelegate.ExecuteIfBound(ResponseData, false);
 			}
 		});
@@ -241,6 +301,7 @@ void UKLingoNetworkSystem::RequestUserMe( FResponseUserMeDelegate InDelegate)
 				{
 					NETWORK_LOG(TEXT("[GET] RequestUserMe failed - Code: %d, Response: %s"),
 						ResponseCode, *HttpResponse->GetContentAsString());
+					ShowNetworkErrorPopup(ResponseCode, HttpResponse->GetContentAsString());
 					InDelegate.ExecuteIfBound(ResponseData, false);
 				}
 			}
@@ -249,6 +310,11 @@ void UKLingoNetworkSystem::RequestUserMe( FResponseUserMeDelegate InDelegate)
 				NETWORK_LOG(TEXT("[GET] RequestUserMe failed - bSuccess: %s, Response valid: %s"),
 					bSuccess ? TEXT("true") : TEXT("false"),
 					HttpResponse.IsValid() ? TEXT("true") : TEXT("false"));
+				
+				int32 ErrorCode = HttpResponse.IsValid() ? HttpResponse->GetResponseCode() : 0;
+				FString ErrorContent = HttpResponse.IsValid() ? HttpResponse->GetContentAsString() : TEXT("Network connection failed");
+				ShowNetworkErrorPopup(ErrorCode, ErrorContent);
+				
 				InDelegate.ExecuteIfBound(ResponseData, false);
 			}
 		});
@@ -291,6 +357,7 @@ void UKLingoNetworkSystem::RequestScenario(int32 Index, int32 Difficulty, int32 
 				{
 					NETWORK_LOG(TEXT("[GET] RequestScenario failed - Code: %d, Response: %s"),
 						ResponseCode, *HttpResponse->GetContentAsString());
+					ShowNetworkErrorPopup(ResponseCode, HttpResponse->GetContentAsString());
 					InDelegate.ExecuteIfBound(ResponseData, false);
 				}
 			}
@@ -299,6 +366,11 @@ void UKLingoNetworkSystem::RequestScenario(int32 Index, int32 Difficulty, int32 
 				NETWORK_LOG(TEXT("[GET] RequestScenario failed - bSuccess: %s, Response valid: %s"),
 					bSuccess ? TEXT("true") : TEXT("false"),
 					HttpResponse.IsValid() ? TEXT("true") : TEXT("false"));
+				
+				int32 ErrorCode = HttpResponse.IsValid() ? HttpResponse->GetResponseCode() : 0;
+				FString ErrorContent = HttpResponse.IsValid() ? HttpResponse->GetContentAsString() : TEXT("Network connection failed");
+				ShowNetworkErrorPopup(ErrorCode, ErrorContent);
+				
 				InDelegate.ExecuteIfBound(ResponseData, false);
 			}
 		});
@@ -357,6 +429,7 @@ void UKLingoNetworkSystem::RequestOcrExtract(const FString& ImagePath, FResponse
 				{
 					NETWORK_LOG(TEXT("[POST] RequestOcrExtract failed - Code: %d, Response: %s"),
 						ResponseCode, *ResPtr->GetContentAsString());
+					WeakThis->ShowNetworkErrorPopup(ResponseCode, ResPtr->GetContentAsString());
 					InDelegate.ExecuteIfBound(ResponseData, false);
 				}
 			}
@@ -365,6 +438,11 @@ void UKLingoNetworkSystem::RequestOcrExtract(const FString& ImagePath, FResponse
 				NETWORK_LOG(TEXT("[POST] RequestOcrExtract failed - bSuccess: %s, Response valid: %s"),
 					bWasSuccessful ? TEXT("true") : TEXT("false"),
 					ResPtr.IsValid() ? TEXT("true") : TEXT("false"));
+				
+				int32 ErrorCode = ResPtr.IsValid() ? ResPtr->GetResponseCode() : 0;
+				FString ErrorContent = ResPtr.IsValid() ? ResPtr->GetContentAsString() : TEXT("Network connection failed");
+				WeakThis->ShowNetworkErrorPopup(ErrorCode, ErrorContent);
+				
 				InDelegate.ExecuteIfBound(ResponseData, false);
 			}
 		});
@@ -423,6 +501,7 @@ void UKLingoNetworkSystem::RequestSpeakingQuestions(const FString& AudioPath, FR
 				{
 					NETWORK_LOG(TEXT("[POST] RequestSpeakingQuestions failed - Code: %d, Response: %s"),
 						ResponseCode, *ResPtr->GetContentAsString());
+					WeakThis->ShowNetworkErrorPopup(ResponseCode, ResPtr->GetContentAsString());
 					InDelegate.ExecuteIfBound(ResponseData, false);
 				}
 			}
@@ -431,6 +510,11 @@ void UKLingoNetworkSystem::RequestSpeakingQuestions(const FString& AudioPath, FR
 				NETWORK_LOG(TEXT("[POST] RequestSpeakingQuestions failed - bSuccess: %s, Response valid: %s"),
 					bWasSuccessful ? TEXT("true") : TEXT("false"),
 					ResPtr.IsValid() ? TEXT("true") : TEXT("false"));
+				
+				int32 ErrorCode = ResPtr.IsValid() ? ResPtr->GetResponseCode() : 0;
+				FString ErrorContent = ResPtr.IsValid() ? ResPtr->GetContentAsString() : TEXT("Network connection failed");
+				WeakThis->ShowNetworkErrorPopup(ErrorCode, ErrorContent);
+				
 				InDelegate.ExecuteIfBound(ResponseData, false);
 			}
 		});
