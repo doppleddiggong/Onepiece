@@ -96,6 +96,14 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Style|Border", meta=(ExposeOnSpawn=true))
 	UTexture2D* BorderImage = nullptr;
 
+	/// Border 이미지의 그리기 방식 (Image, Box, Border, RoundedBox 등)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Style|Border", meta=(ExposeOnSpawn=true))
+	TEnumAsByte<ESlateBrushDrawType::Type> BorderDrawAs = ESlateBrushDrawType::Image;
+
+	/// Border 이미지의 여백 (9-slice 방식으로 그릴 때 사용)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Style|Border", meta=(ExposeOnSpawn=true))
+	FMargin BorderMargin = FMargin(0.0f);
+
 	// ========== 크기 설정 ==========
 
 	/// 고정 크기 사용 여부
