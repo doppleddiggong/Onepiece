@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "ALingoGameState.h"
 #include "Kismet/BlueprintFunctionLibrary.h"
 #include "ULingoGameHelper.generated.h"
 
@@ -15,6 +16,9 @@ class ONEPIECE_API ULingoGameHelper : public UBlueprintFunctionLibrary
 	GENERATED_BODY()
 
 public:
+	UFUNCTION(BlueprintCallable, Category = "Utils")
+	static ALingoGameState* GetLingoGameState(const UObject* WorldContextObject);
+	
 	UFUNCTION(BlueprintCallable, Category = "Utils")
 	static ALingoPlayerState* GetLingoPlayerState(const UObject* WorldContextObject);
 

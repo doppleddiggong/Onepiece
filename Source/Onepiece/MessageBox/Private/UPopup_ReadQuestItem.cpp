@@ -1,29 +1,29 @@
 // Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
 
-#include "UReadQuestEntryWidget.h"
+#include "UPopup_ReadQuestItem.h"
 #include "Components/Button.h"
 #include "Components/TextBlock.h"
 #include "Components/Image.h"
 #include "GameLogging.h"
 
-UReadQuestEntryWidget::UReadQuestEntryWidget(const FObjectInitializer& ObjectInitializer)
+UPopup_ReadQuestItem::UPopup_ReadQuestItem(const FObjectInitializer& ObjectInitializer)
 	: Super(ObjectInitializer)
 {
 }
 
-void UReadQuestEntryWidget::NativeConstruct()
+void UPopup_ReadQuestItem::NativeConstruct()
 {
 	Super::NativeConstruct();
 
 	// 중복 바인딩 방지
 	if (SelectButton)
 	{
-		SelectButton->OnClicked.RemoveDynamic(this, &UReadQuestEntryWidget::OnButtonClicked);
-		SelectButton->OnClicked.AddDynamic(this, &UReadQuestEntryWidget::OnButtonClicked);
+		SelectButton->OnClicked.RemoveDynamic(this, &UPopup_ReadQuestItem::OnButtonClicked);
+		SelectButton->OnClicked.AddDynamic(this, &UPopup_ReadQuestItem::OnButtonClicked);
 	}
 }
 
-void UReadQuestEntryWidget::InitializeEntry(const FString& Value, bool bEnabled)
+void UPopup_ReadQuestItem::InitializeEntry(const FString& Value, bool bEnabled)
 {
 	ChoiceValue = Value;
 
@@ -48,7 +48,7 @@ void UReadQuestEntryWidget::InitializeEntry(const FString& Value, bool bEnabled)
 	PRINTLOG(TEXT("[ReadQuestEntry] Initialized with value: %s, enabled: %s"), *Value, bEnabled ? TEXT("true") : TEXT("false"));
 }
 
-void UReadQuestEntryWidget::SetSelected(bool bSelected)
+void UPopup_ReadQuestItem::SetSelected(bool bSelected)
 {
 	if (bIsSelected == bSelected)
 		return;
@@ -59,7 +59,7 @@ void UReadQuestEntryWidget::SetSelected(bool bSelected)
 	PRINTLOG(TEXT("[ReadQuestEntry] Selection changed: %s, value: %s"), bSelected ? TEXT("Selected") : TEXT("Deselected"), *ChoiceValue);
 }
 
-void UReadQuestEntryWidget::SetWrong(bool bWrong)
+void UPopup_ReadQuestItem::SetWrong(bool bWrong)
 {
 	if (bIsWrong == bWrong)
 		return;
@@ -70,7 +70,7 @@ void UReadQuestEntryWidget::SetWrong(bool bWrong)
 	PRINTLOG(TEXT("[ReadQuestEntry] Wrong state changed: %s, value: %s"), bWrong ? TEXT("Wrong") : TEXT("Correct"), *ChoiceValue);
 }
 
-void UReadQuestEntryWidget::OnButtonClicked()
+void UPopup_ReadQuestItem::OnButtonClicked()
 {
 	// 오답 상태이거나 이미 선택된 상태면 무시
 	if (bIsWrong)
@@ -85,7 +85,7 @@ void UReadQuestEntryWidget::OnButtonClicked()
 	PRINTLOG(TEXT("[ReadQuestEntry] Button clicked: %s"), *ChoiceValue);
 }
 
-void UReadQuestEntryWidget::UpdateVisualState()
+void UPopup_ReadQuestItem::UpdateVisualState()
 {
 	if (!StateImage)
 		return;

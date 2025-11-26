@@ -4,17 +4,17 @@
 
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
-#include "UReadQuestEntryWidget.generated.h"
+#include "UPopup_ReadQuestItem.generated.h"
 
 /// @brief Read 퀘스트 선택지 엔트리 위젯
 /// @details 심볼 또는 색상 선택 항목을 표시하는 위젯입니다.
 UCLASS()
-class ONEPIECE_API UReadQuestEntryWidget : public UUserWidget
+class ONEPIECE_API UPopup_ReadQuestItem : public UUserWidget
 {
 	GENERATED_BODY()
 
 public:
-	UReadQuestEntryWidget(const FObjectInitializer& ObjectInitializer);
+	UPopup_ReadQuestItem(const FObjectInitializer& ObjectInitializer);
 
 protected:
 	virtual void NativeConstruct() override;
@@ -92,6 +92,6 @@ protected:
 
 public:
 	/// @brief 선택 델리게이트
-	DECLARE_MULTICAST_DELEGATE_TwoParams(FOnEntrySelected, const FString& /*Value*/, UReadQuestEntryWidget* /*Widget*/);
+	DECLARE_MULTICAST_DELEGATE_TwoParams(FOnEntrySelected, const FString& /*Value*/, UPopup_ReadQuestItem* /*Widget*/);
 	FOnEntrySelected OnEntrySelected;
 };

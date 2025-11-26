@@ -18,4 +18,6 @@ enum class EPopupType : uint8
 	// 입력 팝업
 	InputMsg_Register	UMETA(DisplayName = "Register"),
 	InputMsg_Login		UMETA(DisplayName = "Login"),
+
+	ReadQuest			UMETA(DisplayName = "ReadQuest"),
 };

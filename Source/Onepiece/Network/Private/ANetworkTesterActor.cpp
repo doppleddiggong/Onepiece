@@ -10,6 +10,7 @@
 #include "NetworkData.h"
 #include "UDialogManager.h"
 #include "UPopupManager.h"
+#include "UPopup_MsgBox.h"
 #include "Engine/Engine.h"
 
 ANetworkTesterActor::ANetworkTesterActor()

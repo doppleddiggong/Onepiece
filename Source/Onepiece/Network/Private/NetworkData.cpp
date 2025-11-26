@@ -231,6 +231,11 @@ void FResponseScenario::PrintData() const
 	
 }
 
+FString FResponseScenario::GetDescription() const
+{
+	return FString::Printf(TEXT("%s"), *full_data.Eng);
+}
+
 // =================================================================================
 // FResponseOcrExtract
 // =================================================================================
