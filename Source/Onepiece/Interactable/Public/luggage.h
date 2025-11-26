@@ -24,10 +24,14 @@ public:
 	
 public:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
-	TObjectPtr<class UStaticMeshComponent> Mesh;
+	TObjectPtr<class UBoxComponent> BoxComp;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
 	TObjectPtr<class UStaticMeshComponent> Mesh1Comp;
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
+	TObjectPtr<class UStaticMeshComponent> Mesh2Comp;
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
+	TObjectPtr<class UStaticMeshComponent> Mesh3Comp;
 	
 	UPROPERTY(VisibleAnywhere)
 	TObjectPtr<class UInteractableComponent> InteractableComp;

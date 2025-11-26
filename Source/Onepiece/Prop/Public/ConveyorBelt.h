@@ -39,9 +39,9 @@ protected:
 	
 	// Move Values
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
-	bool bIsMoving = false;
+	bool bIsForward = true;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
-	float MoveSpeed = 100.f;
+	float MoveSpeed = 200.f;
 	
 	// Move Overlapped Actors
 	void MoveOverlappedSkeletals(float deltaDistance);
