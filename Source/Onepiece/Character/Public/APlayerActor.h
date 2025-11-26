@@ -37,8 +37,6 @@ public:
 	UFUNCTION(BlueprintCallable, Category="Command")
 	void RecoveryMovementMode(const EMovementMode InMovementMode);
 
-
-
 public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Components|System")
 	TObjectPtr<class UInteractionSystem> InteractionSystem;
@@ -56,9 +54,7 @@ protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Voice", meta=(AllowPrivateAccess="true"))
 	TObjectPtr<class UVoiceConversationSystem> VoiceConversationSystem;
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
-	TEnumAsByte<EMovementMode> PrevMoveMode;
-
+	
 public: // 음성 관련
 	/// @brief TTS 오디오를 재생합니다. VoiceConversationSystem으로 전달합니다.
 	/// @param AudioData [in] TTS로 생성된 오디오 데이터 (WAV)
@@ -79,15 +75,15 @@ public: // Control Interface
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Command")
 	void Cmd_Run() override;
 
-	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Command")
-	void Cmd_Landing() override;
-
 	/// @brief GPT 상호작용을 위한 음성 캡처를 시작합니다.
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Command")
 	void Cmd_RecordStart() override;
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Command")
 	void Cmd_RecordEnd() override;
 
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Command")
+	void Cmd_Info() override;
+	
 public:
 	/// @brief 게임 이벤트 메시지를 수신합니다.
 	/// @param Message [in] 수신된 이벤트 메시지
@@ -106,7 +102,6 @@ protected:
 	/// @brief 메인 위젯 블루프린트 클래스
 	UPROPERTY(EditDefaultsOnly, Category = "UI")
 	TSubclassOf<class UMainWidget> MainWidgetClass;
-
 
 	/// @brief 메인 UI 위젯 인스턴스
 	UPROPERTY()
@@ -127,10 +122,10 @@ public:
 	// bUsePawnControlRotation은 서버->클라로 전달 안됨
 	UPROPERTY(ReplicatedUsing=OnRep_LookPitch)
 	float LookPitch;
-	
-	// Get 함수
-	bool GetIsRunning();
-	bool GetIsJumpStart();
-	
+
+public:
+	FORCEINLINE bool GetIsRunning() { return bIsRunning; }
+	FORCEINLINE bool GetIsJumpStart() { return bIsJumpStart; }
+
 	void DoJump();
 };

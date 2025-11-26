@@ -7,6 +7,20 @@
 #include "GameFramework/GameState.h"
 #include "ALingoGameState.generated.h"
 
+UENUM(Blueprintable)
+enum class EGameState : uint8
+{
+	None,
+
+	Stage1,
+	Stage2,
+	Stage3,
+	Stage4,
+
+	End,
+};
+
+
 
 UCLASS()
 class ONEPIECE_API ALingoGameState : public AGameState
@@ -38,13 +52,23 @@ public:
 		return RemainMissionTime;
 	}
 
+	UFUNCTION(BlueprintCallable, Category = "Mission")
+	bool IsQuestIng()
+	{
+		if ( GameState == EGameState::None || GameState == EGameState::End )
+			return false;
+		return true;
+	}
+
 	//--------------------------------------------------------------//
 	// Read Quest Functions
 	//--------------------------------------------------------------//
-
 	/// @brief Read 퀘스트 성공 시 OnRep 콜백
 	UFUNCTION()
 	void OnRep_QuestSuccess();
+
+	FORCEINLINE const FResponseScenario& GetScenarioData() const {return CurScenarioData;}
+	FORCEINLINE EGameState GetGameState() { return GameState; }
 
 private:
 	/// @brief 타이머 종료 시 호출됩니다 (서버에서만 실행)
@@ -55,17 +79,21 @@ public:
 	float RemainMissionTime = 0.f;
 
 protected:
+	UPROPERTY(Replicated, BlueprintReadOnly, Category = "State")
+	EGameState GameState;
+
 	/// @brief 타이머 활성화 상태
 	UPROPERTY(Replicated, BlueprintReadOnly, Category = "Mission")
 	bool bIsTimerActive = false;
 
+	
 	//--------------------------------------------------------------//
 	// 시나리오 ID
 	UPROPERTY(Replicated, BlueprintReadOnly, Category = "Scenario")
 	int32 ScenarioIndex = 1;
 	// 스테이지 ID
 	UPROPERTY(Replicated, BlueprintReadOnly, Category = "Scenario")
-	int32 StageIndex = 1;
+	int32 StageIndex = 0;
 	// 레벨(난이도)
 	UPROPERTY(Replicated, BlueprintReadOnly, Category = "Scenario")
 	int32 ScenarioLevel = 1;
@@ -77,8 +105,6 @@ public:
 	//--------------------------------------------------------------//
 
 public:
-	FORCEINLINE const FResponseScenario& GetScenarioData() const {return CurScenarioData;}
-
 
 	//--------------------------------------------------------------//
 	// Read Quest Data

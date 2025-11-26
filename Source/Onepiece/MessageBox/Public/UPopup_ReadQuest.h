@@ -4,13 +4,14 @@
 
 #include "CoreMinimal.h"
 #include "NetworkData.h"
+#include "UBasePopup.h"
 #include "Blueprint/UserWidget.h"
 #include "UPopup_ReadQuest.generated.h"
 
 /// @brief Read 퀘스트 메인 위젯
 /// @details Step1(Read) 퀘스트의 UI를 관리합니다.
 UCLASS()
-class ONEPIECE_API UPopup_ReadQuest : public UUserWidget
+class ONEPIECE_API UPopup_ReadQuest : public UBasePopup
 {
 	GENERATED_BODY()
 

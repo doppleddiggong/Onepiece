@@ -21,14 +21,12 @@
 #define IMC_DEFAULT_PATH			TEXT("/Game/CustomContents/Input/IMC_Game_Player.IMC_Game_Player")
 #define IA_MOVE_PATH				TEXT("/Game/CustomContents/Input/IA_Game_Movement.IA_Game_Movement")
 #define IA_LOOK_PATH				TEXT("/Game/CustomContents/Input/IA_Game_LookAround.IA_Game_LookAround")
-#define IA_ALTITUDE_UP_PATH			TEXT("/Game/CustomContents/Input/IA_Game_AltitudeUp.IA_Game_AltitudeUp")
-#define IA_ALTITUDE_DOWN_PATH		TEXT("/Game/CustomContents/Input/IA_Game_AltitudeDown.IA_Game_AltitudeDown")
 #define IA_JUMP_PATH				TEXT("/Game/CustomContents/Input/IA_Game_Jump.IA_Game_Jump")
-#define IA_LANDING_PATH				TEXT("/Game/CustomContents/Input/IA_Game_Landing.IA_Game_Landing")
 #define IA_RECORD_PATH				TEXT("/Game/CustomContents/Input/IA_Game_Record.IA_Game_Record")
 #define IA_GRAB_PATH				TEXT("/Game/CustomContents/Input/IA_Game_Grab.IA_Game_Grab")
 #define IA_INTERACT_PATH			TEXT("/Game/CustomContents/Input/IA_Game_Interact.IA_Game_Interact")
 #define IA_RUN_PATH					TEXT("/Game/CustomContents/Input/IA_Game_Run.IA_Game_Run")
+#define IA_INFO_PATH				TEXT("/Game/CustomContents/Input/IA_Game_Info.IA_Game_Info")
 
 
 APlayerControl::APlayerControl()
@@ -37,14 +35,12 @@ APlayerControl::APlayerControl()
 
 	IA_Move = FComponentHelper::LoadAsset<UInputAction>(IA_MOVE_PATH);
 	IA_Look = FComponentHelper::LoadAsset<UInputAction>(IA_LOOK_PATH);
-	IA_AltitudeUp = FComponentHelper::LoadAsset<UInputAction>(IA_ALTITUDE_UP_PATH);
-	IA_AltitudeDown = FComponentHelper::LoadAsset<UInputAction>(IA_ALTITUDE_DOWN_PATH);
 	IA_Jump = FComponentHelper::LoadAsset<UInputAction>(IA_JUMP_PATH);
-	IA_Landing = FComponentHelper::LoadAsset<UInputAction>(IA_LANDING_PATH);
 	IA_Record = FComponentHelper::LoadAsset<UInputAction>(IA_RECORD_PATH);
 	IA_Grab = FComponentHelper::LoadAsset<UInputAction>(IA_GRAB_PATH);
 	IA_Interact = FComponentHelper::LoadAsset<UInputAction>(IA_INTERACT_PATH);
 	IA_Run = FComponentHelper::LoadAsset<UInputAction>(IA_RUN_PATH);
+	IA_Info = FComponentHelper::LoadAsset<UInputAction>(IA_INFO_PATH);
 }
 
 void APlayerControl::BeginPlay()
@@ -73,17 +69,8 @@ void APlayerControl::SetupInputComponent()
 		EIC->BindAction(IA_Move, ETriggerEvent::Triggered,  this, &APlayerControl::OnMove);
 		EIC->BindAction(IA_Move, ETriggerEvent::Completed,  this, &APlayerControl::OnStopMove);
 		EIC->BindAction(IA_Look, ETriggerEvent::Triggered,  this, &APlayerControl::OnLook);
-
-		EIC->BindAction(IA_AltitudeUp, ETriggerEvent::Started,  this, &APlayerControl::OnAltitudeUp);
-		EIC->BindAction(IA_AltitudeUp, ETriggerEvent::Completed, this, &APlayerControl::OnAltitudeReleased);
-		EIC->BindAction(IA_AltitudeUp, ETriggerEvent::Canceled, this, &APlayerControl::OnAltitudeReleased);
-		
-		EIC->BindAction(IA_AltitudeDown, ETriggerEvent::Started,  this, &APlayerControl::OnAltitudeDown);
-		EIC->BindAction(IA_AltitudeDown, ETriggerEvent::Completed, this, &APlayerControl::OnAltitudeReleased);
-		EIC->BindAction(IA_AltitudeDown, ETriggerEvent::Canceled, this, &APlayerControl::OnAltitudeReleased);
 		
 		EIC->BindAction(IA_Jump, ETriggerEvent::Started,    this, &APlayerControl::OnJump);
-		EIC->BindAction(IA_Landing, ETriggerEvent::Started,  this, &APlayerControl::OnLanding);
 
 		EIC->BindAction(IA_Record, ETriggerEvent::Started, this, &APlayerControl::OnRecordPressed);
 		EIC->BindAction(IA_Record, ETriggerEvent::Completed, this, &APlayerControl::OnRecordReleased);
@@ -93,6 +80,8 @@ void APlayerControl::SetupInputComponent()
 
 		EIC->BindAction(IA_Interact, ETriggerEvent::Started, this, &APlayerControl::OnInteract);
 		EIC->BindAction(IA_Run, ETriggerEvent::Started, this, &APlayerControl::OnRun);
+
+		EIC->BindAction(IA_Info, ETriggerEvent::Started, this, &APlayerControl::OnInfo);
 	}
 }
 
@@ -121,24 +110,6 @@ void APlayerControl::OnLook(const FInputActionValue& Value)
 		C->Cmd_Look(Value.Get<FVector2D>());
 }
 
-void APlayerControl::OnAltitudeUp(const FInputActionValue& Value)
-{
-	if (IControllable* C = GetControllable())
-		C->Cmd_AltitudeUp();
-}
-
-void APlayerControl::OnAltitudeDown(const FInputActionValue& Value)
-{
-	if (IControllable* C = GetControllable())
-		C->Cmd_AltitudeDown();
-}
-
-void APlayerControl::OnAltitudeReleased(const FInputActionValue& Value)
-{
-	if (IControllable* C = GetControllable())
-		C->Cmd_AltitudeReleased();
-}
-
 void APlayerControl::OnStopMove(const FInputActionValue& Value)
 {
 	if (IControllable* C = GetControllable())
@@ -161,12 +132,6 @@ void APlayerControl::OnRun(const FInputActionValue& Value)
 	}
 }
 
-void APlayerControl::OnLanding(const FInputActionValue&)
-{
-	if (IControllable* C = GetControllable())
-		C->Cmd_Landing();
-}
-
 void APlayerControl::OnRecordPressed(const FInputActionValue& Value)
 {
 	if (IControllable* C = GetControllable())
@@ -177,6 +142,14 @@ void APlayerControl::OnRecordReleased(const FInputActionValue& Value)
 {
 	if (IControllable* C = GetControllable())
 		C->Cmd_RecordEnd();
+}
+
+void APlayerControl::OnInfo(const FInputActionValue& Value)
+{
+	if (IControllable* C = GetControllable())
+	{
+		C->Cmd_Info();
+	}
 }
 
 void APlayerControl::OnGrab(const FInputActionValue& Value)

@@ -17,6 +17,9 @@
 #include "UDialogManager.h"
 #include "UVoiceConversationSystem.h"
 #include "UInteractionSystem.h"
+#include "ULingoGameHelper.h"
+#include "UPopupManager.h"
+#include "UPopup_ReadQuest.h"
 
 #include "Camera/CameraComponent.h"
 #include "Components/InputComponent.h"
@@ -229,9 +232,19 @@ void APlayerActor::Cmd_RecordEnd_Implementation()
 	VoiceConversationSystem->StopRecording();
 }
 
-void APlayerActor::Cmd_Landing_Implementation()
+void APlayerActor::Cmd_Info_Implementation()
 {
-	FHitResult HitResult;
+	auto GS = ULingoGameHelper::GetLingoGameState(GetWorld());
+	if ( !GS->IsQuestIng() )
+		return;
+	
+	if (const auto PopupMgr = UPopupManager::Get(GetWorld()))
+	{
+		if (const auto Popup = Cast<UPopup_ReadQuest>(PopupMgr->ShowPopup(EPopupType::ReadQuest)))
+		{
+			Popup->InitPopup( GS->CurScenarioData);
+		}
+	}
 }
 
 void APlayerActor::OnGameMessage(const FString& Message)
@@ -240,16 +253,6 @@ void APlayerActor::OnGameMessage(const FString& Message)
 
 	// 퀘스트 시작이 뜨면 메세지 팝업을 띄우자
 	UDialogManager::Get(GetWorld())->ShowToast(Message);
-}
-
-bool APlayerActor::GetIsRunning()
-{
-	return bIsRunning;
-}
-
-bool APlayerActor::GetIsJumpStart()
-{
-	return bIsJumpStart;
 }
 
 void APlayerActor::DoJump()
