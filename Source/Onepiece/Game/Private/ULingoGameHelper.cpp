@@ -2,8 +2,17 @@
 
 
 #include "ULingoGameHelper.h"
+
+#include "ALingoGameState.h"
 #include "ALingoPlayerState.h"
+#include "Kismet/GameplayStatics.h"
 #include "Onepiece/Onepiece.h"
+
+// GameState 가져오기
+ALingoGameState* ULingoGameHelper::GetLingoGameState(const UObject* WorldContextObject)
+{
+	return Cast<ALingoGameState>(UGameplayStatics::GetGameState(WorldContextObject));
+}
 
 ALingoPlayerState* ULingoGameHelper::GetLingoPlayerState(const UObject* WorldContextObject)
 {

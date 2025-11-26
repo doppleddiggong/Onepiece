@@ -1,20 +1,27 @@
 // Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
 
 #include "UPopupManager.h"
+#include "UBasePopup.h"
+#include "UPopup_MsgBox.h"
 #include "UPopup_InputMsg.h"
+#include "UPopup_ReadQuest.h"
+
 #include "FComponentHelper.h"
 #include "GameLogging.h"
+
 #include "Onepiece/Onepiece.h"
 
-#define POPUPMSG_PATH TEXT("/Game/CustomContents/UI/Widgets/WBP_PopupMsg.WBP_PopupMsg_C")
-#define INPUT_POPUPMSG_PATH TEXT("/Game/CustomContents/UI/Widgets/WBP_InputPopupMsg.WBP_InputPopupMsg_C")
+#define POPUP_PATH TEXT("/Game/CustomContents/UI/Widgets/WBP_PopupMsg.WBP_PopupMsg_C")
+#define INPUT_POPUP_PATH TEXT("/Game/CustomContents/UI/Widgets/WBP_InputPopupMsg.WBP_InputPopupMsg_C")
+#define READQUEST_POPUP_PATH TEXT("/Game/CustomContents/UI/Widgets/WBP_PopupReadQuest.WBP_PopupReadQuest_C")
 
 UPopupManager::UPopupManager()
 {
 	// 기본 팝업 클래스 등록
-	PopupClassMap.Add(EPopupType::MsgBox, FComponentHelper::LoadClass<UPopup_MsgBox>(POPUPMSG_PATH));
-	PopupClassMap.Add(EPopupType::InputMsg_Register, FComponentHelper::LoadClass<UPopup_InputMsg>(INPUT_POPUPMSG_PATH));
-	PopupClassMap.Add(EPopupType::InputMsg_Login, FComponentHelper::LoadClass<UPopup_InputMsg>(INPUT_POPUPMSG_PATH));
+	PopupClassMap.Add(EPopupType::MsgBox, FComponentHelper::LoadClass<UPopup_MsgBox>(POPUP_PATH));
+	PopupClassMap.Add(EPopupType::Register, FComponentHelper::LoadClass<UPopup_InputMsg>(INPUT_POPUP_PATH));
+	PopupClassMap.Add(EPopupType::Login, FComponentHelper::LoadClass<UPopup_InputMsg>(INPUT_POPUP_PATH));
+	PopupClassMap.Add(EPopupType::ReadQuest, FComponentHelper::LoadClass<UPopup_ReadQuest>(READQUEST_POPUP_PATH));
 }
 
 // ========================================
@@ -37,8 +44,16 @@ UUserWidget* UPopupManager::ShowPopup(EPopupType Type)
 	}
 	else
 	{
-		// 뷰포트에 추가
-		PopupWidget->AddToViewport(GameLayer::Popup);
+		// UBasePopup으로 캐스팅하여 애니메이션 재생
+		if (UBasePopup* BasePopup = Cast<UBasePopup>(PopupWidget))
+		{
+			BasePopup->OpenAnimation();
+		}
+		else
+		{
+			// UBasePopup이 아닌 경우 기본 방식으로 추가
+			PopupWidget->AddToViewport(GameLayer::Popup);
+		}
 	}
 
 	// 스택에 추가

@@ -17,6 +17,40 @@
 #include "Serialization/JsonSerializer.h"
 #include "Serialization/JsonWriter.h"
 
+
+
+
+
+TArray<FWordData> FWordData::GetSplitData() const
+{
+	TArray<FString> KorWords;
+	Kor.ParseIntoArray(KorWords, TEXT(" "), true);
+
+	TArray<FString> EngWords;
+	Eng.ParseIntoArray(EngWords, TEXT(" "), true);
+
+	TArray<FString> PronWords;
+	Pronunciation.ParseIntoArray(PronWords, TEXT(" "), true);
+
+	// FWordData 배열 생성
+	TArray<FWordData> WordDataArray;
+	int32 MaxCount = FMath::Max3(KorWords.Num(), EngWords.Num(), PronWords.Num());
+
+	for (int32 i = 0; i < MaxCount; ++i)
+	{
+		FWordData WordData;
+		WordData.Kor = i < KorWords.Num() ? KorWords[i] : TEXT("");
+		WordData.Eng = i < EngWords.Num() ? EngWords[i] : TEXT("");
+		WordData.Pronunciation = i < PronWords.Num() ? PronWords[i] : TEXT("");
+
+		WordDataArray.Add(WordData);
+	}
+
+	return WordDataArray;
+}
+
+
+
 void FResponseHealth::SetFromHttpResponse(const TSharedPtr<IHttpResponse, ESPMode::ThreadSafe>& Response)
 {
     if (Response.IsValid())
@@ -36,9 +70,6 @@ void FResponseHealth::PrintData()
     );
     NETWORK_LOG( TEXT("[RES] %s"), *OutputString);
 }
-
-
-
 
 void FResponseUserRegister::SetFromHttpResponse(const TSharedPtr<IHttpResponse, ESPMode::ThreadSafe>& Response)
 {
@@ -228,8 +259,38 @@ void FResponseScenario::PrintData() const
 		0
 	);
 	NETWORK_LOG( TEXT("[RES] %s"), *OutputString);
-	
 }
+
+TArray<FString> FResponseScenario::GetWord1List() const
+{
+	TSet<FString> UniqueSet;
+
+	for (const FScenarioTargetData& TargetData : target_data)
+	{
+		if (!TargetData.word1.name.IsEmpty())
+		{
+			UniqueSet.Add(TargetData.word1.name);
+		}
+	}
+
+	return UniqueSet.Array();
+}
+
+TArray<FString> FResponseScenario::GetWord2List() const
+{
+	TSet<FString> UniqueSet;
+
+	for (const FScenarioTargetData& TargetData : target_data)
+	{
+		if (!TargetData.word2.name.IsEmpty())
+		{
+			UniqueSet.Add(TargetData.word2.name);
+		}
+	}
+
+	return UniqueSet.Array();
+}
+
 
 // =================================================================================
 // FResponseOcrExtract

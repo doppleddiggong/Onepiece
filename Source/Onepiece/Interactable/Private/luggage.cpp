@@ -7,6 +7,7 @@
 #include "ALingoPlayerState.h"
 #include "GameLogging.h"
 #include "UGameDataManager.h"
+#include "Components/BoxComponent.h"
 #include "Net/UnrealNetwork.h"
 #include "GameFramework/PlayerController.h"
 #include "Engine/World.h"
@@ -15,24 +16,32 @@ Aluggage::Aluggage()
 {
 	PrimaryActorTick.bCanEverTick = true;
 
-	Mesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Mesh"));
-	SetRootComponent(Mesh);
 
 	Mesh1Comp = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Mesh1Comp"));
-	Mesh1Comp->SetupAttachment(GetRootComponent());
+	SetRootComponent(Mesh1Comp);
+	
+	BoxComp = CreateDefaultSubobject<UBoxComponent>(TEXT("BoxComp"));
+	BoxComp->SetupAttachment(GetRootComponent());
+	BoxComp->SetBoxExtent(FVector(55));
+	
+	Mesh2Comp = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Mesh2Comp"));
+	Mesh2Comp->SetupAttachment(Mesh1Comp);
+	
+	Mesh3Comp = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Mesh3Comp"));
+	Mesh3Comp->SetupAttachment(Mesh1Comp);
 
 	InteractableComp = CreateDefaultSubobject<UInteractableComponent>(TEXT("Interactable"));
 	InteractableComp->InteractionType = EInteractionType::PickUp;
 	InteractableComp->InteractionPrompt = TEXT("Press E to Grap");
 	
 	// Initial settings
-	Mesh->SetSimulatePhysics(true);
-	Mesh->SetEnableGravity(true);
-	Mesh->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
-	Mesh->SetCollisionProfileName(TEXT("PhysicsActor"));
+	Mesh1Comp->SetSimulatePhysics(true);
+	Mesh1Comp->SetEnableGravity(true);
+	Mesh1Comp->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
+	Mesh1Comp->SetCollisionProfileName(TEXT("PhysicsActor"));
 
 	// 무게 설정
-	Mesh->SetMassOverrideInKg(NAME_None, 5.f, true);
+	Mesh1Comp->SetMassOverrideInKg(NAME_None, 5.f, true);
 
 	// Replication
 	bReplicates = true;
@@ -79,15 +88,15 @@ void Aluggage::ApplyColorToMesh(int32 InColorIdx)
 	{
 		FLinearColor Color = ColorData.GetLinearColor();
 
-		UMaterialInterface* OriginalMaterial = Mesh->GetMaterial(0);
+		UMaterialInterface* OriginalMaterial = Mesh3Comp->GetMaterial(0);
 		if (OriginalMaterial)
 		{
 			UMaterialInstanceDynamic* NewMaterial = UMaterialInstanceDynamic::Create(OriginalMaterial, this);
-			if (NewMaterial && Mesh1Comp)
+			if (NewMaterial && Mesh3Comp)
 			{
 				// BaseColorFactor로 변경!                                                                                                                                                                          
 				NewMaterial->SetVectorParameterValue(FName("BaseColorFactor"), Color);
-				Mesh1Comp->SetMaterial(0, NewMaterial);
+				Mesh3Comp->SetMaterial(0, NewMaterial);
 			}
 		}
 	}
