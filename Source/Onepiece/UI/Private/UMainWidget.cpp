@@ -12,6 +12,7 @@
 #include "UBroadcastManager.h"
 #include "GameLogging.h"
 #include "ULingoGameHelper.h"
+#include "UQuestInfoWidget.h"
 #include "Engine/World.h"
 
 UMainWidget::UMainWidget(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer)
@@ -55,6 +56,7 @@ void UMainWidget::NativeConstruct()
 	}
 
 	StateWidget->InitWidget();
+	QuestInfoWidget->SetVisibility( ESlateVisibility::Collapsed );
 
 	StopMissionTimer();
 }
@@ -80,9 +82,12 @@ void UMainWidget::OnMissionTimerStateChanged(bool bIsActive)
 {
 	PRINTLOG(TEXT("[MainWidget] Mission Timer State Changed - bIsActive: %s"), bIsActive ? TEXT("true") : TEXT("false"));
 
+	QuestInfoWidget->SetVisibility(bIsActive ? ESlateVisibility::Visible : ESlateVisibility::Collapsed );
+	
 	if (bIsActive)
 	{
 		StartMissionTimer();
+		QuestInfoWidget->InitQuestInfo();
 	}
 	else
 	{
