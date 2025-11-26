@@ -27,9 +27,14 @@ public:
 	// Spawn
 	UPROPERTY(EditAnywhere, Category = "Spawn")
 	TSubclassOf<class Aluggage> LuggageClass;
+
+	UPROPERTY(EditDefaultsOnly, Category = "Spawn")
+	float SpawnTime = 2.f;
 	
 	FTimerHandle SpawnTimerHandle;
 	
+	int32 CurrentSpawnIndex = 0;
+	
+	void StartSpawning();
 	void SpawnLuggage();
-
 };

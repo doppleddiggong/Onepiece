@@ -30,32 +30,55 @@ void ALuggageManager::Tick(float DeltaTime)
 	
 }
 
-void ALuggageManager::SpawnLuggage()
+void ALuggageManager::StartSpawning()
 {
 	if (!HasAuthority()) return;
+	
+	CurrentSpawnIndex = 0;
+	
+	// 첫 번째 luggage는 즉시 스폰
+	SpawnLuggage();
+	
+	// 나머지는 타이머로 스폰
+	GetWorldTimerManager().SetTimer(
+		SpawnTimerHandle, 
+		this, 
+		&ALuggageManager::SpawnLuggage, 
+		SpawnTime, 
+		true  // 반복
+	);
+}
 
+void ALuggageManager::SpawnLuggage()
+{
 	ALingoGameState* GS = Cast<ALingoGameState>(GetWorld()->GetGameState());
 	if (!GS) return;
 
 	const TArray<FScenarioTargetData>& ScenarioData = GS->GetScenarioData().target_data;
-	// auto SD : ScenarioData
-	for (int32 i=0; i<ScenarioData.Num(); i++)
-	{
-		auto SD = ScenarioData[i];
-		
-		Aluggage* NewLuggage = GetWorld()->SpawnActor<Aluggage>(LuggageClass, GetActorLocation(),
-		FRotator::ZeroRotator);
 	
-		if (NewLuggage)
-		{
-			// 인덱스 부여
-			NewLuggage->SpawnIdx = i;
-			// 색상 적용
-			int32 ColorIdx = FCString::Atoi(*SD.word2.code);
-			NewLuggage->ApplyColorToMesh(ColorIdx);
-			// 무늬 적용
-			NewLuggage->ApplyPatternToMesh(SD.word1.name);
-		}
+	// 모두 스폰했으면 타이머 중지
+	if (CurrentSpawnIndex >= ScenarioData.Num())
+	{
+		GetWorldTimerManager().ClearTimer(SpawnTimerHandle);
+		return;
 	}
+
+	// 현재 인덱스의 luggage 스폰
+	auto SD = ScenarioData[CurrentSpawnIndex];
+	Aluggage* NewLuggage = GetWorld()->SpawnActor<Aluggage>(
+		LuggageClass, 
+		GetActorLocation(),
+		FRotator::ZeroRotator
+	);
+
+	if (NewLuggage)
+	{
+		NewLuggage->SpawnIdx = CurrentSpawnIndex;
+		int32 ColorIdx = FCString::Atoi(*SD.word2.code);
+		NewLuggage->ApplyColorToMesh(ColorIdx);
+		NewLuggage->ApplyPatternToMesh(SD.word1.name);
+	}
+
+	CurrentSpawnIndex++;
 }
 
