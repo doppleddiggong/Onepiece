@@ -259,14 +259,7 @@ void FResponseScenario::PrintData() const
 		0
 	);
 	NETWORK_LOG( TEXT("[RES] %s"), *OutputString);
-	
 }
-
-FString FResponseScenario::GetDescription() const
-{
-	return FString::Printf(TEXT("%s"), *full_data.Eng);
-}
-
 
 TArray<FString> FResponseScenario::GetWord1List() const
 {
