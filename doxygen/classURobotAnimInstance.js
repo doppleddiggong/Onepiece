@@ -5,6 +5,7 @@ var classURobotAnimInstance =
     [ "NativeUpdateAnimation", "classURobotAnimInstance.html#a56b375fe93411555c4012cd559dcf8e9", null ],
     [ "bIsAir", "classURobotAnimInstance.html#a5fc33cfc25a1240a31b61335e849bd8d", null ],
     [ "bIsJumpStart", "classURobotAnimInstance.html#a259d7b0046d2e1c794c0bb2e0ba2810e", null ],
+    [ "bIsPickUp", "classURobotAnimInstance.html#a24dc5741280cdeb77e2c6669926389c3", null ],
     [ "bIsRunning", "classURobotAnimInstance.html#a19ea367cb23c56dec6813d94ee3f8455", null ],
     [ "horizontal", "classURobotAnimInstance.html#a3923cdf284a3d58ade05be0329f39fd7", null ],
     [ "OwningRobot", "classURobotAnimInstance.html#a534ccb0e72cc3f5a4fd01c65f8da1a7b", null ],

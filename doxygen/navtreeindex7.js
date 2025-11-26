@@ -1,5 +1,9 @@
 var NAVTREEINDEX7 =
 {
+"functions_r.html":[2,3,0,17],
+"functions_s.html":[2,3,0,18],
+"functions_t.html":[2,3,0,19],
+"functions_u.html":[2,3,0,20],
 "functions_v.html":[2,3,0,21],
 "functions_vars.html":[2,3,2],
 "functions_vars.html":[2,3,2,0],
@@ -33,8 +37,8 @@ var NAVTREEINDEX7 =
 "globals_func.html":[3,1,1],
 "globals_vars.html":[3,1,2],
 "hierarchy.html":[2,2],
-"index.html":[0],
 "index.html":[],
+"index.html":[0],
 "index.html#autotoc_md10":[0,2],
 "index.html#autotoc_md11":[0,2,0],
 "index.html#autotoc_md12":[0,2,1],
@@ -245,9 +249,5 @@ var NAVTREEINDEX7 =
 "structFQuestWriteInfo.html#a511c18ba01f63e461fd2656145ec8483":[2,0,46,1],
 "structFQuestWriteInfo.html#a60dc6d0314a68704e0b4731f212a4b08":[2,0,46,2],
 "structFQuestWriteInfo.html#a80e93ac6b1fa28e339ac3ae6ce67db8f":[2,0,46,0],
-"structFReadData.html":[2,0,47],
-"structFReadData.html#a0cfdeafbbdaa3e836fe7d9b95f513ff1":[2,0,47,2],
-"structFReadData.html#a4db3a5221f5af5b73d25875e05763aa6":[2,0,47,0],
-"structFReadData.html#aaa326f806b603a949a9749ae38f17fa4":[2,0,47,1],
-"structFReadQuestResult.html":[2,0,48]
+"structFReadData.html":[2,0,47]
 };

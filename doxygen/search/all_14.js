@@ -131,7 +131,7 @@ var searchData=
   ['usequencemanager_2ecpp_128',['USequenceManager.cpp',['../USequenceManager_8cpp.html',1,'']]],
   ['usequencemanager_2eh_129',['USequenceManager.h',['../USequenceManager_8h.html',1,'']]],
   ['userindex_130',['UserIndex',['../structFPlayerInfo.html#a935464395dc23efef30a9cb0114efd03',1,'FPlayerInfo']]],
-  ['username_131',['username',['../classANetworkTesterActor.html#ab5f32b53d6845e92b3bdc278e43c58fa',1,'ANetworkTesterActor::UserName'],['../classALingoPlayerState.html#a9624e6a10523ea308ae523d050eb3902',1,'ALingoPlayerState::UserName'],['../structFResponseUserRegister.html#a6e014b46e57cc332f2be8cb2d4192822',1,'FResponseUserRegister::username']]],
+  ['username_131',['username',['../structFResponseUserRegister.html#a6e014b46e57cc332f2be8cb2d4192822',1,'FResponseUserRegister::username'],['../classANetworkTesterActor.html#ab5f32b53d6845e92b3bdc278e43c58fa',1,'ANetworkTesterActor::UserName'],['../classALingoPlayerState.html#a9624e6a10523ea308ae523d050eb3902',1,'ALingoPlayerState::UserName']]],
   ['usernametext_132',['UserNameText',['../classUStateWidget.html#a665b2fac76df0c5fb108cb4dd3ffd32e',1,'UStateWidget']]],
   ['users_5fme_133',['users_me',['../namespaceRequestAPI.html#aee732573aa0bc733fedaab927a273dcd',1,'RequestAPI']]],
   ['users_5fregister_134',['users_register',['../namespaceRequestAPI.html#a2d4b0c891a96c4ac2d1829ae24d01dc3',1,'RequestAPI']]],

@@ -1,5 +1,9 @@
 var NAVTREEINDEX8 =
 {
+"structFReadData.html#a0cfdeafbbdaa3e836fe7d9b95f513ff1":[2,0,47,2],
+"structFReadData.html#a4db3a5221f5af5b73d25875e05763aa6":[2,0,47,0],
+"structFReadData.html#aaa326f806b603a949a9749ae38f17fa4":[2,0,47,1],
+"structFReadQuestResult.html":[2,0,48],
 "structFReadQuestResult.html#a086b2cc576670b7cdc6d5582a3a842d0":[2,0,48,4],
 "structFReadQuestResult.html#a136f94791b720f13f96108f2570d2a45":[2,0,48,2],
 "structFReadQuestResult.html#a432620275a263d07e012d46debd2e15a":[2,0,48,0],
