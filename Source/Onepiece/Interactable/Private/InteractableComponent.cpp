@@ -23,7 +23,7 @@ UInteractableComponent::UInteractableComponent()
 	DetectionRange = CreateDefaultSubobject<UBoxComponent>(TEXT("DetectionRange"));
 	if (DetectionRange)
 	{
-		DetectionRange->SetBoxExtent(FVector(150.0f)); // DetectionDistance 기본값                                                                 
+		DetectionRange->SetBoxExtent(FVector(180.0f)); // DetectionDistance 기본값                                                                 
 		DetectionRange->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
 		DetectionRange->SetCollisionResponseToAllChannels(ECR_Ignore);
 		DetectionRange->SetCollisionResponseToChannel(ECC_Pawn, ECR_Overlap);

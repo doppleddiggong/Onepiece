@@ -59,7 +59,7 @@ APlayerActor::APlayerActor()
 	FollowCamera = CreateDefaultSubobject<UCameraComponent>(TEXT("FollowCamera"));
 	// FollowCamera->SetupAttachment(SpringArmComp, USpringArmComponent::SocketName);
 	FollowCamera->SetupAttachment(GetMesh(), TEXT("Head"));
-	FollowCamera->SetRelativeLocationAndRotation(FVector(0,-14.285715,21.428572), FRotator(90, 90, 0));
+	FollowCamera->SetRelativeLocationAndRotation(FVector(0.235242,-14.285715,24.304751), FRotator(90, 90, 0));
 	FollowCamera->bUsePawnControlRotation = true;
 
 	GetCharacterMovement()->RotationRate = FRotator(0.0f, 500.0f, 0.0f);
@@ -68,7 +68,7 @@ APlayerActor::APlayerActor()
 
 	HoldPosition = CreateDefaultSubobject<USceneComponent>(TEXT("HoldPosition"));
 	HoldPosition->SetupAttachment(FollowCamera);
-	HoldPosition->SetRelativeLocation(FVector(57.142858,0,-23.809524));
+	HoldPosition->SetRelativeLocation(FVector(80.952382,0,-14.285714));
 
 	LookPitch = 0.f;
 

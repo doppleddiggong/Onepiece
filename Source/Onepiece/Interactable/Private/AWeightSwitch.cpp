@@ -2,7 +2,11 @@
 
 
 #include "AWeightSwitch.h"
+
+#include "ALingoGameState.h"
+#include "APlayerActor.h"
 #include "GameLogging.h"
+#include "luggage.h"
 #include "UBroadcastManager.h"
 #include "UTweenAnimInstance.h"
 #include "Components/BoxComponent.h"
@@ -173,15 +177,40 @@ void AWeightSwitch::OnBeginOverlap(
 {
 	if (!OtherActor)
 		return;
-
-	// 리스트에 추가 (중복 방지)
-	OverlappingActors.AddUnique(OtherActor);
-
-	// 첫 번째 물체가 올라갔을 때만 타이머 시작
-	if (OverlappingActors.Num() == 1)
+	
+	// 조건 1 : 플레이어일 경우 오픈
+	if (Cast<APlayerActor>(OtherActor))
 	{
-		this->DetectTarget = true;
-		this->ElapsedTime = 0.0;
+		// 리스트에 추가 (중복 방지)
+		OverlappingActors.AddUnique(OtherActor);
+
+		// 첫 번째 물체가 올라갔을 때만 타이머 시작
+		if (OverlappingActors.Num() == 1)
+		{
+			this->DetectTarget = true;
+			this->ElapsedTime = 0.0;
+		}
+	}
+	// 조건 2 : 정답 캐리어일 경우 오픈
+	else if (Aluggage* Luggage = Cast<Aluggage>(OtherActor))
+	{
+		ALingoGameState* GS = Cast<ALingoGameState>(GetWorld()->GetGameState());
+		if (GS)
+		{
+			const int32 CorrectIdx = GS->GetScenarioData().correct_answer_index;
+			
+			if (CorrectIdx != Luggage->SpawnIdx) return;
+
+			// 리스트에 추가 (중복 방지)
+			OverlappingActors.AddUnique(OtherActor);
+
+			// 첫 번째 물체가 올라갔을 때만 타이머 시작
+			if (OverlappingActors.Num() == 1)
+			{
+				this->DetectTarget = true;
+				this->ElapsedTime = 0.0;
+			}
+		}
 	}
 }
 

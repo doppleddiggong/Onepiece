@@ -4,7 +4,7 @@
 #include "ConveyorBelt.h"
 
 #include "ANPCBase.h"
-#include "AOwlPlayer.h"
+#include "APlayerActor.h"
 #include "GameLogging.h"
 #include "luggage.h"
 #include "Components/ArrowComponent.h"
@@ -54,17 +54,14 @@ void AConveyorBelt::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 	
-	if (bIsMoving)
-	{
-		MoveOverlappedSkeletals(MoveSpeed * DeltaTime);
-		MoveOverlappedStatics(MoveSpeed * DeltaTime);
-	}
+	MoveOverlappedSkeletals(MoveSpeed * DeltaTime);
+	MoveOverlappedStatics(MoveSpeed * DeltaTime);
 }
 
 void AConveyorBelt::ChangeConveyorMovement()
 {
-	bIsMoving = !bIsMoving;
-	PRINT_STRING(TEXT("%d"), bIsMoving);
+	bIsForward = !bIsForward;
+	PRINT_STRING(TEXT("%d"), bIsForward);
 }
 
 void AConveyorBelt::MoveOverlappedSkeletals(float deltaDistance)
@@ -73,9 +70,10 @@ void AConveyorBelt::MoveOverlappedSkeletals(float deltaDistance)
 	BeltBoxComp->GetOverlappingActors(overlappedActors);
 	for (const auto& actor : overlappedActors)
 	{
-		if (Cast<AOwlPlayer>(actor) || Cast<ANPCBase>(actor))
+		if (Cast<APlayerActor>(actor) || Cast<ANPCBase>(actor))
 		{
 			FVector deltaLoc = MoveDirArrowComp->GetForwardVector() * deltaDistance;
+			deltaLoc = bIsForward ? deltaLoc : -deltaLoc;
 			actor->AddActorWorldOffset(deltaLoc);
 		}
 	}
@@ -91,6 +89,7 @@ void AConveyorBelt::MoveOverlappedStatics(float deltaDistance)
 		if (Cast<Aluggage>(owner) && Cast<UStaticMeshComponent>(comp))
 		{
 			FVector deltaLoc = MoveDirArrowComp->GetForwardVector() * deltaDistance;
+			deltaLoc = bIsForward ? deltaLoc : -deltaLoc;
 			owner->AddActorWorldOffset(deltaLoc);
 		}
 	}
