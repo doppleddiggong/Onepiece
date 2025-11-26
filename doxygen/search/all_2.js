@@ -73,6 +73,7 @@ var searchData=
   ['current_70',['current',['../structFEaseRotatorTrack.html#afbf9eb1055658f780470aa3df5d58017',1,'FEaseRotatorTrack::Current'],['../structFEaseVectorTrack.html#a646594b419cde60080a0ced97322adca',1,'FEaseVectorTrack::Current'],['../structFEaseFloatTrack.html#a7cbfd0a13f8b3a78cabf770251b3be4c',1,'FEaseFloatTrack::Current']]],
   ['currentbrightness_71',['currentbrightness',['../classUHoverButton.html#a9df9691afd88d8ffbcca15b5e3cf8cb9',1,'UHoverButton::CurrentBrightness'],['../classUImageButton.html#a11eaa595e3618b718caae2356f049489',1,'UImageButton::CurrentBrightness']]],
   ['currentscale_72',['currentscale',['../classUHoverButton.html#ad3adaebdf420f7c37208a7bf82288edf',1,'UHoverButton::CurrentScale'],['../classUImageButton.html#a46808360feb22ba0b2ba9557a4aa495d',1,'UImageButton::CurrentScale']]],
-  ['currsessionname_73',['currSessionName',['../classULingoGameInstance.html#a17232e7c2128d3f8af2561f649b27473',1,'ULingoGameInstance']]],
-  ['curscenariodata_74',['CurScenarioData',['../classALingoGameState.html#a3cd7a9eb6c217ca289fe7751113a1bef',1,'ALingoGameState']]]
+  ['currentspawnindex_73',['CurrentSpawnIndex',['../classALuggageManager.html#acc8cf2f766e476693e2e45f8c1af9fd6',1,'ALuggageManager']]],
+  ['currsessionname_74',['currSessionName',['../classULingoGameInstance.html#a17232e7c2128d3f8af2561f649b27473',1,'ULingoGameInstance']]],
+  ['curscenariodata_75',['CurScenarioData',['../classALingoGameState.html#a3cd7a9eb6c217ca289fe7751113a1bef',1,'ALingoGameState']]]
 ];
