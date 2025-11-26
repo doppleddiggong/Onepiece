@@ -3,14 +3,18 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "EPopupType.h"
 #include "Blueprint/UserWidget.h"
-#include "MessageBox.generated.h"
+#include "UBasePopup.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class ONEPIECE_API UMessageBox : public UUserWidget
+class ONEPIECE_API UBasePopup : public UUserWidget
 {
 	GENERATED_BODY()
+
+protected:
+	EPopupType PopupType;
 };

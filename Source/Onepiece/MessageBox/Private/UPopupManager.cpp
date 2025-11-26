@@ -1,7 +1,9 @@
 // Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
 
 #include "UPopupManager.h"
+#include "UPopup_MsgBox.h"
 #include "UPopup_InputMsg.h"
+
 #include "FComponentHelper.h"
 #include "GameLogging.h"
 #include "Onepiece/Onepiece.h"

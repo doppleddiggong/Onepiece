@@ -3,12 +3,10 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "UBasePopup.h"
 #include "Blueprint/UserWidget.h"
 #include "UPopup_MsgBox.generated.h"
 
-
-DECLARE_DELEGATE(FOnMsgBoxOkDelegate);
-DECLARE_DELEGATE(FOnMsgBoxCancelDelegate);
 
 UENUM(BlueprintType)
 enum class EMsgBoxType : uint8
@@ -17,16 +15,8 @@ enum class EMsgBoxType : uint8
 	OK_CANCEL,
 };
 
-// Popup->InitPopup(
-// 	TEXT("경고"),
-// 	TEXT("정말 삭제할까요?"),
-// 	EMsgBoxType::OkCancel,
-// 	FOnMsgBoxOkDelegate::CreateUObject(this, &ThisClass::OnDeleteOk),
-// 	FOnMsgBoxCancelDelegate::CreateUObject(this, &ThisClass::OnDeleteCancel)
-// );
-
 UCLASS()
-class ONEPIECE_API UPopup_MsgBox : public UUserWidget
+class ONEPIECE_API UPopup_MsgBox : public UBasePopup
 {
 	GENERATED_BODY()
 

@@ -4,12 +4,13 @@
 
 #include "CoreMinimal.h"
 #include "NetworkData.h"
+#include "UBasePopup.h"
 #include "UPopupManager.h"
 #include "Blueprint/UserWidget.h"
 #include "UPopup_InputMsg.generated.h"
 
 UCLASS()
-class ONEPIECE_API UPopup_InputMsg : public UUserWidget
+class ONEPIECE_API UPopup_InputMsg : public UBasePopup
 {
 	GENERATED_BODY()
 
@@ -42,7 +43,6 @@ public:
 	UPROPERTY(meta = (BindWidget))
 	class UImageButton* Btn_Cancel;
 
-
 public:
 	void InitPopup( const EPopupType PopupType );
 
@@ -56,7 +56,4 @@ private:
 public:
 	UPROPERTY(meta = (BindWidget))
 	class UEditableTextBox* Edit_Name;
-
-private:
-	EPopupType PopupType;
 };
