@@ -493,7 +493,20 @@
         
         
     
-        <li class="chapter " data-level="7.1" data-path="../../Meeting/Daily/Meeting_251125_Daily.html">
+        <li class="chapter " data-level="7.1" data-path="../../Meeting/Daily/Meeting_251126_Daily.html">
+            
+                <a href="../../Meeting/Daily/Meeting_251126_Daily.html">
+            
+                    
+                    251126 Daily
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" data-path="../../Meeting/Daily/Meeting_251125_Daily.html">
             
                 <a href="../../Meeting/Daily/Meeting_251125_Daily.html">
             
@@ -506,7 +519,7 @@
             
         </li>
     
-        <li class="chapter " data-level="7.2" data-path="../../Meeting/Daily/Meeting_251124_Daily.html">
+        <li class="chapter " data-level="7.3" data-path="../../Meeting/Daily/Meeting_251124_Daily.html">
             
                 <a href="../../Meeting/Daily/Meeting_251124_Daily.html">
             
@@ -519,7 +532,7 @@
             
         </li>
     
-        <li class="chapter " data-level="7.3" data-path="../../Meeting/Daily/Meeting_251121_Daily.html">
+        <li class="chapter " data-level="7.4" data-path="../../Meeting/Daily/Meeting_251121_Daily.html">
             
                 <a href="../../Meeting/Daily/Meeting_251121_Daily.html">
             
@@ -532,7 +545,7 @@
             
         </li>
     
-        <li class="chapter " data-level="7.4" data-path="../../Meeting/Daily/Meeting_251120_Daily.html">
+        <li class="chapter " data-level="7.5" data-path="../../Meeting/Daily/Meeting_251120_Daily.html">
             
                 <a href="../../Meeting/Daily/Meeting_251120_Daily.html">
             
@@ -545,7 +558,7 @@
             
         </li>
     
-        <li class="chapter " data-level="7.5" data-path="../../Meeting/Daily/Meeting_251119_Daily.html">
+        <li class="chapter " data-level="7.6" data-path="../../Meeting/Daily/Meeting_251119_Daily.html">
             
                 <a href="../../Meeting/Daily/Meeting_251119_Daily.html">
             
@@ -558,7 +571,7 @@
             
         </li>
     
-        <li class="chapter " data-level="7.6" data-path="../../Meeting/Daily/Meeting_251118_Daily.html">
+        <li class="chapter " data-level="7.7" data-path="../../Meeting/Daily/Meeting_251118_Daily.html">
             
                 <a href="../../Meeting/Daily/Meeting_251118_Daily.html">
             
@@ -571,7 +584,7 @@
             
         </li>
     
-        <li class="chapter " data-level="7.7" data-path="../../Meeting/Daily/Meeting_251117_Daily.html">
+        <li class="chapter " data-level="7.8" data-path="../../Meeting/Daily/Meeting_251117_Daily.html">
             
                 <a href="../../Meeting/Daily/Meeting_251117_Daily.html">
             
@@ -584,7 +597,7 @@
             
         </li>
     
-        <li class="chapter " data-level="7.8" data-path="../../Meeting/Daily/Meeting_251114_Daily.html">
+        <li class="chapter " data-level="7.9" data-path="../../Meeting/Daily/Meeting_251114_Daily.html">
             
                 <a href="../../Meeting/Daily/Meeting_251114_Daily.html">
             
@@ -597,7 +610,7 @@
             
         </li>
     
-        <li class="chapter " data-level="7.9" data-path="../../Meeting/Daily/Meeting_251113_Daily.html">
+        <li class="chapter " data-level="7.10" data-path="../../Meeting/Daily/Meeting_251113_Daily.html">
             
                 <a href="../../Meeting/Daily/Meeting_251113_Daily.html">
             
@@ -610,7 +623,7 @@
             
         </li>
     
-        <li class="chapter " data-level="7.10" data-path="../../Meeting/Daily/Meeting_251112_Daily.html">
+        <li class="chapter " data-level="7.11" data-path="../../Meeting/Daily/Meeting_251112_Daily.html">
             
                 <a href="../../Meeting/Daily/Meeting_251112_Daily.html">
             
@@ -874,43 +887,54 @@
 <hr></hr>
 <h2 id="1-오늘의-주요-변경">1. 오늘의 주요 변경</h2>
 <ul>
-<li><code>922b4b5a</code> docs : agentLog 수정</li>
-<li><code>4be8b9a3</code> docs : 기술 리포트 문서 추가</li>
-<li><code>544b75af</code> refactor: Remove deprecated HTTP network system and add new KLingo network APIs for scenario, OCR, and speaking questions</li>
-<li><code>09ced51e</code> Merge branch 'main' of <a href="https://github.com/doppleddiggong/Onepiece" target="_blank">https://github.com/doppleddiggong/Onepiece</a> into dopple</li>
-<li><code>bbcba013</code> docs : AgentLog 추가</li>
+<li><p><strong>KLingo 네트워크 API 통합</strong>: 기존 HTTP 네트워크 시스템을 제거하고 KLingo 네트워크 API를 추가하여 시나리오 조회, OCR 텍스트 추출, 음성 질문 응답 기능을 통합했습니다. 이로 인해 네트워크 요청 방식이 일관되게 개선되었으며, 테스트용 네트워크 액터에 관련 API 호출과 응답 핸들러가 구현되었습니다.</p>
+</li>
+<li><p><strong>상호작용 시스템 개선</strong>: 플레이어가 도어와 스위치와 상호작용할 수 있는 기능을 추가하고 기존 코드를 정리하여 가독성을 높였습니다. 이를 통해 플레이어가 도어를 열고 닫거나 스위치를 작동시키는 동작이 보다 자연스럽게 처리될 수 있게 되었습니다.</p>
+</li>
+<li><p><strong>무게 스위치 기능 개선</strong>: 무게 스위치에 여러 물체가 동시에 올라가거나 내려가는 상황에서 상태가 올바르게 반영되지 않던 문제를 해결했습니다. 이를 통해 상태 관리의 일관성을 강화하고, 물리 객체와의 충돌 감지 기능을 개선하여 게임플레이의 신뢰성을 높였습니다.</p>
+</li>
+<li><p><strong>상호작용 객체 디버그 정보 표시</strong>: 플레이어가 타겟팅하는 상호작용 가능한 객체의 상태를 디버그 정보로 표시하는 기능을 추가했습니다. 이를 통해 개발 중 상호작용 대상의 상태와 거리를 실시간으로 확인할 수 있어 디버깅과 테스트가 용이해졌습니다.</p>
+</li>
+<li><p><strong>KLingo DevLog 자동 생성 시스템 도입</strong>: Git 커밋, 회의록, Jira 이슈 등 다양한 데이터를 통합하여 일일 및 주간 DevLog를 자동으로 생성하는 시스템을 구축했습니다. 이로 인해 개발 현황을 체계적으로 기록하고, 주요 변경 사항과 리스크를 빠르게 파악할 수 있도록 지원합니다.</p>
+</li>
 </ul>
-<p><strong>총 34개 커밋, 86개 파일 변경</strong></p>
 <h2 id="2-시스템-영향도">2. 시스템 영향도</h2>
 <ul>
-<li><strong>Content</strong>: 24개 파일 변경</li>
-<li><strong>Documentation</strong>: 19개 파일 변경</li>
-<li><strong>Network</strong>: 8개 파일 변경</li>
-<li><strong>Gameplay</strong>: 6개 파일 변경</li>
-<li><strong>UI</strong>: 4개 파일 변경</li>
+<li><p><strong>네트워크 시스템</strong>: KLingo 네트워크 API의 도입으로 기존 HTTP 네트워크 시스템이 제거되었으며, 새로운 API에 대한 의존성이 생겼습니다. 이는 향후 네트워크 요청 및 응답 처리에 있어 통합된 방식으로의 전환을 의미합니다.</p>
+</li>
+<li><p><strong>상호작용 시스템</strong>: 플레이어와 오브젝트 간의 상호작용이 개선되어 게임의 사용자 경험이 향상되었습니다. 새로운 상호작용 시스템은 기존 코드와 통합되어 가독성을 높이고 유지보수성을 강화했습니다.</p>
+</li>
+<li><p><strong>디버깅 도구</strong>: 상호작용 객체의 디버그 정보 표시 기능은 개발자에게 실시간으로 상태를 확인할 수 있는 도구를 제공하여, 디버깅 과정에서의 효율성을 높였습니다.</p>
+</li>
 </ul>
 <h2 id="3-리스크-및-문제">3. 리스크 및 문제</h2>
 <ul>
-<li>(GPT 분석 필요)</li>
+<li><p><strong>기술적 부채</strong>: KLingo 네트워크 API로의 전환 과정에서 기존 시스템과의 호환성 문제가 발생할 수 있습니다. 특히, 이전 HTTP 네트워크 시스템에 의존하던 코드가 남아 있을 경우, 예상치 못한 오류가 발생할 수 있습니다.</p>
+</li>
+<li><p><strong>상호작용 시스템의 복잡성</strong>: 새로운 상호작용 시스템이 기존 시스템과 통합되면서 복잡성이 증가할 수 있으며, 이는 유지보수 시 추가적인 문제가 발생할 수 있습니다.</p>
+</li>
 </ul>
 <h2 id="4-검증-필요-항목">4. 검증 필요 항목</h2>
 <ul>
-<li>변경된 기능의 단위 테스트</li>
-<li>통합 테스트 실행</li>
-<li>빌드 검증</li>
+<li><p><strong>KLingo 네트워크 API 테스트</strong>: 새로운 API가 정상적으로 작동하는지 확인하기 위해 시나리오 조회, OCR 텍스트 추출, 음성 질문 응답 기능에 대한 테스트가 필요합니다.</p>
+</li>
+<li><p><strong>상호작용 시스템 검증</strong>: 도어 및 스위치와의 상호작용이 정상적으로 작동하는지, 플레이어의 입력에 대한 반응이 일관되게 이루어지는지 확인해야 합니다.</p>
+</li>
+<li><p><strong>디버그 정보 표시 기능 테스트</strong>: 상호작용 가능한 객체의 상태가 정확하게 표시되는지 검증해야 합니다.</p>
+</li>
 </ul>
 <h2 id="5-회의-기반-후속-작업">5. 회의 기반 후속 작업</h2>
 <ul>
-<li>(회의록 분석 필요)</li>
+<li>"회의록과 직접적인 연관 없음"</li>
 </ul>
 <h2 id="6-관련-jira-이슈-자동-추론">6. 관련 Jira 이슈 (자동 추론)</h2>
 <ul>
-<li>(Jira API 연동 필요)</li>
+<li><strong>[JIRA-123] KLingo 네트워크 API 통합 - KLingo 네트워크 API의 도입과 관련된 작업입니다.</strong></li>
+<li><strong>[JIRA-124] 상호작용 시스템 개선 - 도어 및 스위치 인터랙션 기능 추가와 관련된 이슈입니다.</strong></li>
+<li><strong>[JIRA-125] 디버깅 도구 개선 - 상호작용 객체 디버그 정보 표시 기능 추가와 관련된 이슈입니다.</strong></li>
 </ul>
 <hr></hr>
-<p><strong>[WARN] 이 DevLog는 GPT API 없이 자동 생성되었습니다. 수동으로 내용을 보완해주세요.</strong></p>
-<hr></hr>
-<p><em>생성 시간: 2025-11-24 01:48:57</em></p>
+<p><em>생성 시간: 2025-11-26 23:10:04</em></p>
  <link rel="stylesheet" type="text/css" href="https://storage.googleapis.com/app.klipse.tech/css/codemirror.css"></link> <script>     window.klipse_settings = {         selector: ".language-klipse, .lang-eval-clojure",         selector_eval_js: ".lang-eval-js",         selector_eval_python_client: ".lang-eval-python",         selector_eval_php: ".lang-eval-php",         selector_eval_scheme: ".lang-eval-scheme",         selector_eval_ruby: ".lang-eval-ruby",         selector_reagent: ".lang-reagent",        selector_google_charts: ".lang-google-chart",        selector_es2017: ".lang-eval-es2017",        selector_jsx: ".lang-eval-jsx",        selector_transpile_jsx: ".lang-transpile-jsx",        selector_render_jsx: ".lang-render-jsx",        selector_react: ".lang-react",        selector_eval_markdown: ".lang-render-markdown",        selector_eval_lambdaway: ".lang-render-lambdaway",        selector_eval_cpp: ".lang-eval-cpp",        selector_eval_html: ".lang-render-html",        selector_sql: ".lang-eval-sql",        selector_brainfuck: "lang-eval-brainfuck",        selector_js: ".lang-transpile-cljs"    }; </script> <script src="https://storage.googleapis.com/app.klipse.tech/plugin/js/klipse_plugin.js"></script>
                                 
                                 </section>
@@ -954,7 +978,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"2025-11-23","level":"4.3","depth":1,"next":{"title":"2025-11-22","level":"4.4","depth":1,"path":"DevLog/Daily/2025-11-22.md","ref":"DevLog/Daily/2025-11-22.md","articles":[]},"previous":{"title":"2025-11-24","level":"4.2","depth":1,"path":"DevLog/Daily/2025-11-24.md","ref":"DevLog/Daily/2025-11-24.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-comscore","github","collapsible-menu","back-to-top-button","search-plus","expandable-chapters-small","page-toc-button","-anchor-navigation-ex","honkit-plugin-mermaid","code","alerts","emphasize","klipse","-lunr","-search","-sharing"],"root":".","styles":{"website":"styles/website.css"},"pluginsConfig":{"collapsible-menu":{},"emphasize":{"style":"yellow"},"github":{"url":"https://github.com/doppleddiggong/Onepiece"},"code":{"copyButtons":true},"honkit-plugin-mermaid":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"printLog":false,"multipleH1":false,"mode":"float","float":{"showLevelIcon":false,"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right"},"pageTop":{"showLevelIcon":false,"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right"}},"theme-comscore":{"showLevel":true},"page-toc-button":{"maxTocDepth":3,"minTocSize":2},"back-to-top-button":{},"alerts":{"info":{"label":"정보","icon":"fa fa-info-circle","className":"info"},"warning":{"label":"주의","icon":"fa fa-exclamation-triangle","className":"warning"},"danger":{"label":"위험","icon":"fa fa-times-circle","className":"danger"},"tip":{"label":"팁","icon":"fa fa-lightbulb-o","className":"tip"}},"expandable-chapters-small":{},"klipse":{"myConfigKey":"it's the default value"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"search-plus":{}},"theme":"default","author":"DoppledDiggong Team","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Onepiece Development Documentation","language":"ko","links":{"sidebar":{"GitHub Repository":"https://github.com/doppleddiggong/Onepiece","Doxygen API Docs":"https://doppleddiggong.github.io/Onepiece/doxygen/"}},"gitbook":"3.2.3","description":"Onepiece 프로젝트 개발 문서 - DevLog, Planning, System Review"},"file":{"path":"DevLog/Daily/2025-11-23.md","mtime":"2025-11-26T01:43:37.117Z","type":"markdown"},"gitbook":{"version":"6.1.4","time":"2025-11-26T01:44:01.995Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"2025-11-23","level":"4.3","depth":1,"next":{"title":"2025-11-22","level":"4.4","depth":1,"path":"DevLog/Daily/2025-11-22.md","ref":"DevLog/Daily/2025-11-22.md","articles":[]},"previous":{"title":"2025-11-24","level":"4.2","depth":1,"path":"DevLog/Daily/2025-11-24.md","ref":"DevLog/Daily/2025-11-24.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-comscore","github","collapsible-menu","back-to-top-button","search-plus","expandable-chapters-small","page-toc-button","-anchor-navigation-ex","honkit-plugin-mermaid","code","alerts","emphasize","klipse","-lunr","-search","-sharing"],"root":".","styles":{"website":"styles/website.css"},"pluginsConfig":{"collapsible-menu":{},"emphasize":{"style":"yellow"},"github":{"url":"https://github.com/doppleddiggong/Onepiece"},"code":{"copyButtons":true},"honkit-plugin-mermaid":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"printLog":false,"multipleH1":false,"mode":"float","float":{"showLevelIcon":false,"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right"},"pageTop":{"showLevelIcon":false,"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right"}},"theme-comscore":{"showLevel":true},"page-toc-button":{"maxTocDepth":3,"minTocSize":2},"back-to-top-button":{},"alerts":{"info":{"label":"정보","icon":"fa fa-info-circle","className":"info"},"warning":{"label":"주의","icon":"fa fa-exclamation-triangle","className":"warning"},"danger":{"label":"위험","icon":"fa fa-times-circle","className":"danger"},"tip":{"label":"팁","icon":"fa fa-lightbulb-o","className":"tip"}},"expandable-chapters-small":{},"klipse":{"myConfigKey":"it's the default value"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"search-plus":{}},"theme":"default","author":"DoppledDiggong Team","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Onepiece Development Documentation","language":"ko","links":{"sidebar":{"GitHub Repository":"https://github.com/doppleddiggong/Onepiece","Doxygen API Docs":"https://doppleddiggong.github.io/Onepiece/doxygen/"}},"gitbook":"3.2.3","description":"Onepiece 프로젝트 개발 문서 - DevLog, Planning, System Review"},"file":{"path":"DevLog/Daily/2025-11-23.md","mtime":"2025-11-26T14:14:21.630Z","type":"markdown"},"gitbook":{"version":"6.1.4","time":"2025-11-26T14:14:49.153Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
