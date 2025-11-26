@@ -21,10 +21,11 @@ var searchData=
   ['txt_5fdesc_18',['txt_desc',['../classUPopup__MsgBox.html#a4a35840ddb3ff3588fdfd03ada1ef2ec',1,'UPopup_MsgBox::Txt_Desc'],['../classUPopup__InputMsg.html#a2bc5ba3faf038a95eb48c72bcfc43908',1,'UPopup_InputMsg::Txt_Desc']]],
   ['txt_5feng_19',['Txt_Eng',['../classUWordWidget.html#a74fc94f8ec6aadf7c895d148055c79a5',1,'UWordWidget']]],
   ['txt_5fkor_20',['Txt_Kor',['../classUWordWidget.html#a58e14c4db7e9be9b67143476ad825086',1,'UWordWidget']]],
-  ['txt_5fpronunciation_21',['Txt_Pronunciation',['../classUWordWidget.html#af9d244ddddbc1f59df30fcc5b5ad96bd',1,'UWordWidget']]],
-  ['txt_5fsessionname_22',['Txt_SessionName',['../classUSessionInfoWidget.html#a43cdf4dfd3bf7a87cf128adad830a7a6',1,'USessionInfoWidget']]],
-  ['txt_5ftitle_23',['txt_title',['../classUPopup__InputMsg.html#a50da6a90f52757a32f247f7593965f99',1,'UPopup_InputMsg::Txt_Title'],['../classUPopup__MsgBox.html#ac762668a6422e0abeeb58c0ae015325e',1,'UPopup_MsgBox::Txt_Title']]],
-  ['txt_5fupdate_24',['Txt_Update',['../classULobbyWidget.html#a9f7d94fabb5cf7886e9a8763cb4beb6f',1,'ULobbyWidget']]],
-  ['txt_5fword_25',['Txt_Word',['../classUWordButton.html#a7435f11b66a3b3e6f02c0aafc987f78c',1,'UWordButton']]],
-  ['type_26',['type',['../classUEaseFunctionLibrary.html#a57eb25aac5607f9e6de8d6579fc82302',1,'UEaseFunctionLibrary::Type'],['../classUEaseFunctionLibrary.html#af50fd044bea64cb85e25b1af4a42a746',1,'UEaseFunctionLibrary::Type'],['../classUEaseFunctionLibrary.html#a9f8b0c5b328c229315ec4fb0aea9030b',1,'UEaseFunctionLibrary::Type'],['../classUEaseFunctionLibrary.html#ac13a9ab80690ca2d91149810fbf7dbe3',1,'UEaseFunctionLibrary::Type'],['../structFCharacterInfoData.html#a46b196575d3423aed64549f3890e2137',1,'FCharacterInfoData::Type'],['../structFHitStopData.html#a4d9b4cb1d5147ec2f4a660c80662fdca',1,'FHitStopData::Type']]]
+  ['txt_5fmessage_21',['Txt_Message',['../classUQuestInfoWidget.html#ac27c6c6345881f6ec09624ffe63d0014',1,'UQuestInfoWidget']]],
+  ['txt_5fpronunciation_22',['Txt_Pronunciation',['../classUWordWidget.html#af9d244ddddbc1f59df30fcc5b5ad96bd',1,'UWordWidget']]],
+  ['txt_5fsessionname_23',['Txt_SessionName',['../classUSessionInfoWidget.html#a43cdf4dfd3bf7a87cf128adad830a7a6',1,'USessionInfoWidget']]],
+  ['txt_5ftitle_24',['txt_title',['../classUPopup__InputMsg.html#a50da6a90f52757a32f247f7593965f99',1,'UPopup_InputMsg::Txt_Title'],['../classUPopup__MsgBox.html#ac762668a6422e0abeeb58c0ae015325e',1,'UPopup_MsgBox::Txt_Title']]],
+  ['txt_5fupdate_25',['Txt_Update',['../classULobbyWidget.html#a9f7d94fabb5cf7886e9a8763cb4beb6f',1,'ULobbyWidget']]],
+  ['txt_5fword_26',['Txt_Word',['../classUWordButton.html#a7435f11b66a3b3e6f02c0aafc987f78c',1,'UWordButton']]],
+  ['type_27',['type',['../classUEaseFunctionLibrary.html#a57eb25aac5607f9e6de8d6579fc82302',1,'UEaseFunctionLibrary::Type'],['../classUEaseFunctionLibrary.html#af50fd044bea64cb85e25b1af4a42a746',1,'UEaseFunctionLibrary::Type'],['../classUEaseFunctionLibrary.html#a9f8b0c5b328c229315ec4fb0aea9030b',1,'UEaseFunctionLibrary::Type'],['../classUEaseFunctionLibrary.html#ac13a9ab80690ca2d91149810fbf7dbe3',1,'UEaseFunctionLibrary::Type'],['../structFCharacterInfoData.html#a46b196575d3423aed64549f3890e2137',1,'FCharacterInfoData::Type'],['../structFHitStopData.html#a4d9b4cb1d5147ec2f4a660c80662fdca',1,'FHitStopData::Type']]]
 ];

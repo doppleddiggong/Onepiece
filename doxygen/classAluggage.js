@@ -18,6 +18,7 @@ var classAluggage =
     [ "Mesh2Comp", "classAluggage.html#a39b79b08760cd4bd35f94262f8073ce9", null ],
     [ "Mesh3Comp", "classAluggage.html#a848e21dc134b0695d352d7b7356f4497", null ],
     [ "PatternName", "classAluggage.html#ae0dc10fe1295c7222d577fea284ad242", null ],
+    [ "SpawnIdx", "classAluggage.html#a880c239655a5b0ad93ba5fa26bcf49c4", null ],
     [ "Target1", "classAluggage.html#a3a0e879c75526a459df91a8560504762", null ],
     [ "Target2", "classAluggage.html#a39a1c8e315d2b3d40ec1956e2390d6d2", null ]
 ];

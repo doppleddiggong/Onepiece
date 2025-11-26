@@ -10,6 +10,7 @@ var dir_550f083bbe519bd985f450628c1369b6 =
     [ "ULoadingCircleManager.cpp", "ULoadingCircleManager_8cpp.html", "ULoadingCircleManager_8cpp" ],
     [ "UMainWidget.cpp", "UMainWidget_8cpp.html", null ],
     [ "UPlayTimer.cpp", "UPlayTimer_8cpp.html", null ],
+    [ "UQuestInfoWidget.cpp", "UQuestInfoWidget_8cpp.html", null ],
     [ "UStateWidget.cpp", "UStateWidget_8cpp.html", null ],
     [ "UWordButton.cpp", "UWordButton_8cpp.html", null ],
     [ "UWordWidget.cpp", "UWordWidget_8cpp.html", null ]

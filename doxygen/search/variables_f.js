@@ -15,6 +15,5 @@ var searchData=
   ['presssymbolcolor_12',['PressSymbolColor',['../classUTextureButton.html#aa4222076d277a2b99e570ca4cab066c5',1,'UTextureButton']]],
   ['presstextcolor_13',['presstextcolor',['../classUHoverButton.html#a7adc17c16fce25a270933889e23e0f94',1,'UHoverButton::PressTextColor'],['../classUImageButton.html#af9cbc311d9b12be2471153df515ac5b4',1,'UImageButton::PressTextColor']]],
   ['prevmousepos_14',['prevMousePos',['../classUDrawingBoardWidget.html#ab7b6f878a2113366f4b5b011462ec075',1,'UDrawingBoardWidget']]],
-  ['prevmovemode_15',['PrevMoveMode',['../classAPlayerActor.html#ab1f95d1f7bf064023276293ae98d4856',1,'APlayerActor']]],
-  ['pronunciation_16',['pronunciation',['../structFWordStudyData.html#aeb3e85dc6ad5e931155e69084c27f3df',1,'FWordStudyData::Pronunciation'],['../structFWordData.html#a8a359d2cf5e79ca20cbdfe904076dc41',1,'FWordData::Pronunciation']]]
+  ['pronunciation_15',['pronunciation',['../structFWordStudyData.html#aeb3e85dc6ad5e931155e69084c27f3df',1,'FWordStudyData::Pronunciation'],['../structFWordData.html#a8a359d2cf5e79ca20cbdfe904076dc41',1,'FWordData::Pronunciation']]]
 ];

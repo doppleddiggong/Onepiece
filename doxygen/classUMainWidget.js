@@ -9,5 +9,6 @@ var classUMainWidget =
     [ "UpdateTimerDisplay", "classUMainWidget.html#adb018eb03dbdf6e025b97b323265f103", null ],
     [ "CachedGameState", "classUMainWidget.html#aa0abca549ef2be9c4610d4890d5c0448", null ],
     [ "PlayTimer", "classUMainWidget.html#a4f43a64949a6da5ef204ce9c63f7e90d", null ],
+    [ "QuestInfoWidget", "classUMainWidget.html#ac34cdd89ec70602631af1315136bae52", null ],
     [ "StateWidget", "classUMainWidget.html#aedf018e4f459f81fb42cfa716545eb25", null ]
 ];

@@ -229,31 +229,36 @@ Protected 멤버 함수</h2></td></tr>
 <div class="line"><span class="lineno">   38</span>    <span class="keywordflow">if</span> (!GS) <span class="keywordflow">return</span>;</div>
 <div class="line"><span class="lineno">   39</span> </div>
 <div class="line"><span class="lineno">   40</span>    <span class="keyword">const</span> TArray&lt;FScenarioTargetData&gt;&amp; ScenarioData = GS-&gt;<a class="code hl_function" href="classALingoGameState.html#a783187f9c820272a7ea16cc90bb02cc4">GetScenarioData</a>().<a class="code hl_variable" href="structFResponseScenario.html#a632ab430dc3ca5f1521754cca994b8fb">target_data</a>;</div>
-<div class="line"><span class="lineno">   41</span>    </div>
-<div class="line"><span class="lineno">   42</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> SD : ScenarioData)</div>
+<div class="line"><span class="lineno">   41</span>    <span class="comment">// auto SD : ScenarioData</span></div>
+<div class="line"><span class="lineno">   42</span>    <span class="keywordflow">for</span> (int32 i=0; i&lt;ScenarioData.Num(); i++)</div>
 <div class="line"><span class="lineno">   43</span>    {</div>
-<div class="line"><span class="lineno">   44</span>        <a class="code hl_class" href="classAluggage.html">Aluggage</a>* NewLuggage = GetWorld()-&gt;SpawnActor&lt;<a class="code hl_class" href="classAluggage.html">Aluggage</a>&gt;(<a class="code hl_variable" href="classALuggageManager.html#a76e8a5925dfb7005caab1a0b01473ad7">LuggageClass</a>, GetActorLocation(),</div>
-<div class="line"><span class="lineno">   45</span>        FRotator::ZeroRotator);</div>
-<div class="line"><span class="lineno">   46</span>    </div>
-<div class="line"><span class="lineno">   47</span>        <span class="keywordflow">if</span> (NewLuggage)</div>
-<div class="line"><span class="lineno">   48</span>        {</div>
-<div class="line"><span class="lineno">   49</span>            <span class="comment">// 색상 적용</span></div>
-<div class="line"><span class="lineno">   50</span>            int32 ColorIdx = FCString::Atoi(*SD.word2.code);</div>
-<div class="line"><span class="lineno">   51</span>            NewLuggage-&gt;<a class="code hl_function" href="classAluggage.html#aa5a78203e58b47252c35b9ba5f1cf58c">ApplyColorToMesh</a>(ColorIdx);</div>
-<div class="line"><span class="lineno">   52</span>            <span class="comment">// 무늬 적용</span></div>
-<div class="line"><span class="lineno">   53</span>            NewLuggage-&gt;<a class="code hl_function" href="classAluggage.html#a4a37f073b9755f37fb264e6bacf44461">ApplyPatternToMesh</a>(SD.word1.name);</div>
-<div class="line"><span class="lineno">   54</span>        }</div>
-<div class="line"><span class="lineno">   55</span>    }</div>
-<div class="line"><span class="lineno">   56</span>}</div>
-<div class="ttc" id="aclassALingoGameState_html"><div class="ttname"><a href="classALingoGameState.html">ALingoGameState</a></div><div class="ttdef"><b>Definition</b> <a href="ALingoGameState_8h_source.html#l00012">ALingoGameState.h:13</a></div></div>
-<div class="ttc" id="aclassALingoGameState_html_a783187f9c820272a7ea16cc90bb02cc4"><div class="ttname"><a href="classALingoGameState.html#a783187f9c820272a7ea16cc90bb02cc4">ALingoGameState::GetScenarioData</a></div><div class="ttdeci">FORCEINLINE const FResponseScenario &amp; GetScenarioData() const</div><div class="ttdef"><b>Definition</b> <a href="ALingoGameState_8h_source.html#l00080">ALingoGameState.h:80</a></div></div>
+<div class="line"><span class="lineno">   44</span>        <span class="keyword">auto</span> SD = ScenarioData[i];</div>
+<div class="line"><span class="lineno">   45</span>        </div>
+<div class="line"><span class="lineno">   46</span>        <a class="code hl_class" href="classAluggage.html">Aluggage</a>* NewLuggage = GetWorld()-&gt;SpawnActor&lt;<a class="code hl_class" href="classAluggage.html">Aluggage</a>&gt;(<a class="code hl_variable" href="classALuggageManager.html#a76e8a5925dfb7005caab1a0b01473ad7">LuggageClass</a>, GetActorLocation(),</div>
+<div class="line"><span class="lineno">   47</span>        FRotator::ZeroRotator);</div>
+<div class="line"><span class="lineno">   48</span>    </div>
+<div class="line"><span class="lineno">   49</span>        <span class="keywordflow">if</span> (NewLuggage)</div>
+<div class="line"><span class="lineno">   50</span>        {</div>
+<div class="line"><span class="lineno">   51</span>            <span class="comment">// 인덱스 부여</span></div>
+<div class="line"><span class="lineno">   52</span>            NewLuggage-&gt;<a class="code hl_variable" href="classAluggage.html#a880c239655a5b0ad93ba5fa26bcf49c4">SpawnIdx</a> = i;</div>
+<div class="line"><span class="lineno">   53</span>            <span class="comment">// 색상 적용</span></div>
+<div class="line"><span class="lineno">   54</span>            int32 ColorIdx = FCString::Atoi(*SD.word2.code);</div>
+<div class="line"><span class="lineno">   55</span>            NewLuggage-&gt;<a class="code hl_function" href="classAluggage.html#aa5a78203e58b47252c35b9ba5f1cf58c">ApplyColorToMesh</a>(ColorIdx);</div>
+<div class="line"><span class="lineno">   56</span>            <span class="comment">// 무늬 적용</span></div>
+<div class="line"><span class="lineno">   57</span>            NewLuggage-&gt;<a class="code hl_function" href="classAluggage.html#a4a37f073b9755f37fb264e6bacf44461">ApplyPatternToMesh</a>(SD.word1.name);</div>
+<div class="line"><span class="lineno">   58</span>        }</div>
+<div class="line"><span class="lineno">   59</span>    }</div>
+<div class="line"><span class="lineno">   60</span>}</div>
+<div class="ttc" id="aclassALingoGameState_html"><div class="ttname"><a href="classALingoGameState.html">ALingoGameState</a></div><div class="ttdef"><b>Definition</b> <a href="ALingoGameState_8h_source.html#l00026">ALingoGameState.h:27</a></div></div>
+<div class="ttc" id="aclassALingoGameState_html_a783187f9c820272a7ea16cc90bb02cc4"><div class="ttname"><a href="classALingoGameState.html#a783187f9c820272a7ea16cc90bb02cc4">ALingoGameState::GetScenarioData</a></div><div class="ttdeci">FORCEINLINE const FResponseScenario &amp; GetScenarioData() const</div><div class="ttdef"><b>Definition</b> <a href="ALingoGameState_8h_source.html#l00070">ALingoGameState.h:70</a></div></div>
 <div class="ttc" id="aclassALuggageManager_html_a76e8a5925dfb7005caab1a0b01473ad7"><div class="ttname"><a href="classALuggageManager.html#a76e8a5925dfb7005caab1a0b01473ad7">ALuggageManager::LuggageClass</a></div><div class="ttdeci">TSubclassOf&lt; class Aluggage &gt; LuggageClass</div><div class="ttdef"><b>Definition</b> <a href="LuggageManager_8h_source.html#l00029">LuggageManager.h:29</a></div></div>
 <div class="ttc" id="aclassAluggage_html"><div class="ttname"><a href="classAluggage.html">Aluggage</a></div><div class="ttdoc">상호작용 가능한 수하물 액터</div><div class="ttdef"><b>Definition</b> <a href="luggage_8h_source.html#l00013">luggage.h:14</a></div></div>
 <div class="ttc" id="aclassAluggage_html_a4a37f073b9755f37fb264e6bacf44461"><div class="ttname"><a href="classAluggage.html#a4a37f073b9755f37fb264e6bacf44461">Aluggage::ApplyPatternToMesh</a></div><div class="ttdeci">void ApplyPatternToMesh(FString InPattern)</div><div class="ttdef"><b>Definition</b> <a href="luggage_8cpp_source.html#l00105">luggage.cpp:105</a></div></div>
+<div class="ttc" id="aclassAluggage_html_a880c239655a5b0ad93ba5fa26bcf49c4"><div class="ttname"><a href="classAluggage.html#a880c239655a5b0ad93ba5fa26bcf49c4">Aluggage::SpawnIdx</a></div><div class="ttdeci">int32 SpawnIdx</div><div class="ttdef"><b>Definition</b> <a href="luggage_8h_source.html#l00041">luggage.h:41</a></div></div>
 <div class="ttc" id="aclassAluggage_html_aa5a78203e58b47252c35b9ba5f1cf58c"><div class="ttname"><a href="classAluggage.html#aa5a78203e58b47252c35b9ba5f1cf58c">Aluggage::ApplyColorToMesh</a></div><div class="ttdeci">void ApplyColorToMesh(int32 InColorIdx)</div><div class="ttdef"><b>Definition</b> <a href="luggage_8cpp_source.html#l00082">luggage.cpp:82</a></div></div>
 <div class="ttc" id="astructFResponseScenario_html_a632ab430dc3ca5f1521754cca994b8fb"><div class="ttname"><a href="structFResponseScenario.html#a632ab430dc3ca5f1521754cca994b8fb">FResponseScenario::target_data</a></div><div class="ttdeci">TArray&lt; FScenarioTargetData &gt; target_data</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00468">NetworkData.h:468</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="luggage_8cpp_source.html#l00082">Aluggage::ApplyColorToMesh()</a>, <a class="el" href="luggage_8cpp_source.html#l00105">Aluggage::ApplyPatternToMesh()</a>, <a class="el" href="ALingoGameState_8h_source.html#l00080">ALingoGameState::GetScenarioData()</a>, <a class="el" href="LuggageManager_8h_source.html#l00029">LuggageClass</a>, <a class="el" href="NetworkData_8h_source.html#l00468">FResponseScenario::target_data</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="luggage_8cpp_source.html#l00082">Aluggage::ApplyColorToMesh()</a>, <a class="el" href="luggage_8cpp_source.html#l00105">Aluggage::ApplyPatternToMesh()</a>, <a class="el" href="ALingoGameState_8h_source.html#l00070">ALingoGameState::GetScenarioData()</a>, <a class="el" href="LuggageManager_8h_source.html#l00029">LuggageClass</a>, <a class="el" href="luggage_8h_source.html#l00041">Aluggage::SpawnIdx</a>, <a class="el" href="NetworkData_8h_source.html#l00468">FResponseScenario::target_data</a>.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AContactTrigger_8cpp_source.html#l00164">AContactTrigger::OnResponseScenario()</a>.</p>
 <div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -350,7 +355,7 @@ Protected 멤버 함수</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classALuggageManager.html">ALuggageManager</a></li>
-    <li class="footer">생성시간 : 수 11월 26 2025 07:26:17, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 수 11월 26 2025 07:38:22, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

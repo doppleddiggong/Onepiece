@@ -138,7 +138,8 @@ var hierarchy =
     [ "UUserWidget", null, [
       [ "UBasePopup", "classUBasePopup.html", [
         [ "UPopup_InputMsg", "classUPopup__InputMsg.html", null ],
-        [ "UPopup_MsgBox", "classUPopup__MsgBox.html", null ]
+        [ "UPopup_MsgBox", "classUPopup__MsgBox.html", null ],
+        [ "UPopup_ReadQuest", "classUPopup__ReadQuest.html", null ]
       ] ],
       [ "UDialogWidget", "classUDialogWidget.html", null ],
       [ "UDrawingBoardWidget", "classUDrawingBoardWidget.html", null ],
@@ -148,7 +149,7 @@ var hierarchy =
       [ "ULobbyWidget", "classULobbyWidget.html", null ],
       [ "UMainWidget", "classUMainWidget.html", null ],
       [ "UPlayTimer", "classUPlayTimer.html", null ],
-      [ "UPopup_ReadQuest", "classUPopup__ReadQuest.html", null ],
+      [ "UQuestInfoWidget", "classUQuestInfoWidget.html", null ],
       [ "USessionInfoWidget", "classUSessionInfoWidget.html", null ],
       [ "UStartWidget", "classUStartWidget.html", null ],
       [ "UStateWidget", "classUStateWidget.html", null ],
