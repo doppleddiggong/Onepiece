@@ -19,6 +19,7 @@ var searchData=
   ['apedestalswitch_16',['APedestalSwitch',['../classAPedestalSwitch.html',1,'']]],
   ['aplayeractor_17',['APlayerActor',['../classAPlayerActor.html',1,'']]],
   ['aplayercontrol_18',['APlayerControl',['../classAPlayerControl.html',1,'']]],
-  ['arobotplayercontroller_19',['ARobotPlayerController',['../classARobotPlayerController.html',1,'']]],
-  ['aweightswitch_20',['AWeightSwitch',['../classAWeightSwitch.html',1,'']]]
+  ['apopuptesteractor_19',['APopupTesterActor',['../classAPopupTesterActor.html',1,'']]],
+  ['arobotplayercontroller_20',['ARobotPlayerController',['../classARobotPlayerController.html',1,'']]],
+  ['aweightswitch_21',['AWeightSwitch',['../classAWeightSwitch.html',1,'']]]
 ];

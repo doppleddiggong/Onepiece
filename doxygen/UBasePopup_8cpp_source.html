@@ -1,0 +1,193 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>KLingo Project Documentation: Source/Onepiece/MessageBox/Private/UBasePopup.cpp 소스 파일</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript">
+window.MathJax = {
+  options: {
+    ignoreHtmlClass: 'tex2jax_ignore',
+    processHtmlClass: 'tex2jax_process'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<script type="text/javascript" src="darkmode_toggle.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">KLingo Project Documentation<span id="projectnumber">&#160;1.0.0</span>
+   </div>
+   <div id="projectbrief">Unreal Engine 5.6 C++ Project Documentation</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 다음에 의해 생성됨 :  Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','검색');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(0); });
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('UBasePopup_8cpp_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">로딩중...</div>
+<div class="SRStatus" id="Searching">검색중...</div>
+<div class="SRStatus" id="NoMatches">일치하는것 없음</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">UBasePopup.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="UBasePopup_8cpp.html">이 파일의 문서화 페이지로 가기</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;<a class="code" href="UBasePopup_8h.html">UBasePopup.h</a>&quot;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
+<div class="foldopen" id="foldopen00006" data-start="{" data-end="}">
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno"><a class="line" href="classUBasePopup.html#a750c1a854f68ca16faa069645531abd6">    6</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUBasePopup.html#a750c1a854f68ca16faa069645531abd6">UBasePopup::NativeTick</a>(<span class="keyword">const</span> FGeometry&amp; MyGeometry, <span class="keywordtype">float</span> InDeltaTime)</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>{</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>    Super::NativeTick(MyGeometry, InDeltaTime);</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUBasePopup.html#a807985dccb3305b1004c611401b7b551">bIsOpenAnim</a>)</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    {</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>        <a class="code hl_function" href="classUBasePopup.html#a830a08b15d00e418f351f096fc5a8790">UpdateAnimation</a>(InDeltaTime);</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    }</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>}</div>
+</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="foldopen" id="foldopen00016" data-start="{" data-end="}">
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="classUBasePopup.html#a2c3d2b47f8255c0172cf9f218790fcc8">   16</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUBasePopup.html#a2c3d2b47f8255c0172cf9f218790fcc8">UBasePopup::OpenAnimation</a>()</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>{</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <span class="keywordflow">if</span> (!IsInViewport())</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    {</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        AddToViewport();</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    }</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    SetRenderTransformPivot(<a class="code hl_variable" href="classUBasePopup.html#aa3d6a21b30e9b40280f1219b567232b5">OpenPivot</a>);</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    SetRenderScale(FVector2D(<a class="code hl_variable" href="classUBasePopup.html#a9a4bc6d6e03adc7396c7960c41dae0b2">OpenStartScale</a>, <a class="code hl_variable" href="classUBasePopup.html#a9a4bc6d6e03adc7396c7960c41dae0b2">OpenStartScale</a>));</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <a class="code hl_variable" href="classUBasePopup.html#a807985dccb3305b1004c611401b7b551">bIsOpenAnim</a> = <a class="code hl_variable" href="classUBasePopup.html#a5a4c2b75560a3e2d07ed3aa52837278e">OpenDuration</a> &gt; KINDA_SMALL_NUMBER;</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <a class="code hl_variable" href="classUBasePopup.html#a6124aff28b2b2a0b810bb693ebcd81ad">OpenElapsedTime</a> = 0.0f;</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classUBasePopup.html#a807985dccb3305b1004c611401b7b551">bIsOpenAnim</a>)</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    {</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        SetRenderScale(FVector2D(<a class="code hl_variable" href="classUBasePopup.html#add357075245f0843320c0b74af0f2697">OpenTargetScale</a>, <a class="code hl_variable" href="classUBasePopup.html#add357075245f0843320c0b74af0f2697">OpenTargetScale</a>));</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    }</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>}</div>
+</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="foldopen" id="foldopen00035" data-start="{" data-end="}">
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="classUBasePopup.html#a830a08b15d00e418f351f096fc5a8790">   35</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUBasePopup.html#a830a08b15d00e418f351f096fc5a8790">UBasePopup::UpdateAnimation</a>(<span class="keywordtype">float</span> InDeltaTime)</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>{</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classUBasePopup.html#a807985dccb3305b1004c611401b7b551">bIsOpenAnim</a>)</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    {</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    }</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <a class="code hl_variable" href="classUBasePopup.html#a6124aff28b2b2a0b810bb693ebcd81ad">OpenElapsedTime</a> += InDeltaTime;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="keyword">const</span> <span class="keywordtype">float</span> Alpha = FMath::Clamp(<a class="code hl_variable" href="classUBasePopup.html#a6124aff28b2b2a0b810bb693ebcd81ad">OpenElapsedTime</a> / <a class="code hl_variable" href="classUBasePopup.html#a5a4c2b75560a3e2d07ed3aa52837278e">OpenDuration</a>, 0.0f, 1.0f);</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="keyword">const</span> <span class="keywordtype">float</span> EasedAlpha = FMath::InterpEaseOut(0.0f, 1.0f, Alpha, <a class="code hl_variable" href="classUBasePopup.html#afe75f5ef94f97fbcc8ea1ad9e801524c">OpenEaseExponent</a>);</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="keyword">const</span> <span class="keywordtype">float</span> NewScale = FMath::Lerp(<a class="code hl_variable" href="classUBasePopup.html#a9a4bc6d6e03adc7396c7960c41dae0b2">OpenStartScale</a>, <a class="code hl_variable" href="classUBasePopup.html#add357075245f0843320c0b74af0f2697">OpenTargetScale</a>, EasedAlpha);</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    SetRenderScale(FVector2D(NewScale, NewScale));</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="keywordflow">if</span> (Alpha &gt;= 1.0f)</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    {</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        <a class="code hl_variable" href="classUBasePopup.html#a807985dccb3305b1004c611401b7b551">bIsOpenAnim</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    }</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>}</div>
+</div>
+<div class="ttc" id="aUBasePopup_8h_html"><div class="ttname"><a href="UBasePopup_8h.html">UBasePopup.h</a></div></div>
+<div class="ttc" id="aclassUBasePopup_html_a2c3d2b47f8255c0172cf9f218790fcc8"><div class="ttname"><a href="classUBasePopup.html#a2c3d2b47f8255c0172cf9f218790fcc8">UBasePopup::OpenAnimation</a></div><div class="ttdeci">void OpenAnimation()</div><div class="ttdoc">팝업 오픈 애니메이션을 재생합니다</div><div class="ttdef"><b>Definition</b> <a href="UBasePopup_8cpp_source.html#l00016">UBasePopup.cpp:16</a></div></div>
+<div class="ttc" id="aclassUBasePopup_html_a5a4c2b75560a3e2d07ed3aa52837278e"><div class="ttname"><a href="classUBasePopup.html#a5a4c2b75560a3e2d07ed3aa52837278e">UBasePopup::OpenDuration</a></div><div class="ttdeci">float OpenDuration</div><div class="ttdoc">애니메이션 지속 시간</div><div class="ttdef"><b>Definition</b> <a href="UBasePopup_8h_source.html#l00051">UBasePopup.h:51</a></div></div>
+<div class="ttc" id="aclassUBasePopup_html_a6124aff28b2b2a0b810bb693ebcd81ad"><div class="ttname"><a href="classUBasePopup.html#a6124aff28b2b2a0b810bb693ebcd81ad">UBasePopup::OpenElapsedTime</a></div><div class="ttdeci">float OpenElapsedTime</div><div class="ttdoc">경과 시간</div><div class="ttdef"><b>Definition</b> <a href="UBasePopup_8h_source.html#l00047">UBasePopup.h:47</a></div></div>
+<div class="ttc" id="aclassUBasePopup_html_a750c1a854f68ca16faa069645531abd6"><div class="ttname"><a href="classUBasePopup.html#a750c1a854f68ca16faa069645531abd6">UBasePopup::NativeTick</a></div><div class="ttdeci">virtual void NativeTick(const FGeometry &amp;MyGeometry, float InDeltaTime) override</div><div class="ttdef"><b>Definition</b> <a href="UBasePopup_8cpp_source.html#l00006">UBasePopup.cpp:6</a></div></div>
+<div class="ttc" id="aclassUBasePopup_html_a807985dccb3305b1004c611401b7b551"><div class="ttname"><a href="classUBasePopup.html#a807985dccb3305b1004c611401b7b551">UBasePopup::bIsOpenAnim</a></div><div class="ttdeci">bool bIsOpenAnim</div><div class="ttdoc">애니메이션 재생 중 여부</div><div class="ttdef"><b>Definition</b> <a href="UBasePopup_8h_source.html#l00044">UBasePopup.h:44</a></div></div>
+<div class="ttc" id="aclassUBasePopup_html_a830a08b15d00e418f351f096fc5a8790"><div class="ttname"><a href="classUBasePopup.html#a830a08b15d00e418f351f096fc5a8790">UBasePopup::UpdateAnimation</a></div><div class="ttdeci">void UpdateAnimation(float InDeltaTime)</div><div class="ttdoc">스크립트 오픈 애니메이션 업데이트</div><div class="ttdef"><b>Definition</b> <a href="UBasePopup_8cpp_source.html#l00035">UBasePopup.cpp:35</a></div></div>
+<div class="ttc" id="aclassUBasePopup_html_a9a4bc6d6e03adc7396c7960c41dae0b2"><div class="ttname"><a href="classUBasePopup.html#a9a4bc6d6e03adc7396c7960c41dae0b2">UBasePopup::OpenStartScale</a></div><div class="ttdeci">float OpenStartScale</div><div class="ttdoc">시작 스케일</div><div class="ttdef"><b>Definition</b> <a href="UBasePopup_8h_source.html#l00055">UBasePopup.h:55</a></div></div>
+<div class="ttc" id="aclassUBasePopup_html_aa3d6a21b30e9b40280f1219b567232b5"><div class="ttname"><a href="classUBasePopup.html#aa3d6a21b30e9b40280f1219b567232b5">UBasePopup::OpenPivot</a></div><div class="ttdeci">FVector2D OpenPivot</div><div class="ttdoc">애니메이션 중심점 (0~1 범위)</div><div class="ttdef"><b>Definition</b> <a href="UBasePopup_8h_source.html#l00067">UBasePopup.h:67</a></div></div>
+<div class="ttc" id="aclassUBasePopup_html_add357075245f0843320c0b74af0f2697"><div class="ttname"><a href="classUBasePopup.html#add357075245f0843320c0b74af0f2697">UBasePopup::OpenTargetScale</a></div><div class="ttdeci">float OpenTargetScale</div><div class="ttdoc">목표 스케일</div><div class="ttdef"><b>Definition</b> <a href="UBasePopup_8h_source.html#l00059">UBasePopup.h:59</a></div></div>
+<div class="ttc" id="aclassUBasePopup_html_afe75f5ef94f97fbcc8ea1ad9e801524c"><div class="ttname"><a href="classUBasePopup.html#afe75f5ef94f97fbcc8ea1ad9e801524c">UBasePopup::OpenEaseExponent</a></div><div class="ttdeci">float OpenEaseExponent</div><div class="ttdoc">Ease 지수 (값이 클수록 더 급격하게 가속)</div><div class="ttdef"><b>Definition</b> <a href="UBasePopup_8h_source.html#l00063">UBasePopup.h:63</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_47ae9c23f27029060c39af29b069b73d.html">MessageBox</a></li><li class="navelem"><a class="el" href="dir_2a20a70930e57e30643dc72759837dc0.html">Private</a></li><li class="navelem"><a class="el" href="UBasePopup_8cpp.html">UBasePopup.cpp</a></li>
+    <li class="footer">생성시간 : 수 11월 26 2025 06:33:57, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
+</body>
+</html>

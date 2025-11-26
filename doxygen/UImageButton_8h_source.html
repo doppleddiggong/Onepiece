@@ -192,48 +192,54 @@ $(document).ready(function(){initNavTree('UImageButton_8h_source.html',''); init
 <div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=&quot;Style|Border&quot;, meta=(ExposeOnSpawn=true))</div>
 <div class="line"><a id="l00097" name="l00097"></a><span class="lineno"><a class="line" href="classUImageButton.html#ae841d50a910b63dd139ce92838c2fdb7">   97</a></span>    UTexture2D* BorderImage = <span class="keywordtype">nullptr</span>;</div>
 <div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span> </div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    <span class="comment">// ========== 크기 설정 ==========</span></div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span> </div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=&quot;Style|Size&quot;, meta=(ExposeOnSpawn=true))</div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno"><a class="line" href="classUImageButton.html#a98125de8e0c2595331ffbd0ae8ed4657">  103</a></span>    <span class="keywordtype">bool</span> bUseFixedSize = false;</div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span> </div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=&quot;Style|Size&quot;, meta=(ExposeOnSpawn=true, EditCondition=&quot;bUseFixedSize&quot;))</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno"><a class="line" href="classUImageButton.html#ac0b3ab10be5054b51629e38bb0bc2c9d">  107</a></span>    <span class="keywordtype">float</span> FixedWidth = 200.0f;</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=&quot;Style|Border&quot;, meta=(ExposeOnSpawn=true))</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno"><a class="line" href="classUImageButton.html#ad4beb5562ab7433f4fd8843c5a7c3ef5">  101</a></span>    TEnumAsByte&lt;ESlateBrushDrawType::Type&gt; BorderDrawAs = ESlateBrushDrawType::Image;</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=&quot;Style|Border&quot;, meta=(ExposeOnSpawn=true))</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno"><a class="line" href="classUImageButton.html#a6eb7890fcd79bd79d0d2ce25632288ad">  105</a></span>    FMargin BorderMargin = FMargin(0.0f);</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span> </div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    <span class="comment">// ========== 크기 설정 ==========</span></div>
 <div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span> </div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=&quot;Style|Size&quot;, meta=(ExposeOnSpawn=true, EditCondition=&quot;bUseFixedSize&quot;))</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno"><a class="line" href="classUImageButton.html#a2896cc18503206231d39ee828fc2cc73">  111</a></span>    <span class="keywordtype">float</span> FixedHeight = 100.0f;</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=&quot;Style|Size&quot;, meta=(ExposeOnSpawn=true))</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno"><a class="line" href="classUImageButton.html#a98125de8e0c2595331ffbd0ae8ed4657">  111</a></span>    <span class="keywordtype">bool</span> bUseFixedSize = false;</div>
 <div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span> </div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>private:</div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    UPROPERTY(meta = (BindWidget))</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno"><a class="line" href="classUImageButton.html#a278c6600be8757dd05d99c0acb30b7a2">  115</a></span>    class USizeBox* SizeBox_Root;</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=&quot;Style|Size&quot;, meta=(ExposeOnSpawn=true, EditCondition=&quot;bUseFixedSize&quot;))</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno"><a class="line" href="classUImageButton.html#ac0b3ab10be5054b51629e38bb0bc2c9d">  115</a></span>    <span class="keywordtype">float</span> FixedWidth = 200.0f;</div>
 <div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span> </div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>    UPROPERTY(meta = (BindWidget))</div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno"><a class="line" href="classUImageButton.html#adea1c2c7b5ef8ca863a4f84c38982046">  118</a></span>    class UButton* Button_Main;</div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span> </div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    UPROPERTY(meta = (BindWidget))</div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno"><a class="line" href="classUImageButton.html#aa9e330e6b25e4523006d2c6c7494c596">  121</a></span>    class UBorder* Border_BG;</div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span> </div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>    UPROPERTY(meta = (BindWidget))</div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno"><a class="line" href="classUImageButton.html#a618b8b50256b8e7cbe537e0673c34ff2">  124</a></span>    class UTextBlock* Text_Label;</div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span> </div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>private:</div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>    <span class="comment">// 현재 값</span></div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno"><a class="line" href="classUImageButton.html#a46808360feb22ba0b2ba9557a4aa495d">  128</a></span>    FVector2D CurrentScale = FVector2D(1.f, 1.f);</div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno"><a class="line" href="classUImageButton.html#a11eaa595e3618b718caae2356f049489">  129</a></span>    <span class="keywordtype">float</span> CurrentBrightness = 1.0f;</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=&quot;Style|Size&quot;, meta=(ExposeOnSpawn=true, EditCondition=&quot;bUseFixedSize&quot;))</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno"><a class="line" href="classUImageButton.html#a2896cc18503206231d39ee828fc2cc73">  119</a></span>    <span class="keywordtype">float</span> FixedHeight = 100.0f;</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span> </div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>private:</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>    UPROPERTY(meta = (BindWidget))</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno"><a class="line" href="classUImageButton.html#a278c6600be8757dd05d99c0acb30b7a2">  123</a></span>    class USizeBox* SizeBox_Root;</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span> </div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>    UPROPERTY(meta = (BindWidget))</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno"><a class="line" href="classUImageButton.html#adea1c2c7b5ef8ca863a4f84c38982046">  126</a></span>    class UButton* Button_Main;</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span> </div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>    UPROPERTY(meta = (BindWidget))</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno"><a class="line" href="classUImageButton.html#aa9e330e6b25e4523006d2c6c7494c596">  129</a></span>    class UBorder* Border_BG;</div>
 <div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span> </div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>    <span class="comment">// 목표값</span></div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno"><a class="line" href="classUImageButton.html#afbfe691488ac1653ee1f2b8b78d2e030">  132</a></span>    FVector2D TargetScale = FVector2D(1.f, 1.f);</div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno"><a class="line" href="classUImageButton.html#a7ad3051b27439280399987069a4b6a41">  133</a></span>    <span class="keywordtype">float</span> TargetBrightness = 1.f;</div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span> </div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>    <span class="comment">// 애니메이션 속도</span></div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno"><a class="line" href="classUImageButton.html#a322959e21c9fbddc0d6b173989059d2e">  136</a></span>    <span class="keywordtype">float</span> LerpSpeed = 20.f;</div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span> </div>
-<div class="line"><a id="l00138" name="l00138"></a><span class="lineno"><a class="line" href="classUImageButton.html#ad8a85d3c44047a0463b768cdf71e0efe">  138</a></span>    <span class="keywordtype">bool</span> bEnabled = true;</div>
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span> </div>
-<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>    <span class="comment">// Border 이미지용 캐시된 Brush (GetBrush()가 없으므로 캐싱 필요)</span></div>
-<div class="line"><a id="l00141" name="l00141"></a><span class="lineno"><a class="line" href="classUImageButton.html#a3ac863d3b8de71c87444d268205e1e8c">  141</a></span>    FSlateBrush CachedBorderBrush;</div>
-<div class="line"><a id="l00142" name="l00142"></a><span class="lineno"><a class="line" href="classUImageButton.html#af377c3f3a6d8b1631cda3dec73a2d9ec">  142</a></span>    <span class="keywordtype">bool</span> bBorderBrushInitialized = false;</div>
-<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>};</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>    UPROPERTY(meta = (BindWidget))</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno"><a class="line" href="classUImageButton.html#a618b8b50256b8e7cbe537e0673c34ff2">  132</a></span>    class UTextBlock* Text_Label;</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span> </div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>private:</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>    <span class="comment">// 현재 값</span></div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno"><a class="line" href="classUImageButton.html#a46808360feb22ba0b2ba9557a4aa495d">  136</a></span>    FVector2D CurrentScale = FVector2D(1.f, 1.f);</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno"><a class="line" href="classUImageButton.html#a11eaa595e3618b718caae2356f049489">  137</a></span>    <span class="keywordtype">float</span> CurrentBrightness = 1.0f;</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span> </div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>    <span class="comment">// 목표값</span></div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno"><a class="line" href="classUImageButton.html#afbfe691488ac1653ee1f2b8b78d2e030">  140</a></span>    FVector2D TargetScale = FVector2D(1.f, 1.f);</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno"><a class="line" href="classUImageButton.html#a7ad3051b27439280399987069a4b6a41">  141</a></span>    <span class="keywordtype">float</span> TargetBrightness = 1.f;</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span> </div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>    <span class="comment">// 애니메이션 속도</span></div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno"><a class="line" href="classUImageButton.html#a322959e21c9fbddc0d6b173989059d2e">  144</a></span>    <span class="keywordtype">float</span> LerpSpeed = 20.f;</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span> </div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno"><a class="line" href="classUImageButton.html#ad8a85d3c44047a0463b768cdf71e0efe">  146</a></span>    <span class="keywordtype">bool</span> bEnabled = true;</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span> </div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>    <span class="comment">// Border 이미지용 캐시된 Brush (GetBrush()가 없으므로 캐싱 필요)</span></div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno"><a class="line" href="classUImageButton.html#a3ac863d3b8de71c87444d268205e1e8c">  149</a></span>    FSlateBrush CachedBorderBrush;</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno"><a class="line" href="classUImageButton.html#af377c3f3a6d8b1631cda3dec73a2d9ec">  150</a></span>    <span class="keywordtype">bool</span> bBorderBrushInitialized = false;</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>};</div>
 </div>
 <div class="ttc" id="aUImageButton_8h_html_a3306d93c7ed6e15cf89c5e6f7c0be87e"><div class="ttname"><a href="UImageButton_8h.html#a3306d93c7ed6e15cf89c5e6f7c0be87e">DECLARE_DYNAMIC_MULTICAST_DELEGATE</a></div><div class="ttdeci">DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnImageButtonClickedEvent)</div></div>
 <div class="ttc" id="aclassUImageButton_html"><div class="ttname"><a href="classUImageButton.html">UImageButton</a></div><div class="ttdoc">UImageButton</div><div class="ttdef"><b>Definition</b> <a href="UImageButton_8h_source.html#l00018">UImageButton.h:19</a></div></div>
@@ -243,7 +249,7 @@ $(document).ready(function(){initNavTree('UImageButton_8h_source.html',''); init
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_b6750dbdff08df84555f1c91e851278f.html">WidgetComponents</a></li><li class="navelem"><a class="el" href="dir_d6381c14211658f973554019171aa369.html">Public</a></li><li class="navelem"><a class="el" href="UImageButton_8h.html">UImageButton.h</a></li>
-    <li class="footer">생성시간 : 수 11월 26 2025 06:11:31, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 수 11월 26 2025 06:33:57, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

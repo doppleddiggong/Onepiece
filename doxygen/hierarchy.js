@@ -11,6 +11,7 @@ var hierarchy =
       [ "ANetworkBroadcastActor", "classANetworkBroadcastActor.html", null ],
       [ "ANetworkTesterActor", "classANetworkTesterActor.html", null ],
       [ "APedestalSwitch", "classAPedestalSwitch.html", null ],
+      [ "APopupTesterActor", "classAPopupTesterActor.html", null ],
       [ "AWeightSwitch", "classAWeightSwitch.html", null ],
       [ "Aluggage", "classAluggage.html", null ]
     ] ],
@@ -135,6 +136,10 @@ var hierarchy =
       [ "UPopupManager", "classUPopupManager.html", null ]
     ] ],
     [ "UUserWidget", null, [
+      [ "UBasePopup", "classUBasePopup.html", [
+        [ "UPopup_InputMsg", "classUPopup__InputMsg.html", null ],
+        [ "UPopup_MsgBox", "classUPopup__MsgBox.html", null ]
+      ] ],
       [ "UDialogWidget", "classUDialogWidget.html", null ],
       [ "UDrawingBoardWidget", "classUDrawingBoardWidget.html", null ],
       [ "UHoverButton", "classUHoverButton.html", null ],
@@ -142,15 +147,13 @@ var hierarchy =
       [ "ULoadginCircle", "classULoadginCircle.html", null ],
       [ "ULobbyWidget", "classULobbyWidget.html", null ],
       [ "UMainWidget", "classUMainWidget.html", null ],
-      [ "UMessageBox", "classUMessageBox.html", null ],
       [ "UPlayTimer", "classUPlayTimer.html", null ],
-      [ "UPopup_InputMsg", "classUPopup__InputMsg.html", null ],
-      [ "UPopup_MsgBox", "classUPopup__MsgBox.html", null ],
-      [ "UReadQuestEntryWidget", "classUReadQuestEntryWidget.html", null ],
-      [ "UReadQuestWidget", "classUReadQuestWidget.html", null ],
+      [ "UPopup_ReadQuest", "classUPopup__ReadQuest.html", null ],
       [ "USessionInfoWidget", "classUSessionInfoWidget.html", null ],
       [ "UStartWidget", "classUStartWidget.html", null ],
       [ "UStateWidget", "classUStateWidget.html", null ],
-      [ "UTextureButton", "classUTextureButton.html", null ]
+      [ "UTextureButton", "classUTextureButton.html", null ],
+      [ "UWordButton", "classUWordButton.html", null ],
+      [ "UWordWidget", "classUWordWidget.html", null ]
     ] ]
 ];

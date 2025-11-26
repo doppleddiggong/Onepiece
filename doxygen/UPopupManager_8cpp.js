@@ -1,5 +1,6 @@
 var UPopupManager_8cpp =
 [
-    [ "INPUT_POPUPMSG_PATH", "UPopupManager_8cpp.html#a3b40d626b9671dab506325d616f0c7ba", null ],
-    [ "POPUPMSG_PATH", "UPopupManager_8cpp.html#a5ca06359534d031a3f2457f48c1954c4", null ]
+    [ "INPUT_POPUP_PATH", "UPopupManager_8cpp.html#a316d42e7741e9922f43c175b9f60f764", null ],
+    [ "POPUP_PATH", "UPopupManager_8cpp.html#acfe4388ccf57b91099b3958f672215ae", null ],
+    [ "READQUEST_POPUP_PATH", "UPopupManager_8cpp.html#ae72e492e64d4fac4fe41150d760a34d3", null ]
 ];

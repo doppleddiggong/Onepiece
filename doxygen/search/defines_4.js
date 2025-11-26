@@ -11,5 +11,5 @@ var searchData=
   ['ia_5frecord_5fpath_8',['IA_RECORD_PATH',['../APlayerControl_8cpp.html#a5f8136d1ae53127439765497cd8488d7',1,'APlayerControl.cpp']]],
   ['ia_5frun_5fpath_9',['IA_RUN_PATH',['../APlayerControl_8cpp.html#aac43679ef0ed684b18eac95ba57da5a7',1,'APlayerControl.cpp']]],
   ['imc_5fdefault_5fpath_10',['IMC_DEFAULT_PATH',['../APlayerControl_8cpp.html#a01c913d4a8c789edd2be9b6893be7176',1,'APlayerControl.cpp']]],
-  ['input_5fpopupmsg_5fpath_11',['INPUT_POPUPMSG_PATH',['../UPopupManager_8cpp.html#a3b40d626b9671dab506325d616f0c7ba',1,'UPopupManager.cpp']]]
+  ['input_5fpopup_5fpath_11',['INPUT_POPUP_PATH',['../UPopupManager_8cpp.html#a316d42e7741e9922f43c175b9f60f764',1,'UPopupManager.cpp']]]
 ];

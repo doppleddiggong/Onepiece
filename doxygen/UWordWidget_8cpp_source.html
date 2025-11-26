@@ -1,0 +1,164 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>KLingo Project Documentation: Source/Onepiece/UI/Private/UWordWidget.cpp 소스 파일</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript">
+window.MathJax = {
+  options: {
+    ignoreHtmlClass: 'tex2jax_ignore',
+    processHtmlClass: 'tex2jax_process'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<script type="text/javascript" src="darkmode_toggle.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">KLingo Project Documentation<span id="projectnumber">&#160;1.0.0</span>
+   </div>
+   <div id="projectbrief">Unreal Engine 5.6 C++ Project Documentation</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 다음에 의해 생성됨 :  Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','검색');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(0); });
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('UWordWidget_8cpp_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">로딩중...</div>
+<div class="SRStatus" id="Searching">검색중...</div>
+<div class="SRStatus" id="NoMatches">일치하는것 없음</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">UWordWidget.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="UWordWidget_8cpp.html">이 파일의 문서화 페이지로 가기</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;<a class="code" href="UWordWidget_8h.html">UWordWidget.h</a>&quot;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;<a class="code" href="UWordButton_8h.html">UWordButton.h</a>&quot;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;Components/TextBlock.h&quot;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
+<div class="foldopen" id="foldopen00007" data-start="{" data-end="}">
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno"><a class="line" href="classUWordWidget.html#a17b3278cfcdaf3cf67528f5163c309c9">    7</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUWordWidget.html#a17b3278cfcdaf3cf67528f5163c309c9">UWordWidget::NativeConstruct</a>()</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>{</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>    Super::NativeConstruct();</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    <span class="comment">// 초기 상태에서는 정보를 숨김</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUWordWidget.html#a74fc94f8ec6aadf7c895d148055c79a5">Txt_Eng</a>)</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>        <a class="code hl_variable" href="classUWordWidget.html#a74fc94f8ec6aadf7c895d148055c79a5">Txt_Eng</a>-&gt;SetText(FText::FromString(TEXT(<span class="stringliteral">&quot;&quot;</span>)));</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUWordWidget.html#a58e14c4db7e9be9b67143476ad825086">Txt_Kor</a>)</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>        <a class="code hl_variable" href="classUWordWidget.html#a58e14c4db7e9be9b67143476ad825086">Txt_Kor</a>-&gt;SetText(FText::FromString(TEXT(<span class="stringliteral">&quot;&quot;</span>)));</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUWordWidget.html#af9d244ddddbc1f59df30fcc5b5ad96bd">Txt_Pronunciation</a>)</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        <a class="code hl_variable" href="classUWordWidget.html#af9d244ddddbc1f59df30fcc5b5ad96bd">Txt_Pronunciation</a>-&gt;SetText(FText::FromString(TEXT(<span class="stringliteral">&quot;&quot;</span>)));</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>}</div>
+</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="foldopen" id="foldopen00022" data-start="{" data-end="}">
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="classUWordWidget.html#a4042d45c4417913b25fa4ef44d5eccc1">   22</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUWordWidget.html#a4042d45c4417913b25fa4ef44d5eccc1">UWordWidget::InitWordData</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structFWordData.html">FWordData</a>&amp; InWordData)</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>{</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <a class="code hl_variable" href="classUWordWidget.html#a74fc94f8ec6aadf7c895d148055c79a5">Txt_Eng</a>-&gt;SetText(FText::FromString(InWordData.<a class="code hl_variable" href="structFWordData.html#ad5cbdc27da99dfca63d216196c807570">Eng</a>));</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <a class="code hl_variable" href="classUWordWidget.html#a58e14c4db7e9be9b67143476ad825086">Txt_Kor</a>-&gt;SetText(FText::FromString(InWordData.<a class="code hl_variable" href="structFWordData.html#a0c48a651223fd58eedb624c3837e8b3b">Kor</a>));</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <a class="code hl_variable" href="classUWordWidget.html#af9d244ddddbc1f59df30fcc5b5ad96bd">Txt_Pronunciation</a>-&gt;SetText(FText::FromString(InWordData.<a class="code hl_variable" href="structFWordData.html#a8a359d2cf5e79ca20cbdfe904076dc41">Pronunciation</a>));</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>}</div>
+</div>
+<div class="ttc" id="aUWordButton_8h_html"><div class="ttname"><a href="UWordButton_8h.html">UWordButton.h</a></div></div>
+<div class="ttc" id="aUWordWidget_8h_html"><div class="ttname"><a href="UWordWidget_8h.html">UWordWidget.h</a></div></div>
+<div class="ttc" id="aclassUWordWidget_html_a17b3278cfcdaf3cf67528f5163c309c9"><div class="ttname"><a href="classUWordWidget.html#a17b3278cfcdaf3cf67528f5163c309c9">UWordWidget::NativeConstruct</a></div><div class="ttdeci">virtual void NativeConstruct() override</div><div class="ttdef"><b>Definition</b> <a href="UWordWidget_8cpp_source.html#l00007">UWordWidget.cpp:7</a></div></div>
+<div class="ttc" id="aclassUWordWidget_html_a4042d45c4417913b25fa4ef44d5eccc1"><div class="ttname"><a href="classUWordWidget.html#a4042d45c4417913b25fa4ef44d5eccc1">UWordWidget::InitWordData</a></div><div class="ttdeci">void InitWordData(const FWordData &amp;InWordData)</div><div class="ttdef"><b>Definition</b> <a href="UWordWidget_8cpp_source.html#l00022">UWordWidget.cpp:22</a></div></div>
+<div class="ttc" id="aclassUWordWidget_html_a58e14c4db7e9be9b67143476ad825086"><div class="ttname"><a href="classUWordWidget.html#a58e14c4db7e9be9b67143476ad825086">UWordWidget::Txt_Kor</a></div><div class="ttdeci">UTextBlock * Txt_Kor</div><div class="ttdoc">한국어 표시 텍스트</div><div class="ttdef"><b>Definition</b> <a href="UWordWidget_8h_source.html#l00034">UWordWidget.h:34</a></div></div>
+<div class="ttc" id="aclassUWordWidget_html_a74fc94f8ec6aadf7c895d148055c79a5"><div class="ttname"><a href="classUWordWidget.html#a74fc94f8ec6aadf7c895d148055c79a5">UWordWidget::Txt_Eng</a></div><div class="ttdeci">UTextBlock * Txt_Eng</div><div class="ttdoc">영어 표시 텍스트</div><div class="ttdef"><b>Definition</b> <a href="UWordWidget_8h_source.html#l00030">UWordWidget.h:30</a></div></div>
+<div class="ttc" id="aclassUWordWidget_html_af9d244ddddbc1f59df30fcc5b5ad96bd"><div class="ttname"><a href="classUWordWidget.html#af9d244ddddbc1f59df30fcc5b5ad96bd">UWordWidget::Txt_Pronunciation</a></div><div class="ttdeci">UTextBlock * Txt_Pronunciation</div><div class="ttdoc">발음 표시 텍스트</div><div class="ttdef"><b>Definition</b> <a href="UWordWidget_8h_source.html#l00038">UWordWidget.h:38</a></div></div>
+<div class="ttc" id="astructFWordData_html"><div class="ttname"><a href="structFWordData.html">FWordData</a></div><div class="ttdoc">단어 데이터 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00134">NetworkData.h:135</a></div></div>
+<div class="ttc" id="astructFWordData_html_a0c48a651223fd58eedb624c3837e8b3b"><div class="ttname"><a href="structFWordData.html#a0c48a651223fd58eedb624c3837e8b3b">FWordData::Kor</a></div><div class="ttdeci">FString Kor</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00139">NetworkData.h:139</a></div></div>
+<div class="ttc" id="astructFWordData_html_a8a359d2cf5e79ca20cbdfe904076dc41"><div class="ttname"><a href="structFWordData.html#a8a359d2cf5e79ca20cbdfe904076dc41">FWordData::Pronunciation</a></div><div class="ttdeci">FString Pronunciation</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00145">NetworkData.h:145</a></div></div>
+<div class="ttc" id="astructFWordData_html_ad5cbdc27da99dfca63d216196c807570"><div class="ttname"><a href="structFWordData.html#ad5cbdc27da99dfca63d216196c807570">FWordData::Eng</a></div><div class="ttdeci">FString Eng</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00142">NetworkData.h:142</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_55b064ed9f704d76d3805f2fda876350.html">UI</a></li><li class="navelem"><a class="el" href="dir_550f083bbe519bd985f450628c1369b6.html">Private</a></li><li class="navelem"><a class="el" href="UWordWidget_8cpp.html">UWordWidget.cpp</a></li>
+    <li class="footer">생성시간 : 수 11월 26 2025 06:33:57, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,5 +1,7 @@
 var structFResponseScenario =
 [
+    [ "GetWord1List", "structFResponseScenario.html#acabeafebbb8bb1263aebeb1d92018c88", null ],
+    [ "GetWord2List", "structFResponseScenario.html#a8923be159a0b72e21dc157a2afd11bfe", null ],
     [ "PrintData", "structFResponseScenario.html#a1f6ab3c19abfbc6154eb5cfb78b2c475", null ],
     [ "SetFromHttpResponse", "structFResponseScenario.html#a9f7a133e106b433e36f56001df915bfe", null ],
     [ "correct_answer_index", "structFResponseScenario.html#a5be05dc8bec820793666723afad3fc87", null ],

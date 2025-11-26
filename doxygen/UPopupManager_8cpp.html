@@ -107,7 +107,10 @@ $(document).ready(function(){initNavTree('UPopupManager_8cpp.html',''); initResi
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="UPopupManager_8h_source.html">UPopupManager.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="UBasePopup_8h_source.html">UBasePopup.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="UPopup__MsgBox_8h_source.html">UPopup_MsgBox.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="UPopup__InputMsg_8h_source.html">UPopup_InputMsg.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="UPopup__ReadQuest_8h_source.html">UPopup_ReadQuest.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="FComponentHelper_8h_source.html">FComponentHelper.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="GameLogging_8h_source.html">GameLogging.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="Onepiece_8h_source.html">Onepiece/Onepiece.h</a>&quot;</code><br />
@@ -123,41 +126,59 @@ $(document).ready(function(){initNavTree('UPopupManager_8cpp.html',''); initResi
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 매크로</h2></td></tr>
-<tr class="memitem:a3b40d626b9671dab506325d616f0c7ba" id="r_a3b40d626b9671dab506325d616f0c7ba"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="UPopupManager_8cpp.html#a3b40d626b9671dab506325d616f0c7ba">INPUT_POPUPMSG_PATH</a>&#160;&#160;&#160;TEXT(&quot;/Game/CustomContents/UI/Widgets/WBP_InputPopupMsg.WBP_InputPopupMsg_C&quot;)</td></tr>
-<tr class="separator:a3b40d626b9671dab506325d616f0c7ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5ca06359534d031a3f2457f48c1954c4" id="r_a5ca06359534d031a3f2457f48c1954c4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="UPopupManager_8cpp.html#a5ca06359534d031a3f2457f48c1954c4">POPUPMSG_PATH</a>&#160;&#160;&#160;TEXT(&quot;/Game/CustomContents/UI/Widgets/WBP_PopupMsg.WBP_PopupMsg_C&quot;)</td></tr>
-<tr class="separator:a5ca06359534d031a3f2457f48c1954c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a316d42e7741e9922f43c175b9f60f764" id="r_a316d42e7741e9922f43c175b9f60f764"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="UPopupManager_8cpp.html#a316d42e7741e9922f43c175b9f60f764">INPUT_POPUP_PATH</a>&#160;&#160;&#160;TEXT(&quot;/Game/CustomContents/UI/Widgets/WBP_InputPopupMsg.WBP_InputPopupMsg_C&quot;)</td></tr>
+<tr class="separator:a316d42e7741e9922f43c175b9f60f764"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acfe4388ccf57b91099b3958f672215ae" id="r_acfe4388ccf57b91099b3958f672215ae"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="UPopupManager_8cpp.html#acfe4388ccf57b91099b3958f672215ae">POPUP_PATH</a>&#160;&#160;&#160;TEXT(&quot;/Game/CustomContents/UI/Widgets/WBP_PopupMsg.WBP_PopupMsg_C&quot;)</td></tr>
+<tr class="separator:acfe4388ccf57b91099b3958f672215ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae72e492e64d4fac4fe41150d760a34d3" id="r_ae72e492e64d4fac4fe41150d760a34d3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="UPopupManager_8cpp.html#ae72e492e64d4fac4fe41150d760a34d3">READQUEST_POPUP_PATH</a>&#160;&#160;&#160;TEXT(&quot;/Game/CustomContents/UI/Widgets/WBP_PopupReadQuest.WBP_PopupReadQuest_C&quot;)</td></tr>
+<tr class="separator:ae72e492e64d4fac4fe41150d760a34d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">매크로 문서화</h2>
-<a id="a3b40d626b9671dab506325d616f0c7ba" name="a3b40d626b9671dab506325d616f0c7ba"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3b40d626b9671dab506325d616f0c7ba">&#9670;&#160;</a></span>INPUT_POPUPMSG_PATH</h2>
+<a id="a316d42e7741e9922f43c175b9f60f764" name="a316d42e7741e9922f43c175b9f60f764"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a316d42e7741e9922f43c175b9f60f764">&#9670;&#160;</a></span>INPUT_POPUP_PATH</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define INPUT_POPUPMSG_PATH&#160;&#160;&#160;TEXT(&quot;/Game/CustomContents/UI/Widgets/WBP_InputPopupMsg.WBP_InputPopupMsg_C&quot;)</td>
+          <td class="memname">#define INPUT_POPUP_PATH&#160;&#160;&#160;TEXT(&quot;/Game/CustomContents/UI/Widgets/WBP_InputPopupMsg.WBP_InputPopupMsg_C&quot;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="UPopupManager_8cpp_source.html">UPopupManager.cpp</a> 파일의 <a class="el" href="UPopupManager_8cpp_source.html#l00010">10</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="UPopupManager_8cpp_source.html">UPopupManager.cpp</a> 파일의 <a class="el" href="UPopupManager_8cpp_source.html#l00015">15</a> 번째 라인에서 정의되었습니다.</p>
 
 </div>
 </div>
-<a id="a5ca06359534d031a3f2457f48c1954c4" name="a5ca06359534d031a3f2457f48c1954c4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5ca06359534d031a3f2457f48c1954c4">&#9670;&#160;</a></span>POPUPMSG_PATH</h2>
+<a id="acfe4388ccf57b91099b3958f672215ae" name="acfe4388ccf57b91099b3958f672215ae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acfe4388ccf57b91099b3958f672215ae">&#9670;&#160;</a></span>POPUP_PATH</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define POPUPMSG_PATH&#160;&#160;&#160;TEXT(&quot;/Game/CustomContents/UI/Widgets/WBP_PopupMsg.WBP_PopupMsg_C&quot;)</td>
+          <td class="memname">#define POPUP_PATH&#160;&#160;&#160;TEXT(&quot;/Game/CustomContents/UI/Widgets/WBP_PopupMsg.WBP_PopupMsg_C&quot;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="UPopupManager_8cpp_source.html">UPopupManager.cpp</a> 파일의 <a class="el" href="UPopupManager_8cpp_source.html#l00009">9</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="UPopupManager_8cpp_source.html">UPopupManager.cpp</a> 파일의 <a class="el" href="UPopupManager_8cpp_source.html#l00014">14</a> 번째 라인에서 정의되었습니다.</p>
+
+</div>
+</div>
+<a id="ae72e492e64d4fac4fe41150d760a34d3" name="ae72e492e64d4fac4fe41150d760a34d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae72e492e64d4fac4fe41150d760a34d3">&#9670;&#160;</a></span>READQUEST_POPUP_PATH</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define READQUEST_POPUP_PATH&#160;&#160;&#160;TEXT(&quot;/Game/CustomContents/UI/Widgets/WBP_PopupReadQuest.WBP_PopupReadQuest_C&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="UPopupManager_8cpp_source.html">UPopupManager.cpp</a> 파일의 <a class="el" href="UPopupManager_8cpp_source.html#l00016">16</a> 번째 라인에서 정의되었습니다.</p>
 
 </div>
 </div>
@@ -167,7 +188,7 @@ $(document).ready(function(){initNavTree('UPopupManager_8cpp.html',''); initResi
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_47ae9c23f27029060c39af29b069b73d.html">MessageBox</a></li><li class="navelem"><a class="el" href="dir_2a20a70930e57e30643dc72759837dc0.html">Private</a></li><li class="navelem"><a class="el" href="UPopupManager_8cpp.html">UPopupManager.cpp</a></li>
-    <li class="footer">생성시간 : 수 11월 26 2025 06:11:31, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 수 11월 26 2025 06:33:57, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

@@ -8,7 +8,7 @@ var searchData=
   ['popup_5',['Popup',['../namespaceGameLayer.html#a6cdeb86db303cee7271ae8d7246fe8f1',1,'GameLayer']]],
   ['popupclassmap_6',['PopupClassMap',['../classUPopupManager.html#ad2288f01f50f8c8eb6212dcbde4ea860',1,'UPopupManager']]],
   ['popupstack_7',['PopupStack',['../classUPopupManager.html#ac2470b1f873fd1651aae7c05f10a32b4',1,'UPopupManager']]],
-  ['popuptype_8',['PopupType',['../classUPopup__InputMsg.html#ad2b680e1fbfc346195b606d5737f397c',1,'UPopup_InputMsg']]],
+  ['popuptype_8',['PopupType',['../classUBasePopup.html#a7e537a0dd751df11990ed46947f09d42',1,'UBasePopup']]],
   ['popupwidgetmap_9',['PopupWidgetMap',['../classUPopupManager.html#acd192c5957f063bd632bd00a2dcc3c3d',1,'UPopupManager']]],
   ['port_10',['Port',['../structFServerConfig.html#a0921d17b91705fa9f1ffc75c204daab5',1,'FServerConfig']]],
   ['pressbuttoncolor_11',['pressbuttoncolor',['../classUHoverButton.html#a1544723a1b04d904272ef89100c4bbd3',1,'UHoverButton::PressButtonColor'],['../classUImageButton.html#a48b2cee61022cdc6c1e4c6c06e8e659e',1,'UImageButton::PressButtonColor']]],

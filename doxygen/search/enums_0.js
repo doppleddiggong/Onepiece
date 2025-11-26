@@ -12,7 +12,7 @@ var searchData=
   ['enetworklogtype_9',['ENetworkLogType',['../ENetworkLogType_8h.html#a80aaa513e01d2ec2d4421835b09d691f',1,'ENetworkLogType.h']]],
   ['eparabolatype_10',['EParabolaType',['../UParabolaComponent_8h.html#acb24f37a1795b5e9dfdbb98be4898712',1,'UParabolaComponent.h']]],
   ['eplayerrole_11',['EPlayerRole',['../ULingoGameInstance_8h.html#a19b0ebcc430a73c898b86a0c19a1d74c',1,'ULingoGameInstance.h']]],
-  ['epopuptype_12',['EPopupType',['../UPopupManager_8h.html#a3c98e5bec1eb6dee36b07ed62d8fc635',1,'UPopupManager.h']]],
+  ['epopuptype_12',['EPopupType',['../EPopupType_8h.html#a3c98e5bec1eb6dee36b07ed62d8fc635',1,'EPopupType.h']]],
   ['ereadquestrole_13',['EReadQuestRole',['../NetworkData_8h.html#a2798a9fa176a1ddb262869e791949226',1,'NetworkData.h']]],
   ['eservermode_14',['EServerMode',['../UCustomNetworkSettings_8h.html#a79cfeb7c9f94018b98c2415dc06d4577',1,'UCustomNetworkSettings.h']]],
   ['evfxtype_15',['EVFXType',['../EVFXType_8h.html#af8435b1c8c0e40b2bbdf03bb1ca6b4db',1,'EVFXType.h']]]
