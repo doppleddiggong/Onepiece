@@ -31,6 +31,9 @@ protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Values")
 	bool bIsAir;
 	
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Values")
+	bool bIsPickUp;
+	
 	// Velocity
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Values")
 	float horizontal;

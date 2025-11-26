@@ -5,6 +5,7 @@
 
 #include "AOwlPlayer.h"
 #include "APlayerActor.h"
+#include "UInteractionSystem.h"
 #include "GameFramework/PawnMovementComponent.h"
 
 void URobotAnimInstance::NativeBeginPlay()
@@ -26,6 +27,7 @@ void URobotAnimInstance::NativeUpdateAnimation(float DeltaSeconds)
 		horizontal = FVector::DotProduct(velocity, OwningRobot->GetActorRightVector());
 		vertical = FVector::DotProduct(velocity, OwningRobot->GetActorForwardVector());
 		bIsAir = OwningRobot->GetMovementComponent()->IsFalling();
+		bIsPickUp = OwningRobot->InteractionSystem->HoldingInteractable ? true : false;
 	}
 }
 
