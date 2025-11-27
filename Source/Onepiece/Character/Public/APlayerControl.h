@@ -7,6 +7,8 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "ALingoPlayerState.h"
+#include "NetworkData.h"
 #include "InputActionValue.h"
 #include "GameFramework/PlayerController.h"
 #include "APlayerControl.generated.h"
@@ -18,6 +20,8 @@ class ONEPIECE_API APlayerControl : public APlayerController
 
 public:
 	APlayerControl();
+
+	void UpdateQuestRole(EQuestRole QuestRole);
 
 protected:
     virtual void BeginPlay() override;
@@ -35,6 +39,7 @@ protected:
 	UPROPERTY(EditDefaultsOnly, Category="Input") TObjectPtr<class UInputAction> IA_Interact;
 	UPROPERTY(EditDefaultsOnly, Category="Input") TObjectPtr<class UInputAction> IA_Run;
 	UPROPERTY(EditDefaultsOnly, Category="Input") TObjectPtr<class UInputAction> IA_Info;
+	UPROPERTY(EditDefaultsOnly, Category="Input") TObjectPtr<class UInputAction> IA_Hook;
 
 	// --- Handlers ---
 	void OnMove(const FInputActionValue& Value);
@@ -54,6 +59,8 @@ protected:
 
 	void OnInfo(const FInputActionValue& Value);
 
+	void OnHook(const FInputActionValue& Value);
+
 	UFUNCTION(Server, Reliable)
 	void Server_OnGrab();	
 
@@ -62,7 +69,10 @@ protected:
 
 	UFUNCTION(Server, Reliable)
 	void Server_OnInteract();
-	
+
+	UFUNCTION(Server, Reliable)
+	void Server_OnHook();
+
 private:
     class IControllable* GetControllable() const;
 };

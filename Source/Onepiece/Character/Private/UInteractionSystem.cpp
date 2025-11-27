@@ -58,13 +58,13 @@ void UInteractionSystem::TryInteract()
 	// 타입별 처리
 	switch (CurrentTarget->InteractionType)
 	{
-		case EInteractionType::PickUp:
-			PRINT_STRING(TEXT("부엉 부엉 %s"), *OwnerPlayer->GetName());
-			TryPickUp();
-			break;
+		// case EInteractionType::PickUp:
+		// 	PRINT_STRING(TEXT("부엉 부엉 %s"), *OwnerPlayer->GetName());
+		// 	TryPickUp();
+		// 	break;
 
 		case EInteractionType::Button:
-			PRINT_STRING(TEXT("부엉 부엉 %s"), *OwnerPlayer->GetName());
+			// PRINT_STRING(TEXT("부엉 부엉 %s"), *OwnerPlayer->GetName());
 			CurrentTarget->TriggerInteraction(OwnerPlayer);
 			break;
 

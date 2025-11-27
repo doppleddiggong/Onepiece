@@ -41,12 +41,27 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Components|System")
 	TObjectPtr<class UInteractionSystem> InteractionSystem;
 
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Components|System")
+	TObjectPtr<class UHookSystem> HookSystem;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Components|Hook")
+	TObjectPtr<class UStaticMeshComponent> HookCable;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Components|Hook")
+	TObjectPtr<class UStaticMeshComponent> HookProjectileMesh;
+
+
+
+	
 protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Camera", meta=(AllowPrivateAccess="true"))
 	TObjectPtr<class USpringArmComponent> SpringArmComp;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Camera", meta=(AllowPrivateAccess="true"))
 	TObjectPtr<class UCameraComponent> FollowCamera;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Camera", meta=(AllowPrivateAccess="true"))
+	TObjectPtr<class UHookComponent> HookComp;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category="RushAttack|Owner")
 	TObjectPtr<class UCharacterMovementComponent> MoveComp;
@@ -113,7 +128,12 @@ public:
 	/// @return 재생 성공 여부
 	UFUNCTION(BlueprintCallable, Category = "Voice")
 	void PlayTTSAudio(const TArray<uint8>& AudioData);
-	
+
+	/// @brief 메인 위젯을 가져옵니다.
+	/// @return 메인 위젯 인스턴스
+	UFUNCTION(BlueprintPure, Category = "UI")
+	class UMainWidget* GetMainWidget() const { return MainWidget; }
+
 private:
 	/// @brief 메인 위젯을 생성하고 뷰포트에 추가합니다.
 	void CreateMainWidget();

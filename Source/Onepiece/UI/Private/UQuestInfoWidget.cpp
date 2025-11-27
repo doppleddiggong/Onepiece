@@ -3,29 +3,37 @@
 
 #include "UQuestInfoWidget.h"
 #include "ALingoPlayerState.h"
+#include "UBroadcastManager.h"
 
 #include "ULingoGameHelper.h"
 #include "Components/TextBlock.h"
 
-void UQuestInfoWidget::InitQuestInfo()
+
+
+void UQuestInfoWidget::NativeConstruct()
+{
+	Super::NativeConstruct();
+
+	if (auto BM = UBroadcastManager::Get(GetWorld()))
+		BM->OnUpdateQuestRole.AddDynamic(this, &UQuestInfoWidget::InitQuestInfo);
+}
+
+void UQuestInfoWidget::InitQuestInfo(EQuestRole QuestRole)
 {
 	auto GS = ULingoGameHelper::GetLingoGameState(GetWorld());
 	if ( !GS->IsQuestIng() )
 		return;
 
-	if ( const auto PS = ULingoGameHelper::GetLingoPlayerState(GetWorld()) )
+	if ( QuestRole == EQuestRole::Both )
 	{
-		if ( PS->QuestRole == EReadQuestRole::Both )
-		{
-			Txt_Message->SetText( FText::FromString(GS->CurScenarioData.full_data.Kor));
-		}
-		else if ( PS->QuestRole == EReadQuestRole::OnlyQuestion1 )
-		{
-			Txt_Message->SetText( FText::FromString(GS->CurScenarioData.word_data1.Kor));
-		}
-		else if ( PS->QuestRole == EReadQuestRole::OnlyQuestion2 )
-		{
-			Txt_Message->SetText( FText::FromString(GS->CurScenarioData.word_data2.Kor));
-		}
-	}	
+		Txt_Message->SetText( FText::FromString(GS->CurScenarioData.full_data.Kor));
+	}
+	else if ( QuestRole == EQuestRole::OnlyQuestion1 )
+	{
+		Txt_Message->SetText( FText::FromString(GS->CurScenarioData.word_data1.Kor));
+	}
+	else if ( QuestRole == EQuestRole::OnlyQuestion2 )
+	{
+		Txt_Message->SetText( FText::FromString(GS->CurScenarioData.word_data2.Kor));
+	}
 }

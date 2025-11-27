@@ -6,12 +6,11 @@
 #include "Components/TextBlock.h"
 #include "GameFramework/PlayerController.h"
 #include "GameLogging.h"
+#include "UBroadcastManager.h"
 #include "ULingoGameHelper.h"
 #include "UPopupManager.h"
 #include "UTextureButton.h"
 #include "UWordWidget.h"
-
-class ALingoPlayerState;
 
 void UPopup_ReadQuest::NativeConstruct()
 {
@@ -22,6 +21,12 @@ void UPopup_ReadQuest::NativeConstruct()
 		Btn_Exit->OnButtonClickedEvent.RemoveDynamic(this, &UPopup_ReadQuest::OnClickClose);
 		Btn_Exit->OnButtonClickedEvent.AddDynamic(this, &UPopup_ReadQuest::OnClickClose);
 	}
+
+	if (auto BM = UBroadcastManager::Get(GetWorld()))
+	{
+		BM->OnUpdateQuestRole.RemoveDynamic(this, &UPopup_ReadQuest::InitQuestInfo);
+		BM->OnUpdateQuestRole.AddDynamic(this, &UPopup_ReadQuest::InitQuestInfo);
+	}
 }
 
 void UPopup_ReadQuest::InitPopup(const FResponseScenario& InScenarioData)
@@ -31,20 +36,17 @@ void UPopup_ReadQuest::InitPopup(const FResponseScenario& InScenarioData)
 	this->ScenarioData = InScenarioData;
 
 	if ( const auto PS = ULingoGameHelper::GetLingoPlayerState(GetWorld()) )
-	{
-		if ( PS->QuestRole == EReadQuestRole::Both )
-		{
-			WordWidget->InitWordData(InScenarioData.full_data);
-		}
-		else if ( PS->QuestRole == EReadQuestRole::OnlyQuestion1 )
-		{
-			WordWidget->InitWordData(InScenarioData.word_data1);
-		}
-		else if ( PS->QuestRole == EReadQuestRole::OnlyQuestion2 )
-		{
-			WordWidget->InitWordData(InScenarioData.word_data2);
-		}
-	}
+		InitQuestInfo(PS->QuestRole);
+}
+
+void UPopup_ReadQuest::InitQuestInfo(EQuestRole QuestRole)
+{
+	if ( QuestRole == EQuestRole::Both )
+		WordWidget->InitWordData(ScenarioData.full_data);
+	else if ( QuestRole == EQuestRole::OnlyQuestion1 )
+		WordWidget->InitWordData(ScenarioData.word_data1);
+	else if ( QuestRole == EQuestRole::OnlyQuestion2 )
+		WordWidget->InitWordData(ScenarioData.word_data2);
 }
 
 void UPopup_ReadQuest::OnClickClose()

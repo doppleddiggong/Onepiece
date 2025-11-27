@@ -21,6 +21,9 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "Utils")
 	static bool IsMultiPlay(const UObject* WorldContextObject);
+
+	UFUNCTION(BlueprintCallable, Category = "Utils")
+	static ALingoGameMode* GetLingoGameMode(const UObject* WorldContextObject);
 	
 	UFUNCTION(BlueprintCallable, Category = "Utils")
 	static ALingoGameState* GetLingoGameState(const UObject* WorldContextObject);
@@ -28,6 +31,9 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Utils")
 	static ALingoPlayerState* GetLingoPlayerState(const UObject* WorldContextObject);
 
+	UFUNCTION(BlueprintCallable, Category = "Utils")
+	static TArray<ALingoPlayerState*> GetLingoPlayerStateList(const UObject* WorldContextObject);
+	
 	UFUNCTION(BlueprintCallable, Category = "Utils")
 	static FString GetStageStartMessage(const int StageIndex);
 

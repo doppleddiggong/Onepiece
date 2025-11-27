@@ -9,7 +9,7 @@
 #include "CoreMinimal.h"
 #include "Macro.h"
 #include "EDamageType.h"
-
+#include "EQuestRole.h"
 #include "Subsystems/GameInstanceSubsystem.h"
 #include "UBroadcastManager.generated.h"
 
@@ -104,19 +104,17 @@ public:
 	void SendUserNameChanged(const FString& UserName);
 
 
-	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnMissionTimerStateChanged, bool, bIsActive);
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnUpdateMissionTimerState, bool, bIsActive, float, TimeLimit);
 	UPROPERTY(BlueprintAssignable, Category="Events")
-	FOnMissionTimerStateChanged OnMissionTimerStateChanged;
+	FOnUpdateMissionTimerState OnUpdateMissionTimerState;
 
 	UFUNCTION(BlueprintCallable, Category="Events")
-	void SendMissionTimerStateChanged(bool bIsActive);
+	void SendUpdateMissionTimerState(bool bIsActive, float TimeLimit);
 
-
-	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnStageStarted, int, StageIndex);
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnUpdateQuestRole, EQuestRole, QuestRole);
 	UPROPERTY(BlueprintAssignable, Category="Events")
-	FOnStageStarted OnStageStarted;
+	FOnUpdateQuestRole OnUpdateQuestRole;
 
 	UFUNCTION(BlueprintCallable, Category="Events")
-	void SendStageStarted(int StageIndex);
-
+	void SendUpdateQuestRole(EQuestRole QuestRole);
 };

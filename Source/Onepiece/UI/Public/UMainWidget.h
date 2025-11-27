@@ -18,8 +18,8 @@ class ONEPIECE_API UMainWidget : public UUserWidget
 public:
 	UMainWidget(const FObjectInitializer& ObjectInitializer);
 
-	void StartMissionTimer();
-	void StopMissionTimer();
+	void StartMissionTimer() const;
+	void StopMissionTimer() const;
 	
 protected:
 	/// @brief 위젯 초기화
@@ -39,7 +39,29 @@ public:
 
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
 	class UQuestInfoWidget* QuestInfoWidget;
-	
+
+	/// @brief 훅 가능 대상 표시 위젯 (옵션, BindWidgetOptional)
+	UPROPERTY(meta = (BindWidgetOptional), BlueprintReadOnly)
+	class UImage* HookTargetIndicator;
+
+public:
+	/// @brief 훅 타겟 인디케이터 표시/숨김
+	UFUNCTION(BlueprintCallable, Category = "Hook")
+	void SetHookTargetVisible(bool bVisible);
+
+	/// @brief 훅 인디케이터 상태 업데이트 (에임/비에임)
+	/// @param bIsAiming true면 타겟 감지됨(파란색), false면 비감지(회색)
+	UFUNCTION(BlueprintCallable, Category = "Hook")
+	void UpdateHookIndicatorState(bool bIsAiming);
+
+private:
+	/// @brief 훅 타겟 감지 시 이미지 (파란색)
+	UPROPERTY(EditDefaultsOnly, Category = "Hook")
+	TObjectPtr<class UTexture2D> HookAimTexture;
+
+	/// @brief 훅 타겟 미감지 시 이미지 (회색)
+	UPROPERTY(EditDefaultsOnly, Category = "Hook")
+	TObjectPtr<class UTexture2D> HookNoAimTexture;
 
 protected:
 	/// @brief GameState 참조 캐싱
@@ -51,5 +73,5 @@ protected:
 
 	/// @brief 미션 타이머 상태 변경 핸들러
 	UFUNCTION()
-	void OnMissionTimerStateChanged(bool bIsActive);
+	void OnUpdateMissionTimerState(bool bIsActive, float TimeLimit);
 };

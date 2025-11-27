@@ -38,25 +38,48 @@ public:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
 	TObjectPtr<class UWidgetComponent> BoxInfoWidgetComp;
 
-public:
-	// Index
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
+	TObjectPtr<class UHookComponent> HookComp;
+	
+
+protected:
+	//--------------------------------------------------------------//
+	// Luggage Info
+	//--------------------------------------------------------------//
+
+	// @brief 캐리어의 인덱스
 	int32 SpawnIdx = -1;
+	// @brief 캐리어의 색상
+	FString Color = "";
+	// @brief 캐리어의 무늬
+	FString Pattern = "";
 	
 public:
-	// Color
-	UPROPERTY(ReplicatedUsing=OnRep_ColorIndex)
-	int32 ColorIndex = -1;
+	UFUNCTION(BlueprintCallable)
+	void SetLuggageInfo(int32 InIdx, FString InColor, FString InPattern);
+
+	FORCEINLINE int32 GetSpawnIdx() {return SpawnIdx;}
+	FORCEINLINE FString GetColor() {return Color;}
+	FORCEINLINE FString GetPattern() {return Pattern;}
+	
+public:
+	// 색상의 인덱스값
+	UPROPERTY(ReplicatedUsing=OnRep_ColorIdx)
+	int32 ColorIdx = -1;
+	// 무늬의 인덱스값
+	UPROPERTY(ReplicatedUsing=OnRep_PatternIdx)
+	int32 PatternIdx = -1;
 
 	UFUNCTION()
-	void OnRep_ColorIndex();
+	void OnRep_ColorIdx();
 
+	UFUNCTION()
+	void OnRep_PatternIdx();
+
+	// 캐리어 색상 변경
 	void ApplyColorToMesh(int32 InColorIdx);
-
-	// Pattern
-	UPROPERTY()
-	FString PatternName;
-
-	void ApplyPatternToMesh(FString InPattern);
+	// 캐리어 무늬 변경
+	void ApplyPatternToMesh(int32 InPatternIdx);
 
 public:
 	// Outline
@@ -84,7 +107,7 @@ public:
 	/// @brief 캐리어의 색상 (문제2 정답)
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Quest")
 	FString Target2;
-
+	
 	/// @brief 플레이어가 캐리어를 선택했을 때 호출됩니다.
 	/// @param Interactor [in] 상호작용을 시도한 액터 (플레이어)
 	UFUNCTION(BlueprintCallable, Category = "Interaction")
@@ -94,4 +117,5 @@ public:
 	/// @param Player [in] 선택한 플레이어의 PlayerState
 	UFUNCTION(Server, Reliable, WithValidation)
 	void ServerNotifySelection(class APlayerState* Player);
+	
 };

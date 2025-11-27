@@ -9,25 +9,28 @@
 #include "UPlayTimer.h"
 #include "UStateWidget.h"
 #include "ALingoGameState.h"
+#include "ALingoPlayerState.h"
 #include "UBroadcastManager.h"
 #include "GameLogging.h"
 #include "ULingoGameHelper.h"
 #include "UQuestInfoWidget.h"
 #include "Engine/World.h"
+#include "Components/Image.h"
+#include "Engine/Texture2D.h"
+
+#define AIM_TEXTURE_PATH TEXT("/Game/CustomContents/UI/UITexture/HookAim.HookAim")
+#define NOAIM_TEXTURE_PATH TEXT("/Game/CustomContents/UI/UITexture/NoHookAim.NoHookAim")
 
 UMainWidget::UMainWidget(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer)
 {
+	static ConstructorHelpers::FObjectFinder<UTexture2D> AimTextureFinder(AIM_TEXTURE_PATH);
+	if (AimTextureFinder.Succeeded())
+		HookAimTexture = AimTextureFinder.Object;
+	static ConstructorHelpers::FObjectFinder<UTexture2D> NoAimTextureFinder(NOAIM_TEXTURE_PATH);
+	if (NoAimTextureFinder.Succeeded())
+		HookNoAimTexture = NoAimTextureFinder.Object;
 }
 
-void UMainWidget::StartMissionTimer()
-{
-	PlayTimer->SetVisibility(ESlateVisibility::Visible);
-}
-
-void UMainWidget::StopMissionTimer()
-{
-	PlayTimer->SetVisibility(ESlateVisibility::Hidden);
-}
 
 void UMainWidget::NativeConstruct()
 {
@@ -35,28 +38,17 @@ void UMainWidget::NativeConstruct()
 
 	// GameState 참조 가져오기
 	if (UWorld* World = GetWorld())
-	{
 		CachedGameState = World->GetGameState<ALingoGameState>();
 
-		if (CachedGameState)
-		{
-			PRINTLOG(TEXT("[MainWidget] GameState cached successfully"));
-		}
-		else
-		{
-			PRINTLOG(TEXT("[MainWidget] Failed to cache GameState"));
-		}
-	}
-
-	// BroadcastManager 이벤트 구독
-	if (UBroadcastManager* BroadcastManager = UBroadcastManager::Get(GetWorld()))
-	{
-		BroadcastManager->OnMissionTimerStateChanged.AddDynamic(this, &UMainWidget::OnMissionTimerStateChanged);
-		PRINTLOG(TEXT("[MainWidget] Subscribed to OnMissionTimerStateChanged"));
-	}
+	if (auto BM = UBroadcastManager::Get(GetWorld()))
+		BM->OnUpdateMissionTimerState.AddDynamic(this, &UMainWidget::OnUpdateMissionTimerState);
 
 	StateWidget->InitWidget();
 	QuestInfoWidget->SetVisibility( ESlateVisibility::Collapsed );
+
+	// 훅 타겟 인디케이터 초기 숨김
+	if (HookTargetIndicator)
+		HookTargetIndicator->SetVisibility(ESlateVisibility::Hidden);
 
 	StopMissionTimer();
 }
@@ -68,29 +60,78 @@ void UMainWidget::NativeTick(const FGeometry& MyGeometry, float InDeltaTime)
 	UpdateTimerDisplay();
 }
 
+void UMainWidget::StartMissionTimer() const
+{
+	PlayTimer->SetVisibility(ESlateVisibility::Visible);
+}
+
+void UMainWidget::StopMissionTimer() const
+{
+	PlayTimer->SetVisibility(ESlateVisibility::Hidden);
+}
+
 void UMainWidget::UpdateTimerDisplay()
 {
 	if (!CachedGameState || !PlayTimer)
 		return;
-
-	// GameState의 시간을 가져와서 PlayTimer 업데이트
-	FString TimeText = ULingoGameHelper::GetFormatTimer(CachedGameState->RemainMissionTime);
-	PlayTimer->UpdateTimerText(TimeText);
+	
+	PlayTimer->UpdateTimerText(ULingoGameHelper::GetFormatTimer(CachedGameState->RemainMissionTime));
 }
 
-void UMainWidget::OnMissionTimerStateChanged(bool bIsActive)
+void UMainWidget::OnUpdateMissionTimerState(bool bIsActive, float TimeLimit)
 {
-	PRINTLOG(TEXT("[MainWidget] Mission Timer State Changed - bIsActive: %s"), bIsActive ? TEXT("true") : TEXT("false"));
+	if (!CachedGameState)
+	{
+		if (UWorld* World = GetWorld())
+			CachedGameState = World->GetGameState<ALingoGameState>();
+	}
+
+	// GameState의 RemainMissionTime 업데이트
+	if (CachedGameState && bIsActive && TimeLimit > 0.0f)
+		CachedGameState->RemainMissionTime = TimeLimit;
+
+	
+	if (!QuestInfoWidget)
+		return;
 
 	QuestInfoWidget->SetVisibility(bIsActive ? ESlateVisibility::Visible : ESlateVisibility::Collapsed );
-	
+
 	if (bIsActive)
 	{
 		StartMissionTimer();
-		QuestInfoWidget->InitQuestInfo();
+		QuestInfoWidget->InitQuestInfo(ULingoGameHelper::GetLingoPlayerState(GetWorld())->QuestRole);
 	}
 	else
 	{
 		StopMissionTimer();
+	}
+}
+
+void UMainWidget::SetHookTargetVisible(bool bVisible)
+{
+	if (HookTargetIndicator)
+	{
+		HookTargetIndicator->SetVisibility(bVisible ? ESlateVisibility::Visible : ESlateVisibility::Hidden);
+	}
+}
+
+void UMainWidget::UpdateHookIndicatorState(bool bIsAiming)
+{
+	if (!HookTargetIndicator)
+		return;
+
+	// 항상 표시
+	HookTargetIndicator->SetVisibility(ESlateVisibility::Visible);
+
+	// 에임 상태에 따라 이미지 변경
+	if (bIsAiming && HookAimTexture)
+	{
+		// 타겟 감지됨 - 파란색 이미지
+		HookTargetIndicator->SetBrushFromTexture(HookAimTexture);
+	}
+	else if (!bIsAiming && HookNoAimTexture)
+	{
+		// 타겟 미감지 - 회색 이미지
+		HookTargetIndicator->SetBrushFromTexture(HookNoAimTexture);
 	}
 }

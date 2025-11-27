@@ -6,6 +6,7 @@
  */
 
 #include "UBroadcastManager.h"
+#include "GameLogging.h"
 
 void UBroadcastManager::SendMessage(const FString& InMsg)
 {
@@ -60,12 +61,12 @@ void UBroadcastManager::SendUserNameChanged(const FString& UserName)
 	OnUpdateUserName.Broadcast(UserName);
 }
 
-void UBroadcastManager::SendMissionTimerStateChanged(bool bIsActive)
+void UBroadcastManager::SendUpdateMissionTimerState(bool bIsActive, float TimeLimit)
 {
-	OnMissionTimerStateChanged.Broadcast(bIsActive);
+	OnUpdateMissionTimerState.Broadcast(bIsActive, TimeLimit);
 }
 
-void UBroadcastManager::SendStageStarted(int StageIndex)
+void UBroadcastManager::SendUpdateQuestRole(EQuestRole QuestRole)
 {
-	OnStageStarted.Broadcast(StageIndex);
+	OnUpdateQuestRole.Broadcast(QuestRole);
 }

@@ -16,7 +16,9 @@
 #include "InputAction.h"
 
 #include "FComponentHelper.h"
+#include "UBroadcastManager.h"
 #include "UInteractionSystem.h"
+#include "UHookSystem.h"
 
 #define IMC_DEFAULT_PATH			TEXT("/Game/CustomContents/Input/IMC_Game_Player.IMC_Game_Player")
 #define IA_MOVE_PATH				TEXT("/Game/CustomContents/Input/IA_Game_Movement.IA_Game_Movement")
@@ -27,6 +29,7 @@
 #define IA_INTERACT_PATH			TEXT("/Game/CustomContents/Input/IA_Game_Interact.IA_Game_Interact")
 #define IA_RUN_PATH					TEXT("/Game/CustomContents/Input/IA_Game_Run.IA_Game_Run")
 #define IA_INFO_PATH				TEXT("/Game/CustomContents/Input/IA_Game_Info.IA_Game_Info")
+#define IA_HOOK_PATH				TEXT("/Game/CustomContents/Input/IA_Game_Hook.IA_Game_Hook")
 
 
 APlayerControl::APlayerControl()
@@ -41,6 +44,7 @@ APlayerControl::APlayerControl()
 	IA_Interact = FComponentHelper::LoadAsset<UInputAction>(IA_INTERACT_PATH);
 	IA_Run = FComponentHelper::LoadAsset<UInputAction>(IA_RUN_PATH);
 	IA_Info = FComponentHelper::LoadAsset<UInputAction>(IA_INFO_PATH);
+	IA_Hook = FComponentHelper::LoadAsset<UInputAction>(IA_HOOK_PATH);
 }
 
 void APlayerControl::BeginPlay()
@@ -82,7 +86,14 @@ void APlayerControl::SetupInputComponent()
 		EIC->BindAction(IA_Run, ETriggerEvent::Started, this, &APlayerControl::OnRun);
 
 		EIC->BindAction(IA_Info, ETriggerEvent::Started, this, &APlayerControl::OnInfo);
+		
+		EIC->BindAction(IA_Hook, ETriggerEvent::Started, this, &APlayerControl::OnHook);
 	}
+}
+
+void APlayerControl::UpdateQuestRole(EQuestRole QuestRole)
+{
+	UBroadcastManager::Get(GetWorld())->SendUpdateQuestRole(QuestRole);
 }
 
 IControllable* APlayerControl::GetControllable() const
@@ -192,5 +203,19 @@ void APlayerControl::Server_OnInteract_Implementation()
 	if (MyPlayer && MyPlayer->InteractionSystem)
 	{
 		MyPlayer->InteractionSystem->TryInteract();
+	}
+}
+
+void APlayerControl::OnHook(const FInputActionValue& Value)
+{
+	Server_OnHook();
+}
+
+void APlayerControl::Server_OnHook_Implementation()
+{
+	APlayerActor* MyPlayer = Cast<APlayerActor>(GetPawn());
+	if (MyPlayer && MyPlayer->HookSystem)
+	{
+		MyPlayer->HookSystem->TryHook();
 	}
 }

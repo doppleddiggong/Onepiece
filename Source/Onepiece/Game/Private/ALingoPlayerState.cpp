@@ -1,6 +1,8 @@
 // Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
 
 #include "ALingoPlayerState.h"
+
+#include "APlayerControl.h"
 #include "UBroadcastManager.h"
 #include "Net/UnrealNetwork.h"
 #include "GameLogging.h"
@@ -46,7 +48,7 @@ void ALingoPlayerState::SetUserName(FString InUserName)
 void ALingoPlayerState::Server_SetSelectedWord1_Implementation(const FString& Word1)
 {
 	// Role 검증: OnlyQuestion2 역할은 심볼을 선택할 수 없음
-	if (QuestRole == EReadQuestRole::OnlyQuestion2)
+	if (QuestRole == EQuestRole::OnlyQuestion2)
 	{
 		PRINTLOG(TEXT("[PlayerState] ServerSetSelectedSymbol - Access denied for OnlyQuestion2 role"));
 		return;
@@ -67,7 +69,7 @@ bool ALingoPlayerState::Server_SetSelectedWord1_Validate(const FString& Word1)
 void ALingoPlayerState::Server_SetSelectedWord2_Implementation(const FString& Word2)
 {
 	// Role 검증: OnlyQuestion1 역할은 색상을 선택할 수 없음
-	if (QuestRole == EReadQuestRole::OnlyQuestion1)
+	if (QuestRole == EQuestRole::OnlyQuestion1)
 	{
 		PRINTLOG(TEXT("[PlayerState] ServerSetSelectedColor - Access denied for OnlyQuestion1 role"));
 		return;
@@ -88,6 +90,21 @@ bool ALingoPlayerState::Server_SetSelectedWord2_Validate(const FString& Word2)
 //--------------------------------------------------------------//
 // Read Quest OnRep Callbacks
 //--------------------------------------------------------------//
+
+void ALingoPlayerState::OnRep_QuestRole()
+{
+	PRINTLOG(TEXT("[PlayerState] OnRep_QuestRole: %s"), *ENUM_TO_NAME(EQuestRole, QuestRole));
+
+	// PC한테 콜을 날리고,
+	// PC가 판단해야해?
+	// 플레이어마다 QuestRole 정해져있음
+
+	APlayerControl* PC = Cast<APlayerControl>(GetOwner());
+	if (PC)
+	{
+		PC->UpdateQuestRole(QuestRole);
+	}
+}
 
 void ALingoPlayerState::OnRep_SelectedWord1()
 {

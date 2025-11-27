@@ -251,45 +251,49 @@ void ANetworkBroadcastActor::Multicast_SendKnockback_Implementation(AActor* Targ
 }
 
 // ========================================
-// Stage Started
+// Mission Timer State
 // ========================================
 
-void ANetworkBroadcastActor::SendStageStarted(int StageIndex, AActor* EventInstigator)
+void ANetworkBroadcastActor::SendUpdateMissionTimerState(bool bIsActive, float TimeLimit, AActor* EventInstigator)
 {
 	if (!EventInstigator)
 	{
-		PRINTLOG(TEXT("NetworkBroadcastActor: SendStageStarted - EventInstigator is null"));
+		PRINTLOG(TEXT("NetworkBroadcastActor: SendUpdateMissionTimerState - EventInstigator is null"));
 		return;
 	}
 
-	PRINTLOG(TEXT("NetworkBroadcastActor: SendStageStarted called - StageIndex: %d"), StageIndex);
+	PRINTLOG(TEXT("NetworkBroadcastActor: SendUpdateMissionTimerState called - bIsActive: %s, TimeLimit: %.1f"),
+		bIsActive ? TEXT("true") : TEXT("false"), TimeLimit);
 
-	Server_SendStageStarted(StageIndex, EventInstigator);
+	Server_SendUpdateMissionTimerState(bIsActive, TimeLimit, EventInstigator);
 }
 
-void ANetworkBroadcastActor::Server_SendStageStarted_Implementation(int StageIndex, AActor* EventInstigator)
+void ANetworkBroadcastActor::Server_SendUpdateMissionTimerState_Implementation(bool bIsActive, float TimeLimit, AActor* EventInstigator)
 {
 	if (!ValidateInstigator(EventInstigator))
 	{
-		PRINTLOG(TEXT("NetworkBroadcastActor: Invalid instigator for StageStarted"));
+		PRINTLOG(TEXT("NetworkBroadcastActor: Invalid instigator for SendUpdateMissionTimerState"));
 		return;
 	}
 
-	PRINTLOG(TEXT("NetworkBroadcastActor: Server received StageStarted - StageIndex: %d"), StageIndex);
+	PRINTLOG(TEXT("NetworkBroadcastActor: Server received SendUpdateMissionTimerState - bIsActive: %s, TimeLimit: %.1f"),
+		bIsActive ? TEXT("true") : TEXT("false"), TimeLimit);
 
-	Multicast_SendStageStarted(StageIndex);
+	Multicast_SendUpdateMissionTimerState(bIsActive, TimeLimit);
 }
 
-void ANetworkBroadcastActor::Multicast_SendStageStarted_Implementation(int StageIndex)
+void ANetworkBroadcastActor::Multicast_SendUpdateMissionTimerState_Implementation(bool bIsActive, float TimeLimit)
 {
-	PRINTLOG(TEXT("NetworkBroadcastActor: Multicast StageStarted - StageIndex: %d, Role: %s"),
-		StageIndex, GetLocalRole() == ROLE_Authority ? TEXT("Server") : TEXT("Client"));
+	PRINTLOG(TEXT("NetworkBroadcastActor: Multicast SendUpdateMissionTimerState - bIsActive: %s, TimeLimit: %.1f, Role: %s"),
+		bIsActive ? TEXT("true") : TEXT("false"),
+		TimeLimit,
+		GetLocalRole() == ROLE_Authority ? TEXT("Server") : TEXT("Client"));
 
 	UBroadcastManager* LocalBroadcast = GetLocalBroadcastManager();
 	if (LocalBroadcast)
 	{
-		LocalBroadcast->SendStageStarted(StageIndex);
-		PRINTLOG(TEXT("NetworkBroadcastActor: Local BroadcastManager triggered for StageStarted"));
+		LocalBroadcast->SendUpdateMissionTimerState(bIsActive, TimeLimit);
+		PRINTLOG(TEXT("NetworkBroadcastActor: Local BroadcastManager triggered for SendUpdateMissionTimerState"));
 	}
 }
 

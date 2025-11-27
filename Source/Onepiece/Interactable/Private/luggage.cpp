@@ -8,6 +8,7 @@
 #include "BoxInfoWidget.h"
 #include "GameLogging.h"
 #include "UGameDataManager.h"
+#include "UHookComponent.h"
 #include "Components/BoxComponent.h"
 #include "Components/WidgetComponent.h"
 #include "Net/UnrealNetwork.h"
@@ -37,6 +38,8 @@ Aluggage::Aluggage()
 	InteractableComp = CreateDefaultSubobject<UInteractableComponent>(TEXT("Interactable"));
 	InteractableComp->InteractionType = EInteractionType::PickUp;
 	InteractableComp->InteractionPrompt = TEXT("Press E to Grap");
+
+	HookComp = CreateDefaultSubobject<UHookComponent>(TEXT("Hook"));
 	
 	// Initial settings
 	Mesh1Comp->SetSimulatePhysics(true);
@@ -71,12 +74,12 @@ void Aluggage::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 	
 	BillboardInfoWidget();
-	
+
 	// Pattern 이름을 luggage 위에 표시
-	if (!PatternName.IsEmpty())
+	if (!Pattern.IsEmpty())
 	{
 		FVector TextLocation = GetActorLocation() + FVector(0, 0, 100);
-		DrawDebugString(GetWorld(), TextLocation, PatternName, nullptr, FColor::White, 0.f, true);
+		DrawDebugString(GetWorld(), TextLocation, Pattern, nullptr, FColor::White, 0.f, true);
 	}
 }
 
@@ -84,22 +87,35 @@ void Aluggage::GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLi
 {
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
 
-	DOREPLIFETIME(Aluggage, ColorIndex);
+	DOREPLIFETIME(Aluggage, ColorIdx);
+	DOREPLIFETIME(Aluggage, PatternIdx);
 }
 
-void Aluggage::OnRep_ColorIndex()
+void Aluggage::SetLuggageInfo(int32 InIdx, FString InColor, FString InPattern)
 {
-	ApplyColorToMesh(ColorIndex);
+	SpawnIdx = InIdx;
+	Color = InColor;
+	Pattern = InPattern;
+}
+
+void Aluggage::OnRep_ColorIdx()
+{
+	ApplyColorToMesh(ColorIdx);
+}
+
+void Aluggage::OnRep_PatternIdx()
+{
+	ApplyPatternToMesh(PatternIdx);
 }
 
 void Aluggage::ApplyColorToMesh(int32 InColorIdx)
 {
-	ColorIndex = InColorIdx;
+	ColorIdx = InColorIdx;
 
 	FColorData ColorData;
 	if (UGameDataManager::Get(GetWorld())->GetColorData(InColorIdx, ColorData))
 	{
-		FLinearColor Color = ColorData.GetLinearColor();
+		FLinearColor LinearColor = ColorData.GetLinearColor();
 
 		UMaterialInterface* OriginalMaterial = Mesh3Comp->GetMaterial(0);
 		if (OriginalMaterial)
@@ -107,17 +123,20 @@ void Aluggage::ApplyColorToMesh(int32 InColorIdx)
 			UMaterialInstanceDynamic* NewMaterial = UMaterialInstanceDynamic::Create(OriginalMaterial, this);
 			if (NewMaterial && Mesh3Comp)
 			{
-				// BaseColorFactor로 변경!                                                                                                                                                                          
-				NewMaterial->SetVectorParameterValue(FName("BaseColorFactor"), Color);
+				// BaseColorFactor로 변경
+				NewMaterial->SetVectorParameterValue(FName("BaseColorFactor"), LinearColor);
 				Mesh3Comp->SetMaterial(0, NewMaterial);
 			}
 		}
 	}
 }
 
-void Aluggage::ApplyPatternToMesh(FString InPattern)
+void Aluggage::ApplyPatternToMesh(int32 InPatternIdx)
 {
-	PatternName = InPattern;
+	PatternIdx = InPatternIdx;
+
+	// 데칼 바꾸기
+	// ...
 }
 
 void Aluggage::OutlineOn()
@@ -179,7 +198,7 @@ void Aluggage::OnInteract(AActor* Interactor)
 		return;
 	}
 
-	PRINTLOG(TEXT("[Luggage] OnInteract - Player selected luggage with Target1: %s, Target2: %s"), *Target1, *Target2);
+	//PRINTLOG(TEXT("[Luggage] OnInteract - Player selected luggage with Target1: %s, Target2: %s"), *Target1, *Target2);
 
 	// 서버에 선택 알림
 	ServerNotifySelection(PS);
@@ -212,3 +231,4 @@ bool Aluggage::ServerNotifySelection_Validate(APlayerState* Player)
 	// 기본적인 검증: Player가 유효한지 확인
 	return Player != nullptr;
 }
+
