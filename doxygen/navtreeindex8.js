@@ -1,5 +1,13 @@
 var NAVTREEINDEX8 =
 {
+"structFEaseFloatTrack.html#a84e1d3f764f684ccd9e86512be08b9e3":[2,0,28,6],
+"structFEaseFloatTrack.html#aa1ea60f053068275c19e2ccfe012e6b2":[2,0,28,4],
+"structFEaseFloatTrack.html#abedeae11ab6d5dd3e99bb4eb480b90bb":[2,0,28,5],
+"structFEaseFloatTrack.html#aed76d1a818a57dbe98a6fafc40520956":[2,0,28,7],
+"structFEaseHelper.html":[2,0,29],
+"structFEaseHelper.html#a2a09be8079b0151cad5b52c4250e299f":[2,0,29,0],
+"structFEaseRotatorTrack.html":[2,0,30],
+"structFEaseRotatorTrack.html#a189b91bc73c40fa59529fa80614595cd":[2,0,30,7],
 "structFEaseRotatorTrack.html#a66108bab12b6d74feda30559fe4ed79f":[2,0,30,5],
 "structFEaseRotatorTrack.html#a91e03ce8f6e5667caea3d7cecf5721b2":[2,0,30,0],
 "structFEaseRotatorTrack.html#abca6d0440616002e8892450d1b4a7844":[2,0,30,3],

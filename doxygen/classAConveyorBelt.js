@@ -5,6 +5,8 @@ var classAConveyorBelt =
     [ "ChangeConveyorMovement", "classAConveyorBelt.html#afd529ca236321f94d9185d5ae40c5883", null ],
     [ "MoveOverlappedSkeletals", "classAConveyorBelt.html#af068d208f3cb10bd47f96e610414005b", null ],
     [ "MoveOverlappedStatics", "classAConveyorBelt.html#ac868e0d8a190b9ee1098014d0e1d69b1", null ],
+    [ "MulticastRPC_ChangeConveyorMovement", "classAConveyorBelt.html#a4d2470f9eb28fee974899fb5d6749b4f", null ],
+    [ "ServerRPC_ChangeConveyorMovement", "classAConveyorBelt.html#a41afb7e8ba5a69ce397f2dd0515abf97", null ],
     [ "Tick", "classAConveyorBelt.html#a22092f269b38203f08c9e53fc055875b", null ],
     [ "BeltBoxComp", "classAConveyorBelt.html#a3e925eb72eab465bc4d3abea2e11c233", null ],
     [ "BeltComp", "classAConveyorBelt.html#a39e16cd62bf967fc05d31221b72a8056", null ],
