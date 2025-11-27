@@ -39,6 +39,7 @@ protected:
 	UPROPERTY(EditDefaultsOnly, Category="Input") TObjectPtr<class UInputAction> IA_Interact;
 	UPROPERTY(EditDefaultsOnly, Category="Input") TObjectPtr<class UInputAction> IA_Run;
 	UPROPERTY(EditDefaultsOnly, Category="Input") TObjectPtr<class UInputAction> IA_Info;
+	UPROPERTY(EditDefaultsOnly, Category="Input") TObjectPtr<class UInputAction> IA_Hook;
 
 	// --- Handlers ---
 	void OnMove(const FInputActionValue& Value);
@@ -58,6 +59,8 @@ protected:
 
 	void OnInfo(const FInputActionValue& Value);
 
+	void OnHook(const FInputActionValue& Value);
+
 	UFUNCTION(Server, Reliable)
 	void Server_OnGrab();	
 
@@ -66,7 +69,10 @@ protected:
 
 	UFUNCTION(Server, Reliable)
 	void Server_OnInteract();
-	
+
+	UFUNCTION(Server, Reliable)
+	void Server_OnHook();
+
 private:
     class IControllable* GetControllable() const;
 };

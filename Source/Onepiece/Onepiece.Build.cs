@@ -61,6 +61,11 @@ public class Onepiece : ModuleRules
 			"AudioPlatformConfiguration",
 		});
 		
+		PublicDependencyModuleNames.AddRange(new string[]
+		{
+			"CableComponent",     
+		});
+	
 		PrivateDependencyModuleNames.AddRange(new string[]
 		{
 			"CoffeeLibrary",

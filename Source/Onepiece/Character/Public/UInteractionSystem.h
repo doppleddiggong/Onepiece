@@ -80,6 +80,10 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Interaction")
 	USceneComponent* GetHoldPosition() const;
 
+	/** LineTrace 실행 */
+	UFUNCTION(BlueprintCallable, Category = "Interaction")
+	bool PerformCenterLineTrace(FHitResult& OutHit);
+
 protected:
 	// ========================================
 	// 감지 시스템
@@ -87,9 +91,6 @@ protected:
 
 	/** 화면 중앙 LineTrace로 타겟 감지 */
 	UInteractableComponent* DetectInteractableTarget();
-
-	/** LineTrace 실행 */
-	bool PerformCenterLineTrace(FHitResult& OutHit);
 
 private:
 	// ========================================

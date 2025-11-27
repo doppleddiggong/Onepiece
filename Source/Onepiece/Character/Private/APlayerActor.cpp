@@ -17,6 +17,7 @@
 #include "UDialogManager.h"
 #include "UVoiceConversationSystem.h"
 #include "UInteractionSystem.h"
+#include "UHookSystem.h"
 #include "ULingoGameHelper.h"
 #include "UPopupManager.h"
 #include "UPopup_ReadQuest.h"
@@ -31,6 +32,8 @@
 #include "GameFramework/PlayerController.h"
 #include "Net/UnrealNetwork.h"
 #include "Blueprint/UserWidget.h"
+#include "CableComponent.h"
+#include "Components/StaticMeshComponent.h"
 #include "Onepiece/Onepiece.h"
 
 #define MAINWIDGET_PATH TEXT("/Game/CustomContents/UI/WBP_MainWidget.WBP_MainWidget_C")
@@ -75,7 +78,26 @@ APlayerActor::APlayerActor()
 
 	// System Component
 	InteractionSystem = CreateDefaultSubobject<UInteractionSystem>(TEXT("InteractionSystem"));
+	HookSystem = CreateDefaultSubobject<UHookSystem>(TEXT("HookSystem"));
 	VoiceConversationSystem = CreateDefaultSubobject<UVoiceConversationSystem>(TEXT("VoiceConversationSystem"));
+
+	// Hook Cable Component
+	HookCable = CreateDefaultSubobject<UCableComponent>(TEXT("HookCable"));
+	HookCable->SetupAttachment(GetMesh());
+	HookCable->SetVisibility(false);
+
+	// Hook Projectile Mesh (훅 발사체 시각화)
+	HookProjectileMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("HookProjectileMesh"));
+	HookProjectileMesh->SetupAttachment(GetMesh());
+	HookProjectileMesh->SetVisibility(false);
+	HookProjectileMesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+	// 기본 구체 메시 사용 (에디터에서 변경 가능)
+	static ConstructorHelpers::FObjectFinder<UStaticMesh> SphereMesh(TEXT("/Engine/BasicShapes/Sphere.Sphere"));
+	if (SphereMesh.Succeeded())
+	{
+		HookProjectileMesh->SetStaticMesh(SphereMesh.Object);
+		HookProjectileMesh->SetRelativeScale3D(FVector(0.3f)); // 작은 크기
+	}
 
 	// MainWidget 클래스 자동 로드
 	MainWidgetClass = FComponentHelper::LoadClass<UMainWidget>(MAINWIDGET_PATH);
@@ -88,6 +110,12 @@ void APlayerActor::BeginPlay()
 	MoveComp = this->GetCharacterMovement();
 
 	VoiceConversationSystem->InitSystem(this);
+
+	// Hook System 초기화 - Cable과 Projectile Mesh 전달
+	if (HookSystem && HookCable && HookProjectileMesh)
+	{
+		HookSystem->InitSystem(HookCable, HookProjectileMesh);
+	}
 
 	if (IsLocallyControlled())
 	{

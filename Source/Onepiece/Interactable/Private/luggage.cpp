@@ -8,6 +8,7 @@
 #include "BoxInfoWidget.h"
 #include "GameLogging.h"
 #include "UGameDataManager.h"
+#include "UHookComponent.h"
 #include "Components/BoxComponent.h"
 #include "Components/WidgetComponent.h"
 #include "Net/UnrealNetwork.h"
@@ -37,6 +38,8 @@ Aluggage::Aluggage()
 	InteractableComp = CreateDefaultSubobject<UInteractableComponent>(TEXT("Interactable"));
 	InteractableComp->InteractionType = EInteractionType::PickUp;
 	InteractableComp->InteractionPrompt = TEXT("Press E to Grap");
+
+	HookComp = CreateDefaultSubobject<UHookComponent>(TEXT("Hook"));
 	
 	// Initial settings
 	Mesh1Comp->SetSimulatePhysics(true);
@@ -71,12 +74,12 @@ void Aluggage::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 	
 	BillboardInfoWidget();
-	
+
 	// Pattern 이름을 luggage 위에 표시
-	if (!PatternName.IsEmpty())
+	if (!Pattern.IsEmpty())
 	{
 		FVector TextLocation = GetActorLocation() + FVector(0, 0, 100);
-		DrawDebugString(GetWorld(), TextLocation, PatternName, nullptr, FColor::White, 0.f, true);
+		DrawDebugString(GetWorld(), TextLocation, Pattern, nullptr, FColor::White, 0.f, true);
 	}
 }
 
