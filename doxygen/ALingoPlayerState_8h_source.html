@@ -115,7 +115,7 @@ $(document).ready(function(){initNavTree('ALingoPlayerState_8h_source.html','');
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;CoreMinimal.h&quot;</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;GameFramework/PlayerState.h&quot;</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;<a class="code" href="NetworkData_8h.html">NetworkData.h</a>&quot;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;<a class="code" href="EQuestRole_8h.html">EQuestRole.h</a>&quot;</span></div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;ALingoPlayerState.generated.h&quot;</span></div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>UCLASS()</div>
@@ -153,38 +153,41 @@ $(document).ready(function(){initNavTree('ALingoPlayerState_8h_source.html','');
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    UFUNCTION(Server, Reliable, WithValidation)</div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="classALingoPlayerState.html#abab5fd2d52500b32fb11e04f9ec20c90">   44</a></span>    <span class="keywordtype">void</span> Server_SetSelectedWord2(const FString&amp; Word2);</div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    UFUNCTION()</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="keywordtype">void</span> OnRep_SelectedWord1();</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    UFUNCTION()</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="keywordtype">void</span> OnRep_SelectedWord2();</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    UFUNCTION()</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <span class="keywordtype">void</span> OnRep_WrongWord1();</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    UFUNCTION()</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="keywordtype">void</span> OnRep_WrongWord2();</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    </div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>public:</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    UPROPERTY(Replicated, BlueprintReadOnly, Category = &quot;Quest&quot;)</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno"><a class="line" href="classALingoPlayerState.html#acf4f468695f3ad9bc747d3f9fbb083e6">   65</a></span>    <a class="code hl_enumeration" href="NetworkData_8h.html#a2798a9fa176a1ddb262869e791949226">EReadQuestRole</a> QuestRole = <a class="code hl_enumeration" href="NetworkData_8h.html#a2798a9fa176a1ddb262869e791949226">EReadQuestRole</a>::Both;</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    UPROPERTY(Replicated, BlueprintReadOnly, Category = &quot;Quest&quot;)</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="classALingoPlayerState.html#a84ee00df5be0502498039d5d0d1ec94a">   69</a></span>    int32 AttemptCount = 0;</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    </div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    UPROPERTY(ReplicatedUsing = OnRep_SelectedWord1, BlueprintReadOnly, Category = &quot;Quest&quot;)</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno"><a class="line" href="classALingoPlayerState.html#a283004fed1584dfdb4da7c5e741eaeb0">   73</a></span>    FString SelectedWord1;</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    UPROPERTY(ReplicatedUsing = OnRep_WrongWord1, BlueprintReadOnly, Category = &quot;Quest&quot;)</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno"><a class="line" href="classALingoPlayerState.html#a908ae866e1e0bfa4ce76fbcc0ec88c26">   76</a></span>    <span class="keywordtype">bool</span> bWrongWord1 = false;</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    </div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    UPROPERTY(ReplicatedUsing = OnRep_SelectedWord2, BlueprintReadOnly, Category = &quot;Quest&quot;)</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno"><a class="line" href="classALingoPlayerState.html#a2136c7bb3522dbe59a8f8609325c4b93">   80</a></span>    FString SelectedWord2;</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    UPROPERTY(ReplicatedUsing = OnRep_WrongWord2, BlueprintReadOnly, Category = &quot;Quest&quot;)</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno"><a class="line" href="classALingoPlayerState.html#aa63a7acdcfd801d2700441701f9e5279">   83</a></span>    <span class="keywordtype">bool</span> bWrongWord2 = false;</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>};</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    UFUNCTION()</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keywordtype">void</span> OnRep_QuestRole();</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    UFUNCTION()</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="keywordtype">void</span> OnRep_SelectedWord1();</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    UFUNCTION()</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="keywordtype">void</span> OnRep_SelectedWord2();</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    UFUNCTION()</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="keywordtype">void</span> OnRep_WrongWord1();</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    UFUNCTION()</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <span class="keywordtype">void</span> OnRep_WrongWord2();</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    </div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>public:</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    UPROPERTY(ReplicatedUsing = OnRep_QuestRole, BlueprintReadOnly, Category = &quot;Quest&quot;)</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno"><a class="line" href="classALingoPlayerState.html#abd97c5fbf5a4be586808c892ec02586b">   68</a></span>    <a class="code hl_enumeration" href="EQuestRole_8h.html#af9534ca095b724046bf40abddcbb95e9">EQuestRole</a> QuestRole = <a class="code hl_enumeration" href="EQuestRole_8h.html#af9534ca095b724046bf40abddcbb95e9">EQuestRole</a>::Both;</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    UPROPERTY(Replicated, BlueprintReadOnly, Category = &quot;Quest&quot;)</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno"><a class="line" href="classALingoPlayerState.html#a84ee00df5be0502498039d5d0d1ec94a">   72</a></span>    int32 AttemptCount = 0;</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    </div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    UPROPERTY(ReplicatedUsing = OnRep_SelectedWord1, BlueprintReadOnly, Category = &quot;Quest&quot;)</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno"><a class="line" href="classALingoPlayerState.html#a283004fed1584dfdb4da7c5e741eaeb0">   76</a></span>    FString SelectedWord1;</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    UPROPERTY(ReplicatedUsing = OnRep_WrongWord1, BlueprintReadOnly, Category = &quot;Quest&quot;)</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno"><a class="line" href="classALingoPlayerState.html#a908ae866e1e0bfa4ce76fbcc0ec88c26">   79</a></span>    <span class="keywordtype">bool</span> bWrongWord1 = false;</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    </div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    UPROPERTY(ReplicatedUsing = OnRep_SelectedWord2, BlueprintReadOnly, Category = &quot;Quest&quot;)</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno"><a class="line" href="classALingoPlayerState.html#a2136c7bb3522dbe59a8f8609325c4b93">   83</a></span>    FString SelectedWord2;</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    UPROPERTY(ReplicatedUsing = OnRep_WrongWord2, BlueprintReadOnly, Category = &quot;Quest&quot;)</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno"><a class="line" href="classALingoPlayerState.html#aa63a7acdcfd801d2700441701f9e5279">   86</a></span>    <span class="keywordtype">bool</span> bWrongWord2 = false;</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>};</div>
 </div>
-<div class="ttc" id="aNetworkData_8h_html"><div class="ttname"><a href="NetworkData_8h.html">NetworkData.h</a></div><div class="ttdoc">네트워크 요청과 응답에 사용되는 구조체 및 설정을 정의합니다.</div></div>
-<div class="ttc" id="aNetworkData_8h_html_a2798a9fa176a1ddb262869e791949226"><div class="ttname"><a href="NetworkData_8h.html#a2798a9fa176a1ddb262869e791949226">EReadQuestRole</a></div><div class="ttdeci">EReadQuestRole</div><div class="ttdoc">Read 퀘스트에서 플레이어의 역할을 정의합니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00312">NetworkData.h:313</a></div></div>
+<div class="ttc" id="aEQuestRole_8h_html"><div class="ttname"><a href="EQuestRole_8h.html">EQuestRole.h</a></div></div>
+<div class="ttc" id="aEQuestRole_8h_html_af9534ca095b724046bf40abddcbb95e9"><div class="ttname"><a href="EQuestRole_8h.html#af9534ca095b724046bf40abddcbb95e9">EQuestRole</a></div><div class="ttdeci">EQuestRole</div><div class="ttdoc">Read 퀘스트에서 플레이어의 역할을 정의합니다.</div><div class="ttdef"><b>Definition</b> <a href="EQuestRole_8h_source.html#l00005">EQuestRole.h:6</a></div></div>
 <div class="ttc" id="aclassALingoPlayerState_html"><div class="ttname"><a href="classALingoPlayerState.html">ALingoPlayerState</a></div><div class="ttdef"><b>Definition</b> <a href="ALingoPlayerState_8h_source.html#l00011">ALingoPlayerState.h:12</a></div></div>
 <div class="ttc" id="aclassALingoPlayerState_html_a75f98be692a0e94274a7b88beb789dec"><div class="ttname"><a href="classALingoPlayerState.html#a75f98be692a0e94274a7b88beb789dec">ALingoPlayerState::GetToken</a></div><div class="ttdeci">FString GetToken()</div><div class="ttdef"><b>Definition</b> <a href="ALingoPlayerState_8h_source.html#l00023">ALingoPlayerState.h:23</a></div></div>
 <div class="ttc" id="aclassALingoPlayerState_html_a77b1b5154d7bfc9ac74de0ff796f1e34"><div class="ttname"><a href="classALingoPlayerState.html#a77b1b5154d7bfc9ac74de0ff796f1e34">ALingoPlayerState::AccessToken</a></div><div class="ttdeci">FString AccessToken</div><div class="ttdef"><b>Definition</b> <a href="ALingoPlayerState_8h_source.html#l00029">ALingoPlayerState.h:29</a></div></div>
@@ -196,7 +199,7 @@ $(document).ready(function(){initNavTree('ALingoPlayerState_8h_source.html','');
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_7fb5e64dcba5cad56d11a2ce531d1e7a.html">Game</a></li><li class="navelem"><a class="el" href="dir_7d5071b022ae16b4c5bc069534dc4de0.html">Public</a></li><li class="navelem"><a class="el" href="ALingoPlayerState_8h.html">ALingoPlayerState.h</a></li>
-    <li class="footer">생성시간 : 수 11월 26 2025 13:43:04, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 목 11월 27 2025 04:24:53, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

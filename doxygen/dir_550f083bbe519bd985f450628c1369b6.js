@@ -1,5 +1,6 @@
 var dir_550f083bbe519bd985f450628c1369b6 =
 [
+    [ "BoxInfoWidget.cpp", "BoxInfoWidget_8cpp.html", null ],
     [ "DrawingBoardWidget.cpp", "DrawingBoardWidget_8cpp.html", null ],
     [ "LobbyWidget.cpp", "LobbyWidget_8cpp.html", null ],
     [ "SessionInfoWidget.cpp", "SessionInfoWidget_8cpp.html", null ],

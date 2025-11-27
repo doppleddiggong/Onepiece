@@ -70,6 +70,7 @@ var annotated_dup =
     [ "IControllable", "classIControllable.html", "classIControllable" ],
     [ "ISequenceActivatable", "classISequenceActivatable.html", "classISequenceActivatable" ],
     [ "UBasePopup", "classUBasePopup.html", "classUBasePopup" ],
+    [ "UBoxInfoWidget", "classUBoxInfoWidget.html", "classUBoxInfoWidget" ],
     [ "UBroadcastManager", "classUBroadcastManager.html", "classUBroadcastManager" ],
     [ "UCharacterData", "classUCharacterData.html", "classUCharacterData" ],
     [ "UCommonFunctionLibrary", "classUCommonFunctionLibrary.html", "classUCommonFunctionLibrary" ],

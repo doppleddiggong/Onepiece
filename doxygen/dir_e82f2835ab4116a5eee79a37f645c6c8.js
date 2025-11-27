@@ -1,5 +1,6 @@
 var dir_e82f2835ab4116a5eee79a37f645c6c8 =
 [
+    [ "BoxInfoWidget.h", "BoxInfoWidget_8h.html", "BoxInfoWidget_8h" ],
     [ "DrawingBoardWidget.h", "DrawingBoardWidget_8h.html", "DrawingBoardWidget_8h" ],
     [ "LobbyWidget.h", "LobbyWidget_8h.html", "LobbyWidget_8h" ],
     [ "SessionInfoWidget.h", "SessionInfoWidget_8h.html", "SessionInfoWidget_8h" ],

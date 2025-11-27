@@ -122,7 +122,7 @@ $(document).ready(function(){initNavTree('classUPopup__ReadQuest.html',''); init
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classUPopup__ReadQuest__inherit__graph.svg" width="166" height="563"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classUPopup__ReadQuest__inherit__graph.svg" width="166" height="583"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="closed.png" alt="+"/> UPopup_ReadQuest에 대한 협력 다이어그램:</div>
@@ -136,6 +136,8 @@ $(document).ready(function(){initNavTree('classUPopup__ReadQuest.html',''); init
 Public 멤버 함수</h2></td></tr>
 <tr class="memitem:a739783493974504d947dbd03c388c6d0" id="r_a739783493974504d947dbd03c388c6d0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUPopup__ReadQuest.html#a739783493974504d947dbd03c388c6d0">InitPopup</a> (const <a class="el" href="structFResponseScenario.html">FResponseScenario</a> &amp;InScenarioData)</td></tr>
 <tr class="separator:a739783493974504d947dbd03c388c6d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a101bd5521b4278ac0cec0d5361d63b58" id="r_a101bd5521b4278ac0cec0d5361d63b58"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUPopup__ReadQuest.html#a101bd5521b4278ac0cec0d5361d63b58">InitQuestInfo</a> (<a class="el" href="EQuestRole_8h.html#af9534ca095b724046bf40abddcbb95e9">EQuestRole</a> QuestRole)</td></tr>
+<tr class="separator:a101bd5521b4278ac0cec0d5361d63b58"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a750c1a854f68ca16faa069645531abd6" id="r_a750c1a854f68ca16faa069645531abd6"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUBasePopup.html#a750c1a854f68ca16faa069645531abd6">NativeTick</a> (const FGeometry &amp;MyGeometry, float InDeltaTime) override</td></tr>
 <tr class="separator:a750c1a854f68ca16faa069645531abd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2c3d2b47f8255c0172cf9f218790fcc8" id="r_a2c3d2b47f8255c0172cf9f218790fcc8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUBasePopup.html#a2c3d2b47f8255c0172cf9f218790fcc8">OpenAnimation</a> ()</td></tr>
@@ -197,7 +199,7 @@ Private 속성</h2></td></tr>
 <div class="textblock"><p>Read 퀘스트 메인 위젯 </p>
 <p>Step1(Read) 퀘스트의 UI를 관리합니다. </p>
 
-<p class="definition"><a class="el" href="UPopup__ReadQuest_8h_source.html">UPopup_ReadQuest.h</a> 파일의 <a class="el" href="UPopup__ReadQuest_8h_source.html#l00014">14</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="UPopup__ReadQuest_8h_source.html">UPopup_ReadQuest.h</a> 파일의 <a class="el" href="UPopup__ReadQuest_8h_source.html#l00015">15</a> 번째 라인에서 정의되었습니다.</p>
 </div><h2 class="groupheader">멤버 함수 문서화</h2>
 <a id="a739783493974504d947dbd03c388c6d0" name="a739783493974504d947dbd03c388c6d0"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a739783493974504d947dbd03c388c6d0">&#9670;&#160;</a></span>InitPopup()</h2>
@@ -215,44 +217,78 @@ Private 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="UPopup__ReadQuest_8cpp_source.html">UPopup_ReadQuest.cpp</a> 파일의 <a class="el" href="UPopup__ReadQuest_8cpp_source.html#l00027">27</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   28</span>{</div>
-<div class="line"><span class="lineno">   29</span>    <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[ReadQuestWidget] InitPopup quest&quot;</span>));</div>
-<div class="line"><span class="lineno">   30</span> </div>
-<div class="line"><span class="lineno">   31</span>    this-&gt;<a class="code hl_variable" href="classUPopup__ReadQuest.html#a57e2829fc1457eab5ed66d12e3b54fed">ScenarioData</a> = InScenarioData;</div>
-<div class="line"><span class="lineno">   32</span> </div>
-<div class="line"><span class="lineno">   33</span>    <span class="keywordflow">if</span> ( <span class="keyword">const</span> <span class="keyword">auto</span> PS = <a class="code hl_function" href="classULingoGameHelper.html#a6117f2f4942b42864305def958e0c108">ULingoGameHelper::GetLingoPlayerState</a>(GetWorld()) )</div>
-<div class="line"><span class="lineno">   34</span>    {</div>
-<div class="line"><span class="lineno">   35</span>        <span class="keywordflow">if</span> ( PS-&gt;QuestRole == EReadQuestRole::Both )</div>
-<div class="line"><span class="lineno">   36</span>        {</div>
-<div class="line"><span class="lineno">   37</span>            <a class="code hl_variable" href="classUPopup__ReadQuest.html#aed4ecc73e8fe95e589c02336119b6f99">WordWidget</a>-&gt;<a class="code hl_function" href="classUWordWidget.html#a4042d45c4417913b25fa4ef44d5eccc1">InitWordData</a>(InScenarioData.<a class="code hl_variable" href="structFResponseScenario.html#a9bff69bbde9960207d254f3daacaba16">full_data</a>);</div>
-<div class="line"><span class="lineno">   38</span>        }</div>
-<div class="line"><span class="lineno">   39</span>        <span class="keywordflow">else</span> <span class="keywordflow">if</span> ( PS-&gt;QuestRole == EReadQuestRole::OnlyQuestion1 )</div>
-<div class="line"><span class="lineno">   40</span>        {</div>
-<div class="line"><span class="lineno">   41</span>            <a class="code hl_variable" href="classUPopup__ReadQuest.html#aed4ecc73e8fe95e589c02336119b6f99">WordWidget</a>-&gt;<a class="code hl_function" href="classUWordWidget.html#a4042d45c4417913b25fa4ef44d5eccc1">InitWordData</a>(InScenarioData.<a class="code hl_variable" href="structFResponseScenario.html#a23a268e8417d76ddd5dc553e80819df4">word_data1</a>);</div>
-<div class="line"><span class="lineno">   42</span>        }</div>
-<div class="line"><span class="lineno">   43</span>        <span class="keywordflow">else</span> <span class="keywordflow">if</span> ( PS-&gt;QuestRole == EReadQuestRole::OnlyQuestion2 )</div>
-<div class="line"><span class="lineno">   44</span>        {</div>
-<div class="line"><span class="lineno">   45</span>            <a class="code hl_variable" href="classUPopup__ReadQuest.html#aed4ecc73e8fe95e589c02336119b6f99">WordWidget</a>-&gt;<a class="code hl_function" href="classUWordWidget.html#a4042d45c4417913b25fa4ef44d5eccc1">InitWordData</a>(InScenarioData.<a class="code hl_variable" href="structFResponseScenario.html#a8e3ab3c748dc225b6531bd6971488e7c">word_data2</a>);</div>
-<div class="line"><span class="lineno">   46</span>        }</div>
-<div class="line"><span class="lineno">   47</span>    }</div>
-<div class="line"><span class="lineno">   48</span>}</div>
+<p class="definition"><a class="el" href="UPopup__ReadQuest_8cpp_source.html">UPopup_ReadQuest.cpp</a> 파일의 <a class="el" href="UPopup__ReadQuest_8cpp_source.html#l00032">32</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   33</span>{</div>
+<div class="line"><span class="lineno">   34</span>    <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[ReadQuestWidget] InitPopup quest&quot;</span>));</div>
+<div class="line"><span class="lineno">   35</span> </div>
+<div class="line"><span class="lineno">   36</span>    this-&gt;<a class="code hl_variable" href="classUPopup__ReadQuest.html#a57e2829fc1457eab5ed66d12e3b54fed">ScenarioData</a> = InScenarioData;</div>
+<div class="line"><span class="lineno">   37</span> </div>
+<div class="line"><span class="lineno">   38</span>    <span class="keywordflow">if</span> ( <span class="keyword">const</span> <span class="keyword">auto</span> PS = <a class="code hl_function" href="classULingoGameHelper.html#a6117f2f4942b42864305def958e0c108">ULingoGameHelper::GetLingoPlayerState</a>(GetWorld()) )</div>
+<div class="line"><span class="lineno">   39</span>        <a class="code hl_function" href="classUPopup__ReadQuest.html#a101bd5521b4278ac0cec0d5361d63b58">InitQuestInfo</a>(PS-&gt;QuestRole);</div>
+<div class="line"><span class="lineno">   40</span>}</div>
 <div class="ttc" id="aGameLogging_8h_html_a9998c8beb11a6bad6ffada2e701fc0cf"><div class="ttname"><a href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a></div><div class="ttdeci">#define PRINTLOG(fmt,...)</div><div class="ttdef"><b>Definition</b> <a href="GameLogging_8h_source.html#l00030">GameLogging.h:30</a></div></div>
-<div class="ttc" id="aclassULingoGameHelper_html_a6117f2f4942b42864305def958e0c108"><div class="ttname"><a href="classULingoGameHelper.html#a6117f2f4942b42864305def958e0c108">ULingoGameHelper::GetLingoPlayerState</a></div><div class="ttdeci">static ALingoPlayerState * GetLingoPlayerState(const UObject *WorldContextObject)</div><div class="ttdef"><b>Definition</b> <a href="ULingoGameHelper_8cpp_source.html#l00029">ULingoGameHelper.cpp:29</a></div></div>
-<div class="ttc" id="aclassUPopup__ReadQuest_html_a57e2829fc1457eab5ed66d12e3b54fed"><div class="ttname"><a href="classUPopup__ReadQuest.html#a57e2829fc1457eab5ed66d12e3b54fed">UPopup_ReadQuest::ScenarioData</a></div><div class="ttdeci">FResponseScenario ScenarioData</div><div class="ttdef"><b>Definition</b> <a href="UPopup__ReadQuest_8h_source.html#l00037">UPopup_ReadQuest.h:37</a></div></div>
-<div class="ttc" id="aclassUPopup__ReadQuest_html_aed4ecc73e8fe95e589c02336119b6f99"><div class="ttname"><a href="classUPopup__ReadQuest.html#aed4ecc73e8fe95e589c02336119b6f99">UPopup_ReadQuest::WordWidget</a></div><div class="ttdeci">class UWordWidget * WordWidget</div><div class="ttdef"><b>Definition</b> <a href="UPopup__ReadQuest_8h_source.html#l00031">UPopup_ReadQuest.h:31</a></div></div>
-<div class="ttc" id="aclassUWordWidget_html_a4042d45c4417913b25fa4ef44d5eccc1"><div class="ttname"><a href="classUWordWidget.html#a4042d45c4417913b25fa4ef44d5eccc1">UWordWidget::InitWordData</a></div><div class="ttdeci">void InitWordData(const FWordData &amp;InWordData)</div><div class="ttdef"><b>Definition</b> <a href="UWordWidget_8cpp_source.html#l00022">UWordWidget.cpp:22</a></div></div>
-<div class="ttc" id="astructFResponseScenario_html_a23a268e8417d76ddd5dc553e80819df4"><div class="ttname"><a href="structFResponseScenario.html#a23a268e8417d76ddd5dc553e80819df4">FResponseScenario::word_data1</a></div><div class="ttdeci">FWordData word_data1</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00474">NetworkData.h:474</a></div></div>
-<div class="ttc" id="astructFResponseScenario_html_a8e3ab3c748dc225b6531bd6971488e7c"><div class="ttname"><a href="structFResponseScenario.html#a8e3ab3c748dc225b6531bd6971488e7c">FResponseScenario::word_data2</a></div><div class="ttdeci">FWordData word_data2</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00477">NetworkData.h:477</a></div></div>
-<div class="ttc" id="astructFResponseScenario_html_a9bff69bbde9960207d254f3daacaba16"><div class="ttname"><a href="structFResponseScenario.html#a9bff69bbde9960207d254f3daacaba16">FResponseScenario::full_data</a></div><div class="ttdeci">FWordData full_data</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00480">NetworkData.h:480</a></div></div>
+<div class="ttc" id="aclassULingoGameHelper_html_a6117f2f4942b42864305def958e0c108"><div class="ttname"><a href="classULingoGameHelper.html#a6117f2f4942b42864305def958e0c108">ULingoGameHelper::GetLingoPlayerState</a></div><div class="ttdeci">static ALingoPlayerState * GetLingoPlayerState(const UObject *WorldContextObject)</div><div class="ttdef"><b>Definition</b> <a href="ULingoGameHelper_8cpp_source.html#l00035">ULingoGameHelper.cpp:35</a></div></div>
+<div class="ttc" id="aclassUPopup__ReadQuest_html_a101bd5521b4278ac0cec0d5361d63b58"><div class="ttname"><a href="classUPopup__ReadQuest.html#a101bd5521b4278ac0cec0d5361d63b58">UPopup_ReadQuest::InitQuestInfo</a></div><div class="ttdeci">void InitQuestInfo(EQuestRole QuestRole)</div><div class="ttdef"><b>Definition</b> <a href="UPopup__ReadQuest_8cpp_source.html#l00042">UPopup_ReadQuest.cpp:42</a></div></div>
+<div class="ttc" id="aclassUPopup__ReadQuest_html_a57e2829fc1457eab5ed66d12e3b54fed"><div class="ttname"><a href="classUPopup__ReadQuest.html#a57e2829fc1457eab5ed66d12e3b54fed">UPopup_ReadQuest::ScenarioData</a></div><div class="ttdeci">FResponseScenario ScenarioData</div><div class="ttdef"><b>Definition</b> <a href="UPopup__ReadQuest_8h_source.html#l00041">UPopup_ReadQuest.h:41</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="NetworkData_8h_source.html#l00480">FResponseScenario::full_data</a>, <a class="el" href="ULingoGameHelper_8cpp_source.html#l00029">ULingoGameHelper::GetLingoPlayerState()</a>, <a class="el" href="UWordWidget_8cpp_source.html#l00022">UWordWidget::InitWordData()</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>, <a class="el" href="UPopup__ReadQuest_8h_source.html#l00037">ScenarioData</a>, <a class="el" href="NetworkData_8h_source.html#l00474">FResponseScenario::word_data1</a>, <a class="el" href="NetworkData_8h_source.html#l00477">FResponseScenario::word_data2</a>, <a class="el" href="UPopup__ReadQuest_8h_source.html#l00031">WordWidget</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="ULingoGameHelper_8cpp_source.html#l00035">ULingoGameHelper::GetLingoPlayerState()</a>, <a class="el" href="UPopup__ReadQuest_8cpp_source.html#l00042">InitQuestInfo()</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>, <a class="el" href="UPopup__ReadQuest_8h_source.html#l00041">ScenarioData</a>.</p>
 <div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-2-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classUPopup__ReadQuest_a739783493974504d947dbd03c388c6d0_cgraph.svg" width="492" height="102"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classUPopup__ReadQuest_a739783493974504d947dbd03c388c6d0_cgraph.svg" width="100%" height="376"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+
+</div>
+</div>
+<a id="a101bd5521b4278ac0cec0d5361d63b58" name="a101bd5521b4278ac0cec0d5361d63b58"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a101bd5521b4278ac0cec0d5361d63b58">&#9670;&#160;</a></span>InitQuestInfo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void UPopup_ReadQuest::InitQuestInfo </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="EQuestRole_8h.html#af9534ca095b724046bf40abddcbb95e9">EQuestRole</a>&#160;</td>
+          <td class="paramname"><em>QuestRole</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="UPopup__ReadQuest_8cpp_source.html">UPopup_ReadQuest.cpp</a> 파일의 <a class="el" href="UPopup__ReadQuest_8cpp_source.html#l00042">42</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   43</span>{</div>
+<div class="line"><span class="lineno">   44</span>    <span class="keywordflow">if</span> ( QuestRole == EQuestRole::Both )</div>
+<div class="line"><span class="lineno">   45</span>        <a class="code hl_variable" href="classUPopup__ReadQuest.html#aed4ecc73e8fe95e589c02336119b6f99">WordWidget</a>-&gt;<a class="code hl_function" href="classUWordWidget.html#a4042d45c4417913b25fa4ef44d5eccc1">InitWordData</a>(<a class="code hl_variable" href="classUPopup__ReadQuest.html#a57e2829fc1457eab5ed66d12e3b54fed">ScenarioData</a>.<a class="code hl_variable" href="structFResponseScenario.html#a9bff69bbde9960207d254f3daacaba16">full_data</a>);</div>
+<div class="line"><span class="lineno">   46</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> ( QuestRole == EQuestRole::OnlyQuestion1 )</div>
+<div class="line"><span class="lineno">   47</span>        <a class="code hl_variable" href="classUPopup__ReadQuest.html#aed4ecc73e8fe95e589c02336119b6f99">WordWidget</a>-&gt;<a class="code hl_function" href="classUWordWidget.html#a4042d45c4417913b25fa4ef44d5eccc1">InitWordData</a>(<a class="code hl_variable" href="classUPopup__ReadQuest.html#a57e2829fc1457eab5ed66d12e3b54fed">ScenarioData</a>.<a class="code hl_variable" href="structFResponseScenario.html#a23a268e8417d76ddd5dc553e80819df4">word_data1</a>);</div>
+<div class="line"><span class="lineno">   48</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> ( QuestRole == EQuestRole::OnlyQuestion2 )</div>
+<div class="line"><span class="lineno">   49</span>        <a class="code hl_variable" href="classUPopup__ReadQuest.html#aed4ecc73e8fe95e589c02336119b6f99">WordWidget</a>-&gt;<a class="code hl_function" href="classUWordWidget.html#a4042d45c4417913b25fa4ef44d5eccc1">InitWordData</a>(<a class="code hl_variable" href="classUPopup__ReadQuest.html#a57e2829fc1457eab5ed66d12e3b54fed">ScenarioData</a>.<a class="code hl_variable" href="structFResponseScenario.html#a8e3ab3c748dc225b6531bd6971488e7c">word_data2</a>);</div>
+<div class="line"><span class="lineno">   50</span>}</div>
+<div class="ttc" id="aclassUPopup__ReadQuest_html_aed4ecc73e8fe95e589c02336119b6f99"><div class="ttname"><a href="classUPopup__ReadQuest.html#aed4ecc73e8fe95e589c02336119b6f99">UPopup_ReadQuest::WordWidget</a></div><div class="ttdeci">class UWordWidget * WordWidget</div><div class="ttdef"><b>Definition</b> <a href="UPopup__ReadQuest_8h_source.html#l00035">UPopup_ReadQuest.h:35</a></div></div>
+<div class="ttc" id="aclassUWordWidget_html_a4042d45c4417913b25fa4ef44d5eccc1"><div class="ttname"><a href="classUWordWidget.html#a4042d45c4417913b25fa4ef44d5eccc1">UWordWidget::InitWordData</a></div><div class="ttdeci">void InitWordData(const FWordData &amp;InWordData)</div><div class="ttdef"><b>Definition</b> <a href="UWordWidget_8cpp_source.html#l00022">UWordWidget.cpp:22</a></div></div>
+<div class="ttc" id="astructFResponseScenario_html_a23a268e8417d76ddd5dc553e80819df4"><div class="ttname"><a href="structFResponseScenario.html#a23a268e8417d76ddd5dc553e80819df4">FResponseScenario::word_data1</a></div><div class="ttdeci">FWordData word_data1</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00465">NetworkData.h:465</a></div></div>
+<div class="ttc" id="astructFResponseScenario_html_a8e3ab3c748dc225b6531bd6971488e7c"><div class="ttname"><a href="structFResponseScenario.html#a8e3ab3c748dc225b6531bd6971488e7c">FResponseScenario::word_data2</a></div><div class="ttdeci">FWordData word_data2</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00468">NetworkData.h:468</a></div></div>
+<div class="ttc" id="astructFResponseScenario_html_a9bff69bbde9960207d254f3daacaba16"><div class="ttname"><a href="structFResponseScenario.html#a9bff69bbde9960207d254f3daacaba16">FResponseScenario::full_data</a></div><div class="ttdeci">FWordData full_data</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00471">NetworkData.h:471</a></div></div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="NetworkData_8h_source.html#l00471">FResponseScenario::full_data</a>, <a class="el" href="UWordWidget_8cpp_source.html#l00022">UWordWidget::InitWordData()</a>, <a class="el" href="UPopup__ReadQuest_8h_source.html#l00041">ScenarioData</a>, <a class="el" href="NetworkData_8h_source.html#l00465">FResponseScenario::word_data1</a>, <a class="el" href="NetworkData_8h_source.html#l00468">FResponseScenario::word_data2</a>, <a class="el" href="UPopup__ReadQuest_8h_source.html#l00035">WordWidget</a>.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UPopup__ReadQuest_8cpp_source.html#l00032">InitPopup()</a>, <a class="el" href="UPopup__ReadQuest_8cpp_source.html#l00015">NativeConstruct()</a>.</p>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classUPopup__ReadQuest_a101bd5521b4278ac0cec0d5361d63b58_cgraph.svg" width="506" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classUPopup__ReadQuest_a101bd5521b4278ac0cec0d5361d63b58_icgraph.svg" width="520" height="102"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -280,27 +316,33 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="UPopup__ReadQuest_8cpp_source.html">UPopup_ReadQuest.cpp</a> 파일의 <a class="el" href="UPopup__ReadQuest_8cpp_source.html#l00016">16</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   17</span>{</div>
-<div class="line"><span class="lineno">   18</span>    Super::NativeConstruct();</div>
-<div class="line"><span class="lineno">   19</span> </div>
-<div class="line"><span class="lineno">   20</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUPopup__ReadQuest.html#aa00fc41b3331d1a172b7c0f6db7b7f2d">Btn_Exit</a>)</div>
-<div class="line"><span class="lineno">   21</span>    {</div>
-<div class="line"><span class="lineno">   22</span>        <a class="code hl_variable" href="classUPopup__ReadQuest.html#aa00fc41b3331d1a172b7c0f6db7b7f2d">Btn_Exit</a>-&gt;<a class="code hl_variable" href="classUTextureButton.html#a32f336807b28bc369a5dccaf31385e4e">OnButtonClickedEvent</a>.RemoveDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUPopup__ReadQuest.html#a4b8d0620aabf1f83bd80a653e2b2fc62">UPopup_ReadQuest::OnClickClose</a>);</div>
-<div class="line"><span class="lineno">   23</span>        <a class="code hl_variable" href="classUPopup__ReadQuest.html#aa00fc41b3331d1a172b7c0f6db7b7f2d">Btn_Exit</a>-&gt;<a class="code hl_variable" href="classUTextureButton.html#a32f336807b28bc369a5dccaf31385e4e">OnButtonClickedEvent</a>.AddDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUPopup__ReadQuest.html#a4b8d0620aabf1f83bd80a653e2b2fc62">UPopup_ReadQuest::OnClickClose</a>);</div>
-<div class="line"><span class="lineno">   24</span>    }</div>
-<div class="line"><span class="lineno">   25</span>}</div>
-<div class="ttc" id="aclassUPopup__ReadQuest_html_a4b8d0620aabf1f83bd80a653e2b2fc62"><div class="ttname"><a href="classUPopup__ReadQuest.html#a4b8d0620aabf1f83bd80a653e2b2fc62">UPopup_ReadQuest::OnClickClose</a></div><div class="ttdeci">void OnClickClose()</div><div class="ttdef"><b>Definition</b> <a href="UPopup__ReadQuest_8cpp_source.html#l00050">UPopup_ReadQuest.cpp:50</a></div></div>
-<div class="ttc" id="aclassUPopup__ReadQuest_html_aa00fc41b3331d1a172b7c0f6db7b7f2d"><div class="ttname"><a href="classUPopup__ReadQuest.html#aa00fc41b3331d1a172b7c0f6db7b7f2d">UPopup_ReadQuest::Btn_Exit</a></div><div class="ttdeci">class UTextureButton * Btn_Exit</div><div class="ttdef"><b>Definition</b> <a href="UPopup__ReadQuest_8h_source.html#l00034">UPopup_ReadQuest.h:34</a></div></div>
+<p class="definition"><a class="el" href="UPopup__ReadQuest_8cpp_source.html">UPopup_ReadQuest.cpp</a> 파일의 <a class="el" href="UPopup__ReadQuest_8cpp_source.html#l00015">15</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   16</span>{</div>
+<div class="line"><span class="lineno">   17</span>    Super::NativeConstruct();</div>
+<div class="line"><span class="lineno">   18</span> </div>
+<div class="line"><span class="lineno">   19</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUPopup__ReadQuest.html#aa00fc41b3331d1a172b7c0f6db7b7f2d">Btn_Exit</a>)</div>
+<div class="line"><span class="lineno">   20</span>    {</div>
+<div class="line"><span class="lineno">   21</span>        <a class="code hl_variable" href="classUPopup__ReadQuest.html#aa00fc41b3331d1a172b7c0f6db7b7f2d">Btn_Exit</a>-&gt;<a class="code hl_variable" href="classUTextureButton.html#a32f336807b28bc369a5dccaf31385e4e">OnButtonClickedEvent</a>.RemoveDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUPopup__ReadQuest.html#a4b8d0620aabf1f83bd80a653e2b2fc62">UPopup_ReadQuest::OnClickClose</a>);</div>
+<div class="line"><span class="lineno">   22</span>        <a class="code hl_variable" href="classUPopup__ReadQuest.html#aa00fc41b3331d1a172b7c0f6db7b7f2d">Btn_Exit</a>-&gt;<a class="code hl_variable" href="classUTextureButton.html#a32f336807b28bc369a5dccaf31385e4e">OnButtonClickedEvent</a>.AddDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUPopup__ReadQuest.html#a4b8d0620aabf1f83bd80a653e2b2fc62">UPopup_ReadQuest::OnClickClose</a>);</div>
+<div class="line"><span class="lineno">   23</span>    }</div>
+<div class="line"><span class="lineno">   24</span> </div>
+<div class="line"><span class="lineno">   25</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> BM = UBroadcastManager::Get(GetWorld()))</div>
+<div class="line"><span class="lineno">   26</span>    {</div>
+<div class="line"><span class="lineno">   27</span>        BM-&gt;OnUpdateQuestRole.RemoveDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUPopup__ReadQuest.html#a101bd5521b4278ac0cec0d5361d63b58">UPopup_ReadQuest::InitQuestInfo</a>);</div>
+<div class="line"><span class="lineno">   28</span>        BM-&gt;OnUpdateQuestRole.AddDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUPopup__ReadQuest.html#a101bd5521b4278ac0cec0d5361d63b58">UPopup_ReadQuest::InitQuestInfo</a>);</div>
+<div class="line"><span class="lineno">   29</span>    }</div>
+<div class="line"><span class="lineno">   30</span>}</div>
+<div class="ttc" id="aclassUPopup__ReadQuest_html_a4b8d0620aabf1f83bd80a653e2b2fc62"><div class="ttname"><a href="classUPopup__ReadQuest.html#a4b8d0620aabf1f83bd80a653e2b2fc62">UPopup_ReadQuest::OnClickClose</a></div><div class="ttdeci">void OnClickClose()</div><div class="ttdef"><b>Definition</b> <a href="UPopup__ReadQuest_8cpp_source.html#l00052">UPopup_ReadQuest.cpp:52</a></div></div>
+<div class="ttc" id="aclassUPopup__ReadQuest_html_aa00fc41b3331d1a172b7c0f6db7b7f2d"><div class="ttname"><a href="classUPopup__ReadQuest.html#aa00fc41b3331d1a172b7c0f6db7b7f2d">UPopup_ReadQuest::Btn_Exit</a></div><div class="ttdeci">class UTextureButton * Btn_Exit</div><div class="ttdef"><b>Definition</b> <a href="UPopup__ReadQuest_8h_source.html#l00038">UPopup_ReadQuest.h:38</a></div></div>
 <div class="ttc" id="aclassUTextureButton_html_a32f336807b28bc369a5dccaf31385e4e"><div class="ttname"><a href="classUTextureButton.html#a32f336807b28bc369a5dccaf31385e4e">UTextureButton::OnButtonClickedEvent</a></div><div class="ttdeci">FOnTextureButtonClickedEvent OnButtonClickedEvent</div><div class="ttdoc">버튼 클릭 이벤트</div><div class="ttdef"><b>Definition</b> <a href="UTextureButton_8h_source.html#l00079">UTextureButton.h:79</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="UPopup__ReadQuest_8h_source.html#l00034">Btn_Exit</a>, <a class="el" href="UTextureButton_8h_source.html#l00079">UTextureButton::OnButtonClickedEvent</a>, <a class="el" href="UPopup__ReadQuest_8cpp_source.html#l00050">OnClickClose()</a>.</p>
-<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
-<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+<p class="reference">다음을 참조함 :  <a class="el" href="UPopup__ReadQuest_8h_source.html#l00038">Btn_Exit</a>, <a class="el" href="UPopup__ReadQuest_8cpp_source.html#l00042">InitQuestInfo()</a>, <a class="el" href="UTextureButton_8h_source.html#l00079">UTextureButton::OnButtonClickedEvent</a>, <a class="el" href="UPopup__ReadQuest_8cpp_source.html#l00052">OnClickClose()</a>.</p>
+<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-3-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classUPopup__ReadQuest_ac84b2f61529c5dba7bd769f9650a9555_cgraph.svg" width="468" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div id="dynsection-5-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classUPopup__ReadQuest_ac84b2f61529c5dba7bd769f9650a9555_cgraph.svg" width="100%" height="376"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -352,11 +394,11 @@ Private 속성</h2></td></tr>
 <div class="ttc" id="aclassUBasePopup_html_a830a08b15d00e418f351f096fc5a8790"><div class="ttname"><a href="classUBasePopup.html#a830a08b15d00e418f351f096fc5a8790">UBasePopup::UpdateAnimation</a></div><div class="ttdeci">void UpdateAnimation(float InDeltaTime)</div><div class="ttdoc">스크립트 오픈 애니메이션 업데이트</div><div class="ttdef"><b>Definition</b> <a href="UBasePopup_8cpp_source.html#l00035">UBasePopup.cpp:35</a></div></div>
 </div><!-- fragment -->
 <p class="reference">다음을 참조함 :  <a class="el" href="UBasePopup_8h_source.html#l00044">UBasePopup::bIsOpenAnim</a>, <a class="el" href="UBasePopup_8cpp_source.html#l00035">UBasePopup::UpdateAnimation()</a>.</p>
-<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
-<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-6-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-6-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div id="dynsection-6-content" class="dyncontent" style="display:none;">
 <div class="center"><iframe scrolling="no" frameborder="0" src="classUBasePopup_a750c1a854f68ca16faa069645531abd6_cgraph.svg" width="468" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
@@ -385,22 +427,22 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="UPopup__ReadQuest_8cpp_source.html">UPopup_ReadQuest.cpp</a> 파일의 <a class="el" href="UPopup__ReadQuest_8cpp_source.html#l00050">50</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   51</span>{</div>
-<div class="line"><span class="lineno">   52</span>    <span class="comment">// PopupManager를 통해 팝업 닫기 (마우스 커서 처리 포함)</span></div>
-<div class="line"><span class="lineno">   53</span>    <span class="keywordflow">if</span> (<a class="code hl_class" href="classUPopupManager.html">UPopupManager</a>* PopupMgr = UPopupManager::Get(GetWorld()))</div>
-<div class="line"><span class="lineno">   54</span>    {</div>
-<div class="line"><span class="lineno">   55</span>        PopupMgr-&gt;HideCurrentPopup();</div>
-<div class="line"><span class="lineno">   56</span>    }</div>
-<div class="line"><span class="lineno">   57</span>}</div>
+<p class="definition"><a class="el" href="UPopup__ReadQuest_8cpp_source.html">UPopup_ReadQuest.cpp</a> 파일의 <a class="el" href="UPopup__ReadQuest_8cpp_source.html#l00052">52</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   53</span>{</div>
+<div class="line"><span class="lineno">   54</span>    <span class="comment">// PopupManager를 통해 팝업 닫기 (마우스 커서 처리 포함)</span></div>
+<div class="line"><span class="lineno">   55</span>    <span class="keywordflow">if</span> (<a class="code hl_class" href="classUPopupManager.html">UPopupManager</a>* PopupMgr = UPopupManager::Get(GetWorld()))</div>
+<div class="line"><span class="lineno">   56</span>    {</div>
+<div class="line"><span class="lineno">   57</span>        PopupMgr-&gt;HideCurrentPopup();</div>
+<div class="line"><span class="lineno">   58</span>    }</div>
+<div class="line"><span class="lineno">   59</span>}</div>
 <div class="ttc" id="aclassUPopupManager_html"><div class="ttname"><a href="classUPopupManager.html">UPopupManager</a></div><div class="ttdoc">팝업 관리자</div><div class="ttdef"><b>Definition</b> <a href="UPopupManager_8h_source.html#l00030">UPopupManager.h:31</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UPopup__ReadQuest_8cpp_source.html#l00016">NativeConstruct()</a>.</p>
-<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
-<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UPopup__ReadQuest_8cpp_source.html#l00015">NativeConstruct()</a>.</p>
+<div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-7-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-7-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-5-content" class="dyncontent" style="display:none;">
+<div id="dynsection-7-content" class="dyncontent" style="display:none;">
 <div class="center"><iframe scrolling="no" frameborder="0" src="classUPopup__ReadQuest_a4b8d0620aabf1f83bd80a653e2b2fc62_icgraph.svg" width="468" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
@@ -510,11 +552,11 @@ Private 속성</h2></td></tr>
 <p class="reference">다음을 참조함 :  <a class="el" href="UBasePopup_8h_source.html#l00044">UBasePopup::bIsOpenAnim</a>, <a class="el" href="UBasePopup_8h_source.html#l00051">UBasePopup::OpenDuration</a>, <a class="el" href="UBasePopup_8h_source.html#l00063">UBasePopup::OpenEaseExponent</a>, <a class="el" href="UBasePopup_8h_source.html#l00047">UBasePopup::OpenElapsedTime</a>, <a class="el" href="UBasePopup_8h_source.html#l00055">UBasePopup::OpenStartScale</a>, <a class="el" href="UBasePopup_8h_source.html#l00059">UBasePopup::OpenTargetScale</a>.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UBasePopup_8cpp_source.html#l00006">UBasePopup::NativeTick()</a>.</p>
-<div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-6-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
-<div id="dynsection-6-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-8-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-8-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-6-content" class="dyncontent" style="display:none;">
+<div id="dynsection-8-content" class="dyncontent" style="display:none;">
 <div class="center"><iframe scrolling="no" frameborder="0" src="classUBasePopup_a830a08b15d00e418f351f096fc5a8790_icgraph.svg" width="468" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
@@ -561,9 +603,9 @@ Private 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="UPopup__ReadQuest_8h_source.html">UPopup_ReadQuest.h</a> 파일의 <a class="el" href="UPopup__ReadQuest_8h_source.html#l00034">34</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="UPopup__ReadQuest_8h_source.html">UPopup_ReadQuest.h</a> 파일의 <a class="el" href="UPopup__ReadQuest_8h_source.html#l00038">38</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UPopup__ReadQuest_8cpp_source.html#l00016">NativeConstruct()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UPopup__ReadQuest_8cpp_source.html#l00015">NativeConstruct()</a>.</p>
 
 </div>
 </div>
@@ -781,9 +823,9 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="UPopup__ReadQuest_8h_source.html">UPopup_ReadQuest.h</a> 파일의 <a class="el" href="UPopup__ReadQuest_8h_source.html#l00037">37</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="UPopup__ReadQuest_8h_source.html">UPopup_ReadQuest.h</a> 파일의 <a class="el" href="UPopup__ReadQuest_8h_source.html#l00041">41</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UPopup__ReadQuest_8cpp_source.html#l00027">InitPopup()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UPopup__ReadQuest_8cpp_source.html#l00032">InitPopup()</a>, <a class="el" href="UPopup__ReadQuest_8cpp_source.html#l00042">InitQuestInfo()</a>.</p>
 
 </div>
 </div>
@@ -799,9 +841,9 @@ Private 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="UPopup__ReadQuest_8h_source.html">UPopup_ReadQuest.h</a> 파일의 <a class="el" href="UPopup__ReadQuest_8h_source.html#l00031">31</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="UPopup__ReadQuest_8h_source.html">UPopup_ReadQuest.h</a> 파일의 <a class="el" href="UPopup__ReadQuest_8h_source.html#l00035">35</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UPopup__ReadQuest_8cpp_source.html#l00027">InitPopup()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UPopup__ReadQuest_8cpp_source.html#l00042">InitQuestInfo()</a>.</p>
 
 </div>
 </div>
@@ -815,7 +857,7 @@ Private 속성</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classUPopup__ReadQuest.html">UPopup_ReadQuest</a></li>
-    <li class="footer">생성시간 : 수 11월 26 2025 13:43:05, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 목 11월 27 2025 04:24:53, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

@@ -1,6 +1,7 @@
 var dir_ece11de4a6442a77ccaf0d9d7adf8213 =
 [
     [ "ANetworkBroadcastActor.h", "ANetworkBroadcastActor_8h.html", "ANetworkBroadcastActor_8h" ],
+    [ "EQuestRole.h", "EQuestRole_8h.html", "EQuestRole_8h" ],
     [ "Macro.h", "Macro_8h.html", "Macro_8h" ],
     [ "UBroadcastManager.h", "UBroadcastManager_8h.html", "UBroadcastManager_8h" ],
     [ "UDelayTaskManager.h", "UDelayTaskManager_8h.html", "UDelayTaskManager_8h" ],

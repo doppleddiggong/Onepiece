@@ -193,16 +193,20 @@ $(document).ready(function(){initNavTree('LuggageManager_8cpp_source.html',''); 
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    <span class="keywordflow">if</span> (NewLuggage)</div>
 <div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    {</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        NewLuggage-&gt;<a class="code hl_variable" href="classAluggage.html#a880c239655a5b0ad93ba5fa26bcf49c4">SpawnIdx</a> = <a class="code hl_variable" href="classALuggageManager.html#acc8cf2f766e476693e2e45f8c1af9fd6">CurrentSpawnIndex</a>;</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        int32 ColorIdx = FCString::Atoi(*SD.word2.code);</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        NewLuggage-&gt;<a class="code hl_function" href="classAluggage.html#aa5a78203e58b47252c35b9ba5f1cf58c">ApplyColorToMesh</a>(ColorIdx);</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        NewLuggage-&gt;<a class="code hl_function" href="classAluggage.html#a4a37f073b9755f37fb264e6bacf44461">ApplyPatternToMesh</a>(SD.word1.name);</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    }</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    <a class="code hl_variable" href="classALuggageManager.html#acc8cf2f766e476693e2e45f8c1af9fd6">CurrentSpawnIndex</a>++;</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>}</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        <span class="comment">// 상자 정보 지정</span></div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        NewLuggage-&gt;<a class="code hl_function" href="classAluggage.html#ae08336c2883641c70aafa86c0a3c32a2">SetLuggageInfo</a>(<a class="code hl_variable" href="classALuggageManager.html#acc8cf2f766e476693e2e45f8c1af9fd6">CurrentSpawnIndex</a>, SD.word2.name, SD.word1.name);</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        <span class="comment">// 인덱스로 상자 색&amp;무늬 지정</span></div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        int32 ColorIdx = FCString::Atoi(*SD.word2.code);</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        NewLuggage-&gt;<a class="code hl_function" href="classAluggage.html#aa5a78203e58b47252c35b9ba5f1cf58c">ApplyColorToMesh</a>(ColorIdx);</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        int32 PatternIdx = FCString::Atoi(*SD.word1.code);</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        NewLuggage-&gt;<a class="code hl_function" href="classAluggage.html#a5278c16bd28e0ee6fdbf2131aa70d5fc">ApplyPatternToMesh</a>(PatternIdx);</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    }</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    <a class="code hl_variable" href="classALuggageManager.html#acc8cf2f766e476693e2e45f8c1af9fd6">CurrentSpawnIndex</a>++;</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>}</div>
 </div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
 <div class="ttc" id="aALingoGameState_8h_html"><div class="ttname"><a href="ALingoGameState_8h.html">ALingoGameState.h</a></div></div>
 <div class="ttc" id="aLuggageManager_8h_html"><div class="ttname"><a href="LuggageManager_8h.html">LuggageManager.h</a></div></div>
 <div class="ttc" id="aNetworkData_8h_html"><div class="ttname"><a href="NetworkData_8h.html">NetworkData.h</a></div><div class="ttdoc">네트워크 요청과 응답에 사용되는 구조체 및 설정을 정의합니다.</div></div>
@@ -219,18 +223,18 @@ $(document).ready(function(){initNavTree('LuggageManager_8cpp_source.html',''); 
 <div class="ttc" id="aclassALuggageManager_html_ad8d59b2b499df47d4a35a00aa874d877"><div class="ttname"><a href="classALuggageManager.html#ad8d59b2b499df47d4a35a00aa874d877">ALuggageManager::StartSpawning</a></div><div class="ttdeci">void StartSpawning()</div><div class="ttdef"><b>Definition</b> <a href="LuggageManager_8cpp_source.html#l00033">LuggageManager.cpp:33</a></div></div>
 <div class="ttc" id="aclassALuggageManager_html_ade245d7910bd8e8abcf1b8279627cafe"><div class="ttname"><a href="classALuggageManager.html#ade245d7910bd8e8abcf1b8279627cafe">ALuggageManager::Tick</a></div><div class="ttdeci">virtual void Tick(float DeltaTime) override</div><div class="ttdef"><b>Definition</b> <a href="LuggageManager_8cpp_source.html#l00027">LuggageManager.cpp:27</a></div></div>
 <div class="ttc" id="aclassAluggage_html"><div class="ttname"><a href="classAluggage.html">Aluggage</a></div><div class="ttdoc">상호작용 가능한 수하물 액터</div><div class="ttdef"><b>Definition</b> <a href="luggage_8h_source.html#l00013">luggage.h:14</a></div></div>
-<div class="ttc" id="aclassAluggage_html_a4a37f073b9755f37fb264e6bacf44461"><div class="ttname"><a href="classAluggage.html#a4a37f073b9755f37fb264e6bacf44461">Aluggage::ApplyPatternToMesh</a></div><div class="ttdeci">void ApplyPatternToMesh(FString InPattern)</div><div class="ttdef"><b>Definition</b> <a href="luggage_8cpp_source.html#l00105">luggage.cpp:105</a></div></div>
-<div class="ttc" id="aclassAluggage_html_a880c239655a5b0ad93ba5fa26bcf49c4"><div class="ttname"><a href="classAluggage.html#a880c239655a5b0ad93ba5fa26bcf49c4">Aluggage::SpawnIdx</a></div><div class="ttdeci">int32 SpawnIdx</div><div class="ttdef"><b>Definition</b> <a href="luggage_8h_source.html#l00041">luggage.h:41</a></div></div>
-<div class="ttc" id="aclassAluggage_html_aa5a78203e58b47252c35b9ba5f1cf58c"><div class="ttname"><a href="classAluggage.html#aa5a78203e58b47252c35b9ba5f1cf58c">Aluggage::ApplyColorToMesh</a></div><div class="ttdeci">void ApplyColorToMesh(int32 InColorIdx)</div><div class="ttdef"><b>Definition</b> <a href="luggage_8cpp_source.html#l00082">luggage.cpp:82</a></div></div>
+<div class="ttc" id="aclassAluggage_html_a5278c16bd28e0ee6fdbf2131aa70d5fc"><div class="ttname"><a href="classAluggage.html#a5278c16bd28e0ee6fdbf2131aa70d5fc">Aluggage::ApplyPatternToMesh</a></div><div class="ttdeci">void ApplyPatternToMesh(int32 InPatternIdx)</div><div class="ttdef"><b>Definition</b> <a href="luggage_8cpp_source.html#l00131">luggage.cpp:131</a></div></div>
+<div class="ttc" id="aclassAluggage_html_aa5a78203e58b47252c35b9ba5f1cf58c"><div class="ttname"><a href="classAluggage.html#aa5a78203e58b47252c35b9ba5f1cf58c">Aluggage::ApplyColorToMesh</a></div><div class="ttdeci">void ApplyColorToMesh(int32 InColorIdx)</div><div class="ttdef"><b>Definition</b> <a href="luggage_8cpp_source.html#l00108">luggage.cpp:108</a></div></div>
+<div class="ttc" id="aclassAluggage_html_ae08336c2883641c70aafa86c0a3c32a2"><div class="ttname"><a href="classAluggage.html#ae08336c2883641c70aafa86c0a3c32a2">Aluggage::SetLuggageInfo</a></div><div class="ttdeci">void SetLuggageInfo(int32 InIdx, FString InColor, FString InPattern)</div><div class="ttdef"><b>Definition</b> <a href="luggage_8cpp_source.html#l00091">luggage.cpp:91</a></div></div>
 <div class="ttc" id="aluggage_8h_html"><div class="ttname"><a href="luggage_8h.html">luggage.h</a></div></div>
-<div class="ttc" id="astructFResponseScenario_html_a632ab430dc3ca5f1521754cca994b8fb"><div class="ttname"><a href="structFResponseScenario.html#a632ab430dc3ca5f1521754cca994b8fb">FResponseScenario::target_data</a></div><div class="ttdeci">TArray&lt; FScenarioTargetData &gt; target_data</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00468">NetworkData.h:468</a></div></div>
+<div class="ttc" id="astructFResponseScenario_html_a632ab430dc3ca5f1521754cca994b8fb"><div class="ttname"><a href="structFResponseScenario.html#a632ab430dc3ca5f1521754cca994b8fb">FResponseScenario::target_data</a></div><div class="ttdeci">TArray&lt; FScenarioTargetData &gt; target_data</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00459">NetworkData.h:459</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_b7459e4428712e32d7c860db6e401a05.html">Interactable</a></li><li class="navelem"><a class="el" href="dir_77257aedd361f850f8a01079e914567e.html">Private</a></li><li class="navelem"><a class="el" href="LuggageManager_8cpp.html">LuggageManager.cpp</a></li>
-    <li class="footer">생성시간 : 수 11월 26 2025 13:43:04, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 목 11월 27 2025 04:24:53, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

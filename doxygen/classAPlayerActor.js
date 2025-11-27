@@ -2,6 +2,7 @@ var classAPlayerActor =
 [
     [ "APlayerActor", "classAPlayerActor.html#addb91f2966d3e68a79699ba89be0a659", null ],
     [ "BeginPlay", "classAPlayerActor.html#afc3ace6de521cfc26c3a4395215e7ce9", null ],
+    [ "ClientRPC_ShowGameMessage", "classAPlayerActor.html#a9a0da1264f0f61d8b908de643e010de7", null ],
     [ "Cmd_Info", "classAPlayerActor.html#a145afa6a2e3058f74d9268588cf56ddf", null ],
     [ "Cmd_Jump", "classAPlayerActor.html#a4bbf9c7d111a15814b99b4e32a79cfda", null ],
     [ "Cmd_Look", "classAPlayerActor.html#a21a14eaae23da75b919b848aa87cb535", null ],
@@ -18,7 +19,6 @@ var classAPlayerActor =
     [ "OnGameMessage", "classAPlayerActor.html#a0eead9bb46d45cfb20b9da0f545ede81", null ],
     [ "OnRep_Controller", "classAPlayerActor.html#a56fd76fe4979f537c112d32ebbc44f72", null ],
     [ "OnRep_LookPitch", "classAPlayerActor.html#acc728e14fea51ff3fabeef5d283a4ab7", null ],
-    [ "OnStageStarted", "classAPlayerActor.html#a4debba5c58c9616ea0ec9db8138026d0", null ],
     [ "PlayTTSAudio", "classAPlayerActor.html#adb01d4a0bb1c938f419029317ccae1dd", null ],
     [ "RecoveryMovementMode", "classAPlayerActor.html#a4b7956b192cc40b1b2b5cdf3c43dc408", null ],
     [ "bIsJumpStart", "classAPlayerActor.html#ab2162e911aea12e7e720e5bfcb3dbf8f", null ],

@@ -144,60 +144,91 @@ $(document).ready(function(){initNavTree('luggage_8h_source.html',''); initResiz
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    </div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    UPROPERTY(VisibleAnywhere)</div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="classAluggage.html#a555315380e2dd75038c0d2aea8fe9b02">   37</a></span>    TObjectPtr&lt;class UInteractableComponent&gt; InteractableComp;</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>public:</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="comment">// Index</span></div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="classAluggage.html#a880c239655a5b0ad93ba5fa26bcf49c4">   41</a></span>    int32 SpawnIdx = -1;</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    </div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>public:</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="comment">// Color</span></div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    UPROPERTY(ReplicatedUsing=OnRep_ColorIndex)</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="classAluggage.html#a04c2729f66d62f5f46329c0bfae26b49">   46</a></span>    int32 ColorIndex = -1;</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    UFUNCTION()</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="keywordtype">void</span> OnRep_ColorIndex();</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="keywordtype">void</span> ApplyColorToMesh(int32 InColorIdx);</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="comment">// Pattern</span></div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    UPROPERTY()</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="classAluggage.html#ae0dc10fe1295c7222d577fea284ad242">   55</a></span>    FString PatternName;</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="classAluggage.html#a3604b9a1c2189e79a4b78e4430fcdee5">   39</a></span>    TObjectPtr&lt;class UWidgetComponent&gt; BoxInfoWidgetComp;</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>protected:</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="comment">//--------------------------------------------------------------//</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="comment">// Luggage Info</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="comment">//--------------------------------------------------------------//</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="comment">// @brief 캐리어의 인덱스</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="classAluggage.html#a880c239655a5b0ad93ba5fa26bcf49c4">   47</a></span>    int32 SpawnIdx = -1;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="comment">// @brief 캐리어의 색상</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="classAluggage.html#a4a47514a5aff8824800c878ed73159c2">   49</a></span>    FString Color = &quot;&quot;;</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="comment">// @brief 캐리어의 무늬</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="classAluggage.html#a899a9b0ace4772c62cb480b0251fd633">   51</a></span>    FString Pattern = &quot;&quot;;</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>public:</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    UFUNCTION(BlueprintCallable)</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="keywordtype">void</span> SetLuggageInfo(int32 InIdx, FString InColor, FString InPattern);</div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="keywordtype">void</span> ApplyPatternToMesh(FString InPattern);</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>public:</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="comment">// Outline</span></div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    UFUNCTION(BlueprintCallable, Category = &quot;Outline&quot;)</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="keywordtype">void</span> OutlineOn();</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    UFUNCTION(BlueprintCallable, Category = &quot;Outline&quot;)</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    <span class="keywordtype">void</span> OutlineOff();</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    </div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>public:</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <span class="comment">//--------------------------------------------------------------//</span></div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <span class="comment">// Read Quest Data</span></div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <span class="comment">//--------------------------------------------------------------//</span></div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = &quot;Quest&quot;)</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno"><a class="line" href="classAluggage.html#a3a0e879c75526a459df91a8560504762">   73</a></span>    FString Target1;</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="classAluggage.html#a48c251914787f0c3137e6c174b560eaa">   57</a></span>    FORCEINLINE int32 GetSpawnIdx() {<span class="keywordflow">return</span> SpawnIdx;}</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="classAluggage.html#a909de596d61c1de97967dd8f831d29d9">   58</a></span>    FORCEINLINE FString <a class="code hl_function" href="classAluggage.html#a909de596d61c1de97967dd8f831d29d9">GetColor</a>() {<span class="keywordflow">return</span> Color;}</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="classAluggage.html#a0d10873a7496c8a1ead5651966ddca02">   59</a></span>    FORCEINLINE FString <a class="code hl_function" href="classAluggage.html#a0d10873a7496c8a1ead5651966ddca02">GetPattern</a>() {<span class="keywordflow">return</span> Pattern;}</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    </div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="comment">// 색상의 인덱스값</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    UPROPERTY(ReplicatedUsing=OnRep_ColorIdx)</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="classAluggage.html#a77701ede6847700cecd2677dd2b2e625">   64</a></span>    int32 ColorIdx = -1;</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <span class="comment">// 무늬의 인덱스값</span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    UPROPERTY(ReplicatedUsing=OnRep_PatternIdx)</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="classAluggage.html#a5eb51fa644ca8171df6d870c85c92271">   67</a></span>    int32 PatternIdx = -1;</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    UFUNCTION()</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <span class="keywordtype">void</span> OnRep_ColorIdx();</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    UFUNCTION()</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    <span class="keywordtype">void</span> OnRep_PatternIdx();</div>
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = &quot;Quest&quot;)</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno"><a class="line" href="classAluggage.html#a39a1c8e315d2b3d40ec1956e2390d6d2">   77</a></span>    FString Target2;</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    UFUNCTION(BlueprintCallable, Category = &quot;Interaction&quot;)</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    <span class="keywordtype">void</span> OnInteract(AActor* Interactor);</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    UFUNCTION(Server, Reliable, WithValidation)</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno"><a class="line" href="classAluggage.html#aefd0f676f44e0e7fcde6f6f29a709b60">   87</a></span>    <span class="keywordtype">void</span> ServerNotifySelection(class APlayerState* Player);</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>};</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    <span class="comment">// 캐리어 색상 변경</span></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    <span class="keywordtype">void</span> ApplyColorToMesh(int32 InColorIdx);</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    <span class="comment">// 캐리어 무늬 변경</span></div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    <span class="keywordtype">void</span> ApplyPatternToMesh(int32 InPatternIdx);</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>public:</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    <span class="comment">// Outline</span></div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    UFUNCTION(BlueprintCallable, Category = &quot;Outline&quot;)</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    <span class="keywordtype">void</span> OutlineOn();</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    UFUNCTION(BlueprintCallable, Category = &quot;Outline&quot;)</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    <span class="keywordtype">void</span> OutlineOff();</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    </div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>public:</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    <span class="comment">// InfoWidget</span></div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    <span class="keywordtype">void</span> InfoWidgetOn();</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    <span class="keywordtype">void</span> InfoWidgetOff();</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>protected:</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    <span class="keywordtype">void</span> BillboardInfoWidget();</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    </div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>public:</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    <span class="comment">//--------------------------------------------------------------//</span></div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    <span class="comment">// Read Quest Data</span></div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    <span class="comment">//--------------------------------------------------------------//</span></div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span> </div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = &quot;Quest&quot;)</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno"><a class="line" href="classAluggage.html#a3a0e879c75526a459df91a8560504762">  101</a></span>    FString Target1;</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = &quot;Quest&quot;)</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno"><a class="line" href="classAluggage.html#a39a1c8e315d2b3d40ec1956e2390d6d2">  105</a></span>    FString Target2;</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    </div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    UFUNCTION(BlueprintCallable, Category = &quot;Interaction&quot;)</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    <span class="keywordtype">void</span> OnInteract(AActor* Interactor);</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span> </div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    UFUNCTION(Server, Reliable, WithValidation)</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno"><a class="line" href="classAluggage.html#aefd0f676f44e0e7fcde6f6f29a709b60">  115</a></span>    <span class="keywordtype">void</span> ServerNotifySelection(class APlayerState* Player);</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>    </div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>};</div>
 </div>
 <div class="ttc" id="aclassAluggage_html"><div class="ttname"><a href="classAluggage.html">Aluggage</a></div><div class="ttdoc">상호작용 가능한 수하물 액터</div><div class="ttdef"><b>Definition</b> <a href="luggage_8h_source.html#l00013">luggage.h:14</a></div></div>
+<div class="ttc" id="aclassAluggage_html_a0d10873a7496c8a1ead5651966ddca02"><div class="ttname"><a href="classAluggage.html#a0d10873a7496c8a1ead5651966ddca02">Aluggage::GetPattern</a></div><div class="ttdeci">FORCEINLINE FString GetPattern()</div><div class="ttdef"><b>Definition</b> <a href="luggage_8h_source.html#l00059">luggage.h:59</a></div></div>
+<div class="ttc" id="aclassAluggage_html_a909de596d61c1de97967dd8f831d29d9"><div class="ttname"><a href="classAluggage.html#a909de596d61c1de97967dd8f831d29d9">Aluggage::GetColor</a></div><div class="ttdeci">FORCEINLINE FString GetColor()</div><div class="ttdef"><b>Definition</b> <a href="luggage_8h_source.html#l00058">luggage.h:58</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_b7459e4428712e32d7c860db6e401a05.html">Interactable</a></li><li class="navelem"><a class="el" href="dir_37565cbf0e4835105e22b7540e7cc414.html">Public</a></li><li class="navelem"><a class="el" href="luggage_8h.html">luggage.h</a></li>
-    <li class="footer">생성시간 : 수 11월 26 2025 13:43:04, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 목 11월 27 2025 04:24:53, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

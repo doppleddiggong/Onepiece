@@ -18,6 +18,7 @@ var classAPlayerControl =
     [ "Server_OnGrabRelease", "classAPlayerControl.html#aeb90da2f39476227c6136a9d78d45c83", null ],
     [ "Server_OnInteract", "classAPlayerControl.html#adbe39822e30958a476131716276b020c", null ],
     [ "SetupInputComponent", "classAPlayerControl.html#abede09a391c47bdafb3b34a507c80e9b", null ],
+    [ "UpdateQuestRole", "classAPlayerControl.html#a49c6d11314d21c34209ac16d0dabcfc3", null ],
     [ "UPROPERTY", "classAPlayerControl.html#a491ff4ed01c0d381f80d40fc3501c334", null ],
     [ "UPROPERTY", "classAPlayerControl.html#abe104ffe65a1a00e6f211b5207f6b2ed", null ],
     [ "UPROPERTY", "classAPlayerControl.html#ade2263b7c2eee9b7d9a11ec0b32aaf71", null ],

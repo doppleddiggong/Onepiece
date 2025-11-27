@@ -1,9 +1,5 @@
 var searchData=
 [
-  ['networkdata_2ecpp_0',['NetworkData.cpp',['../NetworkData_8cpp.html',1,'']]],
-  ['networkdata_2eh_1',['NetworkData.h',['../NetworkData_8h.html',1,'']]],
-  ['networklog_2ecpp_2',['NetworkLog.cpp',['../NetworkLog_8cpp.html',1,'']]],
-  ['networklog_2eh_3',['NetworkLog.h',['../NetworkLog_8h.html',1,'']]],
-  ['npcexaminer_2ecpp_4',['NPCExaminer.cpp',['../NPCExaminer_8cpp.html',1,'']]],
-  ['npcexaminer_2eh_5',['NPCExaminer.h',['../NPCExaminer_8h.html',1,'']]]
+  ['macro_2eh_0',['Macro.h',['../Macro_8h.html',1,'']]],
+  ['mainpage_2emd_1',['MainPage.md',['../MainPage_8md.html',1,'']]]
 ];

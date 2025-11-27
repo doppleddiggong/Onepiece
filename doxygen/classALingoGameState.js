@@ -6,6 +6,7 @@ var classALingoGameState =
     [ "GetRemainMissionTime", "classALingoGameState.html#abec3beeccc38530d9fa06be8b23998b5", null ],
     [ "GetScenarioData", "classALingoGameState.html#a783187f9c820272a7ea16cc90bb02cc4", null ],
     [ "IsQuestIng", "classALingoGameState.html#a25cf744e909d85bfdda297d0ab5e404e", null ],
+    [ "Multicast_ShowReadQuestPopup", "classALingoGameState.html#a5a623e7272abe930ab732c7c8bdea518", null ],
     [ "OnMissionTimerEnd", "classALingoGameState.html#a559e1cc5340dab3ab3fe0baeeea47676", null ],
     [ "OnRep_QuestSuccess", "classALingoGameState.html#a8f1f5b23102c2d6b42968d1de25b4739", null ],
     [ "SetStageData", "classALingoGameState.html#a32b39ebcb77c422f322660803478a146", null ],

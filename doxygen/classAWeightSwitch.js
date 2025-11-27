@@ -13,6 +13,7 @@ var classAWeightSwitch =
     [ "Tick", "classAWeightSwitch.html#a1052d6424f59900657809bff7c146932", null ],
     [ "ActivateColor", "classAWeightSwitch.html#ab3abdd865a629c73d2644ad08322932b", null ],
     [ "AnimBlueprint", "classAWeightSwitch.html#aac61dda6cc3f61994e54f5569c27f6cf", null ],
+    [ "AnswerFound", "classAWeightSwitch.html#ab519ea888b0690295485652b2e1d2686", null ],
     [ "bActivateState", "classAWeightSwitch.html#a4b828eef7cc6456e5e5833c6d94c79a0", null ],
     [ "ButtonIndex", "classAWeightSwitch.html#af8f4523824757b7861cea5e3095f6935", null ],
     [ "DeactivateColor", "classAWeightSwitch.html#ab113b92b3916c0593281ffeecd10a73b", null ],

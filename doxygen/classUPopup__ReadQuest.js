@@ -1,6 +1,7 @@
 var classUPopup__ReadQuest =
 [
     [ "InitPopup", "classUPopup__ReadQuest.html#a739783493974504d947dbd03c388c6d0", null ],
+    [ "InitQuestInfo", "classUPopup__ReadQuest.html#a101bd5521b4278ac0cec0d5361d63b58", null ],
     [ "NativeConstruct", "classUPopup__ReadQuest.html#ac84b2f61529c5dba7bd769f9650a9555", null ],
     [ "NativeTick", "classUPopup__ReadQuest.html#a750c1a854f68ca16faa069645531abd6", null ],
     [ "OnClickClose", "classUPopup__ReadQuest.html#a4b8d0620aabf1f83bd80a653e2b2fc62", null ],
