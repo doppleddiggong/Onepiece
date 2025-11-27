@@ -5,12 +5,16 @@
 #include "InteractableComponent.h"
 #include "ALingoGameMode.h"
 #include "ALingoPlayerState.h"
+#include "BoxInfoWidget.h"
 #include "GameLogging.h"
 #include "UGameDataManager.h"
 #include "Components/BoxComponent.h"
+#include "Components/WidgetComponent.h"
 #include "Net/UnrealNetwork.h"
 #include "GameFramework/PlayerController.h"
 #include "Engine/World.h"
+#include "Kismet/GameplayStatics.h"
+#include "Kismet/KismetMathLibrary.h"
 
 Aluggage::Aluggage()
 {
@@ -46,6 +50,13 @@ Aluggage::Aluggage()
 	// Replication
 	bReplicates = true;
 
+	BoxInfoWidgetComp = CreateDefaultSubobject<UWidgetComponent>(TEXT("BoxInfoWidgetComp"));
+	ConstructorHelpers::FClassFinder<UBoxInfoWidget> boxWidgetRef(TEXT("/Game/CustomContents/UI/Widgets/WBP_BoxInfoWidget.WBP_BoxInfoWidget_C"));
+	if (boxWidgetRef.Succeeded())
+	{
+		BoxInfoWidgetComp->SetWidgetClass(boxWidgetRef.Class);
+		BoxInfoWidgetComp->SetupAttachment(GetRootComponent());
+	}
 }
 
 void Aluggage::BeginPlay()
@@ -58,12 +69,14 @@ void Aluggage::BeginPlay()
 void Aluggage::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
+	
+	BillboardInfoWidget();
+	
 	// Pattern 이름을 luggage 위에 표시
-	if (!Pattern.IsEmpty())
+	if (!PatternName.IsEmpty())
 	{
 		FVector TextLocation = GetActorLocation() + FVector(0, 0, 100);
-		DrawDebugString(GetWorld(), TextLocation, Pattern, nullptr, FColor::White, 0.f, true);
+		DrawDebugString(GetWorld(), TextLocation, PatternName, nullptr, FColor::White, 0.f, true);
 	}
 }
 
@@ -131,6 +144,27 @@ void Aluggage::OutlineOn()
 void Aluggage::OutlineOff()
 {
 	Mesh3Comp->SetRenderCustomDepth(false);
+}
+
+void Aluggage::InfoWidgetOn()
+{
+	BoxInfoWidgetComp->GetWidget()->SetVisibility(ESlateVisibility::Visible);
+}
+
+void Aluggage::InfoWidgetOff()
+{
+	BoxInfoWidgetComp->GetWidget()->SetVisibility(ESlateVisibility::Hidden);
+}
+
+void Aluggage::BillboardInfoWidget()
+{
+	// 카메라 가져오기
+	AActor* cam = UGameplayStatics::GetPlayerCameraManager(GetWorld(), 0);
+	// 카메라 backward 벡터, up 벡터를 이용하여 Rotator 계산
+	FRotator rot = UKismetMathLibrary::MakeRotFromXZ(-cam->GetActorForwardVector(), cam->GetActorUpVector());
+	rot.Pitch = 0;
+	// 회전값으로 설정
+	BoxInfoWidgetComp->SetWorldRotation(rot);
 }
 
 
