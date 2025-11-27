@@ -8,6 +8,8 @@
 #include "GameLogging.h"
 #include "luggage.h"
 #include "UBroadcastManager.h"
+#include "UPopupManager.h"
+#include "UPopup_MsgBox.h"
 #include "UTweenAnimInstance.h"
 #include "Components/BoxComponent.h"
 
@@ -199,17 +201,55 @@ void AWeightSwitch::OnBeginOverlap(
 		{
 			const int32 CorrectIdx = GS->GetScenarioData().correct_answer_index;
 			
-			if (CorrectIdx != Luggage->SpawnIdx) return;
-
-			// 리스트에 추가 (중복 방지)
-			OverlappingActors.AddUnique(OtherActor);
-
-			// 첫 번째 물체가 올라갔을 때만 타이머 시작
-			if (OverlappingActors.Num() == 1)
+			if (CorrectIdx == Luggage->GetSpawnIdx())
 			{
-				this->DetectTarget = true;
-				this->ElapsedTime = 0.0;
+				// 리스트에 추가 (중복 방지)
+				OverlappingActors.AddUnique(OtherActor);
+
+				// 첫 번째 물체가 올라갔을 때만 타이머 시작
+				if (OverlappingActors.Num() == 1)
+				{
+					this->DetectTarget = true;
+					this->ElapsedTime = 0.0;
+				}
+
+				if (AnswerFound) return;
+				
+				// 이벤트 : 임시로 ShowMessageBox를 이용. 스테이지1 성공!!! 메세지를 보여주세요
+				FTimerHandle TimerHandle;
+				GetWorldTimerManager().SetTimer(TimerHandle, [this]
+				{
+					if (UPopupManager* PopupMgr = UPopupManager::Get(GetWorld()))
+					{
+						PopupMgr->ShowMsgBoxSimple(TEXT("스테이지1 성공!!!"), TEXT("스테이지1을 완료했습니다 부엉부엉"),
+							EMsgBoxType::OK);
+					}
+
+					AnswerFound = true;
+					
+				}, 0.5f, false);
 			}
+			else
+			{
+				// 이벤트 : False 일때는 ShowMessageBox이용해서 오답! 메세지를 보여주세요
+				// 현재 선택한 정보는 @@, @@ 입니다. 오답
+				FTimerHandle TimerHandle;
+				GetWorldTimerManager().SetTimer(TimerHandle, [this, Luggage]
+				{
+					if (UPopupManager* PopupMgr = UPopupManager::Get(GetWorld()))
+					{
+						FString Description = FString::Printf(TEXT("현재 선택한 정보는 %s, %s 입니다. 오답!\n다시 생각해보세요 부엉부엉"),
+							*Luggage->GetColor(), *Luggage->GetPattern());
+					
+						PopupMgr->ShowMsgBoxSimple(TEXT("오답!"), Description, EMsgBoxType::OK);
+					}
+
+					// 큐브 소거
+					Luggage->Destroy();
+					
+				}, 0.5f, false);
+			}
+			
 		}
 	}
 }
