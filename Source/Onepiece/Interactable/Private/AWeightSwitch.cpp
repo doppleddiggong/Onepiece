@@ -181,20 +181,24 @@ void AWeightSwitch::OnBeginOverlap(
 		return;
 	
 	// 조건 1 : 플레이어일 경우 오픈
-	if (Cast<APlayerActor>(OtherActor))
+	if ( IsPlayerDetect )
 	{
-		// 리스트에 추가 (중복 방지)
-		OverlappingActors.AddUnique(OtherActor);
-
-		// 첫 번째 물체가 올라갔을 때만 타이머 시작
-		if (OverlappingActors.Num() == 1)
+		if (Cast<APlayerActor>(OtherActor))
 		{
-			this->DetectTarget = true;
-			this->ElapsedTime = 0.0;
+			// 리스트에 추가 (중복 방지)
+			OverlappingActors.AddUnique(OtherActor);
+
+			// 첫 번째 물체가 올라갔을 때만 타이머 시작
+			if (OverlappingActors.Num() == 1)
+			{
+				this->DetectTarget = true;
+				this->ElapsedTime = 0.0;
+			}
 		}
 	}
+
 	// 조건 2 : 정답 캐리어일 경우 오픈
-	else if (Aluggage* Luggage = Cast<Aluggage>(OtherActor))
+	if (Aluggage* Luggage = Cast<Aluggage>(OtherActor))
 	{
 		ALingoGameState* GS = Cast<ALingoGameState>(GetWorld()->GetGameState());
 		if (GS)

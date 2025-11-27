@@ -74,6 +74,10 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FName EmissiveParam = "EmissiveColor";
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	bool IsPlayerDetect = false;
+
+	
 private:
 	float ElapsedTime = 0.0f;
 	bool DetectTarget = false;
