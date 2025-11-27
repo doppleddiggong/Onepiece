@@ -242,15 +242,15 @@ void APlayerActor::Cmd_Move_Implementation(const FVector2D& Axis)
 		// Calculate forward and right vectors based on the Yaw rotation.
 		const FVector ForwardDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::X);
 		const FVector RightDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::Y);
-
-		if (IsLocallyControlled())
-		{
-			PRINT_STRING(TEXT("[local] is running? %d is jumpStart? %d"), bIsRunning, bIsJumpStart);
-		}
-		else if (HasAuthority())
-		{
-			PRINT_STRING(TEXT("[server] is running? %d is jumpStart? %d"), bIsRunning, bIsJumpStart);			
-		}
+		//
+		// if (IsLocallyControlled())
+		// {
+		// 	PRINT_STRING(TEXT("[local] is running? %d is jumpStart? %d"), bIsRunning, bIsJumpStart);
+		// }
+		// else if (HasAuthority())
+		// {
+		// 	PRINT_STRING(TEXT("[server] is running? %d is jumpStart? %d"), bIsRunning, bIsJumpStart);			
+		// }
 		
 		AddMovementInput(ForwardDirection, Axis.Y);
 		AddMovementInput(RightDirection, Axis.X);
@@ -302,8 +302,8 @@ void APlayerActor::MulticastRPC_StopMove_Implementation()
 {
 	bIsRunning = false;
 	GetCharacterMovement()->MaxWalkSpeed = WalkSpeed;
-	if (IsLocallyControlled())
-		PRINT_STRING(TEXT("false!!!!! is running : %d, walkspeed : %f"), bIsRunning, GetCharacterMovement()->MaxWalkSpeed);
+	// if (IsLocallyControlled())
+	// 	PRINT_STRING(TEXT("false!!!!! is running : %d, walkspeed : %f"), bIsRunning, GetCharacterMovement()->MaxWalkSpeed);
 }
 
 void APlayerActor::ServerRPC_DoJumpStart_Implementation()
@@ -340,15 +340,15 @@ void APlayerActor::MulticastRPC_DoRun_Implementation()
 	{
 		bIsRunning = false;
 		GetCharacterMovement()->MaxWalkSpeed = WalkSpeed;
-		if (IsLocallyControlled())
-			PRINT_STRING(TEXT("false!!!!! is running : %d, walkspeed : %f"), bIsRunning, GetCharacterMovement()->MaxWalkSpeed);
+		// if (IsLocallyControlled())
+		// 	PRINT_STRING(TEXT("false!!!!! is running : %d, walkspeed : %f"), bIsRunning, GetCharacterMovement()->MaxWalkSpeed);
 	}
 	else
 	{
 		bIsRunning = true;
 		GetCharacterMovement()->MaxWalkSpeed = RunSpeed;
-		if (IsLocallyControlled())
-			PRINT_STRING(TEXT("true!!!!! is running : %d, walkspeed : %f"), bIsRunning, GetCharacterMovement()->MaxWalkSpeed);
+		// if (IsLocallyControlled())
+		// 	PRINT_STRING(TEXT("true!!!!! is running : %d, walkspeed : %f"), bIsRunning, GetCharacterMovement()->MaxWalkSpeed);
 	}
 }
 
