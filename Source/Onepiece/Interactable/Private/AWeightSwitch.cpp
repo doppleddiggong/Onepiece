@@ -217,7 +217,7 @@ void AWeightSwitch::OnBeginOverlap(
 				
 				// 이벤트 : 임시로 ShowMessageBox를 이용. 스테이지1 성공!!! 메세지를 보여주세요
 				FTimerHandle TimerHandle;
-				GetWorldTimerManager().SetTimer(TimerHandle, [this]
+				GetWorldTimerManager().SetTimer(TimerHandle, [this, GS]
 				{
 					if (UPopupManager* PopupMgr = UPopupManager::Get(GetWorld()))
 					{
@@ -226,6 +226,17 @@ void AWeightSwitch::OnBeginOverlap(
 					}
 
 					AnswerFound = true;
+
+					// 오답 캐리어 로그 ====================================================//
+					TArray<int32> WrongList = GS->WrongLuggageList;
+					if (WrongList.Num() == 0) return;
+
+					UE_LOG(LogTemp, Warning, TEXT("[AWeightSwitch] Wrong luggage :"));
+					for (auto Wrong : WrongList)
+					{
+						UE_LOG(LogTemp, Warning, TEXT("%d, "), Wrong);
+					}
+					// ===================================================================//
 					
 				}, 0.5f, false);
 			}
@@ -234,7 +245,7 @@ void AWeightSwitch::OnBeginOverlap(
 				// 이벤트 : False 일때는 ShowMessageBox이용해서 오답! 메세지를 보여주세요
 				// 현재 선택한 정보는 @@, @@ 입니다. 오답
 				FTimerHandle TimerHandle;
-				GetWorldTimerManager().SetTimer(TimerHandle, [this, Luggage]
+				GetWorldTimerManager().SetTimer(TimerHandle, [this, Luggage, GS]
 				{
 					if (UPopupManager* PopupMgr = UPopupManager::Get(GetWorld()))
 					{
@@ -243,6 +254,9 @@ void AWeightSwitch::OnBeginOverlap(
 					
 						PopupMgr->ShowMsgBoxSimple(TEXT("오답!"), Description, EMsgBoxType::OK);
 					}
+
+					// 오답 목록에 인덱스 추가
+					GS->WrongLuggageList.Add(Luggage->GetSpawnIdx());
 
 					// 큐브 소거
 					Luggage->Destroy();
