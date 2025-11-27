@@ -1,5 +1,9 @@
 var NAVTREEINDEX3 =
 {
+"classALingoGameState.html#adb613d0ae85fcd2a8d8f3f777566c98c":[2,0,7,10],
+"classALingoPlayerState.html":[2,0,8],
+"classALingoPlayerState.html#a0c837b780901d63abc02d742d82d34cf":[2,0,8,11],
+"classALingoPlayerState.html#a2136c7bb3522dbe59a8f8609325c4b93":[2,0,8,19],
 "classALingoPlayerState.html#a283004fed1584dfdb4da7c5e741eaeb0":[2,0,8,18],
 "classALingoPlayerState.html#a32e23310d5a6362332e824300316c353":[2,0,8,12],
 "classALingoPlayerState.html#a4a5444df3780d67ccefa24a47097ab14":[2,0,8,1],
@@ -245,9 +249,5 @@ var NAVTREEINDEX3 =
 "classAWeightSwitch.html#ad1d12bf0c9656ead4704c0c9ecb810e1":[2,0,22,6],
 "classAWeightSwitch.html#ad8e727ab9bba460a7c56d5ea281686c0":[2,0,22,19],
 "classAWeightSwitch.html#ae5353d804bc6c80c6fba6cb0341ab53f":[2,0,22,2],
-"classAWeightSwitch.html#ae9663983eb123ff86c5252299b5fe533":[2,0,22,17],
-"classAWeightSwitch.html#af8f4523824757b7861cea5e3095f6935":[2,0,22,15],
-"classAluggage.html":[2,0,10],
-"classAluggage.html#a072cf7b19603d5dd9dd72f90ff5140a3":[2,0,10,6],
-"classAluggage.html#a0d10873a7496c8a1ead5651966ddca02":[2,0,10,7]
+"classAWeightSwitch.html#ae9663983eb123ff86c5252299b5fe533":[2,0,22,17]
 };

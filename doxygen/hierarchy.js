@@ -140,7 +140,8 @@ var hierarchy =
       [ "UBasePopup", "classUBasePopup.html", [
         [ "UPopup_InputMsg", "classUPopup__InputMsg.html", null ],
         [ "UPopup_MsgBox", "classUPopup__MsgBox.html", null ],
-        [ "UPopup_ReadQuest", "classUPopup__ReadQuest.html", null ]
+        [ "UPopup_ReadQuest", "classUPopup__ReadQuest.html", null ],
+        [ "UPopup_Result", "classUPopup__Result.html", null ]
       ] ],
       [ "UBoxInfoWidget", "classUBoxInfoWidget.html", null ],
       [ "UDialogWidget", "classUDialogWidget.html", null ],

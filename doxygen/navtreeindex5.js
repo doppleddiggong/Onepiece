@@ -1,5 +1,9 @@
 var NAVTREEINDEX5 =
 {
+"classUGameDataManager.html#a49d5db070298ec55d4b65af85aa40ae9":[2,0,83,55],
+"classUGameDataManager.html#a4b8271c7ce8694c76c9da2249a0d8cf2":[2,0,83,40],
+"classUGameDataManager.html#a51dc891a2bf6cab66eca2b4ca17a66de":[2,0,83,20],
+"classUGameDataManager.html#a52a1a40b1f8d3c2e4595cc124eb0ab33":[2,0,83,50],
 "classUGameDataManager.html#a5d0c96aebf3e41ce7bfa468a101fffa2":[2,0,83,0],
 "classUGameDataManager.html#a6353faaf48850413bf207f2d9dd5c0c8":[2,0,83,57],
 "classUGameDataManager.html#a648f605851022a42d08d62e32267cf64":[2,0,83,16],
@@ -245,9 +249,5 @@ var NAVTREEINDEX5 =
 "classUMainWidget.html#ad20ac0a98c69f588c45eead091449dc8":[2,0,95,0],
 "classUMainWidget.html#ad7de89f2b381f896001de9b8b7e407bc":[2,0,95,10],
 "classUMainWidget.html#adb018eb03dbdf6e025b97b323265f103":[2,0,95,8],
-"classUMainWidget.html#adb05dee910e2e76e4ebd7f04a1a0252d":[2,0,95,7],
-"classUMainWidget.html#aedf018e4f459f81fb42cfa716545eb25":[2,0,95,15],
-"classUNetworkBroadcastLibrary.html":[2,0,96],
-"classUNetworkBroadcastLibrary.html#ae0e3f074b7a4090b7543d4064f0569ac":[2,0,96,0],
-"classUObjectPoolManager.html":[2,0,97]
+"classUMainWidget.html#adb05dee910e2e76e4ebd7f04a1a0252d":[2,0,95,7]
 };

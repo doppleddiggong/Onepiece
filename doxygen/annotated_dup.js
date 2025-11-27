@@ -102,6 +102,7 @@ var annotated_dup =
     [ "UPopup_InputMsg", "classUPopup__InputMsg.html", "classUPopup__InputMsg" ],
     [ "UPopup_MsgBox", "classUPopup__MsgBox.html", "classUPopup__MsgBox" ],
     [ "UPopup_ReadQuest", "classUPopup__ReadQuest.html", "classUPopup__ReadQuest" ],
+    [ "UPopup_Result", "classUPopup__Result.html", "classUPopup__Result" ],
     [ "UPopupManager", "classUPopupManager.html", "classUPopupManager" ],
     [ "UQuestInfoWidget", "classUQuestInfoWidget.html", "classUQuestInfoWidget" ],
     [ "URobotAnimInstance", "classURobotAnimInstance.html", "classURobotAnimInstance" ],
