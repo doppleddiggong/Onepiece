@@ -73,10 +73,10 @@ void Aluggage::Tick(float DeltaTime)
 	BillboardInfoWidget();
 	
 	// Pattern 이름을 luggage 위에 표시
-	if (!PatternName.IsEmpty())
+	if (!Pattern.IsEmpty())
 	{
 		FVector TextLocation = GetActorLocation() + FVector(0, 0, 100);
-		DrawDebugString(GetWorld(), TextLocation, PatternName, nullptr, FColor::White, 0.f, true);
+		DrawDebugString(GetWorld(), TextLocation, Pattern, nullptr, FColor::White, 0.f, true);
 	}
 }
 
