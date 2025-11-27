@@ -15,11 +15,23 @@
 #include "Math/RotationMatrix.h"
 #include "Components/StaticMeshComponent.h"
 #include "Engine/StaticMesh.h"
+#include "Net/UnrealNetwork.h"
 
 UHookSystem::UHookSystem()
 {
 	PrimaryComponentTick.bCanEverTick = true;
 	PrimaryComponentTick.TickGroup = TG_PostUpdateWork;
+	SetIsReplicatedByDefault(true);
+}
+
+void UHookSystem::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
+{
+	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+
+	DOREPLIFETIME(UHookSystem, HookState);
+	DOREPLIFETIME(UHookSystem, HookedTarget);
+	DOREPLIFETIME(UHookSystem, HookProjectileLocation);
+	DOREPLIFETIME(UHookSystem, HookLaunchDirection);
 }
 
 void UHookSystem::BeginPlay()
@@ -138,6 +150,31 @@ void UHookSystem::TryHook()
 		return;
 	}
 
+	// Server에 Hook 요청
+	ServerTryHook(HitResult);
+}
+
+void UHookSystem::ServerTryHook_Implementation(const FHitResult& HitResult)
+{
+	// 서버에서만 실행
+	if (!OwnerPlayer || !OwnerPlayer->HasAuthority())
+	{
+		return;
+	}
+
+	// 다시 한번 유효성 검사 (보안)
+	AActor* HitActor = HitResult.GetActor();
+	if (!HitActor)
+	{
+		return;
+	}
+
+	UHookComponent* HookComp = HitActor->FindComponentByClass<UHookComponent>();
+	if (!HookComp || !HookComp->bIsHookable)
+	{
+		return;
+	}
+
 	// Hook 시작
 	StartHook(HitResult);
 }
@@ -176,6 +213,14 @@ void UHookSystem::StartHook(const FHitResult& Hit)
 
 void UHookSystem::ReleaseHook()
 {
+	// 클라이언트에서 호출 시 Server에 요청
+	if (OwnerPlayer && !OwnerPlayer->HasAuthority())
+	{
+		ServerReleaseHook();
+		return;
+	}
+
+	// 서버에서 실행
 	if (HookState != EHookState::Idle)
 	{
 		if (HookedTarget)
@@ -197,6 +242,11 @@ void UHookSystem::ReleaseHook()
 			ProjectileMesh->SetVisibility(false);
 		}
 	}
+}
+
+void UHookSystem::ServerReleaseHook_Implementation()
+{
+	ReleaseHook();
 }
 
 void UHookSystem::DetectHookTarget()
@@ -302,6 +352,12 @@ void UHookSystem::UpdateHookLaunching(float DeltaTime)
 		return;
 	}
 
+	// 서버 권한 체크 - 상태 변경은 서버에서만
+	if (!OwnerPlayer || !OwnerPlayer->HasAuthority())
+	{
+		return;
+	}
+
 	// 훅 발사체 이동
 	HookProjectileLocation += HookLaunchDirection * LaunchSpeed * DeltaTime;
 
@@ -361,6 +417,12 @@ void UHookSystem::UpdateHookPulling(float DeltaTime)
 		return;
 	}
 
+	// 서버 권한 체크 - Actor 위치 변경은 서버에서만
+	if (!OwnerPlayer->HasAuthority())
+	{
+		return;
+	}
+
 	// 플레이어 앞 목표 위치 계산
 	FVector PlayerLocation = OwnerPlayer->GetActorLocation();
 	FVector PlayerForward = OwnerPlayer->GetActorForwardVector();
@@ -388,7 +450,7 @@ void UHookSystem::UpdateHookPulling(float DeltaTime)
 		HookSpeed
 	);
 
-	// 위치 업데이트
+	// 위치 업데이트 (서버에서만 실행됨)
 	HookedTarget->SetActorLocation(NewLocation);
 
 	// 디버그 표시
@@ -516,4 +578,47 @@ void UHookSystem::UpdateCableMeshTransform(const FVector& CableStart, const FVec
 
 	CableMesh->SetWorldScale3D(FVector(RadiusScale, RadiusScale, LengthScale));
 	CableMesh->SetVisibility(true);
+}
+
+void UHookSystem::OnRep_HookState()
+{
+	// HookState가 변경되면 Visual 업데이트
+	switch (HookState)
+	{
+		case EHookState::Idle:
+			// Hook이 해제되면 Cable과 Projectile 숨김
+			if (CableMesh)
+			{
+				CableMesh->SetVisibility(false);
+			}
+			if (ProjectileMesh)
+			{
+				ProjectileMesh->SetVisibility(false);
+			}
+			break;
+
+		case EHookState::Launching:
+		case EHookState::Pulling:
+			// Hook이 시작되면 Cable과 Projectile 표시
+			if (CableMesh)
+			{
+				CableMesh->SetVisibility(true);
+			}
+			if (ProjectileMesh)
+			{
+				ProjectileMesh->SetVisibility(true);
+			}
+			break;
+	}
+
+	PRINTLOG(TEXT("UHookSystem: OnRep_HookState - State changed to %d"), (int32)HookState);
+}
+
+void UHookSystem::OnRep_HookProjectileLocation()
+{
+	// HookProjectileLocation이 변경되면 Projectile Mesh 위치 업데이트
+	if (ProjectileMesh && HookState == EHookState::Launching)
+	{
+		ProjectileMesh->SetWorldLocation(HookProjectileLocation);
+	}
 }

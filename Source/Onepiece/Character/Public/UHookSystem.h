@@ -40,6 +40,7 @@ protected:
 	virtual void BeginPlay() override;
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType,
 	                           FActorComponentTickFunction* ThisTickFunction) override;
+	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
 
 public:
 	/** Hook System 초기화 (PlayerActor의 Cable과 Projectile Mesh 전달) */
@@ -47,17 +48,28 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Hook")
 	void InitSystem(class UStaticMeshComponent* InCableMesh, class UStaticMeshComponent* InProjectileMesh);
 
-	/** Hook 시도 (우클릭 입력 시 호출) */
+	/** Hook 시도 (우클릭 입력 시 호출) - Client에서 호출 → Server로 전달 */
 	UFUNCTION(BlueprintCallable, Category = "Hook")
 	void TryHook();
 
-	/** Hook 시작 */
+	/** Hook 시작 - Server에서만 실행 */
 	UFUNCTION(BlueprintCallable, Category = "Hook")
 	void StartHook(const FHitResult& Hit);
 
-	/** Hook 해제 */
+	/** Hook 해제 - Server에서만 실행 */
 	UFUNCTION(BlueprintCallable, Category = "Hook")
 	void ReleaseHook();
+
+protected:
+	/** [Server RPC] Hook 시도 요청 */
+	UFUNCTION(Server, Reliable)
+	void ServerTryHook(const FHitResult& HitResult);
+
+	/** [Server RPC] Hook 해제 요청 */
+	UFUNCTION(Server, Reliable)
+	void ServerReleaseHook();
+
+public:
 
 	/** Hook 중인지 확인 */
 	UFUNCTION(BlueprintPure, Category = "Hook")
@@ -84,6 +96,14 @@ protected:
 
 	/** Cable 업데이트 */
 	void UpdateCable();
+
+	/** HookState 복제 시 호출 */
+	UFUNCTION()
+	void OnRep_HookState();
+
+	/** HookProjectileLocation 복제 시 호출 */
+	UFUNCTION()
+	void OnRep_HookProjectileLocation();
 	
 public:
 	/** Hook 발사 속도 */
@@ -120,11 +140,11 @@ public:
 	
 protected:
 	/** 현재 Hook 상태 */
-	UPROPERTY(BlueprintReadOnly, Category = "Hook")
+	UPROPERTY(BlueprintReadOnly, ReplicatedUsing = OnRep_HookState, Category = "Hook")
 	EHookState HookState = EHookState::Idle;
 
 	/** 현재 Hook된 대상 */
-	UPROPERTY()
+	UPROPERTY(Replicated)
 	TObjectPtr<AActor> HookedTarget;
 
 	/** 현재 감지된 훅 가능 타겟 */
@@ -136,11 +156,13 @@ protected:
 
 	UPROPERTY()
 	TObjectPtr<class UStaticMeshComponent> ProjectileMesh;
-	
+
 	/** 훅 발사체 위치 */
+	UPROPERTY(ReplicatedUsing = OnRep_HookProjectileLocation)
 	FVector HookProjectileLocation;
 
 	/** 훅 발사 방향 */
+	UPROPERTY(Replicated)
 	FVector HookLaunchDirection;
 
 	/** Owner PlayerActor 캐싱 */
