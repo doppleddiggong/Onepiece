@@ -22,6 +22,10 @@ public:
 	
 	// Movement Func
 	void ChangeConveyorMovement();
+	UFUNCTION(Server, Reliable)
+	void ServerRPC_ChangeConveyorMovement();
+	UFUNCTION(NetMulticast, Reliable)
+	void MulticastRPC_ChangeConveyorMovement();
 	
 protected:
 	// Components

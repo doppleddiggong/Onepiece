@@ -33,5 +33,5 @@ void URobotAnimInstance::NativeUpdateAnimation(float DeltaSeconds)
 
 void URobotAnimInstance::AnimNotify_OnJumpStart()
 {
-	OwningRobot->DoJump();
+	OwningRobot->ServerRPC_DoJump();
 }

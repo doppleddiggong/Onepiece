@@ -60,6 +60,16 @@ void AConveyorBelt::Tick(float DeltaTime)
 
 void AConveyorBelt::ChangeConveyorMovement()
 {
+	ServerRPC_ChangeConveyorMovement();
+}
+
+void AConveyorBelt::ServerRPC_ChangeConveyorMovement_Implementation()
+{
+	MulticastRPC_ChangeConveyorMovement();
+}
+
+void AConveyorBelt::MulticastRPC_ChangeConveyorMovement_Implementation()
+{
 	bIsForward = !bIsForward;
 	PRINT_STRING(TEXT("%d"), bIsForward);
 }

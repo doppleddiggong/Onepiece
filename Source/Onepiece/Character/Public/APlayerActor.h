@@ -76,8 +76,23 @@ public: // Control Interface
 
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Command")
 	void Cmd_Info() override;
-
-	void DoJump();
+	
+	UFUNCTION(Server, Reliable)
+	void ServerRPC_StopMove();
+	UFUNCTION(NetMulticast, Reliable)
+	void MulticastRPC_StopMove();
+	UFUNCTION(Server, Reliable)
+	void ServerRPC_DoJumpStart();
+	UFUNCTION(NetMulticast, Reliable)
+	void MulticastRPC_DoJumpStart();
+	UFUNCTION(Server, Reliable)
+	void ServerRPC_DoJump();
+	UFUNCTION(NetMulticast, Reliable)
+	void MulticastRPC_DoJump();
+	UFUNCTION(Server, Reliable)
+	void ServerRPC_DoRun();
+	UFUNCTION(NetMulticast, Reliable)
+	void MulticastRPC_DoRun();
 	
 public:
 	FORCEINLINE bool GetIsRunning() { return bIsRunning; }

@@ -174,36 +174,15 @@ void APlayerActor::PlayTTSAudio(const TArray<uint8>& AudioData)
 	VoiceConversationSystem->PlayVoiceAudio(AudioData);
 }
 
-
-void APlayerActor::DoJump()
-{
-	bIsJumpStart = false;
-	Jump();
-}
-
 void APlayerActor::Cmd_StopMove_Implementation()
 {
-	bIsRunning = false;
-	GetCharacterMovement()->MaxWalkSpeed = WalkSpeed;
+	ServerRPC_StopMove();
 }
 
 void APlayerActor::Cmd_Run_Implementation()
 {
-	if (bIsJumpStart || GetMovementComponent()->IsFalling()) return;
-	
-	if (bIsRunning)
-	{
-		bIsRunning = false;
-		GetCharacterMovement()->MaxWalkSpeed = WalkSpeed;
-	}
-	else
-	{
-		bIsRunning = true;
-		GetCharacterMovement()->MaxWalkSpeed = RunSpeed;
-	}
+	ServerRPC_DoRun();
 }
-
-
 
 void APlayerActor::Cmd_Move_Implementation(const FVector2D& Axis)
 {
@@ -225,6 +204,15 @@ void APlayerActor::Cmd_Move_Implementation(const FVector2D& Axis)
 		const FVector ForwardDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::X);
 		const FVector RightDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::Y);
 
+		if (IsLocallyControlled())
+		{
+			PRINT_STRING(TEXT("[local] is running? %d is jumpStart? %d"), bIsRunning, bIsJumpStart);
+		}
+		else if (HasAuthority())
+		{
+			PRINT_STRING(TEXT("[server] is running? %d is jumpStart? %d"), bIsRunning, bIsJumpStart);			
+		}
+		
 		AddMovementInput(ForwardDirection, Axis.Y);
 		AddMovementInput(RightDirection, Axis.X);
 	}
@@ -238,7 +226,7 @@ void APlayerActor::Cmd_Look_Implementation(const FVector2D& Axis)
 
 void APlayerActor::Cmd_Jump_Implementation()
 {
-	bIsJumpStart = true;
+	ServerRPC_DoJumpStart();
 }
 
 void APlayerActor::Cmd_RecordStart_Implementation()
@@ -263,6 +251,65 @@ void APlayerActor::Cmd_Info_Implementation()
 		{
 			Popup->InitPopup( GS->CurScenarioData);
 		}
+	}
+}
+
+void APlayerActor::ServerRPC_StopMove_Implementation()
+{
+	MulticastRPC_StopMove();
+}
+
+void APlayerActor::MulticastRPC_StopMove_Implementation()
+{
+	bIsRunning = false;
+	GetCharacterMovement()->MaxWalkSpeed = WalkSpeed;
+	if (IsLocallyControlled())
+		PRINT_STRING(TEXT("false!!!!! is running : %d, walkspeed : %f"), bIsRunning, GetCharacterMovement()->MaxWalkSpeed);
+}
+
+void APlayerActor::ServerRPC_DoJumpStart_Implementation()
+{
+	MulticastRPC_DoJumpStart();
+}
+
+void APlayerActor::MulticastRPC_DoJumpStart_Implementation()
+{
+	bIsJumpStart = true;
+}
+
+void APlayerActor::ServerRPC_DoJump_Implementation()
+{
+	MulticastRPC_DoJump();
+}
+
+void APlayerActor::MulticastRPC_DoJump_Implementation()
+{
+	bIsJumpStart = false;
+	Jump();
+}
+
+void APlayerActor::ServerRPC_DoRun_Implementation()
+{
+	MulticastRPC_DoRun();
+}
+
+void APlayerActor::MulticastRPC_DoRun_Implementation()
+{
+	if (bIsJumpStart || GetMovementComponent()->IsFalling()) return;
+	
+	if (bIsRunning)
+	{
+		bIsRunning = false;
+		GetCharacterMovement()->MaxWalkSpeed = WalkSpeed;
+		if (IsLocallyControlled())
+			PRINT_STRING(TEXT("false!!!!! is running : %d, walkspeed : %f"), bIsRunning, GetCharacterMovement()->MaxWalkSpeed);
+	}
+	else
+	{
+		bIsRunning = true;
+		GetCharacterMovement()->MaxWalkSpeed = RunSpeed;
+		if (IsLocallyControlled())
+			PRINT_STRING(TEXT("true!!!!! is running : %d, walkspeed : %f"), bIsRunning, GetCharacterMovement()->MaxWalkSpeed);
 	}
 }
 
