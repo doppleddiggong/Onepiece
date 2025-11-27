@@ -65,7 +65,7 @@ public:
 
 	/** 현재 훅 타겟이 있는지 확인 */
 	UFUNCTION(BlueprintPure, Category = "Hook")
-	bool HasHookTarget() const { return CurrentHookTarget != nullptr; }
+	bool HasHookTarget() const { return CurHookTarget != nullptr; }
 
 	bool PerformCenterLineTrace(FHitResult& OutHit);
 	
@@ -129,7 +129,7 @@ protected:
 
 	/** 현재 감지된 훅 가능 타겟 */
 	UPROPERTY()
-	TObjectPtr<AActor> CurrentHookTarget;
+	TObjectPtr<AActor> CurHookTarget;
 
 	UPROPERTY()
 	TObjectPtr<class UStaticMeshComponent> CableMesh;

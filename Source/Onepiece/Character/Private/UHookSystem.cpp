@@ -214,13 +214,13 @@ void UHookSystem::DetectHookTarget()
 			UHookComponent* HookComp = HitActor->FindComponentByClass<UHookComponent>();
 			if (HookComp && HookComp->bIsHookable)
 			{
-				CurrentHookTarget = HitActor;
+				CurHookTarget = HitActor;
 				return;
 			}
 		}
 	}
 
-	CurrentHookTarget = nullptr;
+	CurHookTarget = nullptr;
 }
 
 
@@ -269,16 +269,16 @@ void UHookSystem::UpdateHookTargetUI()
 		return;
 
 	// MainWidget에 훅 타겟 표시 업데이트
-	if (UMainWidget* MainWidget = OwnerPlayer->GetMainWidget())
+	if (auto MainWidget = OwnerPlayer->GetMainWidget())
 	{
 		// 에임 상태에 따라 이미지 변경
-		MainWidget->UpdateHookIndicatorState(CurrentHookTarget != nullptr);
+		MainWidget->UpdateHookIndicatorState(CurHookTarget != nullptr);
 	}
 
 	// 디버그 표시
-	if (bShowDebugInfo && CurrentHookTarget)
+	if (bShowDebugInfo && CurHookTarget)
 	{
-		FVector TargetLocation = CurrentHookTarget->GetActorLocation();
+		FVector TargetLocation = CurHookTarget->GetActorLocation();
 		DrawDebugSphere(
 			GetWorld(),
 			TargetLocation,

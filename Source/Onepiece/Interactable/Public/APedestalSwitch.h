@@ -35,6 +35,9 @@ public:
 	/** InteractableComponent - 상호작용 시스템 */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
 	TObjectPtr<class UInteractableComponent> InteractableComp;
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
+	TObjectPtr<class UWidgetComponent> WidgetComp;
+	
 	UPROPERTY(BlueprintReadOnly)
 	TObjectPtr<class UTweenAnimInstance> AnimBlueprint;
 

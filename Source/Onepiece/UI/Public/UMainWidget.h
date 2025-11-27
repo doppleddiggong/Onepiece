@@ -45,10 +45,6 @@ public:
 	class UImage* HookTargetIndicator;
 
 public:
-	/// @brief 훅 타겟 인디케이터 표시/숨김
-	UFUNCTION(BlueprintCallable, Category = "Hook")
-	void SetHookTargetVisible(bool bVisible);
-
 	/// @brief 훅 인디케이터 상태 업데이트 (에임/비에임)
 	/// @param bIsAiming true면 타겟 감지됨(파란색), false면 비감지(회색)
 	UFUNCTION(BlueprintCallable, Category = "Hook")

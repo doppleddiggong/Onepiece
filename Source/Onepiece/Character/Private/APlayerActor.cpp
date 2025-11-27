@@ -39,6 +39,8 @@
 
 #define MAINWIDGET_PATH TEXT("/Game/CustomContents/UI/WBP_MainWidget.WBP_MainWidget_C")
 
+#define HOOKMESHPATH_PATH TEXT("/Game/CustomContents/Character/Asset/MiniOwl/MiniOwlbot.MiniOwlbot")
+
 APlayerActor::APlayerActor()
 {
 	PrimaryActorTick.bCanEverTick = false;
@@ -82,7 +84,7 @@ APlayerActor::APlayerActor()
 	HookSystem = CreateDefaultSubobject<UHookSystem>(TEXT("HookSystem"));
 	VoiceConversationSystem = CreateDefaultSubobject<UVoiceConversationSystem>(TEXT("VoiceConversationSystem"));
 
-	// Hook Cable Component
+	// Hook
 	HookCable = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("HookCable"));
 	HookCable->SetupAttachment(GetMesh());
 	HookCable->SetVisibility(false);
@@ -93,23 +95,20 @@ APlayerActor::APlayerActor()
 	
 	static ConstructorHelpers::FObjectFinder<UStaticMesh> CylinderMesh(TEXT("/Engine/BasicShapes/Cylinder.Cylinder"));
 	if (CylinderMesh.Succeeded())
-	{
 		HookCable->SetStaticMesh(CylinderMesh.Object);
-	}
 	HookCable->SetRelativeScale3D(FVector(0.05f, 0.05f, 1.0f));
 
-	// Hook Projectile Mesh (훅 발사체 시각화)
 	HookProjectileMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("HookProjectileMesh"));
 	HookProjectileMesh->SetupAttachment(GetMesh());
 	HookProjectileMesh->SetVisibility(false);
 	HookProjectileMesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 
-	// 기본 구체 메시 사용 (에디터에서 변경 가능)
-	static ConstructorHelpers::FObjectFinder<UStaticMesh> SphereMesh(TEXT("/Engine/BasicShapes/Sphere.Sphere"));
-	if (SphereMesh.Succeeded())
+	static ConstructorHelpers::FObjectFinder<UStaticMesh> HookMesh(HOOKMESHPATH_PATH);
+	if (HookMesh.Succeeded())
 	{
-		HookProjectileMesh->SetStaticMesh(SphereMesh.Object);
-		HookProjectileMesh->SetRelativeScale3D(FVector(0.3f)); // 작은 크기
+		HookProjectileMesh->SetStaticMesh(HookMesh.Object);
+		HookProjectileMesh->SetRelativeScale3D(FVector(1.0f));
+		HookProjectileMesh->SetRelativeRotation(FRotator(0, 90, 0));
 	}
 
 	// MainWidget 클래스 자동 로드
@@ -123,29 +122,17 @@ void APlayerActor::BeginPlay()
 	MoveComp = this->GetCharacterMovement();
 
 	VoiceConversationSystem->InitSystem(this);
-
-	// Hook System 초기화 - Cable과 Projectile Mesh 전달
-	if (HookSystem && HookCable && HookProjectileMesh)
-	{
-		HookSystem->InitSystem(HookCable, HookProjectileMesh);
-	}
+	HookSystem->InitSystem(HookCable, HookProjectileMesh);
 
 	if (IsLocallyControlled())
 	{
 		CreateMainWidget();
 		
-		// Map1(게임 맵)에서는 마우스 숨기기
 		FString MapName = GetWorld()->GetMapName();
-		// PIE 프리픽스 제거
 		MapName.RemoveFromStart(GetWorld()->StreamingLevelsPrefix);
 		
-		PRINTLOG(TEXT("[PlayerActor] Current Map: %s"), *MapName);
-		
 		if (MapName.Contains(TEXT("Map1")) || MapName.Contains(TEXT("Game")))
-		{
 			ULingoGameHelper::HideMouseCursor(this);
-			PRINTLOG(TEXT("[PlayerActor] Mouse cursor hidden for game map"));
-		}
 	}
 }
 

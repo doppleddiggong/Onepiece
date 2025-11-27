@@ -6,10 +6,13 @@
 #include "ConveyorBelt.h"
 #include "GameLogging.h"
 #include "InteractableComponent.h"
+#include "UInteractWidget.h"
 #include "Components/BoxComponent.h"
+#include "Components/WidgetComponent.h"
 #include "Kismet/GameplayStatics.h"
 #include "Net/UnrealNetwork.h"
 
+#define INTERACT_WIDGET_PATH TEXT("/Game/CustomContents/UI/Widgets/WBP_InteractWidget.WBP_InteractWidget_C")
 
 // Sets default values
 AConveyorButton::AConveyorButton()
@@ -31,7 +34,15 @@ AConveyorButton::AConveyorButton()
 	
 	InteractableComp = CreateDefaultSubobject<UInteractableComponent>(TEXT("InteractableComp"));
 	InteractableComp->InteractionType = EInteractionType::Button;
-	InteractableComp->InteractionPrompt = TEXT("Press E to Activate");
+	InteractableComp->InteractionPrompt = TEXT("Activate");
+
+	WidgetComp = CreateDefaultSubobject<UWidgetComponent>(TEXT("WidgetComp"));
+	ConstructorHelpers::FClassFinder<UInteractWidget> WidgetRef(INTERACT_WIDGET_PATH);
+	if (WidgetRef.Succeeded())
+	{
+		WidgetComp->SetWidgetClass(WidgetRef.Class);
+		WidgetComp->SetupAttachment(GetRootComponent());
+	}
 	
 	BoxComp = CreateDefaultSubobject<UBoxComponent>(TEXT("BoxComp"));
 	BoxComp->SetupAttachment(GetRootComponent());
@@ -53,6 +64,7 @@ void AConveyorButton::BeginPlay()
 	UGameplayStatics::GetAllActorsOfClass(GetWorld(), AConveyorBelt::StaticClass(), ConveyorBeltActors);
 	
 	// Bind Delegate
+	InteractableComp->InitWidget(WidgetComp);
 	InteractableComp->OnInteractionTriggered.AddDynamic(this, &AConveyorButton::OnInteractionTriggered);
 }
 

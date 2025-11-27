@@ -6,9 +6,13 @@
 #include "APlayerActor.h"
 #include "GameLogging.h"
 #include "luggage.h"
+#include "UInteractWidget.h"
 #include "Net/UnrealNetwork.h"
 #include "Components/BoxComponent.h"
+#include "Components/WidgetComponent.h"
 #include "UInteractionSystem.h"
+#include "Kismet/GameplayStatics.h"
+#include "Kismet/KismetMathLibrary.h"
 
 
 UInteractableComponent::UInteractableComponent()
@@ -23,12 +27,12 @@ UInteractableComponent::UInteractableComponent()
 	DetectionRange = CreateDefaultSubobject<UBoxComponent>(TEXT("DetectionRange"));
 	if (DetectionRange)
 	{
-		DetectionRange->SetBoxExtent(FVector(250.f)); // DetectionDistance 기본값                                                                 
+		DetectionRange->SetBoxExtent(FVector(250.f)); // DetectionDistance 기본값
 		DetectionRange->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
 		DetectionRange->SetCollisionResponseToAllChannels(ECR_Ignore);
 		DetectionRange->SetCollisionResponseToChannel(ECC_Pawn, ECR_Overlap);
 	}
-	
+
 	SetIsReplicatedByDefault(true);
 }
 
@@ -77,6 +81,9 @@ void UInteractableComponent::InitDetectionRange()
 void UInteractableComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
+
+	// 상호작용 위젯 빌보드화
+	BillboardInteractWidget();
 
 	// 디버그 표시
 	if (bShowDetectionDebug && DetectionRange)
@@ -304,14 +311,19 @@ void UInteractableComponent::OnDetectionBeginOverlap(
 			InteractionSystem->RegisterInteractable(this);
 		}
 
-		// Outline 켜기
+		// PickUp 타입이면 Luggage의 custom widget 사용
 		Aluggage* luggage = Cast<Aluggage>(GetOwner());
 		if (luggage && !bIsPickedUp)
 		{
 			luggage->OutlineOn();
 			luggage->InfoWidgetOn();
 		}
-		
+		else
+		{
+			// 그 외 타입은 InteractWidget 표시
+			ShowInteractWidget();
+		}
+
 		PRINTLOG( TEXT("InteractableComponent: Player entered detection range - %s"), *GetOwner()->GetName());
 	}
 }
@@ -336,7 +348,7 @@ void UInteractableComponent::OnDetectionEndOverlap(
 
 		PRINTLOG( TEXT("InteractableComponent: Player left detection range - %s"), *GetOwner()->GetName());
 
-		// Outline 끄기
+		// Widget 끄기
 		FTimerHandle TimerHandle;
 		GetWorld()->GetTimerManager().SetTimer(TimerHandle, FTimerDelegate::CreateLambda([this]
 		{
@@ -346,7 +358,68 @@ void UInteractableComponent::OnDetectionEndOverlap(
 				luggage->OutlineOff();
 				luggage->InfoWidgetOff();
 			}
-			
+			else
+			{
+				// 그 외 타입은 InteractWidget 숨김
+				HideInteractWidget();
+			}
 		}), 0.1f, false);
 	}
 }
+
+#pragma region Widget
+void UInteractableComponent::InitWidget(UWidgetComponent* InWidgetComp)
+{
+	this->WidgetComp = InWidgetComp;
+
+	if (!WidgetComp)
+		return;
+
+	WidgetComp->SetVisibility(false); // 처음엔 숨겨두고
+
+	if (auto InteractWidget = Cast<UInteractWidget>(WidgetComp->GetWidget()))
+		InteractWidget->InitInfo(TEXT("E"), InteractionPrompt);
+}
+
+void UInteractableComponent::ShowInteractWidget()
+{
+	if (!WidgetComp)
+		return;
+
+	if (!WidgetComp->GetWidget())
+		return;
+
+	WidgetComp->SetVisibility(true);
+}
+
+void UInteractableComponent::HideInteractWidget()
+{
+	if (!WidgetComp)
+		return;
+
+	WidgetComp->SetVisibility(false);
+}
+
+void UInteractableComponent::BillboardInteractWidget()
+{
+	// 위젯이 없으면 빌보드화 안 함
+	if (!WidgetComp)
+		return;
+
+	// Visibility 체크 - 보이지 않으면 빌보드화 안 함
+	if (!WidgetComp->IsVisible())
+		return;
+
+	// 카메라 가져오기
+	AActor* Camera = UGameplayStatics::GetPlayerCameraManager(GetWorld(), 0);
+	if (!Camera)
+		return;
+
+	// 카메라를 향하도록 회전 계산
+	FRotator Rotation = UKismetMathLibrary::MakeRotFromXZ( -Camera->GetActorForwardVector(), Camera->GetActorUpVector() );
+	Rotation.Pitch = 0;
+
+	// 위젯 회전 설정
+	WidgetComp->SetWorldRotation(Rotation);
+}
+#pragma endregion

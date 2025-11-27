@@ -19,18 +19,18 @@
 #include "Engine/Texture2D.h"
 
 #define AIM_TEXTURE_PATH TEXT("/Game/CustomContents/UI/UITexture/HookAim.HookAim")
-#define NOAIM_TEXTURE_PATH TEXT("/Game/CustomContents/UI/UITexture/NoHookAim.NoHookAim")
+#define NO_AIM_TEXTURE_PATH TEXT("/Game/CustomContents/UI/UITexture/NoHookAim.NoHookAim")
 
 UMainWidget::UMainWidget(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer)
 {
 	static ConstructorHelpers::FObjectFinder<UTexture2D> AimTextureFinder(AIM_TEXTURE_PATH);
 	if (AimTextureFinder.Succeeded())
 		HookAimTexture = AimTextureFinder.Object;
-	static ConstructorHelpers::FObjectFinder<UTexture2D> NoAimTextureFinder(NOAIM_TEXTURE_PATH);
+
+	static ConstructorHelpers::FObjectFinder<UTexture2D> NoAimTextureFinder(NO_AIM_TEXTURE_PATH);
 	if (NoAimTextureFinder.Succeeded())
 		HookNoAimTexture = NoAimTextureFinder.Object;
 }
-
 
 void UMainWidget::NativeConstruct()
 {
@@ -90,12 +90,12 @@ void UMainWidget::OnUpdateMissionTimerState(bool bIsActive, float TimeLimit)
 	if (CachedGameState && bIsActive && TimeLimit > 0.0f)
 		CachedGameState->RemainMissionTime = TimeLimit;
 
-	
 	if (!QuestInfoWidget)
 		return;
 
 	QuestInfoWidget->SetVisibility(bIsActive ? ESlateVisibility::Visible : ESlateVisibility::Collapsed );
-
+	HookTargetIndicator->SetVisibility(ESlateVisibility::Visible);
+	
 	if (bIsActive)
 	{
 		StartMissionTimer();
@@ -107,31 +107,23 @@ void UMainWidget::OnUpdateMissionTimerState(bool bIsActive, float TimeLimit)
 	}
 }
 
-void UMainWidget::SetHookTargetVisible(bool bVisible)
-{
-	if (HookTargetIndicator)
-	{
-		HookTargetIndicator->SetVisibility(bVisible ? ESlateVisibility::Visible : ESlateVisibility::Hidden);
-	}
-}
-
 void UMainWidget::UpdateHookIndicatorState(bool bIsAiming)
 {
 	if (!HookTargetIndicator)
 		return;
 
-	// 항상 표시
-	HookTargetIndicator->SetVisibility(ESlateVisibility::Visible);
+	if ( !HookTargetIndicator->IsVisible() )
+		return;
 
 	// 에임 상태에 따라 이미지 변경
-	if (bIsAiming && HookAimTexture)
+	if (bIsAiming)
 	{
-		// 타겟 감지됨 - 파란색 이미지
+		// 타겟 감지됨
 		HookTargetIndicator->SetBrushFromTexture(HookAimTexture);
 	}
-	else if (!bIsAiming && HookNoAimTexture)
+	else if (!bIsAiming)
 	{
-		// 타겟 미감지 - 회색 이미지
+		// 타겟 미감지
 		HookTargetIndicator->SetBrushFromTexture(HookNoAimTexture);
 	}
 }

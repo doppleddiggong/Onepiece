@@ -6,6 +6,9 @@
 #include "Components/ActorComponent.h"
 #include "InteractableComponent.generated.h"
 
+/** 상호작용 위젯 블루프린트 경로 */
+#define INTERACT_WIDGET_PATH TEXT("/Game/CustomContents/UI/Widgets/WBP_InteractWidget.WBP_InteractWidget_C")
+
 /**
  * @brief 상호작용 타입 정의
  */
@@ -13,7 +16,7 @@ UENUM(BlueprintType)
 enum class EInteractionType : uint8
 {
 	None		UMETA(DisplayName = "None"),
-	PickUp		UMETA(DisplayName = "Pick Up"),		// 집어올리기
+	PickUp		UMETA(DisplayName = "Pick Up"),			// 집어올리기
 	Button		UMETA(DisplayName = "Button"),			// 버튼 누르기
 };
 
@@ -34,7 +37,7 @@ class ONEPIECE_API UInteractableComponent : public UActorComponent
 
 public:
 	UInteractableComponent();
-
+	
 protected:
 	virtual void BeginPlay() override;
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
@@ -149,4 +152,35 @@ protected:
 	//						 USceneComponent의 하위에 존재
 	// 컴포넌트가 붙는 액터의 Mesh를 가져오는 역할
 	UPrimitiveComponent* GetOwnerPrimitiveComponent() const;
+
+
+
+#pragma region Widget
+
+
+public:
+	void InitWidget(class UWidgetComponent* InWidgetComp);
+
+	// ========================================
+	// 상호작용 위젯
+	// ========================================
+
+private:
+	/** 상호작용 위젯 표시 */
+	UFUNCTION(BlueprintCallable, Category = "Interaction")
+	void ShowInteractWidget();
+
+	/** 상호작용 위젯 숨김 */
+	UFUNCTION(BlueprintCallable, Category = "Interaction")
+	void HideInteractWidget();
+
+	/** 상호작용 위젯 빌보드화 (카메라를 향하도록) */
+	void BillboardInteractWidget();
+
+private:
+	/** 상호작용 위젯 컴포넌트 (생성자에서 생성 또는 InitSystem으로 외부 주입) */
+	UPROPERTY()
+	TObjectPtr<class UWidgetComponent> WidgetComp;
+
+#pragma endregion	
 };
