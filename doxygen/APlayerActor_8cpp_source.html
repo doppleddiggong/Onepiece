@@ -364,15 +364,15 @@ $(document).ready(function(){initNavTree('APlayerActor_8cpp_source.html',''); in
 <div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>        <span class="comment">// Calculate forward and right vectors based on the Yaw rotation.</span></div>
 <div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>        <span class="keyword">const</span> FVector ForwardDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::X);</div>
 <div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>        <span class="keyword">const</span> FVector RightDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::Y);</div>
-<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span> </div>
-<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>        <span class="keywordflow">if</span> (IsLocallyControlled())</div>
-<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>        {</div>
-<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>            <a class="code hl_define" href="GameLogging_8h.html#ac50b407bb34c70a0be1fccc74730d143">PRINT_STRING</a>(TEXT(<span class="stringliteral">&quot;[local] is running? %d is jumpStart? %d&quot;</span>), <a class="code hl_variable" href="classAPlayerActor.html#aece858bea4efda77305623144f2bad45">bIsRunning</a>, <a class="code hl_variable" href="classAPlayerActor.html#ab2162e911aea12e7e720e5bfcb3dbf8f">bIsJumpStart</a>);</div>
-<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>        }</div>
-<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (HasAuthority())</div>
-<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>        {</div>
-<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>            <a class="code hl_define" href="GameLogging_8h.html#ac50b407bb34c70a0be1fccc74730d143">PRINT_STRING</a>(TEXT(<span class="stringliteral">&quot;[server] is running? %d is jumpStart? %d&quot;</span>), <a class="code hl_variable" href="classAPlayerActor.html#aece858bea4efda77305623144f2bad45">bIsRunning</a>, <a class="code hl_variable" href="classAPlayerActor.html#ab2162e911aea12e7e720e5bfcb3dbf8f">bIsJumpStart</a>);           </div>
-<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span>        }</div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>        <span class="comment">//</span></div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>        <span class="comment">// if (IsLocallyControlled())</span></div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>        <span class="comment">// {</span></div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>        <span class="comment">//  PRINT_STRING(TEXT(&quot;[local] is running? %d is jumpStart? %d&quot;), bIsRunning, bIsJumpStart);</span></div>
+<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>        <span class="comment">// }</span></div>
+<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>        <span class="comment">// else if (HasAuthority())</span></div>
+<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>        <span class="comment">// {</span></div>
+<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>        <span class="comment">//  PRINT_STRING(TEXT(&quot;[server] is running? %d is jumpStart? %d&quot;), bIsRunning, bIsJumpStart);           </span></div>
+<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span>        <span class="comment">// }</span></div>
 <div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span>        </div>
 <div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span>        AddMovementInput(ForwardDirection, Axis.Y);</div>
 <div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>        AddMovementInput(RightDirection, Axis.X);</div>
@@ -424,8 +424,8 @@ $(document).ready(function(){initNavTree('APlayerActor_8cpp_source.html',''); in
 <div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span>{</div>
 <div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span>    <a class="code hl_variable" href="classAPlayerActor.html#aece858bea4efda77305623144f2bad45">bIsRunning</a> = <span class="keyword">false</span>;</div>
 <div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span>    GetCharacterMovement()-&gt;MaxWalkSpeed = <a class="code hl_variable" href="classAPlayerActor.html#a1ea19f988738aada96a8f3637338163f">WalkSpeed</a>;</div>
-<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span>    <span class="keywordflow">if</span> (IsLocallyControlled())</div>
-<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span>        <a class="code hl_define" href="GameLogging_8h.html#ac50b407bb34c70a0be1fccc74730d143">PRINT_STRING</a>(TEXT(<span class="stringliteral">&quot;false!!!!! is running : %d, walkspeed : %f&quot;</span>), <a class="code hl_variable" href="classAPlayerActor.html#aece858bea4efda77305623144f2bad45">bIsRunning</a>, GetCharacterMovement()-&gt;MaxWalkSpeed);</div>
+<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span>    <span class="comment">// if (IsLocallyControlled())</span></div>
+<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span>    <span class="comment">//  PRINT_STRING(TEXT(&quot;false!!!!! is running : %d, walkspeed : %f&quot;), bIsRunning, GetCharacterMovement()-&gt;MaxWalkSpeed);</span></div>
 <div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span>}</div>
 <div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span> </div>
 <div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span><span class="keywordtype">void</span> APlayerActor::ServerRPC_DoJumpStart_Implementation()</div>
@@ -462,15 +462,15 @@ $(document).ready(function(){initNavTree('APlayerActor_8cpp_source.html',''); in
 <div class="line"><a id="l00340" name="l00340"></a><span class="lineno">  340</span>    {</div>
 <div class="line"><a id="l00341" name="l00341"></a><span class="lineno">  341</span>        <a class="code hl_variable" href="classAPlayerActor.html#aece858bea4efda77305623144f2bad45">bIsRunning</a> = <span class="keyword">false</span>;</div>
 <div class="line"><a id="l00342" name="l00342"></a><span class="lineno">  342</span>        GetCharacterMovement()-&gt;MaxWalkSpeed = <a class="code hl_variable" href="classAPlayerActor.html#a1ea19f988738aada96a8f3637338163f">WalkSpeed</a>;</div>
-<div class="line"><a id="l00343" name="l00343"></a><span class="lineno">  343</span>        <span class="keywordflow">if</span> (IsLocallyControlled())</div>
-<div class="line"><a id="l00344" name="l00344"></a><span class="lineno">  344</span>            <a class="code hl_define" href="GameLogging_8h.html#ac50b407bb34c70a0be1fccc74730d143">PRINT_STRING</a>(TEXT(<span class="stringliteral">&quot;false!!!!! is running : %d, walkspeed : %f&quot;</span>), <a class="code hl_variable" href="classAPlayerActor.html#aece858bea4efda77305623144f2bad45">bIsRunning</a>, GetCharacterMovement()-&gt;MaxWalkSpeed);</div>
+<div class="line"><a id="l00343" name="l00343"></a><span class="lineno">  343</span>        <span class="comment">// if (IsLocallyControlled())</span></div>
+<div class="line"><a id="l00344" name="l00344"></a><span class="lineno">  344</span>        <span class="comment">//  PRINT_STRING(TEXT(&quot;false!!!!! is running : %d, walkspeed : %f&quot;), bIsRunning, GetCharacterMovement()-&gt;MaxWalkSpeed);</span></div>
 <div class="line"><a id="l00345" name="l00345"></a><span class="lineno">  345</span>    }</div>
 <div class="line"><a id="l00346" name="l00346"></a><span class="lineno">  346</span>    <span class="keywordflow">else</span></div>
 <div class="line"><a id="l00347" name="l00347"></a><span class="lineno">  347</span>    {</div>
 <div class="line"><a id="l00348" name="l00348"></a><span class="lineno">  348</span>        <a class="code hl_variable" href="classAPlayerActor.html#aece858bea4efda77305623144f2bad45">bIsRunning</a> = <span class="keyword">true</span>;</div>
 <div class="line"><a id="l00349" name="l00349"></a><span class="lineno">  349</span>        GetCharacterMovement()-&gt;MaxWalkSpeed = <a class="code hl_variable" href="classAPlayerActor.html#a0e9166eaab407919546d8accca997855">RunSpeed</a>;</div>
-<div class="line"><a id="l00350" name="l00350"></a><span class="lineno">  350</span>        <span class="keywordflow">if</span> (IsLocallyControlled())</div>
-<div class="line"><a id="l00351" name="l00351"></a><span class="lineno">  351</span>            <a class="code hl_define" href="GameLogging_8h.html#ac50b407bb34c70a0be1fccc74730d143">PRINT_STRING</a>(TEXT(<span class="stringliteral">&quot;true!!!!! is running : %d, walkspeed : %f&quot;</span>), <a class="code hl_variable" href="classAPlayerActor.html#aece858bea4efda77305623144f2bad45">bIsRunning</a>, GetCharacterMovement()-&gt;MaxWalkSpeed);</div>
+<div class="line"><a id="l00350" name="l00350"></a><span class="lineno">  350</span>        <span class="comment">// if (IsLocallyControlled())</span></div>
+<div class="line"><a id="l00351" name="l00351"></a><span class="lineno">  351</span>        <span class="comment">//  PRINT_STRING(TEXT(&quot;true!!!!! is running : %d, walkspeed : %f&quot;), bIsRunning, GetCharacterMovement()-&gt;MaxWalkSpeed);</span></div>
 <div class="line"><a id="l00352" name="l00352"></a><span class="lineno">  352</span>    }</div>
 <div class="line"><a id="l00353" name="l00353"></a><span class="lineno">  353</span>}</div>
 <div class="line"><a id="l00354" name="l00354"></a><span class="lineno">  354</span> </div>
@@ -561,7 +561,7 @@ $(document).ready(function(){initNavTree('APlayerActor_8cpp_source.html',''); in
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_71a9f6b769ee24fe8598c19ea2d70480.html">Character</a></li><li class="navelem"><a class="el" href="dir_a846a28747c2ebe05b4ec9782ab892b2.html">Private</a></li><li class="navelem"><a class="el" href="APlayerActor_8cpp.html">APlayerActor.cpp</a></li>
-    <li class="footer">생성시간 : 목 11월 27 2025 08:32:45, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 목 11월 27 2025 10:59:48, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>
