@@ -12,6 +12,8 @@
 #include "Components/ActorComponent.h"
 #include "UHookSystem.generated.h"
 
+class UStaticMeshComponent;
+
 /** Hook 상태 */
 UENUM(BlueprintType)
 enum class EHookState : uint8
@@ -41,8 +43,9 @@ protected:
 
 public:
 	/** Hook System 초기화 (PlayerActor의 Cable과 Projectile Mesh 전달) */
+	/** Cylinder mesh is used to visualize the cable connection. */
 	UFUNCTION(BlueprintCallable, Category = "Hook")
-	void InitSystem(class UCableComponent* InCableComp, class UStaticMeshComponent* InProjectileMesh);
+	void InitSystem(class UStaticMeshComponent* InCableMesh, class UStaticMeshComponent* InProjectileMesh);
 
 	/** Hook 시도 (우클릭 입력 시 호출) */
 	UFUNCTION(BlueprintCallable, Category = "Hook")
@@ -110,6 +113,10 @@ public:
 	/** 디버그 표시 여부 */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Debug")
 	bool bShowDebugInfo = true;
+
+	/** Cable Mesh 두께 */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Hook|Visual")
+	float CableThickness = 8.0f;
 	
 protected:
 	/** 현재 Hook 상태 */
@@ -125,7 +132,7 @@ protected:
 	TObjectPtr<AActor> CurrentHookTarget;
 
 	UPROPERTY()
-	TObjectPtr<class UCableComponent> CableComp;
+	TObjectPtr<class UStaticMeshComponent> CableMesh;
 
 	UPROPERTY()
 	TObjectPtr<class UStaticMeshComponent> ProjectileMesh;
@@ -139,4 +146,11 @@ protected:
 	/** Owner PlayerActor 캐싱 */
 	UPROPERTY()
 	TObjectPtr<class APlayerActor> OwnerPlayer;
+
+	/** Cylinder 기반 Cable Mesh 원래 크기 */
+	float CableMeshBaseLength = 100.0f;
+	float CableMeshBaseRadius = 1.0f;
+
+	/** Cable Mesh 변환 보조 */
+	void UpdateCableMeshTransform(const FVector& CableStart, const FVector& CableEnd);
 };

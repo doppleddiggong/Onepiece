@@ -45,17 +45,23 @@ public:
 	TObjectPtr<class UHookSystem> HookSystem;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Components|Hook")
-	TObjectPtr<class UCableComponent> HookCable;
+	TObjectPtr<class UStaticMeshComponent> HookCable;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Components|Hook")
 	TObjectPtr<class UStaticMeshComponent> HookProjectileMesh;
 
+
+
+	
 protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Camera", meta=(AllowPrivateAccess="true"))
 	TObjectPtr<class USpringArmComponent> SpringArmComp;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Camera", meta=(AllowPrivateAccess="true"))
 	TObjectPtr<class UCameraComponent> FollowCamera;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Camera", meta=(AllowPrivateAccess="true"))
+	TObjectPtr<class UHookComponent> HookComp;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category="RushAttack|Owner")
 	TObjectPtr<class UCharacterMovementComponent> MoveComp;

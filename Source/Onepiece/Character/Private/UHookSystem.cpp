@@ -12,7 +12,9 @@
 #include "UMainWidget.h"
 #include "GameLogging.h"
 #include "DrawDebugHelpers.h"
-#include "CableComponent.h"
+#include "Math/RotationMatrix.h"
+#include "Components/StaticMeshComponent.h"
+#include "Engine/StaticMesh.h"
 
 UHookSystem::UHookSystem()
 {
@@ -34,35 +36,32 @@ void UHookSystem::BeginPlay()
 	}
 }
 
-void UHookSystem::InitSystem(UCableComponent* InCableComp, UStaticMeshComponent* InProjectileMesh)
+void UHookSystem::InitSystem(UStaticMeshComponent* InCableMesh, UStaticMeshComponent* InProjectileMesh)
 {
-	CableComp = InCableComp;
+	CableMesh = InCableMesh;
 	ProjectileMesh = InProjectileMesh;
 
-	if (CableComp)
+	if (CableMesh)
 	{
 		// Cable Component 초기 설정 - 직선으로 나가도록
-		CableComp->SetVisibility(false);
-		CableComp->CableLength = 1500.0f;
-		CableComp->NumSegments = 2;  // 2로 줄여서 거의 직선처럼
-		CableComp->CableWidth = 5.0f;
-		CableComp->SetCollisionEnabled(ECollisionEnabled::NoCollision);
-		
-		// 중력 제거 및 강성 활성화
-		CableComp->CableGravityScale = 0.0f;  // 중력 제거
-		CableComp->bEnableStiffness = true;   // 강성 활성화
-		CableComp->CableForce = FVector::ZeroVector;  // 외부 힘 제거
+		CableMesh->SetVisibility(false);
+		CableMesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+		CableMesh->SetCastShadow(false);
+		CableMesh->SetMobility(EComponentMobility::Movable);
+		CableMesh->SetUsingAbsoluteLocation(true);
+		CableMesh->SetUsingAbsoluteRotation(true);
 
-		CableComp->EndLocation = FVector::ZeroVector;
-		CableComp->NumSides = 4;
-		CableComp->SubstepTime = 0.02f;
-		CableComp->SolverIterations = 1;  // 반복 최소화
+		if (UStaticMesh* Mesh = CableMesh->GetStaticMesh())
+		{
+			CableMeshBaseLength = FMath::Max(Mesh->GetBounds().BoxExtent.Z * 2.0f, 1.0f);
+			CableMeshBaseRadius = FMath::Max(Mesh->GetBounds().BoxExtent.X, Mesh->GetBounds().BoxExtent.Y);
+		}
 
-		PRINTLOG(TEXT("UHookSystem: InitSystem completed with Cable (straight line mode)"));
+		PRINTLOG(TEXT("UHookSystem: InitSystem completed with Cable Mesh (straight line mode)"));
 	}
 	else
 	{
-		PRINTLOG(TEXT("UHookSystem: InitSystem - Cable is null!"));
+		PRINTLOG(TEXT("UHookSystem: InitSystem - Cable Mesh is null!"));
 	}
 
 	if (ProjectileMesh)
@@ -161,9 +160,9 @@ void UHookSystem::StartHook(const FHitResult& Hit)
 	HookLaunchDirection = (Hit.Location - HookProjectileLocation).GetSafeNormal();
 
 	// Cable 및 Projectile Mesh 표시
-	if (CableComp)
+	if (CableMesh)
 	{
-		CableComp->SetVisibility(true);
+		CableMesh->SetVisibility(true);
 	}
 
 	if (ProjectileMesh)
@@ -188,9 +187,9 @@ void UHookSystem::ReleaseHook()
 		HookedTarget = nullptr;
 
 		// Cable 및 Projectile Mesh 숨김
-		if (CableComp)
+		if (CableMesh)
 		{
-			CableComp->SetVisibility(false);
+			CableMesh->SetVisibility(false);
 		}
 
 		if (ProjectileMesh)
@@ -440,14 +439,17 @@ void UHookSystem::UpdateCable()
 	}
 	else
 	{
+		if (CableMesh)
+		{
+			CableMesh->SetVisibility(false);
+		}
 		return;
 	}
 
 	// Cable Component 업데이트
-	if (CableComp)
+	if (CableMesh)
 	{
-		CableComp->SetWorldLocation(CableStart);
-		CableComp->EndLocation = CableEnd - CableStart;
+		UpdateCableMeshTransform(CableStart, CableEnd);
 	}
 
 	// Projectile Mesh 위치 업데이트
@@ -483,4 +485,35 @@ void UHookSystem::UpdateCable()
 			2.0f
 		);
 	}
+}
+
+void UHookSystem::UpdateCableMeshTransform(const FVector& CableStart, const FVector& CableEnd)
+{
+	if (!CableMesh)
+	{
+		return;
+	}
+
+	FVector CableDelta = CableEnd - CableStart;
+	float CableLength = CableDelta.Size();
+	if (CableLength <= KINDA_SMALL_NUMBER)
+	{
+		CableMesh->SetVisibility(false);
+		return;
+	}
+
+	FVector CableMidpoint = CableStart + (CableDelta * 0.5f);
+	CableMesh->SetWorldLocation(CableMidpoint);
+
+	FVector Direction = CableDelta / CableLength;
+	FRotator CableRotation = FRotationMatrix::MakeFromZ(Direction).Rotator();
+	CableMesh->SetWorldRotation(CableRotation);
+
+	const float LengthScale = CableLength / FMath::Max(CableMeshBaseLength, KINDA_SMALL_NUMBER);
+	const float TargetThickness = FMath::Max(CableThickness, 1.0f);
+	const float MeshDiameter = FMath::Max(CableMeshBaseRadius * 2.0f, KINDA_SMALL_NUMBER);
+	const float RadiusScale = TargetThickness / MeshDiameter;
+
+	CableMesh->SetWorldScale3D(FVector(RadiusScale, RadiusScale, LengthScale));
+	CableMesh->SetVisibility(true);
 }

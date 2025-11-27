@@ -23,6 +23,7 @@
 #include "UPopup_ReadQuest.h"
 #include "UBroadcastManager.h"
 #include "ALingoGameState.h"
+#include "UHookComponent.h"
 
 #include "Camera/CameraComponent.h"
 #include "Components/InputComponent.h"
@@ -32,8 +33,8 @@
 #include "GameFramework/PlayerController.h"
 #include "Net/UnrealNetwork.h"
 #include "Blueprint/UserWidget.h"
-#include "CableComponent.h"
 #include "Components/StaticMeshComponent.h"
+#include "Engine/StaticMesh.h"
 #include "Onepiece/Onepiece.h"
 
 #define MAINWIDGET_PATH TEXT("/Game/CustomContents/UI/WBP_MainWidget.WBP_MainWidget_C")
@@ -82,15 +83,27 @@ APlayerActor::APlayerActor()
 	VoiceConversationSystem = CreateDefaultSubobject<UVoiceConversationSystem>(TEXT("VoiceConversationSystem"));
 
 	// Hook Cable Component
-	HookCable = CreateDefaultSubobject<UCableComponent>(TEXT("HookCable"));
+	HookCable = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("HookCable"));
 	HookCable->SetupAttachment(GetMesh());
 	HookCable->SetVisibility(false);
+	HookCable->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+	HookCable->SetMobility(EComponentMobility::Movable);
+	HookCable->SetUsingAbsoluteLocation(true);
+	HookCable->SetUsingAbsoluteRotation(true);
+	
+	static ConstructorHelpers::FObjectFinder<UStaticMesh> CylinderMesh(TEXT("/Engine/BasicShapes/Cylinder.Cylinder"));
+	if (CylinderMesh.Succeeded())
+	{
+		HookCable->SetStaticMesh(CylinderMesh.Object);
+	}
+	HookCable->SetRelativeScale3D(FVector(0.05f, 0.05f, 1.0f));
 
 	// Hook Projectile Mesh (훅 발사체 시각화)
 	HookProjectileMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("HookProjectileMesh"));
 	HookProjectileMesh->SetupAttachment(GetMesh());
 	HookProjectileMesh->SetVisibility(false);
 	HookProjectileMesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+
 	// 기본 구체 메시 사용 (에디터에서 변경 가능)
 	static ConstructorHelpers::FObjectFinder<UStaticMesh> SphereMesh(TEXT("/Engine/BasicShapes/Sphere.Sphere"));
 	if (SphereMesh.Succeeded())
