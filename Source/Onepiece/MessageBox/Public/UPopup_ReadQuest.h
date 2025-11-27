@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "EQuestRole.h"
 #include "NetworkData.h"
 #include "UBasePopup.h"
 #include "Blueprint/UserWidget.h"
@@ -21,6 +22,9 @@ protected:
 public:
 	UFUNCTION(BlueprintCallable, Category = "Quest")
 	void InitPopup(const FResponseScenario& InScenarioData);
+
+	UFUNCTION()
+	void InitQuestInfo(EQuestRole QuestRole);
 
 private:
 	UFUNCTION(BlueprintCallable, Category = "Close")

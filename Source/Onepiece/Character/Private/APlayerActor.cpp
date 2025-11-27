@@ -118,20 +118,18 @@ void APlayerActor::GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& O
 void APlayerActor::CreateMainWidget()
 {
 	if (!MainWidgetClass)
-	{
-		PRINTLOG(TEXT("[PlayerActor] MainWidgetClass is not set!"));
 		return;
-	}
 
 	if(MainWidget)
 		return;
 
-	if (APlayerController* PC = Cast<APlayerController>(GetController()))
-	{
-		MainWidget = CreateWidget<UMainWidget>(PC, MainWidgetClass);
-		if (MainWidget)
-			MainWidget->AddToViewport();
-	}
+	APlayerController* PC = Cast<APlayerController>(GetController());
+	if (!PC)
+		return;
+
+	MainWidget = CreateWidget<UMainWidget>(PC, MainWidgetClass);
+	if (MainWidget)
+		MainWidget->AddToViewport();
 }
 
 

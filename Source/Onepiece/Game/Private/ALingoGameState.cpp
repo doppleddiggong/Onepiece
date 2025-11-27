@@ -83,20 +83,14 @@ void ALingoGameState::SetStageData(int InStageIndex, const FResponseScenario& In
 	
 	this->StageIndex = InStageIndex;
 	this->CurScenarioData = InResponseData;
+	
 	// 미션 타이머 시작
 	this->StartMissionTimer( ULingoGameHelper::GetMissionPlayTime(ScenarioLevel) );
 
 	// 모든 클라이언트(서버 포함)에 팝업 표시 요청
 	if (HasAuthority())
 	{
-		Multicast_ShowReadQuestPopup(InStageIndex, InResponseData);
-
-		// 모든 클라이언트에게 스테이지 시작 브로드캐스트
-		if (ANetworkBroadcastActor* BroadcastActor = ANetworkBroadcastActor::Get(this))
-		{
-			BroadcastActor->SendStageStarted(InStageIndex, this);
-			PRINTLOG(TEXT("[GameState] Broadcasting StageStarted - StageIndex: %d"), InStageIndex);
-		}
+		Multicast_ShowReadQuestPopup(InStageIndex, CurScenarioData);
 	}
 }
 
@@ -109,10 +103,10 @@ void ALingoGameState::StartMissionTimer(float TimeLimit)
 	RemainMissionTime = TimeLimit;
 	bIsTimerActive = true;
 
-	// BroadcastManager를 통해 타이머 시작 알림
-	if (UBroadcastManager* BroadcastManager = UBroadcastManager::Get(GetWorld()))
+	// NetworkBroadcastActor를 통해 모든 클라이언트에 타이머 시작 알림
+	if (ANetworkBroadcastActor* BroadcastActor = ANetworkBroadcastActor::Get(this))
 	{
-		BroadcastManager->SendMissionTimerStateChanged(true);
+		BroadcastActor->SendUpdateMissionTimerState(true, TimeLimit, this);
 	}
 
 	PRINTLOG( TEXT("[GameState] Mission Timer Started - %.0f seconds"), TimeLimit);
@@ -125,10 +119,10 @@ void ALingoGameState::StopMissionTimer()
 
 	bIsTimerActive = false;
 
-	// BroadcastManager를 통해 타이머 중지 알림
-	if (UBroadcastManager* BroadcastManager = UBroadcastManager::Get(GetWorld()))
+	// NetworkBroadcastActor를 통해 모든 클라이언트에 타이머 중지 알림
+	if (ANetworkBroadcastActor* BroadcastActor = ANetworkBroadcastActor::Get(this))
 	{
-		BroadcastManager->SendMissionTimerStateChanged(false);
+		BroadcastActor->SendUpdateMissionTimerState(false, 0.0f, this);
 	}
 
 	PRINTLOG( TEXT("[GameState] Mission Timer Stopped"));
@@ -141,10 +135,10 @@ void ALingoGameState::OnMissionTimerEnd()
 
 	bIsTimerActive = false;
 
-	// BroadcastManager를 통해 타이머 종료 알림
-	if (UBroadcastManager* BroadcastManager = UBroadcastManager::Get(GetWorld()))
+	// NetworkBroadcastActor를 통해 모든 클라이언트에 타이머 종료 알림
+	if (ANetworkBroadcastActor* BroadcastActor = ANetworkBroadcastActor::Get(this))
 	{
-		BroadcastManager->SendMissionTimerStateChanged(false);
+		BroadcastActor->SendUpdateMissionTimerState(false, 0.0f, this);
 	}
 
 	auto EndMessage = ULingoGameHelper::GetStageEndMessage(StageIndex);

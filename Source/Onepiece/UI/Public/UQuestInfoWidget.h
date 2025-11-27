@@ -14,8 +14,12 @@ class ONEPIECE_API UQuestInfoWidget : public UUserWidget
 {
 	GENERATED_BODY()
 
+protected:
+	virtual void NativeConstruct() override;
+	
 public:
-	void InitQuestInfo();
+	UFUNCTION()
+	void InitQuestInfo(EQuestRole QuestRole);
 	
 public:
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly, Category = "Style")

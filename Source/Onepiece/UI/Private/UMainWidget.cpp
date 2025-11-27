@@ -9,6 +9,7 @@
 #include "UPlayTimer.h"
 #include "UStateWidget.h"
 #include "ALingoGameState.h"
+#include "ALingoPlayerState.h"
 #include "UBroadcastManager.h"
 #include "GameLogging.h"
 #include "ULingoGameHelper.h"
@@ -19,15 +20,6 @@ UMainWidget::UMainWidget(const FObjectInitializer& ObjectInitializer) : Super(Ob
 {
 }
 
-void UMainWidget::StartMissionTimer()
-{
-	PlayTimer->SetVisibility(ESlateVisibility::Visible);
-}
-
-void UMainWidget::StopMissionTimer()
-{
-	PlayTimer->SetVisibility(ESlateVisibility::Hidden);
-}
 
 void UMainWidget::NativeConstruct()
 {
@@ -35,25 +27,10 @@ void UMainWidget::NativeConstruct()
 
 	// GameState 참조 가져오기
 	if (UWorld* World = GetWorld())
-	{
 		CachedGameState = World->GetGameState<ALingoGameState>();
 
-		if (CachedGameState)
-		{
-			PRINTLOG(TEXT("[MainWidget] GameState cached successfully"));
-		}
-		else
-		{
-			PRINTLOG(TEXT("[MainWidget] Failed to cache GameState"));
-		}
-	}
-
-	// BroadcastManager 이벤트 구독
-	if (UBroadcastManager* BroadcastManager = UBroadcastManager::Get(GetWorld()))
-	{
-		BroadcastManager->OnMissionTimerStateChanged.AddDynamic(this, &UMainWidget::OnMissionTimerStateChanged);
-		PRINTLOG(TEXT("[MainWidget] Subscribed to OnMissionTimerStateChanged"));
-	}
+	if (auto BM = UBroadcastManager::Get(GetWorld()))
+		BM->OnUpdateMissionTimerState.AddDynamic(this, &UMainWidget::OnUpdateMissionTimerState);
 
 	StateWidget->InitWidget();
 	QuestInfoWidget->SetVisibility( ESlateVisibility::Collapsed );
@@ -68,26 +45,46 @@ void UMainWidget::NativeTick(const FGeometry& MyGeometry, float InDeltaTime)
 	UpdateTimerDisplay();
 }
 
+void UMainWidget::StartMissionTimer() const
+{
+	PlayTimer->SetVisibility(ESlateVisibility::Visible);
+}
+
+void UMainWidget::StopMissionTimer() const
+{
+	PlayTimer->SetVisibility(ESlateVisibility::Hidden);
+}
+
 void UMainWidget::UpdateTimerDisplay()
 {
 	if (!CachedGameState || !PlayTimer)
 		return;
-
-	// GameState의 시간을 가져와서 PlayTimer 업데이트
-	FString TimeText = ULingoGameHelper::GetFormatTimer(CachedGameState->RemainMissionTime);
-	PlayTimer->UpdateTimerText(TimeText);
+	
+	PlayTimer->UpdateTimerText(ULingoGameHelper::GetFormatTimer(CachedGameState->RemainMissionTime));
 }
 
-void UMainWidget::OnMissionTimerStateChanged(bool bIsActive)
+void UMainWidget::OnUpdateMissionTimerState(bool bIsActive, float TimeLimit)
 {
-	PRINTLOG(TEXT("[MainWidget] Mission Timer State Changed - bIsActive: %s"), bIsActive ? TEXT("true") : TEXT("false"));
+	if (!CachedGameState)
+	{
+		if (UWorld* World = GetWorld())
+			CachedGameState = World->GetGameState<ALingoGameState>();
+	}
+
+	// GameState의 RemainMissionTime 업데이트
+	if (CachedGameState && bIsActive && TimeLimit > 0.0f)
+		CachedGameState->RemainMissionTime = TimeLimit;
+
+	
+	if (!QuestInfoWidget)
+		return;
 
 	QuestInfoWidget->SetVisibility(bIsActive ? ESlateVisibility::Visible : ESlateVisibility::Collapsed );
-	
+
 	if (bIsActive)
 	{
 		StartMissionTimer();
-		QuestInfoWidget->InitQuestInfo();
+		QuestInfoWidget->InitQuestInfo(ULingoGameHelper::GetLingoPlayerState(GetWorld())->QuestRole);
 	}
 	else
 	{

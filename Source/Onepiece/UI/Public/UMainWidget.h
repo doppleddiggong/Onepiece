@@ -18,8 +18,8 @@ class ONEPIECE_API UMainWidget : public UUserWidget
 public:
 	UMainWidget(const FObjectInitializer& ObjectInitializer);
 
-	void StartMissionTimer();
-	void StopMissionTimer();
+	void StartMissionTimer() const;
+	void StopMissionTimer() const;
 	
 protected:
 	/// @brief 위젯 초기화
@@ -51,5 +51,5 @@ protected:
 
 	/// @brief 미션 타이머 상태 변경 핸들러
 	UFUNCTION()
-	void OnMissionTimerStateChanged(bool bIsActive);
+	void OnUpdateMissionTimerState(bool bIsActive, float TimeLimit);
 };

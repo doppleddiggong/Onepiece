@@ -16,6 +16,7 @@
 #include "InputAction.h"
 
 #include "FComponentHelper.h"
+#include "UBroadcastManager.h"
 #include "UInteractionSystem.h"
 
 #define IMC_DEFAULT_PATH			TEXT("/Game/CustomContents/Input/IMC_Game_Player.IMC_Game_Player")
@@ -83,6 +84,11 @@ void APlayerControl::SetupInputComponent()
 
 		EIC->BindAction(IA_Info, ETriggerEvent::Started, this, &APlayerControl::OnInfo);
 	}
+}
+
+void APlayerControl::UpdateQuestRole(EQuestRole QuestRole)
+{
+	UBroadcastManager::Get(GetWorld())->SendUpdateQuestRole(QuestRole);
 }
 
 IControllable* APlayerControl::GetControllable() const

@@ -23,7 +23,7 @@ UInteractableComponent::UInteractableComponent()
 	DetectionRange = CreateDefaultSubobject<UBoxComponent>(TEXT("DetectionRange"));
 	if (DetectionRange)
 	{
-		DetectionRange->SetBoxExtent(FVector(180.0f)); // DetectionDistance 기본값                                                                 
+		DetectionRange->SetBoxExtent(FVector(250.f)); // DetectionDistance 기본값                                                                 
 		DetectionRange->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
 		DetectionRange->SetCollisionResponseToAllChannels(ECR_Ignore);
 		DetectionRange->SetCollisionResponseToChannel(ECC_Pawn, ECR_Overlap);
@@ -184,6 +184,13 @@ void UInteractableComponent::Server_PickUp_Implementation(AActor* NewHoldingOwne
 	OnRep_HoldingOwner();
 
 	bIsPickedUp = true;
+	// outline, infowidget 끄기
+	Aluggage* luggage = Cast<Aluggage>(GetOwner());
+	if (luggage)
+	{
+		luggage->OutlineOff();
+		luggage->InfoWidgetOff();
+	}
 	PRINTLOG( TEXT("InteractableComponent::PickUp - %s picked up"), *GetOwner()->GetName());
 }
 
@@ -196,6 +203,14 @@ void UInteractableComponent::Server_Drop_Implementation()
 {
 	if (!bIsPickedUp) return;
 
+	// outline, infowidget 켜기
+	Aluggage* luggage = Cast<Aluggage>(GetOwner());
+	if (luggage)
+	{
+		luggage->OutlineOn();
+		luggage->InfoWidgetOn();
+	}
+	
 	// detach
 	GetOwner()->DetachFromActor(FDetachmentTransformRules::KeepWorldTransform);
 
@@ -207,7 +222,7 @@ void UInteractableComponent::Server_Drop_Implementation()
 	}
 
 	bIsPickedUp = false;
-
+	
 	PRINTLOG( TEXT("InteractableComponent::Drop - %s dropped"), *GetOwner()->GetName());
 }
 
@@ -294,6 +309,7 @@ void UInteractableComponent::OnDetectionBeginOverlap(
 		if (luggage && !bIsPickedUp)
 		{
 			luggage->OutlineOn();
+			luggage->InfoWidgetOn();
 		}
 		
 		PRINTLOG( TEXT("InteractableComponent: Player entered detection range - %s"), *GetOwner()->GetName());
@@ -328,6 +344,7 @@ void UInteractableComponent::OnDetectionEndOverlap(
 			if (luggage && !bIsPickedUp)
 			{
 				luggage->OutlineOff();
+				luggage->InfoWidgetOff();
 			}
 			
 		}), 0.1f, false);

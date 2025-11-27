@@ -7,6 +7,8 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "ALingoPlayerState.h"
+#include "NetworkData.h"
 #include "InputActionValue.h"
 #include "GameFramework/PlayerController.h"
 #include "APlayerControl.generated.h"
@@ -18,6 +20,8 @@ class ONEPIECE_API APlayerControl : public APlayerController
 
 public:
 	APlayerControl();
+
+	void UpdateQuestRole(EQuestRole QuestRole);
 
 protected:
     virtual void BeginPlay() override;

@@ -7,6 +7,7 @@
 #include "GameFramework/PlayerController.h"
 #include "UKLingoNetworkSystem.h"
 #include "NetworkData.h"
+#include "ALingoGameMode.h"
 #include "ALingoGameState.h"
 #include "GameLogging.h"
 #include "LuggageManager.h"
@@ -175,33 +176,15 @@ void AContactTrigger::OnResponseScenario(FResponseScenario& ResponseData, bool b
 	// ALingoGameState에 시나리오 데이터 전체 저장
 	if (UWorld* World = GetWorld())
 	{
-		if (ALingoGameState* LingoGameState = World->GetGameState<ALingoGameState>())
+		if (auto GM = ULingoGameHelper::GetLingoGameMode(World))
 		{
-			// GameState에 시나리오 정보 저장 (서버에서만 실행되므로 자동으로 복제됨)
-			LingoGameState->SetStageData(StageIndex, ResponseData);
-
-			PRINTLOG(TEXT("[ContactTrigger] Saved scenario data & Started timer (180s) - StageIndex: %d, Index: %d, Difficulty: %d"),
-				StageIndex, ResponseData.index, ResponseData.dificulity);
-		}
-
-		// 모든 플레이어에게 이벤트 메시지 전송
-		for (FConstPlayerControllerIterator It = World->GetPlayerControllerIterator(); It; ++It)
-		{
-			if (APlayerController* PC = It->Get())
-			{
-				if (APlayerActor* PlayerActor = Cast<APlayerActor>(PC->GetPawn()))
-				{
-					PlayerActor->OnGameMessage(EventMessage);
-					PRINTLOG(TEXT("[ContactTrigger] Sent message to player: %s"), *EventMessage);
-				}
-			}
+			GM->BeginReadQuest(StageIndex, ResponseData);
 		}
 
 		ALuggageManager* LuggageManager = Cast<ALuggageManager>(
 			  UGameplayStatics::GetActorOfClass(World, ALuggageManager::StaticClass()));
+
 		if (LuggageManager)
-		{
 			LuggageManager->StartSpawning();
-		}
 	}
 }
