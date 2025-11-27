@@ -123,23 +123,24 @@ protected:
 
 public:
 	// ========================================
-	// Stage Started
+	// Mission Timer State
 	// ========================================
 
 	/**
-	 * @brief 스테이지 시작 이벤트를 네트워크로 전송
-	 * @param StageIndex 시작된 스테이지 인덱스
+	 * @brief 미션 타이머 상태 변경 이벤트를 네트워크로 전송
+	 * @param bIsActive 타이머 활성화 여부
+	 * @param TimeLimit 타이머 제한 시간 (초 단위)
 	 * @param EventInstigator 이벤트를 발생시킨 Actor (권한 검증용)
 	 */
 	UFUNCTION(BlueprintCallable, Category = "Network Events")
-	void SendStageStarted(int StageIndex, AActor* EventInstigator);
+	void SendUpdateMissionTimerState(bool bIsActive, float TimeLimit, AActor* EventInstigator);
 
 protected:
 	UFUNCTION(Server, Reliable)
-	void Server_SendStageStarted(int StageIndex, AActor* EventInstigator);
+	void Server_SendUpdateMissionTimerState(bool bIsActive, float TimeLimit, AActor* EventInstigator);
 
 	UFUNCTION(NetMulticast, Reliable)
-	void Multicast_SendStageStarted(int StageIndex);
+	void Multicast_SendUpdateMissionTimerState(bool bIsActive, float TimeLimit);
 
 private:
 	/**

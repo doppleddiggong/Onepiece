@@ -11,6 +11,9 @@
 #include "Engine/World.h"
 #include "GameFramework/PlayerState.h"
 
+#include "NetworkData.h"
+#include "ULingoGameHelper.h"
+
 ALingoGameMode::ALingoGameMode()
 {
 	// GameState와 PlayerState 클래스 설정
@@ -25,66 +28,49 @@ ALingoGameMode::ALingoGameMode()
 // Read Quest Implementation
 //--------------------------------------------------------------//
 
-void ALingoGameMode::StartReadQuest()
+void ALingoGameMode::BeginReadQuest(int32 InStageIndex, const FResponseScenario& InResponseData)
 {
 	if (!HasAuthority())
 		return;
 
-	ALingoGameState* LingoGameState = GetGameState<ALingoGameState>();
-	if (!LingoGameState)
-	{
-		PRINTLOG(TEXT("[GameMode] StartReadQuest - GameState is null"));
-		return;
-	}
+	// --- 1. 역할 할당 로직 ---
+	auto PSList = ULingoGameHelper::GetLingoPlayerStateList(GetWorld());
+	const int32 PlayerCount = PSList.Num();
+	PRINTLOG(TEXT("[GameMode] BeginReadQuest - Player count: %d"), PlayerCount);
 
-	// 플레이어 수 확인 (싱글/멀티 판정)
-	int32 PlayerCount = 0;
-	TArray<ALingoPlayerState*> LingoPlayerStates;
-
-	for (FConstPlayerControllerIterator It = GetWorld()->GetPlayerControllerIterator(); It; ++It)
-	{
-		if (APlayerController* PC = It->Get())
-		{
-			if (ALingoPlayerState* PS = PC->GetPlayerState<ALingoPlayerState>())
-			{
-				LingoPlayerStates.Add(PS);
-				PlayerCount++;
-			}
-		}
-	}
-
-	PRINTLOG(TEXT("[GameMode] StartReadQuest - Player count: %d"), PlayerCount);
-
-	// 역할 할당
 	if (PlayerCount == 1)
 	{
 		// 싱글 플레이: Both
-		if (LingoPlayerStates.Num() > 0)
+		if (PSList.IsValidIndex(0))
 		{
-			LingoPlayerStates[0]->QuestRole = EReadQuestRole::Both;
+			PSList[0]->QuestRole = EQuestRole::Both;
 			PRINTLOG(TEXT("[GameMode] Player 0 assigned role: Both"));
 		}
 	}
 	else if (PlayerCount >= 2)
 	{
 		// 멀티 플레이: OnlyQuestion1, OnlyQuestion2
-		if (LingoPlayerStates.Num() >= 1)
+		if (PSList.IsValidIndex(0))
 		{
-			LingoPlayerStates[0]->QuestRole = EReadQuestRole::OnlyQuestion1;
+			PSList[0]->QuestRole = EQuestRole::OnlyQuestion1;
 			PRINTLOG(TEXT("[GameMode] Player 0 assigned role: OnlyQuestion1"));
 		}
-		if (LingoPlayerStates.Num() >= 2)
+		if (PSList.IsValidIndex(1))
 		{
-			LingoPlayerStates[1]->QuestRole = EReadQuestRole::OnlyQuestion2;
+			PSList[1]->QuestRole = EQuestRole::OnlyQuestion2;
 			PRINTLOG(TEXT("[GameMode] Player 1 assigned role: OnlyQuestion2"));
 		}
 	}
 
-	// BroadcastManager를 통해 퀘스트 시작 이벤트 브로드캐스트
-	if (UBroadcastManager* BroadcastManager = UBroadcastManager::Get(GetWorld()))
+	// --- 2. GameState에 데이터 설정 ---
+	if (auto GS = GetGameState<ALingoGameState>())
 	{
-		// 추후 BroadcastManager에 퀘스트 시작 이벤트 추가 필요
-		PRINTLOG(TEXT("[GameMode] StartReadQuest - Quest started"));
+		GS->SetStageData(InStageIndex, InResponseData);
+		PRINTLOG(TEXT("[GameMode] SetStageData called on GameState."));
+	}
+	else
+	{
+		PRINTLOG(TEXT("[GameMode] BeginReadQuest - GameState is null"));
 	}
 }
 

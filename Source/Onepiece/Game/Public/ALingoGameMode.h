@@ -6,6 +6,8 @@
 #include "GameFramework/GameMode.h"
 #include "ALingoGameMode.generated.h"
 
+struct FResponseScenario;
+
 /**
  *
  */
@@ -21,9 +23,9 @@ public:
 	// Read Quest Functions
 	//--------------------------------------------------------------//
 
-	/// @brief Read 퀘스트를 시작합니다 (서버에서만 호출)
+	/// @brief Read 퀘스트를 시작하고 역할과 데이터를 모두 설정합니다 (서버에서만 호출)
 	UFUNCTION(BlueprintCallable, Category = "Quest")
-	void StartReadQuest();
+	void BeginReadQuest(int32 InStageIndex, const FResponseScenario& InResponseData);
 
 	/// @brief 캐리어 선택을 처리합니다 (서버에서만 호출)
 	UFUNCTION()

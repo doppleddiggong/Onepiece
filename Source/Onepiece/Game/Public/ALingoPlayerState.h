@@ -4,7 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/PlayerState.h"
-#include "NetworkData.h"
+#include "EQuestRole.h"
 #include "ALingoPlayerState.generated.h"
 
 UCLASS()
@@ -43,6 +43,9 @@ public:
 	UFUNCTION(Server, Reliable, WithValidation)
 	void Server_SetSelectedWord2(const FString& Word2);
 
+	UFUNCTION()
+	void OnRep_QuestRole();
+	
 	/// @brief 심볼 선택 상태 복제 콜백
 	UFUNCTION()
 	void OnRep_SelectedWord1();
@@ -61,8 +64,8 @@ public:
 	
 public:
 	/// @brief 플레이어 역할 (싱글/멀티에서 문제1, 문제2 구분)
-	UPROPERTY(Replicated, BlueprintReadOnly, Category = "Quest")
-	EReadQuestRole QuestRole = EReadQuestRole::Both;
+	UPROPERTY(ReplicatedUsing = OnRep_QuestRole, BlueprintReadOnly, Category = "Quest")
+	EQuestRole QuestRole = EQuestRole::Both;
 
 	/// @brief 시도 횟수
 	UPROPERTY(Replicated, BlueprintReadOnly, Category = "Quest")

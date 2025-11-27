@@ -3,6 +3,7 @@
 
 #include "ULingoGameHelper.h"
 
+#include "ALingoGameMode.h"
 #include "ALingoGameState.h"
 #include "ALingoPlayerState.h"
 #include "Kismet/GameplayStatics.h"
@@ -19,6 +20,11 @@ int ULingoGameHelper::GetMultiPlayerCount(const UObject* WorldContextObject)
 bool ULingoGameHelper::IsMultiPlay(const UObject* WorldContextObject)
 {
 	return GetMultiPlayerCount(WorldContextObject) > 1;
+}
+
+ALingoGameMode* ULingoGameHelper::GetLingoGameMode(const UObject* WorldContextObject)
+{
+	return WorldContextObject->GetWorld()->GetAuthGameMode<ALingoGameMode>();	
 }
 
 ALingoGameState* ULingoGameHelper::GetLingoGameState(const UObject* WorldContextObject)
@@ -40,6 +46,23 @@ ALingoPlayerState* ULingoGameHelper::GetLingoPlayerState(const UObject* WorldCon
 		return nullptr;
 
 	return Cast<ALingoPlayerState>(PC->PlayerState);
+}
+
+TArray<ALingoPlayerState*> ULingoGameHelper::GetLingoPlayerStateList(const UObject* WorldContextObject)
+{
+	TArray<ALingoPlayerState*> PlayerStateList;
+	for (FConstPlayerControllerIterator It = WorldContextObject->GetWorld()->GetPlayerControllerIterator(); It; ++It)
+	{
+		if (APlayerController* PC = It->Get())
+		{
+			if (ALingoPlayerState* PS = PC->GetPlayerState<ALingoPlayerState>())
+			{
+				PlayerStateList.Add(PS);
+			}
+		}
+	}
+
+	return PlayerStateList;
 }
 
 
