@@ -38,6 +38,10 @@ public:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
 	TObjectPtr<class UWidgetComponent> BoxInfoWidgetComp;
 
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
+	TObjectPtr<class UHookComponent> HookComp;
+	
+
 protected:
 	//--------------------------------------------------------------//
 	// Luggage Info
