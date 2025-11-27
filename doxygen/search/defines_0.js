@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['bind_5fdynamic_5fdelegate_0',['BIND_DYNAMIC_DELEGATE',['../Macro_8h.html#a07b4fc90b0e9c2eda0d2f632d01954c4',1,'Macro.h']]]
+  ['aim_5ftexture_5fpath_0',['AIM_TEXTURE_PATH',['../UMainWidget_8cpp.html#a4b365431f464aee5d9185d6a00ddf809',1,'UMainWidget.cpp']]]
 ];

@@ -23,6 +23,7 @@ var classAluggage =
     [ "BoxInfoWidgetComp", "classAluggage.html#a3604b9a1c2189e79a4b78e4430fcdee5", null ],
     [ "Color", "classAluggage.html#a4a47514a5aff8824800c878ed73159c2", null ],
     [ "ColorIdx", "classAluggage.html#a77701ede6847700cecd2677dd2b2e625", null ],
+    [ "HookComp", "classAluggage.html#a4ce0d688c131b0b462520b745c560133", null ],
     [ "InteractableComp", "classAluggage.html#a555315380e2dd75038c0d2aea8fe9b02", null ],
     [ "Mesh1Comp", "classAluggage.html#a17e850881f1e195228802686a326ff09", null ],
     [ "Mesh2Comp", "classAluggage.html#a39b79b08760cd4bd35f94262f8073ce9", null ],

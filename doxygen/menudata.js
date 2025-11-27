@@ -150,6 +150,7 @@ var menudata={children:[
 {text:"변수",url:"globals_vars.html"},
 {text:"열거형 타입",url:"globals_enum.html"},
 {text:"매크로",url:"globals_defs.html",children:[
+{text:"a",url:"globals_defs.html#index_a"},
 {text:"b",url:"globals_defs.html#index_b"},
 {text:"c",url:"globals_defs.html#index_c"},
 {text:"d",url:"globals_defs.html#index_d"},

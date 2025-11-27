@@ -15,5 +15,6 @@ var searchData=
   ['wordstudydatatable_12',['WordStudyDataTable',['../classUGameDataManager.html#af3a67b35c573b0f3cb60720b608f2ae0',1,'UGameDataManager']]],
   ['wordwidget_13',['WordWidget',['../classUPopup__ReadQuest.html#aed4ecc73e8fe95e589c02336119b6f99',1,'UPopup_ReadQuest']]],
   ['writeindex_14',['WriteIndex',['../structFQuestWriteInfo.html#a60dc6d0314a68704e0b4731f212a4b08',1,'FQuestWriteInfo']]],
-  ['writes_5focr_5fextract_15',['writes_ocr_extract',['../namespaceRequestAPI.html#adb0c390f61c19ef5b70489b76b2e00e6',1,'RequestAPI']]]
+  ['writes_5focr_5fextract_15',['writes_ocr_extract',['../namespaceRequestAPI.html#adb0c390f61c19ef5b70489b76b2e00e6',1,'RequestAPI']]],
+  ['wrongluggagelist_16',['WrongLuggageList',['../classALingoGameState.html#a17e93c1837d6f33a5a3717689177d952',1,'ALingoGameState']]]
 ];

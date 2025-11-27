@@ -21,5 +21,6 @@ var classALingoGameState =
     [ "RemainMissionTime", "classALingoGameState.html#abf8b596488b55e3933d5d3fcf016307f", null ],
     [ "ScenarioIndex", "classALingoGameState.html#ad9ab549d6de648690eb3ebb04238b2e6", null ],
     [ "ScenarioLevel", "classALingoGameState.html#a31e77725a14a39ad4e66764210020a64", null ],
-    [ "StageIndex", "classALingoGameState.html#aab818a44f5aa9960436010119e4c9899", null ]
+    [ "StageIndex", "classALingoGameState.html#aab818a44f5aa9960436010119e4c9899", null ],
+    [ "WrongLuggageList", "classALingoGameState.html#a17e93c1837d6f33a5a3717689177d952", null ]
 ];

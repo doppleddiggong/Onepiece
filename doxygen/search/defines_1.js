@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['callinfo_0',['CALLINFO',['../GameLogging_8h.html#a5f72f03ea01b42a09ddf26753240a7b4',1,'GameLogging.h']]],
-  ['colordata_5fpath_1',['COLORDATA_PATH',['../UGameDataManager_8cpp.html#a0af29362e2cb6c08bd40aeed1111680c',1,'UGameDataManager.cpp']]]
+  ['bind_5fdynamic_5fdelegate_0',['BIND_DYNAMIC_DELEGATE',['../Macro_8h.html#a07b4fc90b0e9c2eda0d2f632d01954c4',1,'Macro.h']]]
 ];

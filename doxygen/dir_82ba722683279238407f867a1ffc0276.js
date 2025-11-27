@@ -8,6 +8,8 @@ var dir_82ba722683279238407f867a1ffc0276 =
     [ "NPCExaminer.h", "NPCExaminer_8h.html", "NPCExaminer_8h" ],
     [ "RobotPlayerController.h", "RobotPlayerController_8h.html", "RobotPlayerController_8h" ],
     [ "UHitStopSystem.h", "UHitStopSystem_8h.html", null ],
+    [ "UHookComponent.h", "UHookComponent_8h.html", null ],
+    [ "UHookSystem.h", "UHookSystem_8h.html", "UHookSystem_8h" ],
     [ "UInteractionSystem.h", "UInteractionSystem_8h.html", null ],
     [ "UKnockbackSystem.h", "UKnockbackSystem_8h.html", null ],
     [ "UPlayerAnimInstance.h", "UPlayerAnimInstance_8h.html", "UPlayerAnimInstance_8h" ]

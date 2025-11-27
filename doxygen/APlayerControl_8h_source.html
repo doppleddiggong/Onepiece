@@ -147,37 +147,43 @@ $(document).ready(function(){initNavTree('APlayerControl_8h_source.html',''); in
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="classAPlayerControl.html#ade2263b7c2eee9b7d9a11ec0b32aaf71">   39</a></span>    UPROPERTY(EditDefaultsOnly, Category=&quot;Input&quot;) TObjectPtr&lt;class UInputAction&gt; IA_Interact;</div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="classAPlayerControl.html#a964b50a308a69c36ec542af13c4055e7">   40</a></span>    UPROPERTY(EditDefaultsOnly, Category=&quot;Input&quot;) TObjectPtr&lt;class UInputAction&gt; IA_Run;</div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="classAPlayerControl.html#abe104ffe65a1a00e6f211b5207f6b2ed">   41</a></span>    UPROPERTY(EditDefaultsOnly, Category=&quot;Input&quot;) TObjectPtr&lt;class UInputAction&gt; IA_Info;</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="comment">// --- Handlers ---</span></div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="keywordtype">void</span> OnMove(const FInputActionValue&amp; Value);</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="keywordtype">void</span> OnLook(const FInputActionValue&amp; Value);</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    </div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keywordtype">void</span> OnStopMove(const FInputActionValue&amp; Value);</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="keywordtype">void</span> OnJump(const FInputActionValue&amp; Value);</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="keywordtype">void</span> OnRun(const FInputActionValue&amp; Value);</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="keywordtype">void</span> OnRecordPressed(const FInputActionValue&amp; Value);</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="keywordtype">void</span> OnRecordReleased(const FInputActionValue&amp; Value);</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="keywordtype">void</span> OnGrab(const FInputActionValue&amp; Value);</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="keywordtype">void</span> OnGrabRelease(const FInputActionValue&amp; Value);</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="keywordtype">void</span> OnInteract(const FInputActionValue&amp; Value);</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="keywordtype">void</span> OnInfo(const FInputActionValue&amp; Value);</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    UFUNCTION(Server, Reliable)</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="classAPlayerControl.html#aa79cca5ec444d9c7add4fcecc5dde23b">   62</a></span>    <span class="keywordtype">void</span> Server_OnGrab();   </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="classAPlayerControl.html#ab72a01e87fb65e5dfbd39676023f378f">   42</a></span>    UPROPERTY(EditDefaultsOnly, Category=&quot;Input&quot;) TObjectPtr&lt;class UInputAction&gt; IA_Hook;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="comment">// --- Handlers ---</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="keywordtype">void</span> OnMove(const FInputActionValue&amp; Value);</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="keywordtype">void</span> OnLook(const FInputActionValue&amp; Value);</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="keywordtype">void</span> OnStopMove(const FInputActionValue&amp; Value);</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="keywordtype">void</span> OnJump(const FInputActionValue&amp; Value);</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="keywordtype">void</span> OnRun(const FInputActionValue&amp; Value);</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="keywordtype">void</span> OnRecordPressed(const FInputActionValue&amp; Value);</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="keywordtype">void</span> OnRecordReleased(const FInputActionValue&amp; Value);</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="keywordtype">void</span> OnGrab(const FInputActionValue&amp; Value);</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <span class="keywordtype">void</span> OnGrabRelease(const FInputActionValue&amp; Value);</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="keywordtype">void</span> OnInteract(const FInputActionValue&amp; Value);</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="keywordtype">void</span> OnInfo(const FInputActionValue&amp; Value);</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="keywordtype">void</span> OnHook(const FInputActionValue&amp; Value);</div>
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    UFUNCTION(Server, Reliable)</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno"><a class="line" href="classAPlayerControl.html#aeb90da2f39476227c6136a9d78d45c83">   65</a></span>    <span class="keywordtype">void</span> Server_OnGrabRelease();</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno"><a class="line" href="classAPlayerControl.html#aa79cca5ec444d9c7add4fcecc5dde23b">   65</a></span>    <span class="keywordtype">void</span> Server_OnGrab();   </div>
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    UFUNCTION(Server, Reliable)</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno"><a class="line" href="classAPlayerControl.html#adbe39822e30958a476131716276b020c">   68</a></span>    <span class="keywordtype">void</span> Server_OnInteract();</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    </div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>private:</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    class <a class="code hl_class" href="classIControllable.html">IControllable</a>* GetControllable() const;</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>};</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno"><a class="line" href="classAPlayerControl.html#aeb90da2f39476227c6136a9d78d45c83">   68</a></span>    <span class="keywordtype">void</span> Server_OnGrabRelease();</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    UFUNCTION(Server, Reliable)</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno"><a class="line" href="classAPlayerControl.html#adbe39822e30958a476131716276b020c">   71</a></span>    <span class="keywordtype">void</span> Server_OnInteract();</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    UFUNCTION(Server, Reliable)</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno"><a class="line" href="classAPlayerControl.html#a7159940560b252e8e9f8bfd8c51f1f59">   74</a></span>    <span class="keywordtype">void</span> Server_OnHook();</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>private:</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    class <a class="code hl_class" href="classIControllable.html">IControllable</a>* GetControllable() const;</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>};</div>
 </div>
 <div class="ttc" id="aALingoPlayerState_8h_html"><div class="ttname"><a href="ALingoPlayerState_8h.html">ALingoPlayerState.h</a></div></div>
 <div class="ttc" id="aEQuestRole_8h_html_af9534ca095b724046bf40abddcbb95e9"><div class="ttname"><a href="EQuestRole_8h.html#af9534ca095b724046bf40abddcbb95e9">EQuestRole</a></div><div class="ttdeci">EQuestRole</div><div class="ttdoc">Read 퀘스트에서 플레이어의 역할을 정의합니다.</div><div class="ttdef"><b>Definition</b> <a href="EQuestRole_8h_source.html#l00005">EQuestRole.h:6</a></div></div>
@@ -190,7 +196,7 @@ $(document).ready(function(){initNavTree('APlayerControl_8h_source.html',''); in
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_71a9f6b769ee24fe8598c19ea2d70480.html">Character</a></li><li class="navelem"><a class="el" href="dir_82ba722683279238407f867a1ffc0276.html">Public</a></li><li class="navelem"><a class="el" href="APlayerControl_8h.html">APlayerControl.h</a></li>
-    <li class="footer">생성시간 : 목 11월 27 2025 04:24:53, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 목 11월 27 2025 08:23:08, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

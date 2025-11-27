@@ -20,5 +20,6 @@ var searchData=
   ['writelog_17',['WriteLog',['../classFLogWriter.html#a1c47f81d19488902430ad467e440e509',1,'FLogWriter']]],
   ['writes_5focr_5fextract_18',['writes_ocr_extract',['../namespaceRequestAPI.html#adb0c390f61c19ef5b70489b76b2e00e6',1,'RequestAPI']]],
   ['writetogamelog_19',['writetogamelog',['../NetworkLog_8cpp.html#aff5fdef7dc7d75458cd6641eb8e1ac34',1,'WriteToGameLog(const FString &amp;Message):&#160;NetworkLog.cpp'],['../NetworkLog_8h.html#a769a8b7e9c4630987fe97b6405ce7166',1,'WriteToGameLog(const FString &amp;Message):&#160;NetworkLog.cpp']]],
-  ['ws_20',['WS',['../ENetworkLogType_8h.html#a80aaa513e01d2ec2d4421835b09d691fa54df3baef130c81e6ae8432a2567320a',1,'ENetworkLogType.h']]]
+  ['wrongluggagelist_20',['WrongLuggageList',['../classALingoGameState.html#a17e93c1837d6f33a5a3717689177d952',1,'ALingoGameState']]],
+  ['ws_21',['WS',['../ENetworkLogType_8h.html#a80aaa513e01d2ec2d4421835b09d691fa54df3baef130c81e6ae8432a2567320a',1,'ENetworkLogType.h']]]
 ];
