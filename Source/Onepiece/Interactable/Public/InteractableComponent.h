@@ -62,7 +62,7 @@ public:
 
 	/** 상호작용 감지 거리 (cm) */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Interaction")
-	float DetectionDistance = 150.0f;
+	float DetectionDistance = 250.0f;
 
 	/** 디버그 표시 여부 */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Debug")

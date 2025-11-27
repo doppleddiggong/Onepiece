@@ -35,6 +35,8 @@ public:
 	
 	UPROPERTY(VisibleAnywhere)
 	TObjectPtr<class UInteractableComponent> InteractableComp;
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
+	TObjectPtr<class UWidgetComponent> BoxInfoWidgetComp;
 
 public:
 	// Index
@@ -62,6 +64,13 @@ public:
 	void OutlineOn();
 	UFUNCTION(BlueprintCallable, Category = "Outline")
 	void OutlineOff();
+	
+public:
+	// InfoWidget
+	void InfoWidgetOn();
+	void InfoWidgetOff();
+protected:
+	void BillboardInfoWidget();
 	
 public:
 	//--------------------------------------------------------------//
