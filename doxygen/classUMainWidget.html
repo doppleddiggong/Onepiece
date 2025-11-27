@@ -121,7 +121,7 @@ $(document).ready(function(){initNavTree('classUMainWidget.html',''); initResiza
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classUMainWidget__inherit__graph.svg" width="236" height="470"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classUMainWidget__inherit__graph.svg" width="236" height="450"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="closed.png" alt="+"/> UMainWidget에 대한 협력 다이어그램:</div>
@@ -135,9 +135,6 @@ $(document).ready(function(){initNavTree('classUMainWidget.html',''); initResiza
 Public 멤버 함수</h2></td></tr>
 <tr class="memitem:ad20ac0a98c69f588c45eead091449dc8" id="r_ad20ac0a98c69f588c45eead091449dc8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUMainWidget.html#ad20ac0a98c69f588c45eead091449dc8">UMainWidget</a> (const FObjectInitializer &amp;ObjectInitializer)</td></tr>
 <tr class="separator:ad20ac0a98c69f588c45eead091449dc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3c518d6decd872c0c7bd171e420000ab" id="r_a3c518d6decd872c0c7bd171e420000ab"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUMainWidget.html#a3c518d6decd872c0c7bd171e420000ab">SetHookTargetVisible</a> (bool bVisible)</td></tr>
-<tr class="memdesc:a3c518d6decd872c0c7bd171e420000ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">훅 타겟 인디케이터 표시/숨김  <br /></td></tr>
-<tr class="separator:a3c518d6decd872c0c7bd171e420000ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a28c73cc2f8555b84f29602dec7ad1f3f" id="r_a28c73cc2f8555b84f29602dec7ad1f3f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUMainWidget.html#a28c73cc2f8555b84f29602dec7ad1f3f">StartMissionTimer</a> () const</td></tr>
 <tr class="separator:a28c73cc2f8555b84f29602dec7ad1f3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a55a492e917c5e3845a1cc10881baff07" id="r_a55a492e917c5e3845a1cc10881baff07"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUMainWidget.html#a55a492e917c5e3845a1cc10881baff07">StopMissionTimer</a> () const</td></tr>
@@ -218,16 +215,17 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">   26</span>    <span class="keyword">static</span> ConstructorHelpers::FObjectFinder&lt;UTexture2D&gt; AimTextureFinder(<a class="code hl_define" href="UMainWidget_8cpp.html#a4b365431f464aee5d9185d6a00ddf809">AIM_TEXTURE_PATH</a>);</div>
 <div class="line"><span class="lineno">   27</span>    <span class="keywordflow">if</span> (AimTextureFinder.Succeeded())</div>
 <div class="line"><span class="lineno">   28</span>        <a class="code hl_variable" href="classUMainWidget.html#ad7de89f2b381f896001de9b8b7e407bc">HookAimTexture</a> = AimTextureFinder.Object;</div>
-<div class="line"><span class="lineno">   29</span>    <span class="keyword">static</span> ConstructorHelpers::FObjectFinder&lt;UTexture2D&gt; NoAimTextureFinder(<a class="code hl_define" href="UMainWidget_8cpp.html#ace1eecac97797583a62aa1be2db20893">NOAIM_TEXTURE_PATH</a>);</div>
-<div class="line"><span class="lineno">   30</span>    <span class="keywordflow">if</span> (NoAimTextureFinder.Succeeded())</div>
-<div class="line"><span class="lineno">   31</span>        <a class="code hl_variable" href="classUMainWidget.html#a52448a9fe3ed60736a223d3129b6e3db">HookNoAimTexture</a> = NoAimTextureFinder.Object;</div>
-<div class="line"><span class="lineno">   32</span>}</div>
+<div class="line"><span class="lineno">   29</span> </div>
+<div class="line"><span class="lineno">   30</span>    <span class="keyword">static</span> ConstructorHelpers::FObjectFinder&lt;UTexture2D&gt; NoAimTextureFinder(<a class="code hl_define" href="UMainWidget_8cpp.html#adabca1edd5e99bf616c2f1f3d8bceafa">NO_AIM_TEXTURE_PATH</a>);</div>
+<div class="line"><span class="lineno">   31</span>    <span class="keywordflow">if</span> (NoAimTextureFinder.Succeeded())</div>
+<div class="line"><span class="lineno">   32</span>        <a class="code hl_variable" href="classUMainWidget.html#a52448a9fe3ed60736a223d3129b6e3db">HookNoAimTexture</a> = NoAimTextureFinder.Object;</div>
+<div class="line"><span class="lineno">   33</span>}</div>
 <div class="ttc" id="aUMainWidget_8cpp_html_a4b365431f464aee5d9185d6a00ddf809"><div class="ttname"><a href="UMainWidget_8cpp.html#a4b365431f464aee5d9185d6a00ddf809">AIM_TEXTURE_PATH</a></div><div class="ttdeci">#define AIM_TEXTURE_PATH</div><div class="ttdef"><b>Definition</b> <a href="UMainWidget_8cpp_source.html#l00021">UMainWidget.cpp:21</a></div></div>
-<div class="ttc" id="aUMainWidget_8cpp_html_ace1eecac97797583a62aa1be2db20893"><div class="ttname"><a href="UMainWidget_8cpp.html#ace1eecac97797583a62aa1be2db20893">NOAIM_TEXTURE_PATH</a></div><div class="ttdeci">#define NOAIM_TEXTURE_PATH</div><div class="ttdef"><b>Definition</b> <a href="UMainWidget_8cpp_source.html#l00022">UMainWidget.cpp:22</a></div></div>
-<div class="ttc" id="aclassUMainWidget_html_a52448a9fe3ed60736a223d3129b6e3db"><div class="ttname"><a href="classUMainWidget.html#a52448a9fe3ed60736a223d3129b6e3db">UMainWidget::HookNoAimTexture</a></div><div class="ttdeci">TObjectPtr&lt; class UTexture2D &gt; HookNoAimTexture</div><div class="ttdoc">훅 타겟 미감지 시 이미지 (회색)</div><div class="ttdef"><b>Definition</b> <a href="UMainWidget_8h_source.html#l00064">UMainWidget.h:64</a></div></div>
-<div class="ttc" id="aclassUMainWidget_html_ad7de89f2b381f896001de9b8b7e407bc"><div class="ttname"><a href="classUMainWidget.html#ad7de89f2b381f896001de9b8b7e407bc">UMainWidget::HookAimTexture</a></div><div class="ttdeci">TObjectPtr&lt; class UTexture2D &gt; HookAimTexture</div><div class="ttdoc">훅 타겟 감지 시 이미지 (파란색)</div><div class="ttdef"><b>Definition</b> <a href="UMainWidget_8h_source.html#l00060">UMainWidget.h:60</a></div></div>
+<div class="ttc" id="aUMainWidget_8cpp_html_adabca1edd5e99bf616c2f1f3d8bceafa"><div class="ttname"><a href="UMainWidget_8cpp.html#adabca1edd5e99bf616c2f1f3d8bceafa">NO_AIM_TEXTURE_PATH</a></div><div class="ttdeci">#define NO_AIM_TEXTURE_PATH</div><div class="ttdef"><b>Definition</b> <a href="UMainWidget_8cpp_source.html#l00022">UMainWidget.cpp:22</a></div></div>
+<div class="ttc" id="aclassUMainWidget_html_a52448a9fe3ed60736a223d3129b6e3db"><div class="ttname"><a href="classUMainWidget.html#a52448a9fe3ed60736a223d3129b6e3db">UMainWidget::HookNoAimTexture</a></div><div class="ttdeci">TObjectPtr&lt; class UTexture2D &gt; HookNoAimTexture</div><div class="ttdoc">훅 타겟 미감지 시 이미지 (회색)</div><div class="ttdef"><b>Definition</b> <a href="UMainWidget_8h_source.html#l00060">UMainWidget.h:60</a></div></div>
+<div class="ttc" id="aclassUMainWidget_html_ad7de89f2b381f896001de9b8b7e407bc"><div class="ttname"><a href="classUMainWidget.html#ad7de89f2b381f896001de9b8b7e407bc">UMainWidget::HookAimTexture</a></div><div class="ttdeci">TObjectPtr&lt; class UTexture2D &gt; HookAimTexture</div><div class="ttdoc">훅 타겟 감지 시 이미지 (파란색)</div><div class="ttdef"><b>Definition</b> <a href="UMainWidget_8h_source.html#l00056">UMainWidget.h:56</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="UMainWidget_8cpp_source.html#l00021">AIM_TEXTURE_PATH</a>, <a class="el" href="UMainWidget_8h_source.html#l00060">HookAimTexture</a>, <a class="el" href="UMainWidget_8h_source.html#l00064">HookNoAimTexture</a>, <a class="el" href="UMainWidget_8cpp_source.html#l00022">NOAIM_TEXTURE_PATH</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="UMainWidget_8cpp_source.html#l00021">AIM_TEXTURE_PATH</a>, <a class="el" href="UMainWidget_8h_source.html#l00056">HookAimTexture</a>, <a class="el" href="UMainWidget_8h_source.html#l00060">HookNoAimTexture</a>, <a class="el" href="UMainWidget_8cpp_source.html#l00022">NO_AIM_TEXTURE_PATH</a>.</p>
 
 </div>
 </div>
@@ -281,12 +279,12 @@ Private 속성</h2></td></tr>
 <div class="ttc" id="aclassUMainWidget_html_a087562bb275500b4085bf893720ae7b0"><div class="ttname"><a href="classUMainWidget.html#a087562bb275500b4085bf893720ae7b0">UMainWidget::OnUpdateMissionTimerState</a></div><div class="ttdeci">void OnUpdateMissionTimerState(bool bIsActive, float TimeLimit)</div><div class="ttdoc">미션 타이머 상태 변경 핸들러</div><div class="ttdef"><b>Definition</b> <a href="UMainWidget_8cpp_source.html#l00081">UMainWidget.cpp:81</a></div></div>
 <div class="ttc" id="aclassUMainWidget_html_a55a492e917c5e3845a1cc10881baff07"><div class="ttname"><a href="classUMainWidget.html#a55a492e917c5e3845a1cc10881baff07">UMainWidget::StopMissionTimer</a></div><div class="ttdeci">void StopMissionTimer() const</div><div class="ttdef"><b>Definition</b> <a href="UMainWidget_8cpp_source.html#l00068">UMainWidget.cpp:68</a></div></div>
 <div class="ttc" id="aclassUMainWidget_html_a802d5c1d31d80e2b6bf185138577b020"><div class="ttname"><a href="classUMainWidget.html#a802d5c1d31d80e2b6bf185138577b020">UMainWidget::HookTargetIndicator</a></div><div class="ttdeci">class UImage * HookTargetIndicator</div><div class="ttdoc">훅 가능 대상 표시 위젯 (옵션, BindWidgetOptional)</div><div class="ttdef"><b>Definition</b> <a href="UMainWidget_8h_source.html#l00045">UMainWidget.h:45</a></div></div>
-<div class="ttc" id="aclassUMainWidget_html_aa0abca549ef2be9c4610d4890d5c0448"><div class="ttname"><a href="classUMainWidget.html#aa0abca549ef2be9c4610d4890d5c0448">UMainWidget::CachedGameState</a></div><div class="ttdeci">TObjectPtr&lt; class ALingoGameState &gt; CachedGameState</div><div class="ttdoc">GameState 참조 캐싱</div><div class="ttdef"><b>Definition</b> <a href="UMainWidget_8h_source.html#l00069">UMainWidget.h:69</a></div></div>
+<div class="ttc" id="aclassUMainWidget_html_aa0abca549ef2be9c4610d4890d5c0448"><div class="ttname"><a href="classUMainWidget.html#aa0abca549ef2be9c4610d4890d5c0448">UMainWidget::CachedGameState</a></div><div class="ttdeci">TObjectPtr&lt; class ALingoGameState &gt; CachedGameState</div><div class="ttdoc">GameState 참조 캐싱</div><div class="ttdef"><b>Definition</b> <a href="UMainWidget_8h_source.html#l00065">UMainWidget.h:65</a></div></div>
 <div class="ttc" id="aclassUMainWidget_html_ac34cdd89ec70602631af1315136bae52"><div class="ttname"><a href="classUMainWidget.html#ac34cdd89ec70602631af1315136bae52">UMainWidget::QuestInfoWidget</a></div><div class="ttdeci">class UQuestInfoWidget * QuestInfoWidget</div><div class="ttdef"><b>Definition</b> <a href="UMainWidget_8h_source.html#l00041">UMainWidget.h:41</a></div></div>
 <div class="ttc" id="aclassUMainWidget_html_aedf018e4f459f81fb42cfa716545eb25"><div class="ttname"><a href="classUMainWidget.html#aedf018e4f459f81fb42cfa716545eb25">UMainWidget::StateWidget</a></div><div class="ttdeci">class UStateWidget * StateWidget</div><div class="ttdoc">플레이어 상태 위젯 (BindWidget)</div><div class="ttdef"><b>Definition</b> <a href="UMainWidget_8h_source.html#l00038">UMainWidget.h:38</a></div></div>
 <div class="ttc" id="aclassUStateWidget_html_a7b98cd0b23c91b6039ef92df2e3b7590"><div class="ttname"><a href="classUStateWidget.html#a7b98cd0b23c91b6039ef92df2e3b7590">UStateWidget::InitWidget</a></div><div class="ttdeci">void InitWidget()</div><div class="ttdef"><b>Definition</b> <a href="UStateWidget_8cpp_source.html#l00032">UStateWidget.cpp:32</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="UMainWidget_8h_source.html#l00069">CachedGameState</a>, <a class="el" href="UMainWidget_8h_source.html#l00045">HookTargetIndicator</a>, <a class="el" href="UStateWidget_8cpp_source.html#l00032">UStateWidget::InitWidget()</a>, <a class="el" href="UMainWidget_8cpp_source.html#l00081">OnUpdateMissionTimerState()</a>, <a class="el" href="UMainWidget_8h_source.html#l00041">QuestInfoWidget</a>, <a class="el" href="UMainWidget_8h_source.html#l00038">StateWidget</a>, <a class="el" href="UMainWidget_8cpp_source.html#l00068">StopMissionTimer()</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="UMainWidget_8h_source.html#l00065">CachedGameState</a>, <a class="el" href="UMainWidget_8h_source.html#l00045">HookTargetIndicator</a>, <a class="el" href="UStateWidget_8cpp_source.html#l00032">UStateWidget::InitWidget()</a>, <a class="el" href="UMainWidget_8cpp_source.html#l00081">OnUpdateMissionTimerState()</a>, <a class="el" href="UMainWidget_8h_source.html#l00041">QuestInfoWidget</a>, <a class="el" href="UMainWidget_8h_source.html#l00038">StateWidget</a>, <a class="el" href="UMainWidget_8cpp_source.html#l00068">StopMissionTimer()</a>.</p>
 <div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-2-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
@@ -400,12 +398,12 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">   90</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUMainWidget.html#aa0abca549ef2be9c4610d4890d5c0448">CachedGameState</a> &amp;&amp; bIsActive &amp;&amp; TimeLimit &gt; 0.0f)</div>
 <div class="line"><span class="lineno">   91</span>        <a class="code hl_variable" href="classUMainWidget.html#aa0abca549ef2be9c4610d4890d5c0448">CachedGameState</a>-&gt;<a class="code hl_variable" href="classALingoGameState.html#abf8b596488b55e3933d5d3fcf016307f">RemainMissionTime</a> = TimeLimit;</div>
 <div class="line"><span class="lineno">   92</span> </div>
-<div class="line"><span class="lineno">   93</span>    </div>
-<div class="line"><span class="lineno">   94</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classUMainWidget.html#ac34cdd89ec70602631af1315136bae52">QuestInfoWidget</a>)</div>
-<div class="line"><span class="lineno">   95</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">   96</span> </div>
-<div class="line"><span class="lineno">   97</span>    <a class="code hl_variable" href="classUMainWidget.html#ac34cdd89ec70602631af1315136bae52">QuestInfoWidget</a>-&gt;SetVisibility(bIsActive ? ESlateVisibility::Visible : ESlateVisibility::Collapsed );</div>
-<div class="line"><span class="lineno">   98</span> </div>
+<div class="line"><span class="lineno">   93</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classUMainWidget.html#ac34cdd89ec70602631af1315136bae52">QuestInfoWidget</a>)</div>
+<div class="line"><span class="lineno">   94</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   95</span> </div>
+<div class="line"><span class="lineno">   96</span>    <a class="code hl_variable" href="classUMainWidget.html#ac34cdd89ec70602631af1315136bae52">QuestInfoWidget</a>-&gt;SetVisibility(bIsActive ? ESlateVisibility::Visible : ESlateVisibility::Collapsed );</div>
+<div class="line"><span class="lineno">   97</span>    <a class="code hl_variable" href="classUMainWidget.html#a802d5c1d31d80e2b6bf185138577b020">HookTargetIndicator</a>-&gt;SetVisibility(ESlateVisibility::Visible);</div>
+<div class="line"><span class="lineno">   98</span>    </div>
 <div class="line"><span class="lineno">   99</span>    <span class="keywordflow">if</span> (bIsActive)</div>
 <div class="line"><span class="lineno">  100</span>    {</div>
 <div class="line"><span class="lineno">  101</span>        <a class="code hl_function" href="classUMainWidget.html#a28c73cc2f8555b84f29602dec7ad1f3f">StartMissionTimer</a>();</div>
@@ -421,7 +419,7 @@ Private 속성</h2></td></tr>
 <div class="ttc" id="aclassUMainWidget_html_a28c73cc2f8555b84f29602dec7ad1f3f"><div class="ttname"><a href="classUMainWidget.html#a28c73cc2f8555b84f29602dec7ad1f3f">UMainWidget::StartMissionTimer</a></div><div class="ttdeci">void StartMissionTimer() const</div><div class="ttdef"><b>Definition</b> <a href="UMainWidget_8cpp_source.html#l00063">UMainWidget.cpp:63</a></div></div>
 <div class="ttc" id="aclassUQuestInfoWidget_html_a82923dd9fedf779f551931ac05eaea45"><div class="ttname"><a href="classUQuestInfoWidget.html#a82923dd9fedf779f551931ac05eaea45">UQuestInfoWidget::InitQuestInfo</a></div><div class="ttdeci">void InitQuestInfo(EQuestRole QuestRole)</div><div class="ttdef"><b>Definition</b> <a href="UQuestInfoWidget_8cpp_source.html#l00021">UQuestInfoWidget.cpp:21</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="UMainWidget_8h_source.html#l00069">CachedGameState</a>, <a class="el" href="ULingoGameHelper_8cpp_source.html#l00035">ULingoGameHelper::GetLingoPlayerState()</a>, <a class="el" href="UQuestInfoWidget_8cpp_source.html#l00021">UQuestInfoWidget::InitQuestInfo()</a>, <a class="el" href="UMainWidget_8h_source.html#l00041">QuestInfoWidget</a>, <a class="el" href="ALingoGameState_8h_source.html#l00086">ALingoGameState::RemainMissionTime</a>, <a class="el" href="UMainWidget_8cpp_source.html#l00063">StartMissionTimer()</a>, <a class="el" href="UMainWidget_8cpp_source.html#l00068">StopMissionTimer()</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="UMainWidget_8h_source.html#l00065">CachedGameState</a>, <a class="el" href="ULingoGameHelper_8cpp_source.html#l00035">ULingoGameHelper::GetLingoPlayerState()</a>, <a class="el" href="UMainWidget_8h_source.html#l00045">HookTargetIndicator</a>, <a class="el" href="UQuestInfoWidget_8cpp_source.html#l00021">UQuestInfoWidget::InitQuestInfo()</a>, <a class="el" href="UMainWidget_8h_source.html#l00041">QuestInfoWidget</a>, <a class="el" href="ALingoGameState_8h_source.html#l00086">ALingoGameState::RemainMissionTime</a>, <a class="el" href="UMainWidget_8cpp_source.html#l00063">StartMissionTimer()</a>, <a class="el" href="UMainWidget_8cpp_source.html#l00068">StopMissionTimer()</a>.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UMainWidget_8cpp_source.html#l00035">NativeConstruct()</a>.</p>
 <div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -438,36 +436,6 @@ Private 속성</h2></td></tr>
 <div id="dynsection-5-content" class="dyncontent" style="display:none;">
 <div class="center"><iframe scrolling="no" frameborder="0" src="classUMainWidget_a087562bb275500b4085bf893720ae7b0_icgraph.svg" width="515" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
-
-</div>
-</div>
-<a id="a3c518d6decd872c0c7bd171e420000ab" name="a3c518d6decd872c0c7bd171e420000ab"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3c518d6decd872c0c7bd171e420000ab">&#9670;&#160;</a></span>SetHookTargetVisible()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void UMainWidget::SetHookTargetVisible </td>
-          <td>(</td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>bVisible</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>훅 타겟 인디케이터 표시/숨김 </p>
-
-<p class="definition"><a class="el" href="UMainWidget_8cpp_source.html">UMainWidget.cpp</a> 파일의 <a class="el" href="UMainWidget_8cpp_source.html#l00110">110</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  111</span>{</div>
-<div class="line"><span class="lineno">  112</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUMainWidget.html#a802d5c1d31d80e2b6bf185138577b020">HookTargetIndicator</a>)</div>
-<div class="line"><span class="lineno">  113</span>    {</div>
-<div class="line"><span class="lineno">  114</span>        <a class="code hl_variable" href="classUMainWidget.html#a802d5c1d31d80e2b6bf185138577b020">HookTargetIndicator</a>-&gt;SetVisibility(bVisible ? ESlateVisibility::Visible : ESlateVisibility::Hidden);</div>
-<div class="line"><span class="lineno">  115</span>    }</div>
-<div class="line"><span class="lineno">  116</span>}</div>
-</div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="UMainWidget_8h_source.html#l00045">HookTargetIndicator</a>.</p>
 
 </div>
 </div>
@@ -562,28 +530,28 @@ Private 속성</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition"><a class="el" href="UMainWidget_8cpp_source.html">UMainWidget.cpp</a> 파일의 <a class="el" href="UMainWidget_8cpp_source.html#l00118">118</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  119</span>{</div>
-<div class="line"><span class="lineno">  120</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classUMainWidget.html#a802d5c1d31d80e2b6bf185138577b020">HookTargetIndicator</a>)</div>
-<div class="line"><span class="lineno">  121</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  122</span> </div>
-<div class="line"><span class="lineno">  123</span>    <span class="comment">// 항상 표시</span></div>
-<div class="line"><span class="lineno">  124</span>    <a class="code hl_variable" href="classUMainWidget.html#a802d5c1d31d80e2b6bf185138577b020">HookTargetIndicator</a>-&gt;SetVisibility(ESlateVisibility::Visible);</div>
-<div class="line"><span class="lineno">  125</span> </div>
-<div class="line"><span class="lineno">  126</span>    <span class="comment">// 에임 상태에 따라 이미지 변경</span></div>
-<div class="line"><span class="lineno">  127</span>    <span class="keywordflow">if</span> (bIsAiming &amp;&amp; <a class="code hl_variable" href="classUMainWidget.html#ad7de89f2b381f896001de9b8b7e407bc">HookAimTexture</a>)</div>
-<div class="line"><span class="lineno">  128</span>    {</div>
-<div class="line"><span class="lineno">  129</span>        <span class="comment">// 타겟 감지됨 - 파란색 이미지</span></div>
-<div class="line"><span class="lineno">  130</span>        <a class="code hl_variable" href="classUMainWidget.html#a802d5c1d31d80e2b6bf185138577b020">HookTargetIndicator</a>-&gt;SetBrushFromTexture(<a class="code hl_variable" href="classUMainWidget.html#ad7de89f2b381f896001de9b8b7e407bc">HookAimTexture</a>);</div>
-<div class="line"><span class="lineno">  131</span>    }</div>
-<div class="line"><span class="lineno">  132</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (!bIsAiming &amp;&amp; <a class="code hl_variable" href="classUMainWidget.html#a52448a9fe3ed60736a223d3129b6e3db">HookNoAimTexture</a>)</div>
-<div class="line"><span class="lineno">  133</span>    {</div>
-<div class="line"><span class="lineno">  134</span>        <span class="comment">// 타겟 미감지 - 회색 이미지</span></div>
-<div class="line"><span class="lineno">  135</span>        <a class="code hl_variable" href="classUMainWidget.html#a802d5c1d31d80e2b6bf185138577b020">HookTargetIndicator</a>-&gt;SetBrushFromTexture(<a class="code hl_variable" href="classUMainWidget.html#a52448a9fe3ed60736a223d3129b6e3db">HookNoAimTexture</a>);</div>
-<div class="line"><span class="lineno">  136</span>    }</div>
-<div class="line"><span class="lineno">  137</span>}</div>
+<p class="definition"><a class="el" href="UMainWidget_8cpp_source.html">UMainWidget.cpp</a> 파일의 <a class="el" href="UMainWidget_8cpp_source.html#l00110">110</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  111</span>{</div>
+<div class="line"><span class="lineno">  112</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classUMainWidget.html#a802d5c1d31d80e2b6bf185138577b020">HookTargetIndicator</a>)</div>
+<div class="line"><span class="lineno">  113</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  114</span> </div>
+<div class="line"><span class="lineno">  115</span>    <span class="keywordflow">if</span> ( !<a class="code hl_variable" href="classUMainWidget.html#a802d5c1d31d80e2b6bf185138577b020">HookTargetIndicator</a>-&gt;IsVisible() )</div>
+<div class="line"><span class="lineno">  116</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  117</span> </div>
+<div class="line"><span class="lineno">  118</span>    <span class="comment">// 에임 상태에 따라 이미지 변경</span></div>
+<div class="line"><span class="lineno">  119</span>    <span class="keywordflow">if</span> (bIsAiming)</div>
+<div class="line"><span class="lineno">  120</span>    {</div>
+<div class="line"><span class="lineno">  121</span>        <span class="comment">// 타겟 감지됨</span></div>
+<div class="line"><span class="lineno">  122</span>        <a class="code hl_variable" href="classUMainWidget.html#a802d5c1d31d80e2b6bf185138577b020">HookTargetIndicator</a>-&gt;SetBrushFromTexture(<a class="code hl_variable" href="classUMainWidget.html#ad7de89f2b381f896001de9b8b7e407bc">HookAimTexture</a>);</div>
+<div class="line"><span class="lineno">  123</span>    }</div>
+<div class="line"><span class="lineno">  124</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (!bIsAiming)</div>
+<div class="line"><span class="lineno">  125</span>    {</div>
+<div class="line"><span class="lineno">  126</span>        <span class="comment">// 타겟 미감지</span></div>
+<div class="line"><span class="lineno">  127</span>        <a class="code hl_variable" href="classUMainWidget.html#a802d5c1d31d80e2b6bf185138577b020">HookTargetIndicator</a>-&gt;SetBrushFromTexture(<a class="code hl_variable" href="classUMainWidget.html#a52448a9fe3ed60736a223d3129b6e3db">HookNoAimTexture</a>);</div>
+<div class="line"><span class="lineno">  128</span>    }</div>
+<div class="line"><span class="lineno">  129</span>}</div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="UMainWidget_8h_source.html#l00060">HookAimTexture</a>, <a class="el" href="UMainWidget_8h_source.html#l00064">HookNoAimTexture</a>, <a class="el" href="UMainWidget_8h_source.html#l00045">HookTargetIndicator</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="UMainWidget_8h_source.html#l00056">HookAimTexture</a>, <a class="el" href="UMainWidget_8h_source.html#l00060">HookNoAimTexture</a>, <a class="el" href="UMainWidget_8h_source.html#l00045">HookTargetIndicator</a>.</p>
 
 </div>
 </div>
@@ -622,7 +590,7 @@ Private 속성</h2></td></tr>
 <div class="ttc" id="aclassULingoGameHelper_html_a6da883ca444eb45866e59e95e63836bb"><div class="ttname"><a href="classULingoGameHelper.html#a6da883ca444eb45866e59e95e63836bb">ULingoGameHelper::GetFormatTimer</a></div><div class="ttdeci">static FString GetFormatTimer(const float InRemainTime)</div><div class="ttdef"><b>Definition</b> <a href="ULingoGameHelper_8cpp_source.html#l00104">ULingoGameHelper.cpp:104</a></div></div>
 <div class="ttc" id="aclassUPlayTimer_html_a264cb1a83c0aa7f39ed003db2f779055"><div class="ttname"><a href="classUPlayTimer.html#a264cb1a83c0aa7f39ed003db2f779055">UPlayTimer::UpdateTimerText</a></div><div class="ttdeci">void UpdateTimerText(const FString &amp;TimeText)</div><div class="ttdoc">타이머 텍스트를 업데이트합니다.</div><div class="ttdef"><b>Definition</b> <a href="UPlayTimer_8cpp_source.html#l00014">UPlayTimer.cpp:14</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="UMainWidget_8h_source.html#l00069">CachedGameState</a>, <a class="el" href="ULingoGameHelper_8cpp_source.html#l00104">ULingoGameHelper::GetFormatTimer()</a>, <a class="el" href="UMainWidget_8h_source.html#l00034">PlayTimer</a>, <a class="el" href="UPlayTimer_8cpp_source.html#l00014">UPlayTimer::UpdateTimerText()</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="UMainWidget_8h_source.html#l00065">CachedGameState</a>, <a class="el" href="ULingoGameHelper_8cpp_source.html#l00104">ULingoGameHelper::GetFormatTimer()</a>, <a class="el" href="UMainWidget_8h_source.html#l00034">PlayTimer</a>, <a class="el" href="UPlayTimer_8cpp_source.html#l00014">UPlayTimer::UpdateTimerText()</a>.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UMainWidget_8cpp_source.html#l00056">NativeTick()</a>.</p>
 <div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -665,7 +633,7 @@ Private 속성</h2></td></tr>
 
 <p>GameState 참조 캐싱 </p>
 
-<p class="definition"><a class="el" href="UMainWidget_8h_source.html">UMainWidget.h</a> 파일의 <a class="el" href="UMainWidget_8h_source.html#l00069">69</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="UMainWidget_8h_source.html">UMainWidget.h</a> 파일의 <a class="el" href="UMainWidget_8h_source.html#l00065">65</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UMainWidget_8cpp_source.html#l00035">NativeConstruct()</a>, <a class="el" href="UMainWidget_8cpp_source.html#l00081">OnUpdateMissionTimerState()</a>, <a class="el" href="UMainWidget_8cpp_source.html#l00073">UpdateTimerDisplay()</a>.</p>
 
@@ -693,9 +661,9 @@ Private 속성</h2></td></tr>
 
 <p>훅 타겟 감지 시 이미지 (파란색) </p>
 
-<p class="definition"><a class="el" href="UMainWidget_8h_source.html">UMainWidget.h</a> 파일의 <a class="el" href="UMainWidget_8h_source.html#l00060">60</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="UMainWidget_8h_source.html">UMainWidget.h</a> 파일의 <a class="el" href="UMainWidget_8h_source.html#l00056">56</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UMainWidget_8cpp_source.html#l00024">UMainWidget()</a>, <a class="el" href="UMainWidget_8cpp_source.html#l00118">UpdateHookIndicatorState()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UMainWidget_8cpp_source.html#l00024">UMainWidget()</a>, <a class="el" href="UMainWidget_8cpp_source.html#l00110">UpdateHookIndicatorState()</a>.</p>
 
 </div>
 </div>
@@ -721,9 +689,9 @@ Private 속성</h2></td></tr>
 
 <p>훅 타겟 미감지 시 이미지 (회색) </p>
 
-<p class="definition"><a class="el" href="UMainWidget_8h_source.html">UMainWidget.h</a> 파일의 <a class="el" href="UMainWidget_8h_source.html#l00064">64</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="UMainWidget_8h_source.html">UMainWidget.h</a> 파일의 <a class="el" href="UMainWidget_8h_source.html#l00060">60</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UMainWidget_8cpp_source.html#l00024">UMainWidget()</a>, <a class="el" href="UMainWidget_8cpp_source.html#l00118">UpdateHookIndicatorState()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UMainWidget_8cpp_source.html#l00024">UMainWidget()</a>, <a class="el" href="UMainWidget_8cpp_source.html#l00110">UpdateHookIndicatorState()</a>.</p>
 
 </div>
 </div>
@@ -743,7 +711,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="UMainWidget_8h_source.html">UMainWidget.h</a> 파일의 <a class="el" href="UMainWidget_8h_source.html#l00045">45</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UMainWidget_8cpp_source.html#l00035">NativeConstruct()</a>, <a class="el" href="UMainWidget_8cpp_source.html#l00110">SetHookTargetVisible()</a>, <a class="el" href="UMainWidget_8cpp_source.html#l00118">UpdateHookIndicatorState()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UMainWidget_8cpp_source.html#l00035">NativeConstruct()</a>, <a class="el" href="UMainWidget_8cpp_source.html#l00081">OnUpdateMissionTimerState()</a>, <a class="el" href="UMainWidget_8cpp_source.html#l00110">UpdateHookIndicatorState()</a>.</p>
 
 </div>
 </div>
@@ -815,7 +783,7 @@ Private 속성</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classUMainWidget.html">UMainWidget</a></li>
-    <li class="footer">생성시간 : 목 11월 27 2025 10:59:48, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 목 11월 27 2025 15:00:03, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

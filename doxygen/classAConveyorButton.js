@@ -13,5 +13,6 @@ var classAConveyorButton =
     [ "ButtonMeshComp", "classAConveyorButton.html#a1e43c630957384b102f34b173b9fed07", null ],
     [ "ConveyorBeltActors", "classAConveyorButton.html#aa0528792440b0dd40e355b9effafce98", null ],
     [ "InteractableComp", "classAConveyorButton.html#a65c01716b559a99de3ae8b92c0670c50", null ],
-    [ "RootSceneComp", "classAConveyorButton.html#a1e4e1433ebfb711d13bc1260e65d3ca5", null ]
+    [ "RootSceneComp", "classAConveyorButton.html#a1e4e1433ebfb711d13bc1260e65d3ca5", null ],
+    [ "WidgetComp", "classAConveyorButton.html#a2a9b1343dc28a4e7cde57e23b2feedfe", null ]
 ];

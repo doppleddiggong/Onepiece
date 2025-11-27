@@ -148,6 +148,7 @@ var hierarchy =
       [ "UDrawingBoardWidget", "classUDrawingBoardWidget.html", null ],
       [ "UHoverButton", "classUHoverButton.html", null ],
       [ "UImageButton", "classUImageButton.html", null ],
+      [ "UInteractWidget", "classUInteractWidget.html", null ],
       [ "ULoadginCircle", "classULoadginCircle.html", null ],
       [ "ULobbyWidget", "classULobbyWidget.html", null ],
       [ "UMainWidget", "classUMainWidget.html", null ],

@@ -11,5 +11,6 @@ var classAPedestalSwitch =
     [ "InteractableComp", "classAPedestalSwitch.html#acb994507d5e7528a73d3aae325c38eda", null ],
     [ "RecoveryDelay", "classAPedestalSwitch.html#a4683b50b0e2b47da0352fea4c25d9c40", null ],
     [ "RecoveryTimerHandle", "classAPedestalSwitch.html#a0ce7441834cfdcca58a88c9cbbb8d086", null ],
-    [ "SwitchBody", "classAPedestalSwitch.html#ab59bac74f3a20b63ba4d8f39c0cf607f", null ]
+    [ "SwitchBody", "classAPedestalSwitch.html#ab59bac74f3a20b63ba4d8f39c0cf607f", null ],
+    [ "WidgetComp", "classAPedestalSwitch.html#a781bf2f8168ac87b729704885f894ef6", null ]
 ];

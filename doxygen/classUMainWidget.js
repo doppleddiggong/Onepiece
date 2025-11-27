@@ -4,7 +4,6 @@ var classUMainWidget =
     [ "NativeConstruct", "classUMainWidget.html#ab5b82b602efb97c7b4cd7a3c2d99d6e8", null ],
     [ "NativeTick", "classUMainWidget.html#a3ccf5693518d42c8c33a350b9e739396", null ],
     [ "OnUpdateMissionTimerState", "classUMainWidget.html#a087562bb275500b4085bf893720ae7b0", null ],
-    [ "SetHookTargetVisible", "classUMainWidget.html#a3c518d6decd872c0c7bd171e420000ab", null ],
     [ "StartMissionTimer", "classUMainWidget.html#a28c73cc2f8555b84f29602dec7ad1f3f", null ],
     [ "StopMissionTimer", "classUMainWidget.html#a55a492e917c5e3845a1cc10881baff07", null ],
     [ "UpdateHookIndicatorState", "classUMainWidget.html#adb05dee910e2e76e4ebd7f04a1a0252d", null ],

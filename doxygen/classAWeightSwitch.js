@@ -22,6 +22,7 @@ var classAWeightSwitch =
     [ "ElapsedTime", "classAWeightSwitch.html#ad8e727ab9bba460a7c56d5ea281686c0", null ],
     [ "EmissiveMaterial", "classAWeightSwitch.html#a029f7a65014d6bb13fae57fa0f2be334", null ],
     [ "EmissiveParam", "classAWeightSwitch.html#a4e2c535615ba6f62a28a9175031cc481", null ],
+    [ "IsPlayerDetect", "classAWeightSwitch.html#a0a1e788fd8694b27ba71fd6e79f4a85b", null ],
     [ "OverlappingActors", "classAWeightSwitch.html#a2079b69b39be9a7ce5b48f7f7df3964a", null ],
     [ "SwitchBody", "classAWeightSwitch.html#a564c3f6e4dbeebb734ce7e30ced14ff0", null ],
     [ "SwitchCollision", "classAWeightSwitch.html#a8aa0923f95fb929f34168d3d30267d4a", null ],

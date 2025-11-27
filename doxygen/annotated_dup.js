@@ -89,6 +89,7 @@ var annotated_dup =
     [ "UGameVFXManager", "classUGameVFXManager.html", "classUGameVFXManager" ],
     [ "UHoverButton", "classUHoverButton.html", "classUHoverButton" ],
     [ "UImageButton", "classUImageButton.html", "classUImageButton" ],
+    [ "UInteractWidget", "classUInteractWidget.html", "classUInteractWidget" ],
     [ "UKLingoNetworkSystem", "classUKLingoNetworkSystem.html", "classUKLingoNetworkSystem" ],
     [ "ULingoGameHelper", "classULingoGameHelper.html", "classULingoGameHelper" ],
     [ "ULingoGameInstance", "classULingoGameInstance.html", "classULingoGameInstance" ],
