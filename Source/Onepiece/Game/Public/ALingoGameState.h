@@ -70,6 +70,13 @@ public:
 	FORCEINLINE const FResponseScenario& GetScenarioData() const {return CurScenarioData;}
 	FORCEINLINE EGameState GetGameState() { return GameState; }
 
+protected:
+	/// @brief Stage1 시작 시 모든 클라이언트(서버 포함)에 Read Quest 팝업 표시 요청
+	/// @param InStageIndex 스테이지 인덱스
+	/// @param InScenarioData 시나리오 데이터
+	UFUNCTION(NetMulticast, Reliable)
+	void Multicast_ShowReadQuestPopup(int InStageIndex, const FResponseScenario& InScenarioData);
+
 private:
 	/// @brief 타이머 종료 시 호출됩니다 (서버에서만 실행)
 	void OnMissionTimerEnd();

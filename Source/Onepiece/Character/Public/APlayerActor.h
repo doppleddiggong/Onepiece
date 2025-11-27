@@ -88,10 +88,10 @@ public:
 	UFUNCTION(BlueprintCallable, Category="Event")
 	void OnGameMessage(const FString& Message);
 
-	/// @brief 스테이지 시작 이벤트를 처리합니다.
-	/// @param StageIndex [in] 시작된 스테이지 인덱스
-	UFUNCTION()
-	void OnStageStarted(int StageIndex);
+	/// @brief 클라이언트에서 게임 메시지를 표시합니다.
+	/// @param Message [in] 표시할 메시지
+	UFUNCTION(Client, Reliable)
+	void ClientRPC_ShowGameMessage(const FString& Message);
 
 	/// @brief TTS 오디오를 재생합니다. VoiceConversationSystem으로 전달합니다.
 	/// @param AudioData [in] TTS로 생성된 오디오 데이터 (WAV)

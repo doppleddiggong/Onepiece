@@ -85,10 +85,13 @@ void ALingoGameState::SetStageData(int InStageIndex, const FResponseScenario& In
 	this->CurScenarioData = InResponseData;
 	// 미션 타이머 시작
 	this->StartMissionTimer( ULingoGameHelper::GetMissionPlayTime(ScenarioLevel) );
-	
-	// 모든 클라이언트에게 스테이지 시작 브로드캐스트
+
+	// 모든 클라이언트(서버 포함)에 팝업 표시 요청
 	if (HasAuthority())
 	{
+		Multicast_ShowReadQuestPopup(InStageIndex, InResponseData);
+
+		// 모든 클라이언트에게 스테이지 시작 브로드캐스트
 		if (ANetworkBroadcastActor* BroadcastActor = ANetworkBroadcastActor::Get(this))
 		{
 			BroadcastActor->SendStageStarted(InStageIndex, this);
@@ -175,6 +178,25 @@ void ALingoGameState::OnRep_QuestSuccess()
 				TEXT("Success"),
 				TEXT("Quest Clear"),
 				EMsgBoxType::OK);
+		}
+	}
+}
+
+void ALingoGameState::Multicast_ShowReadQuestPopup_Implementation(int InStageIndex, const FResponseScenario& InScenarioData)
+{
+	PRINTLOG(TEXT("[GameState] Multicast_ShowReadQuestPopup - StageIndex: %d, Role: %s"),
+		InStageIndex, GetLocalRole() == ROLE_Authority ? TEXT("Server") : TEXT("Client"));
+
+	// Stage1일 때만 Read Quest 팝업 표시
+	if (InStageIndex == 1)
+	{
+		if (UPopupManager* PopupMgr = UPopupManager::Get(GetWorld()))
+		{
+			if (UPopup_ReadQuest* Popup = Cast<UPopup_ReadQuest>(PopupMgr->ShowPopup(EPopupType::ReadQuest)))
+			{
+				Popup->InitPopup(InScenarioData);
+				PRINTLOG(TEXT("[GameState] Read Quest Popup displayed for Stage1"));
+			}
 		}
 	}
 }

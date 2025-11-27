@@ -93,13 +93,6 @@ void APlayerActor::BeginPlay()
 	{
 		CreateMainWidget();
 		
-		// BroadcastManager의 OnStageStarted 이벤트 구독
-		if (UBroadcastManager* BroadcastMgr = UBroadcastManager::Get(GetWorld()))
-		{
-			BroadcastMgr->OnStageStarted.AddDynamic(this, &APlayerActor::OnStageStarted);
-			PRINTLOG(TEXT("[PlayerActor] Subscribed to OnStageStarted event"));
-		}
-		
 		// Map1(게임 맵)에서는 마우스 숨기기
 		FString MapName = GetWorld()->GetMapName();
 		// PIE 프리픽스 제거
@@ -277,27 +270,22 @@ void APlayerActor::OnGameMessage(const FString& Message)
 {
 	PRINT_STRING(TEXT("Event Received: %s"), *Message);
 
-	// 퀘스트 시작이 뜨면 메세지 팝업을 띄우자
-	UDialogManager::Get(GetWorld())->ShowToast(Message);
+	// 서버에서 호출되면 클라이언트 RPC로 전달
+	if (HasAuthority())
+	{
+		ClientRPC_ShowGameMessage(Message);
+	}
+	else
+	{
+		ClientRPC_ShowGameMessage_Implementation(Message);
+	}
 }
 
-void APlayerActor::OnStageStarted(int StageIndex)
+void APlayerActor::ClientRPC_ShowGameMessage_Implementation(const FString& Message)
 {
-	PRINTLOG(TEXT("[PlayerActor] OnStageStarted - StageIndex: %d"), StageIndex);
-	
-	// Stage1일 때 Read Quest 팝업 표시
-	if (StageIndex == 1)
+	// 클라이언트에서만 실행됨 - LocalPlayerSubsystem 사용 가능
+	if (UDialogManager* DialogManager = UDialogManager::Get(GetWorld()))
 	{
-		if (ALingoGameState* GS = ULingoGameHelper::GetLingoGameState(GetWorld()))
-		{
-			if (const auto PopupMgr = UPopupManager::Get(GetWorld()))
-			{
-				if (const auto Popup = Cast<UPopup_ReadQuest>(PopupMgr->ShowPopup(EPopupType::ReadQuest)))
-				{
-					Popup->InitPopup(GS->CurScenarioData);
-					PRINTLOG(TEXT("[PlayerActor] Read Quest Popup displayed for Stage1"));
-				}
-			}
-		}
+		DialogManager->ShowToast(Message);
 	}
 }
