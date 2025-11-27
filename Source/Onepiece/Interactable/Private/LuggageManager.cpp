@@ -73,10 +73,14 @@ void ALuggageManager::SpawnLuggage()
 
 	if (NewLuggage)
 	{
-		NewLuggage->SpawnIdx = CurrentSpawnIndex;
+		// 상자 정보 지정
+		NewLuggage->SetLuggageInfo(CurrentSpawnIndex, SD.word2.name, SD.word1.name);
+
+		// 인덱스로 상자 색&무늬 지정
 		int32 ColorIdx = FCString::Atoi(*SD.word2.code);
 		NewLuggage->ApplyColorToMesh(ColorIdx);
-		NewLuggage->ApplyPatternToMesh(SD.word1.name);
+		int32 PatternIdx = FCString::Atoi(*SD.word1.code);
+		NewLuggage->ApplyPatternToMesh(PatternIdx);
 	}
 
 	CurrentSpawnIndex++;

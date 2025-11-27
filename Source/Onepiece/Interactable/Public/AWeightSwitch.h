@@ -78,4 +78,6 @@ private:
 	float ElapsedTime = 0.0f;
 	bool DetectTarget = false;
 	bool bActivateState = false;
+
+	bool AnswerFound = false;
 };
