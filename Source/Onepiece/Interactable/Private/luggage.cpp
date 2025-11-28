@@ -5,17 +5,18 @@
 #include "InteractableComponent.h"
 #include "ALingoGameMode.h"
 #include "ALingoPlayerState.h"
-#include "BoxInfoWidget.h"
+#include "ULuggageInfoWidget.h"
 #include "GameLogging.h"
 #include "UGameDataManager.h"
 #include "UHookComponent.h"
+
 #include "Components/BoxComponent.h"
 #include "Components/WidgetComponent.h"
 #include "Net/UnrealNetwork.h"
 #include "GameFramework/PlayerController.h"
 #include "Engine/World.h"
-#include "Kismet/GameplayStatics.h"
-#include "Kismet/KismetMathLibrary.h"
+
+#define LUGGAGE_INTERACT_WIDGET_PATH TEXT("/Game/CustomContents/UI/Widgets/WBP_InteractWidget_Luggage.WBP_InteractWidget_Luggage_C")
 
 Aluggage::Aluggage()
 {
@@ -37,7 +38,7 @@ Aluggage::Aluggage()
 
 	InteractableComp = CreateDefaultSubobject<UInteractableComponent>(TEXT("Interactable"));
 	InteractableComp->InteractionType = EInteractionType::PickUp;
-	InteractableComp->InteractionPrompt = TEXT("Press E to Grap");
+	InteractableComp->InteractionPrompt = TEXT("Pick Up");
 
 	HookComp = CreateDefaultSubobject<UHookComponent>(TEXT("Hook"));
 	
@@ -53,12 +54,14 @@ Aluggage::Aluggage()
 	// Replication
 	bReplicates = true;
 
-	BoxInfoWidgetComp = CreateDefaultSubobject<UWidgetComponent>(TEXT("BoxInfoWidgetComp"));
-	ConstructorHelpers::FClassFinder<UBoxInfoWidget> boxWidgetRef(TEXT("/Game/CustomContents/UI/Widgets/WBP_BoxInfoWidget.WBP_BoxInfoWidget_C"));
+	WidgetComp = CreateDefaultSubobject<UWidgetComponent>(TEXT("WidgetComp"));
+	ConstructorHelpers::FClassFinder<ULuggageInfoWidget> boxWidgetRef(LUGGAGE_INTERACT_WIDGET_PATH);
 	if (boxWidgetRef.Succeeded())
 	{
-		BoxInfoWidgetComp->SetWidgetClass(boxWidgetRef.Class);
-		BoxInfoWidgetComp->SetupAttachment(GetRootComponent());
+		WidgetComp->SetWidgetClass(boxWidgetRef.Class);
+		WidgetComp->SetupAttachment(GetRootComponent());
+		WidgetComp->SetWidgetSpace(EWidgetSpace::Screen);
+		WidgetComp->SetDrawSize(FVector2D(2048.0f, 1024.0f));
 	}
 }
 
@@ -67,15 +70,19 @@ void Aluggage::BeginPlay()
 	Super::BeginPlay();
 
 	SetReplicateMovement(true);
+
+	// 델리게이트 바인딩
+	InteractableComp->InitWidget(WidgetComp);
 }
 
 void Aluggage::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 	
-	BillboardInfoWidget();
+	// BillboardInfoWidget();
 
 	// Pattern 이름을 luggage 위에 표시
+	
 	if (!Pattern.IsEmpty())
 	{
 		FVector TextLocation = GetActorLocation() + FVector(0, 0, 100);
@@ -96,6 +103,11 @@ void Aluggage::SetLuggageInfo(int32 InIdx, FString InColor, FString InPattern)
 	SpawnIdx = InIdx;
 	Color = InColor;
 	Pattern = InPattern;
+
+	if ( auto InfoWidget = Cast<ULuggageInfoWidget>(WidgetComp->GetWidget()))
+	{
+		InfoWidget->InitLuggage(Pattern, Color);
+	}
 }
 
 void Aluggage::OnRep_ColorIdx()
@@ -149,30 +161,30 @@ void Aluggage::OutlineOff()
 	Mesh3Comp->SetRenderCustomDepth(false);
 }
 
-void Aluggage::InfoWidgetOn()
-{
-	BoxInfoWidgetComp->GetWidget()->SetVisibility(ESlateVisibility::Visible);
-}
-
-void Aluggage::InfoWidgetOff()
-{
-	BoxInfoWidgetComp->GetWidget()->SetVisibility(ESlateVisibility::Hidden);
-}
-
-void Aluggage::BillboardInfoWidget()
-{
-	// 카메라 가져오기
-	AActor* cam = UGameplayStatics::GetPlayerCameraManager(GetWorld(), 0);
-
-	if ( cam == nullptr)
-		return;
-	
-	// 카메라 backward 벡터, up 벡터를 이용하여 Rotator 계산
-	FRotator rot = UKismetMathLibrary::MakeRotFromXZ(-cam->GetActorForwardVector(), cam->GetActorUpVector());
-	rot.Pitch = 0;
-	// 회전값으로 설정
-	BoxInfoWidgetComp->SetWorldRotation(rot);
-}
+// void Aluggage::InfoWidgetOn()
+// {
+// 	WidgetComp->GetWidget()->SetVisibility(ESlateVisibility::Visible);
+// }
+//
+// void Aluggage::InfoWidgetOff()
+// {
+// 	WidgetComp->GetWidget()->SetVisibility(ESlateVisibility::Hidden);
+// }
+//
+// void Aluggage::BillboardInfoWidget()
+// {
+// 	// 카메라 가져오기
+// 	AActor* cam = UGameplayStatics::GetPlayerCameraManager(GetWorld(), 0);
+//
+// 	if ( cam == nullptr)
+// 		return;
+// 	
+// 	// 카메라 backward 벡터, up 벡터를 이용하여 Rotator 계산
+// 	FRotator rot = UKismetMathLibrary::MakeRotFromXZ(-cam->GetActorForwardVector(), cam->GetActorUpVector());
+// 	rot.Pitch = 0;
+// 	// 회전값으로 설정
+// 	WidgetComp->SetWorldRotation(rot);
+// }
 
 
 //--------------------------------------------------------------//

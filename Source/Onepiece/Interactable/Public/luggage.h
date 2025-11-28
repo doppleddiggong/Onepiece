@@ -36,7 +36,7 @@ public:
 	UPROPERTY(VisibleAnywhere)
 	TObjectPtr<class UInteractableComponent> InteractableComp;
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
-	TObjectPtr<class UWidgetComponent> BoxInfoWidgetComp;
+	TObjectPtr<class UWidgetComponent> WidgetComp;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
 	TObjectPtr<class UHookComponent> HookComp;
@@ -88,12 +88,12 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Outline")
 	void OutlineOff();
 	
-public:
-	// InfoWidget
-	void InfoWidgetOn();
-	void InfoWidgetOff();
-protected:
-	void BillboardInfoWidget();
+// public:
+// 	// InfoWidget
+// 	void InfoWidgetOn();
+// 	void InfoWidgetOff();
+// protected:
+// 	void BillboardInfoWidget();
 	
 public:
 	//--------------------------------------------------------------//
