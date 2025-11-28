@@ -218,7 +218,7 @@ void UInteractableComponent::Server_Drop_Implementation()
 		// luggage->InfoWidgetOn();
 	}
 
-	ShowInteractWidget();
+	// ShowInteractWidget();
 	
 	// detach
 	GetOwner()->DetachFromActor(FDetachmentTransformRules::KeepWorldTransform);
