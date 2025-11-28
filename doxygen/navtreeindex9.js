@@ -1,5 +1,7 @@
 var NAVTREEINDEX9 =
 {
+"structFVFXData.html#af261eaf6fac7df787bb2f290c456123f":[2,0,63,3],
+"structFWordData.html":[2,0,64],
 "structFWordData.html#a0c48a651223fd58eedb624c3837e8b3b":[2,0,64,2],
 "structFWordData.html#a8a359d2cf5e79ca20cbdfe904076dc41":[2,0,64,3],
 "structFWordData.html#ac9c045482c66908751ad71ce8bff1bcd":[2,0,64,0],

@@ -1,5 +1,6 @@
 var NAVTREEINDEX2 =
 {
+"ULingoGameInstance_8h.html#a19b0ebcc430a73c898b86a0c19a1d74ca76461b58db153b4599c4b3993270b324":[3,0,0,2,1,1,4,1,2],
 "ULingoGameInstance_8h.html#a19b0ebcc430a73c898b86a0c19a1d74cabdca3a0c705779b1d5b149ac3e855ecf":[3,0,0,2,1,1,4,1,1],
 "ULingoGameInstance_8h.html#a19b0ebcc430a73c898b86a0c19a1d74cae579351858cc85edfce6664e868c9d46":[3,0,0,2,1,1,4,1,3],
 "ULingoGameInstance_8h.html#af4f602f05bec03e4584d7dcb8eda6f7c":[3,0,0,2,1,1,4,2],
@@ -47,8 +48,8 @@ var NAVTREEINDEX2 =
 "UParabolaComponent_8h.html#a160b3db1967ea71bee24abc7f977594fa21c2e59531c8710156d34a3c30ac81d5":[3,0,0,0,1,1,3,2,2],
 "UParabolaComponent_8h.html#a160b3db1967ea71bee24abc7f977594fa57cec4137b614c87cb4e24a3d003a3e0":[3,0,0,0,1,1,3,2,1],
 "UParabolaComponent_8h.html#acb24f37a1795b5e9dfdbb98be4898712":[3,0,0,0,1,1,3,3],
-"UParabolaComponent_8h.html#acb24f37a1795b5e9dfdbb98be4898712aa3f80d8f0f1b4ffa8c475f5d60ea5635":[3,0,0,0,1,1,3,3,1],
 "UParabolaComponent_8h.html#acb24f37a1795b5e9dfdbb98be4898712aa3f80d8f0f1b4ffa8c475f5d60ea5635":[3,0,0,0,1,1,3,3,0],
+"UParabolaComponent_8h.html#acb24f37a1795b5e9dfdbb98be4898712aa3f80d8f0f1b4ffa8c475f5d60ea5635":[3,0,0,0,1,1,3,3,1],
 "UParabolaComponent_8h_source.html":[3,0,0,0,1,1,3],
 "UPlayTimer_8cpp.html":[3,0,0,2,6,0,11],
 "UPlayTimer_8cpp_source.html":[3,0,0,2,6,0,11],
@@ -248,6 +249,5 @@ var NAVTREEINDEX2 =
 "classALingoGameMode.html#abef1a309b7dcd4b4f71d2341d55a0ea3":[2,0,6,0],
 "classALingoGameMode.html#ad2c3a3e7a97a899e65c081cc96f2ad16":[2,0,6,5],
 "classALingoGameState.html":[2,0,7],
-"classALingoGameState.html#a17e93c1837d6f33a5a3717689177d952":[2,0,7,22],
-"classALingoGameState.html#a25c77f53ca729ae5adec42082c519bf6":[2,0,7,1]
+"classALingoGameState.html#a17e93c1837d6f33a5a3717689177d952":[2,0,7,22]
 };

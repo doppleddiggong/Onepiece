@@ -1,5 +1,6 @@
 var NAVTREEINDEX8 =
 {
+"namespaceGameMessage.html#a2298f260adc739495b1a3938d2335243":[1,0,2,0],
 "namespaceGameMessage.html#a2e7ce013d07feee9b57a7ebed463ac99":[1,0,2,9],
 "namespaceGameMessage.html#a326c294d1a911e05f13ee8a200c47fb7":[1,0,2,5],
 "namespaceGameMessage.html#a41af88bcbb76137849dde9e51a36909a":[1,0,2,10],
@@ -180,8 +181,9 @@ var NAVTREEINDEX8 =
 "structFQuestWriteInfo.html#a60dc6d0314a68704e0b4731f212a4b08":[2,0,49,2],
 "structFQuestWriteInfo.html#a80e93ac6b1fa28e339ac3ae6ce67db8f":[2,0,49,0],
 "structFReadData.html":[2,0,50],
-"structFReadData.html#a0cfdeafbbdaa3e836fe7d9b95f513ff1":[2,0,50,2],
+"structFReadData.html#a0cfdeafbbdaa3e836fe7d9b95f513ff1":[2,0,50,3],
 "structFReadData.html#a4db3a5221f5af5b73d25875e05763aa6":[2,0,50,0],
+"structFReadData.html#a5c8d28fbe4c3617ea9d338197a11d30c":[2,0,50,2],
 "structFReadData.html#aaa326f806b603a949a9749ae38f17fa4":[2,0,50,1],
 "structFReadQuestResult.html":[2,0,51],
 "structFReadQuestResult.html#a086b2cc576670b7cdc6d5582a3a842d0":[2,0,51,4],
@@ -247,7 +249,5 @@ var NAVTREEINDEX8 =
 "structFVFXData.html":[2,0,63],
 "structFVFXData.html#a4639a82bb96c85b413933695345392ec":[2,0,63,2],
 "structFVFXData.html#a945ead1eeb298be70cd434019b8ce9ba":[2,0,63,0],
-"structFVFXData.html#ac890ab57708ba9a560918e626822022f":[2,0,63,1],
-"structFVFXData.html#af261eaf6fac7df787bb2f290c456123f":[2,0,63,3],
-"structFWordData.html":[2,0,64]
+"structFVFXData.html#ac890ab57708ba9a560918e626822022f":[2,0,63,1]
 };
