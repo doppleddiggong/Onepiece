@@ -8,12 +8,14 @@
 
 #include "FComponentHelper.h"
 #include "GameLogging.h"
+#include "Popup_Result.h"
 
 #include "Onepiece/Onepiece.h"
 
 #define POPUP_PATH TEXT("/Game/CustomContents/UI/Widgets/WBP_PopupMsg.WBP_PopupMsg_C")
 #define INPUT_POPUP_PATH TEXT("/Game/CustomContents/UI/Widgets/WBP_InputPopupMsg.WBP_InputPopupMsg_C")
 #define READQUEST_POPUP_PATH TEXT("/Game/CustomContents/UI/Widgets/WBP_PopupReadQuest.WBP_PopupReadQuest_C")
+#define RESULT_POPUP_PATH TEXT("/Game/CustomContents/UI/Widgets/WBP_Result.WBP_Result_C")
 
 UPopupManager::UPopupManager()
 {
@@ -22,6 +24,7 @@ UPopupManager::UPopupManager()
 	PopupClassMap.Add(EPopupType::Register, FComponentHelper::LoadClass<UPopup_InputMsg>(INPUT_POPUP_PATH));
 	PopupClassMap.Add(EPopupType::Login, FComponentHelper::LoadClass<UPopup_InputMsg>(INPUT_POPUP_PATH));
 	PopupClassMap.Add(EPopupType::ReadQuest, FComponentHelper::LoadClass<UPopup_ReadQuest>(READQUEST_POPUP_PATH));
+	PopupClassMap.Add(EPopupType::Result, FComponentHelper::LoadClass<UPopup_Result>(RESULT_POPUP_PATH));
 }
 
 // ========================================

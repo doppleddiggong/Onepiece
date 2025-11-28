@@ -7,6 +7,7 @@
 #include "APlayerActor.h"
 #include "GameLogging.h"
 #include "luggage.h"
+#include "Popup_Result.h"
 #include "UBroadcastManager.h"
 #include "UPopupManager.h"
 #include "UPopup_MsgBox.h"
@@ -219,14 +220,17 @@ void AWeightSwitch::OnBeginOverlap(
 
 				if (AnswerFound) return;
 				
-				// 이벤트 : 임시로 ShowMessageBox를 이용. 스테이지1 성공!!! 메세지를 보여주세요
+				// 스테이지1 성공! 결과 화면
 				FTimerHandle TimerHandle;
 				GetWorldTimerManager().SetTimer(TimerHandle, [this, GS]
 				{
-					if (UPopupManager* PopupMgr = UPopupManager::Get(GetWorld()))
+					if (const auto PopupMgr = UPopupManager::Get(GetWorld()))
 					{
-						PopupMgr->ShowMsgBoxSimple(TEXT("스테이지1 성공!!!"), TEXT("스테이지1을 완료했습니다 부엉부엉"),
-							EMsgBoxType::OK);
+						const auto ResultWidget = Cast<UPopup_Result>(PopupMgr->ShowPopup(EPopupType::Result));
+						if (!ResultWidget)
+						{
+							UE_LOG(LogTemp, Warning, TEXT("No Result Widget Found"));
+						}
 					}
 
 					AnswerFound = true;

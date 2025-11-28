@@ -20,4 +20,7 @@ enum class EPopupType : uint8
 	Login				UMETA(DisplayName = "Login"),
 
 	ReadQuest			UMETA(DisplayName = "ReadQuest"),
+
+	// 결과 팝업
+	Result				UMETA(DisplayName = "Result"),
 };

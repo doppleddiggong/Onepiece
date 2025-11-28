@@ -13,4 +13,18 @@ UCLASS()
 class ONEPIECE_API UPopup_Result : public UBasePopup
 {
 	GENERATED_BODY()
+
+protected:
+	virtual void NativeConstruct() override;
+
+public:
+	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
+	class UImageButton* Btn_OK;
+	
+	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
+	class UTextureButton* Btn_Exit;
+
+private:
+	UFUNCTION(BlueprintCallable, Category = "Close")
+	void OnClickClose();
 };
