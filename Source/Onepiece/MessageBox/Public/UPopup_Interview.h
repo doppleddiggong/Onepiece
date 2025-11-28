@@ -15,15 +15,19 @@ class ONEPIECE_API UPopup_Interview : public UBasePopup
 	GENERATED_BODY()
 
 public:
-// 	/** 팝업 초기화 (필요 시 API 확장) */
- 	UFUNCTION(BlueprintCallable)
- 	void InitPopup(const FInterviewData& InterviewData);
-//
-// protected:
-// 	virtual void NativeConstruct() override;
-//
-// 	/** 내부 리스트 초기화 */
-// 	void BuildInterviewList(const TArray<FString>& InterviewTexts);
+	/** 팝업 초기화 (필요 시 API 확장) */
+	UFUNCTION(BlueprintCallable)
+	void InitPopup(const FInterviewData& InterviewData);
+
+protected:
+	virtual void NativeConstruct() override;
+
+private:
+	UFUNCTION()
+	void OnClickClose();
+
+	UFUNCTION()
+	void OnClickSubmit();
 
 protected:
 	/* ------------------- Layout ------------------- */
@@ -42,11 +46,11 @@ protected:
 
 	/** 닫기 버튼 */
 	UPROPERTY(meta = (BindWidget))
-	TObjectPtr<class UButton> Btn_Close;
+	TObjectPtr<class UTextureButton> Btn_Close;
 
 	/** 제출 버튼 */
 	UPROPERTY(meta = (BindWidget))
-	TObjectPtr<class UButton> Btn_Submit;
+	TObjectPtr<class UImageButton> Btn_Submit;
 
 	/** 스크롤 가능한 인터뷰 패널 */
 	UPROPERTY(meta = (BindWidget))
@@ -60,4 +64,9 @@ protected:
 	/** 팝업 내에서 표시될 인터뷰 항목 위젯 클래스 */
 	UPROPERTY(EditDefaultsOnly, Category="Popup")
 	TSubclassOf<class UPopup_InterviewItem> InterviewItemClass;
+
+	/* ------------------- Settings ------------------- */
+	/** 인터뷰 항목 간 간격 (Spacer Height) */
+	UPROPERTY(EditDefaultsOnly, Category="Popup", meta=(ClampMin="0.0", ClampMax="200.0"))
+	float ItemSpacing = 20.0f;
 };

@@ -25,7 +25,9 @@ public:
 	void PopupInputMsg();
 	UFUNCTION(BlueprintCallable, CallInEditor, Category = "TEST|Message")
 	void ReadQuest();
-    
+	UFUNCTION(BlueprintCallable, CallInEditor, Category = "TEST|Message")
+	void InterviewPopup();
+
 	void OnOK();
 	void OnCancel();
 };

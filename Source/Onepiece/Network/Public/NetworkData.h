@@ -97,16 +97,6 @@ namespace RequestAPI
 
 
 
-/// @brief Read 퀘스트 정보 구조체입니다.
-USTRUCT(BlueprintType)
-struct FInterviewData
-{
-	GENERATED_BODY()
-
-	UPROPERTY(BlueprintReadWrite, Category = "KLingo")
-	TArray<FInterviewQuestionData> Question;
-};
-
 
 USTRUCT(BlueprintType)
 struct FInterviewQuestionData
@@ -133,6 +123,16 @@ struct FInterviewQuestionData
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FString CreatedAt;
+};
+
+/// @brief Read 퀘스트 정보 구조체입니다.
+USTRUCT(BlueprintType)
+struct FInterviewData
+{
+	GENERATED_BODY()
+
+	UPROPERTY(BlueprintReadWrite, Category = "KLingo")
+	TArray<FInterviewQuestionData> Question;
 };
 
 
