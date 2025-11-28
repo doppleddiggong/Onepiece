@@ -111,6 +111,7 @@ var annotated_dup =
     [ "UPopupManager", "classUPopupManager.html", "classUPopupManager" ],
     [ "UQuestInfoWidget", "classUQuestInfoWidget.html", "classUQuestInfoWidget" ],
     [ "URobotAnimInstance", "classURobotAnimInstance.html", "classURobotAnimInstance" ],
+    [ "UScoreManager", "classUScoreManager.html", "classUScoreManager" ],
     [ "USequenceActivatable", "classUSequenceActivatable.html", null ],
     [ "USequenceManager", "classUSequenceManager.html", "classUSequenceManager" ],
     [ "USessionInfoWidget", "classUSessionInfoWidget.html", "classUSessionInfoWidget" ],

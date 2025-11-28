@@ -69,12 +69,13 @@ var searchData=
   ['getsplitdata_66',['GetSplitData',['../structFWordData.html#ac9c045482c66908751ad71ce8bff1bcd',1,'FWordData']]],
   ['getstageendmessage_67',['GetStageEndMessage',['../classULingoGameHelper.html#ad0262a81ba3a11cd1666a4edd5a91ed5',1,'ULingoGameHelper']]],
   ['getstagestartmessage_68',['GetStageStartMessage',['../classULingoGameHelper.html#a402b331d7071b55ff971ee1a99d7c026',1,'ULingoGameHelper']]],
-  ['gettoken_69',['GetToken',['../classALingoPlayerState.html#a75f98be692a0e94274a7b88beb789dec',1,'ALingoPlayerState']]],
-  ['getusername_70',['GetUserName',['../classALingoPlayerState.html#abba39b9859f256884211a5a8a15ddfae',1,'ALingoPlayerState']]],
-  ['getvectorparametervaluesafe_71',['GetVectorParameterValueSafe',['../structFMaterialHelper.html#a4018d4c55b07718d919b2bf5547b0b52',1,'FMaterialHelper']]],
-  ['getvfxdata_72',['GetVFXData',['../classUGameVFXManager.html#a4f7a82ca570424be468311bcba163759',1,'UGameVFXManager']]],
-  ['getword1list_73',['GetWord1List',['../structFResponseScenario.html#acabeafebbb8bb1263aebeb1d92018c88',1,'FResponseScenario']]],
-  ['getword2list_74',['GetWord2List',['../structFResponseScenario.html#a8923be159a0b72e21dc157a2afd11bfe',1,'FResponseScenario']]],
-  ['getwordstudydata_75',['GetWordStudyData',['../classUGameDataManager.html#a256c3e880b2bb92a1cedacda1a3ebb14',1,'UGameDataManager']]],
-  ['green_76',['Green',['../namespaceGameColor.html#a347e21752e1aecee7916040063b5915a',1,'GameColor']]]
+  ['gettimerank_69',['GetTimeRank',['../classUScoreManager.html#a2482d944d90c52cf1a6e850076516d9a',1,'UScoreManager']]],
+  ['gettoken_70',['GetToken',['../classALingoPlayerState.html#a75f98be692a0e94274a7b88beb789dec',1,'ALingoPlayerState']]],
+  ['getusername_71',['GetUserName',['../classALingoPlayerState.html#abba39b9859f256884211a5a8a15ddfae',1,'ALingoPlayerState']]],
+  ['getvectorparametervaluesafe_72',['GetVectorParameterValueSafe',['../structFMaterialHelper.html#a4018d4c55b07718d919b2bf5547b0b52',1,'FMaterialHelper']]],
+  ['getvfxdata_73',['GetVFXData',['../classUGameVFXManager.html#a4f7a82ca570424be468311bcba163759',1,'UGameVFXManager']]],
+  ['getword1list_74',['GetWord1List',['../structFResponseScenario.html#acabeafebbb8bb1263aebeb1d92018c88',1,'FResponseScenario']]],
+  ['getword2list_75',['GetWord2List',['../structFResponseScenario.html#a8923be159a0b72e21dc157a2afd11bfe',1,'FResponseScenario']]],
+  ['getwordstudydata_76',['GetWordStudyData',['../classUGameDataManager.html#a256c3e880b2bb92a1cedacda1a3ebb14',1,'UGameDataManager']]],
+  ['green_77',['Green',['../namespaceGameColor.html#a347e21752e1aecee7916040063b5915a',1,'GameColor']]]
 ];

@@ -16,7 +16,7 @@ var searchData=
   ['oncancel_13',['OnCancel',['../classAPopupTesterActor.html#a5bef06200ad3c7e269f620915c6822c8',1,'APopupTesterActor']]],
   ['oncanceldelegate_14',['OnCancelDelegate',['../classUPopup__MsgBox.html#aa2e641e60d37ac21ad6738ce343a6b00',1,'UPopup_MsgBox']]],
   ['onclickcancel_15',['onclickcancel',['../classUPopup__MsgBox.html#abb2aead65ffdf04991cd3944fc7d6477',1,'UPopup_MsgBox::OnClickCancel()'],['../classUPopup__InputMsg.html#a159e4db0808be5277719498bf77354f6',1,'UPopup_InputMsg::OnClickCancel()']]],
-  ['onclickclose_16',['onclickclose',['../classUPopup__Interview.html#ae5c9f4a7b8a279e9ae40ef890906ede5',1,'UPopup_Interview::OnClickClose()'],['../classUPopup__ReadQuest.html#a4b8d0620aabf1f83bd80a653e2b2fc62',1,'UPopup_ReadQuest::OnClickClose()']]],
+  ['onclickclose_16',['onclickclose',['../classUPopup__Result.html#a2fe50f209d27aa1c870802b99aaf7cf6',1,'UPopup_Result::OnClickClose()'],['../classUPopup__Interview.html#ae5c9f4a7b8a279e9ae40ef890906ede5',1,'UPopup_Interview::OnClickClose()'],['../classUPopup__ReadQuest.html#a4b8d0620aabf1f83bd80a653e2b2fc62',1,'UPopup_ReadQuest::OnClickClose()']]],
   ['onclickfind_17',['OnClickFind',['../classULobbyWidget.html#ae19628adc8297e76a4edd5452099c2e4',1,'ULobbyWidget']]],
   ['onclickjoin_18',['OnClickJoin',['../classUSessionInfoWidget.html#a1f92c0fccae94c61e9daa8a9fda4f523',1,'USessionInfoWidget']]],
   ['onclickok_19',['onclickok',['../classUPopup__InputMsg.html#a51f34cead615d548857a5990fe25c72c',1,'UPopup_InputMsg::OnClickOk()'],['../classUPopup__MsgBox.html#ae887a3a5b42926b229f6646e8823ed57',1,'UPopup_MsgBox::OnClickOk()']]],

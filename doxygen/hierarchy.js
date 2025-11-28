@@ -136,7 +136,8 @@ var hierarchy =
     [ "ULocalPlayerSubsystem", null, [
       [ "UDialogManager", "classUDialogManager.html", null ],
       [ "ULoadingCircleManager", "classULoadingCircleManager.html", null ],
-      [ "UPopupManager", "classUPopupManager.html", null ]
+      [ "UPopupManager", "classUPopupManager.html", null ],
+      [ "UScoreManager", "classUScoreManager.html", null ]
     ] ],
     [ "UUserWidget", null, [
       [ "UBasePopup", "classUBasePopup.html", [

@@ -216,28 +216,28 @@ Private 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="AWeightSwitch_8cpp_source.html">AWeightSwitch.cpp</a> 파일의 <a class="el" href="AWeightSwitch_8cpp_source.html#l00016">16</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   17</span>{</div>
-<div class="line"><span class="lineno">   18</span>    PrimaryActorTick.bCanEverTick = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   19</span> </div>
-<div class="line"><span class="lineno">   20</span>    RootComponent = CreateDefaultSubobject&lt;USceneComponent&gt;(TEXT(<span class="stringliteral">&quot;Root&quot;</span>));</div>
-<div class="line"><span class="lineno">   21</span> </div>
-<div class="line"><span class="lineno">   22</span>    <a class="code hl_variable" href="classAWeightSwitch.html#a564c3f6e4dbeebb734ce7e30ced14ff0">SwitchBody</a> = CreateDefaultSubobject&lt;USkeletalMeshComponent&gt;(TEXT(<span class="stringliteral">&quot;SwitchBody&quot;</span>));</div>
-<div class="line"><span class="lineno">   23</span>    <a class="code hl_variable" href="classAWeightSwitch.html#a564c3f6e4dbeebb734ce7e30ced14ff0">SwitchBody</a>-&gt;SetupAttachment(RootComponent);</div>
-<div class="line"><span class="lineno">   24</span>    <a class="code hl_variable" href="classAWeightSwitch.html#a564c3f6e4dbeebb734ce7e30ced14ff0">SwitchBody</a>-&gt;SetRelativeRotation(FRotator(0.f, 0.f, 90.0f));</div>
-<div class="line"><span class="lineno">   25</span>    <a class="code hl_variable" href="classAWeightSwitch.html#a564c3f6e4dbeebb734ce7e30ced14ff0">SwitchBody</a>-&gt;SetRelativeLocation(FVector::ZeroVector);</div>
-<div class="line"><span class="lineno">   26</span>    <a class="code hl_variable" href="classAWeightSwitch.html#a564c3f6e4dbeebb734ce7e30ced14ff0">SwitchBody</a>-&gt;SetRelativeScale3D(FVector(2.f));</div>
-<div class="line"><span class="lineno">   27</span>    <a class="code hl_variable" href="classAWeightSwitch.html#a564c3f6e4dbeebb734ce7e30ced14ff0">SwitchBody</a>-&gt;SetMobility(EComponentMobility::Movable);</div>
-<div class="line"><span class="lineno">   28</span> </div>
-<div class="line"><span class="lineno">   29</span>    <a class="code hl_variable" href="classAWeightSwitch.html#a8aa0923f95fb929f34168d3d30267d4a">SwitchCollision</a> = CreateDefaultSubobject&lt;UBoxComponent&gt;(TEXT(<span class="stringliteral">&quot;SwitchCollision&quot;</span>));</div>
-<div class="line"><span class="lineno">   30</span>    <a class="code hl_variable" href="classAWeightSwitch.html#a8aa0923f95fb929f34168d3d30267d4a">SwitchCollision</a>-&gt;SetupAttachment(<a class="code hl_variable" href="classAWeightSwitch.html#a564c3f6e4dbeebb734ce7e30ced14ff0">SwitchBody</a>);</div>
-<div class="line"><span class="lineno">   31</span>    <a class="code hl_variable" href="classAWeightSwitch.html#a8aa0923f95fb929f34168d3d30267d4a">SwitchCollision</a>-&gt;SetBoxExtent(FVector(40.f, 16.f, 50.f));</div>
-<div class="line"><span class="lineno">   32</span>    <a class="code hl_variable" href="classAWeightSwitch.html#a8aa0923f95fb929f34168d3d30267d4a">SwitchCollision</a>-&gt;SetRelativeLocation(FVector::ZeroVector);</div>
-<div class="line"><span class="lineno">   33</span>    <a class="code hl_variable" href="classAWeightSwitch.html#a8aa0923f95fb929f34168d3d30267d4a">SwitchCollision</a>-&gt;SetCollisionEnabled(ECollisionEnabled::QueryOnly);</div>
-<div class="line"><span class="lineno">   34</span>    <a class="code hl_variable" href="classAWeightSwitch.html#a8aa0923f95fb929f34168d3d30267d4a">SwitchCollision</a>-&gt;SetCollisionResponseToAllChannels(ECollisionResponse::ECR_Ignore);</div>
-<div class="line"><span class="lineno">   35</span>    <a class="code hl_variable" href="classAWeightSwitch.html#a8aa0923f95fb929f34168d3d30267d4a">SwitchCollision</a>-&gt;SetCollisionResponseToChannel(ECC_Pawn, ECR_Overlap);</div>
-<div class="line"><span class="lineno">   36</span>    <a class="code hl_variable" href="classAWeightSwitch.html#a8aa0923f95fb929f34168d3d30267d4a">SwitchCollision</a>-&gt;SetCollisionResponseToChannel(ECC_PhysicsBody, ECR_Overlap);</div>
-<div class="line"><span class="lineno">   37</span>}</div>
+<p class="definition"><a class="el" href="AWeightSwitch_8cpp_source.html">AWeightSwitch.cpp</a> 파일의 <a class="el" href="AWeightSwitch_8cpp_source.html#l00017">17</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   18</span>{</div>
+<div class="line"><span class="lineno">   19</span>    PrimaryActorTick.bCanEverTick = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   20</span> </div>
+<div class="line"><span class="lineno">   21</span>    RootComponent = CreateDefaultSubobject&lt;USceneComponent&gt;(TEXT(<span class="stringliteral">&quot;Root&quot;</span>));</div>
+<div class="line"><span class="lineno">   22</span> </div>
+<div class="line"><span class="lineno">   23</span>    <a class="code hl_variable" href="classAWeightSwitch.html#a564c3f6e4dbeebb734ce7e30ced14ff0">SwitchBody</a> = CreateDefaultSubobject&lt;USkeletalMeshComponent&gt;(TEXT(<span class="stringliteral">&quot;SwitchBody&quot;</span>));</div>
+<div class="line"><span class="lineno">   24</span>    <a class="code hl_variable" href="classAWeightSwitch.html#a564c3f6e4dbeebb734ce7e30ced14ff0">SwitchBody</a>-&gt;SetupAttachment(RootComponent);</div>
+<div class="line"><span class="lineno">   25</span>    <a class="code hl_variable" href="classAWeightSwitch.html#a564c3f6e4dbeebb734ce7e30ced14ff0">SwitchBody</a>-&gt;SetRelativeRotation(FRotator(0.f, 0.f, 90.0f));</div>
+<div class="line"><span class="lineno">   26</span>    <a class="code hl_variable" href="classAWeightSwitch.html#a564c3f6e4dbeebb734ce7e30ced14ff0">SwitchBody</a>-&gt;SetRelativeLocation(FVector::ZeroVector);</div>
+<div class="line"><span class="lineno">   27</span>    <a class="code hl_variable" href="classAWeightSwitch.html#a564c3f6e4dbeebb734ce7e30ced14ff0">SwitchBody</a>-&gt;SetRelativeScale3D(FVector(2.f));</div>
+<div class="line"><span class="lineno">   28</span>    <a class="code hl_variable" href="classAWeightSwitch.html#a564c3f6e4dbeebb734ce7e30ced14ff0">SwitchBody</a>-&gt;SetMobility(EComponentMobility::Movable);</div>
+<div class="line"><span class="lineno">   29</span> </div>
+<div class="line"><span class="lineno">   30</span>    <a class="code hl_variable" href="classAWeightSwitch.html#a8aa0923f95fb929f34168d3d30267d4a">SwitchCollision</a> = CreateDefaultSubobject&lt;UBoxComponent&gt;(TEXT(<span class="stringliteral">&quot;SwitchCollision&quot;</span>));</div>
+<div class="line"><span class="lineno">   31</span>    <a class="code hl_variable" href="classAWeightSwitch.html#a8aa0923f95fb929f34168d3d30267d4a">SwitchCollision</a>-&gt;SetupAttachment(<a class="code hl_variable" href="classAWeightSwitch.html#a564c3f6e4dbeebb734ce7e30ced14ff0">SwitchBody</a>);</div>
+<div class="line"><span class="lineno">   32</span>    <a class="code hl_variable" href="classAWeightSwitch.html#a8aa0923f95fb929f34168d3d30267d4a">SwitchCollision</a>-&gt;SetBoxExtent(FVector(40.f, 16.f, 50.f));</div>
+<div class="line"><span class="lineno">   33</span>    <a class="code hl_variable" href="classAWeightSwitch.html#a8aa0923f95fb929f34168d3d30267d4a">SwitchCollision</a>-&gt;SetRelativeLocation(FVector::ZeroVector);</div>
+<div class="line"><span class="lineno">   34</span>    <a class="code hl_variable" href="classAWeightSwitch.html#a8aa0923f95fb929f34168d3d30267d4a">SwitchCollision</a>-&gt;SetCollisionEnabled(ECollisionEnabled::QueryOnly);</div>
+<div class="line"><span class="lineno">   35</span>    <a class="code hl_variable" href="classAWeightSwitch.html#a8aa0923f95fb929f34168d3d30267d4a">SwitchCollision</a>-&gt;SetCollisionResponseToAllChannels(ECollisionResponse::ECR_Ignore);</div>
+<div class="line"><span class="lineno">   36</span>    <a class="code hl_variable" href="classAWeightSwitch.html#a8aa0923f95fb929f34168d3d30267d4a">SwitchCollision</a>-&gt;SetCollisionResponseToChannel(ECC_Pawn, ECR_Overlap);</div>
+<div class="line"><span class="lineno">   37</span>    <a class="code hl_variable" href="classAWeightSwitch.html#a8aa0923f95fb929f34168d3d30267d4a">SwitchCollision</a>-&gt;SetCollisionResponseToChannel(ECC_PhysicsBody, ECR_Overlap);</div>
+<div class="line"><span class="lineno">   38</span>}</div>
 <div class="ttc" id="aclassAWeightSwitch_html_a564c3f6e4dbeebb734ce7e30ced14ff0"><div class="ttname"><a href="classAWeightSwitch.html#a564c3f6e4dbeebb734ce7e30ced14ff0">AWeightSwitch::SwitchBody</a></div><div class="ttdeci">TObjectPtr&lt; class USkeletalMeshComponent &gt; SwitchBody</div><div class="ttdef"><b>Definition</b> <a href="AWeightSwitch_8h_source.html#l00049">AWeightSwitch.h:49</a></div></div>
 <div class="ttc" id="aclassAWeightSwitch_html_a8aa0923f95fb929f34168d3d30267d4a"><div class="ttname"><a href="classAWeightSwitch.html#a8aa0923f95fb929f34168d3d30267d4a">AWeightSwitch::SwitchCollision</a></div><div class="ttdeci">TObjectPtr&lt; class UBoxComponent &gt; SwitchCollision</div><div class="ttdef"><b>Definition</b> <a href="AWeightSwitch_8h_source.html#l00052">AWeightSwitch.h:52</a></div></div>
 </div><!-- fragment -->
@@ -269,24 +269,24 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="AWeightSwitch_8cpp_source.html">AWeightSwitch.cpp</a> 파일의 <a class="el" href="AWeightSwitch_8cpp_source.html#l00163">163</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  164</span>{</div>
-<div class="line"><span class="lineno">  165</span>    <a class="code hl_variable" href="classAWeightSwitch.html#a85c189dcaeb033a6d640526347e6032b">TriggerDelay</a> -= GetWorld()-&gt;GetDeltaSeconds();</div>
-<div class="line"><span class="lineno">  166</span> </div>
-<div class="line"><span class="lineno">  167</span>    <span class="keywordflow">if</span> ( <a class="code hl_variable" href="classAWeightSwitch.html#a85c189dcaeb033a6d640526347e6032b">TriggerDelay</a> &lt; 0 )</div>
-<div class="line"><span class="lineno">  168</span>    {</div>
-<div class="line"><span class="lineno">  169</span>        <a class="code hl_variable" href="classAWeightSwitch.html#a85c189dcaeb033a6d640526347e6032b">TriggerDelay</a> = <a class="code hl_variable" href="classAWeightSwitch.html#a6d8f40a26ddcdd92ea648b34bdc8444b">Duration</a>;</div>
-<div class="line"><span class="lineno">  170</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  171</span>    }</div>
-<div class="line"><span class="lineno">  172</span> </div>
-<div class="line"><span class="lineno">  173</span>    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  174</span>}</div>
+<p class="definition"><a class="el" href="AWeightSwitch_8cpp_source.html">AWeightSwitch.cpp</a> 파일의 <a class="el" href="AWeightSwitch_8cpp_source.html#l00164">164</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  165</span>{</div>
+<div class="line"><span class="lineno">  166</span>    <a class="code hl_variable" href="classAWeightSwitch.html#a85c189dcaeb033a6d640526347e6032b">TriggerDelay</a> -= GetWorld()-&gt;GetDeltaSeconds();</div>
+<div class="line"><span class="lineno">  167</span> </div>
+<div class="line"><span class="lineno">  168</span>    <span class="keywordflow">if</span> ( <a class="code hl_variable" href="classAWeightSwitch.html#a85c189dcaeb033a6d640526347e6032b">TriggerDelay</a> &lt; 0 )</div>
+<div class="line"><span class="lineno">  169</span>    {</div>
+<div class="line"><span class="lineno">  170</span>        <a class="code hl_variable" href="classAWeightSwitch.html#a85c189dcaeb033a6d640526347e6032b">TriggerDelay</a> = <a class="code hl_variable" href="classAWeightSwitch.html#a6d8f40a26ddcdd92ea648b34bdc8444b">Duration</a>;</div>
+<div class="line"><span class="lineno">  171</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  172</span>    }</div>
+<div class="line"><span class="lineno">  173</span> </div>
+<div class="line"><span class="lineno">  174</span>    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  175</span>}</div>
 <div class="ttc" id="aclassAWeightSwitch_html_a6d8f40a26ddcdd92ea648b34bdc8444b"><div class="ttname"><a href="classAWeightSwitch.html#a6d8f40a26ddcdd92ea648b34bdc8444b">AWeightSwitch::Duration</a></div><div class="ttdeci">float Duration</div><div class="ttdef"><b>Definition</b> <a href="AWeightSwitch_8h_source.html#l00066">AWeightSwitch.h:66</a></div></div>
 <div class="ttc" id="aclassAWeightSwitch_html_a85c189dcaeb033a6d640526347e6032b"><div class="ttname"><a href="classAWeightSwitch.html#a85c189dcaeb033a6d640526347e6032b">AWeightSwitch::TriggerDelay</a></div><div class="ttdeci">float TriggerDelay</div><div class="ttdef"><b>Definition</b> <a href="AWeightSwitch_8h_source.html#l00068">AWeightSwitch.h:68</a></div></div>
 </div><!-- fragment -->
 <p class="reference">다음을 참조함 :  <a class="el" href="AWeightSwitch_8h_source.html#l00066">Duration</a>, <a class="el" href="AWeightSwitch_8h_source.html#l00068">TriggerDelay</a>.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AWeightSwitch_8cpp_source.html#l00147">Tick()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AWeightSwitch_8cpp_source.html#l00148">Tick()</a>.</p>
 <div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-2-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
@@ -320,31 +320,31 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="AWeightSwitch_8cpp_source.html">AWeightSwitch.cpp</a> 파일의 <a class="el" href="AWeightSwitch_8cpp_source.html#l00039">39</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   40</span>{</div>
-<div class="line"><span class="lineno">   41</span>    Super::BeginPlay();</div>
-<div class="line"><span class="lineno">   42</span> </div>
-<div class="line"><span class="lineno">   43</span>    this-&gt;<a class="code hl_variable" href="classAWeightSwitch.html#a85c189dcaeb033a6d640526347e6032b">TriggerDelay</a> = <a class="code hl_variable" href="classAWeightSwitch.html#a6d8f40a26ddcdd92ea648b34bdc8444b">Duration</a>;</div>
-<div class="line"><span class="lineno">   44</span>    this-&gt;<a class="code hl_variable" href="classAWeightSwitch.html#ae9663983eb123ff86c5252299b5fe533">DetectTarget</a> = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   45</span>    this-&gt;<a class="code hl_variable" href="classAWeightSwitch.html#ad8e727ab9bba460a7c56d5ea281686c0">ElapsedTime</a> = 0;</div>
-<div class="line"><span class="lineno">   46</span>    this-&gt;<a class="code hl_variable" href="classAWeightSwitch.html#a4b828eef7cc6456e5e5833c6d94c79a0">bActivateState</a> = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   47</span>    </div>
-<div class="line"><span class="lineno">   48</span>    <a class="code hl_variable" href="classAWeightSwitch.html#a8aa0923f95fb929f34168d3d30267d4a">SwitchCollision</a>-&gt;OnComponentBeginOverlap.AddDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classAWeightSwitch.html#ad1d12bf0c9656ead4704c0c9ecb810e1">AWeightSwitch::OnBeginOverlap</a>);</div>
-<div class="line"><span class="lineno">   49</span>    <a class="code hl_variable" href="classAWeightSwitch.html#a8aa0923f95fb929f34168d3d30267d4a">SwitchCollision</a>-&gt;OnComponentEndOverlap.AddDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classAWeightSwitch.html#a3186a708297d96dfab84f9e4ca7f24d3">AWeightSwitch::OnEndOverlap</a>);</div>
-<div class="line"><span class="lineno">   50</span> </div>
-<div class="line"><span class="lineno">   51</span>    UBroadcastManager::Get(GetWorld())-&gt;OnWeightSwitch.AddDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classAWeightSwitch.html#a16c33afacfe4ccb7b5b3992280277ca3">AWeightSwitch::OnWeightSwitch</a>);</div>
-<div class="line"><span class="lineno">   52</span>    </div>
-<div class="line"><span class="lineno">   53</span>    <a class="code hl_function" href="classAWeightSwitch.html#a6bd9a52a7e681766a14207b61c0f739b">InitSwitch</a>();</div>
-<div class="line"><span class="lineno">   54</span>}</div>
-<div class="ttc" id="aclassAWeightSwitch_html_a16c33afacfe4ccb7b5b3992280277ca3"><div class="ttname"><a href="classAWeightSwitch.html#a16c33afacfe4ccb7b5b3992280277ca3">AWeightSwitch::OnWeightSwitch</a></div><div class="ttdeci">void OnWeightSwitch(int InButtonIndex, bool InActive)</div><div class="ttdef"><b>Definition</b> <a href="AWeightSwitch_8cpp_source.html#l00297">AWeightSwitch.cpp:297</a></div></div>
-<div class="ttc" id="aclassAWeightSwitch_html_a3186a708297d96dfab84f9e4ca7f24d3"><div class="ttname"><a href="classAWeightSwitch.html#a3186a708297d96dfab84f9e4ca7f24d3">AWeightSwitch::OnEndOverlap</a></div><div class="ttdeci">void OnEndOverlap(UPrimitiveComponent *OverlappedComponent, AActor *OtherActor, UPrimitiveComponent *OtherComp, int32 OtherBodyIndex)</div><div class="ttdef"><b>Definition</b> <a href="AWeightSwitch_8cpp_source.html#l00275">AWeightSwitch.cpp:275</a></div></div>
+<p class="definition"><a class="el" href="AWeightSwitch_8cpp_source.html">AWeightSwitch.cpp</a> 파일의 <a class="el" href="AWeightSwitch_8cpp_source.html#l00040">40</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   41</span>{</div>
+<div class="line"><span class="lineno">   42</span>    Super::BeginPlay();</div>
+<div class="line"><span class="lineno">   43</span> </div>
+<div class="line"><span class="lineno">   44</span>    this-&gt;<a class="code hl_variable" href="classAWeightSwitch.html#a85c189dcaeb033a6d640526347e6032b">TriggerDelay</a> = <a class="code hl_variable" href="classAWeightSwitch.html#a6d8f40a26ddcdd92ea648b34bdc8444b">Duration</a>;</div>
+<div class="line"><span class="lineno">   45</span>    this-&gt;<a class="code hl_variable" href="classAWeightSwitch.html#ae9663983eb123ff86c5252299b5fe533">DetectTarget</a> = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   46</span>    this-&gt;<a class="code hl_variable" href="classAWeightSwitch.html#ad8e727ab9bba460a7c56d5ea281686c0">ElapsedTime</a> = 0;</div>
+<div class="line"><span class="lineno">   47</span>    this-&gt;<a class="code hl_variable" href="classAWeightSwitch.html#a4b828eef7cc6456e5e5833c6d94c79a0">bActivateState</a> = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   48</span>    </div>
+<div class="line"><span class="lineno">   49</span>    <a class="code hl_variable" href="classAWeightSwitch.html#a8aa0923f95fb929f34168d3d30267d4a">SwitchCollision</a>-&gt;OnComponentBeginOverlap.AddDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classAWeightSwitch.html#ad1d12bf0c9656ead4704c0c9ecb810e1">AWeightSwitch::OnBeginOverlap</a>);</div>
+<div class="line"><span class="lineno">   50</span>    <a class="code hl_variable" href="classAWeightSwitch.html#a8aa0923f95fb929f34168d3d30267d4a">SwitchCollision</a>-&gt;OnComponentEndOverlap.AddDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classAWeightSwitch.html#a3186a708297d96dfab84f9e4ca7f24d3">AWeightSwitch::OnEndOverlap</a>);</div>
+<div class="line"><span class="lineno">   51</span> </div>
+<div class="line"><span class="lineno">   52</span>    UBroadcastManager::Get(GetWorld())-&gt;OnWeightSwitch.AddDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classAWeightSwitch.html#a16c33afacfe4ccb7b5b3992280277ca3">AWeightSwitch::OnWeightSwitch</a>);</div>
+<div class="line"><span class="lineno">   53</span>    </div>
+<div class="line"><span class="lineno">   54</span>    <a class="code hl_function" href="classAWeightSwitch.html#a6bd9a52a7e681766a14207b61c0f739b">InitSwitch</a>();</div>
+<div class="line"><span class="lineno">   55</span>}</div>
+<div class="ttc" id="aclassAWeightSwitch_html_a16c33afacfe4ccb7b5b3992280277ca3"><div class="ttname"><a href="classAWeightSwitch.html#a16c33afacfe4ccb7b5b3992280277ca3">AWeightSwitch::OnWeightSwitch</a></div><div class="ttdeci">void OnWeightSwitch(int InButtonIndex, bool InActive)</div><div class="ttdef"><b>Definition</b> <a href="AWeightSwitch_8cpp_source.html#l00301">AWeightSwitch.cpp:301</a></div></div>
+<div class="ttc" id="aclassAWeightSwitch_html_a3186a708297d96dfab84f9e4ca7f24d3"><div class="ttname"><a href="classAWeightSwitch.html#a3186a708297d96dfab84f9e4ca7f24d3">AWeightSwitch::OnEndOverlap</a></div><div class="ttdeci">void OnEndOverlap(UPrimitiveComponent *OverlappedComponent, AActor *OtherActor, UPrimitiveComponent *OtherComp, int32 OtherBodyIndex)</div><div class="ttdef"><b>Definition</b> <a href="AWeightSwitch_8cpp_source.html#l00279">AWeightSwitch.cpp:279</a></div></div>
 <div class="ttc" id="aclassAWeightSwitch_html_a4b828eef7cc6456e5e5833c6d94c79a0"><div class="ttname"><a href="classAWeightSwitch.html#a4b828eef7cc6456e5e5833c6d94c79a0">AWeightSwitch::bActivateState</a></div><div class="ttdeci">bool bActivateState</div><div class="ttdef"><b>Definition</b> <a href="AWeightSwitch_8h_source.html#l00084">AWeightSwitch.h:84</a></div></div>
-<div class="ttc" id="aclassAWeightSwitch_html_a6bd9a52a7e681766a14207b61c0f739b"><div class="ttname"><a href="classAWeightSwitch.html#a6bd9a52a7e681766a14207b61c0f739b">AWeightSwitch::InitSwitch</a></div><div class="ttdeci">void InitSwitch()</div><div class="ttdef"><b>Definition</b> <a href="AWeightSwitch_8cpp_source.html#l00056">AWeightSwitch.cpp:56</a></div></div>
-<div class="ttc" id="aclassAWeightSwitch_html_ad1d12bf0c9656ead4704c0c9ecb810e1"><div class="ttname"><a href="classAWeightSwitch.html#ad1d12bf0c9656ead4704c0c9ecb810e1">AWeightSwitch::OnBeginOverlap</a></div><div class="ttdeci">void OnBeginOverlap(UPrimitiveComponent *OverlappedComponent, AActor *OtherActor, UPrimitiveComponent *OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult &amp;SweepResult)</div><div class="ttdef"><b>Definition</b> <a href="AWeightSwitch_8cpp_source.html#l00176">AWeightSwitch.cpp:176</a></div></div>
+<div class="ttc" id="aclassAWeightSwitch_html_a6bd9a52a7e681766a14207b61c0f739b"><div class="ttname"><a href="classAWeightSwitch.html#a6bd9a52a7e681766a14207b61c0f739b">AWeightSwitch::InitSwitch</a></div><div class="ttdeci">void InitSwitch()</div><div class="ttdef"><b>Definition</b> <a href="AWeightSwitch_8cpp_source.html#l00057">AWeightSwitch.cpp:57</a></div></div>
+<div class="ttc" id="aclassAWeightSwitch_html_ad1d12bf0c9656ead4704c0c9ecb810e1"><div class="ttname"><a href="classAWeightSwitch.html#ad1d12bf0c9656ead4704c0c9ecb810e1">AWeightSwitch::OnBeginOverlap</a></div><div class="ttdeci">void OnBeginOverlap(UPrimitiveComponent *OverlappedComponent, AActor *OtherActor, UPrimitiveComponent *OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult &amp;SweepResult)</div><div class="ttdef"><b>Definition</b> <a href="AWeightSwitch_8cpp_source.html#l00177">AWeightSwitch.cpp:177</a></div></div>
 <div class="ttc" id="aclassAWeightSwitch_html_ad8e727ab9bba460a7c56d5ea281686c0"><div class="ttname"><a href="classAWeightSwitch.html#ad8e727ab9bba460a7c56d5ea281686c0">AWeightSwitch::ElapsedTime</a></div><div class="ttdeci">float ElapsedTime</div><div class="ttdef"><b>Definition</b> <a href="AWeightSwitch_8h_source.html#l00082">AWeightSwitch.h:82</a></div></div>
 <div class="ttc" id="aclassAWeightSwitch_html_ae9663983eb123ff86c5252299b5fe533"><div class="ttname"><a href="classAWeightSwitch.html#ae9663983eb123ff86c5252299b5fe533">AWeightSwitch::DetectTarget</a></div><div class="ttdeci">bool DetectTarget</div><div class="ttdef"><b>Definition</b> <a href="AWeightSwitch_8h_source.html#l00083">AWeightSwitch.h:83</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="AWeightSwitch_8h_source.html#l00084">bActivateState</a>, <a class="el" href="AWeightSwitch_8h_source.html#l00083">DetectTarget</a>, <a class="el" href="AWeightSwitch_8h_source.html#l00066">Duration</a>, <a class="el" href="AWeightSwitch_8h_source.html#l00082">ElapsedTime</a>, <a class="el" href="AWeightSwitch_8cpp_source.html#l00056">InitSwitch()</a>, <a class="el" href="AWeightSwitch_8cpp_source.html#l00176">OnBeginOverlap()</a>, <a class="el" href="AWeightSwitch_8cpp_source.html#l00275">OnEndOverlap()</a>, <a class="el" href="AWeightSwitch_8cpp_source.html#l00297">OnWeightSwitch()</a>, <a class="el" href="AWeightSwitch_8h_source.html#l00052">SwitchCollision</a>, <a class="el" href="AWeightSwitch_8h_source.html#l00068">TriggerDelay</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="AWeightSwitch_8h_source.html#l00084">bActivateState</a>, <a class="el" href="AWeightSwitch_8h_source.html#l00083">DetectTarget</a>, <a class="el" href="AWeightSwitch_8h_source.html#l00066">Duration</a>, <a class="el" href="AWeightSwitch_8h_source.html#l00082">ElapsedTime</a>, <a class="el" href="AWeightSwitch_8cpp_source.html#l00057">InitSwitch()</a>, <a class="el" href="AWeightSwitch_8cpp_source.html#l00177">OnBeginOverlap()</a>, <a class="el" href="AWeightSwitch_8cpp_source.html#l00279">OnEndOverlap()</a>, <a class="el" href="AWeightSwitch_8cpp_source.html#l00301">OnWeightSwitch()</a>, <a class="el" href="AWeightSwitch_8h_source.html#l00052">SwitchCollision</a>, <a class="el" href="AWeightSwitch_8h_source.html#l00068">TriggerDelay</a>.</p>
 <div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-3-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
@@ -370,57 +370,57 @@ Private 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="AWeightSwitch_8cpp_source.html">AWeightSwitch.cpp</a> 파일의 <a class="el" href="AWeightSwitch_8cpp_source.html#l00056">56</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   57</span>{</div>
-<div class="line"><span class="lineno">   58</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classAWeightSwitch.html#a564c3f6e4dbeebb734ce7e30ced14ff0">SwitchBody</a>)</div>
-<div class="line"><span class="lineno">   59</span>    {</div>
-<div class="line"><span class="lineno">   60</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>( TEXT(<span class="stringliteral">&quot;SwitchBody is null&quot;</span>));</div>
-<div class="line"><span class="lineno">   61</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">   62</span>    }</div>
-<div class="line"><span class="lineno">   63</span> </div>
-<div class="line"><span class="lineno">   64</span>    <span class="comment">// 1. 머티리얼 얻기</span></div>
-<div class="line"><span class="lineno">   65</span>    UMaterialInterface* Material = <a class="code hl_variable" href="classAWeightSwitch.html#a564c3f6e4dbeebb734ce7e30ced14ff0">SwitchBody</a>-&gt;GetMaterial(0);</div>
-<div class="line"><span class="lineno">   66</span>    <span class="keywordflow">if</span> (!Material)</div>
-<div class="line"><span class="lineno">   67</span>    {</div>
-<div class="line"><span class="lineno">   68</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>( TEXT(<span class="stringliteral">&quot;Material is null&quot;</span>));</div>
-<div class="line"><span class="lineno">   69</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">   70</span>    }</div>
-<div class="line"><span class="lineno">   71</span> </div>
-<div class="line"><span class="lineno">   72</span>    <span class="comment">// 2. 다이나믹 머티리얼 인스턴스 생성</span></div>
-<div class="line"><span class="lineno">   73</span>    UMaterialInstanceDynamic* DynMaterial = UMaterialInstanceDynamic::Create(Material, <span class="keyword">this</span>);</div>
-<div class="line"><span class="lineno">   74</span>    <span class="keywordflow">if</span> (!DynMaterial)</div>
-<div class="line"><span class="lineno">   75</span>    {</div>
-<div class="line"><span class="lineno">   76</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>( TEXT(<span class="stringliteral">&quot;Failed to create dynamic material&quot;</span>));</div>
-<div class="line"><span class="lineno">   77</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">   78</span>    }</div>
-<div class="line"><span class="lineno">   79</span> </div>
-<div class="line"><span class="lineno">   80</span>    <span class="comment">// 3. 변수에 저장</span></div>
-<div class="line"><span class="lineno">   81</span>    <a class="code hl_variable" href="classAWeightSwitch.html#a029f7a65014d6bb13fae57fa0f2be334">EmissiveMaterial</a> = DynMaterial;</div>
-<div class="line"><span class="lineno">   82</span> </div>
-<div class="line"><span class="lineno">   83</span>    <span class="comment">// 4. 메시에 적용 (이 단계가 누락되어 있었음!)</span></div>
-<div class="line"><span class="lineno">   84</span>    <a class="code hl_variable" href="classAWeightSwitch.html#a564c3f6e4dbeebb734ce7e30ced14ff0">SwitchBody</a>-&gt;SetMaterial(0, <a class="code hl_variable" href="classAWeightSwitch.html#a029f7a65014d6bb13fae57fa0f2be334">EmissiveMaterial</a>);</div>
-<div class="line"><span class="lineno">   85</span> </div>
-<div class="line"><span class="lineno">   86</span>    <span class="comment">// 5. 파라미터 설정</span></div>
-<div class="line"><span class="lineno">   87</span>    <a class="code hl_variable" href="classAWeightSwitch.html#a029f7a65014d6bb13fae57fa0f2be334">EmissiveMaterial</a>-&gt;SetVectorParameterValue(<a class="code hl_variable" href="classAWeightSwitch.html#a4e2c535615ba6f62a28a9175031cc481">EmissiveParam</a>, <a class="code hl_variable" href="classAWeightSwitch.html#ab113b92b3916c0593281ffeecd10a73b">DeactivateColor</a>);</div>
-<div class="line"><span class="lineno">   88</span> </div>
-<div class="line"><span class="lineno">   89</span>    UAnimInstance* AnimInstance = <a class="code hl_variable" href="classAWeightSwitch.html#a564c3f6e4dbeebb734ce7e30ced14ff0">SwitchBody</a>-&gt;GetAnimInstance();</div>
-<div class="line"><span class="lineno">   90</span>    <span class="keywordflow">if</span> (!AnimInstance)</div>
-<div class="line"><span class="lineno">   91</span>    {</div>
-<div class="line"><span class="lineno">   92</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>( TEXT(<span class="stringliteral">&quot;AnimInstance is null&quot;</span>));</div>
-<div class="line"><span class="lineno">   93</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">   94</span>    }</div>
-<div class="line"><span class="lineno">   95</span> </div>
-<div class="line"><span class="lineno">   96</span>    <span class="comment">// 7. 캐스팅 및 변수 설정</span></div>
-<div class="line"><span class="lineno">   97</span>    <a class="code hl_class" href="classUTweenAnimInstance.html">UTweenAnimInstance</a>* CubeButtonAnim = Cast&lt;UTweenAnimInstance&gt;(AnimInstance);</div>
-<div class="line"><span class="lineno">   98</span>    <span class="keywordflow">if</span> (CubeButtonAnim)</div>
-<div class="line"><span class="lineno">   99</span>    {</div>
-<div class="line"><span class="lineno">  100</span>        <a class="code hl_variable" href="classAWeightSwitch.html#aac61dda6cc3f61994e54f5569c27f6cf">AnimBlueprint</a> = CubeButtonAnim;</div>
-<div class="line"><span class="lineno">  101</span>    }</div>
-<div class="line"><span class="lineno">  102</span>    <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  103</span>    {</div>
-<div class="line"><span class="lineno">  104</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>( TEXT(<span class="stringliteral">&quot;Failed to cast to UABP_CubeButton&quot;</span>));</div>
-<div class="line"><span class="lineno">  105</span>    }</div>
-<div class="line"><span class="lineno">  106</span>}</div>
+<p class="definition"><a class="el" href="AWeightSwitch_8cpp_source.html">AWeightSwitch.cpp</a> 파일의 <a class="el" href="AWeightSwitch_8cpp_source.html#l00057">57</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   58</span>{</div>
+<div class="line"><span class="lineno">   59</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classAWeightSwitch.html#a564c3f6e4dbeebb734ce7e30ced14ff0">SwitchBody</a>)</div>
+<div class="line"><span class="lineno">   60</span>    {</div>
+<div class="line"><span class="lineno">   61</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>( TEXT(<span class="stringliteral">&quot;SwitchBody is null&quot;</span>));</div>
+<div class="line"><span class="lineno">   62</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   63</span>    }</div>
+<div class="line"><span class="lineno">   64</span> </div>
+<div class="line"><span class="lineno">   65</span>    <span class="comment">// 1. 머티리얼 얻기</span></div>
+<div class="line"><span class="lineno">   66</span>    UMaterialInterface* Material = <a class="code hl_variable" href="classAWeightSwitch.html#a564c3f6e4dbeebb734ce7e30ced14ff0">SwitchBody</a>-&gt;GetMaterial(0);</div>
+<div class="line"><span class="lineno">   67</span>    <span class="keywordflow">if</span> (!Material)</div>
+<div class="line"><span class="lineno">   68</span>    {</div>
+<div class="line"><span class="lineno">   69</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>( TEXT(<span class="stringliteral">&quot;Material is null&quot;</span>));</div>
+<div class="line"><span class="lineno">   70</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   71</span>    }</div>
+<div class="line"><span class="lineno">   72</span> </div>
+<div class="line"><span class="lineno">   73</span>    <span class="comment">// 2. 다이나믹 머티리얼 인스턴스 생성</span></div>
+<div class="line"><span class="lineno">   74</span>    UMaterialInstanceDynamic* DynMaterial = UMaterialInstanceDynamic::Create(Material, <span class="keyword">this</span>);</div>
+<div class="line"><span class="lineno">   75</span>    <span class="keywordflow">if</span> (!DynMaterial)</div>
+<div class="line"><span class="lineno">   76</span>    {</div>
+<div class="line"><span class="lineno">   77</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>( TEXT(<span class="stringliteral">&quot;Failed to create dynamic material&quot;</span>));</div>
+<div class="line"><span class="lineno">   78</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   79</span>    }</div>
+<div class="line"><span class="lineno">   80</span> </div>
+<div class="line"><span class="lineno">   81</span>    <span class="comment">// 3. 변수에 저장</span></div>
+<div class="line"><span class="lineno">   82</span>    <a class="code hl_variable" href="classAWeightSwitch.html#a029f7a65014d6bb13fae57fa0f2be334">EmissiveMaterial</a> = DynMaterial;</div>
+<div class="line"><span class="lineno">   83</span> </div>
+<div class="line"><span class="lineno">   84</span>    <span class="comment">// 4. 메시에 적용 (이 단계가 누락되어 있었음!)</span></div>
+<div class="line"><span class="lineno">   85</span>    <a class="code hl_variable" href="classAWeightSwitch.html#a564c3f6e4dbeebb734ce7e30ced14ff0">SwitchBody</a>-&gt;SetMaterial(0, <a class="code hl_variable" href="classAWeightSwitch.html#a029f7a65014d6bb13fae57fa0f2be334">EmissiveMaterial</a>);</div>
+<div class="line"><span class="lineno">   86</span> </div>
+<div class="line"><span class="lineno">   87</span>    <span class="comment">// 5. 파라미터 설정</span></div>
+<div class="line"><span class="lineno">   88</span>    <a class="code hl_variable" href="classAWeightSwitch.html#a029f7a65014d6bb13fae57fa0f2be334">EmissiveMaterial</a>-&gt;SetVectorParameterValue(<a class="code hl_variable" href="classAWeightSwitch.html#a4e2c535615ba6f62a28a9175031cc481">EmissiveParam</a>, <a class="code hl_variable" href="classAWeightSwitch.html#ab113b92b3916c0593281ffeecd10a73b">DeactivateColor</a>);</div>
+<div class="line"><span class="lineno">   89</span> </div>
+<div class="line"><span class="lineno">   90</span>    UAnimInstance* AnimInstance = <a class="code hl_variable" href="classAWeightSwitch.html#a564c3f6e4dbeebb734ce7e30ced14ff0">SwitchBody</a>-&gt;GetAnimInstance();</div>
+<div class="line"><span class="lineno">   91</span>    <span class="keywordflow">if</span> (!AnimInstance)</div>
+<div class="line"><span class="lineno">   92</span>    {</div>
+<div class="line"><span class="lineno">   93</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>( TEXT(<span class="stringliteral">&quot;AnimInstance is null&quot;</span>));</div>
+<div class="line"><span class="lineno">   94</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   95</span>    }</div>
+<div class="line"><span class="lineno">   96</span> </div>
+<div class="line"><span class="lineno">   97</span>    <span class="comment">// 7. 캐스팅 및 변수 설정</span></div>
+<div class="line"><span class="lineno">   98</span>    <a class="code hl_class" href="classUTweenAnimInstance.html">UTweenAnimInstance</a>* CubeButtonAnim = Cast&lt;UTweenAnimInstance&gt;(AnimInstance);</div>
+<div class="line"><span class="lineno">   99</span>    <span class="keywordflow">if</span> (CubeButtonAnim)</div>
+<div class="line"><span class="lineno">  100</span>    {</div>
+<div class="line"><span class="lineno">  101</span>        <a class="code hl_variable" href="classAWeightSwitch.html#aac61dda6cc3f61994e54f5569c27f6cf">AnimBlueprint</a> = CubeButtonAnim;</div>
+<div class="line"><span class="lineno">  102</span>    }</div>
+<div class="line"><span class="lineno">  103</span>    <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  104</span>    {</div>
+<div class="line"><span class="lineno">  105</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>( TEXT(<span class="stringliteral">&quot;Failed to cast to UABP_CubeButton&quot;</span>));</div>
+<div class="line"><span class="lineno">  106</span>    }</div>
+<div class="line"><span class="lineno">  107</span>}</div>
 <div class="ttc" id="aGameLogging_8h_html_a9998c8beb11a6bad6ffada2e701fc0cf"><div class="ttname"><a href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a></div><div class="ttdeci">#define PRINTLOG(fmt,...)</div><div class="ttdef"><b>Definition</b> <a href="GameLogging_8h_source.html#l00030">GameLogging.h:30</a></div></div>
 <div class="ttc" id="aclassAWeightSwitch_html_a029f7a65014d6bb13fae57fa0f2be334"><div class="ttname"><a href="classAWeightSwitch.html#a029f7a65014d6bb13fae57fa0f2be334">AWeightSwitch::EmissiveMaterial</a></div><div class="ttdeci">TObjectPtr&lt; class UMaterialInstanceDynamic &gt; EmissiveMaterial</div><div class="ttdef"><b>Definition</b> <a href="AWeightSwitch_8h_source.html#l00058">AWeightSwitch.h:58</a></div></div>
 <div class="ttc" id="aclassAWeightSwitch_html_a4e2c535615ba6f62a28a9175031cc481"><div class="ttname"><a href="classAWeightSwitch.html#a4e2c535615ba6f62a28a9175031cc481">AWeightSwitch::EmissiveParam</a></div><div class="ttdeci">FName EmissiveParam</div><div class="ttdef"><b>Definition</b> <a href="AWeightSwitch_8h_source.html#l00075">AWeightSwitch.h:75</a></div></div>
@@ -430,7 +430,7 @@ Private 속성</h2></td></tr>
 </div><!-- fragment -->
 <p class="reference">다음을 참조함 :  <a class="el" href="AWeightSwitch_8h_source.html#l00055">AnimBlueprint</a>, <a class="el" href="AWeightSwitch_8h_source.html#l00073">DeactivateColor</a>, <a class="el" href="AWeightSwitch_8h_source.html#l00058">EmissiveMaterial</a>, <a class="el" href="AWeightSwitch_8h_source.html#l00075">EmissiveParam</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>, <a class="el" href="AWeightSwitch_8h_source.html#l00049">SwitchBody</a>.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AWeightSwitch_8cpp_source.html#l00039">BeginPlay()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AWeightSwitch_8cpp_source.html#l00040">BeginPlay()</a>.</p>
 <div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-4-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-4-summary" class="dynsummary" style="display:block;">
@@ -457,7 +457,7 @@ Private 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AWeightSwitch_8cpp_source.html#l00108">SetActivate()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AWeightSwitch_8cpp_source.html#l00109">SetActivate()</a>.</p>
 <div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-5-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-5-summary" class="dynsummary" style="display:block;">
@@ -492,17 +492,17 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="AWeightSwitch_8cpp_source.html">AWeightSwitch.cpp</a> 파일의 <a class="el" href="AWeightSwitch_8cpp_source.html#l00135">135</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  136</span>{</div>
-<div class="line"><span class="lineno">  137</span>    <span class="keywordflow">if</span> ( State )</div>
-<div class="line"><span class="lineno">  138</span>    {</div>
-<div class="line"><span class="lineno">  139</span>        <a class="code hl_define" href="GameLogging_8h.html#ac50b407bb34c70a0be1fccc74730d143">PRINT_STRING</a>(TEXT(<span class="stringliteral">&quot;CLICK ON&quot;</span>));</div>
-<div class="line"><span class="lineno">  140</span>    }</div>
-<div class="line"><span class="lineno">  141</span>    <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  142</span>    {</div>
-<div class="line"><span class="lineno">  143</span>        <a class="code hl_define" href="GameLogging_8h.html#ac50b407bb34c70a0be1fccc74730d143">PRINT_STRING</a>(TEXT(<span class="stringliteral">&quot;CLICK OFF&quot;</span>));</div>
-<div class="line"><span class="lineno">  144</span>    }   </div>
-<div class="line"><span class="lineno">  145</span>}</div>
+<p class="definition"><a class="el" href="AWeightSwitch_8cpp_source.html">AWeightSwitch.cpp</a> 파일의 <a class="el" href="AWeightSwitch_8cpp_source.html#l00136">136</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  137</span>{</div>
+<div class="line"><span class="lineno">  138</span>    <span class="keywordflow">if</span> ( State )</div>
+<div class="line"><span class="lineno">  139</span>    {</div>
+<div class="line"><span class="lineno">  140</span>        <a class="code hl_define" href="GameLogging_8h.html#ac50b407bb34c70a0be1fccc74730d143">PRINT_STRING</a>(TEXT(<span class="stringliteral">&quot;CLICK ON&quot;</span>));</div>
+<div class="line"><span class="lineno">  141</span>    }</div>
+<div class="line"><span class="lineno">  142</span>    <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  143</span>    {</div>
+<div class="line"><span class="lineno">  144</span>        <a class="code hl_define" href="GameLogging_8h.html#ac50b407bb34c70a0be1fccc74730d143">PRINT_STRING</a>(TEXT(<span class="stringliteral">&quot;CLICK OFF&quot;</span>));</div>
+<div class="line"><span class="lineno">  145</span>    }   </div>
+<div class="line"><span class="lineno">  146</span>}</div>
 <div class="ttc" id="aGameLogging_8h_html_ac50b407bb34c70a0be1fccc74730d143"><div class="ttname"><a href="GameLogging_8h.html#ac50b407bb34c70a0be1fccc74730d143">PRINT_STRING</a></div><div class="ttdeci">#define PRINT_STRING(fmt,...)</div><div class="ttdef"><b>Definition</b> <a href="GameLogging_8h_source.html#l00045">GameLogging.h:45</a></div></div>
 </div><!-- fragment -->
 <p class="reference">다음을 참조함 :  <a class="el" href="GameLogging_8h_source.html#l00045">PRINT_STRING</a>.</p>
@@ -567,102 +567,105 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="AWeightSwitch_8cpp_source.html">AWeightSwitch.cpp</a> 파일의 <a class="el" href="AWeightSwitch_8cpp_source.html#l00176">176</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  179</span>{</div>
-<div class="line"><span class="lineno">  180</span>    <span class="keywordflow">if</span> (!OtherActor)</div>
-<div class="line"><span class="lineno">  181</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  182</span>    </div>
-<div class="line"><span class="lineno">  183</span>    <span class="comment">// 조건 1 : 플레이어일 경우 오픈</span></div>
-<div class="line"><span class="lineno">  184</span>    <span class="keywordflow">if</span> ( <a class="code hl_variable" href="classAWeightSwitch.html#a0a1e788fd8694b27ba71fd6e79f4a85b">IsPlayerDetect</a> )</div>
-<div class="line"><span class="lineno">  185</span>    {</div>
-<div class="line"><span class="lineno">  186</span>        <span class="keywordflow">if</span> (Cast&lt;APlayerActor&gt;(OtherActor))</div>
-<div class="line"><span class="lineno">  187</span>        {</div>
-<div class="line"><span class="lineno">  188</span>            <span class="comment">// 리스트에 추가 (중복 방지)</span></div>
-<div class="line"><span class="lineno">  189</span>            <a class="code hl_variable" href="classAWeightSwitch.html#a2079b69b39be9a7ce5b48f7f7df3964a">OverlappingActors</a>.AddUnique(OtherActor);</div>
-<div class="line"><span class="lineno">  190</span> </div>
-<div class="line"><span class="lineno">  191</span>            <span class="comment">// 첫 번째 물체가 올라갔을 때만 타이머 시작</span></div>
-<div class="line"><span class="lineno">  192</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAWeightSwitch.html#a2079b69b39be9a7ce5b48f7f7df3964a">OverlappingActors</a>.Num() == 1)</div>
-<div class="line"><span class="lineno">  193</span>            {</div>
-<div class="line"><span class="lineno">  194</span>                this-&gt;<a class="code hl_variable" href="classAWeightSwitch.html#ae9663983eb123ff86c5252299b5fe533">DetectTarget</a> = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  195</span>                this-&gt;<a class="code hl_variable" href="classAWeightSwitch.html#ad8e727ab9bba460a7c56d5ea281686c0">ElapsedTime</a> = 0.0;</div>
-<div class="line"><span class="lineno">  196</span>            }</div>
-<div class="line"><span class="lineno">  197</span>        }</div>
-<div class="line"><span class="lineno">  198</span>    }</div>
-<div class="line"><span class="lineno">  199</span> </div>
-<div class="line"><span class="lineno">  200</span>    <span class="comment">// 조건 2 : 정답 캐리어일 경우 오픈</span></div>
-<div class="line"><span class="lineno">  201</span>    <span class="keywordflow">if</span> (<a class="code hl_class" href="classAluggage.html">Aluggage</a>* Luggage = Cast&lt;Aluggage&gt;(OtherActor))</div>
-<div class="line"><span class="lineno">  202</span>    {</div>
-<div class="line"><span class="lineno">  203</span>        <a class="code hl_class" href="classALingoGameState.html">ALingoGameState</a>* GS = Cast&lt;ALingoGameState&gt;(GetWorld()-&gt;GetGameState());</div>
-<div class="line"><span class="lineno">  204</span>        <span class="keywordflow">if</span> (GS)</div>
-<div class="line"><span class="lineno">  205</span>        {</div>
-<div class="line"><span class="lineno">  206</span>            <span class="keyword">const</span> int32 CorrectIdx = GS-&gt;<a class="code hl_function" href="classALingoGameState.html#a783187f9c820272a7ea16cc90bb02cc4">GetScenarioData</a>().<a class="code hl_variable" href="structFResponseScenario.html#a5be05dc8bec820793666723afad3fc87">correct_answer_index</a>;</div>
-<div class="line"><span class="lineno">  207</span>            </div>
-<div class="line"><span class="lineno">  208</span>            <span class="keywordflow">if</span> (CorrectIdx == Luggage-&gt;GetSpawnIdx())</div>
-<div class="line"><span class="lineno">  209</span>            {</div>
-<div class="line"><span class="lineno">  210</span>                <span class="comment">// 리스트에 추가 (중복 방지)</span></div>
-<div class="line"><span class="lineno">  211</span>                <a class="code hl_variable" href="classAWeightSwitch.html#a2079b69b39be9a7ce5b48f7f7df3964a">OverlappingActors</a>.AddUnique(OtherActor);</div>
-<div class="line"><span class="lineno">  212</span> </div>
-<div class="line"><span class="lineno">  213</span>                <span class="comment">// 첫 번째 물체가 올라갔을 때만 타이머 시작</span></div>
-<div class="line"><span class="lineno">  214</span>                <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAWeightSwitch.html#a2079b69b39be9a7ce5b48f7f7df3964a">OverlappingActors</a>.Num() == 1)</div>
-<div class="line"><span class="lineno">  215</span>                {</div>
-<div class="line"><span class="lineno">  216</span>                    this-&gt;<a class="code hl_variable" href="classAWeightSwitch.html#ae9663983eb123ff86c5252299b5fe533">DetectTarget</a> = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  217</span>                    this-&gt;<a class="code hl_variable" href="classAWeightSwitch.html#ad8e727ab9bba460a7c56d5ea281686c0">ElapsedTime</a> = 0.0;</div>
-<div class="line"><span class="lineno">  218</span>                }</div>
-<div class="line"><span class="lineno">  219</span> </div>
-<div class="line"><span class="lineno">  220</span>                <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAWeightSwitch.html#ab519ea888b0690295485652b2e1d2686">AnswerFound</a>) <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  221</span>                </div>
-<div class="line"><span class="lineno">  222</span>                <span class="comment">// 이벤트 : 임시로 ShowMessageBox를 이용. 스테이지1 성공!!! 메세지를 보여주세요</span></div>
-<div class="line"><span class="lineno">  223</span>                FTimerHandle TimerHandle;</div>
-<div class="line"><span class="lineno">  224</span>                GetWorldTimerManager().SetTimer(TimerHandle, [<span class="keyword">this</span>, GS]</div>
-<div class="line"><span class="lineno">  225</span>                {</div>
-<div class="line"><span class="lineno">  226</span>                    <span class="keywordflow">if</span> (<a class="code hl_class" href="classUPopupManager.html">UPopupManager</a>* PopupMgr = UPopupManager::Get(GetWorld()))</div>
-<div class="line"><span class="lineno">  227</span>                    {</div>
-<div class="line"><span class="lineno">  228</span>                        PopupMgr-&gt;ShowMsgBoxSimple(TEXT(<span class="stringliteral">&quot;스테이지1 성공!!!&quot;</span>), TEXT(<span class="stringliteral">&quot;스테이지1을 완료했습니다 부엉부엉&quot;</span>),</div>
-<div class="line"><span class="lineno">  229</span>                            <a class="code hl_enumvalue" href="UPopup__MsgBox_8h.html#a19e1d6071fbd1a8d0f3a0ac7c630df51ae0aa021e21dddbd6d8cecec71e9cf564">EMsgBoxType::OK</a>);</div>
-<div class="line"><span class="lineno">  230</span>                    }</div>
-<div class="line"><span class="lineno">  231</span> </div>
-<div class="line"><span class="lineno">  232</span>                    <a class="code hl_variable" href="classAWeightSwitch.html#ab519ea888b0690295485652b2e1d2686">AnswerFound</a> = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  233</span> </div>
-<div class="line"><span class="lineno">  234</span>                    <span class="comment">// 오답 캐리어 로그 ====================================================//</span></div>
-<div class="line"><span class="lineno">  235</span>                    TArray&lt;int32&gt; WrongList = GS-&gt;<a class="code hl_variable" href="classALingoGameState.html#a17e93c1837d6f33a5a3717689177d952">WrongLuggageList</a>;</div>
-<div class="line"><span class="lineno">  236</span>                    <span class="keywordflow">if</span> (WrongList.Num() == 0) <span class="keywordflow">return</span>;</div>
+<p class="definition"><a class="el" href="AWeightSwitch_8cpp_source.html">AWeightSwitch.cpp</a> 파일의 <a class="el" href="AWeightSwitch_8cpp_source.html#l00177">177</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  180</span>{</div>
+<div class="line"><span class="lineno">  181</span>    <span class="keywordflow">if</span> (!OtherActor)</div>
+<div class="line"><span class="lineno">  182</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  183</span>    </div>
+<div class="line"><span class="lineno">  184</span>    <span class="comment">// 조건 1 : 플레이어일 경우 오픈</span></div>
+<div class="line"><span class="lineno">  185</span>    <span class="keywordflow">if</span> ( <a class="code hl_variable" href="classAWeightSwitch.html#a0a1e788fd8694b27ba71fd6e79f4a85b">IsPlayerDetect</a> )</div>
+<div class="line"><span class="lineno">  186</span>    {</div>
+<div class="line"><span class="lineno">  187</span>        <span class="keywordflow">if</span> (Cast&lt;APlayerActor&gt;(OtherActor))</div>
+<div class="line"><span class="lineno">  188</span>        {</div>
+<div class="line"><span class="lineno">  189</span>            <span class="comment">// 리스트에 추가 (중복 방지)</span></div>
+<div class="line"><span class="lineno">  190</span>            <a class="code hl_variable" href="classAWeightSwitch.html#a2079b69b39be9a7ce5b48f7f7df3964a">OverlappingActors</a>.AddUnique(OtherActor);</div>
+<div class="line"><span class="lineno">  191</span> </div>
+<div class="line"><span class="lineno">  192</span>            <span class="comment">// 첫 번째 물체가 올라갔을 때만 타이머 시작</span></div>
+<div class="line"><span class="lineno">  193</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAWeightSwitch.html#a2079b69b39be9a7ce5b48f7f7df3964a">OverlappingActors</a>.Num() == 1)</div>
+<div class="line"><span class="lineno">  194</span>            {</div>
+<div class="line"><span class="lineno">  195</span>                this-&gt;<a class="code hl_variable" href="classAWeightSwitch.html#ae9663983eb123ff86c5252299b5fe533">DetectTarget</a> = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  196</span>                this-&gt;<a class="code hl_variable" href="classAWeightSwitch.html#ad8e727ab9bba460a7c56d5ea281686c0">ElapsedTime</a> = 0.0;</div>
+<div class="line"><span class="lineno">  197</span>            }</div>
+<div class="line"><span class="lineno">  198</span>        }</div>
+<div class="line"><span class="lineno">  199</span>    }</div>
+<div class="line"><span class="lineno">  200</span> </div>
+<div class="line"><span class="lineno">  201</span>    <span class="comment">// 조건 2 : 정답 캐리어일 경우 오픈</span></div>
+<div class="line"><span class="lineno">  202</span>    <span class="keywordflow">if</span> (<a class="code hl_class" href="classAluggage.html">Aluggage</a>* Luggage = Cast&lt;Aluggage&gt;(OtherActor))</div>
+<div class="line"><span class="lineno">  203</span>    {</div>
+<div class="line"><span class="lineno">  204</span>        <a class="code hl_class" href="classALingoGameState.html">ALingoGameState</a>* GS = Cast&lt;ALingoGameState&gt;(GetWorld()-&gt;GetGameState());</div>
+<div class="line"><span class="lineno">  205</span>        <span class="keywordflow">if</span> (GS)</div>
+<div class="line"><span class="lineno">  206</span>        {</div>
+<div class="line"><span class="lineno">  207</span>            <span class="keyword">const</span> int32 CorrectIdx = GS-&gt;<a class="code hl_function" href="classALingoGameState.html#a783187f9c820272a7ea16cc90bb02cc4">GetScenarioData</a>().<a class="code hl_variable" href="structFResponseScenario.html#a5be05dc8bec820793666723afad3fc87">correct_answer_index</a>;</div>
+<div class="line"><span class="lineno">  208</span>            </div>
+<div class="line"><span class="lineno">  209</span>            <span class="keywordflow">if</span> (CorrectIdx == Luggage-&gt;GetSpawnIdx())</div>
+<div class="line"><span class="lineno">  210</span>            {</div>
+<div class="line"><span class="lineno">  211</span>                <span class="comment">// 리스트에 추가 (중복 방지)</span></div>
+<div class="line"><span class="lineno">  212</span>                <a class="code hl_variable" href="classAWeightSwitch.html#a2079b69b39be9a7ce5b48f7f7df3964a">OverlappingActors</a>.AddUnique(OtherActor);</div>
+<div class="line"><span class="lineno">  213</span> </div>
+<div class="line"><span class="lineno">  214</span>                <span class="comment">// 첫 번째 물체가 올라갔을 때만 타이머 시작</span></div>
+<div class="line"><span class="lineno">  215</span>                <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAWeightSwitch.html#a2079b69b39be9a7ce5b48f7f7df3964a">OverlappingActors</a>.Num() == 1)</div>
+<div class="line"><span class="lineno">  216</span>                {</div>
+<div class="line"><span class="lineno">  217</span>                    this-&gt;<a class="code hl_variable" href="classAWeightSwitch.html#ae9663983eb123ff86c5252299b5fe533">DetectTarget</a> = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  218</span>                    this-&gt;<a class="code hl_variable" href="classAWeightSwitch.html#ad8e727ab9bba460a7c56d5ea281686c0">ElapsedTime</a> = 0.0;</div>
+<div class="line"><span class="lineno">  219</span>                }</div>
+<div class="line"><span class="lineno">  220</span> </div>
+<div class="line"><span class="lineno">  221</span>                <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAWeightSwitch.html#ab519ea888b0690295485652b2e1d2686">AnswerFound</a>) <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  222</span>                </div>
+<div class="line"><span class="lineno">  223</span>                <span class="comment">// 스테이지1 성공! 결과 화면</span></div>
+<div class="line"><span class="lineno">  224</span>                FTimerHandle TimerHandle;</div>
+<div class="line"><span class="lineno">  225</span>                GetWorldTimerManager().SetTimer(TimerHandle, [<span class="keyword">this</span>, GS]</div>
+<div class="line"><span class="lineno">  226</span>                {</div>
+<div class="line"><span class="lineno">  227</span>                    <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> PopupMgr = UPopupManager::Get(GetWorld()))</div>
+<div class="line"><span class="lineno">  228</span>                    {</div>
+<div class="line"><span class="lineno">  229</span>                        <span class="keyword">const</span> <span class="keyword">auto</span> ResultWidget = Cast&lt;UPopup_Result&gt;(PopupMgr-&gt;ShowPopup(EPopupType::Result));</div>
+<div class="line"><span class="lineno">  230</span>                        <span class="keywordflow">if</span> (!ResultWidget)</div>
+<div class="line"><span class="lineno">  231</span>                        {</div>
+<div class="line"><span class="lineno">  232</span>                            UE_LOG(LogTemp, Warning, TEXT(<span class="stringliteral">&quot;No Result Widget Found&quot;</span>));</div>
+<div class="line"><span class="lineno">  233</span>                        }</div>
+<div class="line"><span class="lineno">  234</span>                    }</div>
+<div class="line"><span class="lineno">  235</span> </div>
+<div class="line"><span class="lineno">  236</span>                    <a class="code hl_variable" href="classAWeightSwitch.html#ab519ea888b0690295485652b2e1d2686">AnswerFound</a> = <span class="keyword">true</span>;</div>
 <div class="line"><span class="lineno">  237</span> </div>
-<div class="line"><span class="lineno">  238</span>                    UE_LOG(LogTemp, Warning, TEXT(<span class="stringliteral">&quot;[AWeightSwitch] Wrong luggage :&quot;</span>));</div>
-<div class="line"><span class="lineno">  239</span>                    <span class="keywordflow">for</span> (<span class="keyword">auto</span> Wrong : WrongList)</div>
-<div class="line"><span class="lineno">  240</span>                    {</div>
-<div class="line"><span class="lineno">  241</span>                        UE_LOG(LogTemp, Warning, TEXT(<span class="stringliteral">&quot;%d, &quot;</span>), Wrong);</div>
-<div class="line"><span class="lineno">  242</span>                    }</div>
-<div class="line"><span class="lineno">  243</span>                    <span class="comment">// ===================================================================//</span></div>
-<div class="line"><span class="lineno">  244</span>                    </div>
-<div class="line"><span class="lineno">  245</span>                }, 0.5f, <span class="keyword">false</span>);</div>
-<div class="line"><span class="lineno">  246</span>            }</div>
-<div class="line"><span class="lineno">  247</span>            <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  248</span>            {</div>
-<div class="line"><span class="lineno">  249</span>                <span class="comment">// 이벤트 : False 일때는 ShowMessageBox이용해서 오답! 메세지를 보여주세요</span></div>
-<div class="line"><span class="lineno">  250</span>                <span class="comment">// 현재 선택한 정보는 @@, @@ 입니다. 오답</span></div>
-<div class="line"><span class="lineno">  251</span>                FTimerHandle TimerHandle;</div>
-<div class="line"><span class="lineno">  252</span>                GetWorldTimerManager().SetTimer(TimerHandle, [<span class="keyword">this</span>, Luggage, GS]</div>
-<div class="line"><span class="lineno">  253</span>                {</div>
-<div class="line"><span class="lineno">  254</span>                    <span class="keywordflow">if</span> (<a class="code hl_class" href="classUPopupManager.html">UPopupManager</a>* PopupMgr = UPopupManager::Get(GetWorld()))</div>
-<div class="line"><span class="lineno">  255</span>                    {</div>
-<div class="line"><span class="lineno">  256</span>                        FString Description = FString::Printf(TEXT(<span class="stringliteral">&quot;현재 선택한 정보는 %s, %s 입니다. 오답!\n다시 생각해보세요 부엉부엉&quot;</span>),</div>
-<div class="line"><span class="lineno">  257</span>                            *Luggage-&gt;GetColor(), *Luggage-&gt;GetPattern());</div>
-<div class="line"><span class="lineno">  258</span>                    </div>
-<div class="line"><span class="lineno">  259</span>                        PopupMgr-&gt;ShowMsgBoxSimple(TEXT(<span class="stringliteral">&quot;오답!&quot;</span>), Description, <a class="code hl_enumvalue" href="UPopup__MsgBox_8h.html#a19e1d6071fbd1a8d0f3a0ac7c630df51ae0aa021e21dddbd6d8cecec71e9cf564">EMsgBoxType::OK</a>);</div>
-<div class="line"><span class="lineno">  260</span>                    }</div>
-<div class="line"><span class="lineno">  261</span> </div>
-<div class="line"><span class="lineno">  262</span>                    <span class="comment">// 오답 목록에 인덱스 추가</span></div>
-<div class="line"><span class="lineno">  263</span>                    GS-&gt;<a class="code hl_variable" href="classALingoGameState.html#a17e93c1837d6f33a5a3717689177d952">WrongLuggageList</a>.Add(Luggage-&gt;GetSpawnIdx());</div>
-<div class="line"><span class="lineno">  264</span> </div>
-<div class="line"><span class="lineno">  265</span>                    <span class="comment">// 큐브 소거</span></div>
-<div class="line"><span class="lineno">  266</span>                    Luggage-&gt;Destroy();</div>
-<div class="line"><span class="lineno">  267</span>                    </div>
-<div class="line"><span class="lineno">  268</span>                }, 0.5f, <span class="keyword">false</span>);</div>
-<div class="line"><span class="lineno">  269</span>            }</div>
-<div class="line"><span class="lineno">  270</span>            </div>
-<div class="line"><span class="lineno">  271</span>        }</div>
-<div class="line"><span class="lineno">  272</span>    }</div>
-<div class="line"><span class="lineno">  273</span>}</div>
+<div class="line"><span class="lineno">  238</span>                    <span class="comment">// 오답 캐리어 로그 ====================================================//</span></div>
+<div class="line"><span class="lineno">  239</span>                    TArray&lt;int32&gt; WrongList = GS-&gt;<a class="code hl_variable" href="classALingoGameState.html#a17e93c1837d6f33a5a3717689177d952">WrongLuggageList</a>;</div>
+<div class="line"><span class="lineno">  240</span>                    <span class="keywordflow">if</span> (WrongList.Num() == 0) <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  241</span> </div>
+<div class="line"><span class="lineno">  242</span>                    UE_LOG(LogTemp, Warning, TEXT(<span class="stringliteral">&quot;[AWeightSwitch] Wrong luggage :&quot;</span>));</div>
+<div class="line"><span class="lineno">  243</span>                    <span class="keywordflow">for</span> (<span class="keyword">auto</span> Wrong : WrongList)</div>
+<div class="line"><span class="lineno">  244</span>                    {</div>
+<div class="line"><span class="lineno">  245</span>                        UE_LOG(LogTemp, Warning, TEXT(<span class="stringliteral">&quot;%d, &quot;</span>), Wrong);</div>
+<div class="line"><span class="lineno">  246</span>                    }</div>
+<div class="line"><span class="lineno">  247</span>                    <span class="comment">// ===================================================================//</span></div>
+<div class="line"><span class="lineno">  248</span>                    </div>
+<div class="line"><span class="lineno">  249</span>                }, 0.5f, <span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">  250</span>            }</div>
+<div class="line"><span class="lineno">  251</span>            <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  252</span>            {</div>
+<div class="line"><span class="lineno">  253</span>                <span class="comment">// 이벤트 : False 일때는 ShowMessageBox이용해서 오답! 메세지를 보여주세요</span></div>
+<div class="line"><span class="lineno">  254</span>                <span class="comment">// 현재 선택한 정보는 @@, @@ 입니다. 오답</span></div>
+<div class="line"><span class="lineno">  255</span>                FTimerHandle TimerHandle;</div>
+<div class="line"><span class="lineno">  256</span>                GetWorldTimerManager().SetTimer(TimerHandle, [<span class="keyword">this</span>, Luggage, GS]</div>
+<div class="line"><span class="lineno">  257</span>                {</div>
+<div class="line"><span class="lineno">  258</span>                    <span class="keywordflow">if</span> (<a class="code hl_class" href="classUPopupManager.html">UPopupManager</a>* PopupMgr = UPopupManager::Get(GetWorld()))</div>
+<div class="line"><span class="lineno">  259</span>                    {</div>
+<div class="line"><span class="lineno">  260</span>                        FString Description = FString::Printf(TEXT(<span class="stringliteral">&quot;현재 선택한 정보는 %s, %s 입니다. 오답!\n다시 생각해보세요 부엉부엉&quot;</span>),</div>
+<div class="line"><span class="lineno">  261</span>                            *Luggage-&gt;GetColor(), *Luggage-&gt;GetPattern());</div>
+<div class="line"><span class="lineno">  262</span>                    </div>
+<div class="line"><span class="lineno">  263</span>                        PopupMgr-&gt;ShowMsgBoxSimple(TEXT(<span class="stringliteral">&quot;오답!&quot;</span>), Description, <a class="code hl_enumvalue" href="UPopup__MsgBox_8h.html#a19e1d6071fbd1a8d0f3a0ac7c630df51ae0aa021e21dddbd6d8cecec71e9cf564">EMsgBoxType::OK</a>);</div>
+<div class="line"><span class="lineno">  264</span>                    }</div>
+<div class="line"><span class="lineno">  265</span> </div>
+<div class="line"><span class="lineno">  266</span>                    <span class="comment">// 오답 목록에 인덱스 추가</span></div>
+<div class="line"><span class="lineno">  267</span>                    GS-&gt;<a class="code hl_variable" href="classALingoGameState.html#a17e93c1837d6f33a5a3717689177d952">WrongLuggageList</a>.Add(Luggage-&gt;GetSpawnIdx());</div>
+<div class="line"><span class="lineno">  268</span> </div>
+<div class="line"><span class="lineno">  269</span>                    <span class="comment">// 큐브 소거</span></div>
+<div class="line"><span class="lineno">  270</span>                    Luggage-&gt;Destroy();</div>
+<div class="line"><span class="lineno">  271</span>                    </div>
+<div class="line"><span class="lineno">  272</span>                }, 0.5f, <span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">  273</span>            }</div>
+<div class="line"><span class="lineno">  274</span>            </div>
+<div class="line"><span class="lineno">  275</span>        }</div>
+<div class="line"><span class="lineno">  276</span>    }</div>
+<div class="line"><span class="lineno">  277</span>}</div>
 <div class="ttc" id="aUPopup__MsgBox_8h_html_a19e1d6071fbd1a8d0f3a0ac7c630df51ae0aa021e21dddbd6d8cecec71e9cf564"><div class="ttname"><a href="UPopup__MsgBox_8h.html#a19e1d6071fbd1a8d0f3a0ac7c630df51ae0aa021e21dddbd6d8cecec71e9cf564">EMsgBoxType::OK</a></div><div class="ttdeci">@ OK</div></div>
 <div class="ttc" id="aclassALingoGameState_html"><div class="ttname"><a href="classALingoGameState.html">ALingoGameState</a></div><div class="ttdef"><b>Definition</b> <a href="ALingoGameState_8h_source.html#l00026">ALingoGameState.h:27</a></div></div>
 <div class="ttc" id="aclassALingoGameState_html_a17e93c1837d6f33a5a3717689177d952"><div class="ttname"><a href="classALingoGameState.html#a17e93c1837d6f33a5a3717689177d952">ALingoGameState::WrongLuggageList</a></div><div class="ttdeci">TArray&lt; int32 &gt; WrongLuggageList</div><div class="ttdoc">오답 캐리어 목록</div><div class="ttdef"><b>Definition</b> <a href="ALingoGameState_8h_source.html#l00115">ALingoGameState.h:115</a></div></div>
@@ -676,7 +679,7 @@ Private 속성</h2></td></tr>
 </div><!-- fragment -->
 <p class="reference">다음을 참조함 :  <a class="el" href="AWeightSwitch_8h_source.html#l00086">AnswerFound</a>, <a class="el" href="NetworkData_8h_source.html#l00502">FResponseScenario::correct_answer_index</a>, <a class="el" href="AWeightSwitch_8h_source.html#l00083">DetectTarget</a>, <a class="el" href="AWeightSwitch_8h_source.html#l00082">ElapsedTime</a>, <a class="el" href="ALingoGameState_8h_source.html#l00070">ALingoGameState::GetScenarioData()</a>, <a class="el" href="AWeightSwitch_8h_source.html#l00078">IsPlayerDetect</a>, <a class="el" href="UPopup__MsgBox_8h.html#a19e1d6071fbd1a8d0f3a0ac7c630df51ae0aa021e21dddbd6d8cecec71e9cf564">OK</a>, <a class="el" href="AWeightSwitch_8h_source.html#l00061">OverlappingActors</a>, <a class="el" href="ALingoGameState_8h_source.html#l00115">ALingoGameState::WrongLuggageList</a>.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AWeightSwitch_8cpp_source.html#l00039">BeginPlay()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AWeightSwitch_8cpp_source.html#l00040">BeginPlay()</a>.</p>
 <div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-6-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-6-summary" class="dynsummary" style="display:block;">
@@ -740,29 +743,29 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="AWeightSwitch_8cpp_source.html">AWeightSwitch.cpp</a> 파일의 <a class="el" href="AWeightSwitch_8cpp_source.html#l00275">275</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  278</span>{</div>
-<div class="line"><span class="lineno">  279</span>    <span class="keywordflow">if</span> (!OtherActor)</div>
-<div class="line"><span class="lineno">  280</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  281</span> </div>
-<div class="line"><span class="lineno">  282</span>    <span class="comment">// 리스트에서 제거</span></div>
-<div class="line"><span class="lineno">  283</span>    <a class="code hl_variable" href="classAWeightSwitch.html#a2079b69b39be9a7ce5b48f7f7df3964a">OverlappingActors</a>.Remove(OtherActor);</div>
-<div class="line"><span class="lineno">  284</span> </div>
-<div class="line"><span class="lineno">  285</span>    <span class="comment">// 모든 물체가 내려갔을 때만 비활성화</span></div>
-<div class="line"><span class="lineno">  286</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAWeightSwitch.html#a2079b69b39be9a7ce5b48f7f7df3964a">OverlappingActors</a>.Num() == 0)</div>
-<div class="line"><span class="lineno">  287</span>    {</div>
-<div class="line"><span class="lineno">  288</span>        this-&gt;<a class="code hl_variable" href="classAWeightSwitch.html#ae9663983eb123ff86c5252299b5fe533">DetectTarget</a> = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  289</span>        this-&gt;<a class="code hl_variable" href="classAWeightSwitch.html#ad8e727ab9bba460a7c56d5ea281686c0">ElapsedTime</a> = 0.0;</div>
-<div class="line"><span class="lineno">  290</span> </div>
-<div class="line"><span class="lineno">  291</span>        <span class="comment">// 물건이 모두 떨어지면 해제</span></div>
-<div class="line"><span class="lineno">  292</span>        UBroadcastManager::Get(GetWorld())-&gt;SendWeightSwitch(<a class="code hl_variable" href="classAWeightSwitch.html#af8f4523824757b7861cea5e3095f6935">ButtonIndex</a>, <span class="keyword">false</span>);</div>
-<div class="line"><span class="lineno">  293</span>    }</div>
-<div class="line"><span class="lineno">  294</span>}</div>
+<p class="definition"><a class="el" href="AWeightSwitch_8cpp_source.html">AWeightSwitch.cpp</a> 파일의 <a class="el" href="AWeightSwitch_8cpp_source.html#l00279">279</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  282</span>{</div>
+<div class="line"><span class="lineno">  283</span>    <span class="keywordflow">if</span> (!OtherActor)</div>
+<div class="line"><span class="lineno">  284</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  285</span> </div>
+<div class="line"><span class="lineno">  286</span>    <span class="comment">// 리스트에서 제거</span></div>
+<div class="line"><span class="lineno">  287</span>    <a class="code hl_variable" href="classAWeightSwitch.html#a2079b69b39be9a7ce5b48f7f7df3964a">OverlappingActors</a>.Remove(OtherActor);</div>
+<div class="line"><span class="lineno">  288</span> </div>
+<div class="line"><span class="lineno">  289</span>    <span class="comment">// 모든 물체가 내려갔을 때만 비활성화</span></div>
+<div class="line"><span class="lineno">  290</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAWeightSwitch.html#a2079b69b39be9a7ce5b48f7f7df3964a">OverlappingActors</a>.Num() == 0)</div>
+<div class="line"><span class="lineno">  291</span>    {</div>
+<div class="line"><span class="lineno">  292</span>        this-&gt;<a class="code hl_variable" href="classAWeightSwitch.html#ae9663983eb123ff86c5252299b5fe533">DetectTarget</a> = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  293</span>        this-&gt;<a class="code hl_variable" href="classAWeightSwitch.html#ad8e727ab9bba460a7c56d5ea281686c0">ElapsedTime</a> = 0.0;</div>
+<div class="line"><span class="lineno">  294</span> </div>
+<div class="line"><span class="lineno">  295</span>        <span class="comment">// 물건이 모두 떨어지면 해제</span></div>
+<div class="line"><span class="lineno">  296</span>        UBroadcastManager::Get(GetWorld())-&gt;SendWeightSwitch(<a class="code hl_variable" href="classAWeightSwitch.html#af8f4523824757b7861cea5e3095f6935">ButtonIndex</a>, <span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">  297</span>    }</div>
+<div class="line"><span class="lineno">  298</span>}</div>
 <div class="ttc" id="aclassAWeightSwitch_html_af8f4523824757b7861cea5e3095f6935"><div class="ttname"><a href="classAWeightSwitch.html#af8f4523824757b7861cea5e3095f6935">AWeightSwitch::ButtonIndex</a></div><div class="ttdeci">int ButtonIndex</div><div class="ttdef"><b>Definition</b> <a href="AWeightSwitch_8h_source.html#l00064">AWeightSwitch.h:64</a></div></div>
 </div><!-- fragment -->
 <p class="reference">다음을 참조함 :  <a class="el" href="AWeightSwitch_8h_source.html#l00064">ButtonIndex</a>, <a class="el" href="AWeightSwitch_8h_source.html#l00083">DetectTarget</a>, <a class="el" href="AWeightSwitch_8h_source.html#l00082">ElapsedTime</a>, <a class="el" href="AWeightSwitch_8h_source.html#l00061">OverlappingActors</a>.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AWeightSwitch_8cpp_source.html#l00039">BeginPlay()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AWeightSwitch_8cpp_source.html#l00040">BeginPlay()</a>.</p>
 <div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-8-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-8-summary" class="dynsummary" style="display:block;">
@@ -807,23 +810,23 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="AWeightSwitch_8cpp_source.html">AWeightSwitch.cpp</a> 파일의 <a class="el" href="AWeightSwitch_8cpp_source.html#l00297">297</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  298</span>{</div>
-<div class="line"><span class="lineno">  299</span>    <span class="keywordflow">if</span> ( InButtonIndex != <a class="code hl_variable" href="classAWeightSwitch.html#af8f4523824757b7861cea5e3095f6935">ButtonIndex</a>)</div>
-<div class="line"><span class="lineno">  300</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  301</span> </div>
-<div class="line"><span class="lineno">  302</span>    <span class="keywordflow">if</span> (this-&gt;<a class="code hl_variable" href="classAWeightSwitch.html#a4b828eef7cc6456e5e5833c6d94c79a0">bActivateState</a> == InActive)</div>
-<div class="line"><span class="lineno">  303</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  304</span> </div>
-<div class="line"><span class="lineno">  305</span>    this-&gt;<a class="code hl_variable" href="classAWeightSwitch.html#a4b828eef7cc6456e5e5833c6d94c79a0">bActivateState</a> = InActive;</div>
-<div class="line"><span class="lineno">  306</span> </div>
-<div class="line"><span class="lineno">  307</span>    <a class="code hl_function" href="classAWeightSwitch.html#a2401f0f65a4294c724c6885f07b8b550">SetActivate</a>(<a class="code hl_variable" href="classAWeightSwitch.html#a4b828eef7cc6456e5e5833c6d94c79a0">bActivateState</a>);</div>
-<div class="line"><span class="lineno">  308</span>}</div>
-<div class="ttc" id="aclassAWeightSwitch_html_a2401f0f65a4294c724c6885f07b8b550"><div class="ttname"><a href="classAWeightSwitch.html#a2401f0f65a4294c724c6885f07b8b550">AWeightSwitch::SetActivate</a></div><div class="ttdeci">void SetActivate(bool State)</div><div class="ttdef"><b>Definition</b> <a href="AWeightSwitch_8cpp_source.html#l00108">AWeightSwitch.cpp:108</a></div></div>
+<p class="definition"><a class="el" href="AWeightSwitch_8cpp_source.html">AWeightSwitch.cpp</a> 파일의 <a class="el" href="AWeightSwitch_8cpp_source.html#l00301">301</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  302</span>{</div>
+<div class="line"><span class="lineno">  303</span>    <span class="keywordflow">if</span> ( InButtonIndex != <a class="code hl_variable" href="classAWeightSwitch.html#af8f4523824757b7861cea5e3095f6935">ButtonIndex</a>)</div>
+<div class="line"><span class="lineno">  304</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  305</span> </div>
+<div class="line"><span class="lineno">  306</span>    <span class="keywordflow">if</span> (this-&gt;<a class="code hl_variable" href="classAWeightSwitch.html#a4b828eef7cc6456e5e5833c6d94c79a0">bActivateState</a> == InActive)</div>
+<div class="line"><span class="lineno">  307</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  308</span> </div>
+<div class="line"><span class="lineno">  309</span>    this-&gt;<a class="code hl_variable" href="classAWeightSwitch.html#a4b828eef7cc6456e5e5833c6d94c79a0">bActivateState</a> = InActive;</div>
+<div class="line"><span class="lineno">  310</span> </div>
+<div class="line"><span class="lineno">  311</span>    <a class="code hl_function" href="classAWeightSwitch.html#a2401f0f65a4294c724c6885f07b8b550">SetActivate</a>(<a class="code hl_variable" href="classAWeightSwitch.html#a4b828eef7cc6456e5e5833c6d94c79a0">bActivateState</a>);</div>
+<div class="line"><span class="lineno">  312</span>}</div>
+<div class="ttc" id="aclassAWeightSwitch_html_a2401f0f65a4294c724c6885f07b8b550"><div class="ttname"><a href="classAWeightSwitch.html#a2401f0f65a4294c724c6885f07b8b550">AWeightSwitch::SetActivate</a></div><div class="ttdeci">void SetActivate(bool State)</div><div class="ttdef"><b>Definition</b> <a href="AWeightSwitch_8cpp_source.html#l00109">AWeightSwitch.cpp:109</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="AWeightSwitch_8h_source.html#l00084">bActivateState</a>, <a class="el" href="AWeightSwitch_8h_source.html#l00064">ButtonIndex</a>, <a class="el" href="AWeightSwitch_8cpp_source.html#l00108">SetActivate()</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="AWeightSwitch_8h_source.html#l00084">bActivateState</a>, <a class="el" href="AWeightSwitch_8h_source.html#l00064">ButtonIndex</a>, <a class="el" href="AWeightSwitch_8cpp_source.html#l00109">SetActivate()</a>.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AWeightSwitch_8cpp_source.html#l00039">BeginPlay()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AWeightSwitch_8cpp_source.html#l00040">BeginPlay()</a>.</p>
 <div id="dynsection-9" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-9-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-9-summary" class="dynsummary" style="display:block;">
@@ -857,38 +860,38 @@ Private 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="AWeightSwitch_8cpp_source.html">AWeightSwitch.cpp</a> 파일의 <a class="el" href="AWeightSwitch_8cpp_source.html#l00108">108</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  109</span>{</div>
-<div class="line"><span class="lineno">  110</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classAWeightSwitch.html#a029f7a65014d6bb13fae57fa0f2be334">EmissiveMaterial</a>)</div>
-<div class="line"><span class="lineno">  111</span>    {</div>
-<div class="line"><span class="lineno">  112</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>( TEXT(<span class="stringliteral">&quot;EmissiveMaterial is null&quot;</span>));</div>
-<div class="line"><span class="lineno">  113</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  114</span>    }</div>
-<div class="line"><span class="lineno">  115</span> </div>
-<div class="line"><span class="lineno">  116</span>    <span class="comment">// 1. 색상 선택 (State가 true면 ActivateColor, false면 DeactivateColor)</span></div>
-<div class="line"><span class="lineno">  117</span>    FLinearColor SelectedColor = State ? <a class="code hl_variable" href="classAWeightSwitch.html#ab3abdd865a629c73d2644ad08322932b">ActivateColor</a> : <a class="code hl_variable" href="classAWeightSwitch.html#ab113b92b3916c0593281ffeecd10a73b">DeactivateColor</a>;</div>
-<div class="line"><span class="lineno">  118</span> </div>
-<div class="line"><span class="lineno">  119</span>    <span class="comment">// 2. 머티리얼 파라미터 설정</span></div>
-<div class="line"><span class="lineno">  120</span>    <a class="code hl_variable" href="classAWeightSwitch.html#a029f7a65014d6bb13fae57fa0f2be334">EmissiveMaterial</a>-&gt;SetVectorParameterValue(<a class="code hl_variable" href="classAWeightSwitch.html#a4e2c535615ba6f62a28a9175031cc481">EmissiveParam</a>, SelectedColor);</div>
-<div class="line"><span class="lineno">  121</span> </div>
-<div class="line"><span class="lineno">  122</span>    <span class="comment">// 3. 애님 블루프린트의 ChangeState 호출</span></div>
-<div class="line"><span class="lineno">  123</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAWeightSwitch.html#aac61dda6cc3f61994e54f5569c27f6cf">AnimBlueprint</a>)</div>
-<div class="line"><span class="lineno">  124</span>    {</div>
-<div class="line"><span class="lineno">  125</span>        <a class="code hl_variable" href="classAWeightSwitch.html#aac61dda6cc3f61994e54f5569c27f6cf">AnimBlueprint</a>-&gt;ChangeState(State);</div>
-<div class="line"><span class="lineno">  126</span>    }</div>
-<div class="line"><span class="lineno">  127</span>    <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  128</span>    {</div>
-<div class="line"><span class="lineno">  129</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>( TEXT(<span class="stringliteral">&quot;AnimBlueprint is null&quot;</span>));</div>
-<div class="line"><span class="lineno">  130</span>    }</div>
-<div class="line"><span class="lineno">  131</span> </div>
-<div class="line"><span class="lineno">  132</span>    <a class="code hl_function" href="classAWeightSwitch.html#a3f1e52d7abad34e59c6b5decf09b9d17">OnActivate</a>(State);</div>
-<div class="line"><span class="lineno">  133</span>}</div>
+<p class="definition"><a class="el" href="AWeightSwitch_8cpp_source.html">AWeightSwitch.cpp</a> 파일의 <a class="el" href="AWeightSwitch_8cpp_source.html#l00109">109</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  110</span>{</div>
+<div class="line"><span class="lineno">  111</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classAWeightSwitch.html#a029f7a65014d6bb13fae57fa0f2be334">EmissiveMaterial</a>)</div>
+<div class="line"><span class="lineno">  112</span>    {</div>
+<div class="line"><span class="lineno">  113</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>( TEXT(<span class="stringliteral">&quot;EmissiveMaterial is null&quot;</span>));</div>
+<div class="line"><span class="lineno">  114</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  115</span>    }</div>
+<div class="line"><span class="lineno">  116</span> </div>
+<div class="line"><span class="lineno">  117</span>    <span class="comment">// 1. 색상 선택 (State가 true면 ActivateColor, false면 DeactivateColor)</span></div>
+<div class="line"><span class="lineno">  118</span>    FLinearColor SelectedColor = State ? <a class="code hl_variable" href="classAWeightSwitch.html#ab3abdd865a629c73d2644ad08322932b">ActivateColor</a> : <a class="code hl_variable" href="classAWeightSwitch.html#ab113b92b3916c0593281ffeecd10a73b">DeactivateColor</a>;</div>
+<div class="line"><span class="lineno">  119</span> </div>
+<div class="line"><span class="lineno">  120</span>    <span class="comment">// 2. 머티리얼 파라미터 설정</span></div>
+<div class="line"><span class="lineno">  121</span>    <a class="code hl_variable" href="classAWeightSwitch.html#a029f7a65014d6bb13fae57fa0f2be334">EmissiveMaterial</a>-&gt;SetVectorParameterValue(<a class="code hl_variable" href="classAWeightSwitch.html#a4e2c535615ba6f62a28a9175031cc481">EmissiveParam</a>, SelectedColor);</div>
+<div class="line"><span class="lineno">  122</span> </div>
+<div class="line"><span class="lineno">  123</span>    <span class="comment">// 3. 애님 블루프린트의 ChangeState 호출</span></div>
+<div class="line"><span class="lineno">  124</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAWeightSwitch.html#aac61dda6cc3f61994e54f5569c27f6cf">AnimBlueprint</a>)</div>
+<div class="line"><span class="lineno">  125</span>    {</div>
+<div class="line"><span class="lineno">  126</span>        <a class="code hl_variable" href="classAWeightSwitch.html#aac61dda6cc3f61994e54f5569c27f6cf">AnimBlueprint</a>-&gt;ChangeState(State);</div>
+<div class="line"><span class="lineno">  127</span>    }</div>
+<div class="line"><span class="lineno">  128</span>    <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  129</span>    {</div>
+<div class="line"><span class="lineno">  130</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>( TEXT(<span class="stringliteral">&quot;AnimBlueprint is null&quot;</span>));</div>
+<div class="line"><span class="lineno">  131</span>    }</div>
+<div class="line"><span class="lineno">  132</span> </div>
+<div class="line"><span class="lineno">  133</span>    <a class="code hl_function" href="classAWeightSwitch.html#a3f1e52d7abad34e59c6b5decf09b9d17">OnActivate</a>(State);</div>
+<div class="line"><span class="lineno">  134</span>}</div>
 <div class="ttc" id="aclassAWeightSwitch_html_a3f1e52d7abad34e59c6b5decf09b9d17"><div class="ttname"><a href="classAWeightSwitch.html#a3f1e52d7abad34e59c6b5decf09b9d17">AWeightSwitch::OnActivate</a></div><div class="ttdeci">void OnActivate(const bool State)</div></div>
 <div class="ttc" id="aclassAWeightSwitch_html_ab3abdd865a629c73d2644ad08322932b"><div class="ttname"><a href="classAWeightSwitch.html#ab3abdd865a629c73d2644ad08322932b">AWeightSwitch::ActivateColor</a></div><div class="ttdeci">FLinearColor ActivateColor</div><div class="ttdef"><b>Definition</b> <a href="AWeightSwitch_8h_source.html#l00071">AWeightSwitch.h:71</a></div></div>
 </div><!-- fragment -->
 <p class="reference">다음을 참조함 :  <a class="el" href="AWeightSwitch_8h_source.html#l00071">ActivateColor</a>, <a class="el" href="AWeightSwitch_8h_source.html#l00055">AnimBlueprint</a>, <a class="el" href="AWeightSwitch_8h_source.html#l00073">DeactivateColor</a>, <a class="el" href="AWeightSwitch_8h_source.html#l00058">EmissiveMaterial</a>, <a class="el" href="AWeightSwitch_8h_source.html#l00075">EmissiveParam</a>, <a class="el" href="classAWeightSwitch.html#a3f1e52d7abad34e59c6b5decf09b9d17">OnActivate()</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AWeightSwitch_8cpp_source.html#l00297">OnWeightSwitch()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AWeightSwitch_8cpp_source.html#l00301">OnWeightSwitch()</a>.</p>
 <div id="dynsection-11" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-11-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-11-summary" class="dynsummary" style="display:block;">
@@ -930,24 +933,24 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="AWeightSwitch_8cpp_source.html">AWeightSwitch.cpp</a> 파일의 <a class="el" href="AWeightSwitch_8cpp_source.html#l00147">147</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  148</span>{</div>
-<div class="line"><span class="lineno">  149</span>    Super::Tick(DeltaTime);</div>
-<div class="line"><span class="lineno">  150</span> </div>
-<div class="line"><span class="lineno">  151</span>    <span class="keywordflow">if</span> ( <a class="code hl_variable" href="classAWeightSwitch.html#ae9663983eb123ff86c5252299b5fe533">DetectTarget</a> == <span class="keyword">false</span>)</div>
-<div class="line"><span class="lineno">  152</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  153</span> </div>
-<div class="line"><span class="lineno">  154</span>    <a class="code hl_variable" href="classAWeightSwitch.html#ad8e727ab9bba460a7c56d5ea281686c0">ElapsedTime</a> += GetWorld()-&gt;GetDeltaSeconds();</div>
-<div class="line"><span class="lineno">  155</span>    </div>
-<div class="line"><span class="lineno">  156</span>    <span class="keywordflow">if</span>( <a class="code hl_function" href="classAWeightSwitch.html#a0ca5b93964cec02777db87899407db52">ActivateTrigger</a>() )</div>
-<div class="line"><span class="lineno">  157</span>    {</div>
-<div class="line"><span class="lineno">  158</span>        <span class="comment">// 물건이 TriggerDelay 타임 이상 올라가면 발동</span></div>
-<div class="line"><span class="lineno">  159</span>        UBroadcastManager::Get(GetWorld())-&gt;SendWeightSwitch(<a class="code hl_variable" href="classAWeightSwitch.html#af8f4523824757b7861cea5e3095f6935">ButtonIndex</a>, <span class="keyword">true</span>);</div>
-<div class="line"><span class="lineno">  160</span>    }</div>
-<div class="line"><span class="lineno">  161</span>}</div>
-<div class="ttc" id="aclassAWeightSwitch_html_a0ca5b93964cec02777db87899407db52"><div class="ttname"><a href="classAWeightSwitch.html#a0ca5b93964cec02777db87899407db52">AWeightSwitch::ActivateTrigger</a></div><div class="ttdeci">bool ActivateTrigger()</div><div class="ttdef"><b>Definition</b> <a href="AWeightSwitch_8cpp_source.html#l00163">AWeightSwitch.cpp:163</a></div></div>
+<p class="definition"><a class="el" href="AWeightSwitch_8cpp_source.html">AWeightSwitch.cpp</a> 파일의 <a class="el" href="AWeightSwitch_8cpp_source.html#l00148">148</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  149</span>{</div>
+<div class="line"><span class="lineno">  150</span>    Super::Tick(DeltaTime);</div>
+<div class="line"><span class="lineno">  151</span> </div>
+<div class="line"><span class="lineno">  152</span>    <span class="keywordflow">if</span> ( <a class="code hl_variable" href="classAWeightSwitch.html#ae9663983eb123ff86c5252299b5fe533">DetectTarget</a> == <span class="keyword">false</span>)</div>
+<div class="line"><span class="lineno">  153</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  154</span> </div>
+<div class="line"><span class="lineno">  155</span>    <a class="code hl_variable" href="classAWeightSwitch.html#ad8e727ab9bba460a7c56d5ea281686c0">ElapsedTime</a> += GetWorld()-&gt;GetDeltaSeconds();</div>
+<div class="line"><span class="lineno">  156</span>    </div>
+<div class="line"><span class="lineno">  157</span>    <span class="keywordflow">if</span>( <a class="code hl_function" href="classAWeightSwitch.html#a0ca5b93964cec02777db87899407db52">ActivateTrigger</a>() )</div>
+<div class="line"><span class="lineno">  158</span>    {</div>
+<div class="line"><span class="lineno">  159</span>        <span class="comment">// 물건이 TriggerDelay 타임 이상 올라가면 발동</span></div>
+<div class="line"><span class="lineno">  160</span>        UBroadcastManager::Get(GetWorld())-&gt;SendWeightSwitch(<a class="code hl_variable" href="classAWeightSwitch.html#af8f4523824757b7861cea5e3095f6935">ButtonIndex</a>, <span class="keyword">true</span>);</div>
+<div class="line"><span class="lineno">  161</span>    }</div>
+<div class="line"><span class="lineno">  162</span>}</div>
+<div class="ttc" id="aclassAWeightSwitch_html_a0ca5b93964cec02777db87899407db52"><div class="ttname"><a href="classAWeightSwitch.html#a0ca5b93964cec02777db87899407db52">AWeightSwitch::ActivateTrigger</a></div><div class="ttdeci">bool ActivateTrigger()</div><div class="ttdef"><b>Definition</b> <a href="AWeightSwitch_8cpp_source.html#l00164">AWeightSwitch.cpp:164</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="AWeightSwitch_8cpp_source.html#l00163">ActivateTrigger()</a>, <a class="el" href="AWeightSwitch_8h_source.html#l00064">ButtonIndex</a>, <a class="el" href="AWeightSwitch_8h_source.html#l00083">DetectTarget</a>, <a class="el" href="AWeightSwitch_8h_source.html#l00082">ElapsedTime</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="AWeightSwitch_8cpp_source.html#l00164">ActivateTrigger()</a>, <a class="el" href="AWeightSwitch_8h_source.html#l00064">ButtonIndex</a>, <a class="el" href="AWeightSwitch_8h_source.html#l00083">DetectTarget</a>, <a class="el" href="AWeightSwitch_8h_source.html#l00082">ElapsedTime</a>.</p>
 <div id="dynsection-13" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-13-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-13-summary" class="dynsummary" style="display:block;">
@@ -973,7 +976,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="AWeightSwitch_8h_source.html">AWeightSwitch.h</a> 파일의 <a class="el" href="AWeightSwitch_8h_source.html#l00071">71</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AWeightSwitch_8cpp_source.html#l00108">SetActivate()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AWeightSwitch_8cpp_source.html#l00109">SetActivate()</a>.</p>
 
 </div>
 </div>
@@ -991,7 +994,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="AWeightSwitch_8h_source.html">AWeightSwitch.h</a> 파일의 <a class="el" href="AWeightSwitch_8h_source.html#l00055">55</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AWeightSwitch_8cpp_source.html#l00056">InitSwitch()</a>, <a class="el" href="AWeightSwitch_8cpp_source.html#l00108">SetActivate()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AWeightSwitch_8cpp_source.html#l00057">InitSwitch()</a>, <a class="el" href="AWeightSwitch_8cpp_source.html#l00109">SetActivate()</a>.</p>
 
 </div>
 </div>
@@ -1017,7 +1020,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="AWeightSwitch_8h_source.html">AWeightSwitch.h</a> 파일의 <a class="el" href="AWeightSwitch_8h_source.html#l00086">86</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AWeightSwitch_8cpp_source.html#l00176">OnBeginOverlap()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AWeightSwitch_8cpp_source.html#l00177">OnBeginOverlap()</a>.</p>
 
 </div>
 </div>
@@ -1043,7 +1046,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="AWeightSwitch_8h_source.html">AWeightSwitch.h</a> 파일의 <a class="el" href="AWeightSwitch_8h_source.html#l00084">84</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AWeightSwitch_8cpp_source.html#l00039">BeginPlay()</a>, <a class="el" href="AWeightSwitch_8cpp_source.html#l00297">OnWeightSwitch()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AWeightSwitch_8cpp_source.html#l00040">BeginPlay()</a>, <a class="el" href="AWeightSwitch_8cpp_source.html#l00301">OnWeightSwitch()</a>.</p>
 
 </div>
 </div>
@@ -1061,7 +1064,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="AWeightSwitch_8h_source.html">AWeightSwitch.h</a> 파일의 <a class="el" href="AWeightSwitch_8h_source.html#l00064">64</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AWeightSwitch_8cpp_source.html#l00275">OnEndOverlap()</a>, <a class="el" href="AWeightSwitch_8cpp_source.html#l00297">OnWeightSwitch()</a>, <a class="el" href="AWeightSwitch_8cpp_source.html#l00147">Tick()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AWeightSwitch_8cpp_source.html#l00279">OnEndOverlap()</a>, <a class="el" href="AWeightSwitch_8cpp_source.html#l00301">OnWeightSwitch()</a>, <a class="el" href="AWeightSwitch_8cpp_source.html#l00148">Tick()</a>.</p>
 
 </div>
 </div>
@@ -1079,7 +1082,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="AWeightSwitch_8h_source.html">AWeightSwitch.h</a> 파일의 <a class="el" href="AWeightSwitch_8h_source.html#l00073">73</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AWeightSwitch_8cpp_source.html#l00056">InitSwitch()</a>, <a class="el" href="AWeightSwitch_8cpp_source.html#l00108">SetActivate()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AWeightSwitch_8cpp_source.html#l00057">InitSwitch()</a>, <a class="el" href="AWeightSwitch_8cpp_source.html#l00109">SetActivate()</a>.</p>
 
 </div>
 </div>
@@ -1105,7 +1108,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="AWeightSwitch_8h_source.html">AWeightSwitch.h</a> 파일의 <a class="el" href="AWeightSwitch_8h_source.html#l00083">83</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AWeightSwitch_8cpp_source.html#l00039">BeginPlay()</a>, <a class="el" href="AWeightSwitch_8cpp_source.html#l00176">OnBeginOverlap()</a>, <a class="el" href="AWeightSwitch_8cpp_source.html#l00275">OnEndOverlap()</a>, <a class="el" href="AWeightSwitch_8cpp_source.html#l00147">Tick()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AWeightSwitch_8cpp_source.html#l00040">BeginPlay()</a>, <a class="el" href="AWeightSwitch_8cpp_source.html#l00177">OnBeginOverlap()</a>, <a class="el" href="AWeightSwitch_8cpp_source.html#l00279">OnEndOverlap()</a>, <a class="el" href="AWeightSwitch_8cpp_source.html#l00148">Tick()</a>.</p>
 
 </div>
 </div>
@@ -1123,7 +1126,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="AWeightSwitch_8h_source.html">AWeightSwitch.h</a> 파일의 <a class="el" href="AWeightSwitch_8h_source.html#l00066">66</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AWeightSwitch_8cpp_source.html#l00163">ActivateTrigger()</a>, <a class="el" href="AWeightSwitch_8cpp_source.html#l00039">BeginPlay()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AWeightSwitch_8cpp_source.html#l00164">ActivateTrigger()</a>, <a class="el" href="AWeightSwitch_8cpp_source.html#l00040">BeginPlay()</a>.</p>
 
 </div>
 </div>
@@ -1149,7 +1152,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="AWeightSwitch_8h_source.html">AWeightSwitch.h</a> 파일의 <a class="el" href="AWeightSwitch_8h_source.html#l00082">82</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AWeightSwitch_8cpp_source.html#l00039">BeginPlay()</a>, <a class="el" href="AWeightSwitch_8cpp_source.html#l00176">OnBeginOverlap()</a>, <a class="el" href="AWeightSwitch_8cpp_source.html#l00275">OnEndOverlap()</a>, <a class="el" href="AWeightSwitch_8cpp_source.html#l00147">Tick()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AWeightSwitch_8cpp_source.html#l00040">BeginPlay()</a>, <a class="el" href="AWeightSwitch_8cpp_source.html#l00177">OnBeginOverlap()</a>, <a class="el" href="AWeightSwitch_8cpp_source.html#l00279">OnEndOverlap()</a>, <a class="el" href="AWeightSwitch_8cpp_source.html#l00148">Tick()</a>.</p>
 
 </div>
 </div>
@@ -1167,7 +1170,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="AWeightSwitch_8h_source.html">AWeightSwitch.h</a> 파일의 <a class="el" href="AWeightSwitch_8h_source.html#l00058">58</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AWeightSwitch_8cpp_source.html#l00056">InitSwitch()</a>, <a class="el" href="AWeightSwitch_8cpp_source.html#l00108">SetActivate()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AWeightSwitch_8cpp_source.html#l00057">InitSwitch()</a>, <a class="el" href="AWeightSwitch_8cpp_source.html#l00109">SetActivate()</a>.</p>
 
 </div>
 </div>
@@ -1185,7 +1188,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="AWeightSwitch_8h_source.html">AWeightSwitch.h</a> 파일의 <a class="el" href="AWeightSwitch_8h_source.html#l00075">75</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AWeightSwitch_8cpp_source.html#l00056">InitSwitch()</a>, <a class="el" href="AWeightSwitch_8cpp_source.html#l00108">SetActivate()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AWeightSwitch_8cpp_source.html#l00057">InitSwitch()</a>, <a class="el" href="AWeightSwitch_8cpp_source.html#l00109">SetActivate()</a>.</p>
 
 </div>
 </div>
@@ -1203,7 +1206,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="AWeightSwitch_8h_source.html">AWeightSwitch.h</a> 파일의 <a class="el" href="AWeightSwitch_8h_source.html#l00078">78</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AWeightSwitch_8cpp_source.html#l00176">OnBeginOverlap()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AWeightSwitch_8cpp_source.html#l00177">OnBeginOverlap()</a>.</p>
 
 </div>
 </div>
@@ -1221,7 +1224,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="AWeightSwitch_8h_source.html">AWeightSwitch.h</a> 파일의 <a class="el" href="AWeightSwitch_8h_source.html#l00061">61</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AWeightSwitch_8cpp_source.html#l00176">OnBeginOverlap()</a>, <a class="el" href="AWeightSwitch_8cpp_source.html#l00275">OnEndOverlap()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AWeightSwitch_8cpp_source.html#l00177">OnBeginOverlap()</a>, <a class="el" href="AWeightSwitch_8cpp_source.html#l00279">OnEndOverlap()</a>.</p>
 
 </div>
 </div>
@@ -1239,7 +1242,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="AWeightSwitch_8h_source.html">AWeightSwitch.h</a> 파일의 <a class="el" href="AWeightSwitch_8h_source.html#l00049">49</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AWeightSwitch_8cpp_source.html#l00016">AWeightSwitch()</a>, <a class="el" href="AWeightSwitch_8cpp_source.html#l00056">InitSwitch()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AWeightSwitch_8cpp_source.html#l00017">AWeightSwitch()</a>, <a class="el" href="AWeightSwitch_8cpp_source.html#l00057">InitSwitch()</a>.</p>
 
 </div>
 </div>
@@ -1257,7 +1260,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="AWeightSwitch_8h_source.html">AWeightSwitch.h</a> 파일의 <a class="el" href="AWeightSwitch_8h_source.html#l00052">52</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AWeightSwitch_8cpp_source.html#l00016">AWeightSwitch()</a>, <a class="el" href="AWeightSwitch_8cpp_source.html#l00039">BeginPlay()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AWeightSwitch_8cpp_source.html#l00017">AWeightSwitch()</a>, <a class="el" href="AWeightSwitch_8cpp_source.html#l00040">BeginPlay()</a>.</p>
 
 </div>
 </div>
@@ -1275,7 +1278,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="AWeightSwitch_8h_source.html">AWeightSwitch.h</a> 파일의 <a class="el" href="AWeightSwitch_8h_source.html#l00068">68</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AWeightSwitch_8cpp_source.html#l00163">ActivateTrigger()</a>, <a class="el" href="AWeightSwitch_8cpp_source.html#l00039">BeginPlay()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AWeightSwitch_8cpp_source.html#l00164">ActivateTrigger()</a>, <a class="el" href="AWeightSwitch_8cpp_source.html#l00040">BeginPlay()</a>.</p>
 
 </div>
 </div>
@@ -1289,7 +1292,7 @@ Private 속성</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classAWeightSwitch.html">AWeightSwitch</a></li>
-    <li class="footer">생성시간 : 금 11월 28 2025 07:12:39, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 금 11월 28 2025 07:15:13, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>
