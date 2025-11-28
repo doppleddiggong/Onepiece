@@ -212,8 +212,10 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">   31</span>    {</div>
 <div class="line"><span class="lineno">   32</span>        <a class="code hl_variable" href="classAPedestalSwitch.html#a781bf2f8168ac87b729704885f894ef6">WidgetComp</a>-&gt;SetWidgetClass(WidgetRef.Class);</div>
 <div class="line"><span class="lineno">   33</span>        <a class="code hl_variable" href="classAPedestalSwitch.html#a781bf2f8168ac87b729704885f894ef6">WidgetComp</a>-&gt;SetupAttachment(GetRootComponent());</div>
-<div class="line"><span class="lineno">   34</span>    }</div>
-<div class="line"><span class="lineno">   35</span>}</div>
+<div class="line"><span class="lineno">   34</span>        <a class="code hl_variable" href="classAPedestalSwitch.html#a781bf2f8168ac87b729704885f894ef6">WidgetComp</a>-&gt;SetWidgetSpace(EWidgetSpace::Screen);</div>
+<div class="line"><span class="lineno">   35</span>        <a class="code hl_variable" href="classAPedestalSwitch.html#a781bf2f8168ac87b729704885f894ef6">WidgetComp</a>-&gt;SetDrawSize(FVector2D(2048.0f, 1024.0f));</div>
+<div class="line"><span class="lineno">   36</span>    }</div>
+<div class="line"><span class="lineno">   37</span>}</div>
 <div class="ttc" id="aAPedestalSwitch_8cpp_html_a55b6865d8563376fde56fd22937cef0f"><div class="ttname"><a href="APedestalSwitch_8cpp.html#a55b6865d8563376fde56fd22937cef0f">INTERACT_WIDGET_PATH</a></div><div class="ttdeci">#define INTERACT_WIDGET_PATH</div><div class="ttdef"><b>Definition</b> <a href="APedestalSwitch_8cpp_source.html#l00012">APedestalSwitch.cpp:12</a></div></div>
 <div class="ttc" id="aclassAPedestalSwitch_html_a781bf2f8168ac87b729704885f894ef6"><div class="ttname"><a href="classAPedestalSwitch.html#a781bf2f8168ac87b729704885f894ef6">APedestalSwitch::WidgetComp</a></div><div class="ttdeci">TObjectPtr&lt; class UWidgetComponent &gt; WidgetComp</div><div class="ttdef"><b>Definition</b> <a href="APedestalSwitch_8h_source.html#l00039">APedestalSwitch.h:39</a></div></div>
 <div class="ttc" id="aclassAPedestalSwitch_html_ab59bac74f3a20b63ba4d8f39c0cf607f"><div class="ttname"><a href="classAPedestalSwitch.html#ab59bac74f3a20b63ba4d8f39c0cf607f">APedestalSwitch::SwitchBody</a></div><div class="ttdeci">TObjectPtr&lt; class USkeletalMeshComponent &gt; SwitchBody</div><div class="ttdef"><b>Definition</b> <a href="APedestalSwitch_8h_source.html#l00033">APedestalSwitch.h:33</a></div></div>
@@ -247,21 +249,21 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="APedestalSwitch_8cpp_source.html">APedestalSwitch.cpp</a> 파일의 <a class="el" href="APedestalSwitch_8cpp_source.html#l00037">37</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   38</span>{</div>
-<div class="line"><span class="lineno">   39</span>    Super::BeginPlay();</div>
-<div class="line"><span class="lineno">   40</span> </div>
-<div class="line"><span class="lineno">   41</span>    <span class="comment">// InitSwitch 호출</span></div>
-<div class="line"><span class="lineno">   42</span>    <a class="code hl_function" href="classAPedestalSwitch.html#adf0b505e152cd8fc8f509e835af122f5">InitSwitch</a>();</div>
-<div class="line"><span class="lineno">   43</span> </div>
-<div class="line"><span class="lineno">   44</span>    <span class="comment">// 델리게이트 바인딩</span></div>
-<div class="line"><span class="lineno">   45</span>    <a class="code hl_variable" href="classAPedestalSwitch.html#acb994507d5e7528a73d3aae325c38eda">InteractableComp</a>-&gt;InitWidget(<a class="code hl_variable" href="classAPedestalSwitch.html#a781bf2f8168ac87b729704885f894ef6">WidgetComp</a>);</div>
-<div class="line"><span class="lineno">   46</span>    <a class="code hl_variable" href="classAPedestalSwitch.html#acb994507d5e7528a73d3aae325c38eda">InteractableComp</a>-&gt;OnInteractionTriggered.AddDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classAPedestalSwitch.html#a07f9cd162ed771ea2165e798609665f1">APedestalSwitch::OnInteractionTriggered</a>);</div>
-<div class="line"><span class="lineno">   47</span>}</div>
-<div class="ttc" id="aclassAPedestalSwitch_html_a07f9cd162ed771ea2165e798609665f1"><div class="ttname"><a href="classAPedestalSwitch.html#a07f9cd162ed771ea2165e798609665f1">APedestalSwitch::OnInteractionTriggered</a></div><div class="ttdeci">void OnInteractionTriggered(AActor *Interactor)</div><div class="ttdoc">상호작용 콜백 (InteractableComponent 델리게이트용)</div><div class="ttdef"><b>Definition</b> <a href="APedestalSwitch_8cpp_source.html#l00069">APedestalSwitch.cpp:69</a></div></div>
-<div class="ttc" id="aclassAPedestalSwitch_html_adf0b505e152cd8fc8f509e835af122f5"><div class="ttname"><a href="classAPedestalSwitch.html#adf0b505e152cd8fc8f509e835af122f5">APedestalSwitch::InitSwitch</a></div><div class="ttdeci">void InitSwitch()</div><div class="ttdef"><b>Definition</b> <a href="APedestalSwitch_8cpp_source.html#l00049">APedestalSwitch.cpp:49</a></div></div>
+<p class="definition"><a class="el" href="APedestalSwitch_8cpp_source.html">APedestalSwitch.cpp</a> 파일의 <a class="el" href="APedestalSwitch_8cpp_source.html#l00039">39</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   40</span>{</div>
+<div class="line"><span class="lineno">   41</span>    Super::BeginPlay();</div>
+<div class="line"><span class="lineno">   42</span> </div>
+<div class="line"><span class="lineno">   43</span>    <span class="comment">// InitSwitch 호출</span></div>
+<div class="line"><span class="lineno">   44</span>    <a class="code hl_function" href="classAPedestalSwitch.html#adf0b505e152cd8fc8f509e835af122f5">InitSwitch</a>();</div>
+<div class="line"><span class="lineno">   45</span> </div>
+<div class="line"><span class="lineno">   46</span>    <span class="comment">// 델리게이트 바인딩</span></div>
+<div class="line"><span class="lineno">   47</span>    <a class="code hl_variable" href="classAPedestalSwitch.html#acb994507d5e7528a73d3aae325c38eda">InteractableComp</a>-&gt;InitWidget(<a class="code hl_variable" href="classAPedestalSwitch.html#a781bf2f8168ac87b729704885f894ef6">WidgetComp</a>);</div>
+<div class="line"><span class="lineno">   48</span>    <a class="code hl_variable" href="classAPedestalSwitch.html#acb994507d5e7528a73d3aae325c38eda">InteractableComp</a>-&gt;OnInteractionTriggered.AddDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classAPedestalSwitch.html#a07f9cd162ed771ea2165e798609665f1">APedestalSwitch::OnInteractionTriggered</a>);</div>
+<div class="line"><span class="lineno">   49</span>}</div>
+<div class="ttc" id="aclassAPedestalSwitch_html_a07f9cd162ed771ea2165e798609665f1"><div class="ttname"><a href="classAPedestalSwitch.html#a07f9cd162ed771ea2165e798609665f1">APedestalSwitch::OnInteractionTriggered</a></div><div class="ttdeci">void OnInteractionTriggered(AActor *Interactor)</div><div class="ttdoc">상호작용 콜백 (InteractableComponent 델리게이트용)</div><div class="ttdef"><b>Definition</b> <a href="APedestalSwitch_8cpp_source.html#l00071">APedestalSwitch.cpp:71</a></div></div>
+<div class="ttc" id="aclassAPedestalSwitch_html_adf0b505e152cd8fc8f509e835af122f5"><div class="ttname"><a href="classAPedestalSwitch.html#adf0b505e152cd8fc8f509e835af122f5">APedestalSwitch::InitSwitch</a></div><div class="ttdeci">void InitSwitch()</div><div class="ttdef"><b>Definition</b> <a href="APedestalSwitch_8cpp_source.html#l00051">APedestalSwitch.cpp:51</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="APedestalSwitch_8cpp_source.html#l00049">InitSwitch()</a>, <a class="el" href="APedestalSwitch_8h_source.html#l00037">InteractableComp</a>, <a class="el" href="APedestalSwitch_8cpp_source.html#l00069">OnInteractionTriggered()</a>, <a class="el" href="APedestalSwitch_8h_source.html#l00039">WidgetComp</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="APedestalSwitch_8cpp_source.html#l00051">InitSwitch()</a>, <a class="el" href="APedestalSwitch_8h_source.html#l00037">InteractableComp</a>, <a class="el" href="APedestalSwitch_8cpp_source.html#l00071">OnInteractionTriggered()</a>, <a class="el" href="APedestalSwitch_8h_source.html#l00039">WidgetComp</a>.</p>
 <div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-2-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
@@ -287,32 +289,32 @@ Private 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="APedestalSwitch_8cpp_source.html">APedestalSwitch.cpp</a> 파일의 <a class="el" href="APedestalSwitch_8cpp_source.html#l00049">49</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   50</span>{</div>
-<div class="line"><span class="lineno">   51</span>    UAnimInstance* AnimInstance = <a class="code hl_variable" href="classAPedestalSwitch.html#ab59bac74f3a20b63ba4d8f39c0cf607f">SwitchBody</a>-&gt;GetAnimInstance();</div>
-<div class="line"><span class="lineno">   52</span>    <span class="keywordflow">if</span> (!AnimInstance)</div>
-<div class="line"><span class="lineno">   53</span>    {</div>
-<div class="line"><span class="lineno">   54</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>( TEXT(<span class="stringliteral">&quot;AnimInstance is null&quot;</span>));</div>
-<div class="line"><span class="lineno">   55</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">   56</span>    }</div>
-<div class="line"><span class="lineno">   57</span> </div>
-<div class="line"><span class="lineno">   58</span>    <a class="code hl_class" href="classUTweenAnimInstance.html">UTweenAnimInstance</a>* AnimBP = Cast&lt;UTweenAnimInstance&gt;(AnimInstance);</div>
-<div class="line"><span class="lineno">   59</span>    <span class="keywordflow">if</span> (AnimBP)</div>
-<div class="line"><span class="lineno">   60</span>    {</div>
-<div class="line"><span class="lineno">   61</span>        <a class="code hl_variable" href="classAPedestalSwitch.html#aedb898332b945a4197112796cf848896">AnimBlueprint</a> = AnimBP;</div>
-<div class="line"><span class="lineno">   62</span>    }</div>
-<div class="line"><span class="lineno">   63</span>    <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">   64</span>    {</div>
-<div class="line"><span class="lineno">   65</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>( TEXT(<span class="stringliteral">&quot;Failed to cast to AnimBP&quot;</span>));</div>
-<div class="line"><span class="lineno">   66</span>    }</div>
-<div class="line"><span class="lineno">   67</span>}</div>
+<p class="definition"><a class="el" href="APedestalSwitch_8cpp_source.html">APedestalSwitch.cpp</a> 파일의 <a class="el" href="APedestalSwitch_8cpp_source.html#l00051">51</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   52</span>{</div>
+<div class="line"><span class="lineno">   53</span>    UAnimInstance* AnimInstance = <a class="code hl_variable" href="classAPedestalSwitch.html#ab59bac74f3a20b63ba4d8f39c0cf607f">SwitchBody</a>-&gt;GetAnimInstance();</div>
+<div class="line"><span class="lineno">   54</span>    <span class="keywordflow">if</span> (!AnimInstance)</div>
+<div class="line"><span class="lineno">   55</span>    {</div>
+<div class="line"><span class="lineno">   56</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>( TEXT(<span class="stringliteral">&quot;AnimInstance is null&quot;</span>));</div>
+<div class="line"><span class="lineno">   57</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   58</span>    }</div>
+<div class="line"><span class="lineno">   59</span> </div>
+<div class="line"><span class="lineno">   60</span>    <a class="code hl_class" href="classUTweenAnimInstance.html">UTweenAnimInstance</a>* AnimBP = Cast&lt;UTweenAnimInstance&gt;(AnimInstance);</div>
+<div class="line"><span class="lineno">   61</span>    <span class="keywordflow">if</span> (AnimBP)</div>
+<div class="line"><span class="lineno">   62</span>    {</div>
+<div class="line"><span class="lineno">   63</span>        <a class="code hl_variable" href="classAPedestalSwitch.html#aedb898332b945a4197112796cf848896">AnimBlueprint</a> = AnimBP;</div>
+<div class="line"><span class="lineno">   64</span>    }</div>
+<div class="line"><span class="lineno">   65</span>    <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">   66</span>    {</div>
+<div class="line"><span class="lineno">   67</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>( TEXT(<span class="stringliteral">&quot;Failed to cast to AnimBP&quot;</span>));</div>
+<div class="line"><span class="lineno">   68</span>    }</div>
+<div class="line"><span class="lineno">   69</span>}</div>
 <div class="ttc" id="aGameLogging_8h_html_a9998c8beb11a6bad6ffada2e701fc0cf"><div class="ttname"><a href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a></div><div class="ttdeci">#define PRINTLOG(fmt,...)</div><div class="ttdef"><b>Definition</b> <a href="GameLogging_8h_source.html#l00030">GameLogging.h:30</a></div></div>
 <div class="ttc" id="aclassAPedestalSwitch_html_aedb898332b945a4197112796cf848896"><div class="ttname"><a href="classAPedestalSwitch.html#aedb898332b945a4197112796cf848896">APedestalSwitch::AnimBlueprint</a></div><div class="ttdeci">TObjectPtr&lt; class UTweenAnimInstance &gt; AnimBlueprint</div><div class="ttdef"><b>Definition</b> <a href="APedestalSwitch_8h_source.html#l00042">APedestalSwitch.h:42</a></div></div>
 <div class="ttc" id="aclassUTweenAnimInstance_html"><div class="ttname"><a href="classUTweenAnimInstance.html">UTweenAnimInstance</a></div><div class="ttdoc">블루프린트에서 사용할 수 있는 간단한 트윈 애님 인스턴스.</div><div class="ttdef"><b>Definition</b> <a href="UTweenAnimInstance_8h_source.html#l00019">UTweenAnimInstance.h:20</a></div></div>
 </div><!-- fragment -->
 <p class="reference">다음을 참조함 :  <a class="el" href="APedestalSwitch_8h_source.html#l00042">AnimBlueprint</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>, <a class="el" href="APedestalSwitch_8h_source.html#l00033">SwitchBody</a>.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APedestalSwitch_8cpp_source.html#l00037">BeginPlay()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APedestalSwitch_8cpp_source.html#l00039">BeginPlay()</a>.</p>
 <div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-3-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
@@ -338,7 +340,7 @@ Private 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APedestalSwitch_8cpp_source.html#l00069">OnInteractionTriggered()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APedestalSwitch_8cpp_source.html#l00071">OnInteractionTriggered()</a>.</p>
 <div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-4-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-4-summary" class="dynsummary" style="display:block;">
@@ -372,10 +374,10 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="APedestalSwitch_8cpp_source.html">APedestalSwitch.cpp</a> 파일의 <a class="el" href="APedestalSwitch_8cpp_source.html#l00098">98</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   99</span>{</div>
-<div class="line"><span class="lineno">  100</span>    <a class="code hl_define" href="GameLogging_8h.html#ac50b407bb34c70a0be1fccc74730d143">PRINT_STRING</a>(TEXT(<span class="stringliteral">&quot;Pedestal Switch Activated&quot;</span>));</div>
-<div class="line"><span class="lineno">  101</span>}</div>
+<p class="definition"><a class="el" href="APedestalSwitch_8cpp_source.html">APedestalSwitch.cpp</a> 파일의 <a class="el" href="APedestalSwitch_8cpp_source.html#l00100">100</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  101</span>{</div>
+<div class="line"><span class="lineno">  102</span>    <a class="code hl_define" href="GameLogging_8h.html#ac50b407bb34c70a0be1fccc74730d143">PRINT_STRING</a>(TEXT(<span class="stringliteral">&quot;Pedestal Switch Activated&quot;</span>));</div>
+<div class="line"><span class="lineno">  103</span>}</div>
 <div class="ttc" id="aGameLogging_8h_html_ac50b407bb34c70a0be1fccc74730d143"><div class="ttname"><a href="GameLogging_8h.html#ac50b407bb34c70a0be1fccc74730d143">PRINT_STRING</a></div><div class="ttdeci">#define PRINT_STRING(fmt,...)</div><div class="ttdef"><b>Definition</b> <a href="GameLogging_8h_source.html#l00045">GameLogging.h:45</a></div></div>
 </div><!-- fragment -->
 <p class="reference">다음을 참조함 :  <a class="el" href="GameLogging_8h_source.html#l00045">PRINT_STRING</a>.</p>
@@ -400,37 +402,37 @@ Private 속성</h2></td></tr>
 
 <p>상호작용 콜백 (InteractableComponent 델리게이트용) </p>
 
-<p class="definition"><a class="el" href="APedestalSwitch_8cpp_source.html">APedestalSwitch.cpp</a> 파일의 <a class="el" href="APedestalSwitch_8cpp_source.html#l00069">69</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   70</span>{</div>
-<div class="line"><span class="lineno">   71</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAPedestalSwitch.html#aedb898332b945a4197112796cf848896">AnimBlueprint</a>)</div>
-<div class="line"><span class="lineno">   72</span>    {</div>
-<div class="line"><span class="lineno">   73</span>        <span class="comment">// 버튼 눌림 애니메이션</span></div>
-<div class="line"><span class="lineno">   74</span>        <a class="code hl_variable" href="classAPedestalSwitch.html#aedb898332b945a4197112796cf848896">AnimBlueprint</a>-&gt;ChangeState(<span class="keyword">true</span>);</div>
-<div class="line"><span class="lineno">   75</span>        </div>
-<div class="line"><span class="lineno">   76</span>        <span class="comment">// 딜레이 후 버튼 리커버리</span></div>
-<div class="line"><span class="lineno">   77</span>        GetWorld()-&gt;GetTimerManager().SetTimer(</div>
-<div class="line"><span class="lineno">   78</span>            <a class="code hl_variable" href="classAPedestalSwitch.html#a0ce7441834cfdcca58a88c9cbbb8d086">RecoveryTimerHandle</a>,</div>
-<div class="line"><span class="lineno">   79</span>            <span class="keyword">this</span>,</div>
-<div class="line"><span class="lineno">   80</span>            &amp;<a class="code hl_function" href="classAPedestalSwitch.html#a449acc40a37cc79da51dbf51b0456f77">APedestalSwitch::RecoveryButton</a>,</div>
-<div class="line"><span class="lineno">   81</span>            <a class="code hl_variable" href="classAPedestalSwitch.html#a4683b50b0e2b47da0352fea4c25d9c40">RecoveryDelay</a>,</div>
-<div class="line"><span class="lineno">   82</span>            <span class="keyword">false</span></div>
-<div class="line"><span class="lineno">   83</span>        );</div>
-<div class="line"><span class="lineno">   84</span>    }</div>
-<div class="line"><span class="lineno">   85</span>    <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">   86</span>    {</div>
-<div class="line"><span class="lineno">   87</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>( TEXT(<span class="stringliteral">&quot;AnimBlueprint is null&quot;</span>));</div>
-<div class="line"><span class="lineno">   88</span>    }</div>
-<div class="line"><span class="lineno">   89</span> </div>
-<div class="line"><span class="lineno">   90</span>    <a class="code hl_function" href="classAPedestalSwitch.html#acd82c70fe4565508974d63d3263439f2">OnActivate</a>();</div>
-<div class="line"><span class="lineno">   91</span>}</div>
+<p class="definition"><a class="el" href="APedestalSwitch_8cpp_source.html">APedestalSwitch.cpp</a> 파일의 <a class="el" href="APedestalSwitch_8cpp_source.html#l00071">71</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   72</span>{</div>
+<div class="line"><span class="lineno">   73</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAPedestalSwitch.html#aedb898332b945a4197112796cf848896">AnimBlueprint</a>)</div>
+<div class="line"><span class="lineno">   74</span>    {</div>
+<div class="line"><span class="lineno">   75</span>        <span class="comment">// 버튼 눌림 애니메이션</span></div>
+<div class="line"><span class="lineno">   76</span>        <a class="code hl_variable" href="classAPedestalSwitch.html#aedb898332b945a4197112796cf848896">AnimBlueprint</a>-&gt;ChangeState(<span class="keyword">true</span>);</div>
+<div class="line"><span class="lineno">   77</span>        </div>
+<div class="line"><span class="lineno">   78</span>        <span class="comment">// 딜레이 후 버튼 리커버리</span></div>
+<div class="line"><span class="lineno">   79</span>        GetWorld()-&gt;GetTimerManager().SetTimer(</div>
+<div class="line"><span class="lineno">   80</span>            <a class="code hl_variable" href="classAPedestalSwitch.html#a0ce7441834cfdcca58a88c9cbbb8d086">RecoveryTimerHandle</a>,</div>
+<div class="line"><span class="lineno">   81</span>            <span class="keyword">this</span>,</div>
+<div class="line"><span class="lineno">   82</span>            &amp;<a class="code hl_function" href="classAPedestalSwitch.html#a449acc40a37cc79da51dbf51b0456f77">APedestalSwitch::RecoveryButton</a>,</div>
+<div class="line"><span class="lineno">   83</span>            <a class="code hl_variable" href="classAPedestalSwitch.html#a4683b50b0e2b47da0352fea4c25d9c40">RecoveryDelay</a>,</div>
+<div class="line"><span class="lineno">   84</span>            <span class="keyword">false</span></div>
+<div class="line"><span class="lineno">   85</span>        );</div>
+<div class="line"><span class="lineno">   86</span>    }</div>
+<div class="line"><span class="lineno">   87</span>    <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">   88</span>    {</div>
+<div class="line"><span class="lineno">   89</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>( TEXT(<span class="stringliteral">&quot;AnimBlueprint is null&quot;</span>));</div>
+<div class="line"><span class="lineno">   90</span>    }</div>
+<div class="line"><span class="lineno">   91</span> </div>
+<div class="line"><span class="lineno">   92</span>    <a class="code hl_function" href="classAPedestalSwitch.html#acd82c70fe4565508974d63d3263439f2">OnActivate</a>();</div>
+<div class="line"><span class="lineno">   93</span>}</div>
 <div class="ttc" id="aclassAPedestalSwitch_html_a0ce7441834cfdcca58a88c9cbbb8d086"><div class="ttname"><a href="classAPedestalSwitch.html#a0ce7441834cfdcca58a88c9cbbb8d086">APedestalSwitch::RecoveryTimerHandle</a></div><div class="ttdeci">FTimerHandle RecoveryTimerHandle</div><div class="ttdoc">버튼을 원래 상태로 되돌리는 타이머</div><div class="ttdef"><b>Definition</b> <a href="APedestalSwitch_8h_source.html#l00049">APedestalSwitch.h:49</a></div></div>
-<div class="ttc" id="aclassAPedestalSwitch_html_a449acc40a37cc79da51dbf51b0456f77"><div class="ttname"><a href="classAPedestalSwitch.html#a449acc40a37cc79da51dbf51b0456f77">APedestalSwitch::RecoveryButton</a></div><div class="ttdeci">void RecoveryButton()</div><div class="ttdoc">버튼을 원래 상태로 되돌림</div><div class="ttdef"><b>Definition</b> <a href="APedestalSwitch_8cpp_source.html#l00093">APedestalSwitch.cpp:93</a></div></div>
+<div class="ttc" id="aclassAPedestalSwitch_html_a449acc40a37cc79da51dbf51b0456f77"><div class="ttname"><a href="classAPedestalSwitch.html#a449acc40a37cc79da51dbf51b0456f77">APedestalSwitch::RecoveryButton</a></div><div class="ttdeci">void RecoveryButton()</div><div class="ttdoc">버튼을 원래 상태로 되돌림</div><div class="ttdef"><b>Definition</b> <a href="APedestalSwitch_8cpp_source.html#l00095">APedestalSwitch.cpp:95</a></div></div>
 <div class="ttc" id="aclassAPedestalSwitch_html_a4683b50b0e2b47da0352fea4c25d9c40"><div class="ttname"><a href="classAPedestalSwitch.html#a4683b50b0e2b47da0352fea4c25d9c40">APedestalSwitch::RecoveryDelay</a></div><div class="ttdeci">float RecoveryDelay</div><div class="ttdef"><b>Definition</b> <a href="APedestalSwitch_8h_source.html#l00045">APedestalSwitch.h:45</a></div></div>
 <div class="ttc" id="aclassAPedestalSwitch_html_acd82c70fe4565508974d63d3263439f2"><div class="ttname"><a href="classAPedestalSwitch.html#acd82c70fe4565508974d63d3263439f2">APedestalSwitch::OnActivate</a></div><div class="ttdeci">void OnActivate()</div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="APedestalSwitch_8h_source.html#l00042">AnimBlueprint</a>, <a class="el" href="classAPedestalSwitch.html#acd82c70fe4565508974d63d3263439f2">OnActivate()</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>, <a class="el" href="APedestalSwitch_8cpp_source.html#l00093">RecoveryButton()</a>, <a class="el" href="APedestalSwitch_8h_source.html#l00045">RecoveryDelay</a>, <a class="el" href="APedestalSwitch_8h_source.html#l00049">RecoveryTimerHandle</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="APedestalSwitch_8h_source.html#l00042">AnimBlueprint</a>, <a class="el" href="classAPedestalSwitch.html#acd82c70fe4565508974d63d3263439f2">OnActivate()</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>, <a class="el" href="APedestalSwitch_8cpp_source.html#l00095">RecoveryButton()</a>, <a class="el" href="APedestalSwitch_8h_source.html#l00045">RecoveryDelay</a>, <a class="el" href="APedestalSwitch_8h_source.html#l00049">RecoveryTimerHandle</a>.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APedestalSwitch_8cpp_source.html#l00037">BeginPlay()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APedestalSwitch_8cpp_source.html#l00039">BeginPlay()</a>.</p>
 <div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-5-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-5-summary" class="dynsummary" style="display:block;">
@@ -473,14 +475,14 @@ Private 속성</h2></td></tr>
 
 <p>버튼을 원래 상태로 되돌림 </p>
 
-<p class="definition"><a class="el" href="APedestalSwitch_8cpp_source.html">APedestalSwitch.cpp</a> 파일의 <a class="el" href="APedestalSwitch_8cpp_source.html#l00093">93</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   94</span>{</div>
-<div class="line"><span class="lineno">   95</span>    <a class="code hl_variable" href="classAPedestalSwitch.html#aedb898332b945a4197112796cf848896">AnimBlueprint</a>-&gt;ChangeState(<span class="keyword">false</span>);</div>
-<div class="line"><span class="lineno">   96</span>}</div>
+<p class="definition"><a class="el" href="APedestalSwitch_8cpp_source.html">APedestalSwitch.cpp</a> 파일의 <a class="el" href="APedestalSwitch_8cpp_source.html#l00095">95</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   96</span>{</div>
+<div class="line"><span class="lineno">   97</span>    <a class="code hl_variable" href="classAPedestalSwitch.html#aedb898332b945a4197112796cf848896">AnimBlueprint</a>-&gt;ChangeState(<span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">   98</span>}</div>
 </div><!-- fragment -->
 <p class="reference">다음을 참조함 :  <a class="el" href="APedestalSwitch_8h_source.html#l00042">AnimBlueprint</a>.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APedestalSwitch_8cpp_source.html#l00069">OnInteractionTriggered()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APedestalSwitch_8cpp_source.html#l00071">OnInteractionTriggered()</a>.</p>
 <div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-7-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-7-summary" class="dynsummary" style="display:block;">
@@ -506,7 +508,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="APedestalSwitch_8h_source.html">APedestalSwitch.h</a> 파일의 <a class="el" href="APedestalSwitch_8h_source.html#l00042">42</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APedestalSwitch_8cpp_source.html#l00049">InitSwitch()</a>, <a class="el" href="APedestalSwitch_8cpp_source.html#l00069">OnInteractionTriggered()</a>, <a class="el" href="APedestalSwitch_8cpp_source.html#l00093">RecoveryButton()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APedestalSwitch_8cpp_source.html#l00051">InitSwitch()</a>, <a class="el" href="APedestalSwitch_8cpp_source.html#l00071">OnInteractionTriggered()</a>, <a class="el" href="APedestalSwitch_8cpp_source.html#l00095">RecoveryButton()</a>.</p>
 
 </div>
 </div>
@@ -526,7 +528,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="APedestalSwitch_8h_source.html">APedestalSwitch.h</a> 파일의 <a class="el" href="APedestalSwitch_8h_source.html#l00037">37</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APedestalSwitch_8cpp_source.html#l00014">APedestalSwitch()</a>, <a class="el" href="APedestalSwitch_8cpp_source.html#l00037">BeginPlay()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APedestalSwitch_8cpp_source.html#l00014">APedestalSwitch()</a>, <a class="el" href="APedestalSwitch_8cpp_source.html#l00039">BeginPlay()</a>.</p>
 
 </div>
 </div>
@@ -544,7 +546,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="APedestalSwitch_8h_source.html">APedestalSwitch.h</a> 파일의 <a class="el" href="APedestalSwitch_8h_source.html#l00045">45</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APedestalSwitch_8cpp_source.html#l00069">OnInteractionTriggered()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APedestalSwitch_8cpp_source.html#l00071">OnInteractionTriggered()</a>.</p>
 
 </div>
 </div>
@@ -572,7 +574,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="APedestalSwitch_8h_source.html">APedestalSwitch.h</a> 파일의 <a class="el" href="APedestalSwitch_8h_source.html#l00049">49</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APedestalSwitch_8cpp_source.html#l00069">OnInteractionTriggered()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APedestalSwitch_8cpp_source.html#l00071">OnInteractionTriggered()</a>.</p>
 
 </div>
 </div>
@@ -590,7 +592,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="APedestalSwitch_8h_source.html">APedestalSwitch.h</a> 파일의 <a class="el" href="APedestalSwitch_8h_source.html#l00033">33</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APedestalSwitch_8cpp_source.html#l00014">APedestalSwitch()</a>, <a class="el" href="APedestalSwitch_8cpp_source.html#l00049">InitSwitch()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APedestalSwitch_8cpp_source.html#l00014">APedestalSwitch()</a>, <a class="el" href="APedestalSwitch_8cpp_source.html#l00051">InitSwitch()</a>.</p>
 
 </div>
 </div>
@@ -608,7 +610,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="APedestalSwitch_8h_source.html">APedestalSwitch.h</a> 파일의 <a class="el" href="APedestalSwitch_8h_source.html#l00039">39</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APedestalSwitch_8cpp_source.html#l00014">APedestalSwitch()</a>, <a class="el" href="APedestalSwitch_8cpp_source.html#l00037">BeginPlay()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APedestalSwitch_8cpp_source.html#l00014">APedestalSwitch()</a>, <a class="el" href="APedestalSwitch_8cpp_source.html#l00039">BeginPlay()</a>.</p>
 
 </div>
 </div>
@@ -622,7 +624,7 @@ Private 속성</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classAPedestalSwitch.html">APedestalSwitch</a></li>
-    <li class="footer">생성시간 : 목 11월 27 2025 15:00:03, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 금 11월 28 2025 00:17:33, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>
