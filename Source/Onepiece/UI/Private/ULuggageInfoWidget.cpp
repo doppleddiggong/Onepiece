@@ -3,11 +3,21 @@
 
 #include "ULuggageInfoWidget.h"
 
+#include "UGameDataManager.h"
 #include "Components/TextBlock.h"
-
 
 void ULuggageInfoWidget::InitLuggage(const FString& Type1, const FString& Type2)
 {
-	Txt_Type1->SetText(FText::FromString(Type1));
-	Txt_Type2->SetText(FText::FromString(Type2));
+	UpdateType1Data(Type1);
+	UpdateType2Data(Type2);
+}
+
+void ULuggageInfoWidget::UpdateType1Data(const FString& TypeData)
+{
+	Txt_Type1->SetText(FText::FromString(TypeData));
+}
+
+void ULuggageInfoWidget::UpdateType2Data(const FString& TypeData)
+{
+	Txt_Type2->SetText(FText::FromString(TypeData));
 }

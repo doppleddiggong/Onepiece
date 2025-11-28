@@ -87,7 +87,11 @@ public:
 	void OutlineOn();
 	UFUNCTION(BlueprintCallable, Category = "Outline")
 	void OutlineOff();
-	
+
+private:
+	void UpdateWidget();
+	bool bWidgetInitialized = false;
+
 // public:
 // 	// InfoWidget
 // 	void InfoWidgetOn();
@@ -116,6 +120,5 @@ public:
 	/// @brief 서버에 캐리어 선택을 알립니다.
 	/// @param Player [in] 선택한 플레이어의 PlayerState
 	UFUNCTION(Server, Reliable, WithValidation)
-	void ServerNotifySelection(class APlayerState* Player);
-	
+	void ServerNotifySelection(class APlayerState* Player);	
 };

@@ -14,6 +14,9 @@ class ONEPIECE_API ULuggageInfoWidget : public UInteractWidget
 public:
 	void InitLuggage(const FString& Type1, const FString& Type2);
 
+	void UpdateType1Data(const FString& TypeData);
+	void UpdateType2Data(const FString& TypeData);
+	
 protected:
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
 	TObjectPtr<class UTextBlock> Txt_Type1; 

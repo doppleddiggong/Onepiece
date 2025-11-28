@@ -12,6 +12,7 @@
 #include "UMainWidget.h"
 #include "GameLogging.h"
 #include "DrawDebugHelpers.h"
+#include "luggage.h"
 #include "Math/RotationMatrix.h"
 #include "Components/StaticMeshComponent.h"
 #include "Engine/StaticMesh.h"
@@ -265,12 +266,14 @@ void UHookSystem::DetectHookTarget()
 			if (HookComp && HookComp->bIsHookable)
 			{
 				CurHookTarget = HitActor;
+				CurHookTarget_Luggage = Cast<Aluggage>(HitActor);
 				return;
 			}
 		}
 	}
 
 	CurHookTarget = nullptr;
+	CurHookTarget_Luggage = nullptr;
 }
 
 
@@ -325,23 +328,30 @@ void UHookSystem::UpdateHookTargetUI()
 		MainWidget->UpdateHookIndicatorState(CurHookTarget != nullptr);
 	}
 
-	// 디버그 표시
-	if (bShowDebugInfo && CurHookTarget)
+	if ( CurHookTarget )
 	{
-		FVector TargetLocation = CurHookTarget->GetActorLocation();
-		DrawDebugSphere(
-			GetWorld(),
-			TargetLocation,
-			50.0f,
-			12,
-			FColor::Yellow,
-			false,
-			0.0f,
-			0,
-			2.0f
-		);
+		if ( CurHookTarget_Luggage != nullptr )
+			CurHookTarget_Luggage->OutlineOn();
+
+		// 디버그 표시
+		if (bShowDebugInfo)
+		{
+			FVector TargetLocation = CurHookTarget->GetActorLocation();
+			DrawDebugSphere(
+				GetWorld(),
+				TargetLocation,
+				50.0f,
+				12,
+				FColor::Yellow,
+				false,
+				0.0f,
+				0,
+				2.0f
+			);
+		}
 	}
 }
+
 
 void UHookSystem::UpdateHookLaunching(float DeltaTime)
 {
@@ -532,21 +542,21 @@ void UHookSystem::UpdateCable()
 		3.0f
 	);
 
-	// 발사체 위치 표시 (Launching 중)
-	if (HookState == EHookState::Launching)
-	{
-		DrawDebugSphere(
-			GetWorld(),
-			HookProjectileLocation,
-			15.0f,
-			8,
-			FColor::Red,
-			false,
-			0.0f,
-			0,
-			2.0f
-		);
-	}
+	// // 발사체 위치 표시 (Launching 중)
+	// if (HookState == EHookState::Launching)
+	// {
+	// 	DrawDebugSphere(
+	// 		GetWorld(),
+	// 		HookProjectileLocation,
+	// 		15.0f,
+	// 		8,
+	// 		FColor::Red,
+	// 		false,
+	// 		0.0f,
+	// 		0,
+	// 		2.0f
+	// 	);
+	// }
 }
 
 void UHookSystem::UpdateCableMeshTransform(const FVector& CableStart, const FVector& CableEnd)

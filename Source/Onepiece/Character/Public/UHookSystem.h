@@ -152,6 +152,9 @@ protected:
 	TObjectPtr<AActor> CurHookTarget;
 
 	UPROPERTY()
+	TObjectPtr<class Aluggage> CurHookTarget_Luggage;
+	
+	UPROPERTY()
 	TObjectPtr<class UStaticMeshComponent> CableMesh;
 
 	UPROPERTY()
