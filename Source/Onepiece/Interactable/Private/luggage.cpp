@@ -163,6 +163,10 @@ void Aluggage::BillboardInfoWidget()
 {
 	// 카메라 가져오기
 	AActor* cam = UGameplayStatics::GetPlayerCameraManager(GetWorld(), 0);
+
+	if ( cam == nullptr)
+		return;
+	
 	// 카메라 backward 벡터, up 벡터를 이용하여 Rotator 계산
 	FRotator rot = UKismetMathLibrary::MakeRotFromXZ(-cam->GetActorForwardVector(), cam->GetActorUpVector());
 	rot.Pitch = 0;
