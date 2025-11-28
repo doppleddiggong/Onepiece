@@ -1,6 +1,5 @@
 var NAVTREEINDEX2 =
 {
-"ULingoGameInstance_8cpp.html":[3,0,0,2,1,0,4],
 "ULingoGameInstance_8cpp_source.html":[3,0,0,2,1,0,4],
 "ULingoGameInstance_8h.html":[3,0,0,2,1,1,4],
 "ULingoGameInstance_8h.html#a19b0ebcc430a73c898b86a0c19a1d74c":[3,0,0,2,1,1,4,1],
@@ -249,5 +248,6 @@ var NAVTREEINDEX2 =
 "classAGate.html#af3ac65d00267956fd71ef4c5260fc030":[2,0,5,12],
 "classALingoGameMode.html":[2,0,6],
 "classALingoGameMode.html#a11e7cf43757f20d1d9f0d5d1d9751ab7":[2,0,6,3],
-"classALingoGameMode.html#a2afd7939b5c4dc08f353aa1a00cd3967":[2,0,6,4]
+"classALingoGameMode.html#a2afd7939b5c4dc08f353aa1a00cd3967":[2,0,6,4],
+"classALingoGameMode.html#a2d78db01b89121ee86364bf434db1fbf":[2,0,6,1]
 };

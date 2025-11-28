@@ -1,6 +1,5 @@
 var NAVTREEINDEX7 =
 {
-"classUStateWidget.html#a3a3c78fc6182f15af70380513b88d807":[2,0,117,11],
 "classUStateWidget.html#a55f0280eebae242e661a12cd7cdfc74e":[2,0,117,4],
 "classUStateWidget.html#a665b2fac76df0c5fb108cb4dd3ffd32e":[2,0,117,18],
 "classUStateWidget.html#a6ad83166d31c3768018a6dc7d9c2bf7e":[2,0,117,2],
@@ -155,8 +154,8 @@ var NAVTREEINDEX7 =
 "functions_d.html":[2,3,0,3],
 "functions_e.html":[2,3,0,4],
 "functions_f.html":[2,3,0,5],
-"functions_func.html":[2,3,1],
 "functions_func.html":[2,3,1,0],
+"functions_func.html":[2,3,1],
 "functions_func_b.html":[2,3,1,1],
 "functions_func_c.html":[2,3,1,2],
 "functions_func_d.html":[2,3,1,3],
@@ -194,8 +193,8 @@ var NAVTREEINDEX7 =
 "functions_t.html":[2,3,0,19],
 "functions_u.html":[2,3,0,20],
 "functions_v.html":[2,3,0,21],
-"functions_vars.html":[2,3,2],
 "functions_vars.html":[2,3,2,0],
+"functions_vars.html":[2,3,2],
 "functions_vars_b.html":[2,3,2,1],
 "functions_vars_c.html":[2,3,2,2],
 "functions_vars_d.html":[2,3,2,3],
@@ -226,8 +225,8 @@ var NAVTREEINDEX7 =
 "globals_func.html":[3,1,1],
 "globals_vars.html":[3,1,2],
 "hierarchy.html":[2,2],
-"index.html":[0],
 "index.html":[],
+"index.html":[0],
 "index.html#autotoc_md10":[0,2],
 "index.html#autotoc_md11":[0,2,0],
 "index.html#autotoc_md12":[0,2,1],
@@ -249,5 +248,6 @@ var NAVTREEINDEX7 =
 "index.html#autotoc_md31":[0,7],
 "index.html#autotoc_md5":[0,1],
 "index.html#autotoc_md6":[0,1,0],
-"index.html#autotoc_md7":[0,1,1]
+"index.html#autotoc_md7":[0,1,1],
+"index.html#autotoc_md8":[0,1,2]
 };
