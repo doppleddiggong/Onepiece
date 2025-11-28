@@ -4,13 +4,10 @@ var classAluggage =
     [ "ApplyColorToMesh", "classAluggage.html#aa5a78203e58b47252c35b9ba5f1cf58c", null ],
     [ "ApplyPatternToMesh", "classAluggage.html#a5278c16bd28e0ee6fdbf2131aa70d5fc", null ],
     [ "BeginPlay", "classAluggage.html#a3aa2051ad58baef95efc7a35a1997184", null ],
-    [ "BillboardInfoWidget", "classAluggage.html#ad0a33dc3c1c8b7361d532ac593267255", null ],
     [ "GetColor", "classAluggage.html#a909de596d61c1de97967dd8f831d29d9", null ],
     [ "GetLifetimeReplicatedProps", "classAluggage.html#a072cf7b19603d5dd9dd72f90ff5140a3", null ],
     [ "GetPattern", "classAluggage.html#a0d10873a7496c8a1ead5651966ddca02", null ],
     [ "GetSpawnIdx", "classAluggage.html#a48c251914787f0c3137e6c174b560eaa", null ],
-    [ "InfoWidgetOff", "classAluggage.html#a7c7a14f0054029e66a08c40ad3a626c8", null ],
-    [ "InfoWidgetOn", "classAluggage.html#ab9631784f4e73474ff38d940cacf7fb7", null ],
     [ "OnInteract", "classAluggage.html#aecbb757aa07316696bb4326f3b8dd74f", null ],
     [ "OnRep_ColorIdx", "classAluggage.html#ab59f99b7292d0987106cbc396f563b77", null ],
     [ "OnRep_PatternIdx", "classAluggage.html#a5ff35c71645ce2754d9fea07959fe766", null ],
@@ -20,7 +17,6 @@ var classAluggage =
     [ "SetLuggageInfo", "classAluggage.html#ae08336c2883641c70aafa86c0a3c32a2", null ],
     [ "Tick", "classAluggage.html#aa1d90a7ebc5c838ebe50bfc79dfd6890", null ],
     [ "BoxComp", "classAluggage.html#aa50b6d8907fe87cf36258056394a15fe", null ],
-    [ "BoxInfoWidgetComp", "classAluggage.html#a3604b9a1c2189e79a4b78e4430fcdee5", null ],
     [ "Color", "classAluggage.html#a4a47514a5aff8824800c878ed73159c2", null ],
     [ "ColorIdx", "classAluggage.html#a77701ede6847700cecd2677dd2b2e625", null ],
     [ "HookComp", "classAluggage.html#a4ce0d688c131b0b462520b745c560133", null ],
@@ -32,5 +28,6 @@ var classAluggage =
     [ "PatternIdx", "classAluggage.html#a5eb51fa644ca8171df6d870c85c92271", null ],
     [ "SpawnIdx", "classAluggage.html#a880c239655a5b0ad93ba5fa26bcf49c4", null ],
     [ "Target1", "classAluggage.html#a3a0e879c75526a459df91a8560504762", null ],
-    [ "Target2", "classAluggage.html#a39a1c8e315d2b3d40ec1956e2390d6d2", null ]
+    [ "Target2", "classAluggage.html#a39a1c8e315d2b3d40ec1956e2390d6d2", null ],
+    [ "WidgetComp", "classAluggage.html#a4198ee3271bbf5f2d66d98b1dd4230ec", null ]
 ];

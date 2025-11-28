@@ -1,6 +1,5 @@
 var dir_e82f2835ab4116a5eee79a37f645c6c8 =
 [
-    [ "BoxInfoWidget.h", "BoxInfoWidget_8h.html", "BoxInfoWidget_8h" ],
     [ "DrawingBoardWidget.h", "DrawingBoardWidget_8h.html", "DrawingBoardWidget_8h" ],
     [ "LobbyWidget.h", "LobbyWidget_8h.html", "LobbyWidget_8h" ],
     [ "SessionInfoWidget.h", "SessionInfoWidget_8h.html", "SessionInfoWidget_8h" ],
@@ -10,6 +9,7 @@ var dir_e82f2835ab4116a5eee79a37f645c6c8 =
     [ "UInteractWidget.h", "UInteractWidget_8h.html", "UInteractWidget_8h" ],
     [ "ULoadginCircle.h", "ULoadginCircle_8h.html", "ULoadginCircle_8h" ],
     [ "ULoadingCircleManager.h", "ULoadingCircleManager_8h.html", "ULoadingCircleManager_8h" ],
+    [ "ULuggageInfoWidget.h", "ULuggageInfoWidget_8h.html", "ULuggageInfoWidget_8h" ],
     [ "UMainWidget.h", "UMainWidget_8h.html", "UMainWidget_8h" ],
     [ "UPlayTimer.h", "UPlayTimer_8h.html", "UPlayTimer_8h" ],
     [ "UQuestInfoWidget.h", "UQuestInfoWidget_8h.html", "UQuestInfoWidget_8h" ],

@@ -143,12 +143,13 @@ var hierarchy =
         [ "UPopup_ReadQuest", "classUPopup__ReadQuest.html", null ],
         [ "UPopup_Result", "classUPopup__Result.html", null ]
       ] ],
-      [ "UBoxInfoWidget", "classUBoxInfoWidget.html", null ],
       [ "UDialogWidget", "classUDialogWidget.html", null ],
       [ "UDrawingBoardWidget", "classUDrawingBoardWidget.html", null ],
       [ "UHoverButton", "classUHoverButton.html", null ],
       [ "UImageButton", "classUImageButton.html", null ],
-      [ "UInteractWidget", "classUInteractWidget.html", null ],
+      [ "UInteractWidget", "classUInteractWidget.html", [
+        [ "ULuggageInfoWidget", "classULuggageInfoWidget.html", null ]
+      ] ],
       [ "ULoadginCircle", "classULoadginCircle.html", null ],
       [ "ULobbyWidget", "classULobbyWidget.html", null ],
       [ "UMainWidget", "classUMainWidget.html", null ],

@@ -3,7 +3,7 @@ var searchData=
   ['walkspeed_0',['walkspeed',['../classAPlayerActor.html#a1ea19f988738aada96a8f3637338163f',1,'APlayerActor::WalkSpeed'],['../classAOwlPlayer.html#aeb0f9a393680dd632fbfdb063b067c50',1,'AOwlPlayer::WalkSpeed']]],
   ['websocket_1',['WebSocket',['../classUWebSocketSystem.html#a6ea6f4303102f95763988ce17e88f4cd',1,'UWebSocketSystem']]],
   ['websocketurl_2',['WebSocketUrl',['../structFServerConfig.html#a192542ce9a719e9f4a9dd468e1e69aea',1,'FServerConfig']]],
-  ['widgetcomp_3',['widgetcomp',['../classAPedestalSwitch.html#a781bf2f8168ac87b729704885f894ef6',1,'APedestalSwitch::WidgetComp'],['../classAConveyorButton.html#a2a9b1343dc28a4e7cde57e23b2feedfe',1,'AConveyorButton::WidgetComp']]],
+  ['widgetcomp_3',['widgetcomp',['../classAPedestalSwitch.html#a781bf2f8168ac87b729704885f894ef6',1,'APedestalSwitch::WidgetComp'],['../classAConveyorButton.html#a2a9b1343dc28a4e7cde57e23b2feedfe',1,'AConveyorButton::WidgetComp'],['../classAluggage.html#a4198ee3271bbf5f2d66d98b1dd4230ec',1,'Aluggage::WidgetComp']]],
   ['widgetswitcher_4',['widgetSwitcher',['../classULobbyWidget.html#aa3515ca1f6392165f1810ae7525717c6',1,'ULobbyWidget']]],
   ['word_5',['word',['../structFListenData.html#a12a623aa35ab6c6938eadf8a3de15649',1,'FListenData::Word'],['../structFReadData.html#a0cfdeafbbdaa3e836fe7d9b95f513ff1',1,'FReadData::Word']]],
   ['word1_6',['word1',['../structFScenarioTargetData.html#a6527a75fdea3e93009524542d759862b',1,'FScenarioTargetData']]],

@@ -60,13 +60,13 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "ABroadcastTrigger_8cpp.html",
-"GameColor_8h.html#af7d073693f762258d28d399fbb63562f",
-"ULingoGameInstance_8h.html#a19b0ebcc430a73c898b86a0c19a1d74c",
+"GameLogging_8cpp_source.html",
+"ULingoGameInstance_8h.html#a19b0ebcc430a73c898b86a0c19a1d74cae579351858cc85edfce6664e868c9d46",
 "classALingoGameState.html#a783187f9c820272a7ea16cc90bb02cc4",
 "classAWeightSwitch.html#a3186a708297d96dfab84f9e4ca7f24d3",
-"classUGameDataManager.html#a06126e08dc91b9b5ec64805f5c3774bf",
-"classULobbyWidget.html#ab2a809ece4ef11c5a103558a69947ce3",
-"classUWebSocketSystem.html#a02b52e67a7d5cb10d8990691e83316de",
+"classUGameDataManager.html#a1facef35e640cde6bccffeff2c64f03b",
+"classULuggageInfoWidget.html#a2e236b706a0f3c6d5fefaf62db4e2eea",
+"classUWebSocketSystem.html#a193675a8b260eb5d79e535ef3f7f1192",
 "structFComponentHelper.html"
 ];
 

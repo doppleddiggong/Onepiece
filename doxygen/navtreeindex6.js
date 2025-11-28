@@ -1,12 +1,11 @@
 var NAVTREEINDEX6 =
 {
-"classULobbyWidget.html#ab2a809ece4ef11c5a103558a69947ce3":[2,0,95,16],
-"classULobbyWidget.html#ac269be527b9914bcf24923f5a15690f9":[2,0,95,9],
-"classULobbyWidget.html#adbc588bbd79766a16f50de5bd410c868":[2,0,95,15],
-"classULobbyWidget.html#ae19628adc8297e76a4edd5452099c2e4":[2,0,95,1],
-"classULobbyWidget.html#ae2dc5e331b153d1dfef548a2b694b4cb":[2,0,95,18],
-"classULobbyWidget.html#ae6e541e2364ae253225d51117656df8a":[2,0,95,12],
-"classULobbyWidget.html#afbaf44dd0987d901bf9a91aafdbe5885":[2,0,95,4],
+"classULuggageInfoWidget.html#a2e236b706a0f3c6d5fefaf62db4e2eea":[2,0,95,1],
+"classULuggageInfoWidget.html#a6ea3cb9d64e218d0b58238366cb78639":[2,0,95,4],
+"classULuggageInfoWidget.html#a820fec27cef2e6ba93497339cb640b61":[2,0,95,3],
+"classULuggageInfoWidget.html#ac581ddd8a70217da61d211206ea1aec7":[2,0,95,0],
+"classULuggageInfoWidget.html#adbaa8be34d3af2726a6a8ae13085f7b5":[2,0,95,5],
+"classULuggageInfoWidget.html#afe80b3c83c8dae8938e5245e8dc929f8":[2,0,95,2],
 "classUMainWidget.html":[2,0,96],
 "classUMainWidget.html#a087562bb275500b4085bf893720ae7b0":[2,0,96,3],
 "classUMainWidget.html#a28c73cc2f8555b84f29602dec7ad1f3f":[2,0,96,4],
@@ -249,5 +248,6 @@ var NAVTREEINDEX6 =
 "classUVoiceFunctionLibrary.html#ab7286a2381e79cda24832986f2f70964":[2,0,116,3],
 "classUVoiceFunctionLibrary.html#adf741678fa5eeadc6dbe30624ef6888b":[2,0,116,1],
 "classUVoiceFunctionLibrary.html#aefbf705777114a8667edc76347e70cda":[2,0,116,0],
-"classUWebSocketSystem.html":[2,0,117]
+"classUWebSocketSystem.html":[2,0,117],
+"classUWebSocketSystem.html#a02b52e67a7d5cb10d8990691e83316de":[2,0,117,7]
 };
