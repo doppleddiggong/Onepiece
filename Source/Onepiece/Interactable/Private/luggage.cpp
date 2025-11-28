@@ -83,11 +83,11 @@ void Aluggage::Tick(float DeltaTime)
 
 	// Pattern 이름을 luggage 위에 표시
 	
-	if (!Pattern.IsEmpty())
-	{
-		FVector TextLocation = GetActorLocation() + FVector(0, 0, 100);
-		DrawDebugString(GetWorld(), TextLocation, Pattern, nullptr, FColor::White, 0.f, true);
-	}
+	// if (!Pattern.IsEmpty())
+	// {
+	// 	FVector TextLocation = GetActorLocation() + FVector(0, 0, 100);
+	// 	DrawDebugString(GetWorld(), TextLocation, Pattern, nullptr, FColor::White, 0.f, true);
+	// }
 }
 
 void Aluggage::GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const
@@ -148,8 +148,33 @@ void Aluggage::ApplyPatternToMesh(int32 InPatternIdx)
 	PatternIdx = InPatternIdx;
 
 	// 데칼 바꾸기
-	// ...
+
+	FReadData ReadData;	
+	UGameDataManager::Get(GetWorld())->GetReadData(InPatternIdx, ReadData);
+
+
+	UTexture2D* LoadedTexture = nullptr;
+	if (ReadData.Texture.IsValid())
+	{
+		LoadedTexture = ReadData.Texture.Get();
+	}
+	else
+	{
+		LoadedTexture = ReadData.Texture.LoadSynchronous();
+	}
+
+	if ( UMaterialInterface* OriginalMaterial = Mesh2Comp->GetMaterial(0) )
+	{
+		UMaterialInstanceDynamic* NewMaterial = UMaterialInstanceDynamic::Create(OriginalMaterial, this);
+		if (NewMaterial)
+		{
+			// BaseColorFactor로 변경
+			NewMaterial->SetTextureParameterValue(FName("TextureParam"), LoadedTexture);
+			Mesh2Comp->SetMaterial(0, NewMaterial);
+		}
+	}
 }
+
 
 void Aluggage::OutlineOn()
 {
