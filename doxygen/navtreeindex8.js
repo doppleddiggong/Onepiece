@@ -1,5 +1,9 @@
 var NAVTREEINDEX8 =
 {
+"index.html#autotoc_md5":[0,1],
+"index.html#autotoc_md6":[0,1,0],
+"index.html#autotoc_md7":[0,1,1],
+"index.html#autotoc_md8":[0,1,2],
 "luggage_8cpp.html":[3,0,0,2,2,0,8],
 "luggage_8cpp.html#aed405cb2e29c39ee626f1a50b210cea5":[3,0,0,2,2,0,8,0],
 "luggage_8cpp_source.html":[3,0,0,2,2,0,8],
@@ -245,9 +249,5 @@ var NAVTREEINDEX8 =
 "structFResponseUserRegister.html#a1beb446da1a5775f4b40e1f3deccba7d":[2,0,58,1],
 "structFResponseUserRegister.html#a619652122132f4432d19e1c7a4063750":[2,0,58,4],
 "structFResponseUserRegister.html#a6e014b46e57cc332f2be8cb2d4192822":[2,0,58,5],
-"structFResponseUserRegister.html#a76212accdf5646661899a1f3253122f9":[2,0,58,2],
-"structFResponseUserRegister.html#a7c482c31b7c20aef498681e9fe743659":[2,0,58,0],
-"structFResponseUserRegister.html#ad9694a94a61bda11bfbe3d278555faf3":[2,0,58,3],
-"structFResponseUserToken.html":[2,0,59],
-"structFResponseUserToken.html#a2cf3b3fcc2df219d7ebdc5e1341950a4":[2,0,59,2]
+"structFResponseUserRegister.html#a76212accdf5646661899a1f3253122f9":[2,0,58,2]
 };

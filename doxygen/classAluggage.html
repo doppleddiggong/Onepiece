@@ -105,6 +105,8 @@ $(document).ready(function(){initNavTree('classAluggage.html',''); initResizable
 <a href="#pub-methods">Public 멤버 함수</a> &#124;
 <a href="#pub-attribs">Public 속성</a> &#124;
 <a href="#pro-attribs">Protected 속성</a> &#124;
+<a href="#pri-methods">Private 멤버 함수</a> &#124;
+<a href="#pri-attribs">Private 속성</a> &#124;
 <a href="classAluggage-members.html">모든 멤버 목록</a>  </div>
   <div class="headertitle"><div class="title">Aluggage 클래스 참조</div></div>
 </div><!--header-->
@@ -201,6 +203,16 @@ Protected 속성</h2></td></tr>
 <tr class="separator:a899a9b0ace4772c62cb480b0251fd633"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a880c239655a5b0ad93ba5fa26bcf49c4" id="r_a880c239655a5b0ad93ba5fa26bcf49c4"><td class="memItemLeft" align="right" valign="top">int32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAluggage.html#a880c239655a5b0ad93ba5fa26bcf49c4">SpawnIdx</a> = -1</td></tr>
 <tr class="separator:a880c239655a5b0ad93ba5fa26bcf49c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Private 멤버 함수</h2></td></tr>
+<tr class="memitem:a134ee387e130f327c4fd4f02f4079cb0" id="r_a134ee387e130f327c4fd4f02f4079cb0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAluggage.html#a134ee387e130f327c4fd4f02f4079cb0">UpdateWidget</a> ()</td></tr>
+<tr class="separator:a134ee387e130f327c4fd4f02f4079cb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private 속성</h2></td></tr>
+<tr class="memitem:a9721b1acd5f01a34aafa2753c57a2140" id="r_a9721b1acd5f01a34aafa2753c57a2140"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAluggage.html#a9721b1acd5f01a34aafa2753c57a2140">bWidgetInitialized</a> = false</td></tr>
+<tr class="separator:a9721b1acd5f01a34aafa2753c57a2140"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">상세한 설명</h2>
 <div class="textblock"><p>상호작용 가능한 수하물 액터 </p>
@@ -256,19 +268,24 @@ Protected 속성</h2></td></tr>
 <div class="line"><span class="lineno">   51</span>    <span class="comment">// 무게 설정</span></div>
 <div class="line"><span class="lineno">   52</span>    <a class="code hl_variable" href="classAluggage.html#a17e850881f1e195228802686a326ff09">Mesh1Comp</a>-&gt;SetMassOverrideInKg(NAME_None, 5.f, <span class="keyword">true</span>);</div>
 <div class="line"><span class="lineno">   53</span> </div>
-<div class="line"><span class="lineno">   54</span>    <span class="comment">// Replication</span></div>
-<div class="line"><span class="lineno">   55</span>    bReplicates = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   54</span>    <span class="comment">// 물리 복제 설정</span></div>
+<div class="line"><span class="lineno">   55</span>    <a class="code hl_variable" href="classAluggage.html#a17e850881f1e195228802686a326ff09">Mesh1Comp</a>-&gt;SetIsReplicated(<span class="keyword">true</span>);</div>
 <div class="line"><span class="lineno">   56</span> </div>
-<div class="line"><span class="lineno">   57</span>    <a class="code hl_variable" href="classAluggage.html#a4198ee3271bbf5f2d66d98b1dd4230ec">WidgetComp</a> = CreateDefaultSubobject&lt;UWidgetComponent&gt;(TEXT(<span class="stringliteral">&quot;WidgetComp&quot;</span>));</div>
-<div class="line"><span class="lineno">   58</span>    ConstructorHelpers::FClassFinder&lt;ULuggageInfoWidget&gt; boxWidgetRef(<a class="code hl_define" href="luggage_8cpp.html#aed405cb2e29c39ee626f1a50b210cea5">LUGGAGE_INTERACT_WIDGET_PATH</a>);</div>
-<div class="line"><span class="lineno">   59</span>    <span class="keywordflow">if</span> (boxWidgetRef.Succeeded())</div>
-<div class="line"><span class="lineno">   60</span>    {</div>
-<div class="line"><span class="lineno">   61</span>        <a class="code hl_variable" href="classAluggage.html#a4198ee3271bbf5f2d66d98b1dd4230ec">WidgetComp</a>-&gt;SetWidgetClass(boxWidgetRef.Class);</div>
-<div class="line"><span class="lineno">   62</span>        <a class="code hl_variable" href="classAluggage.html#a4198ee3271bbf5f2d66d98b1dd4230ec">WidgetComp</a>-&gt;SetupAttachment(GetRootComponent());</div>
-<div class="line"><span class="lineno">   63</span>        <a class="code hl_variable" href="classAluggage.html#a4198ee3271bbf5f2d66d98b1dd4230ec">WidgetComp</a>-&gt;SetWidgetSpace(EWidgetSpace::Screen);</div>
-<div class="line"><span class="lineno">   64</span>        <a class="code hl_variable" href="classAluggage.html#a4198ee3271bbf5f2d66d98b1dd4230ec">WidgetComp</a>-&gt;SetDrawSize(FVector2D(2048.0f, 1024.0f));</div>
-<div class="line"><span class="lineno">   65</span>    }</div>
-<div class="line"><span class="lineno">   66</span>}</div>
+<div class="line"><span class="lineno">   57</span>    <span class="comment">// Replication</span></div>
+<div class="line"><span class="lineno">   58</span>    bReplicates = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   59</span>    NetUpdateFrequency = 100.0f;  <span class="comment">// 높은 업데이트 빈도로 부드러운 네트워크 동기화</span></div>
+<div class="line"><span class="lineno">   60</span>    MinNetUpdateFrequency = 33.0f; <span class="comment">// 최소 30fps 업데이트 보장</span></div>
+<div class="line"><span class="lineno">   61</span> </div>
+<div class="line"><span class="lineno">   62</span>    <a class="code hl_variable" href="classAluggage.html#a4198ee3271bbf5f2d66d98b1dd4230ec">WidgetComp</a> = CreateDefaultSubobject&lt;UWidgetComponent&gt;(TEXT(<span class="stringliteral">&quot;WidgetComp&quot;</span>));</div>
+<div class="line"><span class="lineno">   63</span>    ConstructorHelpers::FClassFinder&lt;ULuggageInfoWidget&gt; boxWidgetRef(<a class="code hl_define" href="luggage_8cpp.html#aed405cb2e29c39ee626f1a50b210cea5">LUGGAGE_INTERACT_WIDGET_PATH</a>);</div>
+<div class="line"><span class="lineno">   64</span>    <span class="keywordflow">if</span> (boxWidgetRef.Succeeded())</div>
+<div class="line"><span class="lineno">   65</span>    {</div>
+<div class="line"><span class="lineno">   66</span>        <a class="code hl_variable" href="classAluggage.html#a4198ee3271bbf5f2d66d98b1dd4230ec">WidgetComp</a>-&gt;SetWidgetClass(boxWidgetRef.Class);</div>
+<div class="line"><span class="lineno">   67</span>        <a class="code hl_variable" href="classAluggage.html#a4198ee3271bbf5f2d66d98b1dd4230ec">WidgetComp</a>-&gt;SetupAttachment(GetRootComponent());</div>
+<div class="line"><span class="lineno">   68</span>        <a class="code hl_variable" href="classAluggage.html#a4198ee3271bbf5f2d66d98b1dd4230ec">WidgetComp</a>-&gt;SetWidgetSpace(EWidgetSpace::Screen);</div>
+<div class="line"><span class="lineno">   69</span>        <a class="code hl_variable" href="classAluggage.html#a4198ee3271bbf5f2d66d98b1dd4230ec">WidgetComp</a>-&gt;SetDrawSize(FVector2D(2048.0f, 1024.0f));</div>
+<div class="line"><span class="lineno">   70</span>    }</div>
+<div class="line"><span class="lineno">   71</span>}</div>
 <div class="ttc" id="aclassAluggage_html_a17e850881f1e195228802686a326ff09"><div class="ttname"><a href="classAluggage.html#a17e850881f1e195228802686a326ff09">Aluggage::Mesh1Comp</a></div><div class="ttdeci">TObjectPtr&lt; class UStaticMeshComponent &gt; Mesh1Comp</div><div class="ttdef"><b>Definition</b> <a href="luggage_8h_source.html#l00030">luggage.h:30</a></div></div>
 <div class="ttc" id="aclassAluggage_html_a39b79b08760cd4bd35f94262f8073ce9"><div class="ttname"><a href="classAluggage.html#a39b79b08760cd4bd35f94262f8073ce9">Aluggage::Mesh2Comp</a></div><div class="ttdeci">TObjectPtr&lt; class UStaticMeshComponent &gt; Mesh2Comp</div><div class="ttdef"><b>Definition</b> <a href="luggage_8h_source.html#l00032">luggage.h:32</a></div></div>
 <div class="ttc" id="aclassAluggage_html_a4198ee3271bbf5f2d66d98b1dd4230ec"><div class="ttname"><a href="classAluggage.html#a4198ee3271bbf5f2d66d98b1dd4230ec">Aluggage::WidgetComp</a></div><div class="ttdeci">TObjectPtr&lt; class UWidgetComponent &gt; WidgetComp</div><div class="ttdef"><b>Definition</b> <a href="luggage_8h_source.html#l00039">luggage.h:39</a></div></div>
@@ -299,35 +316,41 @@ Protected 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="luggage_8cpp_source.html">luggage.cpp</a> 파일의 <a class="el" href="luggage_8cpp_source.html#l00123">123</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  124</span>{</div>
-<div class="line"><span class="lineno">  125</span>    <a class="code hl_variable" href="classAluggage.html#a77701ede6847700cecd2677dd2b2e625">ColorIdx</a> = InColorIdx;</div>
-<div class="line"><span class="lineno">  126</span> </div>
-<div class="line"><span class="lineno">  127</span>    <a class="code hl_struct" href="structFColorData.html">FColorData</a> ColorData;</div>
-<div class="line"><span class="lineno">  128</span>    <span class="keywordflow">if</span> (UGameDataManager::Get(GetWorld())-&gt;GetColorData(InColorIdx, ColorData))</div>
-<div class="line"><span class="lineno">  129</span>    {</div>
-<div class="line"><span class="lineno">  130</span>        FLinearColor LinearColor = ColorData.<a class="code hl_function" href="structFColorData.html#aa094fa89444ea9b4302756140c580fb0">GetLinearColor</a>();</div>
-<div class="line"><span class="lineno">  131</span> </div>
-<div class="line"><span class="lineno">  132</span>        UMaterialInterface* OriginalMaterial = <a class="code hl_variable" href="classAluggage.html#a848e21dc134b0695d352d7b7356f4497">Mesh3Comp</a>-&gt;GetMaterial(0);</div>
-<div class="line"><span class="lineno">  133</span>        <span class="keywordflow">if</span> (OriginalMaterial)</div>
-<div class="line"><span class="lineno">  134</span>        {</div>
-<div class="line"><span class="lineno">  135</span>            UMaterialInstanceDynamic* NewMaterial = UMaterialInstanceDynamic::Create(OriginalMaterial, <span class="keyword">this</span>);</div>
-<div class="line"><span class="lineno">  136</span>            <span class="keywordflow">if</span> (NewMaterial &amp;&amp; <a class="code hl_variable" href="classAluggage.html#a848e21dc134b0695d352d7b7356f4497">Mesh3Comp</a>)</div>
-<div class="line"><span class="lineno">  137</span>            {</div>
-<div class="line"><span class="lineno">  138</span>                <span class="comment">// BaseColorFactor로 변경</span></div>
-<div class="line"><span class="lineno">  139</span>                NewMaterial-&gt;SetVectorParameterValue(FName(<span class="stringliteral">&quot;BaseColorFactor&quot;</span>), LinearColor);</div>
-<div class="line"><span class="lineno">  140</span>                <a class="code hl_variable" href="classAluggage.html#a848e21dc134b0695d352d7b7356f4497">Mesh3Comp</a>-&gt;SetMaterial(0, NewMaterial);</div>
-<div class="line"><span class="lineno">  141</span>            }</div>
-<div class="line"><span class="lineno">  142</span>        }</div>
-<div class="line"><span class="lineno">  143</span>    }</div>
-<div class="line"><span class="lineno">  144</span>}</div>
+<p class="definition"><a class="el" href="luggage_8cpp_source.html">luggage.cpp</a> 파일의 <a class="el" href="luggage_8cpp_source.html#l00133">133</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  134</span>{</div>
+<div class="line"><span class="lineno">  135</span>    <a class="code hl_variable" href="classAluggage.html#a77701ede6847700cecd2677dd2b2e625">ColorIdx</a> = InColorIdx;</div>
+<div class="line"><span class="lineno">  136</span> </div>
+<div class="line"><span class="lineno">  137</span>    <a class="code hl_struct" href="structFColorData.html">FColorData</a> ColorData;</div>
+<div class="line"><span class="lineno">  138</span>    <span class="keywordflow">if</span> (UGameDataManager::Get(GetWorld())-&gt;GetColorData(InColorIdx, ColorData))</div>
+<div class="line"><span class="lineno">  139</span>    {</div>
+<div class="line"><span class="lineno">  140</span>        <span class="comment">// Color 변수 설정 (모든 클라이언트에서 데이터 테이블에서 가져옴)</span></div>
+<div class="line"><span class="lineno">  141</span>        <a class="code hl_variable" href="classAluggage.html#a4a47514a5aff8824800c878ed73159c2">Color</a> = ColorData.<a class="code hl_variable" href="structFColorData.html#a737d45b830f9ada3aa7ccd44c32babb1">Desc</a>;</div>
+<div class="line"><span class="lineno">  142</span> </div>
+<div class="line"><span class="lineno">  143</span>        <span class="comment">// if ( auto InfoWidget = Cast&lt;ULuggageInfoWidget&gt;(WidgetComp-&gt;GetWidget()))</span></div>
+<div class="line"><span class="lineno">  144</span>        <span class="comment">//  InfoWidget-&gt;UpdateType1Data(ColorData.Desc);</span></div>
+<div class="line"><span class="lineno">  145</span> </div>
+<div class="line"><span class="lineno">  146</span>        UMaterialInterface* OriginalMaterial = <a class="code hl_variable" href="classAluggage.html#a848e21dc134b0695d352d7b7356f4497">Mesh3Comp</a>-&gt;GetMaterial(0);</div>
+<div class="line"><span class="lineno">  147</span>        <span class="keywordflow">if</span> (OriginalMaterial)</div>
+<div class="line"><span class="lineno">  148</span>        {</div>
+<div class="line"><span class="lineno">  149</span>            UMaterialInstanceDynamic* NewMaterial = UMaterialInstanceDynamic::Create(OriginalMaterial, <span class="keyword">this</span>);</div>
+<div class="line"><span class="lineno">  150</span>            <span class="keywordflow">if</span> (NewMaterial &amp;&amp; <a class="code hl_variable" href="classAluggage.html#a848e21dc134b0695d352d7b7356f4497">Mesh3Comp</a>)</div>
+<div class="line"><span class="lineno">  151</span>            {</div>
+<div class="line"><span class="lineno">  152</span>                <span class="comment">// BaseColorFactor로 변경</span></div>
+<div class="line"><span class="lineno">  153</span>                NewMaterial-&gt;SetVectorParameterValue(FName(<span class="stringliteral">&quot;BaseColorFactor&quot;</span>), ColorData.<a class="code hl_function" href="structFColorData.html#aa094fa89444ea9b4302756140c580fb0">GetLinearColor</a>());</div>
+<div class="line"><span class="lineno">  154</span>                <a class="code hl_variable" href="classAluggage.html#a848e21dc134b0695d352d7b7356f4497">Mesh3Comp</a>-&gt;SetMaterial(0, NewMaterial);</div>
+<div class="line"><span class="lineno">  155</span>            }</div>
+<div class="line"><span class="lineno">  156</span>        }</div>
+<div class="line"><span class="lineno">  157</span>    }</div>
+<div class="line"><span class="lineno">  158</span>}</div>
+<div class="ttc" id="aclassAluggage_html_a4a47514a5aff8824800c878ed73159c2"><div class="ttname"><a href="classAluggage.html#a4a47514a5aff8824800c878ed73159c2">Aluggage::Color</a></div><div class="ttdeci">FString Color</div><div class="ttdef"><b>Definition</b> <a href="luggage_8h_source.html#l00053">luggage.h:53</a></div></div>
 <div class="ttc" id="aclassAluggage_html_a77701ede6847700cecd2677dd2b2e625"><div class="ttname"><a href="classAluggage.html#a77701ede6847700cecd2677dd2b2e625">Aluggage::ColorIdx</a></div><div class="ttdeci">int32 ColorIdx</div><div class="ttdef"><b>Definition</b> <a href="luggage_8h_source.html#l00068">luggage.h:68</a></div></div>
 <div class="ttc" id="astructFColorData_html"><div class="ttname"><a href="structFColorData.html">FColorData</a></div><div class="ttdoc">색상 데이터를 정의하는 구조체</div><div class="ttdef"><b>Definition</b> <a href="FColorData_8h_source.html#l00018">FColorData.h:19</a></div></div>
+<div class="ttc" id="astructFColorData_html_a737d45b830f9ada3aa7ccd44c32babb1"><div class="ttname"><a href="structFColorData.html#a737d45b830f9ada3aa7ccd44c32babb1">FColorData::Desc</a></div><div class="ttdeci">FString Desc</div><div class="ttdoc">색상 설명 (한글명)</div><div class="ttdef"><b>Definition</b> <a href="FColorData_8h_source.html#l00032">FColorData.h:32</a></div></div>
 <div class="ttc" id="astructFColorData_html_aa094fa89444ea9b4302756140c580fb0"><div class="ttname"><a href="structFColorData.html#aa094fa89444ea9b4302756140c580fb0">FColorData::GetLinearColor</a></div><div class="ttdeci">FLinearColor GetLinearColor() const</div><div class="ttdoc">HexColor 문자열을 FLinearColor로 변환하여 반환</div><div class="ttdef"><b>Definition</b> <a href="FColorData_8h_source.html#l00039">FColorData.h:39</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="luggage_8h_source.html#l00068">ColorIdx</a>, <a class="el" href="FColorData_8h_source.html#l00039">FColorData::GetLinearColor()</a>, <a class="el" href="luggage_8h_source.html#l00034">Mesh3Comp</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="luggage_8h_source.html#l00053">Color</a>, <a class="el" href="luggage_8h_source.html#l00068">ColorIdx</a>, <a class="el" href="FColorData_8h_source.html#l00032">FColorData::Desc</a>, <a class="el" href="FColorData_8h_source.html#l00039">FColorData::GetLinearColor()</a>, <a class="el" href="luggage_8h_source.html#l00034">Mesh3Comp</a>.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="luggage_8cpp_source.html#l00113">OnRep_ColorIdx()</a>, <a class="el" href="LuggageManager_8cpp_source.html#l00052">ALuggageManager::SpawnLuggage()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="luggage_8cpp_source.html#l00123">OnRep_ColorIdx()</a>, <a class="el" href="LuggageManager_8cpp_source.html#l00052">ALuggageManager::SpawnLuggage()</a>.</p>
 <div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-2-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
@@ -361,44 +384,47 @@ Protected 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="luggage_8cpp_source.html">luggage.cpp</a> 파일의 <a class="el" href="luggage_8cpp_source.html#l00146">146</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  147</span>{</div>
-<div class="line"><span class="lineno">  148</span>    <a class="code hl_variable" href="classAluggage.html#a5eb51fa644ca8171df6d870c85c92271">PatternIdx</a> = InPatternIdx;</div>
-<div class="line"><span class="lineno">  149</span> </div>
-<div class="line"><span class="lineno">  150</span>    <span class="comment">// 데칼 바꾸기</span></div>
-<div class="line"><span class="lineno">  151</span> </div>
-<div class="line"><span class="lineno">  152</span>    <a class="code hl_struct" href="structFReadData.html">FReadData</a> ReadData; </div>
-<div class="line"><span class="lineno">  153</span>    UGameDataManager::Get(GetWorld())-&gt;GetReadData(InPatternIdx, ReadData);</div>
-<div class="line"><span class="lineno">  154</span> </div>
-<div class="line"><span class="lineno">  155</span> </div>
-<div class="line"><span class="lineno">  156</span>    UTexture2D* LoadedTexture = <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">  157</span>    <span class="keywordflow">if</span> (ReadData.<a class="code hl_variable" href="structFReadData.html#a5c8d28fbe4c3617ea9d338197a11d30c">Texture</a>.IsValid())</div>
-<div class="line"><span class="lineno">  158</span>    {</div>
-<div class="line"><span class="lineno">  159</span>        LoadedTexture = ReadData.<a class="code hl_variable" href="structFReadData.html#a5c8d28fbe4c3617ea9d338197a11d30c">Texture</a>.Get();</div>
-<div class="line"><span class="lineno">  160</span>    }</div>
-<div class="line"><span class="lineno">  161</span>    <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  162</span>    {</div>
-<div class="line"><span class="lineno">  163</span>        LoadedTexture = ReadData.<a class="code hl_variable" href="structFReadData.html#a5c8d28fbe4c3617ea9d338197a11d30c">Texture</a>.LoadSynchronous();</div>
-<div class="line"><span class="lineno">  164</span>    }</div>
+<p class="definition"><a class="el" href="luggage_8cpp_source.html">luggage.cpp</a> 파일의 <a class="el" href="luggage_8cpp_source.html#l00160">160</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  161</span>{</div>
+<div class="line"><span class="lineno">  162</span>    <a class="code hl_variable" href="classAluggage.html#a5eb51fa644ca8171df6d870c85c92271">PatternIdx</a> = InPatternIdx;</div>
+<div class="line"><span class="lineno">  163</span> </div>
+<div class="line"><span class="lineno">  164</span>    <span class="comment">// 데칼 바꾸기</span></div>
 <div class="line"><span class="lineno">  165</span> </div>
-<div class="line"><span class="lineno">  166</span>    <span class="keywordflow">if</span> ( UMaterialInterface* OriginalMaterial = <a class="code hl_variable" href="classAluggage.html#a39b79b08760cd4bd35f94262f8073ce9">Mesh2Comp</a>-&gt;GetMaterial(0) )</div>
-<div class="line"><span class="lineno">  167</span>    {</div>
-<div class="line"><span class="lineno">  168</span>        UMaterialInstanceDynamic* NewMaterial = UMaterialInstanceDynamic::Create(OriginalMaterial, <span class="keyword">this</span>);</div>
-<div class="line"><span class="lineno">  169</span>        <span class="keywordflow">if</span> (NewMaterial)</div>
-<div class="line"><span class="lineno">  170</span>        {</div>
-<div class="line"><span class="lineno">  171</span>            <span class="comment">// BaseColorFactor로 변경</span></div>
-<div class="line"><span class="lineno">  172</span>            NewMaterial-&gt;SetTextureParameterValue(FName(<span class="stringliteral">&quot;TextureParam&quot;</span>), LoadedTexture);</div>
-<div class="line"><span class="lineno">  173</span>            <a class="code hl_variable" href="classAluggage.html#a39b79b08760cd4bd35f94262f8073ce9">Mesh2Comp</a>-&gt;SetMaterial(0, NewMaterial);</div>
-<div class="line"><span class="lineno">  174</span>        }</div>
-<div class="line"><span class="lineno">  175</span>    }</div>
-<div class="line"><span class="lineno">  176</span>}</div>
+<div class="line"><span class="lineno">  166</span>    <a class="code hl_struct" href="structFReadData.html">FReadData</a> ReadData;</div>
+<div class="line"><span class="lineno">  167</span>    UGameDataManager::Get(GetWorld())-&gt;GetReadData(InPatternIdx, ReadData);</div>
+<div class="line"><span class="lineno">  168</span> </div>
+<div class="line"><span class="lineno">  169</span>    <span class="comment">// Pattern 변수 설정 (모든 클라이언트에서 데이터 테이블에서 가져옴)</span></div>
+<div class="line"><span class="lineno">  170</span>    <a class="code hl_variable" href="classAluggage.html#a899a9b0ace4772c62cb480b0251fd633">Pattern</a> = ReadData.<a class="code hl_variable" href="structFReadData.html#a0cfdeafbbdaa3e836fe7d9b95f513ff1">Word</a>;</div>
+<div class="line"><span class="lineno">  171</span> </div>
+<div class="line"><span class="lineno">  172</span>    <span class="comment">// if ( auto InfoWidget = Cast&lt;ULuggageInfoWidget&gt;(WidgetComp-&gt;GetWidget()))</span></div>
+<div class="line"><span class="lineno">  173</span>    <span class="comment">//  InfoWidget-&gt;UpdateType2Data(ReadData.Word);</span></div>
+<div class="line"><span class="lineno">  174</span> </div>
+<div class="line"><span class="lineno">  175</span>    UTexture2D* LoadedTexture = <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">  176</span>    <span class="keywordflow">if</span> (ReadData.<a class="code hl_variable" href="structFReadData.html#a5c8d28fbe4c3617ea9d338197a11d30c">Texture</a>.IsValid())</div>
+<div class="line"><span class="lineno">  177</span>        LoadedTexture = ReadData.<a class="code hl_variable" href="structFReadData.html#a5c8d28fbe4c3617ea9d338197a11d30c">Texture</a>.Get();</div>
+<div class="line"><span class="lineno">  178</span>    <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  179</span>        LoadedTexture = ReadData.<a class="code hl_variable" href="structFReadData.html#a5c8d28fbe4c3617ea9d338197a11d30c">Texture</a>.LoadSynchronous();</div>
+<div class="line"><span class="lineno">  180</span> </div>
+<div class="line"><span class="lineno">  181</span>    <span class="keywordflow">if</span> ( UMaterialInterface* OriginalMaterial = <a class="code hl_variable" href="classAluggage.html#a39b79b08760cd4bd35f94262f8073ce9">Mesh2Comp</a>-&gt;GetMaterial(0) )</div>
+<div class="line"><span class="lineno">  182</span>    {</div>
+<div class="line"><span class="lineno">  183</span>        UMaterialInstanceDynamic* NewMaterial = UMaterialInstanceDynamic::Create(OriginalMaterial, <span class="keyword">this</span>);</div>
+<div class="line"><span class="lineno">  184</span>        <span class="keywordflow">if</span> (NewMaterial)</div>
+<div class="line"><span class="lineno">  185</span>        {</div>
+<div class="line"><span class="lineno">  186</span>            <span class="comment">// BaseColorFactor로 변경</span></div>
+<div class="line"><span class="lineno">  187</span>            NewMaterial-&gt;SetTextureParameterValue(FName(<span class="stringliteral">&quot;TextureParam&quot;</span>), LoadedTexture);</div>
+<div class="line"><span class="lineno">  188</span>            <a class="code hl_variable" href="classAluggage.html#a39b79b08760cd4bd35f94262f8073ce9">Mesh2Comp</a>-&gt;SetMaterial(0, NewMaterial);</div>
+<div class="line"><span class="lineno">  189</span>        }</div>
+<div class="line"><span class="lineno">  190</span>    }</div>
+<div class="line"><span class="lineno">  191</span>}</div>
 <div class="ttc" id="aclassAluggage_html_a5eb51fa644ca8171df6d870c85c92271"><div class="ttname"><a href="classAluggage.html#a5eb51fa644ca8171df6d870c85c92271">Aluggage::PatternIdx</a></div><div class="ttdeci">int32 PatternIdx</div><div class="ttdef"><b>Definition</b> <a href="luggage_8h_source.html#l00071">luggage.h:71</a></div></div>
+<div class="ttc" id="aclassAluggage_html_a899a9b0ace4772c62cb480b0251fd633"><div class="ttname"><a href="classAluggage.html#a899a9b0ace4772c62cb480b0251fd633">Aluggage::Pattern</a></div><div class="ttdeci">FString Pattern</div><div class="ttdef"><b>Definition</b> <a href="luggage_8h_source.html#l00055">luggage.h:55</a></div></div>
 <div class="ttc" id="astructFReadData_html"><div class="ttname"><a href="structFReadData.html">FReadData</a></div><div class="ttdoc">읽기 학습 데이터를 정의하는 구조체</div><div class="ttdef"><b>Definition</b> <a href="FReadData_8h_source.html#l00018">FReadData.h:19</a></div></div>
+<div class="ttc" id="astructFReadData_html_a0cfdeafbbdaa3e836fe7d9b95f513ff1"><div class="ttname"><a href="structFReadData.html#a0cfdeafbbdaa3e836fe7d9b95f513ff1">FReadData::Word</a></div><div class="ttdeci">FString Word</div><div class="ttdoc">학습 단어</div><div class="ttdef"><b>Definition</b> <a href="FReadData_8h_source.html#l00032">FReadData.h:32</a></div></div>
 <div class="ttc" id="astructFReadData_html_a5c8d28fbe4c3617ea9d338197a11d30c"><div class="ttname"><a href="structFReadData.html#a5c8d28fbe4c3617ea9d338197a11d30c">FReadData::Texture</a></div><div class="ttdeci">TSoftObjectPtr&lt; UTexture2D &gt; Texture</div><div class="ttdef"><b>Definition</b> <a href="FReadData_8h_source.html#l00035">FReadData.h:35</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="luggage_8h_source.html#l00032">Mesh2Comp</a>, <a class="el" href="luggage_8h_source.html#l00071">PatternIdx</a>, <a class="el" href="FReadData_8h_source.html#l00035">FReadData::Texture</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="luggage_8h_source.html#l00032">Mesh2Comp</a>, <a class="el" href="luggage_8h_source.html#l00055">Pattern</a>, <a class="el" href="luggage_8h_source.html#l00071">PatternIdx</a>, <a class="el" href="FReadData_8h_source.html#l00035">FReadData::Texture</a>, <a class="el" href="FReadData_8h_source.html#l00032">FReadData::Word</a>.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="luggage_8cpp_source.html#l00118">OnRep_PatternIdx()</a>, <a class="el" href="LuggageManager_8cpp_source.html#l00052">ALuggageManager::SpawnLuggage()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="luggage_8cpp_source.html#l00128">OnRep_PatternIdx()</a>, <a class="el" href="LuggageManager_8cpp_source.html#l00052">ALuggageManager::SpawnLuggage()</a>.</p>
 <div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-4-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-4-summary" class="dynsummary" style="display:block;">
@@ -432,15 +458,15 @@ Protected 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="luggage_8cpp_source.html">luggage.cpp</a> 파일의 <a class="el" href="luggage_8cpp_source.html#l00068">68</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   69</span>{</div>
-<div class="line"><span class="lineno">   70</span>    Super::BeginPlay();</div>
-<div class="line"><span class="lineno">   71</span> </div>
-<div class="line"><span class="lineno">   72</span>    SetReplicateMovement(<span class="keyword">true</span>);</div>
-<div class="line"><span class="lineno">   73</span> </div>
-<div class="line"><span class="lineno">   74</span>    <span class="comment">// 델리게이트 바인딩</span></div>
-<div class="line"><span class="lineno">   75</span>    <a class="code hl_variable" href="classAluggage.html#a555315380e2dd75038c0d2aea8fe9b02">InteractableComp</a>-&gt;InitWidget(<a class="code hl_variable" href="classAluggage.html#a4198ee3271bbf5f2d66d98b1dd4230ec">WidgetComp</a>);</div>
-<div class="line"><span class="lineno">   76</span>}</div>
+<p class="definition"><a class="el" href="luggage_8cpp_source.html">luggage.cpp</a> 파일의 <a class="el" href="luggage_8cpp_source.html#l00073">73</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   74</span>{</div>
+<div class="line"><span class="lineno">   75</span>    Super::BeginPlay();</div>
+<div class="line"><span class="lineno">   76</span> </div>
+<div class="line"><span class="lineno">   77</span>    SetReplicateMovement(<span class="keyword">true</span>);</div>
+<div class="line"><span class="lineno">   78</span> </div>
+<div class="line"><span class="lineno">   79</span>    <span class="comment">// 델리게이트 바인딩</span></div>
+<div class="line"><span class="lineno">   80</span>    <a class="code hl_variable" href="classAluggage.html#a555315380e2dd75038c0d2aea8fe9b02">InteractableComp</a>-&gt;InitWidget(<a class="code hl_variable" href="classAluggage.html#a4198ee3271bbf5f2d66d98b1dd4230ec">WidgetComp</a>);</div>
+<div class="line"><span class="lineno">   81</span>}</div>
 </div><!-- fragment -->
 <p class="reference">다음을 참조함 :  <a class="el" href="luggage_8h_source.html#l00037">InteractableComp</a>, <a class="el" href="luggage_8h_source.html#l00039">WidgetComp</a>.</p>
 
@@ -471,7 +497,6 @@ Protected 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="luggage_8h_source.html">luggage.h</a> 파일의 <a class="el" href="luggage_8h_source.html#l00062">62</a> 번째 라인에서 정의되었습니다.</p>
 <div class="fragment"><div class="line"><span class="lineno">   62</span>{<span class="keywordflow">return</span> <a class="code hl_variable" href="classAluggage.html#a4a47514a5aff8824800c878ed73159c2">Color</a>;}</div>
-<div class="ttc" id="aclassAluggage_html_a4a47514a5aff8824800c878ed73159c2"><div class="ttname"><a href="classAluggage.html#a4a47514a5aff8824800c878ed73159c2">Aluggage::Color</a></div><div class="ttdeci">FString Color</div><div class="ttdef"><b>Definition</b> <a href="luggage_8h_source.html#l00053">luggage.h:53</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -499,13 +524,13 @@ Protected 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="luggage_8cpp_source.html">luggage.cpp</a> 파일의 <a class="el" href="luggage_8cpp_source.html#l00093">93</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   94</span>{</div>
-<div class="line"><span class="lineno">   95</span>    Super::GetLifetimeReplicatedProps(OutLifetimeProps);</div>
-<div class="line"><span class="lineno">   96</span> </div>
-<div class="line"><span class="lineno">   97</span>    DOREPLIFETIME(<a class="code hl_class" href="classAluggage.html">Aluggage</a>, <a class="code hl_variable" href="classAluggage.html#a77701ede6847700cecd2677dd2b2e625">ColorIdx</a>);</div>
-<div class="line"><span class="lineno">   98</span>    DOREPLIFETIME(<a class="code hl_class" href="classAluggage.html">Aluggage</a>, <a class="code hl_variable" href="classAluggage.html#a5eb51fa644ca8171df6d870c85c92271">PatternIdx</a>);</div>
-<div class="line"><span class="lineno">   99</span>}</div>
+<p class="definition"><a class="el" href="luggage_8cpp_source.html">luggage.cpp</a> 파일의 <a class="el" href="luggage_8cpp_source.html#l00108">108</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  109</span>{</div>
+<div class="line"><span class="lineno">  110</span>    Super::GetLifetimeReplicatedProps(OutLifetimeProps);</div>
+<div class="line"><span class="lineno">  111</span> </div>
+<div class="line"><span class="lineno">  112</span>    DOREPLIFETIME(<a class="code hl_class" href="classAluggage.html">Aluggage</a>, <a class="code hl_variable" href="classAluggage.html#a77701ede6847700cecd2677dd2b2e625">ColorIdx</a>);</div>
+<div class="line"><span class="lineno">  113</span>    DOREPLIFETIME(<a class="code hl_class" href="classAluggage.html">Aluggage</a>, <a class="code hl_variable" href="classAluggage.html#a5eb51fa644ca8171df6d870c85c92271">PatternIdx</a>);</div>
+<div class="line"><span class="lineno">  114</span>}</div>
 <div class="ttc" id="aclassAluggage_html"><div class="ttname"><a href="classAluggage.html">Aluggage</a></div><div class="ttdoc">상호작용 가능한 수하물 액터</div><div class="ttdef"><b>Definition</b> <a href="luggage_8h_source.html#l00013">luggage.h:14</a></div></div>
 </div><!-- fragment -->
 <p class="reference">다음을 참조함 :  <a class="el" href="luggage_8h_source.html#l00068">ColorIdx</a>, <a class="el" href="luggage_8h_source.html#l00071">PatternIdx</a>.</p>
@@ -537,7 +562,6 @@ Protected 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="luggage_8h_source.html">luggage.h</a> 파일의 <a class="el" href="luggage_8h_source.html#l00063">63</a> 번째 라인에서 정의되었습니다.</p>
 <div class="fragment"><div class="line"><span class="lineno">   63</span>{<span class="keywordflow">return</span> <a class="code hl_variable" href="classAluggage.html#a899a9b0ace4772c62cb480b0251fd633">Pattern</a>;}</div>
-<div class="ttc" id="aclassAluggage_html_a899a9b0ace4772c62cb480b0251fd633"><div class="ttname"><a href="classAluggage.html#a899a9b0ace4772c62cb480b0251fd633">Aluggage::Pattern</a></div><div class="ttdeci">FString Pattern</div><div class="ttdef"><b>Definition</b> <a href="luggage_8h_source.html#l00055">luggage.h:55</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -594,34 +618,34 @@ Protected 속성</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition"><a class="el" href="luggage_8cpp_source.html">luggage.cpp</a> 파일의 <a class="el" href="luggage_8cpp_source.html#l00219">219</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  220</span>{</div>
-<div class="line"><span class="lineno">  221</span>    <span class="keywordflow">if</span> (!Interactor)</div>
-<div class="line"><span class="lineno">  222</span>    {</div>
-<div class="line"><span class="lineno">  223</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[Luggage] OnInteract - Interactor is null&quot;</span>));</div>
-<div class="line"><span class="lineno">  224</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  225</span>    }</div>
-<div class="line"><span class="lineno">  226</span> </div>
-<div class="line"><span class="lineno">  227</span>    <span class="comment">// 플레이어 컨트롤러와 PlayerState 가져오기</span></div>
-<div class="line"><span class="lineno">  228</span>    APlayerController* PC = Cast&lt;APlayerController&gt;(Interactor-&gt;GetInstigatorController());</div>
-<div class="line"><span class="lineno">  229</span>    <span class="keywordflow">if</span> (!PC)</div>
-<div class="line"><span class="lineno">  230</span>    {</div>
-<div class="line"><span class="lineno">  231</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[Luggage] OnInteract - PlayerController is null&quot;</span>));</div>
-<div class="line"><span class="lineno">  232</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  233</span>    }</div>
-<div class="line"><span class="lineno">  234</span> </div>
-<div class="line"><span class="lineno">  235</span>    APlayerState* PS = PC-&gt;GetPlayerState&lt;APlayerState&gt;();</div>
-<div class="line"><span class="lineno">  236</span>    <span class="keywordflow">if</span> (!PS)</div>
-<div class="line"><span class="lineno">  237</span>    {</div>
-<div class="line"><span class="lineno">  238</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[Luggage] OnInteract - PlayerState is null&quot;</span>));</div>
-<div class="line"><span class="lineno">  239</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  240</span>    }</div>
-<div class="line"><span class="lineno">  241</span> </div>
-<div class="line"><span class="lineno">  242</span>    <span class="comment">//PRINTLOG(TEXT(&quot;[Luggage] OnInteract - Player selected luggage with Target1: %s, Target2: %s&quot;), *Target1, *Target2);</span></div>
-<div class="line"><span class="lineno">  243</span> </div>
-<div class="line"><span class="lineno">  244</span>    <span class="comment">// 서버에 선택 알림</span></div>
-<div class="line"><span class="lineno">  245</span>    <a class="code hl_function" href="classAluggage.html#aefd0f676f44e0e7fcde6f6f29a709b60">ServerNotifySelection</a>(PS);</div>
-<div class="line"><span class="lineno">  246</span>}</div>
+<p class="definition"><a class="el" href="luggage_8cpp_source.html">luggage.cpp</a> 파일의 <a class="el" href="luggage_8cpp_source.html#l00244">244</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  245</span>{</div>
+<div class="line"><span class="lineno">  246</span>    <span class="keywordflow">if</span> (!Interactor)</div>
+<div class="line"><span class="lineno">  247</span>    {</div>
+<div class="line"><span class="lineno">  248</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[Luggage] OnInteract - Interactor is null&quot;</span>));</div>
+<div class="line"><span class="lineno">  249</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  250</span>    }</div>
+<div class="line"><span class="lineno">  251</span> </div>
+<div class="line"><span class="lineno">  252</span>    <span class="comment">// 플레이어 컨트롤러와 PlayerState 가져오기</span></div>
+<div class="line"><span class="lineno">  253</span>    APlayerController* PC = Cast&lt;APlayerController&gt;(Interactor-&gt;GetInstigatorController());</div>
+<div class="line"><span class="lineno">  254</span>    <span class="keywordflow">if</span> (!PC)</div>
+<div class="line"><span class="lineno">  255</span>    {</div>
+<div class="line"><span class="lineno">  256</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[Luggage] OnInteract - PlayerController is null&quot;</span>));</div>
+<div class="line"><span class="lineno">  257</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  258</span>    }</div>
+<div class="line"><span class="lineno">  259</span> </div>
+<div class="line"><span class="lineno">  260</span>    APlayerState* PS = PC-&gt;GetPlayerState&lt;APlayerState&gt;();</div>
+<div class="line"><span class="lineno">  261</span>    <span class="keywordflow">if</span> (!PS)</div>
+<div class="line"><span class="lineno">  262</span>    {</div>
+<div class="line"><span class="lineno">  263</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[Luggage] OnInteract - PlayerState is null&quot;</span>));</div>
+<div class="line"><span class="lineno">  264</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  265</span>    }</div>
+<div class="line"><span class="lineno">  266</span> </div>
+<div class="line"><span class="lineno">  267</span>    <span class="comment">//PRINTLOG(TEXT(&quot;[Luggage] OnInteract - Player selected luggage with Target1: %s, Target2: %s&quot;), *Target1, *Target2);</span></div>
+<div class="line"><span class="lineno">  268</span> </div>
+<div class="line"><span class="lineno">  269</span>    <span class="comment">// 서버에 선택 알림</span></div>
+<div class="line"><span class="lineno">  270</span>    <a class="code hl_function" href="classAluggage.html#aefd0f676f44e0e7fcde6f6f29a709b60">ServerNotifySelection</a>(PS);</div>
+<div class="line"><span class="lineno">  271</span>}</div>
 <div class="ttc" id="aGameLogging_8h_html_a9998c8beb11a6bad6ffada2e701fc0cf"><div class="ttname"><a href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a></div><div class="ttdeci">#define PRINTLOG(fmt,...)</div><div class="ttdef"><b>Definition</b> <a href="GameLogging_8h_source.html#l00030">GameLogging.h:30</a></div></div>
 <div class="ttc" id="aclassAluggage_html_aefd0f676f44e0e7fcde6f6f29a709b60"><div class="ttname"><a href="classAluggage.html#aefd0f676f44e0e7fcde6f6f29a709b60">Aluggage::ServerNotifySelection</a></div><div class="ttdeci">void ServerNotifySelection(class APlayerState *Player)</div><div class="ttdoc">서버에 캐리어 선택을 알립니다.</div></div>
 </div><!-- fragment -->
@@ -651,13 +675,13 @@ Protected 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="luggage_8cpp_source.html">luggage.cpp</a> 파일의 <a class="el" href="luggage_8cpp_source.html#l00113">113</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  114</span>{</div>
-<div class="line"><span class="lineno">  115</span>    <a class="code hl_function" href="classAluggage.html#aa5a78203e58b47252c35b9ba5f1cf58c">ApplyColorToMesh</a>(<a class="code hl_variable" href="classAluggage.html#a77701ede6847700cecd2677dd2b2e625">ColorIdx</a>);</div>
-<div class="line"><span class="lineno">  116</span>}</div>
-<div class="ttc" id="aclassAluggage_html_aa5a78203e58b47252c35b9ba5f1cf58c"><div class="ttname"><a href="classAluggage.html#aa5a78203e58b47252c35b9ba5f1cf58c">Aluggage::ApplyColorToMesh</a></div><div class="ttdeci">void ApplyColorToMesh(int32 InColorIdx)</div><div class="ttdef"><b>Definition</b> <a href="luggage_8cpp_source.html#l00123">luggage.cpp:123</a></div></div>
+<p class="definition"><a class="el" href="luggage_8cpp_source.html">luggage.cpp</a> 파일의 <a class="el" href="luggage_8cpp_source.html#l00123">123</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  124</span>{</div>
+<div class="line"><span class="lineno">  125</span>    <a class="code hl_function" href="classAluggage.html#aa5a78203e58b47252c35b9ba5f1cf58c">ApplyColorToMesh</a>(<a class="code hl_variable" href="classAluggage.html#a77701ede6847700cecd2677dd2b2e625">ColorIdx</a>);</div>
+<div class="line"><span class="lineno">  126</span>}</div>
+<div class="ttc" id="aclassAluggage_html_aa5a78203e58b47252c35b9ba5f1cf58c"><div class="ttname"><a href="classAluggage.html#aa5a78203e58b47252c35b9ba5f1cf58c">Aluggage::ApplyColorToMesh</a></div><div class="ttdeci">void ApplyColorToMesh(int32 InColorIdx)</div><div class="ttdef"><b>Definition</b> <a href="luggage_8cpp_source.html#l00133">luggage.cpp:133</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="luggage_8cpp_source.html#l00123">ApplyColorToMesh()</a>, <a class="el" href="luggage_8h_source.html#l00068">ColorIdx</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="luggage_8cpp_source.html#l00133">ApplyColorToMesh()</a>, <a class="el" href="luggage_8h_source.html#l00068">ColorIdx</a>.</p>
 <div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-6-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-6-summary" class="dynsummary" style="display:block;">
@@ -683,13 +707,13 @@ Protected 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="luggage_8cpp_source.html">luggage.cpp</a> 파일의 <a class="el" href="luggage_8cpp_source.html#l00118">118</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  119</span>{</div>
-<div class="line"><span class="lineno">  120</span>    <a class="code hl_function" href="classAluggage.html#a5278c16bd28e0ee6fdbf2131aa70d5fc">ApplyPatternToMesh</a>(<a class="code hl_variable" href="classAluggage.html#a5eb51fa644ca8171df6d870c85c92271">PatternIdx</a>);</div>
-<div class="line"><span class="lineno">  121</span>}</div>
-<div class="ttc" id="aclassAluggage_html_a5278c16bd28e0ee6fdbf2131aa70d5fc"><div class="ttname"><a href="classAluggage.html#a5278c16bd28e0ee6fdbf2131aa70d5fc">Aluggage::ApplyPatternToMesh</a></div><div class="ttdeci">void ApplyPatternToMesh(int32 InPatternIdx)</div><div class="ttdef"><b>Definition</b> <a href="luggage_8cpp_source.html#l00146">luggage.cpp:146</a></div></div>
+<p class="definition"><a class="el" href="luggage_8cpp_source.html">luggage.cpp</a> 파일의 <a class="el" href="luggage_8cpp_source.html#l00128">128</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  129</span>{</div>
+<div class="line"><span class="lineno">  130</span>    <a class="code hl_function" href="classAluggage.html#a5278c16bd28e0ee6fdbf2131aa70d5fc">ApplyPatternToMesh</a>(<a class="code hl_variable" href="classAluggage.html#a5eb51fa644ca8171df6d870c85c92271">PatternIdx</a>);</div>
+<div class="line"><span class="lineno">  131</span>}</div>
+<div class="ttc" id="aclassAluggage_html_a5278c16bd28e0ee6fdbf2131aa70d5fc"><div class="ttname"><a href="classAluggage.html#a5278c16bd28e0ee6fdbf2131aa70d5fc">Aluggage::ApplyPatternToMesh</a></div><div class="ttdeci">void ApplyPatternToMesh(int32 InPatternIdx)</div><div class="ttdef"><b>Definition</b> <a href="luggage_8cpp_source.html#l00160">luggage.cpp:160</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="luggage_8cpp_source.html#l00146">ApplyPatternToMesh()</a>, <a class="el" href="luggage_8h_source.html#l00071">PatternIdx</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="luggage_8cpp_source.html#l00160">ApplyPatternToMesh()</a>, <a class="el" href="luggage_8h_source.html#l00071">PatternIdx</a>.</p>
 <div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-7-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-7-summary" class="dynsummary" style="display:block;">
@@ -715,10 +739,10 @@ Protected 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="luggage_8cpp_source.html">luggage.cpp</a> 파일의 <a class="el" href="luggage_8cpp_source.html#l00184">184</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  185</span>{</div>
-<div class="line"><span class="lineno">  186</span>    <a class="code hl_variable" href="classAluggage.html#a848e21dc134b0695d352d7b7356f4497">Mesh3Comp</a>-&gt;SetRenderCustomDepth(<span class="keyword">false</span>);</div>
-<div class="line"><span class="lineno">  187</span>}</div>
+<p class="definition"><a class="el" href="luggage_8cpp_source.html">luggage.cpp</a> 파일의 <a class="el" href="luggage_8cpp_source.html#l00209">209</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  210</span>{</div>
+<div class="line"><span class="lineno">  211</span>    <a class="code hl_variable" href="classAluggage.html#a848e21dc134b0695d352d7b7356f4497">Mesh3Comp</a>-&gt;SetRenderCustomDepth(<span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">  212</span>}</div>
 </div><!-- fragment -->
 <p class="reference">다음을 참조함 :  <a class="el" href="luggage_8h_source.html#l00034">Mesh3Comp</a>.</p>
 
@@ -739,10 +763,10 @@ Protected 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="luggage_8cpp_source.html">luggage.cpp</a> 파일의 <a class="el" href="luggage_8cpp_source.html#l00179">179</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  180</span>{</div>
-<div class="line"><span class="lineno">  181</span>    <a class="code hl_variable" href="classAluggage.html#a848e21dc134b0695d352d7b7356f4497">Mesh3Comp</a>-&gt;SetRenderCustomDepth(<span class="keyword">true</span>);</div>
-<div class="line"><span class="lineno">  182</span>}</div>
+<p class="definition"><a class="el" href="luggage_8cpp_source.html">luggage.cpp</a> 파일의 <a class="el" href="luggage_8cpp_source.html#l00204">204</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  205</span>{</div>
+<div class="line"><span class="lineno">  206</span>    <a class="code hl_variable" href="classAluggage.html#a848e21dc134b0695d352d7b7356f4497">Mesh3Comp</a>-&gt;SetRenderCustomDepth(<span class="keyword">true</span>);</div>
+<div class="line"><span class="lineno">  207</span>}</div>
 </div><!-- fragment -->
 <p class="reference">다음을 참조함 :  <a class="el" href="luggage_8h_source.html#l00034">Mesh3Comp</a>.</p>
 
@@ -772,7 +796,7 @@ Protected 속성</h2></td></tr>
   </dd>
 </dl>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="luggage_8cpp_source.html#l00219">OnInteract()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="luggage_8cpp_source.html#l00244">OnInteract()</a>.</p>
 <div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-8-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-8-summary" class="dynsummary" style="display:block;">
@@ -815,19 +839,14 @@ Protected 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="luggage_8cpp_source.html">luggage.cpp</a> 파일의 <a class="el" href="luggage_8cpp_source.html#l00101">101</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  102</span>{</div>
-<div class="line"><span class="lineno">  103</span>    <a class="code hl_variable" href="classAluggage.html#a880c239655a5b0ad93ba5fa26bcf49c4">SpawnIdx</a> = InIdx;</div>
-<div class="line"><span class="lineno">  104</span>    <a class="code hl_variable" href="classAluggage.html#a4a47514a5aff8824800c878ed73159c2">Color</a> = InColor;</div>
-<div class="line"><span class="lineno">  105</span>    <a class="code hl_variable" href="classAluggage.html#a899a9b0ace4772c62cb480b0251fd633">Pattern</a> = InPattern;</div>
-<div class="line"><span class="lineno">  106</span> </div>
-<div class="line"><span class="lineno">  107</span>    <span class="keywordflow">if</span> ( <span class="keyword">auto</span> InfoWidget = Cast&lt;ULuggageInfoWidget&gt;(<a class="code hl_variable" href="classAluggage.html#a4198ee3271bbf5f2d66d98b1dd4230ec">WidgetComp</a>-&gt;GetWidget()))</div>
-<div class="line"><span class="lineno">  108</span>    {</div>
-<div class="line"><span class="lineno">  109</span>        InfoWidget-&gt;InitLuggage(<a class="code hl_variable" href="classAluggage.html#a899a9b0ace4772c62cb480b0251fd633">Pattern</a>, <a class="code hl_variable" href="classAluggage.html#a4a47514a5aff8824800c878ed73159c2">Color</a>);</div>
-<div class="line"><span class="lineno">  110</span>    }</div>
-<div class="line"><span class="lineno">  111</span>}</div>
+<p class="definition"><a class="el" href="luggage_8cpp_source.html">luggage.cpp</a> 파일의 <a class="el" href="luggage_8cpp_source.html#l00116">116</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  117</span>{</div>
+<div class="line"><span class="lineno">  118</span>    <a class="code hl_variable" href="classAluggage.html#a880c239655a5b0ad93ba5fa26bcf49c4">SpawnIdx</a> = InIdx;</div>
+<div class="line"><span class="lineno">  119</span>    <a class="code hl_variable" href="classAluggage.html#a4a47514a5aff8824800c878ed73159c2">Color</a> = InColor;</div>
+<div class="line"><span class="lineno">  120</span>    <a class="code hl_variable" href="classAluggage.html#a899a9b0ace4772c62cb480b0251fd633">Pattern</a> = InPattern;</div>
+<div class="line"><span class="lineno">  121</span>}</div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="luggage_8h_source.html#l00053">Color</a>, <a class="el" href="luggage_8h_source.html#l00055">Pattern</a>, <a class="el" href="luggage_8h_source.html#l00051">SpawnIdx</a>, <a class="el" href="luggage_8h_source.html#l00039">WidgetComp</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="luggage_8h_source.html#l00053">Color</a>, <a class="el" href="luggage_8h_source.html#l00055">Pattern</a>, <a class="el" href="luggage_8h_source.html#l00051">SpawnIdx</a>.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="LuggageManager_8cpp_source.html#l00052">ALuggageManager::SpawnLuggage()</a>.</p>
 <div id="dynsection-9" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -864,21 +883,71 @@ Protected 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="luggage_8cpp_source.html">luggage.cpp</a> 파일의 <a class="el" href="luggage_8cpp_source.html#l00078">78</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   79</span>{</div>
-<div class="line"><span class="lineno">   80</span>    Super::Tick(DeltaTime);</div>
-<div class="line"><span class="lineno">   81</span>    </div>
-<div class="line"><span class="lineno">   82</span>    <span class="comment">// BillboardInfoWidget();</span></div>
-<div class="line"><span class="lineno">   83</span> </div>
-<div class="line"><span class="lineno">   84</span>    <span class="comment">// Pattern 이름을 luggage 위에 표시</span></div>
-<div class="line"><span class="lineno">   85</span>    </div>
-<div class="line"><span class="lineno">   86</span>    <span class="comment">// if (!Pattern.IsEmpty())</span></div>
-<div class="line"><span class="lineno">   87</span>    <span class="comment">// {</span></div>
-<div class="line"><span class="lineno">   88</span>    <span class="comment">//  FVector TextLocation = GetActorLocation() + FVector(0, 0, 100);</span></div>
-<div class="line"><span class="lineno">   89</span>    <span class="comment">//  DrawDebugString(GetWorld(), TextLocation, Pattern, nullptr, FColor::White, 0.f, true);</span></div>
-<div class="line"><span class="lineno">   90</span>    <span class="comment">// }</span></div>
-<div class="line"><span class="lineno">   91</span>}</div>
+<p class="definition"><a class="el" href="luggage_8cpp_source.html">luggage.cpp</a> 파일의 <a class="el" href="luggage_8cpp_source.html#l00083">83</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   84</span>{</div>
+<div class="line"><span class="lineno">   85</span>    Super::Tick(DeltaTime);</div>
+<div class="line"><span class="lineno">   86</span> </div>
+<div class="line"><span class="lineno">   87</span>    <span class="comment">// 위젯이 아직 초기화되지 않았고, ColorIdx와 PatternIdx가 유효하다면</span></div>
+<div class="line"><span class="lineno">   88</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classAluggage.html#a9721b1acd5f01a34aafa2753c57a2140">bWidgetInitialized</a> &amp;&amp; <a class="code hl_variable" href="classAluggage.html#a77701ede6847700cecd2677dd2b2e625">ColorIdx</a> &gt;= 0 &amp;&amp; <a class="code hl_variable" href="classAluggage.html#a5eb51fa644ca8171df6d870c85c92271">PatternIdx</a> &gt;= 0)</div>
+<div class="line"><span class="lineno">   89</span>    {</div>
+<div class="line"><span class="lineno">   90</span>        <span class="keywordflow">if</span> (<span class="keyword">auto</span> InfoWidget = Cast&lt;ULuggageInfoWidget&gt;(<a class="code hl_variable" href="classAluggage.html#a4198ee3271bbf5f2d66d98b1dd4230ec">WidgetComp</a>-&gt;GetWidget()))</div>
+<div class="line"><span class="lineno">   91</span>        {</div>
+<div class="line"><span class="lineno">   92</span>            InfoWidget-&gt;InitLuggage(<a class="code hl_variable" href="classAluggage.html#a899a9b0ace4772c62cb480b0251fd633">Pattern</a>, <a class="code hl_variable" href="classAluggage.html#a4a47514a5aff8824800c878ed73159c2">Color</a>);</div>
+<div class="line"><span class="lineno">   93</span>            <a class="code hl_variable" href="classAluggage.html#a9721b1acd5f01a34aafa2753c57a2140">bWidgetInitialized</a> = <span class="keyword">true</span>; <span class="comment">// 한 번만 실행</span></div>
+<div class="line"><span class="lineno">   94</span>        }</div>
+<div class="line"><span class="lineno">   95</span>    }</div>
+<div class="line"><span class="lineno">   96</span> </div>
+<div class="line"><span class="lineno">   97</span>    <span class="comment">// BillboardInfoWidget();</span></div>
+<div class="line"><span class="lineno">   98</span> </div>
+<div class="line"><span class="lineno">   99</span>    <span class="comment">// Pattern 이름을 luggage 위에 표시</span></div>
+<div class="line"><span class="lineno">  100</span> </div>
+<div class="line"><span class="lineno">  101</span>    <span class="comment">// if (!Pattern.IsEmpty())</span></div>
+<div class="line"><span class="lineno">  102</span>    <span class="comment">// {</span></div>
+<div class="line"><span class="lineno">  103</span>    <span class="comment">//  FVector TextLocation = GetActorLocation() + FVector(0, 0, 100);</span></div>
+<div class="line"><span class="lineno">  104</span>    <span class="comment">//  DrawDebugString(GetWorld(), TextLocation, Pattern, nullptr, FColor::White, 0.f, true);</span></div>
+<div class="line"><span class="lineno">  105</span>    <span class="comment">// }</span></div>
+<div class="line"><span class="lineno">  106</span>}</div>
+<div class="ttc" id="aclassAluggage_html_a9721b1acd5f01a34aafa2753c57a2140"><div class="ttname"><a href="classAluggage.html#a9721b1acd5f01a34aafa2753c57a2140">Aluggage::bWidgetInitialized</a></div><div class="ttdeci">bool bWidgetInitialized</div><div class="ttdef"><b>Definition</b> <a href="luggage_8h_source.html#l00093">luggage.h:93</a></div></div>
 </div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="luggage_8h_source.html#l00093">bWidgetInitialized</a>, <a class="el" href="luggage_8h_source.html#l00053">Color</a>, <a class="el" href="luggage_8h_source.html#l00068">ColorIdx</a>, <a class="el" href="luggage_8h_source.html#l00055">Pattern</a>, <a class="el" href="luggage_8h_source.html#l00071">PatternIdx</a>, <a class="el" href="luggage_8h_source.html#l00039">WidgetComp</a>.</p>
+
+</div>
+</div>
+<a id="a134ee387e130f327c4fd4f02f4079cb0" name="a134ee387e130f327c4fd4f02f4079cb0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a134ee387e130f327c4fd4f02f4079cb0">&#9670;&#160;</a></span>UpdateWidget()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Aluggage::UpdateWidget </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="luggage_8cpp_source.html">luggage.cpp</a> 파일의 <a class="el" href="luggage_8cpp_source.html#l00194">194</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  195</span>{</div>
+<div class="line"><span class="lineno">  196</span>    <span class="comment">// Tick에서 호출되는 지연 초기화 로직으로 대체됨</span></div>
+<div class="line"><span class="lineno">  197</span>    <span class="comment">// 필요시 수동으로 위젯을 업데이트할 때만 사용</span></div>
+<div class="line"><span class="lineno">  198</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> InfoWidget = Cast&lt;ULuggageInfoWidget&gt;(<a class="code hl_variable" href="classAluggage.html#a4198ee3271bbf5f2d66d98b1dd4230ec">WidgetComp</a>-&gt;GetWidget()))</div>
+<div class="line"><span class="lineno">  199</span>    {</div>
+<div class="line"><span class="lineno">  200</span>        InfoWidget-&gt;InitLuggage(<a class="code hl_variable" href="classAluggage.html#a899a9b0ace4772c62cb480b0251fd633">Pattern</a>, <a class="code hl_variable" href="classAluggage.html#a4a47514a5aff8824800c878ed73159c2">Color</a>);</div>
+<div class="line"><span class="lineno">  201</span>    }</div>
+<div class="line"><span class="lineno">  202</span>}</div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="luggage_8h_source.html#l00053">Color</a>, <a class="el" href="luggage_8h_source.html#l00055">Pattern</a>, <a class="el" href="luggage_8h_source.html#l00039">WidgetComp</a>.</p>
+
 </div>
 </div>
 <h2 class="groupheader">멤버 데이터 문서화</h2>
@@ -897,6 +966,32 @@ Protected 속성</h2></td></tr>
 <p class="definition"><a class="el" href="luggage_8h_source.html">luggage.h</a> 파일의 <a class="el" href="luggage_8h_source.html#l00027">27</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="luggage_8cpp_source.html#l00021">Aluggage()</a>.</p>
+
+</div>
+</div>
+<a id="a9721b1acd5f01a34aafa2753c57a2140" name="a9721b1acd5f01a34aafa2753c57a2140"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9721b1acd5f01a34aafa2753c57a2140">&#9670;&#160;</a></span>bWidgetInitialized</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Aluggage::bWidgetInitialized = false</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="luggage_8h_source.html">luggage.h</a> 파일의 <a class="el" href="luggage_8h_source.html#l00093">93</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="luggage_8cpp_source.html#l00083">Tick()</a>.</p>
 
 </div>
 </div>
@@ -922,7 +1017,7 @@ Protected 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="luggage_8h_source.html">luggage.h</a> 파일의 <a class="el" href="luggage_8h_source.html#l00053">53</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="luggage_8cpp_source.html#l00101">SetLuggageInfo()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="luggage_8cpp_source.html#l00133">ApplyColorToMesh()</a>, <a class="el" href="luggage_8cpp_source.html#l00116">SetLuggageInfo()</a>, <a class="el" href="luggage_8cpp_source.html#l00083">Tick()</a>, <a class="el" href="luggage_8cpp_source.html#l00194">UpdateWidget()</a>.</p>
 
 </div>
 </div>
@@ -940,7 +1035,7 @@ Protected 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="luggage_8h_source.html">luggage.h</a> 파일의 <a class="el" href="luggage_8h_source.html#l00068">68</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="luggage_8cpp_source.html#l00123">ApplyColorToMesh()</a>, <a class="el" href="luggage_8cpp_source.html#l00093">GetLifetimeReplicatedProps()</a>, <a class="el" href="luggage_8cpp_source.html#l00113">OnRep_ColorIdx()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="luggage_8cpp_source.html#l00133">ApplyColorToMesh()</a>, <a class="el" href="luggage_8cpp_source.html#l00108">GetLifetimeReplicatedProps()</a>, <a class="el" href="luggage_8cpp_source.html#l00123">OnRep_ColorIdx()</a>, <a class="el" href="luggage_8cpp_source.html#l00083">Tick()</a>.</p>
 
 </div>
 </div>
@@ -976,7 +1071,7 @@ Protected 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="luggage_8h_source.html">luggage.h</a> 파일의 <a class="el" href="luggage_8h_source.html#l00037">37</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="luggage_8cpp_source.html#l00021">Aluggage()</a>, <a class="el" href="luggage_8cpp_source.html#l00068">BeginPlay()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="luggage_8cpp_source.html#l00021">Aluggage()</a>, <a class="el" href="luggage_8cpp_source.html#l00073">BeginPlay()</a>, <a class="el" href="ConveyorBelt_8cpp_source.html#l00093">AConveyorBelt::MoveOverlappedStatics()</a>.</p>
 
 </div>
 </div>
@@ -1012,7 +1107,7 @@ Protected 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="luggage_8h_source.html">luggage.h</a> 파일의 <a class="el" href="luggage_8h_source.html#l00032">32</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="luggage_8cpp_source.html#l00021">Aluggage()</a>, <a class="el" href="luggage_8cpp_source.html#l00146">ApplyPatternToMesh()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="luggage_8cpp_source.html#l00021">Aluggage()</a>, <a class="el" href="luggage_8cpp_source.html#l00160">ApplyPatternToMesh()</a>.</p>
 
 </div>
 </div>
@@ -1030,7 +1125,7 @@ Protected 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="luggage_8h_source.html">luggage.h</a> 파일의 <a class="el" href="luggage_8h_source.html#l00034">34</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="luggage_8cpp_source.html#l00021">Aluggage()</a>, <a class="el" href="luggage_8cpp_source.html#l00123">ApplyColorToMesh()</a>, <a class="el" href="luggage_8cpp_source.html#l00184">OutlineOff()</a>, <a class="el" href="luggage_8cpp_source.html#l00179">OutlineOn()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="luggage_8cpp_source.html#l00021">Aluggage()</a>, <a class="el" href="luggage_8cpp_source.html#l00133">ApplyColorToMesh()</a>, <a class="el" href="luggage_8cpp_source.html#l00209">OutlineOff()</a>, <a class="el" href="luggage_8cpp_source.html#l00204">OutlineOn()</a>.</p>
 
 </div>
 </div>
@@ -1056,7 +1151,7 @@ Protected 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="luggage_8h_source.html">luggage.h</a> 파일의 <a class="el" href="luggage_8h_source.html#l00055">55</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="luggage_8cpp_source.html#l00101">SetLuggageInfo()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="luggage_8cpp_source.html#l00160">ApplyPatternToMesh()</a>, <a class="el" href="luggage_8cpp_source.html#l00116">SetLuggageInfo()</a>, <a class="el" href="luggage_8cpp_source.html#l00083">Tick()</a>, <a class="el" href="luggage_8cpp_source.html#l00194">UpdateWidget()</a>.</p>
 
 </div>
 </div>
@@ -1074,7 +1169,7 @@ Protected 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="luggage_8h_source.html">luggage.h</a> 파일의 <a class="el" href="luggage_8h_source.html#l00071">71</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="luggage_8cpp_source.html#l00146">ApplyPatternToMesh()</a>, <a class="el" href="luggage_8cpp_source.html#l00093">GetLifetimeReplicatedProps()</a>, <a class="el" href="luggage_8cpp_source.html#l00118">OnRep_PatternIdx()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="luggage_8cpp_source.html#l00160">ApplyPatternToMesh()</a>, <a class="el" href="luggage_8cpp_source.html#l00108">GetLifetimeReplicatedProps()</a>, <a class="el" href="luggage_8cpp_source.html#l00128">OnRep_PatternIdx()</a>, <a class="el" href="luggage_8cpp_source.html#l00083">Tick()</a>.</p>
 
 </div>
 </div>
@@ -1100,7 +1195,7 @@ Protected 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="luggage_8h_source.html">luggage.h</a> 파일의 <a class="el" href="luggage_8h_source.html#l00051">51</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="luggage_8cpp_source.html#l00101">SetLuggageInfo()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="luggage_8cpp_source.html#l00116">SetLuggageInfo()</a>.</p>
 
 </div>
 </div>
@@ -1118,7 +1213,7 @@ Protected 속성</h2></td></tr>
 
 <p>캐리어의 심볼 (문제1 정답) </p>
 
-<p class="definition"><a class="el" href="luggage_8h_source.html">luggage.h</a> 파일의 <a class="el" href="luggage_8h_source.html#l00105">105</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="luggage_8h_source.html">luggage.h</a> 파일의 <a class="el" href="luggage_8h_source.html#l00109">109</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALingoGameMode_8cpp_source.html#l00077">ALingoGameMode::HandleCarrierSelection()</a>, <a class="el" href="ALingoGameMode_8cpp_source.html#l00112">ALingoGameMode::ValidateAnswer()</a>.</p>
 
@@ -1138,7 +1233,7 @@ Protected 속성</h2></td></tr>
 
 <p>캐리어의 색상 (문제2 정답) </p>
 
-<p class="definition"><a class="el" href="luggage_8h_source.html">luggage.h</a> 파일의 <a class="el" href="luggage_8h_source.html#l00109">109</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="luggage_8h_source.html">luggage.h</a> 파일의 <a class="el" href="luggage_8h_source.html#l00113">113</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALingoGameMode_8cpp_source.html#l00077">ALingoGameMode::HandleCarrierSelection()</a>, <a class="el" href="ALingoGameMode_8cpp_source.html#l00112">ALingoGameMode::ValidateAnswer()</a>.</p>
 
@@ -1158,7 +1253,7 @@ Protected 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="luggage_8h_source.html">luggage.h</a> 파일의 <a class="el" href="luggage_8h_source.html#l00039">39</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="luggage_8cpp_source.html#l00021">Aluggage()</a>, <a class="el" href="luggage_8cpp_source.html#l00068">BeginPlay()</a>, <a class="el" href="luggage_8cpp_source.html#l00101">SetLuggageInfo()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="luggage_8cpp_source.html#l00021">Aluggage()</a>, <a class="el" href="luggage_8cpp_source.html#l00073">BeginPlay()</a>, <a class="el" href="luggage_8cpp_source.html#l00083">Tick()</a>, <a class="el" href="luggage_8cpp_source.html#l00194">UpdateWidget()</a>.</p>
 
 </div>
 </div>
@@ -1172,7 +1267,7 @@ Protected 속성</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classAluggage.html">Aluggage</a></li>
-    <li class="footer">생성시간 : 금 11월 28 2025 07:29:16, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 금 11월 28 2025 09:27:58, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

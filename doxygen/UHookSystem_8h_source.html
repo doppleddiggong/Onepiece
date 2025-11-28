@@ -196,18 +196,18 @@ $(document).ready(function(){initNavTree('UHookSystem_8h_source.html',''); initR
 <div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span> </div>
 <div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = &quot;Hook|Launch&quot;)</div>
 <div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>    <span class="keywordtype">float</span> MaxHookDistance = 1500.0f;</div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span> </div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>/</div>
 <div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = &quot;Hook|Pull&quot;)</div>
 <div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    <span class="keywordtype">float</span> HookSpeed = 500.0f;</div>
 <div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span> </div>
 <div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = &quot;Hook|Pull&quot;)</div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>    <span class="keywordtype">float</span> DesiredDistance = 200.0f;</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>    <span class="keywordtype">float</span> DesiredDistance = 100.0f;</div>
 <div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span> </div>
 <div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = &quot;Interaction&quot;)</div>
 <div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>    <span class="keywordtype">float</span> InteractionDistance = 1200.0f;</div>
 <div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>    </div>
 <div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = &quot;Hook|Pull&quot;)</div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>    <span class="keywordtype">float</span> CompleteThreshold = 50.0f;</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>    <span class="keywordtype">float</span> CompleteThreshold = 100.0f;</div>
 <div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span> </div>
 <div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = &quot;Debug&quot;)</div>
 <div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>    <span class="keywordtype">bool</span> bShowDebugInfo = true;</div>
@@ -226,37 +226,43 @@ $(document).ready(function(){initNavTree('UHookSystem_8h_source.html',''); initR
 <div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>    TObjectPtr&lt;AActor&gt; CurHookTarget;</div>
 <div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span> </div>
 <div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>    UPROPERTY()</div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>    TObjectPtr&lt;class UStaticMeshComponent&gt; CableMesh;</div>
-<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span> </div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>    TObjectPtr&lt;class <a class="code hl_class" href="classAluggage.html">Aluggage</a>&gt; CurHookTarget_Luggage;</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>    </div>
 <div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>    UPROPERTY()</div>
-<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>    TObjectPtr&lt;class UStaticMeshComponent&gt; ProjectileMesh;</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>    TObjectPtr&lt;class UStaticMeshComponent&gt; CableMesh;</div>
 <div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span> </div>
-<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>    UPROPERTY(ReplicatedUsing = OnRep_HookProjectileLocation)</div>
-<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>    FVector HookProjectileLocation;</div>
-<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span> </div>
-<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>    UPROPERTY(Replicated)</div>
-<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>    FVector HookLaunchDirection;</div>
-<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span> </div>
-<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>    UPROPERTY()</div>
-<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>    TObjectPtr&lt;class <a class="code hl_class" href="classAPlayerActor.html">APlayerActor</a>&gt; OwnerPlayer;</div>
-<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span> </div>
-<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>    <span class="keywordtype">float</span> CableMeshBaseLength = 100.0f;</div>
-<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>    <span class="keywordtype">float</span> CableMeshBaseRadius = 1.0f;</div>
-<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span> </div>
-<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>    <span class="keywordtype">void</span> UpdateCableMeshTransform(const FVector&amp; CableStart, const FVector&amp; CableEnd);</div>
-<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>};</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>    UPROPERTY()</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>    TObjectPtr&lt;class UStaticMeshComponent&gt; ProjectileMesh;</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span> </div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>    UPROPERTY(ReplicatedUsing = OnRep_HookProjectileLocation)</div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>    FVector HookProjectileLocation;</div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span> </div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>    UPROPERTY(Replicated)</div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>    FVector HookLaunchDirection;</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span> </div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>    UPROPERTY()</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>    TObjectPtr&lt;class <a class="code hl_class" href="classAPlayerActor.html">APlayerActor</a>&gt; OwnerPlayer;</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span> </div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>    <span class="keywordtype">float</span> CableMeshBaseLength = 100.0f;</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>    <span class="keywordtype">float</span> CableMeshBaseRadius = 1.0f;</div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span> </div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>    TEnumAsByte&lt;ECollisionEnabled::Type&gt; OriginalCollisionEnabled;</div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span> </div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>    <span class="keywordtype">void</span> UpdateCableMeshTransform(const FVector&amp; CableStart, const FVector&amp; CableEnd);</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>};</div>
 <div class="ttc" id="aEMontageType_8h_html_a33d4f5f333936ce33b59c38e89382372ae599161956d626eda4cb0a5ffb85271c"><div class="ttname"><a href="EMontageType_8h.html#a33d4f5f333936ce33b59c38e89382372ae599161956d626eda4cb0a5ffb85271c">EMontageType::Idle</a></div><div class="ttdeci">@ Idle</div></div>
 <div class="ttc" id="aEVFXType_8h_html_af8435b1c8c0e40b2bbdf03bb1ca6b4dbaebfe5e1791db03c4cd6ab95801e0977d"><div class="ttname"><a href="EVFXType_8h.html#af8435b1c8c0e40b2bbdf03bb1ca6b4dbaebfe5e1791db03c4cd6ab95801e0977d">EVFXType::Hit</a></div><div class="ttdeci">@ Hit</div></div>
 <div class="ttc" id="aUHookSystem_8h_html_a1c673a19776054c0693b8177e71c5426"><div class="ttname"><a href="UHookSystem_8h.html#a1c673a19776054c0693b8177e71c5426">EHookState</a></div><div class="ttdeci">EHookState</div><div class="ttdoc">Hook 상태</div><div class="ttdef"><b>Definition</b> <a href="UHookSystem_8h_source.html#l00019">UHookSystem.h:20</a></div></div>
 <div class="ttc" id="aUHookSystem_8h_html_a1c673a19776054c0693b8177e71c5426aa3f80d8f0f1b4ffa8c475f5d60ea5635"><div class="ttname"><a href="UHookSystem_8h.html#a1c673a19776054c0693b8177e71c5426aa3f80d8f0f1b4ffa8c475f5d60ea5635">EHookState::UMETA</a></div><div class="ttdeci">@ UMETA</div></div>
 <div class="ttc" id="aclassAPlayerActor_html"><div class="ttname"><a href="classAPlayerActor.html">APlayerActor</a></div><div class="ttdoc">Main character driven directly by the player.</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8h_source.html#l00021">APlayerActor.h:22</a></div></div>
+<div class="ttc" id="aclassAluggage_html"><div class="ttname"><a href="classAluggage.html">Aluggage</a></div><div class="ttdoc">상호작용 가능한 수하물 액터</div><div class="ttdef"><b>Definition</b> <a href="luggage_8h_source.html#l00013">luggage.h:14</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_71a9f6b769ee24fe8598c19ea2d70480.html">Character</a></li><li class="navelem"><a class="el" href="dir_82ba722683279238407f867a1ffc0276.html">Public</a></li><li class="navelem"><a class="el" href="UHookSystem_8h.html">UHookSystem.h</a></li>
-    <li class="footer">생성시간 : 금 11월 28 2025 07:29:16, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 금 11월 28 2025 09:27:58, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

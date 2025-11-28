@@ -114,27 +114,44 @@ $(document).ready(function(){initNavTree('ULuggageInfoWidget_8cpp_source.html','
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;<a class="code" href="ULuggageInfoWidget_8h.html">ULuggageInfoWidget.h</a>&quot;</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;Components/TextBlock.h&quot;</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;<a class="code" href="UGameDataManager_8h.html">UGameDataManager.h</a>&quot;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;Components/TextBlock.h&quot;</span></div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
 <div class="foldopen" id="foldopen00009" data-start="{" data-end="}">
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="classULuggageInfoWidget.html#a2e236b706a0f3c6d5fefaf62db4e2eea">    9</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classULuggageInfoWidget.html#a2e236b706a0f3c6d5fefaf62db4e2eea">ULuggageInfoWidget::InitLuggage</a>(<span class="keyword">const</span> FString&amp; Type1, <span class="keyword">const</span> FString&amp; Type2)</div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>{</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    <a class="code hl_variable" href="classULuggageInfoWidget.html#a6ea3cb9d64e218d0b58238366cb78639">Txt_Type1</a>-&gt;SetText(FText::FromString(Type1));</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    <a class="code hl_variable" href="classULuggageInfoWidget.html#adbaa8be34d3af2726a6a8ae13085f7b5">Txt_Type2</a>-&gt;SetText(FText::FromString(Type2));</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    <a class="code hl_function" href="classULuggageInfoWidget.html#abc37ed4d3a2d1524855a59f068e6986e">UpdateType1Data</a>(Type1);</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    <a class="code hl_function" href="classULuggageInfoWidget.html#a2699745de0c5976ac44da7e3c17bf224">UpdateType2Data</a>(Type2);</div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>}</div>
 </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="foldopen" id="foldopen00015" data-start="{" data-end="}">
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="classULuggageInfoWidget.html#abc37ed4d3a2d1524855a59f068e6986e">   15</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classULuggageInfoWidget.html#abc37ed4d3a2d1524855a59f068e6986e">ULuggageInfoWidget::UpdateType1Data</a>(<span class="keyword">const</span> FString&amp; TypeData)</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>{</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <a class="code hl_variable" href="classULuggageInfoWidget.html#a6ea3cb9d64e218d0b58238366cb78639">Txt_Type1</a>-&gt;SetText(FText::FromString(TypeData));</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>}</div>
+</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="foldopen" id="foldopen00020" data-start="{" data-end="}">
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="classULuggageInfoWidget.html#a2699745de0c5976ac44da7e3c17bf224">   20</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classULuggageInfoWidget.html#a2699745de0c5976ac44da7e3c17bf224">ULuggageInfoWidget::UpdateType2Data</a>(<span class="keyword">const</span> FString&amp; TypeData)</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>{</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <a class="code hl_variable" href="classULuggageInfoWidget.html#adbaa8be34d3af2726a6a8ae13085f7b5">Txt_Type2</a>-&gt;SetText(FText::FromString(TypeData));</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>}</div>
+</div>
+<div class="ttc" id="aUGameDataManager_8h_html"><div class="ttname"><a href="UGameDataManager_8h.html">UGameDataManager.h</a></div><div class="ttdoc">UGameDataManager 클래스를 선언합니다.</div></div>
 <div class="ttc" id="aULuggageInfoWidget_8h_html"><div class="ttname"><a href="ULuggageInfoWidget_8h.html">ULuggageInfoWidget.h</a></div></div>
+<div class="ttc" id="aclassULuggageInfoWidget_html_a2699745de0c5976ac44da7e3c17bf224"><div class="ttname"><a href="classULuggageInfoWidget.html#a2699745de0c5976ac44da7e3c17bf224">ULuggageInfoWidget::UpdateType2Data</a></div><div class="ttdeci">void UpdateType2Data(const FString &amp;TypeData)</div><div class="ttdef"><b>Definition</b> <a href="ULuggageInfoWidget_8cpp_source.html#l00020">ULuggageInfoWidget.cpp:20</a></div></div>
 <div class="ttc" id="aclassULuggageInfoWidget_html_a2e236b706a0f3c6d5fefaf62db4e2eea"><div class="ttname"><a href="classULuggageInfoWidget.html#a2e236b706a0f3c6d5fefaf62db4e2eea">ULuggageInfoWidget::InitLuggage</a></div><div class="ttdeci">void InitLuggage(const FString &amp;Type1, const FString &amp;Type2)</div><div class="ttdef"><b>Definition</b> <a href="ULuggageInfoWidget_8cpp_source.html#l00009">ULuggageInfoWidget.cpp:9</a></div></div>
-<div class="ttc" id="aclassULuggageInfoWidget_html_a6ea3cb9d64e218d0b58238366cb78639"><div class="ttname"><a href="classULuggageInfoWidget.html#a6ea3cb9d64e218d0b58238366cb78639">ULuggageInfoWidget::Txt_Type1</a></div><div class="ttdeci">TObjectPtr&lt; class UTextBlock &gt; Txt_Type1</div><div class="ttdef"><b>Definition</b> <a href="ULuggageInfoWidget_8h_source.html#l00019">ULuggageInfoWidget.h:19</a></div></div>
-<div class="ttc" id="aclassULuggageInfoWidget_html_adbaa8be34d3af2726a6a8ae13085f7b5"><div class="ttname"><a href="classULuggageInfoWidget.html#adbaa8be34d3af2726a6a8ae13085f7b5">ULuggageInfoWidget::Txt_Type2</a></div><div class="ttdeci">TObjectPtr&lt; class UTextBlock &gt; Txt_Type2</div><div class="ttdef"><b>Definition</b> <a href="ULuggageInfoWidget_8h_source.html#l00022">ULuggageInfoWidget.h:22</a></div></div>
+<div class="ttc" id="aclassULuggageInfoWidget_html_a6ea3cb9d64e218d0b58238366cb78639"><div class="ttname"><a href="classULuggageInfoWidget.html#a6ea3cb9d64e218d0b58238366cb78639">ULuggageInfoWidget::Txt_Type1</a></div><div class="ttdeci">TObjectPtr&lt; class UTextBlock &gt; Txt_Type1</div><div class="ttdef"><b>Definition</b> <a href="ULuggageInfoWidget_8h_source.html#l00022">ULuggageInfoWidget.h:22</a></div></div>
+<div class="ttc" id="aclassULuggageInfoWidget_html_abc37ed4d3a2d1524855a59f068e6986e"><div class="ttname"><a href="classULuggageInfoWidget.html#abc37ed4d3a2d1524855a59f068e6986e">ULuggageInfoWidget::UpdateType1Data</a></div><div class="ttdeci">void UpdateType1Data(const FString &amp;TypeData)</div><div class="ttdef"><b>Definition</b> <a href="ULuggageInfoWidget_8cpp_source.html#l00015">ULuggageInfoWidget.cpp:15</a></div></div>
+<div class="ttc" id="aclassULuggageInfoWidget_html_adbaa8be34d3af2726a6a8ae13085f7b5"><div class="ttname"><a href="classULuggageInfoWidget.html#adbaa8be34d3af2726a6a8ae13085f7b5">ULuggageInfoWidget::Txt_Type2</a></div><div class="ttdeci">TObjectPtr&lt; class UTextBlock &gt; Txt_Type2</div><div class="ttdef"><b>Definition</b> <a href="ULuggageInfoWidget_8h_source.html#l00025">ULuggageInfoWidget.h:25</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_55b064ed9f704d76d3805f2fda876350.html">UI</a></li><li class="navelem"><a class="el" href="dir_550f083bbe519bd985f450628c1369b6.html">Private</a></li><li class="navelem"><a class="el" href="ULuggageInfoWidget_8cpp.html">ULuggageInfoWidget.cpp</a></li>
-    <li class="footer">생성시간 : 금 11월 28 2025 07:29:16, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 금 11월 28 2025 09:27:58, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>
