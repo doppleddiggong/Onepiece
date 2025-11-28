@@ -39,4 +39,10 @@ public:
 
 	void SetTimeRank();
 	void SetTimeTaken();
+
+public:
+	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
+	class UTextBlock* Txt_Accuracy;
+
+	void SetAccuracy();
 };

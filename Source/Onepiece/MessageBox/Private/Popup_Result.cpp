@@ -47,6 +47,8 @@ void UPopup_Result::SetTimeRank()
 		ScoreMgr->GetTimeRank(TimeTaken, Rank);
 
 		Txt_TimeRank->SetText(FText::FromString(Rank));
+
+		SetAccuracy();
 	}
 }
 
@@ -58,11 +60,24 @@ void UPopup_Result::SetTimeTaken()
 		float TimeRemain = GS->GetRemainMissionTime();
 		TimeTaken = 300 - TimeRemain;
 
-		int32 Minutes = FMath::FloorToInt(TimeRemain / 60.f);
-		int32 Seconds = FMath::FloorToInt(TimeRemain) % 60;
+		int32 Minutes = FMath::FloorToInt(TimeTaken / 60.f);
+		int32 Seconds = FMath::FloorToInt(TimeTaken) % 60;
 
 		FString Format = FString::Printf(TEXT("%02d:%02d"), Minutes, Seconds);
 
 		Txt_TimeTaken->SetText(FText::FromString(Format));
+
+		SetTimeRank();
+	}
+}
+
+void UPopup_Result::SetAccuracy()
+{
+	FString Accuracy = "";
+	if (UScoreManager* ScoreMgr = UScoreManager::Get(GetWorld()))
+	{
+		ScoreMgr->GetAccuracyPercentage(Accuracy);
+
+		Txt_Accuracy->SetText(FText::FromString(Accuracy));
 	}
 }

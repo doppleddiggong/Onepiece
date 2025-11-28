@@ -20,5 +20,8 @@ public:
 
 	UScoreManager();
 
+	// 걸린 시간에 따라 A~D까지 성적 매기기
 	void GetTimeRank(float InTimeTaken, FString& Result);
+	// 정확도 계산
+	void GetAccuracyPercentage(FString& OutPercentage);
 };
