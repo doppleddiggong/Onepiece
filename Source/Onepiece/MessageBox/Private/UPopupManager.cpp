@@ -25,7 +25,7 @@ UPopupManager::UPopupManager()
 	PopupClassMap.Add(EPopupType::Register, FComponentHelper::LoadClass<UPopup_InputMsg>(INPUT_POPUP_PATH));
 	PopupClassMap.Add(EPopupType::Login, FComponentHelper::LoadClass<UPopup_InputMsg>(INPUT_POPUP_PATH));
 	PopupClassMap.Add(EPopupType::ReadQuest, FComponentHelper::LoadClass<UPopup_ReadQuest>(READQUEST_POPUP_PATH));
-	PopupClassMap.Add(EPopupType::Result, FComponentHelper::LoadClass<UPopup_Interview>(INTERVIEW_POPUP_PATH));
+	PopupClassMap.Add(EPopupType::Result, FComponentHelper::LoadClass<UPopup_Interview>(RESULT_POPUP_PATH));
 	PopupClassMap.Add(EPopupType::Interview, FComponentHelper::LoadClass<UPopup_Interview>(INTERVIEW_POPUP_PATH));
 }
 
