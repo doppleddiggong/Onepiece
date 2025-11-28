@@ -6,6 +6,7 @@
 #include "ANPCBase.h"
 #include "APlayerActor.h"
 #include "GameLogging.h"
+#include "InteractableComponent.h"
 #include "luggage.h"
 #include "Components/ArrowComponent.h"
 #include "Components/BoxComponent.h"
@@ -95,12 +96,47 @@ void AConveyorBelt::MoveOverlappedStatics(float deltaDistance)
 	BeltBoxComp->GetOverlappingComponents(overlappedComponents);
 	for (const auto& comp : overlappedComponents)
 	{
+		// AActor* owner = comp->GetOwner();
+		// if (Cast<Aluggage>(owner) && Cast<UStaticMeshComponent>(comp))
+		// {
+		// 	FVector deltaLoc = MoveDirArrowComp->GetForwardVector() * deltaDistance;
+		// 	deltaLoc = bIsForward ? deltaLoc : -deltaLoc;
+		// 	owner->AddActorWorldOffset(deltaLoc);
+		// }
+
 		AActor* owner = comp->GetOwner();
-		if (Cast<Aluggage>(owner) && Cast<UStaticMeshComponent>(comp))
+		Aluggage* luggage = Cast<Aluggage>(owner);
+		if (luggage && Cast<UStaticMeshComponent>(comp))
 		{
-			FVector deltaLoc = MoveDirArrowComp->GetForwardVector() * deltaDistance;
-			deltaLoc = bIsForward ? deltaLoc : -deltaLoc;
-			owner->AddActorWorldOffset(deltaLoc);
+			// Hook이나 PickUp 중이면 컨베이어 이동 무시
+			if (luggage->InteractableComp && luggage->InteractableComp->IsPickedUp())
+			{
+				continue;
+			}
+
+			FVector moveDirection = MoveDirArrowComp->GetForwardVector();
+			moveDirection = bIsForward ? moveDirection : -moveDirection;
+
+			// 물리 객체인지 확인
+			UPrimitiveComponent* primComp = Cast<UPrimitiveComponent>(comp);
+			if (primComp && primComp->IsSimulatingPhysics())
+			{
+				// 물리 기반 이동 - 속도 설정 방식
+				float speed = MoveSpeed;
+				FVector targetVelocity = moveDirection * speed;
+
+				// 현재 속도를 가져와서 컨베이어 방향 속도만 덮어씀 (Z축 중력은 유지)
+				FVector currentVelocity = primComp->GetPhysicsLinearVelocity();
+				FVector newVelocity = targetVelocity;
+				newVelocity.Z = currentVelocity.Z; // Z축(중력) 속도는 유지
+
+				primComp->SetPhysicsLinearVelocity(newVelocity, false);
+			}
+			else
+			{
+				// 물리가 아닌 경우 (Hook/PickUp 중) - 이동하지 않음
+				// Hook 중에는 물리가 꺼져있으므로 여기서 멈춤
+			}
 		}
 	}
 }

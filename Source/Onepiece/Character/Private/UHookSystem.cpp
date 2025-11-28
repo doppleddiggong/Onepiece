@@ -193,6 +193,23 @@ void UHookSystem::StartHook(const FHitResult& Hit)
 	HookState = EHookState::Launching;
 	HookedTarget = TargetActor;
 
+	// 물리 객체인 경우 물리 및 충돌 끄기 (Hook 중에는 방해 없이 부드럽게 이동)
+	UPrimitiveComponent* RootPrimitive = Cast<UPrimitiveComponent>(HookedTarget->GetRootComponent());
+	if (RootPrimitive)
+	{
+		// 원래 충돌 상태 저장
+		OriginalCollisionEnabled = RootPrimitive->GetCollisionEnabled();
+
+		// 물리와 충돌 모두 끄기
+		if (RootPrimitive->IsSimulatingPhysics())
+		{
+			RootPrimitive->SetSimulatePhysics(false);
+		}
+		RootPrimitive->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+
+		PRINTLOG(TEXT("UHookSystem: Physics and collision disabled for %s"), *HookedTarget->GetName());
+	}
+
 	// 발사 위치 및 방향 설정
 	HookProjectileLocation = OwnerPlayer->GetActorLocation();
 	HookLaunchDirection = (Hit.Location - HookProjectileLocation).GetSafeNormal();
@@ -224,8 +241,25 @@ void UHookSystem::ReleaseHook()
 	// 서버에서 실행
 	if (HookState != EHookState::Idle)
 	{
-		if (HookedTarget)
+		// 물리와 충돌 복원
+		if (HookedTarget && IsValid(HookedTarget))
 		{
+			UPrimitiveComponent* RootPrimitive = Cast<UPrimitiveComponent>(HookedTarget->GetRootComponent());
+			if (RootPrimitive)
+			{
+				// 속도를 초기화한 후 물리 켜기 (튕겨나가는 것 방지)
+				RootPrimitive->SetPhysicsLinearVelocity(FVector::ZeroVector, false);
+				RootPrimitive->SetPhysicsAngularVelocityInDegrees(FVector::ZeroVector, false);
+
+				// 충돌 복원
+				RootPrimitive->SetCollisionEnabled(OriginalCollisionEnabled);
+
+				// 물리 복원
+				RootPrimitive->SetSimulatePhysics(true);
+
+				PRINTLOG(TEXT("UHookSystem: Physics and collision re-enabled for %s"), *HookedTarget->GetName());
+			}
+
 			PRINTLOG(TEXT("UHookSystem: Hook released from %s"), *HookedTarget->GetName());
 		}
 
@@ -427,12 +461,6 @@ void UHookSystem::UpdateHookPulling(float DeltaTime)
 		return;
 	}
 
-	// 서버 권한 체크 - Actor 위치 변경은 서버에서만
-	if (!OwnerPlayer->HasAuthority())
-	{
-		return;
-	}
-
 	// 플레이어 앞 목표 위치 계산
 	FVector PlayerLocation = OwnerPlayer->GetActorLocation();
 	FVector PlayerForward = OwnerPlayer->GetActorForwardVector();
@@ -441,27 +469,36 @@ void UHookSystem::UpdateHookPulling(float DeltaTime)
 	// 현재 대상 위치
 	FVector CurrentLocation = HookedTarget->GetActorLocation();
 
-	// 목표 위치까지의 거리 확인
-	float DistanceToTarget = FVector::Dist(CurrentLocation, TargetLocation);
+	// 목표 위치의 높이를 현재 Luggage 높이로 유지 (바닥에 떨어지도록)
+	TargetLocation.Z = CurrentLocation.Z;
 
-	// 너무 가까우면 Hook 완료
-	if (DistanceToTarget < CompleteThreshold)
+	// 서버에서만 실제 위치 업데이트 및 완료 체크
+	if (OwnerPlayer->HasAuthority())
 	{
-		PRINTLOG(TEXT("UHookSystem: Hook completed, target reached destination"));
-		ReleaseHook();
-		return;
+		// 목표 위치까지의 거리 확인
+		float DistanceToTarget = FVector::Dist(CurrentLocation, TargetLocation);
+
+		// 너무 가까우면 Hook 완료
+		if (DistanceToTarget < CompleteThreshold)
+		{
+			// 완료 전 정확한 목표 위치에 배치 (튕겨나가는 것 방지)
+			HookedTarget->SetActorLocation(TargetLocation);
+			PRINTLOG(TEXT("UHookSystem: Hook completed, placed at exact target location"));
+			ReleaseHook();
+			return;
+		}
+
+		// 부드럽게 위치 보간 (물리는 이미 꺼진 상태)
+		FVector NewLocation = FMath::VInterpTo(
+			CurrentLocation,
+			TargetLocation,
+			DeltaTime,
+			HookSpeed
+		);
+
+		// 위치 업데이트 (서버에서만 실행됨)
+		HookedTarget->SetActorLocation(NewLocation);
 	}
-
-	// FMath::VInterpTo로 부드럽게 이동
-	FVector NewLocation = FMath::VInterpTo(
-		CurrentLocation,
-		TargetLocation,
-		DeltaTime,
-		HookSpeed
-	);
-
-	// 위치 업데이트 (서버에서만 실행됨)
-	HookedTarget->SetActorLocation(NewLocation);
 
 	// 디버그 표시
 	if (bShowDebugInfo)

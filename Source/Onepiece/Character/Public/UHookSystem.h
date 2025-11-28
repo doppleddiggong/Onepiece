@@ -113,14 +113,14 @@ public:
 	/** Hook 최대 거리 */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Hook|Launch")
 	float MaxHookDistance = 1500.0f;
-
+/
 	/** Hook 이동 속도 */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Hook|Pull")
 	float HookSpeed = 500.0f;
 
 	/** 목표 거리 (플레이어 앞 얼마나 떨어진 위치로 끌어올지) */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Hook|Pull")
-	float DesiredDistance = 200.0f;
+	float DesiredDistance = 100.0f;
 
 	/** LineTrace 최대 거리 */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Interaction")
@@ -128,7 +128,7 @@ public:
 	
 	/** Hook 완료 판정 거리 */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Hook|Pull")
-	float CompleteThreshold = 50.0f;
+	float CompleteThreshold = 100.0f;
 
 	/** 디버그 표시 여부 */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Debug")
@@ -175,6 +175,9 @@ protected:
 	/** Cylinder 기반 Cable Mesh 원래 크기 */
 	float CableMeshBaseLength = 100.0f;
 	float CableMeshBaseRadius = 1.0f;
+
+	/** Hook 전 원래 Collision 상태 저장 */
+	TEnumAsByte<ECollisionEnabled::Type> OriginalCollisionEnabled;
 
 	/** Cable Mesh 변환 보조 */
 	void UpdateCableMeshTransform(const FVector& CableStart, const FVector& CableEnd);
