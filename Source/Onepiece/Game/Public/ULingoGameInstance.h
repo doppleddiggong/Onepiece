@@ -35,9 +35,12 @@ class ONEPIECE_API ULingoGameInstance : public UGameInstance
 
 public:
 	ULingoGameInstance();
-	
-// 	// GameInstance 초기화 시 호출 (맵 전환 시에도 유지됨)
- 	virtual void Init() override;
+
+	// GameInstance 초기화 시 호출 (맵 전환 시에도 유지됨)
+	virtual void Init() override;
+
+	// GameInstance 종료 시 호출 (델리게이트 정리)
+	virtual void Shutdown() override;
 //
 // protected:
 // 	// Player의 UniqueNetId를 Key로, 선택한 Role을 Value로 저장

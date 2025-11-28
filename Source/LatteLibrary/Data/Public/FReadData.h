@@ -30,4 +30,7 @@ struct LATTELIBRARY_API FReadData : public FTableRowBase
 	/** @brief 학습 단어 */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ReadData")
 	FString Word;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ReadData")
+	TSoftObjectPtr<UTexture2D> Texture;
 };

@@ -42,6 +42,8 @@ AConveyorButton::AConveyorButton()
 	{
 		WidgetComp->SetWidgetClass(WidgetRef.Class);
 		WidgetComp->SetupAttachment(GetRootComponent());
+		WidgetComp->SetWidgetSpace(EWidgetSpace::Screen);
+		WidgetComp->SetDrawSize(FVector2D(2048.0f, 1024.0f));
 	}
 	
 	BoxComp = CreateDefaultSubobject<UBoxComponent>(TEXT("BoxComp"));

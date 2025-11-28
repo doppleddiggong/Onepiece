@@ -97,6 +97,46 @@ namespace RequestAPI
 
 
 
+
+USTRUCT(BlueprintType)
+struct FInterviewQuestionData
+{
+	GENERATED_BODY()
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int32 Id = 0;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int32 TypeCode = 0;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FString Eng;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FString Kor;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FString EngKey;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FString KorKey;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FString CreatedAt;
+};
+
+/// @brief Read 퀘스트 정보 구조체입니다.
+USTRUCT(BlueprintType)
+struct FInterviewData
+{
+	GENERATED_BODY()
+
+	UPROPERTY(BlueprintReadWrite, Category = "KLingo")
+	TArray<FInterviewQuestionData> Question;
+};
+
+
+
 // =================================================================================
 // Common Data Structures
 // =================================================================================

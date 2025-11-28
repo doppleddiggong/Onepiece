@@ -12,6 +12,8 @@
 #include "ULingoGameHelper.h"
 #include "UPopup_InputMsg.h"
 #include "UPopup_ReadQuest.h"
+#include "UPopup_Interview.h"
+#include "NetworkData.h"
 
 
 APopupTesterActor::APopupTesterActor()
@@ -57,6 +59,56 @@ void APopupTesterActor::ReadQuest()
 		if (const auto Popup = Cast<UPopup_ReadQuest>(PopupMgr->ShowPopup(EPopupType::ReadQuest)))
 		{
 			Popup->InitPopup(ULingoGameHelper::GetLingoGameState(GetWorld())->CurScenarioData);
+		}
+	}
+}
+
+void APopupTesterActor::InterviewPopup()
+{
+	if (const auto PopupMgr = UPopupManager::Get(GetWorld()))
+	{
+		if (const auto Popup = Cast<UPopup_Interview>(PopupMgr->ShowPopup(EPopupType::Interview)))
+		{
+			// 테스트용 더미 데이터 생성
+			FInterviewData TestData;
+
+			// 질문 1
+			FInterviewQuestionData Q1;
+			Q1.Id = 1;
+			Q1.TypeCode = 0;
+			Q1.Eng = TEXT("What is your current country of residence?");
+			Q1.Kor = TEXT("현재 거주 국가는 어디인가요?");
+			Q1.EngKey = TEXT("country");
+			Q1.KorKey = TEXT("국가");
+			Q1.CreatedAt = TEXT("2025-01-15");
+			TestData.Question.Add(Q1);
+
+			// 질문 2
+			FInterviewQuestionData Q2;
+			Q2.Id = 2;
+			Q2.TypeCode = 0;
+			Q2.Eng = TEXT("How did you find out about this program?");
+			Q2.Kor = TEXT("이 프로그램을 어떻게 알게 되었나요?");
+			Q2.EngKey = TEXT("discovery");
+			Q2.KorKey = TEXT("발견경로");
+			Q2.CreatedAt = TEXT("2025-01-15");
+			TestData.Question.Add(Q2);
+
+			// 질문 3
+			FInterviewQuestionData Q3;
+			Q3.Id = 3;
+			Q3.TypeCode = 0;
+			Q3.Eng = TEXT("What are your goals for learning Korean?");
+			Q3.Kor = TEXT("한국어 학습의 목표는 무엇인가요?");
+			Q3.EngKey = TEXT("goals");
+			Q3.KorKey = TEXT("목표");
+			Q3.CreatedAt = TEXT("2025-01-15");
+			TestData.Question.Add(Q3);
+
+			// 팝업 초기화
+			Popup->InitPopup(TestData);
+
+			PRINTLOG(TEXT("[PopupTester] Interview popup opened with %d questions"), TestData.Question.Num());
 		}
 	}
 }

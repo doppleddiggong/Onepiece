@@ -37,6 +37,36 @@ void ULingoGameInstance::Init()
 			this, &ULingoGameInstance::OnJoinSessionComplete);
 	}
 }
+
+void ULingoGameInstance::Shutdown()
+{
+	// 델리게이트 정리
+	if (sessionInterface.IsValid())
+	{
+		// 세션 델리게이트 바인딩 해제
+		sessionInterface->OnCreateSessionCompleteDelegates.RemoveAll(this);
+		sessionInterface->OnFindSessionsCompleteDelegates.RemoveAll(this);
+		sessionInterface->OnJoinSessionCompleteDelegates.RemoveAll(this);
+
+		PRINTLOG(TEXT("[LingoGameInstance] Session delegates cleared"));
+	}
+
+	// sessionSearch 정리
+	if (sessionSearch.IsValid())
+	{
+		sessionSearch.Reset();
+	}
+
+	// sessionInterface 정리
+	sessionInterface.Reset();
+
+	// selectCharacter 맵 정리
+	selectCharacter.Empty();
+
+	PRINTLOG(TEXT("[LingoGameInstance] Shutdown complete"));
+
+	Super::Shutdown();
+}
 //
 // void ULingoGameInstance::SetPlayerRole(APlayerController* PlayerController, EPlayerRole Role)
 // {

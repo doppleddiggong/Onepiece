@@ -3,22 +3,21 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Blueprint/UserWidget.h"
-#include "BoxInfoWidget.generated.h"
+#include "UInteractWidget.h"
+#include "ULuggageInfoWidget.generated.h"
 
 UCLASS()
-class ONEPIECE_API UBoxInfoWidget : public UUserWidget
+class ONEPIECE_API ULuggageInfoWidget : public UInteractWidget
 {
 	GENERATED_BODY()
 
 public:
-	UBoxInfoWidget(const FObjectInitializer& ObjectInitializer);
-	virtual void NativeConstruct() override;
-	
+	void InitLuggage(const FString& Type1, const FString& Type2);
+
 protected:
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
-	TObjectPtr<class UTextBlock> Text_Animal; 
+	TObjectPtr<class UTextBlock> Txt_Type1; 
 
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
-	TObjectPtr<class UTextBlock> Text_Color;
+	TObjectPtr<class UTextBlock> Txt_Type2;
 };

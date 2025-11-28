@@ -194,10 +194,10 @@ void UInteractableComponent::Server_PickUp_Implementation(AActor* NewHoldingOwne
 	// outline, infowidget 끄기
 	Aluggage* luggage = Cast<Aluggage>(GetOwner());
 	if (luggage)
-	{
 		luggage->OutlineOff();
-		luggage->InfoWidgetOff();
-	}
+
+	HideInteractWidget();
+	
 	PRINTLOG( TEXT("InteractableComponent::PickUp - %s picked up"), *GetOwner()->GetName());
 }
 
@@ -215,8 +215,10 @@ void UInteractableComponent::Server_Drop_Implementation()
 	if (luggage)
 	{
 		luggage->OutlineOn();
-		luggage->InfoWidgetOn();
+		// luggage->InfoWidgetOn();
 	}
+
+	// ShowInteractWidget();
 	
 	// detach
 	GetOwner()->DetachFromActor(FDetachmentTransformRules::KeepWorldTransform);
@@ -311,17 +313,14 @@ void UInteractableComponent::OnDetectionBeginOverlap(
 			InteractionSystem->RegisterInteractable(this);
 		}
 
+		ShowInteractWidget();
+		
 		// PickUp 타입이면 Luggage의 custom widget 사용
 		Aluggage* luggage = Cast<Aluggage>(GetOwner());
 		if (luggage && !bIsPickedUp)
 		{
 			luggage->OutlineOn();
-			luggage->InfoWidgetOn();
-		}
-		else
-		{
-			// 그 외 타입은 InteractWidget 표시
-			ShowInteractWidget();
+			// luggage->InfoWidgetOn();
 		}
 
 		PRINTLOG( TEXT("InteractableComponent: Player entered detection range - %s"), *GetOwner()->GetName());
@@ -352,16 +351,13 @@ void UInteractableComponent::OnDetectionEndOverlap(
 		FTimerHandle TimerHandle;
 		GetWorld()->GetTimerManager().SetTimer(TimerHandle, FTimerDelegate::CreateLambda([this]
 		{
+			HideInteractWidget();
+			
 			Aluggage* luggage = Cast<Aluggage>(GetOwner());
 			if (luggage && !bIsPickedUp)
 			{
 				luggage->OutlineOff();
-				luggage->InfoWidgetOff();
-			}
-			else
-			{
-				// 그 외 타입은 InteractWidget 숨김
-				HideInteractWidget();
+				// luggage->InfoWidgetOff();
 			}
 		}), 0.1f, false);
 	}
