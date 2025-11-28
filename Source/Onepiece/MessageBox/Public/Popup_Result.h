@@ -27,4 +27,16 @@ public:
 private:
 	UFUNCTION(BlueprintCallable, Category = "Close")
 	void OnClickClose();
+
+public:
+	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
+	class UTextBlock* Txt_TimeRank;
+
+	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
+	class UTextBlock* Txt_TimeTaken;
+
+	float TimeTaken = -1;
+
+	void SetTimeRank();
+	void SetTimeTaken();
 };
