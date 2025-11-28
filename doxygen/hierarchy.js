@@ -45,6 +45,8 @@ var hierarchy =
     [ "UDelayTaskManager::FEntry", "structUDelayTaskManager_1_1FEntry.html", null ],
     [ "FHttpMultipartFormData::FFilePart", "structFHttpMultipartFormData_1_1FFilePart.html", null ],
     [ "FHttpMultipartFormData", "classFHttpMultipartFormData.html", null ],
+    [ "FInterviewData", "structFInterviewData.html", null ],
+    [ "FInterviewQuestionData", "structFInterviewQuestionData.html", null ],
     [ "FListenTargetData", "structFListenTargetData.html", null ],
     [ "FLogWriter", "classFLogWriter.html", null ],
     [ "FMaterialHelper", "structFMaterialHelper.html", null ],
@@ -139,6 +141,7 @@ var hierarchy =
     [ "UUserWidget", null, [
       [ "UBasePopup", "classUBasePopup.html", [
         [ "UPopup_InputMsg", "classUPopup__InputMsg.html", null ],
+        [ "UPopup_Interview", "classUPopup__Interview.html", null ],
         [ "UPopup_MsgBox", "classUPopup__MsgBox.html", null ],
         [ "UPopup_ReadQuest", "classUPopup__ReadQuest.html", null ],
         [ "UPopup_Result", "classUPopup__Result.html", null ]
@@ -154,6 +157,7 @@ var hierarchy =
       [ "ULobbyWidget", "classULobbyWidget.html", null ],
       [ "UMainWidget", "classUMainWidget.html", null ],
       [ "UPlayTimer", "classUPlayTimer.html", null ],
+      [ "UPopup_InterviewItem", "classUPopup__InterviewItem.html", null ],
       [ "UQuestInfoWidget", "classUQuestInfoWidget.html", null ],
       [ "USessionInfoWidget", "classUSessionInfoWidget.html", null ],
       [ "UStartWidget", "classUStartWidget.html", null ],

@@ -10,6 +10,7 @@ var classULingoGameInstance =
     [ "OnFindSessionComplete", "classULingoGameInstance.html#a410b5941f3346e986bacce837f762dd7", null ],
     [ "OnJoinSessionComplete", "classULingoGameInstance.html#a9fd24afa0669652e56d9d9f9ece5434c", null ],
     [ "SetSelectCharacter", "classULingoGameInstance.html#acbf2c2c0b8d97a66652479b6d00bbafc", null ],
+    [ "Shutdown", "classULingoGameInstance.html#a196bfa207c29f00ebf799cd69e7bb18b", null ],
     [ "StringBase64Decode", "classULingoGameInstance.html#ad2c08929c2a4e5442b6ccc09dec73c32", null ],
     [ "StringBase64Encode", "classULingoGameInstance.html#ac5ebe67461e53d7990058be0f74277aa", null ],
     [ "currSessionName", "classULingoGameInstance.html#a17232e7c2128d3f8af2561f649b27473", null ],

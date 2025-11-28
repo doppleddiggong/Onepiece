@@ -1,5 +1,7 @@
 var NetworkData_8h =
 [
+    [ "FInterviewData", "structFInterviewData.html", "structFInterviewData" ],
+    [ "FInterviewQuestionData", "structFInterviewQuestionData.html", "structFInterviewQuestionData" ],
     [ "FListenTargetData", "structFListenTargetData.html", "structFListenTargetData" ],
     [ "FPlayerInfo", "structFPlayerInfo.html", "structFPlayerInfo" ],
     [ "FQuestListenInfo", "structFQuestListenInfo.html", "structFQuestListenInfo" ],

@@ -1,6 +1,7 @@
 var classAPopupTesterActor =
 [
     [ "APopupTesterActor", "classAPopupTesterActor.html#a196f61f8a6968f0e31b045d8432e1f5b", null ],
+    [ "InterviewPopup", "classAPopupTesterActor.html#a4d162bd274c2f1bc89a1f01530682672", null ],
     [ "OKCancelMsgBox", "classAPopupTesterActor.html#acfb217eaa1519017595cab69479873ff", null ],
     [ "OKMsgBox", "classAPopupTesterActor.html#a9881c981f7e10899057cd442f545c45f", null ],
     [ "OnCancel", "classAPopupTesterActor.html#a5bef06200ad3c7e269f620915c6822c8", null ],

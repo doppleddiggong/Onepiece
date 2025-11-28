@@ -60,14 +60,15 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "ABroadcastTrigger_8cpp.html",
-"GameLogging_8cpp_source.html",
-"ULingoGameInstance_8h.html#a19b0ebcc430a73c898b86a0c19a1d74cae579351858cc85edfce6664e868c9d46",
-"classALingoGameState.html#a783187f9c820272a7ea16cc90bb02cc4",
-"classAWeightSwitch.html#a3186a708297d96dfab84f9e4ca7f24d3",
-"classUGameDataManager.html#a1facef35e640cde6bccffeff2c64f03b",
-"classULuggageInfoWidget.html#a2e236b706a0f3c6d5fefaf62db4e2eea",
-"classUWebSocketSystem.html#a193675a8b260eb5d79e535ef3f7f1192",
-"structFComponentHelper.html"
+"GameLogging_8cpp.html#af0177426e40c9b4e32a897d9dda6fa77",
+"ULingoGameInstance_8h.html#a19b0ebcc430a73c898b86a0c19a1d74cabdca3a0c705779b1d5b149ac3e855ecf",
+"classALingoGameState.html#a25cf744e909d85bfdda297d0ab5e404e",
+"classAPopupTesterActor.html#acfb217eaa1519017595cab69479873ff",
+"classUGameDamageType.html#a77d2f7e9d089db5001753dff076da14d",
+"classULobbyWidget.html#a9aa8c021f1b4fcd8c44b91a3ae5ef9d3",
+"classUTextureButton.html#a084ac4685084d1308580d77bff8525c3",
+"namespaceGameMessage.html#a2e7ce013d07feee9b57a7ebed463ac99",
+"structFWordData.html#a0c48a651223fd58eedb624c3837e8b3b"
 ];
 
 var SYNCONMSG = '패널 동기화를 비활성화하기 위해 클릭하십시오';

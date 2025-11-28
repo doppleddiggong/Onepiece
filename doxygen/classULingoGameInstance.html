@@ -115,14 +115,14 @@ $(document).ready(function(){initNavTree('classULingoGameInstance.html',''); ini
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classULingoGameInstance__inherit__graph.svg" width="224" height="490"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classULingoGameInstance__inherit__graph.svg" width="224" height="510"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="closed.png" alt="+"/> ULingoGameInstance에 대한 협력 다이어그램:</div>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classULingoGameInstance__coll__graph.svg" width="224" height="490"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classULingoGameInstance__coll__graph.svg" width="224" height="510"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -147,6 +147,8 @@ Public 멤버 함수</h2></td></tr>
 <tr class="separator:a9fd24afa0669652e56d9d9f9ece5434c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acbf2c2c0b8d97a66652479b6d00bbafc" id="r_acbf2c2c0b8d97a66652479b6d00bbafc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classULingoGameInstance.html#acbf2c2c0b8d97a66652479b6d00bbafc">SetSelectCharacter</a> (FString userName, int32 characterIdx)</td></tr>
 <tr class="separator:acbf2c2c0b8d97a66652479b6d00bbafc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a196bfa207c29f00ebf799cd69e7bb18b" id="r_a196bfa207c29f00ebf799cd69e7bb18b"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classULingoGameInstance.html#a196bfa207c29f00ebf799cd69e7bb18b">Shutdown</a> () override</td></tr>
+<tr class="separator:a196bfa207c29f00ebf799cd69e7bb18b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad2c08929c2a4e5442b6ccc09dec73c32" id="r_ad2c08929c2a4e5442b6ccc09dec73c32"><td class="memItemLeft" align="right" valign="top">FString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classULingoGameInstance.html#ad2c08929c2a4e5442b6ccc09dec73c32">StringBase64Decode</a> (FString str)</td></tr>
 <tr class="separator:ad2c08929c2a4e5442b6ccc09dec73c32"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac5ebe67461e53d7990058be0f74277aa" id="r_ac5ebe67461e53d7990058be0f74277aa"><td class="memItemLeft" align="right" valign="top">FString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classULingoGameInstance.html#ac5ebe67461e53d7990058be0f74277aa">StringBase64Encode</a> (FString str)</td></tr>
@@ -208,43 +210,43 @@ Public 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ULingoGameInstance_8cpp_source.html">ULingoGameInstance.cpp</a> 파일의 <a class="el" href="ULingoGameInstance_8cpp_source.html#l00139">139</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  140</span>{</div>
-<div class="line"><span class="lineno">  141</span>    <span class="comment">// 세션을 만들기 위한 옵션 담을 변수</span></div>
-<div class="line"><span class="lineno">  142</span>    FOnlineSessionSettings sessionSettings;</div>
-<div class="line"><span class="lineno">  143</span>    <span class="comment">// 현재 사용중인 서브시스템 이름 가져오자.</span></div>
-<div class="line"><span class="lineno">  144</span>    FName subsysName = Online::GetSubsystem(GetWorld())-&gt;GetSubsystemName();</div>
-<div class="line"><span class="lineno">  145</span>    <span class="comment">// 만약에 서브시스템이 이름이 NULL 이면 Lan 을 이용하게 설정</span></div>
-<div class="line"><span class="lineno">  146</span>    sessionSettings.bIsLANMatch = subsysName.IsEqual(FName(TEXT(<span class="stringliteral">&quot;NULL&quot;</span>)));</div>
-<div class="line"><span class="lineno">  147</span>    UE_LOG(LogTemp, Warning, TEXT(<span class="stringliteral">&quot;서브시스템 : %s&quot;</span>), *subsysName.ToString());</div>
-<div class="line"><span class="lineno">  148</span> </div>
-<div class="line"><span class="lineno">  149</span>    <span class="comment">// Steam 에선 필수 (bUseLobbiesIfAvailable, bUsesPresence)</span></div>
-<div class="line"><span class="lineno">  150</span>    <span class="comment">// Lobby 사용 여부 설정</span></div>
-<div class="line"><span class="lineno">  151</span>    sessionSettings.bUseLobbiesIfAvailable = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  152</span>    <span class="comment">// 친구 상태를 확인할 수 있는 여부</span></div>
-<div class="line"><span class="lineno">  153</span>    sessionSettings.bUsesPresence = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  154</span> </div>
-<div class="line"><span class="lineno">  155</span>    <span class="comment">// 세션 검색 허용 여부</span></div>
-<div class="line"><span class="lineno">  156</span>    sessionSettings.bShouldAdvertise = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  157</span>    <span class="comment">// 세션 최대 참여 인원 설정 (임시로 2명)</span></div>
-<div class="line"><span class="lineno">  158</span>    sessionSettings.NumPublicConnections = 2;</div>
-<div class="line"><span class="lineno">  159</span>    <span class="comment">// 커스텀 정보</span></div>
-<div class="line"><span class="lineno">  160</span>    <span class="comment">// displayName 을 Base64 로 변환</span></div>
-<div class="line"><span class="lineno">  161</span>    displayName = <a class="code hl_function" href="classULingoGameInstance.html#ac5ebe67461e53d7990058be0f74277aa">StringBase64Encode</a>(displayName);</div>
-<div class="line"><span class="lineno">  162</span>    sessionSettings.Set(FName(<span class="stringliteral">&quot;DP_NAME&quot;</span>), displayName, EOnlineDataAdvertisementType::ViaOnlineServiceAndPing);</div>
-<div class="line"><span class="lineno">  163</span>    <span class="comment">//sessionSettings.Set(FName(&quot;MAP_IDX&quot;), 1, EOnlineDataAdvertisementType::ViaOnlineServiceAndPing);</span></div>
-<div class="line"><span class="lineno">  164</span> </div>
-<div class="line"><span class="lineno">  165</span>    <span class="comment">// sessionSettings 이용해서 세션 생성</span></div>
-<div class="line"><span class="lineno">  166</span>    FUniqueNetIdPtr netId =</div>
-<div class="line"><span class="lineno">  167</span>        GetWorld()-&gt;GetFirstLocalPlayerFromController()-&gt;GetUniqueNetIdForPlatformUser().GetUniqueNetId();</div>
-<div class="line"><span class="lineno">  168</span>    <a class="code hl_variable" href="classULingoGameInstance.html#a0da394f50c70f08879396db0c858d67f">sessionInterface</a>-&gt;CreateSession(*netId, FName(displayName), sessionSettings);   </div>
-<div class="line"><span class="lineno">  169</span>    <span class="comment">//sessionInterface-&gt;CreateSession(0, FName(displayName), sessionSettings);</span></div>
-<div class="line"><span class="lineno">  170</span> </div>
-<div class="line"><span class="lineno">  171</span>}</div>
-<div class="ttc" id="aclassULingoGameInstance_html_a0da394f50c70f08879396db0c858d67f"><div class="ttname"><a href="classULingoGameInstance.html#a0da394f50c70f08879396db0c858d67f">ULingoGameInstance::sessionInterface</a></div><div class="ttdeci">IOnlineSessionPtr sessionInterface</div><div class="ttdef"><b>Definition</b> <a href="ULingoGameInstance_8h_source.html#l00076">ULingoGameInstance.h:76</a></div></div>
-<div class="ttc" id="aclassULingoGameInstance_html_ac5ebe67461e53d7990058be0f74277aa"><div class="ttname"><a href="classULingoGameInstance.html#ac5ebe67461e53d7990058be0f74277aa">ULingoGameInstance::StringBase64Encode</a></div><div class="ttdeci">FString StringBase64Encode(FString str)</div><div class="ttdef"><b>Definition</b> <a href="ULingoGameInstance_8cpp_source.html#l00263">ULingoGameInstance.cpp:263</a></div></div>
+<p class="definition"><a class="el" href="ULingoGameInstance_8cpp_source.html">ULingoGameInstance.cpp</a> 파일의 <a class="el" href="ULingoGameInstance_8cpp_source.html#l00169">169</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  170</span>{</div>
+<div class="line"><span class="lineno">  171</span>    <span class="comment">// 세션을 만들기 위한 옵션 담을 변수</span></div>
+<div class="line"><span class="lineno">  172</span>    FOnlineSessionSettings sessionSettings;</div>
+<div class="line"><span class="lineno">  173</span>    <span class="comment">// 현재 사용중인 서브시스템 이름 가져오자.</span></div>
+<div class="line"><span class="lineno">  174</span>    FName subsysName = Online::GetSubsystem(GetWorld())-&gt;GetSubsystemName();</div>
+<div class="line"><span class="lineno">  175</span>    <span class="comment">// 만약에 서브시스템이 이름이 NULL 이면 Lan 을 이용하게 설정</span></div>
+<div class="line"><span class="lineno">  176</span>    sessionSettings.bIsLANMatch = subsysName.IsEqual(FName(TEXT(<span class="stringliteral">&quot;NULL&quot;</span>)));</div>
+<div class="line"><span class="lineno">  177</span>    UE_LOG(LogTemp, Warning, TEXT(<span class="stringliteral">&quot;서브시스템 : %s&quot;</span>), *subsysName.ToString());</div>
+<div class="line"><span class="lineno">  178</span> </div>
+<div class="line"><span class="lineno">  179</span>    <span class="comment">// Steam 에선 필수 (bUseLobbiesIfAvailable, bUsesPresence)</span></div>
+<div class="line"><span class="lineno">  180</span>    <span class="comment">// Lobby 사용 여부 설정</span></div>
+<div class="line"><span class="lineno">  181</span>    sessionSettings.bUseLobbiesIfAvailable = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  182</span>    <span class="comment">// 친구 상태를 확인할 수 있는 여부</span></div>
+<div class="line"><span class="lineno">  183</span>    sessionSettings.bUsesPresence = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  184</span> </div>
+<div class="line"><span class="lineno">  185</span>    <span class="comment">// 세션 검색 허용 여부</span></div>
+<div class="line"><span class="lineno">  186</span>    sessionSettings.bShouldAdvertise = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  187</span>    <span class="comment">// 세션 최대 참여 인원 설정 (임시로 2명)</span></div>
+<div class="line"><span class="lineno">  188</span>    sessionSettings.NumPublicConnections = 2;</div>
+<div class="line"><span class="lineno">  189</span>    <span class="comment">// 커스텀 정보</span></div>
+<div class="line"><span class="lineno">  190</span>    <span class="comment">// displayName 을 Base64 로 변환</span></div>
+<div class="line"><span class="lineno">  191</span>    displayName = <a class="code hl_function" href="classULingoGameInstance.html#ac5ebe67461e53d7990058be0f74277aa">StringBase64Encode</a>(displayName);</div>
+<div class="line"><span class="lineno">  192</span>    sessionSettings.Set(FName(<span class="stringliteral">&quot;DP_NAME&quot;</span>), displayName, EOnlineDataAdvertisementType::ViaOnlineServiceAndPing);</div>
+<div class="line"><span class="lineno">  193</span>    <span class="comment">//sessionSettings.Set(FName(&quot;MAP_IDX&quot;), 1, EOnlineDataAdvertisementType::ViaOnlineServiceAndPing);</span></div>
+<div class="line"><span class="lineno">  194</span> </div>
+<div class="line"><span class="lineno">  195</span>    <span class="comment">// sessionSettings 이용해서 세션 생성</span></div>
+<div class="line"><span class="lineno">  196</span>    FUniqueNetIdPtr netId =</div>
+<div class="line"><span class="lineno">  197</span>        GetWorld()-&gt;GetFirstLocalPlayerFromController()-&gt;GetUniqueNetIdForPlatformUser().GetUniqueNetId();</div>
+<div class="line"><span class="lineno">  198</span>    <a class="code hl_variable" href="classULingoGameInstance.html#a0da394f50c70f08879396db0c858d67f">sessionInterface</a>-&gt;CreateSession(*netId, FName(displayName), sessionSettings);   </div>
+<div class="line"><span class="lineno">  199</span>    <span class="comment">//sessionInterface-&gt;CreateSession(0, FName(displayName), sessionSettings);</span></div>
+<div class="line"><span class="lineno">  200</span> </div>
+<div class="line"><span class="lineno">  201</span>}</div>
+<div class="ttc" id="aclassULingoGameInstance_html_a0da394f50c70f08879396db0c858d67f"><div class="ttname"><a href="classULingoGameInstance.html#a0da394f50c70f08879396db0c858d67f">ULingoGameInstance::sessionInterface</a></div><div class="ttdeci">IOnlineSessionPtr sessionInterface</div><div class="ttdef"><b>Definition</b> <a href="ULingoGameInstance_8h_source.html#l00079">ULingoGameInstance.h:79</a></div></div>
+<div class="ttc" id="aclassULingoGameInstance_html_ac5ebe67461e53d7990058be0f74277aa"><div class="ttname"><a href="classULingoGameInstance.html#ac5ebe67461e53d7990058be0f74277aa">ULingoGameInstance::StringBase64Encode</a></div><div class="ttdeci">FString StringBase64Encode(FString str)</div><div class="ttdef"><b>Definition</b> <a href="ULingoGameInstance_8cpp_source.html#l00293">ULingoGameInstance.cpp:293</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="ULingoGameInstance_8h_source.html#l00076">sessionInterface</a>, <a class="el" href="ULingoGameInstance_8cpp_source.html#l00263">StringBase64Encode()</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="ULingoGameInstance_8h_source.html#l00079">sessionInterface</a>, <a class="el" href="ULingoGameInstance_8cpp_source.html#l00293">StringBase64Encode()</a>.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="LobbyWidget_8cpp_source.html#l00097">ULobbyWidget::OnCreateClicked()</a>.</p>
 <div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -279,26 +281,26 @@ Public 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ULingoGameInstance_8cpp_source.html">ULingoGameInstance.cpp</a> 파일의 <a class="el" href="ULingoGameInstance_8cpp_source.html#l00187">187</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  188</span>{</div>
-<div class="line"><span class="lineno">  189</span>    UE_LOG(LogTemp, Warning, TEXT(<span class="stringliteral">&quot;세션 조회 시작&quot;</span>));</div>
-<div class="line"><span class="lineno">  190</span>    <span class="comment">// sessionSearch 만들자.</span></div>
-<div class="line"><span class="lineno">  191</span>    <a class="code hl_variable" href="classULingoGameInstance.html#acedf0298420c1fd059014fccb90a3b6e">sessionSearch</a> = MakeShared&lt;FOnlineSessionSearch&gt;();</div>
-<div class="line"><span class="lineno">  192</span>    <span class="comment">// 현재 사용중인 서브시스템 이름 가져오자.</span></div>
-<div class="line"><span class="lineno">  193</span>    FName subsysName = Online::GetSubsystem(GetWorld())-&gt;GetSubsystemName();</div>
-<div class="line"><span class="lineno">  194</span>    <span class="comment">// 만약에 서브시스템이 이름이 NULL 이면 Lan 을 이용하게 설정</span></div>
-<div class="line"><span class="lineno">  195</span>    <a class="code hl_variable" href="classULingoGameInstance.html#acedf0298420c1fd059014fccb90a3b6e">sessionSearch</a>-&gt;bIsLanQuery = subsysName.IsEqual(FName(TEXT(<span class="stringliteral">&quot;NULL&quot;</span>)));</div>
-<div class="line"><span class="lineno">  196</span>    <span class="comment">// 어떤 옵션을 기준으로 검색</span></div>
-<div class="line"><span class="lineno">  197</span>    <a class="code hl_variable" href="classULingoGameInstance.html#acedf0298420c1fd059014fccb90a3b6e">sessionSearch</a>-&gt;QuerySettings.Set(SEARCH_LOBBIES, <span class="keyword">true</span>, EOnlineComparisonOp::Equals);</div>
-<div class="line"><span class="lineno">  198</span>    <span class="comment">//sessionSearch-&gt;QuerySettings.Set(FName(&quot;DP_NAME&quot;), FName(&quot;Wanted&quot;), EOnlineComparisonOp::Equals);</span></div>
-<div class="line"><span class="lineno">  199</span>    <span class="comment">// 검색 갯수</span></div>
-<div class="line"><span class="lineno">  200</span>    <a class="code hl_variable" href="classULingoGameInstance.html#acedf0298420c1fd059014fccb90a3b6e">sessionSearch</a>-&gt;MaxSearchResults = 100;</div>
-<div class="line"><span class="lineno">  201</span>    <span class="comment">// 위 설정을 가지고 세션 검색</span></div>
-<div class="line"><span class="lineno">  202</span>    <a class="code hl_variable" href="classULingoGameInstance.html#a0da394f50c70f08879396db0c858d67f">sessionInterface</a>-&gt;FindSessions(0, <a class="code hl_variable" href="classULingoGameInstance.html#acedf0298420c1fd059014fccb90a3b6e">sessionSearch</a>.ToSharedRef());</div>
-<div class="line"><span class="lineno">  203</span>}</div>
-<div class="ttc" id="aclassULingoGameInstance_html_acedf0298420c1fd059014fccb90a3b6e"><div class="ttname"><a href="classULingoGameInstance.html#acedf0298420c1fd059014fccb90a3b6e">ULingoGameInstance::sessionSearch</a></div><div class="ttdeci">TSharedPtr&lt; FOnlineSessionSearch &gt; sessionSearch</div><div class="ttdef"><b>Definition</b> <a href="ULingoGameInstance_8h_source.html#l00089">ULingoGameInstance.h:89</a></div></div>
+<p class="definition"><a class="el" href="ULingoGameInstance_8cpp_source.html">ULingoGameInstance.cpp</a> 파일의 <a class="el" href="ULingoGameInstance_8cpp_source.html#l00217">217</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  218</span>{</div>
+<div class="line"><span class="lineno">  219</span>    UE_LOG(LogTemp, Warning, TEXT(<span class="stringliteral">&quot;세션 조회 시작&quot;</span>));</div>
+<div class="line"><span class="lineno">  220</span>    <span class="comment">// sessionSearch 만들자.</span></div>
+<div class="line"><span class="lineno">  221</span>    <a class="code hl_variable" href="classULingoGameInstance.html#acedf0298420c1fd059014fccb90a3b6e">sessionSearch</a> = MakeShared&lt;FOnlineSessionSearch&gt;();</div>
+<div class="line"><span class="lineno">  222</span>    <span class="comment">// 현재 사용중인 서브시스템 이름 가져오자.</span></div>
+<div class="line"><span class="lineno">  223</span>    FName subsysName = Online::GetSubsystem(GetWorld())-&gt;GetSubsystemName();</div>
+<div class="line"><span class="lineno">  224</span>    <span class="comment">// 만약에 서브시스템이 이름이 NULL 이면 Lan 을 이용하게 설정</span></div>
+<div class="line"><span class="lineno">  225</span>    <a class="code hl_variable" href="classULingoGameInstance.html#acedf0298420c1fd059014fccb90a3b6e">sessionSearch</a>-&gt;bIsLanQuery = subsysName.IsEqual(FName(TEXT(<span class="stringliteral">&quot;NULL&quot;</span>)));</div>
+<div class="line"><span class="lineno">  226</span>    <span class="comment">// 어떤 옵션을 기준으로 검색</span></div>
+<div class="line"><span class="lineno">  227</span>    <a class="code hl_variable" href="classULingoGameInstance.html#acedf0298420c1fd059014fccb90a3b6e">sessionSearch</a>-&gt;QuerySettings.Set(SEARCH_LOBBIES, <span class="keyword">true</span>, EOnlineComparisonOp::Equals);</div>
+<div class="line"><span class="lineno">  228</span>    <span class="comment">//sessionSearch-&gt;QuerySettings.Set(FName(&quot;DP_NAME&quot;), FName(&quot;Wanted&quot;), EOnlineComparisonOp::Equals);</span></div>
+<div class="line"><span class="lineno">  229</span>    <span class="comment">// 검색 갯수</span></div>
+<div class="line"><span class="lineno">  230</span>    <a class="code hl_variable" href="classULingoGameInstance.html#acedf0298420c1fd059014fccb90a3b6e">sessionSearch</a>-&gt;MaxSearchResults = 100;</div>
+<div class="line"><span class="lineno">  231</span>    <span class="comment">// 위 설정을 가지고 세션 검색</span></div>
+<div class="line"><span class="lineno">  232</span>    <a class="code hl_variable" href="classULingoGameInstance.html#a0da394f50c70f08879396db0c858d67f">sessionInterface</a>-&gt;FindSessions(0, <a class="code hl_variable" href="classULingoGameInstance.html#acedf0298420c1fd059014fccb90a3b6e">sessionSearch</a>.ToSharedRef());</div>
+<div class="line"><span class="lineno">  233</span>}</div>
+<div class="ttc" id="aclassULingoGameInstance_html_acedf0298420c1fd059014fccb90a3b6e"><div class="ttname"><a href="classULingoGameInstance.html#acedf0298420c1fd059014fccb90a3b6e">ULingoGameInstance::sessionSearch</a></div><div class="ttdeci">TSharedPtr&lt; FOnlineSessionSearch &gt; sessionSearch</div><div class="ttdef"><b>Definition</b> <a href="ULingoGameInstance_8h_source.html#l00092">ULingoGameInstance.h:92</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="ULingoGameInstance_8h_source.html#l00076">sessionInterface</a>, <a class="el" href="ULingoGameInstance_8h_source.html#l00089">sessionSearch</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="ULingoGameInstance_8h_source.html#l00079">sessionInterface</a>, <a class="el" href="ULingoGameInstance_8h_source.html#l00092">sessionSearch</a>.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="LobbyWidget_8cpp_source.html#l00112">ULobbyWidget::OnClickFind()</a>.</p>
 <div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -327,16 +329,16 @@ Public 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ULingoGameInstance_8cpp_source.html">ULingoGameInstance.cpp</a> 파일의 <a class="el" href="ULingoGameInstance_8cpp_source.html#l00286">286</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  287</span>{</div>
-<div class="line"><span class="lineno">  288</span>    int32* value = <a class="code hl_variable" href="classULingoGameInstance.html#a6dce121978db2d3b2504e9068c694527">selectCharacter</a>.Find(userName);</div>
-<div class="line"><span class="lineno">  289</span>    <span class="keywordflow">if</span> (value == <span class="keyword">nullptr</span>) <span class="keywordflow">return</span> -1;</div>
-<div class="line"><span class="lineno">  290</span> </div>
-<div class="line"><span class="lineno">  291</span>    <span class="keywordflow">return</span> *value;</div>
-<div class="line"><span class="lineno">  292</span>}</div>
-<div class="ttc" id="aclassULingoGameInstance_html_a6dce121978db2d3b2504e9068c694527"><div class="ttname"><a href="classULingoGameInstance.html#a6dce121978db2d3b2504e9068c694527">ULingoGameInstance::selectCharacter</a></div><div class="ttdeci">TMap&lt; FString, int32 &gt; selectCharacter</div><div class="ttdef"><b>Definition</b> <a href="ULingoGameInstance_8h_source.html#l00112">ULingoGameInstance.h:112</a></div></div>
+<p class="definition"><a class="el" href="ULingoGameInstance_8cpp_source.html">ULingoGameInstance.cpp</a> 파일의 <a class="el" href="ULingoGameInstance_8cpp_source.html#l00316">316</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  317</span>{</div>
+<div class="line"><span class="lineno">  318</span>    int32* value = <a class="code hl_variable" href="classULingoGameInstance.html#a6dce121978db2d3b2504e9068c694527">selectCharacter</a>.Find(userName);</div>
+<div class="line"><span class="lineno">  319</span>    <span class="keywordflow">if</span> (value == <span class="keyword">nullptr</span>) <span class="keywordflow">return</span> -1;</div>
+<div class="line"><span class="lineno">  320</span> </div>
+<div class="line"><span class="lineno">  321</span>    <span class="keywordflow">return</span> *value;</div>
+<div class="line"><span class="lineno">  322</span>}</div>
+<div class="ttc" id="aclassULingoGameInstance_html_a6dce121978db2d3b2504e9068c694527"><div class="ttname"><a href="classULingoGameInstance.html#a6dce121978db2d3b2504e9068c694527">ULingoGameInstance::selectCharacter</a></div><div class="ttdeci">TMap&lt; FString, int32 &gt; selectCharacter</div><div class="ttdef"><b>Definition</b> <a href="ULingoGameInstance_8h_source.html#l00115">ULingoGameInstance.h:115</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="ULingoGameInstance_8h_source.html#l00112">selectCharacter</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="ULingoGameInstance_8h_source.html#l00115">selectCharacter</a>.</p>
 
 </div>
 </div>
@@ -384,11 +386,11 @@ Public 속성</h2></td></tr>
 <div class="line"><span class="lineno">   37</span>            <span class="keyword">this</span>, &amp;<a class="code hl_function" href="classULingoGameInstance.html#a9fd24afa0669652e56d9d9f9ece5434c">ULingoGameInstance::OnJoinSessionComplete</a>);</div>
 <div class="line"><span class="lineno">   38</span>    }</div>
 <div class="line"><span class="lineno">   39</span>}</div>
-<div class="ttc" id="aclassULingoGameInstance_html_a410b5941f3346e986bacce837f762dd7"><div class="ttname"><a href="classULingoGameInstance.html#a410b5941f3346e986bacce837f762dd7">ULingoGameInstance::OnFindSessionComplete</a></div><div class="ttdeci">void OnFindSessionComplete(bool bWasSuccessful)</div><div class="ttdef"><b>Definition</b> <a href="ULingoGameInstance_8cpp_source.html#l00205">ULingoGameInstance.cpp:205</a></div></div>
-<div class="ttc" id="aclassULingoGameInstance_html_a9fd24afa0669652e56d9d9f9ece5434c"><div class="ttname"><a href="classULingoGameInstance.html#a9fd24afa0669652e56d9d9f9ece5434c">ULingoGameInstance::OnJoinSessionComplete</a></div><div class="ttdeci">void OnJoinSessionComplete(FName sessionName, EOnJoinSessionCompleteResult::Type result)</div><div class="ttdef"><b>Definition</b> <a href="ULingoGameInstance_8cpp_source.html#l00248">ULingoGameInstance.cpp:248</a></div></div>
-<div class="ttc" id="aclassULingoGameInstance_html_aa43f70d6fffd84706bfbebb23e08db49"><div class="ttname"><a href="classULingoGameInstance.html#aa43f70d6fffd84706bfbebb23e08db49">ULingoGameInstance::OnCreateSessionComplete</a></div><div class="ttdeci">void OnCreateSessionComplete(FName sessionName, bool bWasSuccessful)</div><div class="ttdef"><b>Definition</b> <a href="ULingoGameInstance_8cpp_source.html#l00173">ULingoGameInstance.cpp:173</a></div></div>
+<div class="ttc" id="aclassULingoGameInstance_html_a410b5941f3346e986bacce837f762dd7"><div class="ttname"><a href="classULingoGameInstance.html#a410b5941f3346e986bacce837f762dd7">ULingoGameInstance::OnFindSessionComplete</a></div><div class="ttdeci">void OnFindSessionComplete(bool bWasSuccessful)</div><div class="ttdef"><b>Definition</b> <a href="ULingoGameInstance_8cpp_source.html#l00235">ULingoGameInstance.cpp:235</a></div></div>
+<div class="ttc" id="aclassULingoGameInstance_html_a9fd24afa0669652e56d9d9f9ece5434c"><div class="ttname"><a href="classULingoGameInstance.html#a9fd24afa0669652e56d9d9f9ece5434c">ULingoGameInstance::OnJoinSessionComplete</a></div><div class="ttdeci">void OnJoinSessionComplete(FName sessionName, EOnJoinSessionCompleteResult::Type result)</div><div class="ttdef"><b>Definition</b> <a href="ULingoGameInstance_8cpp_source.html#l00278">ULingoGameInstance.cpp:278</a></div></div>
+<div class="ttc" id="aclassULingoGameInstance_html_aa43f70d6fffd84706bfbebb23e08db49"><div class="ttname"><a href="classULingoGameInstance.html#aa43f70d6fffd84706bfbebb23e08db49">ULingoGameInstance::OnCreateSessionComplete</a></div><div class="ttdeci">void OnCreateSessionComplete(FName sessionName, bool bWasSuccessful)</div><div class="ttdef"><b>Definition</b> <a href="ULingoGameInstance_8cpp_source.html#l00203">ULingoGameInstance.cpp:203</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="ULingoGameInstance_8cpp_source.html#l00173">OnCreateSessionComplete()</a>, <a class="el" href="ULingoGameInstance_8cpp_source.html#l00205">OnFindSessionComplete()</a>, <a class="el" href="ULingoGameInstance_8cpp_source.html#l00248">OnJoinSessionComplete()</a>, <a class="el" href="ULingoGameInstance_8h_source.html#l00076">sessionInterface</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="ULingoGameInstance_8cpp_source.html#l00203">OnCreateSessionComplete()</a>, <a class="el" href="ULingoGameInstance_8cpp_source.html#l00235">OnFindSessionComplete()</a>, <a class="el" href="ULingoGameInstance_8cpp_source.html#l00278">OnJoinSessionComplete()</a>, <a class="el" href="ULingoGameInstance_8h_source.html#l00079">sessionInterface</a>.</p>
 <div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-5-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-5-summary" class="dynsummary" style="display:block;">
@@ -415,23 +417,23 @@ Public 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ULingoGameInstance_8cpp_source.html">ULingoGameInstance.cpp</a> 파일의 <a class="el" href="ULingoGameInstance_8cpp_source.html#l00232">232</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  233</span>{</div>
-<div class="line"><span class="lineno">  234</span>    <span class="comment">// 검색된 세션 결과들</span></div>
-<div class="line"><span class="lineno">  235</span>    <span class="keyword">auto</span> results = <a class="code hl_variable" href="classULingoGameInstance.html#acedf0298420c1fd059014fccb90a3b6e">sessionSearch</a>-&gt;SearchResults;</div>
-<div class="line"><span class="lineno">  236</span>    <span class="comment">// 5.5 이후 부터 바꼈다...</span></div>
-<div class="line"><span class="lineno">  237</span>    results[sessionIdx].Session.SessionSettings.bUseLobbiesIfAvailable = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  238</span>    results[sessionIdx].Session.SessionSettings.bUsesPresence = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  239</span> </div>
-<div class="line"><span class="lineno">  240</span>    <span class="comment">// 세션 이름 가져오자.</span></div>
-<div class="line"><span class="lineno">  241</span>    FString displayName;</div>
-<div class="line"><span class="lineno">  242</span>    results[sessionIdx].Session.SessionSettings.Get(FName(TEXT(<span class="stringliteral">&quot;DP_NAME&quot;</span>)), displayName);</div>
-<div class="line"><span class="lineno">  243</span> </div>
-<div class="line"><span class="lineno">  244</span>    <span class="comment">// 세션 참여</span></div>
-<div class="line"><span class="lineno">  245</span>    <a class="code hl_variable" href="classULingoGameInstance.html#a0da394f50c70f08879396db0c858d67f">sessionInterface</a>-&gt;JoinSession(0, FName(displayName), results[sessionIdx]);</div>
-<div class="line"><span class="lineno">  246</span>}</div>
+<p class="definition"><a class="el" href="ULingoGameInstance_8cpp_source.html">ULingoGameInstance.cpp</a> 파일의 <a class="el" href="ULingoGameInstance_8cpp_source.html#l00262">262</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  263</span>{</div>
+<div class="line"><span class="lineno">  264</span>    <span class="comment">// 검색된 세션 결과들</span></div>
+<div class="line"><span class="lineno">  265</span>    <span class="keyword">auto</span> results = <a class="code hl_variable" href="classULingoGameInstance.html#acedf0298420c1fd059014fccb90a3b6e">sessionSearch</a>-&gt;SearchResults;</div>
+<div class="line"><span class="lineno">  266</span>    <span class="comment">// 5.5 이후 부터 바꼈다...</span></div>
+<div class="line"><span class="lineno">  267</span>    results[sessionIdx].Session.SessionSettings.bUseLobbiesIfAvailable = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  268</span>    results[sessionIdx].Session.SessionSettings.bUsesPresence = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  269</span> </div>
+<div class="line"><span class="lineno">  270</span>    <span class="comment">// 세션 이름 가져오자.</span></div>
+<div class="line"><span class="lineno">  271</span>    FString displayName;</div>
+<div class="line"><span class="lineno">  272</span>    results[sessionIdx].Session.SessionSettings.Get(FName(TEXT(<span class="stringliteral">&quot;DP_NAME&quot;</span>)), displayName);</div>
+<div class="line"><span class="lineno">  273</span> </div>
+<div class="line"><span class="lineno">  274</span>    <span class="comment">// 세션 참여</span></div>
+<div class="line"><span class="lineno">  275</span>    <a class="code hl_variable" href="classULingoGameInstance.html#a0da394f50c70f08879396db0c858d67f">sessionInterface</a>-&gt;JoinSession(0, FName(displayName), results[sessionIdx]);</div>
+<div class="line"><span class="lineno">  276</span>}</div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="ULingoGameInstance_8h_source.html#l00076">sessionInterface</a>, <a class="el" href="ULingoGameInstance_8h_source.html#l00089">sessionSearch</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="ULingoGameInstance_8h_source.html#l00079">sessionInterface</a>, <a class="el" href="ULingoGameInstance_8h_source.html#l00092">sessionSearch</a>.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="SessionInfoWidget_8cpp_source.html#l00023">USessionInfoWidget::OnClickJoin()</a>.</p>
 <div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -470,19 +472,19 @@ Public 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ULingoGameInstance_8cpp_source.html">ULingoGameInstance.cpp</a> 파일의 <a class="el" href="ULingoGameInstance_8cpp_source.html#l00173">173</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  174</span>{</div>
-<div class="line"><span class="lineno">  175</span>    <span class="keywordflow">if</span> (bWasSuccessful)</div>
-<div class="line"><span class="lineno">  176</span>    {</div>
-<div class="line"><span class="lineno">  177</span>        UE_LOG(LogTemp, Warning, TEXT(<span class="stringliteral">&quot;[%s] 세션 생성 성공&quot;</span>), *sessionName.ToString());</div>
-<div class="line"><span class="lineno">  178</span>        <span class="comment">// 맵 으로 이동</span></div>
-<div class="line"><span class="lineno">  179</span>        GetWorld()-&gt;ServerTravel(TEXT(<span class="stringliteral">&quot;/Game/StarterBundle/CollectionMaps/Map1?listen&quot;</span>));</div>
-<div class="line"><span class="lineno">  180</span>    }</div>
-<div class="line"><span class="lineno">  181</span>    <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  182</span>    {</div>
-<div class="line"><span class="lineno">  183</span>        UE_LOG(LogTemp, Warning, TEXT(<span class="stringliteral">&quot;[%s] 세션 생성 실패&quot;</span>), *sessionName.ToString());</div>
-<div class="line"><span class="lineno">  184</span>    }</div>
-<div class="line"><span class="lineno">  185</span>}</div>
+<p class="definition"><a class="el" href="ULingoGameInstance_8cpp_source.html">ULingoGameInstance.cpp</a> 파일의 <a class="el" href="ULingoGameInstance_8cpp_source.html#l00203">203</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  204</span>{</div>
+<div class="line"><span class="lineno">  205</span>    <span class="keywordflow">if</span> (bWasSuccessful)</div>
+<div class="line"><span class="lineno">  206</span>    {</div>
+<div class="line"><span class="lineno">  207</span>        UE_LOG(LogTemp, Warning, TEXT(<span class="stringliteral">&quot;[%s] 세션 생성 성공&quot;</span>), *sessionName.ToString());</div>
+<div class="line"><span class="lineno">  208</span>        <span class="comment">// 맵 으로 이동</span></div>
+<div class="line"><span class="lineno">  209</span>        GetWorld()-&gt;ServerTravel(TEXT(<span class="stringliteral">&quot;/Game/StarterBundle/CollectionMaps/Map1?listen&quot;</span>));</div>
+<div class="line"><span class="lineno">  210</span>    }</div>
+<div class="line"><span class="lineno">  211</span>    <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  212</span>    {</div>
+<div class="line"><span class="lineno">  213</span>        UE_LOG(LogTemp, Warning, TEXT(<span class="stringliteral">&quot;[%s] 세션 생성 실패&quot;</span>), *sessionName.ToString());</div>
+<div class="line"><span class="lineno">  214</span>    }</div>
+<div class="line"><span class="lineno">  215</span>}</div>
 </div><!-- fragment -->
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ULingoGameInstance_8cpp_source.html#l00019">Init()</a>.</p>
 <div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -511,36 +513,36 @@ Public 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ULingoGameInstance_8cpp_source.html">ULingoGameInstance.cpp</a> 파일의 <a class="el" href="ULingoGameInstance_8cpp_source.html#l00205">205</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  206</span>{</div>
-<div class="line"><span class="lineno">  207</span>    UE_LOG(LogTemp, Warning, TEXT(<span class="stringliteral">&quot;세션 조회 끝&quot;</span>));</div>
-<div class="line"><span class="lineno">  208</span>    <span class="keywordflow">if</span> (bWasSuccessful)</div>
-<div class="line"><span class="lineno">  209</span>    {</div>
-<div class="line"><span class="lineno">  210</span>        <span class="comment">// 검색된 세션 결과들</span></div>
-<div class="line"><span class="lineno">  211</span>        <span class="keyword">auto</span> results = <a class="code hl_variable" href="classULingoGameInstance.html#acedf0298420c1fd059014fccb90a3b6e">sessionSearch</a>-&gt;SearchResults;</div>
-<div class="line"><span class="lineno">  212</span>        <span class="keywordflow">for</span> (int32 i = 0; i &lt; results.Num(); i++)</div>
-<div class="line"><span class="lineno">  213</span>        {</div>
-<div class="line"><span class="lineno">  214</span>            <span class="comment">// 방 제목 이름 담을 변수</span></div>
-<div class="line"><span class="lineno">  215</span>            FString displayName;</div>
-<div class="line"><span class="lineno">  216</span>            results[i].Session.SessionSettings.Get(FName(TEXT(<span class="stringliteral">&quot;DP_NAME&quot;</span>)), displayName);</div>
-<div class="line"><span class="lineno">  217</span>            <span class="comment">// displayName 을 UTF8 string 으로 변환</span></div>
-<div class="line"><span class="lineno">  218</span>            displayName = <a class="code hl_function" href="classULingoGameInstance.html#ad2c08929c2a4e5442b6ccc09dec73c32">StringBase64Decode</a>(displayName);</div>
-<div class="line"><span class="lineno">  219</span>            UE_LOG(LogTemp, Warning, TEXT(<span class="stringliteral">&quot;세션 - %i, 이름 : %s&quot;</span>), i, *displayName);</div>
-<div class="line"><span class="lineno">  220</span>            <span class="comment">// onFindComplete 에 들어있는 함수 실행</span></div>
-<div class="line"><span class="lineno">  221</span>            <a class="code hl_variable" href="classULingoGameInstance.html#aa6c095d06ead65ddac325cf705779752">onFindComplete</a>.ExecuteIfBound(i, displayName);</div>
-<div class="line"><span class="lineno">  222</span>        }</div>
-<div class="line"><span class="lineno">  223</span>    }</div>
-<div class="line"><span class="lineno">  224</span>    <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  225</span>    {</div>
-<div class="line"><span class="lineno">  226</span>        UE_LOG(LogTemp, Warning, TEXT(<span class="stringliteral">&quot;세션 조회 실패&quot;</span>));</div>
-<div class="line"><span class="lineno">  227</span>    }</div>
-<div class="line"><span class="lineno">  228</span> </div>
-<div class="line"><span class="lineno">  229</span>    <a class="code hl_variable" href="classULingoGameInstance.html#aa6c095d06ead65ddac325cf705779752">onFindComplete</a>.ExecuteIfBound(-1, FString());</div>
-<div class="line"><span class="lineno">  230</span>}</div>
-<div class="ttc" id="aclassULingoGameInstance_html_aa6c095d06ead65ddac325cf705779752"><div class="ttname"><a href="classULingoGameInstance.html#aa6c095d06ead65ddac325cf705779752">ULingoGameInstance::onFindComplete</a></div><div class="ttdeci">FFindComplete onFindComplete</div><div class="ttdef"><b>Definition</b> <a href="ULingoGameInstance_8h_source.html#l00091">ULingoGameInstance.h:91</a></div></div>
-<div class="ttc" id="aclassULingoGameInstance_html_ad2c08929c2a4e5442b6ccc09dec73c32"><div class="ttname"><a href="classULingoGameInstance.html#ad2c08929c2a4e5442b6ccc09dec73c32">ULingoGameInstance::StringBase64Decode</a></div><div class="ttdeci">FString StringBase64Decode(FString str)</div><div class="ttdef"><b>Definition</b> <a href="ULingoGameInstance_8cpp_source.html#l00273">ULingoGameInstance.cpp:273</a></div></div>
+<p class="definition"><a class="el" href="ULingoGameInstance_8cpp_source.html">ULingoGameInstance.cpp</a> 파일의 <a class="el" href="ULingoGameInstance_8cpp_source.html#l00235">235</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  236</span>{</div>
+<div class="line"><span class="lineno">  237</span>    UE_LOG(LogTemp, Warning, TEXT(<span class="stringliteral">&quot;세션 조회 끝&quot;</span>));</div>
+<div class="line"><span class="lineno">  238</span>    <span class="keywordflow">if</span> (bWasSuccessful)</div>
+<div class="line"><span class="lineno">  239</span>    {</div>
+<div class="line"><span class="lineno">  240</span>        <span class="comment">// 검색된 세션 결과들</span></div>
+<div class="line"><span class="lineno">  241</span>        <span class="keyword">auto</span> results = <a class="code hl_variable" href="classULingoGameInstance.html#acedf0298420c1fd059014fccb90a3b6e">sessionSearch</a>-&gt;SearchResults;</div>
+<div class="line"><span class="lineno">  242</span>        <span class="keywordflow">for</span> (int32 i = 0; i &lt; results.Num(); i++)</div>
+<div class="line"><span class="lineno">  243</span>        {</div>
+<div class="line"><span class="lineno">  244</span>            <span class="comment">// 방 제목 이름 담을 변수</span></div>
+<div class="line"><span class="lineno">  245</span>            FString displayName;</div>
+<div class="line"><span class="lineno">  246</span>            results[i].Session.SessionSettings.Get(FName(TEXT(<span class="stringliteral">&quot;DP_NAME&quot;</span>)), displayName);</div>
+<div class="line"><span class="lineno">  247</span>            <span class="comment">// displayName 을 UTF8 string 으로 변환</span></div>
+<div class="line"><span class="lineno">  248</span>            displayName = <a class="code hl_function" href="classULingoGameInstance.html#ad2c08929c2a4e5442b6ccc09dec73c32">StringBase64Decode</a>(displayName);</div>
+<div class="line"><span class="lineno">  249</span>            UE_LOG(LogTemp, Warning, TEXT(<span class="stringliteral">&quot;세션 - %i, 이름 : %s&quot;</span>), i, *displayName);</div>
+<div class="line"><span class="lineno">  250</span>            <span class="comment">// onFindComplete 에 들어있는 함수 실행</span></div>
+<div class="line"><span class="lineno">  251</span>            <a class="code hl_variable" href="classULingoGameInstance.html#aa6c095d06ead65ddac325cf705779752">onFindComplete</a>.ExecuteIfBound(i, displayName);</div>
+<div class="line"><span class="lineno">  252</span>        }</div>
+<div class="line"><span class="lineno">  253</span>    }</div>
+<div class="line"><span class="lineno">  254</span>    <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  255</span>    {</div>
+<div class="line"><span class="lineno">  256</span>        UE_LOG(LogTemp, Warning, TEXT(<span class="stringliteral">&quot;세션 조회 실패&quot;</span>));</div>
+<div class="line"><span class="lineno">  257</span>    }</div>
+<div class="line"><span class="lineno">  258</span> </div>
+<div class="line"><span class="lineno">  259</span>    <a class="code hl_variable" href="classULingoGameInstance.html#aa6c095d06ead65ddac325cf705779752">onFindComplete</a>.ExecuteIfBound(-1, FString());</div>
+<div class="line"><span class="lineno">  260</span>}</div>
+<div class="ttc" id="aclassULingoGameInstance_html_aa6c095d06ead65ddac325cf705779752"><div class="ttname"><a href="classULingoGameInstance.html#aa6c095d06ead65ddac325cf705779752">ULingoGameInstance::onFindComplete</a></div><div class="ttdeci">FFindComplete onFindComplete</div><div class="ttdef"><b>Definition</b> <a href="ULingoGameInstance_8h_source.html#l00094">ULingoGameInstance.h:94</a></div></div>
+<div class="ttc" id="aclassULingoGameInstance_html_ad2c08929c2a4e5442b6ccc09dec73c32"><div class="ttname"><a href="classULingoGameInstance.html#ad2c08929c2a4e5442b6ccc09dec73c32">ULingoGameInstance::StringBase64Decode</a></div><div class="ttdeci">FString StringBase64Decode(FString str)</div><div class="ttdef"><b>Definition</b> <a href="ULingoGameInstance_8cpp_source.html#l00303">ULingoGameInstance.cpp:303</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="ULingoGameInstance_8h_source.html#l00091">onFindComplete</a>, <a class="el" href="ULingoGameInstance_8h_source.html#l00089">sessionSearch</a>, <a class="el" href="ULingoGameInstance_8cpp_source.html#l00273">StringBase64Decode()</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="ULingoGameInstance_8h_source.html#l00094">onFindComplete</a>, <a class="el" href="ULingoGameInstance_8h_source.html#l00092">sessionSearch</a>, <a class="el" href="ULingoGameInstance_8cpp_source.html#l00303">StringBase64Decode()</a>.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ULingoGameInstance_8cpp_source.html#l00019">Init()</a>.</p>
 <div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -586,22 +588,22 @@ Public 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ULingoGameInstance_8cpp_source.html">ULingoGameInstance.cpp</a> 파일의 <a class="el" href="ULingoGameInstance_8cpp_source.html#l00248">248</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  249</span>{</div>
-<div class="line"><span class="lineno">  250</span>    <span class="comment">// 만약 참여 성공 했다면</span></div>
-<div class="line"><span class="lineno">  251</span>    <span class="keywordflow">if</span> (result == EOnJoinSessionCompleteResult::Success)</div>
-<div class="line"><span class="lineno">  252</span>    {</div>
-<div class="line"><span class="lineno">  253</span>        <span class="comment">// 서버가 만들어 놓은 세션 URL 을 얻어오자.k</span></div>
-<div class="line"><span class="lineno">  254</span>        FString url;</div>
-<div class="line"><span class="lineno">  255</span>        <a class="code hl_variable" href="classULingoGameInstance.html#a0da394f50c70f08879396db0c858d67f">sessionInterface</a>-&gt;GetResolvedConnectString(sessionName, url);</div>
-<div class="line"><span class="lineno">  256</span>        UE_LOG(LogTemp, Warning, TEXT(<span class="stringliteral">&quot;URL : %s&quot;</span>), *url);</div>
-<div class="line"><span class="lineno">  257</span>        <span class="comment">// 서버가 있는 맵으로 이동 (최초 1번)</span></div>
-<div class="line"><span class="lineno">  258</span>        APlayerController* pc = GetWorld()-&gt;GetFirstPlayerController();</div>
-<div class="line"><span class="lineno">  259</span>        pc-&gt;ClientTravel(url, TRAVEL_Absolute);</div>
-<div class="line"><span class="lineno">  260</span>    }</div>
-<div class="line"><span class="lineno">  261</span>}</div>
+<p class="definition"><a class="el" href="ULingoGameInstance_8cpp_source.html">ULingoGameInstance.cpp</a> 파일의 <a class="el" href="ULingoGameInstance_8cpp_source.html#l00278">278</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  279</span>{</div>
+<div class="line"><span class="lineno">  280</span>    <span class="comment">// 만약 참여 성공 했다면</span></div>
+<div class="line"><span class="lineno">  281</span>    <span class="keywordflow">if</span> (result == EOnJoinSessionCompleteResult::Success)</div>
+<div class="line"><span class="lineno">  282</span>    {</div>
+<div class="line"><span class="lineno">  283</span>        <span class="comment">// 서버가 만들어 놓은 세션 URL 을 얻어오자.k</span></div>
+<div class="line"><span class="lineno">  284</span>        FString url;</div>
+<div class="line"><span class="lineno">  285</span>        <a class="code hl_variable" href="classULingoGameInstance.html#a0da394f50c70f08879396db0c858d67f">sessionInterface</a>-&gt;GetResolvedConnectString(sessionName, url);</div>
+<div class="line"><span class="lineno">  286</span>        UE_LOG(LogTemp, Warning, TEXT(<span class="stringliteral">&quot;URL : %s&quot;</span>), *url);</div>
+<div class="line"><span class="lineno">  287</span>        <span class="comment">// 서버가 있는 맵으로 이동 (최초 1번)</span></div>
+<div class="line"><span class="lineno">  288</span>        APlayerController* pc = GetWorld()-&gt;GetFirstPlayerController();</div>
+<div class="line"><span class="lineno">  289</span>        pc-&gt;ClientTravel(url, TRAVEL_Absolute);</div>
+<div class="line"><span class="lineno">  290</span>    }</div>
+<div class="line"><span class="lineno">  291</span>}</div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="ULingoGameInstance_8h_source.html#l00076">sessionInterface</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="ULingoGameInstance_8h_source.html#l00079">sessionInterface</a>.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ULingoGameInstance_8cpp_source.html#l00019">Init()</a>.</p>
 <div id="dynsection-10" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -640,12 +642,70 @@ Public 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ULingoGameInstance_8cpp_source.html">ULingoGameInstance.cpp</a> 파일의 <a class="el" href="ULingoGameInstance_8cpp_source.html#l00281">281</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  282</span>{</div>
-<div class="line"><span class="lineno">  283</span>    <a class="code hl_variable" href="classULingoGameInstance.html#a6dce121978db2d3b2504e9068c694527">selectCharacter</a>.Add(userName, characterIdx);</div>
-<div class="line"><span class="lineno">  284</span>}</div>
+<p class="definition"><a class="el" href="ULingoGameInstance_8cpp_source.html">ULingoGameInstance.cpp</a> 파일의 <a class="el" href="ULingoGameInstance_8cpp_source.html#l00311">311</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  312</span>{</div>
+<div class="line"><span class="lineno">  313</span>    <a class="code hl_variable" href="classULingoGameInstance.html#a6dce121978db2d3b2504e9068c694527">selectCharacter</a>.Add(userName, characterIdx);</div>
+<div class="line"><span class="lineno">  314</span>}</div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="ULingoGameInstance_8h_source.html#l00112">selectCharacter</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="ULingoGameInstance_8h_source.html#l00115">selectCharacter</a>.</p>
+
+</div>
+</div>
+<a id="a196bfa207c29f00ebf799cd69e7bb18b" name="a196bfa207c29f00ebf799cd69e7bb18b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a196bfa207c29f00ebf799cd69e7bb18b">&#9670;&#160;</a></span>Shutdown()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ULingoGameInstance::Shutdown </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="ULingoGameInstance_8cpp_source.html">ULingoGameInstance.cpp</a> 파일의 <a class="el" href="ULingoGameInstance_8cpp_source.html#l00041">41</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   42</span>{</div>
+<div class="line"><span class="lineno">   43</span>    <span class="comment">// 델리게이트 정리</span></div>
+<div class="line"><span class="lineno">   44</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classULingoGameInstance.html#a0da394f50c70f08879396db0c858d67f">sessionInterface</a>.IsValid())</div>
+<div class="line"><span class="lineno">   45</span>    {</div>
+<div class="line"><span class="lineno">   46</span>        <span class="comment">// 세션 델리게이트 바인딩 해제</span></div>
+<div class="line"><span class="lineno">   47</span>        <a class="code hl_variable" href="classULingoGameInstance.html#a0da394f50c70f08879396db0c858d67f">sessionInterface</a>-&gt;OnCreateSessionCompleteDelegates.RemoveAll(<span class="keyword">this</span>);</div>
+<div class="line"><span class="lineno">   48</span>        <a class="code hl_variable" href="classULingoGameInstance.html#a0da394f50c70f08879396db0c858d67f">sessionInterface</a>-&gt;OnFindSessionsCompleteDelegates.RemoveAll(<span class="keyword">this</span>);</div>
+<div class="line"><span class="lineno">   49</span>        <a class="code hl_variable" href="classULingoGameInstance.html#a0da394f50c70f08879396db0c858d67f">sessionInterface</a>-&gt;OnJoinSessionCompleteDelegates.RemoveAll(<span class="keyword">this</span>);</div>
+<div class="line"><span class="lineno">   50</span> </div>
+<div class="line"><span class="lineno">   51</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[LingoGameInstance] Session delegates cleared&quot;</span>));</div>
+<div class="line"><span class="lineno">   52</span>    }</div>
+<div class="line"><span class="lineno">   53</span> </div>
+<div class="line"><span class="lineno">   54</span>    <span class="comment">// sessionSearch 정리</span></div>
+<div class="line"><span class="lineno">   55</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classULingoGameInstance.html#acedf0298420c1fd059014fccb90a3b6e">sessionSearch</a>.IsValid())</div>
+<div class="line"><span class="lineno">   56</span>    {</div>
+<div class="line"><span class="lineno">   57</span>        <a class="code hl_variable" href="classULingoGameInstance.html#acedf0298420c1fd059014fccb90a3b6e">sessionSearch</a>.Reset();</div>
+<div class="line"><span class="lineno">   58</span>    }</div>
+<div class="line"><span class="lineno">   59</span> </div>
+<div class="line"><span class="lineno">   60</span>    <span class="comment">// sessionInterface 정리</span></div>
+<div class="line"><span class="lineno">   61</span>    <a class="code hl_variable" href="classULingoGameInstance.html#a0da394f50c70f08879396db0c858d67f">sessionInterface</a>.Reset();</div>
+<div class="line"><span class="lineno">   62</span> </div>
+<div class="line"><span class="lineno">   63</span>    <span class="comment">// selectCharacter 맵 정리</span></div>
+<div class="line"><span class="lineno">   64</span>    <a class="code hl_variable" href="classULingoGameInstance.html#a6dce121978db2d3b2504e9068c694527">selectCharacter</a>.Empty();</div>
+<div class="line"><span class="lineno">   65</span> </div>
+<div class="line"><span class="lineno">   66</span>    <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[LingoGameInstance] Shutdown complete&quot;</span>));</div>
+<div class="line"><span class="lineno">   67</span> </div>
+<div class="line"><span class="lineno">   68</span>    Super::Shutdown();</div>
+<div class="line"><span class="lineno">   69</span>}</div>
+<div class="ttc" id="aGameLogging_8h_html_a9998c8beb11a6bad6ffada2e701fc0cf"><div class="ttname"><a href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a></div><div class="ttdeci">#define PRINTLOG(fmt,...)</div><div class="ttdef"><b>Definition</b> <a href="GameLogging_8h_source.html#l00030">GameLogging.h:30</a></div></div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>, <a class="el" href="ULingoGameInstance_8h_source.html#l00115">selectCharacter</a>, <a class="el" href="ULingoGameInstance_8h_source.html#l00079">sessionInterface</a>, <a class="el" href="ULingoGameInstance_8h_source.html#l00092">sessionSearch</a>.</p>
 
 </div>
 </div>
@@ -665,15 +725,15 @@ Public 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ULingoGameInstance_8cpp_source.html">ULingoGameInstance.cpp</a> 파일의 <a class="el" href="ULingoGameInstance_8cpp_source.html#l00273">273</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  274</span>{</div>
-<div class="line"><span class="lineno">  275</span>    TArray&lt;uint8&gt; arrayData;</div>
-<div class="line"><span class="lineno">  276</span>    FBase64::Decode(str, arrayData);</div>
-<div class="line"><span class="lineno">  277</span>    std::string utf8String((<span class="keywordtype">char</span>*)arrayData.GetData(), arrayData.Num());</div>
-<div class="line"><span class="lineno">  278</span>    <span class="keywordflow">return</span> UTF8_TO_TCHAR(utf8String.c_str());</div>
-<div class="line"><span class="lineno">  279</span>}</div>
+<p class="definition"><a class="el" href="ULingoGameInstance_8cpp_source.html">ULingoGameInstance.cpp</a> 파일의 <a class="el" href="ULingoGameInstance_8cpp_source.html#l00303">303</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  304</span>{</div>
+<div class="line"><span class="lineno">  305</span>    TArray&lt;uint8&gt; arrayData;</div>
+<div class="line"><span class="lineno">  306</span>    FBase64::Decode(str, arrayData);</div>
+<div class="line"><span class="lineno">  307</span>    std::string utf8String((<span class="keywordtype">char</span>*)arrayData.GetData(), arrayData.Num());</div>
+<div class="line"><span class="lineno">  308</span>    <span class="keywordflow">return</span> UTF8_TO_TCHAR(utf8String.c_str());</div>
+<div class="line"><span class="lineno">  309</span>}</div>
 </div><!-- fragment -->
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ULingoGameInstance_8cpp_source.html#l00205">OnFindSessionComplete()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ULingoGameInstance_8cpp_source.html#l00235">OnFindSessionComplete()</a>.</p>
 <div id="dynsection-11" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-11-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-11-summary" class="dynsummary" style="display:block;">
@@ -700,17 +760,17 @@ Public 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ULingoGameInstance_8cpp_source.html">ULingoGameInstance.cpp</a> 파일의 <a class="el" href="ULingoGameInstance_8cpp_source.html#l00263">263</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  264</span>{</div>
-<div class="line"><span class="lineno">  265</span>    <span class="comment">// str 을 std::string 로 변환</span></div>
-<div class="line"><span class="lineno">  266</span>    std::string utf8String = TCHAR_TO_UTF8(*str);</div>
-<div class="line"><span class="lineno">  267</span>    <span class="comment">// utf8String 을 uint8 의 Array 변환</span></div>
-<div class="line"><span class="lineno">  268</span>    TArray&lt;uint8&gt; arrayData = TArray&lt;uint8&gt;((uint8*)utf8String.c_str(), utf8String.length());</div>
-<div class="line"><span class="lineno">  269</span> </div>
-<div class="line"><span class="lineno">  270</span>    <span class="keywordflow">return</span> FBase64::Encode(arrayData);</div>
-<div class="line"><span class="lineno">  271</span>}</div>
+<p class="definition"><a class="el" href="ULingoGameInstance_8cpp_source.html">ULingoGameInstance.cpp</a> 파일의 <a class="el" href="ULingoGameInstance_8cpp_source.html#l00293">293</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  294</span>{</div>
+<div class="line"><span class="lineno">  295</span>    <span class="comment">// str 을 std::string 로 변환</span></div>
+<div class="line"><span class="lineno">  296</span>    std::string utf8String = TCHAR_TO_UTF8(*str);</div>
+<div class="line"><span class="lineno">  297</span>    <span class="comment">// utf8String 을 uint8 의 Array 변환</span></div>
+<div class="line"><span class="lineno">  298</span>    TArray&lt;uint8&gt; arrayData = TArray&lt;uint8&gt;((uint8*)utf8String.c_str(), utf8String.length());</div>
+<div class="line"><span class="lineno">  299</span> </div>
+<div class="line"><span class="lineno">  300</span>    <span class="keywordflow">return</span> FBase64::Encode(arrayData);</div>
+<div class="line"><span class="lineno">  301</span>}</div>
 </div><!-- fragment -->
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ULingoGameInstance_8cpp_source.html#l00139">CreateMySession()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ULingoGameInstance_8cpp_source.html#l00169">CreateMySession()</a>.</p>
 <div id="dynsection-12" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-12-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-12-summary" class="dynsummary" style="display:block;">
@@ -734,7 +794,7 @@ Public 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ULingoGameInstance_8h_source.html">ULingoGameInstance.h</a> 파일의 <a class="el" href="ULingoGameInstance_8h_source.html#l00080">80</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="ULingoGameInstance_8h_source.html">ULingoGameInstance.h</a> 파일의 <a class="el" href="ULingoGameInstance_8h_source.html#l00083">83</a> 번째 라인에서 정의되었습니다.</p>
 
 </div>
 </div>
@@ -750,9 +810,9 @@ Public 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ULingoGameInstance_8h_source.html">ULingoGameInstance.h</a> 파일의 <a class="el" href="ULingoGameInstance_8h_source.html#l00091">91</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="ULingoGameInstance_8h_source.html">ULingoGameInstance.h</a> 파일의 <a class="el" href="ULingoGameInstance_8h_source.html#l00094">94</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="LobbyWidget_8cpp_source.html#l00019">ULobbyWidget::NativeConstruct()</a>, <a class="el" href="ULingoGameInstance_8cpp_source.html#l00205">OnFindSessionComplete()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="LobbyWidget_8cpp_source.html#l00019">ULobbyWidget::NativeConstruct()</a>, <a class="el" href="ULingoGameInstance_8cpp_source.html#l00235">OnFindSessionComplete()</a>.</p>
 
 </div>
 </div>
@@ -768,9 +828,9 @@ Public 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ULingoGameInstance_8h_source.html">ULingoGameInstance.h</a> 파일의 <a class="el" href="ULingoGameInstance_8h_source.html#l00112">112</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="ULingoGameInstance_8h_source.html">ULingoGameInstance.h</a> 파일의 <a class="el" href="ULingoGameInstance_8h_source.html#l00115">115</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ULingoGameInstance_8cpp_source.html#l00286">GetSelectCharacter()</a>, <a class="el" href="ULingoGameInstance_8cpp_source.html#l00281">SetSelectCharacter()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ULingoGameInstance_8cpp_source.html#l00316">GetSelectCharacter()</a>, <a class="el" href="ULingoGameInstance_8cpp_source.html#l00311">SetSelectCharacter()</a>, <a class="el" href="ULingoGameInstance_8cpp_source.html#l00041">Shutdown()</a>.</p>
 
 </div>
 </div>
@@ -786,9 +846,9 @@ Public 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ULingoGameInstance_8h_source.html">ULingoGameInstance.h</a> 파일의 <a class="el" href="ULingoGameInstance_8h_source.html#l00076">76</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="ULingoGameInstance_8h_source.html">ULingoGameInstance.h</a> 파일의 <a class="el" href="ULingoGameInstance_8h_source.html#l00079">79</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ULingoGameInstance_8cpp_source.html#l00139">CreateMySession()</a>, <a class="el" href="ULingoGameInstance_8cpp_source.html#l00187">FindOtherSession()</a>, <a class="el" href="ULingoGameInstance_8cpp_source.html#l00019">Init()</a>, <a class="el" href="ULingoGameInstance_8cpp_source.html#l00232">JoinOtherSession()</a>, <a class="el" href="ULingoGameInstance_8cpp_source.html#l00248">OnJoinSessionComplete()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ULingoGameInstance_8cpp_source.html#l00169">CreateMySession()</a>, <a class="el" href="ULingoGameInstance_8cpp_source.html#l00217">FindOtherSession()</a>, <a class="el" href="ULingoGameInstance_8cpp_source.html#l00019">Init()</a>, <a class="el" href="ULingoGameInstance_8cpp_source.html#l00262">JoinOtherSession()</a>, <a class="el" href="ULingoGameInstance_8cpp_source.html#l00278">OnJoinSessionComplete()</a>, <a class="el" href="ULingoGameInstance_8cpp_source.html#l00041">Shutdown()</a>.</p>
 
 </div>
 </div>
@@ -804,9 +864,9 @@ Public 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ULingoGameInstance_8h_source.html">ULingoGameInstance.h</a> 파일의 <a class="el" href="ULingoGameInstance_8h_source.html#l00089">89</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="ULingoGameInstance_8h_source.html">ULingoGameInstance.h</a> 파일의 <a class="el" href="ULingoGameInstance_8h_source.html#l00092">92</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ULingoGameInstance_8cpp_source.html#l00187">FindOtherSession()</a>, <a class="el" href="ULingoGameInstance_8cpp_source.html#l00232">JoinOtherSession()</a>, <a class="el" href="ULingoGameInstance_8cpp_source.html#l00205">OnFindSessionComplete()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ULingoGameInstance_8cpp_source.html#l00217">FindOtherSession()</a>, <a class="el" href="ULingoGameInstance_8cpp_source.html#l00262">JoinOtherSession()</a>, <a class="el" href="ULingoGameInstance_8cpp_source.html#l00235">OnFindSessionComplete()</a>, <a class="el" href="ULingoGameInstance_8cpp_source.html#l00041">Shutdown()</a>.</p>
 
 </div>
 </div>
@@ -820,7 +880,7 @@ Public 속성</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classULingoGameInstance.html">ULingoGameInstance</a></li>
-    <li class="footer">생성시간 : 금 11월 28 2025 01:03:54, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 금 11월 28 2025 05:30:06, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>
