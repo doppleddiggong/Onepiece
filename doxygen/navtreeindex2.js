@@ -1,5 +1,7 @@
 var NAVTREEINDEX2 =
 {
+"ULingoGameInstance_8cpp.html":[3,0,0,2,1,0,4],
+"ULingoGameInstance_8cpp_source.html":[3,0,0,2,1,0,4],
 "ULingoGameInstance_8h.html":[3,0,0,2,1,1,4],
 "ULingoGameInstance_8h.html#a19b0ebcc430a73c898b86a0c19a1d74c":[3,0,0,2,1,1,4,1],
 "ULingoGameInstance_8h.html#a19b0ebcc430a73c898b86a0c19a1d74ca489a173328aa1c73863d2eb722af2ed3":[3,0,0,2,1,1,4,1,0],
@@ -64,6 +66,7 @@ var NAVTREEINDEX2 =
 "UPlayerAnimInstance_8h_source.html":[3,0,0,2,0,1,12],
 "UPopupManager_8cpp.html":[3,0,0,2,3,0,8],
 "UPopupManager_8cpp.html#a316d42e7741e9922f43c175b9f60f764":[3,0,0,2,3,0,8,0],
+"UPopupManager_8cpp.html#a6b75ebb39991514427a5dec40ddc8608":[3,0,0,2,3,0,8,4],
 "UPopupManager_8cpp.html#acfe4388ccf57b91099b3958f672215ae":[3,0,0,2,3,0,8,2],
 "UPopupManager_8cpp.html#ae72e492e64d4fac4fe41150d760a34d3":[3,0,0,2,3,0,8,3],
 "UPopupManager_8cpp.html#af316661158878d07c2318e3844bf7dc5":[3,0,0,2,3,0,8,1],
@@ -246,8 +249,5 @@ var NAVTREEINDEX2 =
 "classAGate.html#af3ac65d00267956fd71ef4c5260fc030":[2,0,5,12],
 "classALingoGameMode.html":[2,0,6],
 "classALingoGameMode.html#a11e7cf43757f20d1d9f0d5d1d9751ab7":[2,0,6,3],
-"classALingoGameMode.html#a2afd7939b5c4dc08f353aa1a00cd3967":[2,0,6,4],
-"classALingoGameMode.html#a2d78db01b89121ee86364bf434db1fbf":[2,0,6,1],
-"classALingoGameMode.html#a2dc692a142db2a84bf18f18e1602c078":[2,0,6,2],
-"classALingoGameMode.html#abef1a309b7dcd4b4f71d2341d55a0ea3":[2,0,6,0]
+"classALingoGameMode.html#a2afd7939b5c4dc08f353aa1a00cd3967":[2,0,6,4]
 };

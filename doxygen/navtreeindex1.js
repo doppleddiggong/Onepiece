@@ -1,5 +1,6 @@
 var NAVTREEINDEX1 =
 {
+"GameLogging_8cpp.html":[3,0,0,0,2,0,1],
 "GameLogging_8cpp.html#af0177426e40c9b4e32a897d9dda6fa77":[3,0,0,0,2,0,1,0],
 "GameLogging_8cpp_source.html":[3,0,0,0,2,0,1],
 "GameLogging_8h.html":[3,0,0,0,2,1,6],
@@ -17,8 +18,8 @@ var NAVTREEINDEX1 =
 "InteractableComponent_8cpp_source.html":[3,0,0,2,2,0,7],
 "InteractableComponent_8h.html":[3,0,0,2,2,1,7],
 "InteractableComponent_8h.html#a02a4406ffa507701cdc869e603666e99":[3,0,0,2,2,1,7,1],
-"InteractableComponent_8h.html#a02a4406ffa507701cdc869e603666e99aa3f80d8f0f1b4ffa8c475f5d60ea5635":[3,0,0,2,2,1,7,1,0],
 "InteractableComponent_8h.html#a02a4406ffa507701cdc869e603666e99aa3f80d8f0f1b4ffa8c475f5d60ea5635":[3,0,0,2,2,1,7,1,1],
+"InteractableComponent_8h.html#a02a4406ffa507701cdc869e603666e99aa3f80d8f0f1b4ffa8c475f5d60ea5635":[3,0,0,2,2,1,7,1,0],
 "InteractableComponent_8h.html#a02a4406ffa507701cdc869e603666e99aa3f80d8f0f1b4ffa8c475f5d60ea5635":[3,0,0,2,2,1,7,1,2],
 "InteractableComponent_8h.html#a55b6865d8563376fde56fd22937cef0f":[3,0,0,2,2,1,7,0],
 "InteractableComponent_8h.html#a98288015279786f4c68fa45514969bab":[3,0,0,2,2,1,7,2],
@@ -154,7 +155,8 @@ var NAVTREEINDEX1 =
 "UDelayTaskManager_8cpp.html":[3,0,0,1,3,0,2],
 "UDelayTaskManager_8cpp_source.html":[3,0,0,1,3,0,2],
 "UDelayTaskManager_8h.html":[3,0,0,1,3,1,4],
-"UDelayTaskManager_8h.html#afa483e366e3e61c69c19946556fb96a3":[3,0,0,1,3,1,4,3],
+"UDelayTaskManager_8h.html#a2c7a66eadfe2ccfb485226675a8db2ee":[3,0,0,1,3,1,4,3],
+"UDelayTaskManager_8h.html#afa483e366e3e61c69c19946556fb96a3":[3,0,0,1,3,1,4,4],
 "UDelayTaskManager_8h_source.html":[3,0,0,1,3,1,4],
 "UDialogManager_8cpp.html":[3,0,0,2,6,0,4],
 "UDialogManager_8cpp.html#aa7879dc7ba7c875b95eb1ff744d09d58":[3,0,0,2,6,0,4,0],
@@ -212,8 +214,8 @@ var NAVTREEINDEX1 =
 "UHookSystem_8h.html":[3,0,0,2,0,1,9],
 "UHookSystem_8h.html#a1c673a19776054c0693b8177e71c5426":[3,0,0,2,0,1,9,0],
 "UHookSystem_8h.html#a1c673a19776054c0693b8177e71c5426aa3f80d8f0f1b4ffa8c475f5d60ea5635":[3,0,0,2,0,1,9,0,2],
-"UHookSystem_8h.html#a1c673a19776054c0693b8177e71c5426aa3f80d8f0f1b4ffa8c475f5d60ea5635":[3,0,0,2,0,1,9,0,1],
 "UHookSystem_8h.html#a1c673a19776054c0693b8177e71c5426aa3f80d8f0f1b4ffa8c475f5d60ea5635":[3,0,0,2,0,1,9,0,0],
+"UHookSystem_8h.html#a1c673a19776054c0693b8177e71c5426aa3f80d8f0f1b4ffa8c475f5d60ea5635":[3,0,0,2,0,1,9,0,1],
 "UHookSystem_8h_source.html":[3,0,0,2,0,1,9],
 "UHoverButton_8cpp.html":[3,0,0,2,8,0,0],
 "UHoverButton_8cpp_source.html":[3,0,0,2,8,0,0],
@@ -247,7 +249,5 @@ var NAVTREEINDEX1 =
 "ULingoGameHelper_8cpp.html":[3,0,0,2,1,0,3],
 "ULingoGameHelper_8cpp_source.html":[3,0,0,2,1,0,3],
 "ULingoGameHelper_8h.html":[3,0,0,2,1,1,3],
-"ULingoGameHelper_8h_source.html":[3,0,0,2,1,1,3],
-"ULingoGameInstance_8cpp.html":[3,0,0,2,1,0,4],
-"ULingoGameInstance_8cpp_source.html":[3,0,0,2,1,0,4]
+"ULingoGameHelper_8h_source.html":[3,0,0,2,1,1,3]
 };

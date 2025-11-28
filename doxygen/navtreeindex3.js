@@ -1,5 +1,8 @@
 var NAVTREEINDEX3 =
 {
+"classALingoGameMode.html#a2d78db01b89121ee86364bf434db1fbf":[2,0,6,1],
+"classALingoGameMode.html#a2dc692a142db2a84bf18f18e1602c078":[2,0,6,2],
+"classALingoGameMode.html#abef1a309b7dcd4b4f71d2341d55a0ea3":[2,0,6,0],
 "classALingoGameMode.html#ad2c3a3e7a97a899e65c081cc96f2ad16":[2,0,6,5],
 "classALingoGameState.html":[2,0,7],
 "classALingoGameState.html#a17e93c1837d6f33a5a3717689177d952":[2,0,7,22],
@@ -246,8 +249,5 @@ var NAVTREEINDEX3 =
 "classAPlayerControl.html#aeb90da2f39476227c6136a9d78d45c83":[2,0,19,16],
 "classAPlayerControl.html#aeda5eb6dcc2b2420cf2dc554a2739477":[2,0,19,2],
 "classAPlayerControl.html#af8c76a593d47ea58362e58220776fef6":[2,0,19,14],
-"classAPopupTesterActor.html":[2,0,20],
-"classAPopupTesterActor.html#a196f61f8a6968f0e31b045d8432e1f5b":[2,0,20,0],
-"classAPopupTesterActor.html#a1cb826db020b0ed66da3f0a8df1453a7":[2,0,20,8],
-"classAPopupTesterActor.html#a3405fb657b929d0cbea77cb386953834":[2,0,20,7]
+"classAPopupTesterActor.html":[2,0,20]
 };

@@ -1,5 +1,8 @@
 var NAVTREEINDEX7 =
 {
+"classUStateWidget.html#a3a3c78fc6182f15af70380513b88d807":[2,0,117,11],
+"classUStateWidget.html#a55f0280eebae242e661a12cd7cdfc74e":[2,0,117,4],
+"classUStateWidget.html#a665b2fac76df0c5fb108cb4dd3ffd32e":[2,0,117,18],
 "classUStateWidget.html#a6ad83166d31c3768018a6dc7d9c2bf7e":[2,0,117,2],
 "classUStateWidget.html#a72cc7d5e00795b6c2a382c5010f1071d":[2,0,117,13],
 "classUStateWidget.html#a74711945c846ad993f53a49a8fc23a95":[2,0,117,8],
@@ -145,8 +148,8 @@ var NAVTREEINDEX7 =
 "dir_f5c20ae920c5f83d16e1c5fb9563aee7.html":[3,0,0,1,0,0],
 "dir_f8d1c9eab1fc62a504c69287c791da47.html":[3,0,0,1,1,0],
 "files.html":[3,0],
-"functions.html":[2,3,0,0],
 "functions.html":[2,3,0],
+"functions.html":[2,3,0,0],
 "functions_b.html":[2,3,0,1],
 "functions_c.html":[2,3,0,2],
 "functions_d.html":[2,3,0,3],
@@ -246,8 +249,5 @@ var NAVTREEINDEX7 =
 "index.html#autotoc_md31":[0,7],
 "index.html#autotoc_md5":[0,1],
 "index.html#autotoc_md6":[0,1,0],
-"index.html#autotoc_md7":[0,1,1],
-"index.html#autotoc_md8":[0,1,2],
-"luggage_8cpp.html":[3,0,0,2,2,0,8],
-"luggage_8cpp.html#aed405cb2e29c39ee626f1a50b210cea5":[3,0,0,2,2,0,8,0]
+"index.html#autotoc_md7":[0,1,1]
 };
