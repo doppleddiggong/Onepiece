@@ -313,7 +313,7 @@ void UInteractableComponent::OnDetectionBeginOverlap(
 			InteractionSystem->RegisterInteractable(this);
 		}
 
-		ShowInteractWidget();
+		// ShowInteractWidget();
 		
 		// PickUp 타입이면 Luggage의 custom widget 사용
 		Aluggage* luggage = Cast<Aluggage>(GetOwner());
@@ -351,7 +351,7 @@ void UInteractableComponent::OnDetectionEndOverlap(
 		FTimerHandle TimerHandle;
 		GetWorld()->GetTimerManager().SetTimer(TimerHandle, FTimerDelegate::CreateLambda([this]
 		{
-			HideInteractWidget();
+			// HideInteractWidget();
 			
 			Aluggage* luggage = Cast<Aluggage>(GetOwner());
 			if (luggage && !bIsPickedUp)
