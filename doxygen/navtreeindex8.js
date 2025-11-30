@@ -1,5 +1,10 @@
 var NAVTREEINDEX8 =
 {
+"index.html#autotoc_md25":[0,4,1],
+"index.html#autotoc_md27":[0,5],
+"index.html#autotoc_md29":[0,6],
+"index.html#autotoc_md3":[0,0,0],
+"index.html#autotoc_md31":[0,7],
 "index.html#autotoc_md5":[0,1],
 "index.html#autotoc_md6":[0,1,0],
 "index.html#autotoc_md7":[0,1,1],
@@ -244,10 +249,5 @@ var NAVTREEINDEX8 =
 "structFResponseUserMe.html":[2,0,57],
 "structFResponseUserMe.html#a2d94a2f21b314543dd02d7b65c024dbc":[2,0,57,2],
 "structFResponseUserMe.html#a92c11f93c8178da89bd734fb284dfb6f":[2,0,57,1],
-"structFResponseUserMe.html#ab4a0a718327902ae76090959785c7eb8":[2,0,57,0],
-"structFResponseUserRegister.html":[2,0,58],
-"structFResponseUserRegister.html#a1beb446da1a5775f4b40e1f3deccba7d":[2,0,58,1],
-"structFResponseUserRegister.html#a619652122132f4432d19e1c7a4063750":[2,0,58,4],
-"structFResponseUserRegister.html#a6e014b46e57cc332f2be8cb2d4192822":[2,0,58,5],
-"structFResponseUserRegister.html#a76212accdf5646661899a1f3253122f9":[2,0,58,2]
+"structFResponseUserMe.html#ab4a0a718327902ae76090959785c7eb8":[2,0,57,0]
 };

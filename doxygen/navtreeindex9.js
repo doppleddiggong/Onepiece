@@ -1,5 +1,10 @@
 var NAVTREEINDEX9 =
 {
+"structFResponseUserRegister.html":[2,0,58],
+"structFResponseUserRegister.html#a1beb446da1a5775f4b40e1f3deccba7d":[2,0,58,1],
+"structFResponseUserRegister.html#a619652122132f4432d19e1c7a4063750":[2,0,58,4],
+"structFResponseUserRegister.html#a6e014b46e57cc332f2be8cb2d4192822":[2,0,58,5],
+"structFResponseUserRegister.html#a76212accdf5646661899a1f3253122f9":[2,0,58,2],
 "structFResponseUserRegister.html#a7c482c31b7c20aef498681e9fe743659":[2,0,58,0],
 "structFResponseUserRegister.html#ad9694a94a61bda11bfbe3d278555faf3":[2,0,58,3],
 "structFResponseUserToken.html":[2,0,59],

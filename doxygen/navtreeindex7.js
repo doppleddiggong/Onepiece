@@ -1,5 +1,10 @@
 var NAVTREEINDEX7 =
 {
+"classUSoundData.html#aa9ffe49c229532cf8a79e3e1353e6c55":[2,0,115,0],
+"classUStartWidget.html":[2,0,116],
+"classUStartWidget.html#a136e702afc103156b9a11938e7ea1308":[2,0,116,3],
+"classUStartWidget.html#a748ed011e4d7b9593458c469ec5d208e":[2,0,116,1],
+"classUStartWidget.html#acd4b87b1eecd9e9960a43aba79fd333c":[2,0,116,0],
 "classUStartWidget.html#af66e89c351e14fed252ae2f8f971bfd5":[2,0,116,4],
 "classUStartWidget.html#afc91ca927780f90dd9041c5e5de32c74":[2,0,116,2],
 "classUStateWidget.html":[2,0,117],
@@ -158,8 +163,8 @@ var NAVTREEINDEX7 =
 "functions_d.html":[2,3,0,3],
 "functions_e.html":[2,3,0,4],
 "functions_f.html":[2,3,0,5],
-"functions_func.html":[2,3,1],
 "functions_func.html":[2,3,1,0],
+"functions_func.html":[2,3,1],
 "functions_func_b.html":[2,3,1,1],
 "functions_func_c.html":[2,3,1,2],
 "functions_func_d.html":[2,3,1,3],
@@ -229,8 +234,8 @@ var NAVTREEINDEX7 =
 "globals_func.html":[3,1,1],
 "globals_vars.html":[3,1,2],
 "hierarchy.html":[2,2],
-"index.html":[0],
 "index.html":[],
+"index.html":[0],
 "index.html#autotoc_md10":[0,2],
 "index.html#autotoc_md11":[0,2,0],
 "index.html#autotoc_md12":[0,2,1],
@@ -244,10 +249,5 @@ var NAVTREEINDEX7 =
 "index.html#autotoc_md20":[0,3,1,3],
 "index.html#autotoc_md21":[0,3,1,4],
 "index.html#autotoc_md23":[0,4],
-"index.html#autotoc_md24":[0,4,0],
-"index.html#autotoc_md25":[0,4,1],
-"index.html#autotoc_md27":[0,5],
-"index.html#autotoc_md29":[0,6],
-"index.html#autotoc_md3":[0,0,0],
-"index.html#autotoc_md31":[0,7]
+"index.html#autotoc_md24":[0,4,0]
 };
