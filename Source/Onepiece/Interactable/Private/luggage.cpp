@@ -56,8 +56,8 @@ Aluggage::Aluggage()
 
 	// Replication
 	bReplicates = true;
-	NetUpdateFrequency = 100.0f;  // 높은 업데이트 빈도로 부드러운 네트워크 동기화
-	MinNetUpdateFrequency = 33.0f; // 최소 30fps 업데이트 보장
+	SetNetUpdateFrequency(100.0f);		// 높은 업데이트 빈도로 부드러운 네트워크 동기화
+	SetMinNetUpdateFrequency(33.0f);	// 최소 30fps 업데이트 보장
 
 	WidgetComp = CreateDefaultSubobject<UWidgetComponent>(TEXT("WidgetComp"));
 	ConstructorHelpers::FClassFinder<ULuggageInfoWidget> boxWidgetRef(LUGGAGE_INTERACT_WIDGET_PATH);
