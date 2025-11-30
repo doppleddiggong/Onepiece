@@ -256,10 +256,12 @@ void AWeightSwitch::OnBeginOverlap(
 				if (AnswerFound) return;
 
 				AnswerFound = true;
+				// 마지막으로 정답 추가
+				GS->WrongLuggageList.Add(Luggage->GetSpawnIdx());
 
 				// [개선] Multicast RPC로 모든 클라이언트에 정답 팝업 표시
 				FTimerHandle TimerHandle;
-				GetWorldTimerManager().SetTimer(TimerHandle, [this, GS]
+				GetWorldTimerManager().SetTimer(TimerHandle, [this, GS, Luggage]
 				{
 					// 모든 클라이언트에 결과 팝업 표시
 					Multicast_ShowResultPopup();

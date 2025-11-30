@@ -29,6 +29,18 @@ private:
 	void OnClickClose();
 
 public:
+	// 정답 표시
+	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
+	class UWordWidget* WordWidget;
+	// 오답 표시
+	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
+	class UScrollBox* Scrl_WrongList;
+
+	void SetWordWidget();
+	void SetWrongList();
+	
+public:
+	// 걸린 시간
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
 	class UTextBlock* Txt_TimeRank;
 
@@ -41,6 +53,7 @@ public:
 	void SetTimeTaken();
 
 public:
+	// 정답 정확도
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
 	class UTextBlock* Txt_Accuracy;
 
