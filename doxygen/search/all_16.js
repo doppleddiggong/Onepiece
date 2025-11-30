@@ -16,7 +16,7 @@ var searchData=
   ['worddata_5fpath_13',['WORDDATA_PATH',['../UGameDataManager_8cpp.html#a1ff5ef106f9d5772e9e4b49225c68db3',1,'UGameDataManager.cpp']]],
   ['wordstudydatacache_14',['WordStudyDataCache',['../classUGameDataManager.html#a2d3aa9595a441ef7b4cfb0d6959348d4',1,'UGameDataManager']]],
   ['wordstudydatatable_15',['WordStudyDataTable',['../classUGameDataManager.html#af3a67b35c573b0f3cb60720b608f2ae0',1,'UGameDataManager']]],
-  ['wordwidget_16',['WordWidget',['../classUPopup__ReadQuest.html#aed4ecc73e8fe95e589c02336119b6f99',1,'UPopup_ReadQuest']]],
+  ['wordwidget_16',['wordwidget',['../classUPopup__Result.html#ae2be7762580c12660552611ed2adcbbb',1,'UPopup_Result::WordWidget'],['../classUPopup__ReadQuest.html#aed4ecc73e8fe95e589c02336119b6f99',1,'UPopup_ReadQuest::WordWidget']]],
   ['writeindex_17',['WriteIndex',['../structFQuestWriteInfo.html#a60dc6d0314a68704e0b4731f212a4b08',1,'FQuestWriteInfo']]],
   ['writelog_18',['WriteLog',['../classFLogWriter.html#a1c47f81d19488902430ad467e440e509',1,'FLogWriter']]],
   ['writes_5focr_5fextract_19',['writes_ocr_extract',['../namespaceRequestAPI.html#adb0c390f61c19ef5b70489b76b2e00e6',1,'RequestAPI']]],

@@ -4,8 +4,11 @@ var classUPopup__Result =
     [ "NativeTick", "classUPopup__Result.html#a750c1a854f68ca16faa069645531abd6", null ],
     [ "OnClickClose", "classUPopup__Result.html#a2fe50f209d27aa1c870802b99aaf7cf6", null ],
     [ "OpenAnimation", "classUPopup__Result.html#a2c3d2b47f8255c0172cf9f218790fcc8", null ],
+    [ "SetAccuracy", "classUPopup__Result.html#a048e53e637ca981a0d56f72324e45bd5", null ],
     [ "SetTimeRank", "classUPopup__Result.html#a23a5596c90830f32f69ca0fff0d02c09", null ],
     [ "SetTimeTaken", "classUPopup__Result.html#aa1d615425e826d9b85f02b20cdc4232d", null ],
+    [ "SetWordWidget", "classUPopup__Result.html#afbfb9008f702531cc360457001131d02", null ],
+    [ "SetWrongList", "classUPopup__Result.html#a333c8c3057f74478750de95ab2f0887e", null ],
     [ "UpdateAnimation", "classUPopup__Result.html#a830a08b15d00e418f351f096fc5a8790", null ],
     [ "bIsOpenAnim", "classUPopup__Result.html#a807985dccb3305b1004c611401b7b551", null ],
     [ "Btn_Exit", "classUPopup__Result.html#a1f5ff500a8acc553246271243fde95e3", null ],
@@ -17,7 +20,10 @@ var classUPopup__Result =
     [ "OpenStartScale", "classUPopup__Result.html#a9a4bc6d6e03adc7396c7960c41dae0b2", null ],
     [ "OpenTargetScale", "classUPopup__Result.html#add357075245f0843320c0b74af0f2697", null ],
     [ "PopupType", "classUPopup__Result.html#a7e537a0dd751df11990ed46947f09d42", null ],
+    [ "Scrl_WrongList", "classUPopup__Result.html#a04d95ce68cd4a1b3b6c31335b467b4cb", null ],
     [ "TimeTaken", "classUPopup__Result.html#ad961f293e41c728a5970d36ed2cfb00a", null ],
+    [ "Txt_Accuracy", "classUPopup__Result.html#afcfee3aa20b406078d770e8c9d06b47d", null ],
     [ "Txt_TimeRank", "classUPopup__Result.html#a18a984e9716989ad63e787056c788323", null ],
-    [ "Txt_TimeTaken", "classUPopup__Result.html#a80035c12c87b5d983cc0ce58144f0402", null ]
+    [ "Txt_TimeTaken", "classUPopup__Result.html#a80035c12c87b5d983cc0ce58144f0402", null ],
+    [ "WordWidget", "classUPopup__Result.html#ae2be7762580c12660552611ed2adcbbb", null ]
 ];

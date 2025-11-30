@@ -147,6 +147,7 @@ var hierarchy =
         [ "UPopup_ReadQuest", "classUPopup__ReadQuest.html", null ],
         [ "UPopup_Result", "classUPopup__Result.html", null ]
       ] ],
+      [ "UCircularProgressBar", "classUCircularProgressBar.html", null ],
       [ "UDialogWidget", "classUDialogWidget.html", null ],
       [ "UDrawingBoardWidget", "classUDrawingBoardWidget.html", null ],
       [ "UHoverButton", "classUHoverButton.html", null ],

@@ -368,123 +368,125 @@ $(document).ready(function(){initNavTree('AWeightSwitch_8cpp_source.html',''); i
 <div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>                <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAWeightSwitch.html#ab519ea888b0690295485652b2e1d2686">AnswerFound</a>) <span class="keywordflow">return</span>;</div>
 <div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span> </div>
 <div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>                <a class="code hl_variable" href="classAWeightSwitch.html#ab519ea888b0690295485652b2e1d2686">AnswerFound</a> = <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span> </div>
-<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>                <span class="comment">// [개선] Multicast RPC로 모든 클라이언트에 정답 팝업 표시</span></div>
-<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>                FTimerHandle TimerHandle;</div>
-<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span>                GetWorldTimerManager().SetTimer(TimerHandle, [<span class="keyword">this</span>, GS]</div>
-<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span>                {</div>
-<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span>                    <span class="comment">// 모든 클라이언트에 결과 팝업 표시</span></div>
-<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span>                    <a class="code hl_function" href="classAWeightSwitch.html#a5b5be6b8b09d9b507e4f27c167c3b920">Multicast_ShowResultPopup</a>();</div>
-<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span> </div>
-<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span>                    <span class="comment">// 오답 캐리어 로그 (서버에서만)</span></div>
-<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span>                    TArray&lt;int32&gt; WrongList = GS-&gt;<a class="code hl_variable" href="classALingoGameState.html#a17e93c1837d6f33a5a3717689177d952">WrongLuggageList</a>;</div>
-<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span>                    <span class="keywordflow">if</span> (WrongList.Num() == 0) <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span> </div>
-<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span>                    <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>( TEXT(<span class="stringliteral">&quot;[AWeightSwitch] Wrong luggage :&quot;</span>));</div>
-<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span>                    <span class="keywordflow">for</span> (<span class="keyword">auto</span> Wrong : WrongList)</div>
-<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span>                    {</div>
-<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span>                        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>( TEXT(<span class="stringliteral">&quot;%d, &quot;</span>), Wrong);</div>
-<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span>                    }</div>
-<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span>                }, 0.5f, <span class="keyword">false</span>);</div>
-<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span>            }</div>
-<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span>            <span class="keywordflow">else</span></div>
-<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span>            {</div>
-<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span>                <span class="comment">// [개선] Multicast RPC로 모든 클라이언트에 오답 팝업 표시</span></div>
-<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span>                FString LuggageColor = Luggage-&gt;GetColor();</div>
-<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span>                FString LuggagePattern = Luggage-&gt;GetPattern();</div>
-<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span>                int32 LuggageIdx = Luggage-&gt;GetSpawnIdx();</div>
-<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span> </div>
-<div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span>                FTimerHandle TimerHandle;</div>
-<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span>                GetWorldTimerManager().SetTimer(TimerHandle, [<span class="keyword">this</span>, LuggageColor, LuggagePattern, LuggageIdx, GS, Luggage]</div>
-<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span>                {</div>
-<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span>                    <span class="comment">// 모든 클라이언트에 오답 메시지 표시</span></div>
-<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span>                    <a class="code hl_function" href="classAWeightSwitch.html#a8031c9cb76497d9fbbc73aa2402e2b58">Multicast_ShowWrongPopup</a>(LuggageColor, LuggagePattern);</div>
-<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span> </div>
-<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span>                    <span class="comment">// 오답 목록에 인덱스 추가 (서버에서만)</span></div>
-<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span>                    GS-&gt;<a class="code hl_variable" href="classALingoGameState.html#a17e93c1837d6f33a5a3717689177d952">WrongLuggageList</a>.Add(LuggageIdx);</div>
-<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span> </div>
-<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span>                    <span class="comment">// 큐브 소거 (서버에서만, 자동 복제됨)</span></div>
-<div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span>                    Luggage-&gt;Destroy();</div>
-<div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span>                }, 0.5f, <span class="keyword">false</span>);</div>
-<div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span>            }</div>
-<div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span>            </div>
-<div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span>        }</div>
-<div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span>    }</div>
-<div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span>}</div>
+<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span>                <span class="comment">// 마지막으로 정답 추가</span></div>
+<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>                GS-&gt;<a class="code hl_variable" href="classALingoGameState.html#a17e93c1837d6f33a5a3717689177d952">WrongLuggageList</a>.Add(Luggage-&gt;GetSpawnIdx());</div>
+<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span> </div>
+<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span>                <span class="comment">// [개선] Multicast RPC로 모든 클라이언트에 정답 팝업 표시</span></div>
+<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span>                FTimerHandle TimerHandle;</div>
+<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span>                GetWorldTimerManager().SetTimer(TimerHandle, [<span class="keyword">this</span>, GS, Luggage]</div>
+<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span>                {</div>
+<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span>                    <span class="comment">// 모든 클라이언트에 결과 팝업 표시</span></div>
+<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span>                    <a class="code hl_function" href="classAWeightSwitch.html#a5b5be6b8b09d9b507e4f27c167c3b920">Multicast_ShowResultPopup</a>();</div>
+<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span> </div>
+<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span>                    <span class="comment">// 오답 캐리어 로그 (서버에서만)</span></div>
+<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span>                    TArray&lt;int32&gt; WrongList = GS-&gt;<a class="code hl_variable" href="classALingoGameState.html#a17e93c1837d6f33a5a3717689177d952">WrongLuggageList</a>;</div>
+<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span>                    <span class="keywordflow">if</span> (WrongList.Num() == 0) <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span> </div>
+<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span>                    <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>( TEXT(<span class="stringliteral">&quot;[AWeightSwitch] Wrong luggage :&quot;</span>));</div>
+<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span>                    <span class="keywordflow">for</span> (<span class="keyword">auto</span> Wrong : WrongList)</div>
+<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span>                    {</div>
+<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span>                        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>( TEXT(<span class="stringliteral">&quot;%d, &quot;</span>), Wrong);</div>
+<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span>                    }</div>
+<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span>                }, 0.5f, <span class="keyword">false</span>);</div>
+<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span>            }</div>
+<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span>            <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span>            {</div>
+<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span>                <span class="comment">// [개선] Multicast RPC로 모든 클라이언트에 오답 팝업 표시</span></div>
+<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span>                FString LuggageColor = Luggage-&gt;GetColor();</div>
+<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span>                FString LuggagePattern = Luggage-&gt;GetPattern();</div>
+<div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span>                int32 LuggageIdx = Luggage-&gt;GetSpawnIdx();</div>
+<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span> </div>
+<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span>                FTimerHandle TimerHandle;</div>
+<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span>                GetWorldTimerManager().SetTimer(TimerHandle, [<span class="keyword">this</span>, LuggageColor, LuggagePattern, LuggageIdx, GS, Luggage]</div>
+<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span>                {</div>
+<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span>                    <span class="comment">// 모든 클라이언트에 오답 메시지 표시</span></div>
+<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span>                    <a class="code hl_function" href="classAWeightSwitch.html#a8031c9cb76497d9fbbc73aa2402e2b58">Multicast_ShowWrongPopup</a>(LuggageColor, LuggagePattern);</div>
+<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span> </div>
+<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span>                    <span class="comment">// 오답 목록에 인덱스 추가 (서버에서만)</span></div>
+<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span>                    GS-&gt;<a class="code hl_variable" href="classALingoGameState.html#a17e93c1837d6f33a5a3717689177d952">WrongLuggageList</a>.Add(LuggageIdx);</div>
+<div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span> </div>
+<div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span>                    <span class="comment">// 큐브 소거 (서버에서만, 자동 복제됨)</span></div>
+<div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span>                    Luggage-&gt;Destroy();</div>
+<div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span>                }, 0.5f, <span class="keyword">false</span>);</div>
+<div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span>            }</div>
+<div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span>            </div>
+<div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span>        }</div>
+<div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span>    }</div>
+<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span>}</div>
 </div>
-<div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span> </div>
-<div class="foldopen" id="foldopen00307" data-start="{" data-end="}">
-<div class="line"><a id="l00307" name="l00307"></a><span class="lineno"><a class="line" href="classAWeightSwitch.html#a3186a708297d96dfab84f9e4ca7f24d3">  307</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAWeightSwitch.html#a3186a708297d96dfab84f9e4ca7f24d3">AWeightSwitch::OnEndOverlap</a>(</div>
-<div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span>    UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,</div>
-<div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span>    UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)</div>
-<div class="line"><a id="l00310" name="l00310"></a><span class="lineno">  310</span>{</div>
-<div class="line"><a id="l00311" name="l00311"></a><span class="lineno">  311</span>    <span class="keywordflow">if</span> (!OtherActor)</div>
-<div class="line"><a id="l00312" name="l00312"></a><span class="lineno">  312</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00313" name="l00313"></a><span class="lineno">  313</span> </div>
-<div class="line"><a id="l00314" name="l00314"></a><span class="lineno">  314</span>    <span class="comment">// [개선] 서버에서만 실행</span></div>
-<div class="line"><a id="l00315" name="l00315"></a><span class="lineno">  315</span>    <span class="keywordflow">if</span> (!HasAuthority())</div>
-<div class="line"><a id="l00316" name="l00316"></a><span class="lineno">  316</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span> </div>
-<div class="line"><a id="l00318" name="l00318"></a><span class="lineno">  318</span>    <span class="comment">// 리스트에서 제거</span></div>
-<div class="line"><a id="l00319" name="l00319"></a><span class="lineno">  319</span>    <a class="code hl_variable" href="classAWeightSwitch.html#a2079b69b39be9a7ce5b48f7f7df3964a">OverlappingActors</a>.Remove(OtherActor);</div>
-<div class="line"><a id="l00320" name="l00320"></a><span class="lineno">  320</span> </div>
-<div class="line"><a id="l00321" name="l00321"></a><span class="lineno">  321</span>    <span class="comment">// 모든 물체가 내려갔을 때만 비활성화</span></div>
-<div class="line"><a id="l00322" name="l00322"></a><span class="lineno">  322</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAWeightSwitch.html#a2079b69b39be9a7ce5b48f7f7df3964a">OverlappingActors</a>.Num() == 0)</div>
-<div class="line"><a id="l00323" name="l00323"></a><span class="lineno">  323</span>    {</div>
-<div class="line"><a id="l00324" name="l00324"></a><span class="lineno">  324</span>        this-&gt;<a class="code hl_variable" href="classAWeightSwitch.html#ae9663983eb123ff86c5252299b5fe533">DetectTarget</a> = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00325" name="l00325"></a><span class="lineno">  325</span>        this-&gt;<a class="code hl_variable" href="classAWeightSwitch.html#ad8e727ab9bba460a7c56d5ea281686c0">ElapsedTime</a> = 0.0;</div>
-<div class="line"><a id="l00326" name="l00326"></a><span class="lineno">  326</span> </div>
-<div class="line"><a id="l00327" name="l00327"></a><span class="lineno">  327</span>        <span class="comment">// 물건이 모두 떨어지면 해제</span></div>
-<div class="line"><a id="l00328" name="l00328"></a><span class="lineno">  328</span>        UBroadcastManager::Get(GetWorld())-&gt;SendWeightSwitch(<a class="code hl_variable" href="classAWeightSwitch.html#af8f4523824757b7861cea5e3095f6935">ButtonIndex</a>, <span class="keyword">false</span>);</div>
-<div class="line"><a id="l00329" name="l00329"></a><span class="lineno">  329</span>    }</div>
-<div class="line"><a id="l00330" name="l00330"></a><span class="lineno">  330</span>}</div>
+<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span> </div>
+<div class="foldopen" id="foldopen00309" data-start="{" data-end="}">
+<div class="line"><a id="l00309" name="l00309"></a><span class="lineno"><a class="line" href="classAWeightSwitch.html#a3186a708297d96dfab84f9e4ca7f24d3">  309</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAWeightSwitch.html#a3186a708297d96dfab84f9e4ca7f24d3">AWeightSwitch::OnEndOverlap</a>(</div>
+<div class="line"><a id="l00310" name="l00310"></a><span class="lineno">  310</span>    UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,</div>
+<div class="line"><a id="l00311" name="l00311"></a><span class="lineno">  311</span>    UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)</div>
+<div class="line"><a id="l00312" name="l00312"></a><span class="lineno">  312</span>{</div>
+<div class="line"><a id="l00313" name="l00313"></a><span class="lineno">  313</span>    <span class="keywordflow">if</span> (!OtherActor)</div>
+<div class="line"><a id="l00314" name="l00314"></a><span class="lineno">  314</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00315" name="l00315"></a><span class="lineno">  315</span> </div>
+<div class="line"><a id="l00316" name="l00316"></a><span class="lineno">  316</span>    <span class="comment">// [개선] 서버에서만 실행</span></div>
+<div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span>    <span class="keywordflow">if</span> (!HasAuthority())</div>
+<div class="line"><a id="l00318" name="l00318"></a><span class="lineno">  318</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00319" name="l00319"></a><span class="lineno">  319</span> </div>
+<div class="line"><a id="l00320" name="l00320"></a><span class="lineno">  320</span>    <span class="comment">// 리스트에서 제거</span></div>
+<div class="line"><a id="l00321" name="l00321"></a><span class="lineno">  321</span>    <a class="code hl_variable" href="classAWeightSwitch.html#a2079b69b39be9a7ce5b48f7f7df3964a">OverlappingActors</a>.Remove(OtherActor);</div>
+<div class="line"><a id="l00322" name="l00322"></a><span class="lineno">  322</span> </div>
+<div class="line"><a id="l00323" name="l00323"></a><span class="lineno">  323</span>    <span class="comment">// 모든 물체가 내려갔을 때만 비활성화</span></div>
+<div class="line"><a id="l00324" name="l00324"></a><span class="lineno">  324</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAWeightSwitch.html#a2079b69b39be9a7ce5b48f7f7df3964a">OverlappingActors</a>.Num() == 0)</div>
+<div class="line"><a id="l00325" name="l00325"></a><span class="lineno">  325</span>    {</div>
+<div class="line"><a id="l00326" name="l00326"></a><span class="lineno">  326</span>        this-&gt;<a class="code hl_variable" href="classAWeightSwitch.html#ae9663983eb123ff86c5252299b5fe533">DetectTarget</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00327" name="l00327"></a><span class="lineno">  327</span>        this-&gt;<a class="code hl_variable" href="classAWeightSwitch.html#ad8e727ab9bba460a7c56d5ea281686c0">ElapsedTime</a> = 0.0;</div>
+<div class="line"><a id="l00328" name="l00328"></a><span class="lineno">  328</span> </div>
+<div class="line"><a id="l00329" name="l00329"></a><span class="lineno">  329</span>        <span class="comment">// 물건이 모두 떨어지면 해제</span></div>
+<div class="line"><a id="l00330" name="l00330"></a><span class="lineno">  330</span>        UBroadcastManager::Get(GetWorld())-&gt;SendWeightSwitch(<a class="code hl_variable" href="classAWeightSwitch.html#af8f4523824757b7861cea5e3095f6935">ButtonIndex</a>, <span class="keyword">false</span>);</div>
+<div class="line"><a id="l00331" name="l00331"></a><span class="lineno">  331</span>    }</div>
+<div class="line"><a id="l00332" name="l00332"></a><span class="lineno">  332</span>}</div>
 </div>
-<div class="line"><a id="l00331" name="l00331"></a><span class="lineno">  331</span> </div>
-<div class="line"><a id="l00332" name="l00332"></a><span class="lineno">  332</span> </div>
-<div class="foldopen" id="foldopen00333" data-start="{" data-end="}">
-<div class="line"><a id="l00333" name="l00333"></a><span class="lineno"><a class="line" href="classAWeightSwitch.html#a16c33afacfe4ccb7b5b3992280277ca3">  333</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAWeightSwitch.html#a16c33afacfe4ccb7b5b3992280277ca3">AWeightSwitch::OnWeightSwitch</a>(<span class="keywordtype">int</span> InButtonIndex, <span class="keywordtype">bool</span> InActive)</div>
-<div class="line"><a id="l00334" name="l00334"></a><span class="lineno">  334</span>{</div>
-<div class="line"><a id="l00335" name="l00335"></a><span class="lineno">  335</span>    <span class="keywordflow">if</span> ( InButtonIndex != <a class="code hl_variable" href="classAWeightSwitch.html#af8f4523824757b7861cea5e3095f6935">ButtonIndex</a>)</div>
-<div class="line"><a id="l00336" name="l00336"></a><span class="lineno">  336</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00337" name="l00337"></a><span class="lineno">  337</span> </div>
-<div class="line"><a id="l00338" name="l00338"></a><span class="lineno">  338</span>    <span class="keywordflow">if</span> (this-&gt;<a class="code hl_variable" href="classAWeightSwitch.html#a4b828eef7cc6456e5e5833c6d94c79a0">bActivateState</a> == InActive)</div>
-<div class="line"><a id="l00339" name="l00339"></a><span class="lineno">  339</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00340" name="l00340"></a><span class="lineno">  340</span> </div>
-<div class="line"><a id="l00341" name="l00341"></a><span class="lineno">  341</span>    this-&gt;<a class="code hl_variable" href="classAWeightSwitch.html#a4b828eef7cc6456e5e5833c6d94c79a0">bActivateState</a> = InActive;</div>
+<div class="line"><a id="l00333" name="l00333"></a><span class="lineno">  333</span> </div>
+<div class="line"><a id="l00334" name="l00334"></a><span class="lineno">  334</span> </div>
+<div class="foldopen" id="foldopen00335" data-start="{" data-end="}">
+<div class="line"><a id="l00335" name="l00335"></a><span class="lineno"><a class="line" href="classAWeightSwitch.html#a16c33afacfe4ccb7b5b3992280277ca3">  335</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAWeightSwitch.html#a16c33afacfe4ccb7b5b3992280277ca3">AWeightSwitch::OnWeightSwitch</a>(<span class="keywordtype">int</span> InButtonIndex, <span class="keywordtype">bool</span> InActive)</div>
+<div class="line"><a id="l00336" name="l00336"></a><span class="lineno">  336</span>{</div>
+<div class="line"><a id="l00337" name="l00337"></a><span class="lineno">  337</span>    <span class="keywordflow">if</span> ( InButtonIndex != <a class="code hl_variable" href="classAWeightSwitch.html#af8f4523824757b7861cea5e3095f6935">ButtonIndex</a>)</div>
+<div class="line"><a id="l00338" name="l00338"></a><span class="lineno">  338</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00339" name="l00339"></a><span class="lineno">  339</span> </div>
+<div class="line"><a id="l00340" name="l00340"></a><span class="lineno">  340</span>    <span class="keywordflow">if</span> (this-&gt;<a class="code hl_variable" href="classAWeightSwitch.html#a4b828eef7cc6456e5e5833c6d94c79a0">bActivateState</a> == InActive)</div>
+<div class="line"><a id="l00341" name="l00341"></a><span class="lineno">  341</span>        <span class="keywordflow">return</span>;</div>
 <div class="line"><a id="l00342" name="l00342"></a><span class="lineno">  342</span> </div>
-<div class="line"><a id="l00343" name="l00343"></a><span class="lineno">  343</span>    <a class="code hl_function" href="classAWeightSwitch.html#a2401f0f65a4294c724c6885f07b8b550">SetActivate</a>(<a class="code hl_variable" href="classAWeightSwitch.html#a4b828eef7cc6456e5e5833c6d94c79a0">bActivateState</a>);</div>
-<div class="line"><a id="l00344" name="l00344"></a><span class="lineno">  344</span>}</div>
+<div class="line"><a id="l00343" name="l00343"></a><span class="lineno">  343</span>    this-&gt;<a class="code hl_variable" href="classAWeightSwitch.html#a4b828eef7cc6456e5e5833c6d94c79a0">bActivateState</a> = InActive;</div>
+<div class="line"><a id="l00344" name="l00344"></a><span class="lineno">  344</span> </div>
+<div class="line"><a id="l00345" name="l00345"></a><span class="lineno">  345</span>    <a class="code hl_function" href="classAWeightSwitch.html#a2401f0f65a4294c724c6885f07b8b550">SetActivate</a>(<a class="code hl_variable" href="classAWeightSwitch.html#a4b828eef7cc6456e5e5833c6d94c79a0">bActivateState</a>);</div>
+<div class="line"><a id="l00346" name="l00346"></a><span class="lineno">  346</span>}</div>
 </div>
-<div class="line"><a id="l00345" name="l00345"></a><span class="lineno">  345</span> </div>
-<div class="line"><a id="l00351" name="l00351"></a><span class="lineno">  351</span><span class="keywordtype">void</span> AWeightSwitch::Multicast_ShowResultPopup_Implementation()</div>
-<div class="line"><a id="l00352" name="l00352"></a><span class="lineno">  352</span>{</div>
-<div class="line"><a id="l00353" name="l00353"></a><span class="lineno">  353</span>    <span class="comment">// 모든 클라이언트(호스트 포함)에서 정답 팝업 표시</span></div>
-<div class="line"><a id="l00354" name="l00354"></a><span class="lineno">  354</span>    <span class="keywordflow">if</span> (<a class="code hl_class" href="classUPopupManager.html">UPopupManager</a>* PopupMgr = UPopupManager::Get(GetWorld()))</div>
-<div class="line"><a id="l00355" name="l00355"></a><span class="lineno">  355</span>    {</div>
-<div class="line"><a id="l00356" name="l00356"></a><span class="lineno">  356</span>        PopupMgr-&gt;ShowPopup(EPopupType::Result);</div>
-<div class="line"><a id="l00357" name="l00357"></a><span class="lineno">  357</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[WeightSwitch] Showing result popup on %s&quot;</span>),</div>
-<div class="line"><a id="l00358" name="l00358"></a><span class="lineno">  358</span>            HasAuthority() ? TEXT(<span class="stringliteral">&quot;Server&quot;</span>) : TEXT(<span class="stringliteral">&quot;Client&quot;</span>));</div>
-<div class="line"><a id="l00359" name="l00359"></a><span class="lineno">  359</span>    }</div>
-<div class="line"><a id="l00360" name="l00360"></a><span class="lineno">  360</span>}</div>
-<div class="line"><a id="l00361" name="l00361"></a><span class="lineno">  361</span> </div>
-<div class="line"><a id="l00369" name="l00369"></a><span class="lineno">  369</span><span class="keywordtype">void</span> AWeightSwitch::Multicast_ShowWrongPopup_Implementation(<span class="keyword">const</span> FString&amp; LuggageColor, <span class="keyword">const</span> FString&amp; LuggagePattern)</div>
-<div class="line"><a id="l00370" name="l00370"></a><span class="lineno">  370</span>{</div>
-<div class="line"><a id="l00371" name="l00371"></a><span class="lineno">  371</span>    <span class="comment">// 모든 클라이언트(호스트 포함)에서 오답 메시지 표시</span></div>
-<div class="line"><a id="l00372" name="l00372"></a><span class="lineno">  372</span>    <span class="keywordflow">if</span> (<a class="code hl_class" href="classUPopupManager.html">UPopupManager</a>* PopupMgr = UPopupManager::Get(GetWorld()))</div>
-<div class="line"><a id="l00373" name="l00373"></a><span class="lineno">  373</span>    {</div>
-<div class="line"><a id="l00374" name="l00374"></a><span class="lineno">  374</span>        FString Title = TEXT(<span class="stringliteral">&quot;Wrong Answer!&quot;</span>);</div>
-<div class="line"><a id="l00375" name="l00375"></a><span class="lineno">  375</span>        FString Message = FString::Printf(TEXT(<span class="stringliteral">&quot;This is not the correct luggage.\n\nColor: %s\nPattern: %s&quot;</span>),</div>
-<div class="line"><a id="l00376" name="l00376"></a><span class="lineno">  376</span>            *LuggageColor, *LuggagePattern);</div>
-<div class="line"><a id="l00377" name="l00377"></a><span class="lineno">  377</span> </div>
-<div class="line"><a id="l00378" name="l00378"></a><span class="lineno">  378</span>        PopupMgr-&gt;ShowMsgBox(Title, Message, <a class="code hl_enumvalue" href="UPopup__MsgBox_8h.html#a19e1d6071fbd1a8d0f3a0ac7c630df51ae0aa021e21dddbd6d8cecec71e9cf564">EMsgBoxType::OK</a>,</div>
-<div class="line"><a id="l00379" name="l00379"></a><span class="lineno">  379</span>            FOnMsgBoxOkDelegate::CreateLambda([]() {</div>
-<div class="line"><a id="l00380" name="l00380"></a><span class="lineno">  380</span>                <span class="comment">// 확인 버튼 클릭 시 아무 작업도 하지 않음 (팝업만 닫힘)</span></div>
-<div class="line"><a id="l00381" name="l00381"></a><span class="lineno">  381</span>            }));</div>
-<div class="line"><a id="l00382" name="l00382"></a><span class="lineno">  382</span> </div>
-<div class="line"><a id="l00383" name="l00383"></a><span class="lineno">  383</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[WeightSwitch] Showing wrong popup on %s (Color: %s, Pattern: %s)&quot;</span>),</div>
-<div class="line"><a id="l00384" name="l00384"></a><span class="lineno">  384</span>            HasAuthority() ? TEXT(<span class="stringliteral">&quot;Server&quot;</span>) : TEXT(<span class="stringliteral">&quot;Client&quot;</span>), *LuggageColor, *LuggagePattern);</div>
-<div class="line"><a id="l00385" name="l00385"></a><span class="lineno">  385</span>    }</div>
-<div class="line"><a id="l00386" name="l00386"></a><span class="lineno">  386</span>}</div>
+<div class="line"><a id="l00347" name="l00347"></a><span class="lineno">  347</span> </div>
+<div class="line"><a id="l00353" name="l00353"></a><span class="lineno">  353</span><span class="keywordtype">void</span> AWeightSwitch::Multicast_ShowResultPopup_Implementation()</div>
+<div class="line"><a id="l00354" name="l00354"></a><span class="lineno">  354</span>{</div>
+<div class="line"><a id="l00355" name="l00355"></a><span class="lineno">  355</span>    <span class="comment">// 모든 클라이언트(호스트 포함)에서 정답 팝업 표시</span></div>
+<div class="line"><a id="l00356" name="l00356"></a><span class="lineno">  356</span>    <span class="keywordflow">if</span> (<a class="code hl_class" href="classUPopupManager.html">UPopupManager</a>* PopupMgr = UPopupManager::Get(GetWorld()))</div>
+<div class="line"><a id="l00357" name="l00357"></a><span class="lineno">  357</span>    {</div>
+<div class="line"><a id="l00358" name="l00358"></a><span class="lineno">  358</span>        PopupMgr-&gt;ShowPopup(EPopupType::Result);</div>
+<div class="line"><a id="l00359" name="l00359"></a><span class="lineno">  359</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[WeightSwitch] Showing result popup on %s&quot;</span>),</div>
+<div class="line"><a id="l00360" name="l00360"></a><span class="lineno">  360</span>            HasAuthority() ? TEXT(<span class="stringliteral">&quot;Server&quot;</span>) : TEXT(<span class="stringliteral">&quot;Client&quot;</span>));</div>
+<div class="line"><a id="l00361" name="l00361"></a><span class="lineno">  361</span>    }</div>
+<div class="line"><a id="l00362" name="l00362"></a><span class="lineno">  362</span>}</div>
+<div class="line"><a id="l00363" name="l00363"></a><span class="lineno">  363</span> </div>
+<div class="line"><a id="l00371" name="l00371"></a><span class="lineno">  371</span><span class="keywordtype">void</span> AWeightSwitch::Multicast_ShowWrongPopup_Implementation(<span class="keyword">const</span> FString&amp; LuggageColor, <span class="keyword">const</span> FString&amp; LuggagePattern)</div>
+<div class="line"><a id="l00372" name="l00372"></a><span class="lineno">  372</span>{</div>
+<div class="line"><a id="l00373" name="l00373"></a><span class="lineno">  373</span>    <span class="comment">// 모든 클라이언트(호스트 포함)에서 오답 메시지 표시</span></div>
+<div class="line"><a id="l00374" name="l00374"></a><span class="lineno">  374</span>    <span class="keywordflow">if</span> (<a class="code hl_class" href="classUPopupManager.html">UPopupManager</a>* PopupMgr = UPopupManager::Get(GetWorld()))</div>
+<div class="line"><a id="l00375" name="l00375"></a><span class="lineno">  375</span>    {</div>
+<div class="line"><a id="l00376" name="l00376"></a><span class="lineno">  376</span>        FString Title = TEXT(<span class="stringliteral">&quot;Wrong Answer!&quot;</span>);</div>
+<div class="line"><a id="l00377" name="l00377"></a><span class="lineno">  377</span>        FString Message = FString::Printf(TEXT(<span class="stringliteral">&quot;This is not the correct luggage.\n\nColor: %s\nPattern: %s&quot;</span>),</div>
+<div class="line"><a id="l00378" name="l00378"></a><span class="lineno">  378</span>            *LuggageColor, *LuggagePattern);</div>
+<div class="line"><a id="l00379" name="l00379"></a><span class="lineno">  379</span> </div>
+<div class="line"><a id="l00380" name="l00380"></a><span class="lineno">  380</span>        PopupMgr-&gt;ShowMsgBox(Title, Message, <a class="code hl_enumvalue" href="UPopup__MsgBox_8h.html#a19e1d6071fbd1a8d0f3a0ac7c630df51ae0aa021e21dddbd6d8cecec71e9cf564">EMsgBoxType::OK</a>,</div>
+<div class="line"><a id="l00381" name="l00381"></a><span class="lineno">  381</span>            FOnMsgBoxOkDelegate::CreateLambda([]() {</div>
+<div class="line"><a id="l00382" name="l00382"></a><span class="lineno">  382</span>                <span class="comment">// 확인 버튼 클릭 시 아무 작업도 하지 않음 (팝업만 닫힘)</span></div>
+<div class="line"><a id="l00383" name="l00383"></a><span class="lineno">  383</span>            }));</div>
+<div class="line"><a id="l00384" name="l00384"></a><span class="lineno">  384</span> </div>
+<div class="line"><a id="l00385" name="l00385"></a><span class="lineno">  385</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[WeightSwitch] Showing wrong popup on %s (Color: %s, Pattern: %s)&quot;</span>),</div>
+<div class="line"><a id="l00386" name="l00386"></a><span class="lineno">  386</span>            HasAuthority() ? TEXT(<span class="stringliteral">&quot;Server&quot;</span>) : TEXT(<span class="stringliteral">&quot;Client&quot;</span>), *LuggageColor, *LuggagePattern);</div>
+<div class="line"><a id="l00387" name="l00387"></a><span class="lineno">  387</span>    }</div>
+<div class="line"><a id="l00388" name="l00388"></a><span class="lineno">  388</span>}</div>
 <div class="ttc" id="aALingoGameState_8h_html"><div class="ttname"><a href="ALingoGameState_8h.html">ALingoGameState.h</a></div></div>
 <div class="ttc" id="aAPlayerActor_8h_html"><div class="ttname"><a href="APlayerActor_8h.html">APlayerActor.h</a></div><div class="ttdoc">Declares the player-controlled character actor.</div></div>
 <div class="ttc" id="aAWeightSwitch_8h_html"><div class="ttname"><a href="AWeightSwitch_8h.html">AWeightSwitch.h</a></div></div>
@@ -504,10 +506,10 @@ $(document).ready(function(){initNavTree('AWeightSwitch_8cpp_source.html',''); i
 <div class="ttc" id="aclassAWeightSwitch_html_a0a1e788fd8694b27ba71fd6e79f4a85b"><div class="ttname"><a href="classAWeightSwitch.html#a0a1e788fd8694b27ba71fd6e79f4a85b">AWeightSwitch::IsPlayerDetect</a></div><div class="ttdeci">bool IsPlayerDetect</div><div class="ttdef"><b>Definition</b> <a href="AWeightSwitch_8h_source.html#l00094">AWeightSwitch.h:94</a></div></div>
 <div class="ttc" id="aclassAWeightSwitch_html_a0ca5b93964cec02777db87899407db52"><div class="ttname"><a href="classAWeightSwitch.html#a0ca5b93964cec02777db87899407db52">AWeightSwitch::ActivateTrigger</a></div><div class="ttdeci">bool ActivateTrigger()</div><div class="ttdef"><b>Definition</b> <a href="AWeightSwitch_8cpp_source.html#l00173">AWeightSwitch.cpp:173</a></div></div>
 <div class="ttc" id="aclassAWeightSwitch_html_a1052d6424f59900657809bff7c146932"><div class="ttname"><a href="classAWeightSwitch.html#a1052d6424f59900657809bff7c146932">AWeightSwitch::Tick</a></div><div class="ttdeci">virtual void Tick(float DeltaTime) override</div><div class="ttdef"><b>Definition</b> <a href="AWeightSwitch_8cpp_source.html#l00157">AWeightSwitch.cpp:157</a></div></div>
-<div class="ttc" id="aclassAWeightSwitch_html_a16c33afacfe4ccb7b5b3992280277ca3"><div class="ttname"><a href="classAWeightSwitch.html#a16c33afacfe4ccb7b5b3992280277ca3">AWeightSwitch::OnWeightSwitch</a></div><div class="ttdeci">void OnWeightSwitch(int InButtonIndex, bool InActive)</div><div class="ttdef"><b>Definition</b> <a href="AWeightSwitch_8cpp_source.html#l00333">AWeightSwitch.cpp:333</a></div></div>
+<div class="ttc" id="aclassAWeightSwitch_html_a16c33afacfe4ccb7b5b3992280277ca3"><div class="ttname"><a href="classAWeightSwitch.html#a16c33afacfe4ccb7b5b3992280277ca3">AWeightSwitch::OnWeightSwitch</a></div><div class="ttdeci">void OnWeightSwitch(int InButtonIndex, bool InActive)</div><div class="ttdef"><b>Definition</b> <a href="AWeightSwitch_8cpp_source.html#l00335">AWeightSwitch.cpp:335</a></div></div>
 <div class="ttc" id="aclassAWeightSwitch_html_a2079b69b39be9a7ce5b48f7f7df3964a"><div class="ttname"><a href="classAWeightSwitch.html#a2079b69b39be9a7ce5b48f7f7df3964a">AWeightSwitch::OverlappingActors</a></div><div class="ttdeci">TArray&lt; class AActor * &gt; OverlappingActors</div><div class="ttdef"><b>Definition</b> <a href="AWeightSwitch_8h_source.html#l00077">AWeightSwitch.h:77</a></div></div>
 <div class="ttc" id="aclassAWeightSwitch_html_a2401f0f65a4294c724c6885f07b8b550"><div class="ttname"><a href="classAWeightSwitch.html#a2401f0f65a4294c724c6885f07b8b550">AWeightSwitch::SetActivate</a></div><div class="ttdeci">void SetActivate(bool State)</div><div class="ttdef"><b>Definition</b> <a href="AWeightSwitch_8cpp_source.html#l00118">AWeightSwitch.cpp:118</a></div></div>
-<div class="ttc" id="aclassAWeightSwitch_html_a3186a708297d96dfab84f9e4ca7f24d3"><div class="ttname"><a href="classAWeightSwitch.html#a3186a708297d96dfab84f9e4ca7f24d3">AWeightSwitch::OnEndOverlap</a></div><div class="ttdeci">void OnEndOverlap(UPrimitiveComponent *OverlappedComponent, AActor *OtherActor, UPrimitiveComponent *OtherComp, int32 OtherBodyIndex)</div><div class="ttdoc">WeightSwitch Overlap 종료 처리</div><div class="ttdef"><b>Definition</b> <a href="AWeightSwitch_8cpp_source.html#l00307">AWeightSwitch.cpp:307</a></div></div>
+<div class="ttc" id="aclassAWeightSwitch_html_a3186a708297d96dfab84f9e4ca7f24d3"><div class="ttname"><a href="classAWeightSwitch.html#a3186a708297d96dfab84f9e4ca7f24d3">AWeightSwitch::OnEndOverlap</a></div><div class="ttdeci">void OnEndOverlap(UPrimitiveComponent *OverlappedComponent, AActor *OtherActor, UPrimitiveComponent *OtherComp, int32 OtherBodyIndex)</div><div class="ttdoc">WeightSwitch Overlap 종료 처리</div><div class="ttdef"><b>Definition</b> <a href="AWeightSwitch_8cpp_source.html#l00309">AWeightSwitch.cpp:309</a></div></div>
 <div class="ttc" id="aclassAWeightSwitch_html_a3ab2e985a93b2273ef36a3038f713103"><div class="ttname"><a href="classAWeightSwitch.html#a3ab2e985a93b2273ef36a3038f713103">AWeightSwitch::OnActivate_Implementation</a></div><div class="ttdeci">virtual void OnActivate_Implementation(const bool State)</div><div class="ttdef"><b>Definition</b> <a href="AWeightSwitch_8cpp_source.html#l00145">AWeightSwitch.cpp:145</a></div></div>
 <div class="ttc" id="aclassAWeightSwitch_html_a3f1e52d7abad34e59c6b5decf09b9d17"><div class="ttname"><a href="classAWeightSwitch.html#a3f1e52d7abad34e59c6b5decf09b9d17">AWeightSwitch::OnActivate</a></div><div class="ttdeci">void OnActivate(const bool State)</div></div>
 <div class="ttc" id="aclassAWeightSwitch_html_a4b828eef7cc6456e5e5833c6d94c79a0"><div class="ttname"><a href="classAWeightSwitch.html#a4b828eef7cc6456e5e5833c6d94c79a0">AWeightSwitch::bActivateState</a></div><div class="ttdeci">bool bActivateState</div><div class="ttdef"><b>Definition</b> <a href="AWeightSwitch_8h_source.html#l00100">AWeightSwitch.h:100</a></div></div>
@@ -540,7 +542,7 @@ $(document).ready(function(){initNavTree('AWeightSwitch_8cpp_source.html',''); i
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_b7459e4428712e32d7c860db6e401a05.html">Interactable</a></li><li class="navelem"><a class="el" href="dir_77257aedd361f850f8a01079e914567e.html">Private</a></li><li class="navelem"><a class="el" href="AWeightSwitch_8cpp.html">AWeightSwitch.cpp</a></li>
-    <li class="footer">생성시간 : 일 11월 30 2025 05:26:03, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 일 11월 30 2025 23:52:53, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

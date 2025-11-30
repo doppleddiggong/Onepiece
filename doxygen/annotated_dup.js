@@ -74,6 +74,7 @@ var annotated_dup =
     [ "UBasePopup", "classUBasePopup.html", "classUBasePopup" ],
     [ "UBroadcastManager", "classUBroadcastManager.html", "classUBroadcastManager" ],
     [ "UCharacterData", "classUCharacterData.html", "classUCharacterData" ],
+    [ "UCircularProgressBar", "classUCircularProgressBar.html", "classUCircularProgressBar" ],
     [ "UCommonFunctionLibrary", "classUCommonFunctionLibrary.html", "classUCommonFunctionLibrary" ],
     [ "UControllable", "classUControllable.html", null ],
     [ "UConveryorButtonAnimInstance", "classUConveryorButtonAnimInstance.html", "classUConveryorButtonAnimInstance" ],
