@@ -268,10 +268,10 @@ void AWeightSwitch::OnBeginOverlap(
 					TArray<int32> WrongList = GS->WrongLuggageList;
 					if (WrongList.Num() == 0) return;
 
-					UE_LOG(LogTemp, Warning, TEXT("[AWeightSwitch] Wrong luggage :"));
+					PRINTLOG( TEXT("[AWeightSwitch] Wrong luggage :"));
 					for (auto Wrong : WrongList)
 					{
-						UE_LOG(LogTemp, Warning, TEXT("%d, "), Wrong);
+						PRINTLOG( TEXT("%d, "), Wrong);
 					}
 				}, 0.5f, false);
 			}
