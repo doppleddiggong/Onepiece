@@ -43,6 +43,22 @@ private:
 	void OnWeightSwitch(int InButtonIndex, bool InActive);
 
 	bool ActivateTrigger();
+
+	/**
+	 * @brief [Multicast RPC] 모든 클라이언트에 정답 결과 팝업 표시
+	 * @details [문제] 서버에서만 팝업을 표시하여 클라이언트에서 보이지 않음
+	 *          [해결] Multicast RPC로 모든 머신에 팝업 전달
+	 */
+	UFUNCTION(NetMulticast, Reliable)
+	void Multicast_ShowResultPopup();
+
+	/**
+	 * @brief [Multicast RPC] 모든 클라이언트에 오답 메시지 표시
+	 * @param LuggageColor 선택한 Luggage 색상
+	 * @param LuggagePattern 선택한 Luggage 무늬
+	 */
+	UFUNCTION(NetMulticast, Reliable)
+	void Multicast_ShowWrongPopup(const FString& LuggageColor, const FString& LuggagePattern);
 	
 public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")

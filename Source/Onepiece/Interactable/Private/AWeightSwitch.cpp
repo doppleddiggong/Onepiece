@@ -18,6 +18,15 @@ AWeightSwitch::AWeightSwitch()
 {
 	PrimaryActorTick.bCanEverTick = true;
 
+	/**
+	 * [개선] Replication 설정 추가
+	 * - Multicast RPC가 작동하려면 Actor가 복제되어야 함
+	 * - bReplicates: Actor를 네트워크로 복제
+	 * - bAlwaysRelevant: 모든 클라이언트에 항상 관련성 유지 (중요한 게임플레이 Actor)
+	 */
+	bReplicates = true;
+	bAlwaysRelevant = true;
+
 	RootComponent = CreateDefaultSubobject<USceneComponent>(TEXT("Root"));
 
 	SwitchBody = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("SwitchBody"));
@@ -174,13 +183,28 @@ bool AWeightSwitch::ActivateTrigger()
 	return false;
 }
 
+/**
+ * @brief WeightSwitch Overlap 시작 처리
+ * @details [문제] 클라이언트에서도 OnBeginOverlap이 호출되어 정답 판정 시도
+ *                 - GetGameState()가 클라이언트에서 nullptr이거나 복제 지연 가능
+ *                 - 정답 판정은 서버에서만 수행해야 함
+ *          [해결] HasAuthority() 체크로 서버 전용 실행
+ *                 GameState nullptr 체크 추가
+ */
 void AWeightSwitch::OnBeginOverlap(
 	UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
 	UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
 	if (!OtherActor)
 		return;
-	
+
+	// [개선] 서버에서만 정답 판정 수행
+	if (!HasAuthority())
+	{
+		PRINTLOG(TEXT("OnBeginOverlap: Client detected overlap, skipping (server will handle)"));
+		return;
+	}
+
 	// 조건 1 : 플레이어일 경우 오픈
 	if ( IsPlayerDetect )
 	{
@@ -201,11 +225,22 @@ void AWeightSwitch::OnBeginOverlap(
 	// 조건 2 : 정답 캐리어일 경우 오픈
 	if (Aluggage* Luggage = Cast<Aluggage>(OtherActor))
 	{
+		// [개선] GameState nullptr 체크
 		ALingoGameState* GS = Cast<ALingoGameState>(GetWorld()->GetGameState());
+		if (!GS)
+		{
+			PRINTLOG(TEXT("OnBeginOverlap: GameState is null! Cannot validate answer."));
+			return;
+		}
+
+		// [개선] ScenarioData 유효성 체크
 		if (GS)
 		{
 			const int32 CorrectIdx = GS->GetScenarioData().correct_answer_index;
-			
+
+			PRINTLOG(TEXT("[WeightSwitch] Server validating: LuggageIdx=%d, CorrectIdx=%d"),
+				Luggage->GetSpawnIdx(), CorrectIdx);
+
 			if (CorrectIdx == Luggage->GetSpawnIdx())
 			{
 				// 리스트에 추가 (중복 방지)
@@ -219,23 +254,17 @@ void AWeightSwitch::OnBeginOverlap(
 				}
 
 				if (AnswerFound) return;
-				
-				// 스테이지1 성공! 결과 화면
+
+				AnswerFound = true;
+
+				// [개선] Multicast RPC로 모든 클라이언트에 정답 팝업 표시
 				FTimerHandle TimerHandle;
 				GetWorldTimerManager().SetTimer(TimerHandle, [this, GS]
 				{
-					if (const auto PopupMgr = UPopupManager::Get(GetWorld()))
-					{
-						const auto ResultWidget = Cast<UPopup_Result>(PopupMgr->ShowPopup(EPopupType::Result));
-						if (!ResultWidget)
-						{
-							UE_LOG(LogTemp, Warning, TEXT("No Result Widget Found"));
-						}
-					}
+					// 모든 클라이언트에 결과 팝업 표시
+					Multicast_ShowResultPopup();
 
-					AnswerFound = true;
-
-					// 오답 캐리어 로그 ====================================================//
+					// 오답 캐리어 로그 (서버에서만)
 					TArray<int32> WrongList = GS->WrongLuggageList;
 					if (WrongList.Num() == 0) return;
 
@@ -244,31 +273,26 @@ void AWeightSwitch::OnBeginOverlap(
 					{
 						UE_LOG(LogTemp, Warning, TEXT("%d, "), Wrong);
 					}
-					// ===================================================================//
-					
 				}, 0.5f, false);
 			}
 			else
 			{
-				// 이벤트 : False 일때는 ShowMessageBox이용해서 오답! 메세지를 보여주세요
-				// 현재 선택한 정보는 @@, @@ 입니다. 오답
+				// [개선] Multicast RPC로 모든 클라이언트에 오답 팝업 표시
+				FString LuggageColor = Luggage->GetColor();
+				FString LuggagePattern = Luggage->GetPattern();
+				int32 LuggageIdx = Luggage->GetSpawnIdx();
+
 				FTimerHandle TimerHandle;
-				GetWorldTimerManager().SetTimer(TimerHandle, [this, Luggage, GS]
+				GetWorldTimerManager().SetTimer(TimerHandle, [this, LuggageColor, LuggagePattern, LuggageIdx, GS, Luggage]
 				{
-					if (UPopupManager* PopupMgr = UPopupManager::Get(GetWorld()))
-					{
-						FString Description = FString::Printf(TEXT("현재 선택한 정보는 %s, %s 입니다. 오답!\n다시 생각해보세요 부엉부엉"),
-							*Luggage->GetColor(), *Luggage->GetPattern());
-					
-						PopupMgr->ShowMsgBoxSimple(TEXT("오답!"), Description, EMsgBoxType::OK);
-					}
+					// 모든 클라이언트에 오답 메시지 표시
+					Multicast_ShowWrongPopup(LuggageColor, LuggagePattern);
 
-					// 오답 목록에 인덱스 추가
-					GS->WrongLuggageList.Add(Luggage->GetSpawnIdx());
+					// 오답 목록에 인덱스 추가 (서버에서만)
+					GS->WrongLuggageList.Add(LuggageIdx);
 
-					// 큐브 소거
+					// 큐브 소거 (서버에서만, 자동 복제됨)
 					Luggage->Destroy();
-					
 				}, 0.5f, false);
 			}
 			
@@ -276,11 +300,19 @@ void AWeightSwitch::OnBeginOverlap(
 	}
 }
 
+/**
+ * @brief WeightSwitch Overlap 종료 처리
+ * @details [개선] 서버에서만 실행
+ */
 void AWeightSwitch::OnEndOverlap(
 	UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
 	UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
 {
 	if (!OtherActor)
+		return;
+
+	// [개선] 서버에서만 실행
+	if (!HasAuthority())
 		return;
 
 	// 리스트에서 제거
@@ -309,4 +341,46 @@ void AWeightSwitch::OnWeightSwitch(int InButtonIndex, bool InActive)
 	this->bActivateState = InActive;
 
 	SetActivate(bActivateState);
+}
+
+/**
+ * @brief [Multicast RPC] 모든 클라이언트에 정답 결과 팝업 표시
+ * @details [문제] 서버에서만 팝업을 표시하여 클라이언트에서 보이지 않음
+ *          [해결] Multicast RPC로 모든 머신에 팝업 전달
+ */
+void AWeightSwitch::Multicast_ShowResultPopup_Implementation()
+{
+	// 모든 클라이언트(호스트 포함)에서 정답 팝업 표시
+	if (UPopupManager* PopupMgr = UPopupManager::Get(GetWorld()))
+	{
+		PopupMgr->ShowPopup(EPopupType::Result);
+		PRINTLOG(TEXT("[WeightSwitch] Showing result popup on %s"),
+			HasAuthority() ? TEXT("Server") : TEXT("Client"));
+	}
+}
+
+/**
+ * @brief [Multicast RPC] 모든 클라이언트에 오답 메시지 표시
+ * @details [문제] 서버에서만 팝업을 표시하여 클라이언트에서 보이지 않음
+ *          [해결] Multicast RPC로 모든 머신에 팝업 전달
+ * @param LuggageColor 선택한 Luggage 색상
+ * @param LuggagePattern 선택한 Luggage 무늬
+ */
+void AWeightSwitch::Multicast_ShowWrongPopup_Implementation(const FString& LuggageColor, const FString& LuggagePattern)
+{
+	// 모든 클라이언트(호스트 포함)에서 오답 메시지 표시
+	if (UPopupManager* PopupMgr = UPopupManager::Get(GetWorld()))
+	{
+		FString Title = TEXT("Wrong Answer!");
+		FString Message = FString::Printf(TEXT("This is not the correct luggage.\n\nColor: %s\nPattern: %s"),
+			*LuggageColor, *LuggagePattern);
+
+		PopupMgr->ShowMsgBox(Title, Message, EMsgBoxType::OK,
+			FOnMsgBoxOkDelegate::CreateLambda([]() {
+				// 확인 버튼 클릭 시 아무 작업도 하지 않음 (팝업만 닫힘)
+			}));
+
+		PRINTLOG(TEXT("[WeightSwitch] Showing wrong popup on %s (Color: %s, Pattern: %s)"),
+			HasAuthority() ? TEXT("Server") : TEXT("Client"), *LuggageColor, *LuggagePattern);
+	}
 }

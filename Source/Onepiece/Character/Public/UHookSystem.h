@@ -80,7 +80,15 @@ public:
 	bool HasHookTarget() const { return CurHookTarget != nullptr; }
 
 	bool PerformCenterLineTrace(FHitResult& OutHit);
-	
+
+protected:
+	/**
+	 * @brief [서버 전용] 서버에서 라인트레이스 재실행
+	 * @details [문제] 기존에는 클라이언트가 제공한 HitResult를 신뢰
+	 *          [해결] 서버에서 직접 라인트레이스를 재실행하여 검증
+	 */
+	bool PerformServerLineTrace(FHitResult& OutHit);
+
 protected:
 	/** 훅 타겟 감지 */
 	void DetectHookTarget();
@@ -113,7 +121,7 @@ public:
 	/** Hook 최대 거리 */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Hook|Launch")
 	float MaxHookDistance = 1500.0f;
-/
+
 	/** Hook 이동 속도 */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Hook|Pull")
 	float HookSpeed = 500.0f;
@@ -153,6 +161,14 @@ protected:
 
 	UPROPERTY()
 	TObjectPtr<class Aluggage> CurHookTarget_Luggage;
+
+	/**
+	 * @brief 이전 프레임의 타겟 Luggage (Outline 관리용)
+	 * @details [문제] 타겟이 바뀔 때 이전 타겟의 OutlineOff가 호출되지 않음
+	 *          [해결] 이전 타겟을 추적하여 타겟 변경 시 OutlineOff 호출
+	 */
+	UPROPERTY()
+	TObjectPtr<class Aluggage> PrevHookTarget_Luggage;
 	
 	UPROPERTY()
 	TObjectPtr<class UStaticMeshComponent> CableMesh;

@@ -111,6 +111,13 @@ void Aluggage::GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLi
 
 	DOREPLIFETIME(Aluggage, ColorIdx);
 	DOREPLIFETIME(Aluggage, PatternIdx);
+
+	/**
+	 * [문제] 기존에는 여러 플레이어가 동시에 같은 Luggage를 훅할 수 있었음
+	 * [해결] bIsBeingHooked와 HookedBy 복제로 중복 훅 방지
+	 */
+	DOREPLIFETIME(Aluggage, bIsBeingHooked);
+	DOREPLIFETIME(Aluggage, HookedBy);
 }
 
 void Aluggage::SetLuggageInfo(int32 InIdx, FString InColor, FString InPattern)
@@ -128,6 +135,28 @@ void Aluggage::OnRep_ColorIdx()
 void Aluggage::OnRep_PatternIdx()
 {
 	ApplyPatternToMesh(PatternIdx);
+}
+
+/**
+ * @brief bIsBeingHooked 복제 시 호출되는 콜백
+ * @details [문제] 기존에는 훅 상태 변화 시 비주얼 피드백이 없었음
+ *          [해결] 훅 중일 때 Outline 표시로 시각적 피드백 제공
+ */
+void Aluggage::OnRep_IsBeingHooked()
+{
+	if (bIsBeingHooked)
+	{
+		// 훅 중 - Outline 켜기
+		OutlineOn();
+		PRINTLOG(TEXT("OnRep_IsBeingHooked: %s is being hooked by %s"),
+			*GetName(), HookedBy ? *HookedBy->GetName() : TEXT("Unknown"));
+	}
+	else
+	{
+		// 훅 해제 - Outline 상태는 InteractableComponent나 다른 시스템이 관리
+		// 여기서는 명시적으로 끄지 않음 (픽업 상태 등을 고려)
+		PRINTLOG(TEXT("OnRep_IsBeingHooked: %s hook released"), *GetName());
+	}
 }
 
 void Aluggage::ApplyColorToMesh(int32 InColorIdx)
