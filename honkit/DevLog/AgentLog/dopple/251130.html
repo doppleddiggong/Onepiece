@@ -3,7 +3,7 @@
 <html lang="ko" >
     <head>
         <meta charset="UTF-8">
-        <title>dopple - 2025-11-19 · Onepiece Development Documentation</title>
+        <title>dopple - 2025-11-30 · Onepiece Development Documentation</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="HonKit 6.1.4">
@@ -78,10 +78,10 @@
     <link rel="shortcut icon" href="../../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="251117.html" />
+    <link rel="next" href="251123.html" />
     
     
-    <link rel="prev" href="251123.html" />
+    <link rel="prev" href="../../../" />
     
 
     </head>
@@ -153,7 +153,7 @@
         
         
     
-        <li class="chapter " data-level="3.1" data-path="251130.html">
+        <li class="chapter active" data-level="3.1" data-path="251130.html">
             
                 <a href="251130.html">
             
@@ -179,7 +179,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="3.3" data-path="251119.html">
+        <li class="chapter " data-level="3.3" data-path="251119.html">
             
                 <a href="251119.html">
             
@@ -968,7 +968,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../../.." >dopple - 2025-11-19</a>
+        <a href="../../.." >dopple - 2025-11-30</a>
     </h1>
 </div>
 
@@ -983,440 +983,157 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="agent-log---dopple">Agent Log - dopple</h1>
+                                <h1 id="klingo-agent-log---2025-11-30">KLingo Agent Log - 2025-11-30</h1>
 <h2 id="start-log">Start Log</h2>
 <ul>
-<li>20251119 23:57</li>
-<li>Agent: Claude (Sonnet 4.5)</li>
-<li>Branch: dopple</li>
+<li>20251130 11:55</li>
+</ul>
+<h3 id="작업-개요">작업 개요</h3>
+<p>Luggage 상호작용 시스템의 RPC 구조 개선 작업 시작</p>
+<ul>
+<li>InteractableComponent (Pickup/Drop)</li>
+<li>UHookSystem (Grappling Hook)</li>
+<li>ConveyorBelt (Physics Movement)</li>
 </ul>
 <h3 id="작업-목표">작업 목표</h3>
-<p>GitHub Actions 워크플로우 개선:</p>
 <ol>
-<li>Doxygen 워크플로우 <code>environment</code> 설정 추가 (Pages 배포 에러 수정)</li>
-<li>Confluence 자동 업로드 시스템을 <code>repository_dispatch</code> 방식으로 전환</li>
+<li>멀티플레이어 환경에서 RPC 보안 강화</li>
+<li>상태 복제로 클라이언트 간 일관성 확보</li>
+<li>물리 시뮬레이션 품질 개선</li>
 </ol>
-<h3 id="to-do">To Do</h3>
+<h3 id="참조-문서">참조 문서</h3>
 <ul>
-<li>[x] Doxygen 워크플로우에 environment 설정 추가</li>
-<li>[x] Confluence 업로드를 repository_dispatch 방식으로 변경</li>
-<li>[x] Daily/Weekly DevLog 워크플로우에 Confluence 트리거 추가</li>
-<li>[x] Meeting 워크플로우에 Confluence 트리거 추가</li>
-<li>[x] confluence-upload.yml 다중 파일 처리 지원</li>
-<li>[ ] 변경사항 커밋 및 PR 생성</li>
+<li><code>Documents/DevLog/AgentLog/KLingo_Luggage.md</code> (진단 리포트)</li>
+<li><code>Documents/DevLog/AgentLog/KLingo_Luggage_RPC_Guide.md</code> (개선 가이드)</li>
 </ul>
 <hr></hr>
 <h2 id="compact-log-1">Compact Log 1</h2>
 <ul>
-<li>20251119 23:57</li>
+<li>20251130 12:36</li>
 </ul>
 <h3 id="요약-내용">요약 내용</h3>
-<p>GitHub Actions 워크플로우를 개선하여 Doxygen 배포 에러를 수정하고, Confluence 자동 업로드 시스템을 일관성 있는 <code>repository_dispatch</code> 방식으로 전환했습니다.</p>
+<p>Luggage 상호작용 RPC 시스템 전면 개선 완료. 클라이언트 신뢰 문제, 상태 불일치, 중복 소유권 문제를 해결하여 멀티플레이어 환경에서의 안정성과 보안을 대폭 강화함.</p>
 <p><strong>변경 파일</strong>:</p>
 <ul>
-<li><code>.github/workflows/doxygen.yml</code>: environment 설정 추가</li>
-<li><code>.github/workflows/confluence-upload.yml</code>: push 트리거 → repository_dispatch 전환, 다중 파일 처리 지원</li>
-<li><code>.github/workflows/daily-report.yml</code>: Confluence 업로드 트리거 추가</li>
-<li><code>.github/workflows/weekly-report.yml</code>: Confluence 업로드 트리거 추가</li>
-<li><code>.github/workflows/detect-meeting-push.yml</code>: Confluence 업로드 트리거 추가</li>
-<li><code>.github/scripts/collect_meeting_changes.py</code>: confluence_payload 생성 로직 추가</li>
+<li><code>InteractableComponent.h</code>: bIsPickedUp 복제 추가, WithValidation 선언</li>
+<li><code>InteractableComponent.cpp</code>: OnRep_IsPickedUp, Server_PickUp/Drop Validation 구현</li>
+<li><code>luggage.h</code>: bIsBeingHooked, HookedBy 훅 플래그 추가</li>
+<li><code>luggage.cpp</code>: OnRep_IsBeingHooked 구현, 복제 설정</li>
+<li><code>UHookSystem.h</code>: PerformServerLineTrace 함수 선언</li>
+<li><code>UHookSystem.cpp</code>: 서버 라인트레이스 재실행, 중복 훅 방지, 훅 플래그 해제 로직 추가</li>
+<li><code>ConveyorBelt.cpp</code>: Tick 서버 전용화, Force 기반 이동으로 변경, Hook 중 이동 무시 추가</li>
+<li><code>KLingo_Luggage_RPC_Guide.md</code>: 상세 개선 가이드 문서 작성 (32KB)</li>
 </ul>
 <p><strong>주요 작업</strong>:</p>
 <ol>
-<li><p><strong>Doxygen 워크플로우 수정</strong></p>
+<li><p><strong>InteractableComponent 보안 강화 (P0)</strong></p>
 <ul>
-<li><code>actions/deploy-pages@v4</code> 에러 수정</li>
-<li><code>environment: github-pages</code> 설정 추가</li>
-<li>이전 커밋에서 실수로 제거된 필수 설정 복원</li>
+<li>bIsPickedUp 상태 복제로 모든 클라이언트 동기화</li>
+<li>Server_PickUp/Drop에 WithValidation 추가</li>
+<li>5가지 검증: 유효성, PlayerController, 중복 픽업, 기존 소유자, 거리 (1.5배 여유)</li>
+<li>OnRep_IsPickedUp으로 Outline/Widget 자동 동기화</li>
 </ul>
 </li>
-<li><p><strong>Confluence 업로드 시스템 개선</strong></p>
+<li><p><strong>Luggage 중복 훅 방지 (P1)</strong></p>
 <ul>
-<li>기존 <code>push</code> 트리거 방식의 문제점 분석</li>
-<li>일관성 있는 <code>repository_dispatch</code> 방식으로 전환</li>
-<li>DevLog(단일 파일)와 Meeting(다중 파일) 모두 지원</li>
+<li>bIsBeingHooked, HookedBy 플래그 추가 및 복제</li>
+<li>OnRep_IsBeingHooked으로 시각적 피드백</li>
+<li>여러 플레이어의 동시 훅 시도 차단</li>
 </ul>
 </li>
-<li><p><strong>워크플로우 통합</strong></p>
+<li><p><strong>UHookSystem 치트 방지 (P1)</strong></p>
 <ul>
-<li>Daily/Weekly DevLog: 문서 생성 후 자동으로 Confluence 업로드 트리거</li>
-<li>Meeting: 파일 감지 후 자동으로 Confluence 업로드 트리거</li>
-<li>HonKit, Discord, Confluence 모두 <code>repository_dispatch</code>로 통일</li>
+<li>PerformServerLineTrace 함수로 서버 기준 재검증</li>
+<li>클라이언트 HitResult 신뢰 제거</li>
+<li>5가지 검증: 라인트레이스, Hookable, 거리, 픽업 상태, 중복 훅</li>
+<li>ReleaseHook에서 훅 플래그 명시적 해제</li>
+</ul>
+</li>
+<li><p><strong>ConveyorBelt 물리 개선 (P2)</strong></p>
+<ul>
+<li>HasAuthority() 체크로 서버 전용 Tick</li>
+<li>SetPhysicsLinearVelocity → AddForce 기반 이동</li>
+<li>질량 기반 힘 적용 (MoveSpeed <em> Mass </em> 10.0f)</li>
+<li>bIsPickedUp, bIsBeingHooked 상태 확인하여 이동 무시</li>
 </ul>
 </li>
 </ol>
+<p><strong>문제 해결 요약</strong>:</p>
+<ul>
+<li>❌ 클라이언트가 임의의 액터를 소유자로 지정 가능 → ✅ 서버 Validation으로 차단</li>
+<li>❌ 거리 밖 오브젝트 픽업/훅 가능 → ✅ 서버 기준 거리 재검증</li>
+<li>❌ 여러 플레이어가 같은 Luggage 동시 소유 → ✅ 중복 소유권 방지</li>
+<li>❌ bIsPickedUp 미복제로 시스템 간 상태 불일치 → ✅ 복제 및 RepNotify 동기화</li>
+<li>❌ 물리 속도 덮어쓰기로 위치 스냅 발생 → ✅ Force 기반 자연스러운 이동</li>
+<li>❌ 클라이언트/서버 모두 물리 이동 처리 → ✅ 서버 전용 처리로 충돌 제거</li>
+</ul>
 <h3 id="commit-정보">Commit 정보</h3>
 <p><strong>Summary (EN)</strong>:
-fix: resolve GitHub Pages deployment error and refactor Confluence upload to use repository_dispatch</p>
+fix: secure RPC for Luggage interactions with validation, replication, and physics improvements</p>
 <p><strong>세부 내역</strong>:</p>
 <ol>
-<li><p>"Fix Doxygen workflow Pages deployment error"</p>
+<li><p>"InteractableComponent: 픽업/드롭 RPC 보안 강화"</p>
 <ul>
-<li>Add required <code>environment: github-pages</code> setting to doxygen.yml</li>
-<li>Restore setting that was accidentally removed in previous commit</li>
-<li>Resolve <code>actions/deploy-pages@v4</code> "Missing environment" error</li>
+<li>bIsPickedUp 복제 추가로 클라이언트 간 상태 동기화</li>
+<li>Server_PickUp/Drop에 WithValidation 추가 (거리, 소유권, 중복 검증)</li>
+<li>OnRep_IsPickedUp으로 Outline/Widget 자동 동기화</li>
 </ul>
 </li>
-<li><p>"Refactor Confluence upload to use repository_dispatch pattern"</p>
+<li><p>"Luggage: 중복 훅 방지 플래그 추가"</p>
 <ul>
-<li>Remove push trigger from confluence-upload.yml to prevent duplicate uploads</li>
-<li>Add repository_dispatch event handling with client_payload support</li>
-<li>Support both single file (DevLog) and multiple files (Meeting) uploads</li>
-<li>Add Confluence upload triggers to daily-report.yml and weekly-report.yml</li>
-<li>Add Confluence upload trigger to detect-meeting-push.yml</li>
-<li>Update collect_meeting_changes.py to generate confluence_payload</li>
+<li>bIsBeingHooked, HookedBy 플래그 추가 및 복제</li>
+<li>OnRep_IsBeingHooked으로 시각적 피드백 제공</li>
+<li>여러 플레이어의 동시 훅 시도 차단</li>
 </ul>
 </li>
-<li><p>"Improve workflow consistency"</p>
+<li><p>"UHookSystem: 서버 라인트레이스 재검증 및 중복 훅 방지"</p>
 <ul>
-<li>Unify all document processing (HonKit, Discord, Confluence) to use repository_dispatch</li>
-<li>Ensure explicit control over which files get uploaded</li>
-<li>Prevent unnecessary uploads from manual file edits</li>
+<li>PerformServerLineTrace 함수로 클라이언트 HitResult 재검증</li>
+<li>ServerTryHook에서 거리, 픽업 상태, 중복 훅 검증 추가</li>
+<li>ReleaseHook에서 훅 플래그 명시적 해제</li>
+</ul>
+</li>
+<li><p>"ConveyorBelt: 서버 전용 Tick 및 Force 기반 물리 이동"</p>
+<ul>
+<li>HasAuthority() 체크로 서버에서만 이동 처리</li>
+<li>SetPhysicsLinearVelocity → AddForce 변경 (위치 스냅 제거)</li>
+<li>bIsPickedUp, bIsBeingHooked 상태 확인하여 이동 무시</li>
+</ul>
+</li>
+<li><p>"docs: Luggage RPC 개선 가이드 문서 작성"</p>
+<ul>
+<li>문제 진단, 코드 분석, 단계별 구현 가이드 포함</li>
+<li>테스트 시나리오 및 우선순위 제시 (32KB)</li>
 </ul>
 </li>
 </ol>
 <h3 id="next-to-do">Next To Do</h3>
 <ol>
-<li>Staged 파일 확인 및 커밋</li>
-<li>Pull Request 생성</li>
-<li>CI 워크플로우 정상 동작 확인</li>
-</ol>
-<hr></hr>
-<h2 id="compact-log-2">Compact Log 2</h2>
+<li><p><strong>통합 테스트 수행</strong></p>
 <ul>
-<li>20251120 00:29</li>
-</ul>
-<h3 id="요약-내용">요약 내용</h3>
-<p>GitHub Pages 배포 충돌 문제를 근본적으로 해결하고, Daily GPT 피드백 활성화 상태를 확인했습니다. Doxygen과 HonKit이 서로의 콘텐츠를 덮어쓰지 않도록 워크플로우를 개선하고 테스트를 완료했습니다.</p>
-<p><strong>변경 파일</strong>:</p>
-<ul>
-<li><code>.github/workflows/doxygen.yml</code>: HonKit docs 보존 로직 추가</li>
-<li><code>.github/workflows/honkit.yml</code>: Doxygen docs 보존 로직 추가</li>
-<li><code>.github/config.yml</code>: daily_enabled 확인 (이미 true로 설정됨)</li>
-</ul>
-<p><strong>주요 작업</strong>:</p>
-<ol>
-<li><p><strong>GitHub Pages 배포 충돌 문제 분석</strong></p>
-<ul>
-<li>Doxygen 실행 시 HonKit docs가 사라지는 문제 확인</li>
-<li>근본 원인: <code>_site</code> 디렉토리가 비어있을 때 상대방 콘텐츠 미보존</li>
-<li>gh-pages 체크아웃 실패 시 (<code>continue-on-error: true</code>) 빈 디렉토리 문제</li>
+<li>2인 멀티플레이어 환경에서 동시 픽업/훅 시도 테스트</li>
+<li>픽업 → 컨베이어 → 드롭 체인 테스트</li>
+<li>컨베이어 → 훅 간섭 테스트</li>
+<li>거리/권한 치트 시도 테스트</li>
 </ul>
 </li>
-<li><p><strong>Doxygen 워크플로우 개선</strong></p>
+<li><p><strong>물리 파라미터 튜닝</strong> (필요 시)</p>
 <ul>
-<li><code>_site</code> 디렉토리가 비어있는지 확인: <code>[ -d "_site" ] &amp;&amp; [ -n "$(ls -A _site 2&gt;/dev/null)" ]</code></li>
-<li>기존 <code>docs/</code> 폴더 보존 로직 추가</li>
-<li>디버깅 메시지 추가 (보존 상태 확인 가능)</li>
-<li>HonKit 문서가 덮어쓰이지 않도록 명시적 보호</li>
+<li>ConveyorBelt 힘 크기 조정 (현재: MoveSpeed <em> Mass </em> 10.0f)</li>
+<li>Luggage 질량 확인 및 최적화</li>
 </ul>
 </li>
-<li><p><strong>HonKit 워크플로우 개선</strong></p>
+<li><p><strong>디버그 로그 정리</strong> (배포 전)</p>
 <ul>
-<li><code>_site</code> 디렉토리가 비어있는지 확인</li>
-<li>기존 <code>doxygen/</code> 폴더 보존 로직 추가</li>
-<li>디버깅 메시지 추가</li>
-<li>Doxygen 문서가 덮어쓰이지 않도록 명시적 보호</li>
+<li>PRINTLOG 메시지 정리 또는 조건부 활성화</li>
 </ul>
 </li>
-<li><p><strong>PR 생성 및 배포 테스트</strong></p>
+<li><p><strong>문서화 업데이트</strong></p>
 <ul>
-<li>PR #44 생성 및 merge 완료</li>
-<li>HonKit 수동 빌드 실행 및 성공 확인</li>
-<li>Doxygen 수동 빌드 실행 및 성공 확인</li>
-<li>최종 검증: 두 문서 모두 정상 접근 가능<ul>
-<li>HonKit: <a href="https://doppleddiggong.github.io/Onepiece/docs/" target="_blank">https://doppleddiggong.github.io/Onepiece/docs/</a> ✅</li>
-<li>Doxygen: <a href="https://doppleddiggong.github.io/Onepiece/doxygen/" target="_blank">https://doppleddiggong.github.io/Onepiece/doxygen/</a> ✅</li>
+<li>Doxygen 주석 추가 (필요 시)</li>
+<li>상호작용 상태 흐름도 작성 (권한/플래그/RepNotify)</li>
 </ul>
 </li>
-</ul>
-</li>
-<li><p><strong>Daily GPT 피드백 상태 확인</strong></p>
-<ul>
-<li><code>config.yml</code>에서 <code>daily_enabled: true</code>로 이미 설정됨 확인</li>
-<li>17일, 18일 DevLog에 GPT 피드백이 없었던 이유: 당시 false였음</li>
-<li>다음 실행: 내일 오전 9시 (KST)부터 GPT 피드백 포함 예정</li>
-</ul>
-</li>
-</ol>
-<h3 id="commit-정보">Commit 정보</h3>
-<p><strong>Summary (EN)</strong>:
-fix: resolve GitHub Pages deployment conflicts between Doxygen and HonKit</p>
-<p><strong>세부 내역</strong>:</p>
-<ol>
-<li><p>"Improve Doxygen workflow to preserve HonKit documentation"</p>
-<ul>
-<li>Check if <code>_site</code> directory is not empty before copying</li>
-<li>Add preservation logic for <code>public/docs/</code> directory</li>
-<li>Add debug messages to track preservation status</li>
-<li>Ensure HonKit documentation survives Doxygen deployments</li>
-</ul>
-</li>
-<li><p>"Improve HonKit workflow to preserve Doxygen documentation"</p>
-<ul>
-<li>Check if <code>_site</code> directory is not empty before copying</li>
-<li>Add preservation logic for <code>public/doxygen/</code> directory</li>
-<li>Add debug messages to track preservation status</li>
-<li>Ensure Doxygen documentation survives HonKit deployments</li>
-</ul>
-</li>
-<li><p>"Verify deployment and test workflows"</p>
-<ul>
-<li>Create PR #44 and merge to main</li>
-<li>Manually trigger HonKit build (success)</li>
-<li>Manually trigger Doxygen build (success)</li>
-<li>Verify both documentations are accessible and preserved</li>
-</ul>
-</li>
-</ol>
-<h3 id="테스트-결과">테스트 결과</h3>
-<p>✅ <strong>HonKit 빌드</strong> → Doxygen 보존됨
-✅ <strong>Doxygen 빌드</strong> → HonKit 보존됨
-✅ <strong>양쪽 문서 모두 정상 접근 가능</strong></p>
-<h3 id="next-to-do">Next To Do</h3>
-<ol>
-<li>✅ 모든 작업 완료</li>
-<li>내일 오전 9시 Daily Report 실행 시 GPT 피드백 확인</li>
-<li>필요시 추가 모니터링</li>
-</ol>
-<hr></hr>
-<h2 id="compact-log-3">Compact Log 3</h2>
-<ul>
-<li>20251120 00:51</li>
-</ul>
-<h3 id="요약-내용">요약 내용</h3>
-<p>Doxygen 문서가 최신 코드(11월 19일 추가된 Voice 시스템)를 반영하지 못하는 문제를 조사하고 해결했습니다. 근본 원인은 GitHub Pages CDN 캐싱이었으며, 새로운 빌드 트리거 후 문서가 정상적으로 업데이트되었음을 확인했습니다.</p>
-<p><strong>변경 파일</strong>:</p>
-<ul>
-<li>없음 (조사 및 검증 작업)</li>
-</ul>
-<p><strong>주요 작업</strong>:</p>
-<ol>
-<li><p><strong>문제 상황 파악</strong></p>
-<ul>
-<li>Doxygen 문서 생성 시간이 11월 13일로 표시됨</li>
-<li>Voice 시스템 코드는 11월 19일 14:30 (PR #41)에 추가됨</li>
-<li>15:05와 15:27의 수동 빌드에서 Voice 디렉토리가 스캔되었으나 문서에 반영 안 됨</li>
-</ul>
-</li>
-<li><p><strong>빌드 로그 분석</strong></p>
-<ul>
-<li>Voice 시스템 파일 스캔 확인: <code>UVoiceConversationSystem.cpp/h</code>, <code>UVoiceFunctionLibrary.cpp/h</code></li>
-<li>Doxygen이 Voice 파일을 전처리(Preprocessing)하고 파싱(Parsing)함</li>
-<li><code>classUVoiceFunctionLibrary.html</code> 등 문서 파일이 artifact에 포함됨</li>
-<li>배포(Deploy to GitHub Pages)도 성공적으로 완료됨</li>
-</ul>
-</li>
-<li><p><strong>Doxygen 재빌드 실행</strong></p>
-<ul>
-<li><code>gh workflow run doxygen.yml --ref main</code> 실행</li>
-<li>빌드 ID: 19507296062</li>
-<li>1분 23초만에 성공적으로 완료</li>
-<li>Voice 시스템 파일이 다시 처리되고 문서 생성됨</li>
-</ul>
-</li>
-<li><p><strong>배포 검증 및 CDN 캐싱 발견</strong></p>
-<ul>
-<li>초기: WebFetch로 확인 시 여전히 11월 13일 표시</li>
-<li><code>classUVoiceFunctionLibrary.html</code> 접근 시 404 → 이후 200 OK</li>
-<li>HTTP 헤더 확인: <code>x-proxy-cache: MISS</code> (캐시 미스, 새로 서빙)</li>
-<li><code>curl</code>로 직접 확인: <strong>"생성시간 : 수 11월 19 2025 15:46:08"</strong> ✅</li>
-</ul>
-</li>
-<li><p><strong>최종 확인</strong></p>
-<ul>
-<li>✅ 생성 시간: 2025년 11월 19일 15:46:08 (최신 빌드 시간)</li>
-<li>✅ <code>UVoiceFunctionLibrary</code> 클래스 문서 접근 가능</li>
-<li>✅ <code>UVoiceConversationSystem</code> 파일 문서 접근 가능</li>
-<li>✅ Voice 시스템 메서드 5개 문서화됨 (ConvertPCM2WAV, CreateSoundWaveFromWavData, CreateProceduralSoundWaveFromWavData, ResampleAudio, SaveWavToFile)</li>
-</ul>
-</li>
-</ol>
-<h3 id="결론">결론</h3>
-<p><strong>근본 원인</strong>: GitHub Pages CDN 캐싱</p>
-<ul>
-<li>새로운 문서가 정상적으로 생성 및 배포되었으나, CDN 캐시(<code>max-age=600</code>, 10분)로 인해 이전 버전이 서빙됨</li>
-<li>빌드 및 배포 프로세스 자체는 정상 작동</li>
-<li>CDN 캐시 만료 후 모든 사용자가 최신 문서 확인 가능</li>
-</ul>
-<h3 id="commit-정보">Commit 정보</h3>
-<p>이번 세션에서는 코드 변경이 없으므로 커밋이 필요하지 않습니다.</p>
-<h3 id="next-to-do">Next To Do</h3>
-<ol>
-<li>✅ 모든 조사 및 검증 완료</li>
-<li>필요시 다른 작업 진행</li>
-</ol>
-<hr></hr>
-<h2 id="compact-log-4">Compact Log 4</h2>
-<ul>
-<li>20251121 12:07</li>
-</ul>
-<h3 id="요약-내용">요약 내용</h3>
-<p>KLingo DevLog 자동 생성 시스템을 완전히 구축하고, 2025-11-10부터 2025-11-20까지 11개의 DevLog를 GPT 기반으로 생성했습니다. 기본 브랜치를 main으로 설정하여 전체 팀의 작업을 통합한 DevLog를 생성하도록 개선했습니다.</p>
-<p><strong>신규 파일</strong>:</p>
-<ul>
-<li><code>.github/scripts/devlog_klingo/</code>: 전체 시스템 디렉토리<ul>
-<li><code>devlog_generate.py</code>: 메인 스크립트</li>
-<li><code>utils.py</code>: 날짜 계산 등 유틸리티</li>
-<li><code>meeting_loader.py</code>: 회의록 로더</li>
-<li><code>diff_loader.py</code>: Git diff 로더</li>
-<li><code>jira_mapper.py</code>: Jira 매핑</li>
-<li><code>gpt_client.py</code>: GPT 클라이언트</li>
-<li><code>config.json</code>: 설정 파일</li>
-<li><code>requirements.txt</code>: Python 의존성</li>
-<li><code>README.md</code>: 기술 문서</li>
-<li><code>config.env.template</code>: 환경 변수 템플릿</li>
-</ul>
-</li>
-<li><code>.github/data/jira_map_rules.yaml</code>: Jira 매핑 룰</li>
-<li><code>.github/config.env</code>: 환경 변수 (API 키)</li>
-<li><code>Documents/DevLog/DEVLOG_사용가이드.md</code>: 사용자 가이드</li>
-<li><code>Documents/DevLog/AgentLog/KLingo_DailyDevLog_Guide.md</code>: 원본 요구사항</li>
-</ul>
-<p><strong>생성된 DevLog</strong>:</p>
-<ul>
-<li><code>Documents/DevLog/Daily/2025-11-10.md</code> ~ <code>2025-11-20.md</code> (11개)</li>
-<li>각 날짜별 <code>.metrics.json</code> 파일 (11개)</li>
-</ul>
-<p><strong>주요 작업</strong>:</p>
-<ol>
-<li><p><strong>시스템 설계 및 구현</strong></p>
-<ul>
-<li>6가지 데이터 소스 통합: Git diff, 커밋 메시지, 회의록, 개발자 정보, Jira 룰, Jira API</li>
-<li>KST 기준 날짜 계산 로직 구현</li>
-<li>GPT-4o 기반 지능형 분석 시스템</li>
-<li>Fallback 모드 지원 (GPT 없이도 작동)</li>
-</ul>
-</li>
-<li><p><strong>핵심 모듈 개발</strong></p>
-<ul>
-<li><code>utils.py</code>: KST 날짜 계산, 개발자 정보 로딩</li>
-<li><code>meeting_loader.py</code>: Frontmatter 파싱, 회의록 로딩</li>
-<li><code>diff_loader.py</code>: Git 커밋/diff 수집</li>
-<li><code>jira_mapper.py</code>: 파일→시스템 매핑, Jira API 연동</li>
-<li><code>gpt_client.py</code>: GPT 프롬프트 생성, DevLog 자동 생성</li>
-</ul>
-</li>
-<li><p><strong>환경 설정 및 보안</strong></p>
-<ul>
-<li><code>config.env</code> 파일로 API 키 관리</li>
-<li><code>.gitignore</code>에 추가하여 보안 유지</li>
-<li>JIRA_SITE 기반 URL 자동 구성</li>
-<li>프로젝트 키 필터링 지원</li>
-</ul>
-</li>
-<li><p><strong>기본값 변경 (main 브랜치)</strong></p>
-<ul>
-<li>기존: dopple 브랜치 (개인 작업)</li>
-<li>변경: main 브랜치 (전체 팀 통합)</li>
-<li>개발자 표시: "전체 팀"</li>
-<li>특정 개발자 브랜치도 선택 가능</li>
-</ul>
-</li>
-<li><p><strong>대량 DevLog 생성</strong></p>
-<ul>
-<li>2025-11-10 ~ 2025-11-20 (11개 날짜)</li>
-<li>GPT-4o로 각 DevLog 자동 분석</li>
-<li>주요 변경, 시스템 영향도, 리스크, 검증 항목, 회의 연계, Jira 이슈 추론</li>
-</ul>
-</li>
-<li><p><strong>문서화</strong></p>
-<ul>
-<li>사용자 가이드 작성 (한글)</li>
-<li>기술 문서 작성 (README.md)</li>
-<li>템플릿 파일 제공</li>
-</ul>
-</li>
-</ol>
-<p><strong>변경 파일</strong>:</p>
-<ul>
-<li><code>.github/scripts/devlog_klingo/*</code>: 전체 시스템 (8개 파일)</li>
-<li><code>.github/data/jira_map_rules.yaml</code>: Jira 매핑 룰</li>
-<li><code>.github/.gitignore</code>: config.env 추가</li>
-<li><code>Documents/DevLog/DEVLOG_사용가이드.md</code>: 사용 가이드</li>
-<li><code>Documents/DevLog/Daily/*.md</code>: 11개 DevLog (main 브랜치 기준으로 재생성)</li>
-<li><code>Documents/DevLog/Daily/*.metrics.json</code>: 11개 메트릭 파일</li>
-</ul>
-<h3 id="devlog-내용-구조">DevLog 내용 구조</h3>
-<p>각 DevLog는 다음 6가지 항목을 포함:</p>
-<ol>
-<li><strong>오늘의 주요 변경</strong> - 커밋 기반 핵심 요약</li>
-<li><strong>시스템 영향도</strong> - Content, Network, Voice 등 시스템별 분석</li>
-<li><strong>리스크 및 문제</strong> - 잠재적 문제점 식별</li>
-<li><strong>검증 필요 항목</strong> - 테스트 필요 사항</li>
-<li><strong>회의 기반 후속 작업</strong> - 회의록과 연계된 작업</li>
-<li><strong>관련 Jira 이슈</strong> - GPT 기반 자동 추론</li>
-</ol>
-<h3 id="사용-방법">사용 방법</h3>
-<pre><code class="lang-bash">cd .github/scripts/devlog_klingo
-
-# 기본 실행 (어제 날짜, main 브랜치)
-python devlog_generate.py --config config.json
-
-# 특정 날짜
-python devlog_generate.py --date 2025-11-20 --config config.json
-
-# 특정 개발자 브랜치
-python devlog_generate.py --date 2025-11-20 --branch dopple --config config.json
-</code></pre>
-<h3 id="commit-정보">Commit 정보</h3>
-<p><strong>Summary (EN)</strong>:
-feat: implement KLingo DevLog auto-generation system with GPT-4o</p>
-<p><strong>세부 내역</strong>:</p>
-<ol>
-<li><p>"Implement DevLog generation system core modules"</p>
-<ul>
-<li>Create utils.py for KST date calculation and developer info loading</li>
-<li>Create meeting_loader.py for parsing Markdown with frontmatter</li>
-<li>Create diff_loader.py for Git commit and diff collection</li>
-<li>Create jira_mapper.py for file-to-system mapping and Jira API integration</li>
-<li>Create gpt_client.py for GPT prompt generation and DevLog creation</li>
-</ul>
-</li>
-<li><p>"Set up configuration and environment management"</p>
-<ul>
-<li>Add config.json for system settings</li>
-<li>Create config.env.template for API key management</li>
-<li>Add .github/.gitignore to protect sensitive data</li>
-<li>Support JIRA_SITE-based URL auto-configuration</li>
-<li>Enable GPT-4o by default with fallback mode support</li>
-</ul>
-</li>
-<li><p>"Change default branch from dopple to main"</p>
-<ul>
-<li>Set main branch as default for team-wide DevLog</li>
-<li>Display "전체 팀" for main branch commits</li>
-<li>Allow individual developer branch selection with --branch option</li>
-<li>Update all 11 DevLogs (2025-11-10 to 2025-11-20) to main branch</li>
-</ul>
-</li>
-<li><p>"Generate 11 DevLogs with GPT-4o analysis"</p>
-<ul>
-<li>Generate DevLogs for 2025-11-10 through 2025-11-20</li>
-<li>Integrate 6 data sources: Git, commits, meetings, developers, Jira rules, Jira API</li>
-<li>Provide 6 analysis sections per DevLog with GPT-4o insights</li>
-</ul>
-</li>
-<li><p>"Add comprehensive documentation"</p>
-<ul>
-<li>Create DEVLOG_사용가이드.md (Korean user guide)</li>
-<li>Create README.md in devlog_klingo/ (technical documentation)</li>
-<li>Include usage examples and troubleshooting</li>
-</ul>
-</li>
-</ol>
-<h3 id="기술-스택">기술 스택</h3>
-<ul>
-<li><strong>언어</strong>: Python 3.x</li>
-<li><strong>주요 라이브러리</strong>: openai, requests, PyYAML</li>
-<li><strong>AI</strong>: GPT-4o (gpt-4o model)</li>
-<li><strong>데이터 소스</strong>: Git, Markdown, CSV, YAML, Jira API</li>
-</ul>
-<h3 id="next-to-do">Next To Do</h3>
-<ol>
-<li>팀원들에게 시스템 공유</li>
-<li>필요시 GitHub Actions 자동화 설정</li>
-<li>DevLog 품질 모니터링 및 개선</li>
 </ol>
  <link rel="stylesheet" type="text/css" href="https://storage.googleapis.com/app.klipse.tech/css/codemirror.css"></link> <script>     window.klipse_settings = {         selector: ".language-klipse, .lang-eval-clojure",         selector_eval_js: ".lang-eval-js",         selector_eval_python_client: ".lang-eval-python",         selector_eval_php: ".lang-eval-php",         selector_eval_scheme: ".lang-eval-scheme",         selector_eval_ruby: ".lang-eval-ruby",         selector_reagent: ".lang-reagent",        selector_google_charts: ".lang-google-chart",        selector_es2017: ".lang-eval-es2017",        selector_jsx: ".lang-eval-jsx",        selector_transpile_jsx: ".lang-transpile-jsx",        selector_render_jsx: ".lang-render-jsx",        selector_react: ".lang-react",        selector_eval_markdown: ".lang-render-markdown",        selector_eval_lambdaway: ".lang-render-lambdaway",        selector_eval_cpp: ".lang-eval-cpp",        selector_eval_html: ".lang-render-html",        selector_sql: ".lang-eval-sql",        selector_brainfuck: "lang-eval-brainfuck",        selector_js: ".lang-transpile-cljs"    }; </script> <script src="https://storage.googleapis.com/app.klipse.tech/plugin/js/klipse_plugin.js"></script>
                                 
@@ -1445,12 +1162,12 @@ feat: implement KLingo DevLog auto-generation system with GPT-4o</p>
 
             
                 
-                <a href="251123.html" class="navigation navigation-prev " aria-label="Previous page: dopple - 2025-11-23">
+                <a href="../../../" class="navigation navigation-prev " aria-label="Previous page: 시작하기">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="251117.html" class="navigation navigation-next " aria-label="Next page: dopple - 2025-11-17">
+                <a href="251123.html" class="navigation navigation-next " aria-label="Next page: dopple - 2025-11-23">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1461,7 +1178,7 @@ feat: implement KLingo DevLog auto-generation system with GPT-4o</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"dopple - 2025-11-19","level":"3.3","depth":1,"next":{"title":"dopple - 2025-11-17","level":"3.4","depth":1,"path":"DevLog/AgentLog/dopple/251117.md","ref":"DevLog/AgentLog/dopple/251117.md","articles":[]},"previous":{"title":"dopple - 2025-11-23","level":"3.2","depth":1,"path":"DevLog/AgentLog/dopple/251123.md","ref":"DevLog/AgentLog/dopple/251123.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-comscore","github","collapsible-menu","back-to-top-button","search-plus","expandable-chapters-small","page-toc-button","-anchor-navigation-ex","honkit-plugin-mermaid","code","alerts","emphasize","klipse","-lunr","-search","-sharing"],"root":".","styles":{"website":"styles/website.css"},"pluginsConfig":{"collapsible-menu":{},"emphasize":{"style":"yellow"},"github":{"url":"https://github.com/doppleddiggong/Onepiece"},"code":{"copyButtons":true},"honkit-plugin-mermaid":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"printLog":false,"multipleH1":false,"mode":"float","float":{"showLevelIcon":false,"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right"},"pageTop":{"showLevelIcon":false,"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right"}},"theme-comscore":{"showLevel":true},"page-toc-button":{"maxTocDepth":3,"minTocSize":2},"back-to-top-button":{},"alerts":{"info":{"label":"정보","icon":"fa fa-info-circle","className":"info"},"warning":{"label":"주의","icon":"fa fa-exclamation-triangle","className":"warning"},"danger":{"label":"위험","icon":"fa fa-times-circle","className":"danger"},"tip":{"label":"팁","icon":"fa fa-lightbulb-o","className":"tip"}},"expandable-chapters-small":{},"klipse":{"myConfigKey":"it's the default value"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"search-plus":{}},"theme":"default","author":"DoppledDiggong Team","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Onepiece Development Documentation","language":"ko","links":{"sidebar":{"GitHub Repository":"https://github.com/doppleddiggong/Onepiece","Doxygen API Docs":"https://doppleddiggong.github.io/Onepiece/doxygen/"}},"gitbook":"3.2.3","description":"Onepiece 프로젝트 개발 문서 - DevLog, Planning, System Review"},"file":{"path":"DevLog/AgentLog/dopple/251119.md","mtime":"2025-11-30T23:55:33.988Z","type":"markdown"},"gitbook":{"version":"6.1.4","time":"2025-11-30T23:56:07.060Z"},"basePath":"../../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"dopple - 2025-11-30","level":"3.1","depth":1,"next":{"title":"dopple - 2025-11-23","level":"3.2","depth":1,"path":"DevLog/AgentLog/dopple/251123.md","ref":"DevLog/AgentLog/dopple/251123.md","articles":[]},"previous":{"title":"시작하기","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-comscore","github","collapsible-menu","back-to-top-button","search-plus","expandable-chapters-small","page-toc-button","-anchor-navigation-ex","honkit-plugin-mermaid","code","alerts","emphasize","klipse","-lunr","-search","-sharing"],"root":".","styles":{"website":"styles/website.css"},"pluginsConfig":{"collapsible-menu":{},"emphasize":{"style":"yellow"},"github":{"url":"https://github.com/doppleddiggong/Onepiece"},"code":{"copyButtons":true},"honkit-plugin-mermaid":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"printLog":false,"multipleH1":false,"mode":"float","float":{"showLevelIcon":false,"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right"},"pageTop":{"showLevelIcon":false,"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right"}},"theme-comscore":{"showLevel":true},"page-toc-button":{"maxTocDepth":3,"minTocSize":2},"back-to-top-button":{},"alerts":{"info":{"label":"정보","icon":"fa fa-info-circle","className":"info"},"warning":{"label":"주의","icon":"fa fa-exclamation-triangle","className":"warning"},"danger":{"label":"위험","icon":"fa fa-times-circle","className":"danger"},"tip":{"label":"팁","icon":"fa fa-lightbulb-o","className":"tip"}},"expandable-chapters-small":{},"klipse":{"myConfigKey":"it's the default value"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"search-plus":{}},"theme":"default","author":"DoppledDiggong Team","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Onepiece Development Documentation","language":"ko","links":{"sidebar":{"GitHub Repository":"https://github.com/doppleddiggong/Onepiece","Doxygen API Docs":"https://doppleddiggong.github.io/Onepiece/doxygen/"}},"gitbook":"3.2.3","description":"Onepiece 프로젝트 개발 문서 - DevLog, Planning, System Review"},"file":{"path":"DevLog/AgentLog/dopple/251130.md","mtime":"2025-11-30T23:55:33.988Z","type":"markdown"},"gitbook":{"version":"6.1.4","time":"2025-11-30T23:56:07.060Z"},"basePath":"../../..","book":{"language":""}});
         });
     </script>
 </div>
