@@ -90,7 +90,22 @@ public:
 
 	UFUNCTION()
 	void OnRep_HoldingOwner();
-	
+
+	/**
+	 * @brief 픽업 상태 플래그 (복제됨)
+	 * @details [문제] 기존에는 복제되지 않아 ConveyorBelt 등 다른 시스템과 상태 불일치 발생
+	 *          [해결] ReplicatedUsing으로 복제하여 모든 클라이언트에서 동일한 상태 유지
+	 */
+	UPROPERTY(ReplicatedUsing=OnRep_IsPickedUp, BlueprintReadOnly, Category = "Interaction")
+	bool bIsPickedUp = false;
+
+	/**
+	 * @brief bIsPickedUp 복제 시 호출되는 콜백
+	 * @details 픽업/드롭 상태 변화 시 Outline, Widget 등 비주얼 동기화
+	 */
+	UFUNCTION()
+	void OnRep_IsPickedUp();
+
 	// 현재 들고 있는 상태인지 확인
 	// BlueprintPure : 값만 반환, 상태 변경 없을 때 사용
 	UFUNCTION(BlueprintPure, Category = "Interaction")
@@ -100,14 +115,24 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Interaction")
 	void PickUp(class AActor* NewHoldingOwner);
 
-	UFUNCTION(Server, Reliable)
+	/**
+	 * @brief [서버 RPC] 픽업 요청
+	 * @details [문제] 기존에는 Validation 없이 클라이언트 제공 NewHoldingOwner를 신뢰
+	 *          [해결] WithValidation 추가하여 거리, 소유권, 중복 픽업 검증
+	 */
+	UFUNCTION(Server, Reliable, WithValidation)
 	void Server_PickUp(class AActor* NewHoldingOwner);
-	
+
 	// 물체 놓음
 	UFUNCTION(BlueprintCallable, Category = "Interaction")
 	void Drop();
 
-	UFUNCTION(Server, Reliable)
+	/**
+	 * @brief [서버 RPC] 드롭 요청
+	 * @details [문제] 기존에는 Validation 없이 드롭 허용
+	 *          [해결] WithValidation 추가하여 실제 픽업 상태 검증
+	 */
+	UFUNCTION(Server, Reliable, WithValidation)
 	void Server_Drop();
 
 	// 디버그 정보 표시 (타겟팅 중일 때)
@@ -140,10 +165,10 @@ protected:
 	// Internal
 	// ========================================
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Interaction")
-	bool bIsPickedUp = false;
-
+	/** 원래 물리 시뮬레이션 상태 (드롭 시 복원용) */
 	bool bOriginalSimulatePhysics = false;
+
+	/** 원래 충돌 타입 (드롭 시 복원용) */
 	TEnumAsByte<ECollisionEnabled::Type> OriginalCollisionType;
 
 protected:

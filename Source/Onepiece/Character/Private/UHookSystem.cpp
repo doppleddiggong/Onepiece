@@ -12,6 +12,8 @@
 #include "UMainWidget.h"
 #include "GameLogging.h"
 #include "DrawDebugHelpers.h"
+#include "InteractableComponent.h"
+#include "luggage.h"
 #include "Math/RotationMatrix.h"
 #include "Components/StaticMeshComponent.h"
 #include "Engine/StaticMesh.h"
@@ -154,29 +156,86 @@ void UHookSystem::TryHook()
 	ServerTryHook(HitResult);
 }
 
-void UHookSystem::ServerTryHook_Implementation(const FHitResult& HitResult)
+/**
+ * @brief [서버 RPC] 훅 요청 처리
+ * @details [문제] 기존에는 클라이언트가 제공한 HitResult를 재검증 없이 신뢰
+ *                 - 시야 밖/거리 밖 오브젝트를 훅할 수 있는 치트 가능
+ *                 - 여러 플레이어가 동시에 같은 Luggage를 훅할 수 있었음
+ *          [해결] 서버에서 5가지 검증 수행
+ *                 1. 서버에서 라인트레이스 재실행
+ *                 2. 훅 가능한 오브젝트인지 확인 (HookComponent)
+ *                 3. 거리 검증
+ *                 4. 픽업 중인 오브젝트는 훅 불가
+ *                 5. 이미 다른 플레이어가 훅 중인 오브젝트는 훅 불가
+ */
+void UHookSystem::ServerTryHook_Implementation(const FHitResult& ClientHint)
 {
-	// 서버에서만 실행
+	// 서버 권한 체크
 	if (!OwnerPlayer || !OwnerPlayer->HasAuthority())
 	{
+		PRINTLOG(TEXT("ServerTryHook: No authority"));
 		return;
 	}
 
-	// 다시 한번 유효성 검사 (보안)
-	AActor* HitActor = HitResult.GetActor();
+	// [개선 1] 서버에서 라인트레이스 재실행
+	FHitResult ServerHit;
+	if (!PerformServerLineTrace(ServerHit))
+	{
+		PRINTLOG(TEXT("ServerTryHook: Server-side line trace failed"));
+		return;
+	}
+
+	// [개선 2] 유효성 검증
+	AActor* HitActor = ServerHit.GetActor();
 	if (!HitActor)
 	{
+		PRINTLOG(TEXT("ServerTryHook: No actor hit"));
 		return;
 	}
 
 	UHookComponent* HookComp = HitActor->FindComponentByClass<UHookComponent>();
 	if (!HookComp || !HookComp->bIsHookable)
 	{
+		PRINTLOG(TEXT("ServerTryHook: Target is not hookable"));
 		return;
 	}
 
-	// Hook 시작
-	StartHook(HitResult);
+	// [개선 3] 거리 검증
+	float Distance = FVector::Dist(OwnerPlayer->GetActorLocation(), HitActor->GetActorLocation());
+	if (Distance > MaxHookDistance)
+	{
+		PRINTLOG(TEXT("ServerTryHook: Target too far! Distance: %.2f, Max: %.2f"), Distance, MaxHookDistance);
+		return;
+	}
+
+	// [개선 4] Luggage인 경우 추가 검증
+	Aluggage* Luggage = Cast<Aluggage>(HitActor);
+	if (Luggage)
+	{
+		// 픽업 중인 Luggage는 훅 불가
+		if (Luggage->InteractableComp && Luggage->InteractableComp->IsPickedUp())
+		{
+			PRINTLOG(TEXT("ServerTryHook: Luggage is already picked up"));
+			return;
+		}
+
+		// [개선 5] 이미 다른 플레이어가 훅 중인지 확인
+		if (Luggage->bIsBeingHooked && Luggage->HookedBy != OwnerPlayer)
+		{
+			PRINTLOG(TEXT("ServerTryHook: Luggage is already hooked by %s"),
+				Luggage->HookedBy ? *Luggage->HookedBy->GetName() : TEXT("Unknown"));
+			return;
+		}
+
+		// 훅 플래그 설정 (복제됨)
+		Luggage->bIsBeingHooked = true;
+		Luggage->HookedBy = OwnerPlayer;
+
+		PRINTLOG(TEXT("ServerTryHook: %s set as hooked by %s"), *Luggage->GetName(), *OwnerPlayer->GetName());
+	}
+
+	// Hook 시작 (서버 HitResult 사용)
+	StartHook(ServerHit);
 }
 
 void UHookSystem::StartHook(const FHitResult& Hit)
@@ -191,6 +250,23 @@ void UHookSystem::StartHook(const FHitResult& Hit)
 	// 발사 상태로 전환
 	HookState = EHookState::Launching;
 	HookedTarget = TargetActor;
+
+	// 물리 객체인 경우 물리 및 충돌 끄기 (Hook 중에는 방해 없이 부드럽게 이동)
+	UPrimitiveComponent* RootPrimitive = Cast<UPrimitiveComponent>(HookedTarget->GetRootComponent());
+	if (RootPrimitive)
+	{
+		// 원래 충돌 상태 저장
+		OriginalCollisionEnabled = RootPrimitive->GetCollisionEnabled();
+
+		// 물리와 충돌 모두 끄기
+		if (RootPrimitive->IsSimulatingPhysics())
+		{
+			RootPrimitive->SetSimulatePhysics(false);
+		}
+		RootPrimitive->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+
+		PRINTLOG(TEXT("UHookSystem: Physics and collision disabled for %s"), *HookedTarget->GetName());
+	}
 
 	// 발사 위치 및 방향 설정
 	HookProjectileLocation = OwnerPlayer->GetActorLocation();
@@ -211,6 +287,10 @@ void UHookSystem::StartHook(const FHitResult& Hit)
 	PRINTLOG(TEXT("UHookSystem: Hook launched toward %s"), *HookedTarget->GetName());
 }
 
+/**
+ * @brief 훅 해제
+ * @details [개선] 훅 플래그(bIsBeingHooked, HookedBy) 해제 추가
+ */
 void UHookSystem::ReleaseHook()
 {
 	// 클라이언트에서 호출 시 Server에 요청
@@ -223,9 +303,37 @@ void UHookSystem::ReleaseHook()
 	// 서버에서 실행
 	if (HookState != EHookState::Idle)
 	{
-		if (HookedTarget)
+		// [개선] Luggage 훅 플래그 해제
+		if (HookedTarget && IsValid(HookedTarget))
 		{
-			PRINTLOG(TEXT("UHookSystem: Hook released from %s"), *HookedTarget->GetName());
+			Aluggage* Luggage = Cast<Aluggage>(HookedTarget);
+			if (Luggage)
+			{
+				// 훅 플래그 해제 (복제됨)
+				Luggage->bIsBeingHooked = false;
+				Luggage->HookedBy = nullptr;
+
+				PRINTLOG(TEXT("ReleaseHook: %s hook flags cleared"), *Luggage->GetName());
+			}
+
+			// 물리와 충돌 복원
+			UPrimitiveComponent* RootPrimitive = Cast<UPrimitiveComponent>(HookedTarget->GetRootComponent());
+			if (RootPrimitive)
+			{
+				// 속도를 초기화한 후 물리 켜기 (튕겨나가는 것 방지)
+				RootPrimitive->SetPhysicsLinearVelocity(FVector::ZeroVector, false);
+				RootPrimitive->SetPhysicsAngularVelocityInDegrees(FVector::ZeroVector, false);
+
+				// 충돌 복원
+				RootPrimitive->SetCollisionEnabled(OriginalCollisionEnabled);
+
+				// 물리 복원
+				RootPrimitive->SetSimulatePhysics(true);
+
+				PRINTLOG(TEXT("ReleaseHook: Physics and collision re-enabled for %s"), *HookedTarget->GetName());
+			}
+
+			PRINTLOG(TEXT("ReleaseHook: Hook released from %s"), *HookedTarget->GetName());
 		}
 
 		HookState = EHookState::Idle;
@@ -249,6 +357,10 @@ void UHookSystem::ServerReleaseHook_Implementation()
 	ReleaseHook();
 }
 
+/**
+ * @brief 훅 타겟 감지
+ * @details [개선] 타겟이 바뀔 때 이전 타겟의 Outline을 끔
+ */
 void UHookSystem::DetectHookTarget()
 {
 	if (!OwnerPlayer || !OwnerPlayer->InteractionSystem)
@@ -264,13 +376,29 @@ void UHookSystem::DetectHookTarget()
 			UHookComponent* HookComp = HitActor->FindComponentByClass<UHookComponent>();
 			if (HookComp && HookComp->bIsHookable)
 			{
+				// [개선] 타겟이 바뀌면 이전 타겟의 Outline 끄기
+				if (CurHookTarget_Luggage && CurHookTarget != HitActor)
+				{
+					CurHookTarget_Luggage->OutlineOff();
+					PRINTLOG(TEXT("DetectHookTarget: Previous target %s OutlineOff"), *CurHookTarget_Luggage->GetName());
+				}
+
 				CurHookTarget = HitActor;
+				CurHookTarget_Luggage = Cast<Aluggage>(HitActor);
 				return;
 			}
 		}
 	}
 
+	// [개선] 타겟을 잃었을 때 이전 타겟의 Outline 끄기
+	if (CurHookTarget_Luggage)
+	{
+		CurHookTarget_Luggage->OutlineOff();
+		PRINTLOG(TEXT("DetectHookTarget: Lost target %s, OutlineOff"), *CurHookTarget_Luggage->GetName());
+	}
+
 	CurHookTarget = nullptr;
+	CurHookTarget_Luggage = nullptr;
 }
 
 
@@ -291,7 +419,7 @@ bool UHookSystem::PerformCenterLineTrace(FHitResult& OutHit)
 	FVector CameraLocation = CameraManager->GetCameraLocation();
 	FVector CameraForward = CameraManager->GetCameraRotation().Vector();
 
-	// 레이 트레이스 시작/끝 지점                                                                                                                                                    
+	// 레이 트레이스 시작/끝 지점
 	FVector TraceStart = CameraLocation;
 	FVector TraceEnd = TraceStart + (CameraForward * InteractionDistance);
 
@@ -313,6 +441,75 @@ bool UHookSystem::PerformCenterLineTrace(FHitResult& OutHit)
 	return bHit;
 }
 
+/**
+ * @brief [서버 전용] 서버에서 라인트레이스 재실행
+ * @details [문제] 기존에는 클라이언트가 제공한 HitResult를 신뢰하여
+ *                 시야 밖/거리 밖 오브젝트를 훅할 수 있는 치트 가능
+ *          [해결] 서버 기준 카메라 위치/방향으로 직접 라인트레이스 실행
+ */
+bool UHookSystem::PerformServerLineTrace(FHitResult& OutHit)
+{
+	if (!OwnerPlayer)
+	{
+		PRINTLOG(TEXT("PerformServerLineTrace: OwnerPlayer is null"));
+		return false;
+	}
+
+	// 플레이어 컨트롤러 가져오기
+	APlayerController* PC = Cast<APlayerController>(OwnerPlayer->GetController());
+	if (!PC)
+	{
+		PRINTLOG(TEXT("PerformServerLineTrace: PlayerController is null"));
+		return false;
+	}
+
+	// 서버 기준 카메라 위치/방향 사용
+	FVector CameraLocation;
+	FRotator CameraRotation;
+	PC->GetPlayerViewPoint(CameraLocation, CameraRotation);
+
+	FVector TraceStart = CameraLocation;
+	FVector TraceEnd = TraceStart + (CameraRotation.Vector() * InteractionDistance);
+
+	// LineTrace 실행
+	bool bHit = GetWorld()->LineTraceSingleByChannel(
+		OutHit, TraceStart, TraceEnd, ECC_Visibility
+	);
+
+	// 디버그 라인 (서버)
+	if (bShowDebugInfo)
+	{
+		DrawDebugLine(
+			GetWorld(), TraceStart, TraceEnd,
+			bHit ? FColor::Green : FColor::Red,
+			false, 1.0f, 0, 2.0f
+		);
+
+		if (bHit)
+		{
+			DrawDebugSphere(
+				GetWorld(), OutHit.Location,
+				20.0f, 8,
+				FColor::Yellow,
+				false, 1.0f, 0, 2.0f
+			);
+		}
+	}
+
+	if (bHit)
+	{
+		PRINTLOG(TEXT("PerformServerLineTrace: Hit %s at distance %.2f"),
+			*OutHit.GetActor()->GetName(),
+			FVector::Dist(CameraLocation, OutHit.Location));
+	}
+
+	return bHit;
+}
+
+/**
+ * @brief 훅 타겟 UI 업데이트
+ * @details [개선] Outline은 DetectHookTarget에서 관리하므로 중복 호출 제거
+ */
 void UHookSystem::UpdateHookTargetUI()
 {
 	if (!OwnerPlayer)
@@ -325,23 +522,34 @@ void UHookSystem::UpdateHookTargetUI()
 		MainWidget->UpdateHookIndicatorState(CurHookTarget != nullptr);
 	}
 
-	// 디버그 표시
-	if (bShowDebugInfo && CurHookTarget)
+	if ( CurHookTarget )
 	{
-		FVector TargetLocation = CurHookTarget->GetActorLocation();
-		DrawDebugSphere(
-			GetWorld(),
-			TargetLocation,
-			50.0f,
-			12,
-			FColor::Yellow,
-			false,
-			0.0f,
-			0,
-			2.0f
-		);
+		// [개선] OutlineOn은 DetectHookTarget에서 타겟 감지 시 이미 호출됨
+		// 여기서는 현재 타겟에 대해서만 켜주면 됨
+		if ( CurHookTarget_Luggage != nullptr )
+		{
+			CurHookTarget_Luggage->OutlineOn();
+		}
+
+		// 디버그 표시
+		if (bShowDebugInfo)
+		{
+			FVector TargetLocation = CurHookTarget->GetActorLocation();
+			DrawDebugSphere(
+				GetWorld(),
+				TargetLocation,
+				50.0f,
+				12,
+				FColor::Yellow,
+				false,
+				0.0f,
+				0,
+				2.0f
+			);
+		}
 	}
 }
+
 
 void UHookSystem::UpdateHookLaunching(float DeltaTime)
 {
@@ -417,12 +625,6 @@ void UHookSystem::UpdateHookPulling(float DeltaTime)
 		return;
 	}
 
-	// 서버 권한 체크 - Actor 위치 변경은 서버에서만
-	if (!OwnerPlayer->HasAuthority())
-	{
-		return;
-	}
-
 	// 플레이어 앞 목표 위치 계산
 	FVector PlayerLocation = OwnerPlayer->GetActorLocation();
 	FVector PlayerForward = OwnerPlayer->GetActorForwardVector();
@@ -431,27 +633,36 @@ void UHookSystem::UpdateHookPulling(float DeltaTime)
 	// 현재 대상 위치
 	FVector CurrentLocation = HookedTarget->GetActorLocation();
 
-	// 목표 위치까지의 거리 확인
-	float DistanceToTarget = FVector::Dist(CurrentLocation, TargetLocation);
+	// 목표 위치의 높이를 현재 Luggage 높이로 유지 (바닥에 떨어지도록)
+	TargetLocation.Z = CurrentLocation.Z;
 
-	// 너무 가까우면 Hook 완료
-	if (DistanceToTarget < CompleteThreshold)
+	// 서버에서만 실제 위치 업데이트 및 완료 체크
+	if (OwnerPlayer->HasAuthority())
 	{
-		PRINTLOG(TEXT("UHookSystem: Hook completed, target reached destination"));
-		ReleaseHook();
-		return;
+		// 목표 위치까지의 거리 확인
+		float DistanceToTarget = FVector::Dist(CurrentLocation, TargetLocation);
+
+		// 너무 가까우면 Hook 완료
+		if (DistanceToTarget < CompleteThreshold)
+		{
+			// 완료 전 정확한 목표 위치에 배치 (튕겨나가는 것 방지)
+			HookedTarget->SetActorLocation(TargetLocation);
+			PRINTLOG(TEXT("UHookSystem: Hook completed, placed at exact target location"));
+			ReleaseHook();
+			return;
+		}
+
+		// 부드럽게 위치 보간 (물리는 이미 꺼진 상태)
+		FVector NewLocation = FMath::VInterpTo(
+			CurrentLocation,
+			TargetLocation,
+			DeltaTime,
+			HookSpeed
+		);
+
+		// 위치 업데이트 (서버에서만 실행됨)
+		HookedTarget->SetActorLocation(NewLocation);
 	}
-
-	// FMath::VInterpTo로 부드럽게 이동
-	FVector NewLocation = FMath::VInterpTo(
-		CurrentLocation,
-		TargetLocation,
-		DeltaTime,
-		HookSpeed
-	);
-
-	// 위치 업데이트 (서버에서만 실행됨)
-	HookedTarget->SetActorLocation(NewLocation);
 
 	// 디버그 표시
 	if (bShowDebugInfo)
@@ -532,21 +743,21 @@ void UHookSystem::UpdateCable()
 		3.0f
 	);
 
-	// 발사체 위치 표시 (Launching 중)
-	if (HookState == EHookState::Launching)
-	{
-		DrawDebugSphere(
-			GetWorld(),
-			HookProjectileLocation,
-			15.0f,
-			8,
-			FColor::Red,
-			false,
-			0.0f,
-			0,
-			2.0f
-		);
-	}
+	// // 발사체 위치 표시 (Launching 중)
+	// if (HookState == EHookState::Launching)
+	// {
+	// 	DrawDebugSphere(
+	// 		GetWorld(),
+	// 		HookProjectileLocation,
+	// 		15.0f,
+	// 		8,
+	// 		FColor::Red,
+	// 		false,
+	// 		0.0f,
+	// 		0,
+	// 		2.0f
+	// 	);
+	// }
 }
 
 void UHookSystem::UpdateCableMeshTransform(const FVector& CableStart, const FVector& CableEnd)

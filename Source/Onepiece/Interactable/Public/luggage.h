@@ -40,7 +40,32 @@ public:
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
 	TObjectPtr<class UHookComponent> HookComp;
-	
+
+	//--------------------------------------------------------------//
+	// Hook State (for preventing duplicate hooks)
+	//--------------------------------------------------------------//
+
+	/**
+	 * @brief 훅 중 플래그 (복제됨)
+	 * @details [문제] 기존에는 여러 플레이어가 동시에 같은 Luggage를 훅할 수 있었음
+	 *          [해결] bIsBeingHooked 플래그로 중복 훅 방지
+	 */
+	UPROPERTY(ReplicatedUsing=OnRep_IsBeingHooked, BlueprintReadOnly, Category = "Hook")
+	bool bIsBeingHooked = false;
+
+	/**
+	 * @brief 현재 이 Luggage를 훅하고 있는 플레이어
+	 * @details 중복 훅 방지 및 디버깅용
+	 */
+	UPROPERTY(Replicated, BlueprintReadOnly, Category = "Hook")
+	TObjectPtr<AActor> HookedBy = nullptr;
+
+	/**
+	 * @brief bIsBeingHooked 복제 시 호출되는 콜백
+	 * @details 훅 상태 변화 시 비주얼 피드백 (Outline 등)
+	 */
+	UFUNCTION()
+	void OnRep_IsBeingHooked();
 
 protected:
 	//--------------------------------------------------------------//
@@ -87,7 +112,11 @@ public:
 	void OutlineOn();
 	UFUNCTION(BlueprintCallable, Category = "Outline")
 	void OutlineOff();
-	
+
+private:
+	void UpdateWidget();
+	bool bWidgetInitialized = false;
+
 // public:
 // 	// InfoWidget
 // 	void InfoWidgetOn();
@@ -116,6 +145,5 @@ public:
 	/// @brief 서버에 캐리어 선택을 알립니다.
 	/// @param Player [in] 선택한 플레이어의 PlayerState
 	UFUNCTION(Server, Reliable, WithValidation)
-	void ServerNotifySelection(class APlayerState* Player);
-	
+	void ServerNotifySelection(class APlayerState* Player);	
 };

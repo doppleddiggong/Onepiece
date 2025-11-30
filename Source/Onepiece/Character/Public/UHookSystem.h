@@ -80,7 +80,15 @@ public:
 	bool HasHookTarget() const { return CurHookTarget != nullptr; }
 
 	bool PerformCenterLineTrace(FHitResult& OutHit);
-	
+
+protected:
+	/**
+	 * @brief [서버 전용] 서버에서 라인트레이스 재실행
+	 * @details [문제] 기존에는 클라이언트가 제공한 HitResult를 신뢰
+	 *          [해결] 서버에서 직접 라인트레이스를 재실행하여 검증
+	 */
+	bool PerformServerLineTrace(FHitResult& OutHit);
+
 protected:
 	/** 훅 타겟 감지 */
 	void DetectHookTarget();
@@ -120,7 +128,7 @@ public:
 
 	/** 목표 거리 (플레이어 앞 얼마나 떨어진 위치로 끌어올지) */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Hook|Pull")
-	float DesiredDistance = 200.0f;
+	float DesiredDistance = 100.0f;
 
 	/** LineTrace 최대 거리 */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Interaction")
@@ -128,7 +136,7 @@ public:
 	
 	/** Hook 완료 판정 거리 */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Hook|Pull")
-	float CompleteThreshold = 50.0f;
+	float CompleteThreshold = 100.0f;
 
 	/** 디버그 표시 여부 */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Debug")
@@ -152,6 +160,17 @@ protected:
 	TObjectPtr<AActor> CurHookTarget;
 
 	UPROPERTY()
+	TObjectPtr<class Aluggage> CurHookTarget_Luggage;
+
+	/**
+	 * @brief 이전 프레임의 타겟 Luggage (Outline 관리용)
+	 * @details [문제] 타겟이 바뀔 때 이전 타겟의 OutlineOff가 호출되지 않음
+	 *          [해결] 이전 타겟을 추적하여 타겟 변경 시 OutlineOff 호출
+	 */
+	UPROPERTY()
+	TObjectPtr<class Aluggage> PrevHookTarget_Luggage;
+	
+	UPROPERTY()
 	TObjectPtr<class UStaticMeshComponent> CableMesh;
 
 	UPROPERTY()
@@ -172,6 +191,9 @@ protected:
 	/** Cylinder 기반 Cable Mesh 원래 크기 */
 	float CableMeshBaseLength = 100.0f;
 	float CableMeshBaseRadius = 1.0f;
+
+	/** Hook 전 원래 Collision 상태 저장 */
+	TEnumAsByte<ECollisionEnabled::Type> OriginalCollisionEnabled;
 
 	/** Cable Mesh 변환 보조 */
 	void UpdateCableMeshTransform(const FVector& CableStart, const FVector& CableEnd);

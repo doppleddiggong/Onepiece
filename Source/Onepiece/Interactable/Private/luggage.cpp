@@ -51,8 +51,13 @@ Aluggage::Aluggage()
 	// 무게 설정
 	Mesh1Comp->SetMassOverrideInKg(NAME_None, 5.f, true);
 
+	// 물리 복제 설정
+	Mesh1Comp->SetIsReplicated(true);
+
 	// Replication
 	bReplicates = true;
+	SetNetUpdateFrequency(100.0f);		// 높은 업데이트 빈도로 부드러운 네트워크 동기화
+	SetMinNetUpdateFrequency(33.0f);	// 최소 30fps 업데이트 보장
 
 	WidgetComp = CreateDefaultSubobject<UWidgetComponent>(TEXT("WidgetComp"));
 	ConstructorHelpers::FClassFinder<ULuggageInfoWidget> boxWidgetRef(LUGGAGE_INTERACT_WIDGET_PATH);
@@ -78,11 +83,21 @@ void Aluggage::BeginPlay()
 void Aluggage::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-	
+
+	// 위젯이 아직 초기화되지 않았고, ColorIdx와 PatternIdx가 유효하다면
+	if (!bWidgetInitialized && ColorIdx >= 0 && PatternIdx >= 0)
+	{
+		if (auto InfoWidget = Cast<ULuggageInfoWidget>(WidgetComp->GetWidget()))
+		{
+			InfoWidget->InitLuggage(Pattern, Color);
+			bWidgetInitialized = true; // 한 번만 실행
+		}
+	}
+
 	// BillboardInfoWidget();
 
 	// Pattern 이름을 luggage 위에 표시
-	
+
 	// if (!Pattern.IsEmpty())
 	// {
 	// 	FVector TextLocation = GetActorLocation() + FVector(0, 0, 100);
@@ -96,6 +111,13 @@ void Aluggage::GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLi
 
 	DOREPLIFETIME(Aluggage, ColorIdx);
 	DOREPLIFETIME(Aluggage, PatternIdx);
+
+	/**
+	 * [문제] 기존에는 여러 플레이어가 동시에 같은 Luggage를 훅할 수 있었음
+	 * [해결] bIsBeingHooked와 HookedBy 복제로 중복 훅 방지
+	 */
+	DOREPLIFETIME(Aluggage, bIsBeingHooked);
+	DOREPLIFETIME(Aluggage, HookedBy);
 }
 
 void Aluggage::SetLuggageInfo(int32 InIdx, FString InColor, FString InPattern)
@@ -103,11 +125,6 @@ void Aluggage::SetLuggageInfo(int32 InIdx, FString InColor, FString InPattern)
 	SpawnIdx = InIdx;
 	Color = InColor;
 	Pattern = InPattern;
-
-	if ( auto InfoWidget = Cast<ULuggageInfoWidget>(WidgetComp->GetWidget()))
-	{
-		InfoWidget->InitLuggage(Pattern, Color);
-	}
 }
 
 void Aluggage::OnRep_ColorIdx()
@@ -120,6 +137,28 @@ void Aluggage::OnRep_PatternIdx()
 	ApplyPatternToMesh(PatternIdx);
 }
 
+/**
+ * @brief bIsBeingHooked 복제 시 호출되는 콜백
+ * @details [문제] 기존에는 훅 상태 변화 시 비주얼 피드백이 없었음
+ *          [해결] 훅 중일 때 Outline 표시로 시각적 피드백 제공
+ */
+void Aluggage::OnRep_IsBeingHooked()
+{
+	if (bIsBeingHooked)
+	{
+		// 훅 중 - Outline 켜기
+		OutlineOn();
+		PRINTLOG(TEXT("OnRep_IsBeingHooked: %s is being hooked by %s"),
+			*GetName(), HookedBy ? *HookedBy->GetName() : TEXT("Unknown"));
+	}
+	else
+	{
+		// 훅 해제 - Outline 상태는 InteractableComponent나 다른 시스템이 관리
+		// 여기서는 명시적으로 끄지 않음 (픽업 상태 등을 고려)
+		PRINTLOG(TEXT("OnRep_IsBeingHooked: %s hook released"), *GetName());
+	}
+}
+
 void Aluggage::ApplyColorToMesh(int32 InColorIdx)
 {
 	ColorIdx = InColorIdx;
@@ -127,7 +166,11 @@ void Aluggage::ApplyColorToMesh(int32 InColorIdx)
 	FColorData ColorData;
 	if (UGameDataManager::Get(GetWorld())->GetColorData(InColorIdx, ColorData))
 	{
-		FLinearColor LinearColor = ColorData.GetLinearColor();
+		// Color 변수 설정 (모든 클라이언트에서 데이터 테이블에서 가져옴)
+		Color = ColorData.Desc;
+
+		// if ( auto InfoWidget = Cast<ULuggageInfoWidget>(WidgetComp->GetWidget()))
+		// 	InfoWidget->UpdateType1Data(ColorData.Desc);
 
 		UMaterialInterface* OriginalMaterial = Mesh3Comp->GetMaterial(0);
 		if (OriginalMaterial)
@@ -136,7 +179,7 @@ void Aluggage::ApplyColorToMesh(int32 InColorIdx)
 			if (NewMaterial && Mesh3Comp)
 			{
 				// BaseColorFactor로 변경
-				NewMaterial->SetVectorParameterValue(FName("BaseColorFactor"), LinearColor);
+				NewMaterial->SetVectorParameterValue(FName("BaseColorFactor"), ColorData.GetLinearColor());
 				Mesh3Comp->SetMaterial(0, NewMaterial);
 			}
 		}
@@ -149,19 +192,20 @@ void Aluggage::ApplyPatternToMesh(int32 InPatternIdx)
 
 	// 데칼 바꾸기
 
-	FReadData ReadData;	
+	FReadData ReadData;
 	UGameDataManager::Get(GetWorld())->GetReadData(InPatternIdx, ReadData);
 
+	// Pattern 변수 설정 (모든 클라이언트에서 데이터 테이블에서 가져옴)
+	Pattern = ReadData.Word;
+
+	// if ( auto InfoWidget = Cast<ULuggageInfoWidget>(WidgetComp->GetWidget()))
+	// 	InfoWidget->UpdateType2Data(ReadData.Word);
 
 	UTexture2D* LoadedTexture = nullptr;
 	if (ReadData.Texture.IsValid())
-	{
 		LoadedTexture = ReadData.Texture.Get();
-	}
 	else
-	{
 		LoadedTexture = ReadData.Texture.LoadSynchronous();
-	}
 
 	if ( UMaterialInterface* OriginalMaterial = Mesh2Comp->GetMaterial(0) )
 	{
@@ -175,6 +219,16 @@ void Aluggage::ApplyPatternToMesh(int32 InPatternIdx)
 	}
 }
 
+
+void Aluggage::UpdateWidget()
+{
+	// Tick에서 호출되는 지연 초기화 로직으로 대체됨
+	// 필요시 수동으로 위젯을 업데이트할 때만 사용
+	if (auto InfoWidget = Cast<ULuggageInfoWidget>(WidgetComp->GetWidget()))
+	{
+		InfoWidget->InitLuggage(Pattern, Color);
+	}
+}
 
 void Aluggage::OutlineOn()
 {
