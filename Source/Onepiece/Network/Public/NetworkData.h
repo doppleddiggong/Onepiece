@@ -81,6 +81,7 @@ namespace RequestAPI
     static FString users_register = FString("/users/register");
     static FString users_token = FString("/users/token");
     static FString users_me = FString("/users/me");
+	static FString users_host = FString("/users/host");
 
     /// @brief Scenario 조회 엔드포인트입니다. GET /scenario/{index}/{dificulity}/{lang}
     static FString scenario = FString("/scenario");
@@ -497,6 +498,21 @@ struct FResponseUserMe
 	/// @brief 디버그 로그에 응답 내용을 출력합니다.
 	void PrintData() const;
 };
+
+
+DECLARE_DELEGATE_TwoParams(FResponseUserHostDelegate, FResponseUserHost&, bool);
+USTRUCT(BlueprintType)
+struct FResponseUserHost
+{
+	GENERATED_BODY()
+
+	/// @brief HTTP 응답을 파싱해 상태 정보를 갱신합니다.
+	void SetFromHttpResponse(const TSharedPtr<class IHttpResponse, ESPMode::ThreadSafe>& Response);
+
+	/// @brief 디버그 로그에 응답 내용을 출력합니다.
+	void PrintData() const;
+};
+
 
 
 // =================================================================================

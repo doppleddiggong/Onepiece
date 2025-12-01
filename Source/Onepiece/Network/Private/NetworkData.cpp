@@ -164,6 +164,26 @@ void FResponseUserMe::PrintData() const
 	NETWORK_LOG( TEXT("[RES] %s"), *OutputString);
 }
 
+
+void FResponseUserHost::SetFromHttpResponse(const TSharedPtr<IHttpResponse, ESPMode::ThreadSafe>& Response)
+{
+	return;
+}
+
+void FResponseUserHost::PrintData() const
+{
+	FString OutputString;
+	FJsonObjectConverter::UStructToJsonObjectString(
+		*this,
+		OutputString,
+		0,
+		0
+	);
+	NETWORK_LOG( TEXT("[RES] %s"), *OutputString);
+}
+
+
+
 // =================================================================================
 // FResponseScenario
 // =================================================================================

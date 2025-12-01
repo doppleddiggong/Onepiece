@@ -73,6 +73,20 @@ void ANetworkTesterActor::RequestUserMe()
     }
 }
 
+void ANetworkTesterActor::RequestUserHost()
+{
+    if (auto KLingoNetwork = UKLingoNetworkSystem::Get(GetWorld()))
+    {
+        KLingoNetwork->RequestUserHost(
+            FResponseUserHostDelegate::CreateUObject(this, &ANetworkTesterActor::OnResponseUserHost)
+        );
+    }
+    else
+    {
+        PRINTLOG(TEXT("UKLingoNetworkSystem not found!"));
+    }
+}
+
 void ANetworkTesterActor::OnResponseUserRegister(FResponseUserRegister& ResponseData, bool bWasSuccessful)
 {
     if (bWasSuccessful)
@@ -112,6 +126,21 @@ void ANetworkTesterActor::OnResponseUserMe(FResponseUserMe& ResponseData, bool b
         PRINTLOG(TEXT("--- User Me FAILED ---"));
     }
 }
+
+void ANetworkTesterActor::OnResponseUserHost(FResponseUserHost& ResponseData, bool bWasSuccessful)
+{
+    if (bWasSuccessful)
+    {
+        PRINTLOG(TEXT("--- User Me SUCCESS ---"));
+        ResponseData.PrintData();
+    }
+    else
+    {
+        PRINTLOG(TEXT("--- User Me FAILED ---"));
+    }
+}
+
+
 
 // =============================================================================
 // New API Tests
