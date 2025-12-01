@@ -18,32 +18,28 @@
 #include "Serialization/JsonWriter.h"
 
 
+FString FPhonemeData::ToRichTextString(int32 Index) const
+{
+	return FString::Printf(TEXT("<a id=\"%d\" content=\"link\">%s</> "), Index, *Kor);
+}
 
-
-
-TArray<FWordData> FWordData::GetSplitData() const
+TArray<FPhonemeData> FWordData::GetPhonemeData() const
 {
 	TArray<FString> KorWords;
 	Kor.ParseIntoArray(KorWords, TEXT(" "), true);
 
-	TArray<FString> EngWords;
-	Eng.ParseIntoArray(EngWords, TEXT(" "), true);
-
 	TArray<FString> PronWords;
 	Pronunciation.ParseIntoArray(PronWords, TEXT(" "), true);
 
-	// FWordData 배열 생성
-	TArray<FWordData> WordDataArray;
-	int32 MaxCount = FMath::Max3(KorWords.Num(), EngWords.Num(), PronWords.Num());
+	TArray<FPhonemeData> WordDataArray;
 
-	for (int32 i = 0; i < MaxCount; ++i)
+	for (int32 i = 0; i < KorWords.Num(); ++i)
 	{
-		FWordData WordData;
-		WordData.Kor = i < KorWords.Num() ? KorWords[i] : TEXT("");
-		WordData.Eng = i < EngWords.Num() ? EngWords[i] : TEXT("");
-		WordData.Pronunciation = i < PronWords.Num() ? PronWords[i] : TEXT("");
+		FPhonemeData Data;
+		Data.Kor = i < KorWords.Num() ? KorWords[i] : TEXT("");
+		Data.Pronunciation = i < PronWords.Num() ? PronWords[i] : TEXT("");
 
-		WordDataArray.Add(WordData);
+		WordDataArray.Add(Data);
 	}
 
 	return WordDataArray;

@@ -64,7 +64,8 @@ public class Onepiece : ModuleRules
 		PrivateDependencyModuleNames.AddRange(new string[]
 		{
 			"CoffeeLibrary",
-			"LatteLibrary"
+			"LatteLibrary",
+			"HyperLinkPlugin"
 		});
 		
 		PublicIncludePaths.AddRange(new string[] {

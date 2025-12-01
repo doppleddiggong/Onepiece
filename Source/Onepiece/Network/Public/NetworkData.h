@@ -220,6 +220,21 @@ struct FPlayerInfo
 
 /// @brief 단어 데이터 구조체입니다.
 USTRUCT(BlueprintType)
+struct FPhonemeData
+{
+	GENERATED_BODY()
+
+	UPROPERTY(BlueprintReadWrite, Category = "Word")
+	FString Kor;
+
+	UPROPERTY(BlueprintReadWrite, Category = "Word")
+	FString Pronunciation;
+
+	FString ToRichTextString(int32 Index) const;
+};
+
+/// @brief 단어 데이터 구조체입니다.
+USTRUCT(BlueprintType)
 struct FWordData
 {
 	GENERATED_BODY()
@@ -233,7 +248,7 @@ struct FWordData
 	UPROPERTY(BlueprintReadWrite, Category = "Word")
 	FString Pronunciation;
 
-	TArray<FWordData> GetSplitData() const;	
+	TArray<FPhonemeData> GetPhonemeData() const;	
 };
 
 // =================================================================================
