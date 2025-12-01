@@ -1,12 +1,14 @@
 var classANetworkTesterActor =
 [
     [ "ANetworkTesterActor", "classANetworkTesterActor.html#add47c5b8d704c70533ebebc39066b9a1", null ],
+    [ "OnResponseInterviewHello", "classANetworkTesterActor.html#a190dab0d692f2bbc9b63f44b32644183", null ],
     [ "OnResponseOcrExtract", "classANetworkTesterActor.html#ac23b44a6599461d44c6335a9c641b5fb", null ],
     [ "OnResponseScenario", "classANetworkTesterActor.html#a7478bcc337e5700b97371a743a41bdb6", null ],
     [ "OnResponseSpeakingQuestions", "classANetworkTesterActor.html#a3ffbd32884d9184f60c106ef83015497", null ],
     [ "OnResponseUserMe", "classANetworkTesterActor.html#afb8a7bf0db529e76c4527c7c1d890571", null ],
     [ "OnResponseUserRegister", "classANetworkTesterActor.html#af85fc6f7a9ac286f04aa0027aa75462a", null ],
     [ "OnResponseUserToken", "classANetworkTesterActor.html#a3f925eef81e5fdc41ff8bb0e1fea9015", null ],
+    [ "RequestInterviewHello", "classANetworkTesterActor.html#ad2080955057d6f1cea28ba786c4de31d", null ],
     [ "RequestOcrExtract", "classANetworkTesterActor.html#a02ff1581891a931b644040b2fe7f5959", null ],
     [ "RequestScenario", "classANetworkTesterActor.html#ae951945fc42fe14ebc6ee5e40603fbfe", null ],
     [ "RequestSpeakingQuestions", "classANetworkTesterActor.html#afecbbceb4620b3230c239edf911dd301", null ],

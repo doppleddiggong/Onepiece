@@ -181,31 +181,43 @@ $(document).ready(function(){initNavTree('ANetworkTesterActor_8h_source.html',''
 <div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    UFUNCTION(BlueprintCallable, CallInEditor, Category = &quot;TEST|Voice&quot;)</div>
 <div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    <span class="keywordtype">void</span> RequestSpeakingQuestions();</div>
 <div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>private:</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    <span class="keywordtype">void</span> OnResponseUserRegister(<a class="code hl_struct" href="structFResponseUserRegister.html">FResponseUserRegister</a>&amp; ResponseData, <span class="keywordtype">bool</span> bWasSuccessful);</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    <span class="keywordtype">void</span> OnResponseUserToken(<a class="code hl_struct" href="structFResponseUserToken.html">FResponseUserToken</a>&amp; ResponseData, <span class="keywordtype">bool</span> bWasSuccessful);</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    <span class="keywordtype">void</span> OnResponseUserMe(<a class="code hl_struct" href="structFResponseUserMe.html">FResponseUserMe</a>&amp; ResponseData, <span class="keywordtype">bool</span> bWasSuccessful);</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    <span class="keywordtype">void</span> OnResponseScenario(<a class="code hl_struct" href="structFResponseScenario.html">FResponseScenario</a>&amp; ResponseData, <span class="keywordtype">bool</span> bWasSuccessful);</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    <span class="keywordtype">void</span> OnResponseOcrExtract(<a class="code hl_struct" href="structFResponseOcrExtract.html">FResponseOcrExtract</a>&amp; ResponseData, <span class="keywordtype">bool</span> bWasSuccessful);</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    <span class="keywordtype">void</span> OnResponseSpeakingQuestions(<a class="code hl_struct" href="structFResponseSpeakingQuestions.html">FResponseSpeakingQuestions</a>&amp; ResponseData, <span class="keywordtype">bool</span> bWasSuccessful);</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>};</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    <span class="comment">// =============================================================================</span></div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    <span class="comment">// Interview API</span></div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    <span class="comment">// =============================================================================</span></div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    UFUNCTION(BlueprintCallable, CallInEditor, Category = &quot;TEST|Interview&quot;)</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    <span class="keywordtype">void</span> RequestInterviewHello();</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span> </div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    </div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    </div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>private:</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    <span class="keywordtype">void</span> OnResponseUserRegister(<a class="code hl_struct" href="structFResponseUserRegister.html">FResponseUserRegister</a>&amp; ResponseData, <span class="keywordtype">bool</span> bWasSuccessful);</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    <span class="keywordtype">void</span> OnResponseUserToken(<a class="code hl_struct" href="structFResponseUserToken.html">FResponseUserToken</a>&amp; ResponseData, <span class="keywordtype">bool</span> bWasSuccessful);</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    <span class="keywordtype">void</span> OnResponseUserMe(<a class="code hl_struct" href="structFResponseUserMe.html">FResponseUserMe</a>&amp; ResponseData, <span class="keywordtype">bool</span> bWasSuccessful);</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span> </div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    <span class="keywordtype">void</span> OnResponseScenario(<a class="code hl_struct" href="structFResponseScenario.html">FResponseScenario</a>&amp; ResponseData, <span class="keywordtype">bool</span> bWasSuccessful);</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    <span class="keywordtype">void</span> OnResponseOcrExtract(<a class="code hl_struct" href="structFResponseOcrExtract.html">FResponseOcrExtract</a>&amp; ResponseData, <span class="keywordtype">bool</span> bWasSuccessful);</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    <span class="keywordtype">void</span> OnResponseSpeakingQuestions(<a class="code hl_struct" href="structFResponseSpeakingQuestions.html">FResponseSpeakingQuestions</a>&amp; ResponseData, <span class="keywordtype">bool</span> bWasSuccessful);</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span> </div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    <span class="keywordtype">void</span> OnResponseInterviewHello(<a class="code hl_struct" href="structFResponseInterviewHello.html">FResponseInterviewHello</a>&amp; ResponseData, <span class="keywordtype">bool</span> bWasSuccessful);</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>};</div>
 </div>
 <div class="ttc" id="aNetworkData_8h_html"><div class="ttname"><a href="NetworkData_8h.html">NetworkData.h</a></div><div class="ttdoc">네트워크 요청과 응답에 사용되는 구조체 및 설정을 정의합니다.</div></div>
 <div class="ttc" id="aclassANetworkTesterActor_html"><div class="ttname"><a href="classANetworkTesterActor.html">ANetworkTesterActor</a></div><div class="ttdef"><b>Definition</b> <a href="ANetworkTesterActor_8h_source.html#l00013">ANetworkTesterActor.h:14</a></div></div>
-<div class="ttc" id="astructFResponseOcrExtract_html"><div class="ttname"><a href="structFResponseOcrExtract.html">FResponseOcrExtract</a></div><div class="ttdoc">OCR Extract 응답 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00531">NetworkData.h:532</a></div></div>
-<div class="ttc" id="astructFResponseScenario_html"><div class="ttname"><a href="structFResponseScenario.html">FResponseScenario</a></div><div class="ttdoc">Scenario 응답 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00488">NetworkData.h:489</a></div></div>
-<div class="ttc" id="astructFResponseSpeakingQuestions_html"><div class="ttname"><a href="structFResponseSpeakingQuestions.html">FResponseSpeakingQuestions</a></div><div class="ttdoc">Speaking Questions 응답 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00556">NetworkData.h:557</a></div></div>
-<div class="ttc" id="astructFResponseUserMe_html"><div class="ttname"><a href="structFResponseUserMe.html">FResponseUserMe</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00439">NetworkData.h:440</a></div></div>
-<div class="ttc" id="astructFResponseUserRegister_html"><div class="ttname"><a href="structFResponseUserRegister.html">FResponseUserRegister</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00396">NetworkData.h:397</a></div></div>
-<div class="ttc" id="astructFResponseUserToken_html"><div class="ttname"><a href="structFResponseUserToken.html">FResponseUserToken</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00422">NetworkData.h:423</a></div></div>
+<div class="ttc" id="astructFResponseInterviewHello_html"><div class="ttname"><a href="structFResponseInterviewHello.html">FResponseInterviewHello</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00583">NetworkData.h:584</a></div></div>
+<div class="ttc" id="astructFResponseOcrExtract_html"><div class="ttname"><a href="structFResponseOcrExtract.html">FResponseOcrExtract</a></div><div class="ttdoc">OCR Extract 응답 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00541">NetworkData.h:542</a></div></div>
+<div class="ttc" id="astructFResponseScenario_html"><div class="ttname"><a href="structFResponseScenario.html">FResponseScenario</a></div><div class="ttdoc">Scenario 응답 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00498">NetworkData.h:499</a></div></div>
+<div class="ttc" id="astructFResponseSpeakingQuestions_html"><div class="ttname"><a href="structFResponseSpeakingQuestions.html">FResponseSpeakingQuestions</a></div><div class="ttdoc">Speaking Questions 응답 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00566">NetworkData.h:567</a></div></div>
+<div class="ttc" id="astructFResponseUserMe_html"><div class="ttname"><a href="structFResponseUserMe.html">FResponseUserMe</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00449">NetworkData.h:450</a></div></div>
+<div class="ttc" id="astructFResponseUserRegister_html"><div class="ttname"><a href="structFResponseUserRegister.html">FResponseUserRegister</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00406">NetworkData.h:407</a></div></div>
+<div class="ttc" id="astructFResponseUserToken_html"><div class="ttname"><a href="structFResponseUserToken.html">FResponseUserToken</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00432">NetworkData.h:433</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_db6231b890a14ef22abfc7e4cac87d3d.html">Network</a></li><li class="navelem"><a class="el" href="dir_220b20a97e4e155a19f3af1d93d62cb0.html">Public</a></li><li class="navelem"><a class="el" href="ANetworkTesterActor_8h.html">ANetworkTesterActor.h</a></li>
-    <li class="footer">생성시간 : 월 12월 1 2025 00:53:53, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 월 12월 1 2025 05:02:03, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

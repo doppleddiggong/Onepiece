@@ -148,51 +148,57 @@ $(document).ready(function(){initNavTree('UKLingoNetworkSystem_8h_source.html','
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="keywordtype">void</span> RequestSpeakingQuestions(<span class="keyword">const</span> FString&amp; AudioPath, FResponseSpeakingQuestionsDelegate InDelegate);</div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="comment">/*</span></div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    void RequestLogin(const FString&amp; Account, FResponseLoginDelegate InDelegate);</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="keywordtype">void</span> RequestInterviewHello(FResponseInterviewHelloDelegate InDelegate);</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="keywordtype">void</span> RequestInterviewAnswer( <span class="keyword">const</span> <a class="code hl_struct" href="structFRequestInterviewAnswer.html">FRequestInterviewAnswer</a>&amp; Answer, FResponseInterviewAnswerDelegate InDelegate);</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    </div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    void RequestCreateUser(int32 Character, int32 CharacterColor, FResponseCreateUserDelegate InDelegate);</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="comment">/*</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    void RequestLogin(const FString&amp; Account, FResponseLoginDelegate InDelegate);</div>
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    void RequestInterview(FResponseInterviewDelegate InDelegate);</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    void RequestSubmitInterview(const TArray&lt;FString&gt;&amp; Answers, FResponseInterviewDelegate InDelegate);</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    void RequestStartGame(const TArray&lt;FString&gt;&amp; PlayerList, const TArray&lt;FString&gt;&amp; Nicknames, FResponseStartGameDelegate InDelegate);</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    void RequestCreateUser(int32 Character, int32 CharacterColor, FResponseCreateUserDelegate InDelegate);</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    void RequestInterview(FResponseInterviewDelegate InDelegate);</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    void RequestSubmitInterview(const TArray&lt;FString&gt;&amp; Answers, FResponseInterviewDelegate InDelegate);</div>
 <div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    void RequestGameLogin(FResponseGameLoginDelegate InDelegate);</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    void RequestQuestAnswer(int32 QuestStep, int32 QuestAnswer, float PlayTime, FResponseQuestAnswerDelegate InDelegate);</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    void RequestQuestFail(int32 QuestStep, FResponseQuestAnswerDelegate InDelegate);</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    void RequestQuestWrite(const TArray&lt;FString&gt;&amp; ImagePaths, const TArray&lt;FString&gt;&amp; TextData, FResponseQuestWriteDelegate InDelegate);</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    void RequestStartGame(const TArray&lt;FString&gt;&amp; PlayerList, const TArray&lt;FString&gt;&amp; Nicknames, FResponseStartGameDelegate InDelegate);</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    void RequestGameLogin(FResponseGameLoginDelegate InDelegate);</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    void RequestQuestAnswer(int32 QuestStep, int32 QuestAnswer, float PlayTime, FResponseQuestAnswerDelegate InDelegate);</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span> </div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    void RequestQuestFail(int32 QuestStep, FResponseQuestAnswerDelegate InDelegate);</div>
 <div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    void RequestQuestSpeak(int32 SpeakStep, const FString&amp; WavFilePath, FResponseQuestSpeakDelegate InDelegate);</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    void RequestQuestWrite(const TArray&lt;FString&gt;&amp; ImagePaths, const TArray&lt;FString&gt;&amp; TextData, FResponseQuestWriteDelegate InDelegate);</div>
 <div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span> </div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    void RequestGameResult(FResponseGameResultDelegate InDelegate);</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span> </div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>*/</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>    </div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> LogNetwork( <a class="code hl_enumeration" href="ENetworkLogType_8h.html#a80aaa513e01d2ec2d4421835b09d691f">ENetworkLogType</a> InLogType, <span class="keyword">const</span> FString&amp; URL, <span class="keyword">const</span> FString&amp; Body = TEXT(<span class="stringliteral">&quot;&quot;</span>));</div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span> </div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>    <span class="keyword">static</span> <span class="keyword">const</span> TCHAR* GetLogPrefix(<a class="code hl_enumeration" href="ENetworkLogType_8h.html#a80aaa513e01d2ec2d4421835b09d691f">ENetworkLogType</a> InLogType);</div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span> </div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>    <span class="keyword">static</span> <span class="keywordtype">bool</span> IsResSuccess(<span class="keyword">const</span> <span class="keywordtype">int</span> InCode);</div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span> </div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>    <span class="keywordtype">void</span> ShowNetworkErrorPopup(int32 ResponseCode, <span class="keyword">const</span> FString&amp; ResponseContent);</div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    </div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>    <span class="keywordtype">void</span> AddNetworkWaitCount(<span class="keywordtype">int</span> Value);</div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span> </div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>    </div>
-<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>    TSharedRef&lt;IHttpRequest, ESPMode::ThreadSafe&gt; SetupHttpRequest( <span class="keyword">const</span> FString&amp; Url, <span class="keyword">const</span> FString&amp; Verb );</div>
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span> </div>
-<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00142" name="l00142"></a><span class="lineno"><a class="line" href="classUKLingoNetworkSystem.html#ae2884d2ebde0f80ae6ff84d5f27a706e">  142</a></span>    <span class="keywordtype">int</span> NetworkWaitCount = 0;</div>
-<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span> </div>
-<div class="line"><a id="l00145" name="l00145"></a><span class="lineno"><a class="line" href="classUKLingoNetworkSystem.html#acf7da28577586f19559ef3d7af8ea7ea">  145</a></span>    FString <a class="code hl_variable" href="classUKLingoNetworkSystem.html#acf7da28577586f19559ef3d7af8ea7ea">access_token</a>;</div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>};</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    void RequestQuestSpeak(int32 SpeakStep, const FString&amp; WavFilePath, FResponseQuestSpeakDelegate InDelegate);</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span> </div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    void RequestGameResult(FResponseGameResultDelegate InDelegate);</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span> </div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>*/</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    </div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> LogNetwork( <a class="code hl_enumeration" href="ENetworkLogType_8h.html#a80aaa513e01d2ec2d4421835b09d691f">ENetworkLogType</a> InLogType, <span class="keyword">const</span> FString&amp; URL, <span class="keyword">const</span> FString&amp; Body = TEXT(<span class="stringliteral">&quot;&quot;</span>));</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span> </div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>    <span class="keyword">static</span> <span class="keyword">const</span> TCHAR* GetLogPrefix(<a class="code hl_enumeration" href="ENetworkLogType_8h.html#a80aaa513e01d2ec2d4421835b09d691f">ENetworkLogType</a> InLogType);</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span> </div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    <span class="keyword">static</span> <span class="keywordtype">bool</span> IsResSuccess(<span class="keyword">const</span> <span class="keywordtype">int</span> InCode);</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span> </div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>    <span class="keywordtype">void</span> ShowNetworkErrorPopup(int32 ResponseCode, <span class="keyword">const</span> FString&amp; ResponseContent);</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>    </div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>    <span class="keywordtype">void</span> AddNetworkWaitCount(<span class="keywordtype">int</span> Value);</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span> </div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>    </div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>    TSharedRef&lt;IHttpRequest, ESPMode::ThreadSafe&gt; SetupHttpRequest( <span class="keyword">const</span> FString&amp; Url, <span class="keyword">const</span> FString&amp; Verb );</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span> </div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno"><a class="line" href="classUKLingoNetworkSystem.html#ae2884d2ebde0f80ae6ff84d5f27a706e">  148</a></span>    <span class="keywordtype">int</span> NetworkWaitCount = 0;</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span> </div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno"><a class="line" href="classUKLingoNetworkSystem.html#acf7da28577586f19559ef3d7af8ea7ea">  151</a></span>    FString <a class="code hl_variable" href="classUKLingoNetworkSystem.html#acf7da28577586f19559ef3d7af8ea7ea">access_token</a>;</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>};</div>
 </div>
 <div class="ttc" id="aENetworkLogType_8h_html"><div class="ttname"><a href="ENetworkLogType_8h.html">ENetworkLogType.h</a></div><div class="ttdoc">네트워크 로그 메시지 구분자 열거형을 선언합니다.</div></div>
 <div class="ttc" id="aENetworkLogType_8h_html_a80aaa513e01d2ec2d4421835b09d691f"><div class="ttname"><a href="ENetworkLogType_8h.html#a80aaa513e01d2ec2d4421835b09d691f">ENetworkLogType</a></div><div class="ttdeci">ENetworkLogType</div><div class="ttdoc">네트워크 요청/응답 로그를 구분하는 타입입니다.</div><div class="ttdef"><b>Definition</b> <a href="ENetworkLogType_8h_source.html#l00010">ENetworkLogType.h:11</a></div></div>
@@ -200,14 +206,15 @@ $(document).ready(function(){initNavTree('UKLingoNetworkSystem_8h_source.html','
 <div class="ttc" id="aNetworkData_8h_html"><div class="ttname"><a href="NetworkData_8h.html">NetworkData.h</a></div><div class="ttdoc">네트워크 요청과 응답에 사용되는 구조체 및 설정을 정의합니다.</div></div>
 <div class="ttc" id="aclassUKLingoNetworkSystem_html"><div class="ttname"><a href="classUKLingoNetworkSystem.html">UKLingoNetworkSystem</a></div><div class="ttdef"><b>Definition</b> <a href="UKLingoNetworkSystem_8h_source.html#l00019">UKLingoNetworkSystem.h:20</a></div></div>
 <div class="ttc" id="aclassUKLingoNetworkSystem_html_a55a3c20561aaa16e02ae67adf5f15bfe"><div class="ttname"><a href="classUKLingoNetworkSystem.html#a55a3c20561aaa16e02ae67adf5f15bfe">UKLingoNetworkSystem::DEFINE_SUBSYSTEM_GETTER_INLINE</a></div><div class="ttdeci">DEFINE_SUBSYSTEM_GETTER_INLINE(UKLingoNetworkSystem)</div></div>
-<div class="ttc" id="aclassUKLingoNetworkSystem_html_acf7da28577586f19559ef3d7af8ea7ea"><div class="ttname"><a href="classUKLingoNetworkSystem.html#acf7da28577586f19559ef3d7af8ea7ea">UKLingoNetworkSystem::access_token</a></div><div class="ttdeci">FString access_token</div><div class="ttdoc">인증 토큰 (로그인 후 저장)</div><div class="ttdef"><b>Definition</b> <a href="UKLingoNetworkSystem_8h_source.html#l00145">UKLingoNetworkSystem.h:145</a></div></div>
+<div class="ttc" id="aclassUKLingoNetworkSystem_html_acf7da28577586f19559ef3d7af8ea7ea"><div class="ttname"><a href="classUKLingoNetworkSystem.html#acf7da28577586f19559ef3d7af8ea7ea">UKLingoNetworkSystem::access_token</a></div><div class="ttdeci">FString access_token</div><div class="ttdoc">인증 토큰 (로그인 후 저장)</div><div class="ttdef"><b>Definition</b> <a href="UKLingoNetworkSystem_8h_source.html#l00151">UKLingoNetworkSystem.h:151</a></div></div>
+<div class="ttc" id="astructFRequestInterviewAnswer_html"><div class="ttname"><a href="structFRequestInterviewAnswer.html">FRequestInterviewAnswer</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00615">NetworkData.h:616</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_db6231b890a14ef22abfc7e4cac87d3d.html">Network</a></li><li class="navelem"><a class="el" href="dir_220b20a97e4e155a19f3af1d93d62cb0.html">Public</a></li><li class="navelem"><a class="el" href="UKLingoNetworkSystem_8h.html">UKLingoNetworkSystem.h</a></li>
-    <li class="footer">생성시간 : 월 12월 1 2025 00:53:53, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 월 12월 1 2025 05:02:04, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

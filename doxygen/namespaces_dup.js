@@ -38,6 +38,8 @@ var namespaces_dup =
     ] ],
     [ "RequestAPI", "namespaceRequestAPI.html", [
       [ "Health", "namespaceRequestAPI.html#ae1061ff9836b3127b56024d0a0f6fd65", null ],
+      [ "interview_answer", "namespaceRequestAPI.html#ac23f8020a8a24f9d640a8aefbe9e56e5", null ],
+      [ "interview_hello", "namespaceRequestAPI.html#a72a9108a91fd78d005fe594cd7ce8818", null ],
       [ "scenario", "namespaceRequestAPI.html#ae683aef1f6770a15bcad8cce46f40456", null ],
       [ "speakings_questions", "namespaceRequestAPI.html#a444507b7e2261e3f743b40af81e6838a", null ],
       [ "users_me", "namespaceRequestAPI.html#aee732573aa0bc733fedaab927a273dcd", null ],

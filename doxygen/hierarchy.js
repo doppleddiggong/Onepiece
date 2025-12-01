@@ -29,6 +29,9 @@ var hierarchy =
     [ "AGameState", null, [
       [ "ALingoGameState", "classALingoGameState.html", null ]
     ] ],
+    [ "ALevelScriptActor", null, [
+      [ "ALobbyLevelScriptActor", "classALobbyLevelScriptActor.html", null ]
+    ] ],
     [ "APlayerController", null, [
       [ "APlayerControl", "classAPlayerControl.html", null ],
       [ "ARobotPlayerController", "classARobotPlayerController.html", null ]
@@ -45,6 +48,7 @@ var hierarchy =
     [ "UDelayTaskManager::FEntry", "structUDelayTaskManager_1_1FEntry.html", null ],
     [ "FHttpMultipartFormData::FFilePart", "structFHttpMultipartFormData_1_1FFilePart.html", null ],
     [ "FHttpMultipartFormData", "classFHttpMultipartFormData.html", null ],
+    [ "FInterviewAnswerData", "structFInterviewAnswerData.html", null ],
     [ "FInterviewData", "structFInterviewData.html", null ],
     [ "FInterviewQuestionData", "structFInterviewQuestionData.html", null ],
     [ "FListenTargetData", "structFListenTargetData.html", null ],
@@ -60,7 +64,10 @@ var hierarchy =
     [ "FQuestWriteInfo", "structFQuestWriteInfo.html", null ],
     [ "FReadQuestResult", "structFReadQuestResult.html", null ],
     [ "FReadTargetData", "structFReadTargetData.html", null ],
+    [ "FRequestInterviewAnswer", "structFRequestInterviewAnswer.html", null ],
     [ "FResponseHealth", "structFResponseHealth.html", null ],
+    [ "FResponseInterviewAnswer", "structFResponseInterviewAnswer.html", null ],
+    [ "FResponseInterviewHello", "structFResponseInterviewHello.html", null ],
     [ "FResponseOcrExtract", "structFResponseOcrExtract.html", null ],
     [ "FResponseScenario", "structFResponseScenario.html", null ],
     [ "FResponseSpeakingQuestions", "structFResponseSpeakingQuestions.html", null ],

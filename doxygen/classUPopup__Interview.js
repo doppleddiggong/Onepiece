@@ -1,10 +1,11 @@
 var classUPopup__Interview =
 [
-    [ "InitPopup", "classUPopup__Interview.html#a952269d582ff1882353ec11bb251cd8b", null ],
+    [ "InitPopup", "classUPopup__Interview.html#a6ec1ec9ae39e678165e1d4483ac3ac22", null ],
     [ "NativeConstruct", "classUPopup__Interview.html#a734cfd84c524782ec2246bbb0fde5c23", null ],
     [ "NativeTick", "classUPopup__Interview.html#a750c1a854f68ca16faa069645531abd6", null ],
     [ "OnClickClose", "classUPopup__Interview.html#ae5c9f4a7b8a279e9ae40ef890906ede5", null ],
     [ "OnClickSubmit", "classUPopup__Interview.html#a344e30ba023436381796fe60247bf0b2", null ],
+    [ "OnResponseInterviewAnswer", "classUPopup__Interview.html#a017f4585e4709e2a6494f24c83b7ae8c", null ],
     [ "OpenAnimation", "classUPopup__Interview.html#a2c3d2b47f8255c0172cf9f218790fcc8", null ],
     [ "UpdateAnimation", "classUPopup__Interview.html#a830a08b15d00e418f351f096fc5a8790", null ],
     [ "bIsOpenAnim", "classUPopup__Interview.html#a807985dccb3305b1004c611401b7b551", null ],
@@ -21,6 +22,7 @@ var classUPopup__Interview =
     [ "OpenTargetScale", "classUPopup__Interview.html#add357075245f0843320c0b74af0f2697", null ],
     [ "Popup_BaseBg", "classUPopup__Interview.html#abc49ed8a1e195e679d47ee78d4edc034", null ],
     [ "PopupType", "classUPopup__Interview.html#a7e537a0dd751df11990ed46947f09d42", null ],
+    [ "SavedQuestions", "classUPopup__Interview.html#a6801e8c062ebc8e0fd12675e47d0d6e9", null ],
     [ "ScrollBox", "classUPopup__Interview.html#a031ade5b6fd0e1834b7f68467cddf131", null ],
     [ "Txt_Title", "classUPopup__Interview.html#a074f5d67f4911d387c2e8540ad806e50", null ],
     [ "VerticalBox", "classUPopup__Interview.html#a61abf7c3ca4da8fe15f0f36e1de389bb", null ]
