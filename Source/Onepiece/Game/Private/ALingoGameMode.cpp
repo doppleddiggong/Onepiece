@@ -65,7 +65,7 @@ void ALingoGameMode::BeginReadQuest(int32 InStageIndex, const FResponseScenario&
 	// --- 2. GameState에 데이터 설정 ---
 	if (auto GS = GetGameState<ALingoGameState>())
 	{
-		GS->SetStageData(InStageIndex, InResponseData);
+		GS->SetStageData(InStageIndex, 1, InResponseData);
 		PRINTLOG(TEXT("[GameMode] SetStageData called on GameState."));
 	}
 	else

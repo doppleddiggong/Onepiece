@@ -12,6 +12,7 @@
 #include "UPopup_MsgBox.h"
 #include "UPopup_ReadQuest.h"
 #include "ANetworkBroadcastActor.h"
+#include "IMediaControls.h"
 #include "GameFramework/PlayerController.h"
 #include "Engine/World.h"
 
@@ -22,10 +23,6 @@ ALingoGameState::ALingoGameState()
 
 	GameState = EGameState::None;
 	
-	ScenarioIndex = 1;
-	StageIndex = 0;
-	ScenarioLevel = 1;
-
 	PrimaryActorTick.bCanEverTick = true;
 }
 
@@ -38,9 +35,7 @@ void ALingoGameState::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutL
 	DOREPLIFETIME(ALingoGameState, RemainMissionTime);
 	DOREPLIFETIME(ALingoGameState, bIsTimerActive);
 
-	DOREPLIFETIME(ALingoGameState, ScenarioIndex);
-	DOREPLIFETIME(ALingoGameState, StageIndex);
-	DOREPLIFETIME(ALingoGameState, ScenarioLevel);
+	DOREPLIFETIME(ALingoGameState, CurrentQuest);
 	DOREPLIFETIME(ALingoGameState, CurScenarioData);
 
 	// Read Quest Data
@@ -67,32 +62,39 @@ void ALingoGameState::Tick(float DeltaSeconds)
 	}
 }
 
-void ALingoGameState::SetStageData(int InStageIndex, const FResponseScenario& InResponseData)
+void ALingoGameState::SetStageData(int InScenarioIndex, int InQuestIndex, const FResponseScenario& InResponseData)
 {
 	PRINTLOG(TEXT("[GameState] SetStageData - StageIndex: %d, HasAuthority: %s"), 
-		InStageIndex, HasAuthority() ? TEXT("true") : TEXT("false"));
+		InScenarioIndex, HasAuthority() ? TEXT("true") : TEXT("false"));
 	
-	if ( InStageIndex == 1)
-		GameState = EGameState::Stage1;
-	else if ( InStageIndex == 2)
-		GameState = EGameState::Stage2;
-	else if ( InStageIndex == 3)
-		GameState = EGameState::Stage3;
-	else if ( InStageIndex == 4)
-		GameState = EGameState::Stage4;
-	
-	PRINTLOG(TEXT("[GameState] GameState changed to: %d"), static_cast<int32>(GameState));
-	
-	this->StageIndex = InStageIndex;
-	this->CurScenarioData = InResponseData;
+	CurrentQuest.ScenarioIndex = InScenarioIndex;
+	CurrentQuest.QuestType = (EQuestType)InQuestIndex;
+	CurrentQuest.ScenarioLevel = 1;
+
+	GameState = EGameState::QuestStart;
+	PRINTLOG(TEXT("[GameState] Quest Started - Type: %d, Stage: %d"),
+		(int32)CurrentQuest.QuestType, CurrentQuest.ScenarioIndex);
+
+	switch (CurrentQuest.QuestType)
+	{
+	case EQuestType::Read:
+		CurScenarioData = InResponseData;
+		break;
+	case EQuestType::Listen:
+		break;
+	case EQuestType::Write:
+		break;
+	case EQuestType::Speak:
+		break;
+	}
 	
 	// 미션 타이머 시작
-	this->StartMissionTimer( ULingoGameHelper::GetMissionPlayTime(ScenarioLevel) );
+	this->StartMissionTimer( ULingoGameHelper::GetMissionPlayTime(CurrentQuest.ScenarioLevel) );
 
 	// 모든 클라이언트(서버 포함)에 팝업 표시 요청
 	if (HasAuthority())
 	{
-		Multicast_ShowReadQuestPopup(InStageIndex, CurScenarioData);
+		Multicast_ShowReadQuestPopup(InScenarioIndex, CurScenarioData);
 	}
 }
 
@@ -143,7 +145,7 @@ void ALingoGameState::OnMissionTimerEnd()
 		BroadcastActor->SendUpdateMissionTimerState(false, 0.0f, this);
 	}
 
-	auto EndMessage = ULingoGameHelper::GetStageEndMessage(StageIndex);
+	auto EndMessage = ULingoGameHelper::GetStageEndMessage(CurrentQuest.ScenarioIndex);
 
 	PRINTLOG( TEXT("[GameState] Mission Timer Ended - Sending: %s"), *EndMessage);
 
