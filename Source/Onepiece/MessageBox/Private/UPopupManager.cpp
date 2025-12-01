@@ -100,7 +100,8 @@ void UPopupManager::HidePopup(EPopupType Type, bool bDestroyWidget)
 	{
 		FString MapName = GetWorld()->GetMapName();
 		MapName.RemoveFromStart(GetWorld()->StreamingLevelsPrefix);
-		if (MapName.Contains(TEXT("Map1")))
+		if (MapName.Contains(TEXT("Map1")) ||
+			MapName.Contains(TEXT("Person")) )
 		{
 			ULingoGameHelper::HideMouseCursor(GetWorld());
 		}
