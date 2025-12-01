@@ -19,6 +19,7 @@
 #include "UPopup_MsgBox.h"
 #include "Misc/Paths.h"
 #include "Dom/JsonObject.h"
+#include "GenericPlatform/GenericPlatformHttp.h"
 #include "Serialization/JsonReader.h"
 #include "Serialization/JsonSerializer.h"
 
@@ -451,9 +452,71 @@ void UKLingoNetworkSystem::RequestOcrExtract(const FString& ImagePath, FResponse
 	Request->ProcessRequest();
 }
 
-// =================================================================================
-// RequestSpeakingQuestions
-// =================================================================================
+void UKLingoNetworkSystem::RequestListenAudio(const FString& AudioText, FResponseListenAudioDelegate InDelegate)
+{
+	// FString Url = NetworkConfig::GetFullUrl(RequestAPI::listenings_audio);
+	// auto Request = SetupHttpRequest(Url, NETWORK_POST);
+	//
+	// TSharedPtr<FJsonObject> JsonObject = MakeShareable(new FJsonObject);
+	// JsonObject->SetStringField(TEXT("audio_text"), AudioText);
+	//
+	// FString RequestBody;
+	// TSharedRef<TJsonWriter<>> Writer = TJsonWriterFactory<>::Create(&RequestBody);
+	// FJsonSerializer::Serialize(JsonObject.ToSharedRef(), Writer);
+	// Request->SetContentAsString(RequestBody);
+
+	// LogNetwork(ENetworkLogType::Post, *Request->GetURL(), *RequestBody);
+
+	TMap<FString, FString> Query;
+	Query.Add(TEXT("audio_text"), AudioText);
+	FString Url = NetworkConfig::GetFullUrlWithQuery( RequestAPI::listenings_audio, Query );
+	auto Request = SetupHttpRequest(Url, NETWORK_POST);
+	LogNetwork(ENetworkLogType::Post, *Request->GetURL());
+
+	Request->OnProcessRequestComplete().BindLambda(
+		[WeakThis = TWeakObjectPtr<UKLingoNetworkSystem>(this), InDelegate](FHttpRequestPtr Req, FHttpResponsePtr ResPtr, bool bWasSuccessful)
+		{
+			if (!WeakThis.IsValid() || IsEngineExitRequested())
+				return;
+
+			WeakThis->AddNetworkWaitCount(-1);
+			FResponseListenAudio ResponseData;
+
+			if (bWasSuccessful && ResPtr.IsValid())
+			{
+				const int32 ResponseCode = ResPtr->GetResponseCode();
+
+				NETWORK_LOG(TEXT("[RES] RequestListenAudio - Code: %d, Response: %s"), ResponseCode, *ResPtr->GetContentAsString());
+				
+				if (IsResSuccess(ResponseCode))
+				{
+					ResponseData.SetFromHttpResponse(ResPtr);
+					ResponseData.PrintData();
+					InDelegate.ExecuteIfBound(ResponseData, true);
+				}
+				else
+				{
+					WeakThis->ShowNetworkErrorPopup(ResponseCode, ResPtr->GetContentAsString());
+					InDelegate.ExecuteIfBound(ResponseData, false);
+				}
+			}
+			else
+			{
+				NETWORK_LOG(TEXT("[POST] RequestListenAudio failed - bSuccess: %s, Response valid: %s"),
+					bWasSuccessful ? TEXT("true") : TEXT("false"),
+					ResPtr.IsValid() ? TEXT("true") : TEXT("false"));
+				
+				int32 ErrorCode = ResPtr.IsValid() ? ResPtr->GetResponseCode() : 0;
+				FString ErrorContent = ResPtr.IsValid() ? ResPtr->GetContentAsString() : TEXT("Network connection failed");
+				WeakThis->ShowNetworkErrorPopup(ErrorCode, ErrorContent);
+				
+				InDelegate.ExecuteIfBound(ResponseData, false);
+			}
+		});
+
+	AddNetworkWaitCount(1);
+	Request->ProcessRequest();
+}
 
 void UKLingoNetworkSystem::RequestSpeakingQuestions(const FString& AudioPath, FResponseSpeakingQuestionsDelegate InDelegate)
 {
@@ -491,6 +554,8 @@ void UKLingoNetworkSystem::RequestSpeakingQuestions(const FString& AudioPath, FR
 			{
 				const int32 ResponseCode = ResPtr->GetResponseCode();
 
+				NETWORK_LOG(TEXT("[RES] RequestSpeakingQuestions - Code: %d, Response: %s"), ResponseCode, *ResPtr->GetContentAsString());
+			
 				if (IsResSuccess(ResponseCode))
 				{
 					ResponseData.SetFromHttpResponse(ResPtr);
@@ -499,8 +564,6 @@ void UKLingoNetworkSystem::RequestSpeakingQuestions(const FString& AudioPath, FR
 				}
 				else
 				{
-					NETWORK_LOG(TEXT("[POST] RequestSpeakingQuestions failed - Code: %d, Response: %s"),
-						ResponseCode, *ResPtr->GetContentAsString());
 					WeakThis->ShowNetworkErrorPopup(ResponseCode, ResPtr->GetContentAsString());
 					InDelegate.ExecuteIfBound(ResponseData, false);
 				}
@@ -510,11 +573,11 @@ void UKLingoNetworkSystem::RequestSpeakingQuestions(const FString& AudioPath, FR
 				NETWORK_LOG(TEXT("[POST] RequestSpeakingQuestions failed - bSuccess: %s, Response valid: %s"),
 					bWasSuccessful ? TEXT("true") : TEXT("false"),
 					ResPtr.IsValid() ? TEXT("true") : TEXT("false"));
-				
+			
 				int32 ErrorCode = ResPtr.IsValid() ? ResPtr->GetResponseCode() : 0;
 				FString ErrorContent = ResPtr.IsValid() ? ResPtr->GetContentAsString() : TEXT("Network connection failed");
 				WeakThis->ShowNetworkErrorPopup(ErrorCode, ErrorContent);
-				
+			
 				InDelegate.ExecuteIfBound(ResponseData, false);
 			}
 		});

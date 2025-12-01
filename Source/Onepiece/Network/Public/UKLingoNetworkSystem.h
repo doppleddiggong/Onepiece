@@ -45,11 +45,11 @@ public:
 	/// @param InDelegate [in] 응답 수신 시 호출될 델리게이트입니다.
 	void RequestOcrExtract(const FString& ImagePath, FResponseOcrExtractDelegate InDelegate);
 
+	void RequestListenAudio(const FString& AudioText, FResponseListenAudioDelegate InDelegate);
 	/// @brief 음성 파일을 전송하고 답변을 받습니다.
 	/// @param AudioPath [in] WAV 오디오 파일 경로입니다.
 	/// @param InDelegate [in] 응답 수신 시 호출될 델리게이트입니다.
 	void RequestSpeakingQuestions(const FString& AudioPath, FResponseSpeakingQuestionsDelegate InDelegate);
-
 
 	void RequestInterviewHello(FResponseInterviewHelloDelegate InDelegate);
 	void RequestInterviewAnswer( const FRequestInterviewAnswer& Answer, FResponseInterviewAnswerDelegate InDelegate);

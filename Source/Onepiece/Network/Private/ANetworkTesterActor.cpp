@@ -12,11 +12,14 @@
 #include "UPopupManager.h"
 #include "UPopup_Interview.h"
 #include "UPopup_MsgBox.h"
+#include "UVoiceConversationSystem.h"
 #include "Engine/Engine.h"
 
 ANetworkTesterActor::ANetworkTesterActor()
 {
     PrimaryActorTick.bCanEverTick = false;
+
+    VoiceConversationSystem = CreateDefaultSubobject<UVoiceConversationSystem>(TEXT("VoiceConversationSystem"));
 }
 
 // =============================================================================
@@ -165,6 +168,22 @@ void ANetworkTesterActor::RequestSpeakingQuestions()
     }
 }
 
+void ANetworkTesterActor::RequestListenAudio()
+{
+    if (auto KLingoNetwork = UKLingoNetworkSystem::Get(GetWorld()))
+    {
+        PRINTLOG(TEXT("[TEST] RequestListenAudio - AudioText: %s"), *AudioText);
+        KLingoNetwork->RequestListenAudio(
+            AudioText,
+            FResponseListenAudioDelegate::CreateUObject(this, &ANetworkTesterActor::OnResponseListenAudio)
+        );
+    }
+    else
+    {
+        PRINTLOG(TEXT("UKLingoNetworkSystem not found!"));
+    }
+}
+
 void ANetworkTesterActor::RequestInterviewHello()
 {
     if (auto KLingoNetwork = UKLingoNetworkSystem::Get(GetWorld()))
@@ -234,7 +253,7 @@ void ANetworkTesterActor::OnResponseSpeakingQuestions(FResponseSpeakingQuestions
     {
         PRINTLOG(TEXT("--- Speaking Questions SUCCESS ---"));
         ResponseData.PrintData();
-        PRINTLOG(TEXT("Answer: %s"), *ResponseData.answer);
+        UDialogManager::Get(GetWorld())->ShowToast(*ResponseData.answer);
     }
     else
     {
@@ -242,13 +261,29 @@ void ANetworkTesterActor::OnResponseSpeakingQuestions(FResponseSpeakingQuestions
     }
 }
 
+void ANetworkTesterActor::OnResponseListenAudio(FResponseListenAudio& ResponseData, bool bWasSuccessful)
+{
+    if (bWasSuccessful)
+    {
+        PRINTLOG(TEXT("--- Listen Audio SUCCESS ---"));
+        ResponseData.PrintData();
+
+        UDialogManager::Get(GetWorld())->ShowToast(*ResponseData.audio_text);
+        VoiceConversationSystem->PlayVoiceAudio(ResponseData.audio_base64);
+    }
+    else
+    {
+        PRINTLOG(TEXT("--- Listen Audio FAILED ---"));
+    }
+}
+
+
 void ANetworkTesterActor::OnResponseInterviewHello(FResponseInterviewHello& ResponseData, bool bWasSuccessful)
 {
     if (bWasSuccessful)
     {
         PRINTLOG(TEXT("--- InterViewHello Questions SUCCESS ---"));
         ResponseData.PrintData();
-
 
         if (const auto PopupMgr = UPopupManager::Get(GetWorld()))
         {

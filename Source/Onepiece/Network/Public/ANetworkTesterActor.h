@@ -73,7 +73,7 @@ public:
 
     
     // =============================================================================
-    // OCR Voice Tests
+    // STT Voice Tests
     // =============================================================================
     
     /// @brief Speaking 테스트용 오디오 파일 경로입니다 (프로젝트 루트 기준).
@@ -84,11 +84,20 @@ public:
     UFUNCTION(BlueprintCallable, CallInEditor, Category = "TEST|Voice")
     void RequestSpeakingQuestions();
 
+    // =============================================================================
+    // TTS Voice Tests
+    // =============================================================================
+    UPROPERTY(EditAnywhere, Category = "TEST|Voice")
+    FString AudioText  = TEXT("한국에서 가장 먼저 방문할 곳은 어디입니까?");
+    
+    UFUNCTION(BlueprintCallable, CallInEditor, Category = "TEST|Voice")
+    void RequestListenAudio();
 
+    
     // =============================================================================
     // Interview API
     // =============================================================================
-    UFUNCTION(BlueprintCallable, CallInEditor, Category = "TEST|Interview")
+    UFUNCTION(BlueprintCallable, CallInEditor, Category = "06.TEST|Interview")
     void RequestInterviewHello();
 
     
@@ -100,7 +109,14 @@ private:
 
     void OnResponseScenario(FResponseScenario& ResponseData, bool bWasSuccessful);
     void OnResponseOcrExtract(FResponseOcrExtract& ResponseData, bool bWasSuccessful);
+
     void OnResponseSpeakingQuestions(FResponseSpeakingQuestions& ResponseData, bool bWasSuccessful);
+    void OnResponseListenAudio(FResponseListenAudio& ResponseData, bool bWasSuccessful);
 
     void OnResponseInterviewHello(FResponseInterviewHello& ResponseData, bool bWasSuccessful);
+
+
+private:
+    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Voice", meta=(AllowPrivateAccess="true"))
+    TObjectPtr<class UVoiceConversationSystem> VoiceConversationSystem;
 };

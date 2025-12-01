@@ -6,6 +6,7 @@
 
 #include "CoreMinimal.h"
 #include "UCustomNetworkSettings.h"
+#include "GenericPlatform/GenericPlatformHttp.h"
 #include "Templates/SharedPointer.h"
 #include "NetworkData.generated.h"
 
@@ -23,6 +24,42 @@ namespace NetworkConfig
         const EServerMode Mode = UCustomNetworkSettings::GetCurrentServerMode();
         const FServerConfig& Config = GetDefault<UCustomNetworkSettings>()->GetConfig(Mode);
         return Config.GetFullUrl(Endpoint);
+    }
+
+	/// @brief Query 파라미터가 포함된 전체 URL을 반환합니다.
+	///        파라미터가 없으면 기본 URL만 반환합니다.
+	static FString GetFullUrlWithQuery(
+		const FString& Endpoint,
+		const TMap<FString, FString>& QueryParams)
+    {
+    	FString BaseUrl = GetFullUrl(Endpoint);
+
+    	if (QueryParams.Num() == 0)
+    		return BaseUrl;
+
+    	FString QueryString;
+    	bool bFirst = true;
+
+    	for (const auto& Pair : QueryParams)
+    	{
+    		if (Pair.Key.IsEmpty() || Pair.Value.IsEmpty())
+    			continue;
+    		
+    		FString EncodedKey   = FGenericPlatformHttp::UrlEncode(Pair.Key);
+    		FString EncodedValue = FGenericPlatformHttp::UrlEncode(Pair.Value);
+
+    		if (bFirst)
+    		{
+    			QueryString += FString::Printf(TEXT("?%s=%s"), *EncodedKey, *EncodedValue);
+    			bFirst = false;
+    		}
+    		else
+    		{
+    			QueryString += FString::Printf(TEXT("&%s=%s"), *EncodedKey, *EncodedValue);
+    		}
+    	}
+
+    	return BaseUrl + QueryString;
     }
 
     /// @brief 현재 서버 모드에서 사용할 WebSocket 주소를 반환합니다.
@@ -51,11 +88,12 @@ namespace RequestAPI
     /// @brief OCR 텍스트 추출 엔드포인트입니다. POST /writes/ocr/extract
     static FString writes_ocr_extract = FString("/writes/ocr/extract");
 
+	static FString listenings_audio = FString("/listenings/audio");
 	static FString speakings_questions = FString("/speakings/questions");
 
 	static FString interview_hello = FString("/interview/hello");
 	static FString interview_answer = FString("/interview/answer/post");
-    
+	
     /*
 
     /// @brief KLingo 로그인 엔드포인트입니다.
@@ -554,6 +592,33 @@ struct FResponseOcrExtract
 	/// @brief 디버그 로그에 응답 내용을 출력합니다.
 	void PrintData() const;
 };
+
+
+// =================================================================================
+// Speaking Questions API Structures (Updated)
+// =================================================================================
+
+/// @brief Speaking Questions 응답 델리게이트입니다.
+DECLARE_DELEGATE_TwoParams(FResponseListenAudioDelegate, FResponseListenAudio&, bool);
+USTRUCT(BlueprintType)
+struct FResponseListenAudio
+{
+	GENERATED_BODY()
+
+	UPROPERTY(BlueprintReadWrite, Category = "Speaking")
+	FString audio_text;
+
+	UPROPERTY(BlueprintReadWrite)
+	TArray<uint8> audio_base64;
+
+	/// @brief HTTP 응답을 파싱해 구조체를 채웁니다.
+	void SetFromHttpResponse(const TSharedPtr<class IHttpResponse, ESPMode::ThreadSafe>& Response);
+
+	/// @brief 디버그 로그에 응답 내용을 출력합니다.
+	void PrintData() const;
+};
+
+
 
 // =================================================================================
 // Speaking Questions API Structures (Updated)

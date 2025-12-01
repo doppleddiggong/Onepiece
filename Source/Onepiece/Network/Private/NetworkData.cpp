@@ -319,6 +319,40 @@ void FResponseOcrExtract::PrintData() const
 	NETWORK_LOG( TEXT("[OCR Extract] Response - Success: %d, Text: %s"), success, *extracted_text);
 }
 
+void FResponseListenAudio::SetFromHttpResponse(const TSharedPtr<class IHttpResponse, ESPMode::ThreadSafe>& Response)
+{
+	if (!Response.IsValid())
+	{
+		return;
+	}
+
+	FString ResponseBody = Response->GetContentAsString();
+
+	TSharedPtr<FJsonObject> JsonObject;
+	TSharedRef<TJsonReader<>> Reader = TJsonReaderFactory<>::Create(ResponseBody);
+
+	if (FJsonSerializer::Deserialize(Reader, JsonObject) && JsonObject.IsValid())
+	{
+		JsonObject->TryGetStringField(TEXT("audio_text"), audio_text);
+
+		FString audio_data;
+		JsonObject->TryGetStringField(TEXT("audio_base64"), audio_data);
+		FBase64::Decode(audio_data, audio_base64);
+	}
+}
+
+void FResponseListenAudio::PrintData() const
+{
+	FString OutputString;
+	FJsonObjectConverter::UStructToJsonObjectString(
+		*this,
+		OutputString,
+		0,
+		0
+	);
+	NETWORK_LOG( TEXT("[RES] %s"), *OutputString);
+}
+
 // =================================================================================
 // FResponseSpeakingQuestions
 // =================================================================================
@@ -342,7 +376,14 @@ void FResponseSpeakingQuestions::SetFromHttpResponse(const TSharedPtr<IHttpRespo
 
 void FResponseSpeakingQuestions::PrintData() const
 {
-	NETWORK_LOG( TEXT("[Speaking Questions] Response - Answer: %s"), *answer);
+	FString OutputString;
+	FJsonObjectConverter::UStructToJsonObjectString(
+		*this,
+		OutputString,
+		0,
+		0
+	);
+	NETWORK_LOG( TEXT("[RES] %s"), *OutputString);
 }
 
 
