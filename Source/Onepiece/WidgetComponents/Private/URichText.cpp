@@ -9,7 +9,7 @@
 #include "Components/RichTextBlock.h"
 #include "Engine/DataTable.h"
 
-#define TEXT_STYLE_PATH TEXT("/Game/CustomContents/MasterData/DT_TextStyle.DT_TextStyle")
+#define TEXT_STYLE_PATH TEXT("/Game/CustomContents/MasterData/RichTextBlock/DT_TextSet.DT_TextSet")
 
 void URichText::NativePreConstruct()
 {
