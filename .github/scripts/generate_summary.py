@@ -12,7 +12,11 @@ from typing import List, Dict, Tuple
 
 class SummaryGenerator:
     def __init__(self, base_dir: str = "Documents"):
+        repo_root = Path(__file__).resolve().parents[2]
         self.base_dir = Path(base_dir)
+        if not self.base_dir.is_absolute():
+            self.base_dir = repo_root / self.base_dir
+        self.base_dir = self.base_dir.resolve()
         self.honkit_dir = self.base_dir  # HonKit root는 Documents
         self.devlog_dir = self.base_dir / "DevLog"
         self.planning_dir = self.base_dir / "Planning"
@@ -312,11 +316,12 @@ class SummaryGenerator:
         summary_path = self.honkit_dir / "SUMMARY.md"
         content = self.generate_summary()
 
+        summary_path.parent.mkdir(parents=True, exist_ok=True)
         with open(summary_path, 'w', encoding='utf-8') as f:
             f.write(content)
 
-        print(f"✅ SUMMARY.md generated successfully at {summary_path}")
-        print(f"📊 Total sections created")
+        print(f"[OK] SUMMARY.md generated successfully at {summary_path}")
+        print("Total sections created")
 
         # 레거시 호환: Documents/HonkitPage/SUMMARY.md 동기화
         legacy_dir = self.base_dir / "HonkitPage"
@@ -325,7 +330,7 @@ class SummaryGenerator:
             legacy_dir.mkdir(parents=True, exist_ok=True)
             with open(legacy_summary_path, 'w', encoding='utf-8') as legacy_file:
                 legacy_file.write(content)
-            print(f"🔁 Legacy SUMMARY.md synchronized at {legacy_summary_path}")
+            print(f"[SYNC] Legacy SUMMARY.md synchronized at {legacy_summary_path}")
 
 def main():
     generator = SummaryGenerator()
