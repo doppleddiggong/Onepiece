@@ -51,6 +51,12 @@ public:
 	void RequestSpeakingQuestions(const FString& AudioPath, FResponseSpeakingQuestionsDelegate InDelegate);
 
 
+	void RequestInterviewHello(FResponseInterviewHelloDelegate InDelegate);
+	void RequestInterviewAnswer( const FRequestInterviewAnswer& Answer, FResponseInterviewAnswerDelegate InDelegate);
+
+
+
+	
 
 	/*
 	/// @brief 계정으로 로그인 요청을 전송합니다.

@@ -52,6 +52,9 @@ namespace RequestAPI
     static FString writes_ocr_extract = FString("/writes/ocr/extract");
 
 	static FString speakings_questions = FString("/speakings/questions");
+
+	static FString interview_hello = FString("/interview/hello");
+	static FString interview_answer = FString("/interview/answer/post");
     
     /*
 
@@ -103,24 +106,31 @@ struct FInterviewQuestionData
 {
 	GENERATED_BODY()
 
+	// id : 126
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	int32 Id = 0;
 
+	// type_code : 1
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	int32 TypeCode = 0;
 
+	// "eng":"What do you do on weekends?"
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FString Eng;
 
+	// "kor":"주말에 보통 무엇을 합니까?"
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FString Kor;
 
+	// "eng_key":"weekends"
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FString EngKey;
 
+	// "kor_key":"주말"
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FString KorKey;
 
+	// "created_at":"2025-11-28T15:51:30.017204"
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FString CreatedAt;
 };
@@ -559,6 +569,65 @@ struct FResponseSpeakingQuestions
 
 	UPROPERTY(BlueprintReadWrite, Category = "Speaking")
 	FString answer;
+
+	/// @brief HTTP 응답을 파싱해 구조체를 채웁니다.
+	void SetFromHttpResponse(const TSharedPtr<class IHttpResponse, ESPMode::ThreadSafe>& Response);
+
+	/// @brief 디버그 로그에 응답 내용을 출력합니다.
+	void PrintData() const;
+};
+
+
+DECLARE_DELEGATE_TwoParams(FResponseInterviewHelloDelegate, FResponseInterviewHello&, bool);
+USTRUCT(BlueprintType)
+struct FResponseInterviewHello
+{
+	GENERATED_BODY()
+
+	UPROPERTY(BlueprintReadWrite, Category = "Interview")
+	TArray<FInterviewQuestionData> Questions;
+
+	/// @brief HTTP 응답을 파싱해 구조체를 채웁니다.
+	void SetFromHttpResponse(const TSharedPtr<class IHttpResponse, ESPMode::ThreadSafe>& Response);
+
+	/// @brief 디버그 로그에 응답 내용을 출력합니다.
+	void PrintData() const;
+};
+
+
+
+USTRUCT(BlueprintType)
+struct FInterviewAnswerData
+{
+	GENERATED_BODY()
+
+	UPROPERTY(BlueprintReadWrite)
+	int interview_id;
+
+	UPROPERTY(BlueprintReadWrite)
+	FString answer;
+
+	UPROPERTY(BlueprintReadWrite)
+	int user_id;
+};
+
+USTRUCT(BlueprintType)
+struct FRequestInterviewAnswer
+{
+	GENERATED_BODY()
+
+	UPROPERTY(BlueprintReadWrite, Category = "Interview")
+	TArray<FInterviewAnswerData> answer;
+
+	/// @brief 구조체를 JSON 문자열로 변환합니다.
+	bool ToJsonString(FString& OutJson) const;
+};
+
+DECLARE_DELEGATE_TwoParams(FResponseInterviewAnswerDelegate, FResponseInterviewAnswer&, bool);
+USTRUCT(BlueprintType)
+struct FResponseInterviewAnswer
+{
+	GENERATED_BODY()
 
 	/// @brief HTTP 응답을 파싱해 구조체를 채웁니다.
 	void SetFromHttpResponse(const TSharedPtr<class IHttpResponse, ESPMode::ThreadSafe>& Response);

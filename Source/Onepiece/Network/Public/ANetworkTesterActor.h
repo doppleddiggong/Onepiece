@@ -84,6 +84,15 @@ public:
     UFUNCTION(BlueprintCallable, CallInEditor, Category = "TEST|Voice")
     void RequestSpeakingQuestions();
 
+
+    // =============================================================================
+    // Interview API
+    // =============================================================================
+    UFUNCTION(BlueprintCallable, CallInEditor, Category = "TEST|Interview")
+    void RequestInterviewHello();
+
+    
+    
 private:
     void OnResponseUserRegister(FResponseUserRegister& ResponseData, bool bWasSuccessful);
     void OnResponseUserToken(FResponseUserToken& ResponseData, bool bWasSuccessful);
@@ -92,4 +101,6 @@ private:
     void OnResponseScenario(FResponseScenario& ResponseData, bool bWasSuccessful);
     void OnResponseOcrExtract(FResponseOcrExtract& ResponseData, bool bWasSuccessful);
     void OnResponseSpeakingQuestions(FResponseSpeakingQuestions& ResponseData, bool bWasSuccessful);
+
+    void OnResponseInterviewHello(FResponseInterviewHello& ResponseData, bool bWasSuccessful);
 };

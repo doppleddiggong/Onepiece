@@ -345,6 +345,103 @@ void FResponseSpeakingQuestions::PrintData() const
 	NETWORK_LOG( TEXT("[Speaking Questions] Response - Answer: %s"), *answer);
 }
 
+
+
+void FResponseInterviewHello::SetFromHttpResponse(const TSharedPtr<IHttpResponse, ESPMode::ThreadSafe>& Response)
+{
+	if (!Response.IsValid())
+	{
+		return;
+	}
+
+	FString JsonString = Response->GetContentAsString();
+	TSharedRef<TJsonReader<>> Reader = TJsonReaderFactory<>::Create(JsonString);
+	TArray<TSharedPtr<FJsonValue>> JsonArray;
+
+	if (FJsonSerializer::Deserialize(Reader, JsonArray))
+	{
+		Questions.Empty();
+
+		for (const auto& JsonValue : JsonArray)
+		{
+			TSharedPtr<FJsonObject> JsonObject = JsonValue->AsObject();
+			if (JsonObject.IsValid())
+			{
+				FInterviewQuestionData QuestionData;
+				QuestionData.Id = JsonObject->GetIntegerField(TEXT("id"));
+				QuestionData.TypeCode = JsonObject->GetIntegerField(TEXT("type_code"));
+				QuestionData.Eng = JsonObject->GetStringField(TEXT("eng"));
+				QuestionData.Kor = JsonObject->GetStringField(TEXT("kor"));
+				QuestionData.EngKey = JsonObject->GetStringField(TEXT("eng_key"));
+				QuestionData.KorKey = JsonObject->GetStringField(TEXT("kor_key"));
+
+				// created_at 필드 파싱 (optional)
+				JsonObject->TryGetStringField(TEXT("created_at"), QuestionData.CreatedAt);
+
+				Questions.Add(QuestionData);
+			}
+		}
+
+		NETWORK_LOG(TEXT("[Interview Hello] Successfully parsed %d questions"), Questions.Num());
+	}
+	else
+	{
+		NETWORK_LOG(TEXT("[Interview Hello] Failed to parse JSON array"));
+	}
+}
+
+void FResponseInterviewHello::PrintData() const
+{
+	NETWORK_LOG(TEXT("[Interview Hello] Response - Questions Count: %d"), Questions.Num());
+	for (const auto& Question : Questions)
+	{
+		NETWORK_LOG(TEXT("  - ID: %d, TypeCode: %d, Eng: %s, Kor: %s"),
+			Question.Id, Question.TypeCode, *Question.Eng, *Question.Kor);
+	}
+}
+
+// =================================================================================
+// FRequestInterviewAnswer
+// =================================================================================
+
+bool FRequestInterviewAnswer::ToJsonString(FString& OutJson) const
+{
+	TArray<TSharedPtr<FJsonValue>> JsonArray;
+
+	for (const FInterviewAnswerData& AnswerData : answer)
+	{
+		TSharedPtr<FJsonObject> JsonObject = MakeShared<FJsonObject>();
+		JsonObject->SetNumberField(TEXT("interview_id"), AnswerData.interview_id);
+		JsonObject->SetStringField(TEXT("answer"), AnswerData.answer);
+		JsonObject->SetNumberField(TEXT("user_id"), AnswerData.user_id);
+
+		JsonArray.Add(MakeShared<FJsonValueObject>(JsonObject));
+	}
+
+	TSharedRef<TJsonWriter<>> Writer = TJsonWriterFactory<>::Create(&OutJson);
+	return FJsonSerializer::Serialize(JsonArray, Writer);
+}
+
+// =================================================================================
+// FResponseInterviewAnswer
+// =================================================================================
+
+void FResponseInterviewAnswer::SetFromHttpResponse(const TSharedPtr<IHttpResponse, ESPMode::ThreadSafe>& Response)
+{
+	if (!Response.IsValid())
+	{
+		return;
+	}
+
+	FString JsonString = Response->GetContentAsString();
+	NETWORK_LOG(TEXT("[Interview Answer] Response: %s"), *JsonString);
+}
+
+void FResponseInterviewAnswer::PrintData() const
+{
+	NETWORK_LOG(TEXT("[Interview Answer] Response processed successfully"));
+}
+
 /*
 
 // =================================================================================

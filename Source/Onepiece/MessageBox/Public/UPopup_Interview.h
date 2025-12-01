@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "UBasePopup.h"
+#include "NetworkData.h"
 #include "UPopup_Interview.generated.h"
 
 /**
@@ -17,7 +18,7 @@ class ONEPIECE_API UPopup_Interview : public UBasePopup
 public:
 	/** 팝업 초기화 (필요 시 API 확장) */
 	UFUNCTION(BlueprintCallable)
-	void InitPopup(const FInterviewData& InterviewData);
+	void InitPopup(const FResponseInterviewHello& InterviewData);
 
 protected:
 	virtual void NativeConstruct() override;
@@ -28,6 +29,9 @@ private:
 
 	UFUNCTION()
 	void OnClickSubmit();
+
+	UFUNCTION()
+	void OnResponseInterviewAnswer(FResponseInterviewAnswer& ResponseData, bool bWasSuccessful);
 
 protected:
 	/* ------------------- Layout ------------------- */
@@ -69,4 +73,9 @@ protected:
 	/** 인터뷰 항목 간 간격 (Spacer Height) */
 	UPROPERTY(EditDefaultsOnly, Category="Popup", meta=(ClampMin="0.0", ClampMax="200.0"))
 	float ItemSpacing = 20.0f;
+
+private:
+	/* ------------------- Data ------------------- */
+	/** 저장된 인터뷰 질문 데이터 */
+	TArray<FInterviewQuestionData> SavedQuestions;
 };

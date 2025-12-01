@@ -13,6 +13,8 @@ void UPopup_InterviewItem::NativeConstruct()
 
 void UPopup_InterviewItem::InitItem(const FInterviewQuestionData& Data)
 {
+	this->QuestionData = Data;
+	
 	// 질문 인덱스 설정 (예: "Question.01")
 	if (Txt_Index)
 	{
@@ -37,4 +39,15 @@ FString UPopup_InterviewItem::GetAnswer() const
 	if (Edit_Answer)
 		return Edit_Answer->GetText().ToString();
 	return FString();
+}
+
+FInterviewAnswerData UPopup_InterviewItem::GetAnswerData() const
+{
+	FInterviewAnswerData AnswerData;
+	AnswerData.interview_id = QuestionData.Id;
+	AnswerData.answer = GetAnswer();
+	// TOOD, 이게 뭘까?
+	AnswerData.user_id = 1;
+
+	return AnswerData;
 }

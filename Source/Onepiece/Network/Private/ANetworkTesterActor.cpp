@@ -10,6 +10,7 @@
 #include "NetworkData.h"
 #include "UDialogManager.h"
 #include "UPopupManager.h"
+#include "UPopup_Interview.h"
 #include "UPopup_MsgBox.h"
 #include "Engine/Engine.h"
 
@@ -164,6 +165,21 @@ void ANetworkTesterActor::RequestSpeakingQuestions()
     }
 }
 
+void ANetworkTesterActor::RequestInterviewHello()
+{
+    if (auto KLingoNetwork = UKLingoNetworkSystem::Get(GetWorld()))
+    {
+        PRINTLOG(TEXT("[TEST] RequestInterviewHello"));
+        KLingoNetwork->RequestInterviewHello(
+            FResponseInterviewHelloDelegate::CreateUObject(this, &ANetworkTesterActor::OnResponseInterviewHello)
+        );
+    }
+    else
+    {
+        PRINTLOG(TEXT("UKLingoNetworkSystem not found!"));
+    }
+}
+
 void ANetworkTesterActor::OnResponseScenario(FResponseScenario& ResponseData, bool bWasSuccessful)
 {
     if (bWasSuccessful)
@@ -223,5 +239,27 @@ void ANetworkTesterActor::OnResponseSpeakingQuestions(FResponseSpeakingQuestions
     else
     {
         PRINTLOG(TEXT("--- Speaking Questions FAILED ---"));
+    }
+}
+
+void ANetworkTesterActor::OnResponseInterviewHello(FResponseInterviewHello& ResponseData, bool bWasSuccessful)
+{
+    if (bWasSuccessful)
+    {
+        PRINTLOG(TEXT("--- InterViewHello Questions SUCCESS ---"));
+        ResponseData.PrintData();
+
+
+        if (const auto PopupMgr = UPopupManager::Get(GetWorld()))
+        {
+            if (const auto Popup = Cast<UPopup_Interview>(PopupMgr->ShowPopup(EPopupType::Interview)))
+            {
+                Popup->InitPopup(ResponseData);
+            }
+        }
+    }
+    else
+    {
+        PRINTLOG(TEXT("--- InterViewHello Questions FAILED ---"));
     }
 }
