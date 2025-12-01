@@ -111,7 +111,7 @@ public:
 	FResponseScenario CurScenarioData;
 
 	/// @brief 오답 캐리어 목록
-	UPROPERTY()
+	UPROPERTY(Replicated)
 	TArray<int32> WrongLuggageList;
 	//--------------------------------------------------------------//
 

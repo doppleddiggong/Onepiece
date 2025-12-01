@@ -46,6 +46,8 @@ void ALingoGameState::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutL
 	// Read Quest Data
 	DOREPLIFETIME(ALingoGameState, QuestResult);
 	DOREPLIFETIME(ALingoGameState, bQuestSuccess);
+
+	DOREPLIFETIME(ALingoGameState, WrongLuggageList);
 }
 
 void ALingoGameState::Tick(float DeltaSeconds)
