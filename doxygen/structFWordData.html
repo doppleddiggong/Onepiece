@@ -118,13 +118,13 @@ $(document).ready(function(){initNavTree('structFWordData.html',''); initResizab
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="structFWordData__coll__graph.svg" width="132" height="116"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="structFWordData__coll__graph.svg" width="164" height="116"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public 멤버 함수</h2></td></tr>
-<tr class="memitem:ac9c045482c66908751ad71ce8bff1bcd" id="r_ac9c045482c66908751ad71ce8bff1bcd"><td class="memItemLeft" align="right" valign="top">TArray&lt; <a class="el" href="structFWordData.html">FWordData</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structFWordData.html#ac9c045482c66908751ad71ce8bff1bcd">GetSplitData</a> () const</td></tr>
-<tr class="separator:ac9c045482c66908751ad71ce8bff1bcd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9bdddcc4a104b919c5e0b81acc563359" id="r_a9bdddcc4a104b919c5e0b81acc563359"><td class="memItemLeft" align="right" valign="top">TArray&lt; <a class="el" href="structFPhonemeData.html">FPhonemeData</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structFWordData.html#a9bdddcc4a104b919c5e0b81acc563359">GetPhonemeData</a> () const</td></tr>
+<tr class="separator:a9bdddcc4a104b919c5e0b81acc563359"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public 속성</h2></td></tr>
@@ -138,16 +138,16 @@ Public 속성</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">상세한 설명</h2>
 <div class="textblock"><p>단어 데이터 구조체입니다. </p>
 
-<p class="definition"><a class="el" href="NetworkData_8h_source.html">NetworkData.h</a> 파일의 <a class="el" href="NetworkData_8h_source.html#l00223">223</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="NetworkData_8h_source.html">NetworkData.h</a> 파일의 <a class="el" href="NetworkData_8h_source.html#l00238">238</a> 번째 라인에서 정의되었습니다.</p>
 </div><h2 class="groupheader">멤버 함수 문서화</h2>
-<a id="ac9c045482c66908751ad71ce8bff1bcd" name="ac9c045482c66908751ad71ce8bff1bcd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac9c045482c66908751ad71ce8bff1bcd">&#9670;&#160;</a></span>GetSplitData()</h2>
+<a id="a9bdddcc4a104b919c5e0b81acc563359" name="a9bdddcc4a104b919c5e0b81acc563359"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9bdddcc4a104b919c5e0b81acc563359">&#9670;&#160;</a></span>GetPhonemeData()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">TArray&lt; <a class="el" href="structFWordData.html">FWordData</a> &gt; FWordData::GetSplitData </td>
+          <td class="memname">TArray&lt; <a class="el" href="structFPhonemeData.html">FPhonemeData</a> &gt; FWordData::GetPhonemeData </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -155,39 +155,43 @@ Public 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="NetworkData_8cpp_source.html">NetworkData.cpp</a> 파일의 <a class="el" href="NetworkData_8cpp_source.html#l00024">24</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   25</span>{</div>
-<div class="line"><span class="lineno">   26</span>    TArray&lt;FString&gt; KorWords;</div>
-<div class="line"><span class="lineno">   27</span>    <a class="code hl_variable" href="structFWordData.html#a0c48a651223fd58eedb624c3837e8b3b">Kor</a>.ParseIntoArray(KorWords, TEXT(<span class="stringliteral">&quot; &quot;</span>), <span class="keyword">true</span>);</div>
-<div class="line"><span class="lineno">   28</span> </div>
-<div class="line"><span class="lineno">   29</span>    TArray&lt;FString&gt; EngWords;</div>
-<div class="line"><span class="lineno">   30</span>    <a class="code hl_variable" href="structFWordData.html#ad5cbdc27da99dfca63d216196c807570">Eng</a>.ParseIntoArray(EngWords, TEXT(<span class="stringliteral">&quot; &quot;</span>), <span class="keyword">true</span>);</div>
-<div class="line"><span class="lineno">   31</span> </div>
-<div class="line"><span class="lineno">   32</span>    TArray&lt;FString&gt; PronWords;</div>
-<div class="line"><span class="lineno">   33</span>    <a class="code hl_variable" href="structFWordData.html#a8a359d2cf5e79ca20cbdfe904076dc41">Pronunciation</a>.ParseIntoArray(PronWords, TEXT(<span class="stringliteral">&quot; &quot;</span>), <span class="keyword">true</span>);</div>
-<div class="line"><span class="lineno">   34</span> </div>
-<div class="line"><span class="lineno">   35</span>    <span class="comment">// FWordData 배열 생성</span></div>
-<div class="line"><span class="lineno">   36</span>    TArray&lt;FWordData&gt; WordDataArray;</div>
-<div class="line"><span class="lineno">   37</span>    int32 MaxCount = FMath::Max3(KorWords.Num(), EngWords.Num(), PronWords.Num());</div>
-<div class="line"><span class="lineno">   38</span> </div>
-<div class="line"><span class="lineno">   39</span>    <span class="keywordflow">for</span> (int32 i = 0; i &lt; MaxCount; ++i)</div>
-<div class="line"><span class="lineno">   40</span>    {</div>
-<div class="line"><span class="lineno">   41</span>        <a class="code hl_struct" href="structFWordData.html">FWordData</a> WordData;</div>
-<div class="line"><span class="lineno">   42</span>        WordData.<a class="code hl_variable" href="structFWordData.html#a0c48a651223fd58eedb624c3837e8b3b">Kor</a> = i &lt; KorWords.Num() ? KorWords[i] : TEXT(<span class="stringliteral">&quot;&quot;</span>);</div>
-<div class="line"><span class="lineno">   43</span>        WordData.<a class="code hl_variable" href="structFWordData.html#ad5cbdc27da99dfca63d216196c807570">Eng</a> = i &lt; EngWords.Num() ? EngWords[i] : TEXT(<span class="stringliteral">&quot;&quot;</span>);</div>
-<div class="line"><span class="lineno">   44</span>        WordData.<a class="code hl_variable" href="structFWordData.html#a8a359d2cf5e79ca20cbdfe904076dc41">Pronunciation</a> = i &lt; PronWords.Num() ? PronWords[i] : TEXT(<span class="stringliteral">&quot;&quot;</span>);</div>
-<div class="line"><span class="lineno">   45</span> </div>
-<div class="line"><span class="lineno">   46</span>        WordDataArray.Add(WordData);</div>
-<div class="line"><span class="lineno">   47</span>    }</div>
-<div class="line"><span class="lineno">   48</span> </div>
-<div class="line"><span class="lineno">   49</span>    <span class="keywordflow">return</span> WordDataArray;</div>
-<div class="line"><span class="lineno">   50</span>}</div>
-<div class="ttc" id="astructFWordData_html"><div class="ttname"><a href="structFWordData.html">FWordData</a></div><div class="ttdoc">단어 데이터 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00223">NetworkData.h:224</a></div></div>
-<div class="ttc" id="astructFWordData_html_a0c48a651223fd58eedb624c3837e8b3b"><div class="ttname"><a href="structFWordData.html#a0c48a651223fd58eedb624c3837e8b3b">FWordData::Kor</a></div><div class="ttdeci">FString Kor</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00228">NetworkData.h:228</a></div></div>
-<div class="ttc" id="astructFWordData_html_a8a359d2cf5e79ca20cbdfe904076dc41"><div class="ttname"><a href="structFWordData.html#a8a359d2cf5e79ca20cbdfe904076dc41">FWordData::Pronunciation</a></div><div class="ttdeci">FString Pronunciation</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00234">NetworkData.h:234</a></div></div>
-<div class="ttc" id="astructFWordData_html_ad5cbdc27da99dfca63d216196c807570"><div class="ttname"><a href="structFWordData.html#ad5cbdc27da99dfca63d216196c807570">FWordData::Eng</a></div><div class="ttdeci">FString Eng</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00231">NetworkData.h:231</a></div></div>
+<p class="definition"><a class="el" href="NetworkData_8cpp_source.html">NetworkData.cpp</a> 파일의 <a class="el" href="NetworkData_8cpp_source.html#l00026">26</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   27</span>{</div>
+<div class="line"><span class="lineno">   28</span>    TArray&lt;FString&gt; KorWords;</div>
+<div class="line"><span class="lineno">   29</span>    <a class="code hl_variable" href="structFWordData.html#a0c48a651223fd58eedb624c3837e8b3b">Kor</a>.ParseIntoArray(KorWords, TEXT(<span class="stringliteral">&quot; &quot;</span>), <span class="keyword">true</span>);</div>
+<div class="line"><span class="lineno">   30</span> </div>
+<div class="line"><span class="lineno">   31</span>    TArray&lt;FString&gt; PronWords;</div>
+<div class="line"><span class="lineno">   32</span>    <a class="code hl_variable" href="structFWordData.html#a8a359d2cf5e79ca20cbdfe904076dc41">Pronunciation</a>.ParseIntoArray(PronWords, TEXT(<span class="stringliteral">&quot; &quot;</span>), <span class="keyword">true</span>);</div>
+<div class="line"><span class="lineno">   33</span> </div>
+<div class="line"><span class="lineno">   34</span>    TArray&lt;FPhonemeData&gt; WordDataArray;</div>
+<div class="line"><span class="lineno">   35</span> </div>
+<div class="line"><span class="lineno">   36</span>    <span class="keywordflow">for</span> (int32 i = 0; i &lt; KorWords.Num(); ++i)</div>
+<div class="line"><span class="lineno">   37</span>    {</div>
+<div class="line"><span class="lineno">   38</span>        <a class="code hl_struct" href="structFPhonemeData.html">FPhonemeData</a> Data;</div>
+<div class="line"><span class="lineno">   39</span>        Data.<a class="code hl_variable" href="structFPhonemeData.html#a0c1cc150e086e0a25269012d0bbacc00">Kor</a> = i &lt; KorWords.Num() ? KorWords[i] : TEXT(<span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><span class="lineno">   40</span>        Data.<a class="code hl_variable" href="structFPhonemeData.html#a276f029e26bfaf07af337ce6d35b3f40">Pronunciation</a> = i &lt; PronWords.Num() ? PronWords[i] : TEXT(<span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><span class="lineno">   41</span> </div>
+<div class="line"><span class="lineno">   42</span>        WordDataArray.Add(Data);</div>
+<div class="line"><span class="lineno">   43</span>    }</div>
+<div class="line"><span class="lineno">   44</span> </div>
+<div class="line"><span class="lineno">   45</span>    <span class="keywordflow">return</span> WordDataArray;</div>
+<div class="line"><span class="lineno">   46</span>}</div>
+<div class="ttc" id="astructFPhonemeData_html"><div class="ttname"><a href="structFPhonemeData.html">FPhonemeData</a></div><div class="ttdoc">단어 데이터 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00223">NetworkData.h:224</a></div></div>
+<div class="ttc" id="astructFPhonemeData_html_a0c1cc150e086e0a25269012d0bbacc00"><div class="ttname"><a href="structFPhonemeData.html#a0c1cc150e086e0a25269012d0bbacc00">FPhonemeData::Kor</a></div><div class="ttdeci">FString Kor</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00228">NetworkData.h:228</a></div></div>
+<div class="ttc" id="astructFPhonemeData_html_a276f029e26bfaf07af337ce6d35b3f40"><div class="ttname"><a href="structFPhonemeData.html#a276f029e26bfaf07af337ce6d35b3f40">FPhonemeData::Pronunciation</a></div><div class="ttdeci">FString Pronunciation</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00231">NetworkData.h:231</a></div></div>
+<div class="ttc" id="astructFWordData_html_a0c48a651223fd58eedb624c3837e8b3b"><div class="ttname"><a href="structFWordData.html#a0c48a651223fd58eedb624c3837e8b3b">FWordData::Kor</a></div><div class="ttdeci">FString Kor</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00243">NetworkData.h:243</a></div></div>
+<div class="ttc" id="astructFWordData_html_a8a359d2cf5e79ca20cbdfe904076dc41"><div class="ttname"><a href="structFWordData.html#a8a359d2cf5e79ca20cbdfe904076dc41">FWordData::Pronunciation</a></div><div class="ttdeci">FString Pronunciation</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00249">NetworkData.h:249</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="NetworkData_8h_source.html#l00231">Eng</a>, <a class="el" href="NetworkData_8h_source.html#l00228">Kor</a>, <a class="el" href="NetworkData_8h_source.html#l00234">Pronunciation</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="NetworkData_8h_source.html#l00228">FPhonemeData::Kor</a>, <a class="el" href="NetworkData_8h_source.html#l00243">Kor</a>, <a class="el" href="NetworkData_8h_source.html#l00231">FPhonemeData::Pronunciation</a>, <a class="el" href="NetworkData_8h_source.html#l00249">Pronunciation</a>.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="URichText_8cpp_source.html#l00069">URichText::SetText()</a>.</p>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="structFWordData_a9bdddcc4a104b919c5e0b81acc563359_icgraph.svg" width="419" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -204,9 +208,9 @@ Public 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="NetworkData_8h_source.html">NetworkData.h</a> 파일의 <a class="el" href="NetworkData_8h_source.html#l00231">231</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="NetworkData_8h_source.html">NetworkData.h</a> 파일의 <a class="el" href="NetworkData_8h_source.html#l00246">246</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="NetworkData_8cpp_source.html#l00024">GetSplitData()</a>, <a class="el" href="UWordWidget_8cpp_source.html#l00022">UWordWidget::InitWordData()</a>, <a class="el" href="ANetworkTesterActor_8cpp_source.html#l00231">ANetworkTesterActor::OnResponseScenario()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UWordWidget_8cpp_source.html#l00019">UWordWidget::InitWordData()</a>, <a class="el" href="ANetworkTesterActor_8cpp_source.html#l00231">ANetworkTesterActor::OnResponseScenario()</a>.</p>
 
 </div>
 </div>
@@ -222,9 +226,9 @@ Public 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="NetworkData_8h_source.html">NetworkData.h</a> 파일의 <a class="el" href="NetworkData_8h_source.html#l00228">228</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="NetworkData_8h_source.html">NetworkData.h</a> 파일의 <a class="el" href="NetworkData_8h_source.html#l00243">243</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="NetworkData_8cpp_source.html#l00024">GetSplitData()</a>, <a class="el" href="UWordWidget_8cpp_source.html#l00022">UWordWidget::InitWordData()</a>, <a class="el" href="ANetworkTesterActor_8cpp_source.html#l00231">ANetworkTesterActor::OnResponseScenario()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="NetworkData_8cpp_source.html#l00026">GetPhonemeData()</a>, <a class="el" href="ANetworkTesterActor_8cpp_source.html#l00231">ANetworkTesterActor::OnResponseScenario()</a>.</p>
 
 </div>
 </div>
@@ -240,9 +244,9 @@ Public 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="NetworkData_8h_source.html">NetworkData.h</a> 파일의 <a class="el" href="NetworkData_8h_source.html#l00234">234</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="NetworkData_8h_source.html">NetworkData.h</a> 파일의 <a class="el" href="NetworkData_8h_source.html#l00249">249</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="NetworkData_8cpp_source.html#l00024">GetSplitData()</a>, <a class="el" href="UWordWidget_8cpp_source.html#l00022">UWordWidget::InitWordData()</a>, <a class="el" href="ANetworkTesterActor_8cpp_source.html#l00231">ANetworkTesterActor::OnResponseScenario()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="NetworkData_8cpp_source.html#l00026">GetPhonemeData()</a>, <a class="el" href="ANetworkTesterActor_8cpp_source.html#l00231">ANetworkTesterActor::OnResponseScenario()</a>.</p>
 
 </div>
 </div>
@@ -256,7 +260,7 @@ Public 속성</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="structFWordData.html">FWordData</a></li>
-    <li class="footer">생성시간 : 월 12월 1 2025 11:32:09, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 월 12월 1 2025 15:35:42, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

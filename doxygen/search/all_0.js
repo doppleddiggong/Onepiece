@@ -86,7 +86,7 @@ var searchData=
   ['applycolortomesh_83',['ApplyColorToMesh',['../classAluggage.html#aa5a78203e58b47252c35b9ba5f1cf58c',1,'Aluggage']]],
   ['applyease_84',['ApplyEase',['../UEaseFunctionLibrary_8cpp.html#ab52a811d7352aa71f72330819491dc0c',1,'UEaseFunctionLibrary.cpp']]],
   ['applypatterntomesh_85',['ApplyPatternToMesh',['../classAluggage.html#a5278c16bd28e0ee6fdbf2131aa70d5fc',1,'Aluggage']]],
-  ['applystyle_86',['applystyle',['../classUHoverButton.html#af04af24b8ab1eb2f9b264284b3858d86',1,'UHoverButton::ApplyStyle()'],['../classUImageButton.html#aa15e0db6eb95e5c65f0c98dd434aa941',1,'UImageButton::ApplyStyle()']]],
+  ['applystyle_86',['applystyle',['../classUHoverButton.html#af04af24b8ab1eb2f9b264284b3858d86',1,'UHoverButton::ApplyStyle()'],['../classURichText.html#a73f525d01391aa89fae74995418ef83f',1,'URichText::ApplyStyle()'],['../classUImageButton.html#aa15e0db6eb95e5c65f0c98dd434aa941',1,'UImageButton::ApplyStyle()']]],
   ['applysymbolcolor_87',['ApplySymbolColor',['../classUTextureButton.html#a2fd3408228fae69f8ce876b027aef1b2',1,'UTextureButton']]],
   ['applytextures_88',['ApplyTextures',['../classUTextureButton.html#a75d8d7f850efb5dc16b1eaf457c28674',1,'UTextureButton']]],
   ['arobotplayercontroller_89',['ARobotPlayerController',['../classARobotPlayerController.html',1,'']]],

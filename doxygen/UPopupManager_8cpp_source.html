@@ -216,237 +216,238 @@ $(document).ready(function(){initNavTree('UPopupManager_8cpp_source.html',''); i
 <div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    {</div>
 <div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>        FString MapName = GetWorld()-&gt;GetMapName();</div>
 <div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>        MapName.RemoveFromStart(GetWorld()-&gt;StreamingLevelsPrefix);</div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>        <span class="keywordflow">if</span> (MapName.Contains(TEXT(<span class="stringliteral">&quot;Map1&quot;</span>)))</div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>        {</div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>            <a class="code hl_function" href="classULingoGameHelper.html#a569e70240af4850b5b1a0dafd26d4033">ULingoGameHelper::HideMouseCursor</a>(GetWorld());</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>        }</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    }</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span> </div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    <span class="comment">// 위젯 파괴</span></div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    <span class="keywordflow">if</span> (bDestroyWidget)</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    {</div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>        <a class="code hl_variable" href="classUPopupManager.html#acd192c5957f063bd632bd00a2dcc3c3d">PopupWidgetMap</a>.Remove(Type);</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    }</div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>}</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>        <span class="keywordflow">if</span> (MapName.Contains(TEXT(<span class="stringliteral">&quot;Map1&quot;</span>)) ||</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>            MapName.Contains(TEXT(<span class="stringliteral">&quot;Person&quot;</span>)) )</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>        {</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>            <a class="code hl_function" href="classULingoGameHelper.html#a569e70240af4850b5b1a0dafd26d4033">ULingoGameHelper::HideMouseCursor</a>(GetWorld());</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>        }</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    }</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span> </div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    <span class="comment">// 위젯 파괴</span></div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    <span class="keywordflow">if</span> (bDestroyWidget)</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    {</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>        <a class="code hl_variable" href="classUPopupManager.html#acd192c5957f063bd632bd00a2dcc3c3d">PopupWidgetMap</a>.Remove(Type);</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    }</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>}</div>
 </div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span> </div>
-<div class="foldopen" id="foldopen00116" data-start="{" data-end="}">
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno"><a class="line" href="classUPopupManager.html#adcc326552471b330725da8759d79832e">  116</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUPopupManager.html#adcc326552471b330725da8759d79832e">UPopupManager::HideCurrentPopup</a>(<span class="keywordtype">bool</span> bDestroyWidget)</div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>{</div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUPopupManager.html#ac2470b1f873fd1651aae7c05f10a32b4">PopupStack</a>.Num() == 0)</div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span> </div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    <a class="code hl_enumeration" href="EPopupType_8h.html#a3c98e5bec1eb6dee36b07ed62d8fc635">EPopupType</a> CurrentType = <a class="code hl_variable" href="classUPopupManager.html#ac2470b1f873fd1651aae7c05f10a32b4">PopupStack</a>.Last();</div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>    <a class="code hl_function" href="classUPopupManager.html#ad013faab60f2764e32ff7a16d096b20f">HidePopup</a>(CurrentType, bDestroyWidget);</div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>}</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span> </div>
+<div class="foldopen" id="foldopen00117" data-start="{" data-end="}">
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno"><a class="line" href="classUPopupManager.html#adcc326552471b330725da8759d79832e">  117</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUPopupManager.html#adcc326552471b330725da8759d79832e">UPopupManager::HideCurrentPopup</a>(<span class="keywordtype">bool</span> bDestroyWidget)</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>{</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUPopupManager.html#ac2470b1f873fd1651aae7c05f10a32b4">PopupStack</a>.Num() == 0)</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span> </div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>    <a class="code hl_enumeration" href="EPopupType_8h.html#a3c98e5bec1eb6dee36b07ed62d8fc635">EPopupType</a> CurrentType = <a class="code hl_variable" href="classUPopupManager.html#ac2470b1f873fd1651aae7c05f10a32b4">PopupStack</a>.Last();</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>    <a class="code hl_function" href="classUPopupManager.html#ad013faab60f2764e32ff7a16d096b20f">HidePopup</a>(CurrentType, bDestroyWidget);</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>}</div>
 </div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span> </div>
-<div class="foldopen" id="foldopen00125" data-start="{" data-end="}">
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno"><a class="line" href="classUPopupManager.html#a87fd02614031eb6809cf50df803cddef">  125</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUPopupManager.html#a87fd02614031eb6809cf50df803cddef">UPopupManager::HideAllPopups</a>(<span class="keywordtype">bool</span> bDestroyWidgets)</div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>{</div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>    <span class="comment">// 스택을 역순으로 순회하며 모두 닫기</span></div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>    <span class="keywordflow">while</span> (<a class="code hl_variable" href="classUPopupManager.html#ac2470b1f873fd1651aae7c05f10a32b4">PopupStack</a>.Num() &gt; 0)</div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>    {</div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>        <a class="code hl_function" href="classUPopupManager.html#adcc326552471b330725da8759d79832e">HideCurrentPopup</a>(bDestroyWidgets);</div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>    }</div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>}</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span> </div>
+<div class="foldopen" id="foldopen00126" data-start="{" data-end="}">
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno"><a class="line" href="classUPopupManager.html#a87fd02614031eb6809cf50df803cddef">  126</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUPopupManager.html#a87fd02614031eb6809cf50df803cddef">UPopupManager::HideAllPopups</a>(<span class="keywordtype">bool</span> bDestroyWidgets)</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>{</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>    <span class="comment">// 스택을 역순으로 순회하며 모두 닫기</span></div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>    <span class="keywordflow">while</span> (<a class="code hl_variable" href="classUPopupManager.html#ac2470b1f873fd1651aae7c05f10a32b4">PopupStack</a>.Num() &gt; 0)</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>    {</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>        <a class="code hl_function" href="classUPopupManager.html#adcc326552471b330725da8759d79832e">HideCurrentPopup</a>(bDestroyWidgets);</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    }</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>}</div>
 </div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span> </div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span><span class="comment">// ========================================</span></div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span><span class="comment">// 팝업 쿼리 함수</span></div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span><span class="comment">// ========================================</span></div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span> </div>
-<div class="foldopen" id="foldopen00138" data-start="{" data-end="}">
-<div class="line"><a id="l00138" name="l00138"></a><span class="lineno"><a class="line" href="classUPopupManager.html#af6cdb29903a25700f4b4e0bba6a46c35">  138</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="classUPopupManager.html#af6cdb29903a25700f4b4e0bba6a46c35">UPopupManager::GetCurrentPopupType</a>(<a class="code hl_enumeration" href="EPopupType_8h.html#a3c98e5bec1eb6dee36b07ed62d8fc635">EPopupType</a>&amp; OutType)<span class="keyword"> const</span></div>
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span><span class="keyword"></span>{</div>
-<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUPopupManager.html#ac2470b1f873fd1651aae7c05f10a32b4">PopupStack</a>.Num() == 0)</div>
-<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span> </div>
-<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>    OutType = <a class="code hl_variable" href="classUPopupManager.html#ac2470b1f873fd1651aae7c05f10a32b4">PopupStack</a>.Last();</div>
-<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>}</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span> </div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span><span class="comment">// ========================================</span></div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span><span class="comment">// 팝업 쿼리 함수</span></div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span><span class="comment">// ========================================</span></div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span> </div>
+<div class="foldopen" id="foldopen00139" data-start="{" data-end="}">
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno"><a class="line" href="classUPopupManager.html#af6cdb29903a25700f4b4e0bba6a46c35">  139</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="classUPopupManager.html#af6cdb29903a25700f4b4e0bba6a46c35">UPopupManager::GetCurrentPopupType</a>(<a class="code hl_enumeration" href="EPopupType_8h.html#a3c98e5bec1eb6dee36b07ed62d8fc635">EPopupType</a>&amp; OutType)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span><span class="keyword"></span>{</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUPopupManager.html#ac2470b1f873fd1651aae7c05f10a32b4">PopupStack</a>.Num() == 0)</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span> </div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>    OutType = <a class="code hl_variable" href="classUPopupManager.html#ac2470b1f873fd1651aae7c05f10a32b4">PopupStack</a>.Last();</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>}</div>
 </div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span> </div>
-<div class="foldopen" id="foldopen00147" data-start="{" data-end="}">
-<div class="line"><a id="l00147" name="l00147"></a><span class="lineno"><a class="line" href="classUPopupManager.html#a3cca429d649eb2c95ef06975ed185d87">  147</a></span>UUserWidget* <a class="code hl_function" href="classUPopupManager.html#a3cca429d649eb2c95ef06975ed185d87">UPopupManager::GetCurrentPopupWidget</a>()<span class="keyword"> const</span></div>
-<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span><span class="keyword"></span>{</div>
-<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUPopupManager.html#ac2470b1f873fd1651aae7c05f10a32b4">PopupStack</a>.Num() == 0)</div>
-<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span> </div>
-<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>    <a class="code hl_enumeration" href="EPopupType_8h.html#a3c98e5bec1eb6dee36b07ed62d8fc635">EPopupType</a> CurrentType = <a class="code hl_variable" href="classUPopupManager.html#ac2470b1f873fd1651aae7c05f10a32b4">PopupStack</a>.Last();</div>
-<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classUPopupManager.html#a5dbb83e68c79069b65b43b7bca3cc47e">GetPopupWidget</a>(CurrentType);</div>
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>}</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span> </div>
+<div class="foldopen" id="foldopen00148" data-start="{" data-end="}">
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno"><a class="line" href="classUPopupManager.html#a3cca429d649eb2c95ef06975ed185d87">  148</a></span>UUserWidget* <a class="code hl_function" href="classUPopupManager.html#a3cca429d649eb2c95ef06975ed185d87">UPopupManager::GetCurrentPopupWidget</a>()<span class="keyword"> const</span></div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span><span class="keyword"></span>{</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUPopupManager.html#ac2470b1f873fd1651aae7c05f10a32b4">PopupStack</a>.Num() == 0)</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span> </div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>    <a class="code hl_enumeration" href="EPopupType_8h.html#a3c98e5bec1eb6dee36b07ed62d8fc635">EPopupType</a> CurrentType = <a class="code hl_variable" href="classUPopupManager.html#ac2470b1f873fd1651aae7c05f10a32b4">PopupStack</a>.Last();</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classUPopupManager.html#a5dbb83e68c79069b65b43b7bca3cc47e">GetPopupWidget</a>(CurrentType);</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>}</div>
 </div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span> </div>
-<div class="foldopen" id="foldopen00156" data-start="{" data-end="}">
-<div class="line"><a id="l00156" name="l00156"></a><span class="lineno"><a class="line" href="classUPopupManager.html#a5dbb83e68c79069b65b43b7bca3cc47e">  156</a></span>UUserWidget* <a class="code hl_function" href="classUPopupManager.html#a5dbb83e68c79069b65b43b7bca3cc47e">UPopupManager::GetPopupWidget</a>(<a class="code hl_enumeration" href="EPopupType_8h.html#a3c98e5bec1eb6dee36b07ed62d8fc635">EPopupType</a> Type)<span class="keyword"> const</span></div>
-<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span><span class="keyword"></span>{</div>
-<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>    <span class="comment">// 1. 해당 타입의 팝업이 맵에 있는지 확인</span></div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classUPopupManager.html#acd192c5957f063bd632bd00a2dcc3c3d">PopupWidgetMap</a>.Contains(Type))</div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span> </div>
-<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>    <span class="comment">// 2. 맵에서 위젯 가져오기</span></div>
-<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>    UUserWidget* Widget = <a class="code hl_variable" href="classUPopupManager.html#acd192c5957f063bd632bd00a2dcc3c3d">PopupWidgetMap</a>[Type];</div>
-<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span> </div>
-<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>    <span class="comment">// 3. 위젯이 유효한지 확인 후 반환</span></div>
-<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>    <span class="keywordflow">return</span> Widget;</div>
-<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>}</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span> </div>
+<div class="foldopen" id="foldopen00157" data-start="{" data-end="}">
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno"><a class="line" href="classUPopupManager.html#a5dbb83e68c79069b65b43b7bca3cc47e">  157</a></span>UUserWidget* <a class="code hl_function" href="classUPopupManager.html#a5dbb83e68c79069b65b43b7bca3cc47e">UPopupManager::GetPopupWidget</a>(<a class="code hl_enumeration" href="EPopupType_8h.html#a3c98e5bec1eb6dee36b07ed62d8fc635">EPopupType</a> Type)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span><span class="keyword"></span>{</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>    <span class="comment">// 1. 해당 타입의 팝업이 맵에 있는지 확인</span></div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classUPopupManager.html#acd192c5957f063bd632bd00a2dcc3c3d">PopupWidgetMap</a>.Contains(Type))</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span> </div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>    <span class="comment">// 2. 맵에서 위젯 가져오기</span></div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>    UUserWidget* Widget = <a class="code hl_variable" href="classUPopupManager.html#acd192c5957f063bd632bd00a2dcc3c3d">PopupWidgetMap</a>[Type];</div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span> </div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>    <span class="comment">// 3. 위젯이 유효한지 확인 후 반환</span></div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>    <span class="keywordflow">return</span> Widget;</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>}</div>
 </div>
-<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span> </div>
-<div class="foldopen" id="foldopen00169" data-start="{" data-end="}">
-<div class="line"><a id="l00169" name="l00169"></a><span class="lineno"><a class="line" href="classUPopupManager.html#a80d7a93868caf4c572c3cae990633094">  169</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="classUPopupManager.html#a80d7a93868caf4c572c3cae990633094">UPopupManager::IsPopupInStack</a>(<a class="code hl_enumeration" href="EPopupType_8h.html#a3c98e5bec1eb6dee36b07ed62d8fc635">EPopupType</a> Type)<span class="keyword"> const</span></div>
-<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span><span class="keyword"></span>{</div>
-<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classUPopupManager.html#ac2470b1f873fd1651aae7c05f10a32b4">PopupStack</a>.Contains(Type);</div>
-<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>}</div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span> </div>
+<div class="foldopen" id="foldopen00170" data-start="{" data-end="}">
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno"><a class="line" href="classUPopupManager.html#a80d7a93868caf4c572c3cae990633094">  170</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="classUPopupManager.html#a80d7a93868caf4c572c3cae990633094">UPopupManager::IsPopupInStack</a>(<a class="code hl_enumeration" href="EPopupType_8h.html#a3c98e5bec1eb6dee36b07ed62d8fc635">EPopupType</a> Type)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span><span class="keyword"></span>{</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classUPopupManager.html#ac2470b1f873fd1651aae7c05f10a32b4">PopupStack</a>.Contains(Type);</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>}</div>
 </div>
-<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span> </div>
-<div class="foldopen" id="foldopen00174" data-start="{" data-end="}">
-<div class="line"><a id="l00174" name="l00174"></a><span class="lineno"><a class="line" href="classUPopupManager.html#ab2f6b858d7b07e548faaadd2b4bf3e4e">  174</a></span>int32 <a class="code hl_function" href="classUPopupManager.html#ab2f6b858d7b07e548faaadd2b4bf3e4e">UPopupManager::GetPopupStackCount</a>()<span class="keyword"> const</span></div>
-<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span><span class="keyword"></span>{</div>
-<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classUPopupManager.html#ac2470b1f873fd1651aae7c05f10a32b4">PopupStack</a>.Num();</div>
-<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>}</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span> </div>
+<div class="foldopen" id="foldopen00175" data-start="{" data-end="}">
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno"><a class="line" href="classUPopupManager.html#ab2f6b858d7b07e548faaadd2b4bf3e4e">  175</a></span>int32 <a class="code hl_function" href="classUPopupManager.html#ab2f6b858d7b07e548faaadd2b4bf3e4e">UPopupManager::GetPopupStackCount</a>()<span class="keyword"> const</span></div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span><span class="keyword"></span>{</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classUPopupManager.html#ac2470b1f873fd1651aae7c05f10a32b4">PopupStack</a>.Num();</div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>}</div>
 </div>
-<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span> </div>
-<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span><span class="comment">// ========================================</span></div>
-<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span><span class="comment">// 메시지 박스 전용 함수</span></div>
-<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span><span class="comment">// ========================================</span></div>
-<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span> </div>
-<div class="foldopen" id="foldopen00183" data-start="{" data-end="}">
-<div class="line"><a id="l00183" name="l00183"></a><span class="lineno"><a class="line" href="classUPopupManager.html#ac465e4223d51ce7106f426d0ce3a2605">  183</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUPopupManager.html#ac465e4223d51ce7106f426d0ce3a2605">UPopupManager::ShowMsgBox</a>(</div>
-<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>    <span class="keyword">const</span> FString&amp; InTitle,</div>
-<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>    <span class="keyword">const</span> FString&amp; InDescription,</div>
-<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>    <a class="code hl_enumeration" href="UPopup__MsgBox_8h.html#a19e1d6071fbd1a8d0f3a0ac7c630df51">EMsgBoxType</a> InType,</div>
-<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>    <span class="keyword">const</span> FOnMsgBoxOkDelegate&amp; InOkDelegate)</div>
-<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>{</div>
-<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>    UUserWidget* Widget = <a class="code hl_function" href="classUPopupManager.html#a9ec64dea54a5110dedc39ffe0ba1ad0d">ShowPopup</a>(EPopupType::MsgBox);</div>
-<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>    <span class="keywordflow">if</span> (!Widget)</div>
-<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span> </div>
-<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> MsgBox = Cast&lt;UPopup_MsgBox&gt;(Widget))</div>
-<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>    {</div>
-<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>        MsgBox-&gt;InitPopup(InTitle, InDescription, InType, InOkDelegate);</div>
-<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>    }</div>
-<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>}</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span> </div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span><span class="comment">// ========================================</span></div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span><span class="comment">// 메시지 박스 전용 함수</span></div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span><span class="comment">// ========================================</span></div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span> </div>
+<div class="foldopen" id="foldopen00184" data-start="{" data-end="}">
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno"><a class="line" href="classUPopupManager.html#ac465e4223d51ce7106f426d0ce3a2605">  184</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUPopupManager.html#ac465e4223d51ce7106f426d0ce3a2605">UPopupManager::ShowMsgBox</a>(</div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>    <span class="keyword">const</span> FString&amp; InTitle,</div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>    <span class="keyword">const</span> FString&amp; InDescription,</div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>    <a class="code hl_enumeration" href="UPopup__MsgBox_8h.html#a19e1d6071fbd1a8d0f3a0ac7c630df51">EMsgBoxType</a> InType,</div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>    <span class="keyword">const</span> FOnMsgBoxOkDelegate&amp; InOkDelegate)</div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>{</div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>    UUserWidget* Widget = <a class="code hl_function" href="classUPopupManager.html#a9ec64dea54a5110dedc39ffe0ba1ad0d">ShowPopup</a>(EPopupType::MsgBox);</div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>    <span class="keywordflow">if</span> (!Widget)</div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span> </div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> MsgBox = Cast&lt;UPopup_MsgBox&gt;(Widget))</div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>    {</div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>        MsgBox-&gt;InitPopup(InTitle, InDescription, InType, InOkDelegate);</div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>    }</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>}</div>
 </div>
-<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span> </div>
-<div class="foldopen" id="foldopen00199" data-start="{" data-end="}">
-<div class="line"><a id="l00199" name="l00199"></a><span class="lineno"><a class="line" href="classUPopupManager.html#af4a2cd13f4ec91e3c7f87b1b3033857a">  199</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUPopupManager.html#ac465e4223d51ce7106f426d0ce3a2605">UPopupManager::ShowMsgBox</a>(</div>
-<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>    <span class="keyword">const</span> FString&amp; InTitle,</div>
-<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>    <span class="keyword">const</span> FString&amp; InDescription,</div>
-<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>    <a class="code hl_enumeration" href="UPopup__MsgBox_8h.html#a19e1d6071fbd1a8d0f3a0ac7c630df51">EMsgBoxType</a> InType,</div>
-<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>    <span class="keyword">const</span> FOnMsgBoxOkDelegate&amp; InOkDelegate,</div>
-<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>    <span class="keyword">const</span> FOnMsgBoxCancelDelegate&amp; InCancelDelegate)</div>
-<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>{</div>
-<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>    UUserWidget* Widget = <a class="code hl_function" href="classUPopupManager.html#a9ec64dea54a5110dedc39ffe0ba1ad0d">ShowPopup</a>(EPopupType::MsgBox);</div>
-<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>    <span class="keywordflow">if</span> (!Widget)</div>
-<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span> </div>
-<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> Popup = Cast&lt;UPopup_MsgBox&gt;(Widget))</div>
-<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>    {</div>
-<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>        Popup-&gt;InitPopup(InTitle, InDescription, InType, InOkDelegate, InCancelDelegate);</div>
-<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>    }</div>
-<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>}</div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span> </div>
+<div class="foldopen" id="foldopen00200" data-start="{" data-end="}">
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno"><a class="line" href="classUPopupManager.html#af4a2cd13f4ec91e3c7f87b1b3033857a">  200</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUPopupManager.html#ac465e4223d51ce7106f426d0ce3a2605">UPopupManager::ShowMsgBox</a>(</div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>    <span class="keyword">const</span> FString&amp; InTitle,</div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>    <span class="keyword">const</span> FString&amp; InDescription,</div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>    <a class="code hl_enumeration" href="UPopup__MsgBox_8h.html#a19e1d6071fbd1a8d0f3a0ac7c630df51">EMsgBoxType</a> InType,</div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>    <span class="keyword">const</span> FOnMsgBoxOkDelegate&amp; InOkDelegate,</div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>    <span class="keyword">const</span> FOnMsgBoxCancelDelegate&amp; InCancelDelegate)</div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>{</div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>    UUserWidget* Widget = <a class="code hl_function" href="classUPopupManager.html#a9ec64dea54a5110dedc39ffe0ba1ad0d">ShowPopup</a>(EPopupType::MsgBox);</div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>    <span class="keywordflow">if</span> (!Widget)</div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span> </div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> Popup = Cast&lt;UPopup_MsgBox&gt;(Widget))</div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>    {</div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>        Popup-&gt;InitPopup(InTitle, InDescription, InType, InOkDelegate, InCancelDelegate);</div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>    }</div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>}</div>
 </div>
-<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span> </div>
-<div class="foldopen" id="foldopen00216" data-start="{" data-end="}">
-<div class="line"><a id="l00216" name="l00216"></a><span class="lineno"><a class="line" href="classUPopupManager.html#a38f8ff06e48688a9c9bfa99ed9bf891b">  216</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUPopupManager.html#a38f8ff06e48688a9c9bfa99ed9bf891b">UPopupManager::ShowMsgBoxSimple</a>(</div>
-<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>    <span class="keyword">const</span> FString&amp; InTitle,</div>
-<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>    <span class="keyword">const</span> FString&amp; InDescription,</div>
-<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>    <a class="code hl_enumeration" href="UPopup__MsgBox_8h.html#a19e1d6071fbd1a8d0f3a0ac7c630df51">EMsgBoxType</a> InType)</div>
-<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>{</div>
-<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>    <span class="comment">// 델리게이트 없이 팝업만 표시 (블루프린트용)</span></div>
-<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>    UUserWidget* Widget = <a class="code hl_function" href="classUPopupManager.html#a9ec64dea54a5110dedc39ffe0ba1ad0d">ShowPopup</a>(EPopupType::MsgBox);</div>
-<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>    <span class="keywordflow">if</span> (!Widget)</div>
-<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span> </div>
-<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> MsgBox = Cast&lt;UPopup_MsgBox&gt;(Widget))</div>
-<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>    {</div>
-<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>        <span class="comment">// 빈 델리게이트로 초기화</span></div>
-<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>        FOnMsgBoxOkDelegate EmptyOkDelegate;</div>
-<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>        FOnMsgBoxCancelDelegate EmptyCancelDelegate;</div>
-<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>        MsgBox-&gt;InitPopup(InTitle, InDescription, InType, EmptyOkDelegate, EmptyCancelDelegate);</div>
-<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>    }</div>
-<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>}</div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span> </div>
+<div class="foldopen" id="foldopen00217" data-start="{" data-end="}">
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno"><a class="line" href="classUPopupManager.html#a38f8ff06e48688a9c9bfa99ed9bf891b">  217</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUPopupManager.html#a38f8ff06e48688a9c9bfa99ed9bf891b">UPopupManager::ShowMsgBoxSimple</a>(</div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>    <span class="keyword">const</span> FString&amp; InTitle,</div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>    <span class="keyword">const</span> FString&amp; InDescription,</div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>    <a class="code hl_enumeration" href="UPopup__MsgBox_8h.html#a19e1d6071fbd1a8d0f3a0ac7c630df51">EMsgBoxType</a> InType)</div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>{</div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>    <span class="comment">// 델리게이트 없이 팝업만 표시 (블루프린트용)</span></div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>    UUserWidget* Widget = <a class="code hl_function" href="classUPopupManager.html#a9ec64dea54a5110dedc39ffe0ba1ad0d">ShowPopup</a>(EPopupType::MsgBox);</div>
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>    <span class="keywordflow">if</span> (!Widget)</div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span> </div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> MsgBox = Cast&lt;UPopup_MsgBox&gt;(Widget))</div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>    {</div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>        <span class="comment">// 빈 델리게이트로 초기화</span></div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>        FOnMsgBoxOkDelegate EmptyOkDelegate;</div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>        FOnMsgBoxCancelDelegate EmptyCancelDelegate;</div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>        MsgBox-&gt;InitPopup(InTitle, InDescription, InType, EmptyOkDelegate, EmptyCancelDelegate);</div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>    }</div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>}</div>
 </div>
-<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span> </div>
-<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span><span class="comment">// ========================================</span></div>
-<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span><span class="comment">// 내부 헬퍼 함수</span></div>
-<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span><span class="comment">// ========================================</span></div>
-<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span> </div>
-<div class="foldopen" id="foldopen00239" data-start="{" data-end="}">
-<div class="line"><a id="l00239" name="l00239"></a><span class="lineno"><a class="line" href="classUPopupManager.html#a868be975b8f282f005df71f12a739ea5">  239</a></span>UUserWidget* <a class="code hl_function" href="classUPopupManager.html#a868be975b8f282f005df71f12a739ea5">UPopupManager::EnsurePopupWidget</a>(<a class="code hl_enumeration" href="EPopupType_8h.html#a3c98e5bec1eb6dee36b07ed62d8fc635">EPopupType</a> Type)</div>
-<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>{</div>
-<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>    UWorld* World = GetWorld();</div>
-<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>    <span class="keywordflow">if</span> (!World || !World-&gt;IsGameWorld())</div>
-<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span> </div>
-<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>    <span class="comment">// 이미 생성된 위젯이 있는지 확인</span></div>
-<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>    UUserWidget** ExistingWidgetPtr = <a class="code hl_variable" href="classUPopupManager.html#acd192c5957f063bd632bd00a2dcc3c3d">PopupWidgetMap</a>.Find(Type);</div>
-<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>    <span class="keywordflow">if</span> (ExistingWidgetPtr &amp;&amp; IsValid(*ExistingWidgetPtr))</div>
-<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>    {</div>
-<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>        UUserWidget* ExistingWidget = *ExistingWidgetPtr;</div>
-<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>        <span class="comment">// 같은 월드인지 확인</span></div>
-<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>        <span class="keywordflow">if</span> (ExistingWidget-&gt;GetWorld() == World)</div>
-<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>        {</div>
-<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span>            <span class="keywordflow">return</span> ExistingWidget;</div>
-<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span>        }</div>
-<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span>        <span class="keywordflow">else</span></div>
-<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>        {</div>
-<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span>            <span class="comment">// 다른 월드면 제거</span></div>
-<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>            <span class="keywordflow">if</span> (ExistingWidget-&gt;IsInViewport())</div>
-<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span>                ExistingWidget-&gt;RemoveFromParent();</div>
-<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>            <a class="code hl_variable" href="classUPopupManager.html#acd192c5957f063bd632bd00a2dcc3c3d">PopupWidgetMap</a>.Remove(Type);</div>
-<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>        }</div>
-<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span>    }</div>
-<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span> </div>
-<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span>    <span class="comment">// 팝업 클래스 가져오기</span></div>
-<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span>    TSubclassOf&lt;UUserWidget&gt;* PopupClassPtr = <a class="code hl_variable" href="classUPopupManager.html#ad2288f01f50f8c8eb6212dcbde4ea860">PopupClassMap</a>.Find(Type);</div>
-<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span>    <span class="keywordflow">if</span> (!PopupClassPtr || !(*PopupClassPtr))</div>
-<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span>    {</div>
-<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[UPopupManager] No popup class registered for type: %s&quot;</span>),</div>
-<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span>            *<a class="code hl_define" href="Macro_8h.html#af2ddd5315380cee79064cc40b337ab46">ENUM_TO_NAME</a>(<a class="code hl_enumeration" href="EPopupType_8h.html#a3c98e5bec1eb6dee36b07ed62d8fc635">EPopupType</a>, Type));</div>
-<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span>    }</div>
-<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span> </div>
-<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span>    <span class="comment">// 플레이어 컨트롤러 가져오기</span></div>
-<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span>    ULocalPlayer* LocalPlayer = GetLocalPlayer();</div>
-<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span>    <span class="keywordflow">if</span> (!LocalPlayer)</div>
-<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span> </div>
-<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span>    APlayerController* PC = LocalPlayer-&gt;GetPlayerController(World);</div>
-<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span>    <span class="keywordflow">if</span> (!PC)</div>
-<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span> </div>
-<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span>    <span class="comment">// 위젯 생성</span></div>
-<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span>    UUserWidget* NewWidget = CreateWidget&lt;UUserWidget&gt;(PC, *PopupClassPtr);</div>
-<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span>    <span class="keywordflow">if</span> (!NewWidget)</div>
-<div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span>    {</div>
-<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[UPopupManager] Failed to create widget for type: %s&quot;</span>),</div>
-<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span>            *<a class="code hl_define" href="Macro_8h.html#af2ddd5315380cee79064cc40b337ab46">ENUM_TO_NAME</a>(<a class="code hl_enumeration" href="EPopupType_8h.html#a3c98e5bec1eb6dee36b07ed62d8fc635">EPopupType</a>, Type));</div>
-<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span>    }</div>
-<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span> </div>
-<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span>    <span class="comment">// 맵에 추가</span></div>
-<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span>    <a class="code hl_variable" href="classUPopupManager.html#acd192c5957f063bd632bd00a2dcc3c3d">PopupWidgetMap</a>.Add(Type, NewWidget);</div>
-<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span> </div>
-<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span>    <span class="keywordflow">return</span> NewWidget;</div>
-<div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span>}</div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span> </div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span><span class="comment">// ========================================</span></div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span><span class="comment">// 내부 헬퍼 함수</span></div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span><span class="comment">// ========================================</span></div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span> </div>
+<div class="foldopen" id="foldopen00240" data-start="{" data-end="}">
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno"><a class="line" href="classUPopupManager.html#a868be975b8f282f005df71f12a739ea5">  240</a></span>UUserWidget* <a class="code hl_function" href="classUPopupManager.html#a868be975b8f282f005df71f12a739ea5">UPopupManager::EnsurePopupWidget</a>(<a class="code hl_enumeration" href="EPopupType_8h.html#a3c98e5bec1eb6dee36b07ed62d8fc635">EPopupType</a> Type)</div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>{</div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>    UWorld* World = GetWorld();</div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>    <span class="keywordflow">if</span> (!World || !World-&gt;IsGameWorld())</div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span> </div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>    <span class="comment">// 이미 생성된 위젯이 있는지 확인</span></div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>    UUserWidget** ExistingWidgetPtr = <a class="code hl_variable" href="classUPopupManager.html#acd192c5957f063bd632bd00a2dcc3c3d">PopupWidgetMap</a>.Find(Type);</div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>    <span class="keywordflow">if</span> (ExistingWidgetPtr &amp;&amp; IsValid(*ExistingWidgetPtr))</div>
+<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>    {</div>
+<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>        UUserWidget* ExistingWidget = *ExistingWidgetPtr;</div>
+<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>        <span class="comment">// 같은 월드인지 확인</span></div>
+<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>        <span class="keywordflow">if</span> (ExistingWidget-&gt;GetWorld() == World)</div>
+<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span>        {</div>
+<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span>            <span class="keywordflow">return</span> ExistingWidget;</div>
+<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span>        }</div>
+<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>        <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span>        {</div>
+<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>            <span class="comment">// 다른 월드면 제거</span></div>
+<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span>            <span class="keywordflow">if</span> (ExistingWidget-&gt;IsInViewport())</div>
+<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>                ExistingWidget-&gt;RemoveFromParent();</div>
+<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>            <a class="code hl_variable" href="classUPopupManager.html#acd192c5957f063bd632bd00a2dcc3c3d">PopupWidgetMap</a>.Remove(Type);</div>
+<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span>        }</div>
+<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span>    }</div>
+<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span> </div>
+<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span>    <span class="comment">// 팝업 클래스 가져오기</span></div>
+<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span>    TSubclassOf&lt;UUserWidget&gt;* PopupClassPtr = <a class="code hl_variable" href="classUPopupManager.html#ad2288f01f50f8c8eb6212dcbde4ea860">PopupClassMap</a>.Find(Type);</div>
+<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span>    <span class="keywordflow">if</span> (!PopupClassPtr || !(*PopupClassPtr))</div>
+<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span>    {</div>
+<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[UPopupManager] No popup class registered for type: %s&quot;</span>),</div>
+<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span>            *<a class="code hl_define" href="Macro_8h.html#af2ddd5315380cee79064cc40b337ab46">ENUM_TO_NAME</a>(<a class="code hl_enumeration" href="EPopupType_8h.html#a3c98e5bec1eb6dee36b07ed62d8fc635">EPopupType</a>, Type));</div>
+<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span>    }</div>
+<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span> </div>
+<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span>    <span class="comment">// 플레이어 컨트롤러 가져오기</span></div>
+<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span>    ULocalPlayer* LocalPlayer = GetLocalPlayer();</div>
+<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span>    <span class="keywordflow">if</span> (!LocalPlayer)</div>
+<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span> </div>
+<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span>    APlayerController* PC = LocalPlayer-&gt;GetPlayerController(World);</div>
+<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span>    <span class="keywordflow">if</span> (!PC)</div>
+<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span> </div>
+<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span>    <span class="comment">// 위젯 생성</span></div>
+<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span>    UUserWidget* NewWidget = CreateWidget&lt;UUserWidget&gt;(PC, *PopupClassPtr);</div>
+<div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span>    <span class="keywordflow">if</span> (!NewWidget)</div>
+<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span>    {</div>
+<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[UPopupManager] Failed to create widget for type: %s&quot;</span>),</div>
+<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span>            *<a class="code hl_define" href="Macro_8h.html#af2ddd5315380cee79064cc40b337ab46">ENUM_TO_NAME</a>(<a class="code hl_enumeration" href="EPopupType_8h.html#a3c98e5bec1eb6dee36b07ed62d8fc635">EPopupType</a>, Type));</div>
+<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span>    }</div>
+<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span> </div>
+<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span>    <span class="comment">// 맵에 추가</span></div>
+<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span>    <a class="code hl_variable" href="classUPopupManager.html#acd192c5957f063bd632bd00a2dcc3c3d">PopupWidgetMap</a>.Add(Type, NewWidget);</div>
+<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span> </div>
+<div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span>    <span class="keywordflow">return</span> NewWidget;</div>
+<div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span>}</div>
 </div>
-<div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span> </div>
-<div class="foldopen" id="foldopen00297" data-start="{" data-end="}">
-<div class="line"><a id="l00297" name="l00297"></a><span class="lineno"><a class="line" href="classUPopupManager.html#a5b4d233a64c6b05a992fb39a64ea62fa">  297</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUPopupManager.html#a5b4d233a64c6b05a992fb39a64ea62fa">UPopupManager::PushPopupToStack</a>(<a class="code hl_enumeration" href="EPopupType_8h.html#a3c98e5bec1eb6dee36b07ed62d8fc635">EPopupType</a> Type)</div>
-<div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span>{</div>
-<div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span>    <span class="comment">// 이미 스택에 있으면 제거 후 재추가 (최상단으로)</span></div>
-<div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span>    <a class="code hl_function" href="classUPopupManager.html#a8ad2411c5a690182acc6258c1bec7dea">RemovePopupFromStack</a>(Type);</div>
-<div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span>    <a class="code hl_variable" href="classUPopupManager.html#ac2470b1f873fd1651aae7c05f10a32b4">PopupStack</a>.Add(Type);</div>
-<div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span>}</div>
+<div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span> </div>
+<div class="foldopen" id="foldopen00298" data-start="{" data-end="}">
+<div class="line"><a id="l00298" name="l00298"></a><span class="lineno"><a class="line" href="classUPopupManager.html#a5b4d233a64c6b05a992fb39a64ea62fa">  298</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUPopupManager.html#a5b4d233a64c6b05a992fb39a64ea62fa">UPopupManager::PushPopupToStack</a>(<a class="code hl_enumeration" href="EPopupType_8h.html#a3c98e5bec1eb6dee36b07ed62d8fc635">EPopupType</a> Type)</div>
+<div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span>{</div>
+<div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span>    <span class="comment">// 이미 스택에 있으면 제거 후 재추가 (최상단으로)</span></div>
+<div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span>    <a class="code hl_function" href="classUPopupManager.html#a8ad2411c5a690182acc6258c1bec7dea">RemovePopupFromStack</a>(Type);</div>
+<div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span>    <a class="code hl_variable" href="classUPopupManager.html#ac2470b1f873fd1651aae7c05f10a32b4">PopupStack</a>.Add(Type);</div>
+<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span>}</div>
 </div>
-<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span> </div>
-<div class="foldopen" id="foldopen00304" data-start="{" data-end="}">
-<div class="line"><a id="l00304" name="l00304"></a><span class="lineno"><a class="line" href="classUPopupManager.html#a8ad2411c5a690182acc6258c1bec7dea">  304</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUPopupManager.html#a8ad2411c5a690182acc6258c1bec7dea">UPopupManager::RemovePopupFromStack</a>(<a class="code hl_enumeration" href="EPopupType_8h.html#a3c98e5bec1eb6dee36b07ed62d8fc635">EPopupType</a> Type)</div>
-<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span>{</div>
-<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span>    <a class="code hl_variable" href="classUPopupManager.html#ac2470b1f873fd1651aae7c05f10a32b4">PopupStack</a>.Remove(Type);</div>
-<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span>}</div>
+<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span> </div>
+<div class="foldopen" id="foldopen00305" data-start="{" data-end="}">
+<div class="line"><a id="l00305" name="l00305"></a><span class="lineno"><a class="line" href="classUPopupManager.html#a8ad2411c5a690182acc6258c1bec7dea">  305</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUPopupManager.html#a8ad2411c5a690182acc6258c1bec7dea">UPopupManager::RemovePopupFromStack</a>(<a class="code hl_enumeration" href="EPopupType_8h.html#a3c98e5bec1eb6dee36b07ed62d8fc635">EPopupType</a> Type)</div>
+<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span>{</div>
+<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span>    <a class="code hl_variable" href="classUPopupManager.html#ac2470b1f873fd1651aae7c05f10a32b4">PopupStack</a>.Remove(Type);</div>
+<div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span>}</div>
 </div>
 <div class="ttc" id="aEPopupType_8h_html_a3c98e5bec1eb6dee36b07ed62d8fc635"><div class="ttname"><a href="EPopupType_8h.html#a3c98e5bec1eb6dee36b07ed62d8fc635">EPopupType</a></div><div class="ttdeci">EPopupType</div><div class="ttdoc">팝업 타입 정의</div><div class="ttdef"><b>Definition</b> <a href="EPopupType_8h_source.html#l00013">EPopupType.h:14</a></div></div>
 <div class="ttc" id="aFComponentHelper_8h_html"><div class="ttname"><a href="FComponentHelper_8h.html">FComponentHelper.h</a></div><div class="ttdoc">FComponentHelper 구조체를 선언합니다.</div></div>
@@ -471,24 +472,24 @@ $(document).ready(function(){initNavTree('UPopupManager_8cpp_source.html',''); i
 <div class="ttc" id="aclassUBasePopup_html"><div class="ttname"><a href="classUBasePopup.html">UBasePopup</a></div><div class="ttdoc">모든 팝업의 기본 클래스</div><div class="ttdef"><b>Definition</b> <a href="UBasePopup_8h_source.html#l00016">UBasePopup.h:17</a></div></div>
 <div class="ttc" id="aclassULingoGameHelper_html_a569e70240af4850b5b1a0dafd26d4033"><div class="ttname"><a href="classULingoGameHelper.html#a569e70240af4850b5b1a0dafd26d4033">ULingoGameHelper::HideMouseCursor</a></div><div class="ttdeci">static void HideMouseCursor(const UObject *WorldContextObject)</div><div class="ttdoc">마우스 커서를 숨기고 게임 전용 입력 모드로 설정합니다.</div><div class="ttdef"><b>Definition</b> <a href="ULingoGameHelper_8cpp_source.html#l00129">ULingoGameHelper.cpp:129</a></div></div>
 <div class="ttc" id="aclassULingoGameHelper_html_af5fbc9538e6adda28f03d547c33ecc48"><div class="ttname"><a href="classULingoGameHelper.html#af5fbc9538e6adda28f03d547c33ecc48">ULingoGameHelper::ShowMouseCursor</a></div><div class="ttdeci">static void ShowMouseCursor(const UObject *WorldContextObject)</div><div class="ttdoc">마우스 커서를 표시하고 게임+UI 입력 모드로 설정합니다.</div><div class="ttdef"><b>Definition</b> <a href="ULingoGameHelper_8cpp_source.html#l00112">ULingoGameHelper.cpp:112</a></div></div>
-<div class="ttc" id="aclassUPopupManager_html_a38f8ff06e48688a9c9bfa99ed9bf891b"><div class="ttname"><a href="classUPopupManager.html#a38f8ff06e48688a9c9bfa99ed9bf891b">UPopupManager::ShowMsgBoxSimple</a></div><div class="ttdeci">void ShowMsgBoxSimple(const FString &amp;InTitle, const FString &amp;InDescription, EMsgBoxType InType)</div><div class="ttdoc">메시지 박스 표시 (블루프린트용 - 델리게이트 없음)</div><div class="ttdef"><b>Definition</b> <a href="UPopupManager_8cpp_source.html#l00216">UPopupManager.cpp:216</a></div></div>
-<div class="ttc" id="aclassUPopupManager_html_a3cca429d649eb2c95ef06975ed185d87"><div class="ttname"><a href="classUPopupManager.html#a3cca429d649eb2c95ef06975ed185d87">UPopupManager::GetCurrentPopupWidget</a></div><div class="ttdeci">UUserWidget * GetCurrentPopupWidget() const</div><div class="ttdoc">현재 활성화된 팝업 위젯 가져오기 (스택 최상단)</div><div class="ttdef"><b>Definition</b> <a href="UPopupManager_8cpp_source.html#l00147">UPopupManager.cpp:147</a></div></div>
-<div class="ttc" id="aclassUPopupManager_html_a5b4d233a64c6b05a992fb39a64ea62fa"><div class="ttname"><a href="classUPopupManager.html#a5b4d233a64c6b05a992fb39a64ea62fa">UPopupManager::PushPopupToStack</a></div><div class="ttdeci">void PushPopupToStack(EPopupType Type)</div><div class="ttdoc">팝업을 스택에 추가</div><div class="ttdef"><b>Definition</b> <a href="UPopupManager_8cpp_source.html#l00297">UPopupManager.cpp:297</a></div></div>
-<div class="ttc" id="aclassUPopupManager_html_a5dbb83e68c79069b65b43b7bca3cc47e"><div class="ttname"><a href="classUPopupManager.html#a5dbb83e68c79069b65b43b7bca3cc47e">UPopupManager::GetPopupWidget</a></div><div class="ttdeci">UUserWidget * GetPopupWidget(EPopupType Type) const</div><div class="ttdoc">특정 타입의 팝업 위젯 가져오기</div><div class="ttdef"><b>Definition</b> <a href="UPopupManager_8cpp_source.html#l00156">UPopupManager.cpp:156</a></div></div>
-<div class="ttc" id="aclassUPopupManager_html_a80d7a93868caf4c572c3cae990633094"><div class="ttname"><a href="classUPopupManager.html#a80d7a93868caf4c572c3cae990633094">UPopupManager::IsPopupInStack</a></div><div class="ttdeci">bool IsPopupInStack(EPopupType Type) const</div><div class="ttdoc">특정 타입의 팝업이 현재 스택에 있는지 확인</div><div class="ttdef"><b>Definition</b> <a href="UPopupManager_8cpp_source.html#l00169">UPopupManager.cpp:169</a></div></div>
-<div class="ttc" id="aclassUPopupManager_html_a868be975b8f282f005df71f12a739ea5"><div class="ttname"><a href="classUPopupManager.html#a868be975b8f282f005df71f12a739ea5">UPopupManager::EnsurePopupWidget</a></div><div class="ttdeci">UUserWidget * EnsurePopupWidget(EPopupType Type)</div><div class="ttdoc">팝업 위젯 생성 또는 가져오기</div><div class="ttdef"><b>Definition</b> <a href="UPopupManager_8cpp_source.html#l00239">UPopupManager.cpp:239</a></div></div>
-<div class="ttc" id="aclassUPopupManager_html_a87fd02614031eb6809cf50df803cddef"><div class="ttname"><a href="classUPopupManager.html#a87fd02614031eb6809cf50df803cddef">UPopupManager::HideAllPopups</a></div><div class="ttdeci">void HideAllPopups(bool bDestroyWidgets=false)</div><div class="ttdoc">모든 팝업 숨기기</div><div class="ttdef"><b>Definition</b> <a href="UPopupManager_8cpp_source.html#l00125">UPopupManager.cpp:125</a></div></div>
-<div class="ttc" id="aclassUPopupManager_html_a8ad2411c5a690182acc6258c1bec7dea"><div class="ttname"><a href="classUPopupManager.html#a8ad2411c5a690182acc6258c1bec7dea">UPopupManager::RemovePopupFromStack</a></div><div class="ttdeci">void RemovePopupFromStack(EPopupType Type)</div><div class="ttdoc">팝업을 스택에서 제거</div><div class="ttdef"><b>Definition</b> <a href="UPopupManager_8cpp_source.html#l00304">UPopupManager.cpp:304</a></div></div>
+<div class="ttc" id="aclassUPopupManager_html_a38f8ff06e48688a9c9bfa99ed9bf891b"><div class="ttname"><a href="classUPopupManager.html#a38f8ff06e48688a9c9bfa99ed9bf891b">UPopupManager::ShowMsgBoxSimple</a></div><div class="ttdeci">void ShowMsgBoxSimple(const FString &amp;InTitle, const FString &amp;InDescription, EMsgBoxType InType)</div><div class="ttdoc">메시지 박스 표시 (블루프린트용 - 델리게이트 없음)</div><div class="ttdef"><b>Definition</b> <a href="UPopupManager_8cpp_source.html#l00217">UPopupManager.cpp:217</a></div></div>
+<div class="ttc" id="aclassUPopupManager_html_a3cca429d649eb2c95ef06975ed185d87"><div class="ttname"><a href="classUPopupManager.html#a3cca429d649eb2c95ef06975ed185d87">UPopupManager::GetCurrentPopupWidget</a></div><div class="ttdeci">UUserWidget * GetCurrentPopupWidget() const</div><div class="ttdoc">현재 활성화된 팝업 위젯 가져오기 (스택 최상단)</div><div class="ttdef"><b>Definition</b> <a href="UPopupManager_8cpp_source.html#l00148">UPopupManager.cpp:148</a></div></div>
+<div class="ttc" id="aclassUPopupManager_html_a5b4d233a64c6b05a992fb39a64ea62fa"><div class="ttname"><a href="classUPopupManager.html#a5b4d233a64c6b05a992fb39a64ea62fa">UPopupManager::PushPopupToStack</a></div><div class="ttdeci">void PushPopupToStack(EPopupType Type)</div><div class="ttdoc">팝업을 스택에 추가</div><div class="ttdef"><b>Definition</b> <a href="UPopupManager_8cpp_source.html#l00298">UPopupManager.cpp:298</a></div></div>
+<div class="ttc" id="aclassUPopupManager_html_a5dbb83e68c79069b65b43b7bca3cc47e"><div class="ttname"><a href="classUPopupManager.html#a5dbb83e68c79069b65b43b7bca3cc47e">UPopupManager::GetPopupWidget</a></div><div class="ttdeci">UUserWidget * GetPopupWidget(EPopupType Type) const</div><div class="ttdoc">특정 타입의 팝업 위젯 가져오기</div><div class="ttdef"><b>Definition</b> <a href="UPopupManager_8cpp_source.html#l00157">UPopupManager.cpp:157</a></div></div>
+<div class="ttc" id="aclassUPopupManager_html_a80d7a93868caf4c572c3cae990633094"><div class="ttname"><a href="classUPopupManager.html#a80d7a93868caf4c572c3cae990633094">UPopupManager::IsPopupInStack</a></div><div class="ttdeci">bool IsPopupInStack(EPopupType Type) const</div><div class="ttdoc">특정 타입의 팝업이 현재 스택에 있는지 확인</div><div class="ttdef"><b>Definition</b> <a href="UPopupManager_8cpp_source.html#l00170">UPopupManager.cpp:170</a></div></div>
+<div class="ttc" id="aclassUPopupManager_html_a868be975b8f282f005df71f12a739ea5"><div class="ttname"><a href="classUPopupManager.html#a868be975b8f282f005df71f12a739ea5">UPopupManager::EnsurePopupWidget</a></div><div class="ttdeci">UUserWidget * EnsurePopupWidget(EPopupType Type)</div><div class="ttdoc">팝업 위젯 생성 또는 가져오기</div><div class="ttdef"><b>Definition</b> <a href="UPopupManager_8cpp_source.html#l00240">UPopupManager.cpp:240</a></div></div>
+<div class="ttc" id="aclassUPopupManager_html_a87fd02614031eb6809cf50df803cddef"><div class="ttname"><a href="classUPopupManager.html#a87fd02614031eb6809cf50df803cddef">UPopupManager::HideAllPopups</a></div><div class="ttdeci">void HideAllPopups(bool bDestroyWidgets=false)</div><div class="ttdoc">모든 팝업 숨기기</div><div class="ttdef"><b>Definition</b> <a href="UPopupManager_8cpp_source.html#l00126">UPopupManager.cpp:126</a></div></div>
+<div class="ttc" id="aclassUPopupManager_html_a8ad2411c5a690182acc6258c1bec7dea"><div class="ttname"><a href="classUPopupManager.html#a8ad2411c5a690182acc6258c1bec7dea">UPopupManager::RemovePopupFromStack</a></div><div class="ttdeci">void RemovePopupFromStack(EPopupType Type)</div><div class="ttdoc">팝업을 스택에서 제거</div><div class="ttdef"><b>Definition</b> <a href="UPopupManager_8cpp_source.html#l00305">UPopupManager.cpp:305</a></div></div>
 <div class="ttc" id="aclassUPopupManager_html_a9ec64dea54a5110dedc39ffe0ba1ad0d"><div class="ttname"><a href="classUPopupManager.html#a9ec64dea54a5110dedc39ffe0ba1ad0d">UPopupManager::ShowPopup</a></div><div class="ttdeci">UUserWidget * ShowPopup(EPopupType Type)</div><div class="ttdoc">팝업 표시</div><div class="ttdef"><b>Definition</b> <a href="UPopupManager_8cpp_source.html#l00038">UPopupManager.cpp:38</a></div></div>
 <div class="ttc" id="aclassUPopupManager_html_aaae4b06c1fadd0db8c10b240b205c7ea"><div class="ttname"><a href="classUPopupManager.html#aaae4b06c1fadd0db8c10b240b205c7ea">UPopupManager::UPopupManager</a></div><div class="ttdeci">UPopupManager()</div><div class="ttdef"><b>Definition</b> <a href="UPopupManager_8cpp_source.html#l00023">UPopupManager.cpp:23</a></div></div>
-<div class="ttc" id="aclassUPopupManager_html_ab2f6b858d7b07e548faaadd2b4bf3e4e"><div class="ttname"><a href="classUPopupManager.html#ab2f6b858d7b07e548faaadd2b4bf3e4e">UPopupManager::GetPopupStackCount</a></div><div class="ttdeci">int32 GetPopupStackCount() const</div><div class="ttdoc">활성화된 팝업 개수 가져오기</div><div class="ttdef"><b>Definition</b> <a href="UPopupManager_8cpp_source.html#l00174">UPopupManager.cpp:174</a></div></div>
+<div class="ttc" id="aclassUPopupManager_html_ab2f6b858d7b07e548faaadd2b4bf3e4e"><div class="ttname"><a href="classUPopupManager.html#ab2f6b858d7b07e548faaadd2b4bf3e4e">UPopupManager::GetPopupStackCount</a></div><div class="ttdeci">int32 GetPopupStackCount() const</div><div class="ttdoc">활성화된 팝업 개수 가져오기</div><div class="ttdef"><b>Definition</b> <a href="UPopupManager_8cpp_source.html#l00175">UPopupManager.cpp:175</a></div></div>
 <div class="ttc" id="aclassUPopupManager_html_ac2470b1f873fd1651aae7c05f10a32b4"><div class="ttname"><a href="classUPopupManager.html#ac2470b1f873fd1651aae7c05f10a32b4">UPopupManager::PopupStack</a></div><div class="ttdeci">TArray&lt; EPopupType &gt; PopupStack</div><div class="ttdoc">팝업 스택 (표시 순서, 마지막이 최상단)</div><div class="ttdef"><b>Definition</b> <a href="UPopupManager_8h_source.html#l00059">UPopupManager.h:59</a></div></div>
-<div class="ttc" id="aclassUPopupManager_html_ac465e4223d51ce7106f426d0ce3a2605"><div class="ttname"><a href="classUPopupManager.html#ac465e4223d51ce7106f426d0ce3a2605">UPopupManager::ShowMsgBox</a></div><div class="ttdeci">void ShowMsgBox(const FString &amp;InTitle, const FString &amp;InDescription, EMsgBoxType InType, const FOnMsgBoxOkDelegate &amp;InOkDelegate)</div><div class="ttdoc">메시지 박스 표시 (OK 버튼만)</div><div class="ttdef"><b>Definition</b> <a href="UPopupManager_8cpp_source.html#l00183">UPopupManager.cpp:183</a></div></div>
+<div class="ttc" id="aclassUPopupManager_html_ac465e4223d51ce7106f426d0ce3a2605"><div class="ttname"><a href="classUPopupManager.html#ac465e4223d51ce7106f426d0ce3a2605">UPopupManager::ShowMsgBox</a></div><div class="ttdeci">void ShowMsgBox(const FString &amp;InTitle, const FString &amp;InDescription, EMsgBoxType InType, const FOnMsgBoxOkDelegate &amp;InOkDelegate)</div><div class="ttdoc">메시지 박스 표시 (OK 버튼만)</div><div class="ttdef"><b>Definition</b> <a href="UPopupManager_8cpp_source.html#l00184">UPopupManager.cpp:184</a></div></div>
 <div class="ttc" id="aclassUPopupManager_html_acd192c5957f063bd632bd00a2dcc3c3d"><div class="ttname"><a href="classUPopupManager.html#acd192c5957f063bd632bd00a2dcc3c3d">UPopupManager::PopupWidgetMap</a></div><div class="ttdeci">TMap&lt; EPopupType, UUserWidget * &gt; PopupWidgetMap</div><div class="ttdoc">팝업 타입별 위젯 인스턴스 맵</div><div class="ttdef"><b>Definition</b> <a href="UPopupManager_8h_source.html#l00055">UPopupManager.h:55</a></div></div>
 <div class="ttc" id="aclassUPopupManager_html_ad013faab60f2764e32ff7a16d096b20f"><div class="ttname"><a href="classUPopupManager.html#ad013faab60f2764e32ff7a16d096b20f">UPopupManager::HidePopup</a></div><div class="ttdeci">void HidePopup(EPopupType Type, bool bDestroyWidget=false)</div><div class="ttdoc">특정 팝업 숨기기</div><div class="ttdef"><b>Definition</b> <a href="UPopupManager_8cpp_source.html#l00081">UPopupManager.cpp:81</a></div></div>
 <div class="ttc" id="aclassUPopupManager_html_ad2288f01f50f8c8eb6212dcbde4ea860"><div class="ttname"><a href="classUPopupManager.html#ad2288f01f50f8c8eb6212dcbde4ea860">UPopupManager::PopupClassMap</a></div><div class="ttdeci">TMap&lt; EPopupType, TSubclassOf&lt; UUserWidget &gt; &gt; PopupClassMap</div><div class="ttdoc">팝업 타입별 위젯 클래스 맵 (에디터에서 설정)</div><div class="ttdef"><b>Definition</b> <a href="UPopupManager_8h_source.html#l00046">UPopupManager.h:46</a></div></div>
-<div class="ttc" id="aclassUPopupManager_html_adcc326552471b330725da8759d79832e"><div class="ttname"><a href="classUPopupManager.html#adcc326552471b330725da8759d79832e">UPopupManager::HideCurrentPopup</a></div><div class="ttdeci">void HideCurrentPopup(bool bDestroyWidget=false)</div><div class="ttdoc">현재 활성화된 팝업 숨기기 (스택 최상단)</div><div class="ttdef"><b>Definition</b> <a href="UPopupManager_8cpp_source.html#l00116">UPopupManager.cpp:116</a></div></div>
-<div class="ttc" id="aclassUPopupManager_html_af6cdb29903a25700f4b4e0bba6a46c35"><div class="ttname"><a href="classUPopupManager.html#af6cdb29903a25700f4b4e0bba6a46c35">UPopupManager::GetCurrentPopupType</a></div><div class="ttdeci">bool GetCurrentPopupType(EPopupType &amp;OutType) const</div><div class="ttdoc">현재 활성화된 팝업 타입 가져오기 (스택 최상단)</div><div class="ttdef"><b>Definition</b> <a href="UPopupManager_8cpp_source.html#l00138">UPopupManager.cpp:138</a></div></div>
+<div class="ttc" id="aclassUPopupManager_html_adcc326552471b330725da8759d79832e"><div class="ttname"><a href="classUPopupManager.html#adcc326552471b330725da8759d79832e">UPopupManager::HideCurrentPopup</a></div><div class="ttdeci">void HideCurrentPopup(bool bDestroyWidget=false)</div><div class="ttdoc">현재 활성화된 팝업 숨기기 (스택 최상단)</div><div class="ttdef"><b>Definition</b> <a href="UPopupManager_8cpp_source.html#l00117">UPopupManager.cpp:117</a></div></div>
+<div class="ttc" id="aclassUPopupManager_html_af6cdb29903a25700f4b4e0bba6a46c35"><div class="ttname"><a href="classUPopupManager.html#af6cdb29903a25700f4b4e0bba6a46c35">UPopupManager::GetCurrentPopupType</a></div><div class="ttdeci">bool GetCurrentPopupType(EPopupType &amp;OutType) const</div><div class="ttdoc">현재 활성화된 팝업 타입 가져오기 (스택 최상단)</div><div class="ttdef"><b>Definition</b> <a href="UPopupManager_8cpp_source.html#l00139">UPopupManager.cpp:139</a></div></div>
 <div class="ttc" id="anamespaceGameLayer_html_a6cdeb86db303cee7271ae8d7246fe8f1"><div class="ttname"><a href="namespaceGameLayer.html#a6cdeb86db303cee7271ae8d7246fe8f1">GameLayer::Popup</a></div><div class="ttdeci">static const int32 Popup</div><div class="ttdef"><b>Definition</b> <a href="Onepiece_8h_source.html#l00009">Onepiece.h:9</a></div></div>
 <div class="ttc" id="astructFComponentHelper_html_ac37cef436e9aaef1f0c655d781a95e66"><div class="ttname"><a href="structFComponentHelper.html#ac37cef436e9aaef1f0c655d781a95e66">FComponentHelper::LoadAsset</a></div><div class="ttdeci">static T * LoadAsset(const TCHAR *Path)</div><div class="ttdef"><b>Definition</b> <a href="FComponentHelper_8h_source.html#l00016">FComponentHelper.h:16</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
@@ -497,7 +498,7 @@ $(document).ready(function(){initNavTree('UPopupManager_8cpp_source.html',''); i
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_47ae9c23f27029060c39af29b069b73d.html">MessageBox</a></li><li class="navelem"><a class="el" href="dir_2a20a70930e57e30643dc72759837dc0.html">Private</a></li><li class="navelem"><a class="el" href="UPopupManager_8cpp.html">UPopupManager.cpp</a></li>
-    <li class="footer">생성시간 : 월 12월 1 2025 11:32:09, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 월 12월 1 2025 15:35:42, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>
