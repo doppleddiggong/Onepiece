@@ -6,6 +6,7 @@
 #include "GameLogging.h"
 #include "IImageWrapper.h"
 #include "IImageWrapperModule.h"
+#include "UImageButton.h"
 #include "Components/Button.h"
 #include "Components/Image.h"
 #include "Components/Overlay.h"
@@ -26,8 +27,8 @@ void UDrawingBoardWidget::NativeConstruct()
 	Super::NativeConstruct();
 	
 	// Button Event
-	Button_Clear->OnClicked.AddDynamic(this, &UDrawingBoardWidget::ClearCanvas);
-	Button_Save->OnClicked.AddDynamic(this, &UDrawingBoardWidget::SaveCanvas);
+	Button_Clear->OnButtonClickedEvent.AddDynamic(this, &UDrawingBoardWidget::ClearCanvas);
+	Button_Save->OnButtonClickedEvent.AddDynamic(this, &UDrawingBoardWidget::SaveCanvas);
 }
 
 FReply UDrawingBoardWidget::NativeOnMouseButtonDown(const FGeometry& InGeometry, const FPointerEvent& InMouseEvent)

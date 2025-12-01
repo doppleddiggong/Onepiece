@@ -29,9 +29,9 @@ protected:
 	UPROPERTY(BlueprintReadOnly, meta=(BindWidget))
 	TObjectPtr<class UImage> Image_Canvas;
 	UPROPERTY(BlueprintReadOnly, meta=(BindWidget))
-	TObjectPtr<class UButton> Button_Clear;
+	TObjectPtr<class UImageButton> Button_Clear;
 	UPROPERTY(BlueprintReadOnly, meta=(BindWidget))
-	TObjectPtr<class UButton> Button_Save;
+	TObjectPtr<class UImageButton> Button_Save;
 	
 	// Values
 	UPROPERTY(BlueprintReadOnly)
