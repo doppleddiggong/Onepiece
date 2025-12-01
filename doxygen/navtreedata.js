@@ -61,14 +61,14 @@ var NAVTREEINDEX =
 [
 "ABroadcastTrigger_8cpp.html",
 "FWordStudyData_8h.html",
-"UKLingoNetworkSystem_8cpp_source.html",
-"classAGate.html#a4de49e26dfae8bb812938c0665a1edf0",
-"classAPlayerControl.html#a720fd22947495a5eda54fa56302da212",
-"classUDialogWidget.html#a5f1a99d811fe6ae7aaee0872d0d962d2",
-"classULingoGameInstance.html#aa43f70d6fffd84706bfbebb23e08db49",
-"classUPopup__Result.html#afcfee3aa20b406078d770e8c9d06b47d",
-"functions_vars_g.html",
-"structFQuestWriteInfo.html"
+"UKLingoNetworkSystem_8cpp.html",
+"classAGate.html#a429a577267caf33a60f87b3bcf7748e8",
+"classAPlayerControl.html#a49c6d11314d21c34209ac16d0dabcfc3",
+"classUDialogManager.html#ae2e4f50f513d59de6c98c56d61f7a10a",
+"classULingoGameInstance.html#a17232e7c2128d3f8af2561f649b27473",
+"classUPopup__Result.html#a9a4bc6d6e03adc7396c7960c41dae0b2",
+"functions_v.html",
+"structFQuestReadInfo.html#a6c00edb53f7a30074b04f7c951c290b6"
 ];
 
 var SYNCONMSG = '패널 동기화를 비활성화하기 위해 클릭하십시오';

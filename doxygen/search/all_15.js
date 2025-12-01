@@ -11,5 +11,5 @@ var searchData=
   ['vfxdata_8',['VFXData',['../classUVFXDataAsset.html#abff13278bec23a7e68aa4153d8b20153',1,'UVFXDataAsset']]],
   ['vfxdatamap_9',['VFXDataMap',['../classUGameVFXManager.html#aaa8a39ad90780ff3bffc4af06971f806',1,'UGameVFXManager']]],
   ['voice_5flog_10',['VOICE_LOG',['../UVoiceFunctionLibrary_8cpp.html#a2fa31b3d591178997ca07d2eca23a062',1,'UVoiceFunctionLibrary.cpp']]],
-  ['voiceconversationsystem_11',['VoiceConversationSystem',['../classAPlayerActor.html#a0c1400db5f943254071089e512a2bb25',1,'APlayerActor']]]
+  ['voiceconversationsystem_11',['voiceconversationsystem',['../classAPlayerActor.html#a0c1400db5f943254071089e512a2bb25',1,'APlayerActor::VoiceConversationSystem'],['../classANetworkTesterActor.html#a112a573b43579514a0ab6f87d492a630',1,'ANetworkTesterActor::VoiceConversationSystem']]]
 ];

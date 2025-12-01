@@ -112,6 +112,9 @@ $(document).ready(function(){initNavTree('namespaceNetworkConfig.html',''); init
 <tr class="memitem:ab5ac57e8f51de6d1740c7a88534a7246" id="r_ab5ac57e8f51de6d1740c7a88534a7246"><td class="memItemLeft" align="right" valign="top">static FString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceNetworkConfig.html#ab5ac57e8f51de6d1740c7a88534a7246">GetFullUrl</a> (const FString &amp;Endpoint)</td></tr>
 <tr class="memdesc:ab5ac57e8f51de6d1740c7a88534a7246"><td class="mdescLeft">&#160;</td><td class="mdescRight">현재 서버 모드에 맞는 HTTP 엔드포인트 URL을 생성합니다.  <br /></td></tr>
 <tr class="separator:ab5ac57e8f51de6d1740c7a88534a7246"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a48c91628e64540f88495507117cfb69f" id="r_a48c91628e64540f88495507117cfb69f"><td class="memItemLeft" align="right" valign="top">static FString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceNetworkConfig.html#a48c91628e64540f88495507117cfb69f">GetFullUrlWithQuery</a> (const FString &amp;Endpoint, const TMap&lt; FString, FString &gt; &amp;QueryParams)</td></tr>
+<tr class="memdesc:a48c91628e64540f88495507117cfb69f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Query 파라미터가 포함된 전체 URL을 반환합니다. 파라미터가 없으면 기본 URL만 반환합니다.  <br /></td></tr>
+<tr class="separator:a48c91628e64540f88495507117cfb69f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a948647fad9ed84a91de549757a7a0e74" id="r_a948647fad9ed84a91de549757a7a0e74"><td class="memItemLeft" align="right" valign="top">static FString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceNetworkConfig.html#a948647fad9ed84a91de549757a7a0e74">GetSocketURL</a> ()</td></tr>
 <tr class="memdesc:a948647fad9ed84a91de549757a7a0e74"><td class="mdescLeft">&#160;</td><td class="mdescRight">현재 서버 모드에서 사용할 WebSocket 주소를 반환합니다.  <br /></td></tr>
 <tr class="separator:a948647fad9ed84a91de549757a7a0e74"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -150,12 +153,12 @@ $(document).ready(function(){initNavTree('namespaceNetworkConfig.html',''); init
 </dl>
 <dl class="section return"><dt>반환값</dt><dd>모드와 포트가 적용된 전체 URL입니다. </dd></dl>
 
-<p class="definition"><a class="el" href="NetworkData_8h_source.html">NetworkData.h</a> 파일의 <a class="el" href="NetworkData_8h_source.html#l00021">21</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   22</span>    {</div>
-<div class="line"><span class="lineno">   23</span>        <span class="keyword">const</span> <a class="code hl_enumeration" href="UCustomNetworkSettings_8h.html#a79cfeb7c9f94018b98c2415dc06d4577">EServerMode</a> Mode = <a class="code hl_function" href="classUCustomNetworkSettings.html#aa089b67ac992ff3aee3dd62629c0df0a">UCustomNetworkSettings::GetCurrentServerMode</a>();</div>
-<div class="line"><span class="lineno">   24</span>        <span class="keyword">const</span> <a class="code hl_struct" href="structFServerConfig.html">FServerConfig</a>&amp; Config = GetDefault&lt;UCustomNetworkSettings&gt;()-&gt;GetConfig(Mode);</div>
-<div class="line"><span class="lineno">   25</span>        <span class="keywordflow">return</span> Config.<a class="code hl_function" href="structFServerConfig.html#ab65e0b73b4679e5efb155dd6f98bac3d">GetFullUrl</a>(Endpoint);</div>
-<div class="line"><span class="lineno">   26</span>    }</div>
+<p class="definition"><a class="el" href="NetworkData_8h_source.html">NetworkData.h</a> 파일의 <a class="el" href="NetworkData_8h_source.html#l00022">22</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   23</span>    {</div>
+<div class="line"><span class="lineno">   24</span>        <span class="keyword">const</span> <a class="code hl_enumeration" href="UCustomNetworkSettings_8h.html#a79cfeb7c9f94018b98c2415dc06d4577">EServerMode</a> Mode = <a class="code hl_function" href="classUCustomNetworkSettings.html#aa089b67ac992ff3aee3dd62629c0df0a">UCustomNetworkSettings::GetCurrentServerMode</a>();</div>
+<div class="line"><span class="lineno">   25</span>        <span class="keyword">const</span> <a class="code hl_struct" href="structFServerConfig.html">FServerConfig</a>&amp; Config = GetDefault&lt;UCustomNetworkSettings&gt;()-&gt;GetConfig(Mode);</div>
+<div class="line"><span class="lineno">   26</span>        <span class="keywordflow">return</span> Config.<a class="code hl_function" href="structFServerConfig.html#ab65e0b73b4679e5efb155dd6f98bac3d">GetFullUrl</a>(Endpoint);</div>
+<div class="line"><span class="lineno">   27</span>    }</div>
 <div class="ttc" id="aUCustomNetworkSettings_8h_html_a79cfeb7c9f94018b98c2415dc06d4577"><div class="ttname"><a href="UCustomNetworkSettings_8h.html#a79cfeb7c9f94018b98c2415dc06d4577">EServerMode</a></div><div class="ttdeci">EServerMode</div><div class="ttdoc">서버 환경(개발/스테이징/라이브)을 나타내는 열거형입니다.</div><div class="ttdef"><b>Definition</b> <a href="UCustomNetworkSettings_8h_source.html#l00013">UCustomNetworkSettings.h:14</a></div></div>
 <div class="ttc" id="aclassUCustomNetworkSettings_html_aa089b67ac992ff3aee3dd62629c0df0a"><div class="ttname"><a href="classUCustomNetworkSettings.html#aa089b67ac992ff3aee3dd62629c0df0a">UCustomNetworkSettings::GetCurrentServerMode</a></div><div class="ttdeci">static EServerMode GetCurrentServerMode()</div><div class="ttdoc">명령줄 또는 설정으로 선택된 서버 모드를 반환합니다.</div><div class="ttdef"><b>Definition</b> <a href="UCustomNetworkSettings_8cpp_source.html#l00010">UCustomNetworkSettings.cpp:10</a></div></div>
 <div class="ttc" id="astructFServerConfig_html"><div class="ttname"><a href="structFServerConfig.html">FServerConfig</a></div><div class="ttdoc">서버 접속 정보를 담는 설정 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="UCustomNetworkSettings_8h_source.html#l00022">UCustomNetworkSettings.h:23</a></div></div>
@@ -163,7 +166,7 @@ $(document).ready(function(){initNavTree('namespaceNetworkConfig.html',''); init
 </div><!-- fragment -->
 <p class="reference">다음을 참조함 :  <a class="el" href="UCustomNetworkSettings_8cpp_source.html#l00010">UCustomNetworkSettings::GetCurrentServerMode()</a>, <a class="el" href="UCustomNetworkSettings_8h_source.html#l00037">FServerConfig::GetFullUrl()</a>.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00588">UKLingoNetworkSystem::RequestInterviewAnswer()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00534">UKLingoNetworkSystem::RequestInterviewHello()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00386">UKLingoNetworkSystem::RequestOcrExtract()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00330">UKLingoNetworkSystem::RequestScenario()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00458">UKLingoNetworkSystem::RequestSpeakingQuestions()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00276">UKLingoNetworkSystem::RequestUserMe()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00146">UKLingoNetworkSystem::RequestUserRegister()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00209">UKLingoNetworkSystem::RequestUserToken()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="NetworkData_8h_source.html#l00031">GetFullUrlWithQuery()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00651">UKLingoNetworkSystem::RequestInterviewAnswer()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00597">UKLingoNetworkSystem::RequestInterviewHello()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00387">UKLingoNetworkSystem::RequestOcrExtract()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00331">UKLingoNetworkSystem::RequestScenario()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00521">UKLingoNetworkSystem::RequestSpeakingQuestions()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00277">UKLingoNetworkSystem::RequestUserMe()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00147">UKLingoNetworkSystem::RequestUserRegister()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00210">UKLingoNetworkSystem::RequestUserToken()</a>.</p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
@@ -176,7 +179,96 @@ $(document).ready(function(){initNavTree('namespaceNetworkConfig.html',''); init
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="namespaceNetworkConfig_ab5ac57e8f51de6d1740c7a88534a7246_icgraph.svg" width="458" height="499"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespaceNetworkConfig_ab5ac57e8f51de6d1740c7a88534a7246_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+
+</div>
+</div>
+<a id="a48c91628e64540f88495507117cfb69f" name="a48c91628e64540f88495507117cfb69f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a48c91628e64540f88495507117cfb69f">&#9670;&#160;</a></span>GetFullUrlWithQuery()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static FString NetworkConfig::GetFullUrlWithQuery </td>
+          <td>(</td>
+          <td class="paramtype">const FString &amp;&#160;</td>
+          <td class="paramname"><em>Endpoint</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const TMap&lt; FString, FString &gt; &amp;&#160;</td>
+          <td class="paramname"><em>QueryParams</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Query 파라미터가 포함된 전체 URL을 반환합니다. 파라미터가 없으면 기본 URL만 반환합니다. </p>
+
+<p class="definition"><a class="el" href="NetworkData_8h_source.html">NetworkData.h</a> 파일의 <a class="el" href="NetworkData_8h_source.html#l00031">31</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   34</span>    {</div>
+<div class="line"><span class="lineno">   35</span>        FString BaseUrl = <a class="code hl_function" href="namespaceNetworkConfig.html#ab5ac57e8f51de6d1740c7a88534a7246">GetFullUrl</a>(Endpoint);</div>
+<div class="line"><span class="lineno">   36</span> </div>
+<div class="line"><span class="lineno">   37</span>        <span class="keywordflow">if</span> (QueryParams.Num() == 0)</div>
+<div class="line"><span class="lineno">   38</span>            <span class="keywordflow">return</span> BaseUrl;</div>
+<div class="line"><span class="lineno">   39</span> </div>
+<div class="line"><span class="lineno">   40</span>        FString QueryString;</div>
+<div class="line"><span class="lineno">   41</span>        <span class="keywordtype">bool</span> bFirst = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   42</span> </div>
+<div class="line"><span class="lineno">   43</span>        <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; Pair : QueryParams)</div>
+<div class="line"><span class="lineno">   44</span>        {</div>
+<div class="line"><span class="lineno">   45</span>            <span class="keywordflow">if</span> (Pair.Key.IsEmpty() || Pair.Value.IsEmpty())</div>
+<div class="line"><span class="lineno">   46</span>                <span class="keywordflow">continue</span>;</div>
+<div class="line"><span class="lineno">   47</span>            </div>
+<div class="line"><span class="lineno">   48</span>            FString EncodedKey   = FGenericPlatformHttp::UrlEncode(Pair.Key);</div>
+<div class="line"><span class="lineno">   49</span>            FString EncodedValue = FGenericPlatformHttp::UrlEncode(Pair.Value);</div>
+<div class="line"><span class="lineno">   50</span> </div>
+<div class="line"><span class="lineno">   51</span>            <span class="keywordflow">if</span> (bFirst)</div>
+<div class="line"><span class="lineno">   52</span>            {</div>
+<div class="line"><span class="lineno">   53</span>                QueryString += FString::Printf(TEXT(<span class="stringliteral">&quot;?%s=%s&quot;</span>), *EncodedKey, *EncodedValue);</div>
+<div class="line"><span class="lineno">   54</span>                bFirst = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   55</span>            }</div>
+<div class="line"><span class="lineno">   56</span>            <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">   57</span>            {</div>
+<div class="line"><span class="lineno">   58</span>                QueryString += FString::Printf(TEXT(<span class="stringliteral">&quot;&amp;%s=%s&quot;</span>), *EncodedKey, *EncodedValue);</div>
+<div class="line"><span class="lineno">   59</span>            }</div>
+<div class="line"><span class="lineno">   60</span>        }</div>
+<div class="line"><span class="lineno">   61</span> </div>
+<div class="line"><span class="lineno">   62</span>        <span class="keywordflow">return</span> BaseUrl + QueryString;</div>
+<div class="line"><span class="lineno">   63</span>    }</div>
+<div class="ttc" id="anamespaceNetworkConfig_html_ab5ac57e8f51de6d1740c7a88534a7246"><div class="ttname"><a href="namespaceNetworkConfig.html#ab5ac57e8f51de6d1740c7a88534a7246">NetworkConfig::GetFullUrl</a></div><div class="ttdeci">static FString GetFullUrl(const FString &amp;Endpoint)</div><div class="ttdoc">현재 서버 모드에 맞는 HTTP 엔드포인트 URL을 생성합니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00022">NetworkData.h:22</a></div></div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="NetworkData_8h_source.html#l00022">GetFullUrl()</a>.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00455">UKLingoNetworkSystem::RequestListenAudio()</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespaceNetworkConfig_a48c91628e64540f88495507117cfb69f_cgraph.svg" width="100%" height="376"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespaceNetworkConfig_a48c91628e64540f88495507117cfb69f_icgraph.svg" width="430" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -207,29 +299,29 @@ $(document).ready(function(){initNavTree('namespaceNetworkConfig.html',''); init
 <p>현재 서버 모드에서 사용할 WebSocket 주소를 반환합니다. </p>
 <dl class="section return"><dt>반환값</dt><dd>ws(s):// 형식의 소켓 접속 URL입니다. </dd></dl>
 
-<p class="definition"><a class="el" href="NetworkData_8h_source.html">NetworkData.h</a> 파일의 <a class="el" href="NetworkData_8h_source.html#l00030">30</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   31</span>    {</div>
-<div class="line"><span class="lineno">   32</span>        <span class="keyword">const</span> <a class="code hl_enumeration" href="UCustomNetworkSettings_8h.html#a79cfeb7c9f94018b98c2415dc06d4577">EServerMode</a> Mode = <a class="code hl_function" href="classUCustomNetworkSettings.html#aa089b67ac992ff3aee3dd62629c0df0a">UCustomNetworkSettings::GetCurrentServerMode</a>();</div>
-<div class="line"><span class="lineno">   33</span>        <span class="keyword">const</span> <a class="code hl_struct" href="structFServerConfig.html">FServerConfig</a>&amp; Config = GetDefault&lt;UCustomNetworkSettings&gt;()-&gt;GetConfig(Mode);</div>
-<div class="line"><span class="lineno">   34</span>        <span class="keywordflow">return</span> Config.<a class="code hl_variable" href="structFServerConfig.html#a192542ce9a719e9f4a9dd468e1e69aea">WebSocketUrl</a>;</div>
-<div class="line"><span class="lineno">   35</span>    }</div>
+<p class="definition"><a class="el" href="NetworkData_8h_source.html">NetworkData.h</a> 파일의 <a class="el" href="NetworkData_8h_source.html#l00067">67</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   68</span>    {</div>
+<div class="line"><span class="lineno">   69</span>        <span class="keyword">const</span> <a class="code hl_enumeration" href="UCustomNetworkSettings_8h.html#a79cfeb7c9f94018b98c2415dc06d4577">EServerMode</a> Mode = <a class="code hl_function" href="classUCustomNetworkSettings.html#aa089b67ac992ff3aee3dd62629c0df0a">UCustomNetworkSettings::GetCurrentServerMode</a>();</div>
+<div class="line"><span class="lineno">   70</span>        <span class="keyword">const</span> <a class="code hl_struct" href="structFServerConfig.html">FServerConfig</a>&amp; Config = GetDefault&lt;UCustomNetworkSettings&gt;()-&gt;GetConfig(Mode);</div>
+<div class="line"><span class="lineno">   71</span>        <span class="keywordflow">return</span> Config.<a class="code hl_variable" href="structFServerConfig.html#a192542ce9a719e9f4a9dd468e1e69aea">WebSocketUrl</a>;</div>
+<div class="line"><span class="lineno">   72</span>    }</div>
 <div class="ttc" id="astructFServerConfig_html_a192542ce9a719e9f4a9dd468e1e69aea"><div class="ttname"><a href="structFServerConfig.html#a192542ce9a719e9f4a9dd468e1e69aea">FServerConfig::WebSocketUrl</a></div><div class="ttdeci">FString WebSocketUrl</div><div class="ttdef"><b>Definition</b> <a href="UCustomNetworkSettings_8h_source.html#l00033">UCustomNetworkSettings.h:33</a></div></div>
 </div><!-- fragment -->
 <p class="reference">다음을 참조함 :  <a class="el" href="UCustomNetworkSettings_8cpp_source.html#l00010">UCustomNetworkSettings::GetCurrentServerMode()</a>, <a class="el" href="UCustomNetworkSettings_8h_source.html#l00033">FServerConfig::WebSocketUrl</a>.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UWebSocketSystem_8cpp_source.html#l00043">UWebSocketSystem::Connect()</a>.</p>
-<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
-<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
 <div class="center"><iframe scrolling="no" frameborder="0" src="namespaceNetworkConfig_a948647fad9ed84a91de549757a7a0e74_cgraph.svg" width="468" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
-<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
-<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div id="dynsection-5-content" class="dyncontent" style="display:none;">
 <div class="center"><iframe scrolling="no" frameborder="0" src="namespaceNetworkConfig_a948647fad9ed84a91de549757a7a0e74_icgraph.svg" width="491" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
@@ -241,7 +333,7 @@ $(document).ready(function(){initNavTree('namespaceNetworkConfig.html',''); init
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespaceNetworkConfig.html">NetworkConfig</a></li>
-    <li class="footer">생성시간 : 월 12월 1 2025 05:02:04, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 월 12월 1 2025 07:15:15, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

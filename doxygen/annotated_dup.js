@@ -59,6 +59,7 @@ var annotated_dup =
     [ "FResponseHealth", "structFResponseHealth.html", "structFResponseHealth" ],
     [ "FResponseInterviewAnswer", "structFResponseInterviewAnswer.html", "structFResponseInterviewAnswer" ],
     [ "FResponseInterviewHello", "structFResponseInterviewHello.html", "structFResponseInterviewHello" ],
+    [ "FResponseListenAudio", "structFResponseListenAudio.html", "structFResponseListenAudio" ],
     [ "FResponseOcrExtract", "structFResponseOcrExtract.html", "structFResponseOcrExtract" ],
     [ "FResponseScenario", "structFResponseScenario.html", "structFResponseScenario" ],
     [ "FResponseSpeakingQuestions", "structFResponseSpeakingQuestions.html", "structFResponseSpeakingQuestions" ],

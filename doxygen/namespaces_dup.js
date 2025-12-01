@@ -34,12 +34,14 @@ var namespaces_dup =
     ] ],
     [ "NetworkConfig", "namespaceNetworkConfig.html", [
       [ "GetFullUrl", "namespaceNetworkConfig.html#ab5ac57e8f51de6d1740c7a88534a7246", null ],
+      [ "GetFullUrlWithQuery", "namespaceNetworkConfig.html#a48c91628e64540f88495507117cfb69f", null ],
       [ "GetSocketURL", "namespaceNetworkConfig.html#a948647fad9ed84a91de549757a7a0e74", null ]
     ] ],
     [ "RequestAPI", "namespaceRequestAPI.html", [
       [ "Health", "namespaceRequestAPI.html#ae1061ff9836b3127b56024d0a0f6fd65", null ],
       [ "interview_answer", "namespaceRequestAPI.html#ac23f8020a8a24f9d640a8aefbe9e56e5", null ],
       [ "interview_hello", "namespaceRequestAPI.html#a72a9108a91fd78d005fe594cd7ce8818", null ],
+      [ "listenings_audio", "namespaceRequestAPI.html#a5954e96c78c1422b8245017dccc9652d", null ],
       [ "scenario", "namespaceRequestAPI.html#ae683aef1f6770a15bcad8cce46f40456", null ],
       [ "speakings_questions", "namespaceRequestAPI.html#a444507b7e2261e3f743b40af81e6838a", null ],
       [ "users_me", "namespaceRequestAPI.html#aee732573aa0bc733fedaab927a273dcd", null ],
