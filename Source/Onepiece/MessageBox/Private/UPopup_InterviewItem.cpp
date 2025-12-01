@@ -46,8 +46,7 @@ FInterviewAnswerData UPopup_InterviewItem::GetAnswerData() const
 	FInterviewAnswerData AnswerData;
 	AnswerData.interview_id = QuestionData.Id;
 	AnswerData.answer = GetAnswer();
-	// TOOD, 이게 뭘까?
-	AnswerData.user_id = 1;
+	AnswerData.user_id = 0;
 
 	return AnswerData;
 }
