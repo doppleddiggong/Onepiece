@@ -77,8 +77,9 @@ var searchData=
   ['curcount_74',['CurCount',['../classADoor.html#a83d17f7530a82669aba8055f297aa76a',1,'ADoor']]],
   ['current_75',['current',['../structFEaseVectorTrack.html#a646594b419cde60080a0ced97322adca',1,'FEaseVectorTrack::Current'],['../structFEaseRotatorTrack.html#afbf9eb1055658f780470aa3df5d58017',1,'FEaseRotatorTrack::Current'],['../structFEaseFloatTrack.html#a7cbfd0a13f8b3a78cabf770251b3be4c',1,'FEaseFloatTrack::Current']]],
   ['currentbrightness_76',['currentbrightness',['../classUHoverButton.html#a9df9691afd88d8ffbcca15b5e3cf8cb9',1,'UHoverButton::CurrentBrightness'],['../classUImageButton.html#a11eaa595e3618b718caae2356f049489',1,'UImageButton::CurrentBrightness']]],
-  ['currentscale_77',['currentscale',['../classUHoverButton.html#ad3adaebdf420f7c37208a7bf82288edf',1,'UHoverButton::CurrentScale'],['../classUImageButton.html#a46808360feb22ba0b2ba9557a4aa495d',1,'UImageButton::CurrentScale']]],
-  ['currentspawnindex_78',['CurrentSpawnIndex',['../classALuggageManager.html#acc8cf2f766e476693e2e45f8c1af9fd6',1,'ALuggageManager']]],
-  ['currsessionname_79',['currSessionName',['../classULingoGameInstance.html#a17232e7c2128d3f8af2561f649b27473',1,'ULingoGameInstance']]],
-  ['curscenariodata_80',['CurScenarioData',['../classALingoGameState.html#a3cd7a9eb6c217ca289fe7751113a1bef',1,'ALingoGameState']]]
+  ['currentquest_77',['CurrentQuest',['../classALingoGameState.html#aebb2bd471d58c73555b0e08b34b47005',1,'ALingoGameState']]],
+  ['currentscale_78',['currentscale',['../classUHoverButton.html#ad3adaebdf420f7c37208a7bf82288edf',1,'UHoverButton::CurrentScale'],['../classUImageButton.html#a46808360feb22ba0b2ba9557a4aa495d',1,'UImageButton::CurrentScale']]],
+  ['currentspawnindex_79',['CurrentSpawnIndex',['../classALuggageManager.html#acc8cf2f766e476693e2e45f8c1af9fd6',1,'ALuggageManager']]],
+  ['currsessionname_80',['currSessionName',['../classULingoGameInstance.html#a17232e7c2128d3f8af2561f649b27473',1,'ULingoGameInstance']]],
+  ['curscenariodata_81',['CurScenarioData',['../classALingoGameState.html#a3cd7a9eb6c217ca289fe7751113a1bef',1,'ALingoGameState']]]
 ];

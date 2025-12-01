@@ -44,6 +44,7 @@ var namespaces_dup =
       [ "listenings_audio", "namespaceRequestAPI.html#a5954e96c78c1422b8245017dccc9652d", null ],
       [ "scenario", "namespaceRequestAPI.html#ae683aef1f6770a15bcad8cce46f40456", null ],
       [ "speakings_questions", "namespaceRequestAPI.html#a444507b7e2261e3f743b40af81e6838a", null ],
+      [ "users_host", "namespaceRequestAPI.html#a7ed1c5fc940c1008e0f3af9f280fa7de", null ],
       [ "users_me", "namespaceRequestAPI.html#aee732573aa0bc733fedaab927a273dcd", null ],
       [ "users_register", "namespaceRequestAPI.html#a2d4b0c891a96c4ac2d1829ae24d01dc3", null ],
       [ "users_token", "namespaceRequestAPI.html#af908b99f78364328aca763f362236454", null ],
