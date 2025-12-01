@@ -12,15 +12,41 @@ enum class EGameState : uint8
 {
 	None,
 
-	Stage1,
-	Stage2,
-	Stage3,
-	Stage4,
-
-	End,
+	QuestStart,		// 퀘스트 시작
+	QuestEnd,		// 퀘스트 종료 
+	
+	AllQuestsEnd,	// 모든 퀘스트 종료
 };
 
+UENUM(Blueprintable)
+enum class EQuestType : uint8
+{
+	None = 0,
+	
+	Read = 1,
+	Listen = 2,
+	Write = 3,
+	Speak = 4
+};
 
+USTRUCT(BlueprintType)
+struct FQuestData
+{
+	GENERATED_BODY()
+
+	// 시나리오 ID
+	UPROPERTY(BlueprintReadOnly, Category = "QuestData")
+	int32 ScenarioIndex;
+	// 스테이지 ID
+	UPROPERTY(BlueprintReadOnly, Category = "QuestData")
+	EQuestType QuestType;
+	// 레벨(난이도)
+	UPROPERTY(BlueprintReadOnly, Category = "QuestData")
+	int32 ScenarioLevel;
+
+	// 기본 생성자
+	FQuestData() : ScenarioIndex(1), QuestType(EQuestType::None), ScenarioLevel(1) {}
+};
 
 UCLASS()
 class ONEPIECE_API ALingoGameState : public AGameState
@@ -35,8 +61,9 @@ protected:
 
 public:
 	virtual void Tick(float DeltaSeconds) override;
+	
 
-	void SetStageData(const int InStageIndex, const FResponseScenario& InResponseData);
+	void SetStageData(const int InStageIndex, int InQuestIndex, const FResponseScenario& InResponseData);
 
 	/// @brief 미션 타이머를 시작합니다 (서버에서만 호출)
 	UFUNCTION(BlueprintCallable, Category = "Mission")
@@ -55,9 +82,7 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Mission")
 	bool IsQuestIng()
 	{
-		if ( GameState == EGameState::None || GameState == EGameState::End )
-			return false;
-		return true;
+		return GameState == EGameState::QuestStart;
 	}
 
 	//--------------------------------------------------------------//
@@ -68,7 +93,7 @@ public:
 	void OnRep_QuestSuccess();
 
 	FORCEINLINE const FResponseScenario& GetScenarioData() const {return CurScenarioData;}
-	FORCEINLINE EGameState GetGameState() { return GameState; }
+	//FORCEINLINE EGameState GetGameState() { return GameState; }
 
 protected:
 	/// @brief Stage1 시작 시 모든 클라이언트(서버 포함)에 Read Quest 팝업 표시 요청
@@ -86,27 +111,22 @@ public:
 	float RemainMissionTime = 0.f;
 
 protected:
+	// 현재 퀘스트 정보
+	UPROPERTY(Replicated, BlueprintReadOnly, Category = "Quest")
+	FQuestData CurrentQuest;
+	
+	// 퀘스트 진행중인지 여부
 	UPROPERTY(Replicated, BlueprintReadOnly, Category = "State")
 	EGameState GameState;
 
 	/// @brief 타이머 활성화 상태
 	UPROPERTY(Replicated, BlueprintReadOnly, Category = "Mission")
 	bool bIsTimerActive = false;
-
 	
 	//--------------------------------------------------------------//
-	// 시나리오 ID
-	UPROPERTY(Replicated, BlueprintReadOnly, Category = "Scenario")
-	int32 ScenarioIndex = 1;
-	// 스테이지 ID
-	UPROPERTY(Replicated, BlueprintReadOnly, Category = "Scenario")
-	int32 StageIndex = 0;
-	// 레벨(난이도)
-	UPROPERTY(Replicated, BlueprintReadOnly, Category = "Scenario")
-	int32 ScenarioLevel = 1;
 
 public:
-	/// @brief 서버로부터 받은 시나리오 데이터 전체 (모든 클라이언트에 복제됨)
+	/// @brief 1. Reading Quest 데이터 (모든 클라이언트에 복제됨)
 	UPROPERTY(Replicated, BlueprintReadOnly, Category = "Scenario")
 	FResponseScenario CurScenarioData;
 
