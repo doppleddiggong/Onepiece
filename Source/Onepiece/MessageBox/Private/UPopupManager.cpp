@@ -8,7 +8,9 @@
 
 #include "FComponentHelper.h"
 #include "GameLogging.h"
+#include "Popup_Questionnaire.h"
 #include "Popup_Result.h"
+#include "Popup_WriteBoard.h"
 #include "ULingoGameHelper.h"
 #include "UPopup_Interview.h"
 #include "UPopup_Word.h"
@@ -20,6 +22,8 @@
 #define READQUEST_POPUP_PATH TEXT("/Game/CustomContents/UI/Widgets/WBP_PopupReadQuest.WBP_PopupReadQuest_C")
 #define RESULT_POPUP_PATH TEXT("/Game/CustomContents/UI/Widgets/WBP_Result.WBP_Result_C")
 #define INTERVIEW_POPUP_PATH TEXT("/Game/CustomContents/UI/Widgets/WBP_PopupInterview.WBP_PopupInterview_C")
+#define Questionnaire_POPUP_PATH TEXT("/Game/CustomContents/UI/Widgets/WBP_PopupWriteKiosk.WBP_PopupWriteKiosk_C")
+#define WriteBoard_POPUP_PATH TEXT("/Game/CustomContents/UI/Widgets/WBP_WriteBoard.WBP_WriteBoard_C")
 #define WORD_POPUP_PATH TEXT("/Game/CustomContents/UI/Widgets/WBP_PopupWord.WBP_PopupWord_C")
 
 
@@ -32,6 +36,8 @@ UPopupManager::UPopupManager()
 	PopupClassMap.Add(EPopupType::ReadQuest, FComponentHelper::LoadClass<UPopup_ReadQuest>(READQUEST_POPUP_PATH));
 	PopupClassMap.Add(EPopupType::Result, FComponentHelper::LoadClass<UPopup_Result>(RESULT_POPUP_PATH));
 	PopupClassMap.Add(EPopupType::Interview, FComponentHelper::LoadClass<UPopup_Interview>(INTERVIEW_POPUP_PATH));
+	PopupClassMap.Add(EPopupType::Questionnaire, FComponentHelper::LoadClass<UPopup_Questionnaire>(Questionnaire_POPUP_PATH));
+	PopupClassMap.Add(EPopupType::WriteBoard, FComponentHelper::LoadClass<UPopup_WriteBoard>(WriteBoard_POPUP_PATH));
 	PopupClassMap.Add(EPopupType::Word, FComponentHelper::LoadClass<UPopup_Word>(WORD_POPUP_PATH));
 }
 

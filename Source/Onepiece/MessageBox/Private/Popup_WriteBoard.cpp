@@ -1,19 +1,19 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
 
 
-#include "DrawingBoardWidget.h"
+#include "Popup_WriteBoard.h"
 
 #include "GameLogging.h"
 #include "IImageWrapper.h"
 #include "IImageWrapperModule.h"
 #include "UImageButton.h"
-#include "Components/Button.h"
+#include "UPopupManager.h"
+#include "UTextureButton.h"
 #include "Components/Image.h"
-#include "Components/Overlay.h"
 #include "Engine/Canvas.h"
 #include "Kismet/KismetRenderingLibrary.h"
 
-UDrawingBoardWidget::UDrawingBoardWidget(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer)
+UPopup_WriteBoard::UPopup_WriteBoard(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer)
 {
 	ConstructorHelpers::FObjectFinder<UTextureRenderTarget2D> rtCanvasRef(TEXT("/Script/Engine.TextureRenderTarget2D'/Game/CustomContents/UI/DrawingBoard/RT_Canvas.RT_Canvas'"));
 	if (rtCanvasRef.Succeeded())
@@ -22,16 +22,17 @@ UDrawingBoardWidget::UDrawingBoardWidget(const FObjectInitializer& ObjectInitial
 	}
 }
 
-void UDrawingBoardWidget::NativeConstruct()
+void UPopup_WriteBoard::NativeOnInitialized()
 {
-	Super::NativeConstruct();
+	Super::NativeOnInitialized();
 	
 	// Button Event
-	Button_Clear->OnButtonClickedEvent.AddDynamic(this, &UDrawingBoardWidget::ClearCanvas);
-	Button_Save->OnButtonClickedEvent.AddDynamic(this, &UDrawingBoardWidget::SaveCanvas);
+	Button_Clear->OnButtonClickedEvent.AddDynamic(this, &UPopup_WriteBoard::ClearCanvas);
+	Button_Save->OnButtonClickedEvent.AddDynamic(this, &UPopup_WriteBoard::SaveCanvas);
+	Button_Close->OnButtonClickedEvent.AddDynamic(this, &UPopup_WriteBoard::CloseDrawWindow);
 }
 
-FReply UDrawingBoardWidget::NativeOnMouseButtonDown(const FGeometry& InGeometry, const FPointerEvent& InMouseEvent)
+FReply UPopup_WriteBoard::NativeOnMouseButtonDown(const FGeometry& InGeometry, const FPointerEvent& InMouseEvent)
 {
 	// Check Mouse is in Canvas
 	const FGeometry CanvasGeometry = Image_Canvas->GetCachedGeometry();
@@ -59,7 +60,7 @@ FReply UDrawingBoardWidget::NativeOnMouseButtonDown(const FGeometry& InGeometry,
 	return FReply::Handled();
 }
 
-FReply UDrawingBoardWidget::NativeOnMouseButtonUp(const FGeometry& InGeometry, const FPointerEvent& InMouseEvent)
+FReply UPopup_WriteBoard::NativeOnMouseButtonUp(const FGeometry& InGeometry, const FPointerEvent& InMouseEvent)
 {
 	// Get Mouse Position in Local Image Coordinate System
 	// Save ZeroVector to prevMousePos
@@ -69,7 +70,7 @@ FReply UDrawingBoardWidget::NativeOnMouseButtonUp(const FGeometry& InGeometry, c
 	return FReply::Handled();
 }
 
-FReply UDrawingBoardWidget::NativeOnMouseMove(const FGeometry& InGeometry, const FPointerEvent& InMouseEvent)
+FReply UPopup_WriteBoard::NativeOnMouseMove(const FGeometry& InGeometry, const FPointerEvent& InMouseEvent)
 {
 	// return When Mouse Not Pressed
 	if (!bIsDrawing) return Super::NativeOnMouseMove(InGeometry, InMouseEvent);
@@ -86,7 +87,16 @@ FReply UDrawingBoardWidget::NativeOnMouseMove(const FGeometry& InGeometry, const
 	return FReply::Handled();
 }
 
-void UDrawingBoardWidget::DrawPoint(FVector2D mousePos, FLinearColor drawColor)
+void UPopup_WriteBoard::CloseDrawWindow()
+{
+	if (const auto PopupMgr = UPopupManager::Get(GetWorld()))
+	{
+		PopupMgr->HideCurrentPopup(false);
+		PRINT_STRING(TEXT("WriteBoard!!!!!"));
+	}
+}
+
+void UPopup_WriteBoard::DrawPoint(FVector2D mousePos, FLinearColor drawColor)
 {
 	// Begin Draw Canvas To Render Target
 	UCanvas* canvas = nullptr;
@@ -102,7 +112,7 @@ void UDrawingBoardWidget::DrawPoint(FVector2D mousePos, FLinearColor drawColor)
 	UKismetRenderingLibrary::EndDrawCanvasToRenderTarget(this, context);
 }
 
-void UDrawingBoardWidget::DrawLines(FVector2D mousePos, FLinearColor drawColor)
+void UPopup_WriteBoard::DrawLines(FVector2D mousePos, FLinearColor drawColor)
 {
 	// Begin Draw Canvas To Render Target
 	UCanvas* canvas = nullptr;
@@ -130,7 +140,7 @@ void UDrawingBoardWidget::DrawLines(FVector2D mousePos, FLinearColor drawColor)
 	UKismetRenderingLibrary::EndDrawCanvasToRenderTarget(this, context);
 }
 
-FVector2D UDrawingBoardWidget::GetLocalMousePos(FVector2D mousePos)
+FVector2D UPopup_WriteBoard::GetLocalMousePos(FVector2D mousePos)
 {
 	// Get Absolute Local Pos
 	const FGeometry& geometry = Image_Canvas->GetCachedGeometry();
@@ -144,12 +154,12 @@ FVector2D UDrawingBoardWidget::GetLocalMousePos(FVector2D mousePos)
 	return localPos;
 }
 
-void UDrawingBoardWidget::ClearCanvas()
+void UPopup_WriteBoard::ClearCanvas()
 {
 	UKismetRenderingLibrary::ClearRenderTarget2D(this, RT_Canvas, RT_Canvas->ClearColor);
 }
 
-void UDrawingBoardWidget::SaveCanvas()
+void UPopup_WriteBoard::SaveCanvas()
 {
 	// File Path
 	const FString filePath = FPaths::ProjectSavedDir() / TEXT("WriteImage/");
@@ -164,7 +174,7 @@ void UDrawingBoardWidget::SaveCanvas()
 	SaveRenderTargetToPNG(RT_Canvas, filePath / fileName);
 }
 
-bool UDrawingBoardWidget::SaveRenderTargetToPNG(UTextureRenderTarget2D* RenderTarget, const FString& FullFilePath)
+bool UPopup_WriteBoard::SaveRenderTargetToPNG(UTextureRenderTarget2D* RenderTarget, const FString& FullFilePath)
 {
 	FTextureRenderTargetResource* RTResource = RenderTarget->GameThread_GetRenderTargetResource();
 	if (!RTResource)
