@@ -14,6 +14,7 @@ class ONEPIECE_API AMoviePanel : public AActor
 public:
 	AMoviePanel();
 
+	UFUNCTION(BlueprintCallable, CallInEditor, Category = "TEST")
 	void PlayMedia();
 
 protected:

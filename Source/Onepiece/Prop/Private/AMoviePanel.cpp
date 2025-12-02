@@ -13,8 +13,10 @@
 
 #define SCREEN_PATH						TEXT("/Engine/BasicShapes/Cube.Cube")
 #define MEDIA_PLAYER_PATH				TEXT("/Game/CustomContents/Media/MP_InGame.MP_InGame")
-#define MEMIA_SOURCE_PATH				TEXT("/Game/CustomContents/Media/Source/Duolingo.Duolingo")
+#define MEDIA_MATERIAL_PATH				TEXT("/Game/CustomContents/Media/M_MP_InGame.M_MP_InGame")
+#define MEDIA_SOURCE_PATH				TEXT("/Game/CustomContents/Media/Source/Duolingo.Duolingo")
 #define MEDIA_PLAYER_TEXTURE_PATH		TEXT("/Game/CustomContents/Media/MPT_InGame.MPT_InGame")
+
 
 AMoviePanel::AMoviePanel()
 {
@@ -25,9 +27,9 @@ AMoviePanel::AMoviePanel()
 
 	Screen->SetStaticMesh(FComponentHelper::LoadAsset<UStaticMesh>(SCREEN_PATH));
 	Screen->SetRelativeScale3D(FVector(16.0f, 9.0f, 0.1f));
-
+	
 	MediaPlayer = FComponentHelper::LoadAsset<UMediaPlayer>(MEDIA_PLAYER_PATH);
-	MediaSource = FComponentHelper::LoadAsset<UMediaSource>(MEMIA_SOURCE_PATH);
+	MediaSource = FComponentHelper::LoadAsset<UMediaSource>(MEDIA_SOURCE_PATH);
 	MediaTexture = FComponentHelper::LoadAsset<UTexture>(MEDIA_PLAYER_TEXTURE_PATH);
 }
 
@@ -51,6 +53,9 @@ void AMoviePanel::BeginPlay()
 
 	MediaPlayer->OnEndReached.Clear();
 	MediaPlayer->OnEndReached.AddDynamic(this, &AMoviePanel::HandleMediaEndReached);
+
+
+	PlayMedia();
 }
 
 void AMoviePanel::PlayMedia()
