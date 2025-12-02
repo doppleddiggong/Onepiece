@@ -13,7 +13,7 @@ public class Onepiece : ModuleRules
 			"Core",
 			"CoreUObject",
 			"Engine",
-			"EnhancedInput", 
+			"EnhancedInput",
 		});
 
 		PrivateDependencyModuleNames.AddRange(new string[]
@@ -59,6 +59,12 @@ public class Onepiece : ModuleRules
 			"AudioCapture",
 			"AudioCaptureCore",
 			"AudioPlatformConfiguration",
+		});
+
+		PrivateDependencyModuleNames.AddRange(new string[]
+		{
+			"MediaAssets",
+			"Media"
 		});
 		
 		PrivateDependencyModuleNames.AddRange(new string[]

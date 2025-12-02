@@ -14,9 +14,48 @@ class ONEPIECE_API AMoviePanel : public AActor
 public:
 	AMoviePanel();
 
+	void PlayMedia();
+
 protected:
 	virtual void BeginPlay() override;
 
-public:
-	virtual void Tick(float DeltaTime) override;
+private:
+	UFUNCTION()
+	void HandleMediaEndReached();
+
+protected:
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Media")
+	TObjectPtr<class UStaticMeshComponent> Screen;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Media")
+	TObjectPtr<class UMediaPlayer> MediaPlayer;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Media")
+	TObjectPtr<class UMediaSource> MediaSource;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Media")
+	TObjectPtr<class UMaterialInstanceDynamic> MediaMaterial;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Media")
+	TObjectPtr<class UTexture> MediaTexture;
+
+	
+	// Parameters
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Media")
+	FName ColorParam  = TEXT("Color");
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Media")
+	FName TextureParam  = TEXT("MediaTexture");
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Media")
+	FName TileParam  = TEXT("Tile");
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Media")
+	float TileCount = 2.0f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Media")
+	int32 Group = 0.0f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Media")
+	bool bOneShot = false;
 };
