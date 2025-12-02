@@ -44,4 +44,10 @@ public:
 
 private:
 	FPhonemeData Data;
+
+	/// @brief 오디오 요청 중복 방지 플래그
+	bool bIsRequest = false;
+
+	/// @brief 현재 요청 중인 오디오 텍스트 (응답 검증용)
+	FString LastRequestText;
 };
