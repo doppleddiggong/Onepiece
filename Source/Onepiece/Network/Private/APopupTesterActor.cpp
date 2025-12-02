@@ -14,6 +14,7 @@
 #include "UPopup_ReadQuest.h"
 #include "UPopup_Interview.h"
 #include "NetworkData.h"
+#include "Popup_Result.h"
 
 
 APopupTesterActor::APopupTesterActor()
@@ -112,6 +113,15 @@ void APopupTesterActor::InterviewPopup()
 		}
 	}
 }
+
+void APopupTesterActor::ResultPopup()
+{
+	if (const auto PopupMgr = UPopupManager::Get(GetWorld()))
+	{
+		PopupMgr->ShowResult();
+	}
+}
+
 
 void APopupTesterActor::OnOK()
 {

@@ -32,8 +32,15 @@ private:
 
 public:
 	// 정답 표시
+	// UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
+	// class UWordWidget* WordWidget;
+
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
-	class UWordWidget* WordWidget;
+	TObjectPtr<class UTextBlock> Txt_Kor;
+
+	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
+	TObjectPtr<class UTextBlock> Txt_Eng;
+	
 	// 오답 표시
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
 	class UScrollBox* Scrl_WrongList;

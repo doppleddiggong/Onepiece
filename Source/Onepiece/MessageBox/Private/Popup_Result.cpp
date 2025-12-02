@@ -9,7 +9,6 @@
 #include "UPopupManager.h"
 #include "UPopup_ReadQuest.h"
 #include "UTextureButton.h"
-#include "UWordWidget.h"
 #include "Components/ScrollBox.h"
 #include "Components/TextBlock.h"
 
@@ -49,12 +48,13 @@ void UPopup_Result::OnClickClose()
 
 void UPopup_Result::SetWordWidget()
 {
-	if (WordWidget)
+	// if (WordWidget)
 	{
 		ALingoGameState* GS = Cast<ALingoGameState>(GetWorld()->GetGameState());
 		if (!GS) return;
 		
-		WordWidget->InitWordData(GS->CurScenarioData.full_data);
+		Txt_Kor->SetText(FText::FromString(GS->CurScenarioData.full_data.Kor));
+		Txt_Eng->SetText(FText::FromString(GS->CurScenarioData.full_data.Eng));
 	}
 }
 

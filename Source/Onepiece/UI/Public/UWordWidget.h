@@ -32,7 +32,6 @@ protected:
 	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<class URichText> Rich_Kor;
 
-	/** 발음 표시 텍스트 */
 	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<class UTextBlock> Txt_Eng;
 };
