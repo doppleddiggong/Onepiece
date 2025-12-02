@@ -18,7 +18,6 @@ class ONEPIECE_API ALingoGameMode : public AGameMode
 
 public:
 	ALingoGameMode();
-
 	//--------------------------------------------------------------//
 	// Read Quest Functions
 	//--------------------------------------------------------------//

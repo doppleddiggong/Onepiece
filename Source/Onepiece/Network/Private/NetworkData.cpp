@@ -18,32 +18,28 @@
 #include "Serialization/JsonWriter.h"
 
 
+FString FPhonemeData::ToRichTextString(int32 Index) const
+{
+	return FString::Printf(TEXT("<a id=\"%d\" content=\"link\">%s</> "), Index, *Kor);
+}
 
-
-
-TArray<FWordData> FWordData::GetSplitData() const
+TArray<FPhonemeData> FWordData::GetPhonemeData() const
 {
 	TArray<FString> KorWords;
 	Kor.ParseIntoArray(KorWords, TEXT(" "), true);
 
-	TArray<FString> EngWords;
-	Eng.ParseIntoArray(EngWords, TEXT(" "), true);
-
 	TArray<FString> PronWords;
 	Pronunciation.ParseIntoArray(PronWords, TEXT(" "), true);
 
-	// FWordData 배열 생성
-	TArray<FWordData> WordDataArray;
-	int32 MaxCount = FMath::Max3(KorWords.Num(), EngWords.Num(), PronWords.Num());
+	TArray<FPhonemeData> WordDataArray;
 
-	for (int32 i = 0; i < MaxCount; ++i)
+	for (int32 i = 0; i < KorWords.Num(); ++i)
 	{
-		FWordData WordData;
-		WordData.Kor = i < KorWords.Num() ? KorWords[i] : TEXT("");
-		WordData.Eng = i < EngWords.Num() ? EngWords[i] : TEXT("");
-		WordData.Pronunciation = i < PronWords.Num() ? PronWords[i] : TEXT("");
+		FPhonemeData Data;
+		Data.Kor = i < KorWords.Num() ? KorWords[i] : TEXT("");
+		Data.Pronunciation = i < PronWords.Num() ? PronWords[i] : TEXT("");
 
-		WordDataArray.Add(WordData);
+		WordDataArray.Add(Data);
 	}
 
 	return WordDataArray;
@@ -163,6 +159,26 @@ void FResponseUserMe::PrintData() const
 	);
 	NETWORK_LOG( TEXT("[RES] %s"), *OutputString);
 }
+
+
+void FResponseUserHost::SetFromHttpResponse(const TSharedPtr<IHttpResponse, ESPMode::ThreadSafe>& Response)
+{
+	return;
+}
+
+void FResponseUserHost::PrintData() const
+{
+	FString OutputString;
+	FJsonObjectConverter::UStructToJsonObjectString(
+		*this,
+		OutputString,
+		0,
+		0
+	);
+	NETWORK_LOG( TEXT("[RES] %s"), *OutputString);
+}
+
+
 
 // =================================================================================
 // FResponseScenario
@@ -319,6 +335,40 @@ void FResponseOcrExtract::PrintData() const
 	NETWORK_LOG( TEXT("[OCR Extract] Response - Success: %d, Text: %s"), success, *extracted_text);
 }
 
+void FResponseListenAudio::SetFromHttpResponse(const TSharedPtr<class IHttpResponse, ESPMode::ThreadSafe>& Response)
+{
+	if (!Response.IsValid())
+	{
+		return;
+	}
+
+	FString ResponseBody = Response->GetContentAsString();
+
+	TSharedPtr<FJsonObject> JsonObject;
+	TSharedRef<TJsonReader<>> Reader = TJsonReaderFactory<>::Create(ResponseBody);
+
+	if (FJsonSerializer::Deserialize(Reader, JsonObject) && JsonObject.IsValid())
+	{
+		JsonObject->TryGetStringField(TEXT("audio_text"), audio_text);
+
+		FString audio_data;
+		JsonObject->TryGetStringField(TEXT("audio_base64"), audio_data);
+		FBase64::Decode(audio_data, audio_base64);
+	}
+}
+
+void FResponseListenAudio::PrintData() const
+{
+	FString OutputString;
+	FJsonObjectConverter::UStructToJsonObjectString(
+		*this,
+		OutputString,
+		0,
+		0
+	);
+	NETWORK_LOG( TEXT("[RES] %s"), *OutputString);
+}
+
 // =================================================================================
 // FResponseSpeakingQuestions
 // =================================================================================
@@ -342,7 +392,111 @@ void FResponseSpeakingQuestions::SetFromHttpResponse(const TSharedPtr<IHttpRespo
 
 void FResponseSpeakingQuestions::PrintData() const
 {
-	NETWORK_LOG( TEXT("[Speaking Questions] Response - Answer: %s"), *answer);
+	FString OutputString;
+	FJsonObjectConverter::UStructToJsonObjectString(
+		*this,
+		OutputString,
+		0,
+		0
+	);
+	NETWORK_LOG( TEXT("[RES] %s"), *OutputString);
+}
+
+
+
+void FResponseInterviewHello::SetFromHttpResponse(const TSharedPtr<IHttpResponse, ESPMode::ThreadSafe>& Response)
+{
+	if (!Response.IsValid())
+	{
+		return;
+	}
+
+	FString JsonString = Response->GetContentAsString();
+	TSharedRef<TJsonReader<>> Reader = TJsonReaderFactory<>::Create(JsonString);
+	TArray<TSharedPtr<FJsonValue>> JsonArray;
+
+	if (FJsonSerializer::Deserialize(Reader, JsonArray))
+	{
+		Questions.Empty();
+
+		for (const auto& JsonValue : JsonArray)
+		{
+			TSharedPtr<FJsonObject> JsonObject = JsonValue->AsObject();
+			if (JsonObject.IsValid())
+			{
+				FInterviewQuestionData QuestionData;
+				QuestionData.Id = JsonObject->GetIntegerField(TEXT("id"));
+				QuestionData.TypeCode = JsonObject->GetIntegerField(TEXT("type_code"));
+				QuestionData.Eng = JsonObject->GetStringField(TEXT("eng"));
+				QuestionData.Kor = JsonObject->GetStringField(TEXT("kor"));
+				QuestionData.EngKey = JsonObject->GetStringField(TEXT("eng_key"));
+				QuestionData.KorKey = JsonObject->GetStringField(TEXT("kor_key"));
+
+				// created_at 필드 파싱 (optional)
+				JsonObject->TryGetStringField(TEXT("created_at"), QuestionData.CreatedAt);
+
+				Questions.Add(QuestionData);
+			}
+		}
+
+		NETWORK_LOG(TEXT("[Interview Hello] Successfully parsed %d questions"), Questions.Num());
+	}
+	else
+	{
+		NETWORK_LOG(TEXT("[Interview Hello] Failed to parse JSON array"));
+	}
+}
+
+void FResponseInterviewHello::PrintData() const
+{
+	NETWORK_LOG(TEXT("[Interview Hello] Response - Questions Count: %d"), Questions.Num());
+	for (const auto& Question : Questions)
+	{
+		NETWORK_LOG(TEXT("  - ID: %d, TypeCode: %d, Eng: %s, Kor: %s"),
+			Question.Id, Question.TypeCode, *Question.Eng, *Question.Kor);
+	}
+}
+
+// =================================================================================
+// FRequestInterviewAnswer
+// =================================================================================
+
+bool FRequestInterviewAnswer::ToJsonString(FString& OutJson) const
+{
+	TArray<TSharedPtr<FJsonValue>> JsonArray;
+
+	for (const FInterviewAnswerData& AnswerData : answer)
+	{
+		TSharedPtr<FJsonObject> JsonObject = MakeShared<FJsonObject>();
+		JsonObject->SetNumberField(TEXT("interview_id"), AnswerData.interview_id);
+		JsonObject->SetStringField(TEXT("answer"), AnswerData.answer);
+		JsonObject->SetNumberField(TEXT("user_id"), AnswerData.user_id);
+
+		JsonArray.Add(MakeShared<FJsonValueObject>(JsonObject));
+	}
+
+	TSharedRef<TJsonWriter<>> Writer = TJsonWriterFactory<>::Create(&OutJson);
+	return FJsonSerializer::Serialize(JsonArray, Writer);
+}
+
+// =================================================================================
+// FResponseInterviewAnswer
+// =================================================================================
+
+void FResponseInterviewAnswer::SetFromHttpResponse(const TSharedPtr<IHttpResponse, ESPMode::ThreadSafe>& Response)
+{
+	if (!Response.IsValid())
+	{
+		return;
+	}
+
+	FString JsonString = Response->GetContentAsString();
+	NETWORK_LOG(TEXT("[Interview Answer] Response: %s"), *JsonString);
+}
+
+void FResponseInterviewAnswer::PrintData() const
+{
+	NETWORK_LOG(TEXT("[Interview Answer] Response processed successfully"));
 }
 
 /*

@@ -6,7 +6,7 @@
 ## DevLog
 
 ### Agent Logs
-* [dopple - InteractionSystem_Network_Fix_Report](DevLog/AgentLog/dopple/InteractionSystem_Network_Fix_Report.md)
+* [dopple - 2025-11-30](DevLog/AgentLog/dopple/251130.md)
 * [dopple - 2025-11-23](DevLog/AgentLog/dopple/251123.md)
 * [dopple - 2025-11-19](DevLog/AgentLog/dopple/251119.md)
 * [dopple - 2025-11-17](DevLog/AgentLog/dopple/251117.md)
@@ -14,6 +14,11 @@
 * [dopple - 2025-11-10](DevLog/AgentLog/dopple/251110.md)
 
 ### Daily Logs (2025-11)
+* [2025-11-30](DevLog/Daily/2025-11-30.md)
+* [2025-11-29](DevLog/Daily/2025-11-29.md)
+* [2025-11-28](DevLog/Daily/2025-11-28.md)
+* [2025-11-27](DevLog/Daily/2025-11-27.md)
+* [2025-11-26](DevLog/Daily/2025-11-26.md)
 * [2025-11-25](DevLog/Daily/2025-11-25.md)
 * [2025-11-24](DevLog/Daily/2025-11-24.md)
 * [2025-11-23](DevLog/Daily/2025-11-23.md)
@@ -32,12 +37,16 @@
 * [2025-11-10](DevLog/Daily/2025-11-10.md)
 
 ### Weekly Summary
+* [Weekly DevLog — 2025 Week 48](DevLog/Weekly/2025-W48-Summary.md)
 * [Weekly DevLog — 2025 Week 47](DevLog/Weekly/2025-W47-Summary.md)
 * [Weekly DevLog — 2025 Week 46](DevLog/Weekly/2025-W46-Summary.md)
 
 ## 회의록
 
 ### 일일 회의록
+* [2025-11-28 데일리 회의](Meeting/Daily/Meeting_251128_Daily.md)
+* [251127 Daily](Meeting/Daily/Meeting_251127_Daily.md)
+* [251126 Daily](Meeting/Daily/Meeting_251126_Daily.md)
 * [251125 Daily](Meeting/Daily/Meeting_251125_Daily.md)
 * [251124 Daily](Meeting/Daily/Meeting_251124_Daily.md)
 * [251121 Daily](Meeting/Daily/Meeting_251121_Daily.md)

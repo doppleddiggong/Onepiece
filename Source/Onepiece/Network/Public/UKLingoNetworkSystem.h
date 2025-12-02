@@ -32,7 +32,8 @@ public:
 	void RequestUserRegister(const FString& UserName, FResponseUserRegisterDelegate InDelegate);
 	void RequestUserToken(const FString& UserName, FResponseUserTokenDelegate InDelegate);
 	void RequestUserMe(FResponseUserMeDelegate InDelegate);
-
+	void RequestUserHost(FResponseUserHostDelegate InDelegate);
+	
 	/// @brief Scenario 데이터를 조회합니다.
 	/// @param Index [in] 시나리오 인덱스입니다.
 	/// @param Difficulty [in] 난이도입니다.
@@ -45,12 +46,18 @@ public:
 	/// @param InDelegate [in] 응답 수신 시 호출될 델리게이트입니다.
 	void RequestOcrExtract(const FString& ImagePath, FResponseOcrExtractDelegate InDelegate);
 
+	void RequestListenAudio(const FString& AudioText, FResponseListenAudioDelegate InDelegate);
 	/// @brief 음성 파일을 전송하고 답변을 받습니다.
 	/// @param AudioPath [in] WAV 오디오 파일 경로입니다.
 	/// @param InDelegate [in] 응답 수신 시 호출될 델리게이트입니다.
 	void RequestSpeakingQuestions(const FString& AudioPath, FResponseSpeakingQuestionsDelegate InDelegate);
 
+	void RequestInterviewHello(FResponseInterviewHelloDelegate InDelegate);
+	void RequestInterviewAnswer( const FRequestInterviewAnswer& Answer, FResponseInterviewAnswerDelegate InDelegate);
 
+
+
+	
 
 	/*
 	/// @brief 계정으로 로그인 요청을 전송합니다.

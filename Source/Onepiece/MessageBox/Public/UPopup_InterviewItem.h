@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "NetworkData.h"
 #include "Blueprint/UserWidget.h"
 #include "UPopup_InterviewItem.generated.h"
 
@@ -23,6 +24,8 @@ public:
 	UFUNCTION(BlueprintCallable)
 	FString GetAnswer() const;
 
+	FInterviewAnswerData GetAnswerData() const;
+	
 protected:
 	virtual void NativeConstruct() override;
 
@@ -39,6 +42,9 @@ protected:
 	/** 답변 입력란 */
 	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<class UMultiLineEditableText> Edit_Answer;
+
+private:
+	FInterviewQuestionData QuestionData;
 };
 
 

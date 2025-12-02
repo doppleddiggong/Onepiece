@@ -175,7 +175,15 @@ USoundWave* UVoiceFunctionLibrary::CreateSoundWaveFromWavData(const TArray<uint8
 
 USoundWaveProcedural* UVoiceFunctionLibrary::CreateProceduralSoundWaveFromWavData(const TArray<uint8>& AudioData)
 {
-	const FString SavePath = FPaths::ProjectSavedDir() / TEXT("TTS_Output.wav");
+	// VoiceLogs 폴더에 타임스탬프 형식으로 저장
+	const FDateTime Now = FDateTime::Now();
+	const FString FileName = FString::Printf(TEXT("TTS_Output_%04d%02d%02d_%02d%02d%02d.wav"),
+		Now.GetYear(), Now.GetMonth(), Now.GetDay(),
+		Now.GetHour(), Now.GetMinute(), Now.GetSecond()
+	);
+	const FString FolderPath = FPaths::ProjectSavedDir() / VOICE_LOG;
+	IFileManager::Get().MakeDirectory(*FolderPath, true);
+	const FString SavePath = FolderPath / FileName;
 
 	if (!FFileHelper::SaveArrayToFile(AudioData, *SavePath))
 	{

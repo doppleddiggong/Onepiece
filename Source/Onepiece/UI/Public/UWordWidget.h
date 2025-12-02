@@ -25,15 +25,10 @@ public:
 	void InitWordData(const FWordData& InWordData);
 
 protected:
-	/** 영어 표시 텍스트 */
 	UPROPERTY(meta = (BindWidget))
-	UTextBlock* Txt_Eng;
-
-	/** 한국어 표시 텍스트 */
-	UPROPERTY(meta = (BindWidget))
-	UTextBlock* Txt_Kor;
+	TObjectPtr<class URichText> Rich_Kor;
 
 	/** 발음 표시 텍스트 */
 	UPROPERTY(meta = (BindWidget))
-	UTextBlock* Txt_Pronunciation;
+	TObjectPtr<class UTextBlock> Txt_Eng;
 };

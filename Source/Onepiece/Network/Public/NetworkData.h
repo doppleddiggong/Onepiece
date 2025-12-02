@@ -6,6 +6,7 @@
 
 #include "CoreMinimal.h"
 #include "UCustomNetworkSettings.h"
+#include "GenericPlatform/GenericPlatformHttp.h"
 #include "Templates/SharedPointer.h"
 #include "NetworkData.generated.h"
 
@@ -23,6 +24,42 @@ namespace NetworkConfig
         const EServerMode Mode = UCustomNetworkSettings::GetCurrentServerMode();
         const FServerConfig& Config = GetDefault<UCustomNetworkSettings>()->GetConfig(Mode);
         return Config.GetFullUrl(Endpoint);
+    }
+
+	/// @brief Query 파라미터가 포함된 전체 URL을 반환합니다.
+	///        파라미터가 없으면 기본 URL만 반환합니다.
+	static FString GetFullUrlWithQuery(
+		const FString& Endpoint,
+		const TMap<FString, FString>& QueryParams)
+    {
+    	FString BaseUrl = GetFullUrl(Endpoint);
+
+    	if (QueryParams.Num() == 0)
+    		return BaseUrl;
+
+    	FString QueryString;
+    	bool bFirst = true;
+
+    	for (const auto& Pair : QueryParams)
+    	{
+    		if (Pair.Key.IsEmpty() || Pair.Value.IsEmpty())
+    			continue;
+    		
+    		FString EncodedKey   = FGenericPlatformHttp::UrlEncode(Pair.Key);
+    		FString EncodedValue = FGenericPlatformHttp::UrlEncode(Pair.Value);
+
+    		if (bFirst)
+    		{
+    			QueryString += FString::Printf(TEXT("?%s=%s"), *EncodedKey, *EncodedValue);
+    			bFirst = false;
+    		}
+    		else
+    		{
+    			QueryString += FString::Printf(TEXT("&%s=%s"), *EncodedKey, *EncodedValue);
+    		}
+    	}
+
+    	return BaseUrl + QueryString;
     }
 
     /// @brief 현재 서버 모드에서 사용할 WebSocket 주소를 반환합니다.
@@ -44,6 +81,7 @@ namespace RequestAPI
     static FString users_register = FString("/users/register");
     static FString users_token = FString("/users/token");
     static FString users_me = FString("/users/me");
+	static FString users_host = FString("/users/host");
 
     /// @brief Scenario 조회 엔드포인트입니다. GET /scenario/{index}/{dificulity}/{lang}
     static FString scenario = FString("/scenario");
@@ -51,8 +89,12 @@ namespace RequestAPI
     /// @brief OCR 텍스트 추출 엔드포인트입니다. POST /writes/ocr/extract
     static FString writes_ocr_extract = FString("/writes/ocr/extract");
 
+	static FString listenings_audio = FString("/listenings/audio");
 	static FString speakings_questions = FString("/speakings/questions");
-    
+
+	static FString interview_hello = FString("/interview/hello");
+	static FString interview_answer = FString("/interview/answer/post");
+	
     /*
 
     /// @brief KLingo 로그인 엔드포인트입니다.
@@ -103,24 +145,31 @@ struct FInterviewQuestionData
 {
 	GENERATED_BODY()
 
+	// id : 126
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	int32 Id = 0;
 
+	// type_code : 1
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	int32 TypeCode = 0;
 
+	// "eng":"What do you do on weekends?"
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FString Eng;
 
+	// "kor":"주말에 보통 무엇을 합니까?"
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FString Kor;
 
+	// "eng_key":"weekends"
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FString EngKey;
 
+	// "kor_key":"주말"
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FString KorKey;
 
+	// "created_at":"2025-11-28T15:51:30.017204"
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FString CreatedAt;
 };
@@ -171,6 +220,21 @@ struct FPlayerInfo
 
 /// @brief 단어 데이터 구조체입니다.
 USTRUCT(BlueprintType)
+struct FPhonemeData
+{
+	GENERATED_BODY()
+
+	UPROPERTY(BlueprintReadWrite, Category = "Word")
+	FString Kor;
+
+	UPROPERTY(BlueprintReadWrite, Category = "Word")
+	FString Pronunciation;
+
+	FString ToRichTextString(int32 Index) const;
+};
+
+/// @brief 단어 데이터 구조체입니다.
+USTRUCT(BlueprintType)
 struct FWordData
 {
 	GENERATED_BODY()
@@ -184,7 +248,7 @@ struct FWordData
 	UPROPERTY(BlueprintReadWrite, Category = "Word")
 	FString Pronunciation;
 
-	TArray<FWordData> GetSplitData() const;	
+	TArray<FPhonemeData> GetPhonemeData() const;	
 };
 
 // =================================================================================
@@ -451,6 +515,21 @@ struct FResponseUserMe
 };
 
 
+DECLARE_DELEGATE_TwoParams(FResponseUserHostDelegate, FResponseUserHost&, bool);
+USTRUCT(BlueprintType)
+struct FResponseUserHost
+{
+	GENERATED_BODY()
+
+	/// @brief HTTP 응답을 파싱해 상태 정보를 갱신합니다.
+	void SetFromHttpResponse(const TSharedPtr<class IHttpResponse, ESPMode::ThreadSafe>& Response);
+
+	/// @brief 디버그 로그에 응답 내용을 출력합니다.
+	void PrintData() const;
+};
+
+
+
 // =================================================================================
 // Scenario API Structures
 // =================================================================================
@@ -545,6 +624,33 @@ struct FResponseOcrExtract
 	void PrintData() const;
 };
 
+
+// =================================================================================
+// Speaking Questions API Structures (Updated)
+// =================================================================================
+
+/// @brief Speaking Questions 응답 델리게이트입니다.
+DECLARE_DELEGATE_TwoParams(FResponseListenAudioDelegate, FResponseListenAudio&, bool);
+USTRUCT(BlueprintType)
+struct FResponseListenAudio
+{
+	GENERATED_BODY()
+
+	UPROPERTY(BlueprintReadWrite, Category = "Speaking")
+	FString audio_text;
+
+	UPROPERTY(BlueprintReadWrite)
+	TArray<uint8> audio_base64;
+
+	/// @brief HTTP 응답을 파싱해 구조체를 채웁니다.
+	void SetFromHttpResponse(const TSharedPtr<class IHttpResponse, ESPMode::ThreadSafe>& Response);
+
+	/// @brief 디버그 로그에 응답 내용을 출력합니다.
+	void PrintData() const;
+};
+
+
+
 // =================================================================================
 // Speaking Questions API Structures (Updated)
 // =================================================================================
@@ -559,6 +665,65 @@ struct FResponseSpeakingQuestions
 
 	UPROPERTY(BlueprintReadWrite, Category = "Speaking")
 	FString answer;
+
+	/// @brief HTTP 응답을 파싱해 구조체를 채웁니다.
+	void SetFromHttpResponse(const TSharedPtr<class IHttpResponse, ESPMode::ThreadSafe>& Response);
+
+	/// @brief 디버그 로그에 응답 내용을 출력합니다.
+	void PrintData() const;
+};
+
+
+DECLARE_DELEGATE_TwoParams(FResponseInterviewHelloDelegate, FResponseInterviewHello&, bool);
+USTRUCT(BlueprintType)
+struct FResponseInterviewHello
+{
+	GENERATED_BODY()
+
+	UPROPERTY(BlueprintReadWrite, Category = "Interview")
+	TArray<FInterviewQuestionData> Questions;
+
+	/// @brief HTTP 응답을 파싱해 구조체를 채웁니다.
+	void SetFromHttpResponse(const TSharedPtr<class IHttpResponse, ESPMode::ThreadSafe>& Response);
+
+	/// @brief 디버그 로그에 응답 내용을 출력합니다.
+	void PrintData() const;
+};
+
+
+
+USTRUCT(BlueprintType)
+struct FInterviewAnswerData
+{
+	GENERATED_BODY()
+
+	UPROPERTY(BlueprintReadWrite)
+	int interview_id;
+
+	UPROPERTY(BlueprintReadWrite)
+	FString answer;
+
+	UPROPERTY(BlueprintReadWrite)
+	int user_id;
+};
+
+USTRUCT(BlueprintType)
+struct FRequestInterviewAnswer
+{
+	GENERATED_BODY()
+
+	UPROPERTY(BlueprintReadWrite, Category = "Interview")
+	TArray<FInterviewAnswerData> answer;
+
+	/// @brief 구조체를 JSON 문자열로 변환합니다.
+	bool ToJsonString(FString& OutJson) const;
+};
+
+DECLARE_DELEGATE_TwoParams(FResponseInterviewAnswerDelegate, FResponseInterviewAnswer&, bool);
+USTRUCT(BlueprintType)
+struct FResponseInterviewAnswer
+{
+	GENERATED_BODY()
 
 	/// @brief HTTP 응답을 파싱해 구조체를 채웁니다.
 	void SetFromHttpResponse(const TSharedPtr<class IHttpResponse, ESPMode::ThreadSafe>& Response);

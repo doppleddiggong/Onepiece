@@ -9,6 +9,7 @@
 #include "FComponentHelper.h"
 #include "GameLogging.h"
 #include "Popup_Result.h"
+#include "ULingoGameHelper.h"
 #include "UPopup_Interview.h"
 
 #include "Onepiece/Onepiece.h"
@@ -71,14 +72,7 @@ UUserWidget* UPopupManager::ShowPopup(EPopupType Type)
 	// 첫 팝업이 열렸다면 마우스 커서 표시
 	if (bIsFirstPopup)
 	{
-		if (ULocalPlayer* LocalPlayer = GetLocalPlayer())
-		{
-			if (APlayerController* PC = LocalPlayer->GetPlayerController(GetWorld()))
-			{
-				PC->bShowMouseCursor = true;
-				PC->SetInputMode(FInputModeGameAndUI());
-			}
-		}
+		ULingoGameHelper::ShowMouseCursor(GetWorld());
 	}
 
 	return PopupWidget;
@@ -104,13 +98,12 @@ void UPopupManager::HidePopup(EPopupType Type, bool bDestroyWidget)
 	// 모든 팝업이 닫혔다면 마우스 커서 숨기기
 	if (PopupStack.Num() == 0)
 	{
-		if (ULocalPlayer* LocalPlayer = GetLocalPlayer())
+		FString MapName = GetWorld()->GetMapName();
+		MapName.RemoveFromStart(GetWorld()->StreamingLevelsPrefix);
+		if (MapName.Contains(TEXT("Map1")) ||
+			MapName.Contains(TEXT("Person")) )
 		{
-			if (APlayerController* PC = LocalPlayer->GetPlayerController(GetWorld()))
-			{
-				PC->bShowMouseCursor = false;
-				PC->SetInputMode(FInputModeGameOnly());
-			}
+			ULingoGameHelper::HideMouseCursor(GetWorld());
 		}
 	}
 
