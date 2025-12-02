@@ -35,6 +35,9 @@ protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	TObjectPtr<class UBoxComponent> BoxComp;
 	
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	TObjectPtr<class UWidgetComponent> WidgetComp;
+	
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
 	TSubclassOf<class UPopup_Interview> PopupQuestionnaireWidgetClass;
 	
@@ -48,6 +51,9 @@ protected:
 	UFUNCTION(Server, Reliable)
 	void ServerRPC_OnInteractionTriggered(AActor* Interactor);
 	
-	UFUNCTION(NetMulticast, Reliable)
-	void MultiCastRPC_OnInteractionTriggered(AActor* Interactor);
+	UFUNCTION(Client, Reliable)
+	void ClientRPC_OnInteractionTriggered(AActor* Interactor);
+	
+	void OnOK();
+	void OnCancel();
 };

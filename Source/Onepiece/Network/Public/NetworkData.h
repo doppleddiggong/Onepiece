@@ -345,27 +345,39 @@ struct FQuestListenInfo
 // Write Quest Structures
 // =================================================================================
 
-/// @brief Write 퀘스트 타겟 데이터입니다.
+/// @brief Write 질문 구조체입니다.
 USTRUCT(BlueprintType)
-struct FWriteTargetData
+struct FWriteWordData
 {
 	GENERATED_BODY()
-
+	
 	UPROPERTY(BlueprintReadWrite, Category = "KLingo")
-	FString TextureData;
+	FString QuestionKr;
+	
+	UPROPERTY(BlueprintReadWrite, Category = "KLingo")
+	FString QuestionEn;
+	
+	UPROPERTY(BlueprintReadWrite, Category = "KLingo")
+	FString Pronunciation;
 };
 
-/// @brief Write 교육 데이터 구조체입니다.
+/// @brief Write 질문 및 정답 구조체입니다.
 USTRUCT(BlueprintType)
-struct FWriteTeachData
+struct FWriteQuestionData
 {
 	GENERATED_BODY()
-
+	
 	UPROPERTY(BlueprintReadWrite, Category = "KLingo")
-	int32 Index = 0;
-
+	int32 Id;
+	
 	UPROPERTY(BlueprintReadWrite, Category = "KLingo")
-	FString TeachString;
+	FWriteWordData WordData;
+	
+	UPROPERTY(BlueprintReadWrite, Category = "KLingo")
+	FString Answer;
+	
+	UPROPERTY(BlueprintReadWrite, Category = "KLingo")
+	FString AnswerKr;
 };
 
 /// @brief Write 퀘스트 정보 구조체입니다.
@@ -375,13 +387,7 @@ struct FQuestWriteInfo
 	GENERATED_BODY()
 
 	UPROPERTY(BlueprintReadWrite, Category = "KLingo")
-	int32 WriteIndex = 0;
-
-	UPROPERTY(BlueprintReadWrite, Category = "KLingo")
-	int32 Difficulty = 0;
-
-	UPROPERTY(BlueprintReadWrite, Category = "KLingo")
-	TArray<FWriteTargetData> QuestTarget;
+	TArray<FWriteQuestionData> Questions;
 };
 
 // =================================================================================
