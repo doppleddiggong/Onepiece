@@ -13,10 +13,8 @@
 
 #define SCREEN_PATH						TEXT("/Engine/BasicShapes/Cube.Cube")
 #define MEDIA_PLAYER_PATH				TEXT("/Game/CustomContents/Media/MP_InGame.MP_InGame")
-#define MEDIA_MATERIAL_PATH				TEXT("/Game/CustomContents/Media/M_MP_InGame.M_MP_InGame")
 #define MEDIA_SOURCE_PATH				TEXT("/Game/CustomContents/Media/Source/Duolingo.Duolingo")
 #define MEDIA_PLAYER_TEXTURE_PATH		TEXT("/Game/CustomContents/Media/MPT_InGame.MPT_InGame")
-
 
 AMoviePanel::AMoviePanel()
 {
@@ -40,7 +38,6 @@ void AMoviePanel::BeginPlay()
 	if (!Screen || !Screen->GetMaterial(0))
 		return;
 
-	// Dynamic Material 생성
 	MediaMaterial = UMaterialInstanceDynamic::Create(Screen->GetMaterial(0), this);
 	if (!MediaMaterial)
 		return;
