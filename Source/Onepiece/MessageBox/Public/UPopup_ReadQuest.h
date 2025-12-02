@@ -25,11 +25,14 @@ public:
 
 	UFUNCTION()
 	void InitQuestInfo(EQuestRole QuestRole);
-
+	
 private:
 	UFUNCTION(BlueprintCallable, Category = "Close")
 	void OnClickClose();
 
+	void ListenAudio(const FString& AudioText);
+	void OnResponseListenAudio(FResponseListenAudio& ResponseData, bool bWasSuccessful);
+	
 public:
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
 	class UWordWidget* WordWidget;
@@ -39,4 +42,6 @@ public:
 	
 private:
 	FResponseScenario ScenarioData;
+
+	bool bIsRequest = false;
 };

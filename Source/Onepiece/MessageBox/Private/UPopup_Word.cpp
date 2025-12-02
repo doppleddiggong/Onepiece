@@ -83,3 +83,4 @@ void UPopup_Word::OnResponseListenAudio(FResponseListenAudio& ResponseData, bool
 		PRINTLOG(TEXT("Audio request failed: %s"), *LastRequestText);
 	}
 }
+
