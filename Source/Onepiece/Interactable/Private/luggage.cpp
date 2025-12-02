@@ -5,10 +5,13 @@
 #include "InteractableComponent.h"
 #include "ALingoGameMode.h"
 #include "ALingoPlayerState.h"
+#include "APlayerActor.h"
 #include "ULuggageInfoWidget.h"
 #include "GameLogging.h"
 #include "UGameDataManager.h"
 #include "UHookComponent.h"
+#include "UKLingoNetworkSystem.h"
+#include "ULingoGameHelper.h"
 
 #include "Components/BoxComponent.h"
 #include "Components/WidgetComponent.h"
@@ -327,3 +330,36 @@ bool Aluggage::ServerNotifySelection_Validate(APlayerState* Player)
 	return Player != nullptr;
 }
 
+
+
+void Aluggage::PlayTTSAudio()
+{
+	RequestListenAudio( FString::Printf(TEXT("%s %s"), *Color, *Pattern) );
+}
+
+void Aluggage::RequestListenAudio(const FString& AudioText)
+{
+	if (bIsRequest)
+		return;
+
+	if (auto KLingoNetwork = UKLingoNetworkSystem::Get(GetWorld()))
+	{
+		bIsRequest = true;
+
+		KLingoNetwork->RequestListenAudio(
+			AudioText,
+			FResponseListenAudioDelegate::CreateUObject(this, &Aluggage::OnResponseListenAudio)
+		);
+	}
+}
+
+void Aluggage::OnResponseListenAudio(FResponseListenAudio& ResponseData, bool bWasSuccessful)
+{
+	bIsRequest = false;
+
+	if (bWasSuccessful)
+	{
+		if (auto PlayerActor = ULingoGameHelper::GetPlayerActor(this))
+			PlayerActor->PlayTTSAudio(ResponseData.audio_base64);
+	}
+}
