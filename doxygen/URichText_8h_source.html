@@ -121,6 +121,9 @@ $(document).ready(function(){initNavTree('URichText_8h_source.html',''); initRes
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="keyword">struct </span><a class="code hl_struct" href="structFWordData.html">FWordData</a>;</div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="keyword">struct </span><a class="code hl_struct" href="structFPhonemeData.html">FPhonemeData</a>;</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="URichText_8h.html#a842db4169468886b73d60ddf138a61e7">   14</a></span><a class="code hl_function" href="URichText_8h.html#a842db4169468886b73d60ddf138a61e7">DECLARE_DELEGATE_OneParam</a>(FOnClickHyperLink, <span class="keyword">const</span> <a class="code hl_struct" href="structFPhonemeData.html">FPhonemeData</a>&amp;);</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>UCLASS()</div>
 <div class="foldopen" id="foldopen00017" data-start="{" data-end="};">
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="classURichText.html">   17</a></span>class ONEPIECE_API <a class="code hl_class" href="classURichText.html">URichText</a> : public UUserWidget</div>
@@ -133,35 +136,41 @@ $(document).ready(function(){initNavTree('URichText_8h_source.html',''); initRes
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    </div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="keyword">public</span>:</div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <span class="keywordtype">void</span> SetText(<span class="keyword">const</span> <a class="code hl_struct" href="structFWordData.html">FWordData</a>&amp; WordData);</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="keywordtype">void</span> SetText(<span class="keyword">const</span> FString&amp; InString);</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="keywordtype">void</span> SetText(<span class="keyword">const</span> FText&amp; InText);</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="keywordtype">void</span> SetText(<span class="keyword">const</span> FString&amp; InString) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="keywordtype">void</span> SetText(<span class="keyword">const</span> FText&amp; InText) <span class="keyword">const</span>;</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    UFUNCTION()</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <span class="keywordtype">void</span> OnClickLink(<span class="keyword">const</span> FString&amp; LinkID, <span class="keyword">const</span> FString&amp; Content);</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="keywordtype">void</span> ApplyStyle();</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    </div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    UPROPERTY(meta = (BindWidget), BlueprintReadOnly)</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="classURichText.html#af755daedf70cad7632b40b234c46ab57">   38</a></span>    TObjectPtr&lt;class URichTextBlock&gt; RichTxt;</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="comment">// URichText.h</span></div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    UPROPERTY(EditAnywhere, Category = &quot;Style&quot;)</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="classURichText.html#aa0f0e2dfda351face3d49284835d9a3c">   42</a></span>    int32 FontSize = 32;</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    UPROPERTY(EditAnywhere, Category = &quot;Style&quot;)</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="classURichText.html#ae7e7efe5881a3f0cbdd1c06a62821ba1">   45</a></span>    FLinearColor TextColor = FLinearColor::White;</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    UPROPERTY(EditAnywhere, Category = &quot;Style&quot;)</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="classURichText.html#af34b9096bbea6ff323e6bb59de189008">   48</a></span>    FString DefaultText;</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    </div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>private:</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="classURichText.html#ac65dad7e72ab91f90bedfafd3afd3426">   53</a></span>    TArray&lt;<a class="code hl_struct" href="structFPhonemeData.html">FPhonemeData</a>&gt; CachedPhonemeData;</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>};</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="classURichText.html#a3eff613ed1442444b27f92e8e97d3553">   30</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classURichText.html#a3eff613ed1442444b27f92e8e97d3553">SetOnClickHyperLink</a>(<span class="keyword">const</span> FOnClickHyperLink&amp; InClick)  { OnClickHyperLink = InClick; }</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    UFUNCTION()</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    void OnClickLink(const FString&amp; LinkID, const FString&amp; Content);</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="keywordtype">void</span> ApplyStyle();</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>public:</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    UPROPERTY(meta = (BindWidget), BlueprintReadOnly)</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="classURichText.html#af755daedf70cad7632b40b234c46ab57">   40</a></span>    TObjectPtr&lt;class URichTextBlock&gt; RichTxt;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="comment">// URichText.h</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    UPROPERTY(EditAnywhere, Category = &quot;Style&quot;)</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="classURichText.html#aa0f0e2dfda351face3d49284835d9a3c">   44</a></span>    int32 FontSize = 32;</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    UPROPERTY(EditAnywhere, Category = &quot;Style&quot;)</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="classURichText.html#ae7e7efe5881a3f0cbdd1c06a62821ba1">   47</a></span>    FLinearColor TextColor = FLinearColor::White;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    UPROPERTY(EditAnywhere, Category = &quot;Style&quot;)</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="classURichText.html#af34b9096bbea6ff323e6bb59de189008">   50</a></span>    FString DefaultText;</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>private:</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="classURichText.html#ac65dad7e72ab91f90bedfafd3afd3426">   54</a></span>    TArray&lt;<a class="code hl_struct" href="structFPhonemeData.html">FPhonemeData</a>&gt; CachedPhonemeData;</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="classURichText.html#a37d0e421d77503289c534d793960fb9d">   56</a></span>    FOnClickHyperLink OnClickHyperLink;</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>};</div>
 </div>
-<div class="ttc" id="aclassURichText_html"><div class="ttname"><a href="classURichText.html">URichText</a></div><div class="ttdoc">Custom RichText widget with clickable hyperlink support for phoneme data</div><div class="ttdef"><b>Definition</b> <a href="URichText_8h_source.html#l00017">URichText.h:18</a></div></div>
+<div class="ttc" id="aURichText_8h_html_a842db4169468886b73d60ddf138a61e7"><div class="ttname"><a href="URichText_8h.html#a842db4169468886b73d60ddf138a61e7">DECLARE_DELEGATE_OneParam</a></div><div class="ttdeci">DECLARE_DELEGATE_OneParam(FOnClickHyperLink, const FPhonemeData &amp;)</div></div>
+<div class="ttc" id="aclassURichText_html"><div class="ttname"><a href="classURichText.html">URichText</a></div><div class="ttdef"><b>Definition</b> <a href="URichText_8h_source.html#l00017">URichText.h:18</a></div></div>
+<div class="ttc" id="aclassURichText_html_a3eff613ed1442444b27f92e8e97d3553"><div class="ttname"><a href="classURichText.html#a3eff613ed1442444b27f92e8e97d3553">URichText::SetOnClickHyperLink</a></div><div class="ttdeci">void SetOnClickHyperLink(const FOnClickHyperLink &amp;InClick)</div><div class="ttdef"><b>Definition</b> <a href="URichText_8h_source.html#l00030">URichText.h:30</a></div></div>
 <div class="ttc" id="astructFPhonemeData_html"><div class="ttname"><a href="structFPhonemeData.html">FPhonemeData</a></div><div class="ttdoc">단어 데이터 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00223">NetworkData.h:224</a></div></div>
 <div class="ttc" id="astructFWordData_html"><div class="ttname"><a href="structFWordData.html">FWordData</a></div><div class="ttdoc">단어 데이터 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00238">NetworkData.h:239</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
@@ -170,7 +179,7 @@ $(document).ready(function(){initNavTree('URichText_8h_source.html',''); initRes
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_b6750dbdff08df84555f1c91e851278f.html">WidgetComponents</a></li><li class="navelem"><a class="el" href="dir_d6381c14211658f973554019171aa369.html">Public</a></li><li class="navelem"><a class="el" href="URichText_8h.html">URichText.h</a></li>
-    <li class="footer">생성시간 : 월 12월 1 2025 15:35:42, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 화 12월 2 2025 06:28:29, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

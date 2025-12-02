@@ -127,47 +127,49 @@ $(document).ready(function(){initNavTree('Popup__Result_8h_source.html',''); ini
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> NativeConstruct() <span class="keyword">override</span>;</div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    UPROPERTY(meta = (BindWidget), BlueprintReadOnly)</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="classUPopup__Result.html#ace1f25fc907b08455769132e1fac92bd">   22</a></span>    class <a class="code hl_class" href="classUImageButton.html">UImageButton</a>* Btn_OK;</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    UPROPERTY(meta = (BindWidget), BlueprintReadOnly)</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="classUPopup__Result.html#a1f5ff500a8acc553246271243fde95e3">   25</a></span>    class <a class="code hl_class" href="classUTextureButton.html">UTextureButton</a>* Btn_Exit;</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>private:</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    UFUNCTION(BlueprintCallable, Category = &quot;Close&quot;)</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="keywordtype">void</span> OnClickClose();</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>public:</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <span class="comment">// 정답 표시</span></div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    UPROPERTY(meta = (BindWidget), BlueprintReadOnly)</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="classUPopup__Result.html#ae2be7762580c12660552611ed2adcbbb">   34</a></span>    class <a class="code hl_class" href="classUWordWidget.html">UWordWidget</a>* WordWidget;</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="comment">// 오답 표시</span></div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    UPROPERTY(meta = (BindWidget), BlueprintReadOnly)</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="classUPopup__Result.html#a04d95ce68cd4a1b3b6c31335b467b4cb">   37</a></span>    class UScrollBox* Scrl_WrongList;</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="keywordtype">void</span> SetWordWidget();</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="keywordtype">void</span> SetWrongList();</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    </div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>public:</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="comment">// 걸린 시간</span></div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    UPROPERTY(meta = (BindWidget), BlueprintReadOnly)</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="classUPopup__Result.html#a18a984e9716989ad63e787056c788323">   45</a></span>    class UTextBlock* Txt_TimeRank;</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    UPROPERTY(meta = (BindWidget), BlueprintReadOnly)</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="classUPopup__Result.html#a80035c12c87b5d983cc0ce58144f0402">   48</a></span>    class UTextBlock* Txt_TimeTaken;</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="classUPopup__Result.html#ad961f293e41c728a5970d36ed2cfb00a">   50</a></span>    <span class="keywordtype">float</span> TimeTaken = -1;</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="keywordtype">void</span> InitPopup();</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    UPROPERTY(meta = (BindWidget), BlueprintReadOnly)</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="classUPopup__Result.html#ace1f25fc907b08455769132e1fac92bd">   24</a></span>    class <a class="code hl_class" href="classUImageButton.html">UImageButton</a>* Btn_OK;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    UPROPERTY(meta = (BindWidget), BlueprintReadOnly)</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="classUPopup__Result.html#a1f5ff500a8acc553246271243fde95e3">   27</a></span>    class <a class="code hl_class" href="classUTextureButton.html">UTextureButton</a>* Btn_Exit;</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>private:</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    UFUNCTION(BlueprintCallable, Category = &quot;Close&quot;)</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="keywordtype">void</span> OnClickClose();</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>public:</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="comment">// 정답 표시</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    UPROPERTY(meta = (BindWidget), BlueprintReadOnly)</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="classUPopup__Result.html#ae2be7762580c12660552611ed2adcbbb">   36</a></span>    class <a class="code hl_class" href="classUWordWidget.html">UWordWidget</a>* WordWidget;</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="comment">// 오답 표시</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    UPROPERTY(meta = (BindWidget), BlueprintReadOnly)</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="classUPopup__Result.html#a04d95ce68cd4a1b3b6c31335b467b4cb">   39</a></span>    class UScrollBox* Scrl_WrongList;</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="keywordtype">void</span> SetWordWidget();</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="keywordtype">void</span> SetWrongList();</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>public:</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="comment">// 걸린 시간</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    UPROPERTY(meta = (BindWidget), BlueprintReadOnly)</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="classUPopup__Result.html#a18a984e9716989ad63e787056c788323">   47</a></span>    class UTextBlock* Txt_TimeRank;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    UPROPERTY(meta = (BindWidget), BlueprintReadOnly)</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="classUPopup__Result.html#a80035c12c87b5d983cc0ce58144f0402">   50</a></span>    class UTextBlock* Txt_TimeTaken;</div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="keywordtype">void</span> SetTimeRank();</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="keywordtype">void</span> SetTimeTaken();</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>public:</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <span class="comment">// 정답 정확도</span></div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    UPROPERTY(meta = (BindWidget), BlueprintReadOnly)</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="classUPopup__Result.html#afcfee3aa20b406078d770e8c9d06b47d">   58</a></span>    class UTextBlock* Txt_Accuracy;</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="keywordtype">void</span> SetAccuracy();</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>};</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="classUPopup__Result.html#ad961f293e41c728a5970d36ed2cfb00a">   52</a></span>    <span class="keywordtype">float</span> TimeTaken = -1;</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="keywordtype">void</span> SetTimeRank();</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="keywordtype">void</span> SetTimeTaken();</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>public:</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="comment">// 정답 정확도</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    UPROPERTY(meta = (BindWidget), BlueprintReadOnly)</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="classUPopup__Result.html#afcfee3aa20b406078d770e8c9d06b47d">   60</a></span>    class UTextBlock* Txt_Accuracy;</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="keywordtype">void</span> SetAccuracy();</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>};</div>
 </div>
 <div class="ttc" id="aUBasePopup_8h_html"><div class="ttname"><a href="UBasePopup_8h.html">UBasePopup.h</a></div></div>
 <div class="ttc" id="aclassUBasePopup_html"><div class="ttname"><a href="classUBasePopup.html">UBasePopup</a></div><div class="ttdoc">모든 팝업의 기본 클래스</div><div class="ttdef"><b>Definition</b> <a href="UBasePopup_8h_source.html#l00016">UBasePopup.h:17</a></div></div>
@@ -181,7 +183,7 @@ $(document).ready(function(){initNavTree('Popup__Result_8h_source.html',''); ini
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_47ae9c23f27029060c39af29b069b73d.html">MessageBox</a></li><li class="navelem"><a class="el" href="dir_244820c19557decdcbf6fc4000b77b7e.html">Public</a></li><li class="navelem"><a class="el" href="Popup__Result_8h.html">Popup_Result.h</a></li>
-    <li class="footer">생성시간 : 월 12월 1 2025 15:35:42, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 화 12월 2 2025 06:28:29, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

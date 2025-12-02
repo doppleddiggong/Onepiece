@@ -104,6 +104,7 @@ $(document).ready(function(){initNavTree('classUWordWidget.html',''); initResiza
   <div class="summary">
 <a href="#pub-methods">Public 멤버 함수</a> &#124;
 <a href="#pro-attribs">Protected 속성</a> &#124;
+<a href="#pri-methods">Private 멤버 함수</a> &#124;
 <a href="classUWordWidget-members.html">모든 멤버 목록</a>  </div>
   <div class="headertitle"><div class="title">UWordWidget 클래스 참조</div></div>
 </div><!--header-->
@@ -118,14 +119,14 @@ $(document).ready(function(){initNavTree('classUWordWidget.html',''); initResiza
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classUWordWidget__inherit__graph.svg" width="155" height="230"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classUWordWidget__inherit__graph.svg" width="166" height="250"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="closed.png" alt="+"/> UWordWidget에 대한 협력 다이어그램:</div>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classUWordWidget__coll__graph.svg" width="155" height="230"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classUWordWidget__coll__graph.svg" width="166" height="250"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -142,6 +143,11 @@ Protected 속성</h2></td></tr>
 <tr class="memitem:a3f684146efe5e91044aefaae656be4d4" id="r_a3f684146efe5e91044aefaae656be4d4"><td class="memItemLeft" align="right" valign="top">TObjectPtr&lt; class UTextBlock &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUWordWidget.html#a3f684146efe5e91044aefaae656be4d4">Txt_Eng</a></td></tr>
 <tr class="memdesc:a3f684146efe5e91044aefaae656be4d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">발음 표시 텍스트  <br /></td></tr>
 <tr class="separator:a3f684146efe5e91044aefaae656be4d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Private 멤버 함수</h2></td></tr>
+<tr class="memitem:afe9e0de49316c744dd08f8501516211c" id="r_afe9e0de49316c744dd08f8501516211c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUWordWidget.html#afe9e0de49316c744dd08f8501516211c">OnClickHyperLink</a> (const <a class="el" href="structFPhonemeData.html">FPhonemeData</a> &amp;Data)</td></tr>
+<tr class="separator:afe9e0de49316c744dd08f8501516211c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">상세한 설명</h2>
 <div class="textblock"><p>단어 표시 위젯 </p>
@@ -165,24 +171,34 @@ Protected 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="UWordWidget_8cpp_source.html">UWordWidget.cpp</a> 파일의 <a class="el" href="UWordWidget_8cpp_source.html#l00019">19</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   20</span>{</div>
-<div class="line"><span class="lineno">   21</span>    <a class="code hl_variable" href="classUWordWidget.html#aa3242b94119f9d1df5be48eba675d46f">Rich_Kor</a>-&gt;SetText(InWordData);</div>
-<div class="line"><span class="lineno">   22</span>    <a class="code hl_variable" href="classUWordWidget.html#a3f684146efe5e91044aefaae656be4d4">Txt_Eng</a>-&gt;SetText(FText::FromString(InWordData.<a class="code hl_variable" href="structFWordData.html#ad5cbdc27da99dfca63d216196c807570">Eng</a>));</div>
-<div class="line"><span class="lineno">   23</span>}</div>
-<div class="ttc" id="aclassUWordWidget_html_a3f684146efe5e91044aefaae656be4d4"><div class="ttname"><a href="classUWordWidget.html#a3f684146efe5e91044aefaae656be4d4">UWordWidget::Txt_Eng</a></div><div class="ttdeci">TObjectPtr&lt; class UTextBlock &gt; Txt_Eng</div><div class="ttdoc">발음 표시 텍스트</div><div class="ttdef"><b>Definition</b> <a href="UWordWidget_8h_source.html#l00033">UWordWidget.h:33</a></div></div>
-<div class="ttc" id="aclassUWordWidget_html_aa3242b94119f9d1df5be48eba675d46f"><div class="ttname"><a href="classUWordWidget.html#aa3242b94119f9d1df5be48eba675d46f">UWordWidget::Rich_Kor</a></div><div class="ttdeci">TObjectPtr&lt; class URichText &gt; Rich_Kor</div><div class="ttdef"><b>Definition</b> <a href="UWordWidget_8h_source.html#l00029">UWordWidget.h:29</a></div></div>
+<p class="definition"><a class="el" href="UWordWidget_8cpp_source.html">UWordWidget.cpp</a> 파일의 <a class="el" href="UWordWidget_8cpp_source.html#l00022">22</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   23</span>{</div>
+<div class="line"><span class="lineno">   24</span>    <a class="code hl_variable" href="classUWordWidget.html#aa3242b94119f9d1df5be48eba675d46f">Rich_Kor</a>-&gt;SetText(InWordData);</div>
+<div class="line"><span class="lineno">   25</span>    <a class="code hl_variable" href="classUWordWidget.html#aa3242b94119f9d1df5be48eba675d46f">Rich_Kor</a>-&gt;SetOnClickHyperLink(FOnClickHyperLink::CreateUObject(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUWordWidget.html#afe9e0de49316c744dd08f8501516211c">UWordWidget::OnClickHyperLink</a>));</div>
+<div class="line"><span class="lineno">   26</span>    </div>
+<div class="line"><span class="lineno">   27</span>    <a class="code hl_variable" href="classUWordWidget.html#a3f684146efe5e91044aefaae656be4d4">Txt_Eng</a>-&gt;SetText(FText::FromString(InWordData.<a class="code hl_variable" href="structFWordData.html#ad5cbdc27da99dfca63d216196c807570">Eng</a>));</div>
+<div class="line"><span class="lineno">   28</span>}</div>
+<div class="ttc" id="aclassUWordWidget_html_a3f684146efe5e91044aefaae656be4d4"><div class="ttname"><a href="classUWordWidget.html#a3f684146efe5e91044aefaae656be4d4">UWordWidget::Txt_Eng</a></div><div class="ttdeci">TObjectPtr&lt; class UTextBlock &gt; Txt_Eng</div><div class="ttdoc">발음 표시 텍스트</div><div class="ttdef"><b>Definition</b> <a href="UWordWidget_8h_source.html#l00037">UWordWidget.h:37</a></div></div>
+<div class="ttc" id="aclassUWordWidget_html_aa3242b94119f9d1df5be48eba675d46f"><div class="ttname"><a href="classUWordWidget.html#aa3242b94119f9d1df5be48eba675d46f">UWordWidget::Rich_Kor</a></div><div class="ttdeci">TObjectPtr&lt; class URichText &gt; Rich_Kor</div><div class="ttdef"><b>Definition</b> <a href="UWordWidget_8h_source.html#l00033">UWordWidget.h:33</a></div></div>
+<div class="ttc" id="aclassUWordWidget_html_afe9e0de49316c744dd08f8501516211c"><div class="ttname"><a href="classUWordWidget.html#afe9e0de49316c744dd08f8501516211c">UWordWidget::OnClickHyperLink</a></div><div class="ttdeci">void OnClickHyperLink(const FPhonemeData &amp;Data)</div><div class="ttdef"><b>Definition</b> <a href="UWordWidget_8cpp_source.html#l00030">UWordWidget.cpp:30</a></div></div>
 <div class="ttc" id="astructFWordData_html_ad5cbdc27da99dfca63d216196c807570"><div class="ttname"><a href="structFWordData.html#ad5cbdc27da99dfca63d216196c807570">FWordData::Eng</a></div><div class="ttdeci">FString Eng</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00246">NetworkData.h:246</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="NetworkData_8h_source.html#l00246">FWordData::Eng</a>, <a class="el" href="UWordWidget_8h_source.html#l00029">Rich_Kor</a>, <a class="el" href="UWordWidget_8h_source.html#l00033">Txt_Eng</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="NetworkData_8h_source.html#l00246">FWordData::Eng</a>, <a class="el" href="UWordWidget_8cpp_source.html#l00030">OnClickHyperLink()</a>, <a class="el" href="UWordWidget_8h_source.html#l00033">Rich_Kor</a>, <a class="el" href="UWordWidget_8h_source.html#l00037">Txt_Eng</a>.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UPopup__ReadQuest_8cpp_source.html#l00042">UPopup_ReadQuest::InitQuestInfo()</a>, <a class="el" href="Popup__Result_8cpp_source.html#l00046">UPopup_Result::SetWordWidget()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UPopup__ReadQuest_8cpp_source.html#l00042">UPopup_ReadQuest::InitQuestInfo()</a>, <a class="el" href="Popup__Result_8cpp_source.html#l00050">UPopup_Result::SetWordWidget()</a>.</p>
 <div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classUWordWidget_a4042d45c4417913b25fa4ef44d5eccc1_icgraph.svg" width="100%" height="413"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classUWordWidget_a4042d45c4417913b25fa4ef44d5eccc1_cgraph.svg" width="498" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classUWordWidget_a4042d45c4417913b25fa4ef44d5eccc1_icgraph.svg" width="100%" height="364"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -210,18 +226,68 @@ Protected 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="UWordWidget_8cpp_source.html">UWordWidget.cpp</a> 파일의 <a class="el" href="UWordWidget_8cpp_source.html#l00008">8</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">    9</span>{</div>
-<div class="line"><span class="lineno">   10</span>    Super::NativeConstruct();</div>
-<div class="line"><span class="lineno">   11</span> </div>
-<div class="line"><span class="lineno">   12</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUWordWidget.html#aa3242b94119f9d1df5be48eba675d46f">Rich_Kor</a>)</div>
-<div class="line"><span class="lineno">   13</span>        <a class="code hl_variable" href="classUWordWidget.html#aa3242b94119f9d1df5be48eba675d46f">Rich_Kor</a>-&gt;SetText(FText::FromString(TEXT(<span class="stringliteral">&quot;&quot;</span>)));</div>
-<div class="line"><span class="lineno">   14</span>    </div>
-<div class="line"><span class="lineno">   15</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUWordWidget.html#a3f684146efe5e91044aefaae656be4d4">Txt_Eng</a>)</div>
-<div class="line"><span class="lineno">   16</span>        <a class="code hl_variable" href="classUWordWidget.html#a3f684146efe5e91044aefaae656be4d4">Txt_Eng</a>-&gt;SetText(FText::FromString(TEXT(<span class="stringliteral">&quot;&quot;</span>)));</div>
-<div class="line"><span class="lineno">   17</span>}</div>
+<p class="definition"><a class="el" href="UWordWidget_8cpp_source.html">UWordWidget.cpp</a> 파일의 <a class="el" href="UWordWidget_8cpp_source.html#l00011">11</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   12</span>{</div>
+<div class="line"><span class="lineno">   13</span>    Super::NativeConstruct();</div>
+<div class="line"><span class="lineno">   14</span> </div>
+<div class="line"><span class="lineno">   15</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUWordWidget.html#aa3242b94119f9d1df5be48eba675d46f">Rich_Kor</a>)</div>
+<div class="line"><span class="lineno">   16</span>        <a class="code hl_variable" href="classUWordWidget.html#aa3242b94119f9d1df5be48eba675d46f">Rich_Kor</a>-&gt;SetText(FText::FromString(TEXT(<span class="stringliteral">&quot;&quot;</span>)));</div>
+<div class="line"><span class="lineno">   17</span>    </div>
+<div class="line"><span class="lineno">   18</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUWordWidget.html#a3f684146efe5e91044aefaae656be4d4">Txt_Eng</a>)</div>
+<div class="line"><span class="lineno">   19</span>        <a class="code hl_variable" href="classUWordWidget.html#a3f684146efe5e91044aefaae656be4d4">Txt_Eng</a>-&gt;SetText(FText::FromString(TEXT(<span class="stringliteral">&quot;&quot;</span>)));</div>
+<div class="line"><span class="lineno">   20</span>}</div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="UWordWidget_8h_source.html#l00029">Rich_Kor</a>, <a class="el" href="UWordWidget_8h_source.html#l00033">Txt_Eng</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="UWordWidget_8h_source.html#l00033">Rich_Kor</a>, <a class="el" href="UWordWidget_8h_source.html#l00037">Txt_Eng</a>.</p>
+
+</div>
+</div>
+<a id="afe9e0de49316c744dd08f8501516211c" name="afe9e0de49316c744dd08f8501516211c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe9e0de49316c744dd08f8501516211c">&#9670;&#160;</a></span>OnClickHyperLink()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void UWordWidget::OnClickHyperLink </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structFPhonemeData.html">FPhonemeData</a> &amp;&#160;</td>
+          <td class="paramname"><em>Data</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="UWordWidget_8cpp_source.html">UWordWidget.cpp</a> 파일의 <a class="el" href="UWordWidget_8cpp_source.html#l00030">30</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   31</span>{</div>
+<div class="line"><span class="lineno">   32</span>    <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> PopupMgr = UPopupManager::Get(GetWorld()))</div>
+<div class="line"><span class="lineno">   33</span>    {</div>
+<div class="line"><span class="lineno">   34</span>        <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> Popup = Cast&lt;UPopup_Word&gt;(PopupMgr-&gt;ShowPopup(EPopupType::Word)))</div>
+<div class="line"><span class="lineno">   35</span>        {</div>
+<div class="line"><span class="lineno">   36</span>            Popup-&gt;InitPopup(Data);</div>
+<div class="line"><span class="lineno">   37</span>        }</div>
+<div class="line"><span class="lineno">   38</span>    }</div>
+<div class="line"><span class="lineno">   39</span>    </div>
+<div class="line"><span class="lineno">   40</span>    <span class="comment">// FString Msg = FString::Printf( TEXT(&quot;%s, %s&quot;), *Data.Kor, *Data.Pronunciation);</span></div>
+<div class="line"><span class="lineno">   41</span>    <span class="comment">// UPopupManager::Get(GetWorld())-&gt;ShowMsgBox(TEXT(&quot;Notice&quot;), Msg,</span></div>
+<div class="line"><span class="lineno">   42</span>    <span class="comment">//  EMsgBoxType::OK, FOnMsgBoxOkDelegate());</span></div>
+<div class="line"><span class="lineno">   43</span>}</div>
+</div><!-- fragment -->
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UWordWidget_8cpp_source.html#l00022">InitWordData()</a>.</p>
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classUWordWidget_afe9e0de49316c744dd08f8501516211c_icgraph.svg" width="100%" height="364"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
 
 </div>
 </div>
@@ -246,9 +312,9 @@ Protected 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="UWordWidget_8h_source.html">UWordWidget.h</a> 파일의 <a class="el" href="UWordWidget_8h_source.html#l00029">29</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="UWordWidget_8h_source.html">UWordWidget.h</a> 파일의 <a class="el" href="UWordWidget_8h_source.html#l00033">33</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UWordWidget_8cpp_source.html#l00019">InitWordData()</a>, <a class="el" href="UWordWidget_8cpp_source.html#l00008">NativeConstruct()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UWordWidget_8cpp_source.html#l00022">InitWordData()</a>, <a class="el" href="UWordWidget_8cpp_source.html#l00011">NativeConstruct()</a>.</p>
 
 </div>
 </div>
@@ -274,9 +340,9 @@ Protected 속성</h2></td></tr>
 
 <p>발음 표시 텍스트 </p>
 
-<p class="definition"><a class="el" href="UWordWidget_8h_source.html">UWordWidget.h</a> 파일의 <a class="el" href="UWordWidget_8h_source.html#l00033">33</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="UWordWidget_8h_source.html">UWordWidget.h</a> 파일의 <a class="el" href="UWordWidget_8h_source.html#l00037">37</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UWordWidget_8cpp_source.html#l00019">InitWordData()</a>, <a class="el" href="UWordWidget_8cpp_source.html#l00008">NativeConstruct()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UWordWidget_8cpp_source.html#l00022">InitWordData()</a>, <a class="el" href="UWordWidget_8cpp_source.html#l00011">NativeConstruct()</a>.</p>
 
 </div>
 </div>
@@ -290,7 +356,7 @@ Protected 속성</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classUWordWidget.html">UWordWidget</a></li>
-    <li class="footer">생성시간 : 월 12월 1 2025 15:35:42, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 화 12월 2 2025 06:28:29, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

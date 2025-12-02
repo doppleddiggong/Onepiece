@@ -151,29 +151,29 @@ Public 속성</h2></td></tr>
 
 <p>구조체를 JSON 문자열로 변환합니다. </p>
 
-<p class="definition"><a class="el" href="NetworkData_8cpp_source.html">NetworkData.cpp</a> 파일의 <a class="el" href="NetworkData_8cpp_source.html#l00464">464</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  465</span>{</div>
-<div class="line"><span class="lineno">  466</span>    TArray&lt;TSharedPtr&lt;FJsonValue&gt;&gt; JsonArray;</div>
-<div class="line"><span class="lineno">  467</span> </div>
-<div class="line"><span class="lineno">  468</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <a class="code hl_struct" href="structFInterviewAnswerData.html">FInterviewAnswerData</a>&amp; AnswerData : <a class="code hl_variable" href="structFRequestInterviewAnswer.html#a6f9bb74ac56aa1ad3d48a4a98a017eac">answer</a>)</div>
-<div class="line"><span class="lineno">  469</span>    {</div>
-<div class="line"><span class="lineno">  470</span>        TSharedPtr&lt;FJsonObject&gt; JsonObject = MakeShared&lt;FJsonObject&gt;();</div>
-<div class="line"><span class="lineno">  471</span>        JsonObject-&gt;SetNumberField(TEXT(<span class="stringliteral">&quot;interview_id&quot;</span>), AnswerData.interview_id);</div>
-<div class="line"><span class="lineno">  472</span>        JsonObject-&gt;SetStringField(TEXT(<span class="stringliteral">&quot;answer&quot;</span>), AnswerData.answer);</div>
-<div class="line"><span class="lineno">  473</span>        JsonObject-&gt;SetNumberField(TEXT(<span class="stringliteral">&quot;user_id&quot;</span>), AnswerData.user_id);</div>
-<div class="line"><span class="lineno">  474</span> </div>
-<div class="line"><span class="lineno">  475</span>        JsonArray.Add(MakeShared&lt;FJsonValueObject&gt;(JsonObject));</div>
-<div class="line"><span class="lineno">  476</span>    }</div>
-<div class="line"><span class="lineno">  477</span> </div>
-<div class="line"><span class="lineno">  478</span>    TSharedRef&lt;TJsonWriter&lt;&gt;&gt; Writer = TJsonWriterFactory&lt;&gt;::Create(&amp;OutJson);</div>
-<div class="line"><span class="lineno">  479</span>    <span class="keywordflow">return</span> FJsonSerializer::Serialize(JsonArray, Writer);</div>
-<div class="line"><span class="lineno">  480</span>}</div>
+<p class="definition"><a class="el" href="NetworkData_8cpp_source.html">NetworkData.cpp</a> 파일의 <a class="el" href="NetworkData_8cpp_source.html#l00466">466</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  467</span>{</div>
+<div class="line"><span class="lineno">  468</span>    TArray&lt;TSharedPtr&lt;FJsonValue&gt;&gt; JsonArray;</div>
+<div class="line"><span class="lineno">  469</span> </div>
+<div class="line"><span class="lineno">  470</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <a class="code hl_struct" href="structFInterviewAnswerData.html">FInterviewAnswerData</a>&amp; AnswerData : <a class="code hl_variable" href="structFRequestInterviewAnswer.html#a6f9bb74ac56aa1ad3d48a4a98a017eac">answer</a>)</div>
+<div class="line"><span class="lineno">  471</span>    {</div>
+<div class="line"><span class="lineno">  472</span>        TSharedPtr&lt;FJsonObject&gt; JsonObject = MakeShared&lt;FJsonObject&gt;();</div>
+<div class="line"><span class="lineno">  473</span>        JsonObject-&gt;SetNumberField(TEXT(<span class="stringliteral">&quot;interview_id&quot;</span>), AnswerData.interview_id);</div>
+<div class="line"><span class="lineno">  474</span>        JsonObject-&gt;SetStringField(TEXT(<span class="stringliteral">&quot;answer&quot;</span>), AnswerData.answer);</div>
+<div class="line"><span class="lineno">  475</span>        JsonObject-&gt;SetNumberField(TEXT(<span class="stringliteral">&quot;user_id&quot;</span>), AnswerData.user_id);</div>
+<div class="line"><span class="lineno">  476</span> </div>
+<div class="line"><span class="lineno">  477</span>        JsonArray.Add(MakeShared&lt;FJsonValueObject&gt;(JsonObject));</div>
+<div class="line"><span class="lineno">  478</span>    }</div>
+<div class="line"><span class="lineno">  479</span> </div>
+<div class="line"><span class="lineno">  480</span>    TSharedRef&lt;TJsonWriter&lt;&gt;&gt; Writer = TJsonWriterFactory&lt;&gt;::Create(&amp;OutJson);</div>
+<div class="line"><span class="lineno">  481</span>    <span class="keywordflow">return</span> FJsonSerializer::Serialize(JsonArray, Writer);</div>
+<div class="line"><span class="lineno">  482</span>}</div>
 <div class="ttc" id="astructFInterviewAnswerData_html"><div class="ttname"><a href="structFInterviewAnswerData.html">FInterviewAnswerData</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00696">NetworkData.h:697</a></div></div>
 <div class="ttc" id="astructFRequestInterviewAnswer_html_a6f9bb74ac56aa1ad3d48a4a98a017eac"><div class="ttname"><a href="structFRequestInterviewAnswer.html#a6f9bb74ac56aa1ad3d48a4a98a017eac">FRequestInterviewAnswer::answer</a></div><div class="ttdeci">TArray&lt; FInterviewAnswerData &gt; answer</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00716">NetworkData.h:716</a></div></div>
 </div><!-- fragment -->
 <p class="reference">다음을 참조함 :  <a class="el" href="NetworkData_8h_source.html#l00716">answer</a>.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00706">UKLingoNetworkSystem::RequestInterviewAnswer()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00735">UKLingoNetworkSystem::RequestInterviewAnswer()</a>.</p>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
@@ -199,7 +199,7 @@ Public 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="NetworkData_8h_source.html">NetworkData.h</a> 파일의 <a class="el" href="NetworkData_8h_source.html#l00716">716</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UPopup__Interview_8cpp_source.html#l00078">UPopup_Interview::OnClickSubmit()</a>, <a class="el" href="NetworkData_8cpp_source.html#l00464">ToJsonString()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UPopup__Interview_8cpp_source.html#l00078">UPopup_Interview::OnClickSubmit()</a>, <a class="el" href="NetworkData_8cpp_source.html#l00466">ToJsonString()</a>.</p>
 
 </div>
 </div>
@@ -213,7 +213,7 @@ Public 속성</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="structFRequestInterviewAnswer.html">FRequestInterviewAnswer</a></li>
-    <li class="footer">생성시간 : 월 12월 1 2025 15:35:42, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 화 12월 2 2025 06:28:29, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

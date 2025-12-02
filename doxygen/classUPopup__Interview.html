@@ -237,8 +237,21 @@ Private 속성</h2></td></tr>
 
 <p>팝업 초기화 (필요 시 API 확장) </p>
 
-<p class="definition"><a class="el" href="UPopup__Interview_8cpp_source.html">UPopup_Interview.cpp</a> 파일의 <a class="el" href="UPopup__Interview_8cpp_source.html#l00037">37</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   38</span>{</div>
+<p class="definition"><a class="el" href="UPopup__Interview_8cpp_source.html">UPopup_Interview.cpp</a> 파일의 <a class="el" href="UPopup__Interview_8cpp_source.html#l00024">24</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   25</span>{</div>
+<div class="line"><span class="lineno">   26</span>    <span class="comment">// 중복 바인딩 방지: 기존 바인딩 제거 후 재바인딩</span></div>
+<div class="line"><span class="lineno">   27</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUPopup__Interview.html#adbc4b1bc708fca8b8528bfeafaf4fa8d">Btn_Close</a>)</div>
+<div class="line"><span class="lineno">   28</span>    {</div>
+<div class="line"><span class="lineno">   29</span>        <a class="code hl_variable" href="classUPopup__Interview.html#adbc4b1bc708fca8b8528bfeafaf4fa8d">Btn_Close</a>-&gt;OnButtonClickedEvent.RemoveDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUPopup__Interview.html#ae5c9f4a7b8a279e9ae40ef890906ede5">UPopup_Interview::OnClickClose</a>);</div>
+<div class="line"><span class="lineno">   30</span>        <a class="code hl_variable" href="classUPopup__Interview.html#adbc4b1bc708fca8b8528bfeafaf4fa8d">Btn_Close</a>-&gt;OnButtonClickedEvent.AddDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUPopup__Interview.html#ae5c9f4a7b8a279e9ae40ef890906ede5">UPopup_Interview::OnClickClose</a>);</div>
+<div class="line"><span class="lineno">   31</span>    }</div>
+<div class="line"><span class="lineno">   32</span> </div>
+<div class="line"><span class="lineno">   33</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUPopup__Interview.html#ae1e5a127e84c35184be7830aa403532a">Btn_Submit</a>)</div>
+<div class="line"><span class="lineno">   34</span>    {</div>
+<div class="line"><span class="lineno">   35</span>        <a class="code hl_variable" href="classUPopup__Interview.html#ae1e5a127e84c35184be7830aa403532a">Btn_Submit</a>-&gt;OnButtonClickedEvent.RemoveDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUPopup__Interview.html#a344e30ba023436381796fe60247bf0b2">UPopup_Interview::OnClickSubmit</a>);</div>
+<div class="line"><span class="lineno">   36</span>        <a class="code hl_variable" href="classUPopup__Interview.html#ae1e5a127e84c35184be7830aa403532a">Btn_Submit</a>-&gt;OnButtonClickedEvent.AddDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUPopup__Interview.html#a344e30ba023436381796fe60247bf0b2">UPopup_Interview::OnClickSubmit</a>);</div>
+<div class="line"><span class="lineno">   37</span>    }</div>
+<div class="line"><span class="lineno">   38</span> </div>
 <div class="line"><span class="lineno">   39</span>    <span class="comment">// 질문 데이터 저장</span></div>
 <div class="line"><span class="lineno">   40</span>    <a class="code hl_variable" href="classUPopup__Interview.html#a6801e8c062ebc8e0fd12675e47d0d6e9">SavedQuestions</a> = InterviewData.<a class="code hl_variable" href="structFResponseInterviewHello.html#a73a135f51b92dc7f71e0bce61150eb2f">Questions</a>;</div>
 <div class="line"><span class="lineno">   41</span> </div>
@@ -270,20 +283,24 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">   67</span>}</div>
 <div class="ttc" id="aclassUPopup__InterviewItem_html"><div class="ttname"><a href="classUPopup__InterviewItem.html">UPopup_InterviewItem</a></div><div class="ttdef"><b>Definition</b> <a href="UPopup__InterviewItem_8h_source.html#l00014">UPopup_InterviewItem.h:15</a></div></div>
 <div class="ttc" id="aclassUPopup__InterviewItem_html_a8d07dc29d64dd3edaee2622f5665642c"><div class="ttname"><a href="classUPopup__InterviewItem.html#a8d07dc29d64dd3edaee2622f5665642c">UPopup_InterviewItem::InitItem</a></div><div class="ttdeci">void InitItem(const FInterviewQuestionData &amp;Data)</div><div class="ttdoc">질문 항목 초기화</div><div class="ttdef"><b>Definition</b> <a href="UPopup__InterviewItem_8cpp_source.html#l00014">UPopup_InterviewItem.cpp:14</a></div></div>
+<div class="ttc" id="aclassUPopup__Interview_html_a344e30ba023436381796fe60247bf0b2"><div class="ttname"><a href="classUPopup__Interview.html#a344e30ba023436381796fe60247bf0b2">UPopup_Interview::OnClickSubmit</a></div><div class="ttdeci">void OnClickSubmit()</div><div class="ttdef"><b>Definition</b> <a href="UPopup__Interview_8cpp_source.html#l00078">UPopup_Interview.cpp:78</a></div></div>
 <div class="ttc" id="aclassUPopup__Interview_html_a61abf7c3ca4da8fe15f0f36e1de389bb"><div class="ttname"><a href="classUPopup__Interview.html#a61abf7c3ca4da8fe15f0f36e1de389bb">UPopup_Interview::VerticalBox</a></div><div class="ttdeci">TObjectPtr&lt; class UVerticalBox &gt; VerticalBox</div><div class="ttdoc">인터뷰 항목들이 추가될 VerticalBox</div><div class="ttdef"><b>Definition</b> <a href="UPopup__Interview_8h_source.html#l00065">UPopup_Interview.h:65</a></div></div>
 <div class="ttc" id="aclassUPopup__Interview_html_a67150a51e4d4a8a379991f89fe49b777"><div class="ttname"><a href="classUPopup__Interview.html#a67150a51e4d4a8a379991f89fe49b777">UPopup_Interview::InterviewItemClass</a></div><div class="ttdeci">TSubclassOf&lt; class UPopup_InterviewItem &gt; InterviewItemClass</div><div class="ttdoc">팝업 내에서 표시될 인터뷰 항목 위젯 클래스</div><div class="ttdef"><b>Definition</b> <a href="UPopup__Interview_8h_source.html#l00070">UPopup_Interview.h:70</a></div></div>
 <div class="ttc" id="aclassUPopup__Interview_html_a6801e8c062ebc8e0fd12675e47d0d6e9"><div class="ttname"><a href="classUPopup__Interview.html#a6801e8c062ebc8e0fd12675e47d0d6e9">UPopup_Interview::SavedQuestions</a></div><div class="ttdeci">TArray&lt; FInterviewQuestionData &gt; SavedQuestions</div><div class="ttdoc">저장된 인터뷰 질문 데이터</div><div class="ttdef"><b>Definition</b> <a href="UPopup__Interview_8h_source.html#l00080">UPopup_Interview.h:80</a></div></div>
+<div class="ttc" id="aclassUPopup__Interview_html_adbc4b1bc708fca8b8528bfeafaf4fa8d"><div class="ttname"><a href="classUPopup__Interview.html#adbc4b1bc708fca8b8528bfeafaf4fa8d">UPopup_Interview::Btn_Close</a></div><div class="ttdeci">TObjectPtr&lt; class UTextureButton &gt; Btn_Close</div><div class="ttdoc">닫기 버튼</div><div class="ttdef"><b>Definition</b> <a href="UPopup__Interview_8h_source.html#l00053">UPopup_Interview.h:53</a></div></div>
+<div class="ttc" id="aclassUPopup__Interview_html_ae1e5a127e84c35184be7830aa403532a"><div class="ttname"><a href="classUPopup__Interview.html#ae1e5a127e84c35184be7830aa403532a">UPopup_Interview::Btn_Submit</a></div><div class="ttdeci">TObjectPtr&lt; class UImageButton &gt; Btn_Submit</div><div class="ttdoc">제출 버튼</div><div class="ttdef"><b>Definition</b> <a href="UPopup__Interview_8h_source.html#l00057">UPopup_Interview.h:57</a></div></div>
+<div class="ttc" id="aclassUPopup__Interview_html_ae5c9f4a7b8a279e9ae40ef890906ede5"><div class="ttname"><a href="classUPopup__Interview.html#ae5c9f4a7b8a279e9ae40ef890906ede5">UPopup_Interview::OnClickClose</a></div><div class="ttdeci">void OnClickClose()</div><div class="ttdef"><b>Definition</b> <a href="UPopup__Interview_8cpp_source.html#l00069">UPopup_Interview.cpp:69</a></div></div>
 <div class="ttc" id="aclassUPopup__Interview_html_af8bc9c6aedb5cd8de9d939840811381e"><div class="ttname"><a href="classUPopup__Interview.html#af8bc9c6aedb5cd8de9d939840811381e">UPopup_Interview::ItemSpacing</a></div><div class="ttdeci">float ItemSpacing</div><div class="ttdoc">인터뷰 항목 간 간격 (Spacer Height)</div><div class="ttdef"><b>Definition</b> <a href="UPopup__Interview_8h_source.html#l00075">UPopup_Interview.h:75</a></div></div>
 <div class="ttc" id="astructFInterviewQuestionData_html"><div class="ttname"><a href="structFInterviewQuestionData.html">FInterviewQuestionData</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00144">NetworkData.h:145</a></div></div>
 <div class="ttc" id="astructFResponseInterviewHello_html_a73a135f51b92dc7f71e0bce61150eb2f"><div class="ttname"><a href="structFResponseInterviewHello.html#a73a135f51b92dc7f71e0bce61150eb2f">FResponseInterviewHello::Questions</a></div><div class="ttdeci">TArray&lt; FInterviewQuestionData &gt; Questions</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00684">NetworkData.h:684</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="UPopup__InterviewItem_8cpp_source.html#l00014">UPopup_InterviewItem::InitItem()</a>, <a class="el" href="UPopup__Interview_8h_source.html#l00070">InterviewItemClass</a>, <a class="el" href="UPopup__Interview_8h_source.html#l00075">ItemSpacing</a>, <a class="el" href="NetworkData_8h_source.html#l00684">FResponseInterviewHello::Questions</a>, <a class="el" href="UPopup__Interview_8h_source.html#l00080">SavedQuestions</a>, <a class="el" href="UPopup__Interview_8h_source.html#l00065">VerticalBox</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="UPopup__Interview_8h_source.html#l00053">Btn_Close</a>, <a class="el" href="UPopup__Interview_8h_source.html#l00057">Btn_Submit</a>, <a class="el" href="UPopup__InterviewItem_8cpp_source.html#l00014">UPopup_InterviewItem::InitItem()</a>, <a class="el" href="UPopup__Interview_8h_source.html#l00070">InterviewItemClass</a>, <a class="el" href="UPopup__Interview_8h_source.html#l00075">ItemSpacing</a>, <a class="el" href="UPopup__Interview_8cpp_source.html#l00069">OnClickClose()</a>, <a class="el" href="UPopup__Interview_8cpp_source.html#l00078">OnClickSubmit()</a>, <a class="el" href="NetworkData_8h_source.html#l00684">FResponseInterviewHello::Questions</a>, <a class="el" href="UPopup__Interview_8h_source.html#l00080">SavedQuestions</a>, <a class="el" href="UPopup__Interview_8h_source.html#l00065">VerticalBox</a>.</p>
 <div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-2-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classUPopup__Interview_a6ec1ec9ae39e678165e1d4483ac3ac22_cgraph.svg" width="438" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classUPopup__Interview_a6ec1ec9ae39e678165e1d4483ac3ac22_cgraph.svg" width="100%" height="434"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -314,34 +331,8 @@ Private 속성</h2></td></tr>
 <p class="definition"><a class="el" href="UPopup__Interview_8cpp_source.html">UPopup_Interview.cpp</a> 파일의 <a class="el" href="UPopup__Interview_8cpp_source.html#l00019">19</a> 번째 라인에서 정의되었습니다.</p>
 <div class="fragment"><div class="line"><span class="lineno">   20</span>{</div>
 <div class="line"><span class="lineno">   21</span>    Super::NativeConstruct();</div>
-<div class="line"><span class="lineno">   22</span> </div>
-<div class="line"><span class="lineno">   23</span>    <span class="comment">// 버튼 이벤트 바인딩</span></div>
-<div class="line"><span class="lineno">   24</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUPopup__Interview.html#adbc4b1bc708fca8b8528bfeafaf4fa8d">Btn_Close</a>)</div>
-<div class="line"><span class="lineno">   25</span>    {</div>
-<div class="line"><span class="lineno">   26</span>        <a class="code hl_variable" href="classUPopup__Interview.html#adbc4b1bc708fca8b8528bfeafaf4fa8d">Btn_Close</a>-&gt;OnButtonClickedEvent.RemoveDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUPopup__Interview.html#ae5c9f4a7b8a279e9ae40ef890906ede5">UPopup_Interview::OnClickClose</a>);</div>
-<div class="line"><span class="lineno">   27</span>        <a class="code hl_variable" href="classUPopup__Interview.html#adbc4b1bc708fca8b8528bfeafaf4fa8d">Btn_Close</a>-&gt;OnButtonClickedEvent.AddDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUPopup__Interview.html#ae5c9f4a7b8a279e9ae40ef890906ede5">UPopup_Interview::OnClickClose</a>);</div>
-<div class="line"><span class="lineno">   28</span>    }</div>
-<div class="line"><span class="lineno">   29</span> </div>
-<div class="line"><span class="lineno">   30</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUPopup__Interview.html#ae1e5a127e84c35184be7830aa403532a">Btn_Submit</a>)</div>
-<div class="line"><span class="lineno">   31</span>    {</div>
-<div class="line"><span class="lineno">   32</span>        <a class="code hl_variable" href="classUPopup__Interview.html#ae1e5a127e84c35184be7830aa403532a">Btn_Submit</a>-&gt;OnButtonClickedEvent.RemoveDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUPopup__Interview.html#a344e30ba023436381796fe60247bf0b2">UPopup_Interview::OnClickSubmit</a>);</div>
-<div class="line"><span class="lineno">   33</span>        <a class="code hl_variable" href="classUPopup__Interview.html#ae1e5a127e84c35184be7830aa403532a">Btn_Submit</a>-&gt;OnButtonClickedEvent.AddDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUPopup__Interview.html#a344e30ba023436381796fe60247bf0b2">UPopup_Interview::OnClickSubmit</a>);</div>
-<div class="line"><span class="lineno">   34</span>    }</div>
-<div class="line"><span class="lineno">   35</span>}</div>
-<div class="ttc" id="aclassUPopup__Interview_html_a344e30ba023436381796fe60247bf0b2"><div class="ttname"><a href="classUPopup__Interview.html#a344e30ba023436381796fe60247bf0b2">UPopup_Interview::OnClickSubmit</a></div><div class="ttdeci">void OnClickSubmit()</div><div class="ttdef"><b>Definition</b> <a href="UPopup__Interview_8cpp_source.html#l00078">UPopup_Interview.cpp:78</a></div></div>
-<div class="ttc" id="aclassUPopup__Interview_html_adbc4b1bc708fca8b8528bfeafaf4fa8d"><div class="ttname"><a href="classUPopup__Interview.html#adbc4b1bc708fca8b8528bfeafaf4fa8d">UPopup_Interview::Btn_Close</a></div><div class="ttdeci">TObjectPtr&lt; class UTextureButton &gt; Btn_Close</div><div class="ttdoc">닫기 버튼</div><div class="ttdef"><b>Definition</b> <a href="UPopup__Interview_8h_source.html#l00053">UPopup_Interview.h:53</a></div></div>
-<div class="ttc" id="aclassUPopup__Interview_html_ae1e5a127e84c35184be7830aa403532a"><div class="ttname"><a href="classUPopup__Interview.html#ae1e5a127e84c35184be7830aa403532a">UPopup_Interview::Btn_Submit</a></div><div class="ttdeci">TObjectPtr&lt; class UImageButton &gt; Btn_Submit</div><div class="ttdoc">제출 버튼</div><div class="ttdef"><b>Definition</b> <a href="UPopup__Interview_8h_source.html#l00057">UPopup_Interview.h:57</a></div></div>
-<div class="ttc" id="aclassUPopup__Interview_html_ae5c9f4a7b8a279e9ae40ef890906ede5"><div class="ttname"><a href="classUPopup__Interview.html#ae5c9f4a7b8a279e9ae40ef890906ede5">UPopup_Interview::OnClickClose</a></div><div class="ttdeci">void OnClickClose()</div><div class="ttdef"><b>Definition</b> <a href="UPopup__Interview_8cpp_source.html#l00069">UPopup_Interview.cpp:69</a></div></div>
+<div class="line"><span class="lineno">   22</span>}</div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="UPopup__Interview_8h_source.html#l00053">Btn_Close</a>, <a class="el" href="UPopup__Interview_8h_source.html#l00057">Btn_Submit</a>, <a class="el" href="UPopup__Interview_8cpp_source.html#l00069">OnClickClose()</a>, <a class="el" href="UPopup__Interview_8cpp_source.html#l00078">OnClickSubmit()</a>.</p>
-<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
-<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-3-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classUPopup__Interview_a734cfd84c524782ec2246bbb0fde5c23_cgraph.svg" width="100%" height="386"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
-</div>
-
 </div>
 </div>
 <a id="a750c1a854f68ca16faa069645531abd6" name="a750c1a854f68ca16faa069645531abd6"></a>
@@ -391,11 +382,11 @@ Private 속성</h2></td></tr>
 <div class="ttc" id="aclassUBasePopup_html_a830a08b15d00e418f351f096fc5a8790"><div class="ttname"><a href="classUBasePopup.html#a830a08b15d00e418f351f096fc5a8790">UBasePopup::UpdateAnimation</a></div><div class="ttdeci">void UpdateAnimation(float InDeltaTime)</div><div class="ttdoc">스크립트 오픈 애니메이션 업데이트</div><div class="ttdef"><b>Definition</b> <a href="UBasePopup_8cpp_source.html#l00035">UBasePopup.cpp:35</a></div></div>
 </div><!-- fragment -->
 <p class="reference">다음을 참조함 :  <a class="el" href="UBasePopup_8h_source.html#l00044">UBasePopup::bIsOpenAnim</a>, <a class="el" href="UBasePopup_8cpp_source.html#l00035">UBasePopup::UpdateAnimation()</a>.</p>
-<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
-<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
 <div class="center"><iframe scrolling="no" frameborder="0" src="classUBasePopup_a750c1a854f68ca16faa069645531abd6_cgraph.svg" width="468" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
@@ -434,13 +425,13 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">   76</span>}</div>
 <div class="ttc" id="aclassUPopupManager_html"><div class="ttname"><a href="classUPopupManager.html">UPopupManager</a></div><div class="ttdoc">팝업 관리자</div><div class="ttdef"><b>Definition</b> <a href="UPopupManager_8h_source.html#l00030">UPopupManager.h:31</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UPopup__Interview_8cpp_source.html#l00019">NativeConstruct()</a>.</p>
-<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
-<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UPopup__Interview_8cpp_source.html#l00024">InitPopup()</a>.</p>
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-5-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classUPopup__Interview_ae5c9f4a7b8a279e9ae40ef890906ede5_icgraph.svg" width="447" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classUPopup__Interview_ae5c9f4a7b8a279e9ae40ef890906ede5_icgraph.svg" width="464" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -515,20 +506,20 @@ Private 속성</h2></td></tr>
 </div><!-- fragment -->
 <p class="reference">다음을 참조함 :  <a class="el" href="NetworkData_8h_source.html#l00716">FRequestInterviewAnswer::answer</a>, <a class="el" href="UPopup__Interview_8cpp_source.html#l00118">OnResponseInterviewAnswer()</a>, <a class="el" href="UPopup__Interview_8h_source.html#l00065">VerticalBox</a>.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UPopup__Interview_8cpp_source.html#l00019">NativeConstruct()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UPopup__Interview_8cpp_source.html#l00024">InitPopup()</a>.</p>
+<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-5-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classUPopup__Interview_a344e30ba023436381796fe60247bf0b2_cgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
 <div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-6-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
+  <img id="dynsection-6-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-6-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-6-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classUPopup__Interview_a344e30ba023436381796fe60247bf0b2_cgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
-</div>
-<div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-7-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
-<div id="dynsection-7-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-7-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classUPopup__Interview_a344e30ba023436381796fe60247bf0b2_icgraph.svg" width="447" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classUPopup__Interview_a344e30ba023436381796fe60247bf0b2_icgraph.svg" width="464" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -598,23 +589,23 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">  146</span>    }</div>
 <div class="line"><span class="lineno">  147</span>}</div>
 <div class="ttc" id="aGameLogging_8h_html_a9998c8beb11a6bad6ffada2e701fc0cf"><div class="ttname"><a href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a></div><div class="ttdeci">#define PRINTLOG(fmt,...)</div><div class="ttdef"><b>Definition</b> <a href="GameLogging_8h_source.html#l00030">GameLogging.h:30</a></div></div>
-<div class="ttc" id="astructFResponseInterviewAnswer_html_ac7a93f9221e737e65dc5effa2a2904e7"><div class="ttname"><a href="structFResponseInterviewAnswer.html#ac7a93f9221e737e65dc5effa2a2904e7">FResponseInterviewAnswer::PrintData</a></div><div class="ttdeci">void PrintData() const</div><div class="ttdoc">디버그 로그에 응답 내용을 출력합니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8cpp_source.html#l00497">NetworkData.cpp:497</a></div></div>
+<div class="ttc" id="astructFResponseInterviewAnswer_html_ac7a93f9221e737e65dc5effa2a2904e7"><div class="ttname"><a href="structFResponseInterviewAnswer.html#ac7a93f9221e737e65dc5effa2a2904e7">FResponseInterviewAnswer::PrintData</a></div><div class="ttdeci">void PrintData() const</div><div class="ttdoc">디버그 로그에 응답 내용을 출력합니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8cpp_source.html#l00499">NetworkData.cpp:499</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="NetworkData_8cpp_source.html#l00497">FResponseInterviewAnswer::PrintData()</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="NetworkData_8cpp_source.html#l00499">FResponseInterviewAnswer::PrintData()</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UPopup__Interview_8cpp_source.html#l00078">OnClickSubmit()</a>.</p>
+<div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-7-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-7-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-7-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classUPopup__Interview_a017f4585e4709e2a6494f24c83b7ae8c_cgraph.svg" width="490" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 <div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-8-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
+  <img id="dynsection-8-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-8-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-8-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classUPopup__Interview_a017f4585e4709e2a6494f24c83b7ae8c_cgraph.svg" width="490" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
-<div id="dynsection-9" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-9-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
-<div id="dynsection-9-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-9-content" class="dyncontent" style="display:none;">
 <div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classUPopup__Interview_a017f4585e4709e2a6494f24c83b7ae8c_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
@@ -724,11 +715,11 @@ Private 속성</h2></td></tr>
 <p class="reference">다음을 참조함 :  <a class="el" href="UBasePopup_8h_source.html#l00044">UBasePopup::bIsOpenAnim</a>, <a class="el" href="UBasePopup_8h_source.html#l00051">UBasePopup::OpenDuration</a>, <a class="el" href="UBasePopup_8h_source.html#l00063">UBasePopup::OpenEaseExponent</a>, <a class="el" href="UBasePopup_8h_source.html#l00047">UBasePopup::OpenElapsedTime</a>, <a class="el" href="UBasePopup_8h_source.html#l00055">UBasePopup::OpenStartScale</a>, <a class="el" href="UBasePopup_8h_source.html#l00059">UBasePopup::OpenTargetScale</a>.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UBasePopup_8cpp_source.html#l00006">UBasePopup::NativeTick()</a>.</p>
-<div id="dynsection-10" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-10-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
-<div id="dynsection-10-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-9" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-9-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-9-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-10-content" class="dyncontent" style="display:none;">
+<div id="dynsection-9-content" class="dyncontent" style="display:none;">
 <div class="center"><iframe scrolling="no" frameborder="0" src="classUBasePopup_a830a08b15d00e418f351f096fc5a8790_icgraph.svg" width="468" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
@@ -787,7 +778,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="UPopup__Interview_8h_source.html">UPopup_Interview.h</a> 파일의 <a class="el" href="UPopup__Interview_8h_source.html#l00053">53</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UPopup__Interview_8cpp_source.html#l00019">NativeConstruct()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UPopup__Interview_8cpp_source.html#l00024">InitPopup()</a>.</p>
 
 </div>
 </div>
@@ -815,7 +806,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="UPopup__Interview_8h_source.html">UPopup_Interview.h</a> 파일의 <a class="el" href="UPopup__Interview_8h_source.html#l00057">57</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UPopup__Interview_8cpp_source.html#l00019">NativeConstruct()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UPopup__Interview_8cpp_source.html#l00024">InitPopup()</a>.</p>
 
 </div>
 </div>
@@ -869,7 +860,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="UPopup__Interview_8h_source.html">UPopup_Interview.h</a> 파일의 <a class="el" href="UPopup__Interview_8h_source.html#l00070">70</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UPopup__Interview_8cpp_source.html#l00037">InitPopup()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UPopup__Interview_8cpp_source.html#l00024">InitPopup()</a>.</p>
 
 </div>
 </div>
@@ -897,7 +888,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="UPopup__Interview_8h_source.html">UPopup_Interview.h</a> 파일의 <a class="el" href="UPopup__Interview_8h_source.html#l00075">75</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UPopup__Interview_8cpp_source.html#l00037">InitPopup()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UPopup__Interview_8cpp_source.html#l00024">InitPopup()</a>.</p>
 
 </div>
 </div>
@@ -1117,7 +1108,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="UBasePopup_8h_source.html">UBasePopup.h</a> 파일의 <a class="el" href="UBasePopup_8h_source.html#l00032">32</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UPopup__InputMsg_8cpp_source.html#l00067">UPopup_InputMsg::InitPopup()</a>, <a class="el" href="UPopup__InputMsg_8cpp_source.html#l00042">UPopup_InputMsg::OnClickOk()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UPopup__InputMsg_8cpp_source.html#l00050">UPopup_InputMsg::InitPopup()</a>, <a class="el" href="UPopup__InputMsg_8cpp_source.html#l00025">UPopup_InputMsg::OnClickOk()</a>.</p>
 
 </div>
 </div>
@@ -1145,7 +1136,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="UPopup__Interview_8h_source.html">UPopup_Interview.h</a> 파일의 <a class="el" href="UPopup__Interview_8h_source.html#l00080">80</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UPopup__Interview_8cpp_source.html#l00037">InitPopup()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UPopup__Interview_8cpp_source.html#l00024">InitPopup()</a>.</p>
 
 </div>
 </div>
@@ -1225,7 +1216,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="UPopup__Interview_8h_source.html">UPopup_Interview.h</a> 파일의 <a class="el" href="UPopup__Interview_8h_source.html#l00065">65</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UPopup__Interview_8cpp_source.html#l00037">InitPopup()</a>, <a class="el" href="UPopup__Interview_8cpp_source.html#l00078">OnClickSubmit()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UPopup__Interview_8cpp_source.html#l00024">InitPopup()</a>, <a class="el" href="UPopup__Interview_8cpp_source.html#l00078">OnClickSubmit()</a>.</p>
 
 </div>
 </div>
@@ -1239,7 +1230,7 @@ Private 속성</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classUPopup__Interview.html">UPopup_Interview</a></li>
-    <li class="footer">생성시간 : 월 12월 1 2025 15:35:42, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 화 12월 2 2025 06:28:29, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

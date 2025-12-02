@@ -4,5 +4,6 @@ var searchData=
   ['tickstep_1',['TickStep',['../classUSequenceManager.html#ae4c67cffa8cb11aaf21f0106dc801521',1,'USequenceManager']]],
   ['toastmsg_2',['ToastMsg',['../classAPopupTesterActor.html#a1cb826db020b0ed66da3f0a8df1453a7',1,'APopupTesterActor']]],
   ['tojsonstring_3',['ToJsonString',['../structFRequestInterviewAnswer.html#a216549363b85b27053c6b3866b3c457c',1,'FRequestInterviewAnswer']]],
-  ['torichtextstring_4',['ToRichTextString',['../structFPhonemeData.html#a979ef016c1c40e3519043ec8867c6326',1,'FPhonemeData']]]
+  ['torichtextstring_4',['ToRichTextString',['../structFPhonemeData.html#a979ef016c1c40e3519043ec8867c6326',1,'FPhonemeData']]],
+  ['trygetcachedaudio_5',['TryGetCachedAudio',['../classUVoiceCacheManager.html#a1f03d005cf3e58b3d1d07949616cfc86',1,'UVoiceCacheManager']]]
 ];

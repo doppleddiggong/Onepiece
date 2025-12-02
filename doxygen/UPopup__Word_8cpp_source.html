@@ -1,0 +1,244 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>KLingo Project Documentation: Source/Onepiece/MessageBox/Private/UPopup_Word.cpp 소스 파일</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript">
+window.MathJax = {
+  options: {
+    ignoreHtmlClass: 'tex2jax_ignore',
+    processHtmlClass: 'tex2jax_process'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<script type="text/javascript" src="darkmode_toggle.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">KLingo Project Documentation<span id="projectnumber">&#160;1.0.0</span>
+   </div>
+   <div id="projectbrief">Unreal Engine 5.6 C++ Project Documentation</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 다음에 의해 생성됨 :  Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','검색');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(0); });
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('UPopup__Word_8cpp_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">로딩중...</div>
+<div class="SRStatus" id="Searching">검색중...</div>
+<div class="SRStatus" id="NoMatches">일치하는것 없음</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">UPopup_Word.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="UPopup__Word_8cpp.html">이 파일의 문서화 페이지로 가기</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;<a class="code" href="UPopup__Word_8h.html">UPopup_Word.h</a>&quot;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;<a class="code" href="APlayerActor_8h.html">APlayerActor.h</a>&quot;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;<a class="code" href="GameLogging_8h.html">GameLogging.h</a>&quot;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;<a class="code" href="UImageButton_8h.html">UImageButton.h</a>&quot;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;<a class="code" href="UKLingoNetworkSystem_8h.html">UKLingoNetworkSystem.h</a>&quot;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;<a class="code" href="ULingoGameHelper_8h.html">ULingoGameHelper.h</a>&quot;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;<a class="code" href="UPopupManager_8h.html">UPopupManager.h</a>&quot;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;<a class="code" href="UTextureButton_8h.html">UTextureButton.h</a>&quot;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;Components/TextBlock.h&quot;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="foldopen" id="foldopen00015" data-start="{" data-end="}">
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="classUPopup__Word.html#a9a8e1261d8f3dd9dcd4b14f7739059eb">   15</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUPopup__Word.html#a9a8e1261d8f3dd9dcd4b14f7739059eb">UPopup_Word::InitPopup</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structFPhonemeData.html">FPhonemeData</a>&amp; InData)</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>{</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <a class="code hl_variable" href="classUPopup__Word.html#a16c603c2b721166f830180c0660ef544">Data</a> = InData;</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    </div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUPopup__Word.html#a0849dde16d124fa50d408fce50c76e47">Btn_Ok</a>)</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    {</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>        <a class="code hl_variable" href="classUPopup__Word.html#a0849dde16d124fa50d408fce50c76e47">Btn_Ok</a>-&gt;OnButtonClickedEvent.RemoveDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUPopup__Word.html#aae5240a352234a975e2b4fefcaf3b88f">UPopup_Word::OnClickClose</a>);</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        <a class="code hl_variable" href="classUPopup__Word.html#a0849dde16d124fa50d408fce50c76e47">Btn_Ok</a>-&gt;OnButtonClickedEvent.AddDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUPopup__Word.html#aae5240a352234a975e2b4fefcaf3b88f">UPopup_Word::OnClickClose</a>);</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    }</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUPopup__Word.html#aaf9f27083023b222fface839eacc7a60">Btn_Close</a>)</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    {</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        <a class="code hl_variable" href="classUPopup__Word.html#aaf9f27083023b222fface839eacc7a60">Btn_Close</a>-&gt;OnButtonClickedEvent.RemoveDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUPopup__Word.html#aae5240a352234a975e2b4fefcaf3b88f">UPopup_Word::OnClickClose</a>);</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        <a class="code hl_variable" href="classUPopup__Word.html#aaf9f27083023b222fface839eacc7a60">Btn_Close</a>-&gt;OnButtonClickedEvent.AddDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUPopup__Word.html#aae5240a352234a975e2b4fefcaf3b88f">UPopup_Word::OnClickClose</a>);</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    }</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUPopup__Word.html#a4eb3108bead2a3ac387e52eeddd5b6b8">Btn_Repeat</a>)</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    {</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        <a class="code hl_variable" href="classUPopup__Word.html#a4eb3108bead2a3ac387e52eeddd5b6b8">Btn_Repeat</a>-&gt;OnButtonClickedEvent.RemoveDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUPopup__Word.html#adc8db371408b196bb2a63c706d442da5">UPopup_Word::OnClickRepeat</a>);</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        <a class="code hl_variable" href="classUPopup__Word.html#a4eb3108bead2a3ac387e52eeddd5b6b8">Btn_Repeat</a>-&gt;OnButtonClickedEvent.AddDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUPopup__Word.html#adc8db371408b196bb2a63c706d442da5">UPopup_Word::OnClickRepeat</a>);</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    }</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <a class="code hl_variable" href="classUPopup__Word.html#aa7b7c1a49a378aed3b8ab2aee5e29f47">Txt_Kor</a>-&gt;SetText( FText::FromString(InData.<a class="code hl_variable" href="structFPhonemeData.html#a0c1cc150e086e0a25269012d0bbacc00">Kor</a>));</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <a class="code hl_variable" href="classUPopup__Word.html#ac6eb2584b34ad29964d1b22be64df24e">Txt_Proneme</a>-&gt;SetText( FText::FromString(InData.<a class="code hl_variable" href="structFPhonemeData.html#a276f029e26bfaf07af337ce6d35b3f40">Pronunciation</a>));</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <a class="code hl_function" href="classUPopup__Word.html#adc8db371408b196bb2a63c706d442da5">OnClickRepeat</a>();</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>}</div>
+</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
+<div class="foldopen" id="foldopen00043" data-start="{" data-end="}">
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="classUPopup__Word.html#aae5240a352234a975e2b4fefcaf3b88f">   43</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUPopup__Word.html#aae5240a352234a975e2b4fefcaf3b88f">UPopup_Word::OnClickClose</a>()</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>{</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="keywordflow">if</span> (<a class="code hl_class" href="classUPopupManager.html">UPopupManager</a>* PopupMgr = UPopupManager::Get(GetWorld()))</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    {</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        PopupMgr-&gt;HideCurrentPopup();</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    }</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>}</div>
+</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="foldopen" id="foldopen00051" data-start="{" data-end="}">
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="classUPopup__Word.html#adc8db371408b196bb2a63c706d442da5">   51</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUPopup__Word.html#adc8db371408b196bb2a63c706d442da5">UPopup_Word::OnClickRepeat</a>()</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>{</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUPopup__Word.html#af1f4fcfae08c555d86fac7257b4a3fd1">bIsRequest</a>)</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    {</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[Popup_Word] Already requesting audio, ignoring click: %s&quot;</span>), *<a class="code hl_variable" href="classUPopup__Word.html#a16c603c2b721166f830180c0660ef544">Data</a>.<a class="code hl_variable" href="structFPhonemeData.html#a0c1cc150e086e0a25269012d0bbacc00">Kor</a>);</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    }</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <a class="code hl_variable" href="classUPopup__Word.html#a77fac82cfa14d086eb247da0731c1095">LastRequestText</a> = <a class="code hl_variable" href="classUPopup__Word.html#a16c603c2b721166f830180c0660ef544">Data</a>.<a class="code hl_variable" href="structFPhonemeData.html#a0c1cc150e086e0a25269012d0bbacc00">Kor</a>;</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> KLingoNetwork = UKLingoNetworkSystem::Get(GetWorld()))</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    {</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        <a class="code hl_variable" href="classUPopup__Word.html#af1f4fcfae08c555d86fac7257b4a3fd1">bIsRequest</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        KLingoNetwork-&gt;RequestListenAudio(</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>            <a class="code hl_variable" href="classUPopup__Word.html#a16c603c2b721166f830180c0660ef544">Data</a>.<a class="code hl_variable" href="structFPhonemeData.html#a0c1cc150e086e0a25269012d0bbacc00">Kor</a>,</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>            FResponseListenAudioDelegate::CreateUObject(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUPopup__Word.html#a45dee7955aec0f230f1f72442bcecf9b">UPopup_Word::OnResponseListenAudio</a>)</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        );</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    }</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>}</div>
+</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
+<div class="foldopen" id="foldopen00072" data-start="{" data-end="}">
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno"><a class="line" href="classUPopup__Word.html#a45dee7955aec0f230f1f72442bcecf9b">   72</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUPopup__Word.html#a45dee7955aec0f230f1f72442bcecf9b">UPopup_Word::OnResponseListenAudio</a>(<a class="code hl_struct" href="structFResponseListenAudio.html">FResponseListenAudio</a>&amp; ResponseData, <span class="keywordtype">bool</span> bWasSuccessful)</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>{</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    <a class="code hl_variable" href="classUPopup__Word.html#af1f4fcfae08c555d86fac7257b4a3fd1">bIsRequest</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    <span class="keywordflow">if</span> (bWasSuccessful)</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    {</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        <span class="keywordflow">if</span> (<span class="keyword">auto</span> PlayerActor = <a class="code hl_function" href="classULingoGameHelper.html#aedc78e0ec65a7aad312693bd1719bff8">ULingoGameHelper::GetPlayerActor</a>(<span class="keyword">this</span>))</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>            PlayerActor-&gt;PlayTTSAudio(ResponseData.<a class="code hl_variable" href="structFResponseListenAudio.html#a39dfdd52ce3770dfbccf800986ce4607">audio_base64</a>);</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    }</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    {</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;Audio request failed: %s&quot;</span>), *<a class="code hl_variable" href="classUPopup__Word.html#a77fac82cfa14d086eb247da0731c1095">LastRequestText</a>);</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    }</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>}</div>
+</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
+<div class="ttc" id="aAPlayerActor_8h_html"><div class="ttname"><a href="APlayerActor_8h.html">APlayerActor.h</a></div><div class="ttdoc">Declares the player-controlled character actor.</div></div>
+<div class="ttc" id="aGameLogging_8h_html"><div class="ttname"><a href="GameLogging_8h.html">GameLogging.h</a></div><div class="ttdoc">YiSan 전반에서 사용하는 공용 인터페이스를 선언합니다.</div></div>
+<div class="ttc" id="aGameLogging_8h_html_a9998c8beb11a6bad6ffada2e701fc0cf"><div class="ttname"><a href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a></div><div class="ttdeci">#define PRINTLOG(fmt,...)</div><div class="ttdef"><b>Definition</b> <a href="GameLogging_8h_source.html#l00030">GameLogging.h:30</a></div></div>
+<div class="ttc" id="aUImageButton_8h_html"><div class="ttname"><a href="UImageButton_8h.html">UImageButton.h</a></div></div>
+<div class="ttc" id="aUKLingoNetworkSystem_8h_html"><div class="ttname"><a href="UKLingoNetworkSystem_8h.html">UKLingoNetworkSystem.h</a></div><div class="ttdoc">KLingo API 요청을 담당하는 서브시스템을 선언합니다.</div></div>
+<div class="ttc" id="aULingoGameHelper_8h_html"><div class="ttname"><a href="ULingoGameHelper_8h.html">ULingoGameHelper.h</a></div></div>
+<div class="ttc" id="aUPopupManager_8h_html"><div class="ttname"><a href="UPopupManager_8h.html">UPopupManager.h</a></div></div>
+<div class="ttc" id="aUPopup__Word_8h_html"><div class="ttname"><a href="UPopup__Word_8h.html">UPopup_Word.h</a></div></div>
+<div class="ttc" id="aUTextureButton_8h_html"><div class="ttname"><a href="UTextureButton_8h.html">UTextureButton.h</a></div></div>
+<div class="ttc" id="aclassULingoGameHelper_html_aedc78e0ec65a7aad312693bd1719bff8"><div class="ttname"><a href="classULingoGameHelper.html#aedc78e0ec65a7aad312693bd1719bff8">ULingoGameHelper::GetPlayerActor</a></div><div class="ttdeci">static class APlayerActor * GetPlayerActor(const UObject *WorldContextObject)</div><div class="ttdoc">첫 번째 플레이어의 PlayerActor를 가져옵니다.</div><div class="ttdef"><b>Definition</b> <a href="ULingoGameHelper_8cpp_source.html#l00147">ULingoGameHelper.cpp:147</a></div></div>
+<div class="ttc" id="aclassUPopupManager_html"><div class="ttname"><a href="classUPopupManager.html">UPopupManager</a></div><div class="ttdoc">팝업 관리자</div><div class="ttdef"><b>Definition</b> <a href="UPopupManager_8h_source.html#l00030">UPopupManager.h:31</a></div></div>
+<div class="ttc" id="aclassUPopup__Word_html_a0849dde16d124fa50d408fce50c76e47"><div class="ttname"><a href="classUPopup__Word.html#a0849dde16d124fa50d408fce50c76e47">UPopup_Word::Btn_Ok</a></div><div class="ttdeci">TObjectPtr&lt; class UImageButton &gt; Btn_Ok</div><div class="ttdef"><b>Definition</b> <a href="UPopup__Word_8h_source.html#l00040">UPopup_Word.h:40</a></div></div>
+<div class="ttc" id="aclassUPopup__Word_html_a16c603c2b721166f830180c0660ef544"><div class="ttname"><a href="classUPopup__Word.html#a16c603c2b721166f830180c0660ef544">UPopup_Word::Data</a></div><div class="ttdeci">FPhonemeData Data</div><div class="ttdef"><b>Definition</b> <a href="UPopup__Word_8h_source.html#l00046">UPopup_Word.h:46</a></div></div>
+<div class="ttc" id="aclassUPopup__Word_html_a45dee7955aec0f230f1f72442bcecf9b"><div class="ttname"><a href="classUPopup__Word.html#a45dee7955aec0f230f1f72442bcecf9b">UPopup_Word::OnResponseListenAudio</a></div><div class="ttdeci">void OnResponseListenAudio(FResponseListenAudio &amp;ResponseData, bool bWasSuccessful)</div><div class="ttdef"><b>Definition</b> <a href="UPopup__Word_8cpp_source.html#l00072">UPopup_Word.cpp:72</a></div></div>
+<div class="ttc" id="aclassUPopup__Word_html_a4eb3108bead2a3ac387e52eeddd5b6b8"><div class="ttname"><a href="classUPopup__Word.html#a4eb3108bead2a3ac387e52eeddd5b6b8">UPopup_Word::Btn_Repeat</a></div><div class="ttdeci">TObjectPtr&lt; class UTextureButton &gt; Btn_Repeat</div><div class="ttdef"><b>Definition</b> <a href="UPopup__Word_8h_source.html#l00037">UPopup_Word.h:37</a></div></div>
+<div class="ttc" id="aclassUPopup__Word_html_a77fac82cfa14d086eb247da0731c1095"><div class="ttname"><a href="classUPopup__Word.html#a77fac82cfa14d086eb247da0731c1095">UPopup_Word::LastRequestText</a></div><div class="ttdeci">FString LastRequestText</div><div class="ttdoc">현재 요청 중인 오디오 텍스트 (응답 검증용)</div><div class="ttdef"><b>Definition</b> <a href="UPopup__Word_8h_source.html#l00052">UPopup_Word.h:52</a></div></div>
+<div class="ttc" id="aclassUPopup__Word_html_a9a8e1261d8f3dd9dcd4b14f7739059eb"><div class="ttname"><a href="classUPopup__Word.html#a9a8e1261d8f3dd9dcd4b14f7739059eb">UPopup_Word::InitPopup</a></div><div class="ttdeci">void InitPopup(const FPhonemeData &amp;InData)</div><div class="ttdef"><b>Definition</b> <a href="UPopup__Word_8cpp_source.html#l00015">UPopup_Word.cpp:15</a></div></div>
+<div class="ttc" id="aclassUPopup__Word_html_aa7b7c1a49a378aed3b8ab2aee5e29f47"><div class="ttname"><a href="classUPopup__Word.html#aa7b7c1a49a378aed3b8ab2aee5e29f47">UPopup_Word::Txt_Kor</a></div><div class="ttdeci">TObjectPtr&lt; class UTextBlock &gt; Txt_Kor</div><div class="ttdef"><b>Definition</b> <a href="UPopup__Word_8h_source.html#l00031">UPopup_Word.h:31</a></div></div>
+<div class="ttc" id="aclassUPopup__Word_html_aae5240a352234a975e2b4fefcaf3b88f"><div class="ttname"><a href="classUPopup__Word.html#aae5240a352234a975e2b4fefcaf3b88f">UPopup_Word::OnClickClose</a></div><div class="ttdeci">void OnClickClose()</div><div class="ttdef"><b>Definition</b> <a href="UPopup__Word_8cpp_source.html#l00043">UPopup_Word.cpp:43</a></div></div>
+<div class="ttc" id="aclassUPopup__Word_html_aaf9f27083023b222fface839eacc7a60"><div class="ttname"><a href="classUPopup__Word.html#aaf9f27083023b222fface839eacc7a60">UPopup_Word::Btn_Close</a></div><div class="ttdeci">TObjectPtr&lt; class UTextureButton &gt; Btn_Close</div><div class="ttdef"><b>Definition</b> <a href="UPopup__Word_8h_source.html#l00043">UPopup_Word.h:43</a></div></div>
+<div class="ttc" id="aclassUPopup__Word_html_ac6eb2584b34ad29964d1b22be64df24e"><div class="ttname"><a href="classUPopup__Word.html#ac6eb2584b34ad29964d1b22be64df24e">UPopup_Word::Txt_Proneme</a></div><div class="ttdeci">TObjectPtr&lt; class UTextBlock &gt; Txt_Proneme</div><div class="ttdef"><b>Definition</b> <a href="UPopup__Word_8h_source.html#l00034">UPopup_Word.h:34</a></div></div>
+<div class="ttc" id="aclassUPopup__Word_html_adc8db371408b196bb2a63c706d442da5"><div class="ttname"><a href="classUPopup__Word.html#adc8db371408b196bb2a63c706d442da5">UPopup_Word::OnClickRepeat</a></div><div class="ttdeci">void OnClickRepeat()</div><div class="ttdef"><b>Definition</b> <a href="UPopup__Word_8cpp_source.html#l00051">UPopup_Word.cpp:51</a></div></div>
+<div class="ttc" id="aclassUPopup__Word_html_af1f4fcfae08c555d86fac7257b4a3fd1"><div class="ttname"><a href="classUPopup__Word.html#af1f4fcfae08c555d86fac7257b4a3fd1">UPopup_Word::bIsRequest</a></div><div class="ttdeci">bool bIsRequest</div><div class="ttdoc">오디오 요청 중복 방지 플래그</div><div class="ttdef"><b>Definition</b> <a href="UPopup__Word_8h_source.html#l00049">UPopup_Word.h:49</a></div></div>
+<div class="ttc" id="astructFPhonemeData_html"><div class="ttname"><a href="structFPhonemeData.html">FPhonemeData</a></div><div class="ttdoc">단어 데이터 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00223">NetworkData.h:224</a></div></div>
+<div class="ttc" id="astructFPhonemeData_html_a0c1cc150e086e0a25269012d0bbacc00"><div class="ttname"><a href="structFPhonemeData.html#a0c1cc150e086e0a25269012d0bbacc00">FPhonemeData::Kor</a></div><div class="ttdeci">FString Kor</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00228">NetworkData.h:228</a></div></div>
+<div class="ttc" id="astructFPhonemeData_html_a276f029e26bfaf07af337ce6d35b3f40"><div class="ttname"><a href="structFPhonemeData.html#a276f029e26bfaf07af337ce6d35b3f40">FPhonemeData::Pronunciation</a></div><div class="ttdeci">FString Pronunciation</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00231">NetworkData.h:231</a></div></div>
+<div class="ttc" id="astructFResponseListenAudio_html"><div class="ttname"><a href="structFResponseListenAudio.html">FResponseListenAudio</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00635">NetworkData.h:636</a></div></div>
+<div class="ttc" id="astructFResponseListenAudio_html_a39dfdd52ce3770dfbccf800986ce4607"><div class="ttname"><a href="structFResponseListenAudio.html#a39dfdd52ce3770dfbccf800986ce4607">FResponseListenAudio::audio_base64</a></div><div class="ttdeci">TArray&lt; uint8 &gt; audio_base64</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00643">NetworkData.h:643</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_47ae9c23f27029060c39af29b069b73d.html">MessageBox</a></li><li class="navelem"><a class="el" href="dir_2a20a70930e57e30643dc72759837dc0.html">Private</a></li><li class="navelem"><a class="el" href="UPopup__Word_8cpp.html">UPopup_Word.cpp</a></li>
+    <li class="footer">생성시간 : 화 12월 2 2025 06:28:29, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
+</body>
+</html>

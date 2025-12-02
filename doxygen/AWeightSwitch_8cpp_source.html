@@ -463,7 +463,7 @@ $(document).ready(function(){initNavTree('AWeightSwitch_8cpp_source.html',''); i
 <div class="line"><a id="l00355" name="l00355"></a><span class="lineno">  355</span>    <span class="comment">// 모든 클라이언트(호스트 포함)에서 정답 팝업 표시</span></div>
 <div class="line"><a id="l00356" name="l00356"></a><span class="lineno">  356</span>    <span class="keywordflow">if</span> (<a class="code hl_class" href="classUPopupManager.html">UPopupManager</a>* PopupMgr = UPopupManager::Get(GetWorld()))</div>
 <div class="line"><a id="l00357" name="l00357"></a><span class="lineno">  357</span>    {</div>
-<div class="line"><a id="l00358" name="l00358"></a><span class="lineno">  358</span>        PopupMgr-&gt;ShowPopup(EPopupType::Result);</div>
+<div class="line"><a id="l00358" name="l00358"></a><span class="lineno">  358</span>        PopupMgr-&gt;ShowResult();</div>
 <div class="line"><a id="l00359" name="l00359"></a><span class="lineno">  359</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[WeightSwitch] Showing result popup on %s&quot;</span>),</div>
 <div class="line"><a id="l00360" name="l00360"></a><span class="lineno">  360</span>            HasAuthority() ? TEXT(<span class="stringliteral">&quot;Server&quot;</span>) : TEXT(<span class="stringliteral">&quot;Client&quot;</span>));</div>
 <div class="line"><a id="l00361" name="l00361"></a><span class="lineno">  361</span>    }</div>
@@ -478,7 +478,7 @@ $(document).ready(function(){initNavTree('AWeightSwitch_8cpp_source.html',''); i
 <div class="line"><a id="l00377" name="l00377"></a><span class="lineno">  377</span>        FString Message = FString::Printf(TEXT(<span class="stringliteral">&quot;This is not the correct luggage.\n\nColor: %s\nPattern: %s&quot;</span>),</div>
 <div class="line"><a id="l00378" name="l00378"></a><span class="lineno">  378</span>            *LuggageColor, *LuggagePattern);</div>
 <div class="line"><a id="l00379" name="l00379"></a><span class="lineno">  379</span> </div>
-<div class="line"><a id="l00380" name="l00380"></a><span class="lineno">  380</span>        PopupMgr-&gt;ShowMsgBox(Title, Message, <a class="code hl_enumvalue" href="UPopup__MsgBox_8h.html#a19e1d6071fbd1a8d0f3a0ac7c630df51ae0aa021e21dddbd6d8cecec71e9cf564">EMsgBoxType::OK</a>,</div>
+<div class="line"><a id="l00380" name="l00380"></a><span class="lineno">  380</span>        PopupMgr-&gt;ShowMsgBox(Title, Message, <a class="code hl_enumvalue" href="EPopupType_8h.html#a19e1d6071fbd1a8d0f3a0ac7c630df51ae0aa021e21dddbd6d8cecec71e9cf564">EMsgBoxType::OK</a>,</div>
 <div class="line"><a id="l00381" name="l00381"></a><span class="lineno">  381</span>            FOnMsgBoxOkDelegate::CreateLambda([]() {</div>
 <div class="line"><a id="l00382" name="l00382"></a><span class="lineno">  382</span>                <span class="comment">// 확인 버튼 클릭 시 아무 작업도 하지 않음 (팝업만 닫힘)</span></div>
 <div class="line"><a id="l00383" name="l00383"></a><span class="lineno">  383</span>            }));</div>
@@ -490,6 +490,7 @@ $(document).ready(function(){initNavTree('AWeightSwitch_8cpp_source.html',''); i
 <div class="ttc" id="aALingoGameState_8h_html"><div class="ttname"><a href="ALingoGameState_8h.html">ALingoGameState.h</a></div></div>
 <div class="ttc" id="aAPlayerActor_8h_html"><div class="ttname"><a href="APlayerActor_8h.html">APlayerActor.h</a></div><div class="ttdoc">Declares the player-controlled character actor.</div></div>
 <div class="ttc" id="aAWeightSwitch_8h_html"><div class="ttname"><a href="AWeightSwitch_8h.html">AWeightSwitch.h</a></div></div>
+<div class="ttc" id="aEPopupType_8h_html_a19e1d6071fbd1a8d0f3a0ac7c630df51ae0aa021e21dddbd6d8cecec71e9cf564"><div class="ttname"><a href="EPopupType_8h.html#a19e1d6071fbd1a8d0f3a0ac7c630df51ae0aa021e21dddbd6d8cecec71e9cf564">EMsgBoxType::OK</a></div><div class="ttdeci">@ OK</div></div>
 <div class="ttc" id="aGameLogging_8h_html"><div class="ttname"><a href="GameLogging_8h.html">GameLogging.h</a></div><div class="ttdoc">YiSan 전반에서 사용하는 공용 인터페이스를 선언합니다.</div></div>
 <div class="ttc" id="aGameLogging_8h_html_a9998c8beb11a6bad6ffada2e701fc0cf"><div class="ttname"><a href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a></div><div class="ttdeci">#define PRINTLOG(fmt,...)</div><div class="ttdef"><b>Definition</b> <a href="GameLogging_8h_source.html#l00030">GameLogging.h:30</a></div></div>
 <div class="ttc" id="aGameLogging_8h_html_ac50b407bb34c70a0be1fccc74730d143"><div class="ttname"><a href="GameLogging_8h.html#ac50b407bb34c70a0be1fccc74730d143">PRINT_STRING</a></div><div class="ttdeci">#define PRINT_STRING(fmt,...)</div><div class="ttdef"><b>Definition</b> <a href="GameLogging_8h_source.html#l00045">GameLogging.h:45</a></div></div>
@@ -497,7 +498,6 @@ $(document).ready(function(){initNavTree('AWeightSwitch_8cpp_source.html',''); i
 <div class="ttc" id="aUBroadcastManager_8h_html"><div class="ttname"><a href="UBroadcastManager_8h.html">UBroadcastManager.h</a></div></div>
 <div class="ttc" id="aUPopupManager_8h_html"><div class="ttname"><a href="UPopupManager_8h.html">UPopupManager.h</a></div></div>
 <div class="ttc" id="aUPopup__MsgBox_8h_html"><div class="ttname"><a href="UPopup__MsgBox_8h.html">UPopup_MsgBox.h</a></div></div>
-<div class="ttc" id="aUPopup__MsgBox_8h_html_a19e1d6071fbd1a8d0f3a0ac7c630df51ae0aa021e21dddbd6d8cecec71e9cf564"><div class="ttname"><a href="UPopup__MsgBox_8h.html#a19e1d6071fbd1a8d0f3a0ac7c630df51ae0aa021e21dddbd6d8cecec71e9cf564">EMsgBoxType::OK</a></div><div class="ttdeci">@ OK</div></div>
 <div class="ttc" id="aUTweenAnimInstance_8h_html"><div class="ttname"><a href="UTweenAnimInstance_8h.html">UTweenAnimInstance.h</a></div><div class="ttdoc">UTweenAnimInstance 클래스를 선언합니다.</div></div>
 <div class="ttc" id="aclassALingoGameState_html"><div class="ttname"><a href="classALingoGameState.html">ALingoGameState</a></div><div class="ttdef"><b>Definition</b> <a href="ALingoGameState_8h_source.html#l00052">ALingoGameState.h:53</a></div></div>
 <div class="ttc" id="aclassALingoGameState_html_a17e93c1837d6f33a5a3717689177d952"><div class="ttname"><a href="classALingoGameState.html#a17e93c1837d6f33a5a3717689177d952">ALingoGameState::WrongLuggageList</a></div><div class="ttdeci">TArray&lt; int32 &gt; WrongLuggageList</div><div class="ttdoc">오답 캐리어 목록</div><div class="ttdef"><b>Definition</b> <a href="ALingoGameState_8h_source.html#l00135">ALingoGameState.h:135</a></div></div>
@@ -531,7 +531,7 @@ $(document).ready(function(){initNavTree('AWeightSwitch_8cpp_source.html',''); i
 <div class="ttc" id="aclassAWeightSwitch_html_ae5353d804bc6c80c6fba6cb0341ab53f"><div class="ttname"><a href="classAWeightSwitch.html#ae5353d804bc6c80c6fba6cb0341ab53f">AWeightSwitch::BeginPlay</a></div><div class="ttdeci">virtual void BeginPlay() override</div><div class="ttdef"><b>Definition</b> <a href="AWeightSwitch_8cpp_source.html#l00049">AWeightSwitch.cpp:49</a></div></div>
 <div class="ttc" id="aclassAWeightSwitch_html_ae9663983eb123ff86c5252299b5fe533"><div class="ttname"><a href="classAWeightSwitch.html#ae9663983eb123ff86c5252299b5fe533">AWeightSwitch::DetectTarget</a></div><div class="ttdeci">bool DetectTarget</div><div class="ttdef"><b>Definition</b> <a href="AWeightSwitch_8h_source.html#l00099">AWeightSwitch.h:99</a></div></div>
 <div class="ttc" id="aclassAWeightSwitch_html_af8f4523824757b7861cea5e3095f6935"><div class="ttname"><a href="classAWeightSwitch.html#af8f4523824757b7861cea5e3095f6935">AWeightSwitch::ButtonIndex</a></div><div class="ttdeci">int ButtonIndex</div><div class="ttdef"><b>Definition</b> <a href="AWeightSwitch_8h_source.html#l00080">AWeightSwitch.h:80</a></div></div>
-<div class="ttc" id="aclassAluggage_html"><div class="ttname"><a href="classAluggage.html">Aluggage</a></div><div class="ttdoc">상호작용 가능한 수하물 액터</div><div class="ttdef"><b>Definition</b> <a href="luggage_8h_source.html#l00013">luggage.h:14</a></div></div>
+<div class="ttc" id="aclassAluggage_html"><div class="ttname"><a href="classAluggage.html">Aluggage</a></div><div class="ttdoc">상호작용 가능한 수하물 액터</div><div class="ttdef"><b>Definition</b> <a href="luggage_8h_source.html#l00014">luggage.h:15</a></div></div>
 <div class="ttc" id="aclassUPopupManager_html"><div class="ttname"><a href="classUPopupManager.html">UPopupManager</a></div><div class="ttdoc">팝업 관리자</div><div class="ttdef"><b>Definition</b> <a href="UPopupManager_8h_source.html#l00030">UPopupManager.h:31</a></div></div>
 <div class="ttc" id="aclassUTweenAnimInstance_html"><div class="ttname"><a href="classUTweenAnimInstance.html">UTweenAnimInstance</a></div><div class="ttdoc">블루프린트에서 사용할 수 있는 간단한 트윈 애님 인스턴스.</div><div class="ttdef"><b>Definition</b> <a href="UTweenAnimInstance_8h_source.html#l00019">UTweenAnimInstance.h:20</a></div></div>
 <div class="ttc" id="aluggage_8h_html"><div class="ttname"><a href="luggage_8h.html">luggage.h</a></div></div>
@@ -542,7 +542,7 @@ $(document).ready(function(){initNavTree('AWeightSwitch_8cpp_source.html',''); i
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_b7459e4428712e32d7c860db6e401a05.html">Interactable</a></li><li class="navelem"><a class="el" href="dir_77257aedd361f850f8a01079e914567e.html">Private</a></li><li class="navelem"><a class="el" href="AWeightSwitch_8cpp.html">AWeightSwitch.cpp</a></li>
-    <li class="footer">생성시간 : 월 12월 1 2025 15:35:42, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 화 12월 2 2025 06:28:29, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

@@ -138,6 +138,7 @@ var hierarchy =
       [ "UKLingoNetworkSystem", "classUKLingoNetworkSystem.html", null ],
       [ "UObjectPoolManager", "classUObjectPoolManager.html", null ],
       [ "USequenceManager", "classUSequenceManager.html", null ],
+      [ "UVoiceCacheManager", "classUVoiceCacheManager.html", null ],
       [ "UWebSocketSystem", "classUWebSocketSystem.html", null ]
     ] ],
     [ "UInterface", null, [
@@ -156,7 +157,8 @@ var hierarchy =
         [ "UPopup_Interview", "classUPopup__Interview.html", null ],
         [ "UPopup_MsgBox", "classUPopup__MsgBox.html", null ],
         [ "UPopup_ReadQuest", "classUPopup__ReadQuest.html", null ],
-        [ "UPopup_Result", "classUPopup__Result.html", null ]
+        [ "UPopup_Result", "classUPopup__Result.html", null ],
+        [ "UPopup_Word", "classUPopup__Word.html", null ]
       ] ],
       [ "UCircularProgressBar", "classUCircularProgressBar.html", null ],
       [ "UDialogWidget", "classUDialogWidget.html", null ],

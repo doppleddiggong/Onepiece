@@ -1,0 +1,26 @@
+var classUPopup__Word =
+[
+    [ "InitPopup", "classUPopup__Word.html#a9a8e1261d8f3dd9dcd4b14f7739059eb", null ],
+    [ "NativeTick", "classUPopup__Word.html#a750c1a854f68ca16faa069645531abd6", null ],
+    [ "OnClickClose", "classUPopup__Word.html#aae5240a352234a975e2b4fefcaf3b88f", null ],
+    [ "OnClickRepeat", "classUPopup__Word.html#adc8db371408b196bb2a63c706d442da5", null ],
+    [ "OnResponseListenAudio", "classUPopup__Word.html#a45dee7955aec0f230f1f72442bcecf9b", null ],
+    [ "OpenAnimation", "classUPopup__Word.html#a2c3d2b47f8255c0172cf9f218790fcc8", null ],
+    [ "UpdateAnimation", "classUPopup__Word.html#a830a08b15d00e418f351f096fc5a8790", null ],
+    [ "bIsOpenAnim", "classUPopup__Word.html#a807985dccb3305b1004c611401b7b551", null ],
+    [ "bIsRequest", "classUPopup__Word.html#af1f4fcfae08c555d86fac7257b4a3fd1", null ],
+    [ "Btn_Close", "classUPopup__Word.html#aaf9f27083023b222fface839eacc7a60", null ],
+    [ "Btn_Ok", "classUPopup__Word.html#a0849dde16d124fa50d408fce50c76e47", null ],
+    [ "Btn_Repeat", "classUPopup__Word.html#a4eb3108bead2a3ac387e52eeddd5b6b8", null ],
+    [ "Data", "classUPopup__Word.html#a16c603c2b721166f830180c0660ef544", null ],
+    [ "LastRequestText", "classUPopup__Word.html#a77fac82cfa14d086eb247da0731c1095", null ],
+    [ "OpenDuration", "classUPopup__Word.html#a5a4c2b75560a3e2d07ed3aa52837278e", null ],
+    [ "OpenEaseExponent", "classUPopup__Word.html#afe75f5ef94f97fbcc8ea1ad9e801524c", null ],
+    [ "OpenElapsedTime", "classUPopup__Word.html#a6124aff28b2b2a0b810bb693ebcd81ad", null ],
+    [ "OpenPivot", "classUPopup__Word.html#aa3d6a21b30e9b40280f1219b567232b5", null ],
+    [ "OpenStartScale", "classUPopup__Word.html#a9a4bc6d6e03adc7396c7960c41dae0b2", null ],
+    [ "OpenTargetScale", "classUPopup__Word.html#add357075245f0843320c0b74af0f2697", null ],
+    [ "PopupType", "classUPopup__Word.html#a7e537a0dd751df11990ed46947f09d42", null ],
+    [ "Txt_Kor", "classUPopup__Word.html#aa7b7c1a49a378aed3b8ab2aee5e29f47", null ],
+    [ "Txt_Proneme", "classUPopup__Word.html#ac6eb2584b34ad29964d1b22be64df24e", null ]
+];

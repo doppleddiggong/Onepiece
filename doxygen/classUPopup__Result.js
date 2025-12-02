@@ -1,5 +1,6 @@
 var classUPopup__Result =
 [
+    [ "InitPopup", "classUPopup__Result.html#a2115cd2f930e3087237b9b87387ee598", null ],
     [ "NativeConstruct", "classUPopup__Result.html#a5db672f97b0890f135934bd81b9a9d63", null ],
     [ "NativeTick", "classUPopup__Result.html#a750c1a854f68ca16faa069645531abd6", null ],
     [ "OnClickClose", "classUPopup__Result.html#a2fe50f209d27aa1c870802b99aaf7cf6", null ],
