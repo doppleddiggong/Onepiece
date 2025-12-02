@@ -8,10 +8,10 @@
 #include "UKLingoNetworkSystem.h"
 #include "NetworkData.h"
 #include "ALingoGameMode.h"
-#include "ALingoGameState.h"
 #include "GameLogging.h"
 #include "LuggageManager.h"
 #include "ULingoGameHelper.h"
+#include "UVoiceConversationSystem.h"
 #include "Kismet/GameplayStatics.h"
 
 AContactTrigger::AContactTrigger()
@@ -37,14 +37,16 @@ AContactTrigger::AContactTrigger()
 	bShowDebugBox = true;
 	DebugBoxColor = FColor::Green;
 
-	StageIndex = 1;
+	VoiceConversationSystem = CreateDefaultSubobject<UVoiceConversationSystem>(TEXT("VoiceConversationSystem"));
+
+	QuestType = EQuestType::Read;
 }
 
 void AContactTrigger::BeginPlay()
 {
 	Super::BeginPlay();
 
-	EventMessage = ULingoGameHelper::GetStageStartMessage(StageIndex);
+	EventMessage = ULingoGameHelper::GetStageStartMessage((int32)QuestType);
 	
 	// Overlap 이벤트 바인딩
 	if (TriggerBox)
@@ -136,7 +138,7 @@ void AContactTrigger::ServerRPC_OnTrigger_Implementation(AActor* TriggeringActor
 	bIsTriggered = true;
 
 	// TODO, 나중에 분기 처리를 위해
-	this->OnTriggerScenario(StageIndex);
+	this->OnTriggerScenario((int32)QuestType);
 }
 
 
@@ -147,14 +149,19 @@ void AContactTrigger::OnTriggerScenario(const int InStageIndex)
 	{
 		PRINTLOG(TEXT("[ContactTrigger] Requesting Scenario - StageIndex: %d"), InStageIndex);
 
-		// ScenarioStageIndex를 이용해 시나리오 데이터 요청
-		// 파라미터: Index, Difficulty, Level (1: 한국어)
-		KLingoNetwork->RequestScenario(
-		1,
-			StageIndex,
-			1,  // Level
-			FResponseScenarioDelegate::CreateUObject(this, &AContactTrigger::OnResponseScenario)
-		);
+		switch (InStageIndex)
+		{
+		case 1: // 읽기
+			// ScenarioStageIndex를 이용해 시나리오 데이터 요청
+			// 파라미터: Index, Difficulty, Level (1: 한국어)
+			KLingoNetwork->RequestScenario(1,(int32)EQuestType::Read,1,
+				FResponseScenarioDelegate::CreateUObject(this, &AContactTrigger::OnReadResponseScenario));
+			break;
+		case 2: // 듣기
+			KLingoNetwork->RequestScenario(1,(int32)EQuestType::Listen,1,
+				FResponseScenarioDelegate::CreateUObject(this, &AContactTrigger::OnListenResponseScenario));
+			break;
+		}
 	}
 	else
 	{
@@ -162,7 +169,7 @@ void AContactTrigger::OnTriggerScenario(const int InStageIndex)
 	}
 }
 
-void AContactTrigger::OnResponseScenario(FResponseScenario& ResponseData, bool bWasSuccessful)
+void AContactTrigger::OnReadResponseScenario(FResponseScenario& ResponseData, bool bWasSuccessful)
 {
 	if (!bWasSuccessful)
 	{
@@ -178,7 +185,7 @@ void AContactTrigger::OnResponseScenario(FResponseScenario& ResponseData, bool b
 	{
 		if (auto GM = ULingoGameHelper::GetLingoGameMode(World))
 		{
-			GM->BeginReadQuest(StageIndex, ResponseData);
+			GM->BeginReadQuest((int32)QuestType, ResponseData);
 		}
 
 		ALuggageManager* LuggageManager = Cast<ALuggageManager>(
@@ -186,5 +193,28 @@ void AContactTrigger::OnResponseScenario(FResponseScenario& ResponseData, bool b
 
 		if (LuggageManager)
 			LuggageManager->StartSpawning();
+	}
+}
+
+void AContactTrigger::OnListenResponseScenario(struct FResponseScenario& ResponseData, bool bWasSuccessful)
+{
+	if (!bWasSuccessful)
+	{
+		PRINTLOG(TEXT("[ContactTrigger] Scenario request FAILED!"));
+		return;
+	}
+
+	PRINTLOG(TEXT("[ContactTrigger] Scenario request SUCCESS!"));
+	ResponseData.PrintData();
+
+	// ALingoGameState에 시나리오 데이터 전체 저장
+	if (UWorld* World = GetWorld())
+	{
+		if (auto GM = ULingoGameHelper::GetLingoGameMode(World))
+		{
+			GM->BeginListenQuest((int32)QuestType, ResponseData);
+		}
+
+		VoiceConversationSystem->PlayVoiceAudio(ResponseData.voice_data);
 	}
 }

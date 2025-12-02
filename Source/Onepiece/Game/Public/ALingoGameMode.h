@@ -26,6 +26,9 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Quest")
 	void BeginReadQuest(int32 InStageIndex, const FResponseScenario& InResponseData);
 
+	UFUNCTION(BlueprintCallable, Category = "Quest")
+	void BeginListenQuest(int32 InStageIndex, const FResponseScenario& InResponseData);
+	
 	/// @brief 캐리어 선택을 처리합니다 (서버에서만 호출)
 	UFUNCTION()
 	void HandleCarrierSelection(class APlayerState* Player, class Aluggage* Carrier);

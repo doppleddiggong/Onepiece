@@ -74,6 +74,19 @@ void ALingoGameMode::BeginReadQuest(int32 InStageIndex, const FResponseScenario&
 	}
 }
 
+void ALingoGameMode::BeginListenQuest(int32 InStageIndex, const FResponseScenario& InResponseData)
+{
+	if (auto GS = GetGameState<ALingoGameState>())
+	{
+		GS->SetStageData(InStageIndex, 1, InResponseData);
+		PRINTLOG(TEXT("[GameMode] SetStageData called on GameState."));
+	}
+	else
+	{
+		PRINTLOG(TEXT("[GameMode] BeginListenQuest - GameState is null"));
+	}
+}
+
 void ALingoGameMode::HandleCarrierSelection(APlayerState* Player, Aluggage* Carrier)
 {
 	if (!HasAuthority())
