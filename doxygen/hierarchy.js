@@ -9,6 +9,7 @@ var hierarchy =
       [ "AGate", "classAGate.html", null ],
       [ "AListActorManager", "classAListActorManager.html", null ],
       [ "ALuggageManager", "classALuggageManager.html", null ],
+      [ "AMoviePanel", "classAMoviePanel.html", null ],
       [ "ANetworkBroadcastActor", "classANetworkBroadcastActor.html", null ],
       [ "ANetworkTesterActor", "classANetworkTesterActor.html", null ],
       [ "APedestalSwitch", "classAPedestalSwitch.html", null ],

@@ -15,7 +15,7 @@ var searchData=
   ['worddata2_12',['worddata2',['../structFQuestReadInfo.html#a355daf3ea21ec4077822c5ac81b01787',1,'FQuestReadInfo::WordData2'],['../structFQuestListenInfo.html#a05c5c698f54df45fede343a6a08425db',1,'FQuestListenInfo::WordData2']]],
   ['wordstudydatacache_13',['WordStudyDataCache',['../classUGameDataManager.html#a2d3aa9595a441ef7b4cfb0d6959348d4',1,'UGameDataManager']]],
   ['wordstudydatatable_14',['WordStudyDataTable',['../classUGameDataManager.html#af3a67b35c573b0f3cb60720b608f2ae0',1,'UGameDataManager']]],
-  ['wordwidget_15',['wordwidget',['../classUPopup__Result.html#ae2be7762580c12660552611ed2adcbbb',1,'UPopup_Result::WordWidget'],['../classUPopup__ReadQuest.html#aed4ecc73e8fe95e589c02336119b6f99',1,'UPopup_ReadQuest::WordWidget']]],
+  ['wordwidget_15',['WordWidget',['../classUPopup__ReadQuest.html#aed4ecc73e8fe95e589c02336119b6f99',1,'UPopup_ReadQuest']]],
   ['writes_5focr_5fextract_16',['writes_ocr_extract',['../namespaceRequestAPI.html#adb0c390f61c19ef5b70489b76b2e00e6',1,'RequestAPI']]],
   ['wrongluggagelist_17',['WrongLuggageList',['../classALingoGameState.html#a17e93c1837d6f33a5a3717689177d952',1,'ALingoGameState']]]
 ];

@@ -1,17 +1,25 @@
 var classURichText =
 [
-    [ "ApplyStyle", "classURichText.html#a73f525d01391aa89fae74995418ef83f", null ],
+    [ "ApplyStyleWithFontSize", "classURichText.html#ad304efecc5cc8b0e957cd4336ce9fb24", null ],
     [ "NativeConstruct", "classURichText.html#a43500d328a3751da344e504d9b21d89b", null ],
     [ "NativePreConstruct", "classURichText.html#a3da294dfc9018980d33ff7a61bed6e1c", null ],
+    [ "NativeTick", "classURichText.html#a4640d8e362ff48b9d2aa1e9fc358fafa", null ],
     [ "OnClickLink", "classURichText.html#a09b0e9e606d77bd5e307496488bd7c1c", null ],
     [ "SetOnClickHyperLink", "classURichText.html#a3eff613ed1442444b27f92e8e97d3553", null ],
-    [ "SetText", "classURichText.html#a0174dc41c21d10a4c24887518b520ec6", null ],
-    [ "SetText", "classURichText.html#a583c2dd0bdcc6f60041e7dd6b873c30f", null ],
+    [ "SetText", "classURichText.html#a505028f36a450754dc16c4df50f9fac3", null ],
+    [ "SetText", "classURichText.html#add179a5db9530d3ef56064f5e500e270", null ],
     [ "SetText", "classURichText.html#a40f9c61a54784c5ddd5cbbd3601ecaa7", null ],
+    [ "UpdateFontSizeToFitWidth", "classURichText.html#abbb1bda3c5f05ea9c9b5f8f967302add", null ],
+    [ "bAutoFitToWidth", "classURichText.html#acff1bf3ef282f819babcebd70a6ee08c", null ],
+    [ "bNeedsFontSizeUpdate", "classURichText.html#a487c620056fc42f604fda9f8c815350b", null ],
     [ "CachedPhonemeData", "classURichText.html#ac65dad7e72ab91f90bedfafd3afd3426", null ],
+    [ "CurrentFontSize", "classURichText.html#a8c8ce79114b39d5d8e06a4ac24b98ea1", null ],
     [ "DefaultText", "classURichText.html#af34b9096bbea6ff323e6bb59de189008", null ],
     [ "FontSize", "classURichText.html#aa0f0e2dfda351face3d49284835d9a3c", null ],
+    [ "LastWidgetWidth", "classURichText.html#a0e8c6e75789a50536cd17e44f9f54cf3", null ],
+    [ "MinAutoFontSize", "classURichText.html#aec62d6953c296a000c2dac7565e9ebbd", null ],
     [ "OnClickHyperLink", "classURichText.html#a37d0e421d77503289c534d793960fb9d", null ],
     [ "RichTxt", "classURichText.html#af755daedf70cad7632b40b234c46ab57", null ],
+    [ "StabilizationFrames", "classURichText.html#abb21a0e1482a2e41e16a9ae223ad1666", null ],
     [ "TextColor", "classURichText.html#ae7e7efe5881a3f0cbdd1c06a62821ba1", null ]
 ];

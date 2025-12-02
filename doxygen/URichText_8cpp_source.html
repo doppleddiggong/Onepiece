@@ -132,7 +132,7 @@ $(document).ready(function(){initNavTree('URichText_8cpp_source.html',''); initR
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>            <a class="code hl_variable" href="classURichText.html#af755daedf70cad7632b40b234c46ab57">RichTxt</a>-&gt;SetTextStyleSet(StyleSet);</div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    }</div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <a class="code hl_function" href="classURichText.html#a73f525d01391aa89fae74995418ef83f">ApplyStyle</a>();</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <a class="code hl_function" href="classURichText.html#ad304efecc5cc8b0e957cd4336ce9fb24">ApplyStyleWithFontSize</a>(<a class="code hl_variable" href="classURichText.html#aa0f0e2dfda351face3d49284835d9a3c">FontSize</a>, <span class="keyword">false</span>);</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>}</div>
 </div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
@@ -153,96 +153,193 @@ $(document).ready(function(){initNavTree('URichText_8cpp_source.html',''); initR
 </div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
 <div class="foldopen" id="foldopen00040" data-start="{" data-end="}">
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="classURichText.html#a73f525d01391aa89fae74995418ef83f">   40</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classURichText.html#a73f525d01391aa89fae74995418ef83f">URichText::ApplyStyle</a>()</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="classURichText.html#a4640d8e362ff48b9d2aa1e9fc358fafa">   40</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classURichText.html#a4640d8e362ff48b9d2aa1e9fc358fafa">URichText::NativeTick</a>(<span class="keyword">const</span> FGeometry&amp; MyGeometry, <span class="keywordtype">float</span> InDeltaTime)</div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>{</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classURichText.html#af755daedf70cad7632b40b234c46ab57">RichTxt</a>)</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="comment">// 기존 폰트 정보 가져오기 (없으면 기본)</span></div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    FSlateFontInfo NewFont = <a class="code hl_variable" href="classURichText.html#af755daedf70cad7632b40b234c46ab57">RichTxt</a>-&gt;GetDefaultTextStyle().Font;</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    NewFont.Size = <a class="code hl_variable" href="classURichText.html#aa0f0e2dfda351face3d49284835d9a3c">FontSize</a>;</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="comment">// 새로운 스타일 생성</span></div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    FTextBlockStyle NewStyle;</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    NewStyle.SetFont(NewFont);</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    NewStyle.SetColorAndOpacity(FSlateColor(<a class="code hl_variable" href="classURichText.html#ae7e7efe5881a3f0cbdd1c06a62821ba1">TextColor</a>));</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <a class="code hl_variable" href="classURichText.html#af755daedf70cad7632b40b234c46ab57">RichTxt</a>-&gt;SetDefaultTextStyle(NewStyle);</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <a class="code hl_variable" href="classURichText.html#af755daedf70cad7632b40b234c46ab57">RichTxt</a>-&gt;SetText(FText::FromString(<a class="code hl_variable" href="classURichText.html#af34b9096bbea6ff323e6bb59de189008">DefaultText</a>));</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="comment">// HyperLink Decorator 스타일도 함께 업데이트</span></div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="keywordflow">if</span> (UHyperLinkPluginBPLibrary* LinkDecorator = Cast&lt;UHyperLinkPluginBPLibrary&gt;(</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        <a class="code hl_variable" href="classURichText.html#af755daedf70cad7632b40b234c46ab57">RichTxt</a>-&gt;GetDecoratorByClass(UHyperLinkPluginBPLibrary::StaticClass())))</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    {</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        FTextBlockStyle LinkTextStyle = LinkDecorator-&gt;Style.TextStyle;</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        LinkTextStyle.SetFont(NewFont);</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        LinkTextStyle.SetColorAndOpacity(FSlateColor(<a class="code hl_variable" href="classURichText.html#ae7e7efe5881a3f0cbdd1c06a62821ba1">TextColor</a>));</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        LinkDecorator-&gt;Style.SetTextStyle(LinkTextStyle);</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    }</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>}</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    Super::NativeTick(MyGeometry, InDeltaTime);</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="comment">// 텍스트가 변경되었거나 위젯 크기가 변경된 경우에만 폰트 크기 조정</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="keyword">const</span> <span class="keywordtype">float</span> CurrentWidth = MyGeometry.GetLocalSize().X;</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="keywordflow">if</span> (FMath::Abs(CurrentWidth - <a class="code hl_variable" href="classURichText.html#a0e8c6e75789a50536cd17e44f9f54cf3">LastWidgetWidth</a>) &gt; 1.0f)</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    {</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        <a class="code hl_variable" href="classURichText.html#a0e8c6e75789a50536cd17e44f9f54cf3">LastWidgetWidth</a> = CurrentWidth;</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        <a class="code hl_variable" href="classURichText.html#a487c620056fc42f604fda9f8c815350b">bNeedsFontSizeUpdate</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        <a class="code hl_variable" href="classURichText.html#abb21a0e1482a2e41e16a9ae223ad1666">StabilizationFrames</a> = 0;</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    }</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="comment">// 폰트 크기 업데이트가 필요하고 아직 안정화되지 않은 경우에만 실행</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classURichText.html#a487c620056fc42f604fda9f8c815350b">bNeedsFontSizeUpdate</a> &amp;&amp; <a class="code hl_variable" href="classURichText.html#abb21a0e1482a2e41e16a9ae223ad1666">StabilizationFrames</a> &lt; 3)</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    {</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        <a class="code hl_function" href="classURichText.html#abbb1bda3c5f05ea9c9b5f8f967302add">UpdateFontSizeToFitWidth</a>(MyGeometry);</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        <a class="code hl_variable" href="classURichText.html#abb21a0e1482a2e41e16a9ae223ad1666">StabilizationFrames</a>++;</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        </div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        <span class="comment">// 3프레임 동안 안정화 시도 후 중단</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="classURichText.html#abb21a0e1482a2e41e16a9ae223ad1666">StabilizationFrames</a> &gt;= 3)</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        {</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>            <a class="code hl_variable" href="classURichText.html#a487c620056fc42f604fda9f8c815350b">bNeedsFontSizeUpdate</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        }</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    }</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>}</div>
 </div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
-<div class="foldopen" id="foldopen00068" data-start="{" data-end="}">
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno"><a class="line" href="classURichText.html#a40f9c61a54784c5ddd5cbbd3601ecaa7">   68</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classURichText.html#a40f9c61a54784c5ddd5cbbd3601ecaa7">URichText::SetText</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structFWordData.html">FWordData</a>&amp; WordData)</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>{</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <span class="keywordflow">if</span> (!IsValid(<a class="code hl_variable" href="classURichText.html#af755daedf70cad7632b40b234c46ab57">RichTxt</a>))</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        </div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    <a class="code hl_variable" href="classURichText.html#ac65dad7e72ab91f90bedfafd3afd3426">CachedPhonemeData</a> = WordData.<a class="code hl_function" href="structFWordData.html#a9bdddcc4a104b919c5e0b81acc563359">GetPhonemeData</a>();</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    FString TextString;</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    <span class="keywordflow">for</span> (int32 i = 0; i &lt; <a class="code hl_variable" href="classURichText.html#ac65dad7e72ab91f90bedfafd3afd3426">CachedPhonemeData</a>.Num(); ++i)</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    {</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        <span class="keyword">const</span> <a class="code hl_struct" href="structFPhonemeData.html">FPhonemeData</a>&amp; Phoneme = <a class="code hl_variable" href="classURichText.html#ac65dad7e72ab91f90bedfafd3afd3426">CachedPhonemeData</a>[i];</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        TextString += Phoneme.<a class="code hl_function" href="structFPhonemeData.html#a979ef016c1c40e3519043ec8867c6326">ToRichTextString</a>(i);</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    }</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    <a class="code hl_variable" href="classURichText.html#af755daedf70cad7632b40b234c46ab57">RichTxt</a>-&gt;SetText(FText::FromString(TextString));</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>}</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
+<div class="foldopen" id="foldopen00067" data-start="{" data-end="}">
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="classURichText.html#ad304efecc5cc8b0e957cd4336ce9fb24">   67</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classURichText.html#ad304efecc5cc8b0e957cd4336ce9fb24">URichText::ApplyStyleWithFontSize</a>(int32 InFontSize, <span class="keywordtype">bool</span> bPreserveText)</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>{</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classURichText.html#af755daedf70cad7632b40b234c46ab57">RichTxt</a>)</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    <span class="keyword">const</span> FText PreviousText = <a class="code hl_variable" href="classURichText.html#af755daedf70cad7632b40b234c46ab57">RichTxt</a>-&gt;GetText();</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    <span class="comment">// 기존 폰트 정보 가져오기 (없으면 기본)</span></div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    FSlateFontInfo NewFont = <a class="code hl_variable" href="classURichText.html#af755daedf70cad7632b40b234c46ab57">RichTxt</a>-&gt;GetDefaultTextStyle().Font;</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    NewFont.Size = InFontSize;</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    <span class="comment">// 새로운 스타일 생성</span></div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    FTextBlockStyle NewStyle;</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    NewStyle.SetFont(NewFont);</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    NewStyle.SetColorAndOpacity(FSlateColor(<a class="code hl_variable" href="classURichText.html#ae7e7efe5881a3f0cbdd1c06a62821ba1">TextColor</a>));</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    <a class="code hl_variable" href="classURichText.html#af755daedf70cad7632b40b234c46ab57">RichTxt</a>-&gt;SetDefaultTextStyle(NewStyle);</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    <span class="keywordflow">if</span> (!bPreserveText &amp;&amp; !<a class="code hl_variable" href="classURichText.html#af34b9096bbea6ff323e6bb59de189008">DefaultText</a>.IsEmpty() &amp;&amp; PreviousText.IsEmpty())</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    {</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>        <a class="code hl_variable" href="classURichText.html#af755daedf70cad7632b40b234c46ab57">RichTxt</a>-&gt;SetText(FText::FromString(<a class="code hl_variable" href="classURichText.html#af34b9096bbea6ff323e6bb59de189008">DefaultText</a>));</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    }</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (bPreserveText)</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    {</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        <a class="code hl_variable" href="classURichText.html#af755daedf70cad7632b40b234c46ab57">RichTxt</a>-&gt;SetText(PreviousText);</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    }</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span> </div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    <span class="comment">// HyperLink Decorator 스타일도 함께 업데이트</span></div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    <span class="keywordflow">if</span> (UHyperLinkPluginBPLibrary* LinkDecorator = Cast&lt;UHyperLinkPluginBPLibrary&gt;(</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>            <a class="code hl_variable" href="classURichText.html#af755daedf70cad7632b40b234c46ab57">RichTxt</a>-&gt;GetDecoratorByClass(UHyperLinkPluginBPLibrary::StaticClass())))</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    {</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>        FTextBlockStyle LinkTextStyle = LinkDecorator-&gt;Style.TextStyle;</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>        LinkTextStyle.SetFont(NewFont);</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>        LinkTextStyle.SetColorAndOpacity(FSlateColor(<a class="code hl_variable" href="classURichText.html#ae7e7efe5881a3f0cbdd1c06a62821ba1">TextColor</a>));</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>        LinkDecorator-&gt;Style.SetTextStyle(LinkTextStyle);</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    }</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    <a class="code hl_variable" href="classURichText.html#a8c8ce79114b39d5d8e06a4ac24b98ea1">CurrentFontSize</a> = InFontSize;</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>}</div>
 </div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
-<div class="foldopen" id="foldopen00084" data-start="{" data-end="}">
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno"><a class="line" href="classURichText.html#a0174dc41c21d10a4c24887518b520ec6">   84</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classURichText.html#a40f9c61a54784c5ddd5cbbd3601ecaa7">URichText::SetText</a>(<span class="keyword">const</span> FString&amp; InString)<span class="keyword"> const</span></div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span><span class="keyword"></span>{</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    <span class="keywordflow">if</span> (!IsValid(<a class="code hl_variable" href="classURichText.html#af755daedf70cad7632b40b234c46ab57">RichTxt</a>))</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    </div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    <a class="code hl_variable" href="classURichText.html#af755daedf70cad7632b40b234c46ab57">RichTxt</a>-&gt;SetText(FText::FromString(InString));</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>}</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span> </div>
+<div class="foldopen" id="foldopen00107" data-start="{" data-end="}">
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno"><a class="line" href="classURichText.html#abbb1bda3c5f05ea9c9b5f8f967302add">  107</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classURichText.html#abbb1bda3c5f05ea9c9b5f8f967302add">URichText::UpdateFontSizeToFitWidth</a>(<span class="keyword">const</span> FGeometry&amp; MyGeometry)</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>{</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classURichText.html#acff1bf3ef282f819babcebd70a6ee08c">bAutoFitToWidth</a> || !<a class="code hl_variable" href="classURichText.html#af755daedf70cad7632b40b234c46ab57">RichTxt</a>)</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span> </div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    <span class="keyword">const</span> <span class="keywordtype">float</span> AvailableWidth = MyGeometry.GetLocalSize().X;</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    <span class="keywordflow">if</span> (AvailableWidth &lt;= 0.0f)</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span> </div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>    <span class="keyword">const</span> FVector2D DesiredSize = <a class="code hl_variable" href="classURichText.html#af755daedf70cad7632b40b234c46ab57">RichTxt</a>-&gt;GetDesiredSize();</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>    <span class="keyword">const</span> <span class="keywordtype">float</span> DesiredWidth = DesiredSize.X;</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span> </div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    int32 TargetFontSize = <a class="code hl_variable" href="classURichText.html#aa0f0e2dfda351face3d49284835d9a3c">FontSize</a>;</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span> </div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    <span class="comment">// Threshold 적용: 여유 공간을 2픽셀 정도 남겨서 미세한 변동 방지</span></div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>    <span class="keyword">const</span> <span class="keywordtype">float</span> WidthThreshold = 2.0f;</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>    <span class="keywordflow">if</span> (DesiredWidth &gt; AvailableWidth + WidthThreshold &amp;&amp; DesiredWidth &gt; 0.0f)</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>    {</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>        <span class="comment">// 약간 여유를 둔 스케일 계산 (98%만 사용)</span></div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>        <span class="keyword">const</span> <span class="keywordtype">float</span> Scale = (AvailableWidth * 0.98f) / DesiredWidth;</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>        <span class="keyword">const</span> int32 ScaledSize = FMath::FloorToInt(<span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(<a class="code hl_variable" href="classURichText.html#aa0f0e2dfda351face3d49284835d9a3c">FontSize</a>) * Scale);</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>        TargetFontSize = FMath::Clamp(ScaledSize, <a class="code hl_variable" href="classURichText.html#aec62d6953c296a000c2dac7565e9ebbd">MinAutoFontSize</a>, <a class="code hl_variable" href="classURichText.html#aa0f0e2dfda351face3d49284835d9a3c">FontSize</a>);</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>    }</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span> </div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>    <span class="comment">// 폰트 크기 차이가 1 이상일 때만 적용 (미세한 차이 무시)</span></div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    <span class="keywordflow">if</span> (FMath::Abs(TargetFontSize - <a class="code hl_variable" href="classURichText.html#a8c8ce79114b39d5d8e06a4ac24b98ea1">CurrentFontSize</a>) &gt;= 1)</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>    {</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>        <a class="code hl_function" href="classURichText.html#ad304efecc5cc8b0e957cd4336ce9fb24">ApplyStyleWithFontSize</a>(TargetFontSize, <span class="keyword">true</span>);</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>    }</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>}</div>
 </div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
-<div class="foldopen" id="foldopen00092" data-start="{" data-end="}">
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno"><a class="line" href="classURichText.html#a583c2dd0bdcc6f60041e7dd6b873c30f">   92</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classURichText.html#a40f9c61a54784c5ddd5cbbd3601ecaa7">URichText::SetText</a>(<span class="keyword">const</span> FText&amp; InText)<span class="keyword"> const</span></div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span><span class="keyword"></span>{</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    <a class="code hl_variable" href="classURichText.html#af755daedf70cad7632b40b234c46ab57">RichTxt</a>-&gt;SetText(InText);</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>}</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span> </div>
+<div class="foldopen" id="foldopen00138" data-start="{" data-end="}">
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno"><a class="line" href="classURichText.html#a40f9c61a54784c5ddd5cbbd3601ecaa7">  138</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classURichText.html#a40f9c61a54784c5ddd5cbbd3601ecaa7">URichText::SetText</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structFWordData.html">FWordData</a>&amp; WordData)</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>{</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>    <span class="keywordflow">if</span> (!IsValid(<a class="code hl_variable" href="classURichText.html#af755daedf70cad7632b40b234c46ab57">RichTxt</a>))</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>        </div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>    <a class="code hl_variable" href="classURichText.html#ac65dad7e72ab91f90bedfafd3afd3426">CachedPhonemeData</a> = WordData.<a class="code hl_function" href="structFWordData.html#a9bdddcc4a104b919c5e0b81acc563359">GetPhonemeData</a>();</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span> </div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>    FString TextString;</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>    <span class="keywordflow">for</span> (int32 i = 0; i &lt; <a class="code hl_variable" href="classURichText.html#ac65dad7e72ab91f90bedfafd3afd3426">CachedPhonemeData</a>.Num(); ++i)</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>    {</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>        <span class="keyword">const</span> <a class="code hl_struct" href="structFPhonemeData.html">FPhonemeData</a>&amp; Phoneme = <a class="code hl_variable" href="classURichText.html#ac65dad7e72ab91f90bedfafd3afd3426">CachedPhonemeData</a>[i];</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>        TextString += Phoneme.<a class="code hl_function" href="structFPhonemeData.html#a979ef016c1c40e3519043ec8867c6326">ToRichTextString</a>(i);</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>    }</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>    <a class="code hl_variable" href="classURichText.html#af755daedf70cad7632b40b234c46ab57">RichTxt</a>-&gt;SetText(FText::FromString(TextString));</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>    </div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>    <span class="comment">// 텍스트가 변경되었으므로 폰트 크기 재조정 필요</span></div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>    <a class="code hl_variable" href="classURichText.html#a487c620056fc42f604fda9f8c815350b">bNeedsFontSizeUpdate</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>    <a class="code hl_variable" href="classURichText.html#abb21a0e1482a2e41e16a9ae223ad1666">StabilizationFrames</a> = 0;</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>}</div>
 </div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span> </div>
-<div class="foldopen" id="foldopen00097" data-start="{" data-end="}">
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno"><a class="line" href="classURichText.html#a09b0e9e606d77bd5e307496488bd7c1c">   97</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classURichText.html#a09b0e9e606d77bd5e307496488bd7c1c">URichText::OnClickLink</a>(<span class="keyword">const</span> FString&amp; LinkID, <span class="keyword">const</span> FString&amp; Content)</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>{</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    <span class="keyword">const</span> int32 Index = FCString::Atoi(*LinkID);</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span> </div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classURichText.html#ac65dad7e72ab91f90bedfafd3afd3426">CachedPhonemeData</a>.IsValidIndex(Index))</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    {</div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="classURichText.html#a37d0e421d77503289c534d793960fb9d">OnClickHyperLink</a>.IsBound())</div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>            <a class="code hl_variable" href="classURichText.html#a37d0e421d77503289c534d793960fb9d">OnClickHyperLink</a>.Execute(<a class="code hl_variable" href="classURichText.html#ac65dad7e72ab91f90bedfafd3afd3426">CachedPhonemeData</a>[Index]);</div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    }</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>}</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span> </div>
+<div class="foldopen" id="foldopen00158" data-start="{" data-end="}">
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno"><a class="line" href="classURichText.html#a505028f36a450754dc16c4df50f9fac3">  158</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classURichText.html#a40f9c61a54784c5ddd5cbbd3601ecaa7">URichText::SetText</a>(<span class="keyword">const</span> FString&amp; InString)</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>{</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>    <span class="keywordflow">if</span> (!IsValid(<a class="code hl_variable" href="classURichText.html#af755daedf70cad7632b40b234c46ab57">RichTxt</a>))</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>    </div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>    <a class="code hl_variable" href="classURichText.html#af755daedf70cad7632b40b234c46ab57">RichTxt</a>-&gt;SetText(FText::FromString(InString));</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>    </div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>    <span class="comment">// 텍스트가 변경되었으므로 폰트 크기 재조정 필요</span></div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>    <a class="code hl_variable" href="classURichText.html#a487c620056fc42f604fda9f8c815350b">bNeedsFontSizeUpdate</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>    <a class="code hl_variable" href="classURichText.html#abb21a0e1482a2e41e16a9ae223ad1666">StabilizationFrames</a> = 0;</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>}</div>
+</div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span> </div>
+<div class="foldopen" id="foldopen00170" data-start="{" data-end="}">
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno"><a class="line" href="classURichText.html#add179a5db9530d3ef56064f5e500e270">  170</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classURichText.html#a40f9c61a54784c5ddd5cbbd3601ecaa7">URichText::SetText</a>(<span class="keyword">const</span> FText&amp; InText)</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>{</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>    <span class="keywordflow">if</span> (!IsValid(<a class="code hl_variable" href="classURichText.html#af755daedf70cad7632b40b234c46ab57">RichTxt</a>))</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>        </div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>    <a class="code hl_variable" href="classURichText.html#af755daedf70cad7632b40b234c46ab57">RichTxt</a>-&gt;SetText(InText);</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>    </div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>    <span class="comment">// 텍스트가 변경되었으므로 폰트 크기 재조정 필요</span></div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>    <a class="code hl_variable" href="classURichText.html#a487c620056fc42f604fda9f8c815350b">bNeedsFontSizeUpdate</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>    <a class="code hl_variable" href="classURichText.html#abb21a0e1482a2e41e16a9ae223ad1666">StabilizationFrames</a> = 0;</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>}</div>
+</div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span> </div>
+<div class="foldopen" id="foldopen00182" data-start="{" data-end="}">
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno"><a class="line" href="classURichText.html#a09b0e9e606d77bd5e307496488bd7c1c">  182</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classURichText.html#a09b0e9e606d77bd5e307496488bd7c1c">URichText::OnClickLink</a>(<span class="keyword">const</span> FString&amp; LinkID, <span class="keyword">const</span> FString&amp; Content)</div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>{</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>    <span class="keyword">const</span> int32 Index = FCString::Atoi(*LinkID);</div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span> </div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classURichText.html#ac65dad7e72ab91f90bedfafd3afd3426">CachedPhonemeData</a>.IsValidIndex(Index))</div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>    {</div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="classURichText.html#a37d0e421d77503289c534d793960fb9d">OnClickHyperLink</a>.IsBound())</div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>            <a class="code hl_variable" href="classURichText.html#a37d0e421d77503289c534d793960fb9d">OnClickHyperLink</a>.Execute(<a class="code hl_variable" href="classURichText.html#ac65dad7e72ab91f90bedfafd3afd3426">CachedPhonemeData</a>[Index]);</div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>    }</div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>}</div>
 </div>
 <div class="ttc" id="aNetworkData_8h_html"><div class="ttname"><a href="NetworkData_8h.html">NetworkData.h</a></div><div class="ttdoc">네트워크 요청과 응답에 사용되는 구조체 및 설정을 정의합니다.</div></div>
 <div class="ttc" id="aURichText_8cpp_html_a49b78dc337a3ab4e4c1a60578b98c995"><div class="ttname"><a href="URichText_8cpp.html#a49b78dc337a3ab4e4c1a60578b98c995">TEXT_STYLE_PATH</a></div><div class="ttdeci">#define TEXT_STYLE_PATH</div><div class="ttdef"><b>Definition</b> <a href="URichText_8cpp_source.html#l00011">URichText.cpp:11</a></div></div>
 <div class="ttc" id="aURichText_8h_html"><div class="ttname"><a href="URichText_8h.html">URichText.h</a></div></div>
-<div class="ttc" id="aclassURichText_html_a09b0e9e606d77bd5e307496488bd7c1c"><div class="ttname"><a href="classURichText.html#a09b0e9e606d77bd5e307496488bd7c1c">URichText::OnClickLink</a></div><div class="ttdeci">void OnClickLink(const FString &amp;LinkID, const FString &amp;Content)</div><div class="ttdef"><b>Definition</b> <a href="URichText_8cpp_source.html#l00097">URichText.cpp:97</a></div></div>
-<div class="ttc" id="aclassURichText_html_a37d0e421d77503289c534d793960fb9d"><div class="ttname"><a href="classURichText.html#a37d0e421d77503289c534d793960fb9d">URichText::OnClickHyperLink</a></div><div class="ttdeci">FOnClickHyperLink OnClickHyperLink</div><div class="ttdef"><b>Definition</b> <a href="URichText_8h_source.html#l00056">URichText.h:56</a></div></div>
+<div class="ttc" id="aclassURichText_html_a09b0e9e606d77bd5e307496488bd7c1c"><div class="ttname"><a href="classURichText.html#a09b0e9e606d77bd5e307496488bd7c1c">URichText::OnClickLink</a></div><div class="ttdeci">void OnClickLink(const FString &amp;LinkID, const FString &amp;Content)</div><div class="ttdef"><b>Definition</b> <a href="URichText_8cpp_source.html#l00182">URichText.cpp:182</a></div></div>
+<div class="ttc" id="aclassURichText_html_a0e8c6e75789a50536cd17e44f9f54cf3"><div class="ttname"><a href="classURichText.html#a0e8c6e75789a50536cd17e44f9f54cf3">URichText::LastWidgetWidth</a></div><div class="ttdeci">float LastWidgetWidth</div><div class="ttdoc">이전 위젯 너비 (변경 감지용)</div><div class="ttdef"><b>Definition</b> <a href="URichText_8h_source.html#l00075">URichText.h:75</a></div></div>
+<div class="ttc" id="aclassURichText_html_a37d0e421d77503289c534d793960fb9d"><div class="ttname"><a href="classURichText.html#a37d0e421d77503289c534d793960fb9d">URichText::OnClickHyperLink</a></div><div class="ttdeci">FOnClickHyperLink OnClickHyperLink</div><div class="ttdef"><b>Definition</b> <a href="URichText_8h_source.html#l00064">URichText.h:64</a></div></div>
 <div class="ttc" id="aclassURichText_html_a3da294dfc9018980d33ff7a61bed6e1c"><div class="ttname"><a href="classURichText.html#a3da294dfc9018980d33ff7a61bed6e1c">URichText::NativePreConstruct</a></div><div class="ttdeci">virtual void NativePreConstruct() override</div><div class="ttdef"><b>Definition</b> <a href="URichText_8cpp_source.html#l00013">URichText.cpp:13</a></div></div>
-<div class="ttc" id="aclassURichText_html_a40f9c61a54784c5ddd5cbbd3601ecaa7"><div class="ttname"><a href="classURichText.html#a40f9c61a54784c5ddd5cbbd3601ecaa7">URichText::SetText</a></div><div class="ttdeci">void SetText(const FWordData &amp;WordData)</div><div class="ttdef"><b>Definition</b> <a href="URichText_8cpp_source.html#l00068">URichText.cpp:68</a></div></div>
+<div class="ttc" id="aclassURichText_html_a40f9c61a54784c5ddd5cbbd3601ecaa7"><div class="ttname"><a href="classURichText.html#a40f9c61a54784c5ddd5cbbd3601ecaa7">URichText::SetText</a></div><div class="ttdeci">void SetText(const FWordData &amp;WordData)</div><div class="ttdef"><b>Definition</b> <a href="URichText_8cpp_source.html#l00138">URichText.cpp:138</a></div></div>
 <div class="ttc" id="aclassURichText_html_a43500d328a3751da344e504d9b21d89b"><div class="ttname"><a href="classURichText.html#a43500d328a3751da344e504d9b21d89b">URichText::NativeConstruct</a></div><div class="ttdeci">virtual void NativeConstruct() override</div><div class="ttdef"><b>Definition</b> <a href="URichText_8cpp_source.html#l00026">URichText.cpp:26</a></div></div>
-<div class="ttc" id="aclassURichText_html_a73f525d01391aa89fae74995418ef83f"><div class="ttname"><a href="classURichText.html#a73f525d01391aa89fae74995418ef83f">URichText::ApplyStyle</a></div><div class="ttdeci">void ApplyStyle()</div><div class="ttdef"><b>Definition</b> <a href="URichText_8cpp_source.html#l00040">URichText.cpp:40</a></div></div>
-<div class="ttc" id="aclassURichText_html_aa0f0e2dfda351face3d49284835d9a3c"><div class="ttname"><a href="classURichText.html#aa0f0e2dfda351face3d49284835d9a3c">URichText::FontSize</a></div><div class="ttdeci">int32 FontSize</div><div class="ttdef"><b>Definition</b> <a href="URichText_8h_source.html#l00044">URichText.h:44</a></div></div>
-<div class="ttc" id="aclassURichText_html_ac65dad7e72ab91f90bedfafd3afd3426"><div class="ttname"><a href="classURichText.html#ac65dad7e72ab91f90bedfafd3afd3426">URichText::CachedPhonemeData</a></div><div class="ttdeci">TArray&lt; FPhonemeData &gt; CachedPhonemeData</div><div class="ttdef"><b>Definition</b> <a href="URichText_8h_source.html#l00054">URichText.h:54</a></div></div>
-<div class="ttc" id="aclassURichText_html_ae7e7efe5881a3f0cbdd1c06a62821ba1"><div class="ttname"><a href="classURichText.html#ae7e7efe5881a3f0cbdd1c06a62821ba1">URichText::TextColor</a></div><div class="ttdeci">FLinearColor TextColor</div><div class="ttdef"><b>Definition</b> <a href="URichText_8h_source.html#l00047">URichText.h:47</a></div></div>
-<div class="ttc" id="aclassURichText_html_af34b9096bbea6ff323e6bb59de189008"><div class="ttname"><a href="classURichText.html#af34b9096bbea6ff323e6bb59de189008">URichText::DefaultText</a></div><div class="ttdeci">FString DefaultText</div><div class="ttdef"><b>Definition</b> <a href="URichText_8h_source.html#l00050">URichText.h:50</a></div></div>
-<div class="ttc" id="aclassURichText_html_af755daedf70cad7632b40b234c46ab57"><div class="ttname"><a href="classURichText.html#af755daedf70cad7632b40b234c46ab57">URichText::RichTxt</a></div><div class="ttdeci">TObjectPtr&lt; class URichTextBlock &gt; RichTxt</div><div class="ttdef"><b>Definition</b> <a href="URichText_8h_source.html#l00040">URichText.h:40</a></div></div>
+<div class="ttc" id="aclassURichText_html_a4640d8e362ff48b9d2aa1e9fc358fafa"><div class="ttname"><a href="classURichText.html#a4640d8e362ff48b9d2aa1e9fc358fafa">URichText::NativeTick</a></div><div class="ttdeci">virtual void NativeTick(const FGeometry &amp;MyGeometry, float InDeltaTime) override</div><div class="ttdef"><b>Definition</b> <a href="URichText_8cpp_source.html#l00040">URichText.cpp:40</a></div></div>
+<div class="ttc" id="aclassURichText_html_a487c620056fc42f604fda9f8c815350b"><div class="ttname"><a href="classURichText.html#a487c620056fc42f604fda9f8c815350b">URichText::bNeedsFontSizeUpdate</a></div><div class="ttdeci">bool bNeedsFontSizeUpdate</div><div class="ttdoc">폰트 크기 조정이 필요한지 여부</div><div class="ttdef"><b>Definition</b> <a href="URichText_8h_source.html#l00069">URichText.h:69</a></div></div>
+<div class="ttc" id="aclassURichText_html_a8c8ce79114b39d5d8e06a4ac24b98ea1"><div class="ttname"><a href="classURichText.html#a8c8ce79114b39d5d8e06a4ac24b98ea1">URichText::CurrentFontSize</a></div><div class="ttdeci">int32 CurrentFontSize</div><div class="ttdef"><b>Definition</b> <a href="URichText_8h_source.html#l00066">URichText.h:66</a></div></div>
+<div class="ttc" id="aclassURichText_html_aa0f0e2dfda351face3d49284835d9a3c"><div class="ttname"><a href="classURichText.html#aa0f0e2dfda351face3d49284835d9a3c">URichText::FontSize</a></div><div class="ttdeci">int32 FontSize</div><div class="ttdef"><b>Definition</b> <a href="URichText_8h_source.html#l00046">URichText.h:46</a></div></div>
+<div class="ttc" id="aclassURichText_html_abb21a0e1482a2e41e16a9ae223ad1666"><div class="ttname"><a href="classURichText.html#abb21a0e1482a2e41e16a9ae223ad1666">URichText::StabilizationFrames</a></div><div class="ttdeci">int32 StabilizationFrames</div><div class="ttdoc">안정화를 위한 프레임 카운터</div><div class="ttdef"><b>Definition</b> <a href="URichText_8h_source.html#l00072">URichText.h:72</a></div></div>
+<div class="ttc" id="aclassURichText_html_abbb1bda3c5f05ea9c9b5f8f967302add"><div class="ttname"><a href="classURichText.html#abbb1bda3c5f05ea9c9b5f8f967302add">URichText::UpdateFontSizeToFitWidth</a></div><div class="ttdeci">void UpdateFontSizeToFitWidth(const FGeometry &amp;MyGeometry)</div><div class="ttdef"><b>Definition</b> <a href="URichText_8cpp_source.html#l00107">URichText.cpp:107</a></div></div>
+<div class="ttc" id="aclassURichText_html_ac65dad7e72ab91f90bedfafd3afd3426"><div class="ttname"><a href="classURichText.html#ac65dad7e72ab91f90bedfafd3afd3426">URichText::CachedPhonemeData</a></div><div class="ttdeci">TArray&lt; FPhonemeData &gt; CachedPhonemeData</div><div class="ttdef"><b>Definition</b> <a href="URichText_8h_source.html#l00062">URichText.h:62</a></div></div>
+<div class="ttc" id="aclassURichText_html_acff1bf3ef282f819babcebd70a6ee08c"><div class="ttname"><a href="classURichText.html#acff1bf3ef282f819babcebd70a6ee08c">URichText::bAutoFitToWidth</a></div><div class="ttdeci">bool bAutoFitToWidth</div><div class="ttdef"><b>Definition</b> <a href="URichText_8h_source.html#l00049">URichText.h:49</a></div></div>
+<div class="ttc" id="aclassURichText_html_ad304efecc5cc8b0e957cd4336ce9fb24"><div class="ttname"><a href="classURichText.html#ad304efecc5cc8b0e957cd4336ce9fb24">URichText::ApplyStyleWithFontSize</a></div><div class="ttdeci">void ApplyStyleWithFontSize(int32 InFontSize, bool bPreserveText)</div><div class="ttdef"><b>Definition</b> <a href="URichText_8cpp_source.html#l00067">URichText.cpp:67</a></div></div>
+<div class="ttc" id="aclassURichText_html_ae7e7efe5881a3f0cbdd1c06a62821ba1"><div class="ttname"><a href="classURichText.html#ae7e7efe5881a3f0cbdd1c06a62821ba1">URichText::TextColor</a></div><div class="ttdeci">FLinearColor TextColor</div><div class="ttdef"><b>Definition</b> <a href="URichText_8h_source.html#l00055">URichText.h:55</a></div></div>
+<div class="ttc" id="aclassURichText_html_aec62d6953c296a000c2dac7565e9ebbd"><div class="ttname"><a href="classURichText.html#aec62d6953c296a000c2dac7565e9ebbd">URichText::MinAutoFontSize</a></div><div class="ttdeci">int32 MinAutoFontSize</div><div class="ttdef"><b>Definition</b> <a href="URichText_8h_source.html#l00052">URichText.h:52</a></div></div>
+<div class="ttc" id="aclassURichText_html_af34b9096bbea6ff323e6bb59de189008"><div class="ttname"><a href="classURichText.html#af34b9096bbea6ff323e6bb59de189008">URichText::DefaultText</a></div><div class="ttdeci">FString DefaultText</div><div class="ttdef"><b>Definition</b> <a href="URichText_8h_source.html#l00058">URichText.h:58</a></div></div>
+<div class="ttc" id="aclassURichText_html_af755daedf70cad7632b40b234c46ab57"><div class="ttname"><a href="classURichText.html#af755daedf70cad7632b40b234c46ab57">URichText::RichTxt</a></div><div class="ttdeci">TObjectPtr&lt; class URichTextBlock &gt; RichTxt</div><div class="ttdef"><b>Definition</b> <a href="URichText_8h_source.html#l00042">URichText.h:42</a></div></div>
 <div class="ttc" id="astructFPhonemeData_html"><div class="ttname"><a href="structFPhonemeData.html">FPhonemeData</a></div><div class="ttdoc">단어 데이터 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00223">NetworkData.h:224</a></div></div>
 <div class="ttc" id="astructFPhonemeData_html_a979ef016c1c40e3519043ec8867c6326"><div class="ttname"><a href="structFPhonemeData.html#a979ef016c1c40e3519043ec8867c6326">FPhonemeData::ToRichTextString</a></div><div class="ttdeci">FString ToRichTextString(int32 Index) const</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8cpp_source.html#l00021">NetworkData.cpp:21</a></div></div>
 <div class="ttc" id="astructFWordData_html"><div class="ttname"><a href="structFWordData.html">FWordData</a></div><div class="ttdoc">단어 데이터 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00238">NetworkData.h:239</a></div></div>
@@ -253,7 +350,7 @@ $(document).ready(function(){initNavTree('URichText_8cpp_source.html',''); initR
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_b6750dbdff08df84555f1c91e851278f.html">WidgetComponents</a></li><li class="navelem"><a class="el" href="dir_f37bb5af0a6b6a37fa69422f56c0ab7c.html">Private</a></li><li class="navelem"><a class="el" href="URichText_8cpp.html">URichText.cpp</a></li>
-    <li class="footer">생성시간 : 화 12월 2 2025 12:04:29, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 화 12월 2 2025 13:15:51, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

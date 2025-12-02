@@ -24,7 +24,8 @@ var classUPopup__Result =
     [ "Scrl_WrongList", "classUPopup__Result.html#a04d95ce68cd4a1b3b6c31335b467b4cb", null ],
     [ "TimeTaken", "classUPopup__Result.html#ad961f293e41c728a5970d36ed2cfb00a", null ],
     [ "Txt_Accuracy", "classUPopup__Result.html#afcfee3aa20b406078d770e8c9d06b47d", null ],
+    [ "Txt_Eng", "classUPopup__Result.html#a3ae771cb94df4c758020d094c7aea236", null ],
+    [ "Txt_Kor", "classUPopup__Result.html#a8cfafa30b850b06c274d16d5f10a7ff5", null ],
     [ "Txt_TimeRank", "classUPopup__Result.html#a18a984e9716989ad63e787056c788323", null ],
-    [ "Txt_TimeTaken", "classUPopup__Result.html#a80035c12c87b5d983cc0ce58144f0402", null ],
-    [ "WordWidget", "classUPopup__Result.html#ae2be7762580c12660552611ed2adcbbb", null ]
+    [ "Txt_TimeTaken", "classUPopup__Result.html#a80035c12c87b5d983cc0ce58144f0402", null ]
 ];

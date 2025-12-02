@@ -18,7 +18,7 @@ var searchData=
   ['worddata_5fpath_15',['WORDDATA_PATH',['../UGameDataManager_8cpp.html#a1ff5ef106f9d5772e9e4b49225c68db3',1,'UGameDataManager.cpp']]],
   ['wordstudydatacache_16',['WordStudyDataCache',['../classUGameDataManager.html#a2d3aa9595a441ef7b4cfb0d6959348d4',1,'UGameDataManager']]],
   ['wordstudydatatable_17',['WordStudyDataTable',['../classUGameDataManager.html#af3a67b35c573b0f3cb60720b608f2ae0',1,'UGameDataManager']]],
-  ['wordwidget_18',['wordwidget',['../classUPopup__Result.html#ae2be7762580c12660552611ed2adcbbb',1,'UPopup_Result::WordWidget'],['../classUPopup__ReadQuest.html#aed4ecc73e8fe95e589c02336119b6f99',1,'UPopup_ReadQuest::WordWidget']]],
+  ['wordwidget_18',['WordWidget',['../classUPopup__ReadQuest.html#aed4ecc73e8fe95e589c02336119b6f99',1,'UPopup_ReadQuest']]],
   ['write_19',['Write',['../ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a1129c0e4d43f2d121652a7302712cff6',1,'ALingoGameState.h']]],
   ['writeboard_5fpopup_5fpath_20',['WriteBoard_POPUP_PATH',['../UPopupManager_8cpp.html#ade39a153d9fb76c8d48d6d56e48c72f9',1,'UPopupManager.cpp']]],
   ['writelog_21',['WriteLog',['../classFLogWriter.html#a1c47f81d19488902430ad467e440e509',1,'FLogWriter']]],

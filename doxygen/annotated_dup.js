@@ -13,6 +13,7 @@ var annotated_dup =
     [ "ALobbyLevelScriptActor", "classALobbyLevelScriptActor.html", "classALobbyLevelScriptActor" ],
     [ "Aluggage", "classAluggage.html", "classAluggage" ],
     [ "ALuggageManager", "classALuggageManager.html", "classALuggageManager" ],
+    [ "AMoviePanel", "classAMoviePanel.html", "classAMoviePanel" ],
     [ "ANetworkBroadcastActor", "classANetworkBroadcastActor.html", "classANetworkBroadcastActor" ],
     [ "ANetworkTesterActor", "classANetworkTesterActor.html", "classANetworkTesterActor" ],
     [ "ANPCBase", "classANPCBase.html", "classANPCBase" ],

@@ -1,5 +1,13 @@
 var NAVTREEINDEX2 =
 {
+"UGameSoundManager_8h.html":[3,0,0,1,3,1,6],
+"UGameSoundManager_8h_source.html":[3,0,0,1,3,1,6],
+"UGameVFXManager_8cpp.html":[3,0,0,1,3,0,5],
+"UGameVFXManager_8cpp.html#a60500bf10a75f419a7e7fee524b208af":[3,0,0,1,3,0,5,0],
+"UGameVFXManager_8cpp_source.html":[3,0,0,1,3,0,5],
+"UGameVFXManager_8h.html":[3,0,0,1,3,1,7],
+"UGameVFXManager_8h_source.html":[3,0,0,1,3,1,7],
+"UHitStopSystem_8cpp.html":[3,0,0,2,0,0,6],
 "UHitStopSystem_8cpp_source.html":[3,0,0,2,0,0,6],
 "UHitStopSystem_8h.html":[3,0,0,2,0,1,7],
 "UHitStopSystem_8h_source.html":[3,0,0,2,0,1,7],
@@ -11,9 +19,9 @@ var NAVTREEINDEX2 =
 "UHookSystem_8cpp_source.html":[3,0,0,2,0,0,8],
 "UHookSystem_8h.html":[3,0,0,2,0,1,9],
 "UHookSystem_8h.html#a1c673a19776054c0693b8177e71c5426":[3,0,0,2,0,1,9,0],
+"UHookSystem_8h.html#a1c673a19776054c0693b8177e71c5426aa3f80d8f0f1b4ffa8c475f5d60ea5635":[3,0,0,2,0,1,9,0,2],
 "UHookSystem_8h.html#a1c673a19776054c0693b8177e71c5426aa3f80d8f0f1b4ffa8c475f5d60ea5635":[3,0,0,2,0,1,9,0,0],
 "UHookSystem_8h.html#a1c673a19776054c0693b8177e71c5426aa3f80d8f0f1b4ffa8c475f5d60ea5635":[3,0,0,2,0,1,9,0,1],
-"UHookSystem_8h.html#a1c673a19776054c0693b8177e71c5426aa3f80d8f0f1b4ffa8c475f5d60ea5635":[3,0,0,2,0,1,9,0,2],
 "UHookSystem_8h_source.html":[3,0,0,2,0,1,9],
 "UHoverButton_8cpp.html":[3,0,0,2,8,0,0],
 "UHoverButton_8cpp_source.html":[3,0,0,2,8,0,0],
@@ -241,13 +249,5 @@ var NAVTREEINDEX2 =
 "classAConveyorBelt.html#a22092f269b38203f08c9e53fc055875b":[2,0,2,7],
 "classAConveyorBelt.html#a277a078d1457960543b561fc98b3a937":[2,0,2,13],
 "classAConveyorBelt.html#a39e16cd62bf967fc05d31221b72a8056":[2,0,2,9],
-"classAConveyorBelt.html#a3ddef82a3ced544b057a77af3b03dda6":[2,0,2,10],
-"classAConveyorBelt.html#a3e925eb72eab465bc4d3abea2e11c233":[2,0,2,8],
-"classAConveyorBelt.html#a41afb7e8ba5a69ce397f2dd0515abf97":[2,0,2,6],
-"classAConveyorBelt.html#a46a6848ebfa8794c5b8c31049a7be7e2":[2,0,2,11],
-"classAConveyorBelt.html#a4d2470f9eb28fee974899fb5d6749b4f":[2,0,2,5],
-"classAConveyorBelt.html#a75fccdb1220669070cd90c45f066cb02":[2,0,2,0],
-"classAConveyorBelt.html#a9ad1d6043575529342ede89956a29884":[2,0,2,12],
-"classAConveyorBelt.html#ac868e0d8a190b9ee1098014d0e1d69b1":[2,0,2,4],
-"classAConveyorBelt.html#af068d208f3cb10bd47f96e610414005b":[2,0,2,3]
+"classAConveyorBelt.html#a3ddef82a3ced544b057a77af3b03dda6":[2,0,2,10]
 };
