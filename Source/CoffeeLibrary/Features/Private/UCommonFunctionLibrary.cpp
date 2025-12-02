@@ -52,6 +52,22 @@
 // 		TestIndex2, MyArrayCount, bIsIndex2InBounds ? TEXT("True") : TEXT("False"));
 // }
 
+
+FString UCommonFunctionLibrary::GererateMD5(const FString& InText)
+{
+	FTCHARToUTF8 UTF8Text(*InText);
+
+	uint8 Digest[16];
+	FMD5 Md5;
+	Md5.Update((uint8*)UTF8Text.Get(), UTF8Text.Length());
+	Md5.Final(Digest);
+
+	FString HashString;
+	for (uint8 B : Digest)
+		HashString += FString::Printf(TEXT("%02x"), B);
+	return HashString;
+}
+
 bool UCommonFunctionLibrary::InBounds(const int32 Index, const int32 Count)
 {
 	return (Index >= 0) && (Index < Count);

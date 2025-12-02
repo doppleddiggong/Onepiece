@@ -13,6 +13,9 @@ class COFFEELIBRARY_API UCommonFunctionLibrary : public UBlueprintFunctionLibrar
     GENERATED_BODY()
 
 public:
+	UFUNCTION(BlueprintPure, Category = "CoffeeLibrary|Utilities", meta = (DisplayName = "InBounds"))
+	static FString GererateMD5(const FString& InText);
+	
 	/** @brief 주어진 인덱스가 배열 범위 안에 있는지 확인한다. */
 	UFUNCTION(BlueprintPure, Category = "CoffeeLibrary|Utilities", meta = (DisplayName = "InBounds"))
 	static bool InBounds(const int32 Index, const int32 Count);
