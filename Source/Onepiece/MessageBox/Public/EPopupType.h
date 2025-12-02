@@ -23,3 +23,10 @@ enum class EPopupType : uint8
 	Result				UMETA(DisplayName = "Result"),
 	Interview			UMETA(DisplayName = "Interview"),
 };
+
+UENUM(BlueprintType)
+enum class EMsgBoxType : uint8
+{
+	OK,
+	OK_CANCEL,
+};

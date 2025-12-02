@@ -3,7 +3,6 @@
 
 #include "URichText.h"
 
-#include "GameLogging.h"
 #include "HyperLinkPluginBPLibrary.h"
 #include "NetworkData.h"
 #include "Components/RichTextBlock.h"
@@ -82,7 +81,7 @@ void URichText::SetText(const FWordData& WordData)
 	RichTxt->SetText(FText::FromString(TextString));
 }
 
-void URichText::SetText(const FString& InString)
+void URichText::SetText(const FString& InString) const
 {
 	if (!IsValid(RichTxt))
 		return;
@@ -90,7 +89,7 @@ void URichText::SetText(const FString& InString)
 	RichTxt->SetText(FText::FromString(InString));
 }
 
-void URichText::SetText(const FText& InText)
+void URichText::SetText(const FText& InText) const
 {
 	RichTxt->SetText(InText);
 }
@@ -101,7 +100,7 @@ void URichText::OnClickLink(const FString& LinkID, const FString& Content)
 
 	if (CachedPhonemeData.IsValidIndex(Index))
 	{
-		const FPhonemeData& Phoneme = CachedPhonemeData[Index];
-		PRINTLOG(TEXT("%s, %s"), *Phoneme.Kor, *Phoneme.Pronunciation);
+		if (OnClickHyperLink.IsBound())
+			OnClickHyperLink.Execute(CachedPhonemeData[Index]);
 	}
 }

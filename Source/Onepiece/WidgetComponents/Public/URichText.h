@@ -10,9 +10,9 @@
 
 struct FWordData;
 struct FPhonemeData;
-/**
- * @brief Custom RichText widget with clickable hyperlink support for phoneme data
- */
+
+DECLARE_DELEGATE_OneParam(FOnClickHyperLink, const FPhonemeData&);
+
 UCLASS()
 class ONEPIECE_API URichText : public UUserWidget
 {
@@ -24,8 +24,10 @@ protected:
 	
 public:
 	void SetText(const FWordData& WordData);
-	void SetText(const FString& InString);
-	void SetText(const FText& InText);
+	void SetText(const FString& InString) const;
+	void SetText(const FText& InText) const;
+
+	void SetOnClickHyperLink(const FOnClickHyperLink& InClick)	{ OnClickHyperLink = InClick; }
 
 private:
 	UFUNCTION()
@@ -49,6 +51,7 @@ public:
 
 	
 private:
-	/// @brief Stores phoneme data for click handling
 	TArray<FPhonemeData> CachedPhonemeData;
+
+	FOnClickHyperLink OnClickHyperLink;
 };

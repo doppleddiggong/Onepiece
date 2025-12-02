@@ -3,6 +3,8 @@
 #include "UWordWidget.h"
 
 #include "URichText.h"
+#include "NetworkData.h"
+#include "UPopupManager.h"
 #include "Components/TextBlock.h"
 
 void UWordWidget::NativeConstruct()
@@ -19,5 +21,14 @@ void UWordWidget::NativeConstruct()
 void UWordWidget::InitWordData(const FWordData& InWordData)
 {
 	Rich_Kor->SetText(InWordData);
+	Rich_Kor->SetOnClickHyperLink(FOnClickHyperLink::CreateUObject(this, &UWordWidget::OnClickHyperLink));
+	
 	Txt_Eng->SetText(FText::FromString(InWordData.Eng));
+}
+
+void UWordWidget::OnClickHyperLink(const FPhonemeData& Data)
+{
+	FString Msg = FString::Printf( TEXT("%s, %s"), *Data.Kor, *Data.Pronunciation);
+	UPopupManager::Get(GetWorld())->ShowMsgBox(TEXT("Notice"), Msg,
+		EMsgBoxType::OK, FOnMsgBoxOkDelegate());
 }

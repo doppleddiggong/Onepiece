@@ -24,6 +24,10 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Word")
 	void InitWordData(const FWordData& InWordData);
 
+private:
+	UFUNCTION()
+	void OnClickHyperLink(const FPhonemeData& Data);
+	
 protected:
 	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<class URichText> Rich_Kor;
