@@ -107,6 +107,9 @@ APlayerActor::APlayerActor()
 
 	// MainWidget 클래스 자동 로드
 	MainWidgetClass = FComponentHelper::LoadClass<UMainWidget>(MAINWIDGET_PATH);
+
+	// 3인칭 메쉬는 플레이어에게 보이지 않도록
+	GetMesh()->SetOwnerNoSee(true);
 }
 
 void APlayerActor::BeginPlay()
