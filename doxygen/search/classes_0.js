@@ -22,6 +22,7 @@ var searchData=
   ['aplayeractor_19',['APlayerActor',['../classAPlayerActor.html',1,'']]],
   ['aplayercontrol_20',['APlayerControl',['../classAPlayerControl.html',1,'']]],
   ['apopuptesteractor_21',['APopupTesterActor',['../classAPopupTesterActor.html',1,'']]],
-  ['arobotplayercontroller_22',['ARobotPlayerController',['../classARobotPlayerController.html',1,'']]],
-  ['aweightswitch_23',['AWeightSwitch',['../classAWeightSwitch.html',1,'']]]
+  ['aquestionnairekiosk_22',['AQuestionnaireKiosk',['../classAQuestionnaireKiosk.html',1,'']]],
+  ['arobotplayercontroller_23',['ARobotPlayerController',['../classARobotPlayerController.html',1,'']]],
+  ['aweightswitch_24',['AWeightSwitch',['../classAWeightSwitch.html',1,'']]]
 ];

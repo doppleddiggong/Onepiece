@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['savedquestions_0',['SavedQuestions',['../classUPopup__Interview.html#a6801e8c062ebc8e0fd12675e47d0d6e9',1,'UPopup_Interview']]],
+  ['savedquestions_0',['savedquestions',['../classUPopup__Interview.html#a6801e8c062ebc8e0fd12675e47d0d6e9',1,'UPopup_Interview::SavedQuestions'],['../classUPopup__Questionnaire.html#aa6a50df8ff560e5f57e5a84e9ff1a68e',1,'UPopup_Questionnaire::SavedQuestions']]],
   ['scale_1',['Scale',['../structFVFXData.html#a4639a82bb96c85b413933695345392ec',1,'FVFXData']]],
   ['scenario_2',['scenario',['../namespaceRequestAPI.html#ae683aef1f6770a15bcad8cce46f40456',1,'RequestAPI']]],
   ['scenariodata_3',['ScenarioData',['../classUPopup__ReadQuest.html#a57e2829fc1457eab5ed66d12e3b54fed',1,'UPopup_ReadQuest']]],
@@ -10,13 +10,13 @@ var searchData=
   ['sceneroot_7',['SceneRoot',['../classADoor.html#a3e53623c2ad98795f4560a3bdef648b3',1,'ADoor']]],
   ['scrl_5fsessionlist_8',['Scrl_SessionList',['../classULobbyWidget.html#a42de44172e6a96acbae7313fac0af009',1,'ULobbyWidget']]],
   ['scrl_5fwronglist_9',['Scrl_WrongList',['../classUPopup__Result.html#a04d95ce68cd4a1b3b6c31335b467b4cb',1,'UPopup_Result']]],
-  ['scrollbox_10',['ScrollBox',['../classUPopup__Interview.html#a031ade5b6fd0e1834b7f68467cddf131',1,'UPopup_Interview']]],
+  ['scrollbox_10',['scrollbox',['../classUPopup__Questionnaire.html#aeb2374c2209c93983144044c0fe3cb7c',1,'UPopup_Questionnaire::ScrollBox'],['../classUPopup__Interview.html#a031ade5b6fd0e1834b7f68467cddf131',1,'UPopup_Interview::ScrollBox']]],
   ['selectcharacter_11',['selectCharacter',['../classULingoGameInstance.html#a6dce121978db2d3b2504e9068c694527',1,'ULingoGameInstance']]],
   ['selectedcolor_12',['SelectedColor',['../structFReadQuestResult.html#a73d2fb79bb0ab3daf13f34e9e3f3ae8b',1,'FReadQuestResult']]],
   ['selectedsymbol_13',['SelectedSymbol',['../structFReadQuestResult.html#a086b2cc576670b7cdc6d5582a3a842d0',1,'FReadQuestResult']]],
   ['selectedword1_14',['SelectedWord1',['../classALingoPlayerState.html#a283004fed1584dfdb4da7c5e741eaeb0',1,'ALingoPlayerState']]],
   ['selectedword2_15',['SelectedWord2',['../classALingoPlayerState.html#a2136c7bb3522dbe59a8f8609325c4b93',1,'ALingoPlayerState']]],
-  ['seqindex_16',['seqindex',['../structFDelayHandle.html#a8867e58391e5eb6a8b7567cecba6881b',1,'FDelayHandle::SeqIndex'],['../structUDelayTaskManager_1_1FEntry.html#af13e696e01602848c93ddecf7452eed5',1,'UDelayTaskManager::FEntry::SeqIndex']]],
+  ['seqindex_16',['seqindex',['../structUDelayTaskManager_1_1FEntry.html#af13e696e01602848c93ddecf7452eed5',1,'UDelayTaskManager::FEntry::SeqIndex'],['../structFDelayHandle.html#a8867e58391e5eb6a8b7567cecba6881b',1,'FDelayHandle::SeqIndex']]],
   ['sessionidx_17',['sessionIdx',['../classUSessionInfoWidget.html#ad7b5ab7bdefcf1215521bca09f37f489',1,'USessionInfoWidget']]],
   ['sessioninfowidget_18',['sessionInfoWidget',['../classULobbyWidget.html#ae2dc5e331b153d1dfef548a2b694b4cb',1,'ULobbyWidget']]],
   ['sessioninterface_19',['sessionInterface',['../classULingoGameInstance.html#a0da394f50c70f08879396db0c858d67f',1,'ULingoGameInstance']]],

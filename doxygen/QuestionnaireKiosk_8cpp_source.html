@@ -1,0 +1,324 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>KLingo Project Documentation: Source/Onepiece/Interactable/Private/QuestionnaireKiosk.cpp 소스 파일</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript">
+window.MathJax = {
+  options: {
+    ignoreHtmlClass: 'tex2jax_ignore',
+    processHtmlClass: 'tex2jax_process'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<script type="text/javascript" src="darkmode_toggle.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">KLingo Project Documentation<span id="projectnumber">&#160;1.0.0</span>
+   </div>
+   <div id="projectbrief">Unreal Engine 5.6 C++ Project Documentation</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 다음에 의해 생성됨 :  Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','검색');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(0); });
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('QuestionnaireKiosk_8cpp_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">로딩중...</div>
+<div class="SRStatus" id="Searching">검색중...</div>
+<div class="SRStatus" id="NoMatches">일치하는것 없음</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">QuestionnaireKiosk.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="QuestionnaireKiosk_8cpp.html">이 파일의 문서화 페이지로 가기</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;<a class="code" href="QuestionnaireKiosk_8h.html">QuestionnaireKiosk.h</a>&quot;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;<a class="code" href="GameLogging_8h.html">GameLogging.h</a>&quot;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;<a class="code" href="UInteractWidget_8h.html">UInteractWidget.h</a>&quot;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;<a class="code" href="InteractableComponent_8h.html">InteractableComponent.h</a>&quot;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;<a class="code" href="Popup__Questionnaire_8h.html">Popup_Questionnaire.h</a>&quot;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;<a class="code" href="UPopupManager_8h.html">UPopupManager.h</a>&quot;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;<a class="code" href="UPopup__Interview_8h.html">UPopup_Interview.h</a>&quot;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;<a class="code" href="UPopup__MsgBox_8h.html">UPopup_MsgBox.h</a>&quot;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;Components/BoxComponent.h&quot;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &quot;Components/WidgetComponent.h&quot;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="QuestionnaireKiosk_8cpp.html#a55b6865d8563376fde56fd22937cef0f">   16</a></span><span class="preprocessor">#define INTERACT_WIDGET_PATH TEXT(&quot;/Game/CustomContents/UI/Widgets/WBP_InteractWidget.WBP_InteractWidget_C&quot;)</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="keyword">class </span><a class="code hl_class" href="classUInteractWidget.html">UInteractWidget</a>;</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="comment">// Sets default values</span></div>
+<div class="foldopen" id="foldopen00020" data-start="{" data-end="}">
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="classAQuestionnaireKiosk.html#aa8162a5c3cfc01d7db64ab079eac2e46">   20</a></span><a class="code hl_function" href="classAQuestionnaireKiosk.html#aa8162a5c3cfc01d7db64ab079eac2e46">AQuestionnaireKiosk::AQuestionnaireKiosk</a>()</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>{</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <span class="comment">// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don&#39;t need it.</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    PrimaryActorTick.bCanEverTick = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <a class="code hl_variable" href="classAQuestionnaireKiosk.html#ace76f7ef86756597d28ee517e0d1b83f">RootSceneComp</a> = CreateDefaultSubobject&lt;USceneComponent&gt;(TEXT(<span class="stringliteral">&quot;RootSceneComp&quot;</span>));</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    SetRootComponent(<a class="code hl_variable" href="classAQuestionnaireKiosk.html#ace76f7ef86756597d28ee517e0d1b83f">RootSceneComp</a>);</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <a class="code hl_variable" href="classAQuestionnaireKiosk.html#a977328e35abee2657fc8ef9c15817c31">KioskMeshComp</a> = CreateDefaultSubobject&lt;UStaticMeshComponent&gt;(TEXT(<span class="stringliteral">&quot;KioskMeshComp&quot;</span>));</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <a class="code hl_variable" href="classAQuestionnaireKiosk.html#a977328e35abee2657fc8ef9c15817c31">KioskMeshComp</a>-&gt;SetupAttachment(RootComponent);</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <a class="code hl_variable" href="classAQuestionnaireKiosk.html#aaeeb3fb26a9408a74806700551b9c48f">InteractableComp</a> = CreateDefaultSubobject&lt;UInteractableComponent&gt;(TEXT(<span class="stringliteral">&quot;InteractableComp&quot;</span>));</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <a class="code hl_variable" href="classAQuestionnaireKiosk.html#aaeeb3fb26a9408a74806700551b9c48f">InteractableComp</a>-&gt;InteractionType = EInteractionType::Button;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <a class="code hl_variable" href="classAQuestionnaireKiosk.html#aaeeb3fb26a9408a74806700551b9c48f">InteractableComp</a>-&gt;InteractionPrompt = TEXT(<span class="stringliteral">&quot;Activate&quot;</span>);</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <a class="code hl_variable" href="classAQuestionnaireKiosk.html#a42d1fdc760d6d1e68c0268d1771e46c6">BoxComp</a> = CreateDefaultSubobject&lt;UBoxComponent&gt;(TEXT(<span class="stringliteral">&quot;BoxComp&quot;</span>));</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <a class="code hl_variable" href="classAQuestionnaireKiosk.html#a42d1fdc760d6d1e68c0268d1771e46c6">BoxComp</a>-&gt;SetupAttachment(GetRootComponent());</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <a class="code hl_variable" href="classAQuestionnaireKiosk.html#a42d1fdc760d6d1e68c0268d1771e46c6">BoxComp</a>-&gt;SetRelativeLocation(FVector(0, 36, 75));</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <a class="code hl_variable" href="classAQuestionnaireKiosk.html#a42d1fdc760d6d1e68c0268d1771e46c6">BoxComp</a>-&gt;SetBoxExtent(FVector(60, 65, 92));</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <a class="code hl_variable" href="classAQuestionnaireKiosk.html#afc65215c146db0d615009f4075c4ae2a">WidgetComp</a> = CreateDefaultSubobject&lt;UWidgetComponent&gt;(TEXT(<span class="stringliteral">&quot;WidgetComp&quot;</span>));</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    ConstructorHelpers::FClassFinder&lt;UInteractWidget&gt; WidgetRef(<a class="code hl_define" href="APedestalSwitch_8cpp.html#a55b6865d8563376fde56fd22937cef0f">INTERACT_WIDGET_PATH</a>);</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="keywordflow">if</span> (WidgetRef.Succeeded())</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    {</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        <a class="code hl_variable" href="classAQuestionnaireKiosk.html#afc65215c146db0d615009f4075c4ae2a">WidgetComp</a>-&gt;SetWidgetClass(WidgetRef.Class);</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        <a class="code hl_variable" href="classAQuestionnaireKiosk.html#afc65215c146db0d615009f4075c4ae2a">WidgetComp</a>-&gt;SetupAttachment(GetRootComponent());</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        <a class="code hl_variable" href="classAQuestionnaireKiosk.html#afc65215c146db0d615009f4075c4ae2a">WidgetComp</a>-&gt;SetWidgetSpace(EWidgetSpace::Screen);</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        <a class="code hl_variable" href="classAQuestionnaireKiosk.html#afc65215c146db0d615009f4075c4ae2a">WidgetComp</a>-&gt;SetDrawSize(FVector2D(2048.0f, 1024.0f));</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    }</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="comment">// ConstructorHelpers::FClassFinder&lt;UPopup_Interview&gt; popupQuestionnaireWidgetRef(TEXT(&quot;/Game/CustomContents/UI/Widgets/WBP_PopupWriteKiosk.WBP_PopupWriteKiosk_C&quot;));</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="comment">// if (popupQuestionnaireWidgetRef.Succeeded())</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="comment">// {</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="comment">//  PopupQuestionnaireWidgetClass = popupQuestionnaireWidgetRef.Class;</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="comment">// }</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>}</div>
+</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
+<div class="foldopen" id="foldopen00057" data-start="{" data-end="}">
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="classAQuestionnaireKiosk.html#abeefa4db1129be93cf3e1ae50ace2873">   57</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAQuestionnaireKiosk.html#abeefa4db1129be93cf3e1ae50ace2873">AQuestionnaireKiosk::BeginPlay</a>()</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>{</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    Super::BeginPlay();</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    </div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="comment">// 델리게이트 바인딩</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <a class="code hl_variable" href="classAQuestionnaireKiosk.html#aaeeb3fb26a9408a74806700551b9c48f">InteractableComp</a>-&gt;InitWidget(<a class="code hl_variable" href="classAQuestionnaireKiosk.html#afc65215c146db0d615009f4075c4ae2a">WidgetComp</a>);</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <a class="code hl_variable" href="classAQuestionnaireKiosk.html#aaeeb3fb26a9408a74806700551b9c48f">InteractableComp</a>-&gt;OnInteractionTriggered.AddDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classAQuestionnaireKiosk.html#a4671d5794cc1dd9127a34d1aa241370e">AQuestionnaireKiosk::OnInteractionTriggered</a>);</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>}</div>
+</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
+<div class="foldopen" id="foldopen00066" data-start="{" data-end="}">
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="classAQuestionnaireKiosk.html#a8e9abf61ee7e182330c40fa491f32ca9">   66</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAQuestionnaireKiosk.html#a8e9abf61ee7e182330c40fa491f32ca9">AQuestionnaireKiosk::GetLifetimeReplicatedProps</a>(TArray&lt;class FLifetimeProperty&gt;&amp; OutLifetimeProps)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="keyword"></span>{</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    Super::GetLifetimeReplicatedProps(OutLifetimeProps);</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>}</div>
+</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
+<div class="foldopen" id="foldopen00071" data-start="{" data-end="}">
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno"><a class="line" href="classAQuestionnaireKiosk.html#ab5947293a7ed9b98bca6cc1b83f4a970">   71</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAQuestionnaireKiosk.html#ab5947293a7ed9b98bca6cc1b83f4a970">AQuestionnaireKiosk::Tick</a>(<span class="keywordtype">float</span> DeltaTime)</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>{</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    Super::Tick(DeltaTime);</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>}</div>
+</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
+<div class="foldopen" id="foldopen00076" data-start="{" data-end="}">
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno"><a class="line" href="classAQuestionnaireKiosk.html#a4671d5794cc1dd9127a34d1aa241370e">   76</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAQuestionnaireKiosk.html#a4671d5794cc1dd9127a34d1aa241370e">AQuestionnaireKiosk::OnInteractionTriggered</a>(AActor* Interactor)</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>{</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    <a class="code hl_function" href="classAQuestionnaireKiosk.html#a6243834b199bf5131eb6202d540c559f">ServerRPC_OnInteractionTriggered</a>(Interactor);</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>}</div>
+</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><span class="keywordtype">void</span> AQuestionnaireKiosk::ServerRPC_OnInteractionTriggered_Implementation(AActor* Interactor)</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>{</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    <a class="code hl_function" href="classAQuestionnaireKiosk.html#acdb5ce901291df0c899e59a1941dcdc7">ClientRPC_OnInteractionTriggered</a>(Interactor);</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>}</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span><span class="comment">// TODO: json 파일 파싱하기</span></div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><span class="keywordtype">void</span> AQuestionnaireKiosk::ClientRPC_OnInteractionTriggered_Implementation(AActor* Interactor)</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>{</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> PopupMgr = UPopupManager::Get(GetWorld()))</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    {</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> Popup = Cast&lt;UPopup_Questionnaire&gt;(PopupMgr-&gt;ShowPopup(EPopupType::Questionnaire)))</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>        {</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>            <span class="comment">// 테스트용 더미 데이터 생성</span></div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>            <a class="code hl_struct" href="structFQuestWriteInfo.html">FQuestWriteInfo</a> TestData;</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> </div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>            <span class="comment">// 질문 1</span></div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>            <a class="code hl_struct" href="structFWriteQuestionData.html">FWriteQuestionData</a> Q1;</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>            Q1.<a class="code hl_variable" href="structFWriteQuestionData.html#ac9e8bb279d987684842a0441c1fd3dcf">Id</a> = 1;</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>            Q1.<a class="code hl_variable" href="structFWriteQuestionData.html#a3ad8ccc0075582bf3b990a6af1dbf0e3">WordData</a>.<a class="code hl_variable" href="structFWriteWordData.html#a0a97db1a4372e69288fc28e6660663a2">QuestionKr</a> = TEXT(<span class="stringliteral">&quot;밤 몇 시에 잡니까?&quot;</span>);</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>            Q1.<a class="code hl_variable" href="structFWriteQuestionData.html#a3ad8ccc0075582bf3b990a6af1dbf0e3">WordData</a>.<a class="code hl_variable" href="structFWriteWordData.html#ae7676d778833317ba4e96d781ee51982">QuestionEn</a> = TEXT(<span class="stringliteral">&quot;When u sleep?&quot;</span>);</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>            Q1.<a class="code hl_variable" href="structFWriteQuestionData.html#a3ad8ccc0075582bf3b990a6af1dbf0e3">WordData</a>.<a class="code hl_variable" href="structFWriteWordData.html#aa0ee9bae1e6d4f623b8786a72563159e">Pronunciation</a> = TEXT(<span class="stringliteral">&quot;bam myeot sie japnikka&quot;</span>);</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>            Q1.<a class="code hl_variable" href="structFWriteQuestionData.html#a3231eadaa35a9dbb77b7b3a7b69456c7">Answer</a> = TEXT(<span class="stringliteral">&quot;23:00&quot;</span>);</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>            Q1.<a class="code hl_variable" href="structFWriteQuestionData.html#a9e2141898cdf24500baafd6c189fa7d8">AnswerKr</a> = TEXT(<span class="stringliteral">&quot;저는 밤 11시에 잡니다.&quot;</span>);</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>            TestData.<a class="code hl_variable" href="structFQuestWriteInfo.html#a88a926c68a22068db8e129c374d81546">Questions</a>.Add(Q1);</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span> </div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>            <span class="comment">// 질문 2</span></div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>            <a class="code hl_struct" href="structFWriteQuestionData.html">FWriteQuestionData</a> Q2;</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>            Q2.<a class="code hl_variable" href="structFWriteQuestionData.html#ac9e8bb279d987684842a0441c1fd3dcf">Id</a> = 2;</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>            Q2.<a class="code hl_variable" href="structFWriteQuestionData.html#a3ad8ccc0075582bf3b990a6af1dbf0e3">WordData</a>.<a class="code hl_variable" href="structFWriteWordData.html#a0a97db1a4372e69288fc28e6660663a2">QuestionKr</a> = TEXT(<span class="stringliteral">&quot;가족이 모두 몇 명입니까?&quot;</span>);</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>            Q2.<a class="code hl_variable" href="structFWriteQuestionData.html#a3ad8ccc0075582bf3b990a6af1dbf0e3">WordData</a>.<a class="code hl_variable" href="structFWriteWordData.html#ae7676d778833317ba4e96d781ee51982">QuestionEn</a> = TEXT(<span class="stringliteral">&quot;How many people are there in your family?&quot;</span>);</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>            Q2.<a class="code hl_variable" href="structFWriteQuestionData.html#a3ad8ccc0075582bf3b990a6af1dbf0e3">WordData</a>.<a class="code hl_variable" href="structFWriteWordData.html#aa0ee9bae1e6d4f623b8786a72563159e">Pronunciation</a> = TEXT(<span class="stringliteral">&quot;gajogi modu myeot myeongipnikka&quot;</span>);</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>            Q2.<a class="code hl_variable" href="structFWriteQuestionData.html#a3231eadaa35a9dbb77b7b3a7b69456c7">Answer</a> = TEXT(<span class="stringliteral">&quot;4&quot;</span>);</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>            Q2.<a class="code hl_variable" href="structFWriteQuestionData.html#a9e2141898cdf24500baafd6c189fa7d8">AnswerKr</a> = TEXT(<span class="stringliteral">&quot;가족은 모두 4명입니다.&quot;</span>);</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>            TestData.<a class="code hl_variable" href="structFQuestWriteInfo.html#a88a926c68a22068db8e129c374d81546">Questions</a>.Add(Q2);</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span> </div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>            <span class="comment">// 질문 3</span></div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>            <a class="code hl_struct" href="structFWriteQuestionData.html">FWriteQuestionData</a> Q3;</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>            Q3.<a class="code hl_variable" href="structFWriteQuestionData.html#ac9e8bb279d987684842a0441c1fd3dcf">Id</a> = 3;</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>            Q3.<a class="code hl_variable" href="structFWriteQuestionData.html#a3ad8ccc0075582bf3b990a6af1dbf0e3">WordData</a>.<a class="code hl_variable" href="structFWriteWordData.html#a0a97db1a4372e69288fc28e6660663a2">QuestionKr</a> = TEXT(<span class="stringliteral">&quot;오늘은 며칠입니까?&quot;</span>);</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>            Q3.<a class="code hl_variable" href="structFWriteQuestionData.html#a3ad8ccc0075582bf3b990a6af1dbf0e3">WordData</a>.<a class="code hl_variable" href="structFWriteWordData.html#ae7676d778833317ba4e96d781ee51982">QuestionEn</a> = TEXT(<span class="stringliteral">&quot;What&#39;s today&#39;s date?&quot;</span>);</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>            Q3.<a class="code hl_variable" href="structFWriteQuestionData.html#a3ad8ccc0075582bf3b990a6af1dbf0e3">WordData</a>.<a class="code hl_variable" href="structFWriteWordData.html#aa0ee9bae1e6d4f623b8786a72563159e">Pronunciation</a> = TEXT(<span class="stringliteral">&quot;oneureun myeochiripnikka&quot;</span>);</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>            Q3.<a class="code hl_variable" href="structFWriteQuestionData.html#a3231eadaa35a9dbb77b7b3a7b69456c7">Answer</a> = FDateTime::Now().ToString(TEXT(<span class="stringliteral">&quot;%Y-%m-%d&quot;</span>));</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>            Q3.<a class="code hl_variable" href="structFWriteQuestionData.html#a9e2141898cdf24500baafd6c189fa7d8">AnswerKr</a> = FDateTime::Now().ToString(TEXT(<span class="stringliteral">&quot;오늘은 %Y년 %m월 %d일입니다.&quot;</span>));</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>            TestData.<a class="code hl_variable" href="structFQuestWriteInfo.html#a88a926c68a22068db8e129c374d81546">Questions</a>.Add(Q3);</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>            </div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>            <span class="comment">// 질문 4</span></div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>            <a class="code hl_struct" href="structFWriteQuestionData.html">FWriteQuestionData</a> Q4;</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>            Q3.<a class="code hl_variable" href="structFWriteQuestionData.html#ac9e8bb279d987684842a0441c1fd3dcf">Id</a> = 4;</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>            Q3.<a class="code hl_variable" href="structFWriteQuestionData.html#a3ad8ccc0075582bf3b990a6af1dbf0e3">WordData</a>.<a class="code hl_variable" href="structFWriteWordData.html#a0a97db1a4372e69288fc28e6660663a2">QuestionKr</a> = TEXT(<span class="stringliteral">&quot;오늘 할 게임은 무엇입니까?&quot;</span>);</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>            Q3.<a class="code hl_variable" href="structFWriteQuestionData.html#a3ad8ccc0075582bf3b990a6af1dbf0e3">WordData</a>.<a class="code hl_variable" href="structFWriteWordData.html#ae7676d778833317ba4e96d781ee51982">QuestionEn</a> = TEXT(<span class="stringliteral">&quot;What game are you going to play today?&quot;</span>);</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>            Q3.<a class="code hl_variable" href="structFWriteQuestionData.html#a3ad8ccc0075582bf3b990a6af1dbf0e3">WordData</a>.<a class="code hl_variable" href="structFWriteWordData.html#aa0ee9bae1e6d4f623b8786a72563159e">Pronunciation</a> = TEXT(<span class="stringliteral">&quot;oneul hal geimeun mueosipnikka?&quot;</span>);</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>            Q3.<a class="code hl_variable" href="structFWriteQuestionData.html#a3231eadaa35a9dbb77b7b3a7b69456c7">Answer</a> = FDateTime::Now().ToString(TEXT(<span class="stringliteral">&quot;Peak&quot;</span>));</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>            Q3.<a class="code hl_variable" href="structFWriteQuestionData.html#a9e2141898cdf24500baafd6c189fa7d8">AnswerKr</a> = FDateTime::Now().ToString(TEXT(<span class="stringliteral">&quot;오늘은 Peak라는 게임을 할 것입니다.&quot;</span>));</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>            TestData.<a class="code hl_variable" href="structFQuestWriteInfo.html#a88a926c68a22068db8e129c374d81546">Questions</a>.Add(Q3);</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span> </div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>            <span class="comment">// 팝업 초기화</span></div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>            Popup-&gt;InitPopup(TestData);</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span> </div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>            <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[PopupTester] Interview popup opened with %d questions&quot;</span>), TestData.<a class="code hl_variable" href="structFQuestWriteInfo.html#a88a926c68a22068db8e129c374d81546">Questions</a>.Num());</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>        }</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>    }</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>}</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span> </div>
+<div class="foldopen" id="foldopen00144" data-start="{" data-end="}">
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno"><a class="line" href="classAQuestionnaireKiosk.html#a5954d8bc3b166a5539d8dd21f73d542f">  144</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAQuestionnaireKiosk.html#a5954d8bc3b166a5539d8dd21f73d542f">AQuestionnaireKiosk::OnOK</a>()</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>{</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>    <a class="code hl_define" href="GameLogging_8h.html#ac50b407bb34c70a0be1fccc74730d143">PRINT_STRING</a>(TEXT(<span class="stringliteral">&quot;I&#39;M OK&quot;</span>));</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>}</div>
+</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span> </div>
+<div class="foldopen" id="foldopen00149" data-start="{" data-end="}">
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno"><a class="line" href="classAQuestionnaireKiosk.html#a13059015f9254886acb955fc22bd9f45">  149</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAQuestionnaireKiosk.html#a13059015f9254886acb955fc22bd9f45">AQuestionnaireKiosk::OnCancel</a>()</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>{</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>    <a class="code hl_define" href="GameLogging_8h.html#ac50b407bb34c70a0be1fccc74730d143">PRINT_STRING</a>(TEXT(<span class="stringliteral">&quot;I&#39;M Cancel&quot;</span>));</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>}</div>
+</div>
+<div class="ttc" id="aAPedestalSwitch_8cpp_html_a55b6865d8563376fde56fd22937cef0f"><div class="ttname"><a href="APedestalSwitch_8cpp.html#a55b6865d8563376fde56fd22937cef0f">INTERACT_WIDGET_PATH</a></div><div class="ttdeci">#define INTERACT_WIDGET_PATH</div><div class="ttdef"><b>Definition</b> <a href="APedestalSwitch_8cpp_source.html#l00012">APedestalSwitch.cpp:12</a></div></div>
+<div class="ttc" id="aGameLogging_8h_html"><div class="ttname"><a href="GameLogging_8h.html">GameLogging.h</a></div><div class="ttdoc">YiSan 전반에서 사용하는 공용 인터페이스를 선언합니다.</div></div>
+<div class="ttc" id="aGameLogging_8h_html_a9998c8beb11a6bad6ffada2e701fc0cf"><div class="ttname"><a href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a></div><div class="ttdeci">#define PRINTLOG(fmt,...)</div><div class="ttdef"><b>Definition</b> <a href="GameLogging_8h_source.html#l00030">GameLogging.h:30</a></div></div>
+<div class="ttc" id="aGameLogging_8h_html_ac50b407bb34c70a0be1fccc74730d143"><div class="ttname"><a href="GameLogging_8h.html#ac50b407bb34c70a0be1fccc74730d143">PRINT_STRING</a></div><div class="ttdeci">#define PRINT_STRING(fmt,...)</div><div class="ttdef"><b>Definition</b> <a href="GameLogging_8h_source.html#l00045">GameLogging.h:45</a></div></div>
+<div class="ttc" id="aInteractableComponent_8h_html"><div class="ttname"><a href="InteractableComponent_8h.html">InteractableComponent.h</a></div></div>
+<div class="ttc" id="aPopup__Questionnaire_8h_html"><div class="ttname"><a href="Popup__Questionnaire_8h.html">Popup_Questionnaire.h</a></div></div>
+<div class="ttc" id="aQuestionnaireKiosk_8h_html"><div class="ttname"><a href="QuestionnaireKiosk_8h.html">QuestionnaireKiosk.h</a></div></div>
+<div class="ttc" id="aUInteractWidget_8h_html"><div class="ttname"><a href="UInteractWidget_8h.html">UInteractWidget.h</a></div></div>
+<div class="ttc" id="aUPopupManager_8h_html"><div class="ttname"><a href="UPopupManager_8h.html">UPopupManager.h</a></div></div>
+<div class="ttc" id="aUPopup__Interview_8h_html"><div class="ttname"><a href="UPopup__Interview_8h.html">UPopup_Interview.h</a></div></div>
+<div class="ttc" id="aUPopup__MsgBox_8h_html"><div class="ttname"><a href="UPopup__MsgBox_8h.html">UPopup_MsgBox.h</a></div></div>
+<div class="ttc" id="aclassAQuestionnaireKiosk_html_a13059015f9254886acb955fc22bd9f45"><div class="ttname"><a href="classAQuestionnaireKiosk.html#a13059015f9254886acb955fc22bd9f45">AQuestionnaireKiosk::OnCancel</a></div><div class="ttdeci">void OnCancel()</div><div class="ttdef"><b>Definition</b> <a href="QuestionnaireKiosk_8cpp_source.html#l00149">QuestionnaireKiosk.cpp:149</a></div></div>
+<div class="ttc" id="aclassAQuestionnaireKiosk_html_a42d1fdc760d6d1e68c0268d1771e46c6"><div class="ttname"><a href="classAQuestionnaireKiosk.html#a42d1fdc760d6d1e68c0268d1771e46c6">AQuestionnaireKiosk::BoxComp</a></div><div class="ttdeci">TObjectPtr&lt; class UBoxComponent &gt; BoxComp</div><div class="ttdef"><b>Definition</b> <a href="QuestionnaireKiosk_8h_source.html#l00036">QuestionnaireKiosk.h:36</a></div></div>
+<div class="ttc" id="aclassAQuestionnaireKiosk_html_a4671d5794cc1dd9127a34d1aa241370e"><div class="ttname"><a href="classAQuestionnaireKiosk.html#a4671d5794cc1dd9127a34d1aa241370e">AQuestionnaireKiosk::OnInteractionTriggered</a></div><div class="ttdeci">void OnInteractionTriggered(AActor *Interactor)</div><div class="ttdef"><b>Definition</b> <a href="QuestionnaireKiosk_8cpp_source.html#l00076">QuestionnaireKiosk.cpp:76</a></div></div>
+<div class="ttc" id="aclassAQuestionnaireKiosk_html_a5954d8bc3b166a5539d8dd21f73d542f"><div class="ttname"><a href="classAQuestionnaireKiosk.html#a5954d8bc3b166a5539d8dd21f73d542f">AQuestionnaireKiosk::OnOK</a></div><div class="ttdeci">void OnOK()</div><div class="ttdef"><b>Definition</b> <a href="QuestionnaireKiosk_8cpp_source.html#l00144">QuestionnaireKiosk.cpp:144</a></div></div>
+<div class="ttc" id="aclassAQuestionnaireKiosk_html_a6243834b199bf5131eb6202d540c559f"><div class="ttname"><a href="classAQuestionnaireKiosk.html#a6243834b199bf5131eb6202d540c559f">AQuestionnaireKiosk::ServerRPC_OnInteractionTriggered</a></div><div class="ttdeci">void ServerRPC_OnInteractionTriggered(AActor *Interactor)</div></div>
+<div class="ttc" id="aclassAQuestionnaireKiosk_html_a8e9abf61ee7e182330c40fa491f32ca9"><div class="ttname"><a href="classAQuestionnaireKiosk.html#a8e9abf61ee7e182330c40fa491f32ca9">AQuestionnaireKiosk::GetLifetimeReplicatedProps</a></div><div class="ttdeci">virtual void GetLifetimeReplicatedProps(TArray&lt; class FLifetimeProperty &gt; &amp;OutLifetimeProps) const override</div><div class="ttdef"><b>Definition</b> <a href="QuestionnaireKiosk_8cpp_source.html#l00066">QuestionnaireKiosk.cpp:66</a></div></div>
+<div class="ttc" id="aclassAQuestionnaireKiosk_html_a977328e35abee2657fc8ef9c15817c31"><div class="ttname"><a href="classAQuestionnaireKiosk.html#a977328e35abee2657fc8ef9c15817c31">AQuestionnaireKiosk::KioskMeshComp</a></div><div class="ttdeci">TObjectPtr&lt; class UStaticMeshComponent &gt; KioskMeshComp</div><div class="ttdef"><b>Definition</b> <a href="QuestionnaireKiosk_8h_source.html#l00030">QuestionnaireKiosk.h:30</a></div></div>
+<div class="ttc" id="aclassAQuestionnaireKiosk_html_aa8162a5c3cfc01d7db64ab079eac2e46"><div class="ttname"><a href="classAQuestionnaireKiosk.html#aa8162a5c3cfc01d7db64ab079eac2e46">AQuestionnaireKiosk::AQuestionnaireKiosk</a></div><div class="ttdeci">AQuestionnaireKiosk()</div><div class="ttdef"><b>Definition</b> <a href="QuestionnaireKiosk_8cpp_source.html#l00020">QuestionnaireKiosk.cpp:20</a></div></div>
+<div class="ttc" id="aclassAQuestionnaireKiosk_html_aaeeb3fb26a9408a74806700551b9c48f"><div class="ttname"><a href="classAQuestionnaireKiosk.html#aaeeb3fb26a9408a74806700551b9c48f">AQuestionnaireKiosk::InteractableComp</a></div><div class="ttdeci">TObjectPtr&lt; class UInteractableComponent &gt; InteractableComp</div><div class="ttdef"><b>Definition</b> <a href="QuestionnaireKiosk_8h_source.html#l00033">QuestionnaireKiosk.h:33</a></div></div>
+<div class="ttc" id="aclassAQuestionnaireKiosk_html_ab5947293a7ed9b98bca6cc1b83f4a970"><div class="ttname"><a href="classAQuestionnaireKiosk.html#ab5947293a7ed9b98bca6cc1b83f4a970">AQuestionnaireKiosk::Tick</a></div><div class="ttdeci">virtual void Tick(float DeltaTime) override</div><div class="ttdef"><b>Definition</b> <a href="QuestionnaireKiosk_8cpp_source.html#l00071">QuestionnaireKiosk.cpp:71</a></div></div>
+<div class="ttc" id="aclassAQuestionnaireKiosk_html_abeefa4db1129be93cf3e1ae50ace2873"><div class="ttname"><a href="classAQuestionnaireKiosk.html#abeefa4db1129be93cf3e1ae50ace2873">AQuestionnaireKiosk::BeginPlay</a></div><div class="ttdeci">virtual void BeginPlay() override</div><div class="ttdef"><b>Definition</b> <a href="QuestionnaireKiosk_8cpp_source.html#l00057">QuestionnaireKiosk.cpp:57</a></div></div>
+<div class="ttc" id="aclassAQuestionnaireKiosk_html_acdb5ce901291df0c899e59a1941dcdc7"><div class="ttname"><a href="classAQuestionnaireKiosk.html#acdb5ce901291df0c899e59a1941dcdc7">AQuestionnaireKiosk::ClientRPC_OnInteractionTriggered</a></div><div class="ttdeci">void ClientRPC_OnInteractionTriggered(AActor *Interactor)</div></div>
+<div class="ttc" id="aclassAQuestionnaireKiosk_html_ace76f7ef86756597d28ee517e0d1b83f"><div class="ttname"><a href="classAQuestionnaireKiosk.html#ace76f7ef86756597d28ee517e0d1b83f">AQuestionnaireKiosk::RootSceneComp</a></div><div class="ttdeci">TObjectPtr&lt; class USceneComponent &gt; RootSceneComp</div><div class="ttdef"><b>Definition</b> <a href="QuestionnaireKiosk_8h_source.html#l00027">QuestionnaireKiosk.h:27</a></div></div>
+<div class="ttc" id="aclassAQuestionnaireKiosk_html_afc65215c146db0d615009f4075c4ae2a"><div class="ttname"><a href="classAQuestionnaireKiosk.html#afc65215c146db0d615009f4075c4ae2a">AQuestionnaireKiosk::WidgetComp</a></div><div class="ttdeci">TObjectPtr&lt; class UWidgetComponent &gt; WidgetComp</div><div class="ttdef"><b>Definition</b> <a href="QuestionnaireKiosk_8h_source.html#l00039">QuestionnaireKiosk.h:39</a></div></div>
+<div class="ttc" id="aclassUInteractWidget_html"><div class="ttname"><a href="classUInteractWidget.html">UInteractWidget</a></div><div class="ttdef"><b>Definition</b> <a href="UInteractWidget_8h_source.html#l00013">UInteractWidget.h:14</a></div></div>
+<div class="ttc" id="astructFQuestWriteInfo_html"><div class="ttname"><a href="structFQuestWriteInfo.html">FQuestWriteInfo</a></div><div class="ttdoc">Write 퀘스트 정보 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00385">NetworkData.h:386</a></div></div>
+<div class="ttc" id="astructFQuestWriteInfo_html_a88a926c68a22068db8e129c374d81546"><div class="ttname"><a href="structFQuestWriteInfo.html#a88a926c68a22068db8e129c374d81546">FQuestWriteInfo::Questions</a></div><div class="ttdeci">TArray&lt; FWriteQuestionData &gt; Questions</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00390">NetworkData.h:390</a></div></div>
+<div class="ttc" id="astructFWriteQuestionData_html"><div class="ttname"><a href="structFWriteQuestionData.html">FWriteQuestionData</a></div><div class="ttdoc">Write 질문 및 정답 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00366">NetworkData.h:367</a></div></div>
+<div class="ttc" id="astructFWriteQuestionData_html_a3231eadaa35a9dbb77b7b3a7b69456c7"><div class="ttname"><a href="structFWriteQuestionData.html#a3231eadaa35a9dbb77b7b3a7b69456c7">FWriteQuestionData::Answer</a></div><div class="ttdeci">FString Answer</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00377">NetworkData.h:377</a></div></div>
+<div class="ttc" id="astructFWriteQuestionData_html_a3ad8ccc0075582bf3b990a6af1dbf0e3"><div class="ttname"><a href="structFWriteQuestionData.html#a3ad8ccc0075582bf3b990a6af1dbf0e3">FWriteQuestionData::WordData</a></div><div class="ttdeci">FWriteWordData WordData</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00374">NetworkData.h:374</a></div></div>
+<div class="ttc" id="astructFWriteQuestionData_html_a9e2141898cdf24500baafd6c189fa7d8"><div class="ttname"><a href="structFWriteQuestionData.html#a9e2141898cdf24500baafd6c189fa7d8">FWriteQuestionData::AnswerKr</a></div><div class="ttdeci">FString AnswerKr</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00380">NetworkData.h:380</a></div></div>
+<div class="ttc" id="astructFWriteQuestionData_html_ac9e8bb279d987684842a0441c1fd3dcf"><div class="ttname"><a href="structFWriteQuestionData.html#ac9e8bb279d987684842a0441c1fd3dcf">FWriteQuestionData::Id</a></div><div class="ttdeci">int32 Id</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00371">NetworkData.h:371</a></div></div>
+<div class="ttc" id="astructFWriteWordData_html_a0a97db1a4372e69288fc28e6660663a2"><div class="ttname"><a href="structFWriteWordData.html#a0a97db1a4372e69288fc28e6660663a2">FWriteWordData::QuestionKr</a></div><div class="ttdeci">FString QuestionKr</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00355">NetworkData.h:355</a></div></div>
+<div class="ttc" id="astructFWriteWordData_html_aa0ee9bae1e6d4f623b8786a72563159e"><div class="ttname"><a href="structFWriteWordData.html#aa0ee9bae1e6d4f623b8786a72563159e">FWriteWordData::Pronunciation</a></div><div class="ttdeci">FString Pronunciation</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00361">NetworkData.h:361</a></div></div>
+<div class="ttc" id="astructFWriteWordData_html_ae7676d778833317ba4e96d781ee51982"><div class="ttname"><a href="structFWriteWordData.html#ae7676d778833317ba4e96d781ee51982">FWriteWordData::QuestionEn</a></div><div class="ttdeci">FString QuestionEn</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00358">NetworkData.h:358</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_b7459e4428712e32d7c860db6e401a05.html">Interactable</a></li><li class="navelem"><a class="el" href="dir_77257aedd361f850f8a01079e914567e.html">Private</a></li><li class="navelem"><a class="el" href="QuestionnaireKiosk_8cpp.html">QuestionnaireKiosk.cpp</a></li>
+    <li class="footer">생성시간 : 화 12월 2 2025 12:04:29, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
+</body>
+</html>

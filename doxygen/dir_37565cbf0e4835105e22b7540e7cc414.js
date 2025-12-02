@@ -9,5 +9,6 @@ var dir_37565cbf0e4835105e22b7540e7cc414 =
     [ "ConveyorButton.h", "ConveyorButton_8h.html", "ConveyorButton_8h" ],
     [ "InteractableComponent.h", "InteractableComponent_8h.html", "InteractableComponent_8h" ],
     [ "luggage.h", "luggage_8h.html", "luggage_8h" ],
-    [ "LuggageManager.h", "LuggageManager_8h.html", "LuggageManager_8h" ]
+    [ "LuggageManager.h", "LuggageManager_8h.html", "LuggageManager_8h" ],
+    [ "QuestionnaireKiosk.h", "QuestionnaireKiosk_8h.html", "QuestionnaireKiosk_8h" ]
 ];

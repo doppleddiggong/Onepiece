@@ -55,6 +55,6 @@ var searchData=
   ['fworddata_52',['FWordData',['../structFWordData.html',1,'']]],
   ['fwordinfo_53',['FWordInfo',['../structFWordInfo.html',1,'']]],
   ['fwordstudydata_54',['FWordStudyData',['../structFWordStudyData.html',1,'']]],
-  ['fwritetargetdata_55',['FWriteTargetData',['../structFWriteTargetData.html',1,'']]],
-  ['fwriteteachdata_56',['FWriteTeachData',['../structFWriteTeachData.html',1,'']]]
+  ['fwritequestiondata_55',['FWriteQuestionData',['../structFWriteQuestionData.html',1,'']]],
+  ['fwriteworddata_56',['FWriteWordData',['../structFWriteWordData.html',1,'']]]
 ];

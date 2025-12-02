@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['word_5fpopup_5fpath_0',['WORD_POPUP_PATH',['../UPopupManager_8cpp.html#ac3154098f4c271448b33ec205a25af57',1,'UPopupManager.cpp']]],
-  ['worddata_5fpath_1',['WORDDATA_PATH',['../UGameDataManager_8cpp.html#a1ff5ef106f9d5772e9e4b49225c68db3',1,'UGameDataManager.cpp']]]
+  ['vfx_5fdata_5fpath_0',['VFX_DATA_PATH',['../UGameVFXManager_8cpp.html#a60500bf10a75f419a7e7fee524b208af',1,'UGameVFXManager.cpp']]],
+  ['voice_5flog_1',['VOICE_LOG',['../UVoiceFunctionLibrary_8cpp.html#a2fa31b3d591178997ca07d2eca23a062',1,'UVoiceFunctionLibrary.cpp']]]
 ];

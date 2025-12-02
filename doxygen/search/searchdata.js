@@ -3,12 +3,12 @@ var indexSectionsWithContent =
   0: "abcdefghijklmnopqrstuvwxyz~☕개게관구기네데라링메모문방빌소스시안언엔영요유일주캐탐프필학핵🏗📄📅📖📚📞📦🚀🛠",
   1: "afiu",
   2: "gnr",
-  3: "acdefgilmnoprsu",
+  3: "acdefgilmnopqrsu",
   4: "abcdefghijlmnoprstuvwy~",
   5: "abcdefghijklmnopqrstuvw",
   6: "e",
   7: "acdefghilmnopqrstuwxyz",
-  8: "abcdehilmnprstvw",
+  8: "abcdehilmnpqrstvw",
   9: "ak게기문영학"
 };
 

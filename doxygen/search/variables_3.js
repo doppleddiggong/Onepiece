@@ -15,7 +15,7 @@ var searchData=
   ['dialogtext_12',['DialogText',['../classUDialogWidget.html#a2571c0fb4f561cfaade086680ab757f4',1,'UDialogWidget']]],
   ['dialogwidget_13',['DialogWidget',['../classUDialogManager.html#aa414919472d576306a7fca2340c39500',1,'UDialogManager']]],
   ['dialogwidgetclass_14',['DialogWidgetClass',['../classUDialogManager.html#a18d8ac2320f10bd90b106d3258dea465',1,'UDialogManager']]],
-  ['difficulty_15',['difficulty',['../structFQuestListenInfo.html#a60280b75f7d37731dc67b1f72cf61243',1,'FQuestListenInfo::Difficulty'],['../structFQuestWriteInfo.html#a80e93ac6b1fa28e339ac3ae6ce67db8f',1,'FQuestWriteInfo::Difficulty'],['../structFQuestSpeakInfo.html#ac56b7091b4869e8c5999e70b020645e2',1,'FQuestSpeakInfo::Difficulty'],['../structFQuestReadInfo.html#ac89c500a9f2ce224cee88e3e6acde3ff',1,'FQuestReadInfo::Difficulty']]],
+  ['difficulty_15',['difficulty',['../structFQuestReadInfo.html#ac89c500a9f2ce224cee88e3e6acde3ff',1,'FQuestReadInfo::Difficulty'],['../structFQuestListenInfo.html#a60280b75f7d37731dc67b1f72cf61243',1,'FQuestListenInfo::Difficulty'],['../structFQuestSpeakInfo.html#ac56b7091b4869e8c5999e70b020645e2',1,'FQuestSpeakInfo::Difficulty']]],
   ['dificulity_16',['dificulity',['../structFResponseScenario.html#aecf5ccd90b4b0b5712c127f27b42d7d4',1,'FResponseScenario']]],
   ['disabledsymbolcolor_17',['DisabledSymbolColor',['../classUTextureButton.html#aad92d68c910fe6a750c8ae6721fffe55',1,'UTextureButton']]],
   ['door_18',['Door',['../namespaceGameTags.html#a3c08adb522f39311cbf10b2efec81a35',1,'GameTags']]],

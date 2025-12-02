@@ -90,6 +90,6 @@ var searchData=
   ['fwordinfo_87',['FWordInfo',['../structFWordInfo.html',1,'']]],
   ['fwordstudydata_88',['FWordStudyData',['../structFWordStudyData.html',1,'']]],
   ['fwordstudydata_2eh_89',['FWordStudyData.h',['../FWordStudyData_8h.html',1,'']]],
-  ['fwritetargetdata_90',['FWriteTargetData',['../structFWriteTargetData.html',1,'']]],
-  ['fwriteteachdata_91',['FWriteTeachData',['../structFWriteTeachData.html',1,'']]]
+  ['fwritequestiondata_90',['FWriteQuestionData',['../structFWriteQuestionData.html',1,'']]],
+  ['fwriteworddata_91',['FWriteWordData',['../structFWriteWordData.html',1,'']]]
 ];
