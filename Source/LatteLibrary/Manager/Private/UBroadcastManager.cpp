@@ -70,3 +70,9 @@ void UBroadcastManager::SendUpdateQuestRole(EQuestRole QuestRole)
 {
 	OnUpdateQuestRole.Broadcast(QuestRole);
 }
+
+void UBroadcastManager::SendMovie(const int& InGroup, bool InState)
+{
+	OnMovie.Broadcast(InGroup, InState);
+}
+

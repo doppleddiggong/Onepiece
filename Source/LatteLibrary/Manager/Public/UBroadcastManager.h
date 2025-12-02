@@ -117,4 +117,11 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category="Events")
 	void SendUpdateQuestRole(EQuestRole QuestRole);
+	
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnMovie, int, Group, bool, State);
+	UPROPERTY(BlueprintAssignable, Category="Events")
+	FOnMovie OnMovie;
+
+	UFUNCTION(BlueprintCallable, Category="Events")
+	void SendMovie(const int& InGroup, bool InState);
 };
