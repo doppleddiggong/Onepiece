@@ -180,6 +180,17 @@ public:
 		const FString& InDescription,
 		EMsgBoxType InType);
 
+	// ========================================
+	// Result 팝업 전용 함수
+	// ========================================
+
+	/**
+	 * @brief Result 팝업 표시
+	 * @note Result 팝업은 InitPopup을 호출하여 초기화합니다.
+	 */
+	UFUNCTION(BlueprintCallable, Category = "Popup|Result")
+	void ShowResult();
+
 protected:
 	// ========================================
 	// 내부 헬퍼 함수

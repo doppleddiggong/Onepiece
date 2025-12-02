@@ -11,6 +11,7 @@
 #include "Popup_Result.h"
 #include "ULingoGameHelper.h"
 #include "UPopup_Interview.h"
+#include "UPopup_Word.h"
 
 #include "Onepiece/Onepiece.h"
 
@@ -19,6 +20,8 @@
 #define READQUEST_POPUP_PATH TEXT("/Game/CustomContents/UI/Widgets/WBP_PopupReadQuest.WBP_PopupReadQuest_C")
 #define RESULT_POPUP_PATH TEXT("/Game/CustomContents/UI/Widgets/WBP_Result.WBP_Result_C")
 #define INTERVIEW_POPUP_PATH TEXT("/Game/CustomContents/UI/Widgets/WBP_PopupInterview.WBP_PopupInterview_C")
+#define WORD_POPUP_PATH TEXT("/Game/CustomContents/UI/Widgets/WBP_PopupWord.WBP_PopupWord_C")
+
 
 UPopupManager::UPopupManager()
 {
@@ -29,6 +32,7 @@ UPopupManager::UPopupManager()
 	PopupClassMap.Add(EPopupType::ReadQuest, FComponentHelper::LoadClass<UPopup_ReadQuest>(READQUEST_POPUP_PATH));
 	PopupClassMap.Add(EPopupType::Result, FComponentHelper::LoadClass<UPopup_Result>(RESULT_POPUP_PATH));
 	PopupClassMap.Add(EPopupType::Interview, FComponentHelper::LoadClass<UPopup_Interview>(INTERVIEW_POPUP_PATH));
+	PopupClassMap.Add(EPopupType::Word, FComponentHelper::LoadClass<UPopup_Word>(WORD_POPUP_PATH));
 }
 
 // ========================================
@@ -230,6 +234,18 @@ void UPopupManager::ShowMsgBoxSimple(
 		FOnMsgBoxOkDelegate EmptyOkDelegate;
 		FOnMsgBoxCancelDelegate EmptyCancelDelegate;
 		MsgBox->InitPopup(InTitle, InDescription, InType, EmptyOkDelegate, EmptyCancelDelegate);
+	}
+}
+
+void UPopupManager::ShowResult()
+{
+	UUserWidget* Widget = ShowPopup(EPopupType::Result);
+	if (!Widget)
+		return;
+
+	if (auto ResultPopup = Cast<UPopup_Result>(Widget))
+	{
+		ResultPopup->InitPopup();
 	}
 }
 

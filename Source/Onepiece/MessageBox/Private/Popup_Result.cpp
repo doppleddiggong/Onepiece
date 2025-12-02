@@ -16,7 +16,11 @@
 void UPopup_Result::NativeConstruct()
 {
 	Super::NativeConstruct();
+}
 
+void UPopup_Result::InitPopup()
+{
+	// 중복 바인딩 방지: 기존 바인딩 제거 후 재바인딩
 	if (Btn_Exit)
 	{
 		Btn_Exit->OnButtonClickedEvent.RemoveDynamic(this, &UPopup_Result::OnClickClose);

@@ -6,6 +6,7 @@
 #include "ALingoGameMode.h"
 #include "ALingoGameState.h"
 #include "ALingoPlayerState.h"
+#include "APlayerActor.h"
 #include "Kismet/GameplayStatics.h"
 #include "Onepiece/Onepiece.h"
 
@@ -141,4 +142,20 @@ void ULingoGameHelper::HideMouseCursor(const UObject* WorldContextObject)
 
 	PC->bShowMouseCursor = false;
 	PC->SetInputMode(FInputModeGameOnly());
+}
+
+APlayerActor* ULingoGameHelper::GetPlayerActor(const UObject* WorldContextObject)
+{
+	if (!WorldContextObject)
+		return nullptr;
+
+	UWorld* World = WorldContextObject->GetWorld();
+	if (!World)
+		return nullptr;
+
+	APlayerController* PC = World->GetFirstPlayerController();
+	if (!PC)
+		return nullptr;
+
+	return Cast<APlayerActor>(PC->GetPawn());
 }

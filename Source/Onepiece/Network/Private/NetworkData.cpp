@@ -359,14 +359,16 @@ void FResponseListenAudio::SetFromHttpResponse(const TSharedPtr<class IHttpRespo
 
 void FResponseListenAudio::PrintData() const
 {
-	FString OutputString;
-	FJsonObjectConverter::UStructToJsonObjectString(
-		*this,
-		OutputString,
-		0,
-		0
-	);
-	NETWORK_LOG( TEXT("[RES] %s"), *OutputString);
+	// FString OutputString;
+	// FJsonObjectConverter::UStructToJsonObjectString(
+	// 	*this,
+	// 	OutputString,
+	// 	0,
+	// 	0
+	// );
+	// NETWORK_LOG( TEXT("[RES] %s"), *OutputString);
+
+	NETWORK_LOG( TEXT("[RES] audio_text: %s"), *audio_text );
 }
 
 // =================================================================================

@@ -19,6 +19,13 @@ void UImageButton::NativeConstruct()
 
 	if (Button_Main)
 	{
+		// 중복 등록 방지를 위해 기존 바인딩 제거
+		Button_Main->OnHovered.RemoveDynamic(this, &UImageButton::HandleHovered);
+		Button_Main->OnUnhovered.RemoveDynamic(this, &UImageButton::HandleUnhovered);
+		Button_Main->OnPressed.RemoveDynamic(this, &UImageButton::HandlePressed);
+		Button_Main->OnReleased.RemoveDynamic(this, &UImageButton::HandleReleased);
+		Button_Main->OnClicked.RemoveDynamic(this, &UImageButton::HandleClicked);
+
 		Button_Main->OnHovered.AddDynamic(this, &UImageButton::HandleHovered);
 		Button_Main->OnUnhovered.AddDynamic(this, &UImageButton::HandleUnhovered);
 		Button_Main->OnPressed.AddDynamic(this, &UImageButton::HandlePressed);

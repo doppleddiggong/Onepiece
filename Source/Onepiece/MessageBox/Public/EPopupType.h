@@ -22,6 +22,8 @@ enum class EPopupType : uint8
 	ReadQuest			UMETA(DisplayName = "ReadQuest"),
 	Result				UMETA(DisplayName = "Result"),
 	Interview			UMETA(DisplayName = "Interview"),
+
+	Word				UMETA(DisplayName = "Word"),
 };
 
 UENUM(BlueprintType)
