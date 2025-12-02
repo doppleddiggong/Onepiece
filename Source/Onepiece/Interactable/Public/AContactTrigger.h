@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "ALingoGameState.h"
 #include "AContactTrigger.generated.h"
 
 /**
@@ -31,7 +32,7 @@ protected:
 	TObjectPtr<class UBoxComponent> TriggerBox;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Trigger")
-	int StageIndex = 1;
+	EQuestType QuestType = EQuestType::Read;
 
 	/// @brief 플레이어에게 전송할 이벤트 메시지 (Detail 패널에서 설정)
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Trigger")
@@ -62,5 +63,10 @@ protected:
 	void OnTriggerScenario(const int InStageIndex);
 	
 	/// @brief 시나리오 데이터 응답 콜백 함수
-	void OnResponseScenario(struct FResponseScenario& ResponseData, bool bWasSuccessful);
+	void OnReadResponseScenario(struct FResponseScenario& ResponseData, bool bWasSuccessful);
+	void OnListenResponseScenario(struct FResponseScenario& ResponseData, bool bWasSuccessful);
+
+private:
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Voice", meta=(AllowPrivateAccess="true"))
+	TObjectPtr<class UVoiceConversationSystem> VoiceConversationSystem;
 };

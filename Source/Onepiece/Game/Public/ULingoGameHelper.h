@@ -55,4 +55,10 @@ public:
 	/// @param WorldContextObject [in] World 컨텍스트 객체
 	UFUNCTION(BlueprintCallable, Category = "Utils")
 	static void HideMouseCursor(const UObject* WorldContextObject);
+
+	/// @brief 첫 번째 플레이어의 PlayerActor를 가져옵니다.
+	/// @param WorldContextObject [in] World 컨텍스트 객체
+	/// @return PlayerActor 인스턴스 (없으면 nullptr)
+	UFUNCTION(BlueprintCallable, Category = "Utils")
+	static class APlayerActor* GetPlayerActor(const UObject* WorldContextObject);
 };

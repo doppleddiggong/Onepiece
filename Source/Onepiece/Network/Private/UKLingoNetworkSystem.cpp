@@ -17,6 +17,7 @@
 #include "ULingoGameHelper.h"
 #include "UPopupManager.h"
 #include "UPopup_MsgBox.h"
+#include "UAudioCacheManager.h"
 #include "Misc/Paths.h"
 #include "Dom/JsonObject.h"
 #include "GenericPlatform/GenericPlatformHttp.h"
@@ -509,18 +510,36 @@ void UKLingoNetworkSystem::RequestOcrExtract(const FString& ImagePath, FResponse
 
 void UKLingoNetworkSystem::RequestListenAudio(const FString& AudioText, FResponseListenAudioDelegate InDelegate)
 {
-	// FString Url = NetworkConfig::GetFullUrl(RequestAPI::listenings_audio);
-	// auto Request = SetupHttpRequest(Url, NETWORK_POST);
-	//
-	// TSharedPtr<FJsonObject> JsonObject = MakeShareable(new FJsonObject);
-	// JsonObject->SetStringField(TEXT("audio_text"), AudioText);
-	//
-	// FString RequestBody;
-	// TSharedRef<TJsonWriter<>> Writer = TJsonWriterFactory<>::Create(&RequestBody);
-	// FJsonSerializer::Serialize(JsonObject.ToSharedRef(), Writer);
-	// Request->SetContentAsString(RequestBody);
+	if (auto ACM = UVoiceCacheManager::Get(GetWorld()))
+	{
+		TArray<uint8> CachedAudio;
+		if (ACM->TryGetCachedAudio(AudioText, CachedAudio))
+		{
+			FResponseListenAudio Response;
+			Response.audio_text = AudioText;
+			Response.audio_base64 = CachedAudio;
 
-	// LogNetwork(ENetworkLogType::Post, *Request->GetURL(), *RequestBody);
+			// ✅ 비동기 Delegate 호출 (타이밍 문제 해결)
+			if (UWorld* World = GetWorld())
+			{
+				// Response를 힙에 할당하여 Lambda에서 안전하게 사용
+				TSharedPtr<FResponseListenAudio> SharedResponse = MakeShared<FResponseListenAudio>(Response);
+
+				World->GetTimerManager().SetTimerForNextTick([InDelegate, SharedResponse]()
+				{
+					// 다음 프레임에 Delegate 호출
+					InDelegate.ExecuteIfBound(*SharedResponse, true);
+				});
+			}
+			else
+			{
+				// World가 없으면 즉시 호출 (fallback)
+				InDelegate.ExecuteIfBound(Response, true);
+			}
+
+			return;
+		}
+	}
 
 	TMap<FString, FString> Query;
 	Query.Add(TEXT("audio_text"), AudioText);
@@ -529,7 +548,7 @@ void UKLingoNetworkSystem::RequestListenAudio(const FString& AudioText, FRespons
 	LogNetwork(ENetworkLogType::Post, *Request->GetURL());
 
 	Request->OnProcessRequestComplete().BindLambda(
-		[WeakThis = TWeakObjectPtr<UKLingoNetworkSystem>(this), InDelegate](FHttpRequestPtr Req, FHttpResponsePtr ResPtr, bool bWasSuccessful)
+		[WeakThis = TWeakObjectPtr<UKLingoNetworkSystem>(this), InDelegate, AudioText](FHttpRequestPtr Req, FHttpResponsePtr ResPtr, bool bWasSuccessful)
 		{
 			if (!WeakThis.IsValid() || IsEngineExitRequested())
 				return;
@@ -542,11 +561,21 @@ void UKLingoNetworkSystem::RequestListenAudio(const FString& AudioText, FRespons
 				const int32 ResponseCode = ResPtr->GetResponseCode();
 
 				NETWORK_LOG(TEXT("[RES] RequestListenAudio - Code: %d, Response: %s"), ResponseCode, *ResPtr->GetContentAsString());
-				
+
 				if (IsResSuccess(ResponseCode))
 				{
 					ResponseData.SetFromHttpResponse(ResPtr);
 					ResponseData.PrintData();
+
+					// [4] 캐시에 저장 (Lambda 캡처된 AudioText 사용)
+					if (auto ACM = UVoiceCacheManager::Get(WeakThis->GetWorld()))
+					{
+						if (ResponseData.audio_base64.Num() > 0)
+						{
+							ACM->SaveToCache(AudioText, ResponseData.audio_base64);
+						}
+					}
+
 					InDelegate.ExecuteIfBound(ResponseData, true);
 				}
 				else
@@ -560,11 +589,11 @@ void UKLingoNetworkSystem::RequestListenAudio(const FString& AudioText, FRespons
 				NETWORK_LOG(TEXT("[POST] RequestListenAudio failed - bSuccess: %s, Response valid: %s"),
 					bWasSuccessful ? TEXT("true") : TEXT("false"),
 					ResPtr.IsValid() ? TEXT("true") : TEXT("false"));
-				
+
 				int32 ErrorCode = ResPtr.IsValid() ? ResPtr->GetResponseCode() : 0;
 				FString ErrorContent = ResPtr.IsValid() ? ResPtr->GetContentAsString() : TEXT("Network connection failed");
 				WeakThis->ShowNetworkErrorPopup(ErrorCode, ErrorContent);
-				
+
 				InDelegate.ExecuteIfBound(ResponseData, false);
 			}
 		});

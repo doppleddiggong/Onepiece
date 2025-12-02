@@ -19,8 +19,11 @@
 void UPopup_Interview::NativeConstruct()
 {
 	Super::NativeConstruct();
+}
 
-	// 버튼 이벤트 바인딩
+void UPopup_Interview::InitPopup(const FResponseInterviewHello& InterviewData)
+{
+	// 중복 바인딩 방지: 기존 바인딩 제거 후 재바인딩
 	if (Btn_Close)
 	{
 		Btn_Close->OnButtonClickedEvent.RemoveDynamic(this, &UPopup_Interview::OnClickClose);
@@ -32,10 +35,7 @@ void UPopup_Interview::NativeConstruct()
 		Btn_Submit->OnButtonClickedEvent.RemoveDynamic(this, &UPopup_Interview::OnClickSubmit);
 		Btn_Submit->OnButtonClickedEvent.AddDynamic(this, &UPopup_Interview::OnClickSubmit);
 	}
-}
 
-void UPopup_Interview::InitPopup(const FResponseInterviewHello& InterviewData)
-{
 	// 질문 데이터 저장
 	SavedQuestions = InterviewData.Questions;
 

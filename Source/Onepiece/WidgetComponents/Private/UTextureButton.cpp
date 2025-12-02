@@ -17,6 +17,13 @@ void UTextureButton::NativeConstruct()
 
 	if (Button_Main)
 	{
+		// 중복 등록 방지를 위해 기존 바인딩 제거
+		Button_Main->OnClicked.RemoveDynamic(this, &UTextureButton::HandleClicked);
+		Button_Main->OnHovered.RemoveDynamic(this, &UTextureButton::HandleHovered);
+		Button_Main->OnUnhovered.RemoveDynamic(this, &UTextureButton::HandleUnhovered);
+		Button_Main->OnPressed.RemoveDynamic(this, &UTextureButton::HandlePressed);
+		Button_Main->OnReleased.RemoveDynamic(this, &UTextureButton::HandleReleased);
+
 		Button_Main->OnClicked.AddDynamic(this, &UTextureButton::HandleClicked);
 		Button_Main->OnHovered.AddDynamic(this, &UTextureButton::HandleHovered);
 		Button_Main->OnUnhovered.AddDynamic(this, &UTextureButton::HandleUnhovered);

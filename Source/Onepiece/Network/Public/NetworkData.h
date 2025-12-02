@@ -595,6 +595,9 @@ struct FResponseScenario
 	UPROPERTY(BlueprintReadWrite, Category = "Scenario")
 	FWordData full_data;
 
+	UPROPERTY(BlueprintReadWrite, Category = "Scenario")
+	TArray<uint8> voice_data;
+
 	/// @brief HTTP 응답을 파싱해 구조체를 채웁니다.
 	void SetFromHttpResponse(const TSharedPtr<class IHttpResponse, ESPMode::ThreadSafe>& Response);
 

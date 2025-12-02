@@ -13,6 +13,7 @@
 #include "Popup_WriteBoard.h"
 #include "ULingoGameHelper.h"
 #include "UPopup_Interview.h"
+#include "UPopup_Word.h"
 
 #include "Onepiece/Onepiece.h"
 
@@ -23,6 +24,8 @@
 #define INTERVIEW_POPUP_PATH TEXT("/Game/CustomContents/UI/Widgets/WBP_PopupInterview.WBP_PopupInterview_C")
 #define Questionnaire_POPUP_PATH TEXT("/Game/CustomContents/UI/Widgets/WBP_PopupWriteKiosk.WBP_PopupWriteKiosk_C")
 #define WriteBoard_POPUP_PATH TEXT("/Game/CustomContents/UI/Widgets/WBP_WriteBoard.WBP_WriteBoard_C")
+#define WORD_POPUP_PATH TEXT("/Game/CustomContents/UI/Widgets/WBP_PopupWord.WBP_PopupWord_C")
+
 
 UPopupManager::UPopupManager()
 {
@@ -35,6 +38,7 @@ UPopupManager::UPopupManager()
 	PopupClassMap.Add(EPopupType::Interview, FComponentHelper::LoadClass<UPopup_Interview>(INTERVIEW_POPUP_PATH));
 	PopupClassMap.Add(EPopupType::Questionnaire, FComponentHelper::LoadClass<UPopup_Questionnaire>(Questionnaire_POPUP_PATH));
 	PopupClassMap.Add(EPopupType::WriteBoard, FComponentHelper::LoadClass<UPopup_WriteBoard>(WriteBoard_POPUP_PATH));
+	PopupClassMap.Add(EPopupType::Word, FComponentHelper::LoadClass<UPopup_Word>(WORD_POPUP_PATH));
 }
 
 // ========================================
@@ -236,6 +240,18 @@ void UPopupManager::ShowMsgBoxSimple(
 		FOnMsgBoxOkDelegate EmptyOkDelegate;
 		FOnMsgBoxCancelDelegate EmptyCancelDelegate;
 		MsgBox->InitPopup(InTitle, InDescription, InType, EmptyOkDelegate, EmptyCancelDelegate);
+	}
+}
+
+void UPopupManager::ShowResult()
+{
+	UUserWidget* Widget = ShowPopup(EPopupType::Result);
+	if (!Widget)
+		return;
+
+	if (auto ResultPopup = Cast<UPopup_Result>(Widget))
+	{
+		ResultPopup->InitPopup();
 	}
 }
 

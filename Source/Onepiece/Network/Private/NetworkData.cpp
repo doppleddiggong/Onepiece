@@ -259,6 +259,13 @@ void FResponseScenario::SetFromHttpResponse(const TSharedPtr<IHttpResponse, ESPM
 			TSharedPtr<FJsonObject> FullDataObj = JsonObject->GetObjectField(TEXT("full_data"));
 			FJsonObjectConverter::JsonObjectToUStruct(FullDataObj.ToSharedRef(), FWordData::StaticStruct(), &full_data);
 		}
+
+		// voice data 파싱
+		FString VoiceDataString;
+		if (JsonObject->TryGetStringField(TEXT("voice_data"), VoiceDataString))
+		{
+			FBase64::Decode(VoiceDataString, voice_data);
+		}
 	}
 }
 
@@ -359,14 +366,16 @@ void FResponseListenAudio::SetFromHttpResponse(const TSharedPtr<class IHttpRespo
 
 void FResponseListenAudio::PrintData() const
 {
-	FString OutputString;
-	FJsonObjectConverter::UStructToJsonObjectString(
-		*this,
-		OutputString,
-		0,
-		0
-	);
-	NETWORK_LOG( TEXT("[RES] %s"), *OutputString);
+	// FString OutputString;
+	// FJsonObjectConverter::UStructToJsonObjectString(
+	// 	*this,
+	// 	OutputString,
+	// 	0,
+	// 	0
+	// );
+	// NETWORK_LOG( TEXT("[RES] %s"), *OutputString);
+
+	NETWORK_LOG( TEXT("[RES] audio_text: %s"), *audio_text );
 }
 
 // =================================================================================

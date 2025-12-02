@@ -12,7 +12,13 @@
 void UPopup_MsgBox::NativeConstruct()
 {
 	Super::NativeConstruct();
+}
 
+void UPopup_MsgBox::SetTitle(const FString& InTitle) { Txt_Title->SetText(FText::FromString(InTitle)); }
+void UPopup_MsgBox::SetDesc(const FString& InDescription) { Txt_Desc->SetText(FText::FromString(InDescription)); }
+
+void UPopup_MsgBox::InitButton(EMsgBoxType InType)
+{
 	// 중복 바인딩 방지: 기존 바인딩 제거 후 재바인딩
 	if (Btn_Close)
 	{
@@ -29,13 +35,7 @@ void UPopup_MsgBox::NativeConstruct()
 		Btn_Cancel->OnButtonClickedEvent.RemoveDynamic(this, &UPopup_MsgBox::OnClickCancel);
 		Btn_Cancel->OnButtonClickedEvent.AddDynamic(this, &UPopup_MsgBox::OnClickCancel);
 	}
-}
 
-void UPopup_MsgBox::SetTitle(const FString& InTitle) { Txt_Title->SetText(FText::FromString(InTitle)); }
-void UPopup_MsgBox::SetDesc(const FString& InDescription) { Txt_Desc->SetText(FText::FromString(InDescription)); }
-
-void UPopup_MsgBox::InitButton(EMsgBoxType InType)
-{
 	switch (InType)
 	{
 	case EMsgBoxType::OK:

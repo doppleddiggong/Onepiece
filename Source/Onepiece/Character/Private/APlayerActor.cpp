@@ -12,7 +12,6 @@
 
 // Shared
 #include "GameLogging.h"
-#include "Macro.h"
 #include "InputCoreTypes.h"
 #include "UDialogManager.h"
 #include "UVoiceConversationSystem.h"
@@ -21,24 +20,19 @@
 #include "ULingoGameHelper.h"
 #include "UPopupManager.h"
 #include "UPopup_ReadQuest.h"
-#include "UBroadcastManager.h"
 #include "ALingoGameState.h"
-#include "UHookComponent.h"
 
 #include "Camera/CameraComponent.h"
 #include "Components/InputComponent.h"
 #include "Components/CapsuleComponent.h"
-#include "GameFramework/SpringArmComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/PlayerController.h"
 #include "Net/UnrealNetwork.h"
 #include "Blueprint/UserWidget.h"
 #include "Components/StaticMeshComponent.h"
 #include "Engine/StaticMesh.h"
-#include "Onepiece/Onepiece.h"
 
 #define MAINWIDGET_PATH TEXT("/Game/CustomContents/UI/WBP_MainWidget.WBP_MainWidget_C")
-
 #define HOOKMESHPATH_PATH TEXT("/Game/CustomContents/Character/Asset/MiniOwl/MiniOwlbot.MiniOwlbot")
 
 APlayerActor::APlayerActor()
@@ -229,16 +223,7 @@ void APlayerActor::Cmd_Move_Implementation(const FVector2D& Axis)
 		// Calculate forward and right vectors based on the Yaw rotation.
 		const FVector ForwardDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::X);
 		const FVector RightDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::Y);
-		//
-		// if (IsLocallyControlled())
-		// {
-		// 	PRINT_STRING(TEXT("[local] is running? %d is jumpStart? %d"), bIsRunning, bIsJumpStart);
-		// }
-		// else if (HasAuthority())
-		// {
-		// 	PRINT_STRING(TEXT("[server] is running? %d is jumpStart? %d"), bIsRunning, bIsJumpStart);			
-		// }
-		
+	
 		AddMovementInput(ForwardDirection, Axis.Y);
 		AddMovementInput(RightDirection, Axis.X);
 	}
@@ -289,8 +274,6 @@ void APlayerActor::MulticastRPC_StopMove_Implementation()
 {
 	bIsRunning = false;
 	GetCharacterMovement()->MaxWalkSpeed = WalkSpeed;
-	// if (IsLocallyControlled())
-	// 	PRINT_STRING(TEXT("false!!!!! is running : %d, walkspeed : %f"), bIsRunning, GetCharacterMovement()->MaxWalkSpeed);
 }
 
 void APlayerActor::ServerRPC_DoJumpStart_Implementation()
@@ -327,15 +310,11 @@ void APlayerActor::MulticastRPC_DoRun_Implementation()
 	{
 		bIsRunning = false;
 		GetCharacterMovement()->MaxWalkSpeed = WalkSpeed;
-		// if (IsLocallyControlled())
-		// 	PRINT_STRING(TEXT("false!!!!! is running : %d, walkspeed : %f"), bIsRunning, GetCharacterMovement()->MaxWalkSpeed);
 	}
 	else
 	{
 		bIsRunning = true;
 		GetCharacterMovement()->MaxWalkSpeed = RunSpeed;
-		// if (IsLocallyControlled())
-		// 	PRINT_STRING(TEXT("true!!!!! is running : %d, walkspeed : %f"), bIsRunning, GetCharacterMovement()->MaxWalkSpeed);
 	}
 }
 

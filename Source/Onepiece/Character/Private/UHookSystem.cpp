@@ -313,7 +313,7 @@ void UHookSystem::ReleaseHook()
 				Luggage->bIsBeingHooked = false;
 				Luggage->HookedBy = nullptr;
 
-				PRINTLOG(TEXT("ReleaseHook: %s hook flags cleared"), *Luggage->GetName());
+				Luggage->PlayTTSAudio();
 			}
 
 			// 물리와 충돌 복원
@@ -329,11 +329,7 @@ void UHookSystem::ReleaseHook()
 
 				// 물리 복원
 				RootPrimitive->SetSimulatePhysics(true);
-
-				PRINTLOG(TEXT("ReleaseHook: Physics and collision re-enabled for %s"), *HookedTarget->GetName());
 			}
-
-			PRINTLOG(TEXT("ReleaseHook: Hook released from %s"), *HookedTarget->GetName());
 		}
 
 		HookState = EHookState::Idle;
@@ -341,14 +337,10 @@ void UHookSystem::ReleaseHook()
 
 		// Cable 및 Projectile Mesh 숨김
 		if (CableMesh)
-		{
 			CableMesh->SetVisibility(false);
-		}
 
 		if (ProjectileMesh)
-		{
 			ProjectileMesh->SetVisibility(false);
-		}
 	}
 }
 

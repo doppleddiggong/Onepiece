@@ -355,7 +355,7 @@ void AWeightSwitch::Multicast_ShowResultPopup_Implementation()
 	// 모든 클라이언트(호스트 포함)에서 정답 팝업 표시
 	if (UPopupManager* PopupMgr = UPopupManager::Get(GetWorld()))
 	{
-		PopupMgr->ShowPopup(EPopupType::Result);
+		PopupMgr->ShowResult();
 		PRINTLOG(TEXT("[WeightSwitch] Showing result popup on %s"),
 			HasAuthority() ? TEXT("Server") : TEXT("Client"));
 	}

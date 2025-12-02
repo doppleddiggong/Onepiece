@@ -18,6 +18,8 @@ protected:
 	virtual void NativeConstruct() override;
 
 public:
+	void InitPopup();
+
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
 	class UImageButton* Btn_OK;
 	

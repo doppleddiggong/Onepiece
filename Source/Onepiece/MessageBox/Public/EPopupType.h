@@ -24,4 +24,13 @@ enum class EPopupType : uint8
 	Interview			UMETA(DisplayName = "Interview"),
 	Questionnaire		UMETA(DisplayName = "Questionnaire"),
 	WriteBoard			UMETA(DisplayName = "WriteBoard"),
+
+	Word				UMETA(DisplayName = "Word"),
+};
+
+UENUM(BlueprintType)
+enum class EMsgBoxType : uint8
+{
+	OK,
+	OK_CANCEL,
 };

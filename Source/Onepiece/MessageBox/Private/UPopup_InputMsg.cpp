@@ -17,23 +17,6 @@
 void UPopup_InputMsg::NativeConstruct()
 {
 	Super::NativeConstruct();
-
-	// 중복 바인딩 방지: 기존 바인딩 제거 후 재바인딩
-	if (Btn_Close)
-	{
-		Btn_Close->OnButtonClickedEvent.RemoveDynamic(this, &UPopup_InputMsg::OnClickCancel);
-		Btn_Close->OnButtonClickedEvent.AddDynamic(this, &UPopup_InputMsg::OnClickCancel);
-	}
-	if (Btn_Ok)
-	{
-		Btn_Ok->OnButtonClickedEvent.RemoveDynamic(this, &UPopup_InputMsg::OnClickOk);
-		Btn_Ok->OnButtonClickedEvent.AddDynamic(this, &UPopup_InputMsg::OnClickOk);
-	}
-	if (Btn_Cancel)
-	{
-		Btn_Cancel->OnButtonClickedEvent.RemoveDynamic(this, &UPopup_InputMsg::OnClickCancel);
-		Btn_Cancel->OnButtonClickedEvent.AddDynamic(this, &UPopup_InputMsg::OnClickCancel);
-	}
 }
 
 void UPopup_InputMsg::SetTitle(const FString& InTitle) { Txt_Title->SetText(FText::FromString(InTitle)); }
@@ -66,17 +49,34 @@ void UPopup_InputMsg::OnClickCancel()
 
 void UPopup_InputMsg::InitPopup(const EPopupType InPopupType )
 {
+	// 중복 바인딩 방지: 기존 바인딩 제거 후 재바인딩
+	if (Btn_Close)
+	{
+		Btn_Close->OnButtonClickedEvent.RemoveDynamic(this, &UPopup_InputMsg::OnClickCancel);
+		Btn_Close->OnButtonClickedEvent.AddDynamic(this, &UPopup_InputMsg::OnClickCancel);
+	}
+	if (Btn_Ok)
+	{
+		Btn_Ok->OnButtonClickedEvent.RemoveDynamic(this, &UPopup_InputMsg::OnClickOk);
+		Btn_Ok->OnButtonClickedEvent.AddDynamic(this, &UPopup_InputMsg::OnClickOk);
+	}
+	if (Btn_Cancel)
+	{
+		Btn_Cancel->OnButtonClickedEvent.RemoveDynamic(this, &UPopup_InputMsg::OnClickCancel);
+		Btn_Cancel->OnButtonClickedEvent.AddDynamic(this, &UPopup_InputMsg::OnClickCancel);
+	}
+
 	this->PopupType = InPopupType;
 
 	if ( PopupType == EPopupType::Login  )
 	{
 		this->SetTitle("Login");
-		this->SetDesc("Please enter your registered name below.");	
+		this->SetDesc("Please enter your registered name below.");
 	}
 	else
 	{
 		this->SetTitle("Registeration");
-		this->SetDesc("Please enter your name below.");	
+		this->SetDesc("Please enter your name below.");
 	}
 }
 

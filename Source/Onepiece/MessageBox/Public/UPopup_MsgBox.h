@@ -7,14 +7,6 @@
 #include "Blueprint/UserWidget.h"
 #include "UPopup_MsgBox.generated.h"
 
-
-UENUM(BlueprintType)
-enum class EMsgBoxType : uint8
-{
-	OK,
-	OK_CANCEL,
-};
-
 UCLASS()
 class ONEPIECE_API UPopup_MsgBox : public UBasePopup
 {
