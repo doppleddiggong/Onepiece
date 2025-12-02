@@ -1,5 +1,6 @@
 var NAVTREEINDEX3 =
 {
+"classADoor.html#a1abd1e1a41541b79f767fed937f31a54":[2,0,4,19],
 "classADoor.html#a23bedd91319f5420c4ba7c77cfc22db4":[2,0,4,11],
 "classADoor.html#a2b88304b40b526981227fffdcfe6992a":[2,0,4,18],
 "classADoor.html#a3e53623c2ad98795f4560a3bdef648b3":[2,0,4,16],
@@ -36,12 +37,13 @@ var NAVTREEINDEX3 =
 "classAGate.html#ad2aaa4efd6f4604237d4a6d8532fab23":[2,0,5,15],
 "classAGate.html#af3ac65d00267956fd71ef4c5260fc030":[2,0,5,12],
 "classALingoGameMode.html":[2,0,6],
-"classALingoGameMode.html#a11e7cf43757f20d1d9f0d5d1d9751ab7":[2,0,6,3],
-"classALingoGameMode.html#a2afd7939b5c4dc08f353aa1a00cd3967":[2,0,6,4],
-"classALingoGameMode.html#a2d78db01b89121ee86364bf434db1fbf":[2,0,6,1],
-"classALingoGameMode.html#a2dc692a142db2a84bf18f18e1602c078":[2,0,6,2],
+"classALingoGameMode.html#a11e7cf43757f20d1d9f0d5d1d9751ab7":[2,0,6,4],
+"classALingoGameMode.html#a2afd7939b5c4dc08f353aa1a00cd3967":[2,0,6,5],
+"classALingoGameMode.html#a2d78db01b89121ee86364bf434db1fbf":[2,0,6,2],
+"classALingoGameMode.html#a2dc692a142db2a84bf18f18e1602c078":[2,0,6,3],
 "classALingoGameMode.html#abef1a309b7dcd4b4f71d2341d55a0ea3":[2,0,6,0],
-"classALingoGameMode.html#ad2c3a3e7a97a899e65c081cc96f2ad16":[2,0,6,5],
+"classALingoGameMode.html#ad2c3a3e7a97a899e65c081cc96f2ad16":[2,0,6,6],
+"classALingoGameMode.html#ad8c719f48fd1a74ddc0222fd06155173":[2,0,6,1],
 "classALingoGameState.html":[2,0,7],
 "classALingoGameState.html#a17e93c1837d6f33a5a3717689177d952":[2,0,7,19],
 "classALingoGameState.html#a25cf744e909d85bfdda297d0ab5e404e":[2,0,7,4],
@@ -247,7 +249,5 @@ var NAVTREEINDEX3 =
 "classAPlayerActor.html#a728c9b03094ece6b6313636335f4a6a1":[2,0,19,7],
 "classAPlayerActor.html#a74ace42a1c30a53a2e2a93972710052c":[2,0,19,33],
 "classAPlayerActor.html#a7dad1553f9372858902bdd65e2f77243":[2,0,19,40],
-"classAPlayerActor.html#a856ef7f26d46648083f0fcacdc3c0b5d":[2,0,19,31],
-"classAPlayerActor.html#a95eacfc2a9907a40bd83fe6383969ae2":[2,0,19,27],
-"classAPlayerActor.html#a96895f47e4451ef42317ea07a4b51990":[2,0,19,14]
+"classAPlayerActor.html#a856ef7f26d46648083f0fcacdc3c0b5d":[2,0,19,31]
 };

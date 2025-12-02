@@ -9,6 +9,7 @@ var structFResponseScenario =
     [ "full_data", "structFResponseScenario.html#a9bff69bbde9960207d254f3daacaba16", null ],
     [ "index", "structFResponseScenario.html#ad49ec052bc9668b14aee98820994651b", null ],
     [ "target_data", "structFResponseScenario.html#a632ab430dc3ca5f1521754cca994b8fb", null ],
+    [ "voice_data", "structFResponseScenario.html#a71a264bb53288293d68b8fe5b03ceefd", null ],
     [ "word_data1", "structFResponseScenario.html#a23a268e8417d76ddd5dc553e80819df4", null ],
     [ "word_data2", "structFResponseScenario.html#a8e3ab3c748dc225b6531bd6971488e7c", null ]
 ];

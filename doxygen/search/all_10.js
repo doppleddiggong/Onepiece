@@ -9,6 +9,6 @@ var searchData=
   ['questrole_6',['QuestRole',['../classALingoPlayerState.html#abd97c5fbf5a4be586808c892ec02586b',1,'ALingoPlayerState']]],
   ['queststart_7',['QuestStart',['../ALingoGameState_8h.html#a1717868fe66474b134d55b457307ff9fa45adbb92fc15c25aa6264131bd9d46fa',1,'ALingoGameState.h']]],
   ['questtarget_8',['questtarget',['../structFQuestReadInfo.html#ae14e7c073c04ca07d7ca5601f5120df0',1,'FQuestReadInfo::QuestTarget'],['../structFQuestListenInfo.html#a43789bf374e44bb936c042f567ed451d',1,'FQuestListenInfo::QuestTarget'],['../structFQuestWriteInfo.html#a511c18ba01f63e461fd2656145ec8483',1,'FQuestWriteInfo::QuestTarget'],['../structFQuestSpeakInfo.html#a80a3fb8ceb6c45ff95fc8fb9110adeed',1,'FQuestSpeakInfo::QuestTarget']]],
-  ['questtype_9',['QuestType',['../structFQuestData.html#a2c41bb37bb058578816fe56c10b2fcdd',1,'FQuestData']]],
+  ['questtype_9',['questtype',['../structFQuestData.html#a2c41bb37bb058578816fe56c10b2fcdd',1,'FQuestData::QuestType'],['../classAContactTrigger.html#a3f9f5f820f8dfa7baa5de8f675ea0296',1,'AContactTrigger::QuestType']]],
   ['queue_10',['Queue',['../classUSequenceManager.html#a572cbcf477ac9f6e6b855d49b6b9ca8a',1,'USequenceManager']]]
 ];

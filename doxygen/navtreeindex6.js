@@ -1,5 +1,7 @@
 var NAVTREEINDEX6 =
 {
+"classUKLingoNetworkSystem.html#a5a16995fb8341967b36b704966c70558":[2,0,101,18],
+"classUKLingoNetworkSystem.html#a68f5d305d55ac5d34af5b0e5b5a51145":[2,0,101,7],
 "classUKLingoNetworkSystem.html#a7b9e2c31f43e7c1b129f39446eec5dc0":[2,0,101,12],
 "classUKLingoNetworkSystem.html#a7bf03fe16be3fddf9a51350248bdf6b4":[2,0,101,14],
 "classUKLingoNetworkSystem.html#a96e09056706c907baafcf4f01c32c0e1":[2,0,101,2],
@@ -247,7 +249,5 @@ var NAVTREEINDEX6 =
 "classUPopup__ReadQuest.html":[2,0,116],
 "classUPopup__ReadQuest.html#a101bd5521b4278ac0cec0d5361d63b58":[2,0,116,1],
 "classUPopup__ReadQuest.html#a2c3d2b47f8255c0172cf9f218790fcc8":[2,0,116,7],
-"classUPopup__ReadQuest.html#a4b8d0620aabf1f83bd80a653e2b2fc62":[2,0,116,5],
-"classUPopup__ReadQuest.html#a57e2829fc1457eab5ed66d12e3b54fed":[2,0,116,19],
-"classUPopup__ReadQuest.html#a5a4c2b75560a3e2d07ed3aa52837278e":[2,0,116,12]
+"classUPopup__ReadQuest.html#a4b8d0620aabf1f83bd80a653e2b2fc62":[2,0,116,5]
 };
