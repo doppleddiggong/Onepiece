@@ -10,12 +10,16 @@
 #include "NetworkData.h"
 #include "UDialogManager.h"
 #include "UPopupManager.h"
+#include "UPopup_Interview.h"
 #include "UPopup_MsgBox.h"
+#include "UVoiceConversationSystem.h"
 #include "Engine/Engine.h"
 
 ANetworkTesterActor::ANetworkTesterActor()
 {
     PrimaryActorTick.bCanEverTick = false;
+
+    VoiceConversationSystem = CreateDefaultSubobject<UVoiceConversationSystem>(TEXT("VoiceConversationSystem"));
 }
 
 // =============================================================================
@@ -69,6 +73,20 @@ void ANetworkTesterActor::RequestUserMe()
     }
 }
 
+void ANetworkTesterActor::RequestUserHost()
+{
+    if (auto KLingoNetwork = UKLingoNetworkSystem::Get(GetWorld()))
+    {
+        KLingoNetwork->RequestUserHost(
+            FResponseUserHostDelegate::CreateUObject(this, &ANetworkTesterActor::OnResponseUserHost)
+        );
+    }
+    else
+    {
+        PRINTLOG(TEXT("UKLingoNetworkSystem not found!"));
+    }
+}
+
 void ANetworkTesterActor::OnResponseUserRegister(FResponseUserRegister& ResponseData, bool bWasSuccessful)
 {
     if (bWasSuccessful)
@@ -108,6 +126,21 @@ void ANetworkTesterActor::OnResponseUserMe(FResponseUserMe& ResponseData, bool b
         PRINTLOG(TEXT("--- User Me FAILED ---"));
     }
 }
+
+void ANetworkTesterActor::OnResponseUserHost(FResponseUserHost& ResponseData, bool bWasSuccessful)
+{
+    if (bWasSuccessful)
+    {
+        PRINTLOG(TEXT("--- User Me SUCCESS ---"));
+        ResponseData.PrintData();
+    }
+    else
+    {
+        PRINTLOG(TEXT("--- User Me FAILED ---"));
+    }
+}
+
+
 
 // =============================================================================
 // New API Tests
@@ -156,6 +189,37 @@ void ANetworkTesterActor::RequestSpeakingQuestions()
         KLingoNetwork->RequestSpeakingQuestions(
             SpeakingAudioPath,
             FResponseSpeakingQuestionsDelegate::CreateUObject(this, &ANetworkTesterActor::OnResponseSpeakingQuestions)
+        );
+    }
+    else
+    {
+        PRINTLOG(TEXT("UKLingoNetworkSystem not found!"));
+    }
+}
+
+void ANetworkTesterActor::RequestListenAudio()
+{
+    if (auto KLingoNetwork = UKLingoNetworkSystem::Get(GetWorld()))
+    {
+        PRINTLOG(TEXT("[TEST] RequestListenAudio - AudioText: %s"), *AudioText);
+        KLingoNetwork->RequestListenAudio(
+            AudioText,
+            FResponseListenAudioDelegate::CreateUObject(this, &ANetworkTesterActor::OnResponseListenAudio)
+        );
+    }
+    else
+    {
+        PRINTLOG(TEXT("UKLingoNetworkSystem not found!"));
+    }
+}
+
+void ANetworkTesterActor::RequestInterviewHello()
+{
+    if (auto KLingoNetwork = UKLingoNetworkSystem::Get(GetWorld()))
+    {
+        PRINTLOG(TEXT("[TEST] RequestInterviewHello"));
+        KLingoNetwork->RequestInterviewHello(
+            FResponseInterviewHelloDelegate::CreateUObject(this, &ANetworkTesterActor::OnResponseInterviewHello)
         );
     }
     else
@@ -218,10 +282,48 @@ void ANetworkTesterActor::OnResponseSpeakingQuestions(FResponseSpeakingQuestions
     {
         PRINTLOG(TEXT("--- Speaking Questions SUCCESS ---"));
         ResponseData.PrintData();
-        PRINTLOG(TEXT("Answer: %s"), *ResponseData.answer);
+        UDialogManager::Get(GetWorld())->ShowToast(*ResponseData.answer);
     }
     else
     {
         PRINTLOG(TEXT("--- Speaking Questions FAILED ---"));
+    }
+}
+
+void ANetworkTesterActor::OnResponseListenAudio(FResponseListenAudio& ResponseData, bool bWasSuccessful)
+{
+    if (bWasSuccessful)
+    {
+        PRINTLOG(TEXT("--- Listen Audio SUCCESS ---"));
+        ResponseData.PrintData();
+
+        UDialogManager::Get(GetWorld())->ShowToast(*ResponseData.audio_text);
+        VoiceConversationSystem->PlayVoiceAudio(ResponseData.audio_base64);
+    }
+    else
+    {
+        PRINTLOG(TEXT("--- Listen Audio FAILED ---"));
+    }
+}
+
+
+void ANetworkTesterActor::OnResponseInterviewHello(FResponseInterviewHello& ResponseData, bool bWasSuccessful)
+{
+    if (bWasSuccessful)
+    {
+        PRINTLOG(TEXT("--- InterViewHello Questions SUCCESS ---"));
+        ResponseData.PrintData();
+
+        if (const auto PopupMgr = UPopupManager::Get(GetWorld()))
+        {
+            if (const auto Popup = Cast<UPopup_Interview>(PopupMgr->ShowPopup(EPopupType::Interview)))
+            {
+                Popup->InitPopup(ResponseData);
+            }
+        }
+    }
+    else
+    {
+        PRINTLOG(TEXT("--- InterViewHello Questions FAILED ---"));
     }
 }

@@ -13,6 +13,8 @@
 #include "GameLogging.h"
 #include "UImageButton.h"
 #include "UTextureButton.h"
+#include "UKLingoNetworkSystem.h"
+#include "UDialogManager.h"
 
 void UPopup_Interview::NativeConstruct()
 {
@@ -32,15 +34,18 @@ void UPopup_Interview::NativeConstruct()
 	}
 }
 
-void UPopup_Interview::InitPopup(const FInterviewData& InterviewData)
+void UPopup_Interview::InitPopup(const FResponseInterviewHello& InterviewData)
 {
+	// 질문 데이터 저장
+	SavedQuestions = InterviewData.Questions;
+
 	// 기존 항목 제거
 	VerticalBox->ClearChildren();
 
 	// 각 질문에 대해 항목 위젯 생성
-	for (int32 i = 0; i < InterviewData.Question.Num(); ++i)
+	for (int32 i = 0; i < InterviewData.Questions.Num(); ++i)
 	{
-		const FInterviewQuestionData& QuestionData = InterviewData.Question[i];
+		const FInterviewQuestionData& QuestionData = InterviewData.Questions[i];
 
 		// 인터뷰 항목 위젯 생성
 		UPopup_InterviewItem* ItemWidget = CreateWidget<UPopup_InterviewItem>(
@@ -49,7 +54,7 @@ void UPopup_Interview::InitPopup(const FInterviewData& InterviewData)
 		VerticalBox->AddChildToVerticalBox(ItemWidget);
 
 		// 마지막 항목이 아니면 Spacer 추가
-		if (i < InterviewData.Question.Num() - 1)
+		if (i < InterviewData.Questions.Num() - 1)
 		{
 			USpacer* Spacer = NewObject<USpacer>(this);
 			if (Spacer)
@@ -72,27 +77,71 @@ void UPopup_Interview::OnClickClose()
 
 void UPopup_Interview::OnClickSubmit()
 {
-	// 모든 답변 수집
-	TArray<FString> Answers;
+	// 모든 답변 수집 및 검증
+	TArray<FInterviewAnswerData> AnswerDataList;
 	const TArray<UWidget*>& Children = VerticalBox->GetAllChildren();
 
-	int32 QuestionIndex = 1; // 실제 질문 번호 카운터
 	for (int32 i = 0; i < Children.Num(); i++)
 	{
 		if (UPopup_InterviewItem* Item = Cast<UPopup_InterviewItem>(Children[i]))
 		{
-			FString Answer = Item->GetAnswer();
-			Answers.Add(Answer);
-			QuestionIndex++;
+			FString Answer = Item->GetAnswer().TrimStartAndEnd();
+
+			// 빈 답변 체크
+			if (Answer.IsEmpty())
+			{
+				// Toast 메시지로 알림
+				if (UDialogManager* DialogMgr = UDialogManager::Get(GetWorld()))
+				{
+					FString Message = FString::Printf(TEXT("Question is not answered. Please fill in all answers."));
+					DialogMgr->ShowToast(Message);
+				}
+				return;
+			}
+
+			// 답변 데이터 생성
+			AnswerDataList.Add( Item->GetAnswerData() );
 		}
 	}
 
-	// TODO: 여기에 네트워크 전송 로직 추가 가능
-	// 예: UKLingoNetworkSystem::Get(GetWorld())->SubmitInterviewAnswers(Answers);
-
-	// PopupManager를 통해 팝업 닫기
-	if (UPopupManager* PopupMgr = UPopupManager::Get(GetWorld()))
+	// 네트워크 전송
+	if (UKLingoNetworkSystem* LingoNetworkSystem = UKLingoNetworkSystem::Get(GetWorld()))
 	{
-		PopupMgr->HideCurrentPopup();
+		FRequestInterviewAnswer Request;
+		Request.answer = AnswerDataList;
+
+		LingoNetworkSystem->RequestInterviewAnswer( Request,
+			FResponseInterviewAnswerDelegate::CreateUObject(this, &UPopup_Interview::OnResponseInterviewAnswer));
+	}
+}
+
+void UPopup_Interview::OnResponseInterviewAnswer(FResponseInterviewAnswer& ResponseData, bool bWasSuccessful)
+{
+	if (bWasSuccessful)
+	{
+		PRINTLOG(TEXT("--- Interview Answer SUCCESS ---"));
+		ResponseData.PrintData();
+
+		// 성공 시 토스트 메시지 표시
+		if (UDialogManager* DialogMgr = UDialogManager::Get(GetWorld()))
+		{
+			DialogMgr->ShowToast(TEXT("Interview answers submitted successfully!"));
+		}
+
+		// 팝업 닫기
+		if (UPopupManager* PopupMgr = UPopupManager::Get(GetWorld()))
+		{
+			PopupMgr->HideCurrentPopup();
+		}
+	}
+	else
+	{
+		PRINTLOG(TEXT("--- Interview Answer FAILED ---"));
+
+		// 실패 시 토스트 메시지 표시
+		if (UDialogManager* DialogMgr = UDialogManager::Get(GetWorld()))
+		{
+			DialogMgr->ShowToast(TEXT("Failed to submit interview answers. Please try again."));
+		}
 	}
 }

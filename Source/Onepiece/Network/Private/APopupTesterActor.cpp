@@ -70,7 +70,7 @@ void APopupTesterActor::InterviewPopup()
 		if (const auto Popup = Cast<UPopup_Interview>(PopupMgr->ShowPopup(EPopupType::Interview)))
 		{
 			// 테스트용 더미 데이터 생성
-			FInterviewData TestData;
+			FResponseInterviewHello TestData;
 
 			// 질문 1
 			FInterviewQuestionData Q1;
@@ -81,7 +81,7 @@ void APopupTesterActor::InterviewPopup()
 			Q1.EngKey = TEXT("country");
 			Q1.KorKey = TEXT("국가");
 			Q1.CreatedAt = TEXT("2025-01-15");
-			TestData.Question.Add(Q1);
+			TestData.Questions.Add(Q1);
 
 			// 질문 2
 			FInterviewQuestionData Q2;
@@ -92,7 +92,7 @@ void APopupTesterActor::InterviewPopup()
 			Q2.EngKey = TEXT("discovery");
 			Q2.KorKey = TEXT("발견경로");
 			Q2.CreatedAt = TEXT("2025-01-15");
-			TestData.Question.Add(Q2);
+			TestData.Questions.Add(Q2);
 
 			// 질문 3
 			FInterviewQuestionData Q3;
@@ -103,12 +103,12 @@ void APopupTesterActor::InterviewPopup()
 			Q3.EngKey = TEXT("goals");
 			Q3.KorKey = TEXT("목표");
 			Q3.CreatedAt = TEXT("2025-01-15");
-			TestData.Question.Add(Q3);
+			TestData.Questions.Add(Q3);
 
 			// 팝업 초기화
 			Popup->InitPopup(TestData);
 
-			PRINTLOG(TEXT("[PopupTester] Interview popup opened with %d questions"), TestData.Question.Num());
+			PRINTLOG(TEXT("[PopupTester] Interview popup opened with %d questions"), TestData.Questions.Num());
 		}
 	}
 }
