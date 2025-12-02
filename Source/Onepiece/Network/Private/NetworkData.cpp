@@ -259,6 +259,13 @@ void FResponseScenario::SetFromHttpResponse(const TSharedPtr<IHttpResponse, ESPM
 			TSharedPtr<FJsonObject> FullDataObj = JsonObject->GetObjectField(TEXT("full_data"));
 			FJsonObjectConverter::JsonObjectToUStruct(FullDataObj.ToSharedRef(), FWordData::StaticStruct(), &full_data);
 		}
+
+		// voice data 파싱
+		FString VoiceDataString;
+		if (JsonObject->TryGetStringField(TEXT("voice_data"), VoiceDataString))
+		{
+			FBase64::Decode(VoiceDataString, voice_data);
+		}
 	}
 }
 
