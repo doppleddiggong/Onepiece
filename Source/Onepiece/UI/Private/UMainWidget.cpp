@@ -10,6 +10,7 @@
 #include "UStateWidget.h"
 #include "ALingoGameState.h"
 #include "ALingoPlayerState.h"
+#include "ASpeakStageActor.h"
 #include "UBroadcastManager.h"
 #include "GameLogging.h"
 #include "ULingoGameHelper.h"
@@ -151,12 +152,32 @@ void UMainWidget::UpdateSpeakWidget()
 	// SpeakStageSubsystem 가져오기
 	USpeakStageSubsystem* Subsystem = World->GetSubsystem<USpeakStageSubsystem>();
 	if (!Subsystem || !Subsystem->IsInitialized())
+	{
+		// Subsystem이 없으면 SpeakWidget 숨김
+		SpeakWidget->SetWidgetVisibility(false);
 		return;
+	}
 
 	// SpeakStage 가져오기
 	ASpeakStageActor* SpeakStage = Subsystem->GetSpeakStage();
 	if (!SpeakStage)
+	{
+		// SpeakStage가 없으면 SpeakWidget 숨김
+		SpeakWidget->SetWidgetVisibility(false);
 		return;
+	}
+
+	// 현재 발화자 확인
+	APlayerState* CurrentSpeaker = SpeakStage->GetCurrentSpeaker();
+	if (!CurrentSpeaker)
+	{
+		// 발화자가 없으면 (Stage 완료) SpeakWidget 숨김
+		SpeakWidget->SetWidgetVisibility(false);
+		return;
+	}
+
+	// SpeakStage가 활성화되어 있으면 SpeakWidget 표시
+	SpeakWidget->SetWidgetVisibility(true);
 
 	// 로컬 플레이어의 PlayerState 가져오기
 	APlayerController* LocalPC = World->GetFirstPlayerController();
