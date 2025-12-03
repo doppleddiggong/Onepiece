@@ -620,6 +620,9 @@ struct FResponseOcrExtract
 {
 	GENERATED_BODY()
 
+	// UPROPERTY(BlueprintReadWrite, Category = "OCR")
+	// TArray<>
+	
 	UPROPERTY(BlueprintReadWrite, Category = "OCR")
 	bool is_pass = false;
 

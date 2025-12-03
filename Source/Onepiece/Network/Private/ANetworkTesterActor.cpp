@@ -267,8 +267,8 @@ void ANetworkTesterActor::OnResponseOcrExtract(FResponseOcrExtract& ResponseData
     {
         PRINTLOG(TEXT("--- OCR Extract SUCCESS ---"));
         ResponseData.PrintData();
-        PRINTLOG(TEXT("Success: %s"), ResponseData.success ? TEXT("true") : TEXT("false"));
-        PRINTLOG(TEXT("Extracted Text: %s"), *ResponseData.extracted_text);
+        // PRINTLOG(TEXT("Success: %s"), ResponseData.success ? TEXT("true") : TEXT("false"));
+        // PRINTLOG(TEXT("Extracted Text: %s"), *ResponseData.extracted_text);
     }
     else
     {

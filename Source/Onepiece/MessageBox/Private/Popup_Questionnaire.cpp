@@ -124,8 +124,8 @@ void UPopup_Questionnaire::OnResponseOcrExtract(FResponseOcrExtract& ResponseDat
 	{
 		PRINTLOG(TEXT("--- OCR Extract SUCCESS ---"));
 		ResponseData.PrintData();
-		PRINTLOG(TEXT("Success: %s"), ResponseData.success ? TEXT("true") : TEXT("false"));
-		PRINTLOG(TEXT("Extracted Text: %s"), *ResponseData.extracted_text);
+		// PRINTLOG(TEXT("Success: %s"), ResponseData.success ? TEXT("true") : TEXT("false"));
+		// PRINTLOG(TEXT("Extracted Text: %s"), *ResponseData.extracted_text);
 	}
 	else
 	{

@@ -332,7 +332,6 @@ void FResponseOcrExtract::SetFromHttpResponse(const TSharedPtr<IHttpResponse, ES
 
 	if (FJsonSerializer::Deserialize(Reader, JsonObject) && JsonObject.IsValid())
 	{
-		//TODO: 이거 json array로 파싱
 		// display 파트
 		is_pass = JsonObject->GetBoolField(TEXT("is_pass"));
 		message = JsonObject->GetStringField(TEXT("message"));
@@ -344,11 +343,42 @@ void FResponseOcrExtract::SetFromHttpResponse(const TSharedPtr<IHttpResponse, ES
 		stage = JsonObject->GetStringField(TEXT("stage"));
 
 		// target_data 배열 파싱
-		const TArray<TSharedPtr<FJsonValue>>* TargetDataArray;
-		if (JsonObject->TryGetArrayField(TEXT("target_data"), TargetDataArray))
-		{
-			
-		}
+		// const TArray<TSharedPtr<FJsonValue>>* TargetDataArray;
+		// if (JsonObject->TryGetArrayField(TEXT("target_data"), TargetDataArray))
+		// {
+		// 	for (const auto& Item : *TargetDataArray)
+		// 	{
+		// 		TSharedPtr<FJsonObject> TargetObj = Item->AsObject();
+		// 		if (TargetObj.IsValid())
+		// 		{
+		// 			FScenarioTargetData TargetItem;
+		//
+		// 			// word1 파싱                                                                                                                                                                                                         
+		// 			if (TargetObj->HasTypedField<EJson::Object>(TEXT("word1")))
+		// 			{
+		// 				TSharedPtr<FJsonObject> Word1Obj = TargetObj->GetObjectField(TEXT("word1"));
+		// 				if (Word1Obj.IsValid())
+		// 				{
+		// 					TargetItem.word1.name = Word1Obj->GetStringField(TEXT("name"));
+		// 					TargetItem.word1.code = Word1Obj->GetStringField(TEXT("code"));
+		// 				}
+		// 			}
+		//
+		// 			// word2 파싱                                                                                                                                                           
+		// 			if (TargetObj->HasTypedField<EJson::Object>(TEXT("word2")))
+		// 			{
+		// 				TSharedPtr<FJsonObject> Word2Obj = TargetObj->GetObjectField(TEXT("word2"));
+		// 				if (Word2Obj.IsValid())
+		// 				{
+		// 					TargetItem.word2.name = Word2Obj->GetStringField(TEXT("name"));
+		// 					TargetItem.word2.code = Word2Obj->GetStringField(TEXT("code"));
+		// 				}
+		// 			}
+		//
+		// 			target_data.Add(TargetItem);
+		// 		}
+		// 	}
+		// }
 	}
 }
 
