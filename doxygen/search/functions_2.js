@@ -34,6 +34,10 @@ var searchData=
   ['convertpcm2wav_31',['ConvertPCM2WAV',['../classUVoiceFunctionLibrary.html#aefbf705777114a8667edc76347e70cda',1,'UVoiceFunctionLibrary']]],
   ['createmainwidget_32',['CreateMainWidget',['../classAPlayerActor.html#a63641fed19fdb23e32cb16fed3ba2d79',1,'APlayerActor']]],
   ['createmysession_33',['CreateMySession',['../classULingoGameInstance.html#a094b7b917f1aa7eca5989d86616a69b4',1,'ULingoGameInstance']]],
-  ['createproceduralsoundwavefromwavdata_34',['CreateProceduralSoundWaveFromWavData',['../classUVoiceFunctionLibrary.html#adf741678fa5eeadc6dbe30624ef6888b',1,'UVoiceFunctionLibrary']]],
-  ['createsoundwavefromwavdata_35',['CreateSoundWaveFromWavData',['../classUVoiceFunctionLibrary.html#a0a42913d3f8f356e575bf9805e6e7af3',1,'UVoiceFunctionLibrary']]]
+  ['createnpcexaminer_34',['CreateNPCExaminer',['../classUSpeakStageSubsystem.html#ab25cb4ff33cc3fb1f00f91d66dfcf3aa',1,'USpeakStageSubsystem']]],
+  ['createproceduralsoundwavefromwavdata_35',['CreateProceduralSoundWaveFromWavData',['../classUVoiceFunctionLibrary.html#adf741678fa5eeadc6dbe30624ef6888b',1,'UVoiceFunctionLibrary']]],
+  ['createsoundwavefromwavdata_36',['CreateSoundWaveFromWavData',['../classUVoiceFunctionLibrary.html#a0a42913d3f8f356e575bf9805e6e7af3',1,'UVoiceFunctionLibrary']]],
+  ['createspeakstageactor_37',['CreateSpeakStageActor',['../classUSpeakStageSubsystem.html#a5ee5ae852b3dff18630746f04935f440',1,'USpeakStageSubsystem']]],
+  ['createspeakstagesystem_38',['CreateSpeakStageSystem',['../classUSpeakStageSubsystem.html#a811608e2bc318d4de2cb11e431abad4f',1,'USpeakStageSubsystem']]],
+  ['createtestscenariodata_39',['CreateTestScenarioData',['../classASpeakStageActor.html#ad4b8bc1cf80cf981aef61d2e346e4c8c',1,'ASpeakStageActor']]]
 ];

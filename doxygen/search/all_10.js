@@ -10,11 +10,13 @@ var searchData=
   ['questionnaireitemclass_7',['QuestionnaireItemClass',['../classUPopup__Questionnaire.html#ab3c410c9a8d19b079d0110a1f24d63b3',1,'UPopup_Questionnaire']]],
   ['questionnairekiosk_2ecpp_8',['QuestionnaireKiosk.cpp',['../QuestionnaireKiosk_8cpp.html',1,'']]],
   ['questionnairekiosk_2eh_9',['QuestionnaireKiosk.h',['../QuestionnaireKiosk_8h.html',1,'']]],
-  ['questions_10',['questions',['../structFQuestWriteInfo.html#a88a926c68a22068db8e129c374d81546',1,'FQuestWriteInfo::Questions'],['../structFResponseInterviewHello.html#a73a135f51b92dc7f71e0bce61150eb2f',1,'FResponseInterviewHello::Questions']]],
-  ['questresult_11',['QuestResult',['../classALingoGameState.html#a88f0dfa033d3c618bfa74a3c6bc4263e',1,'ALingoGameState']]],
-  ['questrole_12',['QuestRole',['../classALingoPlayerState.html#abd97c5fbf5a4be586808c892ec02586b',1,'ALingoPlayerState']]],
-  ['queststart_13',['QuestStart',['../ALingoGameState_8h.html#a1717868fe66474b134d55b457307ff9fa45adbb92fc15c25aa6264131bd9d46fa',1,'ALingoGameState.h']]],
-  ['questtarget_14',['questtarget',['../structFQuestListenInfo.html#a43789bf374e44bb936c042f567ed451d',1,'FQuestListenInfo::QuestTarget'],['../structFQuestSpeakInfo.html#a80a3fb8ceb6c45ff95fc8fb9110adeed',1,'FQuestSpeakInfo::QuestTarget'],['../structFQuestReadInfo.html#ae14e7c073c04ca07d7ca5601f5120df0',1,'FQuestReadInfo::QuestTarget']]],
-  ['questtype_15',['questtype',['../structFQuestData.html#a2c41bb37bb058578816fe56c10b2fcdd',1,'FQuestData::QuestType'],['../classAContactTrigger.html#a3f9f5f820f8dfa7baa5de8f675ea0296',1,'AContactTrigger::QuestType']]],
-  ['queue_16',['Queue',['../classUSequenceManager.html#a572cbcf477ac9f6e6b855d49b6b9ca8a',1,'USequenceManager']]]
+  ['questions_10',['questions',['../classASpeakStageActor.html#a7b7aa1222c96ff652b1fc46d72e0ab14',1,'ASpeakStageActor::Questions'],['../structFQuestWriteInfo.html#a88a926c68a22068db8e129c374d81546',1,'FQuestWriteInfo::Questions'],['../structFResponseInterviewHello.html#a73a135f51b92dc7f71e0bce61150eb2f',1,'FResponseInterviewHello::Questions']]],
+  ['questions_5fvoice_11',['Questions_Voice',['../classASpeakStageActor.html#ac4c2e0a52027f9437aac68d630534046',1,'ASpeakStageActor']]],
+  ['questresult_12',['QuestResult',['../classALingoGameState.html#a88f0dfa033d3c618bfa74a3c6bc4263e',1,'ALingoGameState']]],
+  ['questrole_13',['QuestRole',['../classALingoPlayerState.html#abd97c5fbf5a4be586808c892ec02586b',1,'ALingoPlayerState']]],
+  ['queststart_14',['QuestStart',['../ALingoGameState_8h.html#a1717868fe66474b134d55b457307ff9fa45adbb92fc15c25aa6264131bd9d46fa',1,'ALingoGameState.h']]],
+  ['questtarget_15',['questtarget',['../structFQuestReadInfo.html#ae14e7c073c04ca07d7ca5601f5120df0',1,'FQuestReadInfo::QuestTarget'],['../structFQuestListenInfo.html#a43789bf374e44bb936c042f567ed451d',1,'FQuestListenInfo::QuestTarget'],['../structFQuestSpeakInfo.html#a80a3fb8ceb6c45ff95fc8fb9110adeed',1,'FQuestSpeakInfo::QuestTarget']]],
+  ['questtype_16',['questtype',['../structFQuestData.html#a2c41bb37bb058578816fe56c10b2fcdd',1,'FQuestData::QuestType'],['../classAContactTrigger.html#a3f9f5f820f8dfa7baa5de8f675ea0296',1,'AContactTrigger::QuestType']]],
+  ['queue_17',['Queue',['../classUSequenceManager.html#a572cbcf477ac9f6e6b855d49b6b9ca8a',1,'USequenceManager']]],
+  ['queuepositiontext_18',['QueuePositionText',['../classUSpeakWidget.html#a9ae73627fca4062318e0eafcc25d0661',1,'USpeakWidget']]]
 ];

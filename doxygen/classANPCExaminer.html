@@ -130,6 +130,12 @@ $(document).ready(function(){initNavTree('classANPCExaminer.html',''); initResiz
 Public 멤버 함수</h2></td></tr>
 <tr class="memitem:a91eebcacdb25c63e5b5ab88be191e140" id="r_a91eebcacdb25c63e5b5ab88be191e140"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classANPCExaminer.html#a91eebcacdb25c63e5b5ab88be191e140">ANPCExaminer</a> ()</td></tr>
 <tr class="separator:a91eebcacdb25c63e5b5ab88be191e140"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac2bc5a0f906889da8f27ed91a5dd012b" id="r_ac2bc5a0f906889da8f27ed91a5dd012b"><td class="memItemLeft" align="right" valign="top">FString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classANPCExaminer.html#ac2bc5a0f906889da8f27ed91a5dd012b">GetCurrentQuestion</a> () const</td></tr>
+<tr class="memdesc:ac2bc5a0f906889da8f27ed91a5dd012b"><td class="mdescLeft">&#160;</td><td class="mdescRight">현재 질문 가져오기  <br /></td></tr>
+<tr class="separator:ac2bc5a0f906889da8f27ed91a5dd012b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa3ccb2705c73248fc0659e713d95486f" id="r_aa3ccb2705c73248fc0659e713d95486f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classANPCExaminer.html#aa3ccb2705c73248fc0659e713d95486f">SetSpeakStage</a> (class <a class="el" href="classASpeakStageActor.html">ASpeakStageActor</a> *InSpeakStage)</td></tr>
+<tr class="memdesc:aa3ccb2705c73248fc0659e713d95486f"><td class="mdescLeft">&#160;</td><td class="mdescRight">SpeakStage 설정 (GameMode에서 호출)  <br /></td></tr>
+<tr class="separator:aa3ccb2705c73248fc0659e713d95486f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9bd4d448ca8da53d78915c8868194c3c" id="r_a9bd4d448ca8da53d78915c8868194c3c"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classANPCExaminer.html#a9bd4d448ca8da53d78915c8868194c3c">SetupPlayerInputComponent</a> (class UInputComponent *PlayerInputComponent) override</td></tr>
 <tr class="separator:a9bd4d448ca8da53d78915c8868194c3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab30bc43264eec718554e3b3919cd4859" id="r_ab30bc43264eec718554e3b3919cd4859"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classANPCExaminer.html#ab30bc43264eec718554e3b3919cd4859">Tick</a> (float DeltaTime) override</td></tr>
@@ -162,6 +168,9 @@ Protected 속성</h2></td></tr>
 <tr class="separator:a3b2c1e9ba5855a82fc93f3ad99dfb218"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3763b5555910035c234ff197aa366402" id="r_a3763b5555910035c234ff197aa366402"><td class="memItemLeft" align="right" valign="top">TObjectPtr&lt; class USphereComponent &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classANPCExaminer.html#a3763b5555910035c234ff197aa366402">PlayerDetectSphereComp</a></td></tr>
 <tr class="separator:a3763b5555910035c234ff197aa366402"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2729c24ff650bf68108a31e98d7fa26e" id="r_a2729c24ff650bf68108a31e98d7fa26e"><td class="memItemLeft" align="right" valign="top">TObjectPtr&lt; class <a class="el" href="classASpeakStageActor.html">ASpeakStageActor</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classANPCExaminer.html#a2729c24ff650bf68108a31e98d7fa26e">SpeakStage</a></td></tr>
+<tr class="memdesc:a2729c24ff650bf68108a31e98d7fa26e"><td class="mdescLeft">&#160;</td><td class="mdescRight">연결된 SpeakStage  <br /></td></tr>
+<tr class="separator:a2729c24ff650bf68108a31e98d7fa26e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">상세한 설명</h2>
 <div class="textblock">
@@ -182,21 +191,21 @@ Protected 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="NPCExaminer_8cpp_source.html">NPCExaminer.cpp</a> 파일의 <a class="el" href="NPCExaminer_8cpp_source.html#l00012">12</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   13</span>{</div>
-<div class="line"><span class="lineno">   14</span>    <span class="comment">// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don&#39;t need it.</span></div>
-<div class="line"><span class="lineno">   15</span>    PrimaryActorTick.bCanEverTick = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   16</span>    </div>
-<div class="line"><span class="lineno">   17</span>    ConstructorHelpers::FObjectFinder&lt;UMaterialInterface&gt; materialRef(TEXT(<span class="stringliteral">&quot;/Script/Engine.MaterialInstanceConstant&#39;/Game/CustomContents/Character/Asset/Robot14/Materials/MI_Robot14_2_Inst4_NowUsing.MI_Robot14_2_Inst4_NowUsing&#39;&quot;</span>));</div>
-<div class="line"><span class="lineno">   18</span>    <span class="keywordflow">if</span> (materialRef.Succeeded())</div>
-<div class="line"><span class="lineno">   19</span>    {</div>
-<div class="line"><span class="lineno">   20</span>        <a class="code hl_variable" href="classANPCExaminer.html#a3b2c1e9ba5855a82fc93f3ad99dfb218">Material2</a> = materialRef.Object;</div>
-<div class="line"><span class="lineno">   21</span>    }</div>
-<div class="line"><span class="lineno">   22</span>    </div>
-<div class="line"><span class="lineno">   23</span>    <a class="code hl_variable" href="classANPCExaminer.html#a3763b5555910035c234ff197aa366402">PlayerDetectSphereComp</a> = CreateDefaultSubobject&lt;USphereComponent&gt;(TEXT(<span class="stringliteral">&quot;PlayerDetectSphereComp&quot;</span>));</div>
-<div class="line"><span class="lineno">   24</span>    <a class="code hl_variable" href="classANPCExaminer.html#a3763b5555910035c234ff197aa366402">PlayerDetectSphereComp</a>-&gt;SetupAttachment(GetRootComponent());</div>
-<div class="line"><span class="lineno">   25</span>    <a class="code hl_variable" href="classANPCExaminer.html#a3763b5555910035c234ff197aa366402">PlayerDetectSphereComp</a>-&gt;SetSphereRadius(200.f);</div>
-<div class="line"><span class="lineno">   26</span>}</div>
+<p class="definition"><a class="el" href="NPCExaminer_8cpp_source.html">NPCExaminer.cpp</a> 파일의 <a class="el" href="NPCExaminer_8cpp_source.html#l00014">14</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   15</span>{</div>
+<div class="line"><span class="lineno">   16</span>    <span class="comment">// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don&#39;t need it.</span></div>
+<div class="line"><span class="lineno">   17</span>    PrimaryActorTick.bCanEverTick = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   18</span>    </div>
+<div class="line"><span class="lineno">   19</span>    ConstructorHelpers::FObjectFinder&lt;UMaterialInterface&gt; materialRef(TEXT(<span class="stringliteral">&quot;/Script/Engine.MaterialInstanceConstant&#39;/Game/CustomContents/Character/Asset/Robot14/Materials/MI_Robot14_2_Inst4_NowUsing.MI_Robot14_2_Inst4_NowUsing&#39;&quot;</span>));</div>
+<div class="line"><span class="lineno">   20</span>    <span class="keywordflow">if</span> (materialRef.Succeeded())</div>
+<div class="line"><span class="lineno">   21</span>    {</div>
+<div class="line"><span class="lineno">   22</span>        <a class="code hl_variable" href="classANPCExaminer.html#a3b2c1e9ba5855a82fc93f3ad99dfb218">Material2</a> = materialRef.Object;</div>
+<div class="line"><span class="lineno">   23</span>    }</div>
+<div class="line"><span class="lineno">   24</span>    </div>
+<div class="line"><span class="lineno">   25</span>    <a class="code hl_variable" href="classANPCExaminer.html#a3763b5555910035c234ff197aa366402">PlayerDetectSphereComp</a> = CreateDefaultSubobject&lt;USphereComponent&gt;(TEXT(<span class="stringliteral">&quot;PlayerDetectSphereComp&quot;</span>));</div>
+<div class="line"><span class="lineno">   26</span>    <a class="code hl_variable" href="classANPCExaminer.html#a3763b5555910035c234ff197aa366402">PlayerDetectSphereComp</a>-&gt;SetupAttachment(GetRootComponent());</div>
+<div class="line"><span class="lineno">   27</span>    <a class="code hl_variable" href="classANPCExaminer.html#a3763b5555910035c234ff197aa366402">PlayerDetectSphereComp</a>-&gt;SetSphereRadius(200.f);</div>
+<div class="line"><span class="lineno">   28</span>}</div>
 <div class="ttc" id="aclassANPCExaminer_html_a3763b5555910035c234ff197aa366402"><div class="ttname"><a href="classANPCExaminer.html#a3763b5555910035c234ff197aa366402">ANPCExaminer::PlayerDetectSphereComp</a></div><div class="ttdeci">TObjectPtr&lt; class USphereComponent &gt; PlayerDetectSphereComp</div><div class="ttdef"><b>Definition</b> <a href="NPCExaminer_8h_source.html#l00054">NPCExaminer.h:54</a></div></div>
 <div class="ttc" id="aclassANPCExaminer_html_a3b2c1e9ba5855a82fc93f3ad99dfb218"><div class="ttname"><a href="classANPCExaminer.html#a3b2c1e9ba5855a82fc93f3ad99dfb218">ANPCExaminer::Material2</a></div><div class="ttdeci">TObjectPtr&lt; class UMaterialInterface &gt; Material2</div><div class="ttdef"><b>Definition</b> <a href="NPCExaminer_8h_source.html#l00032">NPCExaminer.h:32</a></div></div>
 </div><!-- fragment -->
@@ -230,23 +239,23 @@ Protected 속성</h2></td></tr>
 
 <p><a class="el" href="classANPCBase.html#a80b857bd09e3ff5c45e338c93089c1db">ANPCBase</a>(으)로부터 재구현되었습니다.</p>
 
-<p class="definition"><a class="el" href="NPCExaminer_8cpp_source.html">NPCExaminer.cpp</a> 파일의 <a class="el" href="NPCExaminer_8cpp_source.html#l00029">29</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   30</span>{</div>
-<div class="line"><span class="lineno">   31</span>    Super::BeginPlay();</div>
-<div class="line"><span class="lineno">   32</span>    </div>
-<div class="line"><span class="lineno">   33</span>    <span class="comment">// Set Dynamic Material</span></div>
-<div class="line"><span class="lineno">   34</span>    <a class="code hl_variable" href="classANPCExaminer.html#a7a48cc29fca840add86ca0860556152f">DynamicMaterial2</a> = UMaterialInstanceDynamic::Create(<a class="code hl_variable" href="classANPCExaminer.html#a3b2c1e9ba5855a82fc93f3ad99dfb218">Material2</a>, <span class="keyword">this</span>);</div>
-<div class="line"><span class="lineno">   35</span>    GetMesh()-&gt;SetMaterial(0, <a class="code hl_variable" href="classANPCExaminer.html#a7a48cc29fca840add86ca0860556152f">DynamicMaterial2</a>);</div>
-<div class="line"><span class="lineno">   36</span>    </div>
-<div class="line"><span class="lineno">   37</span>    <span class="comment">// Bind Overlap Event</span></div>
-<div class="line"><span class="lineno">   38</span>    <a class="code hl_variable" href="classANPCExaminer.html#a3763b5555910035c234ff197aa366402">PlayerDetectSphereComp</a>-&gt;OnComponentBeginOverlap.AddDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classANPCExaminer.html#ab83f72d9418c555a1080c9b9c36fce01">ANPCExaminer::OnSphereBeginOverlap</a>);</div>
-<div class="line"><span class="lineno">   39</span>    <a class="code hl_variable" href="classANPCExaminer.html#a3763b5555910035c234ff197aa366402">PlayerDetectSphereComp</a>-&gt;OnComponentEndOverlap.AddDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classANPCExaminer.html#a552038e3bf0f80ea45563b622c18f43c">ANPCExaminer::OnSphereEndOverlap</a>);</div>
-<div class="line"><span class="lineno">   40</span>}</div>
-<div class="ttc" id="aclassANPCExaminer_html_a552038e3bf0f80ea45563b622c18f43c"><div class="ttname"><a href="classANPCExaminer.html#a552038e3bf0f80ea45563b622c18f43c">ANPCExaminer::OnSphereEndOverlap</a></div><div class="ttdeci">void OnSphereEndOverlap(UPrimitiveComponent *OverlappedComponent, AActor *OtherActor, UPrimitiveComponent *OtherComp, int32 OtherBodyIndex)</div><div class="ttdef"><b>Definition</b> <a href="NPCExaminer_8cpp_source.html#l00071">NPCExaminer.cpp:71</a></div></div>
+<p class="definition"><a class="el" href="NPCExaminer_8cpp_source.html">NPCExaminer.cpp</a> 파일의 <a class="el" href="NPCExaminer_8cpp_source.html#l00031">31</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   32</span>{</div>
+<div class="line"><span class="lineno">   33</span>    Super::BeginPlay();</div>
+<div class="line"><span class="lineno">   34</span>    </div>
+<div class="line"><span class="lineno">   35</span>    <span class="comment">// Set Dynamic Material</span></div>
+<div class="line"><span class="lineno">   36</span>    <a class="code hl_variable" href="classANPCExaminer.html#a7a48cc29fca840add86ca0860556152f">DynamicMaterial2</a> = UMaterialInstanceDynamic::Create(<a class="code hl_variable" href="classANPCExaminer.html#a3b2c1e9ba5855a82fc93f3ad99dfb218">Material2</a>, <span class="keyword">this</span>);</div>
+<div class="line"><span class="lineno">   37</span>    GetMesh()-&gt;SetMaterial(0, <a class="code hl_variable" href="classANPCExaminer.html#a7a48cc29fca840add86ca0860556152f">DynamicMaterial2</a>);</div>
+<div class="line"><span class="lineno">   38</span>    </div>
+<div class="line"><span class="lineno">   39</span>    <span class="comment">// Bind Overlap Event</span></div>
+<div class="line"><span class="lineno">   40</span>    <a class="code hl_variable" href="classANPCExaminer.html#a3763b5555910035c234ff197aa366402">PlayerDetectSphereComp</a>-&gt;OnComponentBeginOverlap.AddDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classANPCExaminer.html#ab83f72d9418c555a1080c9b9c36fce01">ANPCExaminer::OnSphereBeginOverlap</a>);</div>
+<div class="line"><span class="lineno">   41</span>    <a class="code hl_variable" href="classANPCExaminer.html#a3763b5555910035c234ff197aa366402">PlayerDetectSphereComp</a>-&gt;OnComponentEndOverlap.AddDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classANPCExaminer.html#a552038e3bf0f80ea45563b622c18f43c">ANPCExaminer::OnSphereEndOverlap</a>);</div>
+<div class="line"><span class="lineno">   42</span>}</div>
+<div class="ttc" id="aclassANPCExaminer_html_a552038e3bf0f80ea45563b622c18f43c"><div class="ttname"><a href="classANPCExaminer.html#a552038e3bf0f80ea45563b622c18f43c">ANPCExaminer::OnSphereEndOverlap</a></div><div class="ttdeci">void OnSphereEndOverlap(UPrimitiveComponent *OverlappedComponent, AActor *OtherActor, UPrimitiveComponent *OtherComp, int32 OtherBodyIndex)</div><div class="ttdef"><b>Definition</b> <a href="NPCExaminer_8cpp_source.html#l00073">NPCExaminer.cpp:73</a></div></div>
 <div class="ttc" id="aclassANPCExaminer_html_a7a48cc29fca840add86ca0860556152f"><div class="ttname"><a href="classANPCExaminer.html#a7a48cc29fca840add86ca0860556152f">ANPCExaminer::DynamicMaterial2</a></div><div class="ttdeci">TObjectPtr&lt; class UMaterialInstanceDynamic &gt; DynamicMaterial2</div><div class="ttdef"><b>Definition</b> <a href="NPCExaminer_8h_source.html#l00035">NPCExaminer.h:35</a></div></div>
-<div class="ttc" id="aclassANPCExaminer_html_ab83f72d9418c555a1080c9b9c36fce01"><div class="ttname"><a href="classANPCExaminer.html#ab83f72d9418c555a1080c9b9c36fce01">ANPCExaminer::OnSphereBeginOverlap</a></div><div class="ttdeci">void OnSphereBeginOverlap(UPrimitiveComponent *OverlappedComponent, AActor *OtherActor, UPrimitiveComponent *OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult &amp;SweepResult)</div><div class="ttdef"><b>Definition</b> <a href="NPCExaminer_8cpp_source.html#l00065">NPCExaminer.cpp:65</a></div></div>
+<div class="ttc" id="aclassANPCExaminer_html_ab83f72d9418c555a1080c9b9c36fce01"><div class="ttname"><a href="classANPCExaminer.html#ab83f72d9418c555a1080c9b9c36fce01">ANPCExaminer::OnSphereBeginOverlap</a></div><div class="ttdeci">void OnSphereBeginOverlap(UPrimitiveComponent *OverlappedComponent, AActor *OtherActor, UPrimitiveComponent *OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult &amp;SweepResult)</div><div class="ttdef"><b>Definition</b> <a href="NPCExaminer_8cpp_source.html#l00067">NPCExaminer.cpp:67</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="NPCExaminer_8h_source.html#l00035">DynamicMaterial2</a>, <a class="el" href="NPCExaminer_8h_source.html#l00032">Material2</a>, <a class="el" href="NPCExaminer_8cpp_source.html#l00065">OnSphereBeginOverlap()</a>, <a class="el" href="NPCExaminer_8cpp_source.html#l00071">OnSphereEndOverlap()</a>, <a class="el" href="NPCExaminer_8h_source.html#l00054">PlayerDetectSphereComp</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="NPCExaminer_8h_source.html#l00035">DynamicMaterial2</a>, <a class="el" href="NPCExaminer_8h_source.html#l00032">Material2</a>, <a class="el" href="NPCExaminer_8cpp_source.html#l00067">OnSphereBeginOverlap()</a>, <a class="el" href="NPCExaminer_8cpp_source.html#l00073">OnSphereEndOverlap()</a>, <a class="el" href="NPCExaminer_8h_source.html#l00054">PlayerDetectSphereComp</a>.</p>
 <div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-2-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
@@ -280,20 +289,60 @@ Protected 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="NPCExaminer_8cpp_source.html">NPCExaminer.cpp</a> 파일의 <a class="el" href="NPCExaminer_8cpp_source.html#l00054">54</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   55</span>{</div>
-<div class="line"><span class="lineno">   56</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classANPCExaminer.html#a7a48cc29fca840add86ca0860556152f">DynamicMaterial2</a>)</div>
-<div class="line"><span class="lineno">   57</span>    {</div>
-<div class="line"><span class="lineno">   58</span>        UE_LOG(LogTemp, Warning, TEXT(<span class="stringliteral">&quot;Fail to ChangeEyeColor because DynamicMaterial2 is Null!!!&quot;</span>));</div>
-<div class="line"><span class="lineno">   59</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">   60</span>    }</div>
-<div class="line"><span class="lineno">   61</span>    </div>
-<div class="line"><span class="lineno">   62</span>    <a class="code hl_variable" href="classANPCExaminer.html#a7a48cc29fca840add86ca0860556152f">DynamicMaterial2</a>-&gt;SetVectorParameterValue(<a class="code hl_variable" href="classANPCExaminer.html#a8571c7dc070ebb87009d3e2e7402c5ca">EyeColorName</a>, <a class="code hl_variable" href="classANPCExaminer.html#a85e9850e43f5f643a33660610683d8f0">EyeColor</a>);</div>
-<div class="line"><span class="lineno">   63</span>}</div>
+<p class="definition"><a class="el" href="NPCExaminer_8cpp_source.html">NPCExaminer.cpp</a> 파일의 <a class="el" href="NPCExaminer_8cpp_source.html#l00056">56</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   57</span>{</div>
+<div class="line"><span class="lineno">   58</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classANPCExaminer.html#a7a48cc29fca840add86ca0860556152f">DynamicMaterial2</a>)</div>
+<div class="line"><span class="lineno">   59</span>    {</div>
+<div class="line"><span class="lineno">   60</span>        UE_LOG(LogTemp, Warning, TEXT(<span class="stringliteral">&quot;Fail to ChangeEyeColor because DynamicMaterial2 is Null!!!&quot;</span>));</div>
+<div class="line"><span class="lineno">   61</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   62</span>    }</div>
+<div class="line"><span class="lineno">   63</span>    </div>
+<div class="line"><span class="lineno">   64</span>    <a class="code hl_variable" href="classANPCExaminer.html#a7a48cc29fca840add86ca0860556152f">DynamicMaterial2</a>-&gt;SetVectorParameterValue(<a class="code hl_variable" href="classANPCExaminer.html#a8571c7dc070ebb87009d3e2e7402c5ca">EyeColorName</a>, <a class="code hl_variable" href="classANPCExaminer.html#a85e9850e43f5f643a33660610683d8f0">EyeColor</a>);</div>
+<div class="line"><span class="lineno">   65</span>}</div>
 <div class="ttc" id="aclassANPCExaminer_html_a8571c7dc070ebb87009d3e2e7402c5ca"><div class="ttname"><a href="classANPCExaminer.html#a8571c7dc070ebb87009d3e2e7402c5ca">ANPCExaminer::EyeColorName</a></div><div class="ttdeci">FName EyeColorName</div><div class="ttdef"><b>Definition</b> <a href="NPCExaminer_8h_source.html#l00038">NPCExaminer.h:38</a></div></div>
 <div class="ttc" id="aclassANPCExaminer_html_a85e9850e43f5f643a33660610683d8f0"><div class="ttname"><a href="classANPCExaminer.html#a85e9850e43f5f643a33660610683d8f0">ANPCExaminer::EyeColor</a></div><div class="ttdeci">FLinearColor EyeColor</div><div class="ttdef"><b>Definition</b> <a href="NPCExaminer_8h_source.html#l00039">NPCExaminer.h:39</a></div></div>
 </div><!-- fragment -->
 <p class="reference">다음을 참조함 :  <a class="el" href="NPCExaminer_8h_source.html#l00035">DynamicMaterial2</a>, <a class="el" href="NPCExaminer_8h_source.html#l00039">EyeColor</a>, <a class="el" href="NPCExaminer_8h_source.html#l00038">EyeColorName</a>.</p>
+
+</div>
+</div>
+<a id="ac2bc5a0f906889da8f27ed91a5dd012b" name="ac2bc5a0f906889da8f27ed91a5dd012b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac2bc5a0f906889da8f27ed91a5dd012b">&#9670;&#160;</a></span>GetCurrentQuestion()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">FString ANPCExaminer::GetCurrentQuestion </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>현재 질문 가져오기 </p>
+<dl class="section return"><dt>반환값</dt><dd>현재 단계의 질문 문자열 </dd></dl>
+
+<p class="definition"><a class="el" href="NPCExaminer_8cpp_source.html">NPCExaminer.cpp</a> 파일의 <a class="el" href="NPCExaminer_8cpp_source.html#l00089">89</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   90</span>{</div>
+<div class="line"><span class="lineno">   91</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classANPCExaminer.html#a2729c24ff650bf68108a31e98d7fa26e">SpeakStage</a>)</div>
+<div class="line"><span class="lineno">   92</span>    {</div>
+<div class="line"><span class="lineno">   93</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="classANPCExaminer.html#a2729c24ff650bf68108a31e98d7fa26e">SpeakStage</a>-&gt;GetCurrentQuestion();</div>
+<div class="line"><span class="lineno">   94</span>    }</div>
+<div class="line"><span class="lineno">   95</span> </div>
+<div class="line"><span class="lineno">   96</span>    <span class="keywordflow">return</span> TEXT(<span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><span class="lineno">   97</span>}</div>
+<div class="ttc" id="aclassANPCExaminer_html_a2729c24ff650bf68108a31e98d7fa26e"><div class="ttname"><a href="classANPCExaminer.html#a2729c24ff650bf68108a31e98d7fa26e">ANPCExaminer::SpeakStage</a></div><div class="ttdeci">TObjectPtr&lt; class ASpeakStageActor &gt; SpeakStage</div><div class="ttdoc">연결된 SpeakStage</div><div class="ttdef"><b>Definition</b> <a href="NPCExaminer_8h_source.html#l00070">NPCExaminer.h:70</a></div></div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="ASpeakStageActor_8cpp_source.html#l00167">ASpeakStageActor::GetCurrentQuestion()</a>, <a class="el" href="NPCExaminer_8h_source.html#l00070">SpeakStage</a>.</p>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classANPCExaminer_ac2bc5a0f906889da8f27ed91a5dd012b_cgraph.svg" width="479" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -355,22 +404,22 @@ Protected 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="NPCExaminer_8cpp_source.html">NPCExaminer.cpp</a> 파일의 <a class="el" href="NPCExaminer_8cpp_source.html#l00065">65</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   66</span>{</div>
-<div class="line"><span class="lineno">   67</span>    <a class="code hl_variable" href="classANPCExaminer.html#ae3fd0b0cc26aa31f172d4a275850f6bc">bIsPlayerNear</a> = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   68</span>    <a class="code hl_variable" href="classANPCExaminer.html#afd4e507514297633cb789783c6139194">DetectedPlayer</a> = Cast&lt;AOwlPlayer&gt;(OtherActor);</div>
-<div class="line"><span class="lineno">   69</span>}</div>
+<p class="definition"><a class="el" href="NPCExaminer_8cpp_source.html">NPCExaminer.cpp</a> 파일의 <a class="el" href="NPCExaminer_8cpp_source.html#l00067">67</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   68</span>{</div>
+<div class="line"><span class="lineno">   69</span>    <a class="code hl_variable" href="classANPCExaminer.html#ae3fd0b0cc26aa31f172d4a275850f6bc">bIsPlayerNear</a> = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   70</span>    <a class="code hl_variable" href="classANPCExaminer.html#afd4e507514297633cb789783c6139194">DetectedPlayer</a> = Cast&lt;AOwlPlayer&gt;(OtherActor);</div>
+<div class="line"><span class="lineno">   71</span>}</div>
 <div class="ttc" id="aclassANPCExaminer_html_ae3fd0b0cc26aa31f172d4a275850f6bc"><div class="ttname"><a href="classANPCExaminer.html#ae3fd0b0cc26aa31f172d4a275850f6bc">ANPCExaminer::bIsPlayerNear</a></div><div class="ttdeci">bool bIsPlayerNear</div><div class="ttdef"><b>Definition</b> <a href="NPCExaminer_8h_source.html#l00050">NPCExaminer.h:50</a></div></div>
 <div class="ttc" id="aclassANPCExaminer_html_afd4e507514297633cb789783c6139194"><div class="ttname"><a href="classANPCExaminer.html#afd4e507514297633cb789783c6139194">ANPCExaminer::DetectedPlayer</a></div><div class="ttdeci">TObjectPtr&lt; class AOwlPlayer &gt; DetectedPlayer</div><div class="ttdef"><b>Definition</b> <a href="NPCExaminer_8h_source.html#l00047">NPCExaminer.h:47</a></div></div>
 </div><!-- fragment -->
 <p class="reference">다음을 참조함 :  <a class="el" href="NPCExaminer_8h_source.html#l00050">bIsPlayerNear</a>, <a class="el" href="NPCExaminer_8h_source.html#l00047">DetectedPlayer</a>.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="NPCExaminer_8cpp_source.html#l00029">BeginPlay()</a>.</p>
-<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
-<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="NPCExaminer_8cpp_source.html#l00031">BeginPlay()</a>.</p>
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
 <div class="center"><iframe scrolling="no" frameborder="0" src="classANPCExaminer_ab83f72d9418c555a1080c9b9c36fce01_icgraph.svg" width="480" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
@@ -422,22 +471,57 @@ Protected 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="NPCExaminer_8cpp_source.html">NPCExaminer.cpp</a> 파일의 <a class="el" href="NPCExaminer_8cpp_source.html#l00071">71</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   72</span>{</div>
-<div class="line"><span class="lineno">   73</span>    <a class="code hl_variable" href="classANPCExaminer.html#ae3fd0b0cc26aa31f172d4a275850f6bc">bIsPlayerNear</a> = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   74</span>    <a class="code hl_variable" href="classANPCExaminer.html#afd4e507514297633cb789783c6139194">DetectedPlayer</a> = <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">   75</span>}</div>
+<p class="definition"><a class="el" href="NPCExaminer_8cpp_source.html">NPCExaminer.cpp</a> 파일의 <a class="el" href="NPCExaminer_8cpp_source.html#l00073">73</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   74</span>{</div>
+<div class="line"><span class="lineno">   75</span>    <a class="code hl_variable" href="classANPCExaminer.html#ae3fd0b0cc26aa31f172d4a275850f6bc">bIsPlayerNear</a> = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   76</span>    <a class="code hl_variable" href="classANPCExaminer.html#afd4e507514297633cb789783c6139194">DetectedPlayer</a> = <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">   77</span>}</div>
 </div><!-- fragment -->
 <p class="reference">다음을 참조함 :  <a class="el" href="NPCExaminer_8h_source.html#l00050">bIsPlayerNear</a>, <a class="el" href="NPCExaminer_8h_source.html#l00047">DetectedPlayer</a>.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="NPCExaminer_8cpp_source.html#l00029">BeginPlay()</a>.</p>
-<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
-<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="NPCExaminer_8cpp_source.html#l00031">BeginPlay()</a>.</p>
+<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div id="dynsection-5-content" class="dyncontent" style="display:none;">
 <div class="center"><iframe scrolling="no" frameborder="0" src="classANPCExaminer_a552038e3bf0f80ea45563b622c18f43c_icgraph.svg" width="467" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
+
+</div>
+</div>
+<a id="aa3ccb2705c73248fc0659e713d95486f" name="aa3ccb2705c73248fc0659e713d95486f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa3ccb2705c73248fc0659e713d95486f">&#9670;&#160;</a></span>SetSpeakStage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ANPCExaminer::SetSpeakStage </td>
+          <td>(</td>
+          <td class="paramtype">class <a class="el" href="classASpeakStageActor.html">ASpeakStageActor</a> *&#160;</td>
+          <td class="paramname"><em>InSpeakStage</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>SpeakStage 설정 (GameMode에서 호출) </p>
+<dl class="params"><dt>매개변수</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">InSpeakStage</td><td>연결할 SpeakStageActor </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition"><a class="el" href="NPCExaminer_8cpp_source.html">NPCExaminer.cpp</a> 파일의 <a class="el" href="NPCExaminer_8cpp_source.html#l00083">83</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   84</span>{</div>
+<div class="line"><span class="lineno">   85</span>    <a class="code hl_variable" href="classANPCExaminer.html#a2729c24ff650bf68108a31e98d7fa26e">SpeakStage</a> = InSpeakStage;</div>
+<div class="line"><span class="lineno">   86</span>    <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[NPCExaminer] SpeakStage Connected: %s&quot;</span>), <a class="code hl_variable" href="classANPCExaminer.html#a2729c24ff650bf68108a31e98d7fa26e">SpeakStage</a> ? TEXT(<span class="stringliteral">&quot;Success&quot;</span>) : TEXT(<span class="stringliteral">&quot;Failed&quot;</span>));</div>
+<div class="line"><span class="lineno">   87</span>}</div>
+<div class="ttc" id="aGameLogging_8h_html_a9998c8beb11a6bad6ffada2e701fc0cf"><div class="ttname"><a href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a></div><div class="ttdeci">#define PRINTLOG(fmt,...)</div><div class="ttdef"><b>Definition</b> <a href="GameLogging_8h_source.html#l00030">GameLogging.h:30</a></div></div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>, <a class="el" href="NPCExaminer_8h_source.html#l00070">SpeakStage</a>.</p>
 
 </div>
 </div>
@@ -467,10 +551,10 @@ Protected 속성</h2></td></tr>
 
 <p><a class="el" href="classANPCBase.html#a4355422ed7ef00077ac860858d37957e">ANPCBase</a>(으)로부터 재구현되었습니다.</p>
 
-<p class="definition"><a class="el" href="NPCExaminer_8cpp_source.html">NPCExaminer.cpp</a> 파일의 <a class="el" href="NPCExaminer_8cpp_source.html#l00049">49</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   50</span>{</div>
-<div class="line"><span class="lineno">   51</span>    Super::SetupPlayerInputComponent(PlayerInputComponent);</div>
-<div class="line"><span class="lineno">   52</span>}</div>
+<p class="definition"><a class="el" href="NPCExaminer_8cpp_source.html">NPCExaminer.cpp</a> 파일의 <a class="el" href="NPCExaminer_8cpp_source.html#l00051">51</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   52</span>{</div>
+<div class="line"><span class="lineno">   53</span>    Super::SetupPlayerInputComponent(PlayerInputComponent);</div>
+<div class="line"><span class="lineno">   54</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -500,10 +584,10 @@ Protected 속성</h2></td></tr>
 
 <p><a class="el" href="classANPCBase.html#ad543f58db89f40e8ca8e7f87c3b81c8c">ANPCBase</a>(으)로부터 재구현되었습니다.</p>
 
-<p class="definition"><a class="el" href="NPCExaminer_8cpp_source.html">NPCExaminer.cpp</a> 파일의 <a class="el" href="NPCExaminer_8cpp_source.html#l00043">43</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   44</span>{</div>
-<div class="line"><span class="lineno">   45</span>    Super::Tick(DeltaTime);</div>
-<div class="line"><span class="lineno">   46</span>}</div>
+<p class="definition"><a class="el" href="NPCExaminer_8cpp_source.html">NPCExaminer.cpp</a> 파일의 <a class="el" href="NPCExaminer_8cpp_source.html#l00045">45</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   46</span>{</div>
+<div class="line"><span class="lineno">   47</span>    Super::Tick(DeltaTime);</div>
+<div class="line"><span class="lineno">   48</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -530,7 +614,7 @@ Protected 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="NPCExaminer_8h_source.html">NPCExaminer.h</a> 파일의 <a class="el" href="NPCExaminer_8h_source.html#l00050">50</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="NPCExaminer_8cpp_source.html#l00065">OnSphereBeginOverlap()</a>, <a class="el" href="NPCExaminer_8cpp_source.html#l00071">OnSphereEndOverlap()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="NPCExaminer_8cpp_source.html#l00067">OnSphereBeginOverlap()</a>, <a class="el" href="NPCExaminer_8cpp_source.html#l00073">OnSphereEndOverlap()</a>.</p>
 
 </div>
 </div>
@@ -556,7 +640,7 @@ Protected 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="NPCExaminer_8h_source.html">NPCExaminer.h</a> 파일의 <a class="el" href="NPCExaminer_8h_source.html#l00047">47</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="NPCExaminer_8cpp_source.html#l00065">OnSphereBeginOverlap()</a>, <a class="el" href="NPCExaminer_8cpp_source.html#l00071">OnSphereEndOverlap()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="NPCExaminer_8cpp_source.html#l00067">OnSphereBeginOverlap()</a>, <a class="el" href="NPCExaminer_8cpp_source.html#l00073">OnSphereEndOverlap()</a>.</p>
 
 </div>
 </div>
@@ -582,7 +666,7 @@ Protected 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="NPCExaminer_8h_source.html">NPCExaminer.h</a> 파일의 <a class="el" href="NPCExaminer_8h_source.html#l00035">35</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="NPCExaminer_8cpp_source.html#l00029">BeginPlay()</a>, <a class="el" href="NPCExaminer_8cpp_source.html#l00054">ChangeEyeColor()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="NPCExaminer_8cpp_source.html#l00031">BeginPlay()</a>, <a class="el" href="NPCExaminer_8cpp_source.html#l00056">ChangeEyeColor()</a>.</p>
 
 </div>
 </div>
@@ -608,7 +692,7 @@ Protected 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="NPCExaminer_8h_source.html">NPCExaminer.h</a> 파일의 <a class="el" href="NPCExaminer_8h_source.html#l00039">39</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="NPCExaminer_8cpp_source.html#l00054">ChangeEyeColor()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="NPCExaminer_8cpp_source.html#l00056">ChangeEyeColor()</a>.</p>
 
 </div>
 </div>
@@ -634,7 +718,7 @@ Protected 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="NPCExaminer_8h_source.html">NPCExaminer.h</a> 파일의 <a class="el" href="NPCExaminer_8h_source.html#l00038">38</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="NPCExaminer_8cpp_source.html#l00054">ChangeEyeColor()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="NPCExaminer_8cpp_source.html#l00056">ChangeEyeColor()</a>.</p>
 
 </div>
 </div>
@@ -660,7 +744,7 @@ Protected 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="NPCExaminer_8h_source.html">NPCExaminer.h</a> 파일의 <a class="el" href="NPCExaminer_8h_source.html#l00032">32</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="NPCExaminer_8cpp_source.html#l00012">ANPCExaminer()</a>, <a class="el" href="NPCExaminer_8cpp_source.html#l00029">BeginPlay()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="NPCExaminer_8cpp_source.html#l00014">ANPCExaminer()</a>, <a class="el" href="NPCExaminer_8cpp_source.html#l00031">BeginPlay()</a>.</p>
 
 </div>
 </div>
@@ -686,7 +770,35 @@ Protected 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="NPCExaminer_8h_source.html">NPCExaminer.h</a> 파일의 <a class="el" href="NPCExaminer_8h_source.html#l00054">54</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="NPCExaminer_8cpp_source.html#l00012">ANPCExaminer()</a>, <a class="el" href="NPCExaminer_8cpp_source.html#l00029">BeginPlay()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="NPCExaminer_8cpp_source.html#l00014">ANPCExaminer()</a>, <a class="el" href="NPCExaminer_8cpp_source.html#l00031">BeginPlay()</a>.</p>
+
+</div>
+</div>
+<a id="a2729c24ff650bf68108a31e98d7fa26e" name="a2729c24ff650bf68108a31e98d7fa26e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2729c24ff650bf68108a31e98d7fa26e">&#9670;&#160;</a></span>SpeakStage</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">TObjectPtr&lt;class <a class="el" href="classASpeakStageActor.html">ASpeakStageActor</a>&gt; ANPCExaminer::SpeakStage</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>연결된 SpeakStage </p>
+
+<p class="definition"><a class="el" href="NPCExaminer_8h_source.html">NPCExaminer.h</a> 파일의 <a class="el" href="NPCExaminer_8h_source.html#l00070">70</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="NPCExaminer_8cpp_source.html#l00089">GetCurrentQuestion()</a>, <a class="el" href="NPCExaminer_8cpp_source.html#l00083">SetSpeakStage()</a>.</p>
 
 </div>
 </div>
@@ -700,7 +812,7 @@ Protected 속성</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classANPCExaminer.html">ANPCExaminer</a></li>
-    <li class="footer">생성시간 : 화 12월 2 2025 13:15:51, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 수 12월 3 2025 08:45:29, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

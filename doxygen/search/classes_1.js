@@ -42,7 +42,7 @@ var searchData=
   ['fresponselistenaudio_39',['FResponseListenAudio',['../structFResponseListenAudio.html',1,'']]],
   ['fresponseocrextract_40',['FResponseOcrExtract',['../structFResponseOcrExtract.html',1,'']]],
   ['fresponsescenario_41',['FResponseScenario',['../structFResponseScenario.html',1,'']]],
-  ['fresponsespeakingquestions_42',['FResponseSpeakingQuestions',['../structFResponseSpeakingQuestions.html',1,'']]],
+  ['fresponsespeakingjudes_42',['FResponseSpeakingJudes',['../structFResponseSpeakingJudes.html',1,'']]],
   ['fresponseuserhost_43',['FResponseUserHost',['../structFResponseUserHost.html',1,'']]],
   ['fresponseuserme_44',['FResponseUserMe',['../structFResponseUserMe.html',1,'']]],
   ['fresponseuserregister_45',['FResponseUserRegister',['../structFResponseUserRegister.html',1,'']]],

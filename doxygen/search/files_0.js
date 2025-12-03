@@ -36,6 +36,8 @@ var searchData=
   ['aplayercontrol_2eh_33',['APlayerControl.h',['../APlayerControl_8h.html',1,'']]],
   ['apopuptesteractor_2ecpp_34',['APopupTesterActor.cpp',['../APopupTesterActor_8cpp.html',1,'']]],
   ['apopuptesteractor_2eh_35',['APopupTesterActor.h',['../APopupTesterActor_8h.html',1,'']]],
-  ['aweightswitch_2ecpp_36',['AWeightSwitch.cpp',['../AWeightSwitch_8cpp.html',1,'']]],
-  ['aweightswitch_2eh_37',['AWeightSwitch.h',['../AWeightSwitch_8h.html',1,'']]]
+  ['aspeakstageactor_2ecpp_36',['ASpeakStageActor.cpp',['../ASpeakStageActor_8cpp.html',1,'']]],
+  ['aspeakstageactor_2eh_37',['ASpeakStageActor.h',['../ASpeakStageActor_8h.html',1,'']]],
+  ['aweightswitch_2ecpp_38',['AWeightSwitch.cpp',['../AWeightSwitch_8cpp.html',1,'']]],
+  ['aweightswitch_2eh_39',['AWeightSwitch.h',['../AWeightSwitch_8h.html',1,'']]]
 ];

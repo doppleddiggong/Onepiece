@@ -1,11 +1,11 @@
 var searchData=
 [
-  ['implement_5fmodule_0',['implement_module',['../LatteLibrary_8cpp.html#a361b8ee459dfb6cbe4ef3b0c7224bd55',1,'IMPLEMENT_MODULE(FDefaultGameModuleImpl, LatteLibrary):&#160;LatteLibrary.cpp'],['../CoffeeLibrary_8cpp.html#a54bada98a7d9e6d305e7db13e9aa71f1',1,'IMPLEMENT_MODULE(FDefaultGameModuleImpl, CoffeeLibrary):&#160;CoffeeLibrary.cpp']]],
+  ['implement_5fmodule_0',['implement_module',['../CoffeeLibrary_8cpp.html#a54bada98a7d9e6d305e7db13e9aa71f1',1,'IMPLEMENT_MODULE(FDefaultGameModuleImpl, CoffeeLibrary):&#160;CoffeeLibrary.cpp'],['../LatteLibrary_8cpp.html#a361b8ee459dfb6cbe4ef3b0c7224bd55',1,'IMPLEMENT_MODULE(FDefaultGameModuleImpl, LatteLibrary):&#160;LatteLibrary.cpp']]],
   ['implement_5fprimary_5fgame_5fmodule_1',['IMPLEMENT_PRIMARY_GAME_MODULE',['../Onepiece_8cpp.html#a531befeb3a5099001b2f2c1a377f3485',1,'Onepiece.cpp']]],
   ['inbounds_2',['InBounds',['../classUCommonFunctionLibrary.html#a4f7f78dd3de3b1879464ef4e54679198',1,'UCommonFunctionLibrary']]],
   ['init_3',['Init',['../classULingoGameInstance.html#a9319d9cef4c0be3f17e125996aafcd44',1,'ULingoGameInstance']]],
   ['initbutton_4',['InitButton',['../classUPopup__MsgBox.html#a4f081932bffe9839028764dc44567234',1,'UPopup_MsgBox']]],
-  ['initialize_5',['initialize',['../classUDelayTaskManager.html#afead6ae41bebb72cd3a90cd86fd9eeda',1,'UDelayTaskManager::Initialize()'],['../classUGameDataManager.html#a013d5de56f83c3409ea138d830ac50fc',1,'UGameDataManager::Initialize()'],['../classUGameSoundManager.html#a2ca17df93035004f10b6169e92394ba9',1,'UGameSoundManager::Initialize()'],['../classUGameVFXManager.html#a82ec4762316fce080ebf78579154ef30',1,'UGameVFXManager::Initialize()'],['../classUObjectPoolManager.html#af2760bfdb559d0415a380ceca5c2138a',1,'UObjectPoolManager::Initialize()'],['../classUKLingoNetworkSystem.html#ac473610dfbbe9da74f08a1b3e6ec3dc3',1,'UKLingoNetworkSystem::Initialize()'],['../classUWebSocketSystem.html#a9f617003be09a61050c68e06e258844c',1,'UWebSocketSystem::Initialize()'],['../classULoadingCircleManager.html#a53a46b2ee3258e0d95915bbd00f72127',1,'ULoadingCircleManager::Initialize()'],['../classUVoiceCacheManager.html#a243fc6ce6e9ca4d343c526f4087c0adf',1,'UVoiceCacheManager::Initialize()']]],
+  ['initialize_5',['initialize',['../classUGameSoundManager.html#a2ca17df93035004f10b6169e92394ba9',1,'UGameSoundManager::Initialize()'],['../classUGameVFXManager.html#a82ec4762316fce080ebf78579154ef30',1,'UGameVFXManager::Initialize()'],['../classUObjectPoolManager.html#af2760bfdb559d0415a380ceca5c2138a',1,'UObjectPoolManager::Initialize()'],['../classUSpeakStageSubsystem.html#ae3987ff82a95deeadfb781750029dac5',1,'USpeakStageSubsystem::Initialize()'],['../classUKLingoNetworkSystem.html#ac473610dfbbe9da74f08a1b3e6ec3dc3',1,'UKLingoNetworkSystem::Initialize()'],['../classUWebSocketSystem.html#a9f617003be09a61050c68e06e258844c',1,'UWebSocketSystem::Initialize()'],['../classULoadingCircleManager.html#a53a46b2ee3258e0d95915bbd00f72127',1,'ULoadingCircleManager::Initialize()'],['../classUVoiceCacheManager.html#a243fc6ce6e9ca4d343c526f4087c0adf',1,'UVoiceCacheManager::Initialize()'],['../classUGameDataManager.html#a013d5de56f83c3409ea138d830ac50fc',1,'UGameDataManager::Initialize()'],['../classUDelayTaskManager.html#afead6ae41bebb72cd3a90cd86fd9eeda',1,'UDelayTaskManager::Initialize()']]],
   ['initializelogfile_6',['InitializeLogFile',['../NetworkLog_8cpp.html#a79b2901d36546976064c9ddc5cd3d190',1,'NetworkLog.cpp']]],
   ['initializewordbutton_7',['InitializeWordButton',['../classUWordButton.html#a811e29ce35dcffd16629882543fd350b',1,'UWordButton']]],
   ['initinfo_8',['InitInfo',['../classUInteractWidget.html#ac581ddd8a70217da61d211206ea1aec7',1,'UInteractWidget']]],
@@ -20,10 +20,11 @@ var searchData=
   ['interviewpopup_17',['InterviewPopup',['../classAPopupTesterActor.html#a4d162bd274c2f1bc89a1f01530682672',1,'APopupTesterActor']]],
   ['isconnected_18',['IsConnected',['../classUWebSocketSystem.html#a89bbc98f683cca370ea2e91fbd36ca7b',1,'UWebSocketSystem']]],
   ['isconversationvoiceplaying_19',['IsConversationVoicePlaying',['../classUGameSoundManager.html#aa9bad4fe4971faa5fad6a47afaf7255d',1,'UGameSoundManager']]],
-  ['ismultiplay_20',['IsMultiPlay',['../classULingoGameHelper.html#aaffb56063f7fe4916e89d589c02ee8cb',1,'ULingoGameHelper']]],
-  ['isplayeractor_21',['IsPlayerActor',['../classAGate.html#a0aac26a835f62650db64de1cb0e691f2',1,'AGate']]],
-  ['ispopupinstack_22',['IsPopupInStack',['../classUPopupManager.html#a80d7a93868caf4c572c3cae990633094',1,'UPopupManager']]],
-  ['isquesting_23',['IsQuestIng',['../classALingoGameState.html#a25cf744e909d85bfdda297d0ab5e404e',1,'ALingoGameState']]],
-  ['isressuccess_24',['IsResSuccess',['../classUKLingoNetworkSystem.html#acf7d7ff1c064c3f86698a1fe131c8f00',1,'UKLingoNetworkSystem']]],
-  ['isvalid_25',['IsValid',['../structFDelayHandle.html#a65b5c7cb5e60128f014d7b80122c2a36',1,'FDelayHandle']]]
+  ['isinitialized_20',['IsInitialized',['../classUSpeakStageSubsystem.html#a2169733e5e72631d8efaf91097ef9845',1,'USpeakStageSubsystem']]],
+  ['ismultiplay_21',['IsMultiPlay',['../classULingoGameHelper.html#aaffb56063f7fe4916e89d589c02ee8cb',1,'ULingoGameHelper']]],
+  ['isplayeractor_22',['IsPlayerActor',['../classAGate.html#a0aac26a835f62650db64de1cb0e691f2',1,'AGate']]],
+  ['ispopupinstack_23',['IsPopupInStack',['../classUPopupManager.html#a80d7a93868caf4c572c3cae990633094',1,'UPopupManager']]],
+  ['isquesting_24',['IsQuestIng',['../classALingoGameState.html#a25cf744e909d85bfdda297d0ab5e404e',1,'ALingoGameState']]],
+  ['isressuccess_25',['IsResSuccess',['../classUKLingoNetworkSystem.html#acf7d7ff1c064c3f86698a1fe131c8f00',1,'UKLingoNetworkSystem']]],
+  ['isvalid_26',['IsValid',['../structFDelayHandle.html#a65b5c7cb5e60128f014d7b80122c2a36',1,'FDelayHandle']]]
 ];

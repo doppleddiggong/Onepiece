@@ -15,6 +15,7 @@ var hierarchy =
       [ "APedestalSwitch", "classAPedestalSwitch.html", null ],
       [ "APopupTesterActor", "classAPopupTesterActor.html", null ],
       [ "AQuestionnaireKiosk", "classAQuestionnaireKiosk.html", null ],
+      [ "ASpeakStageActor", "classASpeakStageActor.html", null ],
       [ "AWeightSwitch", "classAWeightSwitch.html", null ],
       [ "Aluggage", "classAluggage.html", null ]
     ] ],
@@ -75,7 +76,7 @@ var hierarchy =
     [ "FResponseListenAudio", "structFResponseListenAudio.html", null ],
     [ "FResponseOcrExtract", "structFResponseOcrExtract.html", null ],
     [ "FResponseScenario", "structFResponseScenario.html", null ],
-    [ "FResponseSpeakingQuestions", "structFResponseSpeakingQuestions.html", null ],
+    [ "FResponseSpeakingJudes", "structFResponseSpeakingJudes.html", null ],
     [ "FResponseUserHost", "structFResponseUserHost.html", null ],
     [ "FResponseUserMe", "structFResponseUserMe.html", null ],
     [ "FResponseUserRegister", "structFResponseUserRegister.html", null ],
@@ -181,10 +182,14 @@ var hierarchy =
       [ "UQuestInfoWidget", "classUQuestInfoWidget.html", null ],
       [ "URichText", "classURichText.html", null ],
       [ "USessionInfoWidget", "classUSessionInfoWidget.html", null ],
+      [ "USpeakWidget", "classUSpeakWidget.html", null ],
       [ "UStartWidget", "classUStartWidget.html", null ],
       [ "UStateWidget", "classUStateWidget.html", null ],
       [ "UTextureButton", "classUTextureButton.html", null ],
       [ "UWordButton", "classUWordButton.html", null ],
       [ "UWordWidget", "classUWordWidget.html", null ]
+    ] ],
+    [ "UWorldSubsystem", null, [
+      [ "USpeakStageSubsystem", "classUSpeakStageSubsystem.html", null ]
     ] ]
 ];

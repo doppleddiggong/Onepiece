@@ -14,6 +14,7 @@ var dir_550f083bbe519bd985f450628c1369b6 =
     [ "UMainWidget.cpp", "UMainWidget_8cpp.html", "UMainWidget_8cpp" ],
     [ "UPlayTimer.cpp", "UPlayTimer_8cpp.html", null ],
     [ "UQuestInfoWidget.cpp", "UQuestInfoWidget_8cpp.html", null ],
+    [ "USpeakWidget.cpp", "USpeakWidget_8cpp.html", null ],
     [ "UStateWidget.cpp", "UStateWidget_8cpp.html", null ],
     [ "UWordButton.cpp", "UWordButton_8cpp.html", null ],
     [ "UWordWidget.cpp", "UWordWidget_8cpp.html", null ]

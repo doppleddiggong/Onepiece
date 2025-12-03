@@ -39,6 +39,7 @@ var searchData=
   ['hoverbuttoncolor_36',['hoverbuttoncolor',['../classUImageButton.html#a856c872043187ec7e70f27b2b04ee359',1,'UImageButton::HoverButtonColor'],['../classUHoverButton.html#aa1613f8687681535f17ab6cf8b5f4345',1,'UHoverButton::HoverButtonColor']]],
   ['hoversymbolcolor_37',['HoverSymbolColor',['../classUTextureButton.html#a65849b0128ebc14a265be347db225746',1,'UTextureButton']]],
   ['hovertextcolor_38',['hovertextcolor',['../classUHoverButton.html#a207ba0caf0e2abd24084eedf69c45205',1,'UHoverButton::HoverTextColor'],['../classUImageButton.html#ae2ee07b318c9f2e011d67b3f680ce1b2',1,'UImageButton::HoverTextColor']]],
-  ['hp_39',['HP',['../structFCharacterInfoData.html#aaa15d7a56092cd0d73ea3a7274d92368',1,'FCharacterInfoData']]],
-  ['huge_40',['Huge',['../EDamageType_8h.html#ab5bf7dde87ef933ba244eba8c39e7e9baa2ad65f28a717b0fd2be860a0d8e5c3e',1,'EDamageType.h']]]
+  ['how_5flong_5fwill_5fyou_5fstay_39',['How_long_will_you_stay',['../EGameSoundType_8h.html#af4a7536fe94049720d6e9d21c1b2ec80a3f0df3a7b3fc629430d3367d068f5f25',1,'EGameSoundType.h']]],
+  ['hp_40',['HP',['../structFCharacterInfoData.html#aaa15d7a56092cd0d73ea3a7274d92368',1,'FCharacterInfoData']]],
+  ['huge_41',['Huge',['../EDamageType_8h.html#ab5bf7dde87ef933ba244eba8c39e7e9baa2ad65f28a717b0fd2be860a0d8e5c3e',1,'EDamageType.h']]]
 ];

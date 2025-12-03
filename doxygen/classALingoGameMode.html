@@ -114,14 +114,14 @@ $(document).ready(function(){initNavTree('classALingoGameMode.html',''); initRes
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classALingoGameMode__inherit__graph.svg" width="200" height="310"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classALingoGameMode__inherit__graph.svg" width="200" height="330"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="closed.png" alt="+"/> ALingoGameMode에 대한 협력 다이어그램:</div>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classALingoGameMode__coll__graph.svg" width="200" height="310"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classALingoGameMode__coll__graph.svg" width="200" height="330"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -133,6 +133,9 @@ Public 멤버 함수</h2></td></tr>
 <tr class="memitem:a2d78db01b89121ee86364bf434db1fbf" id="r_a2d78db01b89121ee86364bf434db1fbf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classALingoGameMode.html#a2d78db01b89121ee86364bf434db1fbf">BeginReadQuest</a> (int32 InStageIndex, const <a class="el" href="structFResponseScenario.html">FResponseScenario</a> &amp;InResponseData)</td></tr>
 <tr class="memdesc:a2d78db01b89121ee86364bf434db1fbf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read 퀘스트를 시작하고 역할과 데이터를 모두 설정합니다 (서버에서만 호출)  <br /></td></tr>
 <tr class="separator:a2d78db01b89121ee86364bf434db1fbf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b56ab603ed4f346060e5921bc5426cf" id="r_a8b56ab603ed4f346060e5921bc5426cf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classALingoGameMode.html#a8b56ab603ed4f346060e5921bc5426cf">BeginSpeakQuest</a> (int32 InStageIndex)</td></tr>
+<tr class="memdesc:a8b56ab603ed4f346060e5921bc5426cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Speak 퀘스트 시작 (서버에서만 호출)  <br /></td></tr>
+<tr class="separator:a8b56ab603ed4f346060e5921bc5426cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2dc692a142db2a84bf18f18e1602c078" id="r_a2dc692a142db2a84bf18f18e1602c078"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classALingoGameMode.html#a2dc692a142db2a84bf18f18e1602c078">HandleCarrierSelection</a> (class APlayerState *Player, class <a class="el" href="classAluggage.html">Aluggage</a> *Carrier)</td></tr>
 <tr class="memdesc:a2dc692a142db2a84bf18f18e1602c078"><td class="mdescLeft">&#160;</td><td class="mdescRight">캐리어 선택을 처리합니다 (서버에서만 호출)  <br /></td></tr>
 <tr class="separator:a2dc692a142db2a84bf18f18e1602c078"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -165,15 +168,15 @@ Public 멤버 함수</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ALingoGameMode_8cpp_source.html">ALingoGameMode.cpp</a> 파일의 <a class="el" href="ALingoGameMode_8cpp_source.html#l00017">17</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   18</span>{</div>
-<div class="line"><span class="lineno">   19</span>    <span class="comment">// GameState와 PlayerState 클래스 설정</span></div>
-<div class="line"><span class="lineno">   20</span>    GameStateClass = ALingoGameState::StaticClass();</div>
-<div class="line"><span class="lineno">   21</span>    PlayerStateClass = ALingoPlayerState::StaticClass();</div>
-<div class="line"><span class="lineno">   22</span> </div>
-<div class="line"><span class="lineno">   23</span>    <span class="comment">// Tick 비활성화 (Timer 기반으로 동작)</span></div>
-<div class="line"><span class="lineno">   24</span>    PrimaryActorTick.bCanEverTick = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   25</span>}</div>
+<p class="definition"><a class="el" href="ALingoGameMode_8cpp_source.html">ALingoGameMode.cpp</a> 파일의 <a class="el" href="ALingoGameMode_8cpp_source.html#l00020">20</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   21</span>{</div>
+<div class="line"><span class="lineno">   22</span>    <span class="comment">// GameState와 PlayerState 클래스 설정</span></div>
+<div class="line"><span class="lineno">   23</span>    GameStateClass = ALingoGameState::StaticClass();</div>
+<div class="line"><span class="lineno">   24</span>    PlayerStateClass = ALingoPlayerState::StaticClass();</div>
+<div class="line"><span class="lineno">   25</span> </div>
+<div class="line"><span class="lineno">   26</span>    <span class="comment">// Tick 비활성화 (Timer 기반으로 동작)</span></div>
+<div class="line"><span class="lineno">   27</span>    PrimaryActorTick.bCanEverTick = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   28</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -204,18 +207,18 @@ Public 멤버 함수</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ALingoGameMode_8cpp_source.html">ALingoGameMode.cpp</a> 파일의 <a class="el" href="ALingoGameMode_8cpp_source.html#l00077">77</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   78</span>{</div>
-<div class="line"><span class="lineno">   79</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> GS = GetGameState&lt;ALingoGameState&gt;())</div>
-<div class="line"><span class="lineno">   80</span>    {</div>
-<div class="line"><span class="lineno">   81</span>        GS-&gt;SetStageData(InStageIndex, 1, InResponseData);</div>
-<div class="line"><span class="lineno">   82</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[GameMode] SetStageData called on GameState.&quot;</span>));</div>
-<div class="line"><span class="lineno">   83</span>    }</div>
-<div class="line"><span class="lineno">   84</span>    <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">   85</span>    {</div>
-<div class="line"><span class="lineno">   86</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[GameMode] BeginListenQuest - GameState is null&quot;</span>));</div>
-<div class="line"><span class="lineno">   87</span>    }</div>
-<div class="line"><span class="lineno">   88</span>}</div>
+<p class="definition"><a class="el" href="ALingoGameMode_8cpp_source.html">ALingoGameMode.cpp</a> 파일의 <a class="el" href="ALingoGameMode_8cpp_source.html#l00080">80</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   81</span>{</div>
+<div class="line"><span class="lineno">   82</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> GS = GetGameState&lt;ALingoGameState&gt;())</div>
+<div class="line"><span class="lineno">   83</span>    {</div>
+<div class="line"><span class="lineno">   84</span>        GS-&gt;SetStageData(InStageIndex, 1, InResponseData);</div>
+<div class="line"><span class="lineno">   85</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[GameMode] SetStageData called on GameState.&quot;</span>));</div>
+<div class="line"><span class="lineno">   86</span>    }</div>
+<div class="line"><span class="lineno">   87</span>    <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">   88</span>    {</div>
+<div class="line"><span class="lineno">   89</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[GameMode] BeginListenQuest - GameState is null&quot;</span>));</div>
+<div class="line"><span class="lineno">   90</span>    }</div>
+<div class="line"><span class="lineno">   91</span>}</div>
 <div class="ttc" id="aGameLogging_8h_html_a9998c8beb11a6bad6ffada2e701fc0cf"><div class="ttname"><a href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a></div><div class="ttdeci">#define PRINTLOG(fmt,...)</div><div class="ttdef"><b>Definition</b> <a href="GameLogging_8h_source.html#l00030">GameLogging.h:30</a></div></div>
 </div><!-- fragment -->
 <p class="reference">다음을 참조함 :  <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>.</p>
@@ -250,54 +253,54 @@ Public 멤버 함수</h2></td></tr>
 
 <p>Read 퀘스트를 시작하고 역할과 데이터를 모두 설정합니다 (서버에서만 호출) </p>
 
-<p class="definition"><a class="el" href="ALingoGameMode_8cpp_source.html">ALingoGameMode.cpp</a> 파일의 <a class="el" href="ALingoGameMode_8cpp_source.html#l00031">31</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   32</span>{</div>
-<div class="line"><span class="lineno">   33</span>    <span class="keywordflow">if</span> (!HasAuthority())</div>
-<div class="line"><span class="lineno">   34</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">   35</span> </div>
-<div class="line"><span class="lineno">   36</span>    <span class="comment">// --- 1. 역할 할당 로직 ---</span></div>
-<div class="line"><span class="lineno">   37</span>    <span class="keyword">auto</span> PSList = <a class="code hl_function" href="classULingoGameHelper.html#a98136c30beb0692693a40c7b97d0199e">ULingoGameHelper::GetLingoPlayerStateList</a>(GetWorld());</div>
-<div class="line"><span class="lineno">   38</span>    <span class="keyword">const</span> int32 PlayerCount = PSList.Num();</div>
-<div class="line"><span class="lineno">   39</span>    <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[GameMode] BeginReadQuest - Player count: %d&quot;</span>), PlayerCount);</div>
-<div class="line"><span class="lineno">   40</span> </div>
-<div class="line"><span class="lineno">   41</span>    <span class="keywordflow">if</span> (PlayerCount == 1)</div>
-<div class="line"><span class="lineno">   42</span>    {</div>
-<div class="line"><span class="lineno">   43</span>        <span class="comment">// 싱글 플레이: Both</span></div>
-<div class="line"><span class="lineno">   44</span>        <span class="keywordflow">if</span> (PSList.IsValidIndex(0))</div>
-<div class="line"><span class="lineno">   45</span>        {</div>
-<div class="line"><span class="lineno">   46</span>            PSList[0]-&gt;QuestRole = EQuestRole::Both;</div>
-<div class="line"><span class="lineno">   47</span>            <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[GameMode] Player 0 assigned role: Both&quot;</span>));</div>
-<div class="line"><span class="lineno">   48</span>        }</div>
-<div class="line"><span class="lineno">   49</span>    }</div>
-<div class="line"><span class="lineno">   50</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (PlayerCount &gt;= 2)</div>
-<div class="line"><span class="lineno">   51</span>    {</div>
-<div class="line"><span class="lineno">   52</span>        <span class="comment">// 멀티 플레이: OnlyQuestion1, OnlyQuestion2</span></div>
-<div class="line"><span class="lineno">   53</span>        <span class="keywordflow">if</span> (PSList.IsValidIndex(0))</div>
-<div class="line"><span class="lineno">   54</span>        {</div>
-<div class="line"><span class="lineno">   55</span>            PSList[0]-&gt;QuestRole = EQuestRole::OnlyQuestion1;</div>
-<div class="line"><span class="lineno">   56</span>            <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[GameMode] Player 0 assigned role: OnlyQuestion1&quot;</span>));</div>
-<div class="line"><span class="lineno">   57</span>        }</div>
-<div class="line"><span class="lineno">   58</span>        <span class="keywordflow">if</span> (PSList.IsValidIndex(1))</div>
-<div class="line"><span class="lineno">   59</span>        {</div>
-<div class="line"><span class="lineno">   60</span>            PSList[1]-&gt;QuestRole = EQuestRole::OnlyQuestion2;</div>
-<div class="line"><span class="lineno">   61</span>            <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[GameMode] Player 1 assigned role: OnlyQuestion2&quot;</span>));</div>
-<div class="line"><span class="lineno">   62</span>        }</div>
-<div class="line"><span class="lineno">   63</span>    }</div>
-<div class="line"><span class="lineno">   64</span> </div>
-<div class="line"><span class="lineno">   65</span>    <span class="comment">// --- 2. GameState에 데이터 설정 ---</span></div>
-<div class="line"><span class="lineno">   66</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> GS = GetGameState&lt;ALingoGameState&gt;())</div>
-<div class="line"><span class="lineno">   67</span>    {</div>
-<div class="line"><span class="lineno">   68</span>        GS-&gt;SetStageData(InStageIndex, 1, InResponseData);</div>
-<div class="line"><span class="lineno">   69</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[GameMode] SetStageData called on GameState.&quot;</span>));</div>
-<div class="line"><span class="lineno">   70</span>    }</div>
-<div class="line"><span class="lineno">   71</span>    <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">   72</span>    {</div>
-<div class="line"><span class="lineno">   73</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[GameMode] BeginReadQuest - GameState is null&quot;</span>));</div>
-<div class="line"><span class="lineno">   74</span>    }</div>
-<div class="line"><span class="lineno">   75</span>}</div>
-<div class="ttc" id="aclassULingoGameHelper_html_a98136c30beb0692693a40c7b97d0199e"><div class="ttname"><a href="classULingoGameHelper.html#a98136c30beb0692693a40c7b97d0199e">ULingoGameHelper::GetLingoPlayerStateList</a></div><div class="ttdeci">static TArray&lt; ALingoPlayerState * &gt; GetLingoPlayerStateList(const UObject *WorldContextObject)</div><div class="ttdef"><b>Definition</b> <a href="ULingoGameHelper_8cpp_source.html#l00052">ULingoGameHelper.cpp:52</a></div></div>
+<p class="definition"><a class="el" href="ALingoGameMode_8cpp_source.html">ALingoGameMode.cpp</a> 파일의 <a class="el" href="ALingoGameMode_8cpp_source.html#l00034">34</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   35</span>{</div>
+<div class="line"><span class="lineno">   36</span>    <span class="keywordflow">if</span> (!HasAuthority())</div>
+<div class="line"><span class="lineno">   37</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   38</span> </div>
+<div class="line"><span class="lineno">   39</span>    <span class="comment">// --- 1. 역할 할당 로직 ---</span></div>
+<div class="line"><span class="lineno">   40</span>    <span class="keyword">auto</span> PSList = <a class="code hl_function" href="classULingoGameHelper.html#a98136c30beb0692693a40c7b97d0199e">ULingoGameHelper::GetLingoPlayerStateList</a>(GetWorld());</div>
+<div class="line"><span class="lineno">   41</span>    <span class="keyword">const</span> int32 PlayerCount = PSList.Num();</div>
+<div class="line"><span class="lineno">   42</span>    <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[GameMode] BeginReadQuest - Player count: %d&quot;</span>), PlayerCount);</div>
+<div class="line"><span class="lineno">   43</span> </div>
+<div class="line"><span class="lineno">   44</span>    <span class="keywordflow">if</span> (PlayerCount == 1)</div>
+<div class="line"><span class="lineno">   45</span>    {</div>
+<div class="line"><span class="lineno">   46</span>        <span class="comment">// 싱글 플레이: Both</span></div>
+<div class="line"><span class="lineno">   47</span>        <span class="keywordflow">if</span> (PSList.IsValidIndex(0))</div>
+<div class="line"><span class="lineno">   48</span>        {</div>
+<div class="line"><span class="lineno">   49</span>            PSList[0]-&gt;QuestRole = EQuestRole::Both;</div>
+<div class="line"><span class="lineno">   50</span>            <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[GameMode] Player 0 assigned role: Both&quot;</span>));</div>
+<div class="line"><span class="lineno">   51</span>        }</div>
+<div class="line"><span class="lineno">   52</span>    }</div>
+<div class="line"><span class="lineno">   53</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (PlayerCount &gt;= 2)</div>
+<div class="line"><span class="lineno">   54</span>    {</div>
+<div class="line"><span class="lineno">   55</span>        <span class="comment">// 멀티 플레이: OnlyQuestion1, OnlyQuestion2</span></div>
+<div class="line"><span class="lineno">   56</span>        <span class="keywordflow">if</span> (PSList.IsValidIndex(0))</div>
+<div class="line"><span class="lineno">   57</span>        {</div>
+<div class="line"><span class="lineno">   58</span>            PSList[0]-&gt;QuestRole = EQuestRole::OnlyQuestion1;</div>
+<div class="line"><span class="lineno">   59</span>            <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[GameMode] Player 0 assigned role: OnlyQuestion1&quot;</span>));</div>
+<div class="line"><span class="lineno">   60</span>        }</div>
+<div class="line"><span class="lineno">   61</span>        <span class="keywordflow">if</span> (PSList.IsValidIndex(1))</div>
+<div class="line"><span class="lineno">   62</span>        {</div>
+<div class="line"><span class="lineno">   63</span>            PSList[1]-&gt;QuestRole = EQuestRole::OnlyQuestion2;</div>
+<div class="line"><span class="lineno">   64</span>            <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[GameMode] Player 1 assigned role: OnlyQuestion2&quot;</span>));</div>
+<div class="line"><span class="lineno">   65</span>        }</div>
+<div class="line"><span class="lineno">   66</span>    }</div>
+<div class="line"><span class="lineno">   67</span> </div>
+<div class="line"><span class="lineno">   68</span>    <span class="comment">// --- 2. GameState에 데이터 설정 ---</span></div>
+<div class="line"><span class="lineno">   69</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> GS = GetGameState&lt;ALingoGameState&gt;())</div>
+<div class="line"><span class="lineno">   70</span>    {</div>
+<div class="line"><span class="lineno">   71</span>        GS-&gt;SetStageData(InStageIndex, 1, InResponseData);</div>
+<div class="line"><span class="lineno">   72</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[GameMode] SetStageData called on GameState.&quot;</span>));</div>
+<div class="line"><span class="lineno">   73</span>    }</div>
+<div class="line"><span class="lineno">   74</span>    <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">   75</span>    {</div>
+<div class="line"><span class="lineno">   76</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[GameMode] BeginReadQuest - GameState is null&quot;</span>));</div>
+<div class="line"><span class="lineno">   77</span>    }</div>
+<div class="line"><span class="lineno">   78</span>}</div>
+<div class="ttc" id="aclassULingoGameHelper_html_a98136c30beb0692693a40c7b97d0199e"><div class="ttname"><a href="classULingoGameHelper.html#a98136c30beb0692693a40c7b97d0199e">ULingoGameHelper::GetLingoPlayerStateList</a></div><div class="ttdeci">static TArray&lt; ALingoPlayerState * &gt; GetLingoPlayerStateList(const UObject *WorldContextObject)</div><div class="ttdef"><b>Definition</b> <a href="ULingoGameHelper_8cpp_source.html#l00053">ULingoGameHelper.cpp:53</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="ULingoGameHelper_8cpp_source.html#l00052">ULingoGameHelper::GetLingoPlayerStateList()</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="ULingoGameHelper_8cpp_source.html#l00053">ULingoGameHelper::GetLingoPlayerStateList()</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>.</p>
 <div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-2-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
@@ -305,6 +308,51 @@ Public 멤버 함수</h2></td></tr>
 <div id="dynsection-2-content" class="dyncontent" style="display:none;">
 <div class="center"><iframe scrolling="no" frameborder="0" src="classALingoGameMode_a2d78db01b89121ee86364bf434db1fbf_cgraph.svg" width="492" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
+
+</div>
+</div>
+<a id="a8b56ab603ed4f346060e5921bc5426cf" name="a8b56ab603ed4f346060e5921bc5426cf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b56ab603ed4f346060e5921bc5426cf">&#9670;&#160;</a></span>BeginSpeakQuest()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ALingoGameMode::BeginSpeakQuest </td>
+          <td>(</td>
+          <td class="paramtype">int32&#160;</td>
+          <td class="paramname"><em>InStageIndex</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Speak 퀘스트 시작 (서버에서만 호출) </p>
+<dl class="params"><dt>매개변수</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">InStageIndex</td><td>스테이지 인덱스 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition"><a class="el" href="ALingoGameMode_8cpp_source.html">ALingoGameMode.cpp</a> 파일의 <a class="el" href="ALingoGameMode_8cpp_source.html#l00097">97</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   98</span>{</div>
+<div class="line"><span class="lineno">   99</span>    <span class="keywordflow">if</span> (!HasAuthority())</div>
+<div class="line"><span class="lineno">  100</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  101</span> </div>
+<div class="line"><span class="lineno">  102</span>    <span class="comment">// Subsystem에 위임</span></div>
+<div class="line"><span class="lineno">  103</span>    <span class="keywordflow">if</span> (<a class="code hl_class" href="classUSpeakStageSubsystem.html">USpeakStageSubsystem</a>* Subsystem = GetWorld()-&gt;GetSubsystem&lt;USpeakStageSubsystem&gt;())</div>
+<div class="line"><span class="lineno">  104</span>    {</div>
+<div class="line"><span class="lineno">  105</span>        Subsystem-&gt;BeginSpeakQuest(InStageIndex);</div>
+<div class="line"><span class="lineno">  106</span>    }</div>
+<div class="line"><span class="lineno">  107</span>    <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  108</span>    {</div>
+<div class="line"><span class="lineno">  109</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[LingoGameMode] BeginSpeakQuest - SpeakStageSubsystem not found&quot;</span>));</div>
+<div class="line"><span class="lineno">  110</span>    }</div>
+<div class="line"><span class="lineno">  111</span>}</div>
+<div class="ttc" id="aclassUSpeakStageSubsystem_html"><div class="ttname"><a href="classUSpeakStageSubsystem.html">USpeakStageSubsystem</a></div><div class="ttdoc">Speak Stage 시스템 관리 Subsystem</div><div class="ttdef"><b>Definition</b> <a href="USpeakStageSubsystem_8h_source.html#l00019">USpeakStageSubsystem.h:20</a></div></div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>.</p>
 
 </div>
 </div>
@@ -336,48 +384,48 @@ Public 멤버 함수</h2></td></tr>
 
 <p>캐리어 선택을 처리합니다 (서버에서만 호출) </p>
 
-<p class="definition"><a class="el" href="ALingoGameMode_8cpp_source.html">ALingoGameMode.cpp</a> 파일의 <a class="el" href="ALingoGameMode_8cpp_source.html#l00090">90</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   91</span>{</div>
-<div class="line"><span class="lineno">   92</span>    <span class="keywordflow">if</span> (!HasAuthority())</div>
-<div class="line"><span class="lineno">   93</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">   94</span> </div>
-<div class="line"><span class="lineno">   95</span>    <span class="keywordflow">if</span> (!Player || !Carrier)</div>
-<div class="line"><span class="lineno">   96</span>    {</div>
-<div class="line"><span class="lineno">   97</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[GameMode] HandleCarrierSelection - Invalid parameters&quot;</span>));</div>
-<div class="line"><span class="lineno">   98</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">   99</span>    }</div>
-<div class="line"><span class="lineno">  100</span> </div>
-<div class="line"><span class="lineno">  101</span>    <a class="code hl_class" href="classALingoPlayerState.html">ALingoPlayerState</a>* LingoPlayerState = Cast&lt;ALingoPlayerState&gt;(Player);</div>
-<div class="line"><span class="lineno">  102</span>    <span class="keywordflow">if</span> (!LingoPlayerState)</div>
-<div class="line"><span class="lineno">  103</span>    {</div>
-<div class="line"><span class="lineno">  104</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[GameMode] HandleCarrierSelection - PlayerState is not ALingoPlayerState&quot;</span>));</div>
-<div class="line"><span class="lineno">  105</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  106</span>    }</div>
-<div class="line"><span class="lineno">  107</span> </div>
-<div class="line"><span class="lineno">  108</span>    <span class="comment">// 정답 판정</span></div>
-<div class="line"><span class="lineno">  109</span>    <span class="keywordtype">bool</span> bIsCorrect = <a class="code hl_function" href="classALingoGameMode.html#ad2c3a3e7a97a899e65c081cc96f2ad16">ValidateAnswer</a>(LingoPlayerState, Carrier);</div>
-<div class="line"><span class="lineno">  110</span> </div>
-<div class="line"><span class="lineno">  111</span>    <span class="keywordflow">if</span> (bIsCorrect)</div>
-<div class="line"><span class="lineno">  112</span>    {</div>
-<div class="line"><span class="lineno">  113</span>        <a class="code hl_function" href="classALingoGameMode.html#a11e7cf43757f20d1d9f0d5d1d9751ab7">HandleCorrectAnswer</a>(LingoPlayerState);</div>
-<div class="line"><span class="lineno">  114</span>    }</div>
-<div class="line"><span class="lineno">  115</span>    <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  116</span>    {</div>
-<div class="line"><span class="lineno">  117</span>        <span class="comment">// 틀린 항목 확인</span></div>
-<div class="line"><span class="lineno">  118</span>        <span class="keywordtype">bool</span> bSymbolCorrect = (LingoPlayerState-&gt;<a class="code hl_variable" href="classALingoPlayerState.html#a283004fed1584dfdb4da7c5e741eaeb0">SelectedWord1</a> == Carrier-&gt;Target1);</div>
-<div class="line"><span class="lineno">  119</span>        <span class="keywordtype">bool</span> bColorCorrect = (LingoPlayerState-&gt;<a class="code hl_variable" href="classALingoPlayerState.html#a2136c7bb3522dbe59a8f8609325c4b93">SelectedWord2</a> == Carrier-&gt;Target2);</div>
-<div class="line"><span class="lineno">  120</span> </div>
-<div class="line"><span class="lineno">  121</span>        <a class="code hl_function" href="classALingoGameMode.html#a2afd7939b5c4dc08f353aa1a00cd3967">HandleWrongAnswer</a>(LingoPlayerState, bSymbolCorrect, bColorCorrect);</div>
+<p class="definition"><a class="el" href="ALingoGameMode_8cpp_source.html">ALingoGameMode.cpp</a> 파일의 <a class="el" href="ALingoGameMode_8cpp_source.html#l00113">113</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  114</span>{</div>
+<div class="line"><span class="lineno">  115</span>    <span class="keywordflow">if</span> (!HasAuthority())</div>
+<div class="line"><span class="lineno">  116</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  117</span> </div>
+<div class="line"><span class="lineno">  118</span>    <span class="keywordflow">if</span> (!Player || !Carrier)</div>
+<div class="line"><span class="lineno">  119</span>    {</div>
+<div class="line"><span class="lineno">  120</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[GameMode] HandleCarrierSelection - Invalid parameters&quot;</span>));</div>
+<div class="line"><span class="lineno">  121</span>        <span class="keywordflow">return</span>;</div>
 <div class="line"><span class="lineno">  122</span>    }</div>
-<div class="line"><span class="lineno">  123</span>}</div>
-<div class="ttc" id="aclassALingoGameMode_html_a11e7cf43757f20d1d9f0d5d1d9751ab7"><div class="ttname"><a href="classALingoGameMode.html#a11e7cf43757f20d1d9f0d5d1d9751ab7">ALingoGameMode::HandleCorrectAnswer</a></div><div class="ttdeci">void HandleCorrectAnswer(class ALingoPlayerState *Player)</div><div class="ttdoc">정답 처리</div><div class="ttdef"><b>Definition</b> <a href="ALingoGameMode_8cpp_source.html#l00140">ALingoGameMode.cpp:140</a></div></div>
-<div class="ttc" id="aclassALingoGameMode_html_a2afd7939b5c4dc08f353aa1a00cd3967"><div class="ttname"><a href="classALingoGameMode.html#a2afd7939b5c4dc08f353aa1a00cd3967">ALingoGameMode::HandleWrongAnswer</a></div><div class="ttdeci">void HandleWrongAnswer(class ALingoPlayerState *Player, bool bSymbolCorrect, bool bColorCorrect)</div><div class="ttdoc">오답 처리</div><div class="ttdef"><b>Definition</b> <a href="ALingoGameMode_8cpp_source.html#l00171">ALingoGameMode.cpp:171</a></div></div>
-<div class="ttc" id="aclassALingoGameMode_html_ad2c3a3e7a97a899e65c081cc96f2ad16"><div class="ttname"><a href="classALingoGameMode.html#ad2c3a3e7a97a899e65c081cc96f2ad16">ALingoGameMode::ValidateAnswer</a></div><div class="ttdeci">bool ValidateAnswer(class ALingoPlayerState *Player, class Aluggage *Carrier)</div><div class="ttdoc">정답을 판정합니다</div><div class="ttdef"><b>Definition</b> <a href="ALingoGameMode_8cpp_source.html#l00125">ALingoGameMode.cpp:125</a></div></div>
+<div class="line"><span class="lineno">  123</span> </div>
+<div class="line"><span class="lineno">  124</span>    <a class="code hl_class" href="classALingoPlayerState.html">ALingoPlayerState</a>* LingoPlayerState = Cast&lt;ALingoPlayerState&gt;(Player);</div>
+<div class="line"><span class="lineno">  125</span>    <span class="keywordflow">if</span> (!LingoPlayerState)</div>
+<div class="line"><span class="lineno">  126</span>    {</div>
+<div class="line"><span class="lineno">  127</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[GameMode] HandleCarrierSelection - PlayerState is not ALingoPlayerState&quot;</span>));</div>
+<div class="line"><span class="lineno">  128</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  129</span>    }</div>
+<div class="line"><span class="lineno">  130</span> </div>
+<div class="line"><span class="lineno">  131</span>    <span class="comment">// 정답 판정</span></div>
+<div class="line"><span class="lineno">  132</span>    <span class="keywordtype">bool</span> bIsCorrect = <a class="code hl_function" href="classALingoGameMode.html#ad2c3a3e7a97a899e65c081cc96f2ad16">ValidateAnswer</a>(LingoPlayerState, Carrier);</div>
+<div class="line"><span class="lineno">  133</span> </div>
+<div class="line"><span class="lineno">  134</span>    <span class="keywordflow">if</span> (bIsCorrect)</div>
+<div class="line"><span class="lineno">  135</span>    {</div>
+<div class="line"><span class="lineno">  136</span>        <a class="code hl_function" href="classALingoGameMode.html#a11e7cf43757f20d1d9f0d5d1d9751ab7">HandleCorrectAnswer</a>(LingoPlayerState);</div>
+<div class="line"><span class="lineno">  137</span>    }</div>
+<div class="line"><span class="lineno">  138</span>    <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  139</span>    {</div>
+<div class="line"><span class="lineno">  140</span>        <span class="comment">// 틀린 항목 확인</span></div>
+<div class="line"><span class="lineno">  141</span>        <span class="keywordtype">bool</span> bSymbolCorrect = (LingoPlayerState-&gt;<a class="code hl_variable" href="classALingoPlayerState.html#a283004fed1584dfdb4da7c5e741eaeb0">SelectedWord1</a> == Carrier-&gt;Target1);</div>
+<div class="line"><span class="lineno">  142</span>        <span class="keywordtype">bool</span> bColorCorrect = (LingoPlayerState-&gt;<a class="code hl_variable" href="classALingoPlayerState.html#a2136c7bb3522dbe59a8f8609325c4b93">SelectedWord2</a> == Carrier-&gt;Target2);</div>
+<div class="line"><span class="lineno">  143</span> </div>
+<div class="line"><span class="lineno">  144</span>        <a class="code hl_function" href="classALingoGameMode.html#a2afd7939b5c4dc08f353aa1a00cd3967">HandleWrongAnswer</a>(LingoPlayerState, bSymbolCorrect, bColorCorrect);</div>
+<div class="line"><span class="lineno">  145</span>    }</div>
+<div class="line"><span class="lineno">  146</span>}</div>
+<div class="ttc" id="aclassALingoGameMode_html_a11e7cf43757f20d1d9f0d5d1d9751ab7"><div class="ttname"><a href="classALingoGameMode.html#a11e7cf43757f20d1d9f0d5d1d9751ab7">ALingoGameMode::HandleCorrectAnswer</a></div><div class="ttdeci">void HandleCorrectAnswer(class ALingoPlayerState *Player)</div><div class="ttdoc">정답 처리</div><div class="ttdef"><b>Definition</b> <a href="ALingoGameMode_8cpp_source.html#l00163">ALingoGameMode.cpp:163</a></div></div>
+<div class="ttc" id="aclassALingoGameMode_html_a2afd7939b5c4dc08f353aa1a00cd3967"><div class="ttname"><a href="classALingoGameMode.html#a2afd7939b5c4dc08f353aa1a00cd3967">ALingoGameMode::HandleWrongAnswer</a></div><div class="ttdeci">void HandleWrongAnswer(class ALingoPlayerState *Player, bool bSymbolCorrect, bool bColorCorrect)</div><div class="ttdoc">오답 처리</div><div class="ttdef"><b>Definition</b> <a href="ALingoGameMode_8cpp_source.html#l00194">ALingoGameMode.cpp:194</a></div></div>
+<div class="ttc" id="aclassALingoGameMode_html_ad2c3a3e7a97a899e65c081cc96f2ad16"><div class="ttname"><a href="classALingoGameMode.html#ad2c3a3e7a97a899e65c081cc96f2ad16">ALingoGameMode::ValidateAnswer</a></div><div class="ttdeci">bool ValidateAnswer(class ALingoPlayerState *Player, class Aluggage *Carrier)</div><div class="ttdoc">정답을 판정합니다</div><div class="ttdef"><b>Definition</b> <a href="ALingoGameMode_8cpp_source.html#l00148">ALingoGameMode.cpp:148</a></div></div>
 <div class="ttc" id="aclassALingoPlayerState_html"><div class="ttname"><a href="classALingoPlayerState.html">ALingoPlayerState</a></div><div class="ttdef"><b>Definition</b> <a href="ALingoPlayerState_8h_source.html#l00011">ALingoPlayerState.h:12</a></div></div>
 <div class="ttc" id="aclassALingoPlayerState_html_a2136c7bb3522dbe59a8f8609325c4b93"><div class="ttname"><a href="classALingoPlayerState.html#a2136c7bb3522dbe59a8f8609325c4b93">ALingoPlayerState::SelectedWord2</a></div><div class="ttdeci">FString SelectedWord2</div><div class="ttdoc">선택한 색상 (문제2 답변)</div><div class="ttdef"><b>Definition</b> <a href="ALingoPlayerState_8h_source.html#l00083">ALingoPlayerState.h:83</a></div></div>
 <div class="ttc" id="aclassALingoPlayerState_html_a283004fed1584dfdb4da7c5e741eaeb0"><div class="ttname"><a href="classALingoPlayerState.html#a283004fed1584dfdb4da7c5e741eaeb0">ALingoPlayerState::SelectedWord1</a></div><div class="ttdeci">FString SelectedWord1</div><div class="ttdoc">선택한 심볼 (문제1 답변)</div><div class="ttdef"><b>Definition</b> <a href="ALingoPlayerState_8h_source.html#l00076">ALingoPlayerState.h:76</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="ALingoGameMode_8cpp_source.html#l00140">HandleCorrectAnswer()</a>, <a class="el" href="ALingoGameMode_8cpp_source.html#l00171">HandleWrongAnswer()</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>, <a class="el" href="ALingoPlayerState_8h_source.html#l00076">ALingoPlayerState::SelectedWord1</a>, <a class="el" href="ALingoPlayerState_8h_source.html#l00083">ALingoPlayerState::SelectedWord2</a>, <a class="el" href="luggage_8h_source.html#l00128">Aluggage::Target1</a>, <a class="el" href="luggage_8h_source.html#l00132">Aluggage::Target2</a>, <a class="el" href="ALingoGameMode_8cpp_source.html#l00125">ValidateAnswer()</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="ALingoGameMode_8cpp_source.html#l00163">HandleCorrectAnswer()</a>, <a class="el" href="ALingoGameMode_8cpp_source.html#l00194">HandleWrongAnswer()</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>, <a class="el" href="ALingoPlayerState_8h_source.html#l00076">ALingoPlayerState::SelectedWord1</a>, <a class="el" href="ALingoPlayerState_8h_source.html#l00083">ALingoPlayerState::SelectedWord2</a>, <a class="el" href="luggage_8h_source.html#l00128">Aluggage::Target1</a>, <a class="el" href="luggage_8h_source.html#l00132">Aluggage::Target2</a>, <a class="el" href="ALingoGameMode_8cpp_source.html#l00148">ValidateAnswer()</a>.</p>
 <div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-3-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
@@ -406,36 +454,36 @@ Public 멤버 함수</h2></td></tr>
 
 <p>정답 처리 </p>
 
-<p class="definition"><a class="el" href="ALingoGameMode_8cpp_source.html">ALingoGameMode.cpp</a> 파일의 <a class="el" href="ALingoGameMode_8cpp_source.html#l00140">140</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  141</span>{</div>
-<div class="line"><span class="lineno">  142</span>    <span class="keywordflow">if</span> (!HasAuthority() || !Player)</div>
-<div class="line"><span class="lineno">  143</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  144</span> </div>
-<div class="line"><span class="lineno">  145</span>    <a class="code hl_class" href="classALingoGameState.html">ALingoGameState</a>* LingoGameState = GetGameState&lt;ALingoGameState&gt;();</div>
-<div class="line"><span class="lineno">  146</span>    <span class="keywordflow">if</span> (!LingoGameState)</div>
-<div class="line"><span class="lineno">  147</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  148</span> </div>
-<div class="line"><span class="lineno">  149</span>    <span class="comment">// QuestResult 업데이트</span></div>
-<div class="line"><span class="lineno">  150</span>    LingoGameState-&gt;<a class="code hl_variable" href="classALingoGameState.html#a88f0dfa033d3c618bfa74a3c6bc4263e">QuestResult</a>.<a class="code hl_variable" href="structFReadQuestResult.html#a6aa7efa70165cdb3738ff6630bb30b0a">bSuccess</a> = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  151</span>    LingoGameState-&gt;<a class="code hl_variable" href="classALingoGameState.html#a88f0dfa033d3c618bfa74a3c6bc4263e">QuestResult</a>.<a class="code hl_variable" href="structFReadQuestResult.html#a136f94791b720f13f96108f2570d2a45">RemainTime</a> = LingoGameState-&gt;<a class="code hl_function" href="classALingoGameState.html#abec3beeccc38530d9fa06be8b23998b5">GetRemainMissionTime</a>();</div>
-<div class="line"><span class="lineno">  152</span>    LingoGameState-&gt;<a class="code hl_variable" href="classALingoGameState.html#a88f0dfa033d3c618bfa74a3c6bc4263e">QuestResult</a>.<a class="code hl_variable" href="structFReadQuestResult.html#a432620275a263d07e012d46debd2e15a">AttemptCount</a> = Player-&gt;AttemptCount;</div>
-<div class="line"><span class="lineno">  153</span>    LingoGameState-&gt;<a class="code hl_variable" href="classALingoGameState.html#a88f0dfa033d3c618bfa74a3c6bc4263e">QuestResult</a>.<a class="code hl_variable" href="structFReadQuestResult.html#a086b2cc576670b7cdc6d5582a3a842d0">SelectedSymbol</a> = Player-&gt;SelectedWord1;</div>
-<div class="line"><span class="lineno">  154</span>    LingoGameState-&gt;<a class="code hl_variable" href="classALingoGameState.html#a88f0dfa033d3c618bfa74a3c6bc4263e">QuestResult</a>.<a class="code hl_variable" href="structFReadQuestResult.html#a73d2fb79bb0ab3daf13f34e9e3f3ae8b">SelectedColor</a> = Player-&gt;SelectedWord2;</div>
-<div class="line"><span class="lineno">  155</span> </div>
-<div class="line"><span class="lineno">  156</span>    <span class="comment">// 성공 플래그 설정</span></div>
-<div class="line"><span class="lineno">  157</span>    LingoGameState-&gt;<a class="code hl_variable" href="classALingoGameState.html#a4e1e1fc4d3afe87c4241534b52e79c07">bQuestSuccess</a> = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  158</span> </div>
-<div class="line"><span class="lineno">  159</span>    <span class="comment">// 타이머 중지</span></div>
-<div class="line"><span class="lineno">  160</span>    LingoGameState-&gt;<a class="code hl_function" href="classALingoGameState.html#a636940358cf8e1fbcb67bd25057a990a">StopMissionTimer</a>();</div>
-<div class="line"><span class="lineno">  161</span> </div>
-<div class="line"><span class="lineno">  162</span>    <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[GameMode] HandleCorrectAnswer - Quest completed successfully&quot;</span>));</div>
-<div class="line"><span class="lineno">  163</span> </div>
-<div class="line"><span class="lineno">  164</span>    <span class="comment">// BroadcastManager를 통해 성공 이벤트 브로드캐스트</span></div>
-<div class="line"><span class="lineno">  165</span>    <span class="keywordflow">if</span> (<a class="code hl_class" href="classUBroadcastManager.html">UBroadcastManager</a>* BroadcastManager = UBroadcastManager::Get(GetWorld()))</div>
-<div class="line"><span class="lineno">  166</span>    {</div>
-<div class="line"><span class="lineno">  167</span>        <span class="comment">// 추후 BroadcastManager에 퀘스트 성공 이벤트 추가 필요</span></div>
-<div class="line"><span class="lineno">  168</span>    }</div>
-<div class="line"><span class="lineno">  169</span>}</div>
+<p class="definition"><a class="el" href="ALingoGameMode_8cpp_source.html">ALingoGameMode.cpp</a> 파일의 <a class="el" href="ALingoGameMode_8cpp_source.html#l00163">163</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  164</span>{</div>
+<div class="line"><span class="lineno">  165</span>    <span class="keywordflow">if</span> (!HasAuthority() || !Player)</div>
+<div class="line"><span class="lineno">  166</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  167</span> </div>
+<div class="line"><span class="lineno">  168</span>    <a class="code hl_class" href="classALingoGameState.html">ALingoGameState</a>* LingoGameState = GetGameState&lt;ALingoGameState&gt;();</div>
+<div class="line"><span class="lineno">  169</span>    <span class="keywordflow">if</span> (!LingoGameState)</div>
+<div class="line"><span class="lineno">  170</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  171</span> </div>
+<div class="line"><span class="lineno">  172</span>    <span class="comment">// QuestResult 업데이트</span></div>
+<div class="line"><span class="lineno">  173</span>    LingoGameState-&gt;<a class="code hl_variable" href="classALingoGameState.html#a88f0dfa033d3c618bfa74a3c6bc4263e">QuestResult</a>.<a class="code hl_variable" href="structFReadQuestResult.html#a6aa7efa70165cdb3738ff6630bb30b0a">bSuccess</a> = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  174</span>    LingoGameState-&gt;<a class="code hl_variable" href="classALingoGameState.html#a88f0dfa033d3c618bfa74a3c6bc4263e">QuestResult</a>.<a class="code hl_variable" href="structFReadQuestResult.html#a136f94791b720f13f96108f2570d2a45">RemainTime</a> = LingoGameState-&gt;<a class="code hl_function" href="classALingoGameState.html#abec3beeccc38530d9fa06be8b23998b5">GetRemainMissionTime</a>();</div>
+<div class="line"><span class="lineno">  175</span>    LingoGameState-&gt;<a class="code hl_variable" href="classALingoGameState.html#a88f0dfa033d3c618bfa74a3c6bc4263e">QuestResult</a>.<a class="code hl_variable" href="structFReadQuestResult.html#a432620275a263d07e012d46debd2e15a">AttemptCount</a> = Player-&gt;AttemptCount;</div>
+<div class="line"><span class="lineno">  176</span>    LingoGameState-&gt;<a class="code hl_variable" href="classALingoGameState.html#a88f0dfa033d3c618bfa74a3c6bc4263e">QuestResult</a>.<a class="code hl_variable" href="structFReadQuestResult.html#a086b2cc576670b7cdc6d5582a3a842d0">SelectedSymbol</a> = Player-&gt;SelectedWord1;</div>
+<div class="line"><span class="lineno">  177</span>    LingoGameState-&gt;<a class="code hl_variable" href="classALingoGameState.html#a88f0dfa033d3c618bfa74a3c6bc4263e">QuestResult</a>.<a class="code hl_variable" href="structFReadQuestResult.html#a73d2fb79bb0ab3daf13f34e9e3f3ae8b">SelectedColor</a> = Player-&gt;SelectedWord2;</div>
+<div class="line"><span class="lineno">  178</span> </div>
+<div class="line"><span class="lineno">  179</span>    <span class="comment">// 성공 플래그 설정</span></div>
+<div class="line"><span class="lineno">  180</span>    LingoGameState-&gt;<a class="code hl_variable" href="classALingoGameState.html#a4e1e1fc4d3afe87c4241534b52e79c07">bQuestSuccess</a> = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  181</span> </div>
+<div class="line"><span class="lineno">  182</span>    <span class="comment">// 타이머 중지</span></div>
+<div class="line"><span class="lineno">  183</span>    LingoGameState-&gt;<a class="code hl_function" href="classALingoGameState.html#a636940358cf8e1fbcb67bd25057a990a">StopMissionTimer</a>();</div>
+<div class="line"><span class="lineno">  184</span> </div>
+<div class="line"><span class="lineno">  185</span>    <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[GameMode] HandleCorrectAnswer - Quest completed successfully&quot;</span>));</div>
+<div class="line"><span class="lineno">  186</span> </div>
+<div class="line"><span class="lineno">  187</span>    <span class="comment">// BroadcastManager를 통해 성공 이벤트 브로드캐스트</span></div>
+<div class="line"><span class="lineno">  188</span>    <span class="keywordflow">if</span> (<a class="code hl_class" href="classUBroadcastManager.html">UBroadcastManager</a>* BroadcastManager = UBroadcastManager::Get(GetWorld()))</div>
+<div class="line"><span class="lineno">  189</span>    {</div>
+<div class="line"><span class="lineno">  190</span>        <span class="comment">// 추후 BroadcastManager에 퀘스트 성공 이벤트 추가 필요</span></div>
+<div class="line"><span class="lineno">  191</span>    }</div>
+<div class="line"><span class="lineno">  192</span>}</div>
 <div class="ttc" id="aclassALingoGameState_html"><div class="ttname"><a href="classALingoGameState.html">ALingoGameState</a></div><div class="ttdef"><b>Definition</b> <a href="ALingoGameState_8h_source.html#l00052">ALingoGameState.h:53</a></div></div>
 <div class="ttc" id="aclassALingoGameState_html_a4e1e1fc4d3afe87c4241534b52e79c07"><div class="ttname"><a href="classALingoGameState.html#a4e1e1fc4d3afe87c4241534b52e79c07">ALingoGameState::bQuestSuccess</a></div><div class="ttdeci">bool bQuestSuccess</div><div class="ttdoc">퀘스트 성공 플래그</div><div class="ttdef"><b>Definition</b> <a href="ALingoGameState_8h_source.html#l00150">ALingoGameState.h:150</a></div></div>
 <div class="ttc" id="aclassALingoGameState_html_a636940358cf8e1fbcb67bd25057a990a"><div class="ttname"><a href="classALingoGameState.html#a636940358cf8e1fbcb67bd25057a990a">ALingoGameState::StopMissionTimer</a></div><div class="ttdeci">void StopMissionTimer()</div><div class="ttdoc">미션 타이머를 중지합니다</div><div class="ttdef"><b>Definition</b> <a href="ALingoGameState_8cpp_source.html#l00119">ALingoGameState.cpp:119</a></div></div>
@@ -450,7 +498,7 @@ Public 멤버 함수</h2></td></tr>
 </div><!-- fragment -->
 <p class="reference">다음을 참조함 :  <a class="el" href="ALingoPlayerState_8h_source.html#l00072">ALingoPlayerState::AttemptCount</a>, <a class="el" href="NetworkData_8h_source.html#l00433">FReadQuestResult::AttemptCount</a>, <a class="el" href="ALingoGameState_8h_source.html#l00150">ALingoGameState::bQuestSuccess</a>, <a class="el" href="NetworkData_8h_source.html#l00427">FReadQuestResult::bSuccess</a>, <a class="el" href="ALingoGameState_8h_source.html#l00077">ALingoGameState::GetRemainMissionTime()</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>, <a class="el" href="ALingoGameState_8h_source.html#l00146">ALingoGameState::QuestResult</a>, <a class="el" href="NetworkData_8h_source.html#l00430">FReadQuestResult::RemainTime</a>, <a class="el" href="NetworkData_8h_source.html#l00439">FReadQuestResult::SelectedColor</a>, <a class="el" href="NetworkData_8h_source.html#l00436">FReadQuestResult::SelectedSymbol</a>, <a class="el" href="ALingoPlayerState_8h_source.html#l00076">ALingoPlayerState::SelectedWord1</a>, <a class="el" href="ALingoPlayerState_8h_source.html#l00083">ALingoPlayerState::SelectedWord2</a>, <a class="el" href="ALingoGameState_8cpp_source.html#l00119">ALingoGameState::StopMissionTimer()</a>.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALingoGameMode_8cpp_source.html#l00090">HandleCarrierSelection()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALingoGameMode_8cpp_source.html#l00113">HandleCarrierSelection()</a>.</p>
 <div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-4-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-4-summary" class="dynsummary" style="display:block;">
@@ -509,47 +557,47 @@ Public 멤버 함수</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition"><a class="el" href="ALingoGameMode_8cpp_source.html">ALingoGameMode.cpp</a> 파일의 <a class="el" href="ALingoGameMode_8cpp_source.html#l00171">171</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  172</span>{</div>
-<div class="line"><span class="lineno">  173</span>    <span class="keywordflow">if</span> (!HasAuthority() || !Player)</div>
-<div class="line"><span class="lineno">  174</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  175</span> </div>
-<div class="line"><span class="lineno">  176</span>    <a class="code hl_class" href="classALingoGameState.html">ALingoGameState</a>* LingoGameState = GetGameState&lt;ALingoGameState&gt;();</div>
-<div class="line"><span class="lineno">  177</span>    <span class="keywordflow">if</span> (!LingoGameState)</div>
-<div class="line"><span class="lineno">  178</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  179</span> </div>
-<div class="line"><span class="lineno">  180</span>    <span class="comment">// 타이머 패널티 (30초 감소)</span></div>
-<div class="line"><span class="lineno">  181</span>    <span class="keyword">const</span> <span class="keywordtype">float</span> Penalty = 30.f;</div>
-<div class="line"><span class="lineno">  182</span>    LingoGameState-&gt;<a class="code hl_variable" href="classALingoGameState.html#abf8b596488b55e3933d5d3fcf016307f">RemainMissionTime</a> = FMath::Max(0.f, LingoGameState-&gt;<a class="code hl_variable" href="classALingoGameState.html#abf8b596488b55e3933d5d3fcf016307f">RemainMissionTime</a> - Penalty);</div>
-<div class="line"><span class="lineno">  183</span> </div>
-<div class="line"><span class="lineno">  184</span>    <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[GameMode] HandleWrongAnswer - Penalty applied: %.0f seconds, Remaining: %.0f seconds&quot;</span>),</div>
-<div class="line"><span class="lineno">  185</span>        Penalty, LingoGameState-&gt;<a class="code hl_variable" href="classALingoGameState.html#abf8b596488b55e3933d5d3fcf016307f">RemainMissionTime</a>);</div>
-<div class="line"><span class="lineno">  186</span> </div>
-<div class="line"><span class="lineno">  187</span>    <span class="comment">// 틀린 항목 판정</span></div>
-<div class="line"><span class="lineno">  188</span>    <span class="keywordflow">if</span> (!bSymbolCorrect)</div>
-<div class="line"><span class="lineno">  189</span>    {</div>
-<div class="line"><span class="lineno">  190</span>        Player-&gt;SelectedWord1 = TEXT(<span class="stringliteral">&quot;&quot;</span>);</div>
-<div class="line"><span class="lineno">  191</span>        Player-&gt;bWrongWord1 = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  192</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[GameMode] Symbol was wrong - Cleared selection&quot;</span>));</div>
-<div class="line"><span class="lineno">  193</span>    }</div>
-<div class="line"><span class="lineno">  194</span> </div>
-<div class="line"><span class="lineno">  195</span>    <span class="keywordflow">if</span> (!bColorCorrect)</div>
-<div class="line"><span class="lineno">  196</span>    {</div>
-<div class="line"><span class="lineno">  197</span>        Player-&gt;SelectedWord2 = TEXT(<span class="stringliteral">&quot;&quot;</span>);</div>
-<div class="line"><span class="lineno">  198</span>        Player-&gt;bWrongWord2 = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  199</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[GameMode] Color was wrong - Cleared selection&quot;</span>));</div>
-<div class="line"><span class="lineno">  200</span>    }</div>
-<div class="line"><span class="lineno">  201</span> </div>
-<div class="line"><span class="lineno">  202</span>    <span class="comment">// 시도 횟수 증가</span></div>
-<div class="line"><span class="lineno">  203</span>    Player-&gt;AttemptCount++;</div>
-<div class="line"><span class="lineno">  204</span> </div>
-<div class="line"><span class="lineno">  205</span>    <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[GameMode] HandleWrongAnswer - Attempt count: %d&quot;</span>), Player-&gt;AttemptCount);</div>
-<div class="line"><span class="lineno">  206</span>}</div>
+<p class="definition"><a class="el" href="ALingoGameMode_8cpp_source.html">ALingoGameMode.cpp</a> 파일의 <a class="el" href="ALingoGameMode_8cpp_source.html#l00194">194</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  195</span>{</div>
+<div class="line"><span class="lineno">  196</span>    <span class="keywordflow">if</span> (!HasAuthority() || !Player)</div>
+<div class="line"><span class="lineno">  197</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  198</span> </div>
+<div class="line"><span class="lineno">  199</span>    <a class="code hl_class" href="classALingoGameState.html">ALingoGameState</a>* LingoGameState = GetGameState&lt;ALingoGameState&gt;();</div>
+<div class="line"><span class="lineno">  200</span>    <span class="keywordflow">if</span> (!LingoGameState)</div>
+<div class="line"><span class="lineno">  201</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  202</span> </div>
+<div class="line"><span class="lineno">  203</span>    <span class="comment">// 타이머 패널티 (30초 감소)</span></div>
+<div class="line"><span class="lineno">  204</span>    <span class="keyword">const</span> <span class="keywordtype">float</span> Penalty = 30.f;</div>
+<div class="line"><span class="lineno">  205</span>    LingoGameState-&gt;<a class="code hl_variable" href="classALingoGameState.html#abf8b596488b55e3933d5d3fcf016307f">RemainMissionTime</a> = FMath::Max(0.f, LingoGameState-&gt;<a class="code hl_variable" href="classALingoGameState.html#abf8b596488b55e3933d5d3fcf016307f">RemainMissionTime</a> - Penalty);</div>
+<div class="line"><span class="lineno">  206</span> </div>
+<div class="line"><span class="lineno">  207</span>    <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[GameMode] HandleWrongAnswer - Penalty applied: %.0f seconds, Remaining: %.0f seconds&quot;</span>),</div>
+<div class="line"><span class="lineno">  208</span>        Penalty, LingoGameState-&gt;<a class="code hl_variable" href="classALingoGameState.html#abf8b596488b55e3933d5d3fcf016307f">RemainMissionTime</a>);</div>
+<div class="line"><span class="lineno">  209</span> </div>
+<div class="line"><span class="lineno">  210</span>    <span class="comment">// 틀린 항목 판정</span></div>
+<div class="line"><span class="lineno">  211</span>    <span class="keywordflow">if</span> (!bSymbolCorrect)</div>
+<div class="line"><span class="lineno">  212</span>    {</div>
+<div class="line"><span class="lineno">  213</span>        Player-&gt;SelectedWord1 = TEXT(<span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><span class="lineno">  214</span>        Player-&gt;bWrongWord1 = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  215</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[GameMode] Symbol was wrong - Cleared selection&quot;</span>));</div>
+<div class="line"><span class="lineno">  216</span>    }</div>
+<div class="line"><span class="lineno">  217</span> </div>
+<div class="line"><span class="lineno">  218</span>    <span class="keywordflow">if</span> (!bColorCorrect)</div>
+<div class="line"><span class="lineno">  219</span>    {</div>
+<div class="line"><span class="lineno">  220</span>        Player-&gt;SelectedWord2 = TEXT(<span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><span class="lineno">  221</span>        Player-&gt;bWrongWord2 = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  222</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[GameMode] Color was wrong - Cleared selection&quot;</span>));</div>
+<div class="line"><span class="lineno">  223</span>    }</div>
+<div class="line"><span class="lineno">  224</span> </div>
+<div class="line"><span class="lineno">  225</span>    <span class="comment">// 시도 횟수 증가</span></div>
+<div class="line"><span class="lineno">  226</span>    Player-&gt;AttemptCount++;</div>
+<div class="line"><span class="lineno">  227</span> </div>
+<div class="line"><span class="lineno">  228</span>    <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[GameMode] HandleWrongAnswer - Attempt count: %d&quot;</span>), Player-&gt;AttemptCount);</div>
+<div class="line"><span class="lineno">  229</span>}</div>
 <div class="ttc" id="aclassALingoGameState_html_abf8b596488b55e3933d5d3fcf016307f"><div class="ttname"><a href="classALingoGameState.html#abf8b596488b55e3933d5d3fcf016307f">ALingoGameState::RemainMissionTime</a></div><div class="ttdeci">float RemainMissionTime</div><div class="ttdef"><b>Definition</b> <a href="ALingoGameState_8h_source.html#l00111">ALingoGameState.h:111</a></div></div>
 </div><!-- fragment -->
 <p class="reference">다음을 참조함 :  <a class="el" href="ALingoPlayerState_8h_source.html#l00072">ALingoPlayerState::AttemptCount</a>, <a class="el" href="ALingoPlayerState_8h_source.html#l00079">ALingoPlayerState::bWrongWord1</a>, <a class="el" href="ALingoPlayerState_8h_source.html#l00086">ALingoPlayerState::bWrongWord2</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>, <a class="el" href="ALingoGameState_8h_source.html#l00111">ALingoGameState::RemainMissionTime</a>, <a class="el" href="ALingoPlayerState_8h_source.html#l00076">ALingoPlayerState::SelectedWord1</a>, <a class="el" href="ALingoPlayerState_8h_source.html#l00083">ALingoPlayerState::SelectedWord2</a>.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALingoGameMode_8cpp_source.html#l00090">HandleCarrierSelection()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALingoGameMode_8cpp_source.html#l00113">HandleCarrierSelection()</a>.</p>
 <div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-6-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-6-summary" class="dynsummary" style="display:block;">
@@ -588,24 +636,24 @@ Public 멤버 함수</h2></td></tr>
 
 <p>정답을 판정합니다 </p>
 
-<p class="definition"><a class="el" href="ALingoGameMode_8cpp_source.html">ALingoGameMode.cpp</a> 파일의 <a class="el" href="ALingoGameMode_8cpp_source.html#l00125">125</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  126</span>{</div>
-<div class="line"><span class="lineno">  127</span>    <span class="keywordflow">if</span> (!Player || !Carrier)</div>
-<div class="line"><span class="lineno">  128</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  129</span> </div>
-<div class="line"><span class="lineno">  130</span>    <span class="keywordtype">bool</span> bSymbolCorrect = (Player-&gt;SelectedWord1 == Carrier-&gt;Target1);</div>
-<div class="line"><span class="lineno">  131</span>    <span class="keywordtype">bool</span> bColorCorrect = (Player-&gt;SelectedWord2 == Carrier-&gt;Target2);</div>
-<div class="line"><span class="lineno">  132</span> </div>
-<div class="line"><span class="lineno">  133</span>    <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[GameMode] ValidateAnswer - Symbol: %s vs %s (%s), Color: %s vs %s (%s)&quot;</span>),</div>
-<div class="line"><span class="lineno">  134</span>        *Player-&gt;SelectedWord1, *Carrier-&gt;Target1, bSymbolCorrect ? TEXT(<span class="stringliteral">&quot;Correct&quot;</span>) : TEXT(<span class="stringliteral">&quot;Wrong&quot;</span>),</div>
-<div class="line"><span class="lineno">  135</span>        *Player-&gt;SelectedWord2, *Carrier-&gt;Target2, bColorCorrect ? TEXT(<span class="stringliteral">&quot;Correct&quot;</span>) : TEXT(<span class="stringliteral">&quot;Wrong&quot;</span>));</div>
-<div class="line"><span class="lineno">  136</span> </div>
-<div class="line"><span class="lineno">  137</span>    <span class="keywordflow">return</span> bSymbolCorrect &amp;&amp; bColorCorrect;</div>
-<div class="line"><span class="lineno">  138</span>}</div>
+<p class="definition"><a class="el" href="ALingoGameMode_8cpp_source.html">ALingoGameMode.cpp</a> 파일의 <a class="el" href="ALingoGameMode_8cpp_source.html#l00148">148</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  149</span>{</div>
+<div class="line"><span class="lineno">  150</span>    <span class="keywordflow">if</span> (!Player || !Carrier)</div>
+<div class="line"><span class="lineno">  151</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  152</span> </div>
+<div class="line"><span class="lineno">  153</span>    <span class="keywordtype">bool</span> bSymbolCorrect = (Player-&gt;SelectedWord1 == Carrier-&gt;Target1);</div>
+<div class="line"><span class="lineno">  154</span>    <span class="keywordtype">bool</span> bColorCorrect = (Player-&gt;SelectedWord2 == Carrier-&gt;Target2);</div>
+<div class="line"><span class="lineno">  155</span> </div>
+<div class="line"><span class="lineno">  156</span>    <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[GameMode] ValidateAnswer - Symbol: %s vs %s (%s), Color: %s vs %s (%s)&quot;</span>),</div>
+<div class="line"><span class="lineno">  157</span>        *Player-&gt;SelectedWord1, *Carrier-&gt;Target1, bSymbolCorrect ? TEXT(<span class="stringliteral">&quot;Correct&quot;</span>) : TEXT(<span class="stringliteral">&quot;Wrong&quot;</span>),</div>
+<div class="line"><span class="lineno">  158</span>        *Player-&gt;SelectedWord2, *Carrier-&gt;Target2, bColorCorrect ? TEXT(<span class="stringliteral">&quot;Correct&quot;</span>) : TEXT(<span class="stringliteral">&quot;Wrong&quot;</span>));</div>
+<div class="line"><span class="lineno">  159</span> </div>
+<div class="line"><span class="lineno">  160</span>    <span class="keywordflow">return</span> bSymbolCorrect &amp;&amp; bColorCorrect;</div>
+<div class="line"><span class="lineno">  161</span>}</div>
 </div><!-- fragment -->
 <p class="reference">다음을 참조함 :  <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>, <a class="el" href="ALingoPlayerState_8h_source.html#l00076">ALingoPlayerState::SelectedWord1</a>, <a class="el" href="ALingoPlayerState_8h_source.html#l00083">ALingoPlayerState::SelectedWord2</a>, <a class="el" href="luggage_8h_source.html#l00128">Aluggage::Target1</a>, <a class="el" href="luggage_8h_source.html#l00132">Aluggage::Target2</a>.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALingoGameMode_8cpp_source.html#l00090">HandleCarrierSelection()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALingoGameMode_8cpp_source.html#l00113">HandleCarrierSelection()</a>.</p>
 <div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-7-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-7-summary" class="dynsummary" style="display:block;">
@@ -626,7 +674,7 @@ Public 멤버 함수</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classALingoGameMode.html">ALingoGameMode</a></li>
-    <li class="footer">생성시간 : 화 12월 2 2025 13:15:51, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 수 12월 3 2025 08:45:29, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

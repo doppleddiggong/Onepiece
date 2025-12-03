@@ -5,7 +5,7 @@ var classANetworkTesterActor =
     [ "OnResponseListenAudio", "classANetworkTesterActor.html#a9e1b4f31f330262ef767b99331347a53", null ],
     [ "OnResponseOcrExtract", "classANetworkTesterActor.html#ac23b44a6599461d44c6335a9c641b5fb", null ],
     [ "OnResponseScenario", "classANetworkTesterActor.html#a7478bcc337e5700b97371a743a41bdb6", null ],
-    [ "OnResponseSpeakingQuestions", "classANetworkTesterActor.html#a3ffbd32884d9184f60c106ef83015497", null ],
+    [ "OnResponseSpeakingJudes", "classANetworkTesterActor.html#ae4b4fdb8199ce3b067eae6c3ee769179", null ],
     [ "OnResponseUserHost", "classANetworkTesterActor.html#a70806fc830e8b4a88c2d773cb9714bdf", null ],
     [ "OnResponseUserMe", "classANetworkTesterActor.html#afb8a7bf0db529e76c4527c7c1d890571", null ],
     [ "OnResponseUserRegister", "classANetworkTesterActor.html#af85fc6f7a9ac286f04aa0027aa75462a", null ],
@@ -25,6 +25,7 @@ var classANetworkTesterActor =
     [ "ScenarioIndex", "classANetworkTesterActor.html#ab440b96d9824011aac1019caecca674a", null ],
     [ "ScenarioLevel", "classANetworkTesterActor.html#add3837d9fe9455e73574e3a1fd50735d", null ],
     [ "SpeakingAudioPath", "classANetworkTesterActor.html#a63de4f3b4b19044fbe8efcf3b9a5d3ee", null ],
+    [ "SpeakingQuestion", "classANetworkTesterActor.html#aef38e936988cdf1d8002abc12e4804b1", null ],
     [ "UserName", "classANetworkTesterActor.html#ab5f32b53d6845e92b3bdc278e43c58fa", null ],
     [ "VoiceConversationSystem", "classANetworkTesterActor.html#a112a573b43579514a0ab6f87d492a630", null ]
 ];

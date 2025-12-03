@@ -3,6 +3,7 @@ var classALingoGameMode =
     [ "ALingoGameMode", "classALingoGameMode.html#abef1a309b7dcd4b4f71d2341d55a0ea3", null ],
     [ "BeginListenQuest", "classALingoGameMode.html#ad8c719f48fd1a74ddc0222fd06155173", null ],
     [ "BeginReadQuest", "classALingoGameMode.html#a2d78db01b89121ee86364bf434db1fbf", null ],
+    [ "BeginSpeakQuest", "classALingoGameMode.html#a8b56ab603ed4f346060e5921bc5426cf", null ],
     [ "HandleCarrierSelection", "classALingoGameMode.html#a2dc692a142db2a84bf18f18e1602c078", null ],
     [ "HandleCorrectAnswer", "classALingoGameMode.html#a11e7cf43757f20d1d9f0d5d1d9751ab7", null ],
     [ "HandleWrongAnswer", "classALingoGameMode.html#a2afd7939b5c4dc08f353aa1a00cd3967", null ],

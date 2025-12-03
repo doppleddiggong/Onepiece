@@ -25,5 +25,6 @@ var searchData=
   ['apopuptesteractor_22',['APopupTesterActor',['../classAPopupTesterActor.html',1,'']]],
   ['aquestionnairekiosk_23',['AQuestionnaireKiosk',['../classAQuestionnaireKiosk.html',1,'']]],
   ['arobotplayercontroller_24',['ARobotPlayerController',['../classARobotPlayerController.html',1,'']]],
-  ['aweightswitch_25',['AWeightSwitch',['../classAWeightSwitch.html',1,'']]]
+  ['aspeakstageactor_25',['ASpeakStageActor',['../classASpeakStageActor.html',1,'']]],
+  ['aweightswitch_26',['AWeightSwitch',['../classAWeightSwitch.html',1,'']]]
 ];

@@ -12,7 +12,7 @@ var classUKLingoNetworkSystem =
     [ "RequestListenAudio", "classUKLingoNetworkSystem.html#afe074a06266fd96e1cf437d014a865e5", null ],
     [ "RequestOcrExtract", "classUKLingoNetworkSystem.html#a2b55f61a9ab11131c68a8d9aa947e81b", null ],
     [ "RequestScenario", "classUKLingoNetworkSystem.html#a245c519fba6f3d6e6c103770c02b1a1c", null ],
-    [ "RequestSpeakingQuestions", "classUKLingoNetworkSystem.html#a7b9e2c31f43e7c1b129f39446eec5dc0", null ],
+    [ "RequestSpeakingJudges", "classUKLingoNetworkSystem.html#a0b26b72d9b13f2eff1d8a06e55141ab0", null ],
     [ "RequestUserHost", "classUKLingoNetworkSystem.html#a1f075087b82980fae0f6381639af8dec", null ],
     [ "RequestUserMe", "classUKLingoNetworkSystem.html#a7bf03fe16be3fddf9a51350248bdf6b4", null ],
     [ "RequestUserRegister", "classUKLingoNetworkSystem.html#a4082666ed951516c06e8dcbfdb20c484", null ],
