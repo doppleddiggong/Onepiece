@@ -12,7 +12,11 @@
 #include "UVoiceFunctionLibrary.h"
 #include "UGameSoundManager.h"
 #include "UKLingoNetworkSystem.h"
+#include "USpeakStageSubsystem.h"
+#include "ASpeakStageActor.h"
+#include "APlayerActor.h"
 #include "Sound/SoundWaveProcedural.h"
+#include "GameFramework/PlayerState.h"
 
 UVoiceConversationSystem::UVoiceConversationSystem()
 {
@@ -42,6 +46,66 @@ void UVoiceConversationSystem::StartRecording()
 		PRINTLOG( TEXT("[VoiceConversation] Already recording or processing."));
 		return;
 	}
+
+	// --- SpeakStage 턴 체크 (Phase 4) ---
+	UWorld* World = GetWorld();
+	if (World)
+	{
+		USpeakStageSubsystem* SpeakSubsystem = World->GetSubsystem<USpeakStageSubsystem>();
+		if (SpeakSubsystem && SpeakSubsystem->IsInitialized())
+		{
+			ASpeakStageActor* SpeakStage = SpeakSubsystem->GetSpeakStage();
+			if (SpeakStage)
+			{
+				// 로컬 플레이어의 PlayerState 가져오기
+				APlayerState* LocalPlayerState = nullptr;
+				if (Owner)
+				{
+					APlayerController* PC = Cast<APlayerController>(Owner->GetController());
+					if (PC)
+					{
+						LocalPlayerState = PC->GetPlayerState<APlayerState>();
+					}
+				}
+
+				// 현재 발화자 확인
+				APlayerState* CurrentSpeaker = SpeakStage->GetCurrentSpeaker();
+
+				// CurrentSpeaker가 없으면 Stage 완료 상태
+				if (!CurrentSpeaker)
+				{
+					PRINTLOG(TEXT("[VoiceConversation] Recording blocked: Speak Stage has been completed"));
+
+					if (auto DM = UDialogManager::Get(GetWorld()))
+					{
+						DM->ShowToast(TEXT("모든 단계가 완료되었습니다"));
+					}
+					return;
+				}
+
+				// 내 턴이 아니면 녹음 차단
+				if (LocalPlayerState && CurrentSpeaker && CurrentSpeaker != LocalPlayerState)
+				{
+					PRINTLOG(TEXT("[VoiceConversation] Recording blocked: Not your turn (Current: %s)"),
+						*CurrentSpeaker->GetPlayerName());
+
+					if (auto DM = UDialogManager::Get(GetWorld()))
+					{
+						DM->ShowToast(FString::Printf(TEXT("지금은 %s님의 차례입니다"), *CurrentSpeaker->GetPlayerName()));
+					}
+					return;
+				}
+
+				// 내 턴이면 Server_RequestSpeak() 호출 (발화 권한 요청)
+				if (LocalPlayerState && CurrentSpeaker == LocalPlayerState)
+				{
+					PRINTLOG(TEXT("[VoiceConversation] Requesting speak permission..."));
+					SpeakStage->Server_RequestSpeak(LocalPlayerState);
+				}
+			}
+		}
+	}
+	// --- 턴 체크 종료 ---
 
 	// 재생 중인 대화 음성이 있으면 정지 (UGameSoundManager 사용)
 	if (auto SoundManager = UGameSoundManager::Get(GetWorld()))
@@ -208,6 +272,38 @@ void UVoiceConversationSystem::OnResponseSpeakingsQuestions(FResponseSpeakingQue
 	if (bSuccess)
 	{
 		PRINTLOG( TEXT("--- Network Response Received : %s"), *Response.answer);
+
+		// --- SpeakStage 답변 완료 알림 (Phase 4) ---
+		UWorld* World = GetWorld();
+		if (World)
+		{
+			USpeakStageSubsystem* SpeakSubsystem = World->GetSubsystem<USpeakStageSubsystem>();
+			if (SpeakSubsystem && SpeakSubsystem->IsInitialized())
+			{
+				ASpeakStageActor* SpeakStage = SpeakSubsystem->GetSpeakStage();
+				if (SpeakStage)
+				{
+					// 로컬 플레이어의 PlayerState 가져오기
+					APlayerState* LocalPlayerState = nullptr;
+					if (Owner)
+					{
+						APlayerController* PC = Cast<APlayerController>(Owner->GetController());
+						if (PC)
+						{
+							LocalPlayerState = PC->GetPlayerState<APlayerState>();
+						}
+					}
+
+					// 답변 완료 알림 (다음 플레이어/다음 단계로 진행)
+					if (LocalPlayerState)
+					{
+						PRINTLOG(TEXT("[VoiceConversation] Notifying answer complete to SpeakStage"));
+						SpeakStage->Server_NotifyAnswerComplete(LocalPlayerState);
+					}
+				}
+			}
+		}
+		// --- 답변 완료 알림 종료 ---
 	}
 	else
 	{

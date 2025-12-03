@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "USoundData.h"
 #include "GameFramework/Actor.h"
 #include "ASpeakStageActor.generated.h"
 
@@ -56,6 +57,10 @@ protected:
 	UPROPERTY()
 	TArray<FString> Questions;
 
+	UPROPERTY()
+	TArray<EGameSoundType> Questions_Voice;
+
+	
 	/// @brief 전체 질문 개수
 	UPROPERTY()
 	int32 TotalQuestions;
@@ -156,6 +161,13 @@ private:
 	 * CurrentStepIndex를 0으로 초기화
 	 */
 	void AdvanceToNextPlayer();
+
+	/**
+	 * @brief 현재 질문을 Toast로 표시 (서버/클라이언트 공통)
+	 *
+	 * AdvanceStep()과 OnRep_CurrentStepIndex()에서 호출
+	 */
+	void ShowCurrentQuestionToast();
 
 	/**
 	 * @brief 테스트 시나리오 데이터 생성 (서버 전용)
