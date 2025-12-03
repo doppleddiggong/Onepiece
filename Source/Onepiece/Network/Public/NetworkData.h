@@ -83,8 +83,8 @@ namespace RequestAPI
     static FString users_me = FString("/users/me");
 	static FString users_host = FString("/users/host");
 
-    /// @brief Scenario 조회 엔드포인트입니다. GET /scenario/{index}/{dificulity}/{lang}
-    static FString scenario = FString("/scenario");
+    /// @brief Scenario 조회 엔드포인트입니다. GET /scenario/stages/redis/{index}/{dificulity}/{lang}
+    static FString scenario = FString("/scenario/stages/redis");
     
     /// @brief OCR 텍스트 추출 엔드포인트입니다. POST /writes/ocr/extract
     static FString writes_ocr_extract = FString("/writes/ocr/extract");
