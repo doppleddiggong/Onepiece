@@ -332,14 +332,29 @@ void FResponseOcrExtract::SetFromHttpResponse(const TSharedPtr<IHttpResponse, ES
 
 	if (FJsonSerializer::Deserialize(Reader, JsonObject) && JsonObject.IsValid())
 	{
-		success = JsonObject->GetBoolField(TEXT("success"));
-		extracted_text = JsonObject->GetStringField(TEXT("extracted_text"));
+		//TODO: 이거 json array로 파싱
+		// display 파트
+		is_pass = JsonObject->GetBoolField(TEXT("is_pass"));
+		message = JsonObject->GetStringField(TEXT("message"));
+		correction = JsonObject->GetStringField(TEXT("correction"));
+		// record 파트
+		score = JsonObject->GetIntegerField(TEXT("score"));
+		target = JsonObject->GetStringField(TEXT("target"));
+		input = JsonObject->GetStringField(TEXT("input"));
+		stage = JsonObject->GetStringField(TEXT("stage"));
+
+		// target_data 배열 파싱
+		const TArray<TSharedPtr<FJsonValue>>* TargetDataArray;
+		if (JsonObject->TryGetArrayField(TEXT("target_data"), TargetDataArray))
+		{
+			
+		}
 	}
 }
 
 void FResponseOcrExtract::PrintData() const
 {
-	NETWORK_LOG( TEXT("[OCR Extract] Response - Success: %d, Text: %s"), success, *extracted_text);
+	// NETWORK_LOG( TEXT("[OCR Extract] Response - Success: %d, Text: %s"), success, *extracted_text);
 }
 
 void FResponseListenAudio::SetFromHttpResponse(const TSharedPtr<class IHttpResponse, ESPMode::ThreadSafe>& Response)

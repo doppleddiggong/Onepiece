@@ -11,9 +11,9 @@
 #include "Components/TextBlock.h"
 
 
-void UPopup_QuestionnaireItem::NativeConstruct()
+void UPopup_QuestionnaireItem::NativeOnInitialized()
 {
-	Super::NativeConstruct();
+	Super::NativeOnInitialized();
 	
 	if (Button_Answer)
 	{
@@ -51,7 +51,7 @@ void UPopup_QuestionnaireItem::OnClickButton()
 	{
 		if (const auto Popup = Cast<UPopup_WriteBoard>(PopupMgr->ShowPopup(EPopupType::WriteBoard)))
 		{
-			PRINT_STRING(TEXT("WriteBoard!!!!!"));
+			Popup->InitPopup(QuestionData.Id);
 		}
 	}
 }

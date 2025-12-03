@@ -53,7 +53,4 @@ protected:
 	
 	UFUNCTION(Client, Reliable)
 	void ClientRPC_OnInteractionTriggered(AActor* Interactor);
-	
-	void OnOK();
-	void OnCancel();
 };

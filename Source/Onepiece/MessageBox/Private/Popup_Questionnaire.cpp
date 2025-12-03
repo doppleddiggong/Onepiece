@@ -13,7 +13,7 @@
 #include "Components/Spacer.h"
 #include "Components/VerticalBox.h"
 
-// TODO: 생성자->QuestionnaireItemClass에 블루프린트 클래스 넣어주기
+
 UPopup_Questionnaire::UPopup_Questionnaire(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer)
 {
 	ConstructorHelpers::FClassFinder<UPopup_QuestionnaireItem> questionnaireItemRef(TEXT("/Game/CustomContents/UI/Widgets/WBP_PopupQuestionnaireItem.WBP_PopupQuestionnaireItem_C"));
@@ -85,7 +85,6 @@ void UPopup_Questionnaire::OnClickClose()
 void UPopup_Questionnaire::OnClickSubmit()
 {
 	// 모든 답변 수집 및 검증
-	PRINT_STRING(TEXT("Submit!!!!!"));
 	// TArray<FWriteAnswerData> AnswerDataList;
 	// const TArray<UWidget*>& Children = VerticalBox->GetAllChildren();
 	//
@@ -100,14 +99,38 @@ void UPopup_Questionnaire::OnClickSubmit()
 	// 사진 파일 모으기
 
 	// 네트워크 전송
-	// if (UKLingoNetworkSystem* LingoNetworkSystem = UKLingoNetworkSystem::Get(GetWorld()))
-	// {
-	// 	FRequestInterviewAnswer Request;
-	// 	Request.answer = AnswerDataList;
-	//
-	// 	LingoNetworkSystem->RequestInterviewAnswer( Request,
-	// 		FResponseInterviewAnswerDelegate::CreateUObject(this, &UPopup_Questionnaire::OnResponseInterviewAnswer));
-	// }
+	if (auto KLingoNetwork = UKLingoNetworkSystem::Get(GetWorld()))
+	{
+		for (const auto& question : SavedQuestions)
+		{
+			FString OcrImageName = FString::Printf(TEXT("Answer%d.PNG"), question.Id);
+			
+			PRINTLOG(TEXT("[TEST] RequestOcrExtract - ImagePath: %s"), *(OcrImagePath / OcrImageName));
+			KLingoNetwork->RequestOcrExtract(
+				OcrImagePath / OcrImageName,
+				FResponseOcrExtractDelegate::CreateUObject(this, &UPopup_Questionnaire::OnResponseOcrExtract)
+			);
+		}
+	}
+	else
+	{
+		PRINTLOG(TEXT("UKLingoNetworkSystem not found!"));
+	}
+}
+
+void UPopup_Questionnaire::OnResponseOcrExtract(FResponseOcrExtract& ResponseData, bool bWasSuccessful)
+{
+	if (bWasSuccessful)
+	{
+		PRINTLOG(TEXT("--- OCR Extract SUCCESS ---"));
+		ResponseData.PrintData();
+		PRINTLOG(TEXT("Success: %s"), ResponseData.success ? TEXT("true") : TEXT("false"));
+		PRINTLOG(TEXT("Extracted Text: %s"), *ResponseData.extracted_text);
+	}
+	else
+	{
+		PRINTLOG(TEXT("--- OCR Extract FAILED ---"));
+	}
 }
 
 // TODO: 여기 아래 함수 뭔지 알아보고 수정하든가 지우든가

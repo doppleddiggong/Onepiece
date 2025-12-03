@@ -140,13 +140,3 @@ void AQuestionnaireKiosk::ClientRPC_OnInteractionTriggered_Implementation(AActor
 		}
 	}
 }
-
-void AQuestionnaireKiosk::OnOK()
-{
-	PRINT_STRING(TEXT("I'M OK"));
-}
-
-void AQuestionnaireKiosk::OnCancel()
-{
-	PRINT_STRING(TEXT("I'M Cancel"));
-}

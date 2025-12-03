@@ -442,7 +442,7 @@ void UKLingoNetworkSystem::RequestScenario(int32 Index, int32 Difficulty, int32 
 
 void UKLingoNetworkSystem::RequestOcrExtract(const FString& ImagePath, FResponseOcrExtractDelegate InDelegate)
 {
-	FString Url = NetworkConfig::GetFullUrl(RequestAPI::writes_ocr_extract);
+	FString Url = NetworkConfig::GetFullUrl(RequestAPI::writes_submit);
 	auto Request = SetupHttpRequest(Url, NETWORK_POST);
 
 	// 상대 경로를 절대 경로로 변환
@@ -452,9 +452,9 @@ void UKLingoNetworkSystem::RequestOcrExtract(const FString& ImagePath, FResponse
 	AbsoluteImagePath = FPaths::ConvertRelativePathToFull(AbsoluteImagePath);
 
 	FHttpMultipartFormData Form;
-	if (!Form.AddFile(TEXT("file"), AbsoluteImagePath))
+	if (!Form.AddFile(TEXT("file"), ImagePath))
 	{
-		NETWORK_LOG(TEXT("[POST] OCR Extract: file load failed: %s"), *AbsoluteImagePath);
+		NETWORK_LOG(TEXT("[POST] OCR Extract: file load failed: %s"), *ImagePath);
 		FResponseOcrExtract EmptyResponse;
 		InDelegate.ExecuteIfBound(EmptyResponse, false);
 		return;
@@ -469,6 +469,7 @@ void UKLingoNetworkSystem::RequestOcrExtract(const FString& ImagePath, FResponse
 			if (!WeakThis.IsValid() || IsEngineExitRequested())
 				return;
 
+			PRINT_STRING(TEXT("성공?"));
 			WeakThis->AddNetworkWaitCount(-1);
 			FResponseOcrExtract ResponseData;
 
