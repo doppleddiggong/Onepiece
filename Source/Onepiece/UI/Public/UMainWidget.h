@@ -40,6 +40,10 @@ public:
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
 	class UQuestInfoWidget* QuestInfoWidget;
 
+	/// @brief Speak Stage UI 위젯 (옵션, BindWidgetOptional)
+	UPROPERTY(meta = (BindWidgetOptional), BlueprintReadOnly)
+	class USpeakWidget* SpeakWidget;
+
 	/// @brief 훅 가능 대상 표시 위젯 (옵션, BindWidgetOptional)
 	UPROPERTY(meta = (BindWidgetOptional), BlueprintReadOnly)
 	class UImage* HookTargetIndicator;
@@ -66,6 +70,9 @@ protected:
 
 	/// @brief 타이머 텍스트를 업데이트합니다.
 	void UpdateTimerDisplay();
+
+	/// @brief SpeakWidget UI를 업데이트합니다.
+	void UpdateSpeakWidget();
 
 	/// @brief 미션 타이머 상태 변경 핸들러
 	UFUNCTION()

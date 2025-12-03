@@ -10,13 +10,18 @@
 #include "UStateWidget.h"
 #include "ALingoGameState.h"
 #include "ALingoPlayerState.h"
+#include "ASpeakStageActor.h"
 #include "UBroadcastManager.h"
 #include "GameLogging.h"
 #include "ULingoGameHelper.h"
 #include "UQuestInfoWidget.h"
+#include "USpeakWidget.h"
+#include "USpeakStageSubsystem.h"
 #include "Engine/World.h"
 #include "Components/Image.h"
 #include "Engine/Texture2D.h"
+#include "GameFramework/PlayerState.h"
+#include "GameFramework/PlayerController.h"
 
 #define AIM_TEXTURE_PATH TEXT("/Game/CustomContents/UI/UITexture/HookAim.HookAim")
 #define NO_AIM_TEXTURE_PATH TEXT("/Game/CustomContents/UI/UITexture/NoHookAim.NoHookAim")
@@ -50,6 +55,10 @@ void UMainWidget::NativeConstruct()
 	if (HookTargetIndicator)
 		HookTargetIndicator->SetVisibility(ESlateVisibility::Hidden);
 
+	// SpeakWidget 초기 숨김 (BindWidgetOptional이므로 null 체크 필요)
+	if (SpeakWidget)
+		SpeakWidget->SetWidgetVisibility(false);
+
 	StopMissionTimer();
 }
 
@@ -58,6 +67,7 @@ void UMainWidget::NativeTick(const FGeometry& MyGeometry, float InDeltaTime)
 	Super::NativeTick(MyGeometry, InDeltaTime);
 
 	UpdateTimerDisplay();
+	UpdateSpeakWidget();
 }
 
 void UMainWidget::StartMissionTimer() const
@@ -126,4 +136,56 @@ void UMainWidget::UpdateHookIndicatorState(bool bIsAiming)
 		// 타겟 미감지
 		HookTargetIndicator->SetBrushFromTexture(HookNoAimTexture);
 	}
+}
+
+void UMainWidget::UpdateSpeakWidget()
+{
+	// SpeakWidget이 없으면 리턴 (BindWidgetOptional)
+	if (!SpeakWidget)
+		return;
+
+	// World 가져오기
+	UWorld* World = GetWorld();
+	if (!World)
+		return;
+
+	// SpeakStageSubsystem 가져오기
+	USpeakStageSubsystem* Subsystem = World->GetSubsystem<USpeakStageSubsystem>();
+	if (!Subsystem || !Subsystem->IsInitialized())
+	{
+		// Subsystem이 없으면 SpeakWidget 숨김
+		SpeakWidget->SetWidgetVisibility(false);
+		return;
+	}
+
+	// SpeakStage 가져오기
+	ASpeakStageActor* SpeakStage = Subsystem->GetSpeakStage();
+	if (!SpeakStage)
+	{
+		// SpeakStage가 없으면 SpeakWidget 숨김
+		SpeakWidget->SetWidgetVisibility(false);
+		return;
+	}
+
+	// 현재 발화자 확인
+	APlayerState* CurrentSpeaker = SpeakStage->GetCurrentSpeaker();
+	if (!CurrentSpeaker)
+	{
+		// 발화자가 없으면 (Stage 완료) SpeakWidget 숨김
+		SpeakWidget->SetWidgetVisibility(false);
+		return;
+	}
+
+	// SpeakStage가 활성화되어 있으면 SpeakWidget 표시
+	SpeakWidget->SetWidgetVisibility(true);
+
+	// 로컬 플레이어의 PlayerState 가져오기
+	APlayerController* LocalPC = World->GetFirstPlayerController();
+	if (!LocalPC)
+		return;
+
+	APlayerState* LocalPlayerState = LocalPC->GetPlayerState<APlayerState>();
+
+	// SpeakWidget UI 업데이트
+	SpeakWidget->UpdateSpeakStageUI(SpeakStage, LocalPlayerState);
 }

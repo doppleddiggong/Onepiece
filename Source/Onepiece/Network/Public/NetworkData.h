@@ -83,14 +83,14 @@ namespace RequestAPI
     static FString users_me = FString("/users/me");
 	static FString users_host = FString("/users/host");
 
-    /// @brief Scenario 조회 엔드포인트입니다. GET /scenario/{index}/{dificulity}/{lang}
-    static FString scenario = FString("/scenario");
+    /// @brief Scenario 조회 엔드포인트입니다. GET /scenario/stages/redis/{index}/{dificulity}/{lang}
+    static FString scenario = FString("/scenario/stages/redis");
     
     /// @brief OCR 텍스트 추출 엔드포인트입니다. POST /writes/ocr/extract
     static FString writes_submit = FString("/writes/submit");
 
-	static FString listenings_audio = FString("/listenings/audio");
-	static FString speakings_questions = FString("/speakings/questions");
+	static FString listenings_audio = FString("/listenings/audios");
+	static FString speakings_judes = FString("/speakings/judges");
 
 	static FString interview_hello = FString("/interview/hello");
 	static FString interview_answer = FString("/interview/answer/post");
@@ -680,16 +680,25 @@ struct FResponseListenAudio
 // =================================================================================
 
 /// @brief Speaking Questions 응답 델리게이트입니다.
-DECLARE_DELEGATE_TwoParams(FResponseSpeakingQuestionsDelegate, FResponseSpeakingQuestions&, bool);
+DECLARE_DELEGATE_TwoParams(FResponseSpeakingJudesDelegate, FResponseSpeakingJudes&, bool);
 /// @brief Speaking Questions 응답 구조체입니다.
 USTRUCT(BlueprintType)
-struct FResponseSpeakingQuestions
+struct FResponseSpeakingJudes
 {
 	GENERATED_BODY()
 
 	UPROPERTY(BlueprintReadWrite, Category = "Speaking")
-	FString answer;
+	int grammar_score;
+		
+	UPROPERTY(BlueprintReadWrite, Category = "Speaking")
+	int context_score;
 
+	UPROPERTY(BlueprintReadWrite, Category = "Speaking")
+	int final_overall_score;
+
+	UPROPERTY(BlueprintReadWrite, Category = "Speaking")
+	FString final_feedback;
+	
 	/// @brief HTTP 응답을 파싱해 구조체를 채웁니다.
 	void SetFromHttpResponse(const TSharedPtr<class IHttpResponse, ESPMode::ThreadSafe>& Response);
 

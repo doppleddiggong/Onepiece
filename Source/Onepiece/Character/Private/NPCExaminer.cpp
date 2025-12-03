@@ -6,6 +6,8 @@
 #include "AOwlPlayer.h"
 #include "Components/SphereComponent.h"
 #include "Onepiece/Onepiece.h"
+#include "ASpeakStageActor.h"
+#include "GameLogging.h"
 
 
 // Sets default values
@@ -72,5 +74,25 @@ void ANPCExaminer::OnSphereEndOverlap(UPrimitiveComponent* OverlappedComponent, 
 {
 	bIsPlayerNear = false;
 	DetectedPlayer = nullptr;
+}
+
+//----------------------------------------------------------//
+// Speak Stage System
+//----------------------------------------------------------//
+
+void ANPCExaminer::SetSpeakStage(ASpeakStageActor* InSpeakStage)
+{
+	SpeakStage = InSpeakStage;
+	PRINTLOG(TEXT("[NPCExaminer] SpeakStage Connected: %s"), SpeakStage ? TEXT("Success") : TEXT("Failed"));
+}
+
+FString ANPCExaminer::GetCurrentQuestion() const
+{
+	if (SpeakStage)
+	{
+		return SpeakStage->GetCurrentQuestion();
+	}
+
+	return TEXT("");
 }
 
