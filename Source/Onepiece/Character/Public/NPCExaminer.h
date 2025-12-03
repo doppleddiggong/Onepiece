@@ -56,7 +56,27 @@ protected:
 	// Overlap Player
 	UFUNCTION()
 	void OnSphereBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
-	
+
 	UFUNCTION()
 	void OnSphereEndOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
+
+	//----------------------------------------------------------//
+	// Speak Stage System
+	//----------------------------------------------------------//
+
+protected:
+	/// @brief 연결된 SpeakStage
+	UPROPERTY()
+	TObjectPtr<class ASpeakStageActor> SpeakStage;
+
+public:
+	/// @brief SpeakStage 설정 (GameMode에서 호출)
+	/// @param InSpeakStage 연결할 SpeakStageActor
+	UFUNCTION(BlueprintCallable, Category = "SpeakStage")
+	void SetSpeakStage(class ASpeakStageActor* InSpeakStage);
+
+	/// @brief 현재 질문 가져오기
+	/// @return 현재 단계의 질문 문자열
+	UFUNCTION(BlueprintCallable, Category = "SpeakStage")
+	FString GetCurrentQuestion() const;
 };

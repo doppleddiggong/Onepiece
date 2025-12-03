@@ -33,6 +33,9 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "Utils")
 	static TArray<ALingoPlayerState*> GetLingoPlayerStateList(const UObject* WorldContextObject);
+
+	UFUNCTION(BlueprintCallable, Category = "Utils")
+	static ASpeakStageActor* GetSpeakStageActor(const UObject* WorldContextObject);
 	
 	UFUNCTION(BlueprintCallable, Category = "Utils")
 	static FString GetStageStartMessage(const int StageIndex);

@@ -7,6 +7,7 @@
 #include "ALingoGameState.h"
 #include "ALingoPlayerState.h"
 #include "APlayerActor.h"
+#include "USpeakStageSubsystem.h"
 #include "Kismet/GameplayStatics.h"
 #include "Onepiece/Onepiece.h"
 
@@ -66,6 +67,21 @@ TArray<ALingoPlayerState*> ULingoGameHelper::GetLingoPlayerStateList(const UObje
 	return PlayerStateList;
 }
 
+ASpeakStageActor* ULingoGameHelper::GetSpeakStageActor(const UObject* WorldContextObject)
+{
+	if (!WorldContextObject)
+		return nullptr;
+
+	UWorld* World = WorldContextObject->GetWorld();
+	if (!World)
+		return nullptr;
+
+	USpeakStageSubsystem* SpeakSubsystem = World->GetSubsystem<USpeakStageSubsystem>();
+	if (SpeakSubsystem && SpeakSubsystem->IsInitialized())
+		return SpeakSubsystem->GetSpeakStage();
+
+	return nullptr;
+}
 
 FString ULingoGameHelper::GetStageStartMessage(const int StageIndex)
 {

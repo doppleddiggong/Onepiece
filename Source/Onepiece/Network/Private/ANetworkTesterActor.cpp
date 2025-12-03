@@ -185,10 +185,10 @@ void ANetworkTesterActor::RequestSpeakingQuestions()
 {
     if (auto KLingoNetwork = UKLingoNetworkSystem::Get(GetWorld()))
     {
-        PRINTLOG(TEXT("[TEST] RequestSpeakingQuestions - AudioPath: %s"), *SpeakingAudioPath);
-        KLingoNetwork->RequestSpeakingQuestions(
-            SpeakingAudioPath,
-            FResponseSpeakingQuestionsDelegate::CreateUObject(this, &ANetworkTesterActor::OnResponseSpeakingQuestions)
+        PRINTLOG(TEXT("[TEST] RequestSpeakingQuestions - Question :%s, AudioPath: %s"), *SpeakingQuestion, *SpeakingAudioPath);
+        KLingoNetwork->RequestSpeakingJudges(
+            SpeakingQuestion, SpeakingAudioPath,
+            FResponseSpeakingJudesDelegate::CreateUObject(this, &ANetworkTesterActor::OnResponseSpeakingJudes)
         );
     }
     else
@@ -276,13 +276,13 @@ void ANetworkTesterActor::OnResponseOcrExtract(FResponseOcrExtract& ResponseData
     }
 }
 
-void ANetworkTesterActor::OnResponseSpeakingQuestions(FResponseSpeakingQuestions& ResponseData, bool bWasSuccessful)
+void ANetworkTesterActor::OnResponseSpeakingJudes(FResponseSpeakingJudes& ResponseData, bool bWasSuccessful)
 {
     if (bWasSuccessful)
     {
         PRINTLOG(TEXT("--- Speaking Questions SUCCESS ---"));
         ResponseData.PrintData();
-        UDialogManager::Get(GetWorld())->ShowToast(*ResponseData.answer);
+        UDialogManager::Get(GetWorld())->ShowToast(*ResponseData.final_feedback);
     }
     else
     {

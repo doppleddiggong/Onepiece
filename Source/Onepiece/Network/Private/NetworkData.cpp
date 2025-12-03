@@ -382,7 +382,7 @@ void FResponseListenAudio::PrintData() const
 // FResponseSpeakingQuestions
 // =================================================================================
 
-void FResponseSpeakingQuestions::SetFromHttpResponse(const TSharedPtr<IHttpResponse, ESPMode::ThreadSafe>& Response)
+void FResponseSpeakingJudes::SetFromHttpResponse(const TSharedPtr<IHttpResponse, ESPMode::ThreadSafe>& Response)
 {
 	if (!Response.IsValid())
 	{
@@ -395,11 +395,14 @@ void FResponseSpeakingQuestions::SetFromHttpResponse(const TSharedPtr<IHttpRespo
 
 	if (FJsonSerializer::Deserialize(Reader, JsonObject) && JsonObject.IsValid())
 	{
-		answer = JsonObject->GetStringField(TEXT("answer"));
+		grammar_score = JsonObject->GetIntegerField(TEXT("grammar_score"));
+		context_score = JsonObject->GetIntegerField(TEXT("context_score"));
+		final_overall_score = JsonObject->GetIntegerField(TEXT("final_overall_score"));
+		final_feedback = JsonObject->GetStringField(TEXT("final_feedback"));
 	}
 }
 
-void FResponseSpeakingQuestions::PrintData() const
+void FResponseSpeakingJudes::PrintData() const
 {
 	FString OutputString;
 	FJsonObjectConverter::UStructToJsonObjectString(
