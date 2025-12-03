@@ -602,9 +602,14 @@ void UKLingoNetworkSystem::RequestListenAudio(const FString& AudioText, FRespons
 	Request->ProcessRequest();
 }
 
-void UKLingoNetworkSystem::RequestSpeakingQuestions(const FString& AudioPath, FResponseSpeakingQuestionsDelegate InDelegate)
+void UKLingoNetworkSystem::RequestSpeakingJudges(
+	const FString& Question,
+	const FString& AudioPath,
+	FResponseSpeakingJudesDelegate InDelegate)
 {
-	FString Url = NetworkConfig::GetFullUrl(RequestAPI::speakings_questions);
+	TMap<FString, FString> Query;
+	Query.Add(TEXT("question"), Question);
+	FString Url = NetworkConfig::GetFullUrlWithQuery( RequestAPI::speakings_judes, Query );
 	auto Request = SetupHttpRequest(Url, NETWORK_POST);
 
 	// 상대 경로를 절대 경로로 변환
@@ -617,7 +622,7 @@ void UKLingoNetworkSystem::RequestSpeakingQuestions(const FString& AudioPath, FR
 	if (!Form.AddFile(TEXT("audio"), AbsoluteAudioPath))
 	{
 		NETWORK_LOG(TEXT("[POST] Speaking Questions: file load failed: %s"), *AudioPath);
-		FResponseSpeakingQuestions EmptyResponse;
+		FResponseSpeakingJudes EmptyResponse;
 		InDelegate.ExecuteIfBound(EmptyResponse, false);
 		return;
 	}
@@ -632,7 +637,7 @@ void UKLingoNetworkSystem::RequestSpeakingQuestions(const FString& AudioPath, FR
 				return;
 
 			WeakThis->AddNetworkWaitCount(-1);
-			FResponseSpeakingQuestions ResponseData;
+			FResponseSpeakingJudes ResponseData;
 
 			if (bWasSuccessful && ResPtr.IsValid())
 			{

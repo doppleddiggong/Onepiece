@@ -79,6 +79,10 @@ public:
     // =============================================================================
     // STT Voice Tests
     // =============================================================================
+
+    /// @brief Speaking 테스트용 질문 입니다
+    UPROPERTY(EditAnywhere, Category = "TEST|Voice")
+    FString SpeakingQuestion = TEXT("Where are you from");
     
     /// @brief Speaking 테스트용 오디오 파일 경로입니다 (프로젝트 루트 기준).
     UPROPERTY(EditAnywhere, Category = "TEST|Voice")
@@ -115,7 +119,7 @@ private:
     void OnResponseScenario(FResponseScenario& ResponseData, bool bWasSuccessful);
     void OnResponseOcrExtract(FResponseOcrExtract& ResponseData, bool bWasSuccessful);
 
-    void OnResponseSpeakingQuestions(FResponseSpeakingQuestions& ResponseData, bool bWasSuccessful);
+    void OnResponseSpeakingJudes(FResponseSpeakingJudes& ResponseData, bool bWasSuccessful);
     void OnResponseListenAudio(FResponseListenAudio& ResponseData, bool bWasSuccessful);
 
     void OnResponseInterviewHello(FResponseInterviewHello& ResponseData, bool bWasSuccessful);
