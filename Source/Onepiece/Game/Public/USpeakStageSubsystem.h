@@ -21,6 +21,9 @@ class ONEPIECE_API USpeakStageSubsystem : public UWorldSubsystem
 	GENERATED_BODY()
 
 public:
+	/// @brief 생성자
+	USpeakStageSubsystem();
+
 	/// @brief Subsystem 초기화 (World가 준비된 후 자동 호출)
 	virtual void Initialize(FSubsystemCollectionBase& Collection) override;
 
