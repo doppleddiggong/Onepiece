@@ -14,6 +14,9 @@
 #include "NetworkData.h"
 #include "ULingoGameHelper.h"
 
+// Speak Stage System
+#include "USpeakStageSubsystem.h"
+
 ALingoGameMode::ALingoGameMode()
 {
 	// GameState와 PlayerState 클래스 설정
@@ -84,6 +87,26 @@ void ALingoGameMode::BeginListenQuest(int32 InStageIndex, const FResponseScenari
 	else
 	{
 		PRINTLOG(TEXT("[GameMode] BeginListenQuest - GameState is null"));
+	}
+}
+
+//--------------------------------------------------------------//
+// Speak Quest Implementation
+//--------------------------------------------------------------//
+
+void ALingoGameMode::BeginSpeakQuest(int32 InStageIndex)
+{
+	if (!HasAuthority())
+		return;
+
+	// Subsystem에 위임
+	if (USpeakStageSubsystem* Subsystem = GetWorld()->GetSubsystem<USpeakStageSubsystem>())
+	{
+		Subsystem->BeginSpeakQuest(InStageIndex);
+	}
+	else
+	{
+		PRINTLOG(TEXT("[LingoGameMode] BeginSpeakQuest - SpeakStageSubsystem not found"));
 	}
 }
 
