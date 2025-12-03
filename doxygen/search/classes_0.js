@@ -24,7 +24,8 @@ var searchData=
   ['aplayercontrol_21',['APlayerControl',['../classAPlayerControl.html',1,'']]],
   ['apopuptesteractor_22',['APopupTesterActor',['../classAPopupTesterActor.html',1,'']]],
   ['aquestionnairekiosk_23',['AQuestionnaireKiosk',['../classAQuestionnaireKiosk.html',1,'']]],
-  ['arobotplayercontroller_24',['ARobotPlayerController',['../classARobotPlayerController.html',1,'']]],
-  ['aspeakstageactor_25',['ASpeakStageActor',['../classASpeakStageActor.html',1,'']]],
-  ['aweightswitch_26',['AWeightSwitch',['../classAWeightSwitch.html',1,'']]]
+  ['arespawntrigger_24',['ARespawnTrigger',['../classARespawnTrigger.html',1,'']]],
+  ['arobotplayercontroller_25',['ARobotPlayerController',['../classARobotPlayerController.html',1,'']]],
+  ['aspeakstageactor_26',['ASpeakStageActor',['../classASpeakStageActor.html',1,'']]],
+  ['aweightswitch_27',['AWeightSwitch',['../classAWeightSwitch.html',1,'']]]
 ];

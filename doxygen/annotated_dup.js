@@ -24,6 +24,7 @@ var annotated_dup =
     [ "APlayerControl", "classAPlayerControl.html", "classAPlayerControl" ],
     [ "APopupTesterActor", "classAPopupTesterActor.html", "classAPopupTesterActor" ],
     [ "AQuestionnaireKiosk", "classAQuestionnaireKiosk.html", "classAQuestionnaireKiosk" ],
+    [ "ARespawnTrigger", "classARespawnTrigger.html", "classARespawnTrigger" ],
     [ "ARobotPlayerController", "classARobotPlayerController.html", null ],
     [ "ASpeakStageActor", "classASpeakStageActor.html", "classASpeakStageActor" ],
     [ "AWeightSwitch", "classAWeightSwitch.html", "classAWeightSwitch" ],

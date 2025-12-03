@@ -15,6 +15,7 @@ var hierarchy =
       [ "APedestalSwitch", "classAPedestalSwitch.html", null ],
       [ "APopupTesterActor", "classAPopupTesterActor.html", null ],
       [ "AQuestionnaireKiosk", "classAQuestionnaireKiosk.html", null ],
+      [ "ARespawnTrigger", "classARespawnTrigger.html", null ],
       [ "ASpeakStageActor", "classASpeakStageActor.html", null ],
       [ "AWeightSwitch", "classAWeightSwitch.html", null ],
       [ "Aluggage", "classAluggage.html", null ]

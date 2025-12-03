@@ -1,5 +1,12 @@
 var NAVTREEINDEX2 =
 {
+"UGameDataManager_8cpp.html":[3,0,0,1,3,0,3],
+"UGameDataManager_8cpp.html#a0af29362e2cb6c08bd40aeed1111680c":[3,0,0,1,3,0,3,0],
+"UGameDataManager_8cpp.html#a1ff5ef106f9d5772e9e4b49225c68db3":[3,0,0,1,3,0,3,4],
+"UGameDataManager_8cpp.html#a308c9c03df6134c95e6f832a217666a1":[3,0,0,1,3,0,3,3],
+"UGameDataManager_8cpp.html#ae23d7e0273152b4b27f3c62f3b4b2a15":[3,0,0,1,3,0,3,2],
+"UGameDataManager_8cpp.html#affad115e3ab2f4304c38c5e6cbfc5346":[3,0,0,1,3,0,3,1],
+"UGameDataManager_8cpp_source.html":[3,0,0,1,3,0,3],
 "UGameDataManager_8h.html":[3,0,0,1,3,1,5],
 "UGameDataManager_8h_source.html":[3,0,0,1,3,1,5],
 "UGameFunctionLibrary_8cpp.html":[3,0,0,1,1,0,0],
@@ -28,9 +35,9 @@ var NAVTREEINDEX2 =
 "UHookSystem_8cpp_source.html":[3,0,0,2,0,0,8],
 "UHookSystem_8h.html":[3,0,0,2,0,1,9],
 "UHookSystem_8h.html#a1c673a19776054c0693b8177e71c5426":[3,0,0,2,0,1,9,0],
-"UHookSystem_8h.html#a1c673a19776054c0693b8177e71c5426aa3f80d8f0f1b4ffa8c475f5d60ea5635":[3,0,0,2,0,1,9,0,2],
 "UHookSystem_8h.html#a1c673a19776054c0693b8177e71c5426aa3f80d8f0f1b4ffa8c475f5d60ea5635":[3,0,0,2,0,1,9,0,0],
 "UHookSystem_8h.html#a1c673a19776054c0693b8177e71c5426aa3f80d8f0f1b4ffa8c475f5d60ea5635":[3,0,0,2,0,1,9,0,1],
+"UHookSystem_8h.html#a1c673a19776054c0693b8177e71c5426aa3f80d8f0f1b4ffa8c475f5d60ea5635":[3,0,0,2,0,1,9,0,2],
 "UHookSystem_8h_source.html":[3,0,0,2,0,1,9],
 "UHoverButton_8cpp.html":[3,0,0,2,8,0,0],
 "UHoverButton_8cpp_source.html":[3,0,0,2,8,0,0],
@@ -118,8 +125,8 @@ var NAVTREEINDEX2 =
 "UParabolaComponent_8h.html#a160b3db1967ea71bee24abc7f977594fa21c2e59531c8710156d34a3c30ac81d5":[3,0,0,0,1,1,3,2,2],
 "UParabolaComponent_8h.html#a160b3db1967ea71bee24abc7f977594fa57cec4137b614c87cb4e24a3d003a3e0":[3,0,0,0,1,1,3,2,1],
 "UParabolaComponent_8h.html#acb24f37a1795b5e9dfdbb98be4898712":[3,0,0,0,1,1,3,3],
-"UParabolaComponent_8h.html#acb24f37a1795b5e9dfdbb98be4898712aa3f80d8f0f1b4ffa8c475f5d60ea5635":[3,0,0,0,1,1,3,3,1],
 "UParabolaComponent_8h.html#acb24f37a1795b5e9dfdbb98be4898712aa3f80d8f0f1b4ffa8c475f5d60ea5635":[3,0,0,0,1,1,3,3,0],
+"UParabolaComponent_8h.html#acb24f37a1795b5e9dfdbb98be4898712aa3f80d8f0f1b4ffa8c475f5d60ea5635":[3,0,0,0,1,1,3,3,1],
 "UParabolaComponent_8h_source.html":[3,0,0,0,1,1,3],
 "UPlayTimer_8cpp.html":[3,0,0,2,6,0,12],
 "UPlayTimer_8cpp_source.html":[3,0,0,2,6,0,12],
@@ -242,12 +249,5 @@ var NAVTREEINDEX2 =
 "classABroadcastTrigger.html#a644ea8ee762fe0849a1b4b56c81c4ef7":[2,0,0,0],
 "classABroadcastTrigger.html#a6eb755bdb37d85f9633450a0aa960d91":[2,0,0,1],
 "classABroadcastTrigger.html#a980c2f35fe8a078a085816eeb1f24557":[2,0,0,8],
-"classABroadcastTrigger.html#ab591dcdfb5b2e380a188b4bf62243f63":[2,0,0,3],
-"classABroadcastTrigger.html#ac098631c12ef81de8fa58b997b4d4344":[2,0,0,2],
-"classABroadcastTrigger.html#aed3c7be4390159bd8b3952ceae67c417":[2,0,0,7],
-"classABroadcastTrigger.html#af594e449d65c6102e216a093507f6c97":[2,0,0,4],
-"classAContactTrigger.html":[2,0,1],
-"classAContactTrigger.html#a008310e9e2eef785bab5fe954c8c9449":[2,0,1,0],
-"classAContactTrigger.html#a20a76abdb1837b44a13e326860d475f7":[2,0,1,10],
-"classAContactTrigger.html#a3f9f5f820f8dfa7baa5de8f675ea0296":[2,0,1,12]
+"classABroadcastTrigger.html#ab591dcdfb5b2e380a188b4bf62243f63":[2,0,0,3]
 };
