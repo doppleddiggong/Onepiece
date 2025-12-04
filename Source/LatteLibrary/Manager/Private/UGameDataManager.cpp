@@ -14,6 +14,7 @@
 // #define CHARACTERINFO_PATH  TEXT("/Game/CustomContents/MasterData/DT_CharacterInfo.DT_CharacterInfo")
 // #define CHARACTERASSET_PATH  TEXT("/Game/CustomContents/MasterData/DT_CharacterAsset.DT_CharacterAsset")
 #define COLORDATA_PATH  TEXT("/Game/CustomContents/MasterData/DT_ColorData.DT_ColorData")
+#define COLORSTYLEDATA_PATH  TEXT("/Game/CustomContents/MasterData/DT_ColorStyleData.DT_ColorStyleData")
 #define LEVELDATA_PATH  TEXT("/Game/CustomContents/MasterData/DT_LevelData.DT_LevelData")
 #define LISTENDATA_PATH  TEXT("/Game/CustomContents/MasterData/DT_ListenData.DT_ListenData")
 #define READDATA_PATH  TEXT("/Game/CustomContents/MasterData/DT_ReadData.DT_ReadData")
@@ -22,6 +23,7 @@
 UGameDataManager::UGameDataManager()
 {
     ColorDataTable = FComponentHelper::LoadAsset<UDataTable>(COLORDATA_PATH);
+    ColorStyleDataTable = FComponentHelper::LoadAsset<UDataTable>(COLORSTYLEDATA_PATH);
     LevelDataTable  = FComponentHelper::LoadAsset<UDataTable>(LEVELDATA_PATH);
     ListenDataTable  = FComponentHelper::LoadAsset<UDataTable>(LISTENDATA_PATH);
     ReadDataTable = FComponentHelper::LoadAsset<UDataTable>(READDATA_PATH);
@@ -42,11 +44,12 @@ void UGameDataManager::Deinitialize()
     // Clear_CharacterInfoData();
     // Clear_CharacterAssetData();
     Clear_ColorData();
+    Clear_ColorStyleData();
     Clear_LevelData();
     Clear_ListenData();
     Clear_ReadData();
     Clear_WordStudyData();
-    
+
     Super::Deinitialize();
 }
 
@@ -57,6 +60,7 @@ void UGameDataManager::ReloadMasterData()
     // LoadData_CharacterInfoData();
     // LoadData_CharacterAssetData();
     LoadData_ColorData();
+    LoadData_ColorStyleData();
     LoadData_LevelData();
     LoadData_ListenData();
     LoadData_ReadData();
@@ -327,6 +331,67 @@ TArray<FColorData> UGameDataManager::GetColorDataByLevel(int32 Level) const
     return Result;
 }
 #pragma endregion COLOR_DATA
+
+#pragma region COLOR_STYLE_DATA
+void UGameDataManager::Clear_ColorStyleData()
+{
+    ColorStyleDataCache.Reset();
+    bLoadColorStyleData = false;
+}
+
+void UGameDataManager::LoadData_ColorStyleData()
+{
+    ColorStyleDataCache.Reset();
+    bLoadColorStyleData = false;
+
+    UDataTable* TableObj = ColorStyleDataTable.LoadSynchronous();
+    if (!TableObj)
+    {
+        PRINTLOG(TEXT("Load failed: %s"), *ColorStyleDataTable.ToString());
+        return;
+    }
+
+    static const FString ContextString(TEXT("ColorStyleDataTable"));
+    for (const FName& RowName : TableObj->GetRowNames())
+    {
+        if (const FColorStyleData* Row = TableObj->FindRow<FColorStyleData>(RowName, ContextString, true))
+        {
+            // RowName을 Enum으로 변환
+            FString EnumString = RowName.ToString();
+            EColorStyleType ColorType = static_cast<EColorStyleType>(
+                StaticEnum<EColorStyleType>()->GetValueByNameString(EnumString)
+            );
+
+            ColorStyleDataCache.Add(ColorType, *Row);
+        }
+    }
+
+    bLoadColorStyleData = true;
+}
+
+bool UGameDataManager::GetColorStyleData(EColorStyleType Type, FColorStyleData& Out) const
+{
+    if (!bLoadColorStyleData)
+        return false;
+
+    if (const FColorStyleData* Found = ColorStyleDataCache.Find(Type))
+    {
+        Out = *Found;
+        return true;
+    }
+
+    PRINTLOG(TEXT("DataGetFail : ColorStyleData Type %s"), *UEnum::GetValueAsString(Type));
+    return false;
+}
+
+TMap<EColorStyleType, FColorStyleData> UGameDataManager::GetAllColorStyleData() const
+{
+    if (!bLoadColorStyleData)
+        return TMap<EColorStyleType, FColorStyleData>();
+
+    return ColorStyleDataCache;
+}
+#pragma endregion COLOR_STYLE_DATA
 
 #pragma region LEVEL_DATA
 void UGameDataManager::Clear_LevelData()

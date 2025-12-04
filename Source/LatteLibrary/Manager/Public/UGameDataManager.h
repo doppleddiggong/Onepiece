@@ -14,6 +14,7 @@
 #include "FCharacterInfoData.h"
 #include "FCharacterAssetData.h"
 #include "FColorData.h"
+#include "FColorStyleData.h"
 #include "FLevelData.h"
 #include "FListenData.h"
 #include "FReadData.h"
@@ -131,6 +132,26 @@ private:
 	UPROPERTY(VisibleAnywhere, Category = "Cache", meta = (AllowPrivateAccess = "true"))
 	TMap<int32, FColorData> ColorDataCache;
 #pragma endregion COLOR_DATA
+
+#pragma region COLOR_STYLE_DATA
+public:
+	UPROPERTY(EditAnywhere, Category="MasterData|ColorStyle")
+	TSoftObjectPtr<UDataTable> ColorStyleDataTable;
+
+	UFUNCTION(BlueprintCallable, Category="MasterData|ColorStyle")
+	bool GetColorStyleData(EColorStyleType Type, FColorStyleData& Out) const;
+
+	UFUNCTION(BlueprintCallable, Category="MasterData|ColorStyle")
+	TMap<EColorStyleType, FColorStyleData> GetAllColorStyleData() const;
+
+private:
+	void Clear_ColorStyleData();
+	void LoadData_ColorStyleData();
+	bool bLoadColorStyleData = false;
+
+	UPROPERTY(VisibleAnywhere, Category = "Cache", meta = (AllowPrivateAccess = "true"))
+	TMap<EColorStyleType, FColorStyleData> ColorStyleDataCache;
+#pragma endregion COLOR_STYLE_DATA
 
 #pragma region LEVEL_DATA
 public:
