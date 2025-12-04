@@ -14,11 +14,12 @@ var classALingoGameState =
     [ "Tick", "classALingoGameState.html#a31fd33726bd2022790f0f3729dbf125d", null ],
     [ "bIsTimerActive", "classALingoGameState.html#ab2b1dfcaf07b61dd099209f135ff97fa", null ],
     [ "bQuestSuccess", "classALingoGameState.html#a4e1e1fc4d3afe87c4241534b52e79c07", null ],
+    [ "CurQuestResult", "classALingoGameState.html#a7f323cfd09fa28c61a92388162db4661", null ],
     [ "CurrentQuest", "classALingoGameState.html#aebb2bd471d58c73555b0e08b34b47005", null ],
-    [ "CurrentQuestResult", "classALingoGameState.html#aec528bd7b659b70ff3524af23299d899", null ],
     [ "CurScenarioData", "classALingoGameState.html#a3cd7a9eb6c217ca289fe7751113a1bef", null ],
     [ "GameState", "classALingoGameState.html#a6610c992fb17d442fc5d90330e941ea7", null ],
     [ "QuestResult", "classALingoGameState.html#a88f0dfa033d3c618bfa74a3c6bc4263e", null ],
     [ "RemainMissionTime", "classALingoGameState.html#abf8b596488b55e3933d5d3fcf016307f", null ],
+    [ "RoomId", "classALingoGameState.html#a098f78f856c35102786b2109ca20c576", null ],
     [ "WrongLuggageList", "classALingoGameState.html#a17e93c1837d6f33a5a3717689177d952", null ]
 ];

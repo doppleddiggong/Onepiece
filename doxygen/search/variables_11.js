@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['ratevalue_0',['RateValue',['../classUWidgetResultItem.html#a55a46f65e4baa9808578a0c190beebea',1,'UWidgetResultItem']]],
+  ['ratevalue_0',['RateValue',['../classUResultStatWidget.html#a336e9040158fe284f64af151dc21eaef',1,'UResultStatWidget']]],
   ['readdatacache_1',['ReadDataCache',['../classUGameDataManager.html#abc07928e1e45a7018825f1f9bd6029a5',1,'UGameDataManager']]],
   ['readdatatable_2',['ReadDataTable',['../classUGameDataManager.html#a6ebdbd7db48577890c97e86e8ace5aa5',1,'UGameDataManager']]],
   ['readindex_3',['ReadIndex',['../structFQuestReadInfo.html#a869772e11b0ea12bdb1fd582d3e5de34',1,'FQuestReadInfo']]],
@@ -25,11 +25,13 @@ var searchData=
   ['righthandsocketname_22',['RightHandSocketName',['../classUCharacterData.html#a657313d3d22fd0899c9d33dc63ba366c',1,'UCharacterData']]],
   ['rightopen_23',['RightOpen',['../classADoor.html#a5062b9cca1f134e98754719512b31ccb',1,'ADoor']]],
   ['robotimc_24',['RobotIMC',['../classAOwlPlayer.html#a195fb98370ddb3790a17a15964335d4c',1,'AOwlPlayer']]],
-  ['rootcomp_25',['RootComp',['../classAGate.html#a429a577267caf33a60f87b3bcf7748e8',1,'AGate']]],
-  ['rootoverlay_26',['RootOverlay',['../classULoadginCircle.html#a7e714f65f74d3fca56c7e21aa2c49588',1,'ULoadginCircle']]],
-  ['rootscenecomp_27',['rootscenecomp',['../classAConveyorButton.html#a1e4e1433ebfb711d13bc1260e65d3ca5',1,'AConveyorButton::RootSceneComp'],['../classAConveyorBelt.html#a277a078d1457960543b561fc98b3a937',1,'AConveyorBelt::RootSceneComp'],['../classAQuestionnaireKiosk.html#ace76f7ef86756597d28ee517e0d1b83f',1,'AQuestionnaireKiosk::RootSceneComp']]],
-  ['rotatoroffset_28',['RotatorOffset',['../structFVFXData.html#ac890ab57708ba9a560918e626822022f',1,'FVFXData']]],
-  ['rt_5fcanvas_29',['rt_canvas',['../classUPopup__WriteBoard.html#a3b8840464e57c2ac855c51b4683b7872',1,'UPopup_WriteBoard::RT_Canvas'],['../classUDrawingBoardWidget.html#a9ec1bb4325aa0ca447099b23d3389cfe',1,'UDrawingBoardWidget::RT_Canvas']]],
-  ['runaction_30',['RunAction',['../classAOwlPlayer.html#a3a17273ada64aa8d321b1cc5c5d1b4e3',1,'AOwlPlayer']]],
-  ['runspeed_31',['runspeed',['../classAOwlPlayer.html#a500b33ae297628c2e7a15d49921e1725',1,'AOwlPlayer::RunSpeed'],['../classAPlayerActor.html#a0e9166eaab407919546d8accca997855',1,'APlayerActor::RunSpeed']]]
+  ['room_5fid_25',['room_id',['../structFRequestReadQuestResult.html#afbb611c653c5de440bf49a41fbfa16bd',1,'FRequestReadQuestResult']]],
+  ['roomid_26',['RoomId',['../classALingoGameState.html#a098f78f856c35102786b2109ca20c576',1,'ALingoGameState']]],
+  ['rootcomp_27',['RootComp',['../classAGate.html#a429a577267caf33a60f87b3bcf7748e8',1,'AGate']]],
+  ['rootoverlay_28',['RootOverlay',['../classULoadginCircle.html#a7e714f65f74d3fca56c7e21aa2c49588',1,'ULoadginCircle']]],
+  ['rootscenecomp_29',['rootscenecomp',['../classAConveyorButton.html#a1e4e1433ebfb711d13bc1260e65d3ca5',1,'AConveyorButton::RootSceneComp'],['../classAConveyorBelt.html#a277a078d1457960543b561fc98b3a937',1,'AConveyorBelt::RootSceneComp'],['../classAQuestionnaireKiosk.html#ace76f7ef86756597d28ee517e0d1b83f',1,'AQuestionnaireKiosk::RootSceneComp']]],
+  ['rotatoroffset_30',['RotatorOffset',['../structFVFXData.html#ac890ab57708ba9a560918e626822022f',1,'FVFXData']]],
+  ['rt_5fcanvas_31',['rt_canvas',['../classUPopup__WriteBoard.html#a3b8840464e57c2ac855c51b4683b7872',1,'UPopup_WriteBoard::RT_Canvas'],['../classUDrawingBoardWidget.html#a9ec1bb4325aa0ca447099b23d3389cfe',1,'UDrawingBoardWidget::RT_Canvas']]],
+  ['runaction_32',['RunAction',['../classAOwlPlayer.html#a3a17273ada64aa8d321b1cc5c5d1b4e3',1,'AOwlPlayer']]],
+  ['runspeed_33',['runspeed',['../classAOwlPlayer.html#a500b33ae297628c2e7a15d49921e1725',1,'AOwlPlayer::RunSpeed'],['../classAPlayerActor.html#a0e9166eaab407919546d8accca997855',1,'APlayerActor::RunSpeed']]]
 ];

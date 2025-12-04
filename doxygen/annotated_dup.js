@@ -115,6 +115,7 @@ var annotated_dup =
     [ "UKLingoNetworkSystem", "classUKLingoNetworkSystem.html", "classUKLingoNetworkSystem" ],
     [ "ULingoGameHelper", "classULingoGameHelper.html", "classULingoGameHelper" ],
     [ "ULingoGameInstance", "classULingoGameInstance.html", "classULingoGameInstance" ],
+    [ "ULingoGameInstanceSubsystem", "classULingoGameInstanceSubsystem.html", "classULingoGameInstanceSubsystem" ],
     [ "ULoadginCircle", "classULoadginCircle.html", "classULoadginCircle" ],
     [ "ULoadingCircleManager", "classULoadingCircleManager.html", "classULoadingCircleManager" ],
     [ "ULobbyWidget", "classULobbyWidget.html", "classULobbyWidget" ],
@@ -136,6 +137,7 @@ var annotated_dup =
     [ "UPopup_WriteBoard", "classUPopup__WriteBoard.html", "classUPopup__WriteBoard" ],
     [ "UPopupManager", "classUPopupManager.html", "classUPopupManager" ],
     [ "UQuestInfoWidget", "classUQuestInfoWidget.html", "classUQuestInfoWidget" ],
+    [ "UResultStatWidget", "classUResultStatWidget.html", "classUResultStatWidget" ],
     [ "URichText", "classURichText.html", "classURichText" ],
     [ "URobotAnimInstance", "classURobotAnimInstance.html", "classURobotAnimInstance" ],
     [ "UScoreManager", "classUScoreManager.html", "classUScoreManager" ],
@@ -154,7 +156,6 @@ var annotated_dup =
     [ "UVoiceCacheManager", "classUVoiceCacheManager.html", "classUVoiceCacheManager" ],
     [ "UVoiceFunctionLibrary", "classUVoiceFunctionLibrary.html", "classUVoiceFunctionLibrary" ],
     [ "UWebSocketSystem", "classUWebSocketSystem.html", "classUWebSocketSystem" ],
-    [ "UWidgetResultItem", "classUWidgetResultItem.html", "classUWidgetResultItem" ],
     [ "UWordButton", "classUWordButton.html", "classUWordButton" ],
     [ "UWordWidget", "classUWordWidget.html", "classUWordWidget" ]
 ];

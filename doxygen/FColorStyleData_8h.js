@@ -2,17 +2,13 @@ var FColorStyleData_8h =
 [
     [ "FColorStyleData", "structFColorStyleData.html", "structFColorStyleData" ],
     [ "EColorStyleType", "FColorStyleData_8h.html#aefed1c032e349fb49159bbab1f32a3eb", [
-      [ "PastelRed", "FColorStyleData_8h.html#aefed1c032e349fb49159bbab1f32a3eba9c9bb2fa92f4447bea795d70b9ef6d49", null ],
-      [ "PastelOrange", "FColorStyleData_8h.html#aefed1c032e349fb49159bbab1f32a3eba4ab854f2963d3fa94f76a286f64f62ce", null ],
-      [ "PastelYellow", "FColorStyleData_8h.html#aefed1c032e349fb49159bbab1f32a3eba6b22bf52ff73591987d6e50b17e09053", null ],
-      [ "PastelLime", "FColorStyleData_8h.html#aefed1c032e349fb49159bbab1f32a3eba0821e742f0262fd35be89c6138b82fab", null ],
-      [ "PastelGreen", "FColorStyleData_8h.html#aefed1c032e349fb49159bbab1f32a3ebaf746b86fac7dfe63cbd1746224dbbec4", null ],
-      [ "PastelMint", "FColorStyleData_8h.html#aefed1c032e349fb49159bbab1f32a3ebac26974255440a92aea27bbd61287955e", null ],
-      [ "PastelSky", "FColorStyleData_8h.html#aefed1c032e349fb49159bbab1f32a3ebacc6f1102c19504c60186b3550c88aa57", null ],
-      [ "PastelBlue", "FColorStyleData_8h.html#aefed1c032e349fb49159bbab1f32a3ebae8165173258d4829ab1465e542514774", null ],
-      [ "PastelNavy", "FColorStyleData_8h.html#aefed1c032e349fb49159bbab1f32a3ebabe6d2b9e2aeb5906c56a5ed704e0c720", null ],
-      [ "PastelPurple", "FColorStyleData_8h.html#aefed1c032e349fb49159bbab1f32a3eba4d9906ef0424db0f724d094320a13cd0", null ],
-      [ "PastelPink", "FColorStyleData_8h.html#aefed1c032e349fb49159bbab1f32a3eba5f12b2e6708abd92c774ab7d9b1c0d2c", null ],
-      [ "PastelBrown", "FColorStyleData_8h.html#aefed1c032e349fb49159bbab1f32a3ebab4b348fbfdd63492c15eb3a6ca3cfe5c", null ]
+      [ "Green", "FColorStyleData_8h.html#aefed1c032e349fb49159bbab1f32a3ebad382816a3cbeed082c9e216e7392eed1", null ],
+      [ "LightGreen", "FColorStyleData_8h.html#aefed1c032e349fb49159bbab1f32a3eba7a6a38bec67cbc2a39ce22f34e4ed8e2", null ],
+      [ "Yellow", "FColorStyleData_8h.html#aefed1c032e349fb49159bbab1f32a3eba51e6cd92b6c45f9affdc158ecca2b8b8", null ],
+      [ "Orange", "FColorStyleData_8h.html#aefed1c032e349fb49159bbab1f32a3eba909cea0c97058cfe2e3ea8d675cb08e1", null ],
+      [ "Blue", "FColorStyleData_8h.html#aefed1c032e349fb49159bbab1f32a3eba9594eec95be70e7b1710f730fdda33d9", null ],
+      [ "Red", "FColorStyleData_8h.html#aefed1c032e349fb49159bbab1f32a3ebaee38e4d5dd68c4e440825018d549cb47", null ],
+      [ "Purple", "FColorStyleData_8h.html#aefed1c032e349fb49159bbab1f32a3ebab9ba865fec061c9706d2fd7ce49c0cc7", null ],
+      [ "Gray", "FColorStyleData_8h.html#aefed1c032e349fb49159bbab1f32a3eba994ae1d9731cebe455aff211bcb25b93", null ]
     ] ]
 ];

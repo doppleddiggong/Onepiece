@@ -3,6 +3,9 @@ var classAPlayerControl =
     [ "APlayerControl", "classAPlayerControl.html#ad52af79fddcd1253723313ab75eec84c", null ],
     [ "BeginPlay", "classAPlayerControl.html#a4cf368d1cfadfd50d83c8af1b10cc623", null ],
     [ "GetControllable", "classAPlayerControl.html#aeda5eb6dcc2b2420cf2dc554a2739477", null ],
+    [ "GetUserId", "classAPlayerControl.html#a28eb86790cd27a79470b7112927c4e24", null ],
+    [ "GetUserInfo", "classAPlayerControl.html#af79e9468151b0d47e8eee1703f73af29", null ],
+    [ "GetUserName", "classAPlayerControl.html#aade4e22a41f88afa68a64c598cf83125", null ],
     [ "OnGrab", "classAPlayerControl.html#ab2dcf9de168c0f1940c769c5c87cb864", null ],
     [ "OnGrabRelease", "classAPlayerControl.html#a53ea83bb9bed9690c52806a5ae4b5657", null ],
     [ "OnHook", "classAPlayerControl.html#abf6c3cf5f3542c2345dc9f75d247284b", null ],
@@ -19,6 +22,7 @@ var classAPlayerControl =
     [ "Server_OnGrabRelease", "classAPlayerControl.html#aeb90da2f39476227c6136a9d78d45c83", null ],
     [ "Server_OnHook", "classAPlayerControl.html#a7159940560b252e8e9f8bfd8c51f1f59", null ],
     [ "Server_OnInteract", "classAPlayerControl.html#adbe39822e30958a476131716276b020c", null ],
+    [ "Server_SetUserInfo", "classAPlayerControl.html#ad9179af6a28b83606e927ffc0635fa27", null ],
     [ "SetupInputComponent", "classAPlayerControl.html#abede09a391c47bdafb3b34a507c80e9b", null ],
     [ "UpdateQuestRole", "classAPlayerControl.html#a49c6d11314d21c34209ac16d0dabcfc3", null ],
     [ "UPROPERTY", "classAPlayerControl.html#a491ff4ed01c0d381f80d40fc3501c334", null ],
@@ -30,5 +34,6 @@ var classAPlayerControl =
     [ "UPROPERTY", "classAPlayerControl.html#a488075f7270924b50ac582e9c3db8410", null ],
     [ "UPROPERTY", "classAPlayerControl.html#ac1c5f159104d66b0ac570e75210432f1", null ],
     [ "UPROPERTY", "classAPlayerControl.html#a964b50a308a69c36ec542af13c4055e7", null ],
-    [ "IMC_Default", "classAPlayerControl.html#a76486f75de5e0e9cb22d8c2a7e506d4a", null ]
+    [ "IMC_Default", "classAPlayerControl.html#a76486f75de5e0e9cb22d8c2a7e506d4a", null ],
+    [ "UserInfo", "classAPlayerControl.html#a585aa05322aa9c59ce315bd1e01e8038", null ]
 ];

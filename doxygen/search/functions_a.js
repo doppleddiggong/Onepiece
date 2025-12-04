@@ -16,6 +16,6 @@ var searchData=
   ['loaddata_5fwordstudydata_13',['LoadData_WordStudyData',['../classUGameDataManager.html#a0afd28aca50dbefb006efafa340999fb',1,'UGameDataManager']]],
   ['loadfromdisk_14',['LoadFromDisk',['../classUVoiceCacheManager.html#afaafa166a680c5c9204d5651311b2279',1,'UVoiceCacheManager']]],
   ['loadidlemontage_15',['LoadIdleMontage',['../classUCharacterData.html#aeabaaf3e50039a6dd4cbe39ac32d77b1',1,'UCharacterData']]],
-  ['loadstyletablefromdatamanager_16',['LoadStyleTableFromDataManager',['../classUWidgetResultItem.html#aaaa8bedcd1d82cbc03e90311d9d6aedd',1,'UWidgetResultItem']]],
+  ['loadstyletable_16',['LoadStyleTable',['../classUResultStatWidget.html#a54e6729504ea85528a33deef1dd64d00',1,'UResultStatWidget']]],
   ['lognetwork_17',['lognetwork',['../classUKLingoNetworkSystem.html#ad71f0b7215e0d685a171bc2d8e7a0a3f',1,'UKLingoNetworkSystem::LogNetwork()'],['../classUWebSocketSystem.html#a864f4f7d23c89554fbe9a6ddad5aedf1',1,'UWebSocketSystem::LogNetwork()']]]
 ];

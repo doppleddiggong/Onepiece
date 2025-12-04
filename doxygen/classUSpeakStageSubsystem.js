@@ -15,6 +15,6 @@ var classUSpeakStageSubsystem =
     [ "Examiner", "classUSpeakStageSubsystem.html#ab1e9a6ea11fc09d336e69a1facde5f36", null ],
     [ "ExaminerClass", "classUSpeakStageSubsystem.html#a31c2a99f3cb6cb744efe2c10e5ad95a9", null ],
     [ "ExaminerSpawnTransform", "classUSpeakStageSubsystem.html#a8498b8465a47a1adcd42470ad7843e7a", null ],
-    [ "SpeakStage", "classUSpeakStageSubsystem.html#a0ece7675a427f0ede223d2fc24db394c", null ],
+    [ "SpeakStageActor", "classUSpeakStageSubsystem.html#af4a6d57f840d3b29e577e99c7e03e95e", null ],
     [ "SpeakStageClass", "classUSpeakStageSubsystem.html#af88e8dfae8fe7aebaca0b8f8a5ec3e18", null ]
 ];

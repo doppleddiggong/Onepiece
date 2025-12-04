@@ -13,12 +13,13 @@ var searchData=
   ['animtargetpercent_10',['AnimTargetPercent',['../classUCircularProgressBar.html#ac082d26a89ed6facfadb25431968b9e0',1,'UCircularProgressBar']]],
   ['answer_11',['answer',['../structFInterviewAnswerData.html#a5575841760326adcc7ba83fa26137328',1,'FInterviewAnswerData::answer'],['../structFRequestInterviewAnswer.html#a6f9bb74ac56aa1ad3d48a4a98a017eac',1,'FRequestInterviewAnswer::answer'],['../structFWriteQuestionData.html#a3231eadaa35a9dbb77b7b3a7b69456c7',1,'FWriteQuestionData::Answer']]],
   ['answerfound_12',['AnswerFound',['../classAWeightSwitch.html#ab519ea888b0690295485652b2e1d2686',1,'AWeightSwitch']]],
-  ['answerkr_13',['AnswerKr',['../structFWriteQuestionData.html#a9e2141898cdf24500baafd6c189fa7d8',1,'FWriteQuestionData']]],
-  ['answerplayer_14',['AnswerPlayer',['../structFQuestSpeakInfo.html#a8b12ce6a2d43838a9bec14277f87b2a5',1,'FQuestSpeakInfo']]],
-  ['arrayactors_15',['ArrayActors',['../classAListActorManager.html#a18b5c65329a94b0c0e930245611443a9',1,'AListActorManager']]],
-  ['atk_16',['ATK',['../structFCharacterInfoData.html#a754a29799806e246eaca043ed78e5ed4',1,'FCharacterInfoData']]],
-  ['attemptcount_17',['attemptcount',['../classALingoPlayerState.html#a84ee00df5be0502498039d5d0d1ec94a',1,'ALingoPlayerState::AttemptCount'],['../structFReadQuestResult.html#a432620275a263d07e012d46debd2e15a',1,'FReadQuestResult::AttemptCount']]],
-  ['audio_5fbase64_18',['audio_base64',['../structFResponseListenAudio.html#a39dfdd52ce3770dfbccf800986ce4607',1,'FResponseListenAudio']]],
-  ['audio_5ftext_19',['audio_text',['../structFResponseListenAudio.html#ac98fb8b7db5c2bbb9bd42bf9fd72f71f',1,'FResponseListenAudio']]],
-  ['audiotext_20',['AudioText',['../classANetworkTesterActor.html#a996eb18cfc8d22f19124b0d1915be991',1,'ANetworkTesterActor']]]
+  ['answeridx_13',['AnswerIdx',['../classUPopup__WriteBoard.html#ad7248b239cc38bc59882838396270883',1,'UPopup_WriteBoard']]],
+  ['answerkr_14',['answerkr',['../classUPopup__WriteBoard.html#acd3183a3e1cd7ce2b26c70b56e5422d3',1,'UPopup_WriteBoard::AnswerKr'],['../structFWriteQuestionData.html#a9e2141898cdf24500baafd6c189fa7d8',1,'FWriteQuestionData::AnswerKr']]],
+  ['answerplayer_15',['AnswerPlayer',['../structFQuestSpeakInfo.html#a8b12ce6a2d43838a9bec14277f87b2a5',1,'FQuestSpeakInfo']]],
+  ['arrayactors_16',['ArrayActors',['../classAListActorManager.html#a18b5c65329a94b0c0e930245611443a9',1,'AListActorManager']]],
+  ['atk_17',['ATK',['../structFCharacterInfoData.html#a754a29799806e246eaca043ed78e5ed4',1,'FCharacterInfoData']]],
+  ['attemptcount_18',['attemptcount',['../classALingoPlayerState.html#a84ee00df5be0502498039d5d0d1ec94a',1,'ALingoPlayerState::AttemptCount'],['../structFReadQuestResult.html#a432620275a263d07e012d46debd2e15a',1,'FReadQuestResult::AttemptCount']]],
+  ['audio_5fbase64_19',['audio_base64',['../structFResponseListenAudio.html#a39dfdd52ce3770dfbccf800986ce4607',1,'FResponseListenAudio']]],
+  ['audio_5ftext_20',['audio_text',['../structFResponseListenAudio.html#ac98fb8b7db5c2bbb9bd42bf9fd72f71f',1,'FResponseListenAudio']]],
+  ['audiotext_21',['AudioText',['../classANetworkTesterActor.html#a996eb18cfc8d22f19124b0d1915be991',1,'ANetworkTesterActor']]]
 ];

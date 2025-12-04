@@ -13,10 +13,10 @@ var dir_550f083bbe519bd985f450628c1369b6 =
     [ "UMainWidget.cpp", "UMainWidget_8cpp.html", "UMainWidget_8cpp" ],
     [ "UPlayTimer.cpp", "UPlayTimer_8cpp.html", null ],
     [ "UQuestInfoWidget.cpp", "UQuestInfoWidget_8cpp.html", null ],
+    [ "UResultStatWidget.cpp", "UResultStatWidget_8cpp.html", "UResultStatWidget_8cpp" ],
     [ "USpeakingJudesWidget.cpp", "USpeakingJudesWidget_8cpp.html", null ],
     [ "USpeakWidget.cpp", "USpeakWidget_8cpp.html", null ],
     [ "UStateWidget.cpp", "UStateWidget_8cpp.html", null ],
-    [ "UWidgetResultItem.cpp", "UWidgetResultItem_8cpp.html", null ],
     [ "UWordButton.cpp", "UWordButton_8cpp.html", null ],
     [ "UWordWidget.cpp", "UWordWidget_8cpp.html", null ]
 ];

@@ -13,6 +13,7 @@ var classULingoGameHelper =
     [ "GetSpeakStageActor", "classULingoGameHelper.html#a7841ecb4e3125ad48efba9920250bf1a", null ],
     [ "GetStageEndMessage", "classULingoGameHelper.html#ad0262a81ba3a11cd1666a4edd5a91ed5", null ],
     [ "GetStageStartMessage", "classULingoGameHelper.html#a402b331d7071b55ff971ee1a99d7c026", null ],
+    [ "GetUnixTimestampInt64", "classULingoGameHelper.html#a22a311ff0293415aca5bf90fee7191c8", null ],
     [ "HideMouseCursor", "classULingoGameHelper.html#a569e70240af4850b5b1a0dafd26d4033", null ],
     [ "IsMultiPlay", "classULingoGameHelper.html#aaffb56063f7fe4916e89d589c02ee8cb", null ],
     [ "ShowMouseCursor", "classULingoGameHelper.html#af5fbc9538e6adda28f03d547c33ecc48", null ]

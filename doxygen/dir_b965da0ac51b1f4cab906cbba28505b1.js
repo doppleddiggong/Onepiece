@@ -7,5 +7,6 @@ var dir_b965da0ac51b1f4cab906cbba28505b1 =
     [ "ASpeakStageActor.cpp", "ASpeakStageActor_8cpp.html", null ],
     [ "ULingoGameHelper.cpp", "ULingoGameHelper_8cpp.html", null ],
     [ "ULingoGameInstance.cpp", "ULingoGameInstance_8cpp.html", null ],
-    [ "USpeakStageSubsystem.cpp", "USpeakStageSubsystem_8cpp.html", null ]
+    [ "ULingoGameInstanceSubsystem.cpp", "ULingoGameInstanceSubsystem_8cpp.html", null ],
+    [ "USpeakStageSubsystem.cpp", "USpeakStageSubsystem_8cpp.html", "USpeakStageSubsystem_8cpp" ]
 ];

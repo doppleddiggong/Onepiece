@@ -147,6 +147,7 @@ var hierarchy =
       [ "UGameSoundManager", "classUGameSoundManager.html", null ],
       [ "UGameVFXManager", "classUGameVFXManager.html", null ],
       [ "UKLingoNetworkSystem", "classUKLingoNetworkSystem.html", null ],
+      [ "ULingoGameInstanceSubsystem", "classULingoGameInstanceSubsystem.html", null ],
       [ "UObjectPoolManager", "classUObjectPoolManager.html", null ],
       [ "USequenceManager", "classUSequenceManager.html", null ],
       [ "UVoiceCacheManager", "classUVoiceCacheManager.html", null ],
@@ -189,6 +190,7 @@ var hierarchy =
       [ "UPopup_InterviewItem", "classUPopup__InterviewItem.html", null ],
       [ "UPopup_QuestionnaireItem", "classUPopup__QuestionnaireItem.html", null ],
       [ "UQuestInfoWidget", "classUQuestInfoWidget.html", null ],
+      [ "UResultStatWidget", "classUResultStatWidget.html", null ],
       [ "URichText", "classURichText.html", null ],
       [ "USessionInfoWidget", "classUSessionInfoWidget.html", null ],
       [ "USpeakWidget", "classUSpeakWidget.html", null ],
@@ -196,7 +198,6 @@ var hierarchy =
       [ "UStartWidget", "classUStartWidget.html", null ],
       [ "UStateWidget", "classUStateWidget.html", null ],
       [ "UTextureButton", "classUTextureButton.html", null ],
-      [ "UWidgetResultItem", "classUWidgetResultItem.html", null ],
       [ "UWordButton", "classUWordButton.html", null ],
       [ "UWordWidget", "classUWordWidget.html", null ]
     ] ],

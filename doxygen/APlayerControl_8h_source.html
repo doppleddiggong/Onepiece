@@ -131,72 +131,87 @@ $(document).ready(function(){initNavTree('APlayerControl_8h_source.html',''); in
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="keywordtype">void</span> UpdateQuestRole(<a class="code hl_enumeration" href="EQuestRole_8h.html#af9534ca095b724046bf40abddcbb95e9">EQuestRole</a> QuestRole);</div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="keyword">protected</span>:</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> BeginPlay() <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> SetupInputComponent() <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="comment">// --- Input Assets ---</span></div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    UPROPERTY(EditDefaultsOnly, Category=<span class="stringliteral">&quot;Input&quot;</span>)</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="classAPlayerControl.html#a76486f75de5e0e9cb22d8c2a7e506d4a">   32</a></span>    TObjectPtr&lt;class UInputMappingContext&gt; IMC_Default; </div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="classAPlayerControl.html#a488075f7270924b50ac582e9c3db8410">   34</a></span>    UPROPERTY(EditDefaultsOnly, Category=&quot;Input&quot;) TObjectPtr&lt;class UInputAction&gt; IA_Move;</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="classAPlayerControl.html#add19d4043dc2a7905bde12db5a4aa06e">   35</a></span>    UPROPERTY(EditDefaultsOnly, Category=&quot;Input&quot;) TObjectPtr&lt;class UInputAction&gt; IA_Look;</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="classAPlayerControl.html#a720fd22947495a5eda54fa56302da212">   36</a></span>    UPROPERTY(EditDefaultsOnly, Category=&quot;Input&quot;) TObjectPtr&lt;class UInputAction&gt; IA_Jump;</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="classAPlayerControl.html#ac1c5f159104d66b0ac570e75210432f1">   37</a></span>    UPROPERTY(EditDefaultsOnly, Category=&quot;Input&quot;) TObjectPtr&lt;class UInputAction&gt; IA_Record;</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="classAPlayerControl.html#a491ff4ed01c0d381f80d40fc3501c334">   38</a></span>    UPROPERTY(EditDefaultsOnly, Category=&quot;Input&quot;) TObjectPtr&lt;class UInputAction&gt; IA_Grab;</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="classAPlayerControl.html#ade2263b7c2eee9b7d9a11ec0b32aaf71">   39</a></span>    UPROPERTY(EditDefaultsOnly, Category=&quot;Input&quot;) TObjectPtr&lt;class UInputAction&gt; IA_Interact;</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="classAPlayerControl.html#a964b50a308a69c36ec542af13c4055e7">   40</a></span>    UPROPERTY(EditDefaultsOnly, Category=&quot;Input&quot;) TObjectPtr&lt;class UInputAction&gt; IA_Run;</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="classAPlayerControl.html#abe104ffe65a1a00e6f211b5207f6b2ed">   41</a></span>    UPROPERTY(EditDefaultsOnly, Category=&quot;Input&quot;) TObjectPtr&lt;class UInputAction&gt; IA_Info;</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="classAPlayerControl.html#ab72a01e87fb65e5dfbd39676023f378f">   42</a></span>    UPROPERTY(EditDefaultsOnly, Category=&quot;Input&quot;) TObjectPtr&lt;class UInputAction&gt; IA_Hook;</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="comment">// --- Handlers ---</span></div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="keywordtype">void</span> OnMove(const FInputActionValue&amp; Value);</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="keywordtype">void</span> OnLook(const FInputActionValue&amp; Value);</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="keywordtype">void</span> OnStopMove(const FInputActionValue&amp; Value);</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="keywordtype">void</span> OnJump(const FInputActionValue&amp; Value);</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="keywordtype">void</span> OnRun(const FInputActionValue&amp; Value);</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="keywordtype">void</span> OnRecordPressed(const FInputActionValue&amp; Value);</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="keywordtype">void</span> OnRecordReleased(const FInputActionValue&amp; Value);</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="keywordtype">void</span> OnGrab(const FInputActionValue&amp; Value);</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <span class="keywordtype">void</span> OnGrabRelease(const FInputActionValue&amp; Value);</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="keywordtype">void</span> OnInteract(const FInputActionValue&amp; Value);</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <span class="comment">// --- User Info (레벨 전환에서 유지됨) ---</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="classAPlayerControl.html#aade4e22a41f88afa68a64c598cf83125">   27</a></span>    FString <a class="code hl_function" href="classAPlayerControl.html#aade4e22a41f88afa68a64c598cf83125">GetUserName</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> UserInfo.username; }</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="classAPlayerControl.html#a28eb86790cd27a79470b7112927c4e24">   28</a></span>    int32 <a class="code hl_function" href="classAPlayerControl.html#a28eb86790cd27a79470b7112927c4e24">GetUserId</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> UserInfo.id; }</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="classAPlayerControl.html#af79e9468151b0d47e8eee1703f73af29">   29</a></span>    <span class="keyword">const</span> <a class="code hl_struct" href="structFResponseUserMe.html">FResponseUserMe</a>&amp; <a class="code hl_function" href="classAPlayerControl.html#af79e9468151b0d47e8eee1703f73af29">GetUserInfo</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> UserInfo; }</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> BeginPlay() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> SetupInputComponent() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="comment">// --- Input Assets ---</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    UPROPERTY(EditDefaultsOnly, Category=<span class="stringliteral">&quot;Input&quot;</span>)</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="classAPlayerControl.html#a76486f75de5e0e9cb22d8c2a7e506d4a">   37</a></span>    TObjectPtr&lt;class UInputMappingContext&gt; IMC_Default; </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="classAPlayerControl.html#a488075f7270924b50ac582e9c3db8410">   39</a></span>    UPROPERTY(EditDefaultsOnly, Category=&quot;Input&quot;) TObjectPtr&lt;class UInputAction&gt; IA_Move;</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="classAPlayerControl.html#add19d4043dc2a7905bde12db5a4aa06e">   40</a></span>    UPROPERTY(EditDefaultsOnly, Category=&quot;Input&quot;) TObjectPtr&lt;class UInputAction&gt; IA_Look;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="classAPlayerControl.html#a720fd22947495a5eda54fa56302da212">   41</a></span>    UPROPERTY(EditDefaultsOnly, Category=&quot;Input&quot;) TObjectPtr&lt;class UInputAction&gt; IA_Jump;</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="classAPlayerControl.html#ac1c5f159104d66b0ac570e75210432f1">   42</a></span>    UPROPERTY(EditDefaultsOnly, Category=&quot;Input&quot;) TObjectPtr&lt;class UInputAction&gt; IA_Record;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="classAPlayerControl.html#a491ff4ed01c0d381f80d40fc3501c334">   43</a></span>    UPROPERTY(EditDefaultsOnly, Category=&quot;Input&quot;) TObjectPtr&lt;class UInputAction&gt; IA_Grab;</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="classAPlayerControl.html#ade2263b7c2eee9b7d9a11ec0b32aaf71">   44</a></span>    UPROPERTY(EditDefaultsOnly, Category=&quot;Input&quot;) TObjectPtr&lt;class UInputAction&gt; IA_Interact;</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="classAPlayerControl.html#a964b50a308a69c36ec542af13c4055e7">   45</a></span>    UPROPERTY(EditDefaultsOnly, Category=&quot;Input&quot;) TObjectPtr&lt;class UInputAction&gt; IA_Run;</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="classAPlayerControl.html#abe104ffe65a1a00e6f211b5207f6b2ed">   46</a></span>    UPROPERTY(EditDefaultsOnly, Category=&quot;Input&quot;) TObjectPtr&lt;class UInputAction&gt; IA_Info;</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="classAPlayerControl.html#ab72a01e87fb65e5dfbd39676023f378f">   47</a></span>    UPROPERTY(EditDefaultsOnly, Category=&quot;Input&quot;) TObjectPtr&lt;class UInputAction&gt; IA_Hook;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="comment">// --- Handlers ---</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="keywordtype">void</span> OnMove(const FInputActionValue&amp; Value);</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="keywordtype">void</span> OnLook(const FInputActionValue&amp; Value);</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="keywordtype">void</span> OnStopMove(const FInputActionValue&amp; Value);</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="keywordtype">void</span> OnJump(const FInputActionValue&amp; Value);</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="keywordtype">void</span> OnRun(const FInputActionValue&amp; Value);</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="keywordtype">void</span> OnRecordPressed(const FInputActionValue&amp; Value);</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="keywordtype">void</span> OnRecordReleased(const FInputActionValue&amp; Value);</div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="keywordtype">void</span> OnInfo(const FInputActionValue&amp; Value);</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="keywordtype">void</span> OnHook(const FInputActionValue&amp; Value);</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    UFUNCTION(Server, Reliable)</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno"><a class="line" href="classAPlayerControl.html#aa79cca5ec444d9c7add4fcecc5dde23b">   65</a></span>    <span class="keywordtype">void</span> Server_OnGrab();   </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="keywordtype">void</span> OnGrab(const FInputActionValue&amp; Value);</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="keywordtype">void</span> OnGrabRelease(const FInputActionValue&amp; Value);</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <span class="keywordtype">void</span> OnInteract(const FInputActionValue&amp; Value);</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <span class="keywordtype">void</span> OnInfo(const FInputActionValue&amp; Value);</div>
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    UFUNCTION(Server, Reliable)</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno"><a class="line" href="classAPlayerControl.html#aeb90da2f39476227c6136a9d78d45c83">   68</a></span>    <span class="keywordtype">void</span> Server_OnGrabRelease();</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    UFUNCTION(Server, Reliable)</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno"><a class="line" href="classAPlayerControl.html#adbe39822e30958a476131716276b020c">   71</a></span>    <span class="keywordtype">void</span> Server_OnInteract();</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    UFUNCTION(Server, Reliable)</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno"><a class="line" href="classAPlayerControl.html#a7159940560b252e8e9f8bfd8c51f1f59">   74</a></span>    <span class="keywordtype">void</span> Server_OnHook();</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>private:</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    class <a class="code hl_class" href="classIControllable.html">IControllable</a>* GetControllable() const;</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>};</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <span class="keywordtype">void</span> OnHook(const FInputActionValue&amp; Value);</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    UFUNCTION(Server, Reliable)</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno"><a class="line" href="classAPlayerControl.html#aa79cca5ec444d9c7add4fcecc5dde23b">   70</a></span>    <span class="keywordtype">void</span> Server_OnGrab();   </div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    UFUNCTION(Server, Reliable)</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno"><a class="line" href="classAPlayerControl.html#aeb90da2f39476227c6136a9d78d45c83">   73</a></span>    <span class="keywordtype">void</span> Server_OnGrabRelease();</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    UFUNCTION(Server, Reliable)</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno"><a class="line" href="classAPlayerControl.html#adbe39822e30958a476131716276b020c">   76</a></span>    <span class="keywordtype">void</span> Server_OnInteract();</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    UFUNCTION(Server, Reliable)</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno"><a class="line" href="classAPlayerControl.html#a7159940560b252e8e9f8bfd8c51f1f59">   79</a></span>    <span class="keywordtype">void</span> Server_OnHook();</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    UFUNCTION(Server, Reliable)</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno"><a class="line" href="classAPlayerControl.html#ad9179af6a28b83606e927ffc0635fa27">   82</a></span>    <span class="keywordtype">void</span> Server_SetUserInfo(const <a class="code hl_struct" href="structFResponseUserMe.html">FResponseUserMe</a>&amp; InUserInfo);</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>private:</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    class <a class="code hl_class" href="classIControllable.html">IControllable</a>* GetControllable() const;</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    UPROPERTY()</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno"><a class="line" href="classAPlayerControl.html#a585aa05322aa9c59ce315bd1e01e8038">   89</a></span>    <a class="code hl_struct" href="structFResponseUserMe.html">FResponseUserMe</a> UserInfo;</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>};</div>
 </div>
 <div class="ttc" id="aALingoPlayerState_8h_html"><div class="ttname"><a href="ALingoPlayerState_8h.html">ALingoPlayerState.h</a></div></div>
 <div class="ttc" id="aEQuestRole_8h_html_af9534ca095b724046bf40abddcbb95e9"><div class="ttname"><a href="EQuestRole_8h.html#af9534ca095b724046bf40abddcbb95e9">EQuestRole</a></div><div class="ttdeci">EQuestRole</div><div class="ttdoc">Read 퀘스트에서 플레이어의 역할을 정의합니다.</div><div class="ttdef"><b>Definition</b> <a href="EQuestRole_8h_source.html#l00005">EQuestRole.h:6</a></div></div>
 <div class="ttc" id="aNetworkData_8h_html"><div class="ttname"><a href="NetworkData_8h.html">NetworkData.h</a></div><div class="ttdoc">네트워크 요청과 응답에 사용되는 구조체 및 설정을 정의합니다.</div></div>
 <div class="ttc" id="aclassAPlayerControl_html"><div class="ttname"><a href="classAPlayerControl.html">APlayerControl</a></div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8h_source.html#l00017">APlayerControl.h:18</a></div></div>
+<div class="ttc" id="aclassAPlayerControl_html_a28eb86790cd27a79470b7112927c4e24"><div class="ttname"><a href="classAPlayerControl.html#a28eb86790cd27a79470b7112927c4e24">APlayerControl::GetUserId</a></div><div class="ttdeci">int32 GetUserId() const</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8h_source.html#l00028">APlayerControl.h:28</a></div></div>
+<div class="ttc" id="aclassAPlayerControl_html_aade4e22a41f88afa68a64c598cf83125"><div class="ttname"><a href="classAPlayerControl.html#aade4e22a41f88afa68a64c598cf83125">APlayerControl::GetUserName</a></div><div class="ttdeci">FString GetUserName() const</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8h_source.html#l00027">APlayerControl.h:27</a></div></div>
+<div class="ttc" id="aclassAPlayerControl_html_af79e9468151b0d47e8eee1703f73af29"><div class="ttname"><a href="classAPlayerControl.html#af79e9468151b0d47e8eee1703f73af29">APlayerControl::GetUserInfo</a></div><div class="ttdeci">const FResponseUserMe &amp; GetUserInfo() const</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8h_source.html#l00029">APlayerControl.h:29</a></div></div>
 <div class="ttc" id="aclassIControllable_html"><div class="ttname"><a href="classIControllable.html">IControllable</a></div><div class="ttdef"><b>Definition</b> <a href="IControllable_8h_source.html#l00023">IControllable.h:24</a></div></div>
+<div class="ttc" id="astructFResponseUserMe_html"><div class="ttname"><a href="structFResponseUserMe.html">FResponseUserMe</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00470">NetworkData.h:471</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_71a9f6b769ee24fe8598c19ea2d70480.html">Character</a></li><li class="navelem"><a class="el" href="dir_82ba722683279238407f867a1ffc0276.html">Public</a></li><li class="navelem"><a class="el" href="APlayerControl_8h.html">APlayerControl.h</a></li>
-    <li class="footer">생성시간 : 목 12월 4 2025 07:17:48, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 목 12월 4 2025 13:26:24, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>
