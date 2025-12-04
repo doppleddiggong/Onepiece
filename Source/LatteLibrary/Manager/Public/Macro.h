@@ -14,7 +14,8 @@ static ClassName* Get(UObject* WorldContext) \
 { \
 if (!WorldContext) \
 return nullptr; \
-if (auto* GI = WorldContext->GetWorld()->GetGameInstance()) \
+if (auto* World = WorldContext->GetWorld()) \
+if (auto* GI = World->GetGameInstance()) \
 return GI->GetSubsystem<ClassName>(); \
 return nullptr; \
 }
@@ -66,8 +67,9 @@ static ClassName* Get(UObject* WorldContext) \
 { \
 	if (!WorldContext) \
 		return nullptr; \
-	if (auto* GI = WorldContext->GetWorld()->GetGameInstance()) \
-		return GI->GetSubsystem<ClassName>(); \
+	if (auto* World = WorldContext->GetWorld()) \
+		if (auto* GI = World->GetGameInstance()) \
+			return GI->GetSubsystem<ClassName>(); \
 	return nullptr; \
 }
 
