@@ -1,6 +1,6 @@
 // Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
 
-#include "UWidgetResultItem.h"
+#include "UResultStatWidget.h"
 
 #include "UCircularProgressBar.h"
 #include "Components/WidgetSwitcher.h"
@@ -9,31 +9,33 @@
 #include "Components/Border.h"
 #include "UGameDataManager.h"
 
-void UWidgetResultItem::NativePreConstruct()
+#define COLORSTYLEDATA_PATH  TEXT("/Game/CustomContents/MasterData/DT_ColorStyleData.DT_ColorStyleData")
+
+void UResultStatWidget::NativePreConstruct()
 {
 	Super::NativePreConstruct();
 
 	// StyleTable이 비어있으면 자동으로 로드
 	if (StyleTable.Num() == 0)
 	{
-		LoadStyleTableFromDataManager();
+		LoadStyleTable();
 	}
 
-	UpdateActivePanel();
+	UpdateWidgetPanel();
 	ApplyStyle();
 }
 
-void UWidgetResultItem::SetWidgetType(EResultItemWidgetType InType)
+void UResultStatWidget::SetWidgetType(const EResultItemWidgetType InType)
 {
 	WidgetType = InType;
-	UpdateActivePanel();
+	UpdateWidgetPanel();
 }
 
 /* -----------------------------
    패널 데이터 설정
  -----------------------------*/
 
-void UWidgetResultItem::SetGradeValue(EResourceTextureType TextureType)
+void UResultStatWidget::SetGradeValue(const EResourceTextureType TextureType)
 {
 	if (!Image_Grade)
 		return;
@@ -53,7 +55,7 @@ void UWidgetResultItem::SetGradeValue(EResourceTextureType TextureType)
 	Image_Grade->SetBrush(Brush);
 }
 
-void UWidgetResultItem::SetScoreValue(float InValue)
+void UResultStatWidget::SetScoreValue(const float InValue)
 {
 	ScoreValue = InValue;
 
@@ -63,7 +65,7 @@ void UWidgetResultItem::SetScoreValue(float InValue)
 	}
 }
 
-void UWidgetResultItem::SetRateValue(float InPercent)
+void UResultStatWidget::SetRateValue(const float InPercent)
 {
 	RateValue = InPercent;
 
@@ -76,7 +78,7 @@ void UWidgetResultItem::SetRateValue(float InPercent)
 	ImageProgress_Rate->SetPercent(InPercent);
 }
 
-void UWidgetResultItem::SetSymbolValue(float InValue)
+void UResultStatWidget::SetSymbolValue(const float InValue)
 {
 	SymbolValue = InValue;
 
@@ -90,29 +92,26 @@ void UWidgetResultItem::SetSymbolValue(float InValue)
 /* -----------------------------
    스타일 적용
  -----------------------------*/
-void UWidgetResultItem::SetColorType(EColorStyleType InType)
+void UResultStatWidget::SetColorType(const EColorStyleType InType)
 {
 	ColorType = InType;
 	ApplyStyle();
 }
 
-void UWidgetResultItem::LoadStyleTableFromDataManager()
+void UResultStatWidget::LoadStyleTable()
 {
-	UGameDataManager* DataManager = UGameDataManager::Get(this);
-	if (DataManager)
+	if (auto DM = UGameDataManager::Get(this))
 	{
 		// 런타임: GameDataManager에서 가져오기
-		StyleTable = DataManager->GetAllColorStyleData();
+		StyleTable = DM->GetAllColorStyleData();
 		return;
 	}
 
 #if WITH_EDITOR
 	// 에디터 모드: DataTable 직접 로드
-	UDataTable* ColorStyleTable = LoadObject<UDataTable>(nullptr, TEXT("/Game/CustomContents/MasterData/DT_ColorStyleData.DT_ColorStyleData"));
-	if (ColorStyleTable)
+	if (auto ColorStyleTable = LoadObject<UDataTable>(nullptr, COLORSTYLEDATA_PATH ))
 	{
-		TArray<FName> RowNames = ColorStyleTable->GetRowNames();
-		for (const FName& RowName : RowNames)
+		for (const FName& RowName : ColorStyleTable->GetRowNames())
 		{
 			if (FColorStyleData* Row = ColorStyleTable->FindRow<FColorStyleData>(RowName, TEXT("")))
 			{
@@ -127,7 +126,7 @@ void UWidgetResultItem::LoadStyleTableFromDataManager()
 #endif
 }
 
-void UWidgetResultItem::ApplyStyle()
+void UResultStatWidget::ApplyStyle()
 {
 	if (!StyleTable.Contains(ColorType))
 		return;
@@ -147,7 +146,7 @@ void UWidgetResultItem::ApplyStyle()
 /* -----------------------------
    WidgetSwitcher 제어
  -----------------------------*/
-void UWidgetResultItem::UpdateActivePanel()
+void UResultStatWidget::UpdateWidgetPanel()
 {
 	if (!WidgetSwitcher)
 		return;

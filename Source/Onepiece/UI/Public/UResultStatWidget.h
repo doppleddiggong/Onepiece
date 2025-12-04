@@ -6,7 +6,7 @@
 #include "FColorStyleData.h"
 #include "FResourceTextureData.h"
 #include "Blueprint/UserWidget.h"
-#include "UWidgetResultItem.generated.h"
+#include "UResultStatWidget.generated.h"
 
 UENUM(BlueprintType)
 enum class EResultItemWidgetType : uint8
@@ -18,7 +18,7 @@ enum class EResultItemWidgetType : uint8
 };
 
 UCLASS()
-class ONEPIECE_API UWidgetResultItem : public UUserWidget
+class ONEPIECE_API UResultStatWidget : public UUserWidget
 {
 	GENERATED_BODY()
 
@@ -28,32 +28,31 @@ protected:
 public:
 	/** 위젯 타입 설정 */
 	UFUNCTION(BlueprintCallable)
-	void SetWidgetType(EResultItemWidgetType InType);
+	void SetWidgetType(const EResultItemWidgetType InType);
 
 	/** 패널 데이터 설정 */
 	UFUNCTION(BlueprintCallable)
-	void SetGradeValue(EResourceTextureType TextureType);
+	void SetGradeValue(const EResourceTextureType TextureType);
 
 	UFUNCTION(BlueprintCallable)
-	void SetScoreValue(float InValue);
+	void SetScoreValue(const float InValue);
 
 	UFUNCTION(BlueprintCallable)
-	void SetRateValue(float InPercent);
+	void SetRateValue(const float InPercent);
 
 	UFUNCTION(BlueprintCallable)
-	void SetSymbolValue(float InValue);
+	void SetSymbolValue(const float InValue);
 
 	/** 스타일 설정 */
 	UFUNCTION(BlueprintCallable)
-	void SetColorType(EColorStyleType InType);
+	void SetColorType(const EColorStyleType InType);
 
-	/** GameDataManager에서 StyleTable 로드 */
-	UFUNCTION(BlueprintCallable)
-	void LoadStyleTableFromDataManager();
 
 private:
 	void ApplyStyle();
-	void UpdateActivePanel();
+	void LoadStyleTable();
+
+	void UpdateWidgetPanel();
 
 public:
 	// ----------------------------

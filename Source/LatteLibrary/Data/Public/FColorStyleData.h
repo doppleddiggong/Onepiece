@@ -10,18 +10,14 @@
 UENUM(BlueprintType)
 enum class EColorStyleType : uint8
 {
-	PastelRed,
-	PastelOrange,
-	PastelYellow,
-	PastelLime,
-	PastelGreen,
-	PastelMint,
-	PastelSky,
-	PastelBlue,
-	PastelNavy,
-	PastelPurple,
-	PastelPink,
-	PastelBrown,
+	Green,
+	LightGreen,
+	Yellow,
+	Orange,
+	Blue,
+	Red,
+	Purple,
+	Gray
 };
 
 USTRUCT(BlueprintType)
