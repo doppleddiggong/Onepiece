@@ -13,6 +13,12 @@ void UWidgetResultItem::NativePreConstruct()
 {
 	Super::NativePreConstruct();
 
+	// StyleTable이 비어있으면 자동으로 로드
+	if (StyleTable.Num() == 0)
+	{
+		LoadStyleTableFromDataManager();
+	}
+
 	UpdateActivePanel();
 	ApplyStyle();
 }
@@ -93,13 +99,32 @@ void UWidgetResultItem::SetColorType(EColorStyleType InType)
 void UWidgetResultItem::LoadStyleTableFromDataManager()
 {
 	UGameDataManager* DataManager = UGameDataManager::Get(this);
-	if (!DataManager)
+	if (DataManager)
 	{
+		// 런타임: GameDataManager에서 가져오기
+		StyleTable = DataManager->GetAllColorStyleData();
 		return;
 	}
 
-	// GameDataManager에서 모든 ColorStyleData 가져오기
-	StyleTable = DataManager->GetAllColorStyleData();
+#if WITH_EDITOR
+	// 에디터 모드: DataTable 직접 로드
+	UDataTable* ColorStyleTable = LoadObject<UDataTable>(nullptr, TEXT("/Game/CustomContents/MasterData/DT_ColorStyleData.DT_ColorStyleData"));
+	if (ColorStyleTable)
+	{
+		TArray<FName> RowNames = ColorStyleTable->GetRowNames();
+		for (const FName& RowName : RowNames)
+		{
+			if (FColorStyleData* Row = ColorStyleTable->FindRow<FColorStyleData>(RowName, TEXT("")))
+			{
+				FString EnumString = RowName.ToString();
+				EColorStyleType TempColorType = static_cast<EColorStyleType>(
+					StaticEnum<EColorStyleType>()->GetValueByNameString(EnumString)
+				);
+				StyleTable.Add(TempColorType, *Row);
+			}
+		}
+	}
+#endif
 }
 
 void UWidgetResultItem::ApplyStyle()
