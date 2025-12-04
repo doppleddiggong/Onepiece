@@ -4,6 +4,7 @@
 #include "Popup_QuestionnaireItem.h"
 
 #include "GameLogging.h"
+#include "InputTriggers.h"
 #include "NetworkData.h"
 #include "Popup_WriteBoard.h"
 #include "UPopupManager.h"
@@ -43,11 +44,6 @@ void UPopup_QuestionnaireItem::InitItem(const FWriteQuestionData& Data)
 		FString QuestionText = Data.WordData.QuestionEn;
 		Text_Question_En->SetText(FText::FromString(QuestionText));
 	}
-	
-	// TODO: 예상 답변에 따른 WriteBoard 길이 조절
-	
-	// TODO: 예상 답변 힌트 생성
-	
 }
 
 void UPopup_QuestionnaireItem::OnClickButton()
@@ -56,7 +52,17 @@ void UPopup_QuestionnaireItem::OnClickButton()
 	{
 		if (const auto Popup = Cast<UPopup_WriteBoard>(PopupMgr->ShowPopup(EPopupType::WriteBoard)))
 		{
-			Popup->InitPopup(QuestionData.Id);
+			// TODO: 단어 수 및 글자 수 구하기
+			TArray<FString> Tokens;
+			QuestionData.AnswerKr.ParseIntoArrayWS(Tokens);
+			for (const auto& token : Tokens)
+			{
+				PRINT_STRING(TEXT("Question 글 : %s"), *token);
+			}
+			PRINT_STRING(TEXT("Question 단어 수 : %d"), Tokens.Num());
+			PRINT_STRING(TEXT("Question 글자 수 : %d"), QuestionData.AnswerKr.Len());
+			PRINT_STRING(TEXT("Question 첫 단어 글자 수 : %d"), Tokens[0].Len());
+			Popup->InitPopup(QuestionData.Id, Tokens.Num(), Tokens[0].Len());
 		}
 	}
 }

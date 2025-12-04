@@ -25,9 +25,13 @@ protected:
 	
 	// Widgets
 	UPROPERTY(BlueprintReadOnly, meta=(BindWidget))
-	TObjectPtr<class UCanvasPanel> CanvasPanel_WriteBoard;
+	TObjectPtr<class UOverlay> Overlay_WriteBoard;
 	UPROPERTY(BlueprintReadOnly, meta=(BindWidget))
 	TObjectPtr<class UImage> Image_Canvas;
+	UPROPERTY(BlueprintReadOnly, meta=(BindWidget))
+	TObjectPtr<class USizeBox> SizeBox_Border;
+	UPROPERTY(BlueprintReadOnly, meta=(BindWidget))
+	TObjectPtr<class USizeBox> SizeBox_Canvas;
 	UPROPERTY(BlueprintReadOnly, meta=(BindWidget))
 	TObjectPtr<class UImageButton> Button_Clear;
 	UPROPERTY(BlueprintReadOnly, meta=(BindWidget))
@@ -48,11 +52,16 @@ protected:
 	
 public:
 	// Init Popup
-	void InitPopup(int32 Qid);
+	void InitPopup(int32 Qid, int32 wordNum, int32 letterNum);
 	
 private:
 	// Question Id
 	int32 Qid;
+	
+	// Canvas Step Length
+	float stepLength = 360;
+	// Border Min Width
+	float borderMinWidth = 560;
 	
 	// Close Draw Window
 	UFUNCTION()

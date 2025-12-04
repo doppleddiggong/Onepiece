@@ -10,6 +10,7 @@
 #include "UPopupManager.h"
 #include "UTextureButton.h"
 #include "Components/Image.h"
+#include "Components/SizeBox.h"
 #include "Engine/Canvas.h"
 #include "Kismet/KismetRenderingLibrary.h"
 
@@ -87,9 +88,21 @@ FReply UPopup_WriteBoard::NativeOnMouseMove(const FGeometry& InGeometry, const F
 	return FReply::Handled();
 }
 
-void UPopup_WriteBoard::InitPopup(int32 qid)
+void UPopup_WriteBoard::InitPopup(int32 qid, int32 wordNum, int32 letterNum)
 {
 	this->Qid = qid;
+	
+	// TODO: 예상 답변에 따른 WriteBoard 길이 조절
+	// TODO: 세부 사항 - 이제 화살표 만들어서 단어 여러 개 작성할 수 있게 하기 
+	// 1. Render Target 길이 늘리기
+	RT_Canvas->ResizeTarget(stepLength * letterNum, stepLength);
+	// 2. Image의 길이 늘리기
+	Image_Canvas->SetDesiredSizeOverride(FVector2D(stepLength * letterNum, stepLength));
+	SizeBox_Border->SetWidthOverride(borderMinWidth + stepLength * letterNum);
+	PRINTLOG(TEXT("Border width %f"), SizeBox_Border->GetWidthOverride());
+	SizeBox_Canvas->SetWidthOverride(stepLength * letterNum);
+	
+	// TODO: 예상 답변 힌트 생성
 }
 
 void UPopup_WriteBoard::CloseDrawWindow()
