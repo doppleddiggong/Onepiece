@@ -512,11 +512,18 @@ void UKLingoNetworkSystem::RequestListenAudio(const FString& AudioText, FRespons
 {
 	if (auto ACM = UVoiceCacheManager::Get(GetWorld()))
 	{
+		// HACK, 임시로 서버로 보내지 않게 하기 위해서
+		// 일레븐랩스를 사용해서 하는데, 500이슈가 뜬다
+		// 일레븐 랩스의 토큰을 모두 소진해서,
+		// 그러면 이것을 당분간 해결하기전까지는 발생안하기 위해서 데이터를 스킵한다.
+		
+		auto TestAudioText = TEXT("test_audio");
+
 		TArray<uint8> CachedAudio;
-		if (ACM->TryGetCachedAudio(AudioText, CachedAudio))
+		if (ACM->TryGetCachedAudio(TestAudioText, CachedAudio))
 		{
 			FResponseListenAudio Response;
-			Response.audio_text = AudioText;
+			Response.audio_text = TestAudioText;
 			Response.audio_base64 = CachedAudio;
 
 			// ✅ 비동기 Delegate 호출 (타이밍 문제 해결)
