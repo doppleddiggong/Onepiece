@@ -62,7 +62,7 @@ void UPopup_QuestionnaireItem::OnClickButton()
 			PRINT_STRING(TEXT("Question 단어 수 : %d"), Tokens.Num());
 			PRINT_STRING(TEXT("Question 글자 수 : %d"), QuestionData.AnswerKr.Len());
 			PRINT_STRING(TEXT("Question 첫 단어 글자 수 : %d"), Tokens[0].Len());
-			Popup->InitPopup(QuestionData.Id, Tokens.Num(), Tokens[0].Len());
+			Popup->InitPopup(QuestionData.Id, Tokens);
 		}
 	}
 }

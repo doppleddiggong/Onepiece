@@ -38,6 +38,10 @@ protected:
 	TObjectPtr<class UImageButton> Button_Save;
 	UPROPERTY(BlueprintReadOnly, meta=(BindWidget))
 	TObjectPtr<class UTextureButton> Button_Close;
+	UPROPERTY(BlueprintReadOnly, meta=(BindWidget))
+	TObjectPtr<class UButton> Button_Right;
+	UPROPERTY(BlueprintReadOnly, meta=(BindWidget))
+	TObjectPtr<class UButton> Button_Left;
 	
 	// Values
 	UPROPERTY(BlueprintReadOnly)
@@ -50,14 +54,26 @@ protected:
 	virtual FReply NativeOnMouseButtonUp(const FGeometry& InGeometry, const FPointerEvent& InMouseEvent) override;
 	virtual FReply NativeOnMouseMove(const FGeometry& InGeometry, const FPointerEvent& InMouseEvent) override;
 	
+	// Button Event
+	UFUNCTION()
+	void OnButtonRightClicked();
+	UFUNCTION()
+	void OnButtonLeftClicked();
+	
+	// Adjust WriteBoard Length
+	void AdjustLength();
+	
 public:
 	// Init Popup
-	void InitPopup(int32 Qid, int32 wordNum, int32 letterNum);
+	void InitPopup(int32 InQid, const TArray<FString>& InTokens);
 	
 private:
 	// Question Id
 	int32 Qid;
+	TArray<FString> AnswerKr;
 	
+	// Now Answer Index
+	int32 AnswerIdx = 0;
 	// Canvas Step Length
 	float stepLength = 360;
 	// Border Min Width
