@@ -1,6 +1,8 @@
 // Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
 
 #include "UWidgetResultItem.h"
+
+#include "UCircularProgressBar.h"
 #include "Components/WidgetSwitcher.h"
 #include "Components/TextBlock.h"
 #include "Components/Image.h"
@@ -25,14 +27,24 @@ void UWidgetResultItem::SetWidgetType(EResultItemWidgetType InType)
    패널 데이터 설정
  -----------------------------*/
 
-void UWidgetResultItem::SetGradeValue(float InValue)
+void UWidgetResultItem::SetGradeValue(EResourceTextureType TextureType)
 {
-	GradeValue = InValue;
+	if (!Image_Grade)
+		return;
 
-	// if (Image_Grade)
-	// {
-	// 	Image_Grade->SetText(FText::AsNumber(InValue));
-	// }
+	// GameDataManager에서 TextureType에 해당하는 텍스처 가져오기
+	UGameDataManager* DataManager = UGameDataManager::Get(this);
+	if (!DataManager)
+		return;
+
+	UTexture2D* Texture = DataManager->GetTexture(TextureType);
+	if (!Texture)
+		return;
+
+	// Image의 Brush 데이터 변경
+	FSlateBrush Brush = Image_Grade->GetBrush();
+	Brush.SetResourceObject(Texture);
+	Image_Grade->SetBrush(Brush);
 }
 
 void UWidgetResultItem::SetScoreValue(float InValue)
@@ -54,6 +66,8 @@ void UWidgetResultItem::SetRateValue(float InPercent)
 		FString Str = FString::Printf(TEXT("%.1f%%"), InPercent * 100.f);
 		Txt_Rate->SetText(FText::FromString(Str));
 	}
+
+	ImageProgress_Rate->SetPercent(InPercent);
 }
 
 void UWidgetResultItem::SetSymbolValue(float InValue)

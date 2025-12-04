@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "FColorStyleData.h"
+#include "FResourceTextureData.h"
 #include "Blueprint/UserWidget.h"
 #include "UWidgetResultItem.generated.h"
 
@@ -31,7 +32,7 @@ public:
 
 	/** 패널 데이터 설정 */
 	UFUNCTION(BlueprintCallable)
-	void SetGradeValue(float InValue);
+	void SetGradeValue(EResourceTextureType TextureType);
 
 	UFUNCTION(BlueprintCallable)
 	void SetScoreValue(float InValue);

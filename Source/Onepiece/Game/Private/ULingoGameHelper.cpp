@@ -7,6 +7,7 @@
 #include "ALingoGameState.h"
 #include "ALingoPlayerState.h"
 #include "APlayerActor.h"
+#include "FResourceTextureData.h"
 #include "USpeakStageSubsystem.h"
 #include "Kismet/GameplayStatics.h"
 #include "Onepiece/Onepiece.h"
@@ -130,6 +131,21 @@ float ULingoGameHelper::GetMissionPlayTime(const int Level)
 	default: return 180;
 	}	
 }
+
+EResourceTextureType ULingoGameHelper::ConvertGradeType(const float Score)
+{
+	if (Score >= 90.0f)
+		return EResourceTextureType::Rarity_S;
+	else if (Score >= 80.0f)
+		return EResourceTextureType::Rarity_A;
+	else if (Score >= 70.0f)
+		return EResourceTextureType::Rarity_B;
+	else if (Score >= 60.0f)
+		return EResourceTextureType::Rarity_C;
+	else                                                                                                                                                                                                                          
+		return EResourceTextureType::Rarity_D;
+}
+
 
 FString ULingoGameHelper::GetFormatTimer(const float InRemainTime )
 {

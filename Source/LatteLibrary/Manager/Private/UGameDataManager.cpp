@@ -15,6 +15,7 @@
 // #define CHARACTERASSET_PATH  TEXT("/Game/CustomContents/MasterData/DT_CharacterAsset.DT_CharacterAsset")
 #define COLORDATA_PATH  TEXT("/Game/CustomContents/MasterData/DT_ColorData.DT_ColorData")
 #define COLORSTYLEDATA_PATH  TEXT("/Game/CustomContents/MasterData/DT_ColorStyleData.DT_ColorStyleData")
+#define RESOURCETEXTUREDATA_PATH  TEXT("/Game/CustomContents/MasterData/DT_ResourceTextureData.DT_ResourceTextureData")
 #define LEVELDATA_PATH  TEXT("/Game/CustomContents/MasterData/DT_LevelData.DT_LevelData")
 #define LISTENDATA_PATH  TEXT("/Game/CustomContents/MasterData/DT_ListenData.DT_ListenData")
 #define READDATA_PATH  TEXT("/Game/CustomContents/MasterData/DT_ReadData.DT_ReadData")
@@ -24,6 +25,7 @@ UGameDataManager::UGameDataManager()
 {
     ColorDataTable = FComponentHelper::LoadAsset<UDataTable>(COLORDATA_PATH);
     ColorStyleDataTable = FComponentHelper::LoadAsset<UDataTable>(COLORSTYLEDATA_PATH);
+    ResourceTextureDataTable = FComponentHelper::LoadAsset<UDataTable>(RESOURCETEXTUREDATA_PATH);
     LevelDataTable  = FComponentHelper::LoadAsset<UDataTable>(LEVELDATA_PATH);
     ListenDataTable  = FComponentHelper::LoadAsset<UDataTable>(LISTENDATA_PATH);
     ReadDataTable = FComponentHelper::LoadAsset<UDataTable>(READDATA_PATH);
@@ -45,6 +47,7 @@ void UGameDataManager::Deinitialize()
     // Clear_CharacterAssetData();
     Clear_ColorData();
     Clear_ColorStyleData();
+    Clear_ResourceTextureData();
     Clear_LevelData();
     Clear_ListenData();
     Clear_ReadData();
@@ -61,6 +64,7 @@ void UGameDataManager::ReloadMasterData()
     // LoadData_CharacterAssetData();
     LoadData_ColorData();
     LoadData_ColorStyleData();
+    LoadData_ResourceTextureData();
     LoadData_LevelData();
     LoadData_ListenData();
     LoadData_ReadData();
@@ -392,6 +396,73 @@ TMap<EColorStyleType, FColorStyleData> UGameDataManager::GetAllColorStyleData() 
     return ColorStyleDataCache;
 }
 #pragma endregion COLOR_STYLE_DATA
+
+#pragma region RESOURCE_TEXTURE_DATA
+void UGameDataManager::Clear_ResourceTextureData()
+{
+    ResourceTextureDataCache.Reset();
+    bLoadResourceTextureData = false;
+}
+
+void UGameDataManager::LoadData_ResourceTextureData()
+{
+    ResourceTextureDataCache.Reset();
+    bLoadResourceTextureData = false;
+
+    UDataTable* TableObj = ResourceTextureDataTable.LoadSynchronous();
+    if (!TableObj)
+    {
+        PRINTLOG(TEXT("Load failed: %s"), *ResourceTextureDataTable.ToString());
+        return;
+    }
+
+    static const FString ContextString(TEXT("ResourceTextureDataTable"));
+    for (const FName& RowName : TableObj->GetRowNames())
+    {
+        if (const FResourceTextureData* Row = TableObj->FindRow<FResourceTextureData>(RowName, ContextString, true))
+        {
+            // RowName을 Enum으로 변환
+            FString EnumString = RowName.ToString();
+            EResourceTextureType TextureType = static_cast<EResourceTextureType>(
+                StaticEnum<EResourceTextureType>()->GetValueByNameString(EnumString)
+            );
+
+            ResourceTextureDataCache.Add(TextureType, *Row);
+        }
+    }
+
+    bLoadResourceTextureData = true;
+}
+
+bool UGameDataManager::GetResourceTextureData(EResourceTextureType Type, FResourceTextureData& Out) const
+{
+    if (!bLoadResourceTextureData)
+        return false;
+
+    if (const FResourceTextureData* Found = ResourceTextureDataCache.Find(Type))
+    {
+        Out = *Found;
+        return true;
+    }
+
+    PRINTLOG(TEXT("DataGetFail : ResourceTextureData Type %s"), *UEnum::GetValueAsString(Type));
+    return false;
+}
+
+UTexture2D* UGameDataManager::GetTexture(EResourceTextureType Type) const
+{
+    if (!bLoadResourceTextureData)
+        return nullptr;
+
+    if (const FResourceTextureData* Found = ResourceTextureDataCache.Find(Type))
+    {
+        // TSoftObjectPtr를 동기적으로 로드
+        return Found->Texture.LoadSynchronous();
+    }
+
+    return nullptr;
+}
+#pragma endregion RESOURCE_TEXTURE_DATA
 
 #pragma region LEVEL_DATA
 void UGameDataManager::Clear_LevelData()

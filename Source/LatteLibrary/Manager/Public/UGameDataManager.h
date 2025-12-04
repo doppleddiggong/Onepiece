@@ -15,6 +15,7 @@
 #include "FCharacterAssetData.h"
 #include "FColorData.h"
 #include "FColorStyleData.h"
+#include "FResourceTextureData.h"
 #include "FLevelData.h"
 #include "FListenData.h"
 #include "FReadData.h"
@@ -152,6 +153,26 @@ private:
 	UPROPERTY(VisibleAnywhere, Category = "Cache", meta = (AllowPrivateAccess = "true"))
 	TMap<EColorStyleType, FColorStyleData> ColorStyleDataCache;
 #pragma endregion COLOR_STYLE_DATA
+
+#pragma region RESOURCE_TEXTURE_DATA
+public:
+	UPROPERTY(EditAnywhere, Category="MasterData|ResourceTexture")
+	TSoftObjectPtr<UDataTable> ResourceTextureDataTable;
+
+	UFUNCTION(BlueprintCallable, Category="MasterData|ResourceTexture")
+	bool GetResourceTextureData(EResourceTextureType Type, FResourceTextureData& Out) const;
+
+	UFUNCTION(BlueprintCallable, Category="MasterData|ResourceTexture")
+	UTexture2D* GetTexture(EResourceTextureType Type) const;
+
+private:
+	void Clear_ResourceTextureData();
+	void LoadData_ResourceTextureData();
+	bool bLoadResourceTextureData = false;
+
+	UPROPERTY(VisibleAnywhere, Category = "Cache", meta = (AllowPrivateAccess = "true"))
+	TMap<EResourceTextureType, FResourceTextureData> ResourceTextureDataCache;
+#pragma endregion RESOURCE_TEXTURE_DATA
 
 #pragma region LEVEL_DATA
 public:
