@@ -25,7 +25,7 @@ void UScoreManager::GetAccuracyPercentage(FString& OutPercentage)
 	if (GS)
 	{
 		// 틀린 개수
-		int32 WrongCnt = GS->WrongLuggageList.Num();
+		int32 WrongCnt = GS->WrongLuggageList.Num() -1;
 		
 		// 정답률 계산
 		float Percentage = ((10.f - WrongCnt) / 10.f) * 100.f;

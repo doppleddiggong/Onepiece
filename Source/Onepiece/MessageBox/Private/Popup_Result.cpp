@@ -6,6 +6,7 @@
 #include "ALingoGameState.h"
 #include "GameLogging.h"
 #include "ScoreManager.h"
+#include "UCircularProgressBar.h"
 #include "UImageButton.h"
 #include "UKLingoNetworkSystem.h"
 #include "UPopupManager.h"
@@ -149,6 +150,21 @@ void UPopup_Result::SetAccuracy()
 
 void UPopup_Result::SetRankingRate()
 {
+	RequestRankingResult();
+
+	ALingoGameState* GS = Cast<ALingoGameState>(GetWorld()->GetGameState());
+	if (GS)
+	{
+		float RankPercent = 1 - GS->CurQuestResult.top_percent;
+		CircleBar_Ranking->StartProgress(0, RankPercent, 1.5f);
+
+		int32 RoundedVal = FMath::RoundToInt(RankPercent);
+		Txt_Rank->SetText(FText::FromString(FString::Printf(TEXT("Top %d%%"), RoundedVal)));
+	}
+}
+
+void UPopup_Result::RequestRankingResult()
+{
 	ALingoGameState* GS = Cast<ALingoGameState>(GetWorld()->GetGameState());
 	if (GS)
 	{
@@ -156,7 +172,7 @@ void UPopup_Result::SetRankingRate()
 		if (UKLingoNetworkSystem* Network = UKLingoNetworkSystem::Get(GetWorld()))
 		{
 			FRequestReadQuestResult Request;
-			Request.user_id = 1;
+			Request.user_id = 4;
 			Request.scenario_id = GS->CurrentQuest.ScenarioIndex;
 			Request.stage_type = (int32)GS->CurrentQuest.QuestType;
 			Request.state_type = GS->CurrentQuest.ScenarioLevel;
@@ -173,6 +189,12 @@ void UPopup_Result::OnQuestResultResponse(FResponseQuestResult& ResponseData, bo
 {
 	if (bWasSuccessful)
 	{
+		ALingoGameState* GS = Cast<ALingoGameState>(GetWorld()->GetGameState());
+		if (GS)
+		{
+			GS->CurQuestResult = ResponseData;
+		}
+		
 		PRINTLOG(TEXT("[Result] Quest result submitted successfully"));
 		PRINTLOG(TEXT("[Result] Grade: %s, Point: %d, Top Percent: %.2f%%"),
 			*ResponseData.grade, ResponseData.point, ResponseData.top_percent);
