@@ -27,6 +27,8 @@ public:
 	/// @brief Subsystem 초기화 (World가 준비된 후 자동 호출)
 	virtual void Initialize(FSubsystemCollectionBase& Collection) override;
 
+	virtual void OnWorldBeginPlay(UWorld& InWorld) override;  // 추가!                                                                                                                                                                                            
+	
 	/// @brief Subsystem 종료 (World 정리 시 자동 호출)
 	virtual void Deinitialize() override;
 
