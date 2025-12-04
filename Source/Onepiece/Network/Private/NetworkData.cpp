@@ -6,6 +6,7 @@
  */
 #include "NetworkData.h"
 
+#include "ALingoGameState.h"
 #include "JsonObjectConverter.h"
 #include "NetworkLog.h"
 #include "UCommonFunctionLibrary.h"
@@ -510,6 +511,63 @@ void FResponseInterviewAnswer::PrintData() const
 {
 	NETWORK_LOG(TEXT("[Interview Answer] Response processed successfully"));
 }
+
+// =================================================================================
+// Read & Listen Result API Structures
+// =================================================================================
+
+bool FRequestReadQuestResult::ToJsonString(FString& OutJson) const
+{
+	TSharedPtr<FJsonObject> JsonObject = MakeShared<FJsonObject>();
+	
+	JsonObject->SetNumberField(TEXT("user_id"), user_id);
+	JsonObject->SetNumberField(TEXT("scenario_id"), scenario_id);
+	JsonObject->SetNumberField(TEXT("stage_type"), stage_type);
+	JsonObject->SetNumberField(TEXT("state_type"), state_type);
+	JsonObject->SetNumberField(TEXT("result_time"), result_time);
+
+	TArray<TSharedPtr<FJsonValue>> WrongIdxArray;
+	for (int32 Idx : wrong_idx)
+	{
+		WrongIdxArray.Add(MakeShared<FJsonValueNumber>(Idx));
+	}
+	JsonObject->SetArrayField(TEXT("wrong_idx"), WrongIdxArray);
+
+	TSharedRef<TJsonWriter<>> Writer = TJsonWriterFactory<>::Create(&OutJson);
+	return FJsonSerializer::Serialize(JsonObject.ToSharedRef(), Writer);
+}
+
+void FResponseQuestResult::SetFromHttpResponse(const TSharedPtr<class IHttpResponse, ESPMode::ThreadSafe>& Response)
+{
+	if (Response.IsValid())
+	{
+		return;
+	}
+
+	FString JsonString = Response->GetContentAsString();
+	TSharedPtr<FJsonObject> JsonObject;
+	TSharedRef<TJsonReader<>> Reader = TJsonReaderFactory<>::Create(JsonString);
+
+	if (FJsonSerializer::Deserialize(Reader, JsonObject) && JsonObject.IsValid())
+	{
+		grade = JsonObject->GetStringField(TEXT("grade"));
+		point = JsonObject->GetNumberField(TEXT("point"));
+		top_percent = JsonObject->GetNumberField(TEXT("top_percent"));
+	}
+}
+
+void FResponseQuestResult::PrintData() const
+{
+	FString OutputString;
+	FJsonObjectConverter::UStructToJsonObjectString(
+		*this,
+		OutputString,
+		0,
+		0                                                                                                                                                                                                                         
+	);
+	NETWORK_LOG(TEXT("[Quest Result] Response: %s"), *OutputString);
+}
+
 
 /*
 

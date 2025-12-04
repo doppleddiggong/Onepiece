@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "UBasePopup.h"
+#include "NetworkData.h"
 #include "Popup_Result.generated.h"
 
 /**
@@ -67,4 +68,11 @@ public:
 	class UTextBlock* Txt_Accuracy;
 
 	void SetAccuracy();
+
+public:
+	// 랭킹 백분율
+	
+	
+	void SetRankingRate();
+	void OnQuestResultResponse(FResponseQuestResult& ResponseData, bool bWasSuccessful);
 };

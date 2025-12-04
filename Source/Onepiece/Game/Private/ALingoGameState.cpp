@@ -43,6 +43,7 @@ void ALingoGameState::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutL
 	DOREPLIFETIME(ALingoGameState, bQuestSuccess);
 
 	DOREPLIFETIME(ALingoGameState, WrongLuggageList);
+	DOREPLIFETIME(ALingoGameState, CurrentQuestResult);
 }
 
 void ALingoGameState::Tick(float DeltaSeconds)

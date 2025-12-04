@@ -94,6 +94,9 @@ namespace RequestAPI
 
 	static FString interview_hello = FString("/interview/hello");
 	static FString interview_answer = FString("/interview/answer/post");
+
+	// @brief 읽기&듣기 퀘스트 정답 추출 엔드포인트입니다.
+	static FString quest_result = FString("/scenario/stage/result/post");
 	
     /*
 
@@ -742,6 +745,60 @@ USTRUCT(BlueprintType)
 struct FResponseInterviewAnswer
 {
 	GENERATED_BODY()
+
+	/// @brief HTTP 응답을 파싱해 구조체를 채웁니다.
+	void SetFromHttpResponse(const TSharedPtr<class IHttpResponse, ESPMode::ThreadSafe>& Response);
+
+	/// @brief 디버그 로그에 응답 내용을 출력합니다.
+	void PrintData() const;
+};
+
+// =================================================================================
+// Read & Listen Result API Structures
+// =================================================================================
+/// Request
+USTRUCT(BlueprintType)
+struct FRequestReadQuestResult
+{
+	GENERATED_BODY()
+
+	UPROPERTY(BlueprintReadWrite, Category = "QuestResult")
+	int32 user_id;
+
+	UPROPERTY(BlueprintReadWrite, Category = "QuestResult")
+	int32 scenario_id;
+
+	UPROPERTY(BlueprintReadWrite, Category = "QuestResult")
+	int32 stage_type;
+
+	UPROPERTY(BlueprintReadWrite, Category = "QuestResult")
+	int32 state_type;
+
+	UPROPERTY(BlueprintReadWrite, Category = "QuestResult")
+	int32 result_time;
+
+	UPROPERTY(BlueprintReadWrite, Category = "QuestResult")
+	TArray<int32> wrong_idx;
+	
+	/// @brief 구조체를 JSON 문자열로 변환합니다.
+	bool ToJsonString(FString& OutJson) const;
+};
+
+/// Response
+DECLARE_DELEGATE_TwoParams(FResponseQuestResultDelegate, FResponseQuestResult&, bool);
+USTRUCT(BlueprintType)
+struct FResponseQuestResult
+{
+	GENERATED_BODY()
+
+	UPROPERTY(BlueprintReadWrite, Category = "QuestResult")
+	FString grade;
+
+	UPROPERTY(BlueprintReadWrite, Category = "QuestResult")
+	int32 point;
+
+	UPROPERTY(BlueprintReadWrite, Category = "QuestResult")
+	float top_percent;
 
 	/// @brief HTTP 응답을 파싱해 구조체를 채웁니다.
 	void SetFromHttpResponse(const TSharedPtr<class IHttpResponse, ESPMode::ThreadSafe>& Response);

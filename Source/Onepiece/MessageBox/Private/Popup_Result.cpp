@@ -4,8 +4,10 @@
 #include "Popup_Result.h"
 
 #include "ALingoGameState.h"
+#include "GameLogging.h"
 #include "ScoreManager.h"
 #include "UImageButton.h"
+#include "UKLingoNetworkSystem.h"
 #include "UPopupManager.h"
 #include "UPopup_ReadQuest.h"
 #include "UTextureButton.h"
@@ -130,6 +132,7 @@ void UPopup_Result::SetTimeTaken()
 		Txt_TimeTaken->SetText(FText::FromString(Format));
 
 		SetTimeRank();
+		SetRankingRate();
 	}
 }
 
@@ -141,5 +144,43 @@ void UPopup_Result::SetAccuracy()
 		ScoreMgr->GetAccuracyPercentage(Accuracy);
 
 		Txt_Accuracy->SetText(FText::FromString(Accuracy));
+	}
+}
+
+void UPopup_Result::SetRankingRate()
+{
+	ALingoGameState* GS = Cast<ALingoGameState>(GetWorld()->GetGameState());
+	if (GS)
+	{
+		// 네트워크 송신
+		if (UKLingoNetworkSystem* Network = UKLingoNetworkSystem::Get(GetWorld()))
+		{
+			FRequestReadQuestResult Request;
+			Request.user_id = 1;
+			Request.scenario_id = GS->CurrentQuest.ScenarioIndex;
+			Request.stage_type = (int32)GS->CurrentQuest.QuestType;
+			Request.state_type = GS->CurrentQuest.ScenarioLevel;
+			Request.result_time = TimeTaken;
+			Request.wrong_idx = GS->WrongLuggageList;
+
+			Network->RequestQuestResult(Request,
+					FResponseQuestResultDelegate::CreateUObject(this, &UPopup_Result::OnQuestResultResponse));
+		}
+	}
+}
+
+void UPopup_Result::OnQuestResultResponse(FResponseQuestResult& ResponseData, bool bWasSuccessful)
+{
+	if (bWasSuccessful)
+	{
+		PRINTLOG(TEXT("[Result] Quest result submitted successfully"));
+		PRINTLOG(TEXT("[Result] Grade: %s, Point: %d, Top Percent: %.2f%%"),
+			*ResponseData.grade, ResponseData.point, ResponseData.top_percent);
+		
+		ResponseData.PrintData();
+	}
+	else                                                                                                                                                                                                                          
+	{
+		PRINTLOG(TEXT("[Result] Quest result submission failed"));
 	}
 }
