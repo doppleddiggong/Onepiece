@@ -43,6 +43,7 @@ void ALingoGameState::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutL
 	DOREPLIFETIME(ALingoGameState, bQuestSuccess);
 
 	DOREPLIFETIME(ALingoGameState, WrongLuggageList);
+	DOREPLIFETIME(ALingoGameState, CurrentQuestResult);
 }
 
 void ALingoGameState::Tick(float DeltaSeconds)
@@ -81,6 +82,7 @@ void ALingoGameState::SetStageData(int InScenarioIndex, int InQuestIndex, const 
 		CurScenarioData = InResponseData;
 		break;
 	case EQuestType::Listen:
+		CurScenarioData = InResponseData;
 		break;
 	case EQuestType::Write:
 		break;
