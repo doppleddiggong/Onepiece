@@ -77,11 +77,12 @@ void AQuestionnaireKiosk::ServerRPC_OnInteractionTriggered_Implementation(AActor
 	ClientRPC_OnInteractionTriggered(Interactor);
 }
 
-// TODO: 서버에서 json 데이터 받기
 void AQuestionnaireKiosk::ClientRPC_OnInteractionTriggered_Implementation(AActor* Interactor)
 {
 	if (const auto PopupMgr = UPopupManager::Get(GetWorld()))
 	{
+		// TODO: 쓰기 퀘스트 json 데이터 받기 요청
+		
 		if (const auto Popup = Cast<UPopup_Questionnaire>(PopupMgr->ShowPopup(EPopupType::Questionnaire)))
 		{
 			// 테스트용 더미 데이터 생성
