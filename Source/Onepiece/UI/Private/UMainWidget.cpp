@@ -17,9 +17,11 @@
 #include "UQuestInfoWidget.h"
 #include "USpeakWidget.h"
 #include "USpeakStageSubsystem.h"
+#include "UTutorMessage.h"
 #include "Engine/World.h"
 #include "Components/Image.h"
 #include "Engine/Texture2D.h"
+#include "Animation/WidgetAnimation.h"
 #include "GameFramework/PlayerState.h"
 #include "GameFramework/PlayerController.h"
 
@@ -58,6 +60,21 @@ void UMainWidget::NativeConstruct()
 	// SpeakWidget 초기 숨김 (BindWidgetOptional이므로 null 체크 필요)
 	if (SpeakWidget)
 		SpeakWidget->SetWidgetVisibility(false);
+
+	// TutorMessage 초기화 및 애니메이션 콜백 바인딩
+	if (TutorMessage)
+	{
+		TutorMessage->SetVisibility(ESlateVisibility::HitTestInvisible);
+		
+		if (TutorHideAnim)
+		{
+			FWidgetAnimationDynamicEvent HideDelegate;
+			HideDelegate.BindDynamic(this, &UMainWidget::OnTutorHideComplete);
+			BindToAnimationFinished(TutorHideAnim, HideDelegate);
+		}
+		
+		bIsTutorVisible = false;
+	}
 
 	StopMissionTimer();
 }
@@ -188,4 +205,90 @@ void UMainWidget::UpdateSpeakWidget()
 
 	// SpeakWidget UI 업데이트
 	SpeakWidget->UpdateSpeakStageUI(SpeakStage, LocalPlayerState);
+}
+
+void UMainWidget::SetTutorMessage(const FText& NewMessage)
+{
+	if (!TutorMessage)
+		return;
+
+	// 기존 타이머가 있으면 클리어
+	if (UWorld* World = GetWorld())
+	{
+		if (AutoHideTimerHandle.IsValid())
+		{
+			World->GetTimerManager().ClearTimer(AutoHideTimerHandle);
+		}
+	}
+
+	if (bIsTutorVisible)
+	{
+		// 표시 중이면 Hide → SetText → Show
+		PendingMessage = NewMessage;
+		bHasPendingMessage = true;
+		
+		if (TutorHideAnim)
+			PlayAnimation(TutorHideAnim);
+	}
+	else
+	{
+		// 숨김 상태면 바로 SetText → Show
+		TutorMessage->SetMessageText(NewMessage);
+		
+		if (TutorShowAnim)
+		{
+			PlayAnimation(TutorShowAnim);
+			bIsTutorVisible = true;
+
+			// 자동 Hide 타이머 시작
+			StartAutoHideTimer();
+		}
+	}
+}
+
+void UMainWidget::OnTutorHideComplete()
+{
+	bIsTutorVisible = false;
+	
+	if (bHasPendingMessage && TutorMessage)
+	{
+		bHasPendingMessage = false;
+		TutorMessage->SetMessageText(PendingMessage);
+		
+		if (TutorShowAnim)
+		{
+			PlayAnimation(TutorShowAnim);
+			bIsTutorVisible = true;
+
+			// 자동 Hide 타이머 시작
+			StartAutoHideTimer();
+		}
+	}
+}
+
+void UMainWidget::StartAutoHideTimer()
+{
+	UWorld* World = GetWorld();
+	if (!World)
+		return;
+
+	// 기존 타이머 클리어 (안전성을 위해)
+	if (AutoHideTimerHandle.IsValid())
+	{
+		World->GetTimerManager().ClearTimer(AutoHideTimerHandle);
+	}
+
+	// 지정된 시간 후 자동으로 Hide 애니메이션 재생
+	World->GetTimerManager().SetTimer(
+		AutoHideTimerHandle,
+		[this]()
+		{
+			if (bIsTutorVisible && TutorHideAnim)
+			{
+				PlayAnimation(TutorHideAnim);
+			}
+		},
+		TutorMessageDisplayDuration,
+		false
+	);
 }
