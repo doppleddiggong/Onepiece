@@ -81,6 +81,7 @@ void ALingoGameState::SetStageData(int InScenarioIndex, int InQuestIndex, const 
 		CurScenarioData = InResponseData;
 		break;
 	case EQuestType::Listen:
+		CurScenarioData = InResponseData;
 		break;
 	case EQuestType::Write:
 		break;

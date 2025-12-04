@@ -81,7 +81,7 @@ void ALingoGameMode::BeginListenQuest(int32 InStageIndex, const FResponseScenari
 {
 	if (auto GS = GetGameState<ALingoGameState>())
 	{
-		GS->SetStageData(InStageIndex, 1, InResponseData);
+		GS->SetStageData(InStageIndex, 2, InResponseData);
 		PRINTLOG(TEXT("[GameMode] SetStageData called on GameState."));
 	}
 	else
