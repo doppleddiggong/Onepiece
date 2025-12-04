@@ -71,8 +71,14 @@ public:
 
 public:
 	// 랭킹 백분율
-	
+	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
+	class UCircularProgressBar* CircleBar_Ranking;
+
+	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
+	class UTextBlock* Txt_Rank;
 	
 	void SetRankingRate();
+	
+	void RequestRankingResult();
 	void OnQuestResultResponse(FResponseQuestResult& ResponseData, bool bWasSuccessful);
 };

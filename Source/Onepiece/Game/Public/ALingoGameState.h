@@ -135,7 +135,7 @@ public:
 	TArray<int32> WrongLuggageList;
 
 	UPROPERTY(Replicated, BlueprintReadOnly, Category = "QuestResult")
-	FResponseQuestResult CurrentQuestResult;
+	FResponseQuestResult CurQuestResult;
 	//--------------------------------------------------------------//
 
 public:
