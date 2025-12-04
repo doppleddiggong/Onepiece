@@ -8,11 +8,14 @@
 #include "GameFramework/PlayerState.h"
 #include "Kismet/GameplayStatics.h"
 
+#define SPEAKSTAGEACTOR_PATH TEXT("/Game/CustomContents/Blueprints/Enviroment/BP_SpeakStageActor.BP_SpeakStageActor_C")
+#define NPCEXAMINER_PATH	 TEXT("/Game/CustomContents/Blueprints/BP_NPCExaminer.BP_NPCExaminer_C")
+
 USpeakStageSubsystem::USpeakStageSubsystem()
 {
 	// 기본 Blueprint 클래스 경로 설정
-	SpeakStageClass = TSoftClassPtr<ASpeakStageActor>(FSoftObjectPath(TEXT("/Game/CustomContents/Blueprints/Enviroment/BP_SpeakStageActor.BP_SpeakStageActor_C")));
-	ExaminerClass = TSoftClassPtr<ANPCExaminer>(FSoftObjectPath(TEXT("/Game/CustomContents/Blueprints/BP_NPCExaminer.BP_NPCExaminer_C")));
+	SpeakStageClass = TSoftClassPtr<ASpeakStageActor>(FSoftObjectPath(SPEAKSTAGEACTOR_PATH));
+	ExaminerClass = TSoftClassPtr<ANPCExaminer>(FSoftObjectPath(NPCEXAMINER_PATH));
 
 	// NPC 기본 스폰 위치 (입국 심사대 앞)
 	ExaminerSpawnTransform = FTransform(
@@ -27,10 +30,6 @@ void USpeakStageSubsystem::Initialize(FSubsystemCollectionBase& Collection)
 	Super::Initialize(Collection);
 
 	bIsInitialized = false;
-
-	PRINTLOG(TEXT("[SpeakStageSubsystem] Initialize called"));
-
-
 }
 
 void USpeakStageSubsystem::OnWorldBeginPlay(UWorld& InWorld)
@@ -42,10 +41,7 @@ void USpeakStageSubsystem::OnWorldBeginPlay(UWorld& InWorld)
 
 void USpeakStageSubsystem::Deinitialize()
 {
-	PRINTLOG(TEXT("[SpeakStageSubsystem] Deinitialize called"));
-
-	// 정리 작업
-	SpeakStage = nullptr;
+	SpeakStageActor = nullptr;
 	Examiner = nullptr;
 	bIsInitialized = false;
 
@@ -60,43 +56,46 @@ void USpeakStageSubsystem::CreateSpeakStageSystem()
 {
 	UWorld* World = GetWorld();
 	if (!World)
+		return;
+
+	// 이미 초기화되었으면 중복 생성 방지
+	if (bIsInitialized)
+		return;
+
+	// 특정 맵에서만 생성: Map1, Lvl_ThirdPerson
+	FString MapName = World->GetMapName();
+	MapName.RemoveFromStart(World->StreamingLevelsPrefix);  // PIE prefix 제거
+
+	if (!MapName.Equals(TEXT("Map1")) && !MapName.Equals(TEXT("Lvl_ThirdPerson")))
 	{
-		PRINTLOG(TEXT("[SpeakStageSubsystem] CreateSpeakStageSystem - World is nullptr"));
+		// 다른 맵에서는 초기화 완료로 표시
+		bIsInitialized = true;  
 		return;
 	}
 
-	// 서버에서만 생성
-	if (!World->IsNetMode(NM_Client))
+	// 클라이언트 월드에서는 생성하지 않음
+	if (World->IsNetMode(NM_Client))
 	{
-		// 1. SpeakStageActor 생성
-		CreateSpeakStageActor();
-
-		// 2. NPC Examiner 생성
-		CreateNPCExaminer();
-
-		bIsInitialized = true;
-		PRINTLOG(TEXT("[SpeakStageSubsystem] SpeakStage system created successfully"));
+		return;
 	}
-	else
-	{
-		PRINTLOG(TEXT("[SpeakStageSubsystem] Skipping creation on client"));
-	}
+
+	// 1. SpeakStageActor 생성
+	CreateSpeakStageActor();
+
+	// 2. NPC Examiner 생성
+	CreateNPCExaminer();
+
+	bIsInitialized = true;
 }
 
 void USpeakStageSubsystem::BeginSpeakQuest(int32 InStageIndex)
 {
-	if (!SpeakStage)
-	{
-		PRINTLOG(TEXT("[SpeakStageSubsystem] BeginSpeakQuest - SpeakStage is null"));
+	if (!SpeakStageActor)
 		return;
-	}
 
 	UWorld* World = GetWorld();
 	if (!World)
-	{
-		PRINTLOG(TEXT("[SpeakStageSubsystem] BeginSpeakQuest - World is nullptr"));
 		return;
-	}
 
 	// 모든 플레이어 수집
 	TArray<APlayerState*> Players;
@@ -112,10 +111,7 @@ void USpeakStageSubsystem::BeginSpeakQuest(int32 InStageIndex)
 	}
 
 	// PlayStart 호출 (명시적 초기화)
-	SpeakStage->PlayStart(Players);
-
-	PRINTLOG(TEXT("[SpeakStageSubsystem] BeginSpeakQuest - Stage %d started with %d players"),
-	         InStageIndex, Players.Num());
+	SpeakStageActor->PlayStart(Players);
 }
 
 //----------------------------------------------------------
@@ -131,42 +127,33 @@ void USpeakStageSubsystem::CreateSpeakStageActor()
 	}
 
 	// 1. 먼저 월드에서 기존 SpeakStageActor 찾기
-	SpeakStage = Cast<ASpeakStageActor>(UGameplayStatics::GetActorOfClass(World, ASpeakStageActor::StaticClass()));
+	SpeakStageActor = Cast<ASpeakStageActor>(UGameplayStatics::GetActorOfClass(World, ASpeakStageActor::StaticClass()));
 
-	if (SpeakStage)
-	{
-		PRINTLOG(TEXT("[SpeakStageSubsystem] Found existing SpeakStageActor in world: %s"), *SpeakStage->GetName());
+	if (SpeakStageActor)
 		return;
-	}
 
 	// 2. 없으면 Config에서 클래스 로드하여 생성
 	if (SpeakStageClass.IsNull())
-	{
-		PRINTLOG(TEXT("[SpeakStageSubsystem] SpeakStageClass is not set in config, skipping spawn"));
 		return;
-	}
 
 	// 클래스 로드
 	UClass* LoadedClass = SpeakStageClass.LoadSynchronous();
 	if (!LoadedClass)
-	{
-		PRINTLOG(TEXT("[SpeakStageSubsystem] Failed to load SpeakStageClass"));
 		return;
-	}
 
 	// SpeakStageActor 생성
 	FActorSpawnParameters SpawnParams;
 	SpawnParams.Owner = nullptr;
 	SpawnParams.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButAlwaysSpawn;
 
-	SpeakStage = World->SpawnActor<ASpeakStageActor>(
+	SpeakStageActor = World->SpawnActor<ASpeakStageActor>(
 		LoadedClass,
 		FVector::ZeroVector,
 		FRotator::ZeroRotator,
 		SpawnParams
 	);
 
-	if (SpeakStage)
+	if (SpeakStageActor)
 	{
 		PRINTLOG(TEXT("[SpeakStageSubsystem] SpeakStageActor spawned successfully"));
 	}
@@ -180,40 +167,28 @@ void USpeakStageSubsystem::CreateNPCExaminer()
 {
 	UWorld* World = GetWorld();
 	if (!World)
-	{
 		return;
-	}
 
 	// 1. 먼저 월드에서 기존 NPCExaminer 찾기
 	Examiner = Cast<ANPCExaminer>(UGameplayStatics::GetActorOfClass(World, ANPCExaminer::StaticClass()));
 
 	if (Examiner)
 	{
-		PRINTLOG(TEXT("[SpeakStageSubsystem] Found existing NPCExaminer in world: %s"), *Examiner->GetName());
-
 		// 기존 NPC에 SpeakStage 연결
-		if (SpeakStage)
-		{
-			Examiner->SetSpeakStage(SpeakStage);
-			PRINTLOG(TEXT("[SpeakStageSubsystem] Connected existing Examiner to SpeakStage"));
-		}
+		if (SpeakStageActor)
+			Examiner->SetSpeakStage(SpeakStageActor);
+
 		return;
 	}
 
 	// 2. 없으면 Config에서 클래스 로드하여 생성
 	if (ExaminerClass.IsNull())
-	{
-		PRINTLOG(TEXT("[SpeakStageSubsystem] ExaminerClass is not set in config, skipping spawn"));
 		return;
-	}
 
 	// 클래스 로드
 	UClass* LoadedClass = ExaminerClass.LoadSynchronous();
 	if (!LoadedClass)
-	{
-		PRINTLOG(TEXT("[SpeakStageSubsystem] Failed to load ExaminerClass"));
 		return;
-	}
 
 	// NPC Examiner 생성
 	FActorSpawnParameters NPCSpawnParams;
@@ -229,12 +204,10 @@ void USpeakStageSubsystem::CreateNPCExaminer()
 
 	if (Examiner)
 	{
-		PRINTLOG(TEXT("[SpeakStageSubsystem] Examiner NPC spawned successfully"));
-
 		// NPC에 SpeakStage 연결
-		if (SpeakStage)
+		if (SpeakStageActor)
 		{
-			Examiner->SetSpeakStage(SpeakStage);
+			Examiner->SetSpeakStage(SpeakStageActor);
 			PRINTLOG(TEXT("[SpeakStageSubsystem] Connected spawned Examiner to SpeakStage"));
 		}
 	}

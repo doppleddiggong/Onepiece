@@ -55,7 +55,7 @@ protected:
 
 	/// @brief 생성된 SpeakStage 인스턴스
 	UPROPERTY()
-	TObjectPtr<class ASpeakStageActor> SpeakStage;
+	TObjectPtr<class ASpeakStageActor> SpeakStageActor;
 
 	/// @brief 생성된 Examiner 인스턴스
 	UPROPERTY()
@@ -91,7 +91,7 @@ public:
 	 * @return SpeakStageActor 인스턴스 (없으면 nullptr)
 	 */
 	UFUNCTION(BlueprintCallable, Category = "SpeakStage")
-	class ASpeakStageActor* GetSpeakStage() const { return SpeakStage; }
+	class ASpeakStageActor* GetSpeakStage() const { return SpeakStageActor; }
 
 	/**
 	 * @brief Examiner NPC 참조 가져오기
