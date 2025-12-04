@@ -98,7 +98,6 @@ void UPopup_WriteBoard::CloseDrawWindow()
 	{
 		ClearCanvas();
 		PopupMgr->HideCurrentPopup(false);
-		PRINT_STRING(TEXT("WriteBoard!!!!!"));
 	}
 }
 
@@ -179,6 +178,8 @@ void UPopup_WriteBoard::SaveCanvas()
 	// UE_LOG(LogTemp, Warning, TEXT("%s | %s"), *filePath, *fileName);
 	
 	SaveRenderTargetToPNG(RT_Canvas, filePath / fileName);
+	
+	CloseDrawWindow();
 }
 
 bool UPopup_WriteBoard::SaveRenderTargetToPNG(UTextureRenderTarget2D* RenderTarget, const FString& FullFilePath)

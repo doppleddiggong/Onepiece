@@ -46,12 +46,6 @@ AQuestionnaireKiosk::AQuestionnaireKiosk()
 		WidgetComp->SetWidgetSpace(EWidgetSpace::Screen);
 		WidgetComp->SetDrawSize(FVector2D(2048.0f, 1024.0f));
 	}
-	
-	// ConstructorHelpers::FClassFinder<UPopup_Interview> popupQuestionnaireWidgetRef(TEXT("/Game/CustomContents/UI/Widgets/WBP_PopupWriteKiosk.WBP_PopupWriteKiosk_C"));
-	// if (popupQuestionnaireWidgetRef.Succeeded())
-	// {
-	// 	PopupQuestionnaireWidgetClass = popupQuestionnaireWidgetRef.Class;
-	// }
 }
 
 void AQuestionnaireKiosk::BeginPlay()
@@ -83,7 +77,7 @@ void AQuestionnaireKiosk::ServerRPC_OnInteractionTriggered_Implementation(AActor
 	ClientRPC_OnInteractionTriggered(Interactor);
 }
 
-// TODO: json 파일 파싱하기
+// TODO: 서버에서 json 데이터 받기
 void AQuestionnaireKiosk::ClientRPC_OnInteractionTriggered_Implementation(AActor* Interactor)
 {
 	if (const auto PopupMgr = UPopupManager::Get(GetWorld()))
@@ -121,7 +115,7 @@ void AQuestionnaireKiosk::ClientRPC_OnInteractionTriggered_Implementation(AActor
 			Q3.WordData.Pronunciation = TEXT("oneureun myeochiripnikka");
 			Q3.Answer = FDateTime::Now().ToString(TEXT("%Y-%m-%d"));
 			Q3.AnswerKr = FDateTime::Now().ToString(TEXT("오늘은 %Y년 %m월 %d일입니다."));
-			TestData.Questions.Add(Q3);
+			// TestData.Questions.Add(Q3);
 			
 			// 질문 4
 			FWriteQuestionData Q4;
@@ -131,7 +125,7 @@ void AQuestionnaireKiosk::ClientRPC_OnInteractionTriggered_Implementation(AActor
 			Q3.WordData.Pronunciation = TEXT("oneul hal geimeun mueosipnikka?");
 			Q3.Answer = FDateTime::Now().ToString(TEXT("Peak"));
 			Q3.AnswerKr = FDateTime::Now().ToString(TEXT("오늘은 Peak라는 게임을 할 것입니다."));
-			TestData.Questions.Add(Q3);
+			// TestData.Questions.Add(Q3);
 
 			// 팝업 초기화
 			Popup->InitPopup(TestData);

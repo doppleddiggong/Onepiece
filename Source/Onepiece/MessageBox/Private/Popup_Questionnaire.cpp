@@ -16,7 +16,7 @@
 
 UPopup_Questionnaire::UPopup_Questionnaire(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer)
 {
-	ConstructorHelpers::FClassFinder<UPopup_QuestionnaireItem> questionnaireItemRef(TEXT("/Game/CustomContents/UI/Widgets/WBP_PopupQuestionnaireItem.WBP_PopupQuestionnaireItem_C"));
+	ConstructorHelpers::FClassFinder<UPopup_QuestionnaireItem> questionnaireItemRef(TEXT("/Game/CustomContents/UI/Widgets/Write/WBP_PopupQuestionnaireItem.WBP_PopupQuestionnaireItem_C"));
 	if (questionnaireItemRef.Succeeded())
 	{
 		QuestionnaireItemClass = questionnaireItemRef.Class;
@@ -83,34 +83,25 @@ void UPopup_Questionnaire::OnClickClose()
 }
 
 void UPopup_Questionnaire::OnClickSubmit()
-{
-	// 모든 답변 수집 및 검증
-	// TArray<FWriteAnswerData> AnswerDataList;
-	// const TArray<UWidget*>& Children = VerticalBox->GetAllChildren();
-	//
-	// for (int32 i = 0; i < Children.Num(); i++)
-	// {
-	// 	if (UPopup_QuestionnaireItem* Item = Cast<UPopup_QuestionnaireItem>(Children[i]))
-	// 	{
-	// 		
-	// 	}
-	// }
-	
-	// 사진 파일 모으기
-
+{	
+	// 사진 파일 모으기f
 	// 네트워크 전송
 	if (auto KLingoNetwork = UKLingoNetworkSystem::Get(GetWorld()))
 	{
+		// TODO: pngFiles를 보내는 방법 정하기. Question마다 png파일 1개로 보낼지 / Question마다 png 파일 여러 개를 보낼지
+		TArray<FString> pngFiles;
 		for (const auto& question : SavedQuestions)
 		{
 			FString OcrImageName = FString::Printf(TEXT("Answer%d.PNG"), question.Id);
-			
 			PRINTLOG(TEXT("[TEST] RequestOcrExtract - ImagePath: %s"), *(OcrImagePath / OcrImageName));
-			KLingoNetwork->RequestOcrExtract(
-				OcrImagePath / OcrImageName,
-				FResponseOcrExtractDelegate::CreateUObject(this, &UPopup_Questionnaire::OnResponseOcrExtract)
-			);
+			pngFiles.Add(OcrImagePath / OcrImageName);
 		}
+			
+		KLingoNetwork->RequestOcrExtract(
+			pngFiles,
+			SavedQuestions[0].AnswerKr,
+			FResponseOcrExtractDelegate::CreateUObject(this, &UPopup_Questionnaire::OnResponseOcrExtract)
+		);
 	}
 	else
 	{
@@ -124,8 +115,15 @@ void UPopup_Questionnaire::OnResponseOcrExtract(FResponseOcrExtract& ResponseDat
 	{
 		PRINTLOG(TEXT("--- OCR Extract SUCCESS ---"));
 		ResponseData.PrintData();
-		// PRINTLOG(TEXT("Success: %s"), ResponseData.success ? TEXT("true") : TEXT("false"));
-		// PRINTLOG(TEXT("Extracted Text: %s"), *ResponseData.extracted_text);
+		
+		// TODO: 피드백 창 수정해야 함. 현재 피드백이 보낸 사진 개수만큼 돌아오는 상황.
+		// for (const FResponseOcrData& data : ResponseData.ResponseOcrDataArray)
+		for (int32 i = 1; i <= ResponseData.ResponseOcrDataArray.Num(); ++i)
+		{
+			const FResponseOcrData& data = ResponseData.ResponseOcrDataArray[i - 1];
+			PRINTLOG(TEXT("%d Success: %s"), i, data.display.is_pass ? TEXT("true") : TEXT("false"));
+			PRINTLOG(TEXT("%d Extracted Text: %s"), i, *(data.display.message));
+		}
 	}
 	else
 	{

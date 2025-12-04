@@ -612,16 +612,10 @@ struct FResponseScenario
 // OCR Extract API Structures
 // =================================================================================
 
-/// @brief OCR Extract 응답 델리게이트입니다.
-DECLARE_DELEGATE_TwoParams(FResponseOcrExtractDelegate, FResponseOcrExtract&, bool);
-/// @brief OCR Extract 응답 구조체입니다.
 USTRUCT(BlueprintType)
-struct FResponseOcrExtract
+struct FOcrDisplay
 {
 	GENERATED_BODY()
-
-	// UPROPERTY(BlueprintReadWrite, Category = "OCR")
-	// TArray<>
 	
 	UPROPERTY(BlueprintReadWrite, Category = "OCR")
 	bool is_pass = false;
@@ -631,6 +625,12 @@ struct FResponseOcrExtract
 	
 	UPROPERTY(BlueprintReadWrite, Category = "OCR")
 	FString correction;
+};
+
+USTRUCT(BlueprintType)
+struct FOcrRecord
+{
+	GENERATED_BODY()
 	
 	UPROPERTY(BlueprintReadWrite, Category = "OCR")
 	int32 score;
@@ -643,6 +643,30 @@ struct FResponseOcrExtract
 	
 	UPROPERTY(BlueprintReadWrite, Category = "OCR")
 	FString stage;
+};
+
+USTRUCT(BlueprintType)
+struct FResponseOcrData
+{
+	GENERATED_BODY()
+	
+	UPROPERTY(BlueprintReadWrite, Category = "OCR")
+	FOcrDisplay display;
+	
+	UPROPERTY(BlueprintReadWrite, Category = "OCR")
+	FOcrRecord record;
+};
+
+/// @brief OCR Extract 응답 델리게이트입니다.
+DECLARE_DELEGATE_TwoParams(FResponseOcrExtractDelegate, FResponseOcrExtract&, bool);
+/// @brief OCR Extract 응답 구조체입니다.
+USTRUCT(BlueprintType)
+struct FResponseOcrExtract
+{
+	GENERATED_BODY()
+
+	UPROPERTY(BlueprintReadWrite, Category = "OCR")
+	TArray<FResponseOcrData> ResponseOcrDataArray;
 
 	/// @brief HTTP 응답을 파싱해 구조체를 채웁니다.
 	void SetFromHttpResponse(const TSharedPtr<class IHttpResponse, ESPMode::ThreadSafe>& Response);

@@ -6,6 +6,7 @@
  */
 #include "NetworkData.h"
 
+#include "GameLogging.h"
 #include "JsonObjectConverter.h"
 #include "NetworkLog.h"
 #include "UCommonFunctionLibrary.h"
@@ -327,64 +328,53 @@ void FResponseOcrExtract::SetFromHttpResponse(const TSharedPtr<IHttpResponse, ES
 	}
 
 	FString JsonString = Response->GetContentAsString();
-	TSharedPtr<FJsonObject> JsonObject;
+	PRINTLOG(TEXT("hmm.... %s"), *JsonString);
+	TArray<TSharedPtr<FJsonValue>> JsonArray;
 	TSharedRef<TJsonReader<>> Reader = TJsonReaderFactory<>::Create(JsonString);
 
-	if (FJsonSerializer::Deserialize(Reader, JsonObject) && JsonObject.IsValid())
+	if (FJsonSerializer::Deserialize(Reader, JsonArray))
 	{
-		// display 파트
-		is_pass = JsonObject->GetBoolField(TEXT("is_pass"));
-		message = JsonObject->GetStringField(TEXT("message"));
-		correction = JsonObject->GetStringField(TEXT("correction"));
-		// record 파트
-		score = JsonObject->GetIntegerField(TEXT("score"));
-		target = JsonObject->GetStringField(TEXT("target"));
-		input = JsonObject->GetStringField(TEXT("input"));
-		stage = JsonObject->GetStringField(TEXT("stage"));
+		for (const TSharedPtr<FJsonValue>& EntryValue : JsonArray)
+		{
+			if (EntryValue.IsValid())
+			{
+				TSharedPtr<FJsonObject> EntryObject = EntryValue->AsObject();
+				if (!EntryObject.IsValid())
+				{
+					continue;
+				}
 
-		// target_data 배열 파싱
-		// const TArray<TSharedPtr<FJsonValue>>* TargetDataArray;
-		// if (JsonObject->TryGetArrayField(TEXT("target_data"), TargetDataArray))
-		// {
-		// 	for (const auto& Item : *TargetDataArray)
-		// 	{
-		// 		TSharedPtr<FJsonObject> TargetObj = Item->AsObject();
-		// 		if (TargetObj.IsValid())
-		// 		{
-		// 			FScenarioTargetData TargetItem;
-		//
-		// 			// word1 파싱                                                                                                                                                                                                         
-		// 			if (TargetObj->HasTypedField<EJson::Object>(TEXT("word1")))
-		// 			{
-		// 				TSharedPtr<FJsonObject> Word1Obj = TargetObj->GetObjectField(TEXT("word1"));
-		// 				if (Word1Obj.IsValid())
-		// 				{
-		// 					TargetItem.word1.name = Word1Obj->GetStringField(TEXT("name"));
-		// 					TargetItem.word1.code = Word1Obj->GetStringField(TEXT("code"));
-		// 				}
-		// 			}
-		//
-		// 			// word2 파싱                                                                                                                                                           
-		// 			if (TargetObj->HasTypedField<EJson::Object>(TEXT("word2")))
-		// 			{
-		// 				TSharedPtr<FJsonObject> Word2Obj = TargetObj->GetObjectField(TEXT("word2"));
-		// 				if (Word2Obj.IsValid())
-		// 				{
-		// 					TargetItem.word2.name = Word2Obj->GetStringField(TEXT("name"));
-		// 					TargetItem.word2.code = Word2Obj->GetStringField(TEXT("code"));
-		// 				}
-		// 			}
-		//
-		// 			target_data.Add(TargetItem);
-		// 		}
-		// 	}
-		// }
+				FResponseOcrData Entry;    // Display & Record를 포함하는 사용자 정의 구조체
+
+				if (EntryObject->HasTypedField<EJson::Object>(TEXT("display")))
+				{
+					const TSharedPtr<FJsonObject> DisplayObj = EntryObject->GetObjectField(TEXT("display"));
+					Entry.display.is_pass    = DisplayObj->GetBoolField(TEXT("is_pass"));
+					Entry.display.message    = DisplayObj->GetStringField(TEXT("message"));
+					Entry.display.correction = DisplayObj->GetStringField(TEXT("correction"));
+				}
+
+				if (EntryObject->HasTypedField<EJson::Object>(TEXT("record")))
+				{
+					const TSharedPtr<FJsonObject> RecordObj = EntryObject->GetObjectField(TEXT("record"));
+					Entry.record.score  = RecordObj->GetIntegerField(TEXT("score"));
+					Entry.record.target = RecordObj->GetStringField(TEXT("target"));
+					Entry.record.input  = RecordObj->GetStringField(TEXT("input"));
+					Entry.record.stage  = RecordObj->GetStringField(TEXT("stage"));
+				}
+
+				ResponseOcrDataArray.Add(Entry);
+			}
+		}
 	}
 }
 
 void FResponseOcrExtract::PrintData() const
 {
-	// NETWORK_LOG( TEXT("[OCR Extract] Response - Success: %d, Text: %s"), success, *extracted_text);
+	for (const FResponseOcrData& data : ResponseOcrDataArray)
+	{
+		NETWORK_LOG( TEXT("[OCR Extract] Response - Is_Pass: %d, Text: %s"), data.display.is_pass, *(data.display.message));
+	}
 }
 
 void FResponseListenAudio::SetFromHttpResponse(const TSharedPtr<class IHttpResponse, ESPMode::ThreadSafe>& Response)

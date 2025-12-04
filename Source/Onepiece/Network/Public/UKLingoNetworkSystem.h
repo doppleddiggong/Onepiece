@@ -44,7 +44,7 @@ public:
 	/// @brief 이미지에서 OCR로 텍스트를 추출합니다.
 	/// @param ImagePath [in] 이미지 파일 경로입니다.
 	/// @param InDelegate [in] 응답 수신 시 호출될 델리게이트입니다.
-	void RequestOcrExtract(const FString& ImagePath, FResponseOcrExtractDelegate InDelegate);
+	void RequestOcrExtract(const TArray<FString>& ImagePathArray, FString InTargetText, FResponseOcrExtractDelegate InDelegate);
 
 	void RequestListenAudio(const FString& AudioText, FResponseListenAudioDelegate InDelegate);
 	/// @brief 음성 파일을 전송하고 답변을 받습니다.

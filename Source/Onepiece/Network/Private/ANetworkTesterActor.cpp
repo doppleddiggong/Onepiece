@@ -170,10 +170,10 @@ void ANetworkTesterActor::RequestOcrExtract()
     if (auto KLingoNetwork = UKLingoNetworkSystem::Get(GetWorld()))
     {
         PRINTLOG(TEXT("[TEST] RequestOcrExtract - ImagePath: %s"), *OcrImagePath);
-        KLingoNetwork->RequestOcrExtract(
-            OcrImagePath,
-            FResponseOcrExtractDelegate::CreateUObject(this, &ANetworkTesterActor::OnResponseOcrExtract)
-        );
+        // KLingoNetwork->RequestOcrExtract(
+        //     OcrImagePath,
+        //     FResponseOcrExtractDelegate::CreateUObject(this, &ANetworkTesterActor::OnResponseOcrExtract)
+        // );
     }
     else
     {

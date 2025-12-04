@@ -440,25 +440,30 @@ void UKLingoNetworkSystem::RequestScenario(int32 Index, int32 Difficulty, int32 
 // RequestOcrExtract
 // =================================================================================
 
-void UKLingoNetworkSystem::RequestOcrExtract(const FString& ImagePath, FResponseOcrExtractDelegate InDelegate)
+void UKLingoNetworkSystem::RequestOcrExtract(const TArray<FString>& ImagePathArray, FString InTargetText, FResponseOcrExtractDelegate InDelegate)
 {
 	FString Url = NetworkConfig::GetFullUrl(RequestAPI::writes_submit);
 	auto Request = SetupHttpRequest(Url, NETWORK_POST);
-
-	// 상대 경로를 절대 경로로 변환
-	FString AbsoluteImagePath = FPaths::IsRelative(ImagePath) 
-		? FPaths::Combine(FPaths::ProjectDir(), ImagePath)
-		: ImagePath;
-	AbsoluteImagePath = FPaths::ConvertRelativePathToFull(AbsoluteImagePath);
-
+	
 	FHttpMultipartFormData Form;
-	if (!Form.AddFile(TEXT("file"), ImagePath))
+	for (FString ImagePath : ImagePathArray)
 	{
-		NETWORK_LOG(TEXT("[POST] OCR Extract: file load failed: %s"), *ImagePath);
-		FResponseOcrExtract EmptyResponse;
-		InDelegate.ExecuteIfBound(EmptyResponse, false);
-		return;
+		// 상대 경로를 절대 경로로 변환
+		// FString AbsoluteImagePath = FPaths::IsRelative(ImagePath)
+		// 	? FPaths::Combine(FPaths::ProjectDir(), ImagePath)
+		// 	: ImagePath;
+		// AbsoluteImagePath = FPaths::ConvertRelativePathToFull(AbsoluteImagePath);
+		
+		if (!Form.AddFile(TEXT("files"), ImagePath))
+		{
+			NETWORK_LOG(TEXT("[POST] OCR Extract: file load failed: %s"), *ImagePath);
+			FResponseOcrExtract EmptyResponse;
+			InDelegate.ExecuteIfBound(EmptyResponse, false);
+			return;
+		}
 	}
+	Form.AddText(TEXT("target_text"), InTargetText);
+	
 	Form.SetupHttpRequest(Request);
 
 	LogNetwork(ENetworkLogType::Post, *Request->GetURL());
@@ -469,7 +474,6 @@ void UKLingoNetworkSystem::RequestOcrExtract(const FString& ImagePath, FResponse
 			if (!WeakThis.IsValid() || IsEngineExitRequested())
 				return;
 
-			PRINT_STRING(TEXT("성공?"));
 			WeakThis->AddNetworkWaitCount(-1);
 			FResponseOcrExtract ResponseData;
 
@@ -480,7 +484,6 @@ void UKLingoNetworkSystem::RequestOcrExtract(const FString& ImagePath, FResponse
 				if (IsResSuccess(ResponseCode))
 				{
 					ResponseData.SetFromHttpResponse(ResPtr);
-					ResponseData.PrintData();
 					InDelegate.ExecuteIfBound(ResponseData, true);
 				}
 				else

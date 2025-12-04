@@ -22,8 +22,8 @@
 #define READQUEST_POPUP_PATH TEXT("/Game/CustomContents/UI/Widgets/WBP_PopupReadQuest.WBP_PopupReadQuest_C")
 #define RESULT_POPUP_PATH TEXT("/Game/CustomContents/UI/Widgets/WBP_Result.WBP_Result_C")
 #define INTERVIEW_POPUP_PATH TEXT("/Game/CustomContents/UI/Widgets/WBP_PopupInterview.WBP_PopupInterview_C")
-#define Questionnaire_POPUP_PATH TEXT("/Game/CustomContents/UI/Widgets/WBP_PopupWriteKiosk.WBP_PopupWriteKiosk_C")
-#define WriteBoard_POPUP_PATH TEXT("/Game/CustomContents/UI/Widgets/WBP_WriteBoard.WBP_WriteBoard_C")
+#define Questionnaire_POPUP_PATH TEXT("/Game/CustomContents/UI/Widgets/Write/WBP_PopupWriteKiosk.WBP_PopupWriteKiosk_C")
+#define WriteBoard_POPUP_PATH TEXT("/Game/CustomContents/UI/Widgets/Write/WBP_WriteBoard.WBP_WriteBoard_C")
 #define WORD_POPUP_PATH TEXT("/Game/CustomContents/UI/Widgets/WBP_PopupWord.WBP_PopupWord_C")
 
 

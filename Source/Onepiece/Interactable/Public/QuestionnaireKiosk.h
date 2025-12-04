@@ -38,12 +38,6 @@ protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	TObjectPtr<class UWidgetComponent> WidgetComp;
 	
-	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
-	TSubclassOf<class UPopup_Interview> PopupQuestionnaireWidgetClass;
-	
-	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
-	TObjectPtr<class UPopup_Interview> PopupQuestionnaireWidget;
-	
 	// Interaction
 	UFUNCTION()
 	void OnInteractionTriggered(AActor* Interactor);

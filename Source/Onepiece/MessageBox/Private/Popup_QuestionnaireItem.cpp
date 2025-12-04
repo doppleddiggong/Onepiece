@@ -43,6 +43,11 @@ void UPopup_QuestionnaireItem::InitItem(const FWriteQuestionData& Data)
 		FString QuestionText = Data.WordData.QuestionEn;
 		Text_Question_En->SetText(FText::FromString(QuestionText));
 	}
+	
+	// TODO: 예상 답변에 따른 WriteBoard 길이 조절
+	
+	// TODO: 예상 답변 힌트 생성
+	
 }
 
 void UPopup_QuestionnaireItem::OnClickButton()
