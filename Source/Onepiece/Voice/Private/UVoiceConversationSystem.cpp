@@ -6,6 +6,7 @@
  */
 #include "UVoiceConversationSystem.h"
 
+#include "ALingoPlayerState.h"
 #include "GameLogging.h"
 #include "UBroadcastManager.h"
 #include "UDialogManager.h"
@@ -279,18 +280,8 @@ void UVoiceConversationSystem::OnResponseSpeakingsJudges(FResponseSpeakingJudes&
 			if ( auto SpeakStageActor = ULingoGameHelper::GetSpeakStageActor(GetWorld()) )
 			{
 				// 로컬 플레이어의 PlayerState 가져오기
-				APlayerState* LocalPlayerState = nullptr;
-				if (Owner)
-				{
-					APlayerController* PC = Cast<APlayerController>(Owner->GetController());
-					if (PC)
-					{
-						LocalPlayerState = PC->GetPlayerState<APlayerState>();
-					}
-				}
-
 				// 답변 완료 알림 (다음 플레이어/다음 단계로 진행)
-				if (LocalPlayerState)
+				if (auto LocalPlayerState = ULingoGameHelper::GetLingoPlayerStateByPC(Owner->GetController()))
 				{
 					PRINTLOG(TEXT("[VoiceConversation] Notifying answer complete to SpeakStage"));
 					SpeakStageActor->Server_NotifyAnswerComplete(LocalPlayerState);

@@ -55,7 +55,7 @@ public:
 
 	void RequestInterviewHello(FResponseInterviewHelloDelegate InDelegate);
 	void RequestInterviewAnswer( const FRequestInterviewAnswer& Answer, FResponseInterviewAnswerDelegate InDelegate);
-
+	void RequestQuestResult(const FRequestReadQuestResult& Result, FResponseQuestResultDelegate InDelegate);
 
 
 	

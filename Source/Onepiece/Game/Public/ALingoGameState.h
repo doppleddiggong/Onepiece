@@ -110,7 +110,7 @@ public:
 	UPROPERTY(Replicated, BlueprintReadOnly, Category = "Mission")
 	float RemainMissionTime = 0.f;
 
-protected:
+public:
 	// 현재 퀘스트 정보
 	UPROPERTY(Replicated, BlueprintReadOnly, Category = "Quest")
 	FQuestData CurrentQuest;
@@ -133,6 +133,9 @@ public:
 	/// @brief 오답 캐리어 목록
 	UPROPERTY(Replicated)
 	TArray<int32> WrongLuggageList;
+
+	UPROPERTY(Replicated, BlueprintReadOnly, Category = "QuestResult")
+	FResponseQuestResult CurrentQuestResult;
 	//--------------------------------------------------------------//
 
 public:

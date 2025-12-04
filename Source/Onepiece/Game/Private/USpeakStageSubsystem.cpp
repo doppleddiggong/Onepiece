@@ -30,8 +30,14 @@ void USpeakStageSubsystem::Initialize(FSubsystemCollectionBase& Collection)
 
 	PRINTLOG(TEXT("[SpeakStageSubsystem] Initialize called"));
 
-	// SpeakStage 시스템 생성
-	CreateSpeakStageSystem();
+
+}
+
+void USpeakStageSubsystem::OnWorldBeginPlay(UWorld& InWorld)
+{
+	Super::OnWorldBeginPlay(InWorld);
+
+	this->CreateSpeakStageSystem();
 }
 
 void USpeakStageSubsystem::Deinitialize()

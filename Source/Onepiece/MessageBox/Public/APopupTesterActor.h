@@ -13,6 +13,9 @@ class ONEPIECE_API APopupTesterActor : public AActor
 
 public:
 	APopupTesterActor();
+
+	UFUNCTION(BlueprintCallable, CallInEditor, Category = "TEST|Message")
+	void GererateMD5();
 	
 	UFUNCTION(BlueprintCallable, CallInEditor, Category = "TEST|Message")
 	void ToastMsg();
@@ -32,4 +35,8 @@ public:
 	
 	void OnOK();
 	void OnCancel();
+
+public:
+	UPROPERTY(EditAnywhere, Category = "TEST|MD5")
+	FString MD5 = TEXT("test_audio");
 };

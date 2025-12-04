@@ -9,6 +9,7 @@
 #include "luggage.h"
 #include "Popup_Result.h"
 #include "UBroadcastManager.h"
+#include "UKLingoNetworkSystem.h"
 #include "UPopupManager.h"
 #include "UPopup_MsgBox.h"
 #include "UTweenAnimInstance.h"
