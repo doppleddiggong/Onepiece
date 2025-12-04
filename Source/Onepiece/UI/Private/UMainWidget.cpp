@@ -18,8 +18,10 @@
 #include "USpeakWidget.h"
 #include "USpeakStageSubsystem.h"
 #include "UTutorMessage.h"
+#include "UAutoDespawnItem.h"
 #include "Engine/World.h"
 #include "Components/Image.h"
+#include "Components/HorizontalBox.h"
 #include "Engine/Texture2D.h"
 #include "Animation/WidgetAnimation.h"
 #include "GameFramework/PlayerState.h"
@@ -291,4 +293,39 @@ void UMainWidget::StartAutoHideTimer()
 		TutorMessageDisplayDuration,
 		false
 	);
+}
+
+UAutoDespawnItem* UMainWidget::AddItemToBox()
+{
+	if (!ItemHorizontalBox)
+	{
+		PRINTLOG( TEXT("UMainWidget::AddItemToBox - ItemHorizontalBox is null!"));
+		return nullptr;
+	}
+
+	if (!ItemWidgetClass)
+	{
+		PRINTLOG( TEXT("UMainWidget::AddItemToBox - ItemWidgetClass is not set!"));
+		return nullptr;
+	}
+
+	UWorld* World = GetWorld();
+	if (!World)
+	{
+		PRINTLOG( TEXT("UMainWidget::AddItemToBox - World is null!"));
+		return nullptr;
+	}
+
+	// 새 아이템 생성
+	UAutoDespawnItem* NewItem = CreateWidget<UAutoDespawnItem>(World, ItemWidgetClass);
+	if (!NewItem)
+	{
+		PRINTLOG( TEXT("UMainWidget::AddItemToBox - Failed to create widget!"));
+		return nullptr;
+	}
+
+	// HorizontalBox에 추가 (왼쪽에 추가되지만 Right Alignment로 오른쪽 정렬됨)
+	ItemHorizontalBox->AddChild(NewItem);
+
+	return NewItem;
 }

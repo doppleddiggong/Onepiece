@@ -52,6 +52,10 @@ public:
 	UPROPERTY(meta = (BindWidgetOptional), BlueprintReadOnly)
 	TObjectPtr<class UTutorMessage> TutorMessage;
 
+	/// @brief 아이템 표시용 HorizontalBox
+	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
+	TObjectPtr<class UHorizontalBox> ItemHorizontalBox;
+
 	/// @brief TutorMessage Show Animation (MainWidget에서 제어)
 	UPROPERTY(Transient, meta = (BindWidgetAnim))
 	TObjectPtr<class UWidgetAnimation> TutorShowAnim;
@@ -71,6 +75,11 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Tutor")
 	void SetTutorMessage(const FText& NewMessage);
 
+	/// @brief HorizontalBox에 아이템 추가 (3초 후 자동 제거됨)
+	/// @return 생성된 UAutoDespawnItem (ItemWidget 설정을 위해 반환)
+	UFUNCTION(BlueprintCallable, Category = "Item")
+	class UAutoDespawnItem* AddItemToBox();
+
 private:
 	/// @brief 훅 타겟 감지 시 이미지 (파란색)
 	UPROPERTY(EditDefaultsOnly, Category = "Hook")
@@ -79,6 +88,10 @@ private:
 	/// @brief 훅 타겟 미감지 시 이미지 (회색)
 	UPROPERTY(EditDefaultsOnly, Category = "Hook")
 	TObjectPtr<class UTexture2D> HookNoAimTexture;
+
+	/// @brief 아이템 위젯 클래스
+	UPROPERTY(EditDefaultsOnly, Category = "Item")
+	TSubclassOf<class UAutoDespawnItem> ItemWidgetClass;
 
 protected:
 	/// @brief GameState 참조 캐싱
