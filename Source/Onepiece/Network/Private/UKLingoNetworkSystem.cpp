@@ -19,6 +19,7 @@
 #include "UPopupManager.h"
 #include "UPopup_MsgBox.h"
 #include "UAudioCacheManager.h"
+#include "ULingoGameInstanceSubsystem.h"
 #include "Misc/Paths.h"
 #include "Dom/JsonObject.h"
 #include "GenericPlatform/GenericPlatformHttp.h"
@@ -300,19 +301,7 @@ void UKLingoNetworkSystem::RequestUserMe( FResponseUserMeDelegate InDelegate)
 					ResponseData.SetFromHttpResponse(HttpResponse);
 					ResponseData.PrintData();
 
-					// PlayerController에 저장 (레벨 전환에서도 유지됨)
-					if (UWorld* World = GetWorld())
-					{
-						if (APlayerController* PC = World->GetFirstPlayerController())
-						{
-							if (APlayerControl* PlayerControl = Cast<APlayerControl>(PC))
-							{
-								NETWORK_LOG(TEXT("[Network] Setting UserInfo to PlayerController - id=%d, username=%s"),
-									ResponseData.id, *ResponseData.username);
-								PlayerControl->SetUserInfo(ResponseData);
-							}
-						}
-					}
+					ULingoGameInstanceSubsystem::Get(GetWorld())->SetUserInfo(ResponseData);
 
 					InDelegate.ExecuteIfBound(ResponseData, true);
 				}
@@ -531,7 +520,7 @@ void UKLingoNetworkSystem::RequestListenAudio(const FString& AudioText, FRespons
 			{
 				const int32 ResponseCode = ResPtr->GetResponseCode();
 
-				NETWORK_LOG(TEXT("[RES] RequestListenAudio - Code: %d, Response: %s"), ResponseCode, *ResPtr->GetContentAsString());
+				NETWORK_LOG(TEXT("[RES] RequestListenAudio - Code: %d"), ResponseCode);
 
 				if (IsResSuccess(ResponseCode))
 				{
@@ -784,12 +773,7 @@ void UKLingoNetworkSystem::RequestQuestResult(
       FString RequestBody;
       if (Result.ToJsonString(RequestBody))
       {
-          Request->SetContentAsString(RequestBody);
-          NETWORK_LOG(TEXT("[POST] RequestQuestResult Body: %s"), *RequestBody);
-      }
-      else                                                                                                                                                                                                                          
-      {
-          NETWORK_LOG(TEXT("[POST] RequestQuestResult - Failed to serialize request body"));
+	      Request->SetContentAsString(RequestBody);
       }
 
       LogNetwork(ENetworkLogType::Post, *Request->GetURL(), *RequestBody);

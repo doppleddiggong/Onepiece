@@ -19,6 +19,7 @@
 #include "UBroadcastManager.h"
 #include "UInteractionSystem.h"
 #include "UHookSystem.h"
+#include "ULingoGameInstanceSubsystem.h"
 
 #define IMC_DEFAULT_PATH			TEXT("/Game/CustomContents/Input/IMC_Game_Player.IMC_Game_Player")
 #define IA_MOVE_PATH				TEXT("/Game/CustomContents/Input/IA_Game_Movement.IA_Game_Movement")
@@ -61,6 +62,12 @@ void APlayerControl::BeginPlay()
 				SubSystem->AddMappingContext(IMC_Default, 0);
 			}
 		}
+	}
+	if (IsLocalController())
+	{
+		UserInfo = ULingoGameInstanceSubsystem::Get(GetWorld())->GetUserInfo();
+
+		Server_SetUserInfo(UserInfo);
 	}
 }
 
@@ -220,8 +227,7 @@ void APlayerControl::Server_OnHook_Implementation()
 	}
 }
 
-void APlayerControl::SetUserInfo(const FResponseUserMe& InUserInfo)
+void APlayerControl::Server_SetUserInfo_Implementation(const FResponseUserMe& InUserInfo)
 {
-	this->UserInfo = InUserInfo;
-	UE_LOG(LogTemp, Warning, TEXT("[PlayerControl] UserInfo set - id=%d, username=%s"), UserInfo.id, *UserInfo.username);
+	UserInfo = InUserInfo;
 }

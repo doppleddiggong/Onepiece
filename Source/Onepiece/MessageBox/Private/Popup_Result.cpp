@@ -187,10 +187,9 @@ void UPopup_Result::OnQuestResultResponse(FResponseQuestResult& ResponseData, bo
 	if (bWasSuccessful)
 	{
 		PRINTLOG(TEXT("[Result] Quest result submitted successfully"));
+
 		PRINTLOG(TEXT("[Result] Grade: %s, Point: %d, Top Percent: %.2f%%"),
 			*ResponseData.grade, ResponseData.point, ResponseData.top_percent);
-		
-		ResponseData.PrintData();
 	}
 	else                                                                                                                                                                                                                          
 	{
