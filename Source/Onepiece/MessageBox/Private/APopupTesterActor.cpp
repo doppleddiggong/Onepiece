@@ -15,11 +15,17 @@
 #include "UPopup_Interview.h"
 #include "NetworkData.h"
 #include "Popup_Result.h"
+#include "UCommonFunctionLibrary.h"
 
 
 APopupTesterActor::APopupTesterActor()
 {
 	PrimaryActorTick.bCanEverTick = false;
+}
+
+void APopupTesterActor::GererateMD5()
+{
+	PRINT_STRING(TEXT("%s"), *UCommonFunctionLibrary::GererateMD5(MD5));
 }
 
 void APopupTesterActor::ToastMsg()
