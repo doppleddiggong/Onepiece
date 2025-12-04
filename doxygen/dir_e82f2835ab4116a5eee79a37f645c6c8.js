@@ -4,6 +4,7 @@ var dir_e82f2835ab4116a5eee79a37f645c6c8 =
     [ "LobbyWidget.h", "LobbyWidget_8h.html", "LobbyWidget_8h" ],
     [ "SessionInfoWidget.h", "SessionInfoWidget_8h.html", "SessionInfoWidget_8h" ],
     [ "StartWidget.h", "StartWidget_8h.html", "StartWidget_8h" ],
+    [ "UAutoDespawnItem.h", "UAutoDespawnItem_8h.html", "UAutoDespawnItem_8h" ],
     [ "UDialogManager.h", "UDialogManager_8h.html", "UDialogManager_8h" ],
     [ "UDialogWidget.h", "UDialogWidget_8h.html", "UDialogWidget_8h" ],
     [ "UInteractWidget.h", "UInteractWidget_8h.html", "UInteractWidget_8h" ],
@@ -14,9 +15,11 @@ var dir_e82f2835ab4116a5eee79a37f645c6c8 =
     [ "UPlayTimer.h", "UPlayTimer_8h.html", "UPlayTimer_8h" ],
     [ "UQuestInfoWidget.h", "UQuestInfoWidget_8h.html", "UQuestInfoWidget_8h" ],
     [ "UResultStatWidget.h", "UResultStatWidget_8h.html", "UResultStatWidget_8h" ],
+    [ "USizeResultState.h", "USizeResultState_8h.html", "USizeResultState_8h" ],
     [ "USpeakingJudesWidget.h", "USpeakingJudesWidget_8h.html", "USpeakingJudesWidget_8h" ],
     [ "USpeakWidget.h", "USpeakWidget_8h.html", "USpeakWidget_8h" ],
     [ "UStateWidget.h", "UStateWidget_8h.html", "UStateWidget_8h" ],
+    [ "UTutorMessage.h", "UTutorMessage_8h.html", "UTutorMessage_8h" ],
     [ "UWordButton.h", "UWordButton_8h.html", "UWordButton_8h" ],
     [ "UWordWidget.h", "UWordWidget_8h.html", "UWordWidget_8h" ]
 ];

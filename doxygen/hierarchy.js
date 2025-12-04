@@ -164,6 +164,7 @@ var hierarchy =
       [ "UScoreManager", "classUScoreManager.html", null ]
     ] ],
     [ "UUserWidget", null, [
+      [ "UAutoDespawnItem", "classUAutoDespawnItem.html", null ],
       [ "UBasePopup", "classUBasePopup.html", [
         [ "UPopup_InputMsg", "classUPopup__InputMsg.html", null ],
         [ "UPopup_Interview", "classUPopup__Interview.html", null ],
@@ -193,11 +194,13 @@ var hierarchy =
       [ "UResultStatWidget", "classUResultStatWidget.html", null ],
       [ "URichText", "classURichText.html", null ],
       [ "USessionInfoWidget", "classUSessionInfoWidget.html", null ],
+      [ "USizeResultState", "classUSizeResultState.html", null ],
       [ "USpeakWidget", "classUSpeakWidget.html", null ],
       [ "USpeakingJudesWidget", "classUSpeakingJudesWidget.html", null ],
       [ "UStartWidget", "classUStartWidget.html", null ],
       [ "UStateWidget", "classUStateWidget.html", null ],
       [ "UTextureButton", "classUTextureButton.html", null ],
+      [ "UTutorMessage", "classUTutorMessage.html", null ],
       [ "UWordButton", "classUWordButton.html", null ],
       [ "UWordWidget", "classUWordWidget.html", null ]
     ] ],
