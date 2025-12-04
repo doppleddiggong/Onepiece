@@ -50,6 +50,19 @@ ALingoPlayerState* ULingoGameHelper::GetLingoPlayerState(const UObject* WorldCon
 	return Cast<ALingoPlayerState>(PC->PlayerState);
 }
 
+ALingoPlayerState* ULingoGameHelper::GetLingoPlayerStateByPC(const AController* PC)
+{
+	if (PC)
+	{
+		return PC->GetPlayerState<ALingoPlayerState>();
+	}
+	else
+	{
+		return nullptr;
+	}
+}
+
+
 TArray<ALingoPlayerState*> ULingoGameHelper::GetLingoPlayerStateList(const UObject* WorldContextObject)
 {
 	TArray<ALingoPlayerState*> PlayerStateList;

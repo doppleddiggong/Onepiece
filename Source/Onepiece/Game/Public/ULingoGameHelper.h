@@ -23,19 +23,22 @@ public:
 	static bool IsMultiPlay(const UObject* WorldContextObject);
 
 	UFUNCTION(BlueprintCallable, Category = "Utils")
-	static ALingoGameMode* GetLingoGameMode(const UObject* WorldContextObject);
+	static class ALingoGameMode* GetLingoGameMode(const UObject* WorldContextObject);
 	
 	UFUNCTION(BlueprintCallable, Category = "Utils")
-	static ALingoGameState* GetLingoGameState(const UObject* WorldContextObject);
+	static class ALingoGameState* GetLingoGameState(const UObject* WorldContextObject);
+
+	UFUNCTION(BlueprintCallable, Category = "Utils")
+	static class ALingoPlayerState* GetLingoPlayerStateByPC(const AController* PC);
 	
 	UFUNCTION(BlueprintCallable, Category = "Utils")
-	static ALingoPlayerState* GetLingoPlayerState(const UObject* WorldContextObject);
+	static class ALingoPlayerState* GetLingoPlayerState(const UObject* WorldContextObject);
 
 	UFUNCTION(BlueprintCallable, Category = "Utils")
-	static TArray<ALingoPlayerState*> GetLingoPlayerStateList(const UObject* WorldContextObject);
+	static TArray<class ALingoPlayerState*> GetLingoPlayerStateList(const UObject* WorldContextObject);
 
 	UFUNCTION(BlueprintCallable, Category = "Utils")
-	static ASpeakStageActor* GetSpeakStageActor(const UObject* WorldContextObject);
+	static class ASpeakStageActor* GetSpeakStageActor(const UObject* WorldContextObject);
 	
 	UFUNCTION(BlueprintCallable, Category = "Utils")
 	static FString GetStageStartMessage(const int StageIndex);
