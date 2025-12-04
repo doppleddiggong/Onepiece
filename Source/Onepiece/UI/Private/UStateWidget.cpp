@@ -7,6 +7,7 @@
 #include "UStateWidget.h"
 
 #include "ALingoPlayerState.h"
+#include "APlayerControl.h"
 #include "Blueprint/WidgetTree.h"
 #include "Components/Image.h"
 #include "Components/ProgressBar.h"
@@ -39,8 +40,8 @@ void UStateWidget::InitWidget()
 
     if (UserNameText)
     {
-        if (auto PS = ULingoGameHelper::GetLingoPlayerState(this))
-            UserNameText->SetText( FText::FromString(PS->GetUserName()));
+        if (APlayerControl* PC = Cast<APlayerControl>(GetOwningPlayer()))
+            UserNameText->SetText(FText::FromString(PC->GetUserName()));
         else
             UserNameText->SetText(FText::GetEmpty());
     }

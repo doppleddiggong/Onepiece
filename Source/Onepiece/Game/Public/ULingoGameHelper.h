@@ -17,6 +17,9 @@ class ONEPIECE_API ULingoGameHelper : public UBlueprintFunctionLibrary
 
 public:
 	UFUNCTION(BlueprintCallable, Category = "Utils")
+	static int64 GetUnixTimestampInt64();
+	
+	UFUNCTION(BlueprintCallable, Category = "Utils")
 	static int GetMultiPlayerCount(const UObject* WorldContextObject);
 
 	UFUNCTION(BlueprintCallable, Category = "Utils")

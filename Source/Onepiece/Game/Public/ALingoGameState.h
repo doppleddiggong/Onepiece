@@ -152,4 +152,8 @@ public:
 	UPROPERTY(ReplicatedUsing = OnRep_QuestSuccess, BlueprintReadOnly, Category = "Quest")
 	bool bQuestSuccess = false;
 	//--------------------------------------------------------------//
+
+
+public:
+	int64 RoomId = 0;
 };

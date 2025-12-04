@@ -13,6 +13,11 @@
 #include "Onepiece/Onepiece.h"
 
 
+int64 ULingoGameHelper::GetUnixTimestampInt64()
+{
+	return FDateTime::UtcNow().ToUnixTimestamp();
+}
+
 int ULingoGameHelper::GetMultiPlayerCount(const UObject* WorldContextObject)
 {
 	ALingoGameState* GS = Cast<ALingoGameState>(UGameplayStatics::GetGameState(WorldContextObject));

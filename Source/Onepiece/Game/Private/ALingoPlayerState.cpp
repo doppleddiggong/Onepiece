@@ -25,21 +25,9 @@ void ALingoPlayerState::GetLifetimeReplicatedProps(TArray<class FLifetimePropert
 	DOREPLIFETIME(ALingoPlayerState, bWrongWord2);
 }
 
-void ALingoPlayerState::SetToken(FString InToken)
-{
-	this->AccessToken = InToken;
-}
 
-void ALingoPlayerState::SetUserName(FString InUserName)
-{
-	this->UserName = InUserName;
 
-	// BroadcastManager를 통해 모든 구독자에게 알림
-	if (UBroadcastManager* BroadcastManager = UBroadcastManager::Get(GetWorld()))
-	{
-		BroadcastManager->SendUserNameChanged(UserName);
-	}
-}
+
 
 //--------------------------------------------------------------//
 // Read Quest RPC Functions

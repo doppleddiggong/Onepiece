@@ -38,10 +38,6 @@ public:
     /// @brief 현재 사용자 정보 조회 요청을 전송합니다 (GET /users/me).
     UFUNCTION(BlueprintCallable, CallInEditor, Category = "TEST|User")
     void RequestUserMe();
-
-    UFUNCTION(BlueprintCallable, CallInEditor, Category = "TEST|User")
-    void RequestUserHost();
-
     
     // =============================================================================
     // Scenario API Tests
@@ -114,7 +110,6 @@ private:
     void OnResponseUserRegister(FResponseUserRegister& ResponseData, bool bWasSuccessful);
     void OnResponseUserToken(FResponseUserToken& ResponseData, bool bWasSuccessful);
     void OnResponseUserMe(FResponseUserMe& ResponseData, bool bWasSuccessful);
-    void OnResponseUserHost(FResponseUserHost& ResponseData, bool bWasSuccessful);
     
     void OnResponseScenario(FResponseScenario& ResponseData, bool bWasSuccessful);
     void OnResponseOcrExtract(FResponseOcrExtract& ResponseData, bool bWasSuccessful);

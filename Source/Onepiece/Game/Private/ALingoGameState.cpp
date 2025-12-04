@@ -24,6 +24,9 @@ ALingoGameState::ALingoGameState()
 	GameState = EGameState::None;
 	
 	PrimaryActorTick.bCanEverTick = true;
+
+	// TODO, Host가 방 개설후에 들어올 떄 적용하기
+	RoomId = ULingoGameHelper::GetUnixTimestampInt64();
 }
 
 void ALingoGameState::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const

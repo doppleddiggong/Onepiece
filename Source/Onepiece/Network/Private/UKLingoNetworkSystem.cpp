@@ -8,6 +8,7 @@
 #include "UKLingoNetworkSystem.h"
 
 #include "ALingoPlayerState.h"
+#include "APlayerControl.h"
 #include "HttpModule.h"
 #include "NetworkLog.h"
 #include "NetworkData.h"
@@ -235,16 +236,15 @@ void UKLingoNetworkSystem::RequestUserToken(const FString& UserName, FResponseUs
 
 				if (IsResSuccess(ResponseCode))
 				{
+					NETWORK_LOG(TEXT("[RES] RequestInterviewHello - Code: %d, Response: %s"), ResponseCode, *HttpResponse->GetContentAsString());
+
 					ResponseData.SetFromHttpResponse(HttpResponse);
 					ResponseData.PrintData();
 
 					access_token = ResponseData.access_token;
 
 					if (auto PS = ULingoGameHelper::GetLingoPlayerState(this))
-					{
-						PS->SetUserName(UserName);
 						PS->SetToken(ResponseData.access_token);
-					}
 
 					InDelegate.ExecuteIfBound(ResponseData, true);
 				}
@@ -293,16 +293,31 @@ void UKLingoNetworkSystem::RequestUserMe( FResponseUserMeDelegate InDelegate)
 			{
 				const int32 ResponseCode = HttpResponse->GetResponseCode();
 
+				NETWORK_LOG(TEXT("[RES] Code: %d, Response: %s"), ResponseCode, *HttpResponse->GetContentAsString());
+
 				if (IsResSuccess(ResponseCode))
 				{
 					ResponseData.SetFromHttpResponse(HttpResponse);
 					ResponseData.PrintData();
+
+					// PlayerController에 저장 (레벨 전환에서도 유지됨)
+					if (UWorld* World = GetWorld())
+					{
+						if (APlayerController* PC = World->GetFirstPlayerController())
+						{
+							if (APlayerControl* PlayerControl = Cast<APlayerControl>(PC))
+							{
+								NETWORK_LOG(TEXT("[Network] Setting UserInfo to PlayerController - id=%d, username=%s"),
+									ResponseData.id, *ResponseData.username);
+								PlayerControl->SetUserInfo(ResponseData);
+							}
+						}
+					}
+
 					InDelegate.ExecuteIfBound(ResponseData, true);
 				}
 				else
 				{
-					NETWORK_LOG(TEXT("[GET] RequestUserMe failed - Code: %d, Response: %s"),
-						ResponseCode, *HttpResponse->GetContentAsString());
 					ShowNetworkErrorPopup(ResponseCode, HttpResponse->GetContentAsString());
 					InDelegate.ExecuteIfBound(ResponseData, false);
 				}
@@ -320,61 +335,6 @@ void UKLingoNetworkSystem::RequestUserMe( FResponseUserMeDelegate InDelegate)
 				InDelegate.ExecuteIfBound(ResponseData, false);
 			}
 		});
-
-	AddNetworkWaitCount(1);
-	Request->ProcessRequest();
-}
-
-
-
-
-void UKLingoNetworkSystem::RequestUserHost( FResponseUserHostDelegate InDelegate)
-{
-	FString Url = NetworkConfig::GetFullUrl(RequestAPI::users_host);
-	auto Request = SetupHttpRequest( Url, NETWORK_GET );
-	
-	LogNetwork(ENetworkLogType::Get, *Request->GetURL());
-	
-	Request->OnProcessRequestComplete().BindLambda(
-	[WeakThis = TWeakObjectPtr<UKLingoNetworkSystem>(this), InDelegate](FHttpRequestPtr Req, FHttpResponsePtr ResPtr, bool bWasSuccessful)
-	{
-		if (!WeakThis.IsValid() || IsEngineExitRequested())
-			return;
-
-		WeakThis->AddNetworkWaitCount(-1);
-		FResponseUserHost ResponseData;
-
-		if (bWasSuccessful && ResPtr.IsValid())
-		{
-			const int32 ResponseCode = ResPtr->GetResponseCode();
-
-			NETWORK_LOG(TEXT("[RES] RequestUserHost - Code: %d, Response: %s"), ResponseCode, *ResPtr->GetContentAsString());
-				
-			if (IsResSuccess(ResponseCode))
-			{
-				ResponseData.SetFromHttpResponse(ResPtr);
-				ResponseData.PrintData();
-				InDelegate.ExecuteIfBound(ResponseData, true);
-			}
-			else
-			{
-				WeakThis->ShowNetworkErrorPopup(ResponseCode, ResPtr->GetContentAsString());
-				InDelegate.ExecuteIfBound(ResponseData, false);
-			}
-		}
-		else
-		{
-			NETWORK_LOG(TEXT("[POST] RequestUserHost failed - bSuccess: %s, Response valid: %s"),
-				bWasSuccessful ? TEXT("true") : TEXT("false"),
-				ResPtr.IsValid() ? TEXT("true") : TEXT("false"));
-				
-			int32 ErrorCode = ResPtr.IsValid() ? ResPtr->GetResponseCode() : 0;
-			FString ErrorContent = ResPtr.IsValid() ? ResPtr->GetContentAsString() : TEXT("Network connection failed");
-			WeakThis->ShowNetworkErrorPopup(ErrorCode, ErrorContent);
-				
-			InDelegate.ExecuteIfBound(ResponseData, false);
-		}
-	});
 
 	AddNetworkWaitCount(1);
 	Request->ProcessRequest();
@@ -404,6 +364,8 @@ void UKLingoNetworkSystem::RequestScenario(int32 Index, int32 Difficulty, int32 
 			{
 				const int32 ResponseCode = HttpResponse->GetResponseCode();
 
+				NETWORK_LOG(TEXT("[RES] Code: %d, Response: %s"), ResponseCode, *HttpResponse->GetContentAsString());
+
 				if (IsResSuccess(ResponseCode))
 				{
 					ResponseData.SetFromHttpResponse(HttpResponse);
@@ -412,8 +374,6 @@ void UKLingoNetworkSystem::RequestScenario(int32 Index, int32 Difficulty, int32 
 				}
 				else
 				{
-					NETWORK_LOG(TEXT("[GET] RequestScenario failed - Code: %d, Response: %s"),
-						ResponseCode, *HttpResponse->GetContentAsString());
 					ShowNetworkErrorPopup(ResponseCode, HttpResponse->GetContentAsString());
 					InDelegate.ExecuteIfBound(ResponseData, false);
 				}
@@ -481,6 +441,8 @@ void UKLingoNetworkSystem::RequestOcrExtract(const TArray<FString>& ImagePathArr
 			{
 				const int32 ResponseCode = ResPtr->GetResponseCode();
 
+				NETWORK_LOG(TEXT("[RES] Code: %d, Response: %s"), ResponseCode, *ResPtr->GetContentAsString());
+				
 				if (IsResSuccess(ResponseCode))
 				{
 					ResponseData.SetFromHttpResponse(ResPtr);
@@ -488,8 +450,6 @@ void UKLingoNetworkSystem::RequestOcrExtract(const TArray<FString>& ImagePathArr
 				}
 				else
 				{
-					NETWORK_LOG(TEXT("[POST] RequestOcrExtract failed - Code: %d, Response: %s"),
-						ResponseCode, *ResPtr->GetContentAsString());
 					WeakThis->ShowNetworkErrorPopup(ResponseCode, ResPtr->GetContentAsString());
 					InDelegate.ExecuteIfBound(ResponseData, false);
 				}
@@ -813,7 +773,8 @@ void UKLingoNetworkSystem::RequestInterviewAnswer(const FRequestInterviewAnswer&
 	Request->ProcessRequest();
 }
 
-void UKLingoNetworkSystem::RequestQuestResult(const FRequestReadQuestResult& Result,
+void UKLingoNetworkSystem::RequestQuestResult(
+	const FRequestReadQuestResult& Result,
 	FResponseQuestResultDelegate InDelegate)
 {
 	 FString Url = NetworkConfig::GetFullUrl(RequestAPI::quest_result);
@@ -878,488 +839,3 @@ void UKLingoNetworkSystem::RequestQuestResult(const FRequestReadQuestResult& Res
       AddNetworkWaitCount(1);
       Request->ProcessRequest();
 }
-
-#pragma region READY
-/*
-
-// =================================================================================
-// RequestLogin
-// =================================================================================
-
-void UKLingoNetworkSystem::RequestLogin(const FString& Account, FResponseLoginDelegate InDelegate)
-{
-	FString Url = NetworkConfig::GetFullUrl(RequestAPI::Login);
-	auto Request = SetupHttpRequest( Url, NETWORK_GET );
-	
-	TSharedPtr<FJsonObject> JsonObject = MakeShareable(new FJsonObject);
-	JsonObject->SetStringField(TEXT("account"), Account);
-
-	FString RequestBody;
-	TSharedRef<TJsonWriter<>> Writer = TJsonWriterFactory<>::Create(&RequestBody);
-	FJsonSerializer::Serialize(JsonObject.ToSharedRef(), Writer);
-	Request->SetContentAsString(RequestBody);
-
-	LogNetwork(ENetworkLogType::Get, *Request->GetURL(), *RequestBody);
-	
-	Request->OnProcessRequestComplete().BindLambda(
-		[this, InDelegate](FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSuccess)
-		{
-			AddNetworkWaitCount(-1);
-
-			FResponseLogin ResponseData;
-
-			if (bSuccess && HttpResponse.IsValid() && HttpResponse->GetResponseCode() == 200)
-			{
-				ResponseData.SetFromHttpResponse(HttpResponse);
-				ResponseData.PrintData();
-
-				access_token = ResponseData.Token;
-				
-				if (auto PS = ULingoGameHelper::GetLingoPlayerState(this))
-					PS->SetToken(ResponseData.Token);
-			
-				InDelegate.ExecuteIfBound(ResponseData, true);
-			}
-			else
-			{
-				NETWORK_LOG( TEXT("[POST] Login failed"));
-				InDelegate.ExecuteIfBound(ResponseData, false);
-			}
-		});
-
-	AddNetworkWaitCount(1);
-	Request->ProcessRequest();
-}
-
-// =================================================================================
-// RequestCreateUser
-// =================================================================================
-
-void UKLingoNetworkSystem::RequestCreateUser(int32 Character, int32 CharacterColor, FResponseCreateUserDelegate InDelegate)
-{
-	FString Url = NetworkConfig::GetFullUrl(RequestAPI::CreateUser);
-
-	auto Request = SetupHttpRequest( Url, NETWORK_POST );
-	TSharedPtr<FJsonObject> JsonObject = MakeShareable(new FJsonObject);
-	JsonObject->SetNumberField(TEXT("character"), Character);
-	JsonObject->SetNumberField(TEXT("characterColor"), CharacterColor);
-
-	FString RequestBody;
-	TSharedRef<TJsonWriter<>> Writer = TJsonWriterFactory<>::Create(&RequestBody);
-	FJsonSerializer::Serialize(JsonObject.ToSharedRef(), Writer);
-	Request->SetContentAsString(RequestBody);
-
-	LogNetwork(ENetworkLogType::Post, *Request->GetURL(), *RequestBody);
-	
-	Request->OnProcessRequestComplete().BindLambda(
-		[this, InDelegate](FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSuccess)
-		{
-			AddNetworkWaitCount(-1);
-
-			FResponseCreateUser ResponseData;
-
-			if (bSuccess && HttpResponse.IsValid() && HttpResponse->GetResponseCode() == 200)
-			{
-				ResponseData.SetFromHttpResponse(HttpResponse);
-				ResponseData.PrintData();
-				InDelegate.ExecuteIfBound(ResponseData, true);
-			}
-			else
-			{
-				NETWORK_LOG(TEXT("[POST] CreateUser failed"));
-				InDelegate.ExecuteIfBound(ResponseData, false);
-			}
-		});
-
-	AddNetworkWaitCount(1);
-	Request->ProcessRequest();
-}
-
-// =================================================================================
-// RequestInterview
-// =================================================================================
-
-void UKLingoNetworkSystem::RequestInterview(FResponseInterviewDelegate InDelegate)
-{
-	FString Url = NetworkConfig::GetFullUrl(RequestAPI::Interview);
-
-	auto Request = SetupHttpRequest( Url, NETWORK_GET );
-
-	LogNetwork(ENetworkLogType::Get, *Request->GetURL() );
-
-	Request->OnProcessRequestComplete().BindLambda(
-		[this, InDelegate](FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSuccess)
-		{
-			AddNetworkWaitCount(-1);
-
-			FResponseInterview ResponseData;
-
-			if (bSuccess && HttpResponse.IsValid() && HttpResponse->GetResponseCode() == 200)
-			{
-				ResponseData.SetFromHttpResponse(HttpResponse);
-				ResponseData.PrintData();
-				InDelegate.ExecuteIfBound(ResponseData, true);
-			}
-			else
-			{
-				NETWORK_LOG(TEXT("[GET] RequestInterview failed"));
-				InDelegate.ExecuteIfBound(ResponseData, false);
-			}
-		});
-
-	AddNetworkWaitCount(1);
-	Request->ProcessRequest();
-}
-
-// =================================================================================
-// RequestSubmitInterview
-// =================================================================================
-
-void UKLingoNetworkSystem::RequestSubmitInterview(const TArray<FString>& Answers, FResponseInterviewDelegate InDelegate)
-{
-	FString Url = NetworkConfig::GetFullUrl(RequestAPI::SubmitInterview);
-
-	auto Request = SetupHttpRequest( Url, NETWORK_POST );
-
-	TSharedPtr<FJsonObject> JsonObject = MakeShareable(new FJsonObject);
-	TArray<TSharedPtr<FJsonValue>> AnswersArray;
-	for (const FString& Answer : Answers)
-		AnswersArray.Add(MakeShareable(new FJsonValueString(Answer)));
-	JsonObject->SetArrayField(TEXT("answers"), AnswersArray);
-
-	FString RequestBody;
-	TSharedRef<TJsonWriter<>> Writer = TJsonWriterFactory<>::Create(&RequestBody);
-	FJsonSerializer::Serialize(JsonObject.ToSharedRef(), Writer);
-	Request->SetContentAsString(RequestBody);
-
-	Request->OnProcessRequestComplete().BindLambda(
-		[this, InDelegate](FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSuccess)
-		{
-			AddNetworkWaitCount(-1);
-
-			FResponseInterview ResponseData;
-
-			if (bSuccess && HttpResponse.IsValid() && HttpResponse->GetResponseCode() == 200)
-			{
-				ResponseData.SetFromHttpResponse(HttpResponse);
-				ResponseData.PrintData();
-				InDelegate.ExecuteIfBound(ResponseData, true);
-			}
-			else
-			{
-				NETWORK_LOG( TEXT("[POST] SubmitInterview failed"));
-				InDelegate.ExecuteIfBound(ResponseData, false);
-			}
-		});
-
-	AddNetworkWaitCount(1);
-	Request->ProcessRequest();
-}
-
-// =================================================================================
-// RequestStartGame
-// =================================================================================
-
-void UKLingoNetworkSystem::RequestStartGame(const TArray<FString>& PlayerList, const TArray<FString>& Nicknames, FResponseStartGameDelegate InDelegate)
-{
-	FString Url = NetworkConfig::GetFullUrl(RequestAPI::StartGame);
-
-	auto Request = SetupHttpRequest( Url, NETWORK_POST );
-	TSharedPtr<FJsonObject> JsonObject = MakeShareable(new FJsonObject);
-
-	TArray<TSharedPtr<FJsonValue>> PlayerListArray;
-	for (const FString& Player : PlayerList)
-		PlayerListArray.Add(MakeShareable(new FJsonValueString(Player)));
-	JsonObject->SetArrayField(TEXT("playerList"), PlayerListArray);
-
-	TArray<TSharedPtr<FJsonValue>> NicknamesArray;
-	for (const FString& Nickname : Nicknames)
-		NicknamesArray.Add(MakeShareable(new FJsonValueString(Nickname)));
-	JsonObject->SetArrayField(TEXT("nicknames"), NicknamesArray);
-
-	FString RequestBody;
-	TSharedRef<TJsonWriter<>> Writer = TJsonWriterFactory<>::Create(&RequestBody);
-	FJsonSerializer::Serialize(JsonObject.ToSharedRef(), Writer);
-	Request->SetContentAsString(RequestBody);
-
-	LogNetwork(ENetworkLogType::Post, *Request->GetURL(), *RequestBody);
-
-	Request->OnProcessRequestComplete().BindLambda(
-		[this, InDelegate](FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSuccess)
-		{
-			AddNetworkWaitCount(-1);
-
-			FResponseStartGame ResponseData;
-
-			if (bSuccess && HttpResponse.IsValid() && HttpResponse->GetResponseCode() == 200)
-			{
-				ResponseData.SetFromHttpResponse(HttpResponse);
-				ResponseData.PrintData();
-				InDelegate.ExecuteIfBound(ResponseData, true);
-			}
-			else
-			{
-				NETWORK_LOG(TEXT("[POST] StartGame failed"));
-				InDelegate.ExecuteIfBound(ResponseData, false);
-			}
-		});
-
-	AddNetworkWaitCount(1);
-	Request->ProcessRequest();
-}
-
-// =================================================================================
-// RequestGameLogin
-// =================================================================================
-
-void UKLingoNetworkSystem::RequestGameLogin(FResponseGameLoginDelegate InDelegate)
-{
-	FString Url = NetworkConfig::GetFullUrl(RequestAPI::GameLogin);
-
-	auto Request = SetupHttpRequest( Url, NETWORK_GET );
-
-	LogNetwork(ENetworkLogType::Get, *Request->GetURL());
-
-	Request->OnProcessRequestComplete().BindLambda(
-		[this, InDelegate](FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSuccess)
-		{
-			AddNetworkWaitCount(-1);
-
-			FResponseGameLogin ResponseData;
-
-			if (bSuccess && HttpResponse.IsValid() && HttpResponse->GetResponseCode() == 200)
-			{
-				ResponseData.SetFromHttpResponse(HttpResponse);
-				ResponseData.PrintData();
-				InDelegate.ExecuteIfBound(ResponseData, true);
-			}
-			else
-			{
-				NETWORK_LOG(TEXT("[POST] GameLogin failed"));
-				InDelegate.ExecuteIfBound(ResponseData, false);
-			}
-		});
-
-	AddNetworkWaitCount(1);
-	Request->ProcessRequest();
-}
-
-// =================================================================================
-// RequestQuestAnswer
-// =================================================================================
-
-void UKLingoNetworkSystem::RequestQuestAnswer(int32 QuestStep, int32 QuestAnswer, float PlayTime, FResponseQuestAnswerDelegate InDelegate)
-{
-	FString Url = NetworkConfig::GetFullUrl(RequestAPI::QuestAnswer);
-
-	auto Request = SetupHttpRequest( Url, NETWORK_POST );
-	
-	TSharedPtr<FJsonObject> JsonObject = MakeShareable(new FJsonObject);
-	JsonObject->SetNumberField(TEXT("questStep"), QuestStep);
-	JsonObject->SetNumberField(TEXT("questAnswer"), QuestAnswer);
-	JsonObject->SetNumberField(TEXT("playTime"), PlayTime);
-
-	FString RequestBody;
-	TSharedRef<TJsonWriter<>> Writer = TJsonWriterFactory<>::Create(&RequestBody);
-	FJsonSerializer::Serialize(JsonObject.ToSharedRef(), Writer);
-	Request->SetContentAsString(RequestBody);
-
-	LogNetwork(ENetworkLogType::Post, *Request->GetURL(), *RequestBody);
-	
-	Request->OnProcessRequestComplete().BindLambda(
-		[this, InDelegate](FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSuccess)
-		{
-			AddNetworkWaitCount(-1);
-
-			FResponseQuestAnswer ResponseData;
-
-			if (bSuccess && HttpResponse.IsValid() && HttpResponse->GetResponseCode() == 200)
-			{
-				ResponseData.SetFromHttpResponse(HttpResponse);
-				ResponseData.PrintData();
-				InDelegate.ExecuteIfBound(ResponseData, true);
-			}
-			else
-			{
-				NETWORK_LOG(TEXT("[POST] QuestAnswer failed"));
-				InDelegate.ExecuteIfBound(ResponseData, false);
-			}
-		});
-
-	AddNetworkWaitCount(1);
-	Request->ProcessRequest();
-}
-
-// =================================================================================
-// RequestQuestFail
-// =================================================================================
-
-void UKLingoNetworkSystem::RequestQuestFail(int32 QuestStep, FResponseQuestAnswerDelegate InDelegate)
-{
-	FString Url = NetworkConfig::GetFullUrl(RequestAPI::QuestFail);
-
-	auto Request = SetupHttpRequest( Url, NETWORK_POST );
-
-	TSharedPtr<FJsonObject> JsonObject = MakeShareable(new FJsonObject);
-	JsonObject->SetNumberField(TEXT("questStep"), QuestStep);
-	
-	FString RequestBody;
-	TSharedRef<TJsonWriter<>> Writer = TJsonWriterFactory<>::Create(&RequestBody);
-	FJsonSerializer::Serialize(JsonObject.ToSharedRef(), Writer);
-	Request->SetContentAsString(RequestBody);
-
-	LogNetwork(ENetworkLogType::Post, *Request->GetURL(), *RequestBody);
-
-	Request->OnProcessRequestComplete().BindLambda(
-		[this, InDelegate](FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSuccess)
-		{
-			AddNetworkWaitCount(-1);
-
-			FResponseQuestAnswer ResponseData;
-
-			if (bSuccess && HttpResponse.IsValid() && HttpResponse->GetResponseCode() == 200)
-			{
-				ResponseData.SetFromHttpResponse(HttpResponse);
-				ResponseData.PrintData();
-				InDelegate.ExecuteIfBound(ResponseData, true);
-			}
-			else
-			{
-				NETWORK_LOG(TEXT("[POST] QuestFail failed"));
-				InDelegate.ExecuteIfBound(ResponseData, false);
-			}
-		});
-
-	AddNetworkWaitCount(1);
-	Request->ProcessRequest();
-}
-
-// =================================================================================
-// RequestQuestWrite
-// =================================================================================
-
-void UKLingoNetworkSystem::RequestQuestWrite(const TArray<FString>& ImagePaths, const TArray<FString>& TextData, FResponseQuestWriteDelegate InDelegate)
-{
-	FString Url = NetworkConfig::GetFullUrl(RequestAPI::QuestWrite);
-
-	auto Request = SetupHttpRequest( Url, NETWORK_POST );
-	
-	FHttpMultipartFormData FormData;
-	for (int32 i = 0; i < ImagePaths.Num(); ++i)
-		FormData.AddFile(FString::Printf(TEXT("imageData[%d]"), i), ImagePaths[i], TEXT("image/png"));
-	for (int32 i = 0; i < TextData.Num(); ++i)
-		FormData.AddText(FString::Printf(TEXT("textData[%d]"), i), TextData[i]);
-
-	FormData.SetupHttpRequest(Request);
-
-	LogNetwork(ENetworkLogType::Post, *Request->GetURL());
-	
-	Request->OnProcessRequestComplete().BindLambda(
-		[this, InDelegate](FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSuccess)
-		{
-			AddNetworkWaitCount(-1);
-
-			FResponseQuestWrite ResponseData;
-
-			if (bSuccess && HttpResponse.IsValid() && HttpResponse->GetResponseCode() == 200)
-			{
-				ResponseData.SetFromHttpResponse(HttpResponse);
-				ResponseData.PrintData();
-				InDelegate.ExecuteIfBound(ResponseData, true);
-			}
-			else
-			{
-				NETWORK_LOG(TEXT("[POST] QuestWrite failed"));
-				InDelegate.ExecuteIfBound(ResponseData, false);
-			}
-		});
-
-	AddNetworkWaitCount(1);
-	Request->ProcessRequest();
-}
-
-// =================================================================================
-// RequestQuestSpeak
-// =================================================================================
-
-void UKLingoNetworkSystem::RequestQuestSpeak(int32 SpeakStep, const FString& WavFilePath, FResponseQuestSpeakDelegate InDelegate)
-{
-	FString Url = NetworkConfig::GetFullUrl(RequestAPI::QuestSpeak);
-
-	auto Request = SetupHttpRequest( Url, NETWORK_POST );
-
-	TSharedPtr<FJsonObject> JsonObject = MakeShareable(new FJsonObject);
-	JsonObject->SetNumberField(TEXT("speakStep"), SpeakStep);
-
-	FString RequestBody;
-	TSharedRef<TJsonWriter<>> Writer = TJsonWriterFactory<>::Create(&RequestBody);
-	FJsonSerializer::Serialize(JsonObject.ToSharedRef(), Writer);
-	
-	FHttpMultipartFormData FormData;
-	FormData.AddFile(TEXT("waveData"), WavFilePath, TEXT("audio/wav"));
-	FormData.AddText(TEXT("context"), RequestBody);
-	FormData.SetupHttpRequest(Request);
-	
-	LogNetwork(ENetworkLogType::Post, *Request->GetURL(), *RequestBody);
-	
-	Request->OnProcessRequestComplete().BindLambda(
-		[this, InDelegate](FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSuccess)
-		{
-			AddNetworkWaitCount(-1);
-
-			FResponseQuestSpeak ResponseData;
-
-			if (bSuccess && HttpResponse.IsValid() && HttpResponse->GetResponseCode() == 200)
-			{
-				ResponseData.SetFromHttpResponse(HttpResponse);
-				ResponseData.PrintData();
-				InDelegate.ExecuteIfBound(ResponseData, true);
-			}
-			else
-			{
-				NETWORK_LOG(TEXT("[POST] QuestSpeak failed"));
-				InDelegate.ExecuteIfBound(ResponseData, false);
-			}
-		});
-
-	AddNetworkWaitCount(1);
-	Request->ProcessRequest();
-}
-
-// =================================================================================
-// RequestGameResult
-// =================================================================================
-
-void UKLingoNetworkSystem::RequestGameResult(FResponseGameResultDelegate InDelegate)
-{
-	FString Url = NetworkConfig::GetFullUrl(RequestAPI::GameResult);
-
-	auto Request = SetupHttpRequest( Url, NETWORK_GET );
-
-	LogNetwork(ENetworkLogType::Get, *Request->GetURL());
-	
-	Request->OnProcessRequestComplete().BindLambda(
-		[this, InDelegate](FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSuccess)
-		{
-			AddNetworkWaitCount(-1);
-
-			FResponseGameResult ResponseData;
-
-			if (bSuccess && HttpResponse.IsValid() && HttpResponse->GetResponseCode() == 200)
-			{
-				ResponseData.SetFromHttpResponse(HttpResponse);
-				ResponseData.PrintData();
-				InDelegate.ExecuteIfBound(ResponseData, true);
-			}
-			else
-			{
-				NETWORK_LOG(TEXT("[GET] GameResult failed"));
-				InDelegate.ExecuteIfBound(ResponseData, false);
-			}
-		});
-
-	AddNetworkWaitCount(1);
-	Request->ProcessRequest();
-}
-*/
-#pragma endregion READY

@@ -117,7 +117,6 @@ void UPopup_InputMsg::RequestUserToken(const FString& UserInput)
 	{
 		PRINTLOG(TEXT("UKLingoNetworkSystem not found!"));
 	}
-	
 }
 
 void UPopup_InputMsg::OnResponseUserRegister(FResponseUserRegister& ResponseData, bool bWasSuccessful)
@@ -141,11 +140,37 @@ void UPopup_InputMsg::OnResponseUserToken(FResponseUserToken& ResponseData, bool
 	if (bWasSuccessful)
 	{
 		PRINTLOG(TEXT("--- User Token SUCCESS ---"));
-		ResponseData.PrintData();
-		PRINTLOG(TEXT("Token: %s"), *ResponseData.access_token);
-		
-		// 토큰 발급 성공 시 로비맵으로
-		UGameplayStatics::OpenLevel(GetWorld(), TEXT("LobbyMap"));
+		RequestUserMe();
+	}
+	else
+	{
+		PRINTLOG(TEXT("--- User Token FAILED ---"));
+	}
+}
+
+void UPopup_InputMsg::RequestUserMe()
+{
+	if (auto KLingoNetwork = UKLingoNetworkSystem::Get(GetWorld()))
+	{
+		KLingoNetwork->RequestUserMe( FResponseUserMeDelegate::CreateUObject(this, &UPopup_InputMsg::OnResponseUserMe) );
+	}
+	else
+	{
+		PRINTLOG(TEXT("UKLingoNetworkSystem not found!"));
+	}
+}
+
+void UPopup_InputMsg::OnResponseUserMe(FResponseUserMe& ResponseData, bool bWasSuccessful)
+{
+	if (bWasSuccessful)
+	{
+		PRINTLOG(TEXT("--- User Me SUCCESS ---"));
+
+		// 로비맵으로 (Seamless Travel로 PlayerState 유지)
+		if (UWorld* World = GetWorld())
+		{
+			World->ServerTravel(TEXT("/Game/CustomContents/Maps/LobbyMap?listen"), true, false);
+		}
 	}
 	else
 	{

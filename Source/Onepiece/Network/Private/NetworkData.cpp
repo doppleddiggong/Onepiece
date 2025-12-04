@@ -146,7 +146,10 @@ void FResponseUserMe::SetFromHttpResponse(const TSharedPtr<IHttpResponse, ESPMod
 
 	if (FJsonSerializer::Deserialize(Reader, JsonObject) && JsonObject.IsValid())
 	{
-		detail = JsonObject->GetStringField(TEXT("detail"));
+		id = JsonObject->GetIntegerField(TEXT("id"));
+		username = JsonObject->GetStringField(TEXT("username"));
+		fullname = JsonObject->GetStringField(TEXT("fullname"));
+		is_active = JsonObject->GetBoolField(TEXT("is_active"));
 	}
 }
 

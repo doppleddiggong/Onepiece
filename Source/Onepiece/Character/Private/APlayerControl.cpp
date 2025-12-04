@@ -219,3 +219,9 @@ void APlayerControl::Server_OnHook_Implementation()
 		MyPlayer->HookSystem->TryHook();
 	}
 }
+
+void APlayerControl::SetUserInfo(const FResponseUserMe& InUserInfo)
+{
+	this->UserInfo = InUserInfo;
+	UE_LOG(LogTemp, Warning, TEXT("[PlayerControl] UserInfo set - id=%d, username=%s"), UserInfo.id, *UserInfo.username);
+}

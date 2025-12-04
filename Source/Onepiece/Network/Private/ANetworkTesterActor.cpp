@@ -63,23 +63,7 @@ void ANetworkTesterActor::RequestUserMe()
     if (auto KLingoNetwork = UKLingoNetworkSystem::Get(GetWorld()))
     {
         PRINTLOG(TEXT("[TEST] RequestUserMe"));
-        KLingoNetwork->RequestUserMe(
-            FResponseUserMeDelegate::CreateUObject(this, &ANetworkTesterActor::OnResponseUserMe)
-        );
-    }
-    else
-    {
-        PRINTLOG(TEXT("UKLingoNetworkSystem not found!"));
-    }
-}
-
-void ANetworkTesterActor::RequestUserHost()
-{
-    if (auto KLingoNetwork = UKLingoNetworkSystem::Get(GetWorld()))
-    {
-        KLingoNetwork->RequestUserHost(
-            FResponseUserHostDelegate::CreateUObject(this, &ANetworkTesterActor::OnResponseUserHost)
-        );
+        KLingoNetwork->RequestUserMe( FResponseUserMeDelegate::CreateUObject(this, &ANetworkTesterActor::OnResponseUserMe) );
     }
     else
     {
@@ -105,8 +89,7 @@ void ANetworkTesterActor::OnResponseUserToken(FResponseUserToken& ResponseData, 
     if (bWasSuccessful)
     {
         PRINTLOG(TEXT("--- User Token SUCCESS ---"));
-        ResponseData.PrintData();
-        PRINTLOG(TEXT("Token: %s"), *ResponseData.access_token);
+        RequestUserMe();
     }
     else
     {
@@ -119,28 +102,12 @@ void ANetworkTesterActor::OnResponseUserMe(FResponseUserMe& ResponseData, bool b
     if (bWasSuccessful)
     {
         PRINTLOG(TEXT("--- User Me SUCCESS ---"));
-        ResponseData.PrintData();
     }
     else
     {
         PRINTLOG(TEXT("--- User Me FAILED ---"));
     }
 }
-
-void ANetworkTesterActor::OnResponseUserHost(FResponseUserHost& ResponseData, bool bWasSuccessful)
-{
-    if (bWasSuccessful)
-    {
-        PRINTLOG(TEXT("--- User Me SUCCESS ---"));
-        ResponseData.PrintData();
-    }
-    else
-    {
-        PRINTLOG(TEXT("--- User Me FAILED ---"));
-    }
-}
-
-
 
 // =============================================================================
 // New API Tests

@@ -23,6 +23,12 @@ public:
 
 	void UpdateQuestRole(EQuestRole QuestRole);
 
+	// --- User Info (레벨 전환에서 유지됨) ---
+	void SetUserInfo(const FResponseUserMe& InUserInfo);
+	FString GetUserName() const { return UserInfo.username; }
+	int32 GetUserId() const { return UserInfo.id; }
+	const FResponseUserMe& GetUserInfo() const { return UserInfo; }
+
 protected:
     virtual void BeginPlay() override;
     virtual void SetupInputComponent() override;
@@ -75,4 +81,7 @@ protected:
 
 private:
     class IControllable* GetControllable() const;
+
+	/// @brief 사용자 정보 (레벨 전환에서도 유지됨)
+	FResponseUserMe UserInfo;
 };

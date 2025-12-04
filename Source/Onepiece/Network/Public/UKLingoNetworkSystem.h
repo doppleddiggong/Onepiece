@@ -32,7 +32,6 @@ public:
 	void RequestUserRegister(const FString& UserName, FResponseUserRegisterDelegate InDelegate);
 	void RequestUserToken(const FString& UserName, FResponseUserTokenDelegate InDelegate);
 	void RequestUserMe(FResponseUserMeDelegate InDelegate);
-	void RequestUserHost(FResponseUserHostDelegate InDelegate);
 	
 	/// @brief Scenario 데이터를 조회합니다.
 	/// @param Index [in] 시나리오 인덱스입니다.

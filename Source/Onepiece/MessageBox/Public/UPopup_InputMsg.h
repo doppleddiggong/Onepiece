@@ -53,6 +53,9 @@ private:
 	void RequestUserToken(const FString& UserInput);
 	void OnResponseUserToken(FResponseUserToken& ResponseData, bool bWasSuccessful);
 
+	void RequestUserMe();
+	void OnResponseUserMe(FResponseUserMe& ResponseData, bool bWasSuccessful);
+	
 public:
 	UPROPERTY(meta = (BindWidget))
 	class UEditableTextBox* Edit_Name;

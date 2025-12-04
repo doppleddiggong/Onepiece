@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/PlayerState.h"
+#include "NetworkData.h"
 #include "EQuestRole.h"
 #include "ALingoPlayerState.generated.h"
 
@@ -19,16 +20,11 @@ protected:
 	virtual void GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const override;
 	
 public:
-	void SetToken(FString InToken);
 	FString GetToken() { return AccessToken; }
-
-	void SetUserName(FString InUserName);
-	FString GetUserName() { return UserName; }
+	void SetToken(FString InToken) { this->AccessToken = InToken; }
 
 private:
 	FString AccessToken;
-
-	FString UserName;
 
 public:
 	//--------------------------------------------------------------//

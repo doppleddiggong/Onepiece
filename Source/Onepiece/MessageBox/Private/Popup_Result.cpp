@@ -4,10 +4,13 @@
 #include "Popup_Result.h"
 
 #include "ALingoGameState.h"
+#include "ALingoPlayerState.h"
+#include "APlayerControl.h"
 #include "GameLogging.h"
 #include "ScoreManager.h"
 #include "UImageButton.h"
 #include "UKLingoNetworkSystem.h"
+#include "ULingoGameHelper.h"
 #include "UPopupManager.h"
 #include "UPopup_ReadQuest.h"
 #include "UTextureButton.h"
@@ -149,14 +152,24 @@ void UPopup_Result::SetAccuracy()
 
 void UPopup_Result::SetRankingRate()
 {
-	ALingoGameState* GS = Cast<ALingoGameState>(GetWorld()->GetGameState());
-	if (GS)
+	if (auto GS = Cast<ALingoGameState>(GetWorld()->GetGameState()))
 	{
 		// 네트워크 송신
 		if (UKLingoNetworkSystem* Network = UKLingoNetworkSystem::Get(GetWorld()))
 		{
 			FRequestReadQuestResult Request;
-			Request.user_id = 1;
+			Request.room_id	= GS->RoomId;
+
+			// PlayerController에서 UserInfo 가져오기 (레벨 전환에서도 유지됨)
+			APlayerControl* PC = Cast<APlayerControl>(GetOwningPlayer());
+			int32 UserId = PC ? PC->GetUserId() : 0;
+
+			PRINTLOG(TEXT("[Result] GetUserId() = %d (PlayerControl=%s, Authority=%s)"),
+				UserId, PC ? TEXT("Valid") : TEXT("Null"),
+				GetWorld()->GetNetMode() == NM_DedicatedServer ? TEXT("Server") :
+				GetWorld()->GetNetMode() == NM_ListenServer ? TEXT("ListenServer") : TEXT("Client"));
+
+			Request.user_id = UserId;
 			Request.scenario_id = GS->CurrentQuest.ScenarioIndex;
 			Request.stage_type = (int32)GS->CurrentQuest.QuestType;
 			Request.state_type = GS->CurrentQuest.ScenarioLevel;

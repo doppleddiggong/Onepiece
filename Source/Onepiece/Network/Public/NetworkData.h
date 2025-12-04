@@ -81,7 +81,6 @@ namespace RequestAPI
     static FString users_register = FString("/users/register");
     static FString users_token = FString("/users/token");
     static FString users_me = FString("/users/me");
-	static FString users_host = FString("/users/host");
 
     /// @brief Scenario 조회 엔드포인트입니다. GET /scenario/stages/redis/{index}/{dificulity}/{lang}
     static FString scenario = FString("/scenario/stages/redis");
@@ -97,47 +96,6 @@ namespace RequestAPI
 
 	// @brief 읽기&듣기 퀘스트 정답 추출 엔드포인트입니다.
 	static FString quest_result = FString("/scenario/stage/result/post");
-	
-    /*
-
-    /// @brief KLingo 로그인 엔드포인트입니다.
-    static FString Login = FString("/Login");
-
-    /// @brief KLingo 사용자 생성 엔드포인트입니다.
-    static FString CreateUser = FString("/CreateUserInfo");
-
-    /// @brief KLingo 인터뷰 요청 엔드포인트입니다.
-    static FString Interview = FString("/RequestInterview");
-
-    /// @brief KLingo 인터뷰 제출 엔드포인트입니다.
-    static FString SubmitInterview = FString("/SubmitInterviewAnswer");
-
-    /// @brief KLingo 게임 시작 엔드포인트입니다.
-    static FString StartGame = FString("/StartGame");
-
-    /// @brief KLingo 게임 로그인 엔드포인트입니다.
-    static FString GameLogin = FString("/GameLogin");
-
-    /// @brief KLingo 퀘스트 답변 엔드포인트입니다.
-    static FString QuestAnswer = FString("/QuestAnswer");
-
-    /// @brief KLingo 퀘스트 실패 엔드포인트입니다.
-    static FString QuestFail = FString("/QuestFail");
-
-    /// @brief KLingo Write 퀘스트 엔드포인트입니다.
-    static FString QuestWrite = FString("/QuestWrite");
-
-    /// @brief KLingo Speak 퀘스트 엔드포인트입니다.
-    static FString QuestSpeak = FString("/QuestSpeak");
-
-    /// @brief KLingo 게임 결과 엔드포인트입니다.
-    static FString GameResult = FString("/GameResult");
-
-
-
-	/// @brief 음성-텍스트-음성을 통합 처리하는 ASK 엔드포인트입니다.
-	static FString ASK = FString("/ask");
-	*/
 }
 
 
@@ -514,8 +472,17 @@ struct FResponseUserMe
 	GENERATED_BODY()
 
 	UPROPERTY(BlueprintReadWrite, Category = "Me")
-	FString detail;
+	int id;
 
+	UPROPERTY(BlueprintReadWrite, Category = "Me")
+	FString username;
+
+	UPROPERTY(BlueprintReadWrite, Category = "Me")
+	FString fullname;
+
+	UPROPERTY(BlueprintReadWrite, Category = "Me")
+	bool is_active;	
+	
 	/// @brief HTTP 응답을 파싱해 상태 정보를 갱신합니다.
 	void SetFromHttpResponse(const TSharedPtr<class IHttpResponse, ESPMode::ThreadSafe>& Response);
 
@@ -804,6 +771,9 @@ struct FRequestReadQuestResult
 {
 	GENERATED_BODY()
 
+	UPROPERTY(BlueprintReadWrite, Category = "QuestResult")
+	int32 room_id;
+	
 	UPROPERTY(BlueprintReadWrite, Category = "QuestResult")
 	int32 user_id;
 
