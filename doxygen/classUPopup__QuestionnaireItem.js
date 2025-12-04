@@ -1,7 +1,7 @@
 var classUPopup__QuestionnaireItem =
 [
     [ "InitItem", "classUPopup__QuestionnaireItem.html#a4b046745408cb9822c0b33e6d4c54154", null ],
-    [ "NativeConstruct", "classUPopup__QuestionnaireItem.html#aad2788b488efc9ab4a04475afb1feed1", null ],
+    [ "NativeOnInitialized", "classUPopup__QuestionnaireItem.html#a651d4c156ffe5aaf362c50928b8d1dde", null ],
     [ "OnClickButton", "classUPopup__QuestionnaireItem.html#a5d0826520c8f540cd3f29a74265fede1", null ],
     [ "Button_Answer", "classUPopup__QuestionnaireItem.html#a6b1bfa5c1c52fe9af603e02bc921175c", null ],
     [ "QuestionData", "classUPopup__QuestionnaireItem.html#a4029a855755fa61d62700a531202b33c", null ],

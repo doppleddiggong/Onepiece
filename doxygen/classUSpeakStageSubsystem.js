@@ -10,6 +10,7 @@ var classUSpeakStageSubsystem =
     [ "GetSpeakStage", "classUSpeakStageSubsystem.html#ab6908ceda4c8b9b32f9752a341e39597", null ],
     [ "Initialize", "classUSpeakStageSubsystem.html#ae3987ff82a95deeadfb781750029dac5", null ],
     [ "IsInitialized", "classUSpeakStageSubsystem.html#a2169733e5e72631d8efaf91097ef9845", null ],
+    [ "OnWorldBeginPlay", "classUSpeakStageSubsystem.html#a3962b3af1d52dd80b32af133b885f211", null ],
     [ "bIsInitialized", "classUSpeakStageSubsystem.html#a3b3c5a6c33cc710e35654c42b07c7209", null ],
     [ "Examiner", "classUSpeakStageSubsystem.html#ab1e9a6ea11fc09d336e69a1facde5f36", null ],
     [ "ExaminerClass", "classUSpeakStageSubsystem.html#a31c2a99f3cb6cb744efe2c10e5ad95a9", null ],

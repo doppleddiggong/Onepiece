@@ -7,6 +7,8 @@ var searchData=
   ['gi_4',['GI',['../classULobbyWidget.html#ab2a809ece4ef11c5a103558a69947ce3',1,'ULobbyWidget']]],
   ['glogfilepath_5',['GLogFilePath',['../NetworkLog_8cpp.html#a47e4df66a4b9c5bd065d4f1375097611',1,'NetworkLog.cpp']]],
   ['gold_6',['Gold',['../structFPlayerInfo.html#ad3ab5f43b45c7199b34b170a1efe1fac',1,'FPlayerInfo']]],
-  ['grammar_5fscore_7',['grammar_score',['../structFResponseSpeakingJudes.html#aca28895168248e02526bcbc5043bebd5',1,'FResponseSpeakingJudes']]],
-  ['group_8',['Group',['../classAMoviePanel.html#a07a4ab4e9d005660f5e3ba9ec0cc5a36',1,'AMoviePanel']]]
+  ['grade_7',['grade',['../structFResponseQuestResult.html#abd7ac593a374e7ad6442d79a8c25b500',1,'FResponseQuestResult']]],
+  ['gradevalue_8',['GradeValue',['../classUWidgetResultItem.html#af907d410c25f1e64c22da49f141f9ad1',1,'UWidgetResultItem']]],
+  ['grammar_5fscore_9',['grammar_score',['../structFResponseSpeakingJudes.html#aca28895168248e02526bcbc5043bebd5',1,'FResponseSpeakingJudes']]],
+  ['group_10',['Group',['../classAMoviePanel.html#a07a4ab4e9d005660f5e3ba9ec0cc5a36',1,'AMoviePanel']]]
 ];

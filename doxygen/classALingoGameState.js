@@ -15,6 +15,7 @@ var classALingoGameState =
     [ "bIsTimerActive", "classALingoGameState.html#ab2b1dfcaf07b61dd099209f135ff97fa", null ],
     [ "bQuestSuccess", "classALingoGameState.html#a4e1e1fc4d3afe87c4241534b52e79c07", null ],
     [ "CurrentQuest", "classALingoGameState.html#aebb2bd471d58c73555b0e08b34b47005", null ],
+    [ "CurrentQuestResult", "classALingoGameState.html#aec528bd7b659b70ff3524af23299d899", null ],
     [ "CurScenarioData", "classALingoGameState.html#a3cd7a9eb6c217ca289fe7751113a1bef", null ],
     [ "GameState", "classALingoGameState.html#a6610c992fb17d442fc5d90330e941ea7", null ],
     [ "QuestResult", "classALingoGameState.html#a88f0dfa033d3c618bfa74a3c6bc4263e", null ],

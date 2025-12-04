@@ -1,6 +1,5 @@
 var dir_e82f2835ab4116a5eee79a37f645c6c8 =
 [
-    [ "CircularProgressBar.h", "CircularProgressBar_8h.html", "CircularProgressBar_8h" ],
     [ "DrawingBoardWidget.h", "DrawingBoardWidget_8h.html", "DrawingBoardWidget_8h" ],
     [ "LobbyWidget.h", "LobbyWidget_8h.html", "LobbyWidget_8h" ],
     [ "SessionInfoWidget.h", "SessionInfoWidget_8h.html", "SessionInfoWidget_8h" ],
@@ -14,8 +13,10 @@ var dir_e82f2835ab4116a5eee79a37f645c6c8 =
     [ "UMainWidget.h", "UMainWidget_8h.html", "UMainWidget_8h" ],
     [ "UPlayTimer.h", "UPlayTimer_8h.html", "UPlayTimer_8h" ],
     [ "UQuestInfoWidget.h", "UQuestInfoWidget_8h.html", "UQuestInfoWidget_8h" ],
+    [ "USpeakingJudesWidget.h", "USpeakingJudesWidget_8h.html", "USpeakingJudesWidget_8h" ],
     [ "USpeakWidget.h", "USpeakWidget_8h.html", "USpeakWidget_8h" ],
     [ "UStateWidget.h", "UStateWidget_8h.html", "UStateWidget_8h" ],
+    [ "UWidgetResultItem.h", "UWidgetResultItem_8h.html", "UWidgetResultItem_8h" ],
     [ "UWordButton.h", "UWordButton_8h.html", "UWordButton_8h" ],
     [ "UWordWidget.h", "UWordWidget_8h.html", "UWordWidget_8h" ]
 ];

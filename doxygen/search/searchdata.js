@@ -7,7 +7,7 @@ var indexSectionsWithContent =
   4: "abcdefghijlmnoprstuvwy~",
   5: "abcdefghijklmnopqrstuvw",
   6: "e",
-  7: "acdefghilmnopqrstuwxyz",
+  7: "acdefghiklmnopqrstuwxyz",
   8: "abcdehilmnpqrstvw",
   9: "ak게기문영학"
 };

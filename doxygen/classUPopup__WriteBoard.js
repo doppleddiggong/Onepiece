@@ -6,6 +6,7 @@ var classUPopup__WriteBoard =
     [ "DrawLines", "classUPopup__WriteBoard.html#ac46ace9e5cd15cfbe7ef9cb9b1c46795", null ],
     [ "DrawPoint", "classUPopup__WriteBoard.html#ad5af082f0eb9e91ba53b49e12d3577e2", null ],
     [ "GetLocalMousePos", "classUPopup__WriteBoard.html#a8f1e36c2fd12f01979387c0f0e776e2c", null ],
+    [ "InitPopup", "classUPopup__WriteBoard.html#ad9ab6ea9bd1e66b99951e6282ec96321", null ],
     [ "NativeOnInitialized", "classUPopup__WriteBoard.html#a1e9975497227381917282816e18c7381", null ],
     [ "NativeOnMouseButtonDown", "classUPopup__WriteBoard.html#aeb35df82201aecc89e27ad19726b9215", null ],
     [ "NativeOnMouseButtonUp", "classUPopup__WriteBoard.html#a952e7f1f71e00904dc5a06bdd3c51291", null ],
@@ -30,5 +31,6 @@ var classUPopup__WriteBoard =
     [ "OpenTargetScale", "classUPopup__WriteBoard.html#add357075245f0843320c0b74af0f2697", null ],
     [ "PopupType", "classUPopup__WriteBoard.html#a7e537a0dd751df11990ed46947f09d42", null ],
     [ "prevMousePos", "classUPopup__WriteBoard.html#a7ec145a99cff70ac35b7a867f93fb10d", null ],
+    [ "Qid", "classUPopup__WriteBoard.html#ab61bf4fbad9590d8808c16db52f45c42", null ],
     [ "RT_Canvas", "classUPopup__WriteBoard.html#a3b8840464e57c2ac855c51b4683b7872", null ]
 ];

@@ -4,16 +4,12 @@ var classAQuestionnaireKiosk =
     [ "BeginPlay", "classAQuestionnaireKiosk.html#abeefa4db1129be93cf3e1ae50ace2873", null ],
     [ "ClientRPC_OnInteractionTriggered", "classAQuestionnaireKiosk.html#acdb5ce901291df0c899e59a1941dcdc7", null ],
     [ "GetLifetimeReplicatedProps", "classAQuestionnaireKiosk.html#a8e9abf61ee7e182330c40fa491f32ca9", null ],
-    [ "OnCancel", "classAQuestionnaireKiosk.html#a13059015f9254886acb955fc22bd9f45", null ],
     [ "OnInteractionTriggered", "classAQuestionnaireKiosk.html#a4671d5794cc1dd9127a34d1aa241370e", null ],
-    [ "OnOK", "classAQuestionnaireKiosk.html#a5954d8bc3b166a5539d8dd21f73d542f", null ],
     [ "ServerRPC_OnInteractionTriggered", "classAQuestionnaireKiosk.html#a6243834b199bf5131eb6202d540c559f", null ],
     [ "Tick", "classAQuestionnaireKiosk.html#ab5947293a7ed9b98bca6cc1b83f4a970", null ],
     [ "BoxComp", "classAQuestionnaireKiosk.html#a42d1fdc760d6d1e68c0268d1771e46c6", null ],
     [ "InteractableComp", "classAQuestionnaireKiosk.html#aaeeb3fb26a9408a74806700551b9c48f", null ],
     [ "KioskMeshComp", "classAQuestionnaireKiosk.html#a977328e35abee2657fc8ef9c15817c31", null ],
-    [ "PopupQuestionnaireWidget", "classAQuestionnaireKiosk.html#ada498808c04856b79933800b3c6471fc", null ],
-    [ "PopupQuestionnaireWidgetClass", "classAQuestionnaireKiosk.html#ada2b6884e9ae74ba758c5057e8cff19d", null ],
     [ "RootSceneComp", "classAQuestionnaireKiosk.html#ace76f7ef86756597d28ee517e0d1b83f", null ],
     [ "WidgetComp", "classAQuestionnaireKiosk.html#afc65215c146db0d615009f4075c4ae2a", null ]
 ];

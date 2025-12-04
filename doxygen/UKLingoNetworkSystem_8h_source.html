@@ -144,14 +144,14 @@ $(document).ready(function(){initNavTree('UKLingoNetworkSystem_8h_source.html','
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    </div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="keywordtype">void</span> RequestScenario(int32 Index, int32 Difficulty, int32 Level, FResponseScenarioDelegate InDelegate);</div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keywordtype">void</span> RequestOcrExtract(<span class="keyword">const</span> FString&amp; ImagePath, FResponseOcrExtractDelegate InDelegate);</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keywordtype">void</span> RequestOcrExtract(<span class="keyword">const</span> TArray&lt;FString&gt;&amp; ImagePathArray, FString InTargetText, FResponseOcrExtractDelegate InDelegate);</div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="keywordtype">void</span> RequestListenAudio(<span class="keyword">const</span> FString&amp; AudioText, FResponseListenAudioDelegate InDelegate);</div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="keywordtype">void</span> RequestSpeakingJudges( <span class="keyword">const</span> FString&amp; Question, <span class="keyword">const</span> FString&amp; AudioPath, FResponseSpeakingJudesDelegate InDelegate);</div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <span class="keywordtype">void</span> RequestInterviewHello(FResponseInterviewHelloDelegate InDelegate);</div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="keywordtype">void</span> RequestInterviewAnswer( <span class="keyword">const</span> <a class="code hl_struct" href="structFRequestInterviewAnswer.html">FRequestInterviewAnswer</a>&amp; Answer, FResponseInterviewAnswerDelegate InDelegate);</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="keywordtype">void</span> RequestQuestResult(<span class="keyword">const</span> <a class="code hl_struct" href="structFRequestReadQuestResult.html">FRequestReadQuestResult</a>&amp; Result, FResponseQuestResultDelegate InDelegate);</div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    </div>
@@ -208,14 +208,15 @@ $(document).ready(function(){initNavTree('UKLingoNetworkSystem_8h_source.html','
 <div class="ttc" id="aclassUKLingoNetworkSystem_html"><div class="ttname"><a href="classUKLingoNetworkSystem.html">UKLingoNetworkSystem</a></div><div class="ttdef"><b>Definition</b> <a href="UKLingoNetworkSystem_8h_source.html#l00019">UKLingoNetworkSystem.h:20</a></div></div>
 <div class="ttc" id="aclassUKLingoNetworkSystem_html_a55a3c20561aaa16e02ae67adf5f15bfe"><div class="ttname"><a href="classUKLingoNetworkSystem.html#a55a3c20561aaa16e02ae67adf5f15bfe">UKLingoNetworkSystem::DEFINE_SUBSYSTEM_GETTER_INLINE</a></div><div class="ttdeci">DEFINE_SUBSYSTEM_GETTER_INLINE(UKLingoNetworkSystem)</div></div>
 <div class="ttc" id="aclassUKLingoNetworkSystem_html_acf7da28577586f19559ef3d7af8ea7ea"><div class="ttname"><a href="classUKLingoNetworkSystem.html#acf7da28577586f19559ef3d7af8ea7ea">UKLingoNetworkSystem::access_token</a></div><div class="ttdeci">FString access_token</div><div class="ttdoc">인증 토큰 (로그인 후 저장)</div><div class="ttdef"><b>Definition</b> <a href="UKLingoNetworkSystem_8h_source.html#l00153">UKLingoNetworkSystem.h:153</a></div></div>
-<div class="ttc" id="astructFRequestInterviewAnswer_html"><div class="ttname"><a href="structFRequestInterviewAnswer.html">FRequestInterviewAnswer</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00729">NetworkData.h:730</a></div></div>
+<div class="ttc" id="astructFRequestInterviewAnswer_html"><div class="ttname"><a href="structFRequestInterviewAnswer.html">FRequestInterviewAnswer</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00774">NetworkData.h:775</a></div></div>
+<div class="ttc" id="astructFRequestReadQuestResult_html"><div class="ttname"><a href="structFRequestReadQuestResult.html">FRequestReadQuestResult</a></div><div class="ttdoc">Request</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00803">NetworkData.h:804</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_db6231b890a14ef22abfc7e4cac87d3d.html">Network</a></li><li class="navelem"><a class="el" href="dir_220b20a97e4e155a19f3af1d93d62cb0.html">Public</a></li><li class="navelem"><a class="el" href="UKLingoNetworkSystem_8h.html">UKLingoNetworkSystem.h</a></li>
-    <li class="footer">생성시간 : 목 12월 4 2025 02:31:08, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 목 12월 4 2025 07:17:48, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

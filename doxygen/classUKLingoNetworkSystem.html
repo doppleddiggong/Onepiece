@@ -117,14 +117,14 @@ $(document).ready(function(){initNavTree('classUKLingoNetworkSystem.html',''); i
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classUKLingoNetworkSystem__inherit__graph.svg" width="232" height="584"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classUKLingoNetworkSystem__inherit__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="closed.png" alt="+"/> UKLingoNetworkSystem에 대한 협력 다이어그램:</div>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classUKLingoNetworkSystem__coll__graph.svg" width="232" height="584"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classUKLingoNetworkSystem__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -143,9 +143,11 @@ Public 멤버 함수</h2></td></tr>
 <tr class="separator:a9c8d97b1b722aac6a7b9335b3f120064"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afe074a06266fd96e1cf437d014a865e5" id="r_afe074a06266fd96e1cf437d014a865e5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUKLingoNetworkSystem.html#afe074a06266fd96e1cf437d014a865e5">RequestListenAudio</a> (const FString &amp;AudioText, FResponseListenAudioDelegate InDelegate)</td></tr>
 <tr class="separator:afe074a06266fd96e1cf437d014a865e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2b55f61a9ab11131c68a8d9aa947e81b" id="r_a2b55f61a9ab11131c68a8d9aa947e81b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUKLingoNetworkSystem.html#a2b55f61a9ab11131c68a8d9aa947e81b">RequestOcrExtract</a> (const FString &amp;ImagePath, FResponseOcrExtractDelegate InDelegate)</td></tr>
-<tr class="memdesc:a2b55f61a9ab11131c68a8d9aa947e81b"><td class="mdescLeft">&#160;</td><td class="mdescRight">이미지에서 OCR로 텍스트를 추출합니다.  <br /></td></tr>
-<tr class="separator:a2b55f61a9ab11131c68a8d9aa947e81b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af19a0251a31b1b5d980373496c3d6864" id="r_af19a0251a31b1b5d980373496c3d6864"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUKLingoNetworkSystem.html#af19a0251a31b1b5d980373496c3d6864">RequestOcrExtract</a> (const TArray&lt; FString &gt; &amp;ImagePathArray, FString InTargetText, FResponseOcrExtractDelegate InDelegate)</td></tr>
+<tr class="memdesc:af19a0251a31b1b5d980373496c3d6864"><td class="mdescLeft">&#160;</td><td class="mdescRight">이미지에서 OCR로 텍스트를 추출합니다.  <br /></td></tr>
+<tr class="separator:af19a0251a31b1b5d980373496c3d6864"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63a1467b2574123781d5d80d6ff332b7" id="r_a63a1467b2574123781d5d80d6ff332b7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUKLingoNetworkSystem.html#a63a1467b2574123781d5d80d6ff332b7">RequestQuestResult</a> (const <a class="el" href="structFRequestReadQuestResult.html">FRequestReadQuestResult</a> &amp;Result, FResponseQuestResultDelegate InDelegate)</td></tr>
+<tr class="separator:a63a1467b2574123781d5d80d6ff332b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a245c519fba6f3d6e6c103770c02b1a1c" id="r_a245c519fba6f3d6e6c103770c02b1a1c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUKLingoNetworkSystem.html#a245c519fba6f3d6e6c103770c02b1a1c">RequestScenario</a> (int32 Index, int32 Difficulty, int32 Level, FResponseScenarioDelegate InDelegate)</td></tr>
 <tr class="memdesc:a245c519fba6f3d6e6c103770c02b1a1c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Scenario 데이터를 조회합니다.  <br /></td></tr>
 <tr class="separator:a245c519fba6f3d6e6c103770c02b1a1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -505,7 +507,7 @@ Private 속성</h2></td></tr>
 </div><!-- fragment -->
 <p class="reference">다음을 참조함 :  <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00053">GetLogPrefix()</a>, <a class="el" href="GameLogging_8h.html#ad8e2ccc8c20a63e091e0111987b4d3bc">NETWORK_LOG</a>.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00747">RequestInterviewAnswer()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00693">RequestInterviewHello()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00511">RequestListenAudio()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00443">RequestOcrExtract()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00387">RequestScenario()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00612">RequestSpeakingJudges()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00331">RequestUserHost()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00278">RequestUserMe()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00148">RequestUserRegister()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00211">RequestUserToken()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00751">RequestInterviewAnswer()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00697">RequestInterviewHello()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00515">RequestListenAudio()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00443">RequestOcrExtract()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00816">RequestQuestResult()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00387">RequestScenario()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00616">RequestSpeakingJudges()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00331">RequestUserHost()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00278">RequestUserMe()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00148">RequestUserRegister()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00211">RequestUserToken()</a>.</p>
 <div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-5-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-5-summary" class="dynsummary" style="display:block;">
@@ -549,80 +551,80 @@ Private 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="UKLingoNetworkSystem_8cpp_source.html">UKLingoNetworkSystem.cpp</a> 파일의 <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00747">747</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  748</span>{</div>
-<div class="line"><span class="lineno">  749</span>    FString Url = <a class="code hl_function" href="namespaceNetworkConfig.html#ab5ac57e8f51de6d1740c7a88534a7246">NetworkConfig::GetFullUrl</a>(<a class="code hl_variable" href="namespaceRequestAPI.html#ac23f8020a8a24f9d640a8aefbe9e56e5">RequestAPI::interview_answer</a>);</div>
-<div class="line"><span class="lineno">  750</span>    <span class="keyword">auto</span> Request = <a class="code hl_function" href="classUKLingoNetworkSystem.html#a0bfd5f1b3523947877ba5c4e7ef9aa2f">SetupHttpRequest</a>(Url, <a class="code hl_define" href="UKLingoNetworkSystem_8cpp.html#a46a23e536f557ad9a916633c05d6167b">NETWORK_POST</a>);</div>
-<div class="line"><span class="lineno">  751</span> </div>
-<div class="line"><span class="lineno">  752</span>    <span class="comment">// Request Body 설정</span></div>
-<div class="line"><span class="lineno">  753</span>    FString RequestBody;</div>
-<div class="line"><span class="lineno">  754</span>    <span class="keywordflow">if</span> (Answer.<a class="code hl_function" href="structFRequestInterviewAnswer.html#a216549363b85b27053c6b3866b3c457c">ToJsonString</a>(RequestBody))</div>
-<div class="line"><span class="lineno">  755</span>    {</div>
-<div class="line"><span class="lineno">  756</span>        Request-&gt;SetContentAsString(RequestBody);</div>
-<div class="line"><span class="lineno">  757</span>        <a class="code hl_define" href="GameLogging_8h.html#ad8e2ccc8c20a63e091e0111987b4d3bc">NETWORK_LOG</a>(TEXT(<span class="stringliteral">&quot;[POST] RequestInterviewAnswer Body: %s&quot;</span>), *RequestBody);</div>
-<div class="line"><span class="lineno">  758</span>    }</div>
-<div class="line"><span class="lineno">  759</span>    <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  760</span>    {</div>
-<div class="line"><span class="lineno">  761</span>        <a class="code hl_define" href="GameLogging_8h.html#ad8e2ccc8c20a63e091e0111987b4d3bc">NETWORK_LOG</a>(TEXT(<span class="stringliteral">&quot;[POST] RequestInterviewAnswer - Failed to serialize request body&quot;</span>));</div>
+<p class="definition"><a class="el" href="UKLingoNetworkSystem_8cpp_source.html">UKLingoNetworkSystem.cpp</a> 파일의 <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00751">751</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  752</span>{</div>
+<div class="line"><span class="lineno">  753</span>    FString Url = <a class="code hl_function" href="namespaceNetworkConfig.html#ab5ac57e8f51de6d1740c7a88534a7246">NetworkConfig::GetFullUrl</a>(<a class="code hl_variable" href="namespaceRequestAPI.html#ac23f8020a8a24f9d640a8aefbe9e56e5">RequestAPI::interview_answer</a>);</div>
+<div class="line"><span class="lineno">  754</span>    <span class="keyword">auto</span> Request = <a class="code hl_function" href="classUKLingoNetworkSystem.html#a0bfd5f1b3523947877ba5c4e7ef9aa2f">SetupHttpRequest</a>(Url, <a class="code hl_define" href="UKLingoNetworkSystem_8cpp.html#a46a23e536f557ad9a916633c05d6167b">NETWORK_POST</a>);</div>
+<div class="line"><span class="lineno">  755</span> </div>
+<div class="line"><span class="lineno">  756</span>    <span class="comment">// Request Body 설정</span></div>
+<div class="line"><span class="lineno">  757</span>    FString RequestBody;</div>
+<div class="line"><span class="lineno">  758</span>    <span class="keywordflow">if</span> (Answer.<a class="code hl_function" href="structFRequestInterviewAnswer.html#a216549363b85b27053c6b3866b3c457c">ToJsonString</a>(RequestBody))</div>
+<div class="line"><span class="lineno">  759</span>    {</div>
+<div class="line"><span class="lineno">  760</span>        Request-&gt;SetContentAsString(RequestBody);</div>
+<div class="line"><span class="lineno">  761</span>        <a class="code hl_define" href="GameLogging_8h.html#ad8e2ccc8c20a63e091e0111987b4d3bc">NETWORK_LOG</a>(TEXT(<span class="stringliteral">&quot;[POST] RequestInterviewAnswer Body: %s&quot;</span>), *RequestBody);</div>
 <div class="line"><span class="lineno">  762</span>    }</div>
-<div class="line"><span class="lineno">  763</span> </div>
-<div class="line"><span class="lineno">  764</span>    <a class="code hl_function" href="classUKLingoNetworkSystem.html#ad71f0b7215e0d685a171bc2d8e7a0a3f">LogNetwork</a>(<a class="code hl_enumvalue" href="ENetworkLogType_8h.html#a80aaa513e01d2ec2d4421835b09d691fa03d947a2158373c3b9d74325850cb8b9">ENetworkLogType::Post</a>, *Request-&gt;GetURL(), *RequestBody);</div>
-<div class="line"><span class="lineno">  765</span> </div>
-<div class="line"><span class="lineno">  766</span>    Request-&gt;OnProcessRequestComplete().BindLambda(</div>
-<div class="line"><span class="lineno">  767</span>        [WeakThis = TWeakObjectPtr&lt;UKLingoNetworkSystem&gt;(<span class="keyword">this</span>), InDelegate](FHttpRequestPtr Req, FHttpResponsePtr ResPtr, <span class="keywordtype">bool</span> bWasSuccessful)</div>
-<div class="line"><span class="lineno">  768</span>        {</div>
-<div class="line"><span class="lineno">  769</span>            <span class="keywordflow">if</span> (!WeakThis.IsValid() || IsEngineExitRequested())</div>
-<div class="line"><span class="lineno">  770</span>                <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  771</span> </div>
-<div class="line"><span class="lineno">  772</span>            WeakThis-&gt;AddNetworkWaitCount(-1);</div>
-<div class="line"><span class="lineno">  773</span>            <a class="code hl_struct" href="structFResponseInterviewAnswer.html">FResponseInterviewAnswer</a> ResponseData;</div>
-<div class="line"><span class="lineno">  774</span> </div>
-<div class="line"><span class="lineno">  775</span>            <span class="keywordflow">if</span> (bWasSuccessful &amp;&amp; ResPtr.IsValid())</div>
-<div class="line"><span class="lineno">  776</span>            {</div>
-<div class="line"><span class="lineno">  777</span>                const int32 ResponseCode = ResPtr-&gt;GetResponseCode();</div>
+<div class="line"><span class="lineno">  763</span>    <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  764</span>    {</div>
+<div class="line"><span class="lineno">  765</span>        <a class="code hl_define" href="GameLogging_8h.html#ad8e2ccc8c20a63e091e0111987b4d3bc">NETWORK_LOG</a>(TEXT(<span class="stringliteral">&quot;[POST] RequestInterviewAnswer - Failed to serialize request body&quot;</span>));</div>
+<div class="line"><span class="lineno">  766</span>    }</div>
+<div class="line"><span class="lineno">  767</span> </div>
+<div class="line"><span class="lineno">  768</span>    <a class="code hl_function" href="classUKLingoNetworkSystem.html#ad71f0b7215e0d685a171bc2d8e7a0a3f">LogNetwork</a>(<a class="code hl_enumvalue" href="ENetworkLogType_8h.html#a80aaa513e01d2ec2d4421835b09d691fa03d947a2158373c3b9d74325850cb8b9">ENetworkLogType::Post</a>, *Request-&gt;GetURL(), *RequestBody);</div>
+<div class="line"><span class="lineno">  769</span> </div>
+<div class="line"><span class="lineno">  770</span>    Request-&gt;OnProcessRequestComplete().BindLambda(</div>
+<div class="line"><span class="lineno">  771</span>        [WeakThis = TWeakObjectPtr&lt;UKLingoNetworkSystem&gt;(<span class="keyword">this</span>), InDelegate](FHttpRequestPtr Req, FHttpResponsePtr ResPtr, <span class="keywordtype">bool</span> bWasSuccessful)</div>
+<div class="line"><span class="lineno">  772</span>        {</div>
+<div class="line"><span class="lineno">  773</span>            <span class="keywordflow">if</span> (!WeakThis.IsValid() || IsEngineExitRequested())</div>
+<div class="line"><span class="lineno">  774</span>                <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  775</span> </div>
+<div class="line"><span class="lineno">  776</span>            WeakThis-&gt;AddNetworkWaitCount(-1);</div>
+<div class="line"><span class="lineno">  777</span>            <a class="code hl_struct" href="structFResponseInterviewAnswer.html">FResponseInterviewAnswer</a> ResponseData;</div>
 <div class="line"><span class="lineno">  778</span> </div>
-<div class="line"><span class="lineno">  779</span>                NETWORK_LOG(TEXT(<span class="stringliteral">&quot;[POST] RequestInterviewAnswer - Code: %d, Response: %s&quot;</span>),</div>
-<div class="line"><span class="lineno">  780</span>                    ResponseCode, *ResPtr-&gt;GetContentAsString());</div>
-<div class="line"><span class="lineno">  781</span>                </div>
-<div class="line"><span class="lineno">  782</span>                if (IsResSuccess(ResponseCode))</div>
-<div class="line"><span class="lineno">  783</span>                {</div>
-<div class="line"><span class="lineno">  784</span>                    ResponseData.SetFromHttpResponse(ResPtr);</div>
-<div class="line"><span class="lineno">  785</span>                    ResponseData.PrintData();</div>
-<div class="line"><span class="lineno">  786</span>                    InDelegate.ExecuteIfBound(ResponseData, true);</div>
-<div class="line"><span class="lineno">  787</span>                }</div>
-<div class="line"><span class="lineno">  788</span>                <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  789</span>                {</div>
-<div class="line"><span class="lineno">  790</span>                    WeakThis-&gt;ShowNetworkErrorPopup(ResponseCode, ResPtr-&gt;GetContentAsString());</div>
-<div class="line"><span class="lineno">  791</span>                    InDelegate.ExecuteIfBound(ResponseData, false);</div>
-<div class="line"><span class="lineno">  792</span>                }</div>
-<div class="line"><span class="lineno">  793</span>            }</div>
-<div class="line"><span class="lineno">  794</span>            <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  795</span>            {</div>
-<div class="line"><span class="lineno">  796</span>                <a class="code hl_define" href="GameLogging_8h.html#ad8e2ccc8c20a63e091e0111987b4d3bc">NETWORK_LOG</a>(TEXT(<span class="stringliteral">&quot;[POST] RequestInterviewAnswer failed - bSuccess: %s, Response valid: %s&quot;</span>),</div>
-<div class="line"><span class="lineno">  797</span>                    bWasSuccessful ? TEXT(<span class="stringliteral">&quot;true&quot;</span>) : TEXT(<span class="stringliteral">&quot;false&quot;</span>),</div>
-<div class="line"><span class="lineno">  798</span>                    ResPtr.IsValid() ? TEXT(<span class="stringliteral">&quot;true&quot;</span>) : TEXT(<span class="stringliteral">&quot;false&quot;</span>));</div>
-<div class="line"><span class="lineno">  799</span>                </div>
-<div class="line"><span class="lineno">  800</span>                int32 ErrorCode = ResPtr.IsValid() ? ResPtr-&gt;GetResponseCode() : 0;</div>
-<div class="line"><span class="lineno">  801</span>                FString ErrorContent = ResPtr.IsValid() ? ResPtr-&gt;GetContentAsString() : TEXT(<span class="stringliteral">&quot;Network connection failed&quot;</span>);</div>
-<div class="line"><span class="lineno">  802</span>                WeakThis-&gt;ShowNetworkErrorPopup(ErrorCode, ErrorContent);</div>
+<div class="line"><span class="lineno">  779</span>            <span class="keywordflow">if</span> (bWasSuccessful &amp;&amp; ResPtr.IsValid())</div>
+<div class="line"><span class="lineno">  780</span>            {</div>
+<div class="line"><span class="lineno">  781</span>                const int32 ResponseCode = ResPtr-&gt;GetResponseCode();</div>
+<div class="line"><span class="lineno">  782</span> </div>
+<div class="line"><span class="lineno">  783</span>                NETWORK_LOG(TEXT(<span class="stringliteral">&quot;[POST] RequestInterviewAnswer - Code: %d, Response: %s&quot;</span>),</div>
+<div class="line"><span class="lineno">  784</span>                    ResponseCode, *ResPtr-&gt;GetContentAsString());</div>
+<div class="line"><span class="lineno">  785</span>                </div>
+<div class="line"><span class="lineno">  786</span>                if (IsResSuccess(ResponseCode))</div>
+<div class="line"><span class="lineno">  787</span>                {</div>
+<div class="line"><span class="lineno">  788</span>                    ResponseData.SetFromHttpResponse(ResPtr);</div>
+<div class="line"><span class="lineno">  789</span>                    ResponseData.PrintData();</div>
+<div class="line"><span class="lineno">  790</span>                    InDelegate.ExecuteIfBound(ResponseData, true);</div>
+<div class="line"><span class="lineno">  791</span>                }</div>
+<div class="line"><span class="lineno">  792</span>                <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  793</span>                {</div>
+<div class="line"><span class="lineno">  794</span>                    WeakThis-&gt;ShowNetworkErrorPopup(ResponseCode, ResPtr-&gt;GetContentAsString());</div>
+<div class="line"><span class="lineno">  795</span>                    InDelegate.ExecuteIfBound(ResponseData, false);</div>
+<div class="line"><span class="lineno">  796</span>                }</div>
+<div class="line"><span class="lineno">  797</span>            }</div>
+<div class="line"><span class="lineno">  798</span>            <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  799</span>            {</div>
+<div class="line"><span class="lineno">  800</span>                <a class="code hl_define" href="GameLogging_8h.html#ad8e2ccc8c20a63e091e0111987b4d3bc">NETWORK_LOG</a>(TEXT(<span class="stringliteral">&quot;[POST] RequestInterviewAnswer failed - bSuccess: %s, Response valid: %s&quot;</span>),</div>
+<div class="line"><span class="lineno">  801</span>                    bWasSuccessful ? TEXT(<span class="stringliteral">&quot;true&quot;</span>) : TEXT(<span class="stringliteral">&quot;false&quot;</span>),</div>
+<div class="line"><span class="lineno">  802</span>                    ResPtr.IsValid() ? TEXT(<span class="stringliteral">&quot;true&quot;</span>) : TEXT(<span class="stringliteral">&quot;false&quot;</span>));</div>
 <div class="line"><span class="lineno">  803</span>                </div>
-<div class="line"><span class="lineno">  804</span>                InDelegate.ExecuteIfBound(ResponseData, <span class="keyword">false</span>);</div>
-<div class="line"><span class="lineno">  805</span>            }</div>
-<div class="line"><span class="lineno">  806</span>        });</div>
-<div class="line"><span class="lineno">  807</span> </div>
-<div class="line"><span class="lineno">  808</span>    <a class="code hl_function" href="classUKLingoNetworkSystem.html#accbd4084344a72623fe40deab11d1c29">AddNetworkWaitCount</a>(1);</div>
-<div class="line"><span class="lineno">  809</span>    Request-&gt;ProcessRequest();</div>
-<div class="line"><span class="lineno">  810</span>}</div>
+<div class="line"><span class="lineno">  804</span>                int32 ErrorCode = ResPtr.IsValid() ? ResPtr-&gt;GetResponseCode() : 0;</div>
+<div class="line"><span class="lineno">  805</span>                FString ErrorContent = ResPtr.IsValid() ? ResPtr-&gt;GetContentAsString() : TEXT(<span class="stringliteral">&quot;Network connection failed&quot;</span>);</div>
+<div class="line"><span class="lineno">  806</span>                WeakThis-&gt;ShowNetworkErrorPopup(ErrorCode, ErrorContent);</div>
+<div class="line"><span class="lineno">  807</span>                </div>
+<div class="line"><span class="lineno">  808</span>                InDelegate.ExecuteIfBound(ResponseData, <span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">  809</span>            }</div>
+<div class="line"><span class="lineno">  810</span>        });</div>
+<div class="line"><span class="lineno">  811</span> </div>
+<div class="line"><span class="lineno">  812</span>    <a class="code hl_function" href="classUKLingoNetworkSystem.html#accbd4084344a72623fe40deab11d1c29">AddNetworkWaitCount</a>(1);</div>
+<div class="line"><span class="lineno">  813</span>    Request-&gt;ProcessRequest();</div>
+<div class="line"><span class="lineno">  814</span>}</div>
 <div class="ttc" id="aUKLingoNetworkSystem_8cpp_html_a46a23e536f557ad9a916633c05d6167b"><div class="ttname"><a href="UKLingoNetworkSystem_8cpp.html#a46a23e536f557ad9a916633c05d6167b">NETWORK_POST</a></div><div class="ttdeci">#define NETWORK_POST</div><div class="ttdef"><b>Definition</b> <a href="UKLingoNetworkSystem_8cpp_source.html#l00028">UKLingoNetworkSystem.cpp:28</a></div></div>
 <div class="ttc" id="aclassUKLingoNetworkSystem_html_a0bfd5f1b3523947877ba5c4e7ef9aa2f"><div class="ttname"><a href="classUKLingoNetworkSystem.html#a0bfd5f1b3523947877ba5c4e7ef9aa2f">UKLingoNetworkSystem::SetupHttpRequest</a></div><div class="ttdeci">TSharedRef&lt; IHttpRequest, ESPMode::ThreadSafe &gt; SetupHttpRequest(const FString &amp;Url, const FString &amp;Verb)</div><div class="ttdef"><b>Definition</b> <a href="UKLingoNetworkSystem_8cpp_source.html#l00129">UKLingoNetworkSystem.cpp:129</a></div></div>
 <div class="ttc" id="aclassUKLingoNetworkSystem_html_accbd4084344a72623fe40deab11d1c29"><div class="ttname"><a href="classUKLingoNetworkSystem.html#accbd4084344a72623fe40deab11d1c29">UKLingoNetworkSystem::AddNetworkWaitCount</a></div><div class="ttdeci">void AddNetworkWaitCount(int Value)</div><div class="ttdoc">네트워크 처리 대기 카운트를 갱신하고 UI에 통보합니다.</div><div class="ttdef"><b>Definition</b> <a href="UKLingoNetworkSystem_8cpp_source.html#l00072">UKLingoNetworkSystem.cpp:72</a></div></div>
 <div class="ttc" id="aclassUKLingoNetworkSystem_html_ad71f0b7215e0d685a171bc2d8e7a0a3f"><div class="ttname"><a href="classUKLingoNetworkSystem.html#ad71f0b7215e0d685a171bc2d8e7a0a3f">UKLingoNetworkSystem::LogNetwork</a></div><div class="ttdeci">static void LogNetwork(ENetworkLogType InLogType, const FString &amp;URL, const FString &amp;Body=TEXT(&quot;&quot;))</div><div class="ttdoc">공통 네트워크 로그 메시지를 출력합니다.</div><div class="ttdef"><b>Definition</b> <a href="UKLingoNetworkSystem_8cpp_source.html#l00041">UKLingoNetworkSystem.cpp:41</a></div></div>
 <div class="ttc" id="anamespaceNetworkConfig_html_ab5ac57e8f51de6d1740c7a88534a7246"><div class="ttname"><a href="namespaceNetworkConfig.html#ab5ac57e8f51de6d1740c7a88534a7246">NetworkConfig::GetFullUrl</a></div><div class="ttdeci">static FString GetFullUrl(const FString &amp;Endpoint)</div><div class="ttdoc">현재 서버 모드에 맞는 HTTP 엔드포인트 URL을 생성합니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00022">NetworkData.h:22</a></div></div>
 <div class="ttc" id="anamespaceRequestAPI_html_ac23f8020a8a24f9d640a8aefbe9e56e5"><div class="ttname"><a href="namespaceRequestAPI.html#ac23f8020a8a24f9d640a8aefbe9e56e5">RequestAPI::interview_answer</a></div><div class="ttdeci">static FString interview_answer</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00096">NetworkData.h:96</a></div></div>
-<div class="ttc" id="astructFRequestInterviewAnswer_html_a216549363b85b27053c6b3866b3c457c"><div class="ttname"><a href="structFRequestInterviewAnswer.html#a216549363b85b27053c6b3866b3c457c">FRequestInterviewAnswer::ToJsonString</a></div><div class="ttdeci">bool ToJsonString(FString &amp;OutJson) const</div><div class="ttdoc">구조체를 JSON 문자열로 변환합니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8cpp_source.html#l00476">NetworkData.cpp:476</a></div></div>
-<div class="ttc" id="astructFResponseInterviewAnswer_html"><div class="ttname"><a href="structFResponseInterviewAnswer.html">FResponseInterviewAnswer</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00742">NetworkData.h:743</a></div></div>
+<div class="ttc" id="astructFRequestInterviewAnswer_html_a216549363b85b27053c6b3866b3c457c"><div class="ttname"><a href="structFRequestInterviewAnswer.html#a216549363b85b27053c6b3866b3c457c">FRequestInterviewAnswer::ToJsonString</a></div><div class="ttdeci">bool ToJsonString(FString &amp;OutJson) const</div><div class="ttdoc">구조체를 JSON 문자열로 변환합니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8cpp_source.html#l00512">NetworkData.cpp:512</a></div></div>
+<div class="ttc" id="astructFResponseInterviewAnswer_html"><div class="ttname"><a href="structFResponseInterviewAnswer.html">FResponseInterviewAnswer</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00787">NetworkData.h:788</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="NetworkData_8h_source.html#l00022">NetworkConfig::GetFullUrl()</a>, <a class="el" href="NetworkData_8h_source.html#l00096">RequestAPI::interview_answer</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00041">LogNetwork()</a>, <a class="el" href="GameLogging_8h.html#ad8e2ccc8c20a63e091e0111987b4d3bc">NETWORK_LOG</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00028">NETWORK_POST</a>, <a class="el" href="ENetworkLogType_8h.html#a80aaa513e01d2ec2d4421835b09d691fa03d947a2158373c3b9d74325850cb8b9">Post</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00129">SetupHttpRequest()</a>, <a class="el" href="NetworkData_8cpp_source.html#l00476">FRequestInterviewAnswer::ToJsonString()</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="NetworkData_8h_source.html#l00022">NetworkConfig::GetFullUrl()</a>, <a class="el" href="NetworkData_8h_source.html#l00096">RequestAPI::interview_answer</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00041">LogNetwork()</a>, <a class="el" href="GameLogging_8h.html#ad8e2ccc8c20a63e091e0111987b4d3bc">NETWORK_LOG</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00028">NETWORK_POST</a>, <a class="el" href="ENetworkLogType_8h.html#a80aaa513e01d2ec2d4421835b09d691fa03d947a2158373c3b9d74325850cb8b9">Post</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00129">SetupHttpRequest()</a>, <a class="el" href="NetworkData_8cpp_source.html#l00512">FRequestInterviewAnswer::ToJsonString()</a>.</p>
 <div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-7-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-7-summary" class="dynsummary" style="display:block;">
@@ -649,60 +651,60 @@ Private 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="UKLingoNetworkSystem_8cpp_source.html">UKLingoNetworkSystem.cpp</a> 파일의 <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00693">693</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  694</span>{</div>
-<div class="line"><span class="lineno">  695</span>    FString Url = <a class="code hl_function" href="namespaceNetworkConfig.html#ab5ac57e8f51de6d1740c7a88534a7246">NetworkConfig::GetFullUrl</a>(<a class="code hl_variable" href="namespaceRequestAPI.html#a72a9108a91fd78d005fe594cd7ce8818">RequestAPI::interview_hello</a>);</div>
-<div class="line"><span class="lineno">  696</span>    <span class="keyword">auto</span> Request = <a class="code hl_function" href="classUKLingoNetworkSystem.html#a0bfd5f1b3523947877ba5c4e7ef9aa2f">SetupHttpRequest</a>(Url, <a class="code hl_define" href="UKLingoNetworkSystem_8cpp.html#a6bd9e0c8add7ea4b4e756a2b78fb54f7">NETWORK_GET</a>);</div>
-<div class="line"><span class="lineno">  697</span> </div>
-<div class="line"><span class="lineno">  698</span>    <a class="code hl_function" href="classUKLingoNetworkSystem.html#ad71f0b7215e0d685a171bc2d8e7a0a3f">LogNetwork</a>(<a class="code hl_enumvalue" href="ENetworkLogType_8h.html#a80aaa513e01d2ec2d4421835b09d691fac55582518cba2c464f29f5bae1c68def">ENetworkLogType::Get</a>, *Request-&gt;GetURL());</div>
-<div class="line"><span class="lineno">  699</span> </div>
-<div class="line"><span class="lineno">  700</span>    Request-&gt;OnProcessRequestComplete().BindLambda(</div>
-<div class="line"><span class="lineno">  701</span>        [WeakThis = TWeakObjectPtr&lt;UKLingoNetworkSystem&gt;(<span class="keyword">this</span>), InDelegate](FHttpRequestPtr Req, FHttpResponsePtr ResPtr, <span class="keywordtype">bool</span> bWasSuccessful)</div>
-<div class="line"><span class="lineno">  702</span>        {</div>
-<div class="line"><span class="lineno">  703</span>            <span class="keywordflow">if</span> (!WeakThis.IsValid() || IsEngineExitRequested())</div>
-<div class="line"><span class="lineno">  704</span>                <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  705</span> </div>
-<div class="line"><span class="lineno">  706</span>            WeakThis-&gt;AddNetworkWaitCount(-1);</div>
-<div class="line"><span class="lineno">  707</span>            <a class="code hl_struct" href="structFResponseInterviewHello.html">FResponseInterviewHello</a> ResponseData;</div>
-<div class="line"><span class="lineno">  708</span> </div>
-<div class="line"><span class="lineno">  709</span>            <span class="keywordflow">if</span> (bWasSuccessful &amp;&amp; ResPtr.IsValid())</div>
-<div class="line"><span class="lineno">  710</span>            {</div>
-<div class="line"><span class="lineno">  711</span>                const int32 ResponseCode = ResPtr-&gt;GetResponseCode();</div>
+<p class="definition"><a class="el" href="UKLingoNetworkSystem_8cpp_source.html">UKLingoNetworkSystem.cpp</a> 파일의 <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00697">697</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  698</span>{</div>
+<div class="line"><span class="lineno">  699</span>    FString Url = <a class="code hl_function" href="namespaceNetworkConfig.html#ab5ac57e8f51de6d1740c7a88534a7246">NetworkConfig::GetFullUrl</a>(<a class="code hl_variable" href="namespaceRequestAPI.html#a72a9108a91fd78d005fe594cd7ce8818">RequestAPI::interview_hello</a>);</div>
+<div class="line"><span class="lineno">  700</span>    <span class="keyword">auto</span> Request = <a class="code hl_function" href="classUKLingoNetworkSystem.html#a0bfd5f1b3523947877ba5c4e7ef9aa2f">SetupHttpRequest</a>(Url, <a class="code hl_define" href="UKLingoNetworkSystem_8cpp.html#a6bd9e0c8add7ea4b4e756a2b78fb54f7">NETWORK_GET</a>);</div>
+<div class="line"><span class="lineno">  701</span> </div>
+<div class="line"><span class="lineno">  702</span>    <a class="code hl_function" href="classUKLingoNetworkSystem.html#ad71f0b7215e0d685a171bc2d8e7a0a3f">LogNetwork</a>(<a class="code hl_enumvalue" href="ENetworkLogType_8h.html#a80aaa513e01d2ec2d4421835b09d691fac55582518cba2c464f29f5bae1c68def">ENetworkLogType::Get</a>, *Request-&gt;GetURL());</div>
+<div class="line"><span class="lineno">  703</span> </div>
+<div class="line"><span class="lineno">  704</span>    Request-&gt;OnProcessRequestComplete().BindLambda(</div>
+<div class="line"><span class="lineno">  705</span>        [WeakThis = TWeakObjectPtr&lt;UKLingoNetworkSystem&gt;(<span class="keyword">this</span>), InDelegate](FHttpRequestPtr Req, FHttpResponsePtr ResPtr, <span class="keywordtype">bool</span> bWasSuccessful)</div>
+<div class="line"><span class="lineno">  706</span>        {</div>
+<div class="line"><span class="lineno">  707</span>            <span class="keywordflow">if</span> (!WeakThis.IsValid() || IsEngineExitRequested())</div>
+<div class="line"><span class="lineno">  708</span>                <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  709</span> </div>
+<div class="line"><span class="lineno">  710</span>            WeakThis-&gt;AddNetworkWaitCount(-1);</div>
+<div class="line"><span class="lineno">  711</span>            <a class="code hl_struct" href="structFResponseInterviewHello.html">FResponseInterviewHello</a> ResponseData;</div>
 <div class="line"><span class="lineno">  712</span> </div>
-<div class="line"><span class="lineno">  713</span>                NETWORK_LOG(TEXT(<span class="stringliteral">&quot;[RES] RequestInterviewHello - Code: %d, Response: %s&quot;</span>), ResponseCode, *ResPtr-&gt;GetContentAsString());</div>
-<div class="line"><span class="lineno">  714</span>                </div>
-<div class="line"><span class="lineno">  715</span>                if (IsResSuccess(ResponseCode))</div>
-<div class="line"><span class="lineno">  716</span>                {</div>
-<div class="line"><span class="lineno">  717</span>                    ResponseData.SetFromHttpResponse(ResPtr);</div>
-<div class="line"><span class="lineno">  718</span>                    ResponseData.PrintData();</div>
-<div class="line"><span class="lineno">  719</span>                    InDelegate.ExecuteIfBound(ResponseData, true);</div>
-<div class="line"><span class="lineno">  720</span>                }</div>
-<div class="line"><span class="lineno">  721</span>                <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  722</span>                {</div>
-<div class="line"><span class="lineno">  723</span>                    WeakThis-&gt;ShowNetworkErrorPopup(ResponseCode, ResPtr-&gt;GetContentAsString());</div>
-<div class="line"><span class="lineno">  724</span>                    InDelegate.ExecuteIfBound(ResponseData, false);</div>
-<div class="line"><span class="lineno">  725</span>                }</div>
-<div class="line"><span class="lineno">  726</span>            }</div>
-<div class="line"><span class="lineno">  727</span>            <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  728</span>            {</div>
-<div class="line"><span class="lineno">  729</span>                <a class="code hl_define" href="GameLogging_8h.html#ad8e2ccc8c20a63e091e0111987b4d3bc">NETWORK_LOG</a>(TEXT(<span class="stringliteral">&quot;[POST] RequestInterviewHello failed - bSuccess: %s, Response valid: %s&quot;</span>),</div>
-<div class="line"><span class="lineno">  730</span>                    bWasSuccessful ? TEXT(<span class="stringliteral">&quot;true&quot;</span>) : TEXT(<span class="stringliteral">&quot;false&quot;</span>),</div>
-<div class="line"><span class="lineno">  731</span>                    ResPtr.IsValid() ? TEXT(<span class="stringliteral">&quot;true&quot;</span>) : TEXT(<span class="stringliteral">&quot;false&quot;</span>));</div>
-<div class="line"><span class="lineno">  732</span>                </div>
-<div class="line"><span class="lineno">  733</span>                int32 ErrorCode = ResPtr.IsValid() ? ResPtr-&gt;GetResponseCode() : 0;</div>
-<div class="line"><span class="lineno">  734</span>                FString ErrorContent = ResPtr.IsValid() ? ResPtr-&gt;GetContentAsString() : TEXT(<span class="stringliteral">&quot;Network connection failed&quot;</span>);</div>
-<div class="line"><span class="lineno">  735</span>                WeakThis-&gt;ShowNetworkErrorPopup(ErrorCode, ErrorContent);</div>
+<div class="line"><span class="lineno">  713</span>            <span class="keywordflow">if</span> (bWasSuccessful &amp;&amp; ResPtr.IsValid())</div>
+<div class="line"><span class="lineno">  714</span>            {</div>
+<div class="line"><span class="lineno">  715</span>                const int32 ResponseCode = ResPtr-&gt;GetResponseCode();</div>
+<div class="line"><span class="lineno">  716</span> </div>
+<div class="line"><span class="lineno">  717</span>                NETWORK_LOG(TEXT(<span class="stringliteral">&quot;[RES] RequestInterviewHello - Code: %d, Response: %s&quot;</span>), ResponseCode, *ResPtr-&gt;GetContentAsString());</div>
+<div class="line"><span class="lineno">  718</span>                </div>
+<div class="line"><span class="lineno">  719</span>                if (IsResSuccess(ResponseCode))</div>
+<div class="line"><span class="lineno">  720</span>                {</div>
+<div class="line"><span class="lineno">  721</span>                    ResponseData.SetFromHttpResponse(ResPtr);</div>
+<div class="line"><span class="lineno">  722</span>                    ResponseData.PrintData();</div>
+<div class="line"><span class="lineno">  723</span>                    InDelegate.ExecuteIfBound(ResponseData, true);</div>
+<div class="line"><span class="lineno">  724</span>                }</div>
+<div class="line"><span class="lineno">  725</span>                <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  726</span>                {</div>
+<div class="line"><span class="lineno">  727</span>                    WeakThis-&gt;ShowNetworkErrorPopup(ResponseCode, ResPtr-&gt;GetContentAsString());</div>
+<div class="line"><span class="lineno">  728</span>                    InDelegate.ExecuteIfBound(ResponseData, false);</div>
+<div class="line"><span class="lineno">  729</span>                }</div>
+<div class="line"><span class="lineno">  730</span>            }</div>
+<div class="line"><span class="lineno">  731</span>            <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  732</span>            {</div>
+<div class="line"><span class="lineno">  733</span>                <a class="code hl_define" href="GameLogging_8h.html#ad8e2ccc8c20a63e091e0111987b4d3bc">NETWORK_LOG</a>(TEXT(<span class="stringliteral">&quot;[POST] RequestInterviewHello failed - bSuccess: %s, Response valid: %s&quot;</span>),</div>
+<div class="line"><span class="lineno">  734</span>                    bWasSuccessful ? TEXT(<span class="stringliteral">&quot;true&quot;</span>) : TEXT(<span class="stringliteral">&quot;false&quot;</span>),</div>
+<div class="line"><span class="lineno">  735</span>                    ResPtr.IsValid() ? TEXT(<span class="stringliteral">&quot;true&quot;</span>) : TEXT(<span class="stringliteral">&quot;false&quot;</span>));</div>
 <div class="line"><span class="lineno">  736</span>                </div>
-<div class="line"><span class="lineno">  737</span>                InDelegate.ExecuteIfBound(ResponseData, <span class="keyword">false</span>);</div>
-<div class="line"><span class="lineno">  738</span>            }</div>
-<div class="line"><span class="lineno">  739</span>        });</div>
-<div class="line"><span class="lineno">  740</span> </div>
-<div class="line"><span class="lineno">  741</span>    <a class="code hl_function" href="classUKLingoNetworkSystem.html#accbd4084344a72623fe40deab11d1c29">AddNetworkWaitCount</a>(1);</div>
-<div class="line"><span class="lineno">  742</span>    Request-&gt;ProcessRequest();</div>
-<div class="line"><span class="lineno">  743</span>}</div>
+<div class="line"><span class="lineno">  737</span>                int32 ErrorCode = ResPtr.IsValid() ? ResPtr-&gt;GetResponseCode() : 0;</div>
+<div class="line"><span class="lineno">  738</span>                FString ErrorContent = ResPtr.IsValid() ? ResPtr-&gt;GetContentAsString() : TEXT(<span class="stringliteral">&quot;Network connection failed&quot;</span>);</div>
+<div class="line"><span class="lineno">  739</span>                WeakThis-&gt;ShowNetworkErrorPopup(ErrorCode, ErrorContent);</div>
+<div class="line"><span class="lineno">  740</span>                </div>
+<div class="line"><span class="lineno">  741</span>                InDelegate.ExecuteIfBound(ResponseData, <span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">  742</span>            }</div>
+<div class="line"><span class="lineno">  743</span>        });</div>
+<div class="line"><span class="lineno">  744</span> </div>
+<div class="line"><span class="lineno">  745</span>    <a class="code hl_function" href="classUKLingoNetworkSystem.html#accbd4084344a72623fe40deab11d1c29">AddNetworkWaitCount</a>(1);</div>
+<div class="line"><span class="lineno">  746</span>    Request-&gt;ProcessRequest();</div>
+<div class="line"><span class="lineno">  747</span>}</div>
 <div class="ttc" id="aUKLingoNetworkSystem_8cpp_html_a6bd9e0c8add7ea4b4e756a2b78fb54f7"><div class="ttname"><a href="UKLingoNetworkSystem_8cpp.html#a6bd9e0c8add7ea4b4e756a2b78fb54f7">NETWORK_GET</a></div><div class="ttdeci">#define NETWORK_GET</div><div class="ttdef"><b>Definition</b> <a href="UKLingoNetworkSystem_8cpp_source.html#l00027">UKLingoNetworkSystem.cpp:27</a></div></div>
 <div class="ttc" id="anamespaceRequestAPI_html_a72a9108a91fd78d005fe594cd7ce8818"><div class="ttname"><a href="namespaceRequestAPI.html#a72a9108a91fd78d005fe594cd7ce8818">RequestAPI::interview_hello</a></div><div class="ttdeci">static FString interview_hello</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00095">NetworkData.h:95</a></div></div>
-<div class="ttc" id="astructFResponseInterviewHello_html"><div class="ttname"><a href="structFResponseInterviewHello.html">FResponseInterviewHello</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00697">NetworkData.h:698</a></div></div>
+<div class="ttc" id="astructFResponseInterviewHello_html"><div class="ttname"><a href="structFResponseInterviewHello.html">FResponseInterviewHello</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00742">NetworkData.h:743</a></div></div>
 </div><!-- fragment -->
 <p class="reference">다음을 참조함 :  <a class="el" href="ENetworkLogType_8h.html#a80aaa513e01d2ec2d4421835b09d691fac55582518cba2c464f29f5bae1c68def">Get</a>, <a class="el" href="NetworkData_8h_source.html#l00022">NetworkConfig::GetFullUrl()</a>, <a class="el" href="NetworkData_8h_source.html#l00095">RequestAPI::interview_hello</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00041">LogNetwork()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00027">NETWORK_GET</a>, <a class="el" href="GameLogging_8h.html#ad8e2ccc8c20a63e091e0111987b4d3bc">NETWORK_LOG</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00129">SetupHttpRequest()</a>.</p>
 <div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -741,113 +743,113 @@ Private 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="UKLingoNetworkSystem_8cpp_source.html">UKLingoNetworkSystem.cpp</a> 파일의 <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00511">511</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  512</span>{</div>
-<div class="line"><span class="lineno">  513</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> ACM = UVoiceCacheManager::Get(GetWorld()))</div>
-<div class="line"><span class="lineno">  514</span>    {</div>
-<div class="line"><span class="lineno">  515</span>        <span class="comment">// HACK, 임시로 서버로 보내지 않게 하기 위해서</span></div>
-<div class="line"><span class="lineno">  516</span>        <span class="comment">// 일레븐랩스를 사용해서 하는데, 500이슈가 뜬다</span></div>
-<div class="line"><span class="lineno">  517</span>        <span class="comment">// 일레븐 랩스의 토큰을 모두 소진해서,</span></div>
-<div class="line"><span class="lineno">  518</span>        <span class="comment">// 그러면 이것을 당분간 해결하기전까지는 발생안하기 위해서 데이터를 스킵한다.</span></div>
-<div class="line"><span class="lineno">  519</span>        </div>
-<div class="line"><span class="lineno">  520</span>        <span class="keyword">auto</span> TestAudioText = TEXT(<span class="stringliteral">&quot;test_audio&quot;</span>);</div>
-<div class="line"><span class="lineno">  521</span> </div>
-<div class="line"><span class="lineno">  522</span>        TArray&lt;uint8&gt; CachedAudio;</div>
-<div class="line"><span class="lineno">  523</span>        <span class="keywordflow">if</span> (ACM-&gt;TryGetCachedAudio(TestAudioText, CachedAudio))</div>
-<div class="line"><span class="lineno">  524</span>        {</div>
-<div class="line"><span class="lineno">  525</span>            <a class="code hl_struct" href="structFResponseListenAudio.html">FResponseListenAudio</a> Response;</div>
-<div class="line"><span class="lineno">  526</span>            Response.<a class="code hl_variable" href="structFResponseListenAudio.html#ac98fb8b7db5c2bbb9bd42bf9fd72f71f">audio_text</a> = TestAudioText;</div>
-<div class="line"><span class="lineno">  527</span>            Response.<a class="code hl_variable" href="structFResponseListenAudio.html#a39dfdd52ce3770dfbccf800986ce4607">audio_base64</a> = CachedAudio;</div>
-<div class="line"><span class="lineno">  528</span> </div>
-<div class="line"><span class="lineno">  529</span>            <span class="comment">// ✅ 비동기 Delegate 호출 (타이밍 문제 해결)</span></div>
-<div class="line"><span class="lineno">  530</span>            <span class="keywordflow">if</span> (UWorld* World = GetWorld())</div>
-<div class="line"><span class="lineno">  531</span>            {</div>
-<div class="line"><span class="lineno">  532</span>                <span class="comment">// Response를 힙에 할당하여 Lambda에서 안전하게 사용</span></div>
-<div class="line"><span class="lineno">  533</span>                TSharedPtr&lt;FResponseListenAudio&gt; SharedResponse = MakeShared&lt;FResponseListenAudio&gt;(Response);</div>
-<div class="line"><span class="lineno">  534</span> </div>
-<div class="line"><span class="lineno">  535</span>                World-&gt;GetTimerManager().SetTimerForNextTick([InDelegate, SharedResponse]()</div>
-<div class="line"><span class="lineno">  536</span>                {</div>
-<div class="line"><span class="lineno">  537</span>                    <span class="comment">// 다음 프레임에 Delegate 호출</span></div>
-<div class="line"><span class="lineno">  538</span>                    InDelegate.ExecuteIfBound(*SharedResponse, <span class="keyword">true</span>);</div>
-<div class="line"><span class="lineno">  539</span>                });</div>
-<div class="line"><span class="lineno">  540</span>            }</div>
-<div class="line"><span class="lineno">  541</span>            <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  542</span>            {</div>
-<div class="line"><span class="lineno">  543</span>                <span class="comment">// World가 없으면 즉시 호출 (fallback)</span></div>
-<div class="line"><span class="lineno">  544</span>                InDelegate.ExecuteIfBound(Response, <span class="keyword">true</span>);</div>
-<div class="line"><span class="lineno">  545</span>            }</div>
-<div class="line"><span class="lineno">  546</span> </div>
-<div class="line"><span class="lineno">  547</span>            <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  548</span>        }</div>
-<div class="line"><span class="lineno">  549</span>    }</div>
+<p class="definition"><a class="el" href="UKLingoNetworkSystem_8cpp_source.html">UKLingoNetworkSystem.cpp</a> 파일의 <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00515">515</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  516</span>{</div>
+<div class="line"><span class="lineno">  517</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> ACM = UVoiceCacheManager::Get(GetWorld()))</div>
+<div class="line"><span class="lineno">  518</span>    {</div>
+<div class="line"><span class="lineno">  519</span>        <span class="comment">// HACK, 임시로 서버로 보내지 않게 하기 위해서</span></div>
+<div class="line"><span class="lineno">  520</span>        <span class="comment">// 일레븐랩스를 사용해서 하는데, 500이슈가 뜬다</span></div>
+<div class="line"><span class="lineno">  521</span>        <span class="comment">// 일레븐 랩스의 토큰을 모두 소진해서,</span></div>
+<div class="line"><span class="lineno">  522</span>        <span class="comment">// 그러면 이것을 당분간 해결하기전까지는 발생안하기 위해서 데이터를 스킵한다.</span></div>
+<div class="line"><span class="lineno">  523</span>        </div>
+<div class="line"><span class="lineno">  524</span>        <span class="keyword">auto</span> TestAudioText = TEXT(<span class="stringliteral">&quot;test_audio&quot;</span>);</div>
+<div class="line"><span class="lineno">  525</span> </div>
+<div class="line"><span class="lineno">  526</span>        TArray&lt;uint8&gt; CachedAudio;</div>
+<div class="line"><span class="lineno">  527</span>        <span class="keywordflow">if</span> (ACM-&gt;TryGetCachedAudio(TestAudioText, CachedAudio))</div>
+<div class="line"><span class="lineno">  528</span>        {</div>
+<div class="line"><span class="lineno">  529</span>            <a class="code hl_struct" href="structFResponseListenAudio.html">FResponseListenAudio</a> Response;</div>
+<div class="line"><span class="lineno">  530</span>            Response.<a class="code hl_variable" href="structFResponseListenAudio.html#ac98fb8b7db5c2bbb9bd42bf9fd72f71f">audio_text</a> = TestAudioText;</div>
+<div class="line"><span class="lineno">  531</span>            Response.<a class="code hl_variable" href="structFResponseListenAudio.html#a39dfdd52ce3770dfbccf800986ce4607">audio_base64</a> = CachedAudio;</div>
+<div class="line"><span class="lineno">  532</span> </div>
+<div class="line"><span class="lineno">  533</span>            <span class="comment">// ✅ 비동기 Delegate 호출 (타이밍 문제 해결)</span></div>
+<div class="line"><span class="lineno">  534</span>            <span class="keywordflow">if</span> (UWorld* World = GetWorld())</div>
+<div class="line"><span class="lineno">  535</span>            {</div>
+<div class="line"><span class="lineno">  536</span>                <span class="comment">// Response를 힙에 할당하여 Lambda에서 안전하게 사용</span></div>
+<div class="line"><span class="lineno">  537</span>                TSharedPtr&lt;FResponseListenAudio&gt; SharedResponse = MakeShared&lt;FResponseListenAudio&gt;(Response);</div>
+<div class="line"><span class="lineno">  538</span> </div>
+<div class="line"><span class="lineno">  539</span>                World-&gt;GetTimerManager().SetTimerForNextTick([InDelegate, SharedResponse]()</div>
+<div class="line"><span class="lineno">  540</span>                {</div>
+<div class="line"><span class="lineno">  541</span>                    <span class="comment">// 다음 프레임에 Delegate 호출</span></div>
+<div class="line"><span class="lineno">  542</span>                    InDelegate.ExecuteIfBound(*SharedResponse, <span class="keyword">true</span>);</div>
+<div class="line"><span class="lineno">  543</span>                });</div>
+<div class="line"><span class="lineno">  544</span>            }</div>
+<div class="line"><span class="lineno">  545</span>            <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  546</span>            {</div>
+<div class="line"><span class="lineno">  547</span>                <span class="comment">// World가 없으면 즉시 호출 (fallback)</span></div>
+<div class="line"><span class="lineno">  548</span>                InDelegate.ExecuteIfBound(Response, <span class="keyword">true</span>);</div>
+<div class="line"><span class="lineno">  549</span>            }</div>
 <div class="line"><span class="lineno">  550</span> </div>
-<div class="line"><span class="lineno">  551</span>    TMap&lt;FString, FString&gt; Query;</div>
-<div class="line"><span class="lineno">  552</span>    Query.Add(TEXT(<span class="stringliteral">&quot;audio_text&quot;</span>), AudioText);</div>
-<div class="line"><span class="lineno">  553</span>    FString Url = <a class="code hl_function" href="namespaceNetworkConfig.html#a48c91628e64540f88495507117cfb69f">NetworkConfig::GetFullUrlWithQuery</a>( <a class="code hl_variable" href="namespaceRequestAPI.html#a5954e96c78c1422b8245017dccc9652d">RequestAPI::listenings_audio</a>, Query );</div>
-<div class="line"><span class="lineno">  554</span>    <span class="keyword">auto</span> Request = <a class="code hl_function" href="classUKLingoNetworkSystem.html#a0bfd5f1b3523947877ba5c4e7ef9aa2f">SetupHttpRequest</a>(Url, <a class="code hl_define" href="UKLingoNetworkSystem_8cpp.html#a46a23e536f557ad9a916633c05d6167b">NETWORK_POST</a>);</div>
-<div class="line"><span class="lineno">  555</span>    <a class="code hl_function" href="classUKLingoNetworkSystem.html#ad71f0b7215e0d685a171bc2d8e7a0a3f">LogNetwork</a>(<a class="code hl_enumvalue" href="ENetworkLogType_8h.html#a80aaa513e01d2ec2d4421835b09d691fa03d947a2158373c3b9d74325850cb8b9">ENetworkLogType::Post</a>, *Request-&gt;GetURL());</div>
-<div class="line"><span class="lineno">  556</span> </div>
-<div class="line"><span class="lineno">  557</span>    Request-&gt;OnProcessRequestComplete().BindLambda(</div>
-<div class="line"><span class="lineno">  558</span>        [WeakThis = TWeakObjectPtr&lt;UKLingoNetworkSystem&gt;(<span class="keyword">this</span>), InDelegate, AudioText](FHttpRequestPtr Req, FHttpResponsePtr ResPtr, <span class="keywordtype">bool</span> bWasSuccessful)</div>
-<div class="line"><span class="lineno">  559</span>        {</div>
-<div class="line"><span class="lineno">  560</span>            <span class="keywordflow">if</span> (!WeakThis.IsValid() || IsEngineExitRequested())</div>
-<div class="line"><span class="lineno">  561</span>                <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  562</span> </div>
-<div class="line"><span class="lineno">  563</span>            WeakThis-&gt;AddNetworkWaitCount(-1);</div>
-<div class="line"><span class="lineno">  564</span>            <a class="code hl_struct" href="structFResponseListenAudio.html">FResponseListenAudio</a> ResponseData;</div>
-<div class="line"><span class="lineno">  565</span> </div>
-<div class="line"><span class="lineno">  566</span>            <span class="keywordflow">if</span> (bWasSuccessful &amp;&amp; ResPtr.IsValid())</div>
-<div class="line"><span class="lineno">  567</span>            {</div>
-<div class="line"><span class="lineno">  568</span>                const int32 ResponseCode = ResPtr-&gt;GetResponseCode();</div>
+<div class="line"><span class="lineno">  551</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  552</span>        }</div>
+<div class="line"><span class="lineno">  553</span>    }</div>
+<div class="line"><span class="lineno">  554</span> </div>
+<div class="line"><span class="lineno">  555</span>    TMap&lt;FString, FString&gt; Query;</div>
+<div class="line"><span class="lineno">  556</span>    Query.Add(TEXT(<span class="stringliteral">&quot;audio_text&quot;</span>), AudioText);</div>
+<div class="line"><span class="lineno">  557</span>    FString Url = <a class="code hl_function" href="namespaceNetworkConfig.html#a48c91628e64540f88495507117cfb69f">NetworkConfig::GetFullUrlWithQuery</a>( <a class="code hl_variable" href="namespaceRequestAPI.html#a5954e96c78c1422b8245017dccc9652d">RequestAPI::listenings_audio</a>, Query );</div>
+<div class="line"><span class="lineno">  558</span>    <span class="keyword">auto</span> Request = <a class="code hl_function" href="classUKLingoNetworkSystem.html#a0bfd5f1b3523947877ba5c4e7ef9aa2f">SetupHttpRequest</a>(Url, <a class="code hl_define" href="UKLingoNetworkSystem_8cpp.html#a46a23e536f557ad9a916633c05d6167b">NETWORK_POST</a>);</div>
+<div class="line"><span class="lineno">  559</span>    <a class="code hl_function" href="classUKLingoNetworkSystem.html#ad71f0b7215e0d685a171bc2d8e7a0a3f">LogNetwork</a>(<a class="code hl_enumvalue" href="ENetworkLogType_8h.html#a80aaa513e01d2ec2d4421835b09d691fa03d947a2158373c3b9d74325850cb8b9">ENetworkLogType::Post</a>, *Request-&gt;GetURL());</div>
+<div class="line"><span class="lineno">  560</span> </div>
+<div class="line"><span class="lineno">  561</span>    Request-&gt;OnProcessRequestComplete().BindLambda(</div>
+<div class="line"><span class="lineno">  562</span>        [WeakThis = TWeakObjectPtr&lt;UKLingoNetworkSystem&gt;(<span class="keyword">this</span>), InDelegate, AudioText](FHttpRequestPtr Req, FHttpResponsePtr ResPtr, <span class="keywordtype">bool</span> bWasSuccessful)</div>
+<div class="line"><span class="lineno">  563</span>        {</div>
+<div class="line"><span class="lineno">  564</span>            <span class="keywordflow">if</span> (!WeakThis.IsValid() || IsEngineExitRequested())</div>
+<div class="line"><span class="lineno">  565</span>                <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  566</span> </div>
+<div class="line"><span class="lineno">  567</span>            WeakThis-&gt;AddNetworkWaitCount(-1);</div>
+<div class="line"><span class="lineno">  568</span>            <a class="code hl_struct" href="structFResponseListenAudio.html">FResponseListenAudio</a> ResponseData;</div>
 <div class="line"><span class="lineno">  569</span> </div>
-<div class="line"><span class="lineno">  570</span>                NETWORK_LOG(TEXT(<span class="stringliteral">&quot;[RES] RequestListenAudio - Code: %d, Response: %s&quot;</span>), ResponseCode, *ResPtr-&gt;GetContentAsString());</div>
-<div class="line"><span class="lineno">  571</span> </div>
-<div class="line"><span class="lineno">  572</span>                if (IsResSuccess(ResponseCode))</div>
-<div class="line"><span class="lineno">  573</span>                {</div>
-<div class="line"><span class="lineno">  574</span>                    ResponseData.SetFromHttpResponse(ResPtr);</div>
-<div class="line"><span class="lineno">  575</span>                    ResponseData.PrintData();</div>
-<div class="line"><span class="lineno">  576</span> </div>
-<div class="line"><span class="lineno">  577</span>                    <span class="comment">// [4] 캐시에 저장 (Lambda 캡처된 AudioText 사용)</span></div>
-<div class="line"><span class="lineno">  578</span>                    if (auto ACM = UVoiceCacheManager::Get(WeakThis-&gt;GetWorld()))</div>
-<div class="line"><span class="lineno">  579</span>                    {</div>
-<div class="line"><span class="lineno">  580</span>                        if (ResponseData.audio_base64.Num() &gt; 0)</div>
-<div class="line"><span class="lineno">  581</span>                        {</div>
-<div class="line"><span class="lineno">  582</span>                            ACM-&gt;SaveToCache(AudioText, ResponseData.audio_base64);</div>
-<div class="line"><span class="lineno">  583</span>                        }</div>
-<div class="line"><span class="lineno">  584</span>                    }</div>
-<div class="line"><span class="lineno">  585</span> </div>
-<div class="line"><span class="lineno">  586</span>                    InDelegate.ExecuteIfBound(ResponseData, true);</div>
-<div class="line"><span class="lineno">  587</span>                }</div>
-<div class="line"><span class="lineno">  588</span>                <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  589</span>                {</div>
-<div class="line"><span class="lineno">  590</span>                    WeakThis-&gt;ShowNetworkErrorPopup(ResponseCode, ResPtr-&gt;GetContentAsString());</div>
-<div class="line"><span class="lineno">  591</span>                    InDelegate.ExecuteIfBound(ResponseData, false);</div>
-<div class="line"><span class="lineno">  592</span>                }</div>
-<div class="line"><span class="lineno">  593</span>            }</div>
-<div class="line"><span class="lineno">  594</span>            <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  595</span>            {</div>
-<div class="line"><span class="lineno">  596</span>                <a class="code hl_define" href="GameLogging_8h.html#ad8e2ccc8c20a63e091e0111987b4d3bc">NETWORK_LOG</a>(TEXT(<span class="stringliteral">&quot;[POST] RequestListenAudio failed - bSuccess: %s, Response valid: %s&quot;</span>),</div>
-<div class="line"><span class="lineno">  597</span>                    bWasSuccessful ? TEXT(<span class="stringliteral">&quot;true&quot;</span>) : TEXT(<span class="stringliteral">&quot;false&quot;</span>),</div>
-<div class="line"><span class="lineno">  598</span>                    ResPtr.IsValid() ? TEXT(<span class="stringliteral">&quot;true&quot;</span>) : TEXT(<span class="stringliteral">&quot;false&quot;</span>));</div>
-<div class="line"><span class="lineno">  599</span> </div>
-<div class="line"><span class="lineno">  600</span>                int32 ErrorCode = ResPtr.IsValid() ? ResPtr-&gt;GetResponseCode() : 0;</div>
-<div class="line"><span class="lineno">  601</span>                FString ErrorContent = ResPtr.IsValid() ? ResPtr-&gt;GetContentAsString() : TEXT(<span class="stringliteral">&quot;Network connection failed&quot;</span>);</div>
-<div class="line"><span class="lineno">  602</span>                WeakThis-&gt;ShowNetworkErrorPopup(ErrorCode, ErrorContent);</div>
+<div class="line"><span class="lineno">  570</span>            <span class="keywordflow">if</span> (bWasSuccessful &amp;&amp; ResPtr.IsValid())</div>
+<div class="line"><span class="lineno">  571</span>            {</div>
+<div class="line"><span class="lineno">  572</span>                const int32 ResponseCode = ResPtr-&gt;GetResponseCode();</div>
+<div class="line"><span class="lineno">  573</span> </div>
+<div class="line"><span class="lineno">  574</span>                NETWORK_LOG(TEXT(<span class="stringliteral">&quot;[RES] RequestListenAudio - Code: %d, Response: %s&quot;</span>), ResponseCode, *ResPtr-&gt;GetContentAsString());</div>
+<div class="line"><span class="lineno">  575</span> </div>
+<div class="line"><span class="lineno">  576</span>                if (IsResSuccess(ResponseCode))</div>
+<div class="line"><span class="lineno">  577</span>                {</div>
+<div class="line"><span class="lineno">  578</span>                    ResponseData.SetFromHttpResponse(ResPtr);</div>
+<div class="line"><span class="lineno">  579</span>                    ResponseData.PrintData();</div>
+<div class="line"><span class="lineno">  580</span> </div>
+<div class="line"><span class="lineno">  581</span>                    <span class="comment">// [4] 캐시에 저장 (Lambda 캡처된 AudioText 사용)</span></div>
+<div class="line"><span class="lineno">  582</span>                    if (auto ACM = UVoiceCacheManager::Get(WeakThis-&gt;GetWorld()))</div>
+<div class="line"><span class="lineno">  583</span>                    {</div>
+<div class="line"><span class="lineno">  584</span>                        if (ResponseData.audio_base64.Num() &gt; 0)</div>
+<div class="line"><span class="lineno">  585</span>                        {</div>
+<div class="line"><span class="lineno">  586</span>                            ACM-&gt;SaveToCache(AudioText, ResponseData.audio_base64);</div>
+<div class="line"><span class="lineno">  587</span>                        }</div>
+<div class="line"><span class="lineno">  588</span>                    }</div>
+<div class="line"><span class="lineno">  589</span> </div>
+<div class="line"><span class="lineno">  590</span>                    InDelegate.ExecuteIfBound(ResponseData, true);</div>
+<div class="line"><span class="lineno">  591</span>                }</div>
+<div class="line"><span class="lineno">  592</span>                <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  593</span>                {</div>
+<div class="line"><span class="lineno">  594</span>                    WeakThis-&gt;ShowNetworkErrorPopup(ResponseCode, ResPtr-&gt;GetContentAsString());</div>
+<div class="line"><span class="lineno">  595</span>                    InDelegate.ExecuteIfBound(ResponseData, false);</div>
+<div class="line"><span class="lineno">  596</span>                }</div>
+<div class="line"><span class="lineno">  597</span>            }</div>
+<div class="line"><span class="lineno">  598</span>            <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  599</span>            {</div>
+<div class="line"><span class="lineno">  600</span>                <a class="code hl_define" href="GameLogging_8h.html#ad8e2ccc8c20a63e091e0111987b4d3bc">NETWORK_LOG</a>(TEXT(<span class="stringliteral">&quot;[POST] RequestListenAudio failed - bSuccess: %s, Response valid: %s&quot;</span>),</div>
+<div class="line"><span class="lineno">  601</span>                    bWasSuccessful ? TEXT(<span class="stringliteral">&quot;true&quot;</span>) : TEXT(<span class="stringliteral">&quot;false&quot;</span>),</div>
+<div class="line"><span class="lineno">  602</span>                    ResPtr.IsValid() ? TEXT(<span class="stringliteral">&quot;true&quot;</span>) : TEXT(<span class="stringliteral">&quot;false&quot;</span>));</div>
 <div class="line"><span class="lineno">  603</span> </div>
-<div class="line"><span class="lineno">  604</span>                InDelegate.ExecuteIfBound(ResponseData, <span class="keyword">false</span>);</div>
-<div class="line"><span class="lineno">  605</span>            }</div>
-<div class="line"><span class="lineno">  606</span>        });</div>
+<div class="line"><span class="lineno">  604</span>                int32 ErrorCode = ResPtr.IsValid() ? ResPtr-&gt;GetResponseCode() : 0;</div>
+<div class="line"><span class="lineno">  605</span>                FString ErrorContent = ResPtr.IsValid() ? ResPtr-&gt;GetContentAsString() : TEXT(<span class="stringliteral">&quot;Network connection failed&quot;</span>);</div>
+<div class="line"><span class="lineno">  606</span>                WeakThis-&gt;ShowNetworkErrorPopup(ErrorCode, ErrorContent);</div>
 <div class="line"><span class="lineno">  607</span> </div>
-<div class="line"><span class="lineno">  608</span>    <a class="code hl_function" href="classUKLingoNetworkSystem.html#accbd4084344a72623fe40deab11d1c29">AddNetworkWaitCount</a>(1);</div>
-<div class="line"><span class="lineno">  609</span>    Request-&gt;ProcessRequest();</div>
-<div class="line"><span class="lineno">  610</span>}</div>
+<div class="line"><span class="lineno">  608</span>                InDelegate.ExecuteIfBound(ResponseData, <span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">  609</span>            }</div>
+<div class="line"><span class="lineno">  610</span>        });</div>
+<div class="line"><span class="lineno">  611</span> </div>
+<div class="line"><span class="lineno">  612</span>    <a class="code hl_function" href="classUKLingoNetworkSystem.html#accbd4084344a72623fe40deab11d1c29">AddNetworkWaitCount</a>(1);</div>
+<div class="line"><span class="lineno">  613</span>    Request-&gt;ProcessRequest();</div>
+<div class="line"><span class="lineno">  614</span>}</div>
 <div class="ttc" id="anamespaceNetworkConfig_html_a48c91628e64540f88495507117cfb69f"><div class="ttname"><a href="namespaceNetworkConfig.html#a48c91628e64540f88495507117cfb69f">NetworkConfig::GetFullUrlWithQuery</a></div><div class="ttdeci">static FString GetFullUrlWithQuery(const FString &amp;Endpoint, const TMap&lt; FString, FString &gt; &amp;QueryParams)</div><div class="ttdoc">Query 파라미터가 포함된 전체 URL을 반환합니다. 파라미터가 없으면 기본 URL만 반환합니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00031">NetworkData.h:31</a></div></div>
 <div class="ttc" id="anamespaceRequestAPI_html_a5954e96c78c1422b8245017dccc9652d"><div class="ttname"><a href="namespaceRequestAPI.html#a5954e96c78c1422b8245017dccc9652d">RequestAPI::listenings_audio</a></div><div class="ttdeci">static FString listenings_audio</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00092">NetworkData.h:92</a></div></div>
-<div class="ttc" id="astructFResponseListenAudio_html"><div class="ttname"><a href="structFResponseListenAudio.html">FResponseListenAudio</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00644">NetworkData.h:645</a></div></div>
-<div class="ttc" id="astructFResponseListenAudio_html_a39dfdd52ce3770dfbccf800986ce4607"><div class="ttname"><a href="structFResponseListenAudio.html#a39dfdd52ce3770dfbccf800986ce4607">FResponseListenAudio::audio_base64</a></div><div class="ttdeci">TArray&lt; uint8 &gt; audio_base64</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00652">NetworkData.h:652</a></div></div>
-<div class="ttc" id="astructFResponseListenAudio_html_ac98fb8b7db5c2bbb9bd42bf9fd72f71f"><div class="ttname"><a href="structFResponseListenAudio.html#ac98fb8b7db5c2bbb9bd42bf9fd72f71f">FResponseListenAudio::audio_text</a></div><div class="ttdeci">FString audio_text</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00649">NetworkData.h:649</a></div></div>
+<div class="ttc" id="astructFResponseListenAudio_html"><div class="ttname"><a href="structFResponseListenAudio.html">FResponseListenAudio</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00689">NetworkData.h:690</a></div></div>
+<div class="ttc" id="astructFResponseListenAudio_html_a39dfdd52ce3770dfbccf800986ce4607"><div class="ttname"><a href="structFResponseListenAudio.html#a39dfdd52ce3770dfbccf800986ce4607">FResponseListenAudio::audio_base64</a></div><div class="ttdeci">TArray&lt; uint8 &gt; audio_base64</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00697">NetworkData.h:697</a></div></div>
+<div class="ttc" id="astructFResponseListenAudio_html_ac98fb8b7db5c2bbb9bd42bf9fd72f71f"><div class="ttname"><a href="structFResponseListenAudio.html#ac98fb8b7db5c2bbb9bd42bf9fd72f71f">FResponseListenAudio::audio_text</a></div><div class="ttdeci">FString audio_text</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00694">NetworkData.h:694</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="NetworkData_8h_source.html#l00652">FResponseListenAudio::audio_base64</a>, <a class="el" href="NetworkData_8h_source.html#l00649">FResponseListenAudio::audio_text</a>, <a class="el" href="NetworkData_8h_source.html#l00031">NetworkConfig::GetFullUrlWithQuery()</a>, <a class="el" href="NetworkData_8h_source.html#l00092">RequestAPI::listenings_audio</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00041">LogNetwork()</a>, <a class="el" href="GameLogging_8h.html#ad8e2ccc8c20a63e091e0111987b4d3bc">NETWORK_LOG</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00028">NETWORK_POST</a>, <a class="el" href="ENetworkLogType_8h.html#a80aaa513e01d2ec2d4421835b09d691fa03d947a2158373c3b9d74325850cb8b9">Post</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00129">SetupHttpRequest()</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="NetworkData_8h_source.html#l00697">FResponseListenAudio::audio_base64</a>, <a class="el" href="NetworkData_8h_source.html#l00694">FResponseListenAudio::audio_text</a>, <a class="el" href="NetworkData_8h_source.html#l00031">NetworkConfig::GetFullUrlWithQuery()</a>, <a class="el" href="NetworkData_8h_source.html#l00092">RequestAPI::listenings_audio</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00041">LogNetwork()</a>, <a class="el" href="GameLogging_8h.html#ad8e2ccc8c20a63e091e0111987b4d3bc">NETWORK_LOG</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00028">NETWORK_POST</a>, <a class="el" href="ENetworkLogType_8h.html#a80aaa513e01d2ec2d4421835b09d691fa03d947a2158373c3b9d74325850cb8b9">Post</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00129">SetupHttpRequest()</a>.</p>
 <div id="dynsection-9" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-9-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-9-summary" class="dynsummary" style="display:block;">
@@ -858,8 +860,8 @@ Private 속성</h2></td></tr>
 
 </div>
 </div>
-<a id="a2b55f61a9ab11131c68a8d9aa947e81b" name="a2b55f61a9ab11131c68a8d9aa947e81b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2b55f61a9ab11131c68a8d9aa947e81b">&#9670;&#160;</a></span>RequestOcrExtract()</h2>
+<a id="af19a0251a31b1b5d980373496c3d6864" name="af19a0251a31b1b5d980373496c3d6864"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af19a0251a31b1b5d980373496c3d6864">&#9670;&#160;</a></span>RequestOcrExtract()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -867,8 +869,14 @@ Private 속성</h2></td></tr>
         <tr>
           <td class="memname">void UKLingoNetworkSystem::RequestOcrExtract </td>
           <td>(</td>
-          <td class="paramtype">const FString &amp;&#160;</td>
-          <td class="paramname"><em>ImagePath</em>, </td>
+          <td class="paramtype">const TArray&lt; FString &gt; &amp;&#160;</td>
+          <td class="paramname"><em>ImagePathArray</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FString&#160;</td>
+          <td class="paramname"><em>InTargetText</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -895,84 +903,194 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="UKLingoNetworkSystem_8cpp_source.html">UKLingoNetworkSystem.cpp</a> 파일의 <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00443">443</a> 번째 라인에서 정의되었습니다.</p>
 <div class="fragment"><div class="line"><span class="lineno">  444</span>{</div>
-<div class="line"><span class="lineno">  445</span>    FString Url = <a class="code hl_function" href="namespaceNetworkConfig.html#ab5ac57e8f51de6d1740c7a88534a7246">NetworkConfig::GetFullUrl</a>(<a class="code hl_variable" href="namespaceRequestAPI.html#adb0c390f61c19ef5b70489b76b2e00e6">RequestAPI::writes_ocr_extract</a>);</div>
+<div class="line"><span class="lineno">  445</span>    FString Url = <a class="code hl_function" href="namespaceNetworkConfig.html#ab5ac57e8f51de6d1740c7a88534a7246">NetworkConfig::GetFullUrl</a>(<a class="code hl_variable" href="namespaceRequestAPI.html#a8c14fc8a3f386da9971cfe30a1b00966">RequestAPI::writes_submit</a>);</div>
 <div class="line"><span class="lineno">  446</span>    <span class="keyword">auto</span> Request = <a class="code hl_function" href="classUKLingoNetworkSystem.html#a0bfd5f1b3523947877ba5c4e7ef9aa2f">SetupHttpRequest</a>(Url, <a class="code hl_define" href="UKLingoNetworkSystem_8cpp.html#a46a23e536f557ad9a916633c05d6167b">NETWORK_POST</a>);</div>
-<div class="line"><span class="lineno">  447</span> </div>
-<div class="line"><span class="lineno">  448</span>    <span class="comment">// 상대 경로를 절대 경로로 변환</span></div>
-<div class="line"><span class="lineno">  449</span>    FString AbsoluteImagePath = FPaths::IsRelative(ImagePath) </div>
-<div class="line"><span class="lineno">  450</span>        ? FPaths::Combine(FPaths::ProjectDir(), ImagePath)</div>
-<div class="line"><span class="lineno">  451</span>        : ImagePath;</div>
-<div class="line"><span class="lineno">  452</span>    AbsoluteImagePath = FPaths::ConvertRelativePathToFull(AbsoluteImagePath);</div>
-<div class="line"><span class="lineno">  453</span> </div>
-<div class="line"><span class="lineno">  454</span>    <a class="code hl_class" href="classFHttpMultipartFormData.html">FHttpMultipartFormData</a> Form;</div>
-<div class="line"><span class="lineno">  455</span>    <span class="keywordflow">if</span> (!Form.<a class="code hl_function" href="classFHttpMultipartFormData.html#afcc209c61ee7449848e0f85c98752a74">AddFile</a>(TEXT(<span class="stringliteral">&quot;file&quot;</span>), AbsoluteImagePath))</div>
-<div class="line"><span class="lineno">  456</span>    {</div>
-<div class="line"><span class="lineno">  457</span>        <a class="code hl_define" href="GameLogging_8h.html#ad8e2ccc8c20a63e091e0111987b4d3bc">NETWORK_LOG</a>(TEXT(<span class="stringliteral">&quot;[POST] OCR Extract: file load failed: %s&quot;</span>), *AbsoluteImagePath);</div>
-<div class="line"><span class="lineno">  458</span>        <a class="code hl_struct" href="structFResponseOcrExtract.html">FResponseOcrExtract</a> EmptyResponse;</div>
-<div class="line"><span class="lineno">  459</span>        InDelegate.ExecuteIfBound(EmptyResponse, <span class="keyword">false</span>);</div>
-<div class="line"><span class="lineno">  460</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  461</span>    }</div>
-<div class="line"><span class="lineno">  462</span>    Form.<a class="code hl_function" href="classFHttpMultipartFormData.html#aed2d6c5d4f82b2ad0b51ec457f967f07">SetupHttpRequest</a>(Request);</div>
-<div class="line"><span class="lineno">  463</span> </div>
-<div class="line"><span class="lineno">  464</span>    <a class="code hl_function" href="classUKLingoNetworkSystem.html#ad71f0b7215e0d685a171bc2d8e7a0a3f">LogNetwork</a>(<a class="code hl_enumvalue" href="ENetworkLogType_8h.html#a80aaa513e01d2ec2d4421835b09d691fa03d947a2158373c3b9d74325850cb8b9">ENetworkLogType::Post</a>, *Request-&gt;GetURL());</div>
-<div class="line"><span class="lineno">  465</span> </div>
-<div class="line"><span class="lineno">  466</span>    Request-&gt;OnProcessRequestComplete().BindLambda(</div>
-<div class="line"><span class="lineno">  467</span>        [WeakThis = TWeakObjectPtr&lt;UKLingoNetworkSystem&gt;(<span class="keyword">this</span>), InDelegate](FHttpRequestPtr Req, FHttpResponsePtr ResPtr, <span class="keywordtype">bool</span> bWasSuccessful)</div>
-<div class="line"><span class="lineno">  468</span>        {</div>
-<div class="line"><span class="lineno">  469</span>            <span class="keywordflow">if</span> (!WeakThis.IsValid() || IsEngineExitRequested())</div>
-<div class="line"><span class="lineno">  470</span>                <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  471</span> </div>
-<div class="line"><span class="lineno">  472</span>            WeakThis-&gt;AddNetworkWaitCount(-1);</div>
-<div class="line"><span class="lineno">  473</span>            <a class="code hl_struct" href="structFResponseOcrExtract.html">FResponseOcrExtract</a> ResponseData;</div>
-<div class="line"><span class="lineno">  474</span> </div>
-<div class="line"><span class="lineno">  475</span>            <span class="keywordflow">if</span> (bWasSuccessful &amp;&amp; ResPtr.IsValid())</div>
-<div class="line"><span class="lineno">  476</span>            {</div>
-<div class="line"><span class="lineno">  477</span>                const int32 ResponseCode = ResPtr-&gt;GetResponseCode();</div>
-<div class="line"><span class="lineno">  478</span> </div>
-<div class="line"><span class="lineno">  479</span>                if (IsResSuccess(ResponseCode))</div>
-<div class="line"><span class="lineno">  480</span>                {</div>
-<div class="line"><span class="lineno">  481</span>                    ResponseData.SetFromHttpResponse(ResPtr);</div>
-<div class="line"><span class="lineno">  482</span>                    ResponseData.PrintData();</div>
-<div class="line"><span class="lineno">  483</span>                    InDelegate.ExecuteIfBound(ResponseData, true);</div>
-<div class="line"><span class="lineno">  484</span>                }</div>
-<div class="line"><span class="lineno">  485</span>                <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  486</span>                {</div>
-<div class="line"><span class="lineno">  487</span>                    NETWORK_LOG(TEXT(<span class="stringliteral">&quot;[POST] RequestOcrExtract failed - Code: %d, Response: %s&quot;</span>),</div>
-<div class="line"><span class="lineno">  488</span>                        ResponseCode, *ResPtr-&gt;GetContentAsString());</div>
-<div class="line"><span class="lineno">  489</span>                    WeakThis-&gt;ShowNetworkErrorPopup(ResponseCode, ResPtr-&gt;GetContentAsString());</div>
-<div class="line"><span class="lineno">  490</span>                    InDelegate.ExecuteIfBound(ResponseData, false);</div>
-<div class="line"><span class="lineno">  491</span>                }</div>
-<div class="line"><span class="lineno">  492</span>            }</div>
-<div class="line"><span class="lineno">  493</span>            <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  494</span>            {</div>
-<div class="line"><span class="lineno">  495</span>                <a class="code hl_define" href="GameLogging_8h.html#ad8e2ccc8c20a63e091e0111987b4d3bc">NETWORK_LOG</a>(TEXT(<span class="stringliteral">&quot;[POST] RequestOcrExtract failed - bSuccess: %s, Response valid: %s&quot;</span>),</div>
-<div class="line"><span class="lineno">  496</span>                    bWasSuccessful ? TEXT(<span class="stringliteral">&quot;true&quot;</span>) : TEXT(<span class="stringliteral">&quot;false&quot;</span>),</div>
-<div class="line"><span class="lineno">  497</span>                    ResPtr.IsValid() ? TEXT(<span class="stringliteral">&quot;true&quot;</span>) : TEXT(<span class="stringliteral">&quot;false&quot;</span>));</div>
-<div class="line"><span class="lineno">  498</span>                </div>
-<div class="line"><span class="lineno">  499</span>                int32 ErrorCode = ResPtr.IsValid() ? ResPtr-&gt;GetResponseCode() : 0;</div>
-<div class="line"><span class="lineno">  500</span>                FString ErrorContent = ResPtr.IsValid() ? ResPtr-&gt;GetContentAsString() : TEXT(<span class="stringliteral">&quot;Network connection failed&quot;</span>);</div>
-<div class="line"><span class="lineno">  501</span>                WeakThis-&gt;ShowNetworkErrorPopup(ErrorCode, ErrorContent);</div>
+<div class="line"><span class="lineno">  447</span>    </div>
+<div class="line"><span class="lineno">  448</span>    <a class="code hl_class" href="classFHttpMultipartFormData.html">FHttpMultipartFormData</a> Form;</div>
+<div class="line"><span class="lineno">  449</span>    <span class="keywordflow">for</span> (FString ImagePath : ImagePathArray)</div>
+<div class="line"><span class="lineno">  450</span>    {</div>
+<div class="line"><span class="lineno">  451</span>        <span class="comment">// 상대 경로를 절대 경로로 변환</span></div>
+<div class="line"><span class="lineno">  452</span>        <span class="comment">// FString AbsoluteImagePath = FPaths::IsRelative(ImagePath)</span></div>
+<div class="line"><span class="lineno">  453</span>        <span class="comment">//  ? FPaths::Combine(FPaths::ProjectDir(), ImagePath)</span></div>
+<div class="line"><span class="lineno">  454</span>        <span class="comment">//  : ImagePath;</span></div>
+<div class="line"><span class="lineno">  455</span>        <span class="comment">// AbsoluteImagePath = FPaths::ConvertRelativePathToFull(AbsoluteImagePath);</span></div>
+<div class="line"><span class="lineno">  456</span>        </div>
+<div class="line"><span class="lineno">  457</span>        <span class="keywordflow">if</span> (!Form.<a class="code hl_function" href="classFHttpMultipartFormData.html#afcc209c61ee7449848e0f85c98752a74">AddFile</a>(TEXT(<span class="stringliteral">&quot;files&quot;</span>), ImagePath))</div>
+<div class="line"><span class="lineno">  458</span>        {</div>
+<div class="line"><span class="lineno">  459</span>            <a class="code hl_define" href="GameLogging_8h.html#ad8e2ccc8c20a63e091e0111987b4d3bc">NETWORK_LOG</a>(TEXT(<span class="stringliteral">&quot;[POST] OCR Extract: file load failed: %s&quot;</span>), *ImagePath);</div>
+<div class="line"><span class="lineno">  460</span>            <a class="code hl_struct" href="structFResponseOcrExtract.html">FResponseOcrExtract</a> EmptyResponse;</div>
+<div class="line"><span class="lineno">  461</span>            InDelegate.ExecuteIfBound(EmptyResponse, <span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">  462</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  463</span>        }</div>
+<div class="line"><span class="lineno">  464</span>    }</div>
+<div class="line"><span class="lineno">  465</span>    Form.<a class="code hl_function" href="classFHttpMultipartFormData.html#a7883c51726b656e58cb4d8bf0129048c">AddText</a>(TEXT(<span class="stringliteral">&quot;target_text&quot;</span>), InTargetText);</div>
+<div class="line"><span class="lineno">  466</span>    </div>
+<div class="line"><span class="lineno">  467</span>    Form.<a class="code hl_function" href="classFHttpMultipartFormData.html#aed2d6c5d4f82b2ad0b51ec457f967f07">SetupHttpRequest</a>(Request);</div>
+<div class="line"><span class="lineno">  468</span> </div>
+<div class="line"><span class="lineno">  469</span>    <a class="code hl_function" href="classUKLingoNetworkSystem.html#ad71f0b7215e0d685a171bc2d8e7a0a3f">LogNetwork</a>(<a class="code hl_enumvalue" href="ENetworkLogType_8h.html#a80aaa513e01d2ec2d4421835b09d691fa03d947a2158373c3b9d74325850cb8b9">ENetworkLogType::Post</a>, *Request-&gt;GetURL());</div>
+<div class="line"><span class="lineno">  470</span> </div>
+<div class="line"><span class="lineno">  471</span>    Request-&gt;OnProcessRequestComplete().BindLambda(</div>
+<div class="line"><span class="lineno">  472</span>        [WeakThis = TWeakObjectPtr&lt;UKLingoNetworkSystem&gt;(<span class="keyword">this</span>), InDelegate](FHttpRequestPtr Req, FHttpResponsePtr ResPtr, <span class="keywordtype">bool</span> bWasSuccessful)</div>
+<div class="line"><span class="lineno">  473</span>        {</div>
+<div class="line"><span class="lineno">  474</span>            <span class="keywordflow">if</span> (!WeakThis.IsValid() || IsEngineExitRequested())</div>
+<div class="line"><span class="lineno">  475</span>                <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  476</span> </div>
+<div class="line"><span class="lineno">  477</span>            WeakThis-&gt;AddNetworkWaitCount(-1);</div>
+<div class="line"><span class="lineno">  478</span>            <a class="code hl_struct" href="structFResponseOcrExtract.html">FResponseOcrExtract</a> ResponseData;</div>
+<div class="line"><span class="lineno">  479</span> </div>
+<div class="line"><span class="lineno">  480</span>            <span class="keywordflow">if</span> (bWasSuccessful &amp;&amp; ResPtr.IsValid())</div>
+<div class="line"><span class="lineno">  481</span>            {</div>
+<div class="line"><span class="lineno">  482</span>                const int32 ResponseCode = ResPtr-&gt;GetResponseCode();</div>
+<div class="line"><span class="lineno">  483</span> </div>
+<div class="line"><span class="lineno">  484</span>                if (IsResSuccess(ResponseCode))</div>
+<div class="line"><span class="lineno">  485</span>                {</div>
+<div class="line"><span class="lineno">  486</span>                    ResponseData.SetFromHttpResponse(ResPtr);</div>
+<div class="line"><span class="lineno">  487</span>                    InDelegate.ExecuteIfBound(ResponseData, true);</div>
+<div class="line"><span class="lineno">  488</span>                }</div>
+<div class="line"><span class="lineno">  489</span>                <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  490</span>                {</div>
+<div class="line"><span class="lineno">  491</span>                    NETWORK_LOG(TEXT(<span class="stringliteral">&quot;[POST] RequestOcrExtract failed - Code: %d, Response: %s&quot;</span>),</div>
+<div class="line"><span class="lineno">  492</span>                        ResponseCode, *ResPtr-&gt;GetContentAsString());</div>
+<div class="line"><span class="lineno">  493</span>                    WeakThis-&gt;ShowNetworkErrorPopup(ResponseCode, ResPtr-&gt;GetContentAsString());</div>
+<div class="line"><span class="lineno">  494</span>                    InDelegate.ExecuteIfBound(ResponseData, false);</div>
+<div class="line"><span class="lineno">  495</span>                }</div>
+<div class="line"><span class="lineno">  496</span>            }</div>
+<div class="line"><span class="lineno">  497</span>            <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  498</span>            {</div>
+<div class="line"><span class="lineno">  499</span>                <a class="code hl_define" href="GameLogging_8h.html#ad8e2ccc8c20a63e091e0111987b4d3bc">NETWORK_LOG</a>(TEXT(<span class="stringliteral">&quot;[POST] RequestOcrExtract failed - bSuccess: %s, Response valid: %s&quot;</span>),</div>
+<div class="line"><span class="lineno">  500</span>                    bWasSuccessful ? TEXT(<span class="stringliteral">&quot;true&quot;</span>) : TEXT(<span class="stringliteral">&quot;false&quot;</span>),</div>
+<div class="line"><span class="lineno">  501</span>                    ResPtr.IsValid() ? TEXT(<span class="stringliteral">&quot;true&quot;</span>) : TEXT(<span class="stringliteral">&quot;false&quot;</span>));</div>
 <div class="line"><span class="lineno">  502</span>                </div>
-<div class="line"><span class="lineno">  503</span>                InDelegate.ExecuteIfBound(ResponseData, <span class="keyword">false</span>);</div>
-<div class="line"><span class="lineno">  504</span>            }</div>
-<div class="line"><span class="lineno">  505</span>        });</div>
-<div class="line"><span class="lineno">  506</span> </div>
-<div class="line"><span class="lineno">  507</span>    <a class="code hl_function" href="classUKLingoNetworkSystem.html#accbd4084344a72623fe40deab11d1c29">AddNetworkWaitCount</a>(1);</div>
-<div class="line"><span class="lineno">  508</span>    Request-&gt;ProcessRequest();</div>
-<div class="line"><span class="lineno">  509</span>}</div>
+<div class="line"><span class="lineno">  503</span>                int32 ErrorCode = ResPtr.IsValid() ? ResPtr-&gt;GetResponseCode() : 0;</div>
+<div class="line"><span class="lineno">  504</span>                FString ErrorContent = ResPtr.IsValid() ? ResPtr-&gt;GetContentAsString() : TEXT(<span class="stringliteral">&quot;Network connection failed&quot;</span>);</div>
+<div class="line"><span class="lineno">  505</span>                WeakThis-&gt;ShowNetworkErrorPopup(ErrorCode, ErrorContent);</div>
+<div class="line"><span class="lineno">  506</span>                </div>
+<div class="line"><span class="lineno">  507</span>                InDelegate.ExecuteIfBound(ResponseData, <span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">  508</span>            }</div>
+<div class="line"><span class="lineno">  509</span>        });</div>
+<div class="line"><span class="lineno">  510</span> </div>
+<div class="line"><span class="lineno">  511</span>    <a class="code hl_function" href="classUKLingoNetworkSystem.html#accbd4084344a72623fe40deab11d1c29">AddNetworkWaitCount</a>(1);</div>
+<div class="line"><span class="lineno">  512</span>    Request-&gt;ProcessRequest();</div>
+<div class="line"><span class="lineno">  513</span>}</div>
 <div class="ttc" id="aclassFHttpMultipartFormData_html"><div class="ttname"><a href="classFHttpMultipartFormData.html">FHttpMultipartFormData</a></div><div class="ttdoc">언리얼 엔진에 기본 제공되지 않는 multipart/form-data 빌더의 경량 구현입니다.</div><div class="ttdef"><b>Definition</b> <a href="FHttpMultipartFormData_8h_source.html#l00026">FHttpMultipartFormData.h:27</a></div></div>
+<div class="ttc" id="aclassFHttpMultipartFormData_html_a7883c51726b656e58cb4d8bf0129048c"><div class="ttname"><a href="classFHttpMultipartFormData.html#a7883c51726b656e58cb4d8bf0129048c">FHttpMultipartFormData::AddText</a></div><div class="ttdeci">void AddText(const FString &amp;FieldName, const FString &amp;Value)</div><div class="ttdoc">간단한 텍스트 필드를 추가합니다.</div><div class="ttdef"><b>Definition</b> <a href="FHttpMultipartFormData_8cpp_source.html#l00034">FHttpMultipartFormData.cpp:34</a></div></div>
 <div class="ttc" id="aclassFHttpMultipartFormData_html_aed2d6c5d4f82b2ad0b51ec457f967f07"><div class="ttname"><a href="classFHttpMultipartFormData.html#aed2d6c5d4f82b2ad0b51ec457f967f07">FHttpMultipartFormData::SetupHttpRequest</a></div><div class="ttdeci">void SetupHttpRequest(const TSharedRef&lt; IHttpRequest, ESPMode::ThreadSafe &gt; &amp;Request)</div><div class="ttdoc">HTTP 요청에 Content-Type 헤더와 본문을 설정합니다.</div><div class="ttdef"><b>Definition</b> <a href="FHttpMultipartFormData_8cpp_source.html#l00055">FHttpMultipartFormData.cpp:55</a></div></div>
 <div class="ttc" id="aclassFHttpMultipartFormData_html_afcc209c61ee7449848e0f85c98752a74"><div class="ttname"><a href="classFHttpMultipartFormData.html#afcc209c61ee7449848e0f85c98752a74">FHttpMultipartFormData::AddFile</a></div><div class="ttdeci">bool AddFile(const FString &amp;FieldName, const FString &amp;FilePath, const FString &amp;MimeType=TEXT(&quot;&quot;))</div><div class="ttdoc">파일 데이터를 multipart 본문에 추가합니다.</div><div class="ttdef"><b>Definition</b> <a href="FHttpMultipartFormData_8cpp_source.html#l00039">FHttpMultipartFormData.cpp:39</a></div></div>
-<div class="ttc" id="anamespaceRequestAPI_html_adb0c390f61c19ef5b70489b76b2e00e6"><div class="ttname"><a href="namespaceRequestAPI.html#adb0c390f61c19ef5b70489b76b2e00e6">RequestAPI::writes_ocr_extract</a></div><div class="ttdeci">static FString writes_ocr_extract</div><div class="ttdoc">OCR 텍스트 추출 엔드포인트입니다. POST /writes/ocr/extract</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00090">NetworkData.h:90</a></div></div>
-<div class="ttc" id="astructFResponseOcrExtract_html"><div class="ttname"><a href="structFResponseOcrExtract.html">FResponseOcrExtract</a></div><div class="ttdoc">OCR Extract 응답 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00619">NetworkData.h:620</a></div></div>
+<div class="ttc" id="anamespaceRequestAPI_html_a8c14fc8a3f386da9971cfe30a1b00966"><div class="ttname"><a href="namespaceRequestAPI.html#a8c14fc8a3f386da9971cfe30a1b00966">RequestAPI::writes_submit</a></div><div class="ttdeci">static FString writes_submit</div><div class="ttdoc">OCR 텍스트 추출 엔드포인트입니다. POST /writes/ocr/extract</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00090">NetworkData.h:90</a></div></div>
+<div class="ttc" id="astructFResponseOcrExtract_html"><div class="ttname"><a href="structFResponseOcrExtract.html">FResponseOcrExtract</a></div><div class="ttdoc">OCR Extract 응답 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00667">NetworkData.h:668</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="FHttpMultipartFormData_8cpp_source.html#l00039">FHttpMultipartFormData::AddFile()</a>, <a class="el" href="NetworkData_8h_source.html#l00022">NetworkConfig::GetFullUrl()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00041">LogNetwork()</a>, <a class="el" href="GameLogging_8h.html#ad8e2ccc8c20a63e091e0111987b4d3bc">NETWORK_LOG</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00028">NETWORK_POST</a>, <a class="el" href="ENetworkLogType_8h.html#a80aaa513e01d2ec2d4421835b09d691fa03d947a2158373c3b9d74325850cb8b9">Post</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00129">SetupHttpRequest()</a>, <a class="el" href="FHttpMultipartFormData_8cpp_source.html#l00055">FHttpMultipartFormData::SetupHttpRequest()</a>, <a class="el" href="NetworkData_8h_source.html#l00090">RequestAPI::writes_ocr_extract</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="FHttpMultipartFormData_8cpp_source.html#l00039">FHttpMultipartFormData::AddFile()</a>, <a class="el" href="FHttpMultipartFormData_8cpp_source.html#l00034">FHttpMultipartFormData::AddText()</a>, <a class="el" href="NetworkData_8h_source.html#l00022">NetworkConfig::GetFullUrl()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00041">LogNetwork()</a>, <a class="el" href="GameLogging_8h.html#ad8e2ccc8c20a63e091e0111987b4d3bc">NETWORK_LOG</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00028">NETWORK_POST</a>, <a class="el" href="ENetworkLogType_8h.html#a80aaa513e01d2ec2d4421835b09d691fa03d947a2158373c3b9d74325850cb8b9">Post</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00129">SetupHttpRequest()</a>, <a class="el" href="FHttpMultipartFormData_8cpp_source.html#l00055">FHttpMultipartFormData::SetupHttpRequest()</a>, <a class="el" href="NetworkData_8h_source.html#l00090">RequestAPI::writes_submit</a>.</p>
 <div id="dynsection-10" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-10-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-10-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-10-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classUKLingoNetworkSystem_a2b55f61a9ab11131c68a8d9aa947e81b_cgraph.svg" width="100%" height="546"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classUKLingoNetworkSystem_af19a0251a31b1b5d980373496c3d6864_cgraph.svg" width="100%" height="568"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+
+</div>
+</div>
+<a id="a63a1467b2574123781d5d80d6ff332b7" name="a63a1467b2574123781d5d80d6ff332b7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a63a1467b2574123781d5d80d6ff332b7">&#9670;&#160;</a></span>RequestQuestResult()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void UKLingoNetworkSystem::RequestQuestResult </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structFRequestReadQuestResult.html">FRequestReadQuestResult</a> &amp;&#160;</td>
+          <td class="paramname"><em>Result</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FResponseQuestResultDelegate&#160;</td>
+          <td class="paramname"><em>InDelegate</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="UKLingoNetworkSystem_8cpp_source.html">UKLingoNetworkSystem.cpp</a> 파일의 <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00816">816</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  818</span>{</div>
+<div class="line"><span class="lineno">  819</span>     FString Url = <a class="code hl_function" href="namespaceNetworkConfig.html#ab5ac57e8f51de6d1740c7a88534a7246">NetworkConfig::GetFullUrl</a>(<a class="code hl_variable" href="namespaceRequestAPI.html#a4beccf19df8f3bcd474c8536002e6cf4">RequestAPI::quest_result</a>);</div>
+<div class="line"><span class="lineno">  820</span>      <span class="keyword">auto</span> Request = <a class="code hl_function" href="classUKLingoNetworkSystem.html#a0bfd5f1b3523947877ba5c4e7ef9aa2f">SetupHttpRequest</a>(Url, <a class="code hl_define" href="UKLingoNetworkSystem_8cpp.html#a46a23e536f557ad9a916633c05d6167b">NETWORK_POST</a>);</div>
+<div class="line"><span class="lineno">  821</span> </div>
+<div class="line"><span class="lineno">  822</span>      <span class="comment">// Request Body 설정                                                                                                                                                                                                          </span></div>
+<div class="line"><span class="lineno">  823</span>      FString RequestBody;</div>
+<div class="line"><span class="lineno">  824</span>      <span class="keywordflow">if</span> (Result.<a class="code hl_function" href="structFRequestReadQuestResult.html#a5d5f26cb59c2fad59a7baae3c35124cc">ToJsonString</a>(RequestBody))</div>
+<div class="line"><span class="lineno">  825</span>      {</div>
+<div class="line"><span class="lineno">  826</span>          Request-&gt;SetContentAsString(RequestBody);</div>
+<div class="line"><span class="lineno">  827</span>          <a class="code hl_define" href="GameLogging_8h.html#ad8e2ccc8c20a63e091e0111987b4d3bc">NETWORK_LOG</a>(TEXT(<span class="stringliteral">&quot;[POST] RequestQuestResult Body: %s&quot;</span>), *RequestBody);</div>
+<div class="line"><span class="lineno">  828</span>      }</div>
+<div class="line"><span class="lineno">  829</span>      <span class="keywordflow">else</span>                                                                                                                                                                                                                          </div>
+<div class="line"><span class="lineno">  830</span>      {</div>
+<div class="line"><span class="lineno">  831</span>          <a class="code hl_define" href="GameLogging_8h.html#ad8e2ccc8c20a63e091e0111987b4d3bc">NETWORK_LOG</a>(TEXT(<span class="stringliteral">&quot;[POST] RequestQuestResult - Failed to serialize request body&quot;</span>));</div>
+<div class="line"><span class="lineno">  832</span>      }</div>
+<div class="line"><span class="lineno">  833</span> </div>
+<div class="line"><span class="lineno">  834</span>      <a class="code hl_function" href="classUKLingoNetworkSystem.html#ad71f0b7215e0d685a171bc2d8e7a0a3f">LogNetwork</a>(<a class="code hl_enumvalue" href="ENetworkLogType_8h.html#a80aaa513e01d2ec2d4421835b09d691fa03d947a2158373c3b9d74325850cb8b9">ENetworkLogType::Post</a>, *Request-&gt;GetURL(), *RequestBody);</div>
+<div class="line"><span class="lineno">  835</span> </div>
+<div class="line"><span class="lineno">  836</span>      Request-&gt;OnProcessRequestComplete().BindLambda(</div>
+<div class="line"><span class="lineno">  837</span>          [WeakThis = TWeakObjectPtr&lt;UKLingoNetworkSystem&gt;(<span class="keyword">this</span>), InDelegate](FHttpRequestPtr Req, FHttpResponsePtr ResPtr, <span class="keywordtype">bool</span> bWasSuccessful)</div>
+<div class="line"><span class="lineno">  838</span>          {</div>
+<div class="line"><span class="lineno">  839</span>              <span class="keywordflow">if</span> (!WeakThis.IsValid() || IsEngineExitRequested())</div>
+<div class="line"><span class="lineno">  840</span>                  <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  841</span> </div>
+<div class="line"><span class="lineno">  842</span>              WeakThis-&gt;AddNetworkWaitCount(-1);</div>
+<div class="line"><span class="lineno">  843</span>              <a class="code hl_struct" href="structFResponseQuestResult.html">FResponseQuestResult</a> ResponseData;</div>
+<div class="line"><span class="lineno">  844</span> </div>
+<div class="line"><span class="lineno">  845</span>              <span class="keywordflow">if</span> (bWasSuccessful &amp;&amp; ResPtr.IsValid())</div>
+<div class="line"><span class="lineno">  846</span>              {</div>
+<div class="line"><span class="lineno">  847</span>                  const int32 ResponseCode = ResPtr-&gt;GetResponseCode();</div>
+<div class="line"><span class="lineno">  848</span> </div>
+<div class="line"><span class="lineno">  849</span>                  NETWORK_LOG(TEXT(<span class="stringliteral">&quot;[POST] RequestQuestResult - Code: %d, Response: %s&quot;</span>),</div>
+<div class="line"><span class="lineno">  850</span>                      ResponseCode, *ResPtr-&gt;GetContentAsString());</div>
+<div class="line"><span class="lineno">  851</span> </div>
+<div class="line"><span class="lineno">  852</span>                  if (IsResSuccess(ResponseCode))</div>
+<div class="line"><span class="lineno">  853</span>                  {</div>
+<div class="line"><span class="lineno">  854</span>                      ResponseData.SetFromHttpResponse(ResPtr);</div>
+<div class="line"><span class="lineno">  855</span>                      ResponseData.PrintData();</div>
+<div class="line"><span class="lineno">  856</span>                      InDelegate.ExecuteIfBound(ResponseData, true);</div>
+<div class="line"><span class="lineno">  857</span>                  }</div>
+<div class="line"><span class="lineno">  858</span>                  <span class="keywordflow">else</span>                                                                                                                                                                                                              </div>
+<div class="line"><span class="lineno">  859</span>                  {</div>
+<div class="line"><span class="lineno">  860</span>                      WeakThis-&gt;ShowNetworkErrorPopup(ResponseCode, ResPtr-&gt;GetContentAsString());</div>
+<div class="line"><span class="lineno">  861</span>                      InDelegate.ExecuteIfBound(ResponseData, false);</div>
+<div class="line"><span class="lineno">  862</span>                  }</div>
+<div class="line"><span class="lineno">  863</span>              }</div>
+<div class="line"><span class="lineno">  864</span>              <span class="keywordflow">else</span>                                                                                                                                                                                                                  </div>
+<div class="line"><span class="lineno">  865</span>              {</div>
+<div class="line"><span class="lineno">  866</span>                  <a class="code hl_define" href="GameLogging_8h.html#ad8e2ccc8c20a63e091e0111987b4d3bc">NETWORK_LOG</a>(TEXT(<span class="stringliteral">&quot;[POST] RequestQuestResult failed - bSuccess: %s, Response valid: %s&quot;</span>),</div>
+<div class="line"><span class="lineno">  867</span>                      bWasSuccessful ? TEXT(<span class="stringliteral">&quot;true&quot;</span>) : TEXT(<span class="stringliteral">&quot;false&quot;</span>),</div>
+<div class="line"><span class="lineno">  868</span>                      ResPtr.IsValid() ? TEXT(<span class="stringliteral">&quot;true&quot;</span>) : TEXT(<span class="stringliteral">&quot;false&quot;</span>));</div>
+<div class="line"><span class="lineno">  869</span> </div>
+<div class="line"><span class="lineno">  870</span>                  int32 ErrorCode = ResPtr.IsValid() ? ResPtr-&gt;GetResponseCode() : 0;</div>
+<div class="line"><span class="lineno">  871</span>                  FString ErrorContent = ResPtr.IsValid() ? ResPtr-&gt;GetContentAsString() : TEXT(<span class="stringliteral">&quot;Network connection failed&quot;</span>);</div>
+<div class="line"><span class="lineno">  872</span>                  WeakThis-&gt;ShowNetworkErrorPopup(ErrorCode, ErrorContent);</div>
+<div class="line"><span class="lineno">  873</span> </div>
+<div class="line"><span class="lineno">  874</span>                  InDelegate.ExecuteIfBound(ResponseData, <span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">  875</span>              }</div>
+<div class="line"><span class="lineno">  876</span>          });</div>
+<div class="line"><span class="lineno">  877</span> </div>
+<div class="line"><span class="lineno">  878</span>      <a class="code hl_function" href="classUKLingoNetworkSystem.html#accbd4084344a72623fe40deab11d1c29">AddNetworkWaitCount</a>(1);</div>
+<div class="line"><span class="lineno">  879</span>      Request-&gt;ProcessRequest();</div>
+<div class="line"><span class="lineno">  880</span>}</div>
+<div class="ttc" id="anamespaceRequestAPI_html_a4beccf19df8f3bcd474c8536002e6cf4"><div class="ttname"><a href="namespaceRequestAPI.html#a4beccf19df8f3bcd474c8536002e6cf4">RequestAPI::quest_result</a></div><div class="ttdeci">static FString quest_result</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00099">NetworkData.h:99</a></div></div>
+<div class="ttc" id="astructFRequestReadQuestResult_html_a5d5f26cb59c2fad59a7baae3c35124cc"><div class="ttname"><a href="structFRequestReadQuestResult.html#a5d5f26cb59c2fad59a7baae3c35124cc">FRequestReadQuestResult::ToJsonString</a></div><div class="ttdeci">bool ToJsonString(FString &amp;OutJson) const</div><div class="ttdoc">구조체를 JSON 문자열로 변환합니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8cpp_source.html#l00554">NetworkData.cpp:554</a></div></div>
+<div class="ttc" id="astructFResponseQuestResult_html"><div class="ttname"><a href="structFResponseQuestResult.html">FResponseQuestResult</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00832">NetworkData.h:833</a></div></div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="NetworkData_8h_source.html#l00022">NetworkConfig::GetFullUrl()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00041">LogNetwork()</a>, <a class="el" href="GameLogging_8h.html#ad8e2ccc8c20a63e091e0111987b4d3bc">NETWORK_LOG</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00028">NETWORK_POST</a>, <a class="el" href="ENetworkLogType_8h.html#a80aaa513e01d2ec2d4421835b09d691fa03d947a2158373c3b9d74325850cb8b9">Post</a>, <a class="el" href="NetworkData_8h_source.html#l00099">RequestAPI::quest_result</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00129">SetupHttpRequest()</a>, <a class="el" href="NetworkData_8cpp_source.html#l00554">FRequestReadQuestResult::ToJsonString()</a>.</p>
+<div id="dynsection-11" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-11-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-11-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-11-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classUKLingoNetworkSystem_a63a1467b2574123781d5d80d6ff332b7_cgraph.svg" width="100%" height="520"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -1080,16 +1198,16 @@ Private 속성</h2></td></tr>
 <div class="ttc" id="aclassUKLingoNetworkSystem_html_a5a16995fb8341967b36b704966c70558"><div class="ttname"><a href="classUKLingoNetworkSystem.html#a5a16995fb8341967b36b704966c70558">UKLingoNetworkSystem::ShowNetworkErrorPopup</a></div><div class="ttdeci">void ShowNetworkErrorPopup(int32 ResponseCode, const FString &amp;ResponseContent)</div><div class="ttdoc">네트워크 에러 팝업을 표시합니다.</div><div class="ttdef"><b>Definition</b> <a href="UKLingoNetworkSystem_8cpp_source.html#l00087">UKLingoNetworkSystem.cpp:87</a></div></div>
 <div class="ttc" id="aclassUKLingoNetworkSystem_html_acf7d7ff1c064c3f86698a1fe131c8f00"><div class="ttname"><a href="classUKLingoNetworkSystem.html#acf7d7ff1c064c3f86698a1fe131c8f00">UKLingoNetworkSystem::IsResSuccess</a></div><div class="ttdeci">static bool IsResSuccess(const int InCode)</div><div class="ttdef"><b>Definition</b> <a href="UKLingoNetworkSystem_8cpp_source.html#l00064">UKLingoNetworkSystem.cpp:64</a></div></div>
 <div class="ttc" id="anamespaceRequestAPI_html_ae683aef1f6770a15bcad8cce46f40456"><div class="ttname"><a href="namespaceRequestAPI.html#ae683aef1f6770a15bcad8cce46f40456">RequestAPI::scenario</a></div><div class="ttdeci">static FString scenario</div><div class="ttdoc">Scenario 조회 엔드포인트입니다. GET /scenario/stages/redis/{index}/{dificulity}/{lang}</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00087">NetworkData.h:87</a></div></div>
-<div class="ttc" id="astructFResponseScenario_html"><div class="ttname"><a href="structFResponseScenario.html">FResponseScenario</a></div><div class="ttdoc">Scenario 응답 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00573">NetworkData.h:574</a></div></div>
-<div class="ttc" id="astructFResponseScenario_html_a1f6ab3c19abfbc6154eb5cfb78b2c475"><div class="ttname"><a href="structFResponseScenario.html#a1f6ab3c19abfbc6154eb5cfb78b2c475">FResponseScenario::PrintData</a></div><div class="ttdeci">void PrintData() const</div><div class="ttdoc">디버그 로그에 응답 내용을 출력합니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8cpp_source.html#l00272">NetworkData.cpp:272</a></div></div>
-<div class="ttc" id="astructFResponseScenario_html_a9f7a133e106b433e36f56001df915bfe"><div class="ttname"><a href="structFResponseScenario.html#a9f7a133e106b433e36f56001df915bfe">FResponseScenario::SetFromHttpResponse</a></div><div class="ttdeci">void SetFromHttpResponse(const TSharedPtr&lt; class IHttpResponse, ESPMode::ThreadSafe &gt; &amp;Response)</div><div class="ttdoc">HTTP 응답을 파싱해 구조체를 채웁니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8cpp_source.html#l00187">NetworkData.cpp:187</a></div></div>
+<div class="ttc" id="astructFResponseScenario_html"><div class="ttname"><a href="structFResponseScenario.html">FResponseScenario</a></div><div class="ttdoc">Scenario 응답 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00576">NetworkData.h:577</a></div></div>
+<div class="ttc" id="astructFResponseScenario_html_a1f6ab3c19abfbc6154eb5cfb78b2c475"><div class="ttname"><a href="structFResponseScenario.html#a1f6ab3c19abfbc6154eb5cfb78b2c475">FResponseScenario::PrintData</a></div><div class="ttdeci">void PrintData() const</div><div class="ttdoc">디버그 로그에 응답 내용을 출력합니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8cpp_source.html#l00274">NetworkData.cpp:274</a></div></div>
+<div class="ttc" id="astructFResponseScenario_html_a9f7a133e106b433e36f56001df915bfe"><div class="ttname"><a href="structFResponseScenario.html#a9f7a133e106b433e36f56001df915bfe">FResponseScenario::SetFromHttpResponse</a></div><div class="ttdeci">void SetFromHttpResponse(const TSharedPtr&lt; class IHttpResponse, ESPMode::ThreadSafe &gt; &amp;Response)</div><div class="ttdoc">HTTP 응답을 파싱해 구조체를 채웁니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8cpp_source.html#l00189">NetworkData.cpp:189</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00072">AddNetworkWaitCount()</a>, <a class="el" href="ENetworkLogType_8h.html#a80aaa513e01d2ec2d4421835b09d691fac55582518cba2c464f29f5bae1c68def">Get</a>, <a class="el" href="NetworkData_8h_source.html#l00022">NetworkConfig::GetFullUrl()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00064">IsResSuccess()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00041">LogNetwork()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00027">NETWORK_GET</a>, <a class="el" href="GameLogging_8h.html#ad8e2ccc8c20a63e091e0111987b4d3bc">NETWORK_LOG</a>, <a class="el" href="NetworkData_8cpp_source.html#l00272">FResponseScenario::PrintData()</a>, <a class="el" href="NetworkData_8h_source.html#l00087">RequestAPI::scenario</a>, <a class="el" href="NetworkData_8cpp_source.html#l00187">FResponseScenario::SetFromHttpResponse()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00129">SetupHttpRequest()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00087">ShowNetworkErrorPopup()</a>.</p>
-<div id="dynsection-11" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-11-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
-<div id="dynsection-11-summary" class="dynsummary" style="display:block;">
+<p class="reference">다음을 참조함 :  <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00072">AddNetworkWaitCount()</a>, <a class="el" href="ENetworkLogType_8h.html#a80aaa513e01d2ec2d4421835b09d691fac55582518cba2c464f29f5bae1c68def">Get</a>, <a class="el" href="NetworkData_8h_source.html#l00022">NetworkConfig::GetFullUrl()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00064">IsResSuccess()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00041">LogNetwork()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00027">NETWORK_GET</a>, <a class="el" href="GameLogging_8h.html#ad8e2ccc8c20a63e091e0111987b4d3bc">NETWORK_LOG</a>, <a class="el" href="NetworkData_8cpp_source.html#l00274">FResponseScenario::PrintData()</a>, <a class="el" href="NetworkData_8h_source.html#l00087">RequestAPI::scenario</a>, <a class="el" href="NetworkData_8cpp_source.html#l00189">FResponseScenario::SetFromHttpResponse()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00129">SetupHttpRequest()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00087">ShowNetworkErrorPopup()</a>.</p>
+<div id="dynsection-12" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-12-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-12-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-11-content" class="dyncontent" style="display:none;">
+<div id="dynsection-12-content" class="dyncontent" style="display:none;">
 <div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classUKLingoNetworkSystem_a245c519fba6f3d6e6c103770c02b1a1c_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
@@ -1137,84 +1255,84 @@ Private 속성</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition"><a class="el" href="UKLingoNetworkSystem_8cpp_source.html">UKLingoNetworkSystem.cpp</a> 파일의 <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00612">612</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  616</span>{</div>
-<div class="line"><span class="lineno">  617</span>    TMap&lt;FString, FString&gt; Query;</div>
-<div class="line"><span class="lineno">  618</span>    Query.Add(TEXT(<span class="stringliteral">&quot;question&quot;</span>), Question);</div>
-<div class="line"><span class="lineno">  619</span>    FString Url = <a class="code hl_function" href="namespaceNetworkConfig.html#a48c91628e64540f88495507117cfb69f">NetworkConfig::GetFullUrlWithQuery</a>( <a class="code hl_variable" href="namespaceRequestAPI.html#aa53d82cb9d5a048604a8c32223229080">RequestAPI::speakings_judes</a>, Query );</div>
-<div class="line"><span class="lineno">  620</span>    <span class="keyword">auto</span> Request = <a class="code hl_function" href="classUKLingoNetworkSystem.html#a0bfd5f1b3523947877ba5c4e7ef9aa2f">SetupHttpRequest</a>(Url, <a class="code hl_define" href="UKLingoNetworkSystem_8cpp.html#a46a23e536f557ad9a916633c05d6167b">NETWORK_POST</a>);</div>
-<div class="line"><span class="lineno">  621</span> </div>
-<div class="line"><span class="lineno">  622</span>    <span class="comment">// 상대 경로를 절대 경로로 변환</span></div>
-<div class="line"><span class="lineno">  623</span>    FString AbsoluteAudioPath = FPaths::IsRelative(AudioPath) </div>
-<div class="line"><span class="lineno">  624</span>        ? FPaths::Combine(FPaths::ProjectDir(), AudioPath)</div>
-<div class="line"><span class="lineno">  625</span>        : AudioPath;</div>
-<div class="line"><span class="lineno">  626</span>    AbsoluteAudioPath = FPaths::ConvertRelativePathToFull(AbsoluteAudioPath);</div>
-<div class="line"><span class="lineno">  627</span> </div>
-<div class="line"><span class="lineno">  628</span>    <a class="code hl_class" href="classFHttpMultipartFormData.html">FHttpMultipartFormData</a> Form;</div>
-<div class="line"><span class="lineno">  629</span>    <span class="keywordflow">if</span> (!Form.<a class="code hl_function" href="classFHttpMultipartFormData.html#afcc209c61ee7449848e0f85c98752a74">AddFile</a>(TEXT(<span class="stringliteral">&quot;audio&quot;</span>), AbsoluteAudioPath))</div>
-<div class="line"><span class="lineno">  630</span>    {</div>
-<div class="line"><span class="lineno">  631</span>        <a class="code hl_define" href="GameLogging_8h.html#ad8e2ccc8c20a63e091e0111987b4d3bc">NETWORK_LOG</a>(TEXT(<span class="stringliteral">&quot;[POST] Speaking Questions: file load failed: %s&quot;</span>), *AudioPath);</div>
-<div class="line"><span class="lineno">  632</span>        <a class="code hl_struct" href="structFResponseSpeakingJudes.html">FResponseSpeakingJudes</a> EmptyResponse;</div>
-<div class="line"><span class="lineno">  633</span>        InDelegate.ExecuteIfBound(EmptyResponse, <span class="keyword">false</span>);</div>
-<div class="line"><span class="lineno">  634</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  635</span>    }</div>
-<div class="line"><span class="lineno">  636</span>    Form.<a class="code hl_function" href="classFHttpMultipartFormData.html#aed2d6c5d4f82b2ad0b51ec457f967f07">SetupHttpRequest</a>(Request);</div>
-<div class="line"><span class="lineno">  637</span> </div>
-<div class="line"><span class="lineno">  638</span>    <a class="code hl_function" href="classUKLingoNetworkSystem.html#ad71f0b7215e0d685a171bc2d8e7a0a3f">LogNetwork</a>(<a class="code hl_enumvalue" href="ENetworkLogType_8h.html#a80aaa513e01d2ec2d4421835b09d691fa03d947a2158373c3b9d74325850cb8b9">ENetworkLogType::Post</a>, *Request-&gt;GetURL());</div>
-<div class="line"><span class="lineno">  639</span> </div>
-<div class="line"><span class="lineno">  640</span>    Request-&gt;OnProcessRequestComplete().BindLambda(</div>
-<div class="line"><span class="lineno">  641</span>        [WeakThis = TWeakObjectPtr&lt;UKLingoNetworkSystem&gt;(<span class="keyword">this</span>), InDelegate](FHttpRequestPtr Req, FHttpResponsePtr ResPtr, <span class="keywordtype">bool</span> bWasSuccessful)</div>
-<div class="line"><span class="lineno">  642</span>        {</div>
-<div class="line"><span class="lineno">  643</span>            <span class="keywordflow">if</span> (!WeakThis.IsValid() || IsEngineExitRequested())</div>
-<div class="line"><span class="lineno">  644</span>                <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  645</span> </div>
-<div class="line"><span class="lineno">  646</span>            WeakThis-&gt;AddNetworkWaitCount(-1);</div>
-<div class="line"><span class="lineno">  647</span>            <a class="code hl_struct" href="structFResponseSpeakingJudes.html">FResponseSpeakingJudes</a> ResponseData;</div>
-<div class="line"><span class="lineno">  648</span> </div>
-<div class="line"><span class="lineno">  649</span>            <span class="keywordflow">if</span> (bWasSuccessful &amp;&amp; ResPtr.IsValid())</div>
-<div class="line"><span class="lineno">  650</span>            {</div>
-<div class="line"><span class="lineno">  651</span>                const int32 ResponseCode = ResPtr-&gt;GetResponseCode();</div>
+<p class="definition"><a class="el" href="UKLingoNetworkSystem_8cpp_source.html">UKLingoNetworkSystem.cpp</a> 파일의 <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00616">616</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  620</span>{</div>
+<div class="line"><span class="lineno">  621</span>    TMap&lt;FString, FString&gt; Query;</div>
+<div class="line"><span class="lineno">  622</span>    Query.Add(TEXT(<span class="stringliteral">&quot;question&quot;</span>), Question);</div>
+<div class="line"><span class="lineno">  623</span>    FString Url = <a class="code hl_function" href="namespaceNetworkConfig.html#a48c91628e64540f88495507117cfb69f">NetworkConfig::GetFullUrlWithQuery</a>( <a class="code hl_variable" href="namespaceRequestAPI.html#aa53d82cb9d5a048604a8c32223229080">RequestAPI::speakings_judes</a>, Query );</div>
+<div class="line"><span class="lineno">  624</span>    <span class="keyword">auto</span> Request = <a class="code hl_function" href="classUKLingoNetworkSystem.html#a0bfd5f1b3523947877ba5c4e7ef9aa2f">SetupHttpRequest</a>(Url, <a class="code hl_define" href="UKLingoNetworkSystem_8cpp.html#a46a23e536f557ad9a916633c05d6167b">NETWORK_POST</a>);</div>
+<div class="line"><span class="lineno">  625</span> </div>
+<div class="line"><span class="lineno">  626</span>    <span class="comment">// 상대 경로를 절대 경로로 변환</span></div>
+<div class="line"><span class="lineno">  627</span>    FString AbsoluteAudioPath = FPaths::IsRelative(AudioPath) </div>
+<div class="line"><span class="lineno">  628</span>        ? FPaths::Combine(FPaths::ProjectDir(), AudioPath)</div>
+<div class="line"><span class="lineno">  629</span>        : AudioPath;</div>
+<div class="line"><span class="lineno">  630</span>    AbsoluteAudioPath = FPaths::ConvertRelativePathToFull(AbsoluteAudioPath);</div>
+<div class="line"><span class="lineno">  631</span> </div>
+<div class="line"><span class="lineno">  632</span>    <a class="code hl_class" href="classFHttpMultipartFormData.html">FHttpMultipartFormData</a> Form;</div>
+<div class="line"><span class="lineno">  633</span>    <span class="keywordflow">if</span> (!Form.<a class="code hl_function" href="classFHttpMultipartFormData.html#afcc209c61ee7449848e0f85c98752a74">AddFile</a>(TEXT(<span class="stringliteral">&quot;audio&quot;</span>), AbsoluteAudioPath))</div>
+<div class="line"><span class="lineno">  634</span>    {</div>
+<div class="line"><span class="lineno">  635</span>        <a class="code hl_define" href="GameLogging_8h.html#ad8e2ccc8c20a63e091e0111987b4d3bc">NETWORK_LOG</a>(TEXT(<span class="stringliteral">&quot;[POST] Speaking Questions: file load failed: %s&quot;</span>), *AudioPath);</div>
+<div class="line"><span class="lineno">  636</span>        <a class="code hl_struct" href="structFResponseSpeakingJudes.html">FResponseSpeakingJudes</a> EmptyResponse;</div>
+<div class="line"><span class="lineno">  637</span>        InDelegate.ExecuteIfBound(EmptyResponse, <span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">  638</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  639</span>    }</div>
+<div class="line"><span class="lineno">  640</span>    Form.<a class="code hl_function" href="classFHttpMultipartFormData.html#aed2d6c5d4f82b2ad0b51ec457f967f07">SetupHttpRequest</a>(Request);</div>
+<div class="line"><span class="lineno">  641</span> </div>
+<div class="line"><span class="lineno">  642</span>    <a class="code hl_function" href="classUKLingoNetworkSystem.html#ad71f0b7215e0d685a171bc2d8e7a0a3f">LogNetwork</a>(<a class="code hl_enumvalue" href="ENetworkLogType_8h.html#a80aaa513e01d2ec2d4421835b09d691fa03d947a2158373c3b9d74325850cb8b9">ENetworkLogType::Post</a>, *Request-&gt;GetURL());</div>
+<div class="line"><span class="lineno">  643</span> </div>
+<div class="line"><span class="lineno">  644</span>    Request-&gt;OnProcessRequestComplete().BindLambda(</div>
+<div class="line"><span class="lineno">  645</span>        [WeakThis = TWeakObjectPtr&lt;UKLingoNetworkSystem&gt;(<span class="keyword">this</span>), InDelegate](FHttpRequestPtr Req, FHttpResponsePtr ResPtr, <span class="keywordtype">bool</span> bWasSuccessful)</div>
+<div class="line"><span class="lineno">  646</span>        {</div>
+<div class="line"><span class="lineno">  647</span>            <span class="keywordflow">if</span> (!WeakThis.IsValid() || IsEngineExitRequested())</div>
+<div class="line"><span class="lineno">  648</span>                <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  649</span> </div>
+<div class="line"><span class="lineno">  650</span>            WeakThis-&gt;AddNetworkWaitCount(-1);</div>
+<div class="line"><span class="lineno">  651</span>            <a class="code hl_struct" href="structFResponseSpeakingJudes.html">FResponseSpeakingJudes</a> ResponseData;</div>
 <div class="line"><span class="lineno">  652</span> </div>
-<div class="line"><span class="lineno">  653</span>                NETWORK_LOG(TEXT(<span class="stringliteral">&quot;[RES] RequestSpeakingQuestions - Code: %d, Response: %s&quot;</span>), ResponseCode, *ResPtr-&gt;GetContentAsString());</div>
-<div class="line"><span class="lineno">  654</span>            </div>
-<div class="line"><span class="lineno">  655</span>                if (IsResSuccess(ResponseCode))</div>
-<div class="line"><span class="lineno">  656</span>                {</div>
-<div class="line"><span class="lineno">  657</span>                    ResponseData.SetFromHttpResponse(ResPtr);</div>
-<div class="line"><span class="lineno">  658</span>                    ResponseData.PrintData();</div>
-<div class="line"><span class="lineno">  659</span>                    InDelegate.ExecuteIfBound(ResponseData, true);</div>
-<div class="line"><span class="lineno">  660</span>                }</div>
-<div class="line"><span class="lineno">  661</span>                <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  662</span>                {</div>
-<div class="line"><span class="lineno">  663</span>                    WeakThis-&gt;ShowNetworkErrorPopup(ResponseCode, ResPtr-&gt;GetContentAsString());</div>
-<div class="line"><span class="lineno">  664</span>                    InDelegate.ExecuteIfBound(ResponseData, false);</div>
-<div class="line"><span class="lineno">  665</span>                }</div>
-<div class="line"><span class="lineno">  666</span>            }</div>
-<div class="line"><span class="lineno">  667</span>            <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  668</span>            {</div>
-<div class="line"><span class="lineno">  669</span>                <a class="code hl_define" href="GameLogging_8h.html#ad8e2ccc8c20a63e091e0111987b4d3bc">NETWORK_LOG</a>(TEXT(<span class="stringliteral">&quot;[POST] RequestSpeakingQuestions failed - bSuccess: %s, Response valid: %s&quot;</span>),</div>
-<div class="line"><span class="lineno">  670</span>                    bWasSuccessful ? TEXT(<span class="stringliteral">&quot;true&quot;</span>) : TEXT(<span class="stringliteral">&quot;false&quot;</span>),</div>
-<div class="line"><span class="lineno">  671</span>                    ResPtr.IsValid() ? TEXT(<span class="stringliteral">&quot;true&quot;</span>) : TEXT(<span class="stringliteral">&quot;false&quot;</span>));</div>
-<div class="line"><span class="lineno">  672</span>            </div>
-<div class="line"><span class="lineno">  673</span>                int32 ErrorCode = ResPtr.IsValid() ? ResPtr-&gt;GetResponseCode() : 0;</div>
-<div class="line"><span class="lineno">  674</span>                FString ErrorContent = ResPtr.IsValid() ? ResPtr-&gt;GetContentAsString() : TEXT(<span class="stringliteral">&quot;Network connection failed&quot;</span>);</div>
-<div class="line"><span class="lineno">  675</span>                WeakThis-&gt;ShowNetworkErrorPopup(ErrorCode, ErrorContent);</div>
+<div class="line"><span class="lineno">  653</span>            <span class="keywordflow">if</span> (bWasSuccessful &amp;&amp; ResPtr.IsValid())</div>
+<div class="line"><span class="lineno">  654</span>            {</div>
+<div class="line"><span class="lineno">  655</span>                const int32 ResponseCode = ResPtr-&gt;GetResponseCode();</div>
+<div class="line"><span class="lineno">  656</span> </div>
+<div class="line"><span class="lineno">  657</span>                NETWORK_LOG(TEXT(<span class="stringliteral">&quot;[RES] RequestSpeakingQuestions - Code: %d, Response: %s&quot;</span>), ResponseCode, *ResPtr-&gt;GetContentAsString());</div>
+<div class="line"><span class="lineno">  658</span>            </div>
+<div class="line"><span class="lineno">  659</span>                if (IsResSuccess(ResponseCode))</div>
+<div class="line"><span class="lineno">  660</span>                {</div>
+<div class="line"><span class="lineno">  661</span>                    ResponseData.SetFromHttpResponse(ResPtr);</div>
+<div class="line"><span class="lineno">  662</span>                    ResponseData.PrintData();</div>
+<div class="line"><span class="lineno">  663</span>                    InDelegate.ExecuteIfBound(ResponseData, true);</div>
+<div class="line"><span class="lineno">  664</span>                }</div>
+<div class="line"><span class="lineno">  665</span>                <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  666</span>                {</div>
+<div class="line"><span class="lineno">  667</span>                    WeakThis-&gt;ShowNetworkErrorPopup(ResponseCode, ResPtr-&gt;GetContentAsString());</div>
+<div class="line"><span class="lineno">  668</span>                    InDelegate.ExecuteIfBound(ResponseData, false);</div>
+<div class="line"><span class="lineno">  669</span>                }</div>
+<div class="line"><span class="lineno">  670</span>            }</div>
+<div class="line"><span class="lineno">  671</span>            <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  672</span>            {</div>
+<div class="line"><span class="lineno">  673</span>                <a class="code hl_define" href="GameLogging_8h.html#ad8e2ccc8c20a63e091e0111987b4d3bc">NETWORK_LOG</a>(TEXT(<span class="stringliteral">&quot;[POST] RequestSpeakingQuestions failed - bSuccess: %s, Response valid: %s&quot;</span>),</div>
+<div class="line"><span class="lineno">  674</span>                    bWasSuccessful ? TEXT(<span class="stringliteral">&quot;true&quot;</span>) : TEXT(<span class="stringliteral">&quot;false&quot;</span>),</div>
+<div class="line"><span class="lineno">  675</span>                    ResPtr.IsValid() ? TEXT(<span class="stringliteral">&quot;true&quot;</span>) : TEXT(<span class="stringliteral">&quot;false&quot;</span>));</div>
 <div class="line"><span class="lineno">  676</span>            </div>
-<div class="line"><span class="lineno">  677</span>                InDelegate.ExecuteIfBound(ResponseData, <span class="keyword">false</span>);</div>
-<div class="line"><span class="lineno">  678</span>            }</div>
-<div class="line"><span class="lineno">  679</span>        });</div>
-<div class="line"><span class="lineno">  680</span> </div>
-<div class="line"><span class="lineno">  681</span>    <a class="code hl_function" href="classUKLingoNetworkSystem.html#accbd4084344a72623fe40deab11d1c29">AddNetworkWaitCount</a>(1);</div>
-<div class="line"><span class="lineno">  682</span>    Request-&gt;ProcessRequest();</div>
-<div class="line"><span class="lineno">  683</span>}</div>
+<div class="line"><span class="lineno">  677</span>                int32 ErrorCode = ResPtr.IsValid() ? ResPtr-&gt;GetResponseCode() : 0;</div>
+<div class="line"><span class="lineno">  678</span>                FString ErrorContent = ResPtr.IsValid() ? ResPtr-&gt;GetContentAsString() : TEXT(<span class="stringliteral">&quot;Network connection failed&quot;</span>);</div>
+<div class="line"><span class="lineno">  679</span>                WeakThis-&gt;ShowNetworkErrorPopup(ErrorCode, ErrorContent);</div>
+<div class="line"><span class="lineno">  680</span>            </div>
+<div class="line"><span class="lineno">  681</span>                InDelegate.ExecuteIfBound(ResponseData, <span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">  682</span>            }</div>
+<div class="line"><span class="lineno">  683</span>        });</div>
+<div class="line"><span class="lineno">  684</span> </div>
+<div class="line"><span class="lineno">  685</span>    <a class="code hl_function" href="classUKLingoNetworkSystem.html#accbd4084344a72623fe40deab11d1c29">AddNetworkWaitCount</a>(1);</div>
+<div class="line"><span class="lineno">  686</span>    Request-&gt;ProcessRequest();</div>
+<div class="line"><span class="lineno">  687</span>}</div>
 <div class="ttc" id="anamespaceRequestAPI_html_aa53d82cb9d5a048604a8c32223229080"><div class="ttname"><a href="namespaceRequestAPI.html#aa53d82cb9d5a048604a8c32223229080">RequestAPI::speakings_judes</a></div><div class="ttdeci">static FString speakings_judes</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00093">NetworkData.h:93</a></div></div>
-<div class="ttc" id="astructFResponseSpeakingJudes_html"><div class="ttname"><a href="structFResponseSpeakingJudes.html">FResponseSpeakingJudes</a></div><div class="ttdoc">Speaking Questions 응답 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00671">NetworkData.h:672</a></div></div>
+<div class="ttc" id="astructFResponseSpeakingJudes_html"><div class="ttname"><a href="structFResponseSpeakingJudes.html">FResponseSpeakingJudes</a></div><div class="ttdoc">Speaking Questions 응답 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00716">NetworkData.h:717</a></div></div>
 </div><!-- fragment -->
 <p class="reference">다음을 참조함 :  <a class="el" href="FHttpMultipartFormData_8cpp_source.html#l00039">FHttpMultipartFormData::AddFile()</a>, <a class="el" href="NetworkData_8h_source.html#l00031">NetworkConfig::GetFullUrlWithQuery()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00041">LogNetwork()</a>, <a class="el" href="GameLogging_8h.html#ad8e2ccc8c20a63e091e0111987b4d3bc">NETWORK_LOG</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00028">NETWORK_POST</a>, <a class="el" href="ENetworkLogType_8h.html#a80aaa513e01d2ec2d4421835b09d691fa03d947a2158373c3b9d74325850cb8b9">Post</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00129">SetupHttpRequest()</a>, <a class="el" href="FHttpMultipartFormData_8cpp_source.html#l00055">FHttpMultipartFormData::SetupHttpRequest()</a>, <a class="el" href="NetworkData_8h_source.html#l00093">RequestAPI::speakings_judes</a>.</p>
-<div id="dynsection-12" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-12-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
-<div id="dynsection-12-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-13" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-13-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-13-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-12-content" class="dyncontent" style="display:none;">
+<div id="dynsection-13-content" class="dyncontent" style="display:none;">
 <div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classUKLingoNetworkSystem_a0b26b72d9b13f2eff1d8a06e55141ab0_cgraph.svg" width="100%" height="530"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
@@ -1288,14 +1406,14 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">  380</span>    Request-&gt;ProcessRequest();</div>
 <div class="line"><span class="lineno">  381</span>}</div>
 <div class="ttc" id="anamespaceRequestAPI_html_a7ed1c5fc940c1008e0f3af9f280fa7de"><div class="ttname"><a href="namespaceRequestAPI.html#a7ed1c5fc940c1008e0f3af9f280fa7de">RequestAPI::users_host</a></div><div class="ttdeci">static FString users_host</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00084">NetworkData.h:84</a></div></div>
-<div class="ttc" id="astructFResponseUserHost_html"><div class="ttname"><a href="structFResponseUserHost.html">FResponseUserHost</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00526">NetworkData.h:527</a></div></div>
+<div class="ttc" id="astructFResponseUserHost_html"><div class="ttname"><a href="structFResponseUserHost.html">FResponseUserHost</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00529">NetworkData.h:530</a></div></div>
 </div><!-- fragment -->
 <p class="reference">다음을 참조함 :  <a class="el" href="ENetworkLogType_8h.html#a80aaa513e01d2ec2d4421835b09d691fac55582518cba2c464f29f5bae1c68def">Get</a>, <a class="el" href="NetworkData_8h_source.html#l00022">NetworkConfig::GetFullUrl()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00041">LogNetwork()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00027">NETWORK_GET</a>, <a class="el" href="GameLogging_8h.html#ad8e2ccc8c20a63e091e0111987b4d3bc">NETWORK_LOG</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00129">SetupHttpRequest()</a>, <a class="el" href="NetworkData_8h_source.html#l00084">RequestAPI::users_host</a>.</p>
-<div id="dynsection-13" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-13-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
-<div id="dynsection-13-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-14" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-14-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-14-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-13-content" class="dyncontent" style="display:none;">
+<div id="dynsection-14-content" class="dyncontent" style="display:none;">
 <div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classUKLingoNetworkSystem_a1f075087b82980fae0f6381639af8dec_cgraph.svg" width="100%" height="472"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
@@ -1367,16 +1485,16 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">  325</span>    Request-&gt;ProcessRequest();</div>
 <div class="line"><span class="lineno">  326</span>}</div>
 <div class="ttc" id="anamespaceRequestAPI_html_aee732573aa0bc733fedaab927a273dcd"><div class="ttname"><a href="namespaceRequestAPI.html#aee732573aa0bc733fedaab927a273dcd">RequestAPI::users_me</a></div><div class="ttdeci">static FString users_me</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00083">NetworkData.h:83</a></div></div>
-<div class="ttc" id="astructFResponseUserMe_html"><div class="ttname"><a href="structFResponseUserMe.html">FResponseUserMe</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00509">NetworkData.h:510</a></div></div>
-<div class="ttc" id="astructFResponseUserMe_html_a92c11f93c8178da89bd734fb284dfb6f"><div class="ttname"><a href="structFResponseUserMe.html#a92c11f93c8178da89bd734fb284dfb6f">FResponseUserMe::SetFromHttpResponse</a></div><div class="ttdeci">void SetFromHttpResponse(const TSharedPtr&lt; class IHttpResponse, ESPMode::ThreadSafe &gt; &amp;Response)</div><div class="ttdoc">HTTP 응답을 파싱해 상태 정보를 갱신합니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8cpp_source.html#l00134">NetworkData.cpp:134</a></div></div>
-<div class="ttc" id="astructFResponseUserMe_html_ab4a0a718327902ae76090959785c7eb8"><div class="ttname"><a href="structFResponseUserMe.html#ab4a0a718327902ae76090959785c7eb8">FResponseUserMe::PrintData</a></div><div class="ttdeci">void PrintData() const</div><div class="ttdoc">디버그 로그에 응답 내용을 출력합니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8cpp_source.html#l00151">NetworkData.cpp:151</a></div></div>
+<div class="ttc" id="astructFResponseUserMe_html"><div class="ttname"><a href="structFResponseUserMe.html">FResponseUserMe</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00512">NetworkData.h:513</a></div></div>
+<div class="ttc" id="astructFResponseUserMe_html_a92c11f93c8178da89bd734fb284dfb6f"><div class="ttname"><a href="structFResponseUserMe.html#a92c11f93c8178da89bd734fb284dfb6f">FResponseUserMe::SetFromHttpResponse</a></div><div class="ttdeci">void SetFromHttpResponse(const TSharedPtr&lt; class IHttpResponse, ESPMode::ThreadSafe &gt; &amp;Response)</div><div class="ttdoc">HTTP 응답을 파싱해 상태 정보를 갱신합니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8cpp_source.html#l00136">NetworkData.cpp:136</a></div></div>
+<div class="ttc" id="astructFResponseUserMe_html_ab4a0a718327902ae76090959785c7eb8"><div class="ttname"><a href="structFResponseUserMe.html#ab4a0a718327902ae76090959785c7eb8">FResponseUserMe::PrintData</a></div><div class="ttdeci">void PrintData() const</div><div class="ttdoc">디버그 로그에 응답 내용을 출력합니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8cpp_source.html#l00153">NetworkData.cpp:153</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00072">AddNetworkWaitCount()</a>, <a class="el" href="ENetworkLogType_8h.html#a80aaa513e01d2ec2d4421835b09d691fac55582518cba2c464f29f5bae1c68def">Get</a>, <a class="el" href="NetworkData_8h_source.html#l00022">NetworkConfig::GetFullUrl()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00064">IsResSuccess()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00041">LogNetwork()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00027">NETWORK_GET</a>, <a class="el" href="GameLogging_8h.html#ad8e2ccc8c20a63e091e0111987b4d3bc">NETWORK_LOG</a>, <a class="el" href="NetworkData_8cpp_source.html#l00151">FResponseUserMe::PrintData()</a>, <a class="el" href="NetworkData_8cpp_source.html#l00134">FResponseUserMe::SetFromHttpResponse()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00129">SetupHttpRequest()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00087">ShowNetworkErrorPopup()</a>, <a class="el" href="NetworkData_8h_source.html#l00083">RequestAPI::users_me</a>.</p>
-<div id="dynsection-14" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-14-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
-<div id="dynsection-14-summary" class="dynsummary" style="display:block;">
+<p class="reference">다음을 참조함 :  <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00072">AddNetworkWaitCount()</a>, <a class="el" href="ENetworkLogType_8h.html#a80aaa513e01d2ec2d4421835b09d691fac55582518cba2c464f29f5bae1c68def">Get</a>, <a class="el" href="NetworkData_8h_source.html#l00022">NetworkConfig::GetFullUrl()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00064">IsResSuccess()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00041">LogNetwork()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00027">NETWORK_GET</a>, <a class="el" href="GameLogging_8h.html#ad8e2ccc8c20a63e091e0111987b4d3bc">NETWORK_LOG</a>, <a class="el" href="NetworkData_8cpp_source.html#l00153">FResponseUserMe::PrintData()</a>, <a class="el" href="NetworkData_8cpp_source.html#l00136">FResponseUserMe::SetFromHttpResponse()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00129">SetupHttpRequest()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00087">ShowNetworkErrorPopup()</a>, <a class="el" href="NetworkData_8h_source.html#l00083">RequestAPI::users_me</a>.</p>
+<div id="dynsection-15" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-15-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-15-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-14-content" class="dyncontent" style="display:none;">
+<div id="dynsection-15-content" class="dyncontent" style="display:none;">
 <div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classUKLingoNetworkSystem_a7bf03fe16be3fddf9a51350248bdf6b4_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
@@ -1469,16 +1587,16 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">  206</span>    Request-&gt;ProcessRequest();</div>
 <div class="line"><span class="lineno">  207</span>}</div>
 <div class="ttc" id="anamespaceRequestAPI_html_a2d4b0c891a96c4ac2d1829ae24d01dc3"><div class="ttname"><a href="namespaceRequestAPI.html#a2d4b0c891a96c4ac2d1829ae24d01dc3">RequestAPI::users_register</a></div><div class="ttdeci">static FString users_register</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00081">NetworkData.h:81</a></div></div>
-<div class="ttc" id="astructFResponseUserRegister_html"><div class="ttname"><a href="structFResponseUserRegister.html">FResponseUserRegister</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00466">NetworkData.h:467</a></div></div>
-<div class="ttc" id="astructFResponseUserRegister_html_a1beb446da1a5775f4b40e1f3deccba7d"><div class="ttname"><a href="structFResponseUserRegister.html#a1beb446da1a5775f4b40e1f3deccba7d">FResponseUserRegister::SetFromHttpResponse</a></div><div class="ttdeci">void SetFromHttpResponse(const TSharedPtr&lt; class IHttpResponse, ESPMode::ThreadSafe &gt; &amp;Response)</div><div class="ttdoc">HTTP 응답을 파싱해 상태 정보를 갱신합니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8cpp_source.html#l00070">NetworkData.cpp:70</a></div></div>
-<div class="ttc" id="astructFResponseUserRegister_html_a7c482c31b7c20aef498681e9fe743659"><div class="ttname"><a href="structFResponseUserRegister.html#a7c482c31b7c20aef498681e9fe743659">FResponseUserRegister::PrintData</a></div><div class="ttdeci">void PrintData() const</div><div class="ttdoc">디버그 로그에 응답 내용을 출력합니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8cpp_source.html#l00090">NetworkData.cpp:90</a></div></div>
+<div class="ttc" id="astructFResponseUserRegister_html"><div class="ttname"><a href="structFResponseUserRegister.html">FResponseUserRegister</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00469">NetworkData.h:470</a></div></div>
+<div class="ttc" id="astructFResponseUserRegister_html_a1beb446da1a5775f4b40e1f3deccba7d"><div class="ttname"><a href="structFResponseUserRegister.html#a1beb446da1a5775f4b40e1f3deccba7d">FResponseUserRegister::SetFromHttpResponse</a></div><div class="ttdeci">void SetFromHttpResponse(const TSharedPtr&lt; class IHttpResponse, ESPMode::ThreadSafe &gt; &amp;Response)</div><div class="ttdoc">HTTP 응답을 파싱해 상태 정보를 갱신합니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8cpp_source.html#l00072">NetworkData.cpp:72</a></div></div>
+<div class="ttc" id="astructFResponseUserRegister_html_a7c482c31b7c20aef498681e9fe743659"><div class="ttname"><a href="structFResponseUserRegister.html#a7c482c31b7c20aef498681e9fe743659">FResponseUserRegister::PrintData</a></div><div class="ttdeci">void PrintData() const</div><div class="ttdoc">디버그 로그에 응답 내용을 출력합니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8cpp_source.html#l00092">NetworkData.cpp:92</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00072">AddNetworkWaitCount()</a>, <a class="el" href="NetworkData_8h_source.html#l00022">NetworkConfig::GetFullUrl()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00064">IsResSuccess()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00041">LogNetwork()</a>, <a class="el" href="GameLogging_8h.html#ad8e2ccc8c20a63e091e0111987b4d3bc">NETWORK_LOG</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00028">NETWORK_POST</a>, <a class="el" href="ENetworkLogType_8h.html#a80aaa513e01d2ec2d4421835b09d691fa03d947a2158373c3b9d74325850cb8b9">Post</a>, <a class="el" href="NetworkData_8cpp_source.html#l00090">FResponseUserRegister::PrintData()</a>, <a class="el" href="NetworkData_8cpp_source.html#l00070">FResponseUserRegister::SetFromHttpResponse()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00129">SetupHttpRequest()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00087">ShowNetworkErrorPopup()</a>, <a class="el" href="NetworkData_8h_source.html#l00081">RequestAPI::users_register</a>.</p>
-<div id="dynsection-15" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-15-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
-<div id="dynsection-15-summary" class="dynsummary" style="display:block;">
+<p class="reference">다음을 참조함 :  <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00072">AddNetworkWaitCount()</a>, <a class="el" href="NetworkData_8h_source.html#l00022">NetworkConfig::GetFullUrl()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00064">IsResSuccess()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00041">LogNetwork()</a>, <a class="el" href="GameLogging_8h.html#ad8e2ccc8c20a63e091e0111987b4d3bc">NETWORK_LOG</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00028">NETWORK_POST</a>, <a class="el" href="ENetworkLogType_8h.html#a80aaa513e01d2ec2d4421835b09d691fa03d947a2158373c3b9d74325850cb8b9">Post</a>, <a class="el" href="NetworkData_8cpp_source.html#l00092">FResponseUserRegister::PrintData()</a>, <a class="el" href="NetworkData_8cpp_source.html#l00072">FResponseUserRegister::SetFromHttpResponse()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00129">SetupHttpRequest()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00087">ShowNetworkErrorPopup()</a>, <a class="el" href="NetworkData_8h_source.html#l00081">RequestAPI::users_register</a>.</p>
+<div id="dynsection-16" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-16-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-16-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-15-content" class="dyncontent" style="display:none;">
+<div id="dynsection-16-content" class="dyncontent" style="display:none;">
 <div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classUKLingoNetworkSystem_a4082666ed951516c06e8dcbfdb20c484_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
@@ -1577,19 +1695,19 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">  275</span>}</div>
 <div class="ttc" id="aFHttpMultipartFormData_8h_html_a9478332f7eef11c662f43ecca21be2f1a0421cf7b9c7d5657946d7a37929f1abc"><div class="ttname"><a href="FHttpMultipartFormData_8h.html#a9478332f7eef11c662f43ecca21be2f1a0421cf7b9c7d5657946d7a37929f1abc">EFormDataType::FormUrlEncoded</a></div><div class="ttdeci">@ FormUrlEncoded</div><div class="ttdoc">application/x-www-form-urlencoded (OAuth2 등)</div></div>
 <div class="ttc" id="aclassUKLingoNetworkSystem_html_acf7da28577586f19559ef3d7af8ea7ea"><div class="ttname"><a href="classUKLingoNetworkSystem.html#acf7da28577586f19559ef3d7af8ea7ea">UKLingoNetworkSystem::access_token</a></div><div class="ttdeci">FString access_token</div><div class="ttdoc">인증 토큰 (로그인 후 저장)</div><div class="ttdef"><b>Definition</b> <a href="UKLingoNetworkSystem_8h_source.html#l00153">UKLingoNetworkSystem.h:153</a></div></div>
-<div class="ttc" id="aclassULingoGameHelper_html_a6117f2f4942b42864305def958e0c108"><div class="ttname"><a href="classULingoGameHelper.html#a6117f2f4942b42864305def958e0c108">ULingoGameHelper::GetLingoPlayerState</a></div><div class="ttdeci">static ALingoPlayerState * GetLingoPlayerState(const UObject *WorldContextObject)</div><div class="ttdef"><b>Definition</b> <a href="ULingoGameHelper_8cpp_source.html#l00037">ULingoGameHelper.cpp:37</a></div></div>
+<div class="ttc" id="aclassULingoGameHelper_html_a6117f2f4942b42864305def958e0c108"><div class="ttname"><a href="classULingoGameHelper.html#a6117f2f4942b42864305def958e0c108">ULingoGameHelper::GetLingoPlayerState</a></div><div class="ttdeci">static class ALingoPlayerState * GetLingoPlayerState(const UObject *WorldContextObject)</div><div class="ttdef"><b>Definition</b> <a href="ULingoGameHelper_8cpp_source.html#l00038">ULingoGameHelper.cpp:38</a></div></div>
 <div class="ttc" id="anamespaceRequestAPI_html_af908b99f78364328aca763f362236454"><div class="ttname"><a href="namespaceRequestAPI.html#af908b99f78364328aca763f362236454">RequestAPI::users_token</a></div><div class="ttdeci">static FString users_token</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00082">NetworkData.h:82</a></div></div>
-<div class="ttc" id="astructFResponseUserToken_html"><div class="ttname"><a href="structFResponseUserToken.html">FResponseUserToken</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00492">NetworkData.h:493</a></div></div>
-<div class="ttc" id="astructFResponseUserToken_html_a2cf3b3fcc2df219d7ebdc5e1341950a4"><div class="ttname"><a href="structFResponseUserToken.html#a2cf3b3fcc2df219d7ebdc5e1341950a4">FResponseUserToken::access_token</a></div><div class="ttdeci">FString access_token</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00497">NetworkData.h:497</a></div></div>
-<div class="ttc" id="astructFResponseUserToken_html_a65a555949e2ac9075bc44b2cfc7779bb"><div class="ttname"><a href="structFResponseUserToken.html#a65a555949e2ac9075bc44b2cfc7779bb">FResponseUserToken::PrintData</a></div><div class="ttdeci">void PrintData() const</div><div class="ttdoc">디버그 로그에 응답 내용을 출력합니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8cpp_source.html#l00120">NetworkData.cpp:120</a></div></div>
-<div class="ttc" id="astructFResponseUserToken_html_a9d00d514e295c13406b14963e7c7a4ea"><div class="ttname"><a href="structFResponseUserToken.html#a9d00d514e295c13406b14963e7c7a4ea">FResponseUserToken::SetFromHttpResponse</a></div><div class="ttdeci">void SetFromHttpResponse(const TSharedPtr&lt; class IHttpResponse, ESPMode::ThreadSafe &gt; &amp;Response)</div><div class="ttdoc">HTTP 응답을 파싱해 상태 정보를 갱신합니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8cpp_source.html#l00103">NetworkData.cpp:103</a></div></div>
+<div class="ttc" id="astructFResponseUserToken_html"><div class="ttname"><a href="structFResponseUserToken.html">FResponseUserToken</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00495">NetworkData.h:496</a></div></div>
+<div class="ttc" id="astructFResponseUserToken_html_a2cf3b3fcc2df219d7ebdc5e1341950a4"><div class="ttname"><a href="structFResponseUserToken.html#a2cf3b3fcc2df219d7ebdc5e1341950a4">FResponseUserToken::access_token</a></div><div class="ttdeci">FString access_token</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00500">NetworkData.h:500</a></div></div>
+<div class="ttc" id="astructFResponseUserToken_html_a65a555949e2ac9075bc44b2cfc7779bb"><div class="ttname"><a href="structFResponseUserToken.html#a65a555949e2ac9075bc44b2cfc7779bb">FResponseUserToken::PrintData</a></div><div class="ttdeci">void PrintData() const</div><div class="ttdoc">디버그 로그에 응답 내용을 출력합니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8cpp_source.html#l00122">NetworkData.cpp:122</a></div></div>
+<div class="ttc" id="astructFResponseUserToken_html_a9d00d514e295c13406b14963e7c7a4ea"><div class="ttname"><a href="structFResponseUserToken.html#a9d00d514e295c13406b14963e7c7a4ea">FResponseUserToken::SetFromHttpResponse</a></div><div class="ttdeci">void SetFromHttpResponse(const TSharedPtr&lt; class IHttpResponse, ESPMode::ThreadSafe &gt; &amp;Response)</div><div class="ttdoc">HTTP 응답을 파싱해 상태 정보를 갱신합니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8cpp_source.html#l00105">NetworkData.cpp:105</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="NetworkData_8h_source.html#l00497">FResponseUserToken::access_token</a>, <a class="el" href="UKLingoNetworkSystem_8h_source.html#l00153">access_token</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00072">AddNetworkWaitCount()</a>, <a class="el" href="FHttpMultipartFormData_8cpp_source.html#l00034">FHttpMultipartFormData::AddText()</a>, <a class="el" href="FHttpMultipartFormData_8h.html#a9478332f7eef11c662f43ecca21be2f1a0421cf7b9c7d5657946d7a37929f1abc">FormUrlEncoded</a>, <a class="el" href="NetworkData_8h_source.html#l00022">NetworkConfig::GetFullUrl()</a>, <a class="el" href="ULingoGameHelper_8cpp_source.html#l00037">ULingoGameHelper::GetLingoPlayerState()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00064">IsResSuccess()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00041">LogNetwork()</a>, <a class="el" href="GameLogging_8h.html#ad8e2ccc8c20a63e091e0111987b4d3bc">NETWORK_LOG</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00028">NETWORK_POST</a>, <a class="el" href="ENetworkLogType_8h.html#a80aaa513e01d2ec2d4421835b09d691fa03d947a2158373c3b9d74325850cb8b9">Post</a>, <a class="el" href="NetworkData_8cpp_source.html#l00120">FResponseUserToken::PrintData()</a>, <a class="el" href="NetworkData_8cpp_source.html#l00103">FResponseUserToken::SetFromHttpResponse()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00129">SetupHttpRequest()</a>, <a class="el" href="FHttpMultipartFormData_8cpp_source.html#l00055">FHttpMultipartFormData::SetupHttpRequest()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00087">ShowNetworkErrorPopup()</a>, <a class="el" href="NetworkData_8h_source.html#l00082">RequestAPI::users_token</a>.</p>
-<div id="dynsection-16" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-16-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
-<div id="dynsection-16-summary" class="dynsummary" style="display:block;">
+<p class="reference">다음을 참조함 :  <a class="el" href="NetworkData_8h_source.html#l00500">FResponseUserToken::access_token</a>, <a class="el" href="UKLingoNetworkSystem_8h_source.html#l00153">access_token</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00072">AddNetworkWaitCount()</a>, <a class="el" href="FHttpMultipartFormData_8cpp_source.html#l00034">FHttpMultipartFormData::AddText()</a>, <a class="el" href="FHttpMultipartFormData_8h.html#a9478332f7eef11c662f43ecca21be2f1a0421cf7b9c7d5657946d7a37929f1abc">FormUrlEncoded</a>, <a class="el" href="NetworkData_8h_source.html#l00022">NetworkConfig::GetFullUrl()</a>, <a class="el" href="ULingoGameHelper_8cpp_source.html#l00038">ULingoGameHelper::GetLingoPlayerState()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00064">IsResSuccess()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00041">LogNetwork()</a>, <a class="el" href="GameLogging_8h.html#ad8e2ccc8c20a63e091e0111987b4d3bc">NETWORK_LOG</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00028">NETWORK_POST</a>, <a class="el" href="ENetworkLogType_8h.html#a80aaa513e01d2ec2d4421835b09d691fa03d947a2158373c3b9d74325850cb8b9">Post</a>, <a class="el" href="NetworkData_8cpp_source.html#l00122">FResponseUserToken::PrintData()</a>, <a class="el" href="NetworkData_8cpp_source.html#l00105">FResponseUserToken::SetFromHttpResponse()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00129">SetupHttpRequest()</a>, <a class="el" href="FHttpMultipartFormData_8cpp_source.html#l00055">FHttpMultipartFormData::SetupHttpRequest()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00087">ShowNetworkErrorPopup()</a>, <a class="el" href="NetworkData_8h_source.html#l00082">RequestAPI::users_token</a>.</p>
+<div id="dynsection-17" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-17-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-17-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-16-content" class="dyncontent" style="display:none;">
+<div id="dynsection-17-content" class="dyncontent" style="display:none;">
 <div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classUKLingoNetworkSystem_a2f97be279ddf5bd2878f67a55d9b8149_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
@@ -1644,12 +1762,12 @@ Private 속성</h2></td></tr>
 </div><!-- fragment -->
 <p class="reference">다음을 참조함 :  <a class="el" href="UKLingoNetworkSystem_8h_source.html#l00153">access_token</a>.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00747">RequestInterviewAnswer()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00693">RequestInterviewHello()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00511">RequestListenAudio()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00443">RequestOcrExtract()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00387">RequestScenario()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00612">RequestSpeakingJudges()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00331">RequestUserHost()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00278">RequestUserMe()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00148">RequestUserRegister()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00211">RequestUserToken()</a>.</p>
-<div id="dynsection-17" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-17-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
-<div id="dynsection-17-summary" class="dynsummary" style="display:block;">
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00751">RequestInterviewAnswer()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00697">RequestInterviewHello()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00515">RequestListenAudio()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00443">RequestOcrExtract()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00816">RequestQuestResult()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00387">RequestScenario()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00616">RequestSpeakingJudges()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00331">RequestUserHost()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00278">RequestUserMe()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00148">RequestUserRegister()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00211">RequestUserToken()</a>.</p>
+<div id="dynsection-18" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-18-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-18-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-17-content" class="dyncontent" style="display:none;">
+<div id="dynsection-18-content" class="dyncontent" style="display:none;">
 <div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classUKLingoNetworkSystem_a0bfd5f1b3523947877ba5c4e7ef9aa2f_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
@@ -1745,11 +1863,11 @@ Private 속성</h2></td></tr>
 <p class="reference">다음을 참조함 :  <a class="el" href="GameLogging_8h.html#ad8e2ccc8c20a63e091e0111987b4d3bc">NETWORK_LOG</a>, <a class="el" href="EPopupType_8h.html#a19e1d6071fbd1a8d0f3a0ac7c630df51ae0aa021e21dddbd6d8cecec71e9cf564">OK</a>.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00387">RequestScenario()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00278">RequestUserMe()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00148">RequestUserRegister()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00211">RequestUserToken()</a>.</p>
-<div id="dynsection-18" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-18-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
-<div id="dynsection-18-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-19" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-19-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-19-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-18-content" class="dyncontent" style="display:none;">
+<div id="dynsection-19-content" class="dyncontent" style="display:none;">
 <div class="center"><iframe scrolling="no" frameborder="0" src="classUKLingoNetworkSystem_a5a16995fb8341967b36b704966c70558_icgraph.svg" width="430" height="243"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
@@ -1822,7 +1940,7 @@ Private 속성</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classUKLingoNetworkSystem.html">UKLingoNetworkSystem</a></li>
-    <li class="footer">생성시간 : 목 12월 4 2025 02:31:09, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 목 12월 4 2025 07:17:48, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

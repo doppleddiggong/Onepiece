@@ -1,9 +1,11 @@
 var classULingoGameHelper =
 [
+    [ "ConvertGradeType", "classULingoGameHelper.html#aae7e75888d188d4eabcd7eac3d337cff", null ],
     [ "GetFormatTimer", "classULingoGameHelper.html#a6da883ca444eb45866e59e95e63836bb", null ],
     [ "GetLingoGameMode", "classULingoGameHelper.html#a83ca264d23bdfc2b67f93c8f3345852a", null ],
     [ "GetLingoGameState", "classULingoGameHelper.html#aae5e9443e2249c16219279d75b62cb46", null ],
     [ "GetLingoPlayerState", "classULingoGameHelper.html#a6117f2f4942b42864305def958e0c108", null ],
+    [ "GetLingoPlayerStateByPC", "classULingoGameHelper.html#a22b529e3c60a1584054715bc29e1a71c", null ],
     [ "GetLingoPlayerStateList", "classULingoGameHelper.html#a98136c30beb0692693a40c7b97d0199e", null ],
     [ "GetMissionPlayTime", "classULingoGameHelper.html#a7bcb0275140b94422c2f09b29a0b4d6a", null ],
     [ "GetMultiPlayerCount", "classULingoGameHelper.html#a2b4c188bd922db08e4987962b8309a56", null ],

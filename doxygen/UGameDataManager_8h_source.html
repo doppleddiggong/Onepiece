@@ -121,201 +121,243 @@ $(document).ready(function(){initNavTree('UGameDataManager_8h_source.html',''); 
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &quot;<a class="code" href="FCharacterInfoData_8h.html">FCharacterInfoData.h</a>&quot;</span></div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &quot;<a class="code" href="FCharacterAssetData_8h.html">FCharacterAssetData.h</a>&quot;</span></div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &quot;<a class="code" href="FColorData_8h.html">FColorData.h</a>&quot;</span></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &quot;<a class="code" href="FLevelData_8h.html">FLevelData.h</a>&quot;</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &quot;<a class="code" href="FListenData_8h.html">FListenData.h</a>&quot;</span></div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#include &quot;<a class="code" href="FReadData_8h.html">FReadData.h</a>&quot;</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#include &quot;<a class="code" href="FWordStudyData_8h.html">FWordStudyData.h</a>&quot;</span></div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#include &quot;Subsystems/GameInstanceSubsystem.h&quot;</span></div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#include &quot;UGameDataManager.generated.h&quot;</span></div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>UCLASS()</div>
-<div class="foldopen" id="foldopen00030" data-start="{" data-end="};">
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="classUGameDataManager.html">   30</a></span>class LATTELIBRARY_API <a class="code hl_class" href="classUGameDataManager.html">UGameDataManager</a> : public UGameInstanceSubsystem</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>{</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    GENERATED_BODY()</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="classUGameDataManager.html#aeb8a914f73efb6e77f0aae46dabeeb19">   35</a></span>    <a class="code hl_function" href="classUGameDataManager.html#aeb8a914f73efb6e77f0aae46dabeeb19">DEFINE_SUBSYSTEM_GETTER_INLINE</a>(<a class="code hl_class" href="classUGameDataManager.html">UGameDataManager</a>);</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <a class="code hl_class" href="classUGameDataManager.html">UGameDataManager</a>();</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> Initialize(FSubsystemCollectionBase&amp; Collection) <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> Deinitialize() <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    UFUNCTION(Exec)</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="keywordtype">void</span> ReloadMasterData();</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="preprocessor">#pragma region HIT_STOP</span></div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    UPROPERTY(EditAnywhere, Category=<span class="stringliteral">&quot;MasterData|HitStop&quot;</span>)</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="classUGameDataManager.html#aa934e5d7830bd86c2a8cad2df2e70596">   48</a></span>    TSoftObjectPtr&lt;UDataTable&gt; HitStopTable;</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    UFUNCTION(BlueprintCallable, Category=&quot;MasterData|HitStop&quot;)</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="keywordtype">bool</span> GetHitStopData(<a class="code hl_enumeration" href="EDamageType_8h.html#ab5bf7dde87ef933ba244eba8c39e7e9b">EDamageType</a> Type, UPARAM(ref) <a class="code hl_struct" href="structFHitStopData.html">FHitStopData</a>&amp; Out) const;</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    UFUNCTION(BlueprintCallable, BlueprintPure, Category=&quot;MasterData|HitStop&quot;)</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="keywordtype">float</span> GetHitStopDelayTime(<a class="code hl_enumeration" href="EDamageType_8h.html#ab5bf7dde87ef933ba244eba8c39e7e9b">EDamageType</a> Type) const;</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>private:</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <span class="keywordtype">void</span> Clear_HitStopTable();</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="keywordtype">void</span> LoadData_HitStopTable();</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="classUGameDataManager.html#a0afdc5d050bc45ed28b51fd8df0e40d7">   58</a></span>    <span class="keywordtype">bool</span> bLoadHitStop = false;</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    UPROPERTY(VisibleAnywhere, Category = &quot;Cache&quot;, meta = (AllowPrivateAccess = &quot;true&quot;))</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="classUGameDataManager.html#ad418eb713320dab67b86e69ba43db077">   61</a></span>    TMap&lt;<a class="code hl_enumeration" href="EDamageType_8h.html#ab5bf7dde87ef933ba244eba8c39e7e9b">EDamageType</a>, <a class="code hl_struct" href="structFHitStopData.html">FHitStopData</a>&gt; HitStopCache;</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="preprocessor">#pragma endregion HIT_STOP</span></div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="preprocessor">#pragma region KNOCKBACK</span></div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    UPROPERTY(EditAnywhere, Category=<span class="stringliteral">&quot;MasterData|Knockback&quot;</span>)</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="classUGameDataManager.html#acd8b13957d84c801426442eb8bd70e78">   67</a></span>    TSoftObjectPtr&lt;UDataTable&gt; KnockbackTable;</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    UFUNCTION(BlueprintCallable, Category=&quot;MasterData|Knockback&quot;)</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <span class="keywordtype">bool</span> GetKnockbackData(<a class="code hl_enumeration" href="EDamageType_8h.html#ab5bf7dde87ef933ba244eba8c39e7e9b">EDamageType</a> Type, <a class="code hl_struct" href="structFKnockbackData.html">FKnockbackData</a>&amp; Out) const;</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>private:</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    <span class="keywordtype">void</span> Clear_KnockbackTable();</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    <span class="keywordtype">void</span> LoadData_KnockbackTable();</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno"><a class="line" href="classUGameDataManager.html#aadbfbcb1f8c50ba7799087a97c0965f0">   75</a></span>    <span class="keywordtype">bool</span> bLoadKnockback = false;</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    UPROPERTY(VisibleAnywhere, Category = &quot;Cache&quot;, meta = (AllowPrivateAccess = &quot;true&quot;))</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno"><a class="line" href="classUGameDataManager.html#a49d5db070298ec55d4b65af85aa40ae9">   78</a></span>    TMap&lt;<a class="code hl_enumeration" href="EDamageType_8h.html#ab5bf7dde87ef933ba244eba8c39e7e9b">EDamageType</a>, <a class="code hl_struct" href="structFKnockbackData.html">FKnockbackData</a>&gt; KnockbackCache;</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span><span class="preprocessor">#pragma endregion KNOCKBACK</span></div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    </div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><span class="preprocessor">#pragma region CHARACTER_INFO_DATA</span></div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    UPROPERTY(EditAnywhere, Category=<span class="stringliteral">&quot;MasterData|CharacterInfo&quot;</span>)</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno"><a class="line" href="classUGameDataManager.html#a52a1a40b1f8d3c2e4595cc124eb0ab33">   84</a></span>    TSoftObjectPtr&lt;UDataTable&gt; CharacterInfoTable;</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    UFUNCTION(BlueprintCallable, Category=&quot;MasterData|CharacterInfo&quot;)</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    <span class="keywordtype">bool</span> GetCharacterInfoData(<a class="code hl_enumeration" href="ECharacterType_8h.html#ad34afea9f542b01a1f4e6d48fdfe1be3">ECharacterType</a> Type, <a class="code hl_struct" href="structFCharacterInfoData.html">FCharacterInfoData</a>&amp; Out) const;</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>private:</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    <span class="keywordtype">void</span> Clear_CharacterInfoData();</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    <span class="keywordtype">void</span> LoadData_CharacterInfoData();</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno"><a class="line" href="classUGameDataManager.html#af754622372c01421abd03ade37082afa">   92</a></span>    <span class="keywordtype">bool</span> bLoadCharacterInfo = false;</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span> </div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    UPROPERTY(VisibleAnywhere, Category = &quot;Cache&quot;, meta = (AllowPrivateAccess = &quot;true&quot;))</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno"><a class="line" href="classUGameDataManager.html#ac072e508a8482203271383317a87189f">   95</a></span>    TMap&lt;<a class="code hl_enumeration" href="ECharacterType_8h.html#ad34afea9f542b01a1f4e6d48fdfe1be3">ECharacterType</a>, <a class="code hl_struct" href="structFCharacterInfoData.html">FCharacterInfoData</a>&gt; CharacterInfoCache;</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span><span class="preprocessor">#pragma endregion CHARACTER_INFO_DATA</span></div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span><span class="preprocessor">#pragma region CHARACTER_ASSET_DATA</span></div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    UPROPERTY(EditAnywhere, Category=<span class="stringliteral">&quot;MasterData|CharacterAsset&quot;</span>)</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno"><a class="line" href="classUGameDataManager.html#a7d5f4b7321bc2405f3ff9f696b7ddd75">  101</a></span>    TSoftObjectPtr&lt;UDataTable&gt; CharacterAssetTable;</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    UFUNCTION(BlueprintCallable, Category=&quot;MasterData|CharacterAsset&quot;)</div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    <span class="keywordtype">bool</span> GetCharacterAssetData(<a class="code hl_enumeration" href="ECharacterType_8h.html#ad34afea9f542b01a1f4e6d48fdfe1be3">ECharacterType</a> Type, <a class="code hl_struct" href="structFCharacterAssetData.html">FCharacterAssetData</a>&amp; Out) const;</div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span> </div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>private:</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    <span class="keywordtype">void</span> Clear_CharacterAssetData();</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    <span class="keywordtype">void</span> LoadData_CharacterAssetData();</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno"><a class="line" href="classUGameDataManager.html#a1ec0dc6c78fc238ae1e13376ada078c3">  109</a></span>    <span class="keywordtype">bool</span> bLoadCharacterAsset = false;</div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span> </div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    UPROPERTY(VisibleAnywhere, Category = &quot;Cache&quot;, meta = (AllowPrivateAccess = &quot;true&quot;))</div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno"><a class="line" href="classUGameDataManager.html#a06126e08dc91b9b5ec64805f5c3774bf">  112</a></span>    TMap&lt;<a class="code hl_enumeration" href="ECharacterType_8h.html#ad34afea9f542b01a1f4e6d48fdfe1be3">ECharacterType</a>, <a class="code hl_struct" href="structFCharacterAssetData.html">FCharacterAssetData</a>&gt; CharacterAssetCache;</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span><span class="preprocessor">#pragma endregion CHARACTER_ASSET_DATA</span></div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span> </div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span><span class="preprocessor">#pragma region COLOR_DATA</span></div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>    UPROPERTY(EditAnywhere, Category=<span class="stringliteral">&quot;MasterData|Color&quot;</span>)</div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno"><a class="line" href="classUGameDataManager.html#a1facef35e640cde6bccffeff2c64f03b">  118</a></span>    TSoftObjectPtr&lt;UDataTable&gt; ColorDataTable;</div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span> </div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    UFUNCTION(BlueprintCallable, Category=&quot;MasterData|Color&quot;)</div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    <span class="keywordtype">bool</span> GetColorData(int32 Index, <a class="code hl_struct" href="structFColorData.html">FColorData</a>&amp; Out) const;</div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span> </div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>    UFUNCTION(BlueprintCallable, Category=&quot;MasterData|Color&quot;)</div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>    TArray&lt;<a class="code hl_struct" href="structFColorData.html">FColorData</a>&gt; GetColorDataByLevel(int32 Level) const;</div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span> </div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>private:</div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>    <span class="keywordtype">void</span> Clear_ColorData();</div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>    <span class="keywordtype">void</span> LoadData_ColorData();</div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno"><a class="line" href="classUGameDataManager.html#a4b8271c7ce8694c76c9da2249a0d8cf2">  129</a></span>    <span class="keywordtype">bool</span> bLoadColorData = false;</div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span> </div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>    UPROPERTY(VisibleAnywhere, Category = &quot;Cache&quot;, meta = (AllowPrivateAccess = &quot;true&quot;))</div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno"><a class="line" href="classUGameDataManager.html#a349a0f4675700f1fbe7003323148cb8f">  132</a></span>    TMap&lt;int32, <a class="code hl_struct" href="structFColorData.html">FColorData</a>&gt; ColorDataCache;</div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span><span class="preprocessor">#pragma endregion COLOR_DATA</span></div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span> </div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span><span class="preprocessor">#pragma region LEVEL_DATA</span></div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>    UPROPERTY(EditAnywhere, Category=<span class="stringliteral">&quot;MasterData|Level&quot;</span>)</div>
-<div class="line"><a id="l00138" name="l00138"></a><span class="lineno"><a class="line" href="classUGameDataManager.html#a7fd02189908f2382f3c80b9b9e4743ff">  138</a></span>    TSoftObjectPtr&lt;UDataTable&gt; LevelDataTable;</div>
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span> </div>
-<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>    UFUNCTION(BlueprintCallable, Category=&quot;MasterData|Level&quot;)</div>
-<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>    <span class="keywordtype">bool</span> GetLevelData(int32 Step, int32 Level, <a class="code hl_struct" href="structFLevelData.html">FLevelData</a>&amp; Out) const;</div>
-<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span> </div>
-<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>private:</div>
-<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>    <span class="keywordtype">void</span> Clear_LevelData();</div>
-<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>    <span class="keywordtype">void</span> LoadData_LevelData();</div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno"><a class="line" href="classUGameDataManager.html#a8ec66c46010b5766804a22620eb030e5">  146</a></span>    <span class="keywordtype">bool</span> bLoadLevelData = false;</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &quot;<a class="code" href="FColorStyleData_8h.html">FColorStyleData.h</a>&quot;</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &quot;<a class="code" href="FResourceTextureData_8h.html">FResourceTextureData.h</a>&quot;</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#include &quot;<a class="code" href="FLevelData_8h.html">FLevelData.h</a>&quot;</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#include &quot;<a class="code" href="FListenData_8h.html">FListenData.h</a>&quot;</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#include &quot;<a class="code" href="FReadData_8h.html">FReadData.h</a>&quot;</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#include &quot;<a class="code" href="FWordStudyData_8h.html">FWordStudyData.h</a>&quot;</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">#include &quot;Subsystems/GameInstanceSubsystem.h&quot;</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">#include &quot;UGameDataManager.generated.h&quot;</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>UCLASS()</div>
+<div class="foldopen" id="foldopen00032" data-start="{" data-end="};">
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="classUGameDataManager.html">   32</a></span>class LATTELIBRARY_API <a class="code hl_class" href="classUGameDataManager.html">UGameDataManager</a> : public UGameInstanceSubsystem</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>{</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    GENERATED_BODY()</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="classUGameDataManager.html#aeb8a914f73efb6e77f0aae46dabeeb19">   37</a></span>    <a class="code hl_function" href="classUGameDataManager.html#aeb8a914f73efb6e77f0aae46dabeeb19">DEFINE_SUBSYSTEM_GETTER_INLINE</a>(<a class="code hl_class" href="classUGameDataManager.html">UGameDataManager</a>);</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <a class="code hl_class" href="classUGameDataManager.html">UGameDataManager</a>();</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> Initialize(FSubsystemCollectionBase&amp; Collection) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> Deinitialize() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    UFUNCTION(Exec)</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="keywordtype">void</span> ReloadMasterData();</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="preprocessor">#pragma region HIT_STOP</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    UPROPERTY(EditAnywhere, Category=<span class="stringliteral">&quot;MasterData|HitStop&quot;</span>)</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="classUGameDataManager.html#aa934e5d7830bd86c2a8cad2df2e70596">   50</a></span>    TSoftObjectPtr&lt;UDataTable&gt; HitStopTable;</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    UFUNCTION(BlueprintCallable, Category=&quot;MasterData|HitStop&quot;)</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="keywordtype">bool</span> GetHitStopData(<a class="code hl_enumeration" href="EDamageType_8h.html#ab5bf7dde87ef933ba244eba8c39e7e9b">EDamageType</a> Type, UPARAM(ref) <a class="code hl_struct" href="structFHitStopData.html">FHitStopData</a>&amp; Out) const;</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    UFUNCTION(BlueprintCallable, BlueprintPure, Category=&quot;MasterData|HitStop&quot;)</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="keywordtype">float</span> GetHitStopDelayTime(<a class="code hl_enumeration" href="EDamageType_8h.html#ab5bf7dde87ef933ba244eba8c39e7e9b">EDamageType</a> Type) const;</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>private:</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="keywordtype">void</span> Clear_HitStopTable();</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="keywordtype">void</span> LoadData_HitStopTable();</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="classUGameDataManager.html#a0afdc5d050bc45ed28b51fd8df0e40d7">   60</a></span>    <span class="keywordtype">bool</span> bLoadHitStop = false;</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    UPROPERTY(VisibleAnywhere, Category = &quot;Cache&quot;, meta = (AllowPrivateAccess = &quot;true&quot;))</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="classUGameDataManager.html#ad418eb713320dab67b86e69ba43db077">   63</a></span>    TMap&lt;<a class="code hl_enumeration" href="EDamageType_8h.html#ab5bf7dde87ef933ba244eba8c39e7e9b">EDamageType</a>, <a class="code hl_struct" href="structFHitStopData.html">FHitStopData</a>&gt; HitStopCache;</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="preprocessor">#pragma endregion HIT_STOP</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="preprocessor">#pragma region KNOCKBACK</span></div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    UPROPERTY(EditAnywhere, Category=<span class="stringliteral">&quot;MasterData|Knockback&quot;</span>)</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="classUGameDataManager.html#acd8b13957d84c801426442eb8bd70e78">   69</a></span>    TSoftObjectPtr&lt;UDataTable&gt; KnockbackTable;</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    UFUNCTION(BlueprintCallable, Category=&quot;MasterData|Knockback&quot;)</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    <span class="keywordtype">bool</span> GetKnockbackData(<a class="code hl_enumeration" href="EDamageType_8h.html#ab5bf7dde87ef933ba244eba8c39e7e9b">EDamageType</a> Type, <a class="code hl_struct" href="structFKnockbackData.html">FKnockbackData</a>&amp; Out) const;</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>private:</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    <span class="keywordtype">void</span> Clear_KnockbackTable();</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    <span class="keywordtype">void</span> LoadData_KnockbackTable();</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno"><a class="line" href="classUGameDataManager.html#aadbfbcb1f8c50ba7799087a97c0965f0">   77</a></span>    <span class="keywordtype">bool</span> bLoadKnockback = false;</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    UPROPERTY(VisibleAnywhere, Category = &quot;Cache&quot;, meta = (AllowPrivateAccess = &quot;true&quot;))</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno"><a class="line" href="classUGameDataManager.html#a49d5db070298ec55d4b65af85aa40ae9">   80</a></span>    TMap&lt;<a class="code hl_enumeration" href="EDamageType_8h.html#ab5bf7dde87ef933ba244eba8c39e7e9b">EDamageType</a>, <a class="code hl_struct" href="structFKnockbackData.html">FKnockbackData</a>&gt; KnockbackCache;</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><span class="preprocessor">#pragma endregion KNOCKBACK</span></div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    </div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span><span class="preprocessor">#pragma region CHARACTER_INFO_DATA</span></div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    UPROPERTY(EditAnywhere, Category=<span class="stringliteral">&quot;MasterData|CharacterInfo&quot;</span>)</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno"><a class="line" href="classUGameDataManager.html#a52a1a40b1f8d3c2e4595cc124eb0ab33">   86</a></span>    TSoftObjectPtr&lt;UDataTable&gt; CharacterInfoTable;</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    UFUNCTION(BlueprintCallable, Category=&quot;MasterData|CharacterInfo&quot;)</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    <span class="keywordtype">bool</span> GetCharacterInfoData(<a class="code hl_enumeration" href="ECharacterType_8h.html#ad34afea9f542b01a1f4e6d48fdfe1be3">ECharacterType</a> Type, <a class="code hl_struct" href="structFCharacterInfoData.html">FCharacterInfoData</a>&amp; Out) const;</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>private:</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    <span class="keywordtype">void</span> Clear_CharacterInfoData();</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    <span class="keywordtype">void</span> LoadData_CharacterInfoData();</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno"><a class="line" href="classUGameDataManager.html#af754622372c01421abd03ade37082afa">   94</a></span>    <span class="keywordtype">bool</span> bLoadCharacterInfo = false;</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> </div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    UPROPERTY(VisibleAnywhere, Category = &quot;Cache&quot;, meta = (AllowPrivateAccess = &quot;true&quot;))</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno"><a class="line" href="classUGameDataManager.html#ac072e508a8482203271383317a87189f">   97</a></span>    TMap&lt;<a class="code hl_enumeration" href="ECharacterType_8h.html#ad34afea9f542b01a1f4e6d48fdfe1be3">ECharacterType</a>, <a class="code hl_struct" href="structFCharacterInfoData.html">FCharacterInfoData</a>&gt; CharacterInfoCache;</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span><span class="preprocessor">#pragma endregion CHARACTER_INFO_DATA</span></div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span> </div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span><span class="preprocessor">#pragma region CHARACTER_ASSET_DATA</span></div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    UPROPERTY(EditAnywhere, Category=<span class="stringliteral">&quot;MasterData|CharacterAsset&quot;</span>)</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno"><a class="line" href="classUGameDataManager.html#a7d5f4b7321bc2405f3ff9f696b7ddd75">  103</a></span>    TSoftObjectPtr&lt;UDataTable&gt; CharacterAssetTable;</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span> </div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    UFUNCTION(BlueprintCallable, Category=&quot;MasterData|CharacterAsset&quot;)</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    <span class="keywordtype">bool</span> GetCharacterAssetData(<a class="code hl_enumeration" href="ECharacterType_8h.html#ad34afea9f542b01a1f4e6d48fdfe1be3">ECharacterType</a> Type, <a class="code hl_struct" href="structFCharacterAssetData.html">FCharacterAssetData</a>&amp; Out) const;</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span> </div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>private:</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    <span class="keywordtype">void</span> Clear_CharacterAssetData();</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    <span class="keywordtype">void</span> LoadData_CharacterAssetData();</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno"><a class="line" href="classUGameDataManager.html#a1ec0dc6c78fc238ae1e13376ada078c3">  111</a></span>    <span class="keywordtype">bool</span> bLoadCharacterAsset = false;</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span> </div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    UPROPERTY(VisibleAnywhere, Category = &quot;Cache&quot;, meta = (AllowPrivateAccess = &quot;true&quot;))</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno"><a class="line" href="classUGameDataManager.html#a06126e08dc91b9b5ec64805f5c3774bf">  114</a></span>    TMap&lt;<a class="code hl_enumeration" href="ECharacterType_8h.html#ad34afea9f542b01a1f4e6d48fdfe1be3">ECharacterType</a>, <a class="code hl_struct" href="structFCharacterAssetData.html">FCharacterAssetData</a>&gt; CharacterAssetCache;</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span><span class="preprocessor">#pragma endregion CHARACTER_ASSET_DATA</span></div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span> </div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span><span class="preprocessor">#pragma region COLOR_DATA</span></div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    UPROPERTY(EditAnywhere, Category=<span class="stringliteral">&quot;MasterData|Color&quot;</span>)</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno"><a class="line" href="classUGameDataManager.html#a1facef35e640cde6bccffeff2c64f03b">  120</a></span>    TSoftObjectPtr&lt;UDataTable&gt; ColorDataTable;</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span> </div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>    UFUNCTION(BlueprintCallable, Category=&quot;MasterData|Color&quot;)</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>    <span class="keywordtype">bool</span> GetColorData(int32 Index, <a class="code hl_struct" href="structFColorData.html">FColorData</a>&amp; Out) const;</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span> </div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>    UFUNCTION(BlueprintCallable, Category=&quot;MasterData|Color&quot;)</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>    TArray&lt;<a class="code hl_struct" href="structFColorData.html">FColorData</a>&gt; GetColorDataByLevel(int32 Level) const;</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span> </div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>private:</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>    <span class="keywordtype">void</span> Clear_ColorData();</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>    <span class="keywordtype">void</span> LoadData_ColorData();</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno"><a class="line" href="classUGameDataManager.html#a4b8271c7ce8694c76c9da2249a0d8cf2">  131</a></span>    <span class="keywordtype">bool</span> bLoadColorData = false;</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span> </div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>    UPROPERTY(VisibleAnywhere, Category = &quot;Cache&quot;, meta = (AllowPrivateAccess = &quot;true&quot;))</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno"><a class="line" href="classUGameDataManager.html#a349a0f4675700f1fbe7003323148cb8f">  134</a></span>    TMap&lt;int32, <a class="code hl_struct" href="structFColorData.html">FColorData</a>&gt; ColorDataCache;</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span><span class="preprocessor">#pragma endregion COLOR_DATA</span></div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span> </div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span><span class="preprocessor">#pragma region COLOR_STYLE_DATA</span></div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>    UPROPERTY(EditAnywhere, Category=<span class="stringliteral">&quot;MasterData|ColorStyle&quot;</span>)</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno"><a class="line" href="classUGameDataManager.html#add991fe3638f89c2dea41fc801efd14f">  140</a></span>    TSoftObjectPtr&lt;UDataTable&gt; ColorStyleDataTable;</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span> </div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>    UFUNCTION(BlueprintCallable, Category=&quot;MasterData|ColorStyle&quot;)</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>    <span class="keywordtype">bool</span> GetColorStyleData(<a class="code hl_enumeration" href="FColorStyleData_8h.html#aefed1c032e349fb49159bbab1f32a3eb">EColorStyleType</a> Type, <a class="code hl_struct" href="structFColorStyleData.html">FColorStyleData</a>&amp; Out) const;</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span> </div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>    UFUNCTION(BlueprintCallable, Category=&quot;MasterData|ColorStyle&quot;)</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>    TMap&lt;<a class="code hl_enumeration" href="FColorStyleData_8h.html#aefed1c032e349fb49159bbab1f32a3eb">EColorStyleType</a>, <a class="code hl_struct" href="structFColorStyleData.html">FColorStyleData</a>&gt; GetAllColorStyleData() const;</div>
 <div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span> </div>
-<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>    UPROPERTY(VisibleAnywhere, Category = &quot;Cache&quot;, meta = (AllowPrivateAccess = &quot;true&quot;))</div>
-<div class="line"><a id="l00149" name="l00149"></a><span class="lineno"><a class="line" href="classUGameDataManager.html#a6353faaf48850413bf207f2d9dd5c0c8">  149</a></span>    TMap&lt;int32, <a class="code hl_struct" href="structFLevelData.html">FLevelData</a>&gt; LevelDataCache;</div>
-<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span><span class="preprocessor">#pragma endregion LEVEL_DATA</span></div>
-<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span> </div>
-<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span><span class="preprocessor">#pragma region LISTEN_DATA</span></div>
-<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>    UPROPERTY(EditAnywhere, Category=<span class="stringliteral">&quot;MasterData|Listen&quot;</span>)</div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno"><a class="line" href="classUGameDataManager.html#adc750b8b0c8f6a6be4d1173406eb52aa">  155</a></span>    TSoftObjectPtr&lt;UDataTable&gt; ListenDataTable;</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>private:</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>    <span class="keywordtype">void</span> Clear_ColorStyleData();</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>    <span class="keywordtype">void</span> LoadData_ColorStyleData();</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno"><a class="line" href="classUGameDataManager.html#a248cababb0c31714161e83bd5284caca">  151</a></span>    <span class="keywordtype">bool</span> bLoadColorStyleData = false;</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span> </div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>    UPROPERTY(VisibleAnywhere, Category = &quot;Cache&quot;, meta = (AllowPrivateAccess = &quot;true&quot;))</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno"><a class="line" href="classUGameDataManager.html#a7330e9a6967471a878094204d6c4c98f">  154</a></span>    TMap&lt;<a class="code hl_enumeration" href="FColorStyleData_8h.html#aefed1c032e349fb49159bbab1f32a3eb">EColorStyleType</a>, <a class="code hl_struct" href="structFColorStyleData.html">FColorStyleData</a>&gt; ColorStyleDataCache;</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span><span class="preprocessor">#pragma endregion COLOR_STYLE_DATA</span></div>
 <div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span> </div>
-<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>    UFUNCTION(BlueprintCallable, Category=&quot;MasterData|<a class="code hl_enumvalue" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921ace6802b46091c31e2ec2363883fe8369">Listen</a>&quot;)</div>
-<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>    <span class="keywordtype">bool</span> GetListenData(int32 Index, <a class="code hl_struct" href="structFListenData.html">FListenData</a>&amp; Out) const;</div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span> </div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>    UFUNCTION(BlueprintCallable, Category=&quot;MasterData|<a class="code hl_enumvalue" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921ace6802b46091c31e2ec2363883fe8369">Listen</a>&quot;)</div>
-<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>    TArray&lt;<a class="code hl_struct" href="structFListenData.html">FListenData</a>&gt; GetListenDataByStepAndLevel(int32 Step, int32 Level) const;</div>
-<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span> </div>
-<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>    UFUNCTION(BlueprintCallable, Category=&quot;MasterData|<a class="code hl_enumvalue" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921ace6802b46091c31e2ec2363883fe8369">Listen</a>&quot;)</div>
-<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>    TArray&lt;<a class="code hl_struct" href="structFListenData.html">FListenData</a>&gt; GetListenDataByCategory(const FString&amp; Category) const;</div>
-<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span> </div>
-<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>private:</div>
-<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>    <span class="keywordtype">void</span> Clear_ListenData();</div>
-<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>    <span class="keywordtype">void</span> LoadData_ListenData();</div>
-<div class="line"><a id="l00169" name="l00169"></a><span class="lineno"><a class="line" href="classUGameDataManager.html#a82d5fec42963c74ba9af57ccfb8ed6c2">  169</a></span>    <span class="keywordtype">bool</span> bLoadListenData = false;</div>
-<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span> </div>
-<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>    UPROPERTY(VisibleAnywhere, Category = &quot;Cache&quot;, meta = (AllowPrivateAccess = &quot;true&quot;))</div>
-<div class="line"><a id="l00172" name="l00172"></a><span class="lineno"><a class="line" href="classUGameDataManager.html#a1de9b0211ef2efb56d6e63e88bea5fba">  172</a></span>    TMap&lt;int32, <a class="code hl_struct" href="structFListenData.html">FListenData</a>&gt; ListenDataCache;</div>
-<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span><span class="preprocessor">#pragma endregion LISTEN_DATA</span></div>
-<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span> </div>
-<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span><span class="preprocessor">#pragma region READ_DATA</span></div>
-<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>    UPROPERTY(EditAnywhere, Category=<span class="stringliteral">&quot;MasterData|Read&quot;</span>)</div>
-<div class="line"><a id="l00178" name="l00178"></a><span class="lineno"><a class="line" href="classUGameDataManager.html#a6ebdbd7db48577890c97e86e8ace5aa5">  178</a></span>    TSoftObjectPtr&lt;UDataTable&gt; ReadDataTable;</div>
-<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span> </div>
-<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>    UFUNCTION(BlueprintCallable, Category=&quot;MasterData|<a class="code hl_enumvalue" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a7a1a5f3e79fdc91edf2f5ead9d66abb4">Read</a>&quot;)</div>
-<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>    <span class="keywordtype">bool</span> GetReadData(int32 Index, <a class="code hl_struct" href="structFReadData.html">FReadData</a>&amp; Out) const;</div>
-<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span> </div>
-<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>    UFUNCTION(BlueprintCallable, Category=&quot;MasterData|<a class="code hl_enumvalue" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a7a1a5f3e79fdc91edf2f5ead9d66abb4">Read</a>&quot;)</div>
-<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>    TArray&lt;<a class="code hl_struct" href="structFReadData.html">FReadData</a>&gt; GetReadDataByLevel(int32 Level) const;</div>
-<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span> </div>
-<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>private:</div>
-<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>    <span class="keywordtype">void</span> Clear_ReadData();</div>
-<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>    <span class="keywordtype">void</span> LoadData_ReadData();</div>
-<div class="line"><a id="l00189" name="l00189"></a><span class="lineno"><a class="line" href="classUGameDataManager.html#af628014d0533c813c005772d971281c7">  189</a></span>    <span class="keywordtype">bool</span> bLoadReadData = false;</div>
-<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span> </div>
-<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>    UPROPERTY(VisibleAnywhere, Category = &quot;Cache&quot;, meta = (AllowPrivateAccess = &quot;true&quot;))</div>
-<div class="line"><a id="l00192" name="l00192"></a><span class="lineno"><a class="line" href="classUGameDataManager.html#abc07928e1e45a7018825f1f9bd6029a5">  192</a></span>    TMap&lt;int32, <a class="code hl_struct" href="structFReadData.html">FReadData</a>&gt; ReadDataCache;</div>
-<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span><span class="preprocessor">#pragma endregion READ_DATA</span></div>
-<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span> </div>
-<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span><span class="preprocessor">#pragma region WORD_DATA</span></div>
-<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>    UPROPERTY(EditAnywhere, Category=<span class="stringliteral">&quot;MasterData|Word&quot;</span>)</div>
-<div class="line"><a id="l00198" name="l00198"></a><span class="lineno"><a class="line" href="classUGameDataManager.html#af3a67b35c573b0f3cb60720b608f2ae0">  198</a></span>    TSoftObjectPtr&lt;UDataTable&gt; WordStudyDataTable;</div>
-<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span> </div>
-<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>    UFUNCTION(BlueprintCallable, Category=&quot;MasterData|Word&quot;)</div>
-<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>    <span class="keywordtype">bool</span> GetWordStudyData(int32 Index, <a class="code hl_struct" href="structFWordStudyData.html">FWordStudyData</a>&amp; Out) const;</div>
-<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span> </div>
-<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>    UFUNCTION(BlueprintCallable, Category=&quot;MasterData|Word&quot;)</div>
-<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>    TArray&lt;<a class="code hl_struct" href="structFWordStudyData.html">FWordStudyData</a>&gt; GetAllWordStudyData() const;</div>
-<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span> </div>
-<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>private:</div>
-<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>    <span class="keywordtype">void</span> Clear_WordStudyData();</div>
-<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>    <span class="keywordtype">void</span> LoadData_WordStudyData();</div>
-<div class="line"><a id="l00209" name="l00209"></a><span class="lineno"><a class="line" href="classUGameDataManager.html#a32e4463a752b8c5c283aac682feb7191">  209</a></span>    <span class="keywordtype">bool</span> bLoadWordStudyData = false;</div>
-<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span> </div>
-<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>    UPROPERTY(VisibleAnywhere, Category = &quot;Cache&quot;, meta = (AllowPrivateAccess = &quot;true&quot;))</div>
-<div class="line"><a id="l00212" name="l00212"></a><span class="lineno"><a class="line" href="classUGameDataManager.html#a2d3aa9595a441ef7b4cfb0d6959348d4">  212</a></span>    TMap&lt;int32, <a class="code hl_struct" href="structFWordStudyData.html">FWordStudyData</a>&gt; WordStudyDataCache;</div>
-<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span><span class="preprocessor">#pragma endregion WORD_DATA</span></div>
-<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>};</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span><span class="preprocessor">#pragma region RESOURCE_TEXTURE_DATA</span></div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>    UPROPERTY(EditAnywhere, Category=<span class="stringliteral">&quot;MasterData|ResourceTexture&quot;</span>)</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno"><a class="line" href="classUGameDataManager.html#a1dfdb12afbd52c425e32b1fd48232a30">  160</a></span>    TSoftObjectPtr&lt;UDataTable&gt; ResourceTextureDataTable;</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span> </div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>    UFUNCTION(BlueprintCallable, Category=&quot;MasterData|ResourceTexture&quot;)</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>    <span class="keywordtype">bool</span> GetResourceTextureData(<a class="code hl_enumeration" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2">EResourceTextureType</a> Type, <a class="code hl_struct" href="structFResourceTextureData.html">FResourceTextureData</a>&amp; Out) const;</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span> </div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>    UFUNCTION(BlueprintCallable, Category=&quot;MasterData|ResourceTexture&quot;)</div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>    UTexture2D* GetTexture(<a class="code hl_enumeration" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2">EResourceTextureType</a> Type) const;</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span> </div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>private:</div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>    <span class="keywordtype">void</span> Clear_ResourceTextureData();</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>    <span class="keywordtype">void</span> LoadData_ResourceTextureData();</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno"><a class="line" href="classUGameDataManager.html#a9c6e1d3c0cfd595ba64c99096f52ee6d">  171</a></span>    <span class="keywordtype">bool</span> bLoadResourceTextureData = false;</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span> </div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>    UPROPERTY(VisibleAnywhere, Category = &quot;Cache&quot;, meta = (AllowPrivateAccess = &quot;true&quot;))</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno"><a class="line" href="classUGameDataManager.html#a6eb0d8aacc89cb8b8544317fe41f41e0">  174</a></span>    TMap&lt;<a class="code hl_enumeration" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2">EResourceTextureType</a>, <a class="code hl_struct" href="structFResourceTextureData.html">FResourceTextureData</a>&gt; ResourceTextureDataCache;</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span><span class="preprocessor">#pragma endregion RESOURCE_TEXTURE_DATA</span></div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span> </div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span><span class="preprocessor">#pragma region LEVEL_DATA</span></div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>    UPROPERTY(EditAnywhere, Category=<span class="stringliteral">&quot;MasterData|Level&quot;</span>)</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno"><a class="line" href="classUGameDataManager.html#a7fd02189908f2382f3c80b9b9e4743ff">  180</a></span>    TSoftObjectPtr&lt;UDataTable&gt; LevelDataTable;</div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span> </div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>    UFUNCTION(BlueprintCallable, Category=&quot;MasterData|Level&quot;)</div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>    <span class="keywordtype">bool</span> GetLevelData(int32 Step, int32 Level, <a class="code hl_struct" href="structFLevelData.html">FLevelData</a>&amp; Out) const;</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span> </div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>private:</div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>    <span class="keywordtype">void</span> Clear_LevelData();</div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>    <span class="keywordtype">void</span> LoadData_LevelData();</div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno"><a class="line" href="classUGameDataManager.html#a8ec66c46010b5766804a22620eb030e5">  188</a></span>    <span class="keywordtype">bool</span> bLoadLevelData = false;</div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span> </div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>    UPROPERTY(VisibleAnywhere, Category = &quot;Cache&quot;, meta = (AllowPrivateAccess = &quot;true&quot;))</div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno"><a class="line" href="classUGameDataManager.html#a6353faaf48850413bf207f2d9dd5c0c8">  191</a></span>    TMap&lt;int32, <a class="code hl_struct" href="structFLevelData.html">FLevelData</a>&gt; LevelDataCache;</div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span><span class="preprocessor">#pragma endregion LEVEL_DATA</span></div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span> </div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span><span class="preprocessor">#pragma region LISTEN_DATA</span></div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>    UPROPERTY(EditAnywhere, Category=<span class="stringliteral">&quot;MasterData|Listen&quot;</span>)</div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno"><a class="line" href="classUGameDataManager.html#adc750b8b0c8f6a6be4d1173406eb52aa">  197</a></span>    TSoftObjectPtr&lt;UDataTable&gt; ListenDataTable;</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span> </div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>    UFUNCTION(BlueprintCallable, Category=&quot;MasterData|<a class="code hl_enumvalue" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921ace6802b46091c31e2ec2363883fe8369">Listen</a>&quot;)</div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>    <span class="keywordtype">bool</span> GetListenData(int32 Index, <a class="code hl_struct" href="structFListenData.html">FListenData</a>&amp; Out) const;</div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span> </div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>    UFUNCTION(BlueprintCallable, Category=&quot;MasterData|<a class="code hl_enumvalue" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921ace6802b46091c31e2ec2363883fe8369">Listen</a>&quot;)</div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>    TArray&lt;<a class="code hl_struct" href="structFListenData.html">FListenData</a>&gt; GetListenDataByStepAndLevel(int32 Step, int32 Level) const;</div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span> </div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>    UFUNCTION(BlueprintCallable, Category=&quot;MasterData|<a class="code hl_enumvalue" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921ace6802b46091c31e2ec2363883fe8369">Listen</a>&quot;)</div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>    TArray&lt;<a class="code hl_struct" href="structFListenData.html">FListenData</a>&gt; GetListenDataByCategory(const FString&amp; Category) const;</div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span> </div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>private:</div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>    <span class="keywordtype">void</span> Clear_ListenData();</div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>    <span class="keywordtype">void</span> LoadData_ListenData();</div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno"><a class="line" href="classUGameDataManager.html#a82d5fec42963c74ba9af57ccfb8ed6c2">  211</a></span>    <span class="keywordtype">bool</span> bLoadListenData = false;</div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span> </div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>    UPROPERTY(VisibleAnywhere, Category = &quot;Cache&quot;, meta = (AllowPrivateAccess = &quot;true&quot;))</div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno"><a class="line" href="classUGameDataManager.html#a1de9b0211ef2efb56d6e63e88bea5fba">  214</a></span>    TMap&lt;int32, <a class="code hl_struct" href="structFListenData.html">FListenData</a>&gt; ListenDataCache;</div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span><span class="preprocessor">#pragma endregion LISTEN_DATA</span></div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span> </div>
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span><span class="preprocessor">#pragma region READ_DATA</span></div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>    UPROPERTY(EditAnywhere, Category=<span class="stringliteral">&quot;MasterData|Read&quot;</span>)</div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno"><a class="line" href="classUGameDataManager.html#a6ebdbd7db48577890c97e86e8ace5aa5">  220</a></span>    TSoftObjectPtr&lt;UDataTable&gt; ReadDataTable;</div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span> </div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>    UFUNCTION(BlueprintCallable, Category=&quot;MasterData|<a class="code hl_enumvalue" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a7a1a5f3e79fdc91edf2f5ead9d66abb4">Read</a>&quot;)</div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>    <span class="keywordtype">bool</span> GetReadData(int32 Index, <a class="code hl_struct" href="structFReadData.html">FReadData</a>&amp; Out) const;</div>
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span> </div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>    UFUNCTION(BlueprintCallable, Category=&quot;MasterData|<a class="code hl_enumvalue" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a7a1a5f3e79fdc91edf2f5ead9d66abb4">Read</a>&quot;)</div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>    TArray&lt;<a class="code hl_struct" href="structFReadData.html">FReadData</a>&gt; GetReadDataByLevel(int32 Level) const;</div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span> </div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>private:</div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>    <span class="keywordtype">void</span> Clear_ReadData();</div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>    <span class="keywordtype">void</span> LoadData_ReadData();</div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno"><a class="line" href="classUGameDataManager.html#af628014d0533c813c005772d971281c7">  231</a></span>    <span class="keywordtype">bool</span> bLoadReadData = false;</div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span> </div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>    UPROPERTY(VisibleAnywhere, Category = &quot;Cache&quot;, meta = (AllowPrivateAccess = &quot;true&quot;))</div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno"><a class="line" href="classUGameDataManager.html#abc07928e1e45a7018825f1f9bd6029a5">  234</a></span>    TMap&lt;int32, <a class="code hl_struct" href="structFReadData.html">FReadData</a>&gt; ReadDataCache;</div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span><span class="preprocessor">#pragma endregion READ_DATA</span></div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span> </div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span><span class="preprocessor">#pragma region WORD_DATA</span></div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>    UPROPERTY(EditAnywhere, Category=<span class="stringliteral">&quot;MasterData|Word&quot;</span>)</div>
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno"><a class="line" href="classUGameDataManager.html#af3a67b35c573b0f3cb60720b608f2ae0">  240</a></span>    TSoftObjectPtr&lt;UDataTable&gt; WordStudyDataTable;</div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span> </div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>    UFUNCTION(BlueprintCallable, Category=&quot;MasterData|Word&quot;)</div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>    <span class="keywordtype">bool</span> GetWordStudyData(int32 Index, <a class="code hl_struct" href="structFWordStudyData.html">FWordStudyData</a>&amp; Out) const;</div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span> </div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>    UFUNCTION(BlueprintCallable, Category=&quot;MasterData|Word&quot;)</div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>    TArray&lt;<a class="code hl_struct" href="structFWordStudyData.html">FWordStudyData</a>&gt; GetAllWordStudyData() const;</div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span> </div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>private:</div>
+<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>    <span class="keywordtype">void</span> Clear_WordStudyData();</div>
+<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>    <span class="keywordtype">void</span> LoadData_WordStudyData();</div>
+<div class="line"><a id="l00251" name="l00251"></a><span class="lineno"><a class="line" href="classUGameDataManager.html#a32e4463a752b8c5c283aac682feb7191">  251</a></span>    <span class="keywordtype">bool</span> bLoadWordStudyData = false;</div>
+<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span> </div>
+<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span>    UPROPERTY(VisibleAnywhere, Category = &quot;Cache&quot;, meta = (AllowPrivateAccess = &quot;true&quot;))</div>
+<div class="line"><a id="l00254" name="l00254"></a><span class="lineno"><a class="line" href="classUGameDataManager.html#a2d3aa9595a441ef7b4cfb0d6959348d4">  254</a></span>    TMap&lt;int32, <a class="code hl_struct" href="structFWordStudyData.html">FWordStudyData</a>&gt; WordStudyDataCache;</div>
+<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span><span class="preprocessor">#pragma endregion WORD_DATA</span></div>
+<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>};</div>
 </div>
 <div class="ttc" id="aALingoGameState_8h_html_a1a866ca8104ebd47ce462347a6125921a7a1a5f3e79fdc91edf2f5ead9d66abb4"><div class="ttname"><a href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a7a1a5f3e79fdc91edf2f5ead9d66abb4">EQuestType::Read</a></div><div class="ttdeci">@ Read</div></div>
 <div class="ttc" id="aALingoGameState_8h_html_a1a866ca8104ebd47ce462347a6125921ace6802b46091c31e2ec2363883fe8369"><div class="ttname"><a href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921ace6802b46091c31e2ec2363883fe8369">EQuestType::Listen</a></div><div class="ttdeci">@ Listen</div></div>
@@ -324,23 +366,29 @@ $(document).ready(function(){initNavTree('UGameDataManager_8h_source.html',''); 
 <div class="ttc" id="aFCharacterAssetData_8h_html"><div class="ttname"><a href="FCharacterAssetData_8h.html">FCharacterAssetData.h</a></div><div class="ttdoc">UCharacterData 클래스를 선언합니다.</div></div>
 <div class="ttc" id="aFCharacterInfoData_8h_html"><div class="ttname"><a href="FCharacterInfoData_8h.html">FCharacterInfoData.h</a></div><div class="ttdoc">FCharacterInfoData 구조체를 선언합니다.</div></div>
 <div class="ttc" id="aFColorData_8h_html"><div class="ttname"><a href="FColorData_8h.html">FColorData.h</a></div><div class="ttdoc">FColorData 구조체를 선언합니다.</div></div>
+<div class="ttc" id="aFColorStyleData_8h_html"><div class="ttname"><a href="FColorStyleData_8h.html">FColorStyleData.h</a></div></div>
+<div class="ttc" id="aFColorStyleData_8h_html_aefed1c032e349fb49159bbab1f32a3eb"><div class="ttname"><a href="FColorStyleData_8h.html#aefed1c032e349fb49159bbab1f32a3eb">EColorStyleType</a></div><div class="ttdeci">EColorStyleType</div><div class="ttdef"><b>Definition</b> <a href="FColorStyleData_8h_source.html#l00011">FColorStyleData.h:12</a></div></div>
 <div class="ttc" id="aFHitStopData_8h_html"><div class="ttname"><a href="FHitStopData_8h.html">FHitStopData.h</a></div><div class="ttdoc">FHitStopData 구조체를 선언합니다.</div></div>
 <div class="ttc" id="aFKnockbackData_8h_html"><div class="ttname"><a href="FKnockbackData_8h.html">FKnockbackData.h</a></div><div class="ttdoc">FKnockbackData 구조체를 선언합니다.</div></div>
 <div class="ttc" id="aFLevelData_8h_html"><div class="ttname"><a href="FLevelData_8h.html">FLevelData.h</a></div><div class="ttdoc">FLevelData 구조체를 선언합니다.</div></div>
 <div class="ttc" id="aFListenData_8h_html"><div class="ttname"><a href="FListenData_8h.html">FListenData.h</a></div><div class="ttdoc">FListenData 구조체를 선언합니다.</div></div>
 <div class="ttc" id="aFReadData_8h_html"><div class="ttname"><a href="FReadData_8h.html">FReadData.h</a></div><div class="ttdoc">FReadData 구조체를 선언합니다.</div></div>
+<div class="ttc" id="aFResourceTextureData_8h_html"><div class="ttname"><a href="FResourceTextureData_8h.html">FResourceTextureData.h</a></div></div>
+<div class="ttc" id="aFResourceTextureData_8h_html_a98b8b3000fb3fc86e37c624651589cb2"><div class="ttname"><a href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2">EResourceTextureType</a></div><div class="ttdeci">EResourceTextureType</div><div class="ttdef"><b>Definition</b> <a href="FResourceTextureData_8h_source.html#l00012">FResourceTextureData.h:13</a></div></div>
 <div class="ttc" id="aFWordStudyData_8h_html"><div class="ttname"><a href="FWordStudyData_8h.html">FWordStudyData.h</a></div><div class="ttdoc">FWordStudyData 구조체를 선언합니다.</div></div>
 <div class="ttc" id="aMacro_8h_html"><div class="ttname"><a href="Macro_8h.html">Macro.h</a></div><div class="ttdoc">YiSan 전반에서 사용하는 공용 인터페이스를 선언합니다.</div></div>
-<div class="ttc" id="aclassUGameDataManager_html"><div class="ttname"><a href="classUGameDataManager.html">UGameDataManager</a></div><div class="ttdoc">데이터 테이블(.csv)에서 게임 데이터를 로드하고 캐시하여 런타임에 빠르게 접근할 수 있도록 제공하는 데이터 관리 서브시스템입니다.</div><div class="ttdef"><b>Definition</b> <a href="UGameDataManager_8h_source.html#l00030">UGameDataManager.h:31</a></div></div>
+<div class="ttc" id="aclassUGameDataManager_html"><div class="ttname"><a href="classUGameDataManager.html">UGameDataManager</a></div><div class="ttdoc">데이터 테이블(.csv)에서 게임 데이터를 로드하고 캐시하여 런타임에 빠르게 접근할 수 있도록 제공하는 데이터 관리 서브시스템입니다.</div><div class="ttdef"><b>Definition</b> <a href="UGameDataManager_8h_source.html#l00032">UGameDataManager.h:33</a></div></div>
 <div class="ttc" id="aclassUGameDataManager_html_aeb8a914f73efb6e77f0aae46dabeeb19"><div class="ttname"><a href="classUGameDataManager.html#aeb8a914f73efb6e77f0aae46dabeeb19">UGameDataManager::DEFINE_SUBSYSTEM_GETTER_INLINE</a></div><div class="ttdeci">DEFINE_SUBSYSTEM_GETTER_INLINE(UGameDataManager)</div></div>
 <div class="ttc" id="astructFCharacterAssetData_html"><div class="ttname"><a href="structFCharacterAssetData.html">FCharacterAssetData</a></div><div class="ttdef"><b>Definition</b> <a href="FCharacterAssetData_8h_source.html#l00013">FCharacterAssetData.h:14</a></div></div>
 <div class="ttc" id="astructFCharacterInfoData_html"><div class="ttname"><a href="structFCharacterInfoData.html">FCharacterInfoData</a></div><div class="ttdef"><b>Definition</b> <a href="FCharacterInfoData_8h_source.html#l00013">FCharacterInfoData.h:14</a></div></div>
 <div class="ttc" id="astructFColorData_html"><div class="ttname"><a href="structFColorData.html">FColorData</a></div><div class="ttdoc">색상 데이터를 정의하는 구조체</div><div class="ttdef"><b>Definition</b> <a href="FColorData_8h_source.html#l00018">FColorData.h:19</a></div></div>
+<div class="ttc" id="astructFColorStyleData_html"><div class="ttname"><a href="structFColorStyleData.html">FColorStyleData</a></div><div class="ttdef"><b>Definition</b> <a href="FColorStyleData_8h_source.html#l00028">FColorStyleData.h:29</a></div></div>
 <div class="ttc" id="astructFHitStopData_html"><div class="ttname"><a href="structFHitStopData.html">FHitStopData</a></div><div class="ttdef"><b>Definition</b> <a href="FHitStopData_8h_source.html#l00015">FHitStopData.h:16</a></div></div>
 <div class="ttc" id="astructFKnockbackData_html"><div class="ttname"><a href="structFKnockbackData.html">FKnockbackData</a></div><div class="ttdef"><b>Definition</b> <a href="FKnockbackData_8h_source.html#l00013">FKnockbackData.h:14</a></div></div>
 <div class="ttc" id="astructFLevelData_html"><div class="ttname"><a href="structFLevelData.html">FLevelData</a></div><div class="ttdoc">레벨 데이터를 정의하는 구조체</div><div class="ttdef"><b>Definition</b> <a href="FLevelData_8h_source.html#l00018">FLevelData.h:19</a></div></div>
 <div class="ttc" id="astructFListenData_html"><div class="ttname"><a href="structFListenData.html">FListenData</a></div><div class="ttdoc">듣기 학습 데이터를 정의하는 구조체</div><div class="ttdef"><b>Definition</b> <a href="FListenData_8h_source.html#l00018">FListenData.h:19</a></div></div>
 <div class="ttc" id="astructFReadData_html"><div class="ttname"><a href="structFReadData.html">FReadData</a></div><div class="ttdoc">읽기 학습 데이터를 정의하는 구조체</div><div class="ttdef"><b>Definition</b> <a href="FReadData_8h_source.html#l00018">FReadData.h:19</a></div></div>
+<div class="ttc" id="astructFResourceTextureData_html"><div class="ttname"><a href="structFResourceTextureData.html">FResourceTextureData</a></div><div class="ttdef"><b>Definition</b> <a href="FResourceTextureData_8h_source.html#l00024">FResourceTextureData.h:25</a></div></div>
 <div class="ttc" id="astructFWordStudyData_html"><div class="ttname"><a href="structFWordStudyData.html">FWordStudyData</a></div><div class="ttdoc">단어 학습 데이터를 정의하는 구조체</div><div class="ttdef"><b>Definition</b> <a href="FWordStudyData_8h_source.html#l00018">FWordStudyData.h:19</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
@@ -348,7 +396,7 @@ $(document).ready(function(){initNavTree('UGameDataManager_8h_source.html',''); 
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_399370037b6f5ff6b0840148d18ec8d9.html">LatteLibrary</a></li><li class="navelem"><a class="el" href="dir_3895d977c26767e128462eaa7d00849f.html">Manager</a></li><li class="navelem"><a class="el" href="dir_ece11de4a6442a77ccaf0d9d7adf8213.html">Public</a></li><li class="navelem"><a class="el" href="UGameDataManager_8h.html">UGameDataManager.h</a></li>
-    <li class="footer">생성시간 : 목 12월 4 2025 02:31:08, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 목 12월 4 2025 07:17:48, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>
