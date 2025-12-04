@@ -46,7 +46,14 @@ protected:
 	virtual FReply NativeOnMouseButtonUp(const FGeometry& InGeometry, const FPointerEvent& InMouseEvent) override;
 	virtual FReply NativeOnMouseMove(const FGeometry& InGeometry, const FPointerEvent& InMouseEvent) override;
 	
+public:
+	// Init Popup
+	void InitPopup(int32 Qid);
+	
 private:
+	// Question Id
+	int32 Qid;
+	
 	// Close Draw Window
 	UFUNCTION()
 	void CloseDrawWindow();

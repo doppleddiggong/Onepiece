@@ -31,6 +31,9 @@ private:
 
 	UFUNCTION()
 	void OnClickSubmit();
+	
+	UFUNCTION()
+	void OnResponseOcrExtract(FResponseOcrExtract& ResponseData, bool bWasSuccessful);
 
 	// UFUNCTION()
 	// void OnResponseQuestionAnswer(FResponseQuestionAnswer& ResponseData, bool bWasSuccessful);
@@ -80,4 +83,6 @@ private:
 	/* ------------------- Data ------------------- */
 	/** 저장된 인터뷰 질문 데이터 */
 	TArray<FWriteQuestionData> SavedQuestions;
+	
+	FString OcrImagePath = FPaths::ProjectSavedDir() / TEXT("WriteImage/");
 };

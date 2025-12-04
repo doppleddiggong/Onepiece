@@ -6,6 +6,7 @@
  */
 #include "NetworkData.h"
 
+#include "GameLogging.h"
 #include "JsonObjectConverter.h"
 #include "NetworkLog.h"
 #include "UCommonFunctionLibrary.h"
@@ -327,19 +328,53 @@ void FResponseOcrExtract::SetFromHttpResponse(const TSharedPtr<IHttpResponse, ES
 	}
 
 	FString JsonString = Response->GetContentAsString();
-	TSharedPtr<FJsonObject> JsonObject;
+	PRINTLOG(TEXT("hmm.... %s"), *JsonString);
+	TArray<TSharedPtr<FJsonValue>> JsonArray;
 	TSharedRef<TJsonReader<>> Reader = TJsonReaderFactory<>::Create(JsonString);
 
-	if (FJsonSerializer::Deserialize(Reader, JsonObject) && JsonObject.IsValid())
+	if (FJsonSerializer::Deserialize(Reader, JsonArray))
 	{
-		success = JsonObject->GetBoolField(TEXT("success"));
-		extracted_text = JsonObject->GetStringField(TEXT("extracted_text"));
+		for (const TSharedPtr<FJsonValue>& EntryValue : JsonArray)
+		{
+			if (EntryValue.IsValid())
+			{
+				TSharedPtr<FJsonObject> EntryObject = EntryValue->AsObject();
+				if (!EntryObject.IsValid())
+				{
+					continue;
+				}
+
+				FResponseOcrData Entry;    // Display & Record를 포함하는 사용자 정의 구조체
+
+				if (EntryObject->HasTypedField<EJson::Object>(TEXT("display")))
+				{
+					const TSharedPtr<FJsonObject> DisplayObj = EntryObject->GetObjectField(TEXT("display"));
+					Entry.display.is_pass    = DisplayObj->GetBoolField(TEXT("is_pass"));
+					Entry.display.message    = DisplayObj->GetStringField(TEXT("message"));
+					Entry.display.correction = DisplayObj->GetStringField(TEXT("correction"));
+				}
+
+				if (EntryObject->HasTypedField<EJson::Object>(TEXT("record")))
+				{
+					const TSharedPtr<FJsonObject> RecordObj = EntryObject->GetObjectField(TEXT("record"));
+					Entry.record.score  = RecordObj->GetIntegerField(TEXT("score"));
+					Entry.record.target = RecordObj->GetStringField(TEXT("target"));
+					Entry.record.input  = RecordObj->GetStringField(TEXT("input"));
+					Entry.record.stage  = RecordObj->GetStringField(TEXT("stage"));
+				}
+
+				ResponseOcrDataArray.Add(Entry);
+			}
+		}
 	}
 }
 
 void FResponseOcrExtract::PrintData() const
 {
-	NETWORK_LOG( TEXT("[OCR Extract] Response - Success: %d, Text: %s"), success, *extracted_text);
+	for (const FResponseOcrData& data : ResponseOcrDataArray)
+	{
+		NETWORK_LOG( TEXT("[OCR Extract] Response - Is_Pass: %d, Text: %s"), data.display.is_pass, *(data.display.message));
+	}
 }
 
 void FResponseListenAudio::SetFromHttpResponse(const TSharedPtr<class IHttpResponse, ESPMode::ThreadSafe>& Response)

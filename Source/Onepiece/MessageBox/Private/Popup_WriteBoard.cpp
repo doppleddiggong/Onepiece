@@ -87,12 +87,17 @@ FReply UPopup_WriteBoard::NativeOnMouseMove(const FGeometry& InGeometry, const F
 	return FReply::Handled();
 }
 
+void UPopup_WriteBoard::InitPopup(int32 qid)
+{
+	this->Qid = qid;
+}
+
 void UPopup_WriteBoard::CloseDrawWindow()
 {
 	if (const auto PopupMgr = UPopupManager::Get(GetWorld()))
 	{
+		ClearCanvas();
 		PopupMgr->HideCurrentPopup(false);
-		PRINT_STRING(TEXT("WriteBoard!!!!!"));
 	}
 }
 
@@ -131,7 +136,7 @@ void UPopup_WriteBoard::DrawLines(FVector2D mousePos, FLinearColor drawColor)
 		currPos = prevMousePos + drawOffset * i;
 		
 		// Set thickness Whether now in Draw or Erase
-		float thickness = (drawColor == FLinearColor::Black) ? 10 : 30;
+		float thickness = (drawColor == FLinearColor::Black) ? 12 : 30;
 		// Draw Line
 		canvas->K2_DrawLine(prevMousePos, currPos, thickness, drawColor);
 	}
@@ -165,13 +170,16 @@ void UPopup_WriteBoard::SaveCanvas()
 	const FString filePath = FPaths::ProjectSavedDir() / TEXT("WriteImage/");
 	IFileManager::Get().MakeDirectory(*filePath, true);
 	// File Name
-	FString fileName = FDateTime::Now().ToString(TEXT("%Y_%m_%d_%H_%M_%S.png"));
+	// FString fileName = FDateTime::Now().ToString(TEXT("%Y_%m_%d_%H_%M_%S.png"));
+	FString fileName = FString::Printf(TEXT("Answer%d.PNG"), Qid);
 	
 	// Export Render Target to png
 	UKismetRenderingLibrary::ExportRenderTarget(this, RT_Canvas, filePath, fileName);
 	// UE_LOG(LogTemp, Warning, TEXT("%s | %s"), *filePath, *fileName);
 	
 	SaveRenderTargetToPNG(RT_Canvas, filePath / fileName);
+	
+	CloseDrawWindow();
 }
 
 bool UPopup_WriteBoard::SaveRenderTargetToPNG(UTextureRenderTarget2D* RenderTarget, const FString& FullFilePath)

@@ -11,9 +11,9 @@
 #include "Components/TextBlock.h"
 
 
-void UPopup_QuestionnaireItem::NativeConstruct()
+void UPopup_QuestionnaireItem::NativeOnInitialized()
 {
-	Super::NativeConstruct();
+	Super::NativeOnInitialized();
 	
 	if (Button_Answer)
 	{
@@ -43,6 +43,11 @@ void UPopup_QuestionnaireItem::InitItem(const FWriteQuestionData& Data)
 		FString QuestionText = Data.WordData.QuestionEn;
 		Text_Question_En->SetText(FText::FromString(QuestionText));
 	}
+	
+	// TODO: 예상 답변에 따른 WriteBoard 길이 조절
+	
+	// TODO: 예상 답변 힌트 생성
+	
 }
 
 void UPopup_QuestionnaireItem::OnClickButton()
@@ -51,7 +56,7 @@ void UPopup_QuestionnaireItem::OnClickButton()
 	{
 		if (const auto Popup = Cast<UPopup_WriteBoard>(PopupMgr->ShowPopup(EPopupType::WriteBoard)))
 		{
-			PRINT_STRING(TEXT("WriteBoard!!!!!"));
+			Popup->InitPopup(QuestionData.Id);
 		}
 	}
 }

@@ -15,13 +15,13 @@ class ONEPIECE_API UPopup_QuestionnaireItem : public UUserWidget
 {
 	GENERATED_BODY()
 	
+protected:
+	virtual void NativeOnInitialized() override;
+	
 public:
-	/** 질문 항목 초기화 */
+	/** 질문 항목 초기화 */ 
 	UFUNCTION(BlueprintCallable)
 	void InitItem(const FWriteQuestionData& Data);
-	
-protected:
-	virtual void NativeConstruct() override;
 
 protected:
 	/* ----------------- Layout ----------------- */
