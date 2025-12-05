@@ -51,7 +51,7 @@ var searchData=
   ['bordermargin_48',['BorderMargin',['../classUImageButton.html#a6eb7890fcd79bd79d0d2ce25632288ad',1,'UImageButton']]],
   ['borderminwidth_49',['borderMinWidth',['../classUPopup__WriteBoard.html#a6365cd22808aabbe3be861a852876658',1,'UPopup_WriteBoard']]],
   ['boundary_50',['Boundary',['../classFHttpMultipartFormData.html#a59fc6872975d1177ed7255ed124ea1a3',1,'FHttpMultipartFormData']]],
-  ['boxcollision_51',['BoxCollision',['../classAGate.html#a4354d1e5cfcc66b217ad7b41c5f6408c',1,'AGate']]],
+  ['boxcollision_51',['boxcollision',['../classADropper.html#a625dc3efd2aa38e4a9a232c9de68338d',1,'ADropper::BoxCollision'],['../classAGate.html#a4354d1e5cfcc66b217ad7b41c5f6408c',1,'AGate::BoxCollision']]],
   ['boxcomp_52',['boxcomp',['../classAConveyorButton.html#a5ec74136086d05387dc61acb3c6b6270',1,'AConveyorButton::BoxComp'],['../classAluggage.html#aa50b6d8907fe87cf36258056394a15fe',1,'Aluggage::BoxComp'],['../classAQuestionnaireKiosk.html#a42d1fdc760d6d1e68c0268d1771e46c6',1,'AQuestionnaireKiosk::BoxComp']]],
   ['bquestsuccess_53',['bQuestSuccess',['../classALingoGameState.html#a4e1e1fc4d3afe87c4241534b52e79c07',1,'ALingoGameState']]],
   ['brefreshifstronger_54',['bRefreshIfStronger',['../structFHitStopData.html#a61c8ce47653736b4843c5a2c22372314',1,'FHitStopData']]],

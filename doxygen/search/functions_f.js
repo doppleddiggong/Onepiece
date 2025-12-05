@@ -26,6 +26,7 @@ var searchData=
   ['resampleaudio_23',['ResampleAudio',['../classUVoiceFunctionLibrary.html#ab7286a2381e79cda24832986f2f70964',1,'UVoiceFunctionLibrary']]],
   ['reset_24',['Reset',['../classFHttpMultipartFormData.html#aceb421a2053762a2e8ff832a974bd7c6',1,'FHttpMultipartFormData']]],
   ['resetalpha_25',['ResetAlpha',['../classUTweenAnimInstance.html#a2ace1c8a60caf1704f0421c4f28c203d',1,'UTweenAnimInstance']]],
-  ['resultpopup_26',['ResultPopup',['../classAPopupTesterActor.html#a7014b09d34d08b6bb1aee91811bd8812',1,'APopupTesterActor']]],
-  ['returnactortopool_27',['ReturnActorToPool',['../classUObjectPoolManager.html#a490db17b3cd07db69fabddfc7fe98b2d',1,'UObjectPoolManager']]]
+  ['restorecollision_26',['RestoreCollision',['../classADropper.html#a00df54e7658ead02c86e779f0d6f0e98',1,'ADropper']]],
+  ['resultpopup_27',['ResultPopup',['../classAPopupTesterActor.html#a7014b09d34d08b6bb1aee91811bd8812',1,'APopupTesterActor']]],
+  ['returnactortopool_28',['ReturnActorToPool',['../classUObjectPoolManager.html#a490db17b3cd07db69fabddfc7fe98b2d',1,'UObjectPoolManager']]]
 ];
