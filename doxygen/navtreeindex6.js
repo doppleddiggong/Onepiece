@@ -1,7 +1,5 @@
 var NAVTREEINDEX6 =
 {
-"classUDelayTaskManager.html#afc5800d645cb2888723bee5042181c5b":[2,0,102,11],
-"classUDelayTaskManager.html#afead6ae41bebb72cd3a90cd86fd9eeda":[2,0,102,8],
 "classUDialogManager.html":[2,0,103],
 "classUDialogManager.html#a01a895ea8e13cdc6b03f6e2e4e74cea3":[2,0,103,4],
 "classUDialogManager.html#a08d300b0bd2a0a85ef3faf74d68242a4":[2,0,103,3],
@@ -249,5 +247,7 @@ var NAVTREEINDEX6 =
 "classUKLingoNetworkSystem.html#a68f5d305d55ac5d34af5b0e5b5a51145":[2,0,115,7],
 "classUKLingoNetworkSystem.html#a7bf03fe16be3fddf9a51350248bdf6b4":[2,0,115,14],
 "classUKLingoNetworkSystem.html#a96e09056706c907baafcf4f01c32c0e1":[2,0,115,2],
-"classUKLingoNetworkSystem.html#a9c8d97b1b722aac6a7b9335b3f120064":[2,0,115,8]
+"classUKLingoNetworkSystem.html#a9c8d97b1b722aac6a7b9335b3f120064":[2,0,115,8],
+"classUKLingoNetworkSystem.html#ac473610dfbbe9da74f08a1b3e6ec3dc3":[2,0,115,4],
+"classUKLingoNetworkSystem.html#accbd4084344a72623fe40deab11d1c29":[2,0,115,0]
 };

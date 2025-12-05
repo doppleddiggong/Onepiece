@@ -1,7 +1,5 @@
 var NAVTREEINDEX7 =
 {
-"classUKLingoNetworkSystem.html#ac473610dfbbe9da74f08a1b3e6ec3dc3":[2,0,115,4],
-"classUKLingoNetworkSystem.html#accbd4084344a72623fe40deab11d1c29":[2,0,115,0],
 "classUKLingoNetworkSystem.html#acf7d7ff1c064c3f86698a1fe131c8f00":[2,0,115,5],
 "classUKLingoNetworkSystem.html#acf7da28577586f19559ef3d7af8ea7ea":[2,0,115,19],
 "classUKLingoNetworkSystem.html#ad71f0b7215e0d685a171bc2d8e7a0a3f":[2,0,115,6],
@@ -249,5 +247,7 @@ var NAVTREEINDEX7 =
 "classUPopup__MsgBox.html#aa3d6a21b30e9b40280f1219b567232b5":[2,0,130,20],
 "classUPopup__MsgBox.html#ab65bc789a2b73ef6c373cba0054a0a81":[2,0,130,24],
 "classUPopup__MsgBox.html#abb2aead65ffdf04991cd3944fc7d6477":[2,0,130,5],
-"classUPopup__MsgBox.html#abb4781bb69b4089372af13b33c54fbad":[2,0,130,9]
+"classUPopup__MsgBox.html#abb4781bb69b4089372af13b33c54fbad":[2,0,130,9],
+"classUPopup__MsgBox.html#ac762668a6422e0abeeb58c0ae015325e":[2,0,130,26],
+"classUPopup__MsgBox.html#add357075245f0843320c0b74af0f2697":[2,0,130,22]
 };

@@ -2,8 +2,6 @@ var NAVTREEINDEX3 =
 {
 "USoundData_8h_source.html":[3,0,0,1,2,1,18],
 "USpeakStageSubsystem_8cpp.html":[3,0,0,2,1,0,9],
-"USpeakStageSubsystem_8cpp.html#acb6ae89aa5ee51e5cc638e6e60e4d328":[3,0,0,2,1,0,9,0],
-"USpeakStageSubsystem_8cpp.html#ad4514db60a9f05521572e3253e717af7":[3,0,0,2,1,0,9,1],
 "USpeakStageSubsystem_8cpp_source.html":[3,0,0,2,1,0,9],
 "USpeakStageSubsystem_8h.html":[3,0,0,2,1,1,9],
 "USpeakStageSubsystem_8h_source.html":[3,0,0,2,1,1,9],
@@ -249,5 +247,7 @@ var NAVTREEINDEX3 =
 "classAMoviePanel.html#a94a28e5fd99a7fe45144ec76918c4934":[2,0,14,14],
 "classAMoviePanel.html#ab1c6c7f9d700a390139ad0be0317ebf1":[2,0,14,1],
 "classAMoviePanel.html#ab201e7e66127a4b06d2701ff730982ed":[2,0,14,13],
-"classAMoviePanel.html#ac9ca20b496764a36198d7c17379fd768":[2,0,14,0]
+"classAMoviePanel.html#ac9ca20b496764a36198d7c17379fd768":[2,0,14,0],
+"classAMoviePanel.html#ad27efc0cf10b5205e42f4ecb58b0cb72":[2,0,14,12],
+"classAMoviePanel.html#aeffeb73a4353db50586352109805a3be":[2,0,14,8]
 };

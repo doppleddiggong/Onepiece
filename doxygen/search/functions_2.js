@@ -37,11 +37,9 @@ var searchData=
   ['convertpcm2wav_34',['ConvertPCM2WAV',['../classUVoiceFunctionLibrary.html#aefbf705777114a8667edc76347e70cda',1,'UVoiceFunctionLibrary']]],
   ['createmainwidget_35',['CreateMainWidget',['../classAPlayerActor.html#a63641fed19fdb23e32cb16fed3ba2d79',1,'APlayerActor']]],
   ['createmysession_36',['CreateMySession',['../classULingoGameInstance.html#a094b7b917f1aa7eca5989d86616a69b4',1,'ULingoGameInstance']]],
-  ['createnpcexaminer_37',['CreateNPCExaminer',['../classUSpeakStageSubsystem.html#ab25cb4ff33cc3fb1f00f91d66dfcf3aa',1,'USpeakStageSubsystem']]],
-  ['createproceduralsoundwavefromwavdata_38',['CreateProceduralSoundWaveFromWavData',['../classUVoiceFunctionLibrary.html#adf741678fa5eeadc6dbe30624ef6888b',1,'UVoiceFunctionLibrary']]],
-  ['createsoundwavefromwavdata_39',['CreateSoundWaveFromWavData',['../classUVoiceFunctionLibrary.html#a0a42913d3f8f356e575bf9805e6e7af3',1,'UVoiceFunctionLibrary']]],
-  ['createspeakstageactor_40',['CreateSpeakStageActor',['../classUSpeakStageSubsystem.html#a5ee5ae852b3dff18630746f04935f440',1,'USpeakStageSubsystem']]],
-  ['createspeakstagesystem_41',['CreateSpeakStageSystem',['../classUSpeakStageSubsystem.html#a811608e2bc318d4de2cb11e431abad4f',1,'USpeakStageSubsystem']]],
-  ['createtestscenariodata_42',['CreateTestScenarioData',['../classASpeakStageActor.html#ad4b8bc1cf80cf981aef61d2e346e4c8c',1,'ASpeakStageActor']]],
-  ['createtoastwidget_43',['CreateToastWidget',['../classAPlayerActor.html#a2f07dd7eee5e4a05fa2457ca52382f3e',1,'APlayerActor']]]
+  ['createproceduralsoundwavefromwavdata_37',['CreateProceduralSoundWaveFromWavData',['../classUVoiceFunctionLibrary.html#adf741678fa5eeadc6dbe30624ef6888b',1,'UVoiceFunctionLibrary']]],
+  ['createsoundwavefromwavdata_38',['CreateSoundWaveFromWavData',['../classUVoiceFunctionLibrary.html#a0a42913d3f8f356e575bf9805e6e7af3',1,'UVoiceFunctionLibrary']]],
+  ['createspeakstagesystem_39',['CreateSpeakStageSystem',['../classUSpeakStageSubsystem.html#a811608e2bc318d4de2cb11e431abad4f',1,'USpeakStageSubsystem']]],
+  ['createtestscenariodata_40',['CreateTestScenarioData',['../classASpeakStageActor.html#ad4b8bc1cf80cf981aef61d2e346e4c8c',1,'ASpeakStageActor']]],
+  ['createtoastwidget_41',['CreateToastWidget',['../classAPlayerActor.html#a2f07dd7eee5e4a05fa2457ca52382f3e',1,'APlayerActor']]]
 ];

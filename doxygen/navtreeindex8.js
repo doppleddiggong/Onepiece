@@ -1,7 +1,5 @@
 var NAVTREEINDEX8 =
 {
-"classUPopup__MsgBox.html#ac762668a6422e0abeeb58c0ae015325e":[2,0,130,26],
-"classUPopup__MsgBox.html#add357075245f0843320c0b74af0f2697":[2,0,130,22],
 "classUPopup__MsgBox.html#ae887a3a5b42926b229f6646e8823ed57":[2,0,130,6],
 "classUPopup__MsgBox.html#afaaebef8598d58fcb66450b2e86be90e":[2,0,130,8],
 "classUPopup__MsgBox.html#afac0183678aa672669c7a4075dfdfb1c":[2,0,130,12],
@@ -249,5 +247,7 @@ var NAVTREEINDEX8 =
 "classURobotAnimInstance.html#a534ccb0e72cc3f5a4fd01c65f8da1a7b":[2,0,142,8],
 "classURobotAnimInstance.html#a56b375fe93411555c4012cd559dcf8e9":[2,0,142,2],
 "classURobotAnimInstance.html#a5fc33cfc25a1240a31b61335e849bd8d":[2,0,142,3],
-"classURobotAnimInstance.html#a78fea29ebeeeac4654f2df192844a897":[2,0,142,1]
+"classURobotAnimInstance.html#a78fea29ebeeeac4654f2df192844a897":[2,0,142,1],
+"classURobotAnimInstance.html#ab9d80c9faa694d7be8595c66a795a6e7":[2,0,142,9],
+"classUScoreManager.html":[2,0,143]
 };

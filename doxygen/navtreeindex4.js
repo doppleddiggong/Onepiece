@@ -1,7 +1,5 @@
 var NAVTREEINDEX4 =
 {
-"classAMoviePanel.html#ad27efc0cf10b5205e42f4ecb58b0cb72":[2,0,14,12],
-"classAMoviePanel.html#aeffeb73a4353db50586352109805a3be":[2,0,14,8],
 "classAMoviePanel.html#af39a79bc9788a9b1434286001dc4737b":[2,0,14,3],
 "classANPCBase.html":[2,0,17],
 "classANPCBase.html#a11f0c1e5e196998f61161d46df59db56":[2,0,17,0],
@@ -249,5 +247,7 @@ var NAVTREEINDEX4 =
 "classASpeakStageActor.html#a73c3fe46e98225cc9d528ce281e9e2de":[2,0,27,17],
 "classASpeakStageActor.html#a7b7aa1222c96ff652b1fc46d72e0ab14":[2,0,27,19],
 "classASpeakStageActor.html#a7e13f290961d059ccb944ed57272eb71":[2,0,27,8],
-"classASpeakStageActor.html#aa0ffb657efd2ef3ed5707b26c9d74172":[2,0,27,1]
+"classASpeakStageActor.html#aa0ffb657efd2ef3ed5707b26c9d74172":[2,0,27,1],
+"classASpeakStageActor.html#aa9286eddc0bcc83c0061b60b0360980c":[2,0,27,14],
+"classASpeakStageActor.html#aa9e467af6b8259bcf20bf234fa100190":[2,0,27,5]
 };
