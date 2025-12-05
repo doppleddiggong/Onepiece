@@ -105,11 +105,10 @@ void AQuestionnaireKiosk::OnResponseData(FQuestWriteInfo& InResponseData, bool b
 			if (const auto Popup = Cast<UPopup_Questionnaire>(PopupMgr->ShowPopup(EPopupType::Questionnaire)))
 			{
 				// TODO: 쓰기 퀘스트 json 데이터 받기 요청
-				FQuestWriteInfo data = InResponseData;
+				FQuestWriteInfo data;// = InResponseData;
 			
 				// 테스트용 더미 데이터 생성
-				// FQuestWriteInfo TestData;
-				// CreateTestData(TestData);
+				CreateTestData(data);
 			
 				// 팝업 초기화
 				Popup->InitPopup(data);
@@ -156,15 +155,15 @@ void AQuestionnaireKiosk::CreateTestData(FQuestWriteInfo& TestData)
 	Q3.word_data.pronunciation = TEXT("oneureun myeochiripnikka");
 	Q3.answer = FDateTime::Now().ToString(TEXT("%Y-%m-%d"));
 	Q3.answer_kor = FDateTime::Now().ToString(TEXT("오늘은 %Y년 %m월 %d일입니다."));
-	// TestData.Questions.Add(Q3);
+	TestData.question.Add(Q3);
 			
 	// 질문 4
 	FWriteQuestionData Q4;
-	Q3.Id = 4;
-	Q3.word_data.kor = TEXT("오늘 할 게임은 무엇입니까?");
-	Q3.word_data.eng = TEXT("What game are you going to play today?");
-	Q3.word_data.pronunciation = TEXT("oneul hal geimeun mueosipnikka?");
-	Q3.answer = FDateTime::Now().ToString(TEXT("Peak"));
-	Q3.answer_kor = FDateTime::Now().ToString(TEXT("오늘은 Peak라는 게임을 할 것입니다."));
-	// TestData.Questions.Add(Q3);
+	Q4.Id = 4;
+	Q4.word_data.kor = TEXT("오늘 할 게임은 무엇입니까?");
+	Q4.word_data.eng = TEXT("What game are you going to play today?");
+	Q4.word_data.pronunciation = TEXT("oneul hal geimeun mueosipnikka?");
+	Q4.answer = FDateTime::Now().ToString(TEXT("Peak"));
+	Q4.answer_kor = FDateTime::Now().ToString(TEXT("오늘은 Peak라는 게임을 할 것입니다."));
+	TestData.question.Add(Q4);
 }

@@ -124,6 +124,7 @@ void UPopup_WriteBoard::RefreshArrowButton()
 
 void UPopup_WriteBoard::AdjustLength()
 {
+	// TODO: 그냥 렌더 타겟 2d 새로 만들고 배열로 유지
 	// TODO: 예상 답변에 따른 WriteBoard 길이 조절
 	float letterNum = AnswerKr[AnswerIdx].Len();
 	
@@ -154,6 +155,8 @@ void UPopup_WriteBoard::CloseDrawWindow()
 {
 	if (const auto PopupMgr = UPopupManager::Get(GetWorld()))
 	{
+		SaveCanvas();
+		
 		ClearCanvas();
 		PopupMgr->HideCurrentPopup(false);
 	}
@@ -229,27 +232,24 @@ void UPopup_WriteBoard::SaveCanvas()
 	IFileManager::Get().MakeDirectory(*filePath, true);
 	// File Name
 	// FString fileName = FDateTime::Now().ToString(TEXT("%Y_%m_%d_%H_%M_%S.png"));
-	FString fileName = FString::Printf(TEXT("Answer%d.PNG"), Qid);;
-	// if (idx != -1)
-	// {
-	// 	fileName = FString::Printf(TEXT("Answer%d_%d.PNG"), Qid, idx);
-	// }
-	// else
-	// {
-	// 	fileName = FString::Printf(TEXT("Answer%d.PNG"), Qid);
-	// }
+	FString fileName;
+	if (AnswerIdx != -1)
+	{
+		fileName = FString::Printf(TEXT("Answer%d_%d.PNG"), Qid, AnswerIdx);
+	}
+	else
+	{
+		fileName = FString::Printf(TEXT("Answer%d.PNG"), Qid);
+	}
 	
 	// Export Render Target to png
-	UKismetRenderingLibrary::ExportRenderTarget(this, RT_Canvas, filePath, fileName);
-	// UE_LOG(LogTemp, Warning, TEXT("%s | %s"), *filePath, *fileName);
-	
+	// UKismetRenderingLibrary::ExportRenderTarget(this, RT_Canvas, filePath, fileName);
 	SaveRenderTargetToPNG(RT_Canvas, filePath / fileName);
-	
-	CloseDrawWindow();
 }
 
 bool UPopup_WriteBoard::SaveRenderTargetToPNG(UTextureRenderTarget2D* RenderTarget, const FString& FullFilePath)
 {
+	// TODO: 파일 모아서 하나로 합치고 저장하기(로 바꾸기)
 	FTextureRenderTargetResource* RTResource = RenderTarget->GameThread_GetRenderTargetResource();
 	if (!RTResource)
 	{
