@@ -10,7 +10,9 @@
 #include "GameLogging.h"
 #include "JsonObjectConverter.h"
 #include "NetworkLog.h"
-#include "UCommonFunctionLibrary.h"
+#include "FResultStatData.h"
+#include "ULingoGameHelper.h"
+
 #include "Misc/Base64.h"
 #include "Interfaces/IHttpResponse.h"
 #include "Dom/JsonObject.h"
@@ -453,6 +455,39 @@ void FResponseSpeakingJudes::PrintData() const
 	NETWORK_LOG( TEXT("[RES] %s"), *OutputString);
 }
 
+TArray<FResultStatData> FResponseSpeakingJudes::GetResultStatData()
+{
+	TArray<FResultStatData> StatDataList;
+
+	// Grammar Score
+	FResultStatData GrammarData;
+	GrammarData.WidgetType = EResultItemWidgetType::Grade;
+	GrammarData.ColorType = EColorStyleType::Green;
+	GrammarData.TitleText = FText::FromString(TEXT("GRAMMER"));
+	GrammarData.ScoreValue = grammar_score;
+	GrammarData.GradeTextureType = ULingoGameHelper::ConvertGradeType(grammar_score);
+	StatDataList.Add(GrammarData);
+
+	// Context Score
+	FResultStatData ContextData;
+	ContextData.WidgetType = EResultItemWidgetType::Grade;
+	ContextData.ColorType = EColorStyleType::Blue;
+	ContextData.TitleText = FText::FromString(TEXT("CONTEXT"));
+	ContextData.ScoreValue = context_score;
+	ContextData.GradeTextureType = ULingoGameHelper::ConvertGradeType(context_score);
+	StatDataList.Add(ContextData);
+
+	// Final Overall Score
+	FResultStatData OverallData;
+	OverallData.WidgetType = EResultItemWidgetType::Grade;
+	OverallData.ColorType = EColorStyleType::Yellow;
+	OverallData.TitleText = FText::FromString(TEXT("SCORE"));
+	OverallData.ScoreValue = final_overall_score;
+	OverallData.GradeTextureType = ULingoGameHelper::ConvertGradeType(final_overall_score);
+	StatDataList.Add(OverallData);
+
+	return StatDataList;
+}
 
 
 void FResponseInterviewHello::SetFromHttpResponse(const TSharedPtr<IHttpResponse, ESPMode::ThreadSafe>& Response)

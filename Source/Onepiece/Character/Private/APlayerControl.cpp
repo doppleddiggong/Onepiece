@@ -20,6 +20,9 @@
 #include "UInteractionSystem.h"
 #include "UHookSystem.h"
 #include "ULingoGameInstanceSubsystem.h"
+#include "ADropper.h"
+#include "luggage.h"
+#include "EngineUtils.h"
 
 #define IMC_DEFAULT_PATH			TEXT("/Game/CustomContents/Input/IMC_Game_Player.IMC_Game_Player")
 #define IA_MOVE_PATH				TEXT("/Game/CustomContents/Input/IA_Game_Movement.IA_Game_Movement")
@@ -140,6 +143,58 @@ void APlayerControl::OnJump(const FInputActionValue&)
 {
 	if (IControllable* C = GetControllable())
 		C->Cmd_Jump();
+
+
+
+	// // 테스트: 점프할 때마다 랜덤 아이템 추가
+	// if (auto BM = UBroadcastManager::Get(GetWorld()))
+	// {
+	// 	TArray<FResultStatData> TestItems;
+	//
+	// 	// 랜덤하게 1~3개의 아이템 생성
+	// 	int32 ItemCount = FMath::RandRange(1, 3);
+	// 	for (int32 i = 0; i < ItemCount; ++i)
+	// 	{
+	// 		FResultStatData Item;
+	//
+	// 		// 랜덤 위젯 타입 선택
+	// 		int32 RandomType = FMath::RandRange(0, 3);
+	// 		switch (RandomType)
+	// 		{
+	// 		case 0: // Grade
+	// 			Item.WidgetType = EResultItemWidgetType::Grade;
+	// 			Item.GradeTextureType = static_cast<EResourceTextureType>(FMath::RandRange(0, 4)); // Rarity_D ~ Rarity_S
+	// 			Item.TitleText = FText::FromString(TEXT("등급"));
+	// 			break;
+	//
+	// 		case 1: // Score
+	// 			Item.WidgetType = EResultItemWidgetType::Score;
+	// 			Item.ScoreValue = FMath::RandRange(100, 9999);
+	// 			Item.TitleText = FText::FromString(TEXT("점수"));
+	// 			break;
+	//
+	// 		case 2: // Rate
+	// 			Item.WidgetType = EResultItemWidgetType::Rate;
+	// 			Item.RatePercent = FMath::FRandRange(0.0f, 1.0f);
+	// 			Item.TitleText = FText::FromString(TEXT("비율"));
+	// 			break;
+	//
+	// 		case 3: // Symbol
+	// 			Item.WidgetType = EResultItemWidgetType::Symbol;
+	// 			Item.SymbolValue = FMath::FRandRange(0.0f, 1.0f);
+	// 			Item.TitleText = FText::FromString(TEXT("심볼"));
+	// 			break;
+	// 		}
+	//
+	// 		// 랜덤 색상 선택
+	// 		Item.ColorType = static_cast<EColorStyleType>(FMath::RandRange(0, 7)); // Green ~ Gray
+	//
+	// 		TestItems.Add(Item);
+	// 	}
+	//
+	// 	// BroadcastManager를 통해 전송
+	// 	BM->SendAddItemToBoxList(TestItems);
+	// }
 }
 
 void APlayerControl::OnRun(const FInputActionValue& Value)

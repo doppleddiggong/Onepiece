@@ -511,7 +511,7 @@ void UHookSystem::UpdateHookTargetUI()
 	if (auto MainWidget = OwnerPlayer->GetMainWidget())
 	{
 		// 에임 상태에 따라 이미지 변경
-		MainWidget->UpdateHookIndicatorState(CurHookTarget != nullptr);
+		MainWidget->UpdateHookState(CurHookTarget != nullptr);
 	}
 
 	if ( CurHookTarget )

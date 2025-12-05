@@ -34,22 +34,6 @@ public:
 
 protected:
 	//----------------------------------------------------------
-	// Configuration (DefaultGame.ini에서 설정 가능)
-	//----------------------------------------------------------
-
-	/// @brief SpeakStageActor 클래스
-	UPROPERTY(Config, EditDefaultsOnly, Category = "KLingo|SpeakStage")
-	TSoftClassPtr<class ASpeakStageActor> SpeakStageClass;
-
-	/// @brief NPC Examiner 클래스
-	UPROPERTY(Config, EditDefaultsOnly, Category = "KLingo|SpeakStage")
-	TSoftClassPtr<class ANPCExaminer> ExaminerClass;
-
-	/// @brief NPC 스폰 위치
-	UPROPERTY(Config, EditDefaultsOnly, Category = "KLingo|SpeakStage")
-	FTransform ExaminerSpawnTransform;
-
-	//----------------------------------------------------------
 	// Runtime Instances
 	//----------------------------------------------------------
 
@@ -108,13 +92,5 @@ public:
 	bool IsInitialized() const { return bIsInitialized; }
 
 private:
-	/**
-	 * @brief SpeakStageActor 생성
-	 */
-	void CreateSpeakStageActor();
-
-	/**
-	 * @brief NPC Examiner 생성
-	 */
-	void CreateNPCExaminer();
+	void InitActor();
 };

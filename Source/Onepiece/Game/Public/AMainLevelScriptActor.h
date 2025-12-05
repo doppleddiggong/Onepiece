@@ -4,23 +4,22 @@
 
 #include "CoreMinimal.h"
 #include "Engine/LevelScriptActor.h"
-#include "ALobbyLevelScriptActor.generated.h"
+#include "AMainLevelScriptActor.generated.h"
+
+struct FResponseInterviewHello;
 
 UCLASS()
-class ONEPIECE_API ALobbyLevelScriptActor : public ALevelScriptActor
+class ONEPIECE_API AMainLevelScriptActor : public ALevelScriptActor
 {
 	GENERATED_BODY()
 
 public:
-	ALobbyLevelScriptActor();
+	AMainLevelScriptActor();
 
 protected:
 	virtual void BeginPlay() override;
 
 private:
-	UPROPERTY(EditAnywhere, Category="UI")
-	TSubclassOf<class UUserWidget> LobbyWidgetClass;
-
-	UPROPERTY()
-	TObjectPtr<class ULobbyWidget> LobbyWidget;
+	void RequestInterviewHello();
+	void OnResponseInterviewHello(FResponseInterviewHello& ResponseData, bool bWasSuccessful);;
 };

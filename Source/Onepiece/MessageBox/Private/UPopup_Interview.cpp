@@ -2,6 +2,8 @@
 
 
 #include "UPopup_Interview.h"
+
+#include "APlayerControl.h"
 #include "UPopup_InterviewItem.h"
 #include "NetworkData.h"
 #include "Components/Button.h"
@@ -11,10 +13,12 @@
 #include "Components/TextBlock.h"
 #include "UPopupManager.h"
 #include "GameLogging.h"
+#include "UBroadcastManager.h"
 #include "UImageButton.h"
 #include "UTextureButton.h"
 #include "UKLingoNetworkSystem.h"
 #include "UDialogManager.h"
+#include "ULingoGameHelper.h"
 
 void UPopup_Interview::NativeConstruct()
 {
@@ -99,8 +103,10 @@ void UPopup_Interview::OnClickSubmit()
 				return;
 			}
 
+			auto AnswerData = Item->GetAnswerData( ULingoGameHelper::GetUserId(GetWorld()));
+			
 			// 답변 데이터 생성
-			AnswerDataList.Add( Item->GetAnswerData() );
+			AnswerDataList.Add(AnswerData);
 		}
 	}
 
@@ -120,28 +126,20 @@ void UPopup_Interview::OnResponseInterviewAnswer(FResponseInterviewAnswer& Respo
 	if (bWasSuccessful)
 	{
 		PRINTLOG(TEXT("--- Interview Answer SUCCESS ---"));
-		ResponseData.PrintData();
 
 		// 성공 시 토스트 메시지 표시
-		if (UDialogManager* DialogMgr = UDialogManager::Get(GetWorld()))
-		{
-			DialogMgr->ShowToast(TEXT("Interview answers submitted successfully!"));
-		}
-
+		UBroadcastManager::Get(GetWorld())->SendTutorMessage( FText::FromString(TEXT("Interview answers submitted successfully!")));
+		
 		// 팝업 닫기
 		if (UPopupManager* PopupMgr = UPopupManager::Get(GetWorld()))
-		{
 			PopupMgr->HideCurrentPopup();
-		}
 	}
 	else
 	{
 		PRINTLOG(TEXT("--- Interview Answer FAILED ---"));
 
-		// 실패 시 토스트 메시지 표시
-		if (UDialogManager* DialogMgr = UDialogManager::Get(GetWorld()))
-		{
-			DialogMgr->ShowToast(TEXT("Failed to submit interview answers. Please try again."));
-		}
+		// 실패 시 메시지 표시
+		UPopupManager::Get(GetWorld())->ShowMsgBox(TEXT("Notice"), TEXT("Failed to submit interview answers. Please try again."),
+			EMsgBoxType::OK, FOnMsgBoxOkDelegate());
 	}
 }

@@ -7,6 +7,8 @@
 
 #include "UKLingoNetworkSystem.h"
 
+#include <string>
+
 #include "ALingoPlayerState.h"
 #include "APlayerControl.h"
 #include "HttpModule.h"
@@ -469,14 +471,11 @@ void UKLingoNetworkSystem::RequestListenAudio(const FString& AudioText, FRespons
 		// 일레븐랩스를 사용해서 하는데, 500이슈가 뜬다
 		// 일레븐 랩스의 토큰을 모두 소진해서,
 		// 그러면 이것을 당분간 해결하기전까지는 발생안하기 위해서 데이터를 스킵한다.
-		
-		auto TestAudioText = TEXT("test_audio");
-
 		TArray<uint8> CachedAudio;
-		if (ACM->TryGetCachedAudio(TestAudioText, CachedAudio))
+		if (ACM->TryGetCachedAudio(AudioText, CachedAudio))
 		{
 			FResponseListenAudio Response;
-			Response.audio_text = TestAudioText;
+			Response.audio_text = AudioText;
 			Response.audio_base64 = CachedAudio;
 
 			// ✅ 비동기 Delegate 호출 (타이밍 문제 해결)
@@ -699,7 +698,10 @@ void UKLingoNetworkSystem::RequestInterviewHello(FResponseInterviewHelloDelegate
 
 void UKLingoNetworkSystem::RequestInterviewAnswer(const FRequestInterviewAnswer& Answer, FResponseInterviewAnswerDelegate InDelegate)
 {
-	FString Url = NetworkConfig::GetFullUrl(RequestAPI::interview_answer);
+	// {room_id}?room_id=
+	FString Endpoint = FString::Printf(TEXT("%s/%lld"), *RequestAPI::interview_answer, ULingoGameHelper::GetLingoGameState( GetWorld())->RoomId);
+	FString Url = NetworkConfig::GetFullUrl(Endpoint);
+	
 	auto Request = SetupHttpRequest(Url, NETWORK_POST);
 
 	// Request Body 설정

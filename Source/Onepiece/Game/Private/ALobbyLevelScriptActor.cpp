@@ -4,11 +4,7 @@
 #include "ALobbyLevelScriptActor.h"
 
 #include "FComponentHelper.h"
-#include "GameLogging.h"
 #include "LobbyWidget.h"
-#include "UKLingoNetworkSystem.h"
-#include "UPopupManager.h"
-#include "UPopup_Interview.h"
 #include "Blueprint/UserWidget.h"
 #include "Kismet/GameplayStatics.h"
 
@@ -34,33 +30,5 @@ void ALobbyLevelScriptActor::BeginPlay()
 			if (LobbyWidget)
 				LobbyWidget->AddToViewport();
 		}
-
-		this->RequestInterviewHello();
-	}
-}
-
-void ALobbyLevelScriptActor::RequestInterviewHello()
-{
-	if (auto KLingoNetwork = UKLingoNetworkSystem::Get(GetWorld()))
-	{
-		KLingoNetwork->RequestInterviewHello( FResponseInterviewHelloDelegate::CreateUObject(this, &ALobbyLevelScriptActor::OnResponseInterviewHello) );
-	}
-	else
-	{
-		PRINTLOG(TEXT("UKLingoNetworkSystem not found!"));
-	}
-}
-
-void ALobbyLevelScriptActor::OnResponseInterviewHello(FResponseInterviewHello& ResponseData, bool bWasSuccessful)
-{
-	if (bWasSuccessful)
-	{
-		if (const auto PopupMgr = UPopupManager::Get(GetWorld()))
-			if (const auto Popup = Cast<UPopup_Interview>(PopupMgr->ShowPopup(EPopupType::Interview)))
-				Popup->InitPopup(ResponseData);
-	}
-	else
-	{
-		PRINTLOG(TEXT("--- InterviewHello Questions FAILED ---"));
 	}
 }

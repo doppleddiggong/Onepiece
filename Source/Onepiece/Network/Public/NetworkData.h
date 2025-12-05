@@ -701,6 +701,8 @@ struct FResponseSpeakingJudes
 
 	/// @brief 디버그 로그에 응답 내용을 출력합니다.
 	void PrintData() const;
+
+	TArray<struct FResultStatData> GetResultStatData();
 };
 
 

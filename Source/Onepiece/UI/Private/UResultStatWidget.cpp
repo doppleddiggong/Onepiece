@@ -25,15 +25,58 @@ void UResultStatWidget::NativePreConstruct()
 	ApplyStyle();
 }
 
+void UResultStatWidget::InitData(const FResultStatData& InData)
+{
+	// 색상 타입 설정
+	SetColorType(InData.ColorType);
+
+	// 위젯 타입 설정
+	SetWidgetType(InData.WidgetType);
+
+	// 타이틀 텍스트 설정
+	SetTitleText(InData.TitleText);
+	
+	// 타입별 데이터 설정
+	switch (InData.WidgetType)
+	{
+	case EResultItemWidgetType::Grade:
+		SetGradeValue(InData.GradeTextureType);
+		break;
+
+	case EResultItemWidgetType::Score:
+		SetScoreValue(InData.ScoreValue);
+		break;
+
+	case EResultItemWidgetType::Rate:
+		SetRateValue(InData.RatePercent);
+		break;
+
+	case EResultItemWidgetType::Symbol:
+		SetSymbolValue(InData.SymbolValue);
+		break;
+	}
+}
+
+/* -----------------------------
+   패널 데이터 설정
+ -----------------------------*/
 void UResultStatWidget::SetWidgetType(const EResultItemWidgetType InType)
 {
 	WidgetType = InType;
 	UpdateWidgetPanel();
 }
 
-/* -----------------------------
-   패널 데이터 설정
- -----------------------------*/
+void UResultStatWidget::SetColorType(const EColorStyleType InType)
+{
+	ColorType = InType;
+	ApplyStyle();
+}
+
+void UResultStatWidget::SetTitleText(const FText InText)
+{
+	Text_Title->SetText(InText);
+}
+
 
 void UResultStatWidget::SetGradeValue(const EResourceTextureType TextureType)
 {
@@ -92,12 +135,6 @@ void UResultStatWidget::SetSymbolValue(const float InValue)
 /* -----------------------------
    스타일 적용
  -----------------------------*/
-void UResultStatWidget::SetColorType(const EColorStyleType InType)
-{
-	ColorType = InType;
-	ApplyStyle();
-}
-
 void UResultStatWidget::LoadStyleTable()
 {
 	if (auto DM = UGameDataManager::Get(this))
@@ -146,7 +183,7 @@ void UResultStatWidget::ApplyStyle()
 /* -----------------------------
    WidgetSwitcher 제어
  -----------------------------*/
-void UResultStatWidget::UpdateWidgetPanel()
+void UResultStatWidget::UpdateWidgetPanel() const
 {
 	if (!WidgetSwitcher)
 		return;

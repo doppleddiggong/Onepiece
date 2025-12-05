@@ -7,6 +7,7 @@
 namespace GameLayer
 {
 	static const int32 Popup = 300;
+	static const int32 Toast = 400;
 	static const int32 Loading = 400;
 	static const int32 LoadingCircle = 500;
 	static const int32 ToastManager = 600;
