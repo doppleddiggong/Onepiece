@@ -805,6 +805,19 @@
             
         </li>
     
+        <li class="chapter " data-level="7.18" data-path="../../../Meeting/Daily/Meetin_251205_Daily.html">
+            
+                <a href="../../../Meeting/Daily/Meetin_251205_Daily.html">
+            
+                    
+                    Meetin 251205 Daily
+            
+                </a>
+            
+
+            
+        </li>
+    
 
     
         
@@ -1643,6 +1656,162 @@ feat: integrate voice recognition with SpeakStage turn-based system (Phase 4)</p
 </li>
 </ol>
 <hr></hr>
+<h2 id="compact-log-6">Compact Log 6</h2>
+<ul>
+<li>20251204 08:55</li>
+</ul>
+<h3 id="요약-내용">요약 내용</h3>
+<p>Serena MCP 서버 연결 문제 해결. uv 캐시 손상으로 인한 Git 저장소 클론 실패 원인 파악 및 해결. UE 엔진 설정 개선(CoreRedirects 추가), 테스트용 BeginSpeakQuest 자동 호출 추가.</p>
+<p><strong>변경 파일</strong>:</p>
+<ul>
+<li><code>.claude/settings.local.json</code>: MCP 서버 권한 및 명령어 권한 추가</li>
+<li><code>Config/DefaultEngine.ini</code>: CoreRedirects 리다이렉션 설정 추가 (클래스/프로퍼티/함수/구조체)</li>
+<li><code>Source/Onepiece/Character/Private/APlayerActor.cpp</code>: BeginSpeakQuest(1) 자동 호출 추가 (테스트용)</li>
+<li><code>Documents/DevLog/AgentLog/AudioCache_Race_Condition_Test.md</code>: 오디오 캐시 Race Condition 테스트 시나리오 문서</li>
+</ul>
+<p><strong>주요 작업</strong>:</p>
+<ol>
+<li><p><strong>Serena MCP 서버 연결 문제 해결</strong></p>
+<ul>
+<li>문제: <code>uvx --from git+https://github.com/oraios/serena</code> 실행 시 Git 저장소 클론 실패</li>
+<li>원인: uv 캐시 손상 (<code>C:\Users\user\AppData\Local\uv\cache\git-v0\db\42910dfe8296368e</code>)</li>
+<li>해결: <code>uv cache clean</code> 실행 (1.9GB 캐시 제거)</li>
+<li>결과: ✅ Serena MCP 서버 정상 시작 (Clangd, Pyright, AL Language Server 모두 정상)</li>
+<li>웹 대시보드: <a href="http://127.0.0.1:24282/dashboard/index.html" target="_blank">http://127.0.0.1:24282/dashboard/index.html</a></li>
+<li>향후 대책: Git Clone 설치 방법 제안 (<code>git clone</code> → <code>uv tool install .</code>)</li>
+</ul>
+</li>
+<li><p><strong>UE 엔진 설정 개선 (CoreRedirects)</strong></p>
+<ul>
+<li>AudioCacheManager → VoiceCacheManager 클래스 리다이렉션</li>
+<li>MoviePanel 프로퍼티 리네이밍 (ColorParamName → ColorParam 등)</li>
+<li>SpeakStageActor 함수 리네이밍 (RequestSpeak → Server_RequestSpeak 등)</li>
+<li>VoiceConversationSystem 구조체 리네이밍 (ResponseSpeakingQuestions → ResponseSpeakingJudes)</li>
+<li>리팩토링 시 BP/Asset 호환성 유지</li>
+</ul>
+</li>
+<li><p><strong>테스트용 자동 시작 (APlayerActor.cpp)</strong></p>
+<ul>
+<li>BeginPlay()에서 BeginSpeakQuest(1) 자동 호출</li>
+<li>TODO 주석: 향후 Contact2SpeackQuest 연동 필요</li>
+<li>개발 편의성 향상 (매번 수동 호출 불필요)</li>
+</ul>
+</li>
+<li><p><strong>기술 문서 작성</strong></p>
+<ul>
+<li><code>AudioCache_Race_Condition_Test.md</code> 작성</li>
+<li>OnClickRepeat 연속 클릭 시 발생 가능한 Race Condition 시나리오 분석</li>
+<li>중복 요청, 응답 순서 뒤바뀜, 오디오 덮어쓰기 문제 정의</li>
+<li>방어 코드 3가지 방법 제안 (플래그, 요청 ID 추적, 재생 중단)</li>
+<li>테스트 체크리스트 및 다음 단계 제시</li>
+</ul>
+</li>
+<li><p><strong>Claude 설정 권한 추가</strong></p>
+<ul>
+<li>UE 빌드 명령어 권한 (UE_5.4, UE_5.6 UnrealBuildTool)</li>
+<li>Compact Log 슬래시 커맨드 권한</li>
+<li>uvx, uv cache clean, git ls-remote 권한</li>
+<li>WebFetch 도메인 권한 (github.com, oraios.github.io)</li>
+</ul>
+</li>
+</ol>
+<p><strong>Serena MCP 서버 상세 정보</strong>:</p>
+<ul>
+<li>프로젝트: Onepiece (C:\Users\user\Documents\dopple\UE\Onepiece)</li>
+<li>지원 언어: C++, Python, AL</li>
+<li>사용 가능한 도구: 29개 (read_file, create_text_file, find_symbol, replace_content 등)</li>
+<li>Language Server:<ul>
+<li>Clangd (C++): 19.1.2 버전, 0.313초 시작</li>
+<li>Pyright (Python): 1.1.407 버전, 1.382초 시작, 6개 Python 파일 발견</li>
+<li>AL Language Server: 정상 시작</li>
+</ul>
+</li>
+</ul>
+<p><strong>CoreRedirects 설정 상세</strong>:</p>
+<pre><code class="lang-ini">[CoreRedirects]
++ClassRedirects=(OldName="/Script/Onepiece.AudioCacheManager",NewName="/Script/Onepiece.VoiceCacheManager")
++PropertyRedirects=(OldName="/Script/Onepiece.MoviePanel.ColorParamName",NewName="/Script/Onepiece.MoviePanel.ColorParam")
++PropertyRedirects=(OldName="/Script/Onepiece.MoviePanel.TextureParamName",NewName="/Script/Onepiece.MoviePanel.TextureParam")
++PropertyRedirects=(OldName="/Script/Onepiece.MoviePanel.TileParamName",NewName="/Script/Onepiece.MoviePanel.TileParam")
++FunctionRedirects=(OldName="/Script/Onepiece.SpeakStageActor.RequestSpeak",NewName="/Script/Onepiece.SpeakStageActor.Server_RequestSpeak")
++FunctionRedirects=(OldName="/Script/Onepiece.SpeakStageActor.NotifyAnswerComplete",NewName="/Script/Onepiece.SpeakStageActor.Server_NotifyAnswerComplete")
++StructRedirects=(OldName="/Script/Onepiece.ResponseSpeakingQuestions",NewName="/Script/Onepiece.ResponseSpeakingJudes")
++FunctionRedirects=(OldName="/Script/Onepiece.VoiceConversationSystem.OnResponseSpeakingsQuestions",NewName="/Script/Onepiece.VoiceConversationSystem.OnResponseSpeakingsJudges")
+</code></pre>
+<h3 id="commit-정보">Commit 정보</h3>
+<p><strong>Summary (EN)</strong>:
+chore: resolve serena MCP server connection issue and update UE engine config</p>
+<p><strong>세부 내역</strong>:</p>
+<ol>
+<li><p>"docs: serena MCP 서버 연결 문제 해결 가이드"</p>
+<ul>
+<li>uv 캐시 손상 원인 파악 및 <code>uv cache clean</code> 해결 방법</li>
+<li>Git Clone 설치 방법 제안 (대안)</li>
+<li>Serena MCP 서버 정상 시작 확인 (Clangd, Pyright, AL LS)</li>
+</ul>
+</li>
+<li><p>"config: UE CoreRedirects 리다이렉션 설정 추가"</p>
+<ul>
+<li>AudioCacheManager → VoiceCacheManager 클래스 리다이렉션</li>
+<li>MoviePanel 프로퍼티 리네이밍 (ColorParamName → ColorParam 등)</li>
+<li>SpeakStageActor 함수 리네이밍 (RequestSpeak → Server_RequestSpeak 등)</li>
+<li>VoiceConversationSystem 구조체 리네이밍 (ResponseSpeakingQuestions → ResponseSpeakingJudes)</li>
+</ul>
+</li>
+<li><p>"test: APlayerActor에 BeginSpeakQuest 자동 호출 추가"</p>
+<ul>
+<li>BeginPlay()에서 BeginSpeakQuest(1) 자동 호출 (개발 편의성)</li>
+<li>TODO 주석: 향후 Contact2SpeackQuest 연동 필요</li>
+</ul>
+</li>
+<li><p>"docs: AudioCache Race Condition 테스트 시나리오 작성"</p>
+<ul>
+<li>OnClickRepeat 연속 클릭 시 발생 가능한 문제 분석</li>
+<li>4가지 시나리오 (중복 요청, 단어 전환, 응답 순서, 캐시 HIT)</li>
+<li>방어 코드 3가지 방법 제안 (플래그, 요청 ID, 재생 중단)</li>
+<li>테스트 체크리스트 제공</li>
+</ul>
+</li>
+<li><p>"config: Claude 설정 권한 추가"</p>
+<ul>
+<li>UE 빌드 명령어 권한 (UE_5.4, UE_5.6)</li>
+<li>Compact Log, uvx, uv cache clean, git ls-remote 권한</li>
+<li>WebFetch 도메인 권한 (github.com, oraios.github.io)</li>
+</ul>
+</li>
+</ol>
+<h3 id="next-to-do">Next To Do</h3>
+<ol>
+<li><p><strong>AudioCache Race Condition 방어 코드 구현</strong></p>
+<ul>
+<li>UPopup_Word::OnClickRepeat에 중복 요청 방지 플래그 추가</li>
+<li>요청 ID 추적으로 outdated 응답 무시</li>
+<li>이전 오디오 재생 중단 처리</li>
+</ul>
+</li>
+<li><p><strong>AudioCache Race Condition 테스트</strong></p>
+<ul>
+<li>시나리오 1-4 실제 게임에서 재현</li>
+<li>로그 수집 및 문제 확인</li>
+<li>방어 코드 적용 후 재테스트</li>
+</ul>
+</li>
+<li><p><strong>Contact2SpeackQuest 연동</strong></p>
+<ul>
+<li>APlayerActor.cpp의 TODO 구현</li>
+<li>Contact 트리거 → BeginSpeakQuest 호출</li>
+<li>BeginPlay() 자동 호출 제거</li>
+</ul>
+</li>
+<li><p><strong>Serena MCP 서버 안정적 설치</strong></p>
+<ul>
+<li>Git Clone 방식으로 로컬 설치</li>
+<li><code>uv tool install .</code> 전역 설치</li>
+<li>캐시 문제 완전 회피</li>
+</ul>
+</li>
+</ol>
+<hr></hr>
 <h2 id="compact-log-5">Compact Log 5</h2>
 <ul>
 <li>20251203 14:50</li>
@@ -1829,7 +1998,7 @@ fix: improve Phase 4 UX with stage completion check, question toast, and voice p
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"dopple - 2025-12-02","level":"3.1","depth":1,"next":{"title":"dopple - 2025-11-30","level":"3.2","depth":1,"path":"DevLog/AgentLog/dopple/251130.md","ref":"DevLog/AgentLog/dopple/251130.md","articles":[]},"previous":{"title":"시작하기","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-comscore","github","collapsible-menu","back-to-top-button","search-plus","expandable-chapters-small","page-toc-button","-anchor-navigation-ex","honkit-plugin-mermaid","code","alerts","emphasize","klipse","-lunr","-search","-sharing"],"root":".","styles":{"website":"styles/website.css"},"pluginsConfig":{"collapsible-menu":{},"emphasize":{"style":"yellow"},"github":{"url":"https://github.com/doppleddiggong/Onepiece"},"code":{"copyButtons":true},"honkit-plugin-mermaid":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"printLog":false,"multipleH1":false,"mode":"float","float":{"showLevelIcon":false,"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right"},"pageTop":{"showLevelIcon":false,"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right"}},"theme-comscore":{"showLevel":true},"page-toc-button":{"maxTocDepth":3,"minTocSize":2},"back-to-top-button":{},"alerts":{"info":{"label":"정보","icon":"fa fa-info-circle","className":"info"},"warning":{"label":"주의","icon":"fa fa-exclamation-triangle","className":"warning"},"danger":{"label":"위험","icon":"fa fa-times-circle","className":"danger"},"tip":{"label":"팁","icon":"fa fa-lightbulb-o","className":"tip"}},"expandable-chapters-small":{},"klipse":{"myConfigKey":"it's the default value"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"search-plus":{}},"theme":"default","author":"DoppledDiggong Team","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Onepiece Development Documentation","language":"ko","links":{"sidebar":{"GitHub Repository":"https://github.com/doppleddiggong/Onepiece","Doxygen API Docs":"https://doppleddiggong.github.io/Onepiece/doxygen/"}},"gitbook":"3.2.3","description":"Onepiece 프로젝트 개발 문서 - DevLog, Planning, System Review"},"file":{"path":"DevLog/AgentLog/dopple/251202.md","mtime":"2025-12-04T01:51:39.591Z","type":"markdown"},"gitbook":{"version":"6.1.4","time":"2025-12-04T01:52:03.019Z"},"basePath":"../../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"dopple - 2025-12-02","level":"3.1","depth":1,"next":{"title":"dopple - 2025-11-30","level":"3.2","depth":1,"path":"DevLog/AgentLog/dopple/251130.md","ref":"DevLog/AgentLog/dopple/251130.md","articles":[]},"previous":{"title":"시작하기","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-comscore","github","collapsible-menu","back-to-top-button","search-plus","expandable-chapters-small","page-toc-button","-anchor-navigation-ex","honkit-plugin-mermaid","code","alerts","emphasize","klipse","-lunr","-search","-sharing"],"root":".","styles":{"website":"styles/website.css"},"pluginsConfig":{"collapsible-menu":{},"emphasize":{"style":"yellow"},"github":{"url":"https://github.com/doppleddiggong/Onepiece"},"code":{"copyButtons":true},"honkit-plugin-mermaid":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"printLog":false,"multipleH1":false,"mode":"float","float":{"showLevelIcon":false,"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right"},"pageTop":{"showLevelIcon":false,"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right"}},"theme-comscore":{"showLevel":true},"page-toc-button":{"maxTocDepth":3,"minTocSize":2},"back-to-top-button":{},"alerts":{"info":{"label":"정보","icon":"fa fa-info-circle","className":"info"},"warning":{"label":"주의","icon":"fa fa-exclamation-triangle","className":"warning"},"danger":{"label":"위험","icon":"fa fa-times-circle","className":"danger"},"tip":{"label":"팁","icon":"fa fa-lightbulb-o","className":"tip"}},"expandable-chapters-small":{},"klipse":{"myConfigKey":"it's the default value"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"search-plus":{}},"theme":"default","author":"DoppledDiggong Team","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Onepiece Development Documentation","language":"ko","links":{"sidebar":{"GitHub Repository":"https://github.com/doppleddiggong/Onepiece","Doxygen API Docs":"https://doppleddiggong.github.io/Onepiece/doxygen/"}},"gitbook":"3.2.3","description":"Onepiece 프로젝트 개발 문서 - DevLog, Planning, System Review"},"file":{"path":"DevLog/AgentLog/dopple/251202.md","mtime":"2025-12-05T04:13:56.427Z","type":"markdown"},"gitbook":{"version":"6.1.4","time":"2025-12-05T04:14:31.584Z"},"basePath":"../../..","book":{"language":""}});
         });
     </script>
 </div>
