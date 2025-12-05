@@ -41,12 +41,12 @@ FString UPopup_InterviewItem::GetAnswer() const
 	return FString();
 }
 
-FInterviewAnswerData UPopup_InterviewItem::GetAnswerData() const
+FInterviewAnswerData UPopup_InterviewItem::GetAnswerData(const int32 InUserId) const
 {
 	FInterviewAnswerData AnswerData;
 	AnswerData.interview_id = QuestionData.Id;
 	AnswerData.answer = GetAnswer();
-	AnswerData.user_id = 0;
+	AnswerData.user_id = InUserId;
 
 	return AnswerData;
 }

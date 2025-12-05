@@ -76,3 +76,12 @@ void UBroadcastManager::SendMovie(const int& InGroup, bool InState)
 	OnMovie.Broadcast(InGroup, InState);
 }
 
+void UBroadcastManager::SendTutorMessage(const FText& Message)
+{
+	OnTutorMessage.Broadcast(Message);
+}
+
+void UBroadcastManager::SendAddItemToBoxList(const TArray<FResultStatData>& ItemDataList)
+{
+	OnAddItemToBoxList.Broadcast(ItemDataList);
+}

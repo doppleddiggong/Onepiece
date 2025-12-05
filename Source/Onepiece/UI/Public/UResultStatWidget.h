@@ -4,18 +4,11 @@
 
 #include "CoreMinimal.h"
 #include "FColorStyleData.h"
+#include "FResultStatData.h"
 #include "FResourceTextureData.h"
 #include "Blueprint/UserWidget.h"
 #include "UResultStatWidget.generated.h"
 
-UENUM(BlueprintType)
-enum class EResultItemWidgetType : uint8
-{
-	Grade,       // GradePanel
-	Score,       // ScorePanel
-	Rate,        // RatePanel
-	Symbol		 // SymbolPanel
-};
 
 UCLASS()
 class ONEPIECE_API UResultStatWidget : public UUserWidget
@@ -26,10 +19,21 @@ protected:
 	virtual void NativePreConstruct() override;
 
 public:
+	/** 통합 데이터로 위젯 설정 */
+	UFUNCTION(BlueprintCallable, Category="ResultStat")
+	void InitData(const FResultStatData& InData);
+
 	/** 위젯 타입 설정 */
 	UFUNCTION(BlueprintCallable)
 	void SetWidgetType(const EResultItemWidgetType InType);
+	
+	/** 스타일 설정 */
+	UFUNCTION(BlueprintCallable)
+	void SetColorType(const EColorStyleType InType);
 
+	UFUNCTION(BlueprintCallable)
+	void SetTitleText(const FText InText);
+	
 	/** 패널 데이터 설정 */
 	UFUNCTION(BlueprintCallable)
 	void SetGradeValue(const EResourceTextureType TextureType);
@@ -43,16 +47,12 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void SetSymbolValue(const float InValue);
 
-	/** 스타일 설정 */
-	UFUNCTION(BlueprintCallable)
-	void SetColorType(const EColorStyleType InType);
-
 
 private:
 	void ApplyStyle();
 	void LoadStyleTable();
 
-	void UpdateWidgetPanel();
+	void UpdateWidgetPanel() const;
 
 public:
 	// ----------------------------

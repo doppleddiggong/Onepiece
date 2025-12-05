@@ -24,7 +24,7 @@ public:
 	UFUNCTION(BlueprintCallable)
 	FString GetAnswer() const;
 
-	FInterviewAnswerData GetAnswerData() const;
+	FInterviewAnswerData GetAnswerData(const int32 InUserId) const;
 	
 protected:
 	virtual void NativeConstruct() override;
