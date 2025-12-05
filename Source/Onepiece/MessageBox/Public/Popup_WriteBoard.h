@@ -59,6 +59,7 @@ protected:
 	void OnButtonRightClicked();
 	UFUNCTION()
 	void OnButtonLeftClicked();
+	void RefreshArrowButton();
 	
 	// Adjust WriteBoard Length
 	void AdjustLength();

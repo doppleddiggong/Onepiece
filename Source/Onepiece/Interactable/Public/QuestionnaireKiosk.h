@@ -6,6 +6,8 @@
 #include "GameFramework/Actor.h"
 #include "QuestionnaireKiosk.generated.h"
 
+struct FQuestWriteInfo;
+
 UCLASS()
 class ONEPIECE_API AQuestionnaireKiosk : public AActor
 {
@@ -47,4 +49,10 @@ protected:
 	
 	UFUNCTION(Client, Reliable)
 	void ClientRPC_OnInteractionTriggered(AActor* Interactor);
+	
+	UFUNCTION()
+	void OnResponseData(FQuestWriteInfo& InResponseData, bool bWasSuccessful);
+	
+	void CreateTestData(FQuestWriteInfo& TestData);
+	
 };

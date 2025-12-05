@@ -48,6 +48,51 @@ TArray<FPhonemeData> FWordData::GetPhonemeData() const
 }
 
 
+void FQuestWriteInfo::SetFromHttpResponse(const TSharedPtr<class IHttpResponse, ESPMode::ThreadSafe>& Response)
+{
+	if (!Response.IsValid())
+	{
+		return;
+	}
+
+	FString JsonString = Response->GetContentAsString();
+	TSharedPtr<FJsonObject> JsonObject;
+	TSharedRef<TJsonReader<>> Reader = TJsonReaderFactory<>::Create(JsonString);
+
+	if (FJsonSerializer::Deserialize(Reader, JsonObject) && JsonObject.IsValid())
+	{
+		user_id = JsonObject->GetIntegerField(TEXT("user_id"));
+		
+		TArray<TSharedPtr<FJsonValue>> questionArray = JsonObject->GetArrayField(TEXT("question"));
+		
+		for (const auto& data : questionArray)
+		{
+			FWriteQuestionData temp;
+			TSharedPtr<FJsonObject> dataObject = data->AsObject();
+			if (!dataObject.IsValid())
+			{
+				continue;
+			}
+			
+			if (dataObject->HasTypedField<EJson::Object>(TEXT("word_data")))
+			{
+				const TSharedPtr<FJsonObject> DisplayObj = dataObject->GetObjectField(TEXT("word_data"));
+				temp.word_data.kor = DisplayObj->GetStringField(TEXT("kor"));
+				temp.word_data.eng = DisplayObj->GetStringField(TEXT("eng"));
+				temp.word_data.pronunciation = DisplayObj->GetStringField(TEXT("pronunciation"));
+			}
+			
+			temp.answer = dataObject->GetStringField(TEXT("answer"));
+			temp.answer_kor = dataObject->GetStringField(TEXT("answer_kor"));
+			question.Add(temp);
+		}
+	}
+}
+
+void FQuestWriteInfo::PrintData() const
+{
+	
+}
 
 void FResponseHealth::SetFromHttpResponse(const TSharedPtr<IHttpResponse, ESPMode::ThreadSafe>& Response)
 {
@@ -321,10 +366,10 @@ TArray<FString> FResponseScenario::GetWord2List() const
 
 
 // =================================================================================
-// FResponseOcrExtract
+// FResponseWriteSubmit
 // =================================================================================
 
-void FResponseOcrExtract::SetFromHttpResponse(const TSharedPtr<IHttpResponse, ESPMode::ThreadSafe>& Response)
+void FResponseWriteSubmit::SetFromHttpResponse(const TSharedPtr<IHttpResponse, ESPMode::ThreadSafe>& Response)
 {
 	if (!Response.IsValid())
 	{
@@ -332,7 +377,7 @@ void FResponseOcrExtract::SetFromHttpResponse(const TSharedPtr<IHttpResponse, ES
 	}
 
 	FString JsonString = Response->GetContentAsString();
-	PRINTLOG(TEXT("hmm.... %s"), *JsonString);
+	
 	TArray<TSharedPtr<FJsonValue>> JsonArray;
 	TSharedRef<TJsonReader<>> Reader = TJsonReaderFactory<>::Create(JsonString);
 
@@ -348,7 +393,7 @@ void FResponseOcrExtract::SetFromHttpResponse(const TSharedPtr<IHttpResponse, ES
 					continue;
 				}
 
-				FResponseOcrData Entry;    // Display & Record를 포함하는 사용자 정의 구조체
+				FResponseWriteData Entry;    // Display & Record를 포함하는 사용자 정의 구조체
 
 				if (EntryObject->HasTypedField<EJson::Object>(TEXT("display")))
 				{
@@ -367,15 +412,15 @@ void FResponseOcrExtract::SetFromHttpResponse(const TSharedPtr<IHttpResponse, ES
 					Entry.record.stage  = RecordObj->GetStringField(TEXT("stage"));
 				}
 
-				ResponseOcrDataArray.Add(Entry);
+				ResponseWriteDataArray.Add(Entry);
 			}
 		}
 	}
 }
 
-void FResponseOcrExtract::PrintData() const
+void FResponseWriteSubmit::PrintData() const
 {
-	for (const FResponseOcrData& data : ResponseOcrDataArray)
+	for (const FResponseWriteData& data : ResponseWriteDataArray)
 	{
 		NETWORK_LOG( TEXT("[OCR Extract] Response - Is_Pass: %d, Text: %s"), data.display.is_pass, *(data.display.message));
 	}

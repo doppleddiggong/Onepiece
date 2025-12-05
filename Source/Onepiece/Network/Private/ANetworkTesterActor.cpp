@@ -228,7 +228,7 @@ void ANetworkTesterActor::OnResponseScenario(FResponseScenario& ResponseData, bo
     }
 }
 
-void ANetworkTesterActor::OnResponseOcrExtract(FResponseOcrExtract& ResponseData, bool bWasSuccessful)
+void ANetworkTesterActor::OnResponseOcrExtract(FResponseWriteSubmit& ResponseData, bool bWasSuccessful)
 {
     if (bWasSuccessful)
     {

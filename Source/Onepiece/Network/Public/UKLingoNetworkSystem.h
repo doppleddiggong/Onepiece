@@ -40,10 +40,14 @@ public:
 	/// @param InDelegate [in] 응답 수신 시 호출될 델리게이트입니다.
 	void RequestScenario(int32 Index, int32 Difficulty, int32 Level, FResponseScenarioDelegate InDelegate);
 
-	/// @brief 이미지에서 OCR로 텍스트를 추출합니다.
+	/// @brief 이미지를 답변으로 제출합니다.
+	/// @param InDelegate [in] 응답 수신 시 호출될 델리게이트입니다.
+	void RequestWriteQuestions(FResponseWriteQuestionDelegate InDelegate);
+	
+	/// @brief 이미지를 답변으로 제출합니다.
 	/// @param ImagePath [in] 이미지 파일 경로입니다.
 	/// @param InDelegate [in] 응답 수신 시 호출될 델리게이트입니다.
-	void RequestOcrExtract(const TArray<FString>& ImagePathArray, FString InTargetText, FResponseOcrExtractDelegate InDelegate);
+	void RequestWriteSubmit(const TArray<FString>& ImagePathArray, FString InTargetText, FResponseWriteSubmitDelegate InDelegate);
 
 	void RequestListenAudio(const FString& AudioText, FResponseListenAudioDelegate InDelegate);
 	/// @brief 음성 파일을 전송하고 답변을 받습니다.

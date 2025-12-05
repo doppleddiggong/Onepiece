@@ -44,7 +44,7 @@ void UPopup_Questionnaire::NativeConstruct()
 void UPopup_Questionnaire::InitPopup(const FQuestWriteInfo& QuestionData)
 {
 	// 질문 데이터 저장
-	SavedQuestions = QuestionData.Questions;
+	SavedQuestions = QuestionData.question;
 
 	// 기존 항목 제거
 	VerticalBox->ClearChildren();
@@ -84,7 +84,7 @@ void UPopup_Questionnaire::OnClickClose()
 
 void UPopup_Questionnaire::OnClickSubmit()
 {	
-	// 사진 파일 모으기f
+	// 사진 파일 모으기
 	// 네트워크 전송
 	if (auto KLingoNetwork = UKLingoNetworkSystem::Get(GetWorld()))
 	{
@@ -97,10 +97,10 @@ void UPopup_Questionnaire::OnClickSubmit()
 			pngFiles.Add(OcrImagePath / OcrImageName);
 		}
 			
-		KLingoNetwork->RequestOcrExtract(
+		KLingoNetwork->RequestWriteSubmit(
 			pngFiles,
-			SavedQuestions[0].AnswerKr,
-			FResponseOcrExtractDelegate::CreateUObject(this, &UPopup_Questionnaire::OnResponseOcrExtract)
+			SavedQuestions[0].answer_kor,
+			FResponseWriteSubmitDelegate::CreateUObject(this, &UPopup_Questionnaire::OnResponseOcrExtract)
 		);
 	}
 	else
@@ -109,7 +109,7 @@ void UPopup_Questionnaire::OnClickSubmit()
 	}
 }
 
-void UPopup_Questionnaire::OnResponseOcrExtract(FResponseOcrExtract& ResponseData, bool bWasSuccessful)
+void UPopup_Questionnaire::OnResponseOcrExtract(FResponseWriteSubmit& ResponseData, bool bWasSuccessful)
 {
 	if (bWasSuccessful)
 	{
@@ -118,9 +118,9 @@ void UPopup_Questionnaire::OnResponseOcrExtract(FResponseOcrExtract& ResponseDat
 		
 		// TODO: 피드백 창 수정해야 함. 현재 피드백이 보낸 사진 개수만큼 돌아오는 상황.
 		// for (const FResponseOcrData& data : ResponseData.ResponseOcrDataArray)
-		for (int32 i = 1; i <= ResponseData.ResponseOcrDataArray.Num(); ++i)
+		for (int32 i = 1; i <= ResponseData.ResponseWriteDataArray.Num(); ++i)
 		{
-			const FResponseOcrData& data = ResponseData.ResponseOcrDataArray[i - 1];
+			const FResponseWriteData& data = ResponseData.ResponseWriteDataArray[i - 1];
 			PRINTLOG(TEXT("%d Success: %s"), i, data.display.is_pass ? TEXT("true") : TEXT("false"));
 			PRINTLOG(TEXT("%d Extracted Text: %s"), i, *(data.display.message));
 		}

@@ -84,8 +84,10 @@ namespace RequestAPI
 
     /// @brief Scenario 조회 엔드포인트입니다. GET /scenario/stages/redis/{index}/{dificulity}/{lang}
     static FString scenario = FString("/scenario/stages/redis");
-    
-    /// @brief OCR 텍스트 추출 엔드포인트입니다. POST /writes/ocr/extract
+	
+    /// @brief Write 문제 조회 엔드포인트입니다. POST /writes/questions
+    static FString writes_questions = FString("/writes/questions");
+    /// @brief Write 답변 제출 엔드포인트입니다. POST /writes/submit
     static FString writes_submit = FString("/writes/submit");
 
 	static FString listenings_audio = FString("/listenings/audios");
@@ -303,7 +305,7 @@ struct FQuestListenInfo
 };
 
 // =================================================================================
-// Write Quest Structures
+// Write Quest Request Structures
 // =================================================================================
 
 /// @brief Write 질문 구조체입니다.
@@ -312,14 +314,14 @@ struct FWriteWordData
 {
 	GENERATED_BODY()
 	
-	UPROPERTY(BlueprintReadWrite, Category = "KLingo")
-	FString QuestionKr;
+	UPROPERTY(BlueprintReadWrite, Category = "Write")
+	FString kor;
 	
-	UPROPERTY(BlueprintReadWrite, Category = "KLingo")
-	FString QuestionEn;
+	UPROPERTY(BlueprintReadWrite, Category = "Write")
+	FString eng;
 	
-	UPROPERTY(BlueprintReadWrite, Category = "KLingo")
-	FString Pronunciation;
+	UPROPERTY(BlueprintReadWrite, Category = "Write")
+	FString pronunciation;
 };
 
 /// @brief Write 질문 및 정답 구조체입니다.
@@ -328,27 +330,38 @@ struct FWriteQuestionData
 {
 	GENERATED_BODY()
 	
-	UPROPERTY(BlueprintReadWrite, Category = "KLingo")
+	UPROPERTY(BlueprintReadWrite, Category = "Write")
 	int32 Id;
 	
-	UPROPERTY(BlueprintReadWrite, Category = "KLingo")
-	FWriteWordData WordData;
+	UPROPERTY(BlueprintReadWrite, Category = "Write")
+	FWriteWordData word_data;
 	
-	UPROPERTY(BlueprintReadWrite, Category = "KLingo")
-	FString Answer;
+	UPROPERTY(BlueprintReadWrite, Category = "Write")
+	FString answer;
 	
-	UPROPERTY(BlueprintReadWrite, Category = "KLingo")
-	FString AnswerKr;
+	UPROPERTY(BlueprintReadWrite, Category = "Write")
+	FString answer_kor;
 };
 
+/// @brief Write Submit 응답 델리게이트입니다.
+DECLARE_DELEGATE_TwoParams(FResponseWriteQuestionDelegate, FQuestWriteInfo&, bool);
 /// @brief Write 퀘스트 정보 구조체입니다.
 USTRUCT(BlueprintType)
 struct FQuestWriteInfo
 {
 	GENERATED_BODY()
 
-	UPROPERTY(BlueprintReadWrite, Category = "KLingo")
-	TArray<FWriteQuestionData> Questions;
+	UPROPERTY(BlueprintReadWrite, Category = "Write")
+	int32 user_id;
+	
+	UPROPERTY(BlueprintReadWrite, Category = "Write")
+	TArray<FWriteQuestionData> question;
+	
+	/// @brief HTTP 응답을 파싱해 구조체를 채웁니다.
+	void SetFromHttpResponse(const TSharedPtr<class IHttpResponse, ESPMode::ThreadSafe>& Response);
+
+	/// @brief 디버그 로그에 응답 내용을 출력합니다.
+	void PrintData() const;
 };
 
 // =================================================================================
@@ -579,64 +592,64 @@ struct FResponseScenario
 };
 
 // =================================================================================
-// OCR Extract API Structures
+// Write Quest Response API Structures
 // =================================================================================
 
 USTRUCT(BlueprintType)
-struct FOcrDisplay
+struct FWriteDisplay
 {
 	GENERATED_BODY()
 	
-	UPROPERTY(BlueprintReadWrite, Category = "OCR")
+	UPROPERTY(BlueprintReadWrite, Category = "Write")
 	bool is_pass = false;
 
-	UPROPERTY(BlueprintReadWrite, Category = "OCR")
+	UPROPERTY(BlueprintReadWrite, Category = "Write")
 	FString message;
 	
-	UPROPERTY(BlueprintReadWrite, Category = "OCR")
+	UPROPERTY(BlueprintReadWrite, Category = "Write")
 	FString correction;
 };
 
 USTRUCT(BlueprintType)
-struct FOcrRecord
+struct FWriteRecord
 {
 	GENERATED_BODY()
 	
-	UPROPERTY(BlueprintReadWrite, Category = "OCR")
+	UPROPERTY(BlueprintReadWrite, Category = "Write")
 	int32 score;
 	
-	UPROPERTY(BlueprintReadWrite, Category = "OCR")
+	UPROPERTY(BlueprintReadWrite, Category = "Write")
 	FString target;
 	
-	UPROPERTY(BlueprintReadWrite, Category = "OCR")
+	UPROPERTY(BlueprintReadWrite, Category = "Write")
 	FString input;
 	
-	UPROPERTY(BlueprintReadWrite, Category = "OCR")
+	UPROPERTY(BlueprintReadWrite, Category = "Write")
 	FString stage;
 };
 
 USTRUCT(BlueprintType)
-struct FResponseOcrData
+struct FResponseWriteData
 {
 	GENERATED_BODY()
 	
-	UPROPERTY(BlueprintReadWrite, Category = "OCR")
-	FOcrDisplay display;
+	UPROPERTY(BlueprintReadWrite, Category = "Write")
+	FWriteDisplay display;
 	
-	UPROPERTY(BlueprintReadWrite, Category = "OCR")
-	FOcrRecord record;
+	UPROPERTY(BlueprintReadWrite, Category = "Write")
+	FWriteRecord record;
 };
 
-/// @brief OCR Extract 응답 델리게이트입니다.
-DECLARE_DELEGATE_TwoParams(FResponseOcrExtractDelegate, FResponseOcrExtract&, bool);
-/// @brief OCR Extract 응답 구조체입니다.
+/// @brief Write Submit 응답 델리게이트입니다.
+DECLARE_DELEGATE_TwoParams(FResponseWriteSubmitDelegate, FResponseWriteSubmit&, bool);
+/// @brief Write Submit 응답 구조체입니다.
 USTRUCT(BlueprintType)
-struct FResponseOcrExtract
+struct FResponseWriteSubmit
 {
 	GENERATED_BODY()
 
-	UPROPERTY(BlueprintReadWrite, Category = "OCR")
-	TArray<FResponseOcrData> ResponseOcrDataArray;
+	UPROPERTY(BlueprintReadWrite, Category = "Write")
+	TArray<FResponseWriteData> ResponseWriteDataArray;
 
 	/// @brief HTTP 응답을 파싱해 구조체를 채웁니다.
 	void SetFromHttpResponse(const TSharedPtr<class IHttpResponse, ESPMode::ThreadSafe>& Response);

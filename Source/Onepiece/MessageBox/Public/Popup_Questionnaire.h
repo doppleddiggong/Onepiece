@@ -33,7 +33,7 @@ private:
 	void OnClickSubmit();
 	
 	UFUNCTION()
-	void OnResponseOcrExtract(FResponseOcrExtract& ResponseData, bool bWasSuccessful);
+	void OnResponseOcrExtract(FResponseWriteSubmit& ResponseData, bool bWasSuccessful);
 
 	// UFUNCTION()
 	// void OnResponseQuestionAnswer(FResponseQuestionAnswer& ResponseData, bool bWasSuccessful);

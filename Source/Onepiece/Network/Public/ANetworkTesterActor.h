@@ -112,7 +112,7 @@ private:
     void OnResponseUserMe(FResponseUserMe& ResponseData, bool bWasSuccessful);
     
     void OnResponseScenario(FResponseScenario& ResponseData, bool bWasSuccessful);
-    void OnResponseOcrExtract(FResponseOcrExtract& ResponseData, bool bWasSuccessful);
+    void OnResponseOcrExtract(FResponseWriteSubmit& ResponseData, bool bWasSuccessful);
 
     void OnResponseSpeakingJudes(FResponseSpeakingJudes& ResponseData, bool bWasSuccessful);
     void OnResponseListenAudio(FResponseListenAudio& ResponseData, bool bWasSuccessful);
