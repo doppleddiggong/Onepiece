@@ -337,8 +337,13 @@ void UKLingoNetworkSystem::RequestUserMe( FResponseUserMeDelegate InDelegate)
 
 void UKLingoNetworkSystem::RequestScenario(int32 Index, int32 Difficulty, int32 Level, FResponseScenarioDelegate InDelegate)
 {
-	// URL 형식: /scenario/{index}/{dificulity}/{lang}
-	FString Endpoint = FString::Printf(TEXT("%s/%d/%d/%d"), *RequestAPI::scenario, Index, Difficulty, Level);
+	// URL 형식: /scenario/{roomid}/{index}/{dificulity}/{lang}
+	FString Endpoint = FString::Printf(TEXT("%s/%lld/%d/%d/%d"), *RequestAPI::scenario,
+		ULingoGameHelper::GetLingoGameState( GetWorld())->RoomId,
+		Index,
+		Difficulty,
+		Level);
+	
 	FString Url = NetworkConfig::GetFullUrl(Endpoint);
 	auto Request = SetupHttpRequest(Url, NETWORK_GET);
 
