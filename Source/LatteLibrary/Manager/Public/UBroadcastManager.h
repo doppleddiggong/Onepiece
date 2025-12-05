@@ -124,4 +124,11 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category="Events")
 	void SendMovie(const int& InGroup, bool InState);
+
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnTutorMessage, const FText&, Message);
+	UPROPERTY(BlueprintAssignable, Category="Events")
+	FOnTutorMessage OnTutorMessage;
+
+	UFUNCTION(BlueprintCallable, Category="Events")
+	void SendTutorMessage(const FText& Message);
 };

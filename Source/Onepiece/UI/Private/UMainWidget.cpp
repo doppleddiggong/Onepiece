@@ -50,7 +50,10 @@ void UMainWidget::NativeConstruct()
 		CachedGameState = World->GetGameState<ALingoGameState>();
 
 	if (auto BM = UBroadcastManager::Get(GetWorld()))
+	{
 		BM->OnUpdateMissionTimerState.AddDynamic(this, &UMainWidget::OnUpdateMissionTimerState);
+		BM->OnTutorMessage.AddDynamic(this, &UMainWidget::OnTutorMessage);
+	}
 
 	StateWidget->InitWidget();
 	QuestInfoWidget->SetVisibility( ESlateVisibility::Collapsed );
