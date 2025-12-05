@@ -137,7 +137,8 @@ public:
 private:
 	/// @brief 메인 위젯을 생성하고 뷰포트에 추가합니다.
 	void CreateMainWidget();
-
+	void CreateToastWidget();
+	
 public:
 	// grab 시 들어올릴 위치
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category="Interaction")
@@ -156,6 +157,15 @@ private:
 	/// @brief 메인 UI 위젯 인스턴스
 	UPROPERTY()
 	TObjectPtr<class UMainWidget> MainWidget;
+
+	/// @brief 메인 위젯 블루프린트 클래스
+	UPROPERTY(EditDefaultsOnly, Category = "UI")
+	TSubclassOf<class UToastWidget> ToastWidgetClass;
+
+	/// @brief 메인 UI 위젯 인스턴스
+	UPROPERTY()
+	TObjectPtr<class UToastWidget> ToastWidget;
+
 	
 	// Movement 관련 변수
 	float WalkSpeed = 200.f;

@@ -85,4 +85,3 @@ void UBroadcastManager::SendAddItemToBoxList(const TArray<FResultStatData>& Item
 {
 	OnAddItemToBoxList.Broadcast(ItemDataList);
 }
-

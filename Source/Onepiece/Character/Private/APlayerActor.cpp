@@ -21,6 +21,7 @@
 #include "UPopupManager.h"
 #include "UPopup_ReadQuest.h"
 #include "ALingoGameState.h"
+#include "UToastWidget.h"
 
 #include "Camera/CameraComponent.h"
 #include "Components/InputComponent.h"
@@ -31,8 +32,11 @@
 #include "Blueprint/UserWidget.h"
 #include "Components/StaticMeshComponent.h"
 #include "Engine/StaticMesh.h"
+#include "Onepiece/Onepiece.h"
 
 #define MAINWIDGET_PATH TEXT("/Game/CustomContents/UI/WBP_MainWidget.WBP_MainWidget_C")
+#define TOASTWIDGET_PATH TEXT("/Game/CustomContents/UI/WBP_ToastWidget.WBP_ToastWidget_C")
+
 #define HOOKMESHPATH_PATH TEXT("/Game/CustomContents/Character/Asset/MiniOwl/MiniOwlbot.MiniOwlbot")
 
 APlayerActor::APlayerActor()
@@ -108,6 +112,9 @@ APlayerActor::APlayerActor()
 	// MainWidget 클래스 자동 로드
 	MainWidgetClass = FComponentHelper::LoadClass<UMainWidget>(MAINWIDGET_PATH);
 
+	ToastWidgetClass = FComponentHelper::LoadClass<UMainWidget>(TOASTWIDGET_PATH);
+
+	
 	// 3인칭 메쉬는 플레이어에게 보이지 않도록
 	GetMesh()->SetOwnerNoSee(true);
 }
@@ -124,6 +131,7 @@ void APlayerActor::BeginPlay()
 	if (IsLocallyControlled())
 	{
 		CreateMainWidget();
+		CreateToastWidget();
 		
 		FString MapName = GetWorld()->GetMapName();
 		MapName.RemoveFromStart(GetWorld()->StreamingLevelsPrefix);
@@ -156,6 +164,24 @@ void APlayerActor::CreateMainWidget()
 	if (MainWidget)
 		MainWidget->AddToViewport();
 }
+
+void APlayerActor::CreateToastWidget()
+{
+	if (!ToastWidgetClass)
+		return;
+
+	if(ToastWidget)
+		return;
+
+	APlayerController* PC = Cast<APlayerController>(GetController());
+	if (!PC)
+		return;
+
+	ToastWidget = CreateWidget<UToastWidget>(PC, ToastWidgetClass);
+	if (ToastWidget)
+		ToastWidget->AddToViewport(GameLayer::Toast);
+}
+
 
 
 void APlayerActor::OnRep_Controller()
