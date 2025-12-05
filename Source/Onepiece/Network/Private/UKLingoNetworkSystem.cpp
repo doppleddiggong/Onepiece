@@ -7,6 +7,8 @@
 
 #include "UKLingoNetworkSystem.h"
 
+#include <string>
+
 #include "ALingoPlayerState.h"
 #include "APlayerControl.h"
 #include "HttpModule.h"
@@ -699,7 +701,10 @@ void UKLingoNetworkSystem::RequestInterviewHello(FResponseInterviewHelloDelegate
 
 void UKLingoNetworkSystem::RequestInterviewAnswer(const FRequestInterviewAnswer& Answer, FResponseInterviewAnswerDelegate InDelegate)
 {
-	FString Url = NetworkConfig::GetFullUrl(RequestAPI::interview_answer);
+	// {room_id}?room_id=
+	FString Endpoint = FString::Printf(TEXT("%s/%lld"), *RequestAPI::interview_answer, ULingoGameHelper::GetLingoGameState( GetWorld())->RoomId);
+	FString Url = NetworkConfig::GetFullUrl(Endpoint);
+	
 	auto Request = SetupHttpRequest(Url, NETWORK_POST);
 
 	// Request Body 설정

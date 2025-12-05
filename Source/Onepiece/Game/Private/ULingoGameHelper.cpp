@@ -7,6 +7,7 @@
 #include "ALingoGameState.h"
 #include "ALingoPlayerState.h"
 #include "APlayerActor.h"
+#include "APlayerControl.h"
 #include "FResourceTextureData.h"
 #include "USpeakStageSubsystem.h"
 #include "Kismet/GameplayStatics.h"
@@ -16,6 +17,13 @@
 int64 ULingoGameHelper::GetUnixTimestampInt64()
 {
 	return FDateTime::UtcNow().ToUnixTimestamp();
+}
+
+int32 ULingoGameHelper::GetUserId(const UObject* WorldContextObject)
+{
+	if ( auto PC = GetPlayerControl(WorldContextObject) )
+		return PC->GetUserId();
+	return 0;
 }
 
 int ULingoGameHelper::GetMultiPlayerCount(const UObject* WorldContextObject)
@@ -208,4 +216,21 @@ APlayerActor* ULingoGameHelper::GetPlayerActor(const UObject* WorldContextObject
 		return nullptr;
 
 	return Cast<APlayerActor>(PC->GetPawn());
+}
+
+
+APlayerControl* ULingoGameHelper::GetPlayerControl(const UObject* WorldContextObject)
+{
+	if (!WorldContextObject)
+		return nullptr;
+
+	UWorld* World = WorldContextObject->GetWorld();
+	if (!World)
+		return nullptr;
+
+	APlayerController* PC = World->GetFirstPlayerController();
+	if (!PC)
+		return nullptr;
+
+	return Cast<APlayerControl>(PC->GetPawn());
 }

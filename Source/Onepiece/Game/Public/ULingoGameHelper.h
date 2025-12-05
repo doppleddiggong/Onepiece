@@ -18,6 +18,9 @@ class ONEPIECE_API ULingoGameHelper : public UBlueprintFunctionLibrary
 public:
 	UFUNCTION(BlueprintCallable, Category = "Utils")
 	static int64 GetUnixTimestampInt64();
+
+	UFUNCTION(BlueprintCallable, Category = "Utils")
+	static int32 GetUserId(const UObject* WorldContextObject);
 	
 	UFUNCTION(BlueprintCallable, Category = "Utils")
 	static int GetMultiPlayerCount(const UObject* WorldContextObject);
@@ -73,4 +76,6 @@ public:
 	/// @return PlayerActor 인스턴스 (없으면 nullptr)
 	UFUNCTION(BlueprintCallable, Category = "Utils")
 	static class APlayerActor* GetPlayerActor(const UObject* WorldContextObject);
+
+	static class APlayerControl* GetPlayerControl(const UObject* WorldContextObject);
 };
