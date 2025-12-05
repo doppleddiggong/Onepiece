@@ -18,17 +18,59 @@ class ONEPIECE_API UMainWidget : public UUserWidget
 public:
 	UMainWidget(const FObjectInitializer& ObjectInitializer);
 
-	void StartMissionTimer() const;
-	void StopMissionTimer() const;
-	
 protected:
 	/// @brief 위젯 초기화
 	virtual void NativeConstruct() override;
 
 	/// @brief 매 프레임 호출되어 타이머를 업데이트합니다.
 	virtual void NativeTick(const FGeometry& MyGeometry, float InDeltaTime) override;
-
+	
 public:
+	void SetMissionTimerState(bool bIsActive) const;
+	
+	/// @brief 훅 인디케이터 상태 업데이트 (에임/비에임)
+	/// @param bIsAiming true면 타겟 감지됨(파란색), false면 비감지(회색)
+	UFUNCTION(BlueprintCallable, Category = "Hook")
+	void UpdateHookState(bool bIsAiming);
+
+	/// @brief 튜터 메시지를 설정하고 애니메이션을 재생합니다.
+	/// @param NewMessage 표시할 메시지
+	UFUNCTION(BlueprintCallable, Category = "Tutor")
+	void OnTutorMessage(const FText& NewMessage);
+
+	UFUNCTION(BlueprintCallable, Category = "Item")
+	void AddItemToBoxList(TArray<FResultStatData> InDataList);
+
+	UFUNCTION(BlueprintCallable, Category = "Item")
+	void AddItemToBoxItem(const FResultStatData& InData);
+	
+		
+private:
+	void InitTutorMessage();
+
+
+
+	/// @brief 타이머 텍스트를 업데이트합니다.
+	void UpdateTimerDisplay() const;
+
+	/// @brief SpeakWidget UI를 업데이트합니다.
+	void UpdateSpeakWidget();
+
+	/// @brief 미션 타이머 상태 변경 핸들러
+	UFUNCTION()
+	void OnUpdateMissionTimerState(bool bIsActive, float TimeLimit);
+
+	/// @brief TutorHideAnim 완료 시 호출되는 콜백
+	UFUNCTION()
+	void OnTutorHideComplete();
+
+	/// @brief 자동 Hide 타이머 시작
+	void StartTutorHideTimer();
+
+	/// @brief 다음 아이템을 HorizontalBox에 추가 (타이머 콜백)
+	void ProcessNextItem();
+
+protected:
 	/// @brief 플레이 타이머 위젯 (BindWidget)
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
 	TObjectPtr<class UPlayTimer> PlayTimer;
@@ -64,22 +106,6 @@ public:
 	UPROPERTY(Transient, meta = (BindWidgetAnim))
 	TObjectPtr<class UWidgetAnimation> TutorHideAnim;
 
-public:
-	/// @brief 훅 인디케이터 상태 업데이트 (에임/비에임)
-	/// @param bIsAiming true면 타겟 감지됨(파란색), false면 비감지(회색)
-	UFUNCTION(BlueprintCallable, Category = "Hook")
-	void UpdateHookIndicatorState(bool bIsAiming);
-
-	/// @brief 튜터 메시지를 설정하고 애니메이션을 재생합니다.
-	/// @param NewMessage 표시할 메시지
-	UFUNCTION(BlueprintCallable, Category = "Tutor")
-	void SetTutorMessage(const FText& NewMessage);
-
-	/// @brief HorizontalBox에 아이템 추가 (3초 후 자동 제거됨)
-	/// @return 생성된 UAutoDespawnItem (ItemWidget 설정을 위해 반환)
-	UFUNCTION(BlueprintCallable, Category = "Item")
-	class UAutoDespawnItem* AddItemToBox();
-
 private:
 	/// @brief 훅 타겟 감지 시 이미지 (파란색)
 	UPROPERTY(EditDefaultsOnly, Category = "Hook")
@@ -93,42 +119,36 @@ private:
 	UPROPERTY(EditDefaultsOnly, Category = "Item")
 	TSubclassOf<class UAutoDespawnItem> ItemWidgetClass;
 
-protected:
 	/// @brief GameState 참조 캐싱
 	UPROPERTY()
 	TObjectPtr<class ALingoGameState> CachedGameState;
 
-	/// @brief 타이머 텍스트를 업데이트합니다.
-	void UpdateTimerDisplay();
-
-	/// @brief SpeakWidget UI를 업데이트합니다.
-	void UpdateSpeakWidget();
-
-	/// @brief 미션 타이머 상태 변경 핸들러
-	UFUNCTION()
-	void OnUpdateMissionTimerState(bool bIsActive, float TimeLimit);
-
-	/// @brief TutorHideAnim 완료 시 호출되는 콜백
-	UFUNCTION()
-	void OnTutorHideComplete();
-
-	/// @brief 자동 Hide 타이머 시작
-	void StartAutoHideTimer();
-
-private:
-	/// @brief 튜터 메시지 표시 지속 시간 (초)
-	UPROPERTY(EditDefaultsOnly, Category = "Tutor")
-	float TutorMessageDisplayDuration = 3.0f;
-
 	/// @brief 자동 Hide 타이머 핸들
-	FTimerHandle AutoHideTimerHandle;
+	FTimerHandle TutorHideTimerHandle;
 
 	/// @brief 펜딩 중인 메시지 (Hide 완료 후 표시할 메시지)
 	FText PendingMessage;
+
+	/// @brief 튜터 메시지 표시 지속 시간 (초)
+	UPROPERTY(EditDefaultsOnly, Category = "Tutor")
+	float TutorMessageDisplayDuration = 3.0f;
 
 	/// @brief 펜딩 메시지 존재 여부
 	bool bHasPendingMessage = false;
 
 	/// @brief 튜터 메시지 표시 여부
 	bool bIsTutorVisible = false;
+
+	/// @brief 아이템 순차 추가 타이머 핸들
+	FTimerHandle ItemAddTimerHandle;
+
+	/// @brief 순차 추가 대기 중인 아이템 데이터 리스트
+	TArray<FResultStatData> PendingItemDataList;
+
+	/// @brief 현재 추가 중인 아이템 인덱스
+	int32 CurItemIndex = 0;
+
+	/// @brief 아이템 추가 간격 (초)
+	UPROPERTY(EditDefaultsOnly, Category = "Item")
+	float ItemAddInterval = 0.1f;
 };

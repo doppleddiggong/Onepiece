@@ -56,29 +56,31 @@ void UMainWidget::NativeConstruct()
 	QuestInfoWidget->SetVisibility( ESlateVisibility::Collapsed );
 
 	// 훅 타겟 인디케이터 초기 숨김
-	if (HookTargetIndicator)
-		HookTargetIndicator->SetVisibility(ESlateVisibility::Hidden);
+	HookTargetIndicator->SetVisibility(ESlateVisibility::Hidden);
 
 	// SpeakWidget 초기 숨김 (BindWidgetOptional이므로 null 체크 필요)
-	if (SpeakWidget)
-		SpeakWidget->SetWidgetVisibility(false);
+	SpeakWidget->SetWidgetVisibility(false);
 
 	// TutorMessage 초기화 및 애니메이션 콜백 바인딩
+	InitTutorMessage();
+
+	SetMissionTimerState(false);
+}
+
+void UMainWidget::InitTutorMessage()
+{
 	if (TutorMessage)
 	{
 		TutorMessage->SetVisibility(ESlateVisibility::HitTestInvisible);
 		
-		if (TutorHideAnim)
-		{
-			FWidgetAnimationDynamicEvent HideDelegate;
-			HideDelegate.BindDynamic(this, &UMainWidget::OnTutorHideComplete);
-			BindToAnimationFinished(TutorHideAnim, HideDelegate);
-		}
+		FWidgetAnimationDynamicEvent HideDelegate;
+		HideDelegate.BindDynamic(this, &UMainWidget::OnTutorHideComplete);
+		BindToAnimationFinished(TutorHideAnim, HideDelegate);
+
+		PlayAnimation(TutorHideAnim);
 		
 		bIsTutorVisible = false;
 	}
-
-	StopMissionTimer();
 }
 
 void UMainWidget::NativeTick(const FGeometry& MyGeometry, float InDeltaTime)
@@ -89,17 +91,12 @@ void UMainWidget::NativeTick(const FGeometry& MyGeometry, float InDeltaTime)
 	UpdateSpeakWidget();
 }
 
-void UMainWidget::StartMissionTimer() const
+void UMainWidget::SetMissionTimerState(bool bIsActive) const
 {
-	PlayTimer->SetVisibility(ESlateVisibility::Visible);
+	PlayTimer->SetVisibility(bIsActive ? ESlateVisibility::Visible : ESlateVisibility::Hidden);
 }
 
-void UMainWidget::StopMissionTimer() const
-{
-	PlayTimer->SetVisibility(ESlateVisibility::Hidden);
-}
-
-void UMainWidget::UpdateTimerDisplay()
+void UMainWidget::UpdateTimerDisplay() const
 {
 	if (!CachedGameState || !PlayTimer)
 		return;
@@ -127,100 +124,51 @@ void UMainWidget::OnUpdateMissionTimerState(bool bIsActive, float TimeLimit)
 	
 	if (bIsActive)
 	{
-		StartMissionTimer();
 		QuestInfoWidget->InitQuestInfo(ULingoGameHelper::GetLingoPlayerState(GetWorld())->QuestRole);
 	}
-	else
-	{
-		StopMissionTimer();
-	}
+
+	SetMissionTimerState(bIsActive);
 }
 
-void UMainWidget::UpdateHookIndicatorState(bool bIsAiming)
+void UMainWidget::UpdateHookState(bool bIsAiming)
 {
-	if (!HookTargetIndicator)
-		return;
-
-	if ( !HookTargetIndicator->IsVisible() )
+	if (!HookTargetIndicator || !HookTargetIndicator->IsVisible() )
 		return;
 
 	// 에임 상태에 따라 이미지 변경
-	if (bIsAiming)
-	{
-		// 타겟 감지됨
-		HookTargetIndicator->SetBrushFromTexture(HookAimTexture);
-	}
-	else if (!bIsAiming)
-	{
-		// 타겟 미감지
-		HookTargetIndicator->SetBrushFromTexture(HookNoAimTexture);
-	}
+	HookTargetIndicator->SetBrushFromTexture(bIsAiming ? HookAimTexture : HookNoAimTexture );
 }
 
 void UMainWidget::UpdateSpeakWidget()
 {
-	// SpeakWidget이 없으면 리턴 (BindWidgetOptional)
-	if (!SpeakWidget)
-		return;
+	USpeakStageSubsystem* Subsystem = GetWorld()->GetSubsystem<USpeakStageSubsystem>();
+	ASpeakStageActor* SpeakStage = Subsystem ? Subsystem->GetSpeakStage() : nullptr;
+	APlayerState* CurrentSpeaker = SpeakStage ? SpeakStage->GetCurrentSpeaker() : nullptr;
 
-	// World 가져오기
-	UWorld* World = GetWorld();
-	if (!World)
-		return;
+	const bool bShouldShow = Subsystem && Subsystem->IsInitialized() && SpeakStage && CurrentSpeaker;
 
-	// SpeakStageSubsystem 가져오기
-	USpeakStageSubsystem* Subsystem = World->GetSubsystem<USpeakStageSubsystem>();
-	if (!Subsystem || !Subsystem->IsInitialized())
+	SpeakWidget->SetWidgetVisibility(bShouldShow);
+
+	if (bShouldShow)
 	{
-		// Subsystem이 없으면 SpeakWidget 숨김
-		SpeakWidget->SetWidgetVisibility(false);
-		return;
+		APlayerController* LocalPC = GetWorld()->GetFirstPlayerController();
+		if (!LocalPC)
+			return;
+
+		APlayerState* LocalPlayerState = LocalPC->GetPlayerState<APlayerState>();
+		SpeakWidget->UpdateSpeakStageUI(SpeakStage, LocalPlayerState);
 	}
-
-	// SpeakStage 가져오기
-	ASpeakStageActor* SpeakStage = Subsystem->GetSpeakStage();
-	if (!SpeakStage)
-	{
-		// SpeakStage가 없으면 SpeakWidget 숨김
-		SpeakWidget->SetWidgetVisibility(false);
-		return;
-	}
-
-	// 현재 발화자 확인
-	APlayerState* CurrentSpeaker = SpeakStage->GetCurrentSpeaker();
-	if (!CurrentSpeaker)
-	{
-		// 발화자가 없으면 (Stage 완료) SpeakWidget 숨김
-		SpeakWidget->SetWidgetVisibility(false);
-		return;
-	}
-
-	// SpeakStage가 활성화되어 있으면 SpeakWidget 표시
-	SpeakWidget->SetWidgetVisibility(true);
-
-	// 로컬 플레이어의 PlayerState 가져오기
-	APlayerController* LocalPC = World->GetFirstPlayerController();
-	if (!LocalPC)
-		return;
-
-	APlayerState* LocalPlayerState = LocalPC->GetPlayerState<APlayerState>();
-
-	// SpeakWidget UI 업데이트
-	SpeakWidget->UpdateSpeakStageUI(SpeakStage, LocalPlayerState);
 }
 
-void UMainWidget::SetTutorMessage(const FText& NewMessage)
+void UMainWidget::OnTutorMessage(const FText& NewMessage)
 {
 	if (!TutorMessage)
 		return;
 
 	// 기존 타이머가 있으면 클리어
-	if (UWorld* World = GetWorld())
+	if (TutorHideTimerHandle.IsValid())
 	{
-		if (AutoHideTimerHandle.IsValid())
-		{
-			World->GetTimerManager().ClearTimer(AutoHideTimerHandle);
-		}
+		GetWorld()->GetTimerManager().ClearTimer(TutorHideTimerHandle);
 	}
 
 	if (bIsTutorVisible)
@@ -229,8 +177,7 @@ void UMainWidget::SetTutorMessage(const FText& NewMessage)
 		PendingMessage = NewMessage;
 		bHasPendingMessage = true;
 		
-		if (TutorHideAnim)
-			PlayAnimation(TutorHideAnim);
+		PlayAnimation(TutorHideAnim);
 	}
 	else
 	{
@@ -243,7 +190,7 @@ void UMainWidget::SetTutorMessage(const FText& NewMessage)
 			bIsTutorVisible = true;
 
 			// 자동 Hide 타이머 시작
-			StartAutoHideTimer();
+			StartTutorHideTimer();
 		}
 	}
 }
@@ -263,29 +210,25 @@ void UMainWidget::OnTutorHideComplete()
 			bIsTutorVisible = true;
 
 			// 자동 Hide 타이머 시작
-			StartAutoHideTimer();
+			StartTutorHideTimer();
 		}
 	}
 }
 
-void UMainWidget::StartAutoHideTimer()
+void UMainWidget::StartTutorHideTimer()
 {
-	UWorld* World = GetWorld();
-	if (!World)
-		return;
-
 	// 기존 타이머 클리어 (안전성을 위해)
-	if (AutoHideTimerHandle.IsValid())
+	if (TutorHideTimerHandle.IsValid())
 	{
-		World->GetTimerManager().ClearTimer(AutoHideTimerHandle);
+		GetWorld()->GetTimerManager().ClearTimer(TutorHideTimerHandle);
 	}
 
 	// 지정된 시간 후 자동으로 Hide 애니메이션 재생
-	World->GetTimerManager().SetTimer(
-		AutoHideTimerHandle,
+	GetWorld()->GetTimerManager().SetTimer(
+		TutorHideTimerHandle,
 		[this]()
 		{
-			if (bIsTutorVisible && TutorHideAnim)
+			if (bIsTutorVisible)
 			{
 				PlayAnimation(TutorHideAnim);
 			}
@@ -295,37 +238,69 @@ void UMainWidget::StartAutoHideTimer()
 	);
 }
 
-UAutoDespawnItem* UMainWidget::AddItemToBox()
+void UMainWidget::AddItemToBoxList(TArray<FResultStatData> InDataList)
 {
-	if (!ItemHorizontalBox)
+	if (InDataList.Num() == 0)
+		return;
+
+	// 기존 타이머가 있으면 클리어
+	if (ItemAddTimerHandle.IsValid())
 	{
-		PRINTLOG( TEXT("UMainWidget::AddItemToBox - ItemHorizontalBox is null!"));
-		return nullptr;
+		GetWorld()->GetTimerManager().ClearTimer(ItemAddTimerHandle);
 	}
 
-	if (!ItemWidgetClass)
-	{
-		PRINTLOG( TEXT("UMainWidget::AddItemToBox - ItemWidgetClass is not set!"));
-		return nullptr;
-	}
+	// 대기 리스트에 데이터 복사 및 인덱스 초기화
+	PendingItemDataList = InDataList;
+	CurItemIndex = 0;
 
-	UWorld* World = GetWorld();
-	if (!World)
-	{
-		PRINTLOG( TEXT("UMainWidget::AddItemToBox - World is null!"));
-		return nullptr;
-	}
+	// 첫 번째 아이템은 즉시 추가
+	ProcessNextItem();
+}
+
+
+void UMainWidget::AddItemToBoxItem(const FResultStatData& InData)
+{
+	if (!ItemHorizontalBox || !ItemWidgetClass )
+		return;
 
 	// 새 아이템 생성
-	UAutoDespawnItem* NewItem = CreateWidget<UAutoDespawnItem>(World, ItemWidgetClass);
-	if (!NewItem)
+	if (auto SpawnItem = CreateWidget<UAutoDespawnItem>(GetWorld(), ItemWidgetClass))
 	{
-		PRINTLOG( TEXT("UMainWidget::AddItemToBox - Failed to create widget!"));
-		return nullptr;
+		ItemHorizontalBox->AddChild(SpawnItem);
+
+		SpawnItem->InitData(InData);
+	}
+}
+
+void UMainWidget::ProcessNextItem()
+{
+	if (CurItemIndex >= PendingItemDataList.Num())
+	{
+		// 모든 아이템 추가 완료
+		PendingItemDataList.Empty();
+		CurItemIndex = 0;
+		return;
 	}
 
-	// HorizontalBox에 추가 (왼쪽에 추가되지만 Right Alignment로 오른쪽 정렬됨)
-	ItemHorizontalBox->AddChild(NewItem);
+	// 현재 인덱스의 아이템 추가
+	AddItemToBoxItem(PendingItemDataList[CurItemIndex]);
+	CurItemIndex++;
 
-	return NewItem;
+	// 다음 아이템이 있으면 타이머 설정
+	if (CurItemIndex < PendingItemDataList.Num())
+	{
+		GetWorld()->GetTimerManager().SetTimer(
+			ItemAddTimerHandle,
+			this,
+			&UMainWidget::ProcessNextItem,
+			ItemAddInterval,
+			false
+		);
+	}
+	else
+	{
+		// 모든 아이템 추가 완료
+		PendingItemDataList.Empty();
+		CurItemIndex = 0;
+	}
 }

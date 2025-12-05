@@ -44,6 +44,11 @@ void UAutoDespawnItem::NativeDestruct()
 	Super::NativeDestruct();
 }
 
+void UAutoDespawnItem::InitData(const FResultStatData& InData)
+{
+	ItemWidget->InitData(InData);
+}
+
 void UAutoDespawnItem::StartFadeOut()
 {
 	if (FadeOutAnim)
@@ -58,7 +63,6 @@ void UAutoDespawnItem::StartFadeOut()
 	else
 	{
 		// 애니메이션 없으면 바로 제거
-		PRINTLOG( TEXT("UAutoDespawnItem::StartFadeOut - FadeOutAnim is null, removing immediately"));
 		RemoveSelf();
 	}
 }
