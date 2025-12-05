@@ -8,6 +8,7 @@
 #include "UKLingoNetworkSystem.h"
 #include "NetworkData.h"
 #include "ALingoGameMode.h"
+#include "FoodCourtManager.h"
 #include "GameLogging.h"
 #include "LuggageManager.h"
 #include "ULingoGameHelper.h"
@@ -216,5 +217,12 @@ void AContactTrigger::OnListenResponseScenario(struct FResponseScenario& Respons
 		}
 
 		VoiceConversationSystem->PlayVoiceAudio(ResponseData.voice_data);
+
+		AFoodCourtManager* FCourtManager = Cast<AFoodCourtManager>(UGameplayStatics::GetActorOfClass(
+			World, AFoodCourtManager::StaticClass()));
+		if (FCourtManager)
+		{
+			FCourtManager->SetFoodCourtInfo();
+		}
 	}
 }
