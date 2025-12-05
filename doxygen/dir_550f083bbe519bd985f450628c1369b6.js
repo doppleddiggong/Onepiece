@@ -19,6 +19,7 @@ var dir_550f083bbe519bd985f450628c1369b6 =
     [ "USpeakingJudesWidget.cpp", "USpeakingJudesWidget_8cpp.html", null ],
     [ "USpeakWidget.cpp", "USpeakWidget_8cpp.html", null ],
     [ "UStateWidget.cpp", "UStateWidget_8cpp.html", null ],
+    [ "UToastWidget.cpp", "UToastWidget_8cpp.html", null ],
     [ "UTutorMessage.cpp", "UTutorMessage_8cpp.html", null ],
     [ "UWordButton.cpp", "UWordButton_8cpp.html", null ],
     [ "UWordWidget.cpp", "UWordWidget_8cpp.html", null ]

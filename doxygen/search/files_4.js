@@ -18,5 +18,6 @@ var searchData=
   ['fmathhelper_2eh_15',['FMathHelper.h',['../FMathHelper_8h.html',1,'']]],
   ['freaddata_2eh_16',['FReadData.h',['../FReadData_8h.html',1,'']]],
   ['fresourcetexturedata_2eh_17',['FResourceTextureData.h',['../FResourceTextureData_8h.html',1,'']]],
-  ['fwordstudydata_2eh_18',['FWordStudyData.h',['../FWordStudyData_8h.html',1,'']]]
+  ['fresultstatdata_2eh_18',['FResultStatData.h',['../FResultStatData_8h.html',1,'']]],
+  ['fwordstudydata_2eh_19',['FWordStudyData.h',['../FWordStudyData_8h.html',1,'']]]
 ];

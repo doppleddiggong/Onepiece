@@ -19,7 +19,7 @@ var searchData=
   ['equestrole_16',['EQuestRole',['../EQuestRole_8h.html#af9534ca095b724046bf40abddcbb95e9',1,'EQuestRole.h']]],
   ['equesttype_17',['EQuestType',['../ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921',1,'ALingoGameState.h']]],
   ['eresourcetexturetype_18',['EResourceTextureType',['../FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2',1,'FResourceTextureData.h']]],
-  ['eresultitemwidgettype_19',['EResultItemWidgetType',['../UResultStatWidget_8h.html#aaac025acffbbed1878d579b0b3930065',1,'UResultStatWidget.h']]],
+  ['eresultitemwidgettype_19',['EResultItemWidgetType',['../FResultStatData_8h.html#aaac025acffbbed1878d579b0b3930065',1,'FResultStatData.h']]],
   ['eservermode_20',['EServerMode',['../UCustomNetworkSettings_8h.html#a79cfeb7c9f94018b98c2415dc06d4577',1,'UCustomNetworkSettings.h']]],
   ['evfxtype_21',['EVFXType',['../EVFXType_8h.html#af8435b1c8c0e40b2bbdf03bb1ca6b4db',1,'EVFXType.h']]]
 ];

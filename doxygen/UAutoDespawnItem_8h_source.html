@@ -114,51 +114,59 @@ $(document).ready(function(){initNavTree('UAutoDespawnItem_8h_source.html',''); 
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;CoreMinimal.h&quot;</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;Blueprint/UserWidget.h&quot;</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;UAutoDespawnItem.generated.h&quot;</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>UCLASS()</div>
-<div class="foldopen" id="foldopen00014" data-start="{" data-end="};">
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="classUAutoDespawnItem.html">   14</a></span>class ONEPIECE_API <a class="code hl_class" href="classUAutoDespawnItem.html">UAutoDespawnItem</a> : public UUserWidget</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>{</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    GENERATED_BODY()</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="keyword">protected</span>:</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> NativeConstruct() <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> NativeDestruct() <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = <span class="stringliteral">&quot;Item&quot;</span>)</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="classUAutoDespawnItem.html#ad902630b26a2322c6beb3bf49c641f4e">   25</a></span>    float Lifetime = 3.0f;</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = &quot;Item&quot;)</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="classUAutoDespawnItem.html#ac70830c98f02ef823bb60ead73536187">   29</a></span>    <span class="keywordtype">float</span> FadeOutDuration = 0.3f;</div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;<a class="code" href="UResultStatWidget_8h.html">UResultStatWidget.h</a>&quot;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;Blueprint/UserWidget.h&quot;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;UAutoDespawnItem.generated.h&quot;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>UCLASS()</div>
+<div class="foldopen" id="foldopen00015" data-start="{" data-end="};">
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="classUAutoDespawnItem.html">   15</a></span>class ONEPIECE_API <a class="code hl_class" href="classUAutoDespawnItem.html">UAutoDespawnItem</a> : public UUserWidget</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>{</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    GENERATED_BODY()</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> NativeConstruct() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> NativeDestruct() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="keywordtype">void</span> InitData(<span class="keyword">const</span> <a class="code hl_struct" href="structFResultStatData.html">FResultStatData</a>&amp; InData);</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    UFUNCTION()</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="keywordtype">void</span> StartFadeOut();</div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    UPROPERTY(Transient, meta = (BindWidgetAnim))</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="classUAutoDespawnItem.html#af93db154f5ac28caa7dec64f563e71e8">   33</a></span>    TObjectPtr&lt;class UWidgetAnimation&gt; FadeOutAnim;</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    UFUNCTION()</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="keywordtype">void</span> RemoveSelf();</div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    UPROPERTY(meta = (BindWidget), BlueprintReadOnly)</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="classUAutoDespawnItem.html#a991af186962071865366cc0594dc53db">   37</a></span>    TObjectPtr&lt;class <a class="code hl_class" href="classUResultStatWidget.html">UResultStatWidget</a>&gt; ItemWidget;</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>private:</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="classUAutoDespawnItem.html#aa7d9d844456ba7fb31abd8a64a40927f">   41</a></span>    FTimerHandle LifetimeTimer;</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    UFUNCTION()</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="keywordtype">void</span> StartFadeOut();</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    UFUNCTION()</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="keywordtype">void</span> RemoveSelf();</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>};</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    UPROPERTY(meta = (BindWidget), BlueprintReadOnly)</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="classUAutoDespawnItem.html#a991af186962071865366cc0594dc53db">   38</a></span>    TObjectPtr&lt;class <a class="code hl_class" href="classUResultStatWidget.html">UResultStatWidget</a>&gt; ItemWidget;</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    UPROPERTY(Transient, meta = (BindWidgetAnim))</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="classUAutoDespawnItem.html#af93db154f5ac28caa7dec64f563e71e8">   42</a></span>    TObjectPtr&lt;class UWidgetAnimation&gt; FadeOutAnim;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = &quot;Item&quot;)</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="classUAutoDespawnItem.html#ad902630b26a2322c6beb3bf49c641f4e">   46</a></span>    <span class="keywordtype">float</span> Lifetime = 3.0f;</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = &quot;Item&quot;)</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="classUAutoDespawnItem.html#ac70830c98f02ef823bb60ead73536187">   50</a></span>    <span class="keywordtype">float</span> FadeOutDuration = 0.3f;</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>private:</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="classUAutoDespawnItem.html#aa7d9d844456ba7fb31abd8a64a40927f">   54</a></span>    FTimerHandle LifetimeTimer;</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>};</div>
 </div>
-<div class="ttc" id="aclassUAutoDespawnItem_html"><div class="ttname"><a href="classUAutoDespawnItem.html">UAutoDespawnItem</a></div><div class="ttdoc">자동으로 사라지는 아이템 위젯</div><div class="ttdef"><b>Definition</b> <a href="UAutoDespawnItem_8h_source.html#l00014">UAutoDespawnItem.h:15</a></div></div>
-<div class="ttc" id="aclassUResultStatWidget_html"><div class="ttname"><a href="classUResultStatWidget.html">UResultStatWidget</a></div><div class="ttdef"><b>Definition</b> <a href="UResultStatWidget_8h_source.html#l00021">UResultStatWidget.h:22</a></div></div>
+<div class="ttc" id="aUResultStatWidget_8h_html"><div class="ttname"><a href="UResultStatWidget_8h.html">UResultStatWidget.h</a></div></div>
+<div class="ttc" id="aclassUAutoDespawnItem_html"><div class="ttname"><a href="classUAutoDespawnItem.html">UAutoDespawnItem</a></div><div class="ttdoc">자동으로 사라지는 아이템 위젯</div><div class="ttdef"><b>Definition</b> <a href="UAutoDespawnItem_8h_source.html#l00015">UAutoDespawnItem.h:16</a></div></div>
+<div class="ttc" id="aclassUResultStatWidget_html"><div class="ttname"><a href="classUResultStatWidget.html">UResultStatWidget</a></div><div class="ttdef"><b>Definition</b> <a href="UResultStatWidget_8h_source.html#l00014">UResultStatWidget.h:15</a></div></div>
+<div class="ttc" id="astructFResultStatData_html"><div class="ttname"><a href="structFResultStatData.html">FResultStatData</a></div><div class="ttdoc">Result Stat 위젯 통합 데이터 구조 위젯 타입, 색상 스타일, 각 타입별 데이터를 통합 관리</div><div class="ttdef"><b>Definition</b> <a href="FResultStatData_8h_source.html#l00022">FResultStatData.h:23</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_55b064ed9f704d76d3805f2fda876350.html">UI</a></li><li class="navelem"><a class="el" href="dir_e82f2835ab4116a5eee79a37f645c6c8.html">Public</a></li><li class="navelem"><a class="el" href="UAutoDespawnItem_8h.html">UAutoDespawnItem.h</a></li>
-    <li class="footer">생성시간 : 목 12월 4 2025 15:45:51, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 금 12월 5 2025 03:15:38, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

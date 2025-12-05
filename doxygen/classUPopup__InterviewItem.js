@@ -1,7 +1,7 @@
 var classUPopup__InterviewItem =
 [
     [ "GetAnswer", "classUPopup__InterviewItem.html#a215e6359b1851074e6484aa82023fa8f", null ],
-    [ "GetAnswerData", "classUPopup__InterviewItem.html#ab002f296d1ad72fbee5044c8dd1dae86", null ],
+    [ "GetAnswerData", "classUPopup__InterviewItem.html#a37802a8502a56b0665fdacd47093d8ba", null ],
     [ "InitItem", "classUPopup__InterviewItem.html#a8d07dc29d64dd3edaee2622f5665642c", null ],
     [ "NativeConstruct", "classUPopup__InterviewItem.html#a71b7538c521bc48bc949a8514a0200dd", null ],
     [ "Edit_Answer", "classUPopup__InterviewItem.html#a6577931dd997f52a9d8d50778e96bcc2", null ],

@@ -1,5 +1,6 @@
 var classUAutoDespawnItem =
 [
+    [ "InitData", "classUAutoDespawnItem.html#a985c7a12d40fe46241688cc446f2b16a", null ],
     [ "NativeConstruct", "classUAutoDespawnItem.html#a46baa65adc037eebdcb13e6311e6b039", null ],
     [ "NativeDestruct", "classUAutoDespawnItem.html#acf0d708f544efb8094325644b35c4393", null ],
     [ "RemoveSelf", "classUAutoDespawnItem.html#a8f6214ae645b37d2fef7f07d3b9652c3", null ],

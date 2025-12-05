@@ -228,43 +228,52 @@ $(document).ready(function(){initNavTree('APlayerActor_8h_source.html',''); init
 <div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span> </div>
 <div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span><span class="keyword">private</span>:</div>
 <div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>    <span class="keywordtype">void</span> CreateMainWidget();</div>
-<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span> </div>
-<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>    <span class="comment">// grab 시 들어올릴 위치</span></div>
-<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>    UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category=<span class="stringliteral">&quot;Interaction&quot;</span>)</div>
-<div class="line"><a id="l00144" name="l00144"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#a9849d2b52db50d66145740c128e26d37">  144</a></span>    USceneComponent* HoldPosition;</div>
-<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span> </div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>    <span class="comment">// 서버쪽 pitch 수동으로 동기화</span></div>
-<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>    <span class="comment">// bUsePawnControlRotation은 서버-&gt;클라로 전달 안됨</span></div>
-<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>    UPROPERTY(ReplicatedUsing=OnRep_LookPitch)</div>
-<div class="line"><a id="l00149" name="l00149"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#a60fe9ba6d54052fad6f9c4a8305fd023">  149</a></span>    <span class="keywordtype">float</span> LookPitch;</div>
-<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span> </div>
-<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>private:</div>
-<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>    UPROPERTY(EditDefaultsOnly, Category = &quot;UI&quot;)</div>
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#a7dad1553f9372858902bdd65e2f77243">  154</a></span>    TSubclassOf&lt;class <a class="code hl_class" href="classUMainWidget.html">UMainWidget</a>&gt; MainWidgetClass;</div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span> </div>
-<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>    UPROPERTY()</div>
-<div class="line"><a id="l00158" name="l00158"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#a21817a3bc97f6962b8ece7941b67996d">  158</a></span>    TObjectPtr&lt;class <a class="code hl_class" href="classUMainWidget.html">UMainWidget</a>&gt; MainWidget;</div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>    </div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>    <span class="comment">// Movement 관련 변수</span></div>
-<div class="line"><a id="l00161" name="l00161"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#a1ea19f988738aada96a8f3637338163f">  161</a></span>    <span class="keywordtype">float</span> WalkSpeed = 200.f;</div>
-<div class="line"><a id="l00162" name="l00162"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#a0e9166eaab407919546d8accca997855">  162</a></span>    <span class="keywordtype">float</span> RunSpeed = 500.f;</div>
-<div class="line"><a id="l00163" name="l00163"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#aece858bea4efda77305623144f2bad45">  163</a></span>    <span class="keywordtype">bool</span> bIsRunning = false;</div>
-<div class="line"><a id="l00164" name="l00164"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#ab2162e911aea12e7e720e5bfcb3dbf8f">  164</a></span>    <span class="keywordtype">bool</span> bIsJumpStart = false;</div>
-<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>};</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>    <span class="keywordtype">void</span> CreateToastWidget();</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>    </div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>    <span class="comment">// grab 시 들어올릴 위치</span></div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>    UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category=<span class="stringliteral">&quot;Interaction&quot;</span>)</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#a9849d2b52db50d66145740c128e26d37">  145</a></span>    USceneComponent* HoldPosition;</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span> </div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>    <span class="comment">// 서버쪽 pitch 수동으로 동기화</span></div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>    <span class="comment">// bUsePawnControlRotation은 서버-&gt;클라로 전달 안됨</span></div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>    UPROPERTY(ReplicatedUsing=OnRep_LookPitch)</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#a60fe9ba6d54052fad6f9c4a8305fd023">  150</a></span>    <span class="keywordtype">float</span> LookPitch;</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span> </div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>private:</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>    UPROPERTY(EditDefaultsOnly, Category = &quot;UI&quot;)</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#a7dad1553f9372858902bdd65e2f77243">  155</a></span>    TSubclassOf&lt;class <a class="code hl_class" href="classUMainWidget.html">UMainWidget</a>&gt; MainWidgetClass;</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span> </div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>    UPROPERTY()</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#a21817a3bc97f6962b8ece7941b67996d">  159</a></span>    TObjectPtr&lt;class <a class="code hl_class" href="classUMainWidget.html">UMainWidget</a>&gt; MainWidget;</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span> </div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>    UPROPERTY(EditDefaultsOnly, Category = &quot;UI&quot;)</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#a61c0d769522fe0960b2f15d456d8f68d">  163</a></span>    TSubclassOf&lt;class <a class="code hl_class" href="classUToastWidget.html">UToastWidget</a>&gt; ToastWidgetClass;</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span> </div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>    UPROPERTY()</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#ae8fbec6d1c7f5d41e2e5c333d35d3a17">  167</a></span>    TObjectPtr&lt;class <a class="code hl_class" href="classUToastWidget.html">UToastWidget</a>&gt; ToastWidget;</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span> </div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>    </div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>    <span class="comment">// Movement 관련 변수</span></div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#a1ea19f988738aada96a8f3637338163f">  171</a></span>    <span class="keywordtype">float</span> WalkSpeed = 200.f;</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#a0e9166eaab407919546d8accca997855">  172</a></span>    <span class="keywordtype">float</span> RunSpeed = 500.f;</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#aece858bea4efda77305623144f2bad45">  173</a></span>    <span class="keywordtype">bool</span> bIsRunning = false;</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#ab2162e911aea12e7e720e5bfcb3dbf8f">  174</a></span>    <span class="keywordtype">bool</span> bIsJumpStart = false;</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>};</div>
 </div>
 <div class="ttc" id="aIControllable_8h_html"><div class="ttname"><a href="IControllable_8h.html">IControllable.h</a></div><div class="ttdoc">UControllable 클래스를 선언합니다.</div></div>
 <div class="ttc" id="aclassAPlayerActor_html"><div class="ttname"><a href="classAPlayerActor.html">APlayerActor</a></div><div class="ttdoc">Main character driven directly by the player.</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8h_source.html#l00021">APlayerActor.h:22</a></div></div>
 <div class="ttc" id="aclassAPlayerActor_html_a12e67170b20f7eb4ff9bf4090c59db90"><div class="ttname"><a href="classAPlayerActor.html#a12e67170b20f7eb4ff9bf4090c59db90">APlayerActor::GetIsJumpStart</a></div><div class="ttdeci">FORCEINLINE bool GetIsJumpStart()</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8h_source.html#l00114">APlayerActor.h:114</a></div></div>
 <div class="ttc" id="aclassIControllable_html"><div class="ttname"><a href="classIControllable.html">IControllable</a></div><div class="ttdef"><b>Definition</b> <a href="IControllable_8h_source.html#l00023">IControllable.h:24</a></div></div>
 <div class="ttc" id="aclassUMainWidget_html"><div class="ttname"><a href="classUMainWidget.html">UMainWidget</a></div><div class="ttdoc">메인 UI 위젯</div><div class="ttdef"><b>Definition</b> <a href="UMainWidget_8h_source.html#l00014">UMainWidget.h:15</a></div></div>
+<div class="ttc" id="aclassUToastWidget_html"><div class="ttname"><a href="classUToastWidget.html">UToastWidget</a></div><div class="ttdef"><b>Definition</b> <a href="UToastWidget_8h_source.html#l00013">UToastWidget.h:14</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_71a9f6b769ee24fe8598c19ea2d70480.html">Character</a></li><li class="navelem"><a class="el" href="dir_82ba722683279238407f867a1ffc0276.html">Public</a></li><li class="navelem"><a class="el" href="APlayerActor_8h.html">APlayerActor.h</a></li>
-    <li class="footer">생성시간 : 목 12월 4 2025 15:45:50, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 금 12월 5 2025 03:15:38, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

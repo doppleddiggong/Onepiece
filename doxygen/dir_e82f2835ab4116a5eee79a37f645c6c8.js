@@ -19,6 +19,7 @@ var dir_e82f2835ab4116a5eee79a37f645c6c8 =
     [ "USpeakingJudesWidget.h", "USpeakingJudesWidget_8h.html", "USpeakingJudesWidget_8h" ],
     [ "USpeakWidget.h", "USpeakWidget_8h.html", "USpeakWidget_8h" ],
     [ "UStateWidget.h", "UStateWidget_8h.html", "UStateWidget_8h" ],
+    [ "UToastWidget.h", "UToastWidget_8h.html", "UToastWidget_8h" ],
     [ "UTutorMessage.h", "UTutorMessage_8h.html", "UTutorMessage_8h" ],
     [ "UWordButton.h", "UWordButton_8h.html", "UWordButton_8h" ],
     [ "UWordWidget.h", "UWordWidget_8h.html", "UWordWidget_8h" ]

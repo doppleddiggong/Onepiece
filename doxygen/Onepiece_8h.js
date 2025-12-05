@@ -18,5 +18,6 @@ var Onepiece_8h =
     [ "Stage3Start", "Onepiece_8h.html#a2e7ce013d07feee9b57a7ebed463ac99", null ],
     [ "Stage4End", "Onepiece_8h.html#a41af88bcbb76137849dde9e51a36909a", null ],
     [ "Stage4Start", "Onepiece_8h.html#a5369db03cb95a068ce7ca975e8e1b55b", null ],
+    [ "Toast", "Onepiece_8h.html#a57a60d2bc3fea246d06c27e4939c7c6e", null ],
     [ "ToastManager", "Onepiece_8h.html#a07dfea414258bbc2a9e8f98ced349615", null ]
 ];

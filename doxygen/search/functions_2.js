@@ -25,8 +25,8 @@ var searchData=
   ['closedoor_5fimplementation_22',['CloseDoor_Implementation',['../classADoor.html#a3fd0eaa1a7e1e7aca20d64d89f6192f8',1,'ADoor']]],
   ['closedrawwindow_23',['closedrawwindow',['../classUPopup__WriteBoard.html#a62788185321e271e8dc7aae016777f73',1,'UPopup_WriteBoard::CloseDrawWindow()'],['../classUDrawingBoardWidget.html#a795b11bfecbc53a377fadf35ad262408',1,'UDrawingBoardWidget::CloseDrawWindow()']]],
   ['cmd_5finfo_24',['cmd_info',['../classIControllable.html#ad45d954ffa12ec683742f4797bc3a05a',1,'IControllable::Cmd_Info()'],['../classAPlayerActor.html#a145afa6a2e3058f74d9268588cf56ddf',1,'APlayerActor::Cmd_Info()']]],
-  ['cmd_5fjump_25',['cmd_jump',['../classIControllable.html#ac1d95ea53739c16a86f25e3bb2ee926b',1,'IControllable::Cmd_Jump()'],['../classAPlayerActor.html#a4bbf9c7d111a15814b99b4e32a79cfda',1,'APlayerActor::Cmd_Jump() override']]],
-  ['cmd_5flook_26',['cmd_look',['../classAPlayerActor.html#a21a14eaae23da75b919b848aa87cb535',1,'APlayerActor::Cmd_Look()'],['../classIControllable.html#a45c2124ac1edc67a18538853d12d30bb',1,'IControllable::Cmd_Look(const FVector2D &amp;Axis)=0']]],
+  ['cmd_5fjump_25',['cmd_jump',['../classIControllable.html#ac1d95ea53739c16a86f25e3bb2ee926b',1,'IControllable::Cmd_Jump()'],['../classAPlayerActor.html#a4bbf9c7d111a15814b99b4e32a79cfda',1,'APlayerActor::Cmd_Jump()']]],
+  ['cmd_5flook_26',['cmd_look',['../classIControllable.html#a45c2124ac1edc67a18538853d12d30bb',1,'IControllable::Cmd_Look()'],['../classAPlayerActor.html#a21a14eaae23da75b919b848aa87cb535',1,'APlayerActor::Cmd_Look()']]],
   ['cmd_5fmove_27',['cmd_move',['../classIControllable.html#a19f4250db751284d9964c9a494512fa7',1,'IControllable::Cmd_Move()'],['../classAPlayerActor.html#a0db8efea43cc28a694e55d72014642e1',1,'APlayerActor::Cmd_Move(const FVector2D &amp;Axis) override']]],
   ['cmd_5frecordend_28',['cmd_recordend',['../classAPlayerActor.html#a728c9b03094ece6b6313636335f4a6a1',1,'APlayerActor::Cmd_RecordEnd()'],['../classIControllable.html#a8055f9515674a0628221640824ca409e',1,'IControllable::Cmd_RecordEnd()']]],
   ['cmd_5frecordstart_29',['cmd_recordstart',['../classIControllable.html#aae8b02c0a353df4a45b12d05a0bb14de',1,'IControllable::Cmd_RecordStart()'],['../classAPlayerActor.html#ab442f15c0b77fdd38f7a5b7280cf2398',1,'APlayerActor::Cmd_RecordStart() override']]],
@@ -42,5 +42,6 @@ var searchData=
   ['createsoundwavefromwavdata_39',['CreateSoundWaveFromWavData',['../classUVoiceFunctionLibrary.html#a0a42913d3f8f356e575bf9805e6e7af3',1,'UVoiceFunctionLibrary']]],
   ['createspeakstageactor_40',['CreateSpeakStageActor',['../classUSpeakStageSubsystem.html#a5ee5ae852b3dff18630746f04935f440',1,'USpeakStageSubsystem']]],
   ['createspeakstagesystem_41',['CreateSpeakStageSystem',['../classUSpeakStageSubsystem.html#a811608e2bc318d4de2cb11e431abad4f',1,'USpeakStageSubsystem']]],
-  ['createtestscenariodata_42',['CreateTestScenarioData',['../classASpeakStageActor.html#ad4b8bc1cf80cf981aef61d2e346e4c8c',1,'ASpeakStageActor']]]
+  ['createtestscenariodata_42',['CreateTestScenarioData',['../classASpeakStageActor.html#ad4b8bc1cf80cf981aef61d2e346e4c8c',1,'ASpeakStageActor']]],
+  ['createtoastwidget_43',['CreateToastWidget',['../classAPlayerActor.html#a2f07dd7eee5e4a05fa2457ca52382f3e',1,'APlayerActor']]]
 ];

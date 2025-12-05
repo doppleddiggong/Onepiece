@@ -12,6 +12,7 @@ var classAPlayerActor =
     [ "Cmd_Run", "classAPlayerActor.html#ada2f869ec18111de89ffc136a9f88696", null ],
     [ "Cmd_StopMove", "classAPlayerActor.html#a6fc6877c49a4764a6ab1f1dd95eb2878", null ],
     [ "CreateMainWidget", "classAPlayerActor.html#a63641fed19fdb23e32cb16fed3ba2d79", null ],
+    [ "CreateToastWidget", "classAPlayerActor.html#a2f07dd7eee5e4a05fa2457ca52382f3e", null ],
     [ "GetIsJumpStart", "classAPlayerActor.html#a12e67170b20f7eb4ff9bf4090c59db90", null ],
     [ "GetIsRunning", "classAPlayerActor.html#a1aa142689877ae7e98442e3d6c154f71", null ],
     [ "GetLifetimeReplicatedProps", "classAPlayerActor.html#a96895f47e4451ef42317ea07a4b51990", null ],
@@ -44,6 +45,8 @@ var classAPlayerActor =
     [ "MoveComp", "classAPlayerActor.html#a3fb4598e21a9c5af2d9b3007adab9496", null ],
     [ "RunSpeed", "classAPlayerActor.html#a0e9166eaab407919546d8accca997855", null ],
     [ "SpringArmComp", "classAPlayerActor.html#ac6ce7fa6f2c0a29dc386147130c26802", null ],
+    [ "ToastWidget", "classAPlayerActor.html#ae8fbec6d1c7f5d41e2e5c333d35d3a17", null ],
+    [ "ToastWidgetClass", "classAPlayerActor.html#a61c0d769522fe0960b2f15d456d8f68d", null ],
     [ "VoiceConversationSystem", "classAPlayerActor.html#a0c1400db5f943254071089e512a2bb25", null ],
     [ "WalkSpeed", "classAPlayerActor.html#a1ea19f988738aada96a8f3637338163f", null ]
 ];

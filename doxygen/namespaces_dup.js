@@ -11,6 +11,7 @@ var namespaces_dup =
       [ "Loading", "namespaceGameLayer.html#ae4c4bd33e56196bb1e54f458059d5345", null ],
       [ "LoadingCircle", "namespaceGameLayer.html#a919c4166af88ffa5c2fd2d860c2c40a9", null ],
       [ "Popup", "namespaceGameLayer.html#a6cdeb86db303cee7271ae8d7246fe8f1", null ],
+      [ "Toast", "namespaceGameLayer.html#a57a60d2bc3fea246d06c27e4939c7c6e", null ],
       [ "ToastManager", "namespaceGameLayer.html#a07dfea414258bbc2a9e8f98ced349615", null ]
     ] ],
     [ "GameMessage", "namespaceGameMessage.html", [

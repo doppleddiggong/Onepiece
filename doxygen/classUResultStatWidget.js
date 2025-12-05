@@ -1,6 +1,7 @@
 var classUResultStatWidget =
 [
     [ "ApplyStyle", "classUResultStatWidget.html#ad73fd8b3681afe0bc6b1f4f0780a632f", null ],
+    [ "InitData", "classUResultStatWidget.html#a9872a7292ee012eeeabd1e99d5a237f1", null ],
     [ "LoadStyleTable", "classUResultStatWidget.html#a54e6729504ea85528a33deef1dd64d00", null ],
     [ "NativePreConstruct", "classUResultStatWidget.html#a6c1d212eacb4c0350a0fd3d4b50a6ca4", null ],
     [ "SetColorType", "classUResultStatWidget.html#a917d50afedf9217bf0eb24871044a160", null ],
@@ -8,8 +9,9 @@ var classUResultStatWidget =
     [ "SetRateValue", "classUResultStatWidget.html#a7d87220b2cea1f3454b37b72c8381547", null ],
     [ "SetScoreValue", "classUResultStatWidget.html#a8f3bae4e26ef495ea816d8531d5673b1", null ],
     [ "SetSymbolValue", "classUResultStatWidget.html#a9efc8dd989e411fade057cd91b440d20", null ],
+    [ "SetTitleText", "classUResultStatWidget.html#ab5e24d879d8056fd64ec93ea997b6c35", null ],
     [ "SetWidgetType", "classUResultStatWidget.html#a3a2529d449d869c200a853e0c56f8dd9", null ],
-    [ "UpdateWidgetPanel", "classUResultStatWidget.html#a36a1a3de676c16979354730c7310ae49", null ],
+    [ "UpdateWidgetPanel", "classUResultStatWidget.html#a1d3c0bd66566bc018cc6e4d2e3edf5b6", null ],
     [ "Border_Title", "classUResultStatWidget.html#aad275f116c277fcca508cedc416d8589", null ],
     [ "ColorType", "classUResultStatWidget.html#adf85333a9a026431af70f8e1eaa055a9", null ],
     [ "GradeValue", "classUResultStatWidget.html#af13b2af493a114310e62b4811d110603", null ],

@@ -34,7 +34,8 @@ var hierarchy =
       [ "ALingoGameState", "classALingoGameState.html", null ]
     ] ],
     [ "ALevelScriptActor", null, [
-      [ "ALobbyLevelScriptActor", "classALobbyLevelScriptActor.html", null ]
+      [ "ALobbyLevelScriptActor", "classALobbyLevelScriptActor.html", null ],
+      [ "AMainLevelScriptActor", "classAMainLevelScriptActor.html", null ]
     ] ],
     [ "APlayerController", null, [
       [ "APlayerControl", "classAPlayerControl.html", null ],
@@ -87,6 +88,7 @@ var hierarchy =
     [ "FResponseUserMe", "structFResponseUserMe.html", null ],
     [ "FResponseUserRegister", "structFResponseUserRegister.html", null ],
     [ "FResponseUserToken", "structFResponseUserToken.html", null ],
+    [ "FResultStatData", "structFResultStatData.html", null ],
     [ "FScenarioTargetData", "structFScenarioTargetData.html", null ],
     [ "FSequenceCommand", "structFSequenceCommand.html", null ],
     [ "FServerConfig", "structFServerConfig.html", null ],
@@ -200,6 +202,7 @@ var hierarchy =
       [ "UStartWidget", "classUStartWidget.html", null ],
       [ "UStateWidget", "classUStateWidget.html", null ],
       [ "UTextureButton", "classUTextureButton.html", null ],
+      [ "UToastWidget", "classUToastWidget.html", null ],
       [ "UTutorMessage", "classUTutorMessage.html", null ],
       [ "UWordButton", "classUWordButton.html", null ],
       [ "UWordWidget", "classUWordWidget.html", null ]
