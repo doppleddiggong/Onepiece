@@ -81,3 +81,8 @@ void UBroadcastManager::SendTutorMessage(const FText& Message)
 	OnTutorMessage.Broadcast(Message);
 }
 
+void UBroadcastManager::SendAddItemToBoxList(const TArray<FResultStatData>& ItemDataList)
+{
+	OnAddItemToBoxList.Broadcast(ItemDataList);
+}
+

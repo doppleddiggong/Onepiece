@@ -39,7 +39,7 @@ public:
 	void OnTutorMessage(const FText& NewMessage);
 
 	UFUNCTION(BlueprintCallable, Category = "Item")
-	void AddItemToBoxList(TArray<FResultStatData> InDataList);
+	void AddItemToBoxList(const TArray<FResultStatData>& InDataList);
 
 	UFUNCTION(BlueprintCallable, Category = "Item")
 	void AddItemToBoxItem(const FResultStatData& InData);

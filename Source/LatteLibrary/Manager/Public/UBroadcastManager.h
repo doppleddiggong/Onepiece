@@ -10,6 +10,7 @@
 #include "Macro.h"
 #include "EDamageType.h"
 #include "EQuestRole.h"
+#include "FResultStatData.h"
 #include "Subsystems/GameInstanceSubsystem.h"
 #include "UBroadcastManager.generated.h"
 
@@ -131,4 +132,11 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category="Events")
 	void SendTutorMessage(const FText& Message);
+
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnAddItemToBoxList, const TArray<FResultStatData>&, ItemDataList);
+	UPROPERTY(BlueprintAssignable, Category="Events")
+	FOnAddItemToBoxList OnAddItemToBoxList;
+
+	UFUNCTION(BlueprintCallable, Category="Events")
+	void SendAddItemToBoxList(const TArray<FResultStatData>& ItemDataList);
 };

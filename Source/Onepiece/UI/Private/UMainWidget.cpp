@@ -53,6 +53,7 @@ void UMainWidget::NativeConstruct()
 	{
 		BM->OnUpdateMissionTimerState.AddDynamic(this, &UMainWidget::OnUpdateMissionTimerState);
 		BM->OnTutorMessage.AddDynamic(this, &UMainWidget::OnTutorMessage);
+		BM->OnAddItemToBoxList.AddDynamic(this, &UMainWidget::AddItemToBoxList);
 	}
 
 	StateWidget->InitWidget();
@@ -241,7 +242,7 @@ void UMainWidget::StartTutorHideTimer()
 	);
 }
 
-void UMainWidget::AddItemToBoxList(TArray<FResultStatData> InDataList)
+void UMainWidget::AddItemToBoxList(const TArray<FResultStatData>& InDataList)
 {
 	if (InDataList.Num() == 0)
 		return;
