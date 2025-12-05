@@ -13,6 +13,8 @@
 #include "ULingoGameHelper.h"
 #include "UVoiceConversationSystem.h"
 #include "Kismet/GameplayStatics.h"
+#include "AHolder.h"
+#include "EngineUtils.h"
 
 AContactTrigger::AContactTrigger()
 {
@@ -193,6 +195,34 @@ void AContactTrigger::OnReadResponseScenario(FResponseScenario& ResponseData, bo
 
 		if (LuggageManager)
 			LuggageManager->StartSpawning();
+
+		// 맵에 있는 AHolder를 찾아서 정답 데이터 설정
+		if (ResponseData.target_data.Num() > 0 && ResponseData.correct_answer_index >= 0
+			&& ResponseData.correct_answer_index < ResponseData.target_data.Num())
+		{
+			const FScenarioTargetData& CorrectAnswer = ResponseData.target_data[ResponseData.correct_answer_index];
+
+			// word1.code와 word2.code를 정수로 변환
+			int32 ColorIdx = FCString::Atoi(*CorrectAnswer.word1.code);
+			int32 PatternIdx = FCString::Atoi(*CorrectAnswer.word2.code);
+
+			PRINTLOG(TEXT("[ContactTrigger] Setting Answer to Holders - ColorIdx: %d, PatternIdx: %d"),
+				ColorIdx, PatternIdx);
+
+			// 맵의 모든 AHolder에 정답 설정
+			for (TActorIterator<AHolder> It(World); It; ++It)
+			{
+				AHolder* Holder = *It;
+				if (Holder)
+				{
+					Holder->AnswerColorIdx = PatternIdx;
+					Holder->AnswerPatternIdx = ColorIdx;
+					PRINTLOG(TEXT("[ContactTrigger] Answer set to Holder: %s"), *Holder->GetName());
+				}
+			}
+		}
+
+		// TEST
 	}
 }
 
