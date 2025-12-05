@@ -16,6 +16,7 @@
 #include "ASpeakStageActor.h"
 #include "APlayerActor.h"
 #include "ULingoGameHelper.h"
+#include "FResultStatData.h"
 #include "Sound/SoundWaveProcedural.h"
 #include "GameFramework/PlayerState.h"
 
@@ -273,22 +274,23 @@ void UVoiceConversationSystem::OnResponseSpeakingsJudges(FResponseSpeakingJudes&
 	{
 		PRINTLOG( TEXT("--- Network Response Received : %s"), *Response.final_feedback);
 
-		// --- SpeakStage 답변 완료 알림 (Phase 4) ---
-		UWorld* World = GetWorld();
-		if (World)
+		// Broadcast final_feedback to UTutorMessage
+		if (BroadcastManager)
 		{
-			if ( auto SpeakStageActor = ULingoGameHelper::GetSpeakStageActor(GetWorld()) )
+			BroadcastManager->SendTutorMessage(FText::FromString(Response.final_feedback));
+			BroadcastManager->SendAddItemToBoxList(	Response.GetResultStatData());
+		}
+
+		if (UWorld* World = GetWorld())
+		{
+			if ( auto SpeakStageActor = ULingoGameHelper::GetSpeakStageActor(World) )
 			{
-				// 로컬 플레이어의 PlayerState 가져오기
-				// 답변 완료 알림 (다음 플레이어/다음 단계로 진행)
 				if (auto LocalPlayerState = ULingoGameHelper::GetLingoPlayerStateByPC(Owner->GetController()))
 				{
-					PRINTLOG(TEXT("[VoiceConversation] Notifying answer complete to SpeakStage"));
 					SpeakStageActor->Server_NotifyAnswerComplete(LocalPlayerState);
 				}
 			}
 		}
-		// --- 답변 완료 알림 종료 ---
 	}
 	else
 	{
