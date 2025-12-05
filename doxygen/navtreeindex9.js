@@ -1,5 +1,6 @@
 var NAVTREEINDEX9 =
 {
+"classURichText.html#a8c8ce79114b39d5d8e06a4ac24b98ea1":[2,0,143,13],
 "classURichText.html#aa0f0e2dfda351face3d49284835d9a3c":[2,0,143,15],
 "classURichText.html#abb21a0e1482a2e41e16a9ae223ad1666":[2,0,143,20],
 "classURichText.html#abbb1bda3c5f05ea9c9b5f8f967302add":[2,0,143,9],
@@ -248,6 +249,5 @@ var NAVTREEINDEX9 =
 "dir_91f3f4f018939627454e0787c2010dec.html":[3,0,0,0,2],
 "dir_a846a28747c2ebe05b4ec9782ab892b2.html":[3,0,0,2,0,0],
 "dir_b16031943cc461ca19dafbeb0c146ace.html":[3,0,0,2,4,0],
-"dir_b5bb1d33febf91507935d446f5884c8b.html":[3,0,0,1,2],
-"dir_b6750dbdff08df84555f1c91e851278f.html":[3,0,0,2,8]
+"dir_b5bb1d33febf91507935d446f5884c8b.html":[3,0,0,1,2]
 };

@@ -1,5 +1,6 @@
 var NAVTREEINDEX3 =
 {
+"USightSystem_8cpp_source.html":[3,0,0,1,0,0,0],
 "USightSystem_8h.html":[3,0,0,1,0,1,0],
 "USightSystem_8h.html#a35f3fefc7dc121d5e1364545508b38c1":[3,0,0,1,0,1,0,0],
 "USightSystem_8h_source.html":[3,0,0,1,0,1,0],
@@ -248,6 +249,5 @@ var NAVTREEINDEX3 =
 "classALuggageManager.html#a1cb736e448d2c39fa85abd6f6c8de952":[2,0,14,1],
 "classALuggageManager.html#a2398390bde32973d23c822624937acdb":[2,0,14,0],
 "classALuggageManager.html#a4477d2f48403c66735b982b47c43e3e1":[2,0,14,8],
-"classALuggageManager.html#a76e8a5925dfb7005caab1a0b01473ad7":[2,0,14,6],
-"classALuggageManager.html#a7c48b823c611bd2dce4d548ddbbd5d51":[2,0,14,2]
+"classALuggageManager.html#a76e8a5925dfb7005caab1a0b01473ad7":[2,0,14,6]
 };
