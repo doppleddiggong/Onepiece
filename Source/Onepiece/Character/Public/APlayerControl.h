@@ -96,7 +96,6 @@ private:
 	
 private:
     class IControllable* GetControllable() const;
-
 	
 	/// @brief 사용자 정보 (레벨 전환에서도 유지됨)
 	UPROPERTY()
