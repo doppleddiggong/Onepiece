@@ -1,5 +1,8 @@
 var NAVTREEINDEX9 =
 {
+"classUResultStatWidget.html#a1c5994cd2432da58ad757210ea4d1ec3":[2,0,143,25],
+"classUResultStatWidget.html#a1d3c0bd66566bc018cc6e4d2e3edf5b6":[2,0,143,11],
+"classUResultStatWidget.html#a336e9040158fe284f64af151dc21eaef":[2,0,143,19],
 "classUResultStatWidget.html#a39757e48b9ab34f543e056d5d50712f7":[2,0,143,15],
 "classUResultStatWidget.html#a3a2529d449d869c200a853e0c56f8dd9":[2,0,143,10],
 "classUResultStatWidget.html#a51a2f645a8ce10cbe901cd59d54b58ec":[2,0,143,28],
@@ -246,8 +249,5 @@ var NAVTREEINDEX9 =
 "classUWordButton.html#adaa765c385bd2fb672a2d2f91ce41d9d":[2,0,165,3],
 "classUWordButton.html#add4c922b38d90c2766b902b4310e95b2":[2,0,165,0],
 "classUWordButton.html#ae0d0182e5db9d929a4098f000c9e449b":[2,0,165,6],
-"classUWordWidget.html":[2,0,166],
-"classUWordWidget.html#a17b3278cfcdaf3cf67528f5163c309c9":[2,0,166,1],
-"classUWordWidget.html#a3f684146efe5e91044aefaae656be4d4":[2,0,166,4],
-"classUWordWidget.html#a4042d45c4417913b25fa4ef44d5eccc1":[2,0,166,0]
+"classUWordWidget.html":[2,0,166]
 };

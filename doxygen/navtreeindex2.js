@@ -29,8 +29,7 @@ var NAVTREEINDEX2 =
 "UDelayTaskManager_8cpp.html":[3,0,0,1,3,0,2],
 "UDelayTaskManager_8cpp_source.html":[3,0,0,1,3,0,2],
 "UDelayTaskManager_8h.html":[3,0,0,1,3,1,4],
-"UDelayTaskManager_8h.html#a2c7a66eadfe2ccfb485226675a8db2ee":[3,0,0,1,3,1,4,3],
-"UDelayTaskManager_8h.html#afa483e366e3e61c69c19946556fb96a3":[3,0,0,1,3,1,4,4],
+"UDelayTaskManager_8h.html#afa483e366e3e61c69c19946556fb96a3":[3,0,0,1,3,1,4,3],
 "UDelayTaskManager_8h_source.html":[3,0,0,1,3,1,4],
 "UDialogManager_8cpp.html":[3,0,0,2,6,0,5],
 "UDialogManager_8cpp.html#aa7879dc7ba7c875b95eb1ff744d09d58":[3,0,0,2,6,0,5,0],
@@ -90,8 +89,8 @@ var NAVTREEINDEX2 =
 "UHookSystem_8h.html":[3,0,0,2,0,1,9],
 "UHookSystem_8h.html#a1c673a19776054c0693b8177e71c5426":[3,0,0,2,0,1,9,0],
 "UHookSystem_8h.html#a1c673a19776054c0693b8177e71c5426aa3f80d8f0f1b4ffa8c475f5d60ea5635":[3,0,0,2,0,1,9,0,0],
-"UHookSystem_8h.html#a1c673a19776054c0693b8177e71c5426aa3f80d8f0f1b4ffa8c475f5d60ea5635":[3,0,0,2,0,1,9,0,2],
 "UHookSystem_8h.html#a1c673a19776054c0693b8177e71c5426aa3f80d8f0f1b4ffa8c475f5d60ea5635":[3,0,0,2,0,1,9,0,1],
+"UHookSystem_8h.html#a1c673a19776054c0693b8177e71c5426aa3f80d8f0f1b4ffa8c475f5d60ea5635":[3,0,0,2,0,1,9,0,2],
 "UHookSystem_8h_source.html":[3,0,0,2,0,1,9],
 "UHoverButton_8cpp.html":[3,0,0,2,8,0,1],
 "UHoverButton_8cpp_source.html":[3,0,0,2,8,0,1],
@@ -249,5 +248,6 @@ var NAVTREEINDEX2 =
 "USequenceActivatable_8h_source.html":[3,0,0,0,1,1,4],
 "USequenceManager_8cpp.html":[3,0,0,1,3,0,8],
 "USequenceManager_8cpp_source.html":[3,0,0,1,3,0,8],
-"USequenceManager_8h.html":[3,0,0,1,3,1,10]
+"USequenceManager_8h.html":[3,0,0,1,3,1,10],
+"USequenceManager_8h_source.html":[3,0,0,1,3,1,10]
 };

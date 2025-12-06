@@ -1,5 +1,8 @@
 var NAVTREEINDEX12 =
 {
+"structFResultStatData.html#a75e66157640bcf669787b2e987ab4412":[2,0,84,1],
+"structFResultStatData.html#a780624a8affe5aa938a7b75ee35cb4de":[2,0,84,0],
+"structFResultStatData.html#a79c960d0257ca39904aba1503a1f5a5e":[2,0,84,6],
 "structFResultStatData.html#a9c3caa803ddfbb9e059eba055c00aae9":[2,0,84,7],
 "structFResultStatData.html#aac45c5869b828c7f8cfb47807cdb968f":[2,0,84,2],
 "structFResultStatData.html#ad1687ae0bdba36508a791b853a82dbe6":[2,0,84,4],

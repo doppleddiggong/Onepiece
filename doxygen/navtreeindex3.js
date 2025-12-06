@@ -1,6 +1,5 @@
 var NAVTREEINDEX3 =
 {
-"USequenceManager_8h_source.html":[3,0,0,1,3,1,10],
 "USightSystem_8cpp.html":[3,0,0,1,0,0,0],
 "USightSystem_8cpp_source.html":[3,0,0,1,0,0,0],
 "USightSystem_8h.html":[3,0,0,1,0,1,0],
@@ -249,5 +248,6 @@ var NAVTREEINDEX3 =
 "classALingoPlayerState.html#a2136c7bb3522dbe59a8f8609325c4b93":[2,0,10,17],
 "classALingoPlayerState.html#a283004fed1584dfdb4da7c5e741eaeb0":[2,0,10,16],
 "classALingoPlayerState.html#a4a5444df3780d67ccefa24a47097ab14":[2,0,10,1],
-"classALingoPlayerState.html#a75f98be692a0e94274a7b88beb789dec":[2,0,10,2]
+"classALingoPlayerState.html#a75f98be692a0e94274a7b88beb789dec":[2,0,10,2],
+"classALingoPlayerState.html#a77b1b5154d7bfc9ac74de0ff796f1e34":[2,0,10,11]
 };
