@@ -6,12 +6,31 @@
 ## DevLog
 
 ### Agent Logs
+* [dopple - 2025-12-05](DevLog/AgentLog/dopple/251205.md)
+* [dopple - 2025-12-02](DevLog/AgentLog/dopple/251202.md)
 * [dopple - 2025-11-30](DevLog/AgentLog/dopple/251130.md)
 * [dopple - 2025-11-23](DevLog/AgentLog/dopple/251123.md)
 * [dopple - 2025-11-19](DevLog/AgentLog/dopple/251119.md)
 * [dopple - 2025-11-17](DevLog/AgentLog/dopple/251117.md)
 * [dopple - 2025-11-12](DevLog/AgentLog/dopple/251112.md)
 * [dopple - 2025-11-10](DevLog/AgentLog/dopple/251110.md)
+
+#### KLingo
+* [AudioCache Race Condition Test](DevLog/AgentLog/AudioCache_Race_Condition_Test.md)
+* [API DevGuide](DevLog/AgentLog/KLingo_API_DevGuide.md)
+* [API EUW](DevLog/AgentLog/KLingo_API_EUW.md)
+* [API EUW Onepiece](DevLog/AgentLog/KLingo_API_EUW_Onepiece.md)
+* [AudioCache System Report](DevLog/AgentLog/KLingo_AudioCache_System_Report.md)
+* [DailyDevLog Guide](DevLog/AgentLog/KLingo_DailyDevLog_Guide.md)
+* [DPI Scaling Guide](DevLog/AgentLog/KLingo_DPI_Scaling_Guide.md)
+* [KLIngo Dropper Holder](DevLog/AgentLog/KLIngo_Dropper_Holder.md)
+* [EUW Setup Guide](DevLog/AgentLog/KLingo_EUW_Setup_Guide.md)
+* [Hook](DevLog/AgentLog/KLingo_Hook.md)
+* [InteractionSystem Network Fix Report](DevLog/AgentLog/KLingo_InteractionSystem_Network_Fix_Report.md)
+* [Interview Popup](DevLog/AgentLog/KLingo_Interview_Popup.md)
+* [Luggage RPC Guide](DevLog/AgentLog/KLingo_Luggage_RPC_Guide.md)
+* [SpeakScenario](DevLog/AgentLog/KLingo_SpeakScenario.md)
+* [StagePanel](DevLog/AgentLog/KLingo_StagePanel.md)
 
 ### Daily Logs (2025-11)
 * [2025-11-30](DevLog/Daily/2025-11-30.md)
@@ -44,7 +63,12 @@
 ## 회의록
 
 ### 일일 회의록
-* [2025-11-28 데일리 회의](Meeting/Daily/Meeting_251128_Daily.md)
+* [251205 Daily](Meeting/Daily/Meeting_251205_Daily.md)
+* [251204 Daily](Meeting/Daily/Meeting_251204_Daily.md)
+* [251203 Daily](Meeting/Daily/Meeting_251203_Daily.md)
+* [251202 Daily](Meeting/Daily/Meeting_251202_Daily.md)
+* [251201 Daily](Meeting/Daily/Meeting_251201_Daily.md)
+* [251128 Daily](Meeting/Daily/Meeting_251128_Daily.md)
 * [251127 Daily](Meeting/Daily/Meeting_251127_Daily.md)
 * [251126 Daily](Meeting/Daily/Meeting_251126_Daily.md)
 * [251125 Daily](Meeting/Daily/Meeting_251125_Daily.md)
