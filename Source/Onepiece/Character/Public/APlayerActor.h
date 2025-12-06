@@ -29,10 +29,18 @@ protected:
 	virtual void BeginPlay() override;
 	virtual void GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const override;
 
+	virtual void PossessedBy(AController* NewController) override;
+	
 	virtual void OnRep_Controller() override;
 
 	UFUNCTION()
 	void OnRep_LookPitch();
+
+	UFUNCTION()
+	void OnRep_AnotherValue();
+
+	/// @brief Another 머티리얼 파라미터를 실제로 적용합니다 (서버/클라이언트 공통)
+	void ApplyAnotherValue();
 
 	UFUNCTION(BlueprintCallable, Category="Command")
 	void RecoveryMovementMode(const EMovementMode InMovementMode);
@@ -148,6 +156,10 @@ public:
 	// bUsePawnControlRotation은 서버->클라로 전달 안됨
 	UPROPERTY(ReplicatedUsing=OnRep_LookPitch)
 	float LookPitch;
+
+	/// @brief 2P 구분을 위한 머티리얼 파라미터 (0=1P, 1=2P)
+	UPROPERTY(ReplicatedUsing=OnRep_AnotherValue)
+	float AnotherValue;
 
 private:
 	/// @brief 메인 위젯 블루프린트 클래스
