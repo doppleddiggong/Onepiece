@@ -79,11 +79,9 @@ void AQuestionnaireKiosk::ServerRPC_OnInteractionTriggered_Implementation(AActor
 
 void AQuestionnaireKiosk::ClientRPC_OnInteractionTriggered_Implementation(AActor* Interactor)
 {
-	if (const auto PopupMgr = UPopupManager::Get(GetWorld()))
-	{
-		// TODO: 쓰기 퀘스트 json 데이터 받기 요청
-		
-		if (const auto Popup = Cast<UPopup_Questionnaire>(PopupMgr->ShowPopup(EPopupType::Questionnaire)))
+	// TODO: 쓰기 퀘스트 json 데이터 받기 요청
+	
+	if (auto Popup = UPopupManager::ShowPopupAs<UPopup_Questionnaire>(GetWorld(), EPopupType::Questionnaire))
 		{
 			// 테스트용 더미 데이터 생성
 			FQuestWriteInfo TestData;
@@ -132,6 +130,5 @@ void AQuestionnaireKiosk::ClientRPC_OnInteractionTriggered_Implementation(AActor
 			Popup->InitPopup(TestData);
 
 			PRINTLOG(TEXT("[PopupTester] Interview popup opened with %d questions"), TestData.Questions.Num());
-		}
 	}
 }

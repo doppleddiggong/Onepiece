@@ -82,8 +82,6 @@ namespace RequestAPI
     static FString users_token = FString("/users/token");
     static FString users_me = FString("/users/me");
 
-    /// @brief Scenario 조회 엔드포인트입니다. GET /scenario/stages/redis/{index}/{dificulity}/{lang}
-    static FString scenario = FString("/scenario/stages/redis");
     
     /// @brief OCR 텍스트 추출 엔드포인트입니다. POST /writes/ocr/extract
     static FString writes_submit = FString("/writes/submit");
@@ -94,11 +92,16 @@ namespace RequestAPI
 	static FString interview_hello = FString("/interview/hello");
 	static FString interview_answer = FString("/interview/answer/post");
 
-	// @brief 읽기&듣기 퀘스트 정답 추출 엔드포인트입니다.
-	static FString quest_result = FString("/scenario/stage/result/post");
+	/// @brief Scenario 조회 엔드포인트입니다.
+	static FString scenario = FString("/scenario/stages/redis");
+
+
+	static FString read_result = FString("/scenario/stage/result/post");
+	static FString listen_result = FString("/scenario/stage/result/post");
+
+
+	
 }
-
-
 
 
 USTRUCT(BlueprintType)
@@ -421,7 +424,6 @@ struct FResponseHealth
 };
 
 
-
 DECLARE_DELEGATE_TwoParams(FResponseUserRegisterDelegate, FResponseUserRegister&, bool);
 USTRUCT(BlueprintType)
 struct FResponseUserRegister
@@ -505,7 +507,6 @@ struct FResponseUserHost
 };
 
 
-
 // =================================================================================
 // Scenario API Structures
 // =================================================================================
@@ -521,6 +522,75 @@ struct FWordInfo
 
 	UPROPERTY(BlueprintReadWrite, Category = "Word")
 	FString code;
+
+    /** 랜덤 색상 선택 - CSV 기반 하드코딩 */
+    static FWordInfo GetRandomColor()
+    {
+        static const TArray<FWordInfo> ColorPool = {
+            { TEXT("빨강"),   TEXT("1") },
+            { TEXT("파랑"),   TEXT("2") },
+            { TEXT("노랑"),   TEXT("3") },
+            { TEXT("초록"),   TEXT("4") },
+            { TEXT("검정"),   TEXT("5") },
+            { TEXT("흰색"),   TEXT("6") },
+            { TEXT("회색"),   TEXT("7") },
+            { TEXT("주황"),   TEXT("8") },
+            { TEXT("분홍"),   TEXT("9") },
+            { TEXT("갈색"),   TEXT("10") },
+            { TEXT("남색"),   TEXT("11") },
+            { TEXT("보라색"), TEXT("12") },
+            { TEXT("금색"),   TEXT("13") },
+            { TEXT("은색"),   TEXT("14") },
+            { TEXT("살구색"), TEXT("15") },
+            { TEXT("하늘색"), TEXT("16") },
+            { TEXT("자주색"), TEXT("17") },
+            { TEXT("청록색"), TEXT("18") },
+            { TEXT("황토색"), TEXT("19") },
+            { TEXT("진홍색"), TEXT("20") },
+            { TEXT("군청색"), TEXT("21") },
+            { TEXT("연두색"), TEXT("22") },
+            { TEXT("와인색"), TEXT("23") },
+            { TEXT("베이지색"), TEXT("24") }
+        };
+
+        const int Index = FMath::RandRange(0, ColorPool.Num() - 1);
+        return ColorPool[Index];
+    }
+
+
+    /** 랜덤 동물 선택 - CSV 기반 하드코딩 */
+    static FWordInfo GetRandomAnimal()
+    {
+        static const TArray<FWordInfo> AnimalPool = {
+            { TEXT("개"),      TEXT("1") },
+            { TEXT("고양이"),  TEXT("2") },
+            { TEXT("새"),      TEXT("3") },
+            { TEXT("물고기"),  TEXT("4") },
+            { TEXT("소"),      TEXT("5") },
+            { TEXT("닭"),      TEXT("6") },
+            { TEXT("돼지"),    TEXT("7") },
+            { TEXT("토끼"),    TEXT("8") },
+            { TEXT("말"),      TEXT("9") },
+            { TEXT("양"),      TEXT("10") },
+            { TEXT("사슴"),    TEXT("11") },
+            { TEXT("호랑이"),  TEXT("12") },
+            { TEXT("곰"),      TEXT("13") },
+            { TEXT("여우"),    TEXT("14") },
+            { TEXT("원숭이"),  TEXT("15") },
+            { TEXT("펭귄"),    TEXT("16") },
+            { TEXT("기린"),    TEXT("17") },
+            { TEXT("코끼리"),  TEXT("18") },
+            { TEXT("치타"),    TEXT("19") },
+            { TEXT("물개"),    TEXT("20") },
+            { TEXT("하마"),    TEXT("21") },
+            { TEXT("낙타"),    TEXT("22") },
+            { TEXT("돌고래"),  TEXT("23") },
+            { TEXT("박쥐"),    TEXT("24") }
+        };
+
+        const int Index = FMath::RandRange(0, AnimalPool.Num() - 1);
+        return AnimalPool[Index];
+    }
 };
 
 /// @brief Scenario 타겟 데이터입니다.
@@ -534,48 +604,6 @@ struct FScenarioTargetData
 
 	UPROPERTY(BlueprintReadWrite, Category = "Scenario")
 	FWordInfo word2;
-};
-
-/// @brief Scenario 응답 델리게이트입니다.
-DECLARE_DELEGATE_TwoParams(FResponseScenarioDelegate, FResponseScenario&, bool);
-/// @brief Scenario 응답 구조체입니다.
-USTRUCT(BlueprintType)
-struct FResponseScenario
-{
-	GENERATED_BODY()
-
-	UPROPERTY(BlueprintReadWrite, Category = "Scenario")
-	int32 index = 0;
-
-	UPROPERTY(BlueprintReadWrite, Category = "Scenario")
-	int32 dificulity = 0;
-
-	UPROPERTY(BlueprintReadWrite, Category = "Scenario")
-	TArray<FScenarioTargetData> target_data;
-
-	UPROPERTY(BlueprintReadWrite, Category = "Scenario")
-	int32 correct_answer_index = 0;
-
-	UPROPERTY(BlueprintReadWrite, Category = "Scenario")
-	FWordData word_data1;
-
-	UPROPERTY(BlueprintReadWrite, Category = "Scenario")
-	FWordData word_data2;
-
-	UPROPERTY(BlueprintReadWrite, Category = "Scenario")
-	FWordData full_data;
-
-	UPROPERTY(BlueprintReadWrite, Category = "Scenario")
-	TArray<uint8> voice_data;
-
-	/// @brief HTTP 응답을 파싱해 구조체를 채웁니다.
-	void SetFromHttpResponse(const TSharedPtr<class IHttpResponse, ESPMode::ThreadSafe>& Response);
-
-	/// @brief 디버그 로그에 응답 내용을 출력합니다.
-	void PrintData() const;
-
-	TArray<FString> GetWord1List() const;
-	TArray<FString> GetWord2List() const;
 };
 
 // =================================================================================
@@ -722,8 +750,6 @@ struct FResponseInterviewHello
 	void PrintData() const;
 };
 
-
-
 USTRUCT(BlueprintType)
 struct FInterviewAnswerData
 {
@@ -764,12 +790,48 @@ struct FResponseInterviewAnswer
 	void PrintData() const;
 };
 
-// =================================================================================
-// Read & Listen Result API Structures
-// =================================================================================
-/// Request
+DECLARE_DELEGATE_TwoParams(FResponseReadScenarioDelegate, FResponseReadScenario&, bool);
 USTRUCT(BlueprintType)
-struct FRequestReadQuestResult
+struct FResponseReadScenario
+{
+	GENERATED_BODY()
+
+	UPROPERTY(BlueprintReadWrite, Category = "Read")
+	int32 index = 0;
+
+	UPROPERTY(BlueprintReadWrite, Category = "Read")
+	int32 dificulity = 0;
+
+	UPROPERTY(BlueprintReadWrite, Category = "Read")
+	int32 room_id = 0;
+
+	UPROPERTY(BlueprintReadWrite, Category = "Read")
+	TArray<FScenarioTargetData> target_data;
+
+	UPROPERTY(BlueprintReadWrite, Category = "Read")
+	int32 correct_answer_index = 0;
+
+	UPROPERTY(BlueprintReadWrite, Category = "Read")
+	FWordData word_data1;
+
+	UPROPERTY(BlueprintReadWrite, Category = "Read")
+	FWordData word_data2;
+
+	UPROPERTY(BlueprintReadWrite, Category = "Read")
+	FWordData full_data;
+
+	/// @brief HTTP 응답을 파싱해 구조체를 채웁니다.
+	void SetFromHttpResponse(const TSharedPtr<class IHttpResponse, ESPMode::ThreadSafe>& Response);
+
+	/// @brief 디버그 로그에 응답 내용을 출력합니다.
+	void PrintData() const;
+
+	TArray<FString> GetWord1List() const;
+	TArray<FString> GetWord2List() const;
+};
+
+USTRUCT(BlueprintType)
+struct FRequestReadResult
 {
 	GENERATED_BODY()
 
@@ -798,10 +860,10 @@ struct FRequestReadQuestResult
 	bool ToJsonString(FString& OutJson) const;
 };
 
-/// Response
-DECLARE_DELEGATE_TwoParams(FResponseQuestResultDelegate, FResponseQuestResult&, bool);
+
+DECLARE_DELEGATE_TwoParams(FResponseReadResultDelegate, FResponseReadResult&, bool);
 USTRUCT(BlueprintType)
-struct FResponseQuestResult
+struct FResponseReadResult
 {
 	GENERATED_BODY()
 
@@ -809,7 +871,7 @@ struct FResponseQuestResult
 	FString grade;
 
 	UPROPERTY(BlueprintReadWrite, Category = "QuestResult")
-	int32 point;
+	int32 average_score;
 
 	UPROPERTY(BlueprintReadWrite, Category = "QuestResult")
 	float top_percent;
@@ -822,21 +884,93 @@ struct FResponseQuestResult
 };
 
 
-/*
-
-/// @brief 로그인 응답 델리게이트입니다.
-DECLARE_DELEGATE_TwoParams(FResponseLoginDelegate, FResponseLogin&, bool);
-/// @brief 로그인 응답 구조체입니다.
+DECLARE_DELEGATE_TwoParams(FResponseListenScenarioDelegate, FResponseListenScenario&, bool);
 USTRUCT(BlueprintType)
-struct FResponseLogin
+struct FResponseListenScenario
 {
 	GENERATED_BODY()
 
-	UPROPERTY(BlueprintReadWrite, Category = "Login")
-	FString Token;
+	UPROPERTY(BlueprintReadWrite, Category = "Listen")
+	int32 index = 0;
 
-	UPROPERTY(BlueprintReadWrite, Category = "Login")
-	FPlayerInfo PlayerInfo;
+	UPROPERTY(BlueprintReadWrite, Category = "Listen")
+	int32 dificulity = 0;
+
+	UPROPERTY(BlueprintReadWrite, Category = "Listen")
+	int32 room_id = 0;
+
+	UPROPERTY(BlueprintReadWrite, Category = "Listen")
+	TArray<FScenarioTargetData> target_data;
+
+	UPROPERTY(BlueprintReadWrite, Category = "Listen")
+	int32 correct_answer_index = 0;
+
+	UPROPERTY(BlueprintReadWrite, Category = "Listen")
+	FWordData word_data1;
+
+	UPROPERTY(BlueprintReadWrite, Category = "Listen")
+	FWordData word_data2;
+
+	UPROPERTY(BlueprintReadWrite, Category = "Listen")
+	FWordData full_data;
+
+	UPROPERTY(BlueprintReadWrite, Category = "Listen")
+	TArray<uint8> voice_data;
+
+	/// @brief HTTP 응답을 파싱해 구조체를 채웁니다.
+	void SetFromHttpResponse(const TSharedPtr<class IHttpResponse, ESPMode::ThreadSafe>& Response);
+
+	/// @brief 디버그 로그에 응답 내용을 출력합니다.
+	void PrintData() const;
+
+	TArray<FString> GetWord1List() const;
+	TArray<FString> GetWord2List() const;
+};
+
+USTRUCT(BlueprintType)
+struct FRequestListenResult
+{
+	GENERATED_BODY()
+
+	UPROPERTY(BlueprintReadWrite, Category = "QuestResult")
+	int32 room_id;
+	
+	UPROPERTY(BlueprintReadWrite, Category = "QuestResult")
+	int32 user_id;
+
+	UPROPERTY(BlueprintReadWrite, Category = "QuestResult")
+	int32 scenario_id;
+
+	UPROPERTY(BlueprintReadWrite, Category = "QuestResult")
+	int32 stage_type;
+
+	UPROPERTY(BlueprintReadWrite, Category = "QuestResult")
+	int32 state_type;
+
+	UPROPERTY(BlueprintReadWrite, Category = "QuestResult")
+	int32 result_time;
+
+	UPROPERTY(BlueprintReadWrite, Category = "QuestResult")
+	TArray<int32> wrong_idx;
+	
+	/// @brief 구조체를 JSON 문자열로 변환합니다.
+	bool ToJsonString(FString& OutJson) const;
+};
+
+DECLARE_DELEGATE_TwoParams(FResponseListenResultDelegate, FResponseListenResult&, bool);
+USTRUCT(BlueprintType)
+struct FResponseListenResult
+{
+	GENERATED_BODY()
+
+	UPROPERTY(BlueprintReadWrite, Category = "QuestResult")
+	FString grade;
+
+	UPROPERTY(BlueprintReadWrite, Category = "QuestResult")
+	int32 average_score;
+
+	UPROPERTY(BlueprintReadWrite, Category = "QuestResult")
+	float top_percent;
 
 	/// @brief HTTP 응답을 파싱해 구조체를 채웁니다.
 	void SetFromHttpResponse(const TSharedPtr<class IHttpResponse, ESPMode::ThreadSafe>& Response);
@@ -844,158 +978,3 @@ struct FResponseLogin
 	/// @brief 디버그 로그에 응답 내용을 출력합니다.
 	void PrintData() const;
 };
-
-/// @brief 사용자 생성 응답 델리게이트입니다.
-DECLARE_DELEGATE_TwoParams(FResponseCreateUserDelegate, FResponseCreateUser&, bool);
-/// @brief 사용자 생성 응답 구조체입니다.
-USTRUCT(BlueprintType)
-struct FResponseCreateUser
-{
-	GENERATED_BODY()
-
-	UPROPERTY(BlueprintReadWrite, Category = "CreateUser")
-	bool bSuccess = false;
-
-	UPROPERTY(BlueprintReadWrite, Category = "CreateUser")
-	FString Message;
-
-	void SetFromHttpResponse(const TSharedPtr<class IHttpResponse, ESPMode::ThreadSafe>& Response);
-	void PrintData() const;
-};
-
-/// @brief 인터뷰 응답 델리게이트입니다.
-DECLARE_DELEGATE_TwoParams(FResponseInterviewDelegate, FResponseInterview&, bool);
-/// @brief 인터뷰 응답 구조체입니다.
-USTRUCT(BlueprintType)
-struct FResponseInterview
-{
-	GENERATED_BODY()
-
-	UPROPERTY(BlueprintReadWrite, Category = "Interview")
-	TArray<FString> Questions;
-
-	void SetFromHttpResponse(const TSharedPtr<class IHttpResponse, ESPMode::ThreadSafe>& Response);
-	void PrintData() const;
-};
-
-/// @brief 게임 시작 응답 델리게이트입니다.
-DECLARE_DELEGATE_TwoParams(FResponseStartGameDelegate, FResponseStartGame&, bool);
-/// @brief 게임 시작 응답 구조체입니다.
-USTRUCT(BlueprintType)
-struct FResponseStartGame
-{
-	GENERATED_BODY()
-
-	UPROPERTY(BlueprintReadWrite, Category = "StartGame")
-	FQuestReadInfo QuestRead;
-
-	UPROPERTY(BlueprintReadWrite, Category = "StartGame")
-	FQuestListenInfo QuestListen;
-
-	UPROPERTY(BlueprintReadWrite, Category = "StartGame")
-	FQuestWriteInfo QuestWrite;
-
-	UPROPERTY(BlueprintReadWrite, Category = "StartGame")
-	FQuestSpeakInfo QuestSpeak;
-
-	void SetFromHttpResponse(const TSharedPtr<class IHttpResponse, ESPMode::ThreadSafe>& Response);
-	void PrintData() const;
-};
-
-/// @brief 게임 로그인 응답 델리게이트입니다.
-DECLARE_DELEGATE_TwoParams(FResponseGameLoginDelegate, FResponseGameLogin&, bool);
-/// @brief 게임 로그인 응답 구조체입니다.
-USTRUCT(BlueprintType)
-struct FResponseGameLogin
-{
-	GENERATED_BODY()
-
-	UPROPERTY(BlueprintReadWrite, Category = "GameLogin")
-	bool bSuccess = false;
-
-	UPROPERTY(BlueprintReadWrite, Category = "GameLogin")
-	FString SessionToken;
-
-	void SetFromHttpResponse(const TSharedPtr<class IHttpResponse, ESPMode::ThreadSafe>& Response);
-	void PrintData() const;
-};
-
-/// @brief 퀘스트 답변 응답 델리게이트입니다.
-DECLARE_DELEGATE_TwoParams(FResponseQuestAnswerDelegate, FResponseQuestAnswer&, bool);
-/// @brief 퀘스트 답변 응답 구조체입니다.
-USTRUCT(BlueprintType)
-struct FResponseQuestAnswer
-{
-	GENERATED_BODY()
-
-	UPROPERTY(BlueprintReadWrite, Category = "QuestAnswer")
-	int32 Result = 0;
-
-	UPROPERTY(BlueprintReadWrite, Category = "QuestAnswer")
-	FString TeachString;
-
-	UPROPERTY(BlueprintReadWrite, Category = "QuestAnswer")
-	int32 FailCount = 0;
-
-	void SetFromHttpResponse(const TSharedPtr<class IHttpResponse, ESPMode::ThreadSafe>& Response);
-	void PrintData() const;
-};
-
-
-/// @brief Write 퀘스트 응답 델리게이트입니다.
-DECLARE_DELEGATE_TwoParams(FResponseQuestWriteDelegate, FResponseQuestWrite&, bool);
-/// @brief Write 퀘스트 응답 구조체입니다.
-USTRUCT(BlueprintType)
-struct FResponseQuestWrite
-{
-	GENERATED_BODY()
-
-	UPROPERTY(BlueprintReadWrite, Category = "QuestWrite")
-	bool bSuccess = false;
-
-	UPROPERTY(BlueprintReadWrite, Category = "QuestWrite")
-	TArray<FWriteTeachData> TeachData;
-
-	void SetFromHttpResponse(const TSharedPtr<class IHttpResponse, ESPMode::ThreadSafe>& Response);
-	void PrintData() const;
-};
-
-/// @brief Speak 퀘스트 응답 델리게이트입니다.
-DECLARE_DELEGATE_TwoParams(FResponseQuestSpeakDelegate, FResponseQuestSpeak&, bool);
-/// @brief Speak 퀘스트 응답 구조체입니다.
-USTRUCT(BlueprintType)
-struct FResponseQuestSpeak
-{
-	GENERATED_BODY()
-
-	UPROPERTY(BlueprintReadWrite, Category = "QuestSpeak")
-	bool bSuccess = false;
-
-	UPROPERTY(BlueprintReadWrite, Category = "QuestSpeak")
-	FString Feedback;
-
-	UPROPERTY(BlueprintReadWrite, Category = "QuestSpeak")
-	int32 Score = 0;
-
-	void SetFromHttpResponse(const TSharedPtr<class IHttpResponse, ESPMode::ThreadSafe>& Response);
-	void PrintData() const;
-};
-
-/// @brief 게임 결과 응답 델리게이트입니다.
-DECLARE_DELEGATE_TwoParams(FResponseGameResultDelegate, FResponseGameResult&, bool);
-/// @brief 게임 결과 응답 구조체입니다.
-USTRUCT(BlueprintType)
-struct FResponseGameResult
-{
-	GENERATED_BODY()
-
-	UPROPERTY(BlueprintReadWrite, Category = "GameResult")
-	FString Grade;
-
-	UPROPERTY(BlueprintReadWrite, Category = "GameResult")
-	TArray<int32> Scores;
-
-	void SetFromHttpResponse(const TSharedPtr<class IHttpResponse, ESPMode::ThreadSafe>& Response);
-	void PrintData() const;
-};
-*/

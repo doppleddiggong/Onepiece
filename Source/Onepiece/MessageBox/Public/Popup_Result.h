@@ -21,20 +21,25 @@ protected:
 public:
 	void InitPopup();
 
-	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
-	class UImageButton* Btn_OK;
-	
-	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
-	class UTextureButton* Btn_Exit;
-
 private:
 	UFUNCTION(BlueprintCallable, Category = "Close")
 	void OnClickClose();
 
-public:
-	// 정답 표시
-	// UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
-	// class UWordWidget* WordWidget;
+	void SetWordWidget();
+	void SetWrongList();
+	void SetTimeTaken();
+
+	void RequestReadResult();
+
+	UFUNCTION()
+	void OnResponseReadResult(FResponseReadResult& ResponseData, bool bWasSuccessful);
+	
+protected:
+	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
+	TObjectPtr<class UImageButton> Btn_OK;
+	
+	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
+	TObjectPtr<class UTextureButton> Btn_Exit;
 
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
 	TObjectPtr<class UTextBlock> Txt_Kor;
@@ -44,41 +49,23 @@ public:
 	
 	// 오답 표시
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
-	class UScrollBox* Scrl_WrongList;
+	TObjectPtr<class UScrollBox> Scrl_WrongList;
 
-	void SetWordWidget();
-	void SetWrongList();
-	
-public:
-	// 걸린 시간
-	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
-	class UTextBlock* Txt_TimeRank;
 
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
-	class UTextBlock* Txt_TimeTaken;
+	TObjectPtr<class UTextBlock> Txt_TimeRank;
 
-	float TimeTaken = -1;
+	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
+	TObjectPtr<class UTextBlock> Txt_TimeTaken;
 
-	void SetTimeRank();
-	void SetTimeTaken();
-
-public:
 	// 정답 정확도
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
-	class UTextBlock* Txt_Accuracy;
+	TObjectPtr<class UTextBlock> Txt_Accuracy;
 
-	void SetAccuracy();
-
-public:
 	// 랭킹 백분율
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
-	class UCircularProgressBar* CircleBar_Ranking;
+	TObjectPtr<class UCircularProgressBar> CircleBar_Ranking;
 
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
-	class UTextBlock* Txt_Rank;
-	
-	void SetRankingRate();
-	
-	void RequestRankingResult();
-	void OnQuestResultResponse(FResponseQuestResult& ResponseData, bool bWasSuccessful);
+	TObjectPtr<class UTextBlock> Txt_Rank;
 };

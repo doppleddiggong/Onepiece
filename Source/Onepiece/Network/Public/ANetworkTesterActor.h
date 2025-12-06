@@ -40,26 +40,6 @@ public:
     void RequestUserMe();
     
     // =============================================================================
-    // Scenario API Tests
-    // =============================================================================
-
-    /// @brief Scenario 조회 테스트용 인덱스입니다.
-    UPROPERTY(EditAnywhere, Category = "TEST|Scenario")
-    int32 ScenarioIndex = 1;
-
-    /// @brief Scenario 조회 테스트용 난이도입니다.
-    UPROPERTY(EditAnywhere, Category = "TEST|Scenario")
-    int32 ScenarioDifficulty = 1;
-
-    /// @brief Scenario 조회 테스트용 언어입니다.
-    UPROPERTY(EditAnywhere, Category = "TEST|Scenario")
-    int32 ScenarioLevel = 1;
-
-    /// @brief Scenario 조회 요청을 전송합니다 (GET /scenario/{index}/{dificulity}/{lang}).
-    UFUNCTION(BlueprintCallable, CallInEditor, Category = "TEST|Scenario")
-    void RequestScenario();
-
-    // =============================================================================
     // OCR API Tests
     // =============================================================================
 
@@ -111,7 +91,6 @@ private:
     void OnResponseUserToken(FResponseUserToken& ResponseData, bool bWasSuccessful);
     void OnResponseUserMe(FResponseUserMe& ResponseData, bool bWasSuccessful);
     
-    void OnResponseScenario(FResponseScenario& ResponseData, bool bWasSuccessful);
     void OnResponseOcrExtract(FResponseOcrExtract& ResponseData, bool bWasSuccessful);
 
     void OnResponseSpeakingJudes(FResponseSpeakingJudes& ResponseData, bool bWasSuccessful);

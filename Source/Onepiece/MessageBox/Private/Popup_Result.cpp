@@ -7,12 +7,10 @@
 #include "ALingoPlayerState.h"
 #include "APlayerControl.h"
 #include "GameLogging.h"
-#include "ScoreManager.h"
 #include "UImageButton.h"
 #include "UKLingoNetworkSystem.h"
 #include "ULingoGameHelper.h"
 #include "UPopupManager.h"
-#include "UPopup_ReadQuest.h"
 #include "UTextureButton.h"
 #include "Components/ScrollBox.h"
 #include "Components/TextBlock.h"
@@ -40,6 +38,8 @@ void UPopup_Result::InitPopup()
 	SetWordWidget();
 	SetWrongList();
 	SetTimeTaken();
+
+	RequestReadResult();
 }
 
 void UPopup_Result::OnClickClose()
@@ -58,21 +58,22 @@ void UPopup_Result::SetWordWidget()
 		ALingoGameState* GS = Cast<ALingoGameState>(GetWorld()->GetGameState());
 		if (!GS) return;
 		
-		Txt_Kor->SetText(FText::FromString(GS->CurScenarioData.full_data.Kor));
-		Txt_Eng->SetText(FText::FromString(GS->CurScenarioData.full_data.Eng));
+		Txt_Kor->SetText(FText::FromString(GS->ReadScenarioData.full_data.Kor));
+		Txt_Eng->SetText(FText::FromString(GS->ReadScenarioData.full_data.Eng));
 	}
 }
 
 void UPopup_Result::SetWrongList()
 {
-	if (!Scrl_WrongList) return;
+	if (!Scrl_WrongList)
+		return;
 
 	ALingoGameState* GS = Cast<ALingoGameState>(GetWorld()->GetGameState());
 	if (!GS) return;
 	// 틀린 인덱스 리스트
-	TArray<int32> WrongList = GS->WrongLuggageList;
+	TArray<int32> WrongList = GS->WrongReadAnswerList;
 	// 전체 캐리어 정보
-	const TArray<FScenarioTargetData>& ScenarioData = GS->GetScenarioData().target_data;
+	const TArray<FScenarioTargetData>& ScenarioData = GS->GetReadScenarioData().target_data;
 	
 	// 기존 항목 제거
 	Scrl_WrongList->ClearChildren();
@@ -106,83 +107,52 @@ void UPopup_Result::SetWrongList()
 	}
 }
 
-void UPopup_Result::SetTimeRank()
-{
-	FString Rank = "";
-	if (UScoreManager* ScoreMgr = UScoreManager::Get(GetWorld()))
-	{
-		ScoreMgr->GetTimeRank(TimeTaken, Rank);
-
-		Txt_TimeRank->SetText(FText::FromString(Rank));
-
-		SetAccuracy();
-	}
-}
-
 void UPopup_Result::SetTimeTaken()
 {
 	ALingoGameState* GS = Cast<ALingoGameState>(GetWorld()->GetGameState());
 	if (GS)
 	{
-		float TimeRemain = GS->GetRemainMissionTime();
-		TimeTaken = 300 - TimeRemain;
+		auto TimeTaken = GS->GetTimeTaken();
+		const int32 Minutes = FMath::FloorToInt(TimeTaken / 60.f);
+		const int32 Seconds = FMath::FloorToInt(TimeTaken) % 60;
+		Txt_TimeTaken->SetText(FText::FromString(FString::Printf(TEXT("%02d:%02d"), Minutes, Seconds)));
 
-		int32 Minutes = FMath::FloorToInt(TimeTaken / 60.f);
-		int32 Seconds = FMath::FloorToInt(TimeTaken) % 60;
+		const auto TimeRank = ULingoGameHelper::GetTimeRank(TimeTaken);
+		Txt_TimeRank->SetText(FText::FromString(TimeRank));
 
-		FString Format = FString::Printf(TEXT("%02d:%02d"), Minutes, Seconds);
-
-		Txt_TimeTaken->SetText(FText::FromString(Format));
-
-		SetTimeRank();
-		SetRankingRate();
-	}
-}
-
-void UPopup_Result::SetAccuracy()
-{
-	FString Accuracy = "";
-	if (UScoreManager* ScoreMgr = UScoreManager::Get(GetWorld()))
-	{
-		ScoreMgr->GetAccuracyPercentage(Accuracy);
-
+		const auto Accuracy = ULingoGameHelper::GetAccuracyPercentage(GS->GetWrongReadAnswerNum());
 		Txt_Accuracy->SetText(FText::FromString(Accuracy));
 	}
 }
 
-void UPopup_Result::SetRankingRate()
+void UPopup_Result::RequestReadResult()
 {
 	if (auto GS = Cast<ALingoGameState>(GetWorld()->GetGameState()))
 	{
 		// 네트워크 송신
 		if (UKLingoNetworkSystem* Network = UKLingoNetworkSystem::Get(GetWorld()))
 		{
-			FRequestReadQuestResult Request;
-			Request.room_id	= GS->RoomId;
+			FRequestReadResult ReadRequest;
+			ReadRequest.room_id	= GS->GetRoomId();
+			ReadRequest.user_id = Cast<APlayerControl>(GetOwningPlayer())->GetUserId();
+			ReadRequest.scenario_id = 1;
+			ReadRequest.stage_type = ULingoGameHelper::GetStageTypeIndex(EQuestType::Read);
+			ReadRequest.state_type = 0;
+			ReadRequest.result_time = GS->GetTimeTaken();
+			ReadRequest.wrong_idx = GS->WrongReadAnswerList;
 
-			// PlayerController에서 UserInfo 가져오기
-			Request.user_id = Cast<APlayerControl>(GetOwningPlayer())->GetUserId();
-
-			Request.scenario_id = GS->CurrentQuest.ScenarioIndex;
-			Request.stage_type = (int32)GS->CurrentQuest.QuestType;
-			Request.state_type = GS->CurrentQuest.ScenarioLevel;
-			Request.result_time = TimeTaken;
-			Request.wrong_idx = GS->WrongLuggageList;
-
-			Network->RequestQuestResult(Request,
-					FResponseQuestResultDelegate::CreateUObject(this, &UPopup_Result::OnQuestResultResponse));
+			Network->RequestReadResult(ReadRequest,
+					FResponseReadResultDelegate::CreateUObject(this, &UPopup_Result::OnResponseReadResult));
 		}
 	}
 }
 
-void UPopup_Result::OnQuestResultResponse(FResponseQuestResult& ResponseData, bool bWasSuccessful)
+void UPopup_Result::OnResponseReadResult(FResponseReadResult& ResponseData, bool bWasSuccessful)
 {
 	if (bWasSuccessful)
 	{
-		PRINTLOG(TEXT("[Result] Quest result submitted successfully"));
-
-		PRINTLOG(TEXT("[Result] Grade: %s, Point: %d, Top Percent: %.2f%%"),
-			*ResponseData.grade, ResponseData.point, ResponseData.top_percent);
+		PRINTLOG(TEXT("[Result] Grade: %s, average_score: %d, Top Percent: %.2f%%"),
+			*ResponseData.grade, ResponseData.average_score, ResponseData.top_percent);
 	}
 	else                                                                                                                                                                                                                          
 	{

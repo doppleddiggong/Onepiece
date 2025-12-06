@@ -142,6 +142,26 @@ protected:
 	UFUNCTION(NetMulticast, Reliable)
 	void Multicast_SendUpdateMissionTimerState(bool bIsActive, float TimeLimit);
 
+public:
+	// ========================================
+	// Tutor Message
+	// ========================================
+
+	/**
+	 * @brief 튜터 메시지를 네트워크로 전송
+	 * @param Message 전송할 메시지
+	 * @param EventInstigator 이벤트를 발생시킨 Actor (권한 검증용)
+	 */
+	UFUNCTION(BlueprintCallable, Category = "Network Events")
+	void SendTutorMessage(const FText& Message, AActor* EventInstigator);
+
+protected:
+	UFUNCTION(Server, Reliable)
+	void Server_SendTutorMessage(const FText& Message, AActor* EventInstigator);
+
+	UFUNCTION(NetMulticast, Reliable)
+	void Multicast_SendTutorMessage(const FText& Message);
+
 private:
 	/**
 	 * @brief 로컬 BroadcastManager 가져오기

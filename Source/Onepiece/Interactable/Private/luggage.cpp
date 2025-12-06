@@ -243,6 +243,75 @@ void Aluggage::OutlineOff()
 	Mesh3Comp->SetRenderCustomDepth(false);
 }
 
+void Aluggage::SetAllCollision(bool bEnable)
+{
+	if (bEnable)
+	{
+		// 충돌 활성화
+		if (BoxComp)
+		{
+			BoxComp->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
+		}
+
+		if (Mesh1Comp)
+		{
+			Mesh1Comp->SetSimulatePhysics(true);
+			Mesh1Comp->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
+		}
+
+		if (Mesh2Comp)
+		{
+			Mesh2Comp->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+		}
+
+		if (Mesh3Comp)
+		{
+			Mesh3Comp->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+		}
+
+		// InteractableComp의 DetectionRange 활성화
+		if (InteractableComp && InteractableComp->DetectionRange)
+		{
+			InteractableComp->DetectionRange->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
+			InteractableComp->DetectionRange->SetGenerateOverlapEvents(true);
+		}
+	}
+	else
+	{
+		// 충돌 비활성화
+		if (BoxComp)
+		{
+			BoxComp->SetSimulatePhysics(false);
+			BoxComp->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+		}
+
+		if (Mesh1Comp)
+		{
+			Mesh1Comp->SetSimulatePhysics(false);
+			Mesh1Comp->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+		}
+
+		if (Mesh2Comp)
+		{
+			Mesh2Comp->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+		}
+
+		if (Mesh3Comp)
+		{
+			Mesh3Comp->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+		}
+
+		// InteractableComp의 DetectionRange 비활성화 (위젯 노출 방지)
+		if (InteractableComp && InteractableComp->DetectionRange)
+		{
+			InteractableComp->DetectionRange->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+			InteractableComp->DetectionRange->SetGenerateOverlapEvents(false);
+		}
+
+		PRINTLOG(TEXT("Aluggage::SetAllCollision - Collisions disabled for %s"), *GetName());
+	}
+}
+
 // void Aluggage::InfoWidgetOn()
 // {
 // 	WidgetComp->GetWidget()->SetVisibility(ESlateVisibility::Visible);
@@ -316,7 +385,7 @@ void Aluggage::ServerNotifySelection_Implementation(APlayerState* Player)
 	ALingoGameMode* GameMode = GetWorld()->GetAuthGameMode<ALingoGameMode>();
 	if (GameMode)
 	{
-		GameMode->HandleCarrierSelection(Player, this);
+		GameMode->HandleLuggageSelection(Player, this);
 	}
 	else
 	{

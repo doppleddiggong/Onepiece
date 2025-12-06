@@ -27,6 +27,28 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 protected:
+	/// @brief 트리거 박스 Overlap 시작 이벤트 핸들러
+	UFUNCTION()
+	void OnTriggerBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
+		UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
+
+	/// @brief 서버에서 실행되는 트리거 처리 RPC
+	UFUNCTION(Server, Reliable)
+	void ServerRPC_OnTrigger(AActor* TriggeringActor);
+
+private:
+	void OnTriggerScenario(EQuestType InQuestType);
+
+	UFUNCTION()
+	void OnReadResponseScenario(struct FResponseReadScenario& ResponseData, bool bWasSuccessful);
+
+	UFUNCTION()
+	void OnListenResponseScenario(struct FResponseListenScenario& ResponseData, bool bWasSuccessful);
+
+
+	void TEST_Holder(FResponseReadScenario& ResponseData);
+	
+protected:
 	/// @brief 트리거 영역을 정의하는 박스 컴포넌트
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Trigger")
 	TObjectPtr<class UBoxComponent> TriggerBox;
@@ -50,23 +72,7 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Debug")
 	FColor DebugBoxColor;
 
-protected:
-	/// @brief 트리거 박스 Overlap 시작 이벤트 핸들러
-	UFUNCTION()
-	void OnTriggerBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
-		UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
-
-	/// @brief 서버에서 실행되는 트리거 처리 RPC
-	UFUNCTION(Server, Reliable)
-	void ServerRPC_OnTrigger(AActor* TriggeringActor);
-
-	void OnTriggerScenario(const int InStageIndex);
-	
-	/// @brief 시나리오 데이터 응답 콜백 함수
-	void OnReadResponseScenario(struct FResponseScenario& ResponseData, bool bWasSuccessful);
-	void OnListenResponseScenario(struct FResponseScenario& ResponseData, bool bWasSuccessful);
-
 private:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Voice", meta=(AllowPrivateAccess="true"))
-	TObjectPtr<class UVoiceConversationSystem> VoiceConversationSystem;
+	TObjectPtr<class UVoiceConversationSystem> VoiceConversationSystem;	
 };

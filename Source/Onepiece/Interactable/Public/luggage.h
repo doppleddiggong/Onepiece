@@ -114,6 +114,12 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Outline")
 	void OutlineOff();
 
+	/// @brief 모든 컴포넌트의 충돌과 물리를 설정합니다.
+	/// @param bEnable [in] true면 충돌 활성화, false면 비활성화
+	/// @details Holder에서 Luggage의 상호작용을 제어하기 위해 사용됩니다.
+	UFUNCTION(BlueprintCallable, Category = "Collision")
+	void SetAllCollision(bool bEnable);
+
 private:
 	void UpdateWidget();
 	bool bWidgetInitialized = false;

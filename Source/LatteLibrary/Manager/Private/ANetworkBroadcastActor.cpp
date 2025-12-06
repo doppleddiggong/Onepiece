@@ -298,6 +298,50 @@ void ANetworkBroadcastActor::Multicast_SendUpdateMissionTimerState_Implementatio
 }
 
 // ========================================
+// Tutor Message
+// ========================================
+
+void ANetworkBroadcastActor::SendTutorMessage(const FText& Message, AActor* EventInstigator)
+{
+	if (!EventInstigator)
+	{
+		PRINTLOG(TEXT("NetworkBroadcastActor: SendTutorMessage - EventInstigator is null"));
+		return;
+	}
+
+	PRINTLOG(TEXT("NetworkBroadcastActor: SendTutorMessage called - Message: %s, EventInstigator: %s"),
+		*Message.ToString(), *EventInstigator->GetName());
+
+	Server_SendTutorMessage(Message, EventInstigator);
+}
+
+void ANetworkBroadcastActor::Server_SendTutorMessage_Implementation(const FText& Message, AActor* EventInstigator)
+{
+	if (!ValidateInstigator(EventInstigator))
+	{
+		PRINTLOG(TEXT("NetworkBroadcastActor: Invalid instigator for TutorMessage"));
+		return;
+	}
+
+	PRINTLOG(TEXT("NetworkBroadcastActor: Server received TutorMessage - Message: %s"), *Message.ToString());
+
+	Multicast_SendTutorMessage(Message);
+}
+
+void ANetworkBroadcastActor::Multicast_SendTutorMessage_Implementation(const FText& Message)
+{
+	PRINTLOG(TEXT("NetworkBroadcastActor: Multicast TutorMessage - Message: %s, Role: %s"),
+		*Message.ToString(), GetLocalRole() == ROLE_Authority ? TEXT("Server") : TEXT("Client"));
+
+	UBroadcastManager* LocalBroadcast = GetLocalBroadcastManager();
+	if (LocalBroadcast)
+	{
+		LocalBroadcast->SendTutorMessage(Message);
+		PRINTLOG(TEXT("NetworkBroadcastActor: Local BroadcastManager triggered for TutorMessage"));
+	}
+}
+
+// ========================================
 // Utility Functions
 // ========================================
 

@@ -13,21 +13,7 @@
 ALuggageManager::ALuggageManager()
 {
 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
-	PrimaryActorTick.bCanEverTick = true;
-}
-
-// Called when the game starts or when spawned
-void ALuggageManager::BeginPlay()
-{
-	Super::BeginPlay();
-	
-}
-
-// Called every frame
-void ALuggageManager::Tick(float DeltaTime)
-{
-	Super::Tick(DeltaTime);
-	
+	PrimaryActorTick.bCanEverTick = false;
 }
 
 void ALuggageManager::StartSpawning()
@@ -54,7 +40,7 @@ void ALuggageManager::SpawnLuggage()
 	ALingoGameState* GS = Cast<ALingoGameState>(GetWorld()->GetGameState());
 	if (!GS) return;
 
-	const TArray<FScenarioTargetData>& ScenarioData = GS->GetScenarioData().target_data;
+	const TArray<FScenarioTargetData>& ScenarioData = GS->GetReadScenarioData().target_data;
 	
 	// 모두 스폰했으면 타이머 중지
 	if (CurrentSpawnIndex >= ScenarioData.Num())
@@ -85,4 +71,3 @@ void ALuggageManager::SpawnLuggage()
 
 	CurrentSpawnIndex++;
 }
-

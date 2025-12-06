@@ -32,6 +32,7 @@
 #include "Blueprint/UserWidget.h"
 #include "Components/StaticMeshComponent.h"
 #include "Engine/StaticMesh.h"
+#include "GameFramework/PlayerState.h"
 #include "Onepiece/Onepiece.h"
 
 #define MAINWIDGET_PATH TEXT("/Game/CustomContents/UI/WBP_MainWidget.WBP_MainWidget_C")
@@ -76,6 +77,7 @@ APlayerActor::APlayerActor()
 	HoldPosition->SetRelativeLocation(FVector(80.952382,0,-14.285714));
 
 	LookPitch = 0.f;
+	AnotherValue = 0.f;
 
 	// System Component
 	InteractionSystem = CreateDefaultSubobject<UInteractionSystem>(TEXT("InteractionSystem"));
@@ -146,6 +148,7 @@ void APlayerActor::GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& O
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
 
 	DOREPLIFETIME(APlayerActor, LookPitch);
+	DOREPLIFETIME(APlayerActor, AnotherValue);
 }
 
 void APlayerActor::CreateMainWidget()
@@ -182,7 +185,24 @@ void APlayerActor::CreateToastWidget()
 		ToastWidget->AddToViewport(GameLayer::Toast);
 }
 
+void APlayerActor::PossessedBy(AController* NewController)
+{
+	Super::PossessedBy(NewController);
+	
+	APlayerState* PS = GetPlayerState();
+	if (!PS)
+		return;
 
+	// 플레이어 인덱스 확인 (GameState의 PlayerArray 사용)
+	int32 PlayerIndex = -1;
+	if (AGameStateBase* GS = GetWorld()->GetGameState())
+		PlayerIndex = GS->PlayerArray.IndexOfByKey(PS);
+
+	// 2P에게 Another = 1 적용 (1P는 0)
+	AnotherValue = (PlayerIndex == 0) ? 0.0f : 1.0f;
+
+	ApplyAnotherValue();
+}
 
 void APlayerActor::OnRep_Controller()
 {
@@ -203,6 +223,33 @@ void APlayerActor::OnRep_LookPitch()
 	// 	CurrentRotation.Pitch = LookPitch;
 	// 	SpringArmComp->SetRelativeRotation(CurrentRotation);
 	// }
+}
+
+void APlayerActor::OnRep_AnotherValue()
+{
+	ApplyAnotherValue();
+}
+
+void APlayerActor::ApplyAnotherValue()
+{
+	USkeletalMeshComponent* MeshComp = GetMesh();
+	if (!MeshComp)
+		return;
+
+	// Dynamic Material Instance 생성 및 파라미터 설정
+	for (int32 i = 0; i < MeshComp->GetNumMaterials(); ++i)
+	{
+		UMaterialInterface* Material = MeshComp->GetMaterial(i);
+		if (!Material)
+			continue;
+
+		UMaterialInstanceDynamic* DynamicMaterial = Cast<UMaterialInstanceDynamic>(Material);
+		if (!DynamicMaterial)
+			DynamicMaterial = MeshComp->CreateAndSetMaterialInstanceDynamic(i);
+
+		if (DynamicMaterial)
+			DynamicMaterial->SetScalarParameterValue(FName("Another"), AnotherValue);
+	}
 }
 
 void APlayerActor::RecoveryMovementMode(const EMovementMode InMovementMode)
@@ -285,12 +332,9 @@ void APlayerActor::Cmd_Info_Implementation()
 	if ( !GS->IsQuestIng() )
 		return;
 	
-	if (const auto PopupMgr = UPopupManager::Get(GetWorld()))
+	if (auto Popup = UPopupManager::ShowPopupAs<UPopup_ReadQuest>(GetWorld(), EPopupType::ReadQuest))
 	{
-		if (const auto Popup = Cast<UPopup_ReadQuest>(PopupMgr->ShowPopup(EPopupType::ReadQuest)))
-		{
-			Popup->InitPopup( GS->CurScenarioData);
-		}
+		Popup->InitRead(GS->ReadScenarioData);
 	}
 }
 

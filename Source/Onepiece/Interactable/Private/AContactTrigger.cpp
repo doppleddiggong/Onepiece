@@ -14,6 +14,8 @@
 #include "ULingoGameHelper.h"
 #include "UVoiceConversationSystem.h"
 #include "Kismet/GameplayStatics.h"
+#include "AHolder.h"
+#include "EngineUtils.h"
 
 AContactTrigger::AContactTrigger()
 {
@@ -47,7 +49,7 @@ void AContactTrigger::BeginPlay()
 {
 	Super::BeginPlay();
 
-	EventMessage = ULingoGameHelper::GetStageStartMessage((int32)QuestType);
+	EventMessage = ULingoGameHelper::GetStageStartMessage(QuestType);
 	
 	// Overlap 이벤트 바인딩
 	if (TriggerBox)
@@ -138,83 +140,56 @@ void AContactTrigger::ServerRPC_OnTrigger_Implementation(AActor* TriggeringActor
 	// 트리거 비활성화
 	bIsTriggered = true;
 
-	// TODO, 나중에 분기 처리를 위해
-	this->OnTriggerScenario((int32)QuestType);
+	this->OnTriggerScenario(QuestType);
 }
 
 
-void AContactTrigger::OnTriggerScenario(const int InStageIndex)
+void AContactTrigger::OnTriggerScenario(EQuestType InQuestType)
 {
-// 시나리오 데이터 요청
-	if (UKLingoNetworkSystem* KLingoNetwork = UKLingoNetworkSystem::Get(GetWorld()))
+	if (auto KLingoNetwork = UKLingoNetworkSystem::Get(GetWorld()))
 	{
-		PRINTLOG(TEXT("[ContactTrigger] Requesting Scenario - StageIndex: %d"), InStageIndex);
-
-		switch (InStageIndex)
+		switch (InQuestType)
 		{
-		case 1: // 읽기
-			// ScenarioStageIndex를 이용해 시나리오 데이터 요청
-			// 파라미터: Index, Difficulty, Level (1: 한국어)
-			KLingoNetwork->RequestScenario(1,(int32)EQuestType::Read,1,
-				FResponseScenarioDelegate::CreateUObject(this, &AContactTrigger::OnReadResponseScenario));
-			break;
-		case 2: // 듣기
-			KLingoNetwork->RequestScenario(1,(int32)EQuestType::Listen,1,
-				FResponseScenarioDelegate::CreateUObject(this, &AContactTrigger::OnListenResponseScenario));
-			break;
+			case EQuestType::Read:
+				KLingoNetwork->RequestReadScenario( FResponseReadScenarioDelegate::CreateUObject(this, &AContactTrigger::OnReadResponseScenario));
+				break;
+
+			case EQuestType::Listen: // 듣기
+				KLingoNetwork->RequestListenScenario( FResponseListenScenarioDelegate::CreateUObject(this, &AContactTrigger::OnListenResponseScenario));
+				break;
 		}
 	}
-	else
-	{
-		PRINTLOG(TEXT("[ContactTrigger] ERROR: UKLingoNetworkSystem not found!"));
-	}
 }
 
-void AContactTrigger::OnReadResponseScenario(FResponseScenario& ResponseData, bool bWasSuccessful)
+void AContactTrigger::OnReadResponseScenario(FResponseReadScenario& ResponseData, bool bWasSuccessful)
 {
 	if (!bWasSuccessful)
-	{
-		PRINTLOG(TEXT("[ContactTrigger] Scenario request FAILED!"));
 		return;
-	}
-
-	PRINTLOG(TEXT("[ContactTrigger] Scenario request SUCCESS!"));
-	ResponseData.PrintData();
 
 	// ALingoGameState에 시나리오 데이터 전체 저장
 	if (UWorld* World = GetWorld())
 	{
 		if (auto GM = ULingoGameHelper::GetLingoGameMode(World))
-		{
-			GM->BeginReadQuest((int32)QuestType, ResponseData);
-		}
+			GM->BeginReadQuest( ResponseData);
 
-		ALuggageManager* LuggageManager = Cast<ALuggageManager>(
-			  UGameplayStatics::GetActorOfClass(World, ALuggageManager::StaticClass()));
+		ALuggageManager* LuggageManager = Cast<ALuggageManager>( UGameplayStatics::GetActorOfClass(World, ALuggageManager::StaticClass()));
 
 		if (LuggageManager)
 			LuggageManager->StartSpawning();
+
+		TEST_Holder(ResponseData);
 	}
 }
 
-void AContactTrigger::OnListenResponseScenario(struct FResponseScenario& ResponseData, bool bWasSuccessful)
+void AContactTrigger::OnListenResponseScenario(FResponseListenScenario& ResponseData, bool bWasSuccessful)
 {
 	if (!bWasSuccessful)
-	{
-		PRINTLOG(TEXT("[ContactTrigger] Scenario request FAILED!"));
 		return;
-	}
 
-	PRINTLOG(TEXT("[ContactTrigger] Scenario request SUCCESS!"));
-	ResponseData.PrintData();
-
-	// ALingoGameState에 시나리오 데이터 전체 저장
 	if (UWorld* World = GetWorld())
 	{
 		if (auto GM = ULingoGameHelper::GetLingoGameMode(World))
-		{
-			GM->BeginListenQuest((int32)QuestType, ResponseData);
-		}
+			GM->BeginListenQuest(ResponseData);
 
 		VoiceConversationSystem->PlayVoiceAudio(ResponseData.voice_data);
 
@@ -223,6 +198,35 @@ void AContactTrigger::OnListenResponseScenario(struct FResponseScenario& Respons
 		if (FCourtManager)
 		{
 			FCourtManager->SetFoodCourtInfo();
+		}
+	}
+}
+
+void AContactTrigger::TEST_Holder(FResponseReadScenario& ResponseData)
+{
+	// HACK, 임시 코드
+	// 맵에 있는 AHolder를 찾아서 정답 데이터 설정
+	if (ResponseData.target_data.Num() > 0 && ResponseData.correct_answer_index >= 0
+		&& ResponseData.correct_answer_index < ResponseData.target_data.Num())
+	{
+		const FScenarioTargetData& CorrectAnswer = ResponseData.target_data[ResponseData.correct_answer_index];
+
+		// {
+		// 	"word1": { "name": "닭", "code": "6" },
+		// 	"word2": { "name": "빨강", "code": "1" }
+		// }
+			
+		const int32 PatternIdx = FCString::Atoi(*CorrectAnswer.word1.code);
+		const int32 ColorIdx = FCString::Atoi(*CorrectAnswer.word2.code);
+
+		for (TActorIterator<AHolder> It(GetWorld()); It; ++It)
+		{
+			AHolder* Holder = *It;
+			if (Holder)
+			{
+				Holder->SetAnswerData(ColorIdx, PatternIdx);
+				break;
+			}
 		}
 	}
 }

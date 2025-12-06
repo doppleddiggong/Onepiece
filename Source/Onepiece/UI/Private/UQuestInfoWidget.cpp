@@ -26,14 +26,14 @@ void UQuestInfoWidget::InitQuestInfo(EQuestRole QuestRole)
 
 	if ( QuestRole == EQuestRole::Both )
 	{
-		Txt_Message->SetText( FText::FromString(GS->CurScenarioData.full_data.Kor));
+		Txt_Message->SetText( FText::FromString(GS->ReadScenarioData.full_data.Kor));
 	}
 	else if ( QuestRole == EQuestRole::OnlyQuestion1 )
 	{
-		Txt_Message->SetText( FText::FromString(GS->CurScenarioData.word_data1.Kor));
+		Txt_Message->SetText( FText::FromString(GS->ReadScenarioData.word_data1.Kor));
 	}
 	else if ( QuestRole == EQuestRole::OnlyQuestion2 )
 	{
-		Txt_Message->SetText( FText::FromString(GS->CurScenarioData.word_data2.Kor));
+		Txt_Message->SetText( FText::FromString(GS->ReadScenarioData.word_data2.Kor));
 	}
 }

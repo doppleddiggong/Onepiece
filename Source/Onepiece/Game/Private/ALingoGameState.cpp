@@ -21,8 +21,6 @@ ALingoGameState::ALingoGameState()
 	RemainMissionTime = 0.f;
 	bIsTimerActive = false;
 
-	GameState = EGameState::None;
-	
 	PrimaryActorTick.bCanEverTick = true;
 
 	// TODO, Host가 방 개설후에 들어올 떄 적용하기
@@ -33,20 +31,14 @@ void ALingoGameState::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutL
 {
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
 
-	DOREPLIFETIME(ALingoGameState, GameState);
-	
 	DOREPLIFETIME(ALingoGameState, RemainMissionTime);
 	DOREPLIFETIME(ALingoGameState, bIsTimerActive);
 
-	DOREPLIFETIME(ALingoGameState, CurrentQuest);
-	DOREPLIFETIME(ALingoGameState, CurScenarioData);
+	DOREPLIFETIME(ALingoGameState, CurrentQuestData);
 
-	// Read Quest Data
-	DOREPLIFETIME(ALingoGameState, QuestResult);
-	DOREPLIFETIME(ALingoGameState, bQuestSuccess);
-
-	DOREPLIFETIME(ALingoGameState, WrongLuggageList);
-	DOREPLIFETIME(ALingoGameState, CurQuestResult);
+	DOREPLIFETIME(ALingoGameState, ReadScenarioData);
+	DOREPLIFETIME(ALingoGameState, WrongReadAnswerList);
+	DOREPLIFETIME(ALingoGameState, ReadResult);
 }
 
 void ALingoGameState::Tick(float DeltaSeconds)
@@ -66,59 +58,42 @@ void ALingoGameState::Tick(float DeltaSeconds)
 	}
 }
 
-void ALingoGameState::SetStageData(int InScenarioIndex, int InQuestIndex, const FResponseScenario& InResponseData)
+void ALingoGameState::SetReadScenarioData( const FResponseReadScenario& InResponseData)
 {
-	PRINTLOG(TEXT("[GameState] SetStageData - StageIndex: %d, HasAuthority: %s"), 
-		InScenarioIndex, HasAuthority() ? TEXT("true") : TEXT("false"));
-	
-	CurrentQuest.ScenarioIndex = InScenarioIndex;
-	CurrentQuest.QuestType = (EQuestType)InQuestIndex;
-	CurrentQuest.ScenarioLevel = 1;
-
-	GameState = EGameState::QuestStart;
-	PRINTLOG(TEXT("[GameState] Quest Started - Type: %d, Stage: %d"),
-		(int32)CurrentQuest.QuestType, CurrentQuest.ScenarioIndex);
-
-	switch (CurrentQuest.QuestType)
-	{
-	case EQuestType::Read:
-		CurScenarioData = InResponseData;
-		break;
-	case EQuestType::Listen:
-		CurScenarioData = InResponseData;
-		break;
-	case EQuestType::Write:
-		break;
-	case EQuestType::Speak:
-		break;
-	}
+	CurrentQuestData.QuestType = EQuestType::Read;
+	ReadScenarioData = InResponseData;
 	
 	// 미션 타이머 시작
-	this->StartMissionTimer( ULingoGameHelper::GetMissionPlayTime(CurrentQuest.ScenarioLevel) );
+	this->StartMissionTimer( ULingoGameHelper::GetMissionPlayTime() );
 
-	// 모든 클라이언트(서버 포함)에 팝업 표시 요청
 	if (HasAuthority())
-	{
-		Multicast_ShowReadQuestPopup(InScenarioIndex, CurScenarioData);
-	}
+		Multicast_ShowReadQuestPopup(ReadScenarioData);
 }
 
-void ALingoGameState::StartMissionTimer(float TimeLimit)
+void ALingoGameState::SetListenScenarioData( const FResponseListenScenario& InResponseData)
+{
+	CurrentQuestData.QuestType = EQuestType::Listen;
+	ListenScenarioData = InResponseData;
+	
+	// 미션 타이머 시작
+	this->StartMissionTimer( ULingoGameHelper::GetMissionPlayTime() );
+
+	if (HasAuthority())
+		Multicast_ShowListenQuestPopup(ListenScenarioData);
+}
+
+void ALingoGameState::StartMissionTimer(float InTimeLimit)
 {
 	// 서버에서만 실행
 	if (!HasAuthority())
 		return;
 
-	RemainMissionTime = TimeLimit;
-	bIsTimerActive = true;
+	this->TimeLimit = InTimeLimit;
+	this->RemainMissionTime = InTimeLimit;
+	this->bIsTimerActive = true;
 
-	// NetworkBroadcastActor를 통해 모든 클라이언트에 타이머 시작 알림
 	if (ANetworkBroadcastActor* BroadcastActor = ANetworkBroadcastActor::Get(this))
-	{
-		BroadcastActor->SendUpdateMissionTimerState(true, TimeLimit, this);
-	}
-
-	PRINTLOG( TEXT("[GameState] Mission Timer Started - %.0f seconds"), TimeLimit);
+		BroadcastActor->SendUpdateMissionTimerState(true, InTimeLimit, this);
 }
 
 void ALingoGameState::StopMissionTimer()
@@ -133,8 +108,17 @@ void ALingoGameState::StopMissionTimer()
 	{
 		BroadcastActor->SendUpdateMissionTimerState(false, 0.0f, this);
 	}
+}
 
-	PRINTLOG( TEXT("[GameState] Mission Timer Stopped"));
+void ALingoGameState::DecreaseMissionTimer(const float InValue)
+{
+	this->RemainMissionTime = FMath::Max(0.f, RemainMissionTime - InValue);
+}
+
+void ALingoGameState::UpdateRemainMissionTime(const float InTimeLimit)
+{
+	this->TimeLimit = InTimeLimit;
+	this->RemainMissionTime = InTimeLimit;
 }
 
 void ALingoGameState::OnMissionTimerEnd()
@@ -146,11 +130,9 @@ void ALingoGameState::OnMissionTimerEnd()
 
 	// NetworkBroadcastActor를 통해 모든 클라이언트에 타이머 종료 알림
 	if (ANetworkBroadcastActor* BroadcastActor = ANetworkBroadcastActor::Get(this))
-	{
 		BroadcastActor->SendUpdateMissionTimerState(false, 0.0f, this);
-	}
 
-	auto EndMessage = ULingoGameHelper::GetStageEndMessage(CurrentQuest.ScenarioIndex);
+	auto EndMessage = ULingoGameHelper::GetStageEndMessage(CurrentQuestData.QuestType);
 
 	PRINTLOG( TEXT("[GameState] Mission Timer Ended - Sending: %s"), *EndMessage);
 
@@ -170,36 +152,18 @@ void ALingoGameState::OnMissionTimerEnd()
 	}
 }
 
-void ALingoGameState::OnRep_QuestSuccess()
+void ALingoGameState::Multicast_ShowReadQuestPopup_Implementation(const FResponseReadScenario& InScenarioData)
 {
-	// BroadcastManager를 통해 퀘스트 성공 이벤트 브로드캐스트
-	if (UBroadcastManager* BroadcastManager = UBroadcastManager::Get(GetWorld()))
+	if (const auto Popup = UPopupManager::ShowPopupAs<UPopup_ReadQuest>(GetWorld(), EPopupType::ReadQuest))
 	{
-		if (bQuestSuccess)
-		{
-			UPopupManager::Get(GetWorld())->ShowMsgBoxSimple(
-				TEXT("Success"),
-				TEXT("Quest Clear"),
-				EMsgBoxType::OK);
-		}
+		Popup->InitRead(InScenarioData);
 	}
 }
 
-void ALingoGameState::Multicast_ShowReadQuestPopup_Implementation(int InStageIndex, const FResponseScenario& InScenarioData)
+void ALingoGameState::Multicast_ShowListenQuestPopup_Implementation(const FResponseListenScenario& InScenarioData)
 {
-	PRINTLOG(TEXT("[GameState] Multicast_ShowReadQuestPopup - StageIndex: %d, Role: %s"),
-		InStageIndex, GetLocalRole() == ROLE_Authority ? TEXT("Server") : TEXT("Client"));
-
-	// Stage1일 때만 Read Quest 팝업 표시
-	if (InStageIndex == 1)
+	if (const auto Popup = UPopupManager::ShowPopupAs<UPopup_ReadQuest>(GetWorld(), EPopupType::ReadQuest))
 	{
-		if (UPopupManager* PopupMgr = UPopupManager::Get(GetWorld()))
-		{
-			if (UPopup_ReadQuest* Popup = Cast<UPopup_ReadQuest>(PopupMgr->ShowPopup(EPopupType::ReadQuest)))
-			{
-				Popup->InitPopup(InScenarioData);
-				PRINTLOG(TEXT("[GameState] Read Quest Popup displayed for Stage1"));
-			}
-		}
+		Popup->InitListen(InScenarioData);
 	}
 }
