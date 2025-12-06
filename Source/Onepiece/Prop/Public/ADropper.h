@@ -49,12 +49,17 @@ public:
 
     /** 스폰 요청 (서버에서만 동작) */
     UFUNCTION(BlueprintCallable)
-    void RequestSpawn();
+    bool RequestSpawn();
 
+    FORCEINLINE bool IsBusy() const { return bIsSpawnIng; };
+    
 protected:
     /** 서버에서만 실행되는 실제 스폰 로직 */
-    void SpawnInternal();
+    void Spawn();
 
+    UFUNCTION(Server, Reliable)
+    void Server_Spawn();
+    
     /** 애니메이션 재생 */
     UFUNCTION(NetMulticast, Reliable)
     void Multicast_PlayAnimation();
@@ -97,6 +102,10 @@ private:
     /** 이번 스폰에서 사용할 데이터 */
     UPROPERTY(Replicated)
     FLuggageData NextData;
+
+    /** 스폰 처리 진행 중 여부 (RPC로 공유) */
+    UPROPERTY(Replicated)
+    bool bIsSpawnIng = false;
 
     FTimerHandle DelayTimerHandle;
     FTimerHandle RestoreTimerHandle;

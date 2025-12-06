@@ -2,12 +2,14 @@
 // Proprietary and confidential.
 
 #include "ADropper.h"
+
 #include "Luggage.h"
 #include "GameLogging.h"
 #include "Components/SkeletalMeshComponent.h"
 #include "Components/SceneComponent.h"
 #include "Components/StaticMeshComponent.h"
 #include "TimerManager.h"
+#include "UDialogManager.h"
 #include "Net/UnrealNetwork.h"
 
 ADropper::ADropper()
@@ -40,20 +42,29 @@ void ADropper::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetime
 
     DOREPLIFETIME(ADropper, SpawnClass);
     DOREPLIFETIME(ADropper, NextData);
+    DOREPLIFETIME(ADropper, bIsSpawnIng);
 }
 
-void ADropper::RequestSpawn()
+bool ADropper::RequestSpawn()
 {
-    if (!HasAuthority())
-        return;
+    PRINTLOG(TEXT("Dropper GUID = %s, Authority=%d"),
+    *GetPathName(), HasAuthority());
+    
+    if (!SpawnClass || !SpawnPos)
+        return false;
 
-    if (!SpawnClass)
-        return;
+    if (bIsSpawnIng)
+        return false;
 
-    SpawnInternal();
+    if (HasAuthority())
+        Spawn();
+    else
+        Server_Spawn();
+
+    return true;
 }
 
-void ADropper::SpawnInternal()
+void ADropper::Spawn()
 {
     if (!HasAuthority())
         return;
@@ -61,9 +72,10 @@ void ADropper::SpawnInternal()
     if (!SpawnClass || !SpawnPos)
     {
         PRINTLOG(TEXT("ADropper::SpawnInternal - Invalid data"));
+        bIsSpawnIng = false;
         return;
     }
-
+   
     FActorSpawnParameters Params;
     Params.Owner = this;
     Params.Instigator = GetInstigator();
@@ -77,7 +89,12 @@ void ADropper::SpawnInternal()
     );
 
     if (!SpawnedActor)
+    {
+        bIsSpawnIng = false;
         return;
+    }
+
+    bIsSpawnIng = true;
 
     // HACK, 임시!!!
     static int CurrentSpawnIndex = 0;
@@ -108,6 +125,13 @@ void ADropper::SpawnInternal()
     );
 }
 
+void ADropper::Server_Spawn_Implementation()
+{
+    PRINTLOG(TEXT("Dropper Authority=%d  RemoteRole=%d"), HasAuthority(), (int)GetRemoteRole());
+    
+    Spawn();
+}
+
 void ADropper::OnDelayCompleted()
 {
     if (!HasAuthority())
@@ -130,6 +154,7 @@ void ADropper::OnRestoreCompleted()
         return;
 
     Multicast_RestoreCollision();
+    bIsSpawnIng = false;
 }
 
 void ADropper::Multicast_PlayAnimation_Implementation()
