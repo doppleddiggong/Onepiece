@@ -84,20 +84,8 @@ public:
 	FOnInteractionTriggered OnInteractionTriggered;
 
 public:
-	// Interaction
-	UPROPERTY(ReplicatedUsing=OnRep_HoldingOwner)
-	AActor* HoldingOwner;
-
 	UFUNCTION()
 	void OnRep_HoldingOwner();
-
-	/**
-	 * @brief 픽업 상태 플래그 (복제됨)
-	 * @details [문제] 기존에는 복제되지 않아 ConveyorBelt 등 다른 시스템과 상태 불일치 발생
-	 *          [해결] ReplicatedUsing으로 복제하여 모든 클라이언트에서 동일한 상태 유지
-	 */
-	UPROPERTY(ReplicatedUsing=OnRep_IsPickedUp, BlueprintReadOnly, Category = "Interaction")
-	bool bIsPickedUp = false;
 
 	/**
 	 * @brief bIsPickedUp 복제 시 호출되는 콜백
@@ -146,7 +134,20 @@ public:
 	/** 상호작용 트리거 (델리게이트 발생) */
 	UFUNCTION(BlueprintCallable, Category = "Interaction")
 	void TriggerInteraction(AActor* Interactor);
+	
+public:
+	// Interaction
+	UPROPERTY(ReplicatedUsing=OnRep_HoldingOwner)
+	AActor* HoldingOwner;
+	/**
+	 * @brief 픽업 상태 플래그 (복제됨)
+	 * @details [문제] 기존에는 복제되지 않아 ConveyorBelt 등 다른 시스템과 상태 불일치 발생
+	 *          [해결] ReplicatedUsing으로 복제하여 모든 클라이언트에서 동일한 상태 유지
+	 */
+	UPROPERTY(ReplicatedUsing=OnRep_IsPickedUp, BlueprintReadOnly, Category = "Interaction")
+	bool bIsPickedUp = false;
 
+	
 protected:
 	// ========================================
 	// Overlap 콜백 (InteractionSystem 등록)
@@ -181,8 +182,6 @@ protected:
 
 
 #pragma region Widget
-
-
 public:
 	void InitWidget(class UWidgetComponent* InWidgetComp);
 

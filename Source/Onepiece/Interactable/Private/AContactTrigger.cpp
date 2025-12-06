@@ -215,8 +215,10 @@ void AContactTrigger::OnReadResponseScenario(FResponseScenario& ResponseData, bo
 				AHolder* Holder = *It;
 				if (Holder)
 				{
-					Holder->AnswerColorIdx = PatternIdx;
-					Holder->AnswerPatternIdx = ColorIdx;
+					// HACK, 뭔가 이상하게 돌아가는 로직인것 처럼 보이지만, 답 인덱스가 
+					Holder->SetAnswerData(PatternIdx, ColorIdx);
+					// Holder->AnswerColorIdx = PatternIdx;
+					// Holder->AnswerPatternIdx = ColorIdx;
 					PRINTLOG(TEXT("[ContactTrigger] Answer set to Holder: %s"), *Holder->GetName());
 				}
 			}

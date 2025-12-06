@@ -16,7 +16,30 @@ public:
 
 protected:
 	virtual void BeginPlay() override;
+	virtual void Tick(float DeltaTime) override;
+	virtual void GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const override;
 
+public:
+	// Events
+	UFUNCTION(BlueprintImplementableEvent, Category = "Holder")
+	void OnActivate(bool bSuccess);
+
+	void SetAnswerData(const int32 InAnswerColorIdx, const int32 InAnswerPatternIdx);
+	
+private:
+	UFUNCTION()
+	void OnBoxOverlapBegin(
+		UPrimitiveComponent* OverlappedComponent,
+		AActor* OtherActor,
+		UPrimitiveComponent* OtherComp,
+		int32 OtherBodyIndex,
+		bool bFromSweep,
+		const FHitResult& SweepResult);
+
+	bool CheckLuggage(class Aluggage* TargetLuggage);
+
+	void UpdateActivateState(bool State);
+	
 public:
 	// Components
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Components")
@@ -28,38 +51,24 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Spawning")
 	TObjectPtr<class USceneComponent> HoldPos;
 
-	// Answer Settings
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Answer")
-	int32 AnswerColorIdx = -1;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Answer")
-	int32 AnswerPatternIdx = -1;
-
-	// Animation
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Animation")
-	TObjectPtr<class UAnimationAsset> AnimToPlay;
-
 	// State
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "State")
+	UPROPERTY(Replicated, VisibleAnywhere, BlueprintReadOnly, Category = "State")
 	bool bIsActivated = false;
 
-	// Events
-	UFUNCTION(BlueprintImplementableEvent, Category = "Holder")
-	void OnActivate(bool bSuccess);
+	// Visual Settings
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Visual")
+	float ActivatedHeightOffset = 50.0f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Visual")
+	float RotationSpeed = 90.0f;
+
 
 private:
-	UFUNCTION()
-	void OnBoxOverlapBegin(
-		UPrimitiveComponent* OverlappedComponent,
-		AActor* OtherActor,
-		UPrimitiveComponent* OtherComp,
-		int32 OtherBodyIndex,
-		bool bFromSweep,
-		const FHitResult& SweepResult);
-
-	void CheckLuggage(class Aluggage* Luggage);
-
-	// 현재 올라가 있는 Luggage 추적
-	UPROPERTY()
-	TObjectPtr<class Aluggage> CurrentLuggage;
+	// Answer Settings
+	int32 AnswerColorIdx = -1;
+	int32 AnswerPatternIdx = -1;
+	
+	// 현재 올라가 있는 액터
+	UPROPERTY(Replicated)
+	TObjectPtr<class AActor> CurTarget;
 };

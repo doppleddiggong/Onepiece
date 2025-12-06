@@ -7,11 +7,17 @@
 #include "Components/SkeletalMeshComponent.h"
 #include "GameLogging.h"
 #include "InteractableComponent.h"
+#include "UBroadcastManager.h"
+#include "UHookComponent.h"
 #include "Animation/AnimationAsset.h"
+#include "Net/UnrealNetwork.h"
 
 AHolder::AHolder()
 {
-	PrimaryActorTick.bCanEverTick = false;
+	PrimaryActorTick.bCanEverTick = true;
+
+	// Replication
+	bReplicates = true;
 
 	// Root component
 	USceneComponent* Root = CreateDefaultSubobject<USceneComponent>(TEXT("DefaultSceneRoot"));
@@ -37,9 +43,44 @@ void AHolder::BeginPlay()
 {
 	Super::BeginPlay();
 
-	// Overlap 이벤트 바인딩
-	if (BoxCollision)
-		BoxCollision->OnComponentBeginOverlap.AddDynamic(this, &AHolder::OnBoxOverlapBegin);
+	BoxCollision->OnComponentBeginOverlap.AddDynamic(this, &AHolder::OnBoxOverlapBegin);
+
+	// 머티리얼 파라미터 초기화 (비활성화 상태)
+	if (MeshComponent && MeshComponent->GetNumMaterials() > 0)
+	{
+		UMaterialInstanceDynamic* DynamicMaterial = MeshComponent->CreateDynamicMaterialInstance(0);
+		if (DynamicMaterial)
+		{
+			DynamicMaterial->SetScalarParameterValue(FName("Activate"), 0.0f);
+		}
+	}
+}
+
+void AHolder::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+
+	// CurrentLuggage가 유효하고 활성화된 상태라면 회전
+	if (bIsActivated && CurTarget)
+	{
+		FRotator CurrentRotation = CurTarget->GetActorRotation();
+		CurrentRotation.Yaw += RotationSpeed * DeltaTime;
+		CurTarget->SetActorRotation(CurrentRotation);
+	}
+}
+
+void AHolder::GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const
+{
+	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+
+	DOREPLIFETIME(AHolder, bIsActivated);
+	DOREPLIFETIME(AHolder, CurTarget);
+}
+
+void AHolder::SetAnswerData(const int32 InAnswerColorIdx, const int32 InAnswerPatternIdx)
+{
+	this->AnswerColorIdx = InAnswerColorIdx;
+	this->AnswerPatternIdx = InAnswerPatternIdx;
 }
 
 void AHolder::OnBoxOverlapBegin(
@@ -53,81 +94,86 @@ void AHolder::OnBoxOverlapBegin(
 	if (!OtherActor)
 		return;
 
-	// Luggage인지 확인
-	Aluggage* Luggage = Cast<Aluggage>(OtherActor);
-	
-	if (Luggage && !CurrentLuggage)
+	// 서버에서만 실행
+	if (!HasAuthority())
+		return;
+
+	if ( bIsActivated )
 	{
-		CurrentLuggage = Luggage;
-		CheckLuggage(Luggage);
+		// 이미 Activate 되었으면 작동 안 함
+		return;
+	}
+	
+	// Luggage인지 확인
+	if (auto Luggage = Cast<Aluggage>(OtherActor))
+	{
+		bool bSuccess = CheckLuggage(Luggage);
+
+		// 머티리얼 파라미터 설정 (활성화)
+		UpdateActivateState(bSuccess);
+		// 블루프린트 이벤트 호출
+		OnActivate(bSuccess);
+
+		if ( bSuccess )
+			UBroadcastManager::Get(GetWorld())->SendTutorMessage( FText::FromString(TEXT("Perfect! You placed the block right. Let’s keep going!")));
+		else
+			UBroadcastManager::Get(GetWorld())->SendTutorMessage( FText::FromString(TEXT("Oops! That block doesn’t go there.")));
 	}
 }
 
-void AHolder::CheckLuggage(Aluggage* Luggage)
+bool AHolder::CheckLuggage(Aluggage* TargetLuggage)
 {
-	if (!Luggage)
-		return;
-
-	// 이미 Activate 되었으면 작동 안 함
-	if (bIsActivated)
-	{
-		PRINTLOG(TEXT("AHolder::CheckLuggage - Already activated, ignoring"));
-		return;
-	}
+	if (!TargetLuggage)
+		return false;
 
 	// ColorIdx와 PatternIdx 비교
-	bool bColorMatch = (AnswerColorIdx == -1) || (Luggage->ColorIdx == AnswerColorIdx);
-	bool bPatternMatch = (AnswerPatternIdx == -1) || (Luggage->PatternIdx == AnswerPatternIdx);
+	bool bColorMatch = (AnswerColorIdx == -1) || (TargetLuggage->ColorIdx == AnswerColorIdx);
+	bool bPatternMatch = (AnswerPatternIdx == -1) || (TargetLuggage->PatternIdx == AnswerPatternIdx);
 	bool bSuccess = bColorMatch && bPatternMatch;
 
-	PRINTLOG(TEXT("AHolder::CheckLuggage - ColorIdx: %d (Answer: %d), PatternIdx: %d (Answer: %d), Result: %s"),
-		Luggage->ColorIdx, AnswerColorIdx,
-		Luggage->PatternIdx, AnswerPatternIdx,
+	PRINTLOG(TEXT("ColorIdx: %d (Answer: %d), PatternIdx: %d (Answer: %d), Result: %s"),
+		TargetLuggage->ColorIdx, AnswerColorIdx,
+		TargetLuggage->PatternIdx, AnswerPatternIdx,
 		bSuccess ? TEXT("Success") : TEXT("Fail"));
 
 	if (bSuccess)
 	{
-		// Success: Luggage를 HoldPos 위치에 Lock
+		// Success: Luggage를 HoldPos 위치보다 살짝 위에 배치
 		if (HoldPos)
 		{
-			Luggage->SetActorLocation(HoldPos->GetComponentLocation());
-			Luggage->SetActorRotation(HoldPos->GetComponentRotation());
+			FVector ActivatedLocation = HoldPos->GetComponentLocation();
+			ActivatedLocation.Z += ActivatedHeightOffset;
+			TargetLuggage->SetActorLocation(ActivatedLocation);
+			TargetLuggage->SetActorRotation(HoldPos->GetComponentRotation());
 		}
 
-		// Luggage의 물리 비활성화 및 충돌 비활성화
-		if (Luggage->BoxComp)
-		{
-			Luggage->BoxComp->SetSimulatePhysics(false);
-			Luggage->BoxComp->SetCollisionEnabled(ECollisionEnabled::NoCollision);
-		}
-
-		// Interactable 컴포넌트 비활성화
-		if (Luggage->InteractableComp)
-		{
-			Luggage->InteractableComp->SetActive(false);
-		}
+		// Luggage의 모든 충돌 비활성화 (pickup, hook 등 모든 상호작용 차단)
+		TargetLuggage->SetAllCollision(false);
 
 		// Activate 상태로 전환
 		bIsActivated = true;
-
-		// 애니메이션 재생
-		if (MeshComponent && AnimToPlay)
-		{
-			MeshComponent->PlayAnimation(AnimToPlay, false);
-			PRINTLOG(TEXT("AHolder::CheckLuggage - Playing animation"));
-		}
-
-		// 블루프린트 이벤트 호출
-		OnActivate(true);
+		CurTarget = TargetLuggage;
 	}
 	else
 	{
 		// Fail: Luggage 제거
-		Luggage->Destroy();
-		CurrentLuggage = nullptr;
+		TargetLuggage->Destroy();
+	}
 
-		// 블루프린트 이벤트 호출
-		OnActivate(false);
+	return bSuccess;
+}
+
+void AHolder::UpdateActivateState(bool State)
+{
+	// 머티리얼 파라미터 설정 (비활성화)
+	if (MeshComponent && MeshComponent->GetNumMaterials() > 0)
+	{
+		UMaterialInstanceDynamic* DynamicMaterial = Cast<UMaterialInstanceDynamic>(MeshComponent->GetMaterial(0));
+		if (!DynamicMaterial)
+			DynamicMaterial = MeshComponent->CreateDynamicMaterialInstance(0);
+
+		if (DynamicMaterial)
+			DynamicMaterial->SetScalarParameterValue(FName("Activate"), State ? 1.0f : 0.0f);
 	}
 }
 
