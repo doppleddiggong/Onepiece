@@ -281,12 +281,9 @@ void ANetworkTesterActor::OnResponseInterviewHello(FResponseInterviewHello& Resp
         PRINTLOG(TEXT("--- InterViewHello Questions SUCCESS ---"));
         ResponseData.PrintData();
 
-        if (const auto PopupMgr = UPopupManager::Get(GetWorld()))
+        if (auto Popup = UPopupManager::ShowPopupAs<UPopup_Interview>(GetWorld(), EPopupType::Interview))
         {
-            if (const auto Popup = Cast<UPopup_Interview>(PopupMgr->ShowPopup(EPopupType::Interview)))
-            {
-                Popup->InitPopup(ResponseData);
-            }
+            Popup->InitPopup(ResponseData);
         }
     }
     else

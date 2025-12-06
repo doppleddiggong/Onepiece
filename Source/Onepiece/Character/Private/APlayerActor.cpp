@@ -332,12 +332,9 @@ void APlayerActor::Cmd_Info_Implementation()
 	if ( !GS->IsQuestIng() )
 		return;
 	
-	if (const auto PopupMgr = UPopupManager::Get(GetWorld()))
+	if (auto Popup = UPopupManager::ShowPopupAs<UPopup_ReadQuest>(GetWorld(), EPopupType::ReadQuest))
 	{
-		if (const auto Popup = Cast<UPopup_ReadQuest>(PopupMgr->ShowPopup(EPopupType::ReadQuest)))
-		{
-			Popup->InitPopup( GS->CurScenarioData);
-		}
+		Popup->InitPopup(GS->CurScenarioData);
 	}
 }
 

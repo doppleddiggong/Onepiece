@@ -50,33 +50,25 @@ void APopupTesterActor::OKMsgBox()
 
 void APopupTesterActor::PopupInputMsg()
 {
-	if (const auto PopupMgr = UPopupManager::Get(GetWorld()))
+	if (auto Popup = UPopupManager::ShowPopupAs<UPopup_InputMsg>(GetWorld(), EPopupType::Login))
 	{
-		if (const auto Popup = Cast<UPopup_InputMsg>(PopupMgr->ShowPopup(EPopupType::Login)))
-		{
-			Popup->InitPopup(EPopupType::Login);
-		}
+		Popup->InitPopup(EPopupType::Login);
 	}
 }
 
 void APopupTesterActor::ReadQuest()
 {
-	if (const auto PopupMgr = UPopupManager::Get(GetWorld()))
+	if (auto Popup = UPopupManager::ShowPopupAs<UPopup_ReadQuest>(GetWorld(), EPopupType::ReadQuest))
 	{
-		if (const auto Popup = Cast<UPopup_ReadQuest>(PopupMgr->ShowPopup(EPopupType::ReadQuest)))
-		{
-			Popup->InitPopup(ULingoGameHelper::GetLingoGameState(GetWorld())->CurScenarioData);
-		}
+		Popup->InitPopup(ULingoGameHelper::GetLingoGameState(GetWorld())->CurScenarioData);
 	}
 }
 
 void APopupTesterActor::InterviewPopup()
 {
-	if (const auto PopupMgr = UPopupManager::Get(GetWorld()))
+	if (auto Popup = UPopupManager::ShowPopupAs<UPopup_Interview>(GetWorld(), EPopupType::Interview))
 	{
-		if (const auto Popup = Cast<UPopup_Interview>(PopupMgr->ShowPopup(EPopupType::Interview)))
-		{
-			// 테스트용 더미 데이터 생성
+		// 테스트용 더미 데이터 생성
 			FResponseInterviewHello TestData;
 
 			// 질문 1
@@ -116,7 +108,6 @@ void APopupTesterActor::InterviewPopup()
 			Popup->InitPopup(TestData);
 
 			PRINTLOG(TEXT("[PopupTester] Interview popup opened with %d questions"), TestData.Questions.Num());
-		}
 	}
 }
 

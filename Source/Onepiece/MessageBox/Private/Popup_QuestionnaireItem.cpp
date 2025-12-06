@@ -48,10 +48,8 @@ void UPopup_QuestionnaireItem::InitItem(const FWriteQuestionData& Data)
 
 void UPopup_QuestionnaireItem::OnClickButton()
 {
-	if (const auto PopupMgr = UPopupManager::Get(GetWorld()))
+	if (auto Popup = UPopupManager::ShowPopupAs<UPopup_WriteBoard>(GetWorld(), EPopupType::WriteBoard))
 	{
-		if (const auto Popup = Cast<UPopup_WriteBoard>(PopupMgr->ShowPopup(EPopupType::WriteBoard)))
-		{
 			// TODO: 단어 수 및 글자 수 구하기
 			TArray<FString> Tokens;
 			QuestionData.AnswerKr.ParseIntoArrayWS(Tokens);
@@ -63,6 +61,5 @@ void UPopup_QuestionnaireItem::OnClickButton()
 			PRINT_STRING(TEXT("Question 글자 수 : %d"), QuestionData.AnswerKr.Len());
 			PRINT_STRING(TEXT("Question 첫 단어 글자 수 : %d"), Tokens[0].Len());
 			Popup->InitPopup(QuestionData.Id, Tokens);
-		}
 	}
 }

@@ -193,13 +193,10 @@ void ALingoGameState::Multicast_ShowReadQuestPopup_Implementation(int InStageInd
 	// Stage1일 때만 Read Quest 팝업 표시
 	if (InStageIndex == 1)
 	{
-		if (UPopupManager* PopupMgr = UPopupManager::Get(GetWorld()))
+		if (auto Popup = UPopupManager::ShowPopupAs<UPopup_ReadQuest>(GetWorld(), EPopupType::ReadQuest))
 		{
-			if (UPopup_ReadQuest* Popup = Cast<UPopup_ReadQuest>(PopupMgr->ShowPopup(EPopupType::ReadQuest)))
-			{
-				Popup->InitPopup(InScenarioData);
-				PRINTLOG(TEXT("[GameState] Read Quest Popup displayed for Stage1"));
-			}
+			Popup->InitPopup(InScenarioData);
+			PRINTLOG(TEXT("[GameState] Read Quest Popup displayed for Stage1"));
 		}
 	}
 }
