@@ -4,6 +4,11 @@ on:
   repository_dispatch:
     types: [honkit-build]
   workflow_dispatch:
+    inputs:
+      keep_files:
+        description: 'Whether to keep existing files in the destination directory on the gh-pages branch. Defaults to true.'
+        required: false
+        default: 'true'
 
 permissions:
   contents: write
@@ -73,6 +78,17 @@ jobs:
             --trigger "${CLIENT_TRIGGER:-}" \
             --latest-file "${CLIENT_LATEST_FILE:-}"
 
+      - name: Set keep_files flag
+        id: keep_files_flag
+        run: |
+          if [ "${{ github.event_name }}" == "repository_dispatch" ]; then
+            echo "keep_files=${{ github.event.client_payload.keep_files || 'true' }}" >> $GITHUB_OUTPUT
+          elif [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
+            echo "keep_files=${{ github.event.inputs.keep_files || 'true' }}" >> $GITHUB_OUTPUT
+          else
+            echo "keep_files=true" >> $GITHUB_OUTPUT
+          fi
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
@@ -80,7 +96,7 @@ jobs:
           publish_branch: gh-pages
           publish_dir: honkit-out
           destination_dir: honkit
-          keep_files: true
+          keep_files: ${{ steps.keep_files_flag.outputs.keep_files == 'true' }}
           force_orphan: false
 
       - name: Summary
