@@ -32,7 +32,7 @@ namespace GameMessage
 	static const FString GameEnd	= TEXT("GameEnd");
 	static const FString IntroStart = TEXT("IntroStart");
 	static const FString OutroStart = TEXT("OutroStart");    
-
+	
 	static const FString Stage1Start	= TEXT("Stage1Start");    
 	static const FString Stage1End		= TEXT("Stage1End");    
 
@@ -43,7 +43,9 @@ namespace GameMessage
 	static const FString Stage3End		= TEXT("Stage3End");    
 
 	static const FString Stage4Start	= TEXT("Stage4Start");    
-	static const FString Stage4End		= TEXT("Stage4End");    
+	static const FString Stage4End		= TEXT("Stage4End");
 
 
+	static const FString Holder_Success		= TEXT("Perfect! You placed the block right. Let's keep going!");
+	static const FString Holder_Fail		= TEXT("Oops! That block doesn't go there.");    
 }

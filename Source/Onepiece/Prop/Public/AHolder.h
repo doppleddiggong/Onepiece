@@ -20,13 +20,19 @@ protected:
 	virtual void GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const override;
 
 public:
+	void SetAnswerData(const int32 InAnswerColorIdx, const int32 InAnswerPatternIdx);
+
 	// Events
 	UFUNCTION(BlueprintImplementableEvent, Category = "Holder")
 	void OnActivate(bool bSuccess);
-
-	void SetAnswerData(const int32 InAnswerColorIdx, const int32 InAnswerPatternIdx);
 	
 private:
+	UFUNCTION()
+	void OnRep_IsActivated();
+
+	UFUNCTION()
+	void OnRep_CurTarget();
+
 	UFUNCTION()
 	void OnBoxOverlapBegin(
 		UPrimitiveComponent* OverlappedComponent,
@@ -51,8 +57,13 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Spawning")
 	TObjectPtr<class USceneComponent> HoldPos;
 
+protected:
+	// 현재 올라가 있는 액터
+	UPROPERTY(ReplicatedUsing=OnRep_CurTarget)
+	TObjectPtr<class AActor> CurTarget;
+	
 	// State
-	UPROPERTY(Replicated, VisibleAnywhere, BlueprintReadOnly, Category = "State")
+	UPROPERTY(ReplicatedUsing=OnRep_IsActivated, VisibleAnywhere, BlueprintReadOnly, Category = "State")
 	bool bIsActivated = false;
 
 	// Visual Settings
@@ -61,14 +72,8 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Visual")
 	float RotationSpeed = 90.0f;
-
-
-private:
+	
 	// Answer Settings
 	int32 AnswerColorIdx = -1;
 	int32 AnswerPatternIdx = -1;
-	
-	// 현재 올라가 있는 액터
-	UPROPERTY(Replicated)
-	TObjectPtr<class AActor> CurTarget;
 };
