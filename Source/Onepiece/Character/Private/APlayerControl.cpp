@@ -153,15 +153,14 @@ void APlayerControl::OnJump(const FInputActionValue&)
 			ADropper* Dropper = *It;
 			if (Dropper)
 			{
-				// BP_Luggage 블루프린트 클래스 로드
-				TSubclassOf<AActor> LuggageClass = LoadClass<AActor>(nullptr,
-					TEXT("/Game/CustomContents/Blueprints/Interactables/BP_Luggage.BP_Luggage_C"));
-
-				if (LuggageClass)
-				{
-					Dropper->SpawnActor(LuggageClass);
-				}
-				break; // 첫 번째 Dropper만 사용
+				FLuggageData tmpData;
+				tmpData.word1 = tmpData.word1.GetRandomAnimal();
+				tmpData.word2 = tmpData.word2.GetRandomColor();
+				
+				Dropper->SetSpawnData(tmpData);
+				Dropper->SetSpawnClass( LoadClass<AActor>(nullptr, TEXT("/Game/CustomContents/Blueprints/Interactables/BP_Luggage.BP_Luggage_C")));
+				Dropper->RequestSpawn();
+				break;
 			}
 		}
 	}

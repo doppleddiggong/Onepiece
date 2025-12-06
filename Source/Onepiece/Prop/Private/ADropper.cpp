@@ -1,138 +1,147 @@
-// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
-
+// Copyright (c) 2025.
+// Proprietary and confidential.
 
 #include "ADropper.h"
-
+#include "Luggage.h"
 #include "GameLogging.h"
 #include "Components/SkeletalMeshComponent.h"
-#include "Components/StaticMeshComponent.h"
 #include "Components/SceneComponent.h"
-#include "Animation/AnimationAsset.h"
+#include "Components/StaticMeshComponent.h"
 #include "TimerManager.h"
 #include "Net/UnrealNetwork.h"
 
 ADropper::ADropper()
 {
     PrimaryActorTick.bCanEverTick = false;
-
-    // Replication
     bReplicates = true;
 
-    // Root component
-    USceneComponent* Root = CreateDefaultSubobject<USceneComponent>(TEXT("DefaultSceneRoot"));
+    // Root
+    USceneComponent* Root = CreateDefaultSubobject<USceneComponent>(TEXT("Root"));
     RootComponent = Root;
 
-    // SkeletalMesh component
+    // SkeletalMesh
     SkeletalMesh = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("SkeletalMesh"));
     SkeletalMesh->SetupAttachment(RootComponent);
 
-    // Cube (StaticMesh) component
-    BoxCollision = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Cube"));
+    // Collision Mesh
+    BoxCollision = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("BoxCollision"));
     BoxCollision->SetupAttachment(SkeletalMesh);
     BoxCollision->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
     BoxCollision->SetCollisionResponseToAllChannels(ECR_Block);
 
-    // SpawnPos component
+    // Spawn Position
     SpawnPos = CreateDefaultSubobject<USceneComponent>(TEXT("SpawnPos"));
     SpawnPos->SetupAttachment(SkeletalMesh);
 }
 
-void ADropper::GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const
+void ADropper::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
 {
     Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+
+    DOREPLIFETIME(ADropper, SpawnClass);
+    DOREPLIFETIME(ADropper, NextData);
 }
 
-AActor* ADropper::SpawnActor(TSubclassOf<AActor> SpawnActorClass)
+void ADropper::RequestSpawn()
 {
-    if (!SpawnActorClass || !SpawnPos)
-    {
-        PRINTLOG( TEXT("SpawnActorClass or SpawnPos is not set"));
-        return nullptr;
-    }
-
-    // 서버에서만 실행
     if (!HasAuthority())
+        return;
+
+    if (!SpawnClass)
+        return;
+
+    SpawnInternal();
+}
+
+void ADropper::SpawnInternal()
+{
+    if (!HasAuthority())
+        return;
+
+    if (!SpawnClass || !SpawnPos)
     {
-        PRINTLOG(TEXT("ADropper::SpawnActor - Not authority, ignoring"));
-        return nullptr;
+        PRINTLOG(TEXT("ADropper::SpawnInternal - Invalid data"));
+        return;
     }
 
-    FActorSpawnParameters SpawnParams;
-    SpawnParams.Owner = this;
-    SpawnParams.Instigator = GetInstigator();
+    FActorSpawnParameters Params;
+    Params.Owner = this;
+    Params.Instigator = GetInstigator();
 
-    auto SpawnedActor = GetWorld()->SpawnActor<AActor>(SpawnActorClass,
+    // 실제 스폰
+    AActor* SpawnedActor = GetWorld()->SpawnActor<AActor>(
+        SpawnClass,
         SpawnPos->GetComponentLocation(),
         SpawnPos->GetComponentRotation(),
-        SpawnParams);
+        Params
+    );
 
-    if (SpawnedActor)
+    if (!SpawnedActor)
+        return;
+
+    // HACK, 임시!!!
+    static int CurrentSpawnIndex = 0;
+    
+    // 데이터 전달
+    if (auto tmpLuggage = Cast<Aluggage>(SpawnedActor))
     {
-        // 모든 클라이언트에서 애니메이션 재생
-        if (SkeletalMesh && AnimToPlay)
-            Multicast_PlayAnimation();
+        tmpLuggage->SetLuggageInfo(CurrentSpawnIndex++, NextData.word2.name, NextData.word1.name);
 
-        // 타이머 시작
-        GetWorldTimerManager().SetTimer(
-            DelayTimerHandle,
-            this,
-            &ADropper::OnDelayCompleted,
-            2.0f,
-            false
-        );
+        int32 ColorIdx = FCString::Atoi(*NextData.word2.code);
+        tmpLuggage->ApplyColorToMesh(ColorIdx);
+
+        int32 PatternIdx = FCString::Atoi(*NextData.word1.code);
+        tmpLuggage->ApplyPatternToMesh(PatternIdx);
     }
 
-    return SpawnedActor;
+    // 애니메이션 실행
+    if (SkeletalMesh && AnimToPlay)
+        Multicast_PlayAnimation();
+
+    // 2초 뒤 충돌 OFF → 다시 ON
+    GetWorldTimerManager().SetTimer(
+        DelayTimerHandle,
+        this,
+        &ADropper::OnDelayCompleted,
+        2.0f,
+        false
+    );
 }
 
 void ADropper::OnDelayCompleted()
 {
-    // 서버 타이머 콜백 → Multicast로 충돌 비활성화
     if (!HasAuthority())
         return;
 
     Multicast_DisableCollision();
+
+    GetWorldTimerManager().SetTimer(
+        RestoreTimerHandle,
+        this,
+        &ADropper::OnRestoreCompleted,
+        2.0f,
+        false
+    );
 }
 
-void ADropper::OnRestoreDelayCompleted()
+void ADropper::OnRestoreCompleted()
 {
-    // 서버 타이머 콜백 → Multicast로 충돌 복구
     if (!HasAuthority())
         return;
-    
+
     Multicast_RestoreCollision();
 }
 
 void ADropper::Multicast_PlayAnimation_Implementation()
 {
     if (SkeletalMesh && AnimToPlay)
-    {
         SkeletalMesh->PlayAnimation(AnimToPlay, false);
-        PRINTLOG(TEXT("ADropper::Multicast_PlayAnimation - Playing animation, Role: %s"),
-            GetLocalRole() == ROLE_Authority ? TEXT("Server") : TEXT("Client"));
-    }
 }
 
 void ADropper::Multicast_DisableCollision_Implementation()
 {
     if (BoxCollision)
-    {
         BoxCollision->SetCollisionEnabled(ECollisionEnabled::NoCollision);
-        PRINTLOG(TEXT("ADropper::Multicast_DisableCollision - Disabled collision, Role: %s"),
-            GetLocalRole() == ROLE_Authority ? TEXT("Server") : TEXT("Client"));
-    }
-
-    // 서버에서만 다음 타이머 설정
-    if (HasAuthority())
-    {
-        GetWorldTimerManager().SetTimer(
-            RestoreTimerHandle,
-            this,
-            &ADropper::OnRestoreDelayCompleted,
-            2.0,
-            false
-        );
-    }
 }
 
 void ADropper::Multicast_RestoreCollision_Implementation()
@@ -141,8 +150,5 @@ void ADropper::Multicast_RestoreCollision_Implementation()
     {
         BoxCollision->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
         BoxCollision->SetCollisionResponseToAllChannels(ECR_Block);
-
-        PRINTLOG(TEXT("ADropper::Multicast_RestoreCollision - Restored collision, Role: %s"),
-            GetLocalRole() == ROLE_Authority ? TEXT("Server") : TEXT("Client"));
     }
 }

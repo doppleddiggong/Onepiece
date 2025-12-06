@@ -521,6 +521,75 @@ struct FWordInfo
 
 	UPROPERTY(BlueprintReadWrite, Category = "Word")
 	FString code;
+
+    /** 랜덤 색상 선택 - CSV 기반 하드코딩 */
+    static FWordInfo GetRandomColor()
+    {
+        static const TArray<FWordInfo> ColorPool = {
+            { TEXT("빨강"),   TEXT("1") },
+            { TEXT("파랑"),   TEXT("2") },
+            { TEXT("노랑"),   TEXT("3") },
+            { TEXT("초록"),   TEXT("4") },
+            { TEXT("검정"),   TEXT("5") },
+            { TEXT("흰색"),   TEXT("6") },
+            { TEXT("회색"),   TEXT("7") },
+            { TEXT("주황"),   TEXT("8") },
+            { TEXT("분홍"),   TEXT("9") },
+            { TEXT("갈색"),   TEXT("10") },
+            { TEXT("남색"),   TEXT("11") },
+            { TEXT("보라색"), TEXT("12") },
+            { TEXT("금색"),   TEXT("13") },
+            { TEXT("은색"),   TEXT("14") },
+            { TEXT("살구색"), TEXT("15") },
+            { TEXT("하늘색"), TEXT("16") },
+            { TEXT("자주색"), TEXT("17") },
+            { TEXT("청록색"), TEXT("18") },
+            { TEXT("황토색"), TEXT("19") },
+            { TEXT("진홍색"), TEXT("20") },
+            { TEXT("군청색"), TEXT("21") },
+            { TEXT("연두색"), TEXT("22") },
+            { TEXT("와인색"), TEXT("23") },
+            { TEXT("베이지색"), TEXT("24") }
+        };
+
+        const int Index = FMath::RandRange(0, ColorPool.Num() - 1);
+        return ColorPool[Index];
+    }
+
+
+    /** 랜덤 동물 선택 - CSV 기반 하드코딩 */
+    static FWordInfo GetRandomAnimal()
+    {
+        static const TArray<FWordInfo> AnimalPool = {
+            { TEXT("개"),      TEXT("1") },
+            { TEXT("고양이"),  TEXT("2") },
+            { TEXT("새"),      TEXT("3") },
+            { TEXT("물고기"),  TEXT("4") },
+            { TEXT("소"),      TEXT("5") },
+            { TEXT("닭"),      TEXT("6") },
+            { TEXT("돼지"),    TEXT("7") },
+            { TEXT("토끼"),    TEXT("8") },
+            { TEXT("말"),      TEXT("9") },
+            { TEXT("양"),      TEXT("10") },
+            { TEXT("사슴"),    TEXT("11") },
+            { TEXT("호랑이"),  TEXT("12") },
+            { TEXT("곰"),      TEXT("13") },
+            { TEXT("여우"),    TEXT("14") },
+            { TEXT("원숭이"),  TEXT("15") },
+            { TEXT("펭귄"),    TEXT("16") },
+            { TEXT("기린"),    TEXT("17") },
+            { TEXT("코끼리"),  TEXT("18") },
+            { TEXT("치타"),    TEXT("19") },
+            { TEXT("물개"),    TEXT("20") },
+            { TEXT("하마"),    TEXT("21") },
+            { TEXT("낙타"),    TEXT("22") },
+            { TEXT("돌고래"),  TEXT("23") },
+            { TEXT("박쥐"),    TEXT("24") }
+        };
+
+        const int Index = FMath::RandRange(0, AnimalPool.Num() - 1);
+        return AnimalPool[Index];
+    }
 };
 
 /// @brief Scenario 타겟 데이터입니다.
