@@ -7,14 +7,14 @@ var searchData=
   ['activatedheightoffset_4',['ActivatedHeightOffset',['../classAHolder.html#ab6843abcaf5b577e79f7cd2759add9a7',1,'AHolder']]],
   ['activesounds_5',['ActiveSounds',['../classUGameSoundManager.html#a014ed49d2c5bdea3e3c8584c959cbbc7',1,'UGameSoundManager']]],
   ['alpha_6',['alpha',['../classADoor.html#a6a5a3d6a33a240c534fba618ab4ae703',1,'ADoor::Alpha'],['../classUEaseFunctionLibrary.html#af5ec1651942866c5a05bd65d69375e68',1,'UEaseFunctionLibrary::Alpha'],['../classUEaseFunctionLibrary.html#aa4371b9b26c18176039a3bf9eac30ca1',1,'UEaseFunctionLibrary::Alpha'],['../classUEaseFunctionLibrary.html#ac815129e39fbc4ab3511fb2cc93ea00b',1,'UEaseFunctionLibrary::Alpha']]],
-  ['animblueprint_7',['animblueprint',['../classUCharacterData.html#aa7a906debfd693152437da9f9deeff7a',1,'UCharacterData::AnimBluePrint'],['../classAPedestalSwitch.html#aedb898332b945a4197112796cf848896',1,'APedestalSwitch::AnimBlueprint'],['../classAWeightSwitch.html#aac61dda6cc3f61994e54f5569c27f6cf',1,'AWeightSwitch::AnimBlueprint']]],
+  ['animblueprint_7',['animblueprint',['../classAPedestalSwitch.html#aedb898332b945a4197112796cf848896',1,'APedestalSwitch::AnimBlueprint'],['../classAWeightSwitch.html#aac61dda6cc3f61994e54f5569c27f6cf',1,'AWeightSwitch::AnimBlueprint'],['../classUCharacterData.html#aa7a906debfd693152437da9f9deeff7a',1,'UCharacterData::AnimBluePrint']]],
   ['animduration_8',['AnimDuration',['../classUCircularProgressBar.html#ac293863b7a5455ac411184f3e99d6422',1,'UCircularProgressBar']]],
   ['animelapsedtime_9',['AnimElapsedTime',['../classUCircularProgressBar.html#afd963fbc4d9c013eac7f1a1f9bbce849',1,'UCircularProgressBar']]],
   ['animstartpercent_10',['AnimStartPercent',['../classUCircularProgressBar.html#a65165ac1f3f9289a4f58ec94a7e4af4c',1,'UCircularProgressBar']]],
   ['animtargetpercent_11',['AnimTargetPercent',['../classUCircularProgressBar.html#ac082d26a89ed6facfadb25431968b9e0',1,'UCircularProgressBar']]],
   ['animtoplay_12',['AnimToPlay',['../classADropper.html#a5a49c1c7e8db3bc33eb575a252bcad9d',1,'ADropper']]],
   ['anothervalue_13',['AnotherValue',['../classAPlayerActor.html#a57d536023470eebddc11f8c929d6dfd5',1,'APlayerActor']]],
-  ['answer_14',['answer',['../structFWriteQuestionData.html#a3231eadaa35a9dbb77b7b3a7b69456c7',1,'FWriteQuestionData::Answer'],['../structFInterviewAnswerData.html#a5575841760326adcc7ba83fa26137328',1,'FInterviewAnswerData::answer'],['../structFRequestInterviewAnswer.html#a6f9bb74ac56aa1ad3d48a4a98a017eac',1,'FRequestInterviewAnswer::answer']]],
+  ['answer_14',['answer',['../structFRequestInterviewAnswer.html#a6f9bb74ac56aa1ad3d48a4a98a017eac',1,'FRequestInterviewAnswer::answer'],['../structFWriteQuestionData.html#a3231eadaa35a9dbb77b7b3a7b69456c7',1,'FWriteQuestionData::Answer'],['../structFInterviewAnswerData.html#a5575841760326adcc7ba83fa26137328',1,'FInterviewAnswerData::answer']]],
   ['answercoloridx_15',['AnswerColorIdx',['../classAHolder.html#a4ff9df4654d1cdfc7ec42fd47aaa8d24',1,'AHolder']]],
   ['answerfound_16',['AnswerFound',['../classAWeightSwitch.html#ab519ea888b0690295485652b2e1d2686',1,'AWeightSwitch']]],
   ['answeridx_17',['AnswerIdx',['../classUPopup__WriteBoard.html#ad7248b239cc38bc59882838396270883',1,'UPopup_WriteBoard']]],
@@ -26,5 +26,6 @@ var searchData=
   ['attemptcount_23',['attemptcount',['../classALingoPlayerState.html#a84ee00df5be0502498039d5d0d1ec94a',1,'ALingoPlayerState::AttemptCount'],['../structFReadQuestResult.html#a432620275a263d07e012d46debd2e15a',1,'FReadQuestResult::AttemptCount']]],
   ['audio_5fbase64_24',['audio_base64',['../structFResponseListenAudio.html#a39dfdd52ce3770dfbccf800986ce4607',1,'FResponseListenAudio']]],
   ['audio_5ftext_25',['audio_text',['../structFResponseListenAudio.html#ac98fb8b7db5c2bbb9bd42bf9fd72f71f',1,'FResponseListenAudio']]],
-  ['audiotext_26',['AudioText',['../classANetworkTesterActor.html#a996eb18cfc8d22f19124b0d1915be991',1,'ANetworkTesterActor']]]
+  ['audiotext_26',['AudioText',['../classANetworkTesterActor.html#a996eb18cfc8d22f19124b0d1915be991',1,'ANetworkTesterActor']]],
+  ['average_5fscore_27',['average_score',['../structFResponseReadResult.html#a025804546c05d43d63298beac5cda57b',1,'FResponseReadResult::average_score'],['../structFResponseListenResult.html#a4d6596e5d6792ec688f04e019771f5c0',1,'FResponseListenResult::average_score']]]
 ];

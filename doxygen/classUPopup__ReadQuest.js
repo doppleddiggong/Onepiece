@@ -1,9 +1,9 @@
 var classUPopup__ReadQuest =
 [
-    [ "InitPopup", "classUPopup__ReadQuest.html#a739783493974504d947dbd03c388c6d0", null ],
+    [ "InitListen", "classUPopup__ReadQuest.html#a9dfe5159312b55b67809443e00d020e8", null ],
     [ "InitQuestInfo", "classUPopup__ReadQuest.html#a101bd5521b4278ac0cec0d5361d63b58", null ],
+    [ "InitRead", "classUPopup__ReadQuest.html#a413aaac10f29c3e2bd6d72186a12d53d", null ],
     [ "ListenAudio", "classUPopup__ReadQuest.html#ac3c28f1229cf6d52a6c9ca511086a0f8", null ],
-    [ "NativeConstruct", "classUPopup__ReadQuest.html#ac84b2f61529c5dba7bd769f9650a9555", null ],
     [ "NativeTick", "classUPopup__ReadQuest.html#a750c1a854f68ca16faa069645531abd6", null ],
     [ "OnClickClose", "classUPopup__ReadQuest.html#a4b8d0620aabf1f83bd80a653e2b2fc62", null ],
     [ "OnResponseListenAudio", "classUPopup__ReadQuest.html#adbfb30bcba4d3d14463d8a8472d8256e", null ],
@@ -11,7 +11,8 @@ var classUPopup__ReadQuest =
     [ "UpdateAnimation", "classUPopup__ReadQuest.html#a830a08b15d00e418f351f096fc5a8790", null ],
     [ "bIsOpenAnim", "classUPopup__ReadQuest.html#a807985dccb3305b1004c611401b7b551", null ],
     [ "bIsRequest", "classUPopup__ReadQuest.html#acbb3ac7db4f11e6586bfd50cc8c69bd9", null ],
-    [ "Btn_Exit", "classUPopup__ReadQuest.html#aa00fc41b3331d1a172b7c0f6db7b7f2d", null ],
+    [ "Btn_Exit", "classUPopup__ReadQuest.html#a2b450209b068e9df27820659129ddd6e", null ],
+    [ "ListenData", "classUPopup__ReadQuest.html#ae994eb6e6365772bb70f4eddc7755c84", null ],
     [ "OpenDuration", "classUPopup__ReadQuest.html#a5a4c2b75560a3e2d07ed3aa52837278e", null ],
     [ "OpenEaseExponent", "classUPopup__ReadQuest.html#afe75f5ef94f97fbcc8ea1ad9e801524c", null ],
     [ "OpenElapsedTime", "classUPopup__ReadQuest.html#a6124aff28b2b2a0b810bb693ebcd81ad", null ],
@@ -19,6 +20,7 @@ var classUPopup__ReadQuest =
     [ "OpenStartScale", "classUPopup__ReadQuest.html#a9a4bc6d6e03adc7396c7960c41dae0b2", null ],
     [ "OpenTargetScale", "classUPopup__ReadQuest.html#add357075245f0843320c0b74af0f2697", null ],
     [ "PopupType", "classUPopup__ReadQuest.html#a7e537a0dd751df11990ed46947f09d42", null ],
-    [ "ScenarioData", "classUPopup__ReadQuest.html#a57e2829fc1457eab5ed66d12e3b54fed", null ],
-    [ "WordWidget", "classUPopup__ReadQuest.html#aed4ecc73e8fe95e589c02336119b6f99", null ]
+    [ "QuestType", "classUPopup__ReadQuest.html#a8c39da7d222e4a2f82218e5d14afec8f", null ],
+    [ "ReadData", "classUPopup__ReadQuest.html#ac61d430eaf1de1dcbed3b4aa9537c16d", null ],
+    [ "WordWidget", "classUPopup__ReadQuest.html#a43653d6e41bf87fb49b69e6820390abe", null ]
 ];

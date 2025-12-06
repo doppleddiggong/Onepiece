@@ -7,7 +7,6 @@ var dir_244820c19557decdcbf6fc4000b77b7e =
     [ "Popup_QuestionnaireResult.h", "Popup__QuestionnaireResult_8h.html", "Popup__QuestionnaireResult_8h" ],
     [ "Popup_Result.h", "Popup__Result_8h.html", "Popup__Result_8h" ],
     [ "Popup_WriteBoard.h", "Popup__WriteBoard_8h.html", "Popup__WriteBoard_8h" ],
-    [ "ScoreManager.h", "ScoreManager_8h.html", "ScoreManager_8h" ],
     [ "UBasePopup.h", "UBasePopup_8h.html", "UBasePopup_8h" ],
     [ "UPopup_InputMsg.h", "UPopup__InputMsg_8h.html", "UPopup__InputMsg_8h" ],
     [ "UPopup_Interview.h", "UPopup__Interview_8h.html", "UPopup__Interview_8h" ],

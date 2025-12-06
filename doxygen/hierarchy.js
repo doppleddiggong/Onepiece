@@ -77,15 +77,18 @@ var hierarchy =
     [ "FReadQuestResult", "structFReadQuestResult.html", null ],
     [ "FReadTargetData", "structFReadTargetData.html", null ],
     [ "FRequestInterviewAnswer", "structFRequestInterviewAnswer.html", null ],
-    [ "FRequestReadQuestResult", "structFRequestReadQuestResult.html", null ],
+    [ "FRequestListenResult", "structFRequestListenResult.html", null ],
+    [ "FRequestReadResult", "structFRequestReadResult.html", null ],
     [ "FResponseHealth", "structFResponseHealth.html", null ],
     [ "FResponseInterviewAnswer", "structFResponseInterviewAnswer.html", null ],
     [ "FResponseInterviewHello", "structFResponseInterviewHello.html", null ],
     [ "FResponseListenAudio", "structFResponseListenAudio.html", null ],
+    [ "FResponseListenResult", "structFResponseListenResult.html", null ],
+    [ "FResponseListenScenario", "structFResponseListenScenario.html", null ],
     [ "FResponseOcrData", "structFResponseOcrData.html", null ],
     [ "FResponseOcrExtract", "structFResponseOcrExtract.html", null ],
-    [ "FResponseQuestResult", "structFResponseQuestResult.html", null ],
-    [ "FResponseScenario", "structFResponseScenario.html", null ],
+    [ "FResponseReadResult", "structFResponseReadResult.html", null ],
+    [ "FResponseReadScenario", "structFResponseReadScenario.html", null ],
     [ "FResponseSpeakingJudes", "structFResponseSpeakingJudes.html", null ],
     [ "FResponseUserHost", "structFResponseUserHost.html", null ],
     [ "FResponseUserMe", "structFResponseUserMe.html", null ],
@@ -165,8 +168,7 @@ var hierarchy =
     [ "ULocalPlayerSubsystem", null, [
       [ "UDialogManager", "classUDialogManager.html", null ],
       [ "ULoadingCircleManager", "classULoadingCircleManager.html", null ],
-      [ "UPopupManager", "classUPopupManager.html", null ],
-      [ "UScoreManager", "classUScoreManager.html", null ]
+      [ "UPopupManager", "classUPopupManager.html", null ]
     ] ],
     [ "UUserWidget", null, [
       [ "UAutoDespawnItem", "classUAutoDespawnItem.html", null ],

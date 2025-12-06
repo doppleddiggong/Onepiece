@@ -273,40 +273,35 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">   52</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> BM = UBroadcastManager::Get(GetWorld()))</div>
 <div class="line"><span class="lineno">   53</span>    {</div>
 <div class="line"><span class="lineno">   54</span>        BM-&gt;OnUpdateMissionTimerState.AddDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUMainWidget.html#a087562bb275500b4085bf893720ae7b0">UMainWidget::OnUpdateMissionTimerState</a>);</div>
-<div class="line"><span class="lineno">   55</span>        <span class="comment">// BM-&gt;OnTutorMessage.AddDynamic(this, &amp;UMainWidget::OnTutorMessage);</span></div>
-<div class="line"><span class="lineno">   56</span>        <span class="comment">// BM-&gt;OnAddItemToBoxList.AddDynamic(this, &amp;UMainWidget::AddItemToBoxList);</span></div>
-<div class="line"><span class="lineno">   57</span>    }</div>
-<div class="line"><span class="lineno">   58</span> </div>
-<div class="line"><span class="lineno">   59</span>    <a class="code hl_variable" href="classUMainWidget.html#af9eea227103d9e1ef57f35eaff2109e0">StateWidget</a>-&gt;InitWidget();</div>
-<div class="line"><span class="lineno">   60</span>    <a class="code hl_variable" href="classUMainWidget.html#a5ba1fdbbe66e5a6c54e05634e254e5d3">QuestInfoWidget</a>-&gt;SetVisibility( ESlateVisibility::Collapsed );</div>
-<div class="line"><span class="lineno">   61</span> </div>
-<div class="line"><span class="lineno">   62</span>    <span class="comment">// 훅 타겟 인디케이터 초기 숨김</span></div>
-<div class="line"><span class="lineno">   63</span>    <a class="code hl_variable" href="classUMainWidget.html#a2c5299964319e6fccda7d0ec2887ea23">HookTargetIndicator</a>-&gt;SetVisibility(ESlateVisibility::Hidden);</div>
-<div class="line"><span class="lineno">   64</span> </div>
-<div class="line"><span class="lineno">   65</span>    <span class="comment">// SpeakWidget 초기 숨김 (BindWidgetOptional이므로 null 체크 필요)</span></div>
-<div class="line"><span class="lineno">   66</span>    <a class="code hl_variable" href="classUMainWidget.html#af4d15f040b6a31cc9fd0915a73da3539">SpeakWidget</a>-&gt;SetWidgetVisibility(<span class="keyword">false</span>);</div>
-<div class="line"><span class="lineno">   67</span> </div>
-<div class="line"><span class="lineno">   68</span>    <span class="comment">// // TutorMessage 초기화 및 애니메이션 콜백 바인딩</span></div>
-<div class="line"><span class="lineno">   69</span>    <span class="comment">// InitTutorMessage();</span></div>
-<div class="line"><span class="lineno">   70</span> </div>
-<div class="line"><span class="lineno">   71</span>    <a class="code hl_function" href="classUMainWidget.html#a5a104d787c94fb051427186f6a0236fe">SetMissionTimerState</a>(<span class="keyword">false</span>);</div>
-<div class="line"><span class="lineno">   72</span>}</div>
-<div class="ttc" id="aclassALingoGameState_html"><div class="ttname"><a href="classALingoGameState.html">ALingoGameState</a></div><div class="ttdef"><b>Definition</b> <a href="ALingoGameState_8h_source.html#l00052">ALingoGameState.h:53</a></div></div>
-<div class="ttc" id="aclassUMainWidget_html_a087562bb275500b4085bf893720ae7b0"><div class="ttname"><a href="classUMainWidget.html#a087562bb275500b4085bf893720ae7b0">UMainWidget::OnUpdateMissionTimerState</a></div><div class="ttdeci">void OnUpdateMissionTimerState(bool bIsActive, float TimeLimit)</div><div class="ttdoc">미션 타이머 상태 변경 핸들러</div><div class="ttdef"><b>Definition</b> <a href="UMainWidget_8cpp_source.html#l00111">UMainWidget.cpp:111</a></div></div>
+<div class="line"><span class="lineno">   55</span>    }</div>
+<div class="line"><span class="lineno">   56</span> </div>
+<div class="line"><span class="lineno">   57</span>    <a class="code hl_variable" href="classUMainWidget.html#af9eea227103d9e1ef57f35eaff2109e0">StateWidget</a>-&gt;InitWidget();</div>
+<div class="line"><span class="lineno">   58</span>    <a class="code hl_variable" href="classUMainWidget.html#a5ba1fdbbe66e5a6c54e05634e254e5d3">QuestInfoWidget</a>-&gt;SetVisibility( ESlateVisibility::Collapsed );</div>
+<div class="line"><span class="lineno">   59</span> </div>
+<div class="line"><span class="lineno">   60</span>    <span class="comment">// 훅 타겟 인디케이터 초기 숨김</span></div>
+<div class="line"><span class="lineno">   61</span>    <a class="code hl_variable" href="classUMainWidget.html#a2c5299964319e6fccda7d0ec2887ea23">HookTargetIndicator</a>-&gt;SetVisibility(ESlateVisibility::Hidden);</div>
+<div class="line"><span class="lineno">   62</span> </div>
+<div class="line"><span class="lineno">   63</span>    <span class="comment">// SpeakWidget 초기 숨김 (BindWidgetOptional이므로 null 체크 필요)</span></div>
+<div class="line"><span class="lineno">   64</span>    <a class="code hl_variable" href="classUMainWidget.html#af4d15f040b6a31cc9fd0915a73da3539">SpeakWidget</a>-&gt;SetWidgetVisibility(<span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">   65</span> </div>
+<div class="line"><span class="lineno">   66</span>    <a class="code hl_function" href="classUMainWidget.html#a5a104d787c94fb051427186f6a0236fe">SetMissionTimerState</a>(<span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">   67</span>}</div>
+<div class="ttc" id="aclassALingoGameState_html"><div class="ttname"><a href="classALingoGameState.html">ALingoGameState</a></div><div class="ttdef"><b>Definition</b> <a href="ALingoGameState_8h_source.html#l00035">ALingoGameState.h:36</a></div></div>
+<div class="ttc" id="aclassUMainWidget_html_a087562bb275500b4085bf893720ae7b0"><div class="ttname"><a href="classUMainWidget.html#a087562bb275500b4085bf893720ae7b0">UMainWidget::OnUpdateMissionTimerState</a></div><div class="ttdeci">void OnUpdateMissionTimerState(bool bIsActive, float TimeLimit)</div><div class="ttdoc">미션 타이머 상태 변경 핸들러</div><div class="ttdef"><b>Definition</b> <a href="UMainWidget_8cpp_source.html#l00090">UMainWidget.cpp:90</a></div></div>
 <div class="ttc" id="aclassUMainWidget_html_a2c5299964319e6fccda7d0ec2887ea23"><div class="ttname"><a href="classUMainWidget.html#a2c5299964319e6fccda7d0ec2887ea23">UMainWidget::HookTargetIndicator</a></div><div class="ttdeci">TObjectPtr&lt; class UImage &gt; HookTargetIndicator</div><div class="ttdoc">훅 가능 대상 표시 위젯 (옵션, BindWidgetOptional)</div><div class="ttdef"><b>Definition</b> <a href="UMainWidget_8h_source.html#l00089">UMainWidget.h:89</a></div></div>
-<div class="ttc" id="aclassUMainWidget_html_a5a104d787c94fb051427186f6a0236fe"><div class="ttname"><a href="classUMainWidget.html#a5a104d787c94fb051427186f6a0236fe">UMainWidget::SetMissionTimerState</a></div><div class="ttdeci">void SetMissionTimerState(bool bIsActive) const</div><div class="ttdef"><b>Definition</b> <a href="UMainWidget_8cpp_source.html#l00098">UMainWidget.cpp:98</a></div></div>
+<div class="ttc" id="aclassUMainWidget_html_a5a104d787c94fb051427186f6a0236fe"><div class="ttname"><a href="classUMainWidget.html#a5a104d787c94fb051427186f6a0236fe">UMainWidget::SetMissionTimerState</a></div><div class="ttdeci">void SetMissionTimerState(bool bIsActive) const</div><div class="ttdef"><b>Definition</b> <a href="UMainWidget_8cpp_source.html#l00077">UMainWidget.cpp:77</a></div></div>
 <div class="ttc" id="aclassUMainWidget_html_a5ba1fdbbe66e5a6c54e05634e254e5d3"><div class="ttname"><a href="classUMainWidget.html#a5ba1fdbbe66e5a6c54e05634e254e5d3">UMainWidget::QuestInfoWidget</a></div><div class="ttdeci">TObjectPtr&lt; class UQuestInfoWidget &gt; QuestInfoWidget</div><div class="ttdef"><b>Definition</b> <a href="UMainWidget_8h_source.html#l00081">UMainWidget.h:81</a></div></div>
 <div class="ttc" id="aclassUMainWidget_html_aa0abca549ef2be9c4610d4890d5c0448"><div class="ttname"><a href="classUMainWidget.html#aa0abca549ef2be9c4610d4890d5c0448">UMainWidget::CachedGameState</a></div><div class="ttdeci">TObjectPtr&lt; class ALingoGameState &gt; CachedGameState</div><div class="ttdoc">GameState 참조 캐싱</div><div class="ttdef"><b>Definition</b> <a href="UMainWidget_8h_source.html#l00122">UMainWidget.h:122</a></div></div>
 <div class="ttc" id="aclassUMainWidget_html_af4d15f040b6a31cc9fd0915a73da3539"><div class="ttname"><a href="classUMainWidget.html#af4d15f040b6a31cc9fd0915a73da3539">UMainWidget::SpeakWidget</a></div><div class="ttdeci">TObjectPtr&lt; class USpeakWidget &gt; SpeakWidget</div><div class="ttdoc">Speak Stage UI 위젯 (옵션, BindWidgetOptional)</div><div class="ttdef"><b>Definition</b> <a href="UMainWidget_8h_source.html#l00085">UMainWidget.h:85</a></div></div>
 <div class="ttc" id="aclassUMainWidget_html_af9eea227103d9e1ef57f35eaff2109e0"><div class="ttname"><a href="classUMainWidget.html#af9eea227103d9e1ef57f35eaff2109e0">UMainWidget::StateWidget</a></div><div class="ttdeci">TObjectPtr&lt; class UStateWidget &gt; StateWidget</div><div class="ttdoc">플레이어 상태 위젯 (BindWidget)</div><div class="ttdef"><b>Definition</b> <a href="UMainWidget_8h_source.html#l00078">UMainWidget.h:78</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="UMainWidget_8h_source.html#l00122">CachedGameState</a>, <a class="el" href="UMainWidget_8h_source.html#l00089">HookTargetIndicator</a>, <a class="el" href="UMainWidget_8cpp_source.html#l00111">OnUpdateMissionTimerState()</a>, <a class="el" href="UMainWidget_8h_source.html#l00081">QuestInfoWidget</a>, <a class="el" href="UMainWidget_8cpp_source.html#l00098">SetMissionTimerState()</a>, <a class="el" href="UMainWidget_8h_source.html#l00085">SpeakWidget</a>, <a class="el" href="UMainWidget_8h_source.html#l00078">StateWidget</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="UMainWidget_8h_source.html#l00122">CachedGameState</a>, <a class="el" href="UMainWidget_8h_source.html#l00089">HookTargetIndicator</a>, <a class="el" href="UMainWidget_8cpp_source.html#l00090">OnUpdateMissionTimerState()</a>, <a class="el" href="UMainWidget_8h_source.html#l00081">QuestInfoWidget</a>, <a class="el" href="UMainWidget_8cpp_source.html#l00077">SetMissionTimerState()</a>, <a class="el" href="UMainWidget_8h_source.html#l00085">SpeakWidget</a>, <a class="el" href="UMainWidget_8h_source.html#l00078">StateWidget</a>.</p>
 <div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-2-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classUMainWidget_ab5b82b602efb97c7b4cd7a3c2d99d6e8_cgraph.svg" width="100%" height="386"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classUMainWidget_ab5b82b602efb97c7b4cd7a3c2d99d6e8_cgraph.svg" width="100%" height="434"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -347,17 +342,17 @@ Private 속성</h2></td></tr>
 
 <p>매 프레임 호출되어 타이머를 업데이트합니다. </p>
 
-<p class="definition"><a class="el" href="UMainWidget_8cpp_source.html">UMainWidget.cpp</a> 파일의 <a class="el" href="UMainWidget_8cpp_source.html#l00090">90</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   91</span>{</div>
-<div class="line"><span class="lineno">   92</span>    Super::NativeTick(MyGeometry, InDeltaTime);</div>
-<div class="line"><span class="lineno">   93</span> </div>
-<div class="line"><span class="lineno">   94</span>    <a class="code hl_function" href="classUMainWidget.html#a9239722afccf53cb761984ce87f32228">UpdateTimerDisplay</a>();</div>
-<div class="line"><span class="lineno">   95</span>    <a class="code hl_function" href="classUMainWidget.html#aca756504843f51373e2c63f2bd1e1301">UpdateSpeakWidget</a>();</div>
-<div class="line"><span class="lineno">   96</span>}</div>
-<div class="ttc" id="aclassUMainWidget_html_a9239722afccf53cb761984ce87f32228"><div class="ttname"><a href="classUMainWidget.html#a9239722afccf53cb761984ce87f32228">UMainWidget::UpdateTimerDisplay</a></div><div class="ttdeci">void UpdateTimerDisplay() const</div><div class="ttdoc">타이머 텍스트를 업데이트합니다.</div><div class="ttdef"><b>Definition</b> <a href="UMainWidget_8cpp_source.html#l00103">UMainWidget.cpp:103</a></div></div>
-<div class="ttc" id="aclassUMainWidget_html_aca756504843f51373e2c63f2bd1e1301"><div class="ttname"><a href="classUMainWidget.html#aca756504843f51373e2c63f2bd1e1301">UMainWidget::UpdateSpeakWidget</a></div><div class="ttdeci">void UpdateSpeakWidget()</div><div class="ttdoc">SpeakWidget UI를 업데이트합니다.</div><div class="ttdef"><b>Definition</b> <a href="UMainWidget_8cpp_source.html#l00146">UMainWidget.cpp:146</a></div></div>
+<p class="definition"><a class="el" href="UMainWidget_8cpp_source.html">UMainWidget.cpp</a> 파일의 <a class="el" href="UMainWidget_8cpp_source.html#l00069">69</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   70</span>{</div>
+<div class="line"><span class="lineno">   71</span>    Super::NativeTick(MyGeometry, InDeltaTime);</div>
+<div class="line"><span class="lineno">   72</span> </div>
+<div class="line"><span class="lineno">   73</span>    <a class="code hl_function" href="classUMainWidget.html#a9239722afccf53cb761984ce87f32228">UpdateTimerDisplay</a>();</div>
+<div class="line"><span class="lineno">   74</span>    <a class="code hl_function" href="classUMainWidget.html#aca756504843f51373e2c63f2bd1e1301">UpdateSpeakWidget</a>();</div>
+<div class="line"><span class="lineno">   75</span>}</div>
+<div class="ttc" id="aclassUMainWidget_html_a9239722afccf53cb761984ce87f32228"><div class="ttname"><a href="classUMainWidget.html#a9239722afccf53cb761984ce87f32228">UMainWidget::UpdateTimerDisplay</a></div><div class="ttdeci">void UpdateTimerDisplay() const</div><div class="ttdoc">타이머 텍스트를 업데이트합니다.</div><div class="ttdef"><b>Definition</b> <a href="UMainWidget_8cpp_source.html#l00082">UMainWidget.cpp:82</a></div></div>
+<div class="ttc" id="aclassUMainWidget_html_aca756504843f51373e2c63f2bd1e1301"><div class="ttname"><a href="classUMainWidget.html#aca756504843f51373e2c63f2bd1e1301">UMainWidget::UpdateSpeakWidget</a></div><div class="ttdeci">void UpdateSpeakWidget()</div><div class="ttdoc">SpeakWidget UI를 업데이트합니다.</div><div class="ttdef"><b>Definition</b> <a href="UMainWidget_8cpp_source.html#l00125">UMainWidget.cpp:125</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="UMainWidget_8cpp_source.html#l00146">UpdateSpeakWidget()</a>, <a class="el" href="UMainWidget_8cpp_source.html#l00103">UpdateTimerDisplay()</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="UMainWidget_8cpp_source.html#l00125">UpdateSpeakWidget()</a>, <a class="el" href="UMainWidget_8cpp_source.html#l00082">UpdateTimerDisplay()</a>.</p>
 <div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-3-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
@@ -404,35 +399,35 @@ Private 속성</h2></td></tr>
 
 <p>미션 타이머 상태 변경 핸들러 </p>
 
-<p class="definition"><a class="el" href="UMainWidget_8cpp_source.html">UMainWidget.cpp</a> 파일의 <a class="el" href="UMainWidget_8cpp_source.html#l00111">111</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  112</span>{</div>
-<div class="line"><span class="lineno">  113</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classUMainWidget.html#aa0abca549ef2be9c4610d4890d5c0448">CachedGameState</a>)</div>
-<div class="line"><span class="lineno">  114</span>    {</div>
-<div class="line"><span class="lineno">  115</span>        <span class="keywordflow">if</span> (UWorld* World = GetWorld())</div>
-<div class="line"><span class="lineno">  116</span>            <a class="code hl_variable" href="classUMainWidget.html#aa0abca549ef2be9c4610d4890d5c0448">CachedGameState</a> = World-&gt;GetGameState&lt;<a class="code hl_class" href="classALingoGameState.html">ALingoGameState</a>&gt;();</div>
-<div class="line"><span class="lineno">  117</span>    }</div>
-<div class="line"><span class="lineno">  118</span> </div>
-<div class="line"><span class="lineno">  119</span>    <span class="comment">// GameState의 RemainMissionTime 업데이트</span></div>
-<div class="line"><span class="lineno">  120</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUMainWidget.html#aa0abca549ef2be9c4610d4890d5c0448">CachedGameState</a> &amp;&amp; bIsActive &amp;&amp; TimeLimit &gt; 0.0f)</div>
-<div class="line"><span class="lineno">  121</span>        <a class="code hl_variable" href="classUMainWidget.html#aa0abca549ef2be9c4610d4890d5c0448">CachedGameState</a>-&gt;<a class="code hl_variable" href="classALingoGameState.html#abf8b596488b55e3933d5d3fcf016307f">RemainMissionTime</a> = TimeLimit;</div>
-<div class="line"><span class="lineno">  122</span> </div>
-<div class="line"><span class="lineno">  123</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classUMainWidget.html#a5ba1fdbbe66e5a6c54e05634e254e5d3">QuestInfoWidget</a>)</div>
-<div class="line"><span class="lineno">  124</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  125</span> </div>
-<div class="line"><span class="lineno">  126</span>    <a class="code hl_variable" href="classUMainWidget.html#a5ba1fdbbe66e5a6c54e05634e254e5d3">QuestInfoWidget</a>-&gt;SetVisibility(bIsActive ? ESlateVisibility::Visible : ESlateVisibility::Collapsed );</div>
-<div class="line"><span class="lineno">  127</span>    <a class="code hl_variable" href="classUMainWidget.html#a2c5299964319e6fccda7d0ec2887ea23">HookTargetIndicator</a>-&gt;SetVisibility(ESlateVisibility::Visible);</div>
-<div class="line"><span class="lineno">  128</span>    </div>
-<div class="line"><span class="lineno">  129</span>    <span class="keywordflow">if</span> (bIsActive)</div>
-<div class="line"><span class="lineno">  130</span>    {</div>
-<div class="line"><span class="lineno">  131</span>        <a class="code hl_variable" href="classUMainWidget.html#a5ba1fdbbe66e5a6c54e05634e254e5d3">QuestInfoWidget</a>-&gt;InitQuestInfo(<a class="code hl_function" href="classULingoGameHelper.html#a6117f2f4942b42864305def958e0c108">ULingoGameHelper::GetLingoPlayerState</a>(GetWorld())-&gt;QuestRole);</div>
-<div class="line"><span class="lineno">  132</span>    }</div>
-<div class="line"><span class="lineno">  133</span> </div>
-<div class="line"><span class="lineno">  134</span>    <a class="code hl_function" href="classUMainWidget.html#a5a104d787c94fb051427186f6a0236fe">SetMissionTimerState</a>(bIsActive);</div>
-<div class="line"><span class="lineno">  135</span>}</div>
-<div class="ttc" id="aclassALingoGameState_html_abf8b596488b55e3933d5d3fcf016307f"><div class="ttname"><a href="classALingoGameState.html#abf8b596488b55e3933d5d3fcf016307f">ALingoGameState::RemainMissionTime</a></div><div class="ttdeci">float RemainMissionTime</div><div class="ttdef"><b>Definition</b> <a href="ALingoGameState_8h_source.html#l00111">ALingoGameState.h:111</a></div></div>
+<p class="definition"><a class="el" href="UMainWidget_8cpp_source.html">UMainWidget.cpp</a> 파일의 <a class="el" href="UMainWidget_8cpp_source.html#l00090">90</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   91</span>{</div>
+<div class="line"><span class="lineno">   92</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classUMainWidget.html#aa0abca549ef2be9c4610d4890d5c0448">CachedGameState</a>)</div>
+<div class="line"><span class="lineno">   93</span>    {</div>
+<div class="line"><span class="lineno">   94</span>        <span class="keywordflow">if</span> (UWorld* World = GetWorld())</div>
+<div class="line"><span class="lineno">   95</span>            <a class="code hl_variable" href="classUMainWidget.html#aa0abca549ef2be9c4610d4890d5c0448">CachedGameState</a> = World-&gt;GetGameState&lt;<a class="code hl_class" href="classALingoGameState.html">ALingoGameState</a>&gt;();</div>
+<div class="line"><span class="lineno">   96</span>    }</div>
+<div class="line"><span class="lineno">   97</span> </div>
+<div class="line"><span class="lineno">   98</span>    <span class="comment">// GameState의 RemainMissionTime 업데이트</span></div>
+<div class="line"><span class="lineno">   99</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUMainWidget.html#aa0abca549ef2be9c4610d4890d5c0448">CachedGameState</a> &amp;&amp; bIsActive &amp;&amp; TimeLimit &gt; 0.0f)</div>
+<div class="line"><span class="lineno">  100</span>        <a class="code hl_variable" href="classUMainWidget.html#aa0abca549ef2be9c4610d4890d5c0448">CachedGameState</a>-&gt;<a class="code hl_function" href="classALingoGameState.html#a4c73e8703a0e62700459ab9bd8090159">UpdateRemainMissionTime</a>( TimeLimit );</div>
+<div class="line"><span class="lineno">  101</span> </div>
+<div class="line"><span class="lineno">  102</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classUMainWidget.html#a5ba1fdbbe66e5a6c54e05634e254e5d3">QuestInfoWidget</a>)</div>
+<div class="line"><span class="lineno">  103</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  104</span> </div>
+<div class="line"><span class="lineno">  105</span>    <a class="code hl_variable" href="classUMainWidget.html#a5ba1fdbbe66e5a6c54e05634e254e5d3">QuestInfoWidget</a>-&gt;SetVisibility(bIsActive ? ESlateVisibility::Visible : ESlateVisibility::Collapsed );</div>
+<div class="line"><span class="lineno">  106</span>    <a class="code hl_variable" href="classUMainWidget.html#a2c5299964319e6fccda7d0ec2887ea23">HookTargetIndicator</a>-&gt;SetVisibility(ESlateVisibility::Visible);</div>
+<div class="line"><span class="lineno">  107</span>    </div>
+<div class="line"><span class="lineno">  108</span>    <span class="keywordflow">if</span> (bIsActive)</div>
+<div class="line"><span class="lineno">  109</span>    {</div>
+<div class="line"><span class="lineno">  110</span>        <a class="code hl_variable" href="classUMainWidget.html#a5ba1fdbbe66e5a6c54e05634e254e5d3">QuestInfoWidget</a>-&gt;InitQuestInfo(<a class="code hl_function" href="classULingoGameHelper.html#a6117f2f4942b42864305def958e0c108">ULingoGameHelper::GetLingoPlayerState</a>(GetWorld())-&gt;QuestRole);</div>
+<div class="line"><span class="lineno">  111</span>    }</div>
+<div class="line"><span class="lineno">  112</span> </div>
+<div class="line"><span class="lineno">  113</span>    <a class="code hl_function" href="classUMainWidget.html#a5a104d787c94fb051427186f6a0236fe">SetMissionTimerState</a>(bIsActive);</div>
+<div class="line"><span class="lineno">  114</span>}</div>
+<div class="ttc" id="aclassALingoGameState_html_a4c73e8703a0e62700459ab9bd8090159"><div class="ttname"><a href="classALingoGameState.html#a4c73e8703a0e62700459ab9bd8090159">ALingoGameState::UpdateRemainMissionTime</a></div><div class="ttdeci">void UpdateRemainMissionTime(const float InTimeLimit)</div><div class="ttdef"><b>Definition</b> <a href="ALingoGameState_8cpp_source.html#l00118">ALingoGameState.cpp:118</a></div></div>
 <div class="ttc" id="aclassULingoGameHelper_html_a6117f2f4942b42864305def958e0c108"><div class="ttname"><a href="classULingoGameHelper.html#a6117f2f4942b42864305def958e0c108">ULingoGameHelper::GetLingoPlayerState</a></div><div class="ttdeci">static class ALingoPlayerState * GetLingoPlayerState(const UObject *WorldContextObject)</div><div class="ttdef"><b>Definition</b> <a href="ULingoGameHelper_8cpp_source.html#l00051">ULingoGameHelper.cpp:51</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="UMainWidget_8h_source.html#l00122">CachedGameState</a>, <a class="el" href="ULingoGameHelper_8cpp_source.html#l00051">ULingoGameHelper::GetLingoPlayerState()</a>, <a class="el" href="UMainWidget_8h_source.html#l00089">HookTargetIndicator</a>, <a class="el" href="UMainWidget_8h_source.html#l00081">QuestInfoWidget</a>, <a class="el" href="ALingoPlayerState_8h_source.html#l00064">ALingoPlayerState::QuestRole</a>, <a class="el" href="ALingoGameState_8h_source.html#l00111">ALingoGameState::RemainMissionTime</a>, <a class="el" href="UMainWidget_8cpp_source.html#l00098">SetMissionTimerState()</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="UMainWidget_8h_source.html#l00122">CachedGameState</a>, <a class="el" href="ULingoGameHelper_8cpp_source.html#l00051">ULingoGameHelper::GetLingoPlayerState()</a>, <a class="el" href="UMainWidget_8h_source.html#l00089">HookTargetIndicator</a>, <a class="el" href="UMainWidget_8h_source.html#l00081">QuestInfoWidget</a>, <a class="el" href="ALingoPlayerState_8h_source.html#l00063">ALingoPlayerState::QuestRole</a>, <a class="el" href="UMainWidget_8cpp_source.html#l00077">SetMissionTimerState()</a>, <a class="el" href="ALingoGameState_8cpp_source.html#l00118">ALingoGameState::UpdateRemainMissionTime()</a>.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UMainWidget_8cpp_source.html#l00044">NativeConstruct()</a>.</p>
 <div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -440,7 +435,7 @@ Private 속성</h2></td></tr>
 <div id="dynsection-4-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-4-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classUMainWidget_a087562bb275500b4085bf893720ae7b0_cgraph.svg" width="519" height="115"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classUMainWidget_a087562bb275500b4085bf893720ae7b0_cgraph.svg" width="536" height="179"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-5-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
@@ -468,15 +463,15 @@ Private 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="UMainWidget_8cpp_source.html">UMainWidget.cpp</a> 파일의 <a class="el" href="UMainWidget_8cpp_source.html#l00098">98</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   99</span>{</div>
-<div class="line"><span class="lineno">  100</span>    <a class="code hl_variable" href="classUMainWidget.html#a1a0b73afb95c74b5c4a79daa63af9257">PlayTimer</a>-&gt;SetVisibility(bIsActive ? ESlateVisibility::Visible : ESlateVisibility::Hidden);</div>
-<div class="line"><span class="lineno">  101</span>}</div>
+<p class="definition"><a class="el" href="UMainWidget_8cpp_source.html">UMainWidget.cpp</a> 파일의 <a class="el" href="UMainWidget_8cpp_source.html#l00077">77</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   78</span>{</div>
+<div class="line"><span class="lineno">   79</span>    <a class="code hl_variable" href="classUMainWidget.html#a1a0b73afb95c74b5c4a79daa63af9257">PlayTimer</a>-&gt;SetVisibility(bIsActive ? ESlateVisibility::Visible : ESlateVisibility::Hidden);</div>
+<div class="line"><span class="lineno">   80</span>}</div>
 <div class="ttc" id="aclassUMainWidget_html_a1a0b73afb95c74b5c4a79daa63af9257"><div class="ttname"><a href="classUMainWidget.html#a1a0b73afb95c74b5c4a79daa63af9257">UMainWidget::PlayTimer</a></div><div class="ttdeci">TObjectPtr&lt; class UPlayTimer &gt; PlayTimer</div><div class="ttdoc">플레이 타이머 위젯 (BindWidget)</div><div class="ttdef"><b>Definition</b> <a href="UMainWidget_8h_source.html#l00074">UMainWidget.h:74</a></div></div>
 </div><!-- fragment -->
 <p class="reference">다음을 참조함 :  <a class="el" href="UMainWidget_8h_source.html#l00074">PlayTimer</a>.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UMainWidget_8cpp_source.html#l00044">NativeConstruct()</a>, <a class="el" href="UMainWidget_8cpp_source.html#l00111">OnUpdateMissionTimerState()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UMainWidget_8cpp_source.html#l00044">NativeConstruct()</a>, <a class="el" href="UMainWidget_8cpp_source.html#l00090">OnUpdateMissionTimerState()</a>.</p>
 <div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-6-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-6-summary" class="dynsummary" style="display:block;">
@@ -511,14 +506,14 @@ Private 속성</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition"><a class="el" href="UMainWidget_8cpp_source.html">UMainWidget.cpp</a> 파일의 <a class="el" href="UMainWidget_8cpp_source.html#l00137">137</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  138</span>{</div>
-<div class="line"><span class="lineno">  139</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classUMainWidget.html#a2c5299964319e6fccda7d0ec2887ea23">HookTargetIndicator</a> || !<a class="code hl_variable" href="classUMainWidget.html#a2c5299964319e6fccda7d0ec2887ea23">HookTargetIndicator</a>-&gt;IsVisible() )</div>
-<div class="line"><span class="lineno">  140</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  141</span> </div>
-<div class="line"><span class="lineno">  142</span>    <span class="comment">// 에임 상태에 따라 이미지 변경</span></div>
-<div class="line"><span class="lineno">  143</span>    <a class="code hl_variable" href="classUMainWidget.html#a2c5299964319e6fccda7d0ec2887ea23">HookTargetIndicator</a>-&gt;SetBrushFromTexture(bIsAiming ? <a class="code hl_variable" href="classUMainWidget.html#ad7de89f2b381f896001de9b8b7e407bc">HookAimTexture</a> : <a class="code hl_variable" href="classUMainWidget.html#a52448a9fe3ed60736a223d3129b6e3db">HookNoAimTexture</a> );</div>
-<div class="line"><span class="lineno">  144</span>}</div>
+<p class="definition"><a class="el" href="UMainWidget_8cpp_source.html">UMainWidget.cpp</a> 파일의 <a class="el" href="UMainWidget_8cpp_source.html#l00116">116</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  117</span>{</div>
+<div class="line"><span class="lineno">  118</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classUMainWidget.html#a2c5299964319e6fccda7d0ec2887ea23">HookTargetIndicator</a> || !<a class="code hl_variable" href="classUMainWidget.html#a2c5299964319e6fccda7d0ec2887ea23">HookTargetIndicator</a>-&gt;IsVisible() )</div>
+<div class="line"><span class="lineno">  119</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  120</span> </div>
+<div class="line"><span class="lineno">  121</span>    <span class="comment">// 에임 상태에 따라 이미지 변경</span></div>
+<div class="line"><span class="lineno">  122</span>    <a class="code hl_variable" href="classUMainWidget.html#a2c5299964319e6fccda7d0ec2887ea23">HookTargetIndicator</a>-&gt;SetBrushFromTexture(bIsAiming ? <a class="code hl_variable" href="classUMainWidget.html#ad7de89f2b381f896001de9b8b7e407bc">HookAimTexture</a> : <a class="code hl_variable" href="classUMainWidget.html#a52448a9fe3ed60736a223d3129b6e3db">HookNoAimTexture</a> );</div>
+<div class="line"><span class="lineno">  123</span>}</div>
 </div><!-- fragment -->
 <p class="reference">다음을 참조함 :  <a class="el" href="UMainWidget_8h_source.html#l00110">HookAimTexture</a>, <a class="el" href="UMainWidget_8h_source.html#l00114">HookNoAimTexture</a>, <a class="el" href="UMainWidget_8h_source.html#l00089">HookTargetIndicator</a>.</p>
 
@@ -549,26 +544,26 @@ Private 속성</h2></td></tr>
 
 <p>SpeakWidget UI를 업데이트합니다. </p>
 
-<p class="definition"><a class="el" href="UMainWidget_8cpp_source.html">UMainWidget.cpp</a> 파일의 <a class="el" href="UMainWidget_8cpp_source.html#l00146">146</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  147</span>{</div>
-<div class="line"><span class="lineno">  148</span>    <a class="code hl_class" href="classUSpeakStageSubsystem.html">USpeakStageSubsystem</a>* Subsystem = GetWorld()-&gt;GetSubsystem&lt;<a class="code hl_class" href="classUSpeakStageSubsystem.html">USpeakStageSubsystem</a>&gt;();</div>
-<div class="line"><span class="lineno">  149</span>    <a class="code hl_class" href="classASpeakStageActor.html">ASpeakStageActor</a>* SpeakStage = Subsystem ? Subsystem-&gt;<a class="code hl_function" href="classUSpeakStageSubsystem.html#ab6908ceda4c8b9b32f9752a341e39597">GetSpeakStage</a>() : <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">  150</span>    APlayerState* CurrentSpeaker = SpeakStage ? SpeakStage-&gt;<a class="code hl_function" href="classASpeakStageActor.html#a3df8c08592f6676f50f916cedcc21cea">GetCurrentSpeaker</a>() : <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">  151</span> </div>
-<div class="line"><span class="lineno">  152</span>    <span class="keyword">const</span> <span class="keywordtype">bool</span> bShouldShow = Subsystem &amp;&amp; Subsystem-&gt;<a class="code hl_function" href="classUSpeakStageSubsystem.html#a2169733e5e72631d8efaf91097ef9845">IsInitialized</a>() &amp;&amp; SpeakStage &amp;&amp; CurrentSpeaker;</div>
-<div class="line"><span class="lineno">  153</span> </div>
-<div class="line"><span class="lineno">  154</span>    <a class="code hl_variable" href="classUMainWidget.html#af4d15f040b6a31cc9fd0915a73da3539">SpeakWidget</a>-&gt;SetWidgetVisibility(bShouldShow);</div>
-<div class="line"><span class="lineno">  155</span> </div>
-<div class="line"><span class="lineno">  156</span>    <span class="keywordflow">if</span> (bShouldShow)</div>
-<div class="line"><span class="lineno">  157</span>    {</div>
-<div class="line"><span class="lineno">  158</span>        APlayerController* LocalPC = GetWorld()-&gt;GetFirstPlayerController();</div>
-<div class="line"><span class="lineno">  159</span>        <span class="keywordflow">if</span> (!LocalPC)</div>
-<div class="line"><span class="lineno">  160</span>            <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  161</span> </div>
-<div class="line"><span class="lineno">  162</span>        APlayerState* LocalPlayerState = LocalPC-&gt;GetPlayerState&lt;APlayerState&gt;();</div>
-<div class="line"><span class="lineno">  163</span>        <a class="code hl_variable" href="classUMainWidget.html#af4d15f040b6a31cc9fd0915a73da3539">SpeakWidget</a>-&gt;UpdateSpeakStageUI(SpeakStage, LocalPlayerState);</div>
-<div class="line"><span class="lineno">  164</span>    }</div>
-<div class="line"><span class="lineno">  165</span>}</div>
+<p class="definition"><a class="el" href="UMainWidget_8cpp_source.html">UMainWidget.cpp</a> 파일의 <a class="el" href="UMainWidget_8cpp_source.html#l00125">125</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  126</span>{</div>
+<div class="line"><span class="lineno">  127</span>    <a class="code hl_class" href="classUSpeakStageSubsystem.html">USpeakStageSubsystem</a>* Subsystem = GetWorld()-&gt;GetSubsystem&lt;<a class="code hl_class" href="classUSpeakStageSubsystem.html">USpeakStageSubsystem</a>&gt;();</div>
+<div class="line"><span class="lineno">  128</span>    <a class="code hl_class" href="classASpeakStageActor.html">ASpeakStageActor</a>* SpeakStage = Subsystem ? Subsystem-&gt;<a class="code hl_function" href="classUSpeakStageSubsystem.html#ab6908ceda4c8b9b32f9752a341e39597">GetSpeakStage</a>() : <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">  129</span>    APlayerState* CurrentSpeaker = SpeakStage ? SpeakStage-&gt;<a class="code hl_function" href="classASpeakStageActor.html#a3df8c08592f6676f50f916cedcc21cea">GetCurrentSpeaker</a>() : <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">  130</span> </div>
+<div class="line"><span class="lineno">  131</span>    <span class="keyword">const</span> <span class="keywordtype">bool</span> bShouldShow = Subsystem &amp;&amp; Subsystem-&gt;<a class="code hl_function" href="classUSpeakStageSubsystem.html#a2169733e5e72631d8efaf91097ef9845">IsInitialized</a>() &amp;&amp; SpeakStage &amp;&amp; CurrentSpeaker;</div>
+<div class="line"><span class="lineno">  132</span> </div>
+<div class="line"><span class="lineno">  133</span>    <a class="code hl_variable" href="classUMainWidget.html#af4d15f040b6a31cc9fd0915a73da3539">SpeakWidget</a>-&gt;SetWidgetVisibility(bShouldShow);</div>
+<div class="line"><span class="lineno">  134</span> </div>
+<div class="line"><span class="lineno">  135</span>    <span class="keywordflow">if</span> (bShouldShow)</div>
+<div class="line"><span class="lineno">  136</span>    {</div>
+<div class="line"><span class="lineno">  137</span>        APlayerController* LocalPC = GetWorld()-&gt;GetFirstPlayerController();</div>
+<div class="line"><span class="lineno">  138</span>        <span class="keywordflow">if</span> (!LocalPC)</div>
+<div class="line"><span class="lineno">  139</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  140</span> </div>
+<div class="line"><span class="lineno">  141</span>        APlayerState* LocalPlayerState = LocalPC-&gt;GetPlayerState&lt;APlayerState&gt;();</div>
+<div class="line"><span class="lineno">  142</span>        <a class="code hl_variable" href="classUMainWidget.html#af4d15f040b6a31cc9fd0915a73da3539">SpeakWidget</a>-&gt;UpdateSpeakStageUI(SpeakStage, LocalPlayerState);</div>
+<div class="line"><span class="lineno">  143</span>    }</div>
+<div class="line"><span class="lineno">  144</span>}</div>
 <div class="ttc" id="aclassASpeakStageActor_html"><div class="ttname"><a href="classASpeakStageActor.html">ASpeakStageActor</a></div><div class="ttdoc">Speak Stage 턴 관리 시스템</div><div class="ttdef"><b>Definition</b> <a href="ASpeakStageActor_8h_source.html#l00021">ASpeakStageActor.h:22</a></div></div>
 <div class="ttc" id="aclassASpeakStageActor_html_a3df8c08592f6676f50f916cedcc21cea"><div class="ttname"><a href="classASpeakStageActor.html#a3df8c08592f6676f50f916cedcc21cea">ASpeakStageActor::GetCurrentSpeaker</a></div><div class="ttdeci">APlayerState * GetCurrentSpeaker() const</div><div class="ttdoc">현재 발화자 Getter</div><div class="ttdef"><b>Definition</b> <a href="ASpeakStageActor_8h_source.html#l00120">ASpeakStageActor.h:120</a></div></div>
 <div class="ttc" id="aclassUSpeakStageSubsystem_html"><div class="ttname"><a href="classUSpeakStageSubsystem.html">USpeakStageSubsystem</a></div><div class="ttdoc">Speak Stage 시스템 관리 Subsystem</div><div class="ttdef"><b>Definition</b> <a href="USpeakStageSubsystem_8h_source.html#l00019">USpeakStageSubsystem.h:20</a></div></div>
@@ -577,7 +572,7 @@ Private 속성</h2></td></tr>
 </div><!-- fragment -->
 <p class="reference">다음을 참조함 :  <a class="el" href="ASpeakStageActor_8h_source.html#l00120">ASpeakStageActor::GetCurrentSpeaker()</a>, <a class="el" href="USpeakStageSubsystem_8h_source.html#l00078">USpeakStageSubsystem::GetSpeakStage()</a>, <a class="el" href="USpeakStageSubsystem_8h_source.html#l00092">USpeakStageSubsystem::IsInitialized()</a>, <a class="el" href="UMainWidget_8h_source.html#l00085">SpeakWidget</a>.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UMainWidget_8cpp_source.html#l00090">NativeTick()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UMainWidget_8cpp_source.html#l00069">NativeTick()</a>.</p>
 <div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-7-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-7-summary" class="dynsummary" style="display:block;">
@@ -620,18 +615,18 @@ Private 속성</h2></td></tr>
 
 <p>타이머 텍스트를 업데이트합니다. </p>
 
-<p class="definition"><a class="el" href="UMainWidget_8cpp_source.html">UMainWidget.cpp</a> 파일의 <a class="el" href="UMainWidget_8cpp_source.html#l00103">103</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  104</span>{</div>
-<div class="line"><span class="lineno">  105</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classUMainWidget.html#aa0abca549ef2be9c4610d4890d5c0448">CachedGameState</a> || !<a class="code hl_variable" href="classUMainWidget.html#a1a0b73afb95c74b5c4a79daa63af9257">PlayTimer</a>)</div>
-<div class="line"><span class="lineno">  106</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  107</span>    </div>
-<div class="line"><span class="lineno">  108</span>    <a class="code hl_variable" href="classUMainWidget.html#a1a0b73afb95c74b5c4a79daa63af9257">PlayTimer</a>-&gt;UpdateTimerText(<a class="code hl_function" href="classULingoGameHelper.html#a6da883ca444eb45866e59e95e63836bb">ULingoGameHelper::GetFormatTimer</a>(<a class="code hl_variable" href="classUMainWidget.html#aa0abca549ef2be9c4610d4890d5c0448">CachedGameState</a>-&gt;RemainMissionTime));</div>
-<div class="line"><span class="lineno">  109</span>}</div>
-<div class="ttc" id="aclassULingoGameHelper_html_a6da883ca444eb45866e59e95e63836bb"><div class="ttname"><a href="classULingoGameHelper.html#a6da883ca444eb45866e59e95e63836bb">ULingoGameHelper::GetFormatTimer</a></div><div class="ttdeci">static FString GetFormatTimer(const float InRemainTime)</div><div class="ttdef"><b>Definition</b> <a href="ULingoGameHelper_8cpp_source.html#l00163">ULingoGameHelper.cpp:163</a></div></div>
+<p class="definition"><a class="el" href="UMainWidget_8cpp_source.html">UMainWidget.cpp</a> 파일의 <a class="el" href="UMainWidget_8cpp_source.html#l00082">82</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   83</span>{</div>
+<div class="line"><span class="lineno">   84</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classUMainWidget.html#aa0abca549ef2be9c4610d4890d5c0448">CachedGameState</a> || !<a class="code hl_variable" href="classUMainWidget.html#a1a0b73afb95c74b5c4a79daa63af9257">PlayTimer</a>)</div>
+<div class="line"><span class="lineno">   85</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   86</span>    </div>
+<div class="line"><span class="lineno">   87</span>    <a class="code hl_variable" href="classUMainWidget.html#a1a0b73afb95c74b5c4a79daa63af9257">PlayTimer</a>-&gt;UpdateTimerText(<a class="code hl_function" href="classULingoGameHelper.html#a6da883ca444eb45866e59e95e63836bb">ULingoGameHelper::GetFormatTimer</a>(<a class="code hl_variable" href="classUMainWidget.html#aa0abca549ef2be9c4610d4890d5c0448">CachedGameState</a>-&gt;GetRemainMissionTime()));</div>
+<div class="line"><span class="lineno">   88</span>}</div>
+<div class="ttc" id="aclassULingoGameHelper_html_a6da883ca444eb45866e59e95e63836bb"><div class="ttname"><a href="classULingoGameHelper.html#a6da883ca444eb45866e59e95e63836bb">ULingoGameHelper::GetFormatTimer</a></div><div class="ttdeci">static FString GetFormatTimer(const float InRemainTime)</div><div class="ttdef"><b>Definition</b> <a href="ULingoGameHelper_8cpp_source.html#l00173">ULingoGameHelper.cpp:173</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="UMainWidget_8h_source.html#l00122">CachedGameState</a>, <a class="el" href="ULingoGameHelper_8cpp_source.html#l00163">ULingoGameHelper::GetFormatTimer()</a>, <a class="el" href="UMainWidget_8h_source.html#l00074">PlayTimer</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="UMainWidget_8h_source.html#l00122">CachedGameState</a>, <a class="el" href="ULingoGameHelper_8cpp_source.html#l00173">ULingoGameHelper::GetFormatTimer()</a>, <a class="el" href="UMainWidget_8h_source.html#l00074">PlayTimer</a>.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UMainWidget_8cpp_source.html#l00090">NativeTick()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UMainWidget_8cpp_source.html#l00069">NativeTick()</a>.</p>
 <div id="dynsection-9" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-9-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-9-summary" class="dynsummary" style="display:block;">
@@ -674,7 +669,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="UMainWidget_8h_source.html">UMainWidget.h</a> 파일의 <a class="el" href="UMainWidget_8h_source.html#l00122">122</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UMainWidget_8cpp_source.html#l00044">NativeConstruct()</a>, <a class="el" href="UMainWidget_8cpp_source.html#l00111">OnUpdateMissionTimerState()</a>, <a class="el" href="UMainWidget_8cpp_source.html#l00103">UpdateTimerDisplay()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UMainWidget_8cpp_source.html#l00044">NativeConstruct()</a>, <a class="el" href="UMainWidget_8cpp_source.html#l00090">OnUpdateMissionTimerState()</a>, <a class="el" href="UMainWidget_8cpp_source.html#l00082">UpdateTimerDisplay()</a>.</p>
 
 </div>
 </div>
@@ -702,7 +697,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="UMainWidget_8h_source.html">UMainWidget.h</a> 파일의 <a class="el" href="UMainWidget_8h_source.html#l00110">110</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UMainWidget_8cpp_source.html#l00033">UMainWidget()</a>, <a class="el" href="UMainWidget_8cpp_source.html#l00137">UpdateHookState()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UMainWidget_8cpp_source.html#l00033">UMainWidget()</a>, <a class="el" href="UMainWidget_8cpp_source.html#l00116">UpdateHookState()</a>.</p>
 
 </div>
 </div>
@@ -730,7 +725,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="UMainWidget_8h_source.html">UMainWidget.h</a> 파일의 <a class="el" href="UMainWidget_8h_source.html#l00114">114</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UMainWidget_8cpp_source.html#l00033">UMainWidget()</a>, <a class="el" href="UMainWidget_8cpp_source.html#l00137">UpdateHookState()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UMainWidget_8cpp_source.html#l00033">UMainWidget()</a>, <a class="el" href="UMainWidget_8cpp_source.html#l00116">UpdateHookState()</a>.</p>
 
 </div>
 </div>
@@ -758,7 +753,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="UMainWidget_8h_source.html">UMainWidget.h</a> 파일의 <a class="el" href="UMainWidget_8h_source.html#l00089">89</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UMainWidget_8cpp_source.html#l00044">NativeConstruct()</a>, <a class="el" href="UMainWidget_8cpp_source.html#l00111">OnUpdateMissionTimerState()</a>, <a class="el" href="UMainWidget_8cpp_source.html#l00137">UpdateHookState()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UMainWidget_8cpp_source.html#l00044">NativeConstruct()</a>, <a class="el" href="UMainWidget_8cpp_source.html#l00090">OnUpdateMissionTimerState()</a>, <a class="el" href="UMainWidget_8cpp_source.html#l00116">UpdateHookState()</a>.</p>
 
 </div>
 </div>
@@ -812,7 +807,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="UMainWidget_8h_source.html">UMainWidget.h</a> 파일의 <a class="el" href="UMainWidget_8h_source.html#l00074">74</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UMainWidget_8cpp_source.html#l00098">SetMissionTimerState()</a>, <a class="el" href="UMainWidget_8cpp_source.html#l00103">UpdateTimerDisplay()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UMainWidget_8cpp_source.html#l00077">SetMissionTimerState()</a>, <a class="el" href="UMainWidget_8cpp_source.html#l00082">UpdateTimerDisplay()</a>.</p>
 
 </div>
 </div>
@@ -838,7 +833,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="UMainWidget_8h_source.html">UMainWidget.h</a> 파일의 <a class="el" href="UMainWidget_8h_source.html#l00081">81</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UMainWidget_8cpp_source.html#l00044">NativeConstruct()</a>, <a class="el" href="UMainWidget_8cpp_source.html#l00111">OnUpdateMissionTimerState()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UMainWidget_8cpp_source.html#l00044">NativeConstruct()</a>, <a class="el" href="UMainWidget_8cpp_source.html#l00090">OnUpdateMissionTimerState()</a>.</p>
 
 </div>
 </div>
@@ -866,7 +861,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="UMainWidget_8h_source.html">UMainWidget.h</a> 파일의 <a class="el" href="UMainWidget_8h_source.html#l00085">85</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UMainWidget_8cpp_source.html#l00044">NativeConstruct()</a>, <a class="el" href="UMainWidget_8cpp_source.html#l00146">UpdateSpeakWidget()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UMainWidget_8cpp_source.html#l00044">NativeConstruct()</a>, <a class="el" href="UMainWidget_8cpp_source.html#l00125">UpdateSpeakWidget()</a>.</p>
 
 </div>
 </div>
@@ -908,7 +903,7 @@ Private 속성</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classUMainWidget.html">UMainWidget</a></li>
-    <li class="footer">생성시간 : 토 12월 6 2025 11:43:22, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 토 12월 6 2025 14:28:28, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>
