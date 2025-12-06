@@ -1,5 +1,7 @@
 var NAVTREEINDEX11 =
 {
+"structFEaseFloatTrack.html#a42a5f5e87a50969ec5a83645215dc061":[2,0,37,3],
+"structFEaseFloatTrack.html#a5e425e4e152594d5763eac2f63c7b9dc":[2,0,37,0],
 "structFEaseFloatTrack.html#a7cbfd0a13f8b3a78cabf770251b3be4c":[2,0,37,2],
 "structFEaseFloatTrack.html#a84e1d3f764f684ccd9e86512be08b9e3":[2,0,37,6],
 "structFEaseFloatTrack.html#aa1ea60f053068275c19e2ccfe012e6b2":[2,0,37,4],
@@ -247,7 +249,5 @@ var NAVTREEINDEX11 =
 "structFResponseUserToken.html#a2cf3b3fcc2df219d7ebdc5e1341950a4":[2,0,83,2],
 "structFResponseUserToken.html#a65a555949e2ac9075bc44b2cfc7779bb":[2,0,83,0],
 "structFResponseUserToken.html#a9d00d514e295c13406b14963e7c7a4ea":[2,0,83,1],
-"structFResultStatData.html":[2,0,84],
-"structFResultStatData.html#a2aea8a92c56a642f74b1300bc735a0e5":[2,0,84,5],
-"structFResultStatData.html#a61bcfba9b5e9da91e4c34a190489907f":[2,0,84,3]
+"structFResultStatData.html":[2,0,84]
 };

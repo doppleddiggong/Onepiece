@@ -300,24 +300,21 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="Popup__QuestionnaireItem_8cpp_source.html">Popup_QuestionnaireItem.cpp</a> 파일의 <a class="el" href="Popup__QuestionnaireItem_8cpp_source.html#l00049">49</a> 번째 라인에서 정의되었습니다.</p>
 <div class="fragment"><div class="line"><span class="lineno">   50</span>{</div>
-<div class="line"><span class="lineno">   51</span>    <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> PopupMgr = UPopupManager::Get(GetWorld()))</div>
+<div class="line"><span class="lineno">   51</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> Popup = UPopupManager::ShowPopupAs&lt;UPopup_WriteBoard&gt;(GetWorld(), EPopupType::WriteBoard))</div>
 <div class="line"><span class="lineno">   52</span>    {</div>
-<div class="line"><span class="lineno">   53</span>        <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> Popup = Cast&lt;UPopup_WriteBoard&gt;(PopupMgr-&gt;ShowPopup(EPopupType::WriteBoard)))</div>
-<div class="line"><span class="lineno">   54</span>        {</div>
-<div class="line"><span class="lineno">   55</span>            <span class="comment">// TODO: 단어 수 및 글자 수 구하기</span></div>
-<div class="line"><span class="lineno">   56</span>            TArray&lt;FString&gt; Tokens;</div>
-<div class="line"><span class="lineno">   57</span>            <a class="code hl_variable" href="classUPopup__QuestionnaireItem.html#a4029a855755fa61d62700a531202b33c">QuestionData</a>.<a class="code hl_variable" href="structFWriteQuestionData.html#a9e2141898cdf24500baafd6c189fa7d8">AnswerKr</a>.ParseIntoArrayWS(Tokens);</div>
-<div class="line"><span class="lineno">   58</span>            <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; token : Tokens)</div>
-<div class="line"><span class="lineno">   59</span>            {</div>
-<div class="line"><span class="lineno">   60</span>                <a class="code hl_define" href="GameLogging_8h.html#ac50b407bb34c70a0be1fccc74730d143">PRINT_STRING</a>(TEXT(<span class="stringliteral">&quot;Question 글 : %s&quot;</span>), *token);</div>
-<div class="line"><span class="lineno">   61</span>            }</div>
-<div class="line"><span class="lineno">   62</span>            <a class="code hl_define" href="GameLogging_8h.html#ac50b407bb34c70a0be1fccc74730d143">PRINT_STRING</a>(TEXT(<span class="stringliteral">&quot;Question 단어 수 : %d&quot;</span>), Tokens.Num());</div>
-<div class="line"><span class="lineno">   63</span>            <a class="code hl_define" href="GameLogging_8h.html#ac50b407bb34c70a0be1fccc74730d143">PRINT_STRING</a>(TEXT(<span class="stringliteral">&quot;Question 글자 수 : %d&quot;</span>), <a class="code hl_variable" href="classUPopup__QuestionnaireItem.html#a4029a855755fa61d62700a531202b33c">QuestionData</a>.<a class="code hl_variable" href="structFWriteQuestionData.html#a9e2141898cdf24500baafd6c189fa7d8">AnswerKr</a>.Len());</div>
-<div class="line"><span class="lineno">   64</span>            <a class="code hl_define" href="GameLogging_8h.html#ac50b407bb34c70a0be1fccc74730d143">PRINT_STRING</a>(TEXT(<span class="stringliteral">&quot;Question 첫 단어 글자 수 : %d&quot;</span>), Tokens[0].Len());</div>
-<div class="line"><span class="lineno">   65</span>            Popup-&gt;InitPopup(<a class="code hl_variable" href="classUPopup__QuestionnaireItem.html#a4029a855755fa61d62700a531202b33c">QuestionData</a>.<a class="code hl_variable" href="structFWriteQuestionData.html#ac9e8bb279d987684842a0441c1fd3dcf">Id</a>, Tokens);</div>
-<div class="line"><span class="lineno">   66</span>        }</div>
-<div class="line"><span class="lineno">   67</span>    }</div>
-<div class="line"><span class="lineno">   68</span>}</div>
+<div class="line"><span class="lineno">   53</span>            <span class="comment">// TODO: 단어 수 및 글자 수 구하기</span></div>
+<div class="line"><span class="lineno">   54</span>            TArray&lt;FString&gt; Tokens;</div>
+<div class="line"><span class="lineno">   55</span>            <a class="code hl_variable" href="classUPopup__QuestionnaireItem.html#a4029a855755fa61d62700a531202b33c">QuestionData</a>.<a class="code hl_variable" href="structFWriteQuestionData.html#a9e2141898cdf24500baafd6c189fa7d8">AnswerKr</a>.ParseIntoArrayWS(Tokens);</div>
+<div class="line"><span class="lineno">   56</span>            <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; token : Tokens)</div>
+<div class="line"><span class="lineno">   57</span>            {</div>
+<div class="line"><span class="lineno">   58</span>                <a class="code hl_define" href="GameLogging_8h.html#ac50b407bb34c70a0be1fccc74730d143">PRINT_STRING</a>(TEXT(<span class="stringliteral">&quot;Question 글 : %s&quot;</span>), *token);</div>
+<div class="line"><span class="lineno">   59</span>            }</div>
+<div class="line"><span class="lineno">   60</span>            <a class="code hl_define" href="GameLogging_8h.html#ac50b407bb34c70a0be1fccc74730d143">PRINT_STRING</a>(TEXT(<span class="stringliteral">&quot;Question 단어 수 : %d&quot;</span>), Tokens.Num());</div>
+<div class="line"><span class="lineno">   61</span>            <a class="code hl_define" href="GameLogging_8h.html#ac50b407bb34c70a0be1fccc74730d143">PRINT_STRING</a>(TEXT(<span class="stringliteral">&quot;Question 글자 수 : %d&quot;</span>), <a class="code hl_variable" href="classUPopup__QuestionnaireItem.html#a4029a855755fa61d62700a531202b33c">QuestionData</a>.<a class="code hl_variable" href="structFWriteQuestionData.html#a9e2141898cdf24500baafd6c189fa7d8">AnswerKr</a>.Len());</div>
+<div class="line"><span class="lineno">   62</span>            <a class="code hl_define" href="GameLogging_8h.html#ac50b407bb34c70a0be1fccc74730d143">PRINT_STRING</a>(TEXT(<span class="stringliteral">&quot;Question 첫 단어 글자 수 : %d&quot;</span>), Tokens[0].Len());</div>
+<div class="line"><span class="lineno">   63</span>            Popup-&gt;InitPopup(<a class="code hl_variable" href="classUPopup__QuestionnaireItem.html#a4029a855755fa61d62700a531202b33c">QuestionData</a>.<a class="code hl_variable" href="structFWriteQuestionData.html#ac9e8bb279d987684842a0441c1fd3dcf">Id</a>, Tokens);</div>
+<div class="line"><span class="lineno">   64</span>    }</div>
+<div class="line"><span class="lineno">   65</span>}</div>
 <div class="ttc" id="aGameLogging_8h_html_ac50b407bb34c70a0be1fccc74730d143"><div class="ttname"><a href="GameLogging_8h.html#ac50b407bb34c70a0be1fccc74730d143">PRINT_STRING</a></div><div class="ttdeci">#define PRINT_STRING(fmt,...)</div><div class="ttdef"><b>Definition</b> <a href="GameLogging_8h_source.html#l00045">GameLogging.h:45</a></div></div>
 <div class="ttc" id="astructFWriteQuestionData_html_a9e2141898cdf24500baafd6c189fa7d8"><div class="ttname"><a href="structFWriteQuestionData.html#a9e2141898cdf24500baafd6c189fa7d8">FWriteQuestionData::AnswerKr</a></div><div class="ttdeci">FString AnswerKr</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00341">NetworkData.h:341</a></div></div>
 </div><!-- fragment -->
@@ -479,7 +476,7 @@ Private 속성</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classUPopup__QuestionnaireItem.html">UPopup_QuestionnaireItem</a></li>
-    <li class="footer">생성시간 : 토 12월 6 2025 11:21:43, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 토 12월 6 2025 11:43:22, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

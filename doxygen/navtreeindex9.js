@@ -1,5 +1,7 @@
 var NAVTREEINDEX9 =
 {
+"classUQuestInfoWidget.html#ac27c6c6345881f6ec09624ffe63d0014":[2,0,142,3],
+"classUResultStatWidget.html":[2,0,143],
 "classUResultStatWidget.html#a1c5994cd2432da58ad757210ea4d1ec3":[2,0,143,25],
 "classUResultStatWidget.html#a1d3c0bd66566bc018cc6e4d2e3edf5b6":[2,0,143,11],
 "classUResultStatWidget.html#a336e9040158fe284f64af151dc21eaef":[2,0,143,19],
@@ -247,7 +249,5 @@ var NAVTREEINDEX9 =
 "classUWordButton.html#a811e29ce35dcffd16629882543fd350b":[2,0,165,2],
 "classUWordButton.html#a95a2f3a1733a7eb6e51b0e9f240114fa":[2,0,165,7],
 "classUWordButton.html#adaa765c385bd2fb672a2d2f91ce41d9d":[2,0,165,3],
-"classUWordButton.html#add4c922b38d90c2766b902b4310e95b2":[2,0,165,0],
-"classUWordButton.html#ae0d0182e5db9d929a4098f000c9e449b":[2,0,165,6],
-"classUWordWidget.html":[2,0,166]
+"classUWordButton.html#add4c922b38d90c2766b902b4310e95b2":[2,0,165,0]
 };

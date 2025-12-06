@@ -542,7 +542,7 @@ Private 속성</h2></td></tr>
   </dd>
 </dl>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerActor_8cpp_source.html#l00397">OnGameMessage()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerActor_8cpp_source.html#l00394">OnGameMessage()</a>.</p>
 <div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-5-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-5-summary" class="dynsummary" style="display:block;">
@@ -1102,20 +1102,20 @@ Private 속성</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition"><a class="el" href="APlayerActor_8cpp_source.html">APlayerActor.cpp</a> 파일의 <a class="el" href="APlayerActor_8cpp_source.html#l00397">397</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  398</span>{</div>
-<div class="line"><span class="lineno">  399</span>    <a class="code hl_define" href="GameLogging_8h.html#ac50b407bb34c70a0be1fccc74730d143">PRINT_STRING</a>(TEXT(<span class="stringliteral">&quot;Event Received: %s&quot;</span>), *Message);</div>
-<div class="line"><span class="lineno">  400</span> </div>
-<div class="line"><span class="lineno">  401</span>    <span class="comment">// 서버에서 호출되면 클라이언트 RPC로 전달</span></div>
-<div class="line"><span class="lineno">  402</span>    <span class="keywordflow">if</span> (HasAuthority())</div>
-<div class="line"><span class="lineno">  403</span>    {</div>
-<div class="line"><span class="lineno">  404</span>        <a class="code hl_function" href="classAPlayerActor.html#a9a0da1264f0f61d8b908de643e010de7">ClientRPC_ShowGameMessage</a>(Message);</div>
-<div class="line"><span class="lineno">  405</span>    }</div>
-<div class="line"><span class="lineno">  406</span>    <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  407</span>    {</div>
-<div class="line"><span class="lineno">  408</span>        ClientRPC_ShowGameMessage_Implementation(Message);</div>
-<div class="line"><span class="lineno">  409</span>    }</div>
-<div class="line"><span class="lineno">  410</span>}</div>
+<p class="definition"><a class="el" href="APlayerActor_8cpp_source.html">APlayerActor.cpp</a> 파일의 <a class="el" href="APlayerActor_8cpp_source.html#l00394">394</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  395</span>{</div>
+<div class="line"><span class="lineno">  396</span>    <a class="code hl_define" href="GameLogging_8h.html#ac50b407bb34c70a0be1fccc74730d143">PRINT_STRING</a>(TEXT(<span class="stringliteral">&quot;Event Received: %s&quot;</span>), *Message);</div>
+<div class="line"><span class="lineno">  397</span> </div>
+<div class="line"><span class="lineno">  398</span>    <span class="comment">// 서버에서 호출되면 클라이언트 RPC로 전달</span></div>
+<div class="line"><span class="lineno">  399</span>    <span class="keywordflow">if</span> (HasAuthority())</div>
+<div class="line"><span class="lineno">  400</span>    {</div>
+<div class="line"><span class="lineno">  401</span>        <a class="code hl_function" href="classAPlayerActor.html#a9a0da1264f0f61d8b908de643e010de7">ClientRPC_ShowGameMessage</a>(Message);</div>
+<div class="line"><span class="lineno">  402</span>    }</div>
+<div class="line"><span class="lineno">  403</span>    <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  404</span>    {</div>
+<div class="line"><span class="lineno">  405</span>        ClientRPC_ShowGameMessage_Implementation(Message);</div>
+<div class="line"><span class="lineno">  406</span>    }</div>
+<div class="line"><span class="lineno">  407</span>}</div>
 <div class="ttc" id="aGameLogging_8h_html_ac50b407bb34c70a0be1fccc74730d143"><div class="ttname"><a href="GameLogging_8h.html#ac50b407bb34c70a0be1fccc74730d143">PRINT_STRING</a></div><div class="ttdeci">#define PRINT_STRING(fmt,...)</div><div class="ttdef"><b>Definition</b> <a href="GameLogging_8h_source.html#l00045">GameLogging.h:45</a></div></div>
 <div class="ttc" id="aclassAPlayerActor_html_a9a0da1264f0f61d8b908de643e010de7"><div class="ttname"><a href="classAPlayerActor.html#a9a0da1264f0f61d8b908de643e010de7">APlayerActor::ClientRPC_ShowGameMessage</a></div><div class="ttdeci">void ClientRPC_ShowGameMessage(const FString &amp;Message)</div><div class="ttdoc">클라이언트에서 게임 메시지를 표시합니다.</div></div>
 </div><!-- fragment -->
@@ -1920,7 +1920,7 @@ Private 속성</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classAPlayerActor.html">APlayerActor</a></li>
-    <li class="footer">생성시간 : 토 12월 6 2025 11:21:43, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 토 12월 6 2025 11:43:22, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

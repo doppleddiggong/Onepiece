@@ -320,16 +320,13 @@ $(document).ready(function(){initNavTree('ALingoGameState_8cpp_source.html','');
 <div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>    <span class="comment">// Stage1일 때만 Read Quest 팝업 표시</span></div>
 <div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>    <span class="keywordflow">if</span> (InStageIndex == 1)</div>
 <div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>    {</div>
-<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>        <span class="keywordflow">if</span> (<a class="code hl_class" href="classUPopupManager.html">UPopupManager</a>* PopupMgr = UPopupManager::Get(GetWorld()))</div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>        <span class="keywordflow">if</span> (<span class="keyword">auto</span> Popup = UPopupManager::ShowPopupAs&lt;UPopup_ReadQuest&gt;(GetWorld(), EPopupType::ReadQuest))</div>
 <div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>        {</div>
-<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>            <span class="keywordflow">if</span> (<a class="code hl_class" href="classUPopup__ReadQuest.html">UPopup_ReadQuest</a>* Popup = Cast&lt;UPopup_ReadQuest&gt;(PopupMgr-&gt;ShowPopup(EPopupType::ReadQuest)))</div>
-<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>            {</div>
-<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>                Popup-&gt;InitPopup(InScenarioData);</div>
-<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>                <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[GameState] Read Quest Popup displayed for Stage1&quot;</span>));</div>
-<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>            }</div>
-<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>        }</div>
-<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>    }</div>
-<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>}</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>            Popup-&gt;InitPopup(InScenarioData);</div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>            <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[GameState] Read Quest Popup displayed for Stage1&quot;</span>));</div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>        }</div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>    }</div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>}</div>
 <div class="ttc" id="aALingoGameState_8h_html"><div class="ttname"><a href="ALingoGameState_8h.html">ALingoGameState.h</a></div></div>
 <div class="ttc" id="aALingoGameState_8h_html_a1717868fe66474b134d55b457307ff9fa45adbb92fc15c25aa6264131bd9d46fa"><div class="ttname"><a href="ALingoGameState_8h.html#a1717868fe66474b134d55b457307ff9fa45adbb92fc15c25aa6264131bd9d46fa">EGameState::QuestStart</a></div><div class="ttdeci">@ QuestStart</div></div>
 <div class="ttc" id="aALingoGameState_8h_html_a1717868fe66474b134d55b457307ff9fa6adf97f83acf6453d4a6a4b1070f3754"><div class="ttname"><a href="ALingoGameState_8h.html#a1717868fe66474b134d55b457307ff9fa6adf97f83acf6453d4a6a4b1070f3754">EGameState::None</a></div><div class="ttdeci">@ None</div></div>
@@ -375,8 +372,6 @@ $(document).ready(function(){initNavTree('ALingoGameState_8cpp_source.html','');
 <div class="ttc" id="aclassULingoGameHelper_html_a22a311ff0293415aca5bf90fee7191c8"><div class="ttname"><a href="classULingoGameHelper.html#a22a311ff0293415aca5bf90fee7191c8">ULingoGameHelper::GetUnixTimestampInt64</a></div><div class="ttdeci">static int64 GetUnixTimestampInt64()</div><div class="ttdef"><b>Definition</b> <a href="ULingoGameHelper_8cpp_source.html#l00017">ULingoGameHelper.cpp:17</a></div></div>
 <div class="ttc" id="aclassULingoGameHelper_html_a7bcb0275140b94422c2f09b29a0b4d6a"><div class="ttname"><a href="classULingoGameHelper.html#a7bcb0275140b94422c2f09b29a0b4d6a">ULingoGameHelper::GetMissionPlayTime</a></div><div class="ttdeci">static float GetMissionPlayTime(const int Level)</div><div class="ttdef"><b>Definition</b> <a href="ULingoGameHelper_8cpp_source.html#l00137">ULingoGameHelper.cpp:137</a></div></div>
 <div class="ttc" id="aclassULingoGameHelper_html_ad0262a81ba3a11cd1666a4edd5a91ed5"><div class="ttname"><a href="classULingoGameHelper.html#ad0262a81ba3a11cd1666a4edd5a91ed5">ULingoGameHelper::GetStageEndMessage</a></div><div class="ttdeci">static FString GetStageEndMessage(const int StageIndex)</div><div class="ttdef"><b>Definition</b> <a href="ULingoGameHelper_8cpp_source.html#l00125">ULingoGameHelper.cpp:125</a></div></div>
-<div class="ttc" id="aclassUPopupManager_html"><div class="ttname"><a href="classUPopupManager.html">UPopupManager</a></div><div class="ttdoc">팝업 관리자</div><div class="ttdef"><b>Definition</b> <a href="UPopupManager_8h_source.html#l00030">UPopupManager.h:31</a></div></div>
-<div class="ttc" id="aclassUPopup__ReadQuest_html"><div class="ttname"><a href="classUPopup__ReadQuest.html">UPopup_ReadQuest</a></div><div class="ttdoc">Read 퀘스트 메인 위젯</div><div class="ttdef"><b>Definition</b> <a href="UPopup__ReadQuest_8h_source.html#l00015">UPopup_ReadQuest.h:16</a></div></div>
 <div class="ttc" id="astructFQuestData_html_a2c41bb37bb058578816fe56c10b2fcdd"><div class="ttname"><a href="structFQuestData.html#a2c41bb37bb058578816fe56c10b2fcdd">FQuestData::QuestType</a></div><div class="ttdeci">EQuestType QuestType</div><div class="ttdef"><b>Definition</b> <a href="ALingoGameState_8h_source.html#l00042">ALingoGameState.h:42</a></div></div>
 <div class="ttc" id="astructFQuestData_html_a84f856e5e451e5a68a6780a34db8a427"><div class="ttname"><a href="structFQuestData.html#a84f856e5e451e5a68a6780a34db8a427">FQuestData::ScenarioIndex</a></div><div class="ttdeci">int32 ScenarioIndex</div><div class="ttdef"><b>Definition</b> <a href="ALingoGameState_8h_source.html#l00039">ALingoGameState.h:39</a></div></div>
 <div class="ttc" id="astructFQuestData_html_aebd55c40676fdb98e33ef220393c3494"><div class="ttname"><a href="structFQuestData.html#aebd55c40676fdb98e33ef220393c3494">FQuestData::ScenarioLevel</a></div><div class="ttdeci">int32 ScenarioLevel</div><div class="ttdef"><b>Definition</b> <a href="ALingoGameState_8h_source.html#l00045">ALingoGameState.h:45</a></div></div>
@@ -387,7 +382,7 @@ $(document).ready(function(){initNavTree('ALingoGameState_8cpp_source.html','');
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_7fb5e64dcba5cad56d11a2ce531d1e7a.html">Game</a></li><li class="navelem"><a class="el" href="dir_b965da0ac51b1f4cab906cbba28505b1.html">Private</a></li><li class="navelem"><a class="el" href="ALingoGameState_8cpp.html">ALingoGameState.cpp</a></li>
-    <li class="footer">생성시간 : 토 12월 6 2025 11:21:43, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 토 12월 6 2025 11:43:22, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

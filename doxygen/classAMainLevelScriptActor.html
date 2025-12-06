@@ -250,15 +250,14 @@ Private 멤버 함수</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">   38</span>{</div>
 <div class="line"><span class="lineno">   39</span>    <span class="keywordflow">if</span> (bWasSuccessful)</div>
 <div class="line"><span class="lineno">   40</span>    {</div>
-<div class="line"><span class="lineno">   41</span>        <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> PopupMgr = UPopupManager::Get(GetWorld()))</div>
-<div class="line"><span class="lineno">   42</span>            <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> Popup = Cast&lt;UPopup_Interview&gt;(PopupMgr-&gt;ShowPopup(EPopupType::Interview)))</div>
-<div class="line"><span class="lineno">   43</span>                Popup-&gt;InitPopup(ResponseData);</div>
-<div class="line"><span class="lineno">   44</span>    }</div>
-<div class="line"><span class="lineno">   45</span>    <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">   46</span>    {</div>
-<div class="line"><span class="lineno">   47</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;--- InterviewHello Questions FAILED ---&quot;</span>));</div>
-<div class="line"><span class="lineno">   48</span>    }</div>
-<div class="line"><span class="lineno">   49</span>}</div>
+<div class="line"><span class="lineno">   41</span>        <span class="keywordflow">if</span> (<span class="keyword">auto</span> Popup = UPopupManager::ShowPopupAs&lt;UPopup_Interview&gt;(GetWorld(), EPopupType::Interview))</div>
+<div class="line"><span class="lineno">   42</span>            Popup-&gt;InitPopup(ResponseData);</div>
+<div class="line"><span class="lineno">   43</span>    }</div>
+<div class="line"><span class="lineno">   44</span>    <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">   45</span>    {</div>
+<div class="line"><span class="lineno">   46</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;--- InterviewHello Questions FAILED ---&quot;</span>));</div>
+<div class="line"><span class="lineno">   47</span>    }</div>
+<div class="line"><span class="lineno">   48</span>}</div>
 <div class="ttc" id="aGameLogging_8h_html_a9998c8beb11a6bad6ffada2e701fc0cf"><div class="ttname"><a href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a></div><div class="ttdeci">#define PRINTLOG(fmt,...)</div><div class="ttdef"><b>Definition</b> <a href="GameLogging_8h_source.html#l00030">GameLogging.h:30</a></div></div>
 </div><!-- fragment -->
 <p class="reference">다음을 참조함 :  <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>.</p>
@@ -340,7 +339,7 @@ Private 멤버 함수</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classAMainLevelScriptActor.html">AMainLevelScriptActor</a></li>
-    <li class="footer">생성시간 : 토 12월 6 2025 11:21:43, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 토 12월 6 2025 11:43:22, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

@@ -266,18 +266,15 @@ Private 멤버 함수</h2></td></tr>
 
 <p class="definition"><a class="el" href="UWordWidget_8cpp_source.html">UWordWidget.cpp</a> 파일의 <a class="el" href="UWordWidget_8cpp_source.html#l00030">30</a> 번째 라인에서 정의되었습니다.</p>
 <div class="fragment"><div class="line"><span class="lineno">   31</span>{</div>
-<div class="line"><span class="lineno">   32</span>    <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> PopupMgr = UPopupManager::Get(GetWorld()))</div>
+<div class="line"><span class="lineno">   32</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> Popup = UPopupManager::ShowPopupAs&lt;UPopup_Word&gt;(GetWorld(), EPopupType::Word))</div>
 <div class="line"><span class="lineno">   33</span>    {</div>
-<div class="line"><span class="lineno">   34</span>        <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> Popup = Cast&lt;UPopup_Word&gt;(PopupMgr-&gt;ShowPopup(EPopupType::Word)))</div>
-<div class="line"><span class="lineno">   35</span>        {</div>
-<div class="line"><span class="lineno">   36</span>            Popup-&gt;InitPopup(Data);</div>
-<div class="line"><span class="lineno">   37</span>        }</div>
-<div class="line"><span class="lineno">   38</span>    }</div>
-<div class="line"><span class="lineno">   39</span>    </div>
-<div class="line"><span class="lineno">   40</span>    <span class="comment">// FString Msg = FString::Printf( TEXT(&quot;%s, %s&quot;), *Data.Kor, *Data.Pronunciation);</span></div>
-<div class="line"><span class="lineno">   41</span>    <span class="comment">// UPopupManager::Get(GetWorld())-&gt;ShowMsgBox(TEXT(&quot;Notice&quot;), Msg,</span></div>
-<div class="line"><span class="lineno">   42</span>    <span class="comment">//  EMsgBoxType::OK, FOnMsgBoxOkDelegate());</span></div>
-<div class="line"><span class="lineno">   43</span>}</div>
+<div class="line"><span class="lineno">   34</span>        Popup-&gt;InitPopup(Data);</div>
+<div class="line"><span class="lineno">   35</span>    }</div>
+<div class="line"><span class="lineno">   36</span>    </div>
+<div class="line"><span class="lineno">   37</span>    <span class="comment">// FString Msg = FString::Printf( TEXT(&quot;%s, %s&quot;), *Data.Kor, *Data.Pronunciation);</span></div>
+<div class="line"><span class="lineno">   38</span>    <span class="comment">// UPopupManager::Get(GetWorld())-&gt;ShowMsgBox(TEXT(&quot;Notice&quot;), Msg,</span></div>
+<div class="line"><span class="lineno">   39</span>    <span class="comment">//  EMsgBoxType::OK, FOnMsgBoxOkDelegate());</span></div>
+<div class="line"><span class="lineno">   40</span>}</div>
 </div><!-- fragment -->
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UWordWidget_8cpp_source.html#l00022">InitWordData()</a>.</p>
 <div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -353,7 +350,7 @@ Private 멤버 함수</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classUWordWidget.html">UWordWidget</a></li>
-    <li class="footer">생성시간 : 토 12월 6 2025 11:21:43, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 토 12월 6 2025 11:43:22, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

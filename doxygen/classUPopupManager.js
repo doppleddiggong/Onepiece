@@ -17,6 +17,8 @@ var classUPopupManager =
     [ "ShowMsgBox", "classUPopupManager.html#af4a2cd13f4ec91e3c7f87b1b3033857a", null ],
     [ "ShowMsgBoxSimple", "classUPopupManager.html#a38f8ff06e48688a9c9bfa99ed9bf891b", null ],
     [ "ShowPopup", "classUPopupManager.html#a9ec64dea54a5110dedc39ffe0ba1ad0d", null ],
+    [ "ShowPopupAs", "classUPopupManager.html#a1f95e5c56fcbf5dab168c38d939780ba", null ],
+    [ "ShowPopupAs", "classUPopupManager.html#af88f0a2e0e1e3d8c27fc8d6700177a53", null ],
     [ "ShowResult", "classUPopupManager.html#a6f9f029229eb9e98bff958b0847273aa", null ],
     [ "PopupClassMap", "classUPopupManager.html#ad2288f01f50f8c8eb6212dcbde4ea860", null ],
     [ "PopupStack", "classUPopupManager.html#ac2470b1f873fd1651aae7c05f10a32b4", null ],

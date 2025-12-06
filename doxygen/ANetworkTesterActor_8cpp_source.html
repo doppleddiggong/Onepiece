@@ -421,19 +421,16 @@ $(document).ready(function(){initNavTree('ANetworkTesterActor_8cpp_source.html',
 <div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;--- InterViewHello Questions SUCCESS ---&quot;</span>));</div>
 <div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span>        ResponseData.<a class="code hl_function" href="structFResponseInterviewHello.html#ab940c7120e106a57d367e0fc3f0fca77">PrintData</a>();</div>
 <div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span> </div>
-<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span>        <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> PopupMgr = UPopupManager::Get(GetWorld()))</div>
+<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span>        <span class="keywordflow">if</span> (<span class="keyword">auto</span> Popup = UPopupManager::ShowPopupAs&lt;UPopup_Interview&gt;(GetWorld(), EPopupType::Interview))</div>
 <div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span>        {</div>
-<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span>            <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> Popup = Cast&lt;UPopup_Interview&gt;(PopupMgr-&gt;ShowPopup(EPopupType::Interview)))</div>
-<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span>            {</div>
-<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span>                Popup-&gt;InitPopup(ResponseData);</div>
-<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span>            }</div>
-<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span>        }</div>
-<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span>    }</div>
-<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span>    <span class="keywordflow">else</span></div>
-<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span>    {</div>
-<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;--- InterViewHello Questions FAILED ---&quot;</span>));</div>
-<div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span>    }</div>
-<div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span>}</div>
+<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span>            Popup-&gt;InitPopup(ResponseData);</div>
+<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span>        }</div>
+<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span>    }</div>
+<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span>    <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span>    {</div>
+<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;--- InterViewHello Questions FAILED ---&quot;</span>));</div>
+<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span>    }</div>
+<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span>}</div>
 </div>
 <div class="ttc" id="aANetworkTesterActor_8h_html"><div class="ttname"><a href="ANetworkTesterActor_8h.html">ANetworkTesterActor.h</a></div><div class="ttdoc">네트워크 진단용 테스트 액터를 선언합니다.</div></div>
 <div class="ttc" id="aGameLogging_8h_html"><div class="ttname"><a href="GameLogging_8h.html">GameLogging.h</a></div><div class="ttdoc">YiSan 전반에서 사용하는 공용 인터페이스를 선언합니다.</div></div>
@@ -504,7 +501,7 @@ $(document).ready(function(){initNavTree('ANetworkTesterActor_8cpp_source.html',
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_db6231b890a14ef22abfc7e4cac87d3d.html">Network</a></li><li class="navelem"><a class="el" href="dir_b16031943cc461ca19dafbeb0c146ace.html">Private</a></li><li class="navelem"><a class="el" href="ANetworkTesterActor_8cpp.html">ANetworkTesterActor.cpp</a></li>
-    <li class="footer">생성시간 : 토 12월 6 2025 11:21:43, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 토 12월 6 2025 11:43:22, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>
