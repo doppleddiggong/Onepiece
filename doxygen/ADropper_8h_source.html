@@ -109,62 +109,124 @@ $(document).ready(function(){initNavTree('ADropper_8h_source.html',''); initResi
   <div class="headertitle"><div class="title">ADropper.h</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="ADropper_8h.html">이 파일의 문서화 페이지로 가기</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#pragma once</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;CoreMinimal.h&quot;</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;GameFramework/Actor.h&quot;</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;ADropper.generated.h&quot;</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>UCLASS()</div>
-<div class="foldopen" id="foldopen00010" data-start="{" data-end="};">
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="classADropper.html">   10</a></span>class ONEPIECE_API <a class="code hl_class" href="classADropper.html">ADropper</a> : public AActor</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>{</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    GENERATED_BODY()</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <a class="code hl_class" href="classADropper.html">ADropper</a>();</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    UFUNCTION(BlueprintCallable, Category = <span class="stringliteral">&quot;Spawning&quot;</span>)</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <span class="keyword">class </span>AActor* SpawnActor( TSubclassOf&lt;class AActor&gt; SpawnActorClass ); </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    </div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    UFUNCTION()</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <span class="keywordtype">void</span> PlayAnimationAndDisableCollision();</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    UFUNCTION()</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="keywordtype">void</span> RestoreCollision();</div>
+<a href="ADropper_8h.html">이 파일의 문서화 페이지로 가기</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">// Copyright (c) 2025 Doppleddiggong.</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment">// Proprietary and confidential.</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;CoreMinimal.h&quot;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;<a class="code" href="NetworkData_8h.html">NetworkData.h</a>&quot;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;GameFramework/Actor.h&quot;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;ADropper.generated.h&quot;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>USTRUCT(BlueprintType)</div>
+<div class="foldopen" id="foldopen00012" data-start="{" data-end="};">
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="structFLuggageData.html">   12</a></span>struct <a class="code hl_struct" href="structFLuggageData.html">FLuggageData</a></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>{</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    GENERATED_BODY()</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    </div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    UPROPERTY(EditAnywhere, BlueprintReadWrite)</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="structFLuggageData.html#a193a064c0977170ec7831f8196f4ff9c">   18</a></span>    <a class="code hl_struct" href="structFWordInfo.html">FWordInfo</a> word1;</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    UPROPERTY(EditAnywhere, BlueprintReadWrite)</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="structFLuggageData.html#a265f0a50100e20809a533e26d13058c1">   21</a></span>    <a class="code hl_struct" href="structFWordInfo.html">FWordInfo</a> word2;</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    UPROPERTY(EditAnywhere, BlueprintReadWrite)</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="structFLuggageData.html#aeae031964304a2894f32465d55142dca">   25</a></span>    int32 SpawnIndex = -1;</div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = <span class="stringliteral">&quot;Spawning&quot;</span>)</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="classADropper.html#a9dea574047f8b43ddb13a1aeb83332c3">   29</a></span>    TObjectPtr&lt;class USceneComponent&gt; SpawnPos;</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = &quot;Components&quot;)</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="classADropper.html#a4eefce6c5b3cad95eb39fe96a38eca04">   32</a></span>    TObjectPtr&lt;class USkeletalMeshComponent&gt; SkeletalMesh;</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = &quot;Components&quot;)</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="classADropper.html#a625dc3efd2aa38e4a9a232c9de68338d">   35</a></span>    TObjectPtr&lt;class UStaticMeshComponent&gt; BoxCollision;</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = &quot;Animation&quot;)</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="classADropper.html#a0ed6299b26e4f9f028af98ce8944d782">   38</a></span>    TObjectPtr&lt;class UAnimationAsset&gt; AnimToPlay;</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = &quot;Timing&quot;)</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="classADropper.html#a0988e0589febe6439b45737923ec535a">   41</a></span>    <span class="keywordtype">float</span> Delay = 2.0f;</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>private:</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="classADropper.html#ac72f7e826877b273487c4c04778b88bb">   44</a></span>    FTimerHandle DelayTimerHandle;</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="classADropper.html#aebd091f5eb13e2935650d85f52a6ad30">   45</a></span>    FTimerHandle RestoreTimerHandle;</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>};</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="structFLuggageData.html#a94ab3651628c52a0cb1974faa720baaf">   27</a></span>    <a class="code hl_struct" href="structFLuggageData.html">FLuggageData</a>() {}</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="foldopen" id="foldopen00029" data-start="{" data-end="}">
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="structFLuggageData.html#a556e510f9f7d165b762a58bcdf2a8ed7">   29</a></span>    <a class="code hl_function" href="structFLuggageData.html#a556e510f9f7d165b762a58bcdf2a8ed7">FLuggageData</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structFWordInfo.html">FWordInfo</a>&amp; InWord1, <span class="keyword">const</span> <a class="code hl_struct" href="structFWordInfo.html">FWordInfo</a>&amp; InWord2, int32 InSpawnIndex = -1)</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        : word1(InWord1)</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        , word2(InWord2)</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        , SpawnIndex(InSpawnIndex)</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    {}</div>
 </div>
-<div class="ttc" id="aclassADropper_html"><div class="ttname"><a href="classADropper.html">ADropper</a></div><div class="ttdef"><b>Definition</b> <a href="ADropper_8h_source.html#l00010">ADropper.h:11</a></div></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>};</div>
+</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>UCLASS()</div>
+<div class="foldopen" id="foldopen00037" data-start="{" data-end="};">
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="classADropper.html">   37</a></span>class ONEPIECE_API <a class="code hl_class" href="classADropper.html">ADropper</a> : public AActor</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>{</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    GENERATED_BODY()</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <a class="code hl_class" href="classADropper.html">ADropper</a>();</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="classADropper.html#a4fd03c6a4c5d6e37b22afc85bdd28883">   45</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classADropper.html#a4fd03c6a4c5d6e37b22afc85bdd28883">SetSpawnClass</a>(TSubclassOf&lt;AActor&gt; InClass) { SpawnClass = InClass; }</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="classADropper.html#a157c62ea5ca44a107413f475f4a47e61">   48</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classADropper.html#a157c62ea5ca44a107413f475f4a47e61">SetSpawnData</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structFLuggageData.html">FLuggageData</a>&amp; InData) { NextData = InData; }</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    UFUNCTION(BlueprintCallable)</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="keywordtype">bool</span> RequestSpawn();</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="classADropper.html#a5f14cbfb4ac2eeec016aad7ba1adb605">   54</a></span>    FORCEINLINE <span class="keywordtype">bool</span> <a class="code hl_function" href="classADropper.html#a5f14cbfb4ac2eeec016aad7ba1adb605">IsBusy</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> bIsSpawnIng; };</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    </div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="keywordtype">void</span> Spawn();</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    UFUNCTION(Server, Reliable)</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="classADropper.html#a120a5316924fd35c0ae10b3e89a92959">   61</a></span>    void Server_Spawn();</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    </div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    UFUNCTION(NetMulticast, Reliable)</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno"><a class="line" href="classADropper.html#a20445470333fec9dda88adeda63439b8">   65</a></span>    <span class="keywordtype">void</span> Multicast_PlayAnimation();</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    UFUNCTION(NetMulticast, Reliable)</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="classADropper.html#a3b756d1cbc9b11947622adb3180a8c58">   69</a></span>    <span class="keywordtype">void</span> Multicast_DisableCollision();</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    UFUNCTION(NetMulticast, Reliable)</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno"><a class="line" href="classADropper.html#ab445d9d334aa5b2dd8f069425d4c00b1">   73</a></span>    <span class="keywordtype">void</span> Multicast_RestoreCollision();</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    virtual <span class="keywordtype">void</span> GetLifetimeReplicatedProps(TArray&lt;FLifetimeProperty&gt;&amp; OutLifetimeProps) const override;</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>private:</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    <span class="keywordtype">void</span> OnDelayCompleted();</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    <span class="keywordtype">void</span> OnRestoreCompleted();</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>private:</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=&quot;Components&quot;, meta=(AllowPrivateAccess=&quot;true&quot;))</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno"><a class="line" href="classADropper.html#a77f77fd06f73abc732ad61d76e69e923">   84</a></span>    TObjectPtr&lt;USceneComponent&gt; SpawnPos;</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=&quot;Components&quot;, meta=(AllowPrivateAccess=&quot;true&quot;))</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno"><a class="line" href="classADropper.html#aaa74dfcba0056709ab99da267dbf2c5e">   88</a></span>    TObjectPtr&lt;USkeletalMeshComponent&gt; SkeletalMesh;</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=&quot;Components&quot;, meta=(AllowPrivateAccess=&quot;true&quot;))</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno"><a class="line" href="classADropper.html#aba96123227079a5b2b329373e999513f">   92</a></span>    TObjectPtr&lt;UStaticMeshComponent&gt; BoxCollision;</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span> </div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=&quot;Animation&quot;, meta=(AllowPrivateAccess=&quot;true&quot;))</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno"><a class="line" href="classADropper.html#a5a49c1c7e8db3bc33eb575a252bcad9d">   96</a></span>    TObjectPtr&lt;UAnimationAsset&gt; AnimToPlay;</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    UPROPERTY(Replicated)</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno"><a class="line" href="classADropper.html#a38cf91439f0672dae16e4c62a8c9b3ed">  100</a></span>    TSubclassOf&lt;AActor&gt; SpawnClass;</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span> </div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    UPROPERTY(Replicated)</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno"><a class="line" href="classADropper.html#a47520cd53ae3329ba3185e29cb08557b">  104</a></span>    <a class="code hl_struct" href="structFLuggageData.html">FLuggageData</a> NextData;</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span> </div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    UPROPERTY(Replicated)</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno"><a class="line" href="classADropper.html#add990488884bf0ec970eb0b7fcce26c9">  108</a></span>    <span class="keywordtype">bool</span> bIsSpawnIng = false;</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span> </div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno"><a class="line" href="classADropper.html#ac72f7e826877b273487c4c04778b88bb">  110</a></span>    FTimerHandle DelayTimerHandle;</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno"><a class="line" href="classADropper.html#aebd091f5eb13e2935650d85f52a6ad30">  111</a></span>    FTimerHandle RestoreTimerHandle;</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>};</div>
+</div>
+<div class="ttc" id="aNetworkData_8h_html"><div class="ttname"><a href="NetworkData_8h.html">NetworkData.h</a></div><div class="ttdoc">네트워크 요청과 응답에 사용되는 구조체 및 설정을 정의합니다.</div></div>
+<div class="ttc" id="aclassADropper_html"><div class="ttname"><a href="classADropper.html">ADropper</a></div><div class="ttdef"><b>Definition</b> <a href="ADropper_8h_source.html#l00037">ADropper.h:38</a></div></div>
+<div class="ttc" id="aclassADropper_html_a157c62ea5ca44a107413f475f4a47e61"><div class="ttname"><a href="classADropper.html#a157c62ea5ca44a107413f475f4a47e61">ADropper::SetSpawnData</a></div><div class="ttdeci">void SetSpawnData(const FLuggageData &amp;InData)</div><div class="ttdoc">스폰 전에 Dropper가 생성될 액터에게 넘겨줄 데이터 등록</div><div class="ttdef"><b>Definition</b> <a href="ADropper_8h_source.html#l00048">ADropper.h:48</a></div></div>
+<div class="ttc" id="aclassADropper_html_a4fd03c6a4c5d6e37b22afc85bdd28883"><div class="ttname"><a href="classADropper.html#a4fd03c6a4c5d6e37b22afc85bdd28883">ADropper::SetSpawnClass</a></div><div class="ttdeci">void SetSpawnClass(TSubclassOf&lt; AActor &gt; InClass)</div><div class="ttdoc">스폰 전에 Dropper가 어떤 클래스를 스폰할지 등록</div><div class="ttdef"><b>Definition</b> <a href="ADropper_8h_source.html#l00045">ADropper.h:45</a></div></div>
+<div class="ttc" id="aclassADropper_html_a5f14cbfb4ac2eeec016aad7ba1adb605"><div class="ttname"><a href="classADropper.html#a5f14cbfb4ac2eeec016aad7ba1adb605">ADropper::IsBusy</a></div><div class="ttdeci">FORCEINLINE bool IsBusy() const</div><div class="ttdef"><b>Definition</b> <a href="ADropper_8h_source.html#l00054">ADropper.h:54</a></div></div>
+<div class="ttc" id="astructFLuggageData_html"><div class="ttname"><a href="structFLuggageData.html">FLuggageData</a></div><div class="ttdef"><b>Definition</b> <a href="ADropper_8h_source.html#l00012">ADropper.h:13</a></div></div>
+<div class="ttc" id="astructFLuggageData_html_a556e510f9f7d165b762a58bcdf2a8ed7"><div class="ttname"><a href="structFLuggageData.html#a556e510f9f7d165b762a58bcdf2a8ed7">FLuggageData::FLuggageData</a></div><div class="ttdeci">FLuggageData(const FWordInfo &amp;InWord1, const FWordInfo &amp;InWord2, int32 InSpawnIndex=-1)</div><div class="ttdef"><b>Definition</b> <a href="ADropper_8h_source.html#l00029">ADropper.h:29</a></div></div>
+<div class="ttc" id="astructFWordInfo_html"><div class="ttname"><a href="structFWordInfo.html">FWordInfo</a></div><div class="ttdoc">단어 정보 구조체</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00515">NetworkData.h:516</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_2268d321c547a1269f0f0801cfba1f77.html">Prop</a></li><li class="navelem"><a class="el" href="dir_13cb8c28526713b34d584b8e10191ceb.html">Public</a></li><li class="navelem"><a class="el" href="ADropper_8h.html">ADropper.h</a></li>
-    <li class="footer">생성시간 : 금 12월 5 2025 09:04:32, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 토 12월 6 2025 08:38:30, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

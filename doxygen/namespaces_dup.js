@@ -17,6 +17,8 @@ var namespaces_dup =
     [ "GameMessage", "namespaceGameMessage.html", [
       [ "GameEnd", "namespaceGameMessage.html#a2298f260adc739495b1a3938d2335243", null ],
       [ "GameStart", "namespaceGameMessage.html#a5dbedc9538ba6d1baa996c8c59666487", null ],
+      [ "Holder_Fail", "namespaceGameMessage.html#a1ce5035671889779a21e68aae8c8db38", null ],
+      [ "Holder_Success", "namespaceGameMessage.html#a86e12002bb715fd26393367cd22a64d1", null ],
       [ "IntroStart", "namespaceGameMessage.html#aa9bd2204f84bf0f0e6a421b6c102dc60", null ],
       [ "OutroStart", "namespaceGameMessage.html#a7c9b2a73fcb8d4b1add212d7c16476c2", null ],
       [ "Stage1End", "namespaceGameMessage.html#aefbcc921206947c72cb793a252dec10e", null ],

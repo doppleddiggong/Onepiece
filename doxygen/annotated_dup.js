@@ -51,6 +51,7 @@ var annotated_dup =
     [ "FListenData", "structFListenData.html", "structFListenData" ],
     [ "FListenTargetData", "structFListenTargetData.html", "structFListenTargetData" ],
     [ "FLogWriter", "classFLogWriter.html", "classFLogWriter" ],
+    [ "FLuggageData", "structFLuggageData.html", "structFLuggageData" ],
     [ "FMaterialHelper", "structFMaterialHelper.html", "structFMaterialHelper" ],
     [ "FMathHelper", "structFMathHelper.html", "structFMathHelper" ],
     [ "FOcrDisplay", "structFOcrDisplay.html", "structFOcrDisplay" ],

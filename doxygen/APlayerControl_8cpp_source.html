@@ -130,361 +130,451 @@ $(document).ready(function(){initNavTree('APlayerControl_8cpp_source.html',''); 
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#include &quot;<a class="code" href="ADropper_8h.html">ADropper.h</a>&quot;</span></div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">#include &quot;<a class="code" href="luggage_8h.html">luggage.h</a>&quot;</span></div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">#include &quot;EngineUtils.h&quot;</span></div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="APlayerControl_8cpp.html#a01c913d4a8c789edd2be9b6893be7176">   27</a></span><span class="preprocessor">#define IMC_DEFAULT_PATH            TEXT(&quot;/Game/CustomContents/Input/IMC_Game_Player.IMC_Game_Player&quot;)</span></div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="APlayerControl_8cpp.html#aaceac3d5c8c1d183f1a4bff2f3406a09">   28</a></span><span class="preprocessor">#define IA_MOVE_PATH                TEXT(&quot;/Game/CustomContents/Input/IA_Game_Movement.IA_Game_Movement&quot;)</span></div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="APlayerControl_8cpp.html#a8b72b0499e531ce7d87e8a29960cb2e9">   29</a></span><span class="preprocessor">#define IA_LOOK_PATH                TEXT(&quot;/Game/CustomContents/Input/IA_Game_LookAround.IA_Game_LookAround&quot;)</span></div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="APlayerControl_8cpp.html#a56b2a02cd847f2f8531199c9cb9b066a">   30</a></span><span class="preprocessor">#define IA_JUMP_PATH                TEXT(&quot;/Game/CustomContents/Input/IA_Game_Jump.IA_Game_Jump&quot;)</span></div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="APlayerControl_8cpp.html#a5f8136d1ae53127439765497cd8488d7">   31</a></span><span class="preprocessor">#define IA_RECORD_PATH              TEXT(&quot;/Game/CustomContents/Input/IA_Game_Record.IA_Game_Record&quot;)</span></div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="APlayerControl_8cpp.html#ae48e8c8531b0052bfe745b145e850c0e">   32</a></span><span class="preprocessor">#define IA_GRAB_PATH                TEXT(&quot;/Game/CustomContents/Input/IA_Game_Grab.IA_Game_Grab&quot;)</span></div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="APlayerControl_8cpp.html#a3ab8a9725d785bd80a3ec21f7fe064e0">   33</a></span><span class="preprocessor">#define IA_INTERACT_PATH            TEXT(&quot;/Game/CustomContents/Input/IA_Game_Interact.IA_Game_Interact&quot;)</span></div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="APlayerControl_8cpp.html#aac43679ef0ed684b18eac95ba57da5a7">   34</a></span><span class="preprocessor">#define IA_RUN_PATH                 TEXT(&quot;/Game/CustomContents/Input/IA_Game_Run.IA_Game_Run&quot;)</span></div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="APlayerControl_8cpp.html#a28ccfc8a8fa88862f5b5759780fcef13">   35</a></span><span class="preprocessor">#define IA_INFO_PATH                TEXT(&quot;/Game/CustomContents/Input/IA_Game_Info.IA_Game_Info&quot;)</span></div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="APlayerControl_8cpp.html#af944d1d5c0903b37a61292741d43558a">   36</a></span><span class="preprocessor">#define IA_HOOK_PATH                TEXT(&quot;/Game/CustomContents/Input/IA_Game_Hook.IA_Game_Hook&quot;)</span></div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">#include &quot;<a class="code" href="UDialogManager_8h.html">UDialogManager.h</a>&quot;</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="APlayerControl_8cpp.html#a01c913d4a8c789edd2be9b6893be7176">   28</a></span><span class="preprocessor">#define IMC_DEFAULT_PATH            TEXT(&quot;/Game/CustomContents/Input/IMC_Game_Player.IMC_Game_Player&quot;)</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="APlayerControl_8cpp.html#aaceac3d5c8c1d183f1a4bff2f3406a09">   29</a></span><span class="preprocessor">#define IA_MOVE_PATH                TEXT(&quot;/Game/CustomContents/Input/IA_Game_Movement.IA_Game_Movement&quot;)</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="APlayerControl_8cpp.html#a8b72b0499e531ce7d87e8a29960cb2e9">   30</a></span><span class="preprocessor">#define IA_LOOK_PATH                TEXT(&quot;/Game/CustomContents/Input/IA_Game_LookAround.IA_Game_LookAround&quot;)</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="APlayerControl_8cpp.html#a56b2a02cd847f2f8531199c9cb9b066a">   31</a></span><span class="preprocessor">#define IA_JUMP_PATH                TEXT(&quot;/Game/CustomContents/Input/IA_Game_Jump.IA_Game_Jump&quot;)</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="APlayerControl_8cpp.html#a5f8136d1ae53127439765497cd8488d7">   32</a></span><span class="preprocessor">#define IA_RECORD_PATH              TEXT(&quot;/Game/CustomContents/Input/IA_Game_Record.IA_Game_Record&quot;)</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="APlayerControl_8cpp.html#ae48e8c8531b0052bfe745b145e850c0e">   33</a></span><span class="preprocessor">#define IA_GRAB_PATH                TEXT(&quot;/Game/CustomContents/Input/IA_Game_Grab.IA_Game_Grab&quot;)</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="APlayerControl_8cpp.html#a3ab8a9725d785bd80a3ec21f7fe064e0">   34</a></span><span class="preprocessor">#define IA_INTERACT_PATH            TEXT(&quot;/Game/CustomContents/Input/IA_Game_Interact.IA_Game_Interact&quot;)</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="APlayerControl_8cpp.html#aac43679ef0ed684b18eac95ba57da5a7">   35</a></span><span class="preprocessor">#define IA_RUN_PATH                 TEXT(&quot;/Game/CustomContents/Input/IA_Game_Run.IA_Game_Run&quot;)</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="APlayerControl_8cpp.html#a28ccfc8a8fa88862f5b5759780fcef13">   36</a></span><span class="preprocessor">#define IA_INFO_PATH                TEXT(&quot;/Game/CustomContents/Input/IA_Game_Info.IA_Game_Info&quot;)</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="APlayerControl_8cpp.html#af944d1d5c0903b37a61292741d43558a">   37</a></span><span class="preprocessor">#define IA_HOOK_PATH                TEXT(&quot;/Game/CustomContents/Input/IA_Game_Hook.IA_Game_Hook&quot;)</span></div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
-<div class="foldopen" id="foldopen00039" data-start="{" data-end="}">
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="classAPlayerControl.html#ad52af79fddcd1253723313ab75eec84c">   39</a></span><a class="code hl_function" href="classAPlayerControl.html#ad52af79fddcd1253723313ab75eec84c">APlayerControl::APlayerControl</a>()</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>{</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <a class="code hl_variable" href="classAPlayerControl.html#a76486f75de5e0e9cb22d8c2a7e506d4a">IMC_Default</a> = <a class="code hl_function" href="structFComponentHelper.html#ac37cef436e9aaef1f0c655d781a95e66">FComponentHelper::LoadAsset&lt;UInputMappingContext&gt;</a>(<a class="code hl_define" href="APlayerControl_8cpp.html#a01c913d4a8c789edd2be9b6893be7176">IMC_DEFAULT_PATH</a>);</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    IA_Move = <a class="code hl_function" href="structFComponentHelper.html#ac37cef436e9aaef1f0c655d781a95e66">FComponentHelper::LoadAsset&lt;UInputAction&gt;</a>(<a class="code hl_define" href="APlayerControl_8cpp.html#aaceac3d5c8c1d183f1a4bff2f3406a09">IA_MOVE_PATH</a>);</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    IA_Look = <a class="code hl_function" href="structFComponentHelper.html#ac37cef436e9aaef1f0c655d781a95e66">FComponentHelper::LoadAsset&lt;UInputAction&gt;</a>(<a class="code hl_define" href="APlayerControl_8cpp.html#a8b72b0499e531ce7d87e8a29960cb2e9">IA_LOOK_PATH</a>);</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    IA_Jump = <a class="code hl_function" href="structFComponentHelper.html#ac37cef436e9aaef1f0c655d781a95e66">FComponentHelper::LoadAsset&lt;UInputAction&gt;</a>(<a class="code hl_define" href="APlayerControl_8cpp.html#a56b2a02cd847f2f8531199c9cb9b066a">IA_JUMP_PATH</a>);</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    IA_Record = <a class="code hl_function" href="structFComponentHelper.html#ac37cef436e9aaef1f0c655d781a95e66">FComponentHelper::LoadAsset&lt;UInputAction&gt;</a>(<a class="code hl_define" href="APlayerControl_8cpp.html#a5f8136d1ae53127439765497cd8488d7">IA_RECORD_PATH</a>);</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    IA_Grab = <a class="code hl_function" href="structFComponentHelper.html#ac37cef436e9aaef1f0c655d781a95e66">FComponentHelper::LoadAsset&lt;UInputAction&gt;</a>(<a class="code hl_define" href="APlayerControl_8cpp.html#ae48e8c8531b0052bfe745b145e850c0e">IA_GRAB_PATH</a>);</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    IA_Interact = <a class="code hl_function" href="structFComponentHelper.html#ac37cef436e9aaef1f0c655d781a95e66">FComponentHelper::LoadAsset&lt;UInputAction&gt;</a>(<a class="code hl_define" href="APlayerControl_8cpp.html#a3ab8a9725d785bd80a3ec21f7fe064e0">IA_INTERACT_PATH</a>);</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    IA_Run = <a class="code hl_function" href="structFComponentHelper.html#ac37cef436e9aaef1f0c655d781a95e66">FComponentHelper::LoadAsset&lt;UInputAction&gt;</a>(<a class="code hl_define" href="APlayerControl_8cpp.html#aac43679ef0ed684b18eac95ba57da5a7">IA_RUN_PATH</a>);</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    IA_Info = <a class="code hl_function" href="structFComponentHelper.html#ac37cef436e9aaef1f0c655d781a95e66">FComponentHelper::LoadAsset&lt;UInputAction&gt;</a>(<a class="code hl_define" href="APlayerControl_8cpp.html#a28ccfc8a8fa88862f5b5759780fcef13">IA_INFO_PATH</a>);</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    IA_Hook = <a class="code hl_function" href="structFComponentHelper.html#ac37cef436e9aaef1f0c655d781a95e66">FComponentHelper::LoadAsset&lt;UInputAction&gt;</a>(<a class="code hl_define" href="APlayerControl_8cpp.html#af944d1d5c0903b37a61292741d43558a">IA_HOOK_PATH</a>);</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>}</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="foldopen" id="foldopen00040" data-start="{" data-end="}">
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="classAPlayerControl.html#ad52af79fddcd1253723313ab75eec84c">   40</a></span><a class="code hl_function" href="classAPlayerControl.html#ad52af79fddcd1253723313ab75eec84c">APlayerControl::APlayerControl</a>()</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>{</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <a class="code hl_variable" href="classAPlayerControl.html#a76486f75de5e0e9cb22d8c2a7e506d4a">IMC_Default</a> = <a class="code hl_function" href="structFComponentHelper.html#ac37cef436e9aaef1f0c655d781a95e66">FComponentHelper::LoadAsset&lt;UInputMappingContext&gt;</a>(<a class="code hl_define" href="APlayerControl_8cpp.html#a01c913d4a8c789edd2be9b6893be7176">IMC_DEFAULT_PATH</a>);</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    IA_Move = <a class="code hl_function" href="structFComponentHelper.html#ac37cef436e9aaef1f0c655d781a95e66">FComponentHelper::LoadAsset&lt;UInputAction&gt;</a>(<a class="code hl_define" href="APlayerControl_8cpp.html#aaceac3d5c8c1d183f1a4bff2f3406a09">IA_MOVE_PATH</a>);</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    IA_Look = <a class="code hl_function" href="structFComponentHelper.html#ac37cef436e9aaef1f0c655d781a95e66">FComponentHelper::LoadAsset&lt;UInputAction&gt;</a>(<a class="code hl_define" href="APlayerControl_8cpp.html#a8b72b0499e531ce7d87e8a29960cb2e9">IA_LOOK_PATH</a>);</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    IA_Jump = <a class="code hl_function" href="structFComponentHelper.html#ac37cef436e9aaef1f0c655d781a95e66">FComponentHelper::LoadAsset&lt;UInputAction&gt;</a>(<a class="code hl_define" href="APlayerControl_8cpp.html#a56b2a02cd847f2f8531199c9cb9b066a">IA_JUMP_PATH</a>);</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    IA_Record = <a class="code hl_function" href="structFComponentHelper.html#ac37cef436e9aaef1f0c655d781a95e66">FComponentHelper::LoadAsset&lt;UInputAction&gt;</a>(<a class="code hl_define" href="APlayerControl_8cpp.html#a5f8136d1ae53127439765497cd8488d7">IA_RECORD_PATH</a>);</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    IA_Grab = <a class="code hl_function" href="structFComponentHelper.html#ac37cef436e9aaef1f0c655d781a95e66">FComponentHelper::LoadAsset&lt;UInputAction&gt;</a>(<a class="code hl_define" href="APlayerControl_8cpp.html#ae48e8c8531b0052bfe745b145e850c0e">IA_GRAB_PATH</a>);</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    IA_Interact = <a class="code hl_function" href="structFComponentHelper.html#ac37cef436e9aaef1f0c655d781a95e66">FComponentHelper::LoadAsset&lt;UInputAction&gt;</a>(<a class="code hl_define" href="APlayerControl_8cpp.html#a3ab8a9725d785bd80a3ec21f7fe064e0">IA_INTERACT_PATH</a>);</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    IA_Run = <a class="code hl_function" href="structFComponentHelper.html#ac37cef436e9aaef1f0c655d781a95e66">FComponentHelper::LoadAsset&lt;UInputAction&gt;</a>(<a class="code hl_define" href="APlayerControl_8cpp.html#aac43679ef0ed684b18eac95ba57da5a7">IA_RUN_PATH</a>);</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    IA_Info = <a class="code hl_function" href="structFComponentHelper.html#ac37cef436e9aaef1f0c655d781a95e66">FComponentHelper::LoadAsset&lt;UInputAction&gt;</a>(<a class="code hl_define" href="APlayerControl_8cpp.html#a28ccfc8a8fa88862f5b5759780fcef13">IA_INFO_PATH</a>);</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    IA_Hook = <a class="code hl_function" href="structFComponentHelper.html#ac37cef436e9aaef1f0c655d781a95e66">FComponentHelper::LoadAsset&lt;UInputAction&gt;</a>(<a class="code hl_define" href="APlayerControl_8cpp.html#af944d1d5c0903b37a61292741d43558a">IA_HOOK_PATH</a>);</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>}</div>
 </div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
-<div class="foldopen" id="foldopen00054" data-start="{" data-end="}">
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="classAPlayerControl.html#a4cf368d1cfadfd50d83c8af1b10cc623">   54</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAPlayerControl.html#a4cf368d1cfadfd50d83c8af1b10cc623">APlayerControl::BeginPlay</a>()</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>{</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    Super::BeginPlay();</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> LP = GetLocalPlayer())</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    {</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        <span class="keywordflow">if</span> (<span class="keyword">auto</span> SubSystem = LP-&gt;GetSubsystem&lt;UEnhancedInputLocalPlayerSubsystem&gt;())</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        {</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAPlayerControl.html#a76486f75de5e0e9cb22d8c2a7e506d4a">IMC_Default</a>)</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>            {</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>                SubSystem-&gt;ClearAllMappings();</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>                SubSystem-&gt;AddMappingContext(<a class="code hl_variable" href="classAPlayerControl.html#a76486f75de5e0e9cb22d8c2a7e506d4a">IMC_Default</a>, 0);</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>            }</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        }</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    }</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <span class="keywordflow">if</span> (IsLocalController())</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    {</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        <a class="code hl_variable" href="classAPlayerControl.html#a585aa05322aa9c59ce315bd1e01e8038">UserInfo</a> = ULingoGameInstanceSubsystem::Get(GetWorld())-&gt;GetUserInfo();</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        <a class="code hl_function" href="classAPlayerControl.html#ad9179af6a28b83606e927ffc0635fa27">Server_SetUserInfo</a>(<a class="code hl_variable" href="classAPlayerControl.html#a585aa05322aa9c59ce315bd1e01e8038">UserInfo</a>);</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    }</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>}</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="foldopen" id="foldopen00055" data-start="{" data-end="}">
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="classAPlayerControl.html#a4cf368d1cfadfd50d83c8af1b10cc623">   55</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAPlayerControl.html#a4cf368d1cfadfd50d83c8af1b10cc623">APlayerControl::BeginPlay</a>()</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>{</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    Super::BeginPlay();</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> LP = GetLocalPlayer())</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    {</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        <span class="keywordflow">if</span> (<span class="keyword">auto</span> SubSystem = LP-&gt;GetSubsystem&lt;UEnhancedInputLocalPlayerSubsystem&gt;())</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        {</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAPlayerControl.html#a76486f75de5e0e9cb22d8c2a7e506d4a">IMC_Default</a>)</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>            {</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>                SubSystem-&gt;ClearAllMappings();</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>                SubSystem-&gt;AddMappingContext(<a class="code hl_variable" href="classAPlayerControl.html#a76486f75de5e0e9cb22d8c2a7e506d4a">IMC_Default</a>, 0);</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>            }</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        }</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    }</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <span class="keywordflow">if</span> (IsLocalController())</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    {</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        <a class="code hl_variable" href="classAPlayerControl.html#a585aa05322aa9c59ce315bd1e01e8038">UserInfo</a> = ULingoGameInstanceSubsystem::Get(GetWorld())-&gt;GetUserInfo();</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>        <a class="code hl_function" href="classAPlayerControl.html#ad9179af6a28b83606e927ffc0635fa27">Server_SetUserInfo</a>(<a class="code hl_variable" href="classAPlayerControl.html#a585aa05322aa9c59ce315bd1e01e8038">UserInfo</a>);</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    }</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>}</div>
 </div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
-<div class="foldopen" id="foldopen00077" data-start="{" data-end="}">
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno"><a class="line" href="classAPlayerControl.html#abede09a391c47bdafb3b34a507c80e9b">   77</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAPlayerControl.html#abede09a391c47bdafb3b34a507c80e9b">APlayerControl::SetupInputComponent</a>()</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>{</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    Super::SetupInputComponent();</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    <span class="keywordflow">if</span> (UEnhancedInputComponent* EIC = Cast&lt;UEnhancedInputComponent&gt;(InputComponent))</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    {</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        EIC-&gt;BindAction(IA_Move, ETriggerEvent::Triggered,  <span class="keyword">this</span>, &amp;<a class="code hl_function" href="classAPlayerControl.html#a6753258935f617283a3cfb653d32b84b">APlayerControl::OnMove</a>);</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        EIC-&gt;BindAction(IA_Move, ETriggerEvent::Completed,  <span class="keyword">this</span>, &amp;<a class="code hl_function" href="classAPlayerControl.html#af8c76a593d47ea58362e58220776fef6">APlayerControl::OnStopMove</a>);</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        EIC-&gt;BindAction(IA_Look, ETriggerEvent::Triggered,  <span class="keyword">this</span>, &amp;<a class="code hl_function" href="classAPlayerControl.html#a6c7499f4bc744fb6e0920e5195f562c3">APlayerControl::OnLook</a>);</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        </div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>        EIC-&gt;BindAction(IA_Jump, ETriggerEvent::Started,    <span class="keyword">this</span>, &amp;<a class="code hl_function" href="classAPlayerControl.html#a1bca1ba6619ca2eb51414d2959508433">APlayerControl::OnJump</a>);</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>        EIC-&gt;BindAction(IA_Record, ETriggerEvent::Started, <span class="keyword">this</span>, &amp;<a class="code hl_function" href="classAPlayerControl.html#ac1a34aa3e6b5a59c28b7b8ae42c4d75d">APlayerControl::OnRecordPressed</a>);</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>        EIC-&gt;BindAction(IA_Record, ETriggerEvent::Completed, <span class="keyword">this</span>, &amp;<a class="code hl_function" href="classAPlayerControl.html#a0b8363f1c71e6644c0575985fca29ba6">APlayerControl::OnRecordReleased</a>);</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>        EIC-&gt;BindAction(IA_Grab, ETriggerEvent::Started, <span class="keyword">this</span>, &amp;<a class="code hl_function" href="classAPlayerControl.html#ab2dcf9de168c0f1940c769c5c87cb864">APlayerControl::OnGrab</a>);</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>        EIC-&gt;BindAction(IA_Grab, ETriggerEvent::Completed, <span class="keyword">this</span>, &amp;<a class="code hl_function" href="classAPlayerControl.html#a53ea83bb9bed9690c52806a5ae4b5657">APlayerControl::OnGrabRelease</a>);</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>        EIC-&gt;BindAction(IA_Interact, ETriggerEvent::Started, <span class="keyword">this</span>, &amp;<a class="code hl_function" href="classAPlayerControl.html#a4a6f327d434399d3f375a5f74b5fd56b">APlayerControl::OnInteract</a>);</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        EIC-&gt;BindAction(IA_Run, ETriggerEvent::Started, <span class="keyword">this</span>, &amp;<a class="code hl_function" href="classAPlayerControl.html#a8f2701e581dbfc506456578d9870e8ec">APlayerControl::OnRun</a>);</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>        EIC-&gt;BindAction(IA_Info, ETriggerEvent::Started, <span class="keyword">this</span>, &amp;<a class="code hl_function" href="classAPlayerControl.html#a977d7a727f0ccc60796770aa60bb473a">APlayerControl::OnInfo</a>);</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>        </div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>        EIC-&gt;BindAction(IA_Hook, ETriggerEvent::Started, <span class="keyword">this</span>, &amp;<a class="code hl_function" href="classAPlayerControl.html#abf6c3cf5f3542c2345dc9f75d247284b">APlayerControl::OnHook</a>);</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    }</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>}</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
+<div class="foldopen" id="foldopen00078" data-start="{" data-end="}">
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno"><a class="line" href="classAPlayerControl.html#abede09a391c47bdafb3b34a507c80e9b">   78</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAPlayerControl.html#abede09a391c47bdafb3b34a507c80e9b">APlayerControl::SetupInputComponent</a>()</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>{</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    Super::SetupInputComponent();</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    <span class="keywordflow">if</span> (UEnhancedInputComponent* EIC = Cast&lt;UEnhancedInputComponent&gt;(InputComponent))</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    {</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        EIC-&gt;BindAction(IA_Move, ETriggerEvent::Triggered,  <span class="keyword">this</span>, &amp;<a class="code hl_function" href="classAPlayerControl.html#a6753258935f617283a3cfb653d32b84b">APlayerControl::OnMove</a>);</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        EIC-&gt;BindAction(IA_Move, ETriggerEvent::Completed,  <span class="keyword">this</span>, &amp;<a class="code hl_function" href="classAPlayerControl.html#af8c76a593d47ea58362e58220776fef6">APlayerControl::OnStopMove</a>);</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        EIC-&gt;BindAction(IA_Look, ETriggerEvent::Triggered,  <span class="keyword">this</span>, &amp;<a class="code hl_function" href="classAPlayerControl.html#a6c7499f4bc744fb6e0920e5195f562c3">APlayerControl::OnLook</a>);</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>        </div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        EIC-&gt;BindAction(IA_Jump, ETriggerEvent::Started,    <span class="keyword">this</span>, &amp;<a class="code hl_function" href="classAPlayerControl.html#a1bca1ba6619ca2eb51414d2959508433">APlayerControl::OnJump</a>);</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>        EIC-&gt;BindAction(IA_Record, ETriggerEvent::Started, <span class="keyword">this</span>, &amp;<a class="code hl_function" href="classAPlayerControl.html#ac1a34aa3e6b5a59c28b7b8ae42c4d75d">APlayerControl::OnRecordPressed</a>);</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        EIC-&gt;BindAction(IA_Record, ETriggerEvent::Completed, <span class="keyword">this</span>, &amp;<a class="code hl_function" href="classAPlayerControl.html#a0b8363f1c71e6644c0575985fca29ba6">APlayerControl::OnRecordReleased</a>);</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>        EIC-&gt;BindAction(IA_Grab, ETriggerEvent::Started, <span class="keyword">this</span>, &amp;<a class="code hl_function" href="classAPlayerControl.html#ab2dcf9de168c0f1940c769c5c87cb864">APlayerControl::OnGrab</a>);</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        EIC-&gt;BindAction(IA_Grab, ETriggerEvent::Completed, <span class="keyword">this</span>, &amp;<a class="code hl_function" href="classAPlayerControl.html#a53ea83bb9bed9690c52806a5ae4b5657">APlayerControl::OnGrabRelease</a>);</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> </div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        EIC-&gt;BindAction(IA_Interact, ETriggerEvent::Started, <span class="keyword">this</span>, &amp;<a class="code hl_function" href="classAPlayerControl.html#a4a6f327d434399d3f375a5f74b5fd56b">APlayerControl::OnInteract</a>);</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>        EIC-&gt;BindAction(IA_Run, ETriggerEvent::Started, <span class="keyword">this</span>, &amp;<a class="code hl_function" href="classAPlayerControl.html#a8f2701e581dbfc506456578d9870e8ec">APlayerControl::OnRun</a>);</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span> </div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>        EIC-&gt;BindAction(IA_Info, ETriggerEvent::Started, <span class="keyword">this</span>, &amp;<a class="code hl_function" href="classAPlayerControl.html#a977d7a727f0ccc60796770aa60bb473a">APlayerControl::OnInfo</a>);</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>        </div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>        EIC-&gt;BindAction(IA_Hook, ETriggerEvent::Started, <span class="keyword">this</span>, &amp;<a class="code hl_function" href="classAPlayerControl.html#abf6c3cf5f3542c2345dc9f75d247284b">APlayerControl::OnHook</a>);</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    }</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>}</div>
 </div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
-<div class="foldopen" id="foldopen00104" data-start="{" data-end="}">
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno"><a class="line" href="classAPlayerControl.html#a49c6d11314d21c34209ac16d0dabcfc3">  104</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAPlayerControl.html#a49c6d11314d21c34209ac16d0dabcfc3">APlayerControl::UpdateQuestRole</a>(<a class="code hl_enumeration" href="EQuestRole_8h.html#af9534ca095b724046bf40abddcbb95e9">EQuestRole</a> QuestRole)</div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>{</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    UBroadcastManager::Get(GetWorld())-&gt;SendUpdateQuestRole(QuestRole);</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>}</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span> </div>
+<div class="foldopen" id="foldopen00105" data-start="{" data-end="}">
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno"><a class="line" href="classAPlayerControl.html#a49c6d11314d21c34209ac16d0dabcfc3">  105</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAPlayerControl.html#a49c6d11314d21c34209ac16d0dabcfc3">APlayerControl::UpdateQuestRole</a>(<a class="code hl_enumeration" href="EQuestRole_8h.html#af9534ca095b724046bf40abddcbb95e9">EQuestRole</a> QuestRole)</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>{</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    UBroadcastManager::Get(GetWorld())-&gt;SendUpdateQuestRole(QuestRole);</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>}</div>
 </div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span> </div>
-<div class="foldopen" id="foldopen00109" data-start="{" data-end="}">
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno"><a class="line" href="classAPlayerControl.html#aeda5eb6dcc2b2420cf2dc554a2739477">  109</a></span><a class="code hl_class" href="classIControllable.html">IControllable</a>* <a class="code hl_function" href="classAPlayerControl.html#aeda5eb6dcc2b2420cf2dc554a2739477">APlayerControl::GetControllable</a>()<span class="keyword"> const</span></div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span><span class="keyword"></span>{</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    APawn* P = GetPawn();</div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    <span class="keywordflow">if</span> (!P)</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span> </div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>    <span class="comment">// UObject 기반 UInterface 라면 Cast 가능</span></div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>    <span class="keywordflow">if</span> (<a class="code hl_class" href="classIControllable.html">IControllable</a>* C = Cast&lt;IControllable&gt;(P))</div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>        <span class="keywordflow">return</span> C;</div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span> </div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>}</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span> </div>
+<div class="foldopen" id="foldopen00110" data-start="{" data-end="}">
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno"><a class="line" href="classAPlayerControl.html#aeda5eb6dcc2b2420cf2dc554a2739477">  110</a></span><a class="code hl_class" href="classIControllable.html">IControllable</a>* <a class="code hl_function" href="classAPlayerControl.html#aeda5eb6dcc2b2420cf2dc554a2739477">APlayerControl::GetControllable</a>()<span class="keyword"> const</span></div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span><span class="keyword"></span>{</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    APawn* P = GetPawn();</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    <span class="keywordflow">if</span> (!P)</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span> </div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>    <span class="comment">// UObject 기반 UInterface 라면 Cast 가능</span></div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>    <span class="keywordflow">if</span> (<a class="code hl_class" href="classIControllable.html">IControllable</a>* C = Cast&lt;IControllable&gt;(P))</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>        <span class="keywordflow">return</span> C;</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span> </div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>}</div>
 </div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span> </div>
-<div class="foldopen" id="foldopen00122" data-start="{" data-end="}">
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno"><a class="line" href="classAPlayerControl.html#a6753258935f617283a3cfb653d32b84b">  122</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAPlayerControl.html#a6753258935f617283a3cfb653d32b84b">APlayerControl::OnMove</a>(<span class="keyword">const</span> FInputActionValue&amp; Value)</div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>{</div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>    <span class="keywordflow">if</span> (<a class="code hl_class" href="classIControllable.html">IControllable</a>* C = <a class="code hl_function" href="classAPlayerControl.html#aeda5eb6dcc2b2420cf2dc554a2739477">GetControllable</a>())</div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>        C-&gt;Cmd_Move(Value.Get&lt;FVector2D&gt;());</div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>}</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span> </div>
+<div class="foldopen" id="foldopen00123" data-start="{" data-end="}">
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno"><a class="line" href="classAPlayerControl.html#a6753258935f617283a3cfb653d32b84b">  123</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAPlayerControl.html#a6753258935f617283a3cfb653d32b84b">APlayerControl::OnMove</a>(<span class="keyword">const</span> FInputActionValue&amp; Value)</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>{</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>    <span class="keywordflow">if</span> (<a class="code hl_class" href="classIControllable.html">IControllable</a>* C = <a class="code hl_function" href="classAPlayerControl.html#aeda5eb6dcc2b2420cf2dc554a2739477">GetControllable</a>())</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>        C-&gt;Cmd_Move(Value.Get&lt;FVector2D&gt;());</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>}</div>
 </div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span> </div>
-<div class="foldopen" id="foldopen00128" data-start="{" data-end="}">
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno"><a class="line" href="classAPlayerControl.html#a6c7499f4bc744fb6e0920e5195f562c3">  128</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAPlayerControl.html#a6c7499f4bc744fb6e0920e5195f562c3">APlayerControl::OnLook</a>(<span class="keyword">const</span> FInputActionValue&amp; Value)</div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>{</div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>    <span class="keywordflow">if</span> (<a class="code hl_class" href="classIControllable.html">IControllable</a>* C = <a class="code hl_function" href="classAPlayerControl.html#aeda5eb6dcc2b2420cf2dc554a2739477">GetControllable</a>())</div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>        C-&gt;Cmd_Look(Value.Get&lt;FVector2D&gt;());</div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>}</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span> </div>
+<div class="foldopen" id="foldopen00129" data-start="{" data-end="}">
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno"><a class="line" href="classAPlayerControl.html#a6c7499f4bc744fb6e0920e5195f562c3">  129</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAPlayerControl.html#a6c7499f4bc744fb6e0920e5195f562c3">APlayerControl::OnLook</a>(<span class="keyword">const</span> FInputActionValue&amp; Value)</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>{</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>    <span class="keywordflow">if</span> (<a class="code hl_class" href="classIControllable.html">IControllable</a>* C = <a class="code hl_function" href="classAPlayerControl.html#aeda5eb6dcc2b2420cf2dc554a2739477">GetControllable</a>())</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>        C-&gt;Cmd_Look(Value.Get&lt;FVector2D&gt;());</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>}</div>
 </div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span> </div>
-<div class="foldopen" id="foldopen00134" data-start="{" data-end="}">
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno"><a class="line" href="classAPlayerControl.html#af8c76a593d47ea58362e58220776fef6">  134</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAPlayerControl.html#af8c76a593d47ea58362e58220776fef6">APlayerControl::OnStopMove</a>(<span class="keyword">const</span> FInputActionValue&amp; Value)</div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>{</div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>    <span class="keywordflow">if</span> (<a class="code hl_class" href="classIControllable.html">IControllable</a>* C = <a class="code hl_function" href="classAPlayerControl.html#aeda5eb6dcc2b2420cf2dc554a2739477">GetControllable</a>())</div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>    {</div>
-<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>        C-&gt;Cmd_StopMove();</div>
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>    }</div>
-<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>}</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span> </div>
+<div class="foldopen" id="foldopen00135" data-start="{" data-end="}">
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno"><a class="line" href="classAPlayerControl.html#af8c76a593d47ea58362e58220776fef6">  135</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAPlayerControl.html#af8c76a593d47ea58362e58220776fef6">APlayerControl::OnStopMove</a>(<span class="keyword">const</span> FInputActionValue&amp; Value)</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>{</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>    <span class="keywordflow">if</span> (<a class="code hl_class" href="classIControllable.html">IControllable</a>* C = <a class="code hl_function" href="classAPlayerControl.html#aeda5eb6dcc2b2420cf2dc554a2739477">GetControllable</a>())</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>    {</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>        C-&gt;Cmd_StopMove();</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>    }</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>}</div>
 </div>
-<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span> </div>
-<div class="foldopen" id="foldopen00142" data-start="{" data-end="}">
-<div class="line"><a id="l00142" name="l00142"></a><span class="lineno"><a class="line" href="classAPlayerControl.html#a1bca1ba6619ca2eb51414d2959508433">  142</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAPlayerControl.html#a1bca1ba6619ca2eb51414d2959508433">APlayerControl::OnJump</a>(<span class="keyword">const</span> FInputActionValue&amp;)</div>
-<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>{</div>
-<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>    <span class="keywordflow">if</span> (<a class="code hl_class" href="classIControllable.html">IControllable</a>* C = <a class="code hl_function" href="classAPlayerControl.html#aeda5eb6dcc2b2420cf2dc554a2739477">GetControllable</a>())</div>
-<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>        C-&gt;Cmd_Jump();</div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span> </div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span> </div>
+<div class="foldopen" id="foldopen00143" data-start="{" data-end="}">
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno"><a class="line" href="classAPlayerControl.html#a1bca1ba6619ca2eb51414d2959508433">  143</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAPlayerControl.html#a1bca1ba6619ca2eb51414d2959508433">APlayerControl::OnJump</a>(<span class="keyword">const</span> FInputActionValue&amp;)</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>{</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>    <span class="keywordflow">if</span> (<a class="code hl_class" href="classIControllable.html">IControllable</a>* C = <a class="code hl_function" href="classAPlayerControl.html#aeda5eb6dcc2b2420cf2dc554a2739477">GetControllable</a>())</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>        C-&gt;Cmd_Jump();</div>
 <div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span> </div>
-<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span> </div>
-<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>    <span class="comment">// // 테스트: 점프할 때마다 랜덤 아이템 추가</span></div>
-<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>    <span class="comment">// if (auto BM = UBroadcastManager::Get(GetWorld()))</span></div>
-<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>    <span class="comment">// {</span></div>
-<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>    <span class="comment">//  TArray&lt;FResultStatData&gt; TestItems;</span></div>
-<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>    <span class="comment">//</span></div>
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>    <span class="comment">//  // 랜덤하게 1~3개의 아이템 생성</span></div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>    <span class="comment">//  int32 ItemCount = FMath::RandRange(1, 3);</span></div>
-<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>    <span class="comment">//  for (int32 i = 0; i &lt; ItemCount; ++i)</span></div>
-<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>    <span class="comment">//  {</span></div>
-<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>    <span class="comment">//      FResultStatData Item;</span></div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>    <span class="comment">//</span></div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>    <span class="comment">//      // 랜덤 위젯 타입 선택</span></div>
-<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>    <span class="comment">//      int32 RandomType = FMath::RandRange(0, 3);</span></div>
-<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>    <span class="comment">//      switch (RandomType)</span></div>
-<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>    <span class="comment">//      {</span></div>
-<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>    <span class="comment">//      case 0: // Grade</span></div>
-<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>    <span class="comment">//          Item.WidgetType = EResultItemWidgetType::Grade;</span></div>
-<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>    <span class="comment">//          Item.GradeTextureType = static_cast&lt;EResourceTextureType&gt;(FMath::RandRange(0, 4)); // Rarity_D ~ Rarity_S</span></div>
-<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>    <span class="comment">//          Item.TitleText = FText::FromString(TEXT(&quot;등급&quot;));</span></div>
-<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>    <span class="comment">//          break;</span></div>
-<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>    <span class="comment">//</span></div>
-<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>    <span class="comment">//      case 1: // Score</span></div>
-<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>    <span class="comment">//          Item.WidgetType = EResultItemWidgetType::Score;</span></div>
-<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>    <span class="comment">//          Item.ScoreValue = FMath::RandRange(100, 9999);</span></div>
-<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>    <span class="comment">//          Item.TitleText = FText::FromString(TEXT(&quot;점수&quot;));</span></div>
-<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>    <span class="comment">//          break;</span></div>
-<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>    <span class="comment">//</span></div>
-<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>    <span class="comment">//      case 2: // Rate</span></div>
-<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>    <span class="comment">//          Item.WidgetType = EResultItemWidgetType::Rate;</span></div>
-<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>    <span class="comment">//          Item.RatePercent = FMath::FRandRange(0.0f, 1.0f);</span></div>
-<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>    <span class="comment">//          Item.TitleText = FText::FromString(TEXT(&quot;비율&quot;));</span></div>
-<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>    <span class="comment">//          break;</span></div>
-<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>    <span class="comment">//</span></div>
-<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>    <span class="comment">//      case 3: // Symbol</span></div>
-<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>    <span class="comment">//          Item.WidgetType = EResultItemWidgetType::Symbol;</span></div>
-<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>    <span class="comment">//          Item.SymbolValue = FMath::FRandRange(0.0f, 1.0f);</span></div>
-<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>    <span class="comment">//          Item.TitleText = FText::FromString(TEXT(&quot;심볼&quot;));</span></div>
-<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>    <span class="comment">//          break;</span></div>
-<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>    <span class="comment">//      }</span></div>
-<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>    <span class="comment">//</span></div>
-<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>    <span class="comment">//      // 랜덤 색상 선택</span></div>
-<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>    <span class="comment">//      Item.ColorType = static_cast&lt;EColorStyleType&gt;(FMath::RandRange(0, 7)); // Green ~ Gray</span></div>
-<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>    <span class="comment">//</span></div>
-<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>    <span class="comment">//      TestItems.Add(Item);</span></div>
-<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>    <span class="comment">//  }</span></div>
-<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>    <span class="comment">//</span></div>
-<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>    <span class="comment">//  // BroadcastManager를 통해 전송</span></div>
-<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>    <span class="comment">//  BM-&gt;SendAddItemToBoxList(TestItems);</span></div>
-<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>    <span class="comment">// }</span></div>
-<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>}</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>    this-&gt;<a class="code hl_function" href="classAPlayerControl.html#ab98c322064b5894e5cd25113d82f617f">TEST_DropperDropProcess</a>();</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>    <span class="comment">// this-&gt;TEST_AddItemToBoxList();</span></div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>}</div>
 </div>
-<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span> </div>
-<div class="foldopen" id="foldopen00200" data-start="{" data-end="}">
-<div class="line"><a id="l00200" name="l00200"></a><span class="lineno"><a class="line" href="classAPlayerControl.html#a8f2701e581dbfc506456578d9870e8ec">  200</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAPlayerControl.html#a8f2701e581dbfc506456578d9870e8ec">APlayerControl::OnRun</a>(<span class="keyword">const</span> FInputActionValue&amp; Value)</div>
-<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>{</div>
-<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>    <span class="keywordflow">if</span> (<a class="code hl_class" href="classIControllable.html">IControllable</a>* C = <a class="code hl_function" href="classAPlayerControl.html#aeda5eb6dcc2b2420cf2dc554a2739477">GetControllable</a>())</div>
-<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>    {</div>
-<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>        C-&gt;Cmd_Run();</div>
-<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>    }</div>
-<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>}</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span> </div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span> </div>
+<div class="foldopen" id="foldopen00153" data-start="{" data-end="}">
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno"><a class="line" href="classAPlayerControl.html#a8f2701e581dbfc506456578d9870e8ec">  153</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAPlayerControl.html#a8f2701e581dbfc506456578d9870e8ec">APlayerControl::OnRun</a>(<span class="keyword">const</span> FInputActionValue&amp; Value)</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>{</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>    <span class="keywordflow">if</span> (<a class="code hl_class" href="classIControllable.html">IControllable</a>* C = <a class="code hl_function" href="classAPlayerControl.html#aeda5eb6dcc2b2420cf2dc554a2739477">GetControllable</a>())</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>    {</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>        C-&gt;Cmd_Run();</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>    }</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>}</div>
 </div>
-<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span> </div>
-<div class="foldopen" id="foldopen00208" data-start="{" data-end="}">
-<div class="line"><a id="l00208" name="l00208"></a><span class="lineno"><a class="line" href="classAPlayerControl.html#ac1a34aa3e6b5a59c28b7b8ae42c4d75d">  208</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAPlayerControl.html#ac1a34aa3e6b5a59c28b7b8ae42c4d75d">APlayerControl::OnRecordPressed</a>(<span class="keyword">const</span> FInputActionValue&amp; Value)</div>
-<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>{</div>
-<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>    <span class="keywordflow">if</span> (<a class="code hl_class" href="classIControllable.html">IControllable</a>* C = <a class="code hl_function" href="classAPlayerControl.html#aeda5eb6dcc2b2420cf2dc554a2739477">GetControllable</a>())</div>
-<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>        C-&gt;Cmd_RecordStart();</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span> </div>
+<div class="foldopen" id="foldopen00161" data-start="{" data-end="}">
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno"><a class="line" href="classAPlayerControl.html#ac1a34aa3e6b5a59c28b7b8ae42c4d75d">  161</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAPlayerControl.html#ac1a34aa3e6b5a59c28b7b8ae42c4d75d">APlayerControl::OnRecordPressed</a>(<span class="keyword">const</span> FInputActionValue&amp; Value)</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>{</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>    <span class="keywordflow">if</span> (<a class="code hl_class" href="classIControllable.html">IControllable</a>* C = <a class="code hl_function" href="classAPlayerControl.html#aeda5eb6dcc2b2420cf2dc554a2739477">GetControllable</a>())</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>        C-&gt;Cmd_RecordStart();</div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>}</div>
+</div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span> </div>
+<div class="foldopen" id="foldopen00167" data-start="{" data-end="}">
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno"><a class="line" href="classAPlayerControl.html#a0b8363f1c71e6644c0575985fca29ba6">  167</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAPlayerControl.html#a0b8363f1c71e6644c0575985fca29ba6">APlayerControl::OnRecordReleased</a>(<span class="keyword">const</span> FInputActionValue&amp; Value)</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>{</div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>    <span class="keywordflow">if</span> (<a class="code hl_class" href="classIControllable.html">IControllable</a>* C = <a class="code hl_function" href="classAPlayerControl.html#aeda5eb6dcc2b2420cf2dc554a2739477">GetControllable</a>())</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>        C-&gt;Cmd_RecordEnd();</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>}</div>
+</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span> </div>
+<div class="foldopen" id="foldopen00173" data-start="{" data-end="}">
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno"><a class="line" href="classAPlayerControl.html#a977d7a727f0ccc60796770aa60bb473a">  173</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAPlayerControl.html#a977d7a727f0ccc60796770aa60bb473a">APlayerControl::OnInfo</a>(<span class="keyword">const</span> FInputActionValue&amp; Value)</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>{</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>    <span class="keywordflow">if</span> (<a class="code hl_class" href="classIControllable.html">IControllable</a>* C = <a class="code hl_function" href="classAPlayerControl.html#aeda5eb6dcc2b2420cf2dc554a2739477">GetControllable</a>())</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>    {</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>        C-&gt;Cmd_Info();</div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>    }</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>}</div>
+</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span> </div>
+<div class="foldopen" id="foldopen00181" data-start="{" data-end="}">
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno"><a class="line" href="classAPlayerControl.html#ab2dcf9de168c0f1940c769c5c87cb864">  181</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAPlayerControl.html#ab2dcf9de168c0f1940c769c5c87cb864">APlayerControl::OnGrab</a>(<span class="keyword">const</span> FInputActionValue&amp; Value)</div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>{</div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>    <a class="code hl_function" href="classAPlayerControl.html#aa79cca5ec444d9c7add4fcecc5dde23b">Server_OnGrab</a>();</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>}</div>
+</div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span> </div>
+<div class="foldopen" id="foldopen00186" data-start="{" data-end="}">
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno"><a class="line" href="classAPlayerControl.html#a53ea83bb9bed9690c52806a5ae4b5657">  186</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAPlayerControl.html#a53ea83bb9bed9690c52806a5ae4b5657">APlayerControl::OnGrabRelease</a>(<span class="keyword">const</span> FInputActionValue&amp; Value)</div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>{</div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>    <a class="code hl_function" href="classAPlayerControl.html#aeb90da2f39476227c6136a9d78d45c83">Server_OnGrabRelease</a>();</div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>}</div>
+</div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span> </div>
+<div class="foldopen" id="foldopen00191" data-start="{" data-end="}">
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno"><a class="line" href="classAPlayerControl.html#a4a6f327d434399d3f375a5f74b5fd56b">  191</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAPlayerControl.html#a4a6f327d434399d3f375a5f74b5fd56b">APlayerControl::OnInteract</a>(<span class="keyword">const</span> FInputActionValue&amp; Value)</div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>{</div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>    <a class="code hl_function" href="classAPlayerControl.html#adbe39822e30958a476131716276b020c">Server_OnInteract</a>();</div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>}</div>
+</div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span> </div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span><span class="keywordtype">void</span> APlayerControl::Server_OnGrab_Implementation()</div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>{</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>    <a class="code hl_class" href="classAPlayerActor.html">APlayerActor</a>* MyPlayer = Cast&lt;APlayerActor&gt;(GetPawn());</div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>    <span class="keywordflow">if</span> (MyPlayer &amp;&amp; MyPlayer-&gt;<a class="code hl_variable" href="classAPlayerActor.html#a64eb3d279996dbda427e45acbc5de350">InteractionSystem</a>)</div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>    {</div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>        MyPlayer-&gt;<a class="code hl_variable" href="classAPlayerActor.html#a64eb3d279996dbda427e45acbc5de350">InteractionSystem</a>-&gt;TryPickUp();</div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>    }</div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>}</div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span> </div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span><span class="keywordtype">void</span> APlayerControl::Server_OnGrabRelease_Implementation()</div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>{</div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>    <a class="code hl_class" href="classAPlayerActor.html">APlayerActor</a>* MyPlayer = Cast&lt;APlayerActor&gt;(GetPawn());</div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>    <span class="keywordflow">if</span> (MyPlayer &amp;&amp; MyPlayer-&gt;<a class="code hl_variable" href="classAPlayerActor.html#a64eb3d279996dbda427e45acbc5de350">InteractionSystem</a>)</div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>    {</div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>        MyPlayer-&gt;<a class="code hl_variable" href="classAPlayerActor.html#a64eb3d279996dbda427e45acbc5de350">InteractionSystem</a>-&gt;TryDrop();</div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>    }</div>
 <div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>}</div>
-</div>
 <div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span> </div>
-<div class="foldopen" id="foldopen00214" data-start="{" data-end="}">
-<div class="line"><a id="l00214" name="l00214"></a><span class="lineno"><a class="line" href="classAPlayerControl.html#a0b8363f1c71e6644c0575985fca29ba6">  214</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAPlayerControl.html#a0b8363f1c71e6644c0575985fca29ba6">APlayerControl::OnRecordReleased</a>(<span class="keyword">const</span> FInputActionValue&amp; Value)</div>
-<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>{</div>
-<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>    <span class="keywordflow">if</span> (<a class="code hl_class" href="classIControllable.html">IControllable</a>* C = <a class="code hl_function" href="classAPlayerControl.html#aeda5eb6dcc2b2420cf2dc554a2739477">GetControllable</a>())</div>
-<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>        C-&gt;Cmd_RecordEnd();</div>
-<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>}</div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span> </div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span><span class="keywordtype">void</span> APlayerControl::Server_OnInteract_Implementation()</div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>{</div>
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>    <a class="code hl_class" href="classAPlayerActor.html">APlayerActor</a>* MyPlayer = Cast&lt;APlayerActor&gt;(GetPawn());</div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>    <span class="keywordflow">if</span> (MyPlayer &amp;&amp; MyPlayer-&gt;<a class="code hl_variable" href="classAPlayerActor.html#a64eb3d279996dbda427e45acbc5de350">InteractionSystem</a>)</div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>    {</div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>        MyPlayer-&gt;<a class="code hl_variable" href="classAPlayerActor.html#a64eb3d279996dbda427e45acbc5de350">InteractionSystem</a>-&gt;TryInteract();</div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>    }</div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>}</div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span> </div>
+<div class="foldopen" id="foldopen00224" data-start="{" data-end="}">
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno"><a class="line" href="classAPlayerControl.html#abf6c3cf5f3542c2345dc9f75d247284b">  224</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAPlayerControl.html#abf6c3cf5f3542c2345dc9f75d247284b">APlayerControl::OnHook</a>(<span class="keyword">const</span> FInputActionValue&amp; Value)</div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>{</div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>    <a class="code hl_function" href="classAPlayerControl.html#a7159940560b252e8e9f8bfd8c51f1f59">Server_OnHook</a>();</div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>}</div>
 </div>
-<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span> </div>
-<div class="foldopen" id="foldopen00220" data-start="{" data-end="}">
-<div class="line"><a id="l00220" name="l00220"></a><span class="lineno"><a class="line" href="classAPlayerControl.html#a977d7a727f0ccc60796770aa60bb473a">  220</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAPlayerControl.html#a977d7a727f0ccc60796770aa60bb473a">APlayerControl::OnInfo</a>(<span class="keyword">const</span> FInputActionValue&amp; Value)</div>
-<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>{</div>
-<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>    <span class="keywordflow">if</span> (<a class="code hl_class" href="classIControllable.html">IControllable</a>* C = <a class="code hl_function" href="classAPlayerControl.html#aeda5eb6dcc2b2420cf2dc554a2739477">GetControllable</a>())</div>
-<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>    {</div>
-<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>        C-&gt;Cmd_Info();</div>
-<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>    }</div>
-<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>}</div>
-</div>
-<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span> </div>
-<div class="foldopen" id="foldopen00228" data-start="{" data-end="}">
-<div class="line"><a id="l00228" name="l00228"></a><span class="lineno"><a class="line" href="classAPlayerControl.html#ab2dcf9de168c0f1940c769c5c87cb864">  228</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAPlayerControl.html#ab2dcf9de168c0f1940c769c5c87cb864">APlayerControl::OnGrab</a>(<span class="keyword">const</span> FInputActionValue&amp; Value)</div>
-<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>{</div>
-<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>    <a class="code hl_function" href="classAPlayerControl.html#aa79cca5ec444d9c7add4fcecc5dde23b">Server_OnGrab</a>();</div>
-<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>}</div>
-</div>
-<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span> </div>
-<div class="foldopen" id="foldopen00233" data-start="{" data-end="}">
-<div class="line"><a id="l00233" name="l00233"></a><span class="lineno"><a class="line" href="classAPlayerControl.html#a53ea83bb9bed9690c52806a5ae4b5657">  233</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAPlayerControl.html#a53ea83bb9bed9690c52806a5ae4b5657">APlayerControl::OnGrabRelease</a>(<span class="keyword">const</span> FInputActionValue&amp; Value)</div>
-<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>{</div>
-<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>    <a class="code hl_function" href="classAPlayerControl.html#aeb90da2f39476227c6136a9d78d45c83">Server_OnGrabRelease</a>();</div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span> </div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span><span class="keywordtype">void</span> APlayerControl::Server_OnHook_Implementation()</div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>{</div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>    <a class="code hl_class" href="classAPlayerActor.html">APlayerActor</a>* MyPlayer = Cast&lt;APlayerActor&gt;(GetPawn());</div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>    <span class="keywordflow">if</span> (MyPlayer &amp;&amp; MyPlayer-&gt;<a class="code hl_variable" href="classAPlayerActor.html#a0fe75e4f0a646205d3f08422a7eb5831">HookSystem</a>)</div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>    {</div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>        MyPlayer-&gt;<a class="code hl_variable" href="classAPlayerActor.html#a0fe75e4f0a646205d3f08422a7eb5831">HookSystem</a>-&gt;TryHook();</div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>    }</div>
 <div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>}</div>
-</div>
 <div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span> </div>
-<div class="foldopen" id="foldopen00238" data-start="{" data-end="}">
-<div class="line"><a id="l00238" name="l00238"></a><span class="lineno"><a class="line" href="classAPlayerControl.html#a4a6f327d434399d3f375a5f74b5fd56b">  238</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAPlayerControl.html#a4a6f327d434399d3f375a5f74b5fd56b">APlayerControl::OnInteract</a>(<span class="keyword">const</span> FInputActionValue&amp; Value)</div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span><span class="keywordtype">void</span> APlayerControl::Server_SetUserInfo_Implementation(<span class="keyword">const</span> <a class="code hl_struct" href="structFResponseUserMe.html">FResponseUserMe</a>&amp; InUserInfo)</div>
 <div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>{</div>
-<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>    <a class="code hl_function" href="classAPlayerControl.html#adbe39822e30958a476131716276b020c">Server_OnInteract</a>();</div>
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>    <a class="code hl_variable" href="classAPlayerControl.html#a585aa05322aa9c59ce315bd1e01e8038">UserInfo</a> = InUserInfo;</div>
 <div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>}</div>
-</div>
 <div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span> </div>
-<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span><span class="keywordtype">void</span> APlayerControl::Server_OnGrab_Implementation()</div>
+<div class="foldopen" id="foldopen00243" data-start="{" data-end="}">
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno"><a class="line" href="classAPlayerControl.html#a94f5727233513026dfac845e1097183c">  243</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAPlayerControl.html#a94f5727233513026dfac845e1097183c">APlayerControl::RequestDrop</a>(<a class="code hl_class" href="classAPlayerControl.html">APlayerControl</a>* Requester)</div>
 <div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>{</div>
-<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>    <a class="code hl_class" href="classAPlayerActor.html">APlayerActor</a>* MyPlayer = Cast&lt;APlayerActor&gt;(GetPawn());</div>
-<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>    <span class="keywordflow">if</span> (MyPlayer &amp;&amp; MyPlayer-&gt;<a class="code hl_variable" href="classAPlayerActor.html#a64eb3d279996dbda427e45acbc5de350">InteractionSystem</a>)</div>
-<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>    {</div>
-<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>        MyPlayer-&gt;<a class="code hl_variable" href="classAPlayerActor.html#a64eb3d279996dbda427e45acbc5de350">InteractionSystem</a>-&gt;TryPickUp();</div>
-<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>    }</div>
-<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>}</div>
-<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span> </div>
-<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span><span class="keywordtype">void</span> APlayerControl::Server_OnGrabRelease_Implementation()</div>
-<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span>{</div>
-<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span>    <a class="code hl_class" href="classAPlayerActor.html">APlayerActor</a>* MyPlayer = Cast&lt;APlayerActor&gt;(GetPawn());</div>
-<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span>    <span class="keywordflow">if</span> (MyPlayer &amp;&amp; MyPlayer-&gt;<a class="code hl_variable" href="classAPlayerActor.html#a64eb3d279996dbda427e45acbc5de350">InteractionSystem</a>)</div>
-<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>    {</div>
-<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span>        MyPlayer-&gt;<a class="code hl_variable" href="classAPlayerActor.html#a64eb3d279996dbda427e45acbc5de350">InteractionSystem</a>-&gt;TryDrop();</div>
-<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>    }</div>
-<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span>}</div>
-<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span> </div>
-<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span> </div>
-<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span><span class="keywordtype">void</span> APlayerControl::Server_OnInteract_Implementation()</div>
-<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span>{</div>
-<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span>    <a class="code hl_class" href="classAPlayerActor.html">APlayerActor</a>* MyPlayer = Cast&lt;APlayerActor&gt;(GetPawn());</div>
-<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span>    <span class="keywordflow">if</span> (MyPlayer &amp;&amp; MyPlayer-&gt;<a class="code hl_variable" href="classAPlayerActor.html#a64eb3d279996dbda427e45acbc5de350">InteractionSystem</a>)</div>
-<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span>    {</div>
-<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span>        MyPlayer-&gt;<a class="code hl_variable" href="classAPlayerActor.html#a64eb3d279996dbda427e45acbc5de350">InteractionSystem</a>-&gt;TryInteract();</div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> World = GetWorld())</div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>    {</div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>        <span class="keywordflow">for</span> (TActorIterator&lt;ADropper&gt; It(World); It; ++It)</div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>        {</div>
+<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>            <a class="code hl_class" href="classADropper.html">ADropper</a>* Dropper = *It;</div>
+<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>            <span class="keywordflow">if</span> (Dropper)</div>
+<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>            {</div>
+<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>                <span class="keywordflow">if</span> (Dropper-&gt;<a class="code hl_function" href="classADropper.html#a5f14cbfb4ac2eeec016aad7ba1adb605">IsBusy</a>() )</div>
+<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span>                {</div>
+<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span>                    Requester-&gt;<a class="code hl_function" href="classAPlayerControl.html#a50f77b6862b6575c355a439c33868248">Client_ToastMessage</a>( TEXT(<span class="stringliteral">&quot;Dropper is Busy&quot;</span>) );</div>
+<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span>                    <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>                }</div>
+<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span>                </div>
+<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>                <a class="code hl_struct" href="structFLuggageData.html">FLuggageData</a> tmpData;</div>
+<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span>                tmpData.<a class="code hl_variable" href="structFLuggageData.html#a193a064c0977170ec7831f8196f4ff9c">word1</a> = tmpData.<a class="code hl_variable" href="structFLuggageData.html#a193a064c0977170ec7831f8196f4ff9c">word1</a>.<a class="code hl_function" href="structFWordInfo.html#a0b915efc0c37a2798ecf2bd8ef0f0bed">GetRandomAnimal</a>();</div>
+<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>                tmpData.<a class="code hl_variable" href="structFLuggageData.html#a265f0a50100e20809a533e26d13058c1">word2</a> = tmpData.<a class="code hl_variable" href="structFLuggageData.html#a265f0a50100e20809a533e26d13058c1">word2</a>.<a class="code hl_function" href="structFWordInfo.html#ae1645c9c30e15b8168dbc0494ce7a74c">GetRandomColor</a>();</div>
+<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>            </div>
+<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span>                Dropper-&gt;<a class="code hl_function" href="classADropper.html#a157c62ea5ca44a107413f475f4a47e61">SetSpawnData</a>(tmpData);</div>
+<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span>                Dropper-&gt;<a class="code hl_function" href="classADropper.html#a4fd03c6a4c5d6e37b22afc85bdd28883">SetSpawnClass</a>( LoadClass&lt;AActor&gt;(<span class="keyword">nullptr</span>, TEXT(<span class="stringliteral">&quot;/Game/CustomContents/Blueprints/Interactables/BP_Luggage.BP_Luggage_C&quot;</span>)));</div>
+<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span>                Dropper-&gt;<a class="code hl_function" href="classADropper.html#ad7b1a0e4a5425909f9b4345de5611afe">RequestSpawn</a>();</div>
+<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span>                <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span>            }</div>
+<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span>        }</div>
 <div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span>    }</div>
 <div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span>}</div>
-<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span> </div>
-<div class="foldopen" id="foldopen00271" data-start="{" data-end="}">
-<div class="line"><a id="l00271" name="l00271"></a><span class="lineno"><a class="line" href="classAPlayerControl.html#abf6c3cf5f3542c2345dc9f75d247284b">  271</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAPlayerControl.html#abf6c3cf5f3542c2345dc9f75d247284b">APlayerControl::OnHook</a>(<span class="keyword">const</span> FInputActionValue&amp; Value)</div>
-<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span>{</div>
-<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span>    <a class="code hl_function" href="classAPlayerControl.html#a7159940560b252e8e9f8bfd8c51f1f59">Server_OnHook</a>();</div>
-<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span>}</div>
 </div>
+<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span> </div>
+<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span><span class="keywordtype">void</span> APlayerControl::Server_RequestDrop_Implementation()</div>
+<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span>{</div>
+<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span>    <a class="code hl_function" href="classAPlayerControl.html#a94f5727233513026dfac845e1097183c">RequestDrop</a>(<span class="keyword">this</span>);</div>
+<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span>}</div>
 <div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span> </div>
-<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span><span class="keywordtype">void</span> APlayerControl::Server_OnHook_Implementation()</div>
+<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span><span class="keywordtype">void</span> APlayerControl::Client_ToastMessage_Implementation(<span class="keyword">const</span> FString&amp; Message)</div>
 <div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span>{</div>
-<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span>    <a class="code hl_class" href="classAPlayerActor.html">APlayerActor</a>* MyPlayer = Cast&lt;APlayerActor&gt;(GetPawn());</div>
-<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span>    <span class="keywordflow">if</span> (MyPlayer &amp;&amp; MyPlayer-&gt;<a class="code hl_variable" href="classAPlayerActor.html#a0fe75e4f0a646205d3f08422a7eb5831">HookSystem</a>)</div>
-<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span>    {</div>
-<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span>        MyPlayer-&gt;<a class="code hl_variable" href="classAPlayerActor.html#a0fe75e4f0a646205d3f08422a7eb5831">HookSystem</a>-&gt;TryHook();</div>
-<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span>    }</div>
-<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span>}</div>
-<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span> </div>
-<div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span><span class="keywordtype">void</span> APlayerControl::Server_SetUserInfo_Implementation(<span class="keyword">const</span> <a class="code hl_struct" href="structFResponseUserMe.html">FResponseUserMe</a>&amp; InUserInfo)</div>
-<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span>{</div>
-<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span>    <a class="code hl_variable" href="classAPlayerControl.html#a585aa05322aa9c59ce315bd1e01e8038">UserInfo</a> = InUserInfo;</div>
+<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span>    UDialogManager::Get(GetWorld())-&gt;ShowToast(Message);</div>
+<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span>}</div>
+<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span> </div>
+<div class="foldopen" id="foldopen00281" data-start="{" data-end="}">
+<div class="line"><a id="l00281" name="l00281"></a><span class="lineno"><a class="line" href="classAPlayerControl.html#ab98c322064b5894e5cd25113d82f617f">  281</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAPlayerControl.html#ab98c322064b5894e5cd25113d82f617f">APlayerControl::TEST_DropperDropProcess</a>()</div>
+<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span>{</div>
+<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span>    <span class="comment">// 테스트 : 맵에 있는 ADropper를 찾아서 ALuggage를 스폰</span></div>
+<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span>    <span class="keywordflow">if</span> ( HasAuthority())</div>
+<div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span>        <a class="code hl_function" href="classAPlayerControl.html#a94f5727233513026dfac845e1097183c">RequestDrop</a>(<span class="keyword">this</span>);</div>
+<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span>    <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span>        <a class="code hl_function" href="classAPlayerControl.html#a9e4e2fa62ac57a7cb39ddc62d4b9aeb2">Server_RequestDrop</a>();</div>
 <div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span>}</div>
+</div>
+<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span> </div>
+<div class="foldopen" id="foldopen00290" data-start="{" data-end="}">
+<div class="line"><a id="l00290" name="l00290"></a><span class="lineno"><a class="line" href="classAPlayerControl.html#a3b1610210b44fa2be6c12fa777631033">  290</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAPlayerControl.html#a3b1610210b44fa2be6c12fa777631033">APlayerControl::TEST_AddItemToBoxList</a>()</div>
+<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span>{</div>
+<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span>    <span class="comment">// 테스트: 랜덤 아이템 추가</span></div>
+<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> BM = UBroadcastManager::Get(GetWorld()))</div>
+<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span>    {</div>
+<div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span>        TArray&lt;FResultStatData&gt; TestItems;</div>
+<div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span> </div>
+<div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span>        <span class="comment">// 랜덤하게 1~3개의 아이템 생성</span></div>
+<div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span>        int32 ItemCount = FMath::RandRange(1, 3);</div>
+<div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span>        <span class="keywordflow">for</span> (int32 i = 0; i &lt; ItemCount; ++i)</div>
+<div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span>        {</div>
+<div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span>            <a class="code hl_struct" href="structFResultStatData.html">FResultStatData</a> Item;</div>
+<div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span> </div>
+<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span>            <span class="comment">// 랜덤 위젯 타입 선택</span></div>
+<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span>            int32 RandomType = FMath::RandRange(0, 3);</div>
+<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span>            <span class="keywordflow">switch</span> (RandomType)</div>
+<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span>            {</div>
+<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span>            <span class="keywordflow">case</span> 0: <span class="comment">// Grade</span></div>
+<div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span>                Item.<a class="code hl_variable" href="structFResultStatData.html#a9c3caa803ddfbb9e059eba055c00aae9">WidgetType</a> = <a class="code hl_enumvalue" href="FResultStatData_8h.html#aaac025acffbbed1878d579b0b3930065a4b3b9db8c9784468094acde0f8bf7071">EResultItemWidgetType::Grade</a>;</div>
+<div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span>                Item.<a class="code hl_variable" href="structFResultStatData.html#aac45c5869b828c7f8cfb47807cdb968f">GradeTextureType</a> = <span class="keyword">static_cast&lt;</span><a class="code hl_enumeration" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2">EResourceTextureType</a><span class="keyword">&gt;</span>(FMath::RandRange(0, 4)); <span class="comment">// Rarity_D ~ Rarity_S</span></div>
+<div class="line"><a id="l00310" name="l00310"></a><span class="lineno">  310</span>                Item.<a class="code hl_variable" href="structFResultStatData.html#a79c960d0257ca39904aba1503a1f5a5e">TitleText</a> = FText::FromString(TEXT(<span class="stringliteral">&quot;등급&quot;</span>));</div>
+<div class="line"><a id="l00311" name="l00311"></a><span class="lineno">  311</span>                <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00312" name="l00312"></a><span class="lineno">  312</span> </div>
+<div class="line"><a id="l00313" name="l00313"></a><span class="lineno">  313</span>            <span class="keywordflow">case</span> 1: <span class="comment">// Score</span></div>
+<div class="line"><a id="l00314" name="l00314"></a><span class="lineno">  314</span>                Item.<a class="code hl_variable" href="structFResultStatData.html#a9c3caa803ddfbb9e059eba055c00aae9">WidgetType</a> = <a class="code hl_enumvalue" href="FResultStatData_8h.html#aaac025acffbbed1878d579b0b3930065a5dd135d1bcfa7f63c3b7f25425c2a4a1">EResultItemWidgetType::Score</a>;</div>
+<div class="line"><a id="l00315" name="l00315"></a><span class="lineno">  315</span>                Item.<a class="code hl_variable" href="structFResultStatData.html#ad1687ae0bdba36508a791b853a82dbe6">ScoreValue</a> = FMath::RandRange(100, 9999);</div>
+<div class="line"><a id="l00316" name="l00316"></a><span class="lineno">  316</span>                Item.<a class="code hl_variable" href="structFResultStatData.html#a79c960d0257ca39904aba1503a1f5a5e">TitleText</a> = FText::FromString(TEXT(<span class="stringliteral">&quot;점수&quot;</span>));</div>
+<div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span>                <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00318" name="l00318"></a><span class="lineno">  318</span> </div>
+<div class="line"><a id="l00319" name="l00319"></a><span class="lineno">  319</span>            <span class="keywordflow">case</span> 2: <span class="comment">// Rate</span></div>
+<div class="line"><a id="l00320" name="l00320"></a><span class="lineno">  320</span>                Item.<a class="code hl_variable" href="structFResultStatData.html#a9c3caa803ddfbb9e059eba055c00aae9">WidgetType</a> = <a class="code hl_enumvalue" href="FResultStatData_8h.html#aaac025acffbbed1878d579b0b3930065adcb66ff6e4a2517ade22183779939c9d">EResultItemWidgetType::Rate</a>;</div>
+<div class="line"><a id="l00321" name="l00321"></a><span class="lineno">  321</span>                Item.<a class="code hl_variable" href="structFResultStatData.html#a61bcfba9b5e9da91e4c34a190489907f">RatePercent</a> = FMath::FRandRange(0.0f, 1.0f);</div>
+<div class="line"><a id="l00322" name="l00322"></a><span class="lineno">  322</span>                Item.<a class="code hl_variable" href="structFResultStatData.html#a79c960d0257ca39904aba1503a1f5a5e">TitleText</a> = FText::FromString(TEXT(<span class="stringliteral">&quot;비율&quot;</span>));</div>
+<div class="line"><a id="l00323" name="l00323"></a><span class="lineno">  323</span>                <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00324" name="l00324"></a><span class="lineno">  324</span> </div>
+<div class="line"><a id="l00325" name="l00325"></a><span class="lineno">  325</span>            <span class="keywordflow">case</span> 3: <span class="comment">// Symbol</span></div>
+<div class="line"><a id="l00326" name="l00326"></a><span class="lineno">  326</span>                Item.<a class="code hl_variable" href="structFResultStatData.html#a9c3caa803ddfbb9e059eba055c00aae9">WidgetType</a> = <a class="code hl_enumvalue" href="FResultStatData_8h.html#aaac025acffbbed1878d579b0b3930065a02c86eb2792f3262c21d030a87e19793">EResultItemWidgetType::Symbol</a>;</div>
+<div class="line"><a id="l00327" name="l00327"></a><span class="lineno">  327</span>                Item.<a class="code hl_variable" href="structFResultStatData.html#a2aea8a92c56a642f74b1300bc735a0e5">SymbolValue</a> = FMath::FRandRange(0.0f, 1.0f);</div>
+<div class="line"><a id="l00328" name="l00328"></a><span class="lineno">  328</span>                Item.<a class="code hl_variable" href="structFResultStatData.html#a79c960d0257ca39904aba1503a1f5a5e">TitleText</a> = FText::FromString(TEXT(<span class="stringliteral">&quot;심볼&quot;</span>));</div>
+<div class="line"><a id="l00329" name="l00329"></a><span class="lineno">  329</span>                <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00330" name="l00330"></a><span class="lineno">  330</span>            }</div>
+<div class="line"><a id="l00331" name="l00331"></a><span class="lineno">  331</span> </div>
+<div class="line"><a id="l00332" name="l00332"></a><span class="lineno">  332</span>            <span class="comment">// 랜덤 색상 선택</span></div>
+<div class="line"><a id="l00333" name="l00333"></a><span class="lineno">  333</span>            Item.<a class="code hl_variable" href="structFResultStatData.html#a75e66157640bcf669787b2e987ab4412">ColorType</a> = <span class="keyword">static_cast&lt;</span><a class="code hl_enumeration" href="FColorStyleData_8h.html#aefed1c032e349fb49159bbab1f32a3eb">EColorStyleType</a><span class="keyword">&gt;</span>(FMath::RandRange(0, 7)); <span class="comment">// Green ~ Gray</span></div>
+<div class="line"><a id="l00334" name="l00334"></a><span class="lineno">  334</span> </div>
+<div class="line"><a id="l00335" name="l00335"></a><span class="lineno">  335</span>            TestItems.Add(Item);</div>
+<div class="line"><a id="l00336" name="l00336"></a><span class="lineno">  336</span>        }</div>
+<div class="line"><a id="l00337" name="l00337"></a><span class="lineno">  337</span> </div>
+<div class="line"><a id="l00338" name="l00338"></a><span class="lineno">  338</span>        <span class="comment">// BroadcastManager를 통해 전송</span></div>
+<div class="line"><a id="l00339" name="l00339"></a><span class="lineno">  339</span>        BM-&gt;SendAddItemToBoxList(TestItems);</div>
+<div class="line"><a id="l00340" name="l00340"></a><span class="lineno">  340</span>    }</div>
+<div class="line"><a id="l00341" name="l00341"></a><span class="lineno">  341</span>}</div>
+</div>
 <div class="ttc" id="aADropper_8h_html"><div class="ttname"><a href="ADropper_8h.html">ADropper.h</a></div></div>
 <div class="ttc" id="aAPlayerActor_8h_html"><div class="ttname"><a href="APlayerActor_8h.html">APlayerActor.h</a></div><div class="ttdoc">Declares the player-controlled character actor.</div></div>
-<div class="ttc" id="aAPlayerControl_8cpp_html_a01c913d4a8c789edd2be9b6893be7176"><div class="ttname"><a href="APlayerControl_8cpp.html#a01c913d4a8c789edd2be9b6893be7176">IMC_DEFAULT_PATH</a></div><div class="ttdeci">#define IMC_DEFAULT_PATH</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8cpp_source.html#l00027">APlayerControl.cpp:27</a></div></div>
-<div class="ttc" id="aAPlayerControl_8cpp_html_a28ccfc8a8fa88862f5b5759780fcef13"><div class="ttname"><a href="APlayerControl_8cpp.html#a28ccfc8a8fa88862f5b5759780fcef13">IA_INFO_PATH</a></div><div class="ttdeci">#define IA_INFO_PATH</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8cpp_source.html#l00035">APlayerControl.cpp:35</a></div></div>
-<div class="ttc" id="aAPlayerControl_8cpp_html_a3ab8a9725d785bd80a3ec21f7fe064e0"><div class="ttname"><a href="APlayerControl_8cpp.html#a3ab8a9725d785bd80a3ec21f7fe064e0">IA_INTERACT_PATH</a></div><div class="ttdeci">#define IA_INTERACT_PATH</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8cpp_source.html#l00033">APlayerControl.cpp:33</a></div></div>
-<div class="ttc" id="aAPlayerControl_8cpp_html_a56b2a02cd847f2f8531199c9cb9b066a"><div class="ttname"><a href="APlayerControl_8cpp.html#a56b2a02cd847f2f8531199c9cb9b066a">IA_JUMP_PATH</a></div><div class="ttdeci">#define IA_JUMP_PATH</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8cpp_source.html#l00030">APlayerControl.cpp:30</a></div></div>
-<div class="ttc" id="aAPlayerControl_8cpp_html_a5f8136d1ae53127439765497cd8488d7"><div class="ttname"><a href="APlayerControl_8cpp.html#a5f8136d1ae53127439765497cd8488d7">IA_RECORD_PATH</a></div><div class="ttdeci">#define IA_RECORD_PATH</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8cpp_source.html#l00031">APlayerControl.cpp:31</a></div></div>
-<div class="ttc" id="aAPlayerControl_8cpp_html_a8b72b0499e531ce7d87e8a29960cb2e9"><div class="ttname"><a href="APlayerControl_8cpp.html#a8b72b0499e531ce7d87e8a29960cb2e9">IA_LOOK_PATH</a></div><div class="ttdeci">#define IA_LOOK_PATH</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8cpp_source.html#l00029">APlayerControl.cpp:29</a></div></div>
-<div class="ttc" id="aAPlayerControl_8cpp_html_aac43679ef0ed684b18eac95ba57da5a7"><div class="ttname"><a href="APlayerControl_8cpp.html#aac43679ef0ed684b18eac95ba57da5a7">IA_RUN_PATH</a></div><div class="ttdeci">#define IA_RUN_PATH</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8cpp_source.html#l00034">APlayerControl.cpp:34</a></div></div>
-<div class="ttc" id="aAPlayerControl_8cpp_html_aaceac3d5c8c1d183f1a4bff2f3406a09"><div class="ttname"><a href="APlayerControl_8cpp.html#aaceac3d5c8c1d183f1a4bff2f3406a09">IA_MOVE_PATH</a></div><div class="ttdeci">#define IA_MOVE_PATH</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8cpp_source.html#l00028">APlayerControl.cpp:28</a></div></div>
-<div class="ttc" id="aAPlayerControl_8cpp_html_ae48e8c8531b0052bfe745b145e850c0e"><div class="ttname"><a href="APlayerControl_8cpp.html#ae48e8c8531b0052bfe745b145e850c0e">IA_GRAB_PATH</a></div><div class="ttdeci">#define IA_GRAB_PATH</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8cpp_source.html#l00032">APlayerControl.cpp:32</a></div></div>
-<div class="ttc" id="aAPlayerControl_8cpp_html_af944d1d5c0903b37a61292741d43558a"><div class="ttname"><a href="APlayerControl_8cpp.html#af944d1d5c0903b37a61292741d43558a">IA_HOOK_PATH</a></div><div class="ttdeci">#define IA_HOOK_PATH</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8cpp_source.html#l00036">APlayerControl.cpp:36</a></div></div>
+<div class="ttc" id="aAPlayerControl_8cpp_html_a01c913d4a8c789edd2be9b6893be7176"><div class="ttname"><a href="APlayerControl_8cpp.html#a01c913d4a8c789edd2be9b6893be7176">IMC_DEFAULT_PATH</a></div><div class="ttdeci">#define IMC_DEFAULT_PATH</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8cpp_source.html#l00028">APlayerControl.cpp:28</a></div></div>
+<div class="ttc" id="aAPlayerControl_8cpp_html_a28ccfc8a8fa88862f5b5759780fcef13"><div class="ttname"><a href="APlayerControl_8cpp.html#a28ccfc8a8fa88862f5b5759780fcef13">IA_INFO_PATH</a></div><div class="ttdeci">#define IA_INFO_PATH</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8cpp_source.html#l00036">APlayerControl.cpp:36</a></div></div>
+<div class="ttc" id="aAPlayerControl_8cpp_html_a3ab8a9725d785bd80a3ec21f7fe064e0"><div class="ttname"><a href="APlayerControl_8cpp.html#a3ab8a9725d785bd80a3ec21f7fe064e0">IA_INTERACT_PATH</a></div><div class="ttdeci">#define IA_INTERACT_PATH</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8cpp_source.html#l00034">APlayerControl.cpp:34</a></div></div>
+<div class="ttc" id="aAPlayerControl_8cpp_html_a56b2a02cd847f2f8531199c9cb9b066a"><div class="ttname"><a href="APlayerControl_8cpp.html#a56b2a02cd847f2f8531199c9cb9b066a">IA_JUMP_PATH</a></div><div class="ttdeci">#define IA_JUMP_PATH</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8cpp_source.html#l00031">APlayerControl.cpp:31</a></div></div>
+<div class="ttc" id="aAPlayerControl_8cpp_html_a5f8136d1ae53127439765497cd8488d7"><div class="ttname"><a href="APlayerControl_8cpp.html#a5f8136d1ae53127439765497cd8488d7">IA_RECORD_PATH</a></div><div class="ttdeci">#define IA_RECORD_PATH</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8cpp_source.html#l00032">APlayerControl.cpp:32</a></div></div>
+<div class="ttc" id="aAPlayerControl_8cpp_html_a8b72b0499e531ce7d87e8a29960cb2e9"><div class="ttname"><a href="APlayerControl_8cpp.html#a8b72b0499e531ce7d87e8a29960cb2e9">IA_LOOK_PATH</a></div><div class="ttdeci">#define IA_LOOK_PATH</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8cpp_source.html#l00030">APlayerControl.cpp:30</a></div></div>
+<div class="ttc" id="aAPlayerControl_8cpp_html_aac43679ef0ed684b18eac95ba57da5a7"><div class="ttname"><a href="APlayerControl_8cpp.html#aac43679ef0ed684b18eac95ba57da5a7">IA_RUN_PATH</a></div><div class="ttdeci">#define IA_RUN_PATH</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8cpp_source.html#l00035">APlayerControl.cpp:35</a></div></div>
+<div class="ttc" id="aAPlayerControl_8cpp_html_aaceac3d5c8c1d183f1a4bff2f3406a09"><div class="ttname"><a href="APlayerControl_8cpp.html#aaceac3d5c8c1d183f1a4bff2f3406a09">IA_MOVE_PATH</a></div><div class="ttdeci">#define IA_MOVE_PATH</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8cpp_source.html#l00029">APlayerControl.cpp:29</a></div></div>
+<div class="ttc" id="aAPlayerControl_8cpp_html_ae48e8c8531b0052bfe745b145e850c0e"><div class="ttname"><a href="APlayerControl_8cpp.html#ae48e8c8531b0052bfe745b145e850c0e">IA_GRAB_PATH</a></div><div class="ttdeci">#define IA_GRAB_PATH</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8cpp_source.html#l00033">APlayerControl.cpp:33</a></div></div>
+<div class="ttc" id="aAPlayerControl_8cpp_html_af944d1d5c0903b37a61292741d43558a"><div class="ttname"><a href="APlayerControl_8cpp.html#af944d1d5c0903b37a61292741d43558a">IA_HOOK_PATH</a></div><div class="ttdeci">#define IA_HOOK_PATH</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8cpp_source.html#l00037">APlayerControl.cpp:37</a></div></div>
 <div class="ttc" id="aAPlayerControl_8h_html"><div class="ttname"><a href="APlayerControl_8h.html">APlayerControl.h</a></div><div class="ttdoc">APlayerControl 선언에 대한 Doxygen 주석을 제공합니다.</div></div>
 <div class="ttc" id="aEQuestRole_8h_html_af9534ca095b724046bf40abddcbb95e9"><div class="ttname"><a href="EQuestRole_8h.html#af9534ca095b724046bf40abddcbb95e9">EQuestRole</a></div><div class="ttdeci">EQuestRole</div><div class="ttdoc">Read 퀘스트에서 플레이어의 역할을 정의합니다.</div><div class="ttdef"><b>Definition</b> <a href="EQuestRole_8h_source.html#l00005">EQuestRole.h:6</a></div></div>
+<div class="ttc" id="aFColorStyleData_8h_html_aefed1c032e349fb49159bbab1f32a3eb"><div class="ttname"><a href="FColorStyleData_8h.html#aefed1c032e349fb49159bbab1f32a3eb">EColorStyleType</a></div><div class="ttdeci">EColorStyleType</div><div class="ttdef"><b>Definition</b> <a href="FColorStyleData_8h_source.html#l00011">FColorStyleData.h:12</a></div></div>
 <div class="ttc" id="aFComponentHelper_8h_html"><div class="ttname"><a href="FComponentHelper_8h.html">FComponentHelper.h</a></div><div class="ttdoc">FComponentHelper 구조체를 선언합니다.</div></div>
+<div class="ttc" id="aFResourceTextureData_8h_html_a98b8b3000fb3fc86e37c624651589cb2"><div class="ttname"><a href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2">EResourceTextureType</a></div><div class="ttdeci">EResourceTextureType</div><div class="ttdef"><b>Definition</b> <a href="FResourceTextureData_8h_source.html#l00012">FResourceTextureData.h:13</a></div></div>
+<div class="ttc" id="aFResultStatData_8h_html_aaac025acffbbed1878d579b0b3930065a02c86eb2792f3262c21d030a87e19793"><div class="ttname"><a href="FResultStatData_8h.html#aaac025acffbbed1878d579b0b3930065a02c86eb2792f3262c21d030a87e19793">EResultItemWidgetType::Symbol</a></div><div class="ttdeci">@ Symbol</div></div>
+<div class="ttc" id="aFResultStatData_8h_html_aaac025acffbbed1878d579b0b3930065a4b3b9db8c9784468094acde0f8bf7071"><div class="ttname"><a href="FResultStatData_8h.html#aaac025acffbbed1878d579b0b3930065a4b3b9db8c9784468094acde0f8bf7071">EResultItemWidgetType::Grade</a></div><div class="ttdeci">@ Grade</div></div>
+<div class="ttc" id="aFResultStatData_8h_html_aaac025acffbbed1878d579b0b3930065a5dd135d1bcfa7f63c3b7f25425c2a4a1"><div class="ttname"><a href="FResultStatData_8h.html#aaac025acffbbed1878d579b0b3930065a5dd135d1bcfa7f63c3b7f25425c2a4a1">EResultItemWidgetType::Score</a></div><div class="ttdeci">@ Score</div></div>
+<div class="ttc" id="aFResultStatData_8h_html_aaac025acffbbed1878d579b0b3930065adcb66ff6e4a2517ade22183779939c9d"><div class="ttname"><a href="FResultStatData_8h.html#aaac025acffbbed1878d579b0b3930065adcb66ff6e4a2517ade22183779939c9d">EResultItemWidgetType::Rate</a></div><div class="ttdeci">@ Rate</div></div>
 <div class="ttc" id="aIControllable_8h_html"><div class="ttname"><a href="IControllable_8h.html">IControllable.h</a></div><div class="ttdoc">UControllable 클래스를 선언합니다.</div></div>
 <div class="ttc" id="aUBroadcastManager_8h_html"><div class="ttname"><a href="UBroadcastManager_8h.html">UBroadcastManager.h</a></div></div>
+<div class="ttc" id="aUDialogManager_8h_html"><div class="ttname"><a href="UDialogManager_8h.html">UDialogManager.h</a></div><div class="ttdoc">UDialogManager 클래스를 선언합니다.</div></div>
 <div class="ttc" id="aUHookSystem_8h_html"><div class="ttname"><a href="UHookSystem_8h.html">UHookSystem.h</a></div><div class="ttdoc">그래플링 훅 시스템</div></div>
 <div class="ttc" id="aUInteractionSystem_8h_html"><div class="ttname"><a href="UInteractionSystem_8h.html">UInteractionSystem.h</a></div><div class="ttdoc">플레이어의 상호작용 감지 및 처리 시스템</div></div>
 <div class="ttc" id="aULingoGameInstanceSubsystem_8h_html"><div class="ttname"><a href="ULingoGameInstanceSubsystem_8h.html">ULingoGameInstanceSubsystem.h</a></div></div>
+<div class="ttc" id="aclassADropper_html"><div class="ttname"><a href="classADropper.html">ADropper</a></div><div class="ttdef"><b>Definition</b> <a href="ADropper_8h_source.html#l00037">ADropper.h:38</a></div></div>
+<div class="ttc" id="aclassADropper_html_a157c62ea5ca44a107413f475f4a47e61"><div class="ttname"><a href="classADropper.html#a157c62ea5ca44a107413f475f4a47e61">ADropper::SetSpawnData</a></div><div class="ttdeci">void SetSpawnData(const FLuggageData &amp;InData)</div><div class="ttdoc">스폰 전에 Dropper가 생성될 액터에게 넘겨줄 데이터 등록</div><div class="ttdef"><b>Definition</b> <a href="ADropper_8h_source.html#l00048">ADropper.h:48</a></div></div>
+<div class="ttc" id="aclassADropper_html_a4fd03c6a4c5d6e37b22afc85bdd28883"><div class="ttname"><a href="classADropper.html#a4fd03c6a4c5d6e37b22afc85bdd28883">ADropper::SetSpawnClass</a></div><div class="ttdeci">void SetSpawnClass(TSubclassOf&lt; AActor &gt; InClass)</div><div class="ttdoc">스폰 전에 Dropper가 어떤 클래스를 스폰할지 등록</div><div class="ttdef"><b>Definition</b> <a href="ADropper_8h_source.html#l00045">ADropper.h:45</a></div></div>
+<div class="ttc" id="aclassADropper_html_a5f14cbfb4ac2eeec016aad7ba1adb605"><div class="ttname"><a href="classADropper.html#a5f14cbfb4ac2eeec016aad7ba1adb605">ADropper::IsBusy</a></div><div class="ttdeci">FORCEINLINE bool IsBusy() const</div><div class="ttdef"><b>Definition</b> <a href="ADropper_8h_source.html#l00054">ADropper.h:54</a></div></div>
+<div class="ttc" id="aclassADropper_html_ad7b1a0e4a5425909f9b4345de5611afe"><div class="ttname"><a href="classADropper.html#ad7b1a0e4a5425909f9b4345de5611afe">ADropper::RequestSpawn</a></div><div class="ttdeci">bool RequestSpawn()</div><div class="ttdoc">스폰 요청 (서버에서만 동작)</div><div class="ttdef"><b>Definition</b> <a href="ADropper_8cpp_source.html#l00048">ADropper.cpp:48</a></div></div>
 <div class="ttc" id="aclassAPlayerActor_html"><div class="ttname"><a href="classAPlayerActor.html">APlayerActor</a></div><div class="ttdoc">Main character driven directly by the player.</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8h_source.html#l00021">APlayerActor.h:22</a></div></div>
 <div class="ttc" id="aclassAPlayerActor_html_a0fe75e4f0a646205d3f08422a7eb5831"><div class="ttname"><a href="classAPlayerActor.html#a0fe75e4f0a646205d3f08422a7eb5831">APlayerActor::HookSystem</a></div><div class="ttdeci">TObjectPtr&lt; class UHookSystem &gt; HookSystem</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8h_source.html#l00045">APlayerActor.h:45</a></div></div>
 <div class="ttc" id="aclassAPlayerActor_html_a64eb3d279996dbda427e45acbc5de350"><div class="ttname"><a href="classAPlayerActor.html#a64eb3d279996dbda427e45acbc5de350">APlayerActor::InteractionSystem</a></div><div class="ttdeci">TObjectPtr&lt; class UInteractionSystem &gt; InteractionSystem</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8h_source.html#l00042">APlayerActor.h:42</a></div></div>
-<div class="ttc" id="aclassAPlayerControl_html_a0b8363f1c71e6644c0575985fca29ba6"><div class="ttname"><a href="classAPlayerControl.html#a0b8363f1c71e6644c0575985fca29ba6">APlayerControl::OnRecordReleased</a></div><div class="ttdeci">void OnRecordReleased(const FInputActionValue &amp;Value)</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8cpp_source.html#l00214">APlayerControl.cpp:214</a></div></div>
-<div class="ttc" id="aclassAPlayerControl_html_a1bca1ba6619ca2eb51414d2959508433"><div class="ttname"><a href="classAPlayerControl.html#a1bca1ba6619ca2eb51414d2959508433">APlayerControl::OnJump</a></div><div class="ttdeci">void OnJump(const FInputActionValue &amp;Value)</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8cpp_source.html#l00142">APlayerControl.cpp:142</a></div></div>
-<div class="ttc" id="aclassAPlayerControl_html_a49c6d11314d21c34209ac16d0dabcfc3"><div class="ttname"><a href="classAPlayerControl.html#a49c6d11314d21c34209ac16d0dabcfc3">APlayerControl::UpdateQuestRole</a></div><div class="ttdeci">void UpdateQuestRole(EQuestRole QuestRole)</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8cpp_source.html#l00104">APlayerControl.cpp:104</a></div></div>
-<div class="ttc" id="aclassAPlayerControl_html_a4a6f327d434399d3f375a5f74b5fd56b"><div class="ttname"><a href="classAPlayerControl.html#a4a6f327d434399d3f375a5f74b5fd56b">APlayerControl::OnInteract</a></div><div class="ttdeci">void OnInteract(const FInputActionValue &amp;Value)</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8cpp_source.html#l00238">APlayerControl.cpp:238</a></div></div>
-<div class="ttc" id="aclassAPlayerControl_html_a4cf368d1cfadfd50d83c8af1b10cc623"><div class="ttname"><a href="classAPlayerControl.html#a4cf368d1cfadfd50d83c8af1b10cc623">APlayerControl::BeginPlay</a></div><div class="ttdeci">virtual void BeginPlay() override</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8cpp_source.html#l00054">APlayerControl.cpp:54</a></div></div>
-<div class="ttc" id="aclassAPlayerControl_html_a53ea83bb9bed9690c52806a5ae4b5657"><div class="ttname"><a href="classAPlayerControl.html#a53ea83bb9bed9690c52806a5ae4b5657">APlayerControl::OnGrabRelease</a></div><div class="ttdeci">void OnGrabRelease(const FInputActionValue &amp;Value)</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8cpp_source.html#l00233">APlayerControl.cpp:233</a></div></div>
-<div class="ttc" id="aclassAPlayerControl_html_a585aa05322aa9c59ce315bd1e01e8038"><div class="ttname"><a href="classAPlayerControl.html#a585aa05322aa9c59ce315bd1e01e8038">APlayerControl::UserInfo</a></div><div class="ttdeci">FResponseUserMe UserInfo</div><div class="ttdoc">사용자 정보 (레벨 전환에서도 유지됨)</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8h_source.html#l00089">APlayerControl.h:89</a></div></div>
-<div class="ttc" id="aclassAPlayerControl_html_a6753258935f617283a3cfb653d32b84b"><div class="ttname"><a href="classAPlayerControl.html#a6753258935f617283a3cfb653d32b84b">APlayerControl::OnMove</a></div><div class="ttdeci">void OnMove(const FInputActionValue &amp;Value)</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8cpp_source.html#l00122">APlayerControl.cpp:122</a></div></div>
-<div class="ttc" id="aclassAPlayerControl_html_a6c7499f4bc744fb6e0920e5195f562c3"><div class="ttname"><a href="classAPlayerControl.html#a6c7499f4bc744fb6e0920e5195f562c3">APlayerControl::OnLook</a></div><div class="ttdeci">void OnLook(const FInputActionValue &amp;Value)</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8cpp_source.html#l00128">APlayerControl.cpp:128</a></div></div>
+<div class="ttc" id="aclassAPlayerControl_html"><div class="ttname"><a href="classAPlayerControl.html">APlayerControl</a></div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8h_source.html#l00017">APlayerControl.h:18</a></div></div>
+<div class="ttc" id="aclassAPlayerControl_html_a0b8363f1c71e6644c0575985fca29ba6"><div class="ttname"><a href="classAPlayerControl.html#a0b8363f1c71e6644c0575985fca29ba6">APlayerControl::OnRecordReleased</a></div><div class="ttdeci">void OnRecordReleased(const FInputActionValue &amp;Value)</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8cpp_source.html#l00167">APlayerControl.cpp:167</a></div></div>
+<div class="ttc" id="aclassAPlayerControl_html_a1bca1ba6619ca2eb51414d2959508433"><div class="ttname"><a href="classAPlayerControl.html#a1bca1ba6619ca2eb51414d2959508433">APlayerControl::OnJump</a></div><div class="ttdeci">void OnJump(const FInputActionValue &amp;Value)</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8cpp_source.html#l00143">APlayerControl.cpp:143</a></div></div>
+<div class="ttc" id="aclassAPlayerControl_html_a3b1610210b44fa2be6c12fa777631033"><div class="ttname"><a href="classAPlayerControl.html#a3b1610210b44fa2be6c12fa777631033">APlayerControl::TEST_AddItemToBoxList</a></div><div class="ttdeci">void TEST_AddItemToBoxList()</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8cpp_source.html#l00290">APlayerControl.cpp:290</a></div></div>
+<div class="ttc" id="aclassAPlayerControl_html_a49c6d11314d21c34209ac16d0dabcfc3"><div class="ttname"><a href="classAPlayerControl.html#a49c6d11314d21c34209ac16d0dabcfc3">APlayerControl::UpdateQuestRole</a></div><div class="ttdeci">void UpdateQuestRole(EQuestRole QuestRole)</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8cpp_source.html#l00105">APlayerControl.cpp:105</a></div></div>
+<div class="ttc" id="aclassAPlayerControl_html_a4a6f327d434399d3f375a5f74b5fd56b"><div class="ttname"><a href="classAPlayerControl.html#a4a6f327d434399d3f375a5f74b5fd56b">APlayerControl::OnInteract</a></div><div class="ttdeci">void OnInteract(const FInputActionValue &amp;Value)</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8cpp_source.html#l00191">APlayerControl.cpp:191</a></div></div>
+<div class="ttc" id="aclassAPlayerControl_html_a4cf368d1cfadfd50d83c8af1b10cc623"><div class="ttname"><a href="classAPlayerControl.html#a4cf368d1cfadfd50d83c8af1b10cc623">APlayerControl::BeginPlay</a></div><div class="ttdeci">virtual void BeginPlay() override</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8cpp_source.html#l00055">APlayerControl.cpp:55</a></div></div>
+<div class="ttc" id="aclassAPlayerControl_html_a50f77b6862b6575c355a439c33868248"><div class="ttname"><a href="classAPlayerControl.html#a50f77b6862b6575c355a439c33868248">APlayerControl::Client_ToastMessage</a></div><div class="ttdeci">void Client_ToastMessage(const FString &amp;Message)</div></div>
+<div class="ttc" id="aclassAPlayerControl_html_a53ea83bb9bed9690c52806a5ae4b5657"><div class="ttname"><a href="classAPlayerControl.html#a53ea83bb9bed9690c52806a5ae4b5657">APlayerControl::OnGrabRelease</a></div><div class="ttdeci">void OnGrabRelease(const FInputActionValue &amp;Value)</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8cpp_source.html#l00186">APlayerControl.cpp:186</a></div></div>
+<div class="ttc" id="aclassAPlayerControl_html_a585aa05322aa9c59ce315bd1e01e8038"><div class="ttname"><a href="classAPlayerControl.html#a585aa05322aa9c59ce315bd1e01e8038">APlayerControl::UserInfo</a></div><div class="ttdeci">FResponseUserMe UserInfo</div><div class="ttdoc">사용자 정보 (레벨 전환에서도 유지됨)</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8h_source.html#l00102">APlayerControl.h:102</a></div></div>
+<div class="ttc" id="aclassAPlayerControl_html_a6753258935f617283a3cfb653d32b84b"><div class="ttname"><a href="classAPlayerControl.html#a6753258935f617283a3cfb653d32b84b">APlayerControl::OnMove</a></div><div class="ttdeci">void OnMove(const FInputActionValue &amp;Value)</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8cpp_source.html#l00123">APlayerControl.cpp:123</a></div></div>
+<div class="ttc" id="aclassAPlayerControl_html_a6c7499f4bc744fb6e0920e5195f562c3"><div class="ttname"><a href="classAPlayerControl.html#a6c7499f4bc744fb6e0920e5195f562c3">APlayerControl::OnLook</a></div><div class="ttdeci">void OnLook(const FInputActionValue &amp;Value)</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8cpp_source.html#l00129">APlayerControl.cpp:129</a></div></div>
 <div class="ttc" id="aclassAPlayerControl_html_a7159940560b252e8e9f8bfd8c51f1f59"><div class="ttname"><a href="classAPlayerControl.html#a7159940560b252e8e9f8bfd8c51f1f59">APlayerControl::Server_OnHook</a></div><div class="ttdeci">void Server_OnHook()</div></div>
 <div class="ttc" id="aclassAPlayerControl_html_a76486f75de5e0e9cb22d8c2a7e506d4a"><div class="ttname"><a href="classAPlayerControl.html#a76486f75de5e0e9cb22d8c2a7e506d4a">APlayerControl::IMC_Default</a></div><div class="ttdeci">TObjectPtr&lt; class UInputMappingContext &gt; IMC_Default</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8h_source.html#l00037">APlayerControl.h:37</a></div></div>
-<div class="ttc" id="aclassAPlayerControl_html_a8f2701e581dbfc506456578d9870e8ec"><div class="ttname"><a href="classAPlayerControl.html#a8f2701e581dbfc506456578d9870e8ec">APlayerControl::OnRun</a></div><div class="ttdeci">void OnRun(const FInputActionValue &amp;Value)</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8cpp_source.html#l00200">APlayerControl.cpp:200</a></div></div>
-<div class="ttc" id="aclassAPlayerControl_html_a977d7a727f0ccc60796770aa60bb473a"><div class="ttname"><a href="classAPlayerControl.html#a977d7a727f0ccc60796770aa60bb473a">APlayerControl::OnInfo</a></div><div class="ttdeci">void OnInfo(const FInputActionValue &amp;Value)</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8cpp_source.html#l00220">APlayerControl.cpp:220</a></div></div>
+<div class="ttc" id="aclassAPlayerControl_html_a8f2701e581dbfc506456578d9870e8ec"><div class="ttname"><a href="classAPlayerControl.html#a8f2701e581dbfc506456578d9870e8ec">APlayerControl::OnRun</a></div><div class="ttdeci">void OnRun(const FInputActionValue &amp;Value)</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8cpp_source.html#l00153">APlayerControl.cpp:153</a></div></div>
+<div class="ttc" id="aclassAPlayerControl_html_a94f5727233513026dfac845e1097183c"><div class="ttname"><a href="classAPlayerControl.html#a94f5727233513026dfac845e1097183c">APlayerControl::RequestDrop</a></div><div class="ttdeci">void RequestDrop(APlayerControl *Requester)</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8cpp_source.html#l00243">APlayerControl.cpp:243</a></div></div>
+<div class="ttc" id="aclassAPlayerControl_html_a977d7a727f0ccc60796770aa60bb473a"><div class="ttname"><a href="classAPlayerControl.html#a977d7a727f0ccc60796770aa60bb473a">APlayerControl::OnInfo</a></div><div class="ttdeci">void OnInfo(const FInputActionValue &amp;Value)</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8cpp_source.html#l00173">APlayerControl.cpp:173</a></div></div>
+<div class="ttc" id="aclassAPlayerControl_html_a9e4e2fa62ac57a7cb39ddc62d4b9aeb2"><div class="ttname"><a href="classAPlayerControl.html#a9e4e2fa62ac57a7cb39ddc62d4b9aeb2">APlayerControl::Server_RequestDrop</a></div><div class="ttdeci">void Server_RequestDrop()</div></div>
 <div class="ttc" id="aclassAPlayerControl_html_aa79cca5ec444d9c7add4fcecc5dde23b"><div class="ttname"><a href="classAPlayerControl.html#aa79cca5ec444d9c7add4fcecc5dde23b">APlayerControl::Server_OnGrab</a></div><div class="ttdeci">void Server_OnGrab()</div></div>
-<div class="ttc" id="aclassAPlayerControl_html_ab2dcf9de168c0f1940c769c5c87cb864"><div class="ttname"><a href="classAPlayerControl.html#ab2dcf9de168c0f1940c769c5c87cb864">APlayerControl::OnGrab</a></div><div class="ttdeci">void OnGrab(const FInputActionValue &amp;Value)</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8cpp_source.html#l00228">APlayerControl.cpp:228</a></div></div>
-<div class="ttc" id="aclassAPlayerControl_html_abede09a391c47bdafb3b34a507c80e9b"><div class="ttname"><a href="classAPlayerControl.html#abede09a391c47bdafb3b34a507c80e9b">APlayerControl::SetupInputComponent</a></div><div class="ttdeci">virtual void SetupInputComponent() override</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8cpp_source.html#l00077">APlayerControl.cpp:77</a></div></div>
-<div class="ttc" id="aclassAPlayerControl_html_abf6c3cf5f3542c2345dc9f75d247284b"><div class="ttname"><a href="classAPlayerControl.html#abf6c3cf5f3542c2345dc9f75d247284b">APlayerControl::OnHook</a></div><div class="ttdeci">void OnHook(const FInputActionValue &amp;Value)</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8cpp_source.html#l00271">APlayerControl.cpp:271</a></div></div>
-<div class="ttc" id="aclassAPlayerControl_html_ac1a34aa3e6b5a59c28b7b8ae42c4d75d"><div class="ttname"><a href="classAPlayerControl.html#ac1a34aa3e6b5a59c28b7b8ae42c4d75d">APlayerControl::OnRecordPressed</a></div><div class="ttdeci">void OnRecordPressed(const FInputActionValue &amp;Value)</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8cpp_source.html#l00208">APlayerControl.cpp:208</a></div></div>
-<div class="ttc" id="aclassAPlayerControl_html_ad52af79fddcd1253723313ab75eec84c"><div class="ttname"><a href="classAPlayerControl.html#ad52af79fddcd1253723313ab75eec84c">APlayerControl::APlayerControl</a></div><div class="ttdeci">APlayerControl()</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8cpp_source.html#l00039">APlayerControl.cpp:39</a></div></div>
+<div class="ttc" id="aclassAPlayerControl_html_ab2dcf9de168c0f1940c769c5c87cb864"><div class="ttname"><a href="classAPlayerControl.html#ab2dcf9de168c0f1940c769c5c87cb864">APlayerControl::OnGrab</a></div><div class="ttdeci">void OnGrab(const FInputActionValue &amp;Value)</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8cpp_source.html#l00181">APlayerControl.cpp:181</a></div></div>
+<div class="ttc" id="aclassAPlayerControl_html_ab98c322064b5894e5cd25113d82f617f"><div class="ttname"><a href="classAPlayerControl.html#ab98c322064b5894e5cd25113d82f617f">APlayerControl::TEST_DropperDropProcess</a></div><div class="ttdeci">void TEST_DropperDropProcess()</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8cpp_source.html#l00281">APlayerControl.cpp:281</a></div></div>
+<div class="ttc" id="aclassAPlayerControl_html_abede09a391c47bdafb3b34a507c80e9b"><div class="ttname"><a href="classAPlayerControl.html#abede09a391c47bdafb3b34a507c80e9b">APlayerControl::SetupInputComponent</a></div><div class="ttdeci">virtual void SetupInputComponent() override</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8cpp_source.html#l00078">APlayerControl.cpp:78</a></div></div>
+<div class="ttc" id="aclassAPlayerControl_html_abf6c3cf5f3542c2345dc9f75d247284b"><div class="ttname"><a href="classAPlayerControl.html#abf6c3cf5f3542c2345dc9f75d247284b">APlayerControl::OnHook</a></div><div class="ttdeci">void OnHook(const FInputActionValue &amp;Value)</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8cpp_source.html#l00224">APlayerControl.cpp:224</a></div></div>
+<div class="ttc" id="aclassAPlayerControl_html_ac1a34aa3e6b5a59c28b7b8ae42c4d75d"><div class="ttname"><a href="classAPlayerControl.html#ac1a34aa3e6b5a59c28b7b8ae42c4d75d">APlayerControl::OnRecordPressed</a></div><div class="ttdeci">void OnRecordPressed(const FInputActionValue &amp;Value)</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8cpp_source.html#l00161">APlayerControl.cpp:161</a></div></div>
+<div class="ttc" id="aclassAPlayerControl_html_ad52af79fddcd1253723313ab75eec84c"><div class="ttname"><a href="classAPlayerControl.html#ad52af79fddcd1253723313ab75eec84c">APlayerControl::APlayerControl</a></div><div class="ttdeci">APlayerControl()</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8cpp_source.html#l00040">APlayerControl.cpp:40</a></div></div>
 <div class="ttc" id="aclassAPlayerControl_html_ad9179af6a28b83606e927ffc0635fa27"><div class="ttname"><a href="classAPlayerControl.html#ad9179af6a28b83606e927ffc0635fa27">APlayerControl::Server_SetUserInfo</a></div><div class="ttdeci">void Server_SetUserInfo(const FResponseUserMe &amp;InUserInfo)</div></div>
 <div class="ttc" id="aclassAPlayerControl_html_adbe39822e30958a476131716276b020c"><div class="ttname"><a href="classAPlayerControl.html#adbe39822e30958a476131716276b020c">APlayerControl::Server_OnInteract</a></div><div class="ttdeci">void Server_OnInteract()</div></div>
 <div class="ttc" id="aclassAPlayerControl_html_aeb90da2f39476227c6136a9d78d45c83"><div class="ttname"><a href="classAPlayerControl.html#aeb90da2f39476227c6136a9d78d45c83">APlayerControl::Server_OnGrabRelease</a></div><div class="ttdeci">void Server_OnGrabRelease()</div></div>
-<div class="ttc" id="aclassAPlayerControl_html_aeda5eb6dcc2b2420cf2dc554a2739477"><div class="ttname"><a href="classAPlayerControl.html#aeda5eb6dcc2b2420cf2dc554a2739477">APlayerControl::GetControllable</a></div><div class="ttdeci">class IControllable * GetControllable() const</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8cpp_source.html#l00109">APlayerControl.cpp:109</a></div></div>
-<div class="ttc" id="aclassAPlayerControl_html_af8c76a593d47ea58362e58220776fef6"><div class="ttname"><a href="classAPlayerControl.html#af8c76a593d47ea58362e58220776fef6">APlayerControl::OnStopMove</a></div><div class="ttdeci">void OnStopMove(const FInputActionValue &amp;Value)</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8cpp_source.html#l00134">APlayerControl.cpp:134</a></div></div>
+<div class="ttc" id="aclassAPlayerControl_html_aeda5eb6dcc2b2420cf2dc554a2739477"><div class="ttname"><a href="classAPlayerControl.html#aeda5eb6dcc2b2420cf2dc554a2739477">APlayerControl::GetControllable</a></div><div class="ttdeci">class IControllable * GetControllable() const</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8cpp_source.html#l00110">APlayerControl.cpp:110</a></div></div>
+<div class="ttc" id="aclassAPlayerControl_html_af8c76a593d47ea58362e58220776fef6"><div class="ttname"><a href="classAPlayerControl.html#af8c76a593d47ea58362e58220776fef6">APlayerControl::OnStopMove</a></div><div class="ttdeci">void OnStopMove(const FInputActionValue &amp;Value)</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8cpp_source.html#l00135">APlayerControl.cpp:135</a></div></div>
 <div class="ttc" id="aclassIControllable_html"><div class="ttname"><a href="classIControllable.html">IControllable</a></div><div class="ttdef"><b>Definition</b> <a href="IControllable_8h_source.html#l00023">IControllable.h:24</a></div></div>
 <div class="ttc" id="aluggage_8h_html"><div class="ttname"><a href="luggage_8h.html">luggage.h</a></div></div>
 <div class="ttc" id="astructFComponentHelper_html_ac37cef436e9aaef1f0c655d781a95e66"><div class="ttname"><a href="structFComponentHelper.html#ac37cef436e9aaef1f0c655d781a95e66">FComponentHelper::LoadAsset</a></div><div class="ttdeci">static T * LoadAsset(const TCHAR *Path)</div><div class="ttdef"><b>Definition</b> <a href="FComponentHelper_8h_source.html#l00016">FComponentHelper.h:16</a></div></div>
+<div class="ttc" id="astructFLuggageData_html"><div class="ttname"><a href="structFLuggageData.html">FLuggageData</a></div><div class="ttdef"><b>Definition</b> <a href="ADropper_8h_source.html#l00012">ADropper.h:13</a></div></div>
+<div class="ttc" id="astructFLuggageData_html_a193a064c0977170ec7831f8196f4ff9c"><div class="ttname"><a href="structFLuggageData.html#a193a064c0977170ec7831f8196f4ff9c">FLuggageData::word1</a></div><div class="ttdeci">FWordInfo word1</div><div class="ttdoc">시나리오 단어 정보</div><div class="ttdef"><b>Definition</b> <a href="ADropper_8h_source.html#l00018">ADropper.h:18</a></div></div>
+<div class="ttc" id="astructFLuggageData_html_a265f0a50100e20809a533e26d13058c1"><div class="ttname"><a href="structFLuggageData.html#a265f0a50100e20809a533e26d13058c1">FLuggageData::word2</a></div><div class="ttdeci">FWordInfo word2</div><div class="ttdef"><b>Definition</b> <a href="ADropper_8h_source.html#l00021">ADropper.h:21</a></div></div>
 <div class="ttc" id="astructFResponseUserMe_html"><div class="ttname"><a href="structFResponseUserMe.html">FResponseUserMe</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00470">NetworkData.h:471</a></div></div>
+<div class="ttc" id="astructFResultStatData_html"><div class="ttname"><a href="structFResultStatData.html">FResultStatData</a></div><div class="ttdoc">Result Stat 위젯 통합 데이터 구조 위젯 타입, 색상 스타일, 각 타입별 데이터를 통합 관리</div><div class="ttdef"><b>Definition</b> <a href="FResultStatData_8h_source.html#l00022">FResultStatData.h:23</a></div></div>
+<div class="ttc" id="astructFResultStatData_html_a2aea8a92c56a642f74b1300bc735a0e5"><div class="ttname"><a href="structFResultStatData.html#a2aea8a92c56a642f74b1300bc735a0e5">FResultStatData::SymbolValue</a></div><div class="ttdeci">float SymbolValue</div><div class="ttdoc">Symbol 타입 전용: 심볼 값 (퍼센트로 표시, 0.0 ~ 1.0)</div><div class="ttdef"><b>Definition</b> <a href="FResultStatData_8h_source.html#l00052">FResultStatData.h:52</a></div></div>
+<div class="ttc" id="astructFResultStatData_html_a61bcfba9b5e9da91e4c34a190489907f"><div class="ttname"><a href="structFResultStatData.html#a61bcfba9b5e9da91e4c34a190489907f">FResultStatData::RatePercent</a></div><div class="ttdeci">float RatePercent</div><div class="ttdoc">Rate 타입 전용: 퍼센트 값 (0.0 ~ 1.0)</div><div class="ttdef"><b>Definition</b> <a href="FResultStatData_8h_source.html#l00048">FResultStatData.h:48</a></div></div>
+<div class="ttc" id="astructFResultStatData_html_a75e66157640bcf669787b2e987ab4412"><div class="ttname"><a href="structFResultStatData.html#a75e66157640bcf669787b2e987ab4412">FResultStatData::ColorType</a></div><div class="ttdeci">EColorStyleType ColorType</div><div class="ttdoc">색상 스타일</div><div class="ttdef"><b>Definition</b> <a href="FResultStatData_8h_source.html#l00032">FResultStatData.h:32</a></div></div>
+<div class="ttc" id="astructFResultStatData_html_a79c960d0257ca39904aba1503a1f5a5e"><div class="ttname"><a href="structFResultStatData.html#a79c960d0257ca39904aba1503a1f5a5e">FResultStatData::TitleText</a></div><div class="ttdeci">FText TitleText</div><div class="ttdoc">타이틀 텍스트</div><div class="ttdef"><b>Definition</b> <a href="FResultStatData_8h_source.html#l00036">FResultStatData.h:36</a></div></div>
+<div class="ttc" id="astructFResultStatData_html_a9c3caa803ddfbb9e059eba055c00aae9"><div class="ttname"><a href="structFResultStatData.html#a9c3caa803ddfbb9e059eba055c00aae9">FResultStatData::WidgetType</a></div><div class="ttdeci">EResultItemWidgetType WidgetType</div><div class="ttdoc">위젯 타입</div><div class="ttdef"><b>Definition</b> <a href="FResultStatData_8h_source.html#l00028">FResultStatData.h:28</a></div></div>
+<div class="ttc" id="astructFResultStatData_html_aac45c5869b828c7f8cfb47807cdb968f"><div class="ttname"><a href="structFResultStatData.html#aac45c5869b828c7f8cfb47807cdb968f">FResultStatData::GradeTextureType</a></div><div class="ttdeci">EResourceTextureType GradeTextureType</div><div class="ttdoc">Grade 타입 전용: 텍스처 타입</div><div class="ttdef"><b>Definition</b> <a href="FResultStatData_8h_source.html#l00040">FResultStatData.h:40</a></div></div>
+<div class="ttc" id="astructFResultStatData_html_ad1687ae0bdba36508a791b853a82dbe6"><div class="ttname"><a href="structFResultStatData.html#ad1687ae0bdba36508a791b853a82dbe6">FResultStatData::ScoreValue</a></div><div class="ttdeci">float ScoreValue</div><div class="ttdoc">Score 타입 전용: 점수 값</div><div class="ttdef"><b>Definition</b> <a href="FResultStatData_8h_source.html#l00044">FResultStatData.h:44</a></div></div>
+<div class="ttc" id="astructFWordInfo_html_a0b915efc0c37a2798ecf2bd8ef0f0bed"><div class="ttname"><a href="structFWordInfo.html#a0b915efc0c37a2798ecf2bd8ef0f0bed">FWordInfo::GetRandomAnimal</a></div><div class="ttdeci">static FWordInfo GetRandomAnimal()</div><div class="ttdoc">랜덤 동물 선택 - CSV 기반 하드코딩</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00561">NetworkData.h:561</a></div></div>
+<div class="ttc" id="astructFWordInfo_html_ae1645c9c30e15b8168dbc0494ce7a74c"><div class="ttname"><a href="structFWordInfo.html#ae1645c9c30e15b8168dbc0494ce7a74c">FWordInfo::GetRandomColor</a></div><div class="ttdeci">static FWordInfo GetRandomColor()</div><div class="ttdoc">랜덤 색상 선택 - CSV 기반 하드코딩</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00526">NetworkData.h:526</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_71a9f6b769ee24fe8598c19ea2d70480.html">Character</a></li><li class="navelem"><a class="el" href="dir_a846a28747c2ebe05b4ec9782ab892b2.html">Private</a></li><li class="navelem"><a class="el" href="APlayerControl_8cpp.html">APlayerControl.cpp</a></li>
-    <li class="footer">생성시간 : 금 12월 5 2025 09:04:31, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 토 12월 6 2025 08:38:30, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

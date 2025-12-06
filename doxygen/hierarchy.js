@@ -60,6 +60,7 @@ var hierarchy =
     [ "FInterviewQuestionData", "structFInterviewQuestionData.html", null ],
     [ "FListenTargetData", "structFListenTargetData.html", null ],
     [ "FLogWriter", "classFLogWriter.html", null ],
+    [ "FLuggageData", "structFLuggageData.html", null ],
     [ "FMaterialHelper", "structFMaterialHelper.html", null ],
     [ "FMathHelper", "structFMathHelper.html", null ],
     [ "FOcrDisplay", "structFOcrDisplay.html", null ],

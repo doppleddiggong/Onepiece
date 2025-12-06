@@ -1,14 +1,25 @@
 var classADropper =
 [
     [ "ADropper", "classADropper.html#abf0eec054993e6a25e042f9f3c92441e", null ],
-    [ "PlayAnimationAndDisableCollision", "classADropper.html#a61816ab53f18d0979718d3f0bad81e32", null ],
-    [ "RestoreCollision", "classADropper.html#a00df54e7658ead02c86e779f0d6f0e98", null ],
-    [ "SpawnActor", "classADropper.html#a41182874af7613b4cf7d781a314e973a", null ],
-    [ "AnimToPlay", "classADropper.html#a0ed6299b26e4f9f028af98ce8944d782", null ],
-    [ "BoxCollision", "classADropper.html#a625dc3efd2aa38e4a9a232c9de68338d", null ],
-    [ "Delay", "classADropper.html#a0988e0589febe6439b45737923ec535a", null ],
+    [ "GetLifetimeReplicatedProps", "classADropper.html#ae550fb704c7b234b8edae8606d6ce567", null ],
+    [ "IsBusy", "classADropper.html#a5f14cbfb4ac2eeec016aad7ba1adb605", null ],
+    [ "Multicast_DisableCollision", "classADropper.html#a3b756d1cbc9b11947622adb3180a8c58", null ],
+    [ "Multicast_PlayAnimation", "classADropper.html#a20445470333fec9dda88adeda63439b8", null ],
+    [ "Multicast_RestoreCollision", "classADropper.html#ab445d9d334aa5b2dd8f069425d4c00b1", null ],
+    [ "OnDelayCompleted", "classADropper.html#abcae05b82fde99d18f81620a296be75e", null ],
+    [ "OnRestoreCompleted", "classADropper.html#a0ca196ef13ac8207543cba52a266a325", null ],
+    [ "RequestSpawn", "classADropper.html#ad7b1a0e4a5425909f9b4345de5611afe", null ],
+    [ "Server_Spawn", "classADropper.html#a120a5316924fd35c0ae10b3e89a92959", null ],
+    [ "SetSpawnClass", "classADropper.html#a4fd03c6a4c5d6e37b22afc85bdd28883", null ],
+    [ "SetSpawnData", "classADropper.html#a157c62ea5ca44a107413f475f4a47e61", null ],
+    [ "Spawn", "classADropper.html#a59b1429e958a7ecae6fa4bece4126d9a", null ],
+    [ "AnimToPlay", "classADropper.html#a5a49c1c7e8db3bc33eb575a252bcad9d", null ],
+    [ "bIsSpawnIng", "classADropper.html#add990488884bf0ec970eb0b7fcce26c9", null ],
+    [ "BoxCollision", "classADropper.html#aba96123227079a5b2b329373e999513f", null ],
     [ "DelayTimerHandle", "classADropper.html#ac72f7e826877b273487c4c04778b88bb", null ],
+    [ "NextData", "classADropper.html#a47520cd53ae3329ba3185e29cb08557b", null ],
     [ "RestoreTimerHandle", "classADropper.html#aebd091f5eb13e2935650d85f52a6ad30", null ],
-    [ "SkeletalMesh", "classADropper.html#a4eefce6c5b3cad95eb39fe96a38eca04", null ],
-    [ "SpawnPos", "classADropper.html#a9dea574047f8b43ddb13a1aeb83332c3", null ]
+    [ "SkeletalMesh", "classADropper.html#aaa74dfcba0056709ab99da267dbf2c5e", null ],
+    [ "SpawnClass", "classADropper.html#a38cf91439f0672dae16e4c62a8c9b3ed", null ],
+    [ "SpawnPos", "classADropper.html#a77f77fd06f73abc732ad61d76e69e923", null ]
 ];

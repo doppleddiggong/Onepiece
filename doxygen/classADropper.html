@@ -103,7 +103,7 @@ $(document).ready(function(){initNavTree('classADropper.html',''); initResizable
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public 멤버 함수</a> &#124;
-<a href="#pub-attribs">Public 속성</a> &#124;
+<a href="#pro-methods">Protected 멤버 함수</a> &#124;
 <a href="#pri-methods">Private 멤버 함수</a> &#124;
 <a href="#pri-attribs">Private 속성</a> &#124;
 <a href="classADropper-members.html">모든 멤버 목록</a>  </div>
@@ -117,53 +117,89 @@ $(document).ready(function(){initNavTree('classADropper.html',''); initResizable
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classADropper__inherit__graph.svg" width="275" height="370"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classADropper__inherit__graph.svg" width="232" height="590"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="closed.png" alt="+"/> ADropper에 대한 협력 다이어그램:</div>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classADropper__coll__graph.svg" width="275" height="370"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classADropper__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public 멤버 함수</h2></td></tr>
 <tr class="memitem:abf0eec054993e6a25e042f9f3c92441e" id="r_abf0eec054993e6a25e042f9f3c92441e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classADropper.html#abf0eec054993e6a25e042f9f3c92441e">ADropper</a> ()</td></tr>
 <tr class="separator:abf0eec054993e6a25e042f9f3c92441e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a41182874af7613b4cf7d781a314e973a" id="r_a41182874af7613b4cf7d781a314e973a"><td class="memItemLeft" align="right" valign="top">class AActor *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classADropper.html#a41182874af7613b4cf7d781a314e973a">SpawnActor</a> (TSubclassOf&lt; class AActor &gt; SpawnActorClass)</td></tr>
-<tr class="separator:a41182874af7613b4cf7d781a314e973a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f14cbfb4ac2eeec016aad7ba1adb605" id="r_a5f14cbfb4ac2eeec016aad7ba1adb605"><td class="memItemLeft" align="right" valign="top">FORCEINLINE bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classADropper.html#a5f14cbfb4ac2eeec016aad7ba1adb605">IsBusy</a> () const</td></tr>
+<tr class="separator:a5f14cbfb4ac2eeec016aad7ba1adb605"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad7b1a0e4a5425909f9b4345de5611afe" id="r_ad7b1a0e4a5425909f9b4345de5611afe"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classADropper.html#ad7b1a0e4a5425909f9b4345de5611afe">RequestSpawn</a> ()</td></tr>
+<tr class="memdesc:ad7b1a0e4a5425909f9b4345de5611afe"><td class="mdescLeft">&#160;</td><td class="mdescRight">스폰 요청 (서버에서만 동작)  <br /></td></tr>
+<tr class="separator:ad7b1a0e4a5425909f9b4345de5611afe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4fd03c6a4c5d6e37b22afc85bdd28883" id="r_a4fd03c6a4c5d6e37b22afc85bdd28883"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classADropper.html#a4fd03c6a4c5d6e37b22afc85bdd28883">SetSpawnClass</a> (TSubclassOf&lt; AActor &gt; InClass)</td></tr>
+<tr class="memdesc:a4fd03c6a4c5d6e37b22afc85bdd28883"><td class="mdescLeft">&#160;</td><td class="mdescRight">스폰 전에 Dropper가 어떤 클래스를 스폰할지 등록  <br /></td></tr>
+<tr class="separator:a4fd03c6a4c5d6e37b22afc85bdd28883"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a157c62ea5ca44a107413f475f4a47e61" id="r_a157c62ea5ca44a107413f475f4a47e61"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classADropper.html#a157c62ea5ca44a107413f475f4a47e61">SetSpawnData</a> (const <a class="el" href="structFLuggageData.html">FLuggageData</a> &amp;InData)</td></tr>
+<tr class="memdesc:a157c62ea5ca44a107413f475f4a47e61"><td class="mdescLeft">&#160;</td><td class="mdescRight">스폰 전에 Dropper가 생성될 액터에게 넘겨줄 데이터 등록  <br /></td></tr>
+<tr class="separator:a157c62ea5ca44a107413f475f4a47e61"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
-Public 속성</h2></td></tr>
-<tr class="memitem:a0ed6299b26e4f9f028af98ce8944d782" id="r_a0ed6299b26e4f9f028af98ce8944d782"><td class="memItemLeft" align="right" valign="top">TObjectPtr&lt; class UAnimationAsset &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classADropper.html#a0ed6299b26e4f9f028af98ce8944d782">AnimToPlay</a></td></tr>
-<tr class="separator:a0ed6299b26e4f9f028af98ce8944d782"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a625dc3efd2aa38e4a9a232c9de68338d" id="r_a625dc3efd2aa38e4a9a232c9de68338d"><td class="memItemLeft" align="right" valign="top">TObjectPtr&lt; class UStaticMeshComponent &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classADropper.html#a625dc3efd2aa38e4a9a232c9de68338d">BoxCollision</a></td></tr>
-<tr class="separator:a625dc3efd2aa38e4a9a232c9de68338d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0988e0589febe6439b45737923ec535a" id="r_a0988e0589febe6439b45737923ec535a"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classADropper.html#a0988e0589febe6439b45737923ec535a">Delay</a> = 2.0f</td></tr>
-<tr class="separator:a0988e0589febe6439b45737923ec535a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4eefce6c5b3cad95eb39fe96a38eca04" id="r_a4eefce6c5b3cad95eb39fe96a38eca04"><td class="memItemLeft" align="right" valign="top">TObjectPtr&lt; class USkeletalMeshComponent &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classADropper.html#a4eefce6c5b3cad95eb39fe96a38eca04">SkeletalMesh</a></td></tr>
-<tr class="separator:a4eefce6c5b3cad95eb39fe96a38eca04"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9dea574047f8b43ddb13a1aeb83332c3" id="r_a9dea574047f8b43ddb13a1aeb83332c3"><td class="memItemLeft" align="right" valign="top">TObjectPtr&lt; class USceneComponent &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classADropper.html#a9dea574047f8b43ddb13a1aeb83332c3">SpawnPos</a></td></tr>
-<tr class="separator:a9dea574047f8b43ddb13a1aeb83332c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
+Protected 멤버 함수</h2></td></tr>
+<tr class="memitem:ae550fb704c7b234b8edae8606d6ce567" id="r_ae550fb704c7b234b8edae8606d6ce567"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classADropper.html#ae550fb704c7b234b8edae8606d6ce567">GetLifetimeReplicatedProps</a> (TArray&lt; FLifetimeProperty &gt; &amp;OutLifetimeProps) const override</td></tr>
+<tr class="separator:ae550fb704c7b234b8edae8606d6ce567"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b756d1cbc9b11947622adb3180a8c58" id="r_a3b756d1cbc9b11947622adb3180a8c58"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classADropper.html#a3b756d1cbc9b11947622adb3180a8c58">Multicast_DisableCollision</a> ()</td></tr>
+<tr class="memdesc:a3b756d1cbc9b11947622adb3180a8c58"><td class="mdescLeft">&#160;</td><td class="mdescRight">충돌 비활성화  <br /></td></tr>
+<tr class="separator:a3b756d1cbc9b11947622adb3180a8c58"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a20445470333fec9dda88adeda63439b8" id="r_a20445470333fec9dda88adeda63439b8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classADropper.html#a20445470333fec9dda88adeda63439b8">Multicast_PlayAnimation</a> ()</td></tr>
+<tr class="memdesc:a20445470333fec9dda88adeda63439b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">애니메이션 재생  <br /></td></tr>
+<tr class="separator:a20445470333fec9dda88adeda63439b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab445d9d334aa5b2dd8f069425d4c00b1" id="r_ab445d9d334aa5b2dd8f069425d4c00b1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classADropper.html#ab445d9d334aa5b2dd8f069425d4c00b1">Multicast_RestoreCollision</a> ()</td></tr>
+<tr class="memdesc:ab445d9d334aa5b2dd8f069425d4c00b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">충돌 복구  <br /></td></tr>
+<tr class="separator:ab445d9d334aa5b2dd8f069425d4c00b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a120a5316924fd35c0ae10b3e89a92959" id="r_a120a5316924fd35c0ae10b3e89a92959"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classADropper.html#a120a5316924fd35c0ae10b3e89a92959">Server_Spawn</a> ()</td></tr>
+<tr class="separator:a120a5316924fd35c0ae10b3e89a92959"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a59b1429e958a7ecae6fa4bece4126d9a" id="r_a59b1429e958a7ecae6fa4bece4126d9a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classADropper.html#a59b1429e958a7ecae6fa4bece4126d9a">Spawn</a> ()</td></tr>
+<tr class="memdesc:a59b1429e958a7ecae6fa4bece4126d9a"><td class="mdescLeft">&#160;</td><td class="mdescRight">서버에서만 실행되는 실제 스폰 로직  <br /></td></tr>
+<tr class="separator:a59b1429e958a7ecae6fa4bece4126d9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private 멤버 함수</h2></td></tr>
-<tr class="memitem:a61816ab53f18d0979718d3f0bad81e32" id="r_a61816ab53f18d0979718d3f0bad81e32"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classADropper.html#a61816ab53f18d0979718d3f0bad81e32">PlayAnimationAndDisableCollision</a> ()</td></tr>
-<tr class="separator:a61816ab53f18d0979718d3f0bad81e32"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a00df54e7658ead02c86e779f0d6f0e98" id="r_a00df54e7658ead02c86e779f0d6f0e98"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classADropper.html#a00df54e7658ead02c86e779f0d6f0e98">RestoreCollision</a> ()</td></tr>
-<tr class="separator:a00df54e7658ead02c86e779f0d6f0e98"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abcae05b82fde99d18f81620a296be75e" id="r_abcae05b82fde99d18f81620a296be75e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classADropper.html#abcae05b82fde99d18f81620a296be75e">OnDelayCompleted</a> ()</td></tr>
+<tr class="separator:abcae05b82fde99d18f81620a296be75e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ca196ef13ac8207543cba52a266a325" id="r_a0ca196ef13ac8207543cba52a266a325"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classADropper.html#a0ca196ef13ac8207543cba52a266a325">OnRestoreCompleted</a> ()</td></tr>
+<tr class="separator:a0ca196ef13ac8207543cba52a266a325"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private 속성</h2></td></tr>
+<tr class="memitem:a5a49c1c7e8db3bc33eb575a252bcad9d" id="r_a5a49c1c7e8db3bc33eb575a252bcad9d"><td class="memItemLeft" align="right" valign="top">TObjectPtr&lt; UAnimationAsset &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classADropper.html#a5a49c1c7e8db3bc33eb575a252bcad9d">AnimToPlay</a></td></tr>
+<tr class="memdesc:a5a49c1c7e8db3bc33eb575a252bcad9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">드랍 시 재생할 애니메이션  <br /></td></tr>
+<tr class="separator:a5a49c1c7e8db3bc33eb575a252bcad9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add990488884bf0ec970eb0b7fcce26c9" id="r_add990488884bf0ec970eb0b7fcce26c9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classADropper.html#add990488884bf0ec970eb0b7fcce26c9">bIsSpawnIng</a> = false</td></tr>
+<tr class="memdesc:add990488884bf0ec970eb0b7fcce26c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">스폰 처리 진행 중 여부 (RPC로 공유)  <br /></td></tr>
+<tr class="separator:add990488884bf0ec970eb0b7fcce26c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aba96123227079a5b2b329373e999513f" id="r_aba96123227079a5b2b329373e999513f"><td class="memItemLeft" align="right" valign="top">TObjectPtr&lt; UStaticMeshComponent &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classADropper.html#aba96123227079a5b2b329373e999513f">BoxCollision</a></td></tr>
+<tr class="memdesc:aba96123227079a5b2b329373e999513f"><td class="mdescLeft">&#160;</td><td class="mdescRight">충돌 박스  <br /></td></tr>
+<tr class="separator:aba96123227079a5b2b329373e999513f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac72f7e826877b273487c4c04778b88bb" id="r_ac72f7e826877b273487c4c04778b88bb"><td class="memItemLeft" align="right" valign="top">FTimerHandle&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classADropper.html#ac72f7e826877b273487c4c04778b88bb">DelayTimerHandle</a></td></tr>
 <tr class="separator:ac72f7e826877b273487c4c04778b88bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a47520cd53ae3329ba3185e29cb08557b" id="r_a47520cd53ae3329ba3185e29cb08557b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structFLuggageData.html">FLuggageData</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classADropper.html#a47520cd53ae3329ba3185e29cb08557b">NextData</a></td></tr>
+<tr class="memdesc:a47520cd53ae3329ba3185e29cb08557b"><td class="mdescLeft">&#160;</td><td class="mdescRight">이번 스폰에서 사용할 데이터  <br /></td></tr>
+<tr class="separator:a47520cd53ae3329ba3185e29cb08557b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aebd091f5eb13e2935650d85f52a6ad30" id="r_aebd091f5eb13e2935650d85f52a6ad30"><td class="memItemLeft" align="right" valign="top">FTimerHandle&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classADropper.html#aebd091f5eb13e2935650d85f52a6ad30">RestoreTimerHandle</a></td></tr>
 <tr class="separator:aebd091f5eb13e2935650d85f52a6ad30"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaa74dfcba0056709ab99da267dbf2c5e" id="r_aaa74dfcba0056709ab99da267dbf2c5e"><td class="memItemLeft" align="right" valign="top">TObjectPtr&lt; USkeletalMeshComponent &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classADropper.html#aaa74dfcba0056709ab99da267dbf2c5e">SkeletalMesh</a></td></tr>
+<tr class="memdesc:aaa74dfcba0056709ab99da267dbf2c5e"><td class="mdescLeft">&#160;</td><td class="mdescRight">드랍퍼 스켈레탈 메시  <br /></td></tr>
+<tr class="separator:aaa74dfcba0056709ab99da267dbf2c5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a38cf91439f0672dae16e4c62a8c9b3ed" id="r_a38cf91439f0672dae16e4c62a8c9b3ed"><td class="memItemLeft" align="right" valign="top">TSubclassOf&lt; AActor &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classADropper.html#a38cf91439f0672dae16e4c62a8c9b3ed">SpawnClass</a></td></tr>
+<tr class="memdesc:a38cf91439f0672dae16e4c62a8c9b3ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">이번 스폰에서 사용할 클래스  <br /></td></tr>
+<tr class="separator:a38cf91439f0672dae16e4c62a8c9b3ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a77f77fd06f73abc732ad61d76e69e923" id="r_a77f77fd06f73abc732ad61d76e69e923"><td class="memItemLeft" align="right" valign="top">TObjectPtr&lt; USceneComponent &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classADropper.html#a77f77fd06f73abc732ad61d76e69e923">SpawnPos</a></td></tr>
+<tr class="memdesc:a77f77fd06f73abc732ad61d76e69e923"><td class="mdescLeft">&#160;</td><td class="mdescRight">스폰 위치  <br /></td></tr>
+<tr class="separator:a77f77fd06f73abc732ad61d76e69e923"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">상세한 설명</h2>
 <div class="textblock">
-<p class="definition"><a class="el" href="ADropper_8h_source.html">ADropper.h</a> 파일의 <a class="el" href="ADropper_8h_source.html#l00010">10</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="ADropper_8h_source.html">ADropper.h</a> 파일의 <a class="el" href="ADropper_8h_source.html#l00037">37</a> 번째 라인에서 정의되었습니다.</p>
 </div><h2 class="groupheader">생성자 &amp; 소멸자 문서화</h2>
 <a id="abf0eec054993e6a25e042f9f3c92441e" name="abf0eec054993e6a25e042f9f3c92441e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#abf0eec054993e6a25e042f9f3c92441e">&#9670;&#160;</a></span>ADropper()</h2>
@@ -180,39 +216,40 @@ Private 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ADropper_8cpp_source.html">ADropper.cpp</a> 파일의 <a class="el" href="ADropper_8cpp_source.html#l00013">13</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   14</span>{</div>
-<div class="line"><span class="lineno">   15</span>    PrimaryActorTick.bCanEverTick = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   16</span> </div>
-<div class="line"><span class="lineno">   17</span>    <span class="comment">// Root component</span></div>
-<div class="line"><span class="lineno">   18</span>    USceneComponent* Root = CreateDefaultSubobject&lt;USceneComponent&gt;(TEXT(<span class="stringliteral">&quot;DefaultSceneRoot&quot;</span>));</div>
-<div class="line"><span class="lineno">   19</span>    RootComponent = Root;</div>
-<div class="line"><span class="lineno">   20</span> </div>
-<div class="line"><span class="lineno">   21</span>    <span class="comment">// SkeletalMesh component</span></div>
-<div class="line"><span class="lineno">   22</span>    <a class="code hl_variable" href="classADropper.html#a4eefce6c5b3cad95eb39fe96a38eca04">SkeletalMesh</a> = CreateDefaultSubobject&lt;USkeletalMeshComponent&gt;(TEXT(<span class="stringliteral">&quot;SkeletalMesh&quot;</span>));</div>
-<div class="line"><span class="lineno">   23</span>    <a class="code hl_variable" href="classADropper.html#a4eefce6c5b3cad95eb39fe96a38eca04">SkeletalMesh</a>-&gt;SetupAttachment(RootComponent);</div>
-<div class="line"><span class="lineno">   24</span> </div>
-<div class="line"><span class="lineno">   25</span>    <span class="comment">// Cube (StaticMesh) component</span></div>
-<div class="line"><span class="lineno">   26</span>    <a class="code hl_variable" href="classADropper.html#a625dc3efd2aa38e4a9a232c9de68338d">BoxCollision</a> = CreateDefaultSubobject&lt;UStaticMeshComponent&gt;(TEXT(<span class="stringliteral">&quot;Cube&quot;</span>));</div>
-<div class="line"><span class="lineno">   27</span>    <a class="code hl_variable" href="classADropper.html#a625dc3efd2aa38e4a9a232c9de68338d">BoxCollision</a>-&gt;SetupAttachment(<a class="code hl_variable" href="classADropper.html#a4eefce6c5b3cad95eb39fe96a38eca04">SkeletalMesh</a>);</div>
-<div class="line"><span class="lineno">   28</span>    <a class="code hl_variable" href="classADropper.html#a625dc3efd2aa38e4a9a232c9de68338d">BoxCollision</a>-&gt;SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);</div>
-<div class="line"><span class="lineno">   29</span>    <a class="code hl_variable" href="classADropper.html#a625dc3efd2aa38e4a9a232c9de68338d">BoxCollision</a>-&gt;SetCollisionResponseToAllChannels(ECR_Block);</div>
-<div class="line"><span class="lineno">   30</span> </div>
-<div class="line"><span class="lineno">   31</span>    <span class="comment">// SpawnPos component</span></div>
-<div class="line"><span class="lineno">   32</span>    <a class="code hl_variable" href="classADropper.html#a9dea574047f8b43ddb13a1aeb83332c3">SpawnPos</a> = CreateDefaultSubobject&lt;USceneComponent&gt;(TEXT(<span class="stringliteral">&quot;SpawnPos&quot;</span>));</div>
-<div class="line"><span class="lineno">   33</span>    <a class="code hl_variable" href="classADropper.html#a9dea574047f8b43ddb13a1aeb83332c3">SpawnPos</a>-&gt;SetupAttachment(<a class="code hl_variable" href="classADropper.html#a4eefce6c5b3cad95eb39fe96a38eca04">SkeletalMesh</a>);</div>
-<div class="line"><span class="lineno">   34</span>}</div>
-<div class="ttc" id="aclassADropper_html_a4eefce6c5b3cad95eb39fe96a38eca04"><div class="ttname"><a href="classADropper.html#a4eefce6c5b3cad95eb39fe96a38eca04">ADropper::SkeletalMesh</a></div><div class="ttdeci">TObjectPtr&lt; class USkeletalMeshComponent &gt; SkeletalMesh</div><div class="ttdef"><b>Definition</b> <a href="ADropper_8h_source.html#l00032">ADropper.h:32</a></div></div>
-<div class="ttc" id="aclassADropper_html_a625dc3efd2aa38e4a9a232c9de68338d"><div class="ttname"><a href="classADropper.html#a625dc3efd2aa38e4a9a232c9de68338d">ADropper::BoxCollision</a></div><div class="ttdeci">TObjectPtr&lt; class UStaticMeshComponent &gt; BoxCollision</div><div class="ttdef"><b>Definition</b> <a href="ADropper_8h_source.html#l00035">ADropper.h:35</a></div></div>
-<div class="ttc" id="aclassADropper_html_a9dea574047f8b43ddb13a1aeb83332c3"><div class="ttname"><a href="classADropper.html#a9dea574047f8b43ddb13a1aeb83332c3">ADropper::SpawnPos</a></div><div class="ttdeci">TObjectPtr&lt; class USceneComponent &gt; SpawnPos</div><div class="ttdef"><b>Definition</b> <a href="ADropper_8h_source.html#l00029">ADropper.h:29</a></div></div>
+<p class="definition"><a class="el" href="ADropper_8cpp_source.html">ADropper.cpp</a> 파일의 <a class="el" href="ADropper_8cpp_source.html#l00015">15</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   16</span>{</div>
+<div class="line"><span class="lineno">   17</span>    PrimaryActorTick.bCanEverTick = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   18</span>    bReplicates = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   19</span> </div>
+<div class="line"><span class="lineno">   20</span>    <span class="comment">// Root</span></div>
+<div class="line"><span class="lineno">   21</span>    USceneComponent* Root = CreateDefaultSubobject&lt;USceneComponent&gt;(TEXT(<span class="stringliteral">&quot;Root&quot;</span>));</div>
+<div class="line"><span class="lineno">   22</span>    RootComponent = Root;</div>
+<div class="line"><span class="lineno">   23</span> </div>
+<div class="line"><span class="lineno">   24</span>    <span class="comment">// SkeletalMesh</span></div>
+<div class="line"><span class="lineno">   25</span>    <a class="code hl_variable" href="classADropper.html#aaa74dfcba0056709ab99da267dbf2c5e">SkeletalMesh</a> = CreateDefaultSubobject&lt;USkeletalMeshComponent&gt;(TEXT(<span class="stringliteral">&quot;SkeletalMesh&quot;</span>));</div>
+<div class="line"><span class="lineno">   26</span>    <a class="code hl_variable" href="classADropper.html#aaa74dfcba0056709ab99da267dbf2c5e">SkeletalMesh</a>-&gt;SetupAttachment(RootComponent);</div>
+<div class="line"><span class="lineno">   27</span> </div>
+<div class="line"><span class="lineno">   28</span>    <span class="comment">// Collision Mesh</span></div>
+<div class="line"><span class="lineno">   29</span>    <a class="code hl_variable" href="classADropper.html#aba96123227079a5b2b329373e999513f">BoxCollision</a> = CreateDefaultSubobject&lt;UStaticMeshComponent&gt;(TEXT(<span class="stringliteral">&quot;BoxCollision&quot;</span>));</div>
+<div class="line"><span class="lineno">   30</span>    <a class="code hl_variable" href="classADropper.html#aba96123227079a5b2b329373e999513f">BoxCollision</a>-&gt;SetupAttachment(<a class="code hl_variable" href="classADropper.html#aaa74dfcba0056709ab99da267dbf2c5e">SkeletalMesh</a>);</div>
+<div class="line"><span class="lineno">   31</span>    <a class="code hl_variable" href="classADropper.html#aba96123227079a5b2b329373e999513f">BoxCollision</a>-&gt;SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);</div>
+<div class="line"><span class="lineno">   32</span>    <a class="code hl_variable" href="classADropper.html#aba96123227079a5b2b329373e999513f">BoxCollision</a>-&gt;SetCollisionResponseToAllChannels(ECR_Block);</div>
+<div class="line"><span class="lineno">   33</span> </div>
+<div class="line"><span class="lineno">   34</span>    <span class="comment">// Spawn Position</span></div>
+<div class="line"><span class="lineno">   35</span>    <a class="code hl_variable" href="classADropper.html#a77f77fd06f73abc732ad61d76e69e923">SpawnPos</a> = CreateDefaultSubobject&lt;USceneComponent&gt;(TEXT(<span class="stringliteral">&quot;SpawnPos&quot;</span>));</div>
+<div class="line"><span class="lineno">   36</span>    <a class="code hl_variable" href="classADropper.html#a77f77fd06f73abc732ad61d76e69e923">SpawnPos</a>-&gt;SetupAttachment(<a class="code hl_variable" href="classADropper.html#aaa74dfcba0056709ab99da267dbf2c5e">SkeletalMesh</a>);</div>
+<div class="line"><span class="lineno">   37</span>}</div>
+<div class="ttc" id="aclassADropper_html_a77f77fd06f73abc732ad61d76e69e923"><div class="ttname"><a href="classADropper.html#a77f77fd06f73abc732ad61d76e69e923">ADropper::SpawnPos</a></div><div class="ttdeci">TObjectPtr&lt; USceneComponent &gt; SpawnPos</div><div class="ttdoc">스폰 위치</div><div class="ttdef"><b>Definition</b> <a href="ADropper_8h_source.html#l00084">ADropper.h:84</a></div></div>
+<div class="ttc" id="aclassADropper_html_aaa74dfcba0056709ab99da267dbf2c5e"><div class="ttname"><a href="classADropper.html#aaa74dfcba0056709ab99da267dbf2c5e">ADropper::SkeletalMesh</a></div><div class="ttdeci">TObjectPtr&lt; USkeletalMeshComponent &gt; SkeletalMesh</div><div class="ttdoc">드랍퍼 스켈레탈 메시</div><div class="ttdef"><b>Definition</b> <a href="ADropper_8h_source.html#l00088">ADropper.h:88</a></div></div>
+<div class="ttc" id="aclassADropper_html_aba96123227079a5b2b329373e999513f"><div class="ttname"><a href="classADropper.html#aba96123227079a5b2b329373e999513f">ADropper::BoxCollision</a></div><div class="ttdeci">TObjectPtr&lt; UStaticMeshComponent &gt; BoxCollision</div><div class="ttdoc">충돌 박스</div><div class="ttdef"><b>Definition</b> <a href="ADropper_8h_source.html#l00092">ADropper.h:92</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="ADropper_8h_source.html#l00035">BoxCollision</a>, <a class="el" href="ADropper_8h_source.html#l00032">SkeletalMesh</a>, <a class="el" href="ADropper_8h_source.html#l00029">SpawnPos</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="ADropper_8h_source.html#l00092">BoxCollision</a>, <a class="el" href="ADropper_8h_source.html#l00088">SkeletalMesh</a>, <a class="el" href="ADropper_8h_source.html#l00084">SpawnPos</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">멤버 함수 문서화</h2>
-<a id="a61816ab53f18d0979718d3f0bad81e32" name="a61816ab53f18d0979718d3f0bad81e32"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a61816ab53f18d0979718d3f0bad81e32">&#9670;&#160;</a></span>PlayAnimationAndDisableCollision()</h2>
+<a id="ae550fb704c7b234b8edae8606d6ce567" name="ae550fb704c7b234b8edae8606d6ce567"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae550fb704c7b234b8edae8606d6ce567">&#9670;&#160;</a></span>GetLifetimeReplicatedProps()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -221,7 +258,85 @@ Private 속성</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void ADropper::PlayAnimationAndDisableCollision </td>
+          <td class="memname">void ADropper::GetLifetimeReplicatedProps </td>
+          <td>(</td>
+          <td class="paramtype">TArray&lt; FLifetimeProperty &gt; &amp;&#160;</td>
+          <td class="paramname"><em>OutLifetimeProps</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="ADropper_8cpp_source.html">ADropper.cpp</a> 파일의 <a class="el" href="ADropper_8cpp_source.html#l00039">39</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   40</span>{</div>
+<div class="line"><span class="lineno">   41</span>    Super::GetLifetimeReplicatedProps(OutLifetimeProps);</div>
+<div class="line"><span class="lineno">   42</span> </div>
+<div class="line"><span class="lineno">   43</span>    DOREPLIFETIME(<a class="code hl_class" href="classADropper.html">ADropper</a>, <a class="code hl_variable" href="classADropper.html#a38cf91439f0672dae16e4c62a8c9b3ed">SpawnClass</a>);</div>
+<div class="line"><span class="lineno">   44</span>    DOREPLIFETIME(<a class="code hl_class" href="classADropper.html">ADropper</a>, <a class="code hl_variable" href="classADropper.html#a47520cd53ae3329ba3185e29cb08557b">NextData</a>);</div>
+<div class="line"><span class="lineno">   45</span>    DOREPLIFETIME(<a class="code hl_class" href="classADropper.html">ADropper</a>, <a class="code hl_variable" href="classADropper.html#add990488884bf0ec970eb0b7fcce26c9">bIsSpawnIng</a>);</div>
+<div class="line"><span class="lineno">   46</span>}</div>
+<div class="ttc" id="aclassADropper_html"><div class="ttname"><a href="classADropper.html">ADropper</a></div><div class="ttdef"><b>Definition</b> <a href="ADropper_8h_source.html#l00037">ADropper.h:38</a></div></div>
+<div class="ttc" id="aclassADropper_html_a38cf91439f0672dae16e4c62a8c9b3ed"><div class="ttname"><a href="classADropper.html#a38cf91439f0672dae16e4c62a8c9b3ed">ADropper::SpawnClass</a></div><div class="ttdeci">TSubclassOf&lt; AActor &gt; SpawnClass</div><div class="ttdoc">이번 스폰에서 사용할 클래스</div><div class="ttdef"><b>Definition</b> <a href="ADropper_8h_source.html#l00100">ADropper.h:100</a></div></div>
+<div class="ttc" id="aclassADropper_html_a47520cd53ae3329ba3185e29cb08557b"><div class="ttname"><a href="classADropper.html#a47520cd53ae3329ba3185e29cb08557b">ADropper::NextData</a></div><div class="ttdeci">FLuggageData NextData</div><div class="ttdoc">이번 스폰에서 사용할 데이터</div><div class="ttdef"><b>Definition</b> <a href="ADropper_8h_source.html#l00104">ADropper.h:104</a></div></div>
+<div class="ttc" id="aclassADropper_html_add990488884bf0ec970eb0b7fcce26c9"><div class="ttname"><a href="classADropper.html#add990488884bf0ec970eb0b7fcce26c9">ADropper::bIsSpawnIng</a></div><div class="ttdeci">bool bIsSpawnIng</div><div class="ttdoc">스폰 처리 진행 중 여부 (RPC로 공유)</div><div class="ttdef"><b>Definition</b> <a href="ADropper_8h_source.html#l00108">ADropper.h:108</a></div></div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="ADropper_8h_source.html#l00108">bIsSpawnIng</a>, <a class="el" href="ADropper_8h_source.html#l00104">NextData</a>, <a class="el" href="ADropper_8h_source.html#l00100">SpawnClass</a>.</p>
+
+</div>
+</div>
+<a id="a5f14cbfb4ac2eeec016aad7ba1adb605" name="a5f14cbfb4ac2eeec016aad7ba1adb605"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f14cbfb4ac2eeec016aad7ba1adb605">&#9670;&#160;</a></span>IsBusy()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">FORCEINLINE bool ADropper::IsBusy </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="ADropper_8h_source.html">ADropper.h</a> 파일의 <a class="el" href="ADropper_8h_source.html#l00054">54</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   54</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classADropper.html#add990488884bf0ec970eb0b7fcce26c9">bIsSpawnIng</a>; };</div>
+</div><!-- fragment -->
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerControl_8cpp_source.html#l00243">APlayerControl::RequestDrop()</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classADropper_a5f14cbfb4ac2eeec016aad7ba1adb605_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+
+</div>
+</div>
+<a id="a3b756d1cbc9b11947622adb3180a8c58" name="a3b756d1cbc9b11947622adb3180a8c58"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3b756d1cbc9b11947622adb3180a8c58">&#9670;&#160;</a></span>Multicast_DisableCollision()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ADropper::Multicast_DisableCollision </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -229,57 +344,26 @@ Private 속성</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ADropper_8cpp_source.html">ADropper.cpp</a> 파일의 <a class="el" href="ADropper_8cpp_source.html#l00068">68</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   69</span>{</div>
-<div class="line"><span class="lineno">   70</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classADropper.html#a4eefce6c5b3cad95eb39fe96a38eca04">SkeletalMesh</a> &amp;&amp; <a class="code hl_variable" href="classADropper.html#a0ed6299b26e4f9f028af98ce8944d782">AnimToPlay</a>)</div>
-<div class="line"><span class="lineno">   71</span>        <a class="code hl_variable" href="classADropper.html#a4eefce6c5b3cad95eb39fe96a38eca04">SkeletalMesh</a>-&gt;PlayAnimation(<a class="code hl_variable" href="classADropper.html#a0ed6299b26e4f9f028af98ce8944d782">AnimToPlay</a>, <span class="keyword">false</span>);</div>
-<div class="line"><span class="lineno">   72</span> </div>
-<div class="line"><span class="lineno">   73</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classADropper.html#a625dc3efd2aa38e4a9a232c9de68338d">BoxCollision</a>)</div>
-<div class="line"><span class="lineno">   74</span>    {</div>
-<div class="line"><span class="lineno">   75</span>        <a class="code hl_variable" href="classADropper.html#a625dc3efd2aa38e4a9a232c9de68338d">BoxCollision</a>-&gt;SetCollisionEnabled(ECollisionEnabled::NoCollision);</div>
-<div class="line"><span class="lineno">   76</span> </div>
-<div class="line"><span class="lineno">   77</span>        <span class="comment">// NoCollision 후 다시 BlockAll로 복구하는 타이머 설정</span></div>
-<div class="line"><span class="lineno">   78</span>        GetWorldTimerManager().SetTimer(</div>
-<div class="line"><span class="lineno">   79</span>            <a class="code hl_variable" href="classADropper.html#aebd091f5eb13e2935650d85f52a6ad30">RestoreTimerHandle</a>,</div>
-<div class="line"><span class="lineno">   80</span>            <span class="keyword">this</span>,</div>
-<div class="line"><span class="lineno">   81</span>            &amp;<a class="code hl_function" href="classADropper.html#a00df54e7658ead02c86e779f0d6f0e98">ADropper::RestoreCollision</a>,</div>
-<div class="line"><span class="lineno">   82</span>            <a class="code hl_variable" href="classADropper.html#a0988e0589febe6439b45737923ec535a">Delay</a>,</div>
-<div class="line"><span class="lineno">   83</span>            <span class="keyword">false</span></div>
-<div class="line"><span class="lineno">   84</span>        );</div>
-<div class="line"><span class="lineno">   85</span>    }</div>
-<div class="line"><span class="lineno">   86</span>}</div>
-<div class="ttc" id="aclassADropper_html_a00df54e7658ead02c86e779f0d6f0e98"><div class="ttname"><a href="classADropper.html#a00df54e7658ead02c86e779f0d6f0e98">ADropper::RestoreCollision</a></div><div class="ttdeci">void RestoreCollision()</div><div class="ttdef"><b>Definition</b> <a href="ADropper_8cpp_source.html#l00088">ADropper.cpp:88</a></div></div>
-<div class="ttc" id="aclassADropper_html_a0988e0589febe6439b45737923ec535a"><div class="ttname"><a href="classADropper.html#a0988e0589febe6439b45737923ec535a">ADropper::Delay</a></div><div class="ttdeci">float Delay</div><div class="ttdef"><b>Definition</b> <a href="ADropper_8h_source.html#l00041">ADropper.h:41</a></div></div>
-<div class="ttc" id="aclassADropper_html_a0ed6299b26e4f9f028af98ce8944d782"><div class="ttname"><a href="classADropper.html#a0ed6299b26e4f9f028af98ce8944d782">ADropper::AnimToPlay</a></div><div class="ttdeci">TObjectPtr&lt; class UAnimationAsset &gt; AnimToPlay</div><div class="ttdef"><b>Definition</b> <a href="ADropper_8h_source.html#l00038">ADropper.h:38</a></div></div>
-<div class="ttc" id="aclassADropper_html_aebd091f5eb13e2935650d85f52a6ad30"><div class="ttname"><a href="classADropper.html#aebd091f5eb13e2935650d85f52a6ad30">ADropper::RestoreTimerHandle</a></div><div class="ttdeci">FTimerHandle RestoreTimerHandle</div><div class="ttdef"><b>Definition</b> <a href="ADropper_8h_source.html#l00045">ADropper.h:45</a></div></div>
-</div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="ADropper_8h_source.html#l00038">AnimToPlay</a>, <a class="el" href="ADropper_8h_source.html#l00035">BoxCollision</a>, <a class="el" href="ADropper_8h_source.html#l00041">Delay</a>, <a class="el" href="ADropper_8cpp_source.html#l00088">RestoreCollision()</a>, <a class="el" href="ADropper_8h_source.html#l00045">RestoreTimerHandle</a>, <a class="el" href="ADropper_8h_source.html#l00032">SkeletalMesh</a>.</p>
+<p>충돌 비활성화 </p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ADropper_8cpp_source.html#l00036">SpawnActor()</a>.</p>
-<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
-<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classADropper_a61816ab53f18d0979718d3f0bad81e32_cgraph.svg" width="467" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ADropper_8cpp_source.html#l00135">OnDelayCompleted()</a>.</p>
 <div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-3-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-3-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classADropper_a61816ab53f18d0979718d3f0bad81e32_icgraph.svg" width="438" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classADropper_a3b756d1cbc9b11947622adb3180a8c58_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
 </div>
-<a id="a00df54e7658ead02c86e779f0d6f0e98" name="a00df54e7658ead02c86e779f0d6f0e98"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a00df54e7658ead02c86e779f0d6f0e98">&#9670;&#160;</a></span>RestoreCollision()</h2>
+<a id="a20445470333fec9dda88adeda63439b8" name="a20445470333fec9dda88adeda63439b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a20445470333fec9dda88adeda63439b8">&#9670;&#160;</a></span>Multicast_PlayAnimation()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -288,7 +372,79 @@ Private 속성</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void ADropper::RestoreCollision </td>
+          <td class="memname">void ADropper::Multicast_PlayAnimation </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>애니메이션 재생 </p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ADropper_8cpp_source.html#l00067">Spawn()</a>.</p>
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classADropper_a20445470333fec9dda88adeda63439b8_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+
+</div>
+</div>
+<a id="ab445d9d334aa5b2dd8f069425d4c00b1" name="ab445d9d334aa5b2dd8f069425d4c00b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab445d9d334aa5b2dd8f069425d4c00b1">&#9670;&#160;</a></span>Multicast_RestoreCollision()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ADropper::Multicast_RestoreCollision </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>충돌 복구 </p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ADropper_8cpp_source.html#l00151">OnRestoreCompleted()</a>.</p>
+<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-5-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classADropper_ab445d9d334aa5b2dd8f069425d4c00b1_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+
+</div>
+</div>
+<a id="abcae05b82fde99d18f81620a296be75e" name="abcae05b82fde99d18f81620a296be75e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abcae05b82fde99d18f81620a296be75e">&#9670;&#160;</a></span>OnDelayCompleted()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ADropper::OnDelayCompleted </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -301,142 +457,467 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ADropper_8cpp_source.html">ADropper.cpp</a> 파일의 <a class="el" href="ADropper_8cpp_source.html#l00088">88</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   89</span>{</div>
-<div class="line"><span class="lineno">   90</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classADropper.html#a625dc3efd2aa38e4a9a232c9de68338d">BoxCollision</a>)</div>
-<div class="line"><span class="lineno">   91</span>    {</div>
-<div class="line"><span class="lineno">   92</span>        <a class="code hl_variable" href="classADropper.html#a625dc3efd2aa38e4a9a232c9de68338d">BoxCollision</a>-&gt;SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);</div>
-<div class="line"><span class="lineno">   93</span>        <a class="code hl_variable" href="classADropper.html#a625dc3efd2aa38e4a9a232c9de68338d">BoxCollision</a>-&gt;SetCollisionResponseToAllChannels(ECR_Block);</div>
-<div class="line"><span class="lineno">   94</span>    }</div>
-<div class="line"><span class="lineno">   95</span>}</div>
+<p class="definition"><a class="el" href="ADropper_8cpp_source.html">ADropper.cpp</a> 파일의 <a class="el" href="ADropper_8cpp_source.html#l00135">135</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  136</span>{</div>
+<div class="line"><span class="lineno">  137</span>    <span class="keywordflow">if</span> (!HasAuthority())</div>
+<div class="line"><span class="lineno">  138</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  139</span> </div>
+<div class="line"><span class="lineno">  140</span>    <a class="code hl_function" href="classADropper.html#a3b756d1cbc9b11947622adb3180a8c58">Multicast_DisableCollision</a>();</div>
+<div class="line"><span class="lineno">  141</span> </div>
+<div class="line"><span class="lineno">  142</span>    GetWorldTimerManager().SetTimer(</div>
+<div class="line"><span class="lineno">  143</span>        <a class="code hl_variable" href="classADropper.html#aebd091f5eb13e2935650d85f52a6ad30">RestoreTimerHandle</a>,</div>
+<div class="line"><span class="lineno">  144</span>        <span class="keyword">this</span>,</div>
+<div class="line"><span class="lineno">  145</span>        &amp;<a class="code hl_function" href="classADropper.html#a0ca196ef13ac8207543cba52a266a325">ADropper::OnRestoreCompleted</a>,</div>
+<div class="line"><span class="lineno">  146</span>        2.0f,</div>
+<div class="line"><span class="lineno">  147</span>        <span class="keyword">false</span></div>
+<div class="line"><span class="lineno">  148</span>    );</div>
+<div class="line"><span class="lineno">  149</span>}</div>
+<div class="ttc" id="aclassADropper_html_a0ca196ef13ac8207543cba52a266a325"><div class="ttname"><a href="classADropper.html#a0ca196ef13ac8207543cba52a266a325">ADropper::OnRestoreCompleted</a></div><div class="ttdeci">void OnRestoreCompleted()</div><div class="ttdef"><b>Definition</b> <a href="ADropper_8cpp_source.html#l00151">ADropper.cpp:151</a></div></div>
+<div class="ttc" id="aclassADropper_html_a3b756d1cbc9b11947622adb3180a8c58"><div class="ttname"><a href="classADropper.html#a3b756d1cbc9b11947622adb3180a8c58">ADropper::Multicast_DisableCollision</a></div><div class="ttdeci">void Multicast_DisableCollision()</div><div class="ttdoc">충돌 비활성화</div></div>
+<div class="ttc" id="aclassADropper_html_aebd091f5eb13e2935650d85f52a6ad30"><div class="ttname"><a href="classADropper.html#aebd091f5eb13e2935650d85f52a6ad30">ADropper::RestoreTimerHandle</a></div><div class="ttdeci">FTimerHandle RestoreTimerHandle</div><div class="ttdef"><b>Definition</b> <a href="ADropper_8h_source.html#l00111">ADropper.h:111</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="ADropper_8h_source.html#l00035">BoxCollision</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="classADropper.html#a3b756d1cbc9b11947622adb3180a8c58">Multicast_DisableCollision()</a>, <a class="el" href="ADropper_8cpp_source.html#l00151">OnRestoreCompleted()</a>, <a class="el" href="ADropper_8h_source.html#l00111">RestoreTimerHandle</a>.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ADropper_8cpp_source.html#l00068">PlayAnimationAndDisableCollision()</a>.</p>
-<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
-<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ADropper_8cpp_source.html#l00067">Spawn()</a>.</p>
+<div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-6-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-6-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-4-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classADropper_a00df54e7658ead02c86e779f0d6f0e98_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div id="dynsection-6-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classADropper_abcae05b82fde99d18f81620a296be75e_cgraph.svg" width="100%" height="381"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+<div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-7-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-7-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-7-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classADropper_abcae05b82fde99d18f81620a296be75e_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
 </div>
-<a id="a41182874af7613b4cf7d781a314e973a" name="a41182874af7613b4cf7d781a314e973a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a41182874af7613b4cf7d781a314e973a">&#9670;&#160;</a></span>SpawnActor()</h2>
+<a id="a0ca196ef13ac8207543cba52a266a325" name="a0ca196ef13ac8207543cba52a266a325"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ca196ef13ac8207543cba52a266a325">&#9670;&#160;</a></span>OnRestoreCompleted()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ADropper::OnRestoreCompleted </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="ADropper_8cpp_source.html">ADropper.cpp</a> 파일의 <a class="el" href="ADropper_8cpp_source.html#l00151">151</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  152</span>{</div>
+<div class="line"><span class="lineno">  153</span>    <span class="keywordflow">if</span> (!HasAuthority())</div>
+<div class="line"><span class="lineno">  154</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  155</span> </div>
+<div class="line"><span class="lineno">  156</span>    <a class="code hl_function" href="classADropper.html#ab445d9d334aa5b2dd8f069425d4c00b1">Multicast_RestoreCollision</a>();</div>
+<div class="line"><span class="lineno">  157</span>    <a class="code hl_variable" href="classADropper.html#add990488884bf0ec970eb0b7fcce26c9">bIsSpawnIng</a> = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  158</span>}</div>
+<div class="ttc" id="aclassADropper_html_ab445d9d334aa5b2dd8f069425d4c00b1"><div class="ttname"><a href="classADropper.html#ab445d9d334aa5b2dd8f069425d4c00b1">ADropper::Multicast_RestoreCollision</a></div><div class="ttdeci">void Multicast_RestoreCollision()</div><div class="ttdoc">충돌 복구</div></div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="ADropper_8h_source.html#l00108">bIsSpawnIng</a>, <a class="el" href="classADropper.html#ab445d9d334aa5b2dd8f069425d4c00b1">Multicast_RestoreCollision()</a>.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ADropper_8cpp_source.html#l00135">OnDelayCompleted()</a>.</p>
+<div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-8-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-8-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-8-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classADropper_a0ca196ef13ac8207543cba52a266a325_cgraph.svg" width="440" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div id="dynsection-9" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-9-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-9-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-9-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classADropper_a0ca196ef13ac8207543cba52a266a325_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+
+</div>
+</div>
+<a id="ad7b1a0e4a5425909f9b4345de5611afe" name="ad7b1a0e4a5425909f9b4345de5611afe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad7b1a0e4a5425909f9b4345de5611afe">&#9670;&#160;</a></span>RequestSpawn()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">AActor * ADropper::SpawnActor </td>
+          <td class="memname">bool ADropper::RequestSpawn </td>
           <td>(</td>
-          <td class="paramtype">TSubclassOf&lt; class AActor &gt;&#160;</td>
-          <td class="paramname"><em>SpawnActorClass</em></td><td>)</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ADropper_8cpp_source.html">ADropper.cpp</a> 파일의 <a class="el" href="ADropper_8cpp_source.html#l00036">36</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   37</span>{</div>
-<div class="line"><span class="lineno">   38</span>    <span class="keywordflow">if</span> (!SpawnActorClass || !<a class="code hl_variable" href="classADropper.html#a9dea574047f8b43ddb13a1aeb83332c3">SpawnPos</a>)</div>
-<div class="line"><span class="lineno">   39</span>    {</div>
-<div class="line"><span class="lineno">   40</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>( TEXT(<span class="stringliteral">&quot;SpawnActorClass or SpawnPos is not set&quot;</span>));</div>
-<div class="line"><span class="lineno">   41</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">   42</span>    }</div>
-<div class="line"><span class="lineno">   43</span> </div>
-<div class="line"><span class="lineno">   44</span>    FActorSpawnParameters SpawnParams;</div>
-<div class="line"><span class="lineno">   45</span>    SpawnParams.Owner = <span class="keyword">this</span>;</div>
-<div class="line"><span class="lineno">   46</span>    SpawnParams.Instigator = GetInstigator();</div>
-<div class="line"><span class="lineno">   47</span> </div>
-<div class="line"><span class="lineno">   48</span>    <span class="keyword">auto</span> SpawnedActor = GetWorld()-&gt;SpawnActor&lt;AActor&gt;(SpawnActorClass,</div>
-<div class="line"><span class="lineno">   49</span>        <a class="code hl_variable" href="classADropper.html#a9dea574047f8b43ddb13a1aeb83332c3">SpawnPos</a>-&gt;GetComponentLocation(),</div>
-<div class="line"><span class="lineno">   50</span>        <a class="code hl_variable" href="classADropper.html#a9dea574047f8b43ddb13a1aeb83332c3">SpawnPos</a>-&gt;GetComponentRotation(),</div>
-<div class="line"><span class="lineno">   51</span>        SpawnParams);</div>
-<div class="line"><span class="lineno">   52</span> </div>
-<div class="line"><span class="lineno">   53</span>    <span class="keywordflow">if</span> (SpawnedActor)</div>
-<div class="line"><span class="lineno">   54</span>    {</div>
-<div class="line"><span class="lineno">   55</span>        <span class="comment">// Start timer for delayed animation and collision disable</span></div>
-<div class="line"><span class="lineno">   56</span>        GetWorldTimerManager().SetTimer(</div>
-<div class="line"><span class="lineno">   57</span>            <a class="code hl_variable" href="classADropper.html#ac72f7e826877b273487c4c04778b88bb">DelayTimerHandle</a>,</div>
-<div class="line"><span class="lineno">   58</span>            <span class="keyword">this</span>,</div>
-<div class="line"><span class="lineno">   59</span>            &amp;<a class="code hl_function" href="classADropper.html#a61816ab53f18d0979718d3f0bad81e32">ADropper::PlayAnimationAndDisableCollision</a>,</div>
-<div class="line"><span class="lineno">   60</span>            <a class="code hl_variable" href="classADropper.html#a0988e0589febe6439b45737923ec535a">Delay</a>,</div>
-<div class="line"><span class="lineno">   61</span>            <span class="keyword">false</span></div>
-<div class="line"><span class="lineno">   62</span>        );</div>
-<div class="line"><span class="lineno">   63</span>    }</div>
-<div class="line"><span class="lineno">   64</span> </div>
-<div class="line"><span class="lineno">   65</span>    <span class="keywordflow">return</span> SpawnedActor;</div>
-<div class="line"><span class="lineno">   66</span>}</div>
+<p>스폰 요청 (서버에서만 동작) </p>
+
+<p class="definition"><a class="el" href="ADropper_8cpp_source.html">ADropper.cpp</a> 파일의 <a class="el" href="ADropper_8cpp_source.html#l00048">48</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   49</span>{</div>
+<div class="line"><span class="lineno">   50</span>    <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;Dropper GUID = %s, Authority=%d&quot;</span>),</div>
+<div class="line"><span class="lineno">   51</span>    *GetPathName(), HasAuthority());</div>
+<div class="line"><span class="lineno">   52</span>    </div>
+<div class="line"><span class="lineno">   53</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classADropper.html#a38cf91439f0672dae16e4c62a8c9b3ed">SpawnClass</a> || !<a class="code hl_variable" href="classADropper.html#a77f77fd06f73abc732ad61d76e69e923">SpawnPos</a>)</div>
+<div class="line"><span class="lineno">   54</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   55</span> </div>
+<div class="line"><span class="lineno">   56</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classADropper.html#add990488884bf0ec970eb0b7fcce26c9">bIsSpawnIng</a>)</div>
+<div class="line"><span class="lineno">   57</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   58</span> </div>
+<div class="line"><span class="lineno">   59</span>    <span class="keywordflow">if</span> (HasAuthority())</div>
+<div class="line"><span class="lineno">   60</span>        <a class="code hl_function" href="classADropper.html#a59b1429e958a7ecae6fa4bece4126d9a">Spawn</a>();</div>
+<div class="line"><span class="lineno">   61</span>    <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">   62</span>        <a class="code hl_function" href="classADropper.html#a120a5316924fd35c0ae10b3e89a92959">Server_Spawn</a>();</div>
+<div class="line"><span class="lineno">   63</span> </div>
+<div class="line"><span class="lineno">   64</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   65</span>}</div>
 <div class="ttc" id="aGameLogging_8h_html_a9998c8beb11a6bad6ffada2e701fc0cf"><div class="ttname"><a href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a></div><div class="ttdeci">#define PRINTLOG(fmt,...)</div><div class="ttdef"><b>Definition</b> <a href="GameLogging_8h_source.html#l00030">GameLogging.h:30</a></div></div>
-<div class="ttc" id="aclassADropper_html_a61816ab53f18d0979718d3f0bad81e32"><div class="ttname"><a href="classADropper.html#a61816ab53f18d0979718d3f0bad81e32">ADropper::PlayAnimationAndDisableCollision</a></div><div class="ttdeci">void PlayAnimationAndDisableCollision()</div><div class="ttdef"><b>Definition</b> <a href="ADropper_8cpp_source.html#l00068">ADropper.cpp:68</a></div></div>
-<div class="ttc" id="aclassADropper_html_ac72f7e826877b273487c4c04778b88bb"><div class="ttname"><a href="classADropper.html#ac72f7e826877b273487c4c04778b88bb">ADropper::DelayTimerHandle</a></div><div class="ttdeci">FTimerHandle DelayTimerHandle</div><div class="ttdef"><b>Definition</b> <a href="ADropper_8h_source.html#l00044">ADropper.h:44</a></div></div>
+<div class="ttc" id="aclassADropper_html_a120a5316924fd35c0ae10b3e89a92959"><div class="ttname"><a href="classADropper.html#a120a5316924fd35c0ae10b3e89a92959">ADropper::Server_Spawn</a></div><div class="ttdeci">void Server_Spawn()</div></div>
+<div class="ttc" id="aclassADropper_html_a59b1429e958a7ecae6fa4bece4126d9a"><div class="ttname"><a href="classADropper.html#a59b1429e958a7ecae6fa4bece4126d9a">ADropper::Spawn</a></div><div class="ttdeci">void Spawn()</div><div class="ttdoc">서버에서만 실행되는 실제 스폰 로직</div><div class="ttdef"><b>Definition</b> <a href="ADropper_8cpp_source.html#l00067">ADropper.cpp:67</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="ADropper_8h_source.html#l00041">Delay</a>, <a class="el" href="ADropper_8h_source.html#l00044">DelayTimerHandle</a>, <a class="el" href="ADropper_8cpp_source.html#l00068">PlayAnimationAndDisableCollision()</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>, <a class="el" href="ADropper_8h_source.html#l00029">SpawnPos</a>.</p>
-<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
-<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
+<p class="reference">다음을 참조함 :  <a class="el" href="ADropper_8h_source.html#l00108">bIsSpawnIng</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>, <a class="el" href="classADropper.html#a120a5316924fd35c0ae10b3e89a92959">Server_Spawn()</a>, <a class="el" href="ADropper_8cpp_source.html#l00067">Spawn()</a>, <a class="el" href="ADropper_8h_source.html#l00100">SpawnClass</a>, <a class="el" href="ADropper_8h_source.html#l00084">SpawnPos</a>.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerControl_8cpp_source.html#l00243">APlayerControl::RequestDrop()</a>.</p>
+<div id="dynsection-10" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-10-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-10-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-5-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classADropper_a41182874af7613b4cf7d781a314e973a_cgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div id="dynsection-10-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classADropper_ad7b1a0e4a5425909f9b4345de5611afe_cgraph.svg" width="100%" height="412"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+<div id="dynsection-11" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-11-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-11-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-11-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classADropper_ad7b1a0e4a5425909f9b4345de5611afe_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+
+</div>
+</div>
+<a id="a120a5316924fd35c0ae10b3e89a92959" name="a120a5316924fd35c0ae10b3e89a92959"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a120a5316924fd35c0ae10b3e89a92959">&#9670;&#160;</a></span>Server_Spawn()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ADropper::Server_Spawn </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ADropper_8cpp_source.html#l00048">RequestSpawn()</a>.</p>
+<div id="dynsection-12" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-12-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-12-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-12-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classADropper_a120a5316924fd35c0ae10b3e89a92959_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+
+</div>
+</div>
+<a id="a4fd03c6a4c5d6e37b22afc85bdd28883" name="a4fd03c6a4c5d6e37b22afc85bdd28883"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4fd03c6a4c5d6e37b22afc85bdd28883">&#9670;&#160;</a></span>SetSpawnClass()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ADropper::SetSpawnClass </td>
+          <td>(</td>
+          <td class="paramtype">TSubclassOf&lt; AActor &gt;&#160;</td>
+          <td class="paramname"><em>InClass</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>스폰 전에 Dropper가 어떤 클래스를 스폰할지 등록 </p>
+
+<p class="definition"><a class="el" href="ADropper_8h_source.html">ADropper.h</a> 파일의 <a class="el" href="ADropper_8h_source.html#l00045">45</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   45</span>{ <a class="code hl_variable" href="classADropper.html#a38cf91439f0672dae16e4c62a8c9b3ed">SpawnClass</a> = InClass; }</div>
+</div><!-- fragment -->
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerControl_8cpp_source.html#l00243">APlayerControl::RequestDrop()</a>.</p>
+<div id="dynsection-13" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-13-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-13-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-13-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classADropper_a4fd03c6a4c5d6e37b22afc85bdd28883_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+
+</div>
+</div>
+<a id="a157c62ea5ca44a107413f475f4a47e61" name="a157c62ea5ca44a107413f475f4a47e61"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a157c62ea5ca44a107413f475f4a47e61">&#9670;&#160;</a></span>SetSpawnData()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ADropper::SetSpawnData </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structFLuggageData.html">FLuggageData</a> &amp;&#160;</td>
+          <td class="paramname"><em>InData</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>스폰 전에 Dropper가 생성될 액터에게 넘겨줄 데이터 등록 </p>
+
+<p class="definition"><a class="el" href="ADropper_8h_source.html">ADropper.h</a> 파일의 <a class="el" href="ADropper_8h_source.html#l00048">48</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   48</span>{ <a class="code hl_variable" href="classADropper.html#a47520cd53ae3329ba3185e29cb08557b">NextData</a> = InData; }</div>
+</div><!-- fragment -->
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerControl_8cpp_source.html#l00243">APlayerControl::RequestDrop()</a>.</p>
+<div id="dynsection-14" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-14-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-14-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-14-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classADropper_a157c62ea5ca44a107413f475f4a47e61_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+
+</div>
+</div>
+<a id="a59b1429e958a7ecae6fa4bece4126d9a" name="a59b1429e958a7ecae6fa4bece4126d9a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a59b1429e958a7ecae6fa4bece4126d9a">&#9670;&#160;</a></span>Spawn()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ADropper::Spawn </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>서버에서만 실행되는 실제 스폰 로직 </p>
+
+<p class="definition"><a class="el" href="ADropper_8cpp_source.html">ADropper.cpp</a> 파일의 <a class="el" href="ADropper_8cpp_source.html#l00067">67</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   68</span>{</div>
+<div class="line"><span class="lineno">   69</span>    <span class="keywordflow">if</span> (!HasAuthority())</div>
+<div class="line"><span class="lineno">   70</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   71</span> </div>
+<div class="line"><span class="lineno">   72</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classADropper.html#a38cf91439f0672dae16e4c62a8c9b3ed">SpawnClass</a> || !<a class="code hl_variable" href="classADropper.html#a77f77fd06f73abc732ad61d76e69e923">SpawnPos</a>)</div>
+<div class="line"><span class="lineno">   73</span>    {</div>
+<div class="line"><span class="lineno">   74</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;ADropper::SpawnInternal - Invalid data&quot;</span>));</div>
+<div class="line"><span class="lineno">   75</span>        <a class="code hl_variable" href="classADropper.html#add990488884bf0ec970eb0b7fcce26c9">bIsSpawnIng</a> = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   76</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   77</span>    }</div>
+<div class="line"><span class="lineno">   78</span>   </div>
+<div class="line"><span class="lineno">   79</span>    FActorSpawnParameters Params;</div>
+<div class="line"><span class="lineno">   80</span>    Params.Owner = <span class="keyword">this</span>;</div>
+<div class="line"><span class="lineno">   81</span>    Params.Instigator = GetInstigator();</div>
+<div class="line"><span class="lineno">   82</span> </div>
+<div class="line"><span class="lineno">   83</span>    <span class="comment">// 실제 스폰</span></div>
+<div class="line"><span class="lineno">   84</span>    AActor* SpawnedActor = GetWorld()-&gt;SpawnActor&lt;AActor&gt;(</div>
+<div class="line"><span class="lineno">   85</span>        <a class="code hl_variable" href="classADropper.html#a38cf91439f0672dae16e4c62a8c9b3ed">SpawnClass</a>,</div>
+<div class="line"><span class="lineno">   86</span>        <a class="code hl_variable" href="classADropper.html#a77f77fd06f73abc732ad61d76e69e923">SpawnPos</a>-&gt;GetComponentLocation(),</div>
+<div class="line"><span class="lineno">   87</span>        <a class="code hl_variable" href="classADropper.html#a77f77fd06f73abc732ad61d76e69e923">SpawnPos</a>-&gt;GetComponentRotation(),</div>
+<div class="line"><span class="lineno">   88</span>        Params</div>
+<div class="line"><span class="lineno">   89</span>    );</div>
+<div class="line"><span class="lineno">   90</span> </div>
+<div class="line"><span class="lineno">   91</span>    <span class="keywordflow">if</span> (!SpawnedActor)</div>
+<div class="line"><span class="lineno">   92</span>    {</div>
+<div class="line"><span class="lineno">   93</span>        <a class="code hl_variable" href="classADropper.html#add990488884bf0ec970eb0b7fcce26c9">bIsSpawnIng</a> = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   94</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   95</span>    }</div>
+<div class="line"><span class="lineno">   96</span> </div>
+<div class="line"><span class="lineno">   97</span>    <a class="code hl_variable" href="classADropper.html#add990488884bf0ec970eb0b7fcce26c9">bIsSpawnIng</a> = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   98</span> </div>
+<div class="line"><span class="lineno">   99</span>    <span class="comment">// HACK, 임시!!!</span></div>
+<div class="line"><span class="lineno">  100</span>    <span class="keyword">static</span> <span class="keywordtype">int</span> CurrentSpawnIndex = 0;</div>
+<div class="line"><span class="lineno">  101</span>    </div>
+<div class="line"><span class="lineno">  102</span>    <span class="comment">// 데이터 전달</span></div>
+<div class="line"><span class="lineno">  103</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> tmpLuggage = Cast&lt;Aluggage&gt;(SpawnedActor))</div>
+<div class="line"><span class="lineno">  104</span>    {</div>
+<div class="line"><span class="lineno">  105</span>        tmpLuggage-&gt;SetLuggageInfo(CurrentSpawnIndex++, <a class="code hl_variable" href="classADropper.html#a47520cd53ae3329ba3185e29cb08557b">NextData</a>.<a class="code hl_variable" href="structFLuggageData.html#a265f0a50100e20809a533e26d13058c1">word2</a>.<a class="code hl_variable" href="structFWordInfo.html#afa3eecf62fc7b28d50eae5edc8fc81ad">name</a>, <a class="code hl_variable" href="classADropper.html#a47520cd53ae3329ba3185e29cb08557b">NextData</a>.<a class="code hl_variable" href="structFLuggageData.html#a193a064c0977170ec7831f8196f4ff9c">word1</a>.<a class="code hl_variable" href="structFWordInfo.html#afa3eecf62fc7b28d50eae5edc8fc81ad">name</a>);</div>
+<div class="line"><span class="lineno">  106</span> </div>
+<div class="line"><span class="lineno">  107</span>        int32 ColorIdx = FCString::Atoi(*<a class="code hl_variable" href="classADropper.html#a47520cd53ae3329ba3185e29cb08557b">NextData</a>.<a class="code hl_variable" href="structFLuggageData.html#a265f0a50100e20809a533e26d13058c1">word2</a>.<a class="code hl_variable" href="structFWordInfo.html#ab5e270b6450daeff8fec1a5df4eb9609">code</a>);</div>
+<div class="line"><span class="lineno">  108</span>        tmpLuggage-&gt;ApplyColorToMesh(ColorIdx);</div>
+<div class="line"><span class="lineno">  109</span> </div>
+<div class="line"><span class="lineno">  110</span>        int32 PatternIdx = FCString::Atoi(*<a class="code hl_variable" href="classADropper.html#a47520cd53ae3329ba3185e29cb08557b">NextData</a>.<a class="code hl_variable" href="structFLuggageData.html#a193a064c0977170ec7831f8196f4ff9c">word1</a>.<a class="code hl_variable" href="structFWordInfo.html#ab5e270b6450daeff8fec1a5df4eb9609">code</a>);</div>
+<div class="line"><span class="lineno">  111</span>        tmpLuggage-&gt;ApplyPatternToMesh(PatternIdx);</div>
+<div class="line"><span class="lineno">  112</span>    }</div>
+<div class="line"><span class="lineno">  113</span> </div>
+<div class="line"><span class="lineno">  114</span>    <span class="comment">// 애니메이션 실행</span></div>
+<div class="line"><span class="lineno">  115</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classADropper.html#aaa74dfcba0056709ab99da267dbf2c5e">SkeletalMesh</a> &amp;&amp; <a class="code hl_variable" href="classADropper.html#a5a49c1c7e8db3bc33eb575a252bcad9d">AnimToPlay</a>)</div>
+<div class="line"><span class="lineno">  116</span>        <a class="code hl_function" href="classADropper.html#a20445470333fec9dda88adeda63439b8">Multicast_PlayAnimation</a>();</div>
+<div class="line"><span class="lineno">  117</span> </div>
+<div class="line"><span class="lineno">  118</span>    <span class="comment">// 2초 뒤 충돌 OFF → 다시 ON</span></div>
+<div class="line"><span class="lineno">  119</span>    GetWorldTimerManager().SetTimer(</div>
+<div class="line"><span class="lineno">  120</span>        <a class="code hl_variable" href="classADropper.html#ac72f7e826877b273487c4c04778b88bb">DelayTimerHandle</a>,</div>
+<div class="line"><span class="lineno">  121</span>        <span class="keyword">this</span>,</div>
+<div class="line"><span class="lineno">  122</span>        &amp;<a class="code hl_function" href="classADropper.html#abcae05b82fde99d18f81620a296be75e">ADropper::OnDelayCompleted</a>,</div>
+<div class="line"><span class="lineno">  123</span>        2.0f,</div>
+<div class="line"><span class="lineno">  124</span>        <span class="keyword">false</span></div>
+<div class="line"><span class="lineno">  125</span>    );</div>
+<div class="line"><span class="lineno">  126</span>}</div>
+<div class="ttc" id="aclassADropper_html_a20445470333fec9dda88adeda63439b8"><div class="ttname"><a href="classADropper.html#a20445470333fec9dda88adeda63439b8">ADropper::Multicast_PlayAnimation</a></div><div class="ttdeci">void Multicast_PlayAnimation()</div><div class="ttdoc">애니메이션 재생</div></div>
+<div class="ttc" id="aclassADropper_html_a5a49c1c7e8db3bc33eb575a252bcad9d"><div class="ttname"><a href="classADropper.html#a5a49c1c7e8db3bc33eb575a252bcad9d">ADropper::AnimToPlay</a></div><div class="ttdeci">TObjectPtr&lt; UAnimationAsset &gt; AnimToPlay</div><div class="ttdoc">드랍 시 재생할 애니메이션</div><div class="ttdef"><b>Definition</b> <a href="ADropper_8h_source.html#l00096">ADropper.h:96</a></div></div>
+<div class="ttc" id="aclassADropper_html_abcae05b82fde99d18f81620a296be75e"><div class="ttname"><a href="classADropper.html#abcae05b82fde99d18f81620a296be75e">ADropper::OnDelayCompleted</a></div><div class="ttdeci">void OnDelayCompleted()</div><div class="ttdef"><b>Definition</b> <a href="ADropper_8cpp_source.html#l00135">ADropper.cpp:135</a></div></div>
+<div class="ttc" id="aclassADropper_html_ac72f7e826877b273487c4c04778b88bb"><div class="ttname"><a href="classADropper.html#ac72f7e826877b273487c4c04778b88bb">ADropper::DelayTimerHandle</a></div><div class="ttdeci">FTimerHandle DelayTimerHandle</div><div class="ttdef"><b>Definition</b> <a href="ADropper_8h_source.html#l00110">ADropper.h:110</a></div></div>
+<div class="ttc" id="astructFLuggageData_html_a193a064c0977170ec7831f8196f4ff9c"><div class="ttname"><a href="structFLuggageData.html#a193a064c0977170ec7831f8196f4ff9c">FLuggageData::word1</a></div><div class="ttdeci">FWordInfo word1</div><div class="ttdoc">시나리오 단어 정보</div><div class="ttdef"><b>Definition</b> <a href="ADropper_8h_source.html#l00018">ADropper.h:18</a></div></div>
+<div class="ttc" id="astructFLuggageData_html_a265f0a50100e20809a533e26d13058c1"><div class="ttname"><a href="structFLuggageData.html#a265f0a50100e20809a533e26d13058c1">FLuggageData::word2</a></div><div class="ttdeci">FWordInfo word2</div><div class="ttdef"><b>Definition</b> <a href="ADropper_8h_source.html#l00021">ADropper.h:21</a></div></div>
+<div class="ttc" id="astructFWordInfo_html_ab5e270b6450daeff8fec1a5df4eb9609"><div class="ttname"><a href="structFWordInfo.html#ab5e270b6450daeff8fec1a5df4eb9609">FWordInfo::code</a></div><div class="ttdeci">FString code</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00523">NetworkData.h:523</a></div></div>
+<div class="ttc" id="astructFWordInfo_html_afa3eecf62fc7b28d50eae5edc8fc81ad"><div class="ttname"><a href="structFWordInfo.html#afa3eecf62fc7b28d50eae5edc8fc81ad">FWordInfo::name</a></div><div class="ttdeci">FString name</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00520">NetworkData.h:520</a></div></div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="ADropper_8h_source.html#l00096">AnimToPlay</a>, <a class="el" href="ADropper_8h_source.html#l00108">bIsSpawnIng</a>, <a class="el" href="NetworkData_8h_source.html#l00523">FWordInfo::code</a>, <a class="el" href="ADropper_8h_source.html#l00110">DelayTimerHandle</a>, <a class="el" href="classADropper.html#a20445470333fec9dda88adeda63439b8">Multicast_PlayAnimation()</a>, <a class="el" href="NetworkData_8h_source.html#l00520">FWordInfo::name</a>, <a class="el" href="ADropper_8h_source.html#l00104">NextData</a>, <a class="el" href="ADropper_8cpp_source.html#l00135">OnDelayCompleted()</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>, <a class="el" href="ADropper_8h_source.html#l00088">SkeletalMesh</a>, <a class="el" href="ADropper_8h_source.html#l00100">SpawnClass</a>, <a class="el" href="ADropper_8h_source.html#l00084">SpawnPos</a>, <a class="el" href="ADropper_8h_source.html#l00018">FLuggageData::word1</a>, <a class="el" href="ADropper_8h_source.html#l00021">FLuggageData::word2</a>.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ADropper_8cpp_source.html#l00048">RequestSpawn()</a>.</p>
+<div id="dynsection-15" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-15-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-15-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-15-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classADropper_a59b1429e958a7ecae6fa4bece4126d9a_cgraph.svg" width="100%" height="402"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+<div id="dynsection-16" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-16-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-16-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-16-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classADropper_a59b1429e958a7ecae6fa4bece4126d9a_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
 </div>
 <h2 class="groupheader">멤버 데이터 문서화</h2>
-<a id="a0ed6299b26e4f9f028af98ce8944d782" name="a0ed6299b26e4f9f028af98ce8944d782"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0ed6299b26e4f9f028af98ce8944d782">&#9670;&#160;</a></span>AnimToPlay</h2>
+<a id="a5a49c1c7e8db3bc33eb575a252bcad9d" name="a5a49c1c7e8db3bc33eb575a252bcad9d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a49c1c7e8db3bc33eb575a252bcad9d">&#9670;&#160;</a></span>AnimToPlay</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">TObjectPtr&lt;class UAnimationAsset&gt; ADropper::AnimToPlay</td>
+          <td class="memname">TObjectPtr&lt;UAnimationAsset&gt; ADropper::AnimToPlay</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ADropper_8h_source.html">ADropper.h</a> 파일의 <a class="el" href="ADropper_8h_source.html#l00038">38</a> 번째 라인에서 정의되었습니다.</p>
+<p>드랍 시 재생할 애니메이션 </p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ADropper_8cpp_source.html#l00068">PlayAnimationAndDisableCollision()</a>.</p>
+<p class="definition"><a class="el" href="ADropper_8h_source.html">ADropper.h</a> 파일의 <a class="el" href="ADropper_8h_source.html#l00096">96</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ADropper_8cpp_source.html#l00067">Spawn()</a>.</p>
 
 </div>
 </div>
-<a id="a625dc3efd2aa38e4a9a232c9de68338d" name="a625dc3efd2aa38e4a9a232c9de68338d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a625dc3efd2aa38e4a9a232c9de68338d">&#9670;&#160;</a></span>BoxCollision</h2>
+<a id="add990488884bf0ec970eb0b7fcce26c9" name="add990488884bf0ec970eb0b7fcce26c9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add990488884bf0ec970eb0b7fcce26c9">&#9670;&#160;</a></span>bIsSpawnIng</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">TObjectPtr&lt;class UStaticMeshComponent&gt; ADropper::BoxCollision</td>
+          <td class="memname">bool ADropper::bIsSpawnIng = false</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ADropper_8h_source.html">ADropper.h</a> 파일의 <a class="el" href="ADropper_8h_source.html#l00035">35</a> 번째 라인에서 정의되었습니다.</p>
+<p>스폰 처리 진행 중 여부 (RPC로 공유) </p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ADropper_8cpp_source.html#l00013">ADropper()</a>, <a class="el" href="ADropper_8cpp_source.html#l00068">PlayAnimationAndDisableCollision()</a>, <a class="el" href="ADropper_8cpp_source.html#l00088">RestoreCollision()</a>.</p>
+<p class="definition"><a class="el" href="ADropper_8h_source.html">ADropper.h</a> 파일의 <a class="el" href="ADropper_8h_source.html#l00108">108</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ADropper_8cpp_source.html#l00039">GetLifetimeReplicatedProps()</a>, <a class="el" href="ADropper_8cpp_source.html#l00151">OnRestoreCompleted()</a>, <a class="el" href="ADropper_8cpp_source.html#l00048">RequestSpawn()</a>, <a class="el" href="ADropper_8cpp_source.html#l00067">Spawn()</a>.</p>
 
 </div>
 </div>
-<a id="a0988e0589febe6439b45737923ec535a" name="a0988e0589febe6439b45737923ec535a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0988e0589febe6439b45737923ec535a">&#9670;&#160;</a></span>Delay</h2>
+<a id="aba96123227079a5b2b329373e999513f" name="aba96123227079a5b2b329373e999513f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aba96123227079a5b2b329373e999513f">&#9670;&#160;</a></span>BoxCollision</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">float ADropper::Delay = 2.0f</td>
+          <td class="memname">TObjectPtr&lt;UStaticMeshComponent&gt; ADropper::BoxCollision</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ADropper_8h_source.html">ADropper.h</a> 파일의 <a class="el" href="ADropper_8h_source.html#l00041">41</a> 번째 라인에서 정의되었습니다.</p>
+<p>충돌 박스 </p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ADropper_8cpp_source.html#l00068">PlayAnimationAndDisableCollision()</a>, <a class="el" href="ADropper_8cpp_source.html#l00036">SpawnActor()</a>.</p>
+<p class="definition"><a class="el" href="ADropper_8h_source.html">ADropper.h</a> 파일의 <a class="el" href="ADropper_8h_source.html#l00092">92</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ADropper_8cpp_source.html#l00015">ADropper()</a>.</p>
 
 </div>
 </div>
@@ -460,9 +941,37 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ADropper_8h_source.html">ADropper.h</a> 파일의 <a class="el" href="ADropper_8h_source.html#l00044">44</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="ADropper_8h_source.html">ADropper.h</a> 파일의 <a class="el" href="ADropper_8h_source.html#l00110">110</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ADropper_8cpp_source.html#l00036">SpawnActor()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ADropper_8cpp_source.html#l00067">Spawn()</a>.</p>
+
+</div>
+</div>
+<a id="a47520cd53ae3329ba3185e29cb08557b" name="a47520cd53ae3329ba3185e29cb08557b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a47520cd53ae3329ba3185e29cb08557b">&#9670;&#160;</a></span>NextData</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structFLuggageData.html">FLuggageData</a> ADropper::NextData</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>이번 스폰에서 사용할 데이터 </p>
+
+<p class="definition"><a class="el" href="ADropper_8h_source.html">ADropper.h</a> 파일의 <a class="el" href="ADropper_8h_source.html#l00104">104</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ADropper_8cpp_source.html#l00039">GetLifetimeReplicatedProps()</a>, <a class="el" href="ADropper_8cpp_source.html#l00067">Spawn()</a>.</p>
 
 </div>
 </div>
@@ -486,45 +995,93 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ADropper_8h_source.html">ADropper.h</a> 파일의 <a class="el" href="ADropper_8h_source.html#l00045">45</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="ADropper_8h_source.html">ADropper.h</a> 파일의 <a class="el" href="ADropper_8h_source.html#l00111">111</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ADropper_8cpp_source.html#l00068">PlayAnimationAndDisableCollision()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ADropper_8cpp_source.html#l00135">OnDelayCompleted()</a>.</p>
 
 </div>
 </div>
-<a id="a4eefce6c5b3cad95eb39fe96a38eca04" name="a4eefce6c5b3cad95eb39fe96a38eca04"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4eefce6c5b3cad95eb39fe96a38eca04">&#9670;&#160;</a></span>SkeletalMesh</h2>
+<a id="aaa74dfcba0056709ab99da267dbf2c5e" name="aaa74dfcba0056709ab99da267dbf2c5e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaa74dfcba0056709ab99da267dbf2c5e">&#9670;&#160;</a></span>SkeletalMesh</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">TObjectPtr&lt;class USkeletalMeshComponent&gt; ADropper::SkeletalMesh</td>
+          <td class="memname">TObjectPtr&lt;USkeletalMeshComponent&gt; ADropper::SkeletalMesh</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ADropper_8h_source.html">ADropper.h</a> 파일의 <a class="el" href="ADropper_8h_source.html#l00032">32</a> 번째 라인에서 정의되었습니다.</p>
+<p>드랍퍼 스켈레탈 메시 </p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ADropper_8cpp_source.html#l00013">ADropper()</a>, <a class="el" href="ADropper_8cpp_source.html#l00068">PlayAnimationAndDisableCollision()</a>.</p>
+<p class="definition"><a class="el" href="ADropper_8h_source.html">ADropper.h</a> 파일의 <a class="el" href="ADropper_8h_source.html#l00088">88</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ADropper_8cpp_source.html#l00015">ADropper()</a>, <a class="el" href="ADropper_8cpp_source.html#l00067">Spawn()</a>.</p>
 
 </div>
 </div>
-<a id="a9dea574047f8b43ddb13a1aeb83332c3" name="a9dea574047f8b43ddb13a1aeb83332c3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9dea574047f8b43ddb13a1aeb83332c3">&#9670;&#160;</a></span>SpawnPos</h2>
+<a id="a38cf91439f0672dae16e4c62a8c9b3ed" name="a38cf91439f0672dae16e4c62a8c9b3ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a38cf91439f0672dae16e4c62a8c9b3ed">&#9670;&#160;</a></span>SpawnClass</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">TObjectPtr&lt;class USceneComponent&gt; ADropper::SpawnPos</td>
+          <td class="memname">TSubclassOf&lt;AActor&gt; ADropper::SpawnClass</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ADropper_8h_source.html">ADropper.h</a> 파일의 <a class="el" href="ADropper_8h_source.html#l00029">29</a> 번째 라인에서 정의되었습니다.</p>
+<p>이번 스폰에서 사용할 클래스 </p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ADropper_8cpp_source.html#l00013">ADropper()</a>, <a class="el" href="ADropper_8cpp_source.html#l00036">SpawnActor()</a>.</p>
+<p class="definition"><a class="el" href="ADropper_8h_source.html">ADropper.h</a> 파일의 <a class="el" href="ADropper_8h_source.html#l00100">100</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ADropper_8cpp_source.html#l00039">GetLifetimeReplicatedProps()</a>, <a class="el" href="ADropper_8cpp_source.html#l00048">RequestSpawn()</a>, <a class="el" href="ADropper_8cpp_source.html#l00067">Spawn()</a>.</p>
+
+</div>
+</div>
+<a id="a77f77fd06f73abc732ad61d76e69e923" name="a77f77fd06f73abc732ad61d76e69e923"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a77f77fd06f73abc732ad61d76e69e923">&#9670;&#160;</a></span>SpawnPos</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">TObjectPtr&lt;USceneComponent&gt; ADropper::SpawnPos</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>스폰 위치 </p>
+
+<p class="definition"><a class="el" href="ADropper_8h_source.html">ADropper.h</a> 파일의 <a class="el" href="ADropper_8h_source.html#l00084">84</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ADropper_8cpp_source.html#l00015">ADropper()</a>, <a class="el" href="ADropper_8cpp_source.html#l00048">RequestSpawn()</a>, <a class="el" href="ADropper_8cpp_source.html#l00067">Spawn()</a>.</p>
 
 </div>
 </div>
@@ -538,7 +1095,7 @@ Private 속성</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classADropper.html">ADropper</a></li>
-    <li class="footer">생성시간 : 금 12월 5 2025 09:04:32, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 토 12월 6 2025 08:38:30, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

@@ -4,6 +4,8 @@ var Onepiece_8h =
     [ "Door", "Onepiece_8h.html#a3c08adb522f39311cbf10b2efec81a35", null ],
     [ "GameEnd", "Onepiece_8h.html#a2298f260adc739495b1a3938d2335243", null ],
     [ "GameStart", "Onepiece_8h.html#a5dbedc9538ba6d1baa996c8c59666487", null ],
+    [ "Holder_Fail", "Onepiece_8h.html#a1ce5035671889779a21e68aae8c8db38", null ],
+    [ "Holder_Success", "Onepiece_8h.html#a86e12002bb715fd26393367cd22a64d1", null ],
     [ "IntroStart", "Onepiece_8h.html#aa9bd2204f84bf0f0e6a421b6c102dc60", null ],
     [ "Loading", "Onepiece_8h.html#ae4c4bd33e56196bb1e54f458059d5345", null ],
     [ "LoadingCircle", "Onepiece_8h.html#a919c4166af88ffa5c2fd2d860c2c40a9", null ],

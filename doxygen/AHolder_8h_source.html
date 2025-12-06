@@ -124,26 +124,81 @@ $(document).ready(function(){initNavTree('AHolder_8h_source.html',''); initResiz
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    GENERATED_BODY()</div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <span class="comment">// Sets default values for this actor&#39;s properties</span></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <a class="code hl_class" href="classAHolder.html">AHolder</a>();</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="keyword">protected</span>:</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <span class="comment">// Called when the game starts or when spawned</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> BeginPlay() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <a class="code hl_class" href="classAHolder.html">AHolder</a>();</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> BeginPlay() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> Tick(<span class="keywordtype">float</span> DeltaTime) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> GetLifetimeReplicatedProps(TArray&lt;class FLifetimeProperty&gt;&amp; OutLifetimeProps) <span class="keyword">const override</span>;</div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="comment">// Called every frame</span></div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> Tick(<span class="keywordtype">float</span> DeltaTime) <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>};</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="keywordtype">void</span> SetAnswerData(<span class="keyword">const</span> int32 InAnswerColorIdx, <span class="keyword">const</span> int32 InAnswerPatternIdx);</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="comment">// Events</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    UFUNCTION(BlueprintImplementableEvent, Category = <span class="stringliteral">&quot;Holder&quot;</span>)</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="classAHolder.html#ae7a498666e28adf0fdc83d1c5f69a1fd">   27</a></span>    void OnActivate(<span class="keywordtype">bool</span> bSuccess);</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>private:</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    UFUNCTION()</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="keywordtype">void</span> OnRep_IsActivated();</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    UFUNCTION()</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="keywordtype">void</span> OnRep_CurTarget();</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    UFUNCTION()</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="keywordtype">void</span> OnBoxOverlapBegin(</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        UPrimitiveComponent* OverlappedComponent,</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        AActor* OtherActor,</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        UPrimitiveComponent* OtherComp,</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        int32 OtherBodyIndex,</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        <span class="keywordtype">bool</span> bFromSweep,</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        const FHitResult&amp; SweepResult);</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="keywordtype">bool</span> CheckLuggage(class <a class="code hl_class" href="classAluggage.html">Aluggage</a>* TargetLuggage);</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keywordtype">void</span> UpdateActivateState(<span class="keywordtype">bool</span> State);</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>public:</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="comment">// Components</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = &quot;Components&quot;)</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="classAHolder.html#a79ef290f8e08c63ab1f950556bd79438">   52</a></span>    TObjectPtr&lt;class UBoxComponent&gt; BoxCollision;</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = &quot;Components&quot;)</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="classAHolder.html#aff28881f4a9894326ad224deb836bfac">   55</a></span>    TObjectPtr&lt;class USkeletalMeshComponent&gt; MeshComponent;</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = &quot;Spawning&quot;)</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="classAHolder.html#aff5e475f35d6b6a578e56ce0a49eb0db">   58</a></span>    TObjectPtr&lt;class USceneComponent&gt; HoldPos;</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>protected:</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="comment">// 현재 올라가 있는 액터</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    UPROPERTY(ReplicatedUsing=OnRep_CurTarget)</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="classAHolder.html#ac76a7839abbc71619286e50ba8ded371">   63</a></span>    TObjectPtr&lt;class AActor&gt; CurTarget;</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    </div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <span class="comment">// State</span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    UPROPERTY(ReplicatedUsing=OnRep_IsActivated, VisibleAnywhere, BlueprintReadOnly, Category = &quot;State&quot;)</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="classAHolder.html#ad738de032520334305505a746e524aa4">   67</a></span>    <span class="keywordtype">bool</span> bIsActivated = false;</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <span class="comment">// Visual Settings</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = &quot;Visual&quot;)</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno"><a class="line" href="classAHolder.html#ab6843abcaf5b577e79f7cd2759add9a7">   71</a></span>    <span class="keywordtype">float</span> ActivatedHeightOffset = 50.0f;</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = &quot;Visual&quot;)</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno"><a class="line" href="classAHolder.html#aa08fb8d6c45760bd7a4368ddb314fd03">   74</a></span>    <span class="keywordtype">float</span> RotationSpeed = 90.0f;</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    </div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    <span class="comment">// Answer Settings</span></div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno"><a class="line" href="classAHolder.html#a4ff9df4654d1cdfc7ec42fd47aaa8d24">   77</a></span>    int32 AnswerColorIdx = -1;</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno"><a class="line" href="classAHolder.html#a0f1f43f56fc099a13aa12ff86326221b">   78</a></span>    int32 AnswerPatternIdx = -1;</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>};</div>
 </div>
 <div class="ttc" id="aclassAHolder_html"><div class="ttname"><a href="classAHolder.html">AHolder</a></div><div class="ttdef"><b>Definition</b> <a href="AHolder_8h_source.html#l00010">AHolder.h:11</a></div></div>
+<div class="ttc" id="aclassAluggage_html"><div class="ttname"><a href="classAluggage.html">Aluggage</a></div><div class="ttdoc">상호작용 가능한 수하물 액터</div><div class="ttdef"><b>Definition</b> <a href="luggage_8h_source.html#l00014">luggage.h:15</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_2268d321c547a1269f0f0801cfba1f77.html">Prop</a></li><li class="navelem"><a class="el" href="dir_13cb8c28526713b34d584b8e10191ceb.html">Public</a></li><li class="navelem"><a class="el" href="AHolder_8h.html">AHolder.h</a></li>
-    <li class="footer">생성시간 : 금 12월 5 2025 09:04:32, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 토 12월 6 2025 08:38:30, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

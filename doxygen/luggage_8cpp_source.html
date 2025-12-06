@@ -371,133 +371,204 @@ $(document).ready(function(){initNavTree('luggage_8cpp_source.html',''); initRes
 <div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>}</div>
 </div>
 <div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span> </div>
-<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span><span class="comment">// void Aluggage::InfoWidgetOn()</span></div>
-<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span><span class="comment">// {</span></div>
-<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span><span class="comment">//  WidgetComp-&gt;GetWidget()-&gt;SetVisibility(ESlateVisibility::Visible);</span></div>
-<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span><span class="comment">// }</span></div>
-<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span><span class="comment">//</span></div>
-<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span><span class="comment">// void Aluggage::InfoWidgetOff()</span></div>
-<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span><span class="comment">// {</span></div>
-<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span><span class="comment">//  WidgetComp-&gt;GetWidget()-&gt;SetVisibility(ESlateVisibility::Hidden);</span></div>
-<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span><span class="comment">// }</span></div>
-<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span><span class="comment">//</span></div>
-<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span><span class="comment">// void Aluggage::BillboardInfoWidget()</span></div>
-<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span><span class="comment">// {</span></div>
-<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span><span class="comment">//  // 카메라 가져오기</span></div>
-<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span><span class="comment">//  AActor* cam = UGameplayStatics::GetPlayerCameraManager(GetWorld(), 0);</span></div>
-<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span><span class="comment">//</span></div>
-<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span><span class="comment">//  if ( cam == nullptr)</span></div>
-<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span><span class="comment">//      return;</span></div>
-<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span><span class="comment">//  </span></div>
-<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span><span class="comment">//  // 카메라 backward 벡터, up 벡터를 이용하여 Rotator 계산</span></div>
-<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span><span class="comment">//  FRotator rot = UKismetMathLibrary::MakeRotFromXZ(-cam-&gt;GetActorForwardVector(), cam-&gt;GetActorUpVector());</span></div>
-<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span><span class="comment">//  rot.Pitch = 0;</span></div>
-<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span><span class="comment">//  // 회전값으로 설정</span></div>
-<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span><span class="comment">//  WidgetComp-&gt;SetWorldRotation(rot);</span></div>
-<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span><span class="comment">// }</span></div>
-<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span> </div>
+<div class="foldopen" id="foldopen00246" data-start="{" data-end="}">
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno"><a class="line" href="classAluggage.html#ae5f511820df4a129e85e81b727b48bea">  246</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAluggage.html#ae5f511820df4a129e85e81b727b48bea">Aluggage::SetAllCollision</a>(<span class="keywordtype">bool</span> bEnable)</div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>{</div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>    <span class="keywordflow">if</span> (bEnable)</div>
+<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>    {</div>
+<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>        <span class="comment">// 충돌 활성화</span></div>
+<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAluggage.html#aa50b6d8907fe87cf36258056394a15fe">BoxComp</a>)</div>
+<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>        {</div>
+<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span>            <a class="code hl_variable" href="classAluggage.html#aa50b6d8907fe87cf36258056394a15fe">BoxComp</a>-&gt;SetCollisionEnabled(ECollisionEnabled::QueryOnly);</div>
+<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span>        }</div>
+<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span> </div>
+<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAluggage.html#a17e850881f1e195228802686a326ff09">Mesh1Comp</a>)</div>
+<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span>        {</div>
+<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>            <a class="code hl_variable" href="classAluggage.html#a17e850881f1e195228802686a326ff09">Mesh1Comp</a>-&gt;SetSimulatePhysics(<span class="keyword">true</span>);</div>
+<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span>            <a class="code hl_variable" href="classAluggage.html#a17e850881f1e195228802686a326ff09">Mesh1Comp</a>-&gt;SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);</div>
+<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>        }</div>
+<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span> </div>
+<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAluggage.html#a39b79b08760cd4bd35f94262f8073ce9">Mesh2Comp</a>)</div>
+<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span>        {</div>
+<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span>            <a class="code hl_variable" href="classAluggage.html#a39b79b08760cd4bd35f94262f8073ce9">Mesh2Comp</a>-&gt;SetCollisionEnabled(ECollisionEnabled::NoCollision);</div>
+<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span>        }</div>
+<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span> </div>
+<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAluggage.html#a848e21dc134b0695d352d7b7356f4497">Mesh3Comp</a>)</div>
+<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span>        {</div>
+<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span>            <a class="code hl_variable" href="classAluggage.html#a848e21dc134b0695d352d7b7356f4497">Mesh3Comp</a>-&gt;SetCollisionEnabled(ECollisionEnabled::NoCollision);</div>
+<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span>        }</div>
 <div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span> </div>
-<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span><span class="comment">//--------------------------------------------------------------//</span></div>
-<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span><span class="comment">// Read Quest Interaction</span></div>
-<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span><span class="comment">//--------------------------------------------------------------//</span></div>
-<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span> </div>
-<div class="foldopen" id="foldopen00276" data-start="{" data-end="}">
-<div class="line"><a id="l00276" name="l00276"></a><span class="lineno"><a class="line" href="classAluggage.html#aecbb757aa07316696bb4326f3b8dd74f">  276</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAluggage.html#aecbb757aa07316696bb4326f3b8dd74f">Aluggage::OnInteract</a>(AActor* Interactor)</div>
-<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span>{</div>
-<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span>    <span class="keywordflow">if</span> (!Interactor)</div>
-<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span>    {</div>
-<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[Luggage] OnInteract - Interactor is null&quot;</span>));</div>
-<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span>    }</div>
-<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span> </div>
-<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span>    <span class="comment">// 플레이어 컨트롤러와 PlayerState 가져오기</span></div>
-<div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span>    APlayerController* PC = Cast&lt;APlayerController&gt;(Interactor-&gt;GetInstigatorController());</div>
-<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span>    <span class="keywordflow">if</span> (!PC)</div>
-<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span>    {</div>
-<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[Luggage] OnInteract - PlayerController is null&quot;</span>));</div>
-<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span>    }</div>
-<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span> </div>
-<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span>    APlayerState* PS = PC-&gt;GetPlayerState&lt;APlayerState&gt;();</div>
-<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span>    <span class="keywordflow">if</span> (!PS)</div>
-<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span>    {</div>
-<div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[Luggage] OnInteract - PlayerState is null&quot;</span>));</div>
-<div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span>    }</div>
+<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span>        <span class="comment">// InteractableComp의 DetectionRange 활성화</span></div>
+<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAluggage.html#a555315380e2dd75038c0d2aea8fe9b02">InteractableComp</a> &amp;&amp; <a class="code hl_variable" href="classAluggage.html#a555315380e2dd75038c0d2aea8fe9b02">InteractableComp</a>-&gt;DetectionRange)</div>
+<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span>        {</div>
+<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span>            <a class="code hl_variable" href="classAluggage.html#a555315380e2dd75038c0d2aea8fe9b02">InteractableComp</a>-&gt;DetectionRange-&gt;SetCollisionEnabled(ECollisionEnabled::QueryOnly);</div>
+<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span>            <a class="code hl_variable" href="classAluggage.html#a555315380e2dd75038c0d2aea8fe9b02">InteractableComp</a>-&gt;DetectionRange-&gt;SetGenerateOverlapEvents(<span class="keyword">true</span>);</div>
+<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span>        }</div>
+<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span>    }</div>
+<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span>    <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span>    {</div>
+<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span>        <span class="comment">// 충돌 비활성화</span></div>
+<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAluggage.html#aa50b6d8907fe87cf36258056394a15fe">BoxComp</a>)</div>
+<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span>        {</div>
+<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span>            <a class="code hl_variable" href="classAluggage.html#aa50b6d8907fe87cf36258056394a15fe">BoxComp</a>-&gt;SetSimulatePhysics(<span class="keyword">false</span>);</div>
+<div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span>            <a class="code hl_variable" href="classAluggage.html#aa50b6d8907fe87cf36258056394a15fe">BoxComp</a>-&gt;SetCollisionEnabled(ECollisionEnabled::NoCollision);</div>
+<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span>        }</div>
+<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span> </div>
+<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAluggage.html#a17e850881f1e195228802686a326ff09">Mesh1Comp</a>)</div>
+<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span>        {</div>
+<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span>            <a class="code hl_variable" href="classAluggage.html#a17e850881f1e195228802686a326ff09">Mesh1Comp</a>-&gt;SetSimulatePhysics(<span class="keyword">false</span>);</div>
+<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span>            <a class="code hl_variable" href="classAluggage.html#a17e850881f1e195228802686a326ff09">Mesh1Comp</a>-&gt;SetCollisionEnabled(ECollisionEnabled::NoCollision);</div>
+<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span>        }</div>
+<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span> </div>
+<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAluggage.html#a39b79b08760cd4bd35f94262f8073ce9">Mesh2Comp</a>)</div>
+<div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span>        {</div>
+<div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span>            <a class="code hl_variable" href="classAluggage.html#a39b79b08760cd4bd35f94262f8073ce9">Mesh2Comp</a>-&gt;SetCollisionEnabled(ECollisionEnabled::NoCollision);</div>
+<div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span>        }</div>
 <div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span> </div>
-<div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span>    <span class="comment">//PRINTLOG(TEXT(&quot;[Luggage] OnInteract - Player selected luggage with Target1: %s, Target2: %s&quot;), *Target1, *Target2);</span></div>
-<div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span> </div>
-<div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span>    <span class="comment">// 서버에 선택 알림</span></div>
-<div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span>    <a class="code hl_function" href="classAluggage.html#aefd0f676f44e0e7fcde6f6f29a709b60">ServerNotifySelection</a>(PS);</div>
-<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span>}</div>
+<div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAluggage.html#a848e21dc134b0695d352d7b7356f4497">Mesh3Comp</a>)</div>
+<div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span>        {</div>
+<div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span>            <a class="code hl_variable" href="classAluggage.html#a848e21dc134b0695d352d7b7356f4497">Mesh3Comp</a>-&gt;SetCollisionEnabled(ECollisionEnabled::NoCollision);</div>
+<div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span>        }</div>
+<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span> </div>
+<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span>        <span class="comment">// InteractableComp의 DetectionRange 비활성화 (위젯 노출 방지)</span></div>
+<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAluggage.html#a555315380e2dd75038c0d2aea8fe9b02">InteractableComp</a> &amp;&amp; <a class="code hl_variable" href="classAluggage.html#a555315380e2dd75038c0d2aea8fe9b02">InteractableComp</a>-&gt;DetectionRange)</div>
+<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span>        {</div>
+<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span>            <a class="code hl_variable" href="classAluggage.html#a555315380e2dd75038c0d2aea8fe9b02">InteractableComp</a>-&gt;DetectionRange-&gt;SetCollisionEnabled(ECollisionEnabled::NoCollision);</div>
+<div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span>            <a class="code hl_variable" href="classAluggage.html#a555315380e2dd75038c0d2aea8fe9b02">InteractableComp</a>-&gt;DetectionRange-&gt;SetGenerateOverlapEvents(<span class="keyword">false</span>);</div>
+<div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span>        }</div>
+<div class="line"><a id="l00310" name="l00310"></a><span class="lineno">  310</span> </div>
+<div class="line"><a id="l00311" name="l00311"></a><span class="lineno">  311</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;Aluggage::SetAllCollision - Collisions disabled for %s&quot;</span>), *GetName());</div>
+<div class="line"><a id="l00312" name="l00312"></a><span class="lineno">  312</span>    }</div>
+<div class="line"><a id="l00313" name="l00313"></a><span class="lineno">  313</span>}</div>
 </div>
-<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span> </div>
-<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span><span class="keywordtype">void</span> Aluggage::ServerNotifySelection_Implementation(APlayerState* Player)</div>
-<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span>{</div>
-<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span>    <span class="keywordflow">if</span> (!Player)</div>
-<div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span>    {</div>
-<div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[Luggage] ServerNotifySelection - Player is null&quot;</span>));</div>
-<div class="line"><a id="l00310" name="l00310"></a><span class="lineno">  310</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00311" name="l00311"></a><span class="lineno">  311</span>    }</div>
-<div class="line"><a id="l00312" name="l00312"></a><span class="lineno">  312</span> </div>
-<div class="line"><a id="l00313" name="l00313"></a><span class="lineno">  313</span>    <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[Luggage] ServerNotifySelection - Processing selection for player&quot;</span>));</div>
 <div class="line"><a id="l00314" name="l00314"></a><span class="lineno">  314</span> </div>
-<div class="line"><a id="l00315" name="l00315"></a><span class="lineno">  315</span>    <span class="comment">// GameMode에 캐리어 선택 알림</span></div>
-<div class="line"><a id="l00316" name="l00316"></a><span class="lineno">  316</span>    <a class="code hl_class" href="classALingoGameMode.html">ALingoGameMode</a>* GameMode = GetWorld()-&gt;GetAuthGameMode&lt;<a class="code hl_class" href="classALingoGameMode.html">ALingoGameMode</a>&gt;();</div>
-<div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span>    <span class="keywordflow">if</span> (GameMode)</div>
-<div class="line"><a id="l00318" name="l00318"></a><span class="lineno">  318</span>    {</div>
-<div class="line"><a id="l00319" name="l00319"></a><span class="lineno">  319</span>        GameMode-&gt;<a class="code hl_function" href="classALingoGameMode.html#a2dc692a142db2a84bf18f18e1602c078">HandleCarrierSelection</a>(Player, <span class="keyword">this</span>);</div>
-<div class="line"><a id="l00320" name="l00320"></a><span class="lineno">  320</span>    }</div>
-<div class="line"><a id="l00321" name="l00321"></a><span class="lineno">  321</span>    <span class="keywordflow">else</span></div>
-<div class="line"><a id="l00322" name="l00322"></a><span class="lineno">  322</span>    {</div>
-<div class="line"><a id="l00323" name="l00323"></a><span class="lineno">  323</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[Luggage] ServerNotifySelection - GameMode is null or not ALingoGameMode&quot;</span>));</div>
-<div class="line"><a id="l00324" name="l00324"></a><span class="lineno">  324</span>    }</div>
-<div class="line"><a id="l00325" name="l00325"></a><span class="lineno">  325</span>}</div>
-<div class="line"><a id="l00326" name="l00326"></a><span class="lineno">  326</span> </div>
-<div class="line"><a id="l00327" name="l00327"></a><span class="lineno">  327</span><span class="keywordtype">bool</span> Aluggage::ServerNotifySelection_Validate(APlayerState* Player)</div>
-<div class="line"><a id="l00328" name="l00328"></a><span class="lineno">  328</span>{</div>
-<div class="line"><a id="l00329" name="l00329"></a><span class="lineno">  329</span>    <span class="comment">// 기본적인 검증: Player가 유효한지 확인</span></div>
-<div class="line"><a id="l00330" name="l00330"></a><span class="lineno">  330</span>    <span class="keywordflow">return</span> Player != <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00331" name="l00331"></a><span class="lineno">  331</span>}</div>
-<div class="line"><a id="l00332" name="l00332"></a><span class="lineno">  332</span> </div>
-<div class="line"><a id="l00333" name="l00333"></a><span class="lineno">  333</span> </div>
-<div class="line"><a id="l00334" name="l00334"></a><span class="lineno">  334</span> </div>
-<div class="foldopen" id="foldopen00335" data-start="{" data-end="}">
-<div class="line"><a id="l00335" name="l00335"></a><span class="lineno"><a class="line" href="classAluggage.html#a3789494fc0c2605502fce38011914042">  335</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAluggage.html#a3789494fc0c2605502fce38011914042">Aluggage::PlayTTSAudio</a>()</div>
-<div class="line"><a id="l00336" name="l00336"></a><span class="lineno">  336</span>{</div>
-<div class="line"><a id="l00337" name="l00337"></a><span class="lineno">  337</span>    <a class="code hl_function" href="classAluggage.html#abea1c000fb3a8cfba115167adfa5f75c">RequestListenAudio</a>( FString::Printf(TEXT(<span class="stringliteral">&quot;%s %s&quot;</span>), *<a class="code hl_variable" href="classAluggage.html#a4a47514a5aff8824800c878ed73159c2">Color</a>, *<a class="code hl_variable" href="classAluggage.html#a899a9b0ace4772c62cb480b0251fd633">Pattern</a>) );</div>
-<div class="line"><a id="l00338" name="l00338"></a><span class="lineno">  338</span>}</div>
-</div>
+<div class="line"><a id="l00315" name="l00315"></a><span class="lineno">  315</span><span class="comment">// void Aluggage::InfoWidgetOn()</span></div>
+<div class="line"><a id="l00316" name="l00316"></a><span class="lineno">  316</span><span class="comment">// {</span></div>
+<div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span><span class="comment">//  WidgetComp-&gt;GetWidget()-&gt;SetVisibility(ESlateVisibility::Visible);</span></div>
+<div class="line"><a id="l00318" name="l00318"></a><span class="lineno">  318</span><span class="comment">// }</span></div>
+<div class="line"><a id="l00319" name="l00319"></a><span class="lineno">  319</span><span class="comment">//</span></div>
+<div class="line"><a id="l00320" name="l00320"></a><span class="lineno">  320</span><span class="comment">// void Aluggage::InfoWidgetOff()</span></div>
+<div class="line"><a id="l00321" name="l00321"></a><span class="lineno">  321</span><span class="comment">// {</span></div>
+<div class="line"><a id="l00322" name="l00322"></a><span class="lineno">  322</span><span class="comment">//  WidgetComp-&gt;GetWidget()-&gt;SetVisibility(ESlateVisibility::Hidden);</span></div>
+<div class="line"><a id="l00323" name="l00323"></a><span class="lineno">  323</span><span class="comment">// }</span></div>
+<div class="line"><a id="l00324" name="l00324"></a><span class="lineno">  324</span><span class="comment">//</span></div>
+<div class="line"><a id="l00325" name="l00325"></a><span class="lineno">  325</span><span class="comment">// void Aluggage::BillboardInfoWidget()</span></div>
+<div class="line"><a id="l00326" name="l00326"></a><span class="lineno">  326</span><span class="comment">// {</span></div>
+<div class="line"><a id="l00327" name="l00327"></a><span class="lineno">  327</span><span class="comment">//  // 카메라 가져오기</span></div>
+<div class="line"><a id="l00328" name="l00328"></a><span class="lineno">  328</span><span class="comment">//  AActor* cam = UGameplayStatics::GetPlayerCameraManager(GetWorld(), 0);</span></div>
+<div class="line"><a id="l00329" name="l00329"></a><span class="lineno">  329</span><span class="comment">//</span></div>
+<div class="line"><a id="l00330" name="l00330"></a><span class="lineno">  330</span><span class="comment">//  if ( cam == nullptr)</span></div>
+<div class="line"><a id="l00331" name="l00331"></a><span class="lineno">  331</span><span class="comment">//      return;</span></div>
+<div class="line"><a id="l00332" name="l00332"></a><span class="lineno">  332</span><span class="comment">//  </span></div>
+<div class="line"><a id="l00333" name="l00333"></a><span class="lineno">  333</span><span class="comment">//  // 카메라 backward 벡터, up 벡터를 이용하여 Rotator 계산</span></div>
+<div class="line"><a id="l00334" name="l00334"></a><span class="lineno">  334</span><span class="comment">//  FRotator rot = UKismetMathLibrary::MakeRotFromXZ(-cam-&gt;GetActorForwardVector(), cam-&gt;GetActorUpVector());</span></div>
+<div class="line"><a id="l00335" name="l00335"></a><span class="lineno">  335</span><span class="comment">//  rot.Pitch = 0;</span></div>
+<div class="line"><a id="l00336" name="l00336"></a><span class="lineno">  336</span><span class="comment">//  // 회전값으로 설정</span></div>
+<div class="line"><a id="l00337" name="l00337"></a><span class="lineno">  337</span><span class="comment">//  WidgetComp-&gt;SetWorldRotation(rot);</span></div>
+<div class="line"><a id="l00338" name="l00338"></a><span class="lineno">  338</span><span class="comment">// }</span></div>
 <div class="line"><a id="l00339" name="l00339"></a><span class="lineno">  339</span> </div>
-<div class="foldopen" id="foldopen00340" data-start="{" data-end="}">
-<div class="line"><a id="l00340" name="l00340"></a><span class="lineno"><a class="line" href="classAluggage.html#abea1c000fb3a8cfba115167adfa5f75c">  340</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAluggage.html#abea1c000fb3a8cfba115167adfa5f75c">Aluggage::RequestListenAudio</a>(<span class="keyword">const</span> FString&amp; AudioText)</div>
-<div class="line"><a id="l00341" name="l00341"></a><span class="lineno">  341</span>{</div>
-<div class="line"><a id="l00342" name="l00342"></a><span class="lineno">  342</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAluggage.html#a3b0d315c9c3009d8c645a7fdf61f11a4">bIsRequest</a>)</div>
-<div class="line"><a id="l00343" name="l00343"></a><span class="lineno">  343</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00340" name="l00340"></a><span class="lineno">  340</span> </div>
+<div class="line"><a id="l00341" name="l00341"></a><span class="lineno">  341</span><span class="comment">//--------------------------------------------------------------//</span></div>
+<div class="line"><a id="l00342" name="l00342"></a><span class="lineno">  342</span><span class="comment">// Read Quest Interaction</span></div>
+<div class="line"><a id="l00343" name="l00343"></a><span class="lineno">  343</span><span class="comment">//--------------------------------------------------------------//</span></div>
 <div class="line"><a id="l00344" name="l00344"></a><span class="lineno">  344</span> </div>
-<div class="line"><a id="l00345" name="l00345"></a><span class="lineno">  345</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> KLingoNetwork = UKLingoNetworkSystem::Get(GetWorld()))</div>
-<div class="line"><a id="l00346" name="l00346"></a><span class="lineno">  346</span>    {</div>
-<div class="line"><a id="l00347" name="l00347"></a><span class="lineno">  347</span>        <a class="code hl_variable" href="classAluggage.html#a3b0d315c9c3009d8c645a7fdf61f11a4">bIsRequest</a> = <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00348" name="l00348"></a><span class="lineno">  348</span> </div>
-<div class="line"><a id="l00349" name="l00349"></a><span class="lineno">  349</span>        KLingoNetwork-&gt;RequestListenAudio(</div>
-<div class="line"><a id="l00350" name="l00350"></a><span class="lineno">  350</span>            AudioText,</div>
-<div class="line"><a id="l00351" name="l00351"></a><span class="lineno">  351</span>            FResponseListenAudioDelegate::CreateUObject(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classAluggage.html#accf2ff9c735643d3dccaab0f682bbaba">Aluggage::OnResponseListenAudio</a>)</div>
-<div class="line"><a id="l00352" name="l00352"></a><span class="lineno">  352</span>        );</div>
-<div class="line"><a id="l00353" name="l00353"></a><span class="lineno">  353</span>    }</div>
-<div class="line"><a id="l00354" name="l00354"></a><span class="lineno">  354</span>}</div>
+<div class="foldopen" id="foldopen00345" data-start="{" data-end="}">
+<div class="line"><a id="l00345" name="l00345"></a><span class="lineno"><a class="line" href="classAluggage.html#aecbb757aa07316696bb4326f3b8dd74f">  345</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAluggage.html#aecbb757aa07316696bb4326f3b8dd74f">Aluggage::OnInteract</a>(AActor* Interactor)</div>
+<div class="line"><a id="l00346" name="l00346"></a><span class="lineno">  346</span>{</div>
+<div class="line"><a id="l00347" name="l00347"></a><span class="lineno">  347</span>    <span class="keywordflow">if</span> (!Interactor)</div>
+<div class="line"><a id="l00348" name="l00348"></a><span class="lineno">  348</span>    {</div>
+<div class="line"><a id="l00349" name="l00349"></a><span class="lineno">  349</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[Luggage] OnInteract - Interactor is null&quot;</span>));</div>
+<div class="line"><a id="l00350" name="l00350"></a><span class="lineno">  350</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00351" name="l00351"></a><span class="lineno">  351</span>    }</div>
+<div class="line"><a id="l00352" name="l00352"></a><span class="lineno">  352</span> </div>
+<div class="line"><a id="l00353" name="l00353"></a><span class="lineno">  353</span>    <span class="comment">// 플레이어 컨트롤러와 PlayerState 가져오기</span></div>
+<div class="line"><a id="l00354" name="l00354"></a><span class="lineno">  354</span>    APlayerController* PC = Cast&lt;APlayerController&gt;(Interactor-&gt;GetInstigatorController());</div>
+<div class="line"><a id="l00355" name="l00355"></a><span class="lineno">  355</span>    <span class="keywordflow">if</span> (!PC)</div>
+<div class="line"><a id="l00356" name="l00356"></a><span class="lineno">  356</span>    {</div>
+<div class="line"><a id="l00357" name="l00357"></a><span class="lineno">  357</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[Luggage] OnInteract - PlayerController is null&quot;</span>));</div>
+<div class="line"><a id="l00358" name="l00358"></a><span class="lineno">  358</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00359" name="l00359"></a><span class="lineno">  359</span>    }</div>
+<div class="line"><a id="l00360" name="l00360"></a><span class="lineno">  360</span> </div>
+<div class="line"><a id="l00361" name="l00361"></a><span class="lineno">  361</span>    APlayerState* PS = PC-&gt;GetPlayerState&lt;APlayerState&gt;();</div>
+<div class="line"><a id="l00362" name="l00362"></a><span class="lineno">  362</span>    <span class="keywordflow">if</span> (!PS)</div>
+<div class="line"><a id="l00363" name="l00363"></a><span class="lineno">  363</span>    {</div>
+<div class="line"><a id="l00364" name="l00364"></a><span class="lineno">  364</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[Luggage] OnInteract - PlayerState is null&quot;</span>));</div>
+<div class="line"><a id="l00365" name="l00365"></a><span class="lineno">  365</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00366" name="l00366"></a><span class="lineno">  366</span>    }</div>
+<div class="line"><a id="l00367" name="l00367"></a><span class="lineno">  367</span> </div>
+<div class="line"><a id="l00368" name="l00368"></a><span class="lineno">  368</span>    <span class="comment">//PRINTLOG(TEXT(&quot;[Luggage] OnInteract - Player selected luggage with Target1: %s, Target2: %s&quot;), *Target1, *Target2);</span></div>
+<div class="line"><a id="l00369" name="l00369"></a><span class="lineno">  369</span> </div>
+<div class="line"><a id="l00370" name="l00370"></a><span class="lineno">  370</span>    <span class="comment">// 서버에 선택 알림</span></div>
+<div class="line"><a id="l00371" name="l00371"></a><span class="lineno">  371</span>    <a class="code hl_function" href="classAluggage.html#aefd0f676f44e0e7fcde6f6f29a709b60">ServerNotifySelection</a>(PS);</div>
+<div class="line"><a id="l00372" name="l00372"></a><span class="lineno">  372</span>}</div>
 </div>
-<div class="line"><a id="l00355" name="l00355"></a><span class="lineno">  355</span> </div>
-<div class="foldopen" id="foldopen00356" data-start="{" data-end="}">
-<div class="line"><a id="l00356" name="l00356"></a><span class="lineno"><a class="line" href="classAluggage.html#accf2ff9c735643d3dccaab0f682bbaba">  356</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAluggage.html#accf2ff9c735643d3dccaab0f682bbaba">Aluggage::OnResponseListenAudio</a>(<a class="code hl_struct" href="structFResponseListenAudio.html">FResponseListenAudio</a>&amp; ResponseData, <span class="keywordtype">bool</span> bWasSuccessful)</div>
-<div class="line"><a id="l00357" name="l00357"></a><span class="lineno">  357</span>{</div>
-<div class="line"><a id="l00358" name="l00358"></a><span class="lineno">  358</span>    <a class="code hl_variable" href="classAluggage.html#a3b0d315c9c3009d8c645a7fdf61f11a4">bIsRequest</a> = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00359" name="l00359"></a><span class="lineno">  359</span> </div>
-<div class="line"><a id="l00360" name="l00360"></a><span class="lineno">  360</span>    <span class="keywordflow">if</span> (bWasSuccessful)</div>
-<div class="line"><a id="l00361" name="l00361"></a><span class="lineno">  361</span>    {</div>
-<div class="line"><a id="l00362" name="l00362"></a><span class="lineno">  362</span>        <span class="keywordflow">if</span> (<span class="keyword">auto</span> PlayerActor = <a class="code hl_function" href="classULingoGameHelper.html#aedc78e0ec65a7aad312693bd1719bff8">ULingoGameHelper::GetPlayerActor</a>(<span class="keyword">this</span>))</div>
-<div class="line"><a id="l00363" name="l00363"></a><span class="lineno">  363</span>            PlayerActor-&gt;PlayTTSAudio(ResponseData.<a class="code hl_variable" href="structFResponseListenAudio.html#a39dfdd52ce3770dfbccf800986ce4607">audio_base64</a>);</div>
-<div class="line"><a id="l00364" name="l00364"></a><span class="lineno">  364</span>    }</div>
-<div class="line"><a id="l00365" name="l00365"></a><span class="lineno">  365</span>}</div>
+<div class="line"><a id="l00373" name="l00373"></a><span class="lineno">  373</span> </div>
+<div class="line"><a id="l00374" name="l00374"></a><span class="lineno">  374</span><span class="keywordtype">void</span> Aluggage::ServerNotifySelection_Implementation(APlayerState* Player)</div>
+<div class="line"><a id="l00375" name="l00375"></a><span class="lineno">  375</span>{</div>
+<div class="line"><a id="l00376" name="l00376"></a><span class="lineno">  376</span>    <span class="keywordflow">if</span> (!Player)</div>
+<div class="line"><a id="l00377" name="l00377"></a><span class="lineno">  377</span>    {</div>
+<div class="line"><a id="l00378" name="l00378"></a><span class="lineno">  378</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[Luggage] ServerNotifySelection - Player is null&quot;</span>));</div>
+<div class="line"><a id="l00379" name="l00379"></a><span class="lineno">  379</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00380" name="l00380"></a><span class="lineno">  380</span>    }</div>
+<div class="line"><a id="l00381" name="l00381"></a><span class="lineno">  381</span> </div>
+<div class="line"><a id="l00382" name="l00382"></a><span class="lineno">  382</span>    <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[Luggage] ServerNotifySelection - Processing selection for player&quot;</span>));</div>
+<div class="line"><a id="l00383" name="l00383"></a><span class="lineno">  383</span> </div>
+<div class="line"><a id="l00384" name="l00384"></a><span class="lineno">  384</span>    <span class="comment">// GameMode에 캐리어 선택 알림</span></div>
+<div class="line"><a id="l00385" name="l00385"></a><span class="lineno">  385</span>    <a class="code hl_class" href="classALingoGameMode.html">ALingoGameMode</a>* GameMode = GetWorld()-&gt;GetAuthGameMode&lt;<a class="code hl_class" href="classALingoGameMode.html">ALingoGameMode</a>&gt;();</div>
+<div class="line"><a id="l00386" name="l00386"></a><span class="lineno">  386</span>    <span class="keywordflow">if</span> (GameMode)</div>
+<div class="line"><a id="l00387" name="l00387"></a><span class="lineno">  387</span>    {</div>
+<div class="line"><a id="l00388" name="l00388"></a><span class="lineno">  388</span>        GameMode-&gt;<a class="code hl_function" href="classALingoGameMode.html#a2dc692a142db2a84bf18f18e1602c078">HandleCarrierSelection</a>(Player, <span class="keyword">this</span>);</div>
+<div class="line"><a id="l00389" name="l00389"></a><span class="lineno">  389</span>    }</div>
+<div class="line"><a id="l00390" name="l00390"></a><span class="lineno">  390</span>    <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00391" name="l00391"></a><span class="lineno">  391</span>    {</div>
+<div class="line"><a id="l00392" name="l00392"></a><span class="lineno">  392</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[Luggage] ServerNotifySelection - GameMode is null or not ALingoGameMode&quot;</span>));</div>
+<div class="line"><a id="l00393" name="l00393"></a><span class="lineno">  393</span>    }</div>
+<div class="line"><a id="l00394" name="l00394"></a><span class="lineno">  394</span>}</div>
+<div class="line"><a id="l00395" name="l00395"></a><span class="lineno">  395</span> </div>
+<div class="line"><a id="l00396" name="l00396"></a><span class="lineno">  396</span><span class="keywordtype">bool</span> Aluggage::ServerNotifySelection_Validate(APlayerState* Player)</div>
+<div class="line"><a id="l00397" name="l00397"></a><span class="lineno">  397</span>{</div>
+<div class="line"><a id="l00398" name="l00398"></a><span class="lineno">  398</span>    <span class="comment">// 기본적인 검증: Player가 유효한지 확인</span></div>
+<div class="line"><a id="l00399" name="l00399"></a><span class="lineno">  399</span>    <span class="keywordflow">return</span> Player != <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00400" name="l00400"></a><span class="lineno">  400</span>}</div>
+<div class="line"><a id="l00401" name="l00401"></a><span class="lineno">  401</span> </div>
+<div class="line"><a id="l00402" name="l00402"></a><span class="lineno">  402</span> </div>
+<div class="line"><a id="l00403" name="l00403"></a><span class="lineno">  403</span> </div>
+<div class="foldopen" id="foldopen00404" data-start="{" data-end="}">
+<div class="line"><a id="l00404" name="l00404"></a><span class="lineno"><a class="line" href="classAluggage.html#a3789494fc0c2605502fce38011914042">  404</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAluggage.html#a3789494fc0c2605502fce38011914042">Aluggage::PlayTTSAudio</a>()</div>
+<div class="line"><a id="l00405" name="l00405"></a><span class="lineno">  405</span>{</div>
+<div class="line"><a id="l00406" name="l00406"></a><span class="lineno">  406</span>    <a class="code hl_function" href="classAluggage.html#abea1c000fb3a8cfba115167adfa5f75c">RequestListenAudio</a>( FString::Printf(TEXT(<span class="stringliteral">&quot;%s %s&quot;</span>), *<a class="code hl_variable" href="classAluggage.html#a4a47514a5aff8824800c878ed73159c2">Color</a>, *<a class="code hl_variable" href="classAluggage.html#a899a9b0ace4772c62cb480b0251fd633">Pattern</a>) );</div>
+<div class="line"><a id="l00407" name="l00407"></a><span class="lineno">  407</span>}</div>
+</div>
+<div class="line"><a id="l00408" name="l00408"></a><span class="lineno">  408</span> </div>
+<div class="foldopen" id="foldopen00409" data-start="{" data-end="}">
+<div class="line"><a id="l00409" name="l00409"></a><span class="lineno"><a class="line" href="classAluggage.html#abea1c000fb3a8cfba115167adfa5f75c">  409</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAluggage.html#abea1c000fb3a8cfba115167adfa5f75c">Aluggage::RequestListenAudio</a>(<span class="keyword">const</span> FString&amp; AudioText)</div>
+<div class="line"><a id="l00410" name="l00410"></a><span class="lineno">  410</span>{</div>
+<div class="line"><a id="l00411" name="l00411"></a><span class="lineno">  411</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAluggage.html#a3b0d315c9c3009d8c645a7fdf61f11a4">bIsRequest</a>)</div>
+<div class="line"><a id="l00412" name="l00412"></a><span class="lineno">  412</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00413" name="l00413"></a><span class="lineno">  413</span> </div>
+<div class="line"><a id="l00414" name="l00414"></a><span class="lineno">  414</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> KLingoNetwork = UKLingoNetworkSystem::Get(GetWorld()))</div>
+<div class="line"><a id="l00415" name="l00415"></a><span class="lineno">  415</span>    {</div>
+<div class="line"><a id="l00416" name="l00416"></a><span class="lineno">  416</span>        <a class="code hl_variable" href="classAluggage.html#a3b0d315c9c3009d8c645a7fdf61f11a4">bIsRequest</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00417" name="l00417"></a><span class="lineno">  417</span> </div>
+<div class="line"><a id="l00418" name="l00418"></a><span class="lineno">  418</span>        KLingoNetwork-&gt;RequestListenAudio(</div>
+<div class="line"><a id="l00419" name="l00419"></a><span class="lineno">  419</span>            AudioText,</div>
+<div class="line"><a id="l00420" name="l00420"></a><span class="lineno">  420</span>            FResponseListenAudioDelegate::CreateUObject(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classAluggage.html#accf2ff9c735643d3dccaab0f682bbaba">Aluggage::OnResponseListenAudio</a>)</div>
+<div class="line"><a id="l00421" name="l00421"></a><span class="lineno">  421</span>        );</div>
+<div class="line"><a id="l00422" name="l00422"></a><span class="lineno">  422</span>    }</div>
+<div class="line"><a id="l00423" name="l00423"></a><span class="lineno">  423</span>}</div>
+</div>
+<div class="line"><a id="l00424" name="l00424"></a><span class="lineno">  424</span> </div>
+<div class="foldopen" id="foldopen00425" data-start="{" data-end="}">
+<div class="line"><a id="l00425" name="l00425"></a><span class="lineno"><a class="line" href="classAluggage.html#accf2ff9c735643d3dccaab0f682bbaba">  425</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAluggage.html#accf2ff9c735643d3dccaab0f682bbaba">Aluggage::OnResponseListenAudio</a>(<a class="code hl_struct" href="structFResponseListenAudio.html">FResponseListenAudio</a>&amp; ResponseData, <span class="keywordtype">bool</span> bWasSuccessful)</div>
+<div class="line"><a id="l00426" name="l00426"></a><span class="lineno">  426</span>{</div>
+<div class="line"><a id="l00427" name="l00427"></a><span class="lineno">  427</span>    <a class="code hl_variable" href="classAluggage.html#a3b0d315c9c3009d8c645a7fdf61f11a4">bIsRequest</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00428" name="l00428"></a><span class="lineno">  428</span> </div>
+<div class="line"><a id="l00429" name="l00429"></a><span class="lineno">  429</span>    <span class="keywordflow">if</span> (bWasSuccessful)</div>
+<div class="line"><a id="l00430" name="l00430"></a><span class="lineno">  430</span>    {</div>
+<div class="line"><a id="l00431" name="l00431"></a><span class="lineno">  431</span>        <span class="keywordflow">if</span> (<span class="keyword">auto</span> PlayerActor = <a class="code hl_function" href="classULingoGameHelper.html#aedc78e0ec65a7aad312693bd1719bff8">ULingoGameHelper::GetPlayerActor</a>(<span class="keyword">this</span>))</div>
+<div class="line"><a id="l00432" name="l00432"></a><span class="lineno">  432</span>            PlayerActor-&gt;PlayTTSAudio(ResponseData.<a class="code hl_variable" href="structFResponseListenAudio.html#a39dfdd52ce3770dfbccf800986ce4607">audio_base64</a>);</div>
+<div class="line"><a id="l00433" name="l00433"></a><span class="lineno">  433</span>    }</div>
+<div class="line"><a id="l00434" name="l00434"></a><span class="lineno">  434</span>}</div>
 </div>
 <div class="ttc" id="aALingoGameMode_8h_html"><div class="ttname"><a href="ALingoGameMode_8h.html">ALingoGameMode.h</a></div></div>
 <div class="ttc" id="aALingoPlayerState_8h_html"><div class="ttname"><a href="ALingoPlayerState_8h.html">ALingoPlayerState.h</a></div></div>
@@ -517,10 +588,10 @@ $(document).ready(function(){initNavTree('luggage_8cpp_source.html',''); initRes
 <div class="ttc" id="aclassAluggage_html_a134ee387e130f327c4fd4f02f4079cb0"><div class="ttname"><a href="classAluggage.html#a134ee387e130f327c4fd4f02f4079cb0">Aluggage::UpdateWidget</a></div><div class="ttdeci">void UpdateWidget()</div><div class="ttdef"><b>Definition</b> <a href="luggage_8cpp_source.html#l00226">luggage.cpp:226</a></div></div>
 <div class="ttc" id="aclassAluggage_html_a17e850881f1e195228802686a326ff09"><div class="ttname"><a href="classAluggage.html#a17e850881f1e195228802686a326ff09">Aluggage::Mesh1Comp</a></div><div class="ttdeci">TObjectPtr&lt; class UStaticMeshComponent &gt; Mesh1Comp</div><div class="ttdef"><b>Definition</b> <a href="luggage_8h_source.html#l00031">luggage.h:31</a></div></div>
 <div class="ttc" id="aclassAluggage_html_a2ee72cd006dc00ed6f590c5a07bc4d33"><div class="ttname"><a href="classAluggage.html#a2ee72cd006dc00ed6f590c5a07bc4d33">Aluggage::OutlineOn</a></div><div class="ttdeci">void OutlineOn()</div><div class="ttdef"><b>Definition</b> <a href="luggage_8cpp_source.html#l00236">luggage.cpp:236</a></div></div>
-<div class="ttc" id="aclassAluggage_html_a3789494fc0c2605502fce38011914042"><div class="ttname"><a href="classAluggage.html#a3789494fc0c2605502fce38011914042">Aluggage::PlayTTSAudio</a></div><div class="ttdeci">void PlayTTSAudio()</div><div class="ttdef"><b>Definition</b> <a href="luggage_8cpp_source.html#l00335">luggage.cpp:335</a></div></div>
+<div class="ttc" id="aclassAluggage_html_a3789494fc0c2605502fce38011914042"><div class="ttname"><a href="classAluggage.html#a3789494fc0c2605502fce38011914042">Aluggage::PlayTTSAudio</a></div><div class="ttdeci">void PlayTTSAudio()</div><div class="ttdef"><b>Definition</b> <a href="luggage_8cpp_source.html#l00404">luggage.cpp:404</a></div></div>
 <div class="ttc" id="aclassAluggage_html_a39b79b08760cd4bd35f94262f8073ce9"><div class="ttname"><a href="classAluggage.html#a39b79b08760cd4bd35f94262f8073ce9">Aluggage::Mesh2Comp</a></div><div class="ttdeci">TObjectPtr&lt; class UStaticMeshComponent &gt; Mesh2Comp</div><div class="ttdef"><b>Definition</b> <a href="luggage_8h_source.html#l00033">luggage.h:33</a></div></div>
 <div class="ttc" id="aclassAluggage_html_a3aa2051ad58baef95efc7a35a1997184"><div class="ttname"><a href="classAluggage.html#a3aa2051ad58baef95efc7a35a1997184">Aluggage::BeginPlay</a></div><div class="ttdeci">virtual void BeginPlay() override</div><div class="ttdef"><b>Definition</b> <a href="luggage_8cpp_source.html#l00076">luggage.cpp:76</a></div></div>
-<div class="ttc" id="aclassAluggage_html_a3b0d315c9c3009d8c645a7fdf61f11a4"><div class="ttname"><a href="classAluggage.html#a3b0d315c9c3009d8c645a7fdf61f11a4">Aluggage::bIsRequest</a></div><div class="ttdeci">bool bIsRequest</div><div class="ttdef"><b>Definition</b> <a href="luggage_8h_source.html#l00150">luggage.h:150</a></div></div>
+<div class="ttc" id="aclassAluggage_html_a3b0d315c9c3009d8c645a7fdf61f11a4"><div class="ttname"><a href="classAluggage.html#a3b0d315c9c3009d8c645a7fdf61f11a4">Aluggage::bIsRequest</a></div><div class="ttdeci">bool bIsRequest</div><div class="ttdef"><b>Definition</b> <a href="luggage_8h_source.html#l00156">luggage.h:156</a></div></div>
 <div class="ttc" id="aclassAluggage_html_a3bb4871ec229b35443c41bd539f1c9a7"><div class="ttname"><a href="classAluggage.html#a3bb4871ec229b35443c41bd539f1c9a7">Aluggage::bIsBeingHooked</a></div><div class="ttdeci">bool bIsBeingHooked</div><div class="ttdoc">훅 중 플래그 (복제됨)</div><div class="ttdef"><b>Definition</b> <a href="luggage_8h_source.html#l00055">luggage.h:55</a></div></div>
 <div class="ttc" id="aclassAluggage_html_a4198ee3271bbf5f2d66d98b1dd4230ec"><div class="ttname"><a href="classAluggage.html#a4198ee3271bbf5f2d66d98b1dd4230ec">Aluggage::WidgetComp</a></div><div class="ttdeci">TObjectPtr&lt; class UWidgetComponent &gt; WidgetComp</div><div class="ttdef"><b>Definition</b> <a href="luggage_8h_source.html#l00040">luggage.h:40</a></div></div>
 <div class="ttc" id="aclassAluggage_html_a4a47514a5aff8824800c878ed73159c2"><div class="ttname"><a href="classAluggage.html#a4a47514a5aff8824800c878ed73159c2">Aluggage::Color</a></div><div class="ttdeci">FString Color</div><div class="ttdef"><b>Definition</b> <a href="luggage_8h_source.html#l00079">luggage.h:79</a></div></div>
@@ -534,18 +605,19 @@ $(document).ready(function(){initNavTree('luggage_8cpp_source.html',''); initRes
 <div class="ttc" id="aclassAluggage_html_a848e21dc134b0695d352d7b7356f4497"><div class="ttname"><a href="classAluggage.html#a848e21dc134b0695d352d7b7356f4497">Aluggage::Mesh3Comp</a></div><div class="ttdeci">TObjectPtr&lt; class UStaticMeshComponent &gt; Mesh3Comp</div><div class="ttdef"><b>Definition</b> <a href="luggage_8h_source.html#l00035">luggage.h:35</a></div></div>
 <div class="ttc" id="aclassAluggage_html_a880c239655a5b0ad93ba5fa26bcf49c4"><div class="ttname"><a href="classAluggage.html#a880c239655a5b0ad93ba5fa26bcf49c4">Aluggage::SpawnIdx</a></div><div class="ttdeci">int32 SpawnIdx</div><div class="ttdef"><b>Definition</b> <a href="luggage_8h_source.html#l00077">luggage.h:77</a></div></div>
 <div class="ttc" id="aclassAluggage_html_a899a9b0ace4772c62cb480b0251fd633"><div class="ttname"><a href="classAluggage.html#a899a9b0ace4772c62cb480b0251fd633">Aluggage::Pattern</a></div><div class="ttdeci">FString Pattern</div><div class="ttdef"><b>Definition</b> <a href="luggage_8h_source.html#l00081">luggage.h:81</a></div></div>
-<div class="ttc" id="aclassAluggage_html_a9721b1acd5f01a34aafa2753c57a2140"><div class="ttname"><a href="classAluggage.html#a9721b1acd5f01a34aafa2753c57a2140">Aluggage::bWidgetInitialized</a></div><div class="ttdeci">bool bWidgetInitialized</div><div class="ttdef"><b>Definition</b> <a href="luggage_8h_source.html#l00119">luggage.h:119</a></div></div>
+<div class="ttc" id="aclassAluggage_html_a9721b1acd5f01a34aafa2753c57a2140"><div class="ttname"><a href="classAluggage.html#a9721b1acd5f01a34aafa2753c57a2140">Aluggage::bWidgetInitialized</a></div><div class="ttdeci">bool bWidgetInitialized</div><div class="ttdef"><b>Definition</b> <a href="luggage_8h_source.html#l00125">luggage.h:125</a></div></div>
 <div class="ttc" id="aclassAluggage_html_aa1d90a7ebc5c838ebe50bfc79dfd6890"><div class="ttname"><a href="classAluggage.html#aa1d90a7ebc5c838ebe50bfc79dfd6890">Aluggage::Tick</a></div><div class="ttdeci">virtual void Tick(float DeltaTime) override</div><div class="ttdef"><b>Definition</b> <a href="luggage_8cpp_source.html#l00086">luggage.cpp:86</a></div></div>
 <div class="ttc" id="aclassAluggage_html_aa50b6d8907fe87cf36258056394a15fe"><div class="ttname"><a href="classAluggage.html#aa50b6d8907fe87cf36258056394a15fe">Aluggage::BoxComp</a></div><div class="ttdeci">TObjectPtr&lt; class UBoxComponent &gt; BoxComp</div><div class="ttdef"><b>Definition</b> <a href="luggage_8h_source.html#l00028">luggage.h:28</a></div></div>
 <div class="ttc" id="aclassAluggage_html_aa5a78203e58b47252c35b9ba5f1cf58c"><div class="ttname"><a href="classAluggage.html#aa5a78203e58b47252c35b9ba5f1cf58c">Aluggage::ApplyColorToMesh</a></div><div class="ttdeci">void ApplyColorToMesh(int32 InColorIdx)</div><div class="ttdef"><b>Definition</b> <a href="luggage_8cpp_source.html#l00165">luggage.cpp:165</a></div></div>
 <div class="ttc" id="aclassAluggage_html_ab59f99b7292d0987106cbc396f563b77"><div class="ttname"><a href="classAluggage.html#ab59f99b7292d0987106cbc396f563b77">Aluggage::OnRep_ColorIdx</a></div><div class="ttdeci">void OnRep_ColorIdx()</div><div class="ttdef"><b>Definition</b> <a href="luggage_8cpp_source.html#l00133">luggage.cpp:133</a></div></div>
 <div class="ttc" id="aclassAluggage_html_abe4cebd52c233ef35c1278b96c77eda8"><div class="ttname"><a href="classAluggage.html#abe4cebd52c233ef35c1278b96c77eda8">Aluggage::Aluggage</a></div><div class="ttdeci">Aluggage()</div><div class="ttdef"><b>Definition</b> <a href="luggage_8cpp_source.html#l00024">luggage.cpp:24</a></div></div>
-<div class="ttc" id="aclassAluggage_html_abea1c000fb3a8cfba115167adfa5f75c"><div class="ttname"><a href="classAluggage.html#abea1c000fb3a8cfba115167adfa5f75c">Aluggage::RequestListenAudio</a></div><div class="ttdeci">void RequestListenAudio(const FString &amp;AudioText)</div><div class="ttdef"><b>Definition</b> <a href="luggage_8cpp_source.html#l00340">luggage.cpp:340</a></div></div>
+<div class="ttc" id="aclassAluggage_html_abea1c000fb3a8cfba115167adfa5f75c"><div class="ttname"><a href="classAluggage.html#abea1c000fb3a8cfba115167adfa5f75c">Aluggage::RequestListenAudio</a></div><div class="ttdeci">void RequestListenAudio(const FString &amp;AudioText)</div><div class="ttdef"><b>Definition</b> <a href="luggage_8cpp_source.html#l00409">luggage.cpp:409</a></div></div>
 <div class="ttc" id="aclassAluggage_html_ac262bad2a47ddf04634ba7a0bcf2615c"><div class="ttname"><a href="classAluggage.html#ac262bad2a47ddf04634ba7a0bcf2615c">Aluggage::OnRep_IsBeingHooked</a></div><div class="ttdeci">void OnRep_IsBeingHooked()</div><div class="ttdoc">bIsBeingHooked 복제 시 호출되는 콜백</div><div class="ttdef"><b>Definition</b> <a href="luggage_8cpp_source.html#l00148">luggage.cpp:148</a></div></div>
-<div class="ttc" id="aclassAluggage_html_accf2ff9c735643d3dccaab0f682bbaba"><div class="ttname"><a href="classAluggage.html#accf2ff9c735643d3dccaab0f682bbaba">Aluggage::OnResponseListenAudio</a></div><div class="ttdeci">void OnResponseListenAudio(FResponseListenAudio &amp;ResponseData, bool bWasSuccessful)</div><div class="ttdef"><b>Definition</b> <a href="luggage_8cpp_source.html#l00356">luggage.cpp:356</a></div></div>
+<div class="ttc" id="aclassAluggage_html_accf2ff9c735643d3dccaab0f682bbaba"><div class="ttname"><a href="classAluggage.html#accf2ff9c735643d3dccaab0f682bbaba">Aluggage::OnResponseListenAudio</a></div><div class="ttdeci">void OnResponseListenAudio(FResponseListenAudio &amp;ResponseData, bool bWasSuccessful)</div><div class="ttdef"><b>Definition</b> <a href="luggage_8cpp_source.html#l00425">luggage.cpp:425</a></div></div>
 <div class="ttc" id="aclassAluggage_html_ae04cf58842e9bf680682da60e0c7d584"><div class="ttname"><a href="classAluggage.html#ae04cf58842e9bf680682da60e0c7d584">Aluggage::HookedBy</a></div><div class="ttdeci">TObjectPtr&lt; AActor &gt; HookedBy</div><div class="ttdoc">현재 이 Luggage를 훅하고 있는 플레이어</div><div class="ttdef"><b>Definition</b> <a href="luggage_8h_source.html#l00062">luggage.h:62</a></div></div>
 <div class="ttc" id="aclassAluggage_html_ae08336c2883641c70aafa86c0a3c32a2"><div class="ttname"><a href="classAluggage.html#ae08336c2883641c70aafa86c0a3c32a2">Aluggage::SetLuggageInfo</a></div><div class="ttdeci">void SetLuggageInfo(int32 InIdx, FString InColor, FString InPattern)</div><div class="ttdef"><b>Definition</b> <a href="luggage_8cpp_source.html#l00126">luggage.cpp:126</a></div></div>
-<div class="ttc" id="aclassAluggage_html_aecbb757aa07316696bb4326f3b8dd74f"><div class="ttname"><a href="classAluggage.html#aecbb757aa07316696bb4326f3b8dd74f">Aluggage::OnInteract</a></div><div class="ttdeci">void OnInteract(AActor *Interactor)</div><div class="ttdoc">플레이어가 캐리어를 선택했을 때 호출됩니다.</div><div class="ttdef"><b>Definition</b> <a href="luggage_8cpp_source.html#l00276">luggage.cpp:276</a></div></div>
+<div class="ttc" id="aclassAluggage_html_ae5f511820df4a129e85e81b727b48bea"><div class="ttname"><a href="classAluggage.html#ae5f511820df4a129e85e81b727b48bea">Aluggage::SetAllCollision</a></div><div class="ttdeci">void SetAllCollision(bool bEnable)</div><div class="ttdoc">모든 컴포넌트의 충돌과 물리를 설정합니다.</div><div class="ttdef"><b>Definition</b> <a href="luggage_8cpp_source.html#l00246">luggage.cpp:246</a></div></div>
+<div class="ttc" id="aclassAluggage_html_aecbb757aa07316696bb4326f3b8dd74f"><div class="ttname"><a href="classAluggage.html#aecbb757aa07316696bb4326f3b8dd74f">Aluggage::OnInteract</a></div><div class="ttdeci">void OnInteract(AActor *Interactor)</div><div class="ttdoc">플레이어가 캐리어를 선택했을 때 호출됩니다.</div><div class="ttdef"><b>Definition</b> <a href="luggage_8cpp_source.html#l00345">luggage.cpp:345</a></div></div>
 <div class="ttc" id="aclassAluggage_html_aefd0f676f44e0e7fcde6f6f29a709b60"><div class="ttname"><a href="classAluggage.html#aefd0f676f44e0e7fcde6f6f29a709b60">Aluggage::ServerNotifySelection</a></div><div class="ttdeci">void ServerNotifySelection(class APlayerState *Player)</div><div class="ttdoc">서버에 캐리어 선택을 알립니다.</div></div>
 <div class="ttc" id="aclassULingoGameHelper_html_aedc78e0ec65a7aad312693bd1719bff8"><div class="ttname"><a href="classULingoGameHelper.html#aedc78e0ec65a7aad312693bd1719bff8">ULingoGameHelper::GetPlayerActor</a></div><div class="ttdeci">static class APlayerActor * GetPlayerActor(const UObject *WorldContextObject)</div><div class="ttdoc">첫 번째 플레이어의 PlayerActor를 가져옵니다.</div><div class="ttdef"><b>Definition</b> <a href="ULingoGameHelper_8cpp_source.html#l00205">ULingoGameHelper.cpp:205</a></div></div>
 <div class="ttc" id="aluggage_8cpp_html_aed405cb2e29c39ee626f1a50b210cea5"><div class="ttname"><a href="luggage_8cpp.html#aed405cb2e29c39ee626f1a50b210cea5">LUGGAGE_INTERACT_WIDGET_PATH</a></div><div class="ttdeci">#define LUGGAGE_INTERACT_WIDGET_PATH</div><div class="ttdef"><b>Definition</b> <a href="luggage_8cpp_source.html#l00022">luggage.cpp:22</a></div></div>
@@ -556,15 +628,15 @@ $(document).ready(function(){initNavTree('luggage_8cpp_source.html',''); initRes
 <div class="ttc" id="astructFReadData_html"><div class="ttname"><a href="structFReadData.html">FReadData</a></div><div class="ttdoc">읽기 학습 데이터를 정의하는 구조체</div><div class="ttdef"><b>Definition</b> <a href="FReadData_8h_source.html#l00018">FReadData.h:19</a></div></div>
 <div class="ttc" id="astructFReadData_html_a0cfdeafbbdaa3e836fe7d9b95f513ff1"><div class="ttname"><a href="structFReadData.html#a0cfdeafbbdaa3e836fe7d9b95f513ff1">FReadData::Word</a></div><div class="ttdeci">FString Word</div><div class="ttdoc">학습 단어</div><div class="ttdef"><b>Definition</b> <a href="FReadData_8h_source.html#l00032">FReadData.h:32</a></div></div>
 <div class="ttc" id="astructFReadData_html_a5c8d28fbe4c3617ea9d338197a11d30c"><div class="ttname"><a href="structFReadData.html#a5c8d28fbe4c3617ea9d338197a11d30c">FReadData::Texture</a></div><div class="ttdeci">TSoftObjectPtr&lt; UTexture2D &gt; Texture</div><div class="ttdef"><b>Definition</b> <a href="FReadData_8h_source.html#l00035">FReadData.h:35</a></div></div>
-<div class="ttc" id="astructFResponseListenAudio_html"><div class="ttname"><a href="structFResponseListenAudio.html">FResponseListenAudio</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00656">NetworkData.h:657</a></div></div>
-<div class="ttc" id="astructFResponseListenAudio_html_a39dfdd52ce3770dfbccf800986ce4607"><div class="ttname"><a href="structFResponseListenAudio.html#a39dfdd52ce3770dfbccf800986ce4607">FResponseListenAudio::audio_base64</a></div><div class="ttdeci">TArray&lt; uint8 &gt; audio_base64</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00664">NetworkData.h:664</a></div></div>
+<div class="ttc" id="astructFResponseListenAudio_html"><div class="ttname"><a href="structFResponseListenAudio.html">FResponseListenAudio</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00725">NetworkData.h:726</a></div></div>
+<div class="ttc" id="astructFResponseListenAudio_html_a39dfdd52ce3770dfbccf800986ce4607"><div class="ttname"><a href="structFResponseListenAudio.html#a39dfdd52ce3770dfbccf800986ce4607">FResponseListenAudio::audio_base64</a></div><div class="ttdeci">TArray&lt; uint8 &gt; audio_base64</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00733">NetworkData.h:733</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_b7459e4428712e32d7c860db6e401a05.html">Interactable</a></li><li class="navelem"><a class="el" href="dir_77257aedd361f850f8a01079e914567e.html">Private</a></li><li class="navelem"><a class="el" href="luggage_8cpp.html">luggage.cpp</a></li>
-    <li class="footer">생성시간 : 금 12월 5 2025 09:04:31, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 토 12월 6 2025 08:38:30, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

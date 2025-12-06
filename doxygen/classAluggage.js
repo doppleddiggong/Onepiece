@@ -18,6 +18,7 @@ var classAluggage =
     [ "PlayTTSAudio", "classAluggage.html#a3789494fc0c2605502fce38011914042", null ],
     [ "RequestListenAudio", "classAluggage.html#abea1c000fb3a8cfba115167adfa5f75c", null ],
     [ "ServerNotifySelection", "classAluggage.html#aefd0f676f44e0e7fcde6f6f29a709b60", null ],
+    [ "SetAllCollision", "classAluggage.html#ae5f511820df4a129e85e81b727b48bea", null ],
     [ "SetLuggageInfo", "classAluggage.html#ae08336c2883641c70aafa86c0a3c32a2", null ],
     [ "Tick", "classAluggage.html#aa1d90a7ebc5c838ebe50bfc79dfd6890", null ],
     [ "UpdateWidget", "classAluggage.html#a134ee387e130f327c4fd4f02f4079cb0", null ],
