@@ -40,8 +40,22 @@ void AFoodCourtManager::SetFoodCourtInfo()
 	for (int32 i=0; i<ScenarioData.Num(); i++)
 	{
 		auto SD = ScenarioData[i];
+
 		// 푸드코트 식당 이름 지정
-		UUserWidget* CityNameWidget = FindCityName(i)->WidgetComp->GetWidget();
+		ACityName* CityName = FindCityName(i);
+		if (!CityName)
+		{
+			UE_LOG(LogTemp, Warning, TEXT("FindCityName failed for index %d"), i);
+			continue;
+		}
+
+		if (!CityName->WidgetComp)
+		{
+			UE_LOG(LogTemp, Warning, TEXT("CityName->WidgetComp is null for index %d"), i);
+			continue;
+		}
+
+		UUserWidget* CityNameWidget = CityName->WidgetComp->GetWidget();
 		if (UCityNameWidget* CNW = Cast<UCityNameWidget>(CityNameWidget))
 		{
 			CNW->SetCityName(SD.word1.name);
