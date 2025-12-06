@@ -144,7 +144,27 @@ void APlayerControl::OnJump(const FInputActionValue&)
 	if (IControllable* C = GetControllable())
 		C->Cmd_Jump();
 
+	// 맵에 있는 ADropper를 찾아서 ALuggage를 스폰
+	UWorld* World = GetWorld();
+	if (World)
+	{
+		for (TActorIterator<ADropper> It(World); It; ++It)
+		{
+			ADropper* Dropper = *It;
+			if (Dropper)
+			{
+				// BP_Luggage 블루프린트 클래스 로드
+				TSubclassOf<AActor> LuggageClass = LoadClass<AActor>(nullptr,
+					TEXT("/Game/CustomContents/Blueprints/Interactables/BP_Luggage.BP_Luggage_C"));
 
+				if (LuggageClass)
+				{
+					Dropper->SpawnActor(LuggageClass);
+				}
+				break; // 첫 번째 Dropper만 사용
+			}
+		}
+	}
 
 	// // 테스트: 점프할 때마다 랜덤 아이템 추가
 	// if (auto BM = UBroadcastManager::Get(GetWorld()))
