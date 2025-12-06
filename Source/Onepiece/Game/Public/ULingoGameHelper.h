@@ -47,13 +47,16 @@ public:
 	static class ASpeakStageActor* GetSpeakStageActor(const UObject* WorldContextObject);
 	
 	UFUNCTION(BlueprintCallable, Category = "Utils")
-	static FString GetStageStartMessage(const int StageIndex);
-
+	static FString GetStageStartMessage(const EQuestType QuestType);
+	
 	UFUNCTION(BlueprintCallable, Category = "Utils")
-	static FString GetStageEndMessage(const int StageIndex);
-
+	static FString GetStageEndMessage(const EQuestType QuestType);
+	
 	UFUNCTION(BlueprintCallable, Category = "Utils")
-	static float GetMissionPlayTime(const int Level);
+	static int32 GetStageTypeIndex(const EQuestType QuestType);
+	
+	UFUNCTION(BlueprintCallable, Category = "Utils")
+	static float GetMissionPlayTime();
 
 	UFUNCTION(BlueprintCallable, Category = "Utils")
 	static FString GetFormatTimer(const float InRemainTime );
@@ -78,4 +81,9 @@ public:
 	static class APlayerActor* GetPlayerActor(const UObject* WorldContextObject);
 
 	static class APlayerControl* GetPlayerControl(const UObject* WorldContextObject);
+
+
+	static FString GetTimeRank(float InTimeTaken);
+
+	static FString GetAccuracyPercentage(int WrongCnt);
 };

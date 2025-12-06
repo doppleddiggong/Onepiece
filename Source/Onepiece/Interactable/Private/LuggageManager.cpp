@@ -40,7 +40,7 @@ void ALuggageManager::SpawnLuggage()
 	ALingoGameState* GS = Cast<ALingoGameState>(GetWorld()->GetGameState());
 	if (!GS) return;
 
-	const TArray<FScenarioTargetData>& ScenarioData = GS->GetScenarioData().target_data;
+	const TArray<FScenarioTargetData>& ScenarioData = GS->GetReadScenarioData().target_data;
 	
 	// 모두 스폰했으면 타이머 중지
 	if (CurrentSpawnIndex >= ScenarioData.Num())

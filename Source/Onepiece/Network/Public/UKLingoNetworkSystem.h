@@ -33,92 +33,21 @@ public:
 	void RequestUserToken(const FString& UserName, FResponseUserTokenDelegate InDelegate);
 	void RequestUserMe(FResponseUserMeDelegate InDelegate);
 	
-	/// @brief Scenario 데이터를 조회합니다.
-	/// @param Index [in] 시나리오 인덱스입니다.
-	/// @param Difficulty [in] 난이도입니다.
-	/// @param Level [in] 레벨 설정입니다 (1: 한국어).
-	/// @param InDelegate [in] 응답 수신 시 호출될 델리게이트입니다.
-	void RequestScenario(int32 Index, int32 Difficulty, int32 Level, FResponseScenarioDelegate InDelegate);
-
-	/// @brief 이미지에서 OCR로 텍스트를 추출합니다.
-	/// @param ImagePath [in] 이미지 파일 경로입니다.
-	/// @param InDelegate [in] 응답 수신 시 호출될 델리게이트입니다.
 	void RequestOcrExtract(const TArray<FString>& ImagePathArray, FString InTargetText, FResponseOcrExtractDelegate InDelegate);
 
 	void RequestListenAudio(const FString& AudioText, FResponseListenAudioDelegate InDelegate);
-	/// @brief 음성 파일을 전송하고 답변을 받습니다.
-	/// @param  Question [in] 질문 받은 내용
-	/// @param AudioPath [in] WAV 오디오 파일 경로입니다.
-	/// @param InDelegate [in] 응답 수신 시 호출될 델리게이트입니다.
 	void RequestSpeakingJudges( const FString& Question, const FString& AudioPath, FResponseSpeakingJudesDelegate InDelegate);
 
 	void RequestInterviewHello(FResponseInterviewHelloDelegate InDelegate);
 	void RequestInterviewAnswer( const FRequestInterviewAnswer& Answer, FResponseInterviewAnswerDelegate InDelegate);
-	void RequestQuestResult(const FRequestReadQuestResult& Result, FResponseQuestResultDelegate InDelegate);
 
+	void RequestReadScenario(FResponseReadScenarioDelegate InDelegate);
+	void RequestReadResult(const FRequestReadResult& Result, FResponseReadResultDelegate InDelegate);
+
+	void RequestListenScenario(FResponseListenScenarioDelegate InDelegate);
+	void RequestListenResult(const FRequestListenResult& Result, FResponseListenResultDelegate InDelegate);
 
 	
-
-	/*
-	/// @brief 계정으로 로그인 요청을 전송합니다.
-	/// @param Account [in] 사용자 계정 ID입니다.
-	/// @param InDelegate [in] 응답 수신 시 호출될 델리게이트입니다.
-	void RequestLogin(const FString& Account, FResponseLoginDelegate InDelegate);
-
-	/// @brief 새 사용자 정보를 생성합니다.
-	/// @param Character [in] 캐릭터 인덱스입니다.
-	/// @param CharacterColor [in] 캐릭터 색상 인덱스입니다.
-	/// @param InDelegate [in] 응답 수신 시 호출될 델리게이트입니다.
-	void RequestCreateUser(int32 Character, int32 CharacterColor, FResponseCreateUserDelegate InDelegate);
-
-	/// @brief 인터뷰 요청을 전송합니다.
-	/// @param InDelegate [in] 응답 수신 시 호출될 델리게이트입니다.
-	void RequestInterview(FResponseInterviewDelegate InDelegate);
-
-	/// @brief 인터뷰 답변을 제출합니다.
-	/// @param Answers [in] 인터뷰 답변 배열입니다.
-	/// @param InDelegate [in] 응답 수신 시 호출될 델리게이트입니다.
-	void RequestSubmitInterview(const TArray<FString>& Answers, FResponseInterviewDelegate InDelegate);
-
-	/// @brief 게임 시작 요청을 전송합니다.
-	/// @param PlayerList [in] 플레이어 ID 목록입니다.
-	/// @param Nicknames [in] 플레이어 닉네임 목록입니다.
-	/// @param InDelegate [in] 응답 수신 시 호출될 델리게이트입니다.
-	void RequestStartGame(const TArray<FString>& PlayerList, const TArray<FString>& Nicknames, FResponseStartGameDelegate InDelegate);
-
-	/// @brief 게임 로그인 요청을 전송합니다.
-	/// @param InDelegate [in] 응답 수신 시 호출될 델리게이트입니다.
-	void RequestGameLogin(FResponseGameLoginDelegate InDelegate);
-
-	/// @brief 퀘스트 답변을 제출합니다.
-	/// @param QuestStep [in] 퀘스트 단계입니다.
-	/// @param QuestAnswer [in] 퀘스트 답변입니다.
-	/// @param PlayTime [in] 플레이 시간입니다.
-	/// @param InDelegate [in] 응답 수신 시 호출될 델리게이트입니다.
-	void RequestQuestAnswer(int32 QuestStep, int32 QuestAnswer, float PlayTime, FResponseQuestAnswerDelegate InDelegate);
-
-	/// @brief 퀘스트 실패를 보고합니다.
-	/// @param QuestStep [in] 실패한 퀘스트 단계입니다.
-	/// @param InDelegate [in] 응답 수신 시 호출될 델리게이트입니다.
-	void RequestQuestFail(int32 QuestStep, FResponseQuestAnswerDelegate InDelegate);
-
-	/// @brief Write 퀘스트 답변을 제출합니다 (Multipart Form Data 사용).
-	/// @param ImagePaths [in] 이미지 파일 경로 배열입니다.
-	/// @param TextData [in] 텍스트 데이터 배열입니다.
-	/// @param InDelegate [in] 응답 수신 시 호출될 델리게이트입니다.
-	void RequestQuestWrite(const TArray<FString>& ImagePaths, const TArray<FString>& TextData, FResponseQuestWriteDelegate InDelegate);
-
-	/// @brief Speak 퀘스트 답변을 제출합니다 (Multipart Form Data 사용).
-	/// @param SpeakStep [in] Speak 단계입니다.
-	/// @param WavFilePath [in] WAV 오디오 파일 경로입니다.
-	/// @param InDelegate [in] 응답 수신 시 호출될 델리게이트입니다.
-	void RequestQuestSpeak(int32 SpeakStep, const FString& WavFilePath, FResponseQuestSpeakDelegate InDelegate);
-
-	/// @brief 게임 결과를 요청합니다.
-	/// @param InDelegate [in] 응답 수신 시 호출될 델리게이트입니다.
-	void RequestGameResult(FResponseGameResultDelegate InDelegate);
-
-*/
 	
 private:
 	/// @brief 공통 네트워크 로그 메시지를 출력합니다.

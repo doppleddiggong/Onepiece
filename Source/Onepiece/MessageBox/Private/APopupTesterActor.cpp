@@ -60,7 +60,7 @@ void APopupTesterActor::ReadQuest()
 {
 	if (auto Popup = UPopupManager::ShowPopupAs<UPopup_ReadQuest>(GetWorld(), EPopupType::ReadQuest))
 	{
-		Popup->InitPopup(ULingoGameHelper::GetLingoGameState(GetWorld())->CurScenarioData);
+		Popup->InitRead(ULingoGameHelper::GetLingoGameState(GetWorld())->ReadScenarioData);
 	}
 }
 

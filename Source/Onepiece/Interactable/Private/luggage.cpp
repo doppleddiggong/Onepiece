@@ -385,7 +385,7 @@ void Aluggage::ServerNotifySelection_Implementation(APlayerState* Player)
 	ALingoGameMode* GameMode = GetWorld()->GetAuthGameMode<ALingoGameMode>();
 	if (GameMode)
 	{
-		GameMode->HandleCarrierSelection(Player, this);
+		GameMode->HandleLuggageSelection(Player, this);
 	}
 	else
 	{

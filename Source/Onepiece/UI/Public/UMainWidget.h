@@ -120,33 +120,4 @@ private:
 	/// @brief GameState 참조 캐싱
 	UPROPERTY()
 	TObjectPtr<class ALingoGameState> CachedGameState;
-
-	// /// @brief 자동 Hide 타이머 핸들
-	// FTimerHandle TutorHideTimerHandle;
-	//
-	// /// @brief 펜딩 중인 메시지 (Hide 완료 후 표시할 메시지)
-	// FText PendingMessage;
-	//
-	// /// @brief 튜터 메시지 표시 지속 시간 (초)
-	// UPROPERTY(EditDefaultsOnly, Category = "Tutor")
-	// float TutorMessageDisplayDuration = 3.0f;
-	//
-	// /// @brief 펜딩 메시지 존재 여부
-	// bool bHasPendingMessage = false;
-	//
-	// /// @brief 튜터 메시지 표시 여부
-	// bool bIsTutorVisible = false;
-	//
-	// /// @brief 아이템 순차 추가 타이머 핸들
-	// FTimerHandle ItemAddTimerHandle;
-	//
-	// /// @brief 순차 추가 대기 중인 아이템 데이터 리스트
-	// TArray<FResultStatData> PendingItemDataList;
-	//
-	// /// @brief 현재 추가 중인 아이템 인덱스
-	// int32 CurItemIndex = 0;
-	//
-	// /// @brief 아이템 추가 간격 (초)
-	// UPROPERTY(EditDefaultsOnly, Category = "Item")
-	// float ItemAddInterval = 0.1f;
 };

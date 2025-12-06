@@ -237,7 +237,7 @@ void AWeightSwitch::OnBeginOverlap(
 		// [개선] ScenarioData 유효성 체크
 		if (GS)
 		{
-			const int32 CorrectIdx = GS->GetScenarioData().correct_answer_index;
+			const int32 CorrectIdx = GS->GetReadScenarioData().correct_answer_index;
 
 			PRINTLOG(TEXT("[WeightSwitch] Server validating: LuggageIdx=%d, CorrectIdx=%d"),
 				Luggage->GetSpawnIdx(), CorrectIdx);
@@ -258,7 +258,7 @@ void AWeightSwitch::OnBeginOverlap(
 
 				AnswerFound = true;
 				// 마지막으로 정답 추가
-				GS->WrongLuggageList.Add(Luggage->GetSpawnIdx());
+				GS->WrongReadAnswerList.Add(Luggage->GetSpawnIdx());
 
 				// [개선] Multicast RPC로 모든 클라이언트에 정답 팝업 표시
 				FTimerHandle TimerHandle;
@@ -268,8 +268,9 @@ void AWeightSwitch::OnBeginOverlap(
 					Multicast_ShowResultPopup();
 
 					// 오답 캐리어 로그 (서버에서만)
-					TArray<int32> WrongList = GS->WrongLuggageList;
-					if (WrongList.Num() == 0) return;
+					TArray<int32> WrongList = GS->WrongReadAnswerList;
+					if (WrongList.Num() == 0)
+						return;
 
 					PRINTLOG( TEXT("[AWeightSwitch] Wrong luggage :"));
 					for (auto Wrong : WrongList)
@@ -292,7 +293,7 @@ void AWeightSwitch::OnBeginOverlap(
 					Multicast_ShowWrongPopup(LuggageColor, LuggagePattern);
 
 					// 오답 목록에 인덱스 추가 (서버에서만)
-					GS->WrongLuggageList.Add(LuggageIdx);
+					GS->WrongReadAnswerList.Add(LuggageIdx);
 
 					// 큐브 소거 (서버에서만, 자동 복제됨)
 					Luggage->Destroy();

@@ -8,14 +8,11 @@
 #include "UBroadcastManager.h"
 #include "GameLogging.h"
 #include "TimerManager.h"
+#include "ULingoGameHelper.h"
+#include "USpeakStageSubsystem.h"
+
 #include "Engine/World.h"
 #include "GameFramework/PlayerState.h"
-
-#include "NetworkData.h"
-#include "ULingoGameHelper.h"
-
-// Speak Stage System
-#include "USpeakStageSubsystem.h"
 
 ALingoGameMode::ALingoGameMode()
 {
@@ -27,72 +24,44 @@ ALingoGameMode::ALingoGameMode()
 	PrimaryActorTick.bCanEverTick = false;
 }
 
-//--------------------------------------------------------------//
-// Read Quest Implementation
-//--------------------------------------------------------------//
+void ALingoGameMode::UpdateQuestRole()
+{
+	auto PSList = ULingoGameHelper::GetLingoPlayerStateList(GetWorld());
+	const int32 PlayerCount = PSList.Num();
 
-void ALingoGameMode::BeginReadQuest(int32 InStageIndex, const FResponseScenario& InResponseData)
+	if (PlayerCount == 1)
+	{
+		PSList[0]->QuestRole = EQuestRole::Both;
+	}
+	else if (PlayerCount >= 2)
+	{
+		PSList[0]->QuestRole = EQuestRole::OnlyQuestion1;
+		PSList[1]->QuestRole = EQuestRole::OnlyQuestion2;
+	}
+}
+
+void ALingoGameMode::BeginReadQuest( const FResponseReadScenario& InResponseData)
 {
 	if (!HasAuthority())
 		return;
 
-	// --- 1. 역할 할당 로직 ---
-	auto PSList = ULingoGameHelper::GetLingoPlayerStateList(GetWorld());
-	const int32 PlayerCount = PSList.Num();
-	PRINTLOG(TEXT("[GameMode] BeginReadQuest - Player count: %d"), PlayerCount);
+	UpdateQuestRole();
 
-	if (PlayerCount == 1)
-	{
-		// 싱글 플레이: Both
-		if (PSList.IsValidIndex(0))
-		{
-			PSList[0]->QuestRole = EQuestRole::Both;
-			PRINTLOG(TEXT("[GameMode] Player 0 assigned role: Both"));
-		}
-	}
-	else if (PlayerCount >= 2)
-	{
-		// 멀티 플레이: OnlyQuestion1, OnlyQuestion2
-		if (PSList.IsValidIndex(0))
-		{
-			PSList[0]->QuestRole = EQuestRole::OnlyQuestion1;
-			PRINTLOG(TEXT("[GameMode] Player 0 assigned role: OnlyQuestion1"));
-		}
-		if (PSList.IsValidIndex(1))
-		{
-			PSList[1]->QuestRole = EQuestRole::OnlyQuestion2;
-			PRINTLOG(TEXT("[GameMode] Player 1 assigned role: OnlyQuestion2"));
-		}
-	}
-
-	// --- 2. GameState에 데이터 설정 ---
 	if (auto GS = GetGameState<ALingoGameState>())
-	{
-		GS->SetStageData(InStageIndex, 1, InResponseData);
-		PRINTLOG(TEXT("[GameMode] SetStageData called on GameState."));
-	}
-	else
-	{
-		PRINTLOG(TEXT("[GameMode] BeginReadQuest - GameState is null"));
-	}
+		GS->SetReadScenarioData(InResponseData);
 }
 
-void ALingoGameMode::BeginListenQuest(int32 InStageIndex, const FResponseScenario& InResponseData)
+void ALingoGameMode::BeginListenQuest(const FResponseListenScenario& InResponseData)
 {
+	if (!HasAuthority())
+		return;
+
+	UpdateQuestRole();
+
 	if (auto GS = GetGameState<ALingoGameState>())
-	{
-		GS->SetStageData(InStageIndex, 2, InResponseData);
-		PRINTLOG(TEXT("[GameMode] SetStageData called on GameState."));
-	}
-	else
-	{
-		PRINTLOG(TEXT("[GameMode] BeginListenQuest - GameState is null"));
-	}
+		GS->SetListenScenarioData(InResponseData);
 }
 
-//--------------------------------------------------------------//
-// Speak Quest Implementation
-//--------------------------------------------------------------//
 
 void ALingoGameMode::BeginSpeakQuest(int32 InStageIndex)
 {
@@ -110,103 +79,80 @@ void ALingoGameMode::BeginSpeakQuest(int32 InStageIndex)
 	}
 }
 
-void ALingoGameMode::HandleCarrierSelection(APlayerState* Player, Aluggage* Carrier)
+void ALingoGameMode::HandleLuggageSelection(APlayerState* Player, Aluggage* luggage)
 {
 	if (!HasAuthority())
 		return;
 
-	if (!Player || !Carrier)
-	{
-		PRINTLOG(TEXT("[GameMode] HandleCarrierSelection - Invalid parameters"));
+	if (!Player || !luggage)
 		return;
-	}
 
 	ALingoPlayerState* LingoPlayerState = Cast<ALingoPlayerState>(Player);
 	if (!LingoPlayerState)
-	{
-		PRINTLOG(TEXT("[GameMode] HandleCarrierSelection - PlayerState is not ALingoPlayerState"));
 		return;
-	}
 
 	// 정답 판정
-	bool bIsCorrect = ValidateAnswer(LingoPlayerState, Carrier);
-
-	if (bIsCorrect)
+	if ( ValidateAnswer(LingoPlayerState, luggage) )
 	{
 		HandleCorrectAnswer(LingoPlayerState);
 	}
 	else
 	{
 		// 틀린 항목 확인
-		bool bSymbolCorrect = (LingoPlayerState->SelectedWord1 == Carrier->Target1);
-		bool bColorCorrect = (LingoPlayerState->SelectedWord2 == Carrier->Target2);
+		bool bSymbolCorrect = (LingoPlayerState->SelectedWord1 == luggage->Target1);
+		bool bColorCorrect = (LingoPlayerState->SelectedWord2 == luggage->Target2);
 
 		HandleWrongAnswer(LingoPlayerState, bSymbolCorrect, bColorCorrect);
 	}
 }
 
-bool ALingoGameMode::ValidateAnswer(ALingoPlayerState* Player, Aluggage* Carrier)
+bool ALingoGameMode::ValidateAnswer(ALingoPlayerState* Player, Aluggage* Luggage)
 {
-	if (!Player || !Carrier)
+	if (!Player || !Luggage)
 		return false;
 
-	bool bSymbolCorrect = (Player->SelectedWord1 == Carrier->Target1);
-	bool bColorCorrect = (Player->SelectedWord2 == Carrier->Target2);
+	const bool bSymbolCorrect = (Player->SelectedWord1 == Luggage->Target1);
+	const bool bColorCorrect = (Player->SelectedWord2 == Luggage->Target2);
 
 	PRINTLOG(TEXT("[GameMode] ValidateAnswer - Symbol: %s vs %s (%s), Color: %s vs %s (%s)"),
-		*Player->SelectedWord1, *Carrier->Target1, bSymbolCorrect ? TEXT("Correct") : TEXT("Wrong"),
-		*Player->SelectedWord2, *Carrier->Target2, bColorCorrect ? TEXT("Correct") : TEXT("Wrong"));
+		*Player->SelectedWord1, *Luggage->Target1, bSymbolCorrect ? TEXT("Correct") : TEXT("Wrong"),
+		*Player->SelectedWord2, *Luggage->Target2, bColorCorrect ? TEXT("Correct") : TEXT("Wrong"));
 
 	return bSymbolCorrect && bColorCorrect;
 }
 
 void ALingoGameMode::HandleCorrectAnswer(ALingoPlayerState* Player)
 {
-	if (!HasAuthority() || !Player)
+	if (!HasAuthority() )
+		return;
+
+	if (!Player)
 		return;
 
 	ALingoGameState* LingoGameState = GetGameState<ALingoGameState>();
 	if (!LingoGameState)
 		return;
 
-	// QuestResult 업데이트
-	LingoGameState->QuestResult.bSuccess = true;
-	LingoGameState->QuestResult.RemainTime = LingoGameState->GetRemainMissionTime();
-	LingoGameState->QuestResult.AttemptCount = Player->AttemptCount;
-	LingoGameState->QuestResult.SelectedSymbol = Player->SelectedWord1;
-	LingoGameState->QuestResult.SelectedColor = Player->SelectedWord2;
-
-	// 성공 플래그 설정
-	LingoGameState->bQuestSuccess = true;
-
 	// 타이머 중지
 	LingoGameState->StopMissionTimer();
-
-	PRINTLOG(TEXT("[GameMode] HandleCorrectAnswer - Quest completed successfully"));
-
-	// BroadcastManager를 통해 성공 이벤트 브로드캐스트
-	if (UBroadcastManager* BroadcastManager = UBroadcastManager::Get(GetWorld()))
-	{
-		// 추후 BroadcastManager에 퀘스트 성공 이벤트 추가 필요
-	}
 }
 
 void ALingoGameMode::HandleWrongAnswer(ALingoPlayerState* Player, bool bSymbolCorrect, bool bColorCorrect)
 {
-	if (!HasAuthority() || !Player)
+	if (!HasAuthority())
+		return;
+
+	if (!Player)
 		return;
 
 	ALingoGameState* LingoGameState = GetGameState<ALingoGameState>();
 	if (!LingoGameState)
 		return;
 
-	// 타이머 패널티 (30초 감소)
-	const float Penalty = 30.f;
-	LingoGameState->RemainMissionTime = FMath::Max(0.f, LingoGameState->RemainMissionTime - Penalty);
-
-	PRINTLOG(TEXT("[GameMode] HandleWrongAnswer - Penalty applied: %.0f seconds, Remaining: %.0f seconds"),
-		Penalty, LingoGameState->RemainMissionTime);
-
+	// 타이머 패널티
+	constexpr float Penalty = 30.f;
+	LingoGameState->DecreaseMissionTimer(Penalty);
+	
 	// 틀린 항목 판정
 	if (!bSymbolCorrect)
 	{

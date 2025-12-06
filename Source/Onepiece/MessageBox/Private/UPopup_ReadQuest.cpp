@@ -4,9 +4,6 @@
 #include "ALingoGameState.h"
 #include "ALingoPlayerState.h"
 #include "APlayerActor.h"
-#include "Components/TextBlock.h"
-#include "GameFramework/PlayerController.h"
-#include "GameLogging.h"
 #include "UBroadcastManager.h"
 #include "UKLingoNetworkSystem.h"
 #include "ULingoGameHelper.h"
@@ -14,12 +11,10 @@
 #include "UTextureButton.h"
 #include "UWordWidget.h"
 
-void UPopup_ReadQuest::NativeConstruct()
-{
-	Super::NativeConstruct();
-}
+#include "GameFramework/PlayerController.h"
 
-void UPopup_ReadQuest::InitPopup(const FResponseScenario& InScenarioData)
+
+void UPopup_ReadQuest::InitRead(const FResponseReadScenario& InScenarioData)
 {
 	if (Btn_Exit)
 	{
@@ -33,7 +28,30 @@ void UPopup_ReadQuest::InitPopup(const FResponseScenario& InScenarioData)
 		BM->OnUpdateQuestRole.AddDynamic(this, &UPopup_ReadQuest::InitQuestInfo);
 	}
 
-	this->ScenarioData = InScenarioData;
+	this->QuestType = EQuestType::Read;
+	this->ReadData = InScenarioData;
+
+	if ( const auto PS = ULingoGameHelper::GetLingoPlayerState(GetWorld()) )
+		InitQuestInfo(PS->QuestRole);
+}
+
+
+void UPopup_ReadQuest::InitListen(const FResponseListenScenario& InScenarioData)
+{
+	if (Btn_Exit)
+	{
+		Btn_Exit->OnButtonClickedEvent.RemoveDynamic(this, &UPopup_ReadQuest::OnClickClose);
+		Btn_Exit->OnButtonClickedEvent.AddDynamic(this, &UPopup_ReadQuest::OnClickClose);
+	}
+
+	if (auto BM = UBroadcastManager::Get(GetWorld()))
+	{
+		BM->OnUpdateQuestRole.RemoveDynamic(this, &UPopup_ReadQuest::InitQuestInfo);
+		BM->OnUpdateQuestRole.AddDynamic(this, &UPopup_ReadQuest::InitQuestInfo);
+	}
+
+	this->QuestType = EQuestType::Listen;
+	this->ListenData = InScenarioData;
 
 	if ( const auto PS = ULingoGameHelper::GetLingoPlayerState(GetWorld()) )
 		InitQuestInfo(PS->QuestRole);
@@ -41,20 +59,41 @@ void UPopup_ReadQuest::InitPopup(const FResponseScenario& InScenarioData)
 
 void UPopup_ReadQuest::InitQuestInfo(EQuestRole QuestRole)
 {
-	if ( QuestRole == EQuestRole::Both )
+	if ( QuestType == EQuestType::Read )
 	{
-		WordWidget->InitWordData(ScenarioData.full_data);
-		ListenAudio(ScenarioData.full_data.Kor);
+		if ( QuestRole == EQuestRole::Both )
+		{
+			WordWidget->InitWordData(ReadData.full_data);
+			ListenAudio(ReadData.full_data.Kor);
+		}
+		else if ( QuestRole == EQuestRole::OnlyQuestion1 )
+		{
+			WordWidget->InitWordData(ReadData.word_data1);
+			ListenAudio(ReadData.word_data1.Kor);
+		}
+		else if ( QuestRole == EQuestRole::OnlyQuestion2 )
+		{
+			WordWidget->InitWordData(ReadData.word_data2);
+			ListenAudio(ReadData.word_data2.Kor);
+		}
 	}
-	else if ( QuestRole == EQuestRole::OnlyQuestion1 )
+	else if ( QuestType == EQuestType::Listen )
 	{
-		WordWidget->InitWordData(ScenarioData.word_data1);
-		ListenAudio(ScenarioData.word_data1.Kor);
-	}
-	else if ( QuestRole == EQuestRole::OnlyQuestion2 )
-	{
-		WordWidget->InitWordData(ScenarioData.word_data2);
-		ListenAudio(ScenarioData.word_data2.Kor);
+		if ( QuestRole == EQuestRole::Both )
+		{
+			WordWidget->InitWordData(ListenData.full_data);
+			ListenAudio(ListenData.full_data.Kor);
+		}
+		else if ( QuestRole == EQuestRole::OnlyQuestion1 )
+		{
+			WordWidget->InitWordData(ListenData.word_data1);
+			ListenAudio(ListenData.word_data1.Kor);
+		}
+		else if ( QuestRole == EQuestRole::OnlyQuestion2 )
+		{
+			WordWidget->InitWordData(ListenData.word_data2);
+			ListenAudio(ListenData.word_data2.Kor);
+		}
 	}
 }
 

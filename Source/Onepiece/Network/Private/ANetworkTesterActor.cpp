@@ -112,26 +112,6 @@ void ANetworkTesterActor::OnResponseUserMe(FResponseUserMe& ResponseData, bool b
 // =============================================================================
 // New API Tests
 // =============================================================================
-
-void ANetworkTesterActor::RequestScenario()
-{
-    if (auto KLingoNetwork = UKLingoNetworkSystem::Get(GetWorld()))
-    {
-        PRINTLOG(TEXT("[TEST] RequestScenario - Index: %d, Difficulty: %d, Lang: %d"), 
-                 ScenarioIndex, ScenarioDifficulty, ScenarioLevel);
-        KLingoNetwork->RequestScenario(
-            ScenarioIndex,
-            ScenarioDifficulty,
-            ScenarioLevel,
-            FResponseScenarioDelegate::CreateUObject(this, &ANetworkTesterActor::OnResponseScenario)
-        );
-    }
-    else
-    {
-        PRINTLOG(TEXT("UKLingoNetworkSystem not found!"));
-    }
-}
-
 void ANetworkTesterActor::RequestOcrExtract()
 {
     if (auto KLingoNetwork = UKLingoNetworkSystem::Get(GetWorld()))
@@ -192,39 +172,6 @@ void ANetworkTesterActor::RequestInterviewHello()
     else
     {
         PRINTLOG(TEXT("UKLingoNetworkSystem not found!"));
-    }
-}
-
-void ANetworkTesterActor::OnResponseScenario(FResponseScenario& ResponseData, bool bWasSuccessful)
-{
-    if (bWasSuccessful)
-    {
-        PRINTLOG(TEXT("--- Scenario SUCCESS ---"));
-        ResponseData.PrintData();
-        PRINTLOG(TEXT("Index: %d, Difficulty: %d"), ResponseData.index, ResponseData.dificulity);
-        PRINTLOG(TEXT("Correct Answer Index: %d"), ResponseData.correct_answer_index);
-        PRINTLOG(TEXT("Target Data Count: %d"), ResponseData.target_data.Num());
-        
-        for (int32 i = 0; i < ResponseData.target_data.Num(); i++)
-        {
-            PRINTLOG(TEXT("  [%d] Word1: %s (Code: %s), Word2: %s (Code: %s)"),
-                     i,
-                     *ResponseData.target_data[i].word1.name,
-                     *ResponseData.target_data[i].word1.code,
-                     *ResponseData.target_data[i].word2.name,
-                     *ResponseData.target_data[i].word2.code);
-        }
-        
-        PRINTLOG(TEXT("Word Data 1 - Kor: %s, Eng: %s, Pronunciation: %s"), 
-                 *ResponseData.word_data1.Kor, *ResponseData.word_data1.Eng, *ResponseData.word_data1.Pronunciation);
-        PRINTLOG(TEXT("Word Data 2 - Kor: %s, Eng: %s, Pronunciation: %s"), 
-                 *ResponseData.word_data2.Kor, *ResponseData.word_data2.Eng, *ResponseData.word_data2.Pronunciation);
-        PRINTLOG(TEXT("Full Data - Kor: %s, Eng: %s, Pronunciation: %s"),
-                 *ResponseData.full_data.Kor, *ResponseData.full_data.Eng, *ResponseData.full_data.Pronunciation);
-    }
-    else
-    {
-        PRINTLOG(TEXT("--- Scenario FAILED ---"));
     }
 }
 
