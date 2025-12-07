@@ -70,7 +70,6 @@ void UPopup_Result::InitWrongList()
 	if (!GS)
 		return;
 	
-
 	// 틀린 인덱스 리스트
 	TArray<int32> WrongList;
 	// 전체 캐리어 정보
@@ -91,31 +90,32 @@ void UPopup_Result::InitWrongList()
 	Scrl_WrongList->ClearChildren();
 
 	// WrongList의 각 항목을 텍스트로 추가
-	for (int32 i=0; i<WrongList.Num(); i++)
+	for (int32 i = 0; i < WrongList.Num(); i++)
 	{
-		int32 WrongIndex = WrongList[i];
-		auto SD = ScenarioData[WrongIndex];
+		auto SD = ScenarioData[WrongList[i]];
 
-		if (UTextBlock* TextBlock = NewObject<UTextBlock>(this))
-		{
-			// 맨 마지막 인덱스는 정답
-			if (i == WrongList.Num()-1)
-			{
-				TextBlock->SetText(FText::FromString(FString::Printf(TEXT("[CORRECT] %s, %s"),
-								*SD.word1.name, *SD.word2.name)));
-				TextBlock->SetColorAndOpacity(FSlateColor(FLinearColor::Red));
-				
-				Scrl_WrongList->AddChild(TextBlock);
-			}
-			else
-			{
-				TextBlock->SetText(FText::FromString(FString::Printf(TEXT("Try %d - [WRONG] %s, %s"),
-					i+1, *SD.word1.name, *SD.word2.name)));
-				TextBlock->SetColorAndOpacity(FSlateColor(FLinearColor::Black));
-			
-				Scrl_WrongList->AddChild(TextBlock);
-			}
-		}
+		UAnswerItem
+		
+		// if (UTextBlock* TextBlock = NewObject<UTextBlock>(this))
+		// {
+		// 	// 맨 마지막 인덱스는 정답
+		// 	if (i == WrongList.Num()-1)
+		// 	{
+		// 		TextBlock->SetText(FText::FromString(FString::Printf(TEXT("[CORRECT] %s, %s"),
+		// 						*SD.word1.name, *SD.word2.name)));
+		// 		TextBlock->SetColorAndOpacity(FSlateColor(FLinearColor::Red));
+		// 		
+		// 		Scrl_WrongList->AddChild(TextBlock);
+		// 	}
+		// 	else
+		// 	{
+		// 		TextBlock->SetText(FText::FromString(FString::Printf(TEXT("Try %d - [WRONG] %s, %s"),
+		// 			i+1, *SD.word1.name, *SD.word2.name)));
+		// 		TextBlock->SetColorAndOpacity(FSlateColor(FLinearColor::Black));
+		// 	
+		// 		Scrl_WrongList->AddChild(TextBlock);
+		// 	}
+		// }
 	}
 }
 
