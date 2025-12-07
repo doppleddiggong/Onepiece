@@ -69,6 +69,15 @@ public:
 	void OnRep_IsBeingHooked();
 
 protected:
+	// Collision state replication (clients also disable physics when holder claims the luggage)
+	UPROPERTY(ReplicatedUsing=OnRep_CollisionEnabled)
+	bool bCollisionEnabled = true;
+
+	UFUNCTION()
+	void OnRep_CollisionEnabled();
+	
+	void ApplyCollisionState(bool bEnable);
+
 	//--------------------------------------------------------------//
 	// Luggage Info
 	//--------------------------------------------------------------//
