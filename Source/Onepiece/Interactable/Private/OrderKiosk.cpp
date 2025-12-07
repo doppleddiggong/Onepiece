@@ -3,9 +3,14 @@
 
 #include "OrderKiosk.h"
 
+#include "ADropper.h"
+#include "ALingoGameState.h"
 #include "APlayerActor.h"
+#include "InteractableComponent.h"
 #include "Components/BoxComponent.h"
 #include "Components/WidgetComponent.h"
+#include "Kismet/GameplayStatics.h"
+#include "Net/UnrealNetwork.h"
 
 
 // Sets default values
@@ -20,6 +25,10 @@ AOrderKiosk::AOrderKiosk()
 	Collision = CreateDefaultSubobject<UBoxComponent>(TEXT("Collision"));
 	Collision->SetupAttachment(GetRootComponent());
 
+	InteractableComp = CreateDefaultSubobject<UInteractableComponent>(TEXT("InteractableComp"));
+	InteractableComp->InteractionType = EInteractionType::Button;
+	InteractableComp->InteractionPrompt = TEXT("Order Food");
+
 	InteractWidget = CreateDefaultSubobject<UWidgetComponent>(TEXT("InteractWidget"));
 	InteractWidget->SetupAttachment(GetRootComponent());
 }
@@ -29,10 +38,26 @@ void AOrderKiosk::BeginPlay()
 {
 	Super::BeginPlay();
 
-	Collision->OnComponentBeginOverlap.AddDynamic(this, &AOrderKiosk::BeginOverlap);
-	Collision->OnComponentEndOverlap.AddDynamic(this, &AOrderKiosk::EndOverlap);
+	// InteractableComp에 위젯 연결
+	if (InteractableComp && InteractWidget)
+	{
+		InteractableComp->InitWidget(InteractWidget);
+	}
 
+	// 상호작용 델리게이트 바인딩
+	if (InteractableComp)
+	{
+		InteractableComp->OnInteractionTriggered.AddDynamic(this, &AOrderKiosk::OnInteractionTriggered);
+	}
+	
 	InteractWidget->SetVisibility(false);
+}
+
+void AOrderKiosk::GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const
+{
+	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+
+	DOREPLIFETIME(AOrderKiosk, IsOverlapping);
 }
 
 // Called every frame
@@ -47,6 +72,7 @@ void AOrderKiosk::BeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor*
 	if (APlayerActor* Player = Cast<APlayerActor>(OtherActor))
 	{
 		InteractWidget->SetVisibility(true);
+		IsOverlapping = true;
 	}
 }
 
@@ -56,6 +82,56 @@ void AOrderKiosk::EndOverlap(UPrimitiveComponent* OverlappedComponent, AActor* O
 	if (APlayerActor* Player = Cast<APlayerActor>(OtherActor))
 	{
 		InteractWidget->SetVisibility(false);
+		IsOverlapping = false;
 	}
+}
+
+void AOrderKiosk::OnInteractionTriggered(AActor* Interactor)
+{
+	if (bIsUsed) return;
+
+	// 사용됨 표시
+	bIsUsed = true;
+	
+	// InteractableComp 비활성화 (재사용 방지)
+	if (InteractableComp)
+	{
+		InteractableComp->bCanInteract = false;
+	}
+	
+	ALingoGameState* GS = Cast<ALingoGameState>(GetWorld()->GetGameState());
+	if (GS)
+	{
+		// Food 스폰
+		ADropper* Dropper = FindDropperByIdx(FoodCourtIdx);
+		if (Dropper)
+		{
+			FFoodData tmpData;
+			tmpData.word = FoodData.word;
+			tmpData.SpawnIndex = FoodCourtIdx;
+			
+			Dropper->SetFoodSpawnData(tmpData);
+			Dropper->SetSpawnClass( LoadClass<AActor>(nullptr, TEXT("/Game/CustomContents/Blueprints/Interactables/BP_Food.BP_Food_C")));
+			Dropper->RequestSpawn();
+		}
+	}
+}
+
+class ADropper* AOrderKiosk::FindDropperByIdx(int32 InIdx)
+{
+	TArray<AActor*> Droppers;
+	UGameplayStatics::GetAllActorsOfClass(GetWorld(), ADropper::StaticClass(), Droppers);
+
+	for (auto Dropper : Droppers)
+	{
+		if (ADropper* Dpp = Cast<ADropper>(Dropper))
+		{
+			if (Dpp->DropperIndex == InIdx)
+			{
+				return Dpp;
+			}
+		}
+	}
+	return nullptr;
 }
 

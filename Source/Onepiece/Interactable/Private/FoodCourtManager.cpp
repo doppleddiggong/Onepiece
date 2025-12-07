@@ -7,6 +7,7 @@
 #include "ALingoGameState.h"
 #include "CityName.h"
 #include "CityNameWidget.h"
+#include "OrderKiosk.h"
 #include "Components/WidgetComponent.h"
 #include "Kismet/GameplayStatics.h"
 
@@ -53,17 +54,12 @@ void AFoodCourtManager::SetFoodCourtInfo()
 			}
 		}
 
-		// 음식 이름 지정
-		ADropper* Dropper = FindDropperByIdx(i);
-		if (Dropper)
+		// 랜덤 키오스크 지정
+		AOrderKiosk* RandomKiosk = GetRandomKiosk();
+		if (RandomKiosk)
 		{
-			FFoodData tmpData;
-			tmpData.word = SD.word2;
-			tmpData.SpawnIndex = i;
-			
-			Dropper->SetFoodSpawnData(tmpData);
-			Dropper->SetSpawnClass( LoadClass<AActor>(nullptr, TEXT("/Game/CustomContents/Blueprints/Interactables/BP_Food.BP_Food_C")));
-			Dropper->RequestSpawn();
+			RandomKiosk->FoodCourtIdx = i;
+			RandomKiosk->FoodData = SD.word2;
 		}
 	}
 }
@@ -86,21 +82,24 @@ ACityName* AFoodCourtManager::FindCityNameByIdx(int32 InIdx)
 	return nullptr;
 }
 
-class ADropper* AFoodCourtManager::FindDropperByIdx(int32 InIdx)
+class AOrderKiosk* AFoodCourtManager::GetRandomKiosk()
 {
-	TArray<AActor*> Droppers;
-	UGameplayStatics::GetAllActorsOfClass(GetWorld(), ADropper::StaticClass(), Droppers);
+	// 키오스크 중 랜덤으로 하나 뽑기
+	TArray<AActor*> AllKiosks;
+	UGameplayStatics::GetAllActorsOfClass(GetWorld(), AOrderKiosk::StaticClass(), AllKiosks);
 
-	for (auto Dropper : Droppers)
+	TArray<AOrderKiosk*> Available;
+	for (auto Actor : AllKiosks)
 	{
-		if (ADropper* Dpp = Cast<ADropper>(Dropper))
+		if (AOrderKiosk* Kiosk = Cast<AOrderKiosk>(Actor))
 		{
-			if (Dpp->DropperIndex == InIdx)
-			{
-				return Dpp;
-			}
+			if (Kiosk->FoodCourtIdx == -1)
+				Available.Add(Kiosk);
 		}
 	}
-	return nullptr;
+
+	if (Available.IsEmpty()) return nullptr;
+
+	return Available[FMath::RandRange(0, Available.Num()-1)];
 }
 
