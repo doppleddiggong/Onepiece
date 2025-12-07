@@ -23,6 +23,7 @@
 #include "ADropper.h"
 #include "luggage.h"
 #include "EngineUtils.h"
+#include "OrderKiosk.h"
 #include "UDialogManager.h"
 
 #define IMC_DEFAULT_PATH			TEXT("/Game/CustomContents/Input/IMC_Game_Player.IMC_Game_Player")
@@ -145,7 +146,7 @@ void APlayerControl::OnJump(const FInputActionValue&)
 	if (IControllable* C = GetControllable())
 		C->Cmd_Jump();
 
-	this->TEST_DropperDropProcess();
+	//this->TEST_DropperDropProcess();
 	// this->TEST_AddItemToBoxList();
 }
 

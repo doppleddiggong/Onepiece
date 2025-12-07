@@ -4,6 +4,7 @@
 #include "ADropper.h"
 
 #include "Luggage.h"
+#include "Food.h"
 #include "GameLogging.h"
 #include "Components/SkeletalMeshComponent.h"
 #include "Components/SceneComponent.h"
@@ -42,6 +43,7 @@ void ADropper::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetime
 
     DOREPLIFETIME(ADropper, SpawnClass);
     DOREPLIFETIME(ADropper, NextData);
+    DOREPLIFETIME(ADropper, NextFoodData);
     DOREPLIFETIME(ADropper, bIsSpawnIng);
 }
 
@@ -109,6 +111,10 @@ void ADropper::Spawn()
 
         int32 PatternIdx = FCString::Atoi(*NextData.word1.code);
         tmpLuggage->ApplyPatternToMesh(PatternIdx);
+    }
+    else if (auto tmpFood = Cast<AFood>(SpawnedActor))
+    {
+        tmpFood->SetFoodInfo(CurrentSpawnIndex++, NextFoodData.word.name);
     }
 
     // 애니메이션 실행

@@ -4,19 +4,16 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include "FoodCourtManager.generated.h"
+#include "DestroyTrigger.generated.h"
 
-/*
- * 파싱 받은 데이터를 각 식당과 음식에 배정
- */
 UCLASS()
-class ONEPIECE_API AFoodCourtManager : public AActor
+class ONEPIECE_API ADestroyTrigger : public AActor
 {
 	GENERATED_BODY()
 
 public:
 	// Sets default values for this actor's properties
-	AFoodCourtManager();
+	ADestroyTrigger();
 
 protected:
 	// Called when the game starts or when spawned
@@ -27,7 +24,12 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 public:
-	void SetFoodCourtInfo();
-	class ACityName* FindCityNameByIdx(int32 InIdx);
-	class AOrderKiosk* GetRandomKiosk();
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	class UBoxComponent* Trigger;
+
+	UFUNCTION()
+	void BeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
+
+	UFUNCTION(Server, Reliable)
+	void Server_Destroy(AActor* ActorToDestroy);
 };

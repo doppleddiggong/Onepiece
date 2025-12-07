@@ -3,6 +3,9 @@
 
 #include "Food.h"
 
+#include "CityNameWidget.h"
+#include "Components/WidgetComponent.h"
+
 
 // Sets default values
 AFood::AFood()
@@ -15,6 +18,9 @@ AFood::AFood()
 
 	FoodMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("FoodMesh"));
 	FoodMesh->SetupAttachment(GetRootComponent());
+
+	FoodName = CreateDefaultSubobject<UWidgetComponent>(TEXT("FoodName"));
+	FoodName->SetupAttachment(GetRootComponent());
 
 	// Initial settings
 	Mesh->SetSimulatePhysics(true);
@@ -47,12 +53,18 @@ void AFood::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	/*
-	if (!Pattern.IsEmpty())
+	
+}
+
+void AFood::SetFoodInfo(int32 InIndex, FString InName)
+{
+	Name = InName;
+	Index = InIndex;
+
+	UCityNameWidget* NameWidget = Cast<UCityNameWidget>(FoodName->GetWidget());
+	if (NameWidget)
 	{
-		FVector TextLocation = GetActorLocation() + FVector(0, 0, 100);
-	 	DrawDebugString(GetWorld(), TextLocation, Pattern, nullptr, FColor::White, 0.f, true);
+		NameWidget->SetCityName(InName);
 	}
-	*/
 }
 

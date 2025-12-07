@@ -3,9 +3,11 @@
 
 #include "FoodCourtManager.h"
 
+#include "ADropper.h"
 #include "ALingoGameState.h"
 #include "CityName.h"
 #include "CityNameWidget.h"
+#include "OrderKiosk.h"
 #include "Components/WidgetComponent.h"
 #include "Kismet/GameplayStatics.h"
 
@@ -42,28 +44,27 @@ void AFoodCourtManager::SetFoodCourtInfo()
 		auto SD = ScenarioData[i];
 
 		// 푸드코트 식당 이름 지정
-		ACityName* CityName = FindCityName(i);
-		if (!CityName)
+		ACityName* CityName = FindCityNameByIdx(i);
+		if (CityName)
 		{
-			UE_LOG(LogTemp, Warning, TEXT("FindCityName failed for index %d"), i);
-			continue;
+			UUserWidget* CityNameWidget = CityName->WidgetComp->GetWidget();
+			if (UCityNameWidget* CNW = Cast<UCityNameWidget>(CityNameWidget))
+			{
+				CNW->SetCityName(SD.word2.name);
+			}
 		}
 
-		if (!CityName->WidgetComp)
+		// 랜덤 키오스크 지정
+		AOrderKiosk* RandomKiosk = GetRandomKiosk();
+		if (RandomKiosk)
 		{
-			UE_LOG(LogTemp, Warning, TEXT("CityName->WidgetComp is null for index %d"), i);
-			continue;
-		}
-
-		UUserWidget* CityNameWidget = CityName->WidgetComp->GetWidget();
-		if (UCityNameWidget* CNW = Cast<UCityNameWidget>(CityNameWidget))
-		{
-			CNW->SetCityName(SD.word1.name);
+			RandomKiosk->FoodCourtIdx = i;
+			RandomKiosk->FoodData = SD.word1;
 		}
 	}
 }
 
-ACityName* AFoodCourtManager::FindCityName(int32 InIdx)
+ACityName* AFoodCourtManager::FindCityNameByIdx(int32 InIdx)
 {
 	TArray<AActor*> CityNames;
 	UGameplayStatics::GetAllActorsOfClass(GetWorld(), ACityName::StaticClass(), CityNames);
@@ -79,5 +80,26 @@ ACityName* AFoodCourtManager::FindCityName(int32 InIdx)
 		}
 	}
 	return nullptr;
+}
+
+class AOrderKiosk* AFoodCourtManager::GetRandomKiosk()
+{
+	// 키오스크 중 랜덤으로 하나 뽑기
+	TArray<AActor*> AllKiosks;
+	UGameplayStatics::GetAllActorsOfClass(GetWorld(), AOrderKiosk::StaticClass(), AllKiosks);
+
+	TArray<AOrderKiosk*> Available;
+	for (auto Actor : AllKiosks)
+	{
+		if (AOrderKiosk* Kiosk = Cast<AOrderKiosk>(Actor))
+		{
+			if (Kiosk->FoodCourtIdx == -1)
+				Available.Add(Kiosk);
+		}
+	}
+
+	if (Available.IsEmpty()) return nullptr;
+
+	return Available[FMath::RandRange(0, Available.Num()-1)];
 }
 

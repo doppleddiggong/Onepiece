@@ -44,8 +44,9 @@ private:
 
 	bool CheckLuggage(class Aluggage* TargetLuggage);
 
+protected:
 	void UpdateActivateState(bool State);
-	
+
 public:
 	// Components
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Components")
