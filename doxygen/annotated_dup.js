@@ -1,11 +1,14 @@
 var annotated_dup =
 [
     [ "ABroadcastTrigger", "classABroadcastTrigger.html", "classABroadcastTrigger" ],
+    [ "ACityName", "classACityName.html", "classACityName" ],
     [ "AContactTrigger", "classAContactTrigger.html", "classAContactTrigger" ],
     [ "AConveyorBelt", "classAConveyorBelt.html", "classAConveyorBelt" ],
     [ "AConveyorButton", "classAConveyorButton.html", "classAConveyorButton" ],
     [ "ADoor", "classADoor.html", "classADoor" ],
     [ "ADropper", "classADropper.html", "classADropper" ],
+    [ "AFood", "classAFood.html", "classAFood" ],
+    [ "AFoodCourtManager", "classAFoodCourtManager.html", "classAFoodCourtManager" ],
     [ "AGate", "classAGate.html", "classAGate" ],
     [ "AHolder", "classAHolder.html", "classAHolder" ],
     [ "ALingoGameMode", "classALingoGameMode.html", "classALingoGameMode" ],
@@ -104,6 +107,7 @@ var annotated_dup =
     [ "UBroadcastManager", "classUBroadcastManager.html", "classUBroadcastManager" ],
     [ "UCharacterData", "classUCharacterData.html", "classUCharacterData" ],
     [ "UCircularProgressBar", "classUCircularProgressBar.html", "classUCircularProgressBar" ],
+    [ "UCityNameWidget", "classUCityNameWidget.html", "classUCityNameWidget" ],
     [ "UCommonFunctionLibrary", "classUCommonFunctionLibrary.html", "classUCommonFunctionLibrary" ],
     [ "UControllable", "classUControllable.html", null ],
     [ "UConveryorButtonAnimInstance", "classUConveryorButtonAnimInstance.html", "classUConveryorButtonAnimInstance" ],

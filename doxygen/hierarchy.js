@@ -2,11 +2,14 @@ var hierarchy =
 [
     [ "AActor", null, [
       [ "ABroadcastTrigger", "classABroadcastTrigger.html", null ],
+      [ "ACityName", "classACityName.html", null ],
       [ "AContactTrigger", "classAContactTrigger.html", null ],
       [ "AConveyorBelt", "classAConveyorBelt.html", null ],
       [ "AConveyorButton", "classAConveyorButton.html", null ],
       [ "ADoor", "classADoor.html", null ],
       [ "ADropper", "classADropper.html", null ],
+      [ "AFood", "classAFood.html", null ],
+      [ "AFoodCourtManager", "classAFoodCourtManager.html", null ],
       [ "AGate", "classAGate.html", null ],
       [ "AHolder", "classAHolder.html", null ],
       [ "AListActorManager", "classAListActorManager.html", null ],
@@ -184,6 +187,7 @@ var hierarchy =
         [ "UPopup_WriteBoard", "classUPopup__WriteBoard.html", null ]
       ] ],
       [ "UCircularProgressBar", "classUCircularProgressBar.html", null ],
+      [ "UCityNameWidget", "classUCityNameWidget.html", null ],
       [ "UDialogWidget", "classUDialogWidget.html", null ],
       [ "UDrawingBoardWidget", "classUDrawingBoardWidget.html", null ],
       [ "UHoverButton", "classUHoverButton.html", null ],
