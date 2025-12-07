@@ -380,16 +380,19 @@ void AWeightSwitch::Multicast_ShowWrongPopup_Implementation(const FString& Lugga
 	// 모든 클라이언트(호스트 포함)에서 오답 메시지 표시
 	if (UPopupManager* PopupMgr = UPopupManager::Get(GetWorld()))
 	{
-		FString Title = TEXT("Wrong Answer!");
-		FString Message = FString::Printf(TEXT("This is not the correct luggage.\n\nColor: %s\nPattern: %s"),
+		// FString Title = TEXT("Wrong Answer!");
+		FString Message = FString::Printf(TEXT("Wrong Answer\nThis is not the correct Answer.\n\nColor: %s\nPattern: %s"),
 			*LuggageColor, *LuggagePattern);
 
-		PopupMgr->ShowMsgBox(Title, Message, EMsgBoxType::OK,
-			FOnMsgBoxOkDelegate::CreateLambda([]() {
-				// 확인 버튼 클릭 시 아무 작업도 하지 않음 (팝업만 닫힘)
-			}));
+		if (auto DM = UBroadcastManager::Get(this))
+			DM->SendTutorMessage(FText::FromString(Message));
 
-		PRINTLOG(TEXT("[WeightSwitch] Showing wrong popup on %s (Color: %s, Pattern: %s)"),
-			HasAuthority() ? TEXT("Server") : TEXT("Client"), *LuggageColor, *LuggagePattern);
+		// PopupMgr->ShowMsgBox(Title, Message, EMsgBoxType::OK,
+		// 	FOnMsgBoxOkDelegate::CreateLambda([]() {
+		// 		// 확인 버튼 클릭 시 아무 작업도 하지 않음 (팝업만 닫힘)
+		// 	}));
+		//
+		// PRINTLOG(TEXT("[WeightSwitch] Showing wrong popup on %s (Color: %s, Pattern: %s)"),
+		// 	HasAuthority() ? TEXT("Server") : TEXT("Client"), *LuggageColor, *LuggagePattern);
 	}
 }
