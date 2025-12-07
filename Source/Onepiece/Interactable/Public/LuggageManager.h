@@ -15,6 +15,11 @@ public:
 	// Sets default values for this actor's properties
 	ALuggageManager();
 
+	void StartSpawning();
+	void SpawnLuggage();
+
+	void InitHolder(struct FResponseReadScenario& ResponseData);
+	
 public:
 	// Spawn
 	UPROPERTY(EditAnywhere, Category = "Spawn")
@@ -26,7 +31,4 @@ public:
 	FTimerHandle SpawnTimerHandle;
 	
 	int32 CurrentSpawnIndex = 0;
-	
-	void StartSpawning();
-	void SpawnLuggage();
 };

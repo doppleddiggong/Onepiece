@@ -46,7 +46,7 @@ private:
 	void OnListenResponseScenario(struct FResponseListenScenario& ResponseData, bool bWasSuccessful);
 
 
-	void TEST_Holder(FResponseReadScenario& ResponseData);
+	// void TEST_Holder(FResponseReadScenario& ResponseData);
 	
 protected:
 	/// @brief 트리거 영역을 정의하는 박스 컴포넌트

@@ -9,13 +9,10 @@
 #include "NetworkData.h"
 #include "ALingoGameMode.h"
 #include "FoodCourtManager.h"
-#include "GameLogging.h"
 #include "LuggageManager.h"
 #include "ULingoGameHelper.h"
 #include "UVoiceConversationSystem.h"
 #include "Kismet/GameplayStatics.h"
-#include "AHolder.h"
-#include "EngineUtils.h"
 
 AContactTrigger::AContactTrigger()
 {
@@ -175,9 +172,10 @@ void AContactTrigger::OnReadResponseScenario(FResponseReadScenario& ResponseData
 		ALuggageManager* LuggageManager = Cast<ALuggageManager>( UGameplayStatics::GetActorOfClass(World, ALuggageManager::StaticClass()));
 
 		if (LuggageManager)
+		{
 			LuggageManager->StartSpawning();
-
-		TEST_Holder(ResponseData);
+			LuggageManager->InitHolder(ResponseData);
+		}
 	}
 }
 
@@ -198,35 +196,6 @@ void AContactTrigger::OnListenResponseScenario(FResponseListenScenario& Response
 		if (FCourtManager)
 		{
 			FCourtManager->SetFoodCourtInfo();
-		}
-	}
-}
-
-void AContactTrigger::TEST_Holder(FResponseReadScenario& ResponseData)
-{
-	// HACK, 임시 코드
-	// 맵에 있는 AHolder를 찾아서 정답 데이터 설정
-	if (ResponseData.target_data.Num() > 0 && ResponseData.correct_answer_index >= 0
-		&& ResponseData.correct_answer_index < ResponseData.target_data.Num())
-	{
-		const FScenarioTargetData& CorrectAnswer = ResponseData.target_data[ResponseData.correct_answer_index];
-
-		// {
-		// 	"word1": { "name": "닭", "code": "6" },
-		// 	"word2": { "name": "빨강", "code": "1" }
-		// }
-			
-		const int32 PatternIdx = FCString::Atoi(*CorrectAnswer.word1.code);
-		const int32 ColorIdx = FCString::Atoi(*CorrectAnswer.word2.code);
-
-		for (TActorIterator<AHolder> It(GetWorld()); It; ++It)
-		{
-			AHolder* Holder = *It;
-			if (Holder)
-			{
-				Holder->SetAnswerData(ColorIdx, PatternIdx);
-				break;
-			}
 		}
 	}
 }
