@@ -22,6 +22,9 @@ protected:
 
 private:
 	UFUNCTION()
+	void HandleMediaOpened(FString OpenedUrl);
+
+	UFUNCTION()
 	void HandleMediaEndReached();
 
 protected:
@@ -38,7 +41,7 @@ protected:
 	TObjectPtr<class UMaterialInstanceDynamic> MediaMaterial;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Media")
-	TObjectPtr<class UTexture> MediaTexture;
+	TObjectPtr<class UMediaTexture> MediaTexture;
 
 	
 	// Parameters
