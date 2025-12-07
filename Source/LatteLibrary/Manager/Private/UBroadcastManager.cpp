@@ -85,3 +85,8 @@ void UBroadcastManager::SendAddItemToBoxList(const TArray<FResultStatData>& Item
 {
 	OnAddItemToBoxList.Broadcast(ItemDataList);
 }
+
+void UBroadcastManager::SendTeleport(const FVector& TargetLocation)
+{
+	OnTeleport.Broadcast(TargetLocation);
+}

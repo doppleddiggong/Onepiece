@@ -342,6 +342,50 @@ void ANetworkBroadcastActor::Multicast_SendTutorMessage_Implementation(const FTe
 }
 
 // ========================================
+// Teleport All Players
+// ========================================
+
+void ANetworkBroadcastActor::SendTeleportAllPlayers(const FVector& TargetLocation, AActor* EventInstigator)
+{
+	if (!EventInstigator)
+	{
+		PRINTLOG(TEXT("NetworkBroadcastActor: SendTeleportAllPlayers - EventInstigator is null"));
+		return;
+	}
+
+	PRINTLOG(TEXT("NetworkBroadcastActor: SendTeleportAllPlayers called - Location: %s, EventInstigator: %s"),
+		*TargetLocation.ToString(), *EventInstigator->GetName());
+
+	Server_SendTeleportAllPlayers(TargetLocation, EventInstigator);
+}
+
+void ANetworkBroadcastActor::Server_SendTeleportAllPlayers_Implementation(const FVector& TargetLocation, AActor* EventInstigator)
+{
+	if (!ValidateInstigator(EventInstigator))
+	{
+		PRINTLOG(TEXT("NetworkBroadcastActor: Invalid instigator for TeleportAllPlayers"));
+		return;
+	}
+
+	PRINTLOG(TEXT("NetworkBroadcastActor: Server received TeleportAllPlayers - Location: %s"), *TargetLocation.ToString());
+
+	Multicast_SendTeleportAllPlayers(TargetLocation);
+}
+
+void ANetworkBroadcastActor::Multicast_SendTeleportAllPlayers_Implementation(const FVector& TargetLocation)
+{
+	PRINTLOG(TEXT("NetworkBroadcastActor: Multicast TeleportAllPlayers - Location: %s, Role: %s"),
+		*TargetLocation.ToString(), GetLocalRole() == ROLE_Authority ? TEXT("Server") : TEXT("Client"));
+
+	UBroadcastManager* LocalBroadcast = GetLocalBroadcastManager();
+	if (LocalBroadcast)
+	{
+		LocalBroadcast->SendTeleport(TargetLocation);
+		PRINTLOG(TEXT("NetworkBroadcastActor: Local BroadcastManager triggered for TeleportAllPlayers"));
+	}
+}
+
+// ========================================
 // Utility Functions
 // ========================================
 
