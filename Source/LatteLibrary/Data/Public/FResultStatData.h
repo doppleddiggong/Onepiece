@@ -11,7 +11,7 @@ enum class EResultItemWidgetType : uint8
 	Grade,       // GradePanel
 	Score,       // ScorePanel
 	Rate,        // RatePanel
-	Symbol		 // SymbolPanel
+	Symbol,		 // SymbolPanel
 };
 
 /**
@@ -47,9 +47,12 @@ struct LATTELIBRARY_API FResultStatData
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="ResultStat|Rate", meta=(EditCondition="WidgetType == EResultItemWidgetType::Rate", EditConditionHides))
 	float RatePercent = 0.f;
 
-	/** Symbol 타입 전용: 심볼 값 (퍼센트로 표시, 0.0 ~ 1.0) */
+	/** Symbol 타입 전용: 심볼 문자열 */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="ResultStat|Grade", meta=(EditCondition="WidgetType == EResultItemWidgetType::Grade", EditConditionHides))
+	EResourceTextureType SymbolTextureType = EResourceTextureType::Rarity_D;
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="ResultStat|Symbol", meta=(EditCondition="WidgetType == EResultItemWidgetType::Symbol", EditConditionHides))
-	float SymbolValue = 0.f;
+	FString SymbolValue;
 
 	FResultStatData()
 		: WidgetType(EResultItemWidgetType::Score)
@@ -58,7 +61,8 @@ struct LATTELIBRARY_API FResultStatData
 		, GradeTextureType(EResourceTextureType::Rarity_D)
 		, ScoreValue(0.f)
 		, RatePercent(0.f)
-		, SymbolValue(0.f)
+		, SymbolTextureType(EResourceTextureType::Rarity_D)
+		, SymbolValue()
 	{
 	}
 };

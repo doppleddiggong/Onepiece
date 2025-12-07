@@ -62,7 +62,10 @@ public:
 	static FString GetFormatTimer(const float InRemainTime );
 
 	UFUNCTION(BlueprintCallable, Category = "Utils")
-	static EResourceTextureType ConvertGradeType(const float Score);
+	static EResourceTextureType ConvertGradeScore(const float Score);
+
+	UFUNCTION(BlueprintCallable, Category = "Utils")
+	static EResourceTextureType ConvertGradeString(const FString& Grade);
 	
 	/// @brief 마우스 커서를 표시하고 게임+UI 입력 모드로 설정합니다.
 	/// @param WorldContextObject [in] World 컨텍스트 객체

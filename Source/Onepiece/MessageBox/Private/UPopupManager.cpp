@@ -243,18 +243,6 @@ void UPopupManager::ShowMsgBoxSimple(
 	}
 }
 
-void UPopupManager::ShowResult()
-{
-	UUserWidget* Widget = ShowPopup(EPopupType::Result);
-	if (!Widget)
-		return;
-
-	if (auto ResultPopup = Cast<UPopup_Result>(Widget))
-	{
-		ResultPopup->InitPopup();
-	}
-}
-
 // ========================================
 // 내부 헬퍼 함수
 // ========================================

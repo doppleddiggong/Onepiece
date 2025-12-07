@@ -52,7 +52,7 @@ void UResultStatWidget::InitData(const FResultStatData& InData)
 		break;
 
 	case EResultItemWidgetType::Symbol:
-		SetSymbolValue(InData.SymbolValue);
+		SetSymbolValue(InData.SymbolTextureType, InData.SymbolValue);
 		break;
 	}
 }
@@ -121,15 +121,29 @@ void UResultStatWidget::SetRateValue(const float InPercent)
 	ImageProgress_Rate->SetPercent(InPercent);
 }
 
-void UResultStatWidget::SetSymbolValue(const float InValue)
+void UResultStatWidget::SetSymbolValue(const EResourceTextureType TextureType, const FString& InValue)
 {
 	SymbolValue = InValue;
 
+	if (!Image_Grade)
+		return;
+
+	// GameDataManager에서 TextureType에 해당하는 텍스처 가져오기
+	UGameDataManager* DataManager = UGameDataManager::Get(this);
+	if (!DataManager)
+		return;
+
+	UTexture2D* Texture = DataManager->GetTexture(TextureType);
+	if (!Texture)
+		return;
+
+	// Image의 Brush 데이터 변경
+	FSlateBrush Brush = Image_Symbol->GetBrush();
+	Brush.SetResourceObject(Texture);
+	Image_Symbol->SetBrush(Brush);
+	
 	if (Txt_ImageRate)
-	{
-		FString Str = FString::Printf(TEXT("%.1f%%"), InValue * 100.f);
-		Txt_ImageRate->SetText(FText::FromString(Str));
-	}
+		Txt_ImageRate->SetText(FText::FromString(InValue));
 }
 
 /* -----------------------------

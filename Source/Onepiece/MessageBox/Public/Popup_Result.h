@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "UBasePopup.h"
 #include "NetworkData.h"
+#include "ALingoGameState.h"
 #include "Popup_Result.generated.h"
 
 /**
@@ -15,24 +16,25 @@ class ONEPIECE_API UPopup_Result : public UBasePopup
 {
 	GENERATED_BODY()
 
-protected:
-	virtual void NativeConstruct() override;
-
 public:
-	void InitPopup();
+	void InitPopup(EQuestType InQuestType);
 
 private:
 	UFUNCTION(BlueprintCallable, Category = "Close")
 	void OnClickClose();
 
-	void SetWordWidget();
-	void SetWrongList();
-	void SetTimeTaken();
+	void InitWordWidget();
+	void InitWrongList();
 
-	void RequestReadResult();
+	void InitReadResult(const FResponseReadResult& ResponseData);
+	void InitListenResult(const FResponseListenResult& ResponseData);
 
+	void RequestResult();
+	
 	UFUNCTION()
 	void OnResponseReadResult(FResponseReadResult& ResponseData, bool bWasSuccessful);
+	UFUNCTION()
+	void OnResponseListenResult(FResponseListenResult& ResponseData, bool bWasSuccessful);
 	
 protected:
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
@@ -47,25 +49,18 @@ protected:
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
 	TObjectPtr<class UTextBlock> Txt_Eng;
 	
-	// 오답 표시
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
 	TObjectPtr<class UScrollBox> Scrl_WrongList;
 
-
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
-	TObjectPtr<class UTextBlock> Txt_TimeRank;
-
+	TObjectPtr<class UResultStatWidget> Result_Time;
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
-	TObjectPtr<class UTextBlock> Txt_TimeTaken;
-
-	// 정답 정확도
+	TObjectPtr<class UResultStatWidget> Result_Grade;
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
-	TObjectPtr<class UTextBlock> Txt_Accuracy;
-
-	// 랭킹 백분율
+	TObjectPtr<class UResultStatWidget> Result_TopRate;
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
-	TObjectPtr<class UCircularProgressBar> CircleBar_Ranking;
+	TObjectPtr<class UResultStatWidget> Result_AverageScore;
 
-	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
-	TObjectPtr<class UTextBlock> Txt_Rank;
+private:
+	EQuestType QuestType;
 };

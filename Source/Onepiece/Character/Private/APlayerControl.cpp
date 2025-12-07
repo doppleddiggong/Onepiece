@@ -324,7 +324,7 @@ void APlayerControl::TEST_AddItemToBoxList()
 
 			case 3: // Symbol
 				Item.WidgetType = EResultItemWidgetType::Symbol;
-				Item.SymbolValue = FMath::FRandRange(0.0f, 1.0f);
+				Item.SymbolValue = FString::SanitizeFloat( FMath::FRandRange(0.0f, 1.0f) );
 				Item.TitleText = FText::FromString(TEXT("심볼"));
 				break;
 			}

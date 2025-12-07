@@ -45,8 +45,7 @@ public:
 	void SetRateValue(const float InPercent);
 
 	UFUNCTION(BlueprintCallable)
-	void SetSymbolValue(const float InValue);
-
+	void SetSymbolValue(const EResourceTextureType TextureType, const FString& InValue);
 
 private:
 	void ApplyStyle();
@@ -86,7 +85,7 @@ public:
 	UPROPERTY(meta=(BindWidget), BlueprintReadOnly)
 	TObjectPtr<class UCircularProgressBar> ImageProgress_Rate;
 
-	// Image Rate Panel
+	// Symbol Panel
 	UPROPERTY(meta=(BindWidget), BlueprintReadOnly)
 	TObjectPtr<class UImage> Image_Symbol;
 
@@ -110,5 +109,5 @@ public:
 	float GradeValue = 0.f;
 	float ScoreValue = 0.f;
 	float RateValue = 0.f;
-	float SymbolValue = 0.f;
+	FString SymbolValue;
 };

@@ -461,7 +461,7 @@ TArray<FResultStatData> FResponseSpeakingJudes::GetResultStatData()
 	GrammarData.ColorType = EColorStyleType::Green;
 	GrammarData.TitleText = FText::FromString(TEXT("GRAMMER"));
 	GrammarData.ScoreValue = grammar_score;
-	GrammarData.GradeTextureType = ULingoGameHelper::ConvertGradeType(grammar_score);
+	GrammarData.GradeTextureType = ULingoGameHelper::ConvertGradeScore(grammar_score);
 	StatDataList.Add(GrammarData);
 
 	// Context Score
@@ -470,7 +470,7 @@ TArray<FResultStatData> FResponseSpeakingJudes::GetResultStatData()
 	ContextData.ColorType = EColorStyleType::Blue;
 	ContextData.TitleText = FText::FromString(TEXT("CONTEXT"));
 	ContextData.ScoreValue = context_score;
-	ContextData.GradeTextureType = ULingoGameHelper::ConvertGradeType(context_score);
+	ContextData.GradeTextureType = ULingoGameHelper::ConvertGradeScore(context_score);
 	StatDataList.Add(ContextData);
 
 	// Final Overall Score
@@ -479,7 +479,7 @@ TArray<FResultStatData> FResponseSpeakingJudes::GetResultStatData()
 	OverallData.ColorType = EColorStyleType::Yellow;
 	OverallData.TitleText = FText::FromString(TEXT("SCORE"));
 	OverallData.ScoreValue = final_overall_score;
-	OverallData.GradeTextureType = ULingoGameHelper::ConvertGradeType(final_overall_score);
+	OverallData.GradeTextureType = ULingoGameHelper::ConvertGradeScore(final_overall_score);
 	StatDataList.Add(OverallData);
 
 	return StatDataList;

@@ -18,6 +18,9 @@ enum class EResourceTextureType : uint8
 	Rarity_S,
 
 	KLingo,
+
+	Time,
+	Score,
 };
 
 USTRUCT(BlueprintType)

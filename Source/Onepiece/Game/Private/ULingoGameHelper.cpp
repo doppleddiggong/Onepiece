@@ -155,7 +155,7 @@ float ULingoGameHelper::GetMissionPlayTime()
 	return 300;
 }
 
-EResourceTextureType ULingoGameHelper::ConvertGradeType(const float Score)
+EResourceTextureType ULingoGameHelper::ConvertGradeScore(const float Score)
 {
 	if (Score >= 90.0f)
 		return EResourceTextureType::Rarity_S;
@@ -169,6 +169,16 @@ EResourceTextureType ULingoGameHelper::ConvertGradeType(const float Score)
 		return EResourceTextureType::Rarity_D;
 }
 
+EResourceTextureType ULingoGameHelper::ConvertGradeString(const FString& Grade)
+{
+	if (Grade == "D") return EResourceTextureType::Rarity_D;
+	if (Grade == "C") return EResourceTextureType::Rarity_C;
+	if (Grade == "B") return EResourceTextureType::Rarity_B;
+	if (Grade == "A") return EResourceTextureType::Rarity_A;
+	if (Grade == "S") return EResourceTextureType::Rarity_S;
+
+	return EResourceTextureType::Rarity_D;
+}
 
 FString ULingoGameHelper::GetFormatTimer(const float InRemainTime )
 {

@@ -111,15 +111,6 @@ void APopupTesterActor::InterviewPopup()
 	}
 }
 
-void APopupTesterActor::ResultPopup()
-{
-	if (const auto PopupMgr = UPopupManager::Get(GetWorld()))
-	{
-		PopupMgr->ShowResult();
-	}
-}
-
-
 void APopupTesterActor::OnOK()
 {
 	PRINT_STRING(TEXT("I'M OK"));
