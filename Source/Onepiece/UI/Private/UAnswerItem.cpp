@@ -27,11 +27,10 @@ void UAnswerItem::InitInfo(	EQuestType QuestType, bool bCorrect,
 		else
 			LoadedTexture = ReadData.Texture.LoadSynchronous();
 		Image_Target1->SetBrushFromTexture(LoadedTexture, true);
+		Image_Target1->SetColorAndOpacity( FLinearColor::White );
 
 		Txt_Target1_Kor->SetText( FText::FromString( ReadData.Word));
-		Txt_Target1_Eng->SetText( FText::Format(
-			FText::FromString(TEXT("[{0}]")),
-			FText::FromString(TEXT("ENGLISH")) ));
+		Txt_Target1_Eng->SetText( FText::Format( FText::FromString(TEXT("[{0}]")), FText::FromString( ReadData.Eng) ));
 
 		FColorData ColorData;
 		UGameDataManager::Get(GetWorld())->GetColorData(Word2Code, ColorData);
@@ -40,8 +39,27 @@ void UAnswerItem::InitInfo(	EQuestType QuestType, bool bCorrect,
 		Image_Target2->SetColorAndOpacity( ColorData.GetLinearColor());
 		
 		Txt_Target2_Kor->SetText( FText::FromString( ColorData.Desc));
-		Txt_Target2_Eng->SetText( FText::Format(
-			FText::FromString(TEXT("[{0}]")),
-			FText::FromString(TEXT("ENGLISH")) ));
+		Txt_Target2_Eng->SetText( FText::Format( FText::FromString(TEXT("[{0}]")), FText::FromString( ColorData.Eng) ));
+	}
+	else if( QuestType == EQuestType::Listen )
+	{
+		FListenData Listen01Data;
+		UGameDataManager::Get(GetWorld())->GetListenData(Word1Code, Listen01Data);
+
+		UTexture2D* Listen01Texture = UGameDataManager::Get(this)->GetTexture(EResourceTextureType::Score);
+		Image_Target1->SetBrushFromTexture(Listen01Texture, true);
+		Image_Target1->SetColorAndOpacity( FLinearColor::White );
+
+		Txt_Target1_Kor->SetText( FText::FromString( Listen01Data.Word));
+		Txt_Target1_Eng->SetText( FText::Format( FText::FromString(TEXT("[{0}]")), FText::FromString(Listen01Data.Eng) ));
+
+		FListenData Listen02Data;
+		UGameDataManager::Get(GetWorld())->GetListenData(Word2Code, Listen02Data);
+
+		UTexture2D* Listen02Texture = UGameDataManager::Get(this)->GetTexture(EResourceTextureType::Color);
+		Image_Target2->SetBrushFromTexture(Listen02Texture, true);
+		Image_Target2->SetColorAndOpacity( FLinearColor::White );
+		Txt_Target2_Kor->SetText( FText::FromString( Listen02Data.Word ));
+		Txt_Target2_Eng->SetText( FText::Format( FText::FromString(TEXT("[{0}]")), FText::FromString(Listen01Data.Eng)));
 	}
 }
