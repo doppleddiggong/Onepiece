@@ -35,7 +35,7 @@ void AFoodCourtManager::SetFoodCourtInfo()
 	ALingoGameState* GS = Cast<ALingoGameState>(GetWorld()->GetGameState());
 	if (!GS) return;
 
-	const TArray<FScenarioTargetData>& ScenarioData = GS->GetScenarioData().target_data;
+	const TArray<FScenarioTargetData>& ScenarioData = GS->GetListenScenarioData().target_data;
 
 	for (int32 i=0; i<ScenarioData.Num(); i++)
 	{
