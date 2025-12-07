@@ -50,7 +50,7 @@ void AFoodCourtManager::SetFoodCourtInfo()
 			UUserWidget* CityNameWidget = CityName->WidgetComp->GetWidget();
 			if (UCityNameWidget* CNW = Cast<UCityNameWidget>(CityNameWidget))
 			{
-				CNW->SetCityName(SD.word1.name);
+				CNW->SetCityName(SD.word2.name);
 			}
 		}
 
@@ -59,7 +59,7 @@ void AFoodCourtManager::SetFoodCourtInfo()
 		if (RandomKiosk)
 		{
 			RandomKiosk->FoodCourtIdx = i;
-			RandomKiosk->FoodData = SD.word2;
+			RandomKiosk->FoodData = SD.word1;
 		}
 	}
 }

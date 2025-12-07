@@ -27,7 +27,7 @@ AOrderKiosk::AOrderKiosk()
 
 	InteractableComp = CreateDefaultSubobject<UInteractableComponent>(TEXT("InteractableComp"));
 	InteractableComp->InteractionType = EInteractionType::Button;
-	InteractableComp->InteractionPrompt = TEXT("Order Food");
+	InteractableComp->InteractionPrompt = TEXT("Order Ticket");
 
 	InteractWidget = CreateDefaultSubobject<UWidgetComponent>(TEXT("InteractWidget"));
 	InteractWidget->SetupAttachment(GetRootComponent());
@@ -94,11 +94,11 @@ void AOrderKiosk::OnInteractionTriggered(AActor* Interactor)
 	bIsUsed = true;
 	
 	// InteractableComp 비활성화 (재사용 방지)
-	if (InteractableComp)
+	/*if (InteractableComp)
 	{
 		InteractableComp->bCanInteract = false;
 	}
-	
+	*/
 	ALingoGameState* GS = Cast<ALingoGameState>(GetWorld()->GetGameState());
 	if (GS)
 	{

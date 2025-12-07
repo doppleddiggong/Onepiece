@@ -41,4 +41,18 @@ protected:
 
 public:
 	void SetFoodInfo(int32 InIndex, FString InName);
+
+	/**
+	 * @brief Food 인덱스 반환
+	 * @return Food의 인덱스
+	 */
+	UFUNCTION(BlueprintPure, Category = "Food")
+	FORCEINLINE int32 GetFoodIndex() const { return Index; }
+
+	/**
+	 * @brief Food 이름 반환
+	 * @return Food의 이름
+	 */
+	UFUNCTION(BlueprintPure, Category = "Food")
+	FORCEINLINE FString GetFoodName() const { return Name; }
 };
