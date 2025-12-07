@@ -13,8 +13,12 @@
 #include "UPopupManager.h"
 #include "UResultStatWidget.h"
 #include "UTextureButton.h"
+#include "UAnswerItem.h"
+#include "Components/HorizontalBox.h"
 #include "Components/ScrollBox.h"
 #include "Components/TextBlock.h"
+#include "Blueprint/UserWidget.h"
+#include "Components/VerticalBox.h"
 
 void UPopup_Result::InitPopup(const EQuestType InQuestType)
 {
@@ -87,35 +91,31 @@ void UPopup_Result::InitWrongList()
 	}
 	
 	// 기존 항목 제거
-	Scrl_WrongList->ClearChildren();
-
-	// WrongList의 각 항목을 텍스트로 추가
+	VerticalBox->ClearChildren();
+	// WrongList의 각 항목을 UAnswerItem으로 추가
 	for (int32 i = 0; i < WrongList.Num(); i++)
 	{
-		auto SD = ScenarioData[WrongList[i]];
+		const FScenarioTargetData& SD = ScenarioData[WrongList[i]];
 
-		UAnswerItem
-		
-		// if (UTextBlock* TextBlock = NewObject<UTextBlock>(this))
-		// {
-		// 	// 맨 마지막 인덱스는 정답
-		// 	if (i == WrongList.Num()-1)
-		// 	{
-		// 		TextBlock->SetText(FText::FromString(FString::Printf(TEXT("[CORRECT] %s, %s"),
-		// 						*SD.word1.name, *SD.word2.name)));
-		// 		TextBlock->SetColorAndOpacity(FSlateColor(FLinearColor::Red));
-		// 		
-		// 		Scrl_WrongList->AddChild(TextBlock);
-		// 	}
-		// 	else
-		// 	{
-		// 		TextBlock->SetText(FText::FromString(FString::Printf(TEXT("Try %d - [WRONG] %s, %s"),
-		// 			i+1, *SD.word1.name, *SD.word2.name)));
-		// 		TextBlock->SetColorAndOpacity(FSlateColor(FLinearColor::Black));
-		// 	
-		// 		Scrl_WrongList->AddChild(TextBlock);
-		// 	}
-		// }
+		// UAnswerItem 위젯 생성
+		if (AnswerItemClass)
+		{
+			UAnswerItem* AnswerItem = CreateWidget<UAnswerItem>(this, AnswerItemClass);
+			if (AnswerItem)
+			{
+				// 마지막 인덱스는 정답
+				const bool bCorrect = (i == WrongList.Num() - 1);
+				const int32 Order = i + 1;
+				const int32 Word1Code = FCString::Atoi(*SD.word1.code);
+				const int32 Word2Code = FCString::Atoi(*SD.word2.code);
+
+				// AnswerItem 초기화
+				AnswerItem->InitInfo(QuestType, bCorrect, Order, Word1Code, Word2Code);
+
+				// HorizontalBox에 추가
+				VerticalBox->AddChild(AnswerItem);
+			}
+		}
 	}
 }
 

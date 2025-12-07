@@ -6,27 +6,15 @@
 #include "ALingoGameState.h"
 #include "FReadData.h"
 #include "UGameDataManager.h"
-#include "Components/CanvasPanel.h"
 #include "Components/Image.h"
-#include "Components/Border.h"
 #include "Components/WidgetSwitcher.h"
-#include "Components/HorizontalBox.h"
-#include "Components/VerticalBox.h"
 #include "Components/TextBlock.h"
-
-void UAnswerItem::NativeConstruct()
-{
-	Super::NativeConstruct();
-
-	// 기본 상태: 틀린 상태로 설정
-	WidgetSwitcherSymbol->SetActiveWidgetIndex(0);
-}
 
 void UAnswerItem::InitInfo(	EQuestType QuestType, bool bCorrect,
 	int32 InOrder, int32 Word1Code, int32 Word2Code)
 {
 	Txt_Order->SetText(FText::AsNumber(InOrder));
-	WidgetSwitcherSymbol->SetActiveWidgetIndex(bCorrect ? 1 : 0);
+	WidgetSwitcherSymbol->SetActiveWidget(bCorrect ? Image_Correct : Image_Wrong);
 
 	if( QuestType == EQuestType::Read )
 	{

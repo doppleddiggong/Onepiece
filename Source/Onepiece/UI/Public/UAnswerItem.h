@@ -13,9 +13,6 @@ class ONEPIECE_API UAnswerItem : public UUserWidget
 	GENERATED_BODY()
 
 public:
-	virtual void NativeConstruct() override;
-
-public:
 	void InitInfo(
 		EQuestType QuestType, bool bCorrect,
 		int32 InOrder, int32 Word1Code, int32 Word2Code);
@@ -25,6 +22,11 @@ public:
 	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<class UWidgetSwitcher> WidgetSwitcherSymbol;
 
+	UPROPERTY(meta = (BindWidget))
+	TObjectPtr<class UImage> Image_Wrong;
+	UPROPERTY(meta = (BindWidget))
+	TObjectPtr<class UImage> Image_Correct;
+	
 	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<class UTextBlock> Txt_Order;
 
