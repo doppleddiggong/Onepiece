@@ -42,6 +42,9 @@ protected:
 private:
 	FWriteQuestionData QuestionData;
 	
+	UPROPERTY()
+	TArray<class UTextureRenderTarget2D*> RT_CanvasArray;
+	
 	UFUNCTION()
 	void OnClickButton();
 };

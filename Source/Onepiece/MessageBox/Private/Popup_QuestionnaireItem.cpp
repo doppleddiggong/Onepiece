@@ -44,6 +44,11 @@ void UPopup_QuestionnaireItem::InitItem(const FWriteQuestionData& Data)
 		FString QuestionText = Data.word_data.eng;
 		Text_Question_En->SetText(FText::FromString(QuestionText));
 	}
+	
+	for (int i = 0; i < QuestionData.answer_kor.Len(); i++)
+	{
+		
+	}
 }
 
 void UPopup_QuestionnaireItem::OnClickButton()

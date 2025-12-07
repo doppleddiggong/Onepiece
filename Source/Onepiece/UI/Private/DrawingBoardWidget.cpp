@@ -12,14 +12,15 @@
 #include "Components/Overlay.h"
 #include "Engine/Canvas.h"
 #include "Kismet/KismetRenderingLibrary.h"
+#include "PNGCombineManager.h"
 
 UDrawingBoardWidget::UDrawingBoardWidget(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer)
 {
-	ConstructorHelpers::FObjectFinder<UTextureRenderTarget2D> rtCanvasRef(TEXT("/Script/Engine.TextureRenderTarget2D'/Game/CustomContents/UI/DrawingBoard/RT_Canvas.RT_Canvas'"));
-	if (rtCanvasRef.Succeeded())
-	{
-		RT_Canvas = rtCanvasRef.Object;
-	}
+	// ConstructorHelpers::FObjectFinder<UTextureRenderTarget2D> rtCanvasRef(TEXT("/Script/Engine.TextureRenderTarget2D'/Game/CustomContents/UI/DrawingBoard/RT_Canvas.RT_Canvas'"));
+	// if (rtCanvasRef.Succeeded())
+	// {
+	// 	RT_Canvas = rtCanvasRef.Object;
+	// }
 }
 
 void UDrawingBoardWidget::NativeConstruct()
@@ -162,6 +163,10 @@ void UDrawingBoardWidget::SaveCanvas()
 	// UE_LOG(LogTemp, Warning, TEXT("%s | %s"), *filePath, *fileName);
 	
 	SaveRenderTargetToPNG(RT_Canvas, filePath / fileName);
+	
+	// combine png files
+	TSharedPtr<PNGCombineManager> pngCombineManager;
+	pngCombineManager->CombinePNG();
 }
 
 bool UDrawingBoardWidget::SaveRenderTargetToPNG(UTextureRenderTarget2D* RenderTarget, const FString& FullFilePath)
