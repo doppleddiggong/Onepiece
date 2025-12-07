@@ -174,7 +174,7 @@ void AContactTrigger::OnReadResponseScenario(FResponseReadScenario& ResponseData
 		if (LuggageManager)
 		{
 			LuggageManager->StartSpawning();
-			LuggageManager->InitHolder(ResponseData);
+			// LuggageManager->InitHolder(ResponseData);
 		}
 	}
 }

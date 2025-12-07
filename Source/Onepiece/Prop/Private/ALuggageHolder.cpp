@@ -5,6 +5,10 @@
 #include "luggage.h"
 #include "GameLogging.h"
 #include "ANetworkBroadcastActor.h"
+#include "ALingoGameState.h"
+#include "Popup_Result.h"
+#include "UBroadcastManager.h"
+#include "UPopupManager.h"
 #include "Onepiece/Onepiece.h"
 #include "Components/BoxComponent.h"
 #include "Components/StaticMeshComponent.h"
@@ -89,12 +93,6 @@ void ALuggageHolder::OnRep_CurTarget()
 	}
 }
 
-void ALuggageHolder::SetAnswerData(const int32 InAnswerColorIdx, const int32 InAnswerPatternIdx)
-{
-	this->AnswerColorIdx = InAnswerColorIdx;
-	this->AnswerPatternIdx = InAnswerPatternIdx;
-}
-
 void ALuggageHolder::OnBoxOverlapBegin(
 	UPrimitiveComponent* OverlappedComponent,
 	AActor* OtherActor,
@@ -106,60 +104,74 @@ void ALuggageHolder::OnBoxOverlapBegin(
 	if (!OtherActor)
 		return;
 
-	// 서버에서만 실행
 	if (!HasAuthority())
 		return;
 
 	if ( bIsActivated )
-	{
-		// 이미 Activate 되었으면 작동 안 함
 		return;
-	}
+
+	ALingoGameState* GS = Cast<ALingoGameState>(GetWorld()->GetGameState());
+	if (!GS)
+		return;
 	
 	// Luggage인지 확인
 	if (auto Luggage = Cast<Aluggage>(OtherActor))
 	{
-		bool bSuccess = CheckLuggage(Luggage);
+		// Hook 중인 Luggage는 무시 (PlayerActor가 들고 있는 상태)
+		if (Luggage->bIsBeingHooked)
+			return;
+
+		const bool bSuccess = CheckLuggage(Luggage, GS->GetReadScenarioData().correct_answer_index );
 
 		// 블루프린트 이벤트 호출
 		OnActivate(bSuccess);
 
-		// NetworkBroadcastActor를 통해 모든 클라이언트에 메시지 브로드캐스트
-		if (auto DM = ANetworkBroadcastActor::Get(this))
+		if (bSuccess)
 		{
-			DM->SendTutorMessage(FText::FromString(bSuccess ? GameMessage::Holder_Success : GameMessage::Holder_Fail ), this);
+			// 정답인 경우
+			FTimerHandle TimerHandle;
+			GetWorldTimerManager().SetTimer(TimerHandle, [this, Luggage, GS]
+			{
+				GS->WrongReadAnswerList.Add(Luggage->GetSpawnIdx());
+				
+				// 모든 클라이언트에 결과 팝업 표시
+				Multicast_ShowResultPopup();
+			}, 0.5f, false);
+		}
+		else
+		{
+			// 오답인 경우
+			FTimerHandle TimerHandle;
+			GetWorldTimerManager().SetTimer(TimerHandle, [this, Luggage, GS]
+			{
+				GS->WrongReadAnswerList.Add(Luggage->GetSpawnIdx());
+
+				// 모든 클라이언트에 오답 메시지 표시
+				Multicast_ShowWrongPopup(Luggage->GetColor(), Luggage->GetPattern());
+
+				// 큐브 소거 (서버에서만, 자동 복제됨)
+				Luggage->Destroy();
+			}, 0.5f, false);
 		}
 	}
 }
 
-bool ALuggageHolder::CheckLuggage(Aluggage* TargetLuggage)
+bool ALuggageHolder::CheckLuggage(Aluggage* TargetLuggage, int CorrectIndex)
 {
 	if (!TargetLuggage)
 		return false;
 
-	// ColorIdx와 PatternIdx 비교
-	bool bColorMatch = (AnswerColorIdx == -1) || (TargetLuggage->ColorIdx == AnswerColorIdx);
-	bool bPatternMatch = (AnswerPatternIdx == -1) || (TargetLuggage->PatternIdx == AnswerPatternIdx);
-	bool bSuccess = bColorMatch && bPatternMatch;
+	// Luggage의 모든 충돌 비활성화 (pickup, hook 등 모든 상호작용 차단)
+	TargetLuggage->SetAllCollision(false);
 
-	PRINTLOG(TEXT("ColorIdx: %d (Answer: %d), PatternIdx: %d (Answer: %d), Result: %s"),
-		TargetLuggage->ColorIdx, AnswerColorIdx,
-		TargetLuggage->PatternIdx, AnswerPatternIdx,
-		bSuccess ? TEXT("Success") : TEXT("Fail"));
-
-	if (bSuccess)
+	// ReadQuest 정답 인덱스 가져오기
+	if (CorrectIndex == TargetLuggage->GetSpawnIdx())
 	{
 		// Success: Luggage를 HoldPos 위치보다 살짝 위에 배치
-		if (HoldPos)
-		{
-			FVector ActivatedLocation = HoldPos->GetComponentLocation();
-			ActivatedLocation.Z += ActivatedHeightOffset;
-			TargetLuggage->SetActorLocation(ActivatedLocation);
-			TargetLuggage->SetActorRotation(HoldPos->GetComponentRotation());
-		}
-
-		// Luggage의 모든 충돌 비활성화 (pickup, hook 등 모든 상호작용 차단)
-		TargetLuggage->SetAllCollision(false);
+		FVector ActivatedLocation = HoldPos->GetComponentLocation();
+		ActivatedLocation.Z += ActivatedHeightOffset;
+		TargetLuggage->SetActorLocation(ActivatedLocation);
+		TargetLuggage->SetActorRotation(HoldPos->GetComponentRotation());
 
 		// Activate 상태로 전환
 		bIsActivated = true;
@@ -167,18 +179,17 @@ bool ALuggageHolder::CheckLuggage(Aluggage* TargetLuggage)
 
 		// 서버에서도 머티리얼 업데이트 (클라이언트는 OnRep_IsActivated에서 호출됨)
 		UpdateActivateState(true);
+
+		return true;
 	}
 	else
 	{
-		// Fail: Luggage 제거
+		// Fail: 서버에서 머티리얼 업데이트 (오답)
 		bIsActivated = false;
-		TargetLuggage->Destroy();
-
-		// 서버에서 머티리얼 업데이트 (오답)
 		UpdateActivateState(false);
-	}
 
-	return bSuccess;
+		return false;
+	}
 }
 
 void ALuggageHolder::UpdateActivateState(bool State)
@@ -193,4 +204,34 @@ void ALuggageHolder::UpdateActivateState(bool State)
 		if (DynamicMaterial)
 			DynamicMaterial->SetScalarParameterValue(FName("Activate"), State ? 1.0f : 0.0f);
 	}
+}
+
+/**
+ * @brief [Multicast RPC] 모든 클라이언트에 정답 결과 팝업 표시
+ * @details [문제] 서버에서만 팝업을 표시하여 클라이언트에서 보이지 않음
+ *          [해결] Multicast RPC로 모든 머신에 팝업 전달
+ */
+void ALuggageHolder::Multicast_ShowResultPopup_Implementation()
+{
+	if (auto Popup = UPopupManager::ShowPopupAs<UPopup_Result>(GetWorld(), EPopupType::Result))
+	{
+		Popup->InitPopup(EQuestType::Read);
+	}
+}
+
+/**
+ * @brief [Multicast RPC] 모든 클라이언트에 오답 메시지 표시
+ * @details [문제] 서버에서만 팝업을 표시하여 클라이언트에서 보이지 않음
+ *          [해결] Multicast RPC로 모든 머신에 팝업 전달
+ * @param LuggageColor 선택한 Luggage 색상
+ * @param LuggagePattern 선택한 Luggage 무늬
+ */
+void ALuggageHolder::Multicast_ShowWrongPopup_Implementation(const FString& LuggageColor, const FString& LuggagePattern)
+{
+	// 모든 클라이언트(호스트 포함)에서 오답 메시지 표시
+	FString Message = FString::Printf(TEXT("Wrong Answer\nThis is not the correct Answer.\n\nColor: %s\nPattern: %s"),
+		*LuggageColor, *LuggagePattern);
+
+	if (auto DM = UBroadcastManager::Get(this))
+		DM->SendTutorMessage(FText::FromString(Message));
 }

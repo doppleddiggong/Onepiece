@@ -18,7 +18,7 @@ public:
 	void StartSpawning();
 	void SpawnLuggage();
 
-	void InitHolder(struct FResponseReadScenario& ResponseData);
+	// void InitHolder(struct FResponseReadScenario& ResponseData);
 	
 public:
 	// Spawn

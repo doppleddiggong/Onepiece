@@ -20,11 +20,23 @@ protected:
 	virtual void GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const override;
 
 public:
-	void SetAnswerData(const int32 InAnswerColorIdx, const int32 InAnswerPatternIdx);
-
 	// Events
 	UFUNCTION(BlueprintImplementableEvent, Category = "Holder")
 	void OnActivate(bool bSuccess);
+
+	/**
+	 * @brief [Multicast RPC] 모든 클라이언트에 정답 결과 팝업 표시
+	 */
+	UFUNCTION(NetMulticast, Reliable)
+	void Multicast_ShowResultPopup();
+
+	/**
+	 * @brief [Multicast RPC] 모든 클라이언트에 오답 메시지 표시
+	 * @param LuggageColor 선택한 Luggage 색상
+	 * @param LuggagePattern 선택한 Luggage 무늬
+	 */
+	UFUNCTION(NetMulticast, Reliable)
+	void Multicast_ShowWrongPopup(const FString& LuggageColor, const FString& LuggagePattern);
 	
 private:
 	UFUNCTION()
@@ -42,7 +54,7 @@ private:
 		bool bFromSweep,
 		const FHitResult& SweepResult);
 
-	bool CheckLuggage(class Aluggage* TargetLuggage);
+	bool CheckLuggage(class Aluggage* TargetLuggage, int CorrectIndex);
 
 	void UpdateActivateState(bool State);
 	
@@ -73,7 +85,5 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Visual")
 	float RotationSpeed = 90.0f;
 	
-	// Answer Settings
-	int32 AnswerColorIdx = -1;
-	int32 AnswerPatternIdx = -1;
+
 };
