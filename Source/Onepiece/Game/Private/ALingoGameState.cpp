@@ -38,7 +38,13 @@ void ALingoGameState::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutL
 
 	DOREPLIFETIME(ALingoGameState, ReadScenarioData);
 	DOREPLIFETIME(ALingoGameState, WrongReadAnswerList);
+	DOREPLIFETIME(ALingoGameState, ReqReadResult);
 	DOREPLIFETIME(ALingoGameState, ReadResult);
+
+	DOREPLIFETIME(ALingoGameState, ListenScenarioData);
+	DOREPLIFETIME(ALingoGameState, WrongListenAnswerList);
+	DOREPLIFETIME(ALingoGameState, ReqListenResult);
+	DOREPLIFETIME(ALingoGameState, ListenResult);
 }
 
 void ALingoGameState::Tick(float DeltaSeconds)
@@ -154,16 +160,32 @@ void ALingoGameState::OnMissionTimerEnd()
 
 void ALingoGameState::Multicast_ShowReadQuestPopup_Implementation(const FResponseReadScenario& InScenarioData)
 {
-	if (const auto Popup = UPopupManager::ShowPopupAs<UPopup_ReadQuest>(GetWorld(), EPopupType::ReadQuest))
+	// 0.5초 딜레이 후 팝업 표시 (플레이어 Role 동기화를 위함)
+	if (UWorld* World = GetWorld())
 	{
-		Popup->InitRead(InScenarioData);
+		FTimerHandle TimerHandle;
+		World->GetTimerManager().SetTimer(TimerHandle, [this, InScenarioData]()
+		{
+			if (const auto Popup = UPopupManager::ShowPopupAs<UPopup_ReadQuest>(GetWorld(), EPopupType::ReadQuest))
+			{
+				Popup->InitRead(InScenarioData);
+			}
+		}, 0.5f, false);
 	}
 }
 
 void ALingoGameState::Multicast_ShowListenQuestPopup_Implementation(const FResponseListenScenario& InScenarioData)
 {
-	if (const auto Popup = UPopupManager::ShowPopupAs<UPopup_ReadQuest>(GetWorld(), EPopupType::ReadQuest))
+	// 0.5초 딜레이 후 팝업 표시 (플레이어 Role 동기화를 위함)
+	if (UWorld* World = GetWorld())
 	{
-		Popup->InitListen(InScenarioData);
+		FTimerHandle TimerHandle;
+		World->GetTimerManager().SetTimer(TimerHandle, [this, InScenarioData]()
+		{
+			if (const auto Popup = UPopupManager::ShowPopupAs<UPopup_ReadQuest>(GetWorld(), EPopupType::ReadQuest))
+			{
+				Popup->InitListen(InScenarioData);
+			}
+		}, 0.5f, false);
 	}
 }

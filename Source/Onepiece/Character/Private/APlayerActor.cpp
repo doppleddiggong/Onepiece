@@ -425,6 +425,9 @@ void APlayerActor::ClientRPC_ShowGameMessage_Implementation(const FString& Messa
 
 void APlayerActor::OnTeleportAllPlayers(FVector TargetLocation)
 {
+	// 서버에 텔레포트 요청
+	Server_Teleport(TargetLocation);
+
 	// 로컬 플레이어만 페이드 처리
 	if (!IsLocallyControlled())
 		return;
@@ -438,7 +441,6 @@ void APlayerActor::OnTeleportAllPlayers(FVector TargetLocation)
 	if (!MainWidget)
 	{
 		PRINTLOG(TEXT("APlayerActor::OnTeleportAllPlayers - MainWidget is null"));
-		SetActorLocation(TargetLocation);
 		return;
 	}
 
@@ -446,7 +448,6 @@ void APlayerActor::OnTeleportAllPlayers(FVector TargetLocation)
 	if (!FadeWidget)
 	{
 		PRINTLOG(TEXT("APlayerActor::OnTeleportAllPlayers - FadeWidget is null"));
-		SetActorLocation(TargetLocation);
 		return;
 	}
 
@@ -455,6 +456,11 @@ void APlayerActor::OnTeleportAllPlayers(FVector TargetLocation)
 
 	// FadeOut 시작
 	MainWidget->FadeOut(0.5f);
+}
+
+void APlayerActor::Server_Teleport_Implementation(FVector TargetLocation)
+{
+	SetActorLocation(TargetLocation);
 }
 
 void APlayerActor::OnFadeOutCompleteForTeleport()

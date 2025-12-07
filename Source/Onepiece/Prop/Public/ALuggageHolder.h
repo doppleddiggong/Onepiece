@@ -26,9 +26,10 @@ public:
 
 	/**
 	 * @brief [Multicast RPC] 모든 클라이언트에 정답 결과 팝업 표시
+	 * @param CorrectAnswerIndex 정답 인덱스 (WrongAnswerList 마지막에 추가)
 	 */
 	UFUNCTION(NetMulticast, Reliable)
-	void Multicast_ShowResultPopup();
+	void Multicast_ShowResultPopup(int32 CorrectAnswerIndex);
 
 	/**
 	 * @brief [Multicast RPC] 모든 클라이언트에 오답 메시지 표시

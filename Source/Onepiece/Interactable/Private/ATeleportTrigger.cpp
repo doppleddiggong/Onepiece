@@ -95,6 +95,10 @@ void ATeleportTrigger::OnTriggerBeginOverlap(
 	UPrimitiveComponent* OtherComp, int32 OtherBodyIndex,
 	bool bFromSweep, const FHitResult& SweepResult)
 {
+	// 서버에서만 처리
+	if (!HasAuthority())
+		return;
+
 	// 원샷 모드이고 이미 트리거되었으면 무시
 	if (bIsOneShot && bIsTriggered)
 		return;

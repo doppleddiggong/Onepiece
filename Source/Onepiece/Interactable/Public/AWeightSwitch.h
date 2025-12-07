@@ -46,11 +46,12 @@ private:
 
 	/**
 	 * @brief [Multicast RPC] 모든 클라이언트에 정답 결과 팝업 표시
+	 * @param CorrectAnswerIndex 정답 인덱스 (WrongAnswerList 마지막에 추가)
 	 * @details [문제] 서버에서만 팝업을 표시하여 클라이언트에서 보이지 않음
 	 *          [해결] Multicast RPC로 모든 머신에 팝업 전달
 	 */
 	UFUNCTION(NetMulticast, Reliable)
-	void Multicast_ShowResultPopup();
+	void Multicast_ShowResultPopup(int32 CorrectAnswerIndex);
 
 	/**
 	 * @brief [Multicast RPC] 모든 클라이언트에 오답 메시지 표시

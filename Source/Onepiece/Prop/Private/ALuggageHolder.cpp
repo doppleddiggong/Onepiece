@@ -129,13 +129,12 @@ void ALuggageHolder::OnBoxOverlapBegin(
 		if (bSuccess)
 		{
 			// 정답인 경우
+			int32 CorrectIdx = Luggage->GetSpawnIdx();
 			FTimerHandle TimerHandle;
-			GetWorldTimerManager().SetTimer(TimerHandle, [this, Luggage, GS]
+			GetWorldTimerManager().SetTimer(TimerHandle, [this, CorrectIdx]
 			{
-				GS->WrongReadAnswerList.Add(Luggage->GetSpawnIdx());
-				
-				// 모든 클라이언트에 결과 팝업 표시
-				Multicast_ShowResultPopup();
+				// 모든 클라이언트에 정답 인덱스와 함께 결과 팝업 표시
+				Multicast_ShowResultPopup(CorrectIdx);
 			}, 0.5f, false);
 		}
 		else
@@ -211,8 +210,20 @@ void ALuggageHolder::UpdateActivateState(bool State)
  * @details [문제] 서버에서만 팝업을 표시하여 클라이언트에서 보이지 않음
  *          [해결] Multicast RPC로 모든 머신에 팝업 전달
  */
-void ALuggageHolder::Multicast_ShowResultPopup_Implementation()
+void ALuggageHolder::Multicast_ShowResultPopup_Implementation(int32 CorrectAnswerIndex)
 {
+	// 모든 클라이언트에서 로컬 GameState에 정답 인덱스 추가
+	if (ALingoGameState* GS = Cast<ALingoGameState>(GetWorld()->GetGameState()))
+	{
+		// 중복 체크 후 추가
+		if (!GS->WrongReadAnswerList.Contains(CorrectAnswerIndex))
+		{
+			GS->WrongReadAnswerList.Add(CorrectAnswerIndex);
+			PRINTLOG(TEXT("[Multicast_ShowResultPopup] Added correct answer index %d to local GameState"), CorrectAnswerIndex);
+		}
+	}
+
+	// 팝업 표시
 	if (auto Popup = UPopupManager::ShowPopupAs<UPopup_Result>(GetWorld(), EPopupType::Result))
 	{
 		Popup->InitPopup(EQuestType::Read);

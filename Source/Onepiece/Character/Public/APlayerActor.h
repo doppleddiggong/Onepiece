@@ -152,6 +152,9 @@ private:
 	UFUNCTION()
 	void OnTeleportAllPlayers(FVector TargetLocation);
 
+	UFUNCTION(Server, Reliable)
+	void Server_Teleport(FVector TargetLocation);
+
 	/// @brief 페이드 아웃 완료 후 텔레포트 실행
 	UFUNCTION()
 	void OnFadeOutCompleteForTeleport();
