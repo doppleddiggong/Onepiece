@@ -28,5 +28,6 @@ public:
 
 public:
 	void SetFoodCourtInfo();
-	class ACityName* FindCityName(int32 InIdx);
+	class ACityName* FindCityNameByIdx(int32 InIdx);
+	class ADropper* FindDropperByIdx(int32 InIdx);
 };

@@ -145,7 +145,7 @@ void APlayerControl::OnJump(const FInputActionValue&)
 	if (IControllable* C = GetControllable())
 		C->Cmd_Jump();
 
-	this->TEST_DropperDropProcess();
+	//this->TEST_DropperDropProcess();
 	// this->TEST_AddItemToBoxList();
 }
 

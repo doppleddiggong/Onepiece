@@ -33,6 +33,27 @@ struct FLuggageData
     {}
 };
 
+USTRUCT(BlueprintType)
+struct FFoodData
+{
+    GENERATED_BODY()
+
+    /** 시나리오 단어 정보 */
+    UPROPERTY(EditAnywhere, BlueprintReadWrite)
+    FWordInfo word;
+
+    /** 스폰 인덱스(선택적으로 사용) */
+    UPROPERTY(EditAnywhere, BlueprintReadWrite)
+    int32 SpawnIndex = -1;
+
+    FFoodData() {}
+
+    FFoodData(const FWordInfo& InWord, int32 InSpawnIndex = -1)
+        : word(InWord)
+        , SpawnIndex(InSpawnIndex)
+    {}
+};
+
 UCLASS()
 class ONEPIECE_API ADropper : public AActor
 {
@@ -44,14 +65,21 @@ public:
     /** 스폰 전에 Dropper가 어떤 클래스를 스폰할지 등록 */
     void SetSpawnClass(TSubclassOf<AActor> InClass) { SpawnClass = InClass; }
 
-    /** 스폰 전에 Dropper가 생성될 액터에게 넘겨줄 데이터 등록 */
+    /** [Luggage용] 스폰 전에 Dropper가 생성될 액터에게 넘겨줄 데이터 등록 */
     void SetSpawnData(const FLuggageData& InData) { NextData = InData; }
 
+    /** [Food용] 스폰 전에 Dropper가 생성될 액터에게 넘겨줄 데이터 등록 */
+    void SetFoodSpawnData(const FFoodData& InData) { NextFoodData = InData; }
+
+    
     /** 스폰 요청 (서버에서만 동작) */
     UFUNCTION(BlueprintCallable)
     bool RequestSpawn();
 
     FORCEINLINE bool IsBusy() const { return bIsSpawnIng; };
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Index)
+    int32 DropperIndex = 0;
     
 protected:
     /** 서버에서만 실행되는 실제 스폰 로직 */
@@ -102,6 +130,10 @@ private:
     /** 이번 스폰에서 사용할 데이터 */
     UPROPERTY(Replicated)
     FLuggageData NextData;
+
+    /** 이번 스폰에서 사용할 데이터 */
+    UPROPERTY(Replicated)
+    FFoodData NextFoodData;
 
     /** 스폰 처리 진행 중 여부 (RPC로 공유) */
     UPROPERTY(Replicated)

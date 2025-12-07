@@ -3,6 +3,7 @@
 
 #include "FoodCourtManager.h"
 
+#include "ADropper.h"
 #include "ALingoGameState.h"
 #include "CityName.h"
 #include "CityNameWidget.h"
@@ -42,28 +43,32 @@ void AFoodCourtManager::SetFoodCourtInfo()
 		auto SD = ScenarioData[i];
 
 		// 푸드코트 식당 이름 지정
-		ACityName* CityName = FindCityName(i);
-		if (!CityName)
+		ACityName* CityName = FindCityNameByIdx(i);
+		if (CityName)
 		{
-			UE_LOG(LogTemp, Warning, TEXT("FindCityName failed for index %d"), i);
-			continue;
+			UUserWidget* CityNameWidget = CityName->WidgetComp->GetWidget();
+			if (UCityNameWidget* CNW = Cast<UCityNameWidget>(CityNameWidget))
+			{
+				CNW->SetCityName(SD.word1.name);
+			}
 		}
 
-		if (!CityName->WidgetComp)
+		// 음식 이름 지정
+		ADropper* Dropper = FindDropperByIdx(i);
+		if (Dropper)
 		{
-			UE_LOG(LogTemp, Warning, TEXT("CityName->WidgetComp is null for index %d"), i);
-			continue;
-		}
-
-		UUserWidget* CityNameWidget = CityName->WidgetComp->GetWidget();
-		if (UCityNameWidget* CNW = Cast<UCityNameWidget>(CityNameWidget))
-		{
-			CNW->SetCityName(SD.word1.name);
+			FFoodData tmpData;
+			tmpData.word = SD.word2;
+			tmpData.SpawnIndex = i;
+			
+			Dropper->SetFoodSpawnData(tmpData);
+			Dropper->SetSpawnClass( LoadClass<AActor>(nullptr, TEXT("/Game/CustomContents/Blueprints/Interactables/BP_Food.BP_Food_C")));
+			Dropper->RequestSpawn();
 		}
 	}
 }
 
-ACityName* AFoodCourtManager::FindCityName(int32 InIdx)
+ACityName* AFoodCourtManager::FindCityNameByIdx(int32 InIdx)
 {
 	TArray<AActor*> CityNames;
 	UGameplayStatics::GetAllActorsOfClass(GetWorld(), ACityName::StaticClass(), CityNames);
@@ -75,6 +80,24 @@ ACityName* AFoodCourtManager::FindCityName(int32 InIdx)
 			if (CN->Index == InIdx)
 			{
 				return CN;
+			}
+		}
+	}
+	return nullptr;
+}
+
+class ADropper* AFoodCourtManager::FindDropperByIdx(int32 InIdx)
+{
+	TArray<AActor*> Droppers;
+	UGameplayStatics::GetAllActorsOfClass(GetWorld(), ADropper::StaticClass(), Droppers);
+
+	for (auto Dropper : Droppers)
+	{
+		if (ADropper* Dpp = Cast<ADropper>(Dropper))
+		{
+			if (Dpp->DropperIndex == InIdx)
+			{
+				return Dpp;
 			}
 		}
 	}
