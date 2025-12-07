@@ -174,6 +174,7 @@ var hierarchy =
       [ "UPopupManager", "classUPopupManager.html", null ]
     ] ],
     [ "UUserWidget", null, [
+      [ "UAnswerItem", "classUAnswerItem.html", null ],
       [ "UAutoDespawnItem", "classUAutoDespawnItem.html", null ],
       [ "UBasePopup", "classUBasePopup.html", [
         [ "UPopup_InputMsg", "classUPopup__InputMsg.html", null ],

@@ -136,26 +136,30 @@ $(document).ready(function(){initNavTree('FColorData_8h_source.html',''); initRe
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = &quot;ColorData&quot;)</div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="structFColorData.html#a15e48aac1da2c6982fb8f1c31f7a6813">   36</a></span>    FString HexColor;</div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
-<div class="foldopen" id="foldopen00039" data-start="{" data-end="}">
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="structFColorData.html#aa094fa89444ea9b4302756140c580fb0">   39</a></span>    FLinearColor GetLinearColor()<span class="keyword"> const</span></div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="keyword">    </span>{</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        <span class="keywordflow">if</span> (HexColor.IsEmpty())</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        {</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>            <span class="keywordflow">return</span> FLinearColor::White;</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        }</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        <span class="comment">// &#39;#&#39; 있어도 없어도 처리 가능</span></div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        FString Parsed = HexColor;</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        Parsed.RemoveFromStart(TEXT(<span class="stringliteral">&quot;#&quot;</span>));</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = &quot;ColorData&quot;)</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="structFColorData.html#a71a039f64c7b0061005be904a1a1ea90">   39</a></span>    FString Eng;</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="foldopen" id="foldopen00043" data-start="{" data-end="}">
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="structFColorData.html#aa094fa89444ea9b4302756140c580fb0">   43</a></span>    FLinearColor GetLinearColor()<span class="keyword"> const</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        <span class="keywordflow">if</span> (HexColor.IsEmpty())</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        {</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>            <span class="keywordflow">return</span> FLinearColor::White;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        }</div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        <span class="comment">// FColor 파싱 (6자리/8자리 자동 처리)</span></div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        FColor SRGBColor = FColor::FromHex(Parsed);</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        <span class="comment">// FLinearColor로 변환 (sRGB → Linear)</span></div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        <span class="keywordflow">return</span> FLinearColor::FromSRGBColor(SRGBColor);</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    }</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        <span class="comment">// &#39;#&#39; 있어도 없어도 처리 가능</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        FString Parsed = HexColor;</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        Parsed.RemoveFromStart(TEXT(<span class="stringliteral">&quot;#&quot;</span>));</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        <span class="comment">// FColor 파싱 (6자리/8자리 자동 처리)</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        FColor SRGBColor = FColor::FromHex(Parsed);</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        <span class="comment">// FLinearColor로 변환 (sRGB → Linear)</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        <span class="keywordflow">return</span> FLinearColor::FromSRGBColor(SRGBColor);</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    }</div>
 </div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>};</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>};</div>
 </div>
 <div class="ttc" id="astructFColorData_html"><div class="ttname"><a href="structFColorData.html">FColorData</a></div><div class="ttdoc">색상 데이터를 정의하는 구조체</div><div class="ttdef"><b>Definition</b> <a href="FColorData_8h_source.html#l00018">FColorData.h:19</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
@@ -164,7 +168,7 @@ $(document).ready(function(){initNavTree('FColorData_8h_source.html',''); initRe
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_399370037b6f5ff6b0840148d18ec8d9.html">LatteLibrary</a></li><li class="navelem"><a class="el" href="dir_b5bb1d33febf91507935d446f5884c8b.html">Data</a></li><li class="navelem"><a class="el" href="dir_f4e5230a034bed1657db54e076ed0d29.html">Public</a></li><li class="navelem"><a class="el" href="FColorData_8h.html">FColorData.h</a></li>
-    <li class="footer">생성시간 : 일 12월 7 2025 03:30:38, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 일 12월 7 2025 05:47:58, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

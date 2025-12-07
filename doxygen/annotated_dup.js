@@ -102,6 +102,7 @@ var annotated_dup =
     [ "FWriteWordData", "structFWriteWordData.html", "structFWriteWordData" ],
     [ "IControllable", "classIControllable.html", "classIControllable" ],
     [ "ISequenceActivatable", "classISequenceActivatable.html", "classISequenceActivatable" ],
+    [ "UAnswerItem", "classUAnswerItem.html", "classUAnswerItem" ],
     [ "UAutoDespawnItem", "classUAutoDespawnItem.html", "classUAutoDespawnItem" ],
     [ "UBasePopup", "classUBasePopup.html", "classUBasePopup" ],
     [ "UBroadcastManager", "classUBroadcastManager.html", "classUBroadcastManager" ],

@@ -1,5 +1,11 @@
 var NAVTREEINDEX4 =
 {
+"classALingoGameMode.html#a2afd7939b5c4dc08f353aa1a00cd3967":[2,0,11,6],
+"classALingoGameMode.html#a584bc10d79ff117f536649cad1dad6c7":[2,0,11,2],
+"classALingoGameMode.html#a5a1abf7a283ddd9f6ac8b2db142bd49f":[2,0,11,5],
+"classALingoGameMode.html#a66c0084d4eca03c65a47c202e1ae65fc":[2,0,11,7],
+"classALingoGameMode.html#a73959d6bf75c9f2e19ce6702545b008d":[2,0,11,1],
+"classALingoGameMode.html#a8b56ab603ed4f346060e5921bc5426cf":[2,0,11,3],
 "classALingoGameMode.html#a910e19df50b7f45058b55af455212e19":[2,0,11,8],
 "classALingoGameMode.html#abef1a309b7dcd4b4f71d2341d55a0ea3":[2,0,11,0],
 "classALingoGameState.html":[2,0,12],
@@ -243,11 +249,5 @@ var NAVTREEINDEX4 =
 "classAPlayerActor.html#a95eacfc2a9907a40bd83fe6383969ae2":[2,0,26,31],
 "classAPlayerActor.html#a96895f47e4451ef42317ea07a4b51990":[2,0,26,16],
 "classAPlayerActor.html#a9849d2b52db50d66145740c128e26d37":[2,0,26,37],
-"classAPlayerActor.html#a9a0da1264f0f61d8b908de643e010de7":[2,0,26,3],
-"classAPlayerActor.html#aad1b768bb94774991c12719d0287c4b0":[2,0,26,30],
-"classAPlayerActor.html#ab2162e911aea12e7e720e5bfcb3dbf8f":[2,0,26,34],
-"classAPlayerActor.html#ab25b6b5741b8ac1c5f6e5e3f7c0dc179":[2,0,26,18],
-"classAPlayerActor.html#ab442f15c0b77fdd38f7a5b7280cf2398":[2,0,26,9],
-"classAPlayerActor.html#abdf855ae8de99e93f1f83e929551909d":[2,0,26,29],
-"classAPlayerActor.html#ac6ce7fa6f2c0a29dc386147130c26802":[2,0,26,48]
+"classAPlayerActor.html#a9a0da1264f0f61d8b908de643e010de7":[2,0,26,3]
 };

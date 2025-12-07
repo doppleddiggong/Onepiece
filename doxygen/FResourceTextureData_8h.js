@@ -9,6 +9,7 @@ var FResourceTextureData_8h =
       [ "Rarity_S", "FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2a86840742b33df1b8c6dcea434b87d3a9", null ],
       [ "KLingo", "FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2a7e4c28c37d60babdb511daa95fcb1db6", null ],
       [ "Time", "FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2aa76d4ef5f3f6a672bbfab2865563e530", null ],
-      [ "Score", "FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2a5dd135d1bcfa7f63c3b7f25425c2a4a1", null ]
+      [ "Score", "FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2a5dd135d1bcfa7f63c3b7f25425c2a4a1", null ],
+      [ "Color", "FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2acb5feb1b7314637725a2e73bdc9f7295", null ]
     ] ]
 ];

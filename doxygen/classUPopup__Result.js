@@ -12,6 +12,7 @@ var classUPopup__Result =
     [ "OpenAnimation", "classUPopup__Result.html#a2c3d2b47f8255c0172cf9f218790fcc8", null ],
     [ "RequestResult", "classUPopup__Result.html#a24017325c9a2bc13cc69698adda2cce4", null ],
     [ "UpdateAnimation", "classUPopup__Result.html#a830a08b15d00e418f351f096fc5a8790", null ],
+    [ "AnswerItemClass", "classUPopup__Result.html#afe1d30fae892ff933cddfac06c483fe3", null ],
     [ "bIsOpenAnim", "classUPopup__Result.html#a807985dccb3305b1004c611401b7b551", null ],
     [ "Btn_Exit", "classUPopup__Result.html#a06eb6674c468e342db6b5a03b4f7cfb9", null ],
     [ "Btn_OK", "classUPopup__Result.html#aa42abe112a6aa3e1fc9f75dc461f821e", null ],
@@ -29,5 +30,6 @@ var classUPopup__Result =
     [ "Result_TopRate", "classUPopup__Result.html#a9fd7243319715d3171361087db73550b", null ],
     [ "Scrl_WrongList", "classUPopup__Result.html#a23c0f0d4076ee75d889b1d3a0a99aee6", null ],
     [ "Txt_Eng", "classUPopup__Result.html#a3ae771cb94df4c758020d094c7aea236", null ],
-    [ "Txt_Kor", "classUPopup__Result.html#a8cfafa30b850b06c274d16d5f10a7ff5", null ]
+    [ "Txt_Kor", "classUPopup__Result.html#a8cfafa30b850b06c274d16d5f10a7ff5", null ],
+    [ "VerticalBox", "classUPopup__Result.html#af4922f4128555f24f4f4b1a0f9cc87c1", null ]
 ];

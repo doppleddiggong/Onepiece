@@ -153,7 +153,7 @@ $(document).ready(function(){initNavTree('FMathHelper_8h_source.html',''); initR
 <div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>        int32 NumSegments = 20,</div>
 <div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>        <span class="keywordtype">float</span> StepTime = 0.1f,</div>
 <div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        <span class="keywordtype">float</span> LifeTime = 2.0f,</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>        FColor Color = FColor::Red)</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>        FColor <a class="code hl_enumvalue" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2acb5feb1b7314637725a2e73bdc9f7295">Color</a> = FColor::Red)</div>
 <div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    {</div>
 <div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        <span class="keywordflow">if</span> (!World) <span class="keywordflow">return</span>;</div>
 <div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> </div>
@@ -166,7 +166,7 @@ $(document).ready(function(){initNavTree('FMathHelper_8h_source.html',''); initR
 <div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>            FVector CurrPos = <a class="code hl_function" href="structFMathHelper.html#af785a923a1e6a2f0601649e37cb28cf3">SolveV0ForProjectile</a>(PrevPos, CurrPos, t, GravityZ);</div>
 <div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>            <span class="comment">// Start + V0 * t + 0.5f * g * t * t;</span></div>
 <div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span> </div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>            DrawDebugLine(World, PrevPos, CurrPos, Color, <span class="keyword">false</span>, LifeTime, 0, 1.5f);</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>            DrawDebugLine(World, PrevPos, CurrPos, <a class="code hl_enumvalue" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2acb5feb1b7314637725a2e73bdc9f7295">Color</a>, <span class="keyword">false</span>, LifeTime, 0, 1.5f);</div>
 <div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>            PrevPos = CurrPos;</div>
 <div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>        }</div>
 <div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    }</div>
@@ -180,7 +180,7 @@ $(document).ready(function(){initNavTree('FMathHelper_8h_source.html',''); initR
 <div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>        <span class="keyword">const</span> <span class="keywordtype">float</span> Height,</div>
 <div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>        <span class="keyword">const</span> int32 NumSegments = 20,</div>
 <div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>        <span class="keyword">const</span> <span class="keywordtype">float</span> LifeTime = 2.0f,</div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>        <span class="keyword">const</span> FColor Color = FColor::Green)</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>        <span class="keyword">const</span> FColor <a class="code hl_enumvalue" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2acb5feb1b7314637725a2e73bdc9f7295">Color</a> = FColor::Green)</div>
 <div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>    {</div>
 <div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>        <span class="keywordflow">if</span> (!World) <span class="keywordflow">return</span>;</div>
 <div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span> </div>
@@ -190,7 +190,7 @@ $(document).ready(function(){initNavTree('FMathHelper_8h_source.html',''); initR
 <div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>            <span class="keyword">const</span> <span class="keywordtype">float</span> Alpha = (float)i / (<span class="keywordtype">float</span>)NumSegments;</div>
 <div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>            FVector CurrPos = <a class="code hl_function" href="structFMathHelper.html#acdb08b61cfe310f5684d30ebb69204d2">InterpArcSin</a>(Start, End, Height, Alpha);</div>
 <div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span> </div>
-<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>            DrawDebugLine(World, PrevPos, CurrPos, Color, <span class="keyword">false</span>, LifeTime, 0, 1.5f);</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>            DrawDebugLine(World, PrevPos, CurrPos, <a class="code hl_enumvalue" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2acb5feb1b7314637725a2e73bdc9f7295">Color</a>, <span class="keyword">false</span>, LifeTime, 0, 1.5f);</div>
 <div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>            PrevPos = CurrPos;</div>
 <div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>        }</div>
 <div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>    }</div>
@@ -198,6 +198,7 @@ $(document).ready(function(){initNavTree('FMathHelper_8h_source.html',''); initR
 <div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>};</div>
 </div>
 <div class="ttc" id="aFResourceTextureData_8h_html_a98b8b3000fb3fc86e37c624651589cb2aa76d4ef5f3f6a672bbfab2865563e530"><div class="ttname"><a href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2aa76d4ef5f3f6a672bbfab2865563e530">EResourceTextureType::Time</a></div><div class="ttdeci">@ Time</div></div>
+<div class="ttc" id="aFResourceTextureData_8h_html_a98b8b3000fb3fc86e37c624651589cb2acb5feb1b7314637725a2e73bdc9f7295"><div class="ttname"><a href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2acb5feb1b7314637725a2e73bdc9f7295">EResourceTextureType::Color</a></div><div class="ttdeci">@ Color</div></div>
 <div class="ttc" id="astructFMathHelper_html"><div class="ttname"><a href="structFMathHelper.html">FMathHelper</a></div><div class="ttdef"><b>Definition</b> <a href="FMathHelper_8h_source.html#l00007">FMathHelper.h:8</a></div></div>
 <div class="ttc" id="astructFMathHelper_html_a4baca9166815847daff432d9575a9e60"><div class="ttname"><a href="structFMathHelper.html#a4baca9166815847daff432d9575a9e60">FMathHelper::DrawParabolaDebug</a></div><div class="ttdeci">static void DrawParabolaDebug(UWorld *World, const FVector &amp;Start, const FVector &amp;End, const float Height, const int32 NumSegments=20, const float LifeTime=2.0f, const FColor Color=FColor::Green)</div><div class="ttdoc">두 점(Start → End)을 잇는 곡선을 디버그 라인으로 그립니다.</div><div class="ttdef"><b>Definition</b> <a href="FMathHelper_8h_source.html#l00130">FMathHelper.h:130</a></div></div>
 <div class="ttc" id="astructFMathHelper_html_aa813d7b30358c0116f1816a2f05b3ca7"><div class="ttname"><a href="structFMathHelper.html#aa813d7b30358c0116f1816a2f05b3ca7">FMathHelper::DrawProjectileArcDebug</a></div><div class="ttdeci">static void DrawProjectileArcDebug(UWorld *World, const FVector &amp;Start, const FVector &amp;V0, float GravityZ=-980.f, int32 NumSegments=20, float StepTime=0.1f, float LifeTime=2.0f, FColor Color=FColor::Red)</div><div class="ttdoc">초기 속도 V0를 이용해 물리 기반 포물선 궤적을 디버그 라인으로 그립니다.</div><div class="ttdef"><b>Definition</b> <a href="FMathHelper_8h_source.html#l00084">FMathHelper.h:84</a></div></div>
@@ -209,7 +210,7 @@ $(document).ready(function(){initNavTree('FMathHelper_8h_source.html',''); initR
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_2270f6753238979635db772f09123181.html">CoffeeLibrary</a></li><li class="navelem"><a class="el" href="dir_91f3f4f018939627454e0787c2010dec.html">Shared</a></li><li class="navelem"><a class="el" href="dir_e600c970f4359b669e2548a88996c9af.html">Public</a></li><li class="navelem"><a class="el" href="FMathHelper_8h.html">FMathHelper.h</a></li>
-    <li class="footer">생성시간 : 일 12월 7 2025 03:30:38, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 일 12월 7 2025 05:47:58, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>
