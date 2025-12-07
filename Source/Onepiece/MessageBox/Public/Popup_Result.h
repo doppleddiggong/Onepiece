@@ -17,12 +17,16 @@ class ONEPIECE_API UPopup_Result : public UBasePopup
 	GENERATED_BODY()
 
 public:
+	virtual void NativeDestruct() override;
+	
 	void InitPopup(EQuestType InQuestType);
 
 private:
 	UFUNCTION(BlueprintCallable, Category = "Close")
 	void OnClickClose();
 
+	void RemoveResultDelegates();
+	
 	void InitWordWidget();
 	void InitWrongList();
 
@@ -69,4 +73,7 @@ private:
 	TSubclassOf<class UAnswerItem> AnswerItemClass;
 
 	EQuestType QuestType;
+
+	FDelegateHandle ReadResultDelegateHandle;
+	FDelegateHandle ListenResultDelegateHandle;
 };

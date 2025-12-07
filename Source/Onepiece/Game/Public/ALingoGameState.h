@@ -31,6 +31,9 @@ struct FQuestData
 	FQuestData() : QuestType(EQuestType::None) {}
 };
 
+DECLARE_MULTICAST_DELEGATE_OneParam(FOnReadResultUpdated, const FResponseReadResult&);
+DECLARE_MULTICAST_DELEGATE_OneParam(FOnListenResultUpdated, const FResponseListenResult&);
+
 UCLASS()
 class ONEPIECE_API ALingoGameState : public AGameState
 {
@@ -75,12 +78,21 @@ protected:
 	UFUNCTION(NetMulticast, Reliable)
 	void Multicast_ShowListenQuestPopup(const FResponseListenScenario& InScenarioData);
 
+	UFUNCTION()
+	void OnRep_ReadResult();
+
+	UFUNCTION()
+	void OnRep_ListenResult();
+	
 private:
 	/// @brief 타이머 종료 시 호출됩니다 (서버에서만 실행)
 	void OnMissionTimerEnd();
 	
 public:
 	FORCEINLINE int GetWrongReadAnswerNum() { return WrongReadAnswerList.Num(); }
+
+	FOnReadResultUpdated OnReadResultUpdated;
+	FOnListenResultUpdated OnListenResultUpdated;
 	
 	UPROPERTY(Replicated)
 	FResponseReadScenario ReadScenarioData;
@@ -91,7 +103,7 @@ public:
 	UPROPERTY(Replicated)
 	FResponseReadResult ReqReadResult;
 	
-	UPROPERTY(Replicated)
+	UPROPERTY(ReplicatedUsing = OnRep_ReadResult)
 	FResponseReadResult ReadResult;
 	//--------------------------------------------------------------//
 
@@ -106,11 +118,13 @@ public:
 	UPROPERTY(Replicated)
 	FResponseListenResult ReqListenResult;
 
-	UPROPERTY(Replicated)
+	UPROPERTY(ReplicatedUsing = OnRep_ListenResult)
 	FResponseListenResult ListenResult;
 	//--------------------------------------------------------------//
 
 
+
+	
 protected:
 	UPROPERTY(Replicated, BlueprintReadOnly, Category = "Mission")
 	float RemainMissionTime = 0.f;
