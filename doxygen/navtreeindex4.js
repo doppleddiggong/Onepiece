@@ -1,5 +1,7 @@
 var NAVTREEINDEX4 =
 {
+"classALingoGameMode.html#a910e19df50b7f45058b55af455212e19":[2,0,11,8],
+"classALingoGameMode.html#abef1a309b7dcd4b4f71d2341d55a0ea3":[2,0,11,0],
 "classALingoGameState.html":[2,0,12],
 "classALingoGameState.html#a00a86de1187369b05b01f01889d78b45":[2,0,12,31],
 "classALingoGameState.html#a05dda129c32a08fc3432424f612ce50b":[2,0,12,3],
@@ -247,7 +249,5 @@ var NAVTREEINDEX4 =
 "classAPlayerActor.html#ab25b6b5741b8ac1c5f6e5e3f7c0dc179":[2,0,26,18],
 "classAPlayerActor.html#ab442f15c0b77fdd38f7a5b7280cf2398":[2,0,26,9],
 "classAPlayerActor.html#abdf855ae8de99e93f1f83e929551909d":[2,0,26,29],
-"classAPlayerActor.html#ac6ce7fa6f2c0a29dc386147130c26802":[2,0,26,48],
-"classAPlayerActor.html#acc728e14fea51ff3fabeef5d283a4ab7":[2,0,26,25],
-"classAPlayerActor.html#acf32c4c8132af669acecfe0d7064b2ef":[2,0,26,23]
+"classAPlayerActor.html#ac6ce7fa6f2c0a29dc386147130c26802":[2,0,26,48]
 };

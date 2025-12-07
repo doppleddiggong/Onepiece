@@ -69,5 +69,6 @@ var searchData=
   ['switchbody_66',['switchbody',['../classAPedestalSwitch.html#ab59bac74f3a20b63ba4d8f39c0cf607f',1,'APedestalSwitch::SwitchBody'],['../classAWeightSwitch.html#a564c3f6e4dbeebb734ce7e30ced14ff0',1,'AWeightSwitch::SwitchBody']]],
   ['switchcollision_67',['SwitchCollision',['../classAWeightSwitch.html#a8aa0923f95fb929f34168d3d30267d4a',1,'AWeightSwitch']]],
   ['symboltexture_68',['SymbolTexture',['../classUTextureButton.html#a9da5ec9e3c95bb0eab8324f9485bdbcc',1,'UTextureButton']]],
-  ['symbolvalue_69',['symbolvalue',['../structFResultStatData.html#a2aea8a92c56a642f74b1300bc735a0e5',1,'FResultStatData::SymbolValue'],['../classUResultStatWidget.html#aa81f609ede0cbc5167969ae1d997f5b7',1,'UResultStatWidget::SymbolValue']]]
+  ['symboltexturetype_69',['SymbolTextureType',['../structFResultStatData.html#a40b2ff380b44130455998b5fd7288c65',1,'FResultStatData']]],
+  ['symbolvalue_70',['symbolvalue',['../structFResultStatData.html#a5264bce607096b760b0c3b0add5641e7',1,'FResultStatData::SymbolValue'],['../classUResultStatWidget.html#ac23cd359c404e95976063ea78fde2c5a',1,'UResultStatWidget::SymbolValue']]]
 ];

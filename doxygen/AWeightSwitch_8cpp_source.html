@@ -462,34 +462,40 @@ $(document).ready(function(){initNavTree('AWeightSwitch_8cpp_source.html',''); i
 <div class="line"><a id="l00349" name="l00349"></a><span class="lineno">  349</span> </div>
 <div class="line"><a id="l00355" name="l00355"></a><span class="lineno">  355</span><span class="keywordtype">void</span> AWeightSwitch::Multicast_ShowResultPopup_Implementation()</div>
 <div class="line"><a id="l00356" name="l00356"></a><span class="lineno">  356</span>{</div>
-<div class="line"><a id="l00357" name="l00357"></a><span class="lineno">  357</span>    <span class="comment">// 모든 클라이언트(호스트 포함)에서 정답 팝업 표시</span></div>
-<div class="line"><a id="l00358" name="l00358"></a><span class="lineno">  358</span>    <span class="keywordflow">if</span> (<a class="code hl_class" href="classUPopupManager.html">UPopupManager</a>* PopupMgr = UPopupManager::Get(GetWorld()))</div>
-<div class="line"><a id="l00359" name="l00359"></a><span class="lineno">  359</span>    {</div>
-<div class="line"><a id="l00360" name="l00360"></a><span class="lineno">  360</span>        PopupMgr-&gt;ShowResult();</div>
-<div class="line"><a id="l00361" name="l00361"></a><span class="lineno">  361</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[WeightSwitch] Showing result popup on %s&quot;</span>),</div>
-<div class="line"><a id="l00362" name="l00362"></a><span class="lineno">  362</span>            HasAuthority() ? TEXT(<span class="stringliteral">&quot;Server&quot;</span>) : TEXT(<span class="stringliteral">&quot;Client&quot;</span>));</div>
-<div class="line"><a id="l00363" name="l00363"></a><span class="lineno">  363</span>    }</div>
-<div class="line"><a id="l00364" name="l00364"></a><span class="lineno">  364</span>}</div>
-<div class="line"><a id="l00365" name="l00365"></a><span class="lineno">  365</span> </div>
-<div class="line"><a id="l00373" name="l00373"></a><span class="lineno">  373</span><span class="keywordtype">void</span> AWeightSwitch::Multicast_ShowWrongPopup_Implementation(<span class="keyword">const</span> FString&amp; LuggageColor, <span class="keyword">const</span> FString&amp; LuggagePattern)</div>
-<div class="line"><a id="l00374" name="l00374"></a><span class="lineno">  374</span>{</div>
-<div class="line"><a id="l00375" name="l00375"></a><span class="lineno">  375</span>    <span class="comment">// 모든 클라이언트(호스트 포함)에서 오답 메시지 표시</span></div>
-<div class="line"><a id="l00376" name="l00376"></a><span class="lineno">  376</span>    <span class="keywordflow">if</span> (<a class="code hl_class" href="classUPopupManager.html">UPopupManager</a>* PopupMgr = UPopupManager::Get(GetWorld()))</div>
-<div class="line"><a id="l00377" name="l00377"></a><span class="lineno">  377</span>    {</div>
-<div class="line"><a id="l00378" name="l00378"></a><span class="lineno">  378</span>        FString Title = TEXT(<span class="stringliteral">&quot;Wrong Answer!&quot;</span>);</div>
-<div class="line"><a id="l00379" name="l00379"></a><span class="lineno">  379</span>        FString Message = FString::Printf(TEXT(<span class="stringliteral">&quot;This is not the correct luggage.\n\nColor: %s\nPattern: %s&quot;</span>),</div>
-<div class="line"><a id="l00380" name="l00380"></a><span class="lineno">  380</span>            *LuggageColor, *LuggagePattern);</div>
-<div class="line"><a id="l00381" name="l00381"></a><span class="lineno">  381</span> </div>
-<div class="line"><a id="l00382" name="l00382"></a><span class="lineno">  382</span>        PopupMgr-&gt;ShowMsgBox(Title, Message, <a class="code hl_enumvalue" href="EPopupType_8h.html#a19e1d6071fbd1a8d0f3a0ac7c630df51ae0aa021e21dddbd6d8cecec71e9cf564">EMsgBoxType::OK</a>,</div>
-<div class="line"><a id="l00383" name="l00383"></a><span class="lineno">  383</span>            FOnMsgBoxOkDelegate::CreateLambda([]() {</div>
-<div class="line"><a id="l00384" name="l00384"></a><span class="lineno">  384</span>                <span class="comment">// 확인 버튼 클릭 시 아무 작업도 하지 않음 (팝업만 닫힘)</span></div>
-<div class="line"><a id="l00385" name="l00385"></a><span class="lineno">  385</span>            }));</div>
+<div class="line"><a id="l00357" name="l00357"></a><span class="lineno">  357</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> Popup = UPopupManager::ShowPopupAs&lt;UPopup_Result&gt;(GetWorld(), EPopupType::Result))</div>
+<div class="line"><a id="l00358" name="l00358"></a><span class="lineno">  358</span>    {</div>
+<div class="line"><a id="l00359" name="l00359"></a><span class="lineno">  359</span>        Popup-&gt;InitPopup(<a class="code hl_enumvalue" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a7a1a5f3e79fdc91edf2f5ead9d66abb4">EQuestType::Read</a>);</div>
+<div class="line"><a id="l00360" name="l00360"></a><span class="lineno">  360</span>    }</div>
+<div class="line"><a id="l00361" name="l00361"></a><span class="lineno">  361</span>    </div>
+<div class="line"><a id="l00362" name="l00362"></a><span class="lineno">  362</span>    <span class="comment">// // 모든 클라이언트(호스트 포함)에서 정답 팝업 표시</span></div>
+<div class="line"><a id="l00363" name="l00363"></a><span class="lineno">  363</span>    <span class="comment">// if (UPopupManager* PopupMgr = UPopupManager::Get(GetWorld()))</span></div>
+<div class="line"><a id="l00364" name="l00364"></a><span class="lineno">  364</span>    <span class="comment">// {</span></div>
+<div class="line"><a id="l00365" name="l00365"></a><span class="lineno">  365</span>    <span class="comment">//  PopupMgr-&gt;ShowResult();</span></div>
+<div class="line"><a id="l00366" name="l00366"></a><span class="lineno">  366</span>    <span class="comment">//  PRINTLOG(TEXT(&quot;[WeightSwitch] Showing result popup on %s&quot;),</span></div>
+<div class="line"><a id="l00367" name="l00367"></a><span class="lineno">  367</span>    <span class="comment">//      HasAuthority() ? TEXT(&quot;Server&quot;) : TEXT(&quot;Client&quot;));</span></div>
+<div class="line"><a id="l00368" name="l00368"></a><span class="lineno">  368</span>    <span class="comment">// }</span></div>
+<div class="line"><a id="l00369" name="l00369"></a><span class="lineno">  369</span>}</div>
+<div class="line"><a id="l00370" name="l00370"></a><span class="lineno">  370</span> </div>
+<div class="line"><a id="l00378" name="l00378"></a><span class="lineno">  378</span><span class="keywordtype">void</span> AWeightSwitch::Multicast_ShowWrongPopup_Implementation(<span class="keyword">const</span> FString&amp; LuggageColor, <span class="keyword">const</span> FString&amp; LuggagePattern)</div>
+<div class="line"><a id="l00379" name="l00379"></a><span class="lineno">  379</span>{</div>
+<div class="line"><a id="l00380" name="l00380"></a><span class="lineno">  380</span>    <span class="comment">// 모든 클라이언트(호스트 포함)에서 오답 메시지 표시</span></div>
+<div class="line"><a id="l00381" name="l00381"></a><span class="lineno">  381</span>    <span class="keywordflow">if</span> (<a class="code hl_class" href="classUPopupManager.html">UPopupManager</a>* PopupMgr = UPopupManager::Get(GetWorld()))</div>
+<div class="line"><a id="l00382" name="l00382"></a><span class="lineno">  382</span>    {</div>
+<div class="line"><a id="l00383" name="l00383"></a><span class="lineno">  383</span>        FString Title = TEXT(<span class="stringliteral">&quot;Wrong Answer!&quot;</span>);</div>
+<div class="line"><a id="l00384" name="l00384"></a><span class="lineno">  384</span>        FString Message = FString::Printf(TEXT(<span class="stringliteral">&quot;This is not the correct luggage.\n\nColor: %s\nPattern: %s&quot;</span>),</div>
+<div class="line"><a id="l00385" name="l00385"></a><span class="lineno">  385</span>            *LuggageColor, *LuggagePattern);</div>
 <div class="line"><a id="l00386" name="l00386"></a><span class="lineno">  386</span> </div>
-<div class="line"><a id="l00387" name="l00387"></a><span class="lineno">  387</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[WeightSwitch] Showing wrong popup on %s (Color: %s, Pattern: %s)&quot;</span>),</div>
-<div class="line"><a id="l00388" name="l00388"></a><span class="lineno">  388</span>            HasAuthority() ? TEXT(<span class="stringliteral">&quot;Server&quot;</span>) : TEXT(<span class="stringliteral">&quot;Client&quot;</span>), *LuggageColor, *LuggagePattern);</div>
-<div class="line"><a id="l00389" name="l00389"></a><span class="lineno">  389</span>    }</div>
-<div class="line"><a id="l00390" name="l00390"></a><span class="lineno">  390</span>}</div>
+<div class="line"><a id="l00387" name="l00387"></a><span class="lineno">  387</span>        PopupMgr-&gt;ShowMsgBox(Title, Message, <a class="code hl_enumvalue" href="EPopupType_8h.html#a19e1d6071fbd1a8d0f3a0ac7c630df51ae0aa021e21dddbd6d8cecec71e9cf564">EMsgBoxType::OK</a>,</div>
+<div class="line"><a id="l00388" name="l00388"></a><span class="lineno">  388</span>            FOnMsgBoxOkDelegate::CreateLambda([]() {</div>
+<div class="line"><a id="l00389" name="l00389"></a><span class="lineno">  389</span>                <span class="comment">// 확인 버튼 클릭 시 아무 작업도 하지 않음 (팝업만 닫힘)</span></div>
+<div class="line"><a id="l00390" name="l00390"></a><span class="lineno">  390</span>            }));</div>
+<div class="line"><a id="l00391" name="l00391"></a><span class="lineno">  391</span> </div>
+<div class="line"><a id="l00392" name="l00392"></a><span class="lineno">  392</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[WeightSwitch] Showing wrong popup on %s (Color: %s, Pattern: %s)&quot;</span>),</div>
+<div class="line"><a id="l00393" name="l00393"></a><span class="lineno">  393</span>            HasAuthority() ? TEXT(<span class="stringliteral">&quot;Server&quot;</span>) : TEXT(<span class="stringliteral">&quot;Client&quot;</span>), *LuggageColor, *LuggagePattern);</div>
+<div class="line"><a id="l00394" name="l00394"></a><span class="lineno">  394</span>    }</div>
+<div class="line"><a id="l00395" name="l00395"></a><span class="lineno">  395</span>}</div>
 <div class="ttc" id="aALingoGameState_8h_html"><div class="ttname"><a href="ALingoGameState_8h.html">ALingoGameState.h</a></div></div>
+<div class="ttc" id="aALingoGameState_8h_html_a1a866ca8104ebd47ce462347a6125921a7a1a5f3e79fdc91edf2f5ead9d66abb4"><div class="ttname"><a href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a7a1a5f3e79fdc91edf2f5ead9d66abb4">EQuestType::Read</a></div><div class="ttdeci">@ Read</div></div>
 <div class="ttc" id="aAPlayerActor_8h_html"><div class="ttname"><a href="APlayerActor_8h.html">APlayerActor.h</a></div><div class="ttdoc">Declares the player-controlled character actor.</div></div>
 <div class="ttc" id="aAWeightSwitch_8h_html"><div class="ttname"><a href="AWeightSwitch_8h.html">AWeightSwitch.h</a></div></div>
 <div class="ttc" id="aEPopupType_8h_html_a19e1d6071fbd1a8d0f3a0ac7c630df51ae0aa021e21dddbd6d8cecec71e9cf564"><div class="ttname"><a href="EPopupType_8h.html#a19e1d6071fbd1a8d0f3a0ac7c630df51ae0aa021e21dddbd6d8cecec71e9cf564">EMsgBoxType::OK</a></div><div class="ttdeci">@ OK</div></div>
@@ -545,7 +551,7 @@ $(document).ready(function(){initNavTree('AWeightSwitch_8cpp_source.html',''); i
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_b7459e4428712e32d7c860db6e401a05.html">Interactable</a></li><li class="navelem"><a class="el" href="dir_77257aedd361f850f8a01079e914567e.html">Private</a></li><li class="navelem"><a class="el" href="AWeightSwitch_8cpp.html">AWeightSwitch.cpp</a></li>
-    <li class="footer">생성시간 : 일 12월 7 2025 01:11:17, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 일 12월 7 2025 03:30:38, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

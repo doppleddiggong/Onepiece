@@ -1,5 +1,7 @@
 var NAVTREEINDEX3 =
 {
+"URichText_8cpp.html":[3,0,0,2,8,0,3],
+"URichText_8cpp.html#a49b78dc337a3ab4e4c1a60578b98c995":[3,0,0,2,8,0,3,0],
 "URichText_8cpp_source.html":[3,0,0,2,8,0,3],
 "URichText_8h.html":[3,0,0,2,8,1,3],
 "URichText_8h.html#a842db4169468886b73d60ddf138a61e7":[3,0,0,2,8,1,3,1],
@@ -247,7 +249,5 @@ var NAVTREEINDEX3 =
 "classALingoGameMode.html#a5a1abf7a283ddd9f6ac8b2db142bd49f":[2,0,11,5],
 "classALingoGameMode.html#a66c0084d4eca03c65a47c202e1ae65fc":[2,0,11,7],
 "classALingoGameMode.html#a73959d6bf75c9f2e19ce6702545b008d":[2,0,11,1],
-"classALingoGameMode.html#a8b56ab603ed4f346060e5921bc5426cf":[2,0,11,3],
-"classALingoGameMode.html#a910e19df50b7f45058b55af455212e19":[2,0,11,8],
-"classALingoGameMode.html#abef1a309b7dcd4b4f71d2341d55a0ea3":[2,0,11,0]
+"classALingoGameMode.html#a8b56ab603ed4f346060e5921bc5426cf":[2,0,11,3]
 };

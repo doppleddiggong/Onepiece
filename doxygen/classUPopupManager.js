@@ -19,7 +19,6 @@ var classUPopupManager =
     [ "ShowPopup", "classUPopupManager.html#a9ec64dea54a5110dedc39ffe0ba1ad0d", null ],
     [ "ShowPopupAs", "classUPopupManager.html#a1f95e5c56fcbf5dab168c38d939780ba", null ],
     [ "ShowPopupAs", "classUPopupManager.html#af88f0a2e0e1e3d8c27fc8d6700177a53", null ],
-    [ "ShowResult", "classUPopupManager.html#a6f9f029229eb9e98bff958b0847273aa", null ],
     [ "PopupClassMap", "classUPopupManager.html#ad2288f01f50f8c8eb6212dcbde4ea860", null ],
     [ "PopupStack", "classUPopupManager.html#ac2470b1f873fd1651aae7c05f10a32b4", null ],
     [ "PopupWidgetMap", "classUPopupManager.html#acd192c5957f063bd632bd00a2dcc3c3d", null ]

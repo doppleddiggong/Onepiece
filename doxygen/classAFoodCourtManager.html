@@ -266,7 +266,7 @@ Protected 멤버 함수</h2></td></tr>
 <div class="line"><span class="lineno">   35</span>    <a class="code hl_class" href="classALingoGameState.html">ALingoGameState</a>* GS = Cast&lt;ALingoGameState&gt;(GetWorld()-&gt;GetGameState());</div>
 <div class="line"><span class="lineno">   36</span>    <span class="keywordflow">if</span> (!GS) <span class="keywordflow">return</span>;</div>
 <div class="line"><span class="lineno">   37</span> </div>
-<div class="line"><span class="lineno">   38</span>    <span class="keyword">const</span> TArray&lt;FScenarioTargetData&gt;&amp; ScenarioData = GS-&gt;GetScenarioData().target_data;</div>
+<div class="line"><span class="lineno">   38</span>    <span class="keyword">const</span> TArray&lt;FScenarioTargetData&gt;&amp; ScenarioData = GS-&gt;<a class="code hl_function" href="classALingoGameState.html#a05dda129c32a08fc3432424f612ce50b">GetListenScenarioData</a>().<a class="code hl_variable" href="structFResponseListenScenario.html#acb666ef0e5c937213f5e1ea20f71af21">target_data</a>;</div>
 <div class="line"><span class="lineno">   39</span> </div>
 <div class="line"><span class="lineno">   40</span>    <span class="keywordflow">for</span> (int32 i=0; i&lt;ScenarioData.Num(); i++)</div>
 <div class="line"><span class="lineno">   41</span>    {</div>
@@ -296,9 +296,11 @@ Protected 멤버 함수</h2></td></tr>
 <div class="ttc" id="aclassACityName_html_a75ed30b9fb11713c3db7e71e15de30af"><div class="ttname"><a href="classACityName.html#a75ed30b9fb11713c3db7e71e15de30af">ACityName::WidgetComp</a></div><div class="ttdeci">class UWidgetComponent * WidgetComp</div><div class="ttdef"><b>Definition</b> <a href="CityName_8h_source.html#l00027">CityName.h:27</a></div></div>
 <div class="ttc" id="aclassAFoodCourtManager_html_a105e6377c1bd78c6115bd48cf10ee658"><div class="ttname"><a href="classAFoodCourtManager.html#a105e6377c1bd78c6115bd48cf10ee658">AFoodCourtManager::FindCityName</a></div><div class="ttdeci">class ACityName * FindCityName(int32 InIdx)</div><div class="ttdef"><b>Definition</b> <a href="FoodCourtManager_8cpp_source.html#l00066">FoodCourtManager.cpp:66</a></div></div>
 <div class="ttc" id="aclassALingoGameState_html"><div class="ttname"><a href="classALingoGameState.html">ALingoGameState</a></div><div class="ttdef"><b>Definition</b> <a href="ALingoGameState_8h_source.html#l00035">ALingoGameState.h:36</a></div></div>
+<div class="ttc" id="aclassALingoGameState_html_a05dda129c32a08fc3432424f612ce50b"><div class="ttname"><a href="classALingoGameState.html#a05dda129c32a08fc3432424f612ce50b">ALingoGameState::GetListenScenarioData</a></div><div class="ttdeci">FORCEINLINE const FResponseListenScenario &amp; GetListenScenarioData() const</div><div class="ttdef"><b>Definition</b> <a href="ALingoGameState_8h_source.html#l00053">ALingoGameState.h:53</a></div></div>
 <div class="ttc" id="aclassUCityNameWidget_html"><div class="ttname"><a href="classUCityNameWidget.html">UCityNameWidget</a></div><div class="ttdef"><b>Definition</b> <a href="CityNameWidget_8h_source.html#l00013">CityNameWidget.h:14</a></div></div>
+<div class="ttc" id="astructFResponseListenScenario_html_acb666ef0e5c937213f5e1ea20f71af21"><div class="ttname"><a href="structFResponseListenScenario.html#acb666ef0e5c937213f5e1ea20f71af21">FResponseListenScenario::target_data</a></div><div class="ttdeci">TArray&lt; FScenarioTargetData &gt; target_data</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00903">NetworkData.h:903</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="FoodCourtManager_8cpp_source.html#l00066">FindCityName()</a>, <a class="el" href="CityName_8h_source.html#l00027">ACityName::WidgetComp</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="FoodCourtManager_8cpp_source.html#l00066">FindCityName()</a>, <a class="el" href="ALingoGameState_8h_source.html#l00053">ALingoGameState::GetListenScenarioData()</a>, <a class="el" href="NetworkData_8h_source.html#l00903">FResponseListenScenario::target_data</a>, <a class="el" href="CityName_8h_source.html#l00027">ACityName::WidgetComp</a>.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AContactTrigger_8cpp_source.html#l00184">AContactTrigger::OnListenResponseScenario()</a>.</p>
 <div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -306,7 +308,7 @@ Protected 멤버 함수</h2></td></tr>
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-3-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classAFoodCourtManager_a7cb555a5d887b8f0739a23019db3cc43_cgraph.svg" width="384" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classAFoodCourtManager_a7cb555a5d887b8f0739a23019db3cc43_cgraph.svg" width="431" height="115"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-4-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
@@ -359,7 +361,7 @@ Protected 멤버 함수</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classAFoodCourtManager.html">AFoodCourtManager</a></li>
-    <li class="footer">생성시간 : 일 12월 7 2025 01:11:17, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 일 12월 7 2025 03:30:38, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>
