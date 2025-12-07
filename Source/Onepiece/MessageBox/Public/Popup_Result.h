@@ -53,6 +53,9 @@ protected:
 	TObjectPtr<class UScrollBox> Scrl_WrongList;
 
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
+	TObjectPtr<class UVerticalBox> VerticalBox;
+	
+	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
 	TObjectPtr<class UResultStatWidget> Result_Time;
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
 	TObjectPtr<class UResultStatWidget> Result_Grade;
@@ -62,5 +65,8 @@ protected:
 	TObjectPtr<class UResultStatWidget> Result_AverageScore;
 
 private:
+	UPROPERTY(EditDefaultsOnly, Category = "UI")
+	TSubclassOf<class UAnswerItem> AnswerItemClass;
+
 	EQuestType QuestType;
 };

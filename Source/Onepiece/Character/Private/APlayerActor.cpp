@@ -22,6 +22,8 @@
 #include "UPopup_ReadQuest.h"
 #include "ALingoGameState.h"
 #include "UToastWidget.h"
+#include "UBroadcastManager.h"
+#include "UFadeWidget.h"
 
 #include "Camera/CameraComponent.h"
 #include "Components/InputComponent.h"
@@ -130,14 +132,20 @@ void APlayerActor::BeginPlay()
 	VoiceConversationSystem->InitSystem(this);
 	HookSystem->InitSystem(HookCable, HookProjectileMesh);
 
+	// 텔레포트 이벤트 구독
+	if (UBroadcastManager* BroadcastManager = UBroadcastManager::Get(GetWorld()))
+	{
+		BroadcastManager->OnTeleport.AddDynamic(this, &APlayerActor::OnTeleportAllPlayers);
+	}
+
 	if (IsLocallyControlled())
 	{
 		CreateMainWidget();
 		CreateToastWidget();
-		
+
 		FString MapName = GetWorld()->GetMapName();
 		MapName.RemoveFromStart(GetWorld()->StreamingLevelsPrefix);
-		
+
 		if (MapName.Contains(TEXT("Map1")) || MapName.Contains(TEXT("Game")))
 			ULingoGameHelper::HideMouseCursor(this);
 	}
@@ -413,4 +421,66 @@ void APlayerActor::ClientRPC_ShowGameMessage_Implementation(const FString& Messa
 	{
 		DialogManager->ShowToast(Message);
 	}
+}
+
+void APlayerActor::OnTeleportAllPlayers(FVector TargetLocation)
+{
+	// 서버에 텔레포트 요청
+	Server_Teleport(TargetLocation);
+
+	// 로컬 플레이어만 페이드 처리
+	if (!IsLocallyControlled())
+		return;
+
+	PRINTLOG(TEXT("APlayerActor::OnTeleportAllPlayers - Start teleport to %s"), *TargetLocation.ToString());
+
+	// 목표 위치 저장
+	PendingTeleportLocation = TargetLocation;
+
+	// FadeWidget 가져오기
+	if (!MainWidget)
+	{
+		PRINTLOG(TEXT("APlayerActor::OnTeleportAllPlayers - MainWidget is null"));
+		return;
+	}
+
+	UFadeWidget* FadeWidget = MainWidget->GetFadeWidget();
+	if (!FadeWidget)
+	{
+		PRINTLOG(TEXT("APlayerActor::OnTeleportAllPlayers - FadeWidget is null"));
+		return;
+	}
+
+	// FadeOut 완료 시 텔레포트 실행
+	FadeWidget->OnFadeOutComplete.AddDynamic(this, &APlayerActor::OnFadeOutCompleteForTeleport);
+
+	// FadeOut 시작
+	MainWidget->FadeOut(0.5f);
+}
+
+void APlayerActor::Server_Teleport_Implementation(FVector TargetLocation)
+{
+	SetActorLocation(TargetLocation);
+}
+
+void APlayerActor::OnFadeOutCompleteForTeleport()
+{
+	PRINTLOG(TEXT("APlayerActor::OnFadeOutCompleteForTeleport - Teleporting to %s"), *PendingTeleportLocation.ToString());
+
+	// 텔레포트 실행
+	SetActorLocation(PendingTeleportLocation);
+
+	// FadeWidget 가져오기
+	if (!MainWidget)
+		return;
+
+	UFadeWidget* FadeWidget = MainWidget->GetFadeWidget();
+	if (!FadeWidget)
+		return;
+
+	// FadeOut 델리게이트 해제
+	FadeWidget->OnFadeOutComplete.RemoveDynamic(this, &APlayerActor::OnFadeOutCompleteForTeleport);
+
+	// FadeIn 시작
+	MainWidget->FadeIn(0.5f);
 }

@@ -139,4 +139,11 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category="Events")
 	void SendAddItemToBoxList(const TArray<FResultStatData>& ItemDataList);
+
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnTeleportAllPlayers, FVector, TargetLocation);
+	UPROPERTY(BlueprintAssignable, Category="Events")
+	FOnTeleportAllPlayers OnTeleport;
+
+	UFUNCTION(BlueprintCallable, Category="Events")
+	void SendTeleport(const FVector& TargetLocation);
 };

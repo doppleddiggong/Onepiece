@@ -4,6 +4,8 @@
 #include "LuggageManager.h"
 
 #include "ALingoGameState.h"
+#include "ALuggageHolder.h"
+#include "EngineUtils.h"
 #include "luggage.h"
 #include "NetworkData.h"
 #include "UGameDataManager.h"
@@ -65,9 +67,32 @@ void ALuggageManager::SpawnLuggage()
 		// 인덱스로 상자 색&무늬 지정
 		int32 ColorIdx = FCString::Atoi(*SD.word2.code);
 		NewLuggage->ApplyColorToMesh(ColorIdx);
+		
 		int32 PatternIdx = FCString::Atoi(*SD.word1.code);
 		NewLuggage->ApplyPatternToMesh(PatternIdx);
 	}
 
 	CurrentSpawnIndex++;
 }
+
+// void ALuggageManager::InitHolder(FResponseReadScenario& ResponseData)
+// {
+// 	// {
+// 	// 	"word1": { "name": "닭", "code": "6" },
+// 	// 	"word2": { "name": "빨강", "code": "1" }
+// 	// }
+//
+// 	const FScenarioTargetData& CorrectAnswer = ResponseData.target_data[ResponseData.correct_answer_index];
+// 	const int32 PatternIdx = FCString::Atoi(*CorrectAnswer.word1.code);
+// 	const int32 ColorIdx = FCString::Atoi(*CorrectAnswer.word2.code);
+//
+// 	for (TActorIterator<ALuggageHolder> It(GetWorld()); It; ++It)
+// 	{
+// 		ALuggageHolder* Holder = *It;
+// 		if (Holder)
+// 		{
+// 			Holder->SetAnswerData(ColorIdx, PatternIdx);
+// 			break;
+// 		}
+// 	}
+// }

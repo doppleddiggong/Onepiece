@@ -146,6 +146,21 @@ private:
 	/// @brief 메인 위젯을 생성하고 뷰포트에 추가합니다.
 	void CreateMainWidget();
 	void CreateToastWidget();
+
+	/// @brief 텔레포트 이벤트 핸들러
+	/// @param TargetLocation 목표 위치
+	UFUNCTION()
+	void OnTeleportAllPlayers(FVector TargetLocation);
+
+	UFUNCTION(Server, Reliable)
+	void Server_Teleport(FVector TargetLocation);
+
+	/// @brief 페이드 아웃 완료 후 텔레포트 실행
+	UFUNCTION()
+	void OnFadeOutCompleteForTeleport();
+
+	/// @brief 텔레포트 목표 위치
+	FVector PendingTeleportLocation;
 	
 public:
 	// grab 시 들어올릴 위치

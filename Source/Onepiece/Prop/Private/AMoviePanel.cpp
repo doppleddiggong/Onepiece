@@ -7,6 +7,7 @@
 #include "Components/StaticMeshComponent.h"
 #include "MediaPlayer.h"
 #include "MediaSource.h"
+#include "MediaTexture.h"
 #include "GameLogging.h"
 #include "Materials/MaterialInstanceDynamic.h"
 #include "UObject/ConstructorHelpers.h"
@@ -26,9 +27,18 @@ AMoviePanel::AMoviePanel()
 	Screen->SetStaticMesh(FComponentHelper::LoadAsset<UStaticMesh>(SCREEN_PATH));
 	Screen->SetRelativeScale3D(FVector(16.0f, 9.0f, 0.1f));
 	
-	MediaPlayer = FComponentHelper::LoadAsset<UMediaPlayer>(MEDIA_PLAYER_PATH);
+	// 각 인스턴스마다 고유한 MediaPlayer와 MediaTexture 생성
+	MediaPlayer = CreateDefaultSubobject<UMediaPlayer>(TEXT("MediaPlayer"));
+	MediaTexture = CreateDefaultSubobject<UMediaTexture>(TEXT("MediaTexture"));
+	
+	// MediaPlayer의 출력을 MediaTexture로 설정
+	if (MediaPlayer && MediaTexture)
+	{
+		MediaPlayer->SetLooping(false);
+		MediaPlayer->PlayOnOpen = false;
+	}
+	
 	MediaSource = FComponentHelper::LoadAsset<UMediaSource>(MEDIA_SOURCE_PATH);
-	MediaTexture = FComponentHelper::LoadAsset<UTexture>(MEDIA_PLAYER_TEXTURE_PATH);
 }
 
 void AMoviePanel::BeginPlay()
@@ -37,6 +47,13 @@ void AMoviePanel::BeginPlay()
 
 	if (!Screen || !Screen->GetMaterial(0))
 		return;
+
+	// MediaTexture를 MediaPlayer에 연결
+	if (MediaTexture && MediaPlayer)
+	{
+		MediaTexture->SetMediaPlayer(MediaPlayer);
+		MediaTexture->UpdateResource();
+	}
 
 	MediaMaterial = UMaterialInstanceDynamic::Create(Screen->GetMaterial(0), this);
 	if (!MediaMaterial)
@@ -51,7 +68,6 @@ void AMoviePanel::BeginPlay()
 	MediaPlayer->OnEndReached.Clear();
 	MediaPlayer->OnEndReached.AddDynamic(this, &AMoviePanel::HandleMediaEndReached);
 
-
 	PlayMedia();
 }
 
@@ -65,9 +81,24 @@ void AMoviePanel::PlayMedia()
 
 	MediaMaterial->SetVectorParameterValue(ColorParam, FLinearColor(1.0f, 1.0f, 1.0f, 1.0f));
 
-	// 미디어 재생
-	MediaPlayer->OpenSource(MediaSource);
-	MediaPlayer->Play();
+	// OnMediaOpened 이벤트 바인딩
+	MediaPlayer->OnMediaOpened.Clear();
+	MediaPlayer->OnMediaOpened.AddDynamic(this, &AMoviePanel::HandleMediaOpened);
+
+	// 미디어 소스 열기
+	if (!MediaPlayer->OpenSource(MediaSource))
+	{
+		PRINTLOG(TEXT("AMoviePanel::PlayMedia - Failed to open media source"));
+	}
+}
+
+void AMoviePanel::HandleMediaOpened(FString OpenedUrl)
+{
+	if (MediaPlayer)
+	{
+		MediaPlayer->Play();
+		PRINTLOG(TEXT("AMoviePanel::HandleMediaOpened - Media opened: %s"), *OpenedUrl);
+	}
 }
 
 void AMoviePanel::HandleMediaEndReached()

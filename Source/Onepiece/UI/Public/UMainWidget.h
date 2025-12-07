@@ -33,21 +33,21 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Hook")
 	void UpdateHookState(bool bIsAiming);
 
-	// /// @brief 튜터 메시지를 설정하고 애니메이션을 재생합니다.
-	// /// @param NewMessage 표시할 메시지
-	// UFUNCTION(BlueprintCallable, Category = "Tutor")
-	// void OnTutorMessage(const FText& NewMessage);
-	//
-	// UFUNCTION(BlueprintCallable, Category = "Item")
-	// void AddItemToBoxList(const TArray<FResultStatData>& InDataList);
-	//
-	// UFUNCTION(BlueprintCallable, Category = "Item")
-	// void AddItemToBoxItem(const FResultStatData& InData);
-	//
+	/// @brief 페이드 아웃 효과 시작 (화면이 어두워짐)
+	/// @param Duration 페이드 아웃 지속 시간 (초)
+	UFUNCTION(BlueprintCallable, Category = "Fade")
+	void FadeOut(float Duration = 0.5f);
+
+	/// @brief 페이드 인 효과 시작 (화면이 밝아짐)
+	/// @param Duration 페이드 인 지속 시간 (초)
+	UFUNCTION(BlueprintCallable, Category = "Fade")
+	void FadeIn(float Duration = 0.5f);
+
+	/// @brief FadeWidget 가져오기
+	UFUNCTION(BlueprintPure, Category = "Fade")
+	class UFadeWidget* GetFadeWidget() const { return FadeWidget; }
 		
 private:
-	// void InitTutorMessage();
-
 	/// @brief 타이머 텍스트를 업데이트합니다.
 	void UpdateTimerDisplay() const;
 
@@ -57,16 +57,6 @@ private:
 	/// @brief 미션 타이머 상태 변경 핸들러
 	UFUNCTION()
 	void OnUpdateMissionTimerState(bool bIsActive, float TimeLimit);
-
-	// /// @brief TutorHideAnim 완료 시 호출되는 콜백
-	// UFUNCTION()
-	// void OnTutorHideComplete();
-	//
-	// /// @brief 자동 Hide 타이머 시작
-	// void StartTutorHideTimer();
-	//
-	// /// @brief 다음 아이템을 HorizontalBox에 추가 (타이머 콜백)
-	// void ProcessNextItem();
 
 protected:
 	/// @brief 플레이 타이머 위젯 (BindWidget)
@@ -88,21 +78,9 @@ protected:
 	UPROPERTY(meta = (BindWidgetOptional), BlueprintReadOnly)
 	TObjectPtr<class UImage> HookTargetIndicator;
 
-	// /// @brief 튜터 메시지 위젯 (옵션, BindWidgetOptional)
-	// UPROPERTY(meta = (BindWidgetOptional), BlueprintReadOnly)
-	// TObjectPtr<class UTutorMessage> TutorMessage;
-	//
-	// /// @brief 아이템 표시용 HorizontalBox
-	// UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
-	// TObjectPtr<class UHorizontalBox> ItemHorizontalBox;
-	//
-	// /// @brief TutorMessage Show Animation (MainWidget에서 제어)
-	// UPROPERTY(Transient, meta = (BindWidgetAnim))
-	// TObjectPtr<class UWidgetAnimation> TutorShowAnim;
-	//
-	// /// @brief TutorMessage Hide Animation (MainWidget에서 제어)
-	// UPROPERTY(Transient, meta = (BindWidgetAnim))
-	// TObjectPtr<class UWidgetAnimation> TutorHideAnim;
+	/// @brief 페이드 인/아웃 위젯 (옵션, BindWidgetOptional)
+	UPROPERTY(meta = (BindWidgetOptional), BlueprintReadOnly)
+	TObjectPtr<class UFadeWidget> FadeWidget;
 
 private:
 	/// @brief 훅 타겟 감지 시 이미지 (파란색)

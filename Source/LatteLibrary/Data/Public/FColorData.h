@@ -35,6 +35,10 @@ struct LATTELIBRARY_API FColorData : public FTableRowBase
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ColorData")
 	FString HexColor;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ColorData")
+	FString Eng;
+
+
 	/** @brief HexColor 문자열을 FLinearColor로 변환하여 반환 */
 	FLinearColor GetLinearColor() const
 	{

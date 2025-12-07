@@ -19,6 +19,7 @@
 #include "USpeakStageSubsystem.h"
 #include "UTutorMessage.h"
 #include "UAutoDespawnItem.h"
+#include "UFadeWidget.h"
 #include "Engine/World.h"
 #include "Components/Image.h"
 #include "Components/HorizontalBox.h"
@@ -141,4 +142,26 @@ void UMainWidget::UpdateSpeakWidget()
 		APlayerState* LocalPlayerState = LocalPC->GetPlayerState<APlayerState>();
 		SpeakWidget->UpdateSpeakStageUI(SpeakStage, LocalPlayerState);
 	}
+}
+
+void UMainWidget::FadeOut(float Duration)
+{
+	if (!FadeWidget)
+	{
+		PRINTLOG(TEXT("UMainWidget::FadeOut - FadeWidget is null"));
+		return;
+	}
+
+	FadeWidget->FadeOut(Duration);
+}
+
+void UMainWidget::FadeIn(float Duration)
+{
+	if (!FadeWidget)
+	{
+		PRINTLOG(TEXT("UMainWidget::FadeIn - FadeWidget is null"));
+		return;
+	}
+
+	FadeWidget->FadeIn(Duration);
 }

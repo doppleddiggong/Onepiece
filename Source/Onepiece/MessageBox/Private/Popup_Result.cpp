@@ -13,8 +13,12 @@
 #include "UPopupManager.h"
 #include "UResultStatWidget.h"
 #include "UTextureButton.h"
+#include "UAnswerItem.h"
+#include "Components/HorizontalBox.h"
 #include "Components/ScrollBox.h"
 #include "Components/TextBlock.h"
+#include "Blueprint/UserWidget.h"
+#include "Components/VerticalBox.h"
 
 void UPopup_Result::InitPopup(const EQuestType InQuestType)
 {
@@ -35,7 +39,32 @@ void UPopup_Result::InitPopup(const EQuestType InQuestType)
 	InitWordWidget();
 	InitWrongList();
 
-	RequestResult();
+	// GameState에서 결과 확인
+	if (auto GS = Cast<ALingoGameState>(GetWorld()->GetGameState()))
+	{
+		bool bHasResult = false;
+
+		if (QuestType == EQuestType::Read && !GS->ReadResult.grade.IsEmpty())
+		{
+			// 이미 결과가 있으면 바로 표시
+			PRINTLOG(TEXT("[Popup_Result] Read result already exists in GameState"));
+			InitReadResult(GS->ReadResult);
+			bHasResult = true;
+		}
+		else if (QuestType == EQuestType::Listen && !GS->ListenResult.grade.IsEmpty())
+		{
+			// 이미 결과가 있으면 바로 표시
+			PRINTLOG(TEXT("[Popup_Result] Listen result already exists in GameState"));
+			InitListenResult(GS->ListenResult);
+			bHasResult = true;
+		}
+
+		// 결과가 없으면 Host만 요청
+		if (!bHasResult)
+		{
+			RequestResult();
+		}
+	}
 }
 
 void UPopup_Result::OnClickClose()
@@ -70,7 +99,6 @@ void UPopup_Result::InitWrongList()
 	if (!GS)
 		return;
 	
-
 	// 틀린 인덱스 리스트
 	TArray<int32> WrongList;
 	// 전체 캐리어 정보
@@ -88,32 +116,29 @@ void UPopup_Result::InitWrongList()
 	}
 	
 	// 기존 항목 제거
-	Scrl_WrongList->ClearChildren();
-
-	// WrongList의 각 항목을 텍스트로 추가
-	for (int32 i=0; i<WrongList.Num(); i++)
+	VerticalBox->ClearChildren();
+	// WrongList의 각 항목을 UAnswerItem으로 추가
+	for (int32 i = 0; i < WrongList.Num(); i++)
 	{
-		int32 WrongIndex = WrongList[i];
-		auto SD = ScenarioData[WrongIndex];
+		const FScenarioTargetData& SD = ScenarioData[WrongList[i]];
 
-		if (UTextBlock* TextBlock = NewObject<UTextBlock>(this))
+		// UAnswerItem 위젯 생성
+		if (AnswerItemClass)
 		{
-			// 맨 마지막 인덱스는 정답
-			if (i == WrongList.Num()-1)
+			UAnswerItem* AnswerItem = CreateWidget<UAnswerItem>(this, AnswerItemClass);
+			if (AnswerItem)
 			{
-				TextBlock->SetText(FText::FromString(FString::Printf(TEXT("[CORRECT] %s, %s"),
-								*SD.word1.name, *SD.word2.name)));
-				TextBlock->SetColorAndOpacity(FSlateColor(FLinearColor::Red));
-				
-				Scrl_WrongList->AddChild(TextBlock);
-			}
-			else
-			{
-				TextBlock->SetText(FText::FromString(FString::Printf(TEXT("Try %d - [WRONG] %s, %s"),
-					i+1, *SD.word1.name, *SD.word2.name)));
-				TextBlock->SetColorAndOpacity(FSlateColor(FLinearColor::Black));
-			
-				Scrl_WrongList->AddChild(TextBlock);
+				// 마지막 인덱스는 정답
+				const bool bCorrect = (i == WrongList.Num() - 1);
+				const int32 Order = i + 1;
+				const int32 Word1Code = FCString::Atoi(*SD.word1.code);
+				const int32 Word2Code = FCString::Atoi(*SD.word2.code);
+
+				// AnswerItem 초기화
+				AnswerItem->InitInfo(QuestType, bCorrect, Order, Word1Code, Word2Code);
+
+				// HorizontalBox에 추가
+				VerticalBox->AddChild(AnswerItem);
 			}
 		}
 	}
@@ -203,9 +228,33 @@ void UPopup_Result::InitListenResult(const FResponseListenResult& ResponseData)
 
 void UPopup_Result::RequestResult()
 {
+	APlayerController* PC = GetOwningPlayer();
+	if (!PC)
+		return;
+
+	// Host 플레이어(첫 번째 플레이어)인지 확인
+	bool bIsHost = false;
+	if (APlayerState* PS = PC->GetPlayerState<APlayerState>())
+	{
+		if (AGameStateBase* GameStateBase = GetWorld()->GetGameState())
+		{
+			int32 PlayerIndex = GameStateBase->PlayerArray.IndexOfByKey(PS);
+			bIsHost = (PlayerIndex == 0);
+		}
+	}
+
+	// Host가 아니면 요청하지 않음
+	if (!bIsHost)
+	{
+		PRINTLOG(TEXT("[Popup_Result] Guest player - skipping request, waiting for Host"));
+		return;
+	}
+
+	PRINTLOG(TEXT("[Popup_Result] Host player - sending result request"));
+
 	if (auto GS = Cast<ALingoGameState>(GetWorld()->GetGameState()))
 	{
-		// 네트워크 송신
+		// 네트워크 송신 (Host만)
 		if (UKLingoNetworkSystem* Network = UKLingoNetworkSystem::Get(GetWorld()))
 		{
 			if ( QuestType == EQuestType::Read )
@@ -245,9 +294,15 @@ void UPopup_Result::OnResponseReadResult(FResponseReadResult& ResponseData, bool
 		PRINTLOG(TEXT("[Result] Grade: %s, average_score: %d, Top Percent: %.2f%%"),
 			*ResponseData.grade, ResponseData.average_score, ResponseData.top_percent);
 
+		// GameState에 결과 저장 (자동으로 복제됨)
+		if (auto GS = Cast<ALingoGameState>(GetWorld()->GetGameState()))
+		{
+			GS->ReadResult = ResponseData;
+		}
+
 		this->InitReadResult(ResponseData);
 	}
-	else                                                                                                                                                                                                                          
+	else
 	{
 		PRINTLOG(TEXT("[Result] Quest result Failed"));
 	}
@@ -257,9 +312,15 @@ void UPopup_Result::OnResponseListenResult(FResponseListenResult& ResponseData, 
 {
 	if (bWasSuccessful)
 	{
+		// GameState에 결과 저장 (자동으로 복제됨)
+		if (auto GS = Cast<ALingoGameState>(GetWorld()->GetGameState()))
+		{
+			GS->ListenResult = ResponseData;
+		}
+
 		this->InitListenResult(ResponseData);
 	}
-	else                                                                                                                                                                                                                          
+	else
 	{
 		PRINTLOG(TEXT("[Result] Quest result Failed"));
 	}

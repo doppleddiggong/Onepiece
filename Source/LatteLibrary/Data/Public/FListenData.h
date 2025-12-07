@@ -38,4 +38,7 @@ struct LATTELIBRARY_API FListenData : public FTableRowBase
 	/** @brief 학습 단어 */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ListenData")
 	FString Word;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ListenData")
+	FString Eng;
 };

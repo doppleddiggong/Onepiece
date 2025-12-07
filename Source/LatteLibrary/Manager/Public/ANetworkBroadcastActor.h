@@ -162,6 +162,26 @@ protected:
 	UFUNCTION(NetMulticast, Reliable)
 	void Multicast_SendTutorMessage(const FText& Message);
 
+public:
+	// ========================================
+	// Teleport All Players
+	// ========================================
+
+	/**
+	 * @brief 모든 플레이어를 지정된 위치로 텔레포트
+	 * @param TargetLocation 목표 위치
+	 * @param EventInstigator 이벤트를 발생시킨 Actor (권한 검증용)
+	 */
+	UFUNCTION(BlueprintCallable, Category = "Network Events")
+	void SendTeleportAllPlayers(const FVector& TargetLocation, AActor* EventInstigator);
+
+protected:
+	UFUNCTION(Server, Reliable)
+	void Server_SendTeleportAllPlayers(const FVector& TargetLocation, AActor* EventInstigator);
+
+	UFUNCTION(NetMulticast, Reliable)
+	void Multicast_SendTeleportAllPlayers(const FVector& TargetLocation);
+
 private:
 	/**
 	 * @brief 로컬 BroadcastManager 가져오기
