@@ -7,7 +7,6 @@ var classAContactTrigger =
     [ "OnTriggerBeginOverlap", "classAContactTrigger.html#a46cb478496173bbaa22088cc5d231fd0", null ],
     [ "OnTriggerScenario", "classAContactTrigger.html#ae388db0378df16528c92d3a7ef69281a", null ],
     [ "ServerRPC_OnTrigger", "classAContactTrigger.html#ad95a80dee6308cafc2ba071e0b63d1c2", null ],
-    [ "TEST_Holder", "classAContactTrigger.html#a72b86a35a6eb1338bb80481960b05990", null ],
     [ "Tick", "classAContactTrigger.html#a6e13e89c5e43268f9d4328a91d34e2e4", null ],
     [ "bIsTriggered", "classAContactTrigger.html#a6bb2c924b60c4d544f52dbcc93796e67", null ],
     [ "bShowDebugBox", "classAContactTrigger.html#ab402eea2b6e7365ec8a47ec11db1f035", null ],

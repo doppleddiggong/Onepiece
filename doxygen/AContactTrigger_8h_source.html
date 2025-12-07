@@ -149,33 +149,30 @@ $(document).ready(function(){initNavTree('AContactTrigger_8h_source.html',''); i
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    UFUNCTION()</div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="keywordtype">void</span> OnListenResponseScenario(struct <a class="code hl_struct" href="structFResponseListenScenario.html">FResponseListenScenario</a>&amp; ResponseData, <span class="keywordtype">bool</span> bWasSuccessful);</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="keywordtype">void</span> TEST_Holder(<a class="code hl_struct" href="structFResponseReadScenario.html">FResponseReadScenario</a>&amp; ResponseData);</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    </div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>protected:</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=&quot;Trigger&quot;)</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="classAContactTrigger.html#ac475b9f5bb07cfd21b598ad87e6d019c">   54</a></span>    TObjectPtr&lt;class UBoxComponent&gt; TriggerBox;</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>protected:</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=&quot;Trigger&quot;)</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="classAContactTrigger.html#ac475b9f5bb07cfd21b598ad87e6d019c">   51</a></span>    TObjectPtr&lt;class UBoxComponent&gt; TriggerBox;</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=&quot;Trigger&quot;)</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="classAContactTrigger.html#a3f9f5f820f8dfa7baa5de8f675ea0296">   54</a></span>    <a class="code hl_enumeration" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921">EQuestType</a> QuestType = <a class="code hl_enumeration" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921">EQuestType</a>::<a class="code hl_enumvalue" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a7a1a5f3e79fdc91edf2f5ead9d66abb4">Read</a>;</div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=&quot;Trigger&quot;)</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="classAContactTrigger.html#a3f9f5f820f8dfa7baa5de8f675ea0296">   57</a></span>    <a class="code hl_enumeration" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921">EQuestType</a> QuestType = <a class="code hl_enumeration" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921">EQuestType</a>::<a class="code hl_enumvalue" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a7a1a5f3e79fdc91edf2f5ead9d66abb4">Read</a>;</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=&quot;Trigger&quot;)</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="classAContactTrigger.html#aaf47be0afbd396aceb6da9c95bbec8b7">   61</a></span>    FString EventMessage;</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=&quot;Trigger&quot;)</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno"><a class="line" href="classAContactTrigger.html#a6bb2c924b60c4d544f52dbcc93796e67">   65</a></span>    <span class="keywordtype">bool</span> bIsTriggered;</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=&quot;Debug&quot;)</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="classAContactTrigger.html#ab402eea2b6e7365ec8a47ec11db1f035">   69</a></span>    <span class="keywordtype">bool</span> bShowDebugBox;</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=&quot;Debug&quot;)</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno"><a class="line" href="classAContactTrigger.html#a20a76abdb1837b44a13e326860d475f7">   73</a></span>    FColor DebugBoxColor;</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>private:</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = &quot;Voice&quot;, meta=(AllowPrivateAccess=&quot;true&quot;))</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno"><a class="line" href="classAContactTrigger.html#a5f50fda23fc46735106bfb993c64ea35">   77</a></span>    TObjectPtr&lt;class UVoiceConversationSystem&gt; VoiceConversationSystem; </div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>};</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=&quot;Trigger&quot;)</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="classAContactTrigger.html#aaf47be0afbd396aceb6da9c95bbec8b7">   58</a></span>    FString EventMessage;</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=&quot;Trigger&quot;)</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="classAContactTrigger.html#a6bb2c924b60c4d544f52dbcc93796e67">   62</a></span>    <span class="keywordtype">bool</span> bIsTriggered;</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=&quot;Debug&quot;)</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="classAContactTrigger.html#ab402eea2b6e7365ec8a47ec11db1f035">   66</a></span>    <span class="keywordtype">bool</span> bShowDebugBox;</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=&quot;Debug&quot;)</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno"><a class="line" href="classAContactTrigger.html#a20a76abdb1837b44a13e326860d475f7">   70</a></span>    FColor DebugBoxColor;</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>private:</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = &quot;Voice&quot;, meta=(AllowPrivateAccess=&quot;true&quot;))</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno"><a class="line" href="classAContactTrigger.html#a5f50fda23fc46735106bfb993c64ea35">   74</a></span>    TObjectPtr&lt;class UVoiceConversationSystem&gt; VoiceConversationSystem; </div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>};</div>
 </div>
 <div class="ttc" id="aALingoGameState_8h_html"><div class="ttname"><a href="ALingoGameState_8h.html">ALingoGameState.h</a></div></div>
 <div class="ttc" id="aALingoGameState_8h_html_a1a866ca8104ebd47ce462347a6125921"><div class="ttname"><a href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921">EQuestType</a></div><div class="ttdeci">EQuestType</div><div class="ttdef"><b>Definition</b> <a href="ALingoGameState_8h_source.html#l00011">ALingoGameState.h:12</a></div></div>
@@ -189,7 +186,7 @@ $(document).ready(function(){initNavTree('AContactTrigger_8h_source.html',''); i
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_b7459e4428712e32d7c860db6e401a05.html">Interactable</a></li><li class="navelem"><a class="el" href="dir_37565cbf0e4835105e22b7540e7cc414.html">Public</a></li><li class="navelem"><a class="el" href="AContactTrigger_8h.html">AContactTrigger.h</a></li>
-    <li class="footer">생성시간 : 일 12월 7 2025 05:47:58, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 일 12월 7 2025 10:24:11, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

@@ -13,6 +13,7 @@ var hierarchy =
       [ "AGate", "classAGate.html", null ],
       [ "AHolder", "classAHolder.html", null ],
       [ "AListActorManager", "classAListActorManager.html", null ],
+      [ "ALuggageHolder", "classALuggageHolder.html", null ],
       [ "ALuggageManager", "classALuggageManager.html", null ],
       [ "AMoviePanel", "classAMoviePanel.html", null ],
       [ "ANetworkBroadcastActor", "classANetworkBroadcastActor.html", null ],
@@ -22,6 +23,8 @@ var hierarchy =
       [ "AQuestionnaireKiosk", "classAQuestionnaireKiosk.html", null ],
       [ "ARespawnTrigger", "classARespawnTrigger.html", null ],
       [ "ASpeakStageActor", "classASpeakStageActor.html", null ],
+      [ "ATeleportOut", "classATeleportOut.html", null ],
+      [ "ATeleportTrigger", "classATeleportTrigger.html", null ],
       [ "AWeightSwitch", "classAWeightSwitch.html", null ],
       [ "Aluggage", "classAluggage.html", null ]
     ] ],
@@ -191,6 +194,7 @@ var hierarchy =
       [ "UCityNameWidget", "classUCityNameWidget.html", null ],
       [ "UDialogWidget", "classUDialogWidget.html", null ],
       [ "UDrawingBoardWidget", "classUDrawingBoardWidget.html", null ],
+      [ "UFadeWidget", "classUFadeWidget.html", null ],
       [ "UHoverButton", "classUHoverButton.html", null ],
       [ "UImageButton", "classUImageButton.html", null ],
       [ "UInteractWidget", "classUInteractWidget.html", [

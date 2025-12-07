@@ -48,5 +48,5 @@ var searchData=
   ['currentspeakertext_45',['CurrentSpeakerText',['../classUSpeakWidget.html#af0f5c7c3a8d61f5e03e860c4e05b4627',1,'USpeakWidget']]],
   ['currentstepindex_46',['CurrentStepIndex',['../classASpeakStageActor.html#a73c3fe46e98225cc9d528ce281e9e2de',1,'ASpeakStageActor']]],
   ['currsessionname_47',['currSessionName',['../classULingoGameInstance.html#a17232e7c2128d3f8af2561f649b27473',1,'ULingoGameInstance']]],
-  ['curtarget_48',['CurTarget',['../classAHolder.html#ac76a7839abbc71619286e50ba8ded371',1,'AHolder']]]
+  ['curtarget_48',['curtarget',['../classAHolder.html#ac76a7839abbc71619286e50ba8ded371',1,'AHolder::CurTarget'],['../classALuggageHolder.html#aa3217f0b4f3c24098a9c4cee7826f881',1,'ALuggageHolder::CurTarget']]]
 ];

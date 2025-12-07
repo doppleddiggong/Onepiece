@@ -1,6 +1,9 @@
 var classUMainWidget =
 [
     [ "UMainWidget", "classUMainWidget.html#ad20ac0a98c69f588c45eead091449dc8", null ],
+    [ "FadeIn", "classUMainWidget.html#a9be2e5f1620864d34553e6a0dfc0bbdc", null ],
+    [ "FadeOut", "classUMainWidget.html#a1e3fca3f15171299f1be803c8dbebb27", null ],
+    [ "GetFadeWidget", "classUMainWidget.html#a4eb207f533cf3178f948c4222b7dc723", null ],
     [ "NativeConstruct", "classUMainWidget.html#ab5b82b602efb97c7b4cd7a3c2d99d6e8", null ],
     [ "NativeTick", "classUMainWidget.html#a3ccf5693518d42c8c33a350b9e739396", null ],
     [ "OnUpdateMissionTimerState", "classUMainWidget.html#a087562bb275500b4085bf893720ae7b0", null ],
@@ -9,6 +12,7 @@ var classUMainWidget =
     [ "UpdateSpeakWidget", "classUMainWidget.html#aca756504843f51373e2c63f2bd1e1301", null ],
     [ "UpdateTimerDisplay", "classUMainWidget.html#a9239722afccf53cb761984ce87f32228", null ],
     [ "CachedGameState", "classUMainWidget.html#aa0abca549ef2be9c4610d4890d5c0448", null ],
+    [ "FadeWidget", "classUMainWidget.html#aa86baf5af00d6f8875fc6106bb3714e4", null ],
     [ "HookAimTexture", "classUMainWidget.html#ad7de89f2b381f896001de9b8b7e407bc", null ],
     [ "HookNoAimTexture", "classUMainWidget.html#a52448a9fe3ed60736a223d3129b6e3db", null ],
     [ "HookTargetIndicator", "classUMainWidget.html#a2c5299964319e6fccda7d0ec2887ea23", null ],

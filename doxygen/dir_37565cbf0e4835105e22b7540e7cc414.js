@@ -4,6 +4,8 @@ var dir_37565cbf0e4835105e22b7540e7cc414 =
     [ "AContactTrigger.h", "AContactTrigger_8h.html", "AContactTrigger_8h" ],
     [ "ADoor.h", "ADoor_8h.html", "ADoor_8h" ],
     [ "APedestalSwitch.h", "APedestalSwitch_8h.html", "APedestalSwitch_8h" ],
+    [ "ATeleportOut.h", "ATeleportOut_8h.html", "ATeleportOut_8h" ],
+    [ "ATeleportTrigger.h", "ATeleportTrigger_8h.html", "ATeleportTrigger_8h" ],
     [ "AWeightSwitch.h", "AWeightSwitch_8h.html", "AWeightSwitch_8h" ],
     [ "ConveryorButtonAnimInstance.h", "ConveryorButtonAnimInstance_8h.html", "ConveryorButtonAnimInstance_8h" ],
     [ "ConveyorButton.h", "ConveyorButton_8h.html", "ConveyorButton_8h" ],

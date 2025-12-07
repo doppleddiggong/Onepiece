@@ -93,7 +93,7 @@ var searchData=
   ['rootcomp_90',['RootComp',['../classAGate.html#a429a577267caf33a60f87b3bcf7748e8',1,'AGate']]],
   ['rootoverlay_91',['RootOverlay',['../classULoadginCircle.html#a7e714f65f74d3fca56c7e21aa2c49588',1,'ULoadginCircle']]],
   ['rootscenecomp_92',['rootscenecomp',['../classAConveyorBelt.html#a277a078d1457960543b561fc98b3a937',1,'AConveyorBelt::RootSceneComp'],['../classAQuestionnaireKiosk.html#ace76f7ef86756597d28ee517e0d1b83f',1,'AQuestionnaireKiosk::RootSceneComp'],['../classAConveyorButton.html#a1e4e1433ebfb711d13bc1260e65d3ca5',1,'AConveyorButton::RootSceneComp']]],
-  ['rotationspeed_93',['RotationSpeed',['../classAHolder.html#aa08fb8d6c45760bd7a4368ddb314fd03',1,'AHolder']]],
+  ['rotationspeed_93',['rotationspeed',['../classALuggageHolder.html#af37d6b2b11e6e6e0dcc012ed6b17fb05',1,'ALuggageHolder::RotationSpeed'],['../classAHolder.html#aa08fb8d6c45760bd7a4368ddb314fd03',1,'AHolder::RotationSpeed']]],
   ['rotatoroffset_94',['RotatorOffset',['../structFVFXData.html#ac890ab57708ba9a560918e626822022f',1,'FVFXData']]],
   ['rt_5fcanvas_95',['rt_canvas',['../classUDrawingBoardWidget.html#a9ec1bb4325aa0ca447099b23d3389cfe',1,'UDrawingBoardWidget::RT_Canvas'],['../classUPopup__WriteBoard.html#a3b8840464e57c2ac855c51b4683b7872',1,'UPopup_WriteBoard::RT_Canvas']]],
   ['runaction_96',['RunAction',['../classAOwlPlayer.html#a3a17273ada64aa8d321b1cc5c5d1b4e3',1,'AOwlPlayer']]],
