@@ -3,23 +3,41 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "AHolder.h"
+#include "GameFramework/Actor.h"
 #include "FoodHolder.generated.h"
 
 UCLASS()
-class ONEPIECE_API AFoodHolder : public AHolder
+class ONEPIECE_API AFoodHolder : public AActor
 {
 	GENERATED_BODY()
 
 public:
-	// Sets default values for this actor's properties
 	AFoodHolder();
 
 protected:
-	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+	virtual void Tick(float DeltaTime) override;
+	virtual void GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const override;
 
 public:
+	// Events
+	UFUNCTION(BlueprintImplementableEvent, Category = "Holder")
+	void OnActivate(bool bSuccess);
+
+	/**
+	 * @brief [Multicast RPC] 모든 클라이언트에 정답 결과 팝업 표시
+	 * @param CorrectAnswerIndex 정답 인덱스
+	 */
+	UFUNCTION(NetMulticast, Reliable)
+	void Multicast_ShowResultPopup(int32 CorrectAnswerIndex);
+
+	/**
+	 * @brief [Multicast RPC] 모든 클라이언트에 오답 메시지 표시
+	 * @param FoodName 선택한 Food 이름
+	 */
+	UFUNCTION(NetMulticast, Reliable)
+	void Multicast_ShowWrongPopup(const FString& FoodName);
+
 	/**
 	 * @brief 정답 Food 인덱스 설정
 	 * @param InAnswerFoodIndex 정답 Food의 인덱스
@@ -27,8 +45,14 @@ public:
 	void SetAnswerFoodIndex(int32 InAnswerFoodIndex);
 
 private:
+	UFUNCTION()
+	void OnRep_IsActivated();
+
+	UFUNCTION()
+	void OnRep_CurTarget();
+
 	/**
-	 * @brief BoxCollision Overlap 콜백 (AHolder의 OnBoxOverlapBegin 오버라이드)
+	 * @brief BoxCollision Overlap 콜백
 	 */
 	UFUNCTION()
 	void OnFoodBoxOverlapBegin(
@@ -46,7 +70,35 @@ private:
 	 */
 	bool CheckFood(class AFood* TargetFood);
 
+	void UpdateActivateState(bool State);
+
+public:
+	// Components
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Components")
+	TObjectPtr<class UBoxComponent> BoxCollision;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Components")
+	TObjectPtr<class USkeletalMeshComponent> MeshComponent;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Spawning")
+	TObjectPtr<class USceneComponent> HoldPos;
+
 protected:
+	// 현재 올라가 있는 액터
+	UPROPERTY(ReplicatedUsing=OnRep_CurTarget)
+	TObjectPtr<class AActor> CurTarget;
+
+	// State
+	UPROPERTY(ReplicatedUsing=OnRep_IsActivated, VisibleAnywhere, BlueprintReadOnly, Category = "State")
+	bool bIsActivated = false;
+
+	// Visual Settings
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Visual")
+	float ActivatedHeightOffset = 50.0f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Visual")
+	float RotationSpeed = 90.0f;
+
 	// Answer Settings
 	/** 정답 Food 인덱스 (-1이면 모든 Food 허용) */
 	int32 AnswerFoodIndex = -1;

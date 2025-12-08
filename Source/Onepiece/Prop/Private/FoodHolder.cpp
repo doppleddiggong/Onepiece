@@ -7,26 +7,92 @@
 #include "Food.h"
 #include "GameLogging.h"
 #include "ANetworkBroadcastActor.h"
+#include "Popup_Result.h"
+#include "UBroadcastManager.h"
+#include "UPopupManager.h"
 #include "Onepiece/Onepiece.h"
 #include "Components/BoxComponent.h"
+#include "Components/SkeletalMeshComponent.h"
+#include "Net/UnrealNetwork.h"
 
-// Sets default values
 AFoodHolder::AFoodHolder()
 {
-	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
+
+	// Replication
+	bReplicates = true;
+
+	// Root component
+	USceneComponent* Root = CreateDefaultSubobject<USceneComponent>(TEXT("DefaultSceneRoot"));
+	RootComponent = Root;
+
+	// Mesh component
+	MeshComponent = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("MeshComponent"));
+	MeshComponent->SetupAttachment(RootComponent);
+
+	// Box collision component
+	BoxCollision = CreateDefaultSubobject<UBoxComponent>(TEXT("BoxCollision"));
+	BoxCollision->SetupAttachment(MeshComponent);
+	BoxCollision->SetGenerateOverlapEvents(true);
+	BoxCollision->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
+	BoxCollision->SetCollisionResponseToAllChannels(ECR_Overlap);
+
+	// HoldPos component
+	HoldPos = CreateDefaultSubobject<USceneComponent>(TEXT("HoldPos"));
+	HoldPos->SetupAttachment(MeshComponent);
 }
 
-// Called when the game starts or when spawned
 void AFoodHolder::BeginPlay()
 {
 	Super::BeginPlay();
 
-	// Unbind parent's OnBoxOverlapBegin and bind our own
-	if (BoxCollision)
+	BoxCollision->OnComponentBeginOverlap.AddDynamic(this, &AFoodHolder::OnFoodBoxOverlapBegin);
+
+	// 머티리얼 파라미터 초기화 (비활성화 상태)
+	UpdateActivateState(false);
+}
+
+void AFoodHolder::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+
+	// CurTarget이 유효하고 활성화된 상태라면 회전
+	if (bIsActivated && CurTarget)
 	{
-		BoxCollision->OnComponentBeginOverlap.Clear();
-		BoxCollision->OnComponentBeginOverlap.AddDynamic(this, &AFoodHolder::OnFoodBoxOverlapBegin);
+		FRotator CurrentRotation = CurTarget->GetActorRotation();
+		CurrentRotation.Yaw += RotationSpeed * DeltaTime;
+		CurTarget->SetActorRotation(CurrentRotation);
+	}
+}
+
+void AFoodHolder::GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const
+{
+	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+
+	DOREPLIFETIME(AFoodHolder, bIsActivated);
+	DOREPLIFETIME(AFoodHolder, CurTarget);
+}
+
+void AFoodHolder::OnRep_IsActivated()
+{
+	// bIsActivated가 복제될 때 머티리얼 업데이트
+	UpdateActivateState(bIsActivated);
+}
+
+void AFoodHolder::OnRep_CurTarget()
+{
+	// CurTarget이 복제될 때 클라이언트에서도 충돌 비활성화
+	if (CurTarget)
+	{
+		if (AFood* Food = Cast<AFood>(CurTarget))
+		{
+			if (Food->Mesh)
+			{
+				Food->Mesh->SetSimulatePhysics(false);
+				Food->Mesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+			}
+			PRINTLOG(TEXT("AFoodHolder::OnRep_CurTarget - Disabled collision for Food on client"));
+		}
 	}
 }
 
@@ -46,28 +112,57 @@ void AFoodHolder::OnFoodBoxOverlapBegin(
 	if (!OtherActor)
 		return;
 
-	// 서버에서만 실행
 	if (!HasAuthority())
 		return;
 
 	if (bIsActivated)
-	{
-		// 이미 Activate 되었으면 작동 안 함
 		return;
-	}
+
+	ALingoGameState* GS = Cast<ALingoGameState>(GetWorld()->GetGameState());
+	if (!GS)
+		return;
 
 	// Food인지 확인
 	if (AFood* Food = Cast<AFood>(OtherActor))
 	{
-		bool bSuccess = CheckFood(Food);
+		UE_LOG(LogTemp, Warning, TEXT("[OnFoodBoxOverlapBegin] Calling CheckFood..."));
+		const bool bSuccess = CheckFood(Food);
+		UE_LOG(LogTemp, Warning, TEXT("[OnFoodBoxOverlapBegin] CheckFood returned: %s"), bSuccess ? TEXT("TRUE") : TEXT("FALSE"));
 
-		// 블루프린트 이벤트 호출 (부모 클래스의 OnActivate)
+		// 블루프린트 이벤트 호출
+		UE_LOG(LogTemp, Warning, TEXT("[OnFoodBoxOverlapBegin] Calling OnActivate(%s)"), bSuccess ? TEXT("TRUE") : TEXT("FALSE"));
 		OnActivate(bSuccess);
+		UE_LOG(LogTemp, Warning, TEXT("[OnFoodBoxOverlapBegin] OnActivate finished, bSuccess is still: %s"), bSuccess ? TEXT("TRUE") : TEXT("FALSE"));
 
-		// NetworkBroadcastActor를 통해 모든 클라이언트에 메시지 브로드캐스트
-		if (auto DM = ANetworkBroadcastActor::Get(this))
+		if (bSuccess)
 		{
-			DM->SendTutorMessage(FText::FromString(bSuccess ? GameMessage::Holder_Success : GameMessage::Holder_Fail), this);
+			UE_LOG(LogTemp, Warning, TEXT("[FoodHolder] Correct"));
+
+			// 정답인 경우
+			int32 CorrectIdx = Food->GetFoodIndex();
+			FTimerHandle TimerHandle;
+			GetWorldTimerManager().SetTimer(TimerHandle, [this, CorrectIdx]
+			{
+				// 모든 클라이언트에 정답 인덱스와 함께 결과 팝업 표시
+				Multicast_ShowResultPopup(CorrectIdx);
+			}, 0.5f, false);
+		}
+		else
+		{
+			UE_LOG(LogTemp, Warning, TEXT("[FoodHolder] Wrong"));
+
+			// 오답인 경우
+			FTimerHandle TimerHandle;
+			GetWorldTimerManager().SetTimer(TimerHandle, [this, Food, GS]
+			{
+				GS->WrongReadAnswerList.Add(Food->GetFoodIndex());
+
+				// 모든 클라이언트에 오답 메시지 표시
+				Multicast_ShowWrongPopup(Food->GetFoodName());
+
+				// Food 소거 (서버에서만, 자동 복제됨)
+				Food->Destroy();
+			}, 0.5f, false);
 		}
 	}
 }
@@ -75,40 +170,41 @@ void AFoodHolder::OnFoodBoxOverlapBegin(
 bool AFoodHolder::CheckFood(AFood* TargetFood)
 {
 	if (!TargetFood)
-		return false;
-
-	// Food Index 비교
-	bool bSuccess = false;
-	
-	ALingoGameState* GS = Cast<ALingoGameState>(GetWorld()->GetGameState());
-	if (GS)
 	{
-		const int32 CorrectIdx = GS->GetReadScenarioData().correct_answer_index;
-
-		if (TargetFood->GetFoodIndex() == CorrectIdx) bSuccess = true;
+		UE_LOG(LogTemp, Error, TEXT("[CheckFood] TargetFood is null!"));
+		return false;
 	}
 
-	PRINTLOG(TEXT("FoodIndex: %d (Answer: %d), Result: %s"),
-		TargetFood->GetFoodIndex(), AnswerFoodIndex,
-		bSuccess ? TEXT("Success") : TEXT("Fail"));
-
-	if (bSuccess)
+	// Food의 모든 충돌 비활성화
+	if (TargetFood->Mesh)
 	{
-		// Success: Food를 HoldPos 위치보다 살짝 위에 배치
-		if (HoldPos)
-		{
-			FVector ActivatedLocation = HoldPos->GetComponentLocation();
-			ActivatedLocation.Z += ActivatedHeightOffset;
-			TargetFood->SetActorLocation(ActivatedLocation);
-			TargetFood->SetActorRotation(HoldPos->GetComponentRotation());
-		}
+		TargetFood->Mesh->SetSimulatePhysics(false);
+		TargetFood->Mesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+	}
 
-		// Food의 물리 및 충돌 비활성화
-		if (TargetFood->Mesh)
-		{
-			TargetFood->Mesh->SetSimulatePhysics(false);
-			TargetFood->Mesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);
-		}
+	// ListenQuest 정답 인덱스 가져오기
+	ALingoGameState* GS = Cast<ALingoGameState>(GetWorld()->GetGameState());
+	if (!GS)
+	{
+		UE_LOG(LogTemp, Error, TEXT("[CheckFood] GameState is null!"));
+		return false;
+	}
+
+	const int32 CorrectIdx = GS->GetListenScenarioData().correct_answer_index;
+	const int32 FoodIdx = TargetFood->GetFoodIndex();
+
+	UE_LOG(LogTemp, Warning, TEXT("[CheckFood] CorrectIdx=%d, FoodIdx=%d, Match=%s"),
+		CorrectIdx, FoodIdx, (CorrectIdx == FoodIdx) ? TEXT("TRUE") : TEXT("FALSE"));
+
+	if (CorrectIdx == FoodIdx)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("[CheckFood] Returning TRUE"));
+
+		// Success: Food를 HoldPos 위치보다 살짝 위에 배치
+		FVector ActivatedLocation = HoldPos->GetComponentLocation();
+		ActivatedLocation.Z += ActivatedHeightOffset;
+		TargetFood->SetActorLocation(ActivatedLocation);
+		TargetFood->SetActorRotation(HoldPos->GetComponentRotation());
 
 		// Activate 상태로 전환
 		bIsActivated = true;
@@ -116,16 +212,72 @@ bool AFoodHolder::CheckFood(AFood* TargetFood)
 
 		// 서버에서도 머티리얼 업데이트 (클라이언트는 OnRep_IsActivated에서 호출됨)
 		UpdateActivateState(true);
+
+		return true;
 	}
 	else
 	{
-		// Fail: Food 제거
-		bIsActivated = false;
-		TargetFood->Destroy();
+		UE_LOG(LogTemp, Warning, TEXT("[CheckFood] Returning FALSE"));
 
-		// 서버에서 머티리얼 업데이트 (오답)
+		// Fail: 서버에서 머티리얼 업데이트 (오답)
+		bIsActivated = false;
 		UpdateActivateState(false);
+
+		return false;
+	}
+}
+
+void AFoodHolder::UpdateActivateState(bool State)
+{
+	// 머티리얼 파라미터 설정
+	if (MeshComponent && MeshComponent->GetNumMaterials() > 0)
+	{
+		UMaterialInstanceDynamic* DynamicMaterial = Cast<UMaterialInstanceDynamic>(MeshComponent->GetMaterial(0));
+		if (!DynamicMaterial)
+			DynamicMaterial = MeshComponent->CreateDynamicMaterialInstance(0);
+
+		if (DynamicMaterial)
+			DynamicMaterial->SetScalarParameterValue(FName("Activate"), State ? 1.0f : 0.0f);
+	}
+}
+
+/**
+ * @brief [Multicast RPC] 모든 클라이언트에 정답 결과 팝업 표시
+ * @details [문제] 서버에서만 팝업을 표시하여 클라이언트에서 보이지 않음
+ *          [해결] Multicast RPC로 모든 머신에 팝업 전달
+ */
+void AFoodHolder::Multicast_ShowResultPopup_Implementation(int32 CorrectAnswerIndex)
+{
+	// 모든 클라이언트에서 로컬 GameState에 정답 인덱스 추가
+	if (ALingoGameState* GS = Cast<ALingoGameState>(GetWorld()->GetGameState()))
+	{
+		// 중복 체크 후 추가
+		if (!GS->WrongReadAnswerList.Contains(CorrectAnswerIndex))
+		{
+			GS->WrongReadAnswerList.Add(CorrectAnswerIndex);
+			PRINTLOG(TEXT("[Multicast_ShowResultPopup] Added correct answer index %d to local GameState"), CorrectAnswerIndex);
+		}
 	}
 
-	return bSuccess;
+	// 팝업 표시
+	if (auto Popup = UPopupManager::ShowPopupAs<UPopup_Result>(GetWorld(), EPopupType::Result))
+	{
+		Popup->InitPopup(EQuestType::Read);
+	}
+}
+
+/**
+ * @brief [Multicast RPC] 모든 클라이언트에 오답 메시지 표시
+ * @details [문제] 서버에서만 팝업을 표시하여 클라이언트에서 보이지 않음
+ *          [해결] Multicast RPC로 모든 머신에 팝업 전달
+ * @param FoodName 선택한 Food 이름
+ */
+void AFoodHolder::Multicast_ShowWrongPopup_Implementation(const FString& FoodName)
+{
+	// 모든 클라이언트(호스트 포함)에서 오답 메시지 표시
+	FString Message = FString::Printf(TEXT("Wrong Answer\nThis is not the correct Answer.\n\nFood: %s"),
+		*FoodName);
+
+	if (auto DM = UBroadcastManager::Get(this))
+		DM->SendTutorMessage(FText::FromString(Message));
 }

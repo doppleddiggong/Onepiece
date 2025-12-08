@@ -49,8 +49,6 @@ void AOrderKiosk::BeginPlay()
 	{
 		InteractableComp->OnInteractionTriggered.AddDynamic(this, &AOrderKiosk::OnInteractionTriggered);
 	}
-	
-	InteractWidget->SetVisibility(false);
 }
 
 void AOrderKiosk::GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const
@@ -64,26 +62,6 @@ void AOrderKiosk::GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& Ou
 void AOrderKiosk::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-}
-
-void AOrderKiosk::BeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
-	UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
-{
-	if (APlayerActor* Player = Cast<APlayerActor>(OtherActor))
-	{
-		InteractWidget->SetVisibility(true);
-		IsOverlapping = true;
-	}
-}
-
-void AOrderKiosk::EndOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
-	UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
-{
-	if (APlayerActor* Player = Cast<APlayerActor>(OtherActor))
-	{
-		InteractWidget->SetVisibility(false);
-		IsOverlapping = false;
-	}
 }
 
 void AOrderKiosk::OnInteractionTriggered(AActor* Interactor)
