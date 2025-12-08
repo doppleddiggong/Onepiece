@@ -156,7 +156,7 @@ void AFoodHolder::OnFoodBoxOverlapBegin(
 			FTimerHandle TimerHandle;
 			GetWorldTimerManager().SetTimer(TimerHandle, [this, Food, GS]
 			{
-				GS->WrongReadAnswerList.Add(Food->GetFoodIndex());
+				GS->WrongListenAnswerList.Add(Food->GetFoodIndex());
 
 				// 모든 클라이언트에 오답 메시지 표시
 				Multicast_ShowWrongPopup(Food->GetFoodName());
@@ -258,9 +258,9 @@ void AFoodHolder::Multicast_ShowResultPopup_Implementation(int32 CorrectAnswerIn
 	if (ALingoGameState* GS = Cast<ALingoGameState>(GetWorld()->GetGameState()))
 	{
 		// 중복 체크 후 추가
-		if (!GS->WrongReadAnswerList.Contains(CorrectAnswerIndex))
+		if (!GS->WrongListenAnswerList.Contains(CorrectAnswerIndex))
 		{
-			GS->WrongReadAnswerList.Add(CorrectAnswerIndex);
+			GS->WrongListenAnswerList.Add(CorrectAnswerIndex);
 			PRINTLOG(TEXT("[Multicast_ShowResultPopup] Added correct answer index %d to local GameState"), CorrectAnswerIndex);
 		}
 	}
@@ -268,7 +268,7 @@ void AFoodHolder::Multicast_ShowResultPopup_Implementation(int32 CorrectAnswerIn
 	// 팝업 표시
 	if (auto Popup = UPopupManager::ShowPopupAs<UPopup_Result>(GetWorld(), EPopupType::Result))
 	{
-		Popup->InitPopup(EQuestType::Read);
+		Popup->InitPopup(EQuestType::Listen);
 	}
 }
 

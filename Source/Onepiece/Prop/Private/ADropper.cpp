@@ -111,7 +111,7 @@ void ADropper::Spawn()
     }
     else if (auto tmpFood = Cast<AFood>(SpawnedActor))
     {
-        FString InfoToShow = FString::Printf(TEXT("%s / %s"), *NextFoodData.word1.name, *NextFoodData.word2.name);
+        FString InfoToShow = FString::Printf(TEXT("%s %s"), *NextFoodData.word1.name, *NextFoodData.word2.name);
         tmpFood->SetFoodInfo(NextFoodData.SpawnIndex, InfoToShow);
 
         UE_LOG(LogTemp, Warning, TEXT("[Dropper::Spawn] Food spawned with Index=%d, Name=%s"),
