@@ -6,6 +6,7 @@
 #include "CityNameWidget.h"
 #include "InteractableComponent.h"
 #include "Components/WidgetComponent.h"
+#include "Net/UnrealNetwork.h"
 
 
 // Sets default values
@@ -53,12 +54,26 @@ void AFood::BeginPlay()
 
 }
 
+void AFood::GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const
+{
+	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+
+	DOREPLIFETIME(AFood, FoodMesh);
+	DOREPLIFETIME(AFood, Name);
+	DOREPLIFETIME(AFood, Index);
+}
+
 // Called every frame
 void AFood::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
 	
+}
+
+void AFood::OnRep_FoodName()
+{
+	SetFoodInfo(Index, Name);
 }
 
 void AFood::SetFoodInfo(int32 InIndex, FString InName)

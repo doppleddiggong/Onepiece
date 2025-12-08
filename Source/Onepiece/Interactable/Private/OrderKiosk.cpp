@@ -58,6 +58,7 @@ void AOrderKiosk::GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& Ou
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
 
 	DOREPLIFETIME(AOrderKiosk, IsOverlapping);
+	DOREPLIFETIME(AOrderKiosk, FoodData);
 }
 
 // Called every frame
@@ -96,6 +97,11 @@ void AOrderKiosk::OnInteractionTriggered(AActor* Interactor)
 			Dropper->RequestSpawn();
 		}
 	}
+}
+
+void AOrderKiosk::OnRep_FoodData()
+{
+	UpdateInteractableWidget(FoodData.word2.name);
 }
 
 void AOrderKiosk::UpdateInteractableWidget(FString NewString)

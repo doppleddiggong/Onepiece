@@ -18,6 +18,7 @@ public:
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+	virtual void GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const override;
 
 public:
 	// Called every frame
@@ -28,7 +29,7 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	class UStaticMeshComponent* Mesh;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UPROPERTY(Replicated, EditAnywhere, BlueprintReadWrite)
 	class UStaticMeshComponent* FoodMesh;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
@@ -36,11 +37,17 @@ public:
 
 	UPROPERTY(VisibleAnywhere)
 	TObjectPtr<class UInteractableComponent> InteractableComp;
-
+	
 protected:
 	// 음식 인덱스
+	UPROPERTY(ReplicatedUsing=OnRep_FoodName)
 	FString Name = "";
+
+	UPROPERTY(ReplicatedUsing=OnRep_FoodName)
 	int32 Index = -1;
+
+	UFUNCTION()
+	void OnRep_FoodName();
 
 public:
 	void SetFoodInfo(int32 InIndex, FString InName);

@@ -47,8 +47,11 @@ public:
 	int32 FoodCourtIdx = -1;
 
 	/** 이번 스폰에서 사용할 데이터 */
-	UPROPERTY(Replicated)
+	UPROPERTY(ReplicatedUsing=OnRep_FoodData)
 	FFoodData FoodData;
+
+	UFUNCTION()
+	void OnRep_FoodData();
 
 	// 사용 여부 플래그
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
