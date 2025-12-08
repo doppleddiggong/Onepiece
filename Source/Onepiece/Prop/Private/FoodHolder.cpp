@@ -83,9 +83,10 @@ bool AFoodHolder::CheckFood(AFood* TargetFood)
 	ALingoGameState* GS = Cast<ALingoGameState>(GetWorld()->GetGameState());
 	if (GS)
 	{
-		const int32 CorrectIdx = GS->GetReadScenarioData().correct_answer_index;
+		const int32 CorrectIdx = GS->GetListenScenarioData().correct_answer_index;
 
-		if (TargetFood->GetFoodIndex() == CorrectIdx) bSuccess = true;
+		if (TargetFood->GetFoodIndex() == CorrectIdx)
+			bSuccess = true;
 	}
 
 	PRINTLOG(TEXT("FoodIndex: %d (Answer: %d), Result: %s"),
