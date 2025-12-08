@@ -11,10 +11,9 @@ var hierarchy =
       [ "ADropper", "classADropper.html", null ],
       [ "AFood", "classAFood.html", null ],
       [ "AFoodCourtManager", "classAFoodCourtManager.html", null ],
+      [ "AFoodHolder", "classAFoodHolder.html", null ],
       [ "AGate", "classAGate.html", null ],
-      [ "AHolder", "classAHolder.html", [
-        [ "AFoodHolder", "classAFoodHolder.html", null ]
-      ] ],
+      [ "AHolder", "classAHolder.html", null ],
       [ "AListActorManager", "classAListActorManager.html", null ],
       [ "ALuggageHolder", "classALuggageHolder.html", null ],
       [ "ALuggageManager", "classALuggageManager.html", null ],

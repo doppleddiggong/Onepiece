@@ -113,61 +113,153 @@ $(document).ready(function(){initNavTree('UQuestInfoWidget_8cpp_source.html','')
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;<a class="code" href="UQuestInfoWidget_8h.html">UQuestInfoWidget.h</a>&quot;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;<a class="code" href="ALingoPlayerState_8h.html">ALingoPlayerState.h</a>&quot;</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;<a class="code" href="UBroadcastManager_8h.html">UBroadcastManager.h</a>&quot;</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;<a class="code" href="ULingoGameHelper_8h.html">ULingoGameHelper.h</a>&quot;</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;Components/TextBlock.h&quot;</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;<a class="code" href="ALingoGameState_8h.html">ALingoGameState.h</a>&quot;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;<a class="code" href="ALingoPlayerState_8h.html">ALingoPlayerState.h</a>&quot;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;<a class="code" href="UBroadcastManager_8h.html">UBroadcastManager.h</a>&quot;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;<a class="code" href="NetworkData_8h.html">NetworkData.h</a>&quot;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;<a class="code" href="ULingoGameHelper_8h.html">ULingoGameHelper.h</a>&quot;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;Components/TextBlock.h&quot;</span></div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
-<div class="foldopen" id="foldopen00013" data-start="{" data-end="}">
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="classUQuestInfoWidget.html#a2ff972d3fef3e1ada0c1c674ee615ac5">   13</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUQuestInfoWidget.html#a2ff972d3fef3e1ada0c1c674ee615ac5">UQuestInfoWidget::NativeConstruct</a>()</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>{</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    Super::NativeConstruct();</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> BM = UBroadcastManager::Get(GetWorld()))</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>        BM-&gt;OnUpdateQuestRole.AddDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUQuestInfoWidget.html#a82923dd9fedf779f551931ac05eaea45">UQuestInfoWidget::InitQuestInfo</a>);</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>}</div>
-</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="foldopen" id="foldopen00014" data-start="{" data-end="}">
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="classUQuestInfoWidget.html#a2ff972d3fef3e1ada0c1c674ee615ac5">   14</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUQuestInfoWidget.html#a2ff972d3fef3e1ada0c1c674ee615ac5">UQuestInfoWidget::NativeConstruct</a>()</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>{</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    Super::NativeConstruct();</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> BM = UBroadcastManager::Get(GetWorld()))</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        BM-&gt;OnUpdateQuestRole.AddDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUQuestInfoWidget.html#a82923dd9fedf779f551931ac05eaea45">UQuestInfoWidget::InitQuestInfo</a>);</div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
-<div class="foldopen" id="foldopen00021" data-start="{" data-end="}">
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="classUQuestInfoWidget.html#a82923dd9fedf779f551931ac05eaea45">   21</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUQuestInfoWidget.html#a82923dd9fedf779f551931ac05eaea45">UQuestInfoWidget::InitQuestInfo</a>(<a class="code hl_enumeration" href="EQuestRole_8h.html#af9534ca095b724046bf40abddcbb95e9">EQuestRole</a> QuestRole)</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>{</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="keyword">auto</span> GS = <a class="code hl_function" href="classULingoGameHelper.html#aae5e9443e2249c16219279d75b62cb46">ULingoGameHelper::GetLingoGameState</a>(GetWorld());</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="keywordflow">if</span> ( !GS-&gt;IsQuestIng() )</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="keywordflow">if</span> ( QuestRole == EQuestRole::Both )</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    {</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        <a class="code hl_variable" href="classUQuestInfoWidget.html#ac27c6c6345881f6ec09624ffe63d0014">Txt_Message</a>-&gt;SetText( FText::FromString(GS-&gt;ReadScenarioData.full_data.Kor));</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    }</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> ( QuestRole == EQuestRole::OnlyQuestion1 )</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    {</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        <a class="code hl_variable" href="classUQuestInfoWidget.html#ac27c6c6345881f6ec09624ffe63d0014">Txt_Message</a>-&gt;SetText( FText::FromString(GS-&gt;ReadScenarioData.word_data1.Kor));</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    }</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> ( QuestRole == EQuestRole::OnlyQuestion2 )</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    {</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        <a class="code hl_variable" href="classUQuestInfoWidget.html#ac27c6c6345881f6ec09624ffe63d0014">Txt_Message</a>-&gt;SetText( FText::FromString(GS-&gt;ReadScenarioData.word_data2.Kor));</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    }</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>}</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> GS = <a class="code hl_function" href="classULingoGameHelper.html#aae5e9443e2249c16219279d75b62cb46">ULingoGameHelper::GetLingoGameState</a>(GetWorld()))</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    {</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        <a class="code hl_variable" href="classUQuestInfoWidget.html#a19a76cbbdca2592f0fbdfe2903ceb48f">ReadResultDelegateHandle</a> = GS-&gt;OnReadResultUpdated.AddUObject(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUQuestInfoWidget.html#a993f8f976a7788057f9e7c78d06064d5">UQuestInfoWidget::OnReadResultReceived</a>);</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        <a class="code hl_variable" href="classUQuestInfoWidget.html#a9c14e654d0704b0af75878c9b32e3c56">ListenResultDelegateHandle</a> = GS-&gt;OnListenResultUpdated.AddUObject(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUQuestInfoWidget.html#a5437a924b7eb221f6f3fc576ef0fb0e1">UQuestInfoWidget::OnListenResultReceived</a>);</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    }</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>}</div>
 </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="foldopen" id="foldopen00028" data-start="{" data-end="}">
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="classUQuestInfoWidget.html#a440a5e029096569a6551cf1d387bac34">   28</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUQuestInfoWidget.html#a440a5e029096569a6551cf1d387bac34">UQuestInfoWidget::NativeDestruct</a>()</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>{</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> BM = UBroadcastManager::Get(GetWorld()))</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        BM-&gt;OnUpdateQuestRole.RemoveDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUQuestInfoWidget.html#a82923dd9fedf779f551931ac05eaea45">UQuestInfoWidget::InitQuestInfo</a>);</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> GS = <a class="code hl_function" href="classULingoGameHelper.html#aae5e9443e2249c16219279d75b62cb46">ULingoGameHelper::GetLingoGameState</a>(GetWorld()))</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    {</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUQuestInfoWidget.html#a19a76cbbdca2592f0fbdfe2903ceb48f">ReadResultDelegateHandle</a>.IsValid())</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        {</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>            GS-&gt;OnReadResultUpdated.Remove(<a class="code hl_variable" href="classUQuestInfoWidget.html#a19a76cbbdca2592f0fbdfe2903ceb48f">ReadResultDelegateHandle</a>);</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>            <a class="code hl_variable" href="classUQuestInfoWidget.html#a19a76cbbdca2592f0fbdfe2903ceb48f">ReadResultDelegateHandle</a>.Reset();</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        }</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUQuestInfoWidget.html#a9c14e654d0704b0af75878c9b32e3c56">ListenResultDelegateHandle</a>.IsValid())</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        {</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>            GS-&gt;OnListenResultUpdated.Remove(<a class="code hl_variable" href="classUQuestInfoWidget.html#a9c14e654d0704b0af75878c9b32e3c56">ListenResultDelegateHandle</a>);</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>            <a class="code hl_variable" href="classUQuestInfoWidget.html#a9c14e654d0704b0af75878c9b32e3c56">ListenResultDelegateHandle</a>.Reset();</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        }</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    }</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    Super::NativeDestruct();</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>}</div>
+</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="foldopen" id="foldopen00051" data-start="{" data-end="}">
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="classUQuestInfoWidget.html#a82923dd9fedf779f551931ac05eaea45">   51</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUQuestInfoWidget.html#a82923dd9fedf779f551931ac05eaea45">UQuestInfoWidget::InitQuestInfo</a>(<a class="code hl_enumeration" href="EQuestRole_8h.html#af9534ca095b724046bf40abddcbb95e9">EQuestRole</a> QuestRole)</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>{</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="keyword">const</span> <span class="keyword">auto</span> GS = <a class="code hl_function" href="classULingoGameHelper.html#aae5e9443e2249c16219279d75b62cb46">ULingoGameHelper::GetLingoGameState</a>(GetWorld());</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="keywordflow">if</span> (!GS || !GS-&gt;IsQuestIng())</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    {</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        SetVisibility(ESlateVisibility::Collapsed);</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    }</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="keyword">const</span> <a class="code hl_enumeration" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921">EQuestType</a> QuestType = GS-&gt;GetCurrentQuestType();</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="keywordflow">if</span> (QuestType == <a class="code hl_enumvalue" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a7a1a5f3e79fdc91edf2f5ead9d66abb4">EQuestType::Read</a>)</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    {</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        <span class="keyword">const</span> <a class="code hl_struct" href="structFResponseReadScenario.html">FResponseReadScenario</a>&amp; ReadScenario = GS-&gt;GetReadScenarioData();</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        <span class="keywordflow">if</span> (QuestRole == EQuestRole::Both)</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>            <a class="code hl_function" href="classUQuestInfoWidget.html#a7786ccf2907f4e2d3f3f05da3e04b10f">SetQuestText</a>(ReadScenario.<a class="code hl_variable" href="structFResponseReadScenario.html#a25de5c38409caf2c1bc4bea5879df661">full_data</a>);</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (QuestRole == EQuestRole::OnlyQuestion1)</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>            <a class="code hl_function" href="classUQuestInfoWidget.html#a7786ccf2907f4e2d3f3f05da3e04b10f">SetQuestText</a>(ReadScenario.<a class="code hl_variable" href="structFResponseReadScenario.html#a16e0f6d6581d7c3a0c58dc30a53a48bd">word_data1</a>);</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (QuestRole == EQuestRole::OnlyQuestion2)</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>            <a class="code hl_function" href="classUQuestInfoWidget.html#a7786ccf2907f4e2d3f3f05da3e04b10f">SetQuestText</a>(ReadScenario.<a class="code hl_variable" href="structFResponseReadScenario.html#af7a3da38c89b3ecbd239c98e997f21a9">word_data2</a>);</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    }</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (QuestType == <a class="code hl_enumvalue" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921ace6802b46091c31e2ec2363883fe8369">EQuestType::Listen</a>)</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    {</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        <span class="keyword">const</span> <a class="code hl_struct" href="structFResponseListenScenario.html">FResponseListenScenario</a>&amp; ListenScenario = GS-&gt;GetListenScenarioData();</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        <span class="keywordflow">if</span> (QuestRole == EQuestRole::Both)</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>            <a class="code hl_function" href="classUQuestInfoWidget.html#a7786ccf2907f4e2d3f3f05da3e04b10f">SetQuestText</a>(ListenScenario.<a class="code hl_variable" href="structFResponseListenScenario.html#a75544300df8dfd58442360cb0348a0f8">full_data</a>);</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (QuestRole == EQuestRole::OnlyQuestion1)</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>            <a class="code hl_function" href="classUQuestInfoWidget.html#a7786ccf2907f4e2d3f3f05da3e04b10f">SetQuestText</a>(ListenScenario.<a class="code hl_variable" href="structFResponseListenScenario.html#ae5ee14f23d89fc1ef762e21375c2264a">word_data1</a>);</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (QuestRole == EQuestRole::OnlyQuestion2)</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>            <a class="code hl_function" href="classUQuestInfoWidget.html#a7786ccf2907f4e2d3f3f05da3e04b10f">SetQuestText</a>(ListenScenario.<a class="code hl_variable" href="structFResponseListenScenario.html#aac9b1ddf40c8183677692d86a4eae2ff">word_data2</a>);</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    }</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>}</div>
+</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
+<div class="foldopen" id="foldopen00086" data-start="{" data-end="}">
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno"><a class="line" href="classUQuestInfoWidget.html#a7786ccf2907f4e2d3f3f05da3e04b10f">   86</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUQuestInfoWidget.html#a7786ccf2907f4e2d3f3f05da3e04b10f">UQuestInfoWidget::SetQuestText</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structFWordData.html">FWordData</a>&amp; WordData)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><span class="keyword"></span>{</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUQuestInfoWidget.html#a67249f6ef50bce20d34b11fc7d096a7d">Txt_Message</a>)</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>        <a class="code hl_variable" href="classUQuestInfoWidget.html#a67249f6ef50bce20d34b11fc7d096a7d">Txt_Message</a>-&gt;SetText(FText::FromString(WordData.<a class="code hl_variable" href="structFWordData.html#a0c48a651223fd58eedb624c3837e8b3b">Kor</a>));</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>}</div>
+</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
+<div class="foldopen" id="foldopen00092" data-start="{" data-end="}">
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno"><a class="line" href="classUQuestInfoWidget.html#a993f8f976a7788057f9e7c78d06064d5">   92</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUQuestInfoWidget.html#a993f8f976a7788057f9e7c78d06064d5">UQuestInfoWidget::OnReadResultReceived</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structFResponseReadResult.html">FResponseReadResult</a>&amp; <span class="comment">/*ResponseData*/</span>)</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>{</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    SetVisibility(ESlateVisibility::Collapsed);</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>}</div>
+</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span> </div>
+<div class="foldopen" id="foldopen00097" data-start="{" data-end="}">
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno"><a class="line" href="classUQuestInfoWidget.html#a5437a924b7eb221f6f3fc576ef0fb0e1">   97</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUQuestInfoWidget.html#a5437a924b7eb221f6f3fc576ef0fb0e1">UQuestInfoWidget::OnListenResultReceived</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structFResponseListenResult.html">FResponseListenResult</a>&amp; <span class="comment">/*ResponseData*/</span>)</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>{</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    SetVisibility(ESlateVisibility::Collapsed);</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>}</div>
+</div>
+<div class="ttc" id="aALingoGameState_8h_html"><div class="ttname"><a href="ALingoGameState_8h.html">ALingoGameState.h</a></div></div>
+<div class="ttc" id="aALingoGameState_8h_html_a1a866ca8104ebd47ce462347a6125921"><div class="ttname"><a href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921">EQuestType</a></div><div class="ttdeci">EQuestType</div><div class="ttdef"><b>Definition</b> <a href="ALingoGameState_8h_source.html#l00011">ALingoGameState.h:12</a></div></div>
+<div class="ttc" id="aALingoGameState_8h_html_a1a866ca8104ebd47ce462347a6125921a7a1a5f3e79fdc91edf2f5ead9d66abb4"><div class="ttname"><a href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a7a1a5f3e79fdc91edf2f5ead9d66abb4">EQuestType::Read</a></div><div class="ttdeci">@ Read</div></div>
+<div class="ttc" id="aALingoGameState_8h_html_a1a866ca8104ebd47ce462347a6125921ace6802b46091c31e2ec2363883fe8369"><div class="ttname"><a href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921ace6802b46091c31e2ec2363883fe8369">EQuestType::Listen</a></div><div class="ttdeci">@ Listen</div></div>
 <div class="ttc" id="aALingoPlayerState_8h_html"><div class="ttname"><a href="ALingoPlayerState_8h.html">ALingoPlayerState.h</a></div></div>
 <div class="ttc" id="aEQuestRole_8h_html_af9534ca095b724046bf40abddcbb95e9"><div class="ttname"><a href="EQuestRole_8h.html#af9534ca095b724046bf40abddcbb95e9">EQuestRole</a></div><div class="ttdeci">EQuestRole</div><div class="ttdoc">Read 퀘스트에서 플레이어의 역할을 정의합니다.</div><div class="ttdef"><b>Definition</b> <a href="EQuestRole_8h_source.html#l00005">EQuestRole.h:6</a></div></div>
+<div class="ttc" id="aNetworkData_8h_html"><div class="ttname"><a href="NetworkData_8h.html">NetworkData.h</a></div><div class="ttdoc">네트워크 요청과 응답에 사용되는 구조체 및 설정을 정의합니다.</div></div>
 <div class="ttc" id="aUBroadcastManager_8h_html"><div class="ttname"><a href="UBroadcastManager_8h.html">UBroadcastManager.h</a></div></div>
 <div class="ttc" id="aULingoGameHelper_8h_html"><div class="ttname"><a href="ULingoGameHelper_8h.html">ULingoGameHelper.h</a></div></div>
 <div class="ttc" id="aUQuestInfoWidget_8h_html"><div class="ttname"><a href="UQuestInfoWidget_8h.html">UQuestInfoWidget.h</a></div></div>
 <div class="ttc" id="aclassULingoGameHelper_html_aae5e9443e2249c16219279d75b62cb46"><div class="ttname"><a href="classULingoGameHelper.html#aae5e9443e2249c16219279d75b62cb46">ULingoGameHelper::GetLingoGameState</a></div><div class="ttdeci">static class ALingoGameState * GetLingoGameState(const UObject *WorldContextObject)</div><div class="ttdef"><b>Definition</b> <a href="ULingoGameHelper_8cpp_source.html#l00046">ULingoGameHelper.cpp:46</a></div></div>
-<div class="ttc" id="aclassUQuestInfoWidget_html_a2ff972d3fef3e1ada0c1c674ee615ac5"><div class="ttname"><a href="classUQuestInfoWidget.html#a2ff972d3fef3e1ada0c1c674ee615ac5">UQuestInfoWidget::NativeConstruct</a></div><div class="ttdeci">virtual void NativeConstruct() override</div><div class="ttdef"><b>Definition</b> <a href="UQuestInfoWidget_8cpp_source.html#l00013">UQuestInfoWidget.cpp:13</a></div></div>
-<div class="ttc" id="aclassUQuestInfoWidget_html_a82923dd9fedf779f551931ac05eaea45"><div class="ttname"><a href="classUQuestInfoWidget.html#a82923dd9fedf779f551931ac05eaea45">UQuestInfoWidget::InitQuestInfo</a></div><div class="ttdeci">void InitQuestInfo(EQuestRole QuestRole)</div><div class="ttdef"><b>Definition</b> <a href="UQuestInfoWidget_8cpp_source.html#l00021">UQuestInfoWidget.cpp:21</a></div></div>
-<div class="ttc" id="aclassUQuestInfoWidget_html_ac27c6c6345881f6ec09624ffe63d0014"><div class="ttname"><a href="classUQuestInfoWidget.html#ac27c6c6345881f6ec09624ffe63d0014">UQuestInfoWidget::Txt_Message</a></div><div class="ttdeci">class UTextBlock * Txt_Message</div><div class="ttdef"><b>Definition</b> <a href="UQuestInfoWidget_8h_source.html#l00026">UQuestInfoWidget.h:26</a></div></div>
+<div class="ttc" id="aclassUQuestInfoWidget_html_a19a76cbbdca2592f0fbdfe2903ceb48f"><div class="ttname"><a href="classUQuestInfoWidget.html#a19a76cbbdca2592f0fbdfe2903ceb48f">UQuestInfoWidget::ReadResultDelegateHandle</a></div><div class="ttdeci">FDelegateHandle ReadResultDelegateHandle</div><div class="ttdef"><b>Definition</b> <a href="UQuestInfoWidget_8h_source.html#l00041">UQuestInfoWidget.h:41</a></div></div>
+<div class="ttc" id="aclassUQuestInfoWidget_html_a2ff972d3fef3e1ada0c1c674ee615ac5"><div class="ttname"><a href="classUQuestInfoWidget.html#a2ff972d3fef3e1ada0c1c674ee615ac5">UQuestInfoWidget::NativeConstruct</a></div><div class="ttdeci">virtual void NativeConstruct() override</div><div class="ttdef"><b>Definition</b> <a href="UQuestInfoWidget_8cpp_source.html#l00014">UQuestInfoWidget.cpp:14</a></div></div>
+<div class="ttc" id="aclassUQuestInfoWidget_html_a440a5e029096569a6551cf1d387bac34"><div class="ttname"><a href="classUQuestInfoWidget.html#a440a5e029096569a6551cf1d387bac34">UQuestInfoWidget::NativeDestruct</a></div><div class="ttdeci">virtual void NativeDestruct() override</div><div class="ttdef"><b>Definition</b> <a href="UQuestInfoWidget_8cpp_source.html#l00028">UQuestInfoWidget.cpp:28</a></div></div>
+<div class="ttc" id="aclassUQuestInfoWidget_html_a5437a924b7eb221f6f3fc576ef0fb0e1"><div class="ttname"><a href="classUQuestInfoWidget.html#a5437a924b7eb221f6f3fc576ef0fb0e1">UQuestInfoWidget::OnListenResultReceived</a></div><div class="ttdeci">void OnListenResultReceived(const FResponseListenResult &amp;ResponseData)</div><div class="ttdef"><b>Definition</b> <a href="UQuestInfoWidget_8cpp_source.html#l00097">UQuestInfoWidget.cpp:97</a></div></div>
+<div class="ttc" id="aclassUQuestInfoWidget_html_a67249f6ef50bce20d34b11fc7d096a7d"><div class="ttname"><a href="classUQuestInfoWidget.html#a67249f6ef50bce20d34b11fc7d096a7d">UQuestInfoWidget::Txt_Message</a></div><div class="ttdeci">TObjectPtr&lt; class UTextBlock &gt; Txt_Message</div><div class="ttdef"><b>Definition</b> <a href="UQuestInfoWidget_8h_source.html#l00036">UQuestInfoWidget.h:36</a></div></div>
+<div class="ttc" id="aclassUQuestInfoWidget_html_a7786ccf2907f4e2d3f3f05da3e04b10f"><div class="ttname"><a href="classUQuestInfoWidget.html#a7786ccf2907f4e2d3f3f05da3e04b10f">UQuestInfoWidget::SetQuestText</a></div><div class="ttdeci">void SetQuestText(const FWordData &amp;WordData) const</div><div class="ttdef"><b>Definition</b> <a href="UQuestInfoWidget_8cpp_source.html#l00086">UQuestInfoWidget.cpp:86</a></div></div>
+<div class="ttc" id="aclassUQuestInfoWidget_html_a82923dd9fedf779f551931ac05eaea45"><div class="ttname"><a href="classUQuestInfoWidget.html#a82923dd9fedf779f551931ac05eaea45">UQuestInfoWidget::InitQuestInfo</a></div><div class="ttdeci">void InitQuestInfo(EQuestRole QuestRole)</div><div class="ttdef"><b>Definition</b> <a href="UQuestInfoWidget_8cpp_source.html#l00051">UQuestInfoWidget.cpp:51</a></div></div>
+<div class="ttc" id="aclassUQuestInfoWidget_html_a993f8f976a7788057f9e7c78d06064d5"><div class="ttname"><a href="classUQuestInfoWidget.html#a993f8f976a7788057f9e7c78d06064d5">UQuestInfoWidget::OnReadResultReceived</a></div><div class="ttdeci">void OnReadResultReceived(const FResponseReadResult &amp;ResponseData)</div><div class="ttdef"><b>Definition</b> <a href="UQuestInfoWidget_8cpp_source.html#l00092">UQuestInfoWidget.cpp:92</a></div></div>
+<div class="ttc" id="aclassUQuestInfoWidget_html_a9c14e654d0704b0af75878c9b32e3c56"><div class="ttname"><a href="classUQuestInfoWidget.html#a9c14e654d0704b0af75878c9b32e3c56">UQuestInfoWidget::ListenResultDelegateHandle</a></div><div class="ttdeci">FDelegateHandle ListenResultDelegateHandle</div><div class="ttdef"><b>Definition</b> <a href="UQuestInfoWidget_8h_source.html#l00042">UQuestInfoWidget.h:42</a></div></div>
+<div class="ttc" id="astructFResponseListenResult_html"><div class="ttname"><a href="structFResponseListenResult.html">FResponseListenResult</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00962">NetworkData.h:963</a></div></div>
+<div class="ttc" id="astructFResponseListenScenario_html"><div class="ttname"><a href="structFResponseListenScenario.html">FResponseListenScenario</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00889">NetworkData.h:890</a></div></div>
+<div class="ttc" id="astructFResponseListenScenario_html_a75544300df8dfd58442360cb0348a0f8"><div class="ttname"><a href="structFResponseListenScenario.html#a75544300df8dfd58442360cb0348a0f8">FResponseListenScenario::full_data</a></div><div class="ttdeci">FWordData full_data</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00915">NetworkData.h:915</a></div></div>
+<div class="ttc" id="astructFResponseListenScenario_html_aac9b1ddf40c8183677692d86a4eae2ff"><div class="ttname"><a href="structFResponseListenScenario.html#aac9b1ddf40c8183677692d86a4eae2ff">FResponseListenScenario::word_data2</a></div><div class="ttdeci">FWordData word_data2</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00912">NetworkData.h:912</a></div></div>
+<div class="ttc" id="astructFResponseListenScenario_html_ae5ee14f23d89fc1ef762e21375c2264a"><div class="ttname"><a href="structFResponseListenScenario.html#ae5ee14f23d89fc1ef762e21375c2264a">FResponseListenScenario::word_data1</a></div><div class="ttdeci">FWordData word_data1</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00909">NetworkData.h:909</a></div></div>
+<div class="ttc" id="astructFResponseReadResult_html"><div class="ttname"><a href="structFResponseReadResult.html">FResponseReadResult</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00866">NetworkData.h:867</a></div></div>
+<div class="ttc" id="astructFResponseReadScenario_html"><div class="ttname"><a href="structFResponseReadScenario.html">FResponseReadScenario</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00795">NetworkData.h:796</a></div></div>
+<div class="ttc" id="astructFResponseReadScenario_html_a16e0f6d6581d7c3a0c58dc30a53a48bd"><div class="ttname"><a href="structFResponseReadScenario.html#a16e0f6d6581d7c3a0c58dc30a53a48bd">FResponseReadScenario::word_data1</a></div><div class="ttdeci">FWordData word_data1</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00815">NetworkData.h:815</a></div></div>
+<div class="ttc" id="astructFResponseReadScenario_html_a25de5c38409caf2c1bc4bea5879df661"><div class="ttname"><a href="structFResponseReadScenario.html#a25de5c38409caf2c1bc4bea5879df661">FResponseReadScenario::full_data</a></div><div class="ttdeci">FWordData full_data</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00821">NetworkData.h:821</a></div></div>
+<div class="ttc" id="astructFResponseReadScenario_html_af7a3da38c89b3ecbd239c98e997f21a9"><div class="ttname"><a href="structFResponseReadScenario.html#af7a3da38c89b3ecbd239c98e997f21a9">FResponseReadScenario::word_data2</a></div><div class="ttdeci">FWordData word_data2</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00818">NetworkData.h:818</a></div></div>
+<div class="ttc" id="astructFWordData_html"><div class="ttname"><a href="structFWordData.html">FWordData</a></div><div class="ttdoc">단어 데이터 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00202">NetworkData.h:203</a></div></div>
+<div class="ttc" id="astructFWordData_html_a0c48a651223fd58eedb624c3837e8b3b"><div class="ttname"><a href="structFWordData.html#a0c48a651223fd58eedb624c3837e8b3b">FWordData::Kor</a></div><div class="ttdeci">FString Kor</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00207">NetworkData.h:207</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_55b064ed9f704d76d3805f2fda876350.html">UI</a></li><li class="navelem"><a class="el" href="dir_550f083bbe519bd985f450628c1369b6.html">Private</a></li><li class="navelem"><a class="el" href="UQuestInfoWidget_8cpp.html">UQuestInfoWidget.cpp</a></li>
-    <li class="footer">생성시간 : 월 12월 8 2025 02:10:42, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 월 12월 8 2025 03:56:35, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

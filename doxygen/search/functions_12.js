@@ -10,7 +10,7 @@ var searchData=
   ['uloadingcirclemanager_7',['ULoadingCircleManager',['../classULoadingCircleManager.html#a825d86709b2d6a7ae0be283165ee2d45',1,'ULoadingCircleManager']]],
   ['umainwidget_8',['UMainWidget',['../classUMainWidget.html#ad20ac0a98c69f588c45eead091449dc8',1,'UMainWidget']]],
   ['update_9',['update',['../structFEaseFloatTrack.html#a2a755ece11418576febf4f080d1fa3e4',1,'FEaseFloatTrack::Update()'],['../structFEaseRotatorTrack.html#ad4bae8f8dfb8b1eb8238b7cafc246d10',1,'FEaseRotatorTrack::Update()'],['../structFEaseVectorTrack.html#a17f6f64b6f54e90732e9db6484521503',1,'FEaseVectorTrack::Update()']]],
-  ['updateactivatestate_10',['updateactivatestate',['../classAHolder.html#a873330b8c11f085265456e301186f026',1,'AHolder::UpdateActivateState()'],['../classALuggageHolder.html#a38db790f0dda731912202818138a7892',1,'ALuggageHolder::UpdateActivateState()']]],
+  ['updateactivatestate_10',['updateactivatestate',['../classAHolder.html#a873330b8c11f085265456e301186f026',1,'AHolder::UpdateActivateState()'],['../classALuggageHolder.html#a38db790f0dda731912202818138a7892',1,'ALuggageHolder::UpdateActivateState()'],['../classAFoodHolder.html#a6ae24d4203c8538e43b6c62e0a1ede9e',1,'AFoodHolder::UpdateActivateState()']]],
   ['updateanimation_11',['UpdateAnimation',['../classUBasePopup.html#a830a08b15d00e418f351f096fc5a8790',1,'UBasePopup']]],
   ['updatedesc_12',['UpdateDesc',['../classUInteractWidget.html#aa2c1329a6b08456dcaecf75c44d0ac7e',1,'UInteractWidget']]],
   ['updatedoor_13',['UpdateDoor',['../classADoor.html#a4ba5b25cac1027264fd35252ab18ea12',1,'ADoor']]],

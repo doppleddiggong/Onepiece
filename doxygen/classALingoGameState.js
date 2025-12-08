@@ -2,6 +2,7 @@ var classALingoGameState =
 [
     [ "ALingoGameState", "classALingoGameState.html#ad11efa82f3ac7127c29c98502984a942", null ],
     [ "DecreaseMissionTimer", "classALingoGameState.html#a6cc7692e2e0a6465e861c1f894b59f91", null ],
+    [ "GetCurrentQuestType", "classALingoGameState.html#a61f2c80cfba92b780505415a4bf01a36", null ],
     [ "GetLifetimeReplicatedProps", "classALingoGameState.html#aa74b975d34544b911ecaedba36fce70a", null ],
     [ "GetListenScenarioData", "classALingoGameState.html#a05dda129c32a08fc3432424f612ce50b", null ],
     [ "GetReadScenarioData", "classALingoGameState.html#ad05acb80ff93078c77995753905def43", null ],

@@ -50,5 +50,5 @@ var searchData=
   ['currentstepindex_47',['CurrentStepIndex',['../classASpeakStageActor.html#a73c3fe46e98225cc9d528ce281e9e2de',1,'ASpeakStageActor']]],
   ['currentvelocity_48',['CurrentVelocity',['../classATrolley.html#ad54df8fa12d857d1507ede76abb9dda5',1,'ATrolley']]],
   ['currsessionname_49',['currSessionName',['../classULingoGameInstance.html#a17232e7c2128d3f8af2561f649b27473',1,'ULingoGameInstance']]],
-  ['curtarget_50',['curtarget',['../classAHolder.html#ac76a7839abbc71619286e50ba8ded371',1,'AHolder::CurTarget'],['../classALuggageHolder.html#aa3217f0b4f3c24098a9c4cee7826f881',1,'ALuggageHolder::CurTarget']]]
+  ['curtarget_50',['curtarget',['../classAHolder.html#ac76a7839abbc71619286e50ba8ded371',1,'AHolder::CurTarget'],['../classALuggageHolder.html#aa3217f0b4f3c24098a9c4cee7826f881',1,'ALuggageHolder::CurTarget'],['../classAFoodHolder.html#a1fa5d938a8ad639127ea47320bacb223',1,'AFoodHolder::CurTarget']]]
 ];

@@ -1,9 +1,7 @@
 var classAOrderKiosk =
 [
     [ "AOrderKiosk", "classAOrderKiosk.html#ada844ee932ebbd0bb0a7d4bf72a19c59", null ],
-    [ "BeginOverlap", "classAOrderKiosk.html#a8f2dbd1d784afe7d21bb32f3f0b85634", null ],
     [ "BeginPlay", "classAOrderKiosk.html#ad84dcabb2b97388a3fd4deb93b94309f", null ],
-    [ "EndOverlap", "classAOrderKiosk.html#a591ab6d1d35ac5ff66d229d1ddecad14", null ],
     [ "FindDropperByIdx", "classAOrderKiosk.html#aaab2f5968da556e2afe6fae9b0ef0c5c", null ],
     [ "GetLifetimeReplicatedProps", "classAOrderKiosk.html#a8cd610339619fd825fb09c0cd378d351", null ],
     [ "OnInteractionTriggered", "classAOrderKiosk.html#a00de3d34c912237f3a4541a12fb2cffa", null ],
