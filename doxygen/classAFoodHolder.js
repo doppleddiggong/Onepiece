@@ -1,0 +1,27 @@
+var classAFoodHolder =
+[
+    [ "AFoodHolder", "classAFoodHolder.html#ae9d05f11b8bd8e0caa568aa5e4980981", null ],
+    [ "BeginPlay", "classAFoodHolder.html#a565e6ccdb08bb878bd88d8eb27dee677", null ],
+    [ "CheckFood", "classAFoodHolder.html#a13aeb1948bac4f9ca7d91da7e3690625", null ],
+    [ "CheckLuggage", "classAFoodHolder.html#a8712aaa87ef698b1b3be793be3a982c4", null ],
+    [ "GetLifetimeReplicatedProps", "classAFoodHolder.html#a0e4bd580ab5a2b21728aa6de57c76d92", null ],
+    [ "OnActivate", "classAFoodHolder.html#ae7a498666e28adf0fdc83d1c5f69a1fd", null ],
+    [ "OnBoxOverlapBegin", "classAFoodHolder.html#a005a36c0fae7d506db1ebbcb26405162", null ],
+    [ "OnFoodBoxOverlapBegin", "classAFoodHolder.html#a8d48dbf197d3544ab3763d1a7e730859", null ],
+    [ "OnRep_CurTarget", "classAFoodHolder.html#a0bcbffbad0b12f5e7bf1932184eb377a", null ],
+    [ "OnRep_IsActivated", "classAFoodHolder.html#aa10d0340057ef94c2239d1d143199178", null ],
+    [ "SetAnswerData", "classAFoodHolder.html#ae7f0007e85f03370d09cc8fdfc5c51f4", null ],
+    [ "SetAnswerFoodIndex", "classAFoodHolder.html#afc12c10cd0894b7797a7141342186450", null ],
+    [ "Tick", "classAFoodHolder.html#a317fb0fd01b2c8603383c023d028ee98", null ],
+    [ "UpdateActivateState", "classAFoodHolder.html#a873330b8c11f085265456e301186f026", null ],
+    [ "ActivatedHeightOffset", "classAFoodHolder.html#ab6843abcaf5b577e79f7cd2759add9a7", null ],
+    [ "AnswerColorIdx", "classAFoodHolder.html#a4ff9df4654d1cdfc7ec42fd47aaa8d24", null ],
+    [ "AnswerFoodIndex", "classAFoodHolder.html#a959b6b9f009d30337999734ec1abbc36", null ],
+    [ "AnswerPatternIdx", "classAFoodHolder.html#a0f1f43f56fc099a13aa12ff86326221b", null ],
+    [ "bIsActivated", "classAFoodHolder.html#ad738de032520334305505a746e524aa4", null ],
+    [ "BoxCollision", "classAFoodHolder.html#a79ef290f8e08c63ab1f950556bd79438", null ],
+    [ "CurTarget", "classAFoodHolder.html#ac76a7839abbc71619286e50ba8ded371", null ],
+    [ "HoldPos", "classAFoodHolder.html#aff5e475f35d6b6a578e56ce0a49eb0db", null ],
+    [ "MeshComponent", "classAFoodHolder.html#aff28881f4a9894326ad224deb836bfac", null ],
+    [ "RotationSpeed", "classAFoodHolder.html#aa08fb8d6c45760bd7a4368ddb314fd03", null ]
+];

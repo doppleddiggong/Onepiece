@@ -34,7 +34,7 @@ var searchData=
   ['spacing_5fokcancel_31',['Spacing_OkCancel',['../classUPopup__MsgBox.html#ab65bc789a2b73ef6c373cba0054a0a81',1,'UPopup_MsgBox']]],
   ['spawnclass_32',['SpawnClass',['../classADropper.html#a38cf91439f0672dae16e4c62a8c9b3ed',1,'ADropper']]],
   ['spawnidx_33',['SpawnIdx',['../classAluggage.html#a880c239655a5b0ad93ba5fa26bcf49c4',1,'Aluggage']]],
-  ['spawnindex_34',['SpawnIndex',['../structFLuggageData.html#aeae031964304a2894f32465d55142dca',1,'FLuggageData']]],
+  ['spawnindex_34',['spawnindex',['../structFLuggageData.html#aeae031964304a2894f32465d55142dca',1,'FLuggageData::SpawnIndex'],['../structFFoodData.html#a530a43c4802eb7760ce70ed908652df8',1,'FFoodData::SpawnIndex']]],
   ['spawnpos_35',['SpawnPos',['../classADropper.html#a77f77fd06f73abc732ad61d76e69e923',1,'ADropper']]],
   ['spawntime_36',['SpawnTime',['../classALuggageManager.html#a7f8af2d22a94043e3451c571ad4edf13',1,'ALuggageManager']]],
   ['spawntimerhandle_37',['SpawnTimerHandle',['../classALuggageManager.html#a4477d2f48403c66735b982b47c43e3e1',1,'ALuggageManager']]],

@@ -118,7 +118,7 @@ $(document).ready(function(){initNavTree('classAHolder.html',''); initResizable(
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classAHolder__inherit__graph.svg" width="232" height="550"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classAHolder__inherit__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="closed.png" alt="+"/> AHolder에 대한 협력 다이어그램:</div>
@@ -154,6 +154,8 @@ Protected 멤버 함수</h2></td></tr>
 <tr class="separator:a0e4bd580ab5a2b21728aa6de57c76d92"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a317fb0fd01b2c8603383c023d028ee98" id="r_a317fb0fd01b2c8603383c023d028ee98"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAHolder.html#a317fb0fd01b2c8603383c023d028ee98">Tick</a> (float DeltaTime) override</td></tr>
 <tr class="separator:a317fb0fd01b2c8603383c023d028ee98"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a873330b8c11f085265456e301186f026" id="r_a873330b8c11f085265456e301186f026"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAHolder.html#a873330b8c11f085265456e301186f026">UpdateActivateState</a> (bool State)</td></tr>
+<tr class="separator:a873330b8c11f085265456e301186f026"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected 속성</h2></td></tr>
@@ -180,8 +182,6 @@ Private 멤버 함수</h2></td></tr>
 <tr class="separator:a0bcbffbad0b12f5e7bf1932184eb377a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa10d0340057ef94c2239d1d143199178" id="r_aa10d0340057ef94c2239d1d143199178"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAHolder.html#aa10d0340057ef94c2239d1d143199178">OnRep_IsActivated</a> ()</td></tr>
 <tr class="separator:aa10d0340057ef94c2239d1d143199178"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a873330b8c11f085265456e301186f026" id="r_a873330b8c11f085265456e301186f026"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAHolder.html#a873330b8c11f085265456e301186f026">UpdateActivateState</a> (bool State)</td></tr>
-<tr class="separator:a873330b8c11f085265456e301186f026"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">상세한 설명</h2>
 <div class="textblock">
@@ -228,11 +228,11 @@ Private 멤버 함수</h2></td></tr>
 <div class="line"><span class="lineno">   37</span>    <a class="code hl_variable" href="classAHolder.html#aff5e475f35d6b6a578e56ce0a49eb0db">HoldPos</a> = CreateDefaultSubobject&lt;USceneComponent&gt;(TEXT(<span class="stringliteral">&quot;HoldPos&quot;</span>));</div>
 <div class="line"><span class="lineno">   38</span>    <a class="code hl_variable" href="classAHolder.html#aff5e475f35d6b6a578e56ce0a49eb0db">HoldPos</a>-&gt;SetupAttachment(<a class="code hl_variable" href="classAHolder.html#aff28881f4a9894326ad224deb836bfac">MeshComponent</a>);</div>
 <div class="line"><span class="lineno">   39</span>}</div>
-<div class="ttc" id="aclassAHolder_html_a79ef290f8e08c63ab1f950556bd79438"><div class="ttname"><a href="classAHolder.html#a79ef290f8e08c63ab1f950556bd79438">AHolder::BoxCollision</a></div><div class="ttdeci">TObjectPtr&lt; class UBoxComponent &gt; BoxCollision</div><div class="ttdef"><b>Definition</b> <a href="AHolder_8h_source.html#l00052">AHolder.h:52</a></div></div>
-<div class="ttc" id="aclassAHolder_html_aff28881f4a9894326ad224deb836bfac"><div class="ttname"><a href="classAHolder.html#aff28881f4a9894326ad224deb836bfac">AHolder::MeshComponent</a></div><div class="ttdeci">TObjectPtr&lt; class USkeletalMeshComponent &gt; MeshComponent</div><div class="ttdef"><b>Definition</b> <a href="AHolder_8h_source.html#l00055">AHolder.h:55</a></div></div>
-<div class="ttc" id="aclassAHolder_html_aff5e475f35d6b6a578e56ce0a49eb0db"><div class="ttname"><a href="classAHolder.html#aff5e475f35d6b6a578e56ce0a49eb0db">AHolder::HoldPos</a></div><div class="ttdeci">TObjectPtr&lt; class USceneComponent &gt; HoldPos</div><div class="ttdef"><b>Definition</b> <a href="AHolder_8h_source.html#l00058">AHolder.h:58</a></div></div>
+<div class="ttc" id="aclassAHolder_html_a79ef290f8e08c63ab1f950556bd79438"><div class="ttname"><a href="classAHolder.html#a79ef290f8e08c63ab1f950556bd79438">AHolder::BoxCollision</a></div><div class="ttdeci">TObjectPtr&lt; class UBoxComponent &gt; BoxCollision</div><div class="ttdef"><b>Definition</b> <a href="AHolder_8h_source.html#l00053">AHolder.h:53</a></div></div>
+<div class="ttc" id="aclassAHolder_html_aff28881f4a9894326ad224deb836bfac"><div class="ttname"><a href="classAHolder.html#aff28881f4a9894326ad224deb836bfac">AHolder::MeshComponent</a></div><div class="ttdeci">TObjectPtr&lt; class USkeletalMeshComponent &gt; MeshComponent</div><div class="ttdef"><b>Definition</b> <a href="AHolder_8h_source.html#l00056">AHolder.h:56</a></div></div>
+<div class="ttc" id="aclassAHolder_html_aff5e475f35d6b6a578e56ce0a49eb0db"><div class="ttname"><a href="classAHolder.html#aff5e475f35d6b6a578e56ce0a49eb0db">AHolder::HoldPos</a></div><div class="ttdeci">TObjectPtr&lt; class USceneComponent &gt; HoldPos</div><div class="ttdef"><b>Definition</b> <a href="AHolder_8h_source.html#l00059">AHolder.h:59</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="AHolder_8h_source.html#l00052">BoxCollision</a>, <a class="el" href="AHolder_8h_source.html#l00058">HoldPos</a>, <a class="el" href="AHolder_8h_source.html#l00055">MeshComponent</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="AHolder_8h_source.html#l00053">BoxCollision</a>, <a class="el" href="AHolder_8h_source.html#l00059">HoldPos</a>, <a class="el" href="AHolder_8h_source.html#l00056">MeshComponent</a>.</p>
 
 </div>
 </div>
@@ -260,6 +260,8 @@ Private 멤버 함수</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p><a class="el" href="classAFoodHolder.html#a565e6ccdb08bb878bd88d8eb27dee677">AFoodHolder</a>에서 재구현되었습니다.</p>
+
 <p class="definition"><a class="el" href="AHolder_8cpp_source.html">AHolder.cpp</a> 파일의 <a class="el" href="AHolder_8cpp_source.html#l00041">41</a> 번째 라인에서 정의되었습니다.</p>
 <div class="fragment"><div class="line"><span class="lineno">   42</span>{</div>
 <div class="line"><span class="lineno">   43</span>    Super::BeginPlay();</div>
@@ -272,13 +274,13 @@ Private 멤버 함수</h2></td></tr>
 <div class="ttc" id="aclassAHolder_html_a005a36c0fae7d506db1ebbcb26405162"><div class="ttname"><a href="classAHolder.html#a005a36c0fae7d506db1ebbcb26405162">AHolder::OnBoxOverlapBegin</a></div><div class="ttdeci">void OnBoxOverlapBegin(UPrimitiveComponent *OverlappedComponent, AActor *OtherActor, UPrimitiveComponent *OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult &amp;SweepResult)</div><div class="ttdef"><b>Definition</b> <a href="AHolder_8cpp_source.html#l00097">AHolder.cpp:97</a></div></div>
 <div class="ttc" id="aclassAHolder_html_a873330b8c11f085265456e301186f026"><div class="ttname"><a href="classAHolder.html#a873330b8c11f085265456e301186f026">AHolder::UpdateActivateState</a></div><div class="ttdeci">void UpdateActivateState(bool State)</div><div class="ttdef"><b>Definition</b> <a href="AHolder_8cpp_source.html#l00183">AHolder.cpp:183</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="AHolder_8h_source.html#l00052">BoxCollision</a>, <a class="el" href="AHolder_8cpp_source.html#l00097">OnBoxOverlapBegin()</a>, <a class="el" href="AHolder_8cpp_source.html#l00183">UpdateActivateState()</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="AHolder_8h_source.html#l00053">BoxCollision</a>, <a class="el" href="AHolder_8cpp_source.html#l00097">OnBoxOverlapBegin()</a>, <a class="el" href="AHolder_8cpp_source.html#l00183">UpdateActivateState()</a>.</p>
 <div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-2-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classAHolder_a330b9322596c920cdd93986f73b1cf68_cgraph.svg" width="100%" height="420"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classAHolder_a330b9322596c920cdd93986f73b1cf68_cgraph.svg" width="100%" height="426"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -356,13 +358,13 @@ Private 멤버 함수</h2></td></tr>
 <div class="line"><span class="lineno">  180</span>    <span class="keywordflow">return</span> bSuccess;</div>
 <div class="line"><span class="lineno">  181</span>}</div>
 <div class="ttc" id="aGameLogging_8h_html_a9998c8beb11a6bad6ffada2e701fc0cf"><div class="ttname"><a href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a></div><div class="ttdeci">#define PRINTLOG(fmt,...)</div><div class="ttdef"><b>Definition</b> <a href="GameLogging_8h_source.html#l00030">GameLogging.h:30</a></div></div>
-<div class="ttc" id="aclassAHolder_html_a0f1f43f56fc099a13aa12ff86326221b"><div class="ttname"><a href="classAHolder.html#a0f1f43f56fc099a13aa12ff86326221b">AHolder::AnswerPatternIdx</a></div><div class="ttdeci">int32 AnswerPatternIdx</div><div class="ttdef"><b>Definition</b> <a href="AHolder_8h_source.html#l00078">AHolder.h:78</a></div></div>
-<div class="ttc" id="aclassAHolder_html_a4ff9df4654d1cdfc7ec42fd47aaa8d24"><div class="ttname"><a href="classAHolder.html#a4ff9df4654d1cdfc7ec42fd47aaa8d24">AHolder::AnswerColorIdx</a></div><div class="ttdeci">int32 AnswerColorIdx</div><div class="ttdef"><b>Definition</b> <a href="AHolder_8h_source.html#l00077">AHolder.h:77</a></div></div>
-<div class="ttc" id="aclassAHolder_html_ab6843abcaf5b577e79f7cd2759add9a7"><div class="ttname"><a href="classAHolder.html#ab6843abcaf5b577e79f7cd2759add9a7">AHolder::ActivatedHeightOffset</a></div><div class="ttdeci">float ActivatedHeightOffset</div><div class="ttdef"><b>Definition</b> <a href="AHolder_8h_source.html#l00071">AHolder.h:71</a></div></div>
-<div class="ttc" id="aclassAHolder_html_ac76a7839abbc71619286e50ba8ded371"><div class="ttname"><a href="classAHolder.html#ac76a7839abbc71619286e50ba8ded371">AHolder::CurTarget</a></div><div class="ttdeci">TObjectPtr&lt; class AActor &gt; CurTarget</div><div class="ttdef"><b>Definition</b> <a href="AHolder_8h_source.html#l00063">AHolder.h:63</a></div></div>
-<div class="ttc" id="aclassAHolder_html_ad738de032520334305505a746e524aa4"><div class="ttname"><a href="classAHolder.html#ad738de032520334305505a746e524aa4">AHolder::bIsActivated</a></div><div class="ttdeci">bool bIsActivated</div><div class="ttdef"><b>Definition</b> <a href="AHolder_8h_source.html#l00067">AHolder.h:67</a></div></div>
+<div class="ttc" id="aclassAHolder_html_a0f1f43f56fc099a13aa12ff86326221b"><div class="ttname"><a href="classAHolder.html#a0f1f43f56fc099a13aa12ff86326221b">AHolder::AnswerPatternIdx</a></div><div class="ttdeci">int32 AnswerPatternIdx</div><div class="ttdef"><b>Definition</b> <a href="AHolder_8h_source.html#l00079">AHolder.h:79</a></div></div>
+<div class="ttc" id="aclassAHolder_html_a4ff9df4654d1cdfc7ec42fd47aaa8d24"><div class="ttname"><a href="classAHolder.html#a4ff9df4654d1cdfc7ec42fd47aaa8d24">AHolder::AnswerColorIdx</a></div><div class="ttdeci">int32 AnswerColorIdx</div><div class="ttdef"><b>Definition</b> <a href="AHolder_8h_source.html#l00078">AHolder.h:78</a></div></div>
+<div class="ttc" id="aclassAHolder_html_ab6843abcaf5b577e79f7cd2759add9a7"><div class="ttname"><a href="classAHolder.html#ab6843abcaf5b577e79f7cd2759add9a7">AHolder::ActivatedHeightOffset</a></div><div class="ttdeci">float ActivatedHeightOffset</div><div class="ttdef"><b>Definition</b> <a href="AHolder_8h_source.html#l00072">AHolder.h:72</a></div></div>
+<div class="ttc" id="aclassAHolder_html_ac76a7839abbc71619286e50ba8ded371"><div class="ttname"><a href="classAHolder.html#ac76a7839abbc71619286e50ba8ded371">AHolder::CurTarget</a></div><div class="ttdeci">TObjectPtr&lt; class AActor &gt; CurTarget</div><div class="ttdef"><b>Definition</b> <a href="AHolder_8h_source.html#l00064">AHolder.h:64</a></div></div>
+<div class="ttc" id="aclassAHolder_html_ad738de032520334305505a746e524aa4"><div class="ttname"><a href="classAHolder.html#ad738de032520334305505a746e524aa4">AHolder::bIsActivated</a></div><div class="ttdeci">bool bIsActivated</div><div class="ttdef"><b>Definition</b> <a href="AHolder_8h_source.html#l00068">AHolder.h:68</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="AHolder_8h_source.html#l00071">ActivatedHeightOffset</a>, <a class="el" href="AHolder_8h_source.html#l00077">AnswerColorIdx</a>, <a class="el" href="AHolder_8h_source.html#l00078">AnswerPatternIdx</a>, <a class="el" href="AHolder_8h_source.html#l00067">bIsActivated</a>, <a class="el" href="luggage_8h_source.html#l00094">Aluggage::ColorIdx</a>, <a class="el" href="AHolder_8h_source.html#l00063">CurTarget</a>, <a class="el" href="AHolder_8h_source.html#l00058">HoldPos</a>, <a class="el" href="luggage_8h_source.html#l00097">Aluggage::PatternIdx</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>, <a class="el" href="luggage_8cpp_source.html#l00246">Aluggage::SetAllCollision()</a>, <a class="el" href="AHolder_8cpp_source.html#l00183">UpdateActivateState()</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="AHolder_8h_source.html#l00072">ActivatedHeightOffset</a>, <a class="el" href="AHolder_8h_source.html#l00078">AnswerColorIdx</a>, <a class="el" href="AHolder_8h_source.html#l00079">AnswerPatternIdx</a>, <a class="el" href="AHolder_8h_source.html#l00068">bIsActivated</a>, <a class="el" href="luggage_8h_source.html#l00103">Aluggage::ColorIdx</a>, <a class="el" href="AHolder_8h_source.html#l00064">CurTarget</a>, <a class="el" href="AHolder_8h_source.html#l00059">HoldPos</a>, <a class="el" href="luggage_8h_source.html#l00106">Aluggage::PatternIdx</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>, <a class="el" href="luggage_8cpp_source.html#l00321">Aluggage::SetAllCollision()</a>, <a class="el" href="AHolder_8cpp_source.html#l00183">UpdateActivateState()</a>.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AHolder_8cpp_source.html#l00097">OnBoxOverlapBegin()</a>.</p>
 <div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -370,7 +372,7 @@ Private 멤버 함수</h2></td></tr>
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-3-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classAHolder_a8712aaa87ef698b1b3be793be3a982c4_cgraph.svg" width="454" height="86"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classAHolder_a8712aaa87ef698b1b3be793be3a982c4_cgraph.svg" width="100%" height="370"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 <div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-4-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
@@ -415,7 +417,7 @@ Private 멤버 함수</h2></td></tr>
 <div class="line"><span class="lineno">   70</span>}</div>
 <div class="ttc" id="aclassAHolder_html"><div class="ttname"><a href="classAHolder.html">AHolder</a></div><div class="ttdef"><b>Definition</b> <a href="AHolder_8h_source.html#l00010">AHolder.h:11</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="AHolder_8h_source.html#l00067">bIsActivated</a>, <a class="el" href="AHolder_8h_source.html#l00063">CurTarget</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="AHolder_8h_source.html#l00068">bIsActivated</a>, <a class="el" href="AHolder_8h_source.html#l00064">CurTarget</a>.</p>
 
 </div>
 </div>
@@ -435,13 +437,13 @@ Private 멤버 함수</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AHolder_8cpp_source.html#l00097">OnBoxOverlapBegin()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AHolder_8cpp_source.html#l00097">OnBoxOverlapBegin()</a>, <a class="el" href="FoodHolder_8cpp_source.html#l00038">AFoodHolder::OnFoodBoxOverlapBegin()</a>.</p>
 <div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-5-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-5-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-5-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classAHolder_ae7a498666e28adf0fdc83d1c5f69a1fd_icgraph.svg" width="622" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classAHolder_ae7a498666e28adf0fdc83d1c5f69a1fd_icgraph.svg" width="100%" height="376"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -540,7 +542,7 @@ Private 멤버 함수</h2></td></tr>
 <div class="ttc" id="anamespaceGameMessage_html"><div class="ttname"><a href="namespaceGameMessage.html">GameMessage</a></div><div class="ttdef"><b>Definition</b> <a href="Onepiece_8h_source.html#l00029">Onepiece.h:30</a></div></div>
 <div class="ttc" id="anamespaceGameMessage_html_a86e12002bb715fd26393367cd22a64d1"><div class="ttname"><a href="namespaceGameMessage.html#a86e12002bb715fd26393367cd22a64d1">GameMessage::Holder_Success</a></div><div class="ttdeci">static const FString Holder_Success</div><div class="ttdef"><b>Definition</b> <a href="Onepiece_8h_source.html#l00049">Onepiece.h:49</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="AHolder_8h_source.html#l00067">bIsActivated</a>, <a class="el" href="AHolder_8cpp_source.html#l00134">CheckLuggage()</a>, <a class="el" href="ANetworkBroadcastActor_8cpp_source.html#l00028">ANetworkBroadcastActor::Get()</a>, <a class="el" href="Onepiece_8h_source.html#l00050">GameMessage::Holder_Fail</a>, <a class="el" href="Onepiece_8h_source.html#l00049">GameMessage::Holder_Success</a>, <a class="el" href="classAHolder.html#ae7a498666e28adf0fdc83d1c5f69a1fd">OnActivate()</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="AHolder_8h_source.html#l00068">bIsActivated</a>, <a class="el" href="AHolder_8cpp_source.html#l00134">CheckLuggage()</a>, <a class="el" href="ANetworkBroadcastActor_8cpp_source.html#l00028">ANetworkBroadcastActor::Get()</a>, <a class="el" href="Onepiece_8h_source.html#l00050">GameMessage::Holder_Fail</a>, <a class="el" href="Onepiece_8h_source.html#l00049">GameMessage::Holder_Success</a>, <a class="el" href="classAHolder.html#ae7a498666e28adf0fdc83d1c5f69a1fd">OnActivate()</a>.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AHolder_8cpp_source.html#l00041">BeginPlay()</a>.</p>
 <div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -548,7 +550,7 @@ Private 멤버 함수</h2></td></tr>
 <div id="dynsection-6-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-6-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classAHolder_a005a36c0fae7d506db1ebbcb26405162_cgraph.svg" width="100%" height="419"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classAHolder_a005a36c0fae7d506db1ebbcb26405162_cgraph.svg" width="100%" height="425"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 <div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-7-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
@@ -597,7 +599,7 @@ Private 멤버 함수</h2></td></tr>
 <div class="line"><span class="lineno">   89</span>}</div>
 <div class="ttc" id="aclassAluggage_html"><div class="ttname"><a href="classAluggage.html">Aluggage</a></div><div class="ttdoc">상호작용 가능한 수하물 액터</div><div class="ttdef"><b>Definition</b> <a href="luggage_8h_source.html#l00014">luggage.h:15</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="AHolder_8h_source.html#l00063">CurTarget</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="AHolder_8h_source.html#l00064">CurTarget</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>.</p>
 
 </div>
 </div>
@@ -630,7 +632,7 @@ Private 멤버 함수</h2></td></tr>
 <div class="line"><span class="lineno">   75</span>    <a class="code hl_function" href="classAHolder.html#a873330b8c11f085265456e301186f026">UpdateActivateState</a>(<a class="code hl_variable" href="classAHolder.html#ad738de032520334305505a746e524aa4">bIsActivated</a>);</div>
 <div class="line"><span class="lineno">   76</span>}</div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="AHolder_8h_source.html#l00067">bIsActivated</a>, <a class="el" href="AHolder_8cpp_source.html#l00183">UpdateActivateState()</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="AHolder_8h_source.html#l00068">bIsActivated</a>, <a class="el" href="AHolder_8cpp_source.html#l00183">UpdateActivateState()</a>.</p>
 <div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-8-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-8-summary" class="dynsummary" style="display:block;">
@@ -673,7 +675,7 @@ Private 멤버 함수</h2></td></tr>
 <div class="line"><span class="lineno">   94</span>    this-&gt;<a class="code hl_variable" href="classAHolder.html#a0f1f43f56fc099a13aa12ff86326221b">AnswerPatternIdx</a> = InAnswerPatternIdx;</div>
 <div class="line"><span class="lineno">   95</span>}</div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="AHolder_8h_source.html#l00077">AnswerColorIdx</a>, <a class="el" href="AHolder_8h_source.html#l00078">AnswerPatternIdx</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="AHolder_8h_source.html#l00078">AnswerColorIdx</a>, <a class="el" href="AHolder_8h_source.html#l00079">AnswerPatternIdx</a>.</p>
 
 </div>
 </div>
@@ -713,9 +715,9 @@ Private 멤버 함수</h2></td></tr>
 <div class="line"><span class="lineno">   60</span>        <a class="code hl_variable" href="classAHolder.html#ac76a7839abbc71619286e50ba8ded371">CurTarget</a>-&gt;SetActorRotation(CurrentRotation);</div>
 <div class="line"><span class="lineno">   61</span>    }</div>
 <div class="line"><span class="lineno">   62</span>}</div>
-<div class="ttc" id="aclassAHolder_html_aa08fb8d6c45760bd7a4368ddb314fd03"><div class="ttname"><a href="classAHolder.html#aa08fb8d6c45760bd7a4368ddb314fd03">AHolder::RotationSpeed</a></div><div class="ttdeci">float RotationSpeed</div><div class="ttdef"><b>Definition</b> <a href="AHolder_8h_source.html#l00074">AHolder.h:74</a></div></div>
+<div class="ttc" id="aclassAHolder_html_aa08fb8d6c45760bd7a4368ddb314fd03"><div class="ttname"><a href="classAHolder.html#aa08fb8d6c45760bd7a4368ddb314fd03">AHolder::RotationSpeed</a></div><div class="ttdeci">float RotationSpeed</div><div class="ttdef"><b>Definition</b> <a href="AHolder_8h_source.html#l00075">AHolder.h:75</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="AHolder_8h_source.html#l00067">bIsActivated</a>, <a class="el" href="AHolder_8h_source.html#l00063">CurTarget</a>, <a class="el" href="AHolder_8h_source.html#l00074">RotationSpeed</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="AHolder_8h_source.html#l00068">bIsActivated</a>, <a class="el" href="AHolder_8h_source.html#l00064">CurTarget</a>, <a class="el" href="AHolder_8h_source.html#l00075">RotationSpeed</a>.</p>
 
 </div>
 </div>
@@ -738,7 +740,7 @@ Private 멤버 함수</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -757,15 +759,15 @@ Private 멤버 함수</h2></td></tr>
 <div class="line"><span class="lineno">  194</span>    }</div>
 <div class="line"><span class="lineno">  195</span>}</div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="AHolder_8h_source.html#l00055">MeshComponent</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="AHolder_8h_source.html#l00056">MeshComponent</a>.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AHolder_8cpp_source.html#l00041">BeginPlay()</a>, <a class="el" href="AHolder_8cpp_source.html#l00134">CheckLuggage()</a>, <a class="el" href="AHolder_8cpp_source.html#l00072">OnRep_IsActivated()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AHolder_8cpp_source.html#l00041">BeginPlay()</a>, <a class="el" href="FoodHolder_8cpp_source.html#l00075">AFoodHolder::CheckFood()</a>, <a class="el" href="AHolder_8cpp_source.html#l00134">CheckLuggage()</a>, <a class="el" href="AHolder_8cpp_source.html#l00072">OnRep_IsActivated()</a>.</p>
 <div id="dynsection-9" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-9-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-9-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-9-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classAHolder_a873330b8c11f085265456e301186f026_icgraph.svg" width="100%" height="383"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classAHolder_a873330b8c11f085265456e301186f026_icgraph.svg" width="100%" height="440"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -791,9 +793,9 @@ Private 멤버 함수</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="AHolder_8h_source.html">AHolder.h</a> 파일의 <a class="el" href="AHolder_8h_source.html#l00071">71</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="AHolder_8h_source.html">AHolder.h</a> 파일의 <a class="el" href="AHolder_8h_source.html#l00072">72</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AHolder_8cpp_source.html#l00134">CheckLuggage()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="FoodHolder_8cpp_source.html#l00075">AFoodHolder::CheckFood()</a>, <a class="el" href="AHolder_8cpp_source.html#l00134">CheckLuggage()</a>.</p>
 
 </div>
 </div>
@@ -817,7 +819,7 @@ Private 멤버 함수</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="AHolder_8h_source.html">AHolder.h</a> 파일의 <a class="el" href="AHolder_8h_source.html#l00077">77</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="AHolder_8h_source.html">AHolder.h</a> 파일의 <a class="el" href="AHolder_8h_source.html#l00078">78</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AHolder_8cpp_source.html#l00134">CheckLuggage()</a>, <a class="el" href="AHolder_8cpp_source.html#l00091">SetAnswerData()</a>.</p>
 
@@ -843,7 +845,7 @@ Private 멤버 함수</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="AHolder_8h_source.html">AHolder.h</a> 파일의 <a class="el" href="AHolder_8h_source.html#l00078">78</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="AHolder_8h_source.html">AHolder.h</a> 파일의 <a class="el" href="AHolder_8h_source.html#l00079">79</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AHolder_8cpp_source.html#l00134">CheckLuggage()</a>, <a class="el" href="AHolder_8cpp_source.html#l00091">SetAnswerData()</a>.</p>
 
@@ -869,9 +871,9 @@ Private 멤버 함수</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="AHolder_8h_source.html">AHolder.h</a> 파일의 <a class="el" href="AHolder_8h_source.html#l00067">67</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="AHolder_8h_source.html">AHolder.h</a> 파일의 <a class="el" href="AHolder_8h_source.html#l00068">68</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AHolder_8cpp_source.html#l00134">CheckLuggage()</a>, <a class="el" href="AHolder_8cpp_source.html#l00064">GetLifetimeReplicatedProps()</a>, <a class="el" href="AHolder_8cpp_source.html#l00097">OnBoxOverlapBegin()</a>, <a class="el" href="AHolder_8cpp_source.html#l00072">OnRep_IsActivated()</a>, <a class="el" href="AHolder_8cpp_source.html#l00051">Tick()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="FoodHolder_8cpp_source.html#l00075">AFoodHolder::CheckFood()</a>, <a class="el" href="AHolder_8cpp_source.html#l00134">CheckLuggage()</a>, <a class="el" href="AHolder_8cpp_source.html#l00064">GetLifetimeReplicatedProps()</a>, <a class="el" href="AHolder_8cpp_source.html#l00097">OnBoxOverlapBegin()</a>, <a class="el" href="FoodHolder_8cpp_source.html#l00038">AFoodHolder::OnFoodBoxOverlapBegin()</a>, <a class="el" href="AHolder_8cpp_source.html#l00072">OnRep_IsActivated()</a>, <a class="el" href="AHolder_8cpp_source.html#l00051">Tick()</a>.</p>
 
 </div>
 </div>
@@ -887,9 +889,9 @@ Private 멤버 함수</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="AHolder_8h_source.html">AHolder.h</a> 파일의 <a class="el" href="AHolder_8h_source.html#l00052">52</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="AHolder_8h_source.html">AHolder.h</a> 파일의 <a class="el" href="AHolder_8h_source.html#l00053">53</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AHolder_8cpp_source.html#l00014">AHolder()</a>, <a class="el" href="AHolder_8cpp_source.html#l00041">BeginPlay()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AHolder_8cpp_source.html#l00014">AHolder()</a>, <a class="el" href="AHolder_8cpp_source.html#l00041">BeginPlay()</a>, <a class="el" href="FoodHolder_8cpp_source.html#l00021">AFoodHolder::BeginPlay()</a>.</p>
 
 </div>
 </div>
@@ -913,9 +915,9 @@ Private 멤버 함수</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="AHolder_8h_source.html">AHolder.h</a> 파일의 <a class="el" href="AHolder_8h_source.html#l00063">63</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="AHolder_8h_source.html">AHolder.h</a> 파일의 <a class="el" href="AHolder_8h_source.html#l00064">64</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AHolder_8cpp_source.html#l00134">CheckLuggage()</a>, <a class="el" href="AHolder_8cpp_source.html#l00064">GetLifetimeReplicatedProps()</a>, <a class="el" href="AHolder_8cpp_source.html#l00078">OnRep_CurTarget()</a>, <a class="el" href="AHolder_8cpp_source.html#l00051">Tick()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="FoodHolder_8cpp_source.html#l00075">AFoodHolder::CheckFood()</a>, <a class="el" href="AHolder_8cpp_source.html#l00134">CheckLuggage()</a>, <a class="el" href="AHolder_8cpp_source.html#l00064">GetLifetimeReplicatedProps()</a>, <a class="el" href="AHolder_8cpp_source.html#l00078">OnRep_CurTarget()</a>, <a class="el" href="AHolder_8cpp_source.html#l00051">Tick()</a>.</p>
 
 </div>
 </div>
@@ -931,9 +933,9 @@ Private 멤버 함수</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="AHolder_8h_source.html">AHolder.h</a> 파일의 <a class="el" href="AHolder_8h_source.html#l00058">58</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="AHolder_8h_source.html">AHolder.h</a> 파일의 <a class="el" href="AHolder_8h_source.html#l00059">59</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AHolder_8cpp_source.html#l00014">AHolder()</a>, <a class="el" href="AHolder_8cpp_source.html#l00134">CheckLuggage()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AHolder_8cpp_source.html#l00014">AHolder()</a>, <a class="el" href="FoodHolder_8cpp_source.html#l00075">AFoodHolder::CheckFood()</a>, <a class="el" href="AHolder_8cpp_source.html#l00134">CheckLuggage()</a>.</p>
 
 </div>
 </div>
@@ -949,7 +951,7 @@ Private 멤버 함수</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="AHolder_8h_source.html">AHolder.h</a> 파일의 <a class="el" href="AHolder_8h_source.html#l00055">55</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="AHolder_8h_source.html">AHolder.h</a> 파일의 <a class="el" href="AHolder_8h_source.html#l00056">56</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AHolder_8cpp_source.html#l00014">AHolder()</a>, <a class="el" href="AHolder_8cpp_source.html#l00183">UpdateActivateState()</a>.</p>
 
@@ -975,7 +977,7 @@ Private 멤버 함수</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="AHolder_8h_source.html">AHolder.h</a> 파일의 <a class="el" href="AHolder_8h_source.html#l00074">74</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="AHolder_8h_source.html">AHolder.h</a> 파일의 <a class="el" href="AHolder_8h_source.html#l00075">75</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AHolder_8cpp_source.html#l00051">Tick()</a>.</p>
 
@@ -991,7 +993,7 @@ Private 멤버 함수</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classAHolder.html">AHolder</a></li>
-    <li class="footer">생성시간 : 일 12월 7 2025 10:24:12, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 월 12월 8 2025 00:01:02, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

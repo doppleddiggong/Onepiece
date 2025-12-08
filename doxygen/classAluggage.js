@@ -1,6 +1,7 @@
 var classAluggage =
 [
     [ "Aluggage", "classAluggage.html#abe4cebd52c233ef35c1278b96c77eda8", null ],
+    [ "ApplyCollisionState", "classAluggage.html#a52a68e5c761a9d22d1a1523717d66d95", null ],
     [ "ApplyColorToMesh", "classAluggage.html#aa5a78203e58b47252c35b9ba5f1cf58c", null ],
     [ "ApplyPatternToMesh", "classAluggage.html#a5278c16bd28e0ee6fdbf2131aa70d5fc", null ],
     [ "BeginPlay", "classAluggage.html#a3aa2051ad58baef95efc7a35a1997184", null ],
@@ -9,6 +10,7 @@ var classAluggage =
     [ "GetPattern", "classAluggage.html#a0d10873a7496c8a1ead5651966ddca02", null ],
     [ "GetSpawnIdx", "classAluggage.html#a48c251914787f0c3137e6c174b560eaa", null ],
     [ "OnInteract", "classAluggage.html#aecbb757aa07316696bb4326f3b8dd74f", null ],
+    [ "OnRep_CollisionEnabled", "classAluggage.html#aa8d8ba80fc4bb672cd7616b6426e8e5f", null ],
     [ "OnRep_ColorIdx", "classAluggage.html#ab59f99b7292d0987106cbc396f563b77", null ],
     [ "OnRep_IsBeingHooked", "classAluggage.html#ac262bad2a47ddf04634ba7a0bcf2615c", null ],
     [ "OnRep_PatternIdx", "classAluggage.html#a5ff35c71645ce2754d9fea07959fe766", null ],
@@ -22,6 +24,7 @@ var classAluggage =
     [ "SetLuggageInfo", "classAluggage.html#ae08336c2883641c70aafa86c0a3c32a2", null ],
     [ "Tick", "classAluggage.html#aa1d90a7ebc5c838ebe50bfc79dfd6890", null ],
     [ "UpdateWidget", "classAluggage.html#a134ee387e130f327c4fd4f02f4079cb0", null ],
+    [ "bCollisionEnabled", "classAluggage.html#ae31e6d67f7f657e31e3a6bbc0d1aee25", null ],
     [ "bIsBeingHooked", "classAluggage.html#a3bb4871ec229b35443c41bd539f1c9a7", null ],
     [ "bIsRequest", "classAluggage.html#a3b0d315c9c3009d8c645a7fdf61f11a4", null ],
     [ "BoxComp", "classAluggage.html#aa50b6d8907fe87cf36258056394a15fe", null ],

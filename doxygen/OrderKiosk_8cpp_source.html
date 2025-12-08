@@ -1,0 +1,306 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>KLingo Project Documentation: Source/Onepiece/Interactable/Private/OrderKiosk.cpp 소스 파일</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript">
+window.MathJax = {
+  options: {
+    ignoreHtmlClass: 'tex2jax_ignore',
+    processHtmlClass: 'tex2jax_process'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<script type="text/javascript" src="darkmode_toggle.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">KLingo Project Documentation<span id="projectnumber">&#160;1.0.0</span>
+   </div>
+   <div id="projectbrief">Unreal Engine 5.6 C++ Project Documentation</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 다음에 의해 생성됨 :  Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','검색');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(0); });
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('OrderKiosk_8cpp_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">로딩중...</div>
+<div class="SRStatus" id="Searching">검색중...</div>
+<div class="SRStatus" id="NoMatches">일치하는것 없음</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">OrderKiosk.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="OrderKiosk_8cpp.html">이 파일의 문서화 페이지로 가기</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;<a class="code" href="OrderKiosk_8h.html">OrderKiosk.h</a>&quot;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;<a class="code" href="ADropper_8h.html">ADropper.h</a>&quot;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;<a class="code" href="ALingoGameState_8h.html">ALingoGameState.h</a>&quot;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;<a class="code" href="APlayerActor_8h.html">APlayerActor.h</a>&quot;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;<a class="code" href="InteractableComponent_8h.html">InteractableComponent.h</a>&quot;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;Components/BoxComponent.h&quot;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;Components/WidgetComponent.h&quot;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;Kismet/GameplayStatics.h&quot;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;Net/UnrealNetwork.h&quot;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment">// Sets default values</span></div>
+<div class="foldopen" id="foldopen00017" data-start="{" data-end="}">
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="classAOrderKiosk.html#ada844ee932ebbd0bb0a7d4bf72a19c59">   17</a></span><a class="code hl_function" href="classAOrderKiosk.html#ada844ee932ebbd0bb0a7d4bf72a19c59">AOrderKiosk::AOrderKiosk</a>()</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>{</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <span class="comment">// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don&#39;t need it.</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    PrimaryActorTick.bCanEverTick = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <a class="code hl_variable" href="classAOrderKiosk.html#a15b1124d68f7f77b200c4333a5d4a49a">Mesh</a> = CreateDefaultSubobject&lt;UStaticMeshComponent&gt;(TEXT(<span class="stringliteral">&quot;Mesh&quot;</span>));</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    SetRootComponent(<a class="code hl_variable" href="classAOrderKiosk.html#a15b1124d68f7f77b200c4333a5d4a49a">Mesh</a>);</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <a class="code hl_variable" href="classAOrderKiosk.html#afc9b2c160e7f1b5f8f453953a83501f3">Collision</a> = CreateDefaultSubobject&lt;UBoxComponent&gt;(TEXT(<span class="stringliteral">&quot;Collision&quot;</span>));</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <a class="code hl_variable" href="classAOrderKiosk.html#afc9b2c160e7f1b5f8f453953a83501f3">Collision</a>-&gt;SetupAttachment(GetRootComponent());</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <a class="code hl_variable" href="classAOrderKiosk.html#a0a15b364fb91468381cf461b55ea97c5">InteractableComp</a> = CreateDefaultSubobject&lt;UInteractableComponent&gt;(TEXT(<span class="stringliteral">&quot;InteractableComp&quot;</span>));</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <a class="code hl_variable" href="classAOrderKiosk.html#a0a15b364fb91468381cf461b55ea97c5">InteractableComp</a>-&gt;InteractionType = EInteractionType::Button;</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <a class="code hl_variable" href="classAOrderKiosk.html#a0a15b364fb91468381cf461b55ea97c5">InteractableComp</a>-&gt;InteractionPrompt = TEXT(<span class="stringliteral">&quot;Order Ticket&quot;</span>);</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <a class="code hl_variable" href="classAOrderKiosk.html#aae1f0379d43e94c7e1a826784c2ec899">InteractWidget</a> = CreateDefaultSubobject&lt;UWidgetComponent&gt;(TEXT(<span class="stringliteral">&quot;InteractWidget&quot;</span>));</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <a class="code hl_variable" href="classAOrderKiosk.html#aae1f0379d43e94c7e1a826784c2ec899">InteractWidget</a>-&gt;SetupAttachment(GetRootComponent());</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>}</div>
+</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="comment">// Called when the game starts or when spawned</span></div>
+<div class="foldopen" id="foldopen00037" data-start="{" data-end="}">
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="classAOrderKiosk.html#ad84dcabb2b97388a3fd4deb93b94309f">   37</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAOrderKiosk.html#ad84dcabb2b97388a3fd4deb93b94309f">AOrderKiosk::BeginPlay</a>()</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>{</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    Super::BeginPlay();</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="comment">// InteractableComp에 위젯 연결</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAOrderKiosk.html#a0a15b364fb91468381cf461b55ea97c5">InteractableComp</a> &amp;&amp; <a class="code hl_variable" href="classAOrderKiosk.html#aae1f0379d43e94c7e1a826784c2ec899">InteractWidget</a>)</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    {</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        <a class="code hl_variable" href="classAOrderKiosk.html#a0a15b364fb91468381cf461b55ea97c5">InteractableComp</a>-&gt;InitWidget(<a class="code hl_variable" href="classAOrderKiosk.html#aae1f0379d43e94c7e1a826784c2ec899">InteractWidget</a>);</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    }</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="comment">// 상호작용 델리게이트 바인딩</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAOrderKiosk.html#a0a15b364fb91468381cf461b55ea97c5">InteractableComp</a>)</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    {</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        <a class="code hl_variable" href="classAOrderKiosk.html#a0a15b364fb91468381cf461b55ea97c5">InteractableComp</a>-&gt;OnInteractionTriggered.AddDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classAOrderKiosk.html#a00de3d34c912237f3a4541a12fb2cffa">AOrderKiosk::OnInteractionTriggered</a>);</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    }</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <a class="code hl_variable" href="classAOrderKiosk.html#aae1f0379d43e94c7e1a826784c2ec899">InteractWidget</a>-&gt;SetVisibility(<span class="keyword">false</span>);</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>}</div>
+</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+<div class="foldopen" id="foldopen00056" data-start="{" data-end="}">
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="classAOrderKiosk.html#a8cd610339619fd825fb09c0cd378d351">   56</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAOrderKiosk.html#a8cd610339619fd825fb09c0cd378d351">AOrderKiosk::GetLifetimeReplicatedProps</a>(TArray&lt;class FLifetimeProperty&gt;&amp; OutLifetimeProps)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="keyword"></span>{</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    Super::GetLifetimeReplicatedProps(OutLifetimeProps);</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    DOREPLIFETIME(<a class="code hl_class" href="classAOrderKiosk.html">AOrderKiosk</a>, <a class="code hl_variable" href="classAOrderKiosk.html#a648c52261e4f5840f3c548ee547a3e0b">IsOverlapping</a>);</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>}</div>
+</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="comment">// Called every frame</span></div>
+<div class="foldopen" id="foldopen00064" data-start="{" data-end="}">
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="classAOrderKiosk.html#a2559037890cac62eb1d3c60753977c5d">   64</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAOrderKiosk.html#a2559037890cac62eb1d3c60753977c5d">AOrderKiosk::Tick</a>(<span class="keywordtype">float</span> DeltaTime)</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>{</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    Super::Tick(DeltaTime);</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>}</div>
+</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
+<div class="foldopen" id="foldopen00069" data-start="{" data-end="}">
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="classAOrderKiosk.html#a8f2dbd1d784afe7d21bb32f3f0b85634">   69</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAOrderKiosk.html#a8f2dbd1d784afe7d21bb32f3f0b85634">AOrderKiosk::BeginOverlap</a>(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, <span class="keywordtype">bool</span> bFromSweep, <span class="keyword">const</span> FHitResult&amp; SweepResult)</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>{</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    <span class="keywordflow">if</span> (<a class="code hl_class" href="classAPlayerActor.html">APlayerActor</a>* Player = Cast&lt;APlayerActor&gt;(OtherActor))</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    {</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>        <a class="code hl_variable" href="classAOrderKiosk.html#aae1f0379d43e94c7e1a826784c2ec899">InteractWidget</a>-&gt;SetVisibility(<span class="keyword">true</span>);</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        <a class="code hl_variable" href="classAOrderKiosk.html#a648c52261e4f5840f3c548ee547a3e0b">IsOverlapping</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    }</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>}</div>
+</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
+<div class="foldopen" id="foldopen00079" data-start="{" data-end="}">
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno"><a class="line" href="classAOrderKiosk.html#a591ab6d1d35ac5ff66d229d1ddecad14">   79</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAOrderKiosk.html#a591ab6d1d35ac5ff66d229d1ddecad14">AOrderKiosk::EndOverlap</a>(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>{</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    <span class="keywordflow">if</span> (<a class="code hl_class" href="classAPlayerActor.html">APlayerActor</a>* Player = Cast&lt;APlayerActor&gt;(OtherActor))</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    {</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        <a class="code hl_variable" href="classAOrderKiosk.html#aae1f0379d43e94c7e1a826784c2ec899">InteractWidget</a>-&gt;SetVisibility(<span class="keyword">false</span>);</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        <a class="code hl_variable" href="classAOrderKiosk.html#a648c52261e4f5840f3c548ee547a3e0b">IsOverlapping</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    }</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>}</div>
+</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
+<div class="foldopen" id="foldopen00089" data-start="{" data-end="}">
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno"><a class="line" href="classAOrderKiosk.html#a00de3d34c912237f3a4541a12fb2cffa">   89</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAOrderKiosk.html#a00de3d34c912237f3a4541a12fb2cffa">AOrderKiosk::OnInteractionTriggered</a>(AActor* Interactor)</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>{</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAOrderKiosk.html#aa6d9c886fc05fda546fb63c64ac8bf59">bIsUsed</a>) <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    <span class="comment">// 사용됨 표시</span></div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    <a class="code hl_variable" href="classAOrderKiosk.html#aa6d9c886fc05fda546fb63c64ac8bf59">bIsUsed</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    </div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    <span class="comment">// InteractableComp 비활성화 (재사용 방지)</span></div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    <span class="comment">/*if (InteractableComp)</span></div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span><span class="comment">    {</span></div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span><span class="comment">        InteractableComp-&gt;bCanInteract = false;</span></div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span><span class="comment">    }</span></div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span><span class="comment">    */</span></div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    <a class="code hl_class" href="classALingoGameState.html">ALingoGameState</a>* GS = Cast&lt;ALingoGameState&gt;(GetWorld()-&gt;GetGameState());</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    <span class="keywordflow">if</span> (GS)</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    {</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>        <span class="comment">// Food 스폰</span></div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>        <a class="code hl_class" href="classADropper.html">ADropper</a>* Dropper = <a class="code hl_function" href="classAOrderKiosk.html#aaab2f5968da556e2afe6fae9b0ef0c5c">FindDropperByIdx</a>(<a class="code hl_variable" href="classAOrderKiosk.html#a6a1e36df7973542b04ea5147d317b821">FoodCourtIdx</a>);</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>        <span class="keywordflow">if</span> (Dropper)</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>        {</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>            <a class="code hl_struct" href="structFFoodData.html">FFoodData</a> tmpData;</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>            tmpData.<a class="code hl_variable" href="structFFoodData.html#a9da8b074adf1d5d35ca3e9ba478a2ad1">word</a> = <a class="code hl_variable" href="classAOrderKiosk.html#a97684825dcce5f339ceb8a5cb3d6d3ef">FoodData</a>.<a class="code hl_variable" href="structFFoodData.html#a9da8b074adf1d5d35ca3e9ba478a2ad1">word</a>;</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>            tmpData.<a class="code hl_variable" href="structFFoodData.html#a530a43c4802eb7760ce70ed908652df8">SpawnIndex</a> = <a class="code hl_variable" href="classAOrderKiosk.html#a6a1e36df7973542b04ea5147d317b821">FoodCourtIdx</a>;</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>            </div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>            Dropper-&gt;<a class="code hl_function" href="classADropper.html#ac8ea0a8531d036c3dfbfde4d67167556">SetFoodSpawnData</a>(tmpData);</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>            Dropper-&gt;<a class="code hl_function" href="classADropper.html#a4fd03c6a4c5d6e37b22afc85bdd28883">SetSpawnClass</a>( LoadClass&lt;AActor&gt;(<span class="keyword">nullptr</span>, TEXT(<span class="stringliteral">&quot;/Game/CustomContents/Blueprints/Interactables/BP_Food.BP_Food_C&quot;</span>)));</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>            Dropper-&gt;<a class="code hl_function" href="classADropper.html#ad7b1a0e4a5425909f9b4345de5611afe">RequestSpawn</a>();</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>        }</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>    }</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>}</div>
+</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span> </div>
+<div class="foldopen" id="foldopen00120" data-start="{" data-end="}">
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno"><a class="line" href="classAOrderKiosk.html#aaab2f5968da556e2afe6fae9b0ef0c5c">  120</a></span><span class="keyword">class </span><a class="code hl_class" href="classADropper.html">ADropper</a>* <a class="code hl_function" href="classAOrderKiosk.html#aaab2f5968da556e2afe6fae9b0ef0c5c">AOrderKiosk::FindDropperByIdx</a>(int32 InIdx)</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>{</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>    TArray&lt;AActor*&gt; Droppers;</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>    UGameplayStatics::GetAllActorsOfClass(GetWorld(), ADropper::StaticClass(), Droppers);</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span> </div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> Dropper : Droppers)</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>    {</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>        <span class="keywordflow">if</span> (<a class="code hl_class" href="classADropper.html">ADropper</a>* Dpp = Cast&lt;ADropper&gt;(Dropper))</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>        {</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>            <span class="keywordflow">if</span> (Dpp-&gt;DropperIndex == InIdx)</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>            {</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>                <span class="keywordflow">return</span> Dpp;</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>            }</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>        }</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>    }</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>    <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>}</div>
+</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span> </div>
+<div class="ttc" id="aADropper_8h_html"><div class="ttname"><a href="ADropper_8h.html">ADropper.h</a></div></div>
+<div class="ttc" id="aALingoGameState_8h_html"><div class="ttname"><a href="ALingoGameState_8h.html">ALingoGameState.h</a></div></div>
+<div class="ttc" id="aAPlayerActor_8h_html"><div class="ttname"><a href="APlayerActor_8h.html">APlayerActor.h</a></div><div class="ttdoc">Declares the player-controlled character actor.</div></div>
+<div class="ttc" id="aInteractableComponent_8h_html"><div class="ttname"><a href="InteractableComponent_8h.html">InteractableComponent.h</a></div></div>
+<div class="ttc" id="aOrderKiosk_8h_html"><div class="ttname"><a href="OrderKiosk_8h.html">OrderKiosk.h</a></div></div>
+<div class="ttc" id="aclassADropper_html"><div class="ttname"><a href="classADropper.html">ADropper</a></div><div class="ttdef"><b>Definition</b> <a href="ADropper_8h_source.html#l00058">ADropper.h:59</a></div></div>
+<div class="ttc" id="aclassADropper_html_a4fd03c6a4c5d6e37b22afc85bdd28883"><div class="ttname"><a href="classADropper.html#a4fd03c6a4c5d6e37b22afc85bdd28883">ADropper::SetSpawnClass</a></div><div class="ttdeci">void SetSpawnClass(TSubclassOf&lt; AActor &gt; InClass)</div><div class="ttdoc">스폰 전에 Dropper가 어떤 클래스를 스폰할지 등록</div><div class="ttdef"><b>Definition</b> <a href="ADropper_8h_source.html#l00066">ADropper.h:66</a></div></div>
+<div class="ttc" id="aclassADropper_html_ac8ea0a8531d036c3dfbfde4d67167556"><div class="ttname"><a href="classADropper.html#ac8ea0a8531d036c3dfbfde4d67167556">ADropper::SetFoodSpawnData</a></div><div class="ttdeci">void SetFoodSpawnData(const FFoodData &amp;InData)</div><div class="ttdoc">[Food용] 스폰 전에 Dropper가 생성될 액터에게 넘겨줄 데이터 등록</div><div class="ttdef"><b>Definition</b> <a href="ADropper_8h_source.html#l00072">ADropper.h:72</a></div></div>
+<div class="ttc" id="aclassADropper_html_ad7b1a0e4a5425909f9b4345de5611afe"><div class="ttname"><a href="classADropper.html#ad7b1a0e4a5425909f9b4345de5611afe">ADropper::RequestSpawn</a></div><div class="ttdeci">bool RequestSpawn()</div><div class="ttdoc">스폰 요청 (서버에서만 동작)</div><div class="ttdef"><b>Definition</b> <a href="ADropper_8cpp_source.html#l00050">ADropper.cpp:50</a></div></div>
+<div class="ttc" id="aclassALingoGameState_html"><div class="ttname"><a href="classALingoGameState.html">ALingoGameState</a></div><div class="ttdef"><b>Definition</b> <a href="ALingoGameState_8h_source.html#l00038">ALingoGameState.h:39</a></div></div>
+<div class="ttc" id="aclassAOrderKiosk_html"><div class="ttname"><a href="classAOrderKiosk.html">AOrderKiosk</a></div><div class="ttdef"><b>Definition</b> <a href="OrderKiosk_8h_source.html#l00011">OrderKiosk.h:12</a></div></div>
+<div class="ttc" id="aclassAOrderKiosk_html_a00de3d34c912237f3a4541a12fb2cffa"><div class="ttname"><a href="classAOrderKiosk.html#a00de3d34c912237f3a4541a12fb2cffa">AOrderKiosk::OnInteractionTriggered</a></div><div class="ttdeci">void OnInteractionTriggered(AActor *Interactor)</div><div class="ttdef"><b>Definition</b> <a href="OrderKiosk_8cpp_source.html#l00089">OrderKiosk.cpp:89</a></div></div>
+<div class="ttc" id="aclassAOrderKiosk_html_a0a15b364fb91468381cf461b55ea97c5"><div class="ttname"><a href="classAOrderKiosk.html#a0a15b364fb91468381cf461b55ea97c5">AOrderKiosk::InteractableComp</a></div><div class="ttdeci">class UInteractableComponent * InteractableComp</div><div class="ttdef"><b>Definition</b> <a href="OrderKiosk_8h_source.html#l00036">OrderKiosk.h:36</a></div></div>
+<div class="ttc" id="aclassAOrderKiosk_html_a15b1124d68f7f77b200c4333a5d4a49a"><div class="ttname"><a href="classAOrderKiosk.html#a15b1124d68f7f77b200c4333a5d4a49a">AOrderKiosk::Mesh</a></div><div class="ttdeci">class UStaticMeshComponent * Mesh</div><div class="ttdef"><b>Definition</b> <a href="OrderKiosk_8h_source.html#l00030">OrderKiosk.h:30</a></div></div>
+<div class="ttc" id="aclassAOrderKiosk_html_a2559037890cac62eb1d3c60753977c5d"><div class="ttname"><a href="classAOrderKiosk.html#a2559037890cac62eb1d3c60753977c5d">AOrderKiosk::Tick</a></div><div class="ttdeci">virtual void Tick(float DeltaTime) override</div><div class="ttdef"><b>Definition</b> <a href="OrderKiosk_8cpp_source.html#l00064">OrderKiosk.cpp:64</a></div></div>
+<div class="ttc" id="aclassAOrderKiosk_html_a591ab6d1d35ac5ff66d229d1ddecad14"><div class="ttname"><a href="classAOrderKiosk.html#a591ab6d1d35ac5ff66d229d1ddecad14">AOrderKiosk::EndOverlap</a></div><div class="ttdeci">void EndOverlap(UPrimitiveComponent *OverlappedComponent, AActor *OtherActor, UPrimitiveComponent *OtherComp, int32 OtherBodyIndex)</div><div class="ttdef"><b>Definition</b> <a href="OrderKiosk_8cpp_source.html#l00079">OrderKiosk.cpp:79</a></div></div>
+<div class="ttc" id="aclassAOrderKiosk_html_a648c52261e4f5840f3c548ee547a3e0b"><div class="ttname"><a href="classAOrderKiosk.html#a648c52261e4f5840f3c548ee547a3e0b">AOrderKiosk::IsOverlapping</a></div><div class="ttdeci">bool IsOverlapping</div><div class="ttdef"><b>Definition</b> <a href="OrderKiosk_8h_source.html#l00064">OrderKiosk.h:64</a></div></div>
+<div class="ttc" id="aclassAOrderKiosk_html_a6a1e36df7973542b04ea5147d317b821"><div class="ttname"><a href="classAOrderKiosk.html#a6a1e36df7973542b04ea5147d317b821">AOrderKiosk::FoodCourtIdx</a></div><div class="ttdeci">int32 FoodCourtIdx</div><div class="ttdef"><b>Definition</b> <a href="OrderKiosk_8h_source.html#l00053">OrderKiosk.h:53</a></div></div>
+<div class="ttc" id="aclassAOrderKiosk_html_a8cd610339619fd825fb09c0cd378d351"><div class="ttname"><a href="classAOrderKiosk.html#a8cd610339619fd825fb09c0cd378d351">AOrderKiosk::GetLifetimeReplicatedProps</a></div><div class="ttdeci">virtual void GetLifetimeReplicatedProps(TArray&lt; class FLifetimeProperty &gt; &amp;OutLifetimeProps) const override</div><div class="ttdef"><b>Definition</b> <a href="OrderKiosk_8cpp_source.html#l00056">OrderKiosk.cpp:56</a></div></div>
+<div class="ttc" id="aclassAOrderKiosk_html_a8f2dbd1d784afe7d21bb32f3f0b85634"><div class="ttname"><a href="classAOrderKiosk.html#a8f2dbd1d784afe7d21bb32f3f0b85634">AOrderKiosk::BeginOverlap</a></div><div class="ttdeci">void BeginOverlap(UPrimitiveComponent *OverlappedComponent, AActor *OtherActor, UPrimitiveComponent *OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult &amp;SweepResult)</div><div class="ttdef"><b>Definition</b> <a href="OrderKiosk_8cpp_source.html#l00069">OrderKiosk.cpp:69</a></div></div>
+<div class="ttc" id="aclassAOrderKiosk_html_a97684825dcce5f339ceb8a5cb3d6d3ef"><div class="ttname"><a href="classAOrderKiosk.html#a97684825dcce5f339ceb8a5cb3d6d3ef">AOrderKiosk::FoodData</a></div><div class="ttdeci">FFoodData FoodData</div><div class="ttdoc">이번 스폰에서 사용할 데이터</div><div class="ttdef"><b>Definition</b> <a href="OrderKiosk_8h_source.html#l00057">OrderKiosk.h:57</a></div></div>
+<div class="ttc" id="aclassAOrderKiosk_html_aa6d9c886fc05fda546fb63c64ac8bf59"><div class="ttname"><a href="classAOrderKiosk.html#aa6d9c886fc05fda546fb63c64ac8bf59">AOrderKiosk::bIsUsed</a></div><div class="ttdeci">bool bIsUsed</div><div class="ttdef"><b>Definition</b> <a href="OrderKiosk_8h_source.html#l00061">OrderKiosk.h:61</a></div></div>
+<div class="ttc" id="aclassAOrderKiosk_html_aaab2f5968da556e2afe6fae9b0ef0c5c"><div class="ttname"><a href="classAOrderKiosk.html#aaab2f5968da556e2afe6fae9b0ef0c5c">AOrderKiosk::FindDropperByIdx</a></div><div class="ttdeci">class ADropper * FindDropperByIdx(int32 InIdx)</div><div class="ttdef"><b>Definition</b> <a href="OrderKiosk_8cpp_source.html#l00120">OrderKiosk.cpp:120</a></div></div>
+<div class="ttc" id="aclassAOrderKiosk_html_aae1f0379d43e94c7e1a826784c2ec899"><div class="ttname"><a href="classAOrderKiosk.html#aae1f0379d43e94c7e1a826784c2ec899">AOrderKiosk::InteractWidget</a></div><div class="ttdeci">class UWidgetComponent * InteractWidget</div><div class="ttdef"><b>Definition</b> <a href="OrderKiosk_8h_source.html#l00039">OrderKiosk.h:39</a></div></div>
+<div class="ttc" id="aclassAOrderKiosk_html_ad84dcabb2b97388a3fd4deb93b94309f"><div class="ttname"><a href="classAOrderKiosk.html#ad84dcabb2b97388a3fd4deb93b94309f">AOrderKiosk::BeginPlay</a></div><div class="ttdeci">virtual void BeginPlay() override</div><div class="ttdef"><b>Definition</b> <a href="OrderKiosk_8cpp_source.html#l00037">OrderKiosk.cpp:37</a></div></div>
+<div class="ttc" id="aclassAOrderKiosk_html_ada844ee932ebbd0bb0a7d4bf72a19c59"><div class="ttname"><a href="classAOrderKiosk.html#ada844ee932ebbd0bb0a7d4bf72a19c59">AOrderKiosk::AOrderKiosk</a></div><div class="ttdeci">AOrderKiosk()</div><div class="ttdef"><b>Definition</b> <a href="OrderKiosk_8cpp_source.html#l00017">OrderKiosk.cpp:17</a></div></div>
+<div class="ttc" id="aclassAOrderKiosk_html_afc9b2c160e7f1b5f8f453953a83501f3"><div class="ttname"><a href="classAOrderKiosk.html#afc9b2c160e7f1b5f8f453953a83501f3">AOrderKiosk::Collision</a></div><div class="ttdeci">class UBoxComponent * Collision</div><div class="ttdef"><b>Definition</b> <a href="OrderKiosk_8h_source.html#l00033">OrderKiosk.h:33</a></div></div>
+<div class="ttc" id="aclassAPlayerActor_html"><div class="ttname"><a href="classAPlayerActor.html">APlayerActor</a></div><div class="ttdoc">Main character driven directly by the player.</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8h_source.html#l00021">APlayerActor.h:22</a></div></div>
+<div class="ttc" id="astructFFoodData_html"><div class="ttname"><a href="structFFoodData.html">FFoodData</a></div><div class="ttdef"><b>Definition</b> <a href="ADropper_8h_source.html#l00037">ADropper.h:38</a></div></div>
+<div class="ttc" id="astructFFoodData_html_a530a43c4802eb7760ce70ed908652df8"><div class="ttname"><a href="structFFoodData.html#a530a43c4802eb7760ce70ed908652df8">FFoodData::SpawnIndex</a></div><div class="ttdeci">int32 SpawnIndex</div><div class="ttdoc">스폰 인덱스(선택적으로 사용)</div><div class="ttdef"><b>Definition</b> <a href="ADropper_8h_source.html#l00047">ADropper.h:47</a></div></div>
+<div class="ttc" id="astructFFoodData_html_a9da8b074adf1d5d35ca3e9ba478a2ad1"><div class="ttname"><a href="structFFoodData.html#a9da8b074adf1d5d35ca3e9ba478a2ad1">FFoodData::word</a></div><div class="ttdeci">FWordInfo word</div><div class="ttdoc">시나리오 단어 정보</div><div class="ttdef"><b>Definition</b> <a href="ADropper_8h_source.html#l00043">ADropper.h:43</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_b7459e4428712e32d7c860db6e401a05.html">Interactable</a></li><li class="navelem"><a class="el" href="dir_77257aedd361f850f8a01079e914567e.html">Private</a></li><li class="navelem"><a class="el" href="OrderKiosk_8cpp.html">OrderKiosk.cpp</a></li>
+    <li class="footer">생성시간 : 월 12월 8 2025 00:01:02, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
+</body>
+</html>
