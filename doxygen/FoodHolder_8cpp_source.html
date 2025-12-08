@@ -114,293 +114,302 @@ $(document).ready(function(){initNavTree('FoodHolder_8cpp_source.html',''); init
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;<a class="code" href="FoodHolder_8h.html">FoodHolder.h</a>&quot;</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;<a class="code" href="ALingoGameState_8h.html">ALingoGameState.h</a>&quot;</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;<a class="code" href="Food_8h.html">Food.h</a>&quot;</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;<a class="code" href="GameLogging_8h.html">GameLogging.h</a>&quot;</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;<a class="code" href="ANetworkBroadcastActor_8h.html">ANetworkBroadcastActor.h</a>&quot;</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;<a class="code" href="Popup__Result_8h.html">Popup_Result.h</a>&quot;</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;<a class="code" href="UBroadcastManager_8h.html">UBroadcastManager.h</a>&quot;</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;<a class="code" href="UPopupManager_8h.html">UPopupManager.h</a>&quot;</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;<a class="code" href="Onepiece_8h.html">Onepiece/Onepiece.h</a>&quot;</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &quot;Components/BoxComponent.h&quot;</span></div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &quot;Components/SkeletalMeshComponent.h&quot;</span></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &quot;Net/UnrealNetwork.h&quot;</span></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
-<div class="foldopen" id="foldopen00018" data-start="{" data-end="}">
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="classAFoodHolder.html#ae9d05f11b8bd8e0caa568aa5e4980981">   18</a></span><a class="code hl_function" href="classAFoodHolder.html#ae9d05f11b8bd8e0caa568aa5e4980981">AFoodHolder::AFoodHolder</a>()</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>{</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    PrimaryActorTick.bCanEverTick = <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <span class="comment">// Replication</span></div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    bReplicates = <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="comment">// Root component</span></div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    USceneComponent* Root = CreateDefaultSubobject&lt;USceneComponent&gt;(TEXT(<span class="stringliteral">&quot;DefaultSceneRoot&quot;</span>));</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    RootComponent = Root;</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="comment">// Mesh component</span></div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <a class="code hl_variable" href="classAFoodHolder.html#aa44e6d94b93c710a3c7debc4f281adbc">MeshComponent</a> = CreateDefaultSubobject&lt;USkeletalMeshComponent&gt;(TEXT(<span class="stringliteral">&quot;MeshComponent&quot;</span>));</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <a class="code hl_variable" href="classAFoodHolder.html#aa44e6d94b93c710a3c7debc4f281adbc">MeshComponent</a>-&gt;SetupAttachment(RootComponent);</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="comment">// Box collision component</span></div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <a class="code hl_variable" href="classAFoodHolder.html#a354e1f756167bc3c338cc632b7c9273e">BoxCollision</a> = CreateDefaultSubobject&lt;UBoxComponent&gt;(TEXT(<span class="stringliteral">&quot;BoxCollision&quot;</span>));</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <a class="code hl_variable" href="classAFoodHolder.html#a354e1f756167bc3c338cc632b7c9273e">BoxCollision</a>-&gt;SetupAttachment(<a class="code hl_variable" href="classAFoodHolder.html#aa44e6d94b93c710a3c7debc4f281adbc">MeshComponent</a>);</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <a class="code hl_variable" href="classAFoodHolder.html#a354e1f756167bc3c338cc632b7c9273e">BoxCollision</a>-&gt;SetGenerateOverlapEvents(<span class="keyword">true</span>);</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <a class="code hl_variable" href="classAFoodHolder.html#a354e1f756167bc3c338cc632b7c9273e">BoxCollision</a>-&gt;SetCollisionEnabled(ECollisionEnabled::QueryOnly);</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <a class="code hl_variable" href="classAFoodHolder.html#a354e1f756167bc3c338cc632b7c9273e">BoxCollision</a>-&gt;SetCollisionResponseToAllChannels(ECR_Overlap);</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="comment">// HoldPos component</span></div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <a class="code hl_variable" href="classAFoodHolder.html#a5a958174b57fe025bd17f50078007a46">HoldPos</a> = CreateDefaultSubobject&lt;USceneComponent&gt;(TEXT(<span class="stringliteral">&quot;HoldPos&quot;</span>));</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <a class="code hl_variable" href="classAFoodHolder.html#a5a958174b57fe025bd17f50078007a46">HoldPos</a>-&gt;SetupAttachment(<a class="code hl_variable" href="classAFoodHolder.html#aa44e6d94b93c710a3c7debc4f281adbc">MeshComponent</a>);</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>}</div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;<a class="code" href="ADoor_8h.html">ADoor.h</a>&quot;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;<a class="code" href="ALingoGameState_8h.html">ALingoGameState.h</a>&quot;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;<a class="code" href="Food_8h.html">Food.h</a>&quot;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;<a class="code" href="GameLogging_8h.html">GameLogging.h</a>&quot;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;<a class="code" href="ANetworkBroadcastActor_8h.html">ANetworkBroadcastActor.h</a>&quot;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;<a class="code" href="Popup__Result_8h.html">Popup_Result.h</a>&quot;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;<a class="code" href="UBroadcastManager_8h.html">UBroadcastManager.h</a>&quot;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;<a class="code" href="UPopupManager_8h.html">UPopupManager.h</a>&quot;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &quot;<a class="code" href="Onepiece_8h.html">Onepiece/Onepiece.h</a>&quot;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &quot;Components/BoxComponent.h&quot;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &quot;Components/SkeletalMeshComponent.h&quot;</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &quot;Kismet/GameplayStatics.h&quot;</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &quot;Net/UnrealNetwork.h&quot;</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="foldopen" id="foldopen00020" data-start="{" data-end="}">
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="classAFoodHolder.html#ae9d05f11b8bd8e0caa568aa5e4980981">   20</a></span><a class="code hl_function" href="classAFoodHolder.html#ae9d05f11b8bd8e0caa568aa5e4980981">AFoodHolder::AFoodHolder</a>()</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>{</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    PrimaryActorTick.bCanEverTick = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="comment">// Replication</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    bReplicates = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="comment">// Root component</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    USceneComponent* Root = CreateDefaultSubobject&lt;USceneComponent&gt;(TEXT(<span class="stringliteral">&quot;DefaultSceneRoot&quot;</span>));</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    RootComponent = Root;</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="comment">// Mesh component</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <a class="code hl_variable" href="classAFoodHolder.html#aa44e6d94b93c710a3c7debc4f281adbc">MeshComponent</a> = CreateDefaultSubobject&lt;USkeletalMeshComponent&gt;(TEXT(<span class="stringliteral">&quot;MeshComponent&quot;</span>));</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <a class="code hl_variable" href="classAFoodHolder.html#aa44e6d94b93c710a3c7debc4f281adbc">MeshComponent</a>-&gt;SetupAttachment(RootComponent);</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="comment">// Box collision component</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <a class="code hl_variable" href="classAFoodHolder.html#a354e1f756167bc3c338cc632b7c9273e">BoxCollision</a> = CreateDefaultSubobject&lt;UBoxComponent&gt;(TEXT(<span class="stringliteral">&quot;BoxCollision&quot;</span>));</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <a class="code hl_variable" href="classAFoodHolder.html#a354e1f756167bc3c338cc632b7c9273e">BoxCollision</a>-&gt;SetupAttachment(<a class="code hl_variable" href="classAFoodHolder.html#aa44e6d94b93c710a3c7debc4f281adbc">MeshComponent</a>);</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <a class="code hl_variable" href="classAFoodHolder.html#a354e1f756167bc3c338cc632b7c9273e">BoxCollision</a>-&gt;SetGenerateOverlapEvents(<span class="keyword">true</span>);</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <a class="code hl_variable" href="classAFoodHolder.html#a354e1f756167bc3c338cc632b7c9273e">BoxCollision</a>-&gt;SetCollisionEnabled(ECollisionEnabled::QueryOnly);</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <a class="code hl_variable" href="classAFoodHolder.html#a354e1f756167bc3c338cc632b7c9273e">BoxCollision</a>-&gt;SetCollisionResponseToAllChannels(ECR_Overlap);</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="comment">// HoldPos component</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <a class="code hl_variable" href="classAFoodHolder.html#a5a958174b57fe025bd17f50078007a46">HoldPos</a> = CreateDefaultSubobject&lt;USceneComponent&gt;(TEXT(<span class="stringliteral">&quot;HoldPos&quot;</span>));</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <a class="code hl_variable" href="classAFoodHolder.html#a5a958174b57fe025bd17f50078007a46">HoldPos</a>-&gt;SetupAttachment(<a class="code hl_variable" href="classAFoodHolder.html#aa44e6d94b93c710a3c7debc4f281adbc">MeshComponent</a>);</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>}</div>
 </div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
-<div class="foldopen" id="foldopen00045" data-start="{" data-end="}">
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="classAFoodHolder.html#a565e6ccdb08bb878bd88d8eb27dee677">   45</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAFoodHolder.html#a565e6ccdb08bb878bd88d8eb27dee677">AFoodHolder::BeginPlay</a>()</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>{</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    Super::BeginPlay();</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <a class="code hl_variable" href="classAFoodHolder.html#a354e1f756167bc3c338cc632b7c9273e">BoxCollision</a>-&gt;OnComponentBeginOverlap.AddDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classAFoodHolder.html#a8d48dbf197d3544ab3763d1a7e730859">AFoodHolder::OnFoodBoxOverlapBegin</a>);</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="foldopen" id="foldopen00047" data-start="{" data-end="}">
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="classAFoodHolder.html#a565e6ccdb08bb878bd88d8eb27dee677">   47</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAFoodHolder.html#a565e6ccdb08bb878bd88d8eb27dee677">AFoodHolder::BeginPlay</a>()</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>{</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    Super::BeginPlay();</div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="comment">// 머티리얼 파라미터 초기화 (비활성화 상태)</span></div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <a class="code hl_function" href="classAFoodHolder.html#a6ae24d4203c8538e43b6c62e0a1ede9e">UpdateActivateState</a>(<span class="keyword">false</span>);</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>}</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <a class="code hl_variable" href="classAFoodHolder.html#a354e1f756167bc3c338cc632b7c9273e">BoxCollision</a>-&gt;OnComponentBeginOverlap.AddDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classAFoodHolder.html#a8d48dbf197d3544ab3763d1a7e730859">AFoodHolder::OnFoodBoxOverlapBegin</a>);</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="comment">// 머티리얼 파라미터 초기화 (비활성화 상태)</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <a class="code hl_function" href="classAFoodHolder.html#a6ae24d4203c8538e43b6c62e0a1ede9e">UpdateActivateState</a>(<span class="keyword">false</span>);</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>}</div>
 </div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
-<div class="foldopen" id="foldopen00055" data-start="{" data-end="}">
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="classAFoodHolder.html#a109c76ed25c3639810c1a4461df8b121">   55</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAFoodHolder.html#a109c76ed25c3639810c1a4461df8b121">AFoodHolder::Tick</a>(<span class="keywordtype">float</span> DeltaTime)</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>{</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    Super::Tick(DeltaTime);</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="comment">// CurTarget이 유효하고 활성화된 상태라면 회전</span></div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAFoodHolder.html#aed2ca3859d2e7e048117990933022b2e">bIsActivated</a> &amp;&amp; <a class="code hl_variable" href="classAFoodHolder.html#a1fa5d938a8ad639127ea47320bacb223">CurTarget</a>)</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    {</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        FRotator CurrentRotation = <a class="code hl_variable" href="classAFoodHolder.html#a1fa5d938a8ad639127ea47320bacb223">CurTarget</a>-&gt;GetActorRotation();</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        CurrentRotation.Yaw += <a class="code hl_variable" href="classAFoodHolder.html#ab5231ae688a77b08672c794165232b99">RotationSpeed</a> * DeltaTime;</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        <a class="code hl_variable" href="classAFoodHolder.html#a1fa5d938a8ad639127ea47320bacb223">CurTarget</a>-&gt;SetActorRotation(CurrentRotation);</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    }</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>}</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
+<div class="foldopen" id="foldopen00057" data-start="{" data-end="}">
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="classAFoodHolder.html#a109c76ed25c3639810c1a4461df8b121">   57</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAFoodHolder.html#a109c76ed25c3639810c1a4461df8b121">AFoodHolder::Tick</a>(<span class="keywordtype">float</span> DeltaTime)</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>{</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    Super::Tick(DeltaTime);</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="comment">// CurTarget이 유효하고 활성화된 상태라면 회전</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAFoodHolder.html#aed2ca3859d2e7e048117990933022b2e">bIsActivated</a> &amp;&amp; <a class="code hl_variable" href="classAFoodHolder.html#a1fa5d938a8ad639127ea47320bacb223">CurTarget</a>)</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    {</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        FRotator CurrentRotation = <a class="code hl_variable" href="classAFoodHolder.html#a1fa5d938a8ad639127ea47320bacb223">CurTarget</a>-&gt;GetActorRotation();</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        CurrentRotation.Yaw += <a class="code hl_variable" href="classAFoodHolder.html#ab5231ae688a77b08672c794165232b99">RotationSpeed</a> * DeltaTime;</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        <a class="code hl_variable" href="classAFoodHolder.html#a1fa5d938a8ad639127ea47320bacb223">CurTarget</a>-&gt;SetActorRotation(CurrentRotation);</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    }</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>}</div>
 </div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
-<div class="foldopen" id="foldopen00068" data-start="{" data-end="}">
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno"><a class="line" href="classAFoodHolder.html#add78a30de6b665ebeb227151656bd4db">   68</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAFoodHolder.html#add78a30de6b665ebeb227151656bd4db">AFoodHolder::GetLifetimeReplicatedProps</a>(TArray&lt;class FLifetimeProperty&gt;&amp; OutLifetimeProps)<span class="keyword"> const</span></div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="keyword"></span>{</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    Super::GetLifetimeReplicatedProps(OutLifetimeProps);</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    DOREPLIFETIME(<a class="code hl_class" href="classAFoodHolder.html">AFoodHolder</a>, <a class="code hl_variable" href="classAFoodHolder.html#aed2ca3859d2e7e048117990933022b2e">bIsActivated</a>);</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    DOREPLIFETIME(<a class="code hl_class" href="classAFoodHolder.html">AFoodHolder</a>, <a class="code hl_variable" href="classAFoodHolder.html#a1fa5d938a8ad639127ea47320bacb223">CurTarget</a>);</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>}</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
+<div class="foldopen" id="foldopen00070" data-start="{" data-end="}">
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno"><a class="line" href="classAFoodHolder.html#add78a30de6b665ebeb227151656bd4db">   70</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAFoodHolder.html#add78a30de6b665ebeb227151656bd4db">AFoodHolder::GetLifetimeReplicatedProps</a>(TArray&lt;class FLifetimeProperty&gt;&amp; OutLifetimeProps)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="keyword"></span>{</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    Super::GetLifetimeReplicatedProps(OutLifetimeProps);</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    DOREPLIFETIME(<a class="code hl_class" href="classAFoodHolder.html">AFoodHolder</a>, <a class="code hl_variable" href="classAFoodHolder.html#aed2ca3859d2e7e048117990933022b2e">bIsActivated</a>);</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    DOREPLIFETIME(<a class="code hl_class" href="classAFoodHolder.html">AFoodHolder</a>, <a class="code hl_variable" href="classAFoodHolder.html#a1fa5d938a8ad639127ea47320bacb223">CurTarget</a>);</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>}</div>
 </div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
-<div class="foldopen" id="foldopen00076" data-start="{" data-end="}">
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno"><a class="line" href="classAFoodHolder.html#ab2a9e26412062e2f78a8ca3da47f812d">   76</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAFoodHolder.html#ab2a9e26412062e2f78a8ca3da47f812d">AFoodHolder::OnRep_IsActivated</a>()</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>{</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    <span class="comment">// bIsActivated가 복제될 때 머티리얼 업데이트</span></div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    <a class="code hl_function" href="classAFoodHolder.html#a6ae24d4203c8538e43b6c62e0a1ede9e">UpdateActivateState</a>(<a class="code hl_variable" href="classAFoodHolder.html#aed2ca3859d2e7e048117990933022b2e">bIsActivated</a>);</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>}</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
+<div class="foldopen" id="foldopen00078" data-start="{" data-end="}">
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno"><a class="line" href="classAFoodHolder.html#ab2a9e26412062e2f78a8ca3da47f812d">   78</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAFoodHolder.html#ab2a9e26412062e2f78a8ca3da47f812d">AFoodHolder::OnRep_IsActivated</a>()</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>{</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    <span class="comment">// bIsActivated가 복제될 때 머티리얼 업데이트</span></div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    <a class="code hl_function" href="classAFoodHolder.html#a6ae24d4203c8538e43b6c62e0a1ede9e">UpdateActivateState</a>(<a class="code hl_variable" href="classAFoodHolder.html#aed2ca3859d2e7e048117990933022b2e">bIsActivated</a>);</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>}</div>
 </div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
-<div class="foldopen" id="foldopen00082" data-start="{" data-end="}">
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno"><a class="line" href="classAFoodHolder.html#af15994f3778c5c6c05aebcbf50b97400">   82</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAFoodHolder.html#af15994f3778c5c6c05aebcbf50b97400">AFoodHolder::OnRep_CurTarget</a>()</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>{</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    <span class="comment">// CurTarget이 복제될 때 클라이언트에서도 충돌 비활성화</span></div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAFoodHolder.html#a1fa5d938a8ad639127ea47320bacb223">CurTarget</a>)</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    {</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>        <span class="keywordflow">if</span> (<a class="code hl_class" href="classAFood.html">AFood</a>* Food = Cast&lt;AFood&gt;(<a class="code hl_variable" href="classAFoodHolder.html#a1fa5d938a8ad639127ea47320bacb223">CurTarget</a>))</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        {</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>            <span class="keywordflow">if</span> (Food-&gt;Mesh)</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>            {</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>                Food-&gt;Mesh-&gt;SetSimulatePhysics(<span class="keyword">false</span>);</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>                Food-&gt;Mesh-&gt;SetCollisionEnabled(ECollisionEnabled::NoCollision);</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>            }</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>            <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;AFoodHolder::OnRep_CurTarget - Disabled collision for Food on client&quot;</span>));</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>        }</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    }</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>}</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
+<div class="foldopen" id="foldopen00084" data-start="{" data-end="}">
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno"><a class="line" href="classAFoodHolder.html#af15994f3778c5c6c05aebcbf50b97400">   84</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAFoodHolder.html#af15994f3778c5c6c05aebcbf50b97400">AFoodHolder::OnRep_CurTarget</a>()</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>{</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    <span class="comment">// CurTarget이 복제될 때 클라이언트에서도 충돌 비활성화</span></div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAFoodHolder.html#a1fa5d938a8ad639127ea47320bacb223">CurTarget</a>)</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    {</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>        <span class="keywordflow">if</span> (<a class="code hl_class" href="classAFood.html">AFood</a>* Food = Cast&lt;AFood&gt;(<a class="code hl_variable" href="classAFoodHolder.html#a1fa5d938a8ad639127ea47320bacb223">CurTarget</a>))</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>        {</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>            <span class="keywordflow">if</span> (Food-&gt;Mesh)</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>            {</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>                Food-&gt;Mesh-&gt;SetSimulatePhysics(<span class="keyword">false</span>);</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>                Food-&gt;Mesh-&gt;SetCollisionEnabled(ECollisionEnabled::NoCollision);</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>            }</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>            <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;AFoodHolder::OnRep_CurTarget - Disabled collision for Food on client&quot;</span>));</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>        }</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    }</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>}</div>
 </div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span> </div>
-<div class="foldopen" id="foldopen00099" data-start="{" data-end="}">
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno"><a class="line" href="classAFoodHolder.html#afc12c10cd0894b7797a7141342186450">   99</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAFoodHolder.html#afc12c10cd0894b7797a7141342186450">AFoodHolder::SetAnswerFoodIndex</a>(int32 InAnswerFoodIndex)</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>{</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    this-&gt;<a class="code hl_variable" href="classAFoodHolder.html#a959b6b9f009d30337999734ec1abbc36">AnswerFoodIndex</a> = InAnswerFoodIndex;</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>}</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span> </div>
+<div class="foldopen" id="foldopen00101" data-start="{" data-end="}">
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno"><a class="line" href="classAFoodHolder.html#afc12c10cd0894b7797a7141342186450">  101</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAFoodHolder.html#afc12c10cd0894b7797a7141342186450">AFoodHolder::SetAnswerFoodIndex</a>(int32 InAnswerFoodIndex)</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>{</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    this-&gt;<a class="code hl_variable" href="classAFoodHolder.html#a959b6b9f009d30337999734ec1abbc36">AnswerFoodIndex</a> = InAnswerFoodIndex;</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>}</div>
 </div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
-<div class="foldopen" id="foldopen00104" data-start="{" data-end="}">
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno"><a class="line" href="classAFoodHolder.html#a8d48dbf197d3544ab3763d1a7e730859">  104</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAFoodHolder.html#a8d48dbf197d3544ab3763d1a7e730859">AFoodHolder::OnFoodBoxOverlapBegin</a>(</div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    UPrimitiveComponent* OverlappedComponent,</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    AActor* OtherActor,</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    UPrimitiveComponent* OtherComp,</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    int32 OtherBodyIndex,</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    <span class="keywordtype">bool</span> bFromSweep,</div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    <span class="keyword">const</span> FHitResult&amp; SweepResult)</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>{</div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    <span class="keywordflow">if</span> (!OtherActor)</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span> </div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>    <span class="keywordflow">if</span> (!HasAuthority())</div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span> </div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAFoodHolder.html#aed2ca3859d2e7e048117990933022b2e">bIsActivated</a>)</div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span> </div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    <a class="code hl_class" href="classALingoGameState.html">ALingoGameState</a>* GS = Cast&lt;ALingoGameState&gt;(GetWorld()-&gt;GetGameState());</div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>    <span class="keywordflow">if</span> (!GS)</div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span> </div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>    <span class="comment">// Food인지 확인</span></div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>    <span class="keywordflow">if</span> (<a class="code hl_class" href="classAFood.html">AFood</a>* Food = Cast&lt;AFood&gt;(OtherActor))</div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>    {</div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>        UE_LOG(LogTemp, Warning, TEXT(<span class="stringliteral">&quot;[OnFoodBoxOverlapBegin] Calling CheckFood...&quot;</span>));</div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>        <span class="keyword">const</span> <span class="keywordtype">bool</span> bSuccess = <a class="code hl_function" href="classAFoodHolder.html#a13aeb1948bac4f9ca7d91da7e3690625">CheckFood</a>(Food);</div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>        UE_LOG(LogTemp, Warning, TEXT(<span class="stringliteral">&quot;[OnFoodBoxOverlapBegin] CheckFood returned: %s&quot;</span>), bSuccess ? TEXT(<span class="stringliteral">&quot;TRUE&quot;</span>) : TEXT(<span class="stringliteral">&quot;FALSE&quot;</span>));</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span> </div>
+<div class="foldopen" id="foldopen00106" data-start="{" data-end="}">
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno"><a class="line" href="classAFoodHolder.html#a8d48dbf197d3544ab3763d1a7e730859">  106</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAFoodHolder.html#a8d48dbf197d3544ab3763d1a7e730859">AFoodHolder::OnFoodBoxOverlapBegin</a>(</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    UPrimitiveComponent* OverlappedComponent,</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    AActor* OtherActor,</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    UPrimitiveComponent* OtherComp,</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    int32 OtherBodyIndex,</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    <span class="keywordtype">bool</span> bFromSweep,</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    <span class="keyword">const</span> FHitResult&amp; SweepResult)</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>{</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    <span class="keywordflow">if</span> (!OtherActor)</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span> </div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>    <span class="keywordflow">if</span> (!HasAuthority())</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span> </div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAFoodHolder.html#aed2ca3859d2e7e048117990933022b2e">bIsActivated</a>)</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span> </div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>    <a class="code hl_class" href="classALingoGameState.html">ALingoGameState</a>* GS = Cast&lt;ALingoGameState&gt;(GetWorld()-&gt;GetGameState());</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>    <span class="keywordflow">if</span> (!GS)</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span> </div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>    <span class="comment">// Food인지 확인</span></div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>    <span class="keywordflow">if</span> (<a class="code hl_class" href="classAFood.html">AFood</a>* Food = Cast&lt;AFood&gt;(OtherActor))</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>    {</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>        <span class="keyword">const</span> <span class="keywordtype">bool</span> bSuccess = <a class="code hl_function" href="classAFoodHolder.html#a13aeb1948bac4f9ca7d91da7e3690625">CheckFood</a>(Food);</div>
 <div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span> </div>
 <div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>        <span class="comment">// 블루프린트 이벤트 호출</span></div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>        UE_LOG(LogTemp, Warning, TEXT(<span class="stringliteral">&quot;[OnFoodBoxOverlapBegin] Calling OnActivate(%s)&quot;</span>), bSuccess ? TEXT(<span class="stringliteral">&quot;TRUE&quot;</span>) : TEXT(<span class="stringliteral">&quot;FALSE&quot;</span>));</div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>        <a class="code hl_function" href="classAFoodHolder.html#ad6fded8adbfafbdeee3f114ed25d329f">OnActivate</a>(bSuccess);</div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>        UE_LOG(LogTemp, Warning, TEXT(<span class="stringliteral">&quot;[OnFoodBoxOverlapBegin] OnActivate finished, bSuccess is still: %s&quot;</span>), bSuccess ? TEXT(<span class="stringliteral">&quot;TRUE&quot;</span>) : TEXT(<span class="stringliteral">&quot;FALSE&quot;</span>));</div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span> </div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>        <span class="keywordflow">if</span> (bSuccess)</div>
-<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>        {</div>
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>            UE_LOG(LogTemp, Warning, TEXT(<span class="stringliteral">&quot;[FoodHolder] Correct&quot;</span>));</div>
-<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span> </div>
-<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>            <span class="comment">// 정답인 경우</span></div>
-<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>            int32 CorrectIdx = Food-&gt;GetFoodIndex();</div>
-<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>            FTimerHandle TimerHandle;</div>
-<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>            GetWorldTimerManager().SetTimer(TimerHandle, [<span class="keyword">this</span>, CorrectIdx]</div>
-<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>            {</div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>                <span class="comment">// 모든 클라이언트에 정답 인덱스와 함께 결과 팝업 표시</span></div>
-<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>                <a class="code hl_function" href="classAFoodHolder.html#a555cc5bd6fbe893c6737eff179e263d6">Multicast_ShowResultPopup</a>(CorrectIdx);</div>
-<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>            }, 0.5f, <span class="keyword">false</span>);</div>
-<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>        }</div>
-<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>        <span class="keywordflow">else</span></div>
-<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>        {</div>
-<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>            UE_LOG(LogTemp, Warning, TEXT(<span class="stringliteral">&quot;[FoodHolder] Wrong&quot;</span>));</div>
-<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span> </div>
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>            <span class="comment">// 오답인 경우</span></div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>            FTimerHandle TimerHandle;</div>
-<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>            GetWorldTimerManager().SetTimer(TimerHandle, [<span class="keyword">this</span>, Food, GS]</div>
-<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>            {</div>
-<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>                GS-&gt;<a class="code hl_variable" href="classALingoGameState.html#ac68fdc03f32358fc9ca40fc5f4ec9cc8">WrongReadAnswerList</a>.Add(Food-&gt;GetFoodIndex());</div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span> </div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>                <span class="comment">// 모든 클라이언트에 오답 메시지 표시</span></div>
-<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>                <a class="code hl_function" href="classAFoodHolder.html#a61a099c315b83eb124af26ea9a44fcf6">Multicast_ShowWrongPopup</a>(Food-&gt;GetFoodName());</div>
-<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span> </div>
-<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>                <span class="comment">// Food 소거 (서버에서만, 자동 복제됨)</span></div>
-<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>                Food-&gt;Destroy();</div>
-<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>            }, 0.5f, <span class="keyword">false</span>);</div>
-<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>        }</div>
-<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>    }</div>
-<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>}</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>        <a class="code hl_function" href="classAFoodHolder.html#ad6fded8adbfafbdeee3f114ed25d329f">OnActivate</a>(bSuccess);</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span> </div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>        <span class="keywordflow">if</span> (bSuccess)</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>        {</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>            UE_LOG(LogTemp, Warning, TEXT(<span class="stringliteral">&quot;[FoodHolder] Correct&quot;</span>));</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span> </div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>            <span class="comment">// 정답인 경우</span></div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>            int32 CorrectIdx = Food-&gt;GetFoodIndex();</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>            FTimerHandle TimerHandle;</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>            GetWorldTimerManager().SetTimer(TimerHandle, [<span class="keyword">this</span>, CorrectIdx]</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>            {</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>                <a class="code hl_class" href="classADoor.html">ADoor</a>* Door = <a class="code hl_function" href="classAFoodHolder.html#ac8d235b91a1d8b3cfc2812f0b578989d">FindDoorToOpen</a>();</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>                <span class="keywordflow">if</span> (Door) Door-&gt;<a class="code hl_function" href="classADoor.html#aa91e930c088a603a3a07694063bd4b55">OpenDoor</a>();</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>                </div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>                <span class="comment">// 모든 클라이언트에 정답 인덱스와 함께 결과 팝업 표시</span></div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>                <a class="code hl_function" href="classAFoodHolder.html#a555cc5bd6fbe893c6737eff179e263d6">Multicast_ShowResultPopup</a>(CorrectIdx);</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>            }, 0.5f, <span class="keyword">false</span>);</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>        }</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>        <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>        {</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>            UE_LOG(LogTemp, Warning, TEXT(<span class="stringliteral">&quot;[FoodHolder] Wrong&quot;</span>));</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span> </div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>            <span class="comment">// 오답인 경우</span></div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>            FTimerHandle TimerHandle;</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>            GetWorldTimerManager().SetTimer(TimerHandle, [<span class="keyword">this</span>, Food, GS]</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>            {</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>                GS-&gt;<a class="code hl_variable" href="classALingoGameState.html#ac68fdc03f32358fc9ca40fc5f4ec9cc8">WrongReadAnswerList</a>.Add(Food-&gt;GetFoodIndex());</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span> </div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>                <span class="comment">// 모든 클라이언트에 오답 메시지 표시</span></div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>                <a class="code hl_function" href="classAFoodHolder.html#a61a099c315b83eb124af26ea9a44fcf6">Multicast_ShowWrongPopup</a>(Food-&gt;GetFoodName());</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span> </div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>                <span class="comment">// Food 소거 (서버에서만, 자동 복제됨)</span></div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>                Food-&gt;Destroy();</div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>            }, 0.5f, <span class="keyword">false</span>);</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>        }</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>    }</div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>}</div>
 </div>
-<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span> </div>
-<div class="foldopen" id="foldopen00170" data-start="{" data-end="}">
-<div class="line"><a id="l00170" name="l00170"></a><span class="lineno"><a class="line" href="classAFoodHolder.html#a13aeb1948bac4f9ca7d91da7e3690625">  170</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="classAFoodHolder.html#a13aeb1948bac4f9ca7d91da7e3690625">AFoodHolder::CheckFood</a>(<a class="code hl_class" href="classAFood.html">AFood</a>* TargetFood)</div>
-<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>{</div>
-<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>    <span class="keywordflow">if</span> (!TargetFood)</div>
-<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>    {</div>
-<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>        UE_LOG(LogTemp, Error, TEXT(<span class="stringliteral">&quot;[CheckFood] TargetFood is null!&quot;</span>));</div>
-<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>    }</div>
-<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span> </div>
-<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>    <span class="comment">// Food의 모든 충돌 비활성화</span></div>
-<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>    <span class="keywordflow">if</span> (TargetFood-&gt;<a class="code hl_variable" href="classAFood.html#a16c38b4dc52b94ddcc975ac807d04714">Mesh</a>)</div>
-<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>    {</div>
-<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>        TargetFood-&gt;<a class="code hl_variable" href="classAFood.html#a16c38b4dc52b94ddcc975ac807d04714">Mesh</a>-&gt;SetSimulatePhysics(<span class="keyword">false</span>);</div>
-<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>        TargetFood-&gt;<a class="code hl_variable" href="classAFood.html#a16c38b4dc52b94ddcc975ac807d04714">Mesh</a>-&gt;SetCollisionEnabled(ECollisionEnabled::NoCollision);</div>
-<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>    }</div>
-<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span> </div>
-<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>    <span class="comment">// ListenQuest 정답 인덱스 가져오기</span></div>
-<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>    <a class="code hl_class" href="classALingoGameState.html">ALingoGameState</a>* GS = Cast&lt;ALingoGameState&gt;(GetWorld()-&gt;GetGameState());</div>
-<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>    <span class="keywordflow">if</span> (!GS)</div>
-<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>    {</div>
-<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>        UE_LOG(LogTemp, Error, TEXT(<span class="stringliteral">&quot;[CheckFood] GameState is null!&quot;</span>));</div>
-<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>    }</div>
-<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span> </div>
-<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>    <span class="keyword">const</span> int32 CorrectIdx = GS-&gt;<a class="code hl_function" href="classALingoGameState.html#a05dda129c32a08fc3432424f612ce50b">GetListenScenarioData</a>().<a class="code hl_variable" href="structFResponseListenScenario.html#ad57537cc7504a8cc73c37c350640d491">correct_answer_index</a>;</div>
-<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>    <span class="keyword">const</span> int32 FoodIdx = TargetFood-&gt;<a class="code hl_function" href="classAFood.html#a86daf17b69d7be7836670b5067b2598b">GetFoodIndex</a>();</div>
-<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span> </div>
-<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>    UE_LOG(LogTemp, Warning, TEXT(<span class="stringliteral">&quot;[CheckFood] CorrectIdx=%d, FoodIdx=%d, Match=%s&quot;</span>),</div>
-<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>        CorrectIdx, FoodIdx, (CorrectIdx == FoodIdx) ? TEXT(<span class="stringliteral">&quot;TRUE&quot;</span>) : TEXT(<span class="stringliteral">&quot;FALSE&quot;</span>));</div>
-<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span> </div>
-<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>    <span class="keywordflow">if</span> (CorrectIdx == FoodIdx)</div>
-<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>    {</div>
-<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>        UE_LOG(LogTemp, Warning, TEXT(<span class="stringliteral">&quot;[CheckFood] Returning TRUE&quot;</span>));</div>
-<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span> </div>
-<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>        <span class="comment">// Success: Food를 HoldPos 위치보다 살짝 위에 배치</span></div>
-<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>        FVector ActivatedLocation = <a class="code hl_variable" href="classAFoodHolder.html#a5a958174b57fe025bd17f50078007a46">HoldPos</a>-&gt;GetComponentLocation();</div>
-<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>        ActivatedLocation.Z += <a class="code hl_variable" href="classAFoodHolder.html#a2496e8e4594d7e92f9665deaf2bf9f67">ActivatedHeightOffset</a>;</div>
-<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>        TargetFood-&gt;SetActorLocation(ActivatedLocation);</div>
-<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>        TargetFood-&gt;SetActorRotation(<a class="code hl_variable" href="classAFoodHolder.html#a5a958174b57fe025bd17f50078007a46">HoldPos</a>-&gt;GetComponentRotation());</div>
-<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span> </div>
-<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>        <span class="comment">// Activate 상태로 전환</span></div>
-<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>        <a class="code hl_variable" href="classAFoodHolder.html#aed2ca3859d2e7e048117990933022b2e">bIsActivated</a> = <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>        <a class="code hl_variable" href="classAFoodHolder.html#a1fa5d938a8ad639127ea47320bacb223">CurTarget</a> = TargetFood;</div>
-<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span> </div>
-<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>        <span class="comment">// 서버에서도 머티리얼 업데이트 (클라이언트는 OnRep_IsActivated에서 호출됨)</span></div>
-<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>        <a class="code hl_function" href="classAFoodHolder.html#a6ae24d4203c8538e43b6c62e0a1ede9e">UpdateActivateState</a>(<span class="keyword">true</span>);</div>
-<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span> </div>
-<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>    }</div>
-<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>    <span class="keywordflow">else</span></div>
-<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>    {</div>
-<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>        UE_LOG(LogTemp, Warning, TEXT(<span class="stringliteral">&quot;[CheckFood] Returning FALSE&quot;</span>));</div>
-<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span> </div>
-<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>        <span class="comment">// Fail: 서버에서 머티리얼 업데이트 (오답)</span></div>
-<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>        <a class="code hl_variable" href="classAFoodHolder.html#aed2ca3859d2e7e048117990933022b2e">bIsActivated</a> = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>        <a class="code hl_function" href="classAFoodHolder.html#a6ae24d4203c8538e43b6c62e0a1ede9e">UpdateActivateState</a>(<span class="keyword">false</span>);</div>
-<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span> </div>
-<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>    }</div>
-<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>}</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span> </div>
+<div class="foldopen" id="foldopen00171" data-start="{" data-end="}">
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno"><a class="line" href="classAFoodHolder.html#a13aeb1948bac4f9ca7d91da7e3690625">  171</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="classAFoodHolder.html#a13aeb1948bac4f9ca7d91da7e3690625">AFoodHolder::CheckFood</a>(<a class="code hl_class" href="classAFood.html">AFood</a>* TargetFood)</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>{</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>    <span class="keywordflow">if</span> (!TargetFood) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span> </div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>    <span class="comment">// Food의 모든 충돌 비활성화</span></div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>    <span class="keywordflow">if</span> (TargetFood-&gt;<a class="code hl_variable" href="classAFood.html#a16c38b4dc52b94ddcc975ac807d04714">Mesh</a>)</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>    {</div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>        TargetFood-&gt;<a class="code hl_variable" href="classAFood.html#a16c38b4dc52b94ddcc975ac807d04714">Mesh</a>-&gt;SetSimulatePhysics(<span class="keyword">false</span>);</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>        TargetFood-&gt;<a class="code hl_variable" href="classAFood.html#a16c38b4dc52b94ddcc975ac807d04714">Mesh</a>-&gt;SetCollisionEnabled(ECollisionEnabled::NoCollision);</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>    }</div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span> </div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>    <span class="comment">// ListenQuest 정답 인덱스 가져오기</span></div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>    <a class="code hl_class" href="classALingoGameState.html">ALingoGameState</a>* GS = Cast&lt;ALingoGameState&gt;(GetWorld()-&gt;GetGameState());</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>    <span class="keywordflow">if</span> (!GS) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span> </div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>    <span class="keyword">const</span> int32 CorrectIdx = GS-&gt;<a class="code hl_function" href="classALingoGameState.html#a05dda129c32a08fc3432424f612ce50b">GetListenScenarioData</a>().<a class="code hl_variable" href="structFResponseListenScenario.html#ad57537cc7504a8cc73c37c350640d491">correct_answer_index</a>;</div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>    <span class="keyword">const</span> int32 FoodIdx = TargetFood-&gt;<a class="code hl_function" href="classAFood.html#a86daf17b69d7be7836670b5067b2598b">GetFoodIndex</a>();</div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span> </div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>    <span class="keywordflow">if</span> (CorrectIdx == FoodIdx)</div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>    {</div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>        <span class="comment">// Success: Food를 HoldPos 위치보다 살짝 위에 배치</span></div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>        FVector ActivatedLocation = <a class="code hl_variable" href="classAFoodHolder.html#a5a958174b57fe025bd17f50078007a46">HoldPos</a>-&gt;GetComponentLocation();</div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>        ActivatedLocation.Z += <a class="code hl_variable" href="classAFoodHolder.html#a2496e8e4594d7e92f9665deaf2bf9f67">ActivatedHeightOffset</a>;</div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>        TargetFood-&gt;SetActorLocation(ActivatedLocation);</div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>        TargetFood-&gt;SetActorRotation(<a class="code hl_variable" href="classAFoodHolder.html#a5a958174b57fe025bd17f50078007a46">HoldPos</a>-&gt;GetComponentRotation());</div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span> </div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>        <span class="comment">// Activate 상태로 전환</span></div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>        <a class="code hl_variable" href="classAFoodHolder.html#aed2ca3859d2e7e048117990933022b2e">bIsActivated</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>        <a class="code hl_variable" href="classAFoodHolder.html#a1fa5d938a8ad639127ea47320bacb223">CurTarget</a> = TargetFood;</div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span> </div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>        <span class="comment">// 서버에서도 머티리얼 업데이트 (클라이언트는 OnRep_IsActivated에서 호출됨)</span></div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>        <a class="code hl_function" href="classAFoodHolder.html#a6ae24d4203c8538e43b6c62e0a1ede9e">UpdateActivateState</a>(<span class="keyword">true</span>);</div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span> </div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>    }</div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>    <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>    {</div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>        UE_LOG(LogTemp, Warning, TEXT(<span class="stringliteral">&quot;[CheckFood] Returning FALSE&quot;</span>));</div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span> </div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>        <span class="comment">// Fail: 서버에서 머티리얼 업데이트 (오답)</span></div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>        <a class="code hl_variable" href="classAFoodHolder.html#aed2ca3859d2e7e048117990933022b2e">bIsActivated</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>        <a class="code hl_function" href="classAFoodHolder.html#a6ae24d4203c8538e43b6c62e0a1ede9e">UpdateActivateState</a>(<span class="keyword">false</span>);</div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span> </div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>    }</div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>}</div>
 </div>
-<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span> </div>
-<div class="foldopen" id="foldopen00230" data-start="{" data-end="}">
-<div class="line"><a id="l00230" name="l00230"></a><span class="lineno"><a class="line" href="classAFoodHolder.html#a6ae24d4203c8538e43b6c62e0a1ede9e">  230</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAFoodHolder.html#a6ae24d4203c8538e43b6c62e0a1ede9e">AFoodHolder::UpdateActivateState</a>(<span class="keywordtype">bool</span> State)</div>
-<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>{</div>
-<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>    <span class="comment">// 머티리얼 파라미터 설정</span></div>
-<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAFoodHolder.html#aa44e6d94b93c710a3c7debc4f281adbc">MeshComponent</a> &amp;&amp; <a class="code hl_variable" href="classAFoodHolder.html#aa44e6d94b93c710a3c7debc4f281adbc">MeshComponent</a>-&gt;GetNumMaterials() &gt; 0)</div>
-<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>    {</div>
-<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>        UMaterialInstanceDynamic* DynamicMaterial = Cast&lt;UMaterialInstanceDynamic&gt;(<a class="code hl_variable" href="classAFoodHolder.html#aa44e6d94b93c710a3c7debc4f281adbc">MeshComponent</a>-&gt;GetMaterial(0));</div>
-<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>        <span class="keywordflow">if</span> (!DynamicMaterial)</div>
-<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>            DynamicMaterial = <a class="code hl_variable" href="classAFoodHolder.html#aa44e6d94b93c710a3c7debc4f281adbc">MeshComponent</a>-&gt;CreateDynamicMaterialInstance(0);</div>
-<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span> </div>
-<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>        <span class="keywordflow">if</span> (DynamicMaterial)</div>
-<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>            DynamicMaterial-&gt;SetScalarParameterValue(FName(<span class="stringliteral">&quot;Activate&quot;</span>), State ? 1.0f : 0.0f);</div>
-<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>    }</div>
-<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>}</div>
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span> </div>
+<div class="foldopen" id="foldopen00218" data-start="{" data-end="}">
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno"><a class="line" href="classAFoodHolder.html#a6ae24d4203c8538e43b6c62e0a1ede9e">  218</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAFoodHolder.html#a6ae24d4203c8538e43b6c62e0a1ede9e">AFoodHolder::UpdateActivateState</a>(<span class="keywordtype">bool</span> State)</div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>{</div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>    <span class="comment">// 머티리얼 파라미터 설정</span></div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAFoodHolder.html#aa44e6d94b93c710a3c7debc4f281adbc">MeshComponent</a> &amp;&amp; <a class="code hl_variable" href="classAFoodHolder.html#aa44e6d94b93c710a3c7debc4f281adbc">MeshComponent</a>-&gt;GetNumMaterials() &gt; 0)</div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>    {</div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>        UMaterialInstanceDynamic* DynamicMaterial = Cast&lt;UMaterialInstanceDynamic&gt;(<a class="code hl_variable" href="classAFoodHolder.html#aa44e6d94b93c710a3c7debc4f281adbc">MeshComponent</a>-&gt;GetMaterial(0));</div>
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>        <span class="keywordflow">if</span> (!DynamicMaterial)</div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>            DynamicMaterial = <a class="code hl_variable" href="classAFoodHolder.html#aa44e6d94b93c710a3c7debc4f281adbc">MeshComponent</a>-&gt;CreateDynamicMaterialInstance(0);</div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span> </div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>        <span class="keywordflow">if</span> (DynamicMaterial)</div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>            DynamicMaterial-&gt;SetScalarParameterValue(FName(<span class="stringliteral">&quot;Activate&quot;</span>), State ? 1.0f : 0.0f);</div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>    }</div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>}</div>
 </div>
-<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span> </div>
-<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span><span class="keywordtype">void</span> AFoodHolder::Multicast_ShowResultPopup_Implementation(int32 CorrectAnswerIndex)</div>
-<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>{</div>
-<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>    <span class="comment">// 모든 클라이언트에서 로컬 GameState에 정답 인덱스 추가</span></div>
-<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>    <span class="keywordflow">if</span> (<a class="code hl_class" href="classALingoGameState.html">ALingoGameState</a>* GS = Cast&lt;ALingoGameState&gt;(GetWorld()-&gt;GetGameState()))</div>
-<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span>    {</div>
-<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span>        <span class="comment">// 중복 체크 후 추가</span></div>
-<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span>        <span class="keywordflow">if</span> (!GS-&gt;WrongReadAnswerList.Contains(CorrectAnswerIndex))</div>
-<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>        {</div>
-<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span>            GS-&gt;WrongReadAnswerList.Add(CorrectAnswerIndex);</div>
-<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>            <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[Multicast_ShowResultPopup] Added correct answer index %d to local GameState&quot;</span>), CorrectAnswerIndex);</div>
-<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span>        }</div>
-<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>    }</div>
-<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span> </div>
-<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span>    <span class="comment">// 팝업 표시</span></div>
-<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> Popup = UPopupManager::ShowPopupAs&lt;UPopup_Result&gt;(GetWorld(), EPopupType::Result))</div>
-<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span>    {</div>
-<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span>        Popup-&gt;InitPopup(<a class="code hl_enumvalue" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a7a1a5f3e79fdc91edf2f5ead9d66abb4">EQuestType::Read</a>);</div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span> </div>
+<div class="foldopen" id="foldopen00232" data-start="{" data-end="}">
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno"><a class="line" href="classAFoodHolder.html#ac8d235b91a1d8b3cfc2812f0b578989d">  232</a></span><span class="keyword">class </span><a class="code hl_class" href="classADoor.html">ADoor</a>* <a class="code hl_function" href="classAFoodHolder.html#ac8d235b91a1d8b3cfc2812f0b578989d">AFoodHolder::FindDoorToOpen</a>()</div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>{</div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>    TArray&lt;AActor*&gt; CityNames;</div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>    UGameplayStatics::GetAllActorsOfClass(GetWorld(), ADoor::StaticClass(), CityNames);</div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span> </div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> CityName : CityNames)</div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>    {</div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>        <span class="keywordflow">if</span> (<a class="code hl_class" href="classADoor.html">ADoor</a>* CN = Cast&lt;ADoor&gt;(CityName))</div>
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>        {</div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>            <span class="keywordflow">if</span> (CN-&gt;DoorIndex == <a class="code hl_variable" href="classAFoodHolder.html#ae85b0f46ed727cfbd88263e041d4a5f2">Index</a>)</div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>            {</div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>                <span class="keywordflow">return</span> CN;</div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>            }</div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>        }</div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>    }</div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>    <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>}</div>
+</div>
+<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span> </div>
+<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span><span class="keywordtype">void</span> AFoodHolder::Multicast_ShowResultPopup_Implementation(int32 CorrectAnswerIndex)</div>
+<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>{</div>
+<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span>    <span class="comment">// 모든 클라이언트에서 로컬 GameState에 정답 인덱스 추가</span></div>
+<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>    <span class="keywordflow">if</span> (<a class="code hl_class" href="classALingoGameState.html">ALingoGameState</a>* GS = Cast&lt;ALingoGameState&gt;(GetWorld()-&gt;GetGameState()))</div>
+<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span>    {</div>
+<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>        <span class="comment">// 중복 체크 후 추가</span></div>
+<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>        <span class="keywordflow">if</span> (!GS-&gt;WrongReadAnswerList.Contains(CorrectAnswerIndex))</div>
+<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span>        {</div>
+<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span>            GS-&gt;WrongReadAnswerList.Add(CorrectAnswerIndex);</div>
+<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span>            <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[Multicast_ShowResultPopup] Added correct answer index %d to local GameState&quot;</span>), CorrectAnswerIndex);</div>
+<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span>        }</div>
 <div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span>    }</div>
-<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span>}</div>
-<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span> </div>
-<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span><span class="keywordtype">void</span> AFoodHolder::Multicast_ShowWrongPopup_Implementation(<span class="keyword">const</span> FString&amp; FoodName)</div>
-<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span>{</div>
-<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span>    <span class="comment">// 모든 클라이언트(호스트 포함)에서 오답 메시지 표시</span></div>
-<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span>    FString Message = FString::Printf(TEXT(<span class="stringliteral">&quot;Wrong Answer\nThis is not the correct Answer.\n\nFood: %s&quot;</span>),</div>
-<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span>        *FoodName);</div>
-<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span> </div>
-<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> DM = UBroadcastManager::Get(<span class="keyword">this</span>))</div>
-<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span>        DM-&gt;SendTutorMessage(FText::FromString(Message));</div>
-<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span>}</div>
+<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span> </div>
+<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span>    <span class="comment">// 팝업 표시</span></div>
+<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> Popup = UPopupManager::ShowPopupAs&lt;UPopup_Result&gt;(GetWorld(), EPopupType::Result))</div>
+<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span>    {</div>
+<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span>        Popup-&gt;InitPopup(<a class="code hl_enumvalue" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a7a1a5f3e79fdc91edf2f5ead9d66abb4">EQuestType::Read</a>);</div>
+<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span>    }</div>
+<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span>}</div>
+<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span> </div>
+<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span><span class="keywordtype">void</span> AFoodHolder::Multicast_ShowWrongPopup_Implementation(<span class="keyword">const</span> FString&amp; FoodName)</div>
+<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span>{</div>
+<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span>    <span class="comment">// 모든 클라이언트(호스트 포함)에서 오답 메시지 표시</span></div>
+<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span>    FString Message = FString::Printf(TEXT(<span class="stringliteral">&quot;Wrong Answer\nThis is not the correct Answer.\n\nFood: %s&quot;</span>),</div>
+<div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span>        *FoodName);</div>
+<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span> </div>
+<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> DM = UBroadcastManager::Get(<span class="keyword">this</span>))</div>
+<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span>        DM-&gt;SendTutorMessage(FText::FromString(Message));</div>
+<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span>}</div>
+<div class="ttc" id="aADoor_8h_html"><div class="ttname"><a href="ADoor_8h.html">ADoor.h</a></div></div>
 <div class="ttc" id="aALingoGameState_8h_html"><div class="ttname"><a href="ALingoGameState_8h.html">ALingoGameState.h</a></div></div>
 <div class="ttc" id="aALingoGameState_8h_html_a1a866ca8104ebd47ce462347a6125921a7a1a5f3e79fdc91edf2f5ead9d66abb4"><div class="ttname"><a href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a7a1a5f3e79fdc91edf2f5ead9d66abb4">EQuestType::Read</a></div><div class="ttdeci">@ Read</div></div>
 <div class="ttc" id="aANetworkBroadcastActor_8h_html"><div class="ttname"><a href="ANetworkBroadcastActor_8h.html">ANetworkBroadcastActor.h</a></div><div class="ttdoc">네트워크 복제를 위한 전역 브로드캐스트 Actor</div></div>
@@ -412,31 +421,35 @@ $(document).ready(function(){initNavTree('FoodHolder_8cpp_source.html',''); init
 <div class="ttc" id="aPopup__Result_8h_html"><div class="ttname"><a href="Popup__Result_8h.html">Popup_Result.h</a></div></div>
 <div class="ttc" id="aUBroadcastManager_8h_html"><div class="ttname"><a href="UBroadcastManager_8h.html">UBroadcastManager.h</a></div></div>
 <div class="ttc" id="aUPopupManager_8h_html"><div class="ttname"><a href="UPopupManager_8h.html">UPopupManager.h</a></div></div>
+<div class="ttc" id="aclassADoor_html"><div class="ttname"><a href="classADoor.html">ADoor</a></div><div class="ttdef"><b>Definition</b> <a href="ADoor_8h_source.html#l00010">ADoor.h:11</a></div></div>
+<div class="ttc" id="aclassADoor_html_aa91e930c088a603a3a07694063bd4b55"><div class="ttname"><a href="classADoor.html#aa91e930c088a603a3a07694063bd4b55">ADoor::OpenDoor</a></div><div class="ttdeci">void OpenDoor()</div></div>
 <div class="ttc" id="aclassAFoodHolder_html"><div class="ttname"><a href="classAFoodHolder.html">AFoodHolder</a></div><div class="ttdef"><b>Definition</b> <a href="FoodHolder_8h_source.html#l00010">FoodHolder.h:11</a></div></div>
-<div class="ttc" id="aclassAFoodHolder_html_a109c76ed25c3639810c1a4461df8b121"><div class="ttname"><a href="classAFoodHolder.html#a109c76ed25c3639810c1a4461df8b121">AFoodHolder::Tick</a></div><div class="ttdeci">virtual void Tick(float DeltaTime) override</div><div class="ttdef"><b>Definition</b> <a href="FoodHolder_8cpp_source.html#l00055">FoodHolder.cpp:55</a></div></div>
-<div class="ttc" id="aclassAFoodHolder_html_a13aeb1948bac4f9ca7d91da7e3690625"><div class="ttname"><a href="classAFoodHolder.html#a13aeb1948bac4f9ca7d91da7e3690625">AFoodHolder::CheckFood</a></div><div class="ttdeci">bool CheckFood(class AFood *TargetFood)</div><div class="ttdoc">Food 검증 함수</div><div class="ttdef"><b>Definition</b> <a href="FoodHolder_8cpp_source.html#l00170">FoodHolder.cpp:170</a></div></div>
-<div class="ttc" id="aclassAFoodHolder_html_a1fa5d938a8ad639127ea47320bacb223"><div class="ttname"><a href="classAFoodHolder.html#a1fa5d938a8ad639127ea47320bacb223">AFoodHolder::CurTarget</a></div><div class="ttdeci">TObjectPtr&lt; class AActor &gt; CurTarget</div><div class="ttdef"><b>Definition</b> <a href="FoodHolder_8h_source.html#l00089">FoodHolder.h:89</a></div></div>
-<div class="ttc" id="aclassAFoodHolder_html_a2496e8e4594d7e92f9665deaf2bf9f67"><div class="ttname"><a href="classAFoodHolder.html#a2496e8e4594d7e92f9665deaf2bf9f67">AFoodHolder::ActivatedHeightOffset</a></div><div class="ttdeci">float ActivatedHeightOffset</div><div class="ttdef"><b>Definition</b> <a href="FoodHolder_8h_source.html#l00097">FoodHolder.h:97</a></div></div>
+<div class="ttc" id="aclassAFoodHolder_html_a109c76ed25c3639810c1a4461df8b121"><div class="ttname"><a href="classAFoodHolder.html#a109c76ed25c3639810c1a4461df8b121">AFoodHolder::Tick</a></div><div class="ttdeci">virtual void Tick(float DeltaTime) override</div><div class="ttdef"><b>Definition</b> <a href="FoodHolder_8cpp_source.html#l00057">FoodHolder.cpp:57</a></div></div>
+<div class="ttc" id="aclassAFoodHolder_html_a13aeb1948bac4f9ca7d91da7e3690625"><div class="ttname"><a href="classAFoodHolder.html#a13aeb1948bac4f9ca7d91da7e3690625">AFoodHolder::CheckFood</a></div><div class="ttdeci">bool CheckFood(class AFood *TargetFood)</div><div class="ttdoc">Food 검증 함수</div><div class="ttdef"><b>Definition</b> <a href="FoodHolder_8cpp_source.html#l00171">FoodHolder.cpp:171</a></div></div>
+<div class="ttc" id="aclassAFoodHolder_html_a1fa5d938a8ad639127ea47320bacb223"><div class="ttname"><a href="classAFoodHolder.html#a1fa5d938a8ad639127ea47320bacb223">AFoodHolder::CurTarget</a></div><div class="ttdeci">TObjectPtr&lt; class AActor &gt; CurTarget</div><div class="ttdef"><b>Definition</b> <a href="FoodHolder_8h_source.html#l00092">FoodHolder.h:92</a></div></div>
+<div class="ttc" id="aclassAFoodHolder_html_a2496e8e4594d7e92f9665deaf2bf9f67"><div class="ttname"><a href="classAFoodHolder.html#a2496e8e4594d7e92f9665deaf2bf9f67">AFoodHolder::ActivatedHeightOffset</a></div><div class="ttdeci">float ActivatedHeightOffset</div><div class="ttdef"><b>Definition</b> <a href="FoodHolder_8h_source.html#l00100">FoodHolder.h:100</a></div></div>
 <div class="ttc" id="aclassAFoodHolder_html_a354e1f756167bc3c338cc632b7c9273e"><div class="ttname"><a href="classAFoodHolder.html#a354e1f756167bc3c338cc632b7c9273e">AFoodHolder::BoxCollision</a></div><div class="ttdeci">TObjectPtr&lt; class UBoxComponent &gt; BoxCollision</div><div class="ttdef"><b>Definition</b> <a href="FoodHolder_8h_source.html#l00078">FoodHolder.h:78</a></div></div>
 <div class="ttc" id="aclassAFoodHolder_html_a555cc5bd6fbe893c6737eff179e263d6"><div class="ttname"><a href="classAFoodHolder.html#a555cc5bd6fbe893c6737eff179e263d6">AFoodHolder::Multicast_ShowResultPopup</a></div><div class="ttdeci">void Multicast_ShowResultPopup(int32 CorrectAnswerIndex)</div><div class="ttdoc">[Multicast RPC] 모든 클라이언트에 정답 결과 팝업 표시</div></div>
-<div class="ttc" id="aclassAFoodHolder_html_a565e6ccdb08bb878bd88d8eb27dee677"><div class="ttname"><a href="classAFoodHolder.html#a565e6ccdb08bb878bd88d8eb27dee677">AFoodHolder::BeginPlay</a></div><div class="ttdeci">virtual void BeginPlay() override</div><div class="ttdef"><b>Definition</b> <a href="FoodHolder_8cpp_source.html#l00045">FoodHolder.cpp:45</a></div></div>
+<div class="ttc" id="aclassAFoodHolder_html_a565e6ccdb08bb878bd88d8eb27dee677"><div class="ttname"><a href="classAFoodHolder.html#a565e6ccdb08bb878bd88d8eb27dee677">AFoodHolder::BeginPlay</a></div><div class="ttdeci">virtual void BeginPlay() override</div><div class="ttdef"><b>Definition</b> <a href="FoodHolder_8cpp_source.html#l00047">FoodHolder.cpp:47</a></div></div>
 <div class="ttc" id="aclassAFoodHolder_html_a5a958174b57fe025bd17f50078007a46"><div class="ttname"><a href="classAFoodHolder.html#a5a958174b57fe025bd17f50078007a46">AFoodHolder::HoldPos</a></div><div class="ttdeci">TObjectPtr&lt; class USceneComponent &gt; HoldPos</div><div class="ttdef"><b>Definition</b> <a href="FoodHolder_8h_source.html#l00084">FoodHolder.h:84</a></div></div>
 <div class="ttc" id="aclassAFoodHolder_html_a61a099c315b83eb124af26ea9a44fcf6"><div class="ttname"><a href="classAFoodHolder.html#a61a099c315b83eb124af26ea9a44fcf6">AFoodHolder::Multicast_ShowWrongPopup</a></div><div class="ttdeci">void Multicast_ShowWrongPopup(const FString &amp;FoodName)</div><div class="ttdoc">[Multicast RPC] 모든 클라이언트에 오답 메시지 표시</div></div>
-<div class="ttc" id="aclassAFoodHolder_html_a6ae24d4203c8538e43b6c62e0a1ede9e"><div class="ttname"><a href="classAFoodHolder.html#a6ae24d4203c8538e43b6c62e0a1ede9e">AFoodHolder::UpdateActivateState</a></div><div class="ttdeci">void UpdateActivateState(bool State)</div><div class="ttdef"><b>Definition</b> <a href="FoodHolder_8cpp_source.html#l00230">FoodHolder.cpp:230</a></div></div>
-<div class="ttc" id="aclassAFoodHolder_html_a8d48dbf197d3544ab3763d1a7e730859"><div class="ttname"><a href="classAFoodHolder.html#a8d48dbf197d3544ab3763d1a7e730859">AFoodHolder::OnFoodBoxOverlapBegin</a></div><div class="ttdeci">void OnFoodBoxOverlapBegin(UPrimitiveComponent *OverlappedComponent, AActor *OtherActor, UPrimitiveComponent *OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult &amp;SweepResult)</div><div class="ttdoc">BoxCollision Overlap 콜백</div><div class="ttdef"><b>Definition</b> <a href="FoodHolder_8cpp_source.html#l00104">FoodHolder.cpp:104</a></div></div>
-<div class="ttc" id="aclassAFoodHolder_html_a959b6b9f009d30337999734ec1abbc36"><div class="ttname"><a href="classAFoodHolder.html#a959b6b9f009d30337999734ec1abbc36">AFoodHolder::AnswerFoodIndex</a></div><div class="ttdeci">int32 AnswerFoodIndex</div><div class="ttdoc">정답 Food 인덱스 (-1이면 모든 Food 허용)</div><div class="ttdef"><b>Definition</b> <a href="FoodHolder_8h_source.html#l00104">FoodHolder.h:104</a></div></div>
+<div class="ttc" id="aclassAFoodHolder_html_a6ae24d4203c8538e43b6c62e0a1ede9e"><div class="ttname"><a href="classAFoodHolder.html#a6ae24d4203c8538e43b6c62e0a1ede9e">AFoodHolder::UpdateActivateState</a></div><div class="ttdeci">void UpdateActivateState(bool State)</div><div class="ttdef"><b>Definition</b> <a href="FoodHolder_8cpp_source.html#l00218">FoodHolder.cpp:218</a></div></div>
+<div class="ttc" id="aclassAFoodHolder_html_a8d48dbf197d3544ab3763d1a7e730859"><div class="ttname"><a href="classAFoodHolder.html#a8d48dbf197d3544ab3763d1a7e730859">AFoodHolder::OnFoodBoxOverlapBegin</a></div><div class="ttdeci">void OnFoodBoxOverlapBegin(UPrimitiveComponent *OverlappedComponent, AActor *OtherActor, UPrimitiveComponent *OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult &amp;SweepResult)</div><div class="ttdoc">BoxCollision Overlap 콜백</div><div class="ttdef"><b>Definition</b> <a href="FoodHolder_8cpp_source.html#l00106">FoodHolder.cpp:106</a></div></div>
+<div class="ttc" id="aclassAFoodHolder_html_a959b6b9f009d30337999734ec1abbc36"><div class="ttname"><a href="classAFoodHolder.html#a959b6b9f009d30337999734ec1abbc36">AFoodHolder::AnswerFoodIndex</a></div><div class="ttdeci">int32 AnswerFoodIndex</div><div class="ttdoc">정답 Food 인덱스 (-1이면 모든 Food 허용)</div><div class="ttdef"><b>Definition</b> <a href="FoodHolder_8h_source.html#l00107">FoodHolder.h:107</a></div></div>
 <div class="ttc" id="aclassAFoodHolder_html_aa44e6d94b93c710a3c7debc4f281adbc"><div class="ttname"><a href="classAFoodHolder.html#aa44e6d94b93c710a3c7debc4f281adbc">AFoodHolder::MeshComponent</a></div><div class="ttdeci">TObjectPtr&lt; class USkeletalMeshComponent &gt; MeshComponent</div><div class="ttdef"><b>Definition</b> <a href="FoodHolder_8h_source.html#l00081">FoodHolder.h:81</a></div></div>
-<div class="ttc" id="aclassAFoodHolder_html_ab2a9e26412062e2f78a8ca3da47f812d"><div class="ttname"><a href="classAFoodHolder.html#ab2a9e26412062e2f78a8ca3da47f812d">AFoodHolder::OnRep_IsActivated</a></div><div class="ttdeci">void OnRep_IsActivated()</div><div class="ttdef"><b>Definition</b> <a href="FoodHolder_8cpp_source.html#l00076">FoodHolder.cpp:76</a></div></div>
-<div class="ttc" id="aclassAFoodHolder_html_ab5231ae688a77b08672c794165232b99"><div class="ttname"><a href="classAFoodHolder.html#ab5231ae688a77b08672c794165232b99">AFoodHolder::RotationSpeed</a></div><div class="ttdeci">float RotationSpeed</div><div class="ttdef"><b>Definition</b> <a href="FoodHolder_8h_source.html#l00100">FoodHolder.h:100</a></div></div>
+<div class="ttc" id="aclassAFoodHolder_html_ab2a9e26412062e2f78a8ca3da47f812d"><div class="ttname"><a href="classAFoodHolder.html#ab2a9e26412062e2f78a8ca3da47f812d">AFoodHolder::OnRep_IsActivated</a></div><div class="ttdeci">void OnRep_IsActivated()</div><div class="ttdef"><b>Definition</b> <a href="FoodHolder_8cpp_source.html#l00078">FoodHolder.cpp:78</a></div></div>
+<div class="ttc" id="aclassAFoodHolder_html_ab5231ae688a77b08672c794165232b99"><div class="ttname"><a href="classAFoodHolder.html#ab5231ae688a77b08672c794165232b99">AFoodHolder::RotationSpeed</a></div><div class="ttdeci">float RotationSpeed</div><div class="ttdef"><b>Definition</b> <a href="FoodHolder_8h_source.html#l00103">FoodHolder.h:103</a></div></div>
+<div class="ttc" id="aclassAFoodHolder_html_ac8d235b91a1d8b3cfc2812f0b578989d"><div class="ttname"><a href="classAFoodHolder.html#ac8d235b91a1d8b3cfc2812f0b578989d">AFoodHolder::FindDoorToOpen</a></div><div class="ttdeci">class ADoor * FindDoorToOpen()</div><div class="ttdef"><b>Definition</b> <a href="FoodHolder_8cpp_source.html#l00232">FoodHolder.cpp:232</a></div></div>
 <div class="ttc" id="aclassAFoodHolder_html_ad6fded8adbfafbdeee3f114ed25d329f"><div class="ttname"><a href="classAFoodHolder.html#ad6fded8adbfafbdeee3f114ed25d329f">AFoodHolder::OnActivate</a></div><div class="ttdeci">void OnActivate(bool bSuccess)</div></div>
-<div class="ttc" id="aclassAFoodHolder_html_add78a30de6b665ebeb227151656bd4db"><div class="ttname"><a href="classAFoodHolder.html#add78a30de6b665ebeb227151656bd4db">AFoodHolder::GetLifetimeReplicatedProps</a></div><div class="ttdeci">virtual void GetLifetimeReplicatedProps(TArray&lt; class FLifetimeProperty &gt; &amp;OutLifetimeProps) const override</div><div class="ttdef"><b>Definition</b> <a href="FoodHolder_8cpp_source.html#l00068">FoodHolder.cpp:68</a></div></div>
-<div class="ttc" id="aclassAFoodHolder_html_ae9d05f11b8bd8e0caa568aa5e4980981"><div class="ttname"><a href="classAFoodHolder.html#ae9d05f11b8bd8e0caa568aa5e4980981">AFoodHolder::AFoodHolder</a></div><div class="ttdeci">AFoodHolder()</div><div class="ttdef"><b>Definition</b> <a href="FoodHolder_8cpp_source.html#l00018">FoodHolder.cpp:18</a></div></div>
-<div class="ttc" id="aclassAFoodHolder_html_aed2ca3859d2e7e048117990933022b2e"><div class="ttname"><a href="classAFoodHolder.html#aed2ca3859d2e7e048117990933022b2e">AFoodHolder::bIsActivated</a></div><div class="ttdeci">bool bIsActivated</div><div class="ttdef"><b>Definition</b> <a href="FoodHolder_8h_source.html#l00093">FoodHolder.h:93</a></div></div>
-<div class="ttc" id="aclassAFoodHolder_html_af15994f3778c5c6c05aebcbf50b97400"><div class="ttname"><a href="classAFoodHolder.html#af15994f3778c5c6c05aebcbf50b97400">AFoodHolder::OnRep_CurTarget</a></div><div class="ttdeci">void OnRep_CurTarget()</div><div class="ttdef"><b>Definition</b> <a href="FoodHolder_8cpp_source.html#l00082">FoodHolder.cpp:82</a></div></div>
-<div class="ttc" id="aclassAFoodHolder_html_afc12c10cd0894b7797a7141342186450"><div class="ttname"><a href="classAFoodHolder.html#afc12c10cd0894b7797a7141342186450">AFoodHolder::SetAnswerFoodIndex</a></div><div class="ttdeci">void SetAnswerFoodIndex(int32 InAnswerFoodIndex)</div><div class="ttdoc">정답 Food 인덱스 설정</div><div class="ttdef"><b>Definition</b> <a href="FoodHolder_8cpp_source.html#l00099">FoodHolder.cpp:99</a></div></div>
+<div class="ttc" id="aclassAFoodHolder_html_add78a30de6b665ebeb227151656bd4db"><div class="ttname"><a href="classAFoodHolder.html#add78a30de6b665ebeb227151656bd4db">AFoodHolder::GetLifetimeReplicatedProps</a></div><div class="ttdeci">virtual void GetLifetimeReplicatedProps(TArray&lt; class FLifetimeProperty &gt; &amp;OutLifetimeProps) const override</div><div class="ttdef"><b>Definition</b> <a href="FoodHolder_8cpp_source.html#l00070">FoodHolder.cpp:70</a></div></div>
+<div class="ttc" id="aclassAFoodHolder_html_ae85b0f46ed727cfbd88263e041d4a5f2"><div class="ttname"><a href="classAFoodHolder.html#ae85b0f46ed727cfbd88263e041d4a5f2">AFoodHolder::Index</a></div><div class="ttdeci">int32 Index</div><div class="ttdef"><b>Definition</b> <a href="FoodHolder_8h_source.html#l00087">FoodHolder.h:87</a></div></div>
+<div class="ttc" id="aclassAFoodHolder_html_ae9d05f11b8bd8e0caa568aa5e4980981"><div class="ttname"><a href="classAFoodHolder.html#ae9d05f11b8bd8e0caa568aa5e4980981">AFoodHolder::AFoodHolder</a></div><div class="ttdeci">AFoodHolder()</div><div class="ttdef"><b>Definition</b> <a href="FoodHolder_8cpp_source.html#l00020">FoodHolder.cpp:20</a></div></div>
+<div class="ttc" id="aclassAFoodHolder_html_aed2ca3859d2e7e048117990933022b2e"><div class="ttname"><a href="classAFoodHolder.html#aed2ca3859d2e7e048117990933022b2e">AFoodHolder::bIsActivated</a></div><div class="ttdeci">bool bIsActivated</div><div class="ttdef"><b>Definition</b> <a href="FoodHolder_8h_source.html#l00096">FoodHolder.h:96</a></div></div>
+<div class="ttc" id="aclassAFoodHolder_html_af15994f3778c5c6c05aebcbf50b97400"><div class="ttname"><a href="classAFoodHolder.html#af15994f3778c5c6c05aebcbf50b97400">AFoodHolder::OnRep_CurTarget</a></div><div class="ttdeci">void OnRep_CurTarget()</div><div class="ttdef"><b>Definition</b> <a href="FoodHolder_8cpp_source.html#l00084">FoodHolder.cpp:84</a></div></div>
+<div class="ttc" id="aclassAFoodHolder_html_afc12c10cd0894b7797a7141342186450"><div class="ttname"><a href="classAFoodHolder.html#afc12c10cd0894b7797a7141342186450">AFoodHolder::SetAnswerFoodIndex</a></div><div class="ttdeci">void SetAnswerFoodIndex(int32 InAnswerFoodIndex)</div><div class="ttdoc">정답 Food 인덱스 설정</div><div class="ttdef"><b>Definition</b> <a href="FoodHolder_8cpp_source.html#l00101">FoodHolder.cpp:101</a></div></div>
 <div class="ttc" id="aclassAFood_html"><div class="ttname"><a href="classAFood.html">AFood</a></div><div class="ttdef"><b>Definition</b> <a href="Food_8h_source.html#l00010">Food.h:11</a></div></div>
 <div class="ttc" id="aclassAFood_html_a16c38b4dc52b94ddcc975ac807d04714"><div class="ttname"><a href="classAFood.html#a16c38b4dc52b94ddcc975ac807d04714">AFood::Mesh</a></div><div class="ttdeci">class UStaticMeshComponent * Mesh</div><div class="ttdef"><b>Definition</b> <a href="Food_8h_source.html#l00029">Food.h:29</a></div></div>
-<div class="ttc" id="aclassAFood_html_a86daf17b69d7be7836670b5067b2598b"><div class="ttname"><a href="classAFood.html#a86daf17b69d7be7836670b5067b2598b">AFood::GetFoodIndex</a></div><div class="ttdeci">FORCEINLINE int32 GetFoodIndex() const</div><div class="ttdoc">Food 인덱스 반환</div><div class="ttdef"><b>Definition</b> <a href="Food_8h_source.html#l00050">Food.h:50</a></div></div>
+<div class="ttc" id="aclassAFood_html_a86daf17b69d7be7836670b5067b2598b"><div class="ttname"><a href="classAFood.html#a86daf17b69d7be7836670b5067b2598b">AFood::GetFoodIndex</a></div><div class="ttdeci">FORCEINLINE int32 GetFoodIndex() const</div><div class="ttdoc">Food 인덱스 반환</div><div class="ttdef"><b>Definition</b> <a href="Food_8h_source.html#l00053">Food.h:53</a></div></div>
 <div class="ttc" id="aclassALingoGameState_html"><div class="ttname"><a href="classALingoGameState.html">ALingoGameState</a></div><div class="ttdef"><b>Definition</b> <a href="ALingoGameState_8h_source.html#l00038">ALingoGameState.h:39</a></div></div>
 <div class="ttc" id="aclassALingoGameState_html_a05dda129c32a08fc3432424f612ce50b"><div class="ttname"><a href="classALingoGameState.html#a05dda129c32a08fc3432424f612ce50b">ALingoGameState::GetListenScenarioData</a></div><div class="ttdeci">FORCEINLINE const FResponseListenScenario &amp; GetListenScenarioData() const</div><div class="ttdef"><b>Definition</b> <a href="ALingoGameState_8h_source.html#l00057">ALingoGameState.h:57</a></div></div>
 <div class="ttc" id="aclassALingoGameState_html_ac68fdc03f32358fc9ca40fc5f4ec9cc8"><div class="ttname"><a href="classALingoGameState.html#ac68fdc03f32358fc9ca40fc5f4ec9cc8">ALingoGameState::WrongReadAnswerList</a></div><div class="ttdeci">TArray&lt; int32 &gt; WrongReadAnswerList</div><div class="ttdef"><b>Definition</b> <a href="ALingoGameState_8h_source.html#l00102">ALingoGameState.h:102</a></div></div>
@@ -447,7 +460,7 @@ $(document).ready(function(){initNavTree('FoodHolder_8cpp_source.html',''); init
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_2268d321c547a1269f0f0801cfba1f77.html">Prop</a></li><li class="navelem"><a class="el" href="dir_1d7bfdd86517d83f393675eb912eaf09.html">Private</a></li><li class="navelem"><a class="el" href="FoodHolder_8cpp.html">FoodHolder.cpp</a></li>
-    <li class="footer">생성시간 : 월 12월 8 2025 03:56:35, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 월 12월 8 2025 06:02:07, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

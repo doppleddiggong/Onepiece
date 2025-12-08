@@ -9,6 +9,7 @@ var classAFood =
     [ "FoodMesh", "classAFood.html#ad600dada8faa4bf439f7a49151b1b367", null ],
     [ "FoodName", "classAFood.html#a6622483b7ed26a1e4373d55574520553", null ],
     [ "Index", "classAFood.html#a254fa39720e4b33ef543ca38b378b47f", null ],
+    [ "InteractableComp", "classAFood.html#a10e5bbf52c2e5ddbbdd19e390adb013b", null ],
     [ "Mesh", "classAFood.html#a16c38b4dc52b94ddcc975ac807d04714", null ],
     [ "Name", "classAFood.html#abdcc398c722128d26a91d1fc0c631ca7", null ]
 ];

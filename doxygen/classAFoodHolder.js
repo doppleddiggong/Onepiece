@@ -3,6 +3,7 @@ var classAFoodHolder =
     [ "AFoodHolder", "classAFoodHolder.html#ae9d05f11b8bd8e0caa568aa5e4980981", null ],
     [ "BeginPlay", "classAFoodHolder.html#a565e6ccdb08bb878bd88d8eb27dee677", null ],
     [ "CheckFood", "classAFoodHolder.html#a13aeb1948bac4f9ca7d91da7e3690625", null ],
+    [ "FindDoorToOpen", "classAFoodHolder.html#ac8d235b91a1d8b3cfc2812f0b578989d", null ],
     [ "GetLifetimeReplicatedProps", "classAFoodHolder.html#add78a30de6b665ebeb227151656bd4db", null ],
     [ "Multicast_ShowResultPopup", "classAFoodHolder.html#a555cc5bd6fbe893c6737eff179e263d6", null ],
     [ "Multicast_ShowWrongPopup", "classAFoodHolder.html#a61a099c315b83eb124af26ea9a44fcf6", null ],
@@ -19,6 +20,7 @@ var classAFoodHolder =
     [ "BoxCollision", "classAFoodHolder.html#a354e1f756167bc3c338cc632b7c9273e", null ],
     [ "CurTarget", "classAFoodHolder.html#a1fa5d938a8ad639127ea47320bacb223", null ],
     [ "HoldPos", "classAFoodHolder.html#a5a958174b57fe025bd17f50078007a46", null ],
+    [ "Index", "classAFoodHolder.html#ae85b0f46ed727cfbd88263e041d4a5f2", null ],
     [ "MeshComponent", "classAFoodHolder.html#aa44e6d94b93c710a3c7debc4f281adbc", null ],
     [ "RotationSpeed", "classAFoodHolder.html#ab5231ae688a77b08672c794165232b99", null ]
 ];
