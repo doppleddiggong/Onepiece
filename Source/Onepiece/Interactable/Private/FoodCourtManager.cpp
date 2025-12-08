@@ -8,22 +8,39 @@
 #include "CityName.h"
 #include "CityNameWidget.h"
 #include "OrderKiosk.h"
+#include "ULingoGameHelper.h"
 #include "Components/WidgetComponent.h"
 #include "Kismet/GameplayStatics.h"
 
 
-// Sets default values
 AFoodCourtManager::AFoodCourtManager()
 {
-	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 }
 
-// Called when the game starts or when spawned
 void AFoodCourtManager::BeginPlay()
 {
 	Super::BeginPlay();
-	
+
+	if (ALingoGameState* GS = ULingoGameHelper::GetLingoGameState(GetWorld()))
+	{
+		ListenScenarioDelegateHandle = GS->OnQuestScenarioDataUpdated.AddUObject(this, &AFoodCourtManager::HandleQuestScenarioDataUpdated);
+		HandleQuestScenarioDataUpdated();
+	}
+}
+
+void AFoodCourtManager::EndPlay(const EEndPlayReason::Type EndPlayReason)
+{
+	if (ALingoGameState* GS = ULingoGameHelper::GetLingoGameState(GetWorld()))
+	{
+		if (ListenScenarioDelegateHandle.IsValid())
+		{
+			GS->OnQuestScenarioDataUpdated.Remove(ListenScenarioDelegateHandle);
+			ListenScenarioDelegateHandle.Reset();
+		}
+	}
+
+	Super::EndPlay(EndPlayReason);
 }
 
 // Called every frame
@@ -106,3 +123,13 @@ class AOrderKiosk* AFoodCourtManager::GetRandomKiosk()
 	return Available[FMath::RandRange(0, Available.Num()-1)];
 }
 
+void AFoodCourtManager::HandleQuestScenarioDataUpdated()
+{
+	if (ALingoGameState* GS = ULingoGameHelper::GetLingoGameState(GetWorld()))
+	{
+		if (GS->GetCurrentQuestType() != EQuestType::Listen)
+			return;
+
+		SetFoodCourtInfo();
+	}
+}
