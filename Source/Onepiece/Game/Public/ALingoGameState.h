@@ -33,6 +33,7 @@ struct FQuestData
 
 DECLARE_MULTICAST_DELEGATE_OneParam(FOnReadResultUpdated, const FResponseReadResult&);
 DECLARE_MULTICAST_DELEGATE_OneParam(FOnListenResultUpdated, const FResponseListenResult&);
+DECLARE_MULTICAST_DELEGATE(FOnQuestScenarioDataUpdated);
 
 UCLASS()
 class ONEPIECE_API ALingoGameState : public AGameState
@@ -80,22 +81,32 @@ protected:
 	void Multicast_ShowListenQuestPopup(const FResponseListenScenario& InScenarioData);
 
 	UFUNCTION()
+	void OnRep_ReadScenarioData();
+
+	UFUNCTION()
 	void OnRep_ReadResult();
 
 	UFUNCTION()
+	void OnRep_ListenScenarioData();
+
+	UFUNCTION()
 	void OnRep_ListenResult();
+
+	UFUNCTION()
+	void OnRep_CurrentQuestData();
 	
 private:
 	/// @brief 타이머 종료 시 호출됩니다 (서버에서만 실행)
 	void OnMissionTimerEnd();
 	
 public:
-	FORCEINLINE int GetWrongReadAnswerNum() { return WrongReadAnswerList.Num(); }
-
 	FOnReadResultUpdated OnReadResultUpdated;
 	FOnListenResultUpdated OnListenResultUpdated;
+	FOnQuestScenarioDataUpdated OnQuestScenarioDataUpdated;
+
+	FORCEINLINE int GetWrongReadAnswerNum() { return WrongReadAnswerList.Num(); }
 	
-	UPROPERTY(Replicated)
+	UPROPERTY(ReplicatedUsing = OnRep_ReadScenarioData)
 	FResponseReadScenario ReadScenarioData;
 
 	UPROPERTY(Replicated)
@@ -110,7 +121,7 @@ public:
 
 	FORCEINLINE int GetWrongListenAnswerNum() { return WrongListenAnswerList.Num(); }
 
-	UPROPERTY(Replicated)
+	UPROPERTY(ReplicatedUsing = OnRep_ListenScenarioData)
 	FResponseListenScenario ListenScenarioData;
 	
 	UPROPERTY(Replicated)
@@ -123,11 +134,8 @@ public:
 	FResponseListenResult ListenResult;
 	//--------------------------------------------------------------//
 
-
-
-	
 protected:
-	UPROPERTY(Replicated, BlueprintReadOnly, Category = "Mission")
+	UPROPERTY(ReplicatedUsing = OnRep_CurrentQuestData, BlueprintReadOnly, Category = "Mission")
 	float RemainMissionTime = 0.f;
 
 	/// @brief 타이머 활성화 상태
@@ -135,7 +143,7 @@ protected:
 	bool bIsTimerActive = false;
 
 	// 현재 퀘스트 정보
-	UPROPERTY(Replicated, BlueprintReadOnly, Category = "Quest")
+	UPROPERTY(ReplicatedUsing = OnRep_CurrentQuestData, BlueprintReadOnly, Category = "Quest")
 	FQuestData CurrentQuestData;
 		
 private:

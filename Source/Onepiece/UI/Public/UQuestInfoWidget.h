@@ -28,6 +28,8 @@ public:
 
 private:
 	void SetQuestText(const FWordData& WordData) const;
+
+	void OnQuestScenarioDataReceived();
 	void OnReadResultReceived(const FResponseReadResult& ResponseData);
 	void OnListenResultReceived(const FResponseListenResult& ResponseData);
 	
@@ -38,6 +40,9 @@ public:
 	UPROPERTY(meta = (BindWidgetOptional), BlueprintReadOnly, Category = "Style")
 	TObjectPtr<class UImage> Image_Synbol;
 
+	FDelegateHandle QuestScenarioDataDelegateHandle;
 	FDelegateHandle ReadResultDelegateHandle;
 	FDelegateHandle ListenResultDelegateHandle;
+
+	EQuestRole QuestRole;
 };

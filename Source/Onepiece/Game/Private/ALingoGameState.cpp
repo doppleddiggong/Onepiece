@@ -33,7 +33,6 @@ void ALingoGameState::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutL
 
 	DOREPLIFETIME(ALingoGameState, RemainMissionTime);
 	DOREPLIFETIME(ALingoGameState, bIsTimerActive);
-
 	DOREPLIFETIME(ALingoGameState, CurrentQuestData);
 
 	DOREPLIFETIME(ALingoGameState, ReadScenarioData);
@@ -189,13 +188,27 @@ void ALingoGameState::Multicast_ShowListenQuestPopup_Implementation(const FRespo
 		}, 0.5f, false);
 	}
 }
+void ALingoGameState::OnRep_ReadScenarioData()
+{
+	OnQuestScenarioDataUpdated.Broadcast();
+}
 
 void ALingoGameState::OnRep_ReadResult()
 {
 	OnReadResultUpdated.Broadcast(ReadResult);
 }
 
+void ALingoGameState::OnRep_ListenScenarioData()
+{
+	OnQuestScenarioDataUpdated.Broadcast();
+}
+
 void ALingoGameState::OnRep_ListenResult()
 {
 	OnListenResultUpdated.Broadcast(ListenResult);
+}
+
+void ALingoGameState::OnRep_CurrentQuestData()
+{
+	OnQuestScenarioDataUpdated.Broadcast();
 }
