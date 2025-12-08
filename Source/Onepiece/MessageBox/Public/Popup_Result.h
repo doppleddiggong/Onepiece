@@ -25,12 +25,12 @@ private:
 	UFUNCTION(BlueprintCallable, Category = "Close")
 	void OnClickClose();
 
-	void RemoveResultDelegates();
-	
 	void InitWordWidget();
 	void InitWrongList();
 
+	UFUNCTION()
 	void InitReadResult(const FResponseReadResult& ResponseData);
+	UFUNCTION()
 	void InitListenResult(const FResponseListenResult& ResponseData);
 
 	void RequestResult();
@@ -73,7 +73,4 @@ private:
 	TSubclassOf<class UAnswerItem> AnswerItemClass;
 
 	EQuestType QuestType;
-
-	FDelegateHandle ReadResultDelegateHandle;
-	FDelegateHandle ListenResultDelegateHandle;
 };

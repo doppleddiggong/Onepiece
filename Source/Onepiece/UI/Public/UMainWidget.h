@@ -46,7 +46,10 @@ public:
 	/// @brief FadeWidget 가져오기
 	UFUNCTION(BlueprintPure, Category = "Fade")
 	class UFadeWidget* GetFadeWidget() const { return FadeWidget; }
-		
+
+	UFUNCTION(BlueprintPure, Category = "Quest")
+	class UQuestInfoWidget* GetQuestInfoWidget() const { return QuestInfoWidget; }
+	
 private:
 	/// @brief 타이머 텍스트를 업데이트합니다.
 	void UpdateTimerDisplay() const;

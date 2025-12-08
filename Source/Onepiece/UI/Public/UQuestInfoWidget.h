@@ -17,14 +17,10 @@ UCLASS()
 class ONEPIECE_API UQuestInfoWidget : public UUserWidget
 {
 	GENERATED_BODY()
-
-protected:
-	virtual void NativeConstruct() override;
-	virtual void NativeDestruct() override;
 	
 public:
 	UFUNCTION()
-	void InitQuestInfo(EQuestRole QuestRole);
+	void InitQuestInfo();
 
 private:
 	void SetQuestText(const FWordData& WordData) const;
@@ -43,6 +39,4 @@ public:
 	FDelegateHandle QuestScenarioDataDelegateHandle;
 	FDelegateHandle ReadResultDelegateHandle;
 	FDelegateHandle ListenResultDelegateHandle;
-
-	EQuestRole QuestRole;
 };
