@@ -98,13 +98,10 @@ void ADropper::Spawn()
 
     bIsSpawnIng = true;
 
-    // HACK, 임시!!!
-    static int CurrentSpawnIndex = 0;
-    
     // 데이터 전달
     if (auto tmpLuggage = Cast<Aluggage>(SpawnedActor))
     {
-        tmpLuggage->SetLuggageInfo(CurrentSpawnIndex++, NextData.word2.name, NextData.word1.name);
+        tmpLuggage->SetLuggageInfo(NextData.SpawnIndex, NextData.word2.name, NextData.word1.name);
 
         int32 ColorIdx = FCString::Atoi(*NextData.word2.code);
         tmpLuggage->ApplyColorToMesh(ColorIdx);
@@ -115,7 +112,10 @@ void ADropper::Spawn()
     else if (auto tmpFood = Cast<AFood>(SpawnedActor))
     {
         FString InfoToShow = FString::Printf(TEXT("%s / %s"), *NextFoodData.word1.name, *NextFoodData.word2.name);
-        tmpFood->SetFoodInfo(CurrentSpawnIndex++, InfoToShow);
+        tmpFood->SetFoodInfo(NextFoodData.SpawnIndex, InfoToShow);
+
+        UE_LOG(LogTemp, Warning, TEXT("[Dropper::Spawn] Food spawned with Index=%d, Name=%s"),
+            NextFoodData.SpawnIndex, *InfoToShow);
     }
 
     // 애니메이션 실행
