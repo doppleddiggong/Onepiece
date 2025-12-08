@@ -342,7 +342,10 @@ void APlayerActor::Cmd_Info_Implementation()
 	
 	if (auto Popup = UPopupManager::ShowPopupAs<UPopup_ReadQuest>(GetWorld(), EPopupType::ReadQuest))
 	{
-		Popup->InitRead(GS->ReadScenarioData);
+		if ( GS->GetCurrentQuestType() == EQuestType::Read)
+			Popup->InitRead(GS->ReadScenarioData);
+		else
+			Popup->InitListen(GS->ListenScenarioData);
 	}
 }
 
