@@ -158,20 +158,23 @@ $(document).ready(function(){initNavTree('OrderKiosk_8h_source.html',''); initRe
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    UPROPERTY(VisibleAnywhere, BlueprintReadOnly)</div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="classAOrderKiosk.html#a6a1e36df7973542b04ea5147d317b821">   47</a></span>    int32 FoodCourtIdx = -1;</div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    UPROPERTY(Replicated)</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    UPROPERTY(ReplicatedUsing=OnRep_FoodData)</div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="classAOrderKiosk.html#a97684825dcce5f339ceb8a5cb3d6d3ef">   51</a></span>    <a class="code hl_struct" href="structFFoodData.html">FFoodData</a> FoodData;</div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="comment">// 사용 여부 플래그</span></div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    UPROPERTY(VisibleAnywhere, BlueprintReadOnly)</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="classAOrderKiosk.html#aa6d9c886fc05fda546fb63c64ac8bf59">   55</a></span>    <span class="keywordtype">bool</span> bIsUsed = false;</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    UPROPERTY(Replicated)</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="classAOrderKiosk.html#a648c52261e4f5840f3c548ee547a3e0b">   58</a></span>    <span class="keywordtype">bool</span> IsOverlapping = false;</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    </div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    class <a class="code hl_class" href="classADropper.html">ADropper</a>* FindDropperByIdx(int32 InIdx);</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="keywordtype">void</span> UpdateInteractableWidget(FString NewString);</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>};</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    UFUNCTION()</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="keywordtype">void</span> OnRep_FoodData();</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <span class="comment">// 사용 여부 플래그</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    UPROPERTY(VisibleAnywhere, BlueprintReadOnly)</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="classAOrderKiosk.html#aa6d9c886fc05fda546fb63c64ac8bf59">   58</a></span>    <span class="keywordtype">bool</span> bIsUsed = false;</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    UPROPERTY(Replicated)</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="classAOrderKiosk.html#a648c52261e4f5840f3c548ee547a3e0b">   61</a></span>    <span class="keywordtype">bool</span> IsOverlapping = false;</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    </div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    class <a class="code hl_class" href="classADropper.html">ADropper</a>* FindDropperByIdx(int32 InIdx);</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <span class="keywordtype">void</span> UpdateInteractableWidget(FString NewString);</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>};</div>
 </div>
 <div class="ttc" id="aADropper_8h_html"><div class="ttname"><a href="ADropper_8h.html">ADropper.h</a></div></div>
 <div class="ttc" id="aclassADropper_html"><div class="ttname"><a href="classADropper.html">ADropper</a></div><div class="ttdef"><b>Definition</b> <a href="ADropper_8h_source.html#l00061">ADropper.h:62</a></div></div>
@@ -183,7 +186,7 @@ $(document).ready(function(){initNavTree('OrderKiosk_8h_source.html',''); initRe
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_b7459e4428712e32d7c860db6e401a05.html">Interactable</a></li><li class="navelem"><a class="el" href="dir_37565cbf0e4835105e22b7540e7cc414.html">Public</a></li><li class="navelem"><a class="el" href="OrderKiosk_8h.html">OrderKiosk.h</a></li>
-    <li class="footer">생성시간 : 월 12월 8 2025 07:55:37, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 월 12월 8 2025 08:37:31, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

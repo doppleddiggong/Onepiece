@@ -9,6 +9,7 @@ var ALingoGameState_8h =
       [ "Write", "ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a1129c0e4d43f2d121652a7302712cff6", null ],
       [ "Speak", "ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a8b1e2b9b342dd37344c6343dc23a6733", null ]
     ] ],
+    [ "DECLARE_MULTICAST_DELEGATE", "ALingoGameState_8h.html#aa857101e3d9569573a1b62f308877dba", null ],
     [ "DECLARE_MULTICAST_DELEGATE_OneParam", "ALingoGameState_8h.html#aa06e36e36ed0acfb112c7e67d0ae2c90", null ],
     [ "DECLARE_MULTICAST_DELEGATE_OneParam", "ALingoGameState_8h.html#ad56c5bc9b80b209ba7c0ab2ce55ff1da", null ]
 ];

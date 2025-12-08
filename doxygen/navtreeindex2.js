@@ -1,5 +1,6 @@
 var NAVTREEINDEX2 =
 {
+"Popup__Result_8h.html":[3,0,0,2,3,1,5],
 "Popup__Result_8h_source.html":[3,0,0,2,3,1,5],
 "Popup__WriteBoard_8cpp.html":[3,0,0,2,3,0,5],
 "Popup__WriteBoard_8cpp_source.html":[3,0,0,2,3,0,5],
@@ -248,6 +249,5 @@ var NAVTREEINDEX2 =
 "UPopupManager_8cpp.html":[3,0,0,2,3,0,13],
 "UPopupManager_8cpp.html#a316d42e7741e9922f43c175b9f60f764":[3,0,0,2,3,0,13,0],
 "UPopupManager_8cpp.html#a65ca45302e87a50d24766f211b91095a":[3,0,0,2,3,0,13,3],
-"UPopupManager_8cpp.html#a6b75ebb39991514427a5dec40ddc8608":[3,0,0,2,3,0,13,5],
-"UPopupManager_8cpp.html#ac3154098f4c271448b33ec205a25af57":[3,0,0,2,3,0,13,6]
+"UPopupManager_8cpp.html#a6b75ebb39991514427a5dec40ddc8608":[3,0,0,2,3,0,13,5]
 };

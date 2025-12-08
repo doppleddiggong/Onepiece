@@ -130,39 +130,46 @@ $(document).ready(function(){initNavTree('Food_8h_source.html',''); initResizabl
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="keyword">protected</span>:</div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <span class="comment">// Called when the game starts or when spawned</span></div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> BeginPlay() <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="comment">// Called every frame</span></div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> Tick(<span class="keywordtype">float</span> DeltaTime) <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="comment">// Components</span></div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    UPROPERTY(EditAnywhere, BlueprintReadWrite)</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="classAFood.html#a16c38b4dc52b94ddcc975ac807d04714">   29</a></span>    class UStaticMeshComponent* Mesh;</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    UPROPERTY(EditAnywhere, BlueprintReadWrite)</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="classAFood.html#ad600dada8faa4bf439f7a49151b1b367">   32</a></span>    class UStaticMeshComponent* FoodMesh;</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    UPROPERTY(EditAnywhere, BlueprintReadWrite)</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="classAFood.html#a6622483b7ed26a1e4373d55574520553">   35</a></span>    class UWidgetComponent* FoodName;</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    UPROPERTY(VisibleAnywhere)</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="classAFood.html#a10e5bbf52c2e5ddbbdd19e390adb013b">   38</a></span>    TObjectPtr&lt;class UInteractableComponent&gt; InteractableComp;</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>protected:</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="comment">// 음식 인덱스</span></div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="classAFood.html#abdcc398c722128d26a91d1fc0c631ca7">   42</a></span>    FString Name = &quot;&quot;;</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="classAFood.html#a254fa39720e4b33ef543ca38b378b47f">   43</a></span>    int32 Index = -1;</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>public:</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="keywordtype">void</span> SetFoodInfo(int32 InIndex, FString InName);</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    UFUNCTION(BlueprintPure, Category = &quot;Food&quot;)</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="classAFood.html#a86daf17b69d7be7836670b5067b2598b">   53</a></span>    FORCEINLINE int32 GetFoodIndex()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> Index; }</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> GetLifetimeReplicatedProps(TArray&lt;class FLifetimeProperty&gt;&amp; OutLifetimeProps) <span class="keyword">const override</span>;</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="comment">// Called every frame</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> Tick(<span class="keywordtype">float</span> DeltaTime) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="comment">// Components</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    UPROPERTY(EditAnywhere, BlueprintReadWrite)</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="classAFood.html#a16c38b4dc52b94ddcc975ac807d04714">   30</a></span>    class UStaticMeshComponent* Mesh;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    UPROPERTY(Replicated, EditAnywhere, BlueprintReadWrite)</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="classAFood.html#ad600dada8faa4bf439f7a49151b1b367">   33</a></span>    class UStaticMeshComponent* FoodMesh;</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    UPROPERTY(EditAnywhere, BlueprintReadWrite)</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="classAFood.html#a6622483b7ed26a1e4373d55574520553">   36</a></span>    class UWidgetComponent* FoodName;</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    UPROPERTY(VisibleAnywhere)</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="classAFood.html#a10e5bbf52c2e5ddbbdd19e390adb013b">   39</a></span>    TObjectPtr&lt;class UInteractableComponent&gt; InteractableComp;</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>protected:</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="comment">// 음식 인덱스</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    UPROPERTY(ReplicatedUsing=OnRep_FoodName)</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="classAFood.html#abdcc398c722128d26a91d1fc0c631ca7">   44</a></span>    FString Name = &quot;&quot;;</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    UPROPERTY(ReplicatedUsing=OnRep_FoodName)</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="classAFood.html#a254fa39720e4b33ef543ca38b378b47f">   47</a></span>    int32 Index = -1;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    UFUNCTION()</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="keywordtype">void</span> OnRep_FoodName();</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>public:</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="keywordtype">void</span> SetFoodInfo(int32 InIndex, FString InName);</div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    UFUNCTION(BlueprintPure, Category = <span class="stringliteral">&quot;Food&quot;</span>)</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="classAFood.html#abf30c9e40fdf66d892936e0c2882c700">   60</a></span>    FORCEINLINE FString GetFoodName()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> Name; }</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>};</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    UFUNCTION(BlueprintPure, Category = &quot;Food&quot;)</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="classAFood.html#a86daf17b69d7be7836670b5067b2598b">   60</a></span>    FORCEINLINE int32 GetFoodIndex()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> Index; }</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    UFUNCTION(BlueprintPure, Category = <span class="stringliteral">&quot;Food&quot;</span>)</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="classAFood.html#abf30c9e40fdf66d892936e0c2882c700">   67</a></span>    FORCEINLINE FString GetFoodName()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> Name; }</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>};</div>
 </div>
 <div class="ttc" id="aclassAFood_html"><div class="ttname"><a href="classAFood.html">AFood</a></div><div class="ttdef"><b>Definition</b> <a href="Food_8h_source.html#l00010">Food.h:11</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
@@ -171,7 +178,7 @@ $(document).ready(function(){initNavTree('Food_8h_source.html',''); initResizabl
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_b7459e4428712e32d7c860db6e401a05.html">Interactable</a></li><li class="navelem"><a class="el" href="dir_37565cbf0e4835105e22b7540e7cc414.html">Public</a></li><li class="navelem"><a class="el" href="Food_8h.html">Food.h</a></li>
-    <li class="footer">생성시간 : 월 12월 8 2025 07:55:37, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 월 12월 8 2025 08:37:31, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

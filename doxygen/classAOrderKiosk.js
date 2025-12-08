@@ -5,6 +5,7 @@ var classAOrderKiosk =
     [ "FindDropperByIdx", "classAOrderKiosk.html#aaab2f5968da556e2afe6fae9b0ef0c5c", null ],
     [ "GetLifetimeReplicatedProps", "classAOrderKiosk.html#a8cd610339619fd825fb09c0cd378d351", null ],
     [ "OnInteractionTriggered", "classAOrderKiosk.html#a00de3d34c912237f3a4541a12fb2cffa", null ],
+    [ "OnRep_FoodData", "classAOrderKiosk.html#a6e69520e4b45ab75214bf13601c87ca1", null ],
     [ "Tick", "classAOrderKiosk.html#a2559037890cac62eb1d3c60753977c5d", null ],
     [ "UpdateInteractableWidget", "classAOrderKiosk.html#a431a570c13cdfe2a9c4ec0afc72b05ec", null ],
     [ "bIsUsed", "classAOrderKiosk.html#aa6d9c886fc05fda546fb63c64ac8bf59", null ],
