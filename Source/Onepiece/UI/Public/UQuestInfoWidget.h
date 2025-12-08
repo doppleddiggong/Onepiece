@@ -3,12 +3,16 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "EQuestRole.h"
+#include "Delegates/Delegate.h"
 #include "Blueprint/UserWidget.h"
 #include "UQuestInfoWidget.generated.h"
 
-/**
- * 
- */
+
+struct FResponseListenResult;
+struct FResponseReadResult;
+struct FWordData;
+
 UCLASS()
 class ONEPIECE_API UQuestInfoWidget : public UUserWidget
 {
@@ -16,15 +20,24 @@ class ONEPIECE_API UQuestInfoWidget : public UUserWidget
 
 protected:
 	virtual void NativeConstruct() override;
+	virtual void NativeDestruct() override;
 	
 public:
 	UFUNCTION()
 	void InitQuestInfo(EQuestRole QuestRole);
+
+private:
+	void SetQuestText(const FWordData& WordData) const;
+	void OnReadResultReceived(const FResponseReadResult& ResponseData);
+	void OnListenResultReceived(const FResponseListenResult& ResponseData);
 	
 public:
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly, Category = "Style")
-	class UTextBlock* Txt_Message = nullptr;
+	TObjectPtr<class UTextBlock> Txt_Message;
 
 	UPROPERTY(meta = (BindWidgetOptional), BlueprintReadOnly, Category = "Style")
-	class UImage* Image_Synbol = nullptr;
+	TObjectPtr<class UImage> Image_Synbol;
+
+	FDelegateHandle ReadResultDelegateHandle;
+	FDelegateHandle ListenResultDelegateHandle;
 };

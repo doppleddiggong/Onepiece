@@ -50,8 +50,9 @@ public:
 
 	FORCEINLINE int64 GetRoomId() { return RoomId; };
 	FORCEINLINE float GetRemainMissionTime() { return RemainMissionTime; }
-	FORCEINLINE float GetTimeTaken() { return TimeLimit - RemainMissionTime;	}
+	FORCEINLINE float GetTimeTaken() { return TimeLimit - RemainMissionTime; }
 	FORCEINLINE bool IsQuestIng() { return CurrentQuestData.QuestType != EQuestType::None;	}
+	FORCEINLINE EQuestType GetCurrentQuestType() const { return CurrentQuestData.QuestType; }
 	FORCEINLINE const FResponseReadScenario& GetReadScenarioData() const {return ReadScenarioData;}
 	FORCEINLINE const FResponseListenScenario& GetListenScenarioData() const {return ListenScenarioData;}
 

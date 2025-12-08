@@ -60,6 +60,6 @@ void UAnswerItem::InitInfo(	EQuestType QuestType, bool bCorrect,
 		Image_Target2->SetBrushFromTexture(Listen02Texture, true);
 		Image_Target2->SetColorAndOpacity( FLinearColor::White );
 		Txt_Target2_Kor->SetText( FText::FromString( Listen02Data.Word ));
-		Txt_Target2_Eng->SetText( FText::Format( FText::FromString(TEXT("[{0}]")), FText::FromString(Listen01Data.Eng)));
+		Txt_Target2_Eng->SetText( FText::Format( FText::FromString(TEXT("[{0}]")), FText::FromString(Listen02Data.Eng)));
 	}
 }
