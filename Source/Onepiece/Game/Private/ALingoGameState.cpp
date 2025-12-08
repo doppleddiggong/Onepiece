@@ -189,3 +189,13 @@ void ALingoGameState::Multicast_ShowListenQuestPopup_Implementation(const FRespo
 		}, 0.5f, false);
 	}
 }
+
+void ALingoGameState::OnRep_ReadResult()
+{
+	OnReadResultUpdated.Broadcast(ReadResult);
+}
+
+void ALingoGameState::OnRep_ListenResult()
+{
+	OnListenResultUpdated.Broadcast(ListenResult);
+}

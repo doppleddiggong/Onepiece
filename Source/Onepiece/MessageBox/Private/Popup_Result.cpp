@@ -20,6 +20,13 @@
 #include "Blueprint/UserWidget.h"
 #include "Components/VerticalBox.h"
 
+void UPopup_Result::NativeDestruct()
+{
+	RemoveResultDelegates();
+
+	Super::NativeDestruct();
+}
+
 void UPopup_Result::InitPopup(const EQuestType InQuestType)
 {
 	if (Btn_Exit)
@@ -42,6 +49,15 @@ void UPopup_Result::InitPopup(const EQuestType InQuestType)
 	// GameState에서 결과 확인
 	if (auto GS = Cast<ALingoGameState>(GetWorld()->GetGameState()))
 	{
+		if (QuestType == EQuestType::Read)
+		{
+			ReadResultDelegateHandle = GS->OnReadResultUpdated.AddUObject(this, &UPopup_Result::InitReadResult);
+		}
+		else if (QuestType == EQuestType::Listen)
+		{
+			ListenResultDelegateHandle = GS->OnListenResultUpdated.AddUObject(this, &UPopup_Result::InitListenResult);
+		}
+		
 		bool bHasResult = false;
 
 		if (QuestType == EQuestType::Read && !GS->ReadResult.grade.IsEmpty())
@@ -69,12 +85,33 @@ void UPopup_Result::InitPopup(const EQuestType InQuestType)
 
 void UPopup_Result::OnClickClose()
 {
+	RemoveResultDelegates();
+	
 	// PopupManager를 통해 팝업 닫기 (마우스 커서 처리 포함)
 	if (UPopupManager* PopupMgr = UPopupManager::Get(GetWorld()))
 	{
 		PopupMgr->HideCurrentPopup();
 	}
 }
+
+void UPopup_Result::RemoveResultDelegates()
+{
+	if (auto GS = Cast<ALingoGameState>(GetWorld()->GetGameState()))
+	{
+		if (ReadResultDelegateHandle.IsValid())
+		{
+			GS->OnReadResultUpdated.Remove(ReadResultDelegateHandle);
+			ReadResultDelegateHandle.Reset();
+		}
+
+		if (ListenResultDelegateHandle.IsValid())
+		{
+			GS->OnListenResultUpdated.Remove(ListenResultDelegateHandle);
+			ListenResultDelegateHandle.Reset();
+		}
+	}
+}
+
 
 void UPopup_Result::InitWordWidget()
 {
@@ -298,6 +335,7 @@ void UPopup_Result::OnResponseReadResult(FResponseReadResult& ResponseData, bool
 		if (auto GS = Cast<ALingoGameState>(GetWorld()->GetGameState()))
 		{
 			GS->ReadResult = ResponseData;
+			GS->OnReadResultUpdated.Broadcast(ResponseData);
 		}
 
 		this->InitReadResult(ResponseData);
@@ -316,6 +354,7 @@ void UPopup_Result::OnResponseListenResult(FResponseListenResult& ResponseData, 
 		if (auto GS = Cast<ALingoGameState>(GetWorld()->GetGameState()))
 		{
 			GS->ListenResult = ResponseData;
+			GS->OnListenResultUpdated.Broadcast(ResponseData);
 		}
 
 		this->InitListenResult(ResponseData);

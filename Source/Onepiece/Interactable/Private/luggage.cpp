@@ -121,6 +121,7 @@ void Aluggage::GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLi
 	 */
 	DOREPLIFETIME(Aluggage, bIsBeingHooked);
 	DOREPLIFETIME(Aluggage, HookedBy);
+	DOREPLIFETIME(Aluggage, bCollisionEnabled);
 }
 
 void Aluggage::SetLuggageInfo(int32 InIdx, FString InColor, FString InPattern)
@@ -160,6 +161,11 @@ void Aluggage::OnRep_IsBeingHooked()
 		// 여기서는 명시적으로 끄지 않음 (픽업 상태 등을 고려)
 		PRINTLOG(TEXT("OnRep_IsBeingHooked: %s hook released"), *GetName());
 	}
+}
+
+void Aluggage::OnRep_CollisionEnabled()
+{
+	ApplyCollisionState(bCollisionEnabled);
 }
 
 void Aluggage::ApplyColorToMesh(int32 InColorIdx)
@@ -243,7 +249,7 @@ void Aluggage::OutlineOff()
 	Mesh3Comp->SetRenderCustomDepth(false);
 }
 
-void Aluggage::SetAllCollision(bool bEnable)
+void Aluggage::ApplyCollisionState(bool bEnable)
 {
 	if (bEnable)
 	{
@@ -309,6 +315,16 @@ void Aluggage::SetAllCollision(bool bEnable)
 		}
 
 		PRINTLOG(TEXT("Aluggage::SetAllCollision - Collisions disabled for %s"), *GetName());
+	}
+}
+
+void Aluggage::SetAllCollision(bool bEnable)
+{
+	ApplyCollisionState(bEnable);
+
+	if (HasAuthority())
+	{
+		bCollisionEnabled = bEnable;
 	}
 }
 
