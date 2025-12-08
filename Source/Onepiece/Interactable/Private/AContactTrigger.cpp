@@ -189,7 +189,7 @@ void AContactTrigger::OnListenResponseScenario(FResponseListenScenario& Response
 		if (auto GM = ULingoGameHelper::GetLingoGameMode(World))
 			GM->BeginListenQuest(ResponseData);
 
-		VoiceConversationSystem->PlayVoiceAudio(ResponseData.voice_data);
+		// VoiceConversationSystem->PlayVoiceAudio(ResponseData.voice_data);
 
 		AFoodCourtManager* FCourtManager = Cast<AFoodCourtManager>(UGameplayStatics::GetActorOfClass(
 			World, AFoodCourtManager::StaticClass()));

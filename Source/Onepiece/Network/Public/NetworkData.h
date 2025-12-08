@@ -914,7 +914,7 @@ struct FResponseListenScenario
 	UPROPERTY(BlueprintReadWrite, Category = "Listen")
 	FWordData full_data;
 
-	UPROPERTY(BlueprintReadWrite, Category = "Listen")
+	UPROPERTY(BlueprintReadWrite, NotReplicated, Category = "Listen")
 	TArray<uint8> voice_data;
 
 	/// @brief HTTP 응답을 파싱해 구조체를 채웁니다.
