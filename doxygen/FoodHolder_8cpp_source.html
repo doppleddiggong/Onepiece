@@ -282,7 +282,7 @@ $(document).ready(function(){initNavTree('FoodHolder_8cpp_source.html',''); init
 <div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>            FTimerHandle TimerHandle;</div>
 <div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>            GetWorldTimerManager().SetTimer(TimerHandle, [<span class="keyword">this</span>, Food, GS]</div>
 <div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>            {</div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>                GS-&gt;<a class="code hl_variable" href="classALingoGameState.html#ac68fdc03f32358fc9ca40fc5f4ec9cc8">WrongReadAnswerList</a>.Add(Food-&gt;GetFoodIndex());</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>                GS-&gt;<a class="code hl_variable" href="classALingoGameState.html#a00a86de1187369b05b01f01889d78b45">WrongListenAnswerList</a>.Add(Food-&gt;GetFoodIndex());</div>
 <div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span> </div>
 <div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>                <span class="comment">// 모든 클라이언트에 오답 메시지 표시</span></div>
 <div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>                <a class="code hl_function" href="classAFoodHolder.html#a61a099c315b83eb124af26ea9a44fcf6">Multicast_ShowWrongPopup</a>(Food-&gt;GetFoodName());</div>
@@ -386,9 +386,9 @@ $(document).ready(function(){initNavTree('FoodHolder_8cpp_source.html',''); init
 <div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>    <span class="keywordflow">if</span> (<a class="code hl_class" href="classALingoGameState.html">ALingoGameState</a>* GS = Cast&lt;ALingoGameState&gt;(GetWorld()-&gt;GetGameState()))</div>
 <div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span>    {</div>
 <div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>        <span class="comment">// 중복 체크 후 추가</span></div>
-<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>        <span class="keywordflow">if</span> (!GS-&gt;WrongReadAnswerList.Contains(CorrectAnswerIndex))</div>
+<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>        <span class="keywordflow">if</span> (!GS-&gt;WrongListenAnswerList.Contains(CorrectAnswerIndex))</div>
 <div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span>        {</div>
-<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span>            GS-&gt;WrongReadAnswerList.Add(CorrectAnswerIndex);</div>
+<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span>            GS-&gt;WrongListenAnswerList.Add(CorrectAnswerIndex);</div>
 <div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span>            <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[Multicast_ShowResultPopup] Added correct answer index %d to local GameState&quot;</span>), CorrectAnswerIndex);</div>
 <div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span>        }</div>
 <div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span>    }</div>
@@ -396,7 +396,7 @@ $(document).ready(function(){initNavTree('FoodHolder_8cpp_source.html',''); init
 <div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span>    <span class="comment">// 팝업 표시</span></div>
 <div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> Popup = UPopupManager::ShowPopupAs&lt;UPopup_Result&gt;(GetWorld(), EPopupType::Result))</div>
 <div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span>    {</div>
-<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span>        Popup-&gt;InitPopup(<a class="code hl_enumvalue" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a7a1a5f3e79fdc91edf2f5ead9d66abb4">EQuestType::Read</a>);</div>
+<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span>        Popup-&gt;InitPopup(<a class="code hl_enumvalue" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921ace6802b46091c31e2ec2363883fe8369">EQuestType::Listen</a>);</div>
 <div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span>    }</div>
 <div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span>}</div>
 <div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span> </div>
@@ -411,7 +411,7 @@ $(document).ready(function(){initNavTree('FoodHolder_8cpp_source.html',''); init
 <div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span>}</div>
 <div class="ttc" id="aADoor_8h_html"><div class="ttname"><a href="ADoor_8h.html">ADoor.h</a></div></div>
 <div class="ttc" id="aALingoGameState_8h_html"><div class="ttname"><a href="ALingoGameState_8h.html">ALingoGameState.h</a></div></div>
-<div class="ttc" id="aALingoGameState_8h_html_a1a866ca8104ebd47ce462347a6125921a7a1a5f3e79fdc91edf2f5ead9d66abb4"><div class="ttname"><a href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a7a1a5f3e79fdc91edf2f5ead9d66abb4">EQuestType::Read</a></div><div class="ttdeci">@ Read</div></div>
+<div class="ttc" id="aALingoGameState_8h_html_a1a866ca8104ebd47ce462347a6125921ace6802b46091c31e2ec2363883fe8369"><div class="ttname"><a href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921ace6802b46091c31e2ec2363883fe8369">EQuestType::Listen</a></div><div class="ttdeci">@ Listen</div></div>
 <div class="ttc" id="aANetworkBroadcastActor_8h_html"><div class="ttname"><a href="ANetworkBroadcastActor_8h.html">ANetworkBroadcastActor.h</a></div><div class="ttdoc">네트워크 복제를 위한 전역 브로드캐스트 Actor</div></div>
 <div class="ttc" id="aFoodHolder_8h_html"><div class="ttname"><a href="FoodHolder_8h.html">FoodHolder.h</a></div></div>
 <div class="ttc" id="aFood_8h_html"><div class="ttname"><a href="Food_8h.html">Food.h</a></div></div>
@@ -451,8 +451,8 @@ $(document).ready(function(){initNavTree('FoodHolder_8cpp_source.html',''); init
 <div class="ttc" id="aclassAFood_html_a16c38b4dc52b94ddcc975ac807d04714"><div class="ttname"><a href="classAFood.html#a16c38b4dc52b94ddcc975ac807d04714">AFood::Mesh</a></div><div class="ttdeci">class UStaticMeshComponent * Mesh</div><div class="ttdef"><b>Definition</b> <a href="Food_8h_source.html#l00029">Food.h:29</a></div></div>
 <div class="ttc" id="aclassAFood_html_a86daf17b69d7be7836670b5067b2598b"><div class="ttname"><a href="classAFood.html#a86daf17b69d7be7836670b5067b2598b">AFood::GetFoodIndex</a></div><div class="ttdeci">FORCEINLINE int32 GetFoodIndex() const</div><div class="ttdoc">Food 인덱스 반환</div><div class="ttdef"><b>Definition</b> <a href="Food_8h_source.html#l00053">Food.h:53</a></div></div>
 <div class="ttc" id="aclassALingoGameState_html"><div class="ttname"><a href="classALingoGameState.html">ALingoGameState</a></div><div class="ttdef"><b>Definition</b> <a href="ALingoGameState_8h_source.html#l00038">ALingoGameState.h:39</a></div></div>
+<div class="ttc" id="aclassALingoGameState_html_a00a86de1187369b05b01f01889d78b45"><div class="ttname"><a href="classALingoGameState.html#a00a86de1187369b05b01f01889d78b45">ALingoGameState::WrongListenAnswerList</a></div><div class="ttdeci">TArray&lt; int32 &gt; WrongListenAnswerList</div><div class="ttdef"><b>Definition</b> <a href="ALingoGameState_8h_source.html#l00117">ALingoGameState.h:117</a></div></div>
 <div class="ttc" id="aclassALingoGameState_html_a05dda129c32a08fc3432424f612ce50b"><div class="ttname"><a href="classALingoGameState.html#a05dda129c32a08fc3432424f612ce50b">ALingoGameState::GetListenScenarioData</a></div><div class="ttdeci">FORCEINLINE const FResponseListenScenario &amp; GetListenScenarioData() const</div><div class="ttdef"><b>Definition</b> <a href="ALingoGameState_8h_source.html#l00057">ALingoGameState.h:57</a></div></div>
-<div class="ttc" id="aclassALingoGameState_html_ac68fdc03f32358fc9ca40fc5f4ec9cc8"><div class="ttname"><a href="classALingoGameState.html#ac68fdc03f32358fc9ca40fc5f4ec9cc8">ALingoGameState::WrongReadAnswerList</a></div><div class="ttdeci">TArray&lt; int32 &gt; WrongReadAnswerList</div><div class="ttdef"><b>Definition</b> <a href="ALingoGameState_8h_source.html#l00102">ALingoGameState.h:102</a></div></div>
 <div class="ttc" id="astructFResponseListenScenario_html_ad57537cc7504a8cc73c37c350640d491"><div class="ttname"><a href="structFResponseListenScenario.html#ad57537cc7504a8cc73c37c350640d491">FResponseListenScenario::correct_answer_index</a></div><div class="ttdeci">int32 correct_answer_index</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00906">NetworkData.h:906</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
@@ -460,7 +460,7 @@ $(document).ready(function(){initNavTree('FoodHolder_8cpp_source.html',''); init
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_2268d321c547a1269f0f0801cfba1f77.html">Prop</a></li><li class="navelem"><a class="el" href="dir_1d7bfdd86517d83f393675eb912eaf09.html">Private</a></li><li class="navelem"><a class="el" href="FoodHolder_8cpp.html">FoodHolder.cpp</a></li>
-    <li class="footer">생성시간 : 월 12월 8 2025 06:02:07, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 월 12월 8 2025 07:55:37, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

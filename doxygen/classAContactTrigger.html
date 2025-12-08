@@ -336,7 +336,7 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">  189</span>        <span class="keywordflow">if</span> (<span class="keyword">auto</span> GM = <a class="code hl_function" href="classULingoGameHelper.html#a83ca264d23bdfc2b67f93c8f3345852a">ULingoGameHelper::GetLingoGameMode</a>(World))</div>
 <div class="line"><span class="lineno">  190</span>            GM-&gt;BeginListenQuest(ResponseData);</div>
 <div class="line"><span class="lineno">  191</span> </div>
-<div class="line"><span class="lineno">  192</span>        <a class="code hl_variable" href="classAContactTrigger.html#a5f50fda23fc46735106bfb993c64ea35">VoiceConversationSystem</a>-&gt;PlayVoiceAudio(ResponseData.<a class="code hl_variable" href="structFResponseListenScenario.html#a9c8e3fba71820be4e99598a41a4f0369">voice_data</a>);</div>
+<div class="line"><span class="lineno">  192</span>        <span class="comment">// VoiceConversationSystem-&gt;PlayVoiceAudio(ResponseData.voice_data);</span></div>
 <div class="line"><span class="lineno">  193</span> </div>
 <div class="line"><span class="lineno">  194</span>        <a class="code hl_class" href="classAFoodCourtManager.html">AFoodCourtManager</a>* FCourtManager = Cast&lt;AFoodCourtManager&gt;(UGameplayStatics::GetActorOfClass(</div>
 <div class="line"><span class="lineno">  195</span>            World, AFoodCourtManager::StaticClass()));</div>
@@ -349,9 +349,8 @@ Private 속성</h2></td></tr>
 <div class="ttc" id="aclassAFoodCourtManager_html"><div class="ttname"><a href="classAFoodCourtManager.html">AFoodCourtManager</a></div><div class="ttdef"><b>Definition</b> <a href="FoodCourtManager_8h_source.html#l00013">FoodCourtManager.h:14</a></div></div>
 <div class="ttc" id="aclassAFoodCourtManager_html_a7cb555a5d887b8f0739a23019db3cc43"><div class="ttname"><a href="classAFoodCourtManager.html#a7cb555a5d887b8f0739a23019db3cc43">AFoodCourtManager::SetFoodCourtInfo</a></div><div class="ttdeci">void SetFoodCourtInfo()</div><div class="ttdef"><b>Definition</b> <a href="FoodCourtManager_8cpp_source.html#l00035">FoodCourtManager.cpp:35</a></div></div>
 <div class="ttc" id="aclassULingoGameHelper_html_a83ca264d23bdfc2b67f93c8f3345852a"><div class="ttname"><a href="classULingoGameHelper.html#a83ca264d23bdfc2b67f93c8f3345852a">ULingoGameHelper::GetLingoGameMode</a></div><div class="ttdeci">static class ALingoGameMode * GetLingoGameMode(const UObject *WorldContextObject)</div><div class="ttdef"><b>Definition</b> <a href="ULingoGameHelper_8cpp_source.html#l00041">ULingoGameHelper.cpp:41</a></div></div>
-<div class="ttc" id="astructFResponseListenScenario_html_a9c8e3fba71820be4e99598a41a4f0369"><div class="ttname"><a href="structFResponseListenScenario.html#a9c8e3fba71820be4e99598a41a4f0369">FResponseListenScenario::voice_data</a></div><div class="ttdeci">TArray&lt; uint8 &gt; voice_data</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00918">NetworkData.h:918</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="ULingoGameHelper_8cpp_source.html#l00041">ULingoGameHelper::GetLingoGameMode()</a>, <a class="el" href="FoodCourtManager_8cpp_source.html#l00035">AFoodCourtManager::SetFoodCourtInfo()</a>, <a class="el" href="NetworkData_8h_source.html#l00918">FResponseListenScenario::voice_data</a>, <a class="el" href="AContactTrigger_8h_source.html#l00074">VoiceConversationSystem</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="ULingoGameHelper_8cpp_source.html#l00041">ULingoGameHelper::GetLingoGameMode()</a>, <a class="el" href="FoodCourtManager_8cpp_source.html#l00035">AFoodCourtManager::SetFoodCourtInfo()</a>.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AContactTrigger_8cpp_source.html#l00144">OnTriggerScenario()</a>.</p>
 <div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -913,7 +912,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="AContactTrigger_8h_source.html">AContactTrigger.h</a> 파일의 <a class="el" href="AContactTrigger_8h_source.html#l00074">74</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AContactTrigger_8cpp_source.html#l00017">AContactTrigger()</a>, <a class="el" href="AContactTrigger_8cpp_source.html#l00182">OnListenResponseScenario()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AContactTrigger_8cpp_source.html#l00017">AContactTrigger()</a>.</p>
 
 </div>
 </div>
@@ -927,7 +926,7 @@ Private 속성</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classAContactTrigger.html">AContactTrigger</a></li>
-    <li class="footer">생성시간 : 월 12월 8 2025 06:02:07, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 월 12월 8 2025 07:55:37, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>
