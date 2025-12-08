@@ -49,6 +49,8 @@ void AOrderKiosk::BeginPlay()
 	{
 		InteractableComp->OnInteractionTriggered.AddDynamic(this, &AOrderKiosk::OnInteractionTriggered);
 	}
+
+	InteractWidget->SetVisibility(true);
 }
 
 void AOrderKiosk::GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const

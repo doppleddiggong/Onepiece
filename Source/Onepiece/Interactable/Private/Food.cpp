@@ -4,6 +4,7 @@
 #include "Food.h"
 
 #include "CityNameWidget.h"
+#include "InteractableComponent.h"
 #include "Components/WidgetComponent.h"
 
 
@@ -22,6 +23,10 @@ AFood::AFood()
 	FoodName = CreateDefaultSubobject<UWidgetComponent>(TEXT("FoodName"));
 	FoodName->SetupAttachment(GetRootComponent());
 
+	InteractableComp = CreateDefaultSubobject<UInteractableComponent>(TEXT("Interactable"));
+	InteractableComp->InteractionType = EInteractionType::PickUp;
+	InteractableComp->InteractionPrompt = TEXT("Pick Up");
+	
 	// Initial settings
 	Mesh->SetSimulatePhysics(true);
 	Mesh->SetEnableGravity(true);
