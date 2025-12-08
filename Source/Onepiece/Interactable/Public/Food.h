@@ -29,7 +29,7 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	class UStaticMeshComponent* Mesh;
 
-	UPROPERTY(Replicated, EditAnywhere, BlueprintReadWrite)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	class UStaticMeshComponent* FoodMesh;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
@@ -48,6 +48,11 @@ protected:
 
 	UFUNCTION()
 	void OnRep_FoodName();
+
+	/**
+	 * @brief Widget에 음식 이름 업데이트
+	 */
+	void UpdateFoodWidget();
 
 public:
 	void SetFoodInfo(int32 InIndex, FString InName);
