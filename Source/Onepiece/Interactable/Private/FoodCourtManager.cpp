@@ -24,22 +24,13 @@ void AFoodCourtManager::BeginPlay()
 
 	if (ALingoGameState* GS = ULingoGameHelper::GetLingoGameState(GetWorld()))
 	{
-		ListenScenarioDelegateHandle = GS->OnQuestScenarioDataUpdated.AddUObject(this, &AFoodCourtManager::HandleQuestScenarioDataUpdated);
+		GS->OnQuestScenarioDataUpdated.AddDynamic(this, &AFoodCourtManager::HandleQuestScenarioDataUpdated);
 		HandleQuestScenarioDataUpdated();
 	}
 }
 
 void AFoodCourtManager::EndPlay(const EEndPlayReason::Type EndPlayReason)
 {
-	if (ALingoGameState* GS = ULingoGameHelper::GetLingoGameState(GetWorld()))
-	{
-		if (ListenScenarioDelegateHandle.IsValid())
-		{
-			GS->OnQuestScenarioDataUpdated.Remove(ListenScenarioDelegateHandle);
-			ListenScenarioDelegateHandle.Reset();
-		}
-	}
-
 	Super::EndPlay(EndPlayReason);
 }
 

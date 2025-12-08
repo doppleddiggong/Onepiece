@@ -108,7 +108,7 @@ void UMainWidget::OnUpdateMissionTimerState(bool bIsActive, float TimeLimit)
 	
 	if (bIsActive)
 	{
-		QuestInfoWidget->InitQuestInfo(ULingoGameHelper::GetLingoPlayerState(GetWorld())->QuestRole);
+		QuestInfoWidget->InitQuestInfo();
 	}
 
 	SetMissionTimerState(bIsActive);

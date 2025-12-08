@@ -34,9 +34,6 @@ public:
 	class AOrderKiosk* GetRandomKiosk();
 
 private:
+	UFUNCTION()
 	void HandleQuestScenarioDataUpdated();
-
-private:
-	/** GameState Delegate 핸들 */
-	FDelegateHandle ListenScenarioDelegateHandle;
 };

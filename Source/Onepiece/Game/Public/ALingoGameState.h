@@ -18,22 +18,9 @@ enum class EQuestType : uint8
 	Speak = 4
 };
 
-USTRUCT(BlueprintType)
-struct FQuestData
-{
-	GENERATED_BODY()
-
-	// 스테이지 ID
-	UPROPERTY(BlueprintReadOnly, Category = "QuestData")
-	EQuestType QuestType;
-
-	// 기본 생성자
-	FQuestData() : QuestType(EQuestType::None) {}
-};
-
-DECLARE_MULTICAST_DELEGATE_OneParam(FOnReadResultUpdated, const FResponseReadResult&);
-DECLARE_MULTICAST_DELEGATE_OneParam(FOnListenResultUpdated, const FResponseListenResult&);
-DECLARE_MULTICAST_DELEGATE(FOnQuestScenarioDataUpdated);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnReadResultUpdated, const FResponseReadResult&, Result);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnListenResultUpdated, const FResponseListenResult&, Result);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnQuestScenarioDataUpdated);
 
 UCLASS()
 class ONEPIECE_API ALingoGameState : public AGameState
@@ -52,8 +39,8 @@ public:
 	FORCEINLINE int64 GetRoomId() { return RoomId; };
 	FORCEINLINE float GetRemainMissionTime() { return RemainMissionTime; }
 	FORCEINLINE float GetTimeTaken() { return TimeLimit - RemainMissionTime; }
-	FORCEINLINE bool IsQuestIng() { return CurrentQuestData.QuestType != EQuestType::None;	}
-	FORCEINLINE EQuestType GetCurrentQuestType() const { return CurrentQuestData.QuestType; }
+	FORCEINLINE bool IsQuestIng() { return QuestType != EQuestType::None;	}
+	FORCEINLINE EQuestType GetCurrentQuestType() const { return QuestType; }
 	FORCEINLINE const FResponseReadScenario& GetReadScenarioData() const {return ReadScenarioData;}
 	FORCEINLINE const FResponseListenScenario& GetListenScenarioData() const {return ListenScenarioData;}
 
@@ -75,6 +62,9 @@ public:
 	
 protected:
 	UFUNCTION(NetMulticast, Reliable)
+	void Multicast_UpdateQuestType(const EQuestType InQuestType);
+
+	UFUNCTION(NetMulticast, Reliable)
 	void Multicast_ShowReadQuestPopup(const FResponseReadScenario& InScenarioData);
 
 	UFUNCTION(NetMulticast, Reliable)
@@ -91,9 +81,6 @@ protected:
 
 	UFUNCTION()
 	void OnRep_ListenResult();
-
-	UFUNCTION()
-	void OnRep_CurrentQuestData();
 	
 private:
 	/// @brief 타이머 종료 시 호출됩니다 (서버에서만 실행)
@@ -135,16 +122,15 @@ public:
 	//--------------------------------------------------------------//
 
 protected:
-	UPROPERTY(ReplicatedUsing = OnRep_CurrentQuestData, BlueprintReadOnly, Category = "Mission")
+	UPROPERTY(Replicated, BlueprintReadOnly, Category = "Mission")
 	float RemainMissionTime = 0.f;
 
 	/// @brief 타이머 활성화 상태
 	UPROPERTY(Replicated, BlueprintReadOnly, Category = "Mission")
 	bool bIsTimerActive = false;
 
-	// 현재 퀘스트 정보
-	UPROPERTY(ReplicatedUsing = OnRep_CurrentQuestData, BlueprintReadOnly, Category = "Quest")
-	FQuestData CurrentQuestData;
+	UPROPERTY(Replicated, BlueprintReadOnly, Category = "Quest")
+	EQuestType QuestType;
 		
 private:
 	int64 RoomId = 0;

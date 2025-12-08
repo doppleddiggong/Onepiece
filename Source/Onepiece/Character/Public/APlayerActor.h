@@ -147,6 +147,7 @@ private:
 	void CreateMainWidget();
 	void CreateToastWidget();
 
+	
 	/// @brief 텔레포트 이벤트 핸들러
 	/// @param TargetLocation 목표 위치
 	UFUNCTION()
@@ -161,6 +162,18 @@ private:
 
 	/// @brief 텔레포트 목표 위치
 	FVector PendingTeleportLocation;
+
+	UFUNCTION()
+	void OnUpdateQuestInfo();
+	
+	UFUNCTION()
+	void OnUpdateQuestRole(EQuestRole QuestRole);
+
+	UFUNCTION()
+	void OnListenResultUpdated( const FResponseListenResult& Result);
+
+	UFUNCTION()
+	void OnReadResultUpdated(const FResponseReadResult& Result);
 	
 public:
 	// grab 시 들어올릴 위치

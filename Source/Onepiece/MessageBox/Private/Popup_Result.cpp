@@ -22,8 +22,6 @@
 
 void UPopup_Result::NativeDestruct()
 {
-	RemoveResultDelegates();
-
 	Super::NativeDestruct();
 }
 
@@ -51,11 +49,13 @@ void UPopup_Result::InitPopup(const EQuestType InQuestType)
 	{
 		if (QuestType == EQuestType::Read)
 		{
-			ReadResultDelegateHandle = GS->OnReadResultUpdated.AddUObject(this, &UPopup_Result::InitReadResult);
+			GS->OnReadResultUpdated.RemoveDynamic(this, &UPopup_Result::InitReadResult);
+			GS->OnReadResultUpdated.AddDynamic(this, &UPopup_Result::InitReadResult);
 		}
 		else if (QuestType == EQuestType::Listen)
 		{
-			ListenResultDelegateHandle = GS->OnListenResultUpdated.AddUObject(this, &UPopup_Result::InitListenResult);
+			GS->OnListenResultUpdated.RemoveDynamic(this, &UPopup_Result::InitListenResult);
+			GS->OnListenResultUpdated.AddDynamic(this, &UPopup_Result::InitListenResult);
 		}
 		
 		bool bHasResult = false;
@@ -85,8 +85,6 @@ void UPopup_Result::InitPopup(const EQuestType InQuestType)
 
 void UPopup_Result::OnClickClose()
 {
-	RemoveResultDelegates();
-	
 	// PopupManager를 통해 팝업 닫기 (마우스 커서 처리 포함)
 	if (UPopupManager* PopupMgr = UPopupManager::Get(GetWorld()))
 	{
@@ -94,23 +92,6 @@ void UPopup_Result::OnClickClose()
 	}
 }
 
-void UPopup_Result::RemoveResultDelegates()
-{
-	if (auto GS = Cast<ALingoGameState>(GetWorld()->GetGameState()))
-	{
-		if (ReadResultDelegateHandle.IsValid())
-		{
-			GS->OnReadResultUpdated.Remove(ReadResultDelegateHandle);
-			ReadResultDelegateHandle.Reset();
-		}
-
-		if (ListenResultDelegateHandle.IsValid())
-		{
-			GS->OnListenResultUpdated.Remove(ListenResultDelegateHandle);
-			ListenResultDelegateHandle.Reset();
-		}
-	}
-}
 
 
 void UPopup_Result::InitWordWidget()

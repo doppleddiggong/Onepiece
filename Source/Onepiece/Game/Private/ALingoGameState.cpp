@@ -33,7 +33,7 @@ void ALingoGameState::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutL
 
 	DOREPLIFETIME(ALingoGameState, RemainMissionTime);
 	DOREPLIFETIME(ALingoGameState, bIsTimerActive);
-	DOREPLIFETIME(ALingoGameState, CurrentQuestData);
+	DOREPLIFETIME(ALingoGameState, QuestType);
 
 	DOREPLIFETIME(ALingoGameState, ReadScenarioData);
 	DOREPLIFETIME(ALingoGameState, WrongReadAnswerList);
@@ -65,26 +65,40 @@ void ALingoGameState::Tick(float DeltaSeconds)
 
 void ALingoGameState::SetReadScenarioData( const FResponseReadScenario& InResponseData)
 {
-	CurrentQuestData.QuestType = EQuestType::Read;
-	ReadScenarioData = InResponseData;
+	// 반드시 서버 전용
+	if (!HasAuthority())
+		return;
 	
+	this->QuestType = EQuestType::Read;
+	ReadScenarioData = InResponseData;
+
 	// 미션 타이머 시작
 	this->StartMissionTimer( ULingoGameHelper::GetMissionPlayTime() );
 
 	if (HasAuthority())
+	{
+		Multicast_UpdateQuestType(QuestType);
 		Multicast_ShowReadQuestPopup(ReadScenarioData);
+	}
 }
 
 void ALingoGameState::SetListenScenarioData( const FResponseListenScenario& InResponseData)
 {
-	CurrentQuestData.QuestType = EQuestType::Listen;
-	ListenScenarioData = InResponseData;
+	// 반드시 서버 전용
+	if (!HasAuthority())
+		return;
 	
+	this->QuestType = EQuestType::Listen;
+	ListenScenarioData = InResponseData;
+
 	// 미션 타이머 시작
 	this->StartMissionTimer( ULingoGameHelper::GetMissionPlayTime() );
 
 	if (HasAuthority())
+	{
+		Multicast_UpdateQuestType(QuestType);
 		Multicast_ShowListenQuestPopup(ListenScenarioData);
+	}
 }
 
 void ALingoGameState::StartMissionTimer(float InTimeLimit)
@@ -137,7 +151,7 @@ void ALingoGameState::OnMissionTimerEnd()
 	if (ANetworkBroadcastActor* BroadcastActor = ANetworkBroadcastActor::Get(this))
 		BroadcastActor->SendUpdateMissionTimerState(false, 0.0f, this);
 
-	auto EndMessage = ULingoGameHelper::GetStageEndMessage(CurrentQuestData.QuestType);
+	auto EndMessage = ULingoGameHelper::GetStageEndMessage(QuestType);
 
 	PRINTLOG( TEXT("[GameState] Mission Timer Ended - Sending: %s"), *EndMessage);
 
@@ -156,6 +170,20 @@ void ALingoGameState::OnMissionTimerEnd()
 		}
 	}
 }
+
+void ALingoGameState::Multicast_UpdateQuestType_Implementation(const EQuestType InQuestType)
+{
+	// 0.5초 딜레이 후 팝업 표시
+	if (UWorld* World = GetWorld())
+	{
+		FTimerHandle TimerHandle;
+		World->GetTimerManager().SetTimer(TimerHandle, [this, InQuestType]()
+		{
+			OnQuestScenarioDataUpdated.Broadcast();
+		}, 0.5f, false);
+	}
+}
+
 
 void ALingoGameState::Multicast_ShowReadQuestPopup_Implementation(const FResponseReadScenario& InScenarioData)
 {
@@ -188,6 +216,7 @@ void ALingoGameState::Multicast_ShowListenQuestPopup_Implementation(const FRespo
 		}, 0.5f, false);
 	}
 }
+
 void ALingoGameState::OnRep_ReadScenarioData()
 {
 	OnQuestScenarioDataUpdated.Broadcast();
@@ -206,9 +235,4 @@ void ALingoGameState::OnRep_ListenScenarioData()
 void ALingoGameState::OnRep_ListenResult()
 {
 	OnListenResultUpdated.Broadcast(ListenResult);
-}
-
-void ALingoGameState::OnRep_CurrentQuestData()
-{
-	OnQuestScenarioDataUpdated.Broadcast();
 }

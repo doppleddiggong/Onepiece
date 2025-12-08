@@ -4,58 +4,13 @@
 #include "UQuestInfoWidget.h"
 #include "ALingoGameState.h"
 #include "ALingoPlayerState.h"
+#include "APlayerControl.h"
 #include "UBroadcastManager.h"
 #include "NetworkData.h"
 #include "ULingoGameHelper.h"
 #include "Components/TextBlock.h"
 
-
-
-void UQuestInfoWidget::NativeConstruct()
-{
-	Super::NativeConstruct();
-
-	if (auto BM = UBroadcastManager::Get(GetWorld()))
-		BM->OnUpdateQuestRole.AddDynamic(this, &UQuestInfoWidget::InitQuestInfo);
-
-	if (auto GS = ULingoGameHelper::GetLingoGameState(GetWorld()))
-	{
-		QuestScenarioDataDelegateHandle = GS->OnQuestScenarioDataUpdated.AddUObject(this, &UQuestInfoWidget::OnQuestScenarioDataReceived);
-		ReadResultDelegateHandle = GS->OnReadResultUpdated.AddUObject(this, &UQuestInfoWidget::OnReadResultReceived);
-		ListenResultDelegateHandle = GS->OnListenResultUpdated.AddUObject(this, &UQuestInfoWidget::OnListenResultReceived);
-	}
-}
-
-void UQuestInfoWidget::NativeDestruct()
-{
-	if (auto BM = UBroadcastManager::Get(GetWorld()))
-		BM->OnUpdateQuestRole.RemoveDynamic(this, &UQuestInfoWidget::InitQuestInfo);
-
-	if (auto GS = ULingoGameHelper::GetLingoGameState(GetWorld()))
-	{
-		if (QuestScenarioDataDelegateHandle.IsValid())
-		{
-			GS->OnQuestScenarioDataUpdated.Remove(QuestScenarioDataDelegateHandle);
-			QuestScenarioDataDelegateHandle.Reset();
-		}
-		
-		if (ReadResultDelegateHandle.IsValid())
-		{
-			GS->OnReadResultUpdated.Remove(ReadResultDelegateHandle);
-			ReadResultDelegateHandle.Reset();
-		}
-
-		if (ListenResultDelegateHandle.IsValid())
-		{
-			GS->OnListenResultUpdated.Remove(ListenResultDelegateHandle);
-			ListenResultDelegateHandle.Reset();
-		}
-	}
-
-	Super::NativeDestruct();
-}
-
-void UQuestInfoWidget::InitQuestInfo(EQuestRole InQuestRole)
+void UQuestInfoWidget::InitQuestInfo()
 {
 	const auto GS = ULingoGameHelper::GetLingoGameState(GetWorld());
 	if (!GS || !GS->IsQuestIng())
@@ -65,7 +20,7 @@ void UQuestInfoWidget::InitQuestInfo(EQuestRole InQuestRole)
 	}
 
 	const EQuestType QuestType = GS->GetCurrentQuestType();
-	this->QuestRole = InQuestRole;
+	auto QuestRole = ULingoGameHelper::GetLingoPlayerState(GetWorld())->QuestRole;
 
 	SetVisibility(ESlateVisibility::Visible);
 
@@ -101,7 +56,7 @@ void UQuestInfoWidget::SetQuestText(const FWordData& WordData) const
 
 void UQuestInfoWidget::OnQuestScenarioDataReceived()
 {
-	this->InitQuestInfo(QuestRole);
+	this->InitQuestInfo();
 }
 
 void UQuestInfoWidget::OnReadResultReceived(const FResponseReadResult& /*ResponseData*/)

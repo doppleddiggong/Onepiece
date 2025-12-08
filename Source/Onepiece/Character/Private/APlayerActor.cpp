@@ -24,6 +24,7 @@
 #include "UToastWidget.h"
 #include "UBroadcastManager.h"
 #include "UFadeWidget.h"
+#include "UQuestInfoWidget.h"
 
 #include "Camera/CameraComponent.h"
 #include "Components/InputComponent.h"
@@ -133,11 +134,27 @@ void APlayerActor::BeginPlay()
 	HookSystem->InitSystem(HookCable, HookProjectileMesh);
 
 	// 텔레포트 이벤트 구독
-	if (UBroadcastManager* BroadcastManager = UBroadcastManager::Get(GetWorld()))
+	if (auto DM = UBroadcastManager::Get(GetWorld()))
 	{
-		BroadcastManager->OnTeleport.AddDynamic(this, &APlayerActor::OnTeleportAllPlayers);
+		DM->OnTeleport.RemoveDynamic(this, &APlayerActor::OnTeleportAllPlayers);
+		DM->OnTeleport.AddDynamic(this, &APlayerActor::OnTeleportAllPlayers);
+
+		DM->OnUpdateQuestRole.RemoveDynamic(this, &APlayerActor::OnUpdateQuestRole);
+		DM->OnUpdateQuestRole.AddDynamic(this, &APlayerActor::OnUpdateQuestRole);
 	}
 
+	if (auto GS = ULingoGameHelper::GetLingoGameState(GetWorld()))
+	{
+		GS->OnQuestScenarioDataUpdated.RemoveDynamic(this, &APlayerActor::OnUpdateQuestInfo);
+		GS->OnQuestScenarioDataUpdated.AddDynamic(this, &APlayerActor::OnUpdateQuestInfo);
+
+		GS->OnReadResultUpdated.RemoveDynamic(this, &APlayerActor::OnReadResultUpdated);
+		GS->OnReadResultUpdated.AddDynamic(this, &APlayerActor::OnReadResultUpdated);
+
+		GS->OnListenResultUpdated.RemoveDynamic(this, &APlayerActor::OnListenResultUpdated);
+		GS->OnListenResultUpdated.AddDynamic(this, &APlayerActor::OnListenResultUpdated);
+	}
+	
 	if (IsLocallyControlled())
 	{
 		CreateMainWidget();
@@ -486,4 +503,34 @@ void APlayerActor::OnFadeOutCompleteForTeleport()
 
 	// FadeIn 시작
 	MainWidget->FadeIn(0.5f);
+}
+
+void APlayerActor::OnUpdateQuestInfo()
+{
+	if (!IsLocallyControlled())
+		return;
+	MainWidget->GetQuestInfoWidget()->InitQuestInfo();
+}
+
+void APlayerActor::OnUpdateQuestRole(EQuestRole QuestRole)
+{
+	if (!IsLocallyControlled())
+		return;
+	MainWidget->GetQuestInfoWidget()->InitQuestInfo();
+}
+
+void APlayerActor::OnReadResultUpdated(const FResponseReadResult& Result)
+{
+	if (!IsLocallyControlled())
+		return;
+	
+	MainWidget->GetQuestInfoWidget()->SetVisibility(ESlateVisibility::Collapsed);
+}
+
+void APlayerActor::OnListenResultUpdated( const FResponseListenResult& Result)
+{
+	if (!IsLocallyControlled())
+		return;
+	
+	MainWidget->GetQuestInfoWidget()->SetVisibility(ESlateVisibility::Collapsed);
 }
