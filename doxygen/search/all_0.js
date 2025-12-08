@@ -92,7 +92,7 @@ var searchData=
   ['anpcbase_2ecpp_89',['ANPCBase.cpp',['../ANPCBase_8cpp.html',1,'']]],
   ['anpcbase_2eh_90',['ANPCBase.h',['../ANPCBase_8h.html',1,'']]],
   ['anpcexaminer_91',['anpcexaminer',['../classANPCExaminer.html#a91eebcacdb25c63e5b5ab88be191e140',1,'ANPCExaminer::ANPCExaminer()'],['../classANPCExaminer.html',1,'ANPCExaminer']]],
-  ['answer_92',['answer',['../structFInterviewAnswerData.html#a5575841760326adcc7ba83fa26137328',1,'FInterviewAnswerData::answer'],['../structFRequestInterviewAnswer.html#a6f9bb74ac56aa1ad3d48a4a98a017eac',1,'FRequestInterviewAnswer::answer'],['../structFWriteQuestionData.html#a3231eadaa35a9dbb77b7b3a7b69456c7',1,'FWriteQuestionData::Answer']]],
+  ['answer_92',['answer',['../structFWriteQuestionData.html#a3231eadaa35a9dbb77b7b3a7b69456c7',1,'FWriteQuestionData::Answer'],['../structFInterviewAnswerData.html#a5575841760326adcc7ba83fa26137328',1,'FInterviewAnswerData::answer'],['../structFRequestInterviewAnswer.html#a6f9bb74ac56aa1ad3d48a4a98a017eac',1,'FRequestInterviewAnswer::answer']]],
   ['answercoloridx_93',['AnswerColorIdx',['../classAHolder.html#a4ff9df4654d1cdfc7ec42fd47aaa8d24',1,'AHolder']]],
   ['answerfoodindex_94',['AnswerFoodIndex',['../classAFoodHolder.html#a959b6b9f009d30337999734ec1abbc36',1,'AFoodHolder']]],
   ['answerfound_95',['AnswerFound',['../classAWeightSwitch.html#ab519ea888b0690295485652b2e1d2686',1,'AWeightSwitch']]],

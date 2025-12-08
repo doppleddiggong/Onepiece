@@ -134,133 +134,151 @@ $(document).ready(function(){initNavTree('Food_8cpp_source.html',''); initResiza
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <a class="code hl_variable" href="classAFood.html#ad600dada8faa4bf439f7a49151b1b367">FoodMesh</a>-&gt;SetupAttachment(GetRootComponent());</div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <a class="code hl_variable" href="classAFood.html#a6622483b7ed26a1e4373d55574520553">FoodName</a> = CreateDefaultSubobject&lt;UWidgetComponent&gt;(TEXT(<span class="stringliteral">&quot;FoodName&quot;</span>));</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <a class="code hl_variable" href="classAFood.html#a6622483b7ed26a1e4373d55574520553">FoodName</a>-&gt;SetupAttachment(GetRootComponent());</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <a class="code hl_variable" href="classAFood.html#a10e5bbf52c2e5ddbbdd19e390adb013b">InteractableComp</a> = CreateDefaultSubobject&lt;UInteractableComponent&gt;(TEXT(<span class="stringliteral">&quot;Interactable&quot;</span>));</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <a class="code hl_variable" href="classAFood.html#a10e5bbf52c2e5ddbbdd19e390adb013b">InteractableComp</a>-&gt;InteractionType = EInteractionType::PickUp;</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <a class="code hl_variable" href="classAFood.html#a10e5bbf52c2e5ddbbdd19e390adb013b">InteractableComp</a>-&gt;InteractionPrompt = TEXT(<span class="stringliteral">&quot;Pick Up&quot;</span>);</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    </div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="comment">// Initial settings</span></div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <a class="code hl_variable" href="classAFood.html#a16c38b4dc52b94ddcc975ac807d04714">Mesh</a>-&gt;SetSimulatePhysics(<span class="keyword">true</span>);</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <a class="code hl_variable" href="classAFood.html#a16c38b4dc52b94ddcc975ac807d04714">Mesh</a>-&gt;SetEnableGravity(<span class="keyword">true</span>);</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <a class="code hl_variable" href="classAFood.html#a16c38b4dc52b94ddcc975ac807d04714">Mesh</a>-&gt;SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <a class="code hl_variable" href="classAFood.html#a16c38b4dc52b94ddcc975ac807d04714">Mesh</a>-&gt;SetCollisionProfileName(TEXT(<span class="stringliteral">&quot;PhysicsActor&quot;</span>));</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="comment">// 무게 설정</span></div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <a class="code hl_variable" href="classAFood.html#a16c38b4dc52b94ddcc975ac807d04714">Mesh</a>-&gt;SetMassOverrideInKg(NAME_None, 50.f, <span class="keyword">true</span>);</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="comment">// 물리 복제 설정</span></div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <a class="code hl_variable" href="classAFood.html#a16c38b4dc52b94ddcc975ac807d04714">Mesh</a>-&gt;SetIsReplicated(<span class="keyword">true</span>);</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="comment">// Replication</span></div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    bReplicates = <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    SetNetUpdateFrequency(100.0f);      <span class="comment">// 높은 업데이트 빈도로 부드러운 네트워크 동기화</span></div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    SetMinNetUpdateFrequency(33.0f);    <span class="comment">// 최소 30fps 업데이트 보장</span></div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>}</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <a class="code hl_variable" href="classAFood.html#a10e5bbf52c2e5ddbbdd19e390adb013b">InteractableComp</a> = CreateDefaultSubobject&lt;UInteractableComponent&gt;(TEXT(<span class="stringliteral">&quot;Interactable&quot;</span>));</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <a class="code hl_variable" href="classAFood.html#a10e5bbf52c2e5ddbbdd19e390adb013b">InteractableComp</a>-&gt;InteractionType = EInteractionType::PickUp;</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <a class="code hl_variable" href="classAFood.html#a10e5bbf52c2e5ddbbdd19e390adb013b">InteractableComp</a>-&gt;InteractionPrompt = TEXT(<span class="stringliteral">&quot;Pick Up&quot;</span>);</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="comment">// Initial settings</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <a class="code hl_variable" href="classAFood.html#a16c38b4dc52b94ddcc975ac807d04714">Mesh</a>-&gt;SetSimulatePhysics(<span class="keyword">true</span>);</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <a class="code hl_variable" href="classAFood.html#a16c38b4dc52b94ddcc975ac807d04714">Mesh</a>-&gt;SetEnableGravity(<span class="keyword">true</span>);</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <a class="code hl_variable" href="classAFood.html#a16c38b4dc52b94ddcc975ac807d04714">Mesh</a>-&gt;SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <a class="code hl_variable" href="classAFood.html#a16c38b4dc52b94ddcc975ac807d04714">Mesh</a>-&gt;SetCollisionProfileName(TEXT(<span class="stringliteral">&quot;PhysicsActor&quot;</span>));</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="comment">// 무게 설정</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <a class="code hl_variable" href="classAFood.html#a16c38b4dc52b94ddcc975ac807d04714">Mesh</a>-&gt;SetMassOverrideInKg(NAME_None, 50.f, <span class="keyword">true</span>);</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="comment">// 물리 복제 설정</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <a class="code hl_variable" href="classAFood.html#a16c38b4dc52b94ddcc975ac807d04714">Mesh</a>-&gt;SetIsReplicated(<span class="keyword">true</span>);</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="comment">// Replication</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    bReplicates = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    SetNetUpdateFrequency(100.0f);      <span class="comment">// 높은 업데이트 빈도로 부드러운 네트워크 동기화</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    SetMinNetUpdateFrequency(33.0f);    <span class="comment">// 최소 30fps 업데이트 보장</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>}</div>
 </div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="comment">// Called when the game starts or when spawned</span></div>
-<div class="foldopen" id="foldopen00051" data-start="{" data-end="}">
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="classAFood.html#ae3d1b4ff7a90238177025945d9621c4f">   51</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAFood.html#ae3d1b4ff7a90238177025945d9621c4f">AFood::BeginPlay</a>()</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>{</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    Super::BeginPlay();</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>}</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="comment">// Called when the game starts or when spawned</span></div>
+<div class="foldopen" id="foldopen00050" data-start="{" data-end="}">
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="classAFood.html#ae3d1b4ff7a90238177025945d9621c4f">   50</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAFood.html#ae3d1b4ff7a90238177025945d9621c4f">AFood::BeginPlay</a>()</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>{</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    Super::BeginPlay();</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <a class="code hl_variable" href="classAFood.html#a6622483b7ed26a1e4373d55574520553">FoodName</a>-&gt;AttachToComponent(GetRootComponent(), FAttachmentTransformRules::KeepRelativeTransform);</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <a class="code hl_variable" href="classAFood.html#a6622483b7ed26a1e4373d55574520553">FoodName</a>-&gt;SetRelativeLocation(FVector(0, 0, 0));</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>}</div>
 </div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
-<div class="foldopen" id="foldopen00057" data-start="{" data-end="}">
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="classAFood.html#a9d5469e7144ca2883d9472fd1f7c06d4">   57</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAFood.html#a9d5469e7144ca2883d9472fd1f7c06d4">AFood::GetLifetimeReplicatedProps</a>(TArray&lt;class FLifetimeProperty&gt;&amp; OutLifetimeProps)<span class="keyword"> const</span></div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="keyword"></span>{</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    Super::GetLifetimeReplicatedProps(OutLifetimeProps);</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    DOREPLIFETIME(<a class="code hl_class" href="classAFood.html">AFood</a>, <a class="code hl_variable" href="classAFood.html#ad600dada8faa4bf439f7a49151b1b367">FoodMesh</a>);</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    DOREPLIFETIME(<a class="code hl_class" href="classAFood.html">AFood</a>, <a class="code hl_variable" href="classAFood.html#abdcc398c722128d26a91d1fc0c631ca7">Name</a>);</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    DOREPLIFETIME(<a class="code hl_class" href="classAFood.html">AFood</a>, <a class="code hl_variable" href="classAFood.html#a254fa39720e4b33ef543ca38b378b47f">Index</a>);</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>}</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
+<div class="foldopen" id="foldopen00058" data-start="{" data-end="}">
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="classAFood.html#a9d5469e7144ca2883d9472fd1f7c06d4">   58</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAFood.html#a9d5469e7144ca2883d9472fd1f7c06d4">AFood::GetLifetimeReplicatedProps</a>(TArray&lt;class FLifetimeProperty&gt;&amp; OutLifetimeProps)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="keyword"></span>{</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    Super::GetLifetimeReplicatedProps(OutLifetimeProps);</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="comment">// FoodMesh는 Component이므로 자동 복제됨</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    DOREPLIFETIME(<a class="code hl_class" href="classAFood.html">AFood</a>, <a class="code hl_variable" href="classAFood.html#abdcc398c722128d26a91d1fc0c631ca7">Name</a>);</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    DOREPLIFETIME(<a class="code hl_class" href="classAFood.html">AFood</a>, <a class="code hl_variable" href="classAFood.html#a254fa39720e4b33ef543ca38b378b47f">Index</a>);</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>}</div>
 </div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="comment">// Called every frame</span></div>
-<div class="foldopen" id="foldopen00067" data-start="{" data-end="}">
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="classAFood.html#ab887c7a54be058e0c86f705663633001">   67</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAFood.html#ab887c7a54be058e0c86f705663633001">AFood::Tick</a>(<span class="keywordtype">float</span> DeltaTime)</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>{</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    Super::Tick(DeltaTime);</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    </div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>}</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="comment">// Called every frame</span></div>
+<div class="foldopen" id="foldopen00068" data-start="{" data-end="}">
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno"><a class="line" href="classAFood.html#ab887c7a54be058e0c86f705663633001">   68</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAFood.html#ab887c7a54be058e0c86f705663633001">AFood::Tick</a>(<span class="keywordtype">float</span> DeltaTime)</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>{</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    Super::Tick(DeltaTime);</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    </div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>}</div>
 </div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
-<div class="foldopen" id="foldopen00074" data-start="{" data-end="}">
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno"><a class="line" href="classAFood.html#a9f491a1f39c58ade7ff62fe02d46c034">   74</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAFood.html#a9f491a1f39c58ade7ff62fe02d46c034">AFood::OnRep_FoodName</a>()</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>{</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    <a class="code hl_function" href="classAFood.html#a9d7da93d3b942a3e39ac456f7a43d317">SetFoodInfo</a>(<a class="code hl_variable" href="classAFood.html#a254fa39720e4b33ef543ca38b378b47f">Index</a>, <a class="code hl_variable" href="classAFood.html#abdcc398c722128d26a91d1fc0c631ca7">Name</a>);</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>}</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
+<div class="foldopen" id="foldopen00075" data-start="{" data-end="}">
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno"><a class="line" href="classAFood.html#a9f491a1f39c58ade7ff62fe02d46c034">   75</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAFood.html#a9f491a1f39c58ade7ff62fe02d46c034">AFood::OnRep_FoodName</a>()</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>{</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    <span class="comment">// 클라이언트에서 Name/Index가 복제될 때 Widget 업데이트</span></div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    <a class="code hl_function" href="classAFood.html#a1464bf50b3bc86d1a231f264a79105a3">UpdateFoodWidget</a>();</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>}</div>
 </div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
-<div class="foldopen" id="foldopen00079" data-start="{" data-end="}">
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno"><a class="line" href="classAFood.html#a9d7da93d3b942a3e39ac456f7a43d317">   79</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAFood.html#a9d7da93d3b942a3e39ac456f7a43d317">AFood::SetFoodInfo</a>(int32 InIndex, FString InName)</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>{</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    <a class="code hl_variable" href="classAFood.html#abdcc398c722128d26a91d1fc0c631ca7">Name</a> = InName;</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    <a class="code hl_variable" href="classAFood.html#a254fa39720e4b33ef543ca38b378b47f">Index</a> = InIndex;</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    <a class="code hl_class" href="classUCityNameWidget.html">UCityNameWidget</a>* NameWidget = Cast&lt;UCityNameWidget&gt;(<a class="code hl_variable" href="classAFood.html#a6622483b7ed26a1e4373d55574520553">FoodName</a>-&gt;GetWidget());</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    <span class="keywordflow">if</span> (NameWidget)</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    {</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>        NameWidget-&gt;<a class="code hl_function" href="classUCityNameWidget.html#a02793042eefe1fbface31d2dd47cbb10">SetCityName</a>(InName);</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    }</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>}</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
+<div class="foldopen" id="foldopen00081" data-start="{" data-end="}">
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno"><a class="line" href="classAFood.html#a9d7da93d3b942a3e39ac456f7a43d317">   81</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAFood.html#a9d7da93d3b942a3e39ac456f7a43d317">AFood::SetFoodInfo</a>(int32 InIndex, FString InName)</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>{</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    <a class="code hl_variable" href="classAFood.html#abdcc398c722128d26a91d1fc0c631ca7">Name</a> = InName;</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    <a class="code hl_variable" href="classAFood.html#a254fa39720e4b33ef543ca38b378b47f">Index</a> = InIndex;</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    <span class="comment">// 서버에서도 Widget 업데이트 (클라이언트는 OnRep_FoodName에서 호출됨)</span></div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    <span class="keywordflow">if</span> (HasAuthority())</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    {</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>        <a class="code hl_function" href="classAFood.html#a1464bf50b3bc86d1a231f264a79105a3">UpdateFoodWidget</a>();</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    }</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>}</div>
 </div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
 <div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span><span class="comment">// HACK, 해줘요. 모델링 찾았고, ListenData에서 모델링도 빼오는데, AddChildActor 까지도 되는데.</span></div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span><span class="comment">// 객체 생성쪽에서 뭔가 이상한데. 디버깅을 다 못했음</span></div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span><span class="comment">// void AFood::SetFoodInfo(int32 InIndex, FString InName)</span></div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span><span class="comment">// {</span></div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span><span class="comment">//  Name = InName;</span></div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span><span class="comment">//  Index = InIndex;</span></div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span><span class="comment">//</span></div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span><span class="comment">//  UCityNameWidget* NameWidget = Cast&lt;UCityNameWidget&gt;(FoodName-&gt;GetWidget());</span></div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span><span class="comment">//  if (NameWidget)</span></div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span><span class="comment">//  {</span></div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span><span class="comment">//      NameWidget-&gt;SetCityName(InName);</span></div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span><span class="comment">//  }</span></div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span><span class="comment">// }</span></div>
+<div class="foldopen" id="foldopen00093" data-start="{" data-end="}">
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno"><a class="line" href="classAFood.html#a1464bf50b3bc86d1a231f264a79105a3">   93</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAFood.html#a1464bf50b3bc86d1a231f264a79105a3">AFood::UpdateFoodWidget</a>()</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>{</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    <span class="comment">// Widget이 아직 초기화되지 않았을 수 있으므로 체크</span></div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classAFood.html#a6622483b7ed26a1e4373d55574520553">FoodName</a> || !<a class="code hl_variable" href="classAFood.html#a6622483b7ed26a1e4373d55574520553">FoodName</a>-&gt;GetWidget())</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span> </div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    <a class="code hl_class" href="classUCityNameWidget.html">UCityNameWidget</a>* NameWidget = Cast&lt;UCityNameWidget&gt;(<a class="code hl_variable" href="classAFood.html#a6622483b7ed26a1e4373d55574520553">FoodName</a>-&gt;GetWidget());</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    <span class="keywordflow">if</span> (NameWidget)</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    {</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>        NameWidget-&gt;<a class="code hl_function" href="classUCityNameWidget.html#a02793042eefe1fbface31d2dd47cbb10">SetCityName</a>(<a class="code hl_variable" href="classAFood.html#abdcc398c722128d26a91d1fc0c631ca7">Name</a>);</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    }</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>}</div>
+</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span> </div>
 <div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span> </div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span><span class="comment">// void AFood::SetFoodInfo(const FFoodData&amp; InFoodData)</span></div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span><span class="comment">// {</span></div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span><span class="comment">//  Name = FString::Printf(TEXT(&quot;%s / %s&quot;), *InFoodData.word1.name, *InFoodData.word2.name);</span></div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span><span class="comment">//  Index = InFoodData.SpawnIndex;</span></div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span><span class="comment">//</span></div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span><span class="comment">//  UCityNameWidget* NameWidget = Cast&lt;UCityNameWidget&gt;(FoodName-&gt;GetWidget());</span></div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span><span class="comment">//  if (NameWidget)</span></div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span><span class="comment">//  {</span></div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span><span class="comment">//      NameWidget-&gt;SetCityName(Name);</span></div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span><span class="comment">//  }</span></div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span><span class="comment">//</span></div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span><span class="comment">//  int32 PatternIdx = FCString::Atoi(*InFoodData.word2.code);</span></div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span><span class="comment">//  FListenData Listen02Data;</span></div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span><span class="comment">//  if (UGameDataManager::Get(GetWorld())-&gt;GetListenData(PatternIdx, Listen02Data))</span></div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span><span class="comment">//  {</span></div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span><span class="comment">//      SetFoodModel(Listen02Data.FoodPath);</span></div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span><span class="comment">//  }</span></div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span><span class="comment">// }</span></div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span> </div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span><span class="comment">// HACK, 해줘요. 모델링 찾았고, ListenData에서 모델링도 빼오는데, AddChildActor 까지도 되는데.</span></div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span><span class="comment">// 객체 생성쪽에서 뭔가 이상한데. 디버깅을 다 못했음</span></div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span><span class="comment">// void AFood::SetFoodInfo(int32 InIndex, FString InName)</span></div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span><span class="comment">// {</span></div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span><span class="comment">//  Name = InName;</span></div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span><span class="comment">//  Index = InIndex;</span></div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span><span class="comment">//</span></div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span><span class="comment">//  UCityNameWidget* NameWidget = Cast&lt;UCityNameWidget&gt;(FoodName-&gt;GetWidget());</span></div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span><span class="comment">//  if (NameWidget)</span></div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span><span class="comment">//  {</span></div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span><span class="comment">//      NameWidget-&gt;SetCityName(InName);</span></div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span><span class="comment">//  }</span></div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span><span class="comment">// }</span></div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span> </div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span><span class="comment">// void AFood::SetFoodInfo(const FFoodData&amp; InFoodData)</span></div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span><span class="comment">// {</span></div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span><span class="comment">//  Name = FString::Printf(TEXT(&quot;%s / %s&quot;), *InFoodData.word1.name, *InFoodData.word2.name);</span></div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span><span class="comment">//  Index = InFoodData.SpawnIndex;</span></div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span><span class="comment">//</span></div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span><span class="comment">//  UCityNameWidget* NameWidget = Cast&lt;UCityNameWidget&gt;(FoodName-&gt;GetWidget());</span></div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span><span class="comment">//  if (NameWidget)</span></div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span><span class="comment">//  {</span></div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span><span class="comment">//      NameWidget-&gt;SetCityName(Name);</span></div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span><span class="comment">//  }</span></div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span><span class="comment">//</span></div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span><span class="comment">//  int32 PatternIdx = FCString::Atoi(*InFoodData.word2.code);</span></div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span><span class="comment">//  FListenData Listen02Data;</span></div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span><span class="comment">//  if (UGameDataManager::Get(GetWorld())-&gt;GetListenData(PatternIdx, Listen02Data))</span></div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span><span class="comment">//  {</span></div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span><span class="comment">//      SetFoodModel(Listen02Data.FoodPath);</span></div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span><span class="comment">//  }</span></div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span><span class="comment">// }</span></div>
 <div class="ttc" id="aCityNameWidget_8h_html"><div class="ttname"><a href="CityNameWidget_8h.html">CityNameWidget.h</a></div></div>
 <div class="ttc" id="aFood_8h_html"><div class="ttname"><a href="Food_8h.html">Food.h</a></div></div>
 <div class="ttc" id="aInteractableComponent_8h_html"><div class="ttname"><a href="InteractableComponent_8h.html">InteractableComponent.h</a></div></div>
 <div class="ttc" id="aclassAFood_html"><div class="ttname"><a href="classAFood.html">AFood</a></div><div class="ttdef"><b>Definition</b> <a href="Food_8h_source.html#l00010">Food.h:11</a></div></div>
 <div class="ttc" id="aclassAFood_html_a10e5bbf52c2e5ddbbdd19e390adb013b"><div class="ttname"><a href="classAFood.html#a10e5bbf52c2e5ddbbdd19e390adb013b">AFood::InteractableComp</a></div><div class="ttdeci">TObjectPtr&lt; class UInteractableComponent &gt; InteractableComp</div><div class="ttdef"><b>Definition</b> <a href="Food_8h_source.html#l00039">Food.h:39</a></div></div>
+<div class="ttc" id="aclassAFood_html_a1464bf50b3bc86d1a231f264a79105a3"><div class="ttname"><a href="classAFood.html#a1464bf50b3bc86d1a231f264a79105a3">AFood::UpdateFoodWidget</a></div><div class="ttdeci">void UpdateFoodWidget()</div><div class="ttdoc">Widget에 음식 이름 업데이트</div><div class="ttdef"><b>Definition</b> <a href="Food_8cpp_source.html#l00093">Food.cpp:93</a></div></div>
 <div class="ttc" id="aclassAFood_html_a16c38b4dc52b94ddcc975ac807d04714"><div class="ttname"><a href="classAFood.html#a16c38b4dc52b94ddcc975ac807d04714">AFood::Mesh</a></div><div class="ttdeci">class UStaticMeshComponent * Mesh</div><div class="ttdef"><b>Definition</b> <a href="Food_8h_source.html#l00030">Food.h:30</a></div></div>
 <div class="ttc" id="aclassAFood_html_a254fa39720e4b33ef543ca38b378b47f"><div class="ttname"><a href="classAFood.html#a254fa39720e4b33ef543ca38b378b47f">AFood::Index</a></div><div class="ttdeci">int32 Index</div><div class="ttdef"><b>Definition</b> <a href="Food_8h_source.html#l00047">Food.h:47</a></div></div>
 <div class="ttc" id="aclassAFood_html_a6622483b7ed26a1e4373d55574520553"><div class="ttname"><a href="classAFood.html#a6622483b7ed26a1e4373d55574520553">AFood::FoodName</a></div><div class="ttdeci">class UWidgetComponent * FoodName</div><div class="ttdef"><b>Definition</b> <a href="Food_8h_source.html#l00036">Food.h:36</a></div></div>
-<div class="ttc" id="aclassAFood_html_a9d5469e7144ca2883d9472fd1f7c06d4"><div class="ttname"><a href="classAFood.html#a9d5469e7144ca2883d9472fd1f7c06d4">AFood::GetLifetimeReplicatedProps</a></div><div class="ttdeci">virtual void GetLifetimeReplicatedProps(TArray&lt; class FLifetimeProperty &gt; &amp;OutLifetimeProps) const override</div><div class="ttdef"><b>Definition</b> <a href="Food_8cpp_source.html#l00057">Food.cpp:57</a></div></div>
-<div class="ttc" id="aclassAFood_html_a9d7da93d3b942a3e39ac456f7a43d317"><div class="ttname"><a href="classAFood.html#a9d7da93d3b942a3e39ac456f7a43d317">AFood::SetFoodInfo</a></div><div class="ttdeci">void SetFoodInfo(int32 InIndex, FString InName)</div><div class="ttdef"><b>Definition</b> <a href="Food_8cpp_source.html#l00079">Food.cpp:79</a></div></div>
-<div class="ttc" id="aclassAFood_html_a9f491a1f39c58ade7ff62fe02d46c034"><div class="ttname"><a href="classAFood.html#a9f491a1f39c58ade7ff62fe02d46c034">AFood::OnRep_FoodName</a></div><div class="ttdeci">void OnRep_FoodName()</div><div class="ttdef"><b>Definition</b> <a href="Food_8cpp_source.html#l00074">Food.cpp:74</a></div></div>
-<div class="ttc" id="aclassAFood_html_ab887c7a54be058e0c86f705663633001"><div class="ttname"><a href="classAFood.html#ab887c7a54be058e0c86f705663633001">AFood::Tick</a></div><div class="ttdeci">virtual void Tick(float DeltaTime) override</div><div class="ttdef"><b>Definition</b> <a href="Food_8cpp_source.html#l00067">Food.cpp:67</a></div></div>
+<div class="ttc" id="aclassAFood_html_a9d5469e7144ca2883d9472fd1f7c06d4"><div class="ttname"><a href="classAFood.html#a9d5469e7144ca2883d9472fd1f7c06d4">AFood::GetLifetimeReplicatedProps</a></div><div class="ttdeci">virtual void GetLifetimeReplicatedProps(TArray&lt; class FLifetimeProperty &gt; &amp;OutLifetimeProps) const override</div><div class="ttdef"><b>Definition</b> <a href="Food_8cpp_source.html#l00058">Food.cpp:58</a></div></div>
+<div class="ttc" id="aclassAFood_html_a9d7da93d3b942a3e39ac456f7a43d317"><div class="ttname"><a href="classAFood.html#a9d7da93d3b942a3e39ac456f7a43d317">AFood::SetFoodInfo</a></div><div class="ttdeci">void SetFoodInfo(int32 InIndex, FString InName)</div><div class="ttdef"><b>Definition</b> <a href="Food_8cpp_source.html#l00081">Food.cpp:81</a></div></div>
+<div class="ttc" id="aclassAFood_html_a9f491a1f39c58ade7ff62fe02d46c034"><div class="ttname"><a href="classAFood.html#a9f491a1f39c58ade7ff62fe02d46c034">AFood::OnRep_FoodName</a></div><div class="ttdeci">void OnRep_FoodName()</div><div class="ttdef"><b>Definition</b> <a href="Food_8cpp_source.html#l00075">Food.cpp:75</a></div></div>
+<div class="ttc" id="aclassAFood_html_ab887c7a54be058e0c86f705663633001"><div class="ttname"><a href="classAFood.html#ab887c7a54be058e0c86f705663633001">AFood::Tick</a></div><div class="ttdeci">virtual void Tick(float DeltaTime) override</div><div class="ttdef"><b>Definition</b> <a href="Food_8cpp_source.html#l00068">Food.cpp:68</a></div></div>
 <div class="ttc" id="aclassAFood_html_abdcc398c722128d26a91d1fc0c631ca7"><div class="ttname"><a href="classAFood.html#abdcc398c722128d26a91d1fc0c631ca7">AFood::Name</a></div><div class="ttdeci">FString Name</div><div class="ttdef"><b>Definition</b> <a href="Food_8h_source.html#l00044">Food.h:44</a></div></div>
 <div class="ttc" id="aclassAFood_html_ac6368161a64ddb23444841bc71979a1f"><div class="ttname"><a href="classAFood.html#ac6368161a64ddb23444841bc71979a1f">AFood::AFood</a></div><div class="ttdeci">AFood()</div><div class="ttdef"><b>Definition</b> <a href="Food_8cpp_source.html#l00013">Food.cpp:13</a></div></div>
 <div class="ttc" id="aclassAFood_html_ad600dada8faa4bf439f7a49151b1b367"><div class="ttname"><a href="classAFood.html#ad600dada8faa4bf439f7a49151b1b367">AFood::FoodMesh</a></div><div class="ttdeci">class UStaticMeshComponent * FoodMesh</div><div class="ttdef"><b>Definition</b> <a href="Food_8h_source.html#l00033">Food.h:33</a></div></div>
-<div class="ttc" id="aclassAFood_html_ae3d1b4ff7a90238177025945d9621c4f"><div class="ttname"><a href="classAFood.html#ae3d1b4ff7a90238177025945d9621c4f">AFood::BeginPlay</a></div><div class="ttdeci">virtual void BeginPlay() override</div><div class="ttdef"><b>Definition</b> <a href="Food_8cpp_source.html#l00051">Food.cpp:51</a></div></div>
+<div class="ttc" id="aclassAFood_html_ae3d1b4ff7a90238177025945d9621c4f"><div class="ttname"><a href="classAFood.html#ae3d1b4ff7a90238177025945d9621c4f">AFood::BeginPlay</a></div><div class="ttdeci">virtual void BeginPlay() override</div><div class="ttdef"><b>Definition</b> <a href="Food_8cpp_source.html#l00050">Food.cpp:50</a></div></div>
 <div class="ttc" id="aclassUCityNameWidget_html"><div class="ttname"><a href="classUCityNameWidget.html">UCityNameWidget</a></div><div class="ttdef"><b>Definition</b> <a href="CityNameWidget_8h_source.html#l00013">CityNameWidget.h:14</a></div></div>
 <div class="ttc" id="aclassUCityNameWidget_html_a02793042eefe1fbface31d2dd47cbb10"><div class="ttname"><a href="classUCityNameWidget.html#a02793042eefe1fbface31d2dd47cbb10">UCityNameWidget::SetCityName</a></div><div class="ttdeci">void SetCityName(FString InCityName)</div><div class="ttdef"><b>Definition</b> <a href="CityNameWidget_8cpp_source.html#l00013">CityNameWidget.cpp:13</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
@@ -269,7 +287,7 @@ $(document).ready(function(){initNavTree('Food_8cpp_source.html',''); initResiza
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_b7459e4428712e32d7c860db6e401a05.html">Interactable</a></li><li class="navelem"><a class="el" href="dir_77257aedd361f850f8a01079e914567e.html">Private</a></li><li class="navelem"><a class="el" href="Food_8cpp.html">Food.cpp</a></li>
-    <li class="footer">생성시간 : 월 12월 8 2025 12:14:28, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 월 12월 8 2025 12:36:37, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

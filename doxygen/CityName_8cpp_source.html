@@ -114,50 +114,78 @@ $(document).ready(function(){initNavTree('CityName_8cpp_source.html',''); initRe
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;<a class="code" href="CityName_8h.html">CityName.h</a>&quot;</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;Components/WidgetComponent.h&quot;</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment">// Sets default values</span></div>
-<div class="foldopen" id="foldopen00010" data-start="{" data-end="}">
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="classACityName.html#a871b04f335e85f1400a0629c4f9ba995">   10</a></span><a class="code hl_function" href="classACityName.html#a871b04f335e85f1400a0629c4f9ba995">ACityName::ACityName</a>()</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>{</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    <span class="comment">// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don&#39;t need it.</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    PrimaryActorTick.bCanEverTick = <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <a class="code hl_variable" href="classACityName.html#a75ed30b9fb11713c3db7e71e15de30af">WidgetComp</a> = CreateDefaultSubobject&lt;UWidgetComponent&gt;(TEXT(<span class="stringliteral">&quot;WidgetComp&quot;</span>));</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    SetRootComponent(<a class="code hl_variable" href="classACityName.html#a75ed30b9fb11713c3db7e71e15de30af">WidgetComp</a>);</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>}</div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;<a class="code" href="CityNameWidget_8h.html">CityNameWidget.h</a>&quot;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;Components/WidgetComponent.h&quot;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;Net/UnrealNetwork.h&quot;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="comment">// Sets default values</span></div>
+<div class="foldopen" id="foldopen00012" data-start="{" data-end="}">
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="classACityName.html#a871b04f335e85f1400a0629c4f9ba995">   12</a></span><a class="code hl_function" href="classACityName.html#a871b04f335e85f1400a0629c4f9ba995">ACityName::ACityName</a>()</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>{</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    <span class="comment">// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don&#39;t need it.</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    PrimaryActorTick.bCanEverTick = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <a class="code hl_variable" href="classACityName.html#a75ed30b9fb11713c3db7e71e15de30af">WidgetComp</a> = CreateDefaultSubobject&lt;UWidgetComponent&gt;(TEXT(<span class="stringliteral">&quot;WidgetComp&quot;</span>));</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    SetRootComponent(<a class="code hl_variable" href="classACityName.html#a75ed30b9fb11713c3db7e71e15de30af">WidgetComp</a>);</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>}</div>
 </div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="comment">// Called when the game starts or when spawned</span></div>
-<div class="foldopen" id="foldopen00020" data-start="{" data-end="}">
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="classACityName.html#aeaa5b448dbfdbdf72e4e4a5147548b4b">   20</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classACityName.html#aeaa5b448dbfdbdf72e4e4a5147548b4b">ACityName::BeginPlay</a>()</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>{</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    Super::BeginPlay();</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>}</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="comment">// Called when the game starts or when spawned</span></div>
+<div class="foldopen" id="foldopen00022" data-start="{" data-end="}">
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="classACityName.html#aeaa5b448dbfdbdf72e4e4a5147548b4b">   22</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classACityName.html#aeaa5b448dbfdbdf72e4e4a5147548b4b">ACityName::BeginPlay</a>()</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>{</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    Super::BeginPlay();</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>}</div>
 </div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="comment">// Called every frame</span></div>
-<div class="foldopen" id="foldopen00027" data-start="{" data-end="}">
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="classACityName.html#ac371939359c7320e16d59d40e94c8dea">   27</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classACityName.html#ac371939359c7320e16d59d40e94c8dea">ACityName::Tick</a>(<span class="keywordtype">float</span> DeltaTime)</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>{</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    Super::Tick(DeltaTime);</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>}</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="comment">// Called every frame</span></div>
+<div class="foldopen" id="foldopen00029" data-start="{" data-end="}">
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="classACityName.html#ac371939359c7320e16d59d40e94c8dea">   29</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classACityName.html#ac371939359c7320e16d59d40e94c8dea">ACityName::Tick</a>(<span class="keywordtype">float</span> DeltaTime)</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>{</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    Super::Tick(DeltaTime);</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>}</div>
 </div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="foldopen" id="foldopen00034" data-start="{" data-end="}">
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="classACityName.html#a63dba24b46971685cff9b3217e090d17">   34</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classACityName.html#a63dba24b46971685cff9b3217e090d17">ACityName::GetLifetimeReplicatedProps</a>(TArray&lt;class FLifetimeProperty&gt;&amp; OutLifetimeProps)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="keyword"></span>{</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    Super::GetLifetimeReplicatedProps(OutLifetimeProps);</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    DOREPLIFETIME(<a class="code hl_class" href="classACityName.html">ACityName</a>, <a class="code hl_variable" href="classACityName.html#a7c9580b042936c1bd45d0c0c2bfb38b9">CityName</a>);</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>}</div>
+</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="foldopen" id="foldopen00041" data-start="{" data-end="}">
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="classACityName.html#a5828a975e0a6c89691243244405af4f5">   41</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classACityName.html#a5828a975e0a6c89691243244405af4f5">ACityName::OnRep_FoodCourtInfo</a>()</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>{</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    UUserWidget* CityNameWidget = <a class="code hl_variable" href="classACityName.html#a75ed30b9fb11713c3db7e71e15de30af">WidgetComp</a>-&gt;GetWidget();</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="keywordflow">if</span> (<a class="code hl_class" href="classUCityNameWidget.html">UCityNameWidget</a>* CNW = Cast&lt;UCityNameWidget&gt;(CityNameWidget))</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    {</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        CNW-&gt;SetCityName(<a class="code hl_variable" href="classACityName.html#a7c9580b042936c1bd45d0c0c2bfb38b9">CityName</a>);</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    }</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>}</div>
+</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="ttc" id="aCityNameWidget_8h_html"><div class="ttname"><a href="CityNameWidget_8h.html">CityNameWidget.h</a></div></div>
 <div class="ttc" id="aCityName_8h_html"><div class="ttname"><a href="CityName_8h.html">CityName.h</a></div></div>
+<div class="ttc" id="aclassACityName_html"><div class="ttname"><a href="classACityName.html">ACityName</a></div><div class="ttdef"><b>Definition</b> <a href="CityName_8h_source.html#l00010">CityName.h:11</a></div></div>
+<div class="ttc" id="aclassACityName_html_a5828a975e0a6c89691243244405af4f5"><div class="ttname"><a href="classACityName.html#a5828a975e0a6c89691243244405af4f5">ACityName::OnRep_FoodCourtInfo</a></div><div class="ttdeci">void OnRep_FoodCourtInfo()</div><div class="ttdef"><b>Definition</b> <a href="CityName_8cpp_source.html#l00041">CityName.cpp:41</a></div></div>
+<div class="ttc" id="aclassACityName_html_a63dba24b46971685cff9b3217e090d17"><div class="ttname"><a href="classACityName.html#a63dba24b46971685cff9b3217e090d17">ACityName::GetLifetimeReplicatedProps</a></div><div class="ttdeci">virtual void GetLifetimeReplicatedProps(TArray&lt; class FLifetimeProperty &gt; &amp;OutLifetimeProps) const override</div><div class="ttdef"><b>Definition</b> <a href="CityName_8cpp_source.html#l00034">CityName.cpp:34</a></div></div>
 <div class="ttc" id="aclassACityName_html_a75ed30b9fb11713c3db7e71e15de30af"><div class="ttname"><a href="classACityName.html#a75ed30b9fb11713c3db7e71e15de30af">ACityName::WidgetComp</a></div><div class="ttdeci">class UWidgetComponent * WidgetComp</div><div class="ttdef"><b>Definition</b> <a href="CityName_8h_source.html#l00027">CityName.h:27</a></div></div>
-<div class="ttc" id="aclassACityName_html_a871b04f335e85f1400a0629c4f9ba995"><div class="ttname"><a href="classACityName.html#a871b04f335e85f1400a0629c4f9ba995">ACityName::ACityName</a></div><div class="ttdeci">ACityName()</div><div class="ttdef"><b>Definition</b> <a href="CityName_8cpp_source.html#l00010">CityName.cpp:10</a></div></div>
-<div class="ttc" id="aclassACityName_html_ac371939359c7320e16d59d40e94c8dea"><div class="ttname"><a href="classACityName.html#ac371939359c7320e16d59d40e94c8dea">ACityName::Tick</a></div><div class="ttdeci">virtual void Tick(float DeltaTime) override</div><div class="ttdef"><b>Definition</b> <a href="CityName_8cpp_source.html#l00027">CityName.cpp:27</a></div></div>
-<div class="ttc" id="aclassACityName_html_aeaa5b448dbfdbdf72e4e4a5147548b4b"><div class="ttname"><a href="classACityName.html#aeaa5b448dbfdbdf72e4e4a5147548b4b">ACityName::BeginPlay</a></div><div class="ttdeci">virtual void BeginPlay() override</div><div class="ttdef"><b>Definition</b> <a href="CityName_8cpp_source.html#l00020">CityName.cpp:20</a></div></div>
+<div class="ttc" id="aclassACityName_html_a7c9580b042936c1bd45d0c0c2bfb38b9"><div class="ttname"><a href="classACityName.html#a7c9580b042936c1bd45d0c0c2bfb38b9">ACityName::CityName</a></div><div class="ttdeci">FString CityName</div><div class="ttdef"><b>Definition</b> <a href="CityName_8h_source.html#l00033">CityName.h:33</a></div></div>
+<div class="ttc" id="aclassACityName_html_a871b04f335e85f1400a0629c4f9ba995"><div class="ttname"><a href="classACityName.html#a871b04f335e85f1400a0629c4f9ba995">ACityName::ACityName</a></div><div class="ttdeci">ACityName()</div><div class="ttdef"><b>Definition</b> <a href="CityName_8cpp_source.html#l00012">CityName.cpp:12</a></div></div>
+<div class="ttc" id="aclassACityName_html_ac371939359c7320e16d59d40e94c8dea"><div class="ttname"><a href="classACityName.html#ac371939359c7320e16d59d40e94c8dea">ACityName::Tick</a></div><div class="ttdeci">virtual void Tick(float DeltaTime) override</div><div class="ttdef"><b>Definition</b> <a href="CityName_8cpp_source.html#l00029">CityName.cpp:29</a></div></div>
+<div class="ttc" id="aclassACityName_html_aeaa5b448dbfdbdf72e4e4a5147548b4b"><div class="ttname"><a href="classACityName.html#aeaa5b448dbfdbdf72e4e4a5147548b4b">ACityName::BeginPlay</a></div><div class="ttdeci">virtual void BeginPlay() override</div><div class="ttdef"><b>Definition</b> <a href="CityName_8cpp_source.html#l00022">CityName.cpp:22</a></div></div>
+<div class="ttc" id="aclassUCityNameWidget_html"><div class="ttname"><a href="classUCityNameWidget.html">UCityNameWidget</a></div><div class="ttdef"><b>Definition</b> <a href="CityNameWidget_8h_source.html#l00013">CityNameWidget.h:14</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_2268d321c547a1269f0f0801cfba1f77.html">Prop</a></li><li class="navelem"><a class="el" href="dir_1d7bfdd86517d83f393675eb912eaf09.html">Private</a></li><li class="navelem"><a class="el" href="CityName_8cpp.html">CityName.cpp</a></li>
-    <li class="footer">생성시간 : 월 12월 8 2025 12:14:28, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 월 12월 8 2025 12:36:37, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

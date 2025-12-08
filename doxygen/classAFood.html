@@ -117,14 +117,14 @@ $(document).ready(function(){initNavTree('classAFood.html',''); initResizable();
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classAFood__inherit__graph.svg" width="232" height="430"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classAFood__inherit__graph.svg" width="232" height="450"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="closed.png" alt="+"/> AFood에 대한 협력 다이어그램:</div>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classAFood__coll__graph.svg" width="232" height="430"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classAFood__coll__graph.svg" width="232" height="450"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -161,6 +161,9 @@ Protected 멤버 함수</h2></td></tr>
 <tr class="separator:a9d5469e7144ca2883d9472fd1f7c06d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9f491a1f39c58ade7ff62fe02d46c034" id="r_a9f491a1f39c58ade7ff62fe02d46c034"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAFood.html#a9f491a1f39c58ade7ff62fe02d46c034">OnRep_FoodName</a> ()</td></tr>
 <tr class="separator:a9f491a1f39c58ade7ff62fe02d46c034"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1464bf50b3bc86d1a231f264a79105a3" id="r_a1464bf50b3bc86d1a231f264a79105a3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAFood.html#a1464bf50b3bc86d1a231f264a79105a3">UpdateFoodWidget</a> ()</td></tr>
+<tr class="memdesc:a1464bf50b3bc86d1a231f264a79105a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Widget에 음식 이름 업데이트  <br /></td></tr>
+<tr class="separator:a1464bf50b3bc86d1a231f264a79105a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected 속성</h2></td></tr>
@@ -200,30 +203,29 @@ Protected 속성</h2></td></tr>
 <div class="line"><span class="lineno">   22</span>    <a class="code hl_variable" href="classAFood.html#ad600dada8faa4bf439f7a49151b1b367">FoodMesh</a>-&gt;SetupAttachment(GetRootComponent());</div>
 <div class="line"><span class="lineno">   23</span> </div>
 <div class="line"><span class="lineno">   24</span>    <a class="code hl_variable" href="classAFood.html#a6622483b7ed26a1e4373d55574520553">FoodName</a> = CreateDefaultSubobject&lt;UWidgetComponent&gt;(TEXT(<span class="stringliteral">&quot;FoodName&quot;</span>));</div>
-<div class="line"><span class="lineno">   25</span>    <a class="code hl_variable" href="classAFood.html#a6622483b7ed26a1e4373d55574520553">FoodName</a>-&gt;SetupAttachment(GetRootComponent());</div>
-<div class="line"><span class="lineno">   26</span> </div>
-<div class="line"><span class="lineno">   27</span>    <a class="code hl_variable" href="classAFood.html#a10e5bbf52c2e5ddbbdd19e390adb013b">InteractableComp</a> = CreateDefaultSubobject&lt;UInteractableComponent&gt;(TEXT(<span class="stringliteral">&quot;Interactable&quot;</span>));</div>
-<div class="line"><span class="lineno">   28</span>    <a class="code hl_variable" href="classAFood.html#a10e5bbf52c2e5ddbbdd19e390adb013b">InteractableComp</a>-&gt;InteractionType = EInteractionType::PickUp;</div>
-<div class="line"><span class="lineno">   29</span>    <a class="code hl_variable" href="classAFood.html#a10e5bbf52c2e5ddbbdd19e390adb013b">InteractableComp</a>-&gt;InteractionPrompt = TEXT(<span class="stringliteral">&quot;Pick Up&quot;</span>);</div>
-<div class="line"><span class="lineno">   30</span>    </div>
-<div class="line"><span class="lineno">   31</span>    <span class="comment">// Initial settings</span></div>
-<div class="line"><span class="lineno">   32</span>    <a class="code hl_variable" href="classAFood.html#a16c38b4dc52b94ddcc975ac807d04714">Mesh</a>-&gt;SetSimulatePhysics(<span class="keyword">true</span>);</div>
-<div class="line"><span class="lineno">   33</span>    <a class="code hl_variable" href="classAFood.html#a16c38b4dc52b94ddcc975ac807d04714">Mesh</a>-&gt;SetEnableGravity(<span class="keyword">true</span>);</div>
-<div class="line"><span class="lineno">   34</span>    <a class="code hl_variable" href="classAFood.html#a16c38b4dc52b94ddcc975ac807d04714">Mesh</a>-&gt;SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);</div>
-<div class="line"><span class="lineno">   35</span>    <a class="code hl_variable" href="classAFood.html#a16c38b4dc52b94ddcc975ac807d04714">Mesh</a>-&gt;SetCollisionProfileName(TEXT(<span class="stringliteral">&quot;PhysicsActor&quot;</span>));</div>
-<div class="line"><span class="lineno">   36</span> </div>
-<div class="line"><span class="lineno">   37</span>    <span class="comment">// 무게 설정</span></div>
-<div class="line"><span class="lineno">   38</span>    <a class="code hl_variable" href="classAFood.html#a16c38b4dc52b94ddcc975ac807d04714">Mesh</a>-&gt;SetMassOverrideInKg(NAME_None, 50.f, <span class="keyword">true</span>);</div>
-<div class="line"><span class="lineno">   39</span> </div>
-<div class="line"><span class="lineno">   40</span>    <span class="comment">// 물리 복제 설정</span></div>
-<div class="line"><span class="lineno">   41</span>    <a class="code hl_variable" href="classAFood.html#a16c38b4dc52b94ddcc975ac807d04714">Mesh</a>-&gt;SetIsReplicated(<span class="keyword">true</span>);</div>
-<div class="line"><span class="lineno">   42</span> </div>
-<div class="line"><span class="lineno">   43</span>    <span class="comment">// Replication</span></div>
-<div class="line"><span class="lineno">   44</span>    bReplicates = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   45</span>    SetNetUpdateFrequency(100.0f);      <span class="comment">// 높은 업데이트 빈도로 부드러운 네트워크 동기화</span></div>
-<div class="line"><span class="lineno">   46</span>    SetMinNetUpdateFrequency(33.0f);    <span class="comment">// 최소 30fps 업데이트 보장</span></div>
-<div class="line"><span class="lineno">   47</span>    </div>
-<div class="line"><span class="lineno">   48</span>}</div>
+<div class="line"><span class="lineno">   25</span> </div>
+<div class="line"><span class="lineno">   26</span>    <a class="code hl_variable" href="classAFood.html#a10e5bbf52c2e5ddbbdd19e390adb013b">InteractableComp</a> = CreateDefaultSubobject&lt;UInteractableComponent&gt;(TEXT(<span class="stringliteral">&quot;Interactable&quot;</span>));</div>
+<div class="line"><span class="lineno">   27</span>    <a class="code hl_variable" href="classAFood.html#a10e5bbf52c2e5ddbbdd19e390adb013b">InteractableComp</a>-&gt;InteractionType = EInteractionType::PickUp;</div>
+<div class="line"><span class="lineno">   28</span>    <a class="code hl_variable" href="classAFood.html#a10e5bbf52c2e5ddbbdd19e390adb013b">InteractableComp</a>-&gt;InteractionPrompt = TEXT(<span class="stringliteral">&quot;Pick Up&quot;</span>);</div>
+<div class="line"><span class="lineno">   29</span>    </div>
+<div class="line"><span class="lineno">   30</span>    <span class="comment">// Initial settings</span></div>
+<div class="line"><span class="lineno">   31</span>    <a class="code hl_variable" href="classAFood.html#a16c38b4dc52b94ddcc975ac807d04714">Mesh</a>-&gt;SetSimulatePhysics(<span class="keyword">true</span>);</div>
+<div class="line"><span class="lineno">   32</span>    <a class="code hl_variable" href="classAFood.html#a16c38b4dc52b94ddcc975ac807d04714">Mesh</a>-&gt;SetEnableGravity(<span class="keyword">true</span>);</div>
+<div class="line"><span class="lineno">   33</span>    <a class="code hl_variable" href="classAFood.html#a16c38b4dc52b94ddcc975ac807d04714">Mesh</a>-&gt;SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);</div>
+<div class="line"><span class="lineno">   34</span>    <a class="code hl_variable" href="classAFood.html#a16c38b4dc52b94ddcc975ac807d04714">Mesh</a>-&gt;SetCollisionProfileName(TEXT(<span class="stringliteral">&quot;PhysicsActor&quot;</span>));</div>
+<div class="line"><span class="lineno">   35</span> </div>
+<div class="line"><span class="lineno">   36</span>    <span class="comment">// 무게 설정</span></div>
+<div class="line"><span class="lineno">   37</span>    <a class="code hl_variable" href="classAFood.html#a16c38b4dc52b94ddcc975ac807d04714">Mesh</a>-&gt;SetMassOverrideInKg(NAME_None, 50.f, <span class="keyword">true</span>);</div>
+<div class="line"><span class="lineno">   38</span> </div>
+<div class="line"><span class="lineno">   39</span>    <span class="comment">// 물리 복제 설정</span></div>
+<div class="line"><span class="lineno">   40</span>    <a class="code hl_variable" href="classAFood.html#a16c38b4dc52b94ddcc975ac807d04714">Mesh</a>-&gt;SetIsReplicated(<span class="keyword">true</span>);</div>
+<div class="line"><span class="lineno">   41</span> </div>
+<div class="line"><span class="lineno">   42</span>    <span class="comment">// Replication</span></div>
+<div class="line"><span class="lineno">   43</span>    bReplicates = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   44</span>    SetNetUpdateFrequency(100.0f);      <span class="comment">// 높은 업데이트 빈도로 부드러운 네트워크 동기화</span></div>
+<div class="line"><span class="lineno">   45</span>    SetMinNetUpdateFrequency(33.0f);    <span class="comment">// 최소 30fps 업데이트 보장</span></div>
+<div class="line"><span class="lineno">   46</span>    </div>
+<div class="line"><span class="lineno">   47</span>}</div>
 <div class="ttc" id="aclassAFood_html_a10e5bbf52c2e5ddbbdd19e390adb013b"><div class="ttname"><a href="classAFood.html#a10e5bbf52c2e5ddbbdd19e390adb013b">AFood::InteractableComp</a></div><div class="ttdeci">TObjectPtr&lt; class UInteractableComponent &gt; InteractableComp</div><div class="ttdef"><b>Definition</b> <a href="Food_8h_source.html#l00039">Food.h:39</a></div></div>
 <div class="ttc" id="aclassAFood_html_a16c38b4dc52b94ddcc975ac807d04714"><div class="ttname"><a href="classAFood.html#a16c38b4dc52b94ddcc975ac807d04714">AFood::Mesh</a></div><div class="ttdeci">class UStaticMeshComponent * Mesh</div><div class="ttdef"><b>Definition</b> <a href="Food_8h_source.html#l00030">Food.h:30</a></div></div>
 <div class="ttc" id="aclassAFood_html_a6622483b7ed26a1e4373d55574520553"><div class="ttname"><a href="classAFood.html#a6622483b7ed26a1e4373d55574520553">AFood::FoodName</a></div><div class="ttdeci">class UWidgetComponent * FoodName</div><div class="ttdef"><b>Definition</b> <a href="Food_8h_source.html#l00036">Food.h:36</a></div></div>
@@ -257,12 +259,16 @@ Protected 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="Food_8cpp_source.html">Food.cpp</a> 파일의 <a class="el" href="Food_8cpp_source.html#l00051">51</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   52</span>{</div>
-<div class="line"><span class="lineno">   53</span>    Super::BeginPlay();</div>
-<div class="line"><span class="lineno">   54</span> </div>
-<div class="line"><span class="lineno">   55</span>}</div>
+<p class="definition"><a class="el" href="Food_8cpp_source.html">Food.cpp</a> 파일의 <a class="el" href="Food_8cpp_source.html#l00050">50</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   51</span>{</div>
+<div class="line"><span class="lineno">   52</span>    Super::BeginPlay();</div>
+<div class="line"><span class="lineno">   53</span>    </div>
+<div class="line"><span class="lineno">   54</span>    <a class="code hl_variable" href="classAFood.html#a6622483b7ed26a1e4373d55574520553">FoodName</a>-&gt;AttachToComponent(GetRootComponent(), FAttachmentTransformRules::KeepRelativeTransform);</div>
+<div class="line"><span class="lineno">   55</span>    <a class="code hl_variable" href="classAFood.html#a6622483b7ed26a1e4373d55574520553">FoodName</a>-&gt;SetRelativeLocation(FVector(0, 0, 0));</div>
+<div class="line"><span class="lineno">   56</span>}</div>
 </div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="Food_8h_source.html#l00036">FoodName</a>.</p>
+
 </div>
 </div>
 <a id="a86daf17b69d7be7836670b5067b2598b" name="a86daf17b69d7be7836670b5067b2598b"></a>
@@ -291,8 +297,8 @@ Protected 속성</h2></td></tr>
 <p>Food 인덱스 반환 </p>
 <dl class="section return"><dt>반환값</dt><dd>Food의 인덱스 </dd></dl>
 
-<p class="definition"><a class="el" href="Food_8h_source.html">Food.h</a> 파일의 <a class="el" href="Food_8h_source.html#l00060">60</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   60</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classAFood.html#a254fa39720e4b33ef543ca38b378b47f">Index</a>; }</div>
+<p class="definition"><a class="el" href="Food_8h_source.html">Food.h</a> 파일의 <a class="el" href="Food_8h_source.html#l00065">65</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   65</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classAFood.html#a254fa39720e4b33ef543ca38b378b47f">Index</a>; }</div>
 <div class="ttc" id="aclassAFood_html_a254fa39720e4b33ef543ca38b378b47f"><div class="ttname"><a href="classAFood.html#a254fa39720e4b33ef543ca38b378b47f">AFood::Index</a></div><div class="ttdeci">int32 Index</div><div class="ttdef"><b>Definition</b> <a href="Food_8h_source.html#l00047">Food.h:47</a></div></div>
 </div><!-- fragment -->
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="FoodHolder_8cpp_source.html#l00171">AFoodHolder::CheckFood()</a>.</p>
@@ -332,8 +338,8 @@ Protected 속성</h2></td></tr>
 <p>Food 이름 반환 </p>
 <dl class="section return"><dt>반환값</dt><dd>Food의 이름 </dd></dl>
 
-<p class="definition"><a class="el" href="Food_8h_source.html">Food.h</a> 파일의 <a class="el" href="Food_8h_source.html#l00067">67</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   67</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classAFood.html#abdcc398c722128d26a91d1fc0c631ca7">Name</a>; }</div>
+<p class="definition"><a class="el" href="Food_8h_source.html">Food.h</a> 파일의 <a class="el" href="Food_8h_source.html#l00072">72</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   72</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classAFood.html#abdcc398c722128d26a91d1fc0c631ca7">Name</a>; }</div>
 <div class="ttc" id="aclassAFood_html_abdcc398c722128d26a91d1fc0c631ca7"><div class="ttname"><a href="classAFood.html#abdcc398c722128d26a91d1fc0c631ca7">AFood::Name</a></div><div class="ttdeci">FString Name</div><div class="ttdef"><b>Definition</b> <a href="Food_8h_source.html#l00044">Food.h:44</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -362,17 +368,17 @@ Protected 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="Food_8cpp_source.html">Food.cpp</a> 파일의 <a class="el" href="Food_8cpp_source.html#l00057">57</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   58</span>{</div>
-<div class="line"><span class="lineno">   59</span>    Super::GetLifetimeReplicatedProps(OutLifetimeProps);</div>
-<div class="line"><span class="lineno">   60</span> </div>
-<div class="line"><span class="lineno">   61</span>    DOREPLIFETIME(<a class="code hl_class" href="classAFood.html">AFood</a>, <a class="code hl_variable" href="classAFood.html#ad600dada8faa4bf439f7a49151b1b367">FoodMesh</a>);</div>
-<div class="line"><span class="lineno">   62</span>    DOREPLIFETIME(<a class="code hl_class" href="classAFood.html">AFood</a>, <a class="code hl_variable" href="classAFood.html#abdcc398c722128d26a91d1fc0c631ca7">Name</a>);</div>
-<div class="line"><span class="lineno">   63</span>    DOREPLIFETIME(<a class="code hl_class" href="classAFood.html">AFood</a>, <a class="code hl_variable" href="classAFood.html#a254fa39720e4b33ef543ca38b378b47f">Index</a>);</div>
-<div class="line"><span class="lineno">   64</span>}</div>
+<p class="definition"><a class="el" href="Food_8cpp_source.html">Food.cpp</a> 파일의 <a class="el" href="Food_8cpp_source.html#l00058">58</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   59</span>{</div>
+<div class="line"><span class="lineno">   60</span>    Super::GetLifetimeReplicatedProps(OutLifetimeProps);</div>
+<div class="line"><span class="lineno">   61</span> </div>
+<div class="line"><span class="lineno">   62</span>    <span class="comment">// FoodMesh는 Component이므로 자동 복제됨</span></div>
+<div class="line"><span class="lineno">   63</span>    DOREPLIFETIME(<a class="code hl_class" href="classAFood.html">AFood</a>, <a class="code hl_variable" href="classAFood.html#abdcc398c722128d26a91d1fc0c631ca7">Name</a>);</div>
+<div class="line"><span class="lineno">   64</span>    DOREPLIFETIME(<a class="code hl_class" href="classAFood.html">AFood</a>, <a class="code hl_variable" href="classAFood.html#a254fa39720e4b33ef543ca38b378b47f">Index</a>);</div>
+<div class="line"><span class="lineno">   65</span>}</div>
 <div class="ttc" id="aclassAFood_html"><div class="ttname"><a href="classAFood.html">AFood</a></div><div class="ttdef"><b>Definition</b> <a href="Food_8h_source.html#l00010">Food.h:11</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="Food_8h_source.html#l00033">FoodMesh</a>, <a class="el" href="Food_8h_source.html#l00047">Index</a>, <a class="el" href="Food_8h_source.html#l00044">Name</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="Food_8h_source.html#l00047">Index</a>, <a class="el" href="Food_8h_source.html#l00044">Name</a>.</p>
 
 </div>
 </div>
@@ -399,13 +405,14 @@ Protected 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="Food_8cpp_source.html">Food.cpp</a> 파일의 <a class="el" href="Food_8cpp_source.html#l00074">74</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   75</span>{</div>
-<div class="line"><span class="lineno">   76</span>    <a class="code hl_function" href="classAFood.html#a9d7da93d3b942a3e39ac456f7a43d317">SetFoodInfo</a>(<a class="code hl_variable" href="classAFood.html#a254fa39720e4b33ef543ca38b378b47f">Index</a>, <a class="code hl_variable" href="classAFood.html#abdcc398c722128d26a91d1fc0c631ca7">Name</a>);</div>
-<div class="line"><span class="lineno">   77</span>}</div>
-<div class="ttc" id="aclassAFood_html_a9d7da93d3b942a3e39ac456f7a43d317"><div class="ttname"><a href="classAFood.html#a9d7da93d3b942a3e39ac456f7a43d317">AFood::SetFoodInfo</a></div><div class="ttdeci">void SetFoodInfo(int32 InIndex, FString InName)</div><div class="ttdef"><b>Definition</b> <a href="Food_8cpp_source.html#l00079">Food.cpp:79</a></div></div>
+<p class="definition"><a class="el" href="Food_8cpp_source.html">Food.cpp</a> 파일의 <a class="el" href="Food_8cpp_source.html#l00075">75</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   76</span>{</div>
+<div class="line"><span class="lineno">   77</span>    <span class="comment">// 클라이언트에서 Name/Index가 복제될 때 Widget 업데이트</span></div>
+<div class="line"><span class="lineno">   78</span>    <a class="code hl_function" href="classAFood.html#a1464bf50b3bc86d1a231f264a79105a3">UpdateFoodWidget</a>();</div>
+<div class="line"><span class="lineno">   79</span>}</div>
+<div class="ttc" id="aclassAFood_html_a1464bf50b3bc86d1a231f264a79105a3"><div class="ttname"><a href="classAFood.html#a1464bf50b3bc86d1a231f264a79105a3">AFood::UpdateFoodWidget</a></div><div class="ttdeci">void UpdateFoodWidget()</div><div class="ttdoc">Widget에 음식 이름 업데이트</div><div class="ttdef"><b>Definition</b> <a href="Food_8cpp_source.html#l00093">Food.cpp:93</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="Food_8h_source.html#l00047">Index</a>, <a class="el" href="Food_8h_source.html#l00044">Name</a>, <a class="el" href="Food_8cpp_source.html#l00079">SetFoodInfo()</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="Food_8cpp_source.html#l00093">UpdateFoodWidget()</a>.</p>
 <div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-3-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
@@ -442,36 +449,25 @@ Protected 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="Food_8cpp_source.html">Food.cpp</a> 파일의 <a class="el" href="Food_8cpp_source.html#l00079">79</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   80</span>{</div>
-<div class="line"><span class="lineno">   81</span>    <a class="code hl_variable" href="classAFood.html#abdcc398c722128d26a91d1fc0c631ca7">Name</a> = InName;</div>
-<div class="line"><span class="lineno">   82</span>    <a class="code hl_variable" href="classAFood.html#a254fa39720e4b33ef543ca38b378b47f">Index</a> = InIndex;</div>
-<div class="line"><span class="lineno">   83</span> </div>
-<div class="line"><span class="lineno">   84</span>    <a class="code hl_class" href="classUCityNameWidget.html">UCityNameWidget</a>* NameWidget = Cast&lt;UCityNameWidget&gt;(<a class="code hl_variable" href="classAFood.html#a6622483b7ed26a1e4373d55574520553">FoodName</a>-&gt;GetWidget());</div>
-<div class="line"><span class="lineno">   85</span>    <span class="keywordflow">if</span> (NameWidget)</div>
-<div class="line"><span class="lineno">   86</span>    {</div>
-<div class="line"><span class="lineno">   87</span>        NameWidget-&gt;<a class="code hl_function" href="classUCityNameWidget.html#a02793042eefe1fbface31d2dd47cbb10">SetCityName</a>(InName);</div>
-<div class="line"><span class="lineno">   88</span>    }</div>
-<div class="line"><span class="lineno">   89</span>}</div>
-<div class="ttc" id="aclassUCityNameWidget_html"><div class="ttname"><a href="classUCityNameWidget.html">UCityNameWidget</a></div><div class="ttdef"><b>Definition</b> <a href="CityNameWidget_8h_source.html#l00013">CityNameWidget.h:14</a></div></div>
-<div class="ttc" id="aclassUCityNameWidget_html_a02793042eefe1fbface31d2dd47cbb10"><div class="ttname"><a href="classUCityNameWidget.html#a02793042eefe1fbface31d2dd47cbb10">UCityNameWidget::SetCityName</a></div><div class="ttdeci">void SetCityName(FString InCityName)</div><div class="ttdef"><b>Definition</b> <a href="CityNameWidget_8cpp_source.html#l00013">CityNameWidget.cpp:13</a></div></div>
+<p class="definition"><a class="el" href="Food_8cpp_source.html">Food.cpp</a> 파일의 <a class="el" href="Food_8cpp_source.html#l00081">81</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   82</span>{</div>
+<div class="line"><span class="lineno">   83</span>    <a class="code hl_variable" href="classAFood.html#abdcc398c722128d26a91d1fc0c631ca7">Name</a> = InName;</div>
+<div class="line"><span class="lineno">   84</span>    <a class="code hl_variable" href="classAFood.html#a254fa39720e4b33ef543ca38b378b47f">Index</a> = InIndex;</div>
+<div class="line"><span class="lineno">   85</span> </div>
+<div class="line"><span class="lineno">   86</span>    <span class="comment">// 서버에서도 Widget 업데이트 (클라이언트는 OnRep_FoodName에서 호출됨)</span></div>
+<div class="line"><span class="lineno">   87</span>    <span class="keywordflow">if</span> (HasAuthority())</div>
+<div class="line"><span class="lineno">   88</span>    {</div>
+<div class="line"><span class="lineno">   89</span>        <a class="code hl_function" href="classAFood.html#a1464bf50b3bc86d1a231f264a79105a3">UpdateFoodWidget</a>();</div>
+<div class="line"><span class="lineno">   90</span>    }</div>
+<div class="line"><span class="lineno">   91</span>}</div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="Food_8h_source.html#l00036">FoodName</a>, <a class="el" href="Food_8h_source.html#l00047">Index</a>, <a class="el" href="Food_8h_source.html#l00044">Name</a>, <a class="el" href="CityNameWidget_8cpp_source.html#l00013">UCityNameWidget::SetCityName()</a>.</p>
-
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="Food_8cpp_source.html#l00074">OnRep_FoodName()</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="Food_8h_source.html#l00047">Index</a>, <a class="el" href="Food_8h_source.html#l00044">Name</a>, <a class="el" href="Food_8cpp_source.html#l00093">UpdateFoodWidget()</a>.</p>
 <div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-4-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-4-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-4-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classAFood_a9d7da93d3b942a3e39ac456f7a43d317_cgraph.svg" width="443" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
-<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
-<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-5-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classAFood_a9d7da93d3b942a3e39ac456f7a43d317_icgraph.svg" width="396" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classAFood_a9d7da93d3b942a3e39ac456f7a43d317_cgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -500,13 +496,73 @@ Protected 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="Food_8cpp_source.html">Food.cpp</a> 파일의 <a class="el" href="Food_8cpp_source.html#l00067">67</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   68</span>{</div>
-<div class="line"><span class="lineno">   69</span>    Super::Tick(DeltaTime);</div>
-<div class="line"><span class="lineno">   70</span> </div>
-<div class="line"><span class="lineno">   71</span>    </div>
-<div class="line"><span class="lineno">   72</span>}</div>
+<p class="definition"><a class="el" href="Food_8cpp_source.html">Food.cpp</a> 파일의 <a class="el" href="Food_8cpp_source.html#l00068">68</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   69</span>{</div>
+<div class="line"><span class="lineno">   70</span>    Super::Tick(DeltaTime);</div>
+<div class="line"><span class="lineno">   71</span> </div>
+<div class="line"><span class="lineno">   72</span>    </div>
+<div class="line"><span class="lineno">   73</span>}</div>
 </div><!-- fragment -->
+</div>
+</div>
+<a id="a1464bf50b3bc86d1a231f264a79105a3" name="a1464bf50b3bc86d1a231f264a79105a3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1464bf50b3bc86d1a231f264a79105a3">&#9670;&#160;</a></span>UpdateFoodWidget()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AFood::UpdateFoodWidget </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Widget에 음식 이름 업데이트 </p>
+
+<p class="definition"><a class="el" href="Food_8cpp_source.html">Food.cpp</a> 파일의 <a class="el" href="Food_8cpp_source.html#l00093">93</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   94</span>{</div>
+<div class="line"><span class="lineno">   95</span>    <span class="comment">// Widget이 아직 초기화되지 않았을 수 있으므로 체크</span></div>
+<div class="line"><span class="lineno">   96</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classAFood.html#a6622483b7ed26a1e4373d55574520553">FoodName</a> || !<a class="code hl_variable" href="classAFood.html#a6622483b7ed26a1e4373d55574520553">FoodName</a>-&gt;GetWidget())</div>
+<div class="line"><span class="lineno">   97</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   98</span> </div>
+<div class="line"><span class="lineno">   99</span>    <a class="code hl_class" href="classUCityNameWidget.html">UCityNameWidget</a>* NameWidget = Cast&lt;UCityNameWidget&gt;(<a class="code hl_variable" href="classAFood.html#a6622483b7ed26a1e4373d55574520553">FoodName</a>-&gt;GetWidget());</div>
+<div class="line"><span class="lineno">  100</span>    <span class="keywordflow">if</span> (NameWidget)</div>
+<div class="line"><span class="lineno">  101</span>    {</div>
+<div class="line"><span class="lineno">  102</span>        NameWidget-&gt;<a class="code hl_function" href="classUCityNameWidget.html#a02793042eefe1fbface31d2dd47cbb10">SetCityName</a>(<a class="code hl_variable" href="classAFood.html#abdcc398c722128d26a91d1fc0c631ca7">Name</a>);</div>
+<div class="line"><span class="lineno">  103</span>    }</div>
+<div class="line"><span class="lineno">  104</span>}</div>
+<div class="ttc" id="aclassUCityNameWidget_html"><div class="ttname"><a href="classUCityNameWidget.html">UCityNameWidget</a></div><div class="ttdef"><b>Definition</b> <a href="CityNameWidget_8h_source.html#l00013">CityNameWidget.h:14</a></div></div>
+<div class="ttc" id="aclassUCityNameWidget_html_a02793042eefe1fbface31d2dd47cbb10"><div class="ttname"><a href="classUCityNameWidget.html#a02793042eefe1fbface31d2dd47cbb10">UCityNameWidget::SetCityName</a></div><div class="ttdeci">void SetCityName(FString InCityName)</div><div class="ttdef"><b>Definition</b> <a href="CityNameWidget_8cpp_source.html#l00013">CityNameWidget.cpp:13</a></div></div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="Food_8h_source.html#l00036">FoodName</a>, <a class="el" href="Food_8h_source.html#l00044">Name</a>, <a class="el" href="CityNameWidget_8cpp_source.html#l00013">UCityNameWidget::SetCityName()</a>.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="Food_8cpp_source.html#l00075">OnRep_FoodName()</a>, <a class="el" href="Food_8cpp_source.html#l00081">SetFoodInfo()</a>.</p>
+<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-5-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classAFood_a1464bf50b3bc86d1a231f264a79105a3_cgraph.svg" width="491" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-6-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-6-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-6-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classAFood_a1464bf50b3bc86d1a231f264a79105a3_icgraph.svg" width="444" height="86"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
 </div>
 </div>
 <h2 class="groupheader">멤버 데이터 문서화</h2>
@@ -524,7 +580,7 @@ Protected 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="Food_8h_source.html">Food.h</a> 파일의 <a class="el" href="Food_8h_source.html#l00033">33</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="Food_8cpp_source.html#l00013">AFood()</a>, <a class="el" href="Food_8cpp_source.html#l00057">GetLifetimeReplicatedProps()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="Food_8cpp_source.html#l00013">AFood()</a>.</p>
 
 </div>
 </div>
@@ -542,7 +598,7 @@ Protected 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="Food_8h_source.html">Food.h</a> 파일의 <a class="el" href="Food_8h_source.html#l00036">36</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="Food_8cpp_source.html#l00013">AFood()</a>, <a class="el" href="Food_8cpp_source.html#l00079">SetFoodInfo()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="Food_8cpp_source.html#l00013">AFood()</a>, <a class="el" href="Food_8cpp_source.html#l00050">BeginPlay()</a>, <a class="el" href="Food_8cpp_source.html#l00093">UpdateFoodWidget()</a>.</p>
 
 </div>
 </div>
@@ -568,7 +624,7 @@ Protected 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="Food_8h_source.html">Food.h</a> 파일의 <a class="el" href="Food_8h_source.html#l00047">47</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="Food_8cpp_source.html#l00057">GetLifetimeReplicatedProps()</a>, <a class="el" href="Food_8cpp_source.html#l00074">OnRep_FoodName()</a>, <a class="el" href="Food_8cpp_source.html#l00079">SetFoodInfo()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="Food_8cpp_source.html#l00058">GetLifetimeReplicatedProps()</a>, <a class="el" href="Food_8cpp_source.html#l00081">SetFoodInfo()</a>.</p>
 
 </div>
 </div>
@@ -630,7 +686,7 @@ Protected 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="Food_8h_source.html">Food.h</a> 파일의 <a class="el" href="Food_8h_source.html#l00044">44</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="Food_8cpp_source.html#l00057">GetLifetimeReplicatedProps()</a>, <a class="el" href="Food_8cpp_source.html#l00074">OnRep_FoodName()</a>, <a class="el" href="Food_8cpp_source.html#l00079">SetFoodInfo()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="Food_8cpp_source.html#l00058">GetLifetimeReplicatedProps()</a>, <a class="el" href="Food_8cpp_source.html#l00081">SetFoodInfo()</a>, <a class="el" href="Food_8cpp_source.html#l00093">UpdateFoodWidget()</a>.</p>
 
 </div>
 </div>
@@ -644,7 +700,7 @@ Protected 속성</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classAFood.html">AFood</a></li>
-    <li class="footer">생성시간 : 월 12월 8 2025 12:14:29, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 월 12월 8 2025 12:36:37, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

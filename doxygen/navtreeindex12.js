@@ -1,5 +1,11 @@
 var NAVTREEINDEX12 =
 {
+"structFColorData.html#aa2e8cf08a77841a0f6dcade44ecc7ecc":[2,0,43,5],
+"structFColorData.html#ab5d97969d9842ed688898c2183fb88e8":[2,0,43,4],
+"structFColorStyleData.html":[2,0,44],
+"structFColorStyleData.html#a31575bb2a92918d588e33ea5094ea940":[2,0,44,2],
+"structFColorStyleData.html#a64586e832edd9c7c3992d407ab96b3df":[2,0,44,0],
+"structFColorStyleData.html#a96c685fcb187107bd058a2748caaa0aa":[2,0,44,1],
 "structFComponentHelper.html":[2,0,45],
 "structFComponentHelper.html#a0d3d7957be559acef257216e0b28bba6":[2,0,45,1],
 "structFComponentHelper.html#a911d33e852619cbf64c86e12fbc8ffd6":[2,0,45,4],
@@ -243,11 +249,5 @@ var NAVTREEINDEX12 =
 "structFResponseOcrData.html#a3aebdcc2cf241305966294b76d2fce89":[2,0,88,0],
 "structFResponseOcrExtract.html":[2,0,89],
 "structFResponseOcrExtract.html#a13f596727193af5e8b3385db0ee01ccd":[2,0,89,1],
-"structFResponseOcrExtract.html#a563bd2e36ef09a63f7a31f885da5ef49":[2,0,89,0],
-"structFResponseOcrExtract.html#ab461bf57c55ad95920f47ae76644b688":[2,0,89,2],
-"structFResponseReadResult.html":[2,0,90],
-"structFResponseReadResult.html#a025804546c05d43d63298beac5cda57b":[2,0,90,2],
-"structFResponseReadResult.html#a7ad52db6a235c3df163a3dc2f8e764a1":[2,0,90,0],
-"structFResponseReadResult.html#a9b90bad45b2659ddf80b40e083b15168":[2,0,90,4],
-"structFResponseReadResult.html#ac494d096b2250e595c8e6c82d456875b":[2,0,90,3]
+"structFResponseOcrExtract.html#a563bd2e36ef09a63f7a31f885da5ef49":[2,0,89,0]
 };

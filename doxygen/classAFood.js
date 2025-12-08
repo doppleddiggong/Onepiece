@@ -8,6 +8,7 @@ var classAFood =
     [ "OnRep_FoodName", "classAFood.html#a9f491a1f39c58ade7ff62fe02d46c034", null ],
     [ "SetFoodInfo", "classAFood.html#a9d7da93d3b942a3e39ac456f7a43d317", null ],
     [ "Tick", "classAFood.html#ab887c7a54be058e0c86f705663633001", null ],
+    [ "UpdateFoodWidget", "classAFood.html#a1464bf50b3bc86d1a231f264a79105a3", null ],
     [ "FoodMesh", "classAFood.html#ad600dada8faa4bf439f7a49151b1b367", null ],
     [ "FoodName", "classAFood.html#a6622483b7ed26a1e4373d55574520553", null ],
     [ "Index", "classAFood.html#a254fa39720e4b33ef543ca38b378b47f", null ],

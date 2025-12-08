@@ -175,81 +175,77 @@ $(document).ready(function(){initNavTree('FoodCourtManager_8cpp_source.html','')
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        <a class="code hl_class" href="classACityName.html">ACityName</a>* CityName = <a class="code hl_function" href="classAFoodCourtManager.html#a415333f2dc67e3965b1d6507dd57cd17">FindCityNameByIdx</a>(i);</div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        <span class="keywordflow">if</span> (CityName)</div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        {</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>            UUserWidget* CityNameWidget = CityName-&gt;<a class="code hl_variable" href="classACityName.html#a75ed30b9fb11713c3db7e71e15de30af">WidgetComp</a>-&gt;GetWidget();</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>            <span class="keywordflow">if</span> (<a class="code hl_class" href="classUCityNameWidget.html">UCityNameWidget</a>* CNW = Cast&lt;UCityNameWidget&gt;(CityNameWidget))</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>            {</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>                CNW-&gt;SetCityName(SD.word2.name);</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>            }</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        }</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        <span class="comment">// 랜덤 키오스크 지정</span></div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        <a class="code hl_class" href="classAOrderKiosk.html">AOrderKiosk</a>* RandomKiosk = <a class="code hl_function" href="classAFoodCourtManager.html#a2324fe00f3af9ca3131ce1ff38c94557">GetRandomKiosk</a>();</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        <span class="keywordflow">if</span> (RandomKiosk)</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        {</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>            RandomKiosk-&gt;<a class="code hl_variable" href="classAOrderKiosk.html#a6a1e36df7973542b04ea5147d317b821">FoodCourtIdx</a> = i;</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>            RandomKiosk-&gt;<a class="code hl_variable" href="classAOrderKiosk.html#a97684825dcce5f339ceb8a5cb3d6d3ef">FoodData</a>.<a class="code hl_variable" href="structFFoodData.html#aefd356ba8cdcf328ce82e1220310b974">word1</a> = SD.word1;</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>            RandomKiosk-&gt;<a class="code hl_variable" href="classAOrderKiosk.html#a97684825dcce5f339ceb8a5cb3d6d3ef">FoodData</a>.<a class="code hl_variable" href="structFFoodData.html#af5e26f58bcc1ca8576493af515236b5a">word2</a> = SD.word2;</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>            RandomKiosk-&gt;<a class="code hl_function" href="classAOrderKiosk.html#a431a570c13cdfe2a9c4ec0afc72b05ec">UpdateInteractableWidget</a>(SD.word2.name);</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>        }</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    }</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>}</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>            CityName-&gt;<a class="code hl_function" href="classACityName.html#a93f19980b7f5d96033466c7d48da1e32">SetCityName</a>(SD.word2.name);</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        }</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        <span class="comment">// 랜덤 키오스크 지정</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        <a class="code hl_class" href="classAOrderKiosk.html">AOrderKiosk</a>* RandomKiosk = <a class="code hl_function" href="classAFoodCourtManager.html#a2324fe00f3af9ca3131ce1ff38c94557">GetRandomKiosk</a>();</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        <span class="keywordflow">if</span> (RandomKiosk)</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        {</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>            RandomKiosk-&gt;<a class="code hl_variable" href="classAOrderKiosk.html#a6a1e36df7973542b04ea5147d317b821">FoodCourtIdx</a> = i;</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>            RandomKiosk-&gt;<a class="code hl_variable" href="classAOrderKiosk.html#a97684825dcce5f339ceb8a5cb3d6d3ef">FoodData</a>.<a class="code hl_variable" href="structFFoodData.html#aefd356ba8cdcf328ce82e1220310b974">word1</a> = SD.word1;</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>            RandomKiosk-&gt;<a class="code hl_variable" href="classAOrderKiosk.html#a97684825dcce5f339ceb8a5cb3d6d3ef">FoodData</a>.<a class="code hl_variable" href="structFFoodData.html#af5e26f58bcc1ca8576493af515236b5a">word2</a> = SD.word2;</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>            RandomKiosk-&gt;<a class="code hl_function" href="classAOrderKiosk.html#a431a570c13cdfe2a9c4ec0afc72b05ec">UpdateInteractableWidget</a>(SD.word2.name);</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        }</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    }</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>}</div>
 </div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
-<div class="foldopen" id="foldopen00078" data-start="{" data-end="}">
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno"><a class="line" href="classAFoodCourtManager.html#a415333f2dc67e3965b1d6507dd57cd17">   78</a></span><a class="code hl_class" href="classACityName.html">ACityName</a>* <a class="code hl_function" href="classAFoodCourtManager.html#a415333f2dc67e3965b1d6507dd57cd17">AFoodCourtManager::FindCityNameByIdx</a>(int32 InIdx)</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>{</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    TArray&lt;AActor*&gt; CityNames;</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    UGameplayStatics::GetAllActorsOfClass(GetWorld(), ACityName::StaticClass(), CityNames);</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> CityName : CityNames)</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    {</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        <span class="keywordflow">if</span> (<a class="code hl_class" href="classACityName.html">ACityName</a>* CN = Cast&lt;ACityName&gt;(CityName))</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        {</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>            <span class="keywordflow">if</span> (CN-&gt;Index == InIdx)</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>            {</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>                <span class="keywordflow">return</span> CN;</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>            }</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        }</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    }</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>}</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="foldopen" id="foldopen00074" data-start="{" data-end="}">
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno"><a class="line" href="classAFoodCourtManager.html#a415333f2dc67e3965b1d6507dd57cd17">   74</a></span><a class="code hl_class" href="classACityName.html">ACityName</a>* <a class="code hl_function" href="classAFoodCourtManager.html#a415333f2dc67e3965b1d6507dd57cd17">AFoodCourtManager::FindCityNameByIdx</a>(int32 InIdx)</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>{</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    TArray&lt;AActor*&gt; CityNames;</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    UGameplayStatics::GetAllActorsOfClass(GetWorld(), ACityName::StaticClass(), CityNames);</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> CityName : CityNames)</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    {</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        <span class="keywordflow">if</span> (<a class="code hl_class" href="classACityName.html">ACityName</a>* CN = Cast&lt;ACityName&gt;(CityName))</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        {</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>            <span class="keywordflow">if</span> (CN-&gt;Index == InIdx)</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>            {</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>                <span class="keywordflow">return</span> CN;</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>            }</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>        }</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    }</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>}</div>
 </div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> </div>
-<div class="foldopen" id="foldopen00096" data-start="{" data-end="}">
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno"><a class="line" href="classAFoodCourtManager.html#a2324fe00f3af9ca3131ce1ff38c94557">   96</a></span><span class="keyword">class </span><a class="code hl_class" href="classAOrderKiosk.html">AOrderKiosk</a>* <a class="code hl_function" href="classAFoodCourtManager.html#a2324fe00f3af9ca3131ce1ff38c94557">AFoodCourtManager::GetRandomKiosk</a>()</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>{</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    <span class="comment">// 키오스크 중 랜덤으로 하나 뽑기</span></div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    TArray&lt;AActor*&gt; AllKiosks;</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    UGameplayStatics::GetAllActorsOfClass(GetWorld(), AOrderKiosk::StaticClass(), AllKiosks);</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span> </div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    TArray&lt;AOrderKiosk*&gt; Available;</div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> Actor : AllKiosks)</div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    {</div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>        <span class="keywordflow">if</span> (<a class="code hl_class" href="classAOrderKiosk.html">AOrderKiosk</a>* Kiosk = Cast&lt;AOrderKiosk&gt;(Actor))</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>        {</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>            <span class="keywordflow">if</span> (Kiosk-&gt;FoodCourtIdx == -1)</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>                Available.Add(Kiosk);</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>        }</div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    }</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span> </div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    <span class="keywordflow">if</span> (Available.IsEmpty()) <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span> </div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    <span class="keywordflow">return</span> Available[FMath::RandRange(0, Available.Num()-1)];</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>}</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
+<div class="foldopen" id="foldopen00092" data-start="{" data-end="}">
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno"><a class="line" href="classAFoodCourtManager.html#a2324fe00f3af9ca3131ce1ff38c94557">   92</a></span><span class="keyword">class </span><a class="code hl_class" href="classAOrderKiosk.html">AOrderKiosk</a>* <a class="code hl_function" href="classAFoodCourtManager.html#a2324fe00f3af9ca3131ce1ff38c94557">AFoodCourtManager::GetRandomKiosk</a>()</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>{</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    <span class="comment">// 키오스크 중 랜덤으로 하나 뽑기</span></div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    TArray&lt;AActor*&gt; AllKiosks;</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    UGameplayStatics::GetAllActorsOfClass(GetWorld(), AOrderKiosk::StaticClass(), AllKiosks);</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    TArray&lt;AOrderKiosk*&gt; Available;</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> Actor : AllKiosks)</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    {</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>        <span class="keywordflow">if</span> (<a class="code hl_class" href="classAOrderKiosk.html">AOrderKiosk</a>* Kiosk = Cast&lt;AOrderKiosk&gt;(Actor))</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>        {</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>            <span class="keywordflow">if</span> (Kiosk-&gt;FoodCourtIdx == -1)</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>                Available.Add(Kiosk);</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>        }</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    }</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span> </div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    <span class="keywordflow">if</span> (Available.IsEmpty()) <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span> </div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    <span class="keywordflow">return</span> Available[FMath::RandRange(0, Available.Num()-1)];</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>}</div>
 </div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span> </div>
-<div class="foldopen" id="foldopen00117" data-start="{" data-end="}">
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno"><a class="line" href="classAFoodCourtManager.html#ac1cb3685954f8d236aedddff4a9fb2ab">  117</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAFoodCourtManager.html#ac1cb3685954f8d236aedddff4a9fb2ab">AFoodCourtManager::HandleQuestScenarioDataUpdated</a>()</div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>{</div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    <span class="keywordflow">if</span> (<a class="code hl_class" href="classALingoGameState.html">ALingoGameState</a>* GS = <a class="code hl_function" href="classULingoGameHelper.html#aae5e9443e2249c16219279d75b62cb46">ULingoGameHelper::GetLingoGameState</a>(GetWorld()))</div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    {</div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>        <span class="keywordflow">if</span> (GS-&gt;GetCurrentQuestType() != <a class="code hl_enumvalue" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921ace6802b46091c31e2ec2363883fe8369">EQuestType::Listen</a>)</div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>            <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span> </div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>        <a class="code hl_function" href="classAFoodCourtManager.html#a7cb555a5d887b8f0739a23019db3cc43">SetFoodCourtInfo</a>();</div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>    }</div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>}</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span> </div>
+<div class="foldopen" id="foldopen00113" data-start="{" data-end="}">
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno"><a class="line" href="classAFoodCourtManager.html#ac1cb3685954f8d236aedddff4a9fb2ab">  113</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAFoodCourtManager.html#ac1cb3685954f8d236aedddff4a9fb2ab">AFoodCourtManager::HandleQuestScenarioDataUpdated</a>()</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>{</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>    <span class="keywordflow">if</span> (<a class="code hl_class" href="classALingoGameState.html">ALingoGameState</a>* GS = <a class="code hl_function" href="classULingoGameHelper.html#aae5e9443e2249c16219279d75b62cb46">ULingoGameHelper::GetLingoGameState</a>(GetWorld()))</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>    {</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>        <span class="keywordflow">if</span> (GS-&gt;GetCurrentQuestType() != <a class="code hl_enumvalue" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921ace6802b46091c31e2ec2363883fe8369">EQuestType::Listen</a>)</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span> </div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>        <a class="code hl_function" href="classAFoodCourtManager.html#a7cb555a5d887b8f0739a23019db3cc43">SetFoodCourtInfo</a>();</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    }</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>}</div>
 </div>
 <div class="ttc" id="aADropper_8h_html"><div class="ttname"><a href="ADropper_8h.html">ADropper.h</a></div></div>
 <div class="ttc" id="aALingoGameState_8h_html"><div class="ttname"><a href="ALingoGameState_8h.html">ALingoGameState.h</a></div></div>
@@ -260,22 +256,21 @@ $(document).ready(function(){initNavTree('FoodCourtManager_8cpp_source.html','')
 <div class="ttc" id="aOrderKiosk_8h_html"><div class="ttname"><a href="OrderKiosk_8h.html">OrderKiosk.h</a></div></div>
 <div class="ttc" id="aULingoGameHelper_8h_html"><div class="ttname"><a href="ULingoGameHelper_8h.html">ULingoGameHelper.h</a></div></div>
 <div class="ttc" id="aclassACityName_html"><div class="ttname"><a href="classACityName.html">ACityName</a></div><div class="ttdef"><b>Definition</b> <a href="CityName_8h_source.html#l00010">CityName.h:11</a></div></div>
-<div class="ttc" id="aclassACityName_html_a75ed30b9fb11713c3db7e71e15de30af"><div class="ttname"><a href="classACityName.html#a75ed30b9fb11713c3db7e71e15de30af">ACityName::WidgetComp</a></div><div class="ttdeci">class UWidgetComponent * WidgetComp</div><div class="ttdef"><b>Definition</b> <a href="CityName_8h_source.html#l00027">CityName.h:27</a></div></div>
+<div class="ttc" id="aclassACityName_html_a93f19980b7f5d96033466c7d48da1e32"><div class="ttname"><a href="classACityName.html#a93f19980b7f5d96033466c7d48da1e32">ACityName::SetCityName</a></div><div class="ttdeci">void SetCityName(const FString &amp;InCityName)</div><div class="ttdef"><b>Definition</b> <a href="CityName_8h_source.html#l00034">CityName.h:34</a></div></div>
 <div class="ttc" id="aclassAFoodCourtManager_html_a0d16e6507784b78ed25f4757f99c4fdf"><div class="ttname"><a href="classAFoodCourtManager.html#a0d16e6507784b78ed25f4757f99c4fdf">AFoodCourtManager::Tick</a></div><div class="ttdeci">virtual void Tick(float DeltaTime) override</div><div class="ttdef"><b>Definition</b> <a href="FoodCourtManager_8cpp_source.html#l00038">FoodCourtManager.cpp:38</a></div></div>
 <div class="ttc" id="aclassAFoodCourtManager_html_a139ea3695b1a895f475cd80bd19338ae"><div class="ttname"><a href="classAFoodCourtManager.html#a139ea3695b1a895f475cd80bd19338ae">AFoodCourtManager::BeginPlay</a></div><div class="ttdeci">virtual void BeginPlay() override</div><div class="ttdef"><b>Definition</b> <a href="FoodCourtManager_8cpp_source.html#l00021">FoodCourtManager.cpp:21</a></div></div>
-<div class="ttc" id="aclassAFoodCourtManager_html_a2324fe00f3af9ca3131ce1ff38c94557"><div class="ttname"><a href="classAFoodCourtManager.html#a2324fe00f3af9ca3131ce1ff38c94557">AFoodCourtManager::GetRandomKiosk</a></div><div class="ttdeci">class AOrderKiosk * GetRandomKiosk()</div><div class="ttdef"><b>Definition</b> <a href="FoodCourtManager_8cpp_source.html#l00096">FoodCourtManager.cpp:96</a></div></div>
-<div class="ttc" id="aclassAFoodCourtManager_html_a415333f2dc67e3965b1d6507dd57cd17"><div class="ttname"><a href="classAFoodCourtManager.html#a415333f2dc67e3965b1d6507dd57cd17">AFoodCourtManager::FindCityNameByIdx</a></div><div class="ttdeci">class ACityName * FindCityNameByIdx(int32 InIdx)</div><div class="ttdef"><b>Definition</b> <a href="FoodCourtManager_8cpp_source.html#l00078">FoodCourtManager.cpp:78</a></div></div>
+<div class="ttc" id="aclassAFoodCourtManager_html_a2324fe00f3af9ca3131ce1ff38c94557"><div class="ttname"><a href="classAFoodCourtManager.html#a2324fe00f3af9ca3131ce1ff38c94557">AFoodCourtManager::GetRandomKiosk</a></div><div class="ttdeci">class AOrderKiosk * GetRandomKiosk()</div><div class="ttdef"><b>Definition</b> <a href="FoodCourtManager_8cpp_source.html#l00092">FoodCourtManager.cpp:92</a></div></div>
+<div class="ttc" id="aclassAFoodCourtManager_html_a415333f2dc67e3965b1d6507dd57cd17"><div class="ttname"><a href="classAFoodCourtManager.html#a415333f2dc67e3965b1d6507dd57cd17">AFoodCourtManager::FindCityNameByIdx</a></div><div class="ttdeci">class ACityName * FindCityNameByIdx(int32 InIdx)</div><div class="ttdef"><b>Definition</b> <a href="FoodCourtManager_8cpp_source.html#l00074">FoodCourtManager.cpp:74</a></div></div>
 <div class="ttc" id="aclassAFoodCourtManager_html_a4d3602f2add766186d9d9cf7c3c03a8e"><div class="ttname"><a href="classAFoodCourtManager.html#a4d3602f2add766186d9d9cf7c3c03a8e">AFoodCourtManager::AFoodCourtManager</a></div><div class="ttdeci">AFoodCourtManager()</div><div class="ttdef"><b>Definition</b> <a href="FoodCourtManager_8cpp_source.html#l00016">FoodCourtManager.cpp:16</a></div></div>
 <div class="ttc" id="aclassAFoodCourtManager_html_a7cb555a5d887b8f0739a23019db3cc43"><div class="ttname"><a href="classAFoodCourtManager.html#a7cb555a5d887b8f0739a23019db3cc43">AFoodCourtManager::SetFoodCourtInfo</a></div><div class="ttdeci">void SetFoodCourtInfo()</div><div class="ttdef"><b>Definition</b> <a href="FoodCourtManager_8cpp_source.html#l00043">FoodCourtManager.cpp:43</a></div></div>
 <div class="ttc" id="aclassAFoodCourtManager_html_aaa4c915e0d339c22873b553f4d005859"><div class="ttname"><a href="classAFoodCourtManager.html#aaa4c915e0d339c22873b553f4d005859">AFoodCourtManager::EndPlay</a></div><div class="ttdeci">virtual void EndPlay(const EEndPlayReason::Type EndPlayReason) override</div><div class="ttdef"><b>Definition</b> <a href="FoodCourtManager_8cpp_source.html#l00032">FoodCourtManager.cpp:32</a></div></div>
-<div class="ttc" id="aclassAFoodCourtManager_html_ac1cb3685954f8d236aedddff4a9fb2ab"><div class="ttname"><a href="classAFoodCourtManager.html#ac1cb3685954f8d236aedddff4a9fb2ab">AFoodCourtManager::HandleQuestScenarioDataUpdated</a></div><div class="ttdeci">void HandleQuestScenarioDataUpdated()</div><div class="ttdef"><b>Definition</b> <a href="FoodCourtManager_8cpp_source.html#l00117">FoodCourtManager.cpp:117</a></div></div>
+<div class="ttc" id="aclassAFoodCourtManager_html_ac1cb3685954f8d236aedddff4a9fb2ab"><div class="ttname"><a href="classAFoodCourtManager.html#ac1cb3685954f8d236aedddff4a9fb2ab">AFoodCourtManager::HandleQuestScenarioDataUpdated</a></div><div class="ttdeci">void HandleQuestScenarioDataUpdated()</div><div class="ttdef"><b>Definition</b> <a href="FoodCourtManager_8cpp_source.html#l00113">FoodCourtManager.cpp:113</a></div></div>
 <div class="ttc" id="aclassALingoGameState_html"><div class="ttname"><a href="classALingoGameState.html">ALingoGameState</a></div><div class="ttdef"><b>Definition</b> <a href="ALingoGameState_8h_source.html#l00026">ALingoGameState.h:27</a></div></div>
 <div class="ttc" id="aclassALingoGameState_html_a05dda129c32a08fc3432424f612ce50b"><div class="ttname"><a href="classALingoGameState.html#a05dda129c32a08fc3432424f612ce50b">ALingoGameState::GetListenScenarioData</a></div><div class="ttdeci">FORCEINLINE const FResponseListenScenario &amp; GetListenScenarioData() const</div><div class="ttdef"><b>Definition</b> <a href="ALingoGameState_8h_source.html#l00045">ALingoGameState.h:45</a></div></div>
 <div class="ttc" id="aclassAOrderKiosk_html"><div class="ttname"><a href="classAOrderKiosk.html">AOrderKiosk</a></div><div class="ttdef"><b>Definition</b> <a href="OrderKiosk_8h_source.html#l00011">OrderKiosk.h:12</a></div></div>
 <div class="ttc" id="aclassAOrderKiosk_html_a431a570c13cdfe2a9c4ec0afc72b05ec"><div class="ttname"><a href="classAOrderKiosk.html#a431a570c13cdfe2a9c4ec0afc72b05ec">AOrderKiosk::UpdateInteractableWidget</a></div><div class="ttdeci">void UpdateInteractableWidget(FString NewString)</div><div class="ttdef"><b>Definition</b> <a href="OrderKiosk_8cpp_source.html#l00108">OrderKiosk.cpp:108</a></div></div>
 <div class="ttc" id="aclassAOrderKiosk_html_a6a1e36df7973542b04ea5147d317b821"><div class="ttname"><a href="classAOrderKiosk.html#a6a1e36df7973542b04ea5147d317b821">AOrderKiosk::FoodCourtIdx</a></div><div class="ttdeci">int32 FoodCourtIdx</div><div class="ttdef"><b>Definition</b> <a href="OrderKiosk_8h_source.html#l00047">OrderKiosk.h:47</a></div></div>
 <div class="ttc" id="aclassAOrderKiosk_html_a97684825dcce5f339ceb8a5cb3d6d3ef"><div class="ttname"><a href="classAOrderKiosk.html#a97684825dcce5f339ceb8a5cb3d6d3ef">AOrderKiosk::FoodData</a></div><div class="ttdeci">FFoodData FoodData</div><div class="ttdoc">이번 스폰에서 사용할 데이터</div><div class="ttdef"><b>Definition</b> <a href="OrderKiosk_8h_source.html#l00051">OrderKiosk.h:51</a></div></div>
-<div class="ttc" id="aclassUCityNameWidget_html"><div class="ttname"><a href="classUCityNameWidget.html">UCityNameWidget</a></div><div class="ttdef"><b>Definition</b> <a href="CityNameWidget_8h_source.html#l00013">CityNameWidget.h:14</a></div></div>
 <div class="ttc" id="aclassULingoGameHelper_html_aae5e9443e2249c16219279d75b62cb46"><div class="ttname"><a href="classULingoGameHelper.html#aae5e9443e2249c16219279d75b62cb46">ULingoGameHelper::GetLingoGameState</a></div><div class="ttdeci">static class ALingoGameState * GetLingoGameState(const UObject *WorldContextObject)</div><div class="ttdef"><b>Definition</b> <a href="ULingoGameHelper_8cpp_source.html#l00046">ULingoGameHelper.cpp:46</a></div></div>
 <div class="ttc" id="astructFFoodData_html_aefd356ba8cdcf328ce82e1220310b974"><div class="ttname"><a href="structFFoodData.html#aefd356ba8cdcf328ce82e1220310b974">FFoodData::word1</a></div><div class="ttdeci">FWordInfo word1</div><div class="ttdoc">시나리오 단어 정보</div><div class="ttdef"><b>Definition</b> <a href="ADropper_8h_source.html#l00043">ADropper.h:43</a></div></div>
 <div class="ttc" id="astructFFoodData_html_af5e26f58bcc1ca8576493af515236b5a"><div class="ttname"><a href="structFFoodData.html#af5e26f58bcc1ca8576493af515236b5a">FFoodData::word2</a></div><div class="ttdeci">FWordInfo word2</div><div class="ttdef"><b>Definition</b> <a href="ADropper_8h_source.html#l00046">ADropper.h:46</a></div></div>
@@ -286,7 +281,7 @@ $(document).ready(function(){initNavTree('FoodCourtManager_8cpp_source.html','')
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_b7459e4428712e32d7c860db6e401a05.html">Interactable</a></li><li class="navelem"><a class="el" href="dir_77257aedd361f850f8a01079e914567e.html">Private</a></li><li class="navelem"><a class="el" href="FoodCourtManager_8cpp.html">FoodCourtManager.cpp</a></li>
-    <li class="footer">생성시간 : 월 12월 8 2025 12:14:28, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 월 12월 8 2025 12:36:37, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>
