@@ -28,6 +28,7 @@ var annotated_dup =
     [ "ANPCBase", "classANPCBase.html", "classANPCBase" ],
     [ "ANPCExaminer", "classANPCExaminer.html", "classANPCExaminer" ],
     [ "AOrderKiosk", "classAOrderKiosk.html", "classAOrderKiosk" ],
+    [ "AOutBoxTeleportTrigger", "classAOutBoxTeleportTrigger.html", "classAOutBoxTeleportTrigger" ],
     [ "AOwlPlayer", "classAOwlPlayer.html", "classAOwlPlayer" ],
     [ "APedestalSwitch", "classAPedestalSwitch.html", "classAPedestalSwitch" ],
     [ "APlayerActor", "classAPlayerActor.html", "classAPlayerActor" ],

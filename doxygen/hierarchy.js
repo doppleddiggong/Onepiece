@@ -21,6 +21,7 @@ var hierarchy =
       [ "ANetworkBroadcastActor", "classANetworkBroadcastActor.html", null ],
       [ "ANetworkTesterActor", "classANetworkTesterActor.html", null ],
       [ "AOrderKiosk", "classAOrderKiosk.html", null ],
+      [ "AOutBoxTeleportTrigger", "classAOutBoxTeleportTrigger.html", null ],
       [ "APedestalSwitch", "classAPedestalSwitch.html", null ],
       [ "APopupTesterActor", "classAPopupTesterActor.html", null ],
       [ "AQuestionnaireKiosk", "classAQuestionnaireKiosk.html", null ],

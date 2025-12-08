@@ -16,6 +16,7 @@ var dir_37565cbf0e4835105e22b7540e7cc414 =
     [ "luggage.h", "luggage_8h.html", "luggage_8h" ],
     [ "LuggageManager.h", "LuggageManager_8h.html", "LuggageManager_8h" ],
     [ "OrderKiosk.h", "OrderKiosk_8h.html", "OrderKiosk_8h" ],
+    [ "OutBoxTeleportTrigger.h", "OutBoxTeleportTrigger_8h.html", "OutBoxTeleportTrigger_8h" ],
     [ "QuestionnaireKiosk.h", "QuestionnaireKiosk_8h.html", "QuestionnaireKiosk_8h" ],
     [ "RespawnTrigger.h", "RespawnTrigger_8h.html", "RespawnTrigger_8h" ]
 ];
