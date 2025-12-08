@@ -105,10 +105,10 @@ void AQuestionnaireKiosk::OnResponseData(FQuestWriteInfo& InResponseData, bool b
 			if (const auto Popup = Cast<UPopup_Questionnaire>(PopupMgr->ShowPopup(EPopupType::Questionnaire)))
 			{
 				// TODO: 쓰기 퀘스트 json 데이터 받기 요청
-				FQuestWriteInfo data;// = InResponseData;
+				FQuestWriteInfo data = InResponseData;
 			
 				// 테스트용 더미 데이터 생성
-				CreateTestData(data);
+				// CreateTestData(data);
 			
 				// 팝업 초기화
 				Popup->InitPopup(data);

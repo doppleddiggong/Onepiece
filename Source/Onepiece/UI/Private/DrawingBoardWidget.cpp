@@ -163,10 +163,6 @@ void UDrawingBoardWidget::SaveCanvas()
 	// UE_LOG(LogTemp, Warning, TEXT("%s | %s"), *filePath, *fileName);
 	
 	SaveRenderTargetToPNG(RT_Canvas, filePath / fileName);
-	
-	// combine png files
-	TSharedPtr<PNGCombineManager> pngCombineManager;
-	pngCombineManager->CombinePNG();
 }
 
 bool UDrawingBoardWidget::SaveRenderTargetToPNG(UTextureRenderTarget2D* RenderTarget, const FString& FullFilePath)
