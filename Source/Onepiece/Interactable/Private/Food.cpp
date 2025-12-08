@@ -73,3 +73,37 @@ void AFood::SetFoodInfo(int32 InIndex, FString InName)
 	}
 }
 
+
+
+// HACK, 해줘요. 모델링 찾았고, ListenData에서 모델링도 빼오는데, AddChildActor 까지도 되는데.
+// 객체 생성쪽에서 뭔가 이상한데. 디버깅을 다 못했음
+// void AFood::SetFoodInfo(int32 InIndex, FString InName)
+// {
+// 	Name = InName;
+// 	Index = InIndex;
+//
+// 	UCityNameWidget* NameWidget = Cast<UCityNameWidget>(FoodName->GetWidget());
+// 	if (NameWidget)
+// 	{
+// 		NameWidget->SetCityName(InName);
+// 	}
+// }
+
+// void AFood::SetFoodInfo(const FFoodData& InFoodData)
+// {
+// 	Name = FString::Printf(TEXT("%s / %s"), *InFoodData.word1.name, *InFoodData.word2.name);
+// 	Index = InFoodData.SpawnIndex;
+//
+// 	UCityNameWidget* NameWidget = Cast<UCityNameWidget>(FoodName->GetWidget());
+// 	if (NameWidget)
+// 	{
+// 		NameWidget->SetCityName(Name);
+// 	}
+//
+// 	int32 PatternIdx = FCString::Atoi(*InFoodData.word2.code);
+// 	FListenData Listen02Data;
+// 	if (UGameDataManager::Get(GetWorld())->GetListenData(PatternIdx, Listen02Data))
+// 	{
+// 		SetFoodModel(Listen02Data.FoodPath);
+// 	}
+// }
