@@ -256,26 +256,27 @@ $(document).ready(function(){initNavTree('InteractableComponent_8h_source.html',
 <div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span><span class="preprocessor">#pragma region Widget</span></div>
 <div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span><span class="keyword">public</span>:</div>
 <div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>    <span class="keywordtype">void</span> InitWidget(<span class="keyword">class</span> UWidgetComponent* InWidgetComp);</div>
-<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span> </div>
-<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>    <span class="comment">// ========================================</span></div>
-<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>    <span class="comment">// 상호작용 위젯</span></div>
-<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>    <span class="comment">// ========================================</span></div>
-<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span> </div>
-<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>    UFUNCTION(BlueprintCallable, Category = <span class="stringliteral">&quot;Interaction&quot;</span>)</div>
-<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>    void ShowInteractWidget();</div>
-<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span> </div>
-<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>    UFUNCTION(BlueprintCallable, Category = &quot;Interaction&quot;)</div>
-<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>    <span class="keywordtype">void</span> HideInteractWidget();</div>
-<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span> </div>
-<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>    <span class="keywordtype">void</span> BillboardInteractWidget();</div>
-<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span> </div>
-<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>private:</div>
-<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>    UPROPERTY()</div>
-<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>    TObjectPtr&lt;class UWidgetComponent&gt; WidgetComp;</div>
-<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span> </div>
-<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span><span class="preprocessor">#pragma endregion   </span></div>
-<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>};</div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>    <span class="keywordtype">void</span> UpdateInteractPrompt(<span class="keyword">const</span> FString&amp; NewPrompt);</div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span> </div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>    <span class="comment">// ========================================</span></div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>    <span class="comment">// 상호작용 위젯</span></div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>    <span class="comment">// ========================================</span></div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span> </div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>    UFUNCTION(BlueprintCallable, Category = <span class="stringliteral">&quot;Interaction&quot;</span>)</div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>    void ShowInteractWidget();</div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span> </div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>    UFUNCTION(BlueprintCallable, Category = &quot;Interaction&quot;)</div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>    <span class="keywordtype">void</span> HideInteractWidget();</div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span> </div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>    <span class="keywordtype">void</span> BillboardInteractWidget();</div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span> </div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>private:</div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>    UPROPERTY()</div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>    TObjectPtr&lt;class UWidgetComponent&gt; WidgetComp;</div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span> </div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span><span class="preprocessor">#pragma endregion   </span></div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>};</div>
 <div class="ttc" id="aEDamageType_8h_html_ab5bf7dde87ef933ba244eba8c39e7e9ba6adf97f83acf6453d4a6a4b1070f3754"><div class="ttname"><a href="EDamageType_8h.html#ab5bf7dde87ef933ba244eba8c39e7e9ba6adf97f83acf6453d4a6a4b1070f3754">EDamageType::None</a></div><div class="ttdeci">@ None</div></div>
 <div class="ttc" id="aInteractableComponent_8h_html_a02a4406ffa507701cdc869e603666e99"><div class="ttname"><a href="InteractableComponent_8h.html#a02a4406ffa507701cdc869e603666e99">EInteractionType</a></div><div class="ttdeci">EInteractionType</div><div class="ttdoc">상호작용 타입 정의</div><div class="ttdef"><b>Definition</b> <a href="InteractableComponent_8h_source.html#l00016">InteractableComponent.h:17</a></div></div>
 <div class="ttc" id="aInteractableComponent_8h_html_a02a4406ffa507701cdc869e603666e99aa3f80d8f0f1b4ffa8c475f5d60ea5635"><div class="ttname"><a href="InteractableComponent_8h.html#a02a4406ffa507701cdc869e603666e99aa3f80d8f0f1b4ffa8c475f5d60ea5635">EInteractionType::UMETA</a></div><div class="ttdeci">@ UMETA</div></div>
@@ -286,7 +287,7 @@ $(document).ready(function(){initNavTree('InteractableComponent_8h_source.html',
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_b7459e4428712e32d7c860db6e401a05.html">Interactable</a></li><li class="navelem"><a class="el" href="dir_37565cbf0e4835105e22b7540e7cc414.html">Public</a></li><li class="navelem"><a class="el" href="InteractableComponent_8h.html">InteractableComponent.h</a></li>
-    <li class="footer">생성시간 : 월 12월 8 2025 00:01:02, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 월 12월 8 2025 01:47:34, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

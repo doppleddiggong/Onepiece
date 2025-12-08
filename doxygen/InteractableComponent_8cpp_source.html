@@ -620,7 +620,21 @@ $(document).ready(function(){initNavTree('InteractableComponent_8cpp_source.html
 <div class="line"><a id="l00545" name="l00545"></a><span class="lineno">  545</span>    <span class="comment">// 위젯 회전 설정</span></div>
 <div class="line"><a id="l00546" name="l00546"></a><span class="lineno">  546</span>    WidgetComp-&gt;SetWorldRotation(Rotation);</div>
 <div class="line"><a id="l00547" name="l00547"></a><span class="lineno">  547</span>}</div>
-<div class="line"><a id="l00548" name="l00548"></a><span class="lineno">  548</span><span class="preprocessor">#pragma endregion</span></div>
+<div class="line"><a id="l00548" name="l00548"></a><span class="lineno">  548</span> </div>
+<div class="line"><a id="l00549" name="l00549"></a><span class="lineno">  549</span><span class="keywordtype">void</span> UInteractableComponent::UpdateInteractPrompt(<span class="keyword">const</span> FString&amp; NewPrompt)</div>
+<div class="line"><a id="l00550" name="l00550"></a><span class="lineno">  550</span>{</div>
+<div class="line"><a id="l00551" name="l00551"></a><span class="lineno">  551</span>    <span class="comment">// InteractionPrompt 업데이트</span></div>
+<div class="line"><a id="l00552" name="l00552"></a><span class="lineno">  552</span>    InteractionPrompt = NewPrompt;</div>
+<div class="line"><a id="l00553" name="l00553"></a><span class="lineno">  553</span> </div>
+<div class="line"><a id="l00554" name="l00554"></a><span class="lineno">  554</span>    <span class="comment">// 위젯이 없으면 리턴</span></div>
+<div class="line"><a id="l00555" name="l00555"></a><span class="lineno">  555</span>    <span class="keywordflow">if</span> (!WidgetComp)</div>
+<div class="line"><a id="l00556" name="l00556"></a><span class="lineno">  556</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00557" name="l00557"></a><span class="lineno">  557</span> </div>
+<div class="line"><a id="l00558" name="l00558"></a><span class="lineno">  558</span>    <span class="comment">// UInteractWidget의 Txt_Desc 업데이트</span></div>
+<div class="line"><a id="l00559" name="l00559"></a><span class="lineno">  559</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> InteractWidget = Cast&lt;UInteractWidget&gt;(WidgetComp-&gt;GetWidget()))</div>
+<div class="line"><a id="l00560" name="l00560"></a><span class="lineno">  560</span>        InteractWidget-&gt;UpdateDesc(NewPrompt);</div>
+<div class="line"><a id="l00561" name="l00561"></a><span class="lineno">  561</span>}</div>
+<div class="line"><a id="l00562" name="l00562"></a><span class="lineno">  562</span><span class="preprocessor">#pragma endregion</span></div>
 <div class="ttc" id="aAPlayerActor_8h_html"><div class="ttname"><a href="APlayerActor_8h.html">APlayerActor.h</a></div><div class="ttdoc">Declares the player-controlled character actor.</div></div>
 <div class="ttc" id="aFColorStyleData_8h_html_aefed1c032e349fb49159bbab1f32a3eba51e6cd92b6c45f9affdc158ecca2b8b8"><div class="ttname"><a href="FColorStyleData_8h.html#aefed1c032e349fb49159bbab1f32a3eba51e6cd92b6c45f9affdc158ecca2b8b8">EColorStyleType::Yellow</a></div><div class="ttdeci">@ Yellow</div></div>
 <div class="ttc" id="aFColorStyleData_8h_html_aefed1c032e349fb49159bbab1f32a3ebad382816a3cbeed082c9e216e7392eed1"><div class="ttname"><a href="FColorStyleData_8h.html#aefed1c032e349fb49159bbab1f32a3ebad382816a3cbeed082c9e216e7392eed1">EColorStyleType::Green</a></div><div class="ttdeci">@ Green</div></div>
@@ -641,7 +655,7 @@ $(document).ready(function(){initNavTree('InteractableComponent_8cpp_source.html
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_b7459e4428712e32d7c860db6e401a05.html">Interactable</a></li><li class="navelem"><a class="el" href="dir_77257aedd361f850f8a01079e914567e.html">Private</a></li><li class="navelem"><a class="el" href="InteractableComponent_8cpp.html">InteractableComponent.cpp</a></li>
-    <li class="footer">생성시간 : 월 12월 8 2025 00:01:02, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 월 12월 8 2025 01:47:34, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

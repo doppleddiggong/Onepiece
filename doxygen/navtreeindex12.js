@@ -1,5 +1,8 @@
 var NAVTREEINDEX12 =
 {
+"structFEaseFloatTrack.html#aed76d1a818a57dbe98a6fafc40520956":[2,0,47,7],
+"structFEaseHelper.html":[2,0,48],
+"structFEaseHelper.html#a2a09be8079b0151cad5b52c4250e299f":[2,0,48,0],
 "structFEaseRotatorTrack.html":[2,0,49],
 "structFEaseRotatorTrack.html#a189b91bc73c40fa59529fa80614595cd":[2,0,49,7],
 "structFEaseRotatorTrack.html#a66108bab12b6d74feda30559fe4ed79f":[2,0,49,5],
@@ -19,10 +22,11 @@ var NAVTREEINDEX12 =
 "structFEaseVectorTrack.html#a80794bac1d01b2109f22b32c578ac7ad":[2,0,50,4],
 "structFEaseVectorTrack.html#afef6d81f8b079146acea67352c9bee6e":[2,0,50,5],
 "structFFoodData.html":[2,0,51],
-"structFFoodData.html#a221495151d1519082e52afe826238810":[2,0,51,1],
 "structFFoodData.html#a530a43c4802eb7760ce70ed908652df8":[2,0,51,2],
-"structFFoodData.html#a9da8b074adf1d5d35ca3e9ba478a2ad1":[2,0,51,3],
+"structFFoodData.html#ab947863e581862a71bbf686054ca5a41":[2,0,51,1],
+"structFFoodData.html#aefd356ba8cdcf328ce82e1220310b974":[2,0,51,3],
 "structFFoodData.html#af2527d00a0b0e9b4938f33b9212a6a6e":[2,0,51,0],
+"structFFoodData.html#af5e26f58bcc1ca8576493af515236b5a":[2,0,51,4],
 "structFHitStopData.html":[2,0,52],
 "structFHitStopData.html#a1e465dea22d37e3ed21392f390b6c197":[2,0,52,1],
 "structFHitStopData.html#a43882ceb618dccd5a19f22dbe117cffd":[2,0,52,2],
@@ -245,9 +249,5 @@ var NAVTREEINDEX12 =
 "structFResponseReadScenario.html#ae8e5570d43b28ad6967170d417519b8a":[2,0,92,3],
 "structFResponseReadScenario.html#af459154b9d36ea41e3b9cc5e1513186c":[2,0,92,7],
 "structFResponseReadScenario.html#af7a3da38c89b3ecbd239c98e997f21a9":[2,0,92,11],
-"structFResponseSpeakingJudes.html":[2,0,93],
-"structFResponseSpeakingJudes.html#a19a2ea60dfffe2972df7f1adae961de0":[2,0,93,2],
-"structFResponseSpeakingJudes.html#a1a399d1525ef7dcb3a4f3de8e7f02d0b":[2,0,93,0],
-"structFResponseSpeakingJudes.html#a23ca88ea4bc62490c1e2528014473d2d":[2,0,93,4],
-"structFResponseSpeakingJudes.html#a48ca6f0034244337fa3023ee8b4ffe42":[2,0,93,3]
+"structFResponseSpeakingJudes.html":[2,0,93]
 };

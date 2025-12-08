@@ -8,6 +8,7 @@ var classAOrderKiosk =
     [ "GetLifetimeReplicatedProps", "classAOrderKiosk.html#a8cd610339619fd825fb09c0cd378d351", null ],
     [ "OnInteractionTriggered", "classAOrderKiosk.html#a00de3d34c912237f3a4541a12fb2cffa", null ],
     [ "Tick", "classAOrderKiosk.html#a2559037890cac62eb1d3c60753977c5d", null ],
+    [ "UpdateInteractableWidget", "classAOrderKiosk.html#a431a570c13cdfe2a9c4ec0afc72b05ec", null ],
     [ "bIsUsed", "classAOrderKiosk.html#aa6d9c886fc05fda546fb63c64ac8bf59", null ],
     [ "Collision", "classAOrderKiosk.html#afc9b2c160e7f1b5f8f453953a83501f3", null ],
     [ "FoodCourtIdx", "classAOrderKiosk.html#a6a1e36df7973542b04ea5147d317b821", null ],

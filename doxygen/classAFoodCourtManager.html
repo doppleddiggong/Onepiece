@@ -218,23 +218,23 @@ Protected 멤버 함수</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="FoodCourtManager_8cpp_source.html">FoodCourtManager.cpp</a> 파일의 <a class="el" href="FoodCourtManager_8cpp_source.html#l00067">67</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   68</span>{</div>
-<div class="line"><span class="lineno">   69</span>    TArray&lt;AActor*&gt; CityNames;</div>
-<div class="line"><span class="lineno">   70</span>    UGameplayStatics::GetAllActorsOfClass(GetWorld(), ACityName::StaticClass(), CityNames);</div>
-<div class="line"><span class="lineno">   71</span> </div>
-<div class="line"><span class="lineno">   72</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> CityName : CityNames)</div>
-<div class="line"><span class="lineno">   73</span>    {</div>
-<div class="line"><span class="lineno">   74</span>        <span class="keywordflow">if</span> (<a class="code hl_class" href="classACityName.html">ACityName</a>* CN = Cast&lt;ACityName&gt;(CityName))</div>
-<div class="line"><span class="lineno">   75</span>        {</div>
-<div class="line"><span class="lineno">   76</span>            <span class="keywordflow">if</span> (CN-&gt;Index == InIdx)</div>
-<div class="line"><span class="lineno">   77</span>            {</div>
-<div class="line"><span class="lineno">   78</span>                <span class="keywordflow">return</span> CN;</div>
-<div class="line"><span class="lineno">   79</span>            }</div>
-<div class="line"><span class="lineno">   80</span>        }</div>
-<div class="line"><span class="lineno">   81</span>    }</div>
-<div class="line"><span class="lineno">   82</span>    <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">   83</span>}</div>
+<p class="definition"><a class="el" href="FoodCourtManager_8cpp_source.html">FoodCourtManager.cpp</a> 파일의 <a class="el" href="FoodCourtManager_8cpp_source.html#l00070">70</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   71</span>{</div>
+<div class="line"><span class="lineno">   72</span>    TArray&lt;AActor*&gt; CityNames;</div>
+<div class="line"><span class="lineno">   73</span>    UGameplayStatics::GetAllActorsOfClass(GetWorld(), ACityName::StaticClass(), CityNames);</div>
+<div class="line"><span class="lineno">   74</span> </div>
+<div class="line"><span class="lineno">   75</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> CityName : CityNames)</div>
+<div class="line"><span class="lineno">   76</span>    {</div>
+<div class="line"><span class="lineno">   77</span>        <span class="keywordflow">if</span> (<a class="code hl_class" href="classACityName.html">ACityName</a>* CN = Cast&lt;ACityName&gt;(CityName))</div>
+<div class="line"><span class="lineno">   78</span>        {</div>
+<div class="line"><span class="lineno">   79</span>            <span class="keywordflow">if</span> (CN-&gt;Index == InIdx)</div>
+<div class="line"><span class="lineno">   80</span>            {</div>
+<div class="line"><span class="lineno">   81</span>                <span class="keywordflow">return</span> CN;</div>
+<div class="line"><span class="lineno">   82</span>            }</div>
+<div class="line"><span class="lineno">   83</span>        }</div>
+<div class="line"><span class="lineno">   84</span>    }</div>
+<div class="line"><span class="lineno">   85</span>    <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">   86</span>}</div>
 <div class="ttc" id="aclassACityName_html"><div class="ttname"><a href="classACityName.html">ACityName</a></div><div class="ttdef"><b>Definition</b> <a href="CityName_8h_source.html#l00010">CityName.h:11</a></div></div>
 </div><!-- fragment -->
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="FoodCourtManager_8cpp_source.html#l00035">SetFoodCourtInfo()</a>.</p>
@@ -263,26 +263,26 @@ Protected 멤버 함수</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="FoodCourtManager_8cpp_source.html">FoodCourtManager.cpp</a> 파일의 <a class="el" href="FoodCourtManager_8cpp_source.html#l00085">85</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   86</span>{</div>
-<div class="line"><span class="lineno">   87</span>    <span class="comment">// 키오스크 중 랜덤으로 하나 뽑기</span></div>
-<div class="line"><span class="lineno">   88</span>    TArray&lt;AActor*&gt; AllKiosks;</div>
-<div class="line"><span class="lineno">   89</span>    UGameplayStatics::GetAllActorsOfClass(GetWorld(), AOrderKiosk::StaticClass(), AllKiosks);</div>
-<div class="line"><span class="lineno">   90</span> </div>
-<div class="line"><span class="lineno">   91</span>    TArray&lt;AOrderKiosk*&gt; Available;</div>
-<div class="line"><span class="lineno">   92</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> Actor : AllKiosks)</div>
-<div class="line"><span class="lineno">   93</span>    {</div>
-<div class="line"><span class="lineno">   94</span>        <span class="keywordflow">if</span> (<a class="code hl_class" href="classAOrderKiosk.html">AOrderKiosk</a>* Kiosk = Cast&lt;AOrderKiosk&gt;(Actor))</div>
-<div class="line"><span class="lineno">   95</span>        {</div>
-<div class="line"><span class="lineno">   96</span>            <span class="keywordflow">if</span> (Kiosk-&gt;FoodCourtIdx == -1)</div>
-<div class="line"><span class="lineno">   97</span>                Available.Add(Kiosk);</div>
-<div class="line"><span class="lineno">   98</span>        }</div>
-<div class="line"><span class="lineno">   99</span>    }</div>
-<div class="line"><span class="lineno">  100</span> </div>
-<div class="line"><span class="lineno">  101</span>    <span class="keywordflow">if</span> (Available.IsEmpty()) <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">  102</span> </div>
-<div class="line"><span class="lineno">  103</span>    <span class="keywordflow">return</span> Available[FMath::RandRange(0, Available.Num()-1)];</div>
-<div class="line"><span class="lineno">  104</span>}</div>
+<p class="definition"><a class="el" href="FoodCourtManager_8cpp_source.html">FoodCourtManager.cpp</a> 파일의 <a class="el" href="FoodCourtManager_8cpp_source.html#l00088">88</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   89</span>{</div>
+<div class="line"><span class="lineno">   90</span>    <span class="comment">// 키오스크 중 랜덤으로 하나 뽑기</span></div>
+<div class="line"><span class="lineno">   91</span>    TArray&lt;AActor*&gt; AllKiosks;</div>
+<div class="line"><span class="lineno">   92</span>    UGameplayStatics::GetAllActorsOfClass(GetWorld(), AOrderKiosk::StaticClass(), AllKiosks);</div>
+<div class="line"><span class="lineno">   93</span> </div>
+<div class="line"><span class="lineno">   94</span>    TArray&lt;AOrderKiosk*&gt; Available;</div>
+<div class="line"><span class="lineno">   95</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> Actor : AllKiosks)</div>
+<div class="line"><span class="lineno">   96</span>    {</div>
+<div class="line"><span class="lineno">   97</span>        <span class="keywordflow">if</span> (<a class="code hl_class" href="classAOrderKiosk.html">AOrderKiosk</a>* Kiosk = Cast&lt;AOrderKiosk&gt;(Actor))</div>
+<div class="line"><span class="lineno">   98</span>        {</div>
+<div class="line"><span class="lineno">   99</span>            <span class="keywordflow">if</span> (Kiosk-&gt;FoodCourtIdx == -1)</div>
+<div class="line"><span class="lineno">  100</span>                Available.Add(Kiosk);</div>
+<div class="line"><span class="lineno">  101</span>        }</div>
+<div class="line"><span class="lineno">  102</span>    }</div>
+<div class="line"><span class="lineno">  103</span> </div>
+<div class="line"><span class="lineno">  104</span>    <span class="keywordflow">if</span> (Available.IsEmpty()) <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">  105</span> </div>
+<div class="line"><span class="lineno">  106</span>    <span class="keywordflow">return</span> Available[FMath::RandRange(0, Available.Num()-1)];</div>
+<div class="line"><span class="lineno">  107</span>}</div>
 <div class="ttc" id="aclassAOrderKiosk_html"><div class="ttname"><a href="classAOrderKiosk.html">AOrderKiosk</a></div><div class="ttdef"><b>Definition</b> <a href="OrderKiosk_8h_source.html#l00011">OrderKiosk.h:12</a></div></div>
 </div><!-- fragment -->
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="FoodCourtManager_8cpp_source.html#l00035">SetFoodCourtInfo()</a>.</p>
@@ -338,21 +338,27 @@ Protected 멤버 함수</h2></td></tr>
 <div class="line"><span class="lineno">   59</span>        <span class="keywordflow">if</span> (RandomKiosk)</div>
 <div class="line"><span class="lineno">   60</span>        {</div>
 <div class="line"><span class="lineno">   61</span>            RandomKiosk-&gt;<a class="code hl_variable" href="classAOrderKiosk.html#a6a1e36df7973542b04ea5147d317b821">FoodCourtIdx</a> = i;</div>
-<div class="line"><span class="lineno">   62</span>            RandomKiosk-&gt;<a class="code hl_variable" href="classAOrderKiosk.html#a97684825dcce5f339ceb8a5cb3d6d3ef">FoodData</a> = SD.word1;</div>
-<div class="line"><span class="lineno">   63</span>        }</div>
-<div class="line"><span class="lineno">   64</span>    }</div>
-<div class="line"><span class="lineno">   65</span>}</div>
+<div class="line"><span class="lineno">   62</span>            RandomKiosk-&gt;<a class="code hl_variable" href="classAOrderKiosk.html#a97684825dcce5f339ceb8a5cb3d6d3ef">FoodData</a>.<a class="code hl_variable" href="structFFoodData.html#aefd356ba8cdcf328ce82e1220310b974">word1</a> = SD.word1;</div>
+<div class="line"><span class="lineno">   63</span>            RandomKiosk-&gt;<a class="code hl_variable" href="classAOrderKiosk.html#a97684825dcce5f339ceb8a5cb3d6d3ef">FoodData</a>.<a class="code hl_variable" href="structFFoodData.html#af5e26f58bcc1ca8576493af515236b5a">word2</a> = SD.word2;</div>
+<div class="line"><span class="lineno">   64</span> </div>
+<div class="line"><span class="lineno">   65</span>            RandomKiosk-&gt;<a class="code hl_function" href="classAOrderKiosk.html#a431a570c13cdfe2a9c4ec0afc72b05ec">UpdateInteractableWidget</a>(SD.word2.name);</div>
+<div class="line"><span class="lineno">   66</span>        }</div>
+<div class="line"><span class="lineno">   67</span>    }</div>
+<div class="line"><span class="lineno">   68</span>}</div>
 <div class="ttc" id="aclassACityName_html_a75ed30b9fb11713c3db7e71e15de30af"><div class="ttname"><a href="classACityName.html#a75ed30b9fb11713c3db7e71e15de30af">ACityName::WidgetComp</a></div><div class="ttdeci">class UWidgetComponent * WidgetComp</div><div class="ttdef"><b>Definition</b> <a href="CityName_8h_source.html#l00027">CityName.h:27</a></div></div>
-<div class="ttc" id="aclassAFoodCourtManager_html_a2324fe00f3af9ca3131ce1ff38c94557"><div class="ttname"><a href="classAFoodCourtManager.html#a2324fe00f3af9ca3131ce1ff38c94557">AFoodCourtManager::GetRandomKiosk</a></div><div class="ttdeci">class AOrderKiosk * GetRandomKiosk()</div><div class="ttdef"><b>Definition</b> <a href="FoodCourtManager_8cpp_source.html#l00085">FoodCourtManager.cpp:85</a></div></div>
-<div class="ttc" id="aclassAFoodCourtManager_html_a415333f2dc67e3965b1d6507dd57cd17"><div class="ttname"><a href="classAFoodCourtManager.html#a415333f2dc67e3965b1d6507dd57cd17">AFoodCourtManager::FindCityNameByIdx</a></div><div class="ttdeci">class ACityName * FindCityNameByIdx(int32 InIdx)</div><div class="ttdef"><b>Definition</b> <a href="FoodCourtManager_8cpp_source.html#l00067">FoodCourtManager.cpp:67</a></div></div>
+<div class="ttc" id="aclassAFoodCourtManager_html_a2324fe00f3af9ca3131ce1ff38c94557"><div class="ttname"><a href="classAFoodCourtManager.html#a2324fe00f3af9ca3131ce1ff38c94557">AFoodCourtManager::GetRandomKiosk</a></div><div class="ttdeci">class AOrderKiosk * GetRandomKiosk()</div><div class="ttdef"><b>Definition</b> <a href="FoodCourtManager_8cpp_source.html#l00088">FoodCourtManager.cpp:88</a></div></div>
+<div class="ttc" id="aclassAFoodCourtManager_html_a415333f2dc67e3965b1d6507dd57cd17"><div class="ttname"><a href="classAFoodCourtManager.html#a415333f2dc67e3965b1d6507dd57cd17">AFoodCourtManager::FindCityNameByIdx</a></div><div class="ttdeci">class ACityName * FindCityNameByIdx(int32 InIdx)</div><div class="ttdef"><b>Definition</b> <a href="FoodCourtManager_8cpp_source.html#l00070">FoodCourtManager.cpp:70</a></div></div>
 <div class="ttc" id="aclassALingoGameState_html"><div class="ttname"><a href="classALingoGameState.html">ALingoGameState</a></div><div class="ttdef"><b>Definition</b> <a href="ALingoGameState_8h_source.html#l00038">ALingoGameState.h:39</a></div></div>
 <div class="ttc" id="aclassALingoGameState_html_a05dda129c32a08fc3432424f612ce50b"><div class="ttname"><a href="classALingoGameState.html#a05dda129c32a08fc3432424f612ce50b">ALingoGameState::GetListenScenarioData</a></div><div class="ttdeci">FORCEINLINE const FResponseListenScenario &amp; GetListenScenarioData() const</div><div class="ttdef"><b>Definition</b> <a href="ALingoGameState_8h_source.html#l00056">ALingoGameState.h:56</a></div></div>
+<div class="ttc" id="aclassAOrderKiosk_html_a431a570c13cdfe2a9c4ec0afc72b05ec"><div class="ttname"><a href="classAOrderKiosk.html#a431a570c13cdfe2a9c4ec0afc72b05ec">AOrderKiosk::UpdateInteractableWidget</a></div><div class="ttdeci">void UpdateInteractableWidget(FString NewString)</div><div class="ttdef"><b>Definition</b> <a href="OrderKiosk_8cpp_source.html#l00121">OrderKiosk.cpp:121</a></div></div>
 <div class="ttc" id="aclassAOrderKiosk_html_a6a1e36df7973542b04ea5147d317b821"><div class="ttname"><a href="classAOrderKiosk.html#a6a1e36df7973542b04ea5147d317b821">AOrderKiosk::FoodCourtIdx</a></div><div class="ttdeci">int32 FoodCourtIdx</div><div class="ttdef"><b>Definition</b> <a href="OrderKiosk_8h_source.html#l00053">OrderKiosk.h:53</a></div></div>
 <div class="ttc" id="aclassAOrderKiosk_html_a97684825dcce5f339ceb8a5cb3d6d3ef"><div class="ttname"><a href="classAOrderKiosk.html#a97684825dcce5f339ceb8a5cb3d6d3ef">AOrderKiosk::FoodData</a></div><div class="ttdeci">FFoodData FoodData</div><div class="ttdoc">이번 스폰에서 사용할 데이터</div><div class="ttdef"><b>Definition</b> <a href="OrderKiosk_8h_source.html#l00057">OrderKiosk.h:57</a></div></div>
 <div class="ttc" id="aclassUCityNameWidget_html"><div class="ttname"><a href="classUCityNameWidget.html">UCityNameWidget</a></div><div class="ttdef"><b>Definition</b> <a href="CityNameWidget_8h_source.html#l00013">CityNameWidget.h:14</a></div></div>
+<div class="ttc" id="astructFFoodData_html_aefd356ba8cdcf328ce82e1220310b974"><div class="ttname"><a href="structFFoodData.html#aefd356ba8cdcf328ce82e1220310b974">FFoodData::word1</a></div><div class="ttdeci">FWordInfo word1</div><div class="ttdoc">시나리오 단어 정보</div><div class="ttdef"><b>Definition</b> <a href="ADropper_8h_source.html#l00043">ADropper.h:43</a></div></div>
+<div class="ttc" id="astructFFoodData_html_af5e26f58bcc1ca8576493af515236b5a"><div class="ttname"><a href="structFFoodData.html#af5e26f58bcc1ca8576493af515236b5a">FFoodData::word2</a></div><div class="ttdeci">FWordInfo word2</div><div class="ttdef"><b>Definition</b> <a href="ADropper_8h_source.html#l00046">ADropper.h:46</a></div></div>
 <div class="ttc" id="astructFResponseListenScenario_html_acb666ef0e5c937213f5e1ea20f71af21"><div class="ttname"><a href="structFResponseListenScenario.html#acb666ef0e5c937213f5e1ea20f71af21">FResponseListenScenario::target_data</a></div><div class="ttdeci">TArray&lt; FScenarioTargetData &gt; target_data</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00903">NetworkData.h:903</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="FoodCourtManager_8cpp_source.html#l00067">FindCityNameByIdx()</a>, <a class="el" href="OrderKiosk_8h_source.html#l00053">AOrderKiosk::FoodCourtIdx</a>, <a class="el" href="OrderKiosk_8h_source.html#l00057">AOrderKiosk::FoodData</a>, <a class="el" href="ALingoGameState_8h_source.html#l00056">ALingoGameState::GetListenScenarioData()</a>, <a class="el" href="FoodCourtManager_8cpp_source.html#l00085">GetRandomKiosk()</a>, <a class="el" href="NetworkData_8h_source.html#l00903">FResponseListenScenario::target_data</a>, <a class="el" href="CityName_8h_source.html#l00027">ACityName::WidgetComp</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="FoodCourtManager_8cpp_source.html#l00070">FindCityNameByIdx()</a>, <a class="el" href="OrderKiosk_8h_source.html#l00053">AOrderKiosk::FoodCourtIdx</a>, <a class="el" href="OrderKiosk_8h_source.html#l00057">AOrderKiosk::FoodData</a>, <a class="el" href="ALingoGameState_8h_source.html#l00056">ALingoGameState::GetListenScenarioData()</a>, <a class="el" href="FoodCourtManager_8cpp_source.html#l00088">GetRandomKiosk()</a>, <a class="el" href="NetworkData_8h_source.html#l00903">FResponseListenScenario::target_data</a>, <a class="el" href="OrderKiosk_8cpp_source.html#l00121">AOrderKiosk::UpdateInteractableWidget()</a>, <a class="el" href="CityName_8h_source.html#l00027">ACityName::WidgetComp</a>, <a class="el" href="ADropper_8h_source.html#l00043">FFoodData::word1</a>, <a class="el" href="ADropper_8h_source.html#l00046">FFoodData::word2</a>.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AContactTrigger_8cpp_source.html#l00182">AContactTrigger::OnListenResponseScenario()</a>.</p>
 <div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -360,7 +366,7 @@ Protected 멤버 함수</h2></td></tr>
 <div id="dynsection-4-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-4-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classAFoodCourtManager_a7cb555a5d887b8f0739a23019db3cc43_cgraph.svg" width="431" height="179"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classAFoodCourtManager_a7cb555a5d887b8f0739a23019db3cc43_cgraph.svg" width="458" height="243"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-5-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
@@ -413,7 +419,7 @@ Protected 멤버 함수</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classAFoodCourtManager.html">AFoodCourtManager</a></li>
-    <li class="footer">생성시간 : 월 12월 8 2025 00:01:02, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 월 12월 8 2025 01:47:34, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>
