@@ -22,10 +22,17 @@ protected:
 public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
-
+	virtual void GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const override;
 	UPROPERTY(EditAnywhere)
 	class UWidgetComponent* WidgetComp;
 
 	UPROPERTY(EditAnywhere, Category = "Name")
 	int32 Index = 0;
+	
+	UPROPERTY(ReplicatedUsing = OnRep_FoodCourtInfo)
+	FString CityName;
+	void SetCityName(const FString& InCityName) {CityName = InCityName;};
+	
+	UFUNCTION()
+	void OnRep_FoodCourtInfo();
 };

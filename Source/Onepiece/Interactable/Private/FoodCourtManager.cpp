@@ -47,11 +47,7 @@ void AFoodCourtManager::SetFoodCourtInfo()
 		ACityName* CityName = FindCityNameByIdx(i);
 		if (CityName)
 		{
-			UUserWidget* CityNameWidget = CityName->WidgetComp->GetWidget();
-			if (UCityNameWidget* CNW = Cast<UCityNameWidget>(CityNameWidget))
-			{
-				CNW->SetCityName(SD.word2.name);
-			}
+			CityName->SetCityName(SD.word2.name);
 		}
 
 		// 랜덤 키오스크 지정

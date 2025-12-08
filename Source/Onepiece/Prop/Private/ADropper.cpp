@@ -98,7 +98,11 @@ void ADropper::Spawn()
 
     bIsSpawnIng = true;
 
-    // 데이터 전달
+    FTimerHandle TimerHandle;
+    GetWorld()->GetTimerManager().SetTimer(TimerHandle, FTimerDelegate::CreateLambda([this, SpawnedActor]
+    {
+
+        // 데이터 전달
     if (auto tmpLuggage = Cast<Aluggage>(SpawnedActor))
     {
         tmpLuggage->SetLuggageInfo(NextData.SpawnIndex, NextData.word2.name, NextData.word1.name);
@@ -117,6 +121,10 @@ void ADropper::Spawn()
         UE_LOG(LogTemp, Warning, TEXT("[Dropper::Spawn] Food spawned with Index=%d, Name=%s"),
             NextFoodData.SpawnIndex, *InfoToShow);
     }
+        
+    }), 1.f, false);
+    
+    
 
     // 애니메이션 실행
     if (SkeletalMesh && AnimToPlay)

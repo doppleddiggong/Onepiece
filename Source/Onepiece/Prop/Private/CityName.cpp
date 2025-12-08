@@ -3,7 +3,9 @@
 
 #include "CityName.h"
 
+#include "CityNameWidget.h"
 #include "Components/WidgetComponent.h"
+#include "Net/UnrealNetwork.h"
 
 
 // Sets default values
@@ -27,5 +29,21 @@ void ACityName::BeginPlay()
 void ACityName::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+}
+
+void ACityName::GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const
+{
+	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+
+	DOREPLIFETIME(ACityName, CityName);
+}
+
+void ACityName::OnRep_FoodCourtInfo()
+{
+	UUserWidget* CityNameWidget = WidgetComp->GetWidget();
+	if (UCityNameWidget* CNW = Cast<UCityNameWidget>(CityNameWidget))
+	{
+		CNW->SetCityName(CityName);
+	}
 }
 

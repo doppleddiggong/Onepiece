@@ -22,7 +22,6 @@ AFood::AFood()
 	FoodMesh->SetupAttachment(GetRootComponent());
 
 	FoodName = CreateDefaultSubobject<UWidgetComponent>(TEXT("FoodName"));
-	FoodName->SetupAttachment(GetRootComponent());
 
 	InteractableComp = CreateDefaultSubobject<UInteractableComponent>(TEXT("Interactable"));
 	InteractableComp->InteractionType = EInteractionType::PickUp;
@@ -51,14 +50,16 @@ AFood::AFood()
 void AFood::BeginPlay()
 {
 	Super::BeginPlay();
-
+	
+	FoodName->AttachToComponent(GetRootComponent(), FAttachmentTransformRules::KeepRelativeTransform);
+	FoodName->SetRelativeLocation(FVector(0, 0, 0));
 }
 
 void AFood::GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const
 {
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
 
-	DOREPLIFETIME(AFood, FoodMesh);
+	// FoodMesh는 Component이므로 자동 복제됨
 	DOREPLIFETIME(AFood, Name);
 	DOREPLIFETIME(AFood, Index);
 }
@@ -73,7 +74,8 @@ void AFood::Tick(float DeltaTime)
 
 void AFood::OnRep_FoodName()
 {
-	SetFoodInfo(Index, Name);
+	// 클라이언트에서 Name/Index가 복제될 때 Widget 업데이트
+	UpdateFoodWidget();
 }
 
 void AFood::SetFoodInfo(int32 InIndex, FString InName)
@@ -81,10 +83,23 @@ void AFood::SetFoodInfo(int32 InIndex, FString InName)
 	Name = InName;
 	Index = InIndex;
 
+	// 서버에서도 Widget 업데이트 (클라이언트는 OnRep_FoodName에서 호출됨)
+	if (HasAuthority())
+	{
+		UpdateFoodWidget();
+	}
+}
+
+void AFood::UpdateFoodWidget()
+{
+	// Widget이 아직 초기화되지 않았을 수 있으므로 체크
+	if (!FoodName || !FoodName->GetWidget())
+		return;
+
 	UCityNameWidget* NameWidget = Cast<UCityNameWidget>(FoodName->GetWidget());
 	if (NameWidget)
 	{
-		NameWidget->SetCityName(InName);
+		NameWidget->SetCityName(Name);
 	}
 }
 
