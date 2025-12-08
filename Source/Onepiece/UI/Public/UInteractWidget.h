@@ -16,6 +16,7 @@ class ONEPIECE_API UInteractWidget : public UUserWidget
 
 public:
 	void InitInfo(const FString InKey, const FString InDesc);
+	void UpdateDesc(const FString& NewDesc);
 	
 protected:
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)

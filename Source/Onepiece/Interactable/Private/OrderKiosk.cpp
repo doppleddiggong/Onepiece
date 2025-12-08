@@ -27,7 +27,7 @@ AOrderKiosk::AOrderKiosk()
 
 	InteractableComp = CreateDefaultSubobject<UInteractableComponent>(TEXT("InteractableComp"));
 	InteractableComp->InteractionType = EInteractionType::Button;
-	InteractableComp->InteractionPrompt = TEXT("Order Ticket");
+	InteractableComp->InteractionPrompt = TEXT("Order ----");
 
 	InteractWidget = CreateDefaultSubobject<UWidgetComponent>(TEXT("InteractWidget"));
 	InteractWidget->SetupAttachment(GetRootComponent());
@@ -107,7 +107,8 @@ void AOrderKiosk::OnInteractionTriggered(AActor* Interactor)
 		if (Dropper)
 		{
 			FFoodData tmpData;
-			tmpData.word = FoodData.word;
+			tmpData.word1 = FoodData.word1;
+			tmpData.word2 = FoodData.word2;
 			tmpData.SpawnIndex = FoodCourtIdx;
 			
 			Dropper->SetFoodSpawnData(tmpData);
@@ -115,6 +116,12 @@ void AOrderKiosk::OnInteractionTriggered(AActor* Interactor)
 			Dropper->RequestSpawn();
 		}
 	}
+}
+
+void AOrderKiosk::UpdateInteractableWidget(FString NewString)
+{
+	FString PromptText = FString::Printf(TEXT("Order %s"), *NewString);
+	InteractableComp->UpdateInteractPrompt(PromptText);
 }
 
 class ADropper* AOrderKiosk::FindDropperByIdx(int32 InIdx)

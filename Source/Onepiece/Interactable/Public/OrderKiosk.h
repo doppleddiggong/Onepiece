@@ -64,4 +64,6 @@ public:
 	bool IsOverlapping = false;
 	
 	class ADropper* FindDropperByIdx(int32 InIdx);
+
+	void UpdateInteractableWidget(FString NewString);
 };

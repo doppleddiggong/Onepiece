@@ -40,7 +40,10 @@ struct FFoodData
 
     /** 시나리오 단어 정보 */
     UPROPERTY(EditAnywhere, BlueprintReadWrite)
-    FWordInfo word;
+    FWordInfo word1;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite)
+    FWordInfo word2;
 
     /** 스폰 인덱스(선택적으로 사용) */
     UPROPERTY(EditAnywhere, BlueprintReadWrite)
@@ -48,8 +51,8 @@ struct FFoodData
 
     FFoodData() {}
 
-    FFoodData(const FWordInfo& InWord, int32 InSpawnIndex = -1)
-        : word(InWord)
+    FFoodData(const FWordInfo& InWord1, const FWordInfo& InWord2, int32 InSpawnIndex = -1)
+        : word1(InWord1), word2(InWord2)
         , SpawnIndex(InSpawnIndex)
     {}
 };

@@ -114,7 +114,8 @@ void ADropper::Spawn()
     }
     else if (auto tmpFood = Cast<AFood>(SpawnedActor))
     {
-        tmpFood->SetFoodInfo(CurrentSpawnIndex++, NextFoodData.word.name);
+        FString InfoToShow = FString::Printf(TEXT("%s / %s"), *NextFoodData.word1.name, *NextFoodData.word2.name);
+        tmpFood->SetFoodInfo(CurrentSpawnIndex++, InfoToShow);
     }
 
     // 애니메이션 실행

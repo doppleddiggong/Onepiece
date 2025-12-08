@@ -10,3 +10,9 @@ void UInteractWidget::InitInfo(const FString InKey, const FString InDesc)
 	Txt_Key->SetText(FText::FromString(InKey));
 	Txt_Desc->SetText(FText::FromString(InDesc));
 }
+
+void UInteractWidget::UpdateDesc(const FString& NewDesc)
+{
+	if (Txt_Desc)
+		Txt_Desc->SetText(FText::FromString(NewDesc));
+}

@@ -59,7 +59,10 @@ void AFoodCourtManager::SetFoodCourtInfo()
 		if (RandomKiosk)
 		{
 			RandomKiosk->FoodCourtIdx = i;
-			RandomKiosk->FoodData = SD.word1;
+			RandomKiosk->FoodData.word1 = SD.word1;
+			RandomKiosk->FoodData.word2 = SD.word2;
+
+			RandomKiosk->UpdateInteractableWidget(SD.word2.name);
 		}
 	}
 }

@@ -184,6 +184,7 @@ protected:
 #pragma region Widget
 public:
 	void InitWidget(class UWidgetComponent* InWidgetComp);
+	void UpdateInteractPrompt(const FString& NewPrompt);
 
 	// ========================================
 	// 상호작용 위젯
