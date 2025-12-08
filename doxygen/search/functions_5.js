@@ -12,6 +12,5 @@ var searchData=
   ['findothersession_9',['FindOtherSession',['../classULingoGameInstance.html#a5addb30790cffdff624033f5ebe36fb5',1,'ULingoGameInstance']]],
   ['flogwriter_10',['FLogWriter',['../classFLogWriter.html#a7ccfdf80f8d45c2c88f9d4409ad6c192',1,'FLogWriter']]],
   ['fluggagedata_11',['fluggagedata',['../structFLuggageData.html#a94ab3651628c52a0cb1974faa720baaf',1,'FLuggageData::FLuggageData()'],['../structFLuggageData.html#a556e510f9f7d165b762a58bcdf2a8ed7',1,'FLuggageData::FLuggageData(const FWordInfo &amp;InWord1, const FWordInfo &amp;InWord2, int32 InSpawnIndex=-1)']]],
-  ['fquestdata_12',['FQuestData',['../structFQuestData.html#a4b099aea80a4e94951762c28d7247733',1,'FQuestData']]],
-  ['fresultstatdata_13',['FResultStatData',['../structFResultStatData.html#a780624a8affe5aa938a7b75ee35cb4de',1,'FResultStatData']]]
+  ['fresultstatdata_12',['FResultStatData',['../structFResultStatData.html#a780624a8affe5aa938a7b75ee35cb4de',1,'FResultStatData']]]
 ];

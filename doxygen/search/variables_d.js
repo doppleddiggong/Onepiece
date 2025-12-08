@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['name_0',['name',['../classAFood.html#abdcc398c722128d26a91d1fc0c631ca7',1,'AFood::Name'],['../structFHttpMultipartFormData_1_1FTextPart.html#a54ca19428260c1ea413021430320dc71',1,'FHttpMultipartFormData::FTextPart::Name'],['../structFHttpMultipartFormData_1_1FFilePart.html#a56c8c3dcca77c0e84aec274884c6b1a3',1,'FHttpMultipartFormData::FFilePart::Name'],['../structFWordInfo.html#afa3eecf62fc7b28d50eae5edc8fc81ad',1,'FWordInfo::name']]],
+  ['name_0',['name',['../structFWordInfo.html#afa3eecf62fc7b28d50eae5edc8fc81ad',1,'FWordInfo::name'],['../classAFood.html#abdcc398c722128d26a91d1fc0c631ca7',1,'AFood::Name'],['../structFHttpMultipartFormData_1_1FTextPart.html#a54ca19428260c1ea413021430320dc71',1,'FHttpMultipartFormData::FTextPart::Name'],['../structFHttpMultipartFormData_1_1FFilePart.html#a56c8c3dcca77c0e84aec274884c6b1a3',1,'FHttpMultipartFormData::FFilePart::Name']]],
   ['networkwaitcount_1',['NetworkWaitCount',['../classUKLingoNetworkSystem.html#ae2884d2ebde0f80ae6ff84d5f27a706e',1,'UKLingoNetworkSystem']]],
   ['nextdata_2',['NextData',['../classADropper.html#a47520cd53ae3329ba3185e29cb08557b',1,'ADropper']]],
   ['nextfooddata_3',['NextFoodData',['../classADropper.html#a477bd10af5cf626c38851a3e1b8babaa',1,'ADropper']]],

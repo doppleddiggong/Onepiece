@@ -76,7 +76,7 @@ var searchData=
   ['btn_5fhost_73',['Btn_Host',['../classULobbyWidget.html#a93bfc42c7f6e65f1817ec727e60824c3',1,'ULobbyWidget']]],
   ['btn_5fjoin_74',['btn_join',['../classULobbyWidget.html#a9aa8c021f1b4fcd8c44b91a3ae5ef9d3',1,'ULobbyWidget::Btn_Join'],['../classUSessionInfoWidget.html#a22e57e4bc7caedb331979b3448858fd0',1,'USessionInfoWidget::Btn_Join']]],
   ['btn_5flogout_75',['Btn_LogOut',['../classULobbyWidget.html#ae6e541e2364ae253225d51117656df8a',1,'ULobbyWidget']]],
-  ['btn_5fok_76',['btn_ok',['../classUPopup__Result.html#aa42abe112a6aa3e1fc9f75dc461f821e',1,'UPopup_Result::Btn_OK'],['../classUPopup__Word.html#a0849dde16d124fa50d408fce50c76e47',1,'UPopup_Word::Btn_Ok'],['../classUPopup__MsgBox.html#a45c0844b733728cc516f8fcfe0f77f1c',1,'UPopup_MsgBox::Btn_Ok'],['../classUPopup__InputMsg.html#ae643a5b06d2996777b0696761c908e0a',1,'UPopup_InputMsg::Btn_Ok']]],
+  ['btn_5fok_76',['btn_ok',['../classUPopup__Word.html#a0849dde16d124fa50d408fce50c76e47',1,'UPopup_Word::Btn_Ok'],['../classUPopup__MsgBox.html#a45c0844b733728cc516f8fcfe0f77f1c',1,'UPopup_MsgBox::Btn_Ok'],['../classUPopup__InputMsg.html#ae643a5b06d2996777b0696761c908e0a',1,'UPopup_InputMsg::Btn_Ok'],['../classUPopup__Result.html#aa42abe112a6aa3e1fc9f75dc461f821e',1,'UPopup_Result::Btn_OK']]],
   ['btn_5frepeat_77',['Btn_Repeat',['../classUPopup__Word.html#a4eb3108bead2a3ac387e52eeddd5b6b8',1,'UPopup_Word']]],
   ['btn_5fsingle_78',['Btn_Single',['../classULobbyWidget.html#a2f521fce81c9bbbcf6d565ae4b309d19',1,'ULobbyWidget']]],
   ['btn_5fsubmit_79',['btn_submit',['../classUPopup__Questionnaire.html#a5f7092f32acbc4aaa429aa5775a53b83',1,'UPopup_Questionnaire::Btn_Submit'],['../classUPopup__Interview.html#ae1e5a127e84c35184be7830aa403532a',1,'UPopup_Interview::Btn_Submit']]],

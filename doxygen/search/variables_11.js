@@ -8,7 +8,7 @@ var searchData=
   ['readdatatable_5',['ReadDataTable',['../classUGameDataManager.html#a6ebdbd7db48577890c97e86e8ace5aa5',1,'UGameDataManager']]],
   ['readindex_6',['ReadIndex',['../structFQuestReadInfo.html#a869772e11b0ea12bdb1fd582d3e5de34',1,'FQuestReadInfo']]],
   ['readresult_7',['ReadResult',['../classALingoGameState.html#a8fe961564c1a1b861042b362e524e88f',1,'ALingoGameState']]],
-  ['readresultdelegatehandle_8',['readresultdelegatehandle',['../classUPopup__Result.html#ab1064f63912ff19e7ebec2225fa10932',1,'UPopup_Result::ReadResultDelegateHandle'],['../classUQuestInfoWidget.html#a19a76cbbdca2592f0fbdfe2903ceb48f',1,'UQuestInfoWidget::ReadResultDelegateHandle']]],
+  ['readresultdelegatehandle_8',['ReadResultDelegateHandle',['../classUQuestInfoWidget.html#a19a76cbbdca2592f0fbdfe2903ceb48f',1,'UQuestInfoWidget']]],
   ['readscenariodata_9',['ReadScenarioData',['../classALingoGameState.html#a2f6a9d1ea728c1a4ba1ebbc84543bbaf',1,'ALingoGameState']]],
   ['readstageend_10',['ReadStageEnd',['../namespaceGameMessage.html#a58d44dc32d05b06b0097418b7071eef3',1,'GameMessage']]],
   ['readstagestart_11',['ReadStageStart',['../namespaceGameMessage.html#a6964bb943147cdc1f845dd30fb2059af',1,'GameMessage']]],

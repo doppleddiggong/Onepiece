@@ -80,7 +80,6 @@ var hierarchy =
     [ "FParabolaGeometricTrack", "structFParabolaGeometricTrack.html", null ],
     [ "FPhonemeData", "structFPhonemeData.html", null ],
     [ "FPlayerInfo", "structFPlayerInfo.html", null ],
-    [ "FQuestData", "structFQuestData.html", null ],
     [ "FQuestListenInfo", "structFQuestListenInfo.html", null ],
     [ "FQuestReadInfo", "structFQuestReadInfo.html", null ],
     [ "FQuestSpeakInfo", "structFQuestSpeakInfo.html", null ],

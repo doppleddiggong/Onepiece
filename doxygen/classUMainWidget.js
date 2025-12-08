@@ -4,6 +4,7 @@ var classUMainWidget =
     [ "FadeIn", "classUMainWidget.html#a9be2e5f1620864d34553e6a0dfc0bbdc", null ],
     [ "FadeOut", "classUMainWidget.html#a1e3fca3f15171299f1be803c8dbebb27", null ],
     [ "GetFadeWidget", "classUMainWidget.html#a4eb207f533cf3178f948c4222b7dc723", null ],
+    [ "GetQuestInfoWidget", "classUMainWidget.html#ada0273cc475322d5dc2046c4e1fdc98a", null ],
     [ "NativeConstruct", "classUMainWidget.html#ab5b82b602efb97c7b4cd7a3c2d99d6e8", null ],
     [ "NativeTick", "classUMainWidget.html#a3ccf5693518d42c8c33a350b9e739396", null ],
     [ "OnUpdateMissionTimerState", "classUMainWidget.html#a087562bb275500b4085bf893720ae7b0", null ],

@@ -71,7 +71,6 @@ var annotated_dup =
     [ "FParabolaGeometricTrack", "structFParabolaGeometricTrack.html", "structFParabolaGeometricTrack" ],
     [ "FPhonemeData", "structFPhonemeData.html", "structFPhonemeData" ],
     [ "FPlayerInfo", "structFPlayerInfo.html", "structFPlayerInfo" ],
-    [ "FQuestData", "structFQuestData.html", "structFQuestData" ],
     [ "FQuestListenInfo", "structFQuestListenInfo.html", "structFQuestListenInfo" ],
     [ "FQuestReadInfo", "structFQuestReadInfo.html", "structFQuestReadInfo" ],
     [ "FQuestSpeakInfo", "structFQuestSpeakInfo.html", "structFQuestSpeakInfo" ],

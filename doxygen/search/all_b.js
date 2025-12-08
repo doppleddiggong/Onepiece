@@ -29,7 +29,7 @@ var searchData=
   ['listenindex_26',['ListenIndex',['../structFQuestListenInfo.html#a3dfd7efad985e5308c7e3b8d2d8d3ee4',1,'FQuestListenInfo']]],
   ['listenings_5faudio_27',['listenings_audio',['../namespaceRequestAPI.html#a5954e96c78c1422b8245017dccc9652d',1,'RequestAPI']]],
   ['listenresult_28',['ListenResult',['../classALingoGameState.html#a6b3f912f049b42e768067404fcff418a',1,'ALingoGameState']]],
-  ['listenresultdelegatehandle_29',['listenresultdelegatehandle',['../classUPopup__Result.html#af70da150448cd0eff6193ef857f89074',1,'UPopup_Result::ListenResultDelegateHandle'],['../classUQuestInfoWidget.html#a9c14e654d0704b0af75878c9b32e3c56',1,'UQuestInfoWidget::ListenResultDelegateHandle']]],
+  ['listenresultdelegatehandle_29',['ListenResultDelegateHandle',['../classUQuestInfoWidget.html#a9c14e654d0704b0af75878c9b32e3c56',1,'UQuestInfoWidget']]],
   ['listenscenariodata_30',['ListenScenarioData',['../classALingoGameState.html#aab5501acc9337bcd9004f5fa89df7949',1,'ALingoGameState']]],
   ['listenstageend_31',['ListenStageEnd',['../namespaceGameMessage.html#ad442f83af10ff3e4c202f2e7d0dbc885',1,'GameMessage']]],
   ['listenstagestart_32',['ListenStageStart',['../namespaceGameMessage.html#a501440b711be64c54604eca0ed677cee',1,'GameMessage']]],

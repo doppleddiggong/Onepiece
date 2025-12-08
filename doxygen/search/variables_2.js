@@ -41,14 +41,13 @@ var searchData=
   ['current_38',['current',['../structFEaseFloatTrack.html#a7cbfd0a13f8b3a78cabf770251b3be4c',1,'FEaseFloatTrack::Current'],['../structFEaseVectorTrack.html#a646594b419cde60080a0ced97322adca',1,'FEaseVectorTrack::Current'],['../structFEaseRotatorTrack.html#afbf9eb1055658f780470aa3df5d58017',1,'FEaseRotatorTrack::Current']]],
   ['currentbrightness_39',['currentbrightness',['../classUHoverButton.html#a9df9691afd88d8ffbcca15b5e3cf8cb9',1,'UHoverButton::CurrentBrightness'],['../classUImageButton.html#a11eaa595e3618b718caae2356f049489',1,'UImageButton::CurrentBrightness']]],
   ['currentfontsize_40',['CurrentFontSize',['../classURichText.html#a8c8ce79114b39d5d8e06a4ac24b98ea1',1,'URichText']]],
-  ['currentquestdata_41',['CurrentQuestData',['../classALingoGameState.html#a0d08c6d70c2a5f11e1a56dc13601002d',1,'ALingoGameState']]],
-  ['currentquestiontext_42',['CurrentQuestionText',['../classUSpeakWidget.html#a2c957d86b9999774dc783abd09a3c7a1',1,'USpeakWidget']]],
-  ['currentscale_43',['currentscale',['../classUHoverButton.html#ad3adaebdf420f7c37208a7bf82288edf',1,'UHoverButton::CurrentScale'],['../classUImageButton.html#a46808360feb22ba0b2ba9557a4aa495d',1,'UImageButton::CurrentScale']]],
-  ['currentspawnindex_44',['CurrentSpawnIndex',['../classALuggageManager.html#acc8cf2f766e476693e2e45f8c1af9fd6',1,'ALuggageManager']]],
-  ['currentspeaker_45',['CurrentSpeaker',['../classASpeakStageActor.html#afce700f279db0ba365008518ca604394',1,'ASpeakStageActor']]],
-  ['currentspeakertext_46',['CurrentSpeakerText',['../classUSpeakWidget.html#af0f5c7c3a8d61f5e03e860c4e05b4627',1,'USpeakWidget']]],
-  ['currentstepindex_47',['CurrentStepIndex',['../classASpeakStageActor.html#a73c3fe46e98225cc9d528ce281e9e2de',1,'ASpeakStageActor']]],
-  ['currentvelocity_48',['CurrentVelocity',['../classATrolley.html#ad54df8fa12d857d1507ede76abb9dda5',1,'ATrolley']]],
-  ['currsessionname_49',['currSessionName',['../classULingoGameInstance.html#a17232e7c2128d3f8af2561f649b27473',1,'ULingoGameInstance']]],
-  ['curtarget_50',['curtarget',['../classAHolder.html#ac76a7839abbc71619286e50ba8ded371',1,'AHolder::CurTarget'],['../classALuggageHolder.html#aa3217f0b4f3c24098a9c4cee7826f881',1,'ALuggageHolder::CurTarget'],['../classAFoodHolder.html#a1fa5d938a8ad639127ea47320bacb223',1,'AFoodHolder::CurTarget']]]
+  ['currentquestiontext_41',['CurrentQuestionText',['../classUSpeakWidget.html#a2c957d86b9999774dc783abd09a3c7a1',1,'USpeakWidget']]],
+  ['currentscale_42',['currentscale',['../classUHoverButton.html#ad3adaebdf420f7c37208a7bf82288edf',1,'UHoverButton::CurrentScale'],['../classUImageButton.html#a46808360feb22ba0b2ba9557a4aa495d',1,'UImageButton::CurrentScale']]],
+  ['currentspawnindex_43',['CurrentSpawnIndex',['../classALuggageManager.html#acc8cf2f766e476693e2e45f8c1af9fd6',1,'ALuggageManager']]],
+  ['currentspeaker_44',['CurrentSpeaker',['../classASpeakStageActor.html#afce700f279db0ba365008518ca604394',1,'ASpeakStageActor']]],
+  ['currentspeakertext_45',['CurrentSpeakerText',['../classUSpeakWidget.html#af0f5c7c3a8d61f5e03e860c4e05b4627',1,'USpeakWidget']]],
+  ['currentstepindex_46',['CurrentStepIndex',['../classASpeakStageActor.html#a73c3fe46e98225cc9d528ce281e9e2de',1,'ASpeakStageActor']]],
+  ['currentvelocity_47',['CurrentVelocity',['../classATrolley.html#ad54df8fa12d857d1507ede76abb9dda5',1,'ATrolley']]],
+  ['currsessionname_48',['currSessionName',['../classULingoGameInstance.html#a17232e7c2128d3f8af2561f649b27473',1,'ULingoGameInstance']]],
+  ['curtarget_49',['curtarget',['../classAHolder.html#ac76a7839abbc71619286e50ba8ded371',1,'AHolder::CurTarget'],['../classALuggageHolder.html#aa3217f0b4f3c24098a9c4cee7826f881',1,'ALuggageHolder::CurTarget'],['../classAFoodHolder.html#a1fa5d938a8ad639127ea47320bacb223',1,'AFoodHolder::CurTarget']]]
 ];
