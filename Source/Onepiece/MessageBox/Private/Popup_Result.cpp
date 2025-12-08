@@ -76,7 +76,7 @@ void UPopup_Result::InitPopup(const EQuestType InQuestType)
 		}
 
 		// 결과가 없으면 Host만 요청
-		if (!bHasResult)
+		if (!bHasResult &&  GetOwningPlayer()->HasAuthority())
 		{
 			RequestResult();
 		}
