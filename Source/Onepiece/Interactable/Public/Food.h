@@ -34,6 +34,9 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	class UWidgetComponent* FoodName;
 
+	UPROPERTY(VisibleAnywhere)
+	TObjectPtr<class UInteractableComponent> InteractableComp;
+
 protected:
 	// 음식 인덱스
 	FString Name = "";

@@ -3,6 +3,7 @@
 
 #include "FoodHolder.h"
 
+#include "ADoor.h"
 #include "ALingoGameState.h"
 #include "Food.h"
 #include "GameLogging.h"
@@ -13,6 +14,7 @@
 #include "Onepiece/Onepiece.h"
 #include "Components/BoxComponent.h"
 #include "Components/SkeletalMeshComponent.h"
+#include "Kismet/GameplayStatics.h"
 #include "Net/UnrealNetwork.h"
 
 AFoodHolder::AFoodHolder()
@@ -125,14 +127,10 @@ void AFoodHolder::OnFoodBoxOverlapBegin(
 	// Food인지 확인
 	if (AFood* Food = Cast<AFood>(OtherActor))
 	{
-		UE_LOG(LogTemp, Warning, TEXT("[OnFoodBoxOverlapBegin] Calling CheckFood..."));
 		const bool bSuccess = CheckFood(Food);
-		UE_LOG(LogTemp, Warning, TEXT("[OnFoodBoxOverlapBegin] CheckFood returned: %s"), bSuccess ? TEXT("TRUE") : TEXT("FALSE"));
 
 		// 블루프린트 이벤트 호출
-		UE_LOG(LogTemp, Warning, TEXT("[OnFoodBoxOverlapBegin] Calling OnActivate(%s)"), bSuccess ? TEXT("TRUE") : TEXT("FALSE"));
 		OnActivate(bSuccess);
-		UE_LOG(LogTemp, Warning, TEXT("[OnFoodBoxOverlapBegin] OnActivate finished, bSuccess is still: %s"), bSuccess ? TEXT("TRUE") : TEXT("FALSE"));
 
 		if (bSuccess)
 		{
@@ -143,6 +141,9 @@ void AFoodHolder::OnFoodBoxOverlapBegin(
 			FTimerHandle TimerHandle;
 			GetWorldTimerManager().SetTimer(TimerHandle, [this, CorrectIdx]
 			{
+				ADoor* Door = FindDoorToOpen();
+				if (Door) Door->OpenDoor();
+				
 				// 모든 클라이언트에 정답 인덱스와 함께 결과 팝업 표시
 				Multicast_ShowResultPopup(CorrectIdx);
 			}, 0.5f, false);
@@ -169,11 +170,7 @@ void AFoodHolder::OnFoodBoxOverlapBegin(
 
 bool AFoodHolder::CheckFood(AFood* TargetFood)
 {
-	if (!TargetFood)
-	{
-		UE_LOG(LogTemp, Error, TEXT("[CheckFood] TargetFood is null!"));
-		return false;
-	}
+	if (!TargetFood) return false;
 
 	// Food의 모든 충돌 비활성화
 	if (TargetFood->Mesh)
@@ -184,22 +181,13 @@ bool AFoodHolder::CheckFood(AFood* TargetFood)
 
 	// ListenQuest 정답 인덱스 가져오기
 	ALingoGameState* GS = Cast<ALingoGameState>(GetWorld()->GetGameState());
-	if (!GS)
-	{
-		UE_LOG(LogTemp, Error, TEXT("[CheckFood] GameState is null!"));
-		return false;
-	}
+	if (!GS) return false;
 
 	const int32 CorrectIdx = GS->GetListenScenarioData().correct_answer_index;
 	const int32 FoodIdx = TargetFood->GetFoodIndex();
 
-	UE_LOG(LogTemp, Warning, TEXT("[CheckFood] CorrectIdx=%d, FoodIdx=%d, Match=%s"),
-		CorrectIdx, FoodIdx, (CorrectIdx == FoodIdx) ? TEXT("TRUE") : TEXT("FALSE"));
-
 	if (CorrectIdx == FoodIdx)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("[CheckFood] Returning TRUE"));
-
 		// Success: Food를 HoldPos 위치보다 살짝 위에 배치
 		FVector ActivatedLocation = HoldPos->GetComponentLocation();
 		ActivatedLocation.Z += ActivatedHeightOffset;
@@ -239,6 +227,24 @@ void AFoodHolder::UpdateActivateState(bool State)
 		if (DynamicMaterial)
 			DynamicMaterial->SetScalarParameterValue(FName("Activate"), State ? 1.0f : 0.0f);
 	}
+}
+
+class ADoor* AFoodHolder::FindDoorToOpen()
+{
+	TArray<AActor*> CityNames;
+	UGameplayStatics::GetAllActorsOfClass(GetWorld(), ADoor::StaticClass(), CityNames);
+
+	for (auto CityName : CityNames)
+	{
+		if (ADoor* CN = Cast<ADoor>(CityName))
+		{
+			if (CN->DoorIndex == Index)
+			{
+				return CN;
+			}
+		}
+	}
+	return nullptr;
 }
 
 /**

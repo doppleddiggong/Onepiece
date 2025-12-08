@@ -83,6 +83,9 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Spawning")
 	TObjectPtr<class USceneComponent> HoldPos;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int32 Index = 0;
+	
 protected:
 	// 현재 올라가 있는 액터
 	UPROPERTY(ReplicatedUsing=OnRep_CurTarget)
@@ -102,4 +105,6 @@ protected:
 	// Answer Settings
 	/** 정답 Food 인덱스 (-1이면 모든 Food 허용) */
 	int32 AnswerFoodIndex = -1;
+
+	class ADoor* FindDoorToOpen();
 };
