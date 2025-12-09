@@ -117,6 +117,18 @@ void AFoodCourtManager::HandleQuestScenarioDataUpdated()
 		if (GS->GetCurrentQuestType() != EQuestType::Listen)
 			return;
 
-		SetFoodCourtInfo();
+		// 서버는 즉시, 클라이언트는 리플리케이션 대기 후 실행
+		if (HasAuthority())
+		{
+			SetFoodCourtInfo();
+		}
+		else
+		{
+			FTimerHandle TimerHandle;
+			GetWorldTimerManager().SetTimer(TimerHandle, [this]()
+			{
+				SetFoodCourtInfo();
+			}, 1.0f, false);
+		}
 	}
 }
