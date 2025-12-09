@@ -135,18 +135,22 @@ $(document).ready(function(){initNavTree('OutBoxTeleportTrigger_8h_source.html',
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    UPROPERTY(VisibleAnywhere, BlueprintReadOnly)</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="classAOutBoxTeleportTrigger.html#a3939f6431cc1624adbf3d0f6fac9d051">   24</a></span>    TObjectPtr&lt;class UBoxComponent&gt; BoxComp;</div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    UFUNCTION()</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="keywordtype">void</span> OnBoxBeginOverlap(</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        UPrimitiveComponent* OverlappedComp,</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        AActor* OtherActor,</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        UPrimitiveComponent* OtherComp,</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        int32 OtherBodyIndex,</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        <span class="keywordtype">bool</span> bFromSweep,</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        const FHitResult&amp; SweepResult</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    );</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    </div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="classAOutBoxTeleportTrigger.html#adb20300b0c1cd7201ae0b5740894fafe">   36</a></span>    FVector RespawnPoint;</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>};</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    UPROPERTY(VisibleAnywhere, BlueprintReadOnly)</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="classAOutBoxTeleportTrigger.html#a73848bb31a702d3981ec60018afaeeee">   27</a></span>    TObjectPtr&lt;class UStaticMeshComponent&gt; CubeMesh;</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    UFUNCTION()</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="keywordtype">void</span> OnBoxBeginOverlap(</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        UPrimitiveComponent* OverlappedComp,</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        AActor* OtherActor,</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        UPrimitiveComponent* OtherComp,</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        int32 OtherBodyIndex,</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        <span class="keywordtype">bool</span> bFromSweep,</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        const FHitResult&amp; SweepResult</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    );</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="classAOutBoxTeleportTrigger.html#af3b8668acc9e2844463902385f67efbe">   39</a></span>    FVector LuggageRespawnPoint;</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="classAOutBoxTeleportTrigger.html#ae2d8dd043402ee55bbea61ee48c8ee04">   40</a></span>    FVector FoodRespawnPoint;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>};</div>
 </div>
 <div class="ttc" id="aclassAOutBoxTeleportTrigger_html"><div class="ttname"><a href="classAOutBoxTeleportTrigger.html">AOutBoxTeleportTrigger</a></div><div class="ttdef"><b>Definition</b> <a href="OutBoxTeleportTrigger_8h_source.html#l00010">OutBoxTeleportTrigger.h:11</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
@@ -155,7 +159,7 @@ $(document).ready(function(){initNavTree('OutBoxTeleportTrigger_8h_source.html',
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_b7459e4428712e32d7c860db6e401a05.html">Interactable</a></li><li class="navelem"><a class="el" href="dir_37565cbf0e4835105e22b7540e7cc414.html">Public</a></li><li class="navelem"><a class="el" href="OutBoxTeleportTrigger_8h.html">OutBoxTeleportTrigger.h</a></li>
-    <li class="footer">생성시간 : 월 12월 8 2025 23:49:51, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 화 12월 9 2025 00:57:12, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

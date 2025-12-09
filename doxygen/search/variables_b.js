@@ -35,5 +35,6 @@ var searchData=
   ['lookaction_32',['LookAction',['../classAOwlPlayer.html#ad5686cb53777eb24a8c4e4a04a99886f',1,'AOwlPlayer']]],
   ['lookpitch_33',['LookPitch',['../classAPlayerActor.html#a60fe9ba6d54052fad6f9c4a8305fd023',1,'APlayerActor']]],
   ['lowcolor_34',['LowColor',['../classUCircularProgressBar.html#a7318a4fda9bd22249751fe65a6db4e79',1,'UCircularProgressBar']]],
-  ['luggageclass_35',['LuggageClass',['../classALuggageManager.html#a76e8a5925dfb7005caab1a0b01473ad7',1,'ALuggageManager']]]
+  ['luggageclass_35',['LuggageClass',['../classALuggageManager.html#a76e8a5925dfb7005caab1a0b01473ad7',1,'ALuggageManager']]],
+  ['luggagerespawnpoint_36',['LuggageRespawnPoint',['../classAOutBoxTeleportTrigger.html#af3b8668acc9e2844463902385f67efbe',1,'AOutBoxTeleportTrigger']]]
 ];

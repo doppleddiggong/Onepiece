@@ -1,5 +1,7 @@
 var NAVTREEINDEX11 =
 {
+"classUVoiceFunctionLibrary.html#adf741678fa5eeadc6dbe30624ef6888b":[2,0,179,1],
+"classUVoiceFunctionLibrary.html#aefbf705777114a8667edc76347e70cda":[2,0,179,0],
 "classUWebSocketSystem.html":[2,0,180],
 "classUWebSocketSystem.html#a02b52e67a7d5cb10d8990691e83316de":[2,0,180,7],
 "classUWebSocketSystem.html#a193675a8b260eb5d79e535ef3f7f1192":[2,0,180,11],
@@ -86,15 +88,15 @@ var NAVTREEINDEX11 =
 "dir_f5c20ae920c5f83d16e1c5fb9563aee7.html":[3,0,0,1,0,0],
 "dir_f8d1c9eab1fc62a504c69287c791da47.html":[3,0,0,1,1,0],
 "files.html":[3,0],
-"functions.html":[2,3,0],
 "functions.html":[2,3,0,0],
+"functions.html":[2,3,0],
 "functions_b.html":[2,3,0,1],
 "functions_c.html":[2,3,0,2],
 "functions_d.html":[2,3,0,3],
 "functions_e.html":[2,3,0,4],
 "functions_f.html":[2,3,0,5],
-"functions_func.html":[2,3,1,0],
 "functions_func.html":[2,3,1],
+"functions_func.html":[2,3,1,0],
 "functions_func_b.html":[2,3,1,1],
 "functions_func_c.html":[2,3,1,2],
 "functions_func_d.html":[2,3,1,3],
@@ -247,7 +249,5 @@ var NAVTREEINDEX11 =
 "namespacemembers_vars.html":[1,1,2],
 "namespaces.html":[1,0],
 "pages.html":[],
-"structFCharacterAssetData.html":[2,0,42],
-"structFCharacterAssetData.html#a362cc588b38ccc414d39f9de87a39cef":[2,0,42,1],
-"structFCharacterAssetData.html#a4ecdebf4e3a12bbae1a769206a9b6168":[2,0,42,0]
+"structFCharacterAssetData.html":[2,0,42]
 };

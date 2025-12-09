@@ -72,5 +72,6 @@ var searchData=
   ['luggage_5finteract_5fwidget_5fpath_69',['LUGGAGE_INTERACT_WIDGET_PATH',['../luggage_8cpp.html#aed405cb2e29c39ee626f1a50b210cea5',1,'luggage.cpp']]],
   ['luggageclass_70',['LuggageClass',['../classALuggageManager.html#a76e8a5925dfb7005caab1a0b01473ad7',1,'ALuggageManager']]],
   ['luggagemanager_2ecpp_71',['LuggageManager.cpp',['../LuggageManager_8cpp.html',1,'']]],
-  ['luggagemanager_2eh_72',['LuggageManager.h',['../LuggageManager_8h.html',1,'']]]
+  ['luggagemanager_2eh_72',['LuggageManager.h',['../LuggageManager_8h.html',1,'']]],
+  ['luggagerespawnpoint_73',['LuggageRespawnPoint',['../classAOutBoxTeleportTrigger.html#af3b8668acc9e2844463902385f67efbe',1,'AOutBoxTeleportTrigger']]]
 ];
