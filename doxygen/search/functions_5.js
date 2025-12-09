@@ -9,8 +9,9 @@ var searchData=
   ['findcomponentbynamerecursive_6',['FindComponentByNameRecursive',['../structFComponentHelper.html#a0d3d7957be559acef257216e0b28bba6',1,'FComponentHelper']]],
   ['finddoortoopen_7',['FindDoorToOpen',['../classAFoodHolder.html#ac8d235b91a1d8b3cfc2812f0b578989d',1,'AFoodHolder']]],
   ['finddropperbyidx_8',['FindDropperByIdx',['../classAOrderKiosk.html#aaab2f5968da556e2afe6fae9b0ef0c5c',1,'AOrderKiosk']]],
-  ['findothersession_9',['FindOtherSession',['../classULingoGameInstance.html#a5addb30790cffdff624033f5ebe36fb5',1,'ULingoGameInstance']]],
-  ['flogwriter_10',['FLogWriter',['../classFLogWriter.html#a7ccfdf80f8d45c2c88f9d4409ad6c192',1,'FLogWriter']]],
-  ['fluggagedata_11',['fluggagedata',['../structFLuggageData.html#a94ab3651628c52a0cb1974faa720baaf',1,'FLuggageData::FLuggageData()'],['../structFLuggageData.html#a556e510f9f7d165b762a58bcdf2a8ed7',1,'FLuggageData::FLuggageData(const FWordInfo &amp;InWord1, const FWordInfo &amp;InWord2, int32 InSpawnIndex=-1)']]],
-  ['fresultstatdata_12',['FResultStatData',['../structFResultStatData.html#a780624a8affe5aa938a7b75ee35cb4de',1,'FResultStatData']]]
+  ['findkiosknamebyidx_9',['FindKioskNameByIdx',['../classAFoodCourtManager.html#a3d374856c993d9d7c084e188cb9588ce',1,'AFoodCourtManager']]],
+  ['findothersession_10',['FindOtherSession',['../classULingoGameInstance.html#a5addb30790cffdff624033f5ebe36fb5',1,'ULingoGameInstance']]],
+  ['flogwriter_11',['FLogWriter',['../classFLogWriter.html#a7ccfdf80f8d45c2c88f9d4409ad6c192',1,'FLogWriter']]],
+  ['fluggagedata_12',['fluggagedata',['../structFLuggageData.html#a94ab3651628c52a0cb1974faa720baaf',1,'FLuggageData::FLuggageData()'],['../structFLuggageData.html#a556e510f9f7d165b762a58bcdf2a8ed7',1,'FLuggageData::FLuggageData(const FWordInfo &amp;InWord1, const FWordInfo &amp;InWord2, int32 InSpawnIndex=-1)']]],
+  ['fresultstatdata_13',['FResultStatData',['../structFResultStatData.html#a780624a8affe5aa938a7b75ee35cb4de',1,'FResultStatData']]]
 ];

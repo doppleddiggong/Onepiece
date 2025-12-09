@@ -1,5 +1,6 @@
 var NAVTREEINDEX12 =
 {
+"structFCharacterAssetData.html":[2,0,42],
 "structFCharacterAssetData.html#a362cc588b38ccc414d39f9de87a39cef":[2,0,42,1],
 "structFCharacterAssetData.html#a4ecdebf4e3a12bbae1a769206a9b6168":[2,0,42,0],
 "structFCharacterInfoData.html":[2,0,43],
@@ -248,6 +249,5 @@ var NAVTREEINDEX12 =
 "structFResponseListenScenario.html#a15e27958655d2737b4225198455cd041":[2,0,88,0],
 "structFResponseListenScenario.html#a27177efd5a3fd6d863429572f735f750":[2,0,88,3],
 "structFResponseListenScenario.html#a399d6860f42391b3401e1a4e7516cfca":[2,0,88,1],
-"structFResponseListenScenario.html#a3b5617dc1d75f5a800ad809f4c473bef":[2,0,88,2],
-"structFResponseListenScenario.html#a75544300df8dfd58442360cb0348a0f8":[2,0,88,6]
+"structFResponseListenScenario.html#a3b5617dc1d75f5a800ad809f4c473bef":[2,0,88,2]
 };

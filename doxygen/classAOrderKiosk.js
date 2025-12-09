@@ -12,6 +12,7 @@ var classAOrderKiosk =
     [ "Collision", "classAOrderKiosk.html#afc9b2c160e7f1b5f8f453953a83501f3", null ],
     [ "FoodCourtIdx", "classAOrderKiosk.html#a6a1e36df7973542b04ea5147d317b821", null ],
     [ "FoodData", "classAOrderKiosk.html#a97684825dcce5f339ceb8a5cb3d6d3ef", null ],
+    [ "Index", "classAOrderKiosk.html#a97fe0f8e1ea5b33449ad0fb5f40c0ac3", null ],
     [ "InteractableComp", "classAOrderKiosk.html#a0a15b364fb91468381cf461b55ea97c5", null ],
     [ "InteractWidget", "classAOrderKiosk.html#aae1f0379d43e94c7e1a826784c2ec899", null ],
     [ "IsOverlapping", "classAOrderKiosk.html#a648c52261e4f5840f3c548ee547a3e0b", null ],
