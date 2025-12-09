@@ -42,6 +42,9 @@ void AFoodCourtManager::Tick(float DeltaTime)
 
 void AFoodCourtManager::SetFoodCourtInfo()
 {
+	// 서버에서만 실행
+	if (!HasAuthority()) return;
+
 	ALingoGameState* GS = Cast<ALingoGameState>(GetWorld()->GetGameState());
 	if (!GS) return;
 
@@ -51,23 +54,32 @@ void AFoodCourtManager::SetFoodCourtInfo()
 	{
 		auto SD = ScenarioData[i];
 
-		// 푸드코트 식당 이름 지정
-		ACityName* CityName = FindCityNameByIdx(i);
-		if (CityName)
+		// 1초 타이머 - 액터들이 클라이언트에 리플리케이트되길 대기
+		FTimerHandle TimerHandle;
+		GetWorldTimerManager().SetTimer(TimerHandle, FTimerDelegate::CreateLambda([this, i, SD]
 		{
-			CityName->SetCityName(SD.word2.name);
-		}
+			// 푸드코트 식당 이름 지정
+			ACityName* CityName = FindCityNameByIdx(i);
+			if (CityName)
+			{
+				CityName->SetCityName(SD.word2.name);
+				// 서버는 OnRep이 호출되지 않으므로 직접 위젯 업데이트
+				CityName->OnRep_FoodCourtInfo();
+			}
 
-		// 랜덤 키오스크 지정
-		AOrderKiosk* RandomKiosk = GetRandomKiosk();
-		if (RandomKiosk)
-		{
-			RandomKiosk->FoodCourtIdx = i;
-			RandomKiosk->FoodData.word1 = SD.word1;
-			RandomKiosk->FoodData.word2 = SD.word2;
+			// 키오스크 지정
+			AOrderKiosk* CurrentKiosk = FindKioskNameByIdx(i);
+			if (CurrentKiosk)
+			{
+				CurrentKiosk->FoodCourtIdx = i;
+				CurrentKiosk->FoodData.word1 = SD.word1;
+				CurrentKiosk->FoodData.word2 = SD.word2;
 
-			RandomKiosk->UpdateInteractableWidget(SD.word2.name);
-		}
+				// 서버 로컬 위젯 업데이트
+				CurrentKiosk->UpdateInteractableWidget(SD.word2.name);
+			}
+			
+		}), 1.f, false);
 	}
 }
 
@@ -89,6 +101,25 @@ ACityName* AFoodCourtManager::FindCityNameByIdx(int32 InIdx)
 	return nullptr;
 }
 
+class AOrderKiosk* AFoodCourtManager::FindKioskNameByIdx(int32 InIdx)
+{
+	TArray<AActor*> AllKiosks;
+	UGameplayStatics::GetAllActorsOfClass(GetWorld(), AOrderKiosk::StaticClass(), AllKiosks);
+
+	for (auto Kiosk : AllKiosks)
+	{
+		if (AOrderKiosk* Kio = Cast<AOrderKiosk>(Kiosk))
+		{
+			if (Kio->Index == InIdx)
+			{
+				return Kio;
+			}
+		}
+	}
+	return nullptr;
+}
+
+/*
 class AOrderKiosk* AFoodCourtManager::GetRandomKiosk()
 {
 	// 키오스크 중 랜덤으로 하나 뽑기
@@ -109,7 +140,7 @@ class AOrderKiosk* AFoodCourtManager::GetRandomKiosk()
 
 	return Available[FMath::RandRange(0, Available.Num()-1)];
 }
-
+*/
 void AFoodCourtManager::HandleQuestScenarioDataUpdated()
 {
 	if (ALingoGameState* GS = ULingoGameHelper::GetLingoGameState(GetWorld()))
@@ -117,18 +148,7 @@ void AFoodCourtManager::HandleQuestScenarioDataUpdated()
 		if (GS->GetCurrentQuestType() != EQuestType::Listen)
 			return;
 
-		// 서버는 즉시, 클라이언트는 리플리케이션 대기 후 실행
-		if (HasAuthority())
-		{
-			SetFoodCourtInfo();
-		}
-		else
-		{
-			FTimerHandle TimerHandle;
-			GetWorldTimerManager().SetTimer(TimerHandle, [this]()
-			{
-				SetFoodCourtInfo();
-			}, 1.0f, false);
-		}
+		SetFoodCourtInfo();
 	}
 }
+
