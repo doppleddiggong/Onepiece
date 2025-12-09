@@ -31,7 +31,8 @@ public:
 public:
 	void SetFoodCourtInfo();
 	class ACityName* FindCityNameByIdx(int32 InIdx);
-	class AOrderKiosk* GetRandomKiosk();
+	class AOrderKiosk* FindKioskNameByIdx(int32 InIdx);
+	//class AOrderKiosk* GetRandomKiosk();
 
 private:
 	UFUNCTION()

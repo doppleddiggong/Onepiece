@@ -42,6 +42,10 @@ public:
 	void OnInteractionTriggered(AActor* Interactor);
 	
 public:
+	// 자신의 인덱스
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int32 Index = -1;
+	
 	// 실행시킬 푸드코트 부스 인덱스 (-1이면 지정 안됨)
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	int32 FoodCourtIdx = -1;
