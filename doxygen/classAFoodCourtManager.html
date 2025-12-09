@@ -381,9 +381,21 @@ Private 멤버 함수</h2></td></tr>
 <div class="line"><span class="lineno">  117</span>        <span class="keywordflow">if</span> (GS-&gt;GetCurrentQuestType() != <a class="code hl_enumvalue" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921ace6802b46091c31e2ec2363883fe8369">EQuestType::Listen</a>)</div>
 <div class="line"><span class="lineno">  118</span>            <span class="keywordflow">return</span>;</div>
 <div class="line"><span class="lineno">  119</span> </div>
-<div class="line"><span class="lineno">  120</span>        <a class="code hl_function" href="classAFoodCourtManager.html#a7cb555a5d887b8f0739a23019db3cc43">SetFoodCourtInfo</a>();</div>
-<div class="line"><span class="lineno">  121</span>    }</div>
-<div class="line"><span class="lineno">  122</span>}</div>
+<div class="line"><span class="lineno">  120</span>        <span class="comment">// 서버는 즉시, 클라이언트는 리플리케이션 대기 후 실행</span></div>
+<div class="line"><span class="lineno">  121</span>        <span class="keywordflow">if</span> (HasAuthority())</div>
+<div class="line"><span class="lineno">  122</span>        {</div>
+<div class="line"><span class="lineno">  123</span>            <a class="code hl_function" href="classAFoodCourtManager.html#a7cb555a5d887b8f0739a23019db3cc43">SetFoodCourtInfo</a>();</div>
+<div class="line"><span class="lineno">  124</span>        }</div>
+<div class="line"><span class="lineno">  125</span>        <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  126</span>        {</div>
+<div class="line"><span class="lineno">  127</span>            FTimerHandle TimerHandle;</div>
+<div class="line"><span class="lineno">  128</span>            GetWorldTimerManager().SetTimer(TimerHandle, [<span class="keyword">this</span>]()</div>
+<div class="line"><span class="lineno">  129</span>            {</div>
+<div class="line"><span class="lineno">  130</span>                <a class="code hl_function" href="classAFoodCourtManager.html#a7cb555a5d887b8f0739a23019db3cc43">SetFoodCourtInfo</a>();</div>
+<div class="line"><span class="lineno">  131</span>            }, 1.0f, <span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">  132</span>        }</div>
+<div class="line"><span class="lineno">  133</span>    }</div>
+<div class="line"><span class="lineno">  134</span>}</div>
 <div class="ttc" id="aALingoGameState_8h_html_a1a866ca8104ebd47ce462347a6125921ace6802b46091c31e2ec2363883fe8369"><div class="ttname"><a href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921ace6802b46091c31e2ec2363883fe8369">EQuestType::Listen</a></div><div class="ttdeci">@ Listen</div></div>
 <div class="ttc" id="aclassAFoodCourtManager_html_a7cb555a5d887b8f0739a23019db3cc43"><div class="ttname"><a href="classAFoodCourtManager.html#a7cb555a5d887b8f0739a23019db3cc43">AFoodCourtManager::SetFoodCourtInfo</a></div><div class="ttdeci">void SetFoodCourtInfo()</div><div class="ttdef"><b>Definition</b> <a href="FoodCourtManager_8cpp_source.html#l00043">FoodCourtManager.cpp:43</a></div></div>
 </div><!-- fragment -->
@@ -524,7 +536,7 @@ Private 멤버 함수</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classAFoodCourtManager.html">AFoodCourtManager</a></li>
-    <li class="footer">생성시간 : 화 12월 9 2025 00:57:12, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 화 12월 9 2025 01:02:48, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>
