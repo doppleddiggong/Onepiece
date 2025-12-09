@@ -23,6 +23,9 @@ protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	TObjectPtr<class UBoxComponent> BoxComp;
 	
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	TObjectPtr<class UStaticMeshComponent> CubeMesh;
+	
 	UFUNCTION()
 	void OnBoxBeginOverlap(
 		UPrimitiveComponent* OverlappedComp,
@@ -33,5 +36,6 @@ protected:
 		const FHitResult& SweepResult
 	);
 	
-	FVector RespawnPoint;
+	FVector LuggageRespawnPoint;
+	FVector FoodRespawnPoint;
 };
