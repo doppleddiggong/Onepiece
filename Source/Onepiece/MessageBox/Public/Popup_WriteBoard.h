@@ -33,8 +33,6 @@ protected:
 	UPROPERTY(BlueprintReadOnly, meta=(BindWidget))
 	TObjectPtr<class USizeBox> SizeBox_Canvas;
 	UPROPERTY(BlueprintReadOnly, meta=(BindWidget))
-	TObjectPtr<class UImageButton> Button_Clear;
-	UPROPERTY(BlueprintReadOnly, meta=(BindWidget))
 	TObjectPtr<class UImageButton> Button_Save;
 	UPROPERTY(BlueprintReadOnly, meta=(BindWidget))
 	TObjectPtr<class UTextureButton> Button_Close;
@@ -66,7 +64,7 @@ protected:
 	
 public:
 	// Init Popup
-	void InitPopup(int32 InQid, const TArray<FString>& InTokens);
+	void InitPopup(int32 InQid, const FString& InAnswerKr);
 	
 private:
 	// WriteBoard
@@ -75,7 +73,7 @@ private:
 	
 	// Question Id
 	int32 Qid;
-	TArray<FString> AnswerKr;
+	FString AnswerKr;
 	
 	// Now Answer Index
 	int32 AnswerIdx = 0;
@@ -95,7 +93,4 @@ private:
 	
 	UFUNCTION()
 	void SaveCanvas();
-	
-	UFUNCTION()
-	void ClearCanvas();	
 };

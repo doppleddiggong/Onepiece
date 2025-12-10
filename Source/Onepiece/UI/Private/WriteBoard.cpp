@@ -70,8 +70,3 @@ void UWriteBoard::SaveCanvas(int32 Qid, UTextureRenderTarget2D* RT_Canvas)
 	// Export Render Target to png
 	SaveRenderTargetToPNG(RT_Canvas, filePath / fileName);
 }
-
-void UWriteBoard::ClearCanvas(UTextureRenderTarget2D* RT_Canvas)
-{
-	UKismetRenderingLibrary::ClearRenderTarget2D(this, RT_Canvas, RT_Canvas->ClearColor);
-}

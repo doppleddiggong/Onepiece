@@ -19,7 +19,6 @@ public:
 	
 	// TODO: SaveCanvas, ClearCanvas 둘 다 인자 어캐할 지 정하기. 지금 에러 안 나도록 이렇게 한 거
 	void SaveCanvas(int32 Qid, UTextureRenderTarget2D* RT_Canvas);
-	void ClearCanvas(UTextureRenderTarget2D* RT_Canvas);
 
 private:
 	const FString filePath = FPaths::ProjectSavedDir() / TEXT("WriteImage/");

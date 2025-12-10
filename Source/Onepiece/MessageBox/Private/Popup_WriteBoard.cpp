@@ -32,7 +32,6 @@ void UPopup_WriteBoard::NativeOnInitialized()
 	writeBoardObject = NewObject<UWriteBoard>();
 	
 	// Button Event
-	Button_Clear->OnButtonClickedEvent.AddDynamic(this, &UPopup_WriteBoard::ClearCanvas);
 	Button_Save->OnButtonClickedEvent.AddDynamic(this, &UPopup_WriteBoard::SaveCanvas);
 	Button_Close->OnButtonClickedEvent.AddDynamic(this, &UPopup_WriteBoard::CloseDrawWindow);
 	Button_Right->OnClicked.AddDynamic(this, &UPopup_WriteBoard::OnButtonRightClicked);
@@ -100,7 +99,7 @@ FReply UPopup_WriteBoard::NativeOnMouseMove(const FGeometry& InGeometry, const F
 void UPopup_WriteBoard::OnButtonRightClicked()
 {
 	SaveCanvas();
-	if (AnswerIdx < AnswerKr.Num() - 1)
+	// if (AnswerIdx < AnswerKr.Num() - 1)
 	{
 		AnswerIdx++;
 	}
@@ -121,7 +120,7 @@ void UPopup_WriteBoard::OnButtonLeftClicked()
 
 void UPopup_WriteBoard::RefreshArrowButton()
 {
-	Button_Right->SetVisibility(AnswerIdx < AnswerKr.Num() - 1 ? ESlateVisibility::Visible : ESlateVisibility::Hidden);
+	// Button_Right->SetVisibility(AnswerIdx < AnswerKr.Num() - 1 ? ESlateVisibility::Visible : ESlateVisibility::Hidden);
 	Button_Left->SetVisibility(0 < AnswerIdx ? ESlateVisibility::Visible : ESlateVisibility::Hidden);
 }
 
@@ -129,27 +128,27 @@ void UPopup_WriteBoard::AdjustLength()
 {
 	// TODO: 그냥 렌더 타겟 2d 새로 만들고 배열로 유지
 	// TODO: 예상 답변에 따른 WriteBoard 길이 조절
-	float letterNum = AnswerKr[AnswerIdx].Len();
+	float letterNum = AnswerKr.Len();
 	
 	// 1. Render Target 길이 늘리기
 	RT_Canvas->ResizeTarget(stepLength * letterNum, stepLength);
 	
 	// 2. Image의 길이 늘리기
 	Image_Canvas->SetDesiredSizeOverride(FVector2D(stepLength * letterNum, stepLength));
-	SizeBox_Border->SetWidthOverride(borderMinWidth + stepLength * letterNum);
+	// SizeBox_Border->SetWidthOverride(borderMinWidth + stepLength * letterNum);
 	
-	SizeBox_Canvas->SetWidthOverride(stepLength * letterNum);
+	// SizeBox_Canvas->SetWidthOverride(stepLength * letterNum);
 	
 	// TODO: 예상 답변 힌트 생성
 }
 
-void UPopup_WriteBoard::InitPopup(int32 InQid, const TArray<FString>& InTokens)
+void UPopup_WriteBoard::InitPopup(int32 InQid, const FString& InAnswerKr)
 {
 	this->Qid = InQid;
-	this->AnswerKr = InTokens;
+	this->AnswerKr = InAnswerKr;
 	
-	if (AnswerKr.Num() > 1)
-		Button_Right->SetVisibility(ESlateVisibility::Visible);
+	// if (AnswerKr.Num() > 1)
+	// 	Button_Right->SetVisibility(ESlateVisibility::Visible);
 	
 	AdjustLength();
 }
@@ -160,7 +159,6 @@ void UPopup_WriteBoard::CloseDrawWindow()
 	{
 		SaveCanvas();
 		
-		ClearCanvas();
 		PopupMgr->HideCurrentPopup(false);
 	}
 }
@@ -200,7 +198,7 @@ void UPopup_WriteBoard::DrawLines(FVector2D mousePos, FLinearColor drawColor)
 		currPos = prevMousePos + drawOffset * i;
 		
 		// Set thickness Whether now in Draw or Erase
-		float thickness = (drawColor == FLinearColor::Black) ? 12 : 30;
+		float thickness = (drawColor == FLinearColor::Black) ? 10 : 25;
 		// Draw Line
 		canvas->K2_DrawLine(prevMousePos, currPos, thickness, drawColor);
 	}
@@ -226,9 +224,4 @@ FVector2D UPopup_WriteBoard::GetLocalMousePos(FVector2D mousePos)
 void UPopup_WriteBoard::SaveCanvas()
 {
 	writeBoardObject->SaveCanvas(Qid, RT_Canvas);
-}
-
-void UPopup_WriteBoard::ClearCanvas()
-{
-	writeBoardObject->ClearCanvas(RT_Canvas);
 }
