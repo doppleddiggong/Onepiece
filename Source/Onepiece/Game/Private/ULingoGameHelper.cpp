@@ -182,10 +182,14 @@ EResourceTextureType ULingoGameHelper::ConvertGradeString(const FString& Grade)
 
 FString ULingoGameHelper::GetFormatTimer(const float InRemainTime )
 {
-	const int32 Minutes = FMath::FloorToInt(InRemainTime / 60.f);
-	const int32 Seconds = FMath::FloorToInt(InRemainTime) % 60;
+	const int32 TotalMilliseconds = FMath::FloorToInt(InRemainTime * 1000.f);
 
-	return FString::Printf(TEXT("%02d:%02d"), Minutes, Seconds);
+	const int32 Minutes       = TotalMilliseconds / 60000;
+	const int32 Seconds       = (TotalMilliseconds / 1000) % 60;
+	const int32 Milliseconds  = (TotalMilliseconds % 1000) / 10;
+
+	// 00:00.00
+	return FString::Printf(TEXT("%02d:%02d.%02d"), Minutes, Seconds, Milliseconds);
 }
 
 void ULingoGameHelper::ShowMouseCursor(const UObject* WorldContextObject)

@@ -104,7 +104,7 @@ void UMainWidget::UpdateTimerDisplay() const
 	if (!CachedGameState || !PlayTimer)
 		return;
 	
-	PlayTimer->UpdateTimerText(ULingoGameHelper::GetFormatTimer(CachedGameState->GetRemainMissionTime()));
+	PlayTimer->UpdateTimerText( CachedGameState->GetRemainMissionTime());
 }
 
 void UMainWidget::OnUpdateMissionTimerState(bool bIsActive, float TimeLimit)

@@ -7,14 +7,14 @@
 #include "UPlayTimer.h"
 #include "Components/TextBlock.h"
 
-UPlayTimer::UPlayTimer(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer)
+void UPlayTimer::UpdateTimerText(const float InRemainTime)
 {
-}
+	const int32 TotalMilliseconds = FMath::FloorToInt(InRemainTime * 1000.f);
 
-void UPlayTimer::UpdateTimerText(const FString& TimeText)
-{
-	if (RemainPlayTimeText)
-	{
-		RemainPlayTimeText->SetText(FText::FromString(TimeText));
-	}
+	const int32 Minutes       = TotalMilliseconds / 60000;
+	const int32 Seconds       = (TotalMilliseconds / 1000) % 60;
+	const int32 Milliseconds  = (TotalMilliseconds % 1000) / 10;
+
+	Txt_MinSec->SetText(FText::FromString(FString::Printf(TEXT("%02d:%02d"), Minutes, Seconds )));
+	Txt_MilliSec->SetText(FText::FromString( FString::Printf(TEXT(".%02d"), Milliseconds)));
 }

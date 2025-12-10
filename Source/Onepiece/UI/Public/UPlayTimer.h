@@ -16,14 +16,12 @@ class ONEPIECE_API UPlayTimer : public UUserWidget
 	GENERATED_BODY()
 
 public:
-	UPlayTimer(const FObjectInitializer& ObjectInitializer);
-
+	void UpdateTimerText(const float InTime);
+	
 public:
-	/// @brief 타이머 텍스트 블록 (BindWidget)
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
-	class UTextBlock* RemainPlayTimeText;
+	TObjectPtr<class UTextBlock> Txt_MinSec;
 
-	/// @brief 타이머 텍스트를 업데이트합니다.
-	/// @param TimeText 표시할 시간 문자열 (예: "03:00")
-	void UpdateTimerText(const FString& TimeText);
+	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
+	TObjectPtr<class UTextBlock> Txt_MilliSec;
 };
