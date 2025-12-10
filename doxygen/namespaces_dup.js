@@ -41,6 +41,7 @@ var namespaces_dup =
       [ "GetSocketURL", "namespaceNetworkConfig.html#a948647fad9ed84a91de549757a7a0e74", null ]
     ] ],
     [ "RequestAPI", "namespaceRequestAPI.html", [
+      [ "evaluations_rooms", "namespaceRequestAPI.html#ab35a143dc8865f6bf07bc269a00b075d", null ],
       [ "Health", "namespaceRequestAPI.html#ae1061ff9836b3127b56024d0a0f6fd65", null ],
       [ "interview_answer", "namespaceRequestAPI.html#ac23f8020a8a24f9d640a8aefbe9e56e5", null ],
       [ "interview_hello", "namespaceRequestAPI.html#a72a9108a91fd78d005fe594cd7ce8818", null ],

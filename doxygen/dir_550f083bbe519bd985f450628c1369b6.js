@@ -18,6 +18,7 @@ var dir_550f083bbe519bd985f450628c1369b6 =
     [ "UPlayTimer.cpp", "UPlayTimer_8cpp.html", null ],
     [ "UQuestInfoWidget.cpp", "UQuestInfoWidget_8cpp.html", null ],
     [ "UResultStatWidget.cpp", "UResultStatWidget_8cpp.html", "UResultStatWidget_8cpp" ],
+    [ "URoomWidget.cpp", "URoomWidget_8cpp.html", null ],
     [ "USizeResultState.cpp", "USizeResultState_8cpp.html", null ],
     [ "USpeakingJudesWidget.cpp", "USpeakingJudesWidget_8cpp.html", null ],
     [ "USpeakWidget.cpp", "USpeakWidget_8cpp.html", null ],

@@ -12,11 +12,12 @@ var searchData=
   ['handlereleased_9',['handlereleased',['../classUHoverButton.html#a1a5c452e769ac14214b2972e89b3884b',1,'UHoverButton::HandleReleased()'],['../classUTextureButton.html#a2f61aad4fb2981da7aa3a93cb4f68aff',1,'UTextureButton::HandleReleased()'],['../classUImageButton.html#aca664dae3b8c8dd6b4848eccd0ebee50',1,'UImageButton::HandleReleased()']]],
   ['handleunhovered_10',['handleunhovered',['../classUHoverButton.html#abb641982f85b45e5a61e2dc10c0f78cb',1,'UHoverButton::HandleUnhovered()'],['../classUImageButton.html#a8b87cced9322915f26d393850c774efc',1,'UImageButton::HandleUnhovered()'],['../classUTextureButton.html#a381d04fa7a1dab9da6e0381400abed03',1,'UTextureButton::HandleUnhovered()']]],
   ['handlewronganswer_11',['HandleWrongAnswer',['../classALingoGameMode.html#a2afd7939b5c4dc08f353aa1a00cd3967',1,'ALingoGameMode']]],
-  ['hide_12',['hide',['../classULoadginCircle.html#ad971427f35d314ccf52da684d0e78621',1,'ULoadginCircle::Hide()'],['../classULoadingCircleManager.html#ae02b1965988c32b7f38c0e899faf0204',1,'ULoadingCircleManager::Hide()']]],
-  ['hideallpopups_13',['HideAllPopups',['../classUPopupManager.html#a87fd02614031eb6809cf50df803cddef',1,'UPopupManager']]],
-  ['hidecurrentpopup_14',['HideCurrentPopup',['../classUPopupManager.html#adcc326552471b330725da8759d79832e',1,'UPopupManager']]],
-  ['hidedialogimmediately_15',['HideDialogImmediately',['../classUDialogWidget.html#acce6f2329eefd1388b774b6b62dcdd83',1,'UDialogWidget']]],
-  ['hidemousecursor_16',['HideMouseCursor',['../classULingoGameHelper.html#a569e70240af4850b5b1a0dafd26d4033',1,'ULingoGameHelper']]],
-  ['hidepopup_17',['HidePopup',['../classUPopupManager.html#ad013faab60f2764e32ff7a16d096b20f',1,'UPopupManager']]],
-  ['hidetoastimmediately_18',['HideToastImmediately',['../classUDialogManager.html#a01a895ea8e13cdc6b03f6e2e4e74cea3',1,'UDialogManager']]]
+  ['hasuserinfo_12',['HasUserInfo',['../classAPlayerControl.html#a575dd325e68e0d6f161f307d6b736777',1,'APlayerControl']]],
+  ['hide_13',['hide',['../classULoadginCircle.html#ad971427f35d314ccf52da684d0e78621',1,'ULoadginCircle::Hide()'],['../classULoadingCircleManager.html#ae02b1965988c32b7f38c0e899faf0204',1,'ULoadingCircleManager::Hide()']]],
+  ['hideallpopups_14',['HideAllPopups',['../classUPopupManager.html#a87fd02614031eb6809cf50df803cddef',1,'UPopupManager']]],
+  ['hidecurrentpopup_15',['HideCurrentPopup',['../classUPopupManager.html#adcc326552471b330725da8759d79832e',1,'UPopupManager']]],
+  ['hidedialogimmediately_16',['HideDialogImmediately',['../classUDialogWidget.html#acce6f2329eefd1388b774b6b62dcdd83',1,'UDialogWidget']]],
+  ['hidemousecursor_17',['HideMouseCursor',['../classULingoGameHelper.html#a569e70240af4850b5b1a0dafd26d4033',1,'ULingoGameHelper']]],
+  ['hidepopup_18',['HidePopup',['../classUPopupManager.html#ad013faab60f2764e32ff7a16d096b20f',1,'UPopupManager']]],
+  ['hidetoastimmediately_19',['HideToastImmediately',['../classUDialogManager.html#a01a895ea8e13cdc6b03f6e2e4e74cea3',1,'UDialogManager']]]
 ];

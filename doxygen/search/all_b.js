@@ -54,7 +54,7 @@ var searchData=
   ['loadingcircle_51',['LoadingCircle',['../namespaceGameLayer.html#a919c4166af88ffa5c2fd2d860c2c40a9',1,'GameLayer']]],
   ['loadingcirclewidget_5fpath_52',['LOADINGCIRCLEWIDGET_PATH',['../ULoadingCircleManager_8cpp.html#a194a0b3c766020ddfe778e9fe4a2406c',1,'ULoadingCircleManager.cpp']]],
   ['loadingcount_53',['LoadingCount',['../classULoadingCircleManager.html#adb771515e483468402942fce9d6efd00',1,'ULoadingCircleManager']]],
-  ['loadingspinner_54',['loadingspinner',['../classUStateWidget.html#afaaebffe04185232149875eba907a6c5',1,'UStateWidget::LoadingSpinner'],['../classULoadginCircle.html#a3894e2b3aa110cd497ada643824e95d8',1,'ULoadginCircle::LoadingSpinner']]],
+  ['loadingspinner_54',['loadingspinner',['../classURoomWidget.html#aa398bef60a92993e8feb66efd43fb61a',1,'URoomWidget::LoadingSpinner'],['../classULoadginCircle.html#a3894e2b3aa110cd497ada643824e95d8',1,'ULoadginCircle::LoadingSpinner']]],
   ['loadstyletable_55',['LoadStyleTable',['../classUResultStatWidget.html#a54e6729504ea85528a33deef1dd64d00',1,'UResultStatWidget']]],
   ['lobbywidget_56',['LobbyWidget',['../classALobbyLevelScriptActor.html#a8a615e1e268e82d5b7b3063fd28a380e',1,'ALobbyLevelScriptActor']]],
   ['lobbywidget_2ecpp_57',['LobbyWidget.cpp',['../LobbyWidget_8cpp.html',1,'']]],

@@ -9,7 +9,6 @@ var classUBroadcastManager =
     [ "DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam", "classUBroadcastManager.html#ace4234583c1a43189b8a98f6d537e309", null ],
     [ "DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam", "classUBroadcastManager.html#a412ce315a11efc57ea0d566462933b96", null ],
     [ "DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam", "classUBroadcastManager.html#a79c3993df4598774574c61d4936ef264", null ],
-    [ "DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam", "classUBroadcastManager.html#a6be6b935aa07360549ca238c86afec85", null ],
     [ "DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams", "classUBroadcastManager.html#a67a295550c1ead6b3224e4e147872c4d", null ],
     [ "DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams", "classUBroadcastManager.html#a62476f45982ef48ebf95e126d61ab3ce", null ],
     [ "DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams", "classUBroadcastManager.html#ad43d0804288716012bdd30cd0062d0d4", null ],
@@ -30,7 +29,6 @@ var classUBroadcastManager =
     [ "SendTutorMessage", "classUBroadcastManager.html#ad84f69bc15ecef42a2589af4b6395bae", null ],
     [ "SendUpdateMissionTimerState", "classUBroadcastManager.html#a0a8dee3b7d21167ec84335fa56947073", null ],
     [ "SendUpdateQuestRole", "classUBroadcastManager.html#a4566268b0d933e3a8c59301656f2ac9c", null ],
-    [ "SendUserNameChanged", "classUBroadcastManager.html#ae21792c04dbbe2e81c23e682191fbdd1", null ],
     [ "SendWeightSwitch", "classUBroadcastManager.html#a7a1bb7be2130b3367c2183017801b3ed", null ],
     [ "OnAddItemToBoxList", "classUBroadcastManager.html#a460f9cfc6848bc5c82f95fc5f2d1dafc", null ],
     [ "OnAudioCapture", "classUBroadcastManager.html#a15ce56190730a87bbd9ea51210a08b14", null ],
@@ -45,6 +43,5 @@ var classUBroadcastManager =
     [ "OnTutorMessage", "classUBroadcastManager.html#a285972d460d666d4bc014c55cb1b7214", null ],
     [ "OnUpdateMissionTimerState", "classUBroadcastManager.html#aff2aace94a6605d0399186c4cf01c97f", null ],
     [ "OnUpdateQuestRole", "classUBroadcastManager.html#aad47de4b5c2a81137a6d460a3488898c", null ],
-    [ "OnUpdateUserName", "classUBroadcastManager.html#a730d5a17b3808d4e6f5ac9f380bf0e34", null ],
     [ "OnWeightSwitch", "classUBroadcastManager.html#a756c1c50c99027c954393663b51f9ebd", null ]
 ];

@@ -115,31 +115,29 @@ $(document).ready(function(){initNavTree('UPlayTimer_8cpp_source.html',''); init
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;Components/TextBlock.h&quot;</span></div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
 <div class="foldopen" id="foldopen00010" data-start="{" data-end="}">
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="classUPlayTimer.html#ace8d337828367bb94cbfa592ca9ed7e7">   10</a></span><a class="code hl_function" href="classUPlayTimer.html#ace8d337828367bb94cbfa592ca9ed7e7">UPlayTimer::UPlayTimer</a>(<span class="keyword">const</span> FObjectInitializer&amp; ObjectInitializer) : Super(ObjectInitializer)</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="classUPlayTimer.html#a73d7dd117c813c3e4489a27a5db8e8a1">   10</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUPlayTimer.html#a73d7dd117c813c3e4489a27a5db8e8a1">UPlayTimer::UpdateTimerText</a>(<span class="keyword">const</span> <span class="keywordtype">float</span> InRemainTime)</div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>{</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>}</div>
-</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    <span class="keyword">const</span> int32 TotalMilliseconds = FMath::FloorToInt(InRemainTime * 1000.f);</div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
-<div class="foldopen" id="foldopen00014" data-start="{" data-end="}">
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="classUPlayTimer.html#a264cb1a83c0aa7f39ed003db2f779055">   14</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUPlayTimer.html#a264cb1a83c0aa7f39ed003db2f779055">UPlayTimer::UpdateTimerText</a>(<span class="keyword">const</span> FString&amp; TimeText)</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>{</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUPlayTimer.html#ad13d20cee91695f49c7e768df5185289">RemainPlayTimeText</a>)</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    {</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>        <a class="code hl_variable" href="classUPlayTimer.html#ad13d20cee91695f49c7e768df5185289">RemainPlayTimeText</a>-&gt;SetText(FText::FromString(TimeText));</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    }</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    <span class="keyword">const</span> int32 Minutes       = TotalMilliseconds / 60000;</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <span class="keyword">const</span> int32 Seconds       = (TotalMilliseconds / 1000) % 60;</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <span class="keyword">const</span> int32 Milliseconds  = (TotalMilliseconds % 1000) / 10;</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <a class="code hl_variable" href="classUPlayTimer.html#a39f18ae774bee3234ae01ef4964eaa6d">Txt_MinSec</a>-&gt;SetText(FText::FromString(FString::Printf(TEXT(<span class="stringliteral">&quot;%02d:%02d&quot;</span>), Minutes, Seconds )));</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <a class="code hl_variable" href="classUPlayTimer.html#adbe8cae457509e099dd90e6f399aaeff">Txt_MilliSec</a>-&gt;SetText(FText::FromString( FString::Printf(TEXT(<span class="stringliteral">&quot;.%02d&quot;</span>), Milliseconds)));</div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>}</div>
 </div>
 <div class="ttc" id="aUPlayTimer_8h_html"><div class="ttname"><a href="UPlayTimer_8h.html">UPlayTimer.h</a></div></div>
-<div class="ttc" id="aclassUPlayTimer_html_a264cb1a83c0aa7f39ed003db2f779055"><div class="ttname"><a href="classUPlayTimer.html#a264cb1a83c0aa7f39ed003db2f779055">UPlayTimer::UpdateTimerText</a></div><div class="ttdeci">void UpdateTimerText(const FString &amp;TimeText)</div><div class="ttdoc">타이머 텍스트를 업데이트합니다.</div><div class="ttdef"><b>Definition</b> <a href="UPlayTimer_8cpp_source.html#l00014">UPlayTimer.cpp:14</a></div></div>
-<div class="ttc" id="aclassUPlayTimer_html_ace8d337828367bb94cbfa592ca9ed7e7"><div class="ttname"><a href="classUPlayTimer.html#ace8d337828367bb94cbfa592ca9ed7e7">UPlayTimer::UPlayTimer</a></div><div class="ttdeci">UPlayTimer(const FObjectInitializer &amp;ObjectInitializer)</div><div class="ttdef"><b>Definition</b> <a href="UPlayTimer_8cpp_source.html#l00010">UPlayTimer.cpp:10</a></div></div>
-<div class="ttc" id="aclassUPlayTimer_html_ad13d20cee91695f49c7e768df5185289"><div class="ttname"><a href="classUPlayTimer.html#ad13d20cee91695f49c7e768df5185289">UPlayTimer::RemainPlayTimeText</a></div><div class="ttdeci">class UTextBlock * RemainPlayTimeText</div><div class="ttdoc">타이머 텍스트 블록 (BindWidget)</div><div class="ttdef"><b>Definition</b> <a href="UPlayTimer_8h_source.html#l00024">UPlayTimer.h:24</a></div></div>
+<div class="ttc" id="aclassUPlayTimer_html_a39f18ae774bee3234ae01ef4964eaa6d"><div class="ttname"><a href="classUPlayTimer.html#a39f18ae774bee3234ae01ef4964eaa6d">UPlayTimer::Txt_MinSec</a></div><div class="ttdeci">TObjectPtr&lt; class UTextBlock &gt; Txt_MinSec</div><div class="ttdef"><b>Definition</b> <a href="UPlayTimer_8h_source.html#l00023">UPlayTimer.h:23</a></div></div>
+<div class="ttc" id="aclassUPlayTimer_html_a73d7dd117c813c3e4489a27a5db8e8a1"><div class="ttname"><a href="classUPlayTimer.html#a73d7dd117c813c3e4489a27a5db8e8a1">UPlayTimer::UpdateTimerText</a></div><div class="ttdeci">void UpdateTimerText(const float InTime)</div><div class="ttdef"><b>Definition</b> <a href="UPlayTimer_8cpp_source.html#l00010">UPlayTimer.cpp:10</a></div></div>
+<div class="ttc" id="aclassUPlayTimer_html_adbe8cae457509e099dd90e6f399aaeff"><div class="ttname"><a href="classUPlayTimer.html#adbe8cae457509e099dd90e6f399aaeff">UPlayTimer::Txt_MilliSec</a></div><div class="ttdeci">TObjectPtr&lt; class UTextBlock &gt; Txt_MilliSec</div><div class="ttdef"><b>Definition</b> <a href="UPlayTimer_8h_source.html#l00026">UPlayTimer.h:26</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_55b064ed9f704d76d3805f2fda876350.html">UI</a></li><li class="navelem"><a class="el" href="dir_550f083bbe519bd985f450628c1369b6.html">Private</a></li><li class="navelem"><a class="el" href="UPlayTimer_8cpp.html">UPlayTimer.cpp</a></li>
-    <li class="footer">생성시간 : 화 12월 9 2025 04:47:56, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 수 12월 10 2025 23:34:44, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

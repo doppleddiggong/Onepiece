@@ -7,6 +7,7 @@ var classAPlayerControl =
     [ "GetUserId", "classAPlayerControl.html#a28eb86790cd27a79470b7112927c4e24", null ],
     [ "GetUserInfo", "classAPlayerControl.html#af79e9468151b0d47e8eee1703f73af29", null ],
     [ "GetUserName", "classAPlayerControl.html#aade4e22a41f88afa68a64c598cf83125", null ],
+    [ "HasUserInfo", "classAPlayerControl.html#a575dd325e68e0d6f161f307d6b736777", null ],
     [ "OnGrab", "classAPlayerControl.html#ab2dcf9de168c0f1940c769c5c87cb864", null ],
     [ "OnGrabRelease", "classAPlayerControl.html#a53ea83bb9bed9690c52806a5ae4b5657", null ],
     [ "OnHook", "classAPlayerControl.html#abf6c3cf5f3542c2345dc9f75d247284b", null ],

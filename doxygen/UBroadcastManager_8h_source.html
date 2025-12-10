@@ -199,56 +199,48 @@ $(document).ready(function(){initNavTree('UBroadcastManager_8h_source.html','');
 <div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    <span class="keywordtype">void</span> SendWeightSwitch(<span class="keywordtype">int</span> InButtonIndex, <span class="keywordtype">bool</span> InActive);</div>
 <div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span> </div>
 <div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span> </div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno"><a class="line" href="classUBroadcastManager.html#a6be6b935aa07360549ca238c86afec85">  100</a></span>    <a class="code hl_function" href="USightSystem_8h.html#a35f3fefc7dc121d5e1364545508b38c1">DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam</a>(FOnUserNameChanged, FString, UserName);</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno"><a class="line" href="classUBroadcastManager.html#ade87066af24dd915bb0c9002dbb3eef0">  100</a></span>    DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnUpdateMissionTimerState, <span class="keywordtype">bool</span>, bIsActive, <span class="keywordtype">float</span>, TimeLimit);</div>
 <div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    UPROPERTY(BlueprintAssignable, Category=&quot;Events&quot;)</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno"><a class="line" href="classUBroadcastManager.html#a730d5a17b3808d4e6f5ac9f380bf0e34">  102</a></span>    FOnUserNameChanged OnUpdateUserName;</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno"><a class="line" href="classUBroadcastManager.html#aff2aace94a6605d0399186c4cf01c97f">  102</a></span>    FOnUpdateMissionTimerState OnUpdateMissionTimerState;</div>
 <div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
 <div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    UFUNCTION(BlueprintCallable, Category=&quot;Events&quot;)</div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    <span class="keywordtype">void</span> SendUserNameChanged(const FString&amp; UserName);</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    <span class="keywordtype">void</span> SendUpdateMissionTimerState(<span class="keywordtype">bool</span> bIsActive, <span class="keywordtype">float</span> TimeLimit);</div>
 <div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span> </div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span> </div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno"><a class="line" href="classUBroadcastManager.html#ade87066af24dd915bb0c9002dbb3eef0">  108</a></span>    DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnUpdateMissionTimerState, <span class="keywordtype">bool</span>, bIsActive, <span class="keywordtype">float</span>, TimeLimit);</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    UPROPERTY(BlueprintAssignable, Category=&quot;Events&quot;)</div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno"><a class="line" href="classUBroadcastManager.html#aff2aace94a6605d0399186c4cf01c97f">  110</a></span>    FOnUpdateMissionTimerState OnUpdateMissionTimerState;</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span> </div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    UFUNCTION(BlueprintCallable, Category=&quot;Events&quot;)</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    <span class="keywordtype">void</span> SendUpdateMissionTimerState(<span class="keywordtype">bool</span> bIsActive, <span class="keywordtype">float</span> TimeLimit);</div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span> </div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno"><a class="line" href="classUBroadcastManager.html#a79c3993df4598774574c61d4936ef264">  115</a></span>    <a class="code hl_function" href="USightSystem_8h.html#a35f3fefc7dc121d5e1364545508b38c1">DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam</a>(FOnUpdateQuestRole, <a class="code hl_enumeration" href="EQuestRole_8h.html#af9534ca095b724046bf40abddcbb95e9">EQuestRole</a>, QuestRole);</div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>    UPROPERTY(BlueprintAssignable, Category=&quot;Events&quot;)</div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno"><a class="line" href="classUBroadcastManager.html#aad47de4b5c2a81137a6d460a3488898c">  117</a></span>    FOnUpdateQuestRole OnUpdateQuestRole;</div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span> </div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    UFUNCTION(BlueprintCallable, Category=&quot;Events&quot;)</div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    <span class="keywordtype">void</span> SendUpdateQuestRole(<a class="code hl_enumeration" href="EQuestRole_8h.html#af9534ca095b724046bf40abddcbb95e9">EQuestRole</a> QuestRole);</div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    </div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno"><a class="line" href="classUBroadcastManager.html#ad43d0804288716012bdd30cd0062d0d4">  122</a></span>    DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnMovie, <span class="keywordtype">int</span>, Group, <span class="keywordtype">bool</span>, State);</div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>    UPROPERTY(BlueprintAssignable, Category=&quot;Events&quot;)</div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno"><a class="line" href="classUBroadcastManager.html#a50769b10e969cd2c83276e302cfb39b1">  124</a></span>    FOnMovie OnMovie;</div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span> </div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>    UFUNCTION(BlueprintCallable, Category=&quot;Events&quot;)</div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>    <span class="keywordtype">void</span> SendMovie(const <span class="keywordtype">int</span>&amp; InGroup, <span class="keywordtype">bool</span> InState);</div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span> </div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno"><a class="line" href="classUBroadcastManager.html#a412ce315a11efc57ea0d566462933b96">  129</a></span>    <a class="code hl_function" href="USightSystem_8h.html#a35f3fefc7dc121d5e1364545508b38c1">DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam</a>(FOnTutorMessage, const FText&amp;, Message);</div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>    UPROPERTY(BlueprintAssignable, Category=&quot;Events&quot;)</div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno"><a class="line" href="classUBroadcastManager.html#a285972d460d666d4bc014c55cb1b7214">  131</a></span>    FOnTutorMessage OnTutorMessage;</div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span> </div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>    UFUNCTION(BlueprintCallable, Category=&quot;Events&quot;)</div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>    <span class="keywordtype">void</span> SendTutorMessage(const FText&amp; Message);</div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span> </div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno"><a class="line" href="classUBroadcastManager.html#a9c6b636fb1f03a183450e8532e78e830">  136</a></span>    <a class="code hl_function" href="USightSystem_8h.html#a35f3fefc7dc121d5e1364545508b38c1">DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam</a>(FOnAddItemToBoxList, const TArray&lt;<a class="code hl_struct" href="structFResultStatData.html">FResultStatData</a>&gt;&amp;, ItemDataList);</div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>    UPROPERTY(BlueprintAssignable, Category=&quot;Events&quot;)</div>
-<div class="line"><a id="l00138" name="l00138"></a><span class="lineno"><a class="line" href="classUBroadcastManager.html#a460f9cfc6848bc5c82f95fc5f2d1dafc">  138</a></span>    FOnAddItemToBoxList OnAddItemToBoxList;</div>
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span> </div>
-<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>    UFUNCTION(BlueprintCallable, Category=&quot;Events&quot;)</div>
-<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>    <span class="keywordtype">void</span> SendAddItemToBoxList(const TArray&lt;<a class="code hl_struct" href="structFResultStatData.html">FResultStatData</a>&gt;&amp; ItemDataList);</div>
-<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span> </div>
-<div class="line"><a id="l00143" name="l00143"></a><span class="lineno"><a class="line" href="classUBroadcastManager.html#ace4234583c1a43189b8a98f6d537e309">  143</a></span>    <a class="code hl_function" href="USightSystem_8h.html#a35f3fefc7dc121d5e1364545508b38c1">DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam</a>(FOnTeleportAllPlayers, FVector, TargetLocation);</div>
-<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>    UPROPERTY(BlueprintAssignable, Category=&quot;Events&quot;)</div>
-<div class="line"><a id="l00145" name="l00145"></a><span class="lineno"><a class="line" href="classUBroadcastManager.html#ac5cd38c4aa40228aff95b7ef013167ee">  145</a></span>    FOnTeleportAllPlayers OnTeleport;</div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span> </div>
-<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>    UFUNCTION(BlueprintCallable, Category=&quot;Events&quot;)</div>
-<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>    <span class="keywordtype">void</span> SendTeleport(const FVector&amp; TargetLocation);</div>
-<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>};</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno"><a class="line" href="classUBroadcastManager.html#a79c3993df4598774574c61d4936ef264">  107</a></span>    <a class="code hl_function" href="USightSystem_8h.html#a35f3fefc7dc121d5e1364545508b38c1">DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam</a>(FOnUpdateQuestRole, <a class="code hl_enumeration" href="EQuestRole_8h.html#af9534ca095b724046bf40abddcbb95e9">EQuestRole</a>, QuestRole);</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    UPROPERTY(BlueprintAssignable, Category=&quot;Events&quot;)</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno"><a class="line" href="classUBroadcastManager.html#aad47de4b5c2a81137a6d460a3488898c">  109</a></span>    FOnUpdateQuestRole OnUpdateQuestRole;</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span> </div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    UFUNCTION(BlueprintCallable, Category=&quot;Events&quot;)</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    <span class="keywordtype">void</span> SendUpdateQuestRole(<a class="code hl_enumeration" href="EQuestRole_8h.html#af9534ca095b724046bf40abddcbb95e9">EQuestRole</a> QuestRole);</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    </div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno"><a class="line" href="classUBroadcastManager.html#ad43d0804288716012bdd30cd0062d0d4">  114</a></span>    DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnMovie, <span class="keywordtype">int</span>, Group, <span class="keywordtype">bool</span>, State);</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>    UPROPERTY(BlueprintAssignable, Category=&quot;Events&quot;)</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno"><a class="line" href="classUBroadcastManager.html#a50769b10e969cd2c83276e302cfb39b1">  116</a></span>    FOnMovie OnMovie;</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span> </div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    UFUNCTION(BlueprintCallable, Category=&quot;Events&quot;)</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    <span class="keywordtype">void</span> SendMovie(const <span class="keywordtype">int</span>&amp; InGroup, <span class="keywordtype">bool</span> InState);</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span> </div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno"><a class="line" href="classUBroadcastManager.html#a412ce315a11efc57ea0d566462933b96">  121</a></span>    <a class="code hl_function" href="USightSystem_8h.html#a35f3fefc7dc121d5e1364545508b38c1">DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam</a>(FOnTutorMessage, const FText&amp;, Message);</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>    UPROPERTY(BlueprintAssignable, Category=&quot;Events&quot;)</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno"><a class="line" href="classUBroadcastManager.html#a285972d460d666d4bc014c55cb1b7214">  123</a></span>    FOnTutorMessage OnTutorMessage;</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span> </div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>    UFUNCTION(BlueprintCallable, Category=&quot;Events&quot;)</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>    <span class="keywordtype">void</span> SendTutorMessage(const FText&amp; Message);</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span> </div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno"><a class="line" href="classUBroadcastManager.html#a9c6b636fb1f03a183450e8532e78e830">  128</a></span>    <a class="code hl_function" href="USightSystem_8h.html#a35f3fefc7dc121d5e1364545508b38c1">DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam</a>(FOnAddItemToBoxList, const TArray&lt;<a class="code hl_struct" href="structFResultStatData.html">FResultStatData</a>&gt;&amp;, ItemDataList);</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>    UPROPERTY(BlueprintAssignable, Category=&quot;Events&quot;)</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno"><a class="line" href="classUBroadcastManager.html#a460f9cfc6848bc5c82f95fc5f2d1dafc">  130</a></span>    FOnAddItemToBoxList OnAddItemToBoxList;</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span> </div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    UFUNCTION(BlueprintCallable, Category=&quot;Events&quot;)</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>    <span class="keywordtype">void</span> SendAddItemToBoxList(const TArray&lt;<a class="code hl_struct" href="structFResultStatData.html">FResultStatData</a>&gt;&amp; ItemDataList);</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span> </div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno"><a class="line" href="classUBroadcastManager.html#ace4234583c1a43189b8a98f6d537e309">  135</a></span>    <a class="code hl_function" href="USightSystem_8h.html#a35f3fefc7dc121d5e1364545508b38c1">DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam</a>(FOnTeleportAllPlayers, FVector, TargetLocation);</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>    UPROPERTY(BlueprintAssignable, Category=&quot;Events&quot;)</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno"><a class="line" href="classUBroadcastManager.html#ac5cd38c4aa40228aff95b7ef013167ee">  137</a></span>    FOnTeleportAllPlayers OnTeleport;</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span> </div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>    UFUNCTION(BlueprintCallable, Category=&quot;Events&quot;)</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>    <span class="keywordtype">void</span> SendTeleport(const FVector&amp; TargetLocation);</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>};</div>
 </div>
 <div class="ttc" id="aEDamageType_8h_html"><div class="ttname"><a href="EDamageType_8h.html">EDamageType.h</a></div><div class="ttdoc">EDamageType 클래스를 선언합니다.</div></div>
 <div class="ttc" id="aEDamageType_8h_html_ab5bf7dde87ef933ba244eba8c39e7e9b"><div class="ttname"><a href="EDamageType_8h.html#ab5bf7dde87ef933ba244eba8c39e7e9b">EDamageType</a></div><div class="ttdeci">EDamageType</div><div class="ttdef"><b>Definition</b> <a href="EDamageType_8h_source.html#l00008">EDamageType.h:9</a></div></div>
@@ -267,7 +259,7 @@ $(document).ready(function(){initNavTree('UBroadcastManager_8h_source.html','');
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_399370037b6f5ff6b0840148d18ec8d9.html">LatteLibrary</a></li><li class="navelem"><a class="el" href="dir_3895d977c26767e128462eaa7d00849f.html">Manager</a></li><li class="navelem"><a class="el" href="dir_ece11de4a6442a77ccaf0d9d7adf8213.html">Public</a></li><li class="navelem"><a class="el" href="UBroadcastManager_8h.html">UBroadcastManager.h</a></li>
-    <li class="footer">생성시간 : 화 12월 9 2025 04:47:55, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 수 12월 10 2025 23:34:44, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

@@ -10,7 +10,9 @@ var classUMainWidget =
     [ "OnUpdateMissionTimerState", "classUMainWidget.html#a087562bb275500b4085bf893720ae7b0", null ],
     [ "SetMissionTimerState", "classUMainWidget.html#a5a104d787c94fb051427186f6a0236fe", null ],
     [ "UpdateHookState", "classUMainWidget.html#a394decf5a4b89cb41e45422c7e770b82", null ],
+    [ "UpdateRoomWidget", "classUMainWidget.html#a6e712598a45dc8da6bec742a2fed0580", null ],
     [ "UpdateSpeakWidget", "classUMainWidget.html#aca756504843f51373e2c63f2bd1e1301", null ],
+    [ "UpdateStateWidget", "classUMainWidget.html#a7b24fc5d83920b4a1b62e9cf9b34ff02", null ],
     [ "UpdateTimerDisplay", "classUMainWidget.html#a9239722afccf53cb761984ce87f32228", null ],
     [ "CachedGameState", "classUMainWidget.html#aa0abca549ef2be9c4610d4890d5c0448", null ],
     [ "FadeWidget", "classUMainWidget.html#aa86baf5af00d6f8875fc6106bb3714e4", null ],
@@ -20,6 +22,7 @@ var classUMainWidget =
     [ "ItemWidgetClass", "classUMainWidget.html#a4647b2db5b4b047684c2e67e612a693f", null ],
     [ "PlayTimer", "classUMainWidget.html#a1a0b73afb95c74b5c4a79daa63af9257", null ],
     [ "QuestInfoWidget", "classUMainWidget.html#a5ba1fdbbe66e5a6c54e05634e254e5d3", null ],
+    [ "RoomWidget", "classUMainWidget.html#af7202e75ac00efb9c8ddb5b752cc9460", null ],
     [ "SpeakWidget", "classUMainWidget.html#af4d15f040b6a31cc9fd0915a73da3539", null ],
     [ "StateWidget", "classUMainWidget.html#af9eea227103d9e1ef57f35eaff2109e0", null ]
 ];

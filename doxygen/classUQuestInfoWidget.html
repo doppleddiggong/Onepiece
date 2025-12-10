@@ -192,50 +192,48 @@ Private 멤버 함수</h2></td></tr>
 <div class="line"><span class="lineno">   28</span>    {</div>
 <div class="line"><span class="lineno">   29</span>        <span class="keyword">const</span> <a class="code hl_struct" href="structFResponseReadScenario.html">FResponseReadScenario</a>&amp; ReadScenario = GS-&gt;GetReadScenarioData();</div>
 <div class="line"><span class="lineno">   30</span> </div>
-<div class="line"><span class="lineno">   31</span>        <span class="keywordflow">if</span> (QuestRole == EQuestRole::Both)</div>
-<div class="line"><span class="lineno">   32</span>            <a class="code hl_function" href="classUQuestInfoWidget.html#a7786ccf2907f4e2d3f3f05da3e04b10f">SetQuestText</a>(ReadScenario.<a class="code hl_variable" href="structFResponseReadScenario.html#a25de5c38409caf2c1bc4bea5879df661">full_data</a>);</div>
-<div class="line"><span class="lineno">   33</span>        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (QuestRole == EQuestRole::OnlyQuestion1)</div>
-<div class="line"><span class="lineno">   34</span>            <a class="code hl_function" href="classUQuestInfoWidget.html#a7786ccf2907f4e2d3f3f05da3e04b10f">SetQuestText</a>(ReadScenario.<a class="code hl_variable" href="structFResponseReadScenario.html#a16e0f6d6581d7c3a0c58dc30a53a48bd">word_data1</a>);</div>
-<div class="line"><span class="lineno">   35</span>        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (QuestRole == EQuestRole::OnlyQuestion2)</div>
-<div class="line"><span class="lineno">   36</span>            <a class="code hl_function" href="classUQuestInfoWidget.html#a7786ccf2907f4e2d3f3f05da3e04b10f">SetQuestText</a>(ReadScenario.<a class="code hl_variable" href="structFResponseReadScenario.html#af7a3da38c89b3ecbd239c98e997f21a9">word_data2</a>);</div>
-<div class="line"><span class="lineno">   37</span>    }</div>
-<div class="line"><span class="lineno">   38</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (QuestType == <a class="code hl_enumvalue" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921ace6802b46091c31e2ec2363883fe8369">EQuestType::Listen</a>)</div>
-<div class="line"><span class="lineno">   39</span>    {</div>
-<div class="line"><span class="lineno">   40</span>        <span class="keyword">const</span> <a class="code hl_struct" href="structFResponseListenScenario.html">FResponseListenScenario</a>&amp; ListenScenario = GS-&gt;GetListenScenarioData();</div>
-<div class="line"><span class="lineno">   41</span> </div>
-<div class="line"><span class="lineno">   42</span>        <span class="keywordflow">if</span> (QuestRole == EQuestRole::Both)</div>
-<div class="line"><span class="lineno">   43</span>            <a class="code hl_function" href="classUQuestInfoWidget.html#a7786ccf2907f4e2d3f3f05da3e04b10f">SetQuestText</a>(ListenScenario.<a class="code hl_variable" href="structFResponseListenScenario.html#a75544300df8dfd58442360cb0348a0f8">full_data</a>);</div>
-<div class="line"><span class="lineno">   44</span>        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (QuestRole == EQuestRole::OnlyQuestion1)</div>
-<div class="line"><span class="lineno">   45</span>            <a class="code hl_function" href="classUQuestInfoWidget.html#a7786ccf2907f4e2d3f3f05da3e04b10f">SetQuestText</a>(ListenScenario.<a class="code hl_variable" href="structFResponseListenScenario.html#ae5ee14f23d89fc1ef762e21375c2264a">word_data1</a>);</div>
-<div class="line"><span class="lineno">   46</span>        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (QuestRole == EQuestRole::OnlyQuestion2)</div>
-<div class="line"><span class="lineno">   47</span>            <a class="code hl_function" href="classUQuestInfoWidget.html#a7786ccf2907f4e2d3f3f05da3e04b10f">SetQuestText</a>(ListenScenario.<a class="code hl_variable" href="structFResponseListenScenario.html#aac9b1ddf40c8183677692d86a4eae2ff">word_data2</a>);</div>
-<div class="line"><span class="lineno">   48</span>    }</div>
-<div class="line"><span class="lineno">   49</span>}</div>
+<div class="line"><span class="lineno">   31</span>        <a class="code hl_variable" href="classUQuestInfoWidget.html#a67249f6ef50bce20d34b11fc7d096a7d">Txt_Message</a>-&gt;SetText(FText::FromString(<span class="stringliteral">&quot;Press to view the text again.&quot;</span>));</div>
+<div class="line"><span class="lineno">   32</span>        </div>
+<div class="line"><span class="lineno">   33</span>        <span class="comment">// if (QuestRole == EQuestRole::Both)</span></div>
+<div class="line"><span class="lineno">   34</span>        <span class="comment">//  SetQuestText(ReadScenario.full_data);</span></div>
+<div class="line"><span class="lineno">   35</span>        <span class="comment">// else if (QuestRole == EQuestRole::OnlyQuestion1)</span></div>
+<div class="line"><span class="lineno">   36</span>        <span class="comment">//  SetQuestText(ReadScenario.word_data1);</span></div>
+<div class="line"><span class="lineno">   37</span>        <span class="comment">// else if (QuestRole == EQuestRole::OnlyQuestion2)</span></div>
+<div class="line"><span class="lineno">   38</span>        <span class="comment">//  SetQuestText(ReadScenario.word_data2);</span></div>
+<div class="line"><span class="lineno">   39</span>    }</div>
+<div class="line"><span class="lineno">   40</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (QuestType == <a class="code hl_enumvalue" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921ace6802b46091c31e2ec2363883fe8369">EQuestType::Listen</a>)</div>
+<div class="line"><span class="lineno">   41</span>    {</div>
+<div class="line"><span class="lineno">   42</span>        <span class="keyword">const</span> <a class="code hl_struct" href="structFResponseListenScenario.html">FResponseListenScenario</a>&amp; ListenScenario = GS-&gt;GetListenScenarioData();</div>
+<div class="line"><span class="lineno">   43</span> </div>
+<div class="line"><span class="lineno">   44</span>        <a class="code hl_variable" href="classUQuestInfoWidget.html#a67249f6ef50bce20d34b11fc7d096a7d">Txt_Message</a>-&gt;SetText(FText::FromString(<span class="stringliteral">&quot;Press to listen again&quot;</span>));</div>
+<div class="line"><span class="lineno">   45</span>        </div>
+<div class="line"><span class="lineno">   46</span>        <span class="comment">// if (QuestRole == EQuestRole::Both)</span></div>
+<div class="line"><span class="lineno">   47</span>        <span class="comment">//  SetQuestText(ListenScenario.full_data);</span></div>
+<div class="line"><span class="lineno">   48</span>        <span class="comment">// else if (QuestRole == EQuestRole::OnlyQuestion1)</span></div>
+<div class="line"><span class="lineno">   49</span>        <span class="comment">//  SetQuestText(ListenScenario.word_data1);</span></div>
+<div class="line"><span class="lineno">   50</span>        <span class="comment">// else if (QuestRole == EQuestRole::OnlyQuestion2)</span></div>
+<div class="line"><span class="lineno">   51</span>        <span class="comment">//  SetQuestText(ListenScenario.word_data2);</span></div>
+<div class="line"><span class="lineno">   52</span>    }</div>
+<div class="line"><span class="lineno">   53</span>}</div>
 <div class="ttc" id="aALingoGameState_8h_html_a1a866ca8104ebd47ce462347a6125921"><div class="ttname"><a href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921">EQuestType</a></div><div class="ttdeci">EQuestType</div><div class="ttdef"><b>Definition</b> <a href="ALingoGameState_8h_source.html#l00011">ALingoGameState.h:12</a></div></div>
 <div class="ttc" id="aALingoGameState_8h_html_a1a866ca8104ebd47ce462347a6125921a7a1a5f3e79fdc91edf2f5ead9d66abb4"><div class="ttname"><a href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a7a1a5f3e79fdc91edf2f5ead9d66abb4">EQuestType::Read</a></div><div class="ttdeci">@ Read</div></div>
 <div class="ttc" id="aALingoGameState_8h_html_a1a866ca8104ebd47ce462347a6125921ace6802b46091c31e2ec2363883fe8369"><div class="ttname"><a href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921ace6802b46091c31e2ec2363883fe8369">EQuestType::Listen</a></div><div class="ttdeci">@ Listen</div></div>
 <div class="ttc" id="aclassALingoPlayerState_html_abd97c5fbf5a4be586808c892ec02586b"><div class="ttname"><a href="classALingoPlayerState.html#abd97c5fbf5a4be586808c892ec02586b">ALingoPlayerState::QuestRole</a></div><div class="ttdeci">EQuestRole QuestRole</div><div class="ttdoc">플레이어 역할 (싱글/멀티에서 문제1, 문제2 구분)</div><div class="ttdef"><b>Definition</b> <a href="ALingoPlayerState_8h_source.html#l00063">ALingoPlayerState.h:63</a></div></div>
 <div class="ttc" id="aclassULingoGameHelper_html_a6117f2f4942b42864305def958e0c108"><div class="ttname"><a href="classULingoGameHelper.html#a6117f2f4942b42864305def958e0c108">ULingoGameHelper::GetLingoPlayerState</a></div><div class="ttdeci">static class ALingoPlayerState * GetLingoPlayerState(const UObject *WorldContextObject)</div><div class="ttdef"><b>Definition</b> <a href="ULingoGameHelper_8cpp_source.html#l00051">ULingoGameHelper.cpp:51</a></div></div>
 <div class="ttc" id="aclassULingoGameHelper_html_aae5e9443e2249c16219279d75b62cb46"><div class="ttname"><a href="classULingoGameHelper.html#aae5e9443e2249c16219279d75b62cb46">ULingoGameHelper::GetLingoGameState</a></div><div class="ttdeci">static class ALingoGameState * GetLingoGameState(const UObject *WorldContextObject)</div><div class="ttdef"><b>Definition</b> <a href="ULingoGameHelper_8cpp_source.html#l00046">ULingoGameHelper.cpp:46</a></div></div>
-<div class="ttc" id="aclassUQuestInfoWidget_html_a7786ccf2907f4e2d3f3f05da3e04b10f"><div class="ttname"><a href="classUQuestInfoWidget.html#a7786ccf2907f4e2d3f3f05da3e04b10f">UQuestInfoWidget::SetQuestText</a></div><div class="ttdeci">void SetQuestText(const FWordData &amp;WordData) const</div><div class="ttdef"><b>Definition</b> <a href="UQuestInfoWidget_8cpp_source.html#l00051">UQuestInfoWidget.cpp:51</a></div></div>
+<div class="ttc" id="aclassUQuestInfoWidget_html_a67249f6ef50bce20d34b11fc7d096a7d"><div class="ttname"><a href="classUQuestInfoWidget.html#a67249f6ef50bce20d34b11fc7d096a7d">UQuestInfoWidget::Txt_Message</a></div><div class="ttdeci">TObjectPtr&lt; class UTextBlock &gt; Txt_Message</div><div class="ttdef"><b>Definition</b> <a href="UQuestInfoWidget_8h_source.html#l00034">UQuestInfoWidget.h:34</a></div></div>
 <div class="ttc" id="astructFResponseListenScenario_html"><div class="ttname"><a href="structFResponseListenScenario.html">FResponseListenScenario</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00889">NetworkData.h:890</a></div></div>
-<div class="ttc" id="astructFResponseListenScenario_html_a75544300df8dfd58442360cb0348a0f8"><div class="ttname"><a href="structFResponseListenScenario.html#a75544300df8dfd58442360cb0348a0f8">FResponseListenScenario::full_data</a></div><div class="ttdeci">FWordData full_data</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00915">NetworkData.h:915</a></div></div>
-<div class="ttc" id="astructFResponseListenScenario_html_aac9b1ddf40c8183677692d86a4eae2ff"><div class="ttname"><a href="structFResponseListenScenario.html#aac9b1ddf40c8183677692d86a4eae2ff">FResponseListenScenario::word_data2</a></div><div class="ttdeci">FWordData word_data2</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00912">NetworkData.h:912</a></div></div>
-<div class="ttc" id="astructFResponseListenScenario_html_ae5ee14f23d89fc1ef762e21375c2264a"><div class="ttname"><a href="structFResponseListenScenario.html#ae5ee14f23d89fc1ef762e21375c2264a">FResponseListenScenario::word_data1</a></div><div class="ttdeci">FWordData word_data1</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00909">NetworkData.h:909</a></div></div>
 <div class="ttc" id="astructFResponseReadScenario_html"><div class="ttname"><a href="structFResponseReadScenario.html">FResponseReadScenario</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00795">NetworkData.h:796</a></div></div>
-<div class="ttc" id="astructFResponseReadScenario_html_a16e0f6d6581d7c3a0c58dc30a53a48bd"><div class="ttname"><a href="structFResponseReadScenario.html#a16e0f6d6581d7c3a0c58dc30a53a48bd">FResponseReadScenario::word_data1</a></div><div class="ttdeci">FWordData word_data1</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00815">NetworkData.h:815</a></div></div>
-<div class="ttc" id="astructFResponseReadScenario_html_a25de5c38409caf2c1bc4bea5879df661"><div class="ttname"><a href="structFResponseReadScenario.html#a25de5c38409caf2c1bc4bea5879df661">FResponseReadScenario::full_data</a></div><div class="ttdeci">FWordData full_data</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00821">NetworkData.h:821</a></div></div>
-<div class="ttc" id="astructFResponseReadScenario_html_af7a3da38c89b3ecbd239c98e997f21a9"><div class="ttname"><a href="structFResponseReadScenario.html#af7a3da38c89b3ecbd239c98e997f21a9">FResponseReadScenario::word_data2</a></div><div class="ttdeci">FWordData word_data2</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00818">NetworkData.h:818</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="NetworkData_8h_source.html#l00821">FResponseReadScenario::full_data</a>, <a class="el" href="NetworkData_8h_source.html#l00915">FResponseListenScenario::full_data</a>, <a class="el" href="ULingoGameHelper_8cpp_source.html#l00046">ULingoGameHelper::GetLingoGameState()</a>, <a class="el" href="ULingoGameHelper_8cpp_source.html#l00051">ULingoGameHelper::GetLingoPlayerState()</a>, <a class="el" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921ace6802b46091c31e2ec2363883fe8369">Listen</a>, <a class="el" href="ALingoPlayerState_8h_source.html#l00063">ALingoPlayerState::QuestRole</a>, <a class="el" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a7a1a5f3e79fdc91edf2f5ead9d66abb4">Read</a>, <a class="el" href="UQuestInfoWidget_8cpp_source.html#l00051">SetQuestText()</a>, <a class="el" href="NetworkData_8h_source.html#l00815">FResponseReadScenario::word_data1</a>, <a class="el" href="NetworkData_8h_source.html#l00909">FResponseListenScenario::word_data1</a>, <a class="el" href="NetworkData_8h_source.html#l00818">FResponseReadScenario::word_data2</a>, <a class="el" href="NetworkData_8h_source.html#l00912">FResponseListenScenario::word_data2</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="ULingoGameHelper_8cpp_source.html#l00046">ULingoGameHelper::GetLingoGameState()</a>, <a class="el" href="ULingoGameHelper_8cpp_source.html#l00051">ULingoGameHelper::GetLingoPlayerState()</a>, <a class="el" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921ace6802b46091c31e2ec2363883fe8369">Listen</a>, <a class="el" href="ALingoPlayerState_8h_source.html#l00063">ALingoPlayerState::QuestRole</a>, <a class="el" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a7a1a5f3e79fdc91edf2f5ead9d66abb4">Read</a>, <a class="el" href="UQuestInfoWidget_8h_source.html#l00034">Txt_Message</a>.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UQuestInfoWidget_8cpp_source.html#l00057">OnQuestScenarioDataReceived()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UQuestInfoWidget_8cpp_source.html#l00061">OnQuestScenarioDataReceived()</a>.</p>
 <div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-2-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classUQuestInfoWidget_a2deba64cfb1b9403c7cb7f699a242794_cgraph.svg" width="527" height="166"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classUQuestInfoWidget_a2deba64cfb1b9403c7cb7f699a242794_cgraph.svg" width="507" height="115"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-3-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
@@ -271,10 +269,10 @@ Private 멤버 함수</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="UQuestInfoWidget_8cpp_source.html">UQuestInfoWidget.cpp</a> 파일의 <a class="el" href="UQuestInfoWidget_8cpp_source.html#l00067">67</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   68</span>{</div>
-<div class="line"><span class="lineno">   69</span>    SetVisibility(ESlateVisibility::Collapsed);</div>
-<div class="line"><span class="lineno">   70</span>}</div>
+<p class="definition"><a class="el" href="UQuestInfoWidget_8cpp_source.html">UQuestInfoWidget.cpp</a> 파일의 <a class="el" href="UQuestInfoWidget_8cpp_source.html#l00071">71</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   72</span>{</div>
+<div class="line"><span class="lineno">   73</span>    SetVisibility(ESlateVisibility::Collapsed);</div>
+<div class="line"><span class="lineno">   74</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -301,10 +299,10 @@ Private 멤버 함수</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="UQuestInfoWidget_8cpp_source.html">UQuestInfoWidget.cpp</a> 파일의 <a class="el" href="UQuestInfoWidget_8cpp_source.html#l00057">57</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   58</span>{</div>
-<div class="line"><span class="lineno">   59</span>    this-&gt;<a class="code hl_function" href="classUQuestInfoWidget.html#a2deba64cfb1b9403c7cb7f699a242794">InitQuestInfo</a>();</div>
-<div class="line"><span class="lineno">   60</span>}</div>
+<p class="definition"><a class="el" href="UQuestInfoWidget_8cpp_source.html">UQuestInfoWidget.cpp</a> 파일의 <a class="el" href="UQuestInfoWidget_8cpp_source.html#l00061">61</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   62</span>{</div>
+<div class="line"><span class="lineno">   63</span>    this-&gt;<a class="code hl_function" href="classUQuestInfoWidget.html#a2deba64cfb1b9403c7cb7f699a242794">InitQuestInfo</a>();</div>
+<div class="line"><span class="lineno">   64</span>}</div>
 <div class="ttc" id="aclassUQuestInfoWidget_html_a2deba64cfb1b9403c7cb7f699a242794"><div class="ttname"><a href="classUQuestInfoWidget.html#a2deba64cfb1b9403c7cb7f699a242794">UQuestInfoWidget::InitQuestInfo</a></div><div class="ttdeci">void InitQuestInfo()</div><div class="ttdef"><b>Definition</b> <a href="UQuestInfoWidget_8cpp_source.html#l00013">UQuestInfoWidget.cpp:13</a></div></div>
 </div><!-- fragment -->
 <p class="reference">다음을 참조함 :  <a class="el" href="UQuestInfoWidget_8cpp_source.html#l00013">InitQuestInfo()</a>.</p>
@@ -313,7 +311,7 @@ Private 멤버 함수</h2></td></tr>
 <div id="dynsection-4-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-4-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classUQuestInfoWidget_a0462f16d454098b20684b501054a4250_cgraph.svg" width="100%" height="424"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classUQuestInfoWidget_a0462f16d454098b20684b501054a4250_cgraph.svg" width="100%" height="386"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -342,10 +340,10 @@ Private 멤버 함수</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="UQuestInfoWidget_8cpp_source.html">UQuestInfoWidget.cpp</a> 파일의 <a class="el" href="UQuestInfoWidget_8cpp_source.html#l00062">62</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   63</span>{</div>
-<div class="line"><span class="lineno">   64</span>    SetVisibility(ESlateVisibility::Collapsed);</div>
-<div class="line"><span class="lineno">   65</span>}</div>
+<p class="definition"><a class="el" href="UQuestInfoWidget_8cpp_source.html">UQuestInfoWidget.cpp</a> 파일의 <a class="el" href="UQuestInfoWidget_8cpp_source.html#l00066">66</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   67</span>{</div>
+<div class="line"><span class="lineno">   68</span>    SetVisibility(ESlateVisibility::Collapsed);</div>
+<div class="line"><span class="lineno">   69</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -372,25 +370,6 @@ Private 멤버 함수</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition"><a class="el" href="UQuestInfoWidget_8cpp_source.html">UQuestInfoWidget.cpp</a> 파일의 <a class="el" href="UQuestInfoWidget_8cpp_source.html#l00051">51</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   52</span>{</div>
-<div class="line"><span class="lineno">   53</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUQuestInfoWidget.html#a67249f6ef50bce20d34b11fc7d096a7d">Txt_Message</a>)</div>
-<div class="line"><span class="lineno">   54</span>        <a class="code hl_variable" href="classUQuestInfoWidget.html#a67249f6ef50bce20d34b11fc7d096a7d">Txt_Message</a>-&gt;SetText(FText::FromString(WordData.<a class="code hl_variable" href="structFWordData.html#a0c48a651223fd58eedb624c3837e8b3b">Kor</a>));</div>
-<div class="line"><span class="lineno">   55</span>}</div>
-<div class="ttc" id="aclassUQuestInfoWidget_html_a67249f6ef50bce20d34b11fc7d096a7d"><div class="ttname"><a href="classUQuestInfoWidget.html#a67249f6ef50bce20d34b11fc7d096a7d">UQuestInfoWidget::Txt_Message</a></div><div class="ttdeci">TObjectPtr&lt; class UTextBlock &gt; Txt_Message</div><div class="ttdef"><b>Definition</b> <a href="UQuestInfoWidget_8h_source.html#l00034">UQuestInfoWidget.h:34</a></div></div>
-<div class="ttc" id="astructFWordData_html_a0c48a651223fd58eedb624c3837e8b3b"><div class="ttname"><a href="structFWordData.html#a0c48a651223fd58eedb624c3837e8b3b">FWordData::Kor</a></div><div class="ttdeci">FString Kor</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00207">NetworkData.h:207</a></div></div>
-</div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="NetworkData_8h_source.html#l00207">FWordData::Kor</a>, <a class="el" href="UQuestInfoWidget_8h_source.html#l00034">Txt_Message</a>.</p>
-
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UQuestInfoWidget_8cpp_source.html#l00013">InitQuestInfo()</a>.</p>
-<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
-<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-5-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classUQuestInfoWidget_a7786ccf2907f4e2d3f3f05da3e04b10f_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
-</div>
 
 </div>
 </div>
@@ -473,7 +452,7 @@ Private 멤버 함수</h2></td></tr>
 
 <p class="definition"><a class="el" href="UQuestInfoWidget_8h_source.html">UQuestInfoWidget.h</a> 파일의 <a class="el" href="UQuestInfoWidget_8h_source.html#l00034">34</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UQuestInfoWidget_8cpp_source.html#l00051">SetQuestText()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UQuestInfoWidget_8cpp_source.html#l00013">InitQuestInfo()</a>.</p>
 
 </div>
 </div>
@@ -487,7 +466,7 @@ Private 멤버 함수</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classUQuestInfoWidget.html">UQuestInfoWidget</a></li>
-    <li class="footer">생성시간 : 화 12월 9 2025 04:47:56, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 수 12월 10 2025 23:34:44, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

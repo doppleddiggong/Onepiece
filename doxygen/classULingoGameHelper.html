@@ -310,15 +310,15 @@ $(document).ready(function(){initNavTree('classULingoGameHelper.html',''); initR
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ULingoGameHelper_8cpp_source.html">ULingoGameHelper.cpp</a> 파일의 <a class="el" href="ULingoGameHelper_8cpp_source.html#l00266">266</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  267</span>{</div>
-<div class="line"><span class="lineno">  268</span>    <span class="comment">// 정답률 계산</span></div>
-<div class="line"><span class="lineno">  269</span>    <span class="keyword">const</span> <span class="keywordtype">float</span> Percentage = ((10.f - WrongCnt) / 10.f) * 100.f;</div>
-<div class="line"><span class="lineno">  270</span>    <span class="keyword">const</span> int32 RoundedPercentage = FMath::RoundToInt(Percentage);</div>
-<div class="line"><span class="lineno">  271</span>    </div>
-<div class="line"><span class="lineno">  272</span>    <span class="comment">// FString으로 변환</span></div>
-<div class="line"><span class="lineno">  273</span>    <span class="keywordflow">return</span> FString::Printf(TEXT(<span class="stringliteral">&quot;%d%%&quot;</span>), RoundedPercentage);</div>
-<div class="line"><span class="lineno">  274</span>}</div>
+<p class="definition"><a class="el" href="ULingoGameHelper_8cpp_source.html">ULingoGameHelper.cpp</a> 파일의 <a class="el" href="ULingoGameHelper_8cpp_source.html#l00270">270</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  271</span>{</div>
+<div class="line"><span class="lineno">  272</span>    <span class="comment">// 정답률 계산</span></div>
+<div class="line"><span class="lineno">  273</span>    <span class="keyword">const</span> <span class="keywordtype">float</span> Percentage = ((10.f - WrongCnt) / 10.f) * 100.f;</div>
+<div class="line"><span class="lineno">  274</span>    <span class="keyword">const</span> int32 RoundedPercentage = FMath::RoundToInt(Percentage);</div>
+<div class="line"><span class="lineno">  275</span>    </div>
+<div class="line"><span class="lineno">  276</span>    <span class="comment">// FString으로 변환</span></div>
+<div class="line"><span class="lineno">  277</span>    <span class="keywordflow">return</span> FString::Printf(TEXT(<span class="stringliteral">&quot;%d%%&quot;</span>), RoundedPercentage);</div>
+<div class="line"><span class="lineno">  278</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -348,21 +348,16 @@ $(document).ready(function(){initNavTree('classULingoGameHelper.html',''); initR
 
 <p class="definition"><a class="el" href="ULingoGameHelper_8cpp_source.html">ULingoGameHelper.cpp</a> 파일의 <a class="el" href="ULingoGameHelper_8cpp_source.html#l00183">183</a> 번째 라인에서 정의되었습니다.</p>
 <div class="fragment"><div class="line"><span class="lineno">  184</span>{</div>
-<div class="line"><span class="lineno">  185</span>    <span class="keyword">const</span> int32 Minutes = FMath::FloorToInt(InRemainTime / 60.f);</div>
-<div class="line"><span class="lineno">  186</span>    <span class="keyword">const</span> int32 Seconds = FMath::FloorToInt(InRemainTime) % 60;</div>
-<div class="line"><span class="lineno">  187</span> </div>
-<div class="line"><span class="lineno">  188</span>    <span class="keywordflow">return</span> FString::Printf(TEXT(<span class="stringliteral">&quot;%02d:%02d&quot;</span>), Minutes, Seconds);</div>
-<div class="line"><span class="lineno">  189</span>}</div>
+<div class="line"><span class="lineno">  185</span>    <span class="keyword">const</span> int32 TotalMilliseconds = FMath::FloorToInt(InRemainTime * 1000.f);</div>
+<div class="line"><span class="lineno">  186</span> </div>
+<div class="line"><span class="lineno">  187</span>    <span class="keyword">const</span> int32 Minutes       = TotalMilliseconds / 60000;</div>
+<div class="line"><span class="lineno">  188</span>    <span class="keyword">const</span> int32 Seconds       = (TotalMilliseconds / 1000) % 60;</div>
+<div class="line"><span class="lineno">  189</span>    <span class="keyword">const</span> int32 Milliseconds  = (TotalMilliseconds % 1000) / 10;</div>
+<div class="line"><span class="lineno">  190</span> </div>
+<div class="line"><span class="lineno">  191</span>    <span class="comment">// 00:00.00</span></div>
+<div class="line"><span class="lineno">  192</span>    <span class="keywordflow">return</span> FString::Printf(TEXT(<span class="stringliteral">&quot;%02d:%02d.%02d&quot;</span>), Minutes, Seconds, Milliseconds);</div>
+<div class="line"><span class="lineno">  193</span>}</div>
 </div><!-- fragment -->
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UMainWidget_8cpp_source.html#l00083">UMainWidget::UpdateTimerDisplay()</a>.</p>
-<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
-<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-4-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classULingoGameHelper_a6da883ca444eb45866e59e95e63836bb_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
-</div>
-
 </div>
 </div>
 <a id="a83ca264d23bdfc2b67f93c8f3345852a" name="a83ca264d23bdfc2b67f93c8f3345852a"></a>
@@ -396,11 +391,11 @@ $(document).ready(function(){initNavTree('classULingoGameHelper.html',''); initR
 <div class="ttc" id="aclassALingoGameMode_html"><div class="ttname"><a href="classALingoGameMode.html">ALingoGameMode</a></div><div class="ttdef"><b>Definition</b> <a href="ALingoGameMode_8h_source.html#l00010">ALingoGameMode.h:11</a></div></div>
 </div><!-- fragment -->
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AContactTrigger_8cpp_source.html#l00182">AContactTrigger::OnListenResponseScenario()</a>, <a class="el" href="AContactTrigger_8cpp_source.html#l00161">AContactTrigger::OnReadResponseScenario()</a>.</p>
-<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
-<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-5-content" class="dyncontent" style="display:none;">
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
 <div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classULingoGameHelper_a83ca264d23bdfc2b67f93c8f3345852a_icgraph.svg" width="100%" height="386"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
@@ -435,12 +430,12 @@ $(document).ready(function(){initNavTree('classULingoGameHelper.html',''); initR
 <div class="line"><span class="lineno">   48</span>    <span class="keywordflow">return</span> Cast&lt;ALingoGameState&gt;(UGameplayStatics::GetGameState(WorldContextObject));</div>
 <div class="line"><span class="lineno">   49</span>}</div>
 </div><!-- fragment -->
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerActor_8cpp_source.html#l00127">APlayerActor::BeginPlay()</a>, <a class="el" href="FoodCourtManager_8cpp_source.html#l00021">AFoodCourtManager::BeginPlay()</a>, <a class="el" href="FoodCourtManager_8cpp_source.html#l00144">AFoodCourtManager::HandleQuestScenarioDataUpdated()</a>, <a class="el" href="UQuestInfoWidget_8cpp_source.html#l00013">UQuestInfoWidget::InitQuestInfo()</a>, <a class="el" href="APopupTesterActor_8cpp_source.html#l00059">APopupTesterActor::ReadQuest()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00643">UKLingoNetworkSystem::RequestInterviewAnswer()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00906">UKLingoNetworkSystem::RequestListenScenario()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00788">UKLingoNetworkSystem::RequestReadScenario()</a>.</p>
-<div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-6-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
-<div id="dynsection-6-summary" class="dynsummary" style="display:block;">
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerActor_8cpp_source.html#l00129">APlayerActor::BeginPlay()</a>, <a class="el" href="FoodCourtManager_8cpp_source.html#l00021">AFoodCourtManager::BeginPlay()</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00194">APlayerActor::CreateMainWidget()</a>, <a class="el" href="FoodCourtManager_8cpp_source.html#l00144">AFoodCourtManager::HandleQuestScenarioDataUpdated()</a>, <a class="el" href="UQuestInfoWidget_8cpp_source.html#l00013">UQuestInfoWidget::InitQuestInfo()</a>, <a class="el" href="APopupTesterActor_8cpp_source.html#l00059">APopupTesterActor::ReadQuest()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00643">UKLingoNetworkSystem::RequestInterviewAnswer()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00906">UKLingoNetworkSystem::RequestListenScenario()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00788">UKLingoNetworkSystem::RequestReadScenario()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l01021">UKLingoNetworkSystem::RequestSpeakScenario()</a>.</p>
+<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-6-content" class="dyncontent" style="display:none;">
+<div id="dynsection-5-content" class="dyncontent" style="display:none;">
 <div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classULingoGameHelper_aae5e9443e2249c16219279d75b62cb46_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
@@ -487,11 +482,11 @@ $(document).ready(function(){initNavTree('classULingoGameHelper.html',''); initR
 <div class="line"><span class="lineno">   65</span>}</div>
 </div><!-- fragment -->
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UPopup__ReadQuest_8cpp_source.html#l00039">UPopup_ReadQuest::InitListen()</a>, <a class="el" href="UQuestInfoWidget_8cpp_source.html#l00013">UQuestInfoWidget::InitQuestInfo()</a>, <a class="el" href="UPopup__ReadQuest_8cpp_source.html#l00017">UPopup_ReadQuest::InitRead()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00215">UKLingoNetworkSystem::RequestUserToken()</a>.</p>
-<div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-7-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
-<div id="dynsection-7-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-6-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-6-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-7-content" class="dyncontent" style="display:none;">
+<div id="dynsection-6-content" class="dyncontent" style="display:none;">
 <div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classULingoGameHelper_a6117f2f4942b42864305def958e0c108_icgraph.svg" width="100%" height="450"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
@@ -578,11 +573,11 @@ $(document).ready(function(){initNavTree('classULingoGameHelper.html',''); initR
 <div class="line"><span class="lineno">   95</span>}</div>
 </div><!-- fragment -->
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALingoGameMode_8cpp_source.html#l00027">ALingoGameMode::UpdateQuestRole()</a>.</p>
-<div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-8-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
-<div id="dynsection-8-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-7-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-7-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-8-content" class="dyncontent" style="display:none;">
+<div id="dynsection-7-content" class="dyncontent" style="display:none;">
 <div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classULingoGameHelper_a98136c30beb0692693a40c7b97d0199e_icgraph.svg" width="100%" height="386"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
@@ -616,12 +611,12 @@ $(document).ready(function(){initNavTree('classULingoGameHelper.html',''); initR
 <div class="line"><span class="lineno">  155</span>    <span class="keywordflow">return</span> 300;</div>
 <div class="line"><span class="lineno">  156</span>}</div>
 </div><!-- fragment -->
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALingoGameState_8cpp_source.html#l00085">ALingoGameState::SetListenScenarioData()</a>, <a class="el" href="ALingoGameState_8cpp_source.html#l00066">ALingoGameState::SetReadScenarioData()</a>.</p>
-<div id="dynsection-9" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-9-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
-<div id="dynsection-9-summary" class="dynsummary" style="display:block;">
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALingoGameState_8cpp_source.html#l00098">ALingoGameState::SetListenScenarioData()</a>, <a class="el" href="ALingoGameState_8cpp_source.html#l00079">ALingoGameState::SetReadScenarioData()</a>.</p>
+<div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-8-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-8-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-9-content" class="dyncontent" style="display:none;">
+<div id="dynsection-8-content" class="dyncontent" style="display:none;">
 <div class="center"><iframe scrolling="no" frameborder="0" src="classULingoGameHelper_a8e35e8f50c72c9cbb4f258f64255c0b3_icgraph.svg" width="496" height="115"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
@@ -657,14 +652,14 @@ $(document).ready(function(){initNavTree('classULingoGameHelper.html',''); initR
 <div class="line"><span class="lineno">   32</span>    int32 NumPlayers = GS ? GS-&gt;PlayerArray.Num() : 0;</div>
 <div class="line"><span class="lineno">   33</span>    <span class="keywordflow">return</span> NumPlayers;</div>
 <div class="line"><span class="lineno">   34</span>}</div>
-<div class="ttc" id="aclassALingoGameState_html"><div class="ttname"><a href="classALingoGameState.html">ALingoGameState</a></div><div class="ttdef"><b>Definition</b> <a href="ALingoGameState_8h_source.html#l00026">ALingoGameState.h:27</a></div></div>
+<div class="ttc" id="aclassALingoGameState_html"><div class="ttname"><a href="classALingoGameState.html">ALingoGameState</a></div><div class="ttdef"><b>Definition</b> <a href="ALingoGameState_8h_source.html#l00027">ALingoGameState.h:28</a></div></div>
 </div><!-- fragment -->
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ULingoGameHelper_8cpp_source.html#l00036">IsMultiPlay()</a>.</p>
-<div id="dynsection-10" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-10-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
-<div id="dynsection-10-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-9" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-9-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-9-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-10-content" class="dyncontent" style="display:none;">
+<div id="dynsection-9-content" class="dyncontent" style="display:none;">
 <div class="center"><iframe scrolling="no" frameborder="0" src="classULingoGameHelper_a2b4c188bd922db08e4987962b8309a56_icgraph.svg" width="502" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
@@ -703,29 +698,29 @@ $(document).ready(function(){initNavTree('classULingoGameHelper.html',''); initR
 </dl>
 <dl class="section return"><dt>반환값</dt><dd>PlayerActor 인스턴스 (없으면 nullptr) </dd></dl>
 
-<p class="definition"><a class="el" href="ULingoGameHelper_8cpp_source.html">ULingoGameHelper.cpp</a> 파일의 <a class="el" href="ULingoGameHelper_8cpp_source.html#l00225">225</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  226</span>{</div>
-<div class="line"><span class="lineno">  227</span>    <span class="keywordflow">if</span> (!WorldContextObject)</div>
-<div class="line"><span class="lineno">  228</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">  229</span> </div>
-<div class="line"><span class="lineno">  230</span>    UWorld* World = WorldContextObject-&gt;GetWorld();</div>
-<div class="line"><span class="lineno">  231</span>    <span class="keywordflow">if</span> (!World)</div>
+<p class="definition"><a class="el" href="ULingoGameHelper_8cpp_source.html">ULingoGameHelper.cpp</a> 파일의 <a class="el" href="ULingoGameHelper_8cpp_source.html#l00229">229</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  230</span>{</div>
+<div class="line"><span class="lineno">  231</span>    <span class="keywordflow">if</span> (!WorldContextObject)</div>
 <div class="line"><span class="lineno">  232</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
 <div class="line"><span class="lineno">  233</span> </div>
-<div class="line"><span class="lineno">  234</span>    APlayerController* PC = World-&gt;GetFirstPlayerController();</div>
-<div class="line"><span class="lineno">  235</span>    <span class="keywordflow">if</span> (!PC)</div>
+<div class="line"><span class="lineno">  234</span>    UWorld* World = WorldContextObject-&gt;GetWorld();</div>
+<div class="line"><span class="lineno">  235</span>    <span class="keywordflow">if</span> (!World)</div>
 <div class="line"><span class="lineno">  236</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
 <div class="line"><span class="lineno">  237</span> </div>
-<div class="line"><span class="lineno">  238</span>    <span class="keywordflow">return</span> Cast&lt;APlayerActor&gt;(PC-&gt;GetPawn());</div>
-<div class="line"><span class="lineno">  239</span>}</div>
+<div class="line"><span class="lineno">  238</span>    APlayerController* PC = World-&gt;GetFirstPlayerController();</div>
+<div class="line"><span class="lineno">  239</span>    <span class="keywordflow">if</span> (!PC)</div>
+<div class="line"><span class="lineno">  240</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">  241</span> </div>
+<div class="line"><span class="lineno">  242</span>    <span class="keywordflow">return</span> Cast&lt;APlayerActor&gt;(PC-&gt;GetPawn());</div>
+<div class="line"><span class="lineno">  243</span>}</div>
 </div><!-- fragment -->
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="luggage_8cpp_source.html#l00441">Aluggage::OnResponseListenAudio()</a>, <a class="el" href="UPopup__ReadQuest_8cpp_source.html#l00124">UPopup_ReadQuest::OnResponseListenAudio()</a>, <a class="el" href="UPopup__Word_8cpp_source.html#l00072">UPopup_Word::OnResponseListenAudio()</a>.</p>
-<div id="dynsection-11" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-11-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
-<div id="dynsection-11-summary" class="dynsummary" style="display:block;">
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerActor_8cpp_source.html#l00444">APlayerActor::OnResponseListenAudio()</a>, <a class="el" href="luggage_8cpp_source.html#l00441">Aluggage::OnResponseListenAudio()</a>, <a class="el" href="UPopup__ReadQuest_8cpp_source.html#l00124">UPopup_ReadQuest::OnResponseListenAudio()</a>, <a class="el" href="UPopup__Word_8cpp_source.html#l00072">UPopup_Word::OnResponseListenAudio()</a>.</p>
+<div id="dynsection-10" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-10-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-10-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-11-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classULingoGameHelper_aedc78e0ec65a7aad312693bd1719bff8_icgraph.svg" width="100%" height="434"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div id="dynsection-10-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classULingoGameHelper_aedc78e0ec65a7aad312693bd1719bff8_icgraph.svg" width="100%" height="482"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -754,24 +749,24 @@ $(document).ready(function(){initNavTree('classULingoGameHelper.html',''); initR
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ULingoGameHelper_8cpp_source.html">ULingoGameHelper.cpp</a> 파일의 <a class="el" href="ULingoGameHelper_8cpp_source.html#l00242">242</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  243</span>{</div>
-<div class="line"><span class="lineno">  244</span>    <span class="keywordflow">if</span> (!WorldContextObject)</div>
-<div class="line"><span class="lineno">  245</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">  246</span> </div>
-<div class="line"><span class="lineno">  247</span>    UWorld* World = WorldContextObject-&gt;GetWorld();</div>
-<div class="line"><span class="lineno">  248</span>    <span class="keywordflow">if</span> (!World)</div>
+<p class="definition"><a class="el" href="ULingoGameHelper_8cpp_source.html">ULingoGameHelper.cpp</a> 파일의 <a class="el" href="ULingoGameHelper_8cpp_source.html#l00246">246</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  247</span>{</div>
+<div class="line"><span class="lineno">  248</span>    <span class="keywordflow">if</span> (!WorldContextObject)</div>
 <div class="line"><span class="lineno">  249</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
 <div class="line"><span class="lineno">  250</span> </div>
-<div class="line"><span class="lineno">  251</span>    <span class="keywordflow">return</span> Cast&lt;APlayerControl&gt;(World-&gt;GetFirstPlayerController());</div>
-<div class="line"><span class="lineno">  252</span>}</div>
+<div class="line"><span class="lineno">  251</span>    UWorld* World = WorldContextObject-&gt;GetWorld();</div>
+<div class="line"><span class="lineno">  252</span>    <span class="keywordflow">if</span> (!World)</div>
+<div class="line"><span class="lineno">  253</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">  254</span> </div>
+<div class="line"><span class="lineno">  255</span>    <span class="keywordflow">return</span> Cast&lt;APlayerControl&gt;(World-&gt;GetFirstPlayerController());</div>
+<div class="line"><span class="lineno">  256</span>}</div>
 </div><!-- fragment -->
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ULingoGameHelper_8cpp_source.html#l00022">GetUserId()</a>.</p>
-<div id="dynsection-12" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-12-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
-<div id="dynsection-12-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-11" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-11-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-11-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-12-content" class="dyncontent" style="display:none;">
+<div id="dynsection-11-content" class="dyncontent" style="display:none;">
 <div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classULingoGameHelper_a156d567d1976157714844997935655ce_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
@@ -821,11 +816,11 @@ $(document).ready(function(){initNavTree('classULingoGameHelper.html',''); initR
 <div class="ttc" id="aclassUSpeakStageSubsystem_html_ab6908ceda4c8b9b32f9752a341e39597"><div class="ttname"><a href="classUSpeakStageSubsystem.html#ab6908ceda4c8b9b32f9752a341e39597">USpeakStageSubsystem::GetSpeakStage</a></div><div class="ttdeci">class ASpeakStageActor * GetSpeakStage() const</div><div class="ttdoc">SpeakStage 참조 가져오기</div><div class="ttdef"><b>Definition</b> <a href="USpeakStageSubsystem_8h_source.html#l00078">USpeakStageSubsystem.h:78</a></div></div>
 </div><!-- fragment -->
 <p class="reference">다음을 참조함 :  <a class="el" href="USpeakStageSubsystem_8h_source.html#l00078">USpeakStageSubsystem::GetSpeakStage()</a>, <a class="el" href="USpeakStageSubsystem_8h_source.html#l00092">USpeakStageSubsystem::IsInitialized()</a>.</p>
-<div id="dynsection-13" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-13-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
-<div id="dynsection-13-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-12" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-12-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-12-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-13-content" class="dyncontent" style="display:none;">
+<div id="dynsection-12-content" class="dyncontent" style="display:none;">
 <div class="center"><iframe scrolling="no" frameborder="0" src="classULingoGameHelper_a7841ecb4e3125ad48efba9920250bf1a_cgraph.svg" width="460" height="115"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
@@ -878,12 +873,12 @@ $(document).ready(function(){initNavTree('classULingoGameHelper.html',''); initR
 </div><!-- fragment -->
 <p class="reference">다음을 참조함 :  <a class="el" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921ace6802b46091c31e2ec2363883fe8369">Listen</a>, <a class="el" href="Onepiece_8h_source.html#l00040">GameMessage::ListenStageEnd</a>, <a class="el" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a7a1a5f3e79fdc91edf2f5ead9d66abb4">Read</a>, <a class="el" href="Onepiece_8h_source.html#l00037">GameMessage::ReadStageEnd</a>, <a class="el" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a8b1e2b9b342dd37344c6343dc23a6733">Speak</a>, <a class="el" href="Onepiece_8h_source.html#l00046">GameMessage::SpeakStageEnd</a>, <a class="el" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a1129c0e4d43f2d121652a7302712cff6">Write</a>, <a class="el" href="Onepiece_8h_source.html#l00043">GameMessage::WriteStageEnd</a>.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALingoGameState_8cpp_source.html#l00143">ALingoGameState::OnMissionTimerEnd()</a>.</p>
-<div id="dynsection-14" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-14-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
-<div id="dynsection-14-summary" class="dynsummary" style="display:block;">
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALingoGameState_8cpp_source.html#l00156">ALingoGameState::OnMissionTimerEnd()</a>.</p>
+<div id="dynsection-13" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-13-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-13-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-14-content" class="dyncontent" style="display:none;">
+<div id="dynsection-13-content" class="dyncontent" style="display:none;">
 <div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classULingoGameHelper_aedcd84af73f7741c04bdd74e617366e8_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
@@ -933,11 +928,11 @@ $(document).ready(function(){initNavTree('classULingoGameHelper.html',''); initR
 <p class="reference">다음을 참조함 :  <a class="el" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921ace6802b46091c31e2ec2363883fe8369">Listen</a>, <a class="el" href="Onepiece_8h_source.html#l00039">GameMessage::ListenStageStart</a>, <a class="el" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a7a1a5f3e79fdc91edf2f5ead9d66abb4">Read</a>, <a class="el" href="Onepiece_8h_source.html#l00036">GameMessage::ReadStageStart</a>, <a class="el" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a8b1e2b9b342dd37344c6343dc23a6733">Speak</a>, <a class="el" href="Onepiece_8h_source.html#l00045">GameMessage::SpeakStageStart</a>, <a class="el" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a1129c0e4d43f2d121652a7302712cff6">Write</a>, <a class="el" href="Onepiece_8h_source.html#l00042">GameMessage::WriteStageStart</a>.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AContactTrigger_8cpp_source.html#l00045">AContactTrigger::BeginPlay()</a>.</p>
-<div id="dynsection-15" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-15-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
-<div id="dynsection-15-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-14" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-14-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-14-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-15-content" class="dyncontent" style="display:none;">
+<div id="dynsection-14-content" class="dyncontent" style="display:none;">
 <div class="center"><iframe scrolling="no" frameborder="0" src="classULingoGameHelper_a5b348eed6677226376898017e0bdc2de_icgraph.svg" width="475" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
@@ -983,13 +978,13 @@ $(document).ready(function(){initNavTree('classULingoGameHelper.html',''); initR
 </div><!-- fragment -->
 <p class="reference">다음을 참조함 :  <a class="el" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921ace6802b46091c31e2ec2363883fe8369">Listen</a>, <a class="el" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a7a1a5f3e79fdc91edf2f5ead9d66abb4">Read</a>, <a class="el" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a8b1e2b9b342dd37344c6343dc23a6733">Speak</a>, <a class="el" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a1129c0e4d43f2d121652a7302712cff6">Write</a>.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00906">UKLingoNetworkSystem::RequestListenScenario()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00788">UKLingoNetworkSystem::RequestReadScenario()</a>, <a class="el" href="Popup__Result_8cpp_source.html#l00247">UPopup_Result::RequestResult()</a>.</p>
-<div id="dynsection-16" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-16-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
-<div id="dynsection-16-summary" class="dynsummary" style="display:block;">
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00906">UKLingoNetworkSystem::RequestListenScenario()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00788">UKLingoNetworkSystem::RequestReadScenario()</a>, <a class="el" href="Popup__Result_8cpp_source.html#l00247">UPopup_Result::RequestResult()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l01021">UKLingoNetworkSystem::RequestSpeakScenario()</a>.</p>
+<div id="dynsection-15" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-15-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-15-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-16-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classULingoGameHelper_a2ff337cf76037d417e9c4a65b1a8fc9a_icgraph.svg" width="100%" height="424"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div id="dynsection-15-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classULingoGameHelper_a2ff337cf76037d417e9c4a65b1a8fc9a_icgraph.svg" width="100%" height="472"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -1018,17 +1013,17 @@ $(document).ready(function(){initNavTree('classULingoGameHelper.html',''); initR
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ULingoGameHelper_8cpp_source.html">ULingoGameHelper.cpp</a> 파일의 <a class="el" href="ULingoGameHelper_8cpp_source.html#l00254">254</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  255</span>{</div>
-<div class="line"><span class="lineno">  256</span>    <span class="keywordflow">if</span> (InTimeTaken &lt;= 300)</div>
-<div class="line"><span class="lineno">  257</span>        <span class="keywordflow">return</span> <span class="stringliteral">&quot;C&quot;</span>;</div>
-<div class="line"><span class="lineno">  258</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (InTimeTaken &lt;= 240)</div>
-<div class="line"><span class="lineno">  259</span>        <span class="keywordflow">return</span> <span class="stringliteral">&quot;B&quot;</span>;</div>
-<div class="line"><span class="lineno">  260</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (InTimeTaken &lt;= 180)</div>
-<div class="line"><span class="lineno">  261</span>        <span class="keywordflow">return</span> <span class="stringliteral">&quot;A&quot;</span>;</div>
-<div class="line"><span class="lineno">  262</span>    <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  263</span>        <span class="keywordflow">return</span> <span class="stringliteral">&quot;D&quot;</span>;</div>
-<div class="line"><span class="lineno">  264</span>}</div>
+<p class="definition"><a class="el" href="ULingoGameHelper_8cpp_source.html">ULingoGameHelper.cpp</a> 파일의 <a class="el" href="ULingoGameHelper_8cpp_source.html#l00258">258</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  259</span>{</div>
+<div class="line"><span class="lineno">  260</span>    <span class="keywordflow">if</span> (InTimeTaken &lt;= 300)</div>
+<div class="line"><span class="lineno">  261</span>        <span class="keywordflow">return</span> <span class="stringliteral">&quot;C&quot;</span>;</div>
+<div class="line"><span class="lineno">  262</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (InTimeTaken &lt;= 240)</div>
+<div class="line"><span class="lineno">  263</span>        <span class="keywordflow">return</span> <span class="stringliteral">&quot;B&quot;</span>;</div>
+<div class="line"><span class="lineno">  264</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (InTimeTaken &lt;= 180)</div>
+<div class="line"><span class="lineno">  265</span>        <span class="keywordflow">return</span> <span class="stringliteral">&quot;A&quot;</span>;</div>
+<div class="line"><span class="lineno">  266</span>    <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  267</span>        <span class="keywordflow">return</span> <span class="stringliteral">&quot;D&quot;</span>;</div>
+<div class="line"><span class="lineno">  268</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1060,13 +1055,13 @@ $(document).ready(function(){initNavTree('classULingoGameHelper.html',''); initR
 <div class="line"><span class="lineno">   19</span>    <span class="keywordflow">return</span> FDateTime::UtcNow().ToUnixTimestamp();</div>
 <div class="line"><span class="lineno">   20</span>}</div>
 </div><!-- fragment -->
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALingoGameState_8cpp_source.html#l00019">ALingoGameState::ALingoGameState()</a>.</p>
-<div id="dynsection-17" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-17-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
-<div id="dynsection-17-summary" class="dynsummary" style="display:block;">
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALingoGameState_8cpp_source.html#l00050">ALingoGameState::BeginPlay()</a>.</p>
+<div id="dynsection-16" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-16-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-16-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-17-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classULingoGameHelper_a22a311ff0293415aca5bf90fee7191c8_icgraph.svg" width="500" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div id="dynsection-16-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classULingoGameHelper_a22a311ff0293415aca5bf90fee7191c8_icgraph.svg" width="482" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -1101,23 +1096,23 @@ $(document).ready(function(){initNavTree('classULingoGameHelper.html',''); initR
 <div class="line"><span class="lineno">   25</span>        <span class="keywordflow">return</span> PC-&gt;GetUserId();</div>
 <div class="line"><span class="lineno">   26</span>    <span class="keywordflow">return</span> 0;</div>
 <div class="line"><span class="lineno">   27</span>}</div>
-<div class="ttc" id="aclassULingoGameHelper_html_a156d567d1976157714844997935655ce"><div class="ttname"><a href="classULingoGameHelper.html#a156d567d1976157714844997935655ce">ULingoGameHelper::GetPlayerControl</a></div><div class="ttdeci">static class APlayerControl * GetPlayerControl(const UObject *WorldContextObject)</div><div class="ttdef"><b>Definition</b> <a href="ULingoGameHelper_8cpp_source.html#l00242">ULingoGameHelper.cpp:242</a></div></div>
+<div class="ttc" id="aclassULingoGameHelper_html_a156d567d1976157714844997935655ce"><div class="ttname"><a href="classULingoGameHelper.html#a156d567d1976157714844997935655ce">ULingoGameHelper::GetPlayerControl</a></div><div class="ttdeci">static class APlayerControl * GetPlayerControl(const UObject *WorldContextObject)</div><div class="ttdef"><b>Definition</b> <a href="ULingoGameHelper_8cpp_source.html#l00246">ULingoGameHelper.cpp:246</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="ULingoGameHelper_8cpp_source.html#l00242">GetPlayerControl()</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="ULingoGameHelper_8cpp_source.html#l00246">GetPlayerControl()</a>.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UPopup__Interview_8cpp_source.html#l00082">UPopup_Interview::OnClickSubmit()</a>.</p>
+<div id="dynsection-17" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-17-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-17-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-17-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classULingoGameHelper_a128a70c4f0e61cb82b17a1927a2c6709_cgraph.svg" width="503" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 <div id="dynsection-18" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-18-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
+  <img id="dynsection-18-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-18-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-18-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classULingoGameHelper_a128a70c4f0e61cb82b17a1927a2c6709_cgraph.svg" width="503" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
-<div id="dynsection-19" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-19-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
-<div id="dynsection-19-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-19-content" class="dyncontent" style="display:none;">
 <div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classULingoGameHelper_a128a70c4f0e61cb82b17a1927a2c6709_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
@@ -1155,29 +1150,29 @@ $(document).ready(function(){initNavTree('classULingoGameHelper.html',''); initR
   </dd>
 </dl>
 
-<p class="definition"><a class="el" href="ULingoGameHelper_8cpp_source.html">ULingoGameHelper.cpp</a> 파일의 <a class="el" href="ULingoGameHelper_8cpp_source.html#l00208">208</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  209</span>{</div>
-<div class="line"><span class="lineno">  210</span>    <span class="keywordflow">if</span> (!WorldContextObject)</div>
-<div class="line"><span class="lineno">  211</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  212</span> </div>
-<div class="line"><span class="lineno">  213</span>    UWorld* World = WorldContextObject-&gt;GetWorld();</div>
-<div class="line"><span class="lineno">  214</span>    <span class="keywordflow">if</span> (!World)</div>
+<p class="definition"><a class="el" href="ULingoGameHelper_8cpp_source.html">ULingoGameHelper.cpp</a> 파일의 <a class="el" href="ULingoGameHelper_8cpp_source.html#l00212">212</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  213</span>{</div>
+<div class="line"><span class="lineno">  214</span>    <span class="keywordflow">if</span> (!WorldContextObject)</div>
 <div class="line"><span class="lineno">  215</span>        <span class="keywordflow">return</span>;</div>
 <div class="line"><span class="lineno">  216</span> </div>
-<div class="line"><span class="lineno">  217</span>    APlayerController* PC = World-&gt;GetFirstPlayerController();</div>
-<div class="line"><span class="lineno">  218</span>    <span class="keywordflow">if</span> (!PC)</div>
+<div class="line"><span class="lineno">  217</span>    UWorld* World = WorldContextObject-&gt;GetWorld();</div>
+<div class="line"><span class="lineno">  218</span>    <span class="keywordflow">if</span> (!World)</div>
 <div class="line"><span class="lineno">  219</span>        <span class="keywordflow">return</span>;</div>
 <div class="line"><span class="lineno">  220</span> </div>
-<div class="line"><span class="lineno">  221</span>    PC-&gt;bShowMouseCursor = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  222</span>    PC-&gt;SetInputMode(FInputModeGameOnly());</div>
-<div class="line"><span class="lineno">  223</span>}</div>
+<div class="line"><span class="lineno">  221</span>    APlayerController* PC = World-&gt;GetFirstPlayerController();</div>
+<div class="line"><span class="lineno">  222</span>    <span class="keywordflow">if</span> (!PC)</div>
+<div class="line"><span class="lineno">  223</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  224</span> </div>
+<div class="line"><span class="lineno">  225</span>    PC-&gt;bShowMouseCursor = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  226</span>    PC-&gt;SetInputMode(FInputModeGameOnly());</div>
+<div class="line"><span class="lineno">  227</span>}</div>
 </div><!-- fragment -->
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerActor_8cpp_source.html#l00127">APlayerActor::BeginPlay()</a>, <a class="el" href="UPopupManager_8cpp_source.html#l00091">UPopupManager::HidePopup()</a>.</p>
-<div id="dynsection-20" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-20-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
-<div id="dynsection-20-summary" class="dynsummary" style="display:block;">
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerActor_8cpp_source.html#l00129">APlayerActor::BeginPlay()</a>, <a class="el" href="UPopupManager_8cpp_source.html#l00091">UPopupManager::HidePopup()</a>.</p>
+<div id="dynsection-19" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-19-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-19-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-20-content" class="dyncontent" style="display:none;">
+<div id="dynsection-19-content" class="dyncontent" style="display:none;">
 <div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classULingoGameHelper_a569e70240af4850b5b1a0dafd26d4033_icgraph.svg" width="100%" height="370"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
@@ -1214,11 +1209,11 @@ $(document).ready(function(){initNavTree('classULingoGameHelper.html',''); initR
 <div class="ttc" id="aclassULingoGameHelper_html_a2b4c188bd922db08e4987962b8309a56"><div class="ttname"><a href="classULingoGameHelper.html#a2b4c188bd922db08e4987962b8309a56">ULingoGameHelper::GetMultiPlayerCount</a></div><div class="ttdeci">static int GetMultiPlayerCount(const UObject *WorldContextObject)</div><div class="ttdef"><b>Definition</b> <a href="ULingoGameHelper_8cpp_source.html#l00029">ULingoGameHelper.cpp:29</a></div></div>
 </div><!-- fragment -->
 <p class="reference">다음을 참조함 :  <a class="el" href="ULingoGameHelper_8cpp_source.html#l00029">GetMultiPlayerCount()</a>.</p>
-<div id="dynsection-21" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-21-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
-<div id="dynsection-21-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-20" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-20-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-20-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-21-content" class="dyncontent" style="display:none;">
+<div id="dynsection-20-content" class="dyncontent" style="display:none;">
 <div class="center"><iframe scrolling="no" frameborder="0" src="classULingoGameHelper_aaffb56063f7fe4916e89d589c02ee8cb_cgraph.svg" width="502" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
@@ -1256,29 +1251,29 @@ $(document).ready(function(){initNavTree('classULingoGameHelper.html',''); initR
   </dd>
 </dl>
 
-<p class="definition"><a class="el" href="ULingoGameHelper_8cpp_source.html">ULingoGameHelper.cpp</a> 파일의 <a class="el" href="ULingoGameHelper_8cpp_source.html#l00191">191</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  192</span>{</div>
-<div class="line"><span class="lineno">  193</span>    <span class="keywordflow">if</span> (!WorldContextObject)</div>
-<div class="line"><span class="lineno">  194</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  195</span> </div>
-<div class="line"><span class="lineno">  196</span>    UWorld* World = WorldContextObject-&gt;GetWorld();</div>
-<div class="line"><span class="lineno">  197</span>    <span class="keywordflow">if</span> (!World)</div>
+<p class="definition"><a class="el" href="ULingoGameHelper_8cpp_source.html">ULingoGameHelper.cpp</a> 파일의 <a class="el" href="ULingoGameHelper_8cpp_source.html#l00195">195</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  196</span>{</div>
+<div class="line"><span class="lineno">  197</span>    <span class="keywordflow">if</span> (!WorldContextObject)</div>
 <div class="line"><span class="lineno">  198</span>        <span class="keywordflow">return</span>;</div>
 <div class="line"><span class="lineno">  199</span> </div>
-<div class="line"><span class="lineno">  200</span>    APlayerController* PC = World-&gt;GetFirstPlayerController();</div>
-<div class="line"><span class="lineno">  201</span>    <span class="keywordflow">if</span> (!PC)</div>
+<div class="line"><span class="lineno">  200</span>    UWorld* World = WorldContextObject-&gt;GetWorld();</div>
+<div class="line"><span class="lineno">  201</span>    <span class="keywordflow">if</span> (!World)</div>
 <div class="line"><span class="lineno">  202</span>        <span class="keywordflow">return</span>;</div>
 <div class="line"><span class="lineno">  203</span> </div>
-<div class="line"><span class="lineno">  204</span>    PC-&gt;bShowMouseCursor = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  205</span>    PC-&gt;SetInputMode(FInputModeGameAndUI());</div>
-<div class="line"><span class="lineno">  206</span>}</div>
+<div class="line"><span class="lineno">  204</span>    APlayerController* PC = World-&gt;GetFirstPlayerController();</div>
+<div class="line"><span class="lineno">  205</span>    <span class="keywordflow">if</span> (!PC)</div>
+<div class="line"><span class="lineno">  206</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  207</span> </div>
+<div class="line"><span class="lineno">  208</span>    PC-&gt;bShowMouseCursor = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  209</span>    PC-&gt;SetInputMode(FInputModeGameAndUI());</div>
+<div class="line"><span class="lineno">  210</span>}</div>
 </div><!-- fragment -->
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="LobbyWidget_8cpp_source.html#l00019">ULobbyWidget::NativeConstruct()</a>, <a class="el" href="StartWidget_8cpp_source.html#l00011">UStartWidget::NativeConstruct()</a>, <a class="el" href="UPopupManager_8cpp_source.html#l00048">UPopupManager::ShowPopup()</a>.</p>
-<div id="dynsection-22" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-22-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
-<div id="dynsection-22-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-21" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-21-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-21-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-22-content" class="dyncontent" style="display:none;">
+<div id="dynsection-21-content" class="dyncontent" style="display:none;">
 <div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classULingoGameHelper_af5fbc9538e6adda28f03d547c33ecc48_icgraph.svg" width="100%" height="450"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
@@ -1294,7 +1289,7 @@ $(document).ready(function(){initNavTree('classULingoGameHelper.html',''); initR
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classULingoGameHelper.html">ULingoGameHelper</a></li>
-    <li class="footer">생성시간 : 화 12월 9 2025 04:47:56, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 수 12월 10 2025 23:34:44, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

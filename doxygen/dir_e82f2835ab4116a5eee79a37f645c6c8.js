@@ -18,6 +18,7 @@ var dir_e82f2835ab4116a5eee79a37f645c6c8 =
     [ "UPlayTimer.h", "UPlayTimer_8h.html", "UPlayTimer_8h" ],
     [ "UQuestInfoWidget.h", "UQuestInfoWidget_8h.html", "UQuestInfoWidget_8h" ],
     [ "UResultStatWidget.h", "UResultStatWidget_8h.html", "UResultStatWidget_8h" ],
+    [ "URoomWidget.h", "URoomWidget_8h.html", "URoomWidget_8h" ],
     [ "USizeResultState.h", "USizeResultState_8h.html", "USizeResultState_8h" ],
     [ "USpeakingJudesWidget.h", "USpeakingJudesWidget_8h.html", "USpeakingJudesWidget_8h" ],
     [ "USpeakWidget.h", "USpeakWidget_8h.html", "USpeakWidget_8h" ],

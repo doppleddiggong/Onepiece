@@ -1,6 +1,6 @@
 var classUPlayTimer =
 [
-    [ "UPlayTimer", "classUPlayTimer.html#ace8d337828367bb94cbfa592ca9ed7e7", null ],
-    [ "UpdateTimerText", "classUPlayTimer.html#a264cb1a83c0aa7f39ed003db2f779055", null ],
-    [ "RemainPlayTimeText", "classUPlayTimer.html#ad13d20cee91695f49c7e768df5185289", null ]
+    [ "UpdateTimerText", "classUPlayTimer.html#a73d7dd117c813c3e4489a27a5db8e8a1", null ],
+    [ "Txt_MilliSec", "classUPlayTimer.html#adbe8cae457509e099dd90e6f399aaeff", null ],
+    [ "Txt_MinSec", "classUPlayTimer.html#a39f18ae774bee3234ae01ef4964eaa6d", null ]
 ];

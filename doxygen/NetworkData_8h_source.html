@@ -207,8 +207,7 @@ $(document).ready(function(){initNavTree('NetworkData_8h_source.html',''); initR
 <div class="line"><a id="l00099" name="l00099"></a><span class="lineno"><a class="line" href="namespaceRequestAPI.html#aa6ffe726a2b06feccfa128b3200d8816">   99</a></span>    <span class="keyword">static</span> FString <a class="code hl_variable" href="namespaceRequestAPI.html#aa6ffe726a2b06feccfa128b3200d8816">read_result</a> = FString(<span class="stringliteral">&quot;/scenario/stage/result/post&quot;</span>);</div>
 <div class="line"><a id="l00100" name="l00100"></a><span class="lineno"><a class="line" href="namespaceRequestAPI.html#a0cbbd36ccf6295dad353806ed80f5769">  100</a></span>    <span class="keyword">static</span> FString <a class="code hl_variable" href="namespaceRequestAPI.html#a0cbbd36ccf6295dad353806ed80f5769">listen_result</a> = FString(<span class="stringliteral">&quot;/scenario/stage/result/post&quot;</span>);</div>
 <div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span> </div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    </div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno"><a class="line" href="namespaceRequestAPI.html#ab35a143dc8865f6bf07bc269a00b075d">  103</a></span>    <span class="keyword">static</span> FString <a class="code hl_variable" href="namespaceRequestAPI.html#ab35a143dc8865f6bf07bc269a00b075d">evaluations_rooms</a> = FString(<span class="stringliteral">&quot;/evaluations/rooms&quot;</span>);</div>
 <div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>}</div>
 </div>
 <div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span> </div>
@@ -1113,10 +1112,152 @@ $(document).ready(function(){initNavTree('NetworkData_8h_source.html',''); initR
 <div class="line"><a id="l00979" name="l00979"></a><span class="lineno">  979</span>    <span class="keywordtype">void</span> PrintData() const;</div>
 <div class="line"><a id="l00980" name="l00980"></a><span class="lineno">  980</span>};</div>
 </div>
+<div class="line"><a id="l00981" name="l00981"></a><span class="lineno">  981</span> </div>
+<div class="line"><a id="l00982" name="l00982"></a><span class="lineno">  982</span> </div>
+<div class="line"><a id="l00983" name="l00983"></a><span class="lineno">  983</span><span class="comment">// =================================================================================</span></div>
+<div class="line"><a id="l00984" name="l00984"></a><span class="lineno">  984</span><span class="comment">// Speak Scenario API Structures</span></div>
+<div class="line"><a id="l00985" name="l00985"></a><span class="lineno">  985</span><span class="comment">// =================================================================================</span></div>
+<div class="line"><a id="l00986" name="l00986"></a><span class="lineno">  986</span> </div>
+<div class="line"><a id="l00988" name="l00988"></a><span class="lineno">  988</span>USTRUCT(BlueprintType)</div>
+<div class="foldopen" id="foldopen00989" data-start="{" data-end="};">
+<div class="line"><a id="l00989" name="l00989"></a><span class="lineno"><a class="line" href="structFSpeakQuestionData.html">  989</a></span>struct <a class="code hl_struct" href="structFSpeakQuestionData.html">FSpeakQuestionData</a></div>
+<div class="line"><a id="l00990" name="l00990"></a><span class="lineno">  990</span>{</div>
+<div class="line"><a id="l00991" name="l00991"></a><span class="lineno">  991</span>    GENERATED_BODY()</div>
+<div class="line"><a id="l00992" name="l00992"></a><span class="lineno">  992</span> </div>
+<div class="line"><a id="l00993" name="l00993"></a><span class="lineno">  993</span>    UPROPERTY(BlueprintReadWrite, Category = <span class="stringliteral">&quot;Speak&quot;</span>)</div>
+<div class="line"><a id="l00994" name="l00994"></a><span class="lineno"><a class="line" href="structFSpeakQuestionData.html#ae7da0fd77a001f5fb2ab8765aeb5fcc1">  994</a></span>    <a class="code hl_struct" href="structFWordData.html">FWordData</a> word_data;</div>
+<div class="line"><a id="l00995" name="l00995"></a><span class="lineno">  995</span> </div>
+<div class="line"><a id="l00996" name="l00996"></a><span class="lineno">  996</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;<a class="code hl_enumvalue" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a8b1e2b9b342dd37344c6343dc23a6733">Speak</a>&quot;)</div>
+<div class="line"><a id="l00997" name="l00997"></a><span class="lineno"><a class="line" href="structFSpeakQuestionData.html#a6fff1da93f34eec4a11ab8945f667710">  997</a></span>    FString answer;</div>
+<div class="line"><a id="l00998" name="l00998"></a><span class="lineno">  998</span> </div>
+<div class="line"><a id="l00999" name="l00999"></a><span class="lineno">  999</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;<a class="code hl_enumvalue" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a8b1e2b9b342dd37344c6343dc23a6733">Speak</a>&quot;)</div>
+<div class="line"><a id="l01000" name="l01000"></a><span class="lineno"><a class="line" href="structFSpeakQuestionData.html#a8a0fe0e5048bd07279cecf6c797c9e71"> 1000</a></span>    FString answer_kor;</div>
+<div class="line"><a id="l01001" name="l01001"></a><span class="lineno"> 1001</span>};</div>
+</div>
+<div class="line"><a id="l01002" name="l01002"></a><span class="lineno"> 1002</span> </div>
+<div class="line"><a id="l01004" name="l01004"></a><span class="lineno"><a class="line" href="NetworkData_8h.html#ada54ec253bf3565ea12de7b76434af37"> 1004</a></span><a class="code hl_function" href="NetworkData_8h.html#a176f0d72d06ab65295baec529c15ad9f">DECLARE_DELEGATE_TwoParams</a>(FResponseSpeakScenarioDelegate, <a class="code hl_struct" href="structFResponseSpeakScenario.html">FResponseSpeakScenario</a>&amp;, <span class="keywordtype">bool</span>);</div>
+<div class="line"><a id="l01006" name="l01006"></a><span class="lineno"> 1006</span>USTRUCT(BlueprintType)</div>
+<div class="foldopen" id="foldopen01007" data-start="{" data-end="};">
+<div class="line"><a id="l01007" name="l01007"></a><span class="lineno"><a class="line" href="structFResponseSpeakScenario.html"> 1007</a></span>struct <a class="code hl_struct" href="structFResponseSpeakScenario.html">FResponseSpeakScenario</a></div>
+<div class="line"><a id="l01008" name="l01008"></a><span class="lineno"> 1008</span>{</div>
+<div class="line"><a id="l01009" name="l01009"></a><span class="lineno"> 1009</span>    GENERATED_BODY()</div>
+<div class="line"><a id="l01010" name="l01010"></a><span class="lineno"> 1010</span> </div>
+<div class="line"><a id="l01011" name="l01011"></a><span class="lineno"> 1011</span>    UPROPERTY(BlueprintReadWrite, Category = <span class="stringliteral">&quot;Speak&quot;</span>)</div>
+<div class="line"><a id="l01012" name="l01012"></a><span class="lineno"><a class="line" href="structFResponseSpeakScenario.html#ab47897f53f4a152e64dbd1b65c22f504"> 1012</a></span>    int32 index = 0;</div>
+<div class="line"><a id="l01013" name="l01013"></a><span class="lineno"> 1013</span> </div>
+<div class="line"><a id="l01014" name="l01014"></a><span class="lineno"> 1014</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;<a class="code hl_enumvalue" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a8b1e2b9b342dd37344c6343dc23a6733">Speak</a>&quot;)</div>
+<div class="line"><a id="l01015" name="l01015"></a><span class="lineno"><a class="line" href="structFResponseSpeakScenario.html#a4889339710c6ce4562550b125f909bf2"> 1015</a></span>    int32 dificulity = 0;</div>
+<div class="line"><a id="l01016" name="l01016"></a><span class="lineno"> 1016</span> </div>
+<div class="line"><a id="l01017" name="l01017"></a><span class="lineno"> 1017</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;<a class="code hl_enumvalue" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a8b1e2b9b342dd37344c6343dc23a6733">Speak</a>&quot;)</div>
+<div class="line"><a id="l01018" name="l01018"></a><span class="lineno"><a class="line" href="structFResponseSpeakScenario.html#ad8a474a8868d134dbb040c70e8c51f12"> 1018</a></span>    int32 room_id = 0;</div>
+<div class="line"><a id="l01019" name="l01019"></a><span class="lineno"> 1019</span> </div>
+<div class="line"><a id="l01020" name="l01020"></a><span class="lineno"> 1020</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;<a class="code hl_enumvalue" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a8b1e2b9b342dd37344c6343dc23a6733">Speak</a>&quot;)</div>
+<div class="line"><a id="l01021" name="l01021"></a><span class="lineno"><a class="line" href="structFResponseSpeakScenario.html#a25ab4b026009e7512912e9651f6b2d8b"> 1021</a></span>    TArray&lt;<a class="code hl_struct" href="structFSpeakQuestionData.html">FSpeakQuestionData</a>&gt; question;</div>
+<div class="line"><a id="l01022" name="l01022"></a><span class="lineno"> 1022</span> </div>
+<div class="line"><a id="l01024" name="l01024"></a><span class="lineno"> 1024</span>    <span class="keywordtype">void</span> SetFromHttpResponse(const TSharedPtr&lt;class IHttpResponse, ESPMode::ThreadSafe&gt;&amp; Response);</div>
+<div class="line"><a id="l01025" name="l01025"></a><span class="lineno"> 1025</span> </div>
+<div class="line"><a id="l01027" name="l01027"></a><span class="lineno"> 1027</span>    <span class="keywordtype">void</span> PrintData() const;</div>
+<div class="line"><a id="l01028" name="l01028"></a><span class="lineno"> 1028</span>};</div>
+</div>
+<div class="line"><a id="l01029" name="l01029"></a><span class="lineno"> 1029</span> </div>
+<div class="line"><a id="l01030" name="l01030"></a><span class="lineno"> 1030</span> </div>
+<div class="line"><a id="l01031" name="l01031"></a><span class="lineno"> 1031</span><span class="comment">// =================================================================================</span></div>
+<div class="line"><a id="l01032" name="l01032"></a><span class="lineno"> 1032</span><span class="comment">// Evaluation API Structures</span></div>
+<div class="line"><a id="l01033" name="l01033"></a><span class="lineno"> 1033</span><span class="comment">// =================================================================================</span></div>
+<div class="line"><a id="l01034" name="l01034"></a><span class="lineno"> 1034</span> </div>
+<div class="line"><a id="l01036" name="l01036"></a><span class="lineno"> 1036</span>UENUM(BlueprintType)</div>
+<div class="foldopen" id="foldopen01037" data-start="{" data-end="};">
+<div class="line"><a id="l01037" name="l01037"></a><span class="lineno"><a class="line" href="NetworkData_8h.html#a89d484500632d06d10ab21aefde0efda"> 1037</a></span>enum class <a class="code hl_enumeration" href="NetworkData_8h.html#a89d484500632d06d10ab21aefde0efda">EScenarioType</a> : uint8</div>
+<div class="line"><a id="l01038" name="l01038"></a><span class="lineno"> 1038</span>{</div>
+<div class="line"><a id="l01039" name="l01039"></a><span class="lineno"> 1039</span>    READING <a class="code hl_enumvalue" href="NetworkData_8h.html#a89d484500632d06d10ab21aefde0efdaaa3f80d8f0f1b4ffa8c475f5d60ea5635">UMETA</a>(DisplayName = <span class="stringliteral">&quot;Reading&quot;</span>),</div>
+<div class="line"><a id="l01040" name="l01040"></a><span class="lineno"> 1040</span>    LISTENING <a class="code hl_enumvalue" href="NetworkData_8h.html#a89d484500632d06d10ab21aefde0efdaaa3f80d8f0f1b4ffa8c475f5d60ea5635">UMETA</a>(DisplayName = <span class="stringliteral">&quot;Listening&quot;</span>),</div>
+<div class="line"><a id="l01041" name="l01041"></a><span class="lineno"> 1041</span>    WRITING <a class="code hl_enumvalue" href="NetworkData_8h.html#a89d484500632d06d10ab21aefde0efdaaa3f80d8f0f1b4ffa8c475f5d60ea5635">UMETA</a>(DisplayName = <span class="stringliteral">&quot;Writing&quot;</span>),</div>
+<div class="line"><a id="l01042" name="l01042"></a><span class="lineno"> 1042</span>    SPEAKING <a class="code hl_enumvalue" href="NetworkData_8h.html#a89d484500632d06d10ab21aefde0efdaaa3f80d8f0f1b4ffa8c475f5d60ea5635">UMETA</a>(DisplayName = <span class="stringliteral">&quot;Speaking&quot;</span>)</div>
+<div class="line"><a id="l01043" name="l01043"></a><span class="lineno"> 1043</span>};</div>
+</div>
+<div class="line"><a id="l01044" name="l01044"></a><span class="lineno"> 1044</span> </div>
+<div class="line"><a id="l01046" name="l01046"></a><span class="lineno"> 1046</span>USTRUCT(BlueprintType)</div>
+<div class="foldopen" id="foldopen01047" data-start="{" data-end="};">
+<div class="line"><a id="l01047" name="l01047"></a><span class="lineno"><a class="line" href="structFFeedbackSummary.html"> 1047</a></span>struct <a class="code hl_struct" href="structFFeedbackSummary.html">FFeedbackSummary</a></div>
+<div class="line"><a id="l01048" name="l01048"></a><span class="lineno"> 1048</span>{</div>
+<div class="line"><a id="l01049" name="l01049"></a><span class="lineno"> 1049</span>    GENERATED_BODY()</div>
+<div class="line"><a id="l01050" name="l01050"></a><span class="lineno"> 1050</span> </div>
+<div class="line"><a id="l01051" name="l01051"></a><span class="lineno"> 1051</span>    UPROPERTY(BlueprintReadWrite, Category = <span class="stringliteral">&quot;Evaluation&quot;</span>)</div>
+<div class="line"><a id="l01052" name="l01052"></a><span class="lineno"><a class="line" href="structFFeedbackSummary.html#acb79c686cba78320589ce22e9cce2c3a"> 1052</a></span>    FString title;</div>
+<div class="line"><a id="l01053" name="l01053"></a><span class="lineno"> 1053</span> </div>
+<div class="line"><a id="l01054" name="l01054"></a><span class="lineno"> 1054</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;Evaluation&quot;)</div>
+<div class="line"><a id="l01055" name="l01055"></a><span class="lineno"><a class="line" href="structFFeedbackSummary.html#abd5890a75687dcc72de1c62f29424a7a"> 1055</a></span>    FString message;</div>
+<div class="line"><a id="l01056" name="l01056"></a><span class="lineno"> 1056</span>};</div>
+</div>
+<div class="line"><a id="l01057" name="l01057"></a><span class="lineno"> 1057</span> </div>
+<div class="line"><a id="l01059" name="l01059"></a><span class="lineno"> 1059</span>USTRUCT(BlueprintType)</div>
+<div class="foldopen" id="foldopen01060" data-start="{" data-end="};">
+<div class="line"><a id="l01060" name="l01060"></a><span class="lineno"><a class="line" href="structFScenarioResult.html"> 1060</a></span>struct <a class="code hl_struct" href="structFScenarioResult.html">FScenarioResult</a></div>
+<div class="line"><a id="l01061" name="l01061"></a><span class="lineno"> 1061</span>{</div>
+<div class="line"><a id="l01062" name="l01062"></a><span class="lineno"> 1062</span>    GENERATED_BODY()</div>
+<div class="line"><a id="l01063" name="l01063"></a><span class="lineno"> 1063</span> </div>
+<div class="line"><a id="l01064" name="l01064"></a><span class="lineno"> 1064</span>    UPROPERTY(BlueprintReadWrite, Category = <span class="stringliteral">&quot;Evaluation&quot;</span>)</div>
+<div class="line"><a id="l01065" name="l01065"></a><span class="lineno"><a class="line" href="structFScenarioResult.html#a85380ca5516e4d591017b59af2892127"> 1065</a></span>    <a class="code hl_enumeration" href="NetworkData_8h.html#a89d484500632d06d10ab21aefde0efda">EScenarioType</a> scenario_type;</div>
+<div class="line"><a id="l01066" name="l01066"></a><span class="lineno"> 1066</span> </div>
+<div class="line"><a id="l01067" name="l01067"></a><span class="lineno"> 1067</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;Evaluation&quot;)</div>
+<div class="line"><a id="l01068" name="l01068"></a><span class="lineno"><a class="line" href="structFScenarioResult.html#a1ad8b060a27d5d18e9b06b0fdb48c640"> 1068</a></span>    FString display_name;</div>
+<div class="line"><a id="l01069" name="l01069"></a><span class="lineno"> 1069</span> </div>
+<div class="line"><a id="l01070" name="l01070"></a><span class="lineno"> 1070</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;Evaluation&quot;)</div>
+<div class="line"><a id="l01071" name="l01071"></a><span class="lineno"><a class="line" href="structFScenarioResult.html#a0ad89ab325e737aa1d57b42b247b9ca9"> 1071</a></span>    int32 final_score = 0;</div>
+<div class="line"><a id="l01072" name="l01072"></a><span class="lineno"> 1072</span> </div>
+<div class="line"><a id="l01073" name="l01073"></a><span class="lineno"> 1073</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;Evaluation&quot;)</div>
+<div class="line"><a id="l01074" name="l01074"></a><span class="lineno"><a class="line" href="structFScenarioResult.html#ac1f6da78793403be447b321268206667"> 1074</a></span>    FString grade;</div>
+<div class="line"><a id="l01075" name="l01075"></a><span class="lineno"> 1075</span> </div>
+<div class="line"><a id="l01076" name="l01076"></a><span class="lineno"> 1076</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;Evaluation&quot;)</div>
+<div class="line"><a id="l01077" name="l01077"></a><span class="lineno"><a class="line" href="structFScenarioResult.html#a4cd8f8c790246d8aa1771bc2afe5e284"> 1077</a></span>    <a class="code hl_struct" href="structFFeedbackSummary.html">FFeedbackSummary</a> feedback_summary;</div>
+<div class="line"><a id="l01078" name="l01078"></a><span class="lineno"> 1078</span> </div>
+<div class="line"><a id="l01079" name="l01079"></a><span class="lineno"> 1079</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;Evaluation&quot;)</div>
+<div class="line"><a id="l01080" name="l01080"></a><span class="lineno"><a class="line" href="structFScenarioResult.html#a2c1306814ec692275e337f065b0cf932"> 1080</a></span>    FString action_item;</div>
+<div class="line"><a id="l01081" name="l01081"></a><span class="lineno"> 1081</span>};</div>
+</div>
+<div class="line"><a id="l01082" name="l01082"></a><span class="lineno"> 1082</span> </div>
+<div class="line"><a id="l01084" name="l01084"></a><span class="lineno"> 1084</span>USTRUCT(BlueprintType)</div>
+<div class="foldopen" id="foldopen01085" data-start="{" data-end="};">
+<div class="line"><a id="l01085" name="l01085"></a><span class="lineno"><a class="line" href="structFTotalResult.html"> 1085</a></span>struct <a class="code hl_struct" href="structFTotalResult.html">FTotalResult</a></div>
+<div class="line"><a id="l01086" name="l01086"></a><span class="lineno"> 1086</span>{</div>
+<div class="line"><a id="l01087" name="l01087"></a><span class="lineno"> 1087</span>    GENERATED_BODY()</div>
+<div class="line"><a id="l01088" name="l01088"></a><span class="lineno"> 1088</span> </div>
+<div class="line"><a id="l01089" name="l01089"></a><span class="lineno"> 1089</span>    UPROPERTY(BlueprintReadWrite, Category = <span class="stringliteral">&quot;Evaluation&quot;</span>)</div>
+<div class="line"><a id="l01090" name="l01090"></a><span class="lineno"><a class="line" href="structFTotalResult.html#ade81ef1cb5bf1ab69d793a5233d76dad"> 1090</a></span>    int32 final_score = 0;</div>
+<div class="line"><a id="l01091" name="l01091"></a><span class="lineno"> 1091</span> </div>
+<div class="line"><a id="l01092" name="l01092"></a><span class="lineno"> 1092</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;Evaluation&quot;)</div>
+<div class="line"><a id="l01093" name="l01093"></a><span class="lineno"><a class="line" href="structFTotalResult.html#a315ba1941395daa05401349df15239de"> 1093</a></span>    FString grade;</div>
+<div class="line"><a id="l01094" name="l01094"></a><span class="lineno"> 1094</span> </div>
+<div class="line"><a id="l01095" name="l01095"></a><span class="lineno"> 1095</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;Evaluation&quot;)</div>
+<div class="line"><a id="l01096" name="l01096"></a><span class="lineno"><a class="line" href="structFTotalResult.html#a0a257592b0428abfbc296fbfb1b002a9"> 1096</a></span>    FString feedback_summary;</div>
+<div class="line"><a id="l01097" name="l01097"></a><span class="lineno"> 1097</span>};</div>
+</div>
+<div class="line"><a id="l01098" name="l01098"></a><span class="lineno"> 1098</span> </div>
+<div class="line"><a id="l01100" name="l01100"></a><span class="lineno"><a class="line" href="NetworkData_8h.html#a354a1837ba4da4ff03c88181313c3dc1"> 1100</a></span><a class="code hl_function" href="NetworkData_8h.html#a176f0d72d06ab65295baec529c15ad9f">DECLARE_DELEGATE_TwoParams</a>(FResponseEvaluationResultDelegate, <a class="code hl_struct" href="structFResponseEvaluationResult.html">FResponseEvaluationResult</a>&amp;, <span class="keywordtype">bool</span>);</div>
+<div class="line"><a id="l01102" name="l01102"></a><span class="lineno"> 1102</span>USTRUCT(BlueprintType)</div>
+<div class="foldopen" id="foldopen01103" data-start="{" data-end="};">
+<div class="line"><a id="l01103" name="l01103"></a><span class="lineno"><a class="line" href="structFResponseEvaluationResult.html"> 1103</a></span>struct <a class="code hl_struct" href="structFResponseEvaluationResult.html">FResponseEvaluationResult</a></div>
+<div class="line"><a id="l01104" name="l01104"></a><span class="lineno"> 1104</span>{</div>
+<div class="line"><a id="l01105" name="l01105"></a><span class="lineno"> 1105</span>    GENERATED_BODY()</div>
+<div class="line"><a id="l01106" name="l01106"></a><span class="lineno"> 1106</span> </div>
+<div class="line"><a id="l01107" name="l01107"></a><span class="lineno"> 1107</span>    UPROPERTY(BlueprintReadWrite, Category = <span class="stringliteral">&quot;Evaluation&quot;</span>)</div>
+<div class="line"><a id="l01108" name="l01108"></a><span class="lineno"><a class="line" href="structFResponseEvaluationResult.html#a4049b2c738543b1e02d22d6cff63bba2"> 1108</a></span>    <a class="code hl_struct" href="structFTotalResult.html">FTotalResult</a> total_result;</div>
+<div class="line"><a id="l01109" name="l01109"></a><span class="lineno"> 1109</span> </div>
+<div class="line"><a id="l01110" name="l01110"></a><span class="lineno"> 1110</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;Evaluation&quot;)</div>
+<div class="line"><a id="l01111" name="l01111"></a><span class="lineno"><a class="line" href="structFResponseEvaluationResult.html#a5103da5ab7e5d6030a965510a2b3a06c"> 1111</a></span>    TArray&lt;<a class="code hl_struct" href="structFScenarioResult.html">FScenarioResult</a>&gt; scenario_results;</div>
+<div class="line"><a id="l01112" name="l01112"></a><span class="lineno"> 1112</span> </div>
+<div class="line"><a id="l01114" name="l01114"></a><span class="lineno"> 1114</span>    <span class="keywordtype">void</span> SetFromHttpResponse(const TSharedPtr&lt;class IHttpResponse, ESPMode::ThreadSafe&gt;&amp; Response);</div>
+<div class="line"><a id="l01115" name="l01115"></a><span class="lineno"> 1115</span> </div>
+<div class="line"><a id="l01117" name="l01117"></a><span class="lineno"> 1117</span>    <span class="keywordtype">void</span> PrintData() const;</div>
+<div class="line"><a id="l01118" name="l01118"></a><span class="lineno"> 1118</span>};</div>
+</div>
 <div class="ttc" id="aALingoGameState_8h_html_a1a866ca8104ebd47ce462347a6125921a7a1a5f3e79fdc91edf2f5ead9d66abb4"><div class="ttname"><a href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a7a1a5f3e79fdc91edf2f5ead9d66abb4">EQuestType::Read</a></div><div class="ttdeci">@ Read</div></div>
+<div class="ttc" id="aALingoGameState_8h_html_a1a866ca8104ebd47ce462347a6125921a8b1e2b9b342dd37344c6343dc23a6733"><div class="ttname"><a href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a8b1e2b9b342dd37344c6343dc23a6733">EQuestType::Speak</a></div><div class="ttdeci">@ Speak</div></div>
 <div class="ttc" id="aALingoGameState_8h_html_a1a866ca8104ebd47ce462347a6125921ace6802b46091c31e2ec2363883fe8369"><div class="ttname"><a href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921ace6802b46091c31e2ec2363883fe8369">EQuestType::Listen</a></div><div class="ttdeci">@ Listen</div></div>
 <div class="ttc" id="aFResourceTextureData_8h_html_a98b8b3000fb3fc86e37c624651589cb2a7e4c28c37d60babdb511daa95fcb1db6"><div class="ttname"><a href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2a7e4c28c37d60babdb511daa95fcb1db6">EResourceTextureType::KLingo</a></div><div class="ttdeci">@ KLingo</div></div>
 <div class="ttc" id="aNetworkData_8h_html_a176f0d72d06ab65295baec529c15ad9f"><div class="ttname"><a href="NetworkData_8h.html#a176f0d72d06ab65295baec529c15ad9f">DECLARE_DELEGATE_TwoParams</a></div><div class="ttdeci">DECLARE_DELEGATE_TwoParams(FResponseHealthDelegate, FResponseHealth &amp;, bool)</div><div class="ttdoc">헬스 체크 응답을 전달하는 델리게이트입니다.</div></div>
+<div class="ttc" id="aNetworkData_8h_html_a89d484500632d06d10ab21aefde0efda"><div class="ttname"><a href="NetworkData_8h.html#a89d484500632d06d10ab21aefde0efda">EScenarioType</a></div><div class="ttdeci">EScenarioType</div><div class="ttdoc">시나리오 타입 열거형</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l01037">NetworkData.h:1038</a></div></div>
+<div class="ttc" id="aNetworkData_8h_html_a89d484500632d06d10ab21aefde0efdaaa3f80d8f0f1b4ffa8c475f5d60ea5635"><div class="ttname"><a href="NetworkData_8h.html#a89d484500632d06d10ab21aefde0efdaaa3f80d8f0f1b4ffa8c475f5d60ea5635">EScenarioType::UMETA</a></div><div class="ttdeci">@ UMETA</div></div>
 <div class="ttc" id="aUCustomNetworkSettings_8h_html"><div class="ttname"><a href="UCustomNetworkSettings_8h.html">UCustomNetworkSettings.h</a></div><div class="ttdoc">서버 환경별 네트워크 설정을 노출하는 DeveloperSettings를 선언합니다.</div></div>
 <div class="ttc" id="aUCustomNetworkSettings_8h_html_a79cfeb7c9f94018b98c2415dc06d4577"><div class="ttname"><a href="UCustomNetworkSettings_8h.html#a79cfeb7c9f94018b98c2415dc06d4577">EServerMode</a></div><div class="ttdeci">EServerMode</div><div class="ttdoc">서버 환경(개발/스테이징/라이브)을 나타내는 열거형입니다.</div><div class="ttdef"><b>Definition</b> <a href="UCustomNetworkSettings_8h_source.html#l00013">UCustomNetworkSettings.h:14</a></div></div>
 <div class="ttc" id="aclassUCustomNetworkSettings_html_aa089b67ac992ff3aee3dd62629c0df0a"><div class="ttname"><a href="classUCustomNetworkSettings.html#aa089b67ac992ff3aee3dd62629c0df0a">UCustomNetworkSettings::GetCurrentServerMode</a></div><div class="ttdeci">static EServerMode GetCurrentServerMode()</div><div class="ttdoc">명령줄 또는 설정으로 선택된 서버 모드를 반환합니다.</div><div class="ttdef"><b>Definition</b> <a href="UCustomNetworkSettings_8cpp_source.html#l00010">UCustomNetworkSettings.cpp:10</a></div></div>
@@ -1132,11 +1273,13 @@ $(document).ready(function(){initNavTree('NetworkData_8h_source.html',''); initR
 <div class="ttc" id="anamespaceRequestAPI_html_a8c14fc8a3f386da9971cfe30a1b00966"><div class="ttname"><a href="namespaceRequestAPI.html#a8c14fc8a3f386da9971cfe30a1b00966">RequestAPI::writes_submit</a></div><div class="ttdeci">static FString writes_submit</div><div class="ttdoc">OCR 텍스트 추출 엔드포인트입니다. POST /writes/ocr/extract</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00087">NetworkData.h:87</a></div></div>
 <div class="ttc" id="anamespaceRequestAPI_html_aa53d82cb9d5a048604a8c32223229080"><div class="ttname"><a href="namespaceRequestAPI.html#aa53d82cb9d5a048604a8c32223229080">RequestAPI::speakings_judes</a></div><div class="ttdeci">static FString speakings_judes</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00090">NetworkData.h:90</a></div></div>
 <div class="ttc" id="anamespaceRequestAPI_html_aa6ffe726a2b06feccfa128b3200d8816"><div class="ttname"><a href="namespaceRequestAPI.html#aa6ffe726a2b06feccfa128b3200d8816">RequestAPI::read_result</a></div><div class="ttdeci">static FString read_result</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00099">NetworkData.h:99</a></div></div>
+<div class="ttc" id="anamespaceRequestAPI_html_ab35a143dc8865f6bf07bc269a00b075d"><div class="ttname"><a href="namespaceRequestAPI.html#ab35a143dc8865f6bf07bc269a00b075d">RequestAPI::evaluations_rooms</a></div><div class="ttdeci">static FString evaluations_rooms</div><div class="ttdoc">Evaluation 결과 조회 엔드포인트입니다. GET /evaluations/rooms/{room_id}</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00103">NetworkData.h:103</a></div></div>
 <div class="ttc" id="anamespaceRequestAPI_html_ac23f8020a8a24f9d640a8aefbe9e56e5"><div class="ttname"><a href="namespaceRequestAPI.html#ac23f8020a8a24f9d640a8aefbe9e56e5">RequestAPI::interview_answer</a></div><div class="ttdeci">static FString interview_answer</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00093">NetworkData.h:93</a></div></div>
 <div class="ttc" id="anamespaceRequestAPI_html_ae1061ff9836b3127b56024d0a0f6fd65"><div class="ttname"><a href="namespaceRequestAPI.html#ae1061ff9836b3127b56024d0a0f6fd65">RequestAPI::Health</a></div><div class="ttdeci">static FString Health</div><div class="ttdoc">서버 상태 확인 엔드포인트입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00078">NetworkData.h:78</a></div></div>
 <div class="ttc" id="anamespaceRequestAPI_html_ae683aef1f6770a15bcad8cce46f40456"><div class="ttname"><a href="namespaceRequestAPI.html#ae683aef1f6770a15bcad8cce46f40456">RequestAPI::scenario</a></div><div class="ttdeci">static FString scenario</div><div class="ttdoc">Scenario 조회 엔드포인트입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00096">NetworkData.h:96</a></div></div>
 <div class="ttc" id="anamespaceRequestAPI_html_aee732573aa0bc733fedaab927a273dcd"><div class="ttname"><a href="namespaceRequestAPI.html#aee732573aa0bc733fedaab927a273dcd">RequestAPI::users_me</a></div><div class="ttdeci">static FString users_me</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00083">NetworkData.h:83</a></div></div>
 <div class="ttc" id="anamespaceRequestAPI_html_af908b99f78364328aca763f362236454"><div class="ttname"><a href="namespaceRequestAPI.html#af908b99f78364328aca763f362236454">RequestAPI::users_token</a></div><div class="ttdeci">static FString users_token</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00082">NetworkData.h:82</a></div></div>
+<div class="ttc" id="astructFFeedbackSummary_html"><div class="ttname"><a href="structFFeedbackSummary.html">FFeedbackSummary</a></div><div class="ttdoc">피드백 요약 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l01047">NetworkData.h:1048</a></div></div>
 <div class="ttc" id="astructFInterviewAnswerData_html"><div class="ttname"><a href="structFInterviewAnswerData.html">FInterviewAnswerData</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00754">NetworkData.h:755</a></div></div>
 <div class="ttc" id="astructFInterviewData_html"><div class="ttname"><a href="structFInterviewData.html">FInterviewData</a></div><div class="ttdoc">Read 퀘스트 정보 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00143">NetworkData.h:144</a></div></div>
 <div class="ttc" id="astructFInterviewQuestionData_html"><div class="ttname"><a href="structFInterviewQuestionData.html">FInterviewQuestionData</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00108">NetworkData.h:109</a></div></div>
@@ -1154,6 +1297,7 @@ $(document).ready(function(){initNavTree('NetworkData_8h_source.html',''); initR
 <div class="ttc" id="astructFRequestInterviewAnswer_html"><div class="ttname"><a href="structFRequestInterviewAnswer.html">FRequestInterviewAnswer</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00769">NetworkData.h:770</a></div></div>
 <div class="ttc" id="astructFRequestListenResult_html"><div class="ttname"><a href="structFRequestListenResult.html">FRequestListenResult</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00931">NetworkData.h:932</a></div></div>
 <div class="ttc" id="astructFRequestReadResult_html"><div class="ttname"><a href="structFRequestReadResult.html">FRequestReadResult</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00834">NetworkData.h:835</a></div></div>
+<div class="ttc" id="astructFResponseEvaluationResult_html"><div class="ttname"><a href="structFResponseEvaluationResult.html">FResponseEvaluationResult</a></div><div class="ttdoc">Evaluation 결과 응답 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l01103">NetworkData.h:1104</a></div></div>
 <div class="ttc" id="astructFResponseHealth_html"><div class="ttname"><a href="structFResponseHealth.html">FResponseHealth</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00412">NetworkData.h:413</a></div></div>
 <div class="ttc" id="astructFResponseInterviewAnswer_html"><div class="ttname"><a href="structFResponseInterviewAnswer.html">FResponseInterviewAnswer</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00782">NetworkData.h:783</a></div></div>
 <div class="ttc" id="astructFResponseInterviewHello_html"><div class="ttname"><a href="structFResponseInterviewHello.html">FResponseInterviewHello</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00739">NetworkData.h:740</a></div></div>
@@ -1164,16 +1308,20 @@ $(document).ready(function(){initNavTree('NetworkData_8h_source.html',''); initR
 <div class="ttc" id="astructFResponseOcrExtract_html"><div class="ttname"><a href="structFResponseOcrExtract.html">FResponseOcrExtract</a></div><div class="ttdoc">OCR Extract 응답 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00662">NetworkData.h:663</a></div></div>
 <div class="ttc" id="astructFResponseReadResult_html"><div class="ttname"><a href="structFResponseReadResult.html">FResponseReadResult</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00866">NetworkData.h:867</a></div></div>
 <div class="ttc" id="astructFResponseReadScenario_html"><div class="ttname"><a href="structFResponseReadScenario.html">FResponseReadScenario</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00795">NetworkData.h:796</a></div></div>
+<div class="ttc" id="astructFResponseSpeakScenario_html"><div class="ttname"><a href="structFResponseSpeakScenario.html">FResponseSpeakScenario</a></div><div class="ttdoc">Speak 시나리오 응답 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l01007">NetworkData.h:1008</a></div></div>
 <div class="ttc" id="astructFResponseSpeakingJudes_html"><div class="ttname"><a href="structFResponseSpeakingJudes.html">FResponseSpeakingJudes</a></div><div class="ttdoc">Speaking Questions 응답 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00711">NetworkData.h:712</a></div></div>
 <div class="ttc" id="astructFResponseUserHost_html"><div class="ttname"><a href="structFResponseUserHost.html">FResponseUserHost</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00498">NetworkData.h:499</a></div></div>
 <div class="ttc" id="astructFResponseUserMe_html"><div class="ttname"><a href="structFResponseUserMe.html">FResponseUserMe</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00472">NetworkData.h:473</a></div></div>
 <div class="ttc" id="astructFResponseUserRegister_html"><div class="ttname"><a href="structFResponseUserRegister.html">FResponseUserRegister</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00429">NetworkData.h:430</a></div></div>
 <div class="ttc" id="astructFResponseUserToken_html"><div class="ttname"><a href="structFResponseUserToken.html">FResponseUserToken</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00455">NetworkData.h:456</a></div></div>
 <div class="ttc" id="astructFResultStatData_html"><div class="ttname"><a href="structFResultStatData.html">FResultStatData</a></div><div class="ttdoc">Result Stat 위젯 통합 데이터 구조 위젯 타입, 색상 스타일, 각 타입별 데이터를 통합 관리</div><div class="ttdef"><b>Definition</b> <a href="FResultStatData_8h_source.html#l00022">FResultStatData.h:23</a></div></div>
+<div class="ttc" id="astructFScenarioResult_html"><div class="ttname"><a href="structFScenarioResult.html">FScenarioResult</a></div><div class="ttdoc">시나리오별 결과 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l01060">NetworkData.h:1061</a></div></div>
 <div class="ttc" id="astructFScenarioTargetData_html"><div class="ttname"><a href="structFScenarioTargetData.html">FScenarioTargetData</a></div><div class="ttdoc">Scenario 타겟 데이터입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00598">NetworkData.h:599</a></div></div>
 <div class="ttc" id="astructFServerConfig_html"><div class="ttname"><a href="structFServerConfig.html">FServerConfig</a></div><div class="ttdoc">서버 접속 정보를 담는 설정 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="UCustomNetworkSettings_8h_source.html#l00022">UCustomNetworkSettings.h:23</a></div></div>
 <div class="ttc" id="astructFServerConfig_html_a192542ce9a719e9f4a9dd468e1e69aea"><div class="ttname"><a href="structFServerConfig.html#a192542ce9a719e9f4a9dd468e1e69aea">FServerConfig::WebSocketUrl</a></div><div class="ttdeci">FString WebSocketUrl</div><div class="ttdef"><b>Definition</b> <a href="UCustomNetworkSettings_8h_source.html#l00033">UCustomNetworkSettings.h:33</a></div></div>
 <div class="ttc" id="astructFServerConfig_html_ab65e0b73b4679e5efb155dd6f98bac3d"><div class="ttname"><a href="structFServerConfig.html#ab65e0b73b4679e5efb155dd6f98bac3d">FServerConfig::GetFullUrl</a></div><div class="ttdeci">FString GetFullUrl(const FString &amp;Endpoint) const</div><div class="ttdoc">엔드포인트를 결합한 전체 URL을 반환합니다.</div><div class="ttdef"><b>Definition</b> <a href="UCustomNetworkSettings_8h_source.html#l00037">UCustomNetworkSettings.h:37</a></div></div>
+<div class="ttc" id="astructFSpeakQuestionData_html"><div class="ttname"><a href="structFSpeakQuestionData.html">FSpeakQuestionData</a></div><div class="ttdoc">Speak 질문 데이터 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00989">NetworkData.h:990</a></div></div>
+<div class="ttc" id="astructFTotalResult_html"><div class="ttname"><a href="structFTotalResult.html">FTotalResult</a></div><div class="ttdoc">전체 결과 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l01085">NetworkData.h:1086</a></div></div>
 <div class="ttc" id="astructFWordData_html"><div class="ttname"><a href="structFWordData.html">FWordData</a></div><div class="ttdoc">단어 데이터 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00202">NetworkData.h:203</a></div></div>
 <div class="ttc" id="astructFWordInfo_html"><div class="ttname"><a href="structFWordInfo.html">FWordInfo</a></div><div class="ttdoc">단어 정보 구조체</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00516">NetworkData.h:517</a></div></div>
 <div class="ttc" id="astructFWordInfo_html_a0b915efc0c37a2798ecf2bd8ef0f0bed"><div class="ttname"><a href="structFWordInfo.html#a0b915efc0c37a2798ecf2bd8ef0f0bed">FWordInfo::GetRandomAnimal</a></div><div class="ttdeci">static FWordInfo GetRandomAnimal()</div><div class="ttdoc">랜덤 동물 선택 - CSV 기반 하드코딩</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00562">NetworkData.h:562</a></div></div>
@@ -1185,7 +1333,7 @@ $(document).ready(function(){initNavTree('NetworkData_8h_source.html',''); initR
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_db6231b890a14ef22abfc7e4cac87d3d.html">Network</a></li><li class="navelem"><a class="el" href="dir_220b20a97e4e155a19f3af1d93d62cb0.html">Public</a></li><li class="navelem"><a class="el" href="NetworkData_8h.html">NetworkData.h</a></li>
-    <li class="footer">생성시간 : 화 12월 9 2025 04:47:56, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 수 12월 10 2025 23:34:44, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

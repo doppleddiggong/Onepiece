@@ -27,7 +27,7 @@ var searchData=
   ['loading_24',['Loading',['../namespaceGameLayer.html#ae4c4bd33e56196bb1e54f458059d5345',1,'GameLayer']]],
   ['loadingcircle_25',['LoadingCircle',['../namespaceGameLayer.html#a919c4166af88ffa5c2fd2d860c2c40a9',1,'GameLayer']]],
   ['loadingcount_26',['LoadingCount',['../classULoadingCircleManager.html#adb771515e483468402942fce9d6efd00',1,'ULoadingCircleManager']]],
-  ['loadingspinner_27',['loadingspinner',['../classUStateWidget.html#afaaebffe04185232149875eba907a6c5',1,'UStateWidget::LoadingSpinner'],['../classULoadginCircle.html#a3894e2b3aa110cd497ada643824e95d8',1,'ULoadginCircle::LoadingSpinner']]],
+  ['loadingspinner_27',['loadingspinner',['../classURoomWidget.html#aa398bef60a92993e8feb66efd43fb61a',1,'URoomWidget::LoadingSpinner'],['../classULoadginCircle.html#a3894e2b3aa110cd497ada643824e95d8',1,'ULoadginCircle::LoadingSpinner']]],
   ['lobbywidget_28',['LobbyWidget',['../classALobbyLevelScriptActor.html#a8a615e1e268e82d5b7b3063fd28a380e',1,'ALobbyLevelScriptActor']]],
   ['lobbywidgetclass_29',['LobbyWidgetClass',['../classALobbyLevelScriptActor.html#a5af874c2db0774548ab667fed3ad2ec6',1,'ALobbyLevelScriptActor']]],
   ['locationoffset_30',['LocationOffset',['../structFVFXData.html#a945ead1eeb298be70cd434019b8ce9ba',1,'FVFXData']]],
