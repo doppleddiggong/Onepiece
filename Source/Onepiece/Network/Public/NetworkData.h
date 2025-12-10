@@ -357,11 +357,17 @@ struct FQuestWriteInfo
 	UPROPERTY(BlueprintReadWrite, Category = "Write")
 	TArray<FWriteQuestionData> question;
 	
+	UPROPERTY(BlueprintReadWrite, Category = "Write")
+	bool bIsValid = false;
+	
 	/// @brief HTTP 응답을 파싱해 구조체를 채웁니다.
 	void SetFromHttpResponse(const TSharedPtr<class IHttpResponse, ESPMode::ThreadSafe>& Response);
 
 	/// @brief 디버그 로그에 응답 내용을 출력합니다.
 	void PrintData() const;
+	
+	/// @brief 구조체 값이 유효한지 여부를 반환합니다.
+	bool IsValid() const;
 };
 
 // =================================================================================

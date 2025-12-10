@@ -69,6 +69,10 @@ public:
 	void InitPopup(int32 InQid, const TArray<FString>& InTokens);
 	
 private:
+	// WriteBoard
+	UPROPERTY()
+	TObjectPtr<class UWriteBoard> writeBoardObject;
+	
 	// Question Id
 	int32 Qid;
 	TArray<FString> AnswerKr;
@@ -89,12 +93,9 @@ private:
 	void DrawPoint(FVector2D mousePos, FLinearColor drawColor);
 	FVector2D GetLocalMousePos(FVector2D mousePos);
 	
-	// Clear Canvas
-	UFUNCTION()
-	void ClearCanvas();
-	// Save Render Target Canvas
 	UFUNCTION()
 	void SaveCanvas();
 	
-	bool SaveRenderTargetToPNG(UTextureRenderTarget2D* RenderTarget, const FString& FullFilePath);
+	UFUNCTION()
+	void ClearCanvas();	
 };

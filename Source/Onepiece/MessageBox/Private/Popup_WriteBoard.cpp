@@ -14,6 +14,7 @@
 #include "Components/SizeBox.h"
 #include "Engine/Canvas.h"
 #include "Kismet/KismetRenderingLibrary.h"
+#include "WriteBoard.h"
 
 UPopup_WriteBoard::UPopup_WriteBoard(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer)
 {
@@ -27,6 +28,8 @@ UPopup_WriteBoard::UPopup_WriteBoard(const FObjectInitializer& ObjectInitializer
 void UPopup_WriteBoard::NativeOnInitialized()
 {
 	Super::NativeOnInitialized();
+	
+	writeBoardObject = NewObject<UWriteBoard>();
 	
 	// Button Event
 	Button_Clear->OnButtonClickedEvent.AddDynamic(this, &UPopup_WriteBoard::ClearCanvas);
@@ -220,80 +223,12 @@ FVector2D UPopup_WriteBoard::GetLocalMousePos(FVector2D mousePos)
 	return localPos;
 }
 
-void UPopup_WriteBoard::ClearCanvas()
-{
-	UKismetRenderingLibrary::ClearRenderTarget2D(this, RT_Canvas, RT_Canvas->ClearColor);
-}
-
 void UPopup_WriteBoard::SaveCanvas()
 {
-	// File Path
-	const FString filePath = FPaths::ProjectSavedDir() / TEXT("WriteImage/");
-	IFileManager::Get().MakeDirectory(*filePath, true);
-	// File Name
-	// FString fileName = FDateTime::Now().ToString(TEXT("%Y_%m_%d_%H_%M_%S.png"));
-	FString fileName;
-	if (AnswerIdx != -1)
-	{
-		fileName = FString::Printf(TEXT("Answer%d_%d.PNG"), Qid, AnswerIdx);
-	}
-	else
-	{
-		fileName = FString::Printf(TEXT("Answer%d.PNG"), Qid);
-	}
-	
-	// Export Render Target to png
-	// UKismetRenderingLibrary::ExportRenderTarget(this, RT_Canvas, filePath, fileName);
-	SaveRenderTargetToPNG(RT_Canvas, filePath / fileName);
+	writeBoardObject->SaveCanvas(Qid, RT_Canvas);
 }
 
-bool UPopup_WriteBoard::SaveRenderTargetToPNG(UTextureRenderTarget2D* RenderTarget, const FString& FullFilePath)
+void UPopup_WriteBoard::ClearCanvas()
 {
-	// TODO: 파일 모아서 하나로 합치고 저장하기(로 바꾸기)
-	FTextureRenderTargetResource* RTResource = RenderTarget->GameThread_GetRenderTargetResource();
-	if (!RTResource)
-	{
-		return false;
-	}
-
-	// Get Width & Height
-	const int32 Width  = RenderTarget->SizeX;
-	const int32 Height = RenderTarget->SizeY;
-
-	// Set Bitmap array
-	TArray<FColor> Bitmap;
-	Bitmap.AddUninitialized(Width * Height);
-
-	// Read BGRA8 pixels in RenderTarget
-	RTResource->ReadPixels(Bitmap);
-
-	// PNG Encoder
-	IImageWrapperModule& ImageWrapperModule =
-		FModuleManager::LoadModuleChecked<IImageWrapperModule>("ImageWrapper");
-
-	TSharedPtr<IImageWrapper> ImageWrapper =
-		ImageWrapperModule.CreateImageWrapper(EImageFormat::PNG);
-
-	if (!ImageWrapper.IsValid())
-	{
-		return false;
-	}
-
-	ImageWrapper->SetRaw(
-		Bitmap.GetData(),
-		Bitmap.GetAllocatedSize(),
-		Width,
-		Height,
-		ERGBFormat::BGRA,
-		8
-	);
-
-	// Compress to PNG
-	const TArray64<uint8>& PNGData = ImageWrapper->GetCompressed(100);
-
-	// Make Directory
-	const FString Directory = FPaths::GetPath(FullFilePath);
-	IFileManager::Get().MakeDirectory(*Directory, true);
-
-	return FFileHelper::SaveArrayToFile(PNGData, *FullFilePath);
+	writeBoardObject->ClearCanvas(RT_Canvas);
 }

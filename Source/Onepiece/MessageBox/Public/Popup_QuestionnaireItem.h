@@ -43,7 +43,7 @@ private:
 	FWriteQuestionData QuestionData;
 	
 	UPROPERTY()
-	TArray<class UTextureRenderTarget2D*> RT_CanvasArray;
+	TObjectPtr<class UTextureRenderTarget2D> RT_Canvas;
 	
 	UFUNCTION()
 	void OnClickButton();

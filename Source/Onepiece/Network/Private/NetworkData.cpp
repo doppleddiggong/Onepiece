@@ -49,7 +49,6 @@ TArray<FPhonemeData> FWordData::GetPhonemeData() const
 	return WordDataArray;
 }
 
-
 void FQuestWriteInfo::SetFromHttpResponse(const TSharedPtr<class IHttpResponse, ESPMode::ThreadSafe>& Response)
 {
 	if (!Response.IsValid())
@@ -89,11 +88,17 @@ void FQuestWriteInfo::SetFromHttpResponse(const TSharedPtr<class IHttpResponse, 
 			question.Add(temp);
 		}
 	}
+	bIsValid = true;
 }
 
 void FQuestWriteInfo::PrintData() const
 {
 	
+}
+
+bool FQuestWriteInfo::IsValid() const
+{
+	return bIsValid;
 }
 
 void FResponseHealth::SetFromHttpResponse(const TSharedPtr<IHttpResponse, ESPMode::ThreadSafe>& Response)

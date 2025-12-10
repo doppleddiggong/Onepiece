@@ -9,7 +9,6 @@
 #include "Popup_Questionnaire.h"
 #include "UKLingoNetworkSystem.h"
 #include "UPopupManager.h"
-#include "UPopup_Interview.h"
 #include "UPopup_MsgBox.h"
 #include "Components/BoxComponent.h"
 #include "Components/WidgetComponent.h"
@@ -82,7 +81,17 @@ void AQuestionnaireKiosk::ClientRPC_OnInteractionTriggered_Implementation(AActor
 {
 	if (auto KLingoNetwork = UKLingoNetworkSystem::Get(GetWorld()))
 	{
-		KLingoNetwork->RequestWriteQuestions(FResponseWriteQuestionDelegate::CreateUObject(this, &AQuestionnaireKiosk::OnResponseData));
+		// QuestionnaireData에 데이터가 있다면
+		if (QuestionnaireData.IsValid())
+		{
+			PRINTLOG(TEXT("QuestionnaireData is valid"));
+			ShowPopup();
+		}
+		else
+		{
+			PRINTLOG(TEXT("QuestionnaireData is invalid"));
+			KLingoNetwork->RequestWriteQuestions(FResponseWriteQuestionDelegate::CreateUObject(this, &AQuestionnaireKiosk::OnResponseData));
+		}
 	}
 }
 
@@ -92,7 +101,6 @@ void AQuestionnaireKiosk::OnResponseData(FQuestWriteInfo& InResponseData, bool b
 	{
 		PRINTLOG(TEXT("--- Write Question Response SUCCESS ---"));
 		
-		// for (const FResponseOcrData& data : ResponseData.ResponseOcrDataArray)
 		for (int32 i = 1; i <= InResponseData.question.Num(); ++i)
 		{
 			const FWriteQuestionData& data = InResponseData.question[i - 1];
@@ -100,27 +108,31 @@ void AQuestionnaireKiosk::OnResponseData(FQuestWriteInfo& InResponseData, bool b
 			PRINTLOG(TEXT("%d answer_kor: %s"), i, *data.answer_kor);
 		}
 		
-		if (const auto PopupMgr = UPopupManager::Get(GetWorld()))
-		{
-			if (const auto Popup = Cast<UPopup_Questionnaire>(PopupMgr->ShowPopup(EPopupType::Questionnaire)))
-			{
-				// TODO: 쓰기 퀘스트 json 데이터 받기 요청
-				FQuestWriteInfo data = InResponseData;
+		// TODO: 쓰기 퀘스트 json 데이터 받기 요청
+		// QuestionnaireData = InResponseData;
 			
-				// 테스트용 더미 데이터 생성
-				// CreateTestData(data);
-			
-				// 팝업 초기화
-				Popup->InitPopup(data);
-
-				// PRINTLOG(TEXT("[PopupTester] Interview popup opened with %d questions"), TestData.question.Num());
-				PRINTLOG(TEXT("[PopupTester] Interview popup opened with %d questions"), data.question.Num());
-			}
-		}
+		// 테스트용 더미 데이터 생성
+		CreateTestData(QuestionnaireData);
+		
+		ShowPopup();
 	}
 	else
 	{
 		PRINTLOG(TEXT("--- Write Question Response FAILED ---"));
+	}
+}
+
+void AQuestionnaireKiosk::ShowPopup()
+{
+	if (const auto PopupMgr = UPopupManager::Get(GetWorld()))
+	{
+		if (const auto Popup = Cast<UPopup_Questionnaire>(PopupMgr->ShowPopup(EPopupType::Questionnaire)))
+		{
+			// 팝업 초기화
+			Popup->InitPopup(QuestionnaireData);
+			
+			PRINTLOG(TEXT("[PopupTester] Interview popup opened with %d questions"), QuestionnaireData.question.Num());
+		}
 	}
 }
 
@@ -166,4 +178,6 @@ void AQuestionnaireKiosk::CreateTestData(FQuestWriteInfo& TestData)
 	Q4.answer = FDateTime::Now().ToString(TEXT("Peak"));
 	Q4.answer_kor = FDateTime::Now().ToString(TEXT("오늘은 Peak라는 게임을 할 것입니다."));
 	TestData.question.Add(Q4);
+	
+	TestData.bIsValid = true;
 }

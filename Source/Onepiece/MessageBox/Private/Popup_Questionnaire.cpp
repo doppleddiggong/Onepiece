@@ -5,7 +5,6 @@
 
 #include "GameLogging.h"
 #include "Popup_QuestionnaireItem.h"
-#include "UDialogManager.h"
 #include "UImageButton.h"
 #include "UKLingoNetworkSystem.h"
 #include "UPopupManager.h"
@@ -88,13 +87,13 @@ void UPopup_Questionnaire::OnClickSubmit()
 	// 네트워크 전송
 	if (auto KLingoNetwork = UKLingoNetworkSystem::Get(GetWorld()))
 	{
-		// TODO: pngFiles를 보내는 방법 정하기. Question마다 png파일 1개로 보낼지 / Question마다 png 파일 여러 개를 보낼지
+		// TODO: Question마다 png파일 1개로 보내자
 		TArray<FString> pngFiles;
 		for (const auto& question : SavedQuestions)
 		{
 			FString OcrImageName = FString::Printf(TEXT("Answer%d.PNG"), question.Id);
-			PRINTLOG(TEXT("[TEST] RequestOcrExtract - ImagePath: %s"), *(OcrImagePath / OcrImageName));
-			pngFiles.Add(OcrImagePath / OcrImageName);
+			PRINTLOG(TEXT("[TEST] RequestOcrExtract - ImagePath: %s"), *(WriteImagePath / OcrImageName));
+			pngFiles.Add(WriteImagePath / OcrImageName);
 		}
 			
 		KLingoNetwork->RequestWriteSubmit(

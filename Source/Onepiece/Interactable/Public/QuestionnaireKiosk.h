@@ -3,10 +3,10 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "NetworkData.h"
 #include "GameFramework/Actor.h"
 #include "QuestionnaireKiosk.generated.h"
 
-struct FQuestWriteInfo;
 
 UCLASS()
 class ONEPIECE_API AQuestionnaireKiosk : public AActor
@@ -53,6 +53,10 @@ protected:
 	UFUNCTION()
 	void OnResponseData(FQuestWriteInfo& InResponseData, bool bWasSuccessful);
 	
+	void ShowPopup();
+	
 	void CreateTestData(FQuestWriteInfo& TestData);
 	
+public:
+	FQuestWriteInfo QuestionnaireData;
 };
