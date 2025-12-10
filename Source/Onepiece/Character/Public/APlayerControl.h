@@ -24,6 +24,8 @@ public:
 	void UpdateQuestRole(EQuestRole QuestRole);
 
 	// --- User Info (레벨 전환에서 유지됨) ---
+
+	bool HasUserInfo() const {  return GetUserId() > 0; }
 	FString GetUserName() const { return UserInfo.username; }
 	int32 GetUserId() const { return UserInfo.id; }
 	const FResponseUserMe& GetUserInfo() const { return UserInfo; }

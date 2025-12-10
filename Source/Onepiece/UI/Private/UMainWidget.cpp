@@ -90,7 +90,7 @@ void UMainWidget::UpdateStateWidget(int32 UserId, const FString& UserName)
 	StateWidget->UpdateUserName(UserId, UserName);
 }
 
-void UMainWidget::UpdateRoomWidget(int32 InRoomId)
+void UMainWidget::UpdateRoomWidget(int64 InRoomId)
 {
 	if ( InRoomId <= 0 )
 		return;

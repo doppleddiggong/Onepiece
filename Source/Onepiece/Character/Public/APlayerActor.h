@@ -10,6 +10,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
 #include "IControllable.h"
+#include "NetworkData.h"
 #include "APlayerActor.generated.h"
 
 /**
@@ -39,9 +40,6 @@ protected:
 	UFUNCTION()
 	void OnRep_AnotherValue();
 
-	/// @brief Another 머티리얼 파라미터를 실제로 적용합니다 (서버/클라이언트 공통)
-	void ApplyAnotherValue();
-
 	UFUNCTION(BlueprintCallable, Category="Command")
 	void RecoveryMovementMode(const EMovementMode InMovementMode);
 
@@ -58,8 +56,9 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Components|Hook")
 	TObjectPtr<class UStaticMeshComponent> HookProjectileMesh;
 
-
-
+	// grab 시 들어올릴 위치
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category="Interaction")
+	TObjectPtr<class USceneComponent> HoldPosition;
 	
 protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Camera", meta=(AllowPrivateAccess="true"))
@@ -120,12 +119,16 @@ public: // Control Interface
 public:
 	FORCEINLINE bool GetIsRunning() { return bIsRunning; }
 	FORCEINLINE bool GetIsJumpStart() { return bIsJumpStart; }
+	EQuestRole GetQuestRole();
 	
 	/// @brief 게임 이벤트 메시지를 수신합니다.
 	/// @param Message [in] 수신된 이벤트 메시지
 	UFUNCTION(BlueprintCallable, Category="Event")
 	void OnGameMessage(const FString& Message);
 
+	UFUNCTION(Server, Reliable)
+	void ServerRPC_Teleport(FVector TargetLocation);
+	
 	/// @brief 클라이언트에서 게임 메시지를 표시합니다.
 	/// @param Message [in] 표시할 메시지
 	UFUNCTION(Client, Reliable)
@@ -143,25 +146,26 @@ public:
 	class UMainWidget* GetMainWidget() const { return MainWidget; }
 
 private:
+	bool IsMainMap();
+
+	/// @brief Another 머티리얼 파라미터를 실제로 적용합니다 (서버/클라이언트 공통)
+	void ApplyAnotherValue();
+	
 	/// @brief 메인 위젯을 생성하고 뷰포트에 추가합니다.
 	void CreateMainWidget();
 	void CreateToastWidget();
 
+	void RequestListenAudio(const FString& AudioText);
+	void OnResponseListenAudio(FResponseListenAudio& ResponseData, bool bWasSuccessful);
 	
 	/// @brief 텔레포트 이벤트 핸들러
 	/// @param TargetLocation 목표 위치
 	UFUNCTION()
 	void OnTeleportAllPlayers(FVector TargetLocation);
 
-	UFUNCTION(Server, Reliable)
-	void Server_Teleport(FVector TargetLocation);
-
 	/// @brief 페이드 아웃 완료 후 텔레포트 실행
 	UFUNCTION()
 	void OnFadeOutCompleteForTeleport();
-
-	/// @brief 텔레포트 목표 위치
-	FVector PendingTeleportLocation;
 
 	UFUNCTION()
 	void OnUpdateQuestInfo();
@@ -173,13 +177,12 @@ private:
 	void OnListenResultUpdated( const FResponseListenResult& Result);
 
 	UFUNCTION()
-	void OnReadResultUpdated(const FResponseReadResult& Result);
-	
-public:
-	// grab 시 들어올릴 위치
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category="Interaction")
-	USceneComponent* HoldPosition;
+	void OnRoomIdUpdated(int64 NewRoomId);
 
+	UFUNCTION()
+	void OnReadResultUpdated(const FResponseReadResult& Result);
+
+protected:
 	// 서버쪽 pitch 수동으로 동기화
 	// bUsePawnControlRotation은 서버->클라로 전달 안됨
 	UPROPERTY(ReplicatedUsing=OnRep_LookPitch)
@@ -198,18 +201,20 @@ private:
 	UPROPERTY()
 	TObjectPtr<class UMainWidget> MainWidget;
 
-	/// @brief 메인 위젯 블루프린트 클래스
 	UPROPERTY(EditDefaultsOnly, Category = "UI")
 	TSubclassOf<class UToastWidget> ToastWidgetClass;
 
-	/// @brief 메인 UI 위젯 인스턴스
 	UPROPERTY()
 	TObjectPtr<class UToastWidget> ToastWidget;
 
+	/// @brief 텔레포트 목표 위치
+	FVector PendingTeleportLocation;
 	
 	// Movement 관련 변수
 	float WalkSpeed = 200.f;
 	float RunSpeed = 500.f;
 	bool bIsRunning = false;
 	bool bIsJumpStart = false;
+
+	bool bIsRequest = false;
 };

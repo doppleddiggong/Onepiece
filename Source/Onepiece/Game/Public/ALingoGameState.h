@@ -21,6 +21,7 @@ enum class EQuestType : uint8
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnReadResultUpdated, const FResponseReadResult&, Result);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnListenResultUpdated, const FResponseListenResult&, Result);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnQuestScenarioDataUpdated);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnRoomIdUpdated, int64, NewRoomId);
 
 UCLASS()
 class ONEPIECE_API ALingoGameState : public AGameState
@@ -82,6 +83,9 @@ protected:
 
 	UFUNCTION()
 	void OnRep_ListenResult();
+
+	UFUNCTION()
+	void OnRep_RoomId();
 	
 private:
 	/// @brief 타이머 종료 시 호출됩니다 (서버에서만 실행)
@@ -91,6 +95,7 @@ public:
 	FOnReadResultUpdated OnReadResultUpdated;
 	FOnListenResultUpdated OnListenResultUpdated;
 	FOnQuestScenarioDataUpdated OnQuestScenarioDataUpdated;
+	FOnRoomIdUpdated OnRoomIdUpdated;
 
 	FORCEINLINE int GetWrongReadAnswerNum() { return WrongReadAnswerList.Num(); }
 	
@@ -134,7 +139,7 @@ protected:
 	EQuestType QuestType;
 
 	/// @brief 방 ID (Host가 생성하고 Guest들과 공유)
-	UPROPERTY(Replicated, BlueprintReadOnly, Category = "Room")
+	UPROPERTY(ReplicatedUsing=OnRep_RoomId, BlueprintReadOnly, Category = "Room")
 	int64 RoomId = 0;
 
 private:

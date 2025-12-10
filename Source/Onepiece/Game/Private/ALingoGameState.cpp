@@ -206,10 +206,17 @@ void ALingoGameState::Multicast_ShowReadQuestPopup_Implementation(const FRespons
 		FTimerHandle TimerHandle;
 		World->GetTimerManager().SetTimer(TimerHandle, [this, InScenarioData]()
 		{
-			if (const auto Popup = UPopupManager::ShowPopupAs<UPopup_ReadQuest>(GetWorld(), EPopupType::ReadQuest))
+			for (FConstPlayerControllerIterator It = GetWorld()->GetPlayerControllerIterator(); It; ++It)
 			{
-				Popup->InitRead(InScenarioData);
+				if (APlayerController* PC = It->Get())
+				{
+					if (APlayerActor* PlayerActor = Cast<APlayerActor>(PC->GetPawn()))
+					{
+						PlayerActor->Cmd_Info();
+					}
+				}
 			}
+			
 		}, 0.5f, false);
 	}
 }
@@ -222,10 +229,17 @@ void ALingoGameState::Multicast_ShowListenQuestPopup_Implementation(const FRespo
 		FTimerHandle TimerHandle;
 		World->GetTimerManager().SetTimer(TimerHandle, [this, InScenarioData]()
 		{
-			if (const auto Popup = UPopupManager::ShowPopupAs<UPopup_ReadQuest>(GetWorld(), EPopupType::ReadQuest))
+			for (FConstPlayerControllerIterator It = GetWorld()->GetPlayerControllerIterator(); It; ++It)
 			{
-				Popup->InitListen(InScenarioData);
+				if (APlayerController* PC = It->Get())
+				{
+					if (APlayerActor* PlayerActor = Cast<APlayerActor>(PC->GetPawn()))
+					{
+						PlayerActor->Cmd_Info();
+					}
+				}
 			}
+			
 		}, 0.5f, false);
 	}
 }
@@ -248,4 +262,9 @@ void ALingoGameState::OnRep_ListenScenarioData()
 void ALingoGameState::OnRep_ListenResult()
 {
 	OnListenResultUpdated.Broadcast(ListenResult);
+}
+
+void ALingoGameState::OnRep_RoomId()
+{
+	OnRoomIdUpdated.Broadcast(RoomId);
 }

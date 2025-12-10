@@ -25,7 +25,7 @@ void URoomWidget::NativeTick(const FGeometry& MyGeometry, float InDeltaTime)
 	UpdateLoadingSpinner(InDeltaTime);
 }
 
-void URoomWidget::UpdateRoomId(const int32 InRoomId)
+void URoomWidget::UpdateRoomId(const int64 InRoomId)
 {
 	Txt_RoomId->SetText(FText::FromString(FString::Printf(TEXT("%d"), InRoomId )));
 }

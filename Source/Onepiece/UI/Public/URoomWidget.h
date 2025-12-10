@@ -20,7 +20,7 @@ protected:
 public:
 	void InitWidget();
 	void UpdateLoadingSpinner(float DeltaTime);
-	void UpdateRoomId(const int32 InRoomId);
+	void UpdateRoomId(const int64 InRoomId);
 	
 private:
 	UFUNCTION(BlueprintCallable, Category = "State|Network")
