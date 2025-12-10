@@ -1074,3 +1074,59 @@ void UKLingoNetworkSystem::RequestSpeakScenario(FResponseSpeakScenarioDelegate I
 	AddNetworkWaitCount(1);
 	Request->ProcessRequest();
 }
+// =================================================================================
+// RequestEvaluationResult
+// =================================================================================
+
+void UKLingoNetworkSystem::RequestEvaluationResult(int32 RoomId, FResponseEvaluationResultDelegate InDelegate)
+{
+	// URL 형식: /evaluations/rooms/{room_id}
+	FString Endpoint = FString::Printf(TEXT("%s/%d"), *RequestAPI::evaluations_rooms, RoomId);
+	FString Url = NetworkConfig::GetFullUrl(Endpoint);
+	auto Request = SetupHttpRequest(Url, NETWORK_GET);
+
+	LogNetwork(ENetworkLogType::Get, *Request->GetURL());
+
+	Request->OnProcessRequestComplete().BindLambda(
+		[this, InDelegate](FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSuccess)
+		{
+			AddNetworkWaitCount(-1);
+
+			FResponseEvaluationResult ResponseData;
+
+			if (bSuccess && HttpResponse.IsValid())
+			{
+				const int32 ResponseCode = HttpResponse->GetResponseCode();
+
+				NETWORK_LOG(TEXT("[RES] RequestEvaluationResult - Code: %d, Response: %s"), 
+					ResponseCode, *HttpResponse->GetContentAsString());
+
+				if (IsResSuccess(ResponseCode))
+				{
+					ResponseData.SetFromHttpResponse(HttpResponse);
+					ResponseData.PrintData();
+					InDelegate.ExecuteIfBound(ResponseData, true);
+				}
+				else
+				{
+					ShowNetworkErrorPopup(ResponseCode, HttpResponse->GetContentAsString());
+					InDelegate.ExecuteIfBound(ResponseData, false);
+				}
+			}
+			else
+			{
+				NETWORK_LOG(TEXT("[GET] RequestEvaluationResult failed - bSuccess: %s, Response valid: %s"),
+					bSuccess ? TEXT("true") : TEXT("false"),
+					HttpResponse.IsValid() ? TEXT("true") : TEXT("false"));
+
+				int32 ErrorCode = HttpResponse.IsValid() ? HttpResponse->GetResponseCode() : 0;
+				FString ErrorContent = HttpResponse.IsValid() ? HttpResponse->GetContentAsString() : TEXT("Network connection failed");
+				ShowNetworkErrorPopup(ErrorCode, ErrorContent);
+
+				InDelegate.ExecuteIfBound(ResponseData, false);
+			}
+		});
+
+	AddNetworkWaitCount(1);
+	Request->ProcessRequest();
+}

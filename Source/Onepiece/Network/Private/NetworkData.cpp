@@ -1013,3 +1013,96 @@ void FResponseSpeakScenario::PrintData() const
 	NETWORK_LOG( TEXT("[RES] %s"), *OutputString);
 }
 
+// =================================================================================
+// FResponseEvaluationResult
+// =================================================================================
+
+void FResponseEvaluationResult::SetFromHttpResponse(const TSharedPtr<IHttpResponse, ESPMode::ThreadSafe>& Response)
+{
+	if (!Response.IsValid())
+	{
+		return;
+	}
+
+	FString JsonString = Response->GetContentAsString();
+	TSharedPtr<FJsonObject> JsonObject;
+	TSharedRef<TJsonReader<>> Reader = TJsonReaderFactory<>::Create(JsonString);
+
+	if (FJsonSerializer::Deserialize(Reader, JsonObject) && JsonObject.IsValid())
+	{
+		// total_result 파싱
+		if (JsonObject->HasTypedField<EJson::Object>(TEXT("total_result")))
+		{
+			TSharedPtr<FJsonObject> TotalResultObj = JsonObject->GetObjectField(TEXT("total_result"));
+			if (TotalResultObj.IsValid())
+			{
+				total_result.final_score = TotalResultObj->GetIntegerField(TEXT("final_score"));
+				total_result.grade = TotalResultObj->GetStringField(TEXT("grade"));
+				total_result.feedback_summary = TotalResultObj->GetStringField(TEXT("feedback_summary"));
+			}
+		}
+
+		// scenario_results 배열 파싱
+		const TArray<TSharedPtr<FJsonValue>>* ScenarioResultsArray;
+		if (JsonObject->TryGetArrayField(TEXT("scenario_results"), ScenarioResultsArray))
+		{
+			for (const auto& Item : *ScenarioResultsArray)
+			{
+				TSharedPtr<FJsonObject> ScenarioObj = Item->AsObject();
+				if (ScenarioObj.IsValid())
+				{
+					FScenarioResult ScenarioItem;
+
+					// scenario_type 파싱
+					FString ScenarioTypeStr = ScenarioObj->GetStringField(TEXT("scenario_type"));
+					if (ScenarioTypeStr == TEXT("READING"))
+						ScenarioItem.scenario_type = EScenarioType::READING;
+					else if (ScenarioTypeStr == TEXT("LISTENING"))
+						ScenarioItem.scenario_type = EScenarioType::LISTENING;
+					else if (ScenarioTypeStr == TEXT("WRITING"))
+						ScenarioItem.scenario_type = EScenarioType::WRITING;
+					else if (ScenarioTypeStr == TEXT("SPEAKING"))
+						ScenarioItem.scenario_type = EScenarioType::SPEAKING;
+
+					// display_name 파싱
+					ScenarioItem.display_name = ScenarioObj->GetStringField(TEXT("display_name"));
+
+					// final_score 파싱
+					ScenarioItem.final_score = ScenarioObj->GetIntegerField(TEXT("final_score"));
+
+					// grade 파싱
+					ScenarioItem.grade = ScenarioObj->GetStringField(TEXT("grade"));
+
+					// feedback_summary 파싱
+					if (ScenarioObj->HasTypedField<EJson::Object>(TEXT("feedback_summary")))
+					{
+						TSharedPtr<FJsonObject> FeedbackObj = ScenarioObj->GetObjectField(TEXT("feedback_summary"));
+						if (FeedbackObj.IsValid())
+						{
+							ScenarioItem.feedback_summary.title = FeedbackObj->GetStringField(TEXT("title"));
+							ScenarioItem.feedback_summary.message = FeedbackObj->GetStringField(TEXT("message"));
+						}
+					}
+
+					// action_item 파싱
+					ScenarioItem.action_item = ScenarioObj->GetStringField(TEXT("action_item"));
+
+					scenario_results.Add(ScenarioItem);
+				}
+			}
+		}
+	}
+}
+
+void FResponseEvaluationResult::PrintData() const
+{
+	FString OutputString;
+	FJsonObjectConverter::UStructToJsonObjectString(
+		*this,
+		OutputString,
+		0,
+		0
+	);
+	NETWORK_LOG( TEXT("[RES] %s"), *OutputString);
+}
+

@@ -99,8 +99,8 @@ namespace RequestAPI
 	static FString read_result = FString("/scenario/stage/result/post");
 	static FString listen_result = FString("/scenario/stage/result/post");
 
-
-	
+	/// @brief Evaluation 결과 조회 엔드포인트입니다. GET /evaluations/rooms/{room_id}
+	static FString evaluations_rooms = FString("/evaluations/rooms");
 }
 
 
@@ -1019,6 +1019,96 @@ struct FResponseSpeakScenario
 
 	UPROPERTY(BlueprintReadWrite, Category = "Speak")
 	TArray<FSpeakQuestionData> question;
+
+	/// @brief HTTP 응답을 파싱해 구조체를 채웁니다.
+	void SetFromHttpResponse(const TSharedPtr<class IHttpResponse, ESPMode::ThreadSafe>& Response);
+
+	/// @brief 디버그 로그에 응답 내용을 출력합니다.
+	void PrintData() const;
+};
+
+
+// =================================================================================
+// Evaluation API Structures
+// =================================================================================
+
+/// @brief 시나리오 타입 열거형
+UENUM(BlueprintType)
+enum class EScenarioType : uint8
+{
+	READING UMETA(DisplayName = "Reading"),
+	LISTENING UMETA(DisplayName = "Listening"),
+	WRITING UMETA(DisplayName = "Writing"),
+	SPEAKING UMETA(DisplayName = "Speaking")
+};
+
+/// @brief 피드백 요약 구조체입니다.
+USTRUCT(BlueprintType)
+struct FFeedbackSummary
+{
+	GENERATED_BODY()
+
+	UPROPERTY(BlueprintReadWrite, Category = "Evaluation")
+	FString title;
+
+	UPROPERTY(BlueprintReadWrite, Category = "Evaluation")
+	FString message;
+};
+
+/// @brief 시나리오별 결과 구조체입니다.
+USTRUCT(BlueprintType)
+struct FScenarioResult
+{
+	GENERATED_BODY()
+
+	UPROPERTY(BlueprintReadWrite, Category = "Evaluation")
+	EScenarioType scenario_type;
+
+	UPROPERTY(BlueprintReadWrite, Category = "Evaluation")
+	FString display_name;
+
+	UPROPERTY(BlueprintReadWrite, Category = "Evaluation")
+	int32 final_score = 0;
+
+	UPROPERTY(BlueprintReadWrite, Category = "Evaluation")
+	FString grade;
+
+	UPROPERTY(BlueprintReadWrite, Category = "Evaluation")
+	FFeedbackSummary feedback_summary;
+
+	UPROPERTY(BlueprintReadWrite, Category = "Evaluation")
+	FString action_item;
+};
+
+/// @brief 전체 결과 구조체입니다.
+USTRUCT(BlueprintType)
+struct FTotalResult
+{
+	GENERATED_BODY()
+
+	UPROPERTY(BlueprintReadWrite, Category = "Evaluation")
+	int32 final_score = 0;
+
+	UPROPERTY(BlueprintReadWrite, Category = "Evaluation")
+	FString grade;
+
+	UPROPERTY(BlueprintReadWrite, Category = "Evaluation")
+	FString feedback_summary;
+};
+
+/// @brief Evaluation 결과 응답 델리게이트입니다.
+DECLARE_DELEGATE_TwoParams(FResponseEvaluationResultDelegate, FResponseEvaluationResult&, bool);
+/// @brief Evaluation 결과 응답 구조체입니다.
+USTRUCT(BlueprintType)
+struct FResponseEvaluationResult
+{
+	GENERATED_BODY()
+
+	UPROPERTY(BlueprintReadWrite, Category = "Evaluation")
+	FTotalResult total_result;
+
+	UPROPERTY(BlueprintReadWrite, Category = "Evaluation")
+	TArray<FScenarioResult> scenario_results;
 
 	/// @brief HTTP 응답을 파싱해 구조체를 채웁니다.
 	void SetFromHttpResponse(const TSharedPtr<class IHttpResponse, ESPMode::ThreadSafe>& Response);

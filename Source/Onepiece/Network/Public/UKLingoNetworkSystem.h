@@ -49,7 +49,8 @@ public:
 
 	void RequestSpeakScenario(FResponseSpeakScenarioDelegate InDelegate);
 
-	
+	/// @brief Evaluation 결과를 조회합니다. GET /evaluations/rooms/{room_id}
+	void RequestEvaluationResult(int32 RoomId, FResponseEvaluationResultDelegate InDelegate);
 	
 private:
 	/// @brief 공통 네트워크 로그 메시지를 출력합니다.
