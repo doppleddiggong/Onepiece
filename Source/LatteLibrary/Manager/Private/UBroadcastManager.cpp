@@ -56,11 +56,6 @@ void UBroadcastManager::SendWeightSwitch(int InButtonIndex, bool InActive)
 	OnWeightSwitch.Broadcast(InButtonIndex, InActive);
 }
 
-void UBroadcastManager::SendUserNameChanged(const FString& UserName)
-{
-	OnUpdateUserName.Broadcast(UserName);
-}
-
 void UBroadcastManager::SendUpdateMissionTimerState(bool bIsActive, float TimeLimit)
 {
 	OnUpdateMissionTimerState.Broadcast(bIsActive, TimeLimit);

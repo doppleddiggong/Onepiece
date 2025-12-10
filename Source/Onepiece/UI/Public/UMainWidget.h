@@ -27,6 +27,9 @@ protected:
 	
 public:
 	void SetMissionTimerState(bool bIsActive) const;
+
+	void UpdateStateWidget(int32 UserId, const FString& UserName);
+	void UpdateRoomWidget(int32 InRoomId);
 	
 	/// @brief 훅 인디케이터 상태 업데이트 (에임/비에임)
 	/// @param bIsAiming true면 타겟 감지됨(파란색), false면 비감지(회색)
@@ -66,7 +69,9 @@ protected:
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
 	TObjectPtr<class UPlayTimer> PlayTimer;
 
-	/// @brief 플레이어 상태 위젯 (BindWidget)
+	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
+	TObjectPtr<class URoomWidget>  RoomWidget;
+
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
 	TObjectPtr<class UStateWidget> StateWidget;
 

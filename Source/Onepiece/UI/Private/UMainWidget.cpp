@@ -20,11 +20,10 @@
 #include "UTutorMessage.h"
 #include "UAutoDespawnItem.h"
 #include "UFadeWidget.h"
+#include "URoomWidget.h"
 #include "Engine/World.h"
 #include "Components/Image.h"
-#include "Components/HorizontalBox.h"
 #include "Engine/Texture2D.h"
-#include "Animation/WidgetAnimation.h"
 #include "GameFramework/PlayerState.h"
 #include "GameFramework/PlayerController.h"
 
@@ -51,11 +50,14 @@ void UMainWidget::NativeConstruct()
 		CachedGameState = World->GetGameState<ALingoGameState>();
 
 	if (auto BM = UBroadcastManager::Get(GetWorld()))
-	{
 		BM->OnUpdateMissionTimerState.AddDynamic(this, &UMainWidget::OnUpdateMissionTimerState);
-	}
 
 	StateWidget->InitWidget();
+	StateWidget->SetVisibility( ESlateVisibility::Collapsed);
+
+	RoomWidget->InitWidget();
+	RoomWidget->SetVisibility( ESlateVisibility::Collapsed);
+	
 	QuestInfoWidget->SetVisibility( ESlateVisibility::Collapsed );
 
 	// 훅 타겟 인디케이터 초기 숨김
@@ -63,7 +65,6 @@ void UMainWidget::NativeConstruct()
 
 	// SpeakWidget 초기 숨김 (BindWidgetOptional이므로 null 체크 필요)
 	SpeakWidget->SetWidgetVisibility(false);
-
 	SetMissionTimerState(false);
 }
 
@@ -78,6 +79,24 @@ void UMainWidget::NativeTick(const FGeometry& MyGeometry, float InDeltaTime)
 void UMainWidget::SetMissionTimerState(bool bIsActive) const
 {
 	PlayTimer->SetVisibility(bIsActive ? ESlateVisibility::Visible : ESlateVisibility::Hidden);
+}
+
+void UMainWidget::UpdateStateWidget(int32 UserId, const FString& UserName)
+{
+	if ( UserName == "" )
+		return;
+
+	StateWidget->SetVisibility(ESlateVisibility::Visible);
+	StateWidget->UpdateUserName(UserId, UserName);
+}
+
+void UMainWidget::UpdateRoomWidget(int32 InRoomId)
+{
+	if ( InRoomId <= 0 )
+		return;
+
+	RoomWidget->SetVisibility(ESlateVisibility::Visible);
+	RoomWidget->UpdateRoomId(InRoomId);
 }
 
 void UMainWidget::UpdateTimerDisplay() const

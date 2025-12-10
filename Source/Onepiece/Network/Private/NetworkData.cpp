@@ -948,3 +948,68 @@ void FResponseListenResult::PrintData() const
 	);
 	NETWORK_LOG( TEXT("[RES] %s"), *OutputString);
 }
+
+// =================================================================================
+// FResponseSpeakScenario
+// =================================================================================
+
+void FResponseSpeakScenario::SetFromHttpResponse(const TSharedPtr<IHttpResponse, ESPMode::ThreadSafe>& Response)
+{
+	if (!Response.IsValid())
+	{
+		return;
+	}
+
+	FString JsonString = Response->GetContentAsString();
+	TSharedPtr<FJsonObject> JsonObject;
+	TSharedRef<TJsonReader<>> Reader = TJsonReaderFactory<>::Create(JsonString);
+
+	if (FJsonSerializer::Deserialize(Reader, JsonObject) && JsonObject.IsValid())
+	{
+		index = JsonObject->GetIntegerField(TEXT("index"));
+		dificulity = JsonObject->GetIntegerField(TEXT("difficulty"));
+		room_id = JsonObject->GetIntegerField(TEXT("room_id"));
+
+		// question 배열 파싱
+		const TArray<TSharedPtr<FJsonValue>>* QuestionArray;
+		if (JsonObject->TryGetArrayField(TEXT("question"), QuestionArray))
+		{
+			for (const auto& Item : *QuestionArray)
+			{
+				TSharedPtr<FJsonObject> QuestionObj = Item->AsObject();
+				if (QuestionObj.IsValid())
+				{
+					FSpeakQuestionData QuestionItem;
+
+					// word_data 파싱
+					if (QuestionObj->HasTypedField<EJson::Object>(TEXT("word_data")))
+					{
+						TSharedPtr<FJsonObject> WordDataObj = QuestionObj->GetObjectField(TEXT("word_data"));
+						FJsonObjectConverter::JsonObjectToUStruct(WordDataObj.ToSharedRef(), FWordData::StaticStruct(), &QuestionItem.word_data);
+					}
+
+					// answer 파싱
+					QuestionItem.answer = QuestionObj->GetStringField(TEXT("answer"));
+
+					// answer_kor 파싱
+					QuestionItem.answer_kor = QuestionObj->GetStringField(TEXT("answer_kor"));
+
+					question.Add(QuestionItem);
+				}
+			}
+		}
+	}
+}
+
+void FResponseSpeakScenario::PrintData() const
+{
+	FString OutputString;
+	FJsonObjectConverter::UStructToJsonObjectString(
+		*this,
+		OutputString,
+		0,
+		0
+	);
+	NETWORK_LOG( TEXT("[RES] %s"), *OutputString);
+}
+

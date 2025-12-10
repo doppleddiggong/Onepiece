@@ -6,52 +6,26 @@
  */
 #include "UStateWidget.h"
 
-#include "ALingoPlayerState.h"
-#include "APlayerControl.h"
 #include "Blueprint/WidgetTree.h"
-#include "Components/Image.h"
 #include "Components/ProgressBar.h"
 #include "Components/TextBlock.h"
 #include "TimerManager.h"
 #include "UBroadcastManager.h"
-#include "ULingoGameHelper.h"
 #include "Misc/DateTime.h"
 
-void UStateWidget::NativeConstruct()
-{
-    Super::NativeConstruct();
-}
-
-void UStateWidget::NativeDestruct()
-{
-    if (UWorld* World = GetWorld())
-        World->GetTimerManager().ClearTimer(UpdateTimerHandle);
-
-    Super::NativeDestruct();
-}
 
 void UStateWidget::InitWidget()
 {
-    if (LoadingSpinner)
-        LoadingSpinner->SetVisibility(ESlateVisibility::Hidden);
-
     if (SpectrumProgressBar)
         SpectrumProgressBar->SetVisibility(ESlateVisibility::Hidden);
 
-    if (UserNameText)
-    {
-        if (APlayerControl* PC = Cast<APlayerControl>(GetOwningPlayer()))
-            UserNameText->SetText(FText::FromString(PC->GetUserName()));
-        else
-            UserNameText->SetText(FText::GetEmpty());
-    }
-
+    Txt_UserId->SetText(FText::FromString(""));
+    Txt_UserName->SetText(FText::FromString(""));
+    
     if (auto EventManager = UBroadcastManager::Get(GetWorld()))
     {
-        EventManager->OnNetworkWaitCount.AddDynamic(this, &UStateWidget::OnNetworkWaitCount);
         EventManager->OnAudioCapture.AddDynamic(this, &UStateWidget::OnAudioCapture);
         EventManager->OnAudioSpectrum.AddDynamic(this, &UStateWidget::OnAudioSpectrum);
-        EventManager->OnUpdateUserName.AddDynamic(this, &UStateWidget::OnUpdateUserName);
     }
 }
 
@@ -60,7 +34,6 @@ void UStateWidget::NativeTick(const FGeometry& MyGeometry, float InDeltaTime)
     Super::NativeTick(MyGeometry, InDeltaTime);
 
     UpdateSpectrumVisual(InDeltaTime);
-    UpdateLoadingSpinner(InDeltaTime);
 }
 
 void UStateWidget::UpdateSpectrumVisual(float DeltaTime)
@@ -76,21 +49,11 @@ void UStateWidget::UpdateSpectrumVisual(float DeltaTime)
     SpectrumProgressBar->SetPercent(FMath::Clamp(NewPercent, 0.0f, 1.0f));
 }
 
-void UStateWidget::UpdateLoadingSpinner(float DeltaTime)
+void UStateWidget::UpdateUserName(int32 InUserId, const FString& InUserName)
 {
-    if (!LoadingSpinner || !LoadingSpinner->IsVisible())
-        return;
-
-    const float NewAngle = LoadingSpinner->GetRenderTransformAngle() + (SpinnerRotationSpeed * DeltaTime);
-    LoadingSpinner->SetRenderTransformAngle(NewAngle);
-}
-
-void UStateWidget::OnNetworkWaitCount(int NetworkWaitCount)
-{
-    if (!LoadingSpinner)
-        return;
-
-    LoadingSpinner->SetVisibility(NetworkWaitCount > 0 ? ESlateVisibility::Visible : ESlateVisibility::Hidden);
+    const FString Result = FString::Format(TEXT("[{0}]"),{ InUserId });
+    Txt_UserId->SetText(FText::FromString(Result));
+    Txt_UserName->SetText(FText::FromString(InUserName));
 }
 
 void UStateWidget::OnAudioCapture(bool bRecording)
@@ -104,9 +67,4 @@ void UStateWidget::OnAudioCapture(bool bRecording)
 void UStateWidget::OnAudioSpectrum(float Spectrum)
 {
     SpectrumDisplayValue = Spectrum;
-}
-
-void UStateWidget::OnUpdateUserName(FString UserName)
-{
-    UserNameText->SetText(FText::FromString(UserName));
 }

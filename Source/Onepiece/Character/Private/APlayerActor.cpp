@@ -21,6 +21,7 @@
 #include "UPopupManager.h"
 #include "UPopup_ReadQuest.h"
 #include "ALingoGameState.h"
+#include "APlayerControl.h"
 #include "UToastWidget.h"
 #include "UBroadcastManager.h"
 #include "UFadeWidget.h"
@@ -190,7 +191,20 @@ void APlayerActor::CreateMainWidget()
 
 	MainWidget = CreateWidget<UMainWidget>(PC, MainWidgetClass);
 	if (MainWidget)
+	{
 		MainWidget->AddToViewport();
+
+		FString MapName = GetWorld()->GetMapName();
+		MapName.RemoveFromStart(GetWorld()->StreamingLevelsPrefix);
+		if (MapName.Contains(TEXT("Map1")) || MapName.Contains(TEXT("Game")))
+		{
+			if ( auto PlayerControl = Cast<APlayerControl>(PC) )
+			{
+				MainWidget->UpdateRoomWidget( ULingoGameHelper::GetLingoGameState(GetWorld())->GetRoomId() );	
+				MainWidget->UpdateStateWidget( PlayerControl->GetUserId(), PlayerControl->GetUserName());	
+			}		
+		}
+	}
 }
 
 void APlayerActor::CreateToastWidget()

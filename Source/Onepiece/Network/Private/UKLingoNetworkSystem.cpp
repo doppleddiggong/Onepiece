@@ -965,7 +965,7 @@ void UKLingoNetworkSystem::RequestListenResult( const FRequestListenResult& Resu
 	FString Url = NetworkConfig::GetFullUrl(RequestAPI::listen_result);
     auto Request = SetupHttpRequest(Url, NETWORK_POST);
 
-	// Request Body 설정                                                                                                                                                                                                          
+	// Request Body 설정
 	FString RequestBody;
 	if (Result.ToJsonString(RequestBody))
 		Request->SetContentAsString(RequestBody);
@@ -994,13 +994,13 @@ void UKLingoNetworkSystem::RequestListenResult( const FRequestListenResult& Resu
 	              ResponseData.PrintData();
 	              InDelegate.ExecuteIfBound(ResponseData, true);
 	          }
-	          else                                                                                                                                                                                                              
+	          else
 	          {
 	              WeakThis->ShowNetworkErrorPopup(ResponseCode, ResPtr->GetContentAsString());
 	              InDelegate.ExecuteIfBound(ResponseData, false);
 	          }
 	      }
-	      else                                                                                                                                                                                                                  
+	      else
 	      {
 	          NETWORK_LOG(TEXT("[RES] RequestListenResult failed - bSuccess: %s, Response valid: %s"),
 	              bWasSuccessful ? TEXT("true") : TEXT("false"),
@@ -1013,6 +1013,63 @@ void UKLingoNetworkSystem::RequestListenResult( const FRequestListenResult& Resu
 	          InDelegate.ExecuteIfBound(ResponseData, false);
 	      }
 	  });
+
+	AddNetworkWaitCount(1);
+	Request->ProcessRequest();
+}
+
+void UKLingoNetworkSystem::RequestSpeakScenario(FResponseSpeakScenarioDelegate InDelegate)
+{
+	// URL 형식: /scenario/stages/redis/{room_id}/{scenario_id}/{stage_type}/{level}
+	FString Endpoint = FString::Printf(TEXT("%s/%lld/%d/%d/%d"), *RequestAPI::scenario,
+		ULingoGameHelper::GetLingoGameState( GetWorld())->GetRoomId(),
+		1,
+		ULingoGameHelper::GetStageTypeIndex(EQuestType::Speak),
+		1);
+
+	FString Url = NetworkConfig::GetFullUrl(Endpoint);
+	auto Request = SetupHttpRequest(Url, NETWORK_GET);
+
+	LogNetwork(ENetworkLogType::Get, *Request->GetURL());
+
+	Request->OnProcessRequestComplete().BindLambda(
+		[this, InDelegate](FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSuccess)
+		{
+			AddNetworkWaitCount(-1);
+
+			FResponseSpeakScenario ResponseData;
+
+			if (bSuccess && HttpResponse.IsValid())
+			{
+				const int32 ResponseCode = HttpResponse->GetResponseCode();
+
+				NETWORK_LOG(TEXT("[RES] Code: %d, Response: %s"), ResponseCode, *HttpResponse->GetContentAsString());
+
+				if (IsResSuccess(ResponseCode))
+				{
+					ResponseData.SetFromHttpResponse(HttpResponse);
+					ResponseData.PrintData();
+					InDelegate.ExecuteIfBound(ResponseData, true);
+				}
+				else
+				{
+					ShowNetworkErrorPopup(ResponseCode, HttpResponse->GetContentAsString());
+					InDelegate.ExecuteIfBound(ResponseData, false);
+				}
+			}
+			else
+			{
+				NETWORK_LOG(TEXT("[RES] RequestSpeakScenario failed - bSuccess: %s, Response valid: %s"),
+					bSuccess ? TEXT("true") : TEXT("false"),
+					HttpResponse.IsValid() ? TEXT("true") : TEXT("false"));
+
+				int32 ErrorCode = HttpResponse.IsValid() ? HttpResponse->GetResponseCode() : 0;
+				FString ErrorContent = HttpResponse.IsValid() ? HttpResponse->GetContentAsString() : TEXT("Network connection failed");
+				ShowNetworkErrorPopup(ErrorCode, ErrorContent);
+
+				InDelegate.ExecuteIfBound(ResponseData, false);
+			}
+		});
 
 	AddNetworkWaitCount(1);
 	Request->ProcessRequest();

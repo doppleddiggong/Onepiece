@@ -47,6 +47,8 @@ public:
 	void RequestListenScenario(FResponseListenScenarioDelegate InDelegate);
 	void RequestListenResult(const FRequestListenResult& Result, FResponseListenResultDelegate InDelegate);
 
+	void RequestSpeakScenario(FResponseSpeakScenarioDelegate InDelegate);
+
 	
 	
 private:

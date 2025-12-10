@@ -28,31 +28,35 @@ void UQuestInfoWidget::InitQuestInfo()
 	{
 		const FResponseReadScenario& ReadScenario = GS->GetReadScenarioData();
 
-		if (QuestRole == EQuestRole::Both)
-			SetQuestText(ReadScenario.full_data);
-		else if (QuestRole == EQuestRole::OnlyQuestion1)
-			SetQuestText(ReadScenario.word_data1);
-		else if (QuestRole == EQuestRole::OnlyQuestion2)
-			SetQuestText(ReadScenario.word_data2);
+		Txt_Message->SetText(FText::FromString("Press to view the text again."));
+		
+		// if (QuestRole == EQuestRole::Both)
+		// 	SetQuestText(ReadScenario.full_data);
+		// else if (QuestRole == EQuestRole::OnlyQuestion1)
+		// 	SetQuestText(ReadScenario.word_data1);
+		// else if (QuestRole == EQuestRole::OnlyQuestion2)
+		// 	SetQuestText(ReadScenario.word_data2);
 	}
 	else if (QuestType == EQuestType::Listen)
 	{
 		const FResponseListenScenario& ListenScenario = GS->GetListenScenarioData();
 
-		if (QuestRole == EQuestRole::Both)
-			SetQuestText(ListenScenario.full_data);
-		else if (QuestRole == EQuestRole::OnlyQuestion1)
-			SetQuestText(ListenScenario.word_data1);
-		else if (QuestRole == EQuestRole::OnlyQuestion2)
-			SetQuestText(ListenScenario.word_data2);
+		Txt_Message->SetText(FText::FromString("Press to listen again"));
+		
+		// if (QuestRole == EQuestRole::Both)
+		// 	SetQuestText(ListenScenario.full_data);
+		// else if (QuestRole == EQuestRole::OnlyQuestion1)
+		// 	SetQuestText(ListenScenario.word_data1);
+		// else if (QuestRole == EQuestRole::OnlyQuestion2)
+		// 	SetQuestText(ListenScenario.word_data2);
 	}
 }
 
-void UQuestInfoWidget::SetQuestText(const FWordData& WordData) const
-{
-	if (Txt_Message)
-		Txt_Message->SetText(FText::FromString(WordData.Kor));
-}
+// void UQuestInfoWidget::SetQuestText(const FWordData& WordData) const
+// {
+// 	if (Txt_Message)
+// 		Txt_Message->SetText(FText::FromString(WordData.Kor));
+// }
 
 void UQuestInfoWidget::OnQuestScenarioDataReceived()
 {

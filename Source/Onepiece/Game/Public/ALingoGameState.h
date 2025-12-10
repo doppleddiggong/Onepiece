@@ -32,6 +32,7 @@ public:
 
 protected:
 	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
+	virtual void BeginPlay() override;
 
 public:
 	virtual void Tick(float DeltaSeconds) override;
@@ -131,8 +132,11 @@ protected:
 
 	UPROPERTY(Replicated, BlueprintReadOnly, Category = "Quest")
 	EQuestType QuestType;
-		
-private:
+
+	/// @brief 방 ID (Host가 생성하고 Guest들과 공유)
+	UPROPERTY(Replicated, BlueprintReadOnly, Category = "Room")
 	int64 RoomId = 0;
+
+private:
 	float TimeLimit = 0;
 };
