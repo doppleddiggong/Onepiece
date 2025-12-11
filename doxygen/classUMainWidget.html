@@ -151,8 +151,8 @@ Public 멤버 함수</h2></td></tr>
 <tr class="memitem:a394decf5a4b89cb41e45422c7e770b82" id="r_a394decf5a4b89cb41e45422c7e770b82"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUMainWidget.html#a394decf5a4b89cb41e45422c7e770b82">UpdateHookState</a> (bool bIsAiming)</td></tr>
 <tr class="memdesc:a394decf5a4b89cb41e45422c7e770b82"><td class="mdescLeft">&#160;</td><td class="mdescRight">훅 인디케이터 상태 업데이트 (에임/비에임)  <br /></td></tr>
 <tr class="separator:a394decf5a4b89cb41e45422c7e770b82"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6e712598a45dc8da6bec742a2fed0580" id="r_a6e712598a45dc8da6bec742a2fed0580"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUMainWidget.html#a6e712598a45dc8da6bec742a2fed0580">UpdateRoomWidget</a> (int64 InRoomId)</td></tr>
-<tr class="separator:a6e712598a45dc8da6bec742a2fed0580"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab37049360b4f15a3766f20f5db31cd11" id="r_ab37049360b4f15a3766f20f5db31cd11"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUMainWidget.html#ab37049360b4f15a3766f20f5db31cd11">UpdateRoomWidget</a> (int32 InRoomLevel, int64 InRoomId)</td></tr>
+<tr class="separator:ab37049360b4f15a3766f20f5db31cd11"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7b24fc5d83920b4a1b62e9cf9b34ff02" id="r_a7b24fc5d83920b4a1b62e9cf9b34ff02"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUMainWidget.html#a7b24fc5d83920b4a1b62e9cf9b34ff02">UpdateStateWidget</a> (int32 UserId, const FString &amp;UserName)</td></tr>
 <tr class="separator:a7b24fc5d83920b4a1b62e9cf9b34ff02"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -446,7 +446,7 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">   67</span>    <a class="code hl_variable" href="classUMainWidget.html#af4d15f040b6a31cc9fd0915a73da3539">SpeakWidget</a>-&gt;SetWidgetVisibility(<span class="keyword">false</span>);</div>
 <div class="line"><span class="lineno">   68</span>    <a class="code hl_function" href="classUMainWidget.html#a5a104d787c94fb051427186f6a0236fe">SetMissionTimerState</a>(<span class="keyword">false</span>);</div>
 <div class="line"><span class="lineno">   69</span>}</div>
-<div class="ttc" id="aclassALingoGameState_html"><div class="ttname"><a href="classALingoGameState.html">ALingoGameState</a></div><div class="ttdef"><b>Definition</b> <a href="ALingoGameState_8h_source.html#l00027">ALingoGameState.h:28</a></div></div>
+<div class="ttc" id="aclassALingoGameState_html"><div class="ttname"><a href="classALingoGameState.html">ALingoGameState</a></div><div class="ttdef"><b>Definition</b> <a href="ALingoGameState_8h_source.html#l00028">ALingoGameState.h:29</a></div></div>
 <div class="ttc" id="aclassUMainWidget_html_a087562bb275500b4085bf893720ae7b0"><div class="ttname"><a href="classUMainWidget.html#a087562bb275500b4085bf893720ae7b0">UMainWidget::OnUpdateMissionTimerState</a></div><div class="ttdeci">void OnUpdateMissionTimerState(bool bIsActive, float TimeLimit)</div><div class="ttdoc">미션 타이머 상태 변경 핸들러</div><div class="ttdef"><b>Definition</b> <a href="UMainWidget_8cpp_source.html#l00110">UMainWidget.cpp:110</a></div></div>
 <div class="ttc" id="aclassUMainWidget_html_a2c5299964319e6fccda7d0ec2887ea23"><div class="ttname"><a href="classUMainWidget.html#a2c5299964319e6fccda7d0ec2887ea23">UMainWidget::HookTargetIndicator</a></div><div class="ttdeci">TObjectPtr&lt; class UImage &gt; HookTargetIndicator</div><div class="ttdoc">훅 가능 대상 표시 위젯 (옵션, BindWidgetOptional)</div><div class="ttdef"><b>Definition</b> <a href="UMainWidget_8h_source.html#l00087">UMainWidget.h:87</a></div></div>
 <div class="ttc" id="aclassUMainWidget_html_a5a104d787c94fb051427186f6a0236fe"><div class="ttname"><a href="classUMainWidget.html#a5a104d787c94fb051427186f6a0236fe">UMainWidget::SetMissionTimerState</a></div><div class="ttdeci">void SetMissionTimerState(bool bIsActive) const</div><div class="ttdef"><b>Definition</b> <a href="UMainWidget_8cpp_source.html#l00079">UMainWidget.cpp:79</a></div></div>
@@ -584,9 +584,9 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">  132</span> </div>
 <div class="line"><span class="lineno">  133</span>    <a class="code hl_function" href="classUMainWidget.html#a5a104d787c94fb051427186f6a0236fe">SetMissionTimerState</a>(bIsActive);</div>
 <div class="line"><span class="lineno">  134</span>}</div>
-<div class="ttc" id="aclassALingoGameState_html_a4c73e8703a0e62700459ab9bd8090159"><div class="ttname"><a href="classALingoGameState.html#a4c73e8703a0e62700459ab9bd8090159">ALingoGameState::UpdateRemainMissionTime</a></div><div class="ttdeci">void UpdateRemainMissionTime(const float InTimeLimit)</div><div class="ttdef"><b>Definition</b> <a href="ALingoGameState_8cpp_source.html#l00150">ALingoGameState.cpp:150</a></div></div>
+<div class="ttc" id="aclassALingoGameState_html_a4c73e8703a0e62700459ab9bd8090159"><div class="ttname"><a href="classALingoGameState.html#a4c73e8703a0e62700459ab9bd8090159">ALingoGameState::UpdateRemainMissionTime</a></div><div class="ttdeci">void UpdateRemainMissionTime(const float InTimeLimit)</div><div class="ttdef"><b>Definition</b> <a href="ALingoGameState_8cpp_source.html#l00156">ALingoGameState.cpp:156</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="UMainWidget_8h_source.html#l00108">CachedGameState</a>, <a class="el" href="UMainWidget_8h_source.html#l00087">HookTargetIndicator</a>, <a class="el" href="UMainWidget_8h_source.html#l00079">QuestInfoWidget</a>, <a class="el" href="UMainWidget_8cpp_source.html#l00079">SetMissionTimerState()</a>, <a class="el" href="ALingoGameState_8cpp_source.html#l00150">ALingoGameState::UpdateRemainMissionTime()</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="UMainWidget_8h_source.html#l00108">CachedGameState</a>, <a class="el" href="UMainWidget_8h_source.html#l00087">HookTargetIndicator</a>, <a class="el" href="UMainWidget_8h_source.html#l00079">QuestInfoWidget</a>, <a class="el" href="UMainWidget_8cpp_source.html#l00079">SetMissionTimerState()</a>, <a class="el" href="ALingoGameState_8cpp_source.html#l00156">ALingoGameState::UpdateRemainMissionTime()</a>.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UMainWidget_8cpp_source.html#l00044">NativeConstruct()</a>.</p>
 <div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -678,8 +678,8 @@ Private 속성</h2></td></tr>
 
 </div>
 </div>
-<a id="a6e712598a45dc8da6bec742a2fed0580" name="a6e712598a45dc8da6bec742a2fed0580"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6e712598a45dc8da6bec742a2fed0580">&#9670;&#160;</a></span>UpdateRoomWidget()</h2>
+<a id="ab37049360b4f15a3766f20f5db31cd11" name="ab37049360b4f15a3766f20f5db31cd11"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab37049360b4f15a3766f20f5db31cd11">&#9670;&#160;</a></span>UpdateRoomWidget()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -687,9 +687,19 @@ Private 속성</h2></td></tr>
         <tr>
           <td class="memname">void UMainWidget::UpdateRoomWidget </td>
           <td>(</td>
-          <td class="paramtype">int64&#160;</td>
-          <td class="paramname"><em>InRoomId</em></td><td>)</td>
+          <td class="paramtype">int32&#160;</td>
+          <td class="paramname"><em>InRoomLevel</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">int64&#160;</td>
+          <td class="paramname"><em>InRoomId</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -700,7 +710,7 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">   96</span>        <span class="keywordflow">return</span>;</div>
 <div class="line"><span class="lineno">   97</span> </div>
 <div class="line"><span class="lineno">   98</span>    <a class="code hl_variable" href="classUMainWidget.html#af7202e75ac00efb9c8ddb5b752cc9460">RoomWidget</a>-&gt;SetVisibility(ESlateVisibility::Visible);</div>
-<div class="line"><span class="lineno">   99</span>    <a class="code hl_variable" href="classUMainWidget.html#af7202e75ac00efb9c8ddb5b752cc9460">RoomWidget</a>-&gt;UpdateRoomId(InRoomId);</div>
+<div class="line"><span class="lineno">   99</span>    <a class="code hl_variable" href="classUMainWidget.html#af7202e75ac00efb9c8ddb5b752cc9460">RoomWidget</a>-&gt;UpdateRoomInfo(InRoomLevel, InRoomId);</div>
 <div class="line"><span class="lineno">  100</span>}</div>
 </div><!-- fragment -->
 <p class="reference">다음을 참조함 :  <a class="el" href="UMainWidget_8h_source.html#l00073">RoomWidget</a>.</p>
@@ -1174,7 +1184,7 @@ Private 속성</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classUMainWidget.html">UMainWidget</a></li>
-    <li class="footer">생성시간 : 수 12월 10 2025 23:34:44, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 목 12월 11 2025 00:15:30, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

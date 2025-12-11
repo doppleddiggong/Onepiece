@@ -33,6 +33,7 @@ var classAPlayerActor =
     [ "OnRep_LookPitch", "classAPlayerActor.html#acc728e14fea51ff3fabeef5d283a4ab7", null ],
     [ "OnResponseListenAudio", "classAPlayerActor.html#a948d23feda2fd36d69bfd32369b4c8a1", null ],
     [ "OnRoomIdUpdated", "classAPlayerActor.html#abf6656a8cf611561c5dd3c87a35279c8", null ],
+    [ "OnRoomLevelUpdated", "classAPlayerActor.html#afded5d0746cf27f2177f5ca8cfef33b4", null ],
     [ "OnTeleportAllPlayers", "classAPlayerActor.html#a22532b0f65738f7a51494a5476638af1", null ],
     [ "OnUpdateQuestInfo", "classAPlayerActor.html#adbb5ddcba7db189fb33cc98dda2c2035", null ],
     [ "OnUpdateQuestRole", "classAPlayerActor.html#acc0ac7ce47bb3bc206cef4fe6c4b1449", null ],

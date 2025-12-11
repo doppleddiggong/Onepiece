@@ -11,5 +11,6 @@ var ALingoGameState_8h =
     [ "DECLARE_DYNAMIC_MULTICAST_DELEGATE", "ALingoGameState_8h.html#ada07948b8ca722bd055251c8956f16d5", null ],
     [ "DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam", "ALingoGameState_8h.html#a3fdbb5f69326bfe9522bbf527614a2f6", null ],
     [ "DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam", "ALingoGameState_8h.html#a8a133b5c7f62e5ee0efadc46cf6f953d", null ],
-    [ "DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam", "ALingoGameState_8h.html#a38d2f82c79549d1cbe2d112dad58beff", null ]
+    [ "DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam", "ALingoGameState_8h.html#a38d2f82c79549d1cbe2d112dad58beff", null ],
+    [ "DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam", "ALingoGameState_8h.html#ac740d30bad8c9776305792883aacf144", null ]
 ];

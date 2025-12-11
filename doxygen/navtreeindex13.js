@@ -1,5 +1,12 @@
 var NAVTREEINDEX13 =
 {
+"structFRequestListenResult.html#af6a3af5c7e1c84500cd7e21e5324a981":[2,0,81,0],
+"structFRequestReadResult.html":[2,0,82],
+"structFRequestReadResult.html#a53e5bf77db201971463c5bf6f6cce0b2":[2,0,82,2],
+"structFRequestReadResult.html#a6d2f33f3d09a93228c578306a8b294af":[2,0,82,1],
+"structFRequestReadResult.html#a82c16d908082555ac713fc9b44e4c455":[2,0,82,0],
+"structFRequestReadResult.html#a92919781f00aa0aa3fee771abf1d7fac":[2,0,82,3],
+"structFRequestReadResult.html#ac16a0a88dead3eeaaf8c54d069e43867":[2,0,82,6],
 "structFRequestReadResult.html#ac78c52dda9dd4b760ee66874a1f05d68":[2,0,82,5],
 "structFRequestReadResult.html#aded067bb7754fbf32abd8acf1737e0e9":[2,0,82,7],
 "structFRequestReadResult.html#af46d1d78f8160182ebeb0f552948f05d":[2,0,82,4],

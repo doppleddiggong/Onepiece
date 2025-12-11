@@ -1,5 +1,12 @@
 var NAVTREEINDEX8 =
 {
+"classUGameSoundManager.html#a4274d4edaf4b461a5f4ba8f1b05767d4":[2,0,136,5],
+"classUGameSoundManager.html#a5521b1278e08cc4c580b8f5ee38a4d72":[2,0,136,11],
+"classUGameSoundManager.html#a6e36a7389b3e835022d7fc4d2054451b":[2,0,136,4],
+"classUGameSoundManager.html#a9202062e3e23eb341dc1ee7fc5ce3063":[2,0,136,6],
+"classUGameSoundManager.html#aa9bad4fe4971faa5fad6a47afaf7255d":[2,0,136,3],
+"classUGameSoundManager.html#aab6849192a6de76b26e716e21038f83c":[2,0,136,0],
+"classUGameSoundManager.html#ab01f0437cce0f942aa4d89445ba1fe8f":[2,0,136,10],
 "classUGameSoundManager.html#ad68ae454c6d8f2fbb53ad089cbd49310":[2,0,136,1],
 "classUGameVFXManager.html":[2,0,137],
 "classUGameVFXManager.html#a1911c371a4f46d408add1283d701aafd":[2,0,137,4],
@@ -226,12 +233,12 @@ var NAVTREEINDEX8 =
 "classUMainWidget.html#a52448a9fe3ed60736a223d3129b6e3db":[2,0,149,17],
 "classUMainWidget.html#a5a104d787c94fb051427186f6a0236fe":[2,0,149,8],
 "classUMainWidget.html#a5ba1fdbbe66e5a6c54e05634e254e5d3":[2,0,149,21],
-"classUMainWidget.html#a6e712598a45dc8da6bec742a2fed0580":[2,0,149,10],
 "classUMainWidget.html#a7b24fc5d83920b4a1b62e9cf9b34ff02":[2,0,149,12],
 "classUMainWidget.html#a9239722afccf53cb761984ce87f32228":[2,0,149,13],
 "classUMainWidget.html#a9be2e5f1620864d34553e6a0dfc0bbdc":[2,0,149,1],
 "classUMainWidget.html#aa0abca549ef2be9c4610d4890d5c0448":[2,0,149,14],
 "classUMainWidget.html#aa86baf5af00d6f8875fc6106bb3714e4":[2,0,149,15],
+"classUMainWidget.html#ab37049360b4f15a3766f20f5db31cd11":[2,0,149,10],
 "classUMainWidget.html#ab5b82b602efb97c7b4cd7a3c2d99d6e8":[2,0,149,5],
 "classUMainWidget.html#aca756504843f51373e2c63f2bd1e1301":[2,0,149,11],
 "classUMainWidget.html#ad20ac0a98c69f588c45eead091449dc8":[2,0,149,0],
@@ -242,12 +249,5 @@ var NAVTREEINDEX8 =
 "classUMainWidget.html#af9eea227103d9e1ef57f35eaff2109e0":[2,0,149,24],
 "classUNetworkBroadcastLibrary.html":[2,0,150],
 "classUNetworkBroadcastLibrary.html#ae0e3f074b7a4090b7543d4064f0569ac":[2,0,150,0],
-"classUObjectPoolManager.html":[2,0,151],
-"classUObjectPoolManager.html#a010d01972530667485291607df445b5b":[2,0,151,0],
-"classUObjectPoolManager.html#a48cbe0d66c92eb3ea791772889d0720d":[2,0,151,3],
-"classUObjectPoolManager.html#a490db17b3cd07db69fabddfc7fe98b2d":[2,0,151,5],
-"classUObjectPoolManager.html#a4fc3433c9a3c2fa5f885d391fe920f13":[2,0,151,6],
-"classUObjectPoolManager.html#a727b94727756e4ad008e81c42f1e431a":[2,0,151,1],
-"classUObjectPoolManager.html#ae87658ccf4030b83071d92ead144330f":[2,0,151,2],
-"classUObjectPoolManager.html#af2760bfdb559d0415a380ceca5c2138a":[2,0,151,4]
+"classUObjectPoolManager.html":[2,0,151]
 };
