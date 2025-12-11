@@ -705,6 +705,11 @@ TArray<FString> FResponseReadScenario::GetWord2List() const
 	return UniqueSet.Array();
 }
 
+FScenarioTargetData FResponseReadScenario::GetCorrectAnswerData() const
+{
+	return target_data[correct_answer_index];
+}
+
 // =================================================================================
 // FResponseReadResult
 // =================================================================================
