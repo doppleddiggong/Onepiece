@@ -119,51 +119,61 @@ $(document).ready(function(){initNavTree('AMainLevelScriptActor_8cpp_source.html
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;<a class="code" href="UKLingoNetworkSystem_8h.html">UKLingoNetworkSystem.h</a>&quot;</span></div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;<a class="code" href="UPopupManager_8h.html">UPopupManager.h</a>&quot;</span></div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;<a class="code" href="UPopup__Interview_8h.html">UPopup_Interview.h</a>&quot;</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;<a class="code" href="UPopup__InterviewHello_8h.html">UPopup_InterviewHello.h</a>&quot;</span></div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
-<div class="foldopen" id="foldopen00013" data-start="{" data-end="}">
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="classAMainLevelScriptActor.html#a3694fd8924ce89fbbb8bee4d6c10b0e5">   13</a></span><a class="code hl_function" href="classAMainLevelScriptActor.html#a3694fd8924ce89fbbb8bee4d6c10b0e5">AMainLevelScriptActor::AMainLevelScriptActor</a>()</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>{</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    PrimaryActorTick.bCanEverTick = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>}</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="foldopen" id="foldopen00014" data-start="{" data-end="}">
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="classAMainLevelScriptActor.html#a3694fd8924ce89fbbb8bee4d6c10b0e5">   14</a></span><a class="code hl_function" href="classAMainLevelScriptActor.html#a3694fd8924ce89fbbb8bee4d6c10b0e5">AMainLevelScriptActor::AMainLevelScriptActor</a>()</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>{</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    PrimaryActorTick.bCanEverTick = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>}</div>
 </div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
-<div class="foldopen" id="foldopen00018" data-start="{" data-end="}">
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="classAMainLevelScriptActor.html#a5d50f17362a3dc45311dc86fc709e965">   18</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAMainLevelScriptActor.html#a5d50f17362a3dc45311dc86fc709e965">AMainLevelScriptActor::BeginPlay</a>()</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>{</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    Super::BeginPlay();</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    this-&gt;<a class="code hl_function" href="classAMainLevelScriptActor.html#a7680980909fb26ba3f63877ae4dd9373">RequestInterviewHello</a>();</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>}</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
+<div class="foldopen" id="foldopen00019" data-start="{" data-end="}">
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="classAMainLevelScriptActor.html#a5d50f17362a3dc45311dc86fc709e965">   19</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAMainLevelScriptActor.html#a5d50f17362a3dc45311dc86fc709e965">AMainLevelScriptActor::BeginPlay</a>()</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>{</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    Super::BeginPlay();</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="comment">// UserInfo 로드 대기 후 Interview 팝업 요청</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    FTimerHandle TimerHandle;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    GetWorldTimerManager().SetTimer(TimerHandle, [<span class="keyword">this</span>]()</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    {</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        this-&gt;<a class="code hl_function" href="classAMainLevelScriptActor.html#a7680980909fb26ba3f63877ae4dd9373">RequestInterviewHello</a>();</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    }, 1.0f, <span class="keyword">false</span>);</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>}</div>
 </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
-<div class="foldopen" id="foldopen00025" data-start="{" data-end="}">
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="classAMainLevelScriptActor.html#a7680980909fb26ba3f63877ae4dd9373">   25</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAMainLevelScriptActor.html#a7680980909fb26ba3f63877ae4dd9373">AMainLevelScriptActor::RequestInterviewHello</a>()</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>{</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> KLingoNetwork = UKLingoNetworkSystem::Get(GetWorld()))</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    {</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        KLingoNetwork-&gt;RequestInterviewHello( FResponseInterviewHelloDelegate::CreateUObject(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classAMainLevelScriptActor.html#a0f543b12536566ce7ef56852bfacdf6d">AMainLevelScriptActor::OnResponseInterviewHello</a>) );</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    }</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="keywordflow">else</span></div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    {</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;UKLingoNetworkSystem not found!&quot;</span>));</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    }</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>}</div>
-</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="foldopen" id="foldopen00031" data-start="{" data-end="}">
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="classAMainLevelScriptActor.html#a7680980909fb26ba3f63877ae4dd9373">   31</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAMainLevelScriptActor.html#a7680980909fb26ba3f63877ae4dd9373">AMainLevelScriptActor::RequestInterviewHello</a>()</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>{</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="comment">// &quot;오늘 보지 않기&quot; 체크</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="classUPopup__InterviewHello.html#a1ee520db04ec8e883f1b0f1d837e027a">UPopup_InterviewHello::ShouldSkipInterviewToday</a>(GetWorld()))</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        <span class="keywordflow">return</span>;</div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
-<div class="foldopen" id="foldopen00037" data-start="{" data-end="}">
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="classAMainLevelScriptActor.html#a0f543b12536566ce7ef56852bfacdf6d">   37</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAMainLevelScriptActor.html#a0f543b12536566ce7ef56852bfacdf6d">AMainLevelScriptActor::OnResponseInterviewHello</a>(<a class="code hl_struct" href="structFResponseInterviewHello.html">FResponseInterviewHello</a>&amp; ResponseData, <span class="keywordtype">bool</span> bWasSuccessful)</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>{</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="keywordflow">if</span> (bWasSuccessful)</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    {</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        <span class="keywordflow">if</span> (<span class="keyword">auto</span> Popup = UPopupManager::ShowPopupAs&lt;UPopup_Interview&gt;(GetWorld(), EPopupType::Interview))</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>            Popup-&gt;InitPopup(ResponseData);</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    }</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="keywordflow">else</span></div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    {</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;--- InterviewHello Questions FAILED ---&quot;</span>));</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    }</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>}</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> KLingoNetwork = UKLingoNetworkSystem::Get(GetWorld()))</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    {</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        KLingoNetwork-&gt;RequestInterviewHello( FResponseInterviewHelloDelegate::CreateUObject(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classAMainLevelScriptActor.html#a0f543b12536566ce7ef56852bfacdf6d">AMainLevelScriptActor::OnResponseInterviewHello</a>) );</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    }</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    {</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;UKLingoNetworkSystem not found!&quot;</span>));</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    }</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>}</div>
+</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="foldopen" id="foldopen00047" data-start="{" data-end="}">
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="classAMainLevelScriptActor.html#a0f543b12536566ce7ef56852bfacdf6d">   47</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAMainLevelScriptActor.html#a0f543b12536566ce7ef56852bfacdf6d">AMainLevelScriptActor::OnResponseInterviewHello</a>(<a class="code hl_struct" href="structFResponseInterviewHello.html">FResponseInterviewHello</a>&amp; ResponseData, <span class="keywordtype">bool</span> bWasSuccessful)</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>{</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="keywordflow">if</span> (bWasSuccessful)</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    {</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        <span class="keywordflow">if</span> (<span class="keyword">auto</span> Popup = UPopupManager::ShowPopupAs&lt;UPopup_InterviewHello&gt;(GetWorld(), EPopupType::InterviewHello))</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>            Popup-&gt;InitPopup(ResponseData);</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    }</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    {</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;--- InterviewHello Questions FAILED ---&quot;</span>));</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    }</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>}</div>
 </div>
 <div class="ttc" id="aAMainLevelScriptActor_8h_html"><div class="ttname"><a href="AMainLevelScriptActor_8h.html">AMainLevelScriptActor.h</a></div></div>
 <div class="ttc" id="aGameLogging_8h_html"><div class="ttname"><a href="GameLogging_8h.html">GameLogging.h</a></div><div class="ttdoc">YiSan 전반에서 사용하는 공용 인터페이스를 선언합니다.</div></div>
@@ -171,11 +181,13 @@ $(document).ready(function(){initNavTree('AMainLevelScriptActor_8cpp_source.html
 <div class="ttc" id="aNetworkData_8h_html"><div class="ttname"><a href="NetworkData_8h.html">NetworkData.h</a></div><div class="ttdoc">네트워크 요청과 응답에 사용되는 구조체 및 설정을 정의합니다.</div></div>
 <div class="ttc" id="aUKLingoNetworkSystem_8h_html"><div class="ttname"><a href="UKLingoNetworkSystem_8h.html">UKLingoNetworkSystem.h</a></div><div class="ttdoc">KLingo API 요청을 담당하는 서브시스템을 선언합니다.</div></div>
 <div class="ttc" id="aUPopupManager_8h_html"><div class="ttname"><a href="UPopupManager_8h.html">UPopupManager.h</a></div></div>
+<div class="ttc" id="aUPopup__InterviewHello_8h_html"><div class="ttname"><a href="UPopup__InterviewHello_8h.html">UPopup_InterviewHello.h</a></div></div>
 <div class="ttc" id="aUPopup__Interview_8h_html"><div class="ttname"><a href="UPopup__Interview_8h.html">UPopup_Interview.h</a></div></div>
-<div class="ttc" id="aclassAMainLevelScriptActor_html_a0f543b12536566ce7ef56852bfacdf6d"><div class="ttname"><a href="classAMainLevelScriptActor.html#a0f543b12536566ce7ef56852bfacdf6d">AMainLevelScriptActor::OnResponseInterviewHello</a></div><div class="ttdeci">void OnResponseInterviewHello(FResponseInterviewHello &amp;ResponseData, bool bWasSuccessful)</div><div class="ttdef"><b>Definition</b> <a href="AMainLevelScriptActor_8cpp_source.html#l00037">AMainLevelScriptActor.cpp:37</a></div></div>
-<div class="ttc" id="aclassAMainLevelScriptActor_html_a3694fd8924ce89fbbb8bee4d6c10b0e5"><div class="ttname"><a href="classAMainLevelScriptActor.html#a3694fd8924ce89fbbb8bee4d6c10b0e5">AMainLevelScriptActor::AMainLevelScriptActor</a></div><div class="ttdeci">AMainLevelScriptActor()</div><div class="ttdef"><b>Definition</b> <a href="AMainLevelScriptActor_8cpp_source.html#l00013">AMainLevelScriptActor.cpp:13</a></div></div>
-<div class="ttc" id="aclassAMainLevelScriptActor_html_a5d50f17362a3dc45311dc86fc709e965"><div class="ttname"><a href="classAMainLevelScriptActor.html#a5d50f17362a3dc45311dc86fc709e965">AMainLevelScriptActor::BeginPlay</a></div><div class="ttdeci">virtual void BeginPlay() override</div><div class="ttdef"><b>Definition</b> <a href="AMainLevelScriptActor_8cpp_source.html#l00018">AMainLevelScriptActor.cpp:18</a></div></div>
-<div class="ttc" id="aclassAMainLevelScriptActor_html_a7680980909fb26ba3f63877ae4dd9373"><div class="ttname"><a href="classAMainLevelScriptActor.html#a7680980909fb26ba3f63877ae4dd9373">AMainLevelScriptActor::RequestInterviewHello</a></div><div class="ttdeci">void RequestInterviewHello()</div><div class="ttdef"><b>Definition</b> <a href="AMainLevelScriptActor_8cpp_source.html#l00025">AMainLevelScriptActor.cpp:25</a></div></div>
+<div class="ttc" id="aclassAMainLevelScriptActor_html_a0f543b12536566ce7ef56852bfacdf6d"><div class="ttname"><a href="classAMainLevelScriptActor.html#a0f543b12536566ce7ef56852bfacdf6d">AMainLevelScriptActor::OnResponseInterviewHello</a></div><div class="ttdeci">void OnResponseInterviewHello(FResponseInterviewHello &amp;ResponseData, bool bWasSuccessful)</div><div class="ttdef"><b>Definition</b> <a href="AMainLevelScriptActor_8cpp_source.html#l00047">AMainLevelScriptActor.cpp:47</a></div></div>
+<div class="ttc" id="aclassAMainLevelScriptActor_html_a3694fd8924ce89fbbb8bee4d6c10b0e5"><div class="ttname"><a href="classAMainLevelScriptActor.html#a3694fd8924ce89fbbb8bee4d6c10b0e5">AMainLevelScriptActor::AMainLevelScriptActor</a></div><div class="ttdeci">AMainLevelScriptActor()</div><div class="ttdef"><b>Definition</b> <a href="AMainLevelScriptActor_8cpp_source.html#l00014">AMainLevelScriptActor.cpp:14</a></div></div>
+<div class="ttc" id="aclassAMainLevelScriptActor_html_a5d50f17362a3dc45311dc86fc709e965"><div class="ttname"><a href="classAMainLevelScriptActor.html#a5d50f17362a3dc45311dc86fc709e965">AMainLevelScriptActor::BeginPlay</a></div><div class="ttdeci">virtual void BeginPlay() override</div><div class="ttdef"><b>Definition</b> <a href="AMainLevelScriptActor_8cpp_source.html#l00019">AMainLevelScriptActor.cpp:19</a></div></div>
+<div class="ttc" id="aclassAMainLevelScriptActor_html_a7680980909fb26ba3f63877ae4dd9373"><div class="ttname"><a href="classAMainLevelScriptActor.html#a7680980909fb26ba3f63877ae4dd9373">AMainLevelScriptActor::RequestInterviewHello</a></div><div class="ttdeci">void RequestInterviewHello()</div><div class="ttdef"><b>Definition</b> <a href="AMainLevelScriptActor_8cpp_source.html#l00031">AMainLevelScriptActor.cpp:31</a></div></div>
+<div class="ttc" id="aclassUPopup__InterviewHello_html_a1ee520db04ec8e883f1b0f1d837e027a"><div class="ttname"><a href="classUPopup__InterviewHello.html#a1ee520db04ec8e883f1b0f1d837e027a">UPopup_InterviewHello::ShouldSkipInterviewToday</a></div><div class="ttdeci">static bool ShouldSkipInterviewToday(const UObject *WorldContextObject)</div><div class="ttdoc">오늘 Interview 팝업을 건너뛸지 확인</div><div class="ttdef"><b>Definition</b> <a href="UPopup__InterviewHello_8cpp_source.html#l00358">UPopup_InterviewHello.cpp:358</a></div></div>
 <div class="ttc" id="astructFResponseInterviewHello_html"><div class="ttname"><a href="structFResponseInterviewHello.html">FResponseInterviewHello</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00757">NetworkData.h:758</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
@@ -183,7 +195,7 @@ $(document).ready(function(){initNavTree('AMainLevelScriptActor_8cpp_source.html
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_7fb5e64dcba5cad56d11a2ce531d1e7a.html">Game</a></li><li class="navelem"><a class="el" href="dir_b965da0ac51b1f4cab906cbba28505b1.html">Private</a></li><li class="navelem"><a class="el" href="AMainLevelScriptActor_8cpp.html">AMainLevelScriptActor.cpp</a></li>
-    <li class="footer">생성시간 : 목 12월 11 2025 08:57:14, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 목 12월 11 2025 15:20:33, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

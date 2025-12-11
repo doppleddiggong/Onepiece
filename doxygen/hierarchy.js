@@ -197,6 +197,7 @@ var hierarchy =
       [ "UBasePopup", "classUBasePopup.html", [
         [ "UPopup_InputMsg", "classUPopup__InputMsg.html", null ],
         [ "UPopup_Interview", "classUPopup__Interview.html", null ],
+        [ "UPopup_InterviewHello", "classUPopup__InterviewHello.html", null ],
         [ "UPopup_MsgBox", "classUPopup__MsgBox.html", null ],
         [ "UPopup_Questionnaire", "classUPopup__Questionnaire.html", null ],
         [ "UPopup_QuestionnaireResult", "classUPopup__QuestionnaireResult.html", null ],

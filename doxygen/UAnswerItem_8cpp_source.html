@@ -141,8 +141,8 @@ $(document).ready(function(){initNavTree('UAnswerItem_8cpp_source.html',''); ini
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    this-&gt;<a class="code hl_function" href="classUAnswerItem.html#a8a4c147fb51c5627e7bcf9c8713d106e">InitInfo</a>(QuestType, bIsCorrect, InOrder,</div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        TargetWord1Code, TargetWord2Code );</div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <a class="code hl_variable" href="classUAnswerItem.html#a69e05879c734318172326bb7449ed0ec">TargetWord1</a>-&gt;SetTextColor( TargetWord1Code == CorrectWord1Code ? FLinearColor::White : FLinearColor::Red );</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <a class="code hl_variable" href="classUAnswerItem.html#a76616854fa8f76e691626b287e3a489d">TargetWord2</a>-&gt;SetTextColor( TargetWord2Code == CorrectWord2Code ? FLinearColor::White : FLinearColor::Red );</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <a class="code hl_variable" href="classUAnswerItem.html#a69e05879c734318172326bb7449ed0ec">TargetWord1</a>-&gt;SetTextColor( TargetWord1Code == CorrectWord1Code ? FLinearColor::Black : FLinearColor::Red );</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <a class="code hl_variable" href="classUAnswerItem.html#a76616854fa8f76e691626b287e3a489d">TargetWord2</a>-&gt;SetTextColor( TargetWord2Code == CorrectWord2Code ? FLinearColor::Black : FLinearColor::Red );</div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>}</div>
 </div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
@@ -153,13 +153,13 @@ $(document).ready(function(){initNavTree('UAnswerItem_8cpp_source.html',''); ini
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <a class="code hl_variable" href="classUAnswerItem.html#a50ed54ac4d705098bea77f4f98a6b203">Txt_Order</a>-&gt;SetText(FText::AsNumber(InOrder));</div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="keywordflow">if</span> ( bCorrect )</div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    {</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        <a class="code hl_variable" href="classUAnswerItem.html#a5a5e324e25a455cd15a1dc03ac679b88">Border_Order</a>-&gt;SetBrushColor(FLinearColor::White);</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        <a class="code hl_variable" href="classUAnswerItem.html#a50ed54ac4d705098bea77f4f98a6b203">Txt_Order</a>-&gt;SetColorAndOpacity(FLinearColor::Black);</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        <a class="code hl_variable" href="classUAnswerItem.html#a5a5e324e25a455cd15a1dc03ac679b88">Border_Order</a>-&gt;SetBrushColor(FLinearColor::Black);</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        <a class="code hl_variable" href="classUAnswerItem.html#a50ed54ac4d705098bea77f4f98a6b203">Txt_Order</a>-&gt;SetColorAndOpacity(FLinearColor::White);</div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    }</div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="keywordflow">else</span></div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    {</div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        <a class="code hl_variable" href="classUAnswerItem.html#a5a5e324e25a455cd15a1dc03ac679b88">Border_Order</a>-&gt;SetBrushColor(FLinearColor::Red);</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        <a class="code hl_variable" href="classUAnswerItem.html#a50ed54ac4d705098bea77f4f98a6b203">Txt_Order</a>-&gt;SetColorAndOpacity(FLinearColor::White);</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        <a class="code hl_variable" href="classUAnswerItem.html#a50ed54ac4d705098bea77f4f98a6b203">Txt_Order</a>-&gt;SetColorAndOpacity(FLinearColor::Black);</div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    }</div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    </div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="keywordflow">if</span>( QuestType == <a class="code hl_enumvalue" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a7a1a5f3e79fdc91edf2f5ead9d66abb4">EQuestType::Read</a> )</div>
@@ -201,7 +201,7 @@ $(document).ready(function(){initNavTree('UAnswerItem_8cpp_source.html',''); ini
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_55b064ed9f704d76d3805f2fda876350.html">UI</a></li><li class="navelem"><a class="el" href="dir_550f083bbe519bd985f450628c1369b6.html">Private</a></li><li class="navelem"><a class="el" href="UAnswerItem_8cpp.html">UAnswerItem.cpp</a></li>
-    <li class="footer">생성시간 : 목 12월 11 2025 08:57:14, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 목 12월 11 2025 15:20:33, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

@@ -156,6 +156,7 @@ var annotated_dup =
     [ "UPlayTimer", "classUPlayTimer.html", "classUPlayTimer" ],
     [ "UPopup_InputMsg", "classUPopup__InputMsg.html", "classUPopup__InputMsg" ],
     [ "UPopup_Interview", "classUPopup__Interview.html", "classUPopup__Interview" ],
+    [ "UPopup_InterviewHello", "classUPopup__InterviewHello.html", "classUPopup__InterviewHello" ],
     [ "UPopup_InterviewItem", "classUPopup__InterviewItem.html", "classUPopup__InterviewItem" ],
     [ "UPopup_MsgBox", "classUPopup__MsgBox.html", "classUPopup__MsgBox" ],
     [ "UPopup_Questionnaire", "classUPopup__Questionnaire.html", "classUPopup__Questionnaire" ],

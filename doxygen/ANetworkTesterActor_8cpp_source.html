@@ -118,262 +118,263 @@ $(document).ready(function(){initNavTree('ANetworkTesterActor_8cpp_source.html',
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;<a class="code" href="UDialogManager_8h.html">UDialogManager.h</a>&quot;</span></div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;<a class="code" href="UPopupManager_8h.html">UPopupManager.h</a>&quot;</span></div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;<a class="code" href="UPopup__Interview_8h.html">UPopup_Interview.h</a>&quot;</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &quot;<a class="code" href="UPopup__MsgBox_8h.html">UPopup_MsgBox.h</a>&quot;</span></div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &quot;<a class="code" href="UVoiceConversationSystem_8h.html">UVoiceConversationSystem.h</a>&quot;</span></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &quot;Engine/Engine.h&quot;</span></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
-<div class="foldopen" id="foldopen00018" data-start="{" data-end="}">
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="classANetworkTesterActor.html#add47c5b8d704c70533ebebc39066b9a1">   18</a></span><a class="code hl_function" href="classANetworkTesterActor.html#add47c5b8d704c70533ebebc39066b9a1">ANetworkTesterActor::ANetworkTesterActor</a>()</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>{</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    PrimaryActorTick.bCanEverTick = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <a class="code hl_variable" href="classANetworkTesterActor.html#a112a573b43579514a0ab6f87d492a630">VoiceConversationSystem</a> = CreateDefaultSubobject&lt;UVoiceConversationSystem&gt;(TEXT(<span class="stringliteral">&quot;VoiceConversationSystem&quot;</span>));</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>}</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &quot;<a class="code" href="UPopup__InterviewHello_8h.html">UPopup_InterviewHello.h</a>&quot;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &quot;<a class="code" href="UPopup__MsgBox_8h.html">UPopup_MsgBox.h</a>&quot;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &quot;<a class="code" href="UVoiceConversationSystem_8h.html">UVoiceConversationSystem.h</a>&quot;</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &quot;Engine/Engine.h&quot;</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
+<div class="foldopen" id="foldopen00019" data-start="{" data-end="}">
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="classANetworkTesterActor.html#add47c5b8d704c70533ebebc39066b9a1">   19</a></span><a class="code hl_function" href="classANetworkTesterActor.html#add47c5b8d704c70533ebebc39066b9a1">ANetworkTesterActor::ANetworkTesterActor</a>()</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>{</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    PrimaryActorTick.bCanEverTick = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <a class="code hl_variable" href="classANetworkTesterActor.html#a112a573b43579514a0ab6f87d492a630">VoiceConversationSystem</a> = CreateDefaultSubobject&lt;UVoiceConversationSystem&gt;(TEXT(<span class="stringliteral">&quot;VoiceConversationSystem&quot;</span>));</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>}</div>
 </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="comment">// =============================================================================</span></div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="comment">// User API Tests</span></div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="comment">// =============================================================================</span></div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
-<div class="foldopen" id="foldopen00029" data-start="{" data-end="}">
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="classANetworkTesterActor.html#ae53f27ab3ca6671a7c55a14c055d03a3">   29</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classANetworkTesterActor.html#ae53f27ab3ca6671a7c55a14c055d03a3">ANetworkTesterActor::RequestUserRegister</a>()</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>{</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> KLingoNetwork = UKLingoNetworkSystem::Get(GetWorld()))</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    {</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[TEST] RequestUserRegister - UserName: %s&quot;</span>), *<a class="code hl_variable" href="classANetworkTesterActor.html#ab5f32b53d6845e92b3bdc278e43c58fa">UserName</a>);</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        KLingoNetwork-&gt;RequestUserRegister(</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>            <a class="code hl_variable" href="classANetworkTesterActor.html#ab5f32b53d6845e92b3bdc278e43c58fa">UserName</a>,</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>            FResponseUserRegisterDelegate::CreateUObject(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classANetworkTesterActor.html#af85fc6f7a9ac286f04aa0027aa75462a">ANetworkTesterActor::OnResponseUserRegister</a>)</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        );</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    }</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="keywordflow">else</span></div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    {</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;UKLingoNetworkSystem not found!&quot;</span>));</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    }</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>}</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="comment">// =============================================================================</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="comment">// User API Tests</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="comment">// =============================================================================</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
+<div class="foldopen" id="foldopen00030" data-start="{" data-end="}">
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="classANetworkTesterActor.html#ae53f27ab3ca6671a7c55a14c055d03a3">   30</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classANetworkTesterActor.html#ae53f27ab3ca6671a7c55a14c055d03a3">ANetworkTesterActor::RequestUserRegister</a>()</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>{</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> KLingoNetwork = UKLingoNetworkSystem::Get(GetWorld()))</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    {</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[TEST] RequestUserRegister - UserName: %s&quot;</span>), *<a class="code hl_variable" href="classANetworkTesterActor.html#ab5f32b53d6845e92b3bdc278e43c58fa">UserName</a>);</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        KLingoNetwork-&gt;RequestUserRegister(</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>            <a class="code hl_variable" href="classANetworkTesterActor.html#ab5f32b53d6845e92b3bdc278e43c58fa">UserName</a>,</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>            FResponseUserRegisterDelegate::CreateUObject(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classANetworkTesterActor.html#af85fc6f7a9ac286f04aa0027aa75462a">ANetworkTesterActor::OnResponseUserRegister</a>)</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        );</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    }</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    {</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;UKLingoNetworkSystem not found!&quot;</span>));</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    }</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>}</div>
 </div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
-<div class="foldopen" id="foldopen00045" data-start="{" data-end="}">
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="classANetworkTesterActor.html#a809947b71f79e9024a44a62d0cc20a90">   45</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classANetworkTesterActor.html#a809947b71f79e9024a44a62d0cc20a90">ANetworkTesterActor::RequestUserToken</a>()</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>{</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> KLingoNetwork = UKLingoNetworkSystem::Get(GetWorld()))</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    {</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[TEST] RequestUserToken - UserName: %s&quot;</span>), *<a class="code hl_variable" href="classANetworkTesterActor.html#ab5f32b53d6845e92b3bdc278e43c58fa">UserName</a>);</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        KLingoNetwork-&gt;RequestUserToken(</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>            <a class="code hl_variable" href="classANetworkTesterActor.html#ab5f32b53d6845e92b3bdc278e43c58fa">UserName</a>,</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>            FResponseUserTokenDelegate::CreateUObject(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classANetworkTesterActor.html#a3f925eef81e5fdc41ff8bb0e1fea9015">ANetworkTesterActor::OnResponseUserToken</a>)</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        );</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    }</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="keywordflow">else</span></div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    {</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;UKLingoNetworkSystem not found!&quot;</span>));</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    }</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>}</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="foldopen" id="foldopen00046" data-start="{" data-end="}">
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="classANetworkTesterActor.html#a809947b71f79e9024a44a62d0cc20a90">   46</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classANetworkTesterActor.html#a809947b71f79e9024a44a62d0cc20a90">ANetworkTesterActor::RequestUserToken</a>()</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>{</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> KLingoNetwork = UKLingoNetworkSystem::Get(GetWorld()))</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    {</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[TEST] RequestUserToken - UserName: %s&quot;</span>), *<a class="code hl_variable" href="classANetworkTesterActor.html#ab5f32b53d6845e92b3bdc278e43c58fa">UserName</a>);</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        KLingoNetwork-&gt;RequestUserToken(</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>            <a class="code hl_variable" href="classANetworkTesterActor.html#ab5f32b53d6845e92b3bdc278e43c58fa">UserName</a>,</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>            FResponseUserTokenDelegate::CreateUObject(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classANetworkTesterActor.html#a3f925eef81e5fdc41ff8bb0e1fea9015">ANetworkTesterActor::OnResponseUserToken</a>)</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        );</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    }</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    {</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;UKLingoNetworkSystem not found!&quot;</span>));</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    }</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>}</div>
 </div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
-<div class="foldopen" id="foldopen00061" data-start="{" data-end="}">
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="classANetworkTesterActor.html#aebbe22fc01a47b44f20c3dc5f35aceed">   61</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classANetworkTesterActor.html#aebbe22fc01a47b44f20c3dc5f35aceed">ANetworkTesterActor::RequestUserMe</a>()</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>{</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> KLingoNetwork = UKLingoNetworkSystem::Get(GetWorld()))</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    {</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[TEST] RequestUserMe&quot;</span>));</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        KLingoNetwork-&gt;RequestUserMe( FResponseUserMeDelegate::CreateUObject(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classANetworkTesterActor.html#afb8a7bf0db529e76c4527c7c1d890571">ANetworkTesterActor::OnResponseUserMe</a>) );</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    }</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <span class="keywordflow">else</span></div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    {</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;UKLingoNetworkSystem not found!&quot;</span>));</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    }</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>}</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+<div class="foldopen" id="foldopen00062" data-start="{" data-end="}">
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="classANetworkTesterActor.html#aebbe22fc01a47b44f20c3dc5f35aceed">   62</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classANetworkTesterActor.html#aebbe22fc01a47b44f20c3dc5f35aceed">ANetworkTesterActor::RequestUserMe</a>()</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>{</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> KLingoNetwork = UKLingoNetworkSystem::Get(GetWorld()))</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    {</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[TEST] RequestUserMe&quot;</span>));</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        KLingoNetwork-&gt;RequestUserMe( FResponseUserMeDelegate::CreateUObject(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classANetworkTesterActor.html#afb8a7bf0db529e76c4527c7c1d890571">ANetworkTesterActor::OnResponseUserMe</a>) );</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    }</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    {</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;UKLingoNetworkSystem not found!&quot;</span>));</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    }</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>}</div>
 </div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
-<div class="foldopen" id="foldopen00074" data-start="{" data-end="}">
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno"><a class="line" href="classANetworkTesterActor.html#af85fc6f7a9ac286f04aa0027aa75462a">   74</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classANetworkTesterActor.html#af85fc6f7a9ac286f04aa0027aa75462a">ANetworkTesterActor::OnResponseUserRegister</a>(<a class="code hl_struct" href="structFResponseUserRegister.html">FResponseUserRegister</a>&amp; ResponseData, <span class="keywordtype">bool</span> bWasSuccessful)</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>{</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    <span class="keywordflow">if</span> (bWasSuccessful)</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    {</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;--- User Register SUCCESS ---&quot;</span>));</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        ResponseData.<a class="code hl_function" href="structFResponseUserRegister.html#a7c482c31b7c20aef498681e9fe743659">PrintData</a>();</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    }</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    <span class="keywordflow">else</span></div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    {</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;--- User Register FAILED ---&quot;</span>));</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    }</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>}</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
+<div class="foldopen" id="foldopen00075" data-start="{" data-end="}">
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno"><a class="line" href="classANetworkTesterActor.html#af85fc6f7a9ac286f04aa0027aa75462a">   75</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classANetworkTesterActor.html#af85fc6f7a9ac286f04aa0027aa75462a">ANetworkTesterActor::OnResponseUserRegister</a>(<a class="code hl_struct" href="structFResponseUserRegister.html">FResponseUserRegister</a>&amp; ResponseData, <span class="keywordtype">bool</span> bWasSuccessful)</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>{</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    <span class="keywordflow">if</span> (bWasSuccessful)</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    {</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;--- User Register SUCCESS ---&quot;</span>));</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        ResponseData.<a class="code hl_function" href="structFResponseUserRegister.html#a7c482c31b7c20aef498681e9fe743659">PrintData</a>();</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    }</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    {</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;--- User Register FAILED ---&quot;</span>));</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    }</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>}</div>
 </div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
-<div class="foldopen" id="foldopen00087" data-start="{" data-end="}">
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno"><a class="line" href="classANetworkTesterActor.html#a3f925eef81e5fdc41ff8bb0e1fea9015">   87</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classANetworkTesterActor.html#a3f925eef81e5fdc41ff8bb0e1fea9015">ANetworkTesterActor::OnResponseUserToken</a>(<a class="code hl_struct" href="structFResponseUserToken.html">FResponseUserToken</a>&amp; ResponseData, <span class="keywordtype">bool</span> bWasSuccessful)</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>{</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    <span class="keywordflow">if</span> (bWasSuccessful)</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    {</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;--- User Token SUCCESS ---&quot;</span>));</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>        <a class="code hl_function" href="classANetworkTesterActor.html#aebbe22fc01a47b44f20c3dc5f35aceed">RequestUserMe</a>();</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    }</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    <span class="keywordflow">else</span></div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    {</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;--- User Token FAILED ---&quot;</span>));</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    }</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>}</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
+<div class="foldopen" id="foldopen00088" data-start="{" data-end="}">
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno"><a class="line" href="classANetworkTesterActor.html#a3f925eef81e5fdc41ff8bb0e1fea9015">   88</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classANetworkTesterActor.html#a3f925eef81e5fdc41ff8bb0e1fea9015">ANetworkTesterActor::OnResponseUserToken</a>(<a class="code hl_struct" href="structFResponseUserToken.html">FResponseUserToken</a>&amp; ResponseData, <span class="keywordtype">bool</span> bWasSuccessful)</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>{</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    <span class="keywordflow">if</span> (bWasSuccessful)</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    {</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;--- User Token SUCCESS ---&quot;</span>));</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>        <a class="code hl_function" href="classANetworkTesterActor.html#aebbe22fc01a47b44f20c3dc5f35aceed">RequestUserMe</a>();</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    }</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    {</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;--- User Token FAILED ---&quot;</span>));</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    }</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>}</div>
 </div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span> </div>
-<div class="foldopen" id="foldopen00100" data-start="{" data-end="}">
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno"><a class="line" href="classANetworkTesterActor.html#afb8a7bf0db529e76c4527c7c1d890571">  100</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classANetworkTesterActor.html#afb8a7bf0db529e76c4527c7c1d890571">ANetworkTesterActor::OnResponseUserMe</a>(<a class="code hl_struct" href="structFResponseUserMe.html">FResponseUserMe</a>&amp; ResponseData, <span class="keywordtype">bool</span> bWasSuccessful)</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>{</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    <span class="keywordflow">if</span> (bWasSuccessful)</div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    {</div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;--- User Me SUCCESS ---&quot;</span>));</div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    }</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    <span class="keywordflow">else</span></div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    {</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;--- User Me FAILED ---&quot;</span>));</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    }</div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>}</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span> </div>
+<div class="foldopen" id="foldopen00101" data-start="{" data-end="}">
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno"><a class="line" href="classANetworkTesterActor.html#afb8a7bf0db529e76c4527c7c1d890571">  101</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classANetworkTesterActor.html#afb8a7bf0db529e76c4527c7c1d890571">ANetworkTesterActor::OnResponseUserMe</a>(<a class="code hl_struct" href="structFResponseUserMe.html">FResponseUserMe</a>&amp; ResponseData, <span class="keywordtype">bool</span> bWasSuccessful)</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>{</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    <span class="keywordflow">if</span> (bWasSuccessful)</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    {</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;--- User Me SUCCESS ---&quot;</span>));</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    }</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    {</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;--- User Me FAILED ---&quot;</span>));</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    }</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>}</div>
 </div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span> </div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span><span class="comment">// =============================================================================</span></div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span><span class="comment">// New API Tests</span></div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span><span class="comment">// =============================================================================</span></div>
-<div class="foldopen" id="foldopen00115" data-start="{" data-end="}">
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno"><a class="line" href="classANetworkTesterActor.html#a02ff1581891a931b644040b2fe7f5959">  115</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classANetworkTesterActor.html#a02ff1581891a931b644040b2fe7f5959">ANetworkTesterActor::RequestOcrExtract</a>()</div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>{</div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> KLingoNetwork = UKLingoNetworkSystem::Get(GetWorld()))</div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    {</div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[TEST] RequestOcrExtract - ImagePath: %s&quot;</span>), *<a class="code hl_variable" href="classANetworkTesterActor.html#a2364f342501971f4ad5935cd3265898f">OcrImagePath</a>);</div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>        <span class="comment">// KLingoNetwork-&gt;RequestOcrExtract(</span></div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>        <span class="comment">//     OcrImagePath,</span></div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>        <span class="comment">//     FResponseOcrExtractDelegate::CreateUObject(this, &amp;ANetworkTesterActor::OnResponseOcrExtract)</span></div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>        <span class="comment">// );</span></div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>    }</div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>    <span class="keywordflow">else</span></div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>    {</div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;UKLingoNetworkSystem not found!&quot;</span>));</div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>    }</div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>}</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span> </div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span><span class="comment">// =============================================================================</span></div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span><span class="comment">// New API Tests</span></div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span><span class="comment">// =============================================================================</span></div>
+<div class="foldopen" id="foldopen00116" data-start="{" data-end="}">
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno"><a class="line" href="classANetworkTesterActor.html#a02ff1581891a931b644040b2fe7f5959">  116</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classANetworkTesterActor.html#a02ff1581891a931b644040b2fe7f5959">ANetworkTesterActor::RequestOcrExtract</a>()</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>{</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> KLingoNetwork = UKLingoNetworkSystem::Get(GetWorld()))</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    {</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[TEST] RequestOcrExtract - ImagePath: %s&quot;</span>), *<a class="code hl_variable" href="classANetworkTesterActor.html#a2364f342501971f4ad5935cd3265898f">OcrImagePath</a>);</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>        <span class="comment">// KLingoNetwork-&gt;RequestOcrExtract(</span></div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>        <span class="comment">//     OcrImagePath,</span></div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>        <span class="comment">//     FResponseOcrExtractDelegate::CreateUObject(this, &amp;ANetworkTesterActor::OnResponseOcrExtract)</span></div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>        <span class="comment">// );</span></div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>    }</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>    <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>    {</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;UKLingoNetworkSystem not found!&quot;</span>));</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>    }</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>}</div>
 </div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span> </div>
-<div class="foldopen" id="foldopen00131" data-start="{" data-end="}">
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno"><a class="line" href="classANetworkTesterActor.html#afecbbceb4620b3230c239edf911dd301">  131</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classANetworkTesterActor.html#afecbbceb4620b3230c239edf911dd301">ANetworkTesterActor::RequestSpeakingQuestions</a>()</div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>{</div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> KLingoNetwork = UKLingoNetworkSystem::Get(GetWorld()))</div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>    {</div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[TEST] RequestSpeakingQuestions - Question :%s, AudioPath: %s&quot;</span>), *<a class="code hl_variable" href="classANetworkTesterActor.html#aef38e936988cdf1d8002abc12e4804b1">SpeakingQuestion</a>, *<a class="code hl_variable" href="classANetworkTesterActor.html#a63de4f3b4b19044fbe8efcf3b9a5d3ee">SpeakingAudioPath</a>);</div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>        KLingoNetwork-&gt;RequestSpeakingJudges(</div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>            <a class="code hl_variable" href="classANetworkTesterActor.html#aef38e936988cdf1d8002abc12e4804b1">SpeakingQuestion</a>, <a class="code hl_variable" href="classANetworkTesterActor.html#a63de4f3b4b19044fbe8efcf3b9a5d3ee">SpeakingAudioPath</a>,</div>
-<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>            FResponseSpeakingJudesDelegate::CreateUObject(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classANetworkTesterActor.html#ae4b4fdb8199ce3b067eae6c3ee769179">ANetworkTesterActor::OnResponseSpeakingJudes</a>)</div>
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>        );</div>
-<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>    }</div>
-<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>    <span class="keywordflow">else</span></div>
-<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>    {</div>
-<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;UKLingoNetworkSystem not found!&quot;</span>));</div>
-<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>    }</div>
-<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>}</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span> </div>
+<div class="foldopen" id="foldopen00132" data-start="{" data-end="}">
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno"><a class="line" href="classANetworkTesterActor.html#afecbbceb4620b3230c239edf911dd301">  132</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classANetworkTesterActor.html#afecbbceb4620b3230c239edf911dd301">ANetworkTesterActor::RequestSpeakingQuestions</a>()</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>{</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> KLingoNetwork = UKLingoNetworkSystem::Get(GetWorld()))</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>    {</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[TEST] RequestSpeakingQuestions - Question :%s, AudioPath: %s&quot;</span>), *<a class="code hl_variable" href="classANetworkTesterActor.html#aef38e936988cdf1d8002abc12e4804b1">SpeakingQuestion</a>, *<a class="code hl_variable" href="classANetworkTesterActor.html#a63de4f3b4b19044fbe8efcf3b9a5d3ee">SpeakingAudioPath</a>);</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>        KLingoNetwork-&gt;RequestSpeakingJudges(</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>            <a class="code hl_variable" href="classANetworkTesterActor.html#aef38e936988cdf1d8002abc12e4804b1">SpeakingQuestion</a>, <a class="code hl_variable" href="classANetworkTesterActor.html#a63de4f3b4b19044fbe8efcf3b9a5d3ee">SpeakingAudioPath</a>,</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>            FResponseSpeakingJudesDelegate::CreateUObject(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classANetworkTesterActor.html#ae4b4fdb8199ce3b067eae6c3ee769179">ANetworkTesterActor::OnResponseSpeakingJudes</a>)</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>        );</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>    }</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>    <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>    {</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;UKLingoNetworkSystem not found!&quot;</span>));</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>    }</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>}</div>
 </div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span> </div>
-<div class="foldopen" id="foldopen00147" data-start="{" data-end="}">
-<div class="line"><a id="l00147" name="l00147"></a><span class="lineno"><a class="line" href="classANetworkTesterActor.html#a4eaffe026785fa2d344bedcf9b316b92">  147</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classANetworkTesterActor.html#a4eaffe026785fa2d344bedcf9b316b92">ANetworkTesterActor::RequestListenAudio</a>()</div>
-<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>{</div>
-<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> KLingoNetwork = UKLingoNetworkSystem::Get(GetWorld()))</div>
-<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>    {</div>
-<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[TEST] RequestListenAudio - AudioText: %s&quot;</span>), *<a class="code hl_variable" href="classANetworkTesterActor.html#a996eb18cfc8d22f19124b0d1915be991">AudioText</a>);</div>
-<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>        KLingoNetwork-&gt;RequestListenAudio(</div>
-<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>            <a class="code hl_variable" href="classANetworkTesterActor.html#a996eb18cfc8d22f19124b0d1915be991">AudioText</a>,</div>
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>            FResponseListenAudioDelegate::CreateUObject(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classANetworkTesterActor.html#a9e1b4f31f330262ef767b99331347a53">ANetworkTesterActor::OnResponseListenAudio</a>)</div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>        );</div>
-<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>    }</div>
-<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>    <span class="keywordflow">else</span></div>
-<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>    {</div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;UKLingoNetworkSystem not found!&quot;</span>));</div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>    }</div>
-<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>}</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span> </div>
+<div class="foldopen" id="foldopen00148" data-start="{" data-end="}">
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno"><a class="line" href="classANetworkTesterActor.html#a4eaffe026785fa2d344bedcf9b316b92">  148</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classANetworkTesterActor.html#a4eaffe026785fa2d344bedcf9b316b92">ANetworkTesterActor::RequestListenAudio</a>()</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>{</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> KLingoNetwork = UKLingoNetworkSystem::Get(GetWorld()))</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>    {</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[TEST] RequestListenAudio - AudioText: %s&quot;</span>), *<a class="code hl_variable" href="classANetworkTesterActor.html#a996eb18cfc8d22f19124b0d1915be991">AudioText</a>);</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>        KLingoNetwork-&gt;RequestListenAudio(</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>            <a class="code hl_variable" href="classANetworkTesterActor.html#a996eb18cfc8d22f19124b0d1915be991">AudioText</a>,</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>            FResponseListenAudioDelegate::CreateUObject(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classANetworkTesterActor.html#a9e1b4f31f330262ef767b99331347a53">ANetworkTesterActor::OnResponseListenAudio</a>)</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>        );</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>    }</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>    <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>    {</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;UKLingoNetworkSystem not found!&quot;</span>));</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>    }</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>}</div>
 </div>
-<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span> </div>
-<div class="foldopen" id="foldopen00163" data-start="{" data-end="}">
-<div class="line"><a id="l00163" name="l00163"></a><span class="lineno"><a class="line" href="classANetworkTesterActor.html#ad2080955057d6f1cea28ba786c4de31d">  163</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classANetworkTesterActor.html#ad2080955057d6f1cea28ba786c4de31d">ANetworkTesterActor::RequestInterviewHello</a>()</div>
-<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>{</div>
-<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> KLingoNetwork = UKLingoNetworkSystem::Get(GetWorld()))</div>
-<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>    {</div>
-<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[TEST] RequestInterviewHello&quot;</span>));</div>
-<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>        KLingoNetwork-&gt;RequestInterviewHello(</div>
-<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>            FResponseInterviewHelloDelegate::CreateUObject(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classANetworkTesterActor.html#a190dab0d692f2bbc9b63f44b32644183">ANetworkTesterActor::OnResponseInterviewHello</a>)</div>
-<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>        );</div>
-<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>    }</div>
-<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>    <span class="keywordflow">else</span></div>
-<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>    {</div>
-<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;UKLingoNetworkSystem not found!&quot;</span>));</div>
-<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>    }</div>
-<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>}</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span> </div>
+<div class="foldopen" id="foldopen00164" data-start="{" data-end="}">
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno"><a class="line" href="classANetworkTesterActor.html#ad2080955057d6f1cea28ba786c4de31d">  164</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classANetworkTesterActor.html#ad2080955057d6f1cea28ba786c4de31d">ANetworkTesterActor::RequestInterviewHello</a>()</div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>{</div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> KLingoNetwork = UKLingoNetworkSystem::Get(GetWorld()))</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>    {</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[TEST] RequestInterviewHello&quot;</span>));</div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>        KLingoNetwork-&gt;RequestInterviewHello(</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>            FResponseInterviewHelloDelegate::CreateUObject(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classANetworkTesterActor.html#a190dab0d692f2bbc9b63f44b32644183">ANetworkTesterActor::OnResponseInterviewHello</a>)</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>        );</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>    }</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>    <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>    {</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;UKLingoNetworkSystem not found!&quot;</span>));</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>    }</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>}</div>
 </div>
-<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span> </div>
-<div class="foldopen" id="foldopen00178" data-start="{" data-end="}">
-<div class="line"><a id="l00178" name="l00178"></a><span class="lineno"><a class="line" href="classANetworkTesterActor.html#af82715f7fb18aeec53b5b6271fe1d33b">  178</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classANetworkTesterActor.html#af82715f7fb18aeec53b5b6271fe1d33b">ANetworkTesterActor::OnResponseOcrExtract</a>(<a class="code hl_struct" href="structFResponseWriteSubmit.html">FResponseWriteSubmit</a>&amp; ResponseData, <span class="keywordtype">bool</span> bWasSuccessful)</div>
-<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>{</div>
-<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>    <span class="keywordflow">if</span> (bWasSuccessful)</div>
-<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>    {</div>
-<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;--- OCR Extract SUCCESS ---&quot;</span>));</div>
-<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>        ResponseData.<a class="code hl_function" href="structFResponseWriteSubmit.html#a357f0c08ed9288b12f4aba842d957d0a">PrintData</a>();</div>
-<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>        <span class="comment">// PRINTLOG(TEXT(&quot;Success: %s&quot;), ResponseData.success ? TEXT(&quot;true&quot;) : TEXT(&quot;false&quot;));</span></div>
-<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>        <span class="comment">// PRINTLOG(TEXT(&quot;Extracted Text: %s&quot;), *ResponseData.extracted_text);</span></div>
-<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>    }</div>
-<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>    <span class="keywordflow">else</span></div>
-<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>    {</div>
-<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;--- OCR Extract FAILED ---&quot;</span>));</div>
-<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>    }</div>
-<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>}</div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span> </div>
+<div class="foldopen" id="foldopen00179" data-start="{" data-end="}">
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno"><a class="line" href="classANetworkTesterActor.html#af82715f7fb18aeec53b5b6271fe1d33b">  179</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classANetworkTesterActor.html#af82715f7fb18aeec53b5b6271fe1d33b">ANetworkTesterActor::OnResponseOcrExtract</a>(<a class="code hl_struct" href="structFResponseWriteSubmit.html">FResponseWriteSubmit</a>&amp; ResponseData, <span class="keywordtype">bool</span> bWasSuccessful)</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>{</div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>    <span class="keywordflow">if</span> (bWasSuccessful)</div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>    {</div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;--- OCR Extract SUCCESS ---&quot;</span>));</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>        ResponseData.<a class="code hl_function" href="structFResponseWriteSubmit.html#a357f0c08ed9288b12f4aba842d957d0a">PrintData</a>();</div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>        <span class="comment">// PRINTLOG(TEXT(&quot;Success: %s&quot;), ResponseData.success ? TEXT(&quot;true&quot;) : TEXT(&quot;false&quot;));</span></div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>        <span class="comment">// PRINTLOG(TEXT(&quot;Extracted Text: %s&quot;), *ResponseData.extracted_text);</span></div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>    }</div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>    <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>    {</div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;--- OCR Extract FAILED ---&quot;</span>));</div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>    }</div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>}</div>
 </div>
-<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span> </div>
-<div class="foldopen" id="foldopen00193" data-start="{" data-end="}">
-<div class="line"><a id="l00193" name="l00193"></a><span class="lineno"><a class="line" href="classANetworkTesterActor.html#ae4b4fdb8199ce3b067eae6c3ee769179">  193</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classANetworkTesterActor.html#ae4b4fdb8199ce3b067eae6c3ee769179">ANetworkTesterActor::OnResponseSpeakingJudes</a>(<a class="code hl_struct" href="structFResponseSpeakingJudes.html">FResponseSpeakingJudes</a>&amp; ResponseData, <span class="keywordtype">bool</span> bWasSuccessful)</div>
-<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>{</div>
-<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>    <span class="keywordflow">if</span> (bWasSuccessful)</div>
-<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>    {</div>
-<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;--- Speaking Questions SUCCESS ---&quot;</span>));</div>
-<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>        ResponseData.<a class="code hl_function" href="structFResponseSpeakingJudes.html#aa8c7ffb654c224aac31ca17aa84fd1db">PrintData</a>();</div>
-<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>        UDialogManager::Get(GetWorld())-&gt;ShowToast(*ResponseData.<a class="code hl_variable" href="structFResponseSpeakingJudes.html#a23ca88ea4bc62490c1e2528014473d2d">final_feedback</a>);</div>
-<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>    }</div>
-<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>    <span class="keywordflow">else</span></div>
-<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>    {</div>
-<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;--- Speaking Questions FAILED ---&quot;</span>));</div>
-<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>    }</div>
-<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>}</div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span> </div>
+<div class="foldopen" id="foldopen00194" data-start="{" data-end="}">
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno"><a class="line" href="classANetworkTesterActor.html#ae4b4fdb8199ce3b067eae6c3ee769179">  194</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classANetworkTesterActor.html#ae4b4fdb8199ce3b067eae6c3ee769179">ANetworkTesterActor::OnResponseSpeakingJudes</a>(<a class="code hl_struct" href="structFResponseSpeakingJudes.html">FResponseSpeakingJudes</a>&amp; ResponseData, <span class="keywordtype">bool</span> bWasSuccessful)</div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>{</div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>    <span class="keywordflow">if</span> (bWasSuccessful)</div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>    {</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;--- Speaking Questions SUCCESS ---&quot;</span>));</div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>        ResponseData.<a class="code hl_function" href="structFResponseSpeakingJudes.html#aa8c7ffb654c224aac31ca17aa84fd1db">PrintData</a>();</div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>        UDialogManager::Get(GetWorld())-&gt;ShowToast(*ResponseData.<a class="code hl_variable" href="structFResponseSpeakingJudes.html#a23ca88ea4bc62490c1e2528014473d2d">final_feedback</a>);</div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>    }</div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>    <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>    {</div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;--- Speaking Questions FAILED ---&quot;</span>));</div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>    }</div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>}</div>
 </div>
-<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span> </div>
-<div class="foldopen" id="foldopen00207" data-start="{" data-end="}">
-<div class="line"><a id="l00207" name="l00207"></a><span class="lineno"><a class="line" href="classANetworkTesterActor.html#a9e1b4f31f330262ef767b99331347a53">  207</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classANetworkTesterActor.html#a9e1b4f31f330262ef767b99331347a53">ANetworkTesterActor::OnResponseListenAudio</a>(<a class="code hl_struct" href="structFResponseListenAudio.html">FResponseListenAudio</a>&amp; ResponseData, <span class="keywordtype">bool</span> bWasSuccessful)</div>
-<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>{</div>
-<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>    <span class="keywordflow">if</span> (bWasSuccessful)</div>
-<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>    {</div>
-<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;--- Listen Audio SUCCESS ---&quot;</span>));</div>
-<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>        ResponseData.<a class="code hl_function" href="structFResponseListenAudio.html#a107fb202d5ff583452455456bbf89748">PrintData</a>();</div>
-<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span> </div>
-<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>        UDialogManager::Get(GetWorld())-&gt;ShowToast(*ResponseData.<a class="code hl_variable" href="structFResponseListenAudio.html#ac98fb8b7db5c2bbb9bd42bf9fd72f71f">audio_text</a>);</div>
-<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>        <a class="code hl_variable" href="classANetworkTesterActor.html#a112a573b43579514a0ab6f87d492a630">VoiceConversationSystem</a>-&gt;PlayVoiceAudio(ResponseData.<a class="code hl_variable" href="structFResponseListenAudio.html#a39dfdd52ce3770dfbccf800986ce4607">audio_base64</a>);</div>
-<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>    }</div>
-<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>    <span class="keywordflow">else</span></div>
-<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>    {</div>
-<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;--- Listen Audio FAILED ---&quot;</span>));</div>
-<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>    }</div>
-<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>}</div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span> </div>
+<div class="foldopen" id="foldopen00208" data-start="{" data-end="}">
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno"><a class="line" href="classANetworkTesterActor.html#a9e1b4f31f330262ef767b99331347a53">  208</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classANetworkTesterActor.html#a9e1b4f31f330262ef767b99331347a53">ANetworkTesterActor::OnResponseListenAudio</a>(<a class="code hl_struct" href="structFResponseListenAudio.html">FResponseListenAudio</a>&amp; ResponseData, <span class="keywordtype">bool</span> bWasSuccessful)</div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>{</div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>    <span class="keywordflow">if</span> (bWasSuccessful)</div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>    {</div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;--- Listen Audio SUCCESS ---&quot;</span>));</div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>        ResponseData.<a class="code hl_function" href="structFResponseListenAudio.html#a107fb202d5ff583452455456bbf89748">PrintData</a>();</div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span> </div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>        UDialogManager::Get(GetWorld())-&gt;ShowToast(*ResponseData.<a class="code hl_variable" href="structFResponseListenAudio.html#ac98fb8b7db5c2bbb9bd42bf9fd72f71f">audio_text</a>);</div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>        <a class="code hl_variable" href="classANetworkTesterActor.html#a112a573b43579514a0ab6f87d492a630">VoiceConversationSystem</a>-&gt;PlayVoiceAudio(ResponseData.<a class="code hl_variable" href="structFResponseListenAudio.html#a39dfdd52ce3770dfbccf800986ce4607">audio_base64</a>);</div>
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>    }</div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>    <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>    {</div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;--- Listen Audio FAILED ---&quot;</span>));</div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>    }</div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>}</div>
 </div>
-<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span> </div>
 <div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span> </div>
-<div class="foldopen" id="foldopen00224" data-start="{" data-end="}">
-<div class="line"><a id="l00224" name="l00224"></a><span class="lineno"><a class="line" href="classANetworkTesterActor.html#a190dab0d692f2bbc9b63f44b32644183">  224</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classANetworkTesterActor.html#a190dab0d692f2bbc9b63f44b32644183">ANetworkTesterActor::OnResponseInterviewHello</a>(<a class="code hl_struct" href="structFResponseInterviewHello.html">FResponseInterviewHello</a>&amp; ResponseData, <span class="keywordtype">bool</span> bWasSuccessful)</div>
-<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>{</div>
-<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>    <span class="keywordflow">if</span> (bWasSuccessful)</div>
-<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>    {</div>
-<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;--- InterViewHello Questions SUCCESS ---&quot;</span>));</div>
-<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>        ResponseData.<a class="code hl_function" href="structFResponseInterviewHello.html#ab940c7120e106a57d367e0fc3f0fca77">PrintData</a>();</div>
-<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span> </div>
-<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>        <span class="keywordflow">if</span> (<span class="keyword">auto</span> Popup = UPopupManager::ShowPopupAs&lt;UPopup_Interview&gt;(GetWorld(), EPopupType::Interview))</div>
-<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>        {</div>
-<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>            Popup-&gt;InitPopup(ResponseData);</div>
-<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>        }</div>
-<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>    }</div>
-<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>    <span class="keywordflow">else</span></div>
-<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>    {</div>
-<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;--- InterViewHello Questions FAILED ---&quot;</span>));</div>
-<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>    }</div>
-<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>}</div>
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span> </div>
+<div class="foldopen" id="foldopen00225" data-start="{" data-end="}">
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno"><a class="line" href="classANetworkTesterActor.html#a190dab0d692f2bbc9b63f44b32644183">  225</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classANetworkTesterActor.html#a190dab0d692f2bbc9b63f44b32644183">ANetworkTesterActor::OnResponseInterviewHello</a>(<a class="code hl_struct" href="structFResponseInterviewHello.html">FResponseInterviewHello</a>&amp; ResponseData, <span class="keywordtype">bool</span> bWasSuccessful)</div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>{</div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>    <span class="keywordflow">if</span> (bWasSuccessful)</div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>    {</div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;--- InterViewHello Questions SUCCESS ---&quot;</span>));</div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>        ResponseData.<a class="code hl_function" href="structFResponseInterviewHello.html#ab940c7120e106a57d367e0fc3f0fca77">PrintData</a>();</div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span> </div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>        <span class="keywordflow">if</span> (<span class="keyword">auto</span> Popup = UPopupManager::ShowPopupAs&lt;UPopup_InterviewHello&gt;(GetWorld(), EPopupType::InterviewHello))</div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>        {</div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>            Popup-&gt;InitPopup(ResponseData);</div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>        }</div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>    }</div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>    <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>    {</div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;--- InterViewHello Questions FAILED ---&quot;</span>));</div>
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>    }</div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>}</div>
 </div>
 <div class="ttc" id="aANetworkTesterActor_8h_html"><div class="ttname"><a href="ANetworkTesterActor_8h.html">ANetworkTesterActor.h</a></div><div class="ttdoc">네트워크 진단용 테스트 액터를 선언합니다.</div></div>
 <div class="ttc" id="aGameLogging_8h_html"><div class="ttname"><a href="GameLogging_8h.html">GameLogging.h</a></div><div class="ttdoc">YiSan 전반에서 사용하는 공용 인터페이스를 선언합니다.</div></div>
@@ -382,30 +383,31 @@ $(document).ready(function(){initNavTree('ANetworkTesterActor_8cpp_source.html',
 <div class="ttc" id="aUDialogManager_8h_html"><div class="ttname"><a href="UDialogManager_8h.html">UDialogManager.h</a></div><div class="ttdoc">UDialogManager 클래스를 선언합니다.</div></div>
 <div class="ttc" id="aUKLingoNetworkSystem_8h_html"><div class="ttname"><a href="UKLingoNetworkSystem_8h.html">UKLingoNetworkSystem.h</a></div><div class="ttdoc">KLingo API 요청을 담당하는 서브시스템을 선언합니다.</div></div>
 <div class="ttc" id="aUPopupManager_8h_html"><div class="ttname"><a href="UPopupManager_8h.html">UPopupManager.h</a></div></div>
+<div class="ttc" id="aUPopup__InterviewHello_8h_html"><div class="ttname"><a href="UPopup__InterviewHello_8h.html">UPopup_InterviewHello.h</a></div></div>
 <div class="ttc" id="aUPopup__Interview_8h_html"><div class="ttname"><a href="UPopup__Interview_8h.html">UPopup_Interview.h</a></div></div>
 <div class="ttc" id="aUPopup__MsgBox_8h_html"><div class="ttname"><a href="UPopup__MsgBox_8h.html">UPopup_MsgBox.h</a></div></div>
 <div class="ttc" id="aUVoiceConversationSystem_8h_html"><div class="ttname"><a href="UVoiceConversationSystem_8h.html">UVoiceConversationSystem.h</a></div><div class="ttdoc">STT·GPT·TTS 파이프라인을 연결하는 음성 대화 컴포넌트를 선언합니다.</div></div>
-<div class="ttc" id="aclassANetworkTesterActor_html_a02ff1581891a931b644040b2fe7f5959"><div class="ttname"><a href="classANetworkTesterActor.html#a02ff1581891a931b644040b2fe7f5959">ANetworkTesterActor::RequestOcrExtract</a></div><div class="ttdeci">void RequestOcrExtract()</div><div class="ttdoc">OCR 텍스트 추출 요청을 전송합니다 (POST /writes/ocr/extract).</div><div class="ttdef"><b>Definition</b> <a href="ANetworkTesterActor_8cpp_source.html#l00115">ANetworkTesterActor.cpp:115</a></div></div>
+<div class="ttc" id="aclassANetworkTesterActor_html_a02ff1581891a931b644040b2fe7f5959"><div class="ttname"><a href="classANetworkTesterActor.html#a02ff1581891a931b644040b2fe7f5959">ANetworkTesterActor::RequestOcrExtract</a></div><div class="ttdeci">void RequestOcrExtract()</div><div class="ttdoc">OCR 텍스트 추출 요청을 전송합니다 (POST /writes/ocr/extract).</div><div class="ttdef"><b>Definition</b> <a href="ANetworkTesterActor_8cpp_source.html#l00116">ANetworkTesterActor.cpp:116</a></div></div>
 <div class="ttc" id="aclassANetworkTesterActor_html_a112a573b43579514a0ab6f87d492a630"><div class="ttname"><a href="classANetworkTesterActor.html#a112a573b43579514a0ab6f87d492a630">ANetworkTesterActor::VoiceConversationSystem</a></div><div class="ttdeci">TObjectPtr&lt; class UVoiceConversationSystem &gt; VoiceConversationSystem</div><div class="ttdef"><b>Definition</b> <a href="ANetworkTesterActor_8h_source.html#l00104">ANetworkTesterActor.h:104</a></div></div>
-<div class="ttc" id="aclassANetworkTesterActor_html_a190dab0d692f2bbc9b63f44b32644183"><div class="ttname"><a href="classANetworkTesterActor.html#a190dab0d692f2bbc9b63f44b32644183">ANetworkTesterActor::OnResponseInterviewHello</a></div><div class="ttdeci">void OnResponseInterviewHello(FResponseInterviewHello &amp;ResponseData, bool bWasSuccessful)</div><div class="ttdef"><b>Definition</b> <a href="ANetworkTesterActor_8cpp_source.html#l00224">ANetworkTesterActor.cpp:224</a></div></div>
+<div class="ttc" id="aclassANetworkTesterActor_html_a190dab0d692f2bbc9b63f44b32644183"><div class="ttname"><a href="classANetworkTesterActor.html#a190dab0d692f2bbc9b63f44b32644183">ANetworkTesterActor::OnResponseInterviewHello</a></div><div class="ttdeci">void OnResponseInterviewHello(FResponseInterviewHello &amp;ResponseData, bool bWasSuccessful)</div><div class="ttdef"><b>Definition</b> <a href="ANetworkTesterActor_8cpp_source.html#l00225">ANetworkTesterActor.cpp:225</a></div></div>
 <div class="ttc" id="aclassANetworkTesterActor_html_a2364f342501971f4ad5935cd3265898f"><div class="ttname"><a href="classANetworkTesterActor.html#a2364f342501971f4ad5935cd3265898f">ANetworkTesterActor::OcrImagePath</a></div><div class="ttdeci">FString OcrImagePath</div><div class="ttdoc">OCR 테스트용 이미지 파일 경로입니다 (프로젝트 루트 기준).</div><div class="ttdef"><b>Definition</b> <a href="ANetworkTesterActor_8h_source.html#l00048">ANetworkTesterActor.h:48</a></div></div>
-<div class="ttc" id="aclassANetworkTesterActor_html_a3f925eef81e5fdc41ff8bb0e1fea9015"><div class="ttname"><a href="classANetworkTesterActor.html#a3f925eef81e5fdc41ff8bb0e1fea9015">ANetworkTesterActor::OnResponseUserToken</a></div><div class="ttdeci">void OnResponseUserToken(FResponseUserToken &amp;ResponseData, bool bWasSuccessful)</div><div class="ttdef"><b>Definition</b> <a href="ANetworkTesterActor_8cpp_source.html#l00087">ANetworkTesterActor.cpp:87</a></div></div>
-<div class="ttc" id="aclassANetworkTesterActor_html_a4eaffe026785fa2d344bedcf9b316b92"><div class="ttname"><a href="classANetworkTesterActor.html#a4eaffe026785fa2d344bedcf9b316b92">ANetworkTesterActor::RequestListenAudio</a></div><div class="ttdeci">void RequestListenAudio()</div><div class="ttdef"><b>Definition</b> <a href="ANetworkTesterActor_8cpp_source.html#l00147">ANetworkTesterActor.cpp:147</a></div></div>
+<div class="ttc" id="aclassANetworkTesterActor_html_a3f925eef81e5fdc41ff8bb0e1fea9015"><div class="ttname"><a href="classANetworkTesterActor.html#a3f925eef81e5fdc41ff8bb0e1fea9015">ANetworkTesterActor::OnResponseUserToken</a></div><div class="ttdeci">void OnResponseUserToken(FResponseUserToken &amp;ResponseData, bool bWasSuccessful)</div><div class="ttdef"><b>Definition</b> <a href="ANetworkTesterActor_8cpp_source.html#l00088">ANetworkTesterActor.cpp:88</a></div></div>
+<div class="ttc" id="aclassANetworkTesterActor_html_a4eaffe026785fa2d344bedcf9b316b92"><div class="ttname"><a href="classANetworkTesterActor.html#a4eaffe026785fa2d344bedcf9b316b92">ANetworkTesterActor::RequestListenAudio</a></div><div class="ttdeci">void RequestListenAudio()</div><div class="ttdef"><b>Definition</b> <a href="ANetworkTesterActor_8cpp_source.html#l00148">ANetworkTesterActor.cpp:148</a></div></div>
 <div class="ttc" id="aclassANetworkTesterActor_html_a63de4f3b4b19044fbe8efcf3b9a5d3ee"><div class="ttname"><a href="classANetworkTesterActor.html#a63de4f3b4b19044fbe8efcf3b9a5d3ee">ANetworkTesterActor::SpeakingAudioPath</a></div><div class="ttdeci">FString SpeakingAudioPath</div><div class="ttdoc">Speaking 테스트용 오디오 파일 경로입니다 (프로젝트 루트 기준).</div><div class="ttdef"><b>Definition</b> <a href="ANetworkTesterActor_8h_source.html#l00065">ANetworkTesterActor.h:65</a></div></div>
-<div class="ttc" id="aclassANetworkTesterActor_html_a809947b71f79e9024a44a62d0cc20a90"><div class="ttname"><a href="classANetworkTesterActor.html#a809947b71f79e9024a44a62d0cc20a90">ANetworkTesterActor::RequestUserToken</a></div><div class="ttdeci">void RequestUserToken()</div><div class="ttdoc">OAuth2 토큰 발급 요청을 전송합니다 (POST /users/token).</div><div class="ttdef"><b>Definition</b> <a href="ANetworkTesterActor_8cpp_source.html#l00045">ANetworkTesterActor.cpp:45</a></div></div>
+<div class="ttc" id="aclassANetworkTesterActor_html_a809947b71f79e9024a44a62d0cc20a90"><div class="ttname"><a href="classANetworkTesterActor.html#a809947b71f79e9024a44a62d0cc20a90">ANetworkTesterActor::RequestUserToken</a></div><div class="ttdeci">void RequestUserToken()</div><div class="ttdoc">OAuth2 토큰 발급 요청을 전송합니다 (POST /users/token).</div><div class="ttdef"><b>Definition</b> <a href="ANetworkTesterActor_8cpp_source.html#l00046">ANetworkTesterActor.cpp:46</a></div></div>
 <div class="ttc" id="aclassANetworkTesterActor_html_a996eb18cfc8d22f19124b0d1915be991"><div class="ttname"><a href="classANetworkTesterActor.html#a996eb18cfc8d22f19124b0d1915be991">ANetworkTesterActor::AudioText</a></div><div class="ttdeci">FString AudioText</div><div class="ttdef"><b>Definition</b> <a href="ANetworkTesterActor_8h_source.html#l00075">ANetworkTesterActor.h:75</a></div></div>
-<div class="ttc" id="aclassANetworkTesterActor_html_a9e1b4f31f330262ef767b99331347a53"><div class="ttname"><a href="classANetworkTesterActor.html#a9e1b4f31f330262ef767b99331347a53">ANetworkTesterActor::OnResponseListenAudio</a></div><div class="ttdeci">void OnResponseListenAudio(FResponseListenAudio &amp;ResponseData, bool bWasSuccessful)</div><div class="ttdef"><b>Definition</b> <a href="ANetworkTesterActor_8cpp_source.html#l00207">ANetworkTesterActor.cpp:207</a></div></div>
+<div class="ttc" id="aclassANetworkTesterActor_html_a9e1b4f31f330262ef767b99331347a53"><div class="ttname"><a href="classANetworkTesterActor.html#a9e1b4f31f330262ef767b99331347a53">ANetworkTesterActor::OnResponseListenAudio</a></div><div class="ttdeci">void OnResponseListenAudio(FResponseListenAudio &amp;ResponseData, bool bWasSuccessful)</div><div class="ttdef"><b>Definition</b> <a href="ANetworkTesterActor_8cpp_source.html#l00208">ANetworkTesterActor.cpp:208</a></div></div>
 <div class="ttc" id="aclassANetworkTesterActor_html_ab5f32b53d6845e92b3bdc278e43c58fa"><div class="ttname"><a href="classANetworkTesterActor.html#ab5f32b53d6845e92b3bdc278e43c58fa">ANetworkTesterActor::UserName</a></div><div class="ttdeci">FString UserName</div><div class="ttdoc">테스트에 사용할 사용자 이름입니다.</div><div class="ttdef"><b>Definition</b> <a href="ANetworkTesterActor_8h_source.html#l00028">ANetworkTesterActor.h:28</a></div></div>
-<div class="ttc" id="aclassANetworkTesterActor_html_ad2080955057d6f1cea28ba786c4de31d"><div class="ttname"><a href="classANetworkTesterActor.html#ad2080955057d6f1cea28ba786c4de31d">ANetworkTesterActor::RequestInterviewHello</a></div><div class="ttdeci">void RequestInterviewHello()</div><div class="ttdef"><b>Definition</b> <a href="ANetworkTesterActor_8cpp_source.html#l00163">ANetworkTesterActor.cpp:163</a></div></div>
-<div class="ttc" id="aclassANetworkTesterActor_html_add47c5b8d704c70533ebebc39066b9a1"><div class="ttname"><a href="classANetworkTesterActor.html#add47c5b8d704c70533ebebc39066b9a1">ANetworkTesterActor::ANetworkTesterActor</a></div><div class="ttdeci">ANetworkTesterActor()</div><div class="ttdoc">기본 컴포넌트를 구성하는 생성자입니다.</div><div class="ttdef"><b>Definition</b> <a href="ANetworkTesterActor_8cpp_source.html#l00018">ANetworkTesterActor.cpp:18</a></div></div>
-<div class="ttc" id="aclassANetworkTesterActor_html_ae4b4fdb8199ce3b067eae6c3ee769179"><div class="ttname"><a href="classANetworkTesterActor.html#ae4b4fdb8199ce3b067eae6c3ee769179">ANetworkTesterActor::OnResponseSpeakingJudes</a></div><div class="ttdeci">void OnResponseSpeakingJudes(FResponseSpeakingJudes &amp;ResponseData, bool bWasSuccessful)</div><div class="ttdef"><b>Definition</b> <a href="ANetworkTesterActor_8cpp_source.html#l00193">ANetworkTesterActor.cpp:193</a></div></div>
-<div class="ttc" id="aclassANetworkTesterActor_html_ae53f27ab3ca6671a7c55a14c055d03a3"><div class="ttname"><a href="classANetworkTesterActor.html#ae53f27ab3ca6671a7c55a14c055d03a3">ANetworkTesterActor::RequestUserRegister</a></div><div class="ttdeci">void RequestUserRegister()</div><div class="ttdoc">사용자 등록 요청을 전송합니다 (POST /users/register).</div><div class="ttdef"><b>Definition</b> <a href="ANetworkTesterActor_8cpp_source.html#l00029">ANetworkTesterActor.cpp:29</a></div></div>
-<div class="ttc" id="aclassANetworkTesterActor_html_aebbe22fc01a47b44f20c3dc5f35aceed"><div class="ttname"><a href="classANetworkTesterActor.html#aebbe22fc01a47b44f20c3dc5f35aceed">ANetworkTesterActor::RequestUserMe</a></div><div class="ttdeci">void RequestUserMe()</div><div class="ttdoc">현재 사용자 정보 조회 요청을 전송합니다 (GET /users/me).</div><div class="ttdef"><b>Definition</b> <a href="ANetworkTesterActor_8cpp_source.html#l00061">ANetworkTesterActor.cpp:61</a></div></div>
+<div class="ttc" id="aclassANetworkTesterActor_html_ad2080955057d6f1cea28ba786c4de31d"><div class="ttname"><a href="classANetworkTesterActor.html#ad2080955057d6f1cea28ba786c4de31d">ANetworkTesterActor::RequestInterviewHello</a></div><div class="ttdeci">void RequestInterviewHello()</div><div class="ttdef"><b>Definition</b> <a href="ANetworkTesterActor_8cpp_source.html#l00164">ANetworkTesterActor.cpp:164</a></div></div>
+<div class="ttc" id="aclassANetworkTesterActor_html_add47c5b8d704c70533ebebc39066b9a1"><div class="ttname"><a href="classANetworkTesterActor.html#add47c5b8d704c70533ebebc39066b9a1">ANetworkTesterActor::ANetworkTesterActor</a></div><div class="ttdeci">ANetworkTesterActor()</div><div class="ttdoc">기본 컴포넌트를 구성하는 생성자입니다.</div><div class="ttdef"><b>Definition</b> <a href="ANetworkTesterActor_8cpp_source.html#l00019">ANetworkTesterActor.cpp:19</a></div></div>
+<div class="ttc" id="aclassANetworkTesterActor_html_ae4b4fdb8199ce3b067eae6c3ee769179"><div class="ttname"><a href="classANetworkTesterActor.html#ae4b4fdb8199ce3b067eae6c3ee769179">ANetworkTesterActor::OnResponseSpeakingJudes</a></div><div class="ttdeci">void OnResponseSpeakingJudes(FResponseSpeakingJudes &amp;ResponseData, bool bWasSuccessful)</div><div class="ttdef"><b>Definition</b> <a href="ANetworkTesterActor_8cpp_source.html#l00194">ANetworkTesterActor.cpp:194</a></div></div>
+<div class="ttc" id="aclassANetworkTesterActor_html_ae53f27ab3ca6671a7c55a14c055d03a3"><div class="ttname"><a href="classANetworkTesterActor.html#ae53f27ab3ca6671a7c55a14c055d03a3">ANetworkTesterActor::RequestUserRegister</a></div><div class="ttdeci">void RequestUserRegister()</div><div class="ttdoc">사용자 등록 요청을 전송합니다 (POST /users/register).</div><div class="ttdef"><b>Definition</b> <a href="ANetworkTesterActor_8cpp_source.html#l00030">ANetworkTesterActor.cpp:30</a></div></div>
+<div class="ttc" id="aclassANetworkTesterActor_html_aebbe22fc01a47b44f20c3dc5f35aceed"><div class="ttname"><a href="classANetworkTesterActor.html#aebbe22fc01a47b44f20c3dc5f35aceed">ANetworkTesterActor::RequestUserMe</a></div><div class="ttdeci">void RequestUserMe()</div><div class="ttdoc">현재 사용자 정보 조회 요청을 전송합니다 (GET /users/me).</div><div class="ttdef"><b>Definition</b> <a href="ANetworkTesterActor_8cpp_source.html#l00062">ANetworkTesterActor.cpp:62</a></div></div>
 <div class="ttc" id="aclassANetworkTesterActor_html_aef38e936988cdf1d8002abc12e4804b1"><div class="ttname"><a href="classANetworkTesterActor.html#aef38e936988cdf1d8002abc12e4804b1">ANetworkTesterActor::SpeakingQuestion</a></div><div class="ttdeci">FString SpeakingQuestion</div><div class="ttdoc">Speaking 테스트용 질문 입니다</div><div class="ttdef"><b>Definition</b> <a href="ANetworkTesterActor_8h_source.html#l00061">ANetworkTesterActor.h:61</a></div></div>
-<div class="ttc" id="aclassANetworkTesterActor_html_af82715f7fb18aeec53b5b6271fe1d33b"><div class="ttname"><a href="classANetworkTesterActor.html#af82715f7fb18aeec53b5b6271fe1d33b">ANetworkTesterActor::OnResponseOcrExtract</a></div><div class="ttdeci">void OnResponseOcrExtract(FResponseWriteSubmit &amp;ResponseData, bool bWasSuccessful)</div><div class="ttdef"><b>Definition</b> <a href="ANetworkTesterActor_8cpp_source.html#l00178">ANetworkTesterActor.cpp:178</a></div></div>
-<div class="ttc" id="aclassANetworkTesterActor_html_af85fc6f7a9ac286f04aa0027aa75462a"><div class="ttname"><a href="classANetworkTesterActor.html#af85fc6f7a9ac286f04aa0027aa75462a">ANetworkTesterActor::OnResponseUserRegister</a></div><div class="ttdeci">void OnResponseUserRegister(FResponseUserRegister &amp;ResponseData, bool bWasSuccessful)</div><div class="ttdef"><b>Definition</b> <a href="ANetworkTesterActor_8cpp_source.html#l00074">ANetworkTesterActor.cpp:74</a></div></div>
-<div class="ttc" id="aclassANetworkTesterActor_html_afb8a7bf0db529e76c4527c7c1d890571"><div class="ttname"><a href="classANetworkTesterActor.html#afb8a7bf0db529e76c4527c7c1d890571">ANetworkTesterActor::OnResponseUserMe</a></div><div class="ttdeci">void OnResponseUserMe(FResponseUserMe &amp;ResponseData, bool bWasSuccessful)</div><div class="ttdef"><b>Definition</b> <a href="ANetworkTesterActor_8cpp_source.html#l00100">ANetworkTesterActor.cpp:100</a></div></div>
-<div class="ttc" id="aclassANetworkTesterActor_html_afecbbceb4620b3230c239edf911dd301"><div class="ttname"><a href="classANetworkTesterActor.html#afecbbceb4620b3230c239edf911dd301">ANetworkTesterActor::RequestSpeakingQuestions</a></div><div class="ttdeci">void RequestSpeakingQuestions()</div><div class="ttdoc">Speaking 답변 요청을 전송합니다 (POST /speakings/questions).</div><div class="ttdef"><b>Definition</b> <a href="ANetworkTesterActor_8cpp_source.html#l00131">ANetworkTesterActor.cpp:131</a></div></div>
+<div class="ttc" id="aclassANetworkTesterActor_html_af82715f7fb18aeec53b5b6271fe1d33b"><div class="ttname"><a href="classANetworkTesterActor.html#af82715f7fb18aeec53b5b6271fe1d33b">ANetworkTesterActor::OnResponseOcrExtract</a></div><div class="ttdeci">void OnResponseOcrExtract(FResponseWriteSubmit &amp;ResponseData, bool bWasSuccessful)</div><div class="ttdef"><b>Definition</b> <a href="ANetworkTesterActor_8cpp_source.html#l00179">ANetworkTesterActor.cpp:179</a></div></div>
+<div class="ttc" id="aclassANetworkTesterActor_html_af85fc6f7a9ac286f04aa0027aa75462a"><div class="ttname"><a href="classANetworkTesterActor.html#af85fc6f7a9ac286f04aa0027aa75462a">ANetworkTesterActor::OnResponseUserRegister</a></div><div class="ttdeci">void OnResponseUserRegister(FResponseUserRegister &amp;ResponseData, bool bWasSuccessful)</div><div class="ttdef"><b>Definition</b> <a href="ANetworkTesterActor_8cpp_source.html#l00075">ANetworkTesterActor.cpp:75</a></div></div>
+<div class="ttc" id="aclassANetworkTesterActor_html_afb8a7bf0db529e76c4527c7c1d890571"><div class="ttname"><a href="classANetworkTesterActor.html#afb8a7bf0db529e76c4527c7c1d890571">ANetworkTesterActor::OnResponseUserMe</a></div><div class="ttdeci">void OnResponseUserMe(FResponseUserMe &amp;ResponseData, bool bWasSuccessful)</div><div class="ttdef"><b>Definition</b> <a href="ANetworkTesterActor_8cpp_source.html#l00101">ANetworkTesterActor.cpp:101</a></div></div>
+<div class="ttc" id="aclassANetworkTesterActor_html_afecbbceb4620b3230c239edf911dd301"><div class="ttname"><a href="classANetworkTesterActor.html#afecbbceb4620b3230c239edf911dd301">ANetworkTesterActor::RequestSpeakingQuestions</a></div><div class="ttdeci">void RequestSpeakingQuestions()</div><div class="ttdoc">Speaking 답변 요청을 전송합니다 (POST /speakings/questions).</div><div class="ttdef"><b>Definition</b> <a href="ANetworkTesterActor_8cpp_source.html#l00132">ANetworkTesterActor.cpp:132</a></div></div>
 <div class="ttc" id="astructFResponseInterviewHello_html"><div class="ttname"><a href="structFResponseInterviewHello.html">FResponseInterviewHello</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00757">NetworkData.h:758</a></div></div>
 <div class="ttc" id="astructFResponseInterviewHello_html_ab940c7120e106a57d367e0fc3f0fca77"><div class="ttname"><a href="structFResponseInterviewHello.html#ab940c7120e106a57d367e0fc3f0fca77">FResponseInterviewHello::PrintData</a></div><div class="ttdeci">void PrintData() const</div><div class="ttdoc">디버그 로그에 응답 내용을 출력합니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8cpp_source.html#l00582">NetworkData.cpp:582</a></div></div>
 <div class="ttc" id="astructFResponseListenAudio_html"><div class="ttname"><a href="structFResponseListenAudio.html">FResponseListenAudio</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00702">NetworkData.h:703</a></div></div>
@@ -427,7 +429,7 @@ $(document).ready(function(){initNavTree('ANetworkTesterActor_8cpp_source.html',
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_db6231b890a14ef22abfc7e4cac87d3d.html">Network</a></li><li class="navelem"><a class="el" href="dir_b16031943cc461ca19dafbeb0c146ace.html">Private</a></li><li class="navelem"><a class="el" href="ANetworkTesterActor_8cpp.html">ANetworkTesterActor.cpp</a></li>
-    <li class="footer">생성시간 : 목 12월 11 2025 08:57:14, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 목 12월 11 2025 15:20:33, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

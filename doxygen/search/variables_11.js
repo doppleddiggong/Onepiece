@@ -30,7 +30,7 @@ var searchData=
   ['restoretimerhandle_27',['RestoreTimerHandle',['../classADropper.html#aebd091f5eb13e2935650d85f52a6ad30',1,'ADropper']]],
   ['result_5faveragescore_28',['Result_AverageScore',['../classUPopup__Result.html#a44952857c7a03cd3e097a1f28c98fb4b',1,'UPopup_Result']]],
   ['result_5fgrade_29',['Result_Grade',['../classUPopup__Result.html#a2ec287e78c62a691c3780748a1e0e94f',1,'UPopup_Result']]],
-  ['result_5ftime_30',['result_time',['../structFRequestReadResult.html#a6d2f33f3d09a93228c578306a8b294af',1,'FRequestReadResult::result_time'],['../classUPopup__Result.html#a14b725660bcae0e76e5f71b9064badfc',1,'UPopup_Result::Result_Time'],['../structFRequestListenResult.html#ab515ca1c23d24e29a30ea22a65e8b9ee',1,'FRequestListenResult::result_time']]],
+  ['result_5ftime_30',['result_time',['../structFRequestListenResult.html#ab515ca1c23d24e29a30ea22a65e8b9ee',1,'FRequestListenResult::result_time'],['../structFRequestReadResult.html#a6d2f33f3d09a93228c578306a8b294af',1,'FRequestReadResult::result_time'],['../classUPopup__Result.html#a14b725660bcae0e76e5f71b9064badfc',1,'UPopup_Result::Result_Time']]],
   ['result_5ftoprate_31',['Result_TopRate',['../classUPopup__Result.html#a9fd7243319715d3171361087db73550b',1,'UPopup_Result']]],
   ['resultstatwidget_32',['ResultStatWidget',['../classUSizeResultState.html#a38ad34780f8efbc9f204c4aef1d5865c',1,'USizeResultState']]],
   ['rich_5fkor_33',['Rich_Kor',['../classUWordWidget.html#aa3242b94119f9d1df5be48eba675d46f',1,'UWordWidget']]],
