@@ -4,17 +4,15 @@
 #include "Popup_WriteBoard.h"
 
 #include "GameLogging.h"
-#include "IImageWrapper.h"
-#include "IImageWrapperModule.h"
 #include "UImageButton.h"
 #include "UPopupManager.h"
 #include "UTextureButton.h"
-#include "Components/Button.h"
 #include "Components/Image.h"
-#include "Components/SizeBox.h"
 #include "Engine/Canvas.h"
 #include "Kismet/KismetRenderingLibrary.h"
 #include "WriteBoard.h"
+#include "Components/HorizontalBox.h"
+#include "Components/TextBlock.h"
 
 UPopup_WriteBoard::UPopup_WriteBoard(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer)
 {
@@ -23,6 +21,18 @@ UPopup_WriteBoard::UPopup_WriteBoard(const FObjectInitializer& ObjectInitializer
 	{
 		RT_Canvas = rtCanvasRef.Object;
 	}
+	
+	ConstructorHelpers::FObjectFinder<UTexture2D> dotLineImageRef(TEXT("/Script/Engine.Texture2D'/Game/CustomContents/UI/DrawingBoard/writepanel.writepanel'"));
+	if (dotLineImageRef.Succeeded())
+	{
+		dotLineTexture = dotLineImageRef.Object;
+	}
+	
+	ConstructorHelpers::FObjectFinder<UFont> guideTextFontRef(TEXT("/Script/Engine.Font'/Engine/EngineFonts/Roboto.Roboto'"));
+	if (guideTextFontRef.Succeeded())
+	{
+		guideTextFont = guideTextFontRef.Object;
+	}
 }
 
 void UPopup_WriteBoard::NativeOnInitialized()
@@ -30,15 +40,27 @@ void UPopup_WriteBoard::NativeOnInitialized()
 	Super::NativeOnInitialized();
 	
 	writeBoardObject = NewObject<UWriteBoard>();
+	tempFontInfo = Text_Guide->GetFont();
 	
 	// Button Event
 	Button_Save->OnButtonClickedEvent.AddDynamic(this, &UPopup_WriteBoard::SaveCanvas);
 	Button_Close->OnButtonClickedEvent.AddDynamic(this, &UPopup_WriteBoard::CloseDrawWindow);
-	Button_Right->OnClicked.AddDynamic(this, &UPopup_WriteBoard::OnButtonRightClicked);
-	Button_Left->OnClicked.AddDynamic(this, &UPopup_WriteBoard::OnButtonLeftClicked);
 	
-	Button_Left->SetVisibility(ESlateVisibility::Hidden);
-	Button_Left->SetVisibility(ESlateVisibility::Hidden);
+	Text_Guide->RemoveFromParent();
+}
+
+void UPopup_WriteBoard::InitPopup(int32 InQid, const FString& InAnswerKr)
+{
+	this->Qid = InQid;
+	this->AnswerKr = InAnswerKr;
+	
+	ClearWriteBoard();
+	AdjustLength();
+}
+
+FVector2D UPopup_WriteBoard::GetPrevMousePos()
+{
+	return prevMousePos;
 }
 
 FReply UPopup_WriteBoard::NativeOnMouseButtonDown(const FGeometry& InGeometry, const FPointerEvent& InMouseEvent)
@@ -96,38 +118,9 @@ FReply UPopup_WriteBoard::NativeOnMouseMove(const FGeometry& InGeometry, const F
 	return FReply::Handled();
 }
 
-void UPopup_WriteBoard::OnButtonRightClicked()
-{
-	SaveCanvas();
-	// if (AnswerIdx < AnswerKr.Num() - 1)
-	{
-		AnswerIdx++;
-	}
-	RefreshArrowButton();
-	AdjustLength();
-}
-
-void UPopup_WriteBoard::OnButtonLeftClicked()
-{
-	SaveCanvas();
-	if (0 < AnswerIdx)
-	{
-		AnswerIdx--;
-	}
-	RefreshArrowButton();
-	AdjustLength();
-}
-
-void UPopup_WriteBoard::RefreshArrowButton()
-{
-	// Button_Right->SetVisibility(AnswerIdx < AnswerKr.Num() - 1 ? ESlateVisibility::Visible : ESlateVisibility::Hidden);
-	Button_Left->SetVisibility(0 < AnswerIdx ? ESlateVisibility::Visible : ESlateVisibility::Hidden);
-}
-
 void UPopup_WriteBoard::AdjustLength()
 {
-	// TODO: 그냥 렌더 타겟 2d 새로 만들고 배열로 유지
-	// TODO: 예상 답변에 따른 WriteBoard 길이 조절
+	// 예상 답변에 따른 WriteBoard 길이 조절
 	float letterNum = AnswerKr.Len();
 	
 	// 1. Render Target 길이 늘리기
@@ -135,22 +128,41 @@ void UPopup_WriteBoard::AdjustLength()
 	
 	// 2. Image의 길이 늘리기
 	Image_Canvas->SetDesiredSizeOverride(FVector2D(stepLength * letterNum, stepLength));
-	// SizeBox_Border->SetWidthOverride(borderMinWidth + stepLength * letterNum);
 	
-	// SizeBox_Canvas->SetWidthOverride(stepLength * letterNum);
-	
-	// TODO: 예상 답변 힌트 생성
+	// 예상 답변 힌트 생성
+	for (const TCHAR letter : AnswerKr)
+	{
+		// 십자 점선 칸 이미지 추가
+		UImage* tempImage = NewObject<UImage>(this, UImage::StaticClass());
+		tempImage->SetBrushFromTexture(dotLineTexture);
+		
+		// 이미지 크기 설정
+		FSlateBrush tempImageBrush = tempImage->GetBrush();
+		tempImageBrush.SetImageSize(FVector2D(360));
+		tempImage->SetBrush(tempImageBrush);
+		
+		HorizontalBox_DotLine->AddChildToHorizontalBox(tempImage);
+		DotLineImages.Add(tempImage);
+		
+		// 글자 힌트 텍스트 추가
+		UTextBlock* tempText = NewObject<UTextBlock>(this, UTextBlock::StaticClass());
+		tempText->SetText(FText::FromString(FString::Printf(TEXT("%c"), letter)));
+		tempText->SetColorAndOpacity(FLinearColor(0.4f, 0.4f, 0.4f, 0.5f));
+		tempText->SetMinDesiredWidth(360.f);
+		tempText->SetJustification(ETextJustify::Type::Center);
+		
+		// 글자 폰트 크기 설정
+		tempText->SetFont(tempFontInfo);
+		
+		HorizontalBox_Guide->AddChildToHorizontalBox(tempText);
+		GuideTexts.Add(tempText);
+	}
 }
 
-void UPopup_WriteBoard::InitPopup(int32 InQid, const FString& InAnswerKr)
+void UPopup_WriteBoard::ClearWriteBoard()
 {
-	this->Qid = InQid;
-	this->AnswerKr = InAnswerKr;
-	
-	// if (AnswerKr.Num() > 1)
-	// 	Button_Right->SetVisibility(ESlateVisibility::Visible);
-	
-	AdjustLength();
+	HorizontalBox_DotLine->ClearChildren();
+	HorizontalBox_Guide->ClearChildren();
 }
 
 void UPopup_WriteBoard::CloseDrawWindow()
@@ -158,7 +170,7 @@ void UPopup_WriteBoard::CloseDrawWindow()
 	if (const auto PopupMgr = UPopupManager::Get(GetWorld()))
 	{
 		SaveCanvas();
-		
+		ClearCanvas();
 		PopupMgr->HideCurrentPopup(false);
 	}
 }
@@ -209,19 +221,15 @@ void UPopup_WriteBoard::DrawLines(FVector2D mousePos, FLinearColor drawColor)
 
 FVector2D UPopup_WriteBoard::GetLocalMousePos(FVector2D mousePos)
 {
-	// Get Absolute Local Pos
-	const FGeometry& geometry = Image_Canvas->GetCachedGeometry();
-	FVector2D localPos = geometry.AbsoluteToLocal(mousePos);
-	
-	// Get Canvas Size
-	const FVector2D canvasSize = geometry.GetLocalSize();
-	// Transform localPos(in Image_Canvas Coord) to RT_Canvas Coord && Clamp upto RT_Canvas' Border
-	localPos.X = FMath::Clamp((localPos.X / canvasSize.X * RT_Canvas->SizeX), 0.f, RT_Canvas->SizeX);
-	localPos.Y = FMath::Clamp((localPos.Y / canvasSize.Y * RT_Canvas->SizeY), 0.f, RT_Canvas->SizeY);
-	return localPos;
+	return writeBoardObject->GetLocalMousePos(Image_Canvas, RT_Canvas, mousePos);
 }
 
 void UPopup_WriteBoard::SaveCanvas()
 {
 	writeBoardObject->SaveCanvas(Qid, RT_Canvas);
+}
+
+void UPopup_WriteBoard::ClearCanvas()
+{
+	UKismetRenderingLibrary::ClearRenderTarget2D(this, RT_Canvas, RT_Canvas->ClearColor);
 }
