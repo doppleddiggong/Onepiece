@@ -81,9 +81,6 @@ namespace RequestAPI
     static FString users_register = FString("/users/register");
     static FString users_token = FString("/users/token");
     static FString users_me = FString("/users/me");
-
-    /// @brief Scenario 조회 엔드포인트입니다. GET /scenario/stages/redis/{index}/{dificulity}/{lang}
-    static FString scenario = FString("/scenario/stages/redis");
 	
     /// @brief Write 문제 조회 엔드포인트입니다. POST /writes/questions
     static FString writes_questions = FString("/writes/questions");

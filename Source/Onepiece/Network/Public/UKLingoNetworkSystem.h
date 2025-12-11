@@ -33,8 +33,6 @@ public:
 	void RequestUserToken(const FString& UserName, FResponseUserTokenDelegate InDelegate);
 	void RequestUserMe(FResponseUserMeDelegate InDelegate);
 	
-	void RequestOcrExtract(const TArray<FString>& ImagePathArray, FString InTargetText, FResponseOcrExtractDelegate InDelegate);
-
 	void RequestListenAudio(const FString& AudioText, FResponseListenAudioDelegate InDelegate);
 	void RequestSpeakingJudges( const FString& Question, const FString& AudioPath, FResponseSpeakingJudesDelegate InDelegate);
 
