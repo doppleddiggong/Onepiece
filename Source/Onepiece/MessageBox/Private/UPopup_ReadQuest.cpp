@@ -16,12 +16,7 @@
 #include "UWordItem.h"
 #include "Components/HorizontalBox.h"
 #include "Components/Spacer.h"
-#include "Decoders/VorbisAudioInfo.h"
-
 #include "GameFramework/PlayerController.h"
-
-
-class USpacer;
 
 void UPopup_ReadQuest::NativeConstruct()
 {
