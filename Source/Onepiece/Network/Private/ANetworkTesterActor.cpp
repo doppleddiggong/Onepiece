@@ -11,6 +11,7 @@
 #include "UDialogManager.h"
 #include "UPopupManager.h"
 #include "UPopup_Interview.h"
+#include "UPopup_InterviewHello.h"
 #include "UPopup_MsgBox.h"
 #include "UVoiceConversationSystem.h"
 #include "Engine/Engine.h"
@@ -228,7 +229,7 @@ void ANetworkTesterActor::OnResponseInterviewHello(FResponseInterviewHello& Resp
         PRINTLOG(TEXT("--- InterViewHello Questions SUCCESS ---"));
         ResponseData.PrintData();
 
-        if (auto Popup = UPopupManager::ShowPopupAs<UPopup_Interview>(GetWorld(), EPopupType::Interview))
+        if (auto Popup = UPopupManager::ShowPopupAs<UPopup_InterviewHello>(GetWorld(), EPopupType::InterviewHello))
         {
             Popup->InitPopup(ResponseData);
         }

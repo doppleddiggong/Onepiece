@@ -26,6 +26,7 @@ enum class EPopupType : uint8
 	WriteBoard			UMETA(DisplayName = "WriteBoard"),
 
 	Word				UMETA(DisplayName = "Word"),
+	InterviewHello		UMETA(DisplayName = "InterviewHello"),
 };
 
 UENUM(BlueprintType)

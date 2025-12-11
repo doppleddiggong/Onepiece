@@ -8,6 +8,7 @@
 #include "UKLingoNetworkSystem.h"
 #include "UPopupManager.h"
 #include "UPopup_Interview.h"
+#include "UPopup_InterviewHello.h"
 
 
 AMainLevelScriptActor::AMainLevelScriptActor()
@@ -19,11 +20,16 @@ void AMainLevelScriptActor::BeginPlay()
 {
 	Super::BeginPlay();
 
+	// 정상적으로 Interview 팝업 요청
 	this->RequestInterviewHello();
 }
 
 void AMainLevelScriptActor::RequestInterviewHello()
 {
+	// "오늘 보지 않기" 체크
+	if (UPopup_InterviewHello::ShouldSkipInterviewToday(GetWorld()))
+		return;
+
 	if (auto KLingoNetwork = UKLingoNetworkSystem::Get(GetWorld()))
 	{
 		KLingoNetwork->RequestInterviewHello( FResponseInterviewHelloDelegate::CreateUObject(this, &AMainLevelScriptActor::OnResponseInterviewHello) );
@@ -38,7 +44,7 @@ void AMainLevelScriptActor::OnResponseInterviewHello(FResponseInterviewHello& Re
 {
 	if (bWasSuccessful)
 	{
-		if (auto Popup = UPopupManager::ShowPopupAs<UPopup_Interview>(GetWorld(), EPopupType::Interview))
+		if (auto Popup = UPopupManager::ShowPopupAs<UPopup_InterviewHello>(GetWorld(), EPopupType::InterviewHello))
 			Popup->InitPopup(ResponseData);
 	}
 	else
