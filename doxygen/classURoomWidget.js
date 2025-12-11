@@ -8,5 +8,6 @@ var classURoomWidget =
     [ "Border_State", "classURoomWidget.html#af05103de6820ada1ed04fe4e8055cdfb", null ],
     [ "LoadingSpinner", "classURoomWidget.html#aa398bef60a92993e8feb66efd43fb61a", null ],
     [ "SpinnerRotationSpeed", "classURoomWidget.html#a3766a9e51c1bc6e5543b7cdd68679b95", null ],
-    [ "Txt_RoomId", "classURoomWidget.html#afe1fa274946b18d8ebe2464ffe1033f3", null ]
+    [ "Txt_RoomId", "classURoomWidget.html#afe1fa274946b18d8ebe2464ffe1033f3", null ],
+    [ "Txt_RoomLevel", "classURoomWidget.html#a6e9afa1f11a3de5d4c01ce87bdd416c5", null ]
 ];

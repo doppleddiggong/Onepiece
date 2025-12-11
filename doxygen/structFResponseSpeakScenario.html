@@ -144,7 +144,7 @@ Public 속성</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">상세한 설명</h2>
 <div class="textblock"><p>Speak 시나리오 응답 구조체입니다. </p>
 
-<p class="definition"><a class="el" href="NetworkData_8h_source.html">NetworkData.h</a> 파일의 <a class="el" href="NetworkData_8h_source.html#l01007">1007</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="NetworkData_8h_source.html">NetworkData.h</a> 파일의 <a class="el" href="NetworkData_8h_source.html#l01009">1009</a> 번째 라인에서 정의되었습니다.</p>
 </div><h2 class="groupheader">멤버 함수 문서화</h2>
 <a id="a0a3deb3a7bc03b42b48e6294830b6164" name="a0a3deb3a7bc03b42b48e6294830b6164"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0a3deb3a7bc03b42b48e6294830b6164">&#9670;&#160;</a></span>PrintData()</h2>
@@ -163,17 +163,17 @@ Public 속성</h2></td></tr>
 
 <p>디버그 로그에 응답 내용을 출력합니다. </p>
 
-<p class="definition"><a class="el" href="NetworkData_8cpp_source.html">NetworkData.cpp</a> 파일의 <a class="el" href="NetworkData_8cpp_source.html#l01004">1004</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno"> 1005</span>{</div>
-<div class="line"><span class="lineno"> 1006</span>    FString OutputString;</div>
-<div class="line"><span class="lineno"> 1007</span>    FJsonObjectConverter::UStructToJsonObjectString(</div>
-<div class="line"><span class="lineno"> 1008</span>        *<span class="keyword">this</span>,</div>
-<div class="line"><span class="lineno"> 1009</span>        OutputString,</div>
-<div class="line"><span class="lineno"> 1010</span>        0,</div>
-<div class="line"><span class="lineno"> 1011</span>        0</div>
-<div class="line"><span class="lineno"> 1012</span>    );</div>
-<div class="line"><span class="lineno"> 1013</span>    <a class="code hl_define" href="GameLogging_8h.html#ad8e2ccc8c20a63e091e0111987b4d3bc">NETWORK_LOG</a>( TEXT(<span class="stringliteral">&quot;[RES] %s&quot;</span>), *OutputString);</div>
-<div class="line"><span class="lineno"> 1014</span>}</div>
+<p class="definition"><a class="el" href="NetworkData_8cpp_source.html">NetworkData.cpp</a> 파일의 <a class="el" href="NetworkData_8cpp_source.html#l01009">1009</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno"> 1010</span>{</div>
+<div class="line"><span class="lineno"> 1011</span>    FString OutputString;</div>
+<div class="line"><span class="lineno"> 1012</span>    FJsonObjectConverter::UStructToJsonObjectString(</div>
+<div class="line"><span class="lineno"> 1013</span>        *<span class="keyword">this</span>,</div>
+<div class="line"><span class="lineno"> 1014</span>        OutputString,</div>
+<div class="line"><span class="lineno"> 1015</span>        0,</div>
+<div class="line"><span class="lineno"> 1016</span>        0</div>
+<div class="line"><span class="lineno"> 1017</span>    );</div>
+<div class="line"><span class="lineno"> 1018</span>    <a class="code hl_define" href="GameLogging_8h.html#ad8e2ccc8c20a63e091e0111987b4d3bc">NETWORK_LOG</a>( TEXT(<span class="stringliteral">&quot;[RES] %s&quot;</span>), *OutputString);</div>
+<div class="line"><span class="lineno"> 1019</span>}</div>
 <div class="ttc" id="aGameLogging_8h_html_ad8e2ccc8c20a63e091e0111987b4d3bc"><div class="ttname"><a href="GameLogging_8h.html#ad8e2ccc8c20a63e091e0111987b4d3bc">NETWORK_LOG</a></div><div class="ttdeci">#define NETWORK_LOG(fmt,...)</div></div>
 </div><!-- fragment -->
 <p class="reference">다음을 참조함 :  <a class="el" href="GameLogging_8h.html#ad8e2ccc8c20a63e091e0111987b4d3bc">NETWORK_LOG</a>.</p>
@@ -207,63 +207,63 @@ Public 속성</h2></td></tr>
 
 <p>HTTP 응답을 파싱해 구조체를 채웁니다. </p>
 
-<p class="definition"><a class="el" href="NetworkData_8cpp_source.html">NetworkData.cpp</a> 파일의 <a class="el" href="NetworkData_8cpp_source.html#l00956">956</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  957</span>{</div>
-<div class="line"><span class="lineno">  958</span>    <span class="keywordflow">if</span> (!Response.IsValid())</div>
-<div class="line"><span class="lineno">  959</span>    {</div>
-<div class="line"><span class="lineno">  960</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  961</span>    }</div>
-<div class="line"><span class="lineno">  962</span> </div>
-<div class="line"><span class="lineno">  963</span>    FString JsonString = Response-&gt;GetContentAsString();</div>
-<div class="line"><span class="lineno">  964</span>    TSharedPtr&lt;FJsonObject&gt; JsonObject;</div>
-<div class="line"><span class="lineno">  965</span>    TSharedRef&lt;TJsonReader&lt;&gt;&gt; Reader = TJsonReaderFactory&lt;&gt;::Create(JsonString);</div>
-<div class="line"><span class="lineno">  966</span> </div>
-<div class="line"><span class="lineno">  967</span>    <span class="keywordflow">if</span> (FJsonSerializer::Deserialize(Reader, JsonObject) &amp;&amp; JsonObject.IsValid())</div>
-<div class="line"><span class="lineno">  968</span>    {</div>
-<div class="line"><span class="lineno">  969</span>        <a class="code hl_variable" href="structFResponseSpeakScenario.html#ab47897f53f4a152e64dbd1b65c22f504">index</a> = JsonObject-&gt;GetIntegerField(TEXT(<span class="stringliteral">&quot;index&quot;</span>));</div>
-<div class="line"><span class="lineno">  970</span>        <a class="code hl_variable" href="structFResponseSpeakScenario.html#a4889339710c6ce4562550b125f909bf2">dificulity</a> = JsonObject-&gt;GetIntegerField(TEXT(<span class="stringliteral">&quot;difficulty&quot;</span>));</div>
-<div class="line"><span class="lineno">  971</span>        <a class="code hl_variable" href="structFResponseSpeakScenario.html#ad8a474a8868d134dbb040c70e8c51f12">room_id</a> = JsonObject-&gt;GetIntegerField(TEXT(<span class="stringliteral">&quot;room_id&quot;</span>));</div>
-<div class="line"><span class="lineno">  972</span> </div>
-<div class="line"><span class="lineno">  973</span>        <span class="comment">// question 배열 파싱</span></div>
-<div class="line"><span class="lineno">  974</span>        <span class="keyword">const</span> TArray&lt;TSharedPtr&lt;FJsonValue&gt;&gt;* QuestionArray;</div>
-<div class="line"><span class="lineno">  975</span>        <span class="keywordflow">if</span> (JsonObject-&gt;TryGetArrayField(TEXT(<span class="stringliteral">&quot;question&quot;</span>), QuestionArray))</div>
-<div class="line"><span class="lineno">  976</span>        {</div>
-<div class="line"><span class="lineno">  977</span>            <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; Item : *QuestionArray)</div>
-<div class="line"><span class="lineno">  978</span>            {</div>
-<div class="line"><span class="lineno">  979</span>                TSharedPtr&lt;FJsonObject&gt; QuestionObj = Item-&gt;AsObject();</div>
-<div class="line"><span class="lineno">  980</span>                <span class="keywordflow">if</span> (QuestionObj.IsValid())</div>
-<div class="line"><span class="lineno">  981</span>                {</div>
-<div class="line"><span class="lineno">  982</span>                    <a class="code hl_struct" href="structFSpeakQuestionData.html">FSpeakQuestionData</a> QuestionItem;</div>
-<div class="line"><span class="lineno">  983</span> </div>
-<div class="line"><span class="lineno">  984</span>                    <span class="comment">// word_data 파싱</span></div>
-<div class="line"><span class="lineno">  985</span>                    <span class="keywordflow">if</span> (QuestionObj-&gt;HasTypedField&lt;EJson::Object&gt;(TEXT(<span class="stringliteral">&quot;word_data&quot;</span>)))</div>
-<div class="line"><span class="lineno">  986</span>                    {</div>
-<div class="line"><span class="lineno">  987</span>                        TSharedPtr&lt;FJsonObject&gt; WordDataObj = QuestionObj-&gt;GetObjectField(TEXT(<span class="stringliteral">&quot;word_data&quot;</span>));</div>
-<div class="line"><span class="lineno">  988</span>                        FJsonObjectConverter::JsonObjectToUStruct(WordDataObj.ToSharedRef(), FWordData::StaticStruct(), &amp;QuestionItem.<a class="code hl_variable" href="structFSpeakQuestionData.html#ae7da0fd77a001f5fb2ab8765aeb5fcc1">word_data</a>);</div>
-<div class="line"><span class="lineno">  989</span>                    }</div>
-<div class="line"><span class="lineno">  990</span> </div>
-<div class="line"><span class="lineno">  991</span>                    <span class="comment">// answer 파싱</span></div>
-<div class="line"><span class="lineno">  992</span>                    QuestionItem.<a class="code hl_variable" href="structFSpeakQuestionData.html#a6fff1da93f34eec4a11ab8945f667710">answer</a> = QuestionObj-&gt;GetStringField(TEXT(<span class="stringliteral">&quot;answer&quot;</span>));</div>
-<div class="line"><span class="lineno">  993</span> </div>
-<div class="line"><span class="lineno">  994</span>                    <span class="comment">// answer_kor 파싱</span></div>
-<div class="line"><span class="lineno">  995</span>                    QuestionItem.<a class="code hl_variable" href="structFSpeakQuestionData.html#a8a0fe0e5048bd07279cecf6c797c9e71">answer_kor</a> = QuestionObj-&gt;GetStringField(TEXT(<span class="stringliteral">&quot;answer_kor&quot;</span>));</div>
-<div class="line"><span class="lineno">  996</span> </div>
-<div class="line"><span class="lineno">  997</span>                    <a class="code hl_variable" href="structFResponseSpeakScenario.html#a25ab4b026009e7512912e9651f6b2d8b">question</a>.Add(QuestionItem);</div>
-<div class="line"><span class="lineno">  998</span>                }</div>
-<div class="line"><span class="lineno">  999</span>            }</div>
-<div class="line"><span class="lineno"> 1000</span>        }</div>
-<div class="line"><span class="lineno"> 1001</span>    }</div>
-<div class="line"><span class="lineno"> 1002</span>}</div>
-<div class="ttc" id="astructFResponseSpeakScenario_html_a25ab4b026009e7512912e9651f6b2d8b"><div class="ttname"><a href="structFResponseSpeakScenario.html#a25ab4b026009e7512912e9651f6b2d8b">FResponseSpeakScenario::question</a></div><div class="ttdeci">TArray&lt; FSpeakQuestionData &gt; question</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l01021">NetworkData.h:1021</a></div></div>
-<div class="ttc" id="astructFResponseSpeakScenario_html_a4889339710c6ce4562550b125f909bf2"><div class="ttname"><a href="structFResponseSpeakScenario.html#a4889339710c6ce4562550b125f909bf2">FResponseSpeakScenario::dificulity</a></div><div class="ttdeci">int32 dificulity</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l01015">NetworkData.h:1015</a></div></div>
-<div class="ttc" id="astructFResponseSpeakScenario_html_ab47897f53f4a152e64dbd1b65c22f504"><div class="ttname"><a href="structFResponseSpeakScenario.html#ab47897f53f4a152e64dbd1b65c22f504">FResponseSpeakScenario::index</a></div><div class="ttdeci">int32 index</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l01012">NetworkData.h:1012</a></div></div>
-<div class="ttc" id="astructFResponseSpeakScenario_html_ad8a474a8868d134dbb040c70e8c51f12"><div class="ttname"><a href="structFResponseSpeakScenario.html#ad8a474a8868d134dbb040c70e8c51f12">FResponseSpeakScenario::room_id</a></div><div class="ttdeci">int32 room_id</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l01018">NetworkData.h:1018</a></div></div>
-<div class="ttc" id="astructFSpeakQuestionData_html"><div class="ttname"><a href="structFSpeakQuestionData.html">FSpeakQuestionData</a></div><div class="ttdoc">Speak 질문 데이터 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00989">NetworkData.h:990</a></div></div>
-<div class="ttc" id="astructFSpeakQuestionData_html_a6fff1da93f34eec4a11ab8945f667710"><div class="ttname"><a href="structFSpeakQuestionData.html#a6fff1da93f34eec4a11ab8945f667710">FSpeakQuestionData::answer</a></div><div class="ttdeci">FString answer</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00997">NetworkData.h:997</a></div></div>
-<div class="ttc" id="astructFSpeakQuestionData_html_a8a0fe0e5048bd07279cecf6c797c9e71"><div class="ttname"><a href="structFSpeakQuestionData.html#a8a0fe0e5048bd07279cecf6c797c9e71">FSpeakQuestionData::answer_kor</a></div><div class="ttdeci">FString answer_kor</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l01000">NetworkData.h:1000</a></div></div>
-<div class="ttc" id="astructFSpeakQuestionData_html_ae7da0fd77a001f5fb2ab8765aeb5fcc1"><div class="ttname"><a href="structFSpeakQuestionData.html#ae7da0fd77a001f5fb2ab8765aeb5fcc1">FSpeakQuestionData::word_data</a></div><div class="ttdeci">FWordData word_data</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00994">NetworkData.h:994</a></div></div>
+<p class="definition"><a class="el" href="NetworkData_8cpp_source.html">NetworkData.cpp</a> 파일의 <a class="el" href="NetworkData_8cpp_source.html#l00961">961</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  962</span>{</div>
+<div class="line"><span class="lineno">  963</span>    <span class="keywordflow">if</span> (!Response.IsValid())</div>
+<div class="line"><span class="lineno">  964</span>    {</div>
+<div class="line"><span class="lineno">  965</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  966</span>    }</div>
+<div class="line"><span class="lineno">  967</span> </div>
+<div class="line"><span class="lineno">  968</span>    FString JsonString = Response-&gt;GetContentAsString();</div>
+<div class="line"><span class="lineno">  969</span>    TSharedPtr&lt;FJsonObject&gt; JsonObject;</div>
+<div class="line"><span class="lineno">  970</span>    TSharedRef&lt;TJsonReader&lt;&gt;&gt; Reader = TJsonReaderFactory&lt;&gt;::Create(JsonString);</div>
+<div class="line"><span class="lineno">  971</span> </div>
+<div class="line"><span class="lineno">  972</span>    <span class="keywordflow">if</span> (FJsonSerializer::Deserialize(Reader, JsonObject) &amp;&amp; JsonObject.IsValid())</div>
+<div class="line"><span class="lineno">  973</span>    {</div>
+<div class="line"><span class="lineno">  974</span>        <a class="code hl_variable" href="structFResponseSpeakScenario.html#ab47897f53f4a152e64dbd1b65c22f504">index</a> = JsonObject-&gt;GetIntegerField(TEXT(<span class="stringliteral">&quot;index&quot;</span>));</div>
+<div class="line"><span class="lineno">  975</span>        <a class="code hl_variable" href="structFResponseSpeakScenario.html#a4889339710c6ce4562550b125f909bf2">dificulity</a> = JsonObject-&gt;GetIntegerField(TEXT(<span class="stringliteral">&quot;difficulty&quot;</span>));</div>
+<div class="line"><span class="lineno">  976</span>        <a class="code hl_variable" href="structFResponseSpeakScenario.html#ad8a474a8868d134dbb040c70e8c51f12">room_id</a> = JsonObject-&gt;GetIntegerField(TEXT(<span class="stringliteral">&quot;room_id&quot;</span>));</div>
+<div class="line"><span class="lineno">  977</span> </div>
+<div class="line"><span class="lineno">  978</span>        <span class="comment">// question 배열 파싱</span></div>
+<div class="line"><span class="lineno">  979</span>        <span class="keyword">const</span> TArray&lt;TSharedPtr&lt;FJsonValue&gt;&gt;* QuestionArray;</div>
+<div class="line"><span class="lineno">  980</span>        <span class="keywordflow">if</span> (JsonObject-&gt;TryGetArrayField(TEXT(<span class="stringliteral">&quot;question&quot;</span>), QuestionArray))</div>
+<div class="line"><span class="lineno">  981</span>        {</div>
+<div class="line"><span class="lineno">  982</span>            <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; Item : *QuestionArray)</div>
+<div class="line"><span class="lineno">  983</span>            {</div>
+<div class="line"><span class="lineno">  984</span>                TSharedPtr&lt;FJsonObject&gt; QuestionObj = Item-&gt;AsObject();</div>
+<div class="line"><span class="lineno">  985</span>                <span class="keywordflow">if</span> (QuestionObj.IsValid())</div>
+<div class="line"><span class="lineno">  986</span>                {</div>
+<div class="line"><span class="lineno">  987</span>                    <a class="code hl_struct" href="structFSpeakQuestionData.html">FSpeakQuestionData</a> QuestionItem;</div>
+<div class="line"><span class="lineno">  988</span> </div>
+<div class="line"><span class="lineno">  989</span>                    <span class="comment">// word_data 파싱</span></div>
+<div class="line"><span class="lineno">  990</span>                    <span class="keywordflow">if</span> (QuestionObj-&gt;HasTypedField&lt;EJson::Object&gt;(TEXT(<span class="stringliteral">&quot;word_data&quot;</span>)))</div>
+<div class="line"><span class="lineno">  991</span>                    {</div>
+<div class="line"><span class="lineno">  992</span>                        TSharedPtr&lt;FJsonObject&gt; WordDataObj = QuestionObj-&gt;GetObjectField(TEXT(<span class="stringliteral">&quot;word_data&quot;</span>));</div>
+<div class="line"><span class="lineno">  993</span>                        FJsonObjectConverter::JsonObjectToUStruct(WordDataObj.ToSharedRef(), FWordData::StaticStruct(), &amp;QuestionItem.<a class="code hl_variable" href="structFSpeakQuestionData.html#ae7da0fd77a001f5fb2ab8765aeb5fcc1">word_data</a>);</div>
+<div class="line"><span class="lineno">  994</span>                    }</div>
+<div class="line"><span class="lineno">  995</span> </div>
+<div class="line"><span class="lineno">  996</span>                    <span class="comment">// answer 파싱</span></div>
+<div class="line"><span class="lineno">  997</span>                    QuestionItem.<a class="code hl_variable" href="structFSpeakQuestionData.html#a6fff1da93f34eec4a11ab8945f667710">answer</a> = QuestionObj-&gt;GetStringField(TEXT(<span class="stringliteral">&quot;answer&quot;</span>));</div>
+<div class="line"><span class="lineno">  998</span> </div>
+<div class="line"><span class="lineno">  999</span>                    <span class="comment">// answer_kor 파싱</span></div>
+<div class="line"><span class="lineno"> 1000</span>                    QuestionItem.<a class="code hl_variable" href="structFSpeakQuestionData.html#a8a0fe0e5048bd07279cecf6c797c9e71">answer_kor</a> = QuestionObj-&gt;GetStringField(TEXT(<span class="stringliteral">&quot;answer_kor&quot;</span>));</div>
+<div class="line"><span class="lineno"> 1001</span> </div>
+<div class="line"><span class="lineno"> 1002</span>                    <a class="code hl_variable" href="structFResponseSpeakScenario.html#a25ab4b026009e7512912e9651f6b2d8b">question</a>.Add(QuestionItem);</div>
+<div class="line"><span class="lineno"> 1003</span>                }</div>
+<div class="line"><span class="lineno"> 1004</span>            }</div>
+<div class="line"><span class="lineno"> 1005</span>        }</div>
+<div class="line"><span class="lineno"> 1006</span>    }</div>
+<div class="line"><span class="lineno"> 1007</span>}</div>
+<div class="ttc" id="astructFResponseSpeakScenario_html_a25ab4b026009e7512912e9651f6b2d8b"><div class="ttname"><a href="structFResponseSpeakScenario.html#a25ab4b026009e7512912e9651f6b2d8b">FResponseSpeakScenario::question</a></div><div class="ttdeci">TArray&lt; FSpeakQuestionData &gt; question</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l01023">NetworkData.h:1023</a></div></div>
+<div class="ttc" id="astructFResponseSpeakScenario_html_a4889339710c6ce4562550b125f909bf2"><div class="ttname"><a href="structFResponseSpeakScenario.html#a4889339710c6ce4562550b125f909bf2">FResponseSpeakScenario::dificulity</a></div><div class="ttdeci">int32 dificulity</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l01017">NetworkData.h:1017</a></div></div>
+<div class="ttc" id="astructFResponseSpeakScenario_html_ab47897f53f4a152e64dbd1b65c22f504"><div class="ttname"><a href="structFResponseSpeakScenario.html#ab47897f53f4a152e64dbd1b65c22f504">FResponseSpeakScenario::index</a></div><div class="ttdeci">int32 index</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l01014">NetworkData.h:1014</a></div></div>
+<div class="ttc" id="astructFResponseSpeakScenario_html_ad8a474a8868d134dbb040c70e8c51f12"><div class="ttname"><a href="structFResponseSpeakScenario.html#ad8a474a8868d134dbb040c70e8c51f12">FResponseSpeakScenario::room_id</a></div><div class="ttdeci">int32 room_id</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l01020">NetworkData.h:1020</a></div></div>
+<div class="ttc" id="astructFSpeakQuestionData_html"><div class="ttname"><a href="structFSpeakQuestionData.html">FSpeakQuestionData</a></div><div class="ttdoc">Speak 질문 데이터 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00991">NetworkData.h:992</a></div></div>
+<div class="ttc" id="astructFSpeakQuestionData_html_a6fff1da93f34eec4a11ab8945f667710"><div class="ttname"><a href="structFSpeakQuestionData.html#a6fff1da93f34eec4a11ab8945f667710">FSpeakQuestionData::answer</a></div><div class="ttdeci">FString answer</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00999">NetworkData.h:999</a></div></div>
+<div class="ttc" id="astructFSpeakQuestionData_html_a8a0fe0e5048bd07279cecf6c797c9e71"><div class="ttname"><a href="structFSpeakQuestionData.html#a8a0fe0e5048bd07279cecf6c797c9e71">FSpeakQuestionData::answer_kor</a></div><div class="ttdeci">FString answer_kor</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l01002">NetworkData.h:1002</a></div></div>
+<div class="ttc" id="astructFSpeakQuestionData_html_ae7da0fd77a001f5fb2ab8765aeb5fcc1"><div class="ttname"><a href="structFSpeakQuestionData.html#ae7da0fd77a001f5fb2ab8765aeb5fcc1">FSpeakQuestionData::word_data</a></div><div class="ttdeci">FWordData word_data</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00996">NetworkData.h:996</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="NetworkData_8h_source.html#l00997">FSpeakQuestionData::answer</a>, <a class="el" href="NetworkData_8h_source.html#l01000">FSpeakQuestionData::answer_kor</a>, <a class="el" href="NetworkData_8h_source.html#l01015">dificulity</a>, <a class="el" href="NetworkData_8h_source.html#l01012">index</a>, <a class="el" href="NetworkData_8h_source.html#l01021">question</a>, <a class="el" href="NetworkData_8h_source.html#l01018">room_id</a>, <a class="el" href="NetworkData_8h_source.html#l00994">FSpeakQuestionData::word_data</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="NetworkData_8h_source.html#l00999">FSpeakQuestionData::answer</a>, <a class="el" href="NetworkData_8h_source.html#l01002">FSpeakQuestionData::answer_kor</a>, <a class="el" href="NetworkData_8h_source.html#l01017">dificulity</a>, <a class="el" href="NetworkData_8h_source.html#l01014">index</a>, <a class="el" href="NetworkData_8h_source.html#l01023">question</a>, <a class="el" href="NetworkData_8h_source.html#l01020">room_id</a>, <a class="el" href="NetworkData_8h_source.html#l00996">FSpeakQuestionData::word_data</a>.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l01021">UKLingoNetworkSystem::RequestSpeakScenario()</a>.</p>
 <div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -289,9 +289,9 @@ Public 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="NetworkData_8h_source.html">NetworkData.h</a> 파일의 <a class="el" href="NetworkData_8h_source.html#l01015">1015</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="NetworkData_8h_source.html">NetworkData.h</a> 파일의 <a class="el" href="NetworkData_8h_source.html#l01017">1017</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="NetworkData_8cpp_source.html#l00956">SetFromHttpResponse()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="NetworkData_8cpp_source.html#l00961">SetFromHttpResponse()</a>.</p>
 
 </div>
 </div>
@@ -307,9 +307,9 @@ Public 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="NetworkData_8h_source.html">NetworkData.h</a> 파일의 <a class="el" href="NetworkData_8h_source.html#l01012">1012</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="NetworkData_8h_source.html">NetworkData.h</a> 파일의 <a class="el" href="NetworkData_8h_source.html#l01014">1014</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="NetworkData_8cpp_source.html#l00956">SetFromHttpResponse()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="NetworkData_8cpp_source.html#l00961">SetFromHttpResponse()</a>.</p>
 
 </div>
 </div>
@@ -325,9 +325,9 @@ Public 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="NetworkData_8h_source.html">NetworkData.h</a> 파일의 <a class="el" href="NetworkData_8h_source.html#l01021">1021</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="NetworkData_8h_source.html">NetworkData.h</a> 파일의 <a class="el" href="NetworkData_8h_source.html#l01023">1023</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="NetworkData_8cpp_source.html#l00956">SetFromHttpResponse()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="NetworkData_8cpp_source.html#l00961">SetFromHttpResponse()</a>.</p>
 
 </div>
 </div>
@@ -343,9 +343,9 @@ Public 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="NetworkData_8h_source.html">NetworkData.h</a> 파일의 <a class="el" href="NetworkData_8h_source.html#l01018">1018</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="NetworkData_8h_source.html">NetworkData.h</a> 파일의 <a class="el" href="NetworkData_8h_source.html#l01020">1020</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="NetworkData_8cpp_source.html#l00956">SetFromHttpResponse()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="NetworkData_8cpp_source.html#l00961">SetFromHttpResponse()</a>.</p>
 
 </div>
 </div>
@@ -359,7 +359,7 @@ Public 속성</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="structFResponseSpeakScenario.html">FResponseSpeakScenario</a></li>
-    <li class="footer">생성시간 : 목 12월 11 2025 00:15:30, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 목 12월 11 2025 06:27:53, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

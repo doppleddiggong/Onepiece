@@ -1,18 +1,21 @@
 var classUPopup__ReadQuest =
 [
-    [ "InitListen", "classUPopup__ReadQuest.html#a9dfe5159312b55b67809443e00d020e8", null ],
+    [ "ConvertWordDataToRichText", "classUPopup__ReadQuest.html#a8e0124163d2d989731fb74cff601e304", null ],
     [ "InitQuestInfo", "classUPopup__ReadQuest.html#a101bd5521b4278ac0cec0d5361d63b58", null ],
     [ "InitRead", "classUPopup__ReadQuest.html#a413aaac10f29c3e2bd6d72186a12d53d", null ],
-    [ "ListenAudio", "classUPopup__ReadQuest.html#ac3c28f1229cf6d52a6c9ca511086a0f8", null ],
+    [ "InitWordList", "classUPopup__ReadQuest.html#a4af88c652e5621ca781a45bfe392488d", null ],
+    [ "NativeConstruct", "classUPopup__ReadQuest.html#ac84b2f61529c5dba7bd769f9650a9555", null ],
     [ "NativeTick", "classUPopup__ReadQuest.html#a750c1a854f68ca16faa069645531abd6", null ],
     [ "OnClickClose", "classUPopup__ReadQuest.html#a4b8d0620aabf1f83bd80a653e2b2fc62", null ],
+    [ "OnClickHyperlink", "classUPopup__ReadQuest.html#a419bd3d27fb3421077baa361ee938f6e", null ],
     [ "OnResponseListenAudio", "classUPopup__ReadQuest.html#adbfb30bcba4d3d14463d8a8472d8256e", null ],
     [ "OpenAnimation", "classUPopup__ReadQuest.html#a2c3d2b47f8255c0172cf9f218790fcc8", null ],
+    [ "RequestListenAudio", "classUPopup__ReadQuest.html#a96dba17782cb0e50ce2041d8389079f3", null ],
     [ "UpdateAnimation", "classUPopup__ReadQuest.html#a830a08b15d00e418f351f096fc5a8790", null ],
     [ "bIsOpenAnim", "classUPopup__ReadQuest.html#a807985dccb3305b1004c611401b7b551", null ],
     [ "bIsRequest", "classUPopup__ReadQuest.html#acbb3ac7db4f11e6586bfd50cc8c69bd9", null ],
-    [ "Btn_Exit", "classUPopup__ReadQuest.html#a2b450209b068e9df27820659129ddd6e", null ],
-    [ "ListenData", "classUPopup__ReadQuest.html#ae994eb6e6365772bb70f4eddc7755c84", null ],
+    [ "Btn_Confirm", "classUPopup__ReadQuest.html#a1af7a8d8ea21cac1fee5df3ca42f4451", null ],
+    [ "CachedPhonemeData", "classUPopup__ReadQuest.html#a78b124b6fdb57507376eebf2c1cd0036", null ],
     [ "OpenDuration", "classUPopup__ReadQuest.html#a5a4c2b75560a3e2d07ed3aa52837278e", null ],
     [ "OpenEaseExponent", "classUPopup__ReadQuest.html#afe75f5ef94f97fbcc8ea1ad9e801524c", null ],
     [ "OpenElapsedTime", "classUPopup__ReadQuest.html#a6124aff28b2b2a0b810bb693ebcd81ad", null ],
@@ -22,5 +25,8 @@ var classUPopup__ReadQuest =
     [ "PopupType", "classUPopup__ReadQuest.html#a7e537a0dd751df11990ed46947f09d42", null ],
     [ "QuestType", "classUPopup__ReadQuest.html#a8c39da7d222e4a2f82218e5d14afec8f", null ],
     [ "ReadData", "classUPopup__ReadQuest.html#ac61d430eaf1de1dcbed3b4aa9537c16d", null ],
-    [ "WordWidget", "classUPopup__ReadQuest.html#a43653d6e41bf87fb49b69e6820390abe", null ]
+    [ "Rich_Text", "classUPopup__ReadQuest.html#a45bf2800d9c7f3f50d4be6d6e097b0e4", null ],
+    [ "Txt_SubTitle", "classUPopup__ReadQuest.html#a7f0208c739ff4a616df4c619fcef6a79", null ],
+    [ "WordBox", "classUPopup__ReadQuest.html#add792e434ca4614c561f3e5b94b71fad", null ],
+    [ "WordItemClass", "classUPopup__ReadQuest.html#a3cc7b921e4e2dd37799ce89f79b2b05d", null ]
 ];

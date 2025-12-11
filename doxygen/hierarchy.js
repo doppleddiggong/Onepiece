@@ -231,6 +231,7 @@ var hierarchy =
       [ "UToastWidget", "classUToastWidget.html", null ],
       [ "UTutorMessage", "classUTutorMessage.html", null ],
       [ "UWordButton", "classUWordButton.html", null ],
+      [ "UWordItem", "classUWordItem.html", null ],
       [ "UWordWidget", "classUWordWidget.html", null ]
     ] ],
     [ "UWorldSubsystem", null, [

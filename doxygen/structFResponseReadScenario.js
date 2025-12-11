@@ -1,5 +1,6 @@
 var structFResponseReadScenario =
 [
+    [ "GetCorrectAnswerData", "structFResponseReadScenario.html#a3e12d5d43f688566fb177a5e9ce86ab5", null ],
     [ "GetWord1List", "structFResponseReadScenario.html#ab55c01e8c82909efec86ee2275f484c2", null ],
     [ "GetWord2List", "structFResponseReadScenario.html#a7949f46c8ba44d37bd870755c5825406", null ],
     [ "PrintData", "structFResponseReadScenario.html#a78667edb5919e6528cccfeaf0a67cbd3", null ],

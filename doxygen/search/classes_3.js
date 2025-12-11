@@ -73,5 +73,6 @@ var searchData=
   ['uvoicefunctionlibrary_70',['UVoiceFunctionLibrary',['../classUVoiceFunctionLibrary.html',1,'']]],
   ['uwebsocketsystem_71',['UWebSocketSystem',['../classUWebSocketSystem.html',1,'']]],
   ['uwordbutton_72',['UWordButton',['../classUWordButton.html',1,'']]],
-  ['uwordwidget_73',['UWordWidget',['../classUWordWidget.html',1,'']]]
+  ['uworditem_73',['UWordItem',['../classUWordItem.html',1,'']]],
+  ['uwordwidget_74',['UWordWidget',['../classUWordWidget.html',1,'']]]
 ];

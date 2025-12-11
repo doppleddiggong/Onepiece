@@ -189,5 +189,6 @@ var annotated_dup =
     [ "UVoiceFunctionLibrary", "classUVoiceFunctionLibrary.html", "classUVoiceFunctionLibrary" ],
     [ "UWebSocketSystem", "classUWebSocketSystem.html", "classUWebSocketSystem" ],
     [ "UWordButton", "classUWordButton.html", "classUWordButton" ],
+    [ "UWordItem", "classUWordItem.html", "classUWordItem" ],
     [ "UWordWidget", "classUWordWidget.html", "classUWordWidget" ]
 ];
