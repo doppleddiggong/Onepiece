@@ -18,6 +18,7 @@
 #include "Components/ScrollBox.h"
 #include "Components/TextBlock.h"
 #include "Blueprint/UserWidget.h"
+#include "Components/Spacer.h"
 #include "Components/VerticalBox.h"
 
 void UPopup_Result::NativeDestruct()
@@ -148,6 +149,12 @@ void UPopup_Result::InitWrongList()
 				
 				// HorizontalBox에 추가
 				VerticalBox->AddChild(AnswerItem);
+
+				{
+					USpacer* Spacer = NewObject<USpacer>(VerticalBox);
+					Spacer->SetSize(FVector2D(1.f, 10.f));
+					VerticalBox->AddChild(Spacer);
+				}
 			}
 		}
 	}
