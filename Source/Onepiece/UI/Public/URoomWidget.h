@@ -30,7 +30,10 @@ public:
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly, Category = "State|NickName")
 	TObjectPtr<class UBorder> Border_State;
 
-	UPROPERTY(meta = (BindWidget), BlueprintReadOnly, Category = "State|NickName")
+	UPROPERTY(meta = (BindWidget), BlueprintReadOnly, Category = "State|Room")
+	TObjectPtr<class UTextBlock> Txt_RoomLevel;
+
+	UPROPERTY(meta = (BindWidget), BlueprintReadOnly, Category = "State|Room")
 	TObjectPtr<class UTextBlock> Txt_RoomId;
 	
 	UPROPERTY(meta = (BindWidgetOptional), BlueprintReadOnly, Category = "State|Network")
