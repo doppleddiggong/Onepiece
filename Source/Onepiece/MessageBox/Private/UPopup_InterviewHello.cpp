@@ -12,7 +12,6 @@
 #include "UImageButton.h"
 #include "UTextureButton.h"
 #include "Components/TextBlock.h"
-#include "Components/Button.h"
 #include "Components/EditableText.h"
 #include "Components/ProgressBar.h"
 #include "Components/CheckBox.h"
@@ -79,25 +78,25 @@ void UPopup_InterviewHello::InitPopup(const FResponseInterviewHello& InterviewDa
 	}
 
 	// 첫 번째 질문으로 초기화
-	CurrentQuestionIndex = 0;
+	CurQuestionIndex = 0;
 
 	// UI 업데이트
 	RefreshUI();
-	UpdateNavigationButtons();
-	UpdateSubmitButtonState();
-	UpdateProgressBar();
+	RefreshArrowButton();
+	RefreshSubmitButtonState();
+	RefreshProgressBar();
 }
 
 void UPopup_InterviewHello::RefreshUI()
 {
 	// 유효성 체크
-	if (!SavedQuestions.IsValidIndex(CurrentQuestionIndex))
+	if (!SavedQuestions.IsValidIndex(CurQuestionIndex))
 	{
-		PRINTLOG(TEXT("[UPopup_InterviewHello] RefreshUI - Invalid CurrentQuestionIndex: %d"), CurrentQuestionIndex);
+		PRINTLOG(TEXT("[UPopup_InterviewHello] RefreshUI - Invalid CurrentQuestionIndex: %d"), CurQuestionIndex);
 		return;
 	}
 
-	const FInterviewQuestionData& CurrentQuestion = SavedQuestions[CurrentQuestionIndex];
+	const FInterviewQuestionData& CurrentQuestion = SavedQuestions[CurQuestionIndex];
 
 	// 질문 텍스트 업데이트
 	if (TXt_Question)
@@ -109,26 +108,16 @@ void UPopup_InterviewHello::RefreshUI()
 	LoadCurrentAnswer();
 }
 
-void UPopup_InterviewHello::UpdateNavigationButtons()
+void UPopup_InterviewHello::RefreshArrowButton()
 {
 	// Prev 버튼: 첫 번째 질문이 아닐 때만 표시
-	if (Button_PrevArrow)
-	{
-		Button_PrevArrow->SetVisibility(
-			CurrentQuestionIndex > 0 ? ESlateVisibility::Visible : ESlateVisibility::Hidden
-		);
-	}
+		Button_PrevArrow->SetVisibility( CurQuestionIndex > 0 ? ESlateVisibility::Visible : ESlateVisibility::Hidden );
 
 	// Next 버튼: 마지막 질문이 아닐 때만 표시
-	if (Button_NextArrow)
-	{
-		Button_NextArrow->SetVisibility(
-			CurrentQuestionIndex < SavedQuestions.Num() - 1 ? ESlateVisibility::Visible : ESlateVisibility::Hidden
-		);
-	}
+	Button_NextArrow->SetVisibility( CurQuestionIndex < SavedQuestions.Num() - 1 ? ESlateVisibility::Visible : ESlateVisibility::Hidden	);
 }
 
-void UPopup_InterviewHello::UpdateSubmitButtonState()
+void UPopup_InterviewHello::RefreshSubmitButtonState()
 {
 	// 모든 답변이 채워졌는지 확인
 	bool bAllAnswered = true;
@@ -142,7 +131,7 @@ void UPopup_InterviewHello::UpdateSubmitButtonState()
 	}
 
 	// 마지막 질문인지 확인
-	bool bIsLastQuestion = (CurrentQuestionIndex == SavedQuestions.Num() - 1);
+	bool bIsLastQuestion = (CurQuestionIndex == SavedQuestions.Num() - 1);
 
 	// 버튼 표시/숨김 및 활성화 상태 전환
 	if (bIsLastQuestion)
@@ -154,6 +143,7 @@ void UPopup_InterviewHello::UpdateSubmitButtonState()
 			// 모든 답변이 완료되었을 때만 활성화
 			Btn_Submit->SetIsEnabled(bAllAnswered);
 		}
+		
 		if (Btn_Next)
 		{
 			Btn_Next->SetVisibility(ESlateVisibility::Hidden);
@@ -173,33 +163,29 @@ void UPopup_InterviewHello::UpdateSubmitButtonState()
 	}
 }
 
-void UPopup_InterviewHello::UpdateProgressBar()
+void UPopup_InterviewHello::RefreshProgressBar()
 {
 	if (ProgressBar_Question && SavedQuestions.Num() > 0)
 	{
-		float Progress = static_cast<float>(CurrentQuestionIndex + 1) / static_cast<float>(SavedQuestions.Num());
+		float Progress = static_cast<float>(CurQuestionIndex + 1) / static_cast<float>(SavedQuestions.Num());
 		ProgressBar_Question->SetPercent(Progress);
 	}
 }
 
 void UPopup_InterviewHello::SaveCurrentAnswer()
 {
-	if (!Edit_Answer || !TempAnswers.IsValidIndex(CurrentQuestionIndex))
-	{
+	if (!Edit_Answer || !TempAnswers.IsValidIndex(CurQuestionIndex))
 		return;
-	}
 
-	TempAnswers[CurrentQuestionIndex] = Edit_Answer->GetText().ToString();
+	TempAnswers[CurQuestionIndex] = Edit_Answer->GetText().ToString();
 }
 
 void UPopup_InterviewHello::LoadCurrentAnswer()
 {
-	if (!Edit_Answer || !TempAnswers.IsValidIndex(CurrentQuestionIndex))
-	{
+	if (!Edit_Answer || !TempAnswers.IsValidIndex(CurQuestionIndex))
 		return;
-	}
 
-	Edit_Answer->SetText(FText::FromString(TempAnswers[CurrentQuestionIndex]));
+	Edit_Answer->SetText(FText::FromString(TempAnswers[CurQuestionIndex]));
 }
 
 void UPopup_InterviewHello::OnClickPrevArrow()
@@ -208,15 +194,15 @@ void UPopup_InterviewHello::OnClickPrevArrow()
 	SaveCurrentAnswer();
 
 	// 인덱스 감소
-	if (CurrentQuestionIndex > 0)
+	if (CurQuestionIndex > 0)
 	{
-		CurrentQuestionIndex--;
+		CurQuestionIndex--;
 
 		// UI 업데이트
 		RefreshUI();
-		UpdateNavigationButtons();
-		UpdateSubmitButtonState();
-		UpdateProgressBar();
+		RefreshArrowButton();
+		RefreshSubmitButtonState();
+		RefreshProgressBar();
 	}
 }
 
@@ -226,34 +212,21 @@ void UPopup_InterviewHello::OnClickNextArrow()
 	SaveCurrentAnswer();
 
 	// 인덱스 증가
-	if (CurrentQuestionIndex < SavedQuestions.Num() - 1)
+	if (CurQuestionIndex < SavedQuestions.Num() - 1)
 	{
-		CurrentQuestionIndex++;
+		CurQuestionIndex++;
 
 		// UI 업데이트
 		RefreshUI();
-		UpdateNavigationButtons();
-		UpdateSubmitButtonState();
-		UpdateProgressBar();
+		RefreshArrowButton();
+		RefreshSubmitButtonState();
+		RefreshProgressBar();
 	}
 }
 
 void UPopup_InterviewHello::OnClickNext()
 {
-	// 현재 답변 저장
-	SaveCurrentAnswer();
-
-	// 다음 질문으로 이동
-	if (CurrentQuestionIndex < SavedQuestions.Num() - 1)
-	{
-		CurrentQuestionIndex++;
-
-		// UI 업데이트
-		RefreshUI();
-		UpdateNavigationButtons();
-		UpdateSubmitButtonState();
-		UpdateProgressBar();
-	}
+	OnClickNextArrow();
 }
 
 void UPopup_InterviewHello::OnClickSubmit()
@@ -269,10 +242,7 @@ void UPopup_InterviewHello::OnClickSubmit()
 			// 빈 답변이 있으면 Toast 메시지 표시
 			if (UDialogManager* DialogMgr = UDialogManager::Get(GetWorld()))
 			{
-				FString Message = FString::Printf(
-					TEXT("Question %d is not answered. Please fill in all answers."),
-					i + 1
-				);
+				FString Message = FString::Printf( TEXT("Question %d is not answered. Please fill in all answers."), i + 1 );
 				DialogMgr->ShowToast(Message);
 			}
 			return;
@@ -281,7 +251,7 @@ void UPopup_InterviewHello::OnClickSubmit()
 
 	// 답변 데이터 생성
 	TArray<FInterviewAnswerData> AnswerDataList;
-	int32 UserId = ULingoGameHelper::GetUserId(GetWorld());
+	const int32 UserId = ULingoGameHelper::GetUserId(GetWorld());
 
 	for (int32 i = 0; i < SavedQuestions.Num(); ++i)
 	{
@@ -320,21 +290,18 @@ void UPopup_InterviewHello::OnCheckToday(bool bIsChecked)
 {
 	// 체크박스 상태만 저장 (실제 Config 저장은 Submit 성공 시)
 	bCheckTodayDoNotShow = bIsChecked;
-
-	PRINTLOG(TEXT("[UPopup_InterviewHello] 'Today do not show' checkbox: %s"),
-		bIsChecked ? TEXT("Checked") : TEXT("Unchecked"));
 }
 
 void UPopup_InterviewHello::OnAnswerTextChanged(const FText& Text)
 {
 	// 현재 질문의 답변을 실시간으로 TempAnswers에 저장
-	if (TempAnswers.IsValidIndex(CurrentQuestionIndex))
+	if (TempAnswers.IsValidIndex(CurQuestionIndex))
 	{
-		TempAnswers[CurrentQuestionIndex] = Text.ToString();
+		TempAnswers[CurQuestionIndex] = Text.ToString();
 	}
 
 	// Submit 버튼 상태 업데이트 (마지막 질문에서만 영향)
-	UpdateSubmitButtonState();
+	RefreshSubmitButtonState();
 }
 
 void UPopup_InterviewHello::OnResponseInterviewAnswer(FResponseInterviewAnswer& ResponseData, bool bWasSuccessful)
@@ -346,14 +313,13 @@ void UPopup_InterviewHello::OnResponseInterviewAnswer(FResponseInterviewAnswer& 
 		// "Today do not show" 체크되어 있으면 오늘 날짜 저장
 		if (bCheckTodayDoNotShow)
 		{
-			int32 UserId = ULingoGameHelper::GetUserId(GetWorld());
-			FString ConfigSection = TEXT("/Script/Onepiece.InterviewPopup");
-			FString ConfigKey = FString::Printf(TEXT("SkipInterviewDate_%d"), UserId);
+			const int32 UserId = ULingoGameHelper::GetUserId(GetWorld());
+			const FString ConfigSection = TEXT("/Script/Onepiece.InterviewPopup");
+			const FString ConfigKey = FString::Printf(TEXT("SkipInterviewDate_%d"), UserId);
 
 			// 현재 날짜를 "YYYY-MM-DD" 형식으로 저장
-			FDateTime Now = FDateTime::Now();
-			FString TodayDate = FString::Printf(TEXT("%04d-%02d-%02d"),
-				Now.GetYear(), Now.GetMonth(), Now.GetDay());
+			const FDateTime Now = FDateTime::Now();
+			const FString TodayDate = FString::Printf(TEXT("%04d-%02d-%02d"), Now.GetYear(), Now.GetMonth(), Now.GetDay());
 
 			GConfig->SetString(
 				*ConfigSection,
@@ -363,16 +329,18 @@ void UPopup_InterviewHello::OnResponseInterviewAnswer(FResponseInterviewAnswer& 
 			);
 			GConfig->Flush(false, GGameUserSettingsIni);
 
-			PRINTLOG(TEXT("[UPopup_InterviewHello] 'Today do not show' saved for User %d, Date: %s"),
-				UserId, *TodayDate);
+			if (auto DM = UDialogManager::Get(GetWorld()))
+			{
+				DM->ShowToast(TEXT("Do not show again setting complete"));
+			}
+
+			PRINTLOG(TEXT("[UPopup_InterviewHello] 'Today do not show' saved for User %d, Date: %s"), UserId, *TodayDate);
 		}
 
 		// 성공 시 튜터 메시지 표시
-		if (UBroadcastManager* BroadcastMgr = UBroadcastManager::Get(GetWorld()))
+		if (auto BM = UBroadcastManager::Get(GetWorld()))
 		{
-			BroadcastMgr->SendTutorMessage(
-				FText::FromString(TEXT("Interview answers submitted successfully!"))
-			);
+			BM->SendTutorMessage( FText::FromString(TEXT("Interview answers submitted successfully!")) );
 		}
 
 		// 팝업 닫기
@@ -384,25 +352,14 @@ void UPopup_InterviewHello::OnResponseInterviewAnswer(FResponseInterviewAnswer& 
 	else
 	{
 		PRINTLOG(TEXT("[UPopup_InterviewHello] Interview Answer FAILED"));
-
-		// 실패 시 메시지 박스 표시
-		if (UPopupManager* PopupMgr = UPopupManager::Get(GetWorld()))
-		{
-			PopupMgr->ShowMsgBox(
-				TEXT("Notice"),
-				TEXT("Failed to submit interview answers. Please try again."),
-				EMsgBoxType::OK,
-				FOnMsgBoxOkDelegate()
-			);
-		}
 	}
 }
 
 bool UPopup_InterviewHello::ShouldSkipInterviewToday(const UObject* WorldContextObject)
 {
-	int32 UserId = ULingoGameHelper::GetUserId(WorldContextObject);
-	FString ConfigSection = TEXT("/Script/Onepiece.InterviewPopup");
-	FString ConfigKey = FString::Printf(TEXT("SkipInterviewDate_%d"), UserId);
+	const int32 UserId = ULingoGameHelper::GetUserId(WorldContextObject);
+	const FString ConfigSection = TEXT("/Script/Onepiece.InterviewPopup");
+	const FString ConfigKey = FString::Printf(TEXT("SkipInterviewDate_%d"), UserId);
 
 	// 저장된 날짜 읽기
 	FString SavedDate;
@@ -413,15 +370,13 @@ bool UPopup_InterviewHello::ShouldSkipInterviewToday(const UObject* WorldContext
 	}
 
 	// 오늘 날짜 생성
-	FDateTime Now = FDateTime::Now();
-	FString TodayDate = FString::Printf(TEXT("%04d-%02d-%02d"),
-		Now.GetYear(), Now.GetMonth(), Now.GetDay());
+	const FDateTime Now = FDateTime::Now();
+	const FString TodayDate = FString::Printf(TEXT("%04d-%02d-%02d"), Now.GetYear(), Now.GetMonth(), Now.GetDay());
 
 	// 날짜 비교: 저장된 날짜 == 오늘 날짜 → Skip
 	if (SavedDate == TodayDate)
 	{
-		PRINTLOG(TEXT("[UPopup_InterviewHello] Skipping Interview today for User %d (Saved Date: %s)"),
-			UserId, *SavedDate);
+		PRINTLOG(TEXT("[UPopup_InterviewHello] Skipping Interview today for User %d (Saved Date: %s)"), UserId, *SavedDate);
 		return true;  // 오늘은 건너뜀
 	}
 

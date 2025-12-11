@@ -20,8 +20,12 @@ void AMainLevelScriptActor::BeginPlay()
 {
 	Super::BeginPlay();
 
-	// 정상적으로 Interview 팝업 요청
-	this->RequestInterviewHello();
+	// UserInfo 로드 대기 후 Interview 팝업 요청
+	FTimerHandle TimerHandle;
+	GetWorldTimerManager().SetTimer(TimerHandle, [this]()
+	{
+		this->RequestInterviewHello();
+	}, 1.0f, false);
 }
 
 void AMainLevelScriptActor::RequestInterviewHello()

@@ -47,13 +47,13 @@ private:
 	void RefreshUI();
 
 	/** Prev/Next 화살표 버튼 표시/숨김 처리 */
-	void UpdateNavigationButtons();
+	void RefreshArrowButton();
 
 	/** Submit 버튼 활성화 상태 업데이트 */
-	void UpdateSubmitButtonState();
+	void RefreshSubmitButtonState();
 
 	/** Progress Bar 업데이트 */
-	void UpdateProgressBar();
+	void RefreshProgressBar();
 
 	// ===================================================================
 	// Answer Management
@@ -109,7 +109,6 @@ protected:
 	// ===================================================================
 	// UI Widgets (BindWidget)
 	// ===================================================================
-	// 참고: 위젯 이름은 UMG 블루프린트의 실제 이름과 정확히 일치해야 합니다.
 
 	/** 팝업 타이틀 텍스트 ("Interview") */
 	UPROPERTY(meta = (BindWidget))
@@ -147,7 +146,7 @@ protected:
 	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<class UCheckBox> Button_CheckToday;
 
-	/** 팝업 닫기 버튼 (우측 상단 ❌) */
+	/** 팝업 닫기 버튼 (우측 상단) */
 	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<class UTextureButton> Btn_Close;
 
@@ -163,7 +162,7 @@ private:
 	TArray<FString> TempAnswers;
 
 	/** 현재 표시 중인 질문 인덱스 (0-based) */
-	int32 CurrentQuestionIndex = 0;
+	int32 CurQuestionIndex = 0;
 
 	/** "Today do not show" 체크박스 상태 (Submit 시 사용) */
 	bool bCheckTodayDoNotShow = false;
