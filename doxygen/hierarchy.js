@@ -76,8 +76,6 @@ var hierarchy =
     [ "FLuggageData", "structFLuggageData.html", null ],
     [ "FMaterialHelper", "structFMaterialHelper.html", null ],
     [ "FMathHelper", "structFMathHelper.html", null ],
-    [ "FOcrDisplay", "structFOcrDisplay.html", null ],
-    [ "FOcrRecord", "structFOcrRecord.html", null ],
     [ "FParabolaBallisticTrack", "structFParabolaBallisticTrack.html", null ],
     [ "FParabolaGeometricTrack", "structFParabolaGeometricTrack.html", null ],
     [ "FPhonemeData", "structFPhonemeData.html", null ],
@@ -98,8 +96,6 @@ var hierarchy =
     [ "FResponseListenAudio", "structFResponseListenAudio.html", null ],
     [ "FResponseListenResult", "structFResponseListenResult.html", null ],
     [ "FResponseListenScenario", "structFResponseListenScenario.html", null ],
-    [ "FResponseOcrData", "structFResponseOcrData.html", null ],
-    [ "FResponseOcrExtract", "structFResponseOcrExtract.html", null ],
     [ "FResponseReadResult", "structFResponseReadResult.html", null ],
     [ "FResponseReadScenario", "structFResponseReadScenario.html", null ],
     [ "FResponseSpeakingJudes", "structFResponseSpeakingJudes.html", null ],
@@ -108,6 +104,8 @@ var hierarchy =
     [ "FResponseUserMe", "structFResponseUserMe.html", null ],
     [ "FResponseUserRegister", "structFResponseUserRegister.html", null ],
     [ "FResponseUserToken", "structFResponseUserToken.html", null ],
+    [ "FResponseWriteData", "structFResponseWriteData.html", null ],
+    [ "FResponseWriteSubmit", "structFResponseWriteSubmit.html", null ],
     [ "FResultStatData", "structFResultStatData.html", null ],
     [ "FScenarioResult", "structFScenarioResult.html", null ],
     [ "FScenarioTargetData", "structFScenarioTargetData.html", null ],
@@ -132,12 +130,15 @@ var hierarchy =
     [ "FVFXData", "structFVFXData.html", null ],
     [ "FWordData", "structFWordData.html", null ],
     [ "FWordInfo", "structFWordInfo.html", null ],
+    [ "FWriteDisplay", "structFWriteDisplay.html", null ],
     [ "FWriteQuestionData", "structFWriteQuestionData.html", null ],
+    [ "FWriteRecord", "structFWriteRecord.html", null ],
     [ "FWriteWordData", "structFWriteWordData.html", null ],
     [ "IControllable", "classIControllable.html", [
       [ "APlayerActor", "classAPlayerActor.html", null ]
     ] ],
     [ "ISequenceActivatable", "classISequenceActivatable.html", null ],
+    [ "PNGCombineManager", "classPNGCombineManager.html", null ],
     [ "UAnimInstance", null, [
       [ "UConveryorButtonAnimInstance", "classUConveryorButtonAnimInstance.html", null ],
       [ "URobotAnimInstance", "classURobotAnimInstance.html", null ],
@@ -186,6 +187,9 @@ var hierarchy =
       [ "UDialogManager", "classUDialogManager.html", null ],
       [ "ULoadingCircleManager", "classULoadingCircleManager.html", null ],
       [ "UPopupManager", "classUPopupManager.html", null ]
+    ] ],
+    [ "UObject", null, [
+      [ "UWriteBoard", "classUWriteBoard.html", null ]
     ] ],
     [ "UUserWidget", null, [
       [ "UAnswerItem", "classUAnswerItem.html", null ],

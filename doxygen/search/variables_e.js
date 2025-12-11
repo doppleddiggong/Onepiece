@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['ocrimagepath_0',['ocrimagepath',['../classANetworkTesterActor.html#a2364f342501971f4ad5935cd3265898f',1,'ANetworkTesterActor::OcrImagePath'],['../classUPopup__Questionnaire.html#a07b04229e12dff5b4bf8749f48c562e5',1,'UPopup_Questionnaire::OcrImagePath']]],
+  ['ocrimagepath_0',['OcrImagePath',['../classANetworkTesterActor.html#a2364f342501971f4ad5935cd3265898f',1,'ANetworkTesterActor']]],
   ['onadditemtoboxlist_1',['OnAddItemToBoxList',['../classUBroadcastManager.html#a460f9cfc6848bc5c82f95fc5f2d1dafc',1,'UBroadcastManager']]],
   ['onaudiocapture_2',['OnAudioCapture',['../classUBroadcastManager.html#a15ce56190730a87bbd9ea51210a08b14',1,'UBroadcastManager']]],
   ['onaudiospectrum_3',['OnAudioSpectrum',['../classUBroadcastManager.html#aa17cf7bbe9f0657ef94594ed525ddd88',1,'UBroadcastManager']]],

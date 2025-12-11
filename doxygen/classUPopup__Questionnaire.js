@@ -6,7 +6,7 @@ var classUPopup__Questionnaire =
     [ "NativeTick", "classUPopup__Questionnaire.html#a750c1a854f68ca16faa069645531abd6", null ],
     [ "OnClickClose", "classUPopup__Questionnaire.html#aadb6970921a81df8753ea055270e06b3", null ],
     [ "OnClickSubmit", "classUPopup__Questionnaire.html#ad850d65df60161a6355f178d9b52cddd", null ],
-    [ "OnResponseOcrExtract", "classUPopup__Questionnaire.html#a9aa9f5ac93448925ebb29b849647c30a", null ],
+    [ "OnResponseOcrExtract", "classUPopup__Questionnaire.html#a2fb358d8d4d792742be247dc22a1f6b9", null ],
     [ "OpenAnimation", "classUPopup__Questionnaire.html#a2c3d2b47f8255c0172cf9f218790fcc8", null ],
     [ "UpdateAnimation", "classUPopup__Questionnaire.html#a830a08b15d00e418f351f096fc5a8790", null ],
     [ "bIsOpenAnim", "classUPopup__Questionnaire.html#a807985dccb3305b1004c611401b7b551", null ],
@@ -14,7 +14,6 @@ var classUPopup__Questionnaire =
     [ "Btn_Submit", "classUPopup__Questionnaire.html#a5f7092f32acbc4aaa429aa5775a53b83", null ],
     [ "Image_TitleFrame", "classUPopup__Questionnaire.html#a26da397bd0ada7f8caad0f3ba9543605", null ],
     [ "ItemSpacing", "classUPopup__Questionnaire.html#a24f791ba9d79fa439d6a9195e8d73f08", null ],
-    [ "OcrImagePath", "classUPopup__Questionnaire.html#a07b04229e12dff5b4bf8749f48c562e5", null ],
     [ "OpenDuration", "classUPopup__Questionnaire.html#a5a4c2b75560a3e2d07ed3aa52837278e", null ],
     [ "OpenEaseExponent", "classUPopup__Questionnaire.html#afe75f5ef94f97fbcc8ea1ad9e801524c", null ],
     [ "OpenElapsedTime", "classUPopup__Questionnaire.html#a6124aff28b2b2a0b810bb693ebcd81ad", null ],
@@ -27,5 +26,6 @@ var classUPopup__Questionnaire =
     [ "SavedQuestions", "classUPopup__Questionnaire.html#aa6a50df8ff560e5f57e5a84e9ff1a68e", null ],
     [ "ScrollBox", "classUPopup__Questionnaire.html#aeb2374c2209c93983144044c0fe3cb7c", null ],
     [ "Txt_Title", "classUPopup__Questionnaire.html#aad7d6d58517dd33b60fbc6e68d964c9d", null ],
-    [ "VerticalBox", "classUPopup__Questionnaire.html#a3c4a2b4bc0b49d0335cb71aef55d3c3f", null ]
+    [ "VerticalBox", "classUPopup__Questionnaire.html#a3c4a2b4bc0b49d0335cb71aef55d3c3f", null ],
+    [ "WriteImagePath", "classUPopup__Questionnaire.html#a0c0019cf99925e1649b611775c04f852", null ]
 ];

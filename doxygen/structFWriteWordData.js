@@ -1,6 +1,6 @@
 var structFWriteWordData =
 [
-    [ "Pronunciation", "structFWriteWordData.html#aa0ee9bae1e6d4f623b8786a72563159e", null ],
-    [ "QuestionEn", "structFWriteWordData.html#ae7676d778833317ba4e96d781ee51982", null ],
-    [ "QuestionKr", "structFWriteWordData.html#a0a97db1a4372e69288fc28e6660663a2", null ]
+    [ "eng", "structFWriteWordData.html#a77e7f5c7b12f7e8a20742c628fb2d590", null ],
+    [ "kor", "structFWriteWordData.html#abb36871ae9b3d2f5600425cc77bba873", null ],
+    [ "pronunciation", "structFWriteWordData.html#ad69711b344df568882689623b239cbd4", null ]
 ];

@@ -10,5 +10,7 @@ var searchData=
   ['gradetexturetype_7',['GradeTextureType',['../structFResultStatData.html#aac45c5869b828c7f8cfb47807cdb968f',1,'FResultStatData']]],
   ['gradevalue_8',['GradeValue',['../classUResultStatWidget.html#af13b2af493a114310e62b4811d110603',1,'UResultStatWidget']]],
   ['grammar_5fscore_9',['grammar_score',['../structFResponseSpeakingJudes.html#aca28895168248e02526bcbc5043bebd5',1,'FResponseSpeakingJudes']]],
-  ['group_10',['Group',['../classAMoviePanel.html#a07a4ab4e9d005660f5e3ba9ec0cc5a36',1,'AMoviePanel']]]
+  ['group_10',['Group',['../classAMoviePanel.html#a07a4ab4e9d005660f5e3ba9ec0cc5a36',1,'AMoviePanel']]],
+  ['guidetextfont_11',['guideTextFont',['../classUPopup__WriteBoard.html#ad6803709042e6f10b973636dadf49f19',1,'UPopup_WriteBoard']]],
+  ['guidetexts_12',['GuideTexts',['../classUPopup__WriteBoard.html#a06757e08d1d1e1e5bed74465e35993ce',1,'UPopup_WriteBoard']]]
 ];

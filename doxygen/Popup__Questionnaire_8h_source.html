@@ -141,7 +141,7 @@ $(document).ready(function(){initNavTree('Popup__Questionnaire_8h_source.html','
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="keywordtype">void</span> OnClickSubmit();</div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    </div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    UFUNCTION()</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="keywordtype">void</span> OnResponseOcrExtract(<a class="code hl_struct" href="structFResponseOcrExtract.html">FResponseOcrExtract</a>&amp; ResponseData, <span class="keywordtype">bool</span> bWasSuccessful);</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="keywordtype">void</span> OnResponseOcrExtract(<a class="code hl_struct" href="structFResponseWriteSubmit.html">FResponseWriteSubmit</a>&amp; ResponseData, <span class="keywordtype">bool</span> bWasSuccessful);</div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="comment">// UFUNCTION()</span></div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="comment">// void OnResponseQuestionAnswer(FResponseQuestionAnswer&amp; ResponseData, bool bWasSuccessful);</span></div>
@@ -174,15 +174,15 @@ $(document).ready(function(){initNavTree('Popup__Questionnaire_8h_source.html','
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    UPROPERTY(EditDefaultsOnly, Category=&quot;Popup&quot;)</div>
 <div class="line"><a id="l00075" name="l00075"></a><span class="lineno"><a class="line" href="classUPopup__Questionnaire.html#ab3c410c9a8d19b079d0110a1f24d63b3">   75</a></span>    TSubclassOf&lt;class <a class="code hl_class" href="classUPopup__QuestionnaireItem.html">UPopup_QuestionnaireItem</a>&gt; QuestionnaireItemClass;</div>
 <div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    <span class="comment">/* ------------------- Settings ------------------- */</span></div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    <span class="comment">/* ------------------- Settings ------------------ */</span></div>
 <div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    UPROPERTY(EditDefaultsOnly, Category=&quot;Popup&quot;, meta=(ClampMin=&quot;0.0&quot;, ClampMax=&quot;200.0&quot;))</div>
 <div class="line"><a id="l00080" name="l00080"></a><span class="lineno"><a class="line" href="classUPopup__Questionnaire.html#a24f791ba9d79fa439d6a9195e8d73f08">   80</a></span>    <span class="keywordtype">float</span> ItemSpacing = 20.0f;</div>
 <div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
 <div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>private:</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    <span class="comment">/* ------------------- Data ------------------- */</span></div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    <span class="comment">/* ------------------- Data ---------------------- */</span></div>
 <div class="line"><a id="l00085" name="l00085"></a><span class="lineno"><a class="line" href="classUPopup__Questionnaire.html#aa6a50df8ff560e5f57e5a84e9ff1a68e">   85</a></span>    TArray&lt;<a class="code hl_struct" href="structFWriteQuestionData.html">FWriteQuestionData</a>&gt; SavedQuestions;</div>
 <div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    </div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno"><a class="line" href="classUPopup__Questionnaire.html#a07b04229e12dff5b4bf8749f48c562e5">   87</a></span>    FString OcrImagePath = FPaths::ProjectSavedDir() / TEXT(&quot;WriteImage/&quot;);</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno"><a class="line" href="classUPopup__Questionnaire.html#a0c0019cf99925e1649b611775c04f852">   87</a></span>    FString WriteImagePath = FPaths::ProjectSavedDir() / TEXT(&quot;WriteImage/&quot;);</div>
 <div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>};</div>
 </div>
 <div class="ttc" id="aNetworkData_8h_html"><div class="ttname"><a href="NetworkData_8h.html">NetworkData.h</a></div><div class="ttdoc">네트워크 요청과 응답에 사용되는 구조체 및 설정을 정의합니다.</div></div>
@@ -192,16 +192,16 @@ $(document).ready(function(){initNavTree('Popup__Questionnaire_8h_source.html','
 <div class="ttc" id="aclassUPopup__QuestionnaireItem_html"><div class="ttname"><a href="classUPopup__QuestionnaireItem.html">UPopup_QuestionnaireItem</a></div><div class="ttdef"><b>Definition</b> <a href="Popup__QuestionnaireItem_8h_source.html#l00014">Popup_QuestionnaireItem.h:15</a></div></div>
 <div class="ttc" id="aclassUPopup__Questionnaire_html"><div class="ttname"><a href="classUPopup__Questionnaire.html">UPopup_Questionnaire</a></div><div class="ttdef"><b>Definition</b> <a href="Popup__Questionnaire_8h_source.html#l00014">Popup_Questionnaire.h:15</a></div></div>
 <div class="ttc" id="aclassUTextureButton_html"><div class="ttname"><a href="classUTextureButton.html">UTextureButton</a></div><div class="ttdoc">심플한 텍스쳐 기반 버튼 위젯</div><div class="ttdef"><b>Definition</b> <a href="UTextureButton_8h_source.html#l00019">UTextureButton.h:20</a></div></div>
-<div class="ttc" id="astructFQuestWriteInfo_html"><div class="ttname"><a href="structFQuestWriteInfo.html">FQuestWriteInfo</a></div><div class="ttdoc">Write 퀘스트 정보 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00349">NetworkData.h:350</a></div></div>
-<div class="ttc" id="astructFResponseOcrExtract_html"><div class="ttname"><a href="structFResponseOcrExtract.html">FResponseOcrExtract</a></div><div class="ttdoc">OCR Extract 응답 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00662">NetworkData.h:663</a></div></div>
-<div class="ttc" id="astructFWriteQuestionData_html"><div class="ttname"><a href="structFWriteQuestionData.html">FWriteQuestionData</a></div><div class="ttdoc">Write 질문 및 정답 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00330">NetworkData.h:331</a></div></div>
+<div class="ttc" id="astructFQuestWriteInfo_html"><div class="ttname"><a href="structFQuestWriteInfo.html">FQuestWriteInfo</a></div><div class="ttdoc">Write 퀘스트 정보 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00352">NetworkData.h:353</a></div></div>
+<div class="ttc" id="astructFResponseWriteSubmit_html"><div class="ttname"><a href="structFResponseWriteSubmit.html">FResponseWriteSubmit</a></div><div class="ttdoc">Write Submit 응답 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00680">NetworkData.h:681</a></div></div>
+<div class="ttc" id="astructFWriteQuestionData_html"><div class="ttname"><a href="structFWriteQuestionData.html">FWriteQuestionData</a></div><div class="ttdoc">Write 질문 및 정답 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00331">NetworkData.h:332</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_47ae9c23f27029060c39af29b069b73d.html">MessageBox</a></li><li class="navelem"><a class="el" href="dir_244820c19557decdcbf6fc4000b77b7e.html">Public</a></li><li class="navelem"><a class="el" href="Popup__Questionnaire_8h.html">Popup_Questionnaire.h</a></li>
-    <li class="footer">생성시간 : 목 12월 11 2025 06:27:53, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 목 12월 11 2025 08:57:14, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

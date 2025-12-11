@@ -3,7 +3,7 @@ var classANetworkTesterActor =
     [ "ANetworkTesterActor", "classANetworkTesterActor.html#add47c5b8d704c70533ebebc39066b9a1", null ],
     [ "OnResponseInterviewHello", "classANetworkTesterActor.html#a190dab0d692f2bbc9b63f44b32644183", null ],
     [ "OnResponseListenAudio", "classANetworkTesterActor.html#a9e1b4f31f330262ef767b99331347a53", null ],
-    [ "OnResponseOcrExtract", "classANetworkTesterActor.html#ac23b44a6599461d44c6335a9c641b5fb", null ],
+    [ "OnResponseOcrExtract", "classANetworkTesterActor.html#af82715f7fb18aeec53b5b6271fe1d33b", null ],
     [ "OnResponseSpeakingJudes", "classANetworkTesterActor.html#ae4b4fdb8199ce3b067eae6c3ee769179", null ],
     [ "OnResponseUserMe", "classANetworkTesterActor.html#afb8a7bf0db529e76c4527c7c1d890571", null ],
     [ "OnResponseUserRegister", "classANetworkTesterActor.html#af85fc6f7a9ac286f04aa0027aa75462a", null ],

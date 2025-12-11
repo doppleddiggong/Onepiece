@@ -1,6 +1,8 @@
 var classALingoGameState =
 [
     [ "ALingoGameState", "classALingoGameState.html#ad11efa82f3ac7127c29c98502984a942", null ],
+    [ "AddWrongListenAnswer", "classALingoGameState.html#a965af26726e15bfd139ab317490da750", null ],
+    [ "AddWrongReadAnswer", "classALingoGameState.html#aed8f9e471a4949c57f897cf247c29568", null ],
     [ "BeginPlay", "classALingoGameState.html#a52e75e4cd79618612611e7e7acea3a43", null ],
     [ "DecreaseMissionTimer", "classALingoGameState.html#a6cc7692e2e0a6465e861c1f894b59f91", null ],
     [ "GetCurrentQuestType", "classALingoGameState.html#a61f2c80cfba92b780505415a4bf01a36", null ],

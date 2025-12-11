@@ -138,7 +138,7 @@ Public 속성</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">상세한 설명</h2>
 <div class="textblock">
-<p class="definition"><a class="el" href="NetworkData_8h_source.html">NetworkData.h</a> 파일의 <a class="el" href="NetworkData_8h_source.html#l00964">964</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="NetworkData_8h_source.html">NetworkData.h</a> 파일의 <a class="el" href="NetworkData_8h_source.html#l00984">984</a> 번째 라인에서 정의되었습니다.</p>
 </div><h2 class="groupheader">멤버 함수 문서화</h2>
 <a id="ad89bfba9d7b3d0e495196b817a67d0c5" name="ad89bfba9d7b3d0e495196b817a67d0c5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad89bfba9d7b3d0e495196b817a67d0c5">&#9670;&#160;</a></span>PrintData()</h2>
@@ -157,17 +157,17 @@ Public 속성</h2></td></tr>
 
 <p>디버그 로그에 응답 내용을 출력합니다. </p>
 
-<p class="definition"><a class="el" href="NetworkData_8cpp_source.html">NetworkData.cpp</a> 파일의 <a class="el" href="NetworkData_8cpp_source.html#l00945">945</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  946</span>{</div>
-<div class="line"><span class="lineno">  947</span>    FString OutputString;</div>
-<div class="line"><span class="lineno">  948</span>    FJsonObjectConverter::UStructToJsonObjectString(</div>
-<div class="line"><span class="lineno">  949</span>        *<span class="keyword">this</span>,</div>
-<div class="line"><span class="lineno">  950</span>        OutputString,</div>
-<div class="line"><span class="lineno">  951</span>        0,</div>
-<div class="line"><span class="lineno">  952</span>        0</div>
-<div class="line"><span class="lineno">  953</span>    );</div>
-<div class="line"><span class="lineno">  954</span>    <a class="code hl_define" href="GameLogging_8h.html#ad8e2ccc8c20a63e091e0111987b4d3bc">NETWORK_LOG</a>( TEXT(<span class="stringliteral">&quot;[RES] %s&quot;</span>), *OutputString);</div>
-<div class="line"><span class="lineno">  955</span>}</div>
+<p class="definition"><a class="el" href="NetworkData_8cpp_source.html">NetworkData.cpp</a> 파일의 <a class="el" href="NetworkData_8cpp_source.html#l01000">1000</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno"> 1001</span>{</div>
+<div class="line"><span class="lineno"> 1002</span>    FString OutputString;</div>
+<div class="line"><span class="lineno"> 1003</span>    FJsonObjectConverter::UStructToJsonObjectString(</div>
+<div class="line"><span class="lineno"> 1004</span>        *<span class="keyword">this</span>,</div>
+<div class="line"><span class="lineno"> 1005</span>        OutputString,</div>
+<div class="line"><span class="lineno"> 1006</span>        0,</div>
+<div class="line"><span class="lineno"> 1007</span>        0</div>
+<div class="line"><span class="lineno"> 1008</span>    );</div>
+<div class="line"><span class="lineno"> 1009</span>    <a class="code hl_define" href="GameLogging_8h.html#ad8e2ccc8c20a63e091e0111987b4d3bc">NETWORK_LOG</a>( TEXT(<span class="stringliteral">&quot;[RES] %s&quot;</span>), *OutputString);</div>
+<div class="line"><span class="lineno"> 1010</span>}</div>
 <div class="ttc" id="aGameLogging_8h_html_ad8e2ccc8c20a63e091e0111987b4d3bc"><div class="ttname"><a href="GameLogging_8h.html#ad8e2ccc8c20a63e091e0111987b4d3bc">NETWORK_LOG</a></div><div class="ttdeci">#define NETWORK_LOG(fmt,...)</div></div>
 </div><!-- fragment -->
 <p class="reference">다음을 참조함 :  <a class="el" href="GameLogging_8h.html#ad8e2ccc8c20a63e091e0111987b4d3bc">NETWORK_LOG</a>.</p>
@@ -192,29 +192,29 @@ Public 속성</h2></td></tr>
 
 <p>HTTP 응답을 파싱해 구조체를 채웁니다. </p>
 
-<p class="definition"><a class="el" href="NetworkData_8cpp_source.html">NetworkData.cpp</a> 파일의 <a class="el" href="NetworkData_8cpp_source.html#l00926">926</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  927</span>{</div>
-<div class="line"><span class="lineno">  928</span>    <span class="keywordflow">if</span> (Response.IsValid())</div>
-<div class="line"><span class="lineno">  929</span>    {</div>
-<div class="line"><span class="lineno">  930</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  931</span>    }</div>
-<div class="line"><span class="lineno">  932</span> </div>
-<div class="line"><span class="lineno">  933</span>    FString JsonString = Response-&gt;GetContentAsString();</div>
-<div class="line"><span class="lineno">  934</span>    TSharedPtr&lt;FJsonObject&gt; JsonObject;</div>
-<div class="line"><span class="lineno">  935</span>    TSharedRef&lt;TJsonReader&lt;&gt;&gt; Reader = TJsonReaderFactory&lt;&gt;::Create(JsonString);</div>
-<div class="line"><span class="lineno">  936</span> </div>
-<div class="line"><span class="lineno">  937</span>    <span class="keywordflow">if</span> (FJsonSerializer::Deserialize(Reader, JsonObject) &amp;&amp; JsonObject.IsValid())</div>
-<div class="line"><span class="lineno">  938</span>    {</div>
-<div class="line"><span class="lineno">  939</span>        <a class="code hl_variable" href="structFResponseListenResult.html#a5c88d18880d3e2835e9abda76d86da1f">grade</a> = JsonObject-&gt;GetStringField(TEXT(<span class="stringliteral">&quot;grade&quot;</span>));</div>
-<div class="line"><span class="lineno">  940</span>        <a class="code hl_variable" href="structFResponseListenResult.html#a4d6596e5d6792ec688f04e019771f5c0">average_score</a> = JsonObject-&gt;GetIntegerField(TEXT(<span class="stringliteral">&quot;average_score&quot;</span>));</div>
-<div class="line"><span class="lineno">  941</span>        <a class="code hl_variable" href="structFResponseListenResult.html#aae6c06d4425ff61d2bafb08f04ae5c5f">top_percent</a> = JsonObject-&gt;GetNumberField(TEXT(<span class="stringliteral">&quot;top_percent&quot;</span>));</div>
-<div class="line"><span class="lineno">  942</span>    }</div>
-<div class="line"><span class="lineno">  943</span>}</div>
-<div class="ttc" id="astructFResponseListenResult_html_a4d6596e5d6792ec688f04e019771f5c0"><div class="ttname"><a href="structFResponseListenResult.html#a4d6596e5d6792ec688f04e019771f5c0">FResponseListenResult::average_score</a></div><div class="ttdeci">int32 average_score</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00972">NetworkData.h:972</a></div></div>
-<div class="ttc" id="astructFResponseListenResult_html_a5c88d18880d3e2835e9abda76d86da1f"><div class="ttname"><a href="structFResponseListenResult.html#a5c88d18880d3e2835e9abda76d86da1f">FResponseListenResult::grade</a></div><div class="ttdeci">FString grade</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00969">NetworkData.h:969</a></div></div>
-<div class="ttc" id="astructFResponseListenResult_html_aae6c06d4425ff61d2bafb08f04ae5c5f"><div class="ttname"><a href="structFResponseListenResult.html#aae6c06d4425ff61d2bafb08f04ae5c5f">FResponseListenResult::top_percent</a></div><div class="ttdeci">float top_percent</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00975">NetworkData.h:975</a></div></div>
+<p class="definition"><a class="el" href="NetworkData_8cpp_source.html">NetworkData.cpp</a> 파일의 <a class="el" href="NetworkData_8cpp_source.html#l00981">981</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  982</span>{</div>
+<div class="line"><span class="lineno">  983</span>    <span class="keywordflow">if</span> (Response.IsValid())</div>
+<div class="line"><span class="lineno">  984</span>    {</div>
+<div class="line"><span class="lineno">  985</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  986</span>    }</div>
+<div class="line"><span class="lineno">  987</span> </div>
+<div class="line"><span class="lineno">  988</span>    FString JsonString = Response-&gt;GetContentAsString();</div>
+<div class="line"><span class="lineno">  989</span>    TSharedPtr&lt;FJsonObject&gt; JsonObject;</div>
+<div class="line"><span class="lineno">  990</span>    TSharedRef&lt;TJsonReader&lt;&gt;&gt; Reader = TJsonReaderFactory&lt;&gt;::Create(JsonString);</div>
+<div class="line"><span class="lineno">  991</span> </div>
+<div class="line"><span class="lineno">  992</span>    <span class="keywordflow">if</span> (FJsonSerializer::Deserialize(Reader, JsonObject) &amp;&amp; JsonObject.IsValid())</div>
+<div class="line"><span class="lineno">  993</span>    {</div>
+<div class="line"><span class="lineno">  994</span>        <a class="code hl_variable" href="structFResponseListenResult.html#a5c88d18880d3e2835e9abda76d86da1f">grade</a> = JsonObject-&gt;GetStringField(TEXT(<span class="stringliteral">&quot;grade&quot;</span>));</div>
+<div class="line"><span class="lineno">  995</span>        <a class="code hl_variable" href="structFResponseListenResult.html#a4d6596e5d6792ec688f04e019771f5c0">average_score</a> = JsonObject-&gt;GetIntegerField(TEXT(<span class="stringliteral">&quot;average_score&quot;</span>));</div>
+<div class="line"><span class="lineno">  996</span>        <a class="code hl_variable" href="structFResponseListenResult.html#aae6c06d4425ff61d2bafb08f04ae5c5f">top_percent</a> = JsonObject-&gt;GetNumberField(TEXT(<span class="stringliteral">&quot;top_percent&quot;</span>));</div>
+<div class="line"><span class="lineno">  997</span>    }</div>
+<div class="line"><span class="lineno">  998</span>}</div>
+<div class="ttc" id="astructFResponseListenResult_html_a4d6596e5d6792ec688f04e019771f5c0"><div class="ttname"><a href="structFResponseListenResult.html#a4d6596e5d6792ec688f04e019771f5c0">FResponseListenResult::average_score</a></div><div class="ttdeci">int32 average_score</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00992">NetworkData.h:992</a></div></div>
+<div class="ttc" id="astructFResponseListenResult_html_a5c88d18880d3e2835e9abda76d86da1f"><div class="ttname"><a href="structFResponseListenResult.html#a5c88d18880d3e2835e9abda76d86da1f">FResponseListenResult::grade</a></div><div class="ttdeci">FString grade</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00989">NetworkData.h:989</a></div></div>
+<div class="ttc" id="astructFResponseListenResult_html_aae6c06d4425ff61d2bafb08f04ae5c5f"><div class="ttname"><a href="structFResponseListenResult.html#aae6c06d4425ff61d2bafb08f04ae5c5f">FResponseListenResult::top_percent</a></div><div class="ttdeci">float top_percent</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00995">NetworkData.h:995</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="NetworkData_8h_source.html#l00972">average_score</a>, <a class="el" href="NetworkData_8h_source.html#l00969">grade</a>, <a class="el" href="NetworkData_8h_source.html#l00975">top_percent</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="NetworkData_8h_source.html#l00992">average_score</a>, <a class="el" href="NetworkData_8h_source.html#l00989">grade</a>, <a class="el" href="NetworkData_8h_source.html#l00995">top_percent</a>.</p>
 
 </div>
 </div>
@@ -231,9 +231,9 @@ Public 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="NetworkData_8h_source.html">NetworkData.h</a> 파일의 <a class="el" href="NetworkData_8h_source.html#l00972">972</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="NetworkData_8h_source.html">NetworkData.h</a> 파일의 <a class="el" href="NetworkData_8h_source.html#l00992">992</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="Popup__Result_8cpp_source.html#l00206">UPopup_Result::InitListenResult()</a>, <a class="el" href="NetworkData_8cpp_source.html#l00926">SetFromHttpResponse()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="Popup__Result_8cpp_source.html#l00197">UPopup_Result::InitListenResult()</a>, <a class="el" href="NetworkData_8cpp_source.html#l00981">SetFromHttpResponse()</a>.</p>
 
 </div>
 </div>
@@ -249,9 +249,9 @@ Public 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="NetworkData_8h_source.html">NetworkData.h</a> 파일의 <a class="el" href="NetworkData_8h_source.html#l00969">969</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="NetworkData_8h_source.html">NetworkData.h</a> 파일의 <a class="el" href="NetworkData_8h_source.html#l00989">989</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="Popup__Result_8cpp_source.html#l00206">UPopup_Result::InitListenResult()</a>, <a class="el" href="NetworkData_8cpp_source.html#l00926">SetFromHttpResponse()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="Popup__Result_8cpp_source.html#l00197">UPopup_Result::InitListenResult()</a>, <a class="el" href="NetworkData_8cpp_source.html#l00981">SetFromHttpResponse()</a>.</p>
 
 </div>
 </div>
@@ -267,9 +267,9 @@ Public 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="NetworkData_8h_source.html">NetworkData.h</a> 파일의 <a class="el" href="NetworkData_8h_source.html#l00975">975</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="NetworkData_8h_source.html">NetworkData.h</a> 파일의 <a class="el" href="NetworkData_8h_source.html#l00995">995</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="Popup__Result_8cpp_source.html#l00206">UPopup_Result::InitListenResult()</a>, <a class="el" href="NetworkData_8cpp_source.html#l00926">SetFromHttpResponse()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="Popup__Result_8cpp_source.html#l00197">UPopup_Result::InitListenResult()</a>, <a class="el" href="NetworkData_8cpp_source.html#l00981">SetFromHttpResponse()</a>.</p>
 
 </div>
 </div>
@@ -283,7 +283,7 @@ Public 속성</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="structFResponseListenResult.html">FResponseListenResult</a></li>
-    <li class="footer">생성시간 : 목 12월 11 2025 06:27:53, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 목 12월 11 2025 08:57:14, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

@@ -1,13 +1,15 @@
 var searchData=
 [
-  ['popup_5fquestionnaire_2ecpp_0',['Popup_Questionnaire.cpp',['../Popup__Questionnaire_8cpp.html',1,'']]],
-  ['popup_5fquestionnaire_2eh_1',['Popup_Questionnaire.h',['../Popup__Questionnaire_8h.html',1,'']]],
-  ['popup_5fquestionnaireitem_2ecpp_2',['Popup_QuestionnaireItem.cpp',['../Popup__QuestionnaireItem_8cpp.html',1,'']]],
-  ['popup_5fquestionnaireitem_2eh_3',['Popup_QuestionnaireItem.h',['../Popup__QuestionnaireItem_8h.html',1,'']]],
-  ['popup_5fquestionnaireresult_2ecpp_4',['Popup_QuestionnaireResult.cpp',['../Popup__QuestionnaireResult_8cpp.html',1,'']]],
-  ['popup_5fquestionnaireresult_2eh_5',['Popup_QuestionnaireResult.h',['../Popup__QuestionnaireResult_8h.html',1,'']]],
-  ['popup_5fresult_2ecpp_6',['Popup_Result.cpp',['../Popup__Result_8cpp.html',1,'']]],
-  ['popup_5fresult_2eh_7',['Popup_Result.h',['../Popup__Result_8h.html',1,'']]],
-  ['popup_5fwriteboard_2ecpp_8',['Popup_WriteBoard.cpp',['../Popup__WriteBoard_8cpp.html',1,'']]],
-  ['popup_5fwriteboard_2eh_9',['Popup_WriteBoard.h',['../Popup__WriteBoard_8h.html',1,'']]]
+  ['pngcombinemanager_2ecpp_0',['PNGCombineManager.cpp',['../PNGCombineManager_8cpp.html',1,'']]],
+  ['pngcombinemanager_2eh_1',['PNGCombineManager.h',['../PNGCombineManager_8h.html',1,'']]],
+  ['popup_5fquestionnaire_2ecpp_2',['Popup_Questionnaire.cpp',['../Popup__Questionnaire_8cpp.html',1,'']]],
+  ['popup_5fquestionnaire_2eh_3',['Popup_Questionnaire.h',['../Popup__Questionnaire_8h.html',1,'']]],
+  ['popup_5fquestionnaireitem_2ecpp_4',['Popup_QuestionnaireItem.cpp',['../Popup__QuestionnaireItem_8cpp.html',1,'']]],
+  ['popup_5fquestionnaireitem_2eh_5',['Popup_QuestionnaireItem.h',['../Popup__QuestionnaireItem_8h.html',1,'']]],
+  ['popup_5fquestionnaireresult_2ecpp_6',['Popup_QuestionnaireResult.cpp',['../Popup__QuestionnaireResult_8cpp.html',1,'']]],
+  ['popup_5fquestionnaireresult_2eh_7',['Popup_QuestionnaireResult.h',['../Popup__QuestionnaireResult_8h.html',1,'']]],
+  ['popup_5fresult_2ecpp_8',['Popup_Result.cpp',['../Popup__Result_8cpp.html',1,'']]],
+  ['popup_5fresult_2eh_9',['Popup_Result.h',['../Popup__Result_8h.html',1,'']]],
+  ['popup_5fwriteboard_2ecpp_10',['Popup_WriteBoard.cpp',['../Popup__WriteBoard_8cpp.html',1,'']]],
+  ['popup_5fwriteboard_2eh_11',['Popup_WriteBoard.h',['../Popup__WriteBoard_8h.html',1,'']]]
 ];

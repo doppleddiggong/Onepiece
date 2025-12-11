@@ -267,7 +267,7 @@ $(document).ready(function(){initNavTree('ALuggageHolder_8cpp_source.html',''); 
 <div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>            FTimerHandle TimerHandle;</div>
 <div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>            GetWorldTimerManager().SetTimer(TimerHandle, [<span class="keyword">this</span>, Luggage, GS]</div>
 <div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>            {</div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>                GS-&gt;<a class="code hl_variable" href="classALingoGameState.html#ac68fdc03f32358fc9ca40fc5f4ec9cc8">WrongReadAnswerList</a>.Add(Luggage-&gt;GetSpawnIdx());</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>                GS-&gt;<a class="code hl_function" href="classALingoGameState.html#aed8f9e471a4949c57f897cf247c29568">AddWrongReadAnswer</a>(Luggage-&gt;GetSpawnIdx());</div>
 <div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span> </div>
 <div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>                <span class="comment">// 모든 클라이언트에 오답 메시지 표시</span></div>
 <div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>                <a class="code hl_function" href="classALuggageHolder.html#a33a0d12b7420dcd881b5b03a7cf2235c">Multicast_ShowWrongPopup</a>(Luggage-&gt;GetColor(), Luggage-&gt;GetPattern());</div>
@@ -339,30 +339,25 @@ $(document).ready(function(){initNavTree('ALuggageHolder_8cpp_source.html',''); 
 <div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>    <span class="comment">// 모든 클라이언트에서 로컬 GameState에 정답 인덱스 추가</span></div>
 <div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>    <span class="keywordflow">if</span> (<a class="code hl_class" href="classALingoGameState.html">ALingoGameState</a>* GS = Cast&lt;ALingoGameState&gt;(GetWorld()-&gt;GetGameState()))</div>
 <div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>    {</div>
-<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>        <span class="comment">// 중복 체크 후 추가</span></div>
-<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>        <span class="keywordflow">if</span> (!GS-&gt;WrongReadAnswerList.Contains(CorrectAnswerIndex))</div>
-<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>        {</div>
-<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>            GS-&gt;WrongReadAnswerList.Add(CorrectAnswerIndex);</div>
-<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>            <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[Multicast_ShowResultPopup] Added correct answer index %d to local GameState&quot;</span>), CorrectAnswerIndex);</div>
-<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>        }</div>
-<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>    }</div>
-<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span> </div>
-<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>    <span class="comment">// 팝업 표시</span></div>
-<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> Popup = UPopupManager::ShowPopupAs&lt;UPopup_Result&gt;(GetWorld(), EPopupType::Result))</div>
-<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>    {</div>
-<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>        Popup-&gt;InitPopup(<a class="code hl_enumvalue" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a7a1a5f3e79fdc91edf2f5ead9d66abb4">EQuestType::Read</a>);</div>
-<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>    }</div>
-<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>}</div>
-<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span> </div>
-<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span><span class="keywordtype">void</span> ALuggageHolder::Multicast_ShowWrongPopup_Implementation(<span class="keyword">const</span> FString&amp; LuggageColor, <span class="keyword">const</span> FString&amp; LuggagePattern)</div>
-<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>{</div>
-<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>    <span class="comment">// 모든 클라이언트(호스트 포함)에서 오답 메시지 표시</span></div>
-<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>    FString Message = FString::Printf(TEXT(<span class="stringliteral">&quot;Wrong Answer\nThis is not the correct Answer.\n\nColor: %s\nPattern: %s&quot;</span>),</div>
-<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>        *LuggageColor, *LuggagePattern);</div>
-<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span> </div>
-<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> DM = UBroadcastManager::Get(<span class="keyword">this</span>))</div>
-<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>        DM-&gt;SendTutorMessage(FText::FromString(Message));</div>
-<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>}</div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>        GS-&gt;AddWrongReadAnswer(CorrectAnswerIndex);</div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>    }</div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span> </div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>    <span class="comment">// 팝업 표시</span></div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> Popup = UPopupManager::ShowPopupAs&lt;UPopup_Result&gt;(GetWorld(), EPopupType::Result))</div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>    {</div>
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>        Popup-&gt;InitPopup(<a class="code hl_enumvalue" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a7a1a5f3e79fdc91edf2f5ead9d66abb4">EQuestType::Read</a>);</div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>    }</div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>}</div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span> </div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span><span class="keywordtype">void</span> ALuggageHolder::Multicast_ShowWrongPopup_Implementation(<span class="keyword">const</span> FString&amp; LuggageColor, <span class="keyword">const</span> FString&amp; LuggagePattern)</div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>{</div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>    <span class="comment">// 모든 클라이언트(호스트 포함)에서 오답 메시지 표시</span></div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>    FString Message = FString::Printf(TEXT(<span class="stringliteral">&quot;Wrong Answer\nThis is not the correct Answer.\n\nColor: %s\nPattern: %s&quot;</span>),</div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>        *LuggageColor, *LuggagePattern);</div>
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span> </div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> DM = UBroadcastManager::Get(<span class="keyword">this</span>))</div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>        DM-&gt;SendTutorMessage(FText::FromString(Message));</div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>}</div>
 <div class="ttc" id="aALingoGameState_8h_html"><div class="ttname"><a href="ALingoGameState_8h.html">ALingoGameState.h</a></div></div>
 <div class="ttc" id="aALingoGameState_8h_html_a1a866ca8104ebd47ce462347a6125921a7a1a5f3e79fdc91edf2f5ead9d66abb4"><div class="ttname"><a href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a7a1a5f3e79fdc91edf2f5ead9d66abb4">EQuestType::Read</a></div><div class="ttdeci">@ Read</div></div>
 <div class="ttc" id="aALuggageHolder_8h_html"><div class="ttname"><a href="ALuggageHolder_8h.html">ALuggageHolder.h</a></div></div>
@@ -374,8 +369,8 @@ $(document).ready(function(){initNavTree('ALuggageHolder_8cpp_source.html',''); 
 <div class="ttc" id="aUBroadcastManager_8h_html"><div class="ttname"><a href="UBroadcastManager_8h.html">UBroadcastManager.h</a></div></div>
 <div class="ttc" id="aUPopupManager_8h_html"><div class="ttname"><a href="UPopupManager_8h.html">UPopupManager.h</a></div></div>
 <div class="ttc" id="aclassALingoGameState_html"><div class="ttname"><a href="classALingoGameState.html">ALingoGameState</a></div><div class="ttdef"><b>Definition</b> <a href="ALingoGameState_8h_source.html#l00028">ALingoGameState.h:29</a></div></div>
-<div class="ttc" id="aclassALingoGameState_html_ac68fdc03f32358fc9ca40fc5f4ec9cc8"><div class="ttname"><a href="classALingoGameState.html#ac68fdc03f32358fc9ca40fc5f4ec9cc8">ALingoGameState::WrongReadAnswerList</a></div><div class="ttdeci">TArray&lt; int32 &gt; WrongReadAnswerList</div><div class="ttdef"><b>Definition</b> <a href="ALingoGameState_8h_source.html#l00112">ALingoGameState.h:112</a></div></div>
 <div class="ttc" id="aclassALingoGameState_html_ad05acb80ff93078c77995753905def43"><div class="ttname"><a href="classALingoGameState.html#ad05acb80ff93078c77995753905def43">ALingoGameState::GetReadScenarioData</a></div><div class="ttdeci">FORCEINLINE const FResponseReadScenario &amp; GetReadScenarioData() const</div><div class="ttdef"><b>Definition</b> <a href="ALingoGameState_8h_source.html#l00048">ALingoGameState.h:48</a></div></div>
+<div class="ttc" id="aclassALingoGameState_html_aed8f9e471a4949c57f897cf247c29568"><div class="ttname"><a href="classALingoGameState.html#aed8f9e471a4949c57f897cf247c29568">ALingoGameState::AddWrongReadAnswer</a></div><div class="ttdeci">void AddWrongReadAnswer(int32 Value)</div><div class="ttdef"><b>Definition</b> <a href="ALingoGameState_8cpp_source.html#l00085">ALingoGameState.cpp:85</a></div></div>
 <div class="ttc" id="aclassALuggageHolder_html"><div class="ttname"><a href="classALuggageHolder.html">ALuggageHolder</a></div><div class="ttdef"><b>Definition</b> <a href="ALuggageHolder_8h_source.html#l00010">ALuggageHolder.h:11</a></div></div>
 <div class="ttc" id="aclassALuggageHolder_html_a0c20c4037870c7a4c2ff23cde967eefe"><div class="ttname"><a href="classALuggageHolder.html#a0c20c4037870c7a4c2ff23cde967eefe">ALuggageHolder::BeginPlay</a></div><div class="ttdeci">virtual void BeginPlay() override</div><div class="ttdef"><b>Definition</b> <a href="ALuggageHolder_8cpp_source.html#l00046">ALuggageHolder.cpp:46</a></div></div>
 <div class="ttc" id="aclassALuggageHolder_html_a291912aeaa5b488f432b11807273aaca"><div class="ttname"><a href="classALuggageHolder.html#a291912aeaa5b488f432b11807273aaca">ALuggageHolder::ALuggageHolder</a></div><div class="ttdeci">ALuggageHolder()</div><div class="ttdef"><b>Definition</b> <a href="ALuggageHolder_8cpp_source.html#l00019">ALuggageHolder.cpp:19</a></div></div>
@@ -400,14 +395,14 @@ $(document).ready(function(){initNavTree('ALuggageHolder_8cpp_source.html',''); 
 <div class="ttc" id="aclassAluggage_html_a48c251914787f0c3137e6c174b560eaa"><div class="ttname"><a href="classAluggage.html#a48c251914787f0c3137e6c174b560eaa">Aluggage::GetSpawnIdx</a></div><div class="ttdeci">FORCEINLINE int32 GetSpawnIdx()</div><div class="ttdef"><b>Definition</b> <a href="luggage_8h_source.html#l00096">luggage.h:96</a></div></div>
 <div class="ttc" id="aclassAluggage_html_ae5f511820df4a129e85e81b727b48bea"><div class="ttname"><a href="classAluggage.html#ae5f511820df4a129e85e81b727b48bea">Aluggage::SetAllCollision</a></div><div class="ttdeci">void SetAllCollision(bool bEnable)</div><div class="ttdoc">모든 컴포넌트의 충돌과 물리를 설정합니다.</div><div class="ttdef"><b>Definition</b> <a href="luggage_8cpp_source.html#l00321">luggage.cpp:321</a></div></div>
 <div class="ttc" id="aluggage_8h_html"><div class="ttname"><a href="luggage_8h.html">luggage.h</a></div></div>
-<div class="ttc" id="astructFResponseReadScenario_html_a6f6faa9309a1a5f3165f8c0288b1217f"><div class="ttname"><a href="structFResponseReadScenario.html#a6f6faa9309a1a5f3165f8c0288b1217f">FResponseReadScenario::correct_answer_index</a></div><div class="ttdeci">int32 correct_answer_index</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00812">NetworkData.h:812</a></div></div>
+<div class="ttc" id="astructFResponseReadScenario_html_a6f6faa9309a1a5f3165f8c0288b1217f"><div class="ttname"><a href="structFResponseReadScenario.html#a6f6faa9309a1a5f3165f8c0288b1217f">FResponseReadScenario::correct_answer_index</a></div><div class="ttdeci">int32 correct_answer_index</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00830">NetworkData.h:830</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_2268d321c547a1269f0f0801cfba1f77.html">Prop</a></li><li class="navelem"><a class="el" href="dir_1d7bfdd86517d83f393675eb912eaf09.html">Private</a></li><li class="navelem"><a class="el" href="ALuggageHolder_8cpp.html">ALuggageHolder.cpp</a></li>
-    <li class="footer">생성시간 : 목 12월 11 2025 06:27:53, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 목 12월 11 2025 08:57:14, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

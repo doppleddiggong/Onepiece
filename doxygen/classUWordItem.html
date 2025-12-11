@@ -115,20 +115,22 @@ $(document).ready(function(){initNavTree('classUWordItem.html',''); initResizabl
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classUWordItem__inherit__graph.svg" width="128" height="250"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classUWordItem__inherit__graph.svg" width="132" height="270"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="closed.png" alt="+"/> UWordItem에 대한 협력 다이어그램:</div>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classUWordItem__coll__graph.svg" width="128" height="250"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classUWordItem__coll__graph.svg" width="132" height="270"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public 멤버 함수</h2></td></tr>
 <tr class="memitem:ae040a195758593109942693a077292be" id="r_ae040a195758593109942693a077292be"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUWordItem.html#ae040a195758593109942693a077292be">InitInfo</a> (<a class="el" href="UWordItem_8h.html#aa7a4aeeaf4a040114515f256df9c15a3">EWordType</a> WordType, int32 WordCode)</td></tr>
 <tr class="separator:ae040a195758593109942693a077292be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad3ea616727137008e1e8f8ebee89c08a" id="r_ad3ea616727137008e1e8f8ebee89c08a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUWordItem.html#ad3ea616727137008e1e8f8ebee89c08a">SetTextColor</a> (FLinearColor InColor)</td></tr>
+<tr class="separator:ad3ea616727137008e1e8f8ebee89c08a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public 속성</h2></td></tr>
@@ -143,7 +145,7 @@ Public 속성</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">상세한 설명</h2>
 <div class="textblock">
-<p class="definition"><a class="el" href="UWordItem_8h_source.html">UWordItem.h</a> 파일의 <a class="el" href="UWordItem_8h_source.html#l00020">20</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="UWordItem_8h_source.html">UWordItem.h</a> 파일의 <a class="el" href="UWordItem_8h_source.html#l00019">19</a> 번째 라인에서 정의되었습니다.</p>
 </div><h2 class="groupheader">멤버 함수 문서화</h2>
 <a id="ae040a195758593109942693a077292be" name="ae040a195758593109942693a077292be"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae040a195758593109942693a077292be">&#9670;&#160;</a></span>InitInfo()</h2>
@@ -268,6 +270,32 @@ Public 속성</h2></td></tr>
 
 </div>
 </div>
+<a id="ad3ea616727137008e1e8f8ebee89c08a" name="ad3ea616727137008e1e8f8ebee89c08a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad3ea616727137008e1e8f8ebee89c08a">&#9670;&#160;</a></span>SetTextColor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void UWordItem::SetTextColor </td>
+          <td>(</td>
+          <td class="paramtype">FLinearColor&#160;</td>
+          <td class="paramname"><em>InColor</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="UWordItem_8cpp_source.html">UWordItem.cpp</a> 파일의 <a class="el" href="UWordItem_8cpp_source.html#l00077">77</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   78</span>{</div>
+<div class="line"><span class="lineno">   79</span>    <a class="code hl_variable" href="classUWordItem.html#a5e67576d2b21b6a4c578f0237516f581">Txt_Kor</a>-&gt;SetColorAndOpacity(InColor);</div>
+<div class="line"><span class="lineno">   80</span>    <a class="code hl_variable" href="classUWordItem.html#ad038e709ecf1e00de46fb8ae273a6fda">Txt_Eng</a>-&gt;SetColorAndOpacity(InColor);</div>
+<div class="line"><span class="lineno">   81</span>}</div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="UWordItem_8h_source.html#l00038">Txt_Eng</a>, <a class="el" href="UWordItem_8h_source.html#l00035">Txt_Kor</a>.</p>
+
+</div>
+</div>
 <h2 class="groupheader">멤버 데이터 문서화</h2>
 <a id="a30aca2af46a15e256b8bf4fda77207d0" name="a30aca2af46a15e256b8bf4fda77207d0"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a30aca2af46a15e256b8bf4fda77207d0">&#9670;&#160;</a></span>Image_Target</h2>
@@ -317,7 +345,7 @@ Public 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="UWordItem_8h_source.html">UWordItem.h</a> 파일의 <a class="el" href="UWordItem_8h_source.html#l00038">38</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UWordItem_8cpp_source.html#l00011">InitInfo()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UWordItem_8cpp_source.html#l00011">InitInfo()</a>, <a class="el" href="UWordItem_8cpp_source.html#l00077">SetTextColor()</a>.</p>
 
 </div>
 </div>
@@ -335,7 +363,7 @@ Public 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="UWordItem_8h_source.html">UWordItem.h</a> 파일의 <a class="el" href="UWordItem_8h_source.html#l00035">35</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UWordItem_8cpp_source.html#l00011">InitInfo()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UWordItem_8cpp_source.html#l00011">InitInfo()</a>, <a class="el" href="UWordItem_8cpp_source.html#l00077">SetTextColor()</a>.</p>
 
 </div>
 </div>
@@ -349,7 +377,7 @@ Public 속성</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classUWordItem.html">UWordItem</a></li>
-    <li class="footer">생성시간 : 목 12월 11 2025 06:27:53, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 목 12월 11 2025 08:57:14, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

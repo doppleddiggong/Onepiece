@@ -35,7 +35,7 @@ var searchData=
   ['conveyorbeltactors_32',['ConveyorBeltActors',['../classAConveyorButton.html#aa0528792440b0dd40e355b9effafce98',1,'AConveyorButton']]],
   ['correct_5fanswer_5findex_33',['correct_answer_index',['../structFResponseReadScenario.html#a6f6faa9309a1a5f3165f8c0288b1217f',1,'FResponseReadScenario::correct_answer_index'],['../structFResponseListenScenario.html#ad57537cc7504a8cc73c37c350640d491',1,'FResponseListenScenario::correct_answer_index']]],
   ['correctanswerindex_34',['correctanswerindex',['../structFQuestReadInfo.html#a964a3bbb41579866f6f2d84d7dde6c10',1,'FQuestReadInfo::CorrectAnswerIndex'],['../structFQuestListenInfo.html#a30660f2c732b8ffd87d7e030fcd8dd11',1,'FQuestListenInfo::CorrectAnswerIndex']]],
-  ['correction_35',['correction',['../structFOcrDisplay.html#a2b008ef53d3de168c0cef17020b17475',1,'FOcrDisplay']]],
+  ['correction_35',['correction',['../structFWriteDisplay.html#a2b8394385cd48cbe61adb29c2e34419a',1,'FWriteDisplay']]],
   ['createdat_36',['CreatedAt',['../structFInterviewQuestionData.html#a7bfd7045e90f2d66a0f5a4fa9e958793',1,'FInterviewQuestionData']]],
   ['cubemesh_37',['CubeMesh',['../classAOutBoxTeleportTrigger.html#a73848bb31a702d3981ec60018afaeeee',1,'AOutBoxTeleportTrigger']]],
   ['curcount_38',['CurCount',['../classADoor.html#a83d17f7530a82669aba8055f297aa76a',1,'ADoor']]],
