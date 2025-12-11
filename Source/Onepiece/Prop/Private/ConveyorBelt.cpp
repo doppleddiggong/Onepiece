@@ -5,6 +5,7 @@
 
 #include "ANPCBase.h"
 #include "APlayerActor.h"
+#include "Food.h"
 #include "GameLogging.h"
 #include "InteractableComponent.h"
 #include "luggage.h"
@@ -117,20 +118,25 @@ void AConveyorBelt::MoveOverlappedStatics(float deltaDistance)
 	{
 		AActor* owner = comp->GetOwner();
 		Aluggage* luggage = Cast<Aluggage>(owner);
-		if (!luggage || !Cast<UStaticMeshComponent>(comp))
-			continue;
+		AFood* Food = Cast<AFood>(owner);
 
-		// [개선] Hook이나 PickUp 중이면 컨베이어 이동 무시
+		if (!Food && !luggage) continue;  // 둘 다 아니면 스킵
+		if (!Cast<UStaticMeshComponent>(comp)) continue;
+
+		// [개선] Luggage의 경우 Hook이나 PickUp 중이면 컨베이어 이동 무시
 		// bIsPickedUp은 이제 복제되므로 서버에서 정확한 상태 확인 가능
-		if (luggage->InteractableComp && luggage->InteractableComp->IsPickedUp())
+		if (luggage)
 		{
-			continue;
-		}
+			if (luggage->InteractableComp && luggage->InteractableComp->IsPickedUp())
+			{
+				continue;
+			}
 
-		// [개선] Hook 중이면 컨베이어 이동 무시
-		if (luggage->bIsBeingHooked)
-		{
-			continue;
+			// [개선] Hook 중이면 컨베이어 이동 무시
+			if (luggage->bIsBeingHooked)
+			{
+				continue;
+			}
 		}
 
 		FVector moveDirection = MoveDirArrowComp->GetForwardVector();

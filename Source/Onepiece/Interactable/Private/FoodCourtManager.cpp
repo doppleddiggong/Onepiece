@@ -40,6 +40,23 @@ void AFoodCourtManager::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 }
 
+void AFoodCourtManager::SpawnFoodContainer()
+{
+	ALingoGameState* GS = Cast<ALingoGameState>(GetWorld()->GetGameState());
+	if (GS)
+	{
+		// Food 스폰
+		AActor* FoundActor = UGameplayStatics::GetActorOfClass(GetWorld(), ADropper::StaticClass());
+		if (FoundActor)
+		{
+			Dropper = Cast<ADropper>(FoundActor);
+			
+			Dropper->SetSpawnClass( LoadClass<AActor>(nullptr, TEXT("/Game/CustomContents/Blueprints/Interactables/BP_Food.BP_Food_C")));
+			Dropper->RequestSpawn();
+		}
+	}
+}
+
 void AFoodCourtManager::SetFoodCourtInfo()
 {
 	// 서버에서만 실행

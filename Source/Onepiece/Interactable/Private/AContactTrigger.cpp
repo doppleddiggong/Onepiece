@@ -195,7 +195,7 @@ void AContactTrigger::OnListenResponseScenario(FResponseListenScenario& Response
 			World, AFoodCourtManager::StaticClass()));
 		if (FCourtManager)
 		{
-			FCourtManager->SetFoodCourtInfo();
+			FCourtManager->SpawnFoodContainer();
 		}
 	}
 }
