@@ -73,3 +73,9 @@ void UWordItem::InitInfo( EWordType WordType, int32 WordCode )
 		Txt_Eng->SetText( FText::Format( FText::FromString(TEXT("[{0}]")), FText::FromString(ListenData.Eng)));
 	}
 }
+
+void UWordItem::SetTextColor(FLinearColor InColor)
+{
+	Txt_Kor->SetColorAndOpacity(InColor);
+	Txt_Eng->SetColorAndOpacity(InColor);
+}

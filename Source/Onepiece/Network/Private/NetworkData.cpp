@@ -898,6 +898,11 @@ TArray<FString> FResponseListenScenario::GetWord2List() const
 	return UniqueSet.Array();
 }
 
+FScenarioTargetData FResponseListenScenario::GetCorrectAnswerData() const
+{
+	return target_data[correct_answer_index];
+}
+
 // =================================================================================
 // FResponseListenResult
 // =================================================================================

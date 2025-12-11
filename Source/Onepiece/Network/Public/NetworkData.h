@@ -927,6 +927,8 @@ struct FResponseListenScenario
 
 	TArray<FString> GetWord1List() const;
 	TArray<FString> GetWord2List() const;
+
+	FScenarioTargetData GetCorrectAnswerData() const;
 };
 
 USTRUCT(BlueprintType)

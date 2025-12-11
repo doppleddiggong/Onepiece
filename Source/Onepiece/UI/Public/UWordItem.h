@@ -15,7 +15,6 @@ enum class EWordType : uint8
 	Food
 };
 
-
 UCLASS()
 class ONEPIECE_API UWordItem : public UUserWidget
 {
@@ -23,6 +22,7 @@ class ONEPIECE_API UWordItem : public UUserWidget
 
 public:
 	void InitInfo( EWordType WordType, int32 WordCode );
+	void SetTextColor(FLinearColor InColor);
 	
 public:
 	UPROPERTY(meta = (BindWidget))

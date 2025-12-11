@@ -42,20 +42,14 @@ private:
 	
 protected:
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
-	TObjectPtr<class UImageButton> Btn_OK;
+	TObjectPtr<class UImageButton> Btn_Confirm;
 	
-	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
-	TObjectPtr<class UTextureButton> Btn_Exit;
-
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
 	TObjectPtr<class UTextBlock> Txt_Kor;
 
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
 	TObjectPtr<class UTextBlock> Txt_Eng;
 	
-	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
-	TObjectPtr<class UScrollBox> Scrl_WrongList;
-
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
 	TObjectPtr<class UVerticalBox> VerticalBox;
 	

@@ -27,16 +27,10 @@ void UPopup_Result::NativeDestruct()
 
 void UPopup_Result::InitPopup(const EQuestType InQuestType)
 {
-	if (Btn_Exit)
+	if (Btn_Confirm)
 	{
-		Btn_Exit->OnButtonClickedEvent.RemoveDynamic(this, &UPopup_Result::OnClickClose);
-		Btn_Exit->OnButtonClickedEvent.AddDynamic(this, &UPopup_Result::OnClickClose);
-	}
-
-	if (Btn_OK)
-	{
-		Btn_OK->OnButtonClickedEvent.RemoveDynamic(this, &UPopup_Result::OnClickClose);
-		Btn_OK->OnButtonClickedEvent.AddDynamic(this, &UPopup_Result::OnClickClose);
+		Btn_Confirm->OnButtonClickedEvent.RemoveDynamic(this, &UPopup_Result::OnClickClose);
+		Btn_Confirm->OnButtonClickedEvent.AddDynamic(this, &UPopup_Result::OnClickClose);
 	}
 
 	this->QuestType =InQuestType;
@@ -121,16 +115,19 @@ void UPopup_Result::InitWrongList()
 	TArray<int32> WrongList;
 	// 전체 캐리어 정보
 	TArray<FScenarioTargetData> ScenarioData;
+	FScenarioTargetData CorrectData;
 	
 	if ( QuestType == EQuestType::Read)
 	{
 		WrongList = GS->WrongReadAnswerList;
 		ScenarioData = GS->GetReadScenarioData().target_data;
+		CorrectData = GS->GetReadScenarioData().GetCorrectAnswerData();
 	}
 	else if ( QuestType == EQuestType::Listen )
 	{
 		WrongList = GS->WrongListenAnswerList;
 		ScenarioData = GS->GetListenScenarioData().target_data;
+		CorrectData = GS->GetListenScenarioData().GetCorrectAnswerData();
 	}
 	
 	// 기존 항목 제거
@@ -146,15 +143,9 @@ void UPopup_Result::InitWrongList()
 			UAnswerItem* AnswerItem = CreateWidget<UAnswerItem>(this, AnswerItemClass);
 			if (AnswerItem)
 			{
-				// 마지막 인덱스는 정답
-				const bool bCorrect = (i == WrongList.Num() - 1);
-				const int32 Order = i + 1;
-				const int32 Word1Code = FCString::Atoi(*SD.word1.code);
-				const int32 Word2Code = FCString::Atoi(*SD.word2.code);
-
 				// AnswerItem 초기화
-				AnswerItem->InitInfo(QuestType, bCorrect, Order, Word1Code, Word2Code);
-
+				AnswerItem->InitInfo(QuestType, i + 1, SD, CorrectData);
+				
 				// HorizontalBox에 추가
 				VerticalBox->AddChild(AnswerItem);
 			}
@@ -173,8 +164,8 @@ void UPopup_Result::InitReadResult(const FResponseReadResult& ResponseData)
 
 		FResultStatData TimeResultData;
 		TimeResultData.WidgetType = EResultItemWidgetType::Symbol;
-		TimeResultData.ColorType = EColorStyleType::Blue;
-		TimeResultData.TitleText = FText::FromString(TEXT("TIME"));
+		TimeResultData.ColorType = EColorStyleType::Gray;
+		TimeResultData.TitleText = FText::FromString(TEXT("Time"));
 		TimeResultData.SymbolTextureType = EResourceTextureType::Time;
 		TimeResultData.SymbolValue = FString::Printf(TEXT("%02d:%02d"), Minutes, Seconds);
 		Result_Time->InitData(TimeResultData);
@@ -182,22 +173,22 @@ void UPopup_Result::InitReadResult(const FResponseReadResult& ResponseData)
 
 	FResultStatData GradeResultData;
 	GradeResultData.WidgetType = EResultItemWidgetType::Grade;
-	GradeResultData.ColorType = EColorStyleType::Green;
-	GradeResultData.TitleText = FText::FromString(TEXT("GRADE"));
+	GradeResultData.ColorType = EColorStyleType::Gray;
+	GradeResultData.TitleText = FText::FromString(TEXT("Grade"));
 	GradeResultData.GradeTextureType = ULingoGameHelper::ConvertGradeString(ResponseData.grade);
 	Result_Grade->InitData(GradeResultData);
 
 	FResultStatData TopRateResultData;
 	TopRateResultData.WidgetType = EResultItemWidgetType::Rate;
-	TopRateResultData.ColorType = EColorStyleType::Red;
-	TopRateResultData.TitleText = FText::FromString(TEXT("TOP"));
+	TopRateResultData.ColorType = EColorStyleType::Gray;
+	TopRateResultData.TitleText = FText::FromString(TEXT("Rate"));
 	TopRateResultData.RatePercent = ResponseData.top_percent;
 	Result_TopRate->InitData(TopRateResultData);
 		
 	FResultStatData AverageScoreResultData;
 	AverageScoreResultData.WidgetType = EResultItemWidgetType::Symbol;
-	AverageScoreResultData.ColorType = EColorStyleType::Purple;
-	AverageScoreResultData.TitleText = FText::FromString(TEXT("SCORE"));
+	AverageScoreResultData.ColorType = EColorStyleType::Gray;
+	AverageScoreResultData.TitleText = FText::FromString(TEXT("Score"));
 	AverageScoreResultData.SymbolTextureType = EResourceTextureType::Score;
 	AverageScoreResultData.SymbolValue = FString::Printf(TEXT("%d"), ResponseData.average_score);
 	Result_AverageScore->InitData(AverageScoreResultData);
