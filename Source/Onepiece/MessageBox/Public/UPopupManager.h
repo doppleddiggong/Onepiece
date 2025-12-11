@@ -72,6 +72,51 @@ public:
 	UUserWidget* ShowPopup(EPopupType Type);
 
 	/**
+	 * @brief 타입 캐스팅된 팝업 표시 (템플릿)
+	 * @tparam T 팝업 위젯 타입 (UUserWidget 파생 클래스)
+	 * @param Type 표시할 팝업 타입
+	 * @return 캐스팅된 팝업 위젯 (실패 시 nullptr)
+	 * 
+	 * 사용 예시:
+	 * @code
+	 * if (auto Popup = PopupMgr->ShowPopupAs<UPopup_ReadQuest>(EPopupType::ReadQuest))
+	 * {
+	 *     Popup->InitPopup(...);
+	 * }
+	 * @endcode
+	 */
+	template<typename T>
+	T* ShowPopupAs(EPopupType Type)
+	{
+		return Cast<T>(ShowPopup(Type));
+	}
+
+	/**
+	 * @brief 타입 캐스팅된 팝업 표시 (Static 헬퍼)
+	 * @tparam T 팝업 위젯 타입
+	 * @param World 월드 컨텍스트
+	 * @param Type 표시할 팝업 타입
+	 * @return 캐스팅된 팝업 위젯 (실패 시 nullptr)
+	 * 
+	 * 사용 예시:
+	 * @code
+	 * if (auto Popup = UPopupManager::ShowPopupAs<UPopup_ReadQuest>(GetWorld(), EPopupType::ReadQuest))
+	 * {
+	 *     Popup->InitPopup(...);
+	 * }
+	 * @endcode
+	 */
+	template<typename T>
+	static T* ShowPopupAs(UWorld* World, EPopupType Type)
+	{
+		if (UPopupManager* Mgr = Get(World))
+		{
+			return Mgr->ShowPopupAs<T>(Type);
+		}
+		return nullptr;
+	}
+
+	/**
 	 * @brief 특정 팝업 숨기기
 	 * @param Type 숨길 팝업 타입
 	 * @param bDestroyWidget 위젯을 완전히 제거할지 여부 (false면 뷰포트에서만 제거)
@@ -179,17 +224,6 @@ public:
 		const FString& InTitle,
 		const FString& InDescription,
 		EMsgBoxType InType);
-
-	// ========================================
-	// Result 팝업 전용 함수
-	// ========================================
-
-	/**
-	 * @brief Result 팝업 표시
-	 * @note Result 팝업은 InitPopup을 호출하여 초기화합니다.
-	 */
-	UFUNCTION(BlueprintCallable, Category = "Popup|Result")
-	void ShowResult();
 
 protected:
 	// ========================================

@@ -23,6 +23,8 @@
 #include "ADropper.h"
 #include "luggage.h"
 #include "EngineUtils.h"
+#include "OrderKiosk.h"
+#include "UDialogManager.h"
 
 #define IMC_DEFAULT_PATH			TEXT("/Game/CustomContents/Input/IMC_Game_Player.IMC_Game_Player")
 #define IA_MOVE_PATH				TEXT("/Game/CustomContents/Input/IA_Game_Movement.IA_Game_Movement")
@@ -144,58 +146,10 @@ void APlayerControl::OnJump(const FInputActionValue&)
 	if (IControllable* C = GetControllable())
 		C->Cmd_Jump();
 
-
-
-	// // 테스트: 점프할 때마다 랜덤 아이템 추가
-	// if (auto BM = UBroadcastManager::Get(GetWorld()))
-	// {
-	// 	TArray<FResultStatData> TestItems;
-	//
-	// 	// 랜덤하게 1~3개의 아이템 생성
-	// 	int32 ItemCount = FMath::RandRange(1, 3);
-	// 	for (int32 i = 0; i < ItemCount; ++i)
-	// 	{
-	// 		FResultStatData Item;
-	//
-	// 		// 랜덤 위젯 타입 선택
-	// 		int32 RandomType = FMath::RandRange(0, 3);
-	// 		switch (RandomType)
-	// 		{
-	// 		case 0: // Grade
-	// 			Item.WidgetType = EResultItemWidgetType::Grade;
-	// 			Item.GradeTextureType = static_cast<EResourceTextureType>(FMath::RandRange(0, 4)); // Rarity_D ~ Rarity_S
-	// 			Item.TitleText = FText::FromString(TEXT("등급"));
-	// 			break;
-	//
-	// 		case 1: // Score
-	// 			Item.WidgetType = EResultItemWidgetType::Score;
-	// 			Item.ScoreValue = FMath::RandRange(100, 9999);
-	// 			Item.TitleText = FText::FromString(TEXT("점수"));
-	// 			break;
-	//
-	// 		case 2: // Rate
-	// 			Item.WidgetType = EResultItemWidgetType::Rate;
-	// 			Item.RatePercent = FMath::FRandRange(0.0f, 1.0f);
-	// 			Item.TitleText = FText::FromString(TEXT("비율"));
-	// 			break;
-	//
-	// 		case 3: // Symbol
-	// 			Item.WidgetType = EResultItemWidgetType::Symbol;
-	// 			Item.SymbolValue = FMath::FRandRange(0.0f, 1.0f);
-	// 			Item.TitleText = FText::FromString(TEXT("심볼"));
-	// 			break;
-	// 		}
-	//
-	// 		// 랜덤 색상 선택
-	// 		Item.ColorType = static_cast<EColorStyleType>(FMath::RandRange(0, 7)); // Green ~ Gray
-	//
-	// 		TestItems.Add(Item);
-	// 	}
-	//
-	// 	// BroadcastManager를 통해 전송
-	// 	BM->SendAddItemToBoxList(TestItems);
-	// }
+	//this->TEST_DropperDropProcess();
+	// this->TEST_AddItemToBoxList();
 }
+
 
 void APlayerControl::OnRun(const FInputActionValue& Value)
 {
@@ -285,4 +239,104 @@ void APlayerControl::Server_OnHook_Implementation()
 void APlayerControl::Server_SetUserInfo_Implementation(const FResponseUserMe& InUserInfo)
 {
 	UserInfo = InUserInfo;
+}
+
+void APlayerControl::RequestDrop(APlayerControl* Requester)
+{
+	if (auto World = GetWorld())
+	{
+		for (TActorIterator<ADropper> It(World); It; ++It)
+		{
+			ADropper* Dropper = *It;
+			if (Dropper)
+			{
+				if (Dropper->IsBusy() )
+				{
+					Requester->Client_ToastMessage( TEXT("Dropper is Busy") );
+					return;
+				}
+				
+				FLuggageData tmpData;
+				tmpData.word1 = tmpData.word1.GetRandomAnimal();
+				tmpData.word2 = tmpData.word2.GetRandomColor();
+			
+				Dropper->SetSpawnData(tmpData);
+				Dropper->SetSpawnClass( LoadClass<AActor>(nullptr, TEXT("/Game/CustomContents/Blueprints/Interactables/BP_Luggage.BP_Luggage_C")));
+				Dropper->RequestSpawn();
+				return;
+			}
+		}
+	}
+}
+
+void APlayerControl::Server_RequestDrop_Implementation()
+{
+	RequestDrop(this);
+}
+
+void APlayerControl::Client_ToastMessage_Implementation(const FString& Message)
+{
+	UDialogManager::Get(GetWorld())->ShowToast(Message);
+}
+
+void APlayerControl::TEST_DropperDropProcess()
+{
+	// 테스트 : 맵에 있는 ADropper를 찾아서 ALuggage를 스폰
+	if ( HasAuthority())
+		RequestDrop(this);
+	else
+		Server_RequestDrop();
+}
+
+void APlayerControl::TEST_AddItemToBoxList()
+{
+	// 테스트: 랜덤 아이템 추가
+	if (auto BM = UBroadcastManager::Get(GetWorld()))
+	{
+		TArray<FResultStatData> TestItems;
+
+		// 랜덤하게 1~3개의 아이템 생성
+		int32 ItemCount = FMath::RandRange(1, 3);
+		for (int32 i = 0; i < ItemCount; ++i)
+		{
+			FResultStatData Item;
+
+			// 랜덤 위젯 타입 선택
+			int32 RandomType = FMath::RandRange(0, 3);
+			switch (RandomType)
+			{
+			case 0: // Grade
+				Item.WidgetType = EResultItemWidgetType::Grade;
+				Item.GradeTextureType = static_cast<EResourceTextureType>(FMath::RandRange(0, 4)); // Rarity_D ~ Rarity_S
+				Item.TitleText = FText::FromString(TEXT("등급"));
+				break;
+
+			case 1: // Score
+				Item.WidgetType = EResultItemWidgetType::Score;
+				Item.ScoreValue = FMath::RandRange(100, 9999);
+				Item.TitleText = FText::FromString(TEXT("점수"));
+				break;
+
+			case 2: // Rate
+				Item.WidgetType = EResultItemWidgetType::Rate;
+				Item.RatePercent = FMath::FRandRange(0.0f, 1.0f);
+				Item.TitleText = FText::FromString(TEXT("비율"));
+				break;
+
+			case 3: // Symbol
+				Item.WidgetType = EResultItemWidgetType::Symbol;
+				Item.SymbolValue = FString::SanitizeFloat( FMath::FRandRange(0.0f, 1.0f) );
+				Item.TitleText = FText::FromString(TEXT("심볼"));
+				break;
+			}
+
+			// 랜덤 색상 선택
+			Item.ColorType = static_cast<EColorStyleType>(FMath::RandRange(0, 7)); // Green ~ Gray
+
+			TestItems.Add(Item);
+		}
+
+		// BroadcastManager를 통해 전송
+		BM->SendAddItemToBoxList(TestItems);
+	}
 }

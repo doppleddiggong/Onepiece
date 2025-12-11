@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "UBasePopup.h"
 #include "NetworkData.h"
+#include "ALingoGameState.h"
 #include "Popup_Result.generated.h"
 
 /**
@@ -15,26 +16,36 @@ class ONEPIECE_API UPopup_Result : public UBasePopup
 {
 	GENERATED_BODY()
 
-protected:
-	virtual void NativeConstruct() override;
-
 public:
-	void InitPopup();
-
-	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
-	class UImageButton* Btn_OK;
+	virtual void NativeDestruct() override;
 	
-	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
-	class UTextureButton* Btn_Exit;
+	void InitPopup(EQuestType InQuestType);
 
 private:
 	UFUNCTION(BlueprintCallable, Category = "Close")
 	void OnClickClose();
 
-public:
-	// 정답 표시
-	// UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
-	// class UWordWidget* WordWidget;
+	void InitWordWidget();
+	void InitWrongList();
+
+	UFUNCTION()
+	void InitReadResult(const FResponseReadResult& ResponseData);
+	UFUNCTION()
+	void InitListenResult(const FResponseListenResult& ResponseData);
+
+	void RequestResult();
+	
+	UFUNCTION()
+	void OnResponseReadResult(FResponseReadResult& ResponseData, bool bWasSuccessful);
+	UFUNCTION()
+	void OnResponseListenResult(FResponseListenResult& ResponseData, bool bWasSuccessful);
+	
+protected:
+	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
+	TObjectPtr<class UImageButton> Btn_OK;
+	
+	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
+	TObjectPtr<class UTextureButton> Btn_Exit;
 
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
 	TObjectPtr<class UTextBlock> Txt_Kor;
@@ -42,43 +53,24 @@ public:
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
 	TObjectPtr<class UTextBlock> Txt_Eng;
 	
-	// 오답 표시
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
-	class UScrollBox* Scrl_WrongList;
+	TObjectPtr<class UScrollBox> Scrl_WrongList;
 
-	void SetWordWidget();
-	void SetWrongList();
+	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
+	TObjectPtr<class UVerticalBox> VerticalBox;
 	
-public:
-	// 걸린 시간
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
-	class UTextBlock* Txt_TimeRank;
-
+	TObjectPtr<class UResultStatWidget> Result_Time;
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
-	class UTextBlock* Txt_TimeTaken;
-
-	float TimeTaken = -1;
-
-	void SetTimeRank();
-	void SetTimeTaken();
-
-public:
-	// 정답 정확도
+	TObjectPtr<class UResultStatWidget> Result_Grade;
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
-	class UTextBlock* Txt_Accuracy;
-
-	void SetAccuracy();
-
-public:
-	// 랭킹 백분율
+	TObjectPtr<class UResultStatWidget> Result_TopRate;
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
-	class UCircularProgressBar* CircleBar_Ranking;
+	TObjectPtr<class UResultStatWidget> Result_AverageScore;
 
-	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
-	class UTextBlock* Txt_Rank;
-	
-	void SetRankingRate();
-	
-	void RequestRankingResult();
-	void OnQuestResultResponse(FResponseQuestResult& ResponseData, bool bWasSuccessful);
+private:
+	UPROPERTY(EditDefaultsOnly, Category = "UI")
+	TSubclassOf<class UAnswerItem> AnswerItemClass;
+
+	EQuestType QuestType;
 };

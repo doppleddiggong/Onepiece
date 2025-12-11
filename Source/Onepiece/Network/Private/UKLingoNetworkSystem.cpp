@@ -332,62 +332,6 @@ void UKLingoNetworkSystem::RequestUserMe( FResponseUserMeDelegate InDelegate)
 }
 
 // =================================================================================
-// RequestScenario
-// =================================================================================
-
-void UKLingoNetworkSystem::RequestScenario(int32 Index, int32 Difficulty, int32 Level, FResponseScenarioDelegate InDelegate)
-{
-	// URL 형식: /scenario/{index}/{dificulity}/{lang}
-	FString Endpoint = FString::Printf(TEXT("%s/%d/%d/%d"), *RequestAPI::scenario, Index, Difficulty, Level);
-	FString Url = NetworkConfig::GetFullUrl(Endpoint);
-	auto Request = SetupHttpRequest(Url, NETWORK_GET);
-
-	LogNetwork(ENetworkLogType::Get, *Request->GetURL());
-
-	Request->OnProcessRequestComplete().BindLambda(
-		[this, InDelegate](FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSuccess)
-		{
-			AddNetworkWaitCount(-1);
-
-			FResponseScenario ResponseData;
-
-			if (bSuccess && HttpResponse.IsValid())
-			{
-				const int32 ResponseCode = HttpResponse->GetResponseCode();
-
-				NETWORK_LOG(TEXT("[RES] Code: %d, Response: %s"), ResponseCode, *HttpResponse->GetContentAsString());
-
-				if (IsResSuccess(ResponseCode))
-				{
-					ResponseData.SetFromHttpResponse(HttpResponse);
-					ResponseData.PrintData();
-					InDelegate.ExecuteIfBound(ResponseData, true);
-				}
-				else
-				{
-					ShowNetworkErrorPopup(ResponseCode, HttpResponse->GetContentAsString());
-					InDelegate.ExecuteIfBound(ResponseData, false);
-				}
-			}
-			else
-			{
-				NETWORK_LOG(TEXT("[GET] RequestScenario failed - bSuccess: %s, Response valid: %s"),
-					bSuccess ? TEXT("true") : TEXT("false"),
-					HttpResponse.IsValid() ? TEXT("true") : TEXT("false"));
-				
-				int32 ErrorCode = HttpResponse.IsValid() ? HttpResponse->GetResponseCode() : 0;
-				FString ErrorContent = HttpResponse.IsValid() ? HttpResponse->GetContentAsString() : TEXT("Network connection failed");
-				ShowNetworkErrorPopup(ErrorCode, ErrorContent);
-				
-				InDelegate.ExecuteIfBound(ResponseData, false);
-			}
-		});
-
-	AddNetworkWaitCount(1);
-	Request->ProcessRequest();
-}
-
-// =================================================================================
 // RequestWriteQuestions
 // =================================================================================
 
@@ -754,7 +698,7 @@ void UKLingoNetworkSystem::RequestInterviewHello(FResponseInterviewHelloDelegate
 void UKLingoNetworkSystem::RequestInterviewAnswer(const FRequestInterviewAnswer& Answer, FResponseInterviewAnswerDelegate InDelegate)
 {
 	// {room_id}?room_id=
-	FString Endpoint = FString::Printf(TEXT("%s/%lld"), *RequestAPI::interview_answer, ULingoGameHelper::GetLingoGameState( GetWorld())->RoomId);
+	FString Endpoint = FString::Printf(TEXT("%s/%lld"), *RequestAPI::interview_answer, ULingoGameHelper::GetLingoGameState( GetWorld())->GetRoomId() );
 	FString Url = NetworkConfig::GetFullUrl(Endpoint);
 	
 	auto Request = SetupHttpRequest(Url, NETWORK_POST);
@@ -819,64 +763,425 @@ void UKLingoNetworkSystem::RequestInterviewAnswer(const FRequestInterviewAnswer&
 	Request->ProcessRequest();
 }
 
-void UKLingoNetworkSystem::RequestQuestResult(
-	const FRequestReadQuestResult& Result,
-	FResponseQuestResultDelegate InDelegate)
+// void UKLingoNetworkSystem::RequestQuestResult(
+// 	const FRequestReadQuestResult& Result,
+// 	FResponseQuestResultDelegate InDelegate)
+// {
+// 	 FString Url = NetworkConfig::GetFullUrl(RequestAPI::quest_result);
+//       auto Request = SetupHttpRequest(Url, NETWORK_POST);
+//
+//       // Request Body 설정                                                                                                                                                                                                          
+//       FString RequestBody;
+//       if (Result.ToJsonString(RequestBody))
+//       {
+// 	      Request->SetContentAsString(RequestBody);
+//       }
+//
+//       LogNetwork(ENetworkLogType::Post, *Request->GetURL(), *RequestBody);
+//
+//       Request->OnProcessRequestComplete().BindLambda(
+//           [WeakThis = TWeakObjectPtr<UKLingoNetworkSystem>(this), InDelegate](FHttpRequestPtr Req, FHttpResponsePtr ResPtr, bool bWasSuccessful)
+//           {
+//               if (!WeakThis.IsValid() || IsEngineExitRequested())
+//                   return;
+//
+//               WeakThis->AddNetworkWaitCount(-1);
+//               FResponseQuestResult ResponseData;
+//
+//               if (bWasSuccessful && ResPtr.IsValid())
+//               {
+//                   const int32 ResponseCode = ResPtr->GetResponseCode();
+//
+//                   NETWORK_LOG(TEXT("[POST] RequestQuestResult - Code: %d, Response: %s"),
+//                       ResponseCode, *ResPtr->GetContentAsString());
+//
+//                   if (IsResSuccess(ResponseCode))
+//                   {
+//                       ResponseData.SetFromHttpResponse(ResPtr);
+//                       ResponseData.PrintData();
+//                       InDelegate.ExecuteIfBound(ResponseData, true);
+//                   }
+//                   else                                                                                                                                                                                                              
+//                   {
+//                       WeakThis->ShowNetworkErrorPopup(ResponseCode, ResPtr->GetContentAsString());
+//                       InDelegate.ExecuteIfBound(ResponseData, false);
+//                   }
+//               }
+//               else                                                                                                                                                                                                                  
+//               {
+//                   NETWORK_LOG(TEXT("[POST] RequestQuestResult failed - bSuccess: %s, Response valid: %s"),
+//                       bWasSuccessful ? TEXT("true") : TEXT("false"),
+//                       ResPtr.IsValid() ? TEXT("true") : TEXT("false"));
+//
+//                   int32 ErrorCode = ResPtr.IsValid() ? ResPtr->GetResponseCode() : 0;
+//                   FString ErrorContent = ResPtr.IsValid() ? ResPtr->GetContentAsString() : TEXT("Network connection failed");
+//                   WeakThis->ShowNetworkErrorPopup(ErrorCode, ErrorContent);
+//
+//                   InDelegate.ExecuteIfBound(ResponseData, false);
+//               }
+//           });
+//
+//       AddNetworkWaitCount(1);
+//       Request->ProcessRequest();
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+void UKLingoNetworkSystem::RequestReadScenario(FResponseReadScenarioDelegate InDelegate)
 {
-	 FString Url = NetworkConfig::GetFullUrl(RequestAPI::quest_result);
-      auto Request = SetupHttpRequest(Url, NETWORK_POST);
+	// URL 형식: /scenario/stages/redis/{room_id}/{scenario_id}/{stage_type}/{level}
+	FString Endpoint = FString::Printf(TEXT("%s/%lld/%d/%d/%d"), *RequestAPI::scenario,
+		ULingoGameHelper::GetLingoGameState( GetWorld())->GetRoomId(),
+		1,
+		ULingoGameHelper::GetStageTypeIndex(EQuestType::Read),
+		ULingoGameHelper::GetLingoGameState( GetWorld())->GetRoomLevel());
+	
+	FString Url = NetworkConfig::GetFullUrl(Endpoint);
+	auto Request = SetupHttpRequest(Url, NETWORK_GET);
 
-      // Request Body 설정                                                                                                                                                                                                          
-      FString RequestBody;
-      if (Result.ToJsonString(RequestBody))
-      {
-	      Request->SetContentAsString(RequestBody);
-      }
+	LogNetwork(ENetworkLogType::Get, *Request->GetURL());
 
-      LogNetwork(ENetworkLogType::Post, *Request->GetURL(), *RequestBody);
+	Request->OnProcessRequestComplete().BindLambda(
+		[this, InDelegate](FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSuccess)
+		{
+			AddNetworkWaitCount(-1);
 
-      Request->OnProcessRequestComplete().BindLambda(
-          [WeakThis = TWeakObjectPtr<UKLingoNetworkSystem>(this), InDelegate](FHttpRequestPtr Req, FHttpResponsePtr ResPtr, bool bWasSuccessful)
-          {
-              if (!WeakThis.IsValid() || IsEngineExitRequested())
-                  return;
+			FResponseReadScenario ResponseData;
 
-              WeakThis->AddNetworkWaitCount(-1);
-              FResponseQuestResult ResponseData;
+			if (bSuccess && HttpResponse.IsValid())
+			{
+				const int32 ResponseCode = HttpResponse->GetResponseCode();
 
-              if (bWasSuccessful && ResPtr.IsValid())
-              {
-                  const int32 ResponseCode = ResPtr->GetResponseCode();
+				NETWORK_LOG(TEXT("[RES] Code: %d, Response: %s"), ResponseCode, *HttpResponse->GetContentAsString());
 
-                  NETWORK_LOG(TEXT("[POST] RequestQuestResult - Code: %d, Response: %s"),
-                      ResponseCode, *ResPtr->GetContentAsString());
+				if (IsResSuccess(ResponseCode))
+				{
+					ResponseData.SetFromHttpResponse(HttpResponse);
+					// ResponseData.PrintData();
+					InDelegate.ExecuteIfBound(ResponseData, true);
+				}
+				else
+				{
+					ShowNetworkErrorPopup(ResponseCode, HttpResponse->GetContentAsString());
+					InDelegate.ExecuteIfBound(ResponseData, false);
+				}
+			}
+			else
+			{
+				NETWORK_LOG(TEXT("[GET] RequestReadScenario failed - bSuccess: %s, Response valid: %s"),
+					bSuccess ? TEXT("true") : TEXT("false"),
+					HttpResponse.IsValid() ? TEXT("true") : TEXT("false"));
+				
+				int32 ErrorCode = HttpResponse.IsValid() ? HttpResponse->GetResponseCode() : 0;
+				FString ErrorContent = HttpResponse.IsValid() ? HttpResponse->GetContentAsString() : TEXT("Network connection failed");
+				ShowNetworkErrorPopup(ErrorCode, ErrorContent);
+				
+				InDelegate.ExecuteIfBound(ResponseData, false);
+			}
+		});
 
-                  if (IsResSuccess(ResponseCode))
-                  {
-                      ResponseData.SetFromHttpResponse(ResPtr);
-                      ResponseData.PrintData();
-                      InDelegate.ExecuteIfBound(ResponseData, true);
-                  }
-                  else                                                                                                                                                                                                              
-                  {
-                      WeakThis->ShowNetworkErrorPopup(ResponseCode, ResPtr->GetContentAsString());
-                      InDelegate.ExecuteIfBound(ResponseData, false);
-                  }
-              }
-              else                                                                                                                                                                                                                  
-              {
-                  NETWORK_LOG(TEXT("[POST] RequestQuestResult failed - bSuccess: %s, Response valid: %s"),
-                      bWasSuccessful ? TEXT("true") : TEXT("false"),
-                      ResPtr.IsValid() ? TEXT("true") : TEXT("false"));
+	AddNetworkWaitCount(1);
+	Request->ProcessRequest();
+}
 
-                  int32 ErrorCode = ResPtr.IsValid() ? ResPtr->GetResponseCode() : 0;
-                  FString ErrorContent = ResPtr.IsValid() ? ResPtr->GetContentAsString() : TEXT("Network connection failed");
-                  WeakThis->ShowNetworkErrorPopup(ErrorCode, ErrorContent);
 
-                  InDelegate.ExecuteIfBound(ResponseData, false);
-              }
-          });
+void UKLingoNetworkSystem::RequestReadResult( const FRequestReadResult& Result, FResponseReadResultDelegate InDelegate)
+{
+	FString Url = NetworkConfig::GetFullUrl(RequestAPI::read_result);
+    auto Request = SetupHttpRequest(Url, NETWORK_POST);
 
-      AddNetworkWaitCount(1);
-      Request->ProcessRequest();
+	// Request Body 설정                                                                                                                                                                                                          
+	FString RequestBody;
+	if (Result.ToJsonString(RequestBody))
+		Request->SetContentAsString(RequestBody);
+
+	LogNetwork(ENetworkLogType::Post, *Request->GetURL(), *RequestBody);
+
+	Request->OnProcessRequestComplete().BindLambda(
+	  [WeakThis = TWeakObjectPtr<UKLingoNetworkSystem>(this), InDelegate](FHttpRequestPtr Req, FHttpResponsePtr ResPtr, bool bWasSuccessful)
+	  {
+	      if (!WeakThis.IsValid() || IsEngineExitRequested())
+	          return;
+
+	      WeakThis->AddNetworkWaitCount(-1);
+	      FResponseReadResult ResponseData;
+
+	      if (bWasSuccessful && ResPtr.IsValid())
+	      {
+	          const int32 ResponseCode = ResPtr->GetResponseCode();
+
+	          NETWORK_LOG(TEXT("[POST] RequestQuestResult - Code: %d, Response: %s"),
+	              ResponseCode, *ResPtr->GetContentAsString());
+
+	          if (IsResSuccess(ResponseCode))
+	          {
+	              ResponseData.SetFromHttpResponse(ResPtr);
+	              ResponseData.PrintData();
+	              InDelegate.ExecuteIfBound(ResponseData, true);
+	          }
+	          else                                                                                                                                                                                                              
+	          {
+	              WeakThis->ShowNetworkErrorPopup(ResponseCode, ResPtr->GetContentAsString());
+	              InDelegate.ExecuteIfBound(ResponseData, false);
+	          }
+	      }
+	      else                                                                                                                                                                                                                  
+	      {
+	          NETWORK_LOG(TEXT("[POST] RequestReadResult failed - bSuccess: %s, Response valid: %s"),
+	              bWasSuccessful ? TEXT("true") : TEXT("false"),
+	              ResPtr.IsValid() ? TEXT("true") : TEXT("false"));
+
+	          int32 ErrorCode = ResPtr.IsValid() ? ResPtr->GetResponseCode() : 0;
+	          FString ErrorContent = ResPtr.IsValid() ? ResPtr->GetContentAsString() : TEXT("Network connection failed");
+	          WeakThis->ShowNetworkErrorPopup(ErrorCode, ErrorContent);
+
+	          InDelegate.ExecuteIfBound(ResponseData, false);
+	      }
+	  });
+
+	AddNetworkWaitCount(1);
+	Request->ProcessRequest();
+}
+
+
+
+void UKLingoNetworkSystem::RequestListenScenario(FResponseListenScenarioDelegate InDelegate)
+{
+	// URL 형식: /scenario/stages/redis/{room_id}/{scenario_id}/{stage_type}/{level}
+	FString Endpoint = FString::Printf(TEXT("%s/%lld/%d/%d/%d"), *RequestAPI::scenario,
+		ULingoGameHelper::GetLingoGameState( GetWorld())->GetRoomId(),
+		1,
+		ULingoGameHelper::GetStageTypeIndex(EQuestType::Listen),
+		ULingoGameHelper::GetLingoGameState( GetWorld())->GetRoomLevel());
+	
+	FString Url = NetworkConfig::GetFullUrl(Endpoint);
+	auto Request = SetupHttpRequest(Url, NETWORK_GET);
+
+	LogNetwork(ENetworkLogType::Get, *Request->GetURL());
+
+	Request->OnProcessRequestComplete().BindLambda(
+		[this, InDelegate](FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSuccess)
+		{
+			AddNetworkWaitCount(-1);
+
+			FResponseListenScenario ResponseData;
+
+			if (bSuccess && HttpResponse.IsValid())
+			{
+				const int32 ResponseCode = HttpResponse->GetResponseCode();
+
+				NETWORK_LOG(TEXT("[RES] Code: %d, Response: %s"), ResponseCode, *HttpResponse->GetContentAsString());
+
+				if (IsResSuccess(ResponseCode))
+				{
+					ResponseData.SetFromHttpResponse(HttpResponse);
+					ResponseData.PrintData();
+					InDelegate.ExecuteIfBound(ResponseData, true);
+				}
+				else
+				{
+					ShowNetworkErrorPopup(ResponseCode, HttpResponse->GetContentAsString());
+					InDelegate.ExecuteIfBound(ResponseData, false);
+				}
+			}
+			else
+			{
+				NETWORK_LOG(TEXT("[RES] RequestReadScenario failed - bSuccess: %s, Response valid: %s"),
+					bSuccess ? TEXT("true") : TEXT("false"),
+					HttpResponse.IsValid() ? TEXT("true") : TEXT("false"));
+				
+				int32 ErrorCode = HttpResponse.IsValid() ? HttpResponse->GetResponseCode() : 0;
+				FString ErrorContent = HttpResponse.IsValid() ? HttpResponse->GetContentAsString() : TEXT("Network connection failed");
+				ShowNetworkErrorPopup(ErrorCode, ErrorContent);
+				
+				InDelegate.ExecuteIfBound(ResponseData, false);
+			}
+		});
+
+	AddNetworkWaitCount(1);
+	Request->ProcessRequest();
+}
+
+void UKLingoNetworkSystem::RequestListenResult( const FRequestListenResult& Result, FResponseListenResultDelegate InDelegate)
+{
+	FString Url = NetworkConfig::GetFullUrl(RequestAPI::listen_result);
+    auto Request = SetupHttpRequest(Url, NETWORK_POST);
+
+	// Request Body 설정
+	FString RequestBody;
+	if (Result.ToJsonString(RequestBody))
+		Request->SetContentAsString(RequestBody);
+
+	LogNetwork(ENetworkLogType::Post, *Request->GetURL(), *RequestBody);
+
+	Request->OnProcessRequestComplete().BindLambda(
+	  [WeakThis = TWeakObjectPtr<UKLingoNetworkSystem>(this), InDelegate](FHttpRequestPtr Req, FHttpResponsePtr ResPtr, bool bWasSuccessful)
+	  {
+	      if (!WeakThis.IsValid() || IsEngineExitRequested())
+	          return;
+
+	      WeakThis->AddNetworkWaitCount(-1);
+	      FResponseListenResult ResponseData;
+
+	      if (bWasSuccessful && ResPtr.IsValid())
+	      {
+	          const int32 ResponseCode = ResPtr->GetResponseCode();
+
+	          NETWORK_LOG(TEXT("[RES] RequestListenResult - Code: %d, Response: %s"),
+	              ResponseCode, *ResPtr->GetContentAsString());
+
+	          if (IsResSuccess(ResponseCode))
+	          {
+	              ResponseData.SetFromHttpResponse(ResPtr);
+	              ResponseData.PrintData();
+	              InDelegate.ExecuteIfBound(ResponseData, true);
+	          }
+	          else
+	          {
+	              WeakThis->ShowNetworkErrorPopup(ResponseCode, ResPtr->GetContentAsString());
+	              InDelegate.ExecuteIfBound(ResponseData, false);
+	          }
+	      }
+	      else
+	      {
+	          NETWORK_LOG(TEXT("[RES] RequestListenResult failed - bSuccess: %s, Response valid: %s"),
+	              bWasSuccessful ? TEXT("true") : TEXT("false"),
+	              ResPtr.IsValid() ? TEXT("true") : TEXT("false"));
+
+	          int32 ErrorCode = ResPtr.IsValid() ? ResPtr->GetResponseCode() : 0;
+	          FString ErrorContent = ResPtr.IsValid() ? ResPtr->GetContentAsString() : TEXT("Network connection failed");
+	          WeakThis->ShowNetworkErrorPopup(ErrorCode, ErrorContent);
+
+	          InDelegate.ExecuteIfBound(ResponseData, false);
+	      }
+	  });
+
+	AddNetworkWaitCount(1);
+	Request->ProcessRequest();
+}
+
+void UKLingoNetworkSystem::RequestSpeakScenario(FResponseSpeakScenarioDelegate InDelegate)
+{
+	// URL 형식: /scenario/stages/redis/{room_id}/{scenario_id}/{stage_type}/{level}
+	FString Endpoint = FString::Printf(TEXT("%s/%lld/%d/%d/%d"), *RequestAPI::scenario,
+		ULingoGameHelper::GetLingoGameState( GetWorld())->GetRoomId(),
+		1,
+		ULingoGameHelper::GetStageTypeIndex(EQuestType::Speak),
+		ULingoGameHelper::GetLingoGameState( GetWorld())->GetRoomLevel());
+
+	FString Url = NetworkConfig::GetFullUrl(Endpoint);
+	auto Request = SetupHttpRequest(Url, NETWORK_GET);
+
+	LogNetwork(ENetworkLogType::Get, *Request->GetURL());
+
+	Request->OnProcessRequestComplete().BindLambda(
+		[this, InDelegate](FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSuccess)
+		{
+			AddNetworkWaitCount(-1);
+
+			FResponseSpeakScenario ResponseData;
+
+			if (bSuccess && HttpResponse.IsValid())
+			{
+				const int32 ResponseCode = HttpResponse->GetResponseCode();
+
+				NETWORK_LOG(TEXT("[RES] Code: %d, Response: %s"), ResponseCode, *HttpResponse->GetContentAsString());
+
+				if (IsResSuccess(ResponseCode))
+				{
+					ResponseData.SetFromHttpResponse(HttpResponse);
+					ResponseData.PrintData();
+					InDelegate.ExecuteIfBound(ResponseData, true);
+				}
+				else
+				{
+					ShowNetworkErrorPopup(ResponseCode, HttpResponse->GetContentAsString());
+					InDelegate.ExecuteIfBound(ResponseData, false);
+				}
+			}
+			else
+			{
+				NETWORK_LOG(TEXT("[RES] RequestSpeakScenario failed - bSuccess: %s, Response valid: %s"),
+					bSuccess ? TEXT("true") : TEXT("false"),
+					HttpResponse.IsValid() ? TEXT("true") : TEXT("false"));
+
+				int32 ErrorCode = HttpResponse.IsValid() ? HttpResponse->GetResponseCode() : 0;
+				FString ErrorContent = HttpResponse.IsValid() ? HttpResponse->GetContentAsString() : TEXT("Network connection failed");
+				ShowNetworkErrorPopup(ErrorCode, ErrorContent);
+
+				InDelegate.ExecuteIfBound(ResponseData, false);
+			}
+		});
+
+	AddNetworkWaitCount(1);
+	Request->ProcessRequest();
+}
+// =================================================================================
+// RequestEvaluationResult
+// =================================================================================
+
+void UKLingoNetworkSystem::RequestEvaluationResult(int32 RoomId, FResponseEvaluationResultDelegate InDelegate)
+{
+	// URL 형식: /evaluations/rooms/{room_id}
+	FString Endpoint = FString::Printf(TEXT("%s/%d"), *RequestAPI::evaluations_rooms, RoomId);
+	FString Url = NetworkConfig::GetFullUrl(Endpoint);
+	auto Request = SetupHttpRequest(Url, NETWORK_GET);
+
+	LogNetwork(ENetworkLogType::Get, *Request->GetURL());
+
+	Request->OnProcessRequestComplete().BindLambda(
+		[this, InDelegate](FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSuccess)
+		{
+			AddNetworkWaitCount(-1);
+
+			FResponseEvaluationResult ResponseData;
+
+			if (bSuccess && HttpResponse.IsValid())
+			{
+				const int32 ResponseCode = HttpResponse->GetResponseCode();
+
+				NETWORK_LOG(TEXT("[RES] RequestEvaluationResult - Code: %d, Response: %s"), 
+					ResponseCode, *HttpResponse->GetContentAsString());
+
+				if (IsResSuccess(ResponseCode))
+				{
+					ResponseData.SetFromHttpResponse(HttpResponse);
+					ResponseData.PrintData();
+					InDelegate.ExecuteIfBound(ResponseData, true);
+				}
+				else
+				{
+					ShowNetworkErrorPopup(ResponseCode, HttpResponse->GetContentAsString());
+					InDelegate.ExecuteIfBound(ResponseData, false);
+				}
+			}
+			else
+			{
+				NETWORK_LOG(TEXT("[GET] RequestEvaluationResult failed - bSuccess: %s, Response valid: %s"),
+					bSuccess ? TEXT("true") : TEXT("false"),
+					HttpResponse.IsValid() ? TEXT("true") : TEXT("false"));
+
+				int32 ErrorCode = HttpResponse.IsValid() ? HttpResponse->GetResponseCode() : 0;
+				FString ErrorContent = HttpResponse.IsValid() ? HttpResponse->GetContentAsString() : TEXT("Network connection failed");
+				ShowNetworkErrorPopup(ErrorCode, ErrorContent);
+
+				InDelegate.ExecuteIfBound(ResponseData, false);
+			}
+		});
+
+	AddNetworkWaitCount(1);
+	Request->ProcessRequest();
 }

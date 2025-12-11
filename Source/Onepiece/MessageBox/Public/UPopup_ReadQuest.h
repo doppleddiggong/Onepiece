@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "ALingoGameState.h"
 #include "EQuestRole.h"
 #include "NetworkData.h"
 #include "UBasePopup.h"
@@ -16,32 +17,36 @@ class ONEPIECE_API UPopup_ReadQuest : public UBasePopup
 {
 	GENERATED_BODY()
 
-protected:
-	virtual void NativeConstruct() override;
-
 public:
 	UFUNCTION(BlueprintCallable, Category = "Quest")
-	void InitPopup(const FResponseScenario& InScenarioData);
+	void InitRead(const FResponseReadScenario& InScenarioData);
 
-	UFUNCTION()
-	void InitQuestInfo(EQuestRole QuestRole);
+	UFUNCTION(BlueprintCallable, Category = "Quest")
+	void InitListen(const FResponseListenScenario& InScenarioData);
+
 	
 private:
+	UFUNCTION()
+	void InitQuestInfo(EQuestRole QuestRole);
+
 	UFUNCTION(BlueprintCallable, Category = "Close")
 	void OnClickClose();
 
 	void ListenAudio(const FString& AudioText);
 	void OnResponseListenAudio(FResponseListenAudio& ResponseData, bool bWasSuccessful);
+
 	
 public:
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
-	class UWordWidget* WordWidget;
+	TObjectPtr<class UWordWidget> WordWidget;
 
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
-	class UTextureButton* Btn_Exit;
+	TObjectPtr<class UTextureButton>Btn_Exit;
 	
 private:
-	FResponseScenario ScenarioData;
+	FResponseReadScenario ReadData;
+	FResponseListenScenario ListenData;
+	EQuestType QuestType = EQuestType::Read;
 
 	bool bIsRequest = false;
 };

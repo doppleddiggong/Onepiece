@@ -8,17 +8,6 @@
 #include "ALingoGameState.generated.h"
 
 UENUM(Blueprintable)
-enum class EGameState : uint8
-{
-	None,
-
-	QuestStart,		// 퀘스트 시작
-	QuestEnd,		// 퀘스트 종료 
-	
-	AllQuestsEnd,	// 모든 퀘스트 종료
-};
-
-UENUM(Blueprintable)
 enum class EQuestType : uint8
 {
 	None = 0,
@@ -29,24 +18,11 @@ enum class EQuestType : uint8
 	Speak = 4
 };
 
-USTRUCT(BlueprintType)
-struct FQuestData
-{
-	GENERATED_BODY()
-
-	// 시나리오 ID
-	UPROPERTY(BlueprintReadOnly, Category = "QuestData")
-	int32 ScenarioIndex;
-	// 스테이지 ID
-	UPROPERTY(BlueprintReadOnly, Category = "QuestData")
-	EQuestType QuestType;
-	// 레벨(난이도)
-	UPROPERTY(BlueprintReadOnly, Category = "QuestData")
-	int32 ScenarioLevel;
-
-	// 기본 생성자
-	FQuestData() : ScenarioIndex(1), QuestType(EQuestType::None), ScenarioLevel(1) {}
-};
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnReadResultUpdated, const FResponseReadResult&, Result);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnListenResultUpdated, const FResponseListenResult&, Result);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnQuestScenarioDataUpdated);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnRoomIdUpdated, int64, NewRoomId);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnRoomLevelUpdated, int32, NewRoomLevel);
 
 UCLASS()
 class ONEPIECE_API ALingoGameState : public AGameState
@@ -58,12 +34,19 @@ public:
 
 protected:
 	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
+	virtual void BeginPlay() override;
 
 public:
 	virtual void Tick(float DeltaSeconds) override;
-	
 
-	void SetStageData(const int InStageIndex, int InQuestIndex, const FResponseScenario& InResponseData);
+	FORCEINLINE int64 GetRoomId() { return RoomId; };
+	FORCEINLINE int32 GetRoomLevel() { return RoomLevel; };
+	FORCEINLINE float GetRemainMissionTime() { return RemainMissionTime; }
+	FORCEINLINE float GetTimeTaken() { return TimeLimit - RemainMissionTime; }
+	FORCEINLINE bool IsQuestIng() { return QuestType != EQuestType::None;	}
+	FORCEINLINE EQuestType GetCurrentQuestType() const { return QuestType; }
+	FORCEINLINE const FResponseReadScenario& GetReadScenarioData() const {return ReadScenarioData;}
+	FORCEINLINE const FResponseListenScenario& GetListenScenarioData() const {return ListenScenarioData;}
 
 	/// @brief 미션 타이머를 시작합니다 (서버에서만 호출)
 	UFUNCTION(BlueprintCallable, Category = "Mission")
@@ -74,86 +57,100 @@ public:
 	void StopMissionTimer();
 
 	UFUNCTION(BlueprintCallable, Category = "Mission")
-	float GetRemainMissionTime()
-	{
-		return RemainMissionTime;
-	}
+	void DecreaseMissionTimer(const float InValue);
 
-	UFUNCTION(BlueprintCallable, Category = "Mission")
-	bool IsQuestIng()
-	{
-		return GameState == EGameState::QuestStart;
-	}
+	void UpdateRemainMissionTime(const float InTimeLimit);
 
-	//--------------------------------------------------------------//
-	// Read Quest Functions
-	//--------------------------------------------------------------//
-	/// @brief Read 퀘스트 성공 시 OnRep 콜백
-	UFUNCTION()
-	void OnRep_QuestSuccess();
-
-	FORCEINLINE const FResponseScenario& GetScenarioData() const {return CurScenarioData;}
-	//FORCEINLINE EGameState GetGameState() { return GameState; }
-
+	void SetReadScenarioData(const FResponseReadScenario& InResponseData);
+	void SetListenScenarioData(const FResponseListenScenario& InResponseData);
+	
 protected:
-	/// @brief Stage1 시작 시 모든 클라이언트(서버 포함)에 Read Quest 팝업 표시 요청
-	/// @param InStageIndex 스테이지 인덱스
-	/// @param InScenarioData 시나리오 데이터
 	UFUNCTION(NetMulticast, Reliable)
-	void Multicast_ShowReadQuestPopup(int InStageIndex, const FResponseScenario& InScenarioData);
+	void Multicast_UpdateQuestType(const EQuestType InQuestType);
 
+	UFUNCTION(NetMulticast, Reliable)
+	void Multicast_ShowReadQuestPopup(const FResponseReadScenario& InScenarioData);
+
+	UFUNCTION(NetMulticast, Reliable)
+	void Multicast_ShowListenQuestPopup(const FResponseListenScenario& InScenarioData);
+
+	UFUNCTION()
+	void OnRep_ReadScenarioData();
+
+	UFUNCTION()
+	void OnRep_ReadResult();
+
+	UFUNCTION()
+	void OnRep_ListenScenarioData();
+
+	UFUNCTION()
+	void OnRep_ListenResult();
+
+	UFUNCTION()
+	void OnRep_RoomId();
+
+	UFUNCTION()
+	void OnRep_RoomLevel();
+	
 private:
 	/// @brief 타이머 종료 시 호출됩니다 (서버에서만 실행)
 	void OnMissionTimerEnd();
 	
 public:
+	FOnReadResultUpdated OnReadResultUpdated;
+	FOnListenResultUpdated OnListenResultUpdated;
+	FOnQuestScenarioDataUpdated OnQuestScenarioDataUpdated;
+	FOnRoomIdUpdated OnRoomIdUpdated;
+	FOnRoomLevelUpdated OnRoomLevelUpdated;
+
+	FORCEINLINE int GetWrongReadAnswerNum() { return WrongReadAnswerList.Num(); }
+	
+	UPROPERTY(ReplicatedUsing = OnRep_ReadScenarioData)
+	FResponseReadScenario ReadScenarioData;
+
+	UPROPERTY(Replicated)
+	TArray<int32> WrongReadAnswerList;
+
+	UPROPERTY(Replicated)
+	FResponseReadResult ReqReadResult;
+	
+	UPROPERTY(ReplicatedUsing = OnRep_ReadResult)
+	FResponseReadResult ReadResult;
+	//--------------------------------------------------------------//
+
+	FORCEINLINE int GetWrongListenAnswerNum() { return WrongListenAnswerList.Num(); }
+
+	UPROPERTY(ReplicatedUsing = OnRep_ListenScenarioData)
+	FResponseListenScenario ListenScenarioData;
+	
+	UPROPERTY(Replicated)
+	TArray<int32> WrongListenAnswerList;
+
+	UPROPERTY(Replicated)
+	FResponseListenResult ReqListenResult;
+
+	UPROPERTY(ReplicatedUsing = OnRep_ListenResult)
+	FResponseListenResult ListenResult;
+	//--------------------------------------------------------------//
+
+protected:
 	UPROPERTY(Replicated, BlueprintReadOnly, Category = "Mission")
 	float RemainMissionTime = 0.f;
-
-public:
-	// 현재 퀘스트 정보
-	UPROPERTY(Replicated, BlueprintReadOnly, Category = "Quest")
-	FQuestData CurrentQuest;
-	
-	// 퀘스트 진행중인지 여부
-	UPROPERTY(Replicated, BlueprintReadOnly, Category = "State")
-	EGameState GameState;
 
 	/// @brief 타이머 활성화 상태
 	UPROPERTY(Replicated, BlueprintReadOnly, Category = "Mission")
 	bool bIsTimerActive = false;
-	
-	//--------------------------------------------------------------//
 
-public:
-	/// @brief 1. Reading Quest 데이터 (모든 클라이언트에 복제됨)
-	UPROPERTY(Replicated, BlueprintReadOnly, Category = "Scenario")
-	FResponseScenario CurScenarioData;
-
-	/// @brief 오답 캐리어 목록
-	UPROPERTY(Replicated)
-	TArray<int32> WrongLuggageList;
-
-	UPROPERTY(Replicated, BlueprintReadOnly, Category = "QuestResult")
-	FResponseQuestResult CurQuestResult;
-	//--------------------------------------------------------------//
-
-public:
-
-	//--------------------------------------------------------------//
-	// Read Quest Data
-	//--------------------------------------------------------------//
-
-	/// @brief Step1(Read) 퀘스트 결과 기록
 	UPROPERTY(Replicated, BlueprintReadOnly, Category = "Quest")
-	FReadQuestResult QuestResult;
+	EQuestType QuestType;
 
-	/// @brief 퀘스트 성공 플래그
-	UPROPERTY(ReplicatedUsing = OnRep_QuestSuccess, BlueprintReadOnly, Category = "Quest")
-	bool bQuestSuccess = false;
-	//--------------------------------------------------------------//
-
-
-public:
+	/// @brief 방 ID (Host가 생성하고 Guest들과 공유)
+	UPROPERTY(ReplicatedUsing=OnRep_RoomId, BlueprintReadOnly, Category = "Room")
 	int64 RoomId = 0;
+
+	UPROPERTY(ReplicatedUsing=OnRep_RoomLevel, BlueprintReadOnly, Category = "Room")
+	int32 RoomLevel = 1;
+	
+private:
+	float TimeLimit = 0;
 };

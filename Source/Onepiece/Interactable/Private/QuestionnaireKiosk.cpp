@@ -124,15 +124,12 @@ void AQuestionnaireKiosk::OnResponseData(FQuestWriteInfo& InResponseData, bool b
 
 void AQuestionnaireKiosk::ShowPopup()
 {
-	if (const auto PopupMgr = UPopupManager::Get(GetWorld()))
+	if (auto Popup = UPopupManager::ShowPopupAs<UPopup_Questionnaire>(GetWorld(), EPopupType::Questionnaire))
 	{
-		if (const auto Popup = Cast<UPopup_Questionnaire>(PopupMgr->ShowPopup(EPopupType::Questionnaire)))
-		{
-			// 팝업 초기화
-			Popup->InitPopup(QuestionnaireData);
-			
-			PRINTLOG(TEXT("[PopupTester] Interview popup opened with %d questions"), QuestionnaireData.question.Num());
-		}
+		// 팝업 초기화
+		Popup->InitPopup(QuestionnaireData);
+		
+		PRINTLOG(TEXT("[PopupTester] Interview popup opened with %d questions"), QuestionnaireData.question.Num());
 	}
 }
 

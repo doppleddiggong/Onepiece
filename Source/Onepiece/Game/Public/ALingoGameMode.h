@@ -6,11 +6,6 @@
 #include "GameFramework/GameMode.h"
 #include "ALingoGameMode.generated.h"
 
-struct FResponseScenario;
-
-/**
- *
- */
 UCLASS()
 class ONEPIECE_API ALingoGameMode : public AGameMode
 {
@@ -18,33 +13,23 @@ class ONEPIECE_API ALingoGameMode : public AGameMode
 
 public:
 	ALingoGameMode();
-	//--------------------------------------------------------------//
-	// Read Quest Functions
-	//--------------------------------------------------------------//
-
-	/// @brief Read 퀘스트를 시작하고 역할과 데이터를 모두 설정합니다 (서버에서만 호출)
-	UFUNCTION(BlueprintCallable, Category = "Quest")
-	void BeginReadQuest(int32 InStageIndex, const FResponseScenario& InResponseData);
 
 	UFUNCTION(BlueprintCallable, Category = "Quest")
-	void BeginListenQuest(int32 InStageIndex, const FResponseScenario& InResponseData);
+	void BeginReadQuest(const FResponseReadScenario& InResponseData);
 
-	//--------------------------------------------------------------//
-	// Speak Quest Functions
-	//--------------------------------------------------------------//
+	UFUNCTION(BlueprintCallable, Category = "Quest")
+	void BeginListenQuest(const FResponseListenScenario& InResponseData);
 
-	/// @brief Speak 퀘스트 시작 (서버에서만 호출)
-	/// @param InStageIndex 스테이지 인덱스
 	UFUNCTION(BlueprintCallable, Category = "Quest")
 	void BeginSpeakQuest(int32 InStageIndex);
 	
-	/// @brief 캐리어 선택을 처리합니다 (서버에서만 호출)
 	UFUNCTION()
-	void HandleCarrierSelection(class APlayerState* Player, class Aluggage* Carrier);
+	void HandleLuggageSelection(class APlayerState* Player, class Aluggage* luggage);
 
+private:
 	/// @brief 정답을 판정합니다
 	UFUNCTION()
-	bool ValidateAnswer(class ALingoPlayerState* Player, class Aluggage* Carrier);
+	bool ValidateAnswer(class ALingoPlayerState* Player, class Aluggage* Luggage);
 
 	/// @brief 정답 처리
 	UFUNCTION()
@@ -55,4 +40,7 @@ public:
 	/// @param bColorCorrect [in] 색상이 맞는지 여부
 	UFUNCTION()
 	void HandleWrongAnswer(class ALingoPlayerState* Player, bool bSymbolCorrect, bool bColorCorrect);
+
+	UFUNCTION()
+	void UpdateQuestRole();
 };

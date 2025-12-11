@@ -237,7 +237,7 @@ void AWeightSwitch::OnBeginOverlap(
 		// [개선] ScenarioData 유효성 체크
 		if (GS)
 		{
-			const int32 CorrectIdx = GS->GetScenarioData().correct_answer_index;
+			const int32 CorrectIdx = GS->GetReadScenarioData().correct_answer_index;
 
 			PRINTLOG(TEXT("[WeightSwitch] Server validating: LuggageIdx=%d, CorrectIdx=%d"),
 				Luggage->GetSpawnIdx(), CorrectIdx);
@@ -257,19 +257,20 @@ void AWeightSwitch::OnBeginOverlap(
 				if (AnswerFound) return;
 
 				AnswerFound = true;
-				// 마지막으로 정답 추가
-				GS->WrongLuggageList.Add(Luggage->GetSpawnIdx());
 
-				// [개선] Multicast RPC로 모든 클라이언트에 정답 팝업 표시
+
+				// [개선] Multicast RPC로 모든 클라이언트에 정답 팝업 표시 (정답 인덱스 전달)
 				FTimerHandle TimerHandle;
 				GetWorldTimerManager().SetTimer(TimerHandle, [this, GS, Luggage]
 				{
-					// 모든 클라이언트에 결과 팝업 표시
-					Multicast_ShowResultPopup();
+					int32 LuggageIdx = Luggage->GetSpawnIdx();
+					// 모든 클라이언트에 정답 인덱스와 함께 결과 팝업 표시
+					Multicast_ShowResultPopup(LuggageIdx);
 
 					// 오답 캐리어 로그 (서버에서만)
-					TArray<int32> WrongList = GS->WrongLuggageList;
-					if (WrongList.Num() == 0) return;
+					TArray<int32> WrongList = GS->WrongReadAnswerList;
+					if (WrongList.Num() == 0)
+						return;
 
 					PRINTLOG( TEXT("[AWeightSwitch] Wrong luggage :"));
 					for (auto Wrong : WrongList)
@@ -281,18 +282,18 @@ void AWeightSwitch::OnBeginOverlap(
 			else
 			{
 				// [개선] Multicast RPC로 모든 클라이언트에 오답 팝업 표시
-				FString LuggageColor = Luggage->GetColor();
-				FString LuggagePattern = Luggage->GetPattern();
-				int32 LuggageIdx = Luggage->GetSpawnIdx();
-
 				FTimerHandle TimerHandle;
-				GetWorldTimerManager().SetTimer(TimerHandle, [this, LuggageColor, LuggagePattern, LuggageIdx, GS, Luggage]
+				GetWorldTimerManager().SetTimer(TimerHandle, [this, GS, Luggage]
 				{
+					FString LuggageColor = Luggage->GetColor();
+					FString LuggagePattern = Luggage->GetPattern();
+					int32 LuggageIdx = Luggage->GetSpawnIdx();
+
 					// 모든 클라이언트에 오답 메시지 표시
 					Multicast_ShowWrongPopup(LuggageColor, LuggagePattern);
 
 					// 오답 목록에 인덱스 추가 (서버에서만)
-					GS->WrongLuggageList.Add(LuggageIdx);
+					GS->WrongReadAnswerList.Add(LuggageIdx);
 
 					// 큐브 소거 (서버에서만, 자동 복제됨)
 					Luggage->Destroy();
@@ -351,15 +352,32 @@ void AWeightSwitch::OnWeightSwitch(int InButtonIndex, bool InActive)
  * @details [문제] 서버에서만 팝업을 표시하여 클라이언트에서 보이지 않음
  *          [해결] Multicast RPC로 모든 머신에 팝업 전달
  */
-void AWeightSwitch::Multicast_ShowResultPopup_Implementation()
+void AWeightSwitch::Multicast_ShowResultPopup_Implementation(int32 CorrectAnswerIndex)
 {
-	// 모든 클라이언트(호스트 포함)에서 정답 팝업 표시
-	if (UPopupManager* PopupMgr = UPopupManager::Get(GetWorld()))
+	// 모든 클라이언트에서 로컬 GameState에 정답 인덱스 추가
+	if (ALingoGameState* GS = Cast<ALingoGameState>(GetWorld()->GetGameState()))
 	{
-		PopupMgr->ShowResult();
-		PRINTLOG(TEXT("[WeightSwitch] Showing result popup on %s"),
-			HasAuthority() ? TEXT("Server") : TEXT("Client"));
+		// 중복 체크 후 추가
+		if (!GS->WrongReadAnswerList.Contains(CorrectAnswerIndex))
+		{
+			GS->WrongReadAnswerList.Add(CorrectAnswerIndex);
+			PRINTLOG(TEXT("[Multicast_ShowResultPopup] Added correct answer index %d to local GameState"), CorrectAnswerIndex);
+		}
 	}
+
+	// 팝업 표시
+	if (auto Popup = UPopupManager::ShowPopupAs<UPopup_Result>(GetWorld(), EPopupType::Result))
+	{
+		Popup->InitPopup(EQuestType::Read);
+	}
+	
+	// // 모든 클라이언트(호스트 포함)에서 정답 팝업 표시
+	// if (UPopupManager* PopupMgr = UPopupManager::Get(GetWorld()))
+	// {
+	// 	PopupMgr->ShowResult();
+	// 	PRINTLOG(TEXT("[WeightSwitch] Showing result popup on %s"),
+	// 		HasAuthority() ? TEXT("Server") : TEXT("Client"));
+	// }
 }
 
 /**
@@ -374,16 +392,19 @@ void AWeightSwitch::Multicast_ShowWrongPopup_Implementation(const FString& Lugga
 	// 모든 클라이언트(호스트 포함)에서 오답 메시지 표시
 	if (UPopupManager* PopupMgr = UPopupManager::Get(GetWorld()))
 	{
-		FString Title = TEXT("Wrong Answer!");
-		FString Message = FString::Printf(TEXT("This is not the correct luggage.\n\nColor: %s\nPattern: %s"),
+		// FString Title = TEXT("Wrong Answer!");
+		FString Message = FString::Printf(TEXT("Wrong Answer\nThis is not the correct Answer.\n\nColor: %s\nPattern: %s"),
 			*LuggageColor, *LuggagePattern);
 
-		PopupMgr->ShowMsgBox(Title, Message, EMsgBoxType::OK,
-			FOnMsgBoxOkDelegate::CreateLambda([]() {
-				// 확인 버튼 클릭 시 아무 작업도 하지 않음 (팝업만 닫힘)
-			}));
+		if (auto DM = UBroadcastManager::Get(this))
+			DM->SendTutorMessage(FText::FromString(Message));
 
-		PRINTLOG(TEXT("[WeightSwitch] Showing wrong popup on %s (Color: %s, Pattern: %s)"),
-			HasAuthority() ? TEXT("Server") : TEXT("Client"), *LuggageColor, *LuggagePattern);
+		// PopupMgr->ShowMsgBox(Title, Message, EMsgBoxType::OK,
+		// 	FOnMsgBoxOkDelegate::CreateLambda([]() {
+		// 		// 확인 버튼 클릭 시 아무 작업도 하지 않음 (팝업만 닫힘)
+		// 	}));
+		//
+		// PRINTLOG(TEXT("[WeightSwitch] Showing wrong popup on %s (Color: %s, Pattern: %s)"),
+		// 	HasAuthority() ? TEXT("Server") : TEXT("Client"), *LuggageColor, *LuggagePattern);
 	}
 }

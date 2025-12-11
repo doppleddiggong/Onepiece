@@ -47,19 +47,25 @@ public:
 	static class ASpeakStageActor* GetSpeakStageActor(const UObject* WorldContextObject);
 	
 	UFUNCTION(BlueprintCallable, Category = "Utils")
-	static FString GetStageStartMessage(const int StageIndex);
-
+	static FString GetStageStartMessage(const EQuestType QuestType);
+	
 	UFUNCTION(BlueprintCallable, Category = "Utils")
-	static FString GetStageEndMessage(const int StageIndex);
-
+	static FString GetStageEndMessage(const EQuestType QuestType);
+	
 	UFUNCTION(BlueprintCallable, Category = "Utils")
-	static float GetMissionPlayTime(const int Level);
+	static int32 GetStageTypeIndex(const EQuestType QuestType);
+	
+	UFUNCTION(BlueprintCallable, Category = "Utils")
+	static float GetMissionPlayTime();
 
 	UFUNCTION(BlueprintCallable, Category = "Utils")
 	static FString GetFormatTimer(const float InRemainTime );
 
 	UFUNCTION(BlueprintCallable, Category = "Utils")
-	static EResourceTextureType ConvertGradeType(const float Score);
+	static EResourceTextureType ConvertGradeScore(const float Score);
+
+	UFUNCTION(BlueprintCallable, Category = "Utils")
+	static EResourceTextureType ConvertGradeString(const FString& Grade);
 	
 	/// @brief 마우스 커서를 표시하고 게임+UI 입력 모드로 설정합니다.
 	/// @param WorldContextObject [in] World 컨텍스트 객체
@@ -78,4 +84,9 @@ public:
 	static class APlayerActor* GetPlayerActor(const UObject* WorldContextObject);
 
 	static class APlayerControl* GetPlayerControl(const UObject* WorldContextObject);
+
+
+	static FString GetTimeRank(float InTimeTaken);
+
+	static FString GetAccuracyPercentage(int WrongCnt);
 };

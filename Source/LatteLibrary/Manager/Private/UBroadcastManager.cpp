@@ -56,11 +56,6 @@ void UBroadcastManager::SendWeightSwitch(int InButtonIndex, bool InActive)
 	OnWeightSwitch.Broadcast(InButtonIndex, InActive);
 }
 
-void UBroadcastManager::SendUserNameChanged(const FString& UserName)
-{
-	OnUpdateUserName.Broadcast(UserName);
-}
-
 void UBroadcastManager::SendUpdateMissionTimerState(bool bIsActive, float TimeLimit)
 {
 	OnUpdateMissionTimerState.Broadcast(bIsActive, TimeLimit);
@@ -84,4 +79,9 @@ void UBroadcastManager::SendTutorMessage(const FText& Message)
 void UBroadcastManager::SendAddItemToBoxList(const TArray<FResultStatData>& ItemDataList)
 {
 	OnAddItemToBoxList.Broadcast(ItemDataList);
+}
+
+void UBroadcastManager::SendTeleport(const FVector& TargetLocation)
+{
+	OnTeleport.Broadcast(TargetLocation);
 }

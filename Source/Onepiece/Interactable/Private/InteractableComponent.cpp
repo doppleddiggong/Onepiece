@@ -545,4 +545,18 @@ void UInteractableComponent::BillboardInteractWidget()
 	// 위젯 회전 설정
 	WidgetComp->SetWorldRotation(Rotation);
 }
+
+void UInteractableComponent::UpdateInteractPrompt(const FString& NewPrompt)
+{
+	// InteractionPrompt 업데이트
+	InteractionPrompt = NewPrompt;
+
+	// 위젯이 없으면 리턴
+	if (!WidgetComp)
+		return;
+
+	// UInteractWidget의 Txt_Desc 업데이트
+	if (auto InteractWidget = Cast<UInteractWidget>(WidgetComp->GetWidget()))
+		InteractWidget->UpdateDesc(NewPrompt);
+}
 #pragma endregion

@@ -4,6 +4,8 @@
 #include "LuggageManager.h"
 
 #include "ALingoGameState.h"
+#include "ALuggageHolder.h"
+#include "EngineUtils.h"
 #include "luggage.h"
 #include "NetworkData.h"
 #include "UGameDataManager.h"
@@ -13,21 +15,7 @@
 ALuggageManager::ALuggageManager()
 {
 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
-	PrimaryActorTick.bCanEverTick = true;
-}
-
-// Called when the game starts or when spawned
-void ALuggageManager::BeginPlay()
-{
-	Super::BeginPlay();
-	
-}
-
-// Called every frame
-void ALuggageManager::Tick(float DeltaTime)
-{
-	Super::Tick(DeltaTime);
-	
+	PrimaryActorTick.bCanEverTick = false;
 }
 
 void ALuggageManager::StartSpawning()
@@ -54,7 +42,7 @@ void ALuggageManager::SpawnLuggage()
 	ALingoGameState* GS = Cast<ALingoGameState>(GetWorld()->GetGameState());
 	if (!GS) return;
 
-	const TArray<FScenarioTargetData>& ScenarioData = GS->GetScenarioData().target_data;
+	const TArray<FScenarioTargetData>& ScenarioData = GS->GetReadScenarioData().target_data;
 	
 	// 모두 스폰했으면 타이머 중지
 	if (CurrentSpawnIndex >= ScenarioData.Num())
@@ -79,6 +67,7 @@ void ALuggageManager::SpawnLuggage()
 		// 인덱스로 상자 색&무늬 지정
 		int32 ColorIdx = FCString::Atoi(*SD.word2.code);
 		NewLuggage->ApplyColorToMesh(ColorIdx);
+		
 		int32 PatternIdx = FCString::Atoi(*SD.word1.code);
 		NewLuggage->ApplyPatternToMesh(PatternIdx);
 	}
@@ -86,3 +75,24 @@ void ALuggageManager::SpawnLuggage()
 	CurrentSpawnIndex++;
 }
 
+// void ALuggageManager::InitHolder(FResponseReadScenario& ResponseData)
+// {
+// 	// {
+// 	// 	"word1": { "name": "닭", "code": "6" },
+// 	// 	"word2": { "name": "빨강", "code": "1" }
+// 	// }
+//
+// 	const FScenarioTargetData& CorrectAnswer = ResponseData.target_data[ResponseData.correct_answer_index];
+// 	const int32 PatternIdx = FCString::Atoi(*CorrectAnswer.word1.code);
+// 	const int32 ColorIdx = FCString::Atoi(*CorrectAnswer.word2.code);
+//
+// 	for (TActorIterator<ALuggageHolder> It(GetWorld()); It; ++It)
+// 	{
+// 		ALuggageHolder* Holder = *It;
+// 		if (Holder)
+// 		{
+// 			Holder->SetAnswerData(ColorIdx, PatternIdx);
+// 			break;
+// 		}
+// 	}
+// }

@@ -2,38 +2,73 @@
 
 
 #include "UQuestInfoWidget.h"
+#include "ALingoGameState.h"
 #include "ALingoPlayerState.h"
+#include "APlayerControl.h"
 #include "UBroadcastManager.h"
-
+#include "NetworkData.h"
 #include "ULingoGameHelper.h"
 #include "Components/TextBlock.h"
 
-
-
-void UQuestInfoWidget::NativeConstruct()
+void UQuestInfoWidget::InitQuestInfo()
 {
-	Super::NativeConstruct();
+	const auto GS = ULingoGameHelper::GetLingoGameState(GetWorld());
+	if (!GS || !GS->IsQuestIng())
+	{
+		SetVisibility(ESlateVisibility::Collapsed);
+		return;
+	}
 
-	if (auto BM = UBroadcastManager::Get(GetWorld()))
-		BM->OnUpdateQuestRole.AddDynamic(this, &UQuestInfoWidget::InitQuestInfo);
+	const EQuestType QuestType = GS->GetCurrentQuestType();
+	auto QuestRole = ULingoGameHelper::GetLingoPlayerState(GetWorld())->QuestRole;
+
+	SetVisibility(ESlateVisibility::Visible);
+
+	if (QuestType == EQuestType::Read)
+	{
+		const FResponseReadScenario& ReadScenario = GS->GetReadScenarioData();
+
+		Txt_Message->SetText(FText::FromString("Press to view the text again."));
+		
+		// if (QuestRole == EQuestRole::Both)
+		// 	SetQuestText(ReadScenario.full_data);
+		// else if (QuestRole == EQuestRole::OnlyQuestion1)
+		// 	SetQuestText(ReadScenario.word_data1);
+		// else if (QuestRole == EQuestRole::OnlyQuestion2)
+		// 	SetQuestText(ReadScenario.word_data2);
+	}
+	else if (QuestType == EQuestType::Listen)
+	{
+		const FResponseListenScenario& ListenScenario = GS->GetListenScenarioData();
+
+		Txt_Message->SetText(FText::FromString("Press to listen again"));
+		
+		// if (QuestRole == EQuestRole::Both)
+		// 	SetQuestText(ListenScenario.full_data);
+		// else if (QuestRole == EQuestRole::OnlyQuestion1)
+		// 	SetQuestText(ListenScenario.word_data1);
+		// else if (QuestRole == EQuestRole::OnlyQuestion2)
+		// 	SetQuestText(ListenScenario.word_data2);
+	}
 }
 
-void UQuestInfoWidget::InitQuestInfo(EQuestRole QuestRole)
-{
-	auto GS = ULingoGameHelper::GetLingoGameState(GetWorld());
-	if ( !GS->IsQuestIng() )
-		return;
+// void UQuestInfoWidget::SetQuestText(const FWordData& WordData) const
+// {
+// 	if (Txt_Message)
+// 		Txt_Message->SetText(FText::FromString(WordData.Kor));
+// }
 
-	if ( QuestRole == EQuestRole::Both )
-	{
-		Txt_Message->SetText( FText::FromString(GS->CurScenarioData.full_data.Kor));
-	}
-	else if ( QuestRole == EQuestRole::OnlyQuestion1 )
-	{
-		Txt_Message->SetText( FText::FromString(GS->CurScenarioData.word_data1.Kor));
-	}
-	else if ( QuestRole == EQuestRole::OnlyQuestion2 )
-	{
-		Txt_Message->SetText( FText::FromString(GS->CurScenarioData.word_data2.Kor));
-	}
+void UQuestInfoWidget::OnQuestScenarioDataReceived()
+{
+	this->InitQuestInfo();
+}
+
+void UQuestInfoWidget::OnReadResultReceived(const FResponseReadResult& /*ResponseData*/)
+{
+	SetVisibility(ESlateVisibility::Collapsed);
+}
+
+void UQuestInfoWidget::OnListenResultReceived(const FResponseListenResult& /*ResponseData*/)
+{
+	SetVisibility(ESlateVisibility::Collapsed);
 }

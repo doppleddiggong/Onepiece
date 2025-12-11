@@ -29,6 +29,7 @@ class SummaryGenerator:
         """DevLog 폴더의 파일들을 카테고리별로 스캔"""
         result = {
             "agent": [],
+            "agent_klingo": [],
             "daily": [],
             "weekly": [],
             "monthly": [],
@@ -38,10 +39,12 @@ class SummaryGenerator:
         # Agent Logs
         agent_log_dir = self.devlog_dir / "AgentLog"
         if agent_log_dir.exists():
-            for user_dir in sorted(agent_log_dir.iterdir()):
-                if user_dir.is_dir():
-                    for md_file in sorted(user_dir.glob("*.md"), reverse=True):
+            for item in sorted(agent_log_dir.iterdir()):
+                if item.is_dir():
+                    for md_file in sorted(item.glob("*.md"), reverse=True):
                         result["agent"].append(md_file)
+                elif item.is_file() and item.suffix == '.md':
+                    result["agent_klingo"].append(item)
 
         # Daily Logs
         daily_dir = self.devlog_dir / "Daily"
@@ -184,6 +187,11 @@ class SummaryGenerator:
 
         return f"{user} - {file_path.stem}"
 
+    def format_klingo_log_title(self, file_path: Path) -> str:
+        """KLingo AgentLog 파일명을 읽기 좋은 제목으로 변환"""
+        title = file_path.stem.replace('KLingo_', '').replace('_', ' ')
+        return title
+
     def format_daily_log_title(self, file_path: Path) -> str:
         """Daily log 파일명 포맷팅"""
         return file_path.stem  # 2025-10-01 형식 그대로 사용
@@ -216,6 +224,14 @@ class SummaryGenerator:
             lines.append("### Agent Logs")
             for file in devlog_files["agent"]:
                 title = self.format_agent_log_title(file)
+                rel_path = self.get_relative_path(file)
+                lines.append(f"* [{title}]({rel_path})")
+            lines.append("")
+
+        if devlog_files["agent_klingo"]:
+            lines.append("#### KLingo")
+            for file in sorted(devlog_files["agent_klingo"]):
+                title = self.format_klingo_log_title(file)
                 rel_path = self.get_relative_path(file)
                 lines.append(f"* [{title}]({rel_path})")
             lines.append("")

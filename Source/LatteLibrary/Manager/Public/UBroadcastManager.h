@@ -97,14 +97,6 @@ public:
 	void SendWeightSwitch(int InButtonIndex, bool InActive);
 
 
-	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnUserNameChanged, FString, UserName);
-	UPROPERTY(BlueprintAssignable, Category="Events")
-	FOnUserNameChanged OnUpdateUserName;
-
-	UFUNCTION(BlueprintCallable, Category="Events")
-	void SendUserNameChanged(const FString& UserName);
-
-
 	DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnUpdateMissionTimerState, bool, bIsActive, float, TimeLimit);
 	UPROPERTY(BlueprintAssignable, Category="Events")
 	FOnUpdateMissionTimerState OnUpdateMissionTimerState;
@@ -139,4 +131,11 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category="Events")
 	void SendAddItemToBoxList(const TArray<FResultStatData>& ItemDataList);
+
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnTeleportAllPlayers, FVector, TargetLocation);
+	UPROPERTY(BlueprintAssignable, Category="Events")
+	FOnTeleportAllPlayers OnTeleport;
+
+	UFUNCTION(BlueprintCallable, Category="Events")
+	void SendTeleport(const FVector& TargetLocation);
 };

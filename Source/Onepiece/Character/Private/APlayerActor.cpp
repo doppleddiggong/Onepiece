@@ -21,7 +21,12 @@
 #include "UPopupManager.h"
 #include "UPopup_ReadQuest.h"
 #include "ALingoGameState.h"
+#include "APlayerControl.h"
 #include "UToastWidget.h"
+#include "UBroadcastManager.h"
+#include "UFadeWidget.h"
+#include "UKLingoNetworkSystem.h"
+#include "UQuestInfoWidget.h"
 
 #include "Camera/CameraComponent.h"
 #include "Components/InputComponent.h"
@@ -32,6 +37,7 @@
 #include "Blueprint/UserWidget.h"
 #include "Components/StaticMeshComponent.h"
 #include "Engine/StaticMesh.h"
+#include "GameFramework/PlayerState.h"
 #include "Onepiece/Onepiece.h"
 
 #define MAINWIDGET_PATH TEXT("/Game/CustomContents/UI/WBP_MainWidget.WBP_MainWidget_C")
@@ -76,6 +82,7 @@ APlayerActor::APlayerActor()
 	HoldPosition->SetRelativeLocation(FVector(80.952382,0,-14.285714));
 
 	LookPitch = 0.f;
+	AnotherValue = 0.f;
 
 	// System Component
 	InteractionSystem = CreateDefaultSubobject<UInteractionSystem>(TEXT("InteractionSystem"));
@@ -128,15 +135,40 @@ void APlayerActor::BeginPlay()
 	VoiceConversationSystem->InitSystem(this);
 	HookSystem->InitSystem(HookCable, HookProjectileMesh);
 
+	// 텔레포트 이벤트 구독
+	if (auto DM = UBroadcastManager::Get(GetWorld()))
+	{
+		DM->OnTeleport.RemoveDynamic(this, &APlayerActor::OnTeleportAllPlayers);
+		DM->OnTeleport.AddDynamic(this, &APlayerActor::OnTeleportAllPlayers);
+
+		DM->OnUpdateQuestRole.RemoveDynamic(this, &APlayerActor::OnUpdateQuestRole);
+		DM->OnUpdateQuestRole.AddDynamic(this, &APlayerActor::OnUpdateQuestRole);
+	}
+
+	if (auto GS = ULingoGameHelper::GetLingoGameState(GetWorld()))
+	{
+		GS->OnQuestScenarioDataUpdated.RemoveDynamic(this, &APlayerActor::OnUpdateQuestInfo);
+		GS->OnQuestScenarioDataUpdated.AddDynamic(this, &APlayerActor::OnUpdateQuestInfo);
+
+		GS->OnReadResultUpdated.RemoveDynamic(this, &APlayerActor::OnReadResultUpdated);
+		GS->OnReadResultUpdated.AddDynamic(this, &APlayerActor::OnReadResultUpdated);
+
+		GS->OnListenResultUpdated.RemoveDynamic(this, &APlayerActor::OnListenResultUpdated);
+		GS->OnListenResultUpdated.AddDynamic(this, &APlayerActor::OnListenResultUpdated);
+
+		GS->OnRoomIdUpdated.RemoveDynamic(this, &APlayerActor::OnRoomIdUpdated);
+		GS->OnRoomIdUpdated.AddDynamic(this, &APlayerActor::OnRoomIdUpdated);
+
+		GS->OnRoomLevelUpdated.RemoveDynamic(this, &APlayerActor::OnRoomLevelUpdated);
+		GS->OnRoomLevelUpdated.AddDynamic(this, &APlayerActor::OnRoomLevelUpdated);
+	}
+	
 	if (IsLocallyControlled())
 	{
 		CreateMainWidget();
 		CreateToastWidget();
-		
-		FString MapName = GetWorld()->GetMapName();
-		MapName.RemoveFromStart(GetWorld()->StreamingLevelsPrefix);
-		
-		if (MapName.Contains(TEXT("Map1")) || MapName.Contains(TEXT("Game")))
+
+		if ( IsMainMap() )
 			ULingoGameHelper::HideMouseCursor(this);
 	}
 }
@@ -146,6 +178,20 @@ void APlayerActor::GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& O
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
 
 	DOREPLIFETIME(APlayerActor, LookPitch);
+	DOREPLIFETIME(APlayerActor, AnotherValue);
+}
+
+bool APlayerActor::IsMainMap()
+{
+	FString MapName = GetWorld()->GetMapName();
+	MapName.RemoveFromStart(GetWorld()->StreamingLevelsPrefix);
+
+	if ( MapName.Contains(TEXT("Map1")) )
+		return true;
+	else if ( MapName.Contains(TEXT("Game")) )
+		return true;
+
+	return false;
 }
 
 void APlayerActor::CreateMainWidget()
@@ -156,13 +202,39 @@ void APlayerActor::CreateMainWidget()
 	if(MainWidget)
 		return;
 
-	APlayerController* PC = Cast<APlayerController>(GetController());
-	if (!PC)
+	auto PC = Cast<APlayerControl>(GetController());
+	if ( !PC)
 		return;
-
+	
 	MainWidget = CreateWidget<UMainWidget>(PC, MainWidgetClass);
+
 	if (MainWidget)
+	{
 		MainWidget->AddToViewport();
+
+		if ( IsMainMap())
+		{
+			if (auto GS = ULingoGameHelper::GetLingoGameState(GetWorld()))
+				MainWidget->UpdateRoomWidget( GS->GetRoomLevel(), GS->GetRoomId());
+
+			// UserInfo가 로드되었으면 즉시 업데이트, 아니면 재시도
+			if (PC->HasUserInfo() )
+			{
+				MainWidget->UpdateStateWidget( PC->GetUserId(), PC->GetUserName());
+				return;
+			}
+
+			// UserInfo 로드 대기 후 재시도 (0.5초 후 한 번)
+			FTimerHandle RetryTimer;
+			GetWorld()->GetTimerManager().SetTimer(RetryTimer, [this, PC]()
+			{
+				if ( PC->GetUserId())
+				{
+					MainWidget->UpdateStateWidget( PC->GetUserId(), PC->GetUserName());
+				}
+			}, 0.5f, false);
+		}
+	}
 }
 
 void APlayerActor::CreateToastWidget()
@@ -182,14 +254,34 @@ void APlayerActor::CreateToastWidget()
 		ToastWidget->AddToViewport(GameLayer::Toast);
 }
 
+void APlayerActor::PossessedBy(AController* NewController)
+{
+	Super::PossessedBy(NewController);
+	
+	APlayerState* PS = GetPlayerState();
+	if (!PS)
+		return;
 
+	// 플레이어 인덱스 확인 (GameState의 PlayerArray 사용)
+	int32 PlayerIndex = -1;
+	if (AGameStateBase* GS = GetWorld()->GetGameState())
+		PlayerIndex = GS->PlayerArray.IndexOfByKey(PS);
+
+	// 2P에게 Another = 1 적용 (1P는 0)
+	AnotherValue = (PlayerIndex == 0) ? 0.0f : 1.0f;
+
+	ApplyAnotherValue();
+}
 
 void APlayerActor::OnRep_Controller()
 {
 	Super::OnRep_Controller();
 
 	if (IsLocallyControlled())
+	{
 		CreateMainWidget();
+		CreateToastWidget();
+	}
 }
 
 void APlayerActor::OnRep_LookPitch()
@@ -203,6 +295,33 @@ void APlayerActor::OnRep_LookPitch()
 	// 	CurrentRotation.Pitch = LookPitch;
 	// 	SpringArmComp->SetRelativeRotation(CurrentRotation);
 	// }
+}
+
+void APlayerActor::OnRep_AnotherValue()
+{
+	ApplyAnotherValue();
+}
+
+void APlayerActor::ApplyAnotherValue()
+{
+	USkeletalMeshComponent* MeshComp = GetMesh();
+	if (!MeshComp)
+		return;
+
+	// Dynamic Material Instance 생성 및 파라미터 설정
+	for (int32 i = 0; i < MeshComp->GetNumMaterials(); ++i)
+	{
+		UMaterialInterface* Material = MeshComp->GetMaterial(i);
+		if (!Material)
+			continue;
+
+		UMaterialInstanceDynamic* DynamicMaterial = Cast<UMaterialInstanceDynamic>(Material);
+		if (!DynamicMaterial)
+			DynamicMaterial = MeshComp->CreateAndSetMaterialInstanceDynamic(i);
+
+		if (DynamicMaterial)
+			DynamicMaterial->SetScalarParameterValue(FName("Another"), AnotherValue);
+	}
 }
 
 void APlayerActor::RecoveryMovementMode(const EMovementMode InMovementMode)
@@ -284,15 +403,58 @@ void APlayerActor::Cmd_Info_Implementation()
 	auto GS = ULingoGameHelper::GetLingoGameState(GetWorld());
 	if ( !GS->IsQuestIng() )
 		return;
-	
-	if (const auto PopupMgr = UPopupManager::Get(GetWorld()))
+
+	if ( GS->GetCurrentQuestType() == EQuestType::Read)
 	{
-		if (const auto Popup = Cast<UPopup_ReadQuest>(PopupMgr->ShowPopup(EPopupType::ReadQuest)))
-		{
-			Popup->InitPopup( GS->CurScenarioData);
-		}
+		if (auto Popup = UPopupManager::ShowPopupAs<UPopup_ReadQuest>(GetWorld(), EPopupType::ReadQuest))
+			Popup->InitRead(GS->ReadScenarioData);
+	}
+	else
+	{
+		auto QuestRole = GetQuestRole();
+
+		if ( QuestRole == EQuestRole::Both)
+			RequestListenAudio( GS->ListenScenarioData.full_data.Kor); 
+		else if ( QuestRole == EQuestRole::OnlyQuestion1)
+			RequestListenAudio( GS->ListenScenarioData.word_data1.Kor); 
+		else if ( QuestRole == EQuestRole::OnlyQuestion2)
+			RequestListenAudio( GS->ListenScenarioData.word_data2.Kor); 
 	}
 }
+
+EQuestRole APlayerActor::GetQuestRole()
+{
+	ALingoPlayerState* PS = GetPlayerState<ALingoPlayerState>();
+	return PS->QuestRole;
+}
+
+void APlayerActor::RequestListenAudio(const FString& AudioText)
+{
+	if (bIsRequest)
+		return;
+
+	if (auto KLingoNetwork = UKLingoNetworkSystem::Get(GetWorld()))
+	{
+		bIsRequest = true;
+
+		KLingoNetwork->RequestListenAudio(
+			AudioText,
+			FResponseListenAudioDelegate::CreateUObject(this, &APlayerActor::OnResponseListenAudio)
+		);
+	}
+}
+
+void APlayerActor::OnResponseListenAudio(FResponseListenAudio& ResponseData, bool bWasSuccessful)
+{
+	bIsRequest = false;
+
+	if (bWasSuccessful)
+	{
+		this->PlayTTSAudio(ResponseData.audio_base64);
+		UDialogManager::Get(GetWorld())->ShowToast(*ResponseData.audio_text);
+	}
+}
+
 
 void APlayerActor::ServerRPC_StopMove_Implementation()
 {
@@ -368,5 +530,131 @@ void APlayerActor::ClientRPC_ShowGameMessage_Implementation(const FString& Messa
 	if (UDialogManager* DialogManager = UDialogManager::Get(GetWorld()))
 	{
 		DialogManager->ShowToast(Message);
+	}
+}
+
+void APlayerActor::OnTeleportAllPlayers(FVector TargetLocation)
+{
+	// 서버에 텔레포트 요청
+	ServerRPC_Teleport(TargetLocation);
+
+	// 로컬 플레이어만 페이드 처리
+	if (!IsLocallyControlled())
+		return;
+
+	PRINTLOG(TEXT("APlayerActor::OnTeleportAllPlayers - Start teleport to %s"), *TargetLocation.ToString());
+
+	// 목표 위치 저장
+	PendingTeleportLocation = TargetLocation;
+
+	// FadeWidget 가져오기
+	if (!MainWidget)
+	{
+		PRINTLOG(TEXT("APlayerActor::OnTeleportAllPlayers - MainWidget is null"));
+		return;
+	}
+
+	UFadeWidget* FadeWidget = MainWidget->GetFadeWidget();
+	if (!FadeWidget)
+	{
+		PRINTLOG(TEXT("APlayerActor::OnTeleportAllPlayers - FadeWidget is null"));
+		return;
+	}
+
+	// FadeOut 완료 시 텔레포트 실행
+	FadeWidget->OnFadeOutComplete.AddDynamic(this, &APlayerActor::OnFadeOutCompleteForTeleport);
+
+	// FadeOut 시작
+	MainWidget->FadeOut(0.5f);
+}
+
+void APlayerActor::ServerRPC_Teleport_Implementation(FVector TargetLocation)
+{
+	SetActorLocation(TargetLocation);
+}
+
+void APlayerActor::OnFadeOutCompleteForTeleport()
+{
+	PRINTLOG(TEXT("APlayerActor::OnFadeOutCompleteForTeleport - Teleporting to %s"), *PendingTeleportLocation.ToString());
+
+	// 텔레포트 실행
+	SetActorLocation(PendingTeleportLocation);
+
+	// FadeWidget 가져오기
+	if (!MainWidget)
+		return;
+
+	UFadeWidget* FadeWidget = MainWidget->GetFadeWidget();
+	if (!FadeWidget)
+		return;
+
+	// FadeOut 델리게이트 해제
+	FadeWidget->OnFadeOutComplete.RemoveDynamic(this, &APlayerActor::OnFadeOutCompleteForTeleport);
+
+	// FadeIn 시작
+	MainWidget->FadeIn(0.5f);
+}
+
+void APlayerActor::OnUpdateQuestInfo()
+{
+	if (!IsLocallyControlled())
+		return;
+	MainWidget->GetQuestInfoWidget()->InitQuestInfo();
+}
+
+void APlayerActor::OnUpdateQuestRole(EQuestRole QuestRole)
+{
+	if (!IsLocallyControlled())
+		return;
+	MainWidget->GetQuestInfoWidget()->InitQuestInfo();
+}
+
+void APlayerActor::OnReadResultUpdated(const FResponseReadResult& Result)
+{
+	if (!IsLocallyControlled())
+		return;
+	
+	MainWidget->GetQuestInfoWidget()->SetVisibility(ESlateVisibility::Collapsed);
+}
+
+void APlayerActor::OnListenResultUpdated( const FResponseListenResult& Result)
+{
+	if (!IsLocallyControlled())
+		return;
+	
+	MainWidget->GetQuestInfoWidget()->SetVisibility(ESlateVisibility::Collapsed);
+}
+
+void APlayerActor::OnRoomIdUpdated(int64 NewRoomId)
+{
+	if (!IsLocallyControlled())
+		return;
+
+	if (MainWidget)
+	{
+		if (auto GS = ULingoGameHelper::GetLingoGameState(GetWorld()))
+		{
+			const int RoomLevel = GS->GetRoomLevel();
+			const int RoomId = NewRoomId;
+			
+			MainWidget->UpdateRoomWidget(RoomLevel, RoomId);
+		}
+	}
+}
+
+void APlayerActor::OnRoomLevelUpdated(int32 NewRoomLevel)
+{
+	if (!IsLocallyControlled())
+		return;
+
+	if (MainWidget)
+	{
+		if (auto GS = ULingoGameHelper::GetLingoGameState(GetWorld()))
+		{
+			const int RoomLevel = NewRoomLevel;
+			const int RoomId = GS->GetRoomId();
+			
+			MainWidget->UpdateRoomWidget(RoomLevel, RoomId);
+		}
 	}
 }

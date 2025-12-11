@@ -38,9 +38,8 @@ void AMainLevelScriptActor::OnResponseInterviewHello(FResponseInterviewHello& Re
 {
 	if (bWasSuccessful)
 	{
-		if (const auto PopupMgr = UPopupManager::Get(GetWorld()))
-			if (const auto Popup = Cast<UPopup_Interview>(PopupMgr->ShowPopup(EPopupType::Interview)))
-				Popup->InitPopup(ResponseData);
+		if (auto Popup = UPopupManager::ShowPopupAs<UPopup_Interview>(GetWorld(), EPopupType::Interview))
+			Popup->InitPopup(ResponseData);
 	}
 	else
 	{

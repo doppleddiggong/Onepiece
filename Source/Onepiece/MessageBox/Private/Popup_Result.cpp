@@ -4,27 +4,29 @@
 #include "Popup_Result.h"
 
 #include "ALingoGameState.h"
-#include "ALingoPlayerState.h"
 #include "APlayerControl.h"
+#include "FResultStatData.h"
 #include "GameLogging.h"
-#include "ScoreManager.h"
 #include "UImageButton.h"
 #include "UKLingoNetworkSystem.h"
 #include "ULingoGameHelper.h"
 #include "UPopupManager.h"
-#include "UPopup_ReadQuest.h"
+#include "UResultStatWidget.h"
 #include "UTextureButton.h"
+#include "UAnswerItem.h"
+#include "Components/HorizontalBox.h"
 #include "Components/ScrollBox.h"
 #include "Components/TextBlock.h"
+#include "Blueprint/UserWidget.h"
+#include "Components/VerticalBox.h"
 
-void UPopup_Result::NativeConstruct()
+void UPopup_Result::NativeDestruct()
 {
-	Super::NativeConstruct();
+	Super::NativeDestruct();
 }
 
-void UPopup_Result::InitPopup()
+void UPopup_Result::InitPopup(const EQuestType InQuestType)
 {
-	// 중복 바인딩 방지: 기존 바인딩 제거 후 재바인딩
 	if (Btn_Exit)
 	{
 		Btn_Exit->OnButtonClickedEvent.RemoveDynamic(this, &UPopup_Result::OnClickClose);
@@ -37,9 +39,48 @@ void UPopup_Result::InitPopup()
 		Btn_OK->OnButtonClickedEvent.AddDynamic(this, &UPopup_Result::OnClickClose);
 	}
 
-	SetWordWidget();
-	SetWrongList();
-	SetTimeTaken();
+	this->QuestType =InQuestType;
+
+	InitWordWidget();
+	InitWrongList();
+
+	// GameState에서 결과 확인
+	if (auto GS = Cast<ALingoGameState>(GetWorld()->GetGameState()))
+	{
+		if (QuestType == EQuestType::Read)
+		{
+			GS->OnReadResultUpdated.RemoveDynamic(this, &UPopup_Result::InitReadResult);
+			GS->OnReadResultUpdated.AddDynamic(this, &UPopup_Result::InitReadResult);
+		}
+		else if (QuestType == EQuestType::Listen)
+		{
+			GS->OnListenResultUpdated.RemoveDynamic(this, &UPopup_Result::InitListenResult);
+			GS->OnListenResultUpdated.AddDynamic(this, &UPopup_Result::InitListenResult);
+		}
+		
+		bool bHasResult = false;
+
+		if (QuestType == EQuestType::Read && !GS->ReadResult.grade.IsEmpty())
+		{
+			// 이미 결과가 있으면 바로 표시
+			PRINTLOG(TEXT("[Popup_Result] Read result already exists in GameState"));
+			InitReadResult(GS->ReadResult);
+			bHasResult = true;
+		}
+		else if (QuestType == EQuestType::Listen && !GS->ListenResult.grade.IsEmpty())
+		{
+			// 이미 결과가 있으면 바로 표시
+			PRINTLOG(TEXT("[Popup_Result] Listen result already exists in GameState"));
+			InitListenResult(GS->ListenResult);
+			bHasResult = true;
+		}
+
+		// 결과가 없으면 Host만 요청
+		if (!bHasResult &&  GetOwningPlayer()->HasAuthority())
+		{
+			RequestResult();
+		}
+	}
 }
 
 void UPopup_Result::OnClickClose()
@@ -51,141 +92,256 @@ void UPopup_Result::OnClickClose()
 	}
 }
 
-void UPopup_Result::SetWordWidget()
-{
-	// if (WordWidget)
-	{
-		ALingoGameState* GS = Cast<ALingoGameState>(GetWorld()->GetGameState());
-		if (!GS) return;
-		
-		Txt_Kor->SetText(FText::FromString(GS->CurScenarioData.full_data.Kor));
-		Txt_Eng->SetText(FText::FromString(GS->CurScenarioData.full_data.Eng));
-	}
-}
 
-void UPopup_Result::SetWrongList()
-{
-	if (!Scrl_WrongList) return;
 
-	ALingoGameState* GS = Cast<ALingoGameState>(GetWorld()->GetGameState());
-	if (!GS) return;
-	// 틀린 인덱스 리스트
-	TArray<int32> WrongList = GS->WrongLuggageList;
-	// 전체 캐리어 정보
-	const TArray<FScenarioTargetData>& ScenarioData = GS->GetScenarioData().target_data;
-	
-	// 기존 항목 제거
-	Scrl_WrongList->ClearChildren();
-
-	// WrongList의 각 항목을 텍스트로 추가
-	for (int32 i=0; i<WrongList.Num(); i++)
-	{
-		int32 WrongIndex = WrongList[i];
-		auto SD = ScenarioData[WrongIndex];
-
-		if (UTextBlock* TextBlock = NewObject<UTextBlock>(this))
-		{
-			// 맨 마지막 인덱스는 정답
-			if (i == WrongList.Num()-1)
-			{
-				TextBlock->SetText(FText::FromString(FString::Printf(TEXT("[정답] %s, %s"),
-								*SD.word1.name, *SD.word2.name)));
-				TextBlock->SetColorAndOpacity(FSlateColor(FLinearColor::Red));
-				
-				Scrl_WrongList->AddChild(TextBlock);
-				
-				break;
-			}
-			
-			TextBlock->SetText(FText::FromString(FString::Printf(TEXT("Try %d - [오답] %s, %s"),
-				i+1, *SD.word1.name, *SD.word2.name)));
-			TextBlock->SetColorAndOpacity(FSlateColor(FLinearColor::Black));
-			
-			Scrl_WrongList->AddChild(TextBlock);
-		}
-	}
-}
-
-void UPopup_Result::SetTimeRank()
-{
-	FString Rank = "";
-	if (UScoreManager* ScoreMgr = UScoreManager::Get(GetWorld()))
-	{
-		ScoreMgr->GetTimeRank(TimeTaken, Rank);
-
-		Txt_TimeRank->SetText(FText::FromString(Rank));
-
-		SetAccuracy();
-	}
-}
-
-void UPopup_Result::SetTimeTaken()
-{
-	ALingoGameState* GS = Cast<ALingoGameState>(GetWorld()->GetGameState());
-	if (GS)
-	{
-		float TimeRemain = GS->GetRemainMissionTime();
-		TimeTaken = 300 - TimeRemain;
-
-		int32 Minutes = FMath::FloorToInt(TimeTaken / 60.f);
-		int32 Seconds = FMath::FloorToInt(TimeTaken) % 60;
-
-		FString Format = FString::Printf(TEXT("%02d:%02d"), Minutes, Seconds);
-
-		Txt_TimeTaken->SetText(FText::FromString(Format));
-
-		SetTimeRank();
-		SetRankingRate();
-	}
-}
-
-void UPopup_Result::SetAccuracy()
-{
-	FString Accuracy = "";
-	if (UScoreManager* ScoreMgr = UScoreManager::Get(GetWorld()))
-	{
-		ScoreMgr->GetAccuracyPercentage(Accuracy);
-
-		Txt_Accuracy->SetText(FText::FromString(Accuracy));
-	}
-}
-
-void UPopup_Result::SetRankingRate()
+void UPopup_Result::InitWordWidget()
 {
 	if (auto GS = Cast<ALingoGameState>(GetWorld()->GetGameState()))
 	{
-		// 네트워크 송신
-		if (UKLingoNetworkSystem* Network = UKLingoNetworkSystem::Get(GetWorld()))
+		if ( QuestType == EQuestType::Read)
 		{
-			FRequestReadQuestResult Request;
-			Request.room_id	= GS->RoomId;
-
-			// PlayerController에서 UserInfo 가져오기
-			Request.user_id = Cast<APlayerControl>(GetOwningPlayer())->GetUserId();
-
-			Request.scenario_id = GS->CurrentQuest.ScenarioIndex;
-			Request.stage_type = (int32)GS->CurrentQuest.QuestType;
-			Request.state_type = GS->CurrentQuest.ScenarioLevel;
-			Request.result_time = TimeTaken;
-			Request.wrong_idx = GS->WrongLuggageList;
-
-			Network->RequestQuestResult(Request,
-					FResponseQuestResultDelegate::CreateUObject(this, &UPopup_Result::OnQuestResultResponse));
+			Txt_Kor->SetText(FText::FromString(GS->ReadScenarioData.full_data.Kor));
+			Txt_Eng->SetText(FText::FromString(GS->ReadScenarioData.full_data.Eng));
+		}
+		else if ( QuestType == EQuestType::Listen )
+		{
+			Txt_Kor->SetText(FText::FromString(GS->ListenScenarioData.full_data.Kor));
+			Txt_Eng->SetText(FText::FromString(GS->ListenScenarioData.full_data.Eng));
 		}
 	}
 }
 
-void UPopup_Result::OnQuestResultResponse(FResponseQuestResult& ResponseData, bool bWasSuccessful)
+void UPopup_Result::InitWrongList()
+{
+	ALingoGameState* GS = Cast<ALingoGameState>(GetWorld()->GetGameState());
+	if (!GS)
+		return;
+	
+	// 틀린 인덱스 리스트
+	TArray<int32> WrongList;
+	// 전체 캐리어 정보
+	TArray<FScenarioTargetData> ScenarioData;
+	
+	if ( QuestType == EQuestType::Read)
+	{
+		WrongList = GS->WrongReadAnswerList;
+		ScenarioData = GS->GetReadScenarioData().target_data;
+	}
+	else if ( QuestType == EQuestType::Listen )
+	{
+		WrongList = GS->WrongListenAnswerList;
+		ScenarioData = GS->GetListenScenarioData().target_data;
+	}
+	
+	// 기존 항목 제거
+	VerticalBox->ClearChildren();
+	// WrongList의 각 항목을 UAnswerItem으로 추가
+	for (int32 i = 0; i < WrongList.Num(); i++)
+	{
+		const FScenarioTargetData& SD = ScenarioData[WrongList[i]];
+
+		// UAnswerItem 위젯 생성
+		if (AnswerItemClass)
+		{
+			UAnswerItem* AnswerItem = CreateWidget<UAnswerItem>(this, AnswerItemClass);
+			if (AnswerItem)
+			{
+				// 마지막 인덱스는 정답
+				const bool bCorrect = (i == WrongList.Num() - 1);
+				const int32 Order = i + 1;
+				const int32 Word1Code = FCString::Atoi(*SD.word1.code);
+				const int32 Word2Code = FCString::Atoi(*SD.word2.code);
+
+				// AnswerItem 초기화
+				AnswerItem->InitInfo(QuestType, bCorrect, Order, Word1Code, Word2Code);
+
+				// HorizontalBox에 추가
+				VerticalBox->AddChild(AnswerItem);
+			}
+		}
+	}
+}
+
+void UPopup_Result::InitReadResult(const FResponseReadResult& ResponseData)
+{
+	if (auto GS = Cast<ALingoGameState>(GetWorld()->GetGameState()))
+	{
+		// Symbol로 타임 처리
+		auto TimeTaken = GS->GetTimeTaken();
+		const int32 Minutes = FMath::FloorToInt(TimeTaken / 60.f);
+		const int32 Seconds = FMath::FloorToInt(TimeTaken) % 60;
+
+		FResultStatData TimeResultData;
+		TimeResultData.WidgetType = EResultItemWidgetType::Symbol;
+		TimeResultData.ColorType = EColorStyleType::Blue;
+		TimeResultData.TitleText = FText::FromString(TEXT("TIME"));
+		TimeResultData.SymbolTextureType = EResourceTextureType::Time;
+		TimeResultData.SymbolValue = FString::Printf(TEXT("%02d:%02d"), Minutes, Seconds);
+		Result_Time->InitData(TimeResultData);
+	}
+
+	FResultStatData GradeResultData;
+	GradeResultData.WidgetType = EResultItemWidgetType::Grade;
+	GradeResultData.ColorType = EColorStyleType::Green;
+	GradeResultData.TitleText = FText::FromString(TEXT("GRADE"));
+	GradeResultData.GradeTextureType = ULingoGameHelper::ConvertGradeString(ResponseData.grade);
+	Result_Grade->InitData(GradeResultData);
+
+	FResultStatData TopRateResultData;
+	TopRateResultData.WidgetType = EResultItemWidgetType::Rate;
+	TopRateResultData.ColorType = EColorStyleType::Red;
+	TopRateResultData.TitleText = FText::FromString(TEXT("TOP"));
+	TopRateResultData.RatePercent = ResponseData.top_percent;
+	Result_TopRate->InitData(TopRateResultData);
+		
+	FResultStatData AverageScoreResultData;
+	AverageScoreResultData.WidgetType = EResultItemWidgetType::Symbol;
+	AverageScoreResultData.ColorType = EColorStyleType::Purple;
+	AverageScoreResultData.TitleText = FText::FromString(TEXT("SCORE"));
+	AverageScoreResultData.SymbolTextureType = EResourceTextureType::Score;
+	AverageScoreResultData.SymbolValue = FString::Printf(TEXT("%d"), ResponseData.average_score);
+	Result_AverageScore->InitData(AverageScoreResultData);
+}
+
+void UPopup_Result::InitListenResult(const FResponseListenResult& ResponseData)
+{
+	if (auto GS = Cast<ALingoGameState>(GetWorld()->GetGameState()))
+	{
+		// Symbol로 타임 처리
+		auto TimeTaken = GS->GetTimeTaken();
+		const int32 Minutes = FMath::FloorToInt(TimeTaken / 60.f);
+		const int32 Seconds = FMath::FloorToInt(TimeTaken) % 60;
+
+		FResultStatData TimeResultData;
+		TimeResultData.WidgetType = EResultItemWidgetType::Symbol;
+		TimeResultData.ColorType = EColorStyleType::Blue;
+		TimeResultData.TitleText = FText::FromString(TEXT("TIME"));
+		TimeResultData.SymbolTextureType = EResourceTextureType::Time;
+		TimeResultData.SymbolValue = FString::Printf(TEXT("%02d:%02d"), Minutes, Seconds);
+		Result_Time->InitData(TimeResultData);
+	}
+
+	FResultStatData GradeResultData;
+	GradeResultData.WidgetType = EResultItemWidgetType::Grade;
+	GradeResultData.ColorType = EColorStyleType::Green;
+	GradeResultData.TitleText = FText::FromString(TEXT("GRADE"));
+	GradeResultData.GradeTextureType = ULingoGameHelper::ConvertGradeString(ResponseData.grade);
+	Result_Grade->InitData(GradeResultData);
+
+	FResultStatData TopRateResultData;
+	TopRateResultData.WidgetType = EResultItemWidgetType::Rate;
+	TopRateResultData.ColorType = EColorStyleType::Red;
+	TopRateResultData.TitleText = FText::FromString(TEXT("TOP"));
+	TopRateResultData.RatePercent = ResponseData.top_percent;
+	Result_TopRate->InitData(TopRateResultData);
+		
+	FResultStatData AverageScoreResultData;
+	AverageScoreResultData.WidgetType = EResultItemWidgetType::Symbol;
+	AverageScoreResultData.ColorType = EColorStyleType::Purple;
+	AverageScoreResultData.TitleText = FText::FromString(TEXT("SCORE"));
+	AverageScoreResultData.SymbolTextureType = EResourceTextureType::Score;
+	AverageScoreResultData.SymbolValue = FString::Printf(TEXT("%d"), ResponseData.average_score);
+	Result_AverageScore->InitData(AverageScoreResultData);
+}
+
+void UPopup_Result::RequestResult()
+{
+	APlayerController* PC = GetOwningPlayer();
+	if (!PC)
+		return;
+
+	// Host 플레이어(첫 번째 플레이어)인지 확인
+	bool bIsHost = false;
+	if (APlayerState* PS = PC->GetPlayerState<APlayerState>())
+	{
+		if (AGameStateBase* GameStateBase = GetWorld()->GetGameState())
+		{
+			int32 PlayerIndex = GameStateBase->PlayerArray.IndexOfByKey(PS);
+			bIsHost = (PlayerIndex == 0);
+		}
+	}
+
+	// Host가 아니면 요청하지 않음
+	if (!bIsHost)
+	{
+		PRINTLOG(TEXT("[Popup_Result] Guest player - skipping request, waiting for Host"));
+		return;
+	}
+
+	PRINTLOG(TEXT("[Popup_Result] Host player - sending result request"));
+
+	if (auto GS = Cast<ALingoGameState>(GetWorld()->GetGameState()))
+	{
+		// 네트워크 송신 (Host만)
+		if (UKLingoNetworkSystem* Network = UKLingoNetworkSystem::Get(GetWorld()))
+		{
+			if ( QuestType == EQuestType::Read )
+			{
+				FRequestReadResult ReadRequest;
+				ReadRequest.room_id	= GS->GetRoomId();
+				ReadRequest.user_id = Cast<APlayerControl>(GetOwningPlayer())->GetUserId();
+				ReadRequest.scenario_id = 1;
+				ReadRequest.stage_type = ULingoGameHelper::GetStageTypeIndex(QuestType);
+				ReadRequest.state_type = 0;
+				ReadRequest.result_time = GS->GetTimeTaken();
+				ReadRequest.wrong_idx = GS->WrongReadAnswerList;
+				Network->RequestReadResult(ReadRequest,
+						FResponseReadResultDelegate::CreateUObject(this, &UPopup_Result::OnResponseReadResult));
+			}
+			else if ( QuestType == EQuestType::Listen )
+			{
+				FRequestListenResult ListenRequest;
+				ListenRequest.room_id = GS->GetRoomId();
+				ListenRequest.user_id = Cast<APlayerControl>(GetOwningPlayer())->GetUserId();
+				ListenRequest.scenario_id = 1;
+				ListenRequest.stage_type = ULingoGameHelper::GetStageTypeIndex(QuestType);
+				ListenRequest.state_type = 0;
+				ListenRequest.result_time = GS->GetTimeTaken();
+				ListenRequest.wrong_idx = GS->WrongListenAnswerList;
+				Network->RequestListenResult(ListenRequest,
+						FResponseListenResultDelegate::CreateUObject(this, &UPopup_Result::OnResponseListenResult));
+			}
+		}
+	}
+}
+
+void UPopup_Result::OnResponseReadResult(FResponseReadResult& ResponseData, bool bWasSuccessful)
 {
 	if (bWasSuccessful)
 	{
-		PRINTLOG(TEXT("[Result] Quest result submitted successfully"));
+		PRINTLOG(TEXT("[Result] Grade: %s, average_score: %d, Top Percent: %.2f%%"),
+			*ResponseData.grade, ResponseData.average_score, ResponseData.top_percent);
 
-		PRINTLOG(TEXT("[Result] Grade: %s, Point: %d, Top Percent: %.2f%%"),
-			*ResponseData.grade, ResponseData.point, ResponseData.top_percent);
+		// GameState에 결과 저장 (자동으로 복제됨)
+		if (auto GS = Cast<ALingoGameState>(GetWorld()->GetGameState()))
+		{
+			GS->ReadResult = ResponseData;
+			GS->OnReadResultUpdated.Broadcast(ResponseData);
+		}
+
+		this->InitReadResult(ResponseData);
 	}
-	else                                                                                                                                                                                                                          
+	else
 	{
-		PRINTLOG(TEXT("[Result] Quest result submission failed"));
+		PRINTLOG(TEXT("[Result] Quest result Failed"));
+	}
+}
+
+void UPopup_Result::OnResponseListenResult(FResponseListenResult& ResponseData, bool bWasSuccessful)
+{
+	if (bWasSuccessful)
+	{
+		// GameState에 결과 저장 (자동으로 복제됨)
+		if (auto GS = Cast<ALingoGameState>(GetWorld()->GetGameState()))
+		{
+			GS->ListenResult = ResponseData;
+			GS->OnListenResultUpdated.Broadcast(ResponseData);
+		}
+
+		this->InitListenResult(ResponseData);
+	}
+	else
+	{
+		PRINTLOG(TEXT("[Result] Quest result Failed"));
 	}
 }

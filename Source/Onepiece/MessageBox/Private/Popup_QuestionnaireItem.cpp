@@ -53,22 +53,19 @@ void UPopup_QuestionnaireItem::InitItem(const FWriteQuestionData& Data)
 
 void UPopup_QuestionnaireItem::OnClickButton()
 {
-	if (const auto PopupMgr = UPopupManager::Get(GetWorld()))
+	if (auto Popup = UPopupManager::ShowPopupAs<UPopup_WriteBoard>(GetWorld(), EPopupType::WriteBoard))
 	{
-		if (const auto Popup = Cast<UPopup_WriteBoard>(PopupMgr->ShowPopup(EPopupType::WriteBoard)))
+		// TODO: 단어 수 및 글자 수 구하기
+		TArray<FString> Tokens;
+		QuestionData.answer_kor.ParseIntoArrayWS(Tokens);
+		for (const auto& token : Tokens)
 		{
-			// TODO: 단어 수 및 글자 수 구하기
-			TArray<FString> Tokens;
-			QuestionData.answer_kor.ParseIntoArrayWS(Tokens);
-			for (const auto& token : Tokens)
-			{
-				PRINT_STRING(TEXT("Question 글 : %s"), *token);
-			}
-			PRINT_STRING(TEXT("Question 단어 수 : %d"), Tokens.Num());
-			PRINT_STRING(TEXT("Question 글자 수 : %d"), QuestionData.answer_kor.Len());
-			PRINT_STRING(TEXT("Question 첫 단어 글자 수 : %d"), Tokens[0].Len());
-			
-			Popup->InitPopup(QuestionData.Id, QuestionData.answer_kor);
+			PRINT_STRING(TEXT("Question 글 : %s"), *token);
 		}
+		PRINT_STRING(TEXT("Question 단어 수 : %d"), Tokens.Num());
+		PRINT_STRING(TEXT("Question 글자 수 : %d"), QuestionData.answer_kor.Len());
+		PRINT_STRING(TEXT("Question 첫 단어 글자 수 : %d"), Tokens[0].Len());
+		
+		Popup->InitPopup(QuestionData.Id, QuestionData.answer_kor);
 	}
 }

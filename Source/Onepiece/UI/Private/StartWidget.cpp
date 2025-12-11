@@ -28,22 +28,16 @@ void UStartWidget::NativeConstruct()
 
 void UStartWidget::OnStartPressed()
 {
-	if (const auto PopupMgr = UPopupManager::Get(GetWorld()))
+	if (auto Popup = UPopupManager::ShowPopupAs<UPopup_InputMsg>(GetWorld(), EPopupType::Login))
 	{
-		if (const auto Popup = Cast<UPopup_InputMsg>(PopupMgr->ShowPopup(EPopupType::Login)))
-		{
-			Popup->InitPopup(EPopupType::Login);
-		}
+		Popup->InitPopup(EPopupType::Login);
 	}
 }
 
 void UStartWidget::OnRegistPressed()
 {
-	if (const auto PopupMgr = UPopupManager::Get(GetWorld()))
+	if (auto Popup = UPopupManager::ShowPopupAs<UPopup_InputMsg>(GetWorld(), EPopupType::Register))
 	{
-		if (const auto Popup = Cast<UPopup_InputMsg>(PopupMgr->ShowPopup(EPopupType::Register)))
-		{
-			Popup->InitPopup(EPopupType::Register);
-		}
+		Popup->InitPopup(EPopupType::Register);
 	}
 }

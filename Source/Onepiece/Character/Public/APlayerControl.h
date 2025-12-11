@@ -24,6 +24,8 @@ public:
 	void UpdateQuestRole(EQuestRole QuestRole);
 
 	// --- User Info (레벨 전환에서 유지됨) ---
+
+	bool HasUserInfo() const {  return GetUserId() > 0; }
 	FString GetUserName() const { return UserInfo.username; }
 	int32 GetUserId() const { return UserInfo.id; }
 	const FResponseUserMe& GetUserInfo() const { return UserInfo; }
@@ -81,9 +83,22 @@ protected:
 	UFUNCTION(Server, Reliable)
 	void Server_SetUserInfo(const FResponseUserMe& InUserInfo);
 
+	UFUNCTION(Server, Reliable)
+	void Server_RequestDrop();
+
+
+private:
+	void RequestDrop(APlayerControl* Requester);
+
+	UFUNCTION(Client, Reliable)
+	void Client_ToastMessage(const FString& Message);
+	
+	void TEST_DropperDropProcess();
+	void TEST_AddItemToBoxList();
+	
 private:
     class IControllable* GetControllable() const;
-
+	
 	/// @brief 사용자 정보 (레벨 전환에서도 유지됨)
 	UPROPERTY()
 	FResponseUserMe UserInfo;

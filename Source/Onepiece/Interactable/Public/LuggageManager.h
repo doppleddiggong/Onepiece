@@ -15,14 +15,11 @@ public:
 	// Sets default values for this actor's properties
 	ALuggageManager();
 
-protected:
-	// Called when the game starts or when spawned
-	virtual void BeginPlay() override;
+	void StartSpawning();
+	void SpawnLuggage();
 
-public:
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
-
+	// void InitHolder(struct FResponseReadScenario& ResponseData);
+	
 public:
 	// Spawn
 	UPROPERTY(EditAnywhere, Category = "Spawn")
@@ -34,7 +31,4 @@ public:
 	FTimerHandle SpawnTimerHandle;
 	
 	int32 CurrentSpawnIndex = 0;
-	
-	void StartSpawning();
-	void SpawnLuggage();
 };

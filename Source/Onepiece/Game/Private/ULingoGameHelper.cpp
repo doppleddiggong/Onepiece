@@ -110,42 +110,52 @@ ASpeakStageActor* ULingoGameHelper::GetSpeakStageActor(const UObject* WorldConte
 	return nullptr;
 }
 
-FString ULingoGameHelper::GetStageStartMessage(const int StageIndex)
+FString ULingoGameHelper::GetStageStartMessage(const EQuestType QuestType)
 {
-	switch (StageIndex)
+	switch (QuestType)
 	{
-	case 1:	return GameMessage::Stage1Start;
-	case 2:	return GameMessage::Stage2Start;
-	case 3: return GameMessage::Stage3Start;
-	case 4: return GameMessage::Stage4Start;
-	default: return GameMessage::GameStart;
+	case EQuestType::Read:		return GameMessage::ReadStageStart;
+	case EQuestType::Listen:	return GameMessage::ListenStageStart;
+	case EQuestType::Write:		return GameMessage::WriteStageStart;
+	case EQuestType::Speak:		return GameMessage::SpeakStageStart;
+
+	default: return "GameStart";
 	}
 }
 
-FString ULingoGameHelper::GetStageEndMessage(const int StageIndex)
+FString ULingoGameHelper::GetStageEndMessage(const EQuestType QuestType)
 {
-	switch (StageIndex)
+	switch (QuestType)
 	{
-	case 1:	return GameMessage::Stage1End;
-	case 2:	return GameMessage::Stage2End;
-	case 3: return GameMessage::Stage3End;
-	case 4: return GameMessage::Stage4End;
-	default: return GameMessage::GameEnd;
+		case EQuestType::Read:	return GameMessage::ReadStageEnd;
+		case EQuestType::Listen:	return GameMessage::ListenStageEnd;
+		case EQuestType::Write: return GameMessage::WriteStageEnd;
+		case EQuestType::Speak: return GameMessage::SpeakStageEnd;
+
+		default: return "GameEnd";
 	}
 }
 
-float ULingoGameHelper::GetMissionPlayTime(const int Level)
+int32 ULingoGameHelper::GetStageTypeIndex(const EQuestType QuestType)
 {
-	switch (Level)
+	switch (QuestType)
 	{
-	case 1:	return 300;
-	case 2:	return 240;
-	case 3: return 180;
-	default: return 180;
-	}	
+		case EQuestType::Read: return 1;
+		case EQuestType::Listen: return 2;
+		case EQuestType::Write: return 3;
+		case EQuestType::Speak: return 4;
+
+	default:
+		return 1;
+	}
 }
 
-EResourceTextureType ULingoGameHelper::ConvertGradeType(const float Score)
+float ULingoGameHelper::GetMissionPlayTime()
+{
+	return 300;
+}
+
+EResourceTextureType ULingoGameHelper::ConvertGradeScore(const float Score)
 {
 	if (Score >= 90.0f)
 		return EResourceTextureType::Rarity_S;
@@ -159,13 +169,27 @@ EResourceTextureType ULingoGameHelper::ConvertGradeType(const float Score)
 		return EResourceTextureType::Rarity_D;
 }
 
+EResourceTextureType ULingoGameHelper::ConvertGradeString(const FString& Grade)
+{
+	if (Grade == "D") return EResourceTextureType::Rarity_D;
+	if (Grade == "C") return EResourceTextureType::Rarity_C;
+	if (Grade == "B") return EResourceTextureType::Rarity_B;
+	if (Grade == "A") return EResourceTextureType::Rarity_A;
+	if (Grade == "S") return EResourceTextureType::Rarity_S;
+
+	return EResourceTextureType::Rarity_D;
+}
 
 FString ULingoGameHelper::GetFormatTimer(const float InRemainTime )
 {
-	const int32 Minutes = FMath::FloorToInt(InRemainTime / 60.f);
-	const int32 Seconds = FMath::FloorToInt(InRemainTime) % 60;
+	const int32 TotalMilliseconds = FMath::FloorToInt(InRemainTime * 1000.f);
 
-	return FString::Printf(TEXT("%02d:%02d"), Minutes, Seconds);
+	const int32 Minutes       = TotalMilliseconds / 60000;
+	const int32 Seconds       = (TotalMilliseconds / 1000) % 60;
+	const int32 Milliseconds  = (TotalMilliseconds % 1000) / 10;
+
+	// 00:00.00
+	return FString::Printf(TEXT("%02d:%02d.%02d"), Minutes, Seconds, Milliseconds);
 }
 
 void ULingoGameHelper::ShowMouseCursor(const UObject* WorldContextObject)
@@ -228,9 +252,27 @@ APlayerControl* ULingoGameHelper::GetPlayerControl(const UObject* WorldContextOb
 	if (!World)
 		return nullptr;
 
-	APlayerController* PC = World->GetFirstPlayerController();
-	if (!PC)
-		return nullptr;
+	return Cast<APlayerControl>(World->GetFirstPlayerController());
+}
 
-	return Cast<APlayerControl>(PC->GetPawn());
+FString ULingoGameHelper::GetTimeRank(float InTimeTaken)
+{
+	if (InTimeTaken <= 300)
+		return "C";
+	else if (InTimeTaken <= 240)
+		return "B";
+	else if (InTimeTaken <= 180)
+		return "A";
+	else
+		return "D";
+}
+
+FString ULingoGameHelper::GetAccuracyPercentage(int WrongCnt)
+{
+	// 정답률 계산
+	const float Percentage = ((10.f - WrongCnt) / 10.f) * 100.f;
+	const int32 RoundedPercentage = FMath::RoundToInt(Percentage);
+	
+	// FString으로 변환
+	return FString::Printf(TEXT("%d%%"), RoundedPercentage);
 }
