@@ -29,8 +29,8 @@ void UAnswerItem::InitInfo(	EQuestType QuestType, int32 InOrder,
 	this->InitInfo(QuestType, bIsCorrect, InOrder,
 		TargetWord1Code, TargetWord2Code );
 
-	TargetWord1->SetTextColor( TargetWord1Code == CorrectWord1Code ? FLinearColor::White : FLinearColor::Red );
-	TargetWord2->SetTextColor( TargetWord2Code == CorrectWord2Code ? FLinearColor::White : FLinearColor::Red );
+	TargetWord1->SetTextColor( TargetWord1Code == CorrectWord1Code ? FLinearColor::Black : FLinearColor::Red );
+	TargetWord2->SetTextColor( TargetWord2Code == CorrectWord2Code ? FLinearColor::Black : FLinearColor::Red );
 }
 
 void UAnswerItem::InitInfo(	EQuestType QuestType, bool bCorrect,
@@ -39,13 +39,13 @@ void UAnswerItem::InitInfo(	EQuestType QuestType, bool bCorrect,
 	Txt_Order->SetText(FText::AsNumber(InOrder));
 	if ( bCorrect )
 	{
-		Border_Order->SetBrushColor(FLinearColor::White);
-		Txt_Order->SetColorAndOpacity(FLinearColor::Black);
+		Border_Order->SetBrushColor(FLinearColor::Black);
+		Txt_Order->SetColorAndOpacity(FLinearColor::White);
 	}
 	else
 	{
 		Border_Order->SetBrushColor(FLinearColor::Red);
-		Txt_Order->SetColorAndOpacity(FLinearColor::White);
+		Txt_Order->SetColorAndOpacity(FLinearColor::Black);
 	}
 	
 	if( QuestType == EQuestType::Read )
