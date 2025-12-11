@@ -447,8 +447,8 @@ void APlayerActor::OnResponseListenAudio(FResponseListenAudio& ResponseData, boo
 
 	if (bWasSuccessful)
 	{
-		if (auto PlayerActor = ULingoGameHelper::GetPlayerActor(this))
-			PlayerActor->PlayTTSAudio(ResponseData.audio_base64);
+		this->PlayTTSAudio(ResponseData.audio_base64);
+		UDialogManager::Get(GetWorld())->ShowToast(*ResponseData.audio_text);
 	}
 }
 
