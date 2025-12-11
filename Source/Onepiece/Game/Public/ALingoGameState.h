@@ -104,6 +104,7 @@ public:
 	FOnRoomLevelUpdated OnRoomLevelUpdated;
 
 	FORCEINLINE int GetWrongReadAnswerNum() { return WrongReadAnswerList.Num(); }
+	void AddWrongReadAnswer(int32 Value);
 	
 	UPROPERTY(ReplicatedUsing = OnRep_ReadScenarioData)
 	FResponseReadScenario ReadScenarioData;
@@ -119,6 +120,7 @@ public:
 	//--------------------------------------------------------------//
 
 	FORCEINLINE int GetWrongListenAnswerNum() { return WrongListenAnswerList.Num(); }
+	void AddWrongListenAnswer(int32 Value);
 
 	UPROPERTY(ReplicatedUsing = OnRep_ListenScenarioData)
 	FResponseListenScenario ListenScenarioData;

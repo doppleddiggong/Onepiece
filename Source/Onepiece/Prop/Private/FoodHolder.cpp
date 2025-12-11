@@ -156,7 +156,7 @@ void AFoodHolder::OnFoodBoxOverlapBegin(
 			FTimerHandle TimerHandle;
 			GetWorldTimerManager().SetTimer(TimerHandle, [this, Food, GS]
 			{
-				GS->WrongListenAnswerList.Add(Food->GetFoodIndex());
+				GS->AddWrongListenAnswer(Food->GetFoodIndex());
 
 				// 모든 클라이언트에 오답 메시지 표시
 				Multicast_ShowWrongPopup(Food->GetFoodName());
@@ -257,12 +257,7 @@ void AFoodHolder::Multicast_ShowResultPopup_Implementation(int32 CorrectAnswerIn
 	// 모든 클라이언트에서 로컬 GameState에 정답 인덱스 추가
 	if (ALingoGameState* GS = Cast<ALingoGameState>(GetWorld()->GetGameState()))
 	{
-		// 중복 체크 후 추가
-		if (!GS->WrongListenAnswerList.Contains(CorrectAnswerIndex))
-		{
-			GS->WrongListenAnswerList.Add(CorrectAnswerIndex);
-			PRINTLOG(TEXT("[Multicast_ShowResultPopup] Added correct answer index %d to local GameState"), CorrectAnswerIndex);
-		}
+		GS->AddWrongListenAnswer(CorrectAnswerIndex);
 	}
 
 	// 팝업 표시

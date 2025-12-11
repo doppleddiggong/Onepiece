@@ -82,6 +82,22 @@ void ALingoGameState::Tick(float DeltaSeconds)
 	}
 }
 
+void ALingoGameState::AddWrongReadAnswer(const int32 InValue)
+{
+	if (!WrongReadAnswerList.Contains(InValue))
+	{
+		WrongReadAnswerList.Add(InValue);
+	}
+}
+
+void ALingoGameState::AddWrongListenAnswer(const int32 InValue)
+{
+	if (!WrongListenAnswerList.Contains(InValue))
+	{
+		WrongListenAnswerList.Add(InValue);
+	}
+}
+
 void ALingoGameState::SetReadScenarioData( const FResponseReadScenario& InResponseData)
 {
 	// 반드시 서버 전용
@@ -189,6 +205,7 @@ void ALingoGameState::OnMissionTimerEnd()
 		}
 	}
 }
+
 
 void ALingoGameState::Multicast_UpdateQuestType_Implementation(const EQuestType InQuestType)
 {

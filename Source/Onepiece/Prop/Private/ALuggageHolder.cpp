@@ -143,7 +143,7 @@ void ALuggageHolder::OnBoxOverlapBegin(
 			FTimerHandle TimerHandle;
 			GetWorldTimerManager().SetTimer(TimerHandle, [this, Luggage, GS]
 			{
-				GS->WrongReadAnswerList.Add(Luggage->GetSpawnIdx());
+				GS->AddWrongReadAnswer(Luggage->GetSpawnIdx());
 
 				// 모든 클라이언트에 오답 메시지 표시
 				Multicast_ShowWrongPopup(Luggage->GetColor(), Luggage->GetPattern());
@@ -215,12 +215,7 @@ void ALuggageHolder::Multicast_ShowResultPopup_Implementation(int32 CorrectAnswe
 	// 모든 클라이언트에서 로컬 GameState에 정답 인덱스 추가
 	if (ALingoGameState* GS = Cast<ALingoGameState>(GetWorld()->GetGameState()))
 	{
-		// 중복 체크 후 추가
-		if (!GS->WrongReadAnswerList.Contains(CorrectAnswerIndex))
-		{
-			GS->WrongReadAnswerList.Add(CorrectAnswerIndex);
-			PRINTLOG(TEXT("[Multicast_ShowResultPopup] Added correct answer index %d to local GameState"), CorrectAnswerIndex);
-		}
+		GS->AddWrongReadAnswer(CorrectAnswerIndex);
 	}
 
 	// 팝업 표시
