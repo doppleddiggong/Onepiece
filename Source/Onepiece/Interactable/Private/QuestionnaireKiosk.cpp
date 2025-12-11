@@ -7,8 +7,8 @@
 #include "UInteractWidget.h"
 #include "InteractableComponent.h"
 #include "Popup_Questionnaire.h"
+#include "UKLingoNetworkSystem.h"
 #include "UPopupManager.h"
-#include "UPopup_Interview.h"
 #include "UPopup_MsgBox.h"
 #include "Components/BoxComponent.h"
 #include "Components/WidgetComponent.h"
@@ -79,56 +79,102 @@ void AQuestionnaireKiosk::ServerRPC_OnInteractionTriggered_Implementation(AActor
 
 void AQuestionnaireKiosk::ClientRPC_OnInteractionTriggered_Implementation(AActor* Interactor)
 {
-	// TODO: 쓰기 퀘스트 json 데이터 받기 요청
-	
-	if (auto Popup = UPopupManager::ShowPopupAs<UPopup_Questionnaire>(GetWorld(), EPopupType::Questionnaire))
+	if (auto KLingoNetwork = UKLingoNetworkSystem::Get(GetWorld()))
+	{
+		// QuestionnaireData에 데이터가 있다면
+		if (QuestionnaireData.IsValid())
 		{
-			// 테스트용 더미 데이터 생성
-			FQuestWriteInfo TestData;
-
-			// 질문 1
-			FWriteQuestionData Q1;
-			Q1.Id = 1;
-			Q1.WordData.QuestionKr = TEXT("밤 몇 시에 잡니까?");
-			Q1.WordData.QuestionEn = TEXT("When u sleep?");
-			Q1.WordData.Pronunciation = TEXT("bam myeot sie japnikka");
-			Q1.Answer = TEXT("23:00");
-			Q1.AnswerKr = TEXT("저는 밤 11시에 잡니다.");
-			TestData.Questions.Add(Q1);
-
-			// 질문 2
-			FWriteQuestionData Q2;
-			Q2.Id = 2;
-			Q2.WordData.QuestionKr = TEXT("가족이 모두 몇 명입니까?");
-			Q2.WordData.QuestionEn = TEXT("How many people are there in your family?");
-			Q2.WordData.Pronunciation = TEXT("gajogi modu myeot myeongipnikka");
-			Q2.Answer = TEXT("4");
-			Q2.AnswerKr = TEXT("가족은 모두 4명입니다.");
-			TestData.Questions.Add(Q2);
-
-			// 질문 3
-			FWriteQuestionData Q3;
-			Q3.Id = 3;
-			Q3.WordData.QuestionKr = TEXT("오늘은 며칠입니까?");
-			Q3.WordData.QuestionEn = TEXT("What's today's date?");
-			Q3.WordData.Pronunciation = TEXT("oneureun myeochiripnikka");
-			Q3.Answer = FDateTime::Now().ToString(TEXT("%Y-%m-%d"));
-			Q3.AnswerKr = FDateTime::Now().ToString(TEXT("오늘은 %Y년 %m월 %d일입니다."));
-			// TestData.Questions.Add(Q3);
-			
-			// 질문 4
-			FWriteQuestionData Q4;
-			Q3.Id = 4;
-			Q3.WordData.QuestionKr = TEXT("오늘 할 게임은 무엇입니까?");
-			Q3.WordData.QuestionEn = TEXT("What game are you going to play today?");
-			Q3.WordData.Pronunciation = TEXT("oneul hal geimeun mueosipnikka?");
-			Q3.Answer = FDateTime::Now().ToString(TEXT("Peak"));
-			Q3.AnswerKr = FDateTime::Now().ToString(TEXT("오늘은 Peak라는 게임을 할 것입니다."));
-			// TestData.Questions.Add(Q3);
-
-			// 팝업 초기화
-			Popup->InitPopup(TestData);
-
-			PRINTLOG(TEXT("[PopupTester] Interview popup opened with %d questions"), TestData.Questions.Num());
+			PRINTLOG(TEXT("QuestionnaireData is valid"));
+			ShowPopup();
+		}
+		else
+		{
+			PRINTLOG(TEXT("QuestionnaireData is invalid"));
+			KLingoNetwork->RequestWriteQuestions(FResponseWriteQuestionDelegate::CreateUObject(this, &AQuestionnaireKiosk::OnResponseData));
+		}
 	}
+}
+
+void AQuestionnaireKiosk::OnResponseData(FQuestWriteInfo& InResponseData, bool bWasSuccessful)
+{
+	if (bWasSuccessful)
+	{
+		PRINTLOG(TEXT("--- Write Question Response SUCCESS ---"));
+		
+		for (int32 i = 1; i <= InResponseData.question.Num(); ++i)
+		{
+			const FWriteQuestionData& data = InResponseData.question[i - 1];
+			PRINTLOG(TEXT("%d kor: %s"), i, *data.word_data.kor);
+			PRINTLOG(TEXT("%d answer_kor: %s"), i, *data.answer_kor);
+		}
+		
+		// TODO: 쓰기 퀘스트 json 데이터 받기 요청
+		// QuestionnaireData = InResponseData;
+			
+		// 테스트용 더미 데이터 생성
+		CreateTestData(QuestionnaireData);
+		
+		ShowPopup();
+	}
+	else
+	{
+		PRINTLOG(TEXT("--- Write Question Response FAILED ---"));
+	}
+}
+
+void AQuestionnaireKiosk::ShowPopup()
+{
+	if (auto Popup = UPopupManager::ShowPopupAs<UPopup_Questionnaire>(GetWorld(), EPopupType::Questionnaire))
+	{
+		// 팝업 초기화
+		Popup->InitPopup(QuestionnaireData);
+		
+		PRINTLOG(TEXT("[PopupTester] Interview popup opened with %d questions"), QuestionnaireData.question.Num());
+	}
+}
+
+
+void AQuestionnaireKiosk::CreateTestData(FQuestWriteInfo& TestData)
+{
+	// 질문 1
+	FWriteQuestionData Q1;
+	Q1.Id = 1;
+	Q1.word_data.kor = TEXT("밤 몇 시에 잡니까?");
+	Q1.word_data.eng = TEXT("When u sleep?");
+	Q1.word_data.pronunciation = TEXT("bam myeot sie japnikka");
+	Q1.answer = TEXT("23:00");
+	Q1.answer_kor = TEXT("저는 밤 11시에 잡니다.");
+	TestData.question.Add(Q1);
+
+	// 질문 2
+	FWriteQuestionData Q2;
+	Q2.Id = 2;
+	Q2.word_data.kor = TEXT("가족이 모두 몇 명입니까?");
+	Q2.word_data.eng = TEXT("How many people are there in your family?");
+	Q2.word_data.pronunciation = TEXT("gajogi modu myeot myeongipnikka");
+	Q2.answer = TEXT("4");
+	Q2.answer_kor = TEXT("가족은 모두 4명입니다.");
+	TestData.question.Add(Q2);
+
+	// 질문 3
+	FWriteQuestionData Q3;
+	Q3.Id = 3;
+	Q3.word_data.kor = TEXT("오늘은 며칠입니까?");
+	Q3.word_data.eng = TEXT("What's today's date?");
+	Q3.word_data.pronunciation = TEXT("oneureun myeochiripnikka");
+	Q3.answer = FDateTime::Now().ToString(TEXT("%Y-%m-%d"));
+	Q3.answer_kor = FDateTime::Now().ToString(TEXT("오늘은 %Y년 %m월 %d일입니다."));
+	TestData.question.Add(Q3);
+			
+	// 질문 4
+	FWriteQuestionData Q4;
+	Q4.Id = 4;
+	Q4.word_data.kor = TEXT("오늘 할 게임은 무엇입니까?");
+	Q4.word_data.eng = TEXT("What game are you going to play today?");
+	Q4.word_data.pronunciation = TEXT("oneul hal geimeun mueosipnikka?");
+	Q4.answer = FDateTime::Now().ToString(TEXT("Peak"));
+	Q4.answer_kor = FDateTime::Now().ToString(TEXT("오늘은 Peak라는 게임을 할 것입니다."));
+	TestData.question.Add(Q4);
+	
+	TestData.bIsValid = true;
 }

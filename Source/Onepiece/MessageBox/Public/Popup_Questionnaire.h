@@ -33,7 +33,7 @@ private:
 	void OnClickSubmit();
 	
 	UFUNCTION()
-	void OnResponseOcrExtract(FResponseOcrExtract& ResponseData, bool bWasSuccessful);
+	void OnResponseOcrExtract(FResponseWriteSubmit& ResponseData, bool bWasSuccessful);
 
 	// UFUNCTION()
 	// void OnResponseQuestionAnswer(FResponseQuestionAnswer& ResponseData, bool bWasSuccessful);
@@ -74,15 +74,15 @@ protected:
 	UPROPERTY(EditDefaultsOnly, Category="Popup")
 	TSubclassOf<class UPopup_QuestionnaireItem> QuestionnaireItemClass;
 
-	/* ------------------- Settings ------------------- */
+	/* ------------------- Settings ------------------ */
 	/** 인터뷰 항목 간 간격 (Spacer Height) */
 	UPROPERTY(EditDefaultsOnly, Category="Popup", meta=(ClampMin="0.0", ClampMax="200.0"))
 	float ItemSpacing = 20.0f;
 
 private:
-	/* ------------------- Data ------------------- */
+	/* ------------------- Data ---------------------- */
 	/** 저장된 인터뷰 질문 데이터 */
 	TArray<FWriteQuestionData> SavedQuestions;
 	
-	FString OcrImagePath = FPaths::ProjectSavedDir() / TEXT("WriteImage/");
+	FString WriteImagePath = FPaths::ProjectSavedDir() / TEXT("WriteImage/");
 };

@@ -18,6 +18,11 @@ public:
 	UPopup_WriteBoard(const FObjectInitializer& ObjectInitializer);
 	virtual void NativeOnInitialized() override;
 	
+	// Init Popup
+	void InitPopup(int32 InQid, const FString& InAnswerKr);
+	
+	FVector2D GetPrevMousePos();
+	
 protected:
 	// Objects
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
@@ -27,21 +32,30 @@ protected:
 	UPROPERTY(BlueprintReadOnly, meta=(BindWidget))
 	TObjectPtr<class UOverlay> Overlay_WriteBoard;
 	UPROPERTY(BlueprintReadOnly, meta=(BindWidget))
-	TObjectPtr<class UImage> Image_Canvas;
-	UPROPERTY(BlueprintReadOnly, meta=(BindWidget))
 	TObjectPtr<class USizeBox> SizeBox_Border;
 	UPROPERTY(BlueprintReadOnly, meta=(BindWidget))
 	TObjectPtr<class USizeBox> SizeBox_Canvas;
 	UPROPERTY(BlueprintReadOnly, meta=(BindWidget))
-	TObjectPtr<class UImageButton> Button_Clear;
-	UPROPERTY(BlueprintReadOnly, meta=(BindWidget))
 	TObjectPtr<class UImageButton> Button_Save;
 	UPROPERTY(BlueprintReadOnly, meta=(BindWidget))
 	TObjectPtr<class UTextureButton> Button_Close;
+	
+	// WriteBoard Widgets
 	UPROPERTY(BlueprintReadOnly, meta=(BindWidget))
-	TObjectPtr<class UButton> Button_Right;
+	TObjectPtr<class UHorizontalBox> HorizontalBox_DotLine;
+	UPROPERTY()
+	TArray<class UImage*> DotLineImages;
+	
 	UPROPERTY(BlueprintReadOnly, meta=(BindWidget))
-	TObjectPtr<class UButton> Button_Left;
+	TObjectPtr<class UHorizontalBox> HorizontalBox_Guide;
+	UPROPERTY()
+	TArray<class UTextBlock*> GuideTexts;
+	UPROPERTY(BlueprintReadOnly, meta=(BindWidget))
+	TObjectPtr<class UTextBlock> Text_Guide;
+	FSlateFontInfo tempFontInfo;
+	
+	UPROPERTY(BlueprintReadOnly, meta=(BindWidget))
+	TObjectPtr<class UImage> Image_Canvas;
 	
 	// Values
 	UPROPERTY(BlueprintReadOnly)
@@ -54,23 +68,20 @@ protected:
 	virtual FReply NativeOnMouseButtonUp(const FGeometry& InGeometry, const FPointerEvent& InMouseEvent) override;
 	virtual FReply NativeOnMouseMove(const FGeometry& InGeometry, const FPointerEvent& InMouseEvent) override;
 	
-	// Button Event
-	UFUNCTION()
-	void OnButtonRightClicked();
-	UFUNCTION()
-	void OnButtonLeftClicked();
-	
 	// Adjust WriteBoard Length
 	void AdjustLength();
 	
-public:
-	// Init Popup
-	void InitPopup(int32 InQid, const TArray<FString>& InTokens);
+	// Clear WriteBoard
+	void ClearWriteBoard();
 	
 private:
+	// WriteBoard
+	UPROPERTY()
+	TObjectPtr<class UWriteBoard> writeBoardObject;
+	
 	// Question Id
 	int32 Qid;
-	TArray<FString> AnswerKr;
+	FString AnswerKr;
 	
 	// Now Answer Index
 	int32 AnswerIdx = 0;
@@ -78,6 +89,12 @@ private:
 	float stepLength = 360;
 	// Border Min Width
 	float borderMinWidth = 560;
+	
+	// DotLine Image
+	UPROPERTY()
+	TObjectPtr<class UTexture2D> dotLineTexture;
+	UPROPERTY()
+	TObjectPtr<class UFont> guideTextFont;
 	
 	// Close Draw Window
 	UFUNCTION()
@@ -88,12 +105,8 @@ private:
 	void DrawPoint(FVector2D mousePos, FLinearColor drawColor);
 	FVector2D GetLocalMousePos(FVector2D mousePos);
 	
-	// Clear Canvas
-	UFUNCTION()
-	void ClearCanvas();
-	// Save Render Target Canvas
 	UFUNCTION()
 	void SaveCanvas();
 	
-	bool SaveRenderTargetToPNG(UTextureRenderTarget2D* RenderTarget, const FString& FullFilePath);
+	void ClearCanvas();
 };

@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
+// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
 
 /**
  * @file ANetworkTesterActor.cpp
@@ -175,7 +175,7 @@ void ANetworkTesterActor::RequestInterviewHello()
     }
 }
 
-void ANetworkTesterActor::OnResponseOcrExtract(FResponseOcrExtract& ResponseData, bool bWasSuccessful)
+void ANetworkTesterActor::OnResponseOcrExtract(FResponseWriteSubmit& ResponseData, bool bWasSuccessful)
 {
     if (bWasSuccessful)
     {
