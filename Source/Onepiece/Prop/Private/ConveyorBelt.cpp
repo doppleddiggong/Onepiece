@@ -84,6 +84,21 @@ void AConveyorBelt::MulticastRPC_ChangeConveyorMovement_Implementation()
 	PRINT_STRING(TEXT("%d"), bIsForward);
 }
 
+void AConveyorBelt::ChangeConveyorSpeed(float NewSpeed)
+{
+	Server_ChangeConveyorSpeed(NewSpeed);
+}
+
+void AConveyorBelt::Multicast_ChangeConveyorSpeed_Implementation(float NewSpeed)
+{
+	MoveSpeed = NewSpeed;
+}
+
+void AConveyorBelt::Server_ChangeConveyorSpeed_Implementation(float NewSpeed)
+{
+	Multicast_ChangeConveyorSpeed(NewSpeed);
+}
+
 void AConveyorBelt::MoveOverlappedSkeletals(float deltaDistance)
 {
 	TArray<AActor*> overlappedActors;

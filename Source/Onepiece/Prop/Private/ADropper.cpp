@@ -98,6 +98,10 @@ void ADropper::Spawn()
 
     bIsSpawnIng = true;
 
+    // 애니메이션 실행
+    if (SkeletalMesh && AnimToPlay)
+        Multicast_PlayAnimation();
+
     FTimerHandle TimerHandle;
     GetWorld()->GetTimerManager().SetTimer(TimerHandle, FTimerDelegate::CreateLambda([this, SpawnedActor]
     {
@@ -123,12 +127,6 @@ void ADropper::Spawn()
     }
         
     }), 1.f, false);
-    
-    
-
-    // 애니메이션 실행
-    if (SkeletalMesh && AnimToPlay)
-        Multicast_PlayAnimation();
 
     // 2초 뒤 충돌 OFF → 다시 ON
     GetWorldTimerManager().SetTimer(

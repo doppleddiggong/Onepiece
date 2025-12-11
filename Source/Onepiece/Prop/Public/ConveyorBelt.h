@@ -26,6 +26,12 @@ public:
 	void ServerRPC_ChangeConveyorMovement();
 	UFUNCTION(NetMulticast, Reliable)
 	void MulticastRPC_ChangeConveyorMovement();
+
+	void ChangeConveyorSpeed(float NewSpeed);
+	UFUNCTION(Server, Reliable)
+	void Server_ChangeConveyorSpeed(float NewSpeed);
+	UFUNCTION(NetMulticast, Reliable)
+	void Multicast_ChangeConveyorSpeed(float NewSpeed);
 	
 protected:
 	// Components

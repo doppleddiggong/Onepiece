@@ -93,7 +93,7 @@ namespace RequestAPI
 	static FString interview_answer = FString("/interview/answer/post");
 
 	/// @brief Scenario 조회 엔드포인트입니다.
-	static FString scenario = FString("/scenario/stages/redis");
+	static FString scenario = FString("/scenario/stages/current");
 
 
 	static FString read_result = FString("/scenario/stage/result/post");
@@ -483,7 +483,13 @@ struct FResponseUserMe
 	FString fullname;
 
 	UPROPERTY(BlueprintReadWrite, Category = "Me")
-	bool is_active;	
+	bool is_active;
+
+	UPROPERTY(BlueprintReadWrite, Category = "Me")
+	FString my_avatar;
+
+	UPROPERTY(BlueprintReadWrite, Category = "Me")
+	FString my_color;
 	
 	/// @brief HTTP 응답을 파싱해 상태 정보를 갱신합니다.
 	void SetFromHttpResponse(const TSharedPtr<class IHttpResponse, ESPMode::ThreadSafe>& Response);

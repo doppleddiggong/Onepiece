@@ -151,6 +151,8 @@ void FResponseUserMe::SetFromHttpResponse(const TSharedPtr<IHttpResponse, ESPMod
 		username = JsonObject->GetStringField(TEXT("username"));
 		fullname = JsonObject->GetStringField(TEXT("fullname"));
 		is_active = JsonObject->GetBoolField(TEXT("is_active"));
+		my_avatar = JsonObject->GetStringField(TEXT("my_avatar"));
+		my_color = JsonObject->GetStringField(TEXT("my_color"));
 	}
 }
 

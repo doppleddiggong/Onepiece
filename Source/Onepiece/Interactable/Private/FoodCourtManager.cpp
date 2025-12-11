@@ -88,12 +88,12 @@ void AFoodCourtManager::SetFoodCourtInfo()
 			AOrderKiosk* CurrentKiosk = FindKioskNameByIdx(i);
 			if (CurrentKiosk)
 			{
-				CurrentKiosk->FoodCourtIdx = i;
-				CurrentKiosk->FoodData.word1 = SD.word1;
-				CurrentKiosk->FoodData.word2 = SD.word2;
-
-				// 서버 로컬 위젯 업데이트
-				CurrentKiosk->UpdateInteractableWidget(SD.word2.name);
+				// CurrentKiosk->FoodCourtIdx = i;
+				// CurrentKiosk->FoodData.word1 = SD.word1;
+				// CurrentKiosk->FoodData.word2 = SD.word2;
+				//
+				// // 서버 로컬 위젯 업데이트
+				// CurrentKiosk->UpdateInteractableWidget(SD.word2.name);
 			}
 			
 		}), 1.f, false);
@@ -127,10 +127,10 @@ class AOrderKiosk* AFoodCourtManager::FindKioskNameByIdx(int32 InIdx)
 	{
 		if (AOrderKiosk* Kio = Cast<AOrderKiosk>(Kiosk))
 		{
-			if (Kio->Index == InIdx)
-			{
-				return Kio;
-			}
+			// if (Kio->Index == InIdx)
+			// {
+			// 	return Kio;
+			// }
 		}
 	}
 	return nullptr;
