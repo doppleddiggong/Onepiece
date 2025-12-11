@@ -93,7 +93,7 @@ namespace RequestAPI
 	static FString interview_answer = FString("/interview/answer/post");
 
 	/// @brief Scenario 조회 엔드포인트입니다.
-	static FString scenario = FString("/scenario/stages/redis");
+	static FString scenario = FString("/scenario/stages/current");
 
 
 	static FString read_result = FString("/scenario/stage/result/post");
