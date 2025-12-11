@@ -174,10 +174,13 @@ private:
 	void OnUpdateQuestRole(EQuestRole QuestRole);
 
 	UFUNCTION()
-	void OnListenResultUpdated( const FResponseListenResult& Result);
+	void OnRoomIdUpdated(int64 NewRoomId);
 
 	UFUNCTION()
-	void OnRoomIdUpdated(int64 NewRoomId);
+	void OnRoomLevelUpdated(int32 NewRoomLevel);
+
+	UFUNCTION()
+	void OnListenResultUpdated( const FResponseListenResult& Result);
 
 	UFUNCTION()
 	void OnReadResultUpdated(const FResponseReadResult& Result);

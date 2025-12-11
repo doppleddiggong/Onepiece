@@ -22,6 +22,7 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnReadResultUpdated, const FRespons
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnListenResultUpdated, const FResponseListenResult&, Result);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnQuestScenarioDataUpdated);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnRoomIdUpdated, int64, NewRoomId);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnRoomLevelUpdated, int32, NewRoomLevel);
 
 UCLASS()
 class ONEPIECE_API ALingoGameState : public AGameState
@@ -39,6 +40,7 @@ public:
 	virtual void Tick(float DeltaSeconds) override;
 
 	FORCEINLINE int64 GetRoomId() { return RoomId; };
+	FORCEINLINE int32 GetRoomLevel() { return RoomLevel; };
 	FORCEINLINE float GetRemainMissionTime() { return RemainMissionTime; }
 	FORCEINLINE float GetTimeTaken() { return TimeLimit - RemainMissionTime; }
 	FORCEINLINE bool IsQuestIng() { return QuestType != EQuestType::None;	}
@@ -86,6 +88,9 @@ protected:
 
 	UFUNCTION()
 	void OnRep_RoomId();
+
+	UFUNCTION()
+	void OnRep_RoomLevel();
 	
 private:
 	/// @brief 타이머 종료 시 호출됩니다 (서버에서만 실행)
@@ -96,6 +101,7 @@ public:
 	FOnListenResultUpdated OnListenResultUpdated;
 	FOnQuestScenarioDataUpdated OnQuestScenarioDataUpdated;
 	FOnRoomIdUpdated OnRoomIdUpdated;
+	FOnRoomLevelUpdated OnRoomLevelUpdated;
 
 	FORCEINLINE int GetWrongReadAnswerNum() { return WrongReadAnswerList.Num(); }
 	
@@ -142,6 +148,9 @@ protected:
 	UPROPERTY(ReplicatedUsing=OnRep_RoomId, BlueprintReadOnly, Category = "Room")
 	int64 RoomId = 0;
 
+	UPROPERTY(ReplicatedUsing=OnRep_RoomLevel, BlueprintReadOnly, Category = "Room")
+	int32 RoomLevel = 1;
+	
 private:
 	float TimeLimit = 0;
 };

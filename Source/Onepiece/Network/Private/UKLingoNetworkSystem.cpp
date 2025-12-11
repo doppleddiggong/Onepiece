@@ -792,7 +792,7 @@ void UKLingoNetworkSystem::RequestReadScenario(FResponseReadScenarioDelegate InD
 		ULingoGameHelper::GetLingoGameState( GetWorld())->GetRoomId(),
 		1,
 		ULingoGameHelper::GetStageTypeIndex(EQuestType::Read),
-		1);
+		ULingoGameHelper::GetLingoGameState( GetWorld())->GetRoomLevel());
 	
 	FString Url = NetworkConfig::GetFullUrl(Endpoint);
 	auto Request = SetupHttpRequest(Url, NETWORK_GET);
@@ -910,7 +910,7 @@ void UKLingoNetworkSystem::RequestListenScenario(FResponseListenScenarioDelegate
 		ULingoGameHelper::GetLingoGameState( GetWorld())->GetRoomId(),
 		1,
 		ULingoGameHelper::GetStageTypeIndex(EQuestType::Listen),
-		1);
+		ULingoGameHelper::GetLingoGameState( GetWorld())->GetRoomLevel());
 	
 	FString Url = NetworkConfig::GetFullUrl(Endpoint);
 	auto Request = SetupHttpRequest(Url, NETWORK_GET);
@@ -1025,7 +1025,7 @@ void UKLingoNetworkSystem::RequestSpeakScenario(FResponseSpeakScenarioDelegate I
 		ULingoGameHelper::GetLingoGameState( GetWorld())->GetRoomId(),
 		1,
 		ULingoGameHelper::GetStageTypeIndex(EQuestType::Speak),
-		1);
+		ULingoGameHelper::GetLingoGameState( GetWorld())->GetRoomLevel());
 
 	FString Url = NetworkConfig::GetFullUrl(Endpoint);
 	auto Request = SetupHttpRequest(Url, NETWORK_GET);

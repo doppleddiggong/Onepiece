@@ -25,9 +25,10 @@ void URoomWidget::NativeTick(const FGeometry& MyGeometry, float InDeltaTime)
 	UpdateLoadingSpinner(InDeltaTime);
 }
 
-void URoomWidget::UpdateRoomId(const int64 InRoomId)
+void URoomWidget::UpdateRoomInfo(const int32 InRoomLevel, const int64 InRoomId)
 {
-	Txt_RoomId->SetText(FText::FromString(FString::Printf(TEXT("%d"), InRoomId )));
+	Txt_RoomId->SetText(FText::FromString(FString::Printf(TEXT("[LV.%d] %d"),
+		InRoomLevel, (InRoomId % 10000)  )));
 }
 
 void URoomWidget::UpdateLoadingSpinner(float DeltaTime)
