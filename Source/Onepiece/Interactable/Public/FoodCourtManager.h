@@ -29,10 +29,17 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 public:
+	UPROPERTY(VisibleAnywhere)
+	class ADropper* Dropper;
+	
+	// 빈 음식 액터 스폰
+	void SpawnFoodContainer();
+
+	
+public:
 	void SetFoodCourtInfo();
 	class ACityName* FindCityNameByIdx(int32 InIdx);
 	class AOrderKiosk* FindKioskNameByIdx(int32 InIdx);
-	//class AOrderKiosk* GetRandomKiosk();
 
 private:
 	UFUNCTION()
