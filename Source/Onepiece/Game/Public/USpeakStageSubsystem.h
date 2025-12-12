@@ -43,7 +43,7 @@ protected:
 
 	/// @brief 생성된 Examiner 인스턴스
 	UPROPERTY()
-	TObjectPtr<class ANPCExaminer> Examiner;
+	TObjectPtr<class AWheatly> Examiner;
 
 	/// @brief SpeakStage 시스템이 초기화되었는지 여부
 	UPROPERTY()
@@ -82,7 +82,7 @@ public:
 	 * @return NPCExaminer 인스턴스 (없으면 nullptr)
 	 */
 	UFUNCTION(BlueprintCallable, Category = "SpeakStage")
-	class ANPCExaminer* GetExaminer() const { return Examiner; }
+	class AWheatly* GetExaminer() const { return Examiner; }
 
 	/**
 	 * @brief 시스템 초기화 여부 확인

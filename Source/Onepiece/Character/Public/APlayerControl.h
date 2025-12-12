@@ -30,6 +30,11 @@ public:
 	int32 GetUserId() const { return UserInfo.id; }
 	const FResponseUserMe& GetUserInfo() const { return UserInfo; }
 
+
+public:
+	UFUNCTION(Client, Reliable)
+	void Client_ToastMessage(const FString& Message);
+
 protected:
     virtual void BeginPlay() override;
     virtual void SetupInputComponent() override;
@@ -85,13 +90,9 @@ protected:
 
 	UFUNCTION(Server, Reliable)
 	void Server_RequestDrop();
-
-
+	
 private:
 	void RequestDrop(APlayerControl* Requester);
-
-	UFUNCTION(Client, Reliable)
-	void Client_ToastMessage(const FString& Message);
 	
 	void TEST_DropperDropProcess();
 	void TEST_AddItemToBoxList();

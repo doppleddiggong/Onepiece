@@ -2,6 +2,7 @@
 
 #include "USpeakStageSubsystem.h"
 #include "ASpeakStageActor.h"
+#include "AWheatly.h"
 #include "NPCExaminer.h"
 #include "GameLogging.h"
 #include "Engine/World.h"
@@ -108,7 +109,7 @@ void USpeakStageSubsystem::InitActor()
 	{
 		SpeakStageActor = Cast<ASpeakStageActor>(UGameplayStatics::GetActorOfClass(World, ASpeakStageActor::StaticClass()));
 
-		Examiner = Cast<ANPCExaminer>(UGameplayStatics::GetActorOfClass(World, ANPCExaminer::StaticClass()));
+		Examiner = Cast<AWheatly>(UGameplayStatics::GetActorOfClass(World, AWheatly::StaticClass()));
 
 		if (Examiner && SpeakStageActor)
 			Examiner->SetSpeakStage(SpeakStageActor);

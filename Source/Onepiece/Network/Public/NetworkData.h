@@ -1003,6 +1003,30 @@ struct FResponseListenResult
 
 
 // =================================================================================
+// Speak Quest Structures (KLingo SpeakStage)
+// =================================================================================
+
+/// @brief SpeakQuest 질문/답변 데이터 구조체입니다.
+/// @note API로부터 받아온 질문, 음성 URL, 허용 답변 목록을 저장합니다.
+USTRUCT(BlueprintType)
+struct FSpeakStageQuestion
+{
+	GENERATED_BODY()
+
+	/// @brief 질문 텍스트
+	UPROPERTY(BlueprintReadOnly, Category = "SpeakQuest")
+	FString questionText;
+
+	/// @brief 질문 음성 파일 URL (TTS 생성 또는 사전 녹음)
+	UPROPERTY(BlueprintReadOnly, Category = "SpeakQuest")
+	FString questionVoiceURL;
+
+	/// @brief 허용 가능한 답변 목록 (채점용)
+	UPROPERTY(BlueprintReadOnly, Category = "SpeakQuest")
+	TArray<FString> acceptableAnswers;
+};
+
+// =================================================================================
 // Speak Scenario API Structures
 // =================================================================================
 

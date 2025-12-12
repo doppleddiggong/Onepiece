@@ -79,4 +79,20 @@ public:
 	/// @brief 색상 오답 플래그
 	UPROPERTY(ReplicatedUsing = OnRep_WrongWord2, BlueprintReadOnly, Category = "Quest")
 	bool bWrongWord2 = false;
+
+public:
+	//--------------------------------------------------------------//
+	// Speak Quest Functions
+	//--------------------------------------------------------------//
+
+	/// @brief SpeakQuest 질문 목록
+	/// @note SpeakStageActor에서 관리하는 방식도 고려 가능
+	/// @note 현재는 ASpeakStageActor가 턴 기반으로 관리하므로 선택적으로 사용
+	UPROPERTY(Transient, Replicated, BlueprintReadOnly, Category = "SpeakQuest")
+	TArray<struct FSpeakStageQuestion> speakQuestData;
+
+	/// @brief 현재 진행 중인 질문 인덱스
+	/// @note 현재는 ASpeakStageActor의 CurrentStepIndex를 사용하므로 선택적으로 사용
+	UPROPERTY(Transient, Replicated, BlueprintReadOnly, Category = "SpeakQuest")
+	int32 currentSpeakQuestStep = 0;
 };

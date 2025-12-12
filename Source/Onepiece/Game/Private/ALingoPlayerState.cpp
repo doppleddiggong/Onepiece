@@ -23,6 +23,10 @@ void ALingoPlayerState::GetLifetimeReplicatedProps(TArray<class FLifetimePropert
 	DOREPLIFETIME(ALingoPlayerState, SelectedWord2);
 	DOREPLIFETIME(ALingoPlayerState, bWrongWord1);
 	DOREPLIFETIME(ALingoPlayerState, bWrongWord2);
+
+	// Speak Quest Data
+	DOREPLIFETIME(ALingoPlayerState, speakQuestData);
+	DOREPLIFETIME(ALingoPlayerState, currentSpeakQuestStep);
 }
 
 
