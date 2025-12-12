@@ -14,6 +14,7 @@
 #include "UKLingoNetworkSystem.h"
 #include "UBroadcastManager.h"
 #include "GameFramework/PlayerState.h"
+#include "Net/UnrealNetwork.h"
 
 #include "Components/BoxComponent.h"
 #include "Components/StaticMeshComponent.h"
@@ -32,7 +33,8 @@ AWheatly::AWheatly()
 	PrimaryActorTick.bCanEverTick = true;
 
 	bReplicates = true;
-
+	SetReplicateMovement(true);
+	
 	//--------------------------------------------------------------
 	// Skeletal Mesh Component 생성
 	//--------------------------------------------------------------
@@ -91,6 +93,13 @@ AWheatly::AWheatly()
 	
 	// 초기값 설정
 	CurAnimDuration = 0.0f;
+}
+
+void AWheatly::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
+{
+	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+
+	DOREPLIFETIME(AWheatly, ReplicatedEyeColor);
 }
 
 void AWheatly::BeginPlay()
@@ -365,12 +374,19 @@ void AWheatly::OnInteractionTriggered(AActor* InteractingActor)
 
 void AWheatly::OnSpeakStageSpeakerChanged(APlayerState* NewSpeaker)
 {
-	const bool bIsStageBusy = NewSpeaker != nullptr;
-	FLinearColor newColor = bIsStageBusy
+	if (!HasAuthority())
+		return;
+	
+	ReplicatedEyeColor = (NewSpeaker != nullptr)
 		? FLinearColor(1.0f, 1.0f, 0.0f, 1.0f)  // Yellow: Busy
 		: FLinearColor(0.0f, 0.5f, 1.0f, 1.0f); // Blue: Available
 	
-	ChangeEyeColor(newColor);
+	OnRep_EyeColor();
+}
+
+void AWheatly::OnRep_EyeColor()
+{
+	ChangeEyeColor(ReplicatedEyeColor);
 }
 
 

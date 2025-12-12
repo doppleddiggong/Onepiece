@@ -39,6 +39,8 @@ class ONEPIECE_API AWheatly : public AActor
 
 public:
 	AWheatly();
+
+	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
 	
 	virtual void Tick(float DeltaSeconds) override;
 
@@ -86,6 +88,9 @@ protected:
 	UFUNCTION()
 	void OnSpeakStageSpeakerChanged(class APlayerState* NewSpeaker);
 
+	UFUNCTION()
+	void OnRep_EyeColor();
+	
 private:
 	void RequestSpeakScenario(class APlayerActor* Player);
 	void OnResponseSpeakScenario(struct FResponseSpeakScenario& ResponseData, bool bWasSuccessful);
@@ -133,6 +138,9 @@ protected:
 private:
 	UPROPERTY()
 	TObjectPtr<class ASpeakStageActor> SpeakStage;
+
+	UPROPERTY(Transient, ReplicatedUsing = OnRep_EyeColor)
+	FLinearColor ReplicatedEyeColor;
 
 	UPROPERTY()
 	TObjectPtr<class APlayerActor> RequestPlayer;
