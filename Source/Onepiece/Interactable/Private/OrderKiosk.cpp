@@ -9,6 +9,7 @@
 #include "ConveyorBelt.h"
 #include "Food.h"
 #include "InteractableComponent.h"
+#include "ListenAnswer.h"
 #include "Components/BoxComponent.h"
 #include "Components/WidgetComponent.h"
 #include "Kismet/GameplayStatics.h"
@@ -27,13 +28,6 @@ AOrderKiosk::AOrderKiosk()
 
 	SubmitCollision = CreateDefaultSubobject<UBoxComponent>(TEXT("SubmitCollision"));
 	SubmitCollision->SetupAttachment(GetRootComponent());
-	
-	// InteractableComp = CreateDefaultSubobject<UInteractableComponent>(TEXT("InteractableComp"));
-	// InteractableComp->InteractionType = EInteractionType::Button;
-	// InteractableComp->InteractionPrompt = TEXT("Order ----");
-	//
-	// InteractWidget = CreateDefaultSubobject<UWidgetComponent>(TEXT("InteractWidget"));
-	// InteractWidget->SetupAttachment(GetRootComponent());
 }
 
 // Called when the game starts or when spawned
@@ -43,20 +37,6 @@ void AOrderKiosk::BeginPlay()
 
 	FoodCollision->OnComponentBeginOverlap.AddDynamic(this, &AOrderKiosk::BeginFoodOverlap);
 	SubmitCollision->OnComponentBeginOverlap.AddDynamic(this, &AOrderKiosk::BeginSubmitOverlap);
-	
-	// // InteractableComp에 위젯 연결
-	// if (InteractableComp && InteractWidget)
-	// {
-	// 	InteractableComp->InitWidget(InteractWidget);
-	// }
-	//
-	// // 상호작용 델리게이트 바인딩
-	// if (InteractableComp)
-	// {
-	// 	InteractableComp->OnInteractionTriggered.AddDynamic(this, &AOrderKiosk::OnInteractionTriggered);
-	// }
-	//
-	// InteractWidget->SetVisibility(true);
 }
 
 void AOrderKiosk::GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const
@@ -99,7 +79,7 @@ void AOrderKiosk::BeginSubmitOverlap(UPrimitiveComponent* OverlappedComponent, A
 	UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
 	// 답 제출하면 컨베이어 재개
-	if (ACharacter* C =Cast<ACharacter>(OtherActor))
+	if (AListenAnswer* Answer = Cast<AListenAnswer>(OtherActor))
 	{
 		if (ConveyorsToControl.Num() <= 0) return;
 

@@ -27,6 +27,12 @@ AListenAnswer::AListenAnswer()
 	InteractableComp->InteractionType = EInteractionType::PickUp;
 	InteractableComp->InteractionPrompt = TEXT("Pick Up");
 
+	// Initial settings
+	Mesh->SetSimulatePhysics(true);
+	Mesh->SetEnableGravity(true);
+	Mesh->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
+	Mesh->SetCollisionProfileName(TEXT("PhysicsActor"));
+	
 	// 무게 설정
 	Mesh->SetMassOverrideInKg(NAME_None, 50.f, true);
 
@@ -43,7 +49,9 @@ AListenAnswer::AListenAnswer()
 void AListenAnswer::BeginPlay()
 {
 	Super::BeginPlay();
-	
+
+	NameWidgetComp->AttachToComponent(GetRootComponent(), FAttachmentTransformRules::KeepRelativeTransform);
+	NameWidgetComp->SetRelativeLocation(FVector(0, 0, 10));
 }
 
 void AListenAnswer::GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const
@@ -78,17 +86,17 @@ void AListenAnswer::UpdateMesh()
 	TArray<FListenData*> AllRows;
 	ListenDataTable->GetAllRows<FListenData>(TEXT("UpdateMesh"), AllRows);
 
-	// for (FListenData* Row : AllRows)
-	// {
-	// 	if (Row && Row->Word == AnswerData.word1.name)
-	// 	{
-	// 		if (Row->FoodMesh)
-	// 		{
-	// 			Mesh->SetStaticMesh(Row->FoodMesh);
-	// 			return;
-	// 		}
-	// 	}
-	// }
+	for (FListenData* Row : AllRows)
+	{
+		if (Row && Row->Word == AnswerData.word1.name)
+		{
+			if (Row->FoodPath)
+			{
+				Mesh->SetStaticMesh(Row->FoodPath);
+				return;
+			}
+		}
+	}
 
 	// 일치하는 데이터를 찾지 못함
 	UE_LOG(LogTemp, Warning, TEXT("No matching ListenData found for: %s"), *AnswerData.word1.name);

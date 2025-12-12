@@ -55,13 +55,10 @@ protected:
 	
 	// 선택지 첫번째 스폰 위치
 	UPROPERTY(EditAnywhere, Category = "Spawn")
-	FVector FoodSpawnLocation = FVector(2561.899883,-5122.399085,-4636.869443);
-
+	FVector AnswerSpawnLocation = FVector(1743.168217,-5194.291382,-4552.637340);
+	// 스폰 간격
 	UPROPERTY(EditAnywhere, Category = "Spawn")
-	FVector CitySpawnLocation;
-
-	UPROPERTY(EditAnywhere, Category = "Spawn")
-	float SpawnDistance = 2.f;
+	float SpawnDistance = 150.f;
 
 private:
 	//---------------------------------------------------

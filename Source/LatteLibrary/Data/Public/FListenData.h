@@ -43,7 +43,7 @@ struct LATTELIBRARY_API FListenData : public FTableRowBase
 	FString Eng;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ListenData")
-	TSubclassOf<AActor> FoodPath;
+	UStaticMesh* FoodPath;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ListenData")
 	TSoftObjectPtr<UTexture2D> Texture;

@@ -98,7 +98,7 @@ void AFoodCourtManager::SpawnListenAnswer()
 			// 코드는 필요하면 추가
 			NewActor->AnswerData.word1.code = FoodName;
 
-			// 여기에 로컬 위젯 업데이트
+			// 로컬 위젯 업데이트
 			NewActor->UpdateMesh();
 			NewActor->UpdateNameWidget();
 			
@@ -106,31 +106,33 @@ void AFoodCourtManager::SpawnListenAnswer()
 			
 		Index++;
 	}
-	/*
+	
 	// 도시 이름 선택지 스폰 및 데이터 전달
-	Index = 0;
 	for (auto CityName : CityNames)
 	{
 		// 스폰하기
 		FVector SpawnLocation;
 		GetCurrentSpawnLocation(Index, SpawnLocation);
 		
-		AListenAnswer* NewActor = GetWorld()->SpawnActor<AListenAnswer>(SpawnLocation, FRotator::ZeroRotator);
+		AListenAnswer* NewActor = GetWorld()->SpawnActor<AListenAnswer>(ListenAnswerClass, SpawnLocation, FRotator::ZeroRotator);
 		
 		// 데이터 전달
 		FTimerHandle TimerHandle;
-		GetWorldTimerManager().SetTimer(TimerHandle, FTimerDelegate::CreateLambda([this, NewActor, FoodName]
+		GetWorldTimerManager().SetTimer(TimerHandle, FTimerDelegate::CreateLambda([this, NewActor, CityName]
 		{
-			NewActor->AnswerData.AnswerType = EAnswerType::Food;
-			NewActor->AnswerData.word1.name = FoodName;
+			NewActor->AnswerData.AnswerType = EAnswerType::City;
+			NewActor->AnswerData.word1.name = CityName;
 			// 코드는 필요하면 추가
-			NewActor->AnswerData.word1.code = FoodName;
+			NewActor->AnswerData.word1.code = CityName;
+
+			// 로컬 위젯 업데이트
+			NewActor->UpdateMesh();
+			NewActor->UpdateNameWidget();
 			
 		}), 1.f, false);
 			
 		Index++;
 	}
-	*/
 }
 
 void AFoodCourtManager::GetCurrentSpawnLocation(int32 Index, FVector& OutSpawnLocation)
@@ -141,7 +143,7 @@ void AFoodCourtManager::GetCurrentSpawnLocation(int32 Index, FVector& OutSpawnLo
 
 	FVector Offset = FVector(Row*SpawnDistance, Col*SpawnDistance, 0.0f);
 
-	OutSpawnLocation = FoodSpawnLocation + Offset;
+	OutSpawnLocation = AnswerSpawnLocation + Offset;
 }
 
 void AFoodCourtManager::HandleQuestScenarioDataUpdated()
