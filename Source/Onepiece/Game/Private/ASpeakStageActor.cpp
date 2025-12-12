@@ -4,6 +4,8 @@
 
 #include "ALingoPlayerState.h"
 #include "APlayerActor.h"
+#include "APlayerControl.h"
+#include "ULingoGameHelper.h"
 #include "GameLogging.h"
 #include "Net/UnrealNetwork.h"
 #include "GameFramework/PlayerState.h"
@@ -52,7 +54,7 @@ void ASpeakStageActor::OnRep_CurrentStepIndex()
 // Public Interface
 //----------------------------------------------------------
 
-void ASpeakStageActor::StartStageForPlayer(APlayerState* Player)
+void ASpeakStageActor::StartStageForPlayer(ALingoPlayerState* Player)
 {
 	if (!HasAuthority())
 		return;
@@ -73,9 +75,34 @@ void ASpeakStageActor::StartStageForPlayer(APlayerState* Player)
 
 	// 서버에서도 첫 질문 Toast 표시 (OnRep는 클라이언트만 호출되므로)
 	ShowCurrentQuestionToast();
+
+	// 첫 번째 질문 TTS 재생 및 UI 업데이트
+	if (ALingoPlayerState* PS = Cast<ALingoPlayerState>(CurrentSpeaker))
+	{
+		if (PS->SpeakScenarioData.speak_quest_data.IsValidIndex(CurrentStepIndex))
+		{
+			if (APawn* SpeakerPawn = CurrentSpeaker->GetPawn())
+			{
+				if (APlayerActor* PlayerActor = Cast<APlayerActor>(SpeakerPawn))
+				{
+					// TTS 재생
+					FSpeakStageQuestion& CurrentQuestion = PS->SpeakScenarioData.speak_quest_data[CurrentStepIndex];
+					PlayerActor->PlayTTSAudio(CurrentQuestion.voice_data);
+					PRINTLOG(TEXT("[SpeakStage] Playing audio for step %d"), CurrentStepIndex + 1);
+
+					// UI 업데이트 (PlayerControl을 통해)
+					if (APlayerControl* PC = Cast<APlayerControl>(PlayerActor->GetController()))
+					{
+						PC->Client_UpdateSpeakWidget();
+						PRINTLOG(TEXT("[SpeakStage] SpeakWidget UI update requested"));
+					}
+				}
+			}
+		}
+	}
 }
 
-void ASpeakStageActor::ServerRPC_NotifyAnswerComplete_Implementation(APlayerState* Player)
+void ASpeakStageActor::ServerRPC_NotifyAnswerComplete_Implementation(ALingoPlayerState* Player)
 {
 	if (!HasAuthority() || !Player)
 		return;
@@ -132,7 +159,7 @@ void ASpeakStageActor::AdvanceStep()
 	auto TotalQuestionsCount = GetTotalQuestionsCount();
 	if( CurrentStepIndex >= TotalQuestionsCount )
 	{
-		PRINTLOG(TEXT("[SpeakStage] All steps completed for: %s"), *CurrentSpeaker->GetPlayerName());
+		PRINTLOG(TEXT("[SpeakStage] All steps completed for: %s"), *ULingoGameHelper::GetPlayerNameFromState(CurrentSpeaker));
 		// 스테이지 종료
 		EndStage();
 	}
@@ -143,7 +170,7 @@ void ASpeakStageActor::AdvanceStep()
 		// 서버에서도 Toast 표시 (OnRep는 클라이언트만 호출됨)
 		ShowCurrentQuestionToast();
 
-		// 현재 발화자에게 다음 질문 음성 재생 요청
+		// 현재 발화자에게 다음 질문 음성 재생 및 UI 업데이트
 		if (ALingoPlayerState* PS = Cast<ALingoPlayerState>(CurrentSpeaker))
 		{
 			if (PS->SpeakScenarioData.speak_quest_data.IsValidIndex(CurrentStepIndex))
@@ -152,9 +179,16 @@ void ASpeakStageActor::AdvanceStep()
 				{
 					if (APlayerActor* PlayerActor = Cast<APlayerActor>(SpeakerPawn))
 					{
+						// TTS 재생
 						FSpeakStageQuestion& CurrentQuestion = PS->SpeakScenarioData.speak_quest_data[CurrentStepIndex];
 						PlayerActor->PlayTTSAudio(CurrentQuestion.voice_data);
 						PRINTLOG(TEXT("[SpeakStage] Playing audio for step %d"), CurrentStepIndex + 1);
+
+						// UI 업데이트 (PlayerControl을 통해)
+						if (APlayerControl* PC = Cast<APlayerControl>(PlayerActor->GetController()))
+						{
+							PC->Client_UpdateSpeakWidget();
+						}
 					}
 				}
 			}
@@ -169,10 +203,13 @@ void ASpeakStageActor::EndStage()
 
 	if (!CurrentSpeaker)
 		return;
-	
+
 	// 모든 단계 완료 Toast 표시
 	UPopupManager::Get(GetWorld())->ShowMsgBox(TEXT("NOTICE"), TEXT("SPEAK QUEST COMPLETE"),
 		EMsgBoxType::OK, FOnMsgBoxOkDelegate());
+
+	// UI 업데이트를 위해 현재 발화자 임시 저장
+	APlayerState* PreviousSpeaker = CurrentSpeaker;
 	
 	// 현재 발화자 초기화, 스테이지를 다시 사용 가능하게 만듦
 	CurrentSpeaker = nullptr;
@@ -180,6 +217,19 @@ void ASpeakStageActor::EndStage()
 
 	// 서버 측 리스너에게 즉시 알림
 	OnSpeakerChanged.Broadcast(CurrentSpeaker);
+
+	// UI 업데이트 요청 (CurrentSpeaker가 nullptr이 된 후 위젯 숨김)
+	if (APawn* SpeakerPawn = PreviousSpeaker->GetPawn())
+	{
+		if (APlayerActor* PlayerActor = Cast<APlayerActor>(SpeakerPawn))
+		{
+			if (APlayerControl* PC = Cast<APlayerControl>(PlayerActor->GetController()))
+			{
+				PC->Client_UpdateSpeakWidget();
+				PRINTLOG(TEXT("[SpeakStage] SpeakWidget hidden after quest completion"));
+			}
+		}
+	}
 }
 
 void ASpeakStageActor::ShowCurrentQuestionToast()

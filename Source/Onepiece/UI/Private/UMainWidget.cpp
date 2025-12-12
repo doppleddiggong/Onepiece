@@ -9,16 +9,12 @@
 #include "UPlayTimer.h"
 #include "UStateWidget.h"
 #include "ALingoGameState.h"
-#include "ALingoPlayerState.h"
 #include "ASpeakStageActor.h"
+#include "ULingoGameHelper.h"
 #include "UBroadcastManager.h"
 #include "GameLogging.h"
-#include "ULingoGameHelper.h"
 #include "UQuestInfoWidget.h"
 #include "USpeakWidget.h"
-#include "USpeakStageSubsystem.h"
-#include "UTutorMessage.h"
-#include "UAutoDespawnItem.h"
 #include "UFadeWidget.h"
 #include "URoomWidget.h"
 #include "Engine/World.h"
@@ -144,16 +140,26 @@ void UMainWidget::UpdateHookState(bool bIsAiming)
 
 void UMainWidget::UpdateSpeakWidget()
 {
-	USpeakStageSubsystem* Subsystem = GetWorld()->GetSubsystem<USpeakStageSubsystem>();
-	ASpeakStageActor* SpeakStage = Subsystem ? Subsystem->GetSpeakStage() : nullptr;
-	APlayerState* CurrentSpeaker = SpeakStage ? SpeakStage->GetCurrentSpeaker() : nullptr;
+	if (!SpeakWidget)
+		return;
 
-	const bool bShouldShow = Subsystem && Subsystem->IsInitialized() && SpeakStage && CurrentSpeaker;
+	// SpeakStage 가져오기
+	ASpeakStageActor* SpeakStage = ULingoGameHelper::GetSpeakStageActor(this);
+	if (!SpeakStage)
+	{
+		SpeakWidget->SetWidgetVisibility(false);
+		return;
+	}
+
+	// 현재 발화자 확인
+	ALingoPlayerState* CurrentSpeaker = SpeakStage->GetCurrentSpeaker();
+	const bool bShouldShow = CurrentSpeaker != nullptr;
 
 	SpeakWidget->SetWidgetVisibility(bShouldShow);
 
 	if (bShouldShow)
 	{
+		// 로컬 플레이어 PlayerState 가져오기
 		APlayerController* LocalPC = GetWorld()->GetFirstPlayerController();
 		if (!LocalPC)
 			return;

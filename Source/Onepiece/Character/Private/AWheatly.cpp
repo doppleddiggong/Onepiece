@@ -10,6 +10,7 @@
 #include "FComponentHelper.h"
 #include "GameLogging.h"
 #include "UInteractWidget.h"
+#include "ULingoGameHelper.h"
 #include "UKLingoNetworkSystem.h"
 #include "UBroadcastManager.h"
 #include "GameFramework/PlayerState.h"
@@ -18,6 +19,7 @@
 #include "Components/StaticMeshComponent.h"
 #include "Components/WidgetComponent.h"
 #include "InteractableComponent.h"
+#include "Kismet/GameplayStatics.h"
 #include "Kismet/KismetMathLibrary.h"
 #include "Net/UnrealNetwork.h"
 #include "DrawDebugHelpers.h" // Added for DrawDebugLine
@@ -114,6 +116,24 @@ void AWheatly::BeginPlay()
 
 		InteractableComp->OnInteractionTriggered.RemoveDynamic(this, &AWheatly::OnInteractionTriggered);
 		InteractableComp->OnInteractionTriggered.AddDynamic(this, &AWheatly::OnInteractionTriggered);
+	}
+
+	// SpeakStage 자동 연결 (서버에서만)
+	if (HasAuthority() && !SpeakStage)
+	{
+		ASpeakStageActor* FoundStage = Cast<ASpeakStageActor>(
+			UGameplayStatics::GetActorOfClass(GetWorld(), ASpeakStageActor::StaticClass())
+		);
+
+		if (FoundStage)
+		{
+			SetSpeakStage(FoundStage);
+			PRINTLOG(TEXT("[AWheatly] SpeakStage auto-connected"));
+		}
+		else
+		{
+			PRINTLOG(TEXT("[AWheatly] Warning: No SpeakStageActor found in world"));
+		}
 	}
 
 	PlayAnimation(EWheatlyAnim::Reaction_01);
@@ -306,30 +326,25 @@ void AWheatly::OnResponseSpeakScenario(FResponseSpeakScenario& ResponseData, boo
 	if (bWasSuccessful)
 	{
 		// PlayerState에 데이터 저장
-		ALingoPlayerState* PS = RequestPlayer->GetPlayerState<ALingoPlayerState>();
-		if (!PS)
+		if (auto PS = RequestPlayer->GetPlayerState<ALingoPlayerState>() )
+		{
+			// PlayerState에 시나리오 데이터 저장
+			PS->SpeakScenarioData = ResponseData;
+			PS->CurSpeakQuestStep = 0;
+
+			// SpeakStage를 통해 퀘스트 시작 (첫 질문 표시, TTS 재생, UI 업데이트 포함)
+			if (SpeakStage && PS->SpeakScenarioData.speak_quest_data.Num() > 0)
+			{
+				SpeakStage->StartStageForPlayer(PS);
+				PRINTLOG(TEXT("[AWheatly] SpeakQuest started for: %s"), *ULingoGameHelper::GetPlayerNameFromState(PS));
+			}		
+		}
+		else
 		{
 			// 실패 시 SpeakStage를 종료해야 할 수 있음
 			if(SpeakStage && SpeakStage->GetCurrentSpeaker())
-			{
 				SpeakStage->EndStage();
-			}
 			return;
-		}
-
-		PS->SpeakScenarioData = ResponseData;
-		PS->CurSpeakQuestStep = 0;
-
-		// 질문을 플레이어에게 전달
-		if (PS->SpeakScenarioData.speak_quest_data.Num() > 0)
-		{
-			if (APlayerControl* PC = Cast<APlayerControl>(RequestPlayer->GetController()))
-			{
-				FSpeakStageQuestion& StageQuestion = PS->SpeakScenarioData.speak_quest_data[0];
-				PC->Client_ToastMessage(*StageQuestion.GetQuestionMessage());
-
-				RequestPlayer->PlayTTSAudio( StageQuestion.voice_data );
-			}
 		}
 	}
 	else
@@ -360,20 +375,13 @@ void AWheatly::OnInteractionTriggered(AActor* InteractingActor)
 	{
 		if (auto PC = Cast<APlayerControl>(InteractingPlayer->GetController()))
 		{
-			PC->Client_ToastMessage(FString::Printf(TEXT("Current Turn is [%s]"), *CurrentSpeaker->GetPlayerName()));
+			PC->Client_ToastMessage(FString::Printf(TEXT("Current Turn is [%s]"), *ULingoGameHelper::GetPlayerNameFromState(CurrentSpeaker)));
 		}
 		return;
 	}
 
-	// bIsBusy가 false이면 SpeakQuest 시작
-	if (auto PS = InteractingPlayer->GetPlayerState())
-	{
-		// SpeakStageActor에 퀘스트 시작 및 현재 플레이어 알림
-		SpeakStage->StartStageForPlayer(PS);
-		
-		// SpeakQuest 시작
-		BeginSpeakQuest(InteractingPlayer);
-	}
+	// SpeakQuest 시작 (시나리오 데이터 요청)
+	BeginSpeakQuest(InteractingPlayer);
 }
 
 void AWheatly::OnSpeakStageSpeakerChanged(APlayerState* NewSpeaker)

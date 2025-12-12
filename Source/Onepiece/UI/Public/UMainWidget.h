@@ -30,6 +30,7 @@ public:
 
 	void UpdateStateWidget(int32 UserId, const FString& UserName);
 	void UpdateRoomWidget(int32 InRoomLevel, int64 InRoomId);
+	void UpdateSpeakWidget();
 	
 	/// @brief 훅 인디케이터 상태 업데이트 (에임/비에임)
 	/// @param bIsAiming true면 타겟 감지됨(파란색), false면 비감지(회색)
@@ -56,9 +57,6 @@ public:
 private:
 	/// @brief 타이머 텍스트를 업데이트합니다.
 	void UpdateTimerDisplay() const;
-
-	/// @brief SpeakWidget UI를 업데이트합니다.
-	void UpdateSpeakWidget();
 
 	/// @brief 미션 타이머 상태 변경 핸들러
 	UFUNCTION()

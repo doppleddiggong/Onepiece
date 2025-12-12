@@ -35,6 +35,10 @@ public:
 	UFUNCTION(Client, Reliable)
 	void Client_ToastMessage(const FString& Message);
 
+	/// @brief SpeakWidget UI를 업데이트합니다 (Client RPC)
+	UFUNCTION(Client, Reliable)
+	void Client_UpdateSpeakWidget();
+
 protected:
     virtual void BeginPlay() override;
     virtual void SetupInputComponent() override;

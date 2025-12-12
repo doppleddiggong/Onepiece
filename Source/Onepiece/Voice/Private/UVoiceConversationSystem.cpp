@@ -8,6 +8,7 @@
 
 #include "ALingoPlayerState.h"
 #include "GameLogging.h"
+#include "ULingoGameHelper.h"
 #include "UBroadcastManager.h"
 #include "UDialogManager.h"
 #include "UVoiceFunctionLibrary.h"
@@ -83,11 +84,11 @@ void UVoiceConversationSystem::StartRecording()
 			if (LocalPlayerState && CurrentSpeaker && CurrentSpeaker != LocalPlayerState)
 			{
 				PRINTLOG(TEXT("[VoiceConversation] Recording blocked: Not your turn (Current: %s)"),
-					*CurrentSpeaker->GetPlayerName());
+					*ULingoGameHelper::GetPlayerNameFromState(CurrentSpeaker));
 
 				if (auto DM = UDialogManager::Get(World))
 				{
-					DM->ShowToast(FString::Printf(TEXT("지금은 %s님의 차례입니다"), *CurrentSpeaker->GetPlayerName()));
+					DM->ShowToast(FString::Printf(TEXT("지금은 %s님의 차례입니다"), *ULingoGameHelper::GetPlayerNameFromState(CurrentSpeaker)));
 				}
 				return;
 			}

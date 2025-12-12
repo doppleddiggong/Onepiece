@@ -8,6 +8,7 @@
 
 #include "APlayerActor.h"
 #include "IControllable.h"
+#include "UMainWidget.h"
 
 #include "EnhancedInputSubsystems.h"
 #include "EnhancedInputComponent.h"
@@ -277,6 +278,21 @@ void APlayerControl::Server_RequestDrop_Implementation()
 void APlayerControl::Client_ToastMessage_Implementation(const FString& Message)
 {
 	UDialogManager::Get(GetWorld())->ShowToast(Message);
+}
+
+void APlayerControl::Client_UpdateSpeakWidget_Implementation()
+{
+	// 로컬 플레이어의 MainWidget 가져오기
+	APlayerActor* PlayerActor = Cast<APlayerActor>(GetPawn());
+	if (!PlayerActor)
+		return;
+
+	UMainWidget* MainWidget = PlayerActor->GetMainWidget();
+	if (!MainWidget)
+		return;
+
+	// SpeakWidget 업데이트
+	MainWidget->UpdateSpeakWidget();
 }
 
 void APlayerControl::TEST_DropperDropProcess()

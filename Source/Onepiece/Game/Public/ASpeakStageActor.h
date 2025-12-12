@@ -36,21 +36,21 @@ public:
 	 * @param Player [in] 스테이지를 시작할 플레이어의 PlayerState.
 	 */
 	UFUNCTION(BlueprintCallable, Category = "SpeakStage")
-	void StartStageForPlayer(class APlayerState* Player);
+	void StartStageForPlayer(class ALingoPlayerState* Player);
 
 	/**
 	 * @brief 플레이어 답변 완료 알림 (Server RPC)
 	 * @param Player [in] 답변을 완료한 플레이어
 	 */
 	UFUNCTION(Server, Reliable)
-	void ServerRPC_NotifyAnswerComplete(class APlayerState* Player);
+	void ServerRPC_NotifyAnswerComplete(class ALingoPlayerState* Player);
 
 	/**
 	 * @brief 현재 발화자 Getter
 	 * @return 현재 발화 권한을 가진 플레이어. 없으면 nullptr.
 	 */
 	UFUNCTION(BlueprintCallable, Category = "SpeakStage")
-	class APlayerState* GetCurrentSpeaker() const { return CurrentSpeaker; }
+	class ALingoPlayerState* GetCurrentSpeaker() const { return CurrentSpeaker; }
 
 	/**
 	 * @brief 현재 단계 Getter
@@ -120,7 +120,7 @@ protected:
 
 	/// @brief 현재 발화 권한을 가진 플레이어. nullptr이면 스테이지가 비어있음을 의미.
 	UPROPERTY(ReplicatedUsing = OnRep_CurrentSpeaker)
-	TObjectPtr<class APlayerState> CurrentSpeaker;
+	TObjectPtr<class ALingoPlayerState> CurrentSpeaker;
 
 	/// @brief 현재 진행 단계 (질문 인덱스)
 	UPROPERTY(ReplicatedUsing = OnRep_CurrentStepIndex)

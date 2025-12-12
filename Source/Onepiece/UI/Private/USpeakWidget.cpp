@@ -1,7 +1,10 @@
 // Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
 
 #include "USpeakWidget.h"
+
+#include "ALingoPlayerState.h"
 #include "ASpeakStageActor.h"
+#include "ULingoGameHelper.h"
 #include "Components/TextBlock.h"
 #include "GameFramework/PlayerState.h"
 #include "GameLogging.h"
@@ -70,10 +73,10 @@ void USpeakWidget::UpdateSpeakStageUI(ASpeakStageActor* SpeakStage, APlayerState
 	// 1. 현재 발화자 표시
 	if (CurrentSpeakerText)
 	{
-		APlayerState* CurrentSpeaker = SpeakStage->GetCurrentSpeaker();
+		ALingoPlayerState* CurrentSpeaker = SpeakStage->GetCurrentSpeaker();
 		if (CurrentSpeaker)
 		{
-			FString SpeakerName = CurrentSpeaker->GetPlayerName();
+			FString SpeakerName = ULingoGameHelper::GetPlayerNameFromState(CurrentSpeaker);
 
 			// 내 턴인지 확인
 			if (LocalPlayerState && CurrentSpeaker == LocalPlayerState)
