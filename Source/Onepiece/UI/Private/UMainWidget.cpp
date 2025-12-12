@@ -69,7 +69,6 @@ void UMainWidget::NativeTick(const FGeometry& MyGeometry, float InDeltaTime)
 	Super::NativeTick(MyGeometry, InDeltaTime);
 
 	UpdateTimerDisplay();
-	UpdateSpeakWidget();
 }
 
 void UMainWidget::SetMissionTimerState(bool bIsActive) const

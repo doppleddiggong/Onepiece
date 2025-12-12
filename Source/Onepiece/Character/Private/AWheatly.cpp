@@ -326,19 +326,13 @@ void AWheatly::OnResponseSpeakScenario(FResponseSpeakScenario& ResponseData, boo
 			PS->SpeakScenarioData = ResponseData;
 			PS->CurSpeakQuestStep = 0;
 
-			// SpeakStage를 통해 퀘스트 시작 (첫 질문 표시, TTS 재생, UI 업데이트 포함)
-			if (SpeakStage && PS->SpeakScenarioData.speak_quest_data.Num() > 0)
-			{
-				SpeakStage->StartStageForPlayer(PS);
-				PRINTLOG(TEXT("[AWheatly] SpeakQuest started for: %s"), *ULingoGameHelper::GetPlayerNameFromState(PS));
-			}		
+			PS->OnUpdateSpeakScenarioData();
 		}
 		else
 		{
 			// 실패 시 SpeakStage를 종료해야 할 수 있음
 			if(SpeakStage && SpeakStage->GetCurrentSpeaker())
 				SpeakStage->EndStage();
-			return;
 		}
 	}
 	else

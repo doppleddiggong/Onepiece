@@ -3,6 +3,8 @@
 #include "ALingoPlayerState.h"
 
 #include "APlayerControl.h"
+#include "ASpeakStageActor.h"
+#include "EngineUtils.h"
 #include "UBroadcastManager.h"
 #include "Net/UnrealNetwork.h"
 #include "GameLogging.h"
@@ -90,6 +92,27 @@ bool ALingoPlayerState::Server_AddSpeakJudes_Validate(const FResponseSpeakingJud
 	return true;
 }
 
+void ALingoPlayerState::Server_NotifySpeakDataReady_Implementation()
+{
+	// 월드에서 SpeakStageActor를 찾습니다.
+	if (UWorld* World = GetWorld())
+	{
+		for (TActorIterator<ASpeakStageActor> It(World); It; ++It)
+		{
+			ASpeakStageActor* SpeakStage = *It;
+			if (SpeakStage)
+			{
+				// SpeakStage를 통해 퀘스트를 시작합니다.
+				SpeakStage->StartStageForPlayer(this);
+				PRINTLOG(TEXT("[ALingoPlayerState] Client is ready. Starting SpeakQuest for: %s"), *GetPlayerName());
+				return; // 첫 번째로 찾은 SpeakStage를 사용하고 종료
+			}
+		}
+	}
+
+	PRINTLOG(TEXT("[ALingoPlayerState] Server_NotifySpeakDataReady - ASpeakStageActor not found in world!"));
+}
+
 
 //--------------------------------------------------------------//
 // Read Quest OnRep Callbacks
@@ -128,4 +151,14 @@ void ALingoPlayerState::OnRep_WrongWord1()
 void ALingoPlayerState::OnRep_WrongWord2()
 {
 	PRINTLOG(TEXT("[PlayerState] OnRep_ColorWrong: %s"), bWrongWord2 ? TEXT("true") : TEXT("false"));
+}
+
+void ALingoPlayerState::OnRep_SpeakScenarioData()
+{
+	OnUpdateSpeakScenarioData();
+}
+
+void ALingoPlayerState::OnUpdateSpeakScenarioData()
+{
+	Server_NotifySpeakDataReady();
 }

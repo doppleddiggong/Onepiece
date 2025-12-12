@@ -145,6 +145,8 @@ public:
 	UFUNCTION(BlueprintPure, Category = "UI")
 	class UMainWidget* GetMainWidget() const { return MainWidget; }
 
+	void RequestListenAudio(const FString& AudioText);
+	
 private:
 	bool IsMainMap();
 
@@ -155,7 +157,6 @@ private:
 	void CreateMainWidget();
 	void CreateToastWidget();
 
-	void RequestListenAudio(const FString& AudioText);
 	void OnResponseListenAudio(FResponseListenAudio& ResponseData, bool bWasSuccessful);
 	
 	/// @brief 텔레포트 이벤트 핸들러

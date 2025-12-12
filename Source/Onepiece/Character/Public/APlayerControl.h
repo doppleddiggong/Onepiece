@@ -35,9 +35,13 @@ public:
 	UFUNCTION(Client, Reliable)
 	void Client_ToastMessage(const FString& Message);
 
-	/// @brief SpeakWidget UI를 업데이트합니다 (Client RPC)
+	/// @brief SpeakQuest의 현재 단계를 클라이언트에게 업데이트합니다. (Toast, TTS 포함)
 	UFUNCTION(Client, Reliable)
-	void Client_UpdateSpeakWidget();
+	void Client_UpdateSpeakQuest(int32 StepIndex);
+
+	/// @brief SpeakQuest 완료를 클라이언트에게 알리고 관련 UI를 최종 처리합니다.
+	UFUNCTION(Client, Reliable)
+	void Client_EndSpeakQuest();
 
 protected:
     virtual void BeginPlay() override;
@@ -97,7 +101,8 @@ protected:
 	
 private:
 	void RequestDrop(APlayerControl* Requester);
-	
+
+	void UpdateSpeakWidget();
 	void TEST_DropperDropProcess();
 	void TEST_AddItemToBoxList();
 	

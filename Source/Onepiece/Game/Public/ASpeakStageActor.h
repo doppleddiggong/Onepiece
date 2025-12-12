@@ -90,10 +90,6 @@ protected:
 	UFUNCTION()
 	void OnRep_CurrentSpeaker();
 
-	/// @brief currentStepIndex 복제 알림
-	UFUNCTION()
-	void OnRep_CurrentStepIndex();
-
 private:
 	/**
 	 * @brief 다음 질문으로 진행합니다.
@@ -102,10 +98,9 @@ private:
 	void AdvanceStep();
 
 	/**
-	 * @brief 현재 질문을 Toast로 표시 (서버/클라이언트 공통)
-	 * AdvanceStep()과 OnRep_CurrentStepIndex()에서 호출됩니다.
+	 * @brief 서버에서 현재 발화자 클라이언트에게 현재 단계 정보(UI, TTS)를 전송합니다.
 	 */
-	void ShowCurrentQuestionToast();
+	void NotifyCurrentSpeakerOfStep();
 	
 public:
 	/// @brief 현재 발화자가 변경될 때 호출되는 이벤트입니다.
@@ -123,6 +118,6 @@ protected:
 	TObjectPtr<class ALingoPlayerState> CurrentSpeaker;
 
 	/// @brief 현재 진행 단계 (질문 인덱스)
-	UPROPERTY(ReplicatedUsing = OnRep_CurrentStepIndex)
+	UPROPERTY(Replicated)
 	int32 CurrentStepIndex;
 };

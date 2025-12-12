@@ -62,10 +62,18 @@ public:
 	// Speak Quest RPC Functions
 	//--------------------------------------------------------------//
 
+	/// @brief 클라이언트가 SpeakScenarioData 수신 준비 완료를 서버에 알립니다.
+	UFUNCTION(Server, Reliable)
+	void Server_NotifySpeakDataReady();
+
 	/// @brief SpeakQuest 평가 결과를 서버에 저장합니다
 	/// @param EvaluationResult 저장할 평가 결과
 	UFUNCTION(Server, Reliable, WithValidation)
 	void Server_AddSpeakJudes(const FResponseSpeakingJudes& EvaluationResult);
+
+	/// @brief SpeakScenarioData 복제 알림 함수
+	UFUNCTION()
+	void OnRep_SpeakScenarioData();
 
 public:
 	/// @brief 플레이어 역할 (싱글/멀티에서 문제1, 문제2 구분)
@@ -90,12 +98,16 @@ public:
 	UPROPERTY(ReplicatedUsing = OnRep_WrongWord2, BlueprintReadOnly, Category = "Quest")
 	bool bWrongWord2 = false;
 
+	
 public:
 	//--------------------------------------------------------------//
 	// Speak Quest Functions
 	//--------------------------------------------------------------//
 
-	UPROPERTY(Transient, Replicated, BlueprintReadOnly, Category = "SpeakQuest")
+	/// @brief SpeakScenarioData가 업데이트될 때 Host와 Client 모두에서 호출되는 공통 함수입니다.
+	void OnUpdateSpeakScenarioData();
+
+	UPROPERTY(Transient, ReplicatedUsing = OnRep_SpeakScenarioData, BlueprintReadOnly, Category = "SpeakQuest")
 	FResponseSpeakScenario SpeakScenarioData;
 
 	/// @brief 현재 진행 중인 질문 인덱스

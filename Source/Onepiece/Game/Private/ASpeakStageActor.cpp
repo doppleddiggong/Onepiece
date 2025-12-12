@@ -44,22 +44,13 @@ void ASpeakStageActor::OnRep_CurrentSpeaker()
 	OnSpeakerChanged.Broadcast(CurrentSpeaker);
 }
 
-void ASpeakStageActor::OnRep_CurrentStepIndex()
-{
-	// 클라이언트에서 Toast 표시
-	ShowCurrentQuestionToast();
-}
-
 //----------------------------------------------------------
 // Public Interface
 //----------------------------------------------------------
 
 void ASpeakStageActor::StartStageForPlayer(ALingoPlayerState* Player)
 {
-	if (!HasAuthority())
-		return;
-
-	if (!Player)
+	if (!HasAuthority() || !Player)
 		return;
 
 	// 이미 사용 중인 경우
@@ -73,32 +64,12 @@ void ASpeakStageActor::StartStageForPlayer(ALingoPlayerState* Player)
 	// 서버 측 리스너에게 즉시 알림
 	OnSpeakerChanged.Broadcast(CurrentSpeaker);
 
-	// 서버에서도 첫 질문 Toast 표시 (OnRep는 클라이언트만 호출되므로)
-	ShowCurrentQuestionToast();
-
-	// 첫 번째 질문 TTS 재생 및 UI 업데이트
-	if (ALingoPlayerState* PS = Cast<ALingoPlayerState>(CurrentSpeaker))
+	// 클라이언트에게 현재 단계 정보(Toast, TTS)를 전송하고 UI 업데이트를 요청합니다.
+	if (APlayerControl* PC = Cast<APlayerControl>(CurrentSpeaker->GetOwner()))
 	{
-		if (PS->SpeakScenarioData.speak_quest_data.IsValidIndex(CurrentStepIndex))
-		{
-			if (APawn* SpeakerPawn = CurrentSpeaker->GetPawn())
-			{
-				if (APlayerActor* PlayerActor = Cast<APlayerActor>(SpeakerPawn))
-				{
-					// TTS 재생
-					FSpeakStageQuestion& CurrentQuestion = PS->SpeakScenarioData.speak_quest_data[CurrentStepIndex];
-					PlayerActor->PlayTTSAudio(CurrentQuestion.voice_data);
-					PRINTLOG(TEXT("[SpeakStage] Playing audio for step %d"), CurrentStepIndex + 1);
-
-					// UI 업데이트 (PlayerControl을 통해)
-					if (APlayerControl* PC = Cast<APlayerControl>(PlayerActor->GetController()))
-					{
-						PC->Client_UpdateSpeakWidget();
-						PRINTLOG(TEXT("[SpeakStage] SpeakWidget UI update requested"));
-					}
-				}
-			}
-		}
+		// 클라이언트에게 StepIndex를 전달하여 스스로 UI와 TTS를 처리하도록 합니다.
+		PC->Client_UpdateSpeakQuest(CurrentStepIndex);
+		PRINTLOG(TEXT("[SpeakStage] Sent StepIndex %d to client for update."), CurrentStepIndex);
 	}
 }
 
@@ -167,91 +138,32 @@ void ASpeakStageActor::AdvanceStep()
 	{
 		PRINTLOG(TEXT("[SpeakStage] Advanced to step: %d/%d"), CurrentStepIndex + 1, TotalQuestionsCount);
 
-		// 서버에서도 Toast 표시 (OnRep는 클라이언트만 호출됨)
-		ShowCurrentQuestionToast();
-
-		// 현재 발화자에게 다음 질문 음성 재생 및 UI 업데이트
-		if (ALingoPlayerState* PS = Cast<ALingoPlayerState>(CurrentSpeaker))
+		// 클라이언트에게 현재 단계 정보(Toast, TTS)를 전송하고 UI 업데이트를 요청합니다.
+		if (APlayerControl* PC = Cast<APlayerControl>(CurrentSpeaker->GetOwner()))
 		{
-			if (PS->SpeakScenarioData.speak_quest_data.IsValidIndex(CurrentStepIndex))
-			{
-				if (APawn* SpeakerPawn = CurrentSpeaker->GetPawn())
-				{
-					if (APlayerActor* PlayerActor = Cast<APlayerActor>(SpeakerPawn))
-					{
-						// TTS 재생
-						FSpeakStageQuestion& CurrentQuestion = PS->SpeakScenarioData.speak_quest_data[CurrentStepIndex];
-						PlayerActor->PlayTTSAudio(CurrentQuestion.voice_data);
-						PRINTLOG(TEXT("[SpeakStage] Playing audio for step %d"), CurrentStepIndex + 1);
-
-						// UI 업데이트 (PlayerControl을 통해)
-						if (APlayerControl* PC = Cast<APlayerControl>(PlayerActor->GetController()))
-						{
-							PC->Client_UpdateSpeakWidget();
-						}
-					}
-				}
-			}
+			// 클라이언트에게 StepIndex를 전달하여 스스로 UI와 TTS를 처리하도록 합니다.
+			PC->Client_UpdateSpeakQuest(CurrentStepIndex);
+			PRINTLOG(TEXT("[SpeakStage] Sent StepIndex %d to client for update."), CurrentStepIndex);
 		}
 	}
 }
 
 void ASpeakStageActor::EndStage()
 {
-	if (!HasAuthority())
+	if (!HasAuthority() || !CurrentSpeaker)
 		return;
 
-	if (!CurrentSpeaker)
-		return;
-
-	// 모든 단계 완료 Toast 표시
-	UPopupManager::Get(GetWorld())->ShowMsgBox(TEXT("NOTICE"), TEXT("SPEAK QUEST COMPLETE"),
-		EMsgBoxType::OK, FOnMsgBoxOkDelegate());
-
-	// UI 업데이트를 위해 현재 발화자 임시 저장
-	APlayerState* PreviousSpeaker = CurrentSpeaker;
+	// 클라이언트 측에서 완료 UI 처리 및 위젯 업데이트를 하도록 단일 RPC 호출
+	if (APlayerControl* PC = Cast<APlayerControl>(CurrentSpeaker->GetOwner()))
+	{
+		PC->Client_EndSpeakQuest();
+		PRINTLOG(TEXT("[SpeakStage] Sent FinalizeSpeakQuest to client: %s"), *ULingoGameHelper::GetPlayerNameFromState(CurrentSpeaker));
+	}
 	
-	// 현재 발화자 초기화, 스테이지를 다시 사용 가능하게 만듦
+	// 서버 상태 초기화
 	CurrentSpeaker = nullptr;
 	CurrentStepIndex = 0;
 
-	// 서버 측 리스너에게 즉시 알림
+	// 서버 측 리스너에게 알림
 	OnSpeakerChanged.Broadcast(CurrentSpeaker);
-
-	// UI 업데이트 요청 (CurrentSpeaker가 nullptr이 된 후 위젯 숨김)
-	if (APawn* SpeakerPawn = PreviousSpeaker->GetPawn())
-	{
-		if (APlayerActor* PlayerActor = Cast<APlayerActor>(SpeakerPawn))
-		{
-			if (APlayerControl* PC = Cast<APlayerControl>(PlayerActor->GetController()))
-			{
-				PC->Client_UpdateSpeakWidget();
-				PRINTLOG(TEXT("[SpeakStage] SpeakWidget hidden after quest completion"));
-			}
-		}
-	}
-}
-
-void ASpeakStageActor::ShowCurrentQuestionToast()
-{
-	// 현재 질문 가져오기
-	FString CurrentQuestion = GetCurrentQuestion();
-	if (CurrentQuestion.IsEmpty())
-		return;
-
-	// PlayerState에서 전체 질문 수 가져오기
-	auto TotalQuestionsCount = GetTotalQuestionsCount();
-
-	// Toast 메시지 생성
-	FString ToastMessage = FString::Printf(TEXT("[%d/%d] %s"),
-		CurrentStepIndex + 1,
-		TotalQuestionsCount,
-		*CurrentQuestion);
-
-	// DialogManager를 통해 Toast 표시
-	if (UDialogManager* DM = UDialogManager::Get(GetWorld()))
-	{
-		DM->ShowToast(ToastMessage);
-		PRINTLOG(TEXT("[SpeakStage] Toast displayed: %s"), *ToastMessage);
-	}
 }

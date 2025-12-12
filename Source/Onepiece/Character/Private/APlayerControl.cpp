@@ -26,6 +26,7 @@
 #include "EngineUtils.h"
 #include "OrderKiosk.h"
 #include "UDialogManager.h"
+#include "UPopupManager.h"
 
 #define IMC_DEFAULT_PATH			TEXT("/Game/CustomContents/Input/IMC_Game_Player.IMC_Game_Player")
 #define IA_MOVE_PATH				TEXT("/Game/CustomContents/Input/IA_Game_Movement.IA_Game_Movement")
@@ -280,19 +281,49 @@ void APlayerControl::Client_ToastMessage_Implementation(const FString& Message)
 	UDialogManager::Get(GetWorld())->ShowToast(Message);
 }
 
-void APlayerControl::Client_UpdateSpeakWidget_Implementation()
+void APlayerControl::Client_UpdateSpeakQuest_Implementation(int32 StepIndex)
 {
-	// 로컬 플레이어의 MainWidget 가져오기
-	APlayerActor* PlayerActor = Cast<APlayerActor>(GetPawn());
-	if (!PlayerActor)
+	ALingoPlayerState* PS = GetPlayerState<ALingoPlayerState>();
+	if (!PS)
 		return;
+	
+	if (PS->SpeakScenarioData.speak_quest_data.IsValidIndex(StepIndex))
+	{
+		const FSpeakStageQuestion& CurrentQuestion = PS->SpeakScenarioData.speak_quest_data[StepIndex];
 
-	UMainWidget* MainWidget = PlayerActor->GetMainWidget();
-	if (!MainWidget)
-		return;
+		// 1. Toast 메시지 생성 및 표시
+		FString ToastMessage = FString::Printf(TEXT("[%d/%d] %s"),
+			StepIndex + 1,
+			PS->SpeakScenarioData.speak_quest_data.Num(),
+			*CurrentQuestion.GetQuestionMessage());
+		
+		if (UDialogManager* DM = UDialogManager::Get(GetWorld()))
+			DM->ShowToast(ToastMessage);
 
-	// SpeakWidget 업데이트
-	MainWidget->UpdateSpeakWidget();
+		if (APlayerActor* PlayerActor = Cast<APlayerActor>(GetPawn()))
+			PlayerActor->RequestListenAudio(CurrentQuestion.kor);
+
+		UpdateSpeakWidget();
+	}
+}
+
+void APlayerControl::Client_EndSpeakQuest_Implementation()
+{
+	if (auto PopupManager = UPopupManager::Get(GetWorld()))
+		PopupManager->ShowMsgBox(TEXT("NOTICE"), TEXT("SPEAK QUEST COMPLETE"), EMsgBoxType::OK, FOnMsgBoxOkDelegate());
+
+	UpdateSpeakWidget();
+}
+
+void APlayerControl::UpdateSpeakWidget()
+{
+	if (APlayerActor* PlayerActor = Cast<APlayerActor>(GetPawn()))
+	{
+		if (UMainWidget* MainWidget = PlayerActor->GetMainWidget())
+		{
+			MainWidget->UpdateSpeakWidget();
+		}
+	}
 }
 
 void APlayerControl::TEST_DropperDropProcess()
