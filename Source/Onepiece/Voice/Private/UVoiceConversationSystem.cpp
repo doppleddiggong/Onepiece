@@ -91,13 +91,6 @@ void UVoiceConversationSystem::StartRecording()
 				}
 				return;
 			}
-
-			// 내 턴이면 Server_RequestSpeak() 호출 (발화 권한 요청)
-			if (LocalPlayerState && CurrentSpeaker == LocalPlayerState)
-			{
-				PRINTLOG(TEXT("[VoiceConversation] Requesting speak permission..."));
-				SpeakStageActor->ServerRPC_RequestSpeak(LocalPlayerState);
-			}
 		}
 	}
 	// --- 턴 체크 종료 ---
@@ -115,7 +108,6 @@ void UVoiceConversationSystem::StartRecording()
 				World->GetTimerManager().ClearTimer(VoiceFinishTimerHandle);
 
 				OnVoiceAudioFinished(); // 수동으로 호출하여 이전 상태를 정리합니다.
-				PRINTLOG(TEXT("[VoiceConversation] Stopped conversation voice before recording and manually called OnVoiceAudioFinished"));
 			}
 		}
 	}

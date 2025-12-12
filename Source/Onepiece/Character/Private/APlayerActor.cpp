@@ -190,6 +190,8 @@ bool APlayerActor::IsMainMap()
 		return true;
 	else if ( MapName.Contains(TEXT("Game")) )
 		return true;
+	else if ( MapName.Contains(TEXT("Person")) )
+		return true;
 
 	return false;
 }

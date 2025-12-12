@@ -39,15 +39,11 @@ class ONEPIECE_API AWheatly : public AActor
 
 public:
 	AWheatly();
+	
 	virtual void Tick(float DeltaSeconds) override;
 
 protected:
 	virtual void BeginPlay() override;
-	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
-
-	//----------------------------------------------------------//
-	// Animation System
-	//----------------------------------------------------------//
 
 public:
 	/// @brief 애니메이션 타입 설정
@@ -65,24 +61,11 @@ protected:
 	UFUNCTION(NetMulticast, Reliable)
 	void Multicast_PlayAnimation(EWheatlyAnim InAnimType);
 
-	//----------------------------------------------------------//
-	// Speak Stage System
-	//----------------------------------------------------------//
-
 public:
 	/// @brief SpeakStage 설정 (GameMode에서 호출)
 	/// @param InSpeakStage [in] 연결할 SpeakStageActor
 	UFUNCTION(BlueprintCallable, Category = "SpeakStage")
 	void SetSpeakStage(class ASpeakStageActor* InSpeakStage);
-
-	/// @brief 현재 질문 가져오기
-	/// @return 현재 단계의 질문 문자열
-	UFUNCTION(BlueprintCallable, Category = "SpeakStage")
-	FString GetCurrentQuestion() const;
-
-
-	void RequestSpeakScenario(class APlayerActor* Player);
-	void OnResponseSpeakScenario(struct FResponseSpeakScenario& ResponseData, bool bWasSuccessful);
 
 	/// @brief SpeakQuest 시작 (서버에서만 호출)
 	/// @param Player [in] 퀘스트를 시작할 플레이어
@@ -92,33 +75,24 @@ public:
 	/// @param Player [in] 퀘스트를 완료한 플레이어
 	void CompleteSpeakQuest(class APlayerActor* Player);
 
-	//----------------------------------------------------------//
-	// Interaction System
-	//----------------------------------------------------------//
-
 protected:
 	/// @brief 플레이어 상호작용 핸들러
 	/// @param InteractingActor [in] 상호작용을 시도하는 액터
 	UFUNCTION()
-	void OnInteractionTriggered(AActor* InteractingActor);
+	void OnInteractionTriggered(class AActor* InteractingActor);
 
 	/// @brief SpeakStage의 발화자 변경 이벤트 핸들러
 	/// @param NewSpeaker [in] 새로운 발화자 (없으면 nullptr)
 	UFUNCTION()
-	void OnSpeakStageSpeakerChanged(APlayerState* NewSpeaker);
-
-	//----------------------------------------------------------//
-	// Visual System
-	//----------------------------------------------------------//
+	void OnSpeakStageSpeakerChanged(class APlayerState* NewSpeaker);
 
 private:
+	void RequestSpeakScenario(class APlayerActor* Player);
+	void OnResponseSpeakScenario(struct FResponseSpeakScenario& ResponseData, bool bWasSuccessful);
+	
 	/// @brief 눈 색상 변경
 	/// @param newColor [in] 새로운 색상
 	void ChangeEyeColor(FLinearColor newColor);
-
-	//----------------------------------------------------------//
-	// Components
-	//----------------------------------------------------------//
 
 protected:
 	/// @brief 스켈레탈 메시 컴포넌트
@@ -141,10 +115,9 @@ protected:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Components")
 	TObjectPtr<class UWidgetComponent> WidgetComp;
 
-	//----------------------------------------------------------//
-	// Materials
-	//----------------------------------------------------------//
-
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	TObjectPtr<class UBoxComponent> BoxComp;
+	
 	/// @brief 베이스 머티리얼 (눈 발광)
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Materials")
 	TObjectPtr<UMaterialInterface> baseMaterial;
@@ -153,29 +126,22 @@ protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Transient, Category = "Materials", meta = (AllowPrivateAccess = "true"))
 	TObjectPtr<UMaterialInstanceDynamic> dynamicMaterial;
 
-	//----------------------------------------------------------//
-	// Animation Data
-	//----------------------------------------------------------//
-
 	/// @brief 애니메이션 시퀀스 맵
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Animation")
 	TMap<EWheatlyAnim, TObjectPtr<class UAnimSequence>> AnimSequences;
 
-	/// @brief 현재 애니메이션 타입
-	EWheatlyAnim AnimType;
-
-	/// @brief 현재 재생 중인 애니메이션 길이 (초)
-	float currentAnimDuration;
-
-	//----------------------------------------------------------//
-	// Speak Stage Data
-	//----------------------------------------------------------//
-
-	/// @brief 연결된 SpeakStage 액터
+private:
 	UPROPERTY()
 	TObjectPtr<class ASpeakStageActor> SpeakStage;
+
+	UPROPERTY()
+	TObjectPtr<class APlayerActor> RequestPlayer;
+
+	/// @brief 현재 애니메이션 타입
+	EWheatlyAnim AnimType;
 	
-	APlayerActor* RequestPlayer;
+	/// @brief 현재 재생 중인 애니메이션 길이 (초)
+	float CurAnimDuration;
 
 	bool bShowDebugInfo = true;
 };

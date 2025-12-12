@@ -54,7 +54,7 @@ void USpeakStageSubsystem::CreateSpeakStageSystem()
 	FString MapName = World->GetMapName();
 	MapName.RemoveFromStart(World->StreamingLevelsPrefix);  // PIE prefix 제거
 
-	if (!MapName.Equals(TEXT("Map1")) && !MapName.Equals(TEXT("Lvl_ThirdPerson")))
+	if (!MapName.Equals(TEXT("Map1")) && !MapName.Equals(TEXT("Person")))
 	{
 		// 다른 맵에서는 초기화 완료로 표시
 		bIsInitialized = true;  

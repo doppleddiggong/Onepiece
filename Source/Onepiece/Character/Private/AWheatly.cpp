@@ -85,9 +85,17 @@ AWheatly::AWheatly()
 	WidgetComp->SetupAttachment(GetRootComponent());
 	WidgetComp->SetWidgetSpace(EWidgetSpace::Screen);
 	WidgetComp->SetDrawSize(FVector2D(2048.0f, 1024.0f));
+
+	BoxComp = CreateDefaultSubobject<UBoxComponent>(TEXT("BoxComp"));
+	BoxComp->SetupAttachment(GetRootComponent());
+	BoxComp->SetRelativeLocation(FVector(0.0f, 0.0f, 45.f));
+	BoxComp->SetBoxExtent(FVector(32, 32, 45));
+	BoxComp->SetCollisionEnabled(ECollisionEnabled::Type::QueryOnly);
+	BoxComp->SetCollisionObjectType(ECC_WorldStatic);
+	BoxComp->SetCollisionResponseToAllChannels(ECR_Block);	
 	
 	// 초기값 설정
-	currentAnimDuration = 0.0f;
+	CurAnimDuration = 0.0f;
 }
 
 void AWheatly::BeginPlay()
@@ -116,9 +124,7 @@ void AWheatly::Tick(float DeltaSeconds)
 	Super::Tick(DeltaSeconds);
 
 	if (!HasAuthority() || !SpeakStage)
-	{
 		return;
-	}
 
 	APlayerState* CurrentSpeaker = SpeakStage->GetCurrentSpeaker();
 	
@@ -126,32 +132,26 @@ void AWheatly::Tick(float DeltaSeconds)
 	if (CurrentSpeaker)
 	{
 		if (InteractingPlayerIndicator)
-		{
 			InteractingPlayerIndicator->SetVisibility(true);
-		}
 		
 		if (APawn* SpeakerPawn = CurrentSpeaker->GetPawn())
 		{
 			// 스피커를 쳐다보도록 회전
 			FRotator LookAtRotation = UKismetMathLibrary::FindLookAtRotation(GetActorLocation(), SpeakerPawn->GetActorLocation());
-			FRotator TargetRotation(0, LookAtRotation.Yaw, 0); // Yaw만 사용
+			FRotator TargetRotation( LookAtRotation.Pitch, LookAtRotation.Yaw, 0); // Yaw만 사용
 			SetActorRotation(FMath::RInterpTo(GetActorRotation(), TargetRotation, DeltaSeconds, 5.0f));
 			
 			// 표시기 위치 업데이트
 			FVector IndicatorLocation = SpeakerPawn->GetActorLocation() - FVector(0,0,100.f); // 발 밑에 표시
 			if (InteractingPlayerIndicator)
-			{
 				InteractingPlayerIndicator->SetWorldLocation(IndicatorLocation);
-			}
 		}
 	}
 	// 퀘스트 진행 중이 아닐 때
 	else
 	{
 		if (InteractingPlayerIndicator)
-		{
 			InteractingPlayerIndicator->SetVisibility(false);
-		}
 		
 		TArray<AActor*> OverlappingActors;
 		if (PlayerDetectionZone)
@@ -191,7 +191,7 @@ void AWheatly::Tick(float DeltaSeconds)
 			{
 				// 가장 가까운 플레이어를 쳐다보도록 회전
 				FRotator LookAtRotation = UKismetMathLibrary::FindLookAtRotation(GetActorLocation(), NearestPawn->GetActorLocation());
-				FRotator TargetRotation(0, LookAtRotation.Yaw, 0); // Yaw만 사용
+				FRotator TargetRotation( LookAtRotation.Pitch, LookAtRotation.Yaw, 0); // Yaw만 사용
 				SetActorRotation(FMath::RInterpTo(GetActorRotation(), TargetRotation, DeltaSeconds, 2.0f));
 
 				if (bShowDebugInfo)
@@ -229,9 +229,7 @@ void AWheatly::PlayAnimation(EWheatlyAnim InAnimType)
 
 	// 서버에서만 Multicast 호출
 	if (HasAuthority())
-	{
 		Multicast_PlayAnimation(InAnimType);
-	}
 }
 
 void AWheatly::Multicast_PlayAnimation_Implementation(EWheatlyAnim InAnimType)
@@ -240,48 +238,22 @@ void AWheatly::Multicast_PlayAnimation_Implementation(EWheatlyAnim InAnimType)
 	AnimType = InAnimType;
 
 	if (!MeshComponent)
-	{
-		PRINTLOG(TEXT("[AWheatly] Multicast_PlayAnimation - MeshComponent is null"));
 		return;
-	}
 
 	UAnimSequence* AnimSeq = AnimSequences.FindRef(AnimType);
 	if (!AnimSeq)
-	{
-		PRINTLOG(TEXT("[AWheatly] Multicast_PlayAnimation - AnimSequence not found for type: %d"), static_cast<int32>(AnimType));
 		return;
-	}
 
 	// 애니메이션 직접 재생 (반복 없음)
 	MeshComponent->PlayAnimation(AnimSeq, false);
-	currentAnimDuration = AnimSeq->GetPlayLength();
-
-	PRINTLOG(TEXT("[AWheatly] Animation played: %d (Duration: %.2f)"), static_cast<int32>(AnimType), currentAnimDuration);
+	CurAnimDuration = AnimSeq->GetPlayLength();
 }
-
-
-//----------------------------------------------------------//
-// Replication
-//----------------------------------------------------------//
-
-void AWheatly::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
-{
-	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
-
-	// 상태 변수들이 모두 ASpeakStageActor로 이전되어 더 이상 직접 복제할 멤버가 없음
-}
-
-//----------------------------------------------------------//
-// Speak Stage System
-//----------------------------------------------------------//
 
 void AWheatly::SetSpeakStage(ASpeakStageActor* InSpeakStage)
 {
 	// 기존 SpeakStage가 있다면 이벤트 바인딩 해제
 	if (SpeakStage)
-	{
 		SpeakStage->OnSpeakerChanged.RemoveDynamic(this, &AWheatly::OnSpeakStageSpeakerChanged);
-	}
 	
 	SpeakStage = InSpeakStage;
 
@@ -292,27 +264,12 @@ void AWheatly::SetSpeakStage(ASpeakStageActor* InSpeakStage)
 		// 초기 상태 동기화
 		OnSpeakStageSpeakerChanged(SpeakStage->GetCurrentSpeaker());
 	}
-
-	PRINTLOG(TEXT("[AWheatly] SpeakStage connected: %s"),
-		SpeakStage ? TEXT("Success") : TEXT("Failed"));
-}
-
-FString AWheatly::GetCurrentQuestion() const
-{
-	if (SpeakStage)
-	{
-		return SpeakStage->GetCurrentQuestion();
-	}
-
-	return TEXT("");
 }
 
 void AWheatly::BeginSpeakQuest(APlayerActor* Player)
 {
 	if (!HasAuthority() || !Player)
-	{
 		return;
-	}
 
 	RequestSpeakScenario(Player);
 }
@@ -321,21 +278,15 @@ void AWheatly::BeginSpeakQuest(APlayerActor* Player)
 void AWheatly::CompleteSpeakQuest(APlayerActor* Player)
 {
 	if (!HasAuthority() || !Player)
-	{
 		return;
-	}
 	
 	// PlayerState에서 축적된 평가 결과 가져오기
 	ALingoPlayerState* PS = Player->GetPlayerState<ALingoPlayerState>();
 	if (!PS)
-	{
 		return;
-	}
 
 	if (UBroadcastManager* BroadcastMgr = UBroadcastManager::Get(GetWorld()))
-	{
 		BroadcastMgr->SendTutorMessage(FText::FromString("SPEAK COMPLETE"));
-	}
 }
 
 void AWheatly::RequestSpeakScenario(APlayerActor* Player)
@@ -398,15 +349,11 @@ void AWheatly::OnResponseSpeakScenario(FResponseSpeakScenario& ResponseData, boo
 void AWheatly::OnInteractionTriggered(AActor* InteractingActor)
 {
 	if (!HasAuthority() || !SpeakStage)
-	{
 		return;
-	}
 
 	APlayerActor* InteractingPlayer = Cast<APlayerActor>(InteractingActor);
 	if (!InteractingPlayer)
-	{
 		return;
-	}
 
 	// SpeakStage의 상태를 직접 확인
 	if (APlayerState* CurrentSpeaker = SpeakStage->GetCurrentSpeaker())
@@ -435,6 +382,7 @@ void AWheatly::OnSpeakStageSpeakerChanged(APlayerState* NewSpeaker)
 	FLinearColor newColor = bIsStageBusy
 		? FLinearColor(1.0f, 1.0f, 0.0f, 1.0f)  // Yellow: Busy
 		: FLinearColor(0.0f, 0.5f, 1.0f, 1.0f); // Blue: Available
+	
 	ChangeEyeColor(newColor);
 }
 
@@ -446,9 +394,7 @@ void AWheatly::OnSpeakStageSpeakerChanged(APlayerState* NewSpeaker)
 void AWheatly::ChangeEyeColor(FLinearColor newColor)
 {
 	if (!dynamicMaterial)
-	{
 		return;
-	}
 
 	dynamicMaterial->SetVectorParameterValue(TEXT("EyeColor"), newColor);
 }
