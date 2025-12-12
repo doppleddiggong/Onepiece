@@ -101,18 +101,19 @@ void AQuestionnaireKiosk::OnResponseData(FQuestWriteInfo& InResponseData, bool b
 	{
 		PRINTLOG(TEXT("--- Write Question Response SUCCESS ---"));
 		
-		for (int32 i = 1; i <= InResponseData.question.Num(); ++i)
+		// 쓰기 퀘스트 json 데이터 받기 요청
+		QuestionnaireData = InResponseData;
+		
+		for (int32 i = 1; i <= QuestionnaireData.question.Num(); ++i)
 		{
-			const FWriteQuestionData& data = InResponseData.question[i - 1];
+			FWriteQuestionData& data = QuestionnaireData.question[i - 1];
+			data.Id = i;
 			PRINTLOG(TEXT("%d kor: %s"), i, *data.word_data.kor);
 			PRINTLOG(TEXT("%d answer_kor: %s"), i, *data.answer_kor);
 		}
-		
-		// TODO: 쓰기 퀘스트 json 데이터 받기 요청
-		// QuestionnaireData = InResponseData;
 			
 		// 테스트용 더미 데이터 생성
-		CreateTestData(QuestionnaireData);
+		// dCreateTestData(QuestionnaireData);
 		
 		ShowPopup();
 	}

@@ -337,7 +337,13 @@ void UKLingoNetworkSystem::RequestUserMe( FResponseUserMeDelegate InDelegate)
 
 void UKLingoNetworkSystem::RequestWriteQuestions(FResponseWriteQuestionDelegate InDelegate)
 {
-	FString Url = NetworkConfig::GetFullUrl(RequestAPI::writes_questions);
+	// URL 형식: /scenario/stages/redis/{room_id}/{scenario_id}/{stage_type}/{level}
+	FString Endpoint = FString::Printf(TEXT("%s/%lld/%d/%d/%d"), *RequestAPI::scenario,
+		ULingoGameHelper::GetLingoGameState( GetWorld())->GetRoomId(),
+		1,
+		ULingoGameHelper::GetStageTypeIndex(EQuestType::Write),
+		ULingoGameHelper::GetLingoGameState( GetWorld())->GetRoomLevel());
+	FString Url = NetworkConfig::GetFullUrl(Endpoint);
 	auto Request = SetupHttpRequest(Url, NETWORK_GET);
 
 	LogNetwork(ENetworkLogType::Get, *Request->GetURL());
