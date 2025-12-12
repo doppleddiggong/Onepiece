@@ -22,6 +22,11 @@ enum class EResourceTextureType : uint8
 	Time,
 	Score,
 	Color,
+
+	Read,
+	Listen,
+	Speak,
+	Write,
 };
 
 USTRUCT(BlueprintType)

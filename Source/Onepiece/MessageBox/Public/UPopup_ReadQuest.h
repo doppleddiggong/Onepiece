@@ -7,7 +7,6 @@
 #include "EQuestRole.h"
 #include "NetworkData.h"
 #include "UBasePopup.h"
-#include "Blueprint/UserWidget.h"
 #include "UPopup_ReadQuest.generated.h"
 
 /// @brief Read 퀘스트 메인 위젯
@@ -20,32 +19,47 @@ class ONEPIECE_API UPopup_ReadQuest : public UBasePopup
 public:
 	UFUNCTION(BlueprintCallable, Category = "Quest")
 	void InitRead(const FResponseReadScenario& InScenarioData);
+	FString ConvertWordDataToRichText(const FWordData& WordData);
 
-	UFUNCTION(BlueprintCallable, Category = "Quest")
-	void InitListen(const FResponseListenScenario& InScenarioData);
+protected:
+	virtual void NativeConstruct() override;
 
-	
 private:
 	UFUNCTION()
 	void InitQuestInfo(EQuestRole QuestRole);
+	UFUNCTION()
+	void InitWordList(EQuestRole QuestRole);
 
 	UFUNCTION(BlueprintCallable, Category = "Close")
 	void OnClickClose();
 
-	void ListenAudio(const FString& AudioText);
+	UFUNCTION()
+	void OnClickHyperlink(const FString& LinkID, const FString& Content);
+
+	void RequestListenAudio(const FString& AudioText);
 	void OnResponseListenAudio(FResponseListenAudio& ResponseData, bool bWasSuccessful);
-
 	
-public:
+protected:
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
-	TObjectPtr<class UWordWidget> WordWidget;
+	TObjectPtr<class URichTextBlock> Rich_Text;
 
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
-	TObjectPtr<class UTextureButton>Btn_Exit;
+	TObjectPtr<class UTextBlock> Txt_SubTitle;
+	
+	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
+	TObjectPtr<class UImageButton> Btn_Confirm;
+
+	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
+	TObjectPtr<class UHorizontalBox> WordBox;
+
 	
 private:
+	TArray<FPhonemeData> CachedPhonemeData;
+
+	UPROPERTY(EditDefaultsOnly, Category = "UI")
+	TSubclassOf<class UWordItem> WordItemClass;
+	
 	FResponseReadScenario ReadData;
-	FResponseListenScenario ListenData;
 	EQuestType QuestType = EQuestType::Read;
 
 	bool bIsRequest = false;

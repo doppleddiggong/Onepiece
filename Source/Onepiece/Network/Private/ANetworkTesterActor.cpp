@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
+// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
 
 /**
  * @file ANetworkTesterActor.cpp
@@ -11,6 +11,7 @@
 #include "UDialogManager.h"
 #include "UPopupManager.h"
 #include "UPopup_Interview.h"
+#include "UPopup_InterviewHello.h"
 #include "UPopup_MsgBox.h"
 #include "UVoiceConversationSystem.h"
 #include "Engine/Engine.h"
@@ -175,7 +176,7 @@ void ANetworkTesterActor::RequestInterviewHello()
     }
 }
 
-void ANetworkTesterActor::OnResponseOcrExtract(FResponseOcrExtract& ResponseData, bool bWasSuccessful)
+void ANetworkTesterActor::OnResponseOcrExtract(FResponseWriteSubmit& ResponseData, bool bWasSuccessful)
 {
     if (bWasSuccessful)
     {
@@ -228,7 +229,7 @@ void ANetworkTesterActor::OnResponseInterviewHello(FResponseInterviewHello& Resp
         PRINTLOG(TEXT("--- InterViewHello Questions SUCCESS ---"));
         ResponseData.PrintData();
 
-        if (auto Popup = UPopupManager::ShowPopupAs<UPopup_Interview>(GetWorld(), EPopupType::Interview))
+        if (auto Popup = UPopupManager::ShowPopupAs<UPopup_InterviewHello>(GetWorld(), EPopupType::InterviewHello))
         {
             Popup->InitPopup(ResponseData);
         }

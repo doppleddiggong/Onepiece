@@ -293,7 +293,7 @@ void AWeightSwitch::OnBeginOverlap(
 					Multicast_ShowWrongPopup(LuggageColor, LuggagePattern);
 
 					// 오답 목록에 인덱스 추가 (서버에서만)
-					GS->WrongReadAnswerList.Add(LuggageIdx);
+					GS->AddWrongReadAnswer(LuggageIdx);
 
 					// 큐브 소거 (서버에서만, 자동 복제됨)
 					Luggage->Destroy();
@@ -357,12 +357,9 @@ void AWeightSwitch::Multicast_ShowResultPopup_Implementation(int32 CorrectAnswer
 	// 모든 클라이언트에서 로컬 GameState에 정답 인덱스 추가
 	if (ALingoGameState* GS = Cast<ALingoGameState>(GetWorld()->GetGameState()))
 	{
-		// 중복 체크 후 추가
-		if (!GS->WrongReadAnswerList.Contains(CorrectAnswerIndex))
-		{
-			GS->WrongReadAnswerList.Add(CorrectAnswerIndex);
-			PRINTLOG(TEXT("[Multicast_ShowResultPopup] Added correct answer index %d to local GameState"), CorrectAnswerIndex);
-		}
+		GS->AddWrongReadAnswer(CorrectAnswerIndex);
+		
+		PRINTLOG(TEXT("[Multicast_ShowResultPopup] Added correct answer index %d to local GameState"), CorrectAnswerIndex);
 	}
 
 	// 팝업 표시

@@ -20,7 +20,7 @@ protected:
 public:
 	void InitWidget();
 	void UpdateLoadingSpinner(float DeltaTime);
-	void UpdateRoomId(const int64 InRoomId);
+	void UpdateRoomInfo(const int32 InRoomLevel, const int64 InRoomId);
 	
 private:
 	UFUNCTION(BlueprintCallable, Category = "State|Network")
@@ -30,7 +30,10 @@ public:
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly, Category = "State|NickName")
 	TObjectPtr<class UBorder> Border_State;
 
-	UPROPERTY(meta = (BindWidget), BlueprintReadOnly, Category = "State|NickName")
+	UPROPERTY(meta = (BindWidget), BlueprintReadOnly, Category = "State|Room")
+	TObjectPtr<class UTextBlock> Txt_RoomLevel;
+
+	UPROPERTY(meta = (BindWidget), BlueprintReadOnly, Category = "State|Room")
 	TObjectPtr<class UTextBlock> Txt_RoomId;
 	
 	UPROPERTY(meta = (BindWidgetOptional), BlueprintReadOnly, Category = "State|Network")

@@ -13,6 +13,7 @@
 #include "Popup_WriteBoard.h"
 #include "ULingoGameHelper.h"
 #include "UPopup_Interview.h"
+#include "UPopup_InterviewHello.h"
 #include "UPopup_Word.h"
 
 #include "Onepiece/Onepiece.h"
@@ -25,7 +26,7 @@
 #define Questionnaire_POPUP_PATH TEXT("/Game/CustomContents/UI/Widgets/Write/WBP_PopupWriteKiosk.WBP_PopupWriteKiosk_C")
 #define WriteBoard_POPUP_PATH TEXT("/Game/CustomContents/UI/Widgets/Write/WBP_WriteBoard.WBP_WriteBoard_C")
 #define WORD_POPUP_PATH TEXT("/Game/CustomContents/UI/Widgets/WBP_PopupWord.WBP_PopupWord_C")
-
+#define INTERVIEWHELLO_POPUP_PATH TEXT("/Game/CustomContents/UI/Widgets/WBP_PopupInterviewHello.WBP_PopupInterviewHello_C")
 
 UPopupManager::UPopupManager()
 {
@@ -39,6 +40,7 @@ UPopupManager::UPopupManager()
 	PopupClassMap.Add(EPopupType::Questionnaire, FComponentHelper::LoadClass<UPopup_Questionnaire>(Questionnaire_POPUP_PATH));
 	PopupClassMap.Add(EPopupType::WriteBoard, FComponentHelper::LoadClass<UPopup_WriteBoard>(WriteBoard_POPUP_PATH));
 	PopupClassMap.Add(EPopupType::Word, FComponentHelper::LoadClass<UPopup_Word>(WORD_POPUP_PATH));
+	PopupClassMap.Add(EPopupType::InterviewHello, FComponentHelper::LoadClass<UPopup_InterviewHello>(INTERVIEWHELLO_POPUP_PATH));
 }
 
 // ========================================

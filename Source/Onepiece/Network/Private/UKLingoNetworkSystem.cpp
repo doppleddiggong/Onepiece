@@ -332,10 +332,65 @@ void UKLingoNetworkSystem::RequestUserMe( FResponseUserMeDelegate InDelegate)
 }
 
 // =================================================================================
-// RequestOcrExtract
+// RequestWriteQuestions
 // =================================================================================
 
-void UKLingoNetworkSystem::RequestOcrExtract(const TArray<FString>& ImagePathArray, FString InTargetText, FResponseOcrExtractDelegate InDelegate)
+void UKLingoNetworkSystem::RequestWriteQuestions(FResponseWriteQuestionDelegate InDelegate)
+{
+	FString Url = NetworkConfig::GetFullUrl(RequestAPI::writes_questions);
+	auto Request = SetupHttpRequest(Url, NETWORK_GET);
+
+	LogNetwork(ENetworkLogType::Get, *Request->GetURL());
+
+	Request->OnProcessRequestComplete().BindLambda(
+		[WeakThis = TWeakObjectPtr<UKLingoNetworkSystem>(this), InDelegate](FHttpRequestPtr Req, FHttpResponsePtr ResPtr, bool bWasSuccessful)
+		{
+			if (!WeakThis.IsValid() || IsEngineExitRequested())
+				return;
+
+			WeakThis->AddNetworkWaitCount(-1);
+			FQuestWriteInfo ResponseData;
+
+			if (bWasSuccessful && ResPtr.IsValid())
+			{
+				const int32 ResponseCode = ResPtr->GetResponseCode();
+
+				NETWORK_LOG(TEXT("[RES] RequestWriteQuestions - Code: %d, Response: %s"), ResponseCode, *ResPtr->GetContentAsString());
+				
+				if (IsResSuccess(ResponseCode))
+				{
+					ResponseData.SetFromHttpResponse(ResPtr);
+					InDelegate.ExecuteIfBound(ResponseData, true);
+				}
+				else
+				{
+					WeakThis->ShowNetworkErrorPopup(ResponseCode, ResPtr->GetContentAsString());
+					InDelegate.ExecuteIfBound(ResponseData, false);
+				}
+			}
+			else
+			{
+				NETWORK_LOG(TEXT("[POST] RequestWriteQuestions failed - bSuccess: %s, Response valid: %s"),
+					bWasSuccessful ? TEXT("true") : TEXT("false"),
+					ResPtr.IsValid() ? TEXT("true") : TEXT("false"));
+				
+				int32 ErrorCode = ResPtr.IsValid() ? ResPtr->GetResponseCode() : 0;
+				FString ErrorContent = ResPtr.IsValid() ? ResPtr->GetContentAsString() : TEXT("Network connection failed");
+				WeakThis->ShowNetworkErrorPopup(ErrorCode, ErrorContent);
+				
+				InDelegate.ExecuteIfBound(ResponseData, false);
+			}
+		});
+
+	AddNetworkWaitCount(1);
+	Request->ProcessRequest();
+}
+
+// =================================================================================
+// RequestWriteSubmit
+// =================================================================================
+
+void UKLingoNetworkSystem::RequestWriteSubmit(const TArray<FString>& ImagePathArray, FString InTargetText, FResponseWriteSubmitDelegate InDelegate)
 {
 	FString Url = NetworkConfig::GetFullUrl(RequestAPI::writes_submit);
 	auto Request = SetupHttpRequest(Url, NETWORK_POST);
@@ -352,7 +407,7 @@ void UKLingoNetworkSystem::RequestOcrExtract(const TArray<FString>& ImagePathArr
 		if (!Form.AddFile(TEXT("files"), ImagePath))
 		{
 			NETWORK_LOG(TEXT("[POST] OCR Extract: file load failed: %s"), *ImagePath);
-			FResponseOcrExtract EmptyResponse;
+			FResponseWriteSubmit EmptyResponse;
 			InDelegate.ExecuteIfBound(EmptyResponse, false);
 			return;
 		}
@@ -370,7 +425,7 @@ void UKLingoNetworkSystem::RequestOcrExtract(const TArray<FString>& ImagePathArr
 				return;
 
 			WeakThis->AddNetworkWaitCount(-1);
-			FResponseOcrExtract ResponseData;
+			FResponseWriteSubmit ResponseData;
 
 			if (bWasSuccessful && ResPtr.IsValid())
 			{
@@ -792,7 +847,7 @@ void UKLingoNetworkSystem::RequestReadScenario(FResponseReadScenarioDelegate InD
 		ULingoGameHelper::GetLingoGameState( GetWorld())->GetRoomId(),
 		1,
 		ULingoGameHelper::GetStageTypeIndex(EQuestType::Read),
-		1);
+		ULingoGameHelper::GetLingoGameState( GetWorld())->GetRoomLevel());
 	
 	FString Url = NetworkConfig::GetFullUrl(Endpoint);
 	auto Request = SetupHttpRequest(Url, NETWORK_GET);
@@ -910,7 +965,7 @@ void UKLingoNetworkSystem::RequestListenScenario(FResponseListenScenarioDelegate
 		ULingoGameHelper::GetLingoGameState( GetWorld())->GetRoomId(),
 		1,
 		ULingoGameHelper::GetStageTypeIndex(EQuestType::Listen),
-		1);
+		ULingoGameHelper::GetLingoGameState( GetWorld())->GetRoomLevel());
 	
 	FString Url = NetworkConfig::GetFullUrl(Endpoint);
 	auto Request = SetupHttpRequest(Url, NETWORK_GET);
@@ -1025,7 +1080,7 @@ void UKLingoNetworkSystem::RequestSpeakScenario(FResponseSpeakScenarioDelegate I
 		ULingoGameHelper::GetLingoGameState( GetWorld())->GetRoomId(),
 		1,
 		ULingoGameHelper::GetStageTypeIndex(EQuestType::Speak),
-		1);
+		ULingoGameHelper::GetLingoGameState( GetWorld())->GetRoomLevel());
 
 	FString Url = NetworkConfig::GetFullUrl(Endpoint);
 	auto Request = SetupHttpRequest(Url, NETWORK_GET);

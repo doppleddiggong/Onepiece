@@ -16,6 +16,7 @@
 #include "NetworkData.h"
 #include "Popup_Result.h"
 #include "UCommonFunctionLibrary.h"
+#include "UPopup_InterviewHello.h"
 
 
 APopupTesterActor::APopupTesterActor()
@@ -66,7 +67,7 @@ void APopupTesterActor::ReadQuest()
 
 void APopupTesterActor::InterviewPopup()
 {
-	if (auto Popup = UPopupManager::ShowPopupAs<UPopup_Interview>(GetWorld(), EPopupType::Interview))
+	if (auto Popup = UPopupManager::ShowPopupAs<UPopup_InterviewHello>(GetWorld(), EPopupType::InterviewHello))
 	{
 		// 테스트용 더미 데이터 생성
 			FResponseInterviewHello TestData;

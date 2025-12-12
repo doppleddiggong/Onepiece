@@ -5,21 +5,40 @@
 #include "ALingoPlayerState.h"
 #include "APlayerActor.h"
 #include "UBroadcastManager.h"
+#include "UImageButton.h"
 #include "UKLingoNetworkSystem.h"
 #include "ULingoGameHelper.h"
 #include "UPopupManager.h"
-#include "UTextureButton.h"
+#include "UPopup_Word.h"
 #include "UWordWidget.h"
-
+#include "Components/RichTextBlock.h"
+#include "HyperLinkPluginBPLibrary.h"
+#include "UWordItem.h"
+#include "Components/HorizontalBox.h"
+#include "Components/Spacer.h"
 #include "GameFramework/PlayerController.h"
 
+void UPopup_ReadQuest::NativeConstruct()
+{
+	Super::NativeConstruct();
+
+	// URichText 기능 이식: HyperLink 클릭 핸들러 등록
+	if (Rich_Text)
+	{
+		if (UHyperLinkPluginBPLibrary* LinkDecorator = Cast<UHyperLinkPluginBPLibrary>(
+			Rich_Text->GetDecoratorByClass(UHyperLinkPluginBPLibrary::StaticClass())))
+		{
+			LinkDecorator->SetNativeClickHandler(FOnClickLink::CreateUObject(this, &UPopup_ReadQuest::OnClickHyperlink));
+		}
+	}
+}
 
 void UPopup_ReadQuest::InitRead(const FResponseReadScenario& InScenarioData)
 {
-	if (Btn_Exit)
+	if (Btn_Confirm)
 	{
-		Btn_Exit->OnButtonClickedEvent.RemoveDynamic(this, &UPopup_ReadQuest::OnClickClose);
-		Btn_Exit->OnButtonClickedEvent.AddDynamic(this, &UPopup_ReadQuest::OnClickClose);
+		Btn_Confirm->OnButtonClickedEvent.RemoveDynamic(this, &UPopup_ReadQuest::OnClickClose);
+		Btn_Confirm->OnButtonClickedEvent.AddDynamic(this, &UPopup_ReadQuest::OnClickClose);
 	}
 
 	if (auto BM = UBroadcastManager::Get(GetWorld()))
@@ -31,31 +50,22 @@ void UPopup_ReadQuest::InitRead(const FResponseReadScenario& InScenarioData)
 	this->QuestType = EQuestType::Read;
 	this->ReadData = InScenarioData;
 
-	if ( const auto PS = ULingoGameHelper::GetLingoPlayerState(GetWorld()) )
+	if ( const auto PS= ULingoGameHelper::GetLingoPlayerState(GetWorld()) )
 		InitQuestInfo(PS->QuestRole);
 }
 
-
-void UPopup_ReadQuest::InitListen(const FResponseListenScenario& InScenarioData)
+FString UPopup_ReadQuest::ConvertWordDataToRichText(const FWordData& WordData)
 {
-	if (Btn_Exit)
+	CachedPhonemeData = WordData.GetPhonemeData();
+
+	FString TextString;
+	for (int32 i = 0; i < CachedPhonemeData.Num(); ++i)
 	{
-		Btn_Exit->OnButtonClickedEvent.RemoveDynamic(this, &UPopup_ReadQuest::OnClickClose);
-		Btn_Exit->OnButtonClickedEvent.AddDynamic(this, &UPopup_ReadQuest::OnClickClose);
+		const FPhonemeData& Phoneme = CachedPhonemeData[i];
+		TextString += Phoneme.ToRichTextString(i);
 	}
-
-	if (auto BM = UBroadcastManager::Get(GetWorld()))
-	{
-		BM->OnUpdateQuestRole.RemoveDynamic(this, &UPopup_ReadQuest::InitQuestInfo);
-		BM->OnUpdateQuestRole.AddDynamic(this, &UPopup_ReadQuest::InitQuestInfo);
-	}
-
-	this->QuestType = EQuestType::Listen;
-	this->ListenData = InScenarioData;
-
-	if ( const auto PS = ULingoGameHelper::GetLingoPlayerState(GetWorld()) )
-		InitQuestInfo(PS->QuestRole);
-}
+	return TextString;
+};
 
 void UPopup_ReadQuest::InitQuestInfo(EQuestRole QuestRole)
 {
@@ -63,39 +73,89 @@ void UPopup_ReadQuest::InitQuestInfo(EQuestRole QuestRole)
 	{
 		if ( QuestRole == EQuestRole::Both )
 		{
-			WordWidget->InitWordData(ReadData.full_data);
-			ListenAudio(ReadData.full_data.Kor);
+			const FString RichTextString = ConvertWordDataToRichText(ReadData.full_data);
+			
+			Rich_Text->SetText(FText::FromString(RichTextString));
+			Txt_SubTitle->SetText(FText::FromString(ReadData.full_data.Eng));
 		}
 		else if ( QuestRole == EQuestRole::OnlyQuestion1 )
 		{
-			WordWidget->InitWordData(ReadData.word_data1);
-			ListenAudio(ReadData.word_data1.Kor);
+			const FString RichTextString = ConvertWordDataToRichText(ReadData.word_data1);
+			
+			Rich_Text->SetText(FText::FromString(RichTextString));
+			Txt_SubTitle->SetText(FText::FromString(ReadData.word_data1.Eng));
 		}
 		else if ( QuestRole == EQuestRole::OnlyQuestion2 )
 		{
-			WordWidget->InitWordData(ReadData.word_data2);
-			ListenAudio(ReadData.word_data2.Kor);
+			const FString RichTextString = ConvertWordDataToRichText(ReadData.word_data2);
+			
+			Rich_Text->SetText(FText::FromString(RichTextString));
+			Txt_SubTitle->SetText(FText::FromString(ReadData.word_data2.Eng));
 		}
 	}
-	else if ( QuestType == EQuestType::Listen )
+
+	InitWordList(QuestRole);
+}
+
+void UPopup_ReadQuest::InitWordList(EQuestRole QuestRole)
+{
+	WordBox->ClearChildren();
+
+	if (WordItemClass == nullptr)
+		return;
+
+	auto AnswerData = ReadData.GetCorrectAnswerData();
+	
+	if ( QuestRole == EQuestRole::Both )
 	{
-		if ( QuestRole == EQuestRole::Both )
+		if ( auto WordItem = CreateWidget<UWordItem>(this, WordItemClass) )
 		{
-			WordWidget->InitWordData(ListenData.full_data);
-			ListenAudio(ListenData.full_data.Kor);
+			EWordType WordType = EWordType::Animal;
+			const int32 WordCode = FCString::Atoi(*AnswerData.word1.code);
+			WordItem->InitInfo(WordType, WordCode);
+
+			WordBox->AddChild(WordItem);
 		}
-		else if ( QuestRole == EQuestRole::OnlyQuestion1 )
+
 		{
-			WordWidget->InitWordData(ListenData.word_data1);
-			ListenAudio(ListenData.word_data1.Kor);
+			USpacer* Spacer = NewObject<USpacer>(WordBox);
+			Spacer->SetSize(FVector2D(10.f, 1.f));
+			WordBox->AddChild(Spacer);
 		}
-		else if ( QuestRole == EQuestRole::OnlyQuestion2 )
+		
+		if ( auto WordItem = CreateWidget<UWordItem>(this, WordItemClass) )
 		{
-			WordWidget->InitWordData(ListenData.word_data2);
-			ListenAudio(ListenData.word_data2.Kor);
+			EWordType WordType = EWordType::Color;
+			const int32 WordCode = FCString::Atoi(*AnswerData.word2.code);
+			WordItem->InitInfo(WordType, WordCode);
+
+			WordBox->AddChild(WordItem);
+		}
+	}
+	else if ( QuestRole == EQuestRole::OnlyQuestion1  )
+	{
+		if ( auto WordItem = CreateWidget<UWordItem>(this, WordItemClass) )
+		{
+			EWordType WordType = EWordType::Animal;
+			const int32 WordCode = FCString::Atoi(*AnswerData.word1.code);
+			WordItem->InitInfo(WordType, WordCode);
+
+			WordBox->AddChild(WordItem);
+		}
+	}
+	else if ( QuestRole == EQuestRole::OnlyQuestion2 )
+	{
+		if ( auto WordItem = CreateWidget<UWordItem>(this, WordItemClass) )
+		{
+			EWordType WordType = EWordType::Color;
+			const int32 WordCode = FCString::Atoi(*AnswerData.word2.code);
+			WordItem->InitInfo(WordType, WordCode);
+
+			WordBox->AddChild(WordItem);
 		}
 	}
 }
+
 
 void UPopup_ReadQuest::OnClickClose()
 {
@@ -105,7 +165,7 @@ void UPopup_ReadQuest::OnClickClose()
 	}
 }
 
-void UPopup_ReadQuest::ListenAudio(const FString& AudioText)
+void UPopup_ReadQuest::RequestListenAudio(const FString& AudioText)
 {
 	if (bIsRequest)
 		return;
@@ -129,5 +189,19 @@ void UPopup_ReadQuest::OnResponseListenAudio(FResponseListenAudio& ResponseData,
 	{
 		if (auto PlayerActor = ULingoGameHelper::GetPlayerActor(this))
 			PlayerActor->PlayTTSAudio(ResponseData.audio_base64);
+	}
+}
+
+void UPopup_ReadQuest::OnClickHyperlink(const FString& LinkID, const FString& Content)
+{
+	// URichText 기능 이식: LinkID를 인덱스로 변환하여 캐싱된 음소 데이터 가져오기
+	const int32 Index = FCString::Atoi(*LinkID);
+
+	if (CachedPhonemeData.IsValidIndex(Index))
+	{
+		if (auto Popup = UPopupManager::ShowPopupAs<UPopup_Word>(GetWorld(), EPopupType::Word))
+		{
+			Popup->InitPopup(CachedPhonemeData[Index]);
+		}
 	}
 }

@@ -34,7 +34,7 @@ AMoviePanel::AMoviePanel()
 	// MediaPlayer의 출력을 MediaTexture로 설정
 	if (MediaPlayer && MediaTexture)
 	{
-		MediaPlayer->SetLooping(false);
+		MediaPlayer->SetLooping(true);
 		MediaPlayer->PlayOnOpen = false;
 	}
 	

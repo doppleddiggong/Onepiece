@@ -90,13 +90,13 @@ void UMainWidget::UpdateStateWidget(int32 UserId, const FString& UserName)
 	StateWidget->UpdateUserName(UserId, UserName);
 }
 
-void UMainWidget::UpdateRoomWidget(int64 InRoomId)
+void UMainWidget::UpdateRoomWidget(int32 InRoomLevel, int64 InRoomId)
 {
 	if ( InRoomId <= 0 )
 		return;
 
 	RoomWidget->SetVisibility(ESlateVisibility::Visible);
-	RoomWidget->UpdateRoomId(InRoomId);
+	RoomWidget->UpdateRoomInfo(InRoomLevel, InRoomId);
 }
 
 void UMainWidget::UpdateTimerDisplay() const

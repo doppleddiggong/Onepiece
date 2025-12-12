@@ -158,6 +158,9 @@ void APlayerActor::BeginPlay()
 
 		GS->OnRoomIdUpdated.RemoveDynamic(this, &APlayerActor::OnRoomIdUpdated);
 		GS->OnRoomIdUpdated.AddDynamic(this, &APlayerActor::OnRoomIdUpdated);
+
+		GS->OnRoomLevelUpdated.RemoveDynamic(this, &APlayerActor::OnRoomLevelUpdated);
+		GS->OnRoomLevelUpdated.AddDynamic(this, &APlayerActor::OnRoomLevelUpdated);
 	}
 	
 	if (IsLocallyControlled())
@@ -212,7 +215,7 @@ void APlayerActor::CreateMainWidget()
 		if ( IsMainMap())
 		{
 			if (auto GS = ULingoGameHelper::GetLingoGameState(GetWorld()))
-				MainWidget->UpdateRoomWidget(GS->GetRoomId());
+				MainWidget->UpdateRoomWidget( GS->GetRoomLevel(), GS->GetRoomId());
 
 			// UserInfo가 로드되었으면 즉시 업데이트, 아니면 재시도
 			if (PC->HasUserInfo() )
@@ -447,8 +450,8 @@ void APlayerActor::OnResponseListenAudio(FResponseListenAudio& ResponseData, boo
 
 	if (bWasSuccessful)
 	{
-		if (auto PlayerActor = ULingoGameHelper::GetPlayerActor(this))
-			PlayerActor->PlayTTSAudio(ResponseData.audio_base64);
+		this->PlayTTSAudio(ResponseData.audio_base64);
+		UDialogManager::Get(GetWorld())->ShowToast(*ResponseData.audio_text);
 	}
 }
 
@@ -629,6 +632,29 @@ void APlayerActor::OnRoomIdUpdated(int64 NewRoomId)
 
 	if (MainWidget)
 	{
-		MainWidget->UpdateRoomWidget(NewRoomId);
+		if (auto GS = ULingoGameHelper::GetLingoGameState(GetWorld()))
+		{
+			const int RoomLevel = GS->GetRoomLevel();
+			const int RoomId = NewRoomId;
+			
+			MainWidget->UpdateRoomWidget(RoomLevel, RoomId);
+		}
+	}
+}
+
+void APlayerActor::OnRoomLevelUpdated(int32 NewRoomLevel)
+{
+	if (!IsLocallyControlled())
+		return;
+
+	if (MainWidget)
+	{
+		if (auto GS = ULingoGameHelper::GetLingoGameState(GetWorld()))
+		{
+			const int RoomLevel = NewRoomLevel;
+			const int RoomId = GS->GetRoomId();
+			
+			MainWidget->UpdateRoomWidget(RoomLevel, RoomId);
+		}
 	}
 }
