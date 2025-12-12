@@ -90,7 +90,11 @@ protected:
 
 	UFUNCTION()
 	void OnRep_EyeColor();
-	
+
+	UFUNCTION()
+	void OnRep_EyeSightState();
+	void ApplyEyeSight();
+
 private:
 	void RequestSpeakScenario(class APlayerActor* Player);
 	void OnResponseSpeakScenario(struct FResponseSpeakScenario& ResponseData, bool bWasSuccessful);
@@ -142,6 +146,14 @@ private:
 	UPROPERTY(Transient, ReplicatedUsing = OnRep_EyeColor)
 	FLinearColor ReplicatedEyeColor;
 
+	// EyeSight 동기화용 상태
+	UPROPERTY(ReplicatedUsing = OnRep_EyeSightState)
+	FVector ReplicatedEyeSightEnd = FVector::ZeroVector;
+
+	UPROPERTY(ReplicatedUsing = OnRep_EyeSightState)
+	bool bEyeSightVisible = false;
+
+	
 	UPROPERTY()
 	TObjectPtr<class APlayerActor> RequestPlayer;
 

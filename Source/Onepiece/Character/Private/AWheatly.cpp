@@ -100,6 +100,8 @@ void AWheatly::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetime
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
 
 	DOREPLIFETIME(AWheatly, ReplicatedEyeColor);
+	DOREPLIFETIME(AWheatly, ReplicatedEyeSightEnd);
+	DOREPLIFETIME(AWheatly, bEyeSightVisible);
 }
 
 void AWheatly::BeginPlay()
@@ -155,33 +157,37 @@ void AWheatly::Tick(float DeltaSeconds)
 {
 	Super::Tick(DeltaSeconds);
 
-	if (!HasAuthority() || !SpeakStage)
+	if (!SpeakStage)
 		return;
 
 	// 퀘스트 진행 중일 때
 	if (auto CurrentSpeaker = SpeakStage->GetCurrentSpeaker())
 	{
-		if (EyeSightComp)
-			EyeSightComp->SetVisibility(true);
-		
-		if (auto SpeakerPawn = CurrentSpeaker->GetPawn())
+		if (HasAuthority())
 		{
-			// 스피커를 쳐다보도록 회전
-			FRotator LookAtRotation = UKismetMathLibrary::FindLookAtRotation(GetActorLocation(), SpeakerPawn->GetActorLocation());
-			FRotator TargetRotation( LookAtRotation.Pitch, LookAtRotation.Yaw, 0); // Yaw만 사용
-			SetActorRotation(FMath::RInterpTo(GetActorRotation(), TargetRotation, DeltaSeconds, 5.0f));
-			
-			// 표시기 위치 업데이트
-			FVector StartLocation = EyeMesh->GetComponentLocation();
-			FVector EndLocation = SpeakerPawn->GetActorLocation();
-			UpdateEyeSight(StartLocation, EndLocation);
+			if (auto SpeakerPawn = CurrentSpeaker->GetPawn())
+			{
+				ReplicatedEyeSightEnd = SpeakerPawn->GetActorLocation();
+				bEyeSightVisible = true;
+
+				ApplyEyeSight();
+				
+				// 스피커를 쳐다보도록 회전
+				FRotator LookAtRotation = UKismetMathLibrary::FindLookAtRotation(GetActorLocation(), SpeakerPawn->GetActorLocation());
+				FRotator TargetRotation( LookAtRotation.Pitch, LookAtRotation.Yaw, 0); // Yaw만 사용
+				SetActorRotation(FMath::RInterpTo(GetActorRotation(), TargetRotation, DeltaSeconds, 5.0f));
+			}
 		}
 	}
 	// 퀘스트 진행 중이 아닐 때
 	else
 	{
-		if (EyeSightComp)
-			EyeSightComp->SetVisibility(false);
+		if (HasAuthority())
+		{
+			bEyeSightVisible = false;
+
+			ApplyEyeSight();
+		}
 		
 		TArray<AActor*> OverlappingActors;
 		if (PlayerDetectionZone)
@@ -389,6 +395,22 @@ void AWheatly::OnRep_EyeColor()
 	ChangeEyeColor(ReplicatedEyeColor);
 }
 
+void AWheatly::OnRep_EyeSightState()
+{
+	ApplyEyeSight();
+}
+
+void AWheatly::ApplyEyeSight()
+{
+	if (!bEyeSightVisible)
+	{
+		EyeSightComp->SetVisibility(false);
+		return;
+	}
+
+	const FVector StartLocation = EyeMesh->GetComponentLocation();
+	UpdateEyeSight(StartLocation, ReplicatedEyeSightEnd);
+}
 
 //----------------------------------------------------------//
 // Visual System
@@ -405,11 +427,6 @@ void AWheatly::ChangeEyeColor(FLinearColor newColor)
 
 void AWheatly::UpdateEyeSight(const FVector& Start, const FVector& End)
 {
-	if (!EyeSightComp)
-	{
-		return;
-	}
-
 	FVector Delta = End - Start;
 	float Length = Delta.Size();
 	if (Length <= KINDA_SMALL_NUMBER)
