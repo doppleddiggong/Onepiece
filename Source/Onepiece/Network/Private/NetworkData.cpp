@@ -1009,6 +1009,11 @@ void FResponseListenResult::PrintData() const
 	NETWORK_LOG( TEXT("[RES] %s"), *OutputString);
 }
 
+FString FSpeakStageQuestion::GetQuestionMessage() const
+{
+	return FString::Printf(TEXT("%s\n[%s]"), *eng, *kor);
+}
+
 // =================================================================================
 // FResponseSpeakScenario
 // =================================================================================
@@ -1027,37 +1032,33 @@ void FResponseSpeakScenario::SetFromHttpResponse(const TSharedPtr<IHttpResponse,
 	if (FJsonSerializer::Deserialize(Reader, JsonObject) && JsonObject.IsValid())
 	{
 		index = JsonObject->GetIntegerField(TEXT("index"));
-		dificulity = JsonObject->GetIntegerField(TEXT("difficulty"));
+		difficulty = JsonObject->GetIntegerField(TEXT("difficulty"));
 		room_id = JsonObject->GetIntegerField(TEXT("room_id"));
 
-		// question 배열 파싱
+		// audio 배열 파싱
 		const TArray<TSharedPtr<FJsonValue>>* QuestionArray;
-		if (JsonObject->TryGetArrayField(TEXT("question"), QuestionArray))
+		if (JsonObject->TryGetArrayField(TEXT("audio"), QuestionArray))
 		{
 			for (const auto& Item : *QuestionArray)
 			{
-				TSharedPtr<FJsonObject> QuestionObj = Item->AsObject();
-				if (QuestionObj.IsValid())
+				TSharedPtr<FJsonObject> AudioObj = Item->AsObject();
+				if (AudioObj.IsValid())
 				{
-					FSpeakQuestionData QuestionItem;
+					FSpeakStageQuestion QuestionItem;
+					QuestionItem.kor = AudioObj->GetStringField(TEXT("kor"));
+					QuestionItem.eng = AudioObj->GetStringField(TEXT("eng"));
+					QuestionItem.pronunciation = AudioObj->GetStringField(TEXT("pronunciation"));
 
-					// word_data 파싱
-					if (QuestionObj->HasTypedField<EJson::Object>(TEXT("word_data")))
-					{
-						TSharedPtr<FJsonObject> WordDataObj = QuestionObj->GetObjectField(TEXT("word_data"));
-						FJsonObjectConverter::JsonObjectToUStruct(WordDataObj.ToSharedRef(), FWordData::StaticStruct(), &QuestionItem.word_data);
-					}
-
-					// answer 파싱
-					QuestionItem.answer = QuestionObj->GetStringField(TEXT("answer"));
-
-					// answer_kor 파싱
-					QuestionItem.answer_kor = QuestionObj->GetStringField(TEXT("answer_kor"));
-
-					question.Add(QuestionItem);
+					FString tmp_audio_data;
+					JsonObject->TryGetStringField(TEXT("voice_data"), tmp_audio_data);
+					FBase64::Decode(tmp_audio_data, QuestionItem.voice_data);
+					
+					speak_quest_data.Add(QuestionItem);
 				}
 			}
 		}
+
+		NETWORK_LOG(TEXT("[FResponseSpeakScenario] Parsed %d audio items"), speak_quest_data.Num());
 	}
 }
 

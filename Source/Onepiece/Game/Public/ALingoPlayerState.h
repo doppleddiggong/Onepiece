@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/PlayerState.h"
 #include "EQuestRole.h"
+#include "NetworkData.h"
 #include "ALingoPlayerState.generated.h"
 
 UCLASS()
@@ -56,7 +57,16 @@ public:
 	/// @brief 색상 오답 플래그 복제 콜백
 	UFUNCTION()
 	void OnRep_WrongWord2();
-	
+
+	//--------------------------------------------------------------//
+	// Speak Quest RPC Functions
+	//--------------------------------------------------------------//
+
+	/// @brief SpeakQuest 평가 결과를 서버에 저장합니다
+	/// @param EvaluationResult 저장할 평가 결과
+	UFUNCTION(Server, Reliable, WithValidation)
+	void Server_AddSpeakJudes(const FResponseSpeakingJudes& EvaluationResult);
+
 public:
 	/// @brief 플레이어 역할 (싱글/멀티에서 문제1, 문제2 구분)
 	UPROPERTY(ReplicatedUsing = OnRep_QuestRole, BlueprintReadOnly, Category = "Quest")
@@ -85,14 +95,16 @@ public:
 	// Speak Quest Functions
 	//--------------------------------------------------------------//
 
-	/// @brief SpeakQuest 질문 목록
-	/// @note SpeakStageActor에서 관리하는 방식도 고려 가능
-	/// @note 현재는 ASpeakStageActor가 턴 기반으로 관리하므로 선택적으로 사용
 	UPROPERTY(Transient, Replicated, BlueprintReadOnly, Category = "SpeakQuest")
-	TArray<struct FSpeakStageQuestion> speakQuestData;
+	FResponseSpeakScenario SpeakScenarioData;
 
 	/// @brief 현재 진행 중인 질문 인덱스
 	/// @note 현재는 ASpeakStageActor의 CurrentStepIndex를 사용하므로 선택적으로 사용
 	UPROPERTY(Transient, Replicated, BlueprintReadOnly, Category = "SpeakQuest")
-	int32 currentSpeakQuestStep = 0;
+	int32 CurSpeakQuestStep = 0;
+
+	/// @brief SpeakQuest 평가 결과 목록
+	/// @note RequestSpeakingJudges 응답 데이터를 쌓아둠
+	UPROPERTY(Transient, Replicated, BlueprintReadOnly, Category = "SpeakQuest")
+	TArray<struct FResponseSpeakingJudes> SpeakJudesResults;
 };

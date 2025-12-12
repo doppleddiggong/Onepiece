@@ -287,6 +287,9 @@ void UVoiceConversationSystem::OnResponseSpeakingsJudges(FResponseSpeakingJudes&
 			{
 				if (auto LocalPlayerState = ULingoGameHelper::GetLingoPlayerStateByPC(Owner->GetController()))
 				{
+					// Store evaluation result in PlayerState
+					LocalPlayerState->Server_AddSpeakJudes(Response);
+
 					SpeakStageActor->Server_NotifyAnswerComplete(LocalPlayerState);
 				}
 			}

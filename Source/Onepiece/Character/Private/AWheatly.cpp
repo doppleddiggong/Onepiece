@@ -3,12 +3,15 @@
 
 #include "AWheatly.h"
 
+#include "ALingoPlayerState.h"
 #include "APlayerActor.h"
 #include "APlayerControl.h"
 #include "ASpeakStageActor.h"
 #include "FComponentHelper.h"
 #include "GameLogging.h"
 #include "UInteractWidget.h"
+#include "UKLingoNetworkSystem.h"
+#include "UBroadcastManager.h"
 
 #include "InteractableComponent.h"
 #include "Components/WidgetComponent.h"
@@ -168,6 +171,89 @@ FString AWheatly::GetCurrentQuestion() const
 	return TEXT("");
 }
 
+void AWheatly::BeginSpeakQuest(APlayerActor* Player)
+{
+	if (!HasAuthority())
+		return;
+
+	if (!Player)
+	{
+		bIsBusy = false;
+		busyPlayerName = TEXT("");
+		return;
+	}
+
+	RequestSpeakScenario(Player);
+}
+
+
+void AWheatly::CompleteSpeakQuest(APlayerActor* Player)
+{
+	if (!HasAuthority())
+		return;
+
+	if (!Player)
+		return;
+
+	// Busy 상태 해제
+	bIsBusy = false;
+	busyPlayerName = TEXT("");
+
+	// PlayerState에서 축적된 평가 결과 가져오기
+	ALingoPlayerState* PS = Player->GetPlayerState<ALingoPlayerState>();
+	if (!PS)
+		return;
+
+	if (UBroadcastManager* BroadcastMgr = UBroadcastManager::Get(GetWorld()))
+		BroadcastMgr->SendTutorMessage(FText::FromString("SPEAK COMPLETE"));
+}
+
+void AWheatly::RequestSpeakScenario(APlayerActor* Player)
+{
+	this->RequestPlayer = Player;
+	
+	if ( auto KLingoNetwork = UKLingoNetworkSystem::Get(GetWorld()) )
+		KLingoNetwork->RequestSpeakScenario(FResponseSpeakScenarioDelegate::CreateUObject(this, &AWheatly::OnResponseSpeakScenario));
+}
+
+
+void AWheatly::OnResponseSpeakScenario(FResponseSpeakScenario& ResponseData, bool bWasSuccessful)
+{
+	// 응답 델리게이트 생성
+	if (bWasSuccessful)
+	{
+		// PlayerState에 데이터 저장
+		ALingoPlayerState* PS = RequestPlayer->GetPlayerState<ALingoPlayerState>();
+		if (!PS)
+		{
+			bIsBusy = false;
+			busyPlayerName = TEXT("");
+			return;
+		}
+
+		PS->SpeakScenarioData = ResponseData;
+		PS->CurSpeakQuestStep = 0;
+
+		// 질문을 플레이어에게 전달
+		if (PS->SpeakScenarioData.speak_quest_data.Num() > 0)
+		{
+			if (APlayerControl* PC = Cast<APlayerControl>(RequestPlayer->GetController()))
+			{
+				FSpeakStageQuestion& StageQuestion = PS->SpeakScenarioData.speak_quest_data[0];
+				PC->Client_ToastMessage(*StageQuestion.GetQuestionMessage());
+
+				RequestPlayer->PlayTTSAudio( StageQuestion.voice_data );
+			}
+		}
+	}
+	else
+	{
+		// 실패 시 Busy 상태 해제
+		bIsBusy = false;
+		busyPlayerName = TEXT("");
+	}
+}
+
 //----------------------------------------------------------//
 // Interaction System
 //----------------------------------------------------------//
@@ -175,45 +261,30 @@ FString AWheatly::GetCurrentQuestion() const
 void AWheatly::OnInteractionTriggered(AActor* InteractingActor)
 {
 	if (!HasAuthority())
-	{
-		PRINTLOG(TEXT("[AWheatly] OnInteractionTriggered - Not authority"));
 		return;
-	}
 
 	APlayerActor* InteractingPlayer = Cast<APlayerActor>(InteractingActor);
 	if (!InteractingPlayer)
-	{
-		PRINTLOG(TEXT("[AWheatly] OnInteractionTriggered - Not a PlayerActor"));
 		return;
-	}
 
 	// bIsBusy가 true이면 토스트 메시지 표시
 	if (bIsBusy)
 	{
-		APlayerControl* PC = Cast<APlayerControl>(InteractingPlayer->GetController());
-		if (PC)
-		{
-			FString ToastMessage = FString::Printf(TEXT("Current Turn is [%s]"), *busyPlayerName);
-			PC->Client_ToastMessage(ToastMessage);
-			PRINTLOG(TEXT("[AWheatly] Interaction denied - Busy with: %s"), *busyPlayerName);
-		}
+		if (auto PC = Cast<APlayerControl>(InteractingPlayer->GetController()))
+			PC->Client_ToastMessage( FString::Printf(TEXT("Current Turn is [%s]"), *busyPlayerName) );
+
 		return;
 	}
 
-	// bIsBusy가 false이면 SpeakStage에 플레이어 추가 요청
-	if (SpeakStage)
+	// bIsBusy가 false이면 SpeakQuest 시작
+	if (auto PS = InteractingPlayer->GetPlayerState() )
 	{
-		APlayerState* PS = InteractingPlayer->GetPlayerState();
-		if (PS)
-		{
-			// TODO: SpeakStage->RequestJoinConversation(PS) 구현 필요
-			PRINTLOG(TEXT("[AWheatly] Player interaction: %s (SpeakStage integration needed)"),
-				*PS->GetPlayerName());
-		}
-	}
-	else
-	{
-		PRINTLOG(TEXT("[AWheatly] OnInteractionTriggered - SpeakStage not connected"));
+		// Busy 상태로 전환
+		bIsBusy = true;
+		busyPlayerName = PS->GetPlayerName();
+
+		// SpeakQuest 시작
+		BeginSpeakQuest(InteractingPlayer);
 	}
 }
 
@@ -225,10 +296,6 @@ void AWheatly::OnRep_bIsBusy()
 		: FLinearColor(0.0f, 0.5f, 1.0f, 1.0f); // Blue: Available
 
 	ChangeEyeColor(newColor);
-
-	PRINTLOG(TEXT("[AWheatly] OnRep_bIsBusy - Status: %s, Player: %s"),
-		bIsBusy ? TEXT("BUSY") : TEXT("AVAILABLE"),
-		*busyPlayerName);
 }
 
 //----------------------------------------------------------//
@@ -238,13 +305,7 @@ void AWheatly::OnRep_bIsBusy()
 void AWheatly::ChangeEyeColor(FLinearColor newColor)
 {
 	if (!dynamicMaterial)
-	{
-		PRINTLOG(TEXT("[AWheatly] ChangeEyeColor - dynamicMaterial is null"));
 		return;
-	}
 
 	dynamicMaterial->SetVectorParameterValue(TEXT("EyeColor"), newColor);
-
-	PRINTLOG(TEXT("[AWheatly] Eye color changed to: R=%.2f G=%.2f B=%.2f"),
-		newColor.R, newColor.G, newColor.B);
 }

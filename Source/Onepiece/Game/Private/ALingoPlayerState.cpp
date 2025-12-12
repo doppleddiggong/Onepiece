@@ -25,12 +25,10 @@ void ALingoPlayerState::GetLifetimeReplicatedProps(TArray<class FLifetimePropert
 	DOREPLIFETIME(ALingoPlayerState, bWrongWord2);
 
 	// Speak Quest Data
-	DOREPLIFETIME(ALingoPlayerState, speakQuestData);
-	DOREPLIFETIME(ALingoPlayerState, currentSpeakQuestStep);
+	DOREPLIFETIME(ALingoPlayerState, SpeakScenarioData);
+	DOREPLIFETIME(ALingoPlayerState, CurSpeakQuestStep);
+	DOREPLIFETIME(ALingoPlayerState, SpeakJudesResults);
 }
-
-
-
 
 
 //--------------------------------------------------------------//
@@ -78,6 +76,20 @@ bool ALingoPlayerState::Server_SetSelectedWord2_Validate(const FString& Word2)
 	// 빈 문자열도 허용 (선택 해제)
 	return true;
 }
+
+void ALingoPlayerState::Server_AddSpeakJudes_Implementation(const FResponseSpeakingJudes& EvaluationResult)
+{
+	SpeakJudesResults.Add(EvaluationResult);
+
+	PRINTLOG(TEXT("[PlayerState] Evaluation result added - Total results: %d, Feedback: %s"),
+		SpeakJudesResults.Num(), *EvaluationResult.final_feedback);
+}
+
+bool ALingoPlayerState::Server_AddSpeakJudes_Validate(const FResponseSpeakingJudes& EvaluationResult)
+{
+	return true;
+}
+
 
 //--------------------------------------------------------------//
 // Read Quest OnRep Callbacks

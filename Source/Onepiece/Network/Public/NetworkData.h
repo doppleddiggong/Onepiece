@@ -89,13 +89,13 @@ namespace RequestAPI
 
 	static FString listenings_audio = FString("/listenings/audios");
 	static FString speakings_judes = FString("/speakings/judges");
+	static FString speakings_result = FString("/speakings/evaluate");
 
 	static FString interview_hello = FString("/interview/hello");
 	static FString interview_answer = FString("/interview/answer/post");
 
 	/// @brief Scenario 조회 엔드포인트입니다.
 	static FString scenario = FString("/scenario/stages/current");
-
 
 	static FString read_result = FString("/scenario/stage/result/post");
 	static FString listen_result = FString("/scenario/stage/result/post");
@@ -1006,45 +1006,35 @@ struct FResponseListenResult
 // Speak Quest Structures (KLingo SpeakStage)
 // =================================================================================
 
-/// @brief SpeakQuest 질문/답변 데이터 구조체입니다.
-/// @note API로부터 받아온 질문, 음성 URL, 허용 답변 목록을 저장합니다.
+/// @brief SpeakQuest 오디오 질문 데이터 구조체입니다.
+/// @note API의 audio 배열 항목을 저장합니다.
 USTRUCT(BlueprintType)
 struct FSpeakStageQuestion
 {
 	GENERATED_BODY()
 
-	/// @brief 질문 텍스트
-	UPROPERTY(BlueprintReadOnly, Category = "SpeakQuest")
-	FString questionText;
+	/// @brief 한국어 질문
+	UPROPERTY(BlueprintReadWrite, Category = "SpeakQuest")
+	FString kor;
 
-	/// @brief 질문 음성 파일 URL (TTS 생성 또는 사전 녹음)
-	UPROPERTY(BlueprintReadOnly, Category = "SpeakQuest")
-	FString questionVoiceURL;
+	/// @brief 영어 질문
+	UPROPERTY(BlueprintReadWrite, Category = "SpeakQuest")
+	FString eng;
 
-	/// @brief 허용 가능한 답변 목록 (채점용)
-	UPROPERTY(BlueprintReadOnly, Category = "SpeakQuest")
-	TArray<FString> acceptableAnswers;
+	/// @brief 발음 가이드
+	UPROPERTY(BlueprintReadWrite, Category = "SpeakQuest")
+	FString pronunciation;
+
+	/// @brief 음성 데이터 Base64
+	UPROPERTY(BlueprintReadWrite, NotReplicated, Category = "SpeakQuest")
+	TArray<uint8> voice_data;
+
+	FString GetQuestionMessage() const;
 };
 
 // =================================================================================
 // Speak Scenario API Structures
 // =================================================================================
-
-/// @brief Speak 질문 데이터 구조체입니다.
-USTRUCT(BlueprintType)
-struct FSpeakQuestionData
-{
-	GENERATED_BODY()
-
-	UPROPERTY(BlueprintReadWrite, Category = "Speak")
-	FWordData word_data;
-
-	UPROPERTY(BlueprintReadWrite, Category = "Speak")
-	FString answer;
-
-	UPROPERTY(BlueprintReadWrite, Category = "Speak")
-	FString answer_kor;
-};
 
 /// @brief Speak 시나리오 응답 델리게이트입니다.
 DECLARE_DELEGATE_TwoParams(FResponseSpeakScenarioDelegate, FResponseSpeakScenario&, bool);
@@ -1058,13 +1048,14 @@ struct FResponseSpeakScenario
 	int32 index = 0;
 
 	UPROPERTY(BlueprintReadWrite, Category = "Speak")
-	int32 dificulity = 0;
+	int32 difficulty = 0;
 
 	UPROPERTY(BlueprintReadWrite, Category = "Speak")
 	int32 room_id = 0;
 
+	/// @brief 오디오 질문 목록
 	UPROPERTY(BlueprintReadWrite, Category = "Speak")
-	TArray<FSpeakQuestionData> question;
+	TArray<FSpeakStageQuestion> speak_quest_data;
 
 	/// @brief HTTP 응답을 파싱해 구조체를 채웁니다.
 	void SetFromHttpResponse(const TSharedPtr<class IHttpResponse, ESPMode::ThreadSafe>& Response);

@@ -76,6 +76,18 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "SpeakStage")
 	FString GetCurrentQuestion() const;
 
+
+	void RequestSpeakScenario(class APlayerActor* Player);
+	void OnResponseSpeakScenario(struct FResponseSpeakScenario& ResponseData, bool bWasSuccessful);
+
+	/// @brief SpeakQuest 시작 (서버에서만 호출)
+	/// @param Player [in] 퀘스트를 시작할 플레이어
+	void BeginSpeakQuest(class APlayerActor* Player);
+
+	/// @brief SpeakQuest 완료 처리 (서버에서만 호출)
+	/// @param Player [in] 퀘스트를 완료한 플레이어
+	void CompleteSpeakQuest(class APlayerActor* Player);
+
 	//----------------------------------------------------------//
 	// Interaction System
 	//----------------------------------------------------------//
@@ -161,4 +173,6 @@ protected:
 	/// @brief 현재 심사 중인 플레이어 이름 (복제됨)
 	UPROPERTY(Transient, Replicated)
 	FString busyPlayerName;
+
+	APlayerActor* RequestPlayer;
 };
