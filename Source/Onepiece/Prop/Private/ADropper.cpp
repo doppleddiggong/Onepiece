@@ -43,7 +43,6 @@ void ADropper::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetime
 
     DOREPLIFETIME(ADropper, SpawnClass);
     DOREPLIFETIME(ADropper, NextData);
-    DOREPLIFETIME(ADropper, NextFoodData);
     DOREPLIFETIME(ADropper, bIsSpawnIng);
 }
 
@@ -116,14 +115,6 @@ void ADropper::Spawn()
 
         int32 PatternIdx = FCString::Atoi(*NextData.word1.code);
         tmpLuggage->ApplyPatternToMesh(PatternIdx);
-    }
-    else if (auto tmpFood = Cast<AFood>(SpawnedActor))
-    {
-        FString InfoToShow = FString::Printf(TEXT("%s %s"), *NextFoodData.word1.name, *NextFoodData.word2.name);
-        tmpFood->SetFoodInfo(NextFoodData.SpawnIndex, InfoToShow);
-
-        UE_LOG(LogTemp, Warning, TEXT("[Dropper::Spawn] Food spawned with Index=%d, Name=%s"),
-            NextFoodData.SpawnIndex, *InfoToShow);
     }
         
     }), 1.f, false);

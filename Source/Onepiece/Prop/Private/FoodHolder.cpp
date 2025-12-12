@@ -132,39 +132,39 @@ void AFoodHolder::OnFoodBoxOverlapBegin(
 		// 블루프린트 이벤트 호출
 		OnActivate(bSuccess);
 
-		if (bSuccess)
-		{
-			UE_LOG(LogTemp, Warning, TEXT("[FoodHolder] Correct"));
-
-			// 정답인 경우
-			int32 CorrectIdx = Food->GetFoodIndex();
-			FTimerHandle TimerHandle;
-			GetWorldTimerManager().SetTimer(TimerHandle, [this, CorrectIdx]
-			{
-				ADoor* Door = FindDoorToOpen();
-				if (Door) Door->OpenDoor();
-				
-				// 모든 클라이언트에 정답 인덱스와 함께 결과 팝업 표시
-				Multicast_ShowResultPopup(CorrectIdx);
-			}, 0.5f, false);
-		}
-		else
-		{
-			UE_LOG(LogTemp, Warning, TEXT("[FoodHolder] Wrong"));
-
-			// 오답인 경우
-			FTimerHandle TimerHandle;
-			GetWorldTimerManager().SetTimer(TimerHandle, [this, Food, GS]
-			{
-				GS->WrongListenAnswerList.Add(Food->GetFoodIndex());
-
-				// 모든 클라이언트에 오답 메시지 표시
-				Multicast_ShowWrongPopup(Food->GetFoodName());
-
-				// Food 소거 (서버에서만, 자동 복제됨)
-				Food->Destroy();
-			}, 0.5f, false);
-		}
+		// if (bSuccess)
+		// {
+		// 	UE_LOG(LogTemp, Warning, TEXT("[FoodHolder] Correct"));
+		//
+		// 	// 정답인 경우
+		// 	int32 CorrectIdx = Food->GetFoodIndex();
+		// 	FTimerHandle TimerHandle;
+		// 	GetWorldTimerManager().SetTimer(TimerHandle, [this, CorrectIdx]
+		// 	{
+		// 		ADoor* Door = FindDoorToOpen();
+		// 		if (Door) Door->OpenDoor();
+		// 		
+		// 		// 모든 클라이언트에 정답 인덱스와 함께 결과 팝업 표시
+		// 		Multicast_ShowResultPopup(CorrectIdx);
+		// 	}, 0.5f, false);
+		// }
+		// else
+		// {
+		// 	UE_LOG(LogTemp, Warning, TEXT("[FoodHolder] Wrong"));
+		//
+		// 	// 오답인 경우
+		// 	FTimerHandle TimerHandle;
+		// 	GetWorldTimerManager().SetTimer(TimerHandle, [this, Food, GS]
+		// 	{
+		// 		GS->WrongListenAnswerList.Add(Food->GetFoodIndex());
+		//
+		// 		// 모든 클라이언트에 오답 메시지 표시
+		// 		Multicast_ShowWrongPopup(Food->GetFoodName());
+		//
+		// 		// Food 소거 (서버에서만, 자동 복제됨)
+		// 		Food->Destroy();
+		// 	}, 0.5f, false);
+		// }
 	}
 }
 
@@ -183,36 +183,37 @@ bool AFoodHolder::CheckFood(AFood* TargetFood)
 	ALingoGameState* GS = Cast<ALingoGameState>(GetWorld()->GetGameState());
 	if (!GS) return false;
 
-	const int32 CorrectIdx = GS->GetListenScenarioData().correct_answer_index;
-	const int32 FoodIdx = TargetFood->GetFoodIndex();
-
-	if (CorrectIdx == FoodIdx)
-	{
-		// Success: Food를 HoldPos 위치보다 살짝 위에 배치
-		FVector ActivatedLocation = HoldPos->GetComponentLocation();
-		ActivatedLocation.Z += ActivatedHeightOffset;
-		TargetFood->SetActorLocation(ActivatedLocation);
-		TargetFood->SetActorRotation(HoldPos->GetComponentRotation());
-
-		// Activate 상태로 전환
-		bIsActivated = true;
-		CurTarget = TargetFood;
-
-		// 서버에서도 머티리얼 업데이트 (클라이언트는 OnRep_IsActivated에서 호출됨)
-		UpdateActivateState(true);
-
-		return true;
-	}
-	else
-	{
-		UE_LOG(LogTemp, Warning, TEXT("[CheckFood] Returning FALSE"));
-
-		// Fail: 서버에서 머티리얼 업데이트 (오답)
-		bIsActivated = false;
-		UpdateActivateState(false);
-
-		return false;
-	}
+	return true;
+	// const int32 CorrectIdx = GS->GetListenScenarioData().correct_answer_index;
+	// const int32 FoodIdx = TargetFood->GetFoodIndex();
+	//
+	// if (CorrectIdx == FoodIdx)
+	// {
+	// 	// Success: Food를 HoldPos 위치보다 살짝 위에 배치
+	// 	FVector ActivatedLocation = HoldPos->GetComponentLocation();
+	// 	ActivatedLocation.Z += ActivatedHeightOffset;
+	// 	TargetFood->SetActorLocation(ActivatedLocation);
+	// 	TargetFood->SetActorRotation(HoldPos->GetComponentRotation());
+	//
+	// 	// Activate 상태로 전환
+	// 	bIsActivated = true;
+	// 	CurTarget = TargetFood;
+	//
+	// 	// 서버에서도 머티리얼 업데이트 (클라이언트는 OnRep_IsActivated에서 호출됨)
+	// 	UpdateActivateState(true);
+	//
+	// 	return true;
+	// }
+	// else
+	// {
+	// 	UE_LOG(LogTemp, Warning, TEXT("[CheckFood] Returning FALSE"));
+	//
+	// 	// Fail: 서버에서 머티리얼 업데이트 (오답)
+	// 	bIsActivated = false;
+	// 	UpdateActivateState(false);
+	//
+	// 	return false;
+	// }
 }
 
 void AFoodHolder::UpdateActivateState(bool State)

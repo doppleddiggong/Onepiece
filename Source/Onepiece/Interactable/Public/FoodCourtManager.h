@@ -29,19 +29,45 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 public:
+	//---------------------------------------------------
+	// Dropper
+	//---------------------------------------------------
+	
 	UPROPERTY(VisibleAnywhere)
 	class ADropper* Dropper;
 	
 	// 빈 음식 액터 스폰
 	void SpawnFoodContainer();
 
-	
 public:
-	void SetFoodCourtInfo();
-	class ACityName* FindCityNameByIdx(int32 InIdx);
-	class AOrderKiosk* FindKioskNameByIdx(int32 InIdx);
+	//---------------------------------------------------
+	// 선택지 스폰
+	//---------------------------------------------------
+
+	// 듣기 선택지 스폰 및 데이터 전달
+	void SpawnListenAnswer();
+	// 첫번째 스폰 위치 기준으로 나머지 스폰 위치 구하기
+	void GetCurrentSpawnLocation(int32 Index, FVector& OutSpawnLocation);
+	
+protected:
+	UPROPERTY(EditDefaultsOnly, Category = "Item")
+	TSubclassOf<class AListenAnswer> ListenAnswerClass;
+	
+	// 선택지 첫번째 스폰 위치
+	UPROPERTY(EditAnywhere, Category = "Spawn")
+	FVector FoodSpawnLocation = FVector(2561.899883,-5122.399085,-4636.869443);
+
+	UPROPERTY(EditAnywhere, Category = "Spawn")
+	FVector CitySpawnLocation;
+
+	UPROPERTY(EditAnywhere, Category = "Spawn")
+	float SpawnDistance = 2.f;
 
 private:
+	//---------------------------------------------------
+	// Handler
+	//---------------------------------------------------
+	
 	UFUNCTION()
 	void HandleQuestScenarioDataUpdated();
 };

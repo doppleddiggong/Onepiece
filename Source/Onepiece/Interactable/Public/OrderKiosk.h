@@ -52,7 +52,11 @@ protected:
 	// (맵에서 직접 선택)
 	UPROPERTY(EditAnywhere)
 	TArray<AActor*> ConveyorsToControl;
-	
+
+
+	/** 이번 스폰에서 사용할 데이터 */
+	//UPROPERTY(ReplicatedUsing=OnRep_FoodData)
+	//FFoodData FoodData;
 	//-----------------------------
 // public:
 // 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
@@ -79,9 +83,7 @@ protected:
 // 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 // 	int32 FoodCourtIdx = -1;
 //
-// 	/** 이번 스폰에서 사용할 데이터 */
-// 	UPROPERTY(ReplicatedUsing=OnRep_FoodData)
-// 	FFoodData FoodData;
+// 	
 //
 // 	UFUNCTION()
 // 	void OnRep_FoodData();

@@ -61,7 +61,7 @@ void AFood::GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifet
 
 	// FoodMesh는 Component이므로 자동 복제됨
 	DOREPLIFETIME(AFood, Name);
-	DOREPLIFETIME(AFood, Index);
+	//DOREPLIFETIME(AFood, Index);
 }
 
 // Called every frame
@@ -81,7 +81,7 @@ void AFood::OnRep_FoodName()
 void AFood::SetFoodInfo(int32 InIndex, FString InName)
 {
 	Name = InName;
-	Index = InIndex;
+	//Index = InIndex;
 
 	// 서버에서도 Widget 업데이트 (클라이언트는 OnRep_FoodName에서 호출됨)
 	if (HasAuthority())

@@ -5,40 +5,40 @@
 #include "CoreMinimal.h"
 #include "NetworkData.h"
 #include "GameFramework/Actor.h"
-#include "Food.generated.h"
+#include "ListenAnswer.generated.h"
 
-/*
- * 이름은 Food지만, 빈 Food Capsule
- */
+UENUM(BlueprintType)
+enum EAnswerType : uint8
+{
+	None = 0,
+	Food  = 1,
+	City = 2
+};
 
 USTRUCT(BlueprintType)
-struct FFoodCapsuleData
+struct FListenAnswerData
 {
 	GENERATED_BODY()
-
+	/** 정답 타입 */
+	EAnswerType AnswerType = EAnswerType::None;
 	/** 시나리오 단어 정보 */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FWordInfo word1;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	FWordInfo word2;
+	FListenAnswerData() {}
 
-	FFoodCapsuleData() {}
-
-	FFoodCapsuleData(const FWordInfo& InWord1, const FWordInfo& InWord2)
-		: word1(InWord1)
-		, word2(InWord2)
-	{}
+	FListenAnswerData(EAnswerType& InAnswerType, const FWordInfo& InWord1)
+	: AnswerType(InAnswerType), word1(InWord1){}
 };
 
 UCLASS()
-class ONEPIECE_API AFood : public AActor
+class ONEPIECE_API AListenAnswer : public AActor
 {
 	GENERATED_BODY()
 
 public:
 	// Sets default values for this actor's properties
-	AFood();
+	AListenAnswer();
 
 protected:
 	// Called when the game starts or when spawned
@@ -55,34 +55,28 @@ public:
 	class UStaticMeshComponent* Mesh;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	class UStaticMeshComponent* FoodMesh;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	class UWidgetComponent* FoodName;
+	class UWidgetComponent* NameWidgetComp;
 
 	UPROPERTY(VisibleAnywhere)
 	TObjectPtr<class UInteractableComponent> InteractableComp;
-	
-protected:
-	// 음식 인덱스
-	UPROPERTY(ReplicatedUsing=OnRep_FoodName)
-	FString Name = "";
-
-	UFUNCTION()
-	void OnRep_FoodName();
-
-	/**
-	 * @brief Widget에 음식 이름 업데이트
-	 */
-	void UpdateFoodWidget();
 
 public:
-	void SetFoodInfo(int32 InIndex, FString InName);
+	//---------------------------------------------------
+	// Data
+	//---------------------------------------------------
+	// 데이터 테이블
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Data")
+	class UDataTable* ListenDataTable;
+	// 현재 입력된 데이터
+	UPROPERTY(ReplicatedUsing = OnRep_AnswerData)
+	FListenAnswerData AnswerData;
 
-	/**
-	 * @brief Food 이름 반환
-	 * @return Food의 이름
-	 */
-	UFUNCTION(BlueprintPure, Category = "Food")
-	FORCEINLINE FString GetFoodName() const { return Name; }
+	UFUNCTION()
+	void OnRep_AnswerData();
+	
+	void SetSpawnData(const FListenAnswerData& InData) { AnswerData = InData; }
+
+	void UpdateMesh();
+	void UpdateNameWidget();
+	
 };
