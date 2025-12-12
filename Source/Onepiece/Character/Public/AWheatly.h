@@ -61,11 +61,6 @@ protected:
 	UFUNCTION(NetMulticast, Reliable)
 	void Multicast_PlayAnimation(EWheatlyAnim InAnimType);
 
-	/// @brief 몽타주 종료 콜백
-	/// @param Montage [in] 종료된 몽타주
-	/// @param bInterrupted [in] 중단 여부
-	void OnMontageEnded(UAnimMontage* Montage, bool bInterrupted);
-
 	//----------------------------------------------------------//
 	// Speak Stage System
 	//----------------------------------------------------------//
@@ -137,12 +132,15 @@ protected:
 	// Animation Data
 	//----------------------------------------------------------//
 
-	/// @brief 애니메이션 몽타주 맵
+	/// @brief 애니메이션 시퀀스 맵
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Animation")
-	TMap<EWheatlyAnim, TObjectPtr<class UAnimMontage>> AnimMontage;
+	TMap<EWheatlyAnim, TObjectPtr<class UAnimSequence>> AnimSequences;
 
 	/// @brief 현재 애니메이션 타입
 	EWheatlyAnim AnimType;
+
+	/// @brief 현재 재생 중인 애니메이션 길이 (초)
+	float currentAnimDuration;
 
 	//----------------------------------------------------------//
 	// Speak Stage Data

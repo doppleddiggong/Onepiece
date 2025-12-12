@@ -51,7 +51,7 @@ AWheatly::AWheatly()
 
 	// InteractableComponent 생성
 	InteractableComp = CreateDefaultSubobject<UInteractableComponent>(TEXT("Interactable"));
-	InteractableComp->DetectionDistance = 500.0f
+	InteractableComp->DetectionDistance = 500.0f;
 	InteractableComp->InteractionType = EInteractionType::Button;
 	InteractableComp->InteractionPrompt = TEXT("Talk to Activate");
 
@@ -66,6 +66,7 @@ AWheatly::AWheatly()
 	targetPlayer = nullptr;
 	bIsBusy = false;
 	busyPlayerName = TEXT("");
+	currentAnimDuration = 0.0f;
 }
 
 void AWheatly::BeginPlay()
@@ -89,7 +90,7 @@ void AWheatly::BeginPlay()
 		InteractableComp->OnInteractionTriggered.AddDynamic(this, &AWheatly::OnInteractionTriggered);
 	}
 
-	PlayAnimation(EWheatlyAnim::PowerOn);
+	PlayAnimation(EWheatlyAnim::Reaction_01);
 }
 
 //----------------------------------------------------------//
@@ -118,48 +119,20 @@ void AWheatly::Multicast_PlayAnimation_Implementation(EWheatlyAnim InAnimType)
 		return;
 	}
 
-	UAnimInstance* AnimInstance = MeshComponent->GetAnimInstance();
-	if (!AnimInstance)
+	UAnimSequence* AnimSeq = AnimSequences.FindRef(AnimType);
+	if (!AnimSeq)
 	{
-		PRINTLOG(TEXT("[AWheatly] Multicast_PlayAnimation - AnimInstance is null"));
+		PRINTLOG(TEXT("[AWheatly] Multicast_PlayAnimation - AnimSequence not found for type: %d"), static_cast<int32>(AnimType));
 		return;
 	}
 
-	UAnimMontage* Montage = AnimMontage.FindRef(AnimType);
-	if (!Montage)
-	{
-		PRINTLOG(TEXT("[AWheatly] Multicast_PlayAnimation - Montage not found for type: %d"), static_cast<int32>(AnimType));
-		return;
-	}
+	// 애니메이션 직접 재생 (반복 없음)
+	MeshComponent->PlayAnimation(AnimSeq, false);
+	currentAnimDuration = AnimSeq->GetPlayLength();
 
-	// 모든 몽타주 중지
-	AnimInstance->StopAllMontages(0.0f);
-
-	// 종료 델리게이트 바인딩
-	FOnMontageEnded EndDelegate;
-	EndDelegate.BindUObject(this, &AWheatly::OnMontageEnded);
-
-	// 몽타주 재생
-	AnimInstance->Montage_Play(Montage);
-	AnimInstance->Montage_SetEndDelegate(EndDelegate, Montage);
-
-	PRINTLOG(TEXT("[AWheatly] Animation played: %d"), static_cast<int32>(AnimType));
+	PRINTLOG(TEXT("[AWheatly] Animation played: %d (Duration: %.2f)"), static_cast<int32>(AnimType), currentAnimDuration);
 }
 
-void AWheatly::OnMontageEnded(UAnimMontage* Montage, bool bInterrupted)
-{
-	if (bInterrupted)
-	{
-		PRINTLOG(TEXT("[AWheatly] Animation interrupted"));
-		return;
-	}
-
-	// 반복 재생 (서버에서만)
-	if (HasAuthority())
-	{
-		Multicast_PlayAnimation(AnimType);
-	}
-}
 
 //----------------------------------------------------------//
 // Replication
