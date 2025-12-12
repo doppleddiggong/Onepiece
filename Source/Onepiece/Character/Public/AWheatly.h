@@ -99,13 +99,17 @@ protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
 	TObjectPtr<USkeletalMeshComponent> MeshComponent;
 
+	/// @brief 상호작용 중인 플레이어 표시기
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
+	TObjectPtr<UStaticMeshComponent> EyeMesh;
+	
 	/// @brief 플레이어 감지 영역
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
 	TObjectPtr<UBoxComponent> PlayerDetectionZone;
 
 	/// @brief 상호작용 중인 플레이어 표시기
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
-	TObjectPtr<UStaticMeshComponent> InteractingPlayerIndicator;
+	TObjectPtr<UStaticMeshComponent> EyeSightComp;
 
 	/// @brief 상호작용 컴포넌트
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
@@ -115,16 +119,12 @@ protected:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Components")
 	TObjectPtr<class UWidgetComponent> WidgetComp;
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
-	TObjectPtr<class UBoxComponent> BoxComp;
-	
-	/// @brief 베이스 머티리얼 (눈 발광)
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Materials")
-	TObjectPtr<UMaterialInterface> baseMaterial;
-
 	/// @brief 동적 머티리얼 인스턴스 (런타임 색상 변경)
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Transient, Category = "Materials", meta = (AllowPrivateAccess = "true"))
-	TObjectPtr<UMaterialInstanceDynamic> dynamicMaterial;
+	TObjectPtr<UMaterialInstanceDynamic> EyeMaterial;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Transient, Category = "Materials", meta = (AllowPrivateAccess = "true"))
+	TObjectPtr<UMaterialInstanceDynamic> EyeTraceMaterial;
 
 	/// @brief 애니메이션 시퀀스 맵
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Animation")
@@ -144,4 +144,9 @@ private:
 	float CurAnimDuration;
 
 	bool bShowDebugInfo = true;
+
+	float IndicatorBaseLength = 1.0f;
+	float IndicatorBaseRadius = 1.0f;
+
+	void UpdateEyeSight(const FVector& Start, const FVector& End);
 };

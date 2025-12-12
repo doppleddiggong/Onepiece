@@ -21,8 +21,6 @@
 #include "InteractableComponent.h"
 #include "Kismet/GameplayStatics.h"
 #include "Kismet/KismetMathLibrary.h"
-#include "Net/UnrealNetwork.h"
-#include "DrawDebugHelpers.h" // Added for DrawDebugLine
 
 #define WHEATLY_MESH_PATH		TEXT("/Game/CustomContents/Platfrom/Assets/Wheatly_Talk/Wheatly_Talk")
 #define WHEATLY_MATERIAL_0		TEXT("/Script/Engine.Material'/Game/CustomContents/Platfrom/Assets/Wheatly_Talk/M_Wheatly_01.M_Wheatly_01'")
@@ -43,13 +41,16 @@ AWheatly::AWheatly()
 	MeshComponent = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("MeshComp"));
 	MeshComponent->SetupAttachment(RootComponent);
 
+	EyeMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("EyeMesh"));
+	EyeMesh->SetupAttachment(MeshComponent, TEXT("eyelight_aimjoint"));
+	
 	PlayerDetectionZone = CreateDefaultSubobject<UBoxComponent>(TEXT("PlayerDetectionZone"));
 	PlayerDetectionZone->SetupAttachment(RootComponent);
-	PlayerDetectionZone->SetBoxExtent(FVector(1000.f, 1000.f, 100.f));
+	PlayerDetectionZone->SetBoxExtent(FVector(1000.f, 1000.f, 1000.f));
 	PlayerDetectionZone->SetCollisionProfileName(TEXT("Trigger"));
 
-	InteractingPlayerIndicator = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("InteractingPlayerIndicator"));
-	InteractingPlayerIndicator->SetupAttachment(RootComponent);
+	EyeSightComp = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("EyeSightComp"));
+	EyeSightComp->SetupAttachment(RootComponent);
 	
 	//--------------------------------------------------------------
 	// 스켈레탈 메시 로드
@@ -59,21 +60,21 @@ AWheatly::AWheatly()
 	static ConstructorHelpers::FObjectFinder<UStaticMesh> CylinderMesh(TEXT("/Engine/BasicShapes/Cylinder.Cylinder"));
 	if (CylinderMesh.Succeeded())
 	{
-		InteractingPlayerIndicator->SetStaticMesh(CylinderMesh.Object);
-		InteractingPlayerIndicator->SetRelativeScale3D(FVector(0.5f, 0.5f, 2.0f));
+		UStaticMesh* Mesh = CylinderMesh.Object;
+		EyeSightComp->SetStaticMesh(Mesh);
+		
+		if (Mesh)
+		{
+			IndicatorBaseLength = FMath::Max(Mesh->GetBounds().BoxExtent.Z * 2.0f, 1.0f);
+			IndicatorBaseRadius = FMath::Max(Mesh->GetBounds().BoxExtent.X, Mesh->GetBounds().BoxExtent.Y);
+		}
 	}
-	InteractingPlayerIndicator->SetVisibility(false);
-	InteractingPlayerIndicator->SetCollisionEnabled(ECollisionEnabled::NoCollision);
-
-
-	//--------------------------------------------------------------
-	// 머티리얼 로드 (0번, 1번, 2번)
-	//--------------------------------------------------------------
-	baseMaterial = FComponentHelper::LoadAsset<UMaterialInterface>(WHEATLY_MATERIAL_2);  // 2번은 눈 (동적 머티리얼용)
+	EyeSightComp->SetVisibility(false);
+	EyeSightComp->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 
 	MeshComponent->SetMaterial(0, FComponentHelper::LoadAsset<UMaterialInterface>(WHEATLY_MATERIAL_0));
 	MeshComponent->SetMaterial(1, FComponentHelper::LoadAsset<UMaterialInterface>(WHEATLY_MATERIAL_1));
-	MeshComponent->SetMaterial(2, baseMaterial);
+	MeshComponent->SetMaterial(2, FComponentHelper::LoadAsset<UMaterialInterface>(WHEATLY_MATERIAL_2));
 
 	// InteractableComponent 생성
 	InteractableComp = CreateDefaultSubobject<UInteractableComponent>(TEXT("Interactable"));
@@ -87,14 +88,6 @@ AWheatly::AWheatly()
 	WidgetComp->SetupAttachment(GetRootComponent());
 	WidgetComp->SetWidgetSpace(EWidgetSpace::Screen);
 	WidgetComp->SetDrawSize(FVector2D(2048.0f, 1024.0f));
-
-	BoxComp = CreateDefaultSubobject<UBoxComponent>(TEXT("BoxComp"));
-	BoxComp->SetupAttachment(GetRootComponent());
-	BoxComp->SetRelativeLocation(FVector(0.0f, 0.0f, 45.f));
-	BoxComp->SetBoxExtent(FVector(32, 32, 45));
-	BoxComp->SetCollisionEnabled(ECollisionEnabled::Type::QueryOnly);
-	BoxComp->SetCollisionObjectType(ECC_WorldStatic);
-	BoxComp->SetCollisionResponseToAllChannels(ECR_Block);	
 	
 	// 초기값 설정
 	CurAnimDuration = 0.0f;
@@ -104,12 +97,22 @@ void AWheatly::BeginPlay()
 {
 	Super::BeginPlay();
 
-	if (baseMaterial && MeshComponent)
+	if (MeshComponent)
 	{
-		dynamicMaterial = UMaterialInstanceDynamic::Create(baseMaterial, this);
-		MeshComponent->SetMaterial(2, dynamicMaterial);
+		UMaterialInterface* BaseMaterial = MeshComponent->GetMaterial(2);
+		
+		EyeMaterial = UMaterialInstanceDynamic::Create(BaseMaterial, this);
+		MeshComponent->SetMaterial(2, EyeMaterial);
 	}
 
+	if (EyeSightComp)
+	{
+		UMaterialInterface* BaseMaterial = EyeSightComp->GetMaterial(0);
+		
+		EyeTraceMaterial = UMaterialInstanceDynamic::Create(BaseMaterial, this);
+		EyeSightComp->SetMaterial(0, EyeTraceMaterial);
+	}
+	
 	if (InteractableComp)
 	{
 		InteractableComp->InitWidget(WidgetComp);
@@ -146,15 +149,13 @@ void AWheatly::Tick(float DeltaSeconds)
 	if (!HasAuthority() || !SpeakStage)
 		return;
 
-	APlayerState* CurrentSpeaker = SpeakStage->GetCurrentSpeaker();
-	
 	// 퀘스트 진행 중일 때
-	if (CurrentSpeaker)
+	if (auto CurrentSpeaker = SpeakStage->GetCurrentSpeaker())
 	{
-		if (InteractingPlayerIndicator)
-			InteractingPlayerIndicator->SetVisibility(true);
+		if (EyeSightComp)
+			EyeSightComp->SetVisibility(true);
 		
-		if (APawn* SpeakerPawn = CurrentSpeaker->GetPawn())
+		if (auto SpeakerPawn = CurrentSpeaker->GetPawn())
 		{
 			// 스피커를 쳐다보도록 회전
 			FRotator LookAtRotation = UKismetMathLibrary::FindLookAtRotation(GetActorLocation(), SpeakerPawn->GetActorLocation());
@@ -162,26 +163,24 @@ void AWheatly::Tick(float DeltaSeconds)
 			SetActorRotation(FMath::RInterpTo(GetActorRotation(), TargetRotation, DeltaSeconds, 5.0f));
 			
 			// 표시기 위치 업데이트
-			FVector IndicatorLocation = SpeakerPawn->GetActorLocation() - FVector(0,0,100.f); // 발 밑에 표시
-			if (InteractingPlayerIndicator)
-				InteractingPlayerIndicator->SetWorldLocation(IndicatorLocation);
+			FVector StartLocation = EyeMesh->GetComponentLocation();
+			FVector EndLocation = SpeakerPawn->GetActorLocation();
+			UpdateEyeSight(StartLocation, EndLocation);
 		}
 	}
 	// 퀘스트 진행 중이 아닐 때
 	else
 	{
-		if (InteractingPlayerIndicator)
-			InteractingPlayerIndicator->SetVisibility(false);
+		if (EyeSightComp)
+			EyeSightComp->SetVisibility(false);
 		
 		TArray<AActor*> OverlappingActors;
 		if (PlayerDetectionZone)
-		{
 			PlayerDetectionZone->GetOverlappingActors(OverlappingActors, APlayerActor::StaticClass());
-		}
-
+		
 		APawn* NearestPawn = nullptr;
 		double MinDistanceSquared = MAX_dbl;
-
+		
 		for (AActor* OverlappingActor : OverlappingActors)
 		{
 			if (APawn* Pawn = Cast<APawn>(OverlappingActor))
@@ -199,40 +198,20 @@ void AWheatly::Tick(float DeltaSeconds)
 		{
 			// LineTrace로 시야 확인
 			FHitResult HitResult;
-			FVector StartLocation = GetActorLocation();
+			FVector StartLocation = EyeMesh->GetComponentLocation();
 			FVector EndLocation = NearestPawn->GetActorLocation();
 			FCollisionQueryParams CollisionParams;
 			CollisionParams.AddIgnoredActor(this); // 자기 자신은 무시
-
+		
 			bool bHit = GetWorld()->LineTraceSingleByChannel(HitResult, StartLocation, EndLocation, ECC_Visibility, CollisionParams);
-
+		
 			// 아무것도 맞지 않았거나, 맞은 대상이 목표한 폰일 경우에만 시야가 확보된 것으로 간주
 			if (!bHit || (bHit && HitResult.GetActor() == NearestPawn))
 			{
 				// 가장 가까운 플레이어를 쳐다보도록 회전
-				FRotator LookAtRotation = UKismetMathLibrary::FindLookAtRotation(GetActorLocation(), NearestPawn->GetActorLocation());
+				FRotator LookAtRotation = UKismetMathLibrary::FindLookAtRotation(EyeMesh->GetComponentLocation(), NearestPawn->GetActorLocation());
 				FRotator TargetRotation( LookAtRotation.Pitch, LookAtRotation.Yaw, 0); // Yaw만 사용
 				SetActorRotation(FMath::RInterpTo(GetActorRotation(), TargetRotation, DeltaSeconds, 2.0f));
-
-				if (bShowDebugInfo)
-					DrawDebugLine(GetWorld(), StartLocation, EndLocation, FColor::Green, false, 0.1f, 0, 2.0f);
-			}
-			else
-			{
-				if (bShowDebugInfo)
-				{
-					DrawDebugLine(GetWorld(), StartLocation, HitResult.Location, FColor::Red, false, 0.1f, 0, 2.0f);
-					DrawDebugLine(GetWorld(), HitResult.Location, EndLocation, FColor::Yellow, false, 0.1f, 0, 2.0f); // 장애물 뒤는 노란색
-				}
-			}
-		}
-		else
-		{
-			if (bShowDebugInfo)
-			{
-				// 감지 영역 내 플레이어 없음
-				FVector DrawEnd = GetActorLocation() + GetActorForwardVector() * 200.0f;
-				DrawDebugLine(GetWorld(), GetActorLocation(), DrawEnd, FColor::Cyan, false, 0.1f, 0, 2.0f);
 			}
 		}
 	}
@@ -401,8 +380,40 @@ void AWheatly::OnSpeakStageSpeakerChanged(APlayerState* NewSpeaker)
 
 void AWheatly::ChangeEyeColor(FLinearColor newColor)
 {
-	if (!dynamicMaterial)
+	if (!EyeMaterial)
 		return;
 
-	dynamicMaterial->SetVectorParameterValue(TEXT("EyeColor"), newColor);
+	EyeMaterial->SetVectorParameterValue(TEXT("EyeColor"), newColor);
+	EyeTraceMaterial->SetVectorParameterValue(TEXT("EyeColor"), newColor);
+}
+
+void AWheatly::UpdateEyeSight(const FVector& Start, const FVector& End)
+{
+	if (!EyeSightComp)
+	{
+		return;
+	}
+
+	FVector Delta = End - Start;
+	float Length = Delta.Size();
+	if (Length <= KINDA_SMALL_NUMBER)
+	{
+		EyeSightComp->SetVisibility(false);
+		return;
+	}
+
+	FVector Midpoint = Start + (Delta * 0.5f);
+	EyeSightComp->SetWorldLocation(Midpoint);
+
+	FVector Direction = Delta / Length;
+	FRotator Rotation = FRotationMatrix::MakeFromZ(Direction).Rotator();
+	EyeSightComp->SetWorldRotation(Rotation);
+
+	const float LengthScale = Length / FMath::Max(IndicatorBaseLength, KINDA_SMALL_NUMBER);
+	const float TargetThickness = 10.f; // Desired thickness
+	const float MeshDiameter = FMath::Max(IndicatorBaseRadius * 2.0f, KINDA_SMALL_NUMBER);
+	const float RadiusScale = TargetThickness / MeshDiameter;
+
+	EyeSightComp->SetWorldScale3D(FVector(RadiusScale, RadiusScale, LengthScale));
+	EyeSightComp->SetVisibility(true);
 }
