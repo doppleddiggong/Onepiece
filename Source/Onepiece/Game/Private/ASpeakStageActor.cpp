@@ -20,9 +20,9 @@ ASpeakStageActor::ASpeakStageActor()
 	PrimaryActorTick.bCanEverTick = false;
 
 	// 초기값 설정
-	CurrentSpeaker = nullptr;
-	CurrentStepIndex = 0;
-	TotalQuestions = 0;
+	currentSpeaker = nullptr;
+	currentStepIndex = 0;
+	totalQuestions = 0;
 }
 
 void ASpeakStageActor::BeginPlay()
@@ -41,9 +41,8 @@ void ASpeakStageActor::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& Out
 {
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
 
-	DOREPLIFETIME(ASpeakStageActor, CurrentSpeaker);
-	DOREPLIFETIME(ASpeakStageActor, CurrentStepIndex);
-	DOREPLIFETIME(ASpeakStageActor, PlayerQueue);
+	DOREPLIFETIME(ASpeakStageActor, currentSpeaker);
+	DOREPLIFETIME(ASpeakStageActor, currentStepIndex);
 }
 
 //----------------------------------------------------------
@@ -52,20 +51,21 @@ void ASpeakStageActor::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& Out
 
 void ASpeakStageActor::OnRep_CurrentSpeaker()
 {
-	if (CurrentSpeaker)
+	if (currentSpeaker)
 	{
-		PRINTLOG(TEXT("[SpeakStage] Current Speaker Changed: %s"), *CurrentSpeaker->GetPlayerName());
+		PRINTLOG(TEXT("[SpeakStage] Current Speaker Changed: %s"), *currentSpeaker->GetPlayerName());
 		// UI 업데이트는 외부에서 처리 (UMainWidget::UpdateSpeakWidget)
 	}
 	else
 	{
-		PRINTLOG(TEXT("[SpeakStage] No Current Speaker (All players completed or waiting)"));
+		PRINTLOG(TEXT("[SpeakStage] Stage is now available."));
 	}
+	OnSpeakerChanged.Broadcast(currentSpeaker);
 }
 
 void ASpeakStageActor::OnRep_CurrentStepIndex()
 {
-	PRINTLOG(TEXT("[SpeakStage] OnRep_CurrentStepIndex - Step Changed: %d/%d"), CurrentStepIndex + 1, TotalQuestions);
+	PRINTLOG(TEXT("[SpeakStage] OnRep_CurrentStepIndex - Step Changed: %d/%d"), currentStepIndex + 1, totalQuestions);
 
 	// 클라이언트에서 Toast 표시
 	ShowCurrentQuestionToast();
@@ -75,46 +75,41 @@ void ASpeakStageActor::OnRep_CurrentStepIndex()
 // Public Interface
 //----------------------------------------------------------
 
-void ASpeakStageActor::PlayStart(const TArray<APlayerState*>& Players)
+void ASpeakStageActor::StartStageForPlayer(APlayerState* Player)
 {
 	if (!HasAuthority())
 	{
-		PRINTLOG(TEXT("[SpeakStage] PlayStart - Not called on server!"));
+		PRINTLOG(TEXT("[SpeakStage] StartStageForPlayer - Not called on server!"));
 		return;
 	}
 
-	// 플레이어 큐 초기화
-	PlayerQueue.Empty();
-
-	for (APlayerState* Player : Players)
+	if (!Player)
 	{
-		if (Player)
-		{
-			PlayerQueue.Add(Player);
-			PRINTLOG(TEXT("[SpeakStage] PlayStart - Player added to queue: %s"), *Player->GetPlayerName());
-		}
+		PRINTLOG(TEXT("[SpeakStage] StartStageForPlayer - Player is null!"));
+		return;
 	}
 
-	// 첫 번째 플레이어를 CurrentSpeaker로 설정
-	if (PlayerQueue.Num() > 0)
+	// 이미 사용 중인 경우
+	if (currentSpeaker != nullptr)
 	{
-		CurrentSpeaker = PlayerQueue[0];
-		CurrentStepIndex = 0;
-
-		PRINTLOG(TEXT("[SpeakStage] PlayStart - First speaker assigned: %s (Total players: %d)"),
-		         *CurrentSpeaker->GetPlayerName(), PlayerQueue.Num());
-
-		// 서버에서도 첫 질문 Toast 표시 (OnRep는 클라이언트만 호출되므로)
-		ShowCurrentQuestionToast();
+		PRINTLOG(TEXT("[SpeakStage] StartStageForPlayer - Stage is already busy with player: %s"), *currentSpeaker->GetPlayerName());
+		return;
 	}
-	else
-	{
-		CurrentSpeaker = nullptr;
-		PRINTLOG(TEXT("[SpeakStage] PlayStart - No players in queue!"));
-	}
+	
+	// 플레이어를 현재 발화자로 설정
+	currentSpeaker = Player;
+	currentStepIndex = 0;
+
+	// 서버 측 리스너에게 즉시 알림
+	OnSpeakerChanged.Broadcast(currentSpeaker);
+
+	PRINTLOG(TEXT("[SpeakStage] StartStageForPlayer - Speaker assigned: %s"), *currentSpeaker->GetPlayerName());
+
+	// 서버에서도 첫 질문 Toast 표시 (OnRep는 클라이언트만 호출되므로)
+	ShowCurrentQuestionToast();
 }
 
-void ASpeakStageActor::Server_RequestSpeak_Implementation(APlayerState* Player)
+void ASpeakStageActor::ServerRPC_RequestSpeak_Implementation(APlayerState* Player)
 {
 	if (!HasAuthority() || !Player)
 	{
@@ -122,28 +117,28 @@ void ASpeakStageActor::Server_RequestSpeak_Implementation(APlayerState* Player)
 	}
 
 	// 현재 발화자가 아니면 거부
-	if (CurrentSpeaker != Player)
+	if (currentSpeaker != Player)
 	{
 		PRINTLOG(TEXT("[SpeakStage] RequestSpeak - Not your turn: %s (Current: %s)"),
 		         *Player->GetPlayerName(),
-		         CurrentSpeaker ? *CurrentSpeaker->GetPlayerName() : TEXT("None"));
+		         currentSpeaker ? *currentSpeaker->GetPlayerName() : TEXT("None"));
 		return;
 	}
 
 	// 발화 권한 승인
 	PRINTLOG(TEXT("[SpeakStage] Speak permission granted: %s (Step: %d/%d)"),
-	         *Player->GetPlayerName(), CurrentStepIndex + 1, TotalQuestions);
+	         *Player->GetPlayerName(), currentStepIndex + 1, totalQuestions);
 
 	// 여기서 추가 처리 가능 (STT 시작 등)
 	// 필요시 ClientRPC로 승인 알림 전송 가능
 }
 
-bool ASpeakStageActor::Server_RequestSpeak_Validate(APlayerState* Player)
+bool ASpeakStageActor::ServerRPC_RequestSpeak_Validate(APlayerState* Player)
 {
 	return Player != nullptr;
 }
 
-void ASpeakStageActor::Server_NotifyAnswerComplete_Implementation(APlayerState* Player)
+void ASpeakStageActor::ServerRPC_NotifyAnswerComplete_Implementation(APlayerState* Player)
 {
 	if (!HasAuthority() || !Player)
 	{
@@ -151,14 +146,14 @@ void ASpeakStageActor::Server_NotifyAnswerComplete_Implementation(APlayerState* 
 	}
 
 	// 현재 발화자가 아니면 무시
-	if (CurrentSpeaker != Player)
+	if (currentSpeaker != Player)
 	{
 		PRINTLOG(TEXT("[SpeakStage] NotifyAnswerComplete - Invalid speaker: %s"), *Player->GetPlayerName());
 		return;
 	}
 
 	PRINTLOG(TEXT("[SpeakStage] Answer complete: %s (Step: %d/%d)"),
-	         *Player->GetPlayerName(), CurrentStepIndex + 1, TotalQuestions);
+	         *Player->GetPlayerName(), currentStepIndex + 1, totalQuestions);
 
 	// 다음 단계로 진행
 	AdvanceStep();
@@ -166,9 +161,9 @@ void ASpeakStageActor::Server_NotifyAnswerComplete_Implementation(APlayerState* 
 
 FString ASpeakStageActor::GetCurrentQuestion() const
 {
-	if (Questions.IsValidIndex(CurrentStepIndex))
+	if (questions.IsValidIndex(currentStepIndex))
 	{
-		return Questions[CurrentStepIndex];
+		return questions[currentStepIndex];
 	}
 
 	return TEXT("");
@@ -185,19 +180,19 @@ void ASpeakStageActor::AdvanceStep()
 		return;
 	}
 
-	CurrentStepIndex++;
+	currentStepIndex++;
 
 	// 모든 질문 완료?
-	if (CurrentStepIndex >= TotalQuestions)
+	if (currentStepIndex >= totalQuestions)
 	{
-		PRINTLOG(TEXT("[SpeakStage] All steps completed for: %s"), *CurrentSpeaker->GetPlayerName());
+		PRINTLOG(TEXT("[SpeakStage] All steps completed for: %s"), *currentSpeaker->GetPlayerName());
 
-		// 다음 플레이어로 전환
-		AdvanceToNextPlayer();
+		// 스테이지 종료
+		EndStage();
 	}
 	else
 	{
-		PRINTLOG(TEXT("[SpeakStage] Advanced to step: %d/%d"), CurrentStepIndex + 1, TotalQuestions);
+		PRINTLOG(TEXT("[SpeakStage] Advanced to step: %d/%d"), currentStepIndex + 1, totalQuestions);
 
 		// 서버에서도 Toast 표시 (OnRep는 클라이언트만 호출됨)
 		ShowCurrentQuestionToast();
@@ -206,51 +201,36 @@ void ASpeakStageActor::AdvanceStep()
 	}
 }
 
-void ASpeakStageActor::AdvanceToNextPlayer()
+void ASpeakStageActor::EndStage()
 {
 	if (!HasAuthority())
 	{
 		return;
 	}
 
-	if (!CurrentSpeaker)
+	if (!currentSpeaker)
 	{
 		return;
 	}
+	
+	PRINTLOG(TEXT("[SpeakStage] Player completed and stage is ending for: %s"), *currentSpeaker->GetPlayerName());
 
-	// 현재 플레이어를 큐에서 제거
-	PlayerQueue.Remove(CurrentSpeaker);
-	PRINTLOG(TEXT("[SpeakStage] Player completed: %s (Remaining: %d)"),
-	         *CurrentSpeaker->GetPlayerName(), PlayerQueue.Num());
-
-	// 다음 플레이어 설정
-	if (PlayerQueue.Num() > 0)
+	// 모든 단계 완료 Toast 표시
+	if (UDialogManager* DM = UDialogManager::Get(GetWorld()))
 	{
-		CurrentSpeaker = PlayerQueue[0];
-		CurrentStepIndex = 0; // 처음부터 시작
-
-		PRINTLOG(TEXT("[SpeakStage] Next speaker: %s"), *CurrentSpeaker->GetPlayerName());
-
-		// 다음 플레이어의 첫 질문 Toast 표시
-		ShowCurrentQuestionToast();
+		DM->ShowToast(TEXT("🎉 입국 심사가 완료되었습니다!"));
+		PRINTLOG(TEXT("[SpeakStage] Completion toast displayed"));
 	}
-	else
-	{
-		CurrentSpeaker = nullptr;
-		CurrentStepIndex = 0;
+	
+	// 현재 발화자 초기화, 스테이지를 다시 사용 가능하게 만듦
+	currentSpeaker = nullptr;
+	currentStepIndex = 0;
 
-		PRINTLOG(TEXT("[SpeakStage] All players completed! Stage finished."));
+	// 서버 측 리스너에게 즉시 알림
+	OnSpeakerChanged.Broadcast(currentSpeaker);
 
-		// 모든 단계 완료 Toast 표시
-		if (UDialogManager* DM = UDialogManager::Get(GetWorld()))
-		{
-			DM->ShowToast(TEXT("🎉 입국 심사가 완료되었습니다!"));
-			PRINTLOG(TEXT("[SpeakStage] Completion toast displayed"));
-		}
-
-		// 여기서 완료 이벤트 브로드캐스트 가능
-		// 예: OnAllPlayersCompleted.Broadcast();
-	}
+	// 여기서 완료 이벤트 브로드캐스트 가능
+	// 예: OnStageCompleted.Broadcast();
 }
 
 void ASpeakStageActor::ShowCurrentQuestionToast()
@@ -264,8 +244,8 @@ void ASpeakStageActor::ShowCurrentQuestionToast()
 
 	// Toast 메시지 생성
 	FString ToastMessage = FString::Printf(TEXT("[%d/%d] %s"),
-		CurrentStepIndex + 1,
-		TotalQuestions,
+		currentStepIndex + 1,
+		totalQuestions,
 		*CurrentQuestion);
 
 	// DialogManager를 통해 Toast 표시
@@ -273,7 +253,7 @@ void ASpeakStageActor::ShowCurrentQuestionToast()
 	{
 		DM->ShowToast(ToastMessage);
 
-		UGameSoundManager::Get(GetWorld())->PlaySound2D( Questions_Voice[CurrentStepIndex] );
+		UGameSoundManager::Get(GetWorld())->PlaySound2D( questions_Voice[currentStepIndex] );
 		
 		PRINTLOG(TEXT("[SpeakStage] Toast displayed: %s"), *ToastMessage);
 	}
@@ -291,22 +271,22 @@ void ASpeakStageActor::CreateTestScenarioData()
 	}
 
 	// 테스트용 입국 심사 질문 생성
-	Questions.Empty();
-	Questions.Add(TEXT("What is your name?"));
-	Questions.Add(TEXT("Where are you from?"));
-	Questions.Add(TEXT("What is the purpose of your visit?"));
-	Questions.Add(TEXT("How long will you stay?"));
-	Questions.Add(TEXT("Where will you be staying?"));
+	questions.Empty();
+	questions.Add(TEXT("What is your name?"));
+	questions.Add(TEXT("Where are you from?"));
+	questions.Add(TEXT("What is the purpose of your visit?"));
+	questions.Add(TEXT("How long will you stay?"));
+	questions.Add(TEXT("Where will you be staying?"));
 
-	Questions_Voice.Empty();
-	Questions_Voice.Add(EGameSoundType::What_is_your_name);
-	Questions_Voice.Add(EGameSoundType::Where_are_you_from);
-	Questions_Voice.Add(EGameSoundType::What_is_the_purpose_of_your_visit);
-	Questions_Voice.Add(EGameSoundType::How_long_will_you_stay);
-	Questions_Voice.Add(EGameSoundType::Where_will_you_be_staying);
+	questions_Voice.Empty();
+	questions_Voice.Add(EGameSoundType::What_is_your_name);
+	questions_Voice.Add(EGameSoundType::Where_are_you_from);
+	questions_Voice.Add(EGameSoundType::What_is_the_purpose_of_your_visit);
+	questions_Voice.Add(EGameSoundType::How_long_will_you_stay);
+	questions_Voice.Add(EGameSoundType::Where_will_you_be_staying);
 
 	
-	TotalQuestions = Questions.Num();
+	totalQuestions = questions.Num();
 
-	PRINTLOG(TEXT("[SpeakStage] Test scenario data created: %d questions"), TotalQuestions);
+	PRINTLOG(TEXT("[SpeakStage] Test scenario data created: %d questions"), totalQuestions);
 }

@@ -6,6 +6,9 @@
 #include "GameFramework/Actor.h"
 #include "AWheatly.generated.h"
 
+class UBoxComponent;
+class UStaticMeshComponent;
+
 /// @brief Wheatly 애니메이션 타입
 UENUM(BlueprintType)
 enum class EWheatlyAnim : uint8
@@ -36,6 +39,7 @@ class ONEPIECE_API AWheatly : public AActor
 
 public:
 	AWheatly();
+	virtual void Tick(float DeltaSeconds) override;
 
 protected:
 	virtual void BeginPlay() override;
@@ -98,9 +102,10 @@ protected:
 	UFUNCTION()
 	void OnInteractionTriggered(AActor* InteractingActor);
 
-	/// @brief bIsBusy 상태 변경 시 호출되는 RepNotify 함수
+	/// @brief SpeakStage의 발화자 변경 이벤트 핸들러
+	/// @param NewSpeaker [in] 새로운 발화자 (없으면 nullptr)
 	UFUNCTION()
-	void OnRep_bIsBusy();
+	void OnSpeakStageSpeakerChanged(APlayerState* NewSpeaker);
 
 	//----------------------------------------------------------//
 	// Visual System
@@ -119,6 +124,14 @@ protected:
 	/// @brief 스켈레탈 메시 컴포넌트
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
 	TObjectPtr<USkeletalMeshComponent> MeshComponent;
+
+	/// @brief 플레이어 감지 영역
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
+	TObjectPtr<UBoxComponent> PlayerDetectionZone;
+
+	/// @brief 상호작용 중인 플레이어 표시기
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
+	TObjectPtr<UStaticMeshComponent> InteractingPlayerIndicator;
 
 	/// @brief 상호작용 컴포넌트
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
@@ -161,18 +174,6 @@ protected:
 	/// @brief 연결된 SpeakStage 액터
 	UPROPERTY()
 	TObjectPtr<class ASpeakStageActor> SpeakStage;
-
-	/// @brief 현재 상호작용 중인 플레이어
-	UPROPERTY()
-	TObjectPtr<class APlayerActor> targetPlayer;
-
-	/// @brief 심사관 상태 (복제됨)
-	UPROPERTY(Transient, ReplicatedUsing = OnRep_bIsBusy)
-	bool bIsBusy;
-
-	/// @brief 현재 심사 중인 플레이어 이름 (복제됨)
-	UPROPERTY(Transient, Replicated)
-	FString busyPlayerName;
-
+	
 	APlayerActor* RequestPlayer;
 };

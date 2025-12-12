@@ -12,17 +12,19 @@
 #include "UInteractWidget.h"
 #include "UKLingoNetworkSystem.h"
 #include "UBroadcastManager.h"
+#include "GameFramework/PlayerState.h"
 
-#include "InteractableComponent.h"
+#include "Components/BoxComponent.h"
+#include "Components/StaticMeshComponent.h"
 #include "Components/WidgetComponent.h"
+#include "InteractableComponent.h"
+#include "Kismet/KismetMathLibrary.h"
 #include "Net/UnrealNetwork.h"
 
 #define WHEATLY_MESH_PATH		TEXT("/Game/CustomContents/Platfrom/Assets/Wheatly_Talk/Wheatly_Talk")
 #define WHEATLY_MATERIAL_0		TEXT("/Script/Engine.Material'/Game/CustomContents/Platfrom/Assets/Wheatly_Talk/M_Wheatly_01.M_Wheatly_01'")
 #define WHEATLY_MATERIAL_1		TEXT("/Script/Engine.Material'/Game/CustomContents/Platfrom/Assets/Wheatly_Talk/M_Wheatly_02.M_Wheatly_02'")
 #define WHEATLY_MATERIAL_2		TEXT("/Script/Engine.Material'/Game/CustomContents/Platfrom/Assets/Wheatly_Talk/M_Wheatly_03.M_Wheatly_03'")
-
-class UInteractWidget;
 
 AWheatly::AWheatly()
 {
@@ -38,10 +40,28 @@ AWheatly::AWheatly()
 	MeshComponent = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("MeshComp"));
 	MeshComponent->SetupAttachment(RootComponent);
 
+	PlayerDetectionZone = CreateDefaultSubobject<UBoxComponent>(TEXT("PlayerDetectionZone"));
+	PlayerDetectionZone->SetupAttachment(RootComponent);
+	PlayerDetectionZone->SetBoxExtent(FVector(1000.f, 1000.f, 100.f));
+	PlayerDetectionZone->SetCollisionProfileName(TEXT("Trigger"));
+
+	InteractingPlayerIndicator = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("InteractingPlayerIndicator"));
+	InteractingPlayerIndicator->SetupAttachment(RootComponent);
+	
 	//--------------------------------------------------------------
 	// 스켈레탈 메시 로드
 	//--------------------------------------------------------------
 	MeshComponent->SetSkeletalMesh( FComponentHelper::LoadAsset<USkeletalMesh>(WHEATLY_MESH_PATH) );
+	
+	static ConstructorHelpers::FObjectFinder<UStaticMesh> CylinderMesh(TEXT("/Engine/BasicShapes/Cylinder.Cylinder"));
+	if (CylinderMesh.Succeeded())
+	{
+		InteractingPlayerIndicator->SetStaticMesh(CylinderMesh.Object);
+		InteractingPlayerIndicator->SetRelativeScale3D(FVector(0.5f, 0.5f, 2.0f));
+	}
+	InteractingPlayerIndicator->SetVisibility(false);
+	InteractingPlayerIndicator->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+
 
 	//--------------------------------------------------------------
 	// 머티리얼 로드 (0번, 1번, 2번)
@@ -66,9 +86,6 @@ AWheatly::AWheatly()
 	WidgetComp->SetDrawSize(FVector2D(2048.0f, 1024.0f));
 	
 	// 초기값 설정
-	targetPlayer = nullptr;
-	bIsBusy = false;
-	busyPlayerName = TEXT("");
 	currentAnimDuration = 0.0f;
 }
 
@@ -80,9 +97,6 @@ void AWheatly::BeginPlay()
 	{
 		dynamicMaterial = UMaterialInstanceDynamic::Create(baseMaterial, this);
 		MeshComponent->SetMaterial(2, dynamicMaterial);
-
-		// 초기 눈 색상 설정 (파란색 - Available 상태)
-		ChangeEyeColor(FLinearColor(0.0f, 0.5f, 1.0f, 1.0f));
 	}
 
 	if (InteractableComp)
@@ -95,6 +109,69 @@ void AWheatly::BeginPlay()
 
 	PlayAnimation(EWheatlyAnim::Reaction_01);
 }
+
+void AWheatly::Tick(float DeltaSeconds)
+{
+	Super::Tick(DeltaSeconds);
+
+	if (!HasAuthority() || !SpeakStage)
+	{
+		return;
+	}
+
+	APlayerState* CurrentSpeaker = SpeakStage->GetCurrentSpeaker();
+	
+	// 퀘스트 진행 중일 때
+	if (CurrentSpeaker)
+	{
+		InteractingPlayerIndicator->SetVisibility(true);
+		
+		if (APawn* SpeakerPawn = CurrentSpeaker->GetPawn())
+		{
+			// 스피커를 쳐다보도록 회전
+			FRotator LookAtRotation = UKismetMathLibrary::FindLookAtRotation(GetActorLocation(), SpeakerPawn->GetActorLocation());
+			FRotator TargetRotation(0, LookAtRotation.Yaw, 0); // Yaw만 사용
+			SetActorRotation(FMath::RInterpTo(GetActorRotation(), TargetRotation, DeltaSeconds, 5.0f));
+			
+			// 표시기 위치 업데이트
+			FVector IndicatorLocation = SpeakerPawn->GetActorLocation() - FVector(0,0,100.f); // 발 밑에 표시
+			InteractingPlayerIndicator->SetWorldLocation(IndicatorLocation);
+		}
+	}
+	// 퀘스트 진행 중이 아닐 때
+	else
+	{
+		InteractingPlayerIndicator->SetVisibility(false);
+		
+		TArray<AActor*> OverlappingActors;
+		PlayerDetectionZone->GetOverlappingActors(OverlappingActors, APlayerActor::StaticClass());
+
+		APawn* NearestPawn = nullptr;
+		double MinDistanceSquared = MAX_dbl;
+
+		for (AActor* OverlappingActor : OverlappingActors)
+		{
+			if (APawn* Pawn = Cast<APawn>(OverlappingActor))
+			{
+				double DistanceSquared = FVector::DistSquared(GetActorLocation(), Pawn->GetActorLocation());
+				if (DistanceSquared < MinDistanceSquared)
+				{
+					MinDistanceSquared = DistanceSquared;
+					NearestPawn = Pawn;
+				}
+			}
+		}
+		
+		if(NearestPawn)
+		{
+			// 가장 가까운 플레이어를 쳐다보도록 회전
+			FRotator LookAtRotation = UKismetMathLibrary::FindLookAtRotation(GetActorLocation(), NearestPawn->GetActorLocation());
+			FRotator TargetRotation(0, LookAtRotation.Yaw, 0); // Yaw만 사용
+			SetActorRotation(FMath::RInterpTo(GetActorRotation(), TargetRotation, DeltaSeconds, 2.0f));
+		}
+	}
+}
+
 
 //----------------------------------------------------------//
 // Animation System
@@ -145,8 +222,7 @@ void AWheatly::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetime
 {
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
 
-	DOREPLIFETIME(AWheatly, bIsBusy);
-	DOREPLIFETIME(AWheatly, busyPlayerName);
+	// 상태 변수들이 모두 ASpeakStageActor로 이전되어 더 이상 직접 복제할 멤버가 없음
 }
 
 //----------------------------------------------------------//
@@ -155,7 +231,21 @@ void AWheatly::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetime
 
 void AWheatly::SetSpeakStage(ASpeakStageActor* InSpeakStage)
 {
+	// 기존 SpeakStage가 있다면 이벤트 바인딩 해제
+	if (SpeakStage)
+	{
+		SpeakStage->OnSpeakerChanged.RemoveDynamic(this, &AWheatly::OnSpeakStageSpeakerChanged);
+	}
+	
 	SpeakStage = InSpeakStage;
+
+	// 새로운 SpeakStage에 이벤트 바인딩
+	if (SpeakStage)
+	{
+		SpeakStage->OnSpeakerChanged.AddDynamic(this, &AWheatly::OnSpeakStageSpeakerChanged);
+		// 초기 상태 동기화
+		OnSpeakStageSpeakerChanged(SpeakStage->GetCurrentSpeaker());
+	}
 
 	PRINTLOG(TEXT("[AWheatly] SpeakStage connected: %s"),
 		SpeakStage ? TEXT("Success") : TEXT("Failed"));
@@ -173,13 +263,8 @@ FString AWheatly::GetCurrentQuestion() const
 
 void AWheatly::BeginSpeakQuest(APlayerActor* Player)
 {
-	if (!HasAuthority())
-		return;
-
-	if (!Player)
+	if (!HasAuthority() || !Player)
 	{
-		bIsBusy = false;
-		busyPlayerName = TEXT("");
 		return;
 	}
 
@@ -189,23 +274,22 @@ void AWheatly::BeginSpeakQuest(APlayerActor* Player)
 
 void AWheatly::CompleteSpeakQuest(APlayerActor* Player)
 {
-	if (!HasAuthority())
+	if (!HasAuthority() || !Player)
+	{
 		return;
-
-	if (!Player)
-		return;
-
-	// Busy 상태 해제
-	bIsBusy = false;
-	busyPlayerName = TEXT("");
-
+	}
+	
 	// PlayerState에서 축적된 평가 결과 가져오기
 	ALingoPlayerState* PS = Player->GetPlayerState<ALingoPlayerState>();
 	if (!PS)
+	{
 		return;
+	}
 
 	if (UBroadcastManager* BroadcastMgr = UBroadcastManager::Get(GetWorld()))
+	{
 		BroadcastMgr->SendTutorMessage(FText::FromString("SPEAK COMPLETE"));
+	}
 }
 
 void AWheatly::RequestSpeakScenario(APlayerActor* Player)
@@ -213,7 +297,9 @@ void AWheatly::RequestSpeakScenario(APlayerActor* Player)
 	this->RequestPlayer = Player;
 	
 	if ( auto KLingoNetwork = UKLingoNetworkSystem::Get(GetWorld()) )
+	{
 		KLingoNetwork->RequestSpeakScenario(FResponseSpeakScenarioDelegate::CreateUObject(this, &AWheatly::OnResponseSpeakScenario));
+	}
 }
 
 
@@ -226,8 +312,11 @@ void AWheatly::OnResponseSpeakScenario(FResponseSpeakScenario& ResponseData, boo
 		ALingoPlayerState* PS = RequestPlayer->GetPlayerState<ALingoPlayerState>();
 		if (!PS)
 		{
-			bIsBusy = false;
-			busyPlayerName = TEXT("");
+			// 실패 시 SpeakStage를 종료해야 할 수 있음
+			if(SpeakStage && SpeakStage->GetCurrentSpeaker())
+			{
+				SpeakStage->EndStage();
+			}
 			return;
 		}
 
@@ -248,9 +337,11 @@ void AWheatly::OnResponseSpeakScenario(FResponseSpeakScenario& ResponseData, boo
 	}
 	else
 	{
-		// 실패 시 Busy 상태 해제
-		bIsBusy = false;
-		busyPlayerName = TEXT("");
+		// 실패 시 SpeakStage를 종료해야 할 수 있음
+		if(SpeakStage && SpeakStage->GetCurrentSpeaker())
+		{
+			SpeakStage->EndStage();
+		}
 	}
 }
 
@@ -260,43 +351,47 @@ void AWheatly::OnResponseSpeakScenario(FResponseSpeakScenario& ResponseData, boo
 
 void AWheatly::OnInteractionTriggered(AActor* InteractingActor)
 {
-	if (!HasAuthority())
+	if (!HasAuthority() || !SpeakStage)
+	{
 		return;
+	}
 
 	APlayerActor* InteractingPlayer = Cast<APlayerActor>(InteractingActor);
 	if (!InteractingPlayer)
+	{
 		return;
+	}
 
-	// bIsBusy가 true이면 토스트 메시지 표시
-	if (bIsBusy)
+	// SpeakStage의 상태를 직접 확인
+	if (APlayerState* CurrentSpeaker = SpeakStage->GetCurrentSpeaker())
 	{
 		if (auto PC = Cast<APlayerControl>(InteractingPlayer->GetController()))
-			PC->Client_ToastMessage( FString::Printf(TEXT("Current Turn is [%s]"), *busyPlayerName) );
-
+		{
+			PC->Client_ToastMessage(FString::Printf(TEXT("Current Turn is [%s]"), *CurrentSpeaker->GetPlayerName()));
+		}
 		return;
 	}
 
 	// bIsBusy가 false이면 SpeakQuest 시작
-	if (auto PS = InteractingPlayer->GetPlayerState() )
+	if (auto PS = InteractingPlayer->GetPlayerState())
 	{
-		// Busy 상태로 전환
-		bIsBusy = true;
-		busyPlayerName = PS->GetPlayerName();
-
+		// SpeakStageActor에 퀘스트 시작 및 현재 플레이어 알림
+		SpeakStage->StartStageForPlayer(PS);
+		
 		// SpeakQuest 시작
 		BeginSpeakQuest(InteractingPlayer);
 	}
 }
 
-void AWheatly::OnRep_bIsBusy()
+void AWheatly::OnSpeakStageSpeakerChanged(APlayerState* NewSpeaker)
 {
-	// Busy 상태에 따라 눈 색상 변경
-	FLinearColor newColor = bIsBusy
+	const bool bIsStageBusy = NewSpeaker != nullptr;
+	FLinearColor newColor = bIsStageBusy
 		? FLinearColor(1.0f, 1.0f, 0.0f, 1.0f)  // Yellow: Busy
 		: FLinearColor(0.0f, 0.5f, 1.0f, 1.0f); // Blue: Available
-
 	ChangeEyeColor(newColor);
 }
+
 
 //----------------------------------------------------------//
 // Visual System
@@ -305,7 +400,9 @@ void AWheatly::OnRep_bIsBusy()
 void AWheatly::ChangeEyeColor(FLinearColor newColor)
 {
 	if (!dynamicMaterial)
+	{
 		return;
+	}
 
 	dynamicMaterial->SetVectorParameterValue(TEXT("EyeColor"), newColor);
 }

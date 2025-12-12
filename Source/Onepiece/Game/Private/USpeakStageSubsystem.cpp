@@ -75,6 +75,9 @@ void USpeakStageSubsystem::CreateSpeakStageSystem()
 
 void USpeakStageSubsystem::BeginSpeakQuest(int32 InStageIndex)
 {
+	// Deprecated: This logic is obsolete. The quest is now started via direct interaction with AWheatly,
+	// which calls ASpeakStageActor::StartStageForPlayer for a single user.
+	/*
 	if (!SpeakStageActor)
 		return;
 
@@ -97,6 +100,7 @@ void USpeakStageSubsystem::BeginSpeakQuest(int32 InStageIndex)
 
 	// PlayStart 호출 (명시적 초기화)
 	SpeakStageActor->PlayStart(Players);
+	*/
 }
 
 //----------------------------------------------------------

@@ -70,11 +70,11 @@ void UVoiceConversationSystem::StartRecording()
 
 			if (!CurrentSpeaker)
 			{
-				PRINTLOG(TEXT("[VoiceConversation] Recording blocked: Speak Stage has been completed"));
+				PRINTLOG(TEXT("[VoiceConversation] Recording blocked: Stage not started."));
 
 				if (auto DM = UDialogManager::Get(World))
 				{
-					DM->ShowToast(TEXT("모든 단계가 완료되었습니다"));
+					DM->ShowToast(TEXT("NPC와 대화하여 심사를 시작하세요."));
 				}
 				return;
 			}
@@ -96,7 +96,7 @@ void UVoiceConversationSystem::StartRecording()
 			if (LocalPlayerState && CurrentSpeaker == LocalPlayerState)
 			{
 				PRINTLOG(TEXT("[VoiceConversation] Requesting speak permission..."));
-				SpeakStageActor->Server_RequestSpeak(LocalPlayerState);
+				SpeakStageActor->ServerRPC_RequestSpeak(LocalPlayerState);
 			}
 		}
 	}
@@ -290,7 +290,7 @@ void UVoiceConversationSystem::OnResponseSpeakingsJudges(FResponseSpeakingJudes&
 					// Store evaluation result in PlayerState
 					LocalPlayerState->Server_AddSpeakJudes(Response);
 
-					SpeakStageActor->Server_NotifyAnswerComplete(LocalPlayerState);
+					SpeakStageActor->ServerRPC_NotifyAnswerComplete(LocalPlayerState);
 				}
 			}
 		}
