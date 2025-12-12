@@ -176,4 +176,6 @@ protected:
 	TObjectPtr<class ASpeakStageActor> SpeakStage;
 	
 	APlayerActor* RequestPlayer;
+
+	bool bShowDebugInfo = true;
 };
