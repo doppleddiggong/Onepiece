@@ -4,10 +4,6 @@
 #include "InteractableComponent.h"
 
 #include "APlayerActor.h"
-#include "ALingoPlayerState.h"
-#include "AWheatly.h"
-#include "ASpeakStageActor.h"
-#include "ULingoGameHelper.h"
 #include "GameLogging.h"
 #include "luggage.h"
 #include "UInteractWidget.h"
@@ -15,6 +11,7 @@
 #include "Components/BoxComponent.h"
 #include "Components/WidgetComponent.h"
 #include "UInteractionSystem.h"
+#include "GameFramework/Character.h"
 #include "Kismet/GameplayStatics.h"
 #include "Kismet/KismetMathLibrary.h"
 
@@ -88,41 +85,6 @@ void UInteractableComponent::TickComponent(float DeltaTime, ELevelTick TickType,
 
 	// 상호작용 위젯 빌보드화
 	BillboardInteractWidget();
-
-	// AWheatly인 경우 현재 발화자 확인하여 위젯 동적 제어
-	if (WidgetComp && GetOwner() && GetOwner()->IsA(AWheatly::StaticClass()))
-	{
-		if (UWorld* World = GetWorld())
-		{
-			// 로컬 플레이어 확인
-			if (APlayerController* LocalPC = World->GetFirstPlayerController())
-			{
-				if (APawn* LocalPawn = LocalPC->GetPawn())
-				{
-					if (LocalPawn->IsLocallyControlled())
-					{
-						// SpeakStage에서 현재 발화자 확인
-						if (auto SpeakStage = ULingoGameHelper::GetSpeakStageActor(World))
-						{
-							auto LocalPlayerState = LocalPawn->GetPlayerState<ALingoPlayerState>();
-							auto CurrentSpeaker = SpeakStage->GetCurrentSpeaker();
-							
-							// 현재 발화자이면 위젯 숨김
-							if (LocalPlayerState && CurrentSpeaker && LocalPlayerState == CurrentSpeaker)
-							{
-								if (WidgetComp->IsVisible())
-								{
-									WidgetComp->SetVisibility(false);
-								}
-								// 발화자는 위젯이 계속 숨겨져야 하므로 여기서 return
-								return;
-							}
-						}
-					}
-				}
-			}
-		}
-	}
 
 	// 디버그 표시
 	if (bShowDetectionDebug && DetectionRange)
@@ -496,31 +458,7 @@ void UInteractableComponent::OnDetectionBeginOverlap(
 bool UInteractableComponent::IsWidgetShowEnable(const ACharacter* Character) const
 {
 	// 로컬 플레이어일 때만 위젯 표시 (멀티플레이어 버그 수정)
-	if (!Character->IsLocallyControlled())
-		return false;
-	
-	if (GetOwner()->IsA(AWheatly::StaticClass()))
-	{
-		// SpeakStage에서 현재 발화자 확인
-		if (auto SpeakStage = ULingoGameHelper::GetSpeakStageActor(GetWorld()))
-		{
-			auto CurrentSpeaker = SpeakStage->GetCurrentSpeaker();
-			auto PS = Character->GetPlayerState<ALingoPlayerState>();
-				
-			if (PS && CurrentSpeaker && PS == CurrentSpeaker)
-			{
-				// 현재 발화자이면 위젯을 표시하지 않음
-				PRINTLOG(TEXT("[InteractableComponent] Local player is current speaker - hiding widget"));
-				return false;
-			}
-			else
-			{
-				return true;
-			}
-		}
-	}
-
-	return true;
+	return Character && Character->IsLocallyControlled();
 }
 
 void UInteractableComponent::OnDetectionEndOverlap(
@@ -627,5 +565,16 @@ void UInteractableComponent::UpdateInteractPrompt(const FString& NewPrompt)
 	// UInteractWidget의 Txt_Desc 업데이트
 	if (auto InteractWidget = Cast<UInteractWidget>(WidgetComp->GetWidget()))
 		InteractWidget->UpdateDesc(NewPrompt);
+}
+
+void UInteractableComponent::SetWidgetVisibility(bool bVisible)
+{
+	if (!WidgetComp)
+		return;
+
+	if (bVisible)
+		ShowInteractWidget();
+	else
+		HideInteractWidget();
 }
 #pragma endregion

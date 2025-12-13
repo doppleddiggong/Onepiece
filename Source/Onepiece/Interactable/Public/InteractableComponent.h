@@ -186,8 +186,12 @@ public:
 	void InitWidget(class UWidgetComponent* InWidgetComp);
 	void UpdateInteractPrompt(const FString& NewPrompt);
 
-
 	bool IsWidgetShowEnable(const class ACharacter* Character) const;
+
+	/// @brief 위젯 표시 제어 (외부에서 호출 가능)
+	/// @param bVisible [in] 표시 여부
+	UFUNCTION(BlueprintCallable, Category = "Interaction")
+	void SetWidgetVisibility(bool bVisible);
 	
 	// ========================================
 	// 상호작용 위젯

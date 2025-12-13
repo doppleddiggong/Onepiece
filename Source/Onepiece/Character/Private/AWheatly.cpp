@@ -387,16 +387,67 @@ void AWheatly::OnInteractionTriggered(AActor* InteractingActor)
 
 void AWheatly::OnSpeakStageSpeakerChanged(APlayerState* NewSpeaker)
 {
-	if (!HasAuthority())
-		return;
-	
-	ReplicatedEyeColor = (NewSpeaker != nullptr)
-		? FLinearColor(1.0f, 1.0f, 0.0f, 1.0f)  // Yellow: Busy
-		: FLinearColor(0.0f, 0.5f, 1.0f, 1.0f); // Blue: Available
-	
-	OnRep_EyeColor();
+	// 눈 색상 변경은 서버에서만
+	if (HasAuthority())
+	{
+		ReplicatedEyeColor = (NewSpeaker != nullptr)
+			? FLinearColor(1.0f, 1.0f, 0.0f, 1.0f)  // Yellow: Busy
+			: FLinearColor(0.0f, 0.5f, 1.0f, 1.0f); // Blue: Available
+		
+		OnRep_EyeColor();
+	}
 
-	// WidgetComp는 InteractableComponent::TickComponent에서 동적으로 처리됨
+	// 위젯 표시 제어는 모든 클라이언트에서 실행
+	if (!InteractableComp)
+		return;
+
+	// 로컬 플레이어 확인
+	if (UWorld* World = GetWorld())
+	{
+		if (APlayerController* LocalPC = World->GetFirstPlayerController())
+		{
+			if (APawn* LocalPawn = LocalPC->GetPawn())
+			{
+				if (LocalPawn->IsLocallyControlled())
+				{
+					auto LocalPlayerState = LocalPawn->GetPlayerState<ALingoPlayerState>();
+					
+					// 로컬 플레이어가 현재 발화자인지 확인
+					if (LocalPlayerState && NewSpeaker && LocalPlayerState == NewSpeaker)
+					{
+						// 발화자이면 위젯 숨김
+						InteractableComp->SetWidgetVisibility(false);
+						PRINTLOG(TEXT("[AWheatly] Local player is speaker - hiding widget"));
+					}
+					else
+					{
+						// 발화자가 아니면, DetectionRange 내에 있을 때만 위젯 표시
+						if (InteractableComp->DetectionRange)
+						{
+							TArray<AActor*> OverlappingActors;
+							InteractableComp->DetectionRange->GetOverlappingActors(OverlappingActors, ACharacter::StaticClass());
+							
+							bool bIsInRange = false;
+							for (AActor* Actor : OverlappingActors)
+							{
+								if (Actor == LocalPawn)
+								{
+									bIsInRange = true;
+									break;
+								}
+							}
+
+							if (bIsInRange)
+							{
+								InteractableComp->SetWidgetVisibility(true);
+								PRINTLOG(TEXT("[AWheatly] Local player not speaker and in range - showing widget"));
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 }
 
 void AWheatly::OnRep_EyeColor()
