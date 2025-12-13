@@ -87,8 +87,10 @@ FString UVoiceFunctionLibrary::SaveWavToFile(TArray<uint8>& InWavData, const FSt
 	FString FullPath = FolderPath / FileName;
 	if (FFileHelper::SaveArrayToFile(InWavData, *FullPath))
 	{
-		PRINTLOG( TEXT("Saved WAV file: %s"), *FullPath);
-		return FullPath;
+		// 절대 경로로 변환하여 반환
+		FString AbsolutePath = FPaths::ConvertRelativePathToFull(FullPath);
+		PRINTLOG( TEXT("Saved WAV file: %s"), *AbsolutePath);
+		return AbsolutePath;
 	}
 	else
 	{
