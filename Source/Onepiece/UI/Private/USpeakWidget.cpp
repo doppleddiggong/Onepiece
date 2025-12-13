@@ -34,21 +34,19 @@ void USpeakWidget::UpdateSpeakStage(ASpeakStageActor* SpeakStage, APlayerState* 
 		return;
 	}
 
-	if (CurrentQuestionText)
-	{
-		const int32 CurrentStep = SpeakStage->GetCurrentStepIndex();
-		const int32 TotalSteps = SpeakStage->GetTotalQuestions();
-		const FString Question = SpeakStage->GetCurrentQuestion();
+	const int32 CurrentStep = SpeakStage->GetCurrentStepIndex();
+	const int32 TotalSteps = SpeakStage->GetTotalQuestions();
+	const FString Question = SpeakStage->GetCurrentQuestion();
 
-		if (!Question.IsEmpty())
-		{
-			CurrentQuestionText->SetText(FText::FromString(FString::Printf(TEXT("[%d/%d]\n%s"), CurrentStep + 1, TotalSteps, *Question )));
-		}
-		else
-		{
-			CurrentQuestionText->SetText(FText::FromString(TEXT("No question available")));
-		}
+	if ( Question.IsEmpty())
+	{
+		SetWidgetVisibility(false);
+		return;
 	}
+
+	CurrentProgress->SetText(FText::FromString(FString::Printf(TEXT("%d/%d"), CurrentStep + 1, TotalSteps )));
+
+	CurrentQuestionText->SetText( FText::FromString(*Question));
 }
 
 void USpeakWidget::SetWidgetVisibility(bool bShow)

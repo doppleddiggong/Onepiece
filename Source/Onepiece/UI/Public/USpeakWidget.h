@@ -52,4 +52,7 @@ public:
 protected:
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
 	TObjectPtr<class UTextBlock> CurrentQuestionText;
+
+	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
+	TObjectPtr<class UTextBlock> CurrentProgress;
 };
