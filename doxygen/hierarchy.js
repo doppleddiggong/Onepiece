@@ -31,6 +31,7 @@ var hierarchy =
       [ "ATeleportTrigger", "classATeleportTrigger.html", null ],
       [ "ATrolley", "classATrolley.html", null ],
       [ "AWeightSwitch", "classAWeightSwitch.html", null ],
+      [ "AWheatly", "classAWheatly.html", null ],
       [ "Aluggage", "classAluggage.html", null ]
     ] ],
     [ "ACharacter", null, [
@@ -111,7 +112,7 @@ var hierarchy =
     [ "FScenarioTargetData", "structFScenarioTargetData.html", null ],
     [ "FSequenceCommand", "structFSequenceCommand.html", null ],
     [ "FServerConfig", "structFServerConfig.html", null ],
-    [ "FSpeakQuestionData", "structFSpeakQuestionData.html", null ],
+    [ "FSpeakStageQuestion", "structFSpeakStageQuestion.html", null ],
     [ "FTableRowBase", null, [
       [ "FCharacterAssetData", "structFCharacterAssetData.html", null ],
       [ "FCharacterInfoData", "structFCharacterInfoData.html", null ],
@@ -238,8 +239,5 @@ var hierarchy =
       [ "UWordButton", "classUWordButton.html", null ],
       [ "UWordItem", "classUWordItem.html", null ],
       [ "UWordWidget", "classUWordWidget.html", null ]
-    ] ],
-    [ "UWorldSubsystem", null, [
-      [ "USpeakStageSubsystem", "classUSpeakStageSubsystem.html", null ]
     ] ]
 ];

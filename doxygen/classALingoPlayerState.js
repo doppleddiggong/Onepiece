@@ -1,21 +1,31 @@
 var classALingoPlayerState =
 [
     [ "ALingoPlayerState", "classALingoPlayerState.html#aceae0e9756e2e79d06287e4350e7445a", null ],
+    [ "GetCurrentSpeakQuestion", "classALingoPlayerState.html#a242a5560c49914069e8d9cb35a721e7f", null ],
     [ "GetLifetimeReplicatedProps", "classALingoPlayerState.html#a4a5444df3780d67ccefa24a47097ab14", null ],
     [ "GetToken", "classALingoPlayerState.html#a75f98be692a0e94274a7b88beb789dec", null ],
+    [ "IsSpeakQuestCompleted", "classALingoPlayerState.html#a10b93c813a7f91593201ef8eea763dbf", null ],
     [ "OnRep_QuestRole", "classALingoPlayerState.html#ace87f648f03f2ecaf7466a0ee267b1c4", null ],
     [ "OnRep_SelectedWord1", "classALingoPlayerState.html#afea9c895e07c3016c2d16bb6b77a75f5", null ],
     [ "OnRep_SelectedWord2", "classALingoPlayerState.html#aac49d67b69dead062bda7c42297adf8a", null ],
+    [ "OnRep_SpeakScenarioData", "classALingoPlayerState.html#a3aabb3a4a0a675b318a18572df484f45", null ],
     [ "OnRep_WrongWord1", "classALingoPlayerState.html#addedc05ad9960b9e6c1cb3c05815e3f8", null ],
     [ "OnRep_WrongWord2", "classALingoPlayerState.html#ab7462f408b48e71503b66f1984f49900", null ],
+    [ "OnUpdateSpeakScenarioData", "classALingoPlayerState.html#a9d068a6c2eb77eb79eb12626f8b7e168", null ],
+    [ "Server_AddSpeakJudes", "classALingoPlayerState.html#a96ee3cdb458f3fe15cfa5a3bf902c319", null ],
+    [ "Server_NotifySpeakDataReady", "classALingoPlayerState.html#a391737f3a762e34b60ca87c83f1067e3", null ],
     [ "Server_SetSelectedWord1", "classALingoPlayerState.html#af4fe3b83d32550c860711906a171c273", null ],
     [ "Server_SetSelectedWord2", "classALingoPlayerState.html#abab5fd2d52500b32fb11e04f9ec20c90", null ],
+    [ "SetSpeakQuestCompleted", "classALingoPlayerState.html#a3f304d9de457ad8949de5981bc641b31", null ],
     [ "SetToken", "classALingoPlayerState.html#a0c837b780901d63abc02d742d82d34cf", null ],
     [ "AccessToken", "classALingoPlayerState.html#a77b1b5154d7bfc9ac74de0ff796f1e34", null ],
     [ "AttemptCount", "classALingoPlayerState.html#a84ee00df5be0502498039d5d0d1ec94a", null ],
+    [ "bSpeakQuestCompleted", "classALingoPlayerState.html#a5c4815f92bedf83ef33caf6d5267b3a5", null ],
     [ "bWrongWord1", "classALingoPlayerState.html#a908ae866e1e0bfa4ce76fbcc0ec88c26", null ],
     [ "bWrongWord2", "classALingoPlayerState.html#aa63a7acdcfd801d2700441701f9e5279", null ],
     [ "QuestRole", "classALingoPlayerState.html#abd97c5fbf5a4be586808c892ec02586b", null ],
     [ "SelectedWord1", "classALingoPlayerState.html#a283004fed1584dfdb4da7c5e741eaeb0", null ],
-    [ "SelectedWord2", "classALingoPlayerState.html#a2136c7bb3522dbe59a8f8609325c4b93", null ]
+    [ "SelectedWord2", "classALingoPlayerState.html#a2136c7bb3522dbe59a8f8609325c4b93", null ],
+    [ "SpeakJudesResults", "classALingoPlayerState.html#a5d77db1ec6acd9f6cfbe36a125fbe14c", null ],
+    [ "SpeakScenarioData", "classALingoPlayerState.html#a91fd139fa5b3aeb603e93e7b2a843d03", null ]
 ];

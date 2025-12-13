@@ -7,6 +7,6 @@ var searchData=
   ['vfxasset_4',['vfxasset',['../structFVFXData.html#af261eaf6fac7df787bb2f290c456123f',1,'FVFXData::VFXAsset'],['../classUGameVFXManager.html#aca745efb451e8000491a3d262f15724b',1,'UGameVFXManager::VFXAsset']]],
   ['vfxdata_5',['VFXData',['../classUVFXDataAsset.html#abff13278bec23a7e68aa4153d8b20153',1,'UVFXDataAsset']]],
   ['vfxdatamap_6',['VFXDataMap',['../classUGameVFXManager.html#aaa8a39ad90780ff3bffc4af06971f806',1,'UGameVFXManager']]],
-  ['voice_5fdata_7',['voice_data',['../structFResponseListenScenario.html#a9c8e3fba71820be4e99598a41a4f0369',1,'FResponseListenScenario']]],
+  ['voice_5fdata_7',['voice_data',['../structFResponseListenScenario.html#a9c8e3fba71820be4e99598a41a4f0369',1,'FResponseListenScenario::voice_data'],['../structFSpeakStageQuestion.html#aa47e1c27d2f0a6916dab29f72d1cd453',1,'FSpeakStageQuestion::voice_data']]],
   ['voiceconversationsystem_8',['voiceconversationsystem',['../classAPlayerActor.html#a0c1400db5f943254071089e512a2bb25',1,'APlayerActor::VoiceConversationSystem'],['../classAContactTrigger.html#a5f50fda23fc46735106bfb993c64ea35',1,'AContactTrigger::VoiceConversationSystem'],['../classANetworkTesterActor.html#a112a573b43579514a0ab6f87d492a630',1,'ANetworkTesterActor::VoiceConversationSystem']]]
 ];

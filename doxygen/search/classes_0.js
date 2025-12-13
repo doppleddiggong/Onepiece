@@ -41,5 +41,6 @@ var searchData=
   ['ateleportout_38',['ATeleportOut',['../classATeleportOut.html',1,'']]],
   ['ateleporttrigger_39',['ATeleportTrigger',['../classATeleportTrigger.html',1,'']]],
   ['atrolley_40',['ATrolley',['../classATrolley.html',1,'']]],
-  ['aweightswitch_41',['AWeightSwitch',['../classAWeightSwitch.html',1,'']]]
+  ['aweightswitch_41',['AWeightSwitch',['../classAWeightSwitch.html',1,'']]],
+  ['awheatly_42',['AWheatly',['../classAWheatly.html',1,'']]]
 ];

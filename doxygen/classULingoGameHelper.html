@@ -153,6 +153,9 @@ $(document).ready(function(){initNavTree('classULingoGameHelper.html',''); initR
 <tr class="separator:aedc78e0ec65a7aad312693bd1719bff8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a156d567d1976157714844997935655ce" id="r_a156d567d1976157714844997935655ce"><td class="memItemLeft" align="right" valign="top">static class <a class="el" href="classAPlayerControl.html">APlayerControl</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classULingoGameHelper.html#a156d567d1976157714844997935655ce">GetPlayerControl</a> (const UObject *WorldContextObject)</td></tr>
 <tr class="separator:a156d567d1976157714844997935655ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e81633de163ff51bfa37da213f6c696" id="r_a6e81633de163ff51bfa37da213f6c696"><td class="memItemLeft" align="right" valign="top">static FString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classULingoGameHelper.html#a6e81633de163ff51bfa37da213f6c696">GetPlayerNameFromState</a> (const class <a class="el" href="classALingoPlayerState.html">ALingoPlayerState</a> *PlayerState)</td></tr>
+<tr class="memdesc:a6e81633de163ff51bfa37da213f6c696"><td class="mdescLeft">&#160;</td><td class="mdescRight">PlayerState에서 PlayerControl을 통해 사용자 이름 가져오기  <br /></td></tr>
+<tr class="separator:a6e81633de163ff51bfa37da213f6c696"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7841ecb4e3125ad48efba9920250bf1a" id="r_a7841ecb4e3125ad48efba9920250bf1a"><td class="memItemLeft" align="right" valign="top">static class <a class="el" href="classASpeakStageActor.html">ASpeakStageActor</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classULingoGameHelper.html#a7841ecb4e3125ad48efba9920250bf1a">GetSpeakStageActor</a> (const UObject *WorldContextObject)</td></tr>
 <tr class="separator:a7841ecb4e3125ad48efba9920250bf1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aedcd84af73f7741c04bdd74e617366e8" id="r_aedcd84af73f7741c04bdd74e617366e8"><td class="memItemLeft" align="right" valign="top">static FString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classULingoGameHelper.html#aedcd84af73f7741c04bdd74e617366e8">GetStageEndMessage</a> (const <a class="el" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921">EQuestType</a> QuestType)</td></tr>
@@ -167,6 +170,8 @@ $(document).ready(function(){initNavTree('classULingoGameHelper.html',''); initR
 <tr class="separator:a22a311ff0293415aca5bf90fee7191c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a128a70c4f0e61cb82b17a1927a2c6709" id="r_a128a70c4f0e61cb82b17a1927a2c6709"><td class="memItemLeft" align="right" valign="top">static int32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classULingoGameHelper.html#a128a70c4f0e61cb82b17a1927a2c6709">GetUserId</a> (const UObject *WorldContextObject)</td></tr>
 <tr class="separator:a128a70c4f0e61cb82b17a1927a2c6709"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0d0929f11e3a6e8f720beac552a2f97" id="r_ac0d0929f11e3a6e8f720beac552a2f97"><td class="memItemLeft" align="right" valign="top">static class <a class="el" href="classAWheatly.html">AWheatly</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classULingoGameHelper.html#ac0d0929f11e3a6e8f720beac552a2f97">GetWheatly</a> (const UObject *WorldContextObject)</td></tr>
+<tr class="separator:ac0d0929f11e3a6e8f720beac552a2f97"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a569e70240af4850b5b1a0dafd26d4033" id="r_a569e70240af4850b5b1a0dafd26d4033"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classULingoGameHelper.html#a569e70240af4850b5b1a0dafd26d4033">HideMouseCursor</a> (const UObject *WorldContextObject)</td></tr>
 <tr class="memdesc:a569e70240af4850b5b1a0dafd26d4033"><td class="mdescLeft">&#160;</td><td class="mdescRight">마우스 커서를 숨기고 게임 전용 입력 모드로 설정합니다.  <br /></td></tr>
 <tr class="separator:a569e70240af4850b5b1a0dafd26d4033"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -204,19 +209,19 @@ $(document).ready(function(){initNavTree('classULingoGameHelper.html',''); initR
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ULingoGameHelper_8cpp_source.html">ULingoGameHelper.cpp</a> 파일의 <a class="el" href="ULingoGameHelper_8cpp_source.html#l00158">158</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  159</span>{</div>
-<div class="line"><span class="lineno">  160</span>    <span class="keywordflow">if</span> (<a class="code hl_enumvalue" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2a5dd135d1bcfa7f63c3b7f25425c2a4a1">Score</a> &gt;= 90.0f)</div>
-<div class="line"><span class="lineno">  161</span>        <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2a86840742b33df1b8c6dcea434b87d3a9">EResourceTextureType::Rarity_S</a>;</div>
-<div class="line"><span class="lineno">  162</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code hl_enumvalue" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2a5dd135d1bcfa7f63c3b7f25425c2a4a1">Score</a> &gt;= 80.0f)</div>
-<div class="line"><span class="lineno">  163</span>        <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2ac330782e3ea64933282d9755d2bce76f">EResourceTextureType::Rarity_A</a>;</div>
-<div class="line"><span class="lineno">  164</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code hl_enumvalue" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2a5dd135d1bcfa7f63c3b7f25425c2a4a1">Score</a> &gt;= 70.0f)</div>
-<div class="line"><span class="lineno">  165</span>        <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2a4aa57d3ce0cc5370d0a5a5a8cd8e0e80">EResourceTextureType::Rarity_B</a>;</div>
-<div class="line"><span class="lineno">  166</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code hl_enumvalue" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2a5dd135d1bcfa7f63c3b7f25425c2a4a1">Score</a> &gt;= 60.0f)</div>
-<div class="line"><span class="lineno">  167</span>        <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2a94fa1809991098362e8c6c2f88528572">EResourceTextureType::Rarity_C</a>;</div>
-<div class="line"><span class="lineno">  168</span>    <span class="keywordflow">else</span>                                                                                                                                                                                                                          </div>
-<div class="line"><span class="lineno">  169</span>        <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2ad8651b18450eb2ed8f91e6b197107e39">EResourceTextureType::Rarity_D</a>;</div>
-<div class="line"><span class="lineno">  170</span>}</div>
+<p class="definition"><a class="el" href="ULingoGameHelper_8cpp_source.html">ULingoGameHelper.cpp</a> 파일의 <a class="el" href="ULingoGameHelper_8cpp_source.html#l00143">143</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  144</span>{</div>
+<div class="line"><span class="lineno">  145</span>    <span class="keywordflow">if</span> (<a class="code hl_enumvalue" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2a5dd135d1bcfa7f63c3b7f25425c2a4a1">Score</a> &gt;= 90.0f)</div>
+<div class="line"><span class="lineno">  146</span>        <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2a86840742b33df1b8c6dcea434b87d3a9">EResourceTextureType::Rarity_S</a>;</div>
+<div class="line"><span class="lineno">  147</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code hl_enumvalue" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2a5dd135d1bcfa7f63c3b7f25425c2a4a1">Score</a> &gt;= 80.0f)</div>
+<div class="line"><span class="lineno">  148</span>        <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2ac330782e3ea64933282d9755d2bce76f">EResourceTextureType::Rarity_A</a>;</div>
+<div class="line"><span class="lineno">  149</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code hl_enumvalue" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2a5dd135d1bcfa7f63c3b7f25425c2a4a1">Score</a> &gt;= 70.0f)</div>
+<div class="line"><span class="lineno">  150</span>        <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2a4aa57d3ce0cc5370d0a5a5a8cd8e0e80">EResourceTextureType::Rarity_B</a>;</div>
+<div class="line"><span class="lineno">  151</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code hl_enumvalue" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2a5dd135d1bcfa7f63c3b7f25425c2a4a1">Score</a> &gt;= 60.0f)</div>
+<div class="line"><span class="lineno">  152</span>        <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2a94fa1809991098362e8c6c2f88528572">EResourceTextureType::Rarity_C</a>;</div>
+<div class="line"><span class="lineno">  153</span>    <span class="keywordflow">else</span>                                                                                                                                                                                                                          </div>
+<div class="line"><span class="lineno">  154</span>        <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2ad8651b18450eb2ed8f91e6b197107e39">EResourceTextureType::Rarity_D</a>;</div>
+<div class="line"><span class="lineno">  155</span>}</div>
 <div class="ttc" id="aFResourceTextureData_8h_html_a98b8b3000fb3fc86e37c624651589cb2a4aa57d3ce0cc5370d0a5a5a8cd8e0e80"><div class="ttname"><a href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2a4aa57d3ce0cc5370d0a5a5a8cd8e0e80">EResourceTextureType::Rarity_B</a></div><div class="ttdeci">@ Rarity_B</div></div>
 <div class="ttc" id="aFResourceTextureData_8h_html_a98b8b3000fb3fc86e37c624651589cb2a5dd135d1bcfa7f63c3b7f25425c2a4a1"><div class="ttname"><a href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2a5dd135d1bcfa7f63c3b7f25425c2a4a1">EResourceTextureType::Score</a></div><div class="ttdeci">@ Score</div></div>
 <div class="ttc" id="aFResourceTextureData_8h_html_a98b8b3000fb3fc86e37c624651589cb2a86840742b33df1b8c6dcea434b87d3a9"><div class="ttname"><a href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2a86840742b33df1b8c6dcea434b87d3a9">EResourceTextureType::Rarity_S</a></div><div class="ttdeci">@ Rarity_S</div></div>
@@ -261,16 +266,16 @@ $(document).ready(function(){initNavTree('classULingoGameHelper.html',''); initR
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ULingoGameHelper_8cpp_source.html">ULingoGameHelper.cpp</a> 파일의 <a class="el" href="ULingoGameHelper_8cpp_source.html#l00172">172</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  173</span>{</div>
-<div class="line"><span class="lineno">  174</span>    <span class="keywordflow">if</span> (<a class="code hl_enumvalue" href="FResultStatData_8h.html#aaac025acffbbed1878d579b0b3930065a4b3b9db8c9784468094acde0f8bf7071">Grade</a> == <span class="stringliteral">&quot;D&quot;</span>) <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2ad8651b18450eb2ed8f91e6b197107e39">EResourceTextureType::Rarity_D</a>;</div>
-<div class="line"><span class="lineno">  175</span>    <span class="keywordflow">if</span> (<a class="code hl_enumvalue" href="FResultStatData_8h.html#aaac025acffbbed1878d579b0b3930065a4b3b9db8c9784468094acde0f8bf7071">Grade</a> == <span class="stringliteral">&quot;C&quot;</span>) <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2a94fa1809991098362e8c6c2f88528572">EResourceTextureType::Rarity_C</a>;</div>
-<div class="line"><span class="lineno">  176</span>    <span class="keywordflow">if</span> (<a class="code hl_enumvalue" href="FResultStatData_8h.html#aaac025acffbbed1878d579b0b3930065a4b3b9db8c9784468094acde0f8bf7071">Grade</a> == <span class="stringliteral">&quot;B&quot;</span>) <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2a4aa57d3ce0cc5370d0a5a5a8cd8e0e80">EResourceTextureType::Rarity_B</a>;</div>
-<div class="line"><span class="lineno">  177</span>    <span class="keywordflow">if</span> (<a class="code hl_enumvalue" href="FResultStatData_8h.html#aaac025acffbbed1878d579b0b3930065a4b3b9db8c9784468094acde0f8bf7071">Grade</a> == <span class="stringliteral">&quot;A&quot;</span>) <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2ac330782e3ea64933282d9755d2bce76f">EResourceTextureType::Rarity_A</a>;</div>
-<div class="line"><span class="lineno">  178</span>    <span class="keywordflow">if</span> (<a class="code hl_enumvalue" href="FResultStatData_8h.html#aaac025acffbbed1878d579b0b3930065a4b3b9db8c9784468094acde0f8bf7071">Grade</a> == <span class="stringliteral">&quot;S&quot;</span>) <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2a86840742b33df1b8c6dcea434b87d3a9">EResourceTextureType::Rarity_S</a>;</div>
-<div class="line"><span class="lineno">  179</span> </div>
-<div class="line"><span class="lineno">  180</span>    <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2ad8651b18450eb2ed8f91e6b197107e39">EResourceTextureType::Rarity_D</a>;</div>
-<div class="line"><span class="lineno">  181</span>}</div>
+<p class="definition"><a class="el" href="ULingoGameHelper_8cpp_source.html">ULingoGameHelper.cpp</a> 파일의 <a class="el" href="ULingoGameHelper_8cpp_source.html#l00157">157</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  158</span>{</div>
+<div class="line"><span class="lineno">  159</span>    <span class="keywordflow">if</span> (<a class="code hl_enumvalue" href="FResultStatData_8h.html#aaac025acffbbed1878d579b0b3930065a4b3b9db8c9784468094acde0f8bf7071">Grade</a> == <span class="stringliteral">&quot;D&quot;</span>) <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2ad8651b18450eb2ed8f91e6b197107e39">EResourceTextureType::Rarity_D</a>;</div>
+<div class="line"><span class="lineno">  160</span>    <span class="keywordflow">if</span> (<a class="code hl_enumvalue" href="FResultStatData_8h.html#aaac025acffbbed1878d579b0b3930065a4b3b9db8c9784468094acde0f8bf7071">Grade</a> == <span class="stringliteral">&quot;C&quot;</span>) <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2a94fa1809991098362e8c6c2f88528572">EResourceTextureType::Rarity_C</a>;</div>
+<div class="line"><span class="lineno">  161</span>    <span class="keywordflow">if</span> (<a class="code hl_enumvalue" href="FResultStatData_8h.html#aaac025acffbbed1878d579b0b3930065a4b3b9db8c9784468094acde0f8bf7071">Grade</a> == <span class="stringliteral">&quot;B&quot;</span>) <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2a4aa57d3ce0cc5370d0a5a5a8cd8e0e80">EResourceTextureType::Rarity_B</a>;</div>
+<div class="line"><span class="lineno">  162</span>    <span class="keywordflow">if</span> (<a class="code hl_enumvalue" href="FResultStatData_8h.html#aaac025acffbbed1878d579b0b3930065a4b3b9db8c9784468094acde0f8bf7071">Grade</a> == <span class="stringliteral">&quot;A&quot;</span>) <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2ac330782e3ea64933282d9755d2bce76f">EResourceTextureType::Rarity_A</a>;</div>
+<div class="line"><span class="lineno">  163</span>    <span class="keywordflow">if</span> (<a class="code hl_enumvalue" href="FResultStatData_8h.html#aaac025acffbbed1878d579b0b3930065a4b3b9db8c9784468094acde0f8bf7071">Grade</a> == <span class="stringliteral">&quot;S&quot;</span>) <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2a86840742b33df1b8c6dcea434b87d3a9">EResourceTextureType::Rarity_S</a>;</div>
+<div class="line"><span class="lineno">  164</span> </div>
+<div class="line"><span class="lineno">  165</span>    <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2ad8651b18450eb2ed8f91e6b197107e39">EResourceTextureType::Rarity_D</a>;</div>
+<div class="line"><span class="lineno">  166</span>}</div>
 <div class="ttc" id="aFResultStatData_8h_html_aaac025acffbbed1878d579b0b3930065a4b3b9db8c9784468094acde0f8bf7071"><div class="ttname"><a href="FResultStatData_8h.html#aaac025acffbbed1878d579b0b3930065a4b3b9db8c9784468094acde0f8bf7071">EResultItemWidgetType::Grade</a></div><div class="ttdeci">@ Grade</div></div>
 </div><!-- fragment -->
 <p class="reference">다음을 참조함 :  <a class="el" href="FResultStatData_8h.html#aaac025acffbbed1878d579b0b3930065a4b3b9db8c9784468094acde0f8bf7071">Grade</a>, <a class="el" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2ac330782e3ea64933282d9755d2bce76f">Rarity_A</a>, <a class="el" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2a4aa57d3ce0cc5370d0a5a5a8cd8e0e80">Rarity_B</a>, <a class="el" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2a94fa1809991098362e8c6c2f88528572">Rarity_C</a>, <a class="el" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2ad8651b18450eb2ed8f91e6b197107e39">Rarity_D</a>, <a class="el" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2a86840742b33df1b8c6dcea434b87d3a9">Rarity_S</a>.</p>
@@ -310,15 +315,15 @@ $(document).ready(function(){initNavTree('classULingoGameHelper.html',''); initR
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ULingoGameHelper_8cpp_source.html">ULingoGameHelper.cpp</a> 파일의 <a class="el" href="ULingoGameHelper_8cpp_source.html#l00270">270</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  271</span>{</div>
-<div class="line"><span class="lineno">  272</span>    <span class="comment">// 정답률 계산</span></div>
-<div class="line"><span class="lineno">  273</span>    <span class="keyword">const</span> <span class="keywordtype">float</span> Percentage = ((10.f - WrongCnt) / 10.f) * 100.f;</div>
-<div class="line"><span class="lineno">  274</span>    <span class="keyword">const</span> int32 RoundedPercentage = FMath::RoundToInt(Percentage);</div>
-<div class="line"><span class="lineno">  275</span>    </div>
-<div class="line"><span class="lineno">  276</span>    <span class="comment">// FString으로 변환</span></div>
-<div class="line"><span class="lineno">  277</span>    <span class="keywordflow">return</span> FString::Printf(TEXT(<span class="stringliteral">&quot;%d%%&quot;</span>), RoundedPercentage);</div>
-<div class="line"><span class="lineno">  278</span>}</div>
+<p class="definition"><a class="el" href="ULingoGameHelper_8cpp_source.html">ULingoGameHelper.cpp</a> 파일의 <a class="el" href="ULingoGameHelper_8cpp_source.html#l00299">299</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  300</span>{</div>
+<div class="line"><span class="lineno">  301</span>    <span class="comment">// 정답률 계산</span></div>
+<div class="line"><span class="lineno">  302</span>    <span class="keyword">const</span> <span class="keywordtype">float</span> Percentage = ((10.f - WrongCnt) / 10.f) * 100.f;</div>
+<div class="line"><span class="lineno">  303</span>    <span class="keyword">const</span> int32 RoundedPercentage = FMath::RoundToInt(Percentage);</div>
+<div class="line"><span class="lineno">  304</span>    </div>
+<div class="line"><span class="lineno">  305</span>    <span class="comment">// FString으로 변환</span></div>
+<div class="line"><span class="lineno">  306</span>    <span class="keywordflow">return</span> FString::Printf(TEXT(<span class="stringliteral">&quot;%d%%&quot;</span>), RoundedPercentage);</div>
+<div class="line"><span class="lineno">  307</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -346,17 +351,17 @@ $(document).ready(function(){initNavTree('classULingoGameHelper.html',''); initR
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ULingoGameHelper_8cpp_source.html">ULingoGameHelper.cpp</a> 파일의 <a class="el" href="ULingoGameHelper_8cpp_source.html#l00183">183</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  184</span>{</div>
-<div class="line"><span class="lineno">  185</span>    <span class="keyword">const</span> int32 TotalMilliseconds = FMath::FloorToInt(InRemainTime * 1000.f);</div>
-<div class="line"><span class="lineno">  186</span> </div>
-<div class="line"><span class="lineno">  187</span>    <span class="keyword">const</span> int32 Minutes       = TotalMilliseconds / 60000;</div>
-<div class="line"><span class="lineno">  188</span>    <span class="keyword">const</span> int32 Seconds       = (TotalMilliseconds / 1000) % 60;</div>
-<div class="line"><span class="lineno">  189</span>    <span class="keyword">const</span> int32 Milliseconds  = (TotalMilliseconds % 1000) / 10;</div>
-<div class="line"><span class="lineno">  190</span> </div>
-<div class="line"><span class="lineno">  191</span>    <span class="comment">// 00:00.00</span></div>
-<div class="line"><span class="lineno">  192</span>    <span class="keywordflow">return</span> FString::Printf(TEXT(<span class="stringliteral">&quot;%02d:%02d.%02d&quot;</span>), Minutes, Seconds, Milliseconds);</div>
-<div class="line"><span class="lineno">  193</span>}</div>
+<p class="definition"><a class="el" href="ULingoGameHelper_8cpp_source.html">ULingoGameHelper.cpp</a> 파일의 <a class="el" href="ULingoGameHelper_8cpp_source.html#l00168">168</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  169</span>{</div>
+<div class="line"><span class="lineno">  170</span>    <span class="keyword">const</span> int32 TotalMilliseconds = FMath::FloorToInt(InRemainTime * 1000.f);</div>
+<div class="line"><span class="lineno">  171</span> </div>
+<div class="line"><span class="lineno">  172</span>    <span class="keyword">const</span> int32 Minutes       = TotalMilliseconds / 60000;</div>
+<div class="line"><span class="lineno">  173</span>    <span class="keyword">const</span> int32 Seconds       = (TotalMilliseconds / 1000) % 60;</div>
+<div class="line"><span class="lineno">  174</span>    <span class="keyword">const</span> int32 Milliseconds  = (TotalMilliseconds % 1000) / 10;</div>
+<div class="line"><span class="lineno">  175</span> </div>
+<div class="line"><span class="lineno">  176</span>    <span class="comment">// 00:00.00</span></div>
+<div class="line"><span class="lineno">  177</span>    <span class="keywordflow">return</span> FString::Printf(TEXT(<span class="stringliteral">&quot;%02d:%02d.%02d&quot;</span>), Minutes, Seconds, Milliseconds);</div>
+<div class="line"><span class="lineno">  178</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -384,10 +389,10 @@ $(document).ready(function(){initNavTree('classULingoGameHelper.html',''); initR
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ULingoGameHelper_8cpp_source.html">ULingoGameHelper.cpp</a> 파일의 <a class="el" href="ULingoGameHelper_8cpp_source.html#l00041">41</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   42</span>{</div>
-<div class="line"><span class="lineno">   43</span>    <span class="keywordflow">return</span> WorldContextObject-&gt;GetWorld()-&gt;GetAuthGameMode&lt;<a class="code hl_class" href="classALingoGameMode.html">ALingoGameMode</a>&gt;();   </div>
-<div class="line"><span class="lineno">   44</span>}</div>
+<p class="definition"><a class="el" href="ULingoGameHelper_8cpp_source.html">ULingoGameHelper.cpp</a> 파일의 <a class="el" href="ULingoGameHelper_8cpp_source.html#l00042">42</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   43</span>{</div>
+<div class="line"><span class="lineno">   44</span>    <span class="keywordflow">return</span> WorldContextObject-&gt;GetWorld()-&gt;GetAuthGameMode&lt;<a class="code hl_class" href="classALingoGameMode.html">ALingoGameMode</a>&gt;();   </div>
+<div class="line"><span class="lineno">   45</span>}</div>
 <div class="ttc" id="aclassALingoGameMode_html"><div class="ttname"><a href="classALingoGameMode.html">ALingoGameMode</a></div><div class="ttdef"><b>Definition</b> <a href="ALingoGameMode_8h_source.html#l00010">ALingoGameMode.h:11</a></div></div>
 </div><!-- fragment -->
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AContactTrigger_8cpp_source.html#l00182">AContactTrigger::OnListenResponseScenario()</a>, <a class="el" href="AContactTrigger_8cpp_source.html#l00161">AContactTrigger::OnReadResponseScenario()</a>.</p>
@@ -425,12 +430,12 @@ $(document).ready(function(){initNavTree('classULingoGameHelper.html',''); initR
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ULingoGameHelper_8cpp_source.html">ULingoGameHelper.cpp</a> 파일의 <a class="el" href="ULingoGameHelper_8cpp_source.html#l00046">46</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   47</span>{</div>
-<div class="line"><span class="lineno">   48</span>    <span class="keywordflow">return</span> Cast&lt;ALingoGameState&gt;(UGameplayStatics::GetGameState(WorldContextObject));</div>
-<div class="line"><span class="lineno">   49</span>}</div>
+<p class="definition"><a class="el" href="ULingoGameHelper_8cpp_source.html">ULingoGameHelper.cpp</a> 파일의 <a class="el" href="ULingoGameHelper_8cpp_source.html#l00047">47</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   48</span>{</div>
+<div class="line"><span class="lineno">   49</span>    <span class="keywordflow">return</span> Cast&lt;ALingoGameState&gt;(UGameplayStatics::GetGameState(WorldContextObject));</div>
+<div class="line"><span class="lineno">   50</span>}</div>
 </div><!-- fragment -->
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerActor_8cpp_source.html#l00129">APlayerActor::BeginPlay()</a>, <a class="el" href="FoodCourtManager_8cpp_source.html#l00021">AFoodCourtManager::BeginPlay()</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00197">APlayerActor::CreateMainWidget()</a>, <a class="el" href="FoodCourtManager_8cpp_source.html#l00161">AFoodCourtManager::HandleQuestScenarioDataUpdated()</a>, <a class="el" href="UQuestInfoWidget_8cpp_source.html#l00013">UQuestInfoWidget::InitQuestInfo()</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00628">APlayerActor::OnRoomIdUpdated()</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00645">APlayerActor::OnRoomLevelUpdated()</a>, <a class="el" href="APopupTesterActor_8cpp_source.html#l00060">APopupTesterActor::ReadQuest()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00698">UKLingoNetworkSystem::RequestInterviewAnswer()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00961">UKLingoNetworkSystem::RequestListenScenario()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00843">UKLingoNetworkSystem::RequestReadScenario()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l01076">UKLingoNetworkSystem::RequestSpeakScenario()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerActor_8cpp_source.html#l00130">APlayerActor::BeginPlay()</a>, <a class="el" href="FoodCourtManager_8cpp_source.html#l00021">AFoodCourtManager::BeginPlay()</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00200">APlayerActor::CreateMainWidget()</a>, <a class="el" href="FoodCourtManager_8cpp_source.html#l00161">AFoodCourtManager::HandleQuestScenarioDataUpdated()</a>, <a class="el" href="UQuestInfoWidget_8cpp_source.html#l00013">UQuestInfoWidget::InitQuestInfo()</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00683">APlayerActor::OnRoomIdUpdated()</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00700">APlayerActor::OnRoomLevelUpdated()</a>, <a class="el" href="APopupTesterActor_8cpp_source.html#l00060">APopupTesterActor::ReadQuest()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00698">UKLingoNetworkSystem::RequestInterviewAnswer()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00961">UKLingoNetworkSystem::RequestListenScenario()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00843">UKLingoNetworkSystem::RequestReadScenario()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l01076">UKLingoNetworkSystem::RequestSpeakScenario()</a>.</p>
 <div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-5-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-5-summary" class="dynsummary" style="display:block;">
@@ -465,21 +470,21 @@ $(document).ready(function(){initNavTree('classULingoGameHelper.html',''); initR
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ULingoGameHelper_8cpp_source.html">ULingoGameHelper.cpp</a> 파일의 <a class="el" href="ULingoGameHelper_8cpp_source.html#l00051">51</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   52</span>{</div>
-<div class="line"><span class="lineno">   53</span>    <span class="keywordflow">if</span> (!WorldContextObject)</div>
-<div class="line"><span class="lineno">   54</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">   55</span> </div>
-<div class="line"><span class="lineno">   56</span>    UWorld* World = WorldContextObject-&gt;GetWorld();</div>
-<div class="line"><span class="lineno">   57</span>    <span class="keywordflow">if</span> (!World)</div>
-<div class="line"><span class="lineno">   58</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">   59</span> </div>
-<div class="line"><span class="lineno">   60</span>    APlayerController* PC = World-&gt;GetFirstPlayerController();</div>
-<div class="line"><span class="lineno">   61</span>    <span class="keywordflow">if</span> (!PC)</div>
-<div class="line"><span class="lineno">   62</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">   63</span> </div>
-<div class="line"><span class="lineno">   64</span>    <span class="keywordflow">return</span> Cast&lt;ALingoPlayerState&gt;(PC-&gt;PlayerState);</div>
-<div class="line"><span class="lineno">   65</span>}</div>
+<p class="definition"><a class="el" href="ULingoGameHelper_8cpp_source.html">ULingoGameHelper.cpp</a> 파일의 <a class="el" href="ULingoGameHelper_8cpp_source.html#l00052">52</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   53</span>{</div>
+<div class="line"><span class="lineno">   54</span>    <span class="keywordflow">if</span> (!WorldContextObject)</div>
+<div class="line"><span class="lineno">   55</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">   56</span> </div>
+<div class="line"><span class="lineno">   57</span>    UWorld* World = WorldContextObject-&gt;GetWorld();</div>
+<div class="line"><span class="lineno">   58</span>    <span class="keywordflow">if</span> (!World)</div>
+<div class="line"><span class="lineno">   59</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">   60</span> </div>
+<div class="line"><span class="lineno">   61</span>    APlayerController* PC = World-&gt;GetFirstPlayerController();</div>
+<div class="line"><span class="lineno">   62</span>    <span class="keywordflow">if</span> (!PC)</div>
+<div class="line"><span class="lineno">   63</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">   64</span> </div>
+<div class="line"><span class="lineno">   65</span>    <span class="keywordflow">return</span> Cast&lt;ALingoPlayerState&gt;(PC-&gt;PlayerState);</div>
+<div class="line"><span class="lineno">   66</span>}</div>
 </div><!-- fragment -->
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UQuestInfoWidget_8cpp_source.html#l00013">UQuestInfoWidget::InitQuestInfo()</a>, <a class="el" href="UPopup__ReadQuest_8cpp_source.html#l00036">UPopup_ReadQuest::InitRead()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00215">UKLingoNetworkSystem::RequestUserToken()</a>.</p>
 <div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -516,18 +521,18 @@ $(document).ready(function(){initNavTree('classULingoGameHelper.html',''); initR
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ULingoGameHelper_8cpp_source.html">ULingoGameHelper.cpp</a> 파일의 <a class="el" href="ULingoGameHelper_8cpp_source.html#l00067">67</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   68</span>{</div>
-<div class="line"><span class="lineno">   69</span>    <span class="keywordflow">if</span> (PC)</div>
-<div class="line"><span class="lineno">   70</span>    {</div>
-<div class="line"><span class="lineno">   71</span>        <span class="keywordflow">return</span> PC-&gt;GetPlayerState&lt;<a class="code hl_class" href="classALingoPlayerState.html">ALingoPlayerState</a>&gt;();</div>
-<div class="line"><span class="lineno">   72</span>    }</div>
-<div class="line"><span class="lineno">   73</span>    <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">   74</span>    {</div>
-<div class="line"><span class="lineno">   75</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">   76</span>    }</div>
-<div class="line"><span class="lineno">   77</span>}</div>
-<div class="ttc" id="aclassALingoPlayerState_html"><div class="ttname"><a href="classALingoPlayerState.html">ALingoPlayerState</a></div><div class="ttdef"><b>Definition</b> <a href="ALingoPlayerState_8h_source.html#l00011">ALingoPlayerState.h:12</a></div></div>
+<p class="definition"><a class="el" href="ULingoGameHelper_8cpp_source.html">ULingoGameHelper.cpp</a> 파일의 <a class="el" href="ULingoGameHelper_8cpp_source.html#l00068">68</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   69</span>{</div>
+<div class="line"><span class="lineno">   70</span>    <span class="keywordflow">if</span> (PC)</div>
+<div class="line"><span class="lineno">   71</span>    {</div>
+<div class="line"><span class="lineno">   72</span>        <span class="keywordflow">return</span> PC-&gt;GetPlayerState&lt;<a class="code hl_class" href="classALingoPlayerState.html">ALingoPlayerState</a>&gt;();</div>
+<div class="line"><span class="lineno">   73</span>    }</div>
+<div class="line"><span class="lineno">   74</span>    <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">   75</span>    {</div>
+<div class="line"><span class="lineno">   76</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">   77</span>    }</div>
+<div class="line"><span class="lineno">   78</span>}</div>
+<div class="ttc" id="aclassALingoPlayerState_html"><div class="ttname"><a href="classALingoPlayerState.html">ALingoPlayerState</a></div><div class="ttdef"><b>Definition</b> <a href="ALingoPlayerState_8h_source.html#l00012">ALingoPlayerState.h:13</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -555,24 +560,24 @@ $(document).ready(function(){initNavTree('classULingoGameHelper.html',''); initR
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ULingoGameHelper_8cpp_source.html">ULingoGameHelper.cpp</a> 파일의 <a class="el" href="ULingoGameHelper_8cpp_source.html#l00080">80</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   81</span>{</div>
-<div class="line"><span class="lineno">   82</span>    TArray&lt;ALingoPlayerState*&gt; PlayerStateList;</div>
-<div class="line"><span class="lineno">   83</span>    <span class="keywordflow">for</span> (FConstPlayerControllerIterator It = WorldContextObject-&gt;GetWorld()-&gt;GetPlayerControllerIterator(); It; ++It)</div>
-<div class="line"><span class="lineno">   84</span>    {</div>
-<div class="line"><span class="lineno">   85</span>        <span class="keywordflow">if</span> (APlayerController* PC = It-&gt;Get())</div>
-<div class="line"><span class="lineno">   86</span>        {</div>
-<div class="line"><span class="lineno">   87</span>            <span class="keywordflow">if</span> (<a class="code hl_class" href="classALingoPlayerState.html">ALingoPlayerState</a>* PS = PC-&gt;GetPlayerState&lt;<a class="code hl_class" href="classALingoPlayerState.html">ALingoPlayerState</a>&gt;())</div>
-<div class="line"><span class="lineno">   88</span>            {</div>
-<div class="line"><span class="lineno">   89</span>                PlayerStateList.Add(PS);</div>
-<div class="line"><span class="lineno">   90</span>            }</div>
-<div class="line"><span class="lineno">   91</span>        }</div>
-<div class="line"><span class="lineno">   92</span>    }</div>
-<div class="line"><span class="lineno">   93</span> </div>
-<div class="line"><span class="lineno">   94</span>    <span class="keywordflow">return</span> PlayerStateList;</div>
-<div class="line"><span class="lineno">   95</span>}</div>
+<p class="definition"><a class="el" href="ULingoGameHelper_8cpp_source.html">ULingoGameHelper.cpp</a> 파일의 <a class="el" href="ULingoGameHelper_8cpp_source.html#l00081">81</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   82</span>{</div>
+<div class="line"><span class="lineno">   83</span>    TArray&lt;ALingoPlayerState*&gt; PlayerStateList;</div>
+<div class="line"><span class="lineno">   84</span>    <span class="keywordflow">for</span> (FConstPlayerControllerIterator It = WorldContextObject-&gt;GetWorld()-&gt;GetPlayerControllerIterator(); It; ++It)</div>
+<div class="line"><span class="lineno">   85</span>    {</div>
+<div class="line"><span class="lineno">   86</span>        <span class="keywordflow">if</span> (APlayerController* PC = It-&gt;Get())</div>
+<div class="line"><span class="lineno">   87</span>        {</div>
+<div class="line"><span class="lineno">   88</span>            <span class="keywordflow">if</span> (<a class="code hl_class" href="classALingoPlayerState.html">ALingoPlayerState</a>* PS = PC-&gt;GetPlayerState&lt;<a class="code hl_class" href="classALingoPlayerState.html">ALingoPlayerState</a>&gt;())</div>
+<div class="line"><span class="lineno">   89</span>            {</div>
+<div class="line"><span class="lineno">   90</span>                PlayerStateList.Add(PS);</div>
+<div class="line"><span class="lineno">   91</span>            }</div>
+<div class="line"><span class="lineno">   92</span>        }</div>
+<div class="line"><span class="lineno">   93</span>    }</div>
+<div class="line"><span class="lineno">   94</span> </div>
+<div class="line"><span class="lineno">   95</span>    <span class="keywordflow">return</span> PlayerStateList;</div>
+<div class="line"><span class="lineno">   96</span>}</div>
 </div><!-- fragment -->
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALingoGameMode_8cpp_source.html#l00027">ALingoGameMode::UpdateQuestRole()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALingoGameMode_8cpp_source.html#l00026">ALingoGameMode::UpdateQuestRole()</a>.</p>
 <div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-7-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-7-summary" class="dynsummary" style="display:block;">
@@ -606,10 +611,10 @@ $(document).ready(function(){initNavTree('classULingoGameHelper.html',''); initR
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ULingoGameHelper_8cpp_source.html">ULingoGameHelper.cpp</a> 파일의 <a class="el" href="ULingoGameHelper_8cpp_source.html#l00153">153</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  154</span>{</div>
-<div class="line"><span class="lineno">  155</span>    <span class="keywordflow">return</span> 300;</div>
-<div class="line"><span class="lineno">  156</span>}</div>
+<p class="definition"><a class="el" href="ULingoGameHelper_8cpp_source.html">ULingoGameHelper.cpp</a> 파일의 <a class="el" href="ULingoGameHelper_8cpp_source.html#l00138">138</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  139</span>{</div>
+<div class="line"><span class="lineno">  140</span>    <span class="keywordflow">return</span> 300;</div>
+<div class="line"><span class="lineno">  141</span>}</div>
 </div><!-- fragment -->
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALingoGameState_8cpp_source.html#l00120">ALingoGameState::SetListenScenarioData()</a>, <a class="el" href="ALingoGameState_8cpp_source.html#l00101">ALingoGameState::SetReadScenarioData()</a>.</p>
 <div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -646,15 +651,15 @@ $(document).ready(function(){initNavTree('classULingoGameHelper.html',''); initR
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ULingoGameHelper_8cpp_source.html">ULingoGameHelper.cpp</a> 파일의 <a class="el" href="ULingoGameHelper_8cpp_source.html#l00029">29</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   30</span>{</div>
-<div class="line"><span class="lineno">   31</span>    <a class="code hl_class" href="classALingoGameState.html">ALingoGameState</a>* GS = Cast&lt;ALingoGameState&gt;(UGameplayStatics::GetGameState(WorldContextObject));</div>
-<div class="line"><span class="lineno">   32</span>    int32 NumPlayers = GS ? GS-&gt;PlayerArray.Num() : 0;</div>
-<div class="line"><span class="lineno">   33</span>    <span class="keywordflow">return</span> NumPlayers;</div>
-<div class="line"><span class="lineno">   34</span>}</div>
+<p class="definition"><a class="el" href="ULingoGameHelper_8cpp_source.html">ULingoGameHelper.cpp</a> 파일의 <a class="el" href="ULingoGameHelper_8cpp_source.html#l00030">30</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   31</span>{</div>
+<div class="line"><span class="lineno">   32</span>    <a class="code hl_class" href="classALingoGameState.html">ALingoGameState</a>* GS = Cast&lt;ALingoGameState&gt;(UGameplayStatics::GetGameState(WorldContextObject));</div>
+<div class="line"><span class="lineno">   33</span>    int32 NumPlayers = GS ? GS-&gt;PlayerArray.Num() : 0;</div>
+<div class="line"><span class="lineno">   34</span>    <span class="keywordflow">return</span> NumPlayers;</div>
+<div class="line"><span class="lineno">   35</span>}</div>
 <div class="ttc" id="aclassALingoGameState_html"><div class="ttname"><a href="classALingoGameState.html">ALingoGameState</a></div><div class="ttdef"><b>Definition</b> <a href="ALingoGameState_8h_source.html#l00028">ALingoGameState.h:29</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ULingoGameHelper_8cpp_source.html#l00036">IsMultiPlay()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ULingoGameHelper_8cpp_source.html#l00037">IsMultiPlay()</a>.</p>
 <div id="dynsection-9" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-9-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-9-summary" class="dynsummary" style="display:block;">
@@ -698,21 +703,21 @@ $(document).ready(function(){initNavTree('classULingoGameHelper.html',''); initR
 </dl>
 <dl class="section return"><dt>반환값</dt><dd>PlayerActor 인스턴스 (없으면 nullptr) </dd></dl>
 
-<p class="definition"><a class="el" href="ULingoGameHelper_8cpp_source.html">ULingoGameHelper.cpp</a> 파일의 <a class="el" href="ULingoGameHelper_8cpp_source.html#l00229">229</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  230</span>{</div>
-<div class="line"><span class="lineno">  231</span>    <span class="keywordflow">if</span> (!WorldContextObject)</div>
-<div class="line"><span class="lineno">  232</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">  233</span> </div>
-<div class="line"><span class="lineno">  234</span>    UWorld* World = WorldContextObject-&gt;GetWorld();</div>
-<div class="line"><span class="lineno">  235</span>    <span class="keywordflow">if</span> (!World)</div>
-<div class="line"><span class="lineno">  236</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">  237</span> </div>
-<div class="line"><span class="lineno">  238</span>    APlayerController* PC = World-&gt;GetFirstPlayerController();</div>
-<div class="line"><span class="lineno">  239</span>    <span class="keywordflow">if</span> (!PC)</div>
-<div class="line"><span class="lineno">  240</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">  241</span> </div>
-<div class="line"><span class="lineno">  242</span>    <span class="keywordflow">return</span> Cast&lt;APlayerActor&gt;(PC-&gt;GetPawn());</div>
-<div class="line"><span class="lineno">  243</span>}</div>
+<p class="definition"><a class="el" href="ULingoGameHelper_8cpp_source.html">ULingoGameHelper.cpp</a> 파일의 <a class="el" href="ULingoGameHelper_8cpp_source.html#l00214">214</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  215</span>{</div>
+<div class="line"><span class="lineno">  216</span>    <span class="keywordflow">if</span> (!WorldContextObject)</div>
+<div class="line"><span class="lineno">  217</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">  218</span> </div>
+<div class="line"><span class="lineno">  219</span>    UWorld* World = WorldContextObject-&gt;GetWorld();</div>
+<div class="line"><span class="lineno">  220</span>    <span class="keywordflow">if</span> (!World)</div>
+<div class="line"><span class="lineno">  221</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">  222</span> </div>
+<div class="line"><span class="lineno">  223</span>    APlayerController* PC = World-&gt;GetFirstPlayerController();</div>
+<div class="line"><span class="lineno">  224</span>    <span class="keywordflow">if</span> (!PC)</div>
+<div class="line"><span class="lineno">  225</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">  226</span> </div>
+<div class="line"><span class="lineno">  227</span>    <span class="keywordflow">return</span> Cast&lt;APlayerActor&gt;(PC-&gt;GetPawn());</div>
+<div class="line"><span class="lineno">  228</span>}</div>
 </div><!-- fragment -->
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="luggage_8cpp_source.html#l00441">Aluggage::OnResponseListenAudio()</a>, <a class="el" href="UPopup__ReadQuest_8cpp_source.html#l00184">UPopup_ReadQuest::OnResponseListenAudio()</a>, <a class="el" href="UPopup__Word_8cpp_source.html#l00072">UPopup_Word::OnResponseListenAudio()</a>.</p>
 <div id="dynsection-10" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -749,25 +754,90 @@ $(document).ready(function(){initNavTree('classULingoGameHelper.html',''); initR
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ULingoGameHelper_8cpp_source.html">ULingoGameHelper.cpp</a> 파일의 <a class="el" href="ULingoGameHelper_8cpp_source.html#l00246">246</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  247</span>{</div>
-<div class="line"><span class="lineno">  248</span>    <span class="keywordflow">if</span> (!WorldContextObject)</div>
-<div class="line"><span class="lineno">  249</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">  250</span> </div>
-<div class="line"><span class="lineno">  251</span>    UWorld* World = WorldContextObject-&gt;GetWorld();</div>
-<div class="line"><span class="lineno">  252</span>    <span class="keywordflow">if</span> (!World)</div>
-<div class="line"><span class="lineno">  253</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">  254</span> </div>
-<div class="line"><span class="lineno">  255</span>    <span class="keywordflow">return</span> Cast&lt;APlayerControl&gt;(World-&gt;GetFirstPlayerController());</div>
-<div class="line"><span class="lineno">  256</span>}</div>
+<p class="definition"><a class="el" href="ULingoGameHelper_8cpp_source.html">ULingoGameHelper.cpp</a> 파일의 <a class="el" href="ULingoGameHelper_8cpp_source.html#l00231">231</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  232</span>{</div>
+<div class="line"><span class="lineno">  233</span>    <span class="keywordflow">if</span> (!WorldContextObject)</div>
+<div class="line"><span class="lineno">  234</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">  235</span> </div>
+<div class="line"><span class="lineno">  236</span>    UWorld* World = WorldContextObject-&gt;GetWorld();</div>
+<div class="line"><span class="lineno">  237</span>    <span class="keywordflow">if</span> (!World)</div>
+<div class="line"><span class="lineno">  238</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">  239</span> </div>
+<div class="line"><span class="lineno">  240</span>    <span class="keywordflow">return</span> Cast&lt;APlayerControl&gt;(World-&gt;GetFirstPlayerController());</div>
+<div class="line"><span class="lineno">  241</span>}</div>
 </div><!-- fragment -->
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ULingoGameHelper_8cpp_source.html#l00022">GetUserId()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ULingoGameHelper_8cpp_source.html#l00023">GetUserId()</a>.</p>
 <div id="dynsection-11" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-11-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-11-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-11-content" class="dyncontent" style="display:none;">
 <div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classULingoGameHelper_a156d567d1976157714844997935655ce_icgraph.svg" width="100%" height="472"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+
+</div>
+</div>
+<a id="a6e81633de163ff51bfa37da213f6c696" name="a6e81633de163ff51bfa37da213f6c696"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6e81633de163ff51bfa37da213f6c696">&#9670;&#160;</a></span>GetPlayerNameFromState()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">FString ULingoGameHelper::GetPlayerNameFromState </td>
+          <td>(</td>
+          <td class="paramtype">const class <a class="el" href="classALingoPlayerState.html">ALingoPlayerState</a> *&#160;</td>
+          <td class="paramname"><em>PlayerState</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>PlayerState에서 PlayerControl을 통해 사용자 이름 가져오기 </p>
+<dl class="params"><dt>매개변수</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">PlayerState</td><td>[in] 플레이어 상태 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>반환값</dt><dd>사용자 이름 (UserInfo.username), 실패 시 PlayerState의 기본 이름 </dd></dl>
+
+<p class="definition"><a class="el" href="ULingoGameHelper_8cpp_source.html">ULingoGameHelper.cpp</a> 파일의 <a class="el" href="ULingoGameHelper_8cpp_source.html#l00267">267</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  268</span>{</div>
+<div class="line"><span class="lineno">  269</span>    <span class="keywordflow">if</span> (!PlayerState)</div>
+<div class="line"><span class="lineno">  270</span>        <span class="keywordflow">return</span> TEXT(<span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><span class="lineno">  271</span> </div>
+<div class="line"><span class="lineno">  272</span>    <span class="comment">// PlayerState의 Owner(PlayerController)를 통해 UserInfo 이름 가져오기</span></div>
+<div class="line"><span class="lineno">  273</span>    <span class="keywordflow">if</span> (APlayerController* PC = Cast&lt;APlayerController&gt;(PlayerState-&gt;GetOwner()))</div>
+<div class="line"><span class="lineno">  274</span>    {</div>
+<div class="line"><span class="lineno">  275</span>        <span class="keywordflow">if</span> (<a class="code hl_class" href="classAPlayerControl.html">APlayerControl</a>* PlayerControl = Cast&lt;APlayerControl&gt;(PC))</div>
+<div class="line"><span class="lineno">  276</span>        {</div>
+<div class="line"><span class="lineno">  277</span>            FString UserName = PlayerControl-&gt;GetUserName();</div>
+<div class="line"><span class="lineno">  278</span>            <span class="keywordflow">if</span> (!UserName.IsEmpty())</div>
+<div class="line"><span class="lineno">  279</span>                <span class="keywordflow">return</span> UserName;</div>
+<div class="line"><span class="lineno">  280</span>        }</div>
+<div class="line"><span class="lineno">  281</span>    }</div>
+<div class="line"><span class="lineno">  282</span> </div>
+<div class="line"><span class="lineno">  283</span>    <span class="comment">// Fallback: PlayerState의 기본 이름</span></div>
+<div class="line"><span class="lineno">  284</span>    <span class="keywordflow">return</span> PlayerState-&gt;GetPlayerName();</div>
+<div class="line"><span class="lineno">  285</span>}</div>
+<div class="ttc" id="aclassAPlayerControl_html"><div class="ttname"><a href="classAPlayerControl.html">APlayerControl</a></div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8h_source.html#l00017">APlayerControl.h:18</a></div></div>
+</div><!-- fragment -->
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ASpeakStageActor_8cpp_source.html#l00134">ASpeakStageActor::AdvanceStep()</a>, <a class="el" href="ASpeakStageActor_8cpp_source.html#l00165">ASpeakStageActor::EndStage()</a>, <a class="el" href="AWheatly_8cpp_source.html#l00352">AWheatly::OnInteractionTriggered()</a>, <a class="el" href="ASpeakStageActor_8cpp_source.html#l00051">ASpeakStageActor::StartStageForPlayer()</a>.</p>
+<div id="dynsection-12" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-12-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-12-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-12-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classULingoGameHelper_a6e81633de163ff51bfa37da213f6c696_icgraph.svg" width="100%" height="432"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -796,32 +866,25 @@ $(document).ready(function(){initNavTree('classULingoGameHelper.html',''); initR
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ULingoGameHelper_8cpp_source.html">ULingoGameHelper.cpp</a> 파일의 <a class="el" href="ULingoGameHelper_8cpp_source.html#l00097">97</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   98</span>{</div>
-<div class="line"><span class="lineno">   99</span>    <span class="keywordflow">if</span> (!WorldContextObject)</div>
-<div class="line"><span class="lineno">  100</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">  101</span> </div>
-<div class="line"><span class="lineno">  102</span>    UWorld* World = WorldContextObject-&gt;GetWorld();</div>
-<div class="line"><span class="lineno">  103</span>    <span class="keywordflow">if</span> (!World)</div>
-<div class="line"><span class="lineno">  104</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">  105</span> </div>
-<div class="line"><span class="lineno">  106</span>    <a class="code hl_class" href="classUSpeakStageSubsystem.html">USpeakStageSubsystem</a>* SpeakSubsystem = World-&gt;GetSubsystem&lt;<a class="code hl_class" href="classUSpeakStageSubsystem.html">USpeakStageSubsystem</a>&gt;();</div>
-<div class="line"><span class="lineno">  107</span>    <span class="keywordflow">if</span> (SpeakSubsystem &amp;&amp; SpeakSubsystem-&gt;<a class="code hl_function" href="classUSpeakStageSubsystem.html#a2169733e5e72631d8efaf91097ef9845">IsInitialized</a>())</div>
-<div class="line"><span class="lineno">  108</span>        <span class="keywordflow">return</span> SpeakSubsystem-&gt;<a class="code hl_function" href="classUSpeakStageSubsystem.html#ab6908ceda4c8b9b32f9752a341e39597">GetSpeakStage</a>();</div>
-<div class="line"><span class="lineno">  109</span> </div>
-<div class="line"><span class="lineno">  110</span>    <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">  111</span>}</div>
-<div class="ttc" id="aclassUSpeakStageSubsystem_html"><div class="ttname"><a href="classUSpeakStageSubsystem.html">USpeakStageSubsystem</a></div><div class="ttdoc">Speak Stage 시스템 관리 Subsystem</div><div class="ttdef"><b>Definition</b> <a href="USpeakStageSubsystem_8h_source.html#l00019">USpeakStageSubsystem.h:20</a></div></div>
-<div class="ttc" id="aclassUSpeakStageSubsystem_html_a2169733e5e72631d8efaf91097ef9845"><div class="ttname"><a href="classUSpeakStageSubsystem.html#a2169733e5e72631d8efaf91097ef9845">USpeakStageSubsystem::IsInitialized</a></div><div class="ttdeci">bool IsInitialized() const</div><div class="ttdoc">시스템 초기화 여부 확인</div><div class="ttdef"><b>Definition</b> <a href="USpeakStageSubsystem_8h_source.html#l00092">USpeakStageSubsystem.h:92</a></div></div>
-<div class="ttc" id="aclassUSpeakStageSubsystem_html_ab6908ceda4c8b9b32f9752a341e39597"><div class="ttname"><a href="classUSpeakStageSubsystem.html#ab6908ceda4c8b9b32f9752a341e39597">USpeakStageSubsystem::GetSpeakStage</a></div><div class="ttdeci">class ASpeakStageActor * GetSpeakStage() const</div><div class="ttdoc">SpeakStage 참조 가져오기</div><div class="ttdef"><b>Definition</b> <a href="USpeakStageSubsystem_8h_source.html#l00078">USpeakStageSubsystem.h:78</a></div></div>
+<p class="definition"><a class="el" href="ULingoGameHelper_8cpp_source.html">ULingoGameHelper.cpp</a> 파일의 <a class="el" href="ULingoGameHelper_8cpp_source.html#l00243">243</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  244</span>{</div>
+<div class="line"><span class="lineno">  245</span>    <span class="keywordflow">if</span> (!WorldContextObject)</div>
+<div class="line"><span class="lineno">  246</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">  247</span> </div>
+<div class="line"><span class="lineno">  248</span>    UWorld* World = WorldContextObject-&gt;GetWorld();</div>
+<div class="line"><span class="lineno">  249</span>    <span class="keywordflow">if</span> (!World)</div>
+<div class="line"><span class="lineno">  250</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">  251</span> </div>
+<div class="line"><span class="lineno">  252</span>    <span class="keywordflow">return</span> Cast&lt;ASpeakStageActor&gt;(UGameplayStatics::GetActorOfClass(World, ASpeakStageActor::StaticClass()));</div>
+<div class="line"><span class="lineno">  253</span>}</div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="USpeakStageSubsystem_8h_source.html#l00078">USpeakStageSubsystem::GetSpeakStage()</a>, <a class="el" href="USpeakStageSubsystem_8h_source.html#l00092">USpeakStageSubsystem::IsInitialized()</a>.</p>
-<div id="dynsection-12" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-12-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
-<div id="dynsection-12-summary" class="dynsummary" style="display:block;">
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UMainWidget_8cpp_source.html#l00158">UMainWidget::CanShowSpeakWidget()</a>.</p>
+<div id="dynsection-13" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-13-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-13-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-12-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classULingoGameHelper_a7841ecb4e3125ad48efba9920250bf1a_cgraph.svg" width="460" height="115"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div id="dynsection-13-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classULingoGameHelper_a7841ecb4e3125ad48efba9920250bf1a_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -850,18 +913,18 @@ $(document).ready(function(){initNavTree('classULingoGameHelper.html',''); initR
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ULingoGameHelper_8cpp_source.html">ULingoGameHelper.cpp</a> 파일의 <a class="el" href="ULingoGameHelper_8cpp_source.html#l00126">126</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  127</span>{</div>
-<div class="line"><span class="lineno">  128</span>    <span class="keywordflow">switch</span> (QuestType)</div>
-<div class="line"><span class="lineno">  129</span>    {</div>
-<div class="line"><span class="lineno">  130</span>        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a7a1a5f3e79fdc91edf2f5ead9d66abb4">EQuestType::Read</a>:  <span class="keywordflow">return</span> <a class="code hl_variable" href="namespaceGameMessage.html#a58d44dc32d05b06b0097418b7071eef3">GameMessage::ReadStageEnd</a>;</div>
-<div class="line"><span class="lineno">  131</span>        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921ace6802b46091c31e2ec2363883fe8369">EQuestType::Listen</a>:    <span class="keywordflow">return</span> <a class="code hl_variable" href="namespaceGameMessage.html#ad442f83af10ff3e4c202f2e7d0dbc885">GameMessage::ListenStageEnd</a>;</div>
-<div class="line"><span class="lineno">  132</span>        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a1129c0e4d43f2d121652a7302712cff6">EQuestType::Write</a>: <span class="keywordflow">return</span> <a class="code hl_variable" href="namespaceGameMessage.html#a7ba3fee42f756d5fc38136500da8239d">GameMessage::WriteStageEnd</a>;</div>
-<div class="line"><span class="lineno">  133</span>        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a8b1e2b9b342dd37344c6343dc23a6733">EQuestType::Speak</a>: <span class="keywordflow">return</span> <a class="code hl_variable" href="namespaceGameMessage.html#af4f66eae3491d48712af2a739650d5de">GameMessage::SpeakStageEnd</a>;</div>
-<div class="line"><span class="lineno">  134</span> </div>
-<div class="line"><span class="lineno">  135</span>        <span class="keywordflow">default</span>: <span class="keywordflow">return</span> <span class="stringliteral">&quot;GameEnd&quot;</span>;</div>
-<div class="line"><span class="lineno">  136</span>    }</div>
-<div class="line"><span class="lineno">  137</span>}</div>
+<p class="definition"><a class="el" href="ULingoGameHelper_8cpp_source.html">ULingoGameHelper.cpp</a> 파일의 <a class="el" href="ULingoGameHelper_8cpp_source.html#l00111">111</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  112</span>{</div>
+<div class="line"><span class="lineno">  113</span>    <span class="keywordflow">switch</span> (QuestType)</div>
+<div class="line"><span class="lineno">  114</span>    {</div>
+<div class="line"><span class="lineno">  115</span>        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a7a1a5f3e79fdc91edf2f5ead9d66abb4">EQuestType::Read</a>:  <span class="keywordflow">return</span> <a class="code hl_variable" href="namespaceGameMessage.html#a58d44dc32d05b06b0097418b7071eef3">GameMessage::ReadStageEnd</a>;</div>
+<div class="line"><span class="lineno">  116</span>        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921ace6802b46091c31e2ec2363883fe8369">EQuestType::Listen</a>:    <span class="keywordflow">return</span> <a class="code hl_variable" href="namespaceGameMessage.html#ad442f83af10ff3e4c202f2e7d0dbc885">GameMessage::ListenStageEnd</a>;</div>
+<div class="line"><span class="lineno">  117</span>        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a1129c0e4d43f2d121652a7302712cff6">EQuestType::Write</a>: <span class="keywordflow">return</span> <a class="code hl_variable" href="namespaceGameMessage.html#a7ba3fee42f756d5fc38136500da8239d">GameMessage::WriteStageEnd</a>;</div>
+<div class="line"><span class="lineno">  118</span>        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a8b1e2b9b342dd37344c6343dc23a6733">EQuestType::Speak</a>: <span class="keywordflow">return</span> <a class="code hl_variable" href="namespaceGameMessage.html#af4f66eae3491d48712af2a739650d5de">GameMessage::SpeakStageEnd</a>;</div>
+<div class="line"><span class="lineno">  119</span> </div>
+<div class="line"><span class="lineno">  120</span>        <span class="keywordflow">default</span>: <span class="keywordflow">return</span> <span class="stringliteral">&quot;GameEnd&quot;</span>;</div>
+<div class="line"><span class="lineno">  121</span>    }</div>
+<div class="line"><span class="lineno">  122</span>}</div>
 <div class="ttc" id="aALingoGameState_8h_html_a1a866ca8104ebd47ce462347a6125921a1129c0e4d43f2d121652a7302712cff6"><div class="ttname"><a href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a1129c0e4d43f2d121652a7302712cff6">EQuestType::Write</a></div><div class="ttdeci">@ Write</div></div>
 <div class="ttc" id="aALingoGameState_8h_html_a1a866ca8104ebd47ce462347a6125921a7a1a5f3e79fdc91edf2f5ead9d66abb4"><div class="ttname"><a href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a7a1a5f3e79fdc91edf2f5ead9d66abb4">EQuestType::Read</a></div><div class="ttdeci">@ Read</div></div>
 <div class="ttc" id="aALingoGameState_8h_html_a1a866ca8104ebd47ce462347a6125921a8b1e2b9b342dd37344c6343dc23a6733"><div class="ttname"><a href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a8b1e2b9b342dd37344c6343dc23a6733">EQuestType::Speak</a></div><div class="ttdeci">@ Speak</div></div>
@@ -874,11 +937,11 @@ $(document).ready(function(){initNavTree('classULingoGameHelper.html',''); initR
 <p class="reference">다음을 참조함 :  <a class="el" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921ace6802b46091c31e2ec2363883fe8369">Listen</a>, <a class="el" href="Onepiece_8h_source.html#l00040">GameMessage::ListenStageEnd</a>, <a class="el" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a7a1a5f3e79fdc91edf2f5ead9d66abb4">Read</a>, <a class="el" href="Onepiece_8h_source.html#l00037">GameMessage::ReadStageEnd</a>, <a class="el" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a8b1e2b9b342dd37344c6343dc23a6733">Speak</a>, <a class="el" href="Onepiece_8h_source.html#l00046">GameMessage::SpeakStageEnd</a>, <a class="el" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a1129c0e4d43f2d121652a7302712cff6">Write</a>, <a class="el" href="Onepiece_8h_source.html#l00043">GameMessage::WriteStageEnd</a>.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALingoGameState_8cpp_source.html#l00178">ALingoGameState::OnMissionTimerEnd()</a>.</p>
-<div id="dynsection-13" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-13-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
-<div id="dynsection-13-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-14" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-14-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-14-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-13-content" class="dyncontent" style="display:none;">
+<div id="dynsection-14-content" class="dyncontent" style="display:none;">
 <div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classULingoGameHelper_aedcd84af73f7741c04bdd74e617366e8_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
@@ -908,18 +971,18 @@ $(document).ready(function(){initNavTree('classULingoGameHelper.html',''); initR
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ULingoGameHelper_8cpp_source.html">ULingoGameHelper.cpp</a> 파일의 <a class="el" href="ULingoGameHelper_8cpp_source.html#l00113">113</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  114</span>{</div>
-<div class="line"><span class="lineno">  115</span>    <span class="keywordflow">switch</span> (QuestType)</div>
-<div class="line"><span class="lineno">  116</span>    {</div>
-<div class="line"><span class="lineno">  117</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a7a1a5f3e79fdc91edf2f5ead9d66abb4">EQuestType::Read</a>:      <span class="keywordflow">return</span> <a class="code hl_variable" href="namespaceGameMessage.html#a6964bb943147cdc1f845dd30fb2059af">GameMessage::ReadStageStart</a>;</div>
-<div class="line"><span class="lineno">  118</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921ace6802b46091c31e2ec2363883fe8369">EQuestType::Listen</a>:    <span class="keywordflow">return</span> <a class="code hl_variable" href="namespaceGameMessage.html#a501440b711be64c54604eca0ed677cee">GameMessage::ListenStageStart</a>;</div>
-<div class="line"><span class="lineno">  119</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a1129c0e4d43f2d121652a7302712cff6">EQuestType::Write</a>:     <span class="keywordflow">return</span> <a class="code hl_variable" href="namespaceGameMessage.html#a8b65fc2a15bb0f28393e8a8f681630d0">GameMessage::WriteStageStart</a>;</div>
-<div class="line"><span class="lineno">  120</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a8b1e2b9b342dd37344c6343dc23a6733">EQuestType::Speak</a>:     <span class="keywordflow">return</span> <a class="code hl_variable" href="namespaceGameMessage.html#ad15591c0eea3f6303d1f2113ed903741">GameMessage::SpeakStageStart</a>;</div>
-<div class="line"><span class="lineno">  121</span> </div>
-<div class="line"><span class="lineno">  122</span>    <span class="keywordflow">default</span>: <span class="keywordflow">return</span> <span class="stringliteral">&quot;GameStart&quot;</span>;</div>
-<div class="line"><span class="lineno">  123</span>    }</div>
-<div class="line"><span class="lineno">  124</span>}</div>
+<p class="definition"><a class="el" href="ULingoGameHelper_8cpp_source.html">ULingoGameHelper.cpp</a> 파일의 <a class="el" href="ULingoGameHelper_8cpp_source.html#l00098">98</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   99</span>{</div>
+<div class="line"><span class="lineno">  100</span>    <span class="keywordflow">switch</span> (QuestType)</div>
+<div class="line"><span class="lineno">  101</span>    {</div>
+<div class="line"><span class="lineno">  102</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a7a1a5f3e79fdc91edf2f5ead9d66abb4">EQuestType::Read</a>:      <span class="keywordflow">return</span> <a class="code hl_variable" href="namespaceGameMessage.html#a6964bb943147cdc1f845dd30fb2059af">GameMessage::ReadStageStart</a>;</div>
+<div class="line"><span class="lineno">  103</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921ace6802b46091c31e2ec2363883fe8369">EQuestType::Listen</a>:    <span class="keywordflow">return</span> <a class="code hl_variable" href="namespaceGameMessage.html#a501440b711be64c54604eca0ed677cee">GameMessage::ListenStageStart</a>;</div>
+<div class="line"><span class="lineno">  104</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a1129c0e4d43f2d121652a7302712cff6">EQuestType::Write</a>:     <span class="keywordflow">return</span> <a class="code hl_variable" href="namespaceGameMessage.html#a8b65fc2a15bb0f28393e8a8f681630d0">GameMessage::WriteStageStart</a>;</div>
+<div class="line"><span class="lineno">  105</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a8b1e2b9b342dd37344c6343dc23a6733">EQuestType::Speak</a>:     <span class="keywordflow">return</span> <a class="code hl_variable" href="namespaceGameMessage.html#ad15591c0eea3f6303d1f2113ed903741">GameMessage::SpeakStageStart</a>;</div>
+<div class="line"><span class="lineno">  106</span> </div>
+<div class="line"><span class="lineno">  107</span>    <span class="keywordflow">default</span>: <span class="keywordflow">return</span> <span class="stringliteral">&quot;GameStart&quot;</span>;</div>
+<div class="line"><span class="lineno">  108</span>    }</div>
+<div class="line"><span class="lineno">  109</span>}</div>
 <div class="ttc" id="anamespaceGameMessage_html_a501440b711be64c54604eca0ed677cee"><div class="ttname"><a href="namespaceGameMessage.html#a501440b711be64c54604eca0ed677cee">GameMessage::ListenStageStart</a></div><div class="ttdeci">static const FString ListenStageStart</div><div class="ttdef"><b>Definition</b> <a href="Onepiece_8h_source.html#l00039">Onepiece.h:39</a></div></div>
 <div class="ttc" id="anamespaceGameMessage_html_a6964bb943147cdc1f845dd30fb2059af"><div class="ttname"><a href="namespaceGameMessage.html#a6964bb943147cdc1f845dd30fb2059af">GameMessage::ReadStageStart</a></div><div class="ttdeci">static const FString ReadStageStart</div><div class="ttdef"><b>Definition</b> <a href="Onepiece_8h_source.html#l00036">Onepiece.h:36</a></div></div>
 <div class="ttc" id="anamespaceGameMessage_html_a8b65fc2a15bb0f28393e8a8f681630d0"><div class="ttname"><a href="namespaceGameMessage.html#a8b65fc2a15bb0f28393e8a8f681630d0">GameMessage::WriteStageStart</a></div><div class="ttdeci">static const FString WriteStageStart</div><div class="ttdef"><b>Definition</b> <a href="Onepiece_8h_source.html#l00042">Onepiece.h:42</a></div></div>
@@ -928,11 +991,11 @@ $(document).ready(function(){initNavTree('classULingoGameHelper.html',''); initR
 <p class="reference">다음을 참조함 :  <a class="el" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921ace6802b46091c31e2ec2363883fe8369">Listen</a>, <a class="el" href="Onepiece_8h_source.html#l00039">GameMessage::ListenStageStart</a>, <a class="el" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a7a1a5f3e79fdc91edf2f5ead9d66abb4">Read</a>, <a class="el" href="Onepiece_8h_source.html#l00036">GameMessage::ReadStageStart</a>, <a class="el" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a8b1e2b9b342dd37344c6343dc23a6733">Speak</a>, <a class="el" href="Onepiece_8h_source.html#l00045">GameMessage::SpeakStageStart</a>, <a class="el" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a1129c0e4d43f2d121652a7302712cff6">Write</a>, <a class="el" href="Onepiece_8h_source.html#l00042">GameMessage::WriteStageStart</a>.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AContactTrigger_8cpp_source.html#l00045">AContactTrigger::BeginPlay()</a>.</p>
-<div id="dynsection-14" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-14-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
-<div id="dynsection-14-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-15" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-15-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-15-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-14-content" class="dyncontent" style="display:none;">
+<div id="dynsection-15-content" class="dyncontent" style="display:none;">
 <div class="center"><iframe scrolling="no" frameborder="0" src="classULingoGameHelper_a5b348eed6677226376898017e0bdc2de_icgraph.svg" width="475" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
@@ -962,28 +1025,28 @@ $(document).ready(function(){initNavTree('classULingoGameHelper.html',''); initR
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ULingoGameHelper_8cpp_source.html">ULingoGameHelper.cpp</a> 파일의 <a class="el" href="ULingoGameHelper_8cpp_source.html#l00139">139</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  140</span>{</div>
-<div class="line"><span class="lineno">  141</span>    <span class="keywordflow">switch</span> (QuestType)</div>
-<div class="line"><span class="lineno">  142</span>    {</div>
-<div class="line"><span class="lineno">  143</span>        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a7a1a5f3e79fdc91edf2f5ead9d66abb4">EQuestType::Read</a>: <span class="keywordflow">return</span> 1;</div>
-<div class="line"><span class="lineno">  144</span>        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921ace6802b46091c31e2ec2363883fe8369">EQuestType::Listen</a>: <span class="keywordflow">return</span> 2;</div>
-<div class="line"><span class="lineno">  145</span>        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a1129c0e4d43f2d121652a7302712cff6">EQuestType::Write</a>: <span class="keywordflow">return</span> 3;</div>
-<div class="line"><span class="lineno">  146</span>        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a8b1e2b9b342dd37344c6343dc23a6733">EQuestType::Speak</a>: <span class="keywordflow">return</span> 4;</div>
-<div class="line"><span class="lineno">  147</span> </div>
-<div class="line"><span class="lineno">  148</span>    <span class="keywordflow">default</span>:</div>
-<div class="line"><span class="lineno">  149</span>        <span class="keywordflow">return</span> 1;</div>
-<div class="line"><span class="lineno">  150</span>    }</div>
-<div class="line"><span class="lineno">  151</span>}</div>
+<p class="definition"><a class="el" href="ULingoGameHelper_8cpp_source.html">ULingoGameHelper.cpp</a> 파일의 <a class="el" href="ULingoGameHelper_8cpp_source.html#l00124">124</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  125</span>{</div>
+<div class="line"><span class="lineno">  126</span>    <span class="keywordflow">switch</span> (QuestType)</div>
+<div class="line"><span class="lineno">  127</span>    {</div>
+<div class="line"><span class="lineno">  128</span>        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a7a1a5f3e79fdc91edf2f5ead9d66abb4">EQuestType::Read</a>: <span class="keywordflow">return</span> 1;</div>
+<div class="line"><span class="lineno">  129</span>        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921ace6802b46091c31e2ec2363883fe8369">EQuestType::Listen</a>: <span class="keywordflow">return</span> 2;</div>
+<div class="line"><span class="lineno">  130</span>        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a1129c0e4d43f2d121652a7302712cff6">EQuestType::Write</a>: <span class="keywordflow">return</span> 3;</div>
+<div class="line"><span class="lineno">  131</span>        <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a8b1e2b9b342dd37344c6343dc23a6733">EQuestType::Speak</a>: <span class="keywordflow">return</span> 4;</div>
+<div class="line"><span class="lineno">  132</span> </div>
+<div class="line"><span class="lineno">  133</span>    <span class="keywordflow">default</span>:</div>
+<div class="line"><span class="lineno">  134</span>        <span class="keywordflow">return</span> 1;</div>
+<div class="line"><span class="lineno">  135</span>    }</div>
+<div class="line"><span class="lineno">  136</span>}</div>
 </div><!-- fragment -->
 <p class="reference">다음을 참조함 :  <a class="el" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921ace6802b46091c31e2ec2363883fe8369">Listen</a>, <a class="el" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a7a1a5f3e79fdc91edf2f5ead9d66abb4">Read</a>, <a class="el" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a8b1e2b9b342dd37344c6343dc23a6733">Speak</a>, <a class="el" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a1129c0e4d43f2d121652a7302712cff6">Write</a>.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00961">UKLingoNetworkSystem::RequestListenScenario()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00843">UKLingoNetworkSystem::RequestReadScenario()</a>, <a class="el" href="Popup__Result_8cpp_source.html#l00245">UPopup_Result::RequestResult()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l01076">UKLingoNetworkSystem::RequestSpeakScenario()</a>.</p>
-<div id="dynsection-15" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-15-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
-<div id="dynsection-15-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-16" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-16-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-16-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-15-content" class="dyncontent" style="display:none;">
+<div id="dynsection-16-content" class="dyncontent" style="display:none;">
 <div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classULingoGameHelper_a2ff337cf76037d417e9c4a65b1a8fc9a_icgraph.svg" width="100%" height="472"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
@@ -1013,17 +1076,17 @@ $(document).ready(function(){initNavTree('classULingoGameHelper.html',''); initR
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ULingoGameHelper_8cpp_source.html">ULingoGameHelper.cpp</a> 파일의 <a class="el" href="ULingoGameHelper_8cpp_source.html#l00258">258</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  259</span>{</div>
-<div class="line"><span class="lineno">  260</span>    <span class="keywordflow">if</span> (InTimeTaken &lt;= 300)</div>
-<div class="line"><span class="lineno">  261</span>        <span class="keywordflow">return</span> <span class="stringliteral">&quot;C&quot;</span>;</div>
-<div class="line"><span class="lineno">  262</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (InTimeTaken &lt;= 240)</div>
-<div class="line"><span class="lineno">  263</span>        <span class="keywordflow">return</span> <span class="stringliteral">&quot;B&quot;</span>;</div>
-<div class="line"><span class="lineno">  264</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (InTimeTaken &lt;= 180)</div>
-<div class="line"><span class="lineno">  265</span>        <span class="keywordflow">return</span> <span class="stringliteral">&quot;A&quot;</span>;</div>
-<div class="line"><span class="lineno">  266</span>    <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  267</span>        <span class="keywordflow">return</span> <span class="stringliteral">&quot;D&quot;</span>;</div>
-<div class="line"><span class="lineno">  268</span>}</div>
+<p class="definition"><a class="el" href="ULingoGameHelper_8cpp_source.html">ULingoGameHelper.cpp</a> 파일의 <a class="el" href="ULingoGameHelper_8cpp_source.html#l00287">287</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  288</span>{</div>
+<div class="line"><span class="lineno">  289</span>    <span class="keywordflow">if</span> (InTimeTaken &lt;= 300)</div>
+<div class="line"><span class="lineno">  290</span>        <span class="keywordflow">return</span> <span class="stringliteral">&quot;C&quot;</span>;</div>
+<div class="line"><span class="lineno">  291</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (InTimeTaken &lt;= 240)</div>
+<div class="line"><span class="lineno">  292</span>        <span class="keywordflow">return</span> <span class="stringliteral">&quot;B&quot;</span>;</div>
+<div class="line"><span class="lineno">  293</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (InTimeTaken &lt;= 180)</div>
+<div class="line"><span class="lineno">  294</span>        <span class="keywordflow">return</span> <span class="stringliteral">&quot;A&quot;</span>;</div>
+<div class="line"><span class="lineno">  295</span>    <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  296</span>        <span class="keywordflow">return</span> <span class="stringliteral">&quot;D&quot;</span>;</div>
+<div class="line"><span class="lineno">  297</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1050,17 +1113,17 @@ $(document).ready(function(){initNavTree('classULingoGameHelper.html',''); initR
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ULingoGameHelper_8cpp_source.html">ULingoGameHelper.cpp</a> 파일의 <a class="el" href="ULingoGameHelper_8cpp_source.html#l00017">17</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   18</span>{</div>
-<div class="line"><span class="lineno">   19</span>    <span class="keywordflow">return</span> FDateTime::UtcNow().ToUnixTimestamp();</div>
-<div class="line"><span class="lineno">   20</span>}</div>
+<p class="definition"><a class="el" href="ULingoGameHelper_8cpp_source.html">ULingoGameHelper.cpp</a> 파일의 <a class="el" href="ULingoGameHelper_8cpp_source.html#l00018">18</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   19</span>{</div>
+<div class="line"><span class="lineno">   20</span>    <span class="keywordflow">return</span> FDateTime::UtcNow().ToUnixTimestamp();</div>
+<div class="line"><span class="lineno">   21</span>}</div>
 </div><!-- fragment -->
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALingoGameState_8cpp_source.html#l00052">ALingoGameState::BeginPlay()</a>.</p>
-<div id="dynsection-16" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-16-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
-<div id="dynsection-16-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-17" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-17-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-17-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-16-content" class="dyncontent" style="display:none;">
+<div id="dynsection-17-content" class="dyncontent" style="display:none;">
 <div class="center"><iframe scrolling="no" frameborder="0" src="classULingoGameHelper_a22a311ff0293415aca5bf90fee7191c8_icgraph.svg" width="482" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
@@ -1090,32 +1153,70 @@ $(document).ready(function(){initNavTree('classULingoGameHelper.html',''); initR
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ULingoGameHelper_8cpp_source.html">ULingoGameHelper.cpp</a> 파일의 <a class="el" href="ULingoGameHelper_8cpp_source.html#l00022">22</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   23</span>{</div>
-<div class="line"><span class="lineno">   24</span>    <span class="keywordflow">if</span> ( <span class="keyword">auto</span> PC = <a class="code hl_function" href="classULingoGameHelper.html#a156d567d1976157714844997935655ce">GetPlayerControl</a>(WorldContextObject) )</div>
-<div class="line"><span class="lineno">   25</span>        <span class="keywordflow">return</span> PC-&gt;GetUserId();</div>
-<div class="line"><span class="lineno">   26</span>    <span class="keywordflow">return</span> 0;</div>
-<div class="line"><span class="lineno">   27</span>}</div>
-<div class="ttc" id="aclassULingoGameHelper_html_a156d567d1976157714844997935655ce"><div class="ttname"><a href="classULingoGameHelper.html#a156d567d1976157714844997935655ce">ULingoGameHelper::GetPlayerControl</a></div><div class="ttdeci">static class APlayerControl * GetPlayerControl(const UObject *WorldContextObject)</div><div class="ttdef"><b>Definition</b> <a href="ULingoGameHelper_8cpp_source.html#l00246">ULingoGameHelper.cpp:246</a></div></div>
+<p class="definition"><a class="el" href="ULingoGameHelper_8cpp_source.html">ULingoGameHelper.cpp</a> 파일의 <a class="el" href="ULingoGameHelper_8cpp_source.html#l00023">23</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   24</span>{</div>
+<div class="line"><span class="lineno">   25</span>    <span class="keywordflow">if</span> ( <span class="keyword">auto</span> PC = <a class="code hl_function" href="classULingoGameHelper.html#a156d567d1976157714844997935655ce">GetPlayerControl</a>(WorldContextObject) )</div>
+<div class="line"><span class="lineno">   26</span>        <span class="keywordflow">return</span> PC-&gt;GetUserId();</div>
+<div class="line"><span class="lineno">   27</span>    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">   28</span>}</div>
+<div class="ttc" id="aclassULingoGameHelper_html_a156d567d1976157714844997935655ce"><div class="ttname"><a href="classULingoGameHelper.html#a156d567d1976157714844997935655ce">ULingoGameHelper::GetPlayerControl</a></div><div class="ttdeci">static class APlayerControl * GetPlayerControl(const UObject *WorldContextObject)</div><div class="ttdef"><b>Definition</b> <a href="ULingoGameHelper_8cpp_source.html#l00231">ULingoGameHelper.cpp:231</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="ULingoGameHelper_8cpp_source.html#l00246">GetPlayerControl()</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="ULingoGameHelper_8cpp_source.html#l00231">GetPlayerControl()</a>.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UPopup__Interview_8cpp_source.html#l00082">UPopup_Interview::OnClickSubmit()</a>, <a class="el" href="UPopup__InterviewHello_8cpp_source.html#l00232">UPopup_InterviewHello::OnClickSubmit()</a>, <a class="el" href="UPopup__InterviewHello_8cpp_source.html#l00307">UPopup_InterviewHello::OnResponseInterviewAnswer()</a>, <a class="el" href="UPopup__InterviewHello_8cpp_source.html#l00358">UPopup_InterviewHello::ShouldSkipInterviewToday()</a>.</p>
-<div id="dynsection-17" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-17-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
-<div id="dynsection-17-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-17-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classULingoGameHelper_a128a70c4f0e61cb82b17a1927a2c6709_cgraph.svg" width="503" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
 <div id="dynsection-18" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-18-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+  <img id="dynsection-18-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-18-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-18-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classULingoGameHelper_a128a70c4f0e61cb82b17a1927a2c6709_cgraph.svg" width="503" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div id="dynsection-19" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-19-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-19-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-19-content" class="dyncontent" style="display:none;">
 <div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classULingoGameHelper_a128a70c4f0e61cb82b17a1927a2c6709_icgraph.svg" width="100%" height="472"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
+</div>
+</div>
+<a id="ac0d0929f11e3a6e8f720beac552a2f97" name="ac0d0929f11e3a6e8f720beac552a2f97"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac0d0929f11e3a6e8f720beac552a2f97">&#9670;&#160;</a></span>GetWheatly()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classAWheatly.html">AWheatly</a> * ULingoGameHelper::GetWheatly </td>
+          <td>(</td>
+          <td class="paramtype">const UObject *&#160;</td>
+          <td class="paramname"><em>WorldContextObject</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="ULingoGameHelper_8cpp_source.html">ULingoGameHelper.cpp</a> 파일의 <a class="el" href="ULingoGameHelper_8cpp_source.html#l00255">255</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  256</span>{</div>
+<div class="line"><span class="lineno">  257</span>    <span class="keywordflow">if</span> (!WorldContextObject)</div>
+<div class="line"><span class="lineno">  258</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">  259</span> </div>
+<div class="line"><span class="lineno">  260</span>    UWorld* World = WorldContextObject-&gt;GetWorld();</div>
+<div class="line"><span class="lineno">  261</span>    <span class="keywordflow">if</span> (!World)</div>
+<div class="line"><span class="lineno">  262</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">  263</span> </div>
+<div class="line"><span class="lineno">  264</span>    <span class="keywordflow">return</span> Cast&lt;AWheatly&gt;(UGameplayStatics::GetActorOfClass(World, AWheatly::StaticClass()));</div>
+<div class="line"><span class="lineno">  265</span>}</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a569e70240af4850b5b1a0dafd26d4033" name="a569e70240af4850b5b1a0dafd26d4033"></a>
@@ -1150,29 +1251,29 @@ $(document).ready(function(){initNavTree('classULingoGameHelper.html',''); initR
   </dd>
 </dl>
 
-<p class="definition"><a class="el" href="ULingoGameHelper_8cpp_source.html">ULingoGameHelper.cpp</a> 파일의 <a class="el" href="ULingoGameHelper_8cpp_source.html#l00212">212</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  213</span>{</div>
-<div class="line"><span class="lineno">  214</span>    <span class="keywordflow">if</span> (!WorldContextObject)</div>
-<div class="line"><span class="lineno">  215</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  216</span> </div>
-<div class="line"><span class="lineno">  217</span>    UWorld* World = WorldContextObject-&gt;GetWorld();</div>
-<div class="line"><span class="lineno">  218</span>    <span class="keywordflow">if</span> (!World)</div>
-<div class="line"><span class="lineno">  219</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  220</span> </div>
-<div class="line"><span class="lineno">  221</span>    APlayerController* PC = World-&gt;GetFirstPlayerController();</div>
-<div class="line"><span class="lineno">  222</span>    <span class="keywordflow">if</span> (!PC)</div>
-<div class="line"><span class="lineno">  223</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  224</span> </div>
-<div class="line"><span class="lineno">  225</span>    PC-&gt;bShowMouseCursor = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  226</span>    PC-&gt;SetInputMode(FInputModeGameOnly());</div>
-<div class="line"><span class="lineno">  227</span>}</div>
+<p class="definition"><a class="el" href="ULingoGameHelper_8cpp_source.html">ULingoGameHelper.cpp</a> 파일의 <a class="el" href="ULingoGameHelper_8cpp_source.html#l00197">197</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  198</span>{</div>
+<div class="line"><span class="lineno">  199</span>    <span class="keywordflow">if</span> (!WorldContextObject)</div>
+<div class="line"><span class="lineno">  200</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  201</span> </div>
+<div class="line"><span class="lineno">  202</span>    UWorld* World = WorldContextObject-&gt;GetWorld();</div>
+<div class="line"><span class="lineno">  203</span>    <span class="keywordflow">if</span> (!World)</div>
+<div class="line"><span class="lineno">  204</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  205</span> </div>
+<div class="line"><span class="lineno">  206</span>    APlayerController* PC = World-&gt;GetFirstPlayerController();</div>
+<div class="line"><span class="lineno">  207</span>    <span class="keywordflow">if</span> (!PC)</div>
+<div class="line"><span class="lineno">  208</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  209</span> </div>
+<div class="line"><span class="lineno">  210</span>    PC-&gt;bShowMouseCursor = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  211</span>    PC-&gt;SetInputMode(FInputModeGameOnly());</div>
+<div class="line"><span class="lineno">  212</span>}</div>
 </div><!-- fragment -->
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerActor_8cpp_source.html#l00129">APlayerActor::BeginPlay()</a>, <a class="el" href="UPopupManager_8cpp_source.html#l00093">UPopupManager::HidePopup()</a>.</p>
-<div id="dynsection-19" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-19-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
-<div id="dynsection-19-summary" class="dynsummary" style="display:block;">
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerActor_8cpp_source.html#l00130">APlayerActor::BeginPlay()</a>, <a class="el" href="UPopupManager_8cpp_source.html#l00093">UPopupManager::HidePopup()</a>.</p>
+<div id="dynsection-20" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-20-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-20-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-19-content" class="dyncontent" style="display:none;">
+<div id="dynsection-20-content" class="dyncontent" style="display:none;">
 <div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classULingoGameHelper_a569e70240af4850b5b1a0dafd26d4033_icgraph.svg" width="100%" height="370"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
@@ -1202,18 +1303,18 @@ $(document).ready(function(){initNavTree('classULingoGameHelper.html',''); initR
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ULingoGameHelper_8cpp_source.html">ULingoGameHelper.cpp</a> 파일의 <a class="el" href="ULingoGameHelper_8cpp_source.html#l00036">36</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   37</span>{</div>
-<div class="line"><span class="lineno">   38</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classULingoGameHelper.html#a2b4c188bd922db08e4987962b8309a56">GetMultiPlayerCount</a>(WorldContextObject) &gt; 1;</div>
-<div class="line"><span class="lineno">   39</span>}</div>
-<div class="ttc" id="aclassULingoGameHelper_html_a2b4c188bd922db08e4987962b8309a56"><div class="ttname"><a href="classULingoGameHelper.html#a2b4c188bd922db08e4987962b8309a56">ULingoGameHelper::GetMultiPlayerCount</a></div><div class="ttdeci">static int GetMultiPlayerCount(const UObject *WorldContextObject)</div><div class="ttdef"><b>Definition</b> <a href="ULingoGameHelper_8cpp_source.html#l00029">ULingoGameHelper.cpp:29</a></div></div>
+<p class="definition"><a class="el" href="ULingoGameHelper_8cpp_source.html">ULingoGameHelper.cpp</a> 파일의 <a class="el" href="ULingoGameHelper_8cpp_source.html#l00037">37</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   38</span>{</div>
+<div class="line"><span class="lineno">   39</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classULingoGameHelper.html#a2b4c188bd922db08e4987962b8309a56">GetMultiPlayerCount</a>(WorldContextObject) &gt; 1;</div>
+<div class="line"><span class="lineno">   40</span>}</div>
+<div class="ttc" id="aclassULingoGameHelper_html_a2b4c188bd922db08e4987962b8309a56"><div class="ttname"><a href="classULingoGameHelper.html#a2b4c188bd922db08e4987962b8309a56">ULingoGameHelper::GetMultiPlayerCount</a></div><div class="ttdeci">static int GetMultiPlayerCount(const UObject *WorldContextObject)</div><div class="ttdef"><b>Definition</b> <a href="ULingoGameHelper_8cpp_source.html#l00030">ULingoGameHelper.cpp:30</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="ULingoGameHelper_8cpp_source.html#l00029">GetMultiPlayerCount()</a>.</p>
-<div id="dynsection-20" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-20-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
-<div id="dynsection-20-summary" class="dynsummary" style="display:block;">
+<p class="reference">다음을 참조함 :  <a class="el" href="ULingoGameHelper_8cpp_source.html#l00030">GetMultiPlayerCount()</a>.</p>
+<div id="dynsection-21" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-21-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-21-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-20-content" class="dyncontent" style="display:none;">
+<div id="dynsection-21-content" class="dyncontent" style="display:none;">
 <div class="center"><iframe scrolling="no" frameborder="0" src="classULingoGameHelper_aaffb56063f7fe4916e89d589c02ee8cb_cgraph.svg" width="502" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
@@ -1251,29 +1352,29 @@ $(document).ready(function(){initNavTree('classULingoGameHelper.html',''); initR
   </dd>
 </dl>
 
-<p class="definition"><a class="el" href="ULingoGameHelper_8cpp_source.html">ULingoGameHelper.cpp</a> 파일의 <a class="el" href="ULingoGameHelper_8cpp_source.html#l00195">195</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  196</span>{</div>
-<div class="line"><span class="lineno">  197</span>    <span class="keywordflow">if</span> (!WorldContextObject)</div>
-<div class="line"><span class="lineno">  198</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  199</span> </div>
-<div class="line"><span class="lineno">  200</span>    UWorld* World = WorldContextObject-&gt;GetWorld();</div>
-<div class="line"><span class="lineno">  201</span>    <span class="keywordflow">if</span> (!World)</div>
-<div class="line"><span class="lineno">  202</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  203</span> </div>
-<div class="line"><span class="lineno">  204</span>    APlayerController* PC = World-&gt;GetFirstPlayerController();</div>
-<div class="line"><span class="lineno">  205</span>    <span class="keywordflow">if</span> (!PC)</div>
-<div class="line"><span class="lineno">  206</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  207</span> </div>
-<div class="line"><span class="lineno">  208</span>    PC-&gt;bShowMouseCursor = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  209</span>    PC-&gt;SetInputMode(FInputModeGameAndUI());</div>
-<div class="line"><span class="lineno">  210</span>}</div>
+<p class="definition"><a class="el" href="ULingoGameHelper_8cpp_source.html">ULingoGameHelper.cpp</a> 파일의 <a class="el" href="ULingoGameHelper_8cpp_source.html#l00180">180</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  181</span>{</div>
+<div class="line"><span class="lineno">  182</span>    <span class="keywordflow">if</span> (!WorldContextObject)</div>
+<div class="line"><span class="lineno">  183</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  184</span> </div>
+<div class="line"><span class="lineno">  185</span>    UWorld* World = WorldContextObject-&gt;GetWorld();</div>
+<div class="line"><span class="lineno">  186</span>    <span class="keywordflow">if</span> (!World)</div>
+<div class="line"><span class="lineno">  187</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  188</span> </div>
+<div class="line"><span class="lineno">  189</span>    APlayerController* PC = World-&gt;GetFirstPlayerController();</div>
+<div class="line"><span class="lineno">  190</span>    <span class="keywordflow">if</span> (!PC)</div>
+<div class="line"><span class="lineno">  191</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  192</span> </div>
+<div class="line"><span class="lineno">  193</span>    PC-&gt;bShowMouseCursor = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  194</span>    PC-&gt;SetInputMode(FInputModeGameAndUI());</div>
+<div class="line"><span class="lineno">  195</span>}</div>
 </div><!-- fragment -->
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="LobbyWidget_8cpp_source.html#l00019">ULobbyWidget::NativeConstruct()</a>, <a class="el" href="StartWidget_8cpp_source.html#l00011">UStartWidget::NativeConstruct()</a>, <a class="el" href="UPopupManager_8cpp_source.html#l00050">UPopupManager::ShowPopup()</a>.</p>
-<div id="dynsection-21" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-21-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
-<div id="dynsection-21-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-22" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-22-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-22-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-21-content" class="dyncontent" style="display:none;">
+<div id="dynsection-22-content" class="dyncontent" style="display:none;">
 <div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classULingoGameHelper_af5fbc9538e6adda28f03d547c33ecc48_icgraph.svg" width="100%" height="450"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
@@ -1289,7 +1390,7 @@ $(document).ready(function(){initNavTree('classULingoGameHelper.html',''); initR
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classULingoGameHelper.html">ULingoGameHelper</a></li>
-    <li class="footer">생성시간 : 목 12월 11 2025 15:35:17, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 토 12월 13 2025 04:52:37, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

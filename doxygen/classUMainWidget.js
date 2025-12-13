@@ -1,6 +1,7 @@
 var classUMainWidget =
 [
     [ "UMainWidget", "classUMainWidget.html#ad20ac0a98c69f588c45eead091449dc8", null ],
+    [ "CanShowSpeakWidget", "classUMainWidget.html#aaca4987d3abf50c959086ae840c3a4ce", null ],
     [ "FadeIn", "classUMainWidget.html#a9be2e5f1620864d34553e6a0dfc0bbdc", null ],
     [ "FadeOut", "classUMainWidget.html#a1e3fca3f15171299f1be803c8dbebb27", null ],
     [ "GetFadeWidget", "classUMainWidget.html#a4eb207f533cf3178f948c4222b7dc723", null ],
@@ -24,5 +25,6 @@ var classUMainWidget =
     [ "QuestInfoWidget", "classUMainWidget.html#a5ba1fdbbe66e5a6c54e05634e254e5d3", null ],
     [ "RoomWidget", "classUMainWidget.html#af7202e75ac00efb9c8ddb5b752cc9460", null ],
     [ "SpeakWidget", "classUMainWidget.html#af4d15f040b6a31cc9fd0915a73da3539", null ],
-    [ "StateWidget", "classUMainWidget.html#af9eea227103d9e1ef57f35eaff2109e0", null ]
+    [ "StateWidget", "classUMainWidget.html#af9eea227103d9e1ef57f35eaff2109e0", null ],
+    [ "WidgetSwitcher", "classUMainWidget.html#a493c1e62aeb4e89c0cd85dfab3d50519", null ]
 ];

@@ -2,7 +2,9 @@ var classAPlayerControl =
 [
     [ "APlayerControl", "classAPlayerControl.html#ad52af79fddcd1253723313ab75eec84c", null ],
     [ "BeginPlay", "classAPlayerControl.html#a4cf368d1cfadfd50d83c8af1b10cc623", null ],
+    [ "Client_EndSpeakQuest", "classAPlayerControl.html#a8896d6eb0704bd0d031b76df7c314737", null ],
     [ "Client_ToastMessage", "classAPlayerControl.html#a50f77b6862b6575c355a439c33868248", null ],
+    [ "Client_UpdateSpeakQuest", "classAPlayerControl.html#a929e3d96c907329ff90ae7bb0bc56ec8", null ],
     [ "GetControllable", "classAPlayerControl.html#aeda5eb6dcc2b2420cf2dc554a2739477", null ],
     [ "GetUserId", "classAPlayerControl.html#a28eb86790cd27a79470b7112927c4e24", null ],
     [ "GetUserInfo", "classAPlayerControl.html#af79e9468151b0d47e8eee1703f73af29", null ],
@@ -31,6 +33,7 @@ var classAPlayerControl =
     [ "TEST_AddItemToBoxList", "classAPlayerControl.html#a3b1610210b44fa2be6c12fa777631033", null ],
     [ "TEST_DropperDropProcess", "classAPlayerControl.html#ab98c322064b5894e5cd25113d82f617f", null ],
     [ "UpdateQuestRole", "classAPlayerControl.html#a49c6d11314d21c34209ac16d0dabcfc3", null ],
+    [ "UpdateSpeakWidget", "classAPlayerControl.html#afab6c2b676f2019223660d53d457a354", null ],
     [ "UPROPERTY", "classAPlayerControl.html#a491ff4ed01c0d381f80d40fc3501c334", null ],
     [ "UPROPERTY", "classAPlayerControl.html#ab72a01e87fb65e5dfbd39676023f378f", null ],
     [ "UPROPERTY", "classAPlayerControl.html#abe104ffe65a1a00e6f211b5207f6b2ed", null ],

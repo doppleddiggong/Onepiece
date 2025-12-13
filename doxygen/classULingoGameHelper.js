@@ -13,6 +13,7 @@ var classULingoGameHelper =
     [ "GetMultiPlayerCount", "classULingoGameHelper.html#a2b4c188bd922db08e4987962b8309a56", null ],
     [ "GetPlayerActor", "classULingoGameHelper.html#aedc78e0ec65a7aad312693bd1719bff8", null ],
     [ "GetPlayerControl", "classULingoGameHelper.html#a156d567d1976157714844997935655ce", null ],
+    [ "GetPlayerNameFromState", "classULingoGameHelper.html#a6e81633de163ff51bfa37da213f6c696", null ],
     [ "GetSpeakStageActor", "classULingoGameHelper.html#a7841ecb4e3125ad48efba9920250bf1a", null ],
     [ "GetStageEndMessage", "classULingoGameHelper.html#aedcd84af73f7741c04bdd74e617366e8", null ],
     [ "GetStageStartMessage", "classULingoGameHelper.html#a5b348eed6677226376898017e0bdc2de", null ],
@@ -20,6 +21,7 @@ var classULingoGameHelper =
     [ "GetTimeRank", "classULingoGameHelper.html#ad6e98b37c3a8fe6c338ad568c2d54993", null ],
     [ "GetUnixTimestampInt64", "classULingoGameHelper.html#a22a311ff0293415aca5bf90fee7191c8", null ],
     [ "GetUserId", "classULingoGameHelper.html#a128a70c4f0e61cb82b17a1927a2c6709", null ],
+    [ "GetWheatly", "classULingoGameHelper.html#ac0d0929f11e3a6e8f720beac552a2f97", null ],
     [ "HideMouseCursor", "classULingoGameHelper.html#a569e70240af4850b5b1a0dafd26d4033", null ],
     [ "IsMultiPlay", "classULingoGameHelper.html#aaffb56063f7fe4916e89d589c02ee8cb", null ],
     [ "ShowMouseCursor", "classULingoGameHelper.html#af5fbc9538e6adda28f03d547c33ecc48", null ]
