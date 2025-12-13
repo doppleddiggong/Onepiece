@@ -28,7 +28,6 @@ void ALingoPlayerState::GetLifetimeReplicatedProps(TArray<class FLifetimePropert
 
 	// Speak Quest Data
 	DOREPLIFETIME(ALingoPlayerState, SpeakScenarioData);
-	DOREPLIFETIME(ALingoPlayerState, CurSpeakQuestStep);
 	DOREPLIFETIME(ALingoPlayerState, SpeakJudesResults);
 }
 
@@ -161,4 +160,15 @@ void ALingoPlayerState::OnRep_SpeakScenarioData()
 void ALingoPlayerState::OnUpdateSpeakScenarioData()
 {
 	Server_NotifySpeakDataReady();
+}
+
+bool ALingoPlayerState::GetCurrentSpeakQuestion(int32 StepIndex, FSpeakStageQuestion& Out) const
+{
+	if ( SpeakScenarioData.speak_quest_data.IsValidIndex(StepIndex))
+	{
+		Out = SpeakScenarioData.speak_quest_data[StepIndex];
+		return true;
+	}
+
+	return false;
 }

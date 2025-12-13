@@ -64,12 +64,26 @@ void ASpeakStageActor::StartStageForPlayer(ALingoPlayerState* Player)
 	// 서버 측 리스너에게 즉시 알림
 	OnSpeakerChanged.Broadcast(CurrentSpeaker);
 
+	// 모든 클라이언트에게 SpeakQuest 시작 알림 브로드캐스트
+	FString PlayerName = ULingoGameHelper::GetPlayerNameFromState(Player);
+	Multicast_NotifySpeakQuestStarted(PlayerName);
+
 	// 클라이언트에게 현재 단계 정보(Toast, TTS)를 전송하고 UI 업데이트를 요청합니다.
 	if (APlayerControl* PC = Cast<APlayerControl>(CurrentSpeaker->GetOwner()))
 	{
 		// 클라이언트에게 StepIndex를 전달하여 스스로 UI와 TTS를 처리하도록 합니다.
 		PC->Client_UpdateSpeakQuest(CurrentStepIndex);
 		PRINTLOG(TEXT("[SpeakStage] Sent StepIndex %d to client for update."), CurrentStepIndex);
+	}
+}
+
+void ASpeakStageActor::Multicast_NotifySpeakQuestStarted_Implementation(const FString& PlayerName)
+{
+	// 모든 클라이언트에서 Toast 메시지 표시
+	if (UDialogManager* DM = UDialogManager::Get(GetWorld()))
+	{
+		FString Message = FString::Printf(TEXT("[%s] has started the inspection quest with the officer."), *PlayerName);
+		DM->ShowToast(Message);
 	}
 }
 
@@ -166,4 +180,15 @@ void ASpeakStageActor::EndStage()
 
 	// 서버 측 리스너에게 알림
 	OnSpeakerChanged.Broadcast(CurrentSpeaker);
+}
+
+bool ASpeakStageActor::IsMyTurn(ALingoPlayerState* PlayerState)
+{
+	if ( PlayerState == nullptr)
+		return false;
+
+	if ( CurrentSpeaker == nullptr)
+		return false;
+	
+	return CurrentSpeaker == PlayerState;
 }

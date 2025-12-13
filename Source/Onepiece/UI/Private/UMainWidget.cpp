@@ -9,6 +9,7 @@
 #include "UPlayTimer.h"
 #include "UStateWidget.h"
 #include "ALingoGameState.h"
+#include "ALingoPlayerState.h"
 #include "ASpeakStageActor.h"
 #include "ULingoGameHelper.h"
 #include "UBroadcastManager.h"
@@ -19,6 +20,7 @@
 #include "URoomWidget.h"
 #include "Engine/World.h"
 #include "Components/Image.h"
+#include "Components/WidgetSwitcher.h"
 #include "Engine/Texture2D.h"
 #include "GameFramework/PlayerState.h"
 #include "GameFramework/PlayerController.h"
@@ -122,6 +124,7 @@ void UMainWidget::OnUpdateMissionTimerState(bool bIsActive, float TimeLimit)
 	
 	if (bIsActive)
 	{
+		WidgetSwitcher->SetActiveWidgetIndex(0);
 		QuestInfoWidget->InitQuestInfo();
 	}
 
@@ -139,33 +142,38 @@ void UMainWidget::UpdateHookState(bool bIsAiming)
 
 void UMainWidget::UpdateSpeakWidget()
 {
-	if (!SpeakWidget)
-		return;
+	WidgetSwitcher->SetActiveWidgetIndex(1);
 
-	// SpeakStage 가져오기
-	ASpeakStageActor* SpeakStage = ULingoGameHelper::GetSpeakStageActor(this);
-	if (!SpeakStage)
-	{
-		SpeakWidget->SetWidgetVisibility(false);
-		return;
-	}
+	ASpeakStageActor* SpeakStage = nullptr;
+	ALingoPlayerState* LocalPlayerState = nullptr;
 
-	// 현재 발화자 확인
-	ALingoPlayerState* CurrentSpeaker = SpeakStage->GetCurrentSpeaker();
-	const bool bShouldShow = CurrentSpeaker != nullptr;
+	const bool bCanShow =
+		CanShowSpeakWidget(SpeakStage, LocalPlayerState);
+	SpeakWidget->SetWidgetVisibility(bCanShow);
+	
+	if ( bCanShow )
+		SpeakWidget->UpdateSpeakStage(SpeakStage, LocalPlayerState);
+}
 
-	SpeakWidget->SetWidgetVisibility(bShouldShow);
+bool UMainWidget::CanShowSpeakWidget( ASpeakStageActor*& OutSpeakStage,	ALingoPlayerState*& OutLocalPlayerState) const
+{
+	OutSpeakStage = ULingoGameHelper::GetSpeakStageActor(this);
+	if (!OutSpeakStage)
+		return false;
 
-	if (bShouldShow)
-	{
-		// 로컬 플레이어 PlayerState 가져오기
-		APlayerController* LocalPC = GetWorld()->GetFirstPlayerController();
-		if (!LocalPC)
-			return;
+	ALingoPlayerState* CurrentSpeaker = OutSpeakStage->GetCurrentSpeaker();
+	if (!CurrentSpeaker)
+		return false;
 
-		APlayerState* LocalPlayerState = LocalPC->GetPlayerState<APlayerState>();
-		SpeakWidget->UpdateSpeakStageUI(SpeakStage, LocalPlayerState);
-	}
+	APlayerController* LocalPC = GetWorld()->GetFirstPlayerController();
+	if (!LocalPC)
+		return false;
+
+	OutLocalPlayerState = LocalPC->GetPlayerState<ALingoPlayerState>();
+	if (!OutLocalPlayerState)
+		return false;
+
+	return (OutLocalPlayerState == CurrentSpeaker);
 }
 
 void UMainWidget::FadeOut(float Duration)

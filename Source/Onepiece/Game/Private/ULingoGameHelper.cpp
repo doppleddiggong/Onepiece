@@ -264,7 +264,7 @@ AWheatly* ULingoGameHelper::GetWheatly(const UObject* WorldContextObject)
 	return Cast<AWheatly>(UGameplayStatics::GetActorOfClass(World, AWheatly::StaticClass()));
 }
 
-FString ULingoGameHelper::GetPlayerNameFromState(const APlayerState* PlayerState)
+FString ULingoGameHelper::GetPlayerNameFromState(const ALingoPlayerState* PlayerState)
 {
 	if (!PlayerState)
 		return TEXT("");

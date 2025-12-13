@@ -42,6 +42,7 @@ AWheatly::AWheatly()
 	
 	MeshComponent = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("MeshComp"));
 	MeshComponent->SetupAttachment(RootComponent);
+	MeshComponent->SetCollisionProfileName(TEXT("BlockAllDynamic"));
 
 	EyeMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("EyeMesh"));
 	EyeMesh->SetupAttachment(MeshComponent, TEXT("eyelight_aimjoint"));
@@ -150,7 +151,7 @@ void AWheatly::BeginPlay()
 		}
 	}
 
-	PlayAnimation(EWheatlyAnim::Reaction_01);
+	PlayAnimation(EWheatlyAnim::PowerOn);
 }
 
 void AWheatly::Tick(float DeltaSeconds)
@@ -324,7 +325,6 @@ void AWheatly::OnResponseSpeakScenario(FResponseSpeakScenario& ResponseData, boo
 		{
 			// PlayerState에 시나리오 데이터 저장
 			PS->SpeakScenarioData = ResponseData;
-			PS->CurSpeakQuestStep = 0;
 
 			PS->OnUpdateSpeakScenarioData();
 		}
@@ -359,7 +359,7 @@ void AWheatly::OnInteractionTriggered(AActor* InteractingActor)
 		return;
 
 	// SpeakStage의 상태를 직접 확인
-	if (APlayerState* CurrentSpeaker = SpeakStage->GetCurrentSpeaker())
+	if (ALingoPlayerState* CurrentSpeaker = SpeakStage->GetCurrentSpeaker())
 	{
 		if (auto PC = Cast<APlayerControl>(InteractingPlayer->GetController()))
 		{
@@ -382,6 +382,21 @@ void AWheatly::OnSpeakStageSpeakerChanged(APlayerState* NewSpeaker)
 		: FLinearColor(0.0f, 0.5f, 1.0f, 1.0f); // Blue: Available
 	
 	OnRep_EyeColor();
+
+	// 심사 진행 중일 때 WidgetComp 가리기 (다른 유저의 상호작용 방지)
+	if (WidgetComp)
+	{
+		if (NewSpeaker != nullptr)
+		{
+			// 심사 진행 중 - WidgetComp 숨김
+			WidgetComp->SetVisibility(false);
+		}
+		else
+		{
+			// 심사 종료 - WidgetComp 다시 표시
+			WidgetComp->SetVisibility(true);
+		}
+	}
 }
 
 void AWheatly::OnRep_EyeColor()

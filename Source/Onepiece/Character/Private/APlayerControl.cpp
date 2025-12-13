@@ -287,21 +287,28 @@ void APlayerControl::Client_UpdateSpeakQuest_Implementation(int32 StepIndex)
 	if (!PS)
 		return;
 	
-	if (PS->SpeakScenarioData.speak_quest_data.IsValidIndex(StepIndex))
+	if (StepIndex == 0)
 	{
-		const FSpeakStageQuestion& CurrentQuestion = PS->SpeakScenarioData.speak_quest_data[StepIndex];
+		// 첫 번째 질문일 경우 MessageBox 표시
+		if (auto PopupManager = UPopupManager::Get(GetWorld()))
+		{
+			// MessageBox OK 버튼 클릭 시 질문 표시
+			FOnMsgBoxOkDelegate OnOkDelegate;
+			OnOkDelegate.BindLambda([this, StepIndex]()
+			{
+				if (APlayerActor* PlayerActor = Cast<APlayerActor>(GetPawn()))
+					PlayerActor->PlaySpeakInfo(StepIndex);
 
-		// 1. Toast 메시지 생성 및 표시
-		FString ToastMessage = FString::Printf(TEXT("[%d/%d] %s"),
-			StepIndex + 1,
-			PS->SpeakScenarioData.speak_quest_data.Num(),
-			*CurrentQuestion.GetQuestionMessage());
-		
-		if (UDialogManager* DM = UDialogManager::Get(GetWorld()))
-			DM->ShowToast(ToastMessage);
+				UpdateSpeakWidget();
+			});
 
+			PopupManager->ShowMsgBox(TEXT("SpeakQuest"), TEXT("QUEST START"), EMsgBoxType::OK, OnOkDelegate);
+		}
+	}
+	else
+	{
 		if (APlayerActor* PlayerActor = Cast<APlayerActor>(GetPawn()))
-			PlayerActor->RequestListenAudio(CurrentQuestion.kor);
+			PlayerActor->PlaySpeakInfo(StepIndex);
 
 		UpdateSpeakWidget();
 	}
@@ -310,7 +317,7 @@ void APlayerControl::Client_UpdateSpeakQuest_Implementation(int32 StepIndex)
 void APlayerControl::Client_EndSpeakQuest_Implementation()
 {
 	if (auto PopupManager = UPopupManager::Get(GetWorld()))
-		PopupManager->ShowMsgBox(TEXT("NOTICE"), TEXT("SPEAK QUEST COMPLETE"), EMsgBoxType::OK, FOnMsgBoxOkDelegate());
+		PopupManager->ShowMsgBox(TEXT("SpeakQuest"), TEXT("QUEST COMPLETE"), EMsgBoxType::OK, FOnMsgBoxOkDelegate());
 
 	UpdateSpeakWidget();
 }

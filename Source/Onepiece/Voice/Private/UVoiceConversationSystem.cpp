@@ -67,7 +67,7 @@ void UVoiceConversationSystem::StartRecording()
 			}
 
 			// 현재 발화자 확인
-			APlayerState* CurrentSpeaker = SpeakStageActor->GetCurrentSpeaker();
+			ALingoPlayerState* CurrentSpeaker = SpeakStageActor->GetCurrentSpeaker();
 
 			if (!CurrentSpeaker)
 			{
@@ -75,7 +75,7 @@ void UVoiceConversationSystem::StartRecording()
 
 				if (auto DM = UDialogManager::Get(World))
 				{
-					DM->ShowToast(TEXT("NPC와 대화하여 심사를 시작하세요."));
+					DM->ShowToast(TEXT("Talk to the officer to begin the inspection."));
 				}
 				return;
 			}
@@ -88,7 +88,7 @@ void UVoiceConversationSystem::StartRecording()
 
 				if (auto DM = UDialogManager::Get(World))
 				{
-					DM->ShowToast(FString::Printf(TEXT("지금은 %s님의 차례입니다"), *ULingoGameHelper::GetPlayerNameFromState(CurrentSpeaker)));
+					DM->ShowToast(FString::Printf(TEXT("It is %s's turn."), *ULingoGameHelper::GetPlayerNameFromState(CurrentSpeaker)));
 				}
 				return;
 			}
@@ -252,6 +252,12 @@ void UVoiceConversationSystem::StopRecording()
 	FString Question;
 	if ( auto SpeakStageActor = ULingoGameHelper::GetSpeakStageActor(GetWorld()) )
 		Question = SpeakStageActor->GetCurrentQuestion();
+
+	// Toast 메시지 표시: 답변 분석 중
+	if (UDialogManager* DM = UDialogManager::Get(GetWorld()))
+	{
+		DM->ShowToast(TEXT("The officer is reviewing your answer"));
+	}
 
 	HttpSystem->RequestSpeakingJudges(
 		Question,

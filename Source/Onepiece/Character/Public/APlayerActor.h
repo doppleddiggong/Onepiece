@@ -119,6 +119,9 @@ public: // Control Interface
 public:
 	FORCEINLINE bool GetIsRunning() { return bIsRunning; }
 	FORCEINLINE bool GetIsJumpStart() { return bIsJumpStart; }
+
+	void PlaySpeakInfo(int32 QuestStep);
+
 	EQuestRole GetQuestRole();
 	
 	/// @brief 게임 이벤트 메시지를 수신합니다.
@@ -146,6 +149,7 @@ public:
 	class UMainWidget* GetMainWidget() const { return MainWidget; }
 
 	void RequestListenAudio(const FString& AudioText);
+	void RequestSpeakAudio(const FString& AudioText);
 	
 private:
 	bool IsMainMap();
@@ -158,6 +162,7 @@ private:
 	void CreateToastWidget();
 
 	void OnResponseListenAudio(FResponseListenAudio& ResponseData, bool bWasSuccessful);
+	void OnResponseSpeakAudio(FResponseListenAudio& ResponseData, bool bWasSuccessful);
 	
 	/// @brief 텔레포트 이벤트 핸들러
 	/// @param TargetLocation 목표 위치

@@ -104,16 +104,13 @@ public:
 	// Speak Quest Functions
 	//--------------------------------------------------------------//
 
+	bool GetCurrentSpeakQuestion(int32 StepIndex, FSpeakStageQuestion& Out) const;	
+
 	/// @brief SpeakScenarioData가 업데이트될 때 Host와 Client 모두에서 호출되는 공통 함수입니다.
 	void OnUpdateSpeakScenarioData();
-
+	
 	UPROPERTY(Transient, ReplicatedUsing = OnRep_SpeakScenarioData, BlueprintReadOnly, Category = "SpeakQuest")
 	FResponseSpeakScenario SpeakScenarioData;
-
-	/// @brief 현재 진행 중인 질문 인덱스
-	/// @note 현재는 ASpeakStageActor의 CurrentStepIndex를 사용하므로 선택적으로 사용
-	UPROPERTY(Transient, Replicated, BlueprintReadOnly, Category = "SpeakQuest")
-	int32 CurSpeakQuestStep = 0;
 
 	/// @brief SpeakQuest 평가 결과 목록
 	/// @note RequestSpeakingJudges 응답 데이터를 쌓아둠

@@ -92,7 +92,7 @@ public:
 	/// @param PlayerState [in] 플레이어 상태
 	/// @return 사용자 이름 (UserInfo.username), 실패 시 PlayerState의 기본 이름
 	UFUNCTION(BlueprintCallable, Category = "Utils")
-	static FString GetPlayerNameFromState(const class APlayerState* PlayerState);
+	static FString GetPlayerNameFromState(const class ALingoPlayerState* PlayerState);
 
 	static FString GetTimeRank(float InTimeTaken);
 

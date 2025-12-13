@@ -22,6 +22,7 @@
 #include "UPopup_ReadQuest.h"
 #include "ALingoGameState.h"
 #include "APlayerControl.h"
+#include "ASpeakStageActor.h"
 #include "UToastWidget.h"
 #include "UBroadcastManager.h"
 #include "UFadeWidget.h"
@@ -403,8 +404,19 @@ void APlayerActor::Cmd_RecordEnd_Implementation()
 void APlayerActor::Cmd_Info_Implementation()
 {
 	auto GS = ULingoGameHelper::GetLingoGameState(GetWorld());
+	auto PS = GetPlayerState<ALingoPlayerState>();
+
 	if ( !GS->IsQuestIng() )
+	{
+		if (auto SpeakStageActor = ULingoGameHelper::GetSpeakStageActor(GetWorld()))
+		{
+			if ( SpeakStageActor->IsMyTurn(PS) )
+			{
+				PlaySpeakInfo( SpeakStageActor->GetCurrentStepIndex() );
+			}
+		}
 		return;
+	}
 
 	if ( GS->GetCurrentQuestType() == EQuestType::Read)
 	{
@@ -421,6 +433,20 @@ void APlayerActor::Cmd_Info_Implementation()
 			RequestListenAudio( GS->ListenScenarioData.word_data1.Kor); 
 		else if ( QuestRole == EQuestRole::OnlyQuestion2)
 			RequestListenAudio( GS->ListenScenarioData.word_data2.Kor); 
+	}
+}
+
+void APlayerActor::PlaySpeakInfo(int32 StepIndex)
+{
+	auto PS = GetPlayerState<ALingoPlayerState>();
+
+	FSpeakStageQuestion CurrentSpeakQuestion;
+	if (PS->GetCurrentSpeakQuestion(StepIndex, CurrentSpeakQuestion))
+	{
+		if (UDialogManager* DM = UDialogManager::Get(GetWorld()))
+			DM->ShowToast(*CurrentSpeakQuestion.GetQuestionMessage());
+
+		RequestSpeakAudio(CurrentSpeakQuestion.kor);
 	}
 }
 
@@ -454,6 +480,33 @@ void APlayerActor::OnResponseListenAudio(FResponseListenAudio& ResponseData, boo
 	{
 		this->PlayTTSAudio(ResponseData.audio_base64);
 		UDialogManager::Get(GetWorld())->ShowToast(*ResponseData.audio_text);
+	}
+}
+
+
+void APlayerActor::RequestSpeakAudio(const FString& AudioText)
+{
+	if (bIsRequest)
+		return;
+
+	if (auto KLingoNetwork = UKLingoNetworkSystem::Get(GetWorld()))
+	{
+		bIsRequest = true;
+
+		KLingoNetwork->RequestListenAudio(
+			AudioText,
+			FResponseListenAudioDelegate::CreateUObject(this, &APlayerActor::OnResponseSpeakAudio)
+		);
+	}
+}
+
+void APlayerActor::OnResponseSpeakAudio(FResponseListenAudio& ResponseData, bool bWasSuccessful)
+{
+	bIsRequest = false;
+
+	if (bWasSuccessful)
+	{
+		this->PlayTTSAudio(ResponseData.audio_base64);
 	}
 }
 
