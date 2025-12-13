@@ -89,16 +89,19 @@ void UPopup_Questionnaire::OnClickSubmit()
 	{
 		// TODO: Question마다 png파일 1개로 보내자
 		TArray<FString> pngFiles;
+		TArray<FString> targetTexts;
 		for (const auto& question : SavedQuestions)
 		{
-			FString OcrImageName = FString::Printf(TEXT("Answer%d.PNG"), question.Id);
-			PRINTLOG(TEXT("[TEST] RequestOcrExtract - ImagePath: %s"), *(WriteImagePath / OcrImageName));
-			pngFiles.Add(WriteImagePath / OcrImageName);
+			FString imagePath = WriteImagePath + FString::Printf(TEXT("Answer%d.PNG"), question.Id);
+			PRINTLOG(TEXT("[TEST] RequestOcrExtract - ImagePath: %s"), *imagePath);
+			
+			pngFiles.Add(imagePath);
+			targetTexts.Add(question.answer_kor);
 		}
 			
 		KLingoNetwork->RequestWriteSubmit(
 			pngFiles,
-			SavedQuestions[0].answer_kor,
+			targetTexts,
 			FResponseWriteSubmitDelegate::CreateUObject(this, &UPopup_Questionnaire::OnResponseOcrExtract)
 		);
 	}
@@ -115,13 +118,14 @@ void UPopup_Questionnaire::OnResponseOcrExtract(FResponseWriteSubmit& ResponseDa
 		PRINTLOG(TEXT("--- OCR Extract SUCCESS ---"));
 		ResponseData.PrintData();
 		
-		// TODO: 피드백 창 수정해야 함. 현재 피드백이 보낸 사진 개수만큼 돌아오는 상황.
+		// TODO: 피드백 팝업 창 생성해야 함.
 		// for (const FResponseOcrData& data : ResponseData.ResponseOcrDataArray)
 		for (int32 i = 1; i <= ResponseData.ResponseWriteDataArray.Num(); ++i)
 		{
 			const FResponseWriteData& data = ResponseData.ResponseWriteDataArray[i - 1];
 			PRINTLOG(TEXT("%d Success: %s"), i, data.display.is_pass ? TEXT("true") : TEXT("false"));
 			PRINTLOG(TEXT("%d Extracted Text: %s"), i, *(data.display.message));
+			PRINTLOG(TEXT("%d Extracted Text: %s"), i, *(data.display.correction));
 		}
 	}
 	else
@@ -129,35 +133,3 @@ void UPopup_Questionnaire::OnResponseOcrExtract(FResponseWriteSubmit& ResponseDa
 		PRINTLOG(TEXT("--- OCR Extract FAILED ---"));
 	}
 }
-
-// TODO: 여기 아래 함수 뭔지 알아보고 수정하든가 지우든가
-// void UPopup_Questionnaire::OnResponseInterviewAnswer(FResponseInterviewAnswer& ResponseData, bool bWasSuccessful)
-// {
-// 	if (bWasSuccessful)
-// 	{
-// 		PRINTLOG(TEXT("--- Interview Answer SUCCESS ---"));
-// 		ResponseData.PrintData();
-//
-// 		// 성공 시 토스트 메시지 표시
-// 		if (UDialogManager* DialogMgr = UDialogManager::Get(GetWorld()))
-// 		{
-// 			DialogMgr->ShowToast(TEXT("Interview answers submitted successfully!"));
-// 		}
-//
-// 		// 팝업 닫기
-// 		if (UPopupManager* PopupMgr = UPopupManager::Get(GetWorld()))
-// 		{
-// 			PopupMgr->HideCurrentPopup();
-// 		}
-// 	}
-// 	else
-// 	{
-// 		PRINTLOG(TEXT("--- Interview Answer FAILED ---"));
-//
-// 		// 실패 시 토스트 메시지 표시
-// 		if (UDialogManager* DialogMgr = UDialogManager::Get(GetWorld()))
-// 		{
-// 			DialogMgr->ShowToast(TEXT("Failed to submit interview answers. Please try again."));
-// 		}
-// 	}
-// }

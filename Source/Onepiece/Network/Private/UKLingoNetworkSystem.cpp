@@ -396,29 +396,26 @@ void UKLingoNetworkSystem::RequestWriteQuestions(FResponseWriteQuestionDelegate 
 // RequestWriteSubmit
 // =================================================================================
 
-void UKLingoNetworkSystem::RequestWriteSubmit(const TArray<FString>& ImagePathArray, FString InTargetText, FResponseWriteSubmitDelegate InDelegate)
+void UKLingoNetworkSystem::RequestWriteSubmit(const TArray<FString>& ImageNameArray, TArray<FString> InTargetText, FResponseWriteSubmitDelegate InDelegate)
 {
 	FString Url = NetworkConfig::GetFullUrl(RequestAPI::writes_submit);
 	auto Request = SetupHttpRequest(Url, NETWORK_POST);
 	
 	FHttpMultipartFormData Form;
-	for (FString ImagePath : ImagePathArray)
+	for (FString ImageName : ImageNameArray)
 	{
-		// 상대 경로를 절대 경로로 변환
-		// FString AbsoluteImagePath = FPaths::IsRelative(ImagePath)
-		// 	? FPaths::Combine(FPaths::ProjectDir(), ImagePath)
-		// 	: ImagePath;
-		// AbsoluteImagePath = FPaths::ConvertRelativePathToFull(AbsoluteImagePath);
-		
-		if (!Form.AddFile(TEXT("files"), ImagePath))
+		if (!Form.AddFile(TEXT("files"), FString::Printf(TEXT("%s"), *ImageName)))
 		{
-			NETWORK_LOG(TEXT("[POST] OCR Extract: file load failed: %s"), *ImagePath);
+			NETWORK_LOG(TEXT("[POST] OCR Extract: file load failed: %s"), *ImageName);
 			FResponseWriteSubmit EmptyResponse;
 			InDelegate.ExecuteIfBound(EmptyResponse, false);
 			return;
 		}
 	}
-	Form.AddText(TEXT("target_text"), InTargetText);
+	for (FString targetText : InTargetText)
+	{
+		Form.AddText(TEXT("target_texts"), targetText);
+	}
 	
 	Form.SetupHttpRequest(Request);
 

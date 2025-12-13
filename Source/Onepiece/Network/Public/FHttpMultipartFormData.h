@@ -14,6 +14,7 @@ enum class EFormDataType : uint8
 {
 	/// @brief multipart/form-data (파일 업로드용)
 	Multipart,
+    MultipartArray,
 	/// @brief application/x-www-form-urlencoded (OAuth2 등)
 	FormUrlEncoded
 };
