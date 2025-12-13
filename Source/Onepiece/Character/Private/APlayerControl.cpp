@@ -8,6 +8,7 @@
 
 #include "APlayerActor.h"
 #include "IControllable.h"
+#include "UMainWidget.h"
 
 #include "EnhancedInputSubsystems.h"
 #include "EnhancedInputComponent.h"
@@ -25,6 +26,7 @@
 #include "EngineUtils.h"
 #include "OrderKiosk.h"
 #include "UDialogManager.h"
+#include "UPopupManager.h"
 
 #define IMC_DEFAULT_PATH			TEXT("/Game/CustomContents/Input/IMC_Game_Player.IMC_Game_Player")
 #define IA_MOVE_PATH				TEXT("/Game/CustomContents/Input/IA_Game_Movement.IA_Game_Movement")
@@ -277,6 +279,58 @@ void APlayerControl::Server_RequestDrop_Implementation()
 void APlayerControl::Client_ToastMessage_Implementation(const FString& Message)
 {
 	UDialogManager::Get(GetWorld())->ShowToast(Message);
+}
+
+void APlayerControl::Client_UpdateSpeakQuest_Implementation(int32 StepIndex)
+{
+	ALingoPlayerState* PS = GetPlayerState<ALingoPlayerState>();
+	if (!PS)
+		return;
+	
+	if (StepIndex == 0)
+	{
+		// 첫 번째 질문일 경우 MessageBox 표시
+		if (auto PopupManager = UPopupManager::Get(GetWorld()))
+		{
+			// MessageBox OK 버튼 클릭 시 질문 표시
+			FOnMsgBoxOkDelegate OnOkDelegate;
+			OnOkDelegate.BindLambda([this, StepIndex]()
+			{
+				if (APlayerActor* PlayerActor = Cast<APlayerActor>(GetPawn()))
+					PlayerActor->PlaySpeakInfo(StepIndex);
+
+				UpdateSpeakWidget();
+			});
+
+			PopupManager->ShowMsgBox(TEXT("SpeakQuest"), TEXT("QUEST START"), EMsgBoxType::OK, OnOkDelegate);
+		}
+	}
+	else
+	{
+		if (APlayerActor* PlayerActor = Cast<APlayerActor>(GetPawn()))
+			PlayerActor->PlaySpeakInfo(StepIndex);
+
+		UpdateSpeakWidget();
+	}
+}
+
+void APlayerControl::Client_EndSpeakQuest_Implementation()
+{
+	if (auto PopupManager = UPopupManager::Get(GetWorld()))
+		PopupManager->ShowMsgBox(TEXT("SpeakQuest"), TEXT("QUEST COMPLETE"), EMsgBoxType::OK, FOnMsgBoxOkDelegate());
+
+	UpdateSpeakWidget();
+}
+
+void APlayerControl::UpdateSpeakWidget()
+{
+	if (APlayerActor* PlayerActor = Cast<APlayerActor>(GetPawn()))
+	{
+		if (UMainWidget* MainWidget = PlayerActor->GetMainWidget())
+		{
+			MainWidget->UpdateSpeakWidget();
+		}
+	}
 }
 
 void APlayerControl::TEST_DropperDropProcess()

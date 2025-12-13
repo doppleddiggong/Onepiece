@@ -42,9 +42,6 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "Utils")
 	static TArray<class ALingoPlayerState*> GetLingoPlayerStateList(const UObject* WorldContextObject);
-
-	UFUNCTION(BlueprintCallable, Category = "Utils")
-	static class ASpeakStageActor* GetSpeakStageActor(const UObject* WorldContextObject);
 	
 	UFUNCTION(BlueprintCallable, Category = "Utils")
 	static FString GetStageStartMessage(const EQuestType QuestType);
@@ -85,6 +82,17 @@ public:
 
 	static class APlayerControl* GetPlayerControl(const UObject* WorldContextObject);
 
+	UFUNCTION(BlueprintCallable, Category = "Utils")
+	static class ASpeakStageActor* GetSpeakStageActor(const UObject* WorldContextObject);
+
+	UFUNCTION(BlueprintCallable, Category = "Utils")
+	static class AWheatly* GetWheatly(const UObject* WorldContextObject);
+
+	/// @brief PlayerState에서 PlayerControl을 통해 사용자 이름 가져오기
+	/// @param PlayerState [in] 플레이어 상태
+	/// @return 사용자 이름 (UserInfo.username), 실패 시 PlayerState의 기본 이름
+	UFUNCTION(BlueprintCallable, Category = "Utils")
+	static FString GetPlayerNameFromState(const class ALingoPlayerState* PlayerState);
 
 	static FString GetTimeRank(float InTimeTaken);
 
