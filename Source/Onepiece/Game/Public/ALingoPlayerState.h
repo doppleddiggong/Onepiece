@@ -71,6 +71,14 @@ public:
 	UFUNCTION(Server, Reliable, WithValidation)
 	void Server_AddSpeakJudes(const FResponseSpeakingJudes& EvaluationResult);
 
+	/// @brief SpeakQuest 완료 처리 (서버에서만 호출)
+	UFUNCTION(BlueprintCallable, Category = "SpeakQuest")
+	void SetSpeakQuestCompleted();
+
+	/// @brief SpeakQuest 완료 여부 확인
+	UFUNCTION(BlueprintPure, Category = "SpeakQuest")
+	bool IsSpeakQuestCompleted() const { return bSpeakQuestCompleted; }
+
 	/// @brief SpeakScenarioData 복제 알림 함수
 	UFUNCTION()
 	void OnRep_SpeakScenarioData();
@@ -116,4 +124,8 @@ public:
 	/// @note RequestSpeakingJudges 응답 데이터를 쌓아둠
 	UPROPERTY(Transient, Replicated, BlueprintReadOnly, Category = "SpeakQuest")
 	TArray<struct FResponseSpeakingJudes> SpeakJudesResults;
+
+	/// @brief SpeakQuest 완료 여부 플래그
+	UPROPERTY(Replicated, BlueprintReadOnly, Category = "SpeakQuest")
+	bool bSpeakQuestCompleted = false;
 };

@@ -186,6 +186,9 @@ public:
 	void InitWidget(class UWidgetComponent* InWidgetComp);
 	void UpdateInteractPrompt(const FString& NewPrompt);
 
+
+	bool IsWidgetShowEnable(const class ACharacter* Character) const;
+	
 	// ========================================
 	// 상호작용 위젯
 	// ========================================

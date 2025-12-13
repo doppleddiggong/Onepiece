@@ -29,6 +29,7 @@ void ALingoPlayerState::GetLifetimeReplicatedProps(TArray<class FLifetimePropert
 	// Speak Quest Data
 	DOREPLIFETIME(ALingoPlayerState, SpeakScenarioData);
 	DOREPLIFETIME(ALingoPlayerState, SpeakJudesResults);
+	DOREPLIFETIME(ALingoPlayerState, bSpeakQuestCompleted);
 }
 
 
@@ -171,4 +172,12 @@ bool ALingoPlayerState::GetCurrentSpeakQuestion(int32 StepIndex, FSpeakStageQues
 	}
 
 	return false;
+}
+
+void ALingoPlayerState::SetSpeakQuestCompleted()
+{
+	if (!HasAuthority())
+		return;
+
+	bSpeakQuestCompleted = true;
 }

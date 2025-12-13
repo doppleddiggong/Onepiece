@@ -4,6 +4,10 @@
 #include "InteractableComponent.h"
 
 #include "APlayerActor.h"
+#include "ALingoPlayerState.h"
+#include "AWheatly.h"
+#include "ASpeakStageActor.h"
+#include "ULingoGameHelper.h"
 #include "GameLogging.h"
 #include "luggage.h"
 #include "UInteractWidget.h"
@@ -84,6 +88,41 @@ void UInteractableComponent::TickComponent(float DeltaTime, ELevelTick TickType,
 
 	// 상호작용 위젯 빌보드화
 	BillboardInteractWidget();
+
+	// AWheatly인 경우 현재 발화자 확인하여 위젯 동적 제어
+	if (WidgetComp && GetOwner() && GetOwner()->IsA(AWheatly::StaticClass()))
+	{
+		if (UWorld* World = GetWorld())
+		{
+			// 로컬 플레이어 확인
+			if (APlayerController* LocalPC = World->GetFirstPlayerController())
+			{
+				if (APawn* LocalPawn = LocalPC->GetPawn())
+				{
+					if (LocalPawn->IsLocallyControlled())
+					{
+						// SpeakStage에서 현재 발화자 확인
+						if (auto SpeakStage = ULingoGameHelper::GetSpeakStageActor(World))
+						{
+							auto LocalPlayerState = LocalPawn->GetPlayerState<ALingoPlayerState>();
+							auto CurrentSpeaker = SpeakStage->GetCurrentSpeaker();
+							
+							// 현재 발화자이면 위젯 숨김
+							if (LocalPlayerState && CurrentSpeaker && LocalPlayerState == CurrentSpeaker)
+							{
+								if (WidgetComp->IsVisible())
+								{
+									WidgetComp->SetVisibility(false);
+								}
+								// 발화자는 위젯이 계속 숨겨져야 하므로 여기서 return
+								return;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 
 	// 디버그 표시
 	if (bShowDetectionDebug && DetectionRange)
@@ -430,28 +469,58 @@ void UInteractableComponent::OnDetectionBeginOverlap(
 		return;
 
 	// Player 캐릭터인지 확인
-	ACharacter* Character = Cast<ACharacter>(OtherActor);
-	if (Character && Character->IsPlayerControlled())
+	if ( auto Character = Cast<ACharacter>(OtherActor) )
 	{
-		// InteractionSystem 찾기 및 등록
-		UInteractionSystem* InteractionSystem = Character->FindComponentByClass<UInteractionSystem>();
-		if (InteractionSystem)
+		if ( Character->IsPlayerControlled())
 		{
-			InteractionSystem->RegisterInteractable(this);
-		}
+			// InteractionSystem 찾기 및 등록
+			if (auto InteractionSystem = Character->FindComponentByClass<UInteractionSystem>())
+				InteractionSystem->RegisterInteractable(this);
 
-		ShowInteractWidget();
+			bool ShowState = IsWidgetShowEnable(Character);
+			if ( ShowState)
+				ShowInteractWidget();
 		
-		// PickUp 타입이면 Luggage의 custom widget 사용
-		Aluggage* luggage = Cast<Aluggage>(GetOwner());
-		if (luggage && !bIsPickedUp)
-		{
-			luggage->OutlineOn();
-			// luggage->InfoWidgetOn();
-		}
+			// PickUp 타입이면 Luggage의 custom widget 사용
+			if (auto luggage = Cast<Aluggage>(GetOwner()))
+			{
+				if (!bIsPickedUp)
+					luggage->OutlineOn();
+			}
 
-		PRINTLOG( TEXT("InteractableComponent: Player entered detection range - %s"), *GetOwner()->GetName());
+			PRINTLOG( TEXT("InteractableComponent: Player entered detection range - %s"), *GetOwner()->GetName());
+		}
 	}
+}
+
+bool UInteractableComponent::IsWidgetShowEnable(const ACharacter* Character) const
+{
+	// 로컬 플레이어일 때만 위젯 표시 (멀티플레이어 버그 수정)
+	if (!Character->IsLocallyControlled())
+		return false;
+	
+	if (GetOwner()->IsA(AWheatly::StaticClass()))
+	{
+		// SpeakStage에서 현재 발화자 확인
+		if (auto SpeakStage = ULingoGameHelper::GetSpeakStageActor(GetWorld()))
+		{
+			auto CurrentSpeaker = SpeakStage->GetCurrentSpeaker();
+			auto PS = Character->GetPlayerState<ALingoPlayerState>();
+				
+			if (PS && CurrentSpeaker && PS == CurrentSpeaker)
+			{
+				// 현재 발화자이면 위젯을 표시하지 않음
+				PRINTLOG(TEXT("[InteractableComponent] Local player is current speaker - hiding widget"));
+				return false;
+			}
+			else
+			{
+				return true;
+			}
+		}
+	}
+
+	return true;
 }
 
 void UInteractableComponent::OnDetectionEndOverlap(

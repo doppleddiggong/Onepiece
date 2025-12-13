@@ -127,7 +127,7 @@ FString ASpeakStageActor::GetCurrentQuestion() const
 int32 ASpeakStageActor::GetTotalQuestionsCount()
 {
 	if (ALingoPlayerState* PS = Cast<ALingoPlayerState>(CurrentSpeaker))
-		return  PS->SpeakScenarioData.speak_quest_data.Num();
+		return PS->SpeakScenarioData.speak_quest_data.Num();
 	return 0;
 }
 
@@ -166,6 +166,12 @@ void ASpeakStageActor::EndStage()
 {
 	if (!HasAuthority() || !CurrentSpeaker)
 		return;
+
+	// SpeakQuest 완료 처리 (PlayerState에 플래그 설정)
+	if (ALingoPlayerState* PS = Cast<ALingoPlayerState>(CurrentSpeaker))
+	{
+		PS->SetSpeakQuestCompleted();
+	}
 
 	// 클라이언트 측에서 완료 UI 처리 및 위젯 업데이트를 하도록 단일 RPC 호출
 	if (APlayerControl* PC = Cast<APlayerControl>(CurrentSpeaker->GetOwner()))
