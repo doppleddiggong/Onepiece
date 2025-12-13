@@ -11,6 +11,7 @@
 #include "Components/BoxComponent.h"
 #include "Components/WidgetComponent.h"
 #include "UInteractionSystem.h"
+#include "GameFramework/Character.h"
 #include "Kismet/GameplayStatics.h"
 #include "Kismet/KismetMathLibrary.h"
 
@@ -430,28 +431,34 @@ void UInteractableComponent::OnDetectionBeginOverlap(
 		return;
 
 	// Player 캐릭터인지 확인
-	ACharacter* Character = Cast<ACharacter>(OtherActor);
-	if (Character && Character->IsPlayerControlled())
+	if ( auto Character = Cast<ACharacter>(OtherActor) )
 	{
-		// InteractionSystem 찾기 및 등록
-		UInteractionSystem* InteractionSystem = Character->FindComponentByClass<UInteractionSystem>();
-		if (InteractionSystem)
+		if ( Character->IsPlayerControlled())
 		{
-			InteractionSystem->RegisterInteractable(this);
-		}
+			// InteractionSystem 찾기 및 등록
+			if (auto InteractionSystem = Character->FindComponentByClass<UInteractionSystem>())
+				InteractionSystem->RegisterInteractable(this);
 
-		ShowInteractWidget();
+			bool ShowState = IsWidgetShowEnable(Character);
+			if ( ShowState)
+				ShowInteractWidget();
 		
-		// PickUp 타입이면 Luggage의 custom widget 사용
-		Aluggage* luggage = Cast<Aluggage>(GetOwner());
-		if (luggage && !bIsPickedUp)
-		{
-			luggage->OutlineOn();
-			// luggage->InfoWidgetOn();
-		}
+			// PickUp 타입이면 Luggage의 custom widget 사용
+			if (auto luggage = Cast<Aluggage>(GetOwner()))
+			{
+				if (!bIsPickedUp)
+					luggage->OutlineOn();
+			}
 
-		PRINTLOG( TEXT("InteractableComponent: Player entered detection range - %s"), *GetOwner()->GetName());
+			PRINTLOG( TEXT("InteractableComponent: Player entered detection range - %s"), *GetOwner()->GetName());
+		}
 	}
+}
+
+bool UInteractableComponent::IsWidgetShowEnable(const ACharacter* Character) const
+{
+	// 로컬 플레이어일 때만 위젯 표시 (멀티플레이어 버그 수정)
+	return Character && Character->IsLocallyControlled();
 }
 
 void UInteractableComponent::OnDetectionEndOverlap(
@@ -558,5 +565,16 @@ void UInteractableComponent::UpdateInteractPrompt(const FString& NewPrompt)
 	// UInteractWidget의 Txt_Desc 업데이트
 	if (auto InteractWidget = Cast<UInteractWidget>(WidgetComp->GetWidget()))
 		InteractWidget->UpdateDesc(NewPrompt);
+}
+
+void UInteractableComponent::SetWidgetVisibility(bool bVisible)
+{
+	if (!WidgetComp)
+		return;
+
+	if (bVisible)
+		ShowInteractWidget();
+	else
+		HideInteractWidget();
 }
 #pragma endregion

@@ -3,6 +3,8 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "ALingoPlayerState.h"
+#include "ASpeakStageActor.h"
 #include "Blueprint/UserWidget.h"
 #include "UMainWidget.generated.h"
 
@@ -30,7 +32,9 @@ public:
 
 	void UpdateStateWidget(int32 UserId, const FString& UserName);
 	void UpdateRoomWidget(int32 InRoomLevel, int64 InRoomId);
-	
+	void UpdateSpeakWidget();
+	bool CanShowSpeakWidget(ASpeakStageActor*& OutSpeakStage, ALingoPlayerState*& OutLocalPlayerState) const;
+
 	/// @brief 훅 인디케이터 상태 업데이트 (에임/비에임)
 	/// @param bIsAiming true면 타겟 감지됨(파란색), false면 비감지(회색)
 	UFUNCTION(BlueprintCallable, Category = "Hook")
@@ -57,9 +61,6 @@ private:
 	/// @brief 타이머 텍스트를 업데이트합니다.
 	void UpdateTimerDisplay() const;
 
-	/// @brief SpeakWidget UI를 업데이트합니다.
-	void UpdateSpeakWidget();
-
 	/// @brief 미션 타이머 상태 변경 핸들러
 	UFUNCTION()
 	void OnUpdateMissionTimerState(bool bIsActive, float TimeLimit);
@@ -76,11 +77,14 @@ protected:
 	TObjectPtr<class UStateWidget> StateWidget;
 
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
-	TObjectPtr<class UQuestInfoWidget> QuestInfoWidget;
+	TObjectPtr<class UWidgetSwitcher> WidgetSwitcher;
 
 	/// @brief Speak Stage UI 위젯 (옵션, BindWidgetOptional)
-	UPROPERTY(meta = (BindWidgetOptional), BlueprintReadOnly)
+	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
 	TObjectPtr<class USpeakWidget> SpeakWidget;
+
+	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
+	TObjectPtr<class UQuestInfoWidget> QuestInfoWidget;
 
 	/// @brief 훅 가능 대상 표시 위젯 (옵션, BindWidgetOptional)
 	UPROPERTY(meta = (BindWidgetOptional), BlueprintReadOnly)

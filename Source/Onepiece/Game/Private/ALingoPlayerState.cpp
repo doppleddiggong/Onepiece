@@ -3,6 +3,8 @@
 #include "ALingoPlayerState.h"
 
 #include "APlayerControl.h"
+#include "ASpeakStageActor.h"
+#include "EngineUtils.h"
 #include "UBroadcastManager.h"
 #include "Net/UnrealNetwork.h"
 #include "GameLogging.h"
@@ -23,10 +25,12 @@ void ALingoPlayerState::GetLifetimeReplicatedProps(TArray<class FLifetimePropert
 	DOREPLIFETIME(ALingoPlayerState, SelectedWord2);
 	DOREPLIFETIME(ALingoPlayerState, bWrongWord1);
 	DOREPLIFETIME(ALingoPlayerState, bWrongWord2);
+
+	// Speak Quest Data
+	DOREPLIFETIME(ALingoPlayerState, SpeakScenarioData);
+	DOREPLIFETIME(ALingoPlayerState, SpeakJudesResults);
+	DOREPLIFETIME(ALingoPlayerState, bSpeakQuestCompleted);
 }
-
-
-
 
 
 //--------------------------------------------------------------//
@@ -75,6 +79,41 @@ bool ALingoPlayerState::Server_SetSelectedWord2_Validate(const FString& Word2)
 	return true;
 }
 
+void ALingoPlayerState::Server_AddSpeakJudes_Implementation(const FResponseSpeakingJudes& EvaluationResult)
+{
+	SpeakJudesResults.Add(EvaluationResult);
+
+	PRINTLOG(TEXT("[PlayerState] Evaluation result added - Total results: %d, Feedback: %s"),
+		SpeakJudesResults.Num(), *EvaluationResult.final_feedback);
+}
+
+bool ALingoPlayerState::Server_AddSpeakJudes_Validate(const FResponseSpeakingJudes& EvaluationResult)
+{
+	return true;
+}
+
+void ALingoPlayerState::Server_NotifySpeakDataReady_Implementation()
+{
+	// 월드에서 SpeakStageActor를 찾습니다.
+	if (UWorld* World = GetWorld())
+	{
+		for (TActorIterator<ASpeakStageActor> It(World); It; ++It)
+		{
+			ASpeakStageActor* SpeakStage = *It;
+			if (SpeakStage)
+			{
+				// SpeakStage를 통해 퀘스트를 시작합니다.
+				SpeakStage->StartStageForPlayer(this);
+				PRINTLOG(TEXT("[ALingoPlayerState] Client is ready. Starting SpeakQuest for: %s"), *GetPlayerName());
+				return; // 첫 번째로 찾은 SpeakStage를 사용하고 종료
+			}
+		}
+	}
+
+	PRINTLOG(TEXT("[ALingoPlayerState] Server_NotifySpeakDataReady - ASpeakStageActor not found in world!"));
+}
+
+
 //--------------------------------------------------------------//
 // Read Quest OnRep Callbacks
 //--------------------------------------------------------------//
@@ -112,4 +151,33 @@ void ALingoPlayerState::OnRep_WrongWord1()
 void ALingoPlayerState::OnRep_WrongWord2()
 {
 	PRINTLOG(TEXT("[PlayerState] OnRep_ColorWrong: %s"), bWrongWord2 ? TEXT("true") : TEXT("false"));
+}
+
+void ALingoPlayerState::OnRep_SpeakScenarioData()
+{
+	OnUpdateSpeakScenarioData();
+}
+
+void ALingoPlayerState::OnUpdateSpeakScenarioData()
+{
+	Server_NotifySpeakDataReady();
+}
+
+bool ALingoPlayerState::GetCurrentSpeakQuestion(int32 StepIndex, FSpeakStageQuestion& Out) const
+{
+	if ( SpeakScenarioData.speak_quest_data.IsValidIndex(StepIndex))
+	{
+		Out = SpeakScenarioData.speak_quest_data[StepIndex];
+		return true;
+	}
+
+	return false;
+}
+
+void ALingoPlayerState::SetSpeakQuestCompleted()
+{
+	if (!HasAuthority())
+		return;
+
+	bSpeakQuestCompleted = true;
 }

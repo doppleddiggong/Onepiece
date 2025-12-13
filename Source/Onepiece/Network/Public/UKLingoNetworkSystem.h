@@ -48,7 +48,6 @@ public:
 	void RequestWriteQuestions(FResponseWriteQuestionDelegate InDelegate);
 	void RequestWriteSubmit(const TArray<FString>& ImagePathArray, TArray<FString> InTargetText, FResponseWriteSubmitDelegate InDelegate);
 
-
 	void RequestSpeakScenario(FResponseSpeakScenarioDelegate InDelegate);
 
 	/// @brief Evaluation 결과를 조회합니다. GET /evaluations/rooms/{room_id}

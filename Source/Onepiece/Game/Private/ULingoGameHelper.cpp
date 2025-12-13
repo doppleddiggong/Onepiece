@@ -8,8 +8,9 @@
 #include "ALingoPlayerState.h"
 #include "APlayerActor.h"
 #include "APlayerControl.h"
+#include "ASpeakStageActor.h"
+#include "AWheatly.h"
 #include "FResourceTextureData.h"
-#include "USpeakStageSubsystem.h"
 #include "Kismet/GameplayStatics.h"
 #include "Onepiece/Onepiece.h"
 
@@ -92,22 +93,6 @@ TArray<ALingoPlayerState*> ULingoGameHelper::GetLingoPlayerStateList(const UObje
 	}
 
 	return PlayerStateList;
-}
-
-ASpeakStageActor* ULingoGameHelper::GetSpeakStageActor(const UObject* WorldContextObject)
-{
-	if (!WorldContextObject)
-		return nullptr;
-
-	UWorld* World = WorldContextObject->GetWorld();
-	if (!World)
-		return nullptr;
-
-	USpeakStageSubsystem* SpeakSubsystem = World->GetSubsystem<USpeakStageSubsystem>();
-	if (SpeakSubsystem && SpeakSubsystem->IsInitialized())
-		return SpeakSubsystem->GetSpeakStage();
-
-	return nullptr;
 }
 
 FString ULingoGameHelper::GetStageStartMessage(const EQuestType QuestType)
@@ -253,6 +238,50 @@ APlayerControl* ULingoGameHelper::GetPlayerControl(const UObject* WorldContextOb
 		return nullptr;
 
 	return Cast<APlayerControl>(World->GetFirstPlayerController());
+}
+
+ASpeakStageActor* ULingoGameHelper::GetSpeakStageActor(const UObject* WorldContextObject)
+{
+	if (!WorldContextObject)
+		return nullptr;
+
+	UWorld* World = WorldContextObject->GetWorld();
+	if (!World)
+		return nullptr;
+
+	return Cast<ASpeakStageActor>(UGameplayStatics::GetActorOfClass(World, ASpeakStageActor::StaticClass()));
+}
+
+AWheatly* ULingoGameHelper::GetWheatly(const UObject* WorldContextObject)
+{
+	if (!WorldContextObject)
+		return nullptr;
+
+	UWorld* World = WorldContextObject->GetWorld();
+	if (!World)
+		return nullptr;
+
+	return Cast<AWheatly>(UGameplayStatics::GetActorOfClass(World, AWheatly::StaticClass()));
+}
+
+FString ULingoGameHelper::GetPlayerNameFromState(const ALingoPlayerState* PlayerState)
+{
+	if (!PlayerState)
+		return TEXT("");
+
+	// PlayerState의 Owner(PlayerController)를 통해 UserInfo 이름 가져오기
+	if (APlayerController* PC = Cast<APlayerController>(PlayerState->GetOwner()))
+	{
+		if (APlayerControl* PlayerControl = Cast<APlayerControl>(PC))
+		{
+			FString UserName = PlayerControl->GetUserName();
+			if (!UserName.IsEmpty())
+				return UserName;
+		}
+	}
+
+	// Fallback: PlayerState의 기본 이름
+	return PlayerState->GetPlayerName();
 }
 
 FString ULingoGameHelper::GetTimeRank(float InTimeTaken)
