@@ -58,11 +58,11 @@ void AOrderKiosk::BeginFoodOverlap(UPrimitiveComponent* OverlappedComponent, AAc
 {
 	if (IsOnceStopped) return;
 	
-	if (AFood* FoodContainer = Cast<AFood>(OtherActor))
+	if (AFood* Temp = Cast<AFood>(OtherActor))
 	{
+		CurrentFoodContainer = Temp;
+		
 		if (ConveyorsToControl.Num() <= 0) return;
-
-		UE_LOG(LogTemp, Warning, TEXT("FoodOverlap"));
 		
 		// 만약 음식 큐브일 경우, 컨베이어 멈추기
 		for (auto Conveyor : ConveyorsToControl)
@@ -78,24 +78,66 @@ void AOrderKiosk::BeginFoodOverlap(UPrimitiveComponent* OverlappedComponent, AAc
 void AOrderKiosk::BeginSubmitOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
 	UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
+	UE_LOG(LogTemp, Warning, TEXT("[OrderKiosk::BeginSubmitOverlap] Called with Actor: %s"),
+		OtherActor ? *OtherActor->GetName() : TEXT("NULL"));
+
 	// 답 제출하면 컨베이어 재개
 	if (AListenAnswer* Answer = Cast<AListenAnswer>(OtherActor))
 	{
-		if (ConveyorsToControl.Num() <= 0) return;
+		UE_LOG(LogTemp, Warning, TEXT("[OrderKiosk::BeginSubmitOverlap] ListenAnswer detected. AnswerType: %d, Index: %d"),
+			Answer->AnswerData.AnswerType, Index);
 
-		UE_LOG(LogTemp, Warning, TEXT("SubmitOverlap"));
-		
-		// 만약 음식 큐브일 경우, 컨베이어 멈추기
+		if (ConveyorsToControl.Num() <= 0)
+		{
+			UE_LOG(LogTemp, Error, TEXT("[OrderKiosk::BeginSubmitOverlap] ConveyorsToControl is empty!"));
+			return;
+		}
+
 		for (auto Conveyor : ConveyorsToControl)
 		{
 			if (AConveyorBelt* CB = Cast<AConveyorBelt>(Conveyor))
 			{
-				CB->ChangeConveyorSpeed(200.f);
+				if (!CurrentFoodContainer) return;
+
+				// 인덱스 번호와 정답 타입이 일치하면 데이터 전달 후 컨베이어 움직이기
+				if (Answer->AnswerData.AnswerType == Index)
+				{
+					switch (Index)
+					{
+					case 0:
+						break;
+
+					case 1:
+						CurrentFoodContainer->SetFoodMesh(Answer->AnswerData.word1, Answer->Mesh->GetStaticMesh());
+						break;
+
+					case 2:
+						CurrentFoodContainer->SetCityName(Answer->AnswerData.word1);
+						break;
+
+					default:
+						break;
+					}
+
+					CB->ChangeConveyorSpeed(200.f);
+
+					Server_DestroyListenAnswer(Answer);
+					//CurrentFoodContainer = nullptr;
+				}
 			}
 		}
 
 		IsOnceStopped = true;
 	}
+	else
+	{
+		UE_LOG(LogTemp, Warning, TEXT("[OrderKiosk::BeginSubmitOverlap] OtherActor is not a ListenAnswer"));
+	}
+}
+
+void AOrderKiosk::Server_DestroyListenAnswer_Implementation(AActor* ActorToDestroy)
+{
+	ActorToDestroy->Destroy();
 }
 
 // void AOrderKiosk::OnInteractionTriggered(AActor* Interactor)

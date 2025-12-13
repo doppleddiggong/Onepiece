@@ -46,6 +46,13 @@ public:
 	void BeginSubmitOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
 	
 protected:
+	// 현재 감지중인 음식 큐브
+	UPROPERTY(VisibleAnywhere,BlueprintReadOnly)
+	class AFood* CurrentFoodContainer;
+	
+	UPROPERTY(EditAnywhere)
+	int32 Index = 0;
+	
 	bool IsOnceStopped = false;
 	
 	// 움직이거나 멈추게 할 컨베이어 리스트
@@ -53,6 +60,8 @@ protected:
 	UPROPERTY(EditAnywhere)
 	TArray<AActor*> ConveyorsToControl;
 
+	UFUNCTION(Server, Reliable)
+	void Server_DestroyListenAnswer(AActor* ActorToDestroy);
 
 	/** 이번 스폰에서 사용할 데이터 */
 	//UPROPERTY(ReplicatedUsing=OnRep_FoodData)

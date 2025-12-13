@@ -17,9 +17,10 @@ struct FFoodCapsuleData
 	GENERATED_BODY()
 
 	/** 시나리오 단어 정보 */
+	// 음식 이름
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FWordInfo word1;
-
+	// 도시 이름
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FWordInfo word2;
 
@@ -54,35 +55,42 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	class UStaticMeshComponent* Mesh;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UPROPERTY(Replicated, EditAnywhere, BlueprintReadWrite)
 	class UStaticMeshComponent* FoodMesh;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	class UWidgetComponent* FoodName;
+	class UWidgetComponent* CityName;
 
 	UPROPERTY(VisibleAnywhere)
 	TObjectPtr<class UInteractableComponent> InteractableComp;
 	
-protected:
-	// 음식 인덱스
-	UPROPERTY(ReplicatedUsing=OnRep_FoodName)
-	FString Name = "";
+public:
+	//---------------------------------------------------
+	// Data
+	//---------------------------------------------------
+	// 데이터 테이블
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Data")
+	class UDataTable* ListenDataTable;
+
+	// 현재 입력된 데이터
+	UPROPERTY(ReplicatedUsing = OnRep_CurrentFoodData)
+	FFoodCapsuleData CurrentFoodData;
 
 	UFUNCTION()
-	void OnRep_FoodName();
+	void OnRep_CurrentFoodData();
 
+protected:
 	/**
 	 * @brief Widget에 음식 이름 업데이트
 	 */
 	void UpdateFoodWidget();
 
-public:
-	void SetFoodInfo(int32 InIndex, FString InName);
-
 	/**
-	 * @brief Food 이름 반환
-	 * @return Food의 이름
+	 * @brief 음식 메시 업데이트 (DataTable에서 로드)
 	 */
-	UFUNCTION(BlueprintPure, Category = "Food")
-	FORCEINLINE FString GetFoodName() const { return Name; }
+	void UpdateMesh();
+
+public:
+	void SetFoodMesh(FWordInfo InWord, UStaticMesh* InMesh);
+	void SetCityName(FWordInfo InWord);
 };
