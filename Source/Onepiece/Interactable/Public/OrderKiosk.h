@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "ADropper.h"
+#include "ListenAnswer.h"
 #include "GameFramework/Actor.h"
 #include "OrderKiosk.generated.h"
 
@@ -51,7 +52,7 @@ protected:
 	class AFood* CurrentFoodContainer;
 	
 	UPROPERTY(EditAnywhere)
-	int32 Index = 0;
+	EAnswerType InAnswerType = EAnswerType::None;
 	
 	bool IsOnceStopped = false;
 	

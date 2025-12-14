@@ -3,15 +3,9 @@
 
 #include "OrderKiosk.h"
 
-#include "ADropper.h"
-#include "ALingoGameState.h"
-#include "APlayerActor.h"
 #include "ConveyorBelt.h"
 #include "Food.h"
-#include "InteractableComponent.h"
-#include "ListenAnswer.h"
 #include "Components/BoxComponent.h"
-#include "Components/WidgetComponent.h"
 #include "Kismet/GameplayStatics.h"
 #include "Net/UnrealNetwork.h"
 
@@ -85,7 +79,7 @@ void AOrderKiosk::BeginSubmitOverlap(UPrimitiveComponent* OverlappedComponent, A
 	if (AListenAnswer* Answer = Cast<AListenAnswer>(OtherActor))
 	{
 		UE_LOG(LogTemp, Warning, TEXT("[OrderKiosk::BeginSubmitOverlap] ListenAnswer detected. AnswerType: %d, Index: %d"),
-			Answer->AnswerData.AnswerType, Index);
+			Answer->AnswerData.AnswerType, InAnswerType);
 
 		if (ConveyorsToControl.Num() <= 0)
 		{
@@ -100,18 +94,15 @@ void AOrderKiosk::BeginSubmitOverlap(UPrimitiveComponent* OverlappedComponent, A
 				if (!CurrentFoodContainer) return;
 
 				// 인덱스 번호와 정답 타입이 일치하면 데이터 전달 후 컨베이어 움직이기
-				if (Answer->AnswerData.AnswerType == Index)
+				if (Answer->AnswerData.AnswerType == InAnswerType)
 				{
-					switch (Index)
+					switch (InAnswerType)
 					{
-					case 0:
-						break;
-
-					case 1:
+					case EAnswerType::Food:
 						CurrentFoodContainer->SetFoodMesh(Answer->AnswerData.word1, Answer->Mesh->GetStaticMesh());
 						break;
 
-					case 2:
+					case EAnswerType::City:
 						CurrentFoodContainer->SetCityName(Answer->AnswerData.word1);
 						break;
 

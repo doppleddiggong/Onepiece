@@ -125,8 +125,6 @@ void AFood::UpdateMesh()
 			if (Row->FoodPath)
 			{
 				FoodMesh->SetStaticMesh(Row->FoodPath);
-				UE_LOG(LogTemp, Warning, TEXT("[AFood::UpdateMesh] Mesh updated to: %s for word: %s"),
-					*Row->FoodPath->GetName(), *CurrentFoodData.word1.name);
 				return;
 			}
 		}
@@ -139,9 +137,6 @@ void AFood::UpdateMesh()
 
 void AFood::SetFoodMesh(FWordInfo InWord, UStaticMesh* InMesh)
 {
-	UE_LOG(LogTemp, Warning, TEXT("[AFood::SetFoodMesh] Called - Word: %s, HasAuthority: %s"),
-		*InWord.name, HasAuthority() ? TEXT("TRUE") : TEXT("FALSE"));
-
 	CurrentFoodData.word1 = InWord;
 
 	// 서버에서도 UpdateMesh 호출 (클라이언트는 OnRep_CurrentFoodData에서 호출됨)
