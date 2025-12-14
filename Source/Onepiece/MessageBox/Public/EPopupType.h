@@ -24,6 +24,7 @@ enum class EPopupType : uint8
 	Interview			UMETA(DisplayName = "Interview"),
 	Questionnaire		UMETA(DisplayName = "Questionnaire"),
 	WriteBoard			UMETA(DisplayName = "WriteBoard"),
+	QuestionnaireResult UMETA(DisplayName = "QuestionnaireResult"),
 
 	Word				UMETA(DisplayName = "Word"),
 	InterviewHello		UMETA(DisplayName = "InterviewHello"),

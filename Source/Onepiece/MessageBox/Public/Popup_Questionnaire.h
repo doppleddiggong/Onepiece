@@ -45,14 +45,6 @@ protected:
 	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<class UImage> Popup_BaseBg;
 
-	/** 타이틀 프레임 이미지 */
-	UPROPERTY(meta = (BindWidget))
-	TObjectPtr<class UImage> Image_TitleFrame;
-
-	/** 팝업 타이틀 텍스트 */
-	UPROPERTY(meta = (BindWidget))
-	TObjectPtr<class UTextBlock> Txt_Title;
-
 	/** 닫기 버튼 */
 	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<class UTextureButton> Btn_Close;
