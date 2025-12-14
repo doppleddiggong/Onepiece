@@ -12,7 +12,6 @@ var classUPopup__Questionnaire =
     [ "bIsOpenAnim", "classUPopup__Questionnaire.html#a807985dccb3305b1004c611401b7b551", null ],
     [ "Btn_Close", "classUPopup__Questionnaire.html#a4505d97692a465ad06a282e04dc473a8", null ],
     [ "Btn_Submit", "classUPopup__Questionnaire.html#a5f7092f32acbc4aaa429aa5775a53b83", null ],
-    [ "Image_TitleFrame", "classUPopup__Questionnaire.html#a26da397bd0ada7f8caad0f3ba9543605", null ],
     [ "ItemSpacing", "classUPopup__Questionnaire.html#a24f791ba9d79fa439d6a9195e8d73f08", null ],
     [ "OpenDuration", "classUPopup__Questionnaire.html#a5a4c2b75560a3e2d07ed3aa52837278e", null ],
     [ "OpenEaseExponent", "classUPopup__Questionnaire.html#afe75f5ef94f97fbcc8ea1ad9e801524c", null ],
@@ -25,7 +24,6 @@ var classUPopup__Questionnaire =
     [ "QuestionnaireItemClass", "classUPopup__Questionnaire.html#ab3c410c9a8d19b079d0110a1f24d63b3", null ],
     [ "SavedQuestions", "classUPopup__Questionnaire.html#aa6a50df8ff560e5f57e5a84e9ff1a68e", null ],
     [ "ScrollBox", "classUPopup__Questionnaire.html#aeb2374c2209c93983144044c0fe3cb7c", null ],
-    [ "Txt_Title", "classUPopup__Questionnaire.html#aad7d6d58517dd33b60fbc6e68d964c9d", null ],
     [ "VerticalBox", "classUPopup__Questionnaire.html#a3c4a2b4bc0b49d0335cb71aef55d3c3f", null ],
     [ "WriteImagePath", "classUPopup__Questionnaire.html#a0c0019cf99925e1649b611775c04f852", null ]
 ];

@@ -82,6 +82,5 @@ var NetworkData_8h =
     [ "users_me", "NetworkData_8h.html#aee732573aa0bc733fedaab927a273dcd", null ],
     [ "users_register", "NetworkData_8h.html#a2d4b0c891a96c4ac2d1829ae24d01dc3", null ],
     [ "users_token", "NetworkData_8h.html#af908b99f78364328aca763f362236454", null ],
-    [ "writes_questions", "NetworkData_8h.html#aa2f5c37be714a353d2d2baf3aece15ac", null ],
     [ "writes_submit", "NetworkData_8h.html#a8c14fc8a3f386da9971cfe30a1b00966", null ]
 ];

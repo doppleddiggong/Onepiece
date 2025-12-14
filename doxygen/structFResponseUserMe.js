@@ -5,5 +5,7 @@ var structFResponseUserMe =
     [ "fullname", "structFResponseUserMe.html#abd1ef38a53fdde39a4a5a5610d84c938", null ],
     [ "id", "structFResponseUserMe.html#a4481df4d35a0fd13d5c0989e3404c8a4", null ],
     [ "is_active", "structFResponseUserMe.html#aae761cb89ba3679b02d2ab7dcfb7aecc", null ],
+    [ "my_avatar", "structFResponseUserMe.html#a9f05c5cadc14501568877dc317be6412", null ],
+    [ "my_color", "structFResponseUserMe.html#acb142b22e095f2e30a8461dd67db1001", null ],
     [ "username", "structFResponseUserMe.html#ae5540a9cbe35f9d9fd23045f17bb68e8", null ]
 ];

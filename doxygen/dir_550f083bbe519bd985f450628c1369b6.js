@@ -1,5 +1,8 @@
 var dir_550f083bbe519bd985f450628c1369b6 =
 [
+    [ "ChatBoxWidget.cpp", "ChatBoxWidget_8cpp.html", null ],
+    [ "ChatInputBox.cpp", "ChatInputBox_8cpp.html", null ],
+    [ "ChatWidget.cpp", "ChatWidget_8cpp.html", null ],
     [ "CityNameWidget.cpp", "CityNameWidget_8cpp.html", null ],
     [ "DrawingBoardWidget.cpp", "DrawingBoardWidget_8cpp.html", null ],
     [ "LobbyWidget.cpp", "LobbyWidget_8cpp.html", null ],

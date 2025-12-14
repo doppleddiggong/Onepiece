@@ -1,15 +1,21 @@
 var searchData=
 [
-  ['cityname_2ecpp_0',['CityName.cpp',['../CityName_8cpp.html',1,'']]],
-  ['cityname_2eh_1',['CityName.h',['../CityName_8h.html',1,'']]],
-  ['citynamewidget_2ecpp_2',['CityNameWidget.cpp',['../CityNameWidget_8cpp.html',1,'']]],
-  ['citynamewidget_2eh_3',['CityNameWidget.h',['../CityNameWidget_8h.html',1,'']]],
-  ['coffeelibrary_2ecpp_4',['CoffeeLibrary.cpp',['../CoffeeLibrary_8cpp.html',1,'']]],
-  ['coffeelibrary_2eh_5',['CoffeeLibrary.h',['../CoffeeLibrary_8h.html',1,'']]],
-  ['converyorbuttonaniminstance_2ecpp_6',['ConveryorButtonAnimInstance.cpp',['../ConveryorButtonAnimInstance_8cpp.html',1,'']]],
-  ['converyorbuttonaniminstance_2eh_7',['ConveryorButtonAnimInstance.h',['../ConveryorButtonAnimInstance_8h.html',1,'']]],
-  ['conveyorbelt_2ecpp_8',['ConveyorBelt.cpp',['../ConveyorBelt_8cpp.html',1,'']]],
-  ['conveyorbelt_2eh_9',['ConveyorBelt.h',['../ConveyorBelt_8h.html',1,'']]],
-  ['conveyorbutton_2ecpp_10',['ConveyorButton.cpp',['../ConveyorButton_8cpp.html',1,'']]],
-  ['conveyorbutton_2eh_11',['ConveyorButton.h',['../ConveyorButton_8h.html',1,'']]]
+  ['chatboxwidget_2ecpp_0',['ChatBoxWidget.cpp',['../ChatBoxWidget_8cpp.html',1,'']]],
+  ['chatboxwidget_2eh_1',['ChatBoxWidget.h',['../ChatBoxWidget_8h.html',1,'']]],
+  ['chatinputbox_2ecpp_2',['ChatInputBox.cpp',['../ChatInputBox_8cpp.html',1,'']]],
+  ['chatinputbox_2eh_3',['ChatInputBox.h',['../ChatInputBox_8h.html',1,'']]],
+  ['chatwidget_2ecpp_4',['ChatWidget.cpp',['../ChatWidget_8cpp.html',1,'']]],
+  ['chatwidget_2eh_5',['ChatWidget.h',['../ChatWidget_8h.html',1,'']]],
+  ['cityname_2ecpp_6',['CityName.cpp',['../CityName_8cpp.html',1,'']]],
+  ['cityname_2eh_7',['CityName.h',['../CityName_8h.html',1,'']]],
+  ['citynamewidget_2ecpp_8',['CityNameWidget.cpp',['../CityNameWidget_8cpp.html',1,'']]],
+  ['citynamewidget_2eh_9',['CityNameWidget.h',['../CityNameWidget_8h.html',1,'']]],
+  ['coffeelibrary_2ecpp_10',['CoffeeLibrary.cpp',['../CoffeeLibrary_8cpp.html',1,'']]],
+  ['coffeelibrary_2eh_11',['CoffeeLibrary.h',['../CoffeeLibrary_8h.html',1,'']]],
+  ['converyorbuttonaniminstance_2ecpp_12',['ConveryorButtonAnimInstance.cpp',['../ConveryorButtonAnimInstance_8cpp.html',1,'']]],
+  ['converyorbuttonaniminstance_2eh_13',['ConveryorButtonAnimInstance.h',['../ConveryorButtonAnimInstance_8h.html',1,'']]],
+  ['conveyorbelt_2ecpp_14',['ConveyorBelt.cpp',['../ConveyorBelt_8cpp.html',1,'']]],
+  ['conveyorbelt_2eh_15',['ConveyorBelt.h',['../ConveyorBelt_8h.html',1,'']]],
+  ['conveyorbutton_2ecpp_16',['ConveyorButton.cpp',['../ConveyorButton_8cpp.html',1,'']]],
+  ['conveyorbutton_2eh_17',['ConveyorButton.h',['../ConveyorButton_8h.html',1,'']]]
 ];
