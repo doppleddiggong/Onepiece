@@ -41,7 +41,7 @@ UPopupManager::UPopupManager()
 	PopupClassMap.Add(EPopupType::Interview, FComponentHelper::LoadClass<UPopup_Interview>(INTERVIEW_POPUP_PATH));
 	PopupClassMap.Add(EPopupType::Questionnaire, FComponentHelper::LoadClass<UPopup_Questionnaire>(Questionnaire_POPUP_PATH));
 	PopupClassMap.Add(EPopupType::WriteBoard, FComponentHelper::LoadClass<UPopup_WriteBoard>(WriteBoard_POPUP_PATH));
-	PopupClassMap.Add(EPopupType::QuestionnaireResult, FComponentHelper::LoadClass<UPopup_QuestionnaireResult>(WriteBoard_POPUP_PATH));
+	PopupClassMap.Add(EPopupType::QuestionnaireResult, FComponentHelper::LoadClass<UPopup_QuestionnaireResult>(QuestionnaireResult_POPUP_PATH));
 	PopupClassMap.Add(EPopupType::Word, FComponentHelper::LoadClass<UPopup_Word>(WORD_POPUP_PATH));
 	PopupClassMap.Add(EPopupType::InterviewHello, FComponentHelper::LoadClass<UPopup_InterviewHello>(INTERVIEWHELLO_POPUP_PATH));
 }
