@@ -9,7 +9,6 @@
 #include "GameLogging.h"
 #include "TimerManager.h"
 #include "ULingoGameHelper.h"
-#include "USpeakStageSubsystem.h"
 
 #include "Engine/World.h"
 #include "GameFramework/PlayerState.h"
@@ -60,23 +59,6 @@ void ALingoGameMode::BeginListenQuest(const FResponseListenScenario& InResponseD
 
 	if (auto GS = GetGameState<ALingoGameState>())
 		GS->SetListenScenarioData(InResponseData);
-}
-
-
-void ALingoGameMode::BeginSpeakQuest(int32 InStageIndex)
-{
-	if (!HasAuthority())
-		return;
-
-	// Subsystem에 위임
-	if (USpeakStageSubsystem* Subsystem = GetWorld()->GetSubsystem<USpeakStageSubsystem>())
-	{
-		Subsystem->BeginSpeakQuest(InStageIndex);
-	}
-	else
-	{
-		PRINTLOG(TEXT("[LingoGameMode] BeginSpeakQuest - SpeakStageSubsystem not found"));
-	}
 }
 
 void ALingoGameMode::HandleLuggageSelection(APlayerState* Player, Aluggage* luggage)

@@ -19,9 +19,6 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "Quest")
 	void BeginListenQuest(const FResponseListenScenario& InResponseData);
-
-	UFUNCTION(BlueprintCallable, Category = "Quest")
-	void BeginSpeakQuest(int32 InStageIndex);
 	
 	UFUNCTION()
 	void HandleLuggageSelection(class APlayerState* Player, class Aluggage* luggage);

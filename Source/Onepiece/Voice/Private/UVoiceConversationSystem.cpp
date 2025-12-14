@@ -8,6 +8,7 @@
 
 #include "ALingoPlayerState.h"
 #include "GameLogging.h"
+#include "ULingoGameHelper.h"
 #include "UBroadcastManager.h"
 #include "UDialogManager.h"
 #include "UVoiceFunctionLibrary.h"
@@ -66,15 +67,15 @@ void UVoiceConversationSystem::StartRecording()
 			}
 
 			// 현재 발화자 확인
-			APlayerState* CurrentSpeaker = SpeakStageActor->GetCurrentSpeaker();
+			ALingoPlayerState* CurrentSpeaker = SpeakStageActor->GetCurrentSpeaker();
 
 			if (!CurrentSpeaker)
 			{
-				PRINTLOG(TEXT("[VoiceConversation] Recording blocked: Speak Stage has been completed"));
+				PRINTLOG(TEXT("[VoiceConversation] Recording blocked: Stage not started."));
 
 				if (auto DM = UDialogManager::Get(World))
 				{
-					DM->ShowToast(TEXT("모든 단계가 완료되었습니다"));
+					DM->ShowToast(TEXT("Talk to the officer to begin the inspection."));
 				}
 				return;
 			}
@@ -83,20 +84,13 @@ void UVoiceConversationSystem::StartRecording()
 			if (LocalPlayerState && CurrentSpeaker && CurrentSpeaker != LocalPlayerState)
 			{
 				PRINTLOG(TEXT("[VoiceConversation] Recording blocked: Not your turn (Current: %s)"),
-					*CurrentSpeaker->GetPlayerName());
+					*ULingoGameHelper::GetPlayerNameFromState(CurrentSpeaker));
 
 				if (auto DM = UDialogManager::Get(World))
 				{
-					DM->ShowToast(FString::Printf(TEXT("지금은 %s님의 차례입니다"), *CurrentSpeaker->GetPlayerName()));
+					DM->ShowToast(FString::Printf(TEXT("It is %s's turn."), *ULingoGameHelper::GetPlayerNameFromState(CurrentSpeaker)));
 				}
 				return;
-			}
-
-			// 내 턴이면 Server_RequestSpeak() 호출 (발화 권한 요청)
-			if (LocalPlayerState && CurrentSpeaker == LocalPlayerState)
-			{
-				PRINTLOG(TEXT("[VoiceConversation] Requesting speak permission..."));
-				SpeakStageActor->Server_RequestSpeak(LocalPlayerState);
 			}
 		}
 	}
@@ -115,7 +109,6 @@ void UVoiceConversationSystem::StartRecording()
 				World->GetTimerManager().ClearTimer(VoiceFinishTimerHandle);
 
 				OnVoiceAudioFinished(); // 수동으로 호출하여 이전 상태를 정리합니다.
-				PRINTLOG(TEXT("[VoiceConversation] Stopped conversation voice before recording and manually called OnVoiceAudioFinished"));
 			}
 		}
 	}
@@ -260,6 +253,12 @@ void UVoiceConversationSystem::StopRecording()
 	if ( auto SpeakStageActor = ULingoGameHelper::GetSpeakStageActor(GetWorld()) )
 		Question = SpeakStageActor->GetCurrentQuestion();
 
+	// Toast 메시지 표시: 답변 분석 중
+	if (UDialogManager* DM = UDialogManager::Get(GetWorld()))
+	{
+		DM->ShowToast(TEXT("The officer is reviewing your answer"));
+	}
+
 	HttpSystem->RequestSpeakingJudges(
 		Question,
 		LastRecordedFilePath,
@@ -287,7 +286,10 @@ void UVoiceConversationSystem::OnResponseSpeakingsJudges(FResponseSpeakingJudes&
 			{
 				if (auto LocalPlayerState = ULingoGameHelper::GetLingoPlayerStateByPC(Owner->GetController()))
 				{
-					SpeakStageActor->Server_NotifyAnswerComplete(LocalPlayerState);
+					// Store evaluation result in PlayerState
+					LocalPlayerState->Server_AddSpeakJudes(Response);
+
+					SpeakStageActor->ServerRPC_NotifyAnswerComplete(LocalPlayerState);
 				}
 			}
 		}

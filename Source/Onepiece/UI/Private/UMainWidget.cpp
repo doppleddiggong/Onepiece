@@ -11,18 +11,16 @@
 #include "ALingoGameState.h"
 #include "ALingoPlayerState.h"
 #include "ASpeakStageActor.h"
+#include "ULingoGameHelper.h"
 #include "UBroadcastManager.h"
 #include "GameLogging.h"
-#include "ULingoGameHelper.h"
 #include "UQuestInfoWidget.h"
 #include "USpeakWidget.h"
-#include "USpeakStageSubsystem.h"
-#include "UTutorMessage.h"
-#include "UAutoDespawnItem.h"
 #include "UFadeWidget.h"
 #include "URoomWidget.h"
 #include "Engine/World.h"
 #include "Components/Image.h"
+#include "Components/WidgetSwitcher.h"
 #include "Engine/Texture2D.h"
 #include "GameFramework/PlayerState.h"
 #include "GameFramework/PlayerController.h"
@@ -73,7 +71,6 @@ void UMainWidget::NativeTick(const FGeometry& MyGeometry, float InDeltaTime)
 	Super::NativeTick(MyGeometry, InDeltaTime);
 
 	UpdateTimerDisplay();
-	UpdateSpeakWidget();
 }
 
 void UMainWidget::SetMissionTimerState(bool bIsActive) const
@@ -127,6 +124,7 @@ void UMainWidget::OnUpdateMissionTimerState(bool bIsActive, float TimeLimit)
 	
 	if (bIsActive)
 	{
+		WidgetSwitcher->SetActiveWidgetIndex(0);
 		QuestInfoWidget->InitQuestInfo();
 	}
 
@@ -144,23 +142,38 @@ void UMainWidget::UpdateHookState(bool bIsAiming)
 
 void UMainWidget::UpdateSpeakWidget()
 {
-	USpeakStageSubsystem* Subsystem = GetWorld()->GetSubsystem<USpeakStageSubsystem>();
-	ASpeakStageActor* SpeakStage = Subsystem ? Subsystem->GetSpeakStage() : nullptr;
-	APlayerState* CurrentSpeaker = SpeakStage ? SpeakStage->GetCurrentSpeaker() : nullptr;
+	WidgetSwitcher->SetActiveWidgetIndex(1);
 
-	const bool bShouldShow = Subsystem && Subsystem->IsInitialized() && SpeakStage && CurrentSpeaker;
+	ASpeakStageActor* SpeakStage = nullptr;
+	ALingoPlayerState* LocalPlayerState = nullptr;
 
-	SpeakWidget->SetWidgetVisibility(bShouldShow);
+	const bool bCanShow =
+		CanShowSpeakWidget(SpeakStage, LocalPlayerState);
+	SpeakWidget->SetWidgetVisibility(bCanShow);
+	
+	if ( bCanShow )
+		SpeakWidget->UpdateSpeakStage(SpeakStage, LocalPlayerState);
+}
 
-	if (bShouldShow)
-	{
-		APlayerController* LocalPC = GetWorld()->GetFirstPlayerController();
-		if (!LocalPC)
-			return;
+bool UMainWidget::CanShowSpeakWidget( ASpeakStageActor*& OutSpeakStage,	ALingoPlayerState*& OutLocalPlayerState) const
+{
+	OutSpeakStage = ULingoGameHelper::GetSpeakStageActor(this);
+	if (!OutSpeakStage)
+		return false;
 
-		APlayerState* LocalPlayerState = LocalPC->GetPlayerState<APlayerState>();
-		SpeakWidget->UpdateSpeakStageUI(SpeakStage, LocalPlayerState);
-	}
+	ALingoPlayerState* CurrentSpeaker = OutSpeakStage->GetCurrentSpeaker();
+	if (!CurrentSpeaker)
+		return false;
+
+	APlayerController* LocalPC = GetWorld()->GetFirstPlayerController();
+	if (!LocalPC)
+		return false;
+
+	OutLocalPlayerState = LocalPC->GetPlayerState<ALingoPlayerState>();
+	if (!OutLocalPlayerState)
+		return false;
+
+	return (OutLocalPlayerState == CurrentSpeaker);
 }
 
 void UMainWidget::FadeOut(float Duration)
