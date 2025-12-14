@@ -5,6 +5,7 @@
 
 #include "GameLogging.h"
 #include "Popup_QuestionnaireItem.h"
+#include "Popup_QuestionnaireResult.h"
 #include "UImageButton.h"
 #include "UKLingoNetworkSystem.h"
 #include "UPopupManager.h"
@@ -104,6 +105,8 @@ void UPopup_Questionnaire::OnClickSubmit()
 			targetTexts,
 			FResponseWriteSubmitDelegate::CreateUObject(this, &UPopup_Questionnaire::OnResponseOcrExtract)
 		);
+		
+		OnClickClose();
 	}
 	else
 	{
@@ -119,6 +122,15 @@ void UPopup_Questionnaire::OnResponseOcrExtract(FResponseWriteSubmit& ResponseDa
 		ResponseData.PrintData();
 		
 		// TODO: 피드백 팝업 창 생성해야 함.
+		if (auto Popup = UPopupManager::ShowPopupAs<UPopup_QuestionnaireResult>(GetWorld(), EPopupType::Questionnaire))
+		{
+			// 팝업 초기화
+			Popup->InitPopup(ResponseData);
+		
+			PRINTLOG(TEXT("[PopupTester] Result popup opened"));
+		}
+		
+		
 		// for (const FResponseOcrData& data : ResponseData.ResponseOcrDataArray)
 		for (int32 i = 1; i <= ResponseData.ResponseWriteDataArray.Num(); ++i)
 		{
