@@ -695,7 +695,7 @@ struct FResponseWriteData
 };
 
 /// @brief Write Submit 응답 델리게이트입니다.
-DECLARE_DELEGATE_TwoParams(FResponseWriteSubmitDelegate, FResponseWriteSubmit&, bool);
+DECLARE_DELEGATE_ThreeParams(FResponseWriteSubmitDelegate, FResponseWriteSubmit&, TArray<FWriteWordData>, bool);
 /// @brief Write Submit 응답 구조체입니다.
 USTRUCT(BlueprintType)
 struct FResponseWriteSubmit

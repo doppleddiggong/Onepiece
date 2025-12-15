@@ -6,7 +6,9 @@
 #include "GameLogging.h"
 #include "Components/Spacer.h"
 #include "Popup_QuestionnaireResultItem.h"
+#include "UPopupManager.h"
 #include "Components/ScrollBox.h"
+#include "UImageButton.h"
 
 UPopup_QuestionnaireResult::UPopup_QuestionnaireResult(const FObjectInitializer& ObjectInitializer)
 {
@@ -17,13 +19,16 @@ UPopup_QuestionnaireResult::UPopup_QuestionnaireResult(const FObjectInitializer&
 	}
 }
 
-void UPopup_QuestionnaireResult::InitPopup(const FResponseWriteSubmit& InResponseData)
+void UPopup_QuestionnaireResult::InitPopup(const TArray<FWriteWordData> InQuestionArray, const FResponseWriteSubmit& InResponseData)
 {
 	// 피드백 데이터 저장
 	ResponseData = InResponseData;
-	
-	// VerticalBox 초기화
-	ScrollBox_Result->ClearChildren();
+	// 질문 데이터 저장
+	for (const auto& question : InQuestionArray)
+	{
+		QuestionsKor.Add(question.kor);
+		QuestionsEng.Add(question.eng);
+	}
 	
 	// TODO: 피드백 팝업 창 생성해야 함.
 	// for (const FResponseOcrData& data : ResponseData.ResponseOcrDataArray)
@@ -43,7 +48,7 @@ void UPopup_QuestionnaireResult::InitPopup(const FResponseWriteSubmit& InRespons
 		// 인터뷰 항목 위젯 생성
 		UPopup_QuestionnaireResultItem* ItemWidget = CreateWidget<UPopup_QuestionnaireResultItem>(
 			GetWorld(), QuestionnaireResultItemClass);
-		ItemWidget->InitItem(i, data);
+		ItemWidget->InitItem(i, QuestionsKor[i - 1], data);
 		ScrollBox_Result->AddChild(ItemWidget);
 	
 		// 마지막 항목이 아니면 Spacer 추가
@@ -62,9 +67,15 @@ void UPopup_QuestionnaireResult::InitPopup(const FResponseWriteSubmit& InRespons
 void UPopup_QuestionnaireResult::NativeConstruct()
 {
 	Super::NativeConstruct();
+	
+	Btn_Confirm->OnButtonClickedEvent.AddDynamic(this, &UPopup_QuestionnaireResult::OnClickClose);
 }
 
 void UPopup_QuestionnaireResult::OnClickClose()
 {
-	
+	// PopupManager를 통해 팝업 닫기 (마우스 커서 처리 포함)
+	if (UPopupManager* PopupMgr = UPopupManager::Get(GetWorld()))
+	{
+		PopupMgr->HideCurrentPopup();
+	}
 }
