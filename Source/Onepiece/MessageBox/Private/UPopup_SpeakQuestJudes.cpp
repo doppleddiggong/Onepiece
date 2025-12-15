@@ -5,23 +5,18 @@
 
 #include "UImageButton.h"
 #include "NetworkData.h"
-#include "Components/TextBlock.h"
-#include "Components/HorizontalBox.h"
-#include "Animation/WidgetAnimation.h"
-#include "UAutoDespawnItem.h"
 #include "FResultStatData.h"
+#include "Animation/WidgetAnimation.h"
+#include "UDespawnItem.h"
+#include "UGameDataManager.h"
+#include "ULingoGameHelper.h"
 #include "UPopupManager.h"
+#include "Components/Image.h"
 
 
 void UPopup_SpeakQuestJudes::NativeConstruct()
 {
 	Super::NativeConstruct();
-
-	if (Btn_Ok)
-	{
-		Btn_Ok->OnButtonClickedEvent.RemoveDynamic(this, &UPopup_SpeakQuestJudes::OnClickOk);
-		Btn_Ok->OnButtonClickedEvent.AddDynamic(this, &UPopup_SpeakQuestJudes::OnClickOk);
-	}
 
 	if (HideAnim)
 	{
@@ -32,32 +27,42 @@ void UPopup_SpeakQuestJudes::NativeConstruct()
 	}
 }
 
-void UPopup_SpeakQuestJudes::InitPopup(FResponseSpeakingJudes& Response)
+void UPopup_SpeakQuestJudes::InitPopup(const FResponseSpeakingJudes& Response)
 {
-	// 피드백 메시지 설정
-	if (Txt_Feedback)
-	{
-		Txt_Feedback->SetText(FText::FromString(Response.final_feedback));
-	}
+	// Grammar Score
+	// Context Score
+	// Final Overall Score
 
-	// 점수 데이터를 아이템으로 추가
-	if (ItemHorizontalBox && ItemWidgetClass)
-	{
-		// 기존 아이템 제거
-		ItemHorizontalBox->ClearChildren();
+	TArray<FResultStatData> List = Response.GetResultStatData();
+	GrammerItem->InitData( List[0]);
+	ContextItem->InitData( List[1]);
 
-		// 각 점수를 아이템으로 추가
-		for (const FResultStatData& StatData : Response.GetResultStatData())
-		{
-			if (auto ItemWidget = CreateWidget<UAutoDespawnItem>(GetWorld(), ItemWidgetClass))
-			{
-				ItemWidget->InitData(StatData);
-				ItemHorizontalBox->AddChildToHorizontalBox(ItemWidget);
-			}
-		}
-	}
+	EResourceTextureType TextureType = ULingoGameHelper::ConvertGradeScore(Response.final_overall_score);
+	UGameDataManager* DataManager = UGameDataManager::Get(this);
+	if (!DataManager)
+		return;
 
+	UTexture2D* Texture = DataManager->GetTexture(TextureType);
+	if (!Texture)
+		return;
+
+	FSlateBrush Brush = Image_Grade->GetBrush();
+	Brush.SetResourceObject(Texture);
+	Image_Grade->SetBrush(Brush);
+
+	if (GetWorld() && GetWorld()->GetTimerManager().IsTimerActive(LifetimeTimer))
+		GetWorld()->GetTimerManager().ClearTimer(LifetimeTimer);
+	
 	PlayAnimation(ShowAnim);
+
+	// Lifetime 후 FadeOut 시작
+	GetWorld()->GetTimerManager().SetTimer(
+		LifetimeTimer,
+		this,
+		&UPopup_SpeakQuestJudes::OnClickOk,
+		Lifetime,
+		false
+	);
 }
 
 void UPopup_SpeakQuestJudes::OnClickOk()

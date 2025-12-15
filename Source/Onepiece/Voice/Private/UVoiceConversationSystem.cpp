@@ -18,6 +18,7 @@
 #include "APlayerActor.h"
 #include "ULingoGameHelper.h"
 #include "FResultStatData.h"
+#include "UPopupManager.h"
 #include "Sound/SoundWaveProcedural.h"
 #include "GameFramework/PlayerState.h"
 
@@ -273,18 +274,16 @@ void UVoiceConversationSystem::OnResponseSpeakingsJudges(FResponseSpeakingJudes&
 	{
 		PRINTLOG( TEXT("--- Network Response Received : %s"), *Response.final_feedback);
 
-		// Broadcast final_feedback to UTutorMessage
-		if (BroadcastManager)
-		{
-			BroadcastManager->SendTutorMessage(FText::FromString(Response.final_feedback));
-			BroadcastManager->SendAddItemToBoxList(	Response.GetResultStatData());
-		}
-
+		// // Broadcast final_feedback to UTutorMessage
+		// if (BroadcastManager)
+		// {
+		// 	BroadcastManager->SendTutorMessage(FText::FromString(Response.final_feedback));
+		// 	BroadcastManager->SendAddItemToBoxList(	Response.GetResultStatData());
+		// }
+		
 		// PlayerActor의 Server RPC 호출 (PlayerActor는 Client 소유!)
 		if (Owner)
-		{
 			Owner->Server_NotifySpeakJudgeComplete(Response);
-		}
 	}
 	else
 	{

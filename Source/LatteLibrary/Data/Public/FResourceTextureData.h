@@ -27,6 +27,10 @@ enum class EResourceTextureType : uint8
 	Listen,
 	Speak,
 	Write,
+
+	Grammar, 
+	Context,	
+	Overall,
 };
 
 USTRUCT(BlueprintType)

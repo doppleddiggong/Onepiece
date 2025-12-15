@@ -134,7 +134,7 @@ void AWheatly::BeginPlay()
 	}
 
 	// SpeakStage 자동 연결 (서버에서만)
-	if (HasAuthority() && !SpeakStage)
+	if (HasAuthority() && !SpeakStageActor)
 	{
 		ASpeakStageActor* FoundStage = Cast<ASpeakStageActor>(
 			UGameplayStatics::GetActorOfClass(GetWorld(), ASpeakStageActor::StaticClass())
@@ -142,7 +142,7 @@ void AWheatly::BeginPlay()
 
 		if (FoundStage)
 		{
-			SetSpeakStage(FoundStage);
+			SetSpeakStageActor(FoundStage);
 			PRINTLOG(TEXT("[AWheatly] SpeakStage auto-connected"));
 		}
 		else
@@ -158,11 +158,11 @@ void AWheatly::Tick(float DeltaSeconds)
 {
 	Super::Tick(DeltaSeconds);
 
-	if (!SpeakStage)
+	if (!SpeakStageActor)
 		return;
 
 	// 퀘스트 진행 중일 때
-	if (auto CurrentSpeaker = SpeakStage->GetCurrentSpeaker())
+	if (auto CurrentSpeaker = SpeakStageActor->GetCurrentSpeaker())
 	{
 		if (HasAuthority())
 		{
@@ -264,31 +264,22 @@ void AWheatly::Multicast_PlayAnimation_Implementation(EWheatlyAnim InAnimType)
 	CurAnimDuration = AnimSeq->GetPlayLength();
 }
 
-void AWheatly::SetSpeakStage(ASpeakStageActor* InSpeakStage)
+void AWheatly::SetSpeakStageActor(ASpeakStageActor* InSpeakStageActor)
 {
 	// 기존 SpeakStage가 있다면 이벤트 바인딩 해제
-	if (SpeakStage)
-		SpeakStage->OnSpeakerChanged.RemoveDynamic(this, &AWheatly::OnSpeakStageSpeakerChanged);
+	if (SpeakStageActor)
+		SpeakStageActor->OnSpeakerChanged.RemoveDynamic(this, &AWheatly::OnSpeakStageSpeakerChanged);
 	
-	SpeakStage = InSpeakStage;
+	SpeakStageActor = InSpeakStageActor;
 
 	// 새로운 SpeakStage에 이벤트 바인딩
-	if (SpeakStage)
+	if (SpeakStageActor)
 	{
-		SpeakStage->OnSpeakerChanged.AddDynamic(this, &AWheatly::OnSpeakStageSpeakerChanged);
+		SpeakStageActor->OnSpeakerChanged.AddDynamic(this, &AWheatly::OnSpeakStageSpeakerChanged);
 		// 초기 상태 동기화
-		OnSpeakStageSpeakerChanged(SpeakStage->GetCurrentSpeaker());
+		OnSpeakStageSpeakerChanged(SpeakStageActor->GetCurrentSpeaker());
 	}
 }
-
-// void AWheatly::BeginSpeakQuest(APlayerActor* Player)
-// {
-// 	if (!HasAuthority() || !Player)
-// 		return;
-//
-// 	RequestSpeakScenario(Player);
-// }
-
 
 void AWheatly::CompleteSpeakQuest(APlayerActor* Player)
 {
@@ -303,46 +294,6 @@ void AWheatly::CompleteSpeakQuest(APlayerActor* Player)
 	if (UBroadcastManager* BroadcastMgr = UBroadcastManager::Get(GetWorld()))
 		BroadcastMgr->SendTutorMessage(FText::FromString("SPEAK COMPLETE"));
 }
-
-// void AWheatly::RequestSpeakScenario(APlayerActor* Player)
-// {
-// 	this->RequestPlayer = Player;
-// 	
-// 	if ( auto KLingoNetwork = UKLingoNetworkSystem::Get(GetWorld()) )
-// 	{
-// 		KLingoNetwork->RequestSpeakScenario(FResponseSpeakScenarioDelegate::CreateUObject(this, &AWheatly::OnResponseSpeakScenario));
-// 	}
-// }
-//
-// void AWheatly::OnResponseSpeakScenario(FResponseSpeakScenario& ResponseData, bool bWasSuccessful)
-// {
-// 	// 응답 델리게이트 생성
-// 	if (bWasSuccessful)
-// 	{
-// 		// PlayerState에 데이터 저장
-// 		if (auto PS = RequestPlayer->GetPlayerState<ALingoPlayerState>() )
-// 		{
-// 			// PlayerState에 시나리오 데이터 저장
-// 			PS->SpeakScenarioData = ResponseData;
-//
-// 			PS->OnUpdateSpeakScenarioData();
-// 		}
-// 		else
-// 		{
-// 			// 실패 시 SpeakStage를 종료해야 할 수 있음
-// 			if(SpeakStage && SpeakStage->GetCurrentSpeaker())
-// 				SpeakStage->EndStage();
-// 		}
-// 	}
-// 	else
-// 	{
-// 		// 실패 시 SpeakStage를 종료해야 할 수 있음
-// 		if(SpeakStage && SpeakStage->GetCurrentSpeaker())
-// 		{
-// 			SpeakStage->EndStage();
-// 		}
-// 	}
-// }
 
 void AWheatly::SyncSpeakScenarioData(APlayerActor* Player, const FResponseSpeakScenario& Data)
 {
@@ -370,8 +321,8 @@ void AWheatly::SyncSpeakScenarioData(APlayerActor* Player, const FResponseSpeakS
 		PRINTLOG(TEXT("[AWheatly] SyncSpeakScenarioData: Failed to get PlayerState"));
 
 		// 실패 시 SpeakStage를 종료
-		if (SpeakStage && SpeakStage->GetCurrentSpeaker())
-			SpeakStage->EndStage();
+		if (SpeakStageActor && SpeakStageActor->GetCurrentSpeaker())
+			SpeakStageActor->EndStage();
 	}
 }
 
@@ -381,44 +332,38 @@ void AWheatly::SyncSpeakScenarioData(APlayerActor* Player, const FResponseSpeakS
 
 void AWheatly::OnInteractionTriggered(AActor* InteractingActor)
 {
-	if (!HasAuthority() || !SpeakStage)
+	if (!HasAuthority() || !SpeakStageActor)
 		return;
 
 	APlayerActor* InteractingPlayer = Cast<APlayerActor>(InteractingActor);
 	if (!InteractingPlayer)
 		return;
 
+	auto PC = Cast<APlayerControl>(InteractingPlayer->GetController());
+	
 	// 플레이어의 SpeakQuest 완료 여부 확인
 	if (auto PS = InteractingPlayer->GetPlayerState<ALingoPlayerState>())
 	{
 		if (PS->IsSpeakQuestCompleted())
 		{
-			if (auto PC = Cast<APlayerControl>(InteractingPlayer->GetController()))
-			{
+			if ( PC )
 				PC->Client_ToastMessage(TEXT("이미 SpeakQuest를 완료하였습니다"));
-			}
+
 			return;
 		}
 	}
 
 	// SpeakStage의 상태를 직접 확인
-	if (ALingoPlayerState* CurrentSpeaker = SpeakStage->GetCurrentSpeaker())
+	if (ALingoPlayerState* CurrentSpeaker = SpeakStageActor->GetCurrentSpeaker())
 	{
-		if (auto PC = Cast<APlayerControl>(InteractingPlayer->GetController()))
-		{
+		if ( PC )
 			PC->Client_ToastMessage(FString::Printf(TEXT("Current Turn is [%s]"), *ULingoGameHelper::GetPlayerNameFromState(CurrentSpeaker)));
-		}
+
 		return;
 	}
 
-	// // Client에게 시나리오 요청 지시 (Client에서 네트워크 요청 처리)
-	// // RequestPlayer 저장 (구 코드와의 호환성 유지)
-	// this->RequestPlayer = InteractingPlayer;
-
-	if (auto PC = Cast<APlayerControl>(InteractingPlayer->GetController()))
-	{
+	if ( PC )
 		PC->Client_RequestSpeakScenario(this);
-	}
 }
 
 void AWheatly::OnSpeakStageSpeakerChanged(APlayerState* NewSpeaker)
@@ -438,52 +383,43 @@ void AWheatly::OnSpeakStageSpeakerChanged(APlayerState* NewSpeaker)
 		return;
 
 	// 로컬 플레이어 확인
-	if (UWorld* World = GetWorld())
+	if ( auto LocalPawn = ULingoGameHelper::GetLocalPawn(GetWorld()) )
 	{
-		if (APlayerController* LocalPC = World->GetFirstPlayerController())
+		auto LocalPlayerState = LocalPawn->GetPlayerState<ALingoPlayerState>();
+		
+		// 로컬 플레이어가 현재 발화자인지 확인
+		if (LocalPlayerState && NewSpeaker && LocalPlayerState == NewSpeaker)
 		{
-			if (APawn* LocalPawn = LocalPC->GetPawn())
+			// 발화자이면 위젯 숨김
+			InteractableComp->SetWidgetVisibility(false);
+			PRINTLOG(TEXT("[AWheatly] Local player is speaker - hiding widget"));
+		}
+		else
+		{
+			// 발화자가 아니면, DetectionRange 내에 있을 때만 위젯 표시
+			if (InteractableComp->DetectionRange)
 			{
-				if (LocalPawn->IsLocallyControlled())
+				if ( IsInRange(LocalPawn))
 				{
-					auto LocalPlayerState = LocalPawn->GetPlayerState<ALingoPlayerState>();
-					
-					// 로컬 플레이어가 현재 발화자인지 확인
-					if (LocalPlayerState && NewSpeaker && LocalPlayerState == NewSpeaker)
-					{
-						// 발화자이면 위젯 숨김
-						InteractableComp->SetWidgetVisibility(false);
-						PRINTLOG(TEXT("[AWheatly] Local player is speaker - hiding widget"));
-					}
-					else
-					{
-						// 발화자가 아니면, DetectionRange 내에 있을 때만 위젯 표시
-						if (InteractableComp->DetectionRange)
-						{
-							TArray<AActor*> OverlappingActors;
-							InteractableComp->DetectionRange->GetOverlappingActors(OverlappingActors, ACharacter::StaticClass());
-							
-							bool bIsInRange = false;
-							for (AActor* Actor : OverlappingActors)
-							{
-								if (Actor == LocalPawn)
-								{
-									bIsInRange = true;
-									break;
-								}
-							}
-
-							if (bIsInRange)
-							{
-								InteractableComp->SetWidgetVisibility(true);
-								PRINTLOG(TEXT("[AWheatly] Local player not speaker and in range - showing widget"));
-							}
-						}
-					}
+					InteractableComp->SetWidgetVisibility(true);
+					PRINTLOG(TEXT("[AWheatly] Local player not speaker and in range - showing widget"));
 				}
 			}
 		}
 	}
+}
+
+bool AWheatly::IsInRange(const APawn* LocalPawn) const
+{
+	TArray<AActor*> OverlappingActors;
+	InteractableComp->DetectionRange->GetOverlappingActors(OverlappingActors, ACharacter::StaticClass());
+					
+	for (AActor* Actor : OverlappingActors)
+	{
+		if (Actor == LocalPawn)
+			return true;
+	}
+	return false;
 }
 
 void AWheatly::OnRep_EyeColor()
@@ -539,10 +475,10 @@ void AWheatly::UpdateEyeSight(const FVector& Start, const FVector& End)
 	EyeSightComp->SetWorldRotation(Rotation);
 
 	const float LengthScale = Length / FMath::Max(IndicatorBaseLength, KINDA_SMALL_NUMBER);
-	// const float TargetThickness = 10.f; // Desired thickness
-	// const float MeshDiameter = FMath::Max(IndicatorBaseRadius * 2.0f, KINDA_SMALL_NUMBER);
-	// const float RadiusScale = TargetThickness / MeshDiameter;
+	const float TargetThickness = 10.f; // Desired thickness
+	const float MeshDiameter = FMath::Max(IndicatorBaseRadius * 2.0f, KINDA_SMALL_NUMBER);
+	const float RadiusScale = (TargetThickness / MeshDiameter)*2.5f;
 
-	EyeSightComp->SetWorldScale3D(FVector(EyeSightScale, EyeSightScale, LengthScale));
+	EyeSightComp->SetWorldScale3D(FVector(RadiusScale, RadiusScale, LengthScale));
 	EyeSightComp->SetVisibility(true);
 }
