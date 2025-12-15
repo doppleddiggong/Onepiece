@@ -69,6 +69,7 @@ var NetworkData_8h =
     [ "GetFullUrl", "NetworkData_8h.html#ab5ac57e8f51de6d1740c7a88534a7246", null ],
     [ "GetFullUrlWithQuery", "NetworkData_8h.html#a48c91628e64540f88495507117cfb69f", null ],
     [ "GetSocketURL", "NetworkData_8h.html#a948647fad9ed84a91de549757a7a0e74", null ],
+    [ "GetTypeHash", "NetworkData_8h.html#ad4c5a68d47d81d6afcc936e867855cf7", null ],
     [ "evaluations_rooms", "NetworkData_8h.html#ab35a143dc8865f6bf07bc269a00b075d", null ],
     [ "Health", "NetworkData_8h.html#ae1061ff9836b3127b56024d0a0f6fd65", null ],
     [ "interview_answer", "NetworkData_8h.html#ac23f8020a8a24f9d640a8aefbe9e56e5", null ],

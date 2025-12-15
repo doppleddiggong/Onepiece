@@ -1,5 +1,8 @@
 var NAVTREEINDEX7 =
 {
+"classAWheatly.html#acddad804cb8c776d5519ad8ea0491c49":[2,0,43,2],
+"classAWheatly.html#ad5be4683994e2320b2af76b160001305":[2,0,43,3],
+"classAWheatly.html#ad9c81ae1667fd7d965d32722757a9bbd":[2,0,43,6],
 "classAWheatly.html#adec1b3c2624f73d876a6878ece69d20c":[2,0,43,28],
 "classAWheatly.html#aefd2aaefca37d4d5c23297f04503efc4":[2,0,43,34],
 "classAWheatly.html#afe17baf42cca00180cfe4aaf0dc7b98c":[2,0,43,20],
@@ -246,8 +249,5 @@ var NAVTREEINDEX7 =
 "classUDelayTaskManager.html#ab7de33edaeb2e60c232a74c3a86ff84f":[2,0,134,4],
 "classUDelayTaskManager.html#acfa854974c5945327224f2f77287abf2":[2,0,134,6],
 "classUDelayTaskManager.html#af60e83e9adeabf8b9b309c40da8a60be":[2,0,134,5],
-"classUDelayTaskManager.html#af771ffde302faa23def27e4769f9776e":[2,0,134,9],
-"classUDelayTaskManager.html#afc5800d645cb2888723bee5042181c5b":[2,0,134,11],
-"classUDelayTaskManager.html#afead6ae41bebb72cd3a90cd86fd9eeda":[2,0,134,8],
-"classUDialogManager.html":[2,0,135]
+"classUDelayTaskManager.html#af771ffde302faa23def27e4769f9776e":[2,0,134,9]
 };

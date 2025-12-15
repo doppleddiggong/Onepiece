@@ -1,5 +1,8 @@
 var NAVTREEINDEX12 =
 {
+"classUVoiceCacheManager.html#a210c7458599a7a3c44a46a24dc14f3b7":[2,0,193,3],
+"classUVoiceCacheManager.html#a243fc6ce6e9ca4d343c526f4087c0adf":[2,0,193,5],
+"classUVoiceCacheManager.html#a2fae37f9320a684ab09ca0344d890827":[2,0,193,7],
 "classUVoiceCacheManager.html#a4f3e650da3d51290223dd43c0b8e12a8":[2,0,193,10],
 "classUVoiceCacheManager.html#a6a8c3b680bae4424030a53b845e062b4":[2,0,193,4],
 "classUVoiceCacheManager.html#aca44a99b9eecb16c8c57f7ded4de7fd1":[2,0,193,0],
@@ -120,8 +123,8 @@ var NAVTREEINDEX12 =
 "functions_d.html":[2,3,0,3],
 "functions_e.html":[2,3,0,4],
 "functions_f.html":[2,3,0,5],
-"functions_func.html":[2,3,1],
 "functions_func.html":[2,3,1,0],
+"functions_func.html":[2,3,1],
 "functions_func_b.html":[2,3,1,1],
 "functions_func_c.html":[2,3,1,2],
 "functions_func_d.html":[2,3,1,3],
@@ -159,8 +162,8 @@ var NAVTREEINDEX12 =
 "functions_t.html":[2,3,0,19],
 "functions_u.html":[2,3,0,20],
 "functions_v.html":[2,3,0,21],
-"functions_vars.html":[2,3,2,0],
 "functions_vars.html":[2,3,2],
+"functions_vars.html":[2,3,2,0],
 "functions_vars_b.html":[2,3,2,1],
 "functions_vars_c.html":[2,3,2,2],
 "functions_vars_d.html":[2,3,2,3],
@@ -246,8 +249,5 @@ var NAVTREEINDEX12 =
 "namespaceGameMessage.html#a8b65fc2a15bb0f28393e8a8f681630d0":[1,0,2,13],
 "namespaceGameMessage.html#aa9bd2204f84bf0f0e6a421b6c102dc60":[1,0,2,4],
 "namespaceGameMessage.html#ad15591c0eea3f6303d1f2113ed903741":[1,0,2,11],
-"namespaceGameMessage.html#ad442f83af10ff3e4c202f2e7d0dbc885":[1,0,2,5],
-"namespaceGameMessage.html#af4f66eae3491d48712af2a739650d5de":[1,0,2,10],
-"namespaceGameTags.html":[1,0,3],
-"namespaceGameTags.html#a3c08adb522f39311cbf10b2efec81a35":[1,0,3,1]
+"namespaceGameMessage.html#ad442f83af10ff3e4c202f2e7d0dbc885":[1,0,2,5]
 };

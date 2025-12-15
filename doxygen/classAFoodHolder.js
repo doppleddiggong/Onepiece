@@ -22,5 +22,6 @@ var classAFoodHolder =
     [ "HoldPos", "classAFoodHolder.html#a5a958174b57fe025bd17f50078007a46", null ],
     [ "Index", "classAFoodHolder.html#ae85b0f46ed727cfbd88263e041d4a5f2", null ],
     [ "MeshComponent", "classAFoodHolder.html#aa44e6d94b93c710a3c7debc4f281adbc", null ],
-    [ "RotationSpeed", "classAFoodHolder.html#ab5231ae688a77b08672c794165232b99", null ]
+    [ "RotationSpeed", "classAFoodHolder.html#ab5231ae688a77b08672c794165232b99", null ],
+    [ "TryIdx", "classAFoodHolder.html#a91ee63187dae0a8b2cc5ba9cc66114d4", null ]
 ];

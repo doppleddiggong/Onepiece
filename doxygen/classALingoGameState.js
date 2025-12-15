@@ -49,6 +49,7 @@ var classALingoGameState =
     [ "RoomId", "classALingoGameState.html#a098f78f856c35102786b2109ca20c576", null ],
     [ "RoomLevel", "classALingoGameState.html#ae3c5cc4c0d111910c3078336b7839eea", null ],
     [ "TimeLimit", "classALingoGameState.html#a6f7476b0799155bba7594e1fcbc3daf5", null ],
+    [ "TryListenAnswerData", "classALingoGameState.html#a32ce9e91913292c7b8e270af75482c11", null ],
     [ "WrongListenAnswerList", "classALingoGameState.html#a00a86de1187369b05b01f01889d78b45", null ],
     [ "WrongReadAnswerList", "classALingoGameState.html#ac68fdc03f32358fc9ca40fc5f4ec9cc8", null ]
 ];

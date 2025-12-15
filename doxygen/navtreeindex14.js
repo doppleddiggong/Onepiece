@@ -1,5 +1,8 @@
 var NAVTREEINDEX14 =
 {
+"structFRequestReadResult.html#aded067bb7754fbf32abd8acf1737e0e9":[2,0,83,7],
+"structFRequestReadResult.html#af46d1d78f8160182ebeb0f552948f05d":[2,0,83,4],
+"structFResourceTextureData.html":[2,0,84],
 "structFResourceTextureData.html#ab97df37e6d23106f7d722459898de613":[2,0,84,0],
 "structFResponseEvaluationResult.html":[2,0,85],
 "structFResponseEvaluationResult.html#a4049b2c738543b1e02d22d6cff63bba2":[2,0,85,3],
@@ -159,9 +162,11 @@ var NAVTREEINDEX14 =
 "structFWordData.html#ad5cbdc27da99dfca63d216196c807570":[2,0,110,1],
 "structFWordInfo.html":[2,0,111],
 "structFWordInfo.html#a0b915efc0c37a2798ecf2bd8ef0f0bed":[2,0,111,0],
-"structFWordInfo.html#ab5e270b6450daeff8fec1a5df4eb9609":[2,0,111,2],
+"structFWordInfo.html#a28c8d0755ddf80bfc89f10f4a6e2268f":[2,0,111,2],
+"structFWordInfo.html#a3fb4edc6b75f3ce9baf0117cd4e023e7":[2,0,111,3],
+"structFWordInfo.html#ab5e270b6450daeff8fec1a5df4eb9609":[2,0,111,4],
 "structFWordInfo.html#ae1645c9c30e15b8168dbc0494ce7a74c":[2,0,111,1],
-"structFWordInfo.html#afa3eecf62fc7b28d50eae5edc8fc81ad":[2,0,111,3],
+"structFWordInfo.html#afa3eecf62fc7b28d50eae5edc8fc81ad":[2,0,111,5],
 "structFWordStudyData.html":[2,0,112],
 "structFWordStudyData.html#a39dc1243125790997d83ed78143bf583":[2,0,112,2],
 "structFWordStudyData.html#a93134fa304e6a6b72edc65173efef5b2":[2,0,112,0],

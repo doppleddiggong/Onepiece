@@ -1,5 +1,8 @@
 var NAVTREEINDEX8 =
 {
+"classUDelayTaskManager.html#afc5800d645cb2888723bee5042181c5b":[2,0,134,11],
+"classUDelayTaskManager.html#afead6ae41bebb72cd3a90cd86fd9eeda":[2,0,134,8],
+"classUDialogManager.html":[2,0,135],
 "classUDialogManager.html#a01a895ea8e13cdc6b03f6e2e4e74cea3":[2,0,135,4],
 "classUDialogManager.html#a08d300b0bd2a0a85ef3faf74d68242a4":[2,0,135,3],
 "classUDialogManager.html#a18d8ac2320f10bd90b106d3258dea465":[2,0,135,7],
@@ -246,8 +249,5 @@ var NAVTREEINDEX8 =
 "classUInteractWidget.html#ac581ddd8a70217da61d211206ea1aec7":[2,0,147,0],
 "classUInteractWidget.html#afe80b3c83c8dae8938e5245e8dc929f8":[2,0,147,2],
 "classUKLingoNetworkSystem.html":[2,0,148],
-"classUKLingoNetworkSystem.html#a0b26b72d9b13f2eff1d8a06e55141ab0":[2,0,148,15],
-"classUKLingoNetworkSystem.html#a0bfd5f1b3523947877ba5c4e7ef9aa2f":[2,0,148,22],
-"classUKLingoNetworkSystem.html#a1d21be6d48915667d0fe3fd636870365":[2,0,148,11],
-"classUKLingoNetworkSystem.html#a2d54193b8c218091a2a12ff44fed1c52":[2,0,148,14]
+"classUKLingoNetworkSystem.html#a0b26b72d9b13f2eff1d8a06e55141ab0":[2,0,148,15]
 };
