@@ -280,18 +280,10 @@ void UVoiceConversationSystem::OnResponseSpeakingsJudges(FResponseSpeakingJudes&
 			BroadcastManager->SendAddItemToBoxList(	Response.GetResultStatData());
 		}
 
-		if (UWorld* World = GetWorld())
+		// PlayerActor의 Server RPC 호출 (PlayerActor는 Client 소유!)
+		if (Owner)
 		{
-			if ( auto SpeakStageActor = ULingoGameHelper::GetSpeakStageActor(World) )
-			{
-				if (auto LocalPlayerState = ULingoGameHelper::GetLingoPlayerStateByPC(Owner->GetController()))
-				{
-					// Store evaluation result in PlayerState
-					LocalPlayerState->Server_AddSpeakJudes(Response);
-
-					SpeakStageActor->ServerRPC_NotifyAnswerComplete(LocalPlayerState);
-				}
-			}
+			Owner->Server_NotifySpeakJudgeComplete(Response);
 		}
 	}
 	else

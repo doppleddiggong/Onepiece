@@ -66,10 +66,9 @@ public:
 	UFUNCTION(Server, Reliable)
 	void Server_NotifySpeakDataReady();
 
-	/// @brief SpeakQuest 평가 결과를 서버에 저장합니다
+	/// @brief SpeakQuest 평가 결과를 저장합니다 (Server에서 호출됨)
 	/// @param EvaluationResult 저장할 평가 결과
-	UFUNCTION(Server, Reliable, WithValidation)
-	void Server_AddSpeakJudes(const FResponseSpeakingJudes& EvaluationResult);
+	void AddSpeakJudes(const FResponseSpeakingJudes& EvaluationResult);
 
 	/// @brief SpeakQuest 완료 처리 (서버에서만 호출)
 	UFUNCTION(BlueprintCallable, Category = "SpeakQuest")

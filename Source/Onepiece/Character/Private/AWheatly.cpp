@@ -304,70 +304,70 @@ void AWheatly::CompleteSpeakQuest(APlayerActor* Player)
 		BroadcastMgr->SendTutorMessage(FText::FromString("SPEAK COMPLETE"));
 }
 
-void AWheatly::RequestSpeakScenario(APlayerActor* Player)
-{
-	this->RequestPlayer = Player;
-	
-	if ( auto KLingoNetwork = UKLingoNetworkSystem::Get(GetWorld()) )
-	{
-		KLingoNetwork->RequestSpeakScenario(FResponseSpeakScenarioDelegate::CreateUObject(this, &AWheatly::OnResponseSpeakScenario));
-	}
-}
+// void AWheatly::RequestSpeakScenario(APlayerActor* Player)
+// {
+// 	this->RequestPlayer = Player;
+// 	
+// 	if ( auto KLingoNetwork = UKLingoNetworkSystem::Get(GetWorld()) )
+// 	{
+// 		KLingoNetwork->RequestSpeakScenario(FResponseSpeakScenarioDelegate::CreateUObject(this, &AWheatly::OnResponseSpeakScenario));
+// 	}
+// }
+//
+// void AWheatly::OnResponseSpeakScenario(FResponseSpeakScenario& ResponseData, bool bWasSuccessful)
+// {
+// 	// 응답 델리게이트 생성
+// 	if (bWasSuccessful)
+// 	{
+// 		// PlayerState에 데이터 저장
+// 		if (auto PS = RequestPlayer->GetPlayerState<ALingoPlayerState>() )
+// 		{
+// 			// PlayerState에 시나리오 데이터 저장
+// 			PS->SpeakScenarioData = ResponseData;
+//
+// 			PS->OnUpdateSpeakScenarioData();
+// 		}
+// 		else
+// 		{
+// 			// 실패 시 SpeakStage를 종료해야 할 수 있음
+// 			if(SpeakStage && SpeakStage->GetCurrentSpeaker())
+// 				SpeakStage->EndStage();
+// 		}
+// 	}
+// 	else
+// 	{
+// 		// 실패 시 SpeakStage를 종료해야 할 수 있음
+// 		if(SpeakStage && SpeakStage->GetCurrentSpeaker())
+// 		{
+// 			SpeakStage->EndStage();
+// 		}
+// 	}
+// }
 
-void AWheatly::OnResponseSpeakScenario(FResponseSpeakScenario& ResponseData, bool bWasSuccessful)
-{
-	// 응답 델리게이트 생성
-	if (bWasSuccessful)
-	{
-		// PlayerState에 데이터 저장
-		if (auto PS = RequestPlayer->GetPlayerState<ALingoPlayerState>() )
-		{
-			// PlayerState에 시나리오 데이터 저장
-			PS->SpeakScenarioData = ResponseData;
-
-			PS->OnUpdateSpeakScenarioData();
-		}
-		else
-		{
-			// 실패 시 SpeakStage를 종료해야 할 수 있음
-			if(SpeakStage && SpeakStage->GetCurrentSpeaker())
-				SpeakStage->EndStage();
-		}
-	}
-	else
-	{
-		// 실패 시 SpeakStage를 종료해야 할 수 있음
-		if(SpeakStage && SpeakStage->GetCurrentSpeaker())
-		{
-			SpeakStage->EndStage();
-		}
-	}
-}
-
-void AWheatly::Server_SyncSpeakScenarioData_Implementation(const FResponseSpeakScenario& Data)
+void AWheatly::SyncSpeakScenarioData(APlayerActor* Player, const FResponseSpeakScenario& Data)
 {
 	if (!HasAuthority())
 		return;
 
-	// RequestPlayer가 유효한지 확인
-	if (!RequestPlayer)
+	// Player가 유효한지 확인
+	if (!Player)
 	{
-		PRINTLOG(TEXT("[AWheatly] Server_SyncSpeakScenarioData: RequestPlayer is null"));
+		PRINTLOG(TEXT("[AWheatly] SyncSpeakScenarioData: Player is null"));
 		return;
 	}
 
 	// PlayerState에 데이터 저장
-	if (auto PS = RequestPlayer->GetPlayerState<ALingoPlayerState>())
+	if (auto PS = Player->GetPlayerState<ALingoPlayerState>())
 	{
 		PS->SpeakScenarioData = Data;
 		PS->OnUpdateSpeakScenarioData();
 
-		PRINTLOG(TEXT("[AWheatly] Server_SyncSpeakScenarioData: Successfully synced scenario data for %s"),
+		PRINTLOG(TEXT("[AWheatly] SyncSpeakScenarioData: Successfully synced scenario data for %s"),
 			*ULingoGameHelper::GetPlayerNameFromState(PS));
 	}
 	else
 	{
-		PRINTLOG(TEXT("[AWheatly] Server_SyncSpeakScenarioData: Failed to get PlayerState"));
+		PRINTLOG(TEXT("[AWheatly] SyncSpeakScenarioData: Failed to get PlayerState"));
 
 		// 실패 시 SpeakStage를 종료
 		if (SpeakStage && SpeakStage->GetCurrentSpeaker())
@@ -411,8 +411,10 @@ void AWheatly::OnInteractionTriggered(AActor* InteractingActor)
 		return;
 	}
 
-	// Client에게 시나리오 요청 지시 (Client에서 네트워크 요청 처리)
-	this->RequestPlayer = InteractingPlayer;
+	// // Client에게 시나리오 요청 지시 (Client에서 네트워크 요청 처리)
+	// // RequestPlayer 저장 (구 코드와의 호환성 유지)
+	// this->RequestPlayer = InteractingPlayer;
+
 	if (auto PC = Cast<APlayerControl>(InteractingPlayer->GetController()))
 	{
 		PC->Client_RequestSpeakScenario(this);
@@ -537,10 +539,10 @@ void AWheatly::UpdateEyeSight(const FVector& Start, const FVector& End)
 	EyeSightComp->SetWorldRotation(Rotation);
 
 	const float LengthScale = Length / FMath::Max(IndicatorBaseLength, KINDA_SMALL_NUMBER);
-	const float TargetThickness = 10.f; // Desired thickness
-	const float MeshDiameter = FMath::Max(IndicatorBaseRadius * 2.0f, KINDA_SMALL_NUMBER);
-	const float RadiusScale = TargetThickness / MeshDiameter;
+	// const float TargetThickness = 10.f; // Desired thickness
+	// const float MeshDiameter = FMath::Max(IndicatorBaseRadius * 2.0f, KINDA_SMALL_NUMBER);
+	// const float RadiusScale = TargetThickness / MeshDiameter;
 
-	EyeSightComp->SetWorldScale3D(FVector(RadiusScale, RadiusScale, LengthScale));
+	EyeSightComp->SetWorldScale3D(FVector(EyeSightScale, EyeSightScale, LengthScale));
 	EyeSightComp->SetVisibility(true);
 }

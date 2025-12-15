@@ -62,11 +62,10 @@ public:
 	
 public:
 	/**
-	 * @brief 플레이어 답변 완료 알림 (Server RPC)
+	 * @brief 플레이어 답변 완료 알림 (Server에서 호출됨)
 	 * @param Player [in] 답변을 완료한 플레이어
 	 */
-	UFUNCTION(Server, Reliable)
-	void ServerRPC_NotifyAnswerComplete(class ALingoPlayerState* Player);
+	void NotifyAnswerComplete(class ALingoPlayerState* Player);
 
 	bool IsMyTurn(class ALingoPlayerState* lingo_player_state);
 

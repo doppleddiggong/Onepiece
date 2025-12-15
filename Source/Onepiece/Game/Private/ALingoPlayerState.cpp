@@ -79,17 +79,12 @@ bool ALingoPlayerState::Server_SetSelectedWord2_Validate(const FString& Word2)
 	return true;
 }
 
-void ALingoPlayerState::Server_AddSpeakJudes_Implementation(const FResponseSpeakingJudes& EvaluationResult)
+void ALingoPlayerState::AddSpeakJudes(const FResponseSpeakingJudes& EvaluationResult)
 {
 	SpeakJudesResults.Add(EvaluationResult);
 
 	PRINTLOG(TEXT("[PlayerState] Evaluation result added - Total results: %d, Feedback: %s"),
 		SpeakJudesResults.Num(), *EvaluationResult.final_feedback);
-}
-
-bool ALingoPlayerState::Server_AddSpeakJudes_Validate(const FResponseSpeakingJudes& EvaluationResult)
-{
-	return true;
 }
 
 void ALingoPlayerState::Server_NotifySpeakDataReady_Implementation()

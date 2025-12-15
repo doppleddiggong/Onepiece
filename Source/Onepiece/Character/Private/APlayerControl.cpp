@@ -289,7 +289,7 @@ void APlayerControl::Client_UpdateSpeakQuest_Implementation(int32 StepIndex)
 	ALingoPlayerState* PS = GetPlayerState<ALingoPlayerState>();
 	if (!PS)
 		return;
-	
+
 	if (StepIndex == 0)
 	{
 		// 첫 번째 질문일 경우 MessageBox 표시
@@ -302,7 +302,7 @@ void APlayerControl::Client_UpdateSpeakQuest_Implementation(int32 StepIndex)
 				if (APlayerActor* PlayerActor = Cast<APlayerActor>(GetPawn()))
 					PlayerActor->PlaySpeakInfo(StepIndex);
 
-				UpdateSpeakWidget();
+				UpdateSpeakWidget(StepIndex);
 			});
 
 			PopupManager->ShowMsgBox(TEXT("SpeakQuest"), TEXT("QUEST START"), EMsgBoxType::OK, OnOkDelegate);
@@ -313,7 +313,7 @@ void APlayerControl::Client_UpdateSpeakQuest_Implementation(int32 StepIndex)
 		if (APlayerActor* PlayerActor = Cast<APlayerActor>(GetPawn()))
 			PlayerActor->PlaySpeakInfo(StepIndex);
 
-		UpdateSpeakWidget();
+		UpdateSpeakWidget(StepIndex);
 	}
 }
 
@@ -322,7 +322,8 @@ void APlayerControl::Client_EndSpeakQuest_Implementation()
 	if (auto PopupManager = UPopupManager::Get(GetWorld()))
 		PopupManager->ShowMsgBox(TEXT("SpeakQuest"), TEXT("QUEST COMPLETE"), EMsgBoxType::OK, FOnMsgBoxOkDelegate());
 
-	UpdateSpeakWidget();
+	// Quest 완료 시에는 StepIndex를 -1로 전달하여 Widget을 숨김
+	UpdateSpeakWidget(-1);
 }
 
 void APlayerControl::Client_RequestSpeakScenario_Implementation(AWheatly* Wheatly)
@@ -333,18 +334,26 @@ void APlayerControl::Client_RequestSpeakScenario_Implementation(AWheatly* Wheatl
 		return;
 	}
 
+	// 현재 조종중인 PlayerActor 획득
+	APlayerActor* PlayerActor = Cast<APlayerActor>(GetPawn());
+	if (!PlayerActor)
+	{
+		PRINTLOG(TEXT("[APlayerControl] Client_RequestSpeakScenario: PlayerActor is null"));
+		return;
+	}
+
 	// Client에서 네트워크 요청 수행
 	if (auto KLingoNetwork = UKLingoNetworkSystem::Get(GetWorld()))
 	{
-		
 		// Lambda를 사용하여 응답 처리
+		// this 캡처: APlayerControl의 Server RPC 호출을 위해
 		KLingoNetwork->RequestSpeakScenario( FResponseSpeakScenarioDelegate::CreateLambda(
-				[Wheatly](FResponseSpeakScenario& ResponseData, bool bWasSuccessful)
+				[this, Wheatly](FResponseSpeakScenario& ResponseData, bool bWasSuccessful)
 				{
 					if (bWasSuccessful && Wheatly)
 					{
-						// 성공 시 Server로 데이터 동기화
-						Wheatly->Server_SyncSpeakScenarioData(ResponseData);
+						// 성공 시 자신의 Server RPC 호출 (PlayerControl은 Client 소유!)
+						Server_SyncSpeakScenarioData(Wheatly, ResponseData);
 						PRINTLOG(TEXT("[APlayerControl] Client successfully received scenario data, syncing to server"));
 					}
 					else
@@ -362,13 +371,35 @@ void APlayerControl::Client_RequestSpeakScenario_Implementation(AWheatly* Wheatl
 	}
 }
 
-void APlayerControl::UpdateSpeakWidget()
+void APlayerControl::Server_SyncSpeakScenarioData_Implementation(AWheatly* Wheatly, const FResponseSpeakScenario& Data)
+{
+	if (!Wheatly)
+	{
+		PRINTLOG(TEXT("[APlayerControl] Server_SyncSpeakScenarioData: Wheatly is null"));
+		return;
+	}
+
+	// 현재 조종중인 PlayerActor 획득
+	APlayerActor* PlayerActor = Cast<APlayerActor>(GetPawn());
+	if (!PlayerActor)
+	{
+		PRINTLOG(TEXT("[APlayerControl] Server_SyncSpeakScenarioData: PlayerActor is null"));
+		return;
+	}
+
+	// Wheatly에 데이터 전달 (Server에서 실행됨)
+	Wheatly->SyncSpeakScenarioData(PlayerActor, Data);
+
+	PRINTLOG(TEXT("[APlayerControl] Server successfully synced scenario data to Wheatly"));
+}
+
+void APlayerControl::UpdateSpeakWidget(int32 StepIndex)
 {
 	if (APlayerActor* PlayerActor = Cast<APlayerActor>(GetPawn()))
 	{
 		if (UMainWidget* MainWidget = PlayerActor->GetMainWidget())
 		{
-			MainWidget->UpdateSpeakWidget();
+			MainWidget->UpdateSpeakWidget(StepIndex);
 		}
 	}
 }

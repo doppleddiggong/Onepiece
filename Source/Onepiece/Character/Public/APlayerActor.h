@@ -131,7 +131,12 @@ public:
 
 	UFUNCTION(Server, Reliable)
 	void ServerRPC_Teleport(FVector TargetLocation);
-	
+
+	/// @brief SpeakJudge 결과를 서버로 전달하여 처리합니다 (Server RPC)
+	/// @param Response [in] Client에서 받은 SpeakJudge 평가 결과
+	UFUNCTION(Server, Reliable)
+	void Server_NotifySpeakJudgeComplete(const struct FResponseSpeakingJudes& Response);
+
 	/// @brief 클라이언트에서 게임 메시지를 표시합니다.
 	/// @param Message [in] 표시할 메시지
 	UFUNCTION(Client, Reliable)

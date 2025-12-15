@@ -628,6 +628,24 @@ void APlayerActor::ServerRPC_Teleport_Implementation(FVector TargetLocation)
 	SetActorLocation(TargetLocation);
 }
 
+void APlayerActor::Server_NotifySpeakJudgeComplete_Implementation(const FResponseSpeakingJudes& Response)
+{
+	if (!HasAuthority())
+		return;
+
+	// PlayerState에 평가 결과 저장
+	if (auto PS = GetPlayerState<ALingoPlayerState>())
+	{
+		PS->AddSpeakJudes(Response);
+
+		// SpeakStage에 답변 완료 알림
+		if (auto SpeakStage = ULingoGameHelper::GetSpeakStageActor(GetWorld()))
+		{
+			SpeakStage->NotifyAnswerComplete(PS);
+		}
+	}
+}
+
 void APlayerActor::OnFadeOutCompleteForTeleport()
 {
 	PRINTLOG(TEXT("APlayerActor::OnFadeOutCompleteForTeleport - Teleporting to %s"), *PendingTeleportLocation.ToString());

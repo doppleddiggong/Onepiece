@@ -48,6 +48,12 @@ public:
 	UFUNCTION(Client, Reliable)
 	void Client_RequestSpeakScenario(class AWheatly* Wheatly);
 
+	/// @brief Client에서 받은 시나리오 데이터를 Wheatly에 전달 (Server RPC)
+	/// @param Wheatly [in] 데이터를 전달할 Wheatly 액터
+	/// @param Data [in] Client에서 받은 시나리오 데이터
+	UFUNCTION(Server, Reliable)
+	void Server_SyncSpeakScenarioData(class AWheatly* Wheatly, const struct FResponseSpeakScenario& Data);
+
 protected:
     virtual void BeginPlay() override;
     virtual void SetupInputComponent() override;
@@ -107,7 +113,7 @@ protected:
 private:
 	void RequestDrop(APlayerControl* Requester);
 
-	void UpdateSpeakWidget();
+	void UpdateSpeakWidget(int32 StepIndex);
 	void TEST_DropperDropProcess();
 	void TEST_AddItemToBoxList();
 	
