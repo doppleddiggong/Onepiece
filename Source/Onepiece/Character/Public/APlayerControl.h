@@ -43,6 +43,11 @@ public:
 	UFUNCTION(Client, Reliable)
 	void Client_EndSpeakQuest();
 
+	/// @brief Client에게 Speak 시나리오 데이터를 요청하도록 지시 (Client RPC)
+	/// @param Wheatly [in] 요청을 시작한 Wheatly 액터
+	UFUNCTION(Client, Reliable)
+	void Client_RequestSpeakScenario(class AWheatly* Wheatly);
+
 protected:
     virtual void BeginPlay() override;
     virtual void SetupInputComponent() override;

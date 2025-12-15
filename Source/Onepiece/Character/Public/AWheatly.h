@@ -57,6 +57,12 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Animation")
 	void PlayAnimation(EWheatlyAnim InAnimType);
 
+public:
+	/// @brief Client에서 받은 시나리오 데이터를 서버로 동기화 (Server RPC)
+	/// @param Data [in] Client에서 받은 시나리오 데이터
+	UFUNCTION(Server, Reliable)
+	void Server_SyncSpeakScenarioData(const FResponseSpeakScenario& Data);
+	
 protected:
 	/// @brief 애니메이션 재생 (멀티캐스트 RPC)
 	/// @param InAnimType [in] 재생할 애니메이션 타입
@@ -69,9 +75,9 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "SpeakStage")
 	void SetSpeakStage(class ASpeakStageActor* InSpeakStage);
 
-	/// @brief SpeakQuest 시작 (서버에서만 호출)
-	/// @param Player [in] 퀘스트를 시작할 플레이어
-	void BeginSpeakQuest(class APlayerActor* Player);
+	// /// @brief SpeakQuest 시작 (서버에서만 호출)
+	// /// @param Player [in] 퀘스트를 시작할 플레이어
+	// void BeginSpeakQuest(class APlayerActor* Player);
 
 	/// @brief SpeakQuest 완료 처리 (서버에서만 호출)
 	/// @param Player [in] 퀘스트를 완료한 플레이어

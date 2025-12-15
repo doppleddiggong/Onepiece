@@ -281,13 +281,13 @@ void AWheatly::SetSpeakStage(ASpeakStageActor* InSpeakStage)
 	}
 }
 
-void AWheatly::BeginSpeakQuest(APlayerActor* Player)
-{
-	if (!HasAuthority() || !Player)
-		return;
-
-	RequestSpeakScenario(Player);
-}
+// void AWheatly::BeginSpeakQuest(APlayerActor* Player)
+// {
+// 	if (!HasAuthority() || !Player)
+// 		return;
+//
+// 	RequestSpeakScenario(Player);
+// }
 
 
 void AWheatly::CompleteSpeakQuest(APlayerActor* Player)
@@ -313,7 +313,6 @@ void AWheatly::RequestSpeakScenario(APlayerActor* Player)
 		KLingoNetwork->RequestSpeakScenario(FResponseSpeakScenarioDelegate::CreateUObject(this, &AWheatly::OnResponseSpeakScenario));
 	}
 }
-
 
 void AWheatly::OnResponseSpeakScenario(FResponseSpeakScenario& ResponseData, bool bWasSuccessful)
 {
@@ -342,6 +341,37 @@ void AWheatly::OnResponseSpeakScenario(FResponseSpeakScenario& ResponseData, boo
 		{
 			SpeakStage->EndStage();
 		}
+	}
+}
+
+void AWheatly::Server_SyncSpeakScenarioData_Implementation(const FResponseSpeakScenario& Data)
+{
+	if (!HasAuthority())
+		return;
+
+	// RequestPlayer가 유효한지 확인
+	if (!RequestPlayer)
+	{
+		PRINTLOG(TEXT("[AWheatly] Server_SyncSpeakScenarioData: RequestPlayer is null"));
+		return;
+	}
+
+	// PlayerState에 데이터 저장
+	if (auto PS = RequestPlayer->GetPlayerState<ALingoPlayerState>())
+	{
+		PS->SpeakScenarioData = Data;
+		PS->OnUpdateSpeakScenarioData();
+
+		PRINTLOG(TEXT("[AWheatly] Server_SyncSpeakScenarioData: Successfully synced scenario data for %s"),
+			*ULingoGameHelper::GetPlayerNameFromState(PS));
+	}
+	else
+	{
+		PRINTLOG(TEXT("[AWheatly] Server_SyncSpeakScenarioData: Failed to get PlayerState"));
+
+		// 실패 시 SpeakStage를 종료
+		if (SpeakStage && SpeakStage->GetCurrentSpeaker())
+			SpeakStage->EndStage();
 	}
 }
 
@@ -381,8 +411,12 @@ void AWheatly::OnInteractionTriggered(AActor* InteractingActor)
 		return;
 	}
 
-	// SpeakQuest 시작 (시나리오 데이터 요청)
-	BeginSpeakQuest(InteractingPlayer);
+	// Client에게 시나리오 요청 지시 (Client에서 네트워크 요청 처리)
+	this->RequestPlayer = InteractingPlayer;
+	if (auto PC = Cast<APlayerControl>(InteractingPlayer->GetController()))
+	{
+		PC->Client_RequestSpeakScenario(this);
+	}
 }
 
 void AWheatly::OnSpeakStageSpeakerChanged(APlayerState* NewSpeaker)

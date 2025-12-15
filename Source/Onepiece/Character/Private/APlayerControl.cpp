@@ -9,6 +9,8 @@
 #include "APlayerActor.h"
 #include "IControllable.h"
 #include "UMainWidget.h"
+#include "AWheatly.h"
+#include "UKLingoNetworkSystem.h"
 
 #include "EnhancedInputSubsystems.h"
 #include "EnhancedInputComponent.h"
@@ -24,6 +26,7 @@
 #include "ADropper.h"
 #include "luggage.h"
 #include "EngineUtils.h"
+#include "GameLogging.h"
 #include "OrderKiosk.h"
 #include "UDialogManager.h"
 #include "UPopupManager.h"
@@ -320,6 +323,43 @@ void APlayerControl::Client_EndSpeakQuest_Implementation()
 		PopupManager->ShowMsgBox(TEXT("SpeakQuest"), TEXT("QUEST COMPLETE"), EMsgBoxType::OK, FOnMsgBoxOkDelegate());
 
 	UpdateSpeakWidget();
+}
+
+void APlayerControl::Client_RequestSpeakScenario_Implementation(AWheatly* Wheatly)
+{
+	if (!Wheatly)
+	{
+		PRINTLOG(TEXT("[APlayerControl] Client_RequestSpeakScenario: Wheatly is null"));
+		return;
+	}
+
+	// Client에서 네트워크 요청 수행
+	if (auto KLingoNetwork = UKLingoNetworkSystem::Get(GetWorld()))
+	{
+		
+		// Lambda를 사용하여 응답 처리
+		KLingoNetwork->RequestSpeakScenario( FResponseSpeakScenarioDelegate::CreateLambda(
+				[Wheatly](FResponseSpeakScenario& ResponseData, bool bWasSuccessful)
+				{
+					if (bWasSuccessful && Wheatly)
+					{
+						// 성공 시 Server로 데이터 동기화
+						Wheatly->Server_SyncSpeakScenarioData(ResponseData);
+						PRINTLOG(TEXT("[APlayerControl] Client successfully received scenario data, syncing to server"));
+					}
+					else
+					{
+						// 실패 시 에러는 이미 ShowNetworkErrorPopup으로 표시됨
+						PRINTLOG(TEXT("[APlayerControl] Client failed to receive scenario data"));
+					}
+				}
+			)
+		);
+	}
+	else
+	{
+		PRINTLOG(TEXT("[APlayerControl] Client_RequestSpeakScenario: Failed to get KLingoNetworkSystem"));
+	}
 }
 
 void APlayerControl::UpdateSpeakWidget()
