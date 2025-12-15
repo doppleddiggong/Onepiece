@@ -74,7 +74,7 @@ void AFood::Tick(float DeltaTime)
 
 void AFood::SetCityName(FWordInfo InWord)
 {
-	CurrentFoodData.word2 = InWord;
+	CurrentFoodData.word1 = InWord;
 	// 서버에서도 Widget 업데이트 (클라이언트는 OnRep_FoodName에서 호출됨)
 	if (HasAuthority())
 	{
@@ -97,7 +97,7 @@ void AFood::UpdateFoodWidget()
 	UCityNameWidget* NameWidget = Cast<UCityNameWidget>(CityName->GetWidget());
 	if (NameWidget)
 	{
-		NameWidget->SetCityName(CurrentFoodData.word2.name);
+		NameWidget->SetCityName(CurrentFoodData.word1.name);
 	}
 }
 
@@ -120,13 +120,11 @@ void AFood::UpdateMesh()
 
 	for (FListenData* Row : AllRows)
 	{
-		if (Row && Row->Word == CurrentFoodData.word1.name)
+		if (Row && Row->Word == CurrentFoodData.word2.name)
 		{
 			if (Row->FoodPath)
 			{
 				FoodMesh->SetStaticMesh(Row->FoodPath);
-				UE_LOG(LogTemp, Warning, TEXT("[AFood::UpdateMesh] Mesh updated to: %s for word: %s"),
-					*Row->FoodPath->GetName(), *CurrentFoodData.word1.name);
 				return;
 			}
 		}
@@ -139,10 +137,7 @@ void AFood::UpdateMesh()
 
 void AFood::SetFoodMesh(FWordInfo InWord, UStaticMesh* InMesh)
 {
-	UE_LOG(LogTemp, Warning, TEXT("[AFood::SetFoodMesh] Called - Word: %s, HasAuthority: %s"),
-		*InWord.name, HasAuthority() ? TEXT("TRUE") : TEXT("FALSE"));
-
-	CurrentFoodData.word1 = InWord;
+	CurrentFoodData.word2 = InWord;
 
 	// 서버에서도 UpdateMesh 호출 (클라이언트는 OnRep_CurrentFoodData에서 호출됨)
 	if (HasAuthority())

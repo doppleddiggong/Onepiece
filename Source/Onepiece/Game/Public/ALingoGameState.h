@@ -118,13 +118,16 @@ public:
 	UPROPERTY(ReplicatedUsing = OnRep_ReadResult)
 	FResponseReadResult ReadResult;
 	//--------------------------------------------------------------//
-
+	
 	FORCEINLINE int GetWrongListenAnswerNum() { return WrongListenAnswerList.Num(); }
 	void AddWrongListenAnswer(int32 Value);
-
+	// 서버에서 받아오는 원본
 	UPROPERTY(ReplicatedUsing = OnRep_ListenScenarioData)
 	FResponseListenScenario ListenScenarioData;
-	
+	// 시도한 선택지들 저장
+	UPROPERTY(Replicated)
+	FResponseListenScenario TryListenAnswerData;
+	// 서버로 정답률 보내기 위한 형식상 인덱스 리스트
 	UPROPERTY(Replicated)
 	TArray<int32> WrongListenAnswerList;
 

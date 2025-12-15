@@ -613,7 +613,24 @@ struct FWordInfo
         const int Index = FMath::RandRange(0, AnimalPool.Num() - 1);
         return AnimalPool[Index];
     }
+
+    /** TSet에서 사용하기 위한 비교 연산자 */
+    bool operator==(const FWordInfo& Other) const
+    {
+        return name == Other.name && code == Other.code;
+    }
+
+    bool operator!=(const FWordInfo& Other) const
+    {
+        return !(*this == Other);
+    }
 };
+
+/** TSet에서 사용하기 위한 해시 함수 */
+inline uint32 GetTypeHash(const FWordInfo& Info)
+{
+    return HashCombine(GetTypeHash(Info.name), GetTypeHash(Info.code));
+}
 
 /// @brief Scenario 타겟 데이터입니다.
 USTRUCT(BlueprintType)

@@ -87,6 +87,10 @@ public:
 	int32 Index = 0;
 	
 protected:
+	// 시도 횟수
+	UPROPERTY(Replicated)
+	int32 TryIdx = -1;
+	
 	// 현재 올라가 있는 액터
 	UPROPERTY(ReplicatedUsing=OnRep_CurTarget)
 	TObjectPtr<class AActor> CurTarget;

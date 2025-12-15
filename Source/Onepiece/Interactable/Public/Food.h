@@ -17,10 +17,10 @@ struct FFoodCapsuleData
 	GENERATED_BODY()
 
 	/** 시나리오 단어 정보 */
-	// 음식 이름
+	// 도시 이름
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FWordInfo word1;
-	// 도시 이름
+	// 음식 이름
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FWordInfo word2;
 

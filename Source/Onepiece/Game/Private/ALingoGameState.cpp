@@ -47,6 +47,7 @@ void ALingoGameState::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutL
 	DOREPLIFETIME(ALingoGameState, WrongListenAnswerList);
 	DOREPLIFETIME(ALingoGameState, ReqListenResult);
 	DOREPLIFETIME(ALingoGameState, ListenResult);
+	DOREPLIFETIME(ALingoGameState, TryListenAnswerData);
 }
 
 void ALingoGameState::BeginPlay()
