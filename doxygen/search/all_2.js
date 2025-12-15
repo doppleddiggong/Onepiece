@@ -63,7 +63,7 @@ var searchData=
   ['clientrpc_5fshowgamemessage_60',['ClientRPC_ShowGameMessage',['../classAPlayerActor.html#a9a0da1264f0f61d8b908de643e010de7',1,'APlayerActor']]],
   ['closedoor_61',['closedoor',['../classADoor.html#ac83075fce74a091a3316ee4f0a906156',1,'ADoor::CloseDoor()'],['../classAGate.html#ab83a2e573215c998455f7edf71aa5807',1,'AGate::CloseDoor()']]],
   ['closedoor_5fimplementation_62',['CloseDoor_Implementation',['../classADoor.html#a3fd0eaa1a7e1e7aca20d64d89f6192f8',1,'ADoor']]],
-  ['closedrawwindow_63',['closedrawwindow',['../classUPopup__WriteBoard.html#a62788185321e271e8dc7aae016777f73',1,'UPopup_WriteBoard::CloseDrawWindow()'],['../classUDrawingBoardWidget.html#a795b11bfecbc53a377fadf35ad262408',1,'UDrawingBoardWidget::CloseDrawWindow()']]],
+  ['closedrawwindow_63',['CloseDrawWindow',['../classUDrawingBoardWidget.html#a795b11bfecbc53a377fadf35ad262408',1,'UDrawingBoardWidget']]],
   ['cmd_5fapproach_64',['Cmd_Approach',['../EGameSoundType_8h.html#af4a7536fe94049720d6e9d21c1b2ec80a5ba0bedf5411b3de3df9fa80165f345c',1,'EGameSoundType.h']]],
   ['cmd_5finfo_65',['cmd_info',['../classAPlayerActor.html#a145afa6a2e3058f74d9268588cf56ddf',1,'APlayerActor::Cmd_Info()'],['../classIControllable.html#ad45d954ffa12ec683742f4797bc3a05a',1,'IControllable::Cmd_Info()']]],
   ['cmd_5fjump_66',['cmd_jump',['../classAPlayerActor.html#a4bbf9c7d111a15814b99b4e32a79cfda',1,'APlayerActor::Cmd_Jump()'],['../classIControllable.html#ac1d95ea53739c16a86f25e3bb2ee926b',1,'IControllable::Cmd_Jump()']]],

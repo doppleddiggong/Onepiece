@@ -70,10 +70,10 @@ var NAVTREEINDEX =
 "classUDelayTaskManager.html#afc5800d645cb2888723bee5042181c5b",
 "classUKLingoNetworkSystem.html#a0bfd5f1b3523947877ba5c4e7ef9aa2f",
 "classUPopup__Interview.html#ae1e5a127e84c35184be7830aa403532a",
-"classUPopup__WriteBoard.html#a0483981b6e42904153cfb42d5e2d0fcb",
-"classUVoiceCacheManager.html#a210c7458599a7a3c44a46a24dc14f3b7",
-"namespaceGameMessage.html#af4f66eae3491d48712af2a739650d5de",
-"structFRequestReadResult.html#aded067bb7754fbf32abd8acf1737e0e9"
+"classUPopup__Word.html#afe75f5ef94f97fbcc8ea1ad9e801524c",
+"classUVoiceCacheManager.html",
+"namespaceGameMessage.html#aa9bd2204f84bf0f0e6a421b6c102dc60",
+"structFRequestReadResult.html#a92919781f00aa0aa3fee771abf1d7fac"
 ];
 
 var SYNCONMSG = '패널 동기화를 비활성화하기 위해 클릭하십시오';

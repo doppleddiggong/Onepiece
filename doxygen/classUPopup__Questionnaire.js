@@ -10,7 +10,6 @@ var classUPopup__Questionnaire =
     [ "OpenAnimation", "classUPopup__Questionnaire.html#a2c3d2b47f8255c0172cf9f218790fcc8", null ],
     [ "UpdateAnimation", "classUPopup__Questionnaire.html#a830a08b15d00e418f351f096fc5a8790", null ],
     [ "bIsOpenAnim", "classUPopup__Questionnaire.html#a807985dccb3305b1004c611401b7b551", null ],
-    [ "Btn_Close", "classUPopup__Questionnaire.html#a4505d97692a465ad06a282e04dc473a8", null ],
     [ "Btn_Submit", "classUPopup__Questionnaire.html#a5f7092f32acbc4aaa429aa5775a53b83", null ],
     [ "ItemSpacing", "classUPopup__Questionnaire.html#a24f791ba9d79fa439d6a9195e8d73f08", null ],
     [ "OpenDuration", "classUPopup__Questionnaire.html#a5a4c2b75560a3e2d07ed3aa52837278e", null ],

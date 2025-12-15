@@ -1,5 +1,8 @@
 var NAVTREEINDEX12 =
 {
+"classUVoiceCacheManager.html":[2,0,193],
+"classUVoiceCacheManager.html#a0258e36c6d697747a97fa59f83413964":[2,0,193,1],
+"classUVoiceCacheManager.html#a1f03d005cf3e58b3d1d07949616cfc86":[2,0,193,9],
 "classUVoiceCacheManager.html#a210c7458599a7a3c44a46a24dc14f3b7":[2,0,193,3],
 "classUVoiceCacheManager.html#a243fc6ce6e9ca4d343c526f4087c0adf":[2,0,193,5],
 "classUVoiceCacheManager.html#a2fae37f9320a684ab09ca0344d890827":[2,0,193,7],
@@ -116,15 +119,15 @@ var NAVTREEINDEX12 =
 "dir_f5c20ae920c5f83d16e1c5fb9563aee7.html":[3,0,0,1,0,0],
 "dir_f8d1c9eab1fc62a504c69287c791da47.html":[3,0,0,1,1,0],
 "files.html":[3,0],
-"functions.html":[2,3,0,0],
 "functions.html":[2,3,0],
+"functions.html":[2,3,0,0],
 "functions_b.html":[2,3,0,1],
 "functions_c.html":[2,3,0,2],
 "functions_d.html":[2,3,0,3],
 "functions_e.html":[2,3,0,4],
 "functions_f.html":[2,3,0,5],
-"functions_func.html":[2,3,1,0],
 "functions_func.html":[2,3,1],
+"functions_func.html":[2,3,1,0],
 "functions_func_b.html":[2,3,1,1],
 "functions_func_c.html":[2,3,1,2],
 "functions_func_d.html":[2,3,1,3],
@@ -194,8 +197,8 @@ var NAVTREEINDEX12 =
 "globals_func.html":[3,1,1],
 "globals_vars.html":[3,1,2],
 "hierarchy.html":[2,2],
-"index.html":[],
 "index.html":[0],
+"index.html":[],
 "index.html#autotoc_md10":[0,2],
 "index.html#autotoc_md11":[0,2,0],
 "index.html#autotoc_md12":[0,2,1],
@@ -246,8 +249,5 @@ var NAVTREEINDEX12 =
 "namespaceGameMessage.html#a7ba3fee42f756d5fc38136500da8239d":[1,0,2,12],
 "namespaceGameMessage.html#a7c9b2a73fcb8d4b1add212d7c16476c2":[1,0,2,7],
 "namespaceGameMessage.html#a86e12002bb715fd26393367cd22a64d1":[1,0,2,3],
-"namespaceGameMessage.html#a8b65fc2a15bb0f28393e8a8f681630d0":[1,0,2,13],
-"namespaceGameMessage.html#aa9bd2204f84bf0f0e6a421b6c102dc60":[1,0,2,4],
-"namespaceGameMessage.html#ad15591c0eea3f6303d1f2113ed903741":[1,0,2,11],
-"namespaceGameMessage.html#ad442f83af10ff3e4c202f2e7d0dbc885":[1,0,2,5]
+"namespaceGameMessage.html#a8b65fc2a15bb0f28393e8a8f681630d0":[1,0,2,13]
 };
