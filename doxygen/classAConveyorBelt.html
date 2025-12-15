@@ -432,9 +432,9 @@ Protected 속성</h2></td></tr>
 <div class="line"><span class="lineno">  133</span>    {</div>
 <div class="line"><span class="lineno">  134</span>        AActor* owner = comp-&gt;GetOwner();</div>
 <div class="line"><span class="lineno">  135</span>        <a class="code hl_class" href="classAluggage.html">Aluggage</a>* luggage = Cast&lt;Aluggage&gt;(owner);</div>
-<div class="line"><span class="lineno">  136</span>        <a class="code hl_class" href="classAFood.html">AFood</a>* <a class="code hl_enumvalue" href="ListenAnswer_8h.html#ab256f9c27c701de5d273fc77c28e6effa82b89f0b3ba4dac1d89386da86ec22ff">Food</a> = Cast&lt;AFood&gt;(owner);</div>
+<div class="line"><span class="lineno">  136</span>        <a class="code hl_class" href="classAFood.html">AFood</a>* <a class="code hl_enumvalue" href="ListenAnswer_8h.html#ab256f9c27c701de5d273fc77c28e6effa0a38e7286ebbb560354992b3ce62be67">Food</a> = Cast&lt;AFood&gt;(owner);</div>
 <div class="line"><span class="lineno">  137</span> </div>
-<div class="line"><span class="lineno">  138</span>        <span class="keywordflow">if</span> (!<a class="code hl_enumvalue" href="ListenAnswer_8h.html#ab256f9c27c701de5d273fc77c28e6effa82b89f0b3ba4dac1d89386da86ec22ff">Food</a> &amp;&amp; !luggage) <span class="keywordflow">continue</span>;  <span class="comment">// 둘 다 아니면 스킵</span></div>
+<div class="line"><span class="lineno">  138</span>        <span class="keywordflow">if</span> (!<a class="code hl_enumvalue" href="ListenAnswer_8h.html#ab256f9c27c701de5d273fc77c28e6effa0a38e7286ebbb560354992b3ce62be67">Food</a> &amp;&amp; !luggage) <span class="keywordflow">continue</span>;  <span class="comment">// 둘 다 아니면 스킵</span></div>
 <div class="line"><span class="lineno">  139</span>        <span class="keywordflow">if</span> (!Cast&lt;UStaticMeshComponent&gt;(comp)) <span class="keywordflow">continue</span>;</div>
 <div class="line"><span class="lineno">  140</span> </div>
 <div class="line"><span class="lineno">  141</span>        <span class="comment">// [개선] Luggage의 경우 Hook이나 PickUp 중이면 컨베이어 이동 무시</span></div>
@@ -476,14 +476,14 @@ Protected 속성</h2></td></tr>
 <div class="line"><span class="lineno">  183</span>        }</div>
 <div class="line"><span class="lineno">  184</span>    }</div>
 <div class="line"><span class="lineno">  185</span>}</div>
-<div class="ttc" id="aListenAnswer_8h_html_ab256f9c27c701de5d273fc77c28e6effa82b89f0b3ba4dac1d89386da86ec22ff"><div class="ttname"><a href="ListenAnswer_8h.html#ab256f9c27c701de5d273fc77c28e6effa82b89f0b3ba4dac1d89386da86ec22ff">Food</a></div><div class="ttdeci">@ Food</div><div class="ttdef"><b>Definition</b> <a href="ListenAnswer_8h_source.html#l00014">ListenAnswer.h:14</a></div></div>
+<div class="ttc" id="aListenAnswer_8h_html_ab256f9c27c701de5d273fc77c28e6effa0a38e7286ebbb560354992b3ce62be67"><div class="ttname"><a href="ListenAnswer_8h.html#ab256f9c27c701de5d273fc77c28e6effa0a38e7286ebbb560354992b3ce62be67">EAnswerType::Food</a></div><div class="ttdeci">@ Food</div></div>
 <div class="ttc" id="aclassAConveyorBelt_html_a9ad1d6043575529342ede89956a29884"><div class="ttname"><a href="classAConveyorBelt.html#a9ad1d6043575529342ede89956a29884">AConveyorBelt::MoveSpeed</a></div><div class="ttdeci">float MoveSpeed</div><div class="ttdef"><b>Definition</b> <a href="ConveyorBelt_8h_source.html#l00054">ConveyorBelt.h:54</a></div></div>
 <div class="ttc" id="aclassAFood_html"><div class="ttname"><a href="classAFood.html">AFood</a></div><div class="ttdef"><b>Definition</b> <a href="Food_8h_source.html#l00036">Food.h:37</a></div></div>
 <div class="ttc" id="aclassAluggage_html"><div class="ttname"><a href="classAluggage.html">Aluggage</a></div><div class="ttdoc">상호작용 가능한 수하물 액터</div><div class="ttdef"><b>Definition</b> <a href="luggage_8h_source.html#l00014">luggage.h:15</a></div></div>
 <div class="ttc" id="aclassAluggage_html_a3bb4871ec229b35443c41bd539f1c9a7"><div class="ttname"><a href="classAluggage.html#a3bb4871ec229b35443c41bd539f1c9a7">Aluggage::bIsBeingHooked</a></div><div class="ttdeci">bool bIsBeingHooked</div><div class="ttdoc">훅 중 플래그 (복제됨)</div><div class="ttdef"><b>Definition</b> <a href="luggage_8h_source.html#l00055">luggage.h:55</a></div></div>
 <div class="ttc" id="aclassAluggage_html_a555315380e2dd75038c0d2aea8fe9b02"><div class="ttname"><a href="classAluggage.html#a555315380e2dd75038c0d2aea8fe9b02">Aluggage::InteractableComp</a></div><div class="ttdeci">TObjectPtr&lt; class UInteractableComponent &gt; InteractableComp</div><div class="ttdef"><b>Definition</b> <a href="luggage_8h_source.html#l00038">luggage.h:38</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="ConveyorBelt_8h_source.html#l00045">BeltBoxComp</a>, <a class="el" href="luggage_8h_source.html#l00055">Aluggage::bIsBeingHooked</a>, <a class="el" href="ConveyorBelt_8h_source.html#l00052">bIsForward</a>, <a class="el" href="ListenAnswer_8h_source.html#l00014">Food</a>, <a class="el" href="luggage_8h_source.html#l00038">Aluggage::InteractableComp</a>, <a class="el" href="ConveyorBelt_8h_source.html#l00048">MoveDirArrowComp</a>, <a class="el" href="ConveyorBelt_8h_source.html#l00054">MoveSpeed</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="ConveyorBelt_8h_source.html#l00045">BeltBoxComp</a>, <a class="el" href="luggage_8h_source.html#l00055">Aluggage::bIsBeingHooked</a>, <a class="el" href="ConveyorBelt_8h_source.html#l00052">bIsForward</a>, <a class="el" href="ListenAnswer_8h.html#ab256f9c27c701de5d273fc77c28e6effa0a38e7286ebbb560354992b3ce62be67">Food</a>, <a class="el" href="luggage_8h_source.html#l00038">Aluggage::InteractableComp</a>, <a class="el" href="ConveyorBelt_8h_source.html#l00048">MoveDirArrowComp</a>, <a class="el" href="ConveyorBelt_8h_source.html#l00054">MoveSpeed</a>.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ConveyorBelt_8cpp_source.html#l00059">Tick()</a>.</p>
 <div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -803,7 +803,7 @@ Protected 속성</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classAConveyorBelt.html">AConveyorBelt</a></li>
-    <li class="footer">생성시간 : 일 12월 14 2025 23:49:17, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 월 12월 15 2025 00:59:02, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

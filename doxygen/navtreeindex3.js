@@ -1,5 +1,6 @@
 var NAVTREEINDEX3 =
 {
+"ULingoGameHelper_8h_source.html":[3,0,0,2,1,1,7],
 "ULingoGameInstanceSubsystem_8cpp.html":[3,0,0,2,1,0,9],
 "ULingoGameInstanceSubsystem_8cpp_source.html":[3,0,0,2,1,0,9],
 "ULingoGameInstanceSubsystem_8h.html":[3,0,0,2,1,1,9],
@@ -57,8 +58,8 @@ var NAVTREEINDEX3 =
 "UParabolaComponent_8h.html#a160b3db1967ea71bee24abc7f977594fa21c2e59531c8710156d34a3c30ac81d5":[3,0,0,0,1,1,3,2,2],
 "UParabolaComponent_8h.html#a160b3db1967ea71bee24abc7f977594fa57cec4137b614c87cb4e24a3d003a3e0":[3,0,0,0,1,1,3,2,1],
 "UParabolaComponent_8h.html#acb24f37a1795b5e9dfdbb98be4898712":[3,0,0,0,1,1,3,3],
-"UParabolaComponent_8h.html#acb24f37a1795b5e9dfdbb98be4898712aa3f80d8f0f1b4ffa8c475f5d60ea5635":[3,0,0,0,1,1,3,3,1],
 "UParabolaComponent_8h.html#acb24f37a1795b5e9dfdbb98be4898712aa3f80d8f0f1b4ffa8c475f5d60ea5635":[3,0,0,0,1,1,3,3,0],
+"UParabolaComponent_8h.html#acb24f37a1795b5e9dfdbb98be4898712aa3f80d8f0f1b4ffa8c475f5d60ea5635":[3,0,0,0,1,1,3,3,1],
 "UParabolaComponent_8h_source.html":[3,0,0,0,1,1,3],
 "UPlayTimer_8cpp.html":[3,0,0,2,6,0,18],
 "UPlayTimer_8cpp_source.html":[3,0,0,2,6,0,18],
@@ -248,6 +249,5 @@ var NAVTREEINDEX3 =
 "classAContactTrigger.html#a98853c812355fff404cced1f8245bd7b":[2,0,2,3],
 "classAContactTrigger.html#aaf47be0afbd396aceb6da9c95bbec8b7":[2,0,2,11],
 "classAContactTrigger.html#ab402eea2b6e7365ec8a47ec11db1f035":[2,0,2,9],
-"classAContactTrigger.html#ac475b9f5bb07cfd21b598ad87e6d019c":[2,0,2,13],
-"classAContactTrigger.html#ad95a80dee6308cafc2ba071e0b63d1c2":[2,0,2,6]
+"classAContactTrigger.html#ac475b9f5bb07cfd21b598ad87e6d019c":[2,0,2,13]
 };

@@ -51,7 +51,6 @@ var NAVTREE =
         [ "함수", "globals_func.html", null ],
         [ "변수", "globals_vars.html", null ],
         [ "열거형 타입", "globals_enum.html", null ],
-        [ "열거형 멤버", "globals_eval.html", null ],
         [ "매크로", "globals_defs.html", null ]
       ] ]
     ] ]
@@ -63,16 +62,16 @@ var NAVTREEINDEX =
 "ABroadcastTrigger_8cpp.html",
 "EPopupType_8h.html#a3c98e5bec1eb6dee36b07ed62d8fc635aa3f80d8f0f1b4ffa8c475f5d60ea5635",
 "NetworkData_8h_source.html",
-"ULingoGameInstanceSubsystem_8cpp.html",
-"classAContactTrigger.html#ae388db0378df16528c92d3a7ef69281a",
-"classALingoPlayerState.html#a5c4815f92bedf83ef33caf6d5267b3a5",
-"classAPlayerActor.html#a3fb4598e21a9c5af2d9b3007adab9496",
-"classAWheatly.html#aefd2aaefca37d4d5c23297f04503efc4",
-"classUDialogManager.html#a08d300b0bd2a0a85ef3faf74d68242a4",
-"classUKLingoNetworkSystem.html#a4082666ed951516c06e8dcbfdb20c484",
-"classUPopup__InterviewHello.html",
-"classUPopup__WriteBoard.html#a2c3d2b47f8255c0172cf9f218790fcc8",
-"classUVoiceCacheManager.html#a6a8c3b680bae4424030a53b845e062b4",
+"ULingoGameHelper_8h_source.html",
+"classAContactTrigger.html#ad95a80dee6308cafc2ba071e0b63d1c2",
+"classALingoPlayerState.html#a4a5444df3780d67ccefa24a47097ab14",
+"classAPlayerActor.html#a35e67f9f2f0a0c5ee8589213b5a65b63",
+"classAWheatly.html#adec1b3c2624f73d876a6878ece69d20c",
+"classUDialogManager.html#a01a895ea8e13cdc6b03f6e2e4e74cea3",
+"classUKLingoNetworkSystem.html#a2f97be279ddf5bd2878f67a55d9b8149",
+"classUPopup__Interview.html#afe75f5ef94f97fbcc8ea1ad9e801524c",
+"classUPopup__WriteBoard.html#a28347ca2a152dbae7ac3d50e71dd301f",
+"classUVoiceCacheManager.html#a4f3e650da3d51290223dd43c0b8e12a8",
 "namespaceGameTags.html#a4a81eec617fe2a3746945eb6a5814d21",
 "structFResourceTextureData.html#ab97df37e6d23106f7d722459898de613"
 ];

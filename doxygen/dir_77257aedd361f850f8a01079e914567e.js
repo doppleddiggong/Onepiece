@@ -16,7 +16,7 @@ var dir_77257aedd361f850f8a01079e914567e =
     [ "ListenAnswer.cpp", "ListenAnswer_8cpp.html", null ],
     [ "luggage.cpp", "luggage_8cpp.html", "luggage_8cpp" ],
     [ "LuggageManager.cpp", "LuggageManager_8cpp.html", null ],
-    [ "OrderKiosk.cpp", "OrderKiosk_8cpp.html", null ],
+    [ "OrderKiosk.cpp", "OrderKiosk_8cpp.html", "OrderKiosk_8cpp" ],
     [ "OutBoxTeleportTrigger.cpp", "OutBoxTeleportTrigger_8cpp.html", null ],
     [ "QuestionnaireKiosk.cpp", "QuestionnaireKiosk_8cpp.html", "QuestionnaireKiosk_8cpp" ],
     [ "RespawnTrigger.cpp", "RespawnTrigger_8cpp.html", "RespawnTrigger_8cpp" ]

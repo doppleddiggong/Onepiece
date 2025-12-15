@@ -1,5 +1,6 @@
 var NAVTREEINDEX7 =
 {
+"classAWheatly.html#adec1b3c2624f73d876a6878ece69d20c":[2,0,43,28],
 "classAWheatly.html#aefd2aaefca37d4d5c23297f04503efc4":[2,0,43,34],
 "classAWheatly.html#afe17baf42cca00180cfe4aaf0dc7b98c":[2,0,43,20],
 "classAluggage.html":[2,0,19],
@@ -248,6 +249,5 @@ var NAVTREEINDEX7 =
 "classUDelayTaskManager.html#af771ffde302faa23def27e4769f9776e":[2,0,134,9],
 "classUDelayTaskManager.html#afc5800d645cb2888723bee5042181c5b":[2,0,134,11],
 "classUDelayTaskManager.html#afead6ae41bebb72cd3a90cd86fd9eeda":[2,0,134,8],
-"classUDialogManager.html":[2,0,135],
-"classUDialogManager.html#a01a895ea8e13cdc6b03f6e2e4e74cea3":[2,0,135,4]
+"classUDialogManager.html":[2,0,135]
 };
