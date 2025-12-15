@@ -15,6 +15,9 @@
 #include "ULingoGameHelper.h"
 #include "UPopup_Interview.h"
 #include "UPopup_InterviewHello.h"
+#include "UPopup_SpeakQuest.h"
+#include "UPopup_SpeakQuestJudes.h"
+#include "UPopup_SpeakQuestResult.h"
 #include "UPopup_Word.h"
 
 #include "Onepiece/Onepiece.h"
@@ -29,6 +32,10 @@
 #define QuestionnaireResult_POPUP_PATH TEXT("/Game/CustomContents/UI/Widgets/Write/WBP_PopupWriteResult.WBP_PopupWriteResult_C")
 #define WORD_POPUP_PATH TEXT("/Game/CustomContents/UI/Widgets/WBP_PopupWord.WBP_PopupWord_C")
 #define INTERVIEWHELLO_POPUP_PATH TEXT("/Game/CustomContents/UI/Widgets/WBP_PopupInterviewHello.WBP_PopupInterviewHello_C")
+#define SPEAKQUEST_POPUP_PATH TEXT("/Game/CustomContents/UI/Widgets/WBP_PopupSpeakQuest.WBP_PopupSpeakQuest_C")
+#define SPEAKQUESTJUDES_POPUP_PATH TEXT("/Game/CustomContents/UI/Widgets/WBP_PopupSpeakQuestJudes.WBP_PopupSpeakQuestJudes_C")
+#define SPEAKQUESTRESULT_POPUP_PATH TEXT("/Game/CustomContents/UI/Widgets/WBP_PopupSpeakQuestResult.WBP_PopupSpeakQuestResult_C")
+
 
 UPopupManager::UPopupManager()
 {
@@ -44,6 +51,10 @@ UPopupManager::UPopupManager()
 	PopupClassMap.Add(EPopupType::QuestionnaireResult, FComponentHelper::LoadClass<UPopup_QuestionnaireResult>(QuestionnaireResult_POPUP_PATH));
 	PopupClassMap.Add(EPopupType::Word, FComponentHelper::LoadClass<UPopup_Word>(WORD_POPUP_PATH));
 	PopupClassMap.Add(EPopupType::InterviewHello, FComponentHelper::LoadClass<UPopup_InterviewHello>(INTERVIEWHELLO_POPUP_PATH));
+
+	PopupClassMap.Add(EPopupType::SpeakQuest, FComponentHelper::LoadClass<UPopup_SpeakQuest>(SPEAKQUEST_POPUP_PATH));
+	PopupClassMap.Add(EPopupType::SpeakQuestJudes, FComponentHelper::LoadClass<UPopup_SpeakQuestJudes>(SPEAKQUESTJUDES_POPUP_PATH));
+	PopupClassMap.Add(EPopupType::SpeakQuestResult, FComponentHelper::LoadClass<UPopup_SpeakQuestResult>(SPEAKQUESTRESULT_POPUP_PATH));
 }
 
 // ========================================

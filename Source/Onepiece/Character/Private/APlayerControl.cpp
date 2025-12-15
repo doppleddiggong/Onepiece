@@ -30,6 +30,7 @@
 #include "OrderKiosk.h"
 #include "UDialogManager.h"
 #include "UPopupManager.h"
+#include "UPopup_SpeakQuest.h"
 
 #define IMC_DEFAULT_PATH			TEXT("/Game/CustomContents/Input/IMC_Game_Player.IMC_Game_Player")
 #define IA_MOVE_PATH				TEXT("/Game/CustomContents/Input/IA_Game_Movement.IA_Game_Movement")
@@ -293,19 +294,19 @@ void APlayerControl::Client_UpdateSpeakQuest_Implementation(int32 StepIndex)
 	if (StepIndex == 0)
 	{
 		// 첫 번째 질문일 경우 MessageBox 표시
-		if (auto PopupManager = UPopupManager::Get(GetWorld()))
+		if (auto Popup = UPopupManager::ShowPopupAs<UPopup_SpeakQuest>(GetWorld(), EPopupType::SpeakQuest))
 		{
 			// MessageBox OK 버튼 클릭 시 질문 표시
 			FOnMsgBoxOkDelegate OnOkDelegate;
-			OnOkDelegate.BindLambda([this, StepIndex]()
+			
+			Popup->InitPopup( FOnMsgBoxOkDelegate().CreateLambda([this, StepIndex]()
 			{
 				if (APlayerActor* PlayerActor = Cast<APlayerActor>(GetPawn()))
+				{
 					PlayerActor->PlaySpeakInfo(StepIndex);
-
+				}
 				UpdateSpeakWidget(StepIndex);
-			});
-
-			PopupManager->ShowMsgBox(TEXT("SpeakQuest"), TEXT("QUEST START"), EMsgBoxType::OK, OnOkDelegate);
+			}));
 		}
 	}
 	else
