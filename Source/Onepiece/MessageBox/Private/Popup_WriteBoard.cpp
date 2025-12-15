@@ -4,6 +4,8 @@
 #include "Popup_WriteBoard.h"
 
 #include "GameLogging.h"
+#include "NetworkData.h"
+#include "NetworkMessage.h"
 #include "UImageButton.h"
 #include "UPopupManager.h"
 #include "UTextureButton.h"
@@ -44,15 +46,16 @@ void UPopup_WriteBoard::NativeOnInitialized()
 	
 	// Button Event
 	Button_Save->OnButtonClickedEvent.AddDynamic(this, &UPopup_WriteBoard::SaveCanvas);
-	Button_Close->OnButtonClickedEvent.AddDynamic(this, &UPopup_WriteBoard::CloseDrawWindow);
 	
 	Text_Guide->RemoveFromParent();
 }
 
-void UPopup_WriteBoard::InitPopup(int32 InQid, const FString& InAnswerKr)
+void UPopup_WriteBoard::InitPopup(int32 InQid, const FWriteQuestionData& InQuestionData)
 {
 	this->Qid = InQid;
-	this->AnswerKr = InAnswerKr;
+	this->AnswerKr = InQuestionData.answer_kor;
+	this->Text_Question_Kr->SetText(FText::FromString(InQuestionData.word_data.kor));
+	this->Text_Question_En->SetText(FText::FromString(InQuestionData.word_data.eng));
 	
 	ClearWriteBoard();
 	AdjustLength();
@@ -165,16 +168,6 @@ void UPopup_WriteBoard::ClearWriteBoard()
 	HorizontalBox_Guide->ClearChildren();
 }
 
-void UPopup_WriteBoard::CloseDrawWindow()
-{
-	if (const auto PopupMgr = UPopupManager::Get(GetWorld()))
-	{
-		SaveCanvas();
-		ClearCanvas();
-		PopupMgr->HideCurrentPopup(false);
-	}
-}
-
 void UPopup_WriteBoard::DrawPoint(FVector2D mousePos, FLinearColor drawColor)
 {
 	// Begin Draw Canvas To Render Target
@@ -226,7 +219,12 @@ FVector2D UPopup_WriteBoard::GetLocalMousePos(FVector2D mousePos)
 
 void UPopup_WriteBoard::SaveCanvas()
 {
-	writeBoardObject->SaveCanvas(Qid, RT_Canvas);
+	if (const auto PopupMgr = UPopupManager::Get(GetWorld()))
+	{
+		writeBoardObject->SaveCanvas(Qid, RT_Canvas);
+		ClearCanvas();
+		PopupMgr->HideCurrentPopup(false);
+	}
 }
 
 void UPopup_WriteBoard::ClearCanvas()

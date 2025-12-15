@@ -5,11 +5,16 @@
 
 #include "GameLogging.h"
 #include "Components/Spacer.h"
-#include "Components/VerticalBox.h"
 #include "Popup_QuestionnaireResultItem.h"
+#include "Components/ScrollBox.h"
 
 UPopup_QuestionnaireResult::UPopup_QuestionnaireResult(const FObjectInitializer& ObjectInitializer)
 {
+	ConstructorHelpers::FClassFinder<UPopup_QuestionnaireResultItem> QuestionnaireResultItemRef(TEXT("/Game/CustomContents/UI/Widgets/Write/WBP_WriteResultItem.WBP_WriteResultItem_C"));
+	if (QuestionnaireResultItemRef.Succeeded())
+	{
+		QuestionnaireResultItemClass = QuestionnaireResultItemRef.Class;
+	}
 }
 
 void UPopup_QuestionnaireResult::InitPopup(const FResponseWriteSubmit& InResponseData)
@@ -18,22 +23,28 @@ void UPopup_QuestionnaireResult::InitPopup(const FResponseWriteSubmit& InRespons
 	ResponseData = InResponseData;
 	
 	// VerticalBox 초기화
-	VerticalBox_Result->ClearChildren();
+	ScrollBox_Result->ClearChildren();
 	
 	// TODO: 피드백 팝업 창 생성해야 함.
 	// for (const FResponseOcrData& data : ResponseData.ResponseOcrDataArray)
 	for (int32 i = 1; i <= ResponseData.ResponseWriteDataArray.Num(); ++i)
 	{
 		const FResponseWriteData& data = ResponseData.ResponseWriteDataArray[i - 1];
+		PRINTLOG(TEXT("----Display----"));
 		PRINTLOG(TEXT("%d Success: %s"), i, data.display.is_pass ? TEXT("true") : TEXT("false"));
-		PRINTLOG(TEXT("%d Extracted Text: %s"), i, *(data.display.message));
-		PRINTLOG(TEXT("%d Extracted Text: %s"), i, *(data.display.correction));
+		PRINTLOG(TEXT("%d Display Message: %s"), i, *(data.display.message));
+		PRINTLOG(TEXT("%d Display Correction: %s"), i, *(data.display.correction));
+		PRINTLOG(TEXT("----Record----"));
+		PRINTLOG(TEXT("%d Score: %d"), i, data.record.score);
+		PRINTLOG(TEXT("%d Record Target: %s"), i, *(data.record.target));
+		PRINTLOG(TEXT("%d Record Input: %s"), i, *(data.record.input));
+		PRINTLOG(TEXT("%d Record Stage: %s"), i, *(data.record.stage));
 		
 		// 인터뷰 항목 위젯 생성
 		UPopup_QuestionnaireResultItem* ItemWidget = CreateWidget<UPopup_QuestionnaireResultItem>(
 			GetWorld(), QuestionnaireResultItemClass);
-		ItemWidget->InitItem(data);
-		VerticalBox_Result->AddChildToVerticalBox(ItemWidget);
+		ItemWidget->InitItem(i, data);
+		ScrollBox_Result->AddChild(ItemWidget);
 	
 		// 마지막 항목이 아니면 Spacer 추가
 		if (i < ResponseData.ResponseWriteDataArray.Num() - 1)
@@ -42,7 +53,7 @@ void UPopup_QuestionnaireResult::InitPopup(const FResponseWriteSubmit& InRespons
 			if (Spacer)
 			{
 				Spacer->SetSize(FVector2D(1.0f, ItemSpacing));
-				VerticalBox_Result->AddChildToVerticalBox(Spacer);
+				ScrollBox_Result->AddChild(Spacer);
 			}
 		}
 	}	

@@ -36,17 +36,9 @@ protected:
 	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<class UImage> Popup_BaseBg;
 
-	/** 닫기 버튼 */
-	UPROPERTY(meta = (BindWidget))
-	TObjectPtr<class UTextureButton> Btn_Close;
-
-	/** 스크롤 가능한 인터뷰 패널 */
-	UPROPERTY(meta = (BindWidget))
-	TObjectPtr<class UScrollBox> ScrollBox;
-
 	/** 인터뷰 항목들이 추가될 VerticalBox */
 	UPROPERTY(meta = (BindWidget))
-	TObjectPtr<class UVerticalBox> VerticalBox_Result;
+	TObjectPtr<class UScrollBox> ScrollBox_Result;
 
 	/* ------------------- Classes ------------------- */
 	/** 팝업 내에서 표시될 인터뷰 항목 위젯 클래스 */
