@@ -73,6 +73,7 @@ void AFoodHolder::GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& Ou
 
 	DOREPLIFETIME(AFoodHolder, bIsActivated);
 	DOREPLIFETIME(AFoodHolder, CurTarget);
+	DOREPLIFETIME(AFoodHolder, TryIdx);
 }
 
 void AFoodHolder::OnRep_IsActivated()
@@ -124,47 +125,53 @@ void AFoodHolder::OnFoodBoxOverlapBegin(
 	if (!GS)
 		return;
 
+	TryIdx++;
+
 	// Food인지 확인
 	if (AFood* Food = Cast<AFood>(OtherActor))
 	{
 		const bool bSuccess = CheckFood(Food);
 
+		FScenarioTargetData TempData;
+		TempData.word1 = Food->CurrentFoodData.word1;
+		TempData.word2 = Food->CurrentFoodData.word2;
+		GS->TryListenAnswerData.target_data.Add(TempData);
+		
 		// 블루프린트 이벤트 호출
 		OnActivate(bSuccess);
 
-		// if (bSuccess)
-		// {
-		// 	UE_LOG(LogTemp, Warning, TEXT("[FoodHolder] Correct"));
-		//
-		// 	// 정답인 경우
-		// 	int32 CorrectIdx = Food->GetFoodIndex();
-		// 	FTimerHandle TimerHandle;
-		// 	GetWorldTimerManager().SetTimer(TimerHandle, [this, CorrectIdx]
-		// 	{
-		// 		ADoor* Door = FindDoorToOpen();
-		// 		if (Door) Door->OpenDoor();
-		// 		
-		// 		// 모든 클라이언트에 정답 인덱스와 함께 결과 팝업 표시
-		// 		Multicast_ShowResultPopup(CorrectIdx);
-		// 	}, 0.5f, false);
-		// }
-		// else
-		// {
-		// 	UE_LOG(LogTemp, Warning, TEXT("[FoodHolder] Wrong"));
-		//
-		// 	// 오답인 경우
-		// 	FTimerHandle TimerHandle;
-		// 	GetWorldTimerManager().SetTimer(TimerHandle, [this, Food, GS]
-		// 	{
-		// 		GS->WrongListenAnswerList.Add(Food->GetFoodIndex());
-		//
-		// 		// 모든 클라이언트에 오답 메시지 표시
-		// 		Multicast_ShowWrongPopup(Food->GetFoodName());
-		//
-		// 		// Food 소거 (서버에서만, 자동 복제됨)
-		// 		Food->Destroy();
-		// 	}, 0.5f, false);
-		// }
+		if (bSuccess)
+		{
+			UE_LOG(LogTemp, Warning, TEXT("[FoodHolder] Correct"));
+		
+			// 정답인 경우
+			FTimerHandle TimerHandle;
+			GetWorldTimerManager().SetTimer(TimerHandle, [this]
+			{
+				ADoor* Door = FindDoorToOpen();
+				if (Door) Door->OpenDoor();
+				
+				// 모든 클라이언트에 정답 인덱스와 함께 결과 팝업 표시
+				Multicast_ShowResultPopup(TryIdx);
+			}, 0.5f, false);
+		}
+		else
+		{
+			UE_LOG(LogTemp, Warning, TEXT("[FoodHolder] Wrong"));
+		
+			// 오답인 경우
+			FTimerHandle TimerHandle;
+			GetWorldTimerManager().SetTimer(TimerHandle, [this, Food, GS]
+			{
+				GS->WrongListenAnswerList.Add(TryIdx);
+		
+				// 모든 클라이언트에 오답 메시지 표시
+				Multicast_ShowWrongPopup(Food->CurrentFoodData.word1.name);
+		
+				// Food 소거 (서버에서만, 자동 복제됨)
+				Food->Destroy();
+			}, 0.5f, false);
+		}
 	}
 }
 
@@ -185,12 +192,12 @@ bool AFoodHolder::CheckFood(AFood* TargetFood)
 
 	const int32 CorrectIdx = GS->GetListenScenarioData().correct_answer_index;
 	const TArray<FScenarioTargetData>& ScenarioData = GS->GetListenScenarioData().target_data;
-
-	FString CorrectFoodName = ScenarioData[CorrectIdx].word2.name;
-	FString CorrectCityName = ScenarioData[CorrectIdx].word1.name;
 	
-	if (CorrectFoodName == TargetFood->CurrentFoodData.word1.name
-		&& CorrectCityName == TargetFood->CurrentFoodData.word2.name)
+	FString CorrectCityName = ScenarioData[CorrectIdx].word1.name;
+	FString CorrectFoodName = ScenarioData[CorrectIdx].word2.name;
+	
+	if (CorrectFoodName == TargetFood->CurrentFoodData.word2.name
+		&& CorrectCityName == TargetFood->CurrentFoodData.word1.name)
 	{
 		// Success: Food를 HoldPos 위치보다 살짝 위에 배치
 		FVector ActivatedLocation = HoldPos->GetComponentLocation();

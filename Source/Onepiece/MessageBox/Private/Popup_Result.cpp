@@ -127,7 +127,7 @@ void UPopup_Result::InitWrongList()
 	else if ( QuestType == EQuestType::Listen )
 	{
 		WrongList = GS->WrongListenAnswerList;
-		ScenarioData = GS->GetListenScenarioData().target_data;
+		ScenarioData = GS->TryListenAnswerData.target_data;
 		CorrectData = GS->GetListenScenarioData().GetCorrectAnswerData();
 	}
 	

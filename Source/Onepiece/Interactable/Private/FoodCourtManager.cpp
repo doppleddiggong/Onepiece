@@ -68,69 +68,65 @@ void AFoodCourtManager::SpawnListenAnswer()
 	const TArray<FScenarioTargetData>& ScenarioData = GS->GetListenScenarioData().target_data;
 
 	// 선택지 중복 안되도록 추리기
-	TSet<FString> FoodNames;
-	TSet<FString> CityNames;
-	
+	TSet<FWordInfo> FoodInfos;
+	TSet<FWordInfo> CityInfos;
+
 	for (int32 i=0; i<ScenarioData.Num(); i++)
 	{
 		auto SD = ScenarioData[i];
 		
-		FoodNames.Add(SD.word2.name);
-		CityNames.Add(SD.word1.name);
+		CityInfos.Add(SD.word1);
+		FoodInfos.Add(SD.word2);
 	}
 
 	// 음식 선택지 스폰 및 데이터 전달
 	int32 Index = 0;
-	for (auto FoodName : FoodNames)
+	for (const FWordInfo& FoodInfo : FoodInfos)
 	{
 		// 스폰하기
 		FVector SpawnLocation;
 		GetCurrentSpawnLocation(Index, SpawnLocation);
-		
+
 		AListenAnswer* NewActor = GetWorld()->SpawnActor<AListenAnswer>(ListenAnswerClass, SpawnLocation, FRotator::ZeroRotator);
-		
+
 		// 데이터 전달
 		FTimerHandle TimerHandle;
-		GetWorldTimerManager().SetTimer(TimerHandle, FTimerDelegate::CreateLambda([this, NewActor, FoodName]
+		GetWorldTimerManager().SetTimer(TimerHandle, FTimerDelegate::CreateLambda([this, NewActor, FoodInfo]
 		{
 			NewActor->AnswerData.AnswerType = EAnswerType::Food;
-			NewActor->AnswerData.word1.name = FoodName;
-			// 코드는 필요하면 추가
-			NewActor->AnswerData.word1.code = FoodName;
+			NewActor->AnswerData.word1 = FoodInfo;
 
 			// 로컬 위젯 업데이트
 			NewActor->UpdateMesh();
 			NewActor->UpdateNameWidget();
-			
+
 		}), 1.f, false);
-			
+
 		Index++;
 	}
-	
+
 	// 도시 이름 선택지 스폰 및 데이터 전달
-	for (auto CityName : CityNames)
+	for (const FWordInfo& CityInfo : CityInfos)
 	{
 		// 스폰하기
 		FVector SpawnLocation;
 		GetCurrentSpawnLocation(Index, SpawnLocation);
-		
+
 		AListenAnswer* NewActor = GetWorld()->SpawnActor<AListenAnswer>(ListenAnswerClass, SpawnLocation, FRotator::ZeroRotator);
-		
+
 		// 데이터 전달
 		FTimerHandle TimerHandle;
-		GetWorldTimerManager().SetTimer(TimerHandle, FTimerDelegate::CreateLambda([this, NewActor, CityName]
+		GetWorldTimerManager().SetTimer(TimerHandle, FTimerDelegate::CreateLambda([this, NewActor, CityInfo]
 		{
 			NewActor->AnswerData.AnswerType = EAnswerType::City;
-			NewActor->AnswerData.word1.name = CityName;
-			// 코드는 필요하면 추가
-			NewActor->AnswerData.word1.code = CityName;
+			NewActor->AnswerData.word1 = CityInfo;
 
 			// 로컬 위젯 업데이트
 			NewActor->UpdateMesh();
 			NewActor->UpdateNameWidget();
-			
+
 		}), 1.f, false);
-			
+
 		Index++;
 	}
 }
