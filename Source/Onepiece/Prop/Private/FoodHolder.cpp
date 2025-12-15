@@ -183,37 +183,40 @@ bool AFoodHolder::CheckFood(AFood* TargetFood)
 	ALingoGameState* GS = Cast<ALingoGameState>(GetWorld()->GetGameState());
 	if (!GS) return false;
 
-	return true;
-	// const int32 CorrectIdx = GS->GetListenScenarioData().correct_answer_index;
-	// const int32 FoodIdx = TargetFood->GetFoodIndex();
-	//
-	// if (CorrectIdx == FoodIdx)
-	// {
-	// 	// Success: Food를 HoldPos 위치보다 살짝 위에 배치
-	// 	FVector ActivatedLocation = HoldPos->GetComponentLocation();
-	// 	ActivatedLocation.Z += ActivatedHeightOffset;
-	// 	TargetFood->SetActorLocation(ActivatedLocation);
-	// 	TargetFood->SetActorRotation(HoldPos->GetComponentRotation());
-	//
-	// 	// Activate 상태로 전환
-	// 	bIsActivated = true;
-	// 	CurTarget = TargetFood;
-	//
-	// 	// 서버에서도 머티리얼 업데이트 (클라이언트는 OnRep_IsActivated에서 호출됨)
-	// 	UpdateActivateState(true);
-	//
-	// 	return true;
-	// }
-	// else
-	// {
-	// 	UE_LOG(LogTemp, Warning, TEXT("[CheckFood] Returning FALSE"));
-	//
-	// 	// Fail: 서버에서 머티리얼 업데이트 (오답)
-	// 	bIsActivated = false;
-	// 	UpdateActivateState(false);
-	//
-	// 	return false;
-	// }
+	const int32 CorrectIdx = GS->GetListenScenarioData().correct_answer_index;
+	const TArray<FScenarioTargetData>& ScenarioData = GS->GetListenScenarioData().target_data;
+
+	FString CorrectFoodName = ScenarioData[CorrectIdx].word2.name;
+	FString CorrectCityName = ScenarioData[CorrectIdx].word1.name;
+	
+	if (CorrectFoodName == TargetFood->CurrentFoodData.word1.name
+		&& CorrectCityName == TargetFood->CurrentFoodData.word2.name)
+	{
+		// Success: Food를 HoldPos 위치보다 살짝 위에 배치
+		FVector ActivatedLocation = HoldPos->GetComponentLocation();
+		ActivatedLocation.Z += ActivatedHeightOffset;
+		TargetFood->SetActorLocation(ActivatedLocation);
+		TargetFood->SetActorRotation(HoldPos->GetComponentRotation());
+	
+		// Activate 상태로 전환
+		bIsActivated = true;
+		CurTarget = TargetFood;
+	
+		// 서버에서도 머티리얼 업데이트 (클라이언트는 OnRep_IsActivated에서 호출됨)
+		UpdateActivateState(true);
+	
+		return true;
+	}
+	else
+	{
+		UE_LOG(LogTemp, Warning, TEXT("[CheckFood] Returning FALSE"));
+	
+		// Fail: 서버에서 머티리얼 업데이트 (오답)
+		bIsActivated = false;
+		UpdateActivateState(false);
+	
+		return false;
+	}
 }
 
 void AFoodHolder::UpdateActivateState(bool State)

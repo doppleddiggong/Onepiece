@@ -8,7 +8,7 @@
 #include "ListenAnswer.generated.h"
 
 UENUM(BlueprintType)
-enum EAnswerType : uint8
+enum class EAnswerType : uint8
 {
 	None = 0,
 	Food  = 1,
