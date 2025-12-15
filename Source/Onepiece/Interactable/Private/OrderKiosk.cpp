@@ -9,6 +9,7 @@
 #include "Kismet/GameplayStatics.h"
 #include "Net/UnrealNetwork.h"
 
+#define TARGET_LOCATION FVector(5604.438473,-5691.762227,-3648.742048)
 
 // Sets default values
 AOrderKiosk::AOrderKiosk()
@@ -31,14 +32,6 @@ void AOrderKiosk::BeginPlay()
 
 	FoodCollision->OnComponentBeginOverlap.AddDynamic(this, &AOrderKiosk::BeginFoodOverlap);
 	SubmitCollision->OnComponentBeginOverlap.AddDynamic(this, &AOrderKiosk::BeginSubmitOverlap);
-}
-
-void AOrderKiosk::GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const
-{
-	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
-
-	// DOREPLIFETIME(AOrderKiosk, IsOverlapping);
-	// DOREPLIFETIME(AOrderKiosk, FoodData);
 }
 
 // Called every frame
@@ -103,8 +96,19 @@ void AOrderKiosk::BeginSubmitOverlap(UPrimitiveComponent* OverlappedComponent, A
 						break;
 
 					case EAnswerType::City:
-						CurrentFoodContainer->SetCityName(Answer->AnswerData.word1);
-						break;
+						{
+							CurrentFoodContainer->SetCityName(Answer->AnswerData.word1);
+
+							FTimerHandle TimerHandle;
+							GetWorldTimerManager().SetTimer(TimerHandle, FTimerDelegate::CreateLambda([this]
+							{
+
+								Server_MoveFoodContainer(CurrentFoodContainer);
+								
+							}), 3.f, false);
+							
+							break;
+						}
 
 					default:
 						break;
@@ -126,69 +130,15 @@ void AOrderKiosk::BeginSubmitOverlap(UPrimitiveComponent* OverlappedComponent, A
 	}
 }
 
+void AOrderKiosk::Server_MoveFoodContainer_Implementation(AActor* ActorToMove)
+{
+	ActorToMove->SetActorLocation(TARGET_LOCATION);
+}
+
 void AOrderKiosk::Server_DestroyListenAnswer_Implementation(AActor* ActorToDestroy)
 {
 	ActorToDestroy->Destroy();
 }
 
-// void AOrderKiosk::OnInteractionTriggered(AActor* Interactor)
-// {
-// 	if (bIsUsed) return;
-//
-// 	// 사용됨 표시
-// 	bIsUsed = true;
-// 	
-// 	// InteractableComp 비활성화 (재사용 방지)
-// 	/*if (InteractableComp)
-// 	{
-// 		InteractableComp->bCanInteract = false;
-// 	}
-// 	*/
-// 	ALingoGameState* GS = Cast<ALingoGameState>(GetWorld()->GetGameState());
-// 	if (GS)
-// 	{
-// 		// Food 스폰
-// 		ADropper* Dropper = FindDropperByIdx(FoodCourtIdx);
-// 		if (Dropper)
-// 		{
-// 			FFoodData tmpData;
-// 			tmpData.word1 = FoodData.word1;
-// 			tmpData.word2 = FoodData.word2;
-// 			tmpData.SpawnIndex = FoodCourtIdx;
-// 			
-// 			Dropper->SetFoodSpawnData(tmpData);
-// 			Dropper->SetSpawnClass( LoadClass<AActor>(nullptr, TEXT("/Game/CustomContents/Blueprints/Interactables/BP_Food.BP_Food_C")));
-// 			Dropper->RequestSpawn();
-// 		}
-// 	}
-// }
-//
-// void AOrderKiosk::OnRep_FoodData()
-// {
-// 	UpdateInteractableWidget(FoodData.word2.name);
-// }
-//
-// void AOrderKiosk::UpdateInteractableWidget(FString NewString)
-// {
-// 	FString PromptText = FString::Printf(TEXT("Order %s"), *NewString);
-// 	InteractableComp->UpdateInteractPrompt(PromptText);
-// }
-//
-// class ADropper* AOrderKiosk::FindDropperByIdx(int32 InIdx)
-// {
-// 	TArray<AActor*> Droppers;
-// 	UGameplayStatics::GetAllActorsOfClass(GetWorld(), ADropper::StaticClass(), Droppers);
-//
-// 	for (auto Dropper : Droppers)
-// 	{
-// 		if (ADropper* Dpp = Cast<ADropper>(Dropper))
-// 		{
-// 			if (Dpp->DropperIndex == InIdx)
-// 			{
-// 				return Dpp;
-// 			}
-// 		}
-// 	}
-// 	return nullptr;
-// }
+
 

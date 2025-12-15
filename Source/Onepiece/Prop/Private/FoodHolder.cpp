@@ -132,39 +132,39 @@ void AFoodHolder::OnFoodBoxOverlapBegin(
 		// 블루프린트 이벤트 호출
 		OnActivate(bSuccess);
 
-		if (bSuccess)
-		{
-			UE_LOG(LogTemp, Warning, TEXT("[FoodHolder] Correct"));
-		
-			// 정답인 경우
-			int32 CorrectIdx = Food->GetFoodIndex();
-			FTimerHandle TimerHandle;
-			GetWorldTimerManager().SetTimer(TimerHandle, [this, CorrectIdx]
-			{
-				ADoor* Door = FindDoorToOpen();
-				if (Door) Door->OpenDoor();
-				
-				// 모든 클라이언트에 정답 인덱스와 함께 결과 팝업 표시
-				Multicast_ShowResultPopup(CorrectIdx);
-			}, 0.5f, false);
-		}
-		else
-		{
-			UE_LOG(LogTemp, Warning, TEXT("[FoodHolder] Wrong"));
-		
-			// 오답인 경우
-			FTimerHandle TimerHandle;
-			GetWorldTimerManager().SetTimer(TimerHandle, [this, Food, GS]
-			{
-				GS->WrongListenAnswerList.Add(Food->GetFoodIndex());
-		
-				// 모든 클라이언트에 오답 메시지 표시
-				Multicast_ShowWrongPopup(Food->GetFoodName());
-		
-				// Food 소거 (서버에서만, 자동 복제됨)
-				Food->Destroy();
-			}, 0.5f, false);
-		}
+		// if (bSuccess)
+		// {
+		// 	UE_LOG(LogTemp, Warning, TEXT("[FoodHolder] Correct"));
+		//
+		// 	// 정답인 경우
+		// 	int32 CorrectIdx = Food->GetFoodIndex();
+		// 	FTimerHandle TimerHandle;
+		// 	GetWorldTimerManager().SetTimer(TimerHandle, [this, CorrectIdx]
+		// 	{
+		// 		ADoor* Door = FindDoorToOpen();
+		// 		if (Door) Door->OpenDoor();
+		// 		
+		// 		// 모든 클라이언트에 정답 인덱스와 함께 결과 팝업 표시
+		// 		Multicast_ShowResultPopup(CorrectIdx);
+		// 	}, 0.5f, false);
+		// }
+		// else
+		// {
+		// 	UE_LOG(LogTemp, Warning, TEXT("[FoodHolder] Wrong"));
+		//
+		// 	// 오답인 경우
+		// 	FTimerHandle TimerHandle;
+		// 	GetWorldTimerManager().SetTimer(TimerHandle, [this, Food, GS]
+		// 	{
+		// 		GS->WrongListenAnswerList.Add(Food->GetFoodIndex());
+		//
+		// 		// 모든 클라이언트에 오답 메시지 표시
+		// 		Multicast_ShowWrongPopup(Food->GetFoodName());
+		//
+		// 		// Food 소거 (서버에서만, 자동 복제됨)
+		// 		Food->Destroy();
+		// 	}, 0.5f, false);
+		// }
 	}
 }
 
