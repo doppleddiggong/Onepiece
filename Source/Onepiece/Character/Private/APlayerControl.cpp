@@ -24,13 +24,16 @@
 #include "UHookSystem.h"
 #include "ULingoGameInstanceSubsystem.h"
 #include "ADropper.h"
+#include "ALingoGameState.h"
 #include "luggage.h"
 #include "EngineUtils.h"
 #include "GameLogging.h"
 #include "OrderKiosk.h"
 #include "UDialogManager.h"
+#include "ULingoGameHelper.h"
 #include "UPopupManager.h"
 #include "UPopup_SpeakQuest.h"
+#include "UPopup_SpeakResult.h"
 
 #define IMC_DEFAULT_PATH			TEXT("/Game/CustomContents/Input/IMC_Game_Player.IMC_Game_Player")
 #define IA_MOVE_PATH				TEXT("/Game/CustomContents/Input/IA_Game_Movement.IA_Game_Movement")
@@ -320,11 +323,12 @@ void APlayerControl::Client_UpdateSpeakQuest_Implementation(int32 StepIndex)
 
 void APlayerControl::Client_EndSpeakQuest_Implementation()
 {
-	if (auto PopupManager = UPopupManager::Get(GetWorld()))
-		PopupManager->ShowMsgBox(TEXT("SpeakQuest"), TEXT("QUEST COMPLETE"), EMsgBoxType::OK, FOnMsgBoxOkDelegate());
-
 	// Quest 완료 시에는 StepIndex를 -1로 전달하여 Widget을 숨김
 	UpdateSpeakWidget(-1);
+
+	// if (auto PopupManager = UPopupManager::Get(GetWorld()))
+	// 	PopupManager->ShowMsgBox(TEXT("SpeakQuest"), TEXT("QUEST COMPLETE"), EMsgBoxType::OK, FOnMsgBoxOkDelegate());
+	RequestSpeakResult();
 }
 
 void APlayerControl::Client_RequestSpeakScenario_Implementation(AWheatly* Wheatly)
@@ -402,6 +406,43 @@ void APlayerControl::UpdateSpeakWidget(int32 StepIndex)
 		{
 			MainWidget->UpdateSpeakWidget(StepIndex);
 		}
+	}
+}
+
+void APlayerControl::RequestSpeakResult()
+{
+	if ( auto GS = Cast<ALingoGameState>(GetWorld()->GetGameState()) )
+	{
+		if (auto KLingoNetwork = UKLingoNetworkSystem::Get(GetWorld()))
+		{
+			FRequestSpeakResult SpeakRequest;
+			SpeakRequest.room_id = GS->GetRoomId();
+			SpeakRequest.user_id = GetUserId();
+			SpeakRequest.scenario_id = 1;
+			SpeakRequest.stage_type = ULingoGameHelper::GetStageTypeIndex(EQuestType::Speak);
+			SpeakRequest.state_type = 0;
+			KLingoNetwork->RequestSpeakResult(SpeakRequest,
+					FResponseSpeakResultDelegate::CreateUObject(this, &APlayerControl::OnResponseSpeakResult));
+		}	
+	}
+}
+
+void APlayerControl::OnResponseSpeakResult(FResponseSpeakResult& ResponseData, bool bWasSuccessful)
+{
+	if (bWasSuccessful)
+	{
+		if ( auto PS = GetPlayerState<ALingoPlayerState>() )
+		{
+			// PS에 결과 데이터를 저장한다
+			PS->SpeakResult = ResponseData;
+
+			if ( auto Popup = UPopupManager::ShowPopupAs<UPopup_SpeakResult>(GetWorld(), EPopupType::SpeakResult) )
+				Popup->InitPopup(ResponseData);
+		}
+	}
+	else
+	{
+		PRINTLOG(TEXT("[Result] Quest result Failed"));
 	}
 }
 

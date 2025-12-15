@@ -112,8 +112,11 @@ protected:
 	
 private:
 	void RequestDrop(APlayerControl* Requester);
-
 	void UpdateSpeakWidget(int32 StepIndex);
+
+	void RequestSpeakResult();
+	void OnResponseSpeakResult(FResponseSpeakResult& ResponseData, bool bWasSuccessful);
+	
 	void TEST_DropperDropProcess();
 	void TEST_AddItemToBoxList();
 	

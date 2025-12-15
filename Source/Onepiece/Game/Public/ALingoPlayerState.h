@@ -119,11 +119,16 @@ public:
 	UPROPERTY(Transient, ReplicatedUsing = OnRep_SpeakScenarioData, BlueprintReadOnly, Category = "SpeakQuest")
 	FResponseSpeakScenario SpeakScenarioData;
 
+	FResponseSpeakResult SpeakResult;
+	
 	/// @brief SpeakQuest 평가 결과 목록
 	/// @note RequestSpeakingJudges 응답 데이터를 쌓아둠
 	UPROPERTY(Transient, Replicated, BlueprintReadOnly, Category = "SpeakQuest")
 	TArray<struct FResponseSpeakingJudes> SpeakJudesResults;
 
+
+
+	
 	/// @brief SpeakQuest 완료 여부 플래그
 	UPROPERTY(Replicated, BlueprintReadOnly, Category = "SpeakQuest")
 	bool bSpeakQuestCompleted = false;

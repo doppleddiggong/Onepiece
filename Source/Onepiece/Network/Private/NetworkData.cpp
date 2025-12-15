@@ -1017,6 +1017,83 @@ void FResponseListenResult::PrintData() const
 	NETWORK_LOG( TEXT("[RES] %s"), *OutputString);
 }
 
+
+bool FRequestSpeakResult::ToJsonString(FString& OutJson) const
+{
+	TSharedPtr<FJsonObject> JsonObject = MakeShared<FJsonObject>();
+
+	JsonObject->SetNumberField(TEXT("room_id"), room_id);
+	JsonObject->SetNumberField(TEXT("user_id"), user_id);
+	JsonObject->SetNumberField(TEXT("scenario_id"), scenario_id);
+	JsonObject->SetNumberField(TEXT("stage_type"), stage_type);
+	JsonObject->SetNumberField(TEXT("state_type"), state_type);
+	JsonObject->SetNumberField(TEXT("result_time"), result_time);
+
+	TArray<TSharedPtr<FJsonValue>> WrongIdxArray;
+	for (int32 Idx : wrong_idx)
+	{
+		WrongIdxArray.Add(MakeShared<FJsonValueNumber>(Idx));
+	}
+	JsonObject->SetArrayField(TEXT("wrong_idx"), WrongIdxArray);
+
+	TSharedRef<TJsonWriter<>> Writer = TJsonWriterFactory<>::Create(&OutJson);
+	return FJsonSerializer::Serialize(JsonObject.ToSharedRef(), Writer);
+}
+
+
+// =================================================================================
+// FResponseSpeakResult
+// =================================================================================
+
+void FResponseSpeakResult::SetFromHttpResponse(const TSharedPtr<IHttpResponse, ESPMode::ThreadSafe>& Response)
+{
+	if (!Response.IsValid())
+	{
+		return;
+	}
+
+	FString JsonString = Response->GetContentAsString();
+	TSharedPtr<FJsonObject> JsonObject;
+	TSharedRef<TJsonReader<>> Reader = TJsonReaderFactory<>::Create(JsonString);
+
+	if (FJsonSerializer::Deserialize(Reader, JsonObject) && JsonObject.IsValid())
+	{
+		grade = JsonObject->GetStringField(TEXT("grade"));
+		average_score = JsonObject->GetIntegerField(TEXT("average_score"));
+		top_percent = JsonObject->GetNumberField(TEXT("top_percent"));
+
+		// scores 배열 파싱
+		const TArray<TSharedPtr<FJsonValue>>* ScoresArray;
+		if (JsonObject->TryGetArrayField(TEXT("scores"), ScoresArray))
+		{
+			scores.Empty();
+			for (const auto& ScoreValue : *ScoresArray)
+			{
+				TSharedPtr<FJsonObject> ScoreObj = ScoreValue->AsObject();
+				if (ScoreObj.IsValid())
+				{
+					FSpeakScoreDetail ScoreDetail;
+					ScoreDetail.score = ScoreObj->GetIntegerField(TEXT("score"));
+					ScoreDetail.desc = ScoreObj->GetStringField(TEXT("desc"));
+					scores.Add(ScoreDetail);
+				}
+			}
+		}
+	}
+}
+
+void FResponseSpeakResult::PrintData() const
+{
+	FString OutputString;
+	FJsonObjectConverter::UStructToJsonObjectString(
+		*this,
+		OutputString,
+		0,
+		0
+	);
+	NETWORK_LOG( TEXT("[RES] %s"), *OutputString);
+}
+
 FString FSpeakStageQuestion::GetQuestionMessage() const
 {
 	return FString::Printf(TEXT("%s\n[%s]"), *eng, *kor);

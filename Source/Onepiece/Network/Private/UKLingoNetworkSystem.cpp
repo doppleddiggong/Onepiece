@@ -1132,6 +1132,66 @@ void UKLingoNetworkSystem::RequestSpeakScenario(FResponseSpeakScenarioDelegate I
 	AddNetworkWaitCount(1);
 	Request->ProcessRequest();
 }
+
+
+void UKLingoNetworkSystem::RequestSpeakResult( const FRequestSpeakResult& Result, FResponseSpeakResultDelegate InDelegate)
+{
+	FString Url = NetworkConfig::GetFullUrl(RequestAPI::speak_result);
+    auto Request = SetupHttpRequest(Url, NETWORK_POST);
+
+	// Request Body 설정
+	FString RequestBody;
+	if (Result.ToJsonString(RequestBody))
+		Request->SetContentAsString(RequestBody);
+
+	LogNetwork(ENetworkLogType::Post, *Request->GetURL(), *RequestBody);
+
+	Request->OnProcessRequestComplete().BindLambda(
+	  [WeakThis = TWeakObjectPtr<UKLingoNetworkSystem>(this), InDelegate](FHttpRequestPtr Req, FHttpResponsePtr ResPtr, bool bWasSuccessful)
+	  {
+	      if (!WeakThis.IsValid() || IsEngineExitRequested())
+	          return;
+
+	      WeakThis->AddNetworkWaitCount(-1);
+	      FResponseSpeakResult ResponseData;
+
+	      if (bWasSuccessful && ResPtr.IsValid())
+	      {
+	          const int32 ResponseCode = ResPtr->GetResponseCode();
+
+	          NETWORK_LOG(TEXT("[RES] FResponseSpeakResult - Code: %d, Response: %s"),
+	              ResponseCode, *ResPtr->GetContentAsString());
+
+	          if (IsResSuccess(ResponseCode))
+	          {
+	              ResponseData.SetFromHttpResponse(ResPtr);
+	              ResponseData.PrintData();
+	              InDelegate.ExecuteIfBound(ResponseData, true);
+	          }
+	          else
+	          {
+	              WeakThis->ShowNetworkErrorPopup(ResponseCode, ResPtr->GetContentAsString());
+	              InDelegate.ExecuteIfBound(ResponseData, false);
+	          }
+	      }
+	      else
+	      {
+	          NETWORK_LOG(TEXT("[RES] FResponseSpeakResult failed - bSuccess: %s, Response valid: %s"),
+	              bWasSuccessful ? TEXT("true") : TEXT("false"),
+	              ResPtr.IsValid() ? TEXT("true") : TEXT("false"));
+
+	          int32 ErrorCode = ResPtr.IsValid() ? ResPtr->GetResponseCode() : 0;
+	          FString ErrorContent = ResPtr.IsValid() ? ResPtr->GetContentAsString() : TEXT("Network connection failed");
+	          WeakThis->ShowNetworkErrorPopup(ErrorCode, ErrorContent);
+
+	          InDelegate.ExecuteIfBound(ResponseData, false);
+	      }
+	  });
+
+	AddNetworkWaitCount(1);
+	Request->ProcessRequest();
+}
+
 // =================================================================================
 // RequestEvaluationResult
 // =================================================================================

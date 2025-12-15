@@ -3,15 +3,14 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "UBasePopup.h"
 #include "Blueprint/UserWidget.h"
-#include "UPopup_SpeakQuestResult.generated.h"
+#include "UPopup_SpeakResultItem.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class ONEPIECE_API UPopup_SpeakQuestResult : public UBasePopup
+class ONEPIECE_API UPopup_SpeakResultItem : public UUserWidget
 {
 	GENERATED_BODY()
 };
