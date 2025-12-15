@@ -9,7 +9,6 @@
 #include "UImageButton.h"
 #include "UKLingoNetworkSystem.h"
 #include "UPopupManager.h"
-#include "UTextureButton.h"
 #include "Components/Spacer.h"
 #include "Components/VerticalBox.h"
 
@@ -28,12 +27,6 @@ void UPopup_Questionnaire::NativeConstruct()
 	Super::NativeConstruct();
 
 	// 버튼 이벤트 바인딩
-	if (Btn_Close)
-	{
-		Btn_Close->OnButtonClickedEvent.RemoveDynamic(this, &UPopup_Questionnaire::OnClickClose);
-		Btn_Close->OnButtonClickedEvent.AddDynamic(this, &UPopup_Questionnaire::OnClickClose);
-	}
-
 	if (Btn_Submit)
 	{
 		Btn_Submit->OnButtonClickedEvent.RemoveDynamic(this, &UPopup_Questionnaire::OnClickSubmit);
@@ -88,7 +81,7 @@ void UPopup_Questionnaire::OnClickSubmit()
 	// 네트워크 전송
 	if (auto KLingoNetwork = UKLingoNetworkSystem::Get(GetWorld()))
 	{
-		// TODO: Question마다 png파일 1개로 보내자
+		// Question마다 png파일 1개로 보내기
 		TArray<FString> pngFiles;
 		TArray<FString> targetTexts;
 		for (const auto& question : SavedQuestions)
@@ -122,7 +115,7 @@ void UPopup_Questionnaire::OnResponseOcrExtract(FResponseWriteSubmit& ResponseDa
 		ResponseData.PrintData();
 		
 		// TODO: 피드백 팝업 창 생성해야 함.
-		if (auto Popup = UPopupManager::ShowPopupAs<UPopup_QuestionnaireResult>(GetWorld(), EPopupType::Questionnaire))
+		if (auto Popup = UPopupManager::ShowPopupAs<UPopup_QuestionnaireResult>(GetWorld(), EPopupType::QuestionnaireResult))
 		{
 			// 팝업 초기화
 			Popup->InitPopup(ResponseData);

@@ -64,7 +64,8 @@ public class Onepiece : ModuleRules
 		PrivateDependencyModuleNames.AddRange(new string[]
 		{
 			"MediaAssets",
-			"Media"
+			"Media",
+			"ImageWrapper"
 		});
 		
 		PrivateDependencyModuleNames.AddRange(new string[]

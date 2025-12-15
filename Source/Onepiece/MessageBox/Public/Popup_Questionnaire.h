@@ -45,10 +45,6 @@ protected:
 	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<class UImage> Popup_BaseBg;
 
-	/** 닫기 버튼 */
-	UPROPERTY(meta = (BindWidget))
-	TObjectPtr<class UTextureButton> Btn_Close;
-
 	/** 제출 버튼 */
 	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<class UImageButton> Btn_Submit;
