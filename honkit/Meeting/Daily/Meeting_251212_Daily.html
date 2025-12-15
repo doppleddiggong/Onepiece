@@ -3,7 +3,7 @@
 <html lang="ko" >
     <head>
         <meta charset="UTF-8">
-        <title>251210 Daily · Onepiece Development Documentation</title>
+        <title>251212 Daily · Onepiece Development Documentation</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="HonKit 6.1.4">
@@ -78,10 +78,10 @@
     <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="Meeting_251208_Daily.html" />
+    <link rel="next" href="Meeting_251211_Daily.html" />
     
     
-    <link rel="prev" href="Meeting_251211_Daily.html" />
+    <link rel="prev" href="../../DevLog/Weekly/2025-W46-Summary.html" />
     
 
     </head>
@@ -962,7 +962,7 @@
         
         
     
-        <li class="chapter " data-level="9.1" data-path="Meeting_251212_Daily.html">
+        <li class="chapter active" data-level="9.1" data-path="Meeting_251212_Daily.html">
             
                 <a href="Meeting_251212_Daily.html">
             
@@ -988,7 +988,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="9.3" data-path="Meeting_251210_Daily.html">
+        <li class="chapter " data-level="9.3" data-path="Meeting_251210_Daily.html">
             
                 <a href="Meeting_251210_Daily.html">
             
@@ -1535,7 +1535,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../.." >251210 Daily</a>
+        <a href="../.." >251212 Daily</a>
     </h1>
 </div>
 
@@ -1550,79 +1550,82 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="2025-12-08-데일리-회의">2025-12-08 데일리 회의</h1>
+                                <h1 id="2025-12-12-데일리-회의">2025-12-12 데일리 회의</h1>
 <h2 id="1-개요">1. 개요</h2>
 <ul>
-<li>일자: 2025-12-08</li>
-<li>참석: 배주백</li>
-<li>키워드: API 구조, 스피킹·라이팅, 테스트 진행, 시나리오 데이터</li>
+<li><strong>일자:</strong> 2025-12-12</li>
+<li><strong>참석:</strong> 배주백 외 팀원</li>
+<li><strong>키워드:</strong> SpeakQuest, WriteQuest, ListenQuest, API 안정화, 튜터 에이전트, 서버 고도화</li>
 </ul>
 <hr></hr>
 <h2 id="2-논의-요약">2. 논의 요약</h2>
 <h3 id="21-주요-논의">2.1. 주요 논의</h3>
 <ul>
-<li>API RoomID·UserID 전달 구조 정비 및 네트워크 계층 재구성.</li>
-<li>Speak / Write / Read / Listen 데이터 수신 구조 업데이트.</li>
-<li>말하기(Speaking) 테스트 API 연동 및 출력 포맷 조정 중.</li>
-<li>실데이터 수신 후 최종 출력(UI·평가 데이터) 확정 예정.</li>
+<li>프로젝트가 <strong>중반 이후 단계</strong>에 진입했으며, 단순 기능 추가보다 <strong>안정화 + 고도화 중심</strong>으로 전환 필요성 공유.</li>
+<li>AI 활용 여부가 개인 역량 및 채용 트렌드에서 점점 더 중요해지고 있으며, 기존 숙련 기술만 반복하는 구조에 대한 문제의식 논의.</li>
+<li>각 파트는 “지금 당장 돌아가는 것”을 기준으로 <strong>주말 내 정리 → 다음 주 시연 대응</strong> 흐름으로 합의.</li>
 </ul>
 <h3 id="22-기술--기획-관련-논의">2.2. 기술 / 기획 관련 논의</h3>
 <ul>
-<li>Read·Listen 데이터는 정상 수신·테스트 완료.</li>
-<li>Step 3·4 시나리오 데이터는 미생성 상태 → 향후 API 연동 필요.</li>
-<li>Speaking 테스트 로직은 API 연동 완료. 운영 데이터 기반 품질 검증 예정.</li>
+<li><strong>클라이언트</strong><ul>
+<li>UI 전반 구조 정리 완료.</li>
+<li>SpeakQuest 기준으로 UI 및 플로우 재구현 진행 중.</li>
+<li>WriteQuest는 UI 대부분 마무리되었으며 API 연동 단계 진입.</li>
+<li>ListenQuest는 맵 구성이 미흡하여 맵 재구성 작업 진행 중.</li>
+</ul>
+</li>
+<li><strong>AI / 서버</strong><ul>
+<li>백엔드 기본 기능은 대부분 완료 단계.</li>
+<li>Redis 기반 비동기 처리로 Speak / Write 데이터 생성 파이프라인 구성됨.</li>
+<li>STT / LLM 응답 속도는 양호하나, <strong>TTS 오디오 생성 구간에서 대기 시간 발생</strong>.</li>
+<li>오디오 생성은 비동기 처리 또는 스킵 가능성 검토.</li>
+<li>다음 주부터 <strong>튜터 에이전트 작업</strong> 착수 예정, 그 전까지는 안정화와 고도화에 집중.</li>
+</ul>
+</li>
 </ul>
 <h3 id="23-일정--운영-관련-논의">2.3. 일정 / 운영 관련 논의</h3>
 <ul>
-<li>Step 3·4 시나리오 데이터 생성 일정이 후속 작업에 영향.</li>
-<li>현재 테스트는 파트별 병렬 진행 중 → 데이터 확정 시 UI·UX·평가 흐름 안정화 예정.</li>
+<li>주말 동안 SpeakQuest 핵심 로직을 우선 마무리하여 <strong>월요일 강사 시연 대응</strong> 준비.</li>
+<li>맵, 웹, 서버 작업 시 <strong>작업 시작/종료를 반드시 공유</strong>하는 운영 규칙 재확인.<ul>
+<li>공유 없이 진행된 작업은 충돌 시 폐기 원칙.</li>
+</ul>
+</li>
+<li>서버 장애 발생 시 즉시 태깅하여 공유하고, 원인 확인 후 대응.</li>
 </ul>
 <hr></hr>
 <h2 id="3-action-items">3. Action Items</h2>
 <h3 id="클라이언트-팀">클라이언트 팀</h3>
 <ul>
-<li>[ ] Speaking 테스트 결과 출력 정교화  <ul>
-<li>담당: 배주백 / 기한: 12-09</li>
-</ul>
-</li>
-<li>[ ] Step 3·4 시나리오 데이터 수신 대비 구조 점검  <ul>
-<li>담당: 배주백 / 기한: 12-09</li>
-</ul>
-</li>
+<li>[ ] SpeakQuest 주요 플로우 안정화 및 MPC 로직 연동 (담당: 배주백, 기한: 주말)</li>
+<li>[ ] WriteQuest UI + API 연동 마무리 (담당: 치훈, 기한: 금주)</li>
+<li>[ ] ListenQuest 맵 재구성 완료 (담당: 은희, 기한: 주말)</li>
 </ul>
 <h3 id="ai-팀">AI 팀</h3>
 <ul>
-<li>[ ] Step 3·4 시나리오 생성 여부 및 스펙 공유  <ul>
-<li>담당: AI 팀 / 기한: 12-09</li>
-</ul>
-</li>
+<li>[ ] 튜터 에이전트 초기 구조 설계 준비 (담당: AI 파트, 기한: 다음 주)</li>
+<li>[ ] TTS 생성 지연 구간 개선 방안 정리 (담당: 서버/AI, 기한: 금주)</li>
 </ul>
 <h3 id="devops--전반">DevOps / 전반</h3>
 <ul>
-<li>[ ] API 구조 변경 사항 문서화  <ul>
-<li>담당: 배주백 / 기한: 12-09</li>
-</ul>
-</li>
+<li>[ ] 서버 모니터링 유지 및 장애 발생 시 태깅 공유 프로세스 준수 (담당: 전원, 상시)</li>
 </ul>
 <hr></hr>
 <h2 id="4-회고">4. 회고</h2>
 <h3 id="41-잘된-점-keep">4.1. 잘된 점 (Keep)</h3>
 <ul>
-<li>네트워크 구조 재정비로 API 흐름 안정성 향상.</li>
-<li>Speaking 테스트 연동이 빠르게 진척.</li>
+<li>각 파트별 구현 현황과 병목 지점이 명확히 공유됨.</li>
+<li>“지금 필요한 것”과 “다음 단계”가 분리되어 논의됨.</li>
 </ul>
 <h3 id="42-미진한-점-problem">4.2. 미진한 점 (Problem)</h3>
 <ul>
-<li>Step 3·4 시나리오 데이터 미완성으로 후속 구현 지연 우려.</li>
-<li>실데이터 부재로 품질 검증 단계 진입 불가.</li>
+<li>Speak / Write 생성 파이프라인에서 대기 시간이 사용자 경험에 영향을 줄 가능성 존재.</li>
+<li>맵 작업 및 병행 개발 시 충돌 위험 여전함.</li>
 </ul>
 <h3 id="43-다음-단계-try">4.3. 다음 단계 (Try)</h3>
 <ul>
-<li>실제 API 응답 기반으로 Speaking·Writing 출력 포맷 확정.</li>
-<li>시나리오 데이터 적용 후 멀티 스텝 진행 로직 검증.</li>
-<li>UI 연결 및 사용자 피드백 루프 통합.</li>
+<li>주말 동안 핵심 시나리오를 실제 플레이 기준으로 점검.</li>
+<li>다음 주부터 튜터 에이전트 작업을 기존 시스템 부담을 최소화하는 방향으로 단계적 연결.</li>
 </ul>
-<hr></hr>
  <link rel="stylesheet" type="text/css" href="https://storage.googleapis.com/app.klipse.tech/css/codemirror.css"></link> <script>     window.klipse_settings = {         selector: ".language-klipse, .lang-eval-clojure",         selector_eval_js: ".lang-eval-js",         selector_eval_python_client: ".lang-eval-python",         selector_eval_php: ".lang-eval-php",         selector_eval_scheme: ".lang-eval-scheme",         selector_eval_ruby: ".lang-eval-ruby",         selector_reagent: ".lang-reagent",        selector_google_charts: ".lang-google-chart",        selector_es2017: ".lang-eval-es2017",        selector_jsx: ".lang-eval-jsx",        selector_transpile_jsx: ".lang-transpile-jsx",        selector_render_jsx: ".lang-render-jsx",        selector_react: ".lang-react",        selector_eval_markdown: ".lang-render-markdown",        selector_eval_lambdaway: ".lang-render-lambdaway",        selector_eval_cpp: ".lang-eval-cpp",        selector_eval_html: ".lang-render-html",        selector_sql: ".lang-eval-sql",        selector_brainfuck: "lang-eval-brainfuck",        selector_js: ".lang-transpile-cljs"    }; </script> <script src="https://storage.googleapis.com/app.klipse.tech/plugin/js/klipse_plugin.js"></script>
                                 
                                 </section>
@@ -1650,12 +1653,12 @@
 
             
                 
-                <a href="Meeting_251211_Daily.html" class="navigation navigation-prev " aria-label="Previous page: 251211 Daily">
+                <a href="../../DevLog/Weekly/2025-W46-Summary.html" class="navigation navigation-prev " aria-label="Previous page: Weekly DevLog — 2025 Week 46">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="Meeting_251208_Daily.html" class="navigation navigation-next " aria-label="Next page: 251208 Daily">
+                <a href="Meeting_251211_Daily.html" class="navigation navigation-next " aria-label="Next page: 251211 Daily">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1666,7 +1669,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"251210 Daily","date":"2025-12-08","attendees":["배주백"],"keywords":["API 구조","스피킹·라이팅","테스트 진행","시나리오 데이터"],"level":"9.3","depth":1,"next":{"title":"251208 Daily","level":"9.4","depth":1,"path":"Meeting/Daily/Meeting_251208_Daily.md","ref":"Meeting/Daily/Meeting_251208_Daily.md","articles":[]},"previous":{"title":"251211 Daily","level":"9.2","depth":1,"path":"Meeting/Daily/Meeting_251211_Daily.md","ref":"Meeting/Daily/Meeting_251211_Daily.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-comscore","github","collapsible-menu","back-to-top-button","search-plus","expandable-chapters-small","page-toc-button","-anchor-navigation-ex","honkit-plugin-mermaid","code","alerts","emphasize","klipse","-lunr","-search","-sharing"],"root":".","styles":{"website":"styles/website.css"},"pluginsConfig":{"collapsible-menu":{},"emphasize":{"style":"yellow"},"github":{"url":"https://github.com/doppleddiggong/Onepiece"},"code":{"copyButtons":true},"honkit-plugin-mermaid":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"printLog":false,"multipleH1":false,"mode":"float","float":{"showLevelIcon":false,"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right"},"pageTop":{"showLevelIcon":false,"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right"}},"theme-comscore":{"showLevel":true},"page-toc-button":{"maxTocDepth":3,"minTocSize":2},"back-to-top-button":{},"alerts":{"info":{"label":"정보","icon":"fa fa-info-circle","className":"info"},"warning":{"label":"주의","icon":"fa fa-exclamation-triangle","className":"warning"},"danger":{"label":"위험","icon":"fa fa-times-circle","className":"danger"},"tip":{"label":"팁","icon":"fa fa-lightbulb-o","className":"tip"}},"expandable-chapters-small":{},"klipse":{"myConfigKey":"it's the default value"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"search-plus":{}},"theme":"default","author":"DoppledDiggong Team","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Onepiece Development Documentation","language":"ko","links":{"sidebar":{"GitHub Repository":"https://github.com/doppleddiggong/Onepiece","Doxygen API Docs":"https://doppleddiggong.github.io/Onepiece/doxygen/"}},"gitbook":"3.2.3","description":"Onepiece 프로젝트 개발 문서 - DevLog, Planning, System Review"},"file":{"path":"Meeting/Daily/Meeting_251210_Daily.md","mtime":"2025-12-15T00:10:32.331Z","type":"markdown"},"gitbook":{"version":"6.1.4","time":"2025-12-15T00:11:03.301Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"251212 Daily","date":"2025-12-12","attendees":["배주백","프로젝트 참여자 다수"],"keywords":["SpeakQuest","WriteQuest","ListenQuest","API 안정화","튜터 에이전트","서버 고도화"],"level":"9.1","depth":1,"next":{"title":"251211 Daily","level":"9.2","depth":1,"path":"Meeting/Daily/Meeting_251211_Daily.md","ref":"Meeting/Daily/Meeting_251211_Daily.md","articles":[]},"previous":{"title":"Weekly DevLog — 2025 Week 46","level":"7.4","depth":1,"path":"DevLog/Weekly/2025-W46-Summary.md","ref":"DevLog/Weekly/2025-W46-Summary.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-comscore","github","collapsible-menu","back-to-top-button","search-plus","expandable-chapters-small","page-toc-button","-anchor-navigation-ex","honkit-plugin-mermaid","code","alerts","emphasize","klipse","-lunr","-search","-sharing"],"root":".","styles":{"website":"styles/website.css"},"pluginsConfig":{"collapsible-menu":{},"emphasize":{"style":"yellow"},"github":{"url":"https://github.com/doppleddiggong/Onepiece"},"code":{"copyButtons":true},"honkit-plugin-mermaid":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"printLog":false,"multipleH1":false,"mode":"float","float":{"showLevelIcon":false,"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right"},"pageTop":{"showLevelIcon":false,"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right"}},"theme-comscore":{"showLevel":true},"page-toc-button":{"maxTocDepth":3,"minTocSize":2},"back-to-top-button":{},"alerts":{"info":{"label":"정보","icon":"fa fa-info-circle","className":"info"},"warning":{"label":"주의","icon":"fa fa-exclamation-triangle","className":"warning"},"danger":{"label":"위험","icon":"fa fa-times-circle","className":"danger"},"tip":{"label":"팁","icon":"fa fa-lightbulb-o","className":"tip"}},"expandable-chapters-small":{},"klipse":{"myConfigKey":"it's the default value"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"search-plus":{}},"theme":"default","author":"DoppledDiggong Team","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Onepiece Development Documentation","language":"ko","links":{"sidebar":{"GitHub Repository":"https://github.com/doppleddiggong/Onepiece","Doxygen API Docs":"https://doppleddiggong.github.io/Onepiece/doxygen/"}},"gitbook":"3.2.3","description":"Onepiece 프로젝트 개발 문서 - DevLog, Planning, System Review"},"file":{"path":"Meeting/Daily/Meeting_251212_Daily.md","mtime":"2025-12-15T00:10:32.331Z","type":"markdown"},"gitbook":{"version":"6.1.4","time":"2025-12-15T00:11:03.301Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

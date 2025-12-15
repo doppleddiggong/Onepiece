@@ -3,7 +3,7 @@
 <html lang="ko" >
     <head>
         <meta charset="UTF-8">
-        <title>DailyDevLog Guide · Onepiece Development Documentation</title>
+        <title>InterviewHello · Onepiece Development Documentation</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="HonKit 6.1.4">
@@ -78,10 +78,10 @@
     <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="KLingo_EUW_Setup_Guide.html" />
+    <link rel="next" href="KLingo_Interview_Popup.html" />
     
     
-    <link rel="prev" href="KLingo_DPI_Scaling_Guide.html" />
+    <link rel="prev" href="KLingo_InteractionSystem_Network_Fix_Report.html" />
     
 
     </head>
@@ -368,7 +368,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="4.8" data-path="KLingo_DailyDevLog_Guide.html">
+        <li class="chapter " data-level="4.8" data-path="KLingo_DailyDevLog_Guide.html">
             
                 <a href="KLingo_DailyDevLog_Guide.html">
             
@@ -420,7 +420,7 @@
             
         </li>
     
-        <li class="chapter " data-level="4.12" data-path="KLingo_InterviewHello.html">
+        <li class="chapter active" data-level="4.12" data-path="KLingo_InterviewHello.html">
             
                 <a href="KLingo_InterviewHello.html">
             
@@ -1535,7 +1535,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../.." >DailyDevLog Guide</a>
+        <a href="../.." >InterviewHello</a>
     </h1>
 </div>
 
@@ -1550,212 +1550,692 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="🔥-최종-통합-프롬프트-로컬-claudeanthropic-용">🔥 최종 통합 프롬프트 (로컬 Claude/Anthropic 용)</h1>
-<h1 id="역할">역할</h1>
-<p>당신은 DevOps 자동화 · 데이터 파이프라인 · 문서 생성 · Python 툴링을 전문으로 설계하는 엔지니어링 도우미이다.<br></br>나는 로컬 PC(Windows + Python + uv 환경)에서 명령형으로 Python 스크립트를 반복 생성·테스트할 것이다.</p>
-<h1 id="목표">목표</h1>
-<p>Daily DevLog 자동 생성 시스템을 로컬 Python 스크립트로 제작한다.<br></br>GitHub Actions 없이 <strong>로컬 실행 → 안정화 → 필요 시 GH Actions에 반영</strong>한다.</p>
-<p>DevLog는 다음 6가지 입력 소스를 이용해 자동 생성한다:</p>
-<p>1) git diff (Commit Timestamp 기준: 전날 00:00 ~ 오늘 00:00)<br></br>2) 자동 생성된 커밋 메시지 (diff 기반 GPT 커밋 메시지 생성기 존재)<br></br>3) 매일 저장되는 회의록 (Markdown + frontmatter)<br></br>4) 개발자 정보(developers.csv)<br></br>5) Jira 매핑 룰(csv/yaml/json)<br></br>6) Jira API(작업자 기반 최근 이슈 조회)</p>
-<p>DevLog 출력은 Markdown 파일로 생성되며<br></br>Documents/DevLog/Daily/YYYY-MM-DD.md 형태로 기록된다.</p>
-<hr></hr>
-<h1 id="날짜-규칙-중요">날짜 규칙 (중요)</h1>
-<p>DevLog는 <strong>한국 시간(KST)</strong> 기준으로 하루를 마감한다.</p>
-<p>UTC 00:00는 KST 09:00이다.<br></br>따라서 DevLog 생성 시점이 UTC 2025-11-21 00:00이면<br></br>참조해야 할 날짜는 <strong>11월 20일</strong>이다.</p>
-<p>Python 기준:</p>
-<pre><code>
-from datetime import datetime, timedelta, timezone
-KST = timezone(timedelta(hours=9))
-devlog_date = (now_utc.astimezone(KST).date() - timedelta(days=1))
-</code></pre><hr></hr>
-<h1 id="파일-구조">파일 구조</h1>
-<p>/project
-    /Documents
-        /Meeting
-            /Daily
-                Meeting_251120_Daily.md
-                Meeting_251121_Daily.md
-        /DevLog
-            /Daily
-                2025-11-20.md
-                2025-11-20.metrics.json
-                2025-11-21.md
-                2025-11-21.metrics.json
-    /.github
-        /scripts
-            devlog_generate.py
-            meeting_loader.py
-            diff_loader.py
-            jira_mapper.py
-            gpt_client.py
-        /data
-            developers.csv
-            jira_map_rules.yaml
-        config.json</p>
-<hr></hr>
-<h1 id="회의록-구조-프론트매터-포함">회의록 구조 (프론트매터 포함)</h1>
-<p>예시:</p>
-<hr></hr>
-<p>title: "2025-11-20_데일리 회의"
-date: "2025-11-20"
-attendees:</p>
+                                <h1 id="🚀-upopupinterviewhello-구현-명세서">🚀 UPopup_InterviewHello 구현 명세서</h1>
+<h2 id="📋-프로젝트-정보">📋 프로젝트 정보</h2>
 <ul>
-<li>"전체 팀"
-keywords:</li>
-<li>"로컬 서버 세팅"</li>
-<li>"UV 환경"</li>
-<li>...</li>
+<li><strong>프로젝트명</strong>: Onepiece (KLingo)</li>
+<li><strong>엔진 버전</strong>: Unreal Engine 5.4</li>
+<li><strong>모듈명</strong>: ONEPIECE_API</li>
+<li><strong>로그 카테고리</strong>: LogOnepiece</li>
+<li><strong>기존 구현</strong>: UPopup_Interview (ScrollBox 방식) → UPopup_InterviewHello (단일 질문 방식)</li>
+</ul>
+<h2 id="🎯-구현-목표">🎯 구현 목표</h2>
+<p>기존 ScrollBox 방식의 Interview Popup을 Duolingo 스타일의 단일 질문 방식으로 재구현합니다.</p>
+<h3 id="기존-vs-새로운-구조-비교">기존 vs 새로운 구조 비교</h3>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>기존 (UPopup_Interview)</th>
+<th>새로운 (UPopup_InterviewHello)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>표시 방식</strong></td>
+<td>ScrollBox에 모든 질문 표시</td>
+<td>한 번에 하나의 질문만 표시</td>
+</tr>
+<tr>
+<td><strong>네비게이션</strong></td>
+<td>스크롤</td>
+<td>Prev/Next 버튼</td>
+</tr>
+<tr>
+<td><strong>답변 저장</strong></td>
+<td>각 Item Widget에 저장</td>
+<td>팝업 내부 배열(TempAnswers)에 저장</td>
+</tr>
+<tr>
+<td><strong>진행 표시</strong></td>
+<td>없음</td>
+<td>Progress Bar</td>
+</tr>
+<tr>
+<td><strong>추가 기능</strong></td>
+<td>없음</td>
+<td>"Today do not show" 체크박스</td>
+</tr>
+</tbody>
+</table>
+<h2 id="📸-ui-참조">📸 UI 참조</h2>
+<ul>
+<li><strong>UI 디자인</strong>: <code>Documents/DevLog/AgentLog/Popup_InterviewHello.png</code></li>
+<li><strong>위젯 구조</strong>: <code>Documents/DevLog/AgentLog/Popup_InterviewHello_Comp.png</code></li>
 </ul>
 <hr></hr>
-<h1 id="2025-11-20-데일리-회의">2025-11-20 데일리 회의</h1>
-<h2 id="1-개요">1. 개요</h2>
-<p>...</p>
-<h2 id="2-논의-요약">2. 논의 요약</h2>
-<p>...</p>
-<h2 id="3-action-items">3. Action Items</h2>
-<p>...</p>
-<h2 id="4-회고">4. 회고</h2>
-<p>...</p>
-<p>Python에서 frontmatter.load() 로 metadata + content 추출.</p>
-<hr></hr>
-<h1 id="개발자-정보-developerscsv">개발자 정보 (developers.csv)</h1>
-<p>branch,developer,jira_account
-dopple,배주백,jubaeck Bae
-cubee,이은희,이은희
-CookieAndJuice,이치훈,이치훈</p>
-<p>브랜치명은 기능명이 아니라 <strong>작업자명</strong>이다.<br></br>따라서 브랜치명 → 개발자명 → Jira ID를 매핑한다.</p>
-<hr></hr>
-<h1 id="jira-매핑-룰-jiramaprulesyaml">Jira 매핑 룰 (jira_map_rules.yaml)</h1>
-<p>✔ 2) 자동 생성·갱신 방식 (너가 원하는 방식)
-핵심 아이디어</p>
-<p>로컬 Python 스크립트 하나(generate_jira_map_rules.py)를 만들어서:</p>
-<p>Source/ 폴더 전체 스캔</p>
-<p>최상위 모듈명 자동 분류</p>
-<p>핵심 하위 폴더(변경률 높음, 회의록 Keywords 포함) 우선 매핑</p>
-<p>변경된 diff에서 “자주 등장하는 폴더” 자동 탐지</p>
-<p>GPT 호출해서 규칙 재정리</p>
-<p>결과를 jira_map_rules.yaml로 자동 저장</p>
-<p>✔ Python 자동 생성 스크립트 (초안)</p>
-<p>아래 코드는 로컬에서 claude-cli로 수정하면서 진화시키면 됨.
-즉, 네가 원하는 DevLog 자동화 과정의 일부로 쓰면 된다.</p>
-<p>import os
-import yaml
-import subprocess
-import json</p>
-<p>TARGET_DIRS = ["Source", "Content"]</p>
-<p>def scan_project_folders(base="."):
-    modules = {}
-    for root, dirs, files in os.walk(base):</p>
-<pre><code>    # UE5는 Source/모듈명/ 구조가 많음
-    parts = root.replace("\\", "/").split("/")
-
-    if len(parts) &gt;= 2 and parts[0] in TARGET_DIRS:
-        module_name = parts[1]
-        path = "/".join(parts[:3])
-
-        if module_name not in modules:
-            modules[module_name] = set()
-        modules[module_name].add(path)
-return modules
-</code></pre><p>def extract_diff_paths():
-    try:
-        diff = subprocess.check_output(
-            ["git", "diff", "--name-only", "HEAD~50..HEAD"],
-            text=True
-        )
-    except:
-        return []
-    return [line.strip() for line in diff.split("\n") if line.strip()]</p>
-<p>def build_prompt(modules, diffs):
-    return f"""
-다음은 Unreal Engine 프로젝트의 모듈/폴더 구조입니다:</p>
-<p>{json.dumps(modules, indent=2)}</p>
-<p>최근 50개 커밋의 git diff 파일 경로입니다:</p>
-<p>{json.dumps(diffs, indent=2)}</p>
-<p>이 데이터를 기반으로 jira_map_rules.yaml을 생성하세요.
-규칙:</p>
+<h2 id="📌-1-클래스-구조">📌 1. 클래스 구조</h2>
+<h3 id="상속-관계">상속 관계</h3>
+<pre><code class="lang-cpp">UPopup_InterviewHello : public UBasePopup
+</code></pre>
 <ul>
-<li>키는 시스템/모듈명</li>
-<li>값은 해당 시스템과 연관된 파일 경로 prefix</li>
-<li>Unreal Engine 기준으로 자연스럽게 분류</li>
-<li>Noise는 제거</li>
-<li>너무 세부 경로는 제거
-"""</li>
+<li><strong>UBasePopup</strong>은 모든 팝업의 기본 클래스</li>
+<li>OpenAnimation() 기능 제공</li>
+<li>Copyright 헤더 포함 필수</li>
 </ul>
-<p>def call_gpt(prompt):
-    from openai import OpenAI
-    client = OpenAI()</p>
-<pre><code>response = client.chat.completions.create(
-    model="gpt-4o-mini",
-    messages=[{"role": "user", "content": prompt}],
-    temperature=0.2
-)
-return response.choices[0].message["content"]
-</code></pre><p>def main():
-    modules = scan_project_folders(".")
-    diffs = extract_diff_paths()</p>
-<pre><code>prompt = build_prompt(modules, diffs)
-yaml_text = call_gpt(prompt)
-
-with open("data/jira_map_rules.yaml", "w", encoding="utf-8") as f:
-    f.write(yaml_text)
-
-print("✔ jira_map_rules.yaml 자동 생성 완료")
-</code></pre><p>if <strong>name</strong> == "<strong>main</strong>":
-    main()</p>
+<h3 id="파일-위치">파일 위치</h3>
+<ul>
+<li><strong>Header</strong>: <code>Source/Onepiece/MessageBox/Public/UPopup_InterviewHello.h</code></li>
+<li><strong>Source</strong>: <code>Source/Onepiece/MessageBox/Private/UPopup_InterviewHello.cpp</code></li>
+</ul>
 <hr></hr>
-<h1 id="gpt-분석-필요사항">GPT 분석 필요사항</h1>
-<p>GPT에게 전달되는 JSON 구조:</p>
-<p>{
-  "task": "devlog_generate",
-  "date": "YYYY-MM-DD",
-  "meeting": "&lt;&lt;회의록 본문&gt;&gt;",
-  "keywords": [...],
-  "diff": "&lt;<git diff="">&gt;",
-  "commits": "&lt;&lt;자동 생성된 커밋 메시지들&gt;&gt;",
-  "mapping_rules": "&lt;&lt;경로-시스템 매핑 룰&gt;&gt;",
-  "developer": "&lt;&lt;작업자명&gt;&gt;",
-  "jira_recent_issues": "&lt;<assignee 기반="" jira="" 후보군="" 리스트="">&gt;",
-  "instructions": {
-    "output_format": {
-      "top_changes": "string",
-      "impact": "string",
-      "risks": "string",
-      "verification": "string",
-      "meeting_todo": "string",
-      "jira_candidates": "string"
+<h2 id="📌-2-ui-위젯-구조-bindwidget">📌 2. UI 위젯 구조 (BindWidget)</h2>
+<p>UI 이미지(<code>Popup_InterviewHello_Comp.png</code>)를 참고하여 다음 위젯들을 BindWidget으로 선언:</p>
+<table>
+<thead>
+<tr>
+<th>위젯 이름</th>
+<th>타입</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Txt_Title</strong></td>
+<td>UTextBlock</td>
+<td>타이틀 ("Interview")</td>
+</tr>
+<tr>
+<td><strong>TXt_Question</strong></td>
+<td>UTextBlock</td>
+<td>현재 질문 텍스트 (영어)</td>
+</tr>
+<tr>
+<td><strong>Edit_Answer</strong></td>
+<td>UEditableText or UMultiLineEditableText</td>
+<td>플레이어 답변 입력란</td>
+</tr>
+<tr>
+<td><strong>ProgressBar_Question</strong></td>
+<td>UProgressBar</td>
+<td>질문 진행률 표시</td>
+</tr>
+<tr>
+<td><strong>Button_PrevArrow</strong></td>
+<td>UButton or UTextureButton</td>
+<td>이전 질문 (◀)</td>
+</tr>
+<tr>
+<td><strong>Btn_Submit</strong> or <strong>Btn_Next</strong></td>
+<td>UButton or UImageButton</td>
+<td>Next/Submit 전환 버튼</td>
+</tr>
+<tr>
+<td><strong>Button_NextArrow</strong></td>
+<td>UButton or UTextureButton</td>
+<td>다음 질문 (▶)</td>
+</tr>
+<tr>
+<td><strong>Button_CheckToday</strong></td>
+<td>UCheckBox</td>
+<td>"Today do not show" 체크박스</td>
+</tr>
+<tr>
+<td><strong>Btn_Close</strong></td>
+<td>UButton or UTextureButton</td>
+<td>팝업 닫기 (우측 상단 ❌)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>참고</strong>: 위젯 이름은 UMG 블루프린트의 실제 이름과 정확히 일치해야 합니다.</p>
+<hr></hr>
+<h2 id="📌-3-데이터-구조-networkdatah-참조">📌 3. 데이터 구조 (NetworkData.h 참조)</h2>
+<p>프로젝트의 <code>NetworkData.h</code>에 이미 정의된 구조체를 사용합니다:</p>
+<h3 id="finterviewquestiondata">FInterviewQuestionData</h3>
+<pre><code class="lang-cpp">USTRUCT(BlueprintType)
+struct FInterviewQuestionData
+{
+    GENERATED_BODY()
+
+    UPROPERTY(BlueprintReadWrite)
+    int32 Id;           // 질문 고유 ID
+
+    UPROPERTY(BlueprintReadWrite)
+    int32 TypeCode;     // 질문 타입 코드
+
+    UPROPERTY(BlueprintReadWrite)
+    FString Eng;        // 영어 질문
+
+    UPROPERTY(BlueprintReadWrite)
+    FString Kor;        // 한국어 질문
+
+    UPROPERTY(BlueprintReadWrite)
+    FString EngKey;     // 영어 키
+
+    UPROPERTY(BlueprintReadWrite)
+    FString KorKey;     // 한국어 키
+
+    UPROPERTY(BlueprintReadWrite)
+    FString CreatedAt;  // 생성 시간
+};
+</code></pre>
+<h3 id="fresponseinterviewhello">FResponseInterviewHello</h3>
+<pre><code class="lang-cpp">USTRUCT(BlueprintType)
+struct FResponseInterviewHello
+{
+    GENERATED_BODY()
+
+    UPROPERTY(BlueprintReadWrite, Category = "Interview")
+    TArray<finterviewquestiondata> Questions;
+};
+</finterviewquestiondata></code></pre>
+<h3 id="finterviewanswerdata">FInterviewAnswerData</h3>
+<pre><code class="lang-cpp">USTRUCT(BlueprintType)
+struct FInterviewAnswerData
+{
+    GENERATED_BODY()
+
+    UPROPERTY(BlueprintReadWrite)
+    int interview_id;   // 질문 ID (FInterviewQuestionData.Id)
+
+    UPROPERTY(BlueprintReadWrite)
+    FString answer;     // 플레이어 답변
+
+    UPROPERTY(BlueprintReadWrite)
+    int user_id;        // 유저 ID
+};
+</code></pre>
+<h3 id="frequestinterviewanswer">FRequestInterviewAnswer</h3>
+<pre><code class="lang-cpp">USTRUCT(BlueprintType)
+struct FRequestInterviewAnswer
+{
+    GENERATED_BODY()
+
+    UPROPERTY(BlueprintReadWrite, Category = "Interview")
+    TArray<finterviewanswerdata> answer;
+};
+</finterviewanswerdata></code></pre>
+<h3 id="초기화">초기화</h3>
+<pre><code class="lang-cpp">void InitPopup(const FResponseInterviewHello&amp; InterviewData);
+</code></pre>
+<ul>
+<li>API 응답으로 받은 질문 배열을 팝업에 전달합니다.</li>
+</ul>
+<hr></hr>
+<h2 id="📌-4-ux-동작-규칙">📌 4. UX 동작 규칙</h2>
+<h3 id="41-단일-질문-모드-duolingo-스타일">4.1 단일 질문 모드 (Duolingo 스타일)</h3>
+<ul>
+<li>한 번에 <strong>질문 하나만</strong> 표시</li>
+<li>현재 질문 인덱스: <code>int32 CurrentQuestionIndex</code></li>
+<li>총 질문 개수: <code>SavedQuestions.Num()</code></li>
+</ul>
+<h3 id="42-progress-bar">4.2 Progress Bar</h3>
+<pre><code class="lang-cpp">float Progress = (float)(CurrentQuestionIndex + 1) / (float)SavedQuestions.Num();
+ProgressBar_Question-&gt;SetPercent(Progress);
+</code></pre>
+<h3 id="43-prev--next-네비게이션-규칙">4.3 Prev / Next 네비게이션 규칙</h3>
+<table>
+<thead>
+<tr>
+<th>버튼</th>
+<th>동작</th>
+<th>표시 조건</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Button_PrevArrow</strong></td>
+<td><code>CurrentQuestionIndex--</code></td>
+<td><code>CurrentQuestionIndex &gt; 0</code></td>
+</tr>
+<tr>
+<td><strong>Button_NextArrow</strong></td>
+<td><code>CurrentQuestionIndex++</code></td>
+<td><code>CurrentQuestionIndex &lt; SavedQuestions.Num() - 1</code></td>
+</tr>
+<tr>
+<td><strong>Btn_Next</strong> (중앙 Next)</td>
+<td><code>CurrentQuestionIndex++</code></td>
+<td>마지막 질문 아님 AND 모든 답변 완료 안됨</td>
+</tr>
+<tr>
+<td><strong>Btn_Submit</strong> (중앙 Submit)</td>
+<td>답변 제출</td>
+<td>마지막 질문 AND 모든 답변 완료됨</td>
+</tr>
+</tbody>
+</table>
+<p><strong>중요</strong>: 범위를 벗어나는 버튼은 <code>SetVisibility(ESlateVisibility::Hidden)</code> 처리</p>
+<h3 id="44-답변-임시-저장">4.4 답변 임시 저장</h3>
+<pre><code class="lang-cpp">TArray<fstring> TempAnswers;  // Questions.Num()과 크기 동일
+</fstring></code></pre>
+<h4 id="이동-시-저장로드-프로세스">이동 시 저장/로드 프로세스</h4>
+<ol>
+<li><p><strong>떠나기 전</strong>: <code>SaveCurrentAnswer()</code></p>
+<pre><code class="lang-cpp">TempAnswers[CurrentQuestionIndex] = Edit_Answer-&gt;GetText().ToString();
+</code></pre>
+</li>
+<li><p><strong>이동 후</strong>: <code>LoadCurrentAnswer()</code></p>
+<pre><code class="lang-cpp">Edit_Answer-&gt;SetText(FText::FromString(TempAnswers[CurrentQuestionIndex]));
+</code></pre>
+</li>
+<li><p><strong>질문 내용 업데이트</strong>: <code>RefreshUI()</code></p>
+<pre><code class="lang-cpp">TXt_Question-&gt;SetText(FText::FromString(SavedQuestions[CurrentQuestionIndex].Eng));
+</code></pre>
+</li>
+</ol>
+<h3 id="45-submit-버튼-상태-옵션-1-마지막-질문에서-항상-표시">4.5 Submit 버튼 상태 (옵션 1: 마지막 질문에서 항상 표시)</h3>
+<pre><code class="lang-cpp">void UpdateSubmitButtonState()
+{
+    // 모든 답변이 채워졌는지 확인
+    bool bAllAnswered = true;
+    for (const FString&amp; Answer : TempAnswers)
+    {
+        if (Answer.TrimStartAndEnd().IsEmpty())
+        {
+            bAllAnswered = false;
+            break;
+        }
     }
-  }
-}</assignee></git></p>
+
+    // 마지막 질문인지 확인
+    bool bIsLastQuestion = (CurrentQuestionIndex == SavedQuestions.Num() - 1);
+
+    if (bIsLastQuestion)
+    {
+        // 마지막 질문이면 무조건 Submit 표시
+        if (Btn_Submit)
+        {
+            Btn_Submit-&gt;SetVisibility(ESlateVisibility::Visible);
+            // 모든 답변이 완료되었을 때만 활성화
+            Btn_Submit-&gt;SetIsEnabled(bAllAnswered);
+        }
+        if (Btn_Next)
+        {
+            Btn_Next-&gt;SetVisibility(ESlateVisibility::Hidden);
+        }
+    }
+    else
+    {
+        // 마지막 질문이 아니면 Next 표시
+        if (Btn_Next)
+        {
+            Btn_Next-&gt;SetVisibility(ESlateVisibility::Visible);
+        }
+        if (Btn_Submit)
+        {
+            Btn_Submit-&gt;SetVisibility(ESlateVisibility::Hidden);
+        }
+    }
+}
+</code></pre>
+<p><strong>UX 개선점:</strong></p>
+<ul>
+<li>✅ 마지막 질문에 도달하면 Submit 버튼이 항상 표시됨</li>
+<li>✅ 모든 답변이 완료되지 않으면 Submit 버튼이 <strong>비활성화</strong> 상태로 표시됨</li>
+<li>✅ 사용자가 "아직 답변하지 않은 질문이 있구나" 인지 가능</li>
+</ul>
+<p><strong>실시간 업데이트:</strong></p>
+<pre><code class="lang-cpp">// Edit_Answer의 OnTextChanged 이벤트 바인딩 (NativeConstruct)
+if (Edit_Answer)
+{
+    Edit_Answer-&gt;OnTextChanged.AddDynamic(this, &amp;UPopup_InterviewHello::OnAnswerTextChanged);
+}
+
+// 텍스트 변경 시 호출
+void OnAnswerTextChanged(const FText&amp; Text)
+{
+    // 현재 답변을 실시간으로 저장
+    if (TempAnswers.IsValidIndex(CurrentQuestionIndex))
+    {
+        TempAnswers[CurrentQuestionIndex] = Text.ToString();
+    }
+
+    // Submit 버튼 상태 즉시 업데이트
+    UpdateSubmitButtonState();
+}
+</code></pre>
+<p>이렇게 하면 사용자가 마지막 질문에서 답변을 입력하는 즉시 Submit 버튼이 <strong>활성화</strong>됩니다! ✅</p>
+<h3 id="46-제출-onclicksubmit">4.6 제출 (OnClickSubmit)</h3>
+<pre><code class="lang-cpp">void UPopup_InterviewHello::OnClickSubmit()
+{
+    // 1. 답변 데이터 생성
+    TArray<finterviewanswerdata> AnswerDataList;
+    int32 UserId = ULingoGameHelper::GetUserId(GetWorld());
+
+    for (int32 i = 0; i &lt; SavedQuestions.Num(); ++i)
+    {
+        FInterviewAnswerData AnswerData;
+        AnswerData.interview_id = SavedQuestions[i].Id;
+        AnswerData.answer = TempAnswers[i];
+        AnswerData.user_id = UserId;
+        AnswerDataList.Add(AnswerData);
+    }
+
+    // 2. API 요청
+    if (UKLingoNetworkSystem* NetworkSystem = UKLingoNetworkSystem::Get(GetWorld()))
+    {
+        FRequestInterviewAnswer Request;
+        Request.answer = AnswerDataList;
+
+        NetworkSystem-&gt;RequestInterviewAnswer(
+            Request,
+            FResponseInterviewAnswerDelegate::CreateUObject(
+                this, &amp;UPopup_InterviewHello::OnResponseInterviewAnswer)
+        );
+    }
+}
+</finterviewanswerdata></code></pre>
 <hr></hr>
-<h1 id="devlog-최종-출력-템플릿-mermaid-제거">DevLog 최종 출력 템플릿 (Mermaid 제거)</h1>
-<h1 id="daily-devlog-—">Daily DevLog —</h1>
-<h2 id="1-오늘의-주요-변경">1. 오늘의 주요 변경</h2>
-<h2 id="2-시스템-영향도">2. 시스템 영향도</h2>
-<h2 id="3-리스크-및-문제">3. 리스크 및 문제</h2>
-<h2 id="4-검증-필요-항목">4. 검증 필요 항목</h2>
-<h2 id="5-회의-기반-후속-작업">5. 회의 기반 후속 작업</h2>
-<h2 id="6-관련-jira-이슈-자동-추론">6. 관련 Jira 이슈 (자동 추론)</h2>
+<h2 id="📌-5-오늘-보지-않기-기능-submit-성공-시-저장">📌 5. "오늘 보지 않기" 기능 (Submit 성공 시 저장)</h2>
+<h3 id="51-체크박스-상태-저장-onchecktoday">5.1 체크박스 상태 저장 (OnCheckToday)</h3>
+<pre><code class="lang-cpp">// 멤버 변수
+bool bCheckTodayDoNotShow = false;
+
+// 체크박스 이벤트: 상태만 저장 (Config 저장은 Submit 성공 시)
+void UPopup_InterviewHello::OnCheckToday(bool bIsChecked)
+{
+    // 체크박스 상태만 저장 (실제 Config 저장은 Submit 성공 시)
+    bCheckTodayDoNotShow = bIsChecked;
+
+    PRINTLOG(TEXT("[UPopup_InterviewHello] 'Today do not show' checkbox: %s"),
+        bIsChecked ? TEXT("Checked") : TEXT("Unchecked"));
+}
+</code></pre>
+<h3 id="52-submit-성공-시-config-저장-onresponseinterviewanswer">5.2 Submit 성공 시 Config 저장 (OnResponseInterviewAnswer)</h3>
+<pre><code class="lang-cpp">void UPopup_InterviewHello::OnResponseInterviewAnswer(FResponseInterviewAnswer&amp; ResponseData, bool bWasSuccessful)
+{
+    if (bWasSuccessful)
+    {
+        PRINTLOG(TEXT("[UPopup_InterviewHello] Interview Answer SUCCESS"));
+
+        // "Today do not show" 체크되어 있으면 오늘 날짜 저장
+        if (bCheckTodayDoNotShow)
+        {
+            int32 UserId = ULingoGameHelper::GetUserId(GetWorld());
+            FString ConfigSection = TEXT("/Script/Onepiece.InterviewPopup");
+            FString ConfigKey = FString::Printf(TEXT("SkipInterviewDate_%d"), UserId);
+
+            // 현재 날짜를 "YYYY-MM-DD" 형식으로 저장
+            FDateTime Now = FDateTime::Now();
+            FString TodayDate = FString::Printf(TEXT("%04d-%02d-%02d"),
+                Now.GetYear(), Now.GetMonth(), Now.GetDay());
+
+            GConfig-&gt;SetString(
+                *ConfigSection,
+                *ConfigKey,
+                *TodayDate,
+                GGameUserSettingsIni
+            );
+            GConfig-&gt;Flush(false, GGameUserSettingsIni);
+
+            PRINTLOG(TEXT("[UPopup_InterviewHello] 'Today do not show' saved for User %d, Date: %s"),
+                UserId, *TodayDate);
+        }
+
+        // ... (튜터 메시지, 팝업 닫기)
+    }
+}
+</code></pre>
+<h3 id="53-config-읽기-및-날짜-비교-팝업-표시-전-확인">5.3 Config 읽기 및 날짜 비교 (팝업 표시 전 확인)</h3>
+<pre><code class="lang-cpp">bool ShouldSkipInterviewToday(const UObject* WorldContextObject)
+{
+    int32 UserId = ULingoGameHelper::GetUserId(WorldContextObject);
+    FString ConfigSection = TEXT("/Script/Onepiece.InterviewPopup");
+    FString ConfigKey = FString::Printf(TEXT("SkipInterviewDate_%d"), UserId);
+
+    // 저장된 날짜 읽기
+    FString SavedDate;
+    if (!GConfig-&gt;GetString(*ConfigSection, *ConfigKey, SavedDate, GGameUserSettingsIni))
+    {
+        // 저장된 날짜 없음 → 보여줌
+        return false;
+    }
+
+    // 오늘 날짜 생성
+    FDateTime Now = FDateTime::Now();
+    FString TodayDate = FString::Printf(TEXT("%04d-%02d-%02d"),
+        Now.GetYear(), Now.GetMonth(), Now.GetDay());
+
+    // 날짜 비교: 저장된 날짜 == 오늘 날짜 → Skip
+    if (SavedDate == TodayDate)
+    {
+        PRINTLOG(TEXT("[Interview] Skipping today for User %d (Saved: %s)"), UserId, *SavedDate);
+        return true;  // 오늘은 건너뜀
+    }
+
+    // 날짜가 다르면 → 보여줌
+    return false;
+}
+</code></pre>
+<p><strong>중요 포인트:</strong></p>
+<ul>
+<li>✅ <strong>체크박스만으로는 저장 안 됨</strong>: OnCheckToday는 상태만 멤버 변수에 저장</li>
+<li>✅ <strong>Submit 성공 시 저장</strong>: 체크되어 있고 Submit이 성공해야 Config에 날짜 저장</li>
+<li>✅ <strong>날짜 저장</strong>: "YYYY-MM-DD" 형식으로 저장</li>
+<li>✅ <strong>날짜 비교</strong>: 저장된 날짜와 오늘 날짜가 같으면 건너뜀</li>
+<li>✅ <strong>내일은 표시</strong>: 날짜가 바뀌면 자동으로 다시 보여짐</li>
+</ul>
+<p><strong>참고</strong>: 이 기능은 팝업을 여는 쪽(PopupManager 또는 호출자)에서 체크해야 할 수도 있습니다.</p>
 <hr></hr>
-<h1 id="요구사항-요약">요구사항 요약</h1>
-<h2 id="✔-로컬에서-실행-가능한-python-코드를-생성해야-한다">✔ 로컬에서 실행 가능한 Python 코드를 생성해야 한다</h2>
-<p><strong>devlog_generate.py</strong> 스크립트를 단계적으로 구현한다.</p>
-<h2 id="✔-github-actions-필요-없음">✔ GitHub Actions 필요 없음</h2>
-<p>CI는 나중 문제.</p>
-<h2 id="✔-데이터는-csvyamlmd-파일에서-로딩">✔ 데이터는 CSV/YAML/MD 파일에서 로딩</h2>
-<p>하드코딩도 허용되지만 확장 가능한 구조로.</p>
-<h2 id="✔-시스템-영향도--위험도--검증-항목--회의-기반-후속-작업은-모두-gpt-기반-자동-생성">✔ 시스템 영향도 / 위험도 / 검증 항목 / 회의 기반 후속 작업은 모두 GPT 기반 자동 생성</h2>
-<p>Mermaid 구조도는 제거.</p>
-<h2 id="✔-커밋-메시지가-매우-디테일하므로-jira-추론-정확도를-높이는-데-적극-활용한다">✔ 커밋 메시지가 매우 디테일하므로 Jira 추론 정확도를 높이는 데 적극 활용한다.</h2>
-<h2 id="✔-모든-요소는-로컬-git-diff--회의록--jira-api-기반">✔ 모든 요소는 로컬 git diff + 회의록 + Jira API 기반.</h2>
+<h2 id="📌-6-필수-메서드-구조">📌 6. 필수 메서드 구조</h2>
+<h3 id="61-public-메서드">6.1 Public 메서드</h3>
+<pre><code class="lang-cpp">/** 팝업 초기화 */
+UFUNCTION(BlueprintCallable, Category = "Popup")
+void InitPopup(const FResponseInterviewHello&amp; InterviewData);
+</code></pre>
+<h3 id="62-protected-메서드">6.2 Protected 메서드</h3>
+<pre><code class="lang-cpp">protected:
+    virtual void NativeConstruct() override;
+</code></pre>
+<h3 id="63-private-메서드">6.3 Private 메서드</h3>
+<h4 id="ui-업데이트">UI 업데이트</h4>
+<pre><code class="lang-cpp">private:
+    /** 현재 질문과 답변을 UI에 반영 */
+    void RefreshUI();
+
+    /** Prev/Next 화살표 버튼 표시/숨김 처리 */
+    void UpdateNavigationButtons();
+
+    /** Submit 버튼 활성화 상태 업데이트 */
+    void UpdateSubmitButtonState();
+
+    /** Progress Bar 업데이트 */
+    void UpdateProgressBar();
+</code></pre>
+<h4 id="답변-관리">답변 관리</h4>
+<pre><code class="lang-cpp">    /** 현재 질문의 답변을 TempAnswers에 저장 */
+    void SaveCurrentAnswer();
+
+    /** TempAnswers에서 현재 질문의 답변을 불러와 Edit_Answer에 표시 */
+    void LoadCurrentAnswer();
+</code></pre>
+<h4 id="버튼-이벤트">버튼 이벤트</h4>
+<pre><code class="lang-cpp">    /** 이전 질문으로 이동 */
+    UFUNCTION()
+    void OnClickPrevArrow();
+
+    /** 다음 질문으로 이동 */
+    UFUNCTION()
+    void OnClickNextArrow();
+
+    /** Next 버튼 (중앙) 클릭 */
+    UFUNCTION()
+    void OnClickNext();
+
+    /** Submit 버튼 클릭 */
+    UFUNCTION()
+    void OnClickSubmit();
+
+    /** 닫기 버튼 클릭 */
+    UFUNCTION()
+    void OnClickClose();
+
+    /** "Today do not show" 체크박스 변경 */
+    UFUNCTION()
+    void OnCheckToday(bool bIsChecked);
+</code></pre>
+<h4 id="api-응답-콜백">API 응답 콜백</h4>
+<pre><code class="lang-cpp">    /** Interview Answer API 응답 처리 */
+    UFUNCTION()
+    void OnResponseInterviewAnswer(FResponseInterviewAnswer&amp; ResponseData, bool bWasSuccessful);
+</code></pre>
+<h3 id="64-중요-원칙">6.4 중요 원칙</h3>
+<ul>
+<li><strong>Null 체크 필수</strong>: 모든 위젯 포인터 사용 전 <code>if (Widget)</code> 체크</li>
+<li><strong>범위 체크</strong>: 배열 접근 시 <code>IsValidIndex()</code> 사용</li>
+<li><strong>예외 없이 완전 동작</strong>: 어떤 상황에서도 크래시 없이 안전하게 동작</li>
+</ul>
 <hr></hr>
-<h1 id="당신에게-요청하는-작업">당신에게 요청하는 작업</h1>
-<p><strong>아래 유형의 출력물을 만들 수 있도록 Python 코드를 생성하라:</strong></p>
-<p>1) meeting_loader.py<br></br>2) diff_loader.py<br></br>3) jira_mapper.py<br></br>4) gpt_client.py<br></br>5) devlog_generate.py<br></br>6) 필요한 유틸 함수(date 계산 등)<br></br>7) 테스트를 위한 예시 실행 코드<br></br>8) Markdown DevLog 파일 생성 코드</p>
-<p>각각 독립 실행 가능하며, 내가 바로 실행할 수 있어야 한다.</p>
-<p>"전체 설계를 이해했으면 Python 코드 초안을 생성하라."<br></br>"내가 수정 요청을 하면 다시 코드를 개선하라."</p>
-<p>이 형태로 대화할 것이다.</p>
-<p>```</p>
+<h2 id="📌-7-프로젝트-시스템-통합">📌 7. 프로젝트 시스템 통합</h2>
+<h3 id="71-필수-include">7.1 필수 Include</h3>
+<pre><code class="lang-cpp">// Header
+#include "UBasePopup.h"
+#include "NetworkData.h"
+
+// Source
+#include "UPopupManager.h"
+#include "UKLingoNetworkSystem.h"
+#include "ULingoGameHelper.h"
+#include "UDialogManager.h"
+#include "UBroadcastManager.h"
+#include "GameLogging.h"
+#include "Components/TextBlock.h"
+#include "Components/Button.h"
+#include "Components/EditableText.h"
+#include "Components/ProgressBar.h"
+#include "Components/CheckBox.h"
+// ... 기타 사용하는 위젯 컴포넌트
+</code></pre>
+<h3 id="72-manager-클래스-사용">7.2 Manager 클래스 사용</h3>
+<pre><code class="lang-cpp">// 팝업 닫기
+UPopupManager::Get(GetWorld())-&gt;HideCurrentPopup();
+
+// 네트워크 요청
+UKLingoNetworkSystem::Get(GetWorld())-&gt;RequestInterviewAnswer(...);
+
+// Toast 메시지
+UDialogManager::Get(GetWorld())-&gt;ShowToast(Message);
+
+// 튜터 메시지
+UBroadcastManager::Get(GetWorld())-&gt;SendTutorMessage(Message);
+
+// UserId 가져오기
+int32 UserId = ULingoGameHelper::GetUserId(GetWorld());
+</code></pre>
+<h3 id="73-로그">7.3 로그</h3>
+<pre><code class="lang-cpp">#include "GameLogging.h"
+
+PRINTLOG(TEXT("Interview Answer SUCCESS"));
+</code></pre>
+<hr></hr>
+<h2 id="📌-8-체크리스트-구현-필수-기능">📌 8. 체크리스트 (구현 필수 기능)</h2>
+<h3 id="✅-핵심-기능">✅ 핵심 기능</h3>
+<ul>
+<li>[ ] 단일 질문 표시 (한 번에 하나)</li>
+<li>[ ] Prev/Next 화살표 버튼 네비게이션</li>
+<li>[ ] 범위 벗어난 버튼 자동 숨김</li>
+<li>[ ] 답변 임시 저장 배열 (<code>TempAnswers</code>)</li>
+<li>[ ] 이동 시 <code>SaveCurrentAnswer()</code> / <code>LoadCurrentAnswer()</code></li>
+<li>[ ] Progress Bar 업데이트</li>
+<li>[ ] Submit 버튼 활성화 조건 (모든 답변 완료 + 마지막 질문)</li>
+<li>[ ] Next ↔ Submit 버튼 전환</li>
+</ul>
+<h3 id="✅-api-통신">✅ API 통신</h3>
+<ul>
+<li>[ ] <code>InitPopup(const FResponseInterviewHello&amp;)</code>에서 데이터 초기화</li>
+<li>[ ] <code>TempAnswers.SetNum(Questions.Num())</code> 초기화</li>
+<li>[ ] Submit 시 <code>FInterviewAnswerData</code> 배열 생성</li>
+<li>[ ] <code>UKLingoNetworkSystem::RequestInterviewAnswer()</code> 호출</li>
+<li>[ ] <code>OnResponseInterviewAnswer()</code> 콜백 처리</li>
+</ul>
+<h3 id="✅-로컬-저장">✅ 로컬 저장</h3>
+<ul>
+<li>[ ] "Today do not show" 체크박스 바인딩</li>
+<li>[ ] <code>OnCheckToday(bool bIsChecked)</code> 구현</li>
+<li>[ ] GConfig를 이용한 Config 저장</li>
+</ul>
+<h3 id="✅-안전성">✅ 안전성</h3>
+<ul>
+<li>[ ] 모든 위젯 포인터 Null 체크</li>
+<li>[ ] 배열 접근 시 <code>IsValidIndex()</code> 체크</li>
+<li>[ ] 중복 바인딩 방지 (<code>RemoveDynamic</code> → <code>AddDynamic</code>)</li>
+</ul>
+<hr></hr>
+<h2 id="📌-9-코드-생성-가이드">📌 9. 코드 생성 가이드</h2>
+<h3 id="91-파일-구조">9.1 파일 구조</h3>
+<pre><code>Source/Onepiece/MessageBox/
+├── Public/
+│   └── UPopup_InterviewHello.h
+└── Private/
+    └── UPopup_InterviewHello.cpp
+</code></pre><h3 id="92-copyright-헤더">9.2 Copyright 헤더</h3>
+<pre><code class="lang-cpp">// Copyright (c) 2025 Doppleddiggong. All rights reserved.
+// Unauthorized copying, modification, or distribution of this file,
+// via any medium is strictly prohibited. Proprietary and confidential.
+</code></pre>
+<h3 id="93-클래스-선언-예시">9.3 클래스 선언 예시</h3>
+<pre><code class="lang-cpp">UCLASS()
+class ONEPIECE_API UPopup_InterviewHello : public UBasePopup
+{
+    GENERATED_BODY()
+
+public:
+    // Public 메서드
+
+protected:
+    virtual void NativeConstruct() override;
+
+private:
+    // Private 메서드
+    // ...
+
+protected:
+    // BindWidget 위젯들
+    UPROPERTY(meta = (BindWidget))
+    TObjectPtr<class utextblock=""> Txt_Title;
+    // ...
+
+private:
+    // 멤버 변수
+    TArray<finterviewquestiondata> SavedQuestions;
+    TArray<fstring> TempAnswers;
+    int32 CurrentQuestionIndex = 0;
+};
+</fstring></finterviewquestiondata></class></code></pre>
+<h3 id="94-빌드-요구사항">9.4 빌드 요구사항</h3>
+<ul>
+<li>UE 5.4 호환</li>
+<li><code>ONEPIECE_API</code> 매크로 사용</li>
+<li>Unreal C++ 코딩 컨벤션 준수</li>
+<li><code>TObjectPtr&lt;&gt;</code> 사용 (UE5 스타일)</li>
+<li>실제 프로젝트에서 즉시 빌드 가능</li>
+</ul>
+<hr></hr>
+<h2 id="📌-10-참고-자료">📌 10. 참고 자료</h2>
+<h3 id="기존-구현-참조">기존 구현 참조</h3>
+<ul>
+<li><code>Source/Onepiece/MessageBox/Public/UPopup_Interview.h</code> (기존 ScrollBox 방식)</li>
+<li><code>Source/Onepiece/MessageBox/Private/UPopup_Interview.cpp</code></li>
+</ul>
+<h3 id="관련-시스템">관련 시스템</h3>
+<ul>
+<li><code>UBasePopup</code>: 팝업 베이스 클래스</li>
+<li><code>UPopupManager</code>: 팝업 표시/숨김 관리</li>
+<li><code>UKLingoNetworkSystem</code>: API 통신</li>
+<li><code>ULingoGameHelper</code>: 유틸리티 함수</li>
+<li><code>NetworkData.h</code>: 데이터 구조 정의</li>
+</ul>
+<h3 id="ui-디자인">UI 디자인</h3>
+<ul>
+<li><code>Documents/DevLog/AgentLog/Popup_InterviewHello.png</code></li>
+<li><code>Documents/DevLog/AgentLog/Popup_InterviewHello_Comp.png</code></li>
+</ul>
+<hr></hr>
+<h2 id="📝-구현-시-주의사항">📝 구현 시 주의사항</h2>
+<ol>
+<li><strong>위젯 이름 정확히 일치</strong>: UMG 블루프린트의 위젯 이름과 BindWidget 변수명이 정확히 일치해야 합니다.</li>
+<li><strong>버튼 바인딩</strong>: <code>NativeConstruct()</code>에서 모든 버튼 이벤트를 바인딩합니다.</li>
+<li><strong>중복 방지</strong>: <code>RemoveDynamic</code> → <code>AddDynamic</code> 패턴 사용.</li>
+<li><strong>인덱스 관리</strong>: <code>CurrentQuestionIndex</code>가 유효 범위 내에 있는지 항상 확인.</li>
+<li><strong>UI 동기화</strong>: 질문 이동 시마다 <code>RefreshUI()</code>, <code>UpdateNavigationButtons()</code>, <code>UpdateSubmitButtonState()</code>, <code>UpdateProgressBar()</code> 호출.</li>
+<li><strong>답변 저장</strong>: 이동 전에 반드시 <code>SaveCurrentAnswer()</code> 호출.</li>
+<li><strong>에러 처리</strong>: API 실패 시 사용자에게 명확한 메시지 표시.</li>
+</ol>
+<hr></hr>
+<p><strong>문서 버전</strong>: 1.0
+<strong>최종 수정</strong>: 2025-12-11
+<strong>작성자</strong>: Claude (Onepiece 프로젝트 분석 기반)</p>
  <link rel="stylesheet" type="text/css" href="https://storage.googleapis.com/app.klipse.tech/css/codemirror.css"></link> <script>     window.klipse_settings = {         selector: ".language-klipse, .lang-eval-clojure",         selector_eval_js: ".lang-eval-js",         selector_eval_python_client: ".lang-eval-python",         selector_eval_php: ".lang-eval-php",         selector_eval_scheme: ".lang-eval-scheme",         selector_eval_ruby: ".lang-eval-ruby",         selector_reagent: ".lang-reagent",        selector_google_charts: ".lang-google-chart",        selector_es2017: ".lang-eval-es2017",        selector_jsx: ".lang-eval-jsx",        selector_transpile_jsx: ".lang-transpile-jsx",        selector_render_jsx: ".lang-render-jsx",        selector_react: ".lang-react",        selector_eval_markdown: ".lang-render-markdown",        selector_eval_lambdaway: ".lang-render-lambdaway",        selector_eval_cpp: ".lang-eval-cpp",        selector_eval_html: ".lang-render-html",        selector_sql: ".lang-eval-sql",        selector_brainfuck: "lang-eval-brainfuck",        selector_js: ".lang-transpile-cljs"    }; </script> <script src="https://storage.googleapis.com/app.klipse.tech/plugin/js/klipse_plugin.js"></script>
                                 
                                 </section>
@@ -1783,12 +2263,12 @@ print("✔ jira_map_rules.yaml 자동 생성 완료")
 
             
                 
-                <a href="KLingo_DPI_Scaling_Guide.html" class="navigation navigation-prev " aria-label="Previous page: DPI Scaling Guide">
+                <a href="KLingo_InteractionSystem_Network_Fix_Report.html" class="navigation navigation-prev " aria-label="Previous page: InteractionSystem Network Fix Report">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="KLingo_EUW_Setup_Guide.html" class="navigation navigation-next " aria-label="Next page: EUW Setup Guide">
+                <a href="KLingo_Interview_Popup.html" class="navigation navigation-next " aria-label="Next page: Interview Popup">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1799,7 +2279,7 @@ print("✔ jira_map_rules.yaml 자동 생성 완료")
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"DailyDevLog Guide","level":"4.8","depth":1,"next":{"title":"EUW Setup Guide","level":"4.9","depth":1,"path":"DevLog/AgentLog/KLingo_EUW_Setup_Guide.md","ref":"DevLog/AgentLog/KLingo_EUW_Setup_Guide.md","articles":[]},"previous":{"title":"DPI Scaling Guide","level":"4.7","depth":1,"path":"DevLog/AgentLog/KLingo_DPI_Scaling_Guide.md","ref":"DevLog/AgentLog/KLingo_DPI_Scaling_Guide.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-comscore","github","collapsible-menu","back-to-top-button","search-plus","expandable-chapters-small","page-toc-button","-anchor-navigation-ex","honkit-plugin-mermaid","code","alerts","emphasize","klipse","-lunr","-search","-sharing"],"root":".","styles":{"website":"styles/website.css"},"pluginsConfig":{"collapsible-menu":{},"emphasize":{"style":"yellow"},"github":{"url":"https://github.com/doppleddiggong/Onepiece"},"code":{"copyButtons":true},"honkit-plugin-mermaid":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"printLog":false,"multipleH1":false,"mode":"float","float":{"showLevelIcon":false,"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right"},"pageTop":{"showLevelIcon":false,"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right"}},"theme-comscore":{"showLevel":true},"page-toc-button":{"maxTocDepth":3,"minTocSize":2},"back-to-top-button":{},"alerts":{"info":{"label":"정보","icon":"fa fa-info-circle","className":"info"},"warning":{"label":"주의","icon":"fa fa-exclamation-triangle","className":"warning"},"danger":{"label":"위험","icon":"fa fa-times-circle","className":"danger"},"tip":{"label":"팁","icon":"fa fa-lightbulb-o","className":"tip"}},"expandable-chapters-small":{},"klipse":{"myConfigKey":"it's the default value"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"search-plus":{}},"theme":"default","author":"DoppledDiggong Team","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Onepiece Development Documentation","language":"ko","links":{"sidebar":{"GitHub Repository":"https://github.com/doppleddiggong/Onepiece","Doxygen API Docs":"https://doppleddiggong.github.io/Onepiece/doxygen/"}},"gitbook":"3.2.3","description":"Onepiece 프로젝트 개발 문서 - DevLog, Planning, System Review"},"file":{"path":"DevLog/AgentLog/KLingo_DailyDevLog_Guide.md","mtime":"2025-12-15T00:10:32.322Z","type":"markdown"},"gitbook":{"version":"6.1.4","time":"2025-12-15T00:11:03.301Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"InterviewHello","level":"4.12","depth":1,"next":{"title":"Interview Popup","level":"4.13","depth":1,"path":"DevLog/AgentLog/KLingo_Interview_Popup.md","ref":"DevLog/AgentLog/KLingo_Interview_Popup.md","articles":[]},"previous":{"title":"InteractionSystem Network Fix Report","level":"4.11","depth":1,"path":"DevLog/AgentLog/KLingo_InteractionSystem_Network_Fix_Report.md","ref":"DevLog/AgentLog/KLingo_InteractionSystem_Network_Fix_Report.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-comscore","github","collapsible-menu","back-to-top-button","search-plus","expandable-chapters-small","page-toc-button","-anchor-navigation-ex","honkit-plugin-mermaid","code","alerts","emphasize","klipse","-lunr","-search","-sharing"],"root":".","styles":{"website":"styles/website.css"},"pluginsConfig":{"collapsible-menu":{},"emphasize":{"style":"yellow"},"github":{"url":"https://github.com/doppleddiggong/Onepiece"},"code":{"copyButtons":true},"honkit-plugin-mermaid":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"printLog":false,"multipleH1":false,"mode":"float","float":{"showLevelIcon":false,"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right"},"pageTop":{"showLevelIcon":false,"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right"}},"theme-comscore":{"showLevel":true},"page-toc-button":{"maxTocDepth":3,"minTocSize":2},"back-to-top-button":{},"alerts":{"info":{"label":"정보","icon":"fa fa-info-circle","className":"info"},"warning":{"label":"주의","icon":"fa fa-exclamation-triangle","className":"warning"},"danger":{"label":"위험","icon":"fa fa-times-circle","className":"danger"},"tip":{"label":"팁","icon":"fa fa-lightbulb-o","className":"tip"}},"expandable-chapters-small":{},"klipse":{"myConfigKey":"it's the default value"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"search-plus":{}},"theme":"default","author":"DoppledDiggong Team","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Onepiece Development Documentation","language":"ko","links":{"sidebar":{"GitHub Repository":"https://github.com/doppleddiggong/Onepiece","Doxygen API Docs":"https://doppleddiggong.github.io/Onepiece/doxygen/"}},"gitbook":"3.2.3","description":"Onepiece 프로젝트 개발 문서 - DevLog, Planning, System Review"},"file":{"path":"DevLog/AgentLog/KLingo_InterviewHello.md","mtime":"2025-12-15T00:10:32.322Z","type":"markdown"},"gitbook":{"version":"6.1.4","time":"2025-12-15T00:11:03.301Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

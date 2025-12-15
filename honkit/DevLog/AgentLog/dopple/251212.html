@@ -3,7 +3,7 @@
 <html lang="ko" >
     <head>
         <meta charset="UTF-8">
-        <title>dopple - 2025-11-30 · Onepiece Development Documentation</title>
+        <title>dopple - 2025-12-12 · Onepiece Development Documentation</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="HonKit 6.1.4">
@@ -78,10 +78,10 @@
     <link rel="shortcut icon" href="../../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="251123.html" />
+    <link rel="next" href="251205.html" />
     
     
-    <link rel="prev" href="251202.html" />
+    <link rel="prev" href="../../../" />
     
 
     </head>
@@ -153,7 +153,7 @@
         
         
     
-        <li class="chapter " data-level="3.1" data-path="251212.html">
+        <li class="chapter active" data-level="3.1" data-path="251212.html">
             
                 <a href="251212.html">
             
@@ -192,7 +192,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="3.4" data-path="251130.html">
+        <li class="chapter " data-level="3.4" data-path="251130.html">
             
                 <a href="251130.html">
             
@@ -1535,7 +1535,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../../.." >dopple - 2025-11-30</a>
+        <a href="../../.." >dopple - 2025-12-12</a>
     </h1>
 </div>
 
@@ -1550,158 +1550,443 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="klingo-agent-log---2025-11-30">KLingo Agent Log - 2025-11-30</h1>
-<h2 id="start-log">Start Log</h2>
+                                <h1 id="dev-log---dopple">Dev Log - dopple</h1>
 <ul>
-<li>20251130 11:55</li>
-</ul>
-<h3 id="작업-개요">작업 개요</h3>
-<p>Luggage 상호작용 시스템의 RPC 구조 개선 작업 시작</p>
-<ul>
-<li>InteractableComponent (Pickup/Drop)</li>
-<li>UHookSystem (Grappling Hook)</li>
-<li>ConveyorBelt (Physics Movement)</li>
-</ul>
-<h3 id="작업-목표">작업 목표</h3>
-<ol>
-<li>멀티플레이어 환경에서 RPC 보안 강화</li>
-<li>상태 복제로 클라이언트 간 일관성 확보</li>
-<li>물리 시뮬레이션 품질 개선</li>
-</ol>
-<h3 id="참조-문서">참조 문서</h3>
-<ul>
-<li><code>Documents/DevLog/AgentLog/KLingo_Luggage.md</code> (진단 리포트)</li>
-<li><code>Documents/DevLog/AgentLog/KLingo_Luggage_RPC_Guide.md</code> (개선 가이드)</li>
+<li>20251212</li>
 </ul>
 <hr></hr>
 <h2 id="compact-log-1">Compact Log 1</h2>
 <ul>
-<li>20251130 12:36</li>
+<li>20251212 14:30</li>
 </ul>
-<h3 id="요약-내용">요약 내용</h3>
-<p>Luggage 상호작용 RPC 시스템 전면 개선 완료. 클라이언트 신뢰 문제, 상태 불일치, 중복 소유권 문제를 해결하여 멀티플레이어 환경에서의 안정성과 보안을 대폭 강화함.</p>
+<h3 id="speakquest-평가-결과-표시-시스템-구현-완료">SpeakQuest 평가 결과 표시 시스템 구현 완료</h3>
+<p>RequestSpeakingJudges 평가 결과를 UToastWidget을 통해 표시하고 PlayerState에 저장하는 시스템을 구현했습니다.</p>
 <p><strong>변경 파일</strong>:</p>
 <ul>
-<li><code>InteractableComponent.h</code>: bIsPickedUp 복제 추가, WithValidation 선언</li>
-<li><code>InteractableComponent.cpp</code>: OnRep_IsPickedUp, Server_PickUp/Drop Validation 구현</li>
-<li><code>luggage.h</code>: bIsBeingHooked, HookedBy 훅 플래그 추가</li>
-<li><code>luggage.cpp</code>: OnRep_IsBeingHooked 구현, 복제 설정</li>
-<li><code>UHookSystem.h</code>: PerformServerLineTrace 함수 선언</li>
-<li><code>UHookSystem.cpp</code>: 서버 라인트레이스 재실행, 중복 훅 방지, 훅 플래그 해제 로직 추가</li>
-<li><code>ConveyorBelt.cpp</code>: Tick 서버 전용화, Force 기반 이동으로 변경, Hook 중 이동 무시 추가</li>
-<li><code>KLingo_Luggage_RPC_Guide.md</code>: 상세 개선 가이드 문서 작성 (32KB)</li>
+<li><code>NetworkData.h/cpp</code>: FSpeakStageQuestion 구조를 실제 API 형식에 맞춰 정리 (kor/eng/pronunciation/voice_data)</li>
+<li><code>ALingoPlayerState.h/cpp</code>: speakEvaluationResults 배열 추가, Server_AddSpeakEvaluationResult RPC 구현</li>
+<li><code>AWheatly.h/cpp</code>: BeginSpeakQuest/CompleteSpeakQuest 함수 구현, UBroadcastManager 연동</li>
+<li><code>UVoiceConversationSystem.cpp</code>: OnResponseSpeakingsJudges에서 평가 결과 PlayerState 저장 로직 추가</li>
+<li><code>UKLingoNetworkSystem.cpp</code>: 헤더 포함 추가</li>
 </ul>
 <p><strong>주요 작업</strong>:</p>
 <ol>
-<li><p><strong>InteractableComponent 보안 강화 (P0)</strong></p>
+<li><p><strong>평가 결과 저장 시스템</strong></p>
 <ul>
-<li>bIsPickedUp 상태 복제로 모든 클라이언트 동기화</li>
-<li>Server_PickUp/Drop에 WithValidation 추가</li>
-<li>5가지 검증: 유효성, PlayerController, 중복 픽업, 기존 소유자, 거리 (1.5배 여유)</li>
-<li>OnRep_IsPickedUp으로 Outline/Widget 자동 동기화</li>
+<li>ALingoPlayerState에 speakEvaluationResults 배열 추가 (Replicated)</li>
+<li>Server_AddSpeakEvaluationResult RPC로 서버 측 평가 결과 저장</li>
 </ul>
 </li>
-<li><p><strong>Luggage 중복 훅 방지 (P1)</strong></p>
+<li><p><strong>AWheatly SpeakQuest 워크플로우</strong></p>
 <ul>
-<li>bIsBeingHooked, HookedBy 플래그 추가 및 복제</li>
-<li>OnRep_IsBeingHooked으로 시각적 피드백</li>
-<li>여러 플레이어의 동시 훅 시도 차단</li>
+<li>BeginSpeakQuest: RequestSpeakScenario 호출하여 질문 데이터 로드, PlayerState에 저장</li>
+<li>CompleteSpeakQuest: UBroadcastManager를 통해 축적된 모든 평가 결과를 UToastWidget으로 표시</li>
+<li>OnInteractionTriggered: bIsBusy 플래그로 턴 기반 NPC 접근 제어</li>
 </ul>
 </li>
-<li><p><strong>UHookSystem 치트 방지 (P1)</strong></p>
+<li><p><strong>UToastWidget 연동</strong></p>
 <ul>
-<li>PerformServerLineTrace 함수로 서버 기준 재검증</li>
-<li>클라이언트 HitResult 신뢰 제거</li>
-<li>5가지 검증: 라인트레이스, Hookable, 거리, 픽업 상태, 중복 훅</li>
-<li>ReleaseHook에서 훅 플래그 명시적 해제</li>
+<li>SendTutorMessage: final_feedback 메시지 표시</li>
+<li>SendAddItemToBoxList: grammar_score/context_score/final_overall_score를 FResultStatData로 변환하여 아이템 박스 표시</li>
 </ul>
 </li>
-<li><p><strong>ConveyorBelt 물리 개선 (P2)</strong></p>
+<li><p><strong>네트워크 데이터 구조 정리</strong></p>
 <ul>
-<li>HasAuthority() 체크로 서버 전용 Tick</li>
-<li>SetPhysicsLinearVelocity → AddForce 기반 이동</li>
-<li>질량 기반 힘 적용 (MoveSpeed <em> Mass </em> 10.0f)</li>
-<li>bIsPickedUp, bIsBeingHooked 상태 확인하여 이동 무시</li>
+<li>FSpeakStageQuestion을 실제 API 응답 형식에 맞춰 수정</li>
+<li>FResponseSpeakScenario의 audio 배열 파싱 로직 구현</li>
+<li>불필요한 구조체 제거 (FResponseSpeakQuest, FResponseEvaluation 등)</li>
+</ul>
+</li>
+<li><p><strong>평가 결과 표시 흐름</strong></p>
+<ul>
+<li>즉시 표시: 각 질문 평가 완료 시 UToastWidget으로 즉시 표시 (기존 동작 유지)</li>
+<li>요약 표시: SpeakQuest 완료 시 모든 축적된 평가 결과를 다시 표시</li>
+<li>결과 초기화: 표시 후 다음 퀘스트를 위해 배열 클리어</li>
 </ul>
 </li>
 </ol>
-<p><strong>문제 해결 요약</strong>:</p>
-<ul>
-<li>❌ 클라이언트가 임의의 액터를 소유자로 지정 가능 → ✅ 서버 Validation으로 차단</li>
-<li>❌ 거리 밖 오브젝트 픽업/훅 가능 → ✅ 서버 기준 거리 재검증</li>
-<li>❌ 여러 플레이어가 같은 Luggage 동시 소유 → ✅ 중복 소유권 방지</li>
-<li>❌ bIsPickedUp 미복제로 시스템 간 상태 불일치 → ✅ 복제 및 RepNotify 동기화</li>
-<li>❌ 물리 속도 덮어쓰기로 위치 스냅 발생 → ✅ Force 기반 자연스러운 이동</li>
-<li>❌ 클라이언트/서버 모두 물리 이동 처리 → ✅ 서버 전용 처리로 충돌 제거</li>
-</ul>
 <h3 id="commit-정보">Commit 정보</h3>
 <p><strong>Summary (EN)</strong>:
-fix: secure RPC for Luggage interactions with validation, replication, and physics improvements</p>
+feat: implement SpeakQuest evaluation result display system</p>
 <p><strong>세부 내역</strong>:</p>
 <ol>
-<li><p>"InteractableComponent: 픽업/드롭 RPC 보안 강화"</p>
+<li><p>"Add evaluation result tracking in PlayerState"</p>
 <ul>
-<li>bIsPickedUp 복제 추가로 클라이언트 간 상태 동기화</li>
-<li>Server_PickUp/Drop에 WithValidation 추가 (거리, 소유권, 중복 검증)</li>
-<li>OnRep_IsPickedUp으로 Outline/Widget 자동 동기화</li>
+<li>speakEvaluationResults 배열 추가 (Replicated)</li>
+<li>Server_AddSpeakEvaluationResult RPC 구현</li>
 </ul>
 </li>
-<li><p>"Luggage: 중복 훅 방지 플래그 추가"</p>
+<li><p>"Implement SpeakQuest workflow in AWheatly"</p>
 <ul>
-<li>bIsBeingHooked, HookedBy 플래그 추가 및 복제</li>
-<li>OnRep_IsBeingHooked으로 시각적 피드백 제공</li>
-<li>여러 플레이어의 동시 훅 시도 차단</li>
+<li>BeginSpeakQuest: RequestSpeakScenario API 호출, 질문 데이터 로드</li>
+<li>CompleteSpeakQuest: 축적된 평가 결과를 UToastWidget으로 표시</li>
+<li>턴 기반 NPC 접근 제어 (bIsBusy 플래그)</li>
 </ul>
 </li>
-<li><p>"UHookSystem: 서버 라인트레이스 재검증 및 중복 훅 방지"</p>
+<li><p>"Integrate UToastWidget for evaluation display"</p>
 <ul>
-<li>PerformServerLineTrace 함수로 클라이언트 HitResult 재검증</li>
-<li>ServerTryHook에서 거리, 픽업 상태, 중복 훅 검증 추가</li>
-<li>ReleaseHook에서 훅 플래그 명시적 해제</li>
+<li>UBroadcastManager를 통한 SendTutorMessage/SendAddItemToBoxList 호출</li>
+<li>FResponseSpeakingJudes::GetResultStatData()를 활용한 데이터 변환</li>
 </ul>
 </li>
-<li><p>"ConveyorBelt: 서버 전용 Tick 및 Force 기반 물리 이동"</p>
+<li><p>"Connect VoiceConversationSystem to PlayerState"</p>
 <ul>
-<li>HasAuthority() 체크로 서버에서만 이동 처리</li>
-<li>SetPhysicsLinearVelocity → AddForce 변경 (위치 스냅 제거)</li>
-<li>bIsPickedUp, bIsBeingHooked 상태 확인하여 이동 무시</li>
+<li>OnResponseSpeakingsJudges에서 Server_AddSpeakEvaluationResult 호출</li>
+<li>평가 결과 서버 저장 및 복제</li>
 </ul>
 </li>
-<li><p>"docs: Luggage RPC 개선 가이드 문서 작성"</p>
+<li><p>"Align network data structures with actual API"</p>
 <ul>
-<li>문제 진단, 코드 분석, 단계별 구현 가이드 포함</li>
-<li>테스트 시나리오 및 우선순위 제시 (32KB)</li>
+<li>FSpeakStageQuestion 구조 변경 (kor/eng/pronunciation/voice_data)</li>
+<li>FResponseSpeakScenario audio 배열 파싱</li>
+<li>미사용 구조체 제거</li>
+</ul>
+</li>
+</ol>
+<h3 id="기술적-특징">기술적 특징</h3>
+<ul>
+<li><strong>서버 권한 관리</strong>: HasAuthority() 검증으로 모든 SpeakQuest 로직은 서버에서만 실행</li>
+<li><strong>네트워크 복제</strong>: DOREPLIFETIME으로 speakEvaluationResults, speakQuestData 복제</li>
+<li><strong>턴 기반 멀티플레이</strong>: bIsBusy 플래그로 동시 접근 방지, busyPlayerName으로 현재 사용자 표시</li>
+<li><strong>델리게이트 기반 비동기 처리</strong>: FResponseSpeakScenarioDelegate, FResponseSpeakingJudesDelegate 활용</li>
+<li><strong>브로드캐스트 패턴</strong>: UBroadcastManager를 통한 느슨한 결합</li>
+</ul>
+<hr></hr>
+<h2 id="klingo-speakquest-개발-phase-진행-상황">KLingo SpeakQuest 개발 Phase 진행 상황</h2>
+<blockquote>
+<p>참고: <code>Documents/DevLog/AgentLog/KLingo_Speak_Prompt.md</code></p>
+</blockquote>
+<h3 id="phase-1-기반-구조-high-priority---✅-부분-완료">Phase 1: 기반 구조 (High Priority) - ✅ <strong>부분 완료</strong></h3>
+<p><strong>완료 항목</strong>:</p>
+<ul>
+<li>✅ <code>FSpeakStageQuestion</code> 구조체 정의 (실제 API 형식 반영)</li>
+<li>✅ <code>AWheatly</code> (NPC) InteractComponent 기반 상호작용 구현</li>
+<li>✅ <code>ALingoPlayerState</code> SpeakQuest 데이터 추가<ul>
+<li><code>SpeakScenarioData</code>: FResponseSpeakScenario (질문 데이터)</li>
+<li><code>CurSpeakQuestStep</code>: 현재 진행 단계</li>
+<li><code>SpeakJudesResults</code>: 평가 결과 배열</li>
+</ul>
+</li>
+</ul>
+<p><strong>미완료 항목</strong>:</p>
+<ul>
+<li>⬜ <code>ASpeakStageActor</code> 턴 기반 대화 관리자 구현<ul>
+<li>플레이어 큐 관리 (<code>PlayerQueue</code>)</li>
+<li>턴 전환 로직 (<code>AdvanceToNextPlayer</code>)</li>
+<li>현재 발화자 추적 (<code>GetCurrentSpeaker</code>)</li>
+<li>대화 참가 요청 처리 (<code>RequestJoinConversation</code>)</li>
+</ul>
+</li>
+</ul>
+<h3 id="phase-2-네트워크-통합-high-priority---✅-완료">Phase 2: 네트워크 통합 (High Priority) - ✅ <strong>완료</strong></h3>
+<ul>
+<li>✅ <code>FResponseSpeakScenario</code> 응답 구조체 추가 및 파싱</li>
+<li>✅ <code>FResponseSpeakingJudes</code> 평가 결과 구조체 활용</li>
+<li>✅ <code>UKLingoNetworkSystem::RequestSpeakScenario</code> API 연동</li>
+<li>✅ <code>UKLingoNetworkSystem::RequestSpeakingJudges</code> 기존 시스템 활용</li>
+<li>✅ 네트워크 로깅 통합 (PRINTLOG, NETWORK_LOG)</li>
+<li>✅ Server RPC: <code>Server_AddSpeakJudes</code> 평가 결과 저장</li>
+</ul>
+<h3 id="phase-3-음성-시스템-medium-priority---🔄-진행-중">Phase 3: 음성 시스템 (Medium Priority) - 🔄 <strong>진행 중</strong></h3>
+<p><strong>완료 항목</strong>:</p>
+<ul>
+<li>✅ <code>UVoiceConversationSystem::OnResponseSpeakingsJudges</code> 평가 결과 처리</li>
+<li>✅ 평가 결과를 PlayerState에 저장하는 로직 연동</li>
+<li>✅ 기존 녹음 시스템 (<code>IA_Record</code>) 활용</li>
+</ul>
+<p><strong>미완료 항목</strong>:</p>
+<ul>
+<li>⬜ <code>APlayerControl</code> 녹음 입력 핸들러 확장<ul>
+<li><code>OnRecordPressed</code>/<code>OnRecordReleased</code> SpeakQuest 모드 처리</li>
+<li>녹음 시작/종료 시 UI 업데이트</li>
+</ul>
+</li>
+<li>⬜ 질문 음성 재생 로직 (<code>PlayQuestionAudio</code>)</li>
+<li>⬜ STT 통합 및 음성 데이터 제출 (<code>ServerRPC_SubmitAnswer</code>)</li>
+</ul>
+<h3 id="phase-4-ui-및-피드백-medium-priority---🔄-진행-중">Phase 4: UI 및 피드백 (Medium Priority) - 🔄 <strong>진행 중</strong></h3>
+<p><strong>완료 항목</strong>:</p>
+<ul>
+<li>✅ <code>UToastWidget</code> 연동 (UBroadcastManager 활용)<ul>
+<li><code>SendTutorMessage</code>: 피드백 메시지 표시</li>
+<li><code>SendAddItemToBoxList</code>: 평가 점수 아이템 박스 표시</li>
+</ul>
+</li>
+<li>✅ <code>AWheatly::CompleteSpeakQuest</code> 완료 화면 표시</li>
+</ul>
+<p><strong>미완료 항목</strong>:</p>
+<ul>
+<li>⬜ <code>UMainWidget</code> SpeakQuest 전용 UI 추가<ul>
+<li>질문 텍스트 표시 (<code>ShowSpeakQuestion</code>)</li>
+<li>진행률 표시 위젯</li>
+<li>녹음 상태 인디케이터</li>
+</ul>
+</li>
+<li>⬜ 최종 결과 화면 (<code>ShowSpeakQuestResult</code>)</li>
+<li>⬜ 질문 다시 듣기 버튼 (<code>IA_Replay</code> InputAction)</li>
+<li>⬜ 답변 제출 후 피드백 표시 (<code>ClientRPC_ShowAnswerFeedback</code>)</li>
+</ul>
+<h3 id="phase-5-테스트-및-최적화-low-priority---⬜-미착수">Phase 5: 테스트 및 최적화 (Low Priority) - ⬜ <strong>미착수</strong></h3>
+<ul>
+<li>⬜ 단일 플레이어 테스트</li>
+<li>⬜ 멀티플레이어 턴 전환 검증</li>
+<li>⬜ 네트워크 지연 시뮬레이션</li>
+<li>⬜ 디버그 시각화<ul>
+<li>NPC 시선 처리 (<code>DrawDebugLine</code>)</li>
+<li>배제 영역 시각화 (<code>exclusionSphere</code>)</li>
+</ul>
+</li>
+<li>⬜ 성능 최적화</li>
+</ul>
+<hr></hr>
+<h2 id="다음-작업-우선순위">다음 작업 우선순위</h2>
+<h3 id="🔥-high-priority-즉시-진행">🔥 High Priority (즉시 진행)</h3>
+<ol>
+<li><p><strong>ASpeakStageActor 턴 기반 아키텍처 구현</strong></p>
+<ul>
+<li><code>KLingo_SpeakScenario.md</code> 명세 준수</li>
+<li>PlayerQueue 관리</li>
+<li>턴 전환 로직</li>
+<li>AWheatly와 연동</li>
+</ul>
+</li>
+<li><p><strong>음성 녹음 및 답변 제출 로직</strong></p>
+<ul>
+<li><code>APlayerControl::ServerRPC_SubmitAnswer</code> 구현</li>
+<li><code>VoiceConversationSystem</code> 녹음 데이터 가져오기</li>
+<li>RequestSpeakingJudges API 호출</li>
+</ul>
+</li>
+</ol>
+<h3 id="📌-medium-priority-다음-단계">📌 Medium Priority (다음 단계)</h3>
+<ol>
+<li><p><strong>질문 음성 재생 시스템</strong></p>
+<ul>
+<li><code>VoiceConversationSystem::PlayQuestionAudio</code> 확장</li>
+<li>voice_data Base64 디코딩 및 재생</li>
+</ul>
+</li>
+<li><p><strong>SpeakQuest 전용 UI 구현</strong></p>
+<ul>
+<li><code>UMainWidget::ShowSpeakQuestion</code> 추가</li>
+<li>진행률 및 녹음 상태 표시</li>
+</ul>
+</li>
+</ol>
+<h3 id="🔹-low-priority-추후-진행">🔹 Low Priority (추후 진행)</h3>
+<ol>
+<li><strong>테스트 및 디버깅</strong><ul>
+<li>멀티플레이어 턴 전환 테스트</li>
+<li>네트워크 동기화 검증</li>
+</ul>
+</li>
+</ol>
+<hr></hr>
+<h2 id="참고-문서">참고 문서</h2>
+<ul>
+<li><strong>개발 명세</strong>: <code>Documents/DevLog/AgentLog/KLingo_Speak_Prompt.md</code></li>
+<li><strong>아키텍처</strong>: <code>Documents/DevLog/AgentLog/KLingo_SpeakScenario.md</code></li>
+<li><strong>코딩 컨벤션</strong>: <code>AgentRule/Project/Onepiece/CODING_CONVENTIONS.md</code></li>
+</ul>
+<hr></hr>
+<h2 id="compact-log-2">Compact Log 2</h2>
+<ul>
+<li>20251212 15:30</li>
+</ul>
+<h3 id="speakquest-아키텍처-리팩토링-및-버그-수정">SpeakQuest 아키텍처 리팩토링 및 버그 수정</h3>
+<p>요구사항 변경(플레이어 큐 불필요)에 따라 SpeakQuest의 아키텍처를 '단일 사용자 모델'로 리팩토링하고, 관련 버그를 수정했습니다.</p>
+<p><strong>변경 파일</strong>:</p>
+<ul>
+<li><code>Source/Onepiece/Game/Public/ASpeakStageActor.h</code>: 큐(Queue) 관련 로직 제거 및 함수명/변수명 컨벤션 수정</li>
+<li><code>Source/Onepiece/Game/Private/ASpeakStageActor.cpp</code>: 단일 사용자 모델에 맞게 로직 단순화 및 컨벤션 수정</li>
+<li><code>Source/Onepiece/Character/Public/AWheatly.h</code>: <code>ASpeakStageActor</code>로 상태 관리를 이전함에 따라 불필요해진 상태 변수 제거</li>
+<li><code>Source/Onepiece/Character/Private/AWheatly.cpp</code>: <code>ASpeakStageActor</code>를 유일한 정보 소스로 사용하도록 로직 변경 및 <code>Tick</code>을 이용한 시각적 상태 동기화</li>
+<li><code>Source/Onepiece/Voice/Private/UVoiceConversationSystem.cpp</code>: 녹음 시작 시, 퀘스트 상태에 따른 사용자 피드백 메시지 개선</li>
+</ul>
+<p><strong>주요 작업</strong>:</p>
+<ol>
+<li><p><strong>SpeakQuest 아키텍처 단순화</strong></p>
+<ul>
+<li><code>ASpeakStageActor</code>에서 플레이어 큐(Queue) 시스템을 제거하고, 한 번에 한 명의 플레이어만 관리하는 'Busy/Available' 모델로 변경했습니다.</li>
+<li><code>PlayStart</code> -&gt; <code>StartStageForPlayer</code>, <code>AdvanceToNextPlayer</code> -&gt; <code>EndStage</code>로 함수를 변경하여 역할을 명확히 했습니다.</li>
+</ul>
+</li>
+<li><p><strong>상태 관리 책임 이전</strong></p>
+<ul>
+<li><code>AWheatly</code>가 자체적으로 관리하던 <code>bIsBusy</code>, <code>busyPlayerName</code> 등의 중복 상태 변수를 모두 제거했습니다.</li>
+<li>이제 <code>AWheatly</code>는 <code>ASpeakStageActor</code>의 <code>GetCurrentSpeaker()</code>를 유일한 정보 소스(Single Source of Truth)로 사용하여 퀘스트의 진행 상태를 확인합니다.</li>
+</ul>
+</li>
+<li><p><strong>버그 수정 및 사용자 피드백 개선</strong></p>
+<ul>
+<li>퀘스트가 시작되지 않은 상태에서 녹음을 시도하면 <code>CurrentSpeaker</code>가 <code>nullptr</code>이 되어 진행이 막히던 최초 버그를 해결했습니다.</li>
+<li><code>UVoiceConversationSystem</code>에서 녹음이 불가능할 경우, "NPC와 대화하여 심사를 시작하세요"와 같이 명확한 안내 메시지를 표시하도록 개선했습니다.</li>
+</ul>
+</li>
+<li><p><strong>코딩 컨벤션 적용</strong></p>
+<ul>
+<li><code>ASpeakStageActor</code>의 변수명을 camelCase로, RPC 함수명을 <code>ServerRPC_</code> 접두사 규칙에 맞게 수정하여 코드 품질을 향상시켰습니다.</li>
+</ul>
+</li>
+</ol>
+<h3 id="commit-정보">Commit 정보</h3>
+<p><strong>Summary (EN)</strong>:
+refactor: simplify SpeakQuest to single-user model and fix state management</p>
+<p><strong>세부 내역</strong>:</p>
+<ol>
+<li><p>"Refactor ASpeakStageActor to single-user model"</p>
+<ul>
+<li>Removed PlayerQueue and related logic.</li>
+<li>Renamed <code>PlayStart</code> to <code>StartStageForPlayer</code> for clarity.</li>
+<li>Simplified stage completion logic with <code>EndStage</code> function.</li>
+<li>Applied coding conventions (camelCase, RPC prefixes).</li>
+</ul>
+</li>
+<li><p>"Centralize quest state management in ASpeakStageActor"</p>
+<ul>
+<li>Removed redundant state variables (<code>bIsBusy</code>, <code>busyPlayerName</code>) from <code>AWheatly</code>.</li>
+<li><code>AWheatly</code> now relies on <code>ASpeakStageActor::GetCurrentSpeaker()</code> as the single source of truth.</li>
+<li>Visual state (eye color) in <code>AWheatly</code> is now synced via <code>Tick</code>.</li>
+</ul>
+</li>
+<li><p>"Improve user feedback for voice recording"</p>
+<ul>
+<li>Updated <code>UVoiceConversationSystem</code> to show a clear message ("Start by talking to the NPC") when trying to record before the quest has started.</li>
 </ul>
 </li>
 </ol>
 <h3 id="next-to-do">Next To Do</h3>
 <ol>
-<li><p><strong>통합 테스트 수행</strong></p>
+<li><strong>데이터 모델 일관성 확보</strong>: <code>ASpeakStageActor</code>가 <code>TArray<fstring></fstring></code> 대신 <code>FSpeakStageQuestion</code> 구조체를 사용하도록 리팩토링.</li>
+<li><strong>네트워크 연동</strong>: <code>ASpeakStageActor</code>가 <code>CreateTestScenarioData</code> 대신 <code>UKLingoNetworkSystem</code>을 통해 실제 퀘스트 데이터를 받아오도록 수정.</li>
+<li><strong>UI 구현</strong>: <code>UMainWidget</code>에 SpeakQuest 전용 UI(질문 표시, 진행 상황 등) 추가.</li>
+</ol>
+<hr></hr>
+<h2 id="compact-log-3">Compact Log 3</h2>
 <ul>
-<li>2인 멀티플레이어 환경에서 동시 픽업/훅 시도 테스트</li>
-<li>픽업 → 컨베이어 → 드롭 체인 테스트</li>
-<li>컨베이어 → 훅 간섭 테스트</li>
-<li>거리/권한 치트 시도 테스트</li>
+<li>20251212 20:54</li>
+</ul>
+<h3 id="speakquest-데이터-모델-통합-및-음성-재생-완성">SpeakQuest 데이터 모델 통합 및 음성 재생 완성</h3>
+<p>Compact Log 2의 Next To Do #1, #2를 완료하고, SpeakQuest의 핵심 기능을 완성했습니다.</p>
+<p><strong>변경 파일</strong>:</p>
+<ul>
+<li><code>Source/Onepiece/Game/Public/ASpeakStageActor.h</code>: 하드코딩된 질문 데이터 제거 및 함수 시그니처 변경</li>
+<li><code>Source/Onepiece/Game/Private/ASpeakStageActor.cpp</code>: PlayerState 기반 데이터 모델로 전면 리팩토링, 음성 재생 로직 추가</li>
+</ul>
+<p><strong>주요 작업</strong>:</p>
+<ol>
+<li><p><strong>데이터 모델 일관성 확보 (Next To Do #1)</strong></p>
+<ul>
+<li><code>TArray<fstring> questions</fstring></code> 제거</li>
+<li><code>TArray<egamesoundtype> questions_Voice</egamesoundtype></code> 제거</li>
+<li><code>CreateTestScenarioData()</code> 함수 완전 제거</li>
+<li>모든 질문 데이터를 PlayerState의 <code>SpeakScenarioData.speak_quest_data</code> (FSpeakStageQuestion 배열)에서 동적으로 가져오도록 변경</li>
+<li><code>GetCurrentQuestion()</code>, <code>GetTotalQuestions()</code>, <code>AdvanceStep()</code>, <code>ShowCurrentQuestionToast()</code> 모두 PlayerState 기반으로 리팩토링</li>
 </ul>
 </li>
-<li><p><strong>물리 파라미터 튜닝</strong> (필요 시)</p>
+<li><p><strong>네트워크 연동 완료 (Next To Do #2)</strong></p>
 <ul>
-<li>ConveyorBelt 힘 크기 조정 (현재: MoveSpeed <em> Mass </em> 10.0f)</li>
-<li>Luggage 질량 확인 및 최적화</li>
+<li>ASpeakStageActor는 이제 PlayerState의 데이터만 사용</li>
+<li>AWheatly의 <code>RequestSpeakScenario</code> API 호출로 받아온 네트워크 데이터가 유일한 정보 소스(Single Source of Truth)</li>
+<li>테스트 데이터 의존성 완전 제거</li>
 </ul>
 </li>
-<li><p><strong>디버그 로그 정리</strong> (배포 전)</p>
+<li><p><strong>다음 질문 음성 재생 로직 추가</strong></p>
 <ul>
-<li>PRINTLOG 메시지 정리 또는 조건부 활성화</li>
+<li><code>AdvanceStep()</code>에서 다음 질문으로 진행 시 자동으로 <code>PlayTTSAudio()</code> 호출</li>
+<li>currentSpeaker의 Pawn을 통해 APlayerActor에 접근하여 음성 재생 요청</li>
+<li>FSpeakStageQuestion의 voice_data (Base64 인코딩된 음성 데이터) 사용</li>
 </ul>
 </li>
-<li><p><strong>문서화 업데이트</strong></p>
+<li><p><strong>전체 워크플로우 완성</strong></p>
 <ul>
-<li>Doxygen 주석 추가 (필요 시)</li>
-<li>상호작용 상태 흐름도 작성 (권한/플래그/RepNotify)</li>
+<li>✅ NPC 상호작용 → API에서 질문 데이터 로드 (AWheatly)</li>
+<li>✅ 첫 질문 음성 재생 (AWheatly::OnResponseSpeakScenario)</li>
+<li>✅ 플레이어 녹음 및 답변 제출 (UVoiceConversationSystem)</li>
+<li>✅ 평가 결과 표시 및 저장 (UVoiceConversationSystem::OnResponseSpeakingsJudges)</li>
+<li>✅ <strong>다음 질문으로 자동 진행 + 음성 재생</strong> (ASpeakStageActor::AdvanceStep) ← <strong>신규</strong></li>
+<li>✅ 모든 질문 완료 시 종료 처리 (ASpeakStageActor::EndStage)</li>
 </ul>
 </li>
 </ol>
+<h3 id="기술적-세부사항">기술적 세부사항</h3>
+<p><strong>데이터 흐름</strong>:</p>
+<pre><code>1. AWheatly::RequestSpeakScenario
+   → API 호출
+   → PlayerState-&gt;SpeakScenarioData 저장
+
+2. ASpeakStageActor::StartStageForPlayer
+   → currentSpeaker 설정
+   → ShowCurrentQuestionToast (첫 질문)
+
+3. AWheatly::OnResponseSpeakScenario
+   → PlayTTSAudio(speak_quest_data[0].voice_data) (첫 질문 음성)
+
+4. 플레이어 녹음 → 평가 → ServerRPC_NotifyAnswerComplete
+
+5. ASpeakStageActor::AdvanceStep
+   → currentStepIndex++
+   → PlayTTSAudio(speak_quest_data[currentStepIndex].voice_data) (다음 질문 음성)
+   → ShowCurrentQuestionToast (다음 질문 Toast)
+</code></pre><p><strong>PlayerState 의존성</strong>:</p>
+<ul>
+<li><code>GetCurrentQuestion()</code>: <code>PS-&gt;SpeakScenarioData.speak_quest_data[currentStepIndex].GetQuestionMessage()</code></li>
+<li><code>GetTotalQuestions()</code>: <code>PS-&gt;SpeakScenarioData.speak_quest_data.Num()</code></li>
+<li><code>AdvanceStep()</code>: <code>PS-&gt;SpeakScenarioData.speak_quest_data.IsValidIndex(currentStepIndex)</code></li>
+<li><code>ShowCurrentQuestionToast()</code>: 전체 질문 수를 PlayerState에서 동적으로 계산</li>
+</ul>
+<h3 id="commit-정보">Commit 정보</h3>
+<p><strong>Summary (EN)</strong>:
+refactor: integrate PlayerState data model and complete audio playback for SpeakQuest</p>
+<p><strong>세부 내역</strong>:</p>
+<ol>
+<li><p>"Remove hardcoded test data from ASpeakStageActor"</p>
+<ul>
+<li>Removed <code>TArray<fstring> questions</fstring></code>, <code>TArray<egamesoundtype> questions_Voice</egamesoundtype></code></li>
+<li>Removed <code>CreateTestScenarioData()</code> function</li>
+<li>Changed <code>BeginPlay()</code> to skip test data generation</li>
+</ul>
+</li>
+<li><p>"Refactor all data access to use PlayerState"</p>
+<ul>
+<li><code>GetCurrentQuestion()</code> now retrieves data from <code>PlayerState-&gt;SpeakScenarioData</code></li>
+<li><code>GetTotalQuestions()</code> dynamically calculates from PlayerState</li>
+<li><code>AdvanceStep()</code> and <code>ShowCurrentQuestionToast()</code> use PlayerState as single source of truth</li>
+</ul>
+</li>
+<li><p>"Add automatic audio playback for next questions"</p>
+<ul>
+<li><code>AdvanceStep()</code> now calls <code>PlayTTSAudio()</code> with current question's voice_data</li>
+<li>Audio playback triggered for all questions (not just the first one)</li>
+<li>Added include for <code>APlayerActor.h</code></li>
+</ul>
+</li>
+<li><p>"Complete end-to-end SpeakQuest workflow"</p>
+<ul>
+<li>All questions now have proper audio playback</li>
+<li>Seamless progression from question to question</li>
+<li>Network data integration complete</li>
+</ul>
+</li>
+</ol>
+<h3 id="검증-완료-항목">검증 완료 항목</h3>
+<p><strong>Phase 3: 음성 시스템</strong> - ✅ <strong>완료</strong></p>
+<ul>
+<li>✅ 첫 질문 음성 재생 (AWheatly)</li>
+<li>✅ 다음 질문 음성 재생 (ASpeakStageActor::AdvanceStep)</li>
+<li>✅ 음성 녹음 시스템 (UVoiceConversationSystem::StartRecording)</li>
+<li>✅ 턴 기반 녹음 제어 (StartRecording의 턴 체크 로직)</li>
+<li>✅ STT 통합 (UVoiceConversationSystem::StopRecording → RequestSpeakingJudges)</li>
+<li>✅ 평가 결과 처리 (OnResponseSpeakingsJudges)</li>
+</ul>
+<p><strong>남은 작업 (선택적)</strong>:</p>
+<ul>
+<li>⬜ UMainWidget SpeakQuest 전용 UI (현재는 Toast로 충분히 작동)</li>
+<li>⬜ 질문 다시 듣기 버튼 (IA_Replay InputAction)</li>
+<li>⬜ 진행률 표시 위젯 (선택적 개선사항)</li>
+</ul>
+<h3 id="결론">결론</h3>
+<p>SpeakQuest의 핵심 기능(네트워크 데이터 연동, 음성 재생, 녹음 및 평가)이 모두 완성되었습니다. PlayerState를 Single Source of Truth로 사용하는 깔끔한 아키텍처로 리팩토링되었으며, 전체 워크플로우가 원활하게 동작합니다.</p>
  <link rel="stylesheet" type="text/css" href="https://storage.googleapis.com/app.klipse.tech/css/codemirror.css"></link> <script>     window.klipse_settings = {         selector: ".language-klipse, .lang-eval-clojure",         selector_eval_js: ".lang-eval-js",         selector_eval_python_client: ".lang-eval-python",         selector_eval_php: ".lang-eval-php",         selector_eval_scheme: ".lang-eval-scheme",         selector_eval_ruby: ".lang-eval-ruby",         selector_reagent: ".lang-reagent",        selector_google_charts: ".lang-google-chart",        selector_es2017: ".lang-eval-es2017",        selector_jsx: ".lang-eval-jsx",        selector_transpile_jsx: ".lang-transpile-jsx",        selector_render_jsx: ".lang-render-jsx",        selector_react: ".lang-react",        selector_eval_markdown: ".lang-render-markdown",        selector_eval_lambdaway: ".lang-render-lambdaway",        selector_eval_cpp: ".lang-eval-cpp",        selector_eval_html: ".lang-render-html",        selector_sql: ".lang-eval-sql",        selector_brainfuck: "lang-eval-brainfuck",        selector_js: ".lang-transpile-cljs"    }; </script> <script src="https://storage.googleapis.com/app.klipse.tech/plugin/js/klipse_plugin.js"></script>
                                 
                                 </section>
@@ -1729,12 +2014,12 @@ fix: secure RPC for Luggage interactions with validation, replication, and physi
 
             
                 
-                <a href="251202.html" class="navigation navigation-prev " aria-label="Previous page: dopple - 2025-12-02">
+                <a href="../../../" class="navigation navigation-prev " aria-label="Previous page: 시작하기">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="251123.html" class="navigation navigation-next " aria-label="Next page: dopple - 2025-11-23">
+                <a href="251205.html" class="navigation navigation-next " aria-label="Next page: dopple - 2025-12-05">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1745,7 +2030,7 @@ fix: secure RPC for Luggage interactions with validation, replication, and physi
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"dopple - 2025-11-30","level":"3.4","depth":1,"next":{"title":"dopple - 2025-11-23","level":"3.5","depth":1,"path":"DevLog/AgentLog/dopple/251123.md","ref":"DevLog/AgentLog/dopple/251123.md","articles":[]},"previous":{"title":"dopple - 2025-12-02","level":"3.3","depth":1,"path":"DevLog/AgentLog/dopple/251202.md","ref":"DevLog/AgentLog/dopple/251202.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-comscore","github","collapsible-menu","back-to-top-button","search-plus","expandable-chapters-small","page-toc-button","-anchor-navigation-ex","honkit-plugin-mermaid","code","alerts","emphasize","klipse","-lunr","-search","-sharing"],"root":".","styles":{"website":"styles/website.css"},"pluginsConfig":{"collapsible-menu":{},"emphasize":{"style":"yellow"},"github":{"url":"https://github.com/doppleddiggong/Onepiece"},"code":{"copyButtons":true},"honkit-plugin-mermaid":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"printLog":false,"multipleH1":false,"mode":"float","float":{"showLevelIcon":false,"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right"},"pageTop":{"showLevelIcon":false,"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right"}},"theme-comscore":{"showLevel":true},"page-toc-button":{"maxTocDepth":3,"minTocSize":2},"back-to-top-button":{},"alerts":{"info":{"label":"정보","icon":"fa fa-info-circle","className":"info"},"warning":{"label":"주의","icon":"fa fa-exclamation-triangle","className":"warning"},"danger":{"label":"위험","icon":"fa fa-times-circle","className":"danger"},"tip":{"label":"팁","icon":"fa fa-lightbulb-o","className":"tip"}},"expandable-chapters-small":{},"klipse":{"myConfigKey":"it's the default value"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"search-plus":{}},"theme":"default","author":"DoppledDiggong Team","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Onepiece Development Documentation","language":"ko","links":{"sidebar":{"GitHub Repository":"https://github.com/doppleddiggong/Onepiece","Doxygen API Docs":"https://doppleddiggong.github.io/Onepiece/doxygen/"}},"gitbook":"3.2.3","description":"Onepiece 프로젝트 개발 문서 - DevLog, Planning, System Review"},"file":{"path":"DevLog/AgentLog/dopple/251130.md","mtime":"2025-12-15T00:10:32.323Z","type":"markdown"},"gitbook":{"version":"6.1.4","time":"2025-12-15T00:11:03.301Z"},"basePath":"../../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"dopple - 2025-12-12","level":"3.1","depth":1,"next":{"title":"dopple - 2025-12-05","level":"3.2","depth":1,"path":"DevLog/AgentLog/dopple/251205.md","ref":"DevLog/AgentLog/dopple/251205.md","articles":[]},"previous":{"title":"시작하기","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-comscore","github","collapsible-menu","back-to-top-button","search-plus","expandable-chapters-small","page-toc-button","-anchor-navigation-ex","honkit-plugin-mermaid","code","alerts","emphasize","klipse","-lunr","-search","-sharing"],"root":".","styles":{"website":"styles/website.css"},"pluginsConfig":{"collapsible-menu":{},"emphasize":{"style":"yellow"},"github":{"url":"https://github.com/doppleddiggong/Onepiece"},"code":{"copyButtons":true},"honkit-plugin-mermaid":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false,"associatedWithSummary":true,"printLog":false,"multipleH1":false,"mode":"float","float":{"showLevelIcon":false,"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right"},"pageTop":{"showLevelIcon":false,"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right"}},"theme-comscore":{"showLevel":true},"page-toc-button":{"maxTocDepth":3,"minTocSize":2},"back-to-top-button":{},"alerts":{"info":{"label":"정보","icon":"fa fa-info-circle","className":"info"},"warning":{"label":"주의","icon":"fa fa-exclamation-triangle","className":"warning"},"danger":{"label":"위험","icon":"fa fa-times-circle","className":"danger"},"tip":{"label":"팁","icon":"fa fa-lightbulb-o","className":"tip"}},"expandable-chapters-small":{},"klipse":{"myConfigKey":"it's the default value"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"search-plus":{}},"theme":"default","author":"DoppledDiggong Team","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Onepiece Development Documentation","language":"ko","links":{"sidebar":{"GitHub Repository":"https://github.com/doppleddiggong/Onepiece","Doxygen API Docs":"https://doppleddiggong.github.io/Onepiece/doxygen/"}},"gitbook":"3.2.3","description":"Onepiece 프로젝트 개발 문서 - DevLog, Planning, System Review"},"file":{"path":"DevLog/AgentLog/dopple/251212.md","mtime":"2025-12-15T00:10:32.324Z","type":"markdown"},"gitbook":{"version":"6.1.4","time":"2025-12-15T00:11:03.301Z"},"basePath":"../../..","book":{"language":""}});
         });
     </script>
 </div>
