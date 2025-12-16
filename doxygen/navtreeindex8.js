@@ -1,5 +1,17 @@
 var NAVTREEINDEX8 =
 {
+"classUChatWidget.html#a39d12d63cf59f02de5aaff64ca84d3a7":[2,0,135,1],
+"classUChatWidget.html#a4604508b0b8c80fd6320bc73b4d797aa":[2,0,135,3],
+"classUChatWidget.html#ac728c3ed29723e99b7f00c4951077141":[2,0,135,5],
+"classUChatWidget.html#ad41deeaf9fb5446ab2d733e9aa8f721b":[2,0,135,6],
+"classUChatWidget.html#afb0c436b74e098a516c7a9bb85e3ad1d":[2,0,135,4],
+"classUCircularProgressBar.html":[2,0,136],
+"classUCircularProgressBar.html#a05a5a504821e312ed98829ee1b6a5503":[2,0,136,16],
+"classUCircularProgressBar.html#a2db1aaedfa27de34a780794b107a78a7":[2,0,136,3],
+"classUCircularProgressBar.html#a46781af4386e3d123ae2f466d38f695b":[2,0,136,15],
+"classUCircularProgressBar.html#a4fc90bbb329fcf2ef62328d04da588a6":[2,0,136,4],
+"classUCircularProgressBar.html#a51f7d0b156fcbd470450e43c8497782d":[2,0,136,12],
+"classUCircularProgressBar.html#a6314c46654080a161aaa192ecffc2106":[2,0,136,1],
 "classUCircularProgressBar.html#a65165ac1f3f9289a4f58ec94a7e4af4c":[2,0,136,9],
 "classUCircularProgressBar.html#a7318a4fda9bd22249751fe65a6db4e79":[2,0,136,14],
 "classUCircularProgressBar.html#a99dec6c9e0c6b50ceabf3947a01238c3":[2,0,136,2],
@@ -237,17 +249,5 @@ var NAVTREEINDEX8 =
 "classUGameVFXManager.html#aca745efb451e8000491a3d262f15724b":[2,0,153,5],
 "classUHoverButton.html":[2,0,154],
 "classUHoverButton.html#a1544723a1b04d904272ef89100c4bbd3":[2,0,154,24],
-"classUHoverButton.html#a19f78749a7d5a5a7e7d1d26c3b84f9f1":[2,0,154,8],
-"classUHoverButton.html#a1a5c452e769ac14214b2972e89b3884b":[2,0,154,4],
-"classUHoverButton.html#a1f36219bdcdf8782f6068aef9117424a":[2,0,154,16],
-"classUHoverButton.html#a207ba0caf0e2abd24084eedf69c45205":[2,0,154,18],
-"classUHoverButton.html#a2398d637f677184b35d50f2df8aa7d8d":[2,0,154,27],
-"classUHoverButton.html#a2b4700bb4fb8d923c0500b086f33a39d":[2,0,154,15],
-"classUHoverButton.html#a2b872a22b40847892cff55e6020d609a":[2,0,154,9],
-"classUHoverButton.html#a3987f75658ea4c13d1fa521423e191d5":[2,0,154,11],
-"classUHoverButton.html#a5d9bb5d080854ab1ebd63aaaab3a0c37":[2,0,154,26],
-"classUHoverButton.html#a5e8eb5c34e7690eba3535bea7001e084":[2,0,154,28],
-"classUHoverButton.html#a6186a6dd9f13a49c8ecb643022737377":[2,0,154,3],
-"classUHoverButton.html#a63fdeb515c966c742a68fc61325111f2":[2,0,154,19],
-"classUHoverButton.html#a750463f69502a3e71e28c917c59950ea":[2,0,154,6]
+"classUHoverButton.html#a19f78749a7d5a5a7e7d1d26c3b84f9f1":[2,0,154,8]
 };
