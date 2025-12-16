@@ -9,6 +9,7 @@
 #include "GameLogging.h"
 #include "ANetworkBroadcastActor.h"
 #include "FoodCourtManager.h"
+#include "OrderKiosk.h"
 #include "Popup_Result.h"
 #include "UBroadcastManager.h"
 #include "UPopupManager.h"
@@ -149,8 +150,10 @@ void AFoodHolder::OnFoodBoxOverlapBegin(
 			FTimerHandle TimerHandle;
 			GetWorldTimerManager().SetTimer(TimerHandle, [this]
 			{
-				ADoor* Door = FindDoorToOpen();
-				if (Door) Door->OpenDoor();
+				// ADoor* Door = FindDoorToOpen();
+				// if (Door) Door->OpenDoor();
+
+				ANetworkBroadcastActor::Get(GetWorld())->SendDoorMessage(100, true, this);
 				
 				// 모든 클라이언트에 정답 인덱스와 함께 결과 팝업 표시
 				Multicast_ShowResultPopup(TryIdx);
@@ -171,6 +174,14 @@ void AFoodHolder::OnFoodBoxOverlapBegin(
 		
 				// Food 소거 (서버에서만, 자동 복제됨)
 				Food->Destroy();
+
+				TArray<AActor*> OrderKiosks;
+				UGameplayStatics::GetAllActorsOfClass(GetWorld(), AOrderKiosk::StaticClass(), OrderKiosks);
+				for (auto OrderKiosk : OrderKiosks)
+				{
+					if (AOrderKiosk* Kiosk = Cast<AOrderKiosk>(OrderKiosk))
+						Kiosk->IsOnceStopped = false;
+				}
 
 				// 새 FoodContainer 생성
 				AActor* FoodContainerManager = UGameplayStatics::GetActorOfClass(GetWorld(), AFoodCourtManager::StaticClass());

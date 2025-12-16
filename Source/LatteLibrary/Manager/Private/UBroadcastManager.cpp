@@ -90,3 +90,13 @@ void UBroadcastManager::SendTutorialStepChanged(APlayerController* Player, ETuto
 {
 	OnTutorialStepChanged.Broadcast(Player, NewStep);
 }
+
+void UBroadcastManager::SendShowTutorialMessage(const FText& Message)
+{
+	OnShowTutorialMessage.Broadcast(Message);
+}
+
+void UBroadcastManager::SendHideTutorialMessage()
+{
+	OnHideTutorialMessage.Broadcast();
+}

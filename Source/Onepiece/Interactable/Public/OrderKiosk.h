@@ -44,6 +44,10 @@ public:
 
 	UFUNCTION()
 	void BeginSubmitOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
+
+public:
+	// 한번 제출했었는지 여부
+	bool IsOnceStopped = false;
 	
 protected:
 	// 현재 감지중인 음식 큐브
@@ -52,8 +56,6 @@ protected:
 	
 	UPROPERTY(EditAnywhere)
 	EAnswerType InAnswerType = EAnswerType::None;
-	
-	bool IsOnceStopped = false;
 	
 	// 움직이거나 멈추게 할 컨베이어 리스트
 	// (맵에서 직접 선택)

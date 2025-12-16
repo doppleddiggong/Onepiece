@@ -24,6 +24,14 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Tutor")
 	void OnTutorMessage(const FText& NewMessage);
 
+	// 자동숨김 없는 버전
+	UFUNCTION(BlueprintCallable, Category = "Tutor")
+	void OnShowTutorialMessage(const FText& NewMessage);
+
+	// 숨기기
+	UFUNCTION(BlueprintCallable, Category = "Tutor")
+	void OnHideTutorialMessage();
+	
 	UFUNCTION(BlueprintCallable, Category = "Item")
 	void AddItemToBoxList(const TArray<FResultStatData>& InDataList);
 

@@ -46,6 +46,12 @@ public:
 private:
 	// 현 단계의 입력 조건 확인
 	void CheckInputConditions();
+	void OnInputConditionMet();
+
+	bool bInputConditionMet = false;
+	// 입력 후 다음 단계 전 딜레이
+	FTimerHandle AdvanceDelayTimerHandle;
+	
 	// 다음 단계 반환
 	ETutorialStep GetNextStep(ETutorialStep Step) const;
 	

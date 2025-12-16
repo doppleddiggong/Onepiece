@@ -30,11 +30,11 @@ void ALingoGameMode::PostLogin(APlayerController* NewPlayer)
 	Super::PostLogin(NewPlayer);
 
 	// 튜토리얼 시작
-	if (APlayerControl* PC = Cast<APlayerControl>(NewPlayer))
-	{
-		if (PC->IsLocalController() && PC->TutorialComponent)
-			PC->TutorialComponent->StartTutorial();
-	}
+	// if (APlayerControl* PC = Cast<APlayerControl>(NewPlayer))
+	// {
+	// 	if (PC->IsLocalController() && PC->TutorialComponent)
+	// 		PC->TutorialComponent->StartTutorial();
+	// }
 }
 
 void ALingoGameMode::UpdateQuestRole()

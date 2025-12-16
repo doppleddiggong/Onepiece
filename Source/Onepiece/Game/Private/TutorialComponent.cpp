@@ -65,6 +65,12 @@ void UTutorialComponent::StartTutorial()
 
 void UTutorialComponent::AdvanceToNextStep()
 {
+	// 현재 메시지 숨김
+	if (UBroadcastManager* BM = UBroadcastManager::Get(GetWorld()))
+	{
+		BM->SendHideTutorialMessage();
+	}
+	
 	ETutorialStep NextStep = GetNextStep(CurrentStep);
 	SetStep(NextStep);
 }
@@ -72,13 +78,14 @@ void UTutorialComponent::AdvanceToNextStep()
 void UTutorialComponent::SetStep(ETutorialStep NewStep)
 {
 	CurrentStep = NewStep;
+	bInputConditionMet = false; // 플래그 초기화
 
 	if (UBroadcastManager* BM = UBroadcastManager::Get(GetWorld()))
 	{
 		BM->SendTutorialStepChanged(OwnerController, NewStep);
 
 		FText TutorialMessage = GetTutorialMessage(NewStep);
-		BM->SendTutorMessage(TutorialMessage);
+		BM->SendShowTutorialMessage(TutorialMessage);
 	}
 
 	UE_LOG(LogTemp, Log, TEXT("Tutorial Step Changed: %d"), (int32)NewStep);
@@ -91,8 +98,8 @@ bool UTutorialComponent::IsTutorialCompleted() const
 
 void UTutorialComponent::CheckInputConditions()
 {
-	if (!OwnerController) return;
-
+	if (!OwnerController || bInputConditionMet) return;
+	
 	bool bConditionMet = false;
 
 	switch (CurrentStep)
@@ -122,8 +129,22 @@ void UTutorialComponent::CheckInputConditions()
 		break;
 	}
 
-	if (bConditionMet)
-		AdvanceToNextStep();
+	if (bConditionMet && !bInputConditionMet)
+	{
+		bInputConditionMet = true;
+		OnInputConditionMet();
+	}
+}
+
+void UTutorialComponent::OnInputConditionMet()
+{
+	if (AdvanceDelayTimerHandle.IsValid())
+	{
+		GetWorld()->GetTimerManager().ClearTimer(AdvanceDelayTimerHandle);
+	}
+
+	GetWorld()->GetTimerManager().SetTimer(AdvanceDelayTimerHandle, this,
+		&UTutorialComponent::AdvanceToNextStep, 2.f, false);
 }
 
 ETutorialStep UTutorialComponent::GetNextStep(ETutorialStep Step) const
@@ -145,10 +166,10 @@ ETutorialStep UTutorialComponent::GetNextStep(ETutorialStep Step) const
 bool UTutorialComponent::CheckMouseLookInput() const
 {
 	if (!OwnerController) return false;
-
+		
 	FRotator CurrentRotation = OwnerController->GetControlRotation();
 	FRotator DeltaRotation = CurrentRotation - LastControlRotation;
-
+	
 	// 회전 변화가 임계값 이상인지 확인 (Pitch = 상하, Yaw = 좌우)                                                                                                                                                              
 	return FMath::Abs(DeltaRotation.Pitch) > 0.5f || FMath::Abs(DeltaRotation.Yaw) > 0.5f;
 }
