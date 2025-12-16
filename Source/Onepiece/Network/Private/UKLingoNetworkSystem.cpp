@@ -1249,3 +1249,149 @@ void UKLingoNetworkSystem::RequestEvaluationResult(int32 RoomId, FResponseEvalua
 	AddNetworkWaitCount(1);
 	Request->ProcessRequest();
 }
+
+
+// =================================================================================
+// RequestChatAnswers (Text Question)
+// =================================================================================
+
+void UKLingoNetworkSystem::RequestChatQuestion(const FString& Context, const FString& Question, FResponseChatAnswersDelegate InDelegate)
+{
+	TMap<FString, FString> Query;
+	Query.Add(TEXT("question"), Question);
+	FString Url = NetworkConfig::GetFullUrlWithQuery(RequestAPI::chats_answers, Query);
+	auto Request = SetupHttpRequest(Url, NETWORK_POST);
+
+	// multipart/form-data로 context와 빈 audio 필드 전송
+	FHttpMultipartFormData Form;
+	Form.AddText(TEXT("context"), Context);
+	Form.AddText(TEXT("audio"), TEXT(""));
+	Form.SetupHttpRequest(Request);
+
+	LogNetwork(ENetworkLogType::Post, *Request->GetURL(), FString::Printf(TEXT("Context: %s, Question: %s"), *Context, *Question));
+
+	Request->OnProcessRequestComplete().BindLambda(
+		[WeakThis = TWeakObjectPtr<UKLingoNetworkSystem>(this), InDelegate](
+			FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSuccess)
+		{
+			if (!WeakThis.IsValid() || IsEngineExitRequested())
+				return;
+
+			WeakThis->AddNetworkWaitCount(-1);
+			FResponseChatAnswers ResponseData;
+
+			if (bSuccess && HttpResponse.IsValid())
+			{
+				const int32 ResponseCode = HttpResponse->GetResponseCode();
+
+				NETWORK_LOG(TEXT("[RES] RequestChatAnswers - Code: %d, Response: %s"),
+					ResponseCode, *HttpResponse->GetContentAsString());
+
+				if (IsResSuccess(ResponseCode))
+				{
+					ResponseData.SetFromHttpResponse(HttpResponse);
+					ResponseData.PrintData();
+					InDelegate.ExecuteIfBound(ResponseData, true);
+				}
+				else
+				{
+					WeakThis->ShowNetworkErrorPopup(ResponseCode, HttpResponse->GetContentAsString());
+					InDelegate.ExecuteIfBound(ResponseData, false);
+				}
+			}
+			else
+			{
+				NETWORK_LOG(TEXT("[POST] RequestChatAnswers failed - bSuccess: %s, Response valid: %s"),
+					bSuccess ? TEXT("true") : TEXT("false"),
+					HttpResponse.IsValid() ? TEXT("true") : TEXT("false"));
+
+				int32 ErrorCode = HttpResponse.IsValid() ? HttpResponse->GetResponseCode() : 0;
+				FString ErrorContent = HttpResponse.IsValid() ? HttpResponse->GetContentAsString() : TEXT("Network connection failed");
+				WeakThis->ShowNetworkErrorPopup(ErrorCode, ErrorContent);
+
+				InDelegate.ExecuteIfBound(ResponseData, false);
+			}
+		});
+
+	AddNetworkWaitCount(1);
+	Request->ProcessRequest();
+}
+
+
+// =================================================================================
+// RequestChatAnswers (Audio Question)
+// =================================================================================
+
+void UKLingoNetworkSystem::RequestChatAudio(const FString& Context, const FString& AudioPath, FResponseChatAnswersDelegate InDelegate)
+{
+	FString Url = NetworkConfig::GetFullUrl(RequestAPI::chats_answers);
+	auto Request = SetupHttpRequest(Url, NETWORK_POST);
+
+	// 상대 경로를 절대 경로로 변환
+	FString AbsoluteAudioPath = FPaths::IsRelative(AudioPath)
+		? FPaths::Combine(FPaths::ProjectDir(), AudioPath)
+		: AudioPath;
+	AbsoluteAudioPath = FPaths::ConvertRelativePathToFull(AbsoluteAudioPath);
+
+	// multipart/form-data로 context와 audio 파일 전송
+	FHttpMultipartFormData Form;
+	Form.AddText(TEXT("context"), Context);
+
+	if (!Form.AddFile(TEXT("audio"), AbsoluteAudioPath))
+	{
+		NETWORK_LOG(TEXT("[POST] RequestChatAnswersWithAudio: audio file load failed: %s"), *AudioPath);
+		FResponseChatAnswers EmptyResponse;
+		InDelegate.ExecuteIfBound(EmptyResponse, false);
+		return;
+	}
+
+	Form.SetupHttpRequest(Request);
+
+	LogNetwork(ENetworkLogType::Post, *Request->GetURL(), FString::Printf(TEXT("Context: %s, AudioPath: %s"), *Context, *AudioPath));
+
+	Request->OnProcessRequestComplete().BindLambda(
+		[WeakThis = TWeakObjectPtr<UKLingoNetworkSystem>(this), InDelegate](
+			FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSuccess)
+		{
+			if (!WeakThis.IsValid() || IsEngineExitRequested())
+				return;
+
+			WeakThis->AddNetworkWaitCount(-1);
+			FResponseChatAnswers ResponseData;
+
+			if (bSuccess && HttpResponse.IsValid())
+			{
+				const int32 ResponseCode = HttpResponse->GetResponseCode();
+
+				NETWORK_LOG(TEXT("[RES] RequestChatAnswersWithAudio - Code: %d, Response: %s"),
+					ResponseCode, *HttpResponse->GetContentAsString());
+
+				if (IsResSuccess(ResponseCode))
+				{
+					ResponseData.SetFromHttpResponse(HttpResponse);
+					ResponseData.PrintData();
+					InDelegate.ExecuteIfBound(ResponseData, true);
+				}
+				else
+				{
+					WeakThis->ShowNetworkErrorPopup(ResponseCode, HttpResponse->GetContentAsString());
+					InDelegate.ExecuteIfBound(ResponseData, false);
+				}
+			}
+			else
+			{
+				NETWORK_LOG(TEXT("[POST] RequestChatAnswersWithAudio failed - bSuccess: %s, Response valid: %s"),
+					bSuccess ? TEXT("true") : TEXT("false"),
+					HttpResponse.IsValid() ? TEXT("true") : TEXT("false"));
+
+				int32 ErrorCode = HttpResponse.IsValid() ? HttpResponse->GetResponseCode() : 0;
+				FString ErrorContent = HttpResponse.IsValid() ? HttpResponse->GetContentAsString() : TEXT("Network connection failed");
+				WeakThis->ShowNetworkErrorPopup(ErrorCode, ErrorContent);
+
+				InDelegate.ExecuteIfBound(ResponseData, false);
+			}
+		});
+
+	AddNetworkWaitCount(1);
+	Request->ProcessRequest();
+}

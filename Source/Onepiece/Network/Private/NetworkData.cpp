@@ -1266,3 +1266,33 @@ void FResponseEvaluationResult::PrintData() const
 	NETWORK_LOG( TEXT("[RES] %s"), *OutputString);
 }
 
+
+// =================================================================================
+// Chat Answers API Implementation
+// =================================================================================
+
+void FResponseChatAnswers::SetFromHttpResponse(const TSharedPtr<class IHttpResponse, ESPMode::ThreadSafe>& Response)
+{
+	if (!Response.IsValid())
+	{
+		return;
+	}
+
+	FString JsonString = Response->GetContentAsString();
+	TSharedPtr<FJsonObject> JsonObject;
+	TSharedRef<TJsonReader<>> Reader = TJsonReaderFactory<>::Create(JsonString);
+
+	if (FJsonSerializer::Deserialize(Reader, JsonObject) && JsonObject.IsValid())
+	{
+		if (JsonObject->HasField(TEXT("answer")))
+		{
+			answer = JsonObject->GetStringField(TEXT("answer"));
+		}
+	}
+}
+
+void FResponseChatAnswers::PrintData() const
+{
+	NETWORK_LOG(TEXT("[RES] Chat Answers - Answer: %s"), *answer);
+}
+

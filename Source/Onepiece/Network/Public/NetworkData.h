@@ -102,6 +102,9 @@ namespace RequestAPI
 
 	/// @brief Evaluation 결과 조회 엔드포인트입니다. GET /evaluations/rooms/{room_id}
 	static FString evaluations_rooms = FString("/evaluations/rooms");
+
+	/// @brief Chat 답변 요청 엔드포인트입니다. POST /chats/answers
+	static FString chats_answers = FString("/chats/answers");
 }
 
 
@@ -1241,6 +1244,29 @@ struct FResponseEvaluationResult
 
 	UPROPERTY(BlueprintReadWrite, Category = "Evaluation")
 	TArray<FScenarioResult> scenario_results;
+
+	/// @brief HTTP 응답을 파싱해 구조체를 채웁니다.
+	void SetFromHttpResponse(const TSharedPtr<class IHttpResponse, ESPMode::ThreadSafe>& Response);
+
+	/// @brief 디버그 로그에 응답 내용을 출력합니다.
+	void PrintData() const;
+};
+
+
+// =================================================================================
+// Chat Answers API Structures
+// =================================================================================
+
+/// @brief Chat Answers 응답 델리게이트입니다.
+DECLARE_DELEGATE_TwoParams(FResponseChatAnswersDelegate, FResponseChatAnswers&, bool);
+/// @brief Chat Answers 응답 구조체입니다.
+USTRUCT(BlueprintType)
+struct FResponseChatAnswers
+{
+	GENERATED_BODY()
+
+	UPROPERTY(BlueprintReadWrite, Category = "Chat")
+	FString answer;
 
 	/// @brief HTTP 응답을 파싱해 구조체를 채웁니다.
 	void SetFromHttpResponse(const TSharedPtr<class IHttpResponse, ESPMode::ThreadSafe>& Response);

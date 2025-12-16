@@ -261,20 +261,41 @@ void UVoiceConversationSystem::StopRecording()
 		return;
 	}
 
-	FString Question;
-	if ( auto SpeakStageActor = ULingoGameHelper::GetSpeakStageActor(GetWorld()) )
-		Question = SpeakStageActor->GetCurrentQuestion();
+	// SpeakQuest 진행 여부 확인
+	auto SpeakStageActor = ULingoGameHelper::GetSpeakStageActor(GetWorld());
 
-	// Toast 메시지 표시: 답변 분석 중
-	if (UDialogManager* DM = UDialogManager::Get(GetWorld()))
+	if (SpeakStageActor)
 	{
-		DM->ShowToast(TEXT("The officer is reviewing your answer"));
-	}
+		// SpeakQuest 진행 중: RequestSpeakingJudges 사용
+		FString Question = SpeakStageActor->GetCurrentQuestion();
 
-	HttpSystem->RequestSpeakingJudges(
-		Question,
-		LastRecordedFilePath,
-		FResponseSpeakingJudesDelegate::CreateUObject(this, &UVoiceConversationSystem::OnResponseSpeakingsJudges));
+		// Toast 메시지 표시: 답변 분석 중
+		if (UDialogManager* DM = UDialogManager::Get(GetWorld()))
+		{
+			DM->ShowToast(TEXT("The officer is reviewing your answer"));
+		}
+
+		HttpSystem->RequestSpeakingJudges(
+			Question,
+			LastRecordedFilePath,
+			FResponseSpeakingJudesDelegate::CreateUObject(this, &UVoiceConversationSystem::OnResponseSpeakingsJudges));
+	}
+	else
+	{
+		// SpeakQuest 미진행 중: RequestChatAnswers 사용
+		FString Context = TEXT("You are a helpful assistant.");
+
+		// Toast 메시지 표시: 답변 분석 중
+		if (UDialogManager* DM = UDialogManager::Get(GetWorld()))
+		{
+			DM->ShowToast(TEXT("Processing your voice message..."));
+		}
+
+		HttpSystem->RequestChatAudio(
+			Context,
+			LastRecordedFilePath,
+			FResponseChatAnswersDelegate::CreateUObject(this, &UVoiceConversationSystem::OnResponseChatAnswers));
+	}
 }
 
 void UVoiceConversationSystem::OnResponseSpeakingsJudges(FResponseSpeakingJudes& Response, bool bSuccess)
@@ -291,7 +312,7 @@ void UVoiceConversationSystem::OnResponseSpeakingsJudges(FResponseSpeakingJudes&
 		// 	BroadcastManager->SendTutorMessage(FText::FromString(Response.final_feedback));
 		// 	BroadcastManager->SendAddItemToBoxList(	Response.GetResultStatData());
 		// }
-		
+
 		// PlayerActor의 Server RPC 호출 (PlayerActor는 Client 소유!)
 		if (Owner)
 			Owner->Server_NotifySpeakJudgeComplete(Response);
@@ -299,6 +320,38 @@ void UVoiceConversationSystem::OnResponseSpeakingsJudges(FResponseSpeakingJudes&
 	else
 	{
 		PRINTLOG( TEXT("--- Network Response Received (FAIL) ---"));
+	}
+}
+
+void UVoiceConversationSystem::OnResponseChatAnswers(FResponseChatAnswers& Response, bool bSuccess)
+{
+	bIsProcessing = false;
+
+	if (bSuccess)
+	{
+		PRINTLOG(TEXT("--- Chat Answers Response Received : %s"), *Response.answer);
+
+		// Toast 메시지로 답변 표시
+		if (UDialogManager* DM = UDialogManager::Get(GetWorld()))
+		{
+			DM->ShowToast(Response.answer);
+		}
+
+		// TTS 재생 요청 (선택사항)
+		// if (!Response.answer.IsEmpty())
+		// {
+		// 	// TTS API 호출하여 음성으로 변환 후 재생
+		// 	// HttpSystem->RequestListenAudio(Response.answer, ...);
+		// }
+	}
+	else
+	{
+		PRINTLOG(TEXT("--- Chat Answers Response (FAIL) ---"));
+
+		if (UDialogManager* DM = UDialogManager::Get(GetWorld()))
+		{
+			DM->ShowToast(TEXT("Failed to get response. Please try again."));
+		}
 	}
 }
 

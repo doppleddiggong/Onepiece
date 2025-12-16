@@ -84,8 +84,32 @@ public:
     UFUNCTION(BlueprintCallable, CallInEditor, Category = "06.TEST|Interview")
     void RequestInterviewHello();
 
-    
-    
+    // =============================================================================
+    // Chat Answers API
+    // =============================================================================
+
+    /// @brief Chat 답변 요청 테스트용 컨텍스트입니다.
+    UPROPERTY(EditAnywhere, Category = "07.TEST|Chat")
+    FString ChatContext = TEXT("You are a helpful assistant.");
+
+    /// @brief Chat 답변 요청 테스트용 질문입니다.
+    UPROPERTY(EditAnywhere, Category = "07.TEST|Chat")
+    FString ChatQuestion = TEXT("살려주세요");
+
+    /// @brief Chat 답변 요청 테스트용 오디오 파일 경로입니다.
+    UPROPERTY(EditAnywhere, Category = "07.TEST|Chat")
+    FString ChatAudioPath = TEXT("Sample/voice_sample.wav");
+
+    /// @brief Chat 답변 요청을 전송합니다 (텍스트 질문). POST /chats/answers
+    UFUNCTION(BlueprintCallable, CallInEditor, Category = "07.TEST|Chat")
+    void RequestChatAnswers();
+
+    /// @brief Chat 답변 요청을 전송합니다 (음성 질문). POST /chats/answers
+    UFUNCTION(BlueprintCallable, CallInEditor, Category = "07.TEST|Chat")
+    void RequestChatAnswersWithAudio();
+
+
+
 private:
     void OnResponseUserRegister(FResponseUserRegister& ResponseData, bool bWasSuccessful);
     void OnResponseUserToken(FResponseUserToken& ResponseData, bool bWasSuccessful);
@@ -97,6 +121,8 @@ private:
     void OnResponseListenAudio(FResponseListenAudio& ResponseData, bool bWasSuccessful);
 
     void OnResponseInterviewHello(FResponseInterviewHello& ResponseData, bool bWasSuccessful);
+
+    void OnResponseChatAnswers(FResponseChatAnswers& ResponseData, bool bWasSuccessful);
 
 
 private:

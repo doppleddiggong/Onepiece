@@ -246,3 +246,56 @@ void ANetworkTesterActor::OnResponseInterviewHello(FResponseInterviewHello& Resp
         PRINTLOG(TEXT("--- InterViewHello Questions FAILED ---"));
     }
 }
+
+
+// =============================================================================
+// Chat Answers API Tests
+// =============================================================================
+
+void ANetworkTesterActor::RequestChatAnswers()
+{
+    if (auto KLingoNetwork = UKLingoNetworkSystem::Get(GetWorld()))
+    {
+        PRINTLOG(TEXT("[TEST] RequestChatAnswers - Context: %s, Question: %s"), *ChatContext, *ChatQuestion);
+        KLingoNetwork->RequestChatQuestion(
+            ChatContext,
+            ChatQuestion,
+            FResponseChatAnswersDelegate::CreateUObject(this, &ANetworkTesterActor::OnResponseChatAnswers)
+        );
+    }
+    else
+    {
+        PRINTLOG(TEXT("UKLingoNetworkSystem not found!"));
+    }
+}
+
+void ANetworkTesterActor::RequestChatAnswersWithAudio()
+{
+    if (auto KLingoNetwork = UKLingoNetworkSystem::Get(GetWorld()))
+    {
+        PRINTLOG(TEXT("[TEST] RequestChatAnswersWithAudio - Context: %s, AudioPath: %s"), *ChatContext, *ChatAudioPath);
+        KLingoNetwork->RequestChatAudio(
+            ChatContext,
+            ChatAudioPath,
+            FResponseChatAnswersDelegate::CreateUObject(this, &ANetworkTesterActor::OnResponseChatAnswers)
+        );
+    }
+    else
+    {
+        PRINTLOG(TEXT("UKLingoNetworkSystem not found!"));
+    }
+}
+
+void ANetworkTesterActor::OnResponseChatAnswers(FResponseChatAnswers& ResponseData, bool bWasSuccessful)
+{
+    if (bWasSuccessful)
+    {
+        PRINTLOG(TEXT("--- Chat Answers SUCCESS ---"));
+        ResponseData.PrintData();
+        UDialogManager::Get(GetWorld())->ShowToast(*ResponseData.answer);
+    }
+    else
+    {
+        PRINTLOG(TEXT("--- Chat Answers FAILED ---"));
+    }
+}
