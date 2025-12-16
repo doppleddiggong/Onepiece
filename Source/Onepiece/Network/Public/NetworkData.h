@@ -97,6 +97,7 @@ namespace RequestAPI
 
 	static FString read_result = FString("/scenario/stage/result/post");
 	static FString listen_result = FString("/scenario/stage/result/post");
+	static FString wriite_result = FString("/scenario/stage/result/post");
 
 	/// @brief Evaluation 결과 조회 엔드포인트입니다. GET /evaluations/rooms/{room_id}
 	static FString evaluations_rooms = FString("/evaluations/rooms");
@@ -712,6 +713,38 @@ struct FResponseWriteSubmit
 	void PrintData() const;
 };
 
+/// @brief Write Scenario 최종 결과 응답 델리게이트입니다.
+DECLARE_DELEGATE_TwoParams(FResponseWriteResultDelegate, FResponseWriteResult&, bool);
+/// @brief Write 최종 결과 점수 정보 구조체입니다.
+USTRUCT(BlueprintType)
+struct FResponseWriteScores
+{
+	GENERATED_BODY()
+	
+	UPROPERTY(BlueprintReadWrite, Category = "Write")
+	int32 score;
+	
+	UPROPERTY(BlueprintReadWrite, Category = "Write")
+	FString desc;
+};
+
+USTRUCT(BlueprintType)
+struct FResponseWriteResult
+{
+	GENERATED_BODY()
+	
+	UPROPERTY(BlueprintReadWrite, Category = "Write")
+	FString grade;
+	
+	UPROPERTY(BlueprintReadWrite, Category = "Write")
+	int32 average_score;
+	
+	UPROPERTY(BlueprintReadWrite, Category = "Write")
+	int32 top_percent;
+	
+	UPROPERTY(BlueprintReadWrite, Category = "Write")
+	TArray<FResponseWriteScores> scores;
+};
 
 // =================================================================================
 // Speaking Questions API Structures (Updated)

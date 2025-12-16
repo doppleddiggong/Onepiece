@@ -22,7 +22,7 @@ AOutBoxTeleportTrigger::AOutBoxTeleportTrigger()
 	
 	BoxComp = CreateDefaultSubobject<UBoxComponent>(TEXT("BoxComp"));
 	BoxComp->SetupAttachment(GetRootComponent());
-	BoxComp->SetBoxExtent(FVector(1, 1, 1));
+	BoxComp->SetBoxExtent(FVector(50, 50, 50));
 	BoxComp->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
 	BoxComp->SetCollisionObjectType(ECollisionChannel::ECC_WorldStatic);
 	BoxComp->SetCollisionResponseToAllChannels(ECR_Overlap);
@@ -34,6 +34,9 @@ AOutBoxTeleportTrigger::AOutBoxTeleportTrigger()
 		CubeMesh->SetStaticMesh(cubeMeshRef.Object);
 	}
 	CubeMesh->SetupAttachment(GetRootComponent());
+	CubeMesh->SetCollisionProfileName(TEXT("NoCollision"));
+	CubeMesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+	CubeMesh->SetCollisionResponseToAllChannels(ECR_Ignore);
 	CubeMesh->SetVisibility(false);
 }
 
