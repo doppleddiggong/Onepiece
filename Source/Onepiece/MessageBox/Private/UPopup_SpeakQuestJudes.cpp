@@ -5,7 +5,6 @@
 
 #include "UImageButton.h"
 #include "NetworkData.h"
-#include "FResultStatData.h"
 #include "Animation/WidgetAnimation.h"
 #include "UDespawnItem.h"
 #include "UGameDataManager.h"
@@ -23,21 +22,19 @@ void UPopup_SpeakQuestJudes::NativeConstruct()
 		FWidgetAnimationDynamicEvent HideDelegate;
 		HideDelegate.BindDynamic(this, &UPopup_SpeakQuestJudes::OnHideAnimComplete);
 
+		UnbindFromAnimationFinished(HideAnim, HideDelegate);  // 기존 바인딩 제거
 		BindToAnimationFinished(HideAnim, HideDelegate);
 	}
 }
 
 void UPopup_SpeakQuestJudes::InitPopup(const FResponseSpeakingJudes& Response)
 {
-	// Grammar Score
-	// Context Score
-	// Final Overall Score
-
-	TArray<FResultStatData> List = Response.GetResultStatData();
-	GrammerItem->InitData( List[0]);
-	ContextItem->InitData( List[1]);
+	auto ResultList = Response.GetResultStatData();
+	GrammerItem->InitData( ResultList[0]);
+	ContextItem->InitData( ResultList[1]);
 
 	EResourceTextureType TextureType = ULingoGameHelper::ConvertGradeScore(Response.final_overall_score);
+
 	UGameDataManager* DataManager = UGameDataManager::Get(this);
 	if (!DataManager)
 		return;
@@ -55,7 +52,6 @@ void UPopup_SpeakQuestJudes::InitPopup(const FResponseSpeakingJudes& Response)
 	
 	PlayAnimation(ShowAnim);
 
-	// Lifetime 후 FadeOut 시작
 	GetWorld()->GetTimerManager().SetTimer(
 		LifetimeTimer,
 		this,

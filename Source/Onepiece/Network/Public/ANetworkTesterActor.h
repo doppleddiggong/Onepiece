@@ -91,7 +91,7 @@ private:
     void OnResponseUserToken(FResponseUserToken& ResponseData, bool bWasSuccessful);
     void OnResponseUserMe(FResponseUserMe& ResponseData, bool bWasSuccessful);
     
-        void OnResponseOcrExtract(FResponseWriteSubmit& ResponseData, bool bWasSuccessful);
+    void OnResponseOcrExtract(FResponseWriteSubmit& ResponseData, bool bWasSuccessful);
 
     void OnResponseSpeakingJudes(FResponseSpeakingJudes& ResponseData, bool bWasSuccessful);
     void OnResponseListenAudio(FResponseListenAudio& ResponseData, bool bWasSuccessful);

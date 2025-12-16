@@ -9,7 +9,7 @@
 
 void UPopup_SpeakResultItem::InitData(const FSpeakResultItem& InItemData)
 {
-	Txt_Index->SetText(FText::FromString(FString::Printf(TEXT("Q%c"), InItemData.Index)));
+	Txt_Index->SetText(FText::FromString(FString::Printf(TEXT("Q%d"), InItemData.Index)));
 	Txt_Question->SetText(FText::FromString(InItemData.Question));
 	Txt_Feedback->SetText(FText::FromString(InItemData.Feedback));
 

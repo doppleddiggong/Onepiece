@@ -5,10 +5,14 @@
  * @brief ANetworkTesterActor의 동작을 구현합니다.
  */
 #include "ANetworkTesterActor.h"
+
+#include "APlayerControl.h"
 #include "UKLingoNetworkSystem.h"
 #include "GameLogging.h"
 #include "NetworkData.h"
 #include "UDialogManager.h"
+#include "ULingoGameHelper.h"
+#include "ULingoGameInstanceSubsystem.h"
 #include "UPopupManager.h"
 #include "UPopup_Interview.h"
 #include "UPopup_InterviewHello.h"
@@ -103,6 +107,9 @@ void ANetworkTesterActor::OnResponseUserMe(FResponseUserMe& ResponseData, bool b
     if (bWasSuccessful)
     {
         PRINTLOG(TEXT("--- User Me SUCCESS ---"));
+
+        if ( auto PC = ULingoGameHelper::GetPlayerControl(GetWorld()) )
+            PC->Server_SetUserInfo(ResponseData);
     }
     else
     {

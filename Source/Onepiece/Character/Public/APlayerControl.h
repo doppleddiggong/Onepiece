@@ -105,10 +105,11 @@ protected:
 	void Server_OnHook();
 
 	UFUNCTION(Server, Reliable)
-	void Server_SetUserInfo(const FResponseUserMe& InUserInfo);
-
-	UFUNCTION(Server, Reliable)
 	void Server_RequestDrop();
+
+public:
+	UFUNCTION(Server, Reliable)
+	void Server_SetUserInfo(const FResponseUserMe& InUserInfo);
 	
 private:
 	void RequestDrop(APlayerControl* Requester);

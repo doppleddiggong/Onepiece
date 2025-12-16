@@ -1101,7 +1101,8 @@ void UKLingoNetworkSystem::RequestSpeakScenario(FResponseSpeakScenarioDelegate I
 			{
 				const int32 ResponseCode = HttpResponse->GetResponseCode();
 
-				NETWORK_LOG(TEXT("[RES] Code: %d, Response: %s"), ResponseCode, *HttpResponse->GetContentAsString());
+				// NOTE : 굉장히 시끄러움.
+				// NETWORK_LOG(TEXT("[RES] Code: %d, Response: %s"), ResponseCode, *HttpResponse->GetContentAsString());
 
 				if (IsResSuccess(ResponseCode))
 				{

@@ -8,6 +8,7 @@
 #include "UCustomNetworkSettings.h"
 #include "GenericPlatform/GenericPlatformHttp.h"
 #include "Templates/SharedPointer.h"
+#include "FResultStatData.h"
 #include "NetworkData.generated.h"
 
 // =================================================================================
@@ -770,7 +771,7 @@ struct FResponseSpeakingJudes
 	/// @brief 디버그 로그에 응답 내용을 출력합니다.
 	void PrintData() const;
 
-	TArray<struct FResultStatData> GetResultStatData() const;
+	TArray<FResultStatData> GetResultStatData() const;
 };
 
 
@@ -1154,6 +1155,8 @@ struct FResponseSpeakResult
 
 	/// @brief 디버그 로그에 응답 내용을 출력합니다.
 	void PrintData() const;
+
+	TArray<FResultStatData> GetResultStatData() const;
 };
 
 

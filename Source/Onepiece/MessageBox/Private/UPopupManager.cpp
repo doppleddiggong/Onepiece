@@ -34,8 +34,7 @@
 #define INTERVIEWHELLO_POPUP_PATH TEXT("/Game/CustomContents/UI/Widgets/WBP_PopupInterviewHello.WBP_PopupInterviewHello_C")
 #define SPEAKQUEST_POPUP_PATH TEXT("/Game/CustomContents/UI/Widgets/WBP_PopupSpeakQuest.WBP_PopupSpeakQuest_C")
 #define SPEAKQUESTJUDES_POPUP_PATH TEXT("/Game/CustomContents/UI/Widgets/WBP_PopupSpeakQuestJudes.WBP_PopupSpeakQuestJudes_C")
-#define SPEAKRESULT_POPUP_PATH TEXT("/Game/CustomContents/UI/Widgets/WBP_PopupSpeakResult.WBP_PopupSpeakResult_C")
-
+#define SPEAKRESULT_POPUP_PATH TEXT("/Game/CustomContents/UI/Widgets/WBP_SpeakResult.WBP_SpeakResult_C")
 
 UPopupManager::UPopupManager()
 {

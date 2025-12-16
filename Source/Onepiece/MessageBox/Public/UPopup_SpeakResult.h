@@ -22,23 +22,23 @@ private:
 	UFUNCTION(BlueprintCallable, Category = "Close")
 	void OnClickClose();
 
-	void InitScore();
+	void InitScore() const;
 	void InitQuestionList();
 	
 protected:
-	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
-	TObjectPtr<class UImageButton> Btn_Confirm;
-	
-	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
-	TObjectPtr<class UVerticalBox> VerticalBox;
-	
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
 	TObjectPtr<class UResultStatWidget> Result_Grade;
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
 	TObjectPtr<class UResultStatWidget> Result_TopRate;
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
 	TObjectPtr<class UResultStatWidget> Result_AverageScore;
+		
+	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
+	TObjectPtr<class UVerticalBox> VerticalBox;
 
+	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
+	TObjectPtr<class UImageButton> Btn_Confirm;
+	
 private:
 	UPROPERTY(EditDefaultsOnly, Category = "UI")
 	TSubclassOf<class UPopup_SpeakResultItem> AnswerItemClass;

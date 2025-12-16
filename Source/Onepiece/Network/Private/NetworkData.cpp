@@ -513,9 +513,7 @@ TArray<FResultStatData> FResponseSpeakingJudes::GetResultStatData() const
 	GrammarData.ColorType = ULingoGameHelper::GetRankColorType(grammar_score);
 	GrammarData.TitleText = FText::FromString(TEXT("Grammer"));
 	GrammarData.ScoreValue = grammar_score;
-	GrammarData.ScoreTextColor = FLinearColor::White;
-	// GrammarData.SymbolTextureType = EResourceTextureType::Grammar;
-	// GrammarData.SymbolValue = FString::Printf(TEXT("%d"), grammar_score);
+	GrammarData.ScoreTextColor = ULingoGameHelper::GetRankColor(grammar_score);
 	StatDataList.Add(GrammarData);
 
 	// Context Score
@@ -524,21 +522,8 @@ TArray<FResultStatData> FResponseSpeakingJudes::GetResultStatData() const
 	ContextData.ColorType = ULingoGameHelper::GetRankColorType(context_score);
 	ContextData.TitleText = FText::FromString(TEXT("Context"));
 	ContextData.ScoreValue = context_score;
-	ContextData.ScoreTextColor = FLinearColor::White;
-	// ContextData.SymbolTextureType = EResourceTextureType::Context;
-	// ContextData.SymbolValue = FString::Printf(TEXT("%d"), context_score);
+	ContextData.ScoreTextColor = ULingoGameHelper::GetRankColor(context_score);
 	StatDataList.Add(ContextData);
-
-	// Final Overall Score
-	FResultStatData OverallData;
-	OverallData.WidgetType = EResultItemWidgetType::Score;
-	OverallData.ColorType = ULingoGameHelper::GetRankColorType(final_overall_score);
-	OverallData.TitleText = FText::FromString(TEXT("Score"));
-	OverallData.ScoreValue = final_overall_score;
-	OverallData.ScoreTextColor = FLinearColor::White;
-	// OverallData.SymbolTextureType = EResourceTextureType::Overall;
-	// OverallData.SymbolValue = FString::Printf(TEXT("%d"), final_overall_score);
-	StatDataList.Add(OverallData);
 
 	return StatDataList;
 }
@@ -1092,6 +1077,35 @@ void FResponseSpeakResult::PrintData() const
 		0
 	);
 	NETWORK_LOG( TEXT("[RES] %s"), *OutputString);
+}
+
+TArray<FResultStatData> FResponseSpeakResult::GetResultStatData() const
+{
+	TArray<FResultStatData> StatDataList;
+	
+	FResultStatData GradeResultData;
+	GradeResultData.WidgetType = EResultItemWidgetType::Grade;
+	GradeResultData.ColorType = EColorStyleType::Green;
+	GradeResultData.TitleText = FText::FromString(TEXT("Grade"));
+	GradeResultData.GradeTextureType = ULingoGameHelper::ConvertGradeString(grade);
+	StatDataList.Add(GradeResultData);
+
+	FResultStatData TopRateResultData;
+	TopRateResultData.WidgetType = EResultItemWidgetType::Rate;
+	TopRateResultData.ColorType = EColorStyleType::Red;
+	TopRateResultData.TitleText = FText::FromString(TEXT("Top"));
+	TopRateResultData.RatePercent = top_percent;
+	StatDataList.Add(TopRateResultData);
+		
+	FResultStatData AverageScoreResultData;
+	AverageScoreResultData.WidgetType = EResultItemWidgetType::Symbol;
+	AverageScoreResultData.ColorType = EColorStyleType::Purple;
+	AverageScoreResultData.TitleText = FText::FromString(TEXT("Score"));
+	AverageScoreResultData.SymbolTextureType = EResourceTextureType::Score;
+	AverageScoreResultData.SymbolValue = FString::Printf(TEXT("%d"), average_score);
+	StatDataList.Add(AverageScoreResultData);
+
+	return StatDataList;
 }
 
 FString FSpeakStageQuestion::GetQuestionMessage() const

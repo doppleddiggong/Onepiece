@@ -36,29 +36,13 @@ void UPopup_SpeakResult::OnClickClose()
 	}
 }
 
-void UPopup_SpeakResult::InitScore()
+void UPopup_SpeakResult::InitScore() const
 {
-	FResultStatData GradeResultData;
-	GradeResultData.WidgetType = EResultItemWidgetType::Grade;
-	GradeResultData.ColorType = EColorStyleType::Green;
-	GradeResultData.TitleText = FText::FromString(TEXT("GRADE"));
-	GradeResultData.GradeTextureType = ULingoGameHelper::ConvertGradeString(SpeakResult.grade);
-	Result_Grade->InitData(GradeResultData);
+	auto ResultList = SpeakResult.GetResultStatData();
 
-	FResultStatData TopRateResultData;
-	TopRateResultData.WidgetType = EResultItemWidgetType::Rate;
-	TopRateResultData.ColorType = EColorStyleType::Red;
-	TopRateResultData.TitleText = FText::FromString(TEXT("TOP"));
-	TopRateResultData.RatePercent = SpeakResult.top_percent;
-	Result_TopRate->InitData(TopRateResultData);
-		
-	FResultStatData AverageScoreResultData;
-	AverageScoreResultData.WidgetType = EResultItemWidgetType::Symbol;
-	AverageScoreResultData.ColorType = EColorStyleType::Purple;
-	AverageScoreResultData.TitleText = FText::FromString(TEXT("SCORE"));
-	AverageScoreResultData.SymbolTextureType = EResourceTextureType::Score;
-	AverageScoreResultData.SymbolValue = FString::Printf(TEXT("%d"), SpeakResult.average_score);
-	Result_AverageScore->InitData(AverageScoreResultData);
+	Result_Grade->InitData(ResultList[0]);
+	Result_TopRate->InitData(ResultList[1]);
+	Result_AverageScore->InitData(ResultList[2]);
 }
 
 void UPopup_SpeakResult::InitQuestionList()
@@ -75,17 +59,19 @@ void UPopup_SpeakResult::InitQuestionList()
 		InItemData.Feedback = SpeakResult.scores[i].desc;
 		InItemData.Score = SpeakResult.scores[i].score;
 
-		UPopup_SpeakResultItem* ItemWidget = CreateWidget<UPopup_SpeakResultItem>(GetWorld(), AnswerItemClass);
-		ItemWidget->InitData(InItemData);
-		VerticalBox->AddChildToVerticalBox(ItemWidget);
-
-		if (i < SpeakResult.scores.Num() - 1)
+		if( auto ItemWidget = CreateWidget<UPopup_SpeakResultItem>(GetWorld(), AnswerItemClass) )
 		{
-			USpacer* Spacer = NewObject<USpacer>(this);
-			if (Spacer)
+			ItemWidget->InitData(InItemData);
+			VerticalBox->AddChildToVerticalBox(ItemWidget);
+
+			if (i < SpeakResult.scores.Num() - 1)
 			{
-				Spacer->SetSize(FVector2D(1.0f, 5.0f));
-				VerticalBox->AddChildToVerticalBox(Spacer);
+				USpacer* Spacer = NewObject<USpacer>(this);
+				if (Spacer)
+				{
+					Spacer->SetSize(FVector2D(1.0f, 5.0f));
+					VerticalBox->AddChildToVerticalBox(Spacer);
+				}
 			}
 		}
 	}
