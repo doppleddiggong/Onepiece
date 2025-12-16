@@ -58,4 +58,10 @@ public:
     /// @return 리샘플링된 PCM 데이터
     UFUNCTION(BlueprintCallable, Category="Voice|Utility")
     static TArray<uint8> ResampleAudio(const TArray<uint8>& InPCMData, int32 InSampleRate, int32 OutSampleRate, int32 InNumChannels);
+
+    /// @brief 스테레오 PCM 데이터를 모노로 변환합니다. (좌우 채널 평균)
+    /// @param InStereoPCMData [in] 스테레오 PCM 데이터 (16bit, 2채널)
+    /// @return 모노 PCM 데이터 (16bit, 1채널)
+    UFUNCTION(BlueprintCallable, Category="Voice|Utility")
+    static TArray<uint8> ConvertStereoToMono(const TArray<uint8>& InStereoPCMData);
 };

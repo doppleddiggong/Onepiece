@@ -221,18 +221,29 @@ void UVoiceConversationSystem::StopRecording()
 	PRINTLOG(TEXT("[VoiceConversation] Recording stopped. Original: SampleRate=%d, Channels=%d, PCM Size=%d bytes"),
 		LastSampleRate, LastNumChannels, PCMData.Num());
 
-	// STT 최적화: 16kHz로 리샘플링
+	// STT 최적화: 스테레오 → 모노 변환
 	TArray<uint8> ProcessedPCM = PCMData;
+	int32 ProcessedChannels = LastNumChannels;
+
+	if (LastNumChannels == 2)
+	{
+		PRINTLOG(TEXT("[VoiceConversation] Converting stereo to mono for STT..."));
+		ProcessedPCM = UVoiceFunctionLibrary::ConvertStereoToMono(PCMData);
+		ProcessedChannels = 1;  // 모노로 변경
+		PRINTLOG(TEXT("[VoiceConversation] Converted to mono, PCM Size=%d bytes"), ProcessedPCM.Num());
+	}
+
+	// STT 최적화: 16kHz로 리샘플링
 	int32 TargetSampleRate = 16000;
 
 	if (LastSampleRate != TargetSampleRate)
 	{
 		PRINTLOG(TEXT("[VoiceConversation] Resampling from %dHz to %dHz..."), LastSampleRate, TargetSampleRate);
-		ProcessedPCM = UVoiceFunctionLibrary::ResampleAudio(PCMData, LastSampleRate, TargetSampleRate, LastNumChannels);
+		ProcessedPCM = UVoiceFunctionLibrary::ResampleAudio(ProcessedPCM, LastSampleRate, TargetSampleRate, ProcessedChannels);
 		PRINTLOG(TEXT("[VoiceConversation] Resampled PCM Size=%d bytes"), ProcessedPCM.Num());
 	}
 
-	WAVData = UVoiceFunctionLibrary::ConvertPCM2WAV(ProcessedPCM, TargetSampleRate, LastNumChannels, 16);
+	WAVData = UVoiceFunctionLibrary::ConvertPCM2WAV(ProcessedPCM, TargetSampleRate, ProcessedChannels, 16);
 	LastRecordedFilePath = UVoiceFunctionLibrary::SaveWavToFile(WAVData);
 
 	PRINTLOG(TEXT("[VoiceConversation] Recording saved to: %s"), *LastRecordedFilePath);
