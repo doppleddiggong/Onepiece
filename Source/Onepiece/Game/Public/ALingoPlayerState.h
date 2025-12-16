@@ -57,6 +57,19 @@ public:
 	/// @brief 색상 오답 플래그 복제 콜백
 	UFUNCTION()
 	void OnRep_WrongWord2();
+	
+	//--------------------------------------------------------------//
+	// Write Quest RPC Functions
+	//--------------------------------------------------------------//
+public:
+	UPROPERTY(Transient, BlueprintReadOnly, Category = "WriteQuest")
+	FQuestWriteInfo WriteQuestionData;
+	
+	UPROPERTY(Transient, BlueprintReadOnly, Category = "WriteQuest")
+	FResponseWriteSubmit WriteSubmitResultData;
+	
+	UPROPERTY(Transient, BlueprintReadOnly, Category = "WriteQuest")
+	FResponseWriteResult WriteWholeResultData;
 
 	//--------------------------------------------------------------//
 	// Speak Quest RPC Functions
