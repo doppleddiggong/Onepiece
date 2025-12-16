@@ -30,6 +30,9 @@ public:
 	void ReadQuest();
 	UFUNCTION(BlueprintCallable, CallInEditor, Category = "TEST|Message")
 	void InterviewPopup();
+
+	UFUNCTION(BlueprintCallable, CallInEditor, Category = "TEST|Message")
+	void TestEvaluationPopup();
 	
 	void OnOK();
 	void OnCancel();

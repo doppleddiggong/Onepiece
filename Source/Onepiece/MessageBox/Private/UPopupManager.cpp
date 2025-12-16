@@ -19,6 +19,7 @@
 #include "UPopup_SpeakQuestJudes.h"
 #include "UPopup_SpeakResult.h"
 #include "UPopup_Word.h"
+#include "UPopup_Evaluation.h"
 
 #include "Onepiece/Onepiece.h"
 
@@ -35,6 +36,7 @@
 #define SPEAKQUEST_POPUP_PATH TEXT("/Game/CustomContents/UI/Widgets/WBP_PopupSpeakQuest.WBP_PopupSpeakQuest_C")
 #define SPEAKQUESTJUDES_POPUP_PATH TEXT("/Game/CustomContents/UI/Widgets/WBP_PopupSpeakQuestJudes.WBP_PopupSpeakQuestJudes_C")
 #define SPEAKRESULT_POPUP_PATH TEXT("/Game/CustomContents/UI/Widgets/WBP_SpeakResult.WBP_SpeakResult_C")
+#define EVALUATION_POPUP_PATH TEXT("/Game/CustomContents/UI/Widgets/WBP_PopupEvaluation.WBP_PopupEvaluation_C")
 
 UPopupManager::UPopupManager()
 {
@@ -53,6 +55,7 @@ UPopupManager::UPopupManager()
 	PopupClassMap.Add(EPopupType::SpeakQuest, FComponentHelper::LoadClass<UPopup_SpeakQuest>(SPEAKQUEST_POPUP_PATH));
 	PopupClassMap.Add(EPopupType::SpeakQuestJudes, FComponentHelper::LoadClass<UPopup_SpeakQuestJudes>(SPEAKQUESTJUDES_POPUP_PATH));
 	PopupClassMap.Add(EPopupType::SpeakResult, FComponentHelper::LoadClass<UPopup_SpeakResult>(SPEAKRESULT_POPUP_PATH));
+	PopupClassMap.Add(EPopupType::Evaluation, FComponentHelper::LoadClass<UPopup_Evaluation>(EVALUATION_POPUP_PATH));
 }
 
 // ========================================

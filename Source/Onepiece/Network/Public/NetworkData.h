@@ -88,7 +88,6 @@ namespace RequestAPI
 
 	static FString listenings_audio = FString("/listenings/audios");
 	static FString speakings_judes = FString("/speakings/judges");
-	static FString speakings_result = FString("/speakings/evaluate");
 
 	static FString interview_hello = FString("/interview/hello");
 	static FString interview_answer = FString("/interview/answer/post");

@@ -16,6 +16,7 @@
 #include "NetworkData.h"
 #include "Popup_Result.h"
 #include "UCommonFunctionLibrary.h"
+#include "UPopup_Evaluation.h"
 #include "UPopup_InterviewHello.h"
 
 
@@ -111,6 +112,64 @@ void APopupTesterActor::InterviewPopup()
 			PRINTLOG(TEXT("[PopupTester] Interview popup opened with %d questions"), TestData.Questions.Num());
 	}
 }
+
+void APopupTesterActor::TestEvaluationPopup()
+{
+	// 테스트 데이터 생성
+	FResponseEvaluationResult TestData;
+
+	// Total Result 설정
+	TestData.total_result.final_score = 62;
+	TestData.total_result.grade = TEXT("D");
+	TestData.total_result.feedback_summary = TEXT("Your strengths lie in Reading and Listening, but there is a need for significant improvement in Speaking. How can you enhance your speaking skills to better articulate your thoughts?");
+
+	// Scenario Results 설정
+	FScenarioResult ReadingResult;
+	ReadingResult.scenario_type = EScenarioType::READING;
+	ReadingResult.display_name = TEXT("읽기 영역");
+	ReadingResult.final_score = 93;
+	ReadingResult.grade = TEXT("A");
+	ReadingResult.feedback_summary.title = TEXT("Excellent Reading Skills");
+	ReadingResult.feedback_summary.message = TEXT("Your reading comprehension is outstanding, demonstrating a strong grasp of the material.");
+	ReadingResult.action_item = TEXT("Continue practicing by reading a variety of texts to maintain your high level of comprehension.");
+	TestData.scenario_results.Add(ReadingResult);
+
+	FScenarioResult ListeningResult;
+	ListeningResult.scenario_type = EScenarioType::LISTENING;
+	ListeningResult.display_name = TEXT("듣기 영역");
+	ListeningResult.final_score = 79;
+	ListeningResult.grade = TEXT("C");
+	ListeningResult.feedback_summary.title = TEXT("Good Listening Skills");
+	ListeningResult.feedback_summary.message = TEXT("You have a good ability to understand spoken English, but there is room for improvement in capturing finer details.");
+	ListeningResult.action_item = TEXT("Listen to English podcasts or watch English shows to improve your listening skills.");
+	TestData.scenario_results.Add(ListeningResult);
+
+	FScenarioResult WritingResult;
+	WritingResult.scenario_type = EScenarioType::WRITING;
+	WritingResult.display_name = TEXT("쓰기 영역");
+	WritingResult.final_score = 58;
+	WritingResult.grade = TEXT("D");
+	WritingResult.feedback_summary.title = TEXT("Writing Needs Improvement");
+	WritingResult.feedback_summary.message = TEXT("Your writing lacks clarity and coherence, which affects the overall quality of your work.");
+	WritingResult.action_item = TEXT("Practice writing short essays on various topics to improve structure and clarity.");
+	TestData.scenario_results.Add(WritingResult);
+
+	FScenarioResult SpeakingResult;
+	SpeakingResult.scenario_type = EScenarioType::SPEAKING;
+	SpeakingResult.display_name = TEXT("말하기 영역");
+	SpeakingResult.final_score = 58;
+	SpeakingResult.grade = TEXT("D");
+	SpeakingResult.feedback_summary.title = TEXT("Speaking Needs Improvement");
+	SpeakingResult.feedback_summary.message = TEXT("Your responses often lack relevance to the topic, affecting the flow and context of your speech.");
+	SpeakingResult.action_item = TEXT("Engage in speaking exercises, such as role-playing or conversation practice, to stay on topic and improve relevance.");
+	TestData.scenario_results.Add(SpeakingResult);
+
+	// 팝업 표시
+	if (auto Popup = UPopupManager::ShowPopupAs<UPopup_Evaluation>( GetWorld(), EPopupType::Evaluation))
+		Popup->InitPopup(TestData);
+}
+
+
 
 void APopupTesterActor::OnOK()
 {
