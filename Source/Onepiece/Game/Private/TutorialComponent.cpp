@@ -198,15 +198,18 @@ bool UTutorialComponent::CheckJumpInput() const
 {
 	if (!OwnerController) return false;
 
-	APawn* Pawn = OwnerController->GetPawn();
-	if (!Pawn) return false;
+	// APawn* Pawn = OwnerController->GetPawn();
+	// if (!Pawn) return false;
 
 	// 점프중인지
-	if (ACharacter* Character = Cast<ACharacter>(Pawn))
-	{
-		return Character->bPressedJump;
-	}
-	return false;
+	// if (ACharacter* Character = Cast<ACharacter>(Pawn))
+	// {
+	// 	return Character->bPressedJump;
+	// }
+	// return false;
+
+	return OwnerController->IsInputKeyDown(EKeys::SpaceBar);
+	
 }
 
 bool UTutorialComponent::CheckPickUpInput() const

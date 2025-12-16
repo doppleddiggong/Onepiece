@@ -57,6 +57,7 @@ void UToastWidget::OnTutorMessage(const FText& NewMessage)
 		// 표시 중이면 Hide → SetText → Show
 		PendingMessage = NewMessage;
 		bHasPendingMessage = true;
+		bPendingIsTutorial = false; 
 		
 		PlayAnimation(TutorHideAnim);
 	}
@@ -92,6 +93,7 @@ void UToastWidget::OnShowTutorialMessage(const FText& NewMessage)
 		// 표시 중이면 Hide → SetText → Show
 		PendingMessage = NewMessage;
 		bHasPendingMessage = true;
+		bPendingIsTutorial = true;
 		
 		PlayAnimation(TutorHideAnim);
 	}
@@ -139,9 +141,15 @@ void UToastWidget::OnTutorHideComplete()
 			PlayAnimation(TutorShowAnim);
 			bIsTutorVisible = true;
 
-			// 자동 Hide 타이머 시작
-			StartTutorHideTimer();
+			// 튜토리얼 메시지가 아닐 때만 타이머 시작!                                                                                                                                                                 
+			if (!bPendingIsTutorial)  // ← 이 줄 추가!                                                                                                                                                                  
+			{
+				StartTutorHideTimer();
+			}
 		}
+
+		// 플래그 초기화                                                                                                                                                                                                    
+		bPendingIsTutorial = false;
 	}
 }
 
