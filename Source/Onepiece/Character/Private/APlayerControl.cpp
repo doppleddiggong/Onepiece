@@ -25,6 +25,7 @@
 #include "luggage.h"
 #include "EngineUtils.h"
 #include "OrderKiosk.h"
+#include "TutorialComponent.h"
 #include "UDialogManager.h"
 #include "UPopupManager.h"
 
@@ -53,6 +54,8 @@ APlayerControl::APlayerControl()
 	IA_Run = FComponentHelper::LoadAsset<UInputAction>(IA_RUN_PATH);
 	IA_Info = FComponentHelper::LoadAsset<UInputAction>(IA_INFO_PATH);
 	IA_Hook = FComponentHelper::LoadAsset<UInputAction>(IA_HOOK_PATH);
+
+	TutorialComponent = CreateDefaultSubobject<UTutorialComponent>(TEXT("TutorialComponent"));
 }
 
 void APlayerControl::BeginPlay()

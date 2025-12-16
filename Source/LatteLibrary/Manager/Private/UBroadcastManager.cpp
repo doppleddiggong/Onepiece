@@ -85,3 +85,8 @@ void UBroadcastManager::SendTeleport(const FVector& TargetLocation)
 {
 	OnTeleport.Broadcast(TargetLocation);
 }
+
+void UBroadcastManager::SendTutorialStepChanged(APlayerController* Player, ETutorialStep NewStep)
+{
+	OnTutorialStepChanged.Broadcast(Player, NewStep);
+}

@@ -43,6 +43,10 @@ public:
 	UFUNCTION(Client, Reliable)
 	void Client_EndSpeakQuest();
 
+	// Tutorial Component
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	class UTutorialComponent* TutorialComponent;
+
 protected:
     virtual void BeginPlay() override;
     virtual void SetupInputComponent() override;
