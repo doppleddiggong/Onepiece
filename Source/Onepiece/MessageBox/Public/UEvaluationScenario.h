@@ -5,13 +5,13 @@
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
 #include "NetworkData.h"
-#include "UPopup_EvaluationScenarioResultItem.generated.h"
+#include "UEvaluationScenario.generated.h"
 
 /**
  * @brief Evaluation 시나리오별 결과를 표시하는 패널 위젯
  */
 UCLASS()
-class ONEPIECE_API UPopup_EvaluationScenarioResultItem : public UUserWidget
+class ONEPIECE_API UEvaluationScenario : public UUserWidget
 {
 	GENERATED_BODY()
 
@@ -22,27 +22,15 @@ public:
 	void InitPanel(const FScenarioResult& InScenarioResult);
 
 protected:
-	/// @brief 영역 이름 텍스트 (예: "읽기 영역")
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
-	TObjectPtr<class UTextBlock> Txt_DisplayName;
+	TObjectPtr<class UImage> Image_Symbol;
 
-	/// @brief 최종 점수 텍스트
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
-	TObjectPtr<class UTextBlock> Txt_FinalScore;
+	TObjectPtr<class UTextBlock> Txt_Title;
 
-	/// @brief 등급 텍스트
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
-	TObjectPtr<class UTextBlock> Txt_Grade;
-
-	/// @brief 피드백 제목 텍스트
+	TObjectPtr<class UTextBlock> Txt_Desc;
+	
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
-	TObjectPtr<class UTextBlock> Txt_FeedbackTitle;
-
-	/// @brief 피드백 메시지 텍스트
-	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
-	TObjectPtr<class UTextBlock> Txt_FeedbackMessage;
-
-	/// @brief 액션 아이템 텍스트
-	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
-	TObjectPtr<class UTextBlock> Txt_ActionItem;
+	TObjectPtr<class UImage> Image_Grade;
 };

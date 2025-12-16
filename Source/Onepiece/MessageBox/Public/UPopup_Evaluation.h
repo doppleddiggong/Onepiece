@@ -31,53 +31,32 @@ public:
 	void InitPopup(const FResponseEvaluationResult& InEvaluationResult);
 
 private:
-	/// @brief 탭 선택 이벤트 핸들러
-	/// @param [in] TabIndex 선택된 탭 인덱스
-	UFUNCTION()
-	void OnTabSelected(int32 TabIndex);
-
 	/// @brief 닫기 버튼 클릭 핸들러
 	UFUNCTION(BlueprintCallable, Category = "Evaluation")
 	void OnClickClose();
 
 protected:
-	// ========================================
-	// UI 위젯 바인딩
-	// ========================================
-
-	/// @brief 탭 버튼 그룹
-	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
-	TObjectPtr<class UTabButtonGroup> TabButtonGroup;
-
-	/// @brief 위젯 스위처 (5개 탭에 대응)
-	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
-	TObjectPtr<class UWidgetSwitcher> WidgetSwitcher;
-
 	/// @brief 닫기 버튼
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
-	TObjectPtr<class UImageButton> Btn_Close;
-
-	// ========================================
-	// 패널 위젯들 (WidgetSwitcher 내부)
-	// ========================================
+	TObjectPtr<class UImageButton> Btn_Confirm;
 
 	/// @brief 전체 결과 패널 (탭 0)
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
-	TObjectPtr<class UPopup_EvaluationTotalResultItem> Panel_TotalResult;
+	TObjectPtr<class UEvaluationTotal> Panel_TotalResult;
 
 	/// @brief Reading 결과 패널 (탭 1)
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
-	TObjectPtr<class UPopup_EvaluationScenarioResultItem> Panel_Reading;
+	TObjectPtr<class UEvaluationScenario> Panel_Reading;
 
 	/// @brief Listening 결과 패널 (탭 2)
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
-	TObjectPtr<class UPopup_EvaluationScenarioResultItem> Panel_Listening;
+	TObjectPtr<class UEvaluationScenario> Panel_Listening;
 
 	/// @brief Writing 결과 패널 (탭 3)
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
-	TObjectPtr<class UPopup_EvaluationScenarioResultItem> Panel_Writing;
+	TObjectPtr<class UEvaluationScenario> Panel_Writing;
 
 	/// @brief Speaking 결과 패널 (탭 4)
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
-	TObjectPtr<class UPopup_EvaluationScenarioResultItem> Panel_Speaking;
+	TObjectPtr<class UEvaluationScenario> Panel_Speaking;
 };
