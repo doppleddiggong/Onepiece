@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "NetworkData.h"
 #include "UBasePopup.h"
 #include "Popup_WriteBoard.generated.h"
 
@@ -19,7 +20,7 @@ public:
 	virtual void NativeOnInitialized() override;
 	
 	// Init Popup
-	void InitPopup(int32 InQid, const FString& InAnswerKr);
+	void InitPopup(int32 InQid, const FWriteQuestionData& InQuestionData);
 	
 	FVector2D GetPrevMousePos();
 	
@@ -34,11 +35,13 @@ protected:
 	UPROPERTY(BlueprintReadOnly, meta=(BindWidget))
 	TObjectPtr<class USizeBox> SizeBox_Border;
 	UPROPERTY(BlueprintReadOnly, meta=(BindWidget))
+	TObjectPtr<class UTextBlock> Text_Question_Kr;
+	UPROPERTY(BlueprintReadOnly, meta=(BindWidget))
+	TObjectPtr<class UTextBlock> Text_Question_En;
+	UPROPERTY(BlueprintReadOnly, meta=(BindWidget))
 	TObjectPtr<class USizeBox> SizeBox_Canvas;
 	UPROPERTY(BlueprintReadOnly, meta=(BindWidget))
 	TObjectPtr<class UImageButton> Button_Save;
-	UPROPERTY(BlueprintReadOnly, meta=(BindWidget))
-	TObjectPtr<class UTextureButton> Button_Close;
 	
 	// WriteBoard Widgets
 	UPROPERTY(BlueprintReadOnly, meta=(BindWidget))
@@ -95,10 +98,6 @@ private:
 	TObjectPtr<class UTexture2D> dotLineTexture;
 	UPROPERTY()
 	TObjectPtr<class UFont> guideTextFont;
-	
-	// Close Draw Window
-	UFUNCTION()
-	void CloseDrawWindow();
 	
 	// Draw Functions
 	void DrawLines(FVector2D mousePos, FLinearColor drawColor);

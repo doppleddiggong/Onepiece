@@ -20,7 +20,7 @@ public:
 	
 	/** 팝업 초기화 (필요 시 API 확장) */
 	UFUNCTION(BlueprintCallable)
-	void InitPopup(const FResponseWriteSubmit& InResponseData);
+	void InitPopup(const TArray<FWriteWordData> InQuestionArray, const FResponseWriteSubmit& InResponseData);
 
 protected:
 	virtual void NativeConstruct() override;
@@ -31,22 +31,13 @@ private:
 
 protected:
 	/* ------------------- Layout ------------------- */
-
 	/** 팝업 전체 배경 */
 	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<class UImage> Popup_BaseBg;
 
-	/** 닫기 버튼 */
-	UPROPERTY(meta = (BindWidget))
-	TObjectPtr<class UTextureButton> Btn_Close;
-
-	/** 스크롤 가능한 인터뷰 패널 */
-	UPROPERTY(meta = (BindWidget))
-	TObjectPtr<class UScrollBox> ScrollBox;
-
 	/** 인터뷰 항목들이 추가될 VerticalBox */
 	UPROPERTY(meta = (BindWidget))
-	TObjectPtr<class UVerticalBox> VerticalBox_Result;
+	TObjectPtr<class UScrollBox> ScrollBox_Result;
 
 	/* ------------------- Classes ------------------- */
 	/** 팝업 내에서 표시될 인터뷰 항목 위젯 클래스 */
@@ -57,9 +48,14 @@ protected:
 	/** 인터뷰 항목 간 간격 (Spacer Height) */
 	UPROPERTY(EditDefaultsOnly, Category="Popup", meta=(ClampMin="0.0", ClampMax="200.0"))
 	float ItemSpacing = 20.0f;
+	
+	UPROPERTY(meta = (BindWidget))
+	TObjectPtr<class UImageButton> Btn_Confirm;
 
 private:
 	FResponseWriteSubmit ResponseData;
+	TArray<FString> QuestionsKor;
+	TArray<FString> QuestionsEng;
 	
 	FString WriteImagePath = FPaths::ProjectSavedDir() / TEXT("WriteImage/");
 };

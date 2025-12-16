@@ -396,7 +396,7 @@ void UKLingoNetworkSystem::RequestWriteQuestions(FResponseWriteQuestionDelegate 
 // RequestWriteSubmit
 // =================================================================================
 
-void UKLingoNetworkSystem::RequestWriteSubmit(const TArray<FString>& ImageNameArray, TArray<FString> InTargetText, FResponseWriteSubmitDelegate InDelegate)
+void UKLingoNetworkSystem::RequestWriteSubmit(const TArray<FString>& ImageNameArray, const TArray<FWriteWordData>& QuestionArray, TArray<FString> InTargetText, FResponseWriteSubmitDelegate InDelegate)
 {
 	FString Url = NetworkConfig::GetFullUrl(RequestAPI::writes_submit);
 	auto Request = SetupHttpRequest(Url, NETWORK_POST);
@@ -408,7 +408,7 @@ void UKLingoNetworkSystem::RequestWriteSubmit(const TArray<FString>& ImageNameAr
 		{
 			NETWORK_LOG(TEXT("[POST] OCR Extract: file load failed: %s"), *ImageName);
 			FResponseWriteSubmit EmptyResponse;
-			InDelegate.ExecuteIfBound(EmptyResponse, false);
+			InDelegate.ExecuteIfBound(EmptyResponse, QuestionArray, false);
 			return;
 		}
 	}
@@ -422,7 +422,7 @@ void UKLingoNetworkSystem::RequestWriteSubmit(const TArray<FString>& ImageNameAr
 	LogNetwork(ENetworkLogType::Post, *Request->GetURL());
 
 	Request->OnProcessRequestComplete().BindLambda(
-		[WeakThis = TWeakObjectPtr<UKLingoNetworkSystem>(this), InDelegate](FHttpRequestPtr Req, FHttpResponsePtr ResPtr, bool bWasSuccessful)
+		[WeakThis = TWeakObjectPtr<UKLingoNetworkSystem>(this), QuestionArray, InDelegate](FHttpRequestPtr Req, FHttpResponsePtr ResPtr, bool bWasSuccessful)
 		{
 			if (!WeakThis.IsValid() || IsEngineExitRequested())
 				return;
@@ -439,12 +439,12 @@ void UKLingoNetworkSystem::RequestWriteSubmit(const TArray<FString>& ImageNameAr
 				if (IsResSuccess(ResponseCode))
 				{
 					ResponseData.SetFromHttpResponse(ResPtr);
-					InDelegate.ExecuteIfBound(ResponseData, true);
+					InDelegate.ExecuteIfBound(ResponseData, QuestionArray, true);
 				}
 				else
 				{
 					WeakThis->ShowNetworkErrorPopup(ResponseCode, ResPtr->GetContentAsString());
-					InDelegate.ExecuteIfBound(ResponseData, false);
+					InDelegate.ExecuteIfBound(ResponseData, QuestionArray, false);
 				}
 			}
 			else
@@ -457,7 +457,7 @@ void UKLingoNetworkSystem::RequestWriteSubmit(const TArray<FString>& ImageNameAr
 				FString ErrorContent = ResPtr.IsValid() ? ResPtr->GetContentAsString() : TEXT("Network connection failed");
 				WeakThis->ShowNetworkErrorPopup(ErrorCode, ErrorContent);
 				
-				InDelegate.ExecuteIfBound(ResponseData, false);
+				InDelegate.ExecuteIfBound(ResponseData, QuestionArray, false);
 			}
 		});
 

@@ -4,7 +4,6 @@
 #include "Popup_QuestionnaireItem.h"
 
 #include "GameLogging.h"
-#include "InputTriggers.h"
 #include "NetworkData.h"
 #include "Popup_WriteBoard.h"
 #include "UPopupManager.h"
@@ -61,6 +60,6 @@ void UPopup_QuestionnaireItem::OnClickButton()
 		PRINT_STRING(TEXT("Question 글자 수 : %d"), QuestionData.answer_kor.Len());
 		PRINT_STRING(TEXT("Question 첫 단어 글자 수 : %d"), Tokens[0].Len());
 		
-		Popup->InitPopup(QuestionData.Id, QuestionData.answer_kor);
+		Popup->InitPopup(QuestionData.Id, QuestionData);
 	}
 }

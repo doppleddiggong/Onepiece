@@ -33,7 +33,7 @@ private:
 	void OnClickSubmit();
 	
 	UFUNCTION()
-	void OnResponseOcrExtract(FResponseWriteSubmit& ResponseData, bool bWasSuccessful);
+	void OnResponseOcrExtract(FResponseWriteSubmit& ResponseData, TArray<FWriteWordData> InQuestionArray, bool bWasSuccessful);
 
 	// UFUNCTION()
 	// void OnResponseQuestionAnswer(FResponseQuestionAnswer& ResponseData, bool bWasSuccessful);
@@ -44,10 +44,6 @@ protected:
 	/** 팝업 전체 배경 */
 	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<class UImage> Popup_BaseBg;
-
-	/** 닫기 버튼 */
-	UPROPERTY(meta = (BindWidget))
-	TObjectPtr<class UTextureButton> Btn_Close;
 
 	/** 제출 버튼 */
 	UPROPERTY(meta = (BindWidget))
