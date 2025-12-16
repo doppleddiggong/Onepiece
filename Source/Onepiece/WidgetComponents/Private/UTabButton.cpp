@@ -4,6 +4,7 @@
 #include "UTabButtonGroup.h"
 #include "Components/Button.h"
 #include "Components/TextBlock.h"
+#include "Components/Image.h"
 
 void UTabButton::NativeConstruct()
 {
@@ -16,29 +17,35 @@ void UTabButton::NativeConstruct()
 	}
 }
 
-void UTabButton::InitData(int32 InTabIndex, UTabButtonGroup* InOwnerGroup)
+void UTabButton::InitData(const int32 InTabIndex, UTabButtonGroup* InOwnerGroup)
 {
-	tabIndex = InTabIndex;
-	ownerButtonGroup = InOwnerGroup;
+	TabIndex = InTabIndex;
+	OwnerTabGroup = InOwnerGroup;
 }
 
-void UTabButton::SetSelected(bool bIsSelected)
+void UTabButton::SetSelected(const bool bIsSelected) const
 {
-	// Widget_ActivateState의 Visibility 설정
-	if (Widget_ActivateState)
-		Widget_ActivateState->SetVisibility( bIsSelected ? ESlateVisibility::HitTestInvisible : ESlateVisibility::Collapsed );
+	if (!OwnerTabGroup.IsValid())
+		return;
+
+	// Image_ActivateState의 Visibility 및 색상 설정
+	if (Image_ActivateState)
+	{
+		Image_ActivateState->SetVisibility(bIsSelected ? ESlateVisibility::HitTestInvisible : ESlateVisibility::Collapsed);
+		Image_ActivateState->SetColorAndOpacity(OwnerTabGroup->GetActivateColor(bIsSelected));
+	}
 
 	// Text 색상 변경
-	if ( ownerButtonGroup.IsValid())
-		Text_ButtonLabel->SetColorAndOpacity(bIsSelected ? ownerButtonGroup->GetSelectedColor() : ownerButtonGroup->GetUnselectedColor());
+	if (Txt_ButtonLabel)
+		Txt_ButtonLabel->SetColorAndOpacity(OwnerTabGroup->GetTextColor(bIsSelected));
 }
 
-void UTabButton::SetLabel(const FText& InText)
+void UTabButton::SetLabel(const FText& InText) const
 {
-	Text_ButtonLabel->SetText(InText);
+	Txt_ButtonLabel->SetText(InText);
 }
 
 void UTabButton::OnClicked()
 {
-	OnTabButtonClicked.Broadcast(tabIndex);
+	OnTabButtonClicked.Broadcast(TabIndex);
 }

@@ -2,33 +2,49 @@
 
 #include "UTabButtonGroup.h"
 #include "UTabButton.h"
+#include "UTabIndicator.h"
 #include "Components/HorizontalBox.h"
 #include "Components/HorizontalBoxSlot.h"
-#include "Components/Image.h"
 #include "Components/CanvasPanelSlot.h"
 #include "Blueprint/WidgetTree.h"
-#include "TimerManager.h"
 
 void UTabButtonGroup::NativePreConstruct()
 {
 	Super::NativePreConstruct();
 
 	// 에디터 프리뷰를 위해 탭을 재구성
-	RebuildTabs();
+	ApplyTab();
 }
 
 void UTabButtonGroup::NativeConstruct()
 {
 	Super::NativeConstruct();
 
+	// 인디케이터 이동 완료 이벤트 바인딩 및 설정
+	if (TabIndicator)
+	{
+		TabIndicator->OnMoveCompleted.RemoveDynamic(this, &UTabButtonGroup::OnMoveCompleted);
+		TabIndicator->OnMoveCompleted.AddDynamic(this, &UTabButtonGroup::OnMoveCompleted);
+
+		// 애니메이션 속도 설정
+		TabIndicator->SetAnimationSpeed(IndicatorAnimationSpeed);
+
+		// TabIndicator 크기를 TabSize로 자동 설정
+		UCanvasPanelSlot* indicatorSlot = Cast<UCanvasPanelSlot>(TabIndicator->Slot);
+		if (indicatorSlot)
+		{
+			indicatorSlot->SetSize(TabSize);
+		}
+	}
+
 	// 탭 구성
-	RebuildTabs();
+	ApplyTab();
 
 	// 기본 탭 선택 (이벤트는 발생시키지 않음)
 	OnSelectTab(DefaultTabIndex, false);
 }
 
-void UTabButtonGroup::RebuildTabs()
+void UTabButtonGroup::ApplyTab()
 {
 	// TabButtonClass 유효성 검사
 	if (!TabButtonClass)
@@ -105,100 +121,24 @@ void UTabButtonGroup::OnSelectTab(int32 TabIndex, bool bBroadcastEvent)
 
 	// 이벤트 브로드캐스트
 	if (bBroadcastEvent)
-	{
 		OnTabSelected.Broadcast(CurTabIndex);
-	}
 }
 
 void UTabButtonGroup::UpdateIndicatorPosition()
 {
-	// 인디케이터와 현재 탭 버튼 유효성 검사
-	if (!Image_SelectedIndicator || !TabButtonList.IsValidIndex(CurTabIndex))
+	// 인디케이터 유효성 검사
+	if (!TabIndicator)
 		return;
 
-	UTabButton* CurTabBtn = TabButtonList[CurTabIndex];
-	if (!CurTabBtn)
-		return;
+	// 고정 폭 기반으로 X 위치 계산: X = TabSize.X * TabIndex
+	FVector2D targetPosition(TabSize.X * CurTabIndex, 0.0f);
 
-	// 현재 탭 버튼의 지오메트리 가져오기
-	FGeometry BtnGeometry = CurTabBtn->GetCachedGeometry();
-	FVector2D BtnSize = BtnGeometry.GetLocalSize();
-	FVector2D BtnPosition = BtnGeometry.GetAbsolutePosition();
-
-	// 인디케이터의 CanvasPanelSlot 가져오기
-	UCanvasPanelSlot* indicatorSlot = Cast<UCanvasPanelSlot>(Image_SelectedIndicator->Slot);
-	if (!indicatorSlot)
-		return;
-
-	// TabContainer의 지오메트리 가져오기 (상대 위치 계산용)
-	FGeometry containerGeometry = TabContainer->GetCachedGeometry();
-	FVector2D containerPosition = containerGeometry.GetAbsolutePosition();
-
-	// 목표 위치 계산 (TabContainer 기준 상대 위치)
-	FVector2D targetPosition = BtnPosition - containerPosition;
-
-	// 애니메이션 활성화 여부에 따라 처리
-	if (bAnimateIndicator && IndicatorAnimationSpeed > 0.0f)
-	{
-		// 애니메이션 시작 위치 설정
-		animStartPosition = indicatorSlot->GetPosition();
-		animTargetPosition = targetPosition;
-		animElapsedTime = 0.0f;
-
-		// 타이머 시작 (기존 타이머가 있다면 제거)
-		if (GetWorld())
-		{
-			GetWorld()->GetTimerManager().ClearTimer(indicatorAnimTimerHandle);
-			GetWorld()->GetTimerManager().SetTimer(
-				indicatorAnimTimerHandle,
-				this,
-				&UTabButtonGroup::TickIndicatorAnimation,
-				0.016f, // ~60 FPS
-				true
-			);
-		}
-	}
-	else
-	{
-		// 애니메이션 없이 즉시 이동
-		indicatorSlot->SetPosition(targetPosition);
-		indicatorSlot->SetSize(BtnSize);
-	}
+	// UTabIndicator에게 이동 요청
+	TabIndicator->MoveTo(targetPosition, bAnimateIndicator);
 }
 
-void UTabButtonGroup::TickIndicatorAnimation()
+void UTabButtonGroup::OnMoveCompleted()
 {
-	// 인디케이터 유효성 검사
-	if (!Image_SelectedIndicator)
-	{
-		if (GetWorld())
-			GetWorld()->GetTimerManager().ClearTimer(indicatorAnimTimerHandle);
-		return;
-	}
-
-	UCanvasPanelSlot* indicatorSlot = Cast<UCanvasPanelSlot>(Image_SelectedIndicator->Slot);
-	if (!indicatorSlot)
-	{
-		if (GetWorld())
-			GetWorld()->GetTimerManager().ClearTimer(indicatorAnimTimerHandle);
-		return;
-	}
-
-	// 애니메이션 진행
-	animElapsedTime += 0.016f; // ~60 FPS 기준
-	float alpha = FMath::Clamp(animElapsedTime / IndicatorAnimationSpeed, 0.0f, 1.0f);
-
-	// Lerp를 사용한 부드러운 이동
-	FVector2D currentPosition = FMath::Lerp(animStartPosition, animTargetPosition, alpha);
-	indicatorSlot->SetPosition(currentPosition);
-
-	// 애니메이션 완료 확인
-	if (alpha >= 1.0f)
-	{
-		// 타이머 정지
-		if (GetWorld())
-		{
-			GetWorld()->GetTimerManager().ClearTimer(indicatorAnimTimerHandle);
-		}
-	}
+	// 인디케이터 이동이 완료되었을 때 수행할 작업
+	// 예: 사운드 재생, 추가 이벤트 발생 등
 }

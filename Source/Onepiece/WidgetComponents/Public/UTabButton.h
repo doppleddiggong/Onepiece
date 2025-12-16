@@ -22,15 +22,15 @@ public:
 	/// @brief 버튼을 초기화하는 함수. 부모 그룹에 의해 호출됩니다.
 	/// @param [in] InTabIndex 이 버튼에 할당될 인덱스
 	/// @param [in] InOwnerGroup 이 버튼을 소유한 부모 그룹
-	void InitData(int32 InTabIndex, class UTabButtonGroup* InOwnerGroup);
+	void InitData(const int32 InTabIndex, class UTabButtonGroup* InOwnerGroup);
 
 	/// @brief 이 버튼의 선택 상태를 갱신합니다.
 	/// @param [in] bIsSelected 새로운 선택 상태
-	void SetSelected(bool bIsSelected);
+	void SetSelected(const bool bIsSelected) const;
 
 	/// @brief 버튼의 텍스트 라벨을 설정합니다.
 	/// @param [in] InText 설정할 텍스트
-	void SetLabel(const FText& InText);
+	void SetLabel(const FText& InText) const;
 
 	/// @brief 탭 버튼 클릭 이벤트 델리게이트
 	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnTabButtonClicked, int32, TabIndex);
@@ -49,18 +49,18 @@ protected:
 	UPROPERTY(BlueprintReadOnly, meta = (BindWidget))
 	TObjectPtr<class UButton> Button_Tab;
 
-	/// @brief 탭의 텍스트 라벨. 블루프린트에서 'Text_ButtonLabel' 이름으로 생성해야 합니다.
+	/// @brief 탭의 텍스트 라벨. 블루프린트에서 'Txt_ButtonLabel' 이름으로 생성해야 합니다.
 	UPROPERTY(BlueprintReadOnly, meta = (BindWidget))
-	TObjectPtr<class UTextBlock> Text_ButtonLabel;
+	TObjectPtr<class UTextBlock> Txt_ButtonLabel;
 
-	/// @brief 탭이 선택되었을 때 활성화될 위젯 (예: 하이라이트 이미지). 블루프린트에서 'Widget_ActivateState' 이름으로 생성해야 합니다.
+	/// @brief 탭이 선택되었을 때 활성화될 이미지 (예: 하이라이트 이미지). 블루프린트에서 'Image_ActivateState' 이름으로 생성해야 합니다.
 	UPROPERTY(BlueprintReadOnly, meta = (BindWidget))
-	TObjectPtr<class UWidget> Widget_ActivateState;
+	TObjectPtr<class UImage> Image_ActivateState;
 
 private:
 	/// @brief 이 탭 버튼을 소유한 부모 그룹
-	TWeakObjectPtr<class UTabButtonGroup> ownerButtonGroup;
+	TWeakObjectPtr<class UTabButtonGroup> OwnerTabGroup;
 
 	/// @brief 이 탭 버튼의 그룹 내 인덱스
-	int32 tabIndex = -1;
+	int32 TabIndex = -1;
 };
