@@ -51,51 +51,8 @@ void UVoiceConversationSystem::StartRecording()
 		return;
 	}
 
-	// --- SpeakStage 턴 체크 (Phase 4) ---
-	if (UWorld* World = GetWorld())
-	{
-		if (auto SpeakStageActor = ULingoGameHelper::GetSpeakStageActor(World))
-		{
-			// 로컬 플레이어의 PlayerState 가져오기
-			APlayerState* LocalPlayerState = nullptr;
-			if (Owner)
-			{
-				APlayerController* PC = Cast<APlayerController>(Owner->GetController());
-				if (PC)
-				{
-					LocalPlayerState = PC->GetPlayerState<APlayerState>();
-				}
-			}
-
-			// 현재 발화자 확인
-			ALingoPlayerState* CurrentSpeaker = SpeakStageActor->GetCurrentSpeaker();
-
-			if (!CurrentSpeaker)
-			{
-				PRINTLOG(TEXT("[VoiceConversation] Recording blocked: Stage not started."));
-
-				if (auto DM = UDialogManager::Get(World))
-				{
-					DM->ShowToast(TEXT("Talk to the officer to begin the inspection."));
-				}
-				return;
-			}
-
-			// 내 턴이 아니면 녹음 차단
-			if (LocalPlayerState && CurrentSpeaker && CurrentSpeaker != LocalPlayerState)
-			{
-				PRINTLOG(TEXT("[VoiceConversation] Recording blocked: Not your turn (Current: %s)"),
-					*ULingoGameHelper::GetPlayerNameFromState(CurrentSpeaker));
-
-				if (auto DM = UDialogManager::Get(World))
-				{
-					DM->ShowToast(FString::Printf(TEXT("It is %s's turn."), *ULingoGameHelper::GetPlayerNameFromState(CurrentSpeaker)));
-				}
-				return;
-			}
-		}
-	}
-	// --- 턴 체크 종료 ---
+	// 턴 개념은 구 개념이므로 StartRecording에서는 녹음을 항상 허용합니다.
+	// StopRecording에서 CurrentSpeaker를 확인하여 SpeakJudges vs ChatAnswers를 결정합니다.
 
 	// 재생 중인 대화 음성이 있으면 정지 (UGameSoundManager 사용)
 	if (UWorld* World = GetWorld())
@@ -261,12 +218,36 @@ void UVoiceConversationSystem::StopRecording()
 		return;
 	}
 
-	// SpeakQuest 진행 여부 확인
+	// SpeakStageActor 존재 여부와 CurrentSpeaker 확인
 	auto SpeakStageActor = ULingoGameHelper::GetSpeakStageActor(GetWorld());
+	bool bUseSpeakJudges = false;
 
 	if (SpeakStageActor)
 	{
-		// SpeakQuest 진행 중: RequestSpeakingJudges 사용
+		// 로컬 플레이어의 PlayerState 가져오기
+		APlayerState* LocalPlayerState = nullptr;
+		if (Owner)
+		{
+			APlayerController* PC = Cast<APlayerController>(Owner->GetController());
+			if (PC)
+			{
+				LocalPlayerState = PC->GetPlayerState<APlayerState>();
+			}
+		}
+
+		// CurrentSpeaker 확인
+		ALingoPlayerState* CurrentSpeaker = SpeakStageActor->GetCurrentSpeaker();
+
+		// SpeakStageActor가 있고 CurrentSpeaker가 나라면 SpeakJudges 사용
+		if (CurrentSpeaker && LocalPlayerState && CurrentSpeaker == LocalPlayerState)
+		{
+			bUseSpeakJudges = true;
+		}
+	}
+
+	if (bUseSpeakJudges)
+	{
+		// SpeakQuest 진행 중 (내 턴): RequestSpeakingJudges 사용
 		FString Question = SpeakStageActor->GetCurrentQuestion();
 
 		// Toast 메시지 표시: 답변 분석 중
@@ -282,7 +263,7 @@ void UVoiceConversationSystem::StopRecording()
 	}
 	else
 	{
-		// SpeakQuest 미진행 중: RequestChatAnswers 사용
+		// 일반 대화 모드: RequestChatAnswers 사용
 		FString Context = TEXT("You are a helpful assistant.");
 
 		// Toast 메시지 표시: 답변 분석 중
@@ -332,10 +313,9 @@ void UVoiceConversationSystem::OnResponseChatAnswers(FResponseChatAnswers& Respo
 		PRINTLOG(TEXT("--- Chat Answers Response Received : %s"), *Response.answer);
 
 		// Toast 메시지로 답변 표시
-		if (UDialogManager* DM = UDialogManager::Get(GetWorld()))
-		{
-			DM->ShowToast(Response.answer);
-		}
+		UPopupManager::Get(GetWorld())->ShowMsgBox(TEXT("CHAT"), *Response.answer,
+			EMsgBoxType::OK,
+			FOnMsgBoxOkDelegate());
 
 		// TTS 재생 요청 (선택사항)
 		// if (!Response.answer.IsEmpty())
