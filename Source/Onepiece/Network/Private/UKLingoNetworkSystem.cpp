@@ -1258,16 +1258,11 @@ void UKLingoNetworkSystem::RequestEvaluationResult(int32 RoomId, FResponseEvalua
 void UKLingoNetworkSystem::RequestChatQuestion(const FString& Context, const FString& Question, FResponseChatAnswersDelegate InDelegate)
 {
 	TMap<FString, FString> Query;
+	Query.Add(TEXT("context"), Context);
 	Query.Add(TEXT("question"), Question);
-	FString Url = NetworkConfig::GetFullUrlWithQuery(RequestAPI::chats_answers, Query);
+	FString Url = NetworkConfig::GetFullUrlWithQuery( RequestAPI::chats_answers, Query );
 	auto Request = SetupHttpRequest(Url, NETWORK_POST);
-
-	// multipart/form-data로 context와 빈 audio 필드 전송
-	FHttpMultipartFormData Form;
-	Form.AddText(TEXT("context"), Context);
-	Form.AddText(TEXT("audio"), TEXT(""));
-	Form.SetupHttpRequest(Request);
-
+	
 	LogNetwork(ENetworkLogType::Post, *Request->GetURL(), FString::Printf(TEXT("Context: %s, Question: %s"), *Context, *Question));
 
 	Request->OnProcessRequestComplete().BindLambda(

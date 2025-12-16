@@ -291,8 +291,10 @@ void ANetworkTesterActor::OnResponseChatAnswers(FResponseChatAnswers& ResponseDa
     if (bWasSuccessful)
     {
         PRINTLOG(TEXT("--- Chat Answers SUCCESS ---"));
-        ResponseData.PrintData();
-        UDialogManager::Get(GetWorld())->ShowToast(*ResponseData.answer);
+        
+        UPopupManager::Get(GetWorld())->ShowMsgBox(TEXT("CHAT"), *ResponseData.answer,
+            EMsgBoxType::OK,
+            FOnMsgBoxOkDelegate());
     }
     else
     {
