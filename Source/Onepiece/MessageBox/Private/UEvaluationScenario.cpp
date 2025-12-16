@@ -17,7 +17,7 @@ void UEvaluationScenario::InitPanel(const FScenarioResult& InScenarioResult)
 
 	Txt_Title->SetText(FText::FromString(InScenarioResult.feedback_summary.title));
 
-	FString Description = FString::Printf(TEXT("%s\n[NextAction]%s"),
+	FString Description = FString::Printf(TEXT("%s\n\n[NextAction]\n%s"),
 		*InScenarioResult.feedback_summary.message,
 		*InScenarioResult.action_item);
 

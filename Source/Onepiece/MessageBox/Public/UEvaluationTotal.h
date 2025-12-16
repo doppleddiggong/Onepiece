@@ -23,9 +23,6 @@ public:
 
 protected:
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
-	TObjectPtr<class UImage> Image_Symbol;
-
-	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
 	TObjectPtr<class UTextBlock> Txt_Desc;
 	
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
