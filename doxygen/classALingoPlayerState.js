@@ -1,6 +1,8 @@
 var classALingoPlayerState =
 [
     [ "ALingoPlayerState", "classALingoPlayerState.html#aceae0e9756e2e79d06287e4350e7445a", null ],
+    [ "AddSpeakJudes", "classALingoPlayerState.html#a14146811ae19403ea431adc9d2429e1d", null ],
+    [ "GetChatContext", "classALingoPlayerState.html#a7c8b4c46cce8d5109b3675ea7548984b", null ],
     [ "GetCurrentSpeakQuestion", "classALingoPlayerState.html#a242a5560c49914069e8d9cb35a721e7f", null ],
     [ "GetLifetimeReplicatedProps", "classALingoPlayerState.html#a4a5444df3780d67ccefa24a47097ab14", null ],
     [ "GetToken", "classALingoPlayerState.html#a75f98be692a0e94274a7b88beb789dec", null ],
@@ -12,7 +14,6 @@ var classALingoPlayerState =
     [ "OnRep_WrongWord1", "classALingoPlayerState.html#addedc05ad9960b9e6c1cb3c05815e3f8", null ],
     [ "OnRep_WrongWord2", "classALingoPlayerState.html#ab7462f408b48e71503b66f1984f49900", null ],
     [ "OnUpdateSpeakScenarioData", "classALingoPlayerState.html#a9d068a6c2eb77eb79eb12626f8b7e168", null ],
-    [ "Server_AddSpeakJudes", "classALingoPlayerState.html#a96ee3cdb458f3fe15cfa5a3bf902c319", null ],
     [ "Server_NotifySpeakDataReady", "classALingoPlayerState.html#a391737f3a762e34b60ca87c83f1067e3", null ],
     [ "Server_SetSelectedWord1", "classALingoPlayerState.html#af4fe3b83d32550c860711906a171c273", null ],
     [ "Server_SetSelectedWord2", "classALingoPlayerState.html#abab5fd2d52500b32fb11e04f9ec20c90", null ],
@@ -27,5 +28,6 @@ var classALingoPlayerState =
     [ "SelectedWord1", "classALingoPlayerState.html#a283004fed1584dfdb4da7c5e741eaeb0", null ],
     [ "SelectedWord2", "classALingoPlayerState.html#a2136c7bb3522dbe59a8f8609325c4b93", null ],
     [ "SpeakJudesResults", "classALingoPlayerState.html#a5d77db1ec6acd9f6cfbe36a125fbe14c", null ],
+    [ "SpeakResult", "classALingoPlayerState.html#a36aa7dfa5a279939379b9e0bb2e35d37", null ],
     [ "SpeakScenarioData", "classALingoPlayerState.html#a91fd139fa5b3aeb603e93e7b2a843d03", null ]
 ];

@@ -154,43 +154,47 @@ $(document).ready(function(){initNavTree('UVoiceConversationSystem_8h_source.htm
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    UFUNCTION()</div>
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    void OnResponseSpeakingsJudges(<a class="code hl_struct" href="structFResponseSpeakingJudes.html">FResponseSpeakingJudes</a>&amp; Response, <span class="keywordtype">bool</span> bSuccess);</div>
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>private:</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    UPROPERTY()</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    TObjectPtr&lt;class <a class="code hl_class" href="classAPlayerActor.html">APlayerActor</a>&gt; Owner;</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    UFUNCTION()</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <span class="keywordtype">void</span> OnResponseChatAnswers(<a class="code hl_struct" href="structFResponseChatAnswers.html">FResponseChatAnswers</a>&amp; Response, <span class="keywordtype">bool</span> bSuccess);</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>private:</div>
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    UPROPERTY()</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    TObjectPtr&lt;class <a class="code hl_class" href="classUBroadcastManager.html">UBroadcastManager</a>&gt; BroadcastManager;</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    TObjectPtr&lt;class <a class="code hl_class" href="classAPlayerActor.html">APlayerActor</a>&gt; Owner;</div>
 <div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    <span class="comment">// --- 녹음 관련 변수 ---</span></div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    TUniquePtr&lt;Audio::FAudioCapture&gt; AudioCapture;</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    UPROPERTY()</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    TObjectPtr&lt;class <a class="code hl_class" href="classUBroadcastManager.html">UBroadcastManager</a>&gt; BroadcastManager;</div>
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    TArray&lt;uint8&gt; WAVData;</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    TArray&lt;uint8&gt; PCMData;</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    <span class="comment">// --- 녹음 관련 변수 ---</span></div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    TUniquePtr&lt;Audio::FAudioCapture&gt; AudioCapture;</div>
 <div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    int32 LastSampleRate = 16000;</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    int32 LastNumChannels = 1;</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    FString LastRecordedFilePath;</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    <span class="comment">// --- 상태 변수 ---</span></div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    <span class="keywordtype">bool</span> bIsRecording = false;</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    <span class="keywordtype">bool</span> bIsProcessing = false;</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    UPROPERTY()</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    TObjectPtr&lt;class UAudioComponent&gt; CurVoiceAudio;</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    FTimerHandle VoiceFinishTimerHandle;</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>};</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    TArray&lt;uint8&gt; WAVData;</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    TArray&lt;uint8&gt; PCMData;</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    int32 LastSampleRate = 16000;</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    int32 LastNumChannels = 1;</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    FString LastRecordedFilePath;</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    <span class="comment">// --- 상태 변수 ---</span></div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    <span class="keywordtype">bool</span> bIsRecording = false;</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    <span class="keywordtype">bool</span> bIsProcessing = false;</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    UPROPERTY()</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    TObjectPtr&lt;class UAudioComponent&gt; CurVoiceAudio;</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    FTimerHandle VoiceFinishTimerHandle;</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>};</div>
 <div class="ttc" id="aNetworkData_8h_html"><div class="ttname"><a href="NetworkData_8h.html">NetworkData.h</a></div><div class="ttdoc">네트워크 요청과 응답에 사용되는 구조체 및 설정을 정의합니다.</div></div>
 <div class="ttc" id="aclassAPlayerActor_html"><div class="ttname"><a href="classAPlayerActor.html">APlayerActor</a></div><div class="ttdoc">Main character driven directly by the player.</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8h_source.html#l00022">APlayerActor.h:23</a></div></div>
 <div class="ttc" id="aclassUBroadcastManager_html"><div class="ttname"><a href="classUBroadcastManager.html">UBroadcastManager</a></div><div class="ttdoc">게임 내 전역 이벤트를 중계하는 중앙 이벤트 버스(Event Bus) 서브시스템입니다.</div><div class="ttdef"><b>Definition</b> <a href="UBroadcastManager_8h_source.html#l00024">UBroadcastManager.h:25</a></div></div>
-<div class="ttc" id="astructFResponseSpeakingJudes_html"><div class="ttname"><a href="structFResponseSpeakingJudes.html">FResponseSpeakingJudes</a></div><div class="ttdoc">Speaking Questions 응답 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00783">NetworkData.h:784</a></div></div>
+<div class="ttc" id="astructFResponseChatAnswers_html"><div class="ttname"><a href="structFResponseChatAnswers.html">FResponseChatAnswers</a></div><div class="ttdoc">Chat Answers 응답 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l01297">NetworkData.h:1298</a></div></div>
+<div class="ttc" id="astructFResponseSpeakingJudes_html"><div class="ttname"><a href="structFResponseSpeakingJudes.html">FResponseSpeakingJudes</a></div><div class="ttdoc">Speaking Questions 응답 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00788">NetworkData.h:789</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_73ed0ee482f9021ceb3f842221665267.html">Voice</a></li><li class="navelem"><a class="el" href="dir_408a69dc108d7f522747b4a6ccdced42.html">Public</a></li><li class="navelem"><a class="el" href="UVoiceConversationSystem_8h.html">UVoiceConversationSystem.h</a></li>
-    <li class="footer">생성시간 : 화 12월 16 2025 03:33:47, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 화 12월 16 2025 05:11:56, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

@@ -9,11 +9,14 @@ var classULingoGameHelper =
     [ "GetLingoPlayerState", "classULingoGameHelper.html#a6117f2f4942b42864305def958e0c108", null ],
     [ "GetLingoPlayerStateByPC", "classULingoGameHelper.html#a22b529e3c60a1584054715bc29e1a71c", null ],
     [ "GetLingoPlayerStateList", "classULingoGameHelper.html#a98136c30beb0692693a40c7b97d0199e", null ],
+    [ "GetLocalPawn", "classULingoGameHelper.html#a9ec382fad33503c5199244be20c367e6", null ],
     [ "GetMissionPlayTime", "classULingoGameHelper.html#a8e35e8f50c72c9cbb4f258f64255c0b3", null ],
     [ "GetMultiPlayerCount", "classULingoGameHelper.html#a2b4c188bd922db08e4987962b8309a56", null ],
     [ "GetPlayerActor", "classULingoGameHelper.html#aedc78e0ec65a7aad312693bd1719bff8", null ],
     [ "GetPlayerControl", "classULingoGameHelper.html#a156d567d1976157714844997935655ce", null ],
     [ "GetPlayerNameFromState", "classULingoGameHelper.html#a6e81633de163ff51bfa37da213f6c696", null ],
+    [ "GetRankColor", "classULingoGameHelper.html#a1f18cf27c1a8cf2dd7e567cb17ed0d4e", null ],
+    [ "GetRankColorType", "classULingoGameHelper.html#a9cdaff68599a2282ce6f5a346a15d688", null ],
     [ "GetSpeakStageActor", "classULingoGameHelper.html#a7841ecb4e3125ad48efba9920250bf1a", null ],
     [ "GetStageEndMessage", "classULingoGameHelper.html#aedcd84af73f7741c04bdd74e617366e8", null ],
     [ "GetStageStartMessage", "classULingoGameHelper.html#a5b348eed6677226376898017e0bdc2de", null ],
@@ -23,6 +26,7 @@ var classULingoGameHelper =
     [ "GetUserId", "classULingoGameHelper.html#a128a70c4f0e61cb82b17a1927a2c6709", null ],
     [ "GetWheatly", "classULingoGameHelper.html#ac0d0929f11e3a6e8f720beac552a2f97", null ],
     [ "HideMouseCursor", "classULingoGameHelper.html#a569e70240af4850b5b1a0dafd26d4033", null ],
+    [ "IsLocalPlayerPawn", "classULingoGameHelper.html#a58275af16738de6c5e9dc4a45417bacb", null ],
     [ "IsMultiPlay", "classULingoGameHelper.html#aaffb56063f7fe4916e89d589c02ee8cb", null ],
     [ "ShowMouseCursor", "classULingoGameHelper.html#af5fbc9538e6adda28f03d547c33ecc48", null ]
 ];

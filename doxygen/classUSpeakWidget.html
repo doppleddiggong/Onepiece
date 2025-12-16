@@ -137,9 +137,9 @@ Public 멤버 함수</h2></td></tr>
 <tr class="memitem:aaa92402f48176c8a3f826d4b3ad8e1b6" id="r_aaa92402f48176c8a3f826d4b3ad8e1b6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUSpeakWidget.html#aaa92402f48176c8a3f826d4b3ad8e1b6">SetWidgetVisibility</a> (bool bShow)</td></tr>
 <tr class="memdesc:aaa92402f48176c8a3f826d4b3ad8e1b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">위젯 표시/숨김  <br /></td></tr>
 <tr class="separator:aaa92402f48176c8a3f826d4b3ad8e1b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae10c0694697d39c33eac4c0e0ba0d02c" id="r_ae10c0694697d39c33eac4c0e0ba0d02c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUSpeakWidget.html#ae10c0694697d39c33eac4c0e0ba0d02c">UpdateSpeakStage</a> (class <a class="el" href="classASpeakStageActor.html">ASpeakStageActor</a> *SpeakStage, class APlayerState *LocalPlayerState)</td></tr>
-<tr class="memdesc:ae10c0694697d39c33eac4c0e0ba0d02c"><td class="mdescLeft">&#160;</td><td class="mdescRight">SpeakStage 상태를 UI에 반영  <br /></td></tr>
-<tr class="separator:ae10c0694697d39c33eac4c0e0ba0d02c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c3bc2c98db33dfe178761ec185abdd1" id="r_a3c3bc2c98db33dfe178761ec185abdd1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUSpeakWidget.html#a3c3bc2c98db33dfe178761ec185abdd1">UpdateSpeakStage</a> (class <a class="el" href="classASpeakStageActor.html">ASpeakStageActor</a> *SpeakStage, class APlayerState *LocalPlayerState, int32 StepIndex)</td></tr>
+<tr class="memdesc:a3c3bc2c98db33dfe178761ec185abdd1"><td class="mdescLeft">&#160;</td><td class="mdescRight">SpeakStage 상태를 UI에 반영  <br /></td></tr>
+<tr class="separator:a3c3bc2c98db33dfe178761ec185abdd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected 멤버 함수</h2></td></tr>
@@ -186,10 +186,10 @@ Protected 속성</h2></td></tr>
 
 <p>생성자 </p>
 
-<p class="definition"><a class="el" href="USpeakWidget_8cpp_source.html">USpeakWidget.cpp</a> 파일의 <a class="el" href="USpeakWidget_8cpp_source.html#l00009">9</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   10</span>    : Super(ObjectInitializer)</div>
-<div class="line"><span class="lineno">   11</span>{</div>
-<div class="line"><span class="lineno">   12</span>}</div>
+<p class="definition"><a class="el" href="USpeakWidget_8cpp_source.html">USpeakWidget.cpp</a> 파일의 <a class="el" href="USpeakWidget_8cpp_source.html#l00010">10</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   11</span>    : Super(ObjectInitializer)</div>
+<div class="line"><span class="lineno">   12</span>{</div>
+<div class="line"><span class="lineno">   13</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -219,19 +219,19 @@ Protected 속성</h2></td></tr>
 
 <p>위젯 초기화 </p>
 
-<p class="definition"><a class="el" href="USpeakWidget_8cpp_source.html">USpeakWidget.cpp</a> 파일의 <a class="el" href="USpeakWidget_8cpp_source.html#l00014">14</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   15</span>{</div>
-<div class="line"><span class="lineno">   16</span>    Super::NativeConstruct();</div>
-<div class="line"><span class="lineno">   17</span> </div>
-<div class="line"><span class="lineno">   18</span>    <span class="comment">// 초기 상태: 모든 텍스트 초기화</span></div>
-<div class="line"><span class="lineno">   19</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUSpeakWidget.html#a98eb9d1c375d91f322f304903899e58b">CurrentQuestionText</a>)</div>
-<div class="line"><span class="lineno">   20</span>    {</div>
-<div class="line"><span class="lineno">   21</span>        <a class="code hl_variable" href="classUSpeakWidget.html#a98eb9d1c375d91f322f304903899e58b">CurrentQuestionText</a>-&gt;SetText(FText::FromString(TEXT(<span class="stringliteral">&quot;[1/5] Please wait for your turn&quot;</span>)));</div>
-<div class="line"><span class="lineno">   22</span>    }</div>
-<div class="line"><span class="lineno">   23</span>}</div>
-<div class="ttc" id="aclassUSpeakWidget_html_a98eb9d1c375d91f322f304903899e58b"><div class="ttname"><a href="classUSpeakWidget.html#a98eb9d1c375d91f322f304903899e58b">USpeakWidget::CurrentQuestionText</a></div><div class="ttdeci">TObjectPtr&lt; class UTextBlock &gt; CurrentQuestionText</div><div class="ttdef"><b>Definition</b> <a href="USpeakWidget_8h_source.html#l00054">USpeakWidget.h:54</a></div></div>
+<p class="definition"><a class="el" href="USpeakWidget_8cpp_source.html">USpeakWidget.cpp</a> 파일의 <a class="el" href="USpeakWidget_8cpp_source.html#l00015">15</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   16</span>{</div>
+<div class="line"><span class="lineno">   17</span>    Super::NativeConstruct();</div>
+<div class="line"><span class="lineno">   18</span> </div>
+<div class="line"><span class="lineno">   19</span>    <span class="comment">// 초기 상태: 모든 텍스트 초기화</span></div>
+<div class="line"><span class="lineno">   20</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUSpeakWidget.html#a98eb9d1c375d91f322f304903899e58b">CurrentQuestionText</a>)</div>
+<div class="line"><span class="lineno">   21</span>    {</div>
+<div class="line"><span class="lineno">   22</span>        <a class="code hl_variable" href="classUSpeakWidget.html#a98eb9d1c375d91f322f304903899e58b">CurrentQuestionText</a>-&gt;SetText(FText::FromString(TEXT(<span class="stringliteral">&quot;[1/5] Please wait for your turn&quot;</span>)));</div>
+<div class="line"><span class="lineno">   23</span>    }</div>
+<div class="line"><span class="lineno">   24</span>}</div>
+<div class="ttc" id="aclassUSpeakWidget_html_a98eb9d1c375d91f322f304903899e58b"><div class="ttname"><a href="classUSpeakWidget.html#a98eb9d1c375d91f322f304903899e58b">USpeakWidget::CurrentQuestionText</a></div><div class="ttdeci">TObjectPtr&lt; class UTextBlock &gt; CurrentQuestionText</div><div class="ttdef"><b>Definition</b> <a href="USpeakWidget_8h_source.html#l00055">USpeakWidget.h:55</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="USpeakWidget_8h_source.html#l00054">CurrentQuestionText</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="USpeakWidget_8h_source.html#l00055">CurrentQuestionText</a>.</p>
 
 </div>
 </div>
@@ -259,12 +259,12 @@ Protected 속성</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition"><a class="el" href="USpeakWidget_8cpp_source.html">USpeakWidget.cpp</a> 파일의 <a class="el" href="USpeakWidget_8cpp_source.html#l00052">52</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   53</span>{</div>
-<div class="line"><span class="lineno">   54</span>    SetVisibility(bShow ? ESlateVisibility::Visible :  ESlateVisibility::Collapsed );</div>
-<div class="line"><span class="lineno">   55</span>}</div>
+<p class="definition"><a class="el" href="USpeakWidget_8cpp_source.html">USpeakWidget.cpp</a> 파일의 <a class="el" href="USpeakWidget_8cpp_source.html#l00064">64</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   65</span>{</div>
+<div class="line"><span class="lineno">   66</span>    SetVisibility(bShow ? ESlateVisibility::Visible :  ESlateVisibility::Collapsed );</div>
+<div class="line"><span class="lineno">   67</span>}</div>
 </div><!-- fragment -->
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="USpeakWidget_8cpp_source.html#l00029">UpdateSpeakStage()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="USpeakWidget_8cpp_source.html#l00030">UpdateSpeakStage()</a>.</p>
 <div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-2-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
@@ -275,8 +275,8 @@ Protected 속성</h2></td></tr>
 
 </div>
 </div>
-<a id="ae10c0694697d39c33eac4c0e0ba0d02c" name="ae10c0694697d39c33eac4c0e0ba0d02c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae10c0694697d39c33eac4c0e0ba0d02c">&#9670;&#160;</a></span>UpdateSpeakStage()</h2>
+<a id="a3c3bc2c98db33dfe178761ec185abdd1" name="a3c3bc2c98db33dfe178761ec185abdd1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3c3bc2c98db33dfe178761ec185abdd1">&#9670;&#160;</a></span>UpdateSpeakStage()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -291,7 +291,13 @@ Protected 속성</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">class APlayerState *&#160;</td>
-          <td class="paramname"><em>LocalPlayerState</em>&#160;</td>
+          <td class="paramname"><em>LocalPlayerState</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int32&#160;</td>
+          <td class="paramname"><em>StepIndex</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -305,45 +311,57 @@ Protected 속성</h2></td></tr>
 <dl class="params"><dt>매개변수</dt><dd>
   <table class="params">
     <tr><td class="paramname">SpeakStage</td><td>SpeakStageActor 참조 </td></tr>
-    <tr><td class="paramname">LocalPlayerState</td><td>로컬 플레이어의 PlayerState (내 턴인지 확인용)</td></tr>
+    <tr><td class="paramname">LocalPlayerState</td><td>로컬 플레이어의 PlayerState (내 턴인지 확인용) </td></tr>
+    <tr><td class="paramname">StepIndex</td><td>서버에서 전달받은 현재 단계 인덱스 (복제 타이밍 문제 해결)</td></tr>
   </table>
   </dd>
 </dl>
 <p>이 함수를 주기적으로 호출하거나 RepNotify 이벤트에서 호출 </p>
 
-<p class="definition"><a class="el" href="USpeakWidget_8cpp_source.html">USpeakWidget.cpp</a> 파일의 <a class="el" href="USpeakWidget_8cpp_source.html#l00029">29</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   30</span>{</div>
-<div class="line"><span class="lineno">   31</span>    <span class="keywordflow">if</span> (!SpeakStage)</div>
-<div class="line"><span class="lineno">   32</span>    {</div>
-<div class="line"><span class="lineno">   33</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[SpeakWidget] UpdateSpeakStageUI - SpeakStage is null&quot;</span>));</div>
-<div class="line"><span class="lineno">   34</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">   35</span>    }</div>
-<div class="line"><span class="lineno">   36</span> </div>
-<div class="line"><span class="lineno">   37</span>    <span class="keyword">const</span> int32 CurrentStep = SpeakStage-&gt;GetCurrentStepIndex();</div>
-<div class="line"><span class="lineno">   38</span>    <span class="keyword">const</span> int32 TotalSteps = SpeakStage-&gt;GetTotalQuestions();</div>
-<div class="line"><span class="lineno">   39</span>    <span class="keyword">const</span> FString Question = SpeakStage-&gt;GetCurrentQuestion();</div>
+<p class="definition"><a class="el" href="USpeakWidget_8cpp_source.html">USpeakWidget.cpp</a> 파일의 <a class="el" href="USpeakWidget_8cpp_source.html#l00030">30</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   31</span>{</div>
+<div class="line"><span class="lineno">   32</span>    <span class="keywordflow">if</span> (!SpeakStage)</div>
+<div class="line"><span class="lineno">   33</span>    {</div>
+<div class="line"><span class="lineno">   34</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[SpeakWidget] UpdateSpeakStageUI - SpeakStage is null&quot;</span>));</div>
+<div class="line"><span class="lineno">   35</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   36</span>    }</div>
+<div class="line"><span class="lineno">   37</span> </div>
+<div class="line"><span class="lineno">   38</span>    <span class="comment">// 서버에서 전달받은 StepIndex를 사용하여 복제 타이밍 문제를 회피</span></div>
+<div class="line"><span class="lineno">   39</span>    <span class="keyword">const</span> int32 TotalSteps = SpeakStage-&gt;GetTotalQuestions();</div>
 <div class="line"><span class="lineno">   40</span> </div>
-<div class="line"><span class="lineno">   41</span>    <span class="keywordflow">if</span> ( Question.IsEmpty())</div>
-<div class="line"><span class="lineno">   42</span>    {</div>
-<div class="line"><span class="lineno">   43</span>        <a class="code hl_function" href="classUSpeakWidget.html#aaa92402f48176c8a3f826d4b3ad8e1b6">SetWidgetVisibility</a>(<span class="keyword">false</span>);</div>
-<div class="line"><span class="lineno">   44</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">   45</span>    }</div>
-<div class="line"><span class="lineno">   46</span> </div>
-<div class="line"><span class="lineno">   47</span>    <a class="code hl_variable" href="classUSpeakWidget.html#ae46a4f6e42ff496e80b241b46c6a71a4">CurrentProgress</a>-&gt;SetText(FText::FromString(FString::Printf(TEXT(<span class="stringliteral">&quot;%d/%d&quot;</span>), CurrentStep + 1, TotalSteps )));</div>
-<div class="line"><span class="lineno">   48</span> </div>
-<div class="line"><span class="lineno">   49</span>    <a class="code hl_variable" href="classUSpeakWidget.html#a98eb9d1c375d91f322f304903899e58b">CurrentQuestionText</a>-&gt;SetText( FText::FromString(*Question));</div>
-<div class="line"><span class="lineno">   50</span>}</div>
+<div class="line"><span class="lineno">   41</span>    <span class="comment">// PlayerState에서 직접 질문 가져오기</span></div>
+<div class="line"><span class="lineno">   42</span>    FString Question;</div>
+<div class="line"><span class="lineno">   43</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> PS = Cast&lt;ALingoPlayerState&gt;(LocalPlayerState))</div>
+<div class="line"><span class="lineno">   44</span>    {</div>
+<div class="line"><span class="lineno">   45</span>        <span class="keywordflow">if</span> (PS-&gt;SpeakScenarioData.speak_quest_data.IsValidIndex(StepIndex))</div>
+<div class="line"><span class="lineno">   46</span>        {</div>
+<div class="line"><span class="lineno">   47</span>            Question = PS-&gt;SpeakScenarioData.speak_quest_data[StepIndex].GetQuestionMessage();</div>
+<div class="line"><span class="lineno">   48</span>        }</div>
+<div class="line"><span class="lineno">   49</span>    }</div>
+<div class="line"><span class="lineno">   50</span> </div>
+<div class="line"><span class="lineno">   51</span>    <span class="keywordflow">if</span> ( Question.IsEmpty())</div>
+<div class="line"><span class="lineno">   52</span>    {</div>
+<div class="line"><span class="lineno">   53</span>        <a class="code hl_function" href="classUSpeakWidget.html#aaa92402f48176c8a3f826d4b3ad8e1b6">SetWidgetVisibility</a>(<span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">   54</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[SpeakWidget] Question is empty for StepIndex %d&quot;</span>), StepIndex);</div>
+<div class="line"><span class="lineno">   55</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   56</span>    }</div>
+<div class="line"><span class="lineno">   57</span> </div>
+<div class="line"><span class="lineno">   58</span>    <a class="code hl_variable" href="classUSpeakWidget.html#ae46a4f6e42ff496e80b241b46c6a71a4">CurrentProgress</a>-&gt;SetText(FText::FromString(FString::Printf(TEXT(<span class="stringliteral">&quot;%d/%d&quot;</span>), StepIndex + 1, TotalSteps )));</div>
+<div class="line"><span class="lineno">   59</span>    <a class="code hl_variable" href="classUSpeakWidget.html#a98eb9d1c375d91f322f304903899e58b">CurrentQuestionText</a>-&gt;SetText( FText::FromString(*Question));</div>
+<div class="line"><span class="lineno">   60</span> </div>
+<div class="line"><span class="lineno">   61</span>    <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[SpeakWidget] Updated to step %d/%d: %s&quot;</span>), StepIndex + 1, TotalSteps, *Question);</div>
+<div class="line"><span class="lineno">   62</span>}</div>
 <div class="ttc" id="aGameLogging_8h_html_a9998c8beb11a6bad6ffada2e701fc0cf"><div class="ttname"><a href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a></div><div class="ttdeci">#define PRINTLOG(fmt,...)</div><div class="ttdef"><b>Definition</b> <a href="GameLogging_8h_source.html#l00030">GameLogging.h:30</a></div></div>
-<div class="ttc" id="aclassUSpeakWidget_html_aaa92402f48176c8a3f826d4b3ad8e1b6"><div class="ttname"><a href="classUSpeakWidget.html#aaa92402f48176c8a3f826d4b3ad8e1b6">USpeakWidget::SetWidgetVisibility</a></div><div class="ttdeci">void SetWidgetVisibility(bool bShow)</div><div class="ttdoc">위젯 표시/숨김</div><div class="ttdef"><b>Definition</b> <a href="USpeakWidget_8cpp_source.html#l00052">USpeakWidget.cpp:52</a></div></div>
-<div class="ttc" id="aclassUSpeakWidget_html_ae46a4f6e42ff496e80b241b46c6a71a4"><div class="ttname"><a href="classUSpeakWidget.html#ae46a4f6e42ff496e80b241b46c6a71a4">USpeakWidget::CurrentProgress</a></div><div class="ttdeci">TObjectPtr&lt; class UTextBlock &gt; CurrentProgress</div><div class="ttdef"><b>Definition</b> <a href="USpeakWidget_8h_source.html#l00057">USpeakWidget.h:57</a></div></div>
+<div class="ttc" id="aclassUSpeakWidget_html_aaa92402f48176c8a3f826d4b3ad8e1b6"><div class="ttname"><a href="classUSpeakWidget.html#aaa92402f48176c8a3f826d4b3ad8e1b6">USpeakWidget::SetWidgetVisibility</a></div><div class="ttdeci">void SetWidgetVisibility(bool bShow)</div><div class="ttdoc">위젯 표시/숨김</div><div class="ttdef"><b>Definition</b> <a href="USpeakWidget_8cpp_source.html#l00064">USpeakWidget.cpp:64</a></div></div>
+<div class="ttc" id="aclassUSpeakWidget_html_ae46a4f6e42ff496e80b241b46c6a71a4"><div class="ttname"><a href="classUSpeakWidget.html#ae46a4f6e42ff496e80b241b46c6a71a4">USpeakWidget::CurrentProgress</a></div><div class="ttdeci">TObjectPtr&lt; class UTextBlock &gt; CurrentProgress</div><div class="ttdef"><b>Definition</b> <a href="USpeakWidget_8h_source.html#l00058">USpeakWidget.h:58</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="USpeakWidget_8h_source.html#l00057">CurrentProgress</a>, <a class="el" href="USpeakWidget_8h_source.html#l00054">CurrentQuestionText</a>, <a class="el" href="ASpeakStageActor_8cpp_source.html#l00112">ASpeakStageActor::GetCurrentQuestion()</a>, <a class="el" href="ASpeakStageActor_8h_source.html#l00038">ASpeakStageActor::GetCurrentStepIndex()</a>, <a class="el" href="ASpeakStageActor_8cpp_source.html#l00103">ASpeakStageActor::GetTotalQuestions()</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>, <a class="el" href="USpeakWidget_8cpp_source.html#l00052">SetWidgetVisibility()</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="USpeakWidget_8h_source.html#l00058">CurrentProgress</a>, <a class="el" href="USpeakWidget_8h_source.html#l00055">CurrentQuestionText</a>, <a class="el" href="ASpeakStageActor_8cpp_source.html#l00103">ASpeakStageActor::GetTotalQuestions()</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>, <a class="el" href="USpeakWidget_8cpp_source.html#l00064">SetWidgetVisibility()</a>.</p>
 <div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-3-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-3-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classUSpeakWidget_ae10c0694697d39c33eac4c0e0ba0d02c_cgraph.svg" width="523" height="230"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classUSpeakWidget_a3c3bc2c98db33dfe178761ec185abdd1_cgraph.svg" width="523" height="102"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -369,9 +387,9 @@ Protected 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="USpeakWidget_8h_source.html">USpeakWidget.h</a> 파일의 <a class="el" href="USpeakWidget_8h_source.html#l00057">57</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="USpeakWidget_8h_source.html">USpeakWidget.h</a> 파일의 <a class="el" href="USpeakWidget_8h_source.html#l00058">58</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="USpeakWidget_8cpp_source.html#l00029">UpdateSpeakStage()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="USpeakWidget_8cpp_source.html#l00030">UpdateSpeakStage()</a>.</p>
 
 </div>
 </div>
@@ -395,9 +413,9 @@ Protected 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="USpeakWidget_8h_source.html">USpeakWidget.h</a> 파일의 <a class="el" href="USpeakWidget_8h_source.html#l00054">54</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="USpeakWidget_8h_source.html">USpeakWidget.h</a> 파일의 <a class="el" href="USpeakWidget_8h_source.html#l00055">55</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="USpeakWidget_8cpp_source.html#l00014">NativeConstruct()</a>, <a class="el" href="USpeakWidget_8cpp_source.html#l00029">UpdateSpeakStage()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="USpeakWidget_8cpp_source.html#l00015">NativeConstruct()</a>, <a class="el" href="USpeakWidget_8cpp_source.html#l00030">UpdateSpeakStage()</a>.</p>
 
 </div>
 </div>
@@ -411,7 +429,7 @@ Protected 속성</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classUSpeakWidget.html">USpeakWidget</a></li>
-    <li class="footer">생성시간 : 화 12월 16 2025 03:33:47, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 화 12월 16 2025 05:11:57, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

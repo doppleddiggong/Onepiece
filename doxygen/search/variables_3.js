@@ -8,7 +8,7 @@ var searchData=
   ['defaultmode_5',['DefaultMode',['../classUCustomNetworkSettings.html#a52ae708d686bb8a4fc27f4c4089d9048',1,'UCustomNetworkSettings']]],
   ['defaulttext_6',['DefaultText',['../classURichText.html#af34b9096bbea6ff323e6bb59de189008',1,'URichText']]],
   ['delaytimerhandle_7',['DelayTimerHandle',['../classADropper.html#ac72f7e826877b273487c4c04778b88bb',1,'ADropper']]],
-  ['desc_8',['desc',['../structFColorData.html#a737d45b830f9ada3aa7ccd44c32babb1',1,'FColorData::Desc'],['../structFResponseWriteScores.html#a7f558d57dbda95d02b417537e85ff6a5',1,'FResponseWriteScores::desc']]],
+  ['desc_8',['desc',['../structFSpeakScoreDetail.html#aeee86eb73e0f3c4dd58585f9c7c4bf21',1,'FSpeakScoreDetail::desc'],['../structFColorData.html#a737d45b830f9ada3aa7ccd44c32babb1',1,'FColorData::Desc'],['../structFResponseWriteScores.html#a7f558d57dbda95d02b417537e85ff6a5',1,'FResponseWriteScores::desc']]],
   ['detectedplayer_9',['DetectedPlayer',['../classANPCExaminer.html#afd4e507514297633cb789783c6139194',1,'ANPCExaminer']]],
   ['detecttarget_10',['DetectTarget',['../classAWeightSwitch.html#ae9663983eb123ff86c5252299b5fe533',1,'AWeightSwitch']]],
   ['devconfig_11',['DevConfig',['../classUCustomNetworkSettings.html#a0a6b7b5fe0199a1b58cceba3bc07dcae',1,'UCustomNetworkSettings']]],

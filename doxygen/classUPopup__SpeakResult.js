@@ -1,0 +1,25 @@
+var classUPopup__SpeakResult =
+[
+    [ "InitPopup", "classUPopup__SpeakResult.html#abcef36524083d70102fe951bffa221d5", null ],
+    [ "InitQuestionList", "classUPopup__SpeakResult.html#a40214173d4e64806e7b4fe6bff8c9463", null ],
+    [ "InitScore", "classUPopup__SpeakResult.html#a67b3b7c86ccf24a49a2027036e4515f1", null ],
+    [ "NativeTick", "classUPopup__SpeakResult.html#a750c1a854f68ca16faa069645531abd6", null ],
+    [ "OnClickClose", "classUPopup__SpeakResult.html#a7b7e3c0a64ed6113a1bef2e8e9e2c2c0", null ],
+    [ "OpenAnimation", "classUPopup__SpeakResult.html#a2c3d2b47f8255c0172cf9f218790fcc8", null ],
+    [ "UpdateAnimation", "classUPopup__SpeakResult.html#a830a08b15d00e418f351f096fc5a8790", null ],
+    [ "AnswerItemClass", "classUPopup__SpeakResult.html#ab46f55a365243f180dc90c494f1a4a2c", null ],
+    [ "bIsOpenAnim", "classUPopup__SpeakResult.html#a807985dccb3305b1004c611401b7b551", null ],
+    [ "Btn_Confirm", "classUPopup__SpeakResult.html#a62dc7b35b280b75ebd21fd5038104356", null ],
+    [ "OpenDuration", "classUPopup__SpeakResult.html#a5a4c2b75560a3e2d07ed3aa52837278e", null ],
+    [ "OpenEaseExponent", "classUPopup__SpeakResult.html#afe75f5ef94f97fbcc8ea1ad9e801524c", null ],
+    [ "OpenElapsedTime", "classUPopup__SpeakResult.html#a6124aff28b2b2a0b810bb693ebcd81ad", null ],
+    [ "OpenPivot", "classUPopup__SpeakResult.html#aa3d6a21b30e9b40280f1219b567232b5", null ],
+    [ "OpenStartScale", "classUPopup__SpeakResult.html#a9a4bc6d6e03adc7396c7960c41dae0b2", null ],
+    [ "OpenTargetScale", "classUPopup__SpeakResult.html#add357075245f0843320c0b74af0f2697", null ],
+    [ "PopupType", "classUPopup__SpeakResult.html#a7e537a0dd751df11990ed46947f09d42", null ],
+    [ "Result_AverageScore", "classUPopup__SpeakResult.html#abf12e9c10b00f717166a7425d55c7343", null ],
+    [ "Result_Grade", "classUPopup__SpeakResult.html#a05ce6c278731c117bb04ddd68fd5a417", null ],
+    [ "Result_TopRate", "classUPopup__SpeakResult.html#af3ea1bbe7c6c73549d34a53b6e728d49", null ],
+    [ "SpeakResult", "classUPopup__SpeakResult.html#a7805a8a46b6ddad413a7afba08617da8", null ],
+    [ "VerticalBox", "classUPopup__SpeakResult.html#ae6a35f3328a60d896bd03df6c1d14ac3", null ]
+];

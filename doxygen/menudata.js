@@ -29,6 +29,7 @@ var menudata={children:[
 {text:"네임스페이스 멤버",url:"namespacemembers.html",children:[
 {text:"모두",url:"namespacemembers.html",children:[
 {text:"b",url:"namespacemembers.html#index_b"},
+{text:"c",url:"namespacemembers.html#index_c"},
 {text:"d",url:"namespacemembers.html#index_d"},
 {text:"e",url:"namespacemembers.html#index_e"},
 {text:"g",url:"namespacemembers.html#index_g"},
@@ -46,6 +47,7 @@ var menudata={children:[
 {text:"함수",url:"namespacemembers_func.html"},
 {text:"변수",url:"namespacemembers_vars.html",children:[
 {text:"b",url:"namespacemembers_vars.html#index_b"},
+{text:"c",url:"namespacemembers_vars.html#index_c"},
 {text:"d",url:"namespacemembers_vars.html#index_d"},
 {text:"e",url:"namespacemembers_vars.html#index_e"},
 {text:"g",url:"namespacemembers_vars.html#index_g"},

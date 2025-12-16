@@ -4,6 +4,7 @@ var structFResultStatData =
     [ "ColorType", "structFResultStatData.html#a75e66157640bcf669787b2e987ab4412", null ],
     [ "GradeTextureType", "structFResultStatData.html#aac45c5869b828c7f8cfb47807cdb968f", null ],
     [ "RatePercent", "structFResultStatData.html#a61bcfba9b5e9da91e4c34a190489907f", null ],
+    [ "ScoreTextColor", "structFResultStatData.html#a4749547011acf01a0866b9d100435517", null ],
     [ "ScoreValue", "structFResultStatData.html#ad1687ae0bdba36508a791b853a82dbe6", null ],
     [ "SymbolTextureType", "structFResultStatData.html#a40b2ff380b44130455998b5fd7288c65", null ],
     [ "SymbolValue", "structFResultStatData.html#a5264bce607096b760b0c3b0add5641e7", null ],

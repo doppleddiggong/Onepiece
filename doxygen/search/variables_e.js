@@ -18,7 +18,7 @@ var searchData=
   ['onmessage_15',['OnMessage',['../classUBroadcastManager.html#a43a192f0157e3177589f7b09b11a1e84',1,'UBroadcastManager']]],
   ['onmovie_16',['OnMovie',['../classUBroadcastManager.html#a50769b10e969cd2c83276e302cfb39b1',1,'UBroadcastManager']]],
   ['onnetworkwaitcount_17',['OnNetworkWaitCount',['../classUBroadcastManager.html#a2692fc3fbb06745f2cd20e9d5769abb8',1,'UBroadcastManager']]],
-  ['onokdelegate_18',['OnOkDelegate',['../classUPopup__MsgBox.html#a406a132b2766683bdb4879f57c6e6925',1,'UPopup_MsgBox']]],
+  ['onokdelegate_18',['onokdelegate',['../classUPopup__MsgBox.html#a406a132b2766683bdb4879f57c6e6925',1,'UPopup_MsgBox::OnOkDelegate'],['../classUPopup__SpeakQuest.html#a113785f402816a21488e8ce01ddb6c7b',1,'UPopup_SpeakQuest::OnOkDelegate']]],
   ['onquestscenariodataupdated_19',['OnQuestScenarioDataUpdated',['../classALingoGameState.html#a976d75973b49576e435409c8e23a378a',1,'ALingoGameState']]],
   ['onreadresultupdated_20',['OnReadResultUpdated',['../classALingoGameState.html#ada8ce049489e728db762ee7a5f3b6bc3',1,'ALingoGameState']]],
   ['onroomidupdated_21',['OnRoomIdUpdated',['../classALingoGameState.html#ae6af66ce18ee2c46bc67df445c17a796',1,'ALingoGameState']]],

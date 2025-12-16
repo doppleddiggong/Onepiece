@@ -1,6 +1,7 @@
 var classANetworkTesterActor =
 [
     [ "ANetworkTesterActor", "classANetworkTesterActor.html#add47c5b8d704c70533ebebc39066b9a1", null ],
+    [ "OnResponseChatAnswers", "classANetworkTesterActor.html#a4a3f168a07e5fb13d76f734624430bf1", null ],
     [ "OnResponseInterviewHello", "classANetworkTesterActor.html#a190dab0d692f2bbc9b63f44b32644183", null ],
     [ "OnResponseListenAudio", "classANetworkTesterActor.html#a9e1b4f31f330262ef767b99331347a53", null ],
     [ "OnResponseOcrExtract", "classANetworkTesterActor.html#af82715f7fb18aeec53b5b6271fe1d33b", null ],
@@ -8,6 +9,8 @@ var classANetworkTesterActor =
     [ "OnResponseUserMe", "classANetworkTesterActor.html#afb8a7bf0db529e76c4527c7c1d890571", null ],
     [ "OnResponseUserRegister", "classANetworkTesterActor.html#af85fc6f7a9ac286f04aa0027aa75462a", null ],
     [ "OnResponseUserToken", "classANetworkTesterActor.html#a3f925eef81e5fdc41ff8bb0e1fea9015", null ],
+    [ "RequestChatAnswers", "classANetworkTesterActor.html#a516481b9a550d997356b12b271af98e4", null ],
+    [ "RequestChatAnswersWithAudio", "classANetworkTesterActor.html#a57ef512fa15c130a8e392de85a14075b", null ],
     [ "RequestInterviewHello", "classANetworkTesterActor.html#ad2080955057d6f1cea28ba786c4de31d", null ],
     [ "RequestListenAudio", "classANetworkTesterActor.html#a4eaffe026785fa2d344bedcf9b316b92", null ],
     [ "RequestOcrExtract", "classANetworkTesterActor.html#a02ff1581891a931b644040b2fe7f5959", null ],
@@ -16,6 +19,9 @@ var classANetworkTesterActor =
     [ "RequestUserRegister", "classANetworkTesterActor.html#ae53f27ab3ca6671a7c55a14c055d03a3", null ],
     [ "RequestUserToken", "classANetworkTesterActor.html#a809947b71f79e9024a44a62d0cc20a90", null ],
     [ "AudioText", "classANetworkTesterActor.html#a996eb18cfc8d22f19124b0d1915be991", null ],
+    [ "ChatAudioPath", "classANetworkTesterActor.html#a9817bfb061eeb83ab6a479d1659e3c4d", null ],
+    [ "ChatContext", "classANetworkTesterActor.html#a0070a4fc0909e776aabf2ea57949036f", null ],
+    [ "ChatQuestion", "classANetworkTesterActor.html#a862d3fc0d34f09f9e0fd23ff19a41d37", null ],
     [ "OcrImagePath", "classANetworkTesterActor.html#a2364f342501971f4ad5935cd3265898f", null ],
     [ "SpeakingAudioPath", "classANetworkTesterActor.html#a63de4f3b4b19044fbe8efcf3b9a5d3ee", null ],
     [ "SpeakingQuestion", "classANetworkTesterActor.html#aef38e936988cdf1d8002abc12e4804b1", null ],

@@ -41,6 +41,7 @@ var namespaces_dup =
       [ "GetSocketURL", "namespaceNetworkConfig.html#a948647fad9ed84a91de549757a7a0e74", null ]
     ] ],
     [ "RequestAPI", "namespaceRequestAPI.html", [
+      [ "chats_answers", "namespaceRequestAPI.html#a9d0b152ffca83b4b8289f1b6da6f2aa4", null ],
       [ "evaluations_rooms", "namespaceRequestAPI.html#ab35a143dc8865f6bf07bc269a00b075d", null ],
       [ "Health", "namespaceRequestAPI.html#ae1061ff9836b3127b56024d0a0f6fd65", null ],
       [ "interview_answer", "namespaceRequestAPI.html#ac23f8020a8a24f9d640a8aefbe9e56e5", null ],
@@ -49,6 +50,7 @@ var namespaces_dup =
       [ "listenings_audio", "namespaceRequestAPI.html#a5954e96c78c1422b8245017dccc9652d", null ],
       [ "read_result", "namespaceRequestAPI.html#aa6ffe726a2b06feccfa128b3200d8816", null ],
       [ "scenario", "namespaceRequestAPI.html#ae683aef1f6770a15bcad8cce46f40456", null ],
+      [ "speak_result", "namespaceRequestAPI.html#a43085442f94afcd668b994b6dd4f71d9", null ],
       [ "speakings_judes", "namespaceRequestAPI.html#aa53d82cb9d5a048604a8c32223229080", null ],
       [ "speakings_result", "namespaceRequestAPI.html#a3bab55186c7ad88a9183615b45b1acc4", null ],
       [ "users_me", "namespaceRequestAPI.html#aee732573aa0bc733fedaab927a273dcd", null ],

@@ -1,6 +1,7 @@
 var classUVoiceFunctionLibrary =
 [
     [ "ConvertPCM2WAV", "classUVoiceFunctionLibrary.html#aefbf705777114a8667edc76347e70cda", null ],
+    [ "ConvertStereoToMono", "classUVoiceFunctionLibrary.html#aa20f24ee3c303d4652adeef2ff9e9dee", null ],
     [ "CreateProceduralSoundWaveFromWavData", "classUVoiceFunctionLibrary.html#adf741678fa5eeadc6dbe30624ef6888b", null ],
     [ "CreateSoundWaveFromWavData", "classUVoiceFunctionLibrary.html#a0a42913d3f8f356e575bf9805e6e7af3", null ],
     [ "ResampleAudio", "classUVoiceFunctionLibrary.html#ab7286a2381e79cda24832986f2f70964", null ],

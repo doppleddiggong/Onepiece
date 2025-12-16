@@ -12,7 +12,7 @@ var classUMainWidget =
     [ "SetMissionTimerState", "classUMainWidget.html#a5a104d787c94fb051427186f6a0236fe", null ],
     [ "UpdateHookState", "classUMainWidget.html#a394decf5a4b89cb41e45422c7e770b82", null ],
     [ "UpdateRoomWidget", "classUMainWidget.html#ab37049360b4f15a3766f20f5db31cd11", null ],
-    [ "UpdateSpeakWidget", "classUMainWidget.html#aca756504843f51373e2c63f2bd1e1301", null ],
+    [ "UpdateSpeakWidget", "classUMainWidget.html#a517cc04dea40c7537fabf7fb83582006", null ],
     [ "UpdateStateWidget", "classUMainWidget.html#a7b24fc5d83920b4a1b62e9cf9b34ff02", null ],
     [ "UpdateTimerDisplay", "classUMainWidget.html#a9239722afccf53cb761984ce87f32228", null ],
     [ "CachedGameState", "classUMainWidget.html#aa0abca549ef2be9c4610d4890d5c0448", null ],

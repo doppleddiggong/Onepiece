@@ -14,6 +14,9 @@ var FResourceTextureData_8h =
       [ "Read", "FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2a7a1a5f3e79fdc91edf2f5ead9d66abb4", null ],
       [ "Listen", "FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2ace6802b46091c31e2ec2363883fe8369", null ],
       [ "Speak", "FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2a8b1e2b9b342dd37344c6343dc23a6733", null ],
-      [ "Write", "FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2a1129c0e4d43f2d121652a7302712cff6", null ]
+      [ "Write", "FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2a1129c0e4d43f2d121652a7302712cff6", null ],
+      [ "Grammar", "FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2ad305bbe79fb9dd87a3fda339c8b601b6", null ],
+      [ "Context", "FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2aad4e206408c1c59bfb8a057ba7857446", null ],
+      [ "Overall", "FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2a9c831ae0a54d3665f982ceea6b4c9ce0", null ]
     ] ]
 ];

@@ -10,6 +10,7 @@ var dir_550f083bbe519bd985f450628c1369b6 =
     [ "StartWidget.cpp", "StartWidget_8cpp.html", null ],
     [ "UAnswerItem.cpp", "UAnswerItem_8cpp.html", null ],
     [ "UAutoDespawnItem.cpp", "UAutoDespawnItem_8cpp.html", null ],
+    [ "UDespawnItem.cpp", "UDespawnItem_8cpp.html", null ],
     [ "UDialogManager.cpp", "UDialogManager_8cpp.html", "UDialogManager_8cpp" ],
     [ "UDialogWidget.cpp", "UDialogWidget_8cpp.html", null ],
     [ "UFadeWidget.cpp", "UFadeWidget_8cpp.html", null ],

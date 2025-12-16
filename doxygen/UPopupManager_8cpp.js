@@ -8,6 +8,9 @@ var UPopupManager_8cpp =
     [ "QuestionnaireResult_POPUP_PATH", "UPopupManager_8cpp.html#a331d4d8655e77dda1f22a9c393284be2", null ],
     [ "READQUEST_POPUP_PATH", "UPopupManager_8cpp.html#ae72e492e64d4fac4fe41150d760a34d3", null ],
     [ "RESULT_POPUP_PATH", "UPopupManager_8cpp.html#a6b75ebb39991514427a5dec40ddc8608", null ],
+    [ "SPEAKQUEST_POPUP_PATH", "UPopupManager_8cpp.html#af18458e7db8a5ad6a888977ad460b9ac", null ],
+    [ "SPEAKQUESTJUDES_POPUP_PATH", "UPopupManager_8cpp.html#ac045e615edd7f908ed119473e8a9d8db", null ],
+    [ "SPEAKRESULT_POPUP_PATH", "UPopupManager_8cpp.html#afae3653ae08e045c781ce0999f43d026", null ],
     [ "WORD_POPUP_PATH", "UPopupManager_8cpp.html#ac3154098f4c271448b33ec205a25af57", null ],
     [ "WriteBoard_POPUP_PATH", "UPopupManager_8cpp.html#ade39a153d9fb76c8d48d6d56e48c72f9", null ]
 ];

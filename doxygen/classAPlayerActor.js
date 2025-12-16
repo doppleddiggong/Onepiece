@@ -44,6 +44,7 @@ var classAPlayerActor =
     [ "RecoveryMovementMode", "classAPlayerActor.html#a4b7956b192cc40b1b2b5cdf3c43dc408", null ],
     [ "RequestListenAudio", "classAPlayerActor.html#aa480da64460a46fe061c63c3c00cc78f", null ],
     [ "RequestSpeakAudio", "classAPlayerActor.html#a182d5478895ad51a12b3b342c7f0294f", null ],
+    [ "Server_NotifySpeakJudgeComplete", "classAPlayerActor.html#a0e64c5423cfba3cf1261581d2da13b85", null ],
     [ "ServerRPC_DoJump", "classAPlayerActor.html#abdf855ae8de99e93f1f83e929551909d", null ],
     [ "ServerRPC_DoJumpStart", "classAPlayerActor.html#aad1b768bb94774991c12719d0287c4b0", null ],
     [ "ServerRPC_DoRun", "classAPlayerActor.html#a95eacfc2a9907a40bd83fe6383969ae2", null ],
