@@ -43,6 +43,9 @@ struct LATTELIBRARY_API FResultStatData
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="ResultStat|Score", meta=(EditCondition="WidgetType == EResultItemWidgetType::Score", EditConditionHides))
 	float ScoreValue = 0.f;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="ResultStat|Score", meta=(EditCondition="WidgetType == EResultItemWidgetType::Score", EditConditionHides))
+	FLinearColor ScoreTextColor;
+	
 	/** Rate 타입 전용: 퍼센트 값 (0.0 ~ 1.0) */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="ResultStat|Rate", meta=(EditCondition="WidgetType == EResultItemWidgetType::Rate", EditConditionHides))
 	float RatePercent = 0.f;
@@ -60,6 +63,7 @@ struct LATTELIBRARY_API FResultStatData
 		, TitleText(FText::GetEmpty())
 		, GradeTextureType(EResourceTextureType::Rarity_D)
 		, ScoreValue(0.f)
+		, ScoreTextColor(FLinearColor::White)
 		, RatePercent(0.f)
 		, SymbolTextureType(EResourceTextureType::Rarity_D)
 		, SymbolValue()

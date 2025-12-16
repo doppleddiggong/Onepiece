@@ -44,7 +44,7 @@ void UResultStatWidget::InitData(const FResultStatData& InData)
 		break;
 
 	case EResultItemWidgetType::Score:
-		SetScoreValue(InData.ScoreValue);
+		SetScoreValue(InData.ScoreValue, InData.ScoreTextColor);
 		break;
 
 	case EResultItemWidgetType::Rate:
@@ -98,13 +98,15 @@ void UResultStatWidget::SetGradeValue(const EResourceTextureType TextureType)
 	Image_Grade->SetBrush(Brush);
 }
 
-void UResultStatWidget::SetScoreValue(const float InValue)
+void UResultStatWidget::SetScoreValue(const float InValue, const FLinearColor InScoreTextColor)
 {
 	ScoreValue = InValue;
+	ScoreTextColor = InScoreTextColor;
 
 	if (Txt_Score)
 	{
 		Txt_Score->SetText(FText::AsNumber(InValue));
+		Txt_Score->SetColorAndOpacity(ScoreTextColor);
 	}
 }
 

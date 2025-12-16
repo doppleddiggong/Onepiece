@@ -97,7 +97,7 @@ void AFood::UpdateFoodWidget()
 	UCityNameWidget* NameWidget = Cast<UCityNameWidget>(CityName->GetWidget());
 	if (NameWidget)
 	{
-		NameWidget->SetCityName(CurrentFoodData.word1.name);
+		NameWidget->SetCityName(FString::Printf(TEXT("%s %s"), *CurrentFoodData.word1.name, *CurrentFoodData.word2.name));
 	}
 }
 

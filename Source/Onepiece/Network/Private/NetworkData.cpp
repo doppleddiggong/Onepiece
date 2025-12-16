@@ -561,36 +561,27 @@ void FResponseSpeakingJudes::PrintData() const
 	NETWORK_LOG( TEXT("[RES] %s"), *OutputString);
 }
 
-TArray<FResultStatData> FResponseSpeakingJudes::GetResultStatData()
+TArray<FResultStatData> FResponseSpeakingJudes::GetResultStatData() const
 {
 	TArray<FResultStatData> StatDataList;
 
 	// Grammar Score
 	FResultStatData GrammarData;
-	GrammarData.WidgetType = EResultItemWidgetType::Grade;
-	GrammarData.ColorType = EColorStyleType::Green;
-	GrammarData.TitleText = FText::FromString(TEXT("GRAMMER"));
+	GrammarData.WidgetType = EResultItemWidgetType::Score;
+	GrammarData.ColorType = ULingoGameHelper::GetRankColorType(grammar_score);
+	GrammarData.TitleText = FText::FromString(TEXT("Grammer"));
 	GrammarData.ScoreValue = grammar_score;
-	GrammarData.GradeTextureType = ULingoGameHelper::ConvertGradeScore(grammar_score);
+	GrammarData.ScoreTextColor = ULingoGameHelper::GetRankColor(grammar_score);
 	StatDataList.Add(GrammarData);
 
 	// Context Score
 	FResultStatData ContextData;
-	ContextData.WidgetType = EResultItemWidgetType::Grade;
-	ContextData.ColorType = EColorStyleType::Blue;
-	ContextData.TitleText = FText::FromString(TEXT("CONTEXT"));
+	ContextData.WidgetType = EResultItemWidgetType::Score;
+	ContextData.ColorType = ULingoGameHelper::GetRankColorType(context_score);
+	ContextData.TitleText = FText::FromString(TEXT("Context"));
 	ContextData.ScoreValue = context_score;
-	ContextData.GradeTextureType = ULingoGameHelper::ConvertGradeScore(context_score);
+	ContextData.ScoreTextColor = ULingoGameHelper::GetRankColor(context_score);
 	StatDataList.Add(ContextData);
-
-	// Final Overall Score
-	FResultStatData OverallData;
-	OverallData.WidgetType = EResultItemWidgetType::Grade;
-	OverallData.ColorType = EColorStyleType::Yellow;
-	OverallData.TitleText = FText::FromString(TEXT("SCORE"));
-	OverallData.ScoreValue = final_overall_score;
-	OverallData.GradeTextureType = ULingoGameHelper::ConvertGradeScore(final_overall_score);
-	StatDataList.Add(OverallData);
 
 	return StatDataList;
 }
@@ -1069,6 +1060,112 @@ void FResponseListenResult::PrintData() const
 	NETWORK_LOG( TEXT("[RES] %s"), *OutputString);
 }
 
+
+bool FRequestSpeakResult::ToJsonString(FString& OutJson) const
+{
+	TSharedPtr<FJsonObject> JsonObject = MakeShared<FJsonObject>();
+
+	JsonObject->SetNumberField(TEXT("room_id"), room_id);
+	JsonObject->SetNumberField(TEXT("user_id"), user_id);
+	JsonObject->SetNumberField(TEXT("scenario_id"), scenario_id);
+	JsonObject->SetNumberField(TEXT("stage_type"), stage_type);
+	JsonObject->SetNumberField(TEXT("state_type"), state_type);
+	JsonObject->SetNumberField(TEXT("result_time"), result_time);
+
+	TArray<TSharedPtr<FJsonValue>> WrongIdxArray;
+	for (int32 Idx : wrong_idx)
+	{
+		WrongIdxArray.Add(MakeShared<FJsonValueNumber>(Idx));
+	}
+	JsonObject->SetArrayField(TEXT("wrong_idx"), WrongIdxArray);
+
+	TSharedRef<TJsonWriter<>> Writer = TJsonWriterFactory<>::Create(&OutJson);
+	return FJsonSerializer::Serialize(JsonObject.ToSharedRef(), Writer);
+}
+
+
+// =================================================================================
+// FResponseSpeakResult
+// =================================================================================
+
+void FResponseSpeakResult::SetFromHttpResponse(const TSharedPtr<IHttpResponse, ESPMode::ThreadSafe>& Response)
+{
+	if (!Response.IsValid())
+	{
+		return;
+	}
+
+	FString JsonString = Response->GetContentAsString();
+	TSharedPtr<FJsonObject> JsonObject;
+	TSharedRef<TJsonReader<>> Reader = TJsonReaderFactory<>::Create(JsonString);
+
+	if (FJsonSerializer::Deserialize(Reader, JsonObject) && JsonObject.IsValid())
+	{
+		grade = JsonObject->GetStringField(TEXT("grade"));
+		average_score = JsonObject->GetIntegerField(TEXT("average_score"));
+		top_percent = JsonObject->GetNumberField(TEXT("top_percent"));
+
+		// scores 배열 파싱
+		const TArray<TSharedPtr<FJsonValue>>* ScoresArray;
+		if (JsonObject->TryGetArrayField(TEXT("scores"), ScoresArray))
+		{
+			scores.Empty();
+			for (const auto& ScoreValue : *ScoresArray)
+			{
+				TSharedPtr<FJsonObject> ScoreObj = ScoreValue->AsObject();
+				if (ScoreObj.IsValid())
+				{
+					FSpeakScoreDetail ScoreDetail;
+					ScoreDetail.score = ScoreObj->GetIntegerField(TEXT("score"));
+					ScoreDetail.desc = ScoreObj->GetStringField(TEXT("desc"));
+					scores.Add(ScoreDetail);
+				}
+			}
+		}
+	}
+}
+
+void FResponseSpeakResult::PrintData() const
+{
+	FString OutputString;
+	FJsonObjectConverter::UStructToJsonObjectString(
+		*this,
+		OutputString,
+		0,
+		0
+	);
+	NETWORK_LOG( TEXT("[RES] %s"), *OutputString);
+}
+
+TArray<FResultStatData> FResponseSpeakResult::GetResultStatData() const
+{
+	TArray<FResultStatData> StatDataList;
+	
+	FResultStatData GradeResultData;
+	GradeResultData.WidgetType = EResultItemWidgetType::Grade;
+	GradeResultData.ColorType = EColorStyleType::Green;
+	GradeResultData.TitleText = FText::FromString(TEXT("Grade"));
+	GradeResultData.GradeTextureType = ULingoGameHelper::ConvertGradeString(grade);
+	StatDataList.Add(GradeResultData);
+
+	FResultStatData TopRateResultData;
+	TopRateResultData.WidgetType = EResultItemWidgetType::Rate;
+	TopRateResultData.ColorType = EColorStyleType::Red;
+	TopRateResultData.TitleText = FText::FromString(TEXT("Top"));
+	TopRateResultData.RatePercent = top_percent;
+	StatDataList.Add(TopRateResultData);
+		
+	FResultStatData AverageScoreResultData;
+	AverageScoreResultData.WidgetType = EResultItemWidgetType::Symbol;
+	AverageScoreResultData.ColorType = EColorStyleType::Purple;
+	AverageScoreResultData.TitleText = FText::FromString(TEXT("Score"));
+	AverageScoreResultData.SymbolTextureType = EResourceTextureType::Score;
+	AverageScoreResultData.SymbolValue = FString::Printf(TEXT("%d"), average_score);
+	StatDataList.Add(AverageScoreResultData);
+
+	return StatDataList;
+}
+
 FString FSpeakStageQuestion::GetQuestionMessage() const
 {
 	return FString::Printf(TEXT("%s\n[%s]"), *eng, *kor);
@@ -1225,5 +1322,35 @@ void FResponseEvaluationResult::PrintData() const
 		0
 	);
 	NETWORK_LOG( TEXT("[RES] %s"), *OutputString);
+}
+
+
+// =================================================================================
+// Chat Answers API Implementation
+// =================================================================================
+
+void FResponseChatAnswers::SetFromHttpResponse(const TSharedPtr<class IHttpResponse, ESPMode::ThreadSafe>& Response)
+{
+	if (!Response.IsValid())
+	{
+		return;
+	}
+
+	FString JsonString = Response->GetContentAsString();
+	TSharedPtr<FJsonObject> JsonObject;
+	TSharedRef<TJsonReader<>> Reader = TJsonReaderFactory<>::Create(JsonString);
+
+	if (FJsonSerializer::Deserialize(Reader, JsonObject) && JsonObject.IsValid())
+	{
+		if (JsonObject->HasField(TEXT("answer")))
+		{
+			answer = JsonObject->GetStringField(TEXT("answer"));
+		}
+	}
+}
+
+void FResponseChatAnswers::PrintData() const
+{
+	NETWORK_LOG(TEXT("[RES] Chat Answers - Answer: %s"), *answer);
 }
 

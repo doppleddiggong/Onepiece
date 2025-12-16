@@ -299,3 +299,39 @@ TArray<uint8> UVoiceFunctionLibrary::ResampleAudio(const TArray<uint8>& InPCMDat
 
 	return OutPCMData;
 }
+
+TArray<uint8> UVoiceFunctionLibrary::ConvertStereoToMono(const TArray<uint8>& InStereoPCMData)
+{
+	// PCM 데이터는 int16 형식 (16bit), 스테레오는 [L0, R0, L1, R1, ...] 형태
+	const int32 NumSamples = InStereoPCMData.Num() / sizeof(int16);
+
+	if (NumSamples % 2 != 0)
+	{
+		PRINTLOG(TEXT("[ConvertStereoToMono] Invalid stereo PCM data size (not even number of samples)"));
+		return InStereoPCMData;
+	}
+
+	const int16* InSamples = reinterpret_cast<const int16*>(InStereoPCMData.GetData());
+	const int32 NumMonoSamples = NumSamples / 2;
+
+	TArray<uint8> MonoPCMData;
+	MonoPCMData.Reserve(NumMonoSamples * sizeof(int16));
+
+	// 좌우 채널 평균으로 모노 생성
+	for (int32 i = 0; i < NumMonoSamples; ++i)
+	{
+		const int16 LeftSample = InSamples[i * 2];      // 왼쪽 채널
+		const int16 RightSample = InSamples[i * 2 + 1]; // 오른쪽 채널
+
+		// 평균값 계산 (오버플로우 방지)
+		const int32 AverageSample = (static_cast<int32>(LeftSample) + static_cast<int32>(RightSample)) / 2;
+		const int16 MonoSample = static_cast<int16>(FMath::Clamp(AverageSample, -32768, 32767));
+
+		// 결과 버퍼에 추가
+		const uint8* SampleBytes = reinterpret_cast<const uint8*>(&MonoSample);
+		MonoPCMData.Append(SampleBytes, sizeof(int16));
+	}
+
+	PRINTLOG(TEXT("[ConvertStereoToMono] Converted %d stereo samples to %d mono samples"), NumSamples, NumMonoSamples);
+	return MonoPCMData;
+}

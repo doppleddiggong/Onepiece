@@ -23,6 +23,12 @@ public:
 	FString GetToken() { return AccessToken; }
 	void SetToken(FString InToken) { this->AccessToken = InToken; }
 
+	/// @brief Chat AI의 Context를 반환합니다.
+	/// @details 기본값은 "You are a helpful assistant"이며,
+	///          향후 GameMode, GameState, PlayerState 데이터를 참조하여 동적으로 생성할 수 있습니다.
+	/// @return Chat AI에게 전달할 Context 문자열
+	FString GetChatContext() const;
+
 private:
 	FString AccessToken;
 
@@ -79,10 +85,9 @@ public:
 	UFUNCTION(Server, Reliable)
 	void Server_NotifySpeakDataReady();
 
-	/// @brief SpeakQuest 평가 결과를 서버에 저장합니다
+	/// @brief SpeakQuest 평가 결과를 저장합니다 (Server에서 호출됨)
 	/// @param EvaluationResult 저장할 평가 결과
-	UFUNCTION(Server, Reliable, WithValidation)
-	void Server_AddSpeakJudes(const FResponseSpeakingJudes& EvaluationResult);
+	void AddSpeakJudes(const FResponseSpeakingJudes& EvaluationResult);
 
 	/// @brief SpeakQuest 완료 처리 (서버에서만 호출)
 	UFUNCTION(BlueprintCallable, Category = "SpeakQuest")
@@ -133,11 +138,16 @@ public:
 	UPROPERTY(Transient, ReplicatedUsing = OnRep_SpeakScenarioData, BlueprintReadOnly, Category = "SpeakQuest")
 	FResponseSpeakScenario SpeakScenarioData;
 
+	FResponseSpeakResult SpeakResult;
+	
 	/// @brief SpeakQuest 평가 결과 목록
 	/// @note RequestSpeakingJudges 응답 데이터를 쌓아둠
 	UPROPERTY(Transient, Replicated, BlueprintReadOnly, Category = "SpeakQuest")
 	TArray<struct FResponseSpeakingJudes> SpeakJudesResults;
 
+
+
+	
 	/// @brief SpeakQuest 완료 여부 플래그
 	UPROPERTY(Replicated, BlueprintReadOnly, Category = "SpeakQuest")
 	bool bSpeakQuestCompleted = false;

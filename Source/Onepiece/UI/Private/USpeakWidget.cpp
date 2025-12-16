@@ -3,6 +3,7 @@
 #include "USpeakWidget.h"
 
 #include "ASpeakStageActor.h"
+#include "ALingoPlayerState.h"
 #include "Components/TextBlock.h"
 #include "GameLogging.h"
 
@@ -26,7 +27,7 @@ void USpeakWidget::NativeConstruct()
 // Public Interface
 //----------------------------------------------------------
 
-void USpeakWidget::UpdateSpeakStage(ASpeakStageActor* SpeakStage, APlayerState* LocalPlayerState)
+void USpeakWidget::UpdateSpeakStage(ASpeakStageActor* SpeakStage, APlayerState* LocalPlayerState, int32 StepIndex)
 {
 	if (!SpeakStage)
 	{
@@ -34,19 +35,30 @@ void USpeakWidget::UpdateSpeakStage(ASpeakStageActor* SpeakStage, APlayerState* 
 		return;
 	}
 
-	const int32 CurrentStep = SpeakStage->GetCurrentStepIndex();
+	// 서버에서 전달받은 StepIndex를 사용하여 복제 타이밍 문제를 회피
 	const int32 TotalSteps = SpeakStage->GetTotalQuestions();
-	const FString Question = SpeakStage->GetCurrentQuestion();
+
+	// PlayerState에서 직접 질문 가져오기
+	FString Question;
+	if (auto PS = Cast<ALingoPlayerState>(LocalPlayerState))
+	{
+		if (PS->SpeakScenarioData.speak_quest_data.IsValidIndex(StepIndex))
+		{
+			Question = PS->SpeakScenarioData.speak_quest_data[StepIndex].GetQuestionMessage();
+		}
+	}
 
 	if ( Question.IsEmpty())
 	{
 		SetWidgetVisibility(false);
+		PRINTLOG(TEXT("[SpeakWidget] Question is empty for StepIndex %d"), StepIndex);
 		return;
 	}
 
-	CurrentProgress->SetText(FText::FromString(FString::Printf(TEXT("%d/%d"), CurrentStep + 1, TotalSteps )));
-
+	CurrentProgress->SetText(FText::FromString(FString::Printf(TEXT("%d/%d"), StepIndex + 1, TotalSteps )));
 	CurrentQuestionText->SetText( FText::FromString(*Question));
+
+	PRINTLOG(TEXT("[SpeakWidget] Updated to step %d/%d: %s"), StepIndex + 1, TotalSteps, *Question);
 }
 
 void USpeakWidget::SetWidgetVisibility(bool bShow)

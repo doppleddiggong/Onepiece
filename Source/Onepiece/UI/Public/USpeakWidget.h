@@ -36,11 +36,12 @@ public:
 	 * @brief SpeakStage 상태를 UI에 반영
 	 * @param SpeakStage SpeakStageActor 참조
 	 * @param LocalPlayerState 로컬 플레이어의 PlayerState (내 턴인지 확인용)
+	 * @param StepIndex 서버에서 전달받은 현재 단계 인덱스 (복제 타이밍 문제 해결)
 	 *
 	 * 이 함수를 주기적으로 호출하거나 RepNotify 이벤트에서 호출
 	 */
 	UFUNCTION(BlueprintCallable, Category = "SpeakWidget")
-	void UpdateSpeakStage(class ASpeakStageActor* SpeakStage, class APlayerState* LocalPlayerState);
+	void UpdateSpeakStage(class ASpeakStageActor* SpeakStage, class APlayerState* LocalPlayerState, int32 StepIndex);
 
 	/**
 	 * @brief 위젯 표시/숨김

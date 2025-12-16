@@ -39,7 +39,7 @@ public:
 	void SetGradeValue(const EResourceTextureType TextureType);
 
 	UFUNCTION(BlueprintCallable)
-	void SetScoreValue(const float InValue);
+	void SetScoreValue(const float InValue, const FLinearColor InScoreTextColor);
 
 	UFUNCTION(BlueprintCallable)
 	void SetRateValue(const float InPercent);
@@ -108,6 +108,7 @@ public:
 	// 저장값
 	float GradeValue = 0.f;
 	float ScoreValue = 0.f;
+	FLinearColor ScoreTextColor = FLinearColor::White;
 	float RateValue = 0.f;
 	FString SymbolValue;
 };

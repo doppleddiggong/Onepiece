@@ -8,6 +8,7 @@
 #include "Food.h"
 #include "GameLogging.h"
 #include "ANetworkBroadcastActor.h"
+#include "FoodCourtManager.h"
 #include "Popup_Result.h"
 #include "UBroadcastManager.h"
 #include "UPopupManager.h"
@@ -170,6 +171,14 @@ void AFoodHolder::OnFoodBoxOverlapBegin(
 		
 				// Food 소거 (서버에서만, 자동 복제됨)
 				Food->Destroy();
+
+				// 새 FoodContainer 생성
+				AActor* FoodContainerManager = UGameplayStatics::GetActorOfClass(GetWorld(), AFoodCourtManager::StaticClass());
+				if (AFoodCourtManager* FCManager = Cast<AFoodCourtManager>(FoodContainerManager))
+				{
+					FCManager->SpawnFoodContainer();
+				}
+				
 			}, 0.5f, false);
 		}
 	}

@@ -27,6 +27,7 @@
 #include "UBroadcastManager.h"
 #include "UFadeWidget.h"
 #include "UKLingoNetworkSystem.h"
+#include "UPopup_SpeakQuestJudes.h"
 #include "UQuestInfoWidget.h"
 
 #include "Camera/CameraComponent.h"
@@ -626,6 +627,28 @@ void APlayerActor::OnTeleportAllPlayers(FVector TargetLocation)
 void APlayerActor::ServerRPC_Teleport_Implementation(FVector TargetLocation)
 {
 	SetActorLocation(TargetLocation);
+}
+
+void APlayerActor::Server_NotifySpeakJudgeComplete_Implementation(const FResponseSpeakingJudes& Response)
+{
+	if (!HasAuthority())
+		return;
+
+	// PlayerState에 평가 결과 저장
+	if (auto PS = GetPlayerState<ALingoPlayerState>())
+	{
+		PS->AddSpeakJudes(Response);
+
+		if (auto Popup = UPopupManager::ShowPopupAs<UPopup_SpeakQuestJudes>(GetWorld(), EPopupType::SpeakQuestJudes))
+			Popup->InitPopup(Response);
+
+		
+		// SpeakStage에 답변 완료 알림
+		if (auto SpeakStage = ULingoGameHelper::GetSpeakStageActor(GetWorld()))
+		{
+			SpeakStage->NotifyAnswerComplete(PS);
+		}
+	}
 }
 
 void APlayerActor::OnFadeOutCompleteForTeleport()
