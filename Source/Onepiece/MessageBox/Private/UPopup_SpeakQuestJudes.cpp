@@ -10,6 +10,7 @@
 #include "UGameDataManager.h"
 #include "ULingoGameHelper.h"
 #include "UPopupManager.h"
+#include "EPopupType.h"
 #include "Components/Image.h"
 
 
@@ -19,10 +20,12 @@ void UPopup_SpeakQuestJudes::NativeConstruct()
 
 	if (HideAnim)
 	{
+		// 이 객체에 바인딩된 모든 델리게이트 제거 (중복 방지)
+		UnbindAllFromAnimationFinished(HideAnim);
+
+		// 새로 바인딩
 		FWidgetAnimationDynamicEvent HideDelegate;
 		HideDelegate.BindDynamic(this, &UPopup_SpeakQuestJudes::OnHideAnimComplete);
-
-		UnbindFromAnimationFinished(HideAnim, HideDelegate);  // 기존 바인딩 제거
 		BindToAnimationFinished(HideAnim, HideDelegate);
 	}
 }
@@ -70,6 +73,8 @@ void UPopup_SpeakQuestJudes::OnHideAnimComplete()
 {
 	if (UPopupManager* PopupMgr = UPopupManager::Get(GetWorld()))
 	{
-		PopupMgr->HideCurrentPopup();
+		// HideCurrentPopup() 대신 자기 자신을 명시적으로 닫기
+		// (위에 다른 팝업이 있어도 자신만 스택에서 제거됨)
+		PopupMgr->HidePopup(EPopupType::SpeakQuestJudes);
 	}
 }
