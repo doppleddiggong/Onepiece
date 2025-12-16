@@ -49,6 +49,7 @@ var NetworkData_8h =
       [ "UMETA", "NetworkData_8h.html#a89d484500632d06d10ab21aefde0efdaaa3f80d8f0f1b4ffa8c475f5d60ea5635", null ],
       [ "UMETA", "NetworkData_8h.html#a89d484500632d06d10ab21aefde0efdaaa3f80d8f0f1b4ffa8c475f5d60ea5635", null ]
     ] ],
+    [ "DECLARE_DELEGATE_ThreeParams", "NetworkData_8h.html#a7e8cae84425991d44fa50fc90acfd534", null ],
     [ "DECLARE_DELEGATE_TwoParams", "NetworkData_8h.html#a354a1837ba4da4ff03c88181313c3dc1", null ],
     [ "DECLARE_DELEGATE_TwoParams", "NetworkData_8h.html#a176f0d72d06ab65295baec529c15ad9f", null ],
     [ "DECLARE_DELEGATE_TwoParams", "NetworkData_8h.html#a026b18721a9480e911876ad4ee276fac", null ],
@@ -65,7 +66,6 @@ var NetworkData_8h =
     [ "DECLARE_DELEGATE_TwoParams", "NetworkData_8h.html#a83e282ba7f16da7dbce7042becbf3fb4", null ],
     [ "DECLARE_DELEGATE_TwoParams", "NetworkData_8h.html#a5fedccad4ddcec57d116a9d9654b75fe", null ],
     [ "DECLARE_DELEGATE_TwoParams", "NetworkData_8h.html#a697e7be88961f9eeb98db05dc466b4c1", null ],
-    [ "DECLARE_DELEGATE_TwoParams", "NetworkData_8h.html#a4318d05c8705aa2121759d6361419dd9", null ],
     [ "GetFullUrl", "NetworkData_8h.html#ab5ac57e8f51de6d1740c7a88534a7246", null ],
     [ "GetFullUrlWithQuery", "NetworkData_8h.html#a48c91628e64540f88495507117cfb69f", null ],
     [ "GetSocketURL", "NetworkData_8h.html#a948647fad9ed84a91de549757a7a0e74", null ],

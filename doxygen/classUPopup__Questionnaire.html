@@ -199,8 +199,8 @@ Private 멤버 함수</h2></td></tr>
 <tr class="separator:aadb6970921a81df8753ea055270e06b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad850d65df60161a6355f178d9b52cddd" id="r_ad850d65df60161a6355f178d9b52cddd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUPopup__Questionnaire.html#ad850d65df60161a6355f178d9b52cddd">OnClickSubmit</a> ()</td></tr>
 <tr class="separator:ad850d65df60161a6355f178d9b52cddd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2fb358d8d4d792742be247dc22a1f6b9" id="r_a2fb358d8d4d792742be247dc22a1f6b9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUPopup__Questionnaire.html#a2fb358d8d4d792742be247dc22a1f6b9">OnResponseOcrExtract</a> (<a class="el" href="structFResponseWriteSubmit.html">FResponseWriteSubmit</a> &amp;ResponseData, bool bWasSuccessful)</td></tr>
-<tr class="separator:a2fb358d8d4d792742be247dc22a1f6b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a66fc4e0a2e91f1562dfdb04062442fb2" id="r_a66fc4e0a2e91f1562dfdb04062442fb2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUPopup__Questionnaire.html#a66fc4e0a2e91f1562dfdb04062442fb2">OnResponseOcrExtract</a> (<a class="el" href="structFResponseWriteSubmit.html">FResponseWriteSubmit</a> &amp;ResponseData, TArray&lt; <a class="el" href="structFWriteWordData.html">FWriteWordData</a> &gt; InQuestionArray, bool bWasSuccessful)</td></tr>
+<tr class="separator:a66fc4e0a2e91f1562dfdb04062442fb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private 속성</h2></td></tr>
@@ -357,7 +357,7 @@ Private 속성</h2></td></tr>
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-3-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classUPopup__Questionnaire_a000251731ff573863632ec26ed140de7_cgraph.svg" width="100%" height="386"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classUPopup__Questionnaire_a000251731ff573863632ec26ed140de7_cgraph.svg" width="627" height="115"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -495,34 +495,37 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">   84</span>        <span class="comment">// Question마다 png파일 1개로 보내기</span></div>
 <div class="line"><span class="lineno">   85</span>        TArray&lt;FString&gt; pngFiles;</div>
 <div class="line"><span class="lineno">   86</span>        TArray&lt;FString&gt; targetTexts;</div>
-<div class="line"><span class="lineno">   87</span>        <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; question : <a class="code hl_variable" href="classUPopup__Questionnaire.html#aa6a50df8ff560e5f57e5a84e9ff1a68e">SavedQuestions</a>)</div>
-<div class="line"><span class="lineno">   88</span>        {</div>
-<div class="line"><span class="lineno">   89</span>            FString imagePath = <a class="code hl_variable" href="classUPopup__Questionnaire.html#a0c0019cf99925e1649b611775c04f852">WriteImagePath</a> + FString::Printf(TEXT(<span class="stringliteral">&quot;Answer%d.PNG&quot;</span>), question.Id);</div>
-<div class="line"><span class="lineno">   90</span>            <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[TEST] RequestOcrExtract - ImagePath: %s&quot;</span>), *imagePath);</div>
-<div class="line"><span class="lineno">   91</span>            </div>
-<div class="line"><span class="lineno">   92</span>            pngFiles.Add(imagePath);</div>
-<div class="line"><span class="lineno">   93</span>            targetTexts.Add(question.answer_kor);</div>
-<div class="line"><span class="lineno">   94</span>        }</div>
-<div class="line"><span class="lineno">   95</span>            </div>
-<div class="line"><span class="lineno">   96</span>        KLingoNetwork-&gt;RequestWriteSubmit(</div>
-<div class="line"><span class="lineno">   97</span>            pngFiles,</div>
-<div class="line"><span class="lineno">   98</span>            targetTexts,</div>
-<div class="line"><span class="lineno">   99</span>            FResponseWriteSubmitDelegate::CreateUObject(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUPopup__Questionnaire.html#a2fb358d8d4d792742be247dc22a1f6b9">UPopup_Questionnaire::OnResponseOcrExtract</a>)</div>
-<div class="line"><span class="lineno">  100</span>        );</div>
-<div class="line"><span class="lineno">  101</span>        </div>
-<div class="line"><span class="lineno">  102</span>        <a class="code hl_function" href="classUPopup__Questionnaire.html#aadb6970921a81df8753ea055270e06b3">OnClickClose</a>();</div>
-<div class="line"><span class="lineno">  103</span>    }</div>
-<div class="line"><span class="lineno">  104</span>    <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  105</span>    {</div>
-<div class="line"><span class="lineno">  106</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;UKLingoNetworkSystem not found!&quot;</span>));</div>
-<div class="line"><span class="lineno">  107</span>    }</div>
-<div class="line"><span class="lineno">  108</span>}</div>
+<div class="line"><span class="lineno">   87</span>        TArray&lt;FWriteWordData&gt; questions;</div>
+<div class="line"><span class="lineno">   88</span>        <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; question : <a class="code hl_variable" href="classUPopup__Questionnaire.html#aa6a50df8ff560e5f57e5a84e9ff1a68e">SavedQuestions</a>)</div>
+<div class="line"><span class="lineno">   89</span>        {</div>
+<div class="line"><span class="lineno">   90</span>            FString imagePath = <a class="code hl_variable" href="classUPopup__Questionnaire.html#a0c0019cf99925e1649b611775c04f852">WriteImagePath</a> + FString::Printf(TEXT(<span class="stringliteral">&quot;Answer%d.PNG&quot;</span>), question.Id);</div>
+<div class="line"><span class="lineno">   91</span>            <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[TEST] RequestOcrExtract - ImagePath: %s&quot;</span>), *imagePath);</div>
+<div class="line"><span class="lineno">   92</span>            </div>
+<div class="line"><span class="lineno">   93</span>            pngFiles.Add(imagePath);</div>
+<div class="line"><span class="lineno">   94</span>            targetTexts.Add(question.answer_kor);</div>
+<div class="line"><span class="lineno">   95</span>            questions.Add(question.word_data);</div>
+<div class="line"><span class="lineno">   96</span>        }</div>
+<div class="line"><span class="lineno">   97</span>            </div>
+<div class="line"><span class="lineno">   98</span>        KLingoNetwork-&gt;RequestWriteSubmit(</div>
+<div class="line"><span class="lineno">   99</span>            pngFiles,</div>
+<div class="line"><span class="lineno">  100</span>            questions,</div>
+<div class="line"><span class="lineno">  101</span>            targetTexts,</div>
+<div class="line"><span class="lineno">  102</span>            FResponseWriteSubmitDelegate::CreateUObject(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUPopup__Questionnaire.html#a66fc4e0a2e91f1562dfdb04062442fb2">UPopup_Questionnaire::OnResponseOcrExtract</a>)</div>
+<div class="line"><span class="lineno">  103</span>        );</div>
+<div class="line"><span class="lineno">  104</span>        </div>
+<div class="line"><span class="lineno">  105</span>        <a class="code hl_function" href="classUPopup__Questionnaire.html#aadb6970921a81df8753ea055270e06b3">OnClickClose</a>();</div>
+<div class="line"><span class="lineno">  106</span>    }</div>
+<div class="line"><span class="lineno">  107</span>    <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  108</span>    {</div>
+<div class="line"><span class="lineno">  109</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;UKLingoNetworkSystem not found!&quot;</span>));</div>
+<div class="line"><span class="lineno">  110</span>    }</div>
+<div class="line"><span class="lineno">  111</span>}</div>
 <div class="ttc" id="aGameLogging_8h_html_a9998c8beb11a6bad6ffada2e701fc0cf"><div class="ttname"><a href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a></div><div class="ttdeci">#define PRINTLOG(fmt,...)</div><div class="ttdef"><b>Definition</b> <a href="GameLogging_8h_source.html#l00030">GameLogging.h:30</a></div></div>
 <div class="ttc" id="aclassUPopup__Questionnaire_html_a0c0019cf99925e1649b611775c04f852"><div class="ttname"><a href="classUPopup__Questionnaire.html#a0c0019cf99925e1649b611775c04f852">UPopup_Questionnaire::WriteImagePath</a></div><div class="ttdeci">FString WriteImagePath</div><div class="ttdef"><b>Definition</b> <a href="Popup__Questionnaire_8h_source.html#l00075">Popup_Questionnaire.h:75</a></div></div>
-<div class="ttc" id="aclassUPopup__Questionnaire_html_a2fb358d8d4d792742be247dc22a1f6b9"><div class="ttname"><a href="classUPopup__Questionnaire.html#a2fb358d8d4d792742be247dc22a1f6b9">UPopup_Questionnaire::OnResponseOcrExtract</a></div><div class="ttdeci">void OnResponseOcrExtract(FResponseWriteSubmit &amp;ResponseData, bool bWasSuccessful)</div><div class="ttdef"><b>Definition</b> <a href="Popup__Questionnaire_8cpp_source.html#l00110">Popup_Questionnaire.cpp:110</a></div></div>
+<div class="ttc" id="aclassUPopup__Questionnaire_html_a66fc4e0a2e91f1562dfdb04062442fb2"><div class="ttname"><a href="classUPopup__Questionnaire.html#a66fc4e0a2e91f1562dfdb04062442fb2">UPopup_Questionnaire::OnResponseOcrExtract</a></div><div class="ttdeci">void OnResponseOcrExtract(FResponseWriteSubmit &amp;ResponseData, TArray&lt; FWriteWordData &gt; InQuestionArray, bool bWasSuccessful)</div><div class="ttdef"><b>Definition</b> <a href="Popup__Questionnaire_8cpp_source.html#l00113">Popup_Questionnaire.cpp:113</a></div></div>
 <div class="ttc" id="aclassUPopup__Questionnaire_html_aadb6970921a81df8753ea055270e06b3"><div class="ttname"><a href="classUPopup__Questionnaire.html#aadb6970921a81df8753ea055270e06b3">UPopup_Questionnaire::OnClickClose</a></div><div class="ttdeci">void OnClickClose()</div><div class="ttdef"><b>Definition</b> <a href="Popup__Questionnaire_8cpp_source.html#l00069">Popup_Questionnaire.cpp:69</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="Popup__Questionnaire_8cpp_source.html#l00069">OnClickClose()</a>, <a class="el" href="Popup__Questionnaire_8cpp_source.html#l00110">OnResponseOcrExtract()</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>, <a class="el" href="Popup__Questionnaire_8h_source.html#l00073">SavedQuestions</a>, <a class="el" href="Popup__Questionnaire_8h_source.html#l00075">WriteImagePath</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="Popup__Questionnaire_8cpp_source.html#l00069">OnClickClose()</a>, <a class="el" href="Popup__Questionnaire_8cpp_source.html#l00113">OnResponseOcrExtract()</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>, <a class="el" href="Popup__Questionnaire_8h_source.html#l00073">SavedQuestions</a>, <a class="el" href="Popup__Questionnaire_8h_source.html#l00075">WriteImagePath</a>.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="Popup__Questionnaire_8cpp_source.html#l00025">NativeConstruct()</a>.</p>
 <div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -530,7 +533,7 @@ Private 속성</h2></td></tr>
 <div id="dynsection-6-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-6-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classUPopup__Questionnaire_ad850d65df60161a6355f178d9b52cddd_cgraph.svg" width="631" height="115"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classUPopup__Questionnaire_ad850d65df60161a6355f178d9b52cddd_cgraph.svg" width="408" height="115"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-7-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
@@ -542,8 +545,8 @@ Private 속성</h2></td></tr>
 
 </div>
 </div>
-<a id="a2fb358d8d4d792742be247dc22a1f6b9" name="a2fb358d8d4d792742be247dc22a1f6b9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2fb358d8d4d792742be247dc22a1f6b9">&#9670;&#160;</a></span>OnResponseOcrExtract()</h2>
+<a id="a66fc4e0a2e91f1562dfdb04062442fb2" name="a66fc4e0a2e91f1562dfdb04062442fb2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a66fc4e0a2e91f1562dfdb04062442fb2">&#9670;&#160;</a></span>OnResponseOcrExtract()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -556,6 +559,12 @@ Private 속성</h2></td></tr>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structFResponseWriteSubmit.html">FResponseWriteSubmit</a> &amp;&#160;</td>
           <td class="paramname"><em>ResponseData</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">TArray&lt; <a class="el" href="structFWriteWordData.html">FWriteWordData</a> &gt;&#160;</td>
+          <td class="paramname"><em>InQuestionArray</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -576,61 +585,36 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="Popup__Questionnaire_8cpp_source.html">Popup_Questionnaire.cpp</a> 파일의 <a class="el" href="Popup__Questionnaire_8cpp_source.html#l00110">110</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  111</span>{</div>
-<div class="line"><span class="lineno">  112</span>    <span class="keywordflow">if</span> (bWasSuccessful)</div>
-<div class="line"><span class="lineno">  113</span>    {</div>
-<div class="line"><span class="lineno">  114</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;--- OCR Extract SUCCESS ---&quot;</span>));</div>
-<div class="line"><span class="lineno">  115</span>        ResponseData.<a class="code hl_function" href="structFResponseWriteSubmit.html#a357f0c08ed9288b12f4aba842d957d0a">PrintData</a>();</div>
-<div class="line"><span class="lineno">  116</span>        </div>
-<div class="line"><span class="lineno">  117</span>        <span class="comment">// TODO: 피드백 팝업 창 생성해야 함.</span></div>
-<div class="line"><span class="lineno">  118</span>        <span class="keywordflow">if</span> (<span class="keyword">auto</span> Popup = UPopupManager::ShowPopupAs&lt;UPopup_QuestionnaireResult&gt;(GetWorld(), EPopupType::QuestionnaireResult))</div>
-<div class="line"><span class="lineno">  119</span>        {</div>
-<div class="line"><span class="lineno">  120</span>            <span class="comment">// 팝업 초기화</span></div>
-<div class="line"><span class="lineno">  121</span>            Popup-&gt;InitPopup(ResponseData);</div>
-<div class="line"><span class="lineno">  122</span>        </div>
-<div class="line"><span class="lineno">  123</span>            <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[PopupTester] Result popup opened&quot;</span>));</div>
-<div class="line"><span class="lineno">  124</span>        }</div>
-<div class="line"><span class="lineno">  125</span>        </div>
-<div class="line"><span class="lineno">  126</span>        </div>
-<div class="line"><span class="lineno">  127</span>        <span class="comment">// for (const FResponseOcrData&amp; data : ResponseData.ResponseOcrDataArray)</span></div>
-<div class="line"><span class="lineno">  128</span>        <span class="keywordflow">for</span> (int32 i = 1; i &lt;= ResponseData.<a class="code hl_variable" href="structFResponseWriteSubmit.html#a2a464e0f68f0f5825d964da99d53d16b">ResponseWriteDataArray</a>.Num(); ++i)</div>
-<div class="line"><span class="lineno">  129</span>        {</div>
-<div class="line"><span class="lineno">  130</span>            <span class="keyword">const</span> <a class="code hl_struct" href="structFResponseWriteData.html">FResponseWriteData</a>&amp; data = ResponseData.<a class="code hl_variable" href="structFResponseWriteSubmit.html#a2a464e0f68f0f5825d964da99d53d16b">ResponseWriteDataArray</a>[i - 1];</div>
-<div class="line"><span class="lineno">  131</span>            <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;%d Success: %s&quot;</span>), i, data.<a class="code hl_variable" href="structFResponseWriteData.html#a2c4673766372a8260cb2e56ff8e965c0">display</a>.<a class="code hl_variable" href="structFWriteDisplay.html#a26c312f40ddd69969488945c31e6d836">is_pass</a> ? TEXT(<span class="stringliteral">&quot;true&quot;</span>) : TEXT(<span class="stringliteral">&quot;false&quot;</span>));</div>
-<div class="line"><span class="lineno">  132</span>            <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;%d Extracted Text: %s&quot;</span>), i, *(data.<a class="code hl_variable" href="structFResponseWriteData.html#a2c4673766372a8260cb2e56ff8e965c0">display</a>.<a class="code hl_variable" href="structFWriteDisplay.html#aaf4e2f27ed43c801864ce7b6a8f2fb67">message</a>));</div>
-<div class="line"><span class="lineno">  133</span>            <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;%d Extracted Text: %s&quot;</span>), i, *(data.<a class="code hl_variable" href="structFResponseWriteData.html#a2c4673766372a8260cb2e56ff8e965c0">display</a>.<a class="code hl_variable" href="structFWriteDisplay.html#a2b8394385cd48cbe61adb29c2e34419a">correction</a>));</div>
-<div class="line"><span class="lineno">  134</span>        }</div>
-<div class="line"><span class="lineno">  135</span>    }</div>
-<div class="line"><span class="lineno">  136</span>    <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  137</span>    {</div>
-<div class="line"><span class="lineno">  138</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;--- OCR Extract FAILED ---&quot;</span>));</div>
-<div class="line"><span class="lineno">  139</span>    }</div>
-<div class="line"><span class="lineno">  140</span>}</div>
-<div class="ttc" id="astructFResponseWriteData_html"><div class="ttname"><a href="structFResponseWriteData.html">FResponseWriteData</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00686">NetworkData.h:687</a></div></div>
-<div class="ttc" id="astructFResponseWriteData_html_a2c4673766372a8260cb2e56ff8e965c0"><div class="ttname"><a href="structFResponseWriteData.html#a2c4673766372a8260cb2e56ff8e965c0">FResponseWriteData::display</a></div><div class="ttdeci">FWriteDisplay display</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00691">NetworkData.h:691</a></div></div>
-<div class="ttc" id="astructFResponseWriteSubmit_html_a2a464e0f68f0f5825d964da99d53d16b"><div class="ttname"><a href="structFResponseWriteSubmit.html#a2a464e0f68f0f5825d964da99d53d16b">FResponseWriteSubmit::ResponseWriteDataArray</a></div><div class="ttdeci">TArray&lt; FResponseWriteData &gt; ResponseWriteDataArray</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00706">NetworkData.h:706</a></div></div>
-<div class="ttc" id="astructFResponseWriteSubmit_html_a357f0c08ed9288b12f4aba842d957d0a"><div class="ttname"><a href="structFResponseWriteSubmit.html#a357f0c08ed9288b12f4aba842d957d0a">FResponseWriteSubmit::PrintData</a></div><div class="ttdeci">void PrintData() const</div><div class="ttdoc">디버그 로그에 응답 내용을 출력합니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8cpp_source.html#l00426">NetworkData.cpp:426</a></div></div>
-<div class="ttc" id="astructFWriteDisplay_html_a26c312f40ddd69969488945c31e6d836"><div class="ttname"><a href="structFWriteDisplay.html#a26c312f40ddd69969488945c31e6d836">FWriteDisplay::is_pass</a></div><div class="ttdeci">bool is_pass</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00658">NetworkData.h:658</a></div></div>
-<div class="ttc" id="astructFWriteDisplay_html_a2b8394385cd48cbe61adb29c2e34419a"><div class="ttname"><a href="structFWriteDisplay.html#a2b8394385cd48cbe61adb29c2e34419a">FWriteDisplay::correction</a></div><div class="ttdeci">FString correction</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00664">NetworkData.h:664</a></div></div>
-<div class="ttc" id="astructFWriteDisplay_html_aaf4e2f27ed43c801864ce7b6a8f2fb67"><div class="ttname"><a href="structFWriteDisplay.html#aaf4e2f27ed43c801864ce7b6a8f2fb67">FWriteDisplay::message</a></div><div class="ttdeci">FString message</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00661">NetworkData.h:661</a></div></div>
+<p class="definition"><a class="el" href="Popup__Questionnaire_8cpp_source.html">Popup_Questionnaire.cpp</a> 파일의 <a class="el" href="Popup__Questionnaire_8cpp_source.html#l00113">113</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  114</span>{</div>
+<div class="line"><span class="lineno">  115</span>    <span class="keywordflow">if</span> (bWasSuccessful)</div>
+<div class="line"><span class="lineno">  116</span>    {</div>
+<div class="line"><span class="lineno">  117</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;--- OCR Extract SUCCESS ---&quot;</span>));</div>
+<div class="line"><span class="lineno">  118</span>        </div>
+<div class="line"><span class="lineno">  119</span>        <span class="comment">// TODO: 피드백 팝업 창 생성해야 함.</span></div>
+<div class="line"><span class="lineno">  120</span>        <span class="keywordflow">if</span> (<span class="keyword">auto</span> Popup = UPopupManager::ShowPopupAs&lt;UPopup_QuestionnaireResult&gt;(GetWorld(), EPopupType::QuestionnaireResult))</div>
+<div class="line"><span class="lineno">  121</span>        {</div>
+<div class="line"><span class="lineno">  122</span>            <span class="comment">// 팝업 초기화</span></div>
+<div class="line"><span class="lineno">  123</span>            Popup-&gt;InitPopup(InQuestionArray, ResponseData);</div>
+<div class="line"><span class="lineno">  124</span>        </div>
+<div class="line"><span class="lineno">  125</span>            <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[PopupTester] Result popup opened&quot;</span>));</div>
+<div class="line"><span class="lineno">  126</span>        }</div>
+<div class="line"><span class="lineno">  127</span>    }</div>
+<div class="line"><span class="lineno">  128</span>    <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  129</span>    {</div>
+<div class="line"><span class="lineno">  130</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;--- OCR Extract FAILED ---&quot;</span>));</div>
+<div class="line"><span class="lineno">  131</span>    }</div>
+<div class="line"><span class="lineno">  132</span>}</div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="NetworkData_8h_source.html#l00664">FWriteDisplay::correction</a>, <a class="el" href="NetworkData_8h_source.html#l00691">FResponseWriteData::display</a>, <a class="el" href="NetworkData_8h_source.html#l00658">FWriteDisplay::is_pass</a>, <a class="el" href="NetworkData_8h_source.html#l00661">FWriteDisplay::message</a>, <a class="el" href="NetworkData_8cpp_source.html#l00426">FResponseWriteSubmit::PrintData()</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>, <a class="el" href="NetworkData_8h_source.html#l00706">FResponseWriteSubmit::ResponseWriteDataArray</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="Popup__Questionnaire_8cpp_source.html#l00078">OnClickSubmit()</a>.</p>
 <div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-8-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
+  <img id="dynsection-8-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-8-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-8-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classUPopup__Questionnaire_a2fb358d8d4d792742be247dc22a1f6b9_cgraph.svg" width="412" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
-<div id="dynsection-9" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-9-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
-<div id="dynsection-9-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-9-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classUPopup__Questionnaire_a2fb358d8d4d792742be247dc22a1f6b9_icgraph.svg" width="627" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classUPopup__Questionnaire_a66fc4e0a2e91f1562dfdb04062442fb2_icgraph.svg" width="627" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -739,11 +723,11 @@ Private 속성</h2></td></tr>
 <p class="reference">다음을 참조함 :  <a class="el" href="UBasePopup_8h_source.html#l00044">UBasePopup::bIsOpenAnim</a>, <a class="el" href="UBasePopup_8h_source.html#l00051">UBasePopup::OpenDuration</a>, <a class="el" href="UBasePopup_8h_source.html#l00063">UBasePopup::OpenEaseExponent</a>, <a class="el" href="UBasePopup_8h_source.html#l00047">UBasePopup::OpenElapsedTime</a>, <a class="el" href="UBasePopup_8h_source.html#l00055">UBasePopup::OpenStartScale</a>, <a class="el" href="UBasePopup_8h_source.html#l00059">UBasePopup::OpenTargetScale</a>.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UBasePopup_8cpp_source.html#l00006">UBasePopup::NativeTick()</a>.</p>
-<div id="dynsection-10" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-10-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
-<div id="dynsection-10-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-9" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-9-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-9-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-10-content" class="dyncontent" style="display:none;">
+<div id="dynsection-9-content" class="dyncontent" style="display:none;">
 <div class="center"><iframe scrolling="no" frameborder="0" src="classUBasePopup_a830a08b15d00e418f351f096fc5a8790_icgraph.svg" width="468" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
@@ -1200,7 +1184,7 @@ Private 속성</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classUPopup__Questionnaire.html">UPopup_Questionnaire</a></li>
-    <li class="footer">생성시간 : 월 12월 15 2025 06:16:05, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 화 12월 16 2025 00:51:26, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

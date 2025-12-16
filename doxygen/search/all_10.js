@@ -12,9 +12,11 @@ var searchData=
   ['questionnaireresult_5fpopup_5fpath_9',['QuestionnaireResult_POPUP_PATH',['../UPopupManager_8cpp.html#a331d4d8655e77dda1f22a9c393284be2',1,'UPopupManager.cpp']]],
   ['questionnaireresultitemclass_10',['QuestionnaireResultItemClass',['../classUPopup__QuestionnaireResult.html#a43f5f8ab5237191ed26b4927751bb474',1,'UPopup_QuestionnaireResult']]],
   ['questions_11',['Questions',['../structFResponseInterviewHello.html#a73a135f51b92dc7f71e0bce61150eb2f',1,'FResponseInterviewHello']]],
-  ['questrole_12',['QuestRole',['../classALingoPlayerState.html#abd97c5fbf5a4be586808c892ec02586b',1,'ALingoPlayerState']]],
-  ['questscenariodatadelegatehandle_13',['QuestScenarioDataDelegateHandle',['../classUQuestInfoWidget.html#ad1919102d1c799f8c621bb1dd890db77',1,'UQuestInfoWidget']]],
-  ['questtarget_14',['questtarget',['../structFQuestReadInfo.html#ae14e7c073c04ca07d7ca5601f5120df0',1,'FQuestReadInfo::QuestTarget'],['../structFQuestListenInfo.html#a43789bf374e44bb936c042f567ed451d',1,'FQuestListenInfo::QuestTarget'],['../structFQuestSpeakInfo.html#a80a3fb8ceb6c45ff95fc8fb9110adeed',1,'FQuestSpeakInfo::QuestTarget']]],
-  ['questtype_15',['questtype',['../classALingoGameState.html#ae109b2cf1bcd0d8f737531b8e26a08dc',1,'ALingoGameState::QuestType'],['../classAContactTrigger.html#a3f9f5f820f8dfa7baa5de8f675ea0296',1,'AContactTrigger::QuestType'],['../classUPopup__Result.html#a1695150f0ab022f13a06c7f5e57f810a',1,'UPopup_Result::QuestType'],['../classUPopup__ReadQuest.html#a8c39da7d222e4a2f82218e5d14afec8f',1,'UPopup_ReadQuest::QuestType']]],
-  ['queue_16',['Queue',['../classUSequenceManager.html#a572cbcf477ac9f6e6b855d49b6b9ca8a',1,'USequenceManager']]]
+  ['questionseng_12',['QuestionsEng',['../classUPopup__QuestionnaireResult.html#af6899e91551b52895a1f9193152baa30',1,'UPopup_QuestionnaireResult']]],
+  ['questionskor_13',['QuestionsKor',['../classUPopup__QuestionnaireResult.html#a37d8d2ca3117729b9d3565cdee25e10d',1,'UPopup_QuestionnaireResult']]],
+  ['questrole_14',['QuestRole',['../classALingoPlayerState.html#abd97c5fbf5a4be586808c892ec02586b',1,'ALingoPlayerState']]],
+  ['questscenariodatadelegatehandle_15',['QuestScenarioDataDelegateHandle',['../classUQuestInfoWidget.html#ad1919102d1c799f8c621bb1dd890db77',1,'UQuestInfoWidget']]],
+  ['questtarget_16',['questtarget',['../structFQuestReadInfo.html#ae14e7c073c04ca07d7ca5601f5120df0',1,'FQuestReadInfo::QuestTarget'],['../structFQuestListenInfo.html#a43789bf374e44bb936c042f567ed451d',1,'FQuestListenInfo::QuestTarget'],['../structFQuestSpeakInfo.html#a80a3fb8ceb6c45ff95fc8fb9110adeed',1,'FQuestSpeakInfo::QuestTarget']]],
+  ['questtype_17',['questtype',['../classALingoGameState.html#ae109b2cf1bcd0d8f737531b8e26a08dc',1,'ALingoGameState::QuestType'],['../classAContactTrigger.html#a3f9f5f820f8dfa7baa5de8f675ea0296',1,'AContactTrigger::QuestType'],['../classUPopup__Result.html#a1695150f0ab022f13a06c7f5e57f810a',1,'UPopup_Result::QuestType'],['../classUPopup__ReadQuest.html#a8c39da7d222e4a2f82218e5d14afec8f',1,'UPopup_ReadQuest::QuestType']]],
+  ['queue_18',['Queue',['../classUSequenceManager.html#a572cbcf477ac9f6e6b855d49b6b9ca8a',1,'USequenceManager']]]
 ];

@@ -1,15 +1,12 @@
 var classUPopup__QuestionnaireResultItem =
 [
-    [ "UPopup_QuestionnaireResultItem", "classUPopup__QuestionnaireResultItem.html#a9125a9db1af995ff5e81b919cb1bcf83", null ],
-    [ "InitItem", "classUPopup__QuestionnaireResultItem.html#aade208d8e019bae80a1830e44542958c", null ],
+    [ "InitItem", "classUPopup__QuestionnaireResultItem.html#a825dcaad90898035fdd0528a846f5d47", null ],
     [ "LoadTextureFromFile", "classUPopup__QuestionnaireResultItem.html#a80b4c03ce4639035157cd00d90faac73", null ],
     [ "NativeTick", "classUPopup__QuestionnaireResultItem.html#a750c1a854f68ca16faa069645531abd6", null ],
     [ "OpenAnimation", "classUPopup__QuestionnaireResultItem.html#a2c3d2b47f8255c0172cf9f218790fcc8", null ],
     [ "UpdateAnimation", "classUPopup__QuestionnaireResultItem.html#a830a08b15d00e418f351f096fc5a8790", null ],
     [ "bIsOpenAnim", "classUPopup__QuestionnaireResultItem.html#a807985dccb3305b1004c611401b7b551", null ],
-    [ "ff", "classUPopup__QuestionnaireResultItem.html#ae7bbf9bd8ab052c6920554fb4a062af7", null ],
-    [ "Image_Purpose", "classUPopup__QuestionnaireResultItem.html#a161c861efcc61d139f0dcf5cf39b9be0", null ],
-    [ "M_Result", "classUPopup__QuestionnaireResultItem.html#a7e68715bd19f64a57d8b3a53819f15ec", null ],
+    [ "Image_Answer", "classUPopup__QuestionnaireResultItem.html#a11882983361116c0be2ea0d759cf7548", null ],
     [ "OpenDuration", "classUPopup__QuestionnaireResultItem.html#a5a4c2b75560a3e2d07ed3aa52837278e", null ],
     [ "OpenEaseExponent", "classUPopup__QuestionnaireResultItem.html#afe75f5ef94f97fbcc8ea1ad9e801524c", null ],
     [ "OpenElapsedTime", "classUPopup__QuestionnaireResultItem.html#a6124aff28b2b2a0b810bb693ebcd81ad", null ],
@@ -18,8 +15,10 @@ var classUPopup__QuestionnaireResultItem =
     [ "OpenTargetScale", "classUPopup__QuestionnaireResultItem.html#add357075245f0843320c0b74af0f2697", null ],
     [ "PopupType", "classUPopup__QuestionnaireResultItem.html#a7e537a0dd751df11990ed46947f09d42", null ],
     [ "QuestionData", "classUPopup__QuestionnaireResultItem.html#a356c64331cbc417e7855acef15952212", null ],
-    [ "Text_Display", "classUPopup__QuestionnaireResultItem.html#a357894e1aa4d70a305983d0abeffc20d", null ],
-    [ "Text_Record", "classUPopup__QuestionnaireResultItem.html#a831e7a5c8a15a9c8bdf7f737ba57db3e", null ],
-    [ "Txt_Index", "classUPopup__QuestionnaireResultItem.html#ad498c9818b29e8c1a952a92abf0a86bb", null ],
+    [ "SizeBox_Answer", "classUPopup__QuestionnaireResultItem.html#a2ba55501e91b3cf4326aea411af780af", null ],
+    [ "Text_Correction", "classUPopup__QuestionnaireResultItem.html#aed21b32677674546650f0cd9d76f38db", null ],
+    [ "Text_Index", "classUPopup__QuestionnaireResultItem.html#a9e5aef966ec6fe0f132217b71942369d", null ],
+    [ "Text_Message", "classUPopup__QuestionnaireResultItem.html#abf1839d7c62193bc91a8842c24644995", null ],
+    [ "Text_Question", "classUPopup__QuestionnaireResultItem.html#a94a4a73f142ead527c6d7e9789758bb7", null ],
     [ "WriteImagePath", "classUPopup__QuestionnaireResultItem.html#a597e4e3647cf5adb2b1685a626164732", null ]
 ];

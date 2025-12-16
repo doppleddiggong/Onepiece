@@ -1,5 +1,6 @@
 var NAVTREEINDEX8 =
 {
+"classUDelayTaskManager.html#af771ffde302faa23def27e4769f9776e":[2,0,134,9],
 "classUDelayTaskManager.html#afc5800d645cb2888723bee5042181c5b":[2,0,134,11],
 "classUDelayTaskManager.html#afead6ae41bebb72cd3a90cd86fd9eeda":[2,0,134,8],
 "classUDialogManager.html":[2,0,135],
@@ -248,6 +249,5 @@ var NAVTREEINDEX8 =
 "classUInteractWidget.html#aa2c1329a6b08456dcaecf75c44d0ac7e":[2,0,147,1],
 "classUInteractWidget.html#ac581ddd8a70217da61d211206ea1aec7":[2,0,147,0],
 "classUInteractWidget.html#afe80b3c83c8dae8938e5245e8dc929f8":[2,0,147,2],
-"classUKLingoNetworkSystem.html":[2,0,148],
-"classUKLingoNetworkSystem.html#a0b26b72d9b13f2eff1d8a06e55141ab0":[2,0,148,15]
+"classUKLingoNetworkSystem.html":[2,0,148]
 };

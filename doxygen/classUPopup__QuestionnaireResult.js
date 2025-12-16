@@ -1,13 +1,14 @@
 var classUPopup__QuestionnaireResult =
 [
     [ "UPopup_QuestionnaireResult", "classUPopup__QuestionnaireResult.html#afa929130b096f97f217e0044407c4a69", null ],
-    [ "InitPopup", "classUPopup__QuestionnaireResult.html#a5f5a584f6950d7eb673e25134199ad72", null ],
+    [ "InitPopup", "classUPopup__QuestionnaireResult.html#ac4dacda580321b3f7249bdbf353daf32", null ],
     [ "NativeConstruct", "classUPopup__QuestionnaireResult.html#a8b7a7c9453e69c9f401ae137ef2ca3f9", null ],
     [ "NativeTick", "classUPopup__QuestionnaireResult.html#a750c1a854f68ca16faa069645531abd6", null ],
     [ "OnClickClose", "classUPopup__QuestionnaireResult.html#a1466c60e05a29fcddec6b332bf908fd1", null ],
     [ "OpenAnimation", "classUPopup__QuestionnaireResult.html#a2c3d2b47f8255c0172cf9f218790fcc8", null ],
     [ "UpdateAnimation", "classUPopup__QuestionnaireResult.html#a830a08b15d00e418f351f096fc5a8790", null ],
     [ "bIsOpenAnim", "classUPopup__QuestionnaireResult.html#a807985dccb3305b1004c611401b7b551", null ],
+    [ "Btn_Confirm", "classUPopup__QuestionnaireResult.html#a5c1c6137f8ff4d31917b206a163f7b05", null ],
     [ "ItemSpacing", "classUPopup__QuestionnaireResult.html#a2d48cb27d02b234d65cc8cc4284a32cd", null ],
     [ "OpenDuration", "classUPopup__QuestionnaireResult.html#a5a4c2b75560a3e2d07ed3aa52837278e", null ],
     [ "OpenEaseExponent", "classUPopup__QuestionnaireResult.html#afe75f5ef94f97fbcc8ea1ad9e801524c", null ],
@@ -18,6 +19,8 @@ var classUPopup__QuestionnaireResult =
     [ "Popup_BaseBg", "classUPopup__QuestionnaireResult.html#a2b5125ce10c48b8fadb0d30b52618cda", null ],
     [ "PopupType", "classUPopup__QuestionnaireResult.html#a7e537a0dd751df11990ed46947f09d42", null ],
     [ "QuestionnaireResultItemClass", "classUPopup__QuestionnaireResult.html#a43f5f8ab5237191ed26b4927751bb474", null ],
+    [ "QuestionsEng", "classUPopup__QuestionnaireResult.html#af6899e91551b52895a1f9193152baa30", null ],
+    [ "QuestionsKor", "classUPopup__QuestionnaireResult.html#a37d8d2ca3117729b9d3565cdee25e10d", null ],
     [ "ResponseData", "classUPopup__QuestionnaireResult.html#abc49f1c307a3a441f316fa2618c296a5", null ],
     [ "ScrollBox_Result", "classUPopup__QuestionnaireResult.html#af67bf2288f18445713ef6a12e61548f6", null ],
     [ "WriteImagePath", "classUPopup__QuestionnaireResult.html#ae8a31c8ef9645592b5d1210cefcb5d04", null ]

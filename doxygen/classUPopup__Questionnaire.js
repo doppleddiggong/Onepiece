@@ -6,7 +6,7 @@ var classUPopup__Questionnaire =
     [ "NativeTick", "classUPopup__Questionnaire.html#a750c1a854f68ca16faa069645531abd6", null ],
     [ "OnClickClose", "classUPopup__Questionnaire.html#aadb6970921a81df8753ea055270e06b3", null ],
     [ "OnClickSubmit", "classUPopup__Questionnaire.html#ad850d65df60161a6355f178d9b52cddd", null ],
-    [ "OnResponseOcrExtract", "classUPopup__Questionnaire.html#a2fb358d8d4d792742be247dc22a1f6b9", null ],
+    [ "OnResponseOcrExtract", "classUPopup__Questionnaire.html#a66fc4e0a2e91f1562dfdb04062442fb2", null ],
     [ "OpenAnimation", "classUPopup__Questionnaire.html#a2c3d2b47f8255c0172cf9f218790fcc8", null ],
     [ "UpdateAnimation", "classUPopup__Questionnaire.html#a830a08b15d00e418f351f096fc5a8790", null ],
     [ "bIsOpenAnim", "classUPopup__Questionnaire.html#a807985dccb3305b1004c611401b7b551", null ],

@@ -1,5 +1,8 @@
 var NAVTREEINDEX13 =
 {
+"namespaceGameMessage.html#a7c9b2a73fcb8d4b1add212d7c16476c2":[1,0,2,7],
+"namespaceGameMessage.html#a86e12002bb715fd26393367cd22a64d1":[1,0,2,3],
+"namespaceGameMessage.html#a8b65fc2a15bb0f28393e8a8f681630d0":[1,0,2,13],
 "namespaceGameMessage.html#aa9bd2204f84bf0f0e6a421b6c102dc60":[1,0,2,4],
 "namespaceGameMessage.html#ad15591c0eea3f6303d1f2113ed903741":[1,0,2,11],
 "namespaceGameMessage.html#ad442f83af10ff3e4c202f2e7d0dbc885":[1,0,2,5],
@@ -246,8 +249,5 @@ var NAVTREEINDEX13 =
 "structFRequestListenResult.html#a70c9502a9ea77420756130e194ae3f03":[2,0,82,7],
 "structFRequestListenResult.html#ab515ca1c23d24e29a30ea22a65e8b9ee":[2,0,82,1],
 "structFRequestListenResult.html#af6a3af5c7e1c84500cd7e21e5324a981":[2,0,82,0],
-"structFRequestReadResult.html":[2,0,83],
-"structFRequestReadResult.html#a53e5bf77db201971463c5bf6f6cce0b2":[2,0,83,2],
-"structFRequestReadResult.html#a6d2f33f3d09a93228c578306a8b294af":[2,0,83,1],
-"structFRequestReadResult.html#a82c16d908082555ac713fc9b44e4c455":[2,0,83,0]
+"structFRequestReadResult.html":[2,0,83]
 };
