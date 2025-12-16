@@ -6,24 +6,23 @@
 #include "GameLogging.h"
 #include "IImageWrapper.h"
 #include "IImageWrapperModule.h"
+#include "Components/Image.h"
+#include "Components/SizeBox.h"
 #include "Components/TextBlock.h"
 
-UPopup_QuestionnaireResultItem::UPopup_QuestionnaireResultItem(const FObjectInitializer& ObjectInitializer)
-{
-	ConstructorHelpers::FObjectFinder<UMaterialInterface> materialResultRef(TEXT("/Script/Engine.Material'/Game/CustomContents/UI/DrawingBoard/M_Result.M_Result'"));
-	if (materialResultRef.Succeeded())
-	{
-		M_Result = UMaterialInstanceDynamic::Create(materialResultRef.Object, this);
-	}
-}
-
-void UPopup_QuestionnaireResultItem::InitItem(int32 index, const FResponseWriteData& data)
+void UPopup_QuestionnaireResultItem::InitItem(int32 index, FString questionKor, const FResponseWriteData& data)
 {
 	// 질문 인덱스 설정 (예: "Question.01")
-	if (Txt_Index)
+	if (Text_Index)
 	{
 		FString IndexText = FString::Printf(TEXT("Question.%02d"), index);
-		Txt_Index->SetText(FText::FromString(IndexText));
+		Text_Index->SetText(FText::FromString(IndexText));
+	}
+	
+	if (Text_Question)
+	{
+		PRINTLOG(TEXT("Question: %s"), *questionKor);
+		Text_Question->SetText(FText::FromString(questionKor));
 	}
 	
 	// 이미지 불러와서 적용
@@ -31,21 +30,25 @@ void UPopup_QuestionnaireResultItem::InitItem(int32 index, const FResponseWriteD
 	UTexture2D* LoadedTexture = LoadTextureFromFile(WriteImagePath / FileName);
 	if (LoadedTexture)
 	{
-		// Image_Purpose->SetBrushFromTexture(LoadedTexture);
-		if (M_Result)
-			M_Result->SetTextureParameterValue(FName("Texture"), LoadedTexture);
+		// SizeBox 비율 이미지에 맞게 수정
+		float aspectRatio = LoadedTexture->GetSizeX() / LoadedTexture->GetSizeY();
+		SizeBox_Answer->SetMinAspectRatio(aspectRatio);
+		SizeBox_Answer->SetMaxAspectRatio(aspectRatio);
+		// Image X 사이즈가 1080보다 크면 1080에, 아니면 Image X 사이즈에 1/ratio를 곱한다.
+		SizeBox_Answer->SetHeightOverride(Image_Answer->GetBrush().GetImageSize().X > SizeBox_Answer->GetMaxDesiredWidth() ? SizeBox_Answer->GetMaxDesiredWidth() / aspectRatio : Image_Answer->GetBrush().GetImageSize().X / aspectRatio);
+		Image_Answer->SetBrushFromTexture(LoadedTexture);
 	}
 	
 	// 피드백 내용 설정
-	if (Text_Display)
+	if (Text_Message)
 	{
-		FString QuestionText = data.display.message;
-		Text_Display->SetText(FText::FromString(QuestionText));
+		FString text = data.display.message;
+		Text_Message->SetText(FText::FromString(text));
 	}
-	if (Text_Record)
+	if (Text_Correction)
 	{
-		FString QuestionText = data.display.correction;
-		Text_Record->SetText(FText::FromString(QuestionText));
+		FString text = data.display.correction;
+		Text_Correction->SetText(FText::FromString(text));
 	}
 }
 

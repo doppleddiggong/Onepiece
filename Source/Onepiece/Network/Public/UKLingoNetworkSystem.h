@@ -46,7 +46,7 @@ public:
 	void RequestListenResult(const FRequestListenResult& Result, FResponseListenResultDelegate InDelegate);
 
 	void RequestWriteQuestions(FResponseWriteQuestionDelegate InDelegate);
-	void RequestWriteSubmit(const TArray<FString>& ImagePathArray, TArray<FString> InTargetText, FResponseWriteSubmitDelegate InDelegate);
+	void RequestWriteSubmit(const TArray<FString>& ImagePathArray, const TArray<FWriteWordData>& QuestionArray,  TArray<FString> InTargetText, FResponseWriteSubmitDelegate InDelegate);
 
 	void RequestSpeakScenario(FResponseSpeakScenarioDelegate InDelegate);
 	void RequestSpeakResult(const FRequestSpeakResult& Result, FResponseSpeakResultDelegate InDelegate);
