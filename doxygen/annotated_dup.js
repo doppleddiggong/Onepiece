@@ -101,6 +101,8 @@ var annotated_dup =
     [ "FResponseUserRegister", "structFResponseUserRegister.html", "structFResponseUserRegister" ],
     [ "FResponseUserToken", "structFResponseUserToken.html", "structFResponseUserToken" ],
     [ "FResponseWriteData", "structFResponseWriteData.html", "structFResponseWriteData" ],
+    [ "FResponseWriteResult", "structFResponseWriteResult.html", "structFResponseWriteResult" ],
+    [ "FResponseWriteScores", "structFResponseWriteScores.html", "structFResponseWriteScores" ],
     [ "FResponseWriteSubmit", "structFResponseWriteSubmit.html", "structFResponseWriteSubmit" ],
     [ "FResultStatData", "structFResultStatData.html", "structFResultStatData" ],
     [ "FScenarioResult", "structFScenarioResult.html", "structFScenarioResult" ],

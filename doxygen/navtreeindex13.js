@@ -1,5 +1,7 @@
 var NAVTREEINDEX13 =
 {
+"namespaceGameMessage.html#a6964bb943147cdc1f845dd30fb2059af":[1,0,2,9],
+"namespaceGameMessage.html#a7ba3fee42f756d5fc38136500da8239d":[1,0,2,12],
 "namespaceGameMessage.html#a7c9b2a73fcb8d4b1add212d7c16476c2":[1,0,2,7],
 "namespaceGameMessage.html#a86e12002bb715fd26393367cd22a64d1":[1,0,2,3],
 "namespaceGameMessage.html#a8b65fc2a15bb0f28393e8a8f681630d0":[1,0,2,13],
@@ -18,10 +20,11 @@ var NAVTREEINDEX13 =
 "namespaceRequestAPI.html":[1,0,5],
 "namespaceRequestAPI.html#a0cbbd36ccf6295dad353806ed80f5769":[1,0,5,4],
 "namespaceRequestAPI.html#a2d4b0c891a96c4ac2d1829ae24d01dc3":[1,0,5,11],
+"namespaceRequestAPI.html#a31b9e448e788009b672816b23397eaa3":[1,0,5,13],
 "namespaceRequestAPI.html#a3bab55186c7ad88a9183615b45b1acc4":[1,0,5,9],
 "namespaceRequestAPI.html#a5954e96c78c1422b8245017dccc9652d":[1,0,5,5],
 "namespaceRequestAPI.html#a72a9108a91fd78d005fe594cd7ce8818":[1,0,5,3],
-"namespaceRequestAPI.html#a8c14fc8a3f386da9971cfe30a1b00966":[1,0,5,13],
+"namespaceRequestAPI.html#a8c14fc8a3f386da9971cfe30a1b00966":[1,0,5,14],
 "namespaceRequestAPI.html#aa53d82cb9d5a048604a8c32223229080":[1,0,5,8],
 "namespaceRequestAPI.html#aa6ffe726a2b06feccfa128b3200d8816":[1,0,5,6],
 "namespaceRequestAPI.html#ab35a143dc8865f6bf07bc269a00b075d":[1,0,5,0],
@@ -246,8 +249,5 @@ var NAVTREEINDEX13 =
 "structFRequestListenResult.html#a443e9389976ade8ed5c219a5d08dc6ae":[2,0,82,3],
 "structFRequestListenResult.html#a44c6cc83062a86dd7e3b75b73f4dfa36":[2,0,82,2],
 "structFRequestListenResult.html#a4f0d3c15a3b7bf4d667febd00681134d":[2,0,82,4],
-"structFRequestListenResult.html#a70c9502a9ea77420756130e194ae3f03":[2,0,82,7],
-"structFRequestListenResult.html#ab515ca1c23d24e29a30ea22a65e8b9ee":[2,0,82,1],
-"structFRequestListenResult.html#af6a3af5c7e1c84500cd7e21e5324a981":[2,0,82,0],
-"structFRequestReadResult.html":[2,0,83]
+"structFRequestListenResult.html#a70c9502a9ea77420756130e194ae3f03":[2,0,82,7]
 };

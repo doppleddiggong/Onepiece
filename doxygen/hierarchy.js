@@ -108,6 +108,8 @@ var hierarchy =
     [ "FResponseUserRegister", "structFResponseUserRegister.html", null ],
     [ "FResponseUserToken", "structFResponseUserToken.html", null ],
     [ "FResponseWriteData", "structFResponseWriteData.html", null ],
+    [ "FResponseWriteResult", "structFResponseWriteResult.html", null ],
+    [ "FResponseWriteScores", "structFResponseWriteScores.html", null ],
     [ "FResponseWriteSubmit", "structFResponseWriteSubmit.html", null ],
     [ "FResultStatData", "structFResultStatData.html", null ],
     [ "FScenarioResult", "structFScenarioResult.html", null ],

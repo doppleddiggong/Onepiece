@@ -1,5 +1,7 @@
 var NAVTREEINDEX4 =
 {
+"classAContactTrigger.html#a98853c812355fff404cced1f8245bd7b":[2,0,2,3],
+"classAContactTrigger.html#aaf47be0afbd396aceb6da9c95bbec8b7":[2,0,2,11],
 "classAContactTrigger.html#ab402eea2b6e7365ec8a47ec11db1f035":[2,0,2,9],
 "classAContactTrigger.html#ac475b9f5bb07cfd21b598ad87e6d019c":[2,0,2,13],
 "classAContactTrigger.html#ad95a80dee6308cafc2ba071e0b63d1c2":[2,0,2,6],
@@ -247,7 +249,5 @@ var NAVTREEINDEX4 =
 "classALingoGameState.html#af0bac5ebb3a40e29aca6d3e298b8c0c2":[2,0,14,10],
 "classALingoPlayerState.html":[2,0,15],
 "classALingoPlayerState.html#a0c837b780901d63abc02d742d82d34cf":[2,0,15,17],
-"classALingoPlayerState.html#a10b93c813a7f91593201ef8eea763dbf":[2,0,15,4],
-"classALingoPlayerState.html#a2136c7bb3522dbe59a8f8609325c4b93":[2,0,15,25],
-"classALingoPlayerState.html#a242a5560c49914069e8d9cb35a721e7f":[2,0,15,1]
+"classALingoPlayerState.html#a10b93c813a7f91593201ef8eea763dbf":[2,0,15,4]
 };

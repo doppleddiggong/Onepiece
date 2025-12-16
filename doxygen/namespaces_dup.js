@@ -54,6 +54,7 @@ var namespaces_dup =
       [ "users_me", "namespaceRequestAPI.html#aee732573aa0bc733fedaab927a273dcd", null ],
       [ "users_register", "namespaceRequestAPI.html#a2d4b0c891a96c4ac2d1829ae24d01dc3", null ],
       [ "users_token", "namespaceRequestAPI.html#af908b99f78364328aca763f362236454", null ],
+      [ "wriite_result", "namespaceRequestAPI.html#a31b9e448e788009b672816b23397eaa3", null ],
       [ "writes_submit", "namespaceRequestAPI.html#a8c14fc8a3f386da9971cfe30a1b00966", null ]
     ] ]
 ];

@@ -32,6 +32,8 @@ var NetworkData_8h =
     [ "FResponseUserRegister", "structFResponseUserRegister.html", "structFResponseUserRegister" ],
     [ "FResponseUserToken", "structFResponseUserToken.html", "structFResponseUserToken" ],
     [ "FResponseWriteData", "structFResponseWriteData.html", "structFResponseWriteData" ],
+    [ "FResponseWriteResult", "structFResponseWriteResult.html", "structFResponseWriteResult" ],
+    [ "FResponseWriteScores", "structFResponseWriteScores.html", "structFResponseWriteScores" ],
     [ "FResponseWriteSubmit", "structFResponseWriteSubmit.html", "structFResponseWriteSubmit" ],
     [ "FScenarioResult", "structFScenarioResult.html", "structFScenarioResult" ],
     [ "FScenarioTargetData", "structFScenarioTargetData.html", "structFScenarioTargetData" ],
@@ -66,6 +68,7 @@ var NetworkData_8h =
     [ "DECLARE_DELEGATE_TwoParams", "NetworkData_8h.html#a83e282ba7f16da7dbce7042becbf3fb4", null ],
     [ "DECLARE_DELEGATE_TwoParams", "NetworkData_8h.html#a5fedccad4ddcec57d116a9d9654b75fe", null ],
     [ "DECLARE_DELEGATE_TwoParams", "NetworkData_8h.html#a697e7be88961f9eeb98db05dc466b4c1", null ],
+    [ "DECLARE_DELEGATE_TwoParams", "NetworkData_8h.html#a5666c7ab11fafe6584064c5eb77d76b3", null ],
     [ "GetFullUrl", "NetworkData_8h.html#ab5ac57e8f51de6d1740c7a88534a7246", null ],
     [ "GetFullUrlWithQuery", "NetworkData_8h.html#a48c91628e64540f88495507117cfb69f", null ],
     [ "GetSocketURL", "NetworkData_8h.html#a948647fad9ed84a91de549757a7a0e74", null ],
@@ -83,5 +86,6 @@ var NetworkData_8h =
     [ "users_me", "NetworkData_8h.html#aee732573aa0bc733fedaab927a273dcd", null ],
     [ "users_register", "NetworkData_8h.html#a2d4b0c891a96c4ac2d1829ae24d01dc3", null ],
     [ "users_token", "NetworkData_8h.html#af908b99f78364328aca763f362236454", null ],
+    [ "wriite_result", "NetworkData_8h.html#a31b9e448e788009b672816b23397eaa3", null ],
     [ "writes_submit", "NetworkData_8h.html#a8c14fc8a3f386da9971cfe30a1b00966", null ]
 ];
