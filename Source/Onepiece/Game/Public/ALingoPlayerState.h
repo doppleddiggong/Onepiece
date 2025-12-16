@@ -23,6 +23,12 @@ public:
 	FString GetToken() { return AccessToken; }
 	void SetToken(FString InToken) { this->AccessToken = InToken; }
 
+	/// @brief Chat AI의 Context를 반환합니다.
+	/// @details 기본값은 "You are a helpful assistant"이며,
+	///          향후 GameMode, GameState, PlayerState 데이터를 참조하여 동적으로 생성할 수 있습니다.
+	/// @return Chat AI에게 전달할 Context 문자열
+	FString GetChatContext() const;
+
 private:
 	FString AccessToken;
 

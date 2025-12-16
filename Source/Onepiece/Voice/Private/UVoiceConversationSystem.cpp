@@ -16,8 +16,6 @@
 #include "UKLingoNetworkSystem.h"
 #include "ASpeakStageActor.h"
 #include "APlayerActor.h"
-#include "ULingoGameHelper.h"
-#include "FResultStatData.h"
 #include "UPopupManager.h"
 #include "Sound/SoundWaveProcedural.h"
 #include "GameFramework/PlayerState.h"
@@ -50,9 +48,6 @@ void UVoiceConversationSystem::StartRecording()
 		PRINTLOG( TEXT("[VoiceConversation] Already recording or processing."));
 		return;
 	}
-
-	// 턴 개념은 구 개념이므로 StartRecording에서는 녹음을 항상 허용합니다.
-	// StopRecording에서 CurrentSpeaker를 확인하여 SpeakJudges vs ChatAnswers를 결정합니다.
 
 	// 재생 중인 대화 음성이 있으면 정지 (UGameSoundManager 사용)
 	if (UWorld* World = GetWorld())
@@ -184,10 +179,8 @@ void UVoiceConversationSystem::StopRecording()
 
 	if (LastNumChannels == 2)
 	{
-		PRINTLOG(TEXT("[VoiceConversation] Converting stereo to mono for STT..."));
 		ProcessedPCM = UVoiceFunctionLibrary::ConvertStereoToMono(PCMData);
 		ProcessedChannels = 1;  // 모노로 변경
-		PRINTLOG(TEXT("[VoiceConversation] Converted to mono, PCM Size=%d bytes"), ProcessedPCM.Num());
 	}
 
 	// STT 최적화: 16kHz로 리샘플링
@@ -195,9 +188,7 @@ void UVoiceConversationSystem::StopRecording()
 
 	if (LastSampleRate != TargetSampleRate)
 	{
-		PRINTLOG(TEXT("[VoiceConversation] Resampling from %dHz to %dHz..."), LastSampleRate, TargetSampleRate);
 		ProcessedPCM = UVoiceFunctionLibrary::ResampleAudio(ProcessedPCM, LastSampleRate, TargetSampleRate, ProcessedChannels);
-		PRINTLOG(TEXT("[VoiceConversation] Resampled PCM Size=%d bytes"), ProcessedPCM.Num());
 	}
 
 	WAVData = UVoiceFunctionLibrary::ConvertPCM2WAV(ProcessedPCM, TargetSampleRate, ProcessedChannels, 16);
@@ -210,8 +201,8 @@ void UVoiceConversationSystem::StopRecording()
 		return;
 	}
 	
-	UKLingoNetworkSystem* HttpSystem = UKLingoNetworkSystem::Get(GetWorld());
-	if (!HttpSystem)
+	UKLingoNetworkSystem* KLingoNetwork = UKLingoNetworkSystem::Get(GetWorld());
+	if (!KLingoNetwork)
 	{
 		PRINTLOG( TEXT("HttpSystem을 찾을 수 없습니다."));
 		bIsProcessing = false;
@@ -247,33 +238,42 @@ void UVoiceConversationSystem::StopRecording()
 
 	if (bUseSpeakJudges)
 	{
-		// SpeakQuest 진행 중 (내 턴): RequestSpeakingJudges 사용
-		FString Question = SpeakStageActor->GetCurrentQuestion();
-
 		// Toast 메시지 표시: 답변 분석 중
 		if (UDialogManager* DM = UDialogManager::Get(GetWorld()))
 		{
 			DM->ShowToast(TEXT("The officer is reviewing your answer"));
 		}
 
-		HttpSystem->RequestSpeakingJudges(
-			Question,
+		KLingoNetwork->RequestSpeakingJudges(
+			SpeakStageActor->GetCurrentQuestion(),
 			LastRecordedFilePath,
 			FResponseSpeakingJudesDelegate::CreateUObject(this, &UVoiceConversationSystem::OnResponseSpeakingsJudges));
 	}
 	else
 	{
-		// 일반 대화 모드: RequestChatAnswers 사용
-		FString Context = TEXT("You are a helpful assistant.");
-
 		// Toast 메시지 표시: 답변 분석 중
 		if (UDialogManager* DM = UDialogManager::Get(GetWorld()))
 		{
 			DM->ShowToast(TEXT("Processing your voice message..."));
 		}
 
-		HttpSystem->RequestChatAudio(
-			Context,
+		// PlayerState에서 Chat Context 가져오기
+		FString ChatContext = TEXT("You are a helpful assistant."); // 기본값
+		if (Owner)
+		{
+			APlayerController* PC = Cast<APlayerController>(Owner->GetController());
+			if (PC)
+			{
+				if (auto PS = PC->GetPlayerState<ALingoPlayerState>())
+				{
+					ChatContext = PS->GetChatContext();
+				}
+			}
+		}
+
+		// 일반 대화 모드: RequestChatAnswers 사용
+		KLingoNetwork->RequestChatAudio(
+			ChatContext,
 			LastRecordedFilePath,
 			FResponseChatAnswersDelegate::CreateUObject(this, &UVoiceConversationSystem::OnResponseChatAnswers));
 	}
@@ -285,15 +285,6 @@ void UVoiceConversationSystem::OnResponseSpeakingsJudges(FResponseSpeakingJudes&
 
 	if (bSuccess)
 	{
-		PRINTLOG( TEXT("--- Network Response Received : %s"), *Response.final_feedback);
-
-		// // Broadcast final_feedback to UTutorMessage
-		// if (BroadcastManager)
-		// {
-		// 	BroadcastManager->SendTutorMessage(FText::FromString(Response.final_feedback));
-		// 	BroadcastManager->SendAddItemToBoxList(	Response.GetResultStatData());
-		// }
-
 		// PlayerActor의 Server RPC 호출 (PlayerActor는 Client 소유!)
 		if (Owner)
 			Owner->Server_NotifySpeakJudgeComplete(Response);
@@ -310,28 +301,14 @@ void UVoiceConversationSystem::OnResponseChatAnswers(FResponseChatAnswers& Respo
 
 	if (bSuccess)
 	{
-		PRINTLOG(TEXT("--- Chat Answers Response Received : %s"), *Response.answer);
-
-		// Toast 메시지로 답변 표시
+		// 메시지로 답변 표시
 		UPopupManager::Get(GetWorld())->ShowMsgBox(TEXT("CHAT"), *Response.answer,
 			EMsgBoxType::OK,
 			FOnMsgBoxOkDelegate());
-
-		// TTS 재생 요청 (선택사항)
-		// if (!Response.answer.IsEmpty())
-		// {
-		// 	// TTS API 호출하여 음성으로 변환 후 재생
-		// 	// HttpSystem->RequestListenAudio(Response.answer, ...);
-		// }
 	}
 	else
 	{
-		PRINTLOG(TEXT("--- Chat Answers Response (FAIL) ---"));
-
-		if (UDialogManager* DM = UDialogManager::Get(GetWorld()))
-		{
-			DM->ShowToast(TEXT("Failed to get response. Please try again."));
-		}
+		PRINTLOG( TEXT("--- Chat Answers Response Received (FAIL) ---"));
 	}
 }
 
@@ -370,7 +347,6 @@ bool UVoiceConversationSystem::PlayVoiceAudio(const TArray<uint8>& AudioData)
 	CurVoiceAudio = SoundManager->PlayConversationVoice(SoundWave);
 	if (!CurVoiceAudio)
 	{
-		PRINTLOG(TEXT("[VoiceConversation] TTS playback failed: could not create audio component"));
 		return false;
 	}
 
@@ -379,12 +355,12 @@ bool UVoiceConversationSystem::PlayVoiceAudio(const TArray<uint8>& AudioData)
 	PRINTLOG(TEXT("[VoiceConversation] TTS audio playing (duration: %.2f seconds)"), Duration);
 
 	// 기존 타이머 정리
-	if (GetWorld())
+	if (auto World = GetWorld())
 	{
-		GetWorld()->GetTimerManager().ClearTimer(VoiceFinishTimerHandle);
+		World->GetTimerManager().ClearTimer(VoiceFinishTimerHandle);
 
 		// Duration + 여유 시간(0.1초) 후에 OnVoiceAudioFinished 호출
-		GetWorld()->GetTimerManager().SetTimer(
+		World->GetTimerManager().SetTimer(
 			VoiceFinishTimerHandle,
 			this,
 			&UVoiceConversationSystem::OnVoiceAudioFinished,
@@ -398,15 +374,9 @@ bool UVoiceConversationSystem::PlayVoiceAudio(const TArray<uint8>& AudioData)
 
 void UVoiceConversationSystem::OnVoiceAudioFinished()
 {
-	PRINTLOG(TEXT("[VoiceConversation] TTS audio playback finished"));
-
 	// 타이머 정리
-	if (GetWorld())
-	{
-		GetWorld()->GetTimerManager().ClearTimer(VoiceFinishTimerHandle);
-	}
-
-	PRINTLOG(TEXT("[VoiceConversation] TTS 재생 완료 이벤트 발생"));
+	if (auto World = GetWorld())
+		World->GetTimerManager().ClearTimer(VoiceFinishTimerHandle);
 
 	// AudioComponent 참조 초기화 (실제 파괴는 UGameSoundManager가 관리)
 	CurVoiceAudio = nullptr;
