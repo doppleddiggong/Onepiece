@@ -141,10 +141,10 @@ $(document).ready(function(){initNavTree('Popup__Questionnaire_8h_source.html','
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="keywordtype">void</span> OnClickSubmit();</div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    </div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    UFUNCTION()</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="keywordtype">void</span> OnResponseOcrExtract(<a class="code hl_struct" href="structFResponseWriteSubmit.html">FResponseWriteSubmit</a>&amp; ResponseData, TArray&lt;FWriteWordData&gt; InQuestionArray, <span class="keywordtype">bool</span> bWasSuccessful);</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="keywordtype">void</span> OnResponseOcrExtract(<a class="code hl_struct" href="structFResponseWriteSubmit.html">FResponseWriteSubmit</a>&amp; ResponseData, <span class="keywordtype">bool</span> bWasSuccessful);</div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="comment">// UFUNCTION()</span></div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="comment">// void OnResponseQuestionAnswer(FResponseQuestionAnswer&amp; ResponseData, bool bWasSuccessful);</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    UFUNCTION()</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="keywordtype">void</span> OnResponseWriteResult(<a class="code hl_struct" href="structFResponseWriteResult.html">FResponseWriteResult</a>&amp; ResponseData, <span class="keywordtype">bool</span> bWasSuccessful);</div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="keyword">protected</span>:</div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="comment">/* ------------------- Layout ------------------- */</span></div>
@@ -183,6 +183,7 @@ $(document).ready(function(){initNavTree('Popup__Questionnaire_8h_source.html','
 <div class="ttc" id="aclassUPopup__QuestionnaireItem_html"><div class="ttname"><a href="classUPopup__QuestionnaireItem.html">UPopup_QuestionnaireItem</a></div><div class="ttdef"><b>Definition</b> <a href="Popup__QuestionnaireItem_8h_source.html#l00014">Popup_QuestionnaireItem.h:15</a></div></div>
 <div class="ttc" id="aclassUPopup__Questionnaire_html"><div class="ttname"><a href="classUPopup__Questionnaire.html">UPopup_Questionnaire</a></div><div class="ttdef"><b>Definition</b> <a href="Popup__Questionnaire_8h_source.html#l00014">Popup_Questionnaire.h:15</a></div></div>
 <div class="ttc" id="astructFQuestWriteInfo_html"><div class="ttname"><a href="structFQuestWriteInfo.html">FQuestWriteInfo</a></div><div class="ttdoc">Write 퀘스트 정보 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00356">NetworkData.h:357</a></div></div>
+<div class="ttc" id="astructFResponseWriteResult_html"><div class="ttname"><a href="structFResponseWriteResult.html">FResponseWriteResult</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00767">NetworkData.h:768</a></div></div>
 <div class="ttc" id="astructFResponseWriteSubmit_html"><div class="ttname"><a href="structFResponseWriteSubmit.html">FResponseWriteSubmit</a></div><div class="ttdoc">Write Submit 응답 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00707">NetworkData.h:708</a></div></div>
 <div class="ttc" id="astructFWriteQuestionData_html"><div class="ttname"><a href="structFWriteQuestionData.html">FWriteQuestionData</a></div><div class="ttdoc">Write 질문 및 정답 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00335">NetworkData.h:336</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
@@ -191,7 +192,7 @@ $(document).ready(function(){initNavTree('Popup__Questionnaire_8h_source.html','
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_47ae9c23f27029060c39af29b069b73d.html">MessageBox</a></li><li class="navelem"><a class="el" href="dir_244820c19557decdcbf6fc4000b77b7e.html">Public</a></li><li class="navelem"><a class="el" href="Popup__Questionnaire_8h.html">Popup_Questionnaire.h</a></li>
-    <li class="footer">생성시간 : 화 12월 16 2025 05:11:56, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 화 12월 16 2025 07:59:39, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

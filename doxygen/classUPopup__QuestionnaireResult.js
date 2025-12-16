@@ -1,7 +1,8 @@
 var classUPopup__QuestionnaireResult =
 [
     [ "UPopup_QuestionnaireResult", "classUPopup__QuestionnaireResult.html#afa929130b096f97f217e0044407c4a69", null ],
-    [ "InitPopup", "classUPopup__QuestionnaireResult.html#ac4dacda580321b3f7249bdbf353daf32", null ],
+    [ "InitPopup", "classUPopup__QuestionnaireResult.html#a6c603e8485f4060086e3d0d074f0cffc", null ],
+    [ "InitWholeResult", "classUPopup__QuestionnaireResult.html#ab846af4e3593c38b5307a5f52b3256c5", null ],
     [ "NativeConstruct", "classUPopup__QuestionnaireResult.html#a8b7a7c9453e69c9f401ae137ef2ca3f9", null ],
     [ "NativeTick", "classUPopup__QuestionnaireResult.html#a750c1a854f68ca16faa069645531abd6", null ],
     [ "OnClickClose", "classUPopup__QuestionnaireResult.html#a1466c60e05a29fcddec6b332bf908fd1", null ],
@@ -22,6 +23,10 @@ var classUPopup__QuestionnaireResult =
     [ "QuestionsEng", "classUPopup__QuestionnaireResult.html#af6899e91551b52895a1f9193152baa30", null ],
     [ "QuestionsKor", "classUPopup__QuestionnaireResult.html#a37d8d2ca3117729b9d3565cdee25e10d", null ],
     [ "ResponseData", "classUPopup__QuestionnaireResult.html#abc49f1c307a3a441f316fa2618c296a5", null ],
+    [ "Result_AverageScore", "classUPopup__QuestionnaireResult.html#a5349650dceb9f64c6c59841ce36c4a46", null ],
+    [ "Result_Grade", "classUPopup__QuestionnaireResult.html#a66966b2a55cc5377d439c7110e5ebfec", null ],
+    [ "Result_Time", "classUPopup__QuestionnaireResult.html#a60c02f36f121d5463c114326e76883a8", null ],
+    [ "Result_TopRate", "classUPopup__QuestionnaireResult.html#aacac1aa8d118a4c852bb3158f6a1fc13", null ],
     [ "ScrollBox_Result", "classUPopup__QuestionnaireResult.html#af67bf2288f18445713ef6a12e61548f6", null ],
     [ "WriteImagePath", "classUPopup__QuestionnaireResult.html#ae8a31c8ef9645592b5d1210cefcb5d04", null ]
 ];

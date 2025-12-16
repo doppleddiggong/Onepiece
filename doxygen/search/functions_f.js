@@ -34,15 +34,16 @@ var searchData=
   ['requestspeakaudio_31',['RequestSpeakAudio',['../classAPlayerActor.html#a182d5478895ad51a12b3b342c7f0294f',1,'APlayerActor']]],
   ['requestspeakingjudges_32',['RequestSpeakingJudges',['../classUKLingoNetworkSystem.html#a0b26b72d9b13f2eff1d8a06e55141ab0',1,'UKLingoNetworkSystem']]],
   ['requestspeakingquestions_33',['RequestSpeakingQuestions',['../classANetworkTesterActor.html#afecbbceb4620b3230c239edf911dd301',1,'ANetworkTesterActor']]],
-  ['requestspeakresult_34',['requestspeakresult',['../classUKLingoNetworkSystem.html#a6730e3aeb9944934038aad48de0fac92',1,'UKLingoNetworkSystem::RequestSpeakResult()'],['../classAPlayerControl.html#a4864ed11a25d0245a4ca8daa360d81d1',1,'APlayerControl::RequestSpeakResult()']]],
+  ['requestspeakresult_34',['requestspeakresult',['../classAPlayerControl.html#a4864ed11a25d0245a4ca8daa360d81d1',1,'APlayerControl::RequestSpeakResult()'],['../classUKLingoNetworkSystem.html#a6730e3aeb9944934038aad48de0fac92',1,'UKLingoNetworkSystem::RequestSpeakResult(const FRequestSpeakResult &amp;Result, FResponseSpeakResultDelegate InDelegate)']]],
   ['requestspeakscenario_35',['RequestSpeakScenario',['../classUKLingoNetworkSystem.html#acf2d46d08afd81380e695e69039049d9',1,'UKLingoNetworkSystem']]],
   ['requestuserme_36',['requestuserme',['../classUPopup__InputMsg.html#a20a0f6d2236da9b358e54410c33864b2',1,'UPopup_InputMsg::RequestUserMe()'],['../classANetworkTesterActor.html#aebbe22fc01a47b44f20c3dc5f35aceed',1,'ANetworkTesterActor::RequestUserMe()'],['../classUKLingoNetworkSystem.html#a7bf03fe16be3fddf9a51350248bdf6b4',1,'UKLingoNetworkSystem::RequestUserMe()']]],
   ['requestuserregister_37',['requestuserregister',['../classANetworkTesterActor.html#ae53f27ab3ca6671a7c55a14c055d03a3',1,'ANetworkTesterActor::RequestUserRegister()'],['../classUKLingoNetworkSystem.html#a4082666ed951516c06e8dcbfdb20c484',1,'UKLingoNetworkSystem::RequestUserRegister()'],['../classUPopup__InputMsg.html#ac846665b1756730680170d55e0bd325a',1,'UPopup_InputMsg::RequestUserRegister(const FString &amp;UserInput)']]],
   ['requestusertoken_38',['requestusertoken',['../classUPopup__InputMsg.html#a4a885959899e2948beb9e4ae35160213',1,'UPopup_InputMsg::RequestUserToken()'],['../classANetworkTesterActor.html#a809947b71f79e9024a44a62d0cc20a90',1,'ANetworkTesterActor::RequestUserToken()'],['../classUKLingoNetworkSystem.html#a2f97be279ddf5bd2878f67a55d9b8149',1,'UKLingoNetworkSystem::RequestUserToken(const FString &amp;UserName, FResponseUserTokenDelegate InDelegate)']]],
   ['requestwritequestions_39',['RequestWriteQuestions',['../classUKLingoNetworkSystem.html#aa7effea553f735e179a45e6c053e97f6',1,'UKLingoNetworkSystem']]],
-  ['requestwritesubmit_40',['RequestWriteSubmit',['../classUKLingoNetworkSystem.html#ae7264e01917efa01ca7a3e95f5438bab',1,'UKLingoNetworkSystem']]],
-  ['resampleaudio_41',['ResampleAudio',['../classUVoiceFunctionLibrary.html#ab7286a2381e79cda24832986f2f70964',1,'UVoiceFunctionLibrary']]],
-  ['reset_42',['Reset',['../classFHttpMultipartFormData.html#aceb421a2053762a2e8ff832a974bd7c6',1,'FHttpMultipartFormData']]],
-  ['resetalpha_43',['ResetAlpha',['../classUTweenAnimInstance.html#a2ace1c8a60caf1704f0421c4f28c203d',1,'UTweenAnimInstance']]],
-  ['returnactortopool_44',['ReturnActorToPool',['../classUObjectPoolManager.html#a490db17b3cd07db69fabddfc7fe98b2d',1,'UObjectPoolManager']]]
+  ['requestwriteresult_40',['RequestWriteResult',['../classUKLingoNetworkSystem.html#aef1bcb9d5e7bc07c1cc43a1ae963c27b',1,'UKLingoNetworkSystem']]],
+  ['requestwritesubmit_41',['RequestWriteSubmit',['../classUKLingoNetworkSystem.html#af33057e42c5ce4c185dedf73ecb4f67c',1,'UKLingoNetworkSystem']]],
+  ['resampleaudio_42',['ResampleAudio',['../classUVoiceFunctionLibrary.html#ab7286a2381e79cda24832986f2f70964',1,'UVoiceFunctionLibrary']]],
+  ['reset_43',['Reset',['../classFHttpMultipartFormData.html#aceb421a2053762a2e8ff832a974bd7c6',1,'FHttpMultipartFormData']]],
+  ['resetalpha_44',['ResetAlpha',['../classUTweenAnimInstance.html#a2ace1c8a60caf1704f0421c4f28c203d',1,'UTweenAnimInstance']]],
+  ['returnactortopool_45',['ReturnActorToPool',['../classUObjectPoolManager.html#a490db17b3cd07db69fabddfc7fe98b2d',1,'UObjectPoolManager']]]
 ];

@@ -154,36 +154,37 @@ $(document).ready(function(){initNavTree('UKLingoNetworkSystem_8h_source.html','
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="keywordtype">void</span> RequestListenResult(<span class="keyword">const</span> <a class="code hl_struct" href="structFRequestListenResult.html">FRequestListenResult</a>&amp; Result, FResponseListenResultDelegate InDelegate);</div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="keywordtype">void</span> RequestWriteQuestions(FResponseWriteQuestionDelegate InDelegate);</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="keywordtype">void</span> RequestWriteSubmit(<span class="keyword">const</span> TArray&lt;FString&gt;&amp; ImagePathArray, <span class="keyword">const</span> TArray&lt;FWriteWordData&gt;&amp; QuestionArray,  TArray&lt;FString&gt; InTargetText, FResponseWriteSubmitDelegate InDelegate);</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="keywordtype">void</span> RequestSpeakScenario(FResponseSpeakScenarioDelegate InDelegate);</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="keywordtype">void</span> RequestSpeakResult(<span class="keyword">const</span> <a class="code hl_struct" href="structFRequestSpeakResult.html">FRequestSpeakResult</a>&amp; Result, FResponseSpeakResultDelegate InDelegate);</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="keywordtype">void</span> RequestEvaluationResult(int32 RoomId, FResponseEvaluationResultDelegate InDelegate);</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="keywordtype">void</span> RequestChatQuestion(<span class="keyword">const</span> FString&amp; <a class="code hl_enumvalue" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2aad4e206408c1c59bfb8a057ba7857446">Context</a>, <span class="keyword">const</span> FString&amp; Question, FResponseChatAnswersDelegate InDelegate);</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <span class="keywordtype">void</span> RequestChatAudio(<span class="keyword">const</span> FString&amp; <a class="code hl_enumvalue" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2aad4e206408c1c59bfb8a057ba7857446">Context</a>, <span class="keyword">const</span> FString&amp; AudioPath, FResponseChatAnswersDelegate InDelegate);</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> LogNetwork( <a class="code hl_enumeration" href="ENetworkLogType_8h.html#a80aaa513e01d2ec2d4421835b09d691f">ENetworkLogType</a> InLogType, <span class="keyword">const</span> FString&amp; URL, <span class="keyword">const</span> FString&amp; Body = TEXT(<span class="stringliteral">&quot;&quot;</span>));</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    <span class="keyword">static</span> <span class="keyword">const</span> TCHAR* GetLogPrefix(<a class="code hl_enumeration" href="ENetworkLogType_8h.html#a80aaa513e01d2ec2d4421835b09d691f">ENetworkLogType</a> InLogType);</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    <span class="keyword">static</span> <span class="keywordtype">bool</span> IsResSuccess(<span class="keyword">const</span> <span class="keywordtype">int</span> InCode);</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    <span class="keywordtype">void</span> ShowNetworkErrorPopup(int32 ResponseCode, <span class="keyword">const</span> FString&amp; ResponseContent);</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    </div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    <span class="keywordtype">void</span> AddNetworkWaitCount(<span class="keywordtype">int</span> Value);</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    </div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    TSharedRef&lt;IHttpRequest, ESPMode::ThreadSafe&gt; SetupHttpRequest( <span class="keyword">const</span> FString&amp; Url, <span class="keyword">const</span> FString&amp; Verb );</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno"><a class="line" href="classUKLingoNetworkSystem.html#ae2884d2ebde0f80ae6ff84d5f27a706e">   95</a></span>    <span class="keywordtype">int</span> NetworkWaitCount = 0;</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span> </div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno"><a class="line" href="classUKLingoNetworkSystem.html#acf7da28577586f19559ef3d7af8ea7ea">   98</a></span>    FString <a class="code hl_variable" href="classUKLingoNetworkSystem.html#acf7da28577586f19559ef3d7af8ea7ea">access_token</a>;</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>};</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="keywordtype">void</span> RequestWriteSubmit(<span class="keyword">const</span> TArray&lt;FString&gt;&amp; ImagePathArray, TArray&lt;FString&gt; InTargetText, FResponseWriteSubmitDelegate InDelegate);</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="keywordtype">void</span> RequestWriteResult(<span class="keyword">const</span> <a class="code hl_struct" href="structFRequestWriteResult.html">FRequestWriteResult</a>&amp; Result, FResponseWriteResultDelegate InDelegate);</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="keywordtype">void</span> RequestSpeakScenario(FResponseSpeakScenarioDelegate InDelegate);</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="keywordtype">void</span> RequestSpeakResult(<span class="keyword">const</span> <a class="code hl_struct" href="structFRequestSpeakResult.html">FRequestSpeakResult</a>&amp; Result, FResponseSpeakResultDelegate InDelegate);</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <span class="keywordtype">void</span> RequestEvaluationResult(int32 RoomId, FResponseEvaluationResultDelegate InDelegate);</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="keywordtype">void</span> RequestChatQuestion(<span class="keyword">const</span> FString&amp; <a class="code hl_enumvalue" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2aad4e206408c1c59bfb8a057ba7857446">Context</a>, <span class="keyword">const</span> FString&amp; Question, FResponseChatAnswersDelegate InDelegate);</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <span class="keywordtype">void</span> RequestChatAudio(<span class="keyword">const</span> FString&amp; <a class="code hl_enumvalue" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2aad4e206408c1c59bfb8a057ba7857446">Context</a>, <span class="keyword">const</span> FString&amp; AudioPath, FResponseChatAnswersDelegate InDelegate);</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> LogNetwork( <a class="code hl_enumeration" href="ENetworkLogType_8h.html#a80aaa513e01d2ec2d4421835b09d691f">ENetworkLogType</a> InLogType, <span class="keyword">const</span> FString&amp; URL, <span class="keyword">const</span> FString&amp; Body = TEXT(<span class="stringliteral">&quot;&quot;</span>));</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    <span class="keyword">static</span> <span class="keyword">const</span> TCHAR* GetLogPrefix(<a class="code hl_enumeration" href="ENetworkLogType_8h.html#a80aaa513e01d2ec2d4421835b09d691f">ENetworkLogType</a> InLogType);</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    <span class="keyword">static</span> <span class="keywordtype">bool</span> IsResSuccess(<span class="keyword">const</span> <span class="keywordtype">int</span> InCode);</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    <span class="keywordtype">void</span> ShowNetworkErrorPopup(int32 ResponseCode, <span class="keyword">const</span> FString&amp; ResponseContent);</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    </div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    <span class="keywordtype">void</span> AddNetworkWaitCount(<span class="keywordtype">int</span> Value);</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    </div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    TSharedRef&lt;IHttpRequest, ESPMode::ThreadSafe&gt; SetupHttpRequest( <span class="keyword">const</span> FString&amp; Url, <span class="keyword">const</span> FString&amp; Verb );</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span> </div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno"><a class="line" href="classUKLingoNetworkSystem.html#ae2884d2ebde0f80ae6ff84d5f27a706e">   96</a></span>    <span class="keywordtype">int</span> NetworkWaitCount = 0;</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno"><a class="line" href="classUKLingoNetworkSystem.html#acf7da28577586f19559ef3d7af8ea7ea">   99</a></span>    FString <a class="code hl_variable" href="classUKLingoNetworkSystem.html#acf7da28577586f19559ef3d7af8ea7ea">access_token</a>;</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>};</div>
 </div>
 <div class="ttc" id="aENetworkLogType_8h_html"><div class="ttname"><a href="ENetworkLogType_8h.html">ENetworkLogType.h</a></div><div class="ttdoc">네트워크 로그 메시지 구분자 열거형을 선언합니다.</div></div>
 <div class="ttc" id="aENetworkLogType_8h_html_a80aaa513e01d2ec2d4421835b09d691f"><div class="ttname"><a href="ENetworkLogType_8h.html#a80aaa513e01d2ec2d4421835b09d691f">ENetworkLogType</a></div><div class="ttdeci">ENetworkLogType</div><div class="ttdoc">네트워크 요청/응답 로그를 구분하는 타입입니다.</div><div class="ttdef"><b>Definition</b> <a href="ENetworkLogType_8h_source.html#l00010">ENetworkLogType.h:11</a></div></div>
@@ -192,18 +193,19 @@ $(document).ready(function(){initNavTree('UKLingoNetworkSystem_8h_source.html','
 <div class="ttc" id="aNetworkData_8h_html"><div class="ttname"><a href="NetworkData_8h.html">NetworkData.h</a></div><div class="ttdoc">네트워크 요청과 응답에 사용되는 구조체 및 설정을 정의합니다.</div></div>
 <div class="ttc" id="aclassUKLingoNetworkSystem_html"><div class="ttname"><a href="classUKLingoNetworkSystem.html">UKLingoNetworkSystem</a></div><div class="ttdef"><b>Definition</b> <a href="UKLingoNetworkSystem_8h_source.html#l00019">UKLingoNetworkSystem.h:20</a></div></div>
 <div class="ttc" id="aclassUKLingoNetworkSystem_html_a55a3c20561aaa16e02ae67adf5f15bfe"><div class="ttname"><a href="classUKLingoNetworkSystem.html#a55a3c20561aaa16e02ae67adf5f15bfe">UKLingoNetworkSystem::DEFINE_SUBSYSTEM_GETTER_INLINE</a></div><div class="ttdeci">DEFINE_SUBSYSTEM_GETTER_INLINE(UKLingoNetworkSystem)</div></div>
-<div class="ttc" id="aclassUKLingoNetworkSystem_html_acf7da28577586f19559ef3d7af8ea7ea"><div class="ttname"><a href="classUKLingoNetworkSystem.html#acf7da28577586f19559ef3d7af8ea7ea">UKLingoNetworkSystem::access_token</a></div><div class="ttdeci">FString access_token</div><div class="ttdoc">인증 토큰 (로그인 후 저장)</div><div class="ttdef"><b>Definition</b> <a href="UKLingoNetworkSystem_8h_source.html#l00098">UKLingoNetworkSystem.h:98</a></div></div>
-<div class="ttc" id="astructFRequestInterviewAnswer_html"><div class="ttname"><a href="structFRequestInterviewAnswer.html">FRequestInterviewAnswer</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00846">NetworkData.h:847</a></div></div>
-<div class="ttc" id="astructFRequestListenResult_html"><div class="ttname"><a href="structFRequestListenResult.html">FRequestListenResult</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l01012">NetworkData.h:1013</a></div></div>
-<div class="ttc" id="astructFRequestReadResult_html"><div class="ttname"><a href="structFRequestReadResult.html">FRequestReadResult</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00913">NetworkData.h:914</a></div></div>
-<div class="ttc" id="astructFRequestSpeakResult_html"><div class="ttname"><a href="structFRequestSpeakResult.html">FRequestSpeakResult</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l01128">NetworkData.h:1129</a></div></div>
+<div class="ttc" id="aclassUKLingoNetworkSystem_html_acf7da28577586f19559ef3d7af8ea7ea"><div class="ttname"><a href="classUKLingoNetworkSystem.html#acf7da28577586f19559ef3d7af8ea7ea">UKLingoNetworkSystem::access_token</a></div><div class="ttdeci">FString access_token</div><div class="ttdoc">인증 토큰 (로그인 후 저장)</div><div class="ttdef"><b>Definition</b> <a href="UKLingoNetworkSystem_8h_source.html#l00099">UKLingoNetworkSystem.h:99</a></div></div>
+<div class="ttc" id="astructFRequestInterviewAnswer_html"><div class="ttname"><a href="structFRequestInterviewAnswer.html">FRequestInterviewAnswer</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00879">NetworkData.h:880</a></div></div>
+<div class="ttc" id="astructFRequestListenResult_html"><div class="ttname"><a href="structFRequestListenResult.html">FRequestListenResult</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l01045">NetworkData.h:1046</a></div></div>
+<div class="ttc" id="astructFRequestReadResult_html"><div class="ttname"><a href="structFRequestReadResult.html">FRequestReadResult</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00946">NetworkData.h:947</a></div></div>
+<div class="ttc" id="astructFRequestSpeakResult_html"><div class="ttname"><a href="structFRequestSpeakResult.html">FRequestSpeakResult</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l01161">NetworkData.h:1162</a></div></div>
+<div class="ttc" id="astructFRequestWriteResult_html"><div class="ttname"><a href="structFRequestWriteResult.html">FRequestWriteResult</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00722">NetworkData.h:723</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_db6231b890a14ef22abfc7e4cac87d3d.html">Network</a></li><li class="navelem"><a class="el" href="dir_220b20a97e4e155a19f3af1d93d62cb0.html">Public</a></li><li class="navelem"><a class="el" href="UKLingoNetworkSystem_8h.html">UKLingoNetworkSystem.h</a></li>
-    <li class="footer">생성시간 : 화 12월 16 2025 05:11:56, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 화 12월 16 2025 07:59:39, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

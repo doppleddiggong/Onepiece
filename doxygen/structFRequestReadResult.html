@@ -143,7 +143,7 @@ Public 속성</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">상세한 설명</h2>
 <div class="textblock">
-<p class="definition"><a class="el" href="NetworkData_8h_source.html">NetworkData.h</a> 파일의 <a class="el" href="NetworkData_8h_source.html#l00913">913</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="NetworkData_8h_source.html">NetworkData.h</a> 파일의 <a class="el" href="NetworkData_8h_source.html#l00946">946</a> 번째 라인에서 정의되었습니다.</p>
 </div><h2 class="groupheader">멤버 함수 문서화</h2>
 <a id="a82c16d908082555ac713fc9b44e4c455" name="a82c16d908082555ac713fc9b44e4c455"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a82c16d908082555ac713fc9b44e4c455">&#9670;&#160;</a></span>ToJsonString()</h2>
@@ -163,38 +163,38 @@ Public 속성</h2></td></tr>
 
 <p>구조체를 JSON 문자열로 변환합니다. </p>
 
-<p class="definition"><a class="el" href="NetworkData_8cpp_source.html">NetworkData.cpp</a> 파일의 <a class="el" href="NetworkData_8cpp_source.html#l00759">759</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  760</span>{</div>
-<div class="line"><span class="lineno">  761</span>    TSharedPtr&lt;FJsonObject&gt; JsonObject = MakeShared&lt;FJsonObject&gt;();</div>
-<div class="line"><span class="lineno">  762</span> </div>
-<div class="line"><span class="lineno">  763</span>    JsonObject-&gt;SetNumberField(TEXT(<span class="stringliteral">&quot;room_id&quot;</span>), <a class="code hl_variable" href="structFRequestReadResult.html#a53e5bf77db201971463c5bf6f6cce0b2">room_id</a>);</div>
-<div class="line"><span class="lineno">  764</span>    JsonObject-&gt;SetNumberField(TEXT(<span class="stringliteral">&quot;user_id&quot;</span>), <a class="code hl_variable" href="structFRequestReadResult.html#ac16a0a88dead3eeaaf8c54d069e43867">user_id</a>);</div>
-<div class="line"><span class="lineno">  765</span>    JsonObject-&gt;SetNumberField(TEXT(<span class="stringliteral">&quot;scenario_id&quot;</span>), <a class="code hl_variable" href="structFRequestReadResult.html#a92919781f00aa0aa3fee771abf1d7fac">scenario_id</a>);</div>
-<div class="line"><span class="lineno">  766</span>    JsonObject-&gt;SetNumberField(TEXT(<span class="stringliteral">&quot;stage_type&quot;</span>), <a class="code hl_variable" href="structFRequestReadResult.html#af46d1d78f8160182ebeb0f552948f05d">stage_type</a>);</div>
-<div class="line"><span class="lineno">  767</span>    JsonObject-&gt;SetNumberField(TEXT(<span class="stringliteral">&quot;state_type&quot;</span>), <a class="code hl_variable" href="structFRequestReadResult.html#ac78c52dda9dd4b760ee66874a1f05d68">state_type</a>);</div>
-<div class="line"><span class="lineno">  768</span>    JsonObject-&gt;SetNumberField(TEXT(<span class="stringliteral">&quot;result_time&quot;</span>), <a class="code hl_variable" href="structFRequestReadResult.html#a6d2f33f3d09a93228c578306a8b294af">result_time</a>);</div>
-<div class="line"><span class="lineno">  769</span> </div>
-<div class="line"><span class="lineno">  770</span>    TArray&lt;TSharedPtr&lt;FJsonValue&gt;&gt; WrongIdxArray;</div>
-<div class="line"><span class="lineno">  771</span>    <span class="keywordflow">for</span> (int32 Idx : <a class="code hl_variable" href="structFRequestReadResult.html#aded067bb7754fbf32abd8acf1737e0e9">wrong_idx</a>)</div>
-<div class="line"><span class="lineno">  772</span>    {</div>
-<div class="line"><span class="lineno">  773</span>        WrongIdxArray.Add(MakeShared&lt;FJsonValueNumber&gt;(Idx));</div>
-<div class="line"><span class="lineno">  774</span>    }</div>
-<div class="line"><span class="lineno">  775</span>    JsonObject-&gt;SetArrayField(TEXT(<span class="stringliteral">&quot;wrong_idx&quot;</span>), WrongIdxArray);</div>
-<div class="line"><span class="lineno">  776</span> </div>
-<div class="line"><span class="lineno">  777</span>    TSharedRef&lt;TJsonWriter&lt;&gt;&gt; Writer = TJsonWriterFactory&lt;&gt;::Create(&amp;OutJson);</div>
-<div class="line"><span class="lineno">  778</span>    <span class="keywordflow">return</span> FJsonSerializer::Serialize(JsonObject.ToSharedRef(), Writer);</div>
-<div class="line"><span class="lineno">  779</span>}</div>
-<div class="ttc" id="astructFRequestReadResult_html_a53e5bf77db201971463c5bf6f6cce0b2"><div class="ttname"><a href="structFRequestReadResult.html#a53e5bf77db201971463c5bf6f6cce0b2">FRequestReadResult::room_id</a></div><div class="ttdeci">int32 room_id</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00918">NetworkData.h:918</a></div></div>
-<div class="ttc" id="astructFRequestReadResult_html_a6d2f33f3d09a93228c578306a8b294af"><div class="ttname"><a href="structFRequestReadResult.html#a6d2f33f3d09a93228c578306a8b294af">FRequestReadResult::result_time</a></div><div class="ttdeci">int32 result_time</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00933">NetworkData.h:933</a></div></div>
-<div class="ttc" id="astructFRequestReadResult_html_a92919781f00aa0aa3fee771abf1d7fac"><div class="ttname"><a href="structFRequestReadResult.html#a92919781f00aa0aa3fee771abf1d7fac">FRequestReadResult::scenario_id</a></div><div class="ttdeci">int32 scenario_id</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00924">NetworkData.h:924</a></div></div>
-<div class="ttc" id="astructFRequestReadResult_html_ac16a0a88dead3eeaaf8c54d069e43867"><div class="ttname"><a href="structFRequestReadResult.html#ac16a0a88dead3eeaaf8c54d069e43867">FRequestReadResult::user_id</a></div><div class="ttdeci">int32 user_id</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00921">NetworkData.h:921</a></div></div>
-<div class="ttc" id="astructFRequestReadResult_html_ac78c52dda9dd4b760ee66874a1f05d68"><div class="ttname"><a href="structFRequestReadResult.html#ac78c52dda9dd4b760ee66874a1f05d68">FRequestReadResult::state_type</a></div><div class="ttdeci">int32 state_type</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00930">NetworkData.h:930</a></div></div>
-<div class="ttc" id="astructFRequestReadResult_html_aded067bb7754fbf32abd8acf1737e0e9"><div class="ttname"><a href="structFRequestReadResult.html#aded067bb7754fbf32abd8acf1737e0e9">FRequestReadResult::wrong_idx</a></div><div class="ttdeci">TArray&lt; int32 &gt; wrong_idx</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00936">NetworkData.h:936</a></div></div>
-<div class="ttc" id="astructFRequestReadResult_html_af46d1d78f8160182ebeb0f552948f05d"><div class="ttname"><a href="structFRequestReadResult.html#af46d1d78f8160182ebeb0f552948f05d">FRequestReadResult::stage_type</a></div><div class="ttdeci">int32 stage_type</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00927">NetworkData.h:927</a></div></div>
+<p class="definition"><a class="el" href="NetworkData_8cpp_source.html">NetworkData.cpp</a> 파일의 <a class="el" href="NetworkData_8cpp_source.html#l00817">817</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  818</span>{</div>
+<div class="line"><span class="lineno">  819</span>    TSharedPtr&lt;FJsonObject&gt; JsonObject = MakeShared&lt;FJsonObject&gt;();</div>
+<div class="line"><span class="lineno">  820</span> </div>
+<div class="line"><span class="lineno">  821</span>    JsonObject-&gt;SetNumberField(TEXT(<span class="stringliteral">&quot;room_id&quot;</span>), <a class="code hl_variable" href="structFRequestReadResult.html#a53e5bf77db201971463c5bf6f6cce0b2">room_id</a>);</div>
+<div class="line"><span class="lineno">  822</span>    JsonObject-&gt;SetNumberField(TEXT(<span class="stringliteral">&quot;user_id&quot;</span>), <a class="code hl_variable" href="structFRequestReadResult.html#ac16a0a88dead3eeaaf8c54d069e43867">user_id</a>);</div>
+<div class="line"><span class="lineno">  823</span>    JsonObject-&gt;SetNumberField(TEXT(<span class="stringliteral">&quot;scenario_id&quot;</span>), <a class="code hl_variable" href="structFRequestReadResult.html#a92919781f00aa0aa3fee771abf1d7fac">scenario_id</a>);</div>
+<div class="line"><span class="lineno">  824</span>    JsonObject-&gt;SetNumberField(TEXT(<span class="stringliteral">&quot;stage_type&quot;</span>), <a class="code hl_variable" href="structFRequestReadResult.html#af46d1d78f8160182ebeb0f552948f05d">stage_type</a>);</div>
+<div class="line"><span class="lineno">  825</span>    JsonObject-&gt;SetNumberField(TEXT(<span class="stringliteral">&quot;state_type&quot;</span>), <a class="code hl_variable" href="structFRequestReadResult.html#ac78c52dda9dd4b760ee66874a1f05d68">state_type</a>);</div>
+<div class="line"><span class="lineno">  826</span>    JsonObject-&gt;SetNumberField(TEXT(<span class="stringliteral">&quot;result_time&quot;</span>), <a class="code hl_variable" href="structFRequestReadResult.html#a6d2f33f3d09a93228c578306a8b294af">result_time</a>);</div>
+<div class="line"><span class="lineno">  827</span> </div>
+<div class="line"><span class="lineno">  828</span>    TArray&lt;TSharedPtr&lt;FJsonValue&gt;&gt; WrongIdxArray;</div>
+<div class="line"><span class="lineno">  829</span>    <span class="keywordflow">for</span> (int32 Idx : <a class="code hl_variable" href="structFRequestReadResult.html#aded067bb7754fbf32abd8acf1737e0e9">wrong_idx</a>)</div>
+<div class="line"><span class="lineno">  830</span>    {</div>
+<div class="line"><span class="lineno">  831</span>        WrongIdxArray.Add(MakeShared&lt;FJsonValueNumber&gt;(Idx));</div>
+<div class="line"><span class="lineno">  832</span>    }</div>
+<div class="line"><span class="lineno">  833</span>    JsonObject-&gt;SetArrayField(TEXT(<span class="stringliteral">&quot;wrong_idx&quot;</span>), WrongIdxArray);</div>
+<div class="line"><span class="lineno">  834</span> </div>
+<div class="line"><span class="lineno">  835</span>    TSharedRef&lt;TJsonWriter&lt;&gt;&gt; Writer = TJsonWriterFactory&lt;&gt;::Create(&amp;OutJson);</div>
+<div class="line"><span class="lineno">  836</span>    <span class="keywordflow">return</span> FJsonSerializer::Serialize(JsonObject.ToSharedRef(), Writer);</div>
+<div class="line"><span class="lineno">  837</span>}</div>
+<div class="ttc" id="astructFRequestReadResult_html_a53e5bf77db201971463c5bf6f6cce0b2"><div class="ttname"><a href="structFRequestReadResult.html#a53e5bf77db201971463c5bf6f6cce0b2">FRequestReadResult::room_id</a></div><div class="ttdeci">int32 room_id</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00951">NetworkData.h:951</a></div></div>
+<div class="ttc" id="astructFRequestReadResult_html_a6d2f33f3d09a93228c578306a8b294af"><div class="ttname"><a href="structFRequestReadResult.html#a6d2f33f3d09a93228c578306a8b294af">FRequestReadResult::result_time</a></div><div class="ttdeci">int32 result_time</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00966">NetworkData.h:966</a></div></div>
+<div class="ttc" id="astructFRequestReadResult_html_a92919781f00aa0aa3fee771abf1d7fac"><div class="ttname"><a href="structFRequestReadResult.html#a92919781f00aa0aa3fee771abf1d7fac">FRequestReadResult::scenario_id</a></div><div class="ttdeci">int32 scenario_id</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00957">NetworkData.h:957</a></div></div>
+<div class="ttc" id="astructFRequestReadResult_html_ac16a0a88dead3eeaaf8c54d069e43867"><div class="ttname"><a href="structFRequestReadResult.html#ac16a0a88dead3eeaaf8c54d069e43867">FRequestReadResult::user_id</a></div><div class="ttdeci">int32 user_id</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00954">NetworkData.h:954</a></div></div>
+<div class="ttc" id="astructFRequestReadResult_html_ac78c52dda9dd4b760ee66874a1f05d68"><div class="ttname"><a href="structFRequestReadResult.html#ac78c52dda9dd4b760ee66874a1f05d68">FRequestReadResult::state_type</a></div><div class="ttdeci">int32 state_type</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00963">NetworkData.h:963</a></div></div>
+<div class="ttc" id="astructFRequestReadResult_html_aded067bb7754fbf32abd8acf1737e0e9"><div class="ttname"><a href="structFRequestReadResult.html#aded067bb7754fbf32abd8acf1737e0e9">FRequestReadResult::wrong_idx</a></div><div class="ttdeci">TArray&lt; int32 &gt; wrong_idx</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00969">NetworkData.h:969</a></div></div>
+<div class="ttc" id="astructFRequestReadResult_html_af46d1d78f8160182ebeb0f552948f05d"><div class="ttname"><a href="structFRequestReadResult.html#af46d1d78f8160182ebeb0f552948f05d">FRequestReadResult::stage_type</a></div><div class="ttdeci">int32 stage_type</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00960">NetworkData.h:960</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="NetworkData_8h_source.html#l00933">result_time</a>, <a class="el" href="NetworkData_8h_source.html#l00918">room_id</a>, <a class="el" href="NetworkData_8h_source.html#l00924">scenario_id</a>, <a class="el" href="NetworkData_8h_source.html#l00927">stage_type</a>, <a class="el" href="NetworkData_8h_source.html#l00930">state_type</a>, <a class="el" href="NetworkData_8h_source.html#l00921">user_id</a>, <a class="el" href="NetworkData_8h_source.html#l00936">wrong_idx</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="NetworkData_8h_source.html#l00966">result_time</a>, <a class="el" href="NetworkData_8h_source.html#l00951">room_id</a>, <a class="el" href="NetworkData_8h_source.html#l00957">scenario_id</a>, <a class="el" href="NetworkData_8h_source.html#l00960">stage_type</a>, <a class="el" href="NetworkData_8h_source.html#l00963">state_type</a>, <a class="el" href="NetworkData_8h_source.html#l00954">user_id</a>, <a class="el" href="NetworkData_8h_source.html#l00969">wrong_idx</a>.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00904">UKLingoNetworkSystem::RequestReadResult()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00960">UKLingoNetworkSystem::RequestReadResult()</a>.</p>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
@@ -218,9 +218,9 @@ Public 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="NetworkData_8h_source.html">NetworkData.h</a> 파일의 <a class="el" href="NetworkData_8h_source.html#l00933">933</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="NetworkData_8h_source.html">NetworkData.h</a> 파일의 <a class="el" href="NetworkData_8h_source.html#l00966">966</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="Popup__Result_8cpp_source.html#l00245">UPopup_Result::RequestResult()</a>, <a class="el" href="NetworkData_8cpp_source.html#l00759">ToJsonString()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="Popup__Result_8cpp_source.html#l00245">UPopup_Result::RequestResult()</a>, <a class="el" href="NetworkData_8cpp_source.html#l00817">ToJsonString()</a>.</p>
 
 </div>
 </div>
@@ -236,9 +236,9 @@ Public 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="NetworkData_8h_source.html">NetworkData.h</a> 파일의 <a class="el" href="NetworkData_8h_source.html#l00918">918</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="NetworkData_8h_source.html">NetworkData.h</a> 파일의 <a class="el" href="NetworkData_8h_source.html#l00951">951</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="Popup__Result_8cpp_source.html#l00245">UPopup_Result::RequestResult()</a>, <a class="el" href="NetworkData_8cpp_source.html#l00759">ToJsonString()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="Popup__Result_8cpp_source.html#l00245">UPopup_Result::RequestResult()</a>, <a class="el" href="NetworkData_8cpp_source.html#l00817">ToJsonString()</a>.</p>
 
 </div>
 </div>
@@ -254,9 +254,9 @@ Public 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="NetworkData_8h_source.html">NetworkData.h</a> 파일의 <a class="el" href="NetworkData_8h_source.html#l00924">924</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="NetworkData_8h_source.html">NetworkData.h</a> 파일의 <a class="el" href="NetworkData_8h_source.html#l00957">957</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="Popup__Result_8cpp_source.html#l00245">UPopup_Result::RequestResult()</a>, <a class="el" href="NetworkData_8cpp_source.html#l00759">ToJsonString()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="Popup__Result_8cpp_source.html#l00245">UPopup_Result::RequestResult()</a>, <a class="el" href="NetworkData_8cpp_source.html#l00817">ToJsonString()</a>.</p>
 
 </div>
 </div>
@@ -272,9 +272,9 @@ Public 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="NetworkData_8h_source.html">NetworkData.h</a> 파일의 <a class="el" href="NetworkData_8h_source.html#l00927">927</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="NetworkData_8h_source.html">NetworkData.h</a> 파일의 <a class="el" href="NetworkData_8h_source.html#l00960">960</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="Popup__Result_8cpp_source.html#l00245">UPopup_Result::RequestResult()</a>, <a class="el" href="NetworkData_8cpp_source.html#l00759">ToJsonString()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="Popup__Result_8cpp_source.html#l00245">UPopup_Result::RequestResult()</a>, <a class="el" href="NetworkData_8cpp_source.html#l00817">ToJsonString()</a>.</p>
 
 </div>
 </div>
@@ -290,9 +290,9 @@ Public 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="NetworkData_8h_source.html">NetworkData.h</a> 파일의 <a class="el" href="NetworkData_8h_source.html#l00930">930</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="NetworkData_8h_source.html">NetworkData.h</a> 파일의 <a class="el" href="NetworkData_8h_source.html#l00963">963</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="Popup__Result_8cpp_source.html#l00245">UPopup_Result::RequestResult()</a>, <a class="el" href="NetworkData_8cpp_source.html#l00759">ToJsonString()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="Popup__Result_8cpp_source.html#l00245">UPopup_Result::RequestResult()</a>, <a class="el" href="NetworkData_8cpp_source.html#l00817">ToJsonString()</a>.</p>
 
 </div>
 </div>
@@ -308,9 +308,9 @@ Public 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="NetworkData_8h_source.html">NetworkData.h</a> 파일의 <a class="el" href="NetworkData_8h_source.html#l00921">921</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="NetworkData_8h_source.html">NetworkData.h</a> 파일의 <a class="el" href="NetworkData_8h_source.html#l00954">954</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="Popup__Result_8cpp_source.html#l00245">UPopup_Result::RequestResult()</a>, <a class="el" href="NetworkData_8cpp_source.html#l00759">ToJsonString()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="Popup__Result_8cpp_source.html#l00245">UPopup_Result::RequestResult()</a>, <a class="el" href="NetworkData_8cpp_source.html#l00817">ToJsonString()</a>.</p>
 
 </div>
 </div>
@@ -326,9 +326,9 @@ Public 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="NetworkData_8h_source.html">NetworkData.h</a> 파일의 <a class="el" href="NetworkData_8h_source.html#l00936">936</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="NetworkData_8h_source.html">NetworkData.h</a> 파일의 <a class="el" href="NetworkData_8h_source.html#l00969">969</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="Popup__Result_8cpp_source.html#l00245">UPopup_Result::RequestResult()</a>, <a class="el" href="NetworkData_8cpp_source.html#l00759">ToJsonString()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="Popup__Result_8cpp_source.html#l00245">UPopup_Result::RequestResult()</a>, <a class="el" href="NetworkData_8cpp_source.html#l00817">ToJsonString()</a>.</p>
 
 </div>
 </div>
@@ -342,7 +342,7 @@ Public 속성</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="structFRequestReadResult.html">FRequestReadResult</a></li>
-    <li class="footer">생성시간 : 화 12월 16 2025 05:11:56, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 화 12월 16 2025 07:59:39, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

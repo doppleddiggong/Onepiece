@@ -29,5 +29,8 @@ var classALingoPlayerState =
     [ "SelectedWord2", "classALingoPlayerState.html#a2136c7bb3522dbe59a8f8609325c4b93", null ],
     [ "SpeakJudesResults", "classALingoPlayerState.html#a5d77db1ec6acd9f6cfbe36a125fbe14c", null ],
     [ "SpeakResult", "classALingoPlayerState.html#a36aa7dfa5a279939379b9e0bb2e35d37", null ],
-    [ "SpeakScenarioData", "classALingoPlayerState.html#a91fd139fa5b3aeb603e93e7b2a843d03", null ]
+    [ "SpeakScenarioData", "classALingoPlayerState.html#a91fd139fa5b3aeb603e93e7b2a843d03", null ],
+    [ "WriteQuestionData", "classALingoPlayerState.html#a50fa421fa24c0abcb210a2e1aa09bcb5", null ],
+    [ "WriteSubmitResultData", "classALingoPlayerState.html#a19e45c85d27abc1065a7cac5ef45edd9", null ],
+    [ "WriteWholeResultData", "classALingoPlayerState.html#ad5e7749b2b730aa61ead5debebcdf3dd", null ]
 ];
