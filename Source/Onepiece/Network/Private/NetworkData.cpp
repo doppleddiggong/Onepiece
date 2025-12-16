@@ -431,6 +431,64 @@ void FResponseWriteSubmit::PrintData() const
 	}
 }
 
+bool FRequestWriteResult::ToJsonString(FString& OutJson) const
+{
+	TSharedPtr<FJsonObject> JsonObject = MakeShared<FJsonObject>();
+
+	JsonObject->SetNumberField(TEXT("room_id"), room_id);
+	JsonObject->SetNumberField(TEXT("user_id"), user_id);
+	JsonObject->SetNumberField(TEXT("scenario_id"), scenario_id);
+	JsonObject->SetNumberField(TEXT("stage_type"), stage_type);
+	JsonObject->SetNumberField(TEXT("state_type"), state_type);
+	JsonObject->SetNumberField(TEXT("result_time"), result_time);
+
+	TArray<TSharedPtr<FJsonValue>> WrongIdxArray;
+	for (int32 Idx : wrong_idx)
+	{
+		WrongIdxArray.Add(MakeShared<FJsonValueNumber>(Idx));
+	}
+	JsonObject->SetArrayField(TEXT("wrong_idx"), WrongIdxArray);
+
+	TSharedRef<TJsonWriter<>> Writer = TJsonWriterFactory<>::Create(&OutJson);
+	return FJsonSerializer::Serialize(JsonObject.ToSharedRef(), Writer);
+}
+
+void FResponseWriteResult::SetFromHttpResponse(const TSharedPtr<class IHttpResponse, ESPMode::ThreadSafe>& Response)
+{
+	if (!Response.IsValid())
+	{
+		return;
+	}
+
+	FString JsonString = Response->GetContentAsString();
+	
+	TSharedPtr<FJsonObject> JsonObject;
+	TSharedRef<TJsonReader<>> Reader = TJsonReaderFactory<>::Create(JsonString);
+
+	if (FJsonSerializer::Deserialize(Reader, JsonObject))
+	{
+		if (JsonObject.IsValid())
+		{
+			JsonObject->TryGetStringField(TEXT("grade"), this->grade);
+			this->average_score = JsonObject->GetIntegerField(TEXT("average_score"));
+			this->top_percent = JsonObject->GetIntegerField(TEXT("top_percent"));
+			
+			if (JsonObject->HasTypedField<EJson::Object>(TEXT("scores")))
+			{
+				TArray<TSharedPtr<FJsonValue>> JsonArray = JsonObject->GetArrayField(TEXT("scores"));
+				for (const auto& score : JsonArray)
+				{
+					FResponseWriteScores Entry;    // ResponseWriteScore를 포함하는 사용자 정의 구조체
+					Entry.score    = score->AsObject()->GetBoolField(TEXT("score"));
+					Entry.desc    = score->AsObject()->GetStringField(TEXT("desc"));
+					
+					scores.Add(Entry);
+				}
+			}
+		}
+	}
+}
+
 void FResponseListenAudio::SetFromHttpResponse(const TSharedPtr<class IHttpResponse, ESPMode::ThreadSafe>& Response)
 {
 	if (!Response.IsValid())

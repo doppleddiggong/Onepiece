@@ -701,7 +701,7 @@ struct FResponseWriteData
 };
 
 /// @brief Write Submit 응답 델리게이트입니다.
-DECLARE_DELEGATE_ThreeParams(FResponseWriteSubmitDelegate, FResponseWriteSubmit&, TArray<FWriteWordData>, bool);
+DECLARE_DELEGATE_TwoParams(FResponseWriteSubmitDelegate, FResponseWriteSubmit&, bool);
 /// @brief Write Submit 응답 구조체입니다.
 USTRUCT(BlueprintType)
 struct FResponseWriteSubmit
@@ -716,6 +716,36 @@ struct FResponseWriteSubmit
 
 	/// @brief 디버그 로그에 응답 내용을 출력합니다.
 	void PrintData() const;
+};
+
+USTRUCT(BlueprintType)
+struct FRequestWriteResult
+{
+	GENERATED_BODY()
+
+	UPROPERTY(BlueprintReadWrite, Category = "QuestResult")
+	int32 room_id;
+	
+	UPROPERTY(BlueprintReadWrite, Category = "QuestResult")
+	int32 user_id;
+
+	UPROPERTY(BlueprintReadWrite, Category = "QuestResult")
+	int32 scenario_id;
+
+	UPROPERTY(BlueprintReadWrite, Category = "QuestResult")
+	int32 stage_type;
+
+	UPROPERTY(BlueprintReadWrite, Category = "QuestResult")
+	int32 state_type;
+
+	UPROPERTY(BlueprintReadWrite, Category = "QuestResult")
+	int32 result_time;
+
+	UPROPERTY(BlueprintReadWrite, Category = "QuestResult")
+	TArray<int32> wrong_idx;
+	
+	/// @brief 구조체를 JSON 문자열로 변환합니다.
+	bool ToJsonString(FString& OutJson) const;
 };
 
 /// @brief Write Scenario 최종 결과 응답 델리게이트입니다.
@@ -749,6 +779,9 @@ struct FResponseWriteResult
 	
 	UPROPERTY(BlueprintReadWrite, Category = "Write")
 	TArray<FResponseWriteScores> scores;
+	
+	/// @brief HTTP 응답을 파싱해 구조체를 채웁니다.
+	void SetFromHttpResponse(const TSharedPtr<class IHttpResponse, ESPMode::ThreadSafe>& Response);
 };
 
 // =================================================================================

@@ -20,17 +20,18 @@ public:
 	
 	/** 팝업 초기화 (필요 시 API 확장) */
 	UFUNCTION(BlueprintCallable)
-	void InitPopup(const TArray<FWriteWordData> InQuestionArray, const FResponseWriteSubmit& InResponseData);
+	void InitPopup(const FResponseWriteSubmit& InResponseData, const FResponseWriteResult& InResponseResultData);
 
 protected:
 	virtual void NativeConstruct() override;
 
 private:
+	void InitWholeResult(const FResponseWriteResult& ResponseData);
+	
 	UFUNCTION()
 	void OnClickClose();
 
 protected:
-	/* ------------------- Layout ------------------- */
 	/** 팝업 전체 배경 */
 	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<class UImage> Popup_BaseBg;
@@ -38,13 +39,21 @@ protected:
 	/** 인터뷰 항목들이 추가될 VerticalBox */
 	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<class UScrollBox> ScrollBox_Result;
+	
+	/** 전체 결과 */
+	UPROPERTY(meta = (BindWidget))
+	TObjectPtr<class UResultStatWidget> Result_AverageScore;
+	UPROPERTY(meta = (BindWidget))
+	TObjectPtr<class UResultStatWidget> Result_Time;
+	UPROPERTY(meta = (BindWidget))
+	TObjectPtr<class UResultStatWidget> Result_Grade;
+	UPROPERTY(meta = (BindWidget))
+	TObjectPtr<class UResultStatWidget> Result_TopRate;
 
-	/* ------------------- Classes ------------------- */
 	/** 팝업 내에서 표시될 인터뷰 항목 위젯 클래스 */
 	UPROPERTY(EditDefaultsOnly, Category="Popup")
 	TSubclassOf<class UPopup_QuestionnaireResultItem> QuestionnaireResultItemClass;
 
-	/* ------------------- Settings ------------------ */
 	/** 인터뷰 항목 간 간격 (Spacer Height) */
 	UPROPERTY(EditDefaultsOnly, Category="Popup", meta=(ClampMin="0.0", ClampMax="200.0"))
 	float ItemSpacing = 20.0f;
