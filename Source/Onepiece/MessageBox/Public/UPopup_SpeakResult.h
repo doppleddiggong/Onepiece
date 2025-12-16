@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "UBasePopup.h"
+#include "NetworkData.h"
 #include "UPopup_SpeakResult.generated.h"
 
 /**
@@ -21,8 +22,8 @@ private:
 	UFUNCTION(BlueprintCallable, Category = "Close")
 	void OnClickClose();
 
-	UFUNCTION()
-	void InitSpeakResult(const struct FResponseSpeakResult& ResponseData);
+	void InitScore();
+	void InitQuestionList();
 	
 protected:
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
@@ -40,5 +41,7 @@ protected:
 
 private:
 	UPROPERTY(EditDefaultsOnly, Category = "UI")
-	TSubclassOf<class UAnswerItem> AnswerItemClass;
+	TSubclassOf<class UPopup_SpeakResultItem> AnswerItemClass;
+
+	FResponseSpeakResult SpeakResult;
 };
