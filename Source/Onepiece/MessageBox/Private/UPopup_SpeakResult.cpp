@@ -69,7 +69,7 @@ void UPopup_SpeakResult::InitQuestionList()
 				USpacer* Spacer = NewObject<USpacer>(this);
 				if (Spacer)
 				{
-					Spacer->SetSize(FVector2D(1.0f, 5.0f));
+					Spacer->SetSize(FVector2D(1.0f, 15.0f));
 					VerticalBox->AddChildToVerticalBox(Spacer);
 				}
 			}
