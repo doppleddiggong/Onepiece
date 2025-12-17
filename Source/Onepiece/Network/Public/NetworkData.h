@@ -8,6 +8,7 @@
 #include "UCustomNetworkSettings.h"
 #include "GenericPlatform/GenericPlatformHttp.h"
 #include "Templates/SharedPointer.h"
+#include "FResultStatData.h"
 #include "NetworkData.generated.h"
 
 // =================================================================================
@@ -97,9 +98,14 @@ namespace RequestAPI
 
 	static FString read_result = FString("/scenario/stage/result/post");
 	static FString listen_result = FString("/scenario/stage/result/post");
+	static FString speak_result = FString("/scenario/stage/result/post");
+	static FString wriite_result = FString("/scenario/stage/result/post");
 
 	/// @brief Evaluation 결과 조회 엔드포인트입니다. GET /evaluations/rooms/{room_id}
 	static FString evaluations_rooms = FString("/evaluations/rooms");
+
+	/// @brief Chat 답변 요청 엔드포인트입니다. POST /chats/answers
+	static FString chats_answers = FString("/chats/answers");
 }
 
 
@@ -695,7 +701,7 @@ struct FResponseWriteData
 };
 
 /// @brief Write Submit 응답 델리게이트입니다.
-DECLARE_DELEGATE_ThreeParams(FResponseWriteSubmitDelegate, FResponseWriteSubmit&, TArray<FWriteWordData>, bool);
+DECLARE_DELEGATE_TwoParams(FResponseWriteSubmitDelegate, FResponseWriteSubmit&, bool);
 /// @brief Write Submit 응답 구조체입니다.
 USTRUCT(BlueprintType)
 struct FResponseWriteSubmit
@@ -712,6 +718,71 @@ struct FResponseWriteSubmit
 	void PrintData() const;
 };
 
+USTRUCT(BlueprintType)
+struct FRequestWriteResult
+{
+	GENERATED_BODY()
+
+	UPROPERTY(BlueprintReadWrite, Category = "QuestResult")
+	int32 room_id;
+	
+	UPROPERTY(BlueprintReadWrite, Category = "QuestResult")
+	int32 user_id;
+
+	UPROPERTY(BlueprintReadWrite, Category = "QuestResult")
+	int32 scenario_id;
+
+	UPROPERTY(BlueprintReadWrite, Category = "QuestResult")
+	int32 stage_type;
+
+	UPROPERTY(BlueprintReadWrite, Category = "QuestResult")
+	int32 state_type;
+
+	UPROPERTY(BlueprintReadWrite, Category = "QuestResult")
+	int32 result_time;
+
+	UPROPERTY(BlueprintReadWrite, Category = "QuestResult")
+	TArray<int32> wrong_idx;
+	
+	/// @brief 구조체를 JSON 문자열로 변환합니다.
+	bool ToJsonString(FString& OutJson) const;
+};
+
+/// @brief Write Scenario 최종 결과 응답 델리게이트입니다.
+DECLARE_DELEGATE_TwoParams(FResponseWriteResultDelegate, FResponseWriteResult&, bool);
+/// @brief Write 최종 결과 점수 정보 구조체입니다.
+USTRUCT(BlueprintType)
+struct FResponseWriteScores
+{
+	GENERATED_BODY()
+	
+	UPROPERTY(BlueprintReadWrite, Category = "Write")
+	int32 score;
+	
+	UPROPERTY(BlueprintReadWrite, Category = "Write")
+	FString desc;
+};
+
+USTRUCT(BlueprintType)
+struct FResponseWriteResult
+{
+	GENERATED_BODY()
+	
+	UPROPERTY(BlueprintReadWrite, Category = "Write")
+	FString grade;
+	
+	UPROPERTY(BlueprintReadWrite, Category = "Write")
+	int32 average_score;
+	
+	UPROPERTY(BlueprintReadWrite, Category = "Write")
+	int32 top_percent;
+	
+	UPROPERTY(BlueprintReadWrite, Category = "Write")
+	TArray<FResponseWriteScores> scores;
+	
+	/// @brief HTTP 응답을 파싱해 구조체를 채웁니다.
+	void SetFromHttpResponse(const TSharedPtr<class IHttpResponse, ESPMode::ThreadSafe>& Response);
+};
 
 // =================================================================================
 // Speaking Questions API Structures (Updated)
@@ -769,7 +840,7 @@ struct FResponseSpeakingJudes
 	/// @brief 디버그 로그에 응답 내용을 출력합니다.
 	void PrintData() const;
 
-	TArray<struct FResultStatData> GetResultStatData();
+	TArray<FResultStatData> GetResultStatData() const;
 };
 
 
@@ -1086,6 +1157,78 @@ struct FResponseSpeakScenario
 };
 
 
+USTRUCT(BlueprintType)
+struct FRequestSpeakResult
+{
+	GENERATED_BODY()
+
+	UPROPERTY(BlueprintReadWrite, Category = "QuestResult")
+	int32 room_id;
+	
+	UPROPERTY(BlueprintReadWrite, Category = "QuestResult")
+	int32 user_id;
+
+	UPROPERTY(BlueprintReadWrite, Category = "QuestResult")
+	int32 scenario_id;
+
+	UPROPERTY(BlueprintReadWrite, Category = "QuestResult")
+	int32 stage_type;
+
+	UPROPERTY(BlueprintReadWrite, Category = "QuestResult")
+	int32 state_type;
+
+	UPROPERTY(BlueprintReadWrite, Category = "QuestResult")
+	int32 result_time;
+
+	UPROPERTY(BlueprintReadWrite, Category = "QuestResult")
+	TArray<int32> wrong_idx;
+	
+	/// @brief 구조체를 JSON 문자열로 변환합니다.
+	bool ToJsonString(FString& OutJson) const;
+};
+
+/// @brief Speak 퀘스트의 개별 점수 상세 정보를 담는 구조체입니다.
+USTRUCT(BlueprintType)
+struct FSpeakScoreDetail
+{
+	GENERATED_BODY()
+
+	UPROPERTY(BlueprintReadWrite, Category = "QuestResult")
+	int32 score = 0;
+
+	UPROPERTY(BlueprintReadWrite, Category = "QuestResult")
+	FString desc;
+};
+
+
+DECLARE_DELEGATE_TwoParams(FResponseSpeakResultDelegate, FResponseSpeakResult&, bool);
+USTRUCT(BlueprintType)
+struct FResponseSpeakResult
+{
+	GENERATED_BODY()
+
+	UPROPERTY(BlueprintReadWrite, Category = "QuestResult")
+	FString grade;
+
+	UPROPERTY(BlueprintReadWrite, Category = "QuestResult")
+	int32 average_score;
+
+	UPROPERTY(BlueprintReadWrite, Category = "QuestResult")
+	float top_percent;
+
+	UPROPERTY(BlueprintReadWrite, Category = "QuestResult")
+	TArray<FSpeakScoreDetail> scores;
+
+	/// @brief HTTP 응답을 파싱해 구조체를 채웁니다.
+	void SetFromHttpResponse(const TSharedPtr<class IHttpResponse, ESPMode::ThreadSafe>& Response);
+
+	/// @brief 디버그 로그에 응답 내용을 출력합니다.
+	void PrintData() const;
+
+	TArray<FResultStatData> GetResultStatData() const;
+};
+
+
 // =================================================================================
 // Evaluation API Structures
 // =================================================================================
@@ -1167,6 +1310,29 @@ struct FResponseEvaluationResult
 
 	UPROPERTY(BlueprintReadWrite, Category = "Evaluation")
 	TArray<FScenarioResult> scenario_results;
+
+	/// @brief HTTP 응답을 파싱해 구조체를 채웁니다.
+	void SetFromHttpResponse(const TSharedPtr<class IHttpResponse, ESPMode::ThreadSafe>& Response);
+
+	/// @brief 디버그 로그에 응답 내용을 출력합니다.
+	void PrintData() const;
+};
+
+
+// =================================================================================
+// Chat Answers API Structures
+// =================================================================================
+
+/// @brief Chat Answers 응답 델리게이트입니다.
+DECLARE_DELEGATE_TwoParams(FResponseChatAnswersDelegate, FResponseChatAnswers&, bool);
+/// @brief Chat Answers 응답 구조체입니다.
+USTRUCT(BlueprintType)
+struct FResponseChatAnswers
+{
+	GENERATED_BODY()
+
+	UPROPERTY(BlueprintReadWrite, Category = "Chat")
+	FString answer;
 
 	/// @brief HTTP 응답을 파싱해 구조체를 채웁니다.
 	void SetFromHttpResponse(const TSharedPtr<class IHttpResponse, ESPMode::ThreadSafe>& Response);

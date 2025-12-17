@@ -10,6 +10,7 @@
 #include "APlayerControl.h"
 #include "ASpeakStageActor.h"
 #include "AWheatly.h"
+#include "FColorStyleData.h"
 #include "FResourceTextureData.h"
 #include "Kismet/GameplayStatics.h"
 #include "Onepiece/Onepiece.h"
@@ -93,6 +94,36 @@ TArray<ALingoPlayerState*> ULingoGameHelper::GetLingoPlayerStateList(const UObje
 	}
 
 	return PlayerStateList;
+}
+
+bool ULingoGameHelper::IsLocalPlayerPawn(const UObject* WorldContextObject)
+{
+	const UWorld* World = WorldContextObject->GetWorld();
+	if (!World)
+		return false;
+
+	const APlayerController* PC = World->GetFirstPlayerController();
+	if (!PC)
+		return false;
+
+	const APawn* Pawn = PC->GetPawn();
+	return Pawn && Pawn->IsLocallyControlled();
+}
+
+APawn* ULingoGameHelper::GetLocalPawn(const UObject* WorldContextObject)
+{
+	if (const UWorld* World = WorldContextObject->GetWorld())
+	{
+		if (APlayerController* PC = World->GetFirstPlayerController())
+		{
+			APawn* Pawn = PC->GetPawn();
+			if (Pawn && Pawn->IsLocallyControlled())
+			{
+				return Pawn;
+			}
+		}
+	}
+	return nullptr;
 }
 
 FString ULingoGameHelper::GetStageStartMessage(const EQuestType QuestType)
@@ -295,6 +326,68 @@ FString ULingoGameHelper::GetTimeRank(float InTimeTaken)
 	else
 		return "D";
 }
+
+FLinearColor ULingoGameHelper::GetRankColor(float InScore)
+{
+	if (InScore >= 90.0f)
+	{
+		// 1. Excellent (90 ~ 100): Green - 성공
+		return FLinearColor::Green; 
+	}
+	else if (InScore >= 80.0f)
+	{
+	// 2. Good (80 ~ 89): LightGreen - 양호
+		return FLinearColor(0.56f, 1.0f, 0.56f, 1.0f); 
+	}
+	else if (InScore >= 60.0f)
+	{
+		// 3. Average (60 ~ 79): Yellow - 주의
+		return FLinearColor::Yellow;
+	}
+	else if (InScore >= 40.0f)
+	{
+	// 4. Poor (40 ~ 59): Orange - 경고
+		return FLinearColor(1.0f, 0.5f, 0.0f, 1.0f); 
+	}
+	else 
+	{
+		// 5. Fail (0 ~ 39): Red - 심각한 실패
+		return FLinearColor::Red;
+	}
+}
+
+EColorStyleType ULingoGameHelper::GetRankColorType(float InScore)
+{
+	// 안정성 확보를 위해 입력값 범위 클램프 (0.0f ~ 100.0f)
+	InScore = FMath::Clamp(InScore, 0.0f, 100.0f);
+
+	if (InScore >= 90.0f)
+	{
+		// 1. Excellent (90 ~ 100): Green - 성공
+		return EColorStyleType::Green; 
+	}
+	else if (InScore >= 80.0f)
+	{
+		// 2. Good (80 ~ 89): LightGreen - 양호
+		return EColorStyleType::LightGreen; 
+	}
+	else if (InScore >= 60.0f)
+	{
+		// 3. Average (60 ~ 79): Yellow - 주의
+		return EColorStyleType::Yellow;
+	}
+	else if (InScore >= 40.0f)
+	{
+		// 4. Poor (40 ~ 59): Orange - 경고
+		return EColorStyleType::Orange;
+	}
+	else 
+	{
+		// 5. Fail (0 ~ 39): Red - 심각한 실패
+		return EColorStyleType::Red;
+	}
+}
+
 
 FString ULingoGameHelper::GetAccuracyPercentage(int WrongCnt)
 {

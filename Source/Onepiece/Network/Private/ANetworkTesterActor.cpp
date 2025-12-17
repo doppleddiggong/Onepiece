@@ -5,10 +5,14 @@
  * @brief ANetworkTesterActor의 동작을 구현합니다.
  */
 #include "ANetworkTesterActor.h"
+
+#include "APlayerControl.h"
 #include "UKLingoNetworkSystem.h"
 #include "GameLogging.h"
 #include "NetworkData.h"
 #include "UDialogManager.h"
+#include "ULingoGameHelper.h"
+#include "ULingoGameInstanceSubsystem.h"
 #include "UPopupManager.h"
 #include "UPopup_Interview.h"
 #include "UPopup_InterviewHello.h"
@@ -103,6 +107,9 @@ void ANetworkTesterActor::OnResponseUserMe(FResponseUserMe& ResponseData, bool b
     if (bWasSuccessful)
     {
         PRINTLOG(TEXT("--- User Me SUCCESS ---"));
+
+        if ( auto PC = ULingoGameHelper::GetPlayerControl(GetWorld()) )
+            PC->Server_SetUserInfo(ResponseData);
     }
     else
     {
@@ -237,5 +244,60 @@ void ANetworkTesterActor::OnResponseInterviewHello(FResponseInterviewHello& Resp
     else
     {
         PRINTLOG(TEXT("--- InterViewHello Questions FAILED ---"));
+    }
+}
+
+
+// =============================================================================
+// Chat Answers API Tests
+// =============================================================================
+
+void ANetworkTesterActor::RequestChatAnswers()
+{
+    if (auto KLingoNetwork = UKLingoNetworkSystem::Get(GetWorld()))
+    {
+        PRINTLOG(TEXT("[TEST] RequestChatAnswers - Context: %s, Question: %s"), *ChatContext, *ChatQuestion);
+        KLingoNetwork->RequestChatQuestion(
+            ChatContext,
+            ChatQuestion,
+            FResponseChatAnswersDelegate::CreateUObject(this, &ANetworkTesterActor::OnResponseChatAnswers)
+        );
+    }
+    else
+    {
+        PRINTLOG(TEXT("UKLingoNetworkSystem not found!"));
+    }
+}
+
+void ANetworkTesterActor::RequestChatAnswersWithAudio()
+{
+    if (auto KLingoNetwork = UKLingoNetworkSystem::Get(GetWorld()))
+    {
+        PRINTLOG(TEXT("[TEST] RequestChatAnswersWithAudio - Context: %s, AudioPath: %s"), *ChatContext, *ChatAudioPath);
+        KLingoNetwork->RequestChatAudio(
+            ChatContext,
+            ChatAudioPath,
+            FResponseChatAnswersDelegate::CreateUObject(this, &ANetworkTesterActor::OnResponseChatAnswers)
+        );
+    }
+    else
+    {
+        PRINTLOG(TEXT("UKLingoNetworkSystem not found!"));
+    }
+}
+
+void ANetworkTesterActor::OnResponseChatAnswers(FResponseChatAnswers& ResponseData, bool bWasSuccessful)
+{
+    if (bWasSuccessful)
+    {
+        PRINTLOG(TEXT("--- Chat Answers SUCCESS ---"));
+        
+        UPopupManager::Get(GetWorld())->ShowMsgBox(TEXT("CHAT"), *ResponseData.answer,
+            EMsgBoxType::OK,
+            FOnMsgBoxOkDelegate());
+    }
+    else
+    {
+        PRINTLOG(TEXT("--- Chat Answers FAILED ---"));
     }
 }

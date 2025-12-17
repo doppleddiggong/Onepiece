@@ -32,7 +32,7 @@ public:
 
 	void UpdateStateWidget(int32 UserId, const FString& UserName);
 	void UpdateRoomWidget(int32 InRoomLevel, int64 InRoomId);
-	void UpdateSpeakWidget();
+	void UpdateSpeakWidget(int32 StepIndex);
 	bool CanShowSpeakWidget(ASpeakStageActor*& OutSpeakStage, ALingoPlayerState*& OutLocalPlayerState) const;
 
 	/// @brief 훅 인디케이터 상태 업데이트 (에임/비에임)

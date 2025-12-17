@@ -6,9 +6,6 @@
 #include "GameFramework/Actor.h"
 #include "AWheatly.generated.h"
 
-class UBoxComponent;
-class UStaticMeshComponent;
-
 /// @brief Wheatly 애니메이션 타입
 UENUM(BlueprintType)
 enum class EWheatlyAnim : uint8
@@ -33,9 +30,6 @@ class ONEPIECE_API AWheatly : public AActor
 {
 	GENERATED_BODY()
 
-	//----------------------------------------------------------//
-	// Initialization
-	//----------------------------------------------------------//
 
 public:
 	AWheatly();
@@ -57,27 +51,32 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Animation")
 	void PlayAnimation(EWheatlyAnim InAnimType);
 
+	/// @brief Client에서 받은 시나리오 데이터를 동기화 (Server에서 호출됨)
+	/// @param Player [in] 요청한 플레이어
+	/// @param Data [in] Client에서 받은 시나리오 데이터
+	void SyncSpeakScenarioData(class APlayerActor* Player, const struct FResponseSpeakScenario& Data);
+
+	/// @brief SpeakStage 설정 (GameMode에서 호출)
+	/// @param InSpeakStageActor [in] 연결할 SpeakStageActor
+	UFUNCTION(BlueprintCallable, Category = "SpeakStage")
+	void SetSpeakStageActor(class ASpeakStageActor* InSpeakStageActor);
+
+	/// @brief SpeakQuest 완료 처리 (서버에서만 호출)
+	/// @param Player [in] 퀘스트를 완료한 플레이어
+	void CompleteSpeakQuest(class APlayerActor* Player);
+	
 protected:
 	/// @brief 애니메이션 재생 (멀티캐스트 RPC)
 	/// @param InAnimType [in] 재생할 애니메이션 타입
 	UFUNCTION(NetMulticast, Reliable)
 	void Multicast_PlayAnimation(EWheatlyAnim InAnimType);
 
-public:
-	/// @brief SpeakStage 설정 (GameMode에서 호출)
-	/// @param InSpeakStage [in] 연결할 SpeakStageActor
-	UFUNCTION(BlueprintCallable, Category = "SpeakStage")
-	void SetSpeakStage(class ASpeakStageActor* InSpeakStage);
+	UFUNCTION()
+	void OnRep_EyeColor();
 
-	/// @brief SpeakQuest 시작 (서버에서만 호출)
-	/// @param Player [in] 퀘스트를 시작할 플레이어
-	void BeginSpeakQuest(class APlayerActor* Player);
+	UFUNCTION()
+	void OnRep_EyeSightState();
 
-	/// @brief SpeakQuest 완료 처리 (서버에서만 호출)
-	/// @param Player [in] 퀘스트를 완료한 플레이어
-	void CompleteSpeakQuest(class APlayerActor* Player);
-
-protected:
 	/// @brief 플레이어 상호작용 핸들러
 	/// @param InteractingActor [in] 상호작용을 시도하는 액터
 	UFUNCTION()
@@ -87,38 +86,34 @@ protected:
 	/// @param NewSpeaker [in] 새로운 발화자 (없으면 nullptr)
 	UFUNCTION()
 	void OnSpeakStageSpeakerChanged(class APlayerState* NewSpeaker);
-
-	UFUNCTION()
-	void OnRep_EyeColor();
-
-	UFUNCTION()
-	void OnRep_EyeSightState();
-	void ApplyEyeSight();
-
-private:
-	void RequestSpeakScenario(class APlayerActor* Player);
-	void OnResponseSpeakScenario(struct FResponseSpeakScenario& ResponseData, bool bWasSuccessful);
 	
+private:
+	bool IsInRange(const class APawn* LocalPawn) const;
+
 	/// @brief 눈 색상 변경
 	/// @param newColor [in] 새로운 색상
 	void ChangeEyeColor(FLinearColor newColor);
 
+	void UpdateEyeSight(const FVector& Start, const FVector& End);
+	void ApplyEyeSight();
+
+
 protected:
 	/// @brief 스켈레탈 메시 컴포넌트
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
-	TObjectPtr<USkeletalMeshComponent> MeshComponent;
+	TObjectPtr<class USkeletalMeshComponent> MeshComponent;
 
 	/// @brief 상호작용 중인 플레이어 표시기
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
-	TObjectPtr<UStaticMeshComponent> EyeMesh;
+	TObjectPtr<class UStaticMeshComponent> EyeMesh;
 	
 	/// @brief 플레이어 감지 영역
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
-	TObjectPtr<UBoxComponent> PlayerDetectionZone;
+	TObjectPtr<class UBoxComponent> PlayerDetectionZone;
 
 	/// @brief 상호작용 중인 플레이어 표시기
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
-	TObjectPtr<UStaticMeshComponent> EyeSightComp;
+	TObjectPtr<class UStaticMeshComponent> EyeSightComp;
 
 	/// @brief 상호작용 컴포넌트
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
@@ -130,18 +125,18 @@ protected:
 
 	/// @brief 동적 머티리얼 인스턴스 (런타임 색상 변경)
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Transient, Category = "Materials", meta = (AllowPrivateAccess = "true"))
-	TObjectPtr<UMaterialInstanceDynamic> EyeMaterial;
+	TObjectPtr<class UMaterialInstanceDynamic> EyeMaterial;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Transient, Category = "Materials", meta = (AllowPrivateAccess = "true"))
-	TObjectPtr<UMaterialInstanceDynamic> EyeTraceMaterial;
+	TObjectPtr<class UMaterialInstanceDynamic> EyeTraceMaterial;
 
 	/// @brief 애니메이션 시퀀스 맵
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Animation")
 	TMap<EWheatlyAnim, TObjectPtr<class UAnimSequence>> AnimSequences;
-
+	
 private:
 	UPROPERTY()
-	TObjectPtr<class ASpeakStageActor> SpeakStage;
+	TObjectPtr<class ASpeakStageActor> SpeakStageActor;
 
 	UPROPERTY(Transient, ReplicatedUsing = OnRep_EyeColor)
 	FLinearColor ReplicatedEyeColor;
@@ -153,10 +148,6 @@ private:
 	UPROPERTY(ReplicatedUsing = OnRep_EyeSightState)
 	bool bEyeSightVisible = false;
 
-	
-	UPROPERTY()
-	TObjectPtr<class APlayerActor> RequestPlayer;
-
 	/// @brief 현재 애니메이션 타입
 	EWheatlyAnim AnimType;
 	
@@ -167,6 +158,4 @@ private:
 
 	float IndicatorBaseLength = 1.0f;
 	float IndicatorBaseRadius = 1.0f;
-
-	void UpdateEyeSight(const FVector& Start, const FVector& End);
 };

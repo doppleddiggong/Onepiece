@@ -87,7 +87,7 @@ void ASpeakStageActor::Multicast_NotifySpeakQuestStarted_Implementation(const FS
 	}
 }
 
-void ASpeakStageActor::ServerRPC_NotifyAnswerComplete_Implementation(ALingoPlayerState* Player)
+void ASpeakStageActor::NotifyAnswerComplete(ALingoPlayerState* Player)
 {
 	if (!HasAuthority() || !Player)
 		return;

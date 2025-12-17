@@ -43,9 +43,16 @@ public:
 	UFUNCTION(Client, Reliable)
 	void Client_EndSpeakQuest();
 
-	// Tutorial Component
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
-	class UTutorialComponent* TutorialComponent;
+	/// @brief Client에게 Speak 시나리오 데이터를 요청하도록 지시 (Client RPC)
+	/// @param Wheatly [in] 요청을 시작한 Wheatly 액터
+	UFUNCTION(Client, Reliable)
+	void Client_RequestSpeakScenario(class AWheatly* Wheatly);
+
+	/// @brief Client에서 받은 시나리오 데이터를 Wheatly에 전달 (Server RPC)
+	/// @param Wheatly [in] 데이터를 전달할 Wheatly 액터
+	/// @param Data [in] Client에서 받은 시나리오 데이터
+	UFUNCTION(Server, Reliable)
+	void Server_SyncSpeakScenarioData(class AWheatly* Wheatly, const struct FResponseSpeakScenario& Data);
 
 protected:
     virtual void BeginPlay() override;
@@ -98,15 +105,19 @@ protected:
 	void Server_OnHook();
 
 	UFUNCTION(Server, Reliable)
-	void Server_SetUserInfo(const FResponseUserMe& InUserInfo);
-
-	UFUNCTION(Server, Reliable)
 	void Server_RequestDrop();
+
+public:
+	UFUNCTION(Server, Reliable)
+	void Server_SetUserInfo(const FResponseUserMe& InUserInfo);
 	
 private:
 	void RequestDrop(APlayerControl* Requester);
+	void UpdateSpeakWidget(int32 StepIndex);
 
-	void UpdateSpeakWidget();
+	void RequestSpeakResult();
+	void OnResponseSpeakResult(FResponseSpeakResult& ResponseData, bool bWasSuccessful);
+	
 	void TEST_DropperDropProcess();
 	void TEST_AddItemToBoxList();
 	

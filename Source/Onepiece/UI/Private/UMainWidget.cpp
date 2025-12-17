@@ -140,7 +140,7 @@ void UMainWidget::UpdateHookState(bool bIsAiming)
 	HookTargetIndicator->SetBrushFromTexture(bIsAiming ? HookAimTexture : HookNoAimTexture );
 }
 
-void UMainWidget::UpdateSpeakWidget()
+void UMainWidget::UpdateSpeakWidget(int32 StepIndex)
 {
 	WidgetSwitcher->SetActiveWidgetIndex(1);
 
@@ -150,9 +150,9 @@ void UMainWidget::UpdateSpeakWidget()
 	const bool bCanShow =
 		CanShowSpeakWidget(SpeakStage, LocalPlayerState);
 	SpeakWidget->SetWidgetVisibility(bCanShow);
-	
+
 	if ( bCanShow )
-		SpeakWidget->UpdateSpeakStage(SpeakStage, LocalPlayerState);
+		SpeakWidget->UpdateSpeakStage(SpeakStage, LocalPlayerState, StepIndex);
 }
 
 bool UMainWidget::CanShowSpeakWidget( ASpeakStageActor*& OutSpeakStage,	ALingoPlayerState*& OutLocalPlayerState) const

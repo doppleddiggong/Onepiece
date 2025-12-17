@@ -28,6 +28,10 @@ enum class EPopupType : uint8
 
 	Word				UMETA(DisplayName = "Word"),
 	InterviewHello		UMETA(DisplayName = "InterviewHello"),
+
+	SpeakQuest			UMETA(DisplayName = "SpeakQuest"),
+	SpeakQuestJudes		UMETA(DisplayName = "SpeakQuestJudes"),
+	SpeakResult			UMETA(DisplayName = "SpeakResult"),
 };
 
 UENUM(BlueprintType)

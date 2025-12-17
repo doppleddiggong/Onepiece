@@ -61,6 +61,9 @@ private:
     UFUNCTION()
     void OnResponseSpeakingsJudges(FResponseSpeakingJudes& Response, bool bSuccess);
 
+    UFUNCTION()
+    void OnResponseChatAnswers(FResponseChatAnswers& Response, bool bSuccess);
+
 private:
     UPROPERTY()
     TObjectPtr<class APlayerActor> Owner;

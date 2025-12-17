@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "ALingoGameState.h"
+#include "FColorStyleData.h"
 #include "Kismet/BlueprintFunctionLibrary.h"
 #include "ULingoGameHelper.generated.h"
 
@@ -42,7 +43,13 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "Utils")
 	static TArray<class ALingoPlayerState*> GetLingoPlayerStateList(const UObject* WorldContextObject);
-	
+
+	UFUNCTION(BlueprintCallable, Category = "Utils")
+	static bool IsLocalPlayerPawn(const UObject* WorldContextObject);
+
+	UFUNCTION(BlueprintCallable, Category = "Utils")
+	static APawn* GetLocalPawn(const UObject* WorldContextObject);
+
 	UFUNCTION(BlueprintCallable, Category = "Utils")
 	static FString GetStageStartMessage(const EQuestType QuestType);
 	
@@ -94,7 +101,15 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Utils")
 	static FString GetPlayerNameFromState(const class ALingoPlayerState* PlayerState);
 
+	UFUNCTION(BlueprintCallable, Category = "Utils")
 	static FString GetTimeRank(float InTimeTaken);
 
+	UFUNCTION(BlueprintCallable, Category = "Utils")
+	static FLinearColor GetRankColor(float InScore);
+
+	UFUNCTION(BlueprintCallable, Category = "Utils")
+	static EColorStyleType GetRankColorType(float InScore);
+
+	UFUNCTION(BlueprintCallable, Category = "Utils")
 	static FString GetAccuracyPercentage(int WrongCnt);
 };

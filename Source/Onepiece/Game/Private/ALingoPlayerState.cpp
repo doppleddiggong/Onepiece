@@ -32,6 +32,19 @@ void ALingoPlayerState::GetLifetimeReplicatedProps(TArray<class FLifetimePropert
 	DOREPLIFETIME(ALingoPlayerState, bSpeakQuestCompleted);
 }
 
+FString ALingoPlayerState::GetChatContext() const
+{
+	// TODO: GameMode, GameState, PlayerState 데이터를 참조하여 동적으로 생성
+	// 예시:
+	// - 현재 게임 상태 (메뉴, 인게임, 퀘스트 진행 등)
+	// - 플레이어 진행도 (레벨, 완료한 퀘스트 등)
+	// - 최근 대화 히스토리
+	// - NPC 정보 등
+
+	// 기본 Context 반환
+	return TEXT("You are a helpful assistant.");
+}
+
 
 //--------------------------------------------------------------//
 // Read Quest RPC Functions
@@ -79,17 +92,12 @@ bool ALingoPlayerState::Server_SetSelectedWord2_Validate(const FString& Word2)
 	return true;
 }
 
-void ALingoPlayerState::Server_AddSpeakJudes_Implementation(const FResponseSpeakingJudes& EvaluationResult)
+void ALingoPlayerState::AddSpeakJudes(const FResponseSpeakingJudes& EvaluationResult)
 {
 	SpeakJudesResults.Add(EvaluationResult);
 
 	PRINTLOG(TEXT("[PlayerState] Evaluation result added - Total results: %d, Feedback: %s"),
 		SpeakJudesResults.Num(), *EvaluationResult.final_feedback);
-}
-
-bool ALingoPlayerState::Server_AddSpeakJudes_Validate(const FResponseSpeakingJudes& EvaluationResult)
-{
-	return true;
 }
 
 void ALingoPlayerState::Server_NotifySpeakDataReady_Implementation()

@@ -9,6 +9,8 @@
 #include "APlayerActor.h"
 #include "IControllable.h"
 #include "UMainWidget.h"
+#include "AWheatly.h"
+#include "UKLingoNetworkSystem.h"
 
 #include "EnhancedInputSubsystems.h"
 #include "EnhancedInputComponent.h"
@@ -22,12 +24,17 @@
 #include "UHookSystem.h"
 #include "ULingoGameInstanceSubsystem.h"
 #include "ADropper.h"
+#include "ALingoGameState.h"
 #include "luggage.h"
 #include "EngineUtils.h"
+#include "GameLogging.h"
 #include "OrderKiosk.h"
 #include "TutorialComponent.h"
 #include "UDialogManager.h"
+#include "ULingoGameHelper.h"
 #include "UPopupManager.h"
+#include "UPopup_SpeakQuest.h"
+#include "UPopup_SpeakResult.h"
 
 #define IMC_DEFAULT_PATH			TEXT("/Game/CustomContents/Input/IMC_Game_Player.IMC_Game_Player")
 #define IA_MOVE_PATH				TEXT("/Game/CustomContents/Input/IA_Game_Movement.IA_Game_Movement")
@@ -294,23 +301,23 @@ void APlayerControl::Client_UpdateSpeakQuest_Implementation(int32 StepIndex)
 	ALingoPlayerState* PS = GetPlayerState<ALingoPlayerState>();
 	if (!PS)
 		return;
-	
+
 	if (StepIndex == 0)
 	{
 		// 첫 번째 질문일 경우 MessageBox 표시
-		if (auto PopupManager = UPopupManager::Get(GetWorld()))
+		if (auto Popup = UPopupManager::ShowPopupAs<UPopup_SpeakQuest>(GetWorld(), EPopupType::SpeakQuest))
 		{
 			// MessageBox OK 버튼 클릭 시 질문 표시
 			FOnMsgBoxOkDelegate OnOkDelegate;
-			OnOkDelegate.BindLambda([this, StepIndex]()
+			
+			Popup->InitPopup( FOnMsgBoxOkDelegate().CreateLambda([this, StepIndex]()
 			{
 				if (APlayerActor* PlayerActor = Cast<APlayerActor>(GetPawn()))
+				{
 					PlayerActor->PlaySpeakInfo(StepIndex);
-
-				UpdateSpeakWidget();
-			});
-
-			PopupManager->ShowMsgBox(TEXT("SpeakQuest"), TEXT("QUEST START"), EMsgBoxType::OK, OnOkDelegate);
+				}
+				UpdateSpeakWidget(StepIndex);
+			}));
 		}
 	}
 	else
@@ -318,26 +325,132 @@ void APlayerControl::Client_UpdateSpeakQuest_Implementation(int32 StepIndex)
 		if (APlayerActor* PlayerActor = Cast<APlayerActor>(GetPawn()))
 			PlayerActor->PlaySpeakInfo(StepIndex);
 
-		UpdateSpeakWidget();
+		UpdateSpeakWidget(StepIndex);
 	}
 }
 
 void APlayerControl::Client_EndSpeakQuest_Implementation()
 {
-	if (auto PopupManager = UPopupManager::Get(GetWorld()))
-		PopupManager->ShowMsgBox(TEXT("SpeakQuest"), TEXT("QUEST COMPLETE"), EMsgBoxType::OK, FOnMsgBoxOkDelegate());
+	// Quest 완료 시에는 StepIndex를 -1로 전달하여 Widget을 숨김
+	UpdateSpeakWidget(-1);
 
-	UpdateSpeakWidget();
+	// if (auto PopupManager = UPopupManager::Get(GetWorld()))
+	// 	PopupManager->ShowMsgBox(TEXT("SpeakQuest"), TEXT("QUEST COMPLETE"), EMsgBoxType::OK, FOnMsgBoxOkDelegate());
+	RequestSpeakResult();
 }
 
-void APlayerControl::UpdateSpeakWidget()
+void APlayerControl::Client_RequestSpeakScenario_Implementation(AWheatly* Wheatly)
+{
+	if (!Wheatly)
+	{
+		PRINTLOG(TEXT("[APlayerControl] Client_RequestSpeakScenario: Wheatly is null"));
+		return;
+	}
+
+	// 현재 조종중인 PlayerActor 획득
+	APlayerActor* PlayerActor = Cast<APlayerActor>(GetPawn());
+	if (!PlayerActor)
+	{
+		PRINTLOG(TEXT("[APlayerControl] Client_RequestSpeakScenario: PlayerActor is null"));
+		return;
+	}
+
+	// Client에서 네트워크 요청 수행
+	if (auto KLingoNetwork = UKLingoNetworkSystem::Get(GetWorld()))
+	{
+		// Lambda를 사용하여 응답 처리
+		// this 캡처: APlayerControl의 Server RPC 호출을 위해
+		KLingoNetwork->RequestSpeakScenario( FResponseSpeakScenarioDelegate::CreateLambda(
+				[this, Wheatly](FResponseSpeakScenario& ResponseData, bool bWasSuccessful)
+				{
+					if (bWasSuccessful && Wheatly)
+					{
+						// 성공 시 자신의 Server RPC 호출 (PlayerControl은 Client 소유!)
+						Server_SyncSpeakScenarioData(Wheatly, ResponseData);
+						PRINTLOG(TEXT("[APlayerControl] Client successfully received scenario data, syncing to server"));
+					}
+					else
+					{
+						// 실패 시 에러는 이미 ShowNetworkErrorPopup으로 표시됨
+						PRINTLOG(TEXT("[APlayerControl] Client failed to receive scenario data"));
+					}
+				}
+			)
+		);
+	}
+	else
+	{
+		PRINTLOG(TEXT("[APlayerControl] Client_RequestSpeakScenario: Failed to get KLingoNetworkSystem"));
+	}
+}
+
+void APlayerControl::Server_SyncSpeakScenarioData_Implementation(AWheatly* Wheatly, const FResponseSpeakScenario& Data)
+{
+	if (!Wheatly)
+	{
+		PRINTLOG(TEXT("[APlayerControl] Server_SyncSpeakScenarioData: Wheatly is null"));
+		return;
+	}
+
+	// 현재 조종중인 PlayerActor 획득
+	APlayerActor* PlayerActor = Cast<APlayerActor>(GetPawn());
+	if (!PlayerActor)
+	{
+		PRINTLOG(TEXT("[APlayerControl] Server_SyncSpeakScenarioData: PlayerActor is null"));
+		return;
+	}
+
+	// Wheatly에 데이터 전달 (Server에서 실행됨)
+	Wheatly->SyncSpeakScenarioData(PlayerActor, Data);
+
+	PRINTLOG(TEXT("[APlayerControl] Server successfully synced scenario data to Wheatly"));
+}
+
+void APlayerControl::UpdateSpeakWidget(int32 StepIndex)
 {
 	if (APlayerActor* PlayerActor = Cast<APlayerActor>(GetPawn()))
 	{
 		if (UMainWidget* MainWidget = PlayerActor->GetMainWidget())
 		{
-			MainWidget->UpdateSpeakWidget();
+			MainWidget->UpdateSpeakWidget(StepIndex);
 		}
+	}
+}
+
+void APlayerControl::RequestSpeakResult()
+{
+	if ( auto GS = Cast<ALingoGameState>(GetWorld()->GetGameState()) )
+	{
+		if (auto KLingoNetwork = UKLingoNetworkSystem::Get(GetWorld()))
+		{
+			FRequestSpeakResult SpeakRequest;
+			SpeakRequest.room_id = GS->GetRoomId();
+			SpeakRequest.user_id = GetUserId();
+			SpeakRequest.scenario_id = 1;
+			SpeakRequest.stage_type = ULingoGameHelper::GetStageTypeIndex(EQuestType::Speak);
+			SpeakRequest.state_type = 0;
+			KLingoNetwork->RequestSpeakResult(SpeakRequest,
+					FResponseSpeakResultDelegate::CreateUObject(this, &APlayerControl::OnResponseSpeakResult));
+		}	
+	}
+}
+
+void APlayerControl::OnResponseSpeakResult(FResponseSpeakResult& ResponseData, bool bWasSuccessful)
+{
+	if (bWasSuccessful)
+	{
+		if ( auto PS = GetPlayerState<ALingoPlayerState>() )
+		{
+			// PS에 결과 데이터를 저장한다
+			PS->SpeakResult = ResponseData;
+
+			if ( auto Popup = UPopupManager::ShowPopupAs<UPopup_SpeakResult>(GetWorld(), EPopupType::SpeakResult) )
+				Popup->InitPopup(ResponseData);
+		}
+	}
+	else
+	{
+		PRINTLOG(TEXT("[Result] Quest result Failed"));
 	}
 }
 
