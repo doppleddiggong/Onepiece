@@ -57,10 +57,6 @@ public:
 protected:
     virtual void BeginPlay() override;
     virtual void SetupInputComponent() override;
-    
-    // Tutorial Component
-    UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
-    class UTutorialComponent* TutorialComponent;
 
 	// --- Input Assets ---
 	UPROPERTY(EditDefaultsOnly, Category="Input")
@@ -131,4 +127,14 @@ private:
 	/// @brief 사용자 정보 (레벨 전환에서도 유지됨)
 	UPROPERTY()
 	FResponseUserMe UserInfo;
+
+public:
+	// Tutorial
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	class UTutorialComponent* TutorialComponent;
+
+	bool ShouldSkipTutorial() const;
+	void StartTutorialManually();
+	// 튜토리얼 완료 콜백
+	void OnTutorialCompleted();
 };
