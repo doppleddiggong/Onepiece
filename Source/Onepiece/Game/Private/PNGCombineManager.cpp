@@ -5,11 +5,6 @@
 #include <string>
 #include <cstring> // memcpy
 
-#define STB_IMAGE_IMPLEMENTATION
-#include "ThirdParty/stb_image.h"
-
-#define STB_IMAGE_WRITE_IMPLEMENTATION
-#include "ThirdParty/stb_image_write.h"
 
 void PNGCombineManager::CombinePNG()
 {
@@ -85,8 +80,4 @@ void PNGCombineManager::CombinePNG()
     //     std::cerr << "PNG 저장 실패: " << outputPath << "\n";
     // }
 
-    // 메모리 해제
-    for (auto& img : images) {
-        stbi_image_free(img.data);
-    }
 }

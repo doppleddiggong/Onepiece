@@ -26,6 +26,12 @@ protected:
 	TObjectPtr<class UBorder> Border_BG;
 	
 	UPROPERTY(meta=(BindWidget))
+	TObjectPtr<class UVerticalBox> VerticalBox_Content;
+	
+	UPROPERTY(meta=(BindWidget))
+	TObjectPtr<class USizeBox> SizeBox_Chat;
+	
+	UPROPERTY(meta=(BindWidget))
 	TObjectPtr<class UScrollBox> ScrollBox_ChatBox;
 	
 	UPROPERTY(meta=(BindWidget))
