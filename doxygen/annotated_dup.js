@@ -171,6 +171,7 @@ var annotated_dup =
     [ "UNetworkBroadcastLibrary", "classUNetworkBroadcastLibrary.html", "classUNetworkBroadcastLibrary" ],
     [ "UObjectPoolManager", "classUObjectPoolManager.html", "classUObjectPoolManager" ],
     [ "UPlayTimer", "classUPlayTimer.html", "classUPlayTimer" ],
+    [ "UPopup_AskTutorial", "classUPopup__AskTutorial.html", "classUPopup__AskTutorial" ],
     [ "UPopup_Evaluation", "classUPopup__Evaluation.html", "classUPopup__Evaluation" ],
     [ "UPopup_InputMsg", "classUPopup__InputMsg.html", "classUPopup__InputMsg" ],
     [ "UPopup_Interview", "classUPopup__Interview.html", "classUPopup__Interview" ],

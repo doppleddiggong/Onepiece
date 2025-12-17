@@ -1,5 +1,14 @@
 var NAVTREEINDEX8 =
 {
+"classUBroadcastManager.html#a79c3993df4598774574c61d4936ef264":[2,0,131,10],
+"classUBroadcastManager.html#a7a1bb7be2130b3367c2183017801b3ed":[2,0,131,35],
+"classUBroadcastManager.html#a7b76f7a9be120cf9d2e22e4cff24778e":[2,0,131,42],
+"classUBroadcastManager.html#a7dd77f4b9d69350f1a86fd1ec70301e1":[2,0,131,26],
+"classUBroadcastManager.html#a96140c8f3c51120625b22c402d6dbd58":[2,0,131,19],
+"classUBroadcastManager.html#a9c69490ebcf0947b36db2264b76a4167":[2,0,131,28],
+"classUBroadcastManager.html#a9c6b636fb1f03a183450e8532e78e830":[2,0,131,2],
+"classUBroadcastManager.html#aa17cf7bbe9f0657ef94594ed525ddd88":[2,0,131,38],
+"classUBroadcastManager.html#aa5e733255c40055222465f144d1ef65a":[2,0,131,31],
 "classUBroadcastManager.html#aad47de4b5c2a81137a6d460a3488898c":[2,0,131,51],
 "classUBroadcastManager.html#ab650baadb6e6f6fa402be94ff50c641e":[2,0,131,46],
 "classUBroadcastManager.html#ac4d8e3a3e3977aa9d264046a9e1bf6fa":[2,0,131,40],
@@ -240,14 +249,5 @@ var NAVTREEINDEX8 =
 "classUGameDataManager.html#a767778c8c26f3fcc616ae9f0f3b65c0a":[2,0,152,3],
 "classUGameDataManager.html#a7d5f4b7321bc2405f3ff9f696b7ddd75":[2,0,152,58],
 "classUGameDataManager.html#a7d92e7dc974eb658b4cf0b75433e27d2":[2,0,152,15],
-"classUGameDataManager.html#a7fd02189908f2382f3c80b9b9e4743ff":[2,0,152,70],
-"classUGameDataManager.html#a820ad35e9163862db3d1c2d0ac947b67":[2,0,152,25],
-"classUGameDataManager.html#a82d5fec42963c74ba9af57ccfb8ed6c2":[2,0,152,53],
-"classUGameDataManager.html#a8595beb01f133cdb7dde472486ef258b":[2,0,152,22],
-"classUGameDataManager.html#a8923c1690b0bc7f596a0b1a9925384d2":[2,0,152,20],
-"classUGameDataManager.html#a8b39f383f53d32c9af6c6dda0a293f45":[2,0,152,16],
-"classUGameDataManager.html#a8c741854cc7b04d3783924d84d2e65bb":[2,0,152,7],
-"classUGameDataManager.html#a8ec66c46010b5766804a22620eb030e5":[2,0,152,52],
-"classUGameDataManager.html#a9c6e1d3c0cfd595ba64c99096f52ee6d":[2,0,152,55],
-"classUGameDataManager.html#aa83c00fd215eabdac542661dd7893b14":[2,0,152,21]
+"classUGameDataManager.html#a7fd02189908f2382f3c80b9b9e4743ff":[2,0,152,70]
 };

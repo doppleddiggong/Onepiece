@@ -206,6 +206,7 @@ var hierarchy =
       [ "UAnswerItem", "classUAnswerItem.html", null ],
       [ "UAutoDespawnItem", "classUAutoDespawnItem.html", null ],
       [ "UBasePopup", "classUBasePopup.html", [
+        [ "UPopup_AskTutorial", "classUPopup__AskTutorial.html", null ],
         [ "UPopup_Evaluation", "classUPopup__Evaluation.html", null ],
         [ "UPopup_InputMsg", "classUPopup__InputMsg.html", null ],
         [ "UPopup_Interview", "classUPopup__Interview.html", null ],

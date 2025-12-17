@@ -1,5 +1,14 @@
 var NAVTREEINDEX9 =
 {
+"classUGameDataManager.html#a820ad35e9163862db3d1c2d0ac947b67":[2,0,152,25],
+"classUGameDataManager.html#a82d5fec42963c74ba9af57ccfb8ed6c2":[2,0,152,53],
+"classUGameDataManager.html#a8595beb01f133cdb7dde472486ef258b":[2,0,152,22],
+"classUGameDataManager.html#a8923c1690b0bc7f596a0b1a9925384d2":[2,0,152,20],
+"classUGameDataManager.html#a8b39f383f53d32c9af6c6dda0a293f45":[2,0,152,16],
+"classUGameDataManager.html#a8c741854cc7b04d3783924d84d2e65bb":[2,0,152,7],
+"classUGameDataManager.html#a8ec66c46010b5766804a22620eb030e5":[2,0,152,52],
+"classUGameDataManager.html#a9c6e1d3c0cfd595ba64c99096f52ee6d":[2,0,152,55],
+"classUGameDataManager.html#aa83c00fd215eabdac542661dd7893b14":[2,0,152,21],
 "classUGameDataManager.html#aa934e5d7830bd86c2a8cad2df2e70596":[2,0,152,66],
 "classUGameDataManager.html#aadbfbcb1f8c50ba7799087a97c0965f0":[2,0,152,51],
 "classUGameDataManager.html#aae5deeab78ceb3f84e28804410bb266a":[2,0,152,11],
@@ -240,14 +249,5 @@ var NAVTREEINDEX9 =
 "classULobbyWidget.html#a10378421a5314d3bd877994740a035d6":[2,0,165,0],
 "classULobbyWidget.html#a19688e892381b0af770c0e50a9678e54":[2,0,165,8],
 "classULobbyWidget.html#a2a1e923537fd35cd5a2cb7b2542168cb":[2,0,165,2],
-"classULobbyWidget.html#a2e16854a2544658fa63f5957d290f014":[2,0,165,14],
-"classULobbyWidget.html#a2f521fce81c9bbbcf6d565ae4b309d19":[2,0,165,13],
-"classULobbyWidget.html#a3d709383d31fc4f1a2ccf4ceae0daf77":[2,0,165,6],
-"classULobbyWidget.html#a42de44172e6a96acbae7313fac0af009":[2,0,165,17],
-"classULobbyWidget.html#a5edcb46b3862c945f5143702a43f9cf8":[2,0,165,7],
-"classULobbyWidget.html#a93bfc42c7f6e65f1817ec727e60824c3":[2,0,165,10],
-"classULobbyWidget.html#a9aa8c021f1b4fcd8c44b91a3ae5ef9d3":[2,0,165,11],
-"classULobbyWidget.html#a9c2e3e55a8bd35acdcd938c459a81c0d":[2,0,165,5],
-"classULobbyWidget.html#a9f7d94fabb5cf7886e9a8763cb4beb6f":[2,0,165,19],
-"classULobbyWidget.html#aa3515ca1f6392165f1810ae7525717c6":[2,0,165,20]
+"classULobbyWidget.html#a2e16854a2544658fa63f5957d290f014":[2,0,165,14]
 };

@@ -2,7 +2,7 @@ var searchData=
 [
   ['qid_0',['Qid',['../classUPopup__WriteBoard.html#ab61bf4fbad9590d8808c16db52f45c42',1,'UPopup_WriteBoard']]],
   ['questinfowidget_1',['QuestInfoWidget',['../classUMainWidget.html#a5ba1fdbbe66e5a6c54e05634e254e5d3',1,'UMainWidget']]],
-  ['question_2',['question',['../structFSpeakResultItem.html#a0e7b0c93d8289fb94e1d3bda93836b0b',1,'FSpeakResultItem::Question'],['../structFInterviewData.html#a8c6f4c5c88ef01e0b912e09e556a2349',1,'FInterviewData::Question'],['../structFQuestWriteInfo.html#a462ecd2b380588f9a3fc67bc99fe2482',1,'FQuestWriteInfo::question']]],
+  ['question_2',['question',['../structFQuestWriteInfo.html#a462ecd2b380588f9a3fc67bc99fe2482',1,'FQuestWriteInfo::question'],['../structFSpeakResultItem.html#a0e7b0c93d8289fb94e1d3bda93836b0b',1,'FSpeakResultItem::Question'],['../structFInterviewData.html#a8c6f4c5c88ef01e0b912e09e556a2349',1,'FInterviewData::Question']]],
   ['questiondata_3',['questiondata',['../classUPopup__QuestionnaireItem.html#a4029a855755fa61d62700a531202b33c',1,'UPopup_QuestionnaireItem::QuestionData'],['../classUPopup__QuestionnaireResultItem.html#a356c64331cbc417e7855acef15952212',1,'UPopup_QuestionnaireResultItem::QuestionData'],['../classUPopup__InterviewItem.html#ac3c546d9758a0489958632d85ec155fd',1,'UPopup_InterviewItem::QuestionData']]],
   ['questionnaire_5fpopup_5fpath_4',['Questionnaire_POPUP_PATH',['../UPopupManager_8cpp.html#a65ca45302e87a50d24766f211b91095a',1,'UPopupManager.cpp']]],
   ['questionnairedata_5',['QuestionnaireData',['../classAQuestionnaireKiosk.html#ae8b07970c59983d1c7c323ea457046b5',1,'AQuestionnaireKiosk']]],
