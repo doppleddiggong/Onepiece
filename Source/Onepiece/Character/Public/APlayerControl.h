@@ -57,6 +57,10 @@ public:
 protected:
     virtual void BeginPlay() override;
     virtual void SetupInputComponent() override;
+    
+    // Tutorial Component
+    UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+    class UTutorialComponent* TutorialComponent;
 
 	// --- Input Assets ---
 	UPROPERTY(EditDefaultsOnly, Category="Input")
