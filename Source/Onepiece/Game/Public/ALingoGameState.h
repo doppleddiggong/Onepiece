@@ -92,6 +92,11 @@ protected:
 	UFUNCTION()
 	void OnRep_RoomLevel();
 	
+public:
+	// Chat System
+	UFUNCTION(NetMulticast, Reliable)
+	void MulticastRPC_SendChat(FResponseUserMe sendUser, const FText& inMessage);
+	
 private:
 	/// @brief 타이머 종료 시 호출됩니다 (서버에서만 실행)
 	void OnMissionTimerEnd();

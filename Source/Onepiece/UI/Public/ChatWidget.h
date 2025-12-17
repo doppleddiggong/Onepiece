@@ -18,9 +18,18 @@ public:
 	UChatWidget(const FObjectInitializer& ObjectInitializer);
 	virtual void NativeConstruct() override;
 	
+	UFUNCTION()
+	void SendMessage(FResponseUserMe sendUser, FText inMessage);
+	
 protected:
 	UPROPERTY(meta=(BindWidget))
 	TObjectPtr<class UBorder> Border_BG;
+	
+	UPROPERTY(meta=(BindWidget))
+	TObjectPtr<class UVerticalBox> VerticalBox_Content;
+	
+	UPROPERTY(meta=(BindWidget))
+	TObjectPtr<class USizeBox> SizeBox_Chat;
 	
 	UPROPERTY(meta=(BindWidget))
 	TObjectPtr<class UScrollBox> ScrollBox_ChatBox;
@@ -36,10 +45,8 @@ protected:
 	
 protected:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
-	TSubclassOf<class UChatBoxWidget> ChatBoxWidgetClass;
+	TSubclassOf<class UChatBoxWidget> LeftChatBoxWidgetClass;
 	
-private:
-	UFUNCTION()
-	void OnSendMessage(FText inMessage);
-	
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	TSubclassOf<class UChatBoxWidget> RightChatBoxWidgetClass;
 };

@@ -11,6 +11,7 @@
 #include "ALingoGameState.h"
 #include "ALingoPlayerState.h"
 #include "ASpeakStageActor.h"
+#include "ChatWidget.h"
 #include "ULingoGameHelper.h"
 #include "UBroadcastManager.h"
 #include "GameLogging.h"
@@ -94,6 +95,12 @@ void UMainWidget::UpdateRoomWidget(int32 InRoomLevel, int64 InRoomId)
 
 	RoomWidget->SetVisibility(ESlateVisibility::Visible);
 	RoomWidget->UpdateRoomInfo(InRoomLevel, InRoomId);
+}
+
+void UMainWidget::SendChatMessage(FResponseUserMe sendUser,const FText& inMessage)
+{
+	// PRINTLOG(TEXT("[SendChat] UMainWidget::SendChatMessage - %s"), *inMessage.ToString());
+	ChatWidget->SendMessage(sendUser, inMessage);
 }
 
 void UMainWidget::UpdateTimerDisplay() const

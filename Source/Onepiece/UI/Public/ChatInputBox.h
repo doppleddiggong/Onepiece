@@ -10,7 +10,6 @@
  * 
  */
 
-DECLARE_MULTICAST_DELEGATE_OneParam(FOnSendClicked, FText);
 
 UCLASS()
 class ONEPIECE_API UChatInputBox : public UUserWidget
@@ -21,9 +20,6 @@ public:
 	virtual void NativeConstruct() override;
 	virtual FReply NativeOnPreviewKeyDown(const FGeometry& InGeometry, const FKeyEvent& InKeyEvent) override;
 	FText FlushMessage();
-	
-	// 외부 바인드용 Send 버튼 클릭 델리게이트
-	FOnSendClicked OnSendClicked;
 	
 protected:
 	UPROPERTY(meta=(BindWidget))

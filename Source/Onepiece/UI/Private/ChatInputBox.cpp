@@ -3,6 +3,7 @@
 
 #include "ChatInputBox.h"
 
+#include "APlayerControl.h"
 #include "Components/Button.h"
 #include "Components/MultiLineEditableTextBox.h"
 
@@ -39,8 +40,11 @@ void UChatInputBox::HandleSendClicked()
 	// 텍스트가 비어있지 않다면 Broadcast
 	FText message = FlushMessage();
 	if (!message.IsEmpty())
-	{
-		OnSendClicked.Broadcast(message);
+	{		
+		if (auto* PC = Cast<APlayerControl>(GetWorld()->GetFirstPlayerController<APlayerController>()))
+		{
+			PC->ServerRPC_SendChat(message);
+		}
 	}
 }
 

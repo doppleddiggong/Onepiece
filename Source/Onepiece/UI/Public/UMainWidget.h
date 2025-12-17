@@ -57,6 +57,9 @@ public:
 	UFUNCTION(BlueprintPure, Category = "Quest")
 	class UQuestInfoWidget* GetQuestInfoWidget() const { return QuestInfoWidget; }
 	
+	UFUNCTION(Category = "Chat")
+	void SendChatMessage(FResponseUserMe sendUser, const FText& inMessage);
+	
 private:
 	/// @brief 타이머 텍스트를 업데이트합니다.
 	void UpdateTimerDisplay() const;
@@ -93,6 +96,10 @@ protected:
 	/// @brief 페이드 인/아웃 위젯 (옵션, BindWidgetOptional)
 	UPROPERTY(meta = (BindWidgetOptional), BlueprintReadOnly)
 	TObjectPtr<class UFadeWidget> FadeWidget;
+	
+	/// @breif Chat Widget
+	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
+	TObjectPtr<class UChatWidget> ChatWidget;
 
 private:
 	/// @brief 훅 타겟 감지 시 이미지 (파란색)

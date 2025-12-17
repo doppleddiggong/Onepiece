@@ -12,7 +12,9 @@
 #include "UPopup_MsgBox.h"
 #include "UPopup_ReadQuest.h"
 #include "ANetworkBroadcastActor.h"
+#include "APlayerControl.h"
 #include "IMediaControls.h"
+#include "UMainWidget.h"
 #include "GameFramework/PlayerController.h"
 #include "Engine/World.h"
 
@@ -296,4 +298,17 @@ void ALingoGameState::OnRep_RoomId()
 void ALingoGameState::OnRep_RoomLevel()
 {
 	OnRoomLevelUpdated.Broadcast(RoomLevel);
+}
+
+void ALingoGameState::MulticastRPC_SendChat_Implementation(FResponseUserMe sendUser, const FText& inMessage)
+{
+	// MainWidget의 SendChatMessage() 함수 호출
+	if (auto* PC = Cast<APlayerControl>(GetWorld()->GetFirstPlayerController()))
+	{
+		// PRINTLOG(TEXT("[SendChat] ALingoGameState::MulticastRPC_SendChat - %s"), *inMessage.ToString());
+		if (auto* player = Cast<APlayerActor>(PC->GetPawn()))
+		{
+			player->GetMainWidget()->SendChatMessage(sendUser, inMessage);
+		}
+	}
 }

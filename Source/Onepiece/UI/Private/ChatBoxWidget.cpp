@@ -2,3 +2,21 @@
 
 
 #include "ChatBoxWidget.h"
+
+#include "Components/Border.h"
+#include "Components/TextBlock.h"
+
+void UChatBoxWidget::SetContent(FText inMessage)
+{
+	TextBlock_MessageContent->SetText(inMessage);
+}
+
+void UChatBoxWidget::SetPlayerName(FText inPlayerName)
+{
+	TextBlock_PlayerName->SetText(inPlayerName);
+}
+
+void UChatBoxWidget::SetPlayerBGColor(FLinearColor inColor)
+{
+	Border_PlayerBG->SetBrushColor(inColor);
+}
