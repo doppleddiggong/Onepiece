@@ -308,11 +308,22 @@ UUserWidget* UPopupManager::EnsurePopupWidget(EPopupType Type)
 		return nullptr;
 
 	// 위젯 생성
-	UUserWidget* NewWidget = CreateWidget<UUserWidget>(PC, *PopupClassPtr);
-	if (!NewWidget)
+	// UUserWidget* NewWidget = CreateWidget<UUserWidget>(PC, *PopupClassPtr);
+
+	// 위젯 생성 - GetTransientPackage()를 outer로 사용하여 GameInstance outer 문제 방지
+	// CreateWidget은 내부적으로 GameInstance를 outer로 사용하므로 직접 NewObject 사용
+	UUserWidget* NewWidget = NewObject<UUserWidget>(GetTransientPackage(), *PopupClassPtr, NAME_None, RF_Transient);
+	if (NewWidget)
 	{
-		PRINTLOG(TEXT("[UPopupManager] Failed to create widget for type: %s"),
-			*ENUM_TO_NAME(EPopupType, Type));
+		// 위젯 초기화
+		NewWidget->Initialize();
+
+		// PlayerController를 Owning Player로 설정
+		NewWidget->SetOwningPlayer(PC);
+	}
+	else	
+	{
+		PRINTLOG(TEXT("[UPopupManager] Failed to create widget for type: %s"), *ENUM_TO_NAME(EPopupType, Type));
 		return nullptr;
 	}
 
