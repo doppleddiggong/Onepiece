@@ -18,6 +18,9 @@ public:
 	UChatWidget(const FObjectInitializer& ObjectInitializer);
 	virtual void NativeConstruct() override;
 	
+	UFUNCTION()
+	void SendMessage(FText inMessage);
+	
 protected:
 	UPROPERTY(meta=(BindWidget))
 	TObjectPtr<class UBorder> Border_BG;
@@ -37,9 +40,5 @@ protected:
 protected:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	TSubclassOf<class UChatBoxWidget> ChatBoxWidgetClass;
-	
-private:
-	UFUNCTION()
-	void SendMessage(FText inMessage);
 	
 };

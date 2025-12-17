@@ -25,7 +25,7 @@ void UChatWidget::NativeConstruct()
 
 void UChatWidget::SendMessage(FText inMessage)
 {
-	UChatBoxWidget* newChat = CreateWidget<UChatBoxWidget>(this, ChatBoxWidgetClass);
+	UChatBoxWidget* newChat = CreateWidget<UChatBoxWidget>(GetWorld(), ChatBoxWidgetClass);
 	newChat->SetContent(inMessage);
 
 	// TODO: 플레이어 이름 넣기
