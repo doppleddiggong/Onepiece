@@ -196,6 +196,16 @@ EResourceTextureType ULingoGameHelper::ConvertGradeString(const FString& Grade)
 	return EResourceTextureType::Rarity_D;
 }
 
+EResourceTextureType ULingoGameHelper::ConvertScenarioTexture(EScenarioType ScenarioType)
+{
+	if (ScenarioType == EScenarioType::READING)		return EResourceTextureType::Read;
+	if (ScenarioType == EScenarioType::LISTENING)	return EResourceTextureType::Listen;
+	if (ScenarioType == EScenarioType::SPEAKING)	return EResourceTextureType::Speak;
+	if (ScenarioType == EScenarioType::WRITING)		return EResourceTextureType::Write;
+
+	return EResourceTextureType::Read;
+}
+
 FString ULingoGameHelper::GetFormatTimer(const float InRemainTime )
 {
 	const int32 TotalMilliseconds = FMath::FloorToInt(InRemainTime * 1000.f);

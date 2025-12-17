@@ -24,6 +24,14 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Tutor")
 	void OnTutorMessage(const FText& NewMessage);
 
+	// 자동숨김 없는 버전
+	UFUNCTION(BlueprintCallable, Category = "Tutor")
+	void OnShowTutorialMessage(const FText& NewMessage);
+
+	// 숨기기
+	UFUNCTION(BlueprintCallable, Category = "Tutor")
+	void OnHideTutorialMessage();
+	
 	UFUNCTION(BlueprintCallable, Category = "Item")
 	void AddItemToBoxList(const TArray<FResultStatData>& InDataList);
 
@@ -72,6 +80,9 @@ private:
 
 	/// @brief 펜딩 중인 메시지 (Hide 완료 후 표시할 메시지)
 	FText PendingMessage;
+
+	/// @brief 펜딩 메시지가 튜토리얼 메시지인지 여부
+	bool bPendingIsTutorial = false;   
 
 	/// @brief 튜터 메시지 표시 지속 시간 (초)
 	UPROPERTY(EditDefaultsOnly, Category = "Tutor")

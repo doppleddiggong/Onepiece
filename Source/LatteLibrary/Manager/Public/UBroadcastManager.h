@@ -10,6 +10,7 @@
 #include "Macro.h"
 #include "EDamageType.h"
 #include "EQuestRole.h"
+#include "ETutorialStep.h" 
 #include "FResultStatData.h"
 #include "Subsystems/GameInstanceSubsystem.h"
 #include "UBroadcastManager.generated.h"
@@ -138,4 +139,32 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category="Events")
 	void SendTeleport(const FVector& TargetLocation);
+
+	// Tutorial
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnTutorialStepChanged,
+		APlayerController*, Player, ETutorialStep, NewStep);
+
+	UPROPERTY(BlueprintAssignable, Category="Events")
+	FOnTutorialStepChanged OnTutorialStepChanged;
+
+	UFUNCTION(BlueprintCallable, Category="Events")
+	void SendTutorialStepChanged(APlayerController* Player, ETutorialStep NewStep);
+
+	// Tutorial Message 표시 (자동숨김 없는 버전)
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnShowTutorialMessage, const FText&, Message);
+	UPROPERTY(BlueprintAssignable, Category="Events")
+	FOnShowTutorialMessage OnShowTutorialMessage;
+
+	UFUNCTION(BlueprintCallable, Category="Events")
+	void SendShowTutorialMessage(const FText& Message);
+
+	// Tutorial Message 숨김
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnHideTutorialMessage);
+	UPROPERTY(BlueprintAssignable, Category="Events")
+	FOnHideTutorialMessage OnHideTutorialMessage;
+
+	UFUNCTION(BlueprintCallable, Category="Events")
+	void SendHideTutorialMessage();
+
+	
 };

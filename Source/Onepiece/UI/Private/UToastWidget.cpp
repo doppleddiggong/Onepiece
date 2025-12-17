@@ -14,6 +14,9 @@ void UToastWidget::NativeConstruct()
 	{
 		BM->OnTutorMessage.AddDynamic(this, &UToastWidget::OnTutorMessage);
 		BM->OnAddItemToBoxList.AddDynamic(this, &UToastWidget::AddItemToBoxList);
+
+		BM->OnShowTutorialMessage.AddDynamic(this, &UToastWidget::OnShowTutorialMessage);
+		BM->OnHideTutorialMessage.AddDynamic(this, &UToastWidget::OnHideTutorialMessage);
 	}
 
 	// TutorMessage 초기화 및 애니메이션 콜백 바인딩
@@ -54,6 +57,7 @@ void UToastWidget::OnTutorMessage(const FText& NewMessage)
 		// 표시 중이면 Hide → SetText → Show
 		PendingMessage = NewMessage;
 		bHasPendingMessage = true;
+		bPendingIsTutorial = false; 
 		
 		PlayAnimation(TutorHideAnim);
 	}
@@ -73,6 +77,56 @@ void UToastWidget::OnTutorMessage(const FText& NewMessage)
 	}
 }
 
+void UToastWidget::OnShowTutorialMessage(const FText& NewMessage)
+{
+	if (!TutorMessage)
+		return;
+
+	// 기존 타이머가 있으면 클리어
+	if (TutorHideTimerHandle.IsValid())
+	{
+		GetWorld()->GetTimerManager().ClearTimer(TutorHideTimerHandle);
+	}
+
+	if (bIsTutorVisible)
+	{
+		// 표시 중이면 Hide → SetText → Show
+		PendingMessage = NewMessage;
+		bHasPendingMessage = true;
+		bPendingIsTutorial = true;
+		
+		PlayAnimation(TutorHideAnim);
+	}
+	else
+	{
+		// 숨김 상태면 바로 SetText → Show
+		TutorMessage->SetMessageText(NewMessage);
+		
+		if (TutorShowAnim)
+		{
+			PlayAnimation(TutorShowAnim);
+			bIsTutorVisible = true;
+		}
+	}
+}
+
+void UToastWidget::OnHideTutorialMessage()
+{
+	if (!TutorMessage || !bIsTutorVisible) return;
+
+	// 기존 타이머가 있으면 클리어
+	if (TutorHideTimerHandle.IsValid())
+	{
+		GetWorld()->GetTimerManager().ClearTimer(TutorHideTimerHandle);
+	}
+
+	// Hide 애니메이션 재생
+	if (TutorHideAnim)
+	{
+		PlayAnimation(TutorHideAnim);
+	}
+}
+
 void UToastWidget::OnTutorHideComplete()
 {
 	bIsTutorVisible = false;
@@ -87,9 +141,15 @@ void UToastWidget::OnTutorHideComplete()
 			PlayAnimation(TutorShowAnim);
 			bIsTutorVisible = true;
 
-			// 자동 Hide 타이머 시작
-			StartTutorHideTimer();
+			// 튜토리얼 메시지가 아닐 때만 타이머 시작!                                                                                                                                                                 
+			if (!bPendingIsTutorial)  // ← 이 줄 추가!                                                                                                                                                                  
+			{
+				StartTutorHideTimer();
+			}
 		}
+
+		// 플래그 초기화                                                                                                                                                                                                    
+		bPendingIsTutorial = false;
 	}
 }
 

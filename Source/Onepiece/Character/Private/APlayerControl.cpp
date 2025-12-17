@@ -29,6 +29,7 @@
 #include "EngineUtils.h"
 #include "GameLogging.h"
 #include "OrderKiosk.h"
+#include "TutorialComponent.h"
 #include "UDialogManager.h"
 #include "ULingoGameHelper.h"
 #include "UPopupManager.h"
@@ -60,6 +61,8 @@ APlayerControl::APlayerControl()
 	IA_Run = FComponentHelper::LoadAsset<UInputAction>(IA_RUN_PATH);
 	IA_Info = FComponentHelper::LoadAsset<UInputAction>(IA_INFO_PATH);
 	IA_Hook = FComponentHelper::LoadAsset<UInputAction>(IA_HOOK_PATH);
+
+	TutorialComponent = CreateDefaultSubobject<UTutorialComponent>(TEXT("TutorialComponent"));
 }
 
 void APlayerControl::BeginPlay()
@@ -82,6 +85,11 @@ void APlayerControl::BeginPlay()
 		UserInfo = ULingoGameInstanceSubsystem::Get(GetWorld())->GetUserInfo();
 
 		Server_SetUserInfo(UserInfo);
+
+		// 튜토리얼 시작
+		// 할지 말지 선택 UI 필요
+		// 맵 제한 필요
+		TutorialComponent->StartTutorial();
 	}
 }
 
