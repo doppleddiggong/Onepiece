@@ -1,8 +1,5 @@
 var NAVTREEINDEX4 =
 {
-"UTabIndicator_8h.html":[3,0,0,2,8,1,6],
-"UTabIndicator_8h_source.html":[3,0,0,2,8,1,6],
-"UTextureButton_8cpp.html":[3,0,0,2,8,0,7],
 "UTextureButton_8cpp_source.html":[3,0,0,2,8,0,7],
 "UTextureButton_8h.html":[3,0,0,2,8,1,7],
 "UTextureButton_8h.html#a1952a2cc723b2fd2cf1d7a2ffbbf9a12":[3,0,0,2,8,1,7,1],
@@ -249,5 +246,8 @@ var NAVTREEINDEX4 =
 "classAGate.html":[2,0,12],
 "classAGate.html#a0aac26a835f62650db64de1cb0e691f2":[2,0,12,3],
 "classAGate.html#a15d812fadd17df2b56d3157df555727f":[2,0,12,1],
-"classAGate.html#a1cbee808a8817006d47e687055da4d57":[2,0,12,0]
+"classAGate.html#a1cbee808a8817006d47e687055da4d57":[2,0,12,0],
+"classAGate.html#a281d61d11d8e4d66d818bd1f8cfe0c2d":[2,0,12,8],
+"classAGate.html#a3e1bf646876a25223a607b9f4bc7f256":[2,0,12,14],
+"classAGate.html#a429a577267caf33a60f87b3bcf7748e8":[2,0,12,16]
 };

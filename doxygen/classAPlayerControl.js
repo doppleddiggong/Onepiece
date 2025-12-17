@@ -34,6 +34,7 @@ var classAPlayerControl =
     [ "Server_RequestDrop", "classAPlayerControl.html#a9e4e2fa62ac57a7cb39ddc62d4b9aeb2", null ],
     [ "Server_SetUserInfo", "classAPlayerControl.html#ad9179af6a28b83606e927ffc0635fa27", null ],
     [ "Server_SyncSpeakScenarioData", "classAPlayerControl.html#af727aa7d2f0ad872c920876e21bf3811", null ],
+    [ "ServerRPC_SendChat", "classAPlayerControl.html#aa0be1254a97090ced38686cee6a5db9b", null ],
     [ "SetupInputComponent", "classAPlayerControl.html#abede09a391c47bdafb3b34a507c80e9b", null ],
     [ "ShouldSkipTutorial", "classAPlayerControl.html#acdc532d4c270e6f0685ad4870d7463d5", null ],
     [ "StartTutorialManually", "classAPlayerControl.html#a4e8603d756e3da26a093ccdb44528a28", null ],

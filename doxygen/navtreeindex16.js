@@ -1,5 +1,12 @@
 var NAVTREEINDEX16 =
 {
+"structFResultStatData.html#a5264bce607096b760b0c3b0add5641e7":[2,0,109,7],
+"structFResultStatData.html#a61bcfba9b5e9da91e4c34a190489907f":[2,0,109,3],
+"structFResultStatData.html#a75e66157640bcf669787b2e987ab4412":[2,0,109,1],
+"structFResultStatData.html#a780624a8affe5aa938a7b75ee35cb4de":[2,0,109,0],
+"structFResultStatData.html#a79c960d0257ca39904aba1503a1f5a5e":[2,0,109,8],
+"structFResultStatData.html#a9c3caa803ddfbb9e059eba055c00aae9":[2,0,109,9],
+"structFResultStatData.html#aac45c5869b828c7f8cfb47807cdb968f":[2,0,109,2],
 "structFResultStatData.html#ad1687ae0bdba36508a791b853a82dbe6":[2,0,109,5],
 "structFScenarioResult.html":[2,0,110],
 "structFScenarioResult.html#a0ad89ab325e737aa1d57b42b247b9ca9":[2,0,110,3],

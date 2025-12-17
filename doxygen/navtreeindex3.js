@@ -1,8 +1,5 @@
 var NAVTREEINDEX3 =
 {
-"UGameSoundManager_8cpp_source.html":[3,0,0,1,3,0,4],
-"UGameSoundManager_8h.html":[3,0,0,1,3,1,6],
-"UGameSoundManager_8h_source.html":[3,0,0,1,3,1,6],
 "UGameVFXManager_8cpp.html":[3,0,0,1,3,0,5],
 "UGameVFXManager_8cpp.html#a60500bf10a75f419a7e7fee524b208af":[3,0,0,1,3,0,5,0],
 "UGameVFXManager_8cpp_source.html":[3,0,0,1,3,0,5],
@@ -249,5 +246,8 @@ var NAVTREEINDEX3 =
 "UTabButton_8h.html":[3,0,0,2,8,1,4],
 "UTabButton_8h_source.html":[3,0,0,2,8,1,4],
 "UTabIndicator_8cpp.html":[3,0,0,2,8,0,6],
-"UTabIndicator_8cpp_source.html":[3,0,0,2,8,0,6]
+"UTabIndicator_8cpp_source.html":[3,0,0,2,8,0,6],
+"UTabIndicator_8h.html":[3,0,0,2,8,1,6],
+"UTabIndicator_8h_source.html":[3,0,0,2,8,1,6],
+"UTextureButton_8cpp.html":[3,0,0,2,8,0,7]
 };

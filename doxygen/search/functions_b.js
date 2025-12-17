@@ -25,5 +25,6 @@ var searchData=
   ['multicastrpc_5fdojumpstart_22',['MulticastRPC_DoJumpStart',['../classAPlayerActor.html#a45195af3baa7076f2e881d9783023099',1,'APlayerActor']]],
   ['multicastrpc_5fdorun_23',['MulticastRPC_DoRun',['../classAPlayerActor.html#a3fc48077455e9035eb06979281884337',1,'APlayerActor']]],
   ['multicastrpc_5foninteractiontriggered_24',['MultiCastRPC_OnInteractionTriggered',['../classAConveyorButton.html#a905ad29ca369326302e43a5f8bf573c6',1,'AConveyorButton']]],
-  ['multicastrpc_5fstopmove_25',['MulticastRPC_StopMove',['../classAPlayerActor.html#ae9fa9da786c134b11e0fb9bdb1cf56d0',1,'APlayerActor']]]
+  ['multicastrpc_5fsendchat_25',['MulticastRPC_SendChat',['../classALingoGameState.html#a64d0bab10f3604385e1fed18ea6309f3',1,'ALingoGameState']]],
+  ['multicastrpc_5fstopmove_26',['MulticastRPC_StopMove',['../classAPlayerActor.html#ae9fa9da786c134b11e0fb9bdb1cf56d0',1,'APlayerActor']]]
 ];

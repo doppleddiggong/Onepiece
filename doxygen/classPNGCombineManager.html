@@ -141,85 +141,81 @@ Public 멤버 함수</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="PNGCombineManager_8cpp_source.html">PNGCombineManager.cpp</a> 파일의 <a class="el" href="PNGCombineManager_8cpp_source.html#l00014">14</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   15</span>{</div>
-<div class="line"><span class="lineno">   16</span>    <span class="comment">// std::string outputPath = argv[1];</span></div>
-<div class="line"><span class="lineno">   17</span>    <span class="comment">//</span></div>
-<div class="line"><span class="lineno">   18</span>    <span class="comment">// // 입력 이미지 경로</span></div>
-<div class="line"><span class="lineno">   19</span>    <span class="comment">// std::vector&lt;std::string&gt; imagePaths;</span></div>
-<div class="line"><span class="lineno">   20</span>    <span class="comment">// for (int i = 2; i &lt; argc; ++i) {</span></div>
-<div class="line"><span class="lineno">   21</span>    <span class="comment">//     imagePaths.push_back(argv[i]);</span></div>
-<div class="line"><span class="lineno">   22</span>    <span class="comment">// }</span></div>
-<div class="line"><span class="lineno">   23</span> </div>
-<div class="line"><span class="lineno">   24</span>    <span class="keywordtype">int</span> totalWidth = 0;</div>
-<div class="line"><span class="lineno">   25</span>    <span class="keywordtype">int</span> maxHeight = 0;</div>
-<div class="line"><span class="lineno">   26</span>    <span class="keywordtype">int</span> channels = 0;</div>
-<div class="line"><span class="lineno">   27</span> </div>
-<div class="line"><span class="lineno">   28</span>    <span class="keyword">struct </span>ImageData {</div>
-<div class="line"><span class="lineno">   29</span>        <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>* data;</div>
-<div class="line"><span class="lineno">   30</span>        <span class="keywordtype">int</span> width;</div>
-<div class="line"><span class="lineno">   31</span>        <span class="keywordtype">int</span> height;</div>
-<div class="line"><span class="lineno">   32</span>        <span class="keywordtype">int</span> channels;</div>
-<div class="line"><span class="lineno">   33</span>    };</div>
-<div class="line"><span class="lineno">   34</span>    std::vector&lt;ImageData&gt; images;</div>
-<div class="line"><span class="lineno">   35</span> </div>
-<div class="line"><span class="lineno">   36</span>    <span class="comment">// PNG 로드</span></div>
-<div class="line"><span class="lineno">   37</span>    <span class="comment">// for (const auto&amp; path : imagePaths) {</span></div>
-<div class="line"><span class="lineno">   38</span>    <span class="comment">//     int w, h, c;</span></div>
-<div class="line"><span class="lineno">   39</span>    <span class="comment">//     // 원하는 채널 수를 4로 강제 (RGBA)하면 다루기 편함</span></div>
-<div class="line"><span class="lineno">   40</span>    <span class="comment">//     unsigned char* data = stbi_load(path.c_str(), &amp;w, &amp;h, &amp;c, 4);</span></div>
-<div class="line"><span class="lineno">   41</span>    <span class="comment">//     if (!data) {</span></div>
-<div class="line"><span class="lineno">   42</span>    <span class="comment">//         std::cerr &lt;&lt; &quot;이미지 로드 실패: &quot; &lt;&lt; path &lt;&lt; &quot;\n&quot;;</span></div>
-<div class="line"><span class="lineno">   43</span>    <span class="comment">//         // 지금까지 로드한 이미지들 해제</span></div>
-<div class="line"><span class="lineno">   44</span>    <span class="comment">//         for (auto&amp; img : images) {</span></div>
-<div class="line"><span class="lineno">   45</span>    <span class="comment">//             stbi_image_free(img.data);</span></div>
-<div class="line"><span class="lineno">   46</span>    <span class="comment">//         }</span></div>
-<div class="line"><span class="lineno">   47</span>    <span class="comment">//         return -1;</span></div>
-<div class="line"><span class="lineno">   48</span>    <span class="comment">//     }</span></div>
+<p class="definition"><a class="el" href="PNGCombineManager_8cpp_source.html">PNGCombineManager.cpp</a> 파일의 <a class="el" href="PNGCombineManager_8cpp_source.html#l00009">9</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   10</span>{</div>
+<div class="line"><span class="lineno">   11</span>    <span class="comment">// std::string outputPath = argv[1];</span></div>
+<div class="line"><span class="lineno">   12</span>    <span class="comment">//</span></div>
+<div class="line"><span class="lineno">   13</span>    <span class="comment">// // 입력 이미지 경로</span></div>
+<div class="line"><span class="lineno">   14</span>    <span class="comment">// std::vector&lt;std::string&gt; imagePaths;</span></div>
+<div class="line"><span class="lineno">   15</span>    <span class="comment">// for (int i = 2; i &lt; argc; ++i) {</span></div>
+<div class="line"><span class="lineno">   16</span>    <span class="comment">//     imagePaths.push_back(argv[i]);</span></div>
+<div class="line"><span class="lineno">   17</span>    <span class="comment">// }</span></div>
+<div class="line"><span class="lineno">   18</span> </div>
+<div class="line"><span class="lineno">   19</span>    <span class="keywordtype">int</span> totalWidth = 0;</div>
+<div class="line"><span class="lineno">   20</span>    <span class="keywordtype">int</span> maxHeight = 0;</div>
+<div class="line"><span class="lineno">   21</span>    <span class="keywordtype">int</span> channels = 0;</div>
+<div class="line"><span class="lineno">   22</span> </div>
+<div class="line"><span class="lineno">   23</span>    <span class="keyword">struct </span>ImageData {</div>
+<div class="line"><span class="lineno">   24</span>        <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>* data;</div>
+<div class="line"><span class="lineno">   25</span>        <span class="keywordtype">int</span> width;</div>
+<div class="line"><span class="lineno">   26</span>        <span class="keywordtype">int</span> height;</div>
+<div class="line"><span class="lineno">   27</span>        <span class="keywordtype">int</span> channels;</div>
+<div class="line"><span class="lineno">   28</span>    };</div>
+<div class="line"><span class="lineno">   29</span>    std::vector&lt;ImageData&gt; images;</div>
+<div class="line"><span class="lineno">   30</span> </div>
+<div class="line"><span class="lineno">   31</span>    <span class="comment">// PNG 로드</span></div>
+<div class="line"><span class="lineno">   32</span>    <span class="comment">// for (const auto&amp; path : imagePaths) {</span></div>
+<div class="line"><span class="lineno">   33</span>    <span class="comment">//     int w, h, c;</span></div>
+<div class="line"><span class="lineno">   34</span>    <span class="comment">//     // 원하는 채널 수를 4로 강제 (RGBA)하면 다루기 편함</span></div>
+<div class="line"><span class="lineno">   35</span>    <span class="comment">//     unsigned char* data = stbi_load(path.c_str(), &amp;w, &amp;h, &amp;c, 4);</span></div>
+<div class="line"><span class="lineno">   36</span>    <span class="comment">//     if (!data) {</span></div>
+<div class="line"><span class="lineno">   37</span>    <span class="comment">//         std::cerr &lt;&lt; &quot;이미지 로드 실패: &quot; &lt;&lt; path &lt;&lt; &quot;\n&quot;;</span></div>
+<div class="line"><span class="lineno">   38</span>    <span class="comment">//         // 지금까지 로드한 이미지들 해제</span></div>
+<div class="line"><span class="lineno">   39</span>    <span class="comment">//         for (auto&amp; img : images) {</span></div>
+<div class="line"><span class="lineno">   40</span>    <span class="comment">//             stbi_image_free(img.data);</span></div>
+<div class="line"><span class="lineno">   41</span>    <span class="comment">//         }</span></div>
+<div class="line"><span class="lineno">   42</span>    <span class="comment">//         return -1;</span></div>
+<div class="line"><span class="lineno">   43</span>    <span class="comment">//     }</span></div>
+<div class="line"><span class="lineno">   44</span>    <span class="comment">//</span></div>
+<div class="line"><span class="lineno">   45</span>    <span class="comment">//     // 실제 채널은 4를 사용</span></div>
+<div class="line"><span class="lineno">   46</span>    <span class="comment">//     c = 4;</span></div>
+<div class="line"><span class="lineno">   47</span>    <span class="comment">//</span></div>
+<div class="line"><span class="lineno">   48</span>    <span class="comment">//     images.push_back({ data, w, h, c });</span></div>
 <div class="line"><span class="lineno">   49</span>    <span class="comment">//</span></div>
-<div class="line"><span class="lineno">   50</span>    <span class="comment">//     // 실제 채널은 4를 사용</span></div>
-<div class="line"><span class="lineno">   51</span>    <span class="comment">//     c = 4;</span></div>
-<div class="line"><span class="lineno">   52</span>    <span class="comment">//</span></div>
-<div class="line"><span class="lineno">   53</span>    <span class="comment">//     images.push_back({ data, w, h, c });</span></div>
-<div class="line"><span class="lineno">   54</span>    <span class="comment">//</span></div>
-<div class="line"><span class="lineno">   55</span>    <span class="comment">//     totalWidth += w;</span></div>
-<div class="line"><span class="lineno">   56</span>    <span class="comment">//     if (h &gt; maxHeight) maxHeight = h;</span></div>
-<div class="line"><span class="lineno">   57</span>    <span class="comment">//     channels = c; // 어차피 4로 통일</span></div>
-<div class="line"><span class="lineno">   58</span>    <span class="comment">// }</span></div>
+<div class="line"><span class="lineno">   50</span>    <span class="comment">//     totalWidth += w;</span></div>
+<div class="line"><span class="lineno">   51</span>    <span class="comment">//     if (h &gt; maxHeight) maxHeight = h;</span></div>
+<div class="line"><span class="lineno">   52</span>    <span class="comment">//     channels = c; // 어차피 4로 통일</span></div>
+<div class="line"><span class="lineno">   53</span>    <span class="comment">// }</span></div>
+<div class="line"><span class="lineno">   54</span> </div>
+<div class="line"><span class="lineno">   55</span>    <span class="keywordtype">int</span> outWidth = totalWidth;</div>
+<div class="line"><span class="lineno">   56</span>    <span class="keywordtype">int</span> outHeight = maxHeight;</div>
+<div class="line"><span class="lineno">   57</span>    <span class="keywordtype">int</span> outChannels = channels; <span class="comment">// 4</span></div>
+<div class="line"><span class="lineno">   58</span>    <span class="keywordtype">size_t</span> outSize = (size_t)outWidth * outHeight * outChannels;</div>
 <div class="line"><span class="lineno">   59</span> </div>
-<div class="line"><span class="lineno">   60</span>    <span class="keywordtype">int</span> outWidth = totalWidth;</div>
-<div class="line"><span class="lineno">   61</span>    <span class="keywordtype">int</span> outHeight = maxHeight;</div>
-<div class="line"><span class="lineno">   62</span>    <span class="keywordtype">int</span> outChannels = channels; <span class="comment">// 4</span></div>
-<div class="line"><span class="lineno">   63</span>    <span class="keywordtype">size_t</span> outSize = (size_t)outWidth * outHeight * outChannels;</div>
-<div class="line"><span class="lineno">   64</span> </div>
-<div class="line"><span class="lineno">   65</span>    <span class="comment">// 최종 이미지 버퍼</span></div>
-<div class="line"><span class="lineno">   66</span>    std::vector&lt;unsigned char&gt; output(outSize, 0);</div>
-<div class="line"><span class="lineno">   67</span> </div>
-<div class="line"><span class="lineno">   68</span>    <span class="comment">// 오른쪽으로 이어 붙이기</span></div>
-<div class="line"><span class="lineno">   69</span>    <span class="keywordtype">int</span> xOffset = 0;</div>
-<div class="line"><span class="lineno">   70</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; img : images) {</div>
-<div class="line"><span class="lineno">   71</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> y = 0; y &lt; img.height; ++y) {</div>
-<div class="line"><span class="lineno">   72</span>            <span class="comment">// 목적지 시작 위치</span></div>
-<div class="line"><span class="lineno">   73</span>            <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>* dstRow = &amp;output[(y * outWidth + xOffset) * outChannels];</div>
-<div class="line"><span class="lineno">   74</span>            <span class="comment">// 소스 시작 위치</span></div>
-<div class="line"><span class="lineno">   75</span>            <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>* srcRow = &amp;img.data[y * img.width * img.channels];</div>
+<div class="line"><span class="lineno">   60</span>    <span class="comment">// 최종 이미지 버퍼</span></div>
+<div class="line"><span class="lineno">   61</span>    std::vector&lt;unsigned char&gt; output(outSize, 0);</div>
+<div class="line"><span class="lineno">   62</span> </div>
+<div class="line"><span class="lineno">   63</span>    <span class="comment">// 오른쪽으로 이어 붙이기</span></div>
+<div class="line"><span class="lineno">   64</span>    <span class="keywordtype">int</span> xOffset = 0;</div>
+<div class="line"><span class="lineno">   65</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; img : images) {</div>
+<div class="line"><span class="lineno">   66</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> y = 0; y &lt; img.height; ++y) {</div>
+<div class="line"><span class="lineno">   67</span>            <span class="comment">// 목적지 시작 위치</span></div>
+<div class="line"><span class="lineno">   68</span>            <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>* dstRow = &amp;output[(y * outWidth + xOffset) * outChannels];</div>
+<div class="line"><span class="lineno">   69</span>            <span class="comment">// 소스 시작 위치</span></div>
+<div class="line"><span class="lineno">   70</span>            <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>* srcRow = &amp;img.data[y * img.width * img.channels];</div>
+<div class="line"><span class="lineno">   71</span> </div>
+<div class="line"><span class="lineno">   72</span>            std::memcpy(dstRow, srcRow, (<span class="keywordtype">size_t</span>)img.width * outChannels);</div>
+<div class="line"><span class="lineno">   73</span>        }</div>
+<div class="line"><span class="lineno">   74</span>        xOffset += img.width;</div>
+<div class="line"><span class="lineno">   75</span>    }</div>
 <div class="line"><span class="lineno">   76</span> </div>
-<div class="line"><span class="lineno">   77</span>            std::memcpy(dstRow, srcRow, (<span class="keywordtype">size_t</span>)img.width * outChannels);</div>
-<div class="line"><span class="lineno">   78</span>        }</div>
-<div class="line"><span class="lineno">   79</span>        xOffset += img.width;</div>
-<div class="line"><span class="lineno">   80</span>    }</div>
-<div class="line"><span class="lineno">   81</span> </div>
-<div class="line"><span class="lineno">   82</span>    <span class="comment">// PNG로 저장</span></div>
-<div class="line"><span class="lineno">   83</span>    <span class="comment">// if (!stbi_write_png(outputPath.c_str(), outWidth, outHeight, outChannels,</span></div>
-<div class="line"><span class="lineno">   84</span>    <span class="comment">//                     output.data(), outWidth * outChannels)) {</span></div>
-<div class="line"><span class="lineno">   85</span>    <span class="comment">//     std::cerr &lt;&lt; &quot;PNG 저장 실패: &quot; &lt;&lt; outputPath &lt;&lt; &quot;\n&quot;;</span></div>
-<div class="line"><span class="lineno">   86</span>    <span class="comment">// }</span></div>
-<div class="line"><span class="lineno">   87</span> </div>
-<div class="line"><span class="lineno">   88</span>    <span class="comment">// 메모리 해제</span></div>
-<div class="line"><span class="lineno">   89</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; img : images) {</div>
-<div class="line"><span class="lineno">   90</span>        stbi_image_free(img.data);</div>
-<div class="line"><span class="lineno">   91</span>    }</div>
-<div class="line"><span class="lineno">   92</span>}</div>
+<div class="line"><span class="lineno">   77</span>    <span class="comment">// PNG로 저장</span></div>
+<div class="line"><span class="lineno">   78</span>    <span class="comment">// if (!stbi_write_png(outputPath.c_str(), outWidth, outHeight, outChannels,</span></div>
+<div class="line"><span class="lineno">   79</span>    <span class="comment">//                     output.data(), outWidth * outChannels)) {</span></div>
+<div class="line"><span class="lineno">   80</span>    <span class="comment">//     std::cerr &lt;&lt; &quot;PNG 저장 실패: &quot; &lt;&lt; outputPath &lt;&lt; &quot;\n&quot;;</span></div>
+<div class="line"><span class="lineno">   81</span>    <span class="comment">// }</span></div>
+<div class="line"><span class="lineno">   82</span> </div>
+<div class="line"><span class="lineno">   83</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -233,7 +229,7 @@ Public 멤버 함수</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classPNGCombineManager.html">PNGCombineManager</a></li>
-    <li class="footer">생성시간 : 수 12월 17 2025 13:48:15, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 수 12월 17 2025 23:46:59, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

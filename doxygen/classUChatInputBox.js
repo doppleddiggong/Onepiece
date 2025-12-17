@@ -5,6 +5,5 @@ var classUChatInputBox =
     [ "NativeConstruct", "classUChatInputBox.html#ada7df093f9d0464af9bea6d9a36334e7", null ],
     [ "NativeOnPreviewKeyDown", "classUChatInputBox.html#ab18654c43748ccb4af6bc9bd33d7e797", null ],
     [ "Button_Send", "classUChatInputBox.html#ae0533d766d0dc39730fb7c02f4a6d542", null ],
-    [ "MultiLineEditableTextBox_Input", "classUChatInputBox.html#a90c68ef60681e4cd1f949923eb63df75", null ],
-    [ "OnSendClicked", "classUChatInputBox.html#a62187509e81a15f775a768bb40b50e77", null ]
+    [ "MultiLineEditableTextBox_Input", "classUChatInputBox.html#a90c68ef60681e4cd1f949923eb63df75", null ]
 ];

@@ -77,7 +77,7 @@ var searchData=
   ['txt_5fminsec_74',['Txt_MinSec',['../classUPlayTimer.html#a39f18ae774bee3234ae01ef4964eaa6d',1,'UPlayTimer']]],
   ['txt_5forder_75',['Txt_Order',['../classUAnswerItem.html#a50ed54ac4d705098bea77f4f98a6b203',1,'UAnswerItem']]],
   ['txt_5fproneme_76',['Txt_Proneme',['../classUPopup__Word.html#ac6eb2584b34ad29964d1b22be64df24e',1,'UPopup_Word']]],
-  ['txt_5fquestion_77',['txt_question',['../classUPopup__InterviewHello.html#a0f844839c6b09c41cb04e9193fecb154',1,'UPopup_InterviewHello::TXt_Question'],['../classUPopup__SpeakResultItem.html#a1cde45cb1d72084e58b71eade984bece',1,'UPopup_SpeakResultItem::Txt_Question']]],
+  ['txt_5fquestion_77',['txt_question',['../classUPopup__SpeakResultItem.html#a1cde45cb1d72084e58b71eade984bece',1,'UPopup_SpeakResultItem::Txt_Question'],['../classUPopup__InterviewHello.html#a0f844839c6b09c41cb04e9193fecb154',1,'UPopup_InterviewHello::TXt_Question']]],
   ['txt_5frate_78',['Txt_Rate',['../classUResultStatWidget.html#a1c5994cd2432da58ad757210ea4d1ec3',1,'UResultStatWidget']]],
   ['txt_5froomid_79',['Txt_RoomId',['../classURoomWidget.html#afe1fa274946b18d8ebe2464ffe1033f3',1,'URoomWidget']]],
   ['txt_5froomlevel_80',['Txt_RoomLevel',['../classURoomWidget.html#a6e9afa1f11a3de5d4c01ce87bdd416c5',1,'URoomWidget']]],
