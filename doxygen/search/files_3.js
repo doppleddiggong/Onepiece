@@ -7,5 +7,6 @@ var searchData=
   ['enetworklogtype_2eh_4',['ENetworkLogType.h',['../ENetworkLogType_8h.html',1,'']]],
   ['epopuptype_2eh_5',['EPopupType.h',['../EPopupType_8h.html',1,'']]],
   ['equestrole_2eh_6',['EQuestRole.h',['../EQuestRole_8h.html',1,'']]],
-  ['evfxtype_2eh_7',['EVFXType.h',['../EVFXType_8h.html',1,'']]]
+  ['etutorialstep_2eh_7',['ETutorialStep.h',['../ETutorialStep_8h.html',1,'']]],
+  ['evfxtype_2eh_8',['EVFXType.h',['../EVFXType_8h.html',1,'']]]
 ];

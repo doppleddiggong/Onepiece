@@ -9,6 +9,7 @@ var classAPopupTesterActor =
     [ "OnOK", "classAPopupTesterActor.html#ab40b24f205d4361929fef3e506098bb2", null ],
     [ "PopupInputMsg", "classAPopupTesterActor.html#af895bb7f32b41be942077c99b963aa58", null ],
     [ "ReadQuest", "classAPopupTesterActor.html#a3405fb657b929d0cbea77cb386953834", null ],
+    [ "TestEvaluationPopup", "classAPopupTesterActor.html#ac4e80085f09e82818fcc7b844696b609", null ],
     [ "ToastMsg", "classAPopupTesterActor.html#a1cb826db020b0ed66da3f0a8df1453a7", null ],
     [ "MD5", "classAPopupTesterActor.html#a7a72b63419fa4c4bcc1e7b12c99b1a1a", null ]
 ];

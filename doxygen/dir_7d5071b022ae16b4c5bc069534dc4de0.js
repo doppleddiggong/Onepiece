@@ -7,6 +7,7 @@ var dir_7d5071b022ae16b4c5bc069534dc4de0 =
     [ "AMainLevelScriptActor.h", "AMainLevelScriptActor_8h.html", "AMainLevelScriptActor_8h" ],
     [ "ASpeakStageActor.h", "ASpeakStageActor_8h.html", "ASpeakStageActor_8h" ],
     [ "PNGCombineManager.h", "PNGCombineManager_8h.html", "PNGCombineManager_8h" ],
+    [ "TutorialComponent.h", "TutorialComponent_8h.html", null ],
     [ "ULingoGameHelper.h", "ULingoGameHelper_8h.html", "ULingoGameHelper_8h" ],
     [ "ULingoGameInstance.h", "ULingoGameInstance_8h.html", "ULingoGameInstance_8h" ],
     [ "ULingoGameInstanceSubsystem.h", "ULingoGameInstanceSubsystem_8h.html", "ULingoGameInstanceSubsystem_8h" ]

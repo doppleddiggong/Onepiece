@@ -130,61 +130,71 @@ $(document).ready(function(){initNavTree('UToastWidget_8h_source.html',''); init
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    UFUNCTION(BlueprintCallable, Category = <span class="stringliteral">&quot;Tutor&quot;</span>)</div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="keywordtype">void</span> OnTutorMessage(<span class="keyword">const</span> FText&amp; NewMessage);</div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    UFUNCTION(BlueprintCallable, Category = <span class="stringliteral">&quot;Item&quot;</span>)</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="keywordtype">void</span> AddItemToBoxList(<span class="keyword">const</span> TArray&lt;FResultStatData&gt;&amp; InDataList);</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    UFUNCTION(BlueprintCallable, Category = <span class="stringliteral">&quot;Item&quot;</span>)</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="keywordtype">void</span> AddItemToBoxItem(<span class="keyword">const</span> <a class="code hl_struct" href="structFResultStatData.html">FResultStatData</a>&amp; InData);</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="keywordtype">void</span> InitTutorMessage();</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    UFUNCTION()</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keywordtype">void</span> OnTutorHideComplete();</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="keywordtype">void</span> StartTutorHideTimer();</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="keywordtype">void</span> ProcessNextItem();</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="keyword">protected</span>:</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    UPROPERTY(meta = (BindWidgetOptional), BlueprintReadOnly)</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="classUToastWidget.html#a541d9442d12452122e736c62f90297d7">   50</a></span>    TObjectPtr&lt;class <a class="code hl_class" href="classUTutorMessage.html">UTutorMessage</a>&gt; TutorMessage;</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    UPROPERTY(meta = (BindWidget), BlueprintReadOnly)</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="classUToastWidget.html#a56979859e1e1d121782c24b5ffd18b42">   54</a></span>    TObjectPtr&lt;class UHorizontalBox&gt; ItemHorizontalBox;</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    UPROPERTY(Transient, meta = (BindWidgetAnim))</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="classUToastWidget.html#aac102e58224035efc87f7c993e7674b4">   58</a></span>    TObjectPtr&lt;class UWidgetAnimation&gt; TutorShowAnim;</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="comment">// 자동숨김 없는 버전</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    UFUNCTION(BlueprintCallable, Category = <span class="stringliteral">&quot;Tutor&quot;</span>)</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="keywordtype">void</span> OnShowTutorialMessage(<span class="keyword">const</span> FText&amp; NewMessage);</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="comment">// 숨기기</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    UFUNCTION(BlueprintCallable, Category = <span class="stringliteral">&quot;Tutor&quot;</span>)</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="keywordtype">void</span> OnHideTutorialMessage();</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    UFUNCTION(BlueprintCallable, Category = <span class="stringliteral">&quot;Item&quot;</span>)</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="keywordtype">void</span> AddItemToBoxList(<span class="keyword">const</span> TArray&lt;FResultStatData&gt;&amp; InDataList);</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    UFUNCTION(BlueprintCallable, Category = <span class="stringliteral">&quot;Item&quot;</span>)</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="keywordtype">void</span> AddItemToBoxItem(<span class="keyword">const</span> <a class="code hl_struct" href="structFResultStatData.html">FResultStatData</a>&amp; InData);</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="keywordtype">void</span> InitTutorMessage();</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    UFUNCTION()</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="keywordtype">void</span> OnTutorHideComplete();</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="keywordtype">void</span> StartTutorHideTimer();</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="keywordtype">void</span> ProcessNextItem();</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    UPROPERTY(meta = (BindWidgetOptional), BlueprintReadOnly)</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="classUToastWidget.html#a541d9442d12452122e736c62f90297d7">   58</a></span>    TObjectPtr&lt;class <a class="code hl_class" href="classUTutorMessage.html">UTutorMessage</a>&gt; TutorMessage;</div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    UPROPERTY(Transient, meta = (BindWidgetAnim))</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="classUToastWidget.html#aa6d37a402ad92f6080e0da15a4ff2956">   62</a></span>    TObjectPtr&lt;class UWidgetAnimation&gt; TutorHideAnim;</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    UPROPERTY(meta = (BindWidget), BlueprintReadOnly)</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="classUToastWidget.html#a56979859e1e1d121782c24b5ffd18b42">   62</a></span>    TObjectPtr&lt;class UHorizontalBox&gt; ItemHorizontalBox;</div>
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>private:</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    UPROPERTY(EditDefaultsOnly, Category = &quot;Item&quot;)</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="classUToastWidget.html#aad2fc5f55660151b7a9905ee432a0b84">   67</a></span>    TSubclassOf&lt;class <a class="code hl_class" href="classUAutoDespawnItem.html">UAutoDespawnItem</a>&gt; ItemWidgetClass;</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    </div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno"><a class="line" href="classUToastWidget.html#a51fe49ba16ba53d740512eff6204347c">   71</a></span>    FTimerHandle TutorHideTimerHandle;</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno"><a class="line" href="classUToastWidget.html#ad0ff498ee003421d905e17b661ff20b0">   74</a></span>    FText PendingMessage;</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    UPROPERTY(EditDefaultsOnly, Category = &quot;Tutor&quot;)</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno"><a class="line" href="classUToastWidget.html#a74617f79f10cdbb70cbbcdd068303e8b">   78</a></span>    <span class="keywordtype">float</span> TutorMessageDisplayDuration = 3.0f;</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno"><a class="line" href="classUToastWidget.html#aa7221e8f5696460c1c8ad9e745488fa5">   81</a></span>    <span class="keywordtype">bool</span> bHasPendingMessage = false;</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno"><a class="line" href="classUToastWidget.html#ac65002e90d5655637598cbbaba91a63b">   84</a></span>    <span class="keywordtype">bool</span> bIsTutorVisible = false;</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno"><a class="line" href="classUToastWidget.html#a67a8a1dd18077be9498d13f000bbd987">   87</a></span>    FTimerHandle ItemAddTimerHandle;</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno"><a class="line" href="classUToastWidget.html#a7119352352ce73e0b066c2ffbdcac0b2">   90</a></span>    TArray&lt;<a class="code hl_struct" href="structFResultStatData.html">FResultStatData</a>&gt; PendingItemDataList;</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno"><a class="line" href="classUToastWidget.html#a5ba57b962fb20b11c8c8b9b0b49fc536">   93</a></span>    int32 CurItemIndex = 0;</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    UPROPERTY(EditDefaultsOnly, Category = &quot;Item&quot;)</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno"><a class="line" href="classUToastWidget.html#ac2a41a1e687417305036af0ff48974b4">   97</a></span>    <span class="keywordtype">float</span> ItemAddInterval = 0.1f;</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>};</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    UPROPERTY(Transient, meta = (BindWidgetAnim))</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="classUToastWidget.html#aac102e58224035efc87f7c993e7674b4">   66</a></span>    TObjectPtr&lt;class UWidgetAnimation&gt; TutorShowAnim;</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    UPROPERTY(Transient, meta = (BindWidgetAnim))</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno"><a class="line" href="classUToastWidget.html#aa6d37a402ad92f6080e0da15a4ff2956">   70</a></span>    TObjectPtr&lt;class UWidgetAnimation&gt; TutorHideAnim;</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>private:</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    UPROPERTY(EditDefaultsOnly, Category = &quot;Item&quot;)</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno"><a class="line" href="classUToastWidget.html#aad2fc5f55660151b7a9905ee432a0b84">   75</a></span>    TSubclassOf&lt;class <a class="code hl_class" href="classUAutoDespawnItem.html">UAutoDespawnItem</a>&gt; ItemWidgetClass;</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    </div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno"><a class="line" href="classUToastWidget.html#a51fe49ba16ba53d740512eff6204347c">   79</a></span>    FTimerHandle TutorHideTimerHandle;</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno"><a class="line" href="classUToastWidget.html#ad0ff498ee003421d905e17b661ff20b0">   82</a></span>    FText PendingMessage;</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno"><a class="line" href="classUToastWidget.html#a260ee3d29d178e8c0eef000ed4636263">   85</a></span>    <span class="keywordtype">bool</span> bPendingIsTutorial = false;   </div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    UPROPERTY(EditDefaultsOnly, Category = &quot;Tutor&quot;)</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno"><a class="line" href="classUToastWidget.html#a74617f79f10cdbb70cbbcdd068303e8b">   89</a></span>    <span class="keywordtype">float</span> TutorMessageDisplayDuration = 3.0f;</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno"><a class="line" href="classUToastWidget.html#aa7221e8f5696460c1c8ad9e745488fa5">   92</a></span>    <span class="keywordtype">bool</span> bHasPendingMessage = false;</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span> </div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno"><a class="line" href="classUToastWidget.html#ac65002e90d5655637598cbbaba91a63b">   95</a></span>    <span class="keywordtype">bool</span> bIsTutorVisible = false;</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span> </div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno"><a class="line" href="classUToastWidget.html#a67a8a1dd18077be9498d13f000bbd987">   98</a></span>    FTimerHandle ItemAddTimerHandle;</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span> </div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno"><a class="line" href="classUToastWidget.html#a7119352352ce73e0b066c2ffbdcac0b2">  101</a></span>    TArray&lt;<a class="code hl_struct" href="structFResultStatData.html">FResultStatData</a>&gt; PendingItemDataList;</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno"><a class="line" href="classUToastWidget.html#a5ba57b962fb20b11c8c8b9b0b49fc536">  104</a></span>    int32 CurItemIndex = 0;</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span> </div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    UPROPERTY(EditDefaultsOnly, Category = &quot;Item&quot;)</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno"><a class="line" href="classUToastWidget.html#ac2a41a1e687417305036af0ff48974b4">  108</a></span>    <span class="keywordtype">float</span> ItemAddInterval = 0.1f;</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>};</div>
 </div>
 <div class="ttc" id="aclassUAutoDespawnItem_html"><div class="ttname"><a href="classUAutoDespawnItem.html">UAutoDespawnItem</a></div><div class="ttdoc">자동으로 사라지는 아이템 위젯</div><div class="ttdef"><b>Definition</b> <a href="UAutoDespawnItem_8h_source.html#l00015">UAutoDespawnItem.h:16</a></div></div>
 <div class="ttc" id="aclassUToastWidget_html"><div class="ttname"><a href="classUToastWidget.html">UToastWidget</a></div><div class="ttdef"><b>Definition</b> <a href="UToastWidget_8h_source.html#l00013">UToastWidget.h:14</a></div></div>
@@ -196,7 +206,7 @@ $(document).ready(function(){initNavTree('UToastWidget_8h_source.html',''); init
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_55b064ed9f704d76d3805f2fda876350.html">UI</a></li><li class="navelem"><a class="el" href="dir_e82f2835ab4116a5eee79a37f645c6c8.html">Public</a></li><li class="navelem"><a class="el" href="UToastWidget_8h.html">UToastWidget.h</a></li>
-    <li class="footer">생성시간 : 화 12월 16 2025 08:05:19, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 수 12월 17 2025 01:22:10, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

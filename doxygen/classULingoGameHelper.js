@@ -2,6 +2,7 @@ var classULingoGameHelper =
 [
     [ "ConvertGradeScore", "classULingoGameHelper.html#a26d95e4a046e94cab9bbe416ace5dd79", null ],
     [ "ConvertGradeString", "classULingoGameHelper.html#a86b2f311de84ecbb0f1716e3389e4ecd", null ],
+    [ "ConvertScenarioTexture", "classULingoGameHelper.html#a48f0d5f3480d80fd4ca3e517b2824572", null ],
     [ "GetAccuracyPercentage", "classULingoGameHelper.html#a4200772b08a4999e92f6b2c160b42070", null ],
     [ "GetFormatTimer", "classULingoGameHelper.html#a6da883ca444eb45866e59e95e63836bb", null ],
     [ "GetLingoGameMode", "classULingoGameHelper.html#a83ca264d23bdfc2b67f93c8f3345852a", null ],

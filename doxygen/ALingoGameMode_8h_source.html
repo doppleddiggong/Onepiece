@@ -126,41 +126,43 @@ $(document).ready(function(){initNavTree('ALingoGameMode_8h_source.html',''); in
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="keyword">public</span>:</div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <a class="code hl_class" href="classALingoGameMode.html">ALingoGameMode</a>();</div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    UFUNCTION(BlueprintCallable, Category = <span class="stringliteral">&quot;Quest&quot;</span>)</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <span class="keywordtype">void</span> BeginReadQuest(<span class="keyword">const</span> <a class="code hl_struct" href="structFResponseReadScenario.html">FResponseReadScenario</a>&amp; InResponseData);</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    UFUNCTION(BlueprintCallable, Category = <span class="stringliteral">&quot;Quest&quot;</span>)</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="keywordtype">void</span> BeginListenQuest(<span class="keyword">const</span> <a class="code hl_struct" href="structFResponseListenScenario.html">FResponseListenScenario</a>&amp; InResponseData);</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    </div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    UFUNCTION()</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="keywordtype">void</span> HandleLuggageSelection(<span class="keyword">class</span> APlayerState* Player, <span class="keyword">class</span> <a class="code hl_class" href="classAluggage.html">Aluggage</a>* luggage);</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    UFUNCTION()</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="keywordtype">bool</span> ValidateAnswer(<span class="keyword">class</span> <a class="code hl_class" href="classALingoPlayerState.html">ALingoPlayerState</a>* Player, <span class="keyword">class</span> <a class="code hl_class" href="classAluggage.html">Aluggage</a>* Luggage);</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    UFUNCTION()</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="keywordtype">void</span> HandleCorrectAnswer(<span class="keyword">class</span> <a class="code hl_class" href="classALingoPlayerState.html">ALingoPlayerState</a>* Player);</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    UFUNCTION()</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="keywordtype">void</span> HandleWrongAnswer(<span class="keyword">class</span> <a class="code hl_class" href="classALingoPlayerState.html">ALingoPlayerState</a>* Player, <span class="keywordtype">bool</span> bSymbolCorrect, <span class="keywordtype">bool</span> bColorCorrect);</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    UFUNCTION()</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="keywordtype">void</span> UpdateQuestRole();</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>};</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> PostLogin(APlayerController* NewPlayer);</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    UFUNCTION(BlueprintCallable, Category = <span class="stringliteral">&quot;Quest&quot;</span>)</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <span class="keywordtype">void</span> BeginReadQuest(<span class="keyword">const</span> <a class="code hl_struct" href="structFResponseReadScenario.html">FResponseReadScenario</a>&amp; InResponseData);</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    UFUNCTION(BlueprintCallable, Category = <span class="stringliteral">&quot;Quest&quot;</span>)</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="keywordtype">void</span> BeginListenQuest(<span class="keyword">const</span> <a class="code hl_struct" href="structFResponseListenScenario.html">FResponseListenScenario</a>&amp; InResponseData);</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    UFUNCTION()</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <span class="keywordtype">void</span> HandleLuggageSelection(<span class="keyword">class</span> APlayerState* Player, <span class="keyword">class</span> <a class="code hl_class" href="classAluggage.html">Aluggage</a>* luggage);</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    UFUNCTION()</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="keywordtype">bool</span> ValidateAnswer(<span class="keyword">class</span> <a class="code hl_class" href="classALingoPlayerState.html">ALingoPlayerState</a>* Player, <span class="keyword">class</span> <a class="code hl_class" href="classAluggage.html">Aluggage</a>* Luggage);</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    UFUNCTION()</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="keywordtype">void</span> HandleCorrectAnswer(<span class="keyword">class</span> <a class="code hl_class" href="classALingoPlayerState.html">ALingoPlayerState</a>* Player);</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    UFUNCTION()</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="keywordtype">void</span> HandleWrongAnswer(<span class="keyword">class</span> <a class="code hl_class" href="classALingoPlayerState.html">ALingoPlayerState</a>* Player, <span class="keywordtype">bool</span> bSymbolCorrect, <span class="keywordtype">bool</span> bColorCorrect);</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    UFUNCTION()</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="keywordtype">void</span> UpdateQuestRole();</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>};</div>
 </div>
 <div class="ttc" id="aclassALingoGameMode_html"><div class="ttname"><a href="classALingoGameMode.html">ALingoGameMode</a></div><div class="ttdef"><b>Definition</b> <a href="ALingoGameMode_8h_source.html#l00010">ALingoGameMode.h:11</a></div></div>
 <div class="ttc" id="aclassALingoPlayerState_html"><div class="ttname"><a href="classALingoPlayerState.html">ALingoPlayerState</a></div><div class="ttdef"><b>Definition</b> <a href="ALingoPlayerState_8h_source.html#l00012">ALingoPlayerState.h:13</a></div></div>
 <div class="ttc" id="aclassAluggage_html"><div class="ttname"><a href="classAluggage.html">Aluggage</a></div><div class="ttdoc">상호작용 가능한 수하물 액터</div><div class="ttdef"><b>Definition</b> <a href="luggage_8h_source.html#l00014">luggage.h:15</a></div></div>
-<div class="ttc" id="astructFResponseListenScenario_html"><div class="ttname"><a href="structFResponseListenScenario.html">FResponseListenScenario</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l01001">NetworkData.h:1002</a></div></div>
-<div class="ttc" id="astructFResponseReadScenario_html"><div class="ttname"><a href="structFResponseReadScenario.html">FResponseReadScenario</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00905">NetworkData.h:906</a></div></div>
+<div class="ttc" id="astructFResponseListenScenario_html"><div class="ttname"><a href="structFResponseListenScenario.html">FResponseListenScenario</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l01000">NetworkData.h:1001</a></div></div>
+<div class="ttc" id="astructFResponseReadScenario_html"><div class="ttname"><a href="structFResponseReadScenario.html">FResponseReadScenario</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00904">NetworkData.h:905</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_7fb5e64dcba5cad56d11a2ce531d1e7a.html">Game</a></li><li class="navelem"><a class="el" href="dir_7d5071b022ae16b4c5bc069534dc4de0.html">Public</a></li><li class="navelem"><a class="el" href="ALingoGameMode_8h.html">ALingoGameMode.h</a></li>
-    <li class="footer">생성시간 : 화 12월 16 2025 08:05:19, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 수 12월 17 2025 01:22:10, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

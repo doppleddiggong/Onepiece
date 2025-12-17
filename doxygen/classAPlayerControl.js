@@ -48,5 +48,6 @@ var classAPlayerControl =
     [ "UPROPERTY", "classAPlayerControl.html#ac1c5f159104d66b0ac570e75210432f1", null ],
     [ "UPROPERTY", "classAPlayerControl.html#a964b50a308a69c36ec542af13c4055e7", null ],
     [ "IMC_Default", "classAPlayerControl.html#a76486f75de5e0e9cb22d8c2a7e506d4a", null ],
+    [ "TutorialComponent", "classAPlayerControl.html#a09c91fbb1d155201fb9f3c6c0c5db251", null ],
     [ "UserInfo", "classAPlayerControl.html#a585aa05322aa9c59ce315bd1e01e8038", null ]
 ];

@@ -206,6 +206,7 @@ var hierarchy =
       [ "UAnswerItem", "classUAnswerItem.html", null ],
       [ "UAutoDespawnItem", "classUAutoDespawnItem.html", null ],
       [ "UBasePopup", "classUBasePopup.html", [
+        [ "UPopup_Evaluation", "classUPopup__Evaluation.html", null ],
         [ "UPopup_InputMsg", "classUPopup__InputMsg.html", null ],
         [ "UPopup_Interview", "classUPopup__Interview.html", null ],
         [ "UPopup_InterviewHello", "classUPopup__InterviewHello.html", null ],
@@ -228,6 +229,8 @@ var hierarchy =
       [ "UDespawnItem", "classUDespawnItem.html", null ],
       [ "UDialogWidget", "classUDialogWidget.html", null ],
       [ "UDrawingBoardWidget", "classUDrawingBoardWidget.html", null ],
+      [ "UEvaluationScenario", "classUEvaluationScenario.html", null ],
+      [ "UEvaluationTotal", "classUEvaluationTotal.html", null ],
       [ "UFadeWidget", "classUFadeWidget.html", null ],
       [ "UHoverButton", "classUHoverButton.html", null ],
       [ "UImageButton", "classUImageButton.html", null ],

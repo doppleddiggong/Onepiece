@@ -1,0 +1,23 @@
+var classUPopup__Evaluation =
+[
+    [ "InitPopup", "classUPopup__Evaluation.html#aca758278290cef2bbc83e2aa276223e7", null ],
+    [ "NativeConstruct", "classUPopup__Evaluation.html#a110cd73c35158a5e49a7b4631b6c81bd", null ],
+    [ "NativeTick", "classUPopup__Evaluation.html#a750c1a854f68ca16faa069645531abd6", null ],
+    [ "OnClickClose", "classUPopup__Evaluation.html#ac43dbcc2d1d1b3ffa39c30c0a9318a5c", null ],
+    [ "OpenAnimation", "classUPopup__Evaluation.html#a2c3d2b47f8255c0172cf9f218790fcc8", null ],
+    [ "UpdateAnimation", "classUPopup__Evaluation.html#a830a08b15d00e418f351f096fc5a8790", null ],
+    [ "bIsOpenAnim", "classUPopup__Evaluation.html#a807985dccb3305b1004c611401b7b551", null ],
+    [ "Btn_Confirm", "classUPopup__Evaluation.html#a92038d97b485f53e9e2f13ee64e78b16", null ],
+    [ "OpenDuration", "classUPopup__Evaluation.html#a5a4c2b75560a3e2d07ed3aa52837278e", null ],
+    [ "OpenEaseExponent", "classUPopup__Evaluation.html#afe75f5ef94f97fbcc8ea1ad9e801524c", null ],
+    [ "OpenElapsedTime", "classUPopup__Evaluation.html#a6124aff28b2b2a0b810bb693ebcd81ad", null ],
+    [ "OpenPivot", "classUPopup__Evaluation.html#aa3d6a21b30e9b40280f1219b567232b5", null ],
+    [ "OpenStartScale", "classUPopup__Evaluation.html#a9a4bc6d6e03adc7396c7960c41dae0b2", null ],
+    [ "OpenTargetScale", "classUPopup__Evaluation.html#add357075245f0843320c0b74af0f2697", null ],
+    [ "Panel_Listening", "classUPopup__Evaluation.html#a29a3ece600a3a4bb66d215b1902244fd", null ],
+    [ "Panel_Reading", "classUPopup__Evaluation.html#abc0a4a4765be705cbbc8ed34f107f5c5", null ],
+    [ "Panel_Speaking", "classUPopup__Evaluation.html#a8863d461cb7edf317f9461924054f5cb", null ],
+    [ "Panel_TotalResult", "classUPopup__Evaluation.html#a8027fbc95b2023ee1de051b72f1ad299", null ],
+    [ "Panel_Writing", "classUPopup__Evaluation.html#a5ead40a6200497aace0e524122b50275", null ],
+    [ "PopupType", "classUPopup__Evaluation.html#a7e537a0dd751df11990ed46947f09d42", null ]
+];

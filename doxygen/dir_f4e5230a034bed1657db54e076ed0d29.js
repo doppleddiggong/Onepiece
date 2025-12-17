@@ -4,6 +4,7 @@ var dir_f4e5230a034bed1657db54e076ed0d29 =
     [ "EDamageType.h", "EDamageType_8h.html", "EDamageType_8h" ],
     [ "EGameSoundType.h", "EGameSoundType_8h.html", "EGameSoundType_8h" ],
     [ "EMontageType.h", "EMontageType_8h.html", "EMontageType_8h" ],
+    [ "ETutorialStep.h", "ETutorialStep_8h.html", "ETutorialStep_8h" ],
     [ "EVFXType.h", "EVFXType_8h.html", "EVFXType_8h" ],
     [ "FCharacterAssetData.h", "FCharacterAssetData_8h.html", "FCharacterAssetData_8h" ],
     [ "FCharacterInfoData.h", "FCharacterInfoData_8h.html", "FCharacterInfoData_8h" ],

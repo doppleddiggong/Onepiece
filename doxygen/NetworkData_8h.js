@@ -91,7 +91,6 @@ var NetworkData_8h =
     [ "scenario", "NetworkData_8h.html#ae683aef1f6770a15bcad8cce46f40456", null ],
     [ "speak_result", "NetworkData_8h.html#a43085442f94afcd668b994b6dd4f71d9", null ],
     [ "speakings_judes", "NetworkData_8h.html#aa53d82cb9d5a048604a8c32223229080", null ],
-    [ "speakings_result", "NetworkData_8h.html#a3bab55186c7ad88a9183615b45b1acc4", null ],
     [ "users_me", "NetworkData_8h.html#aee732573aa0bc733fedaab927a273dcd", null ],
     [ "users_register", "NetworkData_8h.html#a2d4b0c891a96c4ac2d1829ae24d01dc3", null ],
     [ "users_token", "NetworkData_8h.html#af908b99f78364328aca763f362236454", null ],
