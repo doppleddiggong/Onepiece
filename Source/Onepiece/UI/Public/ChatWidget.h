@@ -15,7 +15,8 @@ class ONEPIECE_API UChatWidget : public UUserWidget
 	GENERATED_BODY()
 
 public:
-	virtual void NativeOnInitialized() override;
+	UChatWidget(const FObjectInitializer& ObjectInitializer);
+	virtual void NativeConstruct() override;
 	
 protected:
 	UPROPERTY(meta=(BindWidget))
@@ -33,9 +34,12 @@ protected:
 	UPROPERTY(meta=(BindWidget))
 	TObjectPtr<class UChatInputBox> ChatInputBox;
 	
+protected:
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	TSubclassOf<class UChatBoxWidget> ChatBoxWidgetClass;
+	
 private:
 	UFUNCTION()
-	void OnSendMessage();
-	
+	void OnSendMessage(FText inMessage);
 	
 };
