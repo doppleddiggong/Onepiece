@@ -33,6 +33,8 @@ enum class EPopupType : uint8
 	SpeakQuestJudes		UMETA(DisplayName = "SpeakQuestJudes"),
 	SpeakResult			UMETA(DisplayName = "SpeakResult"),
 
+	Evaluation			UMETA(DisplayName = "Evaluation"),
+
 	AskTutorial			UMETA(DisplayName = "AskTutorial"),
 };
 

@@ -5,26 +5,42 @@
 
 #include "Components/Button.h"
 #include "Components/MultiLineEditableTextBox.h"
-#include "DataWrappers/ChaosVDQueryDataWrappers.h"
 
-void UChatInputBox::NativeOnInitialized()
+void UChatInputBox::NativeConstruct()
 {
-	Super::NativeOnInitialized();
+	Super::NativeConstruct();
 	
 	Button_Send->OnClicked.AddDynamic(this, &UChatInputBox::HandleSendClicked);
 }
 
-FText UChatInputBox::GetMessage()
+FReply UChatInputBox::NativeOnPreviewKeyDown(const FGeometry& InGeometry, const FKeyEvent& InKeyEvent)
 {
-	return MultiLineEditableTextBox_Input->GetText();
+	// Enter 키 감지 & Shift+Enter는 줄바꿈 허용
+	if (InKeyEvent.GetKey() == EKeys::Enter && !InKeyEvent.IsShiftDown())
+	{
+		HandleSendClicked();
+		return FReply::Handled();
+	}
+	
+	return Super::NativeOnPreviewKeyDown(InGeometry, InKeyEvent);
+}
+
+FText UChatInputBox::FlushMessage()
+{
+	// message에 저장 & 텍스트 칸 비우기
+	FText message = MultiLineEditableTextBox_Input->GetText();
+	MultiLineEditableTextBox_Input->SetText(FText::GetEmpty());
+	
+	return message;
 }
 
 void UChatInputBox::HandleSendClicked()
 {
 	// 텍스트가 비어있지 않다면 Broadcast
-	if (!MultiLineEditableTextBox_Input->GetText().IsEmpty())
+	FText message = FlushMessage();
+	if (!message.IsEmpty())
 	{
-		OnSendClicked.Broadcast();
+		OnSendClicked.Broadcast(message);
 	}
 }
 

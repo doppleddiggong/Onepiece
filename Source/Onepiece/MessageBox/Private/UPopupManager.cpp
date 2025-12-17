@@ -20,6 +20,7 @@
 #include "UPopup_SpeakQuestJudes.h"
 #include "UPopup_SpeakResult.h"
 #include "UPopup_Word.h"
+#include "UPopup_Evaluation.h"
 
 #include "Onepiece/Onepiece.h"
 
@@ -36,6 +37,7 @@
 #define SPEAKQUEST_POPUP_PATH TEXT("/Game/CustomContents/UI/Widgets/WBP_PopupSpeakQuest.WBP_PopupSpeakQuest_C")
 #define SPEAKQUESTJUDES_POPUP_PATH TEXT("/Game/CustomContents/UI/Widgets/WBP_PopupSpeakQuestJudes.WBP_PopupSpeakQuestJudes_C")
 #define SPEAKRESULT_POPUP_PATH TEXT("/Game/CustomContents/UI/Widgets/WBP_SpeakResult.WBP_SpeakResult_C")
+#define EVALUATION_POPUP_PATH TEXT("/Game/CustomContents/UI/Widgets/WBP_PopupEvaluation.WBP_PopupEvaluation_C")
 #define ASKTUTORIAL_POPUP_PATH TEXT("/Game/CustomContents/UI/Widgets/WBP_PopupAskTutorial.WBP_PopupAskTutorial_C")
 
 UPopupManager::UPopupManager()
@@ -55,6 +57,7 @@ UPopupManager::UPopupManager()
 	PopupClassMap.Add(EPopupType::SpeakQuest, FComponentHelper::LoadClass<UPopup_SpeakQuest>(SPEAKQUEST_POPUP_PATH));
 	PopupClassMap.Add(EPopupType::SpeakQuestJudes, FComponentHelper::LoadClass<UPopup_SpeakQuestJudes>(SPEAKQUESTJUDES_POPUP_PATH));
 	PopupClassMap.Add(EPopupType::SpeakResult, FComponentHelper::LoadClass<UPopup_SpeakResult>(SPEAKRESULT_POPUP_PATH));
+	PopupClassMap.Add(EPopupType::Evaluation, FComponentHelper::LoadClass<UPopup_Evaluation>(EVALUATION_POPUP_PATH));
 	PopupClassMap.Add(EPopupType::AskTutorial, FComponentHelper::LoadClass<UPopup_AskTutorial>(ASKTUTORIAL_POPUP_PATH));
 }
 
@@ -308,11 +311,22 @@ UUserWidget* UPopupManager::EnsurePopupWidget(EPopupType Type)
 		return nullptr;
 
 	// 위젯 생성
-	UUserWidget* NewWidget = CreateWidget<UUserWidget>(PC, *PopupClassPtr);
-	if (!NewWidget)
+	// UUserWidget* NewWidget = CreateWidget<UUserWidget>(PC, *PopupClassPtr);
+
+	// 위젯 생성 - GetTransientPackage()를 outer로 사용하여 GameInstance outer 문제 방지
+	// CreateWidget은 내부적으로 GameInstance를 outer로 사용하므로 직접 NewObject 사용
+	UUserWidget* NewWidget = NewObject<UUserWidget>(GetTransientPackage(), *PopupClassPtr, NAME_None, RF_Transient);
+	if (NewWidget)
 	{
-		PRINTLOG(TEXT("[UPopupManager] Failed to create widget for type: %s"),
-			*ENUM_TO_NAME(EPopupType, Type));
+		// 위젯 초기화
+		NewWidget->Initialize();
+
+		// PlayerController를 Owning Player로 설정
+		NewWidget->SetOwningPlayer(PC);
+	}
+	else	
+	{
+		PRINTLOG(TEXT("[UPopupManager] Failed to create widget for type: %s"), *ENUM_TO_NAME(EPopupType, Type));
 		return nullptr;
 	}
 

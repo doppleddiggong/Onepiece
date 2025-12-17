@@ -10,7 +10,7 @@
  * 
  */
 
-DECLARE_MULTICAST_DELEGATE(FOnSendClicked);
+DECLARE_MULTICAST_DELEGATE_OneParam(FOnSendClicked, FText);
 
 UCLASS()
 class ONEPIECE_API UChatInputBox : public UUserWidget
@@ -18,8 +18,9 @@ class ONEPIECE_API UChatInputBox : public UUserWidget
 	GENERATED_BODY()
 	
 public:
-	virtual void NativeOnInitialized() override;
-	FText GetMessage();
+	virtual void NativeConstruct() override;
+	virtual FReply NativeOnPreviewKeyDown(const FGeometry& InGeometry, const FKeyEvent& InKeyEvent) override;
+	FText FlushMessage();
 	
 	// 외부 바인드용 Send 버튼 클릭 델리게이트
 	FOnSendClicked OnSendClicked;
@@ -34,5 +35,4 @@ protected:
 private:
 	UFUNCTION()
 	void HandleSendClicked();
-	
 };
