@@ -3,6 +3,7 @@
 
 #include "TutorialComponent.h"
 
+#include "APlayerControl.h"
 #include "UBroadcastManager.h"
 #include "GameFramework/Character.h"
 
@@ -83,9 +84,22 @@ void UTutorialComponent::SetStep(ETutorialStep NewStep)
 	if (UBroadcastManager* BM = UBroadcastManager::Get(GetWorld()))
 	{
 		BM->SendTutorialStepChanged(OwnerController, NewStep);
-
+		
 		FText TutorialMessage = GetTutorialMessage(NewStep);
-		BM->SendShowTutorialMessage(TutorialMessage);
+		if (NewStep == ETutorialStep::Completed)
+		{
+			BM->SendTutorMessage(TutorialMessage);
+
+			// 튜토리얼 완료 시 PlayerControl에 알림
+			if (APlayerControl* PC = Cast<APlayerControl>(OwnerController))
+			{
+				PC->OnTutorialCompleted();
+			}
+		}
+		else
+		{
+			BM->SendShowTutorialMessage(TutorialMessage);
+		}
 	}
 
 	UE_LOG(LogTemp, Log, TEXT("Tutorial Step Changed: %d"), (int32)NewStep);
@@ -198,18 +212,7 @@ bool UTutorialComponent::CheckJumpInput() const
 {
 	if (!OwnerController) return false;
 
-	// APawn* Pawn = OwnerController->GetPawn();
-	// if (!Pawn) return false;
-
-	// 점프중인지
-	// if (ACharacter* Character = Cast<ACharacter>(Pawn))
-	// {
-	// 	return Character->bPressedJump;
-	// }
-	// return false;
-
 	return OwnerController->IsInputKeyDown(EKeys::SpaceBar);
-	
 }
 
 bool UTutorialComponent::CheckPickUpInput() const
@@ -238,21 +241,21 @@ FText UTutorialComponent::GetTutorialMessage(ETutorialStep Step) const
 	switch (Step)
 	{
 	case ETutorialStep::MouseLook:
-		return FText::FromString(TEXT("마우스를 움직여 주변을 둘러보세요"));
+		return FText::FromString(TEXT("Move mouse to look around"));
 	case ETutorialStep::Movement:
-		return FText::FromString(TEXT("WASD 키로 이동해보세요"));
+		return FText::FromString(TEXT("Press W/A/S/D to walk"));
 	case ETutorialStep::Sprint:
-		return FText::FromString(TEXT("Shift 키를 눌러 달려보세요"));
+		return FText::FromString(TEXT("Press Shift to sprint"));
 	case ETutorialStep::Jump:
-		return FText::FromString(TEXT("스페이스바를 눌러 점프해보세요"));
+		return FText::FromString(TEXT("Press Spacebar to jump"));
 	case ETutorialStep::PickUp:
-		return FText::FromString(TEXT("왼쪽 마우스 버튼으로 물건을 집어보세요"));
+		return FText::FromString(TEXT("Left Click to pick up"));
 	case ETutorialStep::GrabGun:
-		return FText::FromString(TEXT("오른쪽 마우스 버튼으로 멀리 있는 물건을 당겨보세요"));
+		return FText::FromString(TEXT("Right Click to grab things far away"));
 	case ETutorialStep::Interaction:
-		return FText::FromString(TEXT("E 키를 눌러 상호작용해보세요"));
+		return FText::FromString(TEXT("Press E to interact"));
 	case ETutorialStep::Completed:
-		return FText::FromString(TEXT("튜토리얼 완료!"));
+		return FText::FromString(TEXT("Tutorial finished!"));
 	default:
 		return FText::GetEmpty();
 	}

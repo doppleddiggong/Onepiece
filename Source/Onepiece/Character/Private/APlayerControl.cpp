@@ -83,13 +83,7 @@ void APlayerControl::BeginPlay()
 	if (IsLocalController())
 	{
 		UserInfo = ULingoGameInstanceSubsystem::Get(GetWorld())->GetUserInfo();
-
 		Server_SetUserInfo(UserInfo);
-
-		// 튜토리얼 시작
-		// 할지 말지 선택 UI 필요
-		// 맵 제한 필요
-		TutorialComponent->StartTutorial();
 	}
 }
 
@@ -136,6 +130,50 @@ IControllable* APlayerControl::GetControllable() const
 		return C;
 
 	return nullptr;
+}
+
+bool APlayerControl::ShouldSkipTutorial() const
+{
+	const int32 UserId = ULingoGameHelper::GetUserId(GetWorld());
+	const FString ConfigSection = TEXT("/Script/Onepiece.TutorialSystem");
+	const FString ConfigKey = FString::Printf(TEXT("TutorialCompleted_%d"), UserId);
+
+	FString bCompleted;
+	if (GConfig->GetString(*ConfigSection, *ConfigKey, bCompleted, GGameUserSettingsIni))
+	{
+		if (bCompleted == TEXT("true"))
+		{
+			PRINTLOG(TEXT("[Tutorial] User %d already completed tutorial"), UserId);
+			return true;  // 스킵
+		}
+	}
+
+	return false; // 튜토리얼 진행
+}
+
+void APlayerControl::StartTutorialManually()
+{
+	if (TutorialComponent)
+	{
+		TutorialComponent->StartTutorial();
+		PRINTLOG(TEXT("[Tutorial] Starting tutorial manually"));
+	}
+}
+
+void APlayerControl::OnTutorialCompleted()
+{
+	// 세이브 시스템에 여부 저장
+	const int32 UserId = ULingoGameHelper::GetUserId(GetWorld());
+	const FString ConfigSection = TEXT("/Script/Onepiece.TutorialSystem");
+	const FString ConfigKey = FString::Printf(TEXT("TutorialCompleted_%d"), UserId);
+
+	GConfig->SetString(
+				*ConfigSection,
+				*ConfigKey,
+				TEXT("true"),
+				GGameUserSettingsIni
+			);
+	GConfig->Flush(false, GGameUserSettingsIni);
 }
 
 void APlayerControl::OnMove(const FInputActionValue& Value)

@@ -3,6 +3,8 @@
 // via any medium is strictly prohibited. Proprietary and confidential.
 
 #include "UPopup_InterviewHello.h"
+
+#include "APlayerControl.h"
 #include "UPopupManager.h"
 #include "UKLingoNetworkSystem.h"
 #include "ULingoGameHelper.h"
@@ -283,6 +285,18 @@ void UPopup_InterviewHello::OnClickClose()
 	if (UPopupManager* PopupMgr = UPopupManager::Get(GetWorld()))
 	{
 		PopupMgr->HideCurrentPopup();
+
+		if (APlayerController* PC = GetWorld()->GetFirstPlayerController())
+		{
+			if (APlayerControl* PlayerControl = Cast<APlayerControl>(PC))
+			{
+				if (!PlayerControl->ShouldSkipTutorial())
+				{
+					// 튜토리얼 여부 화면 띄우기
+					PopupMgr->ShowPopup(EPopupType::AskTutorial);
+				}
+			}
+		}
 	}
 }
 
@@ -347,6 +361,19 @@ void UPopup_InterviewHello::OnResponseInterviewAnswer(FResponseInterviewAnswer& 
 		if (UPopupManager* PopupMgr = UPopupManager::Get(GetWorld()))
 		{
 			PopupMgr->HideCurrentPopup();
+
+			// 튜토리얼 완료 여부 확인 후 조건부로 AskTutorial 표시
+			if (APlayerController* PC = GetWorld()->GetFirstPlayerController())
+			{
+				if (APlayerControl* PlayerControl = Cast<APlayerControl>(PC))
+				{
+					if (!PlayerControl->ShouldSkipTutorial())
+					{
+						// 튜토리얼을 아직 안 했으면 AskTutorial 팝업 표시
+						PopupMgr->ShowPopup(EPopupType::AskTutorial);
+					}
+				}
+			}
 		}
 	}
 	else
