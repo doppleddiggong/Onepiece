@@ -3,6 +3,7 @@
 
 #include "OrderKiosk.h"
 
+#include "ATeleportOut.h"
 #include "ConveyorBelt.h"
 #include "Food.h"
 #include "ListenAnswer.h"
@@ -133,7 +134,7 @@ void AOrderKiosk::BeginSubmitOverlap(UPrimitiveComponent* OverlappedComponent, A
 
 void AOrderKiosk::Server_MoveFoodContainer_Implementation(AActor* ActorToMove)
 {
-	ActorToMove->SetActorLocation(TARGET_LOCATION);
+	ActorToMove->SetActorLocation(TeleportOut->GetActorLocation());
 }
 
 void AOrderKiosk::Server_DestroyListenAnswer_Implementation(AActor* ActorToDestroy)

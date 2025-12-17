@@ -13,6 +13,27 @@ namespace GameLayer
 	static const int32 ToastManager = 600;
 }
 
+namespace DoorGroup
+{
+	// door_0 : 입구
+	static const int32 Intro = 0;
+
+	// door_1 : Step1(Read) 중간 게이트
+	static const int32 Step1_Mid = 1;
+	// door_2 : Step1(Read) 엔드 게이트
+	static const int32 Step1_End = 2;
+
+	// door_100 : Step2(Listen) 엔드 게이트
+	static const int32 Step2_End = 100;
+
+	// door_200 : Step3(Speak) 엔드 게이트
+	static const int32 Step3_End = 200;
+
+	// door_300 : Step4(Write) 엔드 게이트
+	static const int32 Step4_End = 300;
+}
+
+
 /// @brief 게임 전역에서 공유하는 GameplayTag 상수를 정의합니다.
 namespace GameTags
 {

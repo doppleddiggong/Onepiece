@@ -1047,7 +1047,7 @@ void UKLingoNetworkSystem::RequestListenScenario(FResponseListenScenarioDelegate
 				if (IsResSuccess(ResponseCode))
 				{
 					ResponseData.SetFromHttpResponse(HttpResponse);
-					ResponseData.PrintData();
+					// ResponseData.PrintData();
 					InDelegate.ExecuteIfBound(ResponseData, true);
 				}
 				else

@@ -4,6 +4,7 @@
 #include "Popup_QuestionnaireResult.h"
 
 #include "ALingoPlayerState.h"
+#include "ANetworkBroadcastActor.h"
 #include "FResultStatData.h"
 #include "GameLogging.h"
 #include "Components/Spacer.h"
@@ -13,6 +14,7 @@
 #include "UImageButton.h"
 #include "ULingoGameHelper.h"
 #include "UResultStatWidget.h"
+#include "Onepiece/Onepiece.h"
 
 UPopup_QuestionnaireResult::UPopup_QuestionnaireResult(const FObjectInitializer& ObjectInitializer)
 {
@@ -149,4 +151,6 @@ void UPopup_QuestionnaireResult::OnClickClose()
 	{
 		PopupMgr->HideCurrentPopup();
 	}
+
+	ANetworkBroadcastActor::Get(GetWorld())->SendDoorMessage(DoorGroup::Step4_End, true, GetOwningPlayer());
 }

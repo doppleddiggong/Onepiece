@@ -4,6 +4,7 @@
 #include "UPopup_SpeakResult.h"
 
 #include "ALingoPlayerState.h"
+#include "ANetworkBroadcastActor.h"
 #include "FResultStatData.h"
 #include "UAnswerItem.h"
 #include "UImageButton.h"
@@ -13,6 +14,7 @@
 #include "UResultStatWidget.h"
 #include "Components/Spacer.h"
 #include "Components/VerticalBox.h"
+#include "Onepiece/Onepiece.h"
 
 void UPopup_SpeakResult::InitPopup(const FResponseSpeakResult& ResponseData)
 {
@@ -34,6 +36,8 @@ void UPopup_SpeakResult::OnClickClose()
 	{
 		PopupMgr->HideCurrentPopup();
 	}
+
+	ANetworkBroadcastActor::Get(GetWorld())->SendDoorMessage(DoorGroup::Step3_End, true, GetOwningPlayer());
 }
 
 void UPopup_SpeakResult::InitScore() const
