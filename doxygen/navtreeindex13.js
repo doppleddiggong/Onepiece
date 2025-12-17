@@ -1,6 +1,5 @@
 var NAVTREEINDEX13 =
 {
-"classUToastWidget.html#a82bed26424593d14fea5e099bc445c41":[2,0,208,1],
 "classUToastWidget.html#a9f25d6a29ea81f47704df6f9c291f9c5":[2,0,208,2],
 "classUToastWidget.html#aa6d37a402ad92f6080e0da15a4ff2956":[2,0,208,20],
 "classUToastWidget.html#aa7221e8f5696460c1c8ad9e745488fa5":[2,0,208,10],
@@ -149,15 +148,15 @@ var NAVTREEINDEX13 =
 "dir_f5c20ae920c5f83d16e1c5fb9563aee7.html":[3,0,0,1,0,0],
 "dir_f8d1c9eab1fc62a504c69287c791da47.html":[3,0,0,1,1,0],
 "files.html":[3,0],
-"functions.html":[2,3,0,0],
 "functions.html":[2,3,0],
+"functions.html":[2,3,0,0],
 "functions_b.html":[2,3,0,1],
 "functions_c.html":[2,3,0,2],
 "functions_d.html":[2,3,0,3],
 "functions_e.html":[2,3,0,4],
 "functions_f.html":[2,3,0,5],
-"functions_func.html":[2,3,1],
 "functions_func.html":[2,3,1,0],
+"functions_func.html":[2,3,1],
 "functions_func_b.html":[2,3,1,1],
 "functions_func_c.html":[2,3,1,2],
 "functions_func_d.html":[2,3,1,3],
@@ -249,5 +248,6 @@ var NAVTREEINDEX13 =
 "index.html#autotoc_md3":[0,0,0],
 "index.html#autotoc_md31":[0,7],
 "index.html#autotoc_md5":[0,1],
-"index.html#autotoc_md6":[0,1,0]
+"index.html#autotoc_md6":[0,1,0],
+"index.html#autotoc_md7":[0,1,1]
 };

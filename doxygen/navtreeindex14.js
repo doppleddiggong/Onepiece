@@ -1,6 +1,5 @@
 var NAVTREEINDEX14 =
 {
-"index.html#autotoc_md7":[0,1,1],
 "index.html#autotoc_md8":[0,1,2],
 "luggage_8cpp.html":[3,0,0,2,2,0,14],
 "luggage_8cpp.html#aed405cb2e29c39ee626f1a50b210cea5":[3,0,0,2,2,0,14,0],
@@ -249,5 +248,6 @@ var NAVTREEINDEX14 =
 "structFQuestWriteInfo.html#a2b7527e1d250fff52d835ea33a1780a2":[2,0,77,0],
 "structFQuestWriteInfo.html#a45fd556f9d344df96040efb2f3586846":[2,0,77,1],
 "structFQuestWriteInfo.html#a462ecd2b380588f9a3fc67bc99fe2482":[2,0,77,4],
-"structFQuestWriteInfo.html#ab4864485ab77ab99e8da6bae6e6ef8ec":[2,0,77,2]
+"structFQuestWriteInfo.html#ab4864485ab77ab99e8da6bae6e6ef8ec":[2,0,77,2],
+"structFQuestWriteInfo.html#afd32054fb21fa75c11234dd0b1d3db2d":[2,0,77,5]
 };

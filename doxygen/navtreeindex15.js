@@ -1,6 +1,5 @@
 var NAVTREEINDEX15 =
 {
-"structFQuestWriteInfo.html#afd32054fb21fa75c11234dd0b1d3db2d":[2,0,77,5],
 "structFReadData.html":[2,0,78],
 "structFReadData.html#a073cad0b3148cf5ad77003b52824b371":[2,0,78,0],
 "structFReadData.html#a0cfdeafbbdaa3e836fe7d9b95f513ff1":[2,0,78,4],
@@ -249,5 +248,6 @@ var NAVTREEINDEX15 =
 "structFWordInfo.html#a3fb4edc6b75f3ce9baf0117cd4e023e7":[2,0,119,3],
 "structFWordInfo.html#ab5e270b6450daeff8fec1a5df4eb9609":[2,0,119,4],
 "structFWordInfo.html#ae1645c9c30e15b8168dbc0494ce7a74c":[2,0,119,1],
-"structFWordInfo.html#afa3eecf62fc7b28d50eae5edc8fc81ad":[2,0,119,5]
+"structFWordInfo.html#afa3eecf62fc7b28d50eae5edc8fc81ad":[2,0,119,5],
+"structFWordStudyData.html":[2,0,120]
 };

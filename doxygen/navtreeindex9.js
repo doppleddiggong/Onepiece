@@ -1,6 +1,5 @@
 var NAVTREEINDEX9 =
 {
-"classUGameDataManager.html#aa83c00fd215eabdac542661dd7893b14":[2,0,152,21],
 "classUGameDataManager.html#aa934e5d7830bd86c2a8cad2df2e70596":[2,0,152,66],
 "classUGameDataManager.html#aadbfbcb1f8c50ba7799087a97c0965f0":[2,0,152,51],
 "classUGameDataManager.html#aae5deeab78ceb3f84e28804410bb266a":[2,0,152,11],
@@ -249,5 +248,6 @@ var NAVTREEINDEX9 =
 "classULobbyWidget.html#a93bfc42c7f6e65f1817ec727e60824c3":[2,0,165,10],
 "classULobbyWidget.html#a9aa8c021f1b4fcd8c44b91a3ae5ef9d3":[2,0,165,11],
 "classULobbyWidget.html#a9c2e3e55a8bd35acdcd938c459a81c0d":[2,0,165,5],
-"classULobbyWidget.html#a9f7d94fabb5cf7886e9a8763cb4beb6f":[2,0,165,19]
+"classULobbyWidget.html#a9f7d94fabb5cf7886e9a8763cb4beb6f":[2,0,165,19],
+"classULobbyWidget.html#aa3515ca1f6392165f1810ae7525717c6":[2,0,165,20]
 };

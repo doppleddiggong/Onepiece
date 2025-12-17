@@ -1,6 +1,5 @@
 var NAVTREEINDEX16 =
 {
-"structFWordStudyData.html":[2,0,120],
 "structFWordStudyData.html#a39dc1243125790997d83ed78143bf583":[2,0,120,2],
 "structFWordStudyData.html#a93134fa304e6a6b72edc65173efef5b2":[2,0,120,0],
 "structFWordStudyData.html#ad9ede1ed8aadbb936340548cf8e5fa2b":[2,0,120,1],
