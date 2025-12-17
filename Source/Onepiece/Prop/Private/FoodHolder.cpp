@@ -150,10 +150,7 @@ void AFoodHolder::OnFoodBoxOverlapBegin(
 			FTimerHandle TimerHandle;
 			GetWorldTimerManager().SetTimer(TimerHandle, [this]
 			{
-				// ADoor* Door = FindDoorToOpen();
-				// if (Door) Door->OpenDoor();
-
-				ANetworkBroadcastActor::Get(GetWorld())->SendDoorMessage(100, true, this);
+				ANetworkBroadcastActor::Get(GetWorld())->SendDoorMessage(DoorIndex, true, this);
 				
 				// 모든 클라이언트에 정답 인덱스와 함께 결과 팝업 표시
 				Multicast_ShowResultPopup(TryIdx);
@@ -260,23 +257,6 @@ void AFoodHolder::UpdateActivateState(bool State)
 	}
 }
 
-class ADoor* AFoodHolder::FindDoorToOpen()
-{
-	TArray<AActor*> CityNames;
-	UGameplayStatics::GetAllActorsOfClass(GetWorld(), ADoor::StaticClass(), CityNames);
-
-	for (auto CityName : CityNames)
-	{
-		if (ADoor* CN = Cast<ADoor>(CityName))
-		{
-			if (CN->DoorIndex == Index)
-			{
-				return CN;
-			}
-		}
-	}
-	return nullptr;
-}
 
 /**
  * @brief [Multicast RPC] 모든 클라이언트에 정답 결과 팝업 표시

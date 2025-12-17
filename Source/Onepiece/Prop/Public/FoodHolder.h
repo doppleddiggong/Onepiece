@@ -85,6 +85,9 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	int32 Index = 0;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Visual")
+	float DoorIndex = 100.0f;
 	
 protected:
 	// 시도 횟수
@@ -105,10 +108,8 @@ protected:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Visual")
 	float RotationSpeed = 90.0f;
-
+	
 	// Answer Settings
 	/** 정답 Food 인덱스 (-1이면 모든 Food 허용) */
 	int32 AnswerFoodIndex = -1;
-
-	class ADoor* FindDoorToOpen();
 };
