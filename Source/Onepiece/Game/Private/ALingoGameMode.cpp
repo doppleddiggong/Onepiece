@@ -4,10 +4,12 @@
 #include "ALingoGameMode.h"
 #include "ALingoGameState.h"
 #include "ALingoPlayerState.h"
+#include "APlayerControl.h"
 #include "luggage.h"
 #include "UBroadcastManager.h"
 #include "GameLogging.h"
 #include "TimerManager.h"
+#include "TutorialComponent.h"
 #include "ULingoGameHelper.h"
 
 #include "Engine/World.h"
@@ -21,6 +23,18 @@ ALingoGameMode::ALingoGameMode()
 
 	// Tick 비활성화 (Timer 기반으로 동작)
 	PrimaryActorTick.bCanEverTick = false;
+}
+
+void ALingoGameMode::PostLogin(APlayerController* NewPlayer)
+{
+	Super::PostLogin(NewPlayer);
+
+	// 튜토리얼 시작
+	// if (APlayerControl* PC = Cast<APlayerControl>(NewPlayer))
+	// {
+	// 	if (PC->IsLocalController() && PC->TutorialComponent)
+	// 		PC->TutorialComponent->StartTutorial();
+	// }
 }
 
 void ALingoGameMode::UpdateQuestRole()
