@@ -19,7 +19,7 @@ public:
 	virtual void NativeConstruct() override;
 	
 	UFUNCTION()
-	void SendMessage(FText inMessage);
+	void SendMessage(FResponseUserMe sendUser, FText inMessage);
 	
 protected:
 	UPROPERTY(meta=(BindWidget))
@@ -45,6 +45,8 @@ protected:
 	
 protected:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
-	TSubclassOf<class UChatBoxWidget> ChatBoxWidgetClass;
+	TSubclassOf<class UChatBoxWidget> LeftChatBoxWidgetClass;
 	
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	TSubclassOf<class UChatBoxWidget> RightChatBoxWidgetClass;
 };

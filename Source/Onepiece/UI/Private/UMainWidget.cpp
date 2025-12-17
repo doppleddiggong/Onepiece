@@ -97,10 +97,10 @@ void UMainWidget::UpdateRoomWidget(int32 InRoomLevel, int64 InRoomId)
 	RoomWidget->UpdateRoomInfo(InRoomLevel, InRoomId);
 }
 
-void UMainWidget::SendChatMessage(const FText& inMessage)
+void UMainWidget::SendChatMessage(FResponseUserMe sendUser,const FText& inMessage)
 {
 	// PRINTLOG(TEXT("[SendChat] UMainWidget::SendChatMessage - %s"), *inMessage.ToString());
-	ChatWidget->SendMessage(inMessage);
+	ChatWidget->SendMessage(sendUser, inMessage);
 }
 
 void UMainWidget::UpdateTimerDisplay() const

@@ -58,7 +58,7 @@ public:
 	class UQuestInfoWidget* GetQuestInfoWidget() const { return QuestInfoWidget; }
 	
 	UFUNCTION(Category = "Chat")
-	void SendChatMessage(const FText& inMessage);
+	void SendChatMessage(FResponseUserMe sendUser, const FText& inMessage);
 	
 private:
 	/// @brief 타이머 텍스트를 업데이트합니다.
