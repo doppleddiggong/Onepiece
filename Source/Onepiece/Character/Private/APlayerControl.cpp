@@ -507,3 +507,11 @@ void APlayerControl::TEST_AddItemToBoxList()
 		BM->SendAddItemToBoxList(TestItems);
 	}
 }
+
+void APlayerControl::ServerRPC_SendChat_Implementation(const FText& inMessage)
+{
+	if (auto* GS = GetWorld()->GetGameState<ALingoGameState>())
+	{
+		GS->MulticastRPC_SendChat(inMessage);
+	}
+}

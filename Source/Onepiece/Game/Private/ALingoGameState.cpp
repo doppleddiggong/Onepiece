@@ -297,3 +297,9 @@ void ALingoGameState::OnRep_RoomLevel()
 {
 	OnRoomLevelUpdated.Broadcast(RoomLevel);
 }
+
+void ALingoGameState::MulticastRPC_SendChat_Implementation(const FText& inMessage)
+{
+	// ChatWidget의 SendMessage() 함수 호출
+	// SendMessage(inMessage);
+}

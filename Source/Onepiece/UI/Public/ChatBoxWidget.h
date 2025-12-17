@@ -20,4 +20,6 @@ public:
 	
 	UPROPERTY(meta=(BindWidget))
 	TObjectPtr<class UTextBlock> TextBlock_MessageContent;
+	
+	void SetContent(FText inMessage);
 };

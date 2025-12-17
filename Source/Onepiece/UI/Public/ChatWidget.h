@@ -40,6 +40,6 @@ protected:
 	
 private:
 	UFUNCTION()
-	void OnSendMessage(FText inMessage);
+	void SendMessage(FText inMessage);
 	
 };

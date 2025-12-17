@@ -121,6 +121,10 @@ private:
 	void TEST_DropperDropProcess();
 	void TEST_AddItemToBoxList();
 	
+public:
+	UFUNCTION(Server, Reliable)
+	void ServerRPC_SendChat(const FText& inMessage);
+	
 private:
     class IControllable* GetControllable() const;
 	

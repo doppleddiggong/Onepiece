@@ -2,3 +2,10 @@
 
 
 #include "ChatBoxWidget.h"
+
+#include "Components/TextBlock.h"
+
+void UChatBoxWidget::SetContent(FText inMessage)
+{
+	TextBlock_MessageContent->SetText(inMessage);
+}
