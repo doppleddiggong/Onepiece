@@ -87,6 +87,8 @@ void APlayerControl::BeginPlay()
 		Server_SetUserInfo(UserInfo);
 
 		// 튜토리얼 시작
+		
+		
 		// 할지 말지 선택 UI 필요
 		// 맵 제한 필요
 		TutorialComponent->StartTutorial();

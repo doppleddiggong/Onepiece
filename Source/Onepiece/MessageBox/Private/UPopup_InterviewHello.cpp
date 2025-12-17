@@ -283,6 +283,9 @@ void UPopup_InterviewHello::OnClickClose()
 	if (UPopupManager* PopupMgr = UPopupManager::Get(GetWorld()))
 	{
 		PopupMgr->HideCurrentPopup();
+
+		// 튜토리얼 여부 화면 띄우기
+		PopupMgr->ShowPopup(EPopupType::AskTutorial);
 	}
 }
 
@@ -347,6 +350,9 @@ void UPopup_InterviewHello::OnResponseInterviewAnswer(FResponseInterviewAnswer& 
 		if (UPopupManager* PopupMgr = UPopupManager::Get(GetWorld()))
 		{
 			PopupMgr->HideCurrentPopup();
+
+			// 튜토리얼 여부 화면 띄우기
+			PopupMgr->ShowPopup(EPopupType::AskTutorial);
 		}
 	}
 	else

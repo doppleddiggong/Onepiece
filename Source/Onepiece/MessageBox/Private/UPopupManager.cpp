@@ -8,6 +8,7 @@
 
 #include "FComponentHelper.h"
 #include "GameLogging.h"
+#include "Popup_AskTutorial.h"
 #include "Popup_Questionnaire.h"
 #include "Popup_QuestionnaireResult.h"
 #include "Popup_Result.h"
@@ -35,6 +36,7 @@
 #define SPEAKQUEST_POPUP_PATH TEXT("/Game/CustomContents/UI/Widgets/WBP_PopupSpeakQuest.WBP_PopupSpeakQuest_C")
 #define SPEAKQUESTJUDES_POPUP_PATH TEXT("/Game/CustomContents/UI/Widgets/WBP_PopupSpeakQuestJudes.WBP_PopupSpeakQuestJudes_C")
 #define SPEAKRESULT_POPUP_PATH TEXT("/Game/CustomContents/UI/Widgets/WBP_SpeakResult.WBP_SpeakResult_C")
+#define ASKTUTORIAL_POPUP_PATH TEXT("/Game/CustomContents/UI/Widgets/WBP_PopupAskTutorial.WBP_PopupAskTutorial_C")
 
 UPopupManager::UPopupManager()
 {
@@ -53,6 +55,7 @@ UPopupManager::UPopupManager()
 	PopupClassMap.Add(EPopupType::SpeakQuest, FComponentHelper::LoadClass<UPopup_SpeakQuest>(SPEAKQUEST_POPUP_PATH));
 	PopupClassMap.Add(EPopupType::SpeakQuestJudes, FComponentHelper::LoadClass<UPopup_SpeakQuestJudes>(SPEAKQUESTJUDES_POPUP_PATH));
 	PopupClassMap.Add(EPopupType::SpeakResult, FComponentHelper::LoadClass<UPopup_SpeakResult>(SPEAKRESULT_POPUP_PATH));
+	PopupClassMap.Add(EPopupType::AskTutorial, FComponentHelper::LoadClass<UPopup_AskTutorial>(ASKTUTORIAL_POPUP_PATH));
 }
 
 // ========================================
