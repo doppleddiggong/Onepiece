@@ -8,6 +8,7 @@ var annotated_dup =
     [ "ADestroyTrigger", "classADestroyTrigger.html", "classADestroyTrigger" ],
     [ "ADoor", "classADoor.html", "classADoor" ],
     [ "ADropper", "classADropper.html", "classADropper" ],
+    [ "AEvaluationTrigger", "classAEvaluationTrigger.html", "classAEvaluationTrigger" ],
     [ "AFood", "classAFood.html", "classAFood" ],
     [ "AFoodCourtManager", "classAFoodCourtManager.html", "classAFoodCourtManager" ],
     [ "AFoodHolder", "classAFoodHolder.html", "classAFoodHolder" ],

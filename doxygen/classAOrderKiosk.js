@@ -12,5 +12,6 @@ var classAOrderKiosk =
     [ "FoodCollision", "classAOrderKiosk.html#a1647771f3fb56e4c2649b7b4f1706ccf", null ],
     [ "InAnswerType", "classAOrderKiosk.html#a39b51d1a9d1cfdaa41db7e793535420e", null ],
     [ "IsOnceStopped", "classAOrderKiosk.html#a52093b104e74e81ee763569fe8f69579", null ],
-    [ "SubmitCollision", "classAOrderKiosk.html#a01cfd2345d53581831de3968f1c71d1b", null ]
+    [ "SubmitCollision", "classAOrderKiosk.html#a01cfd2345d53581831de3968f1c71d1b", null ],
+    [ "TeleportOut", "classAOrderKiosk.html#af31e2eb7a5091d9ca602b3395b4c187f", null ]
 ];

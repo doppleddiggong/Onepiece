@@ -4,6 +4,7 @@ var classUPopup__Evaluation =
     [ "NativeConstruct", "classUPopup__Evaluation.html#a110cd73c35158a5e49a7b4631b6c81bd", null ],
     [ "NativeTick", "classUPopup__Evaluation.html#a750c1a854f68ca16faa069645531abd6", null ],
     [ "OnClickClose", "classUPopup__Evaluation.html#ac43dbcc2d1d1b3ffa39c30c0a9318a5c", null ],
+    [ "OnMsgBoxOk_MoveToLobby", "classUPopup__Evaluation.html#a5b6cc85d4517ce741f3f5c352a23725e", null ],
     [ "OpenAnimation", "classUPopup__Evaluation.html#a2c3d2b47f8255c0172cf9f218790fcc8", null ],
     [ "UpdateAnimation", "classUPopup__Evaluation.html#a830a08b15d00e418f351f096fc5a8790", null ],
     [ "bIsOpenAnim", "classUPopup__Evaluation.html#a807985dccb3305b1004c611401b7b551", null ],

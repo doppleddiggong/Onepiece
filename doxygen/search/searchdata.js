@@ -2,7 +2,7 @@ var indexSectionsWithContent =
 {
   0: "abcdefghijklmnopqrstuvwxyz~☕개게관구기네데라링메모문방빌소스시안언엔영요유일주캐탐프필학핵🏗📄📅📖📚📞📦🚀🛠",
   1: "afipu",
-  2: "gnr",
+  2: "dgnr",
   3: "acdefgilmnopqrstuw",
   4: "abcdefghijlmnoprstuvwy~",
   5: "abcdefghijklmnopqrstuvw",

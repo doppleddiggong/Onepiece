@@ -18,7 +18,6 @@ var classAFoodHolder =
     [ "bIsActivated", "classAFoodHolder.html#aed2ca3859d2e7e048117990933022b2e", null ],
     [ "BoxCollision", "classAFoodHolder.html#a354e1f756167bc3c338cc632b7c9273e", null ],
     [ "CurTarget", "classAFoodHolder.html#a1fa5d938a8ad639127ea47320bacb223", null ],
-    [ "DoorIndex", "classAFoodHolder.html#a9b518c9569ae34993ac0614f03018307", null ],
     [ "HoldPos", "classAFoodHolder.html#a5a958174b57fe025bd17f50078007a46", null ],
     [ "Index", "classAFoodHolder.html#ae85b0f46ed727cfbd88263e041d4a5f2", null ],
     [ "MeshComponent", "classAFoodHolder.html#aa44e6d94b93c710a3c7debc4f281adbc", null ],

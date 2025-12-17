@@ -1,5 +1,13 @@
 var namespaces_dup =
 [
+    [ "DoorGroup", "namespaceDoorGroup.html", [
+      [ "Intro", "namespaceDoorGroup.html#ab763a363d3e8fc13d51ae5637e65a8fa", null ],
+      [ "Step1_End", "namespaceDoorGroup.html#aa5f8813b0ddba77c8062a9dca6f794c2", null ],
+      [ "Step1_Mid", "namespaceDoorGroup.html#aff55658bddb83a770edb95988a287b2c", null ],
+      [ "Step2_End", "namespaceDoorGroup.html#acea2dc917c33512d0d28a0599b384a23", null ],
+      [ "Step3_End", "namespaceDoorGroup.html#a382bc5ba9c89bbe22f7a3a78c7c5a04c", null ],
+      [ "Step4_End", "namespaceDoorGroup.html#acd2dab97b4b719d2f28f731f96e89d36", null ]
+    ] ],
     [ "GameColor", "namespaceGameColor.html", [
       [ "Blue", "namespaceGameColor.html#aba495ad0b2bb0e48100c5ad01c51fd01", null ],
       [ "Green", "namespaceGameColor.html#a347e21752e1aecee7916040063b5915a", null ],

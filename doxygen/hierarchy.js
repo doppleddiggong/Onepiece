@@ -9,6 +9,7 @@ var hierarchy =
       [ "ADestroyTrigger", "classADestroyTrigger.html", null ],
       [ "ADoor", "classADoor.html", null ],
       [ "ADropper", "classADropper.html", null ],
+      [ "AEvaluationTrigger", "classAEvaluationTrigger.html", null ],
       [ "AFood", "classAFood.html", null ],
       [ "AFoodCourtManager", "classAFoodCourtManager.html", null ],
       [ "AFoodHolder", "classAFoodHolder.html", null ],
