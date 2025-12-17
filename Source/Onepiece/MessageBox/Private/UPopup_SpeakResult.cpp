@@ -7,6 +7,7 @@
 #include "ANetworkBroadcastActor.h"
 #include "FResultStatData.h"
 #include "UAnswerItem.h"
+#include "UBroadcastManager.h"
 #include "UImageButton.h"
 #include "ULingoGameHelper.h"
 #include "UPopupManager.h"
@@ -37,7 +38,7 @@ void UPopup_SpeakResult::OnClickClose()
 		PopupMgr->HideCurrentPopup();
 	}
 
-	ANetworkBroadcastActor::Get(GetWorld())->SendDoorMessage(DoorGroup::Step3_End, true, GetOwningPlayer());
+	UBroadcastManager::Get(GetWorld())->SendDoorMessage(DoorGroup::Step3_End, true);
 }
 
 void UPopup_SpeakResult::InitScore() const

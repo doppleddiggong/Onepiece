@@ -3,16 +3,17 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "NetworkData.h"
 #include "GameFramework/Actor.h"
-#include "ATeleportTrigger.generated.h"
+#include "AEvaluationTrigger.generated.h"
 
 UCLASS()
-class ONEPIECE_API ATeleportTrigger : public AActor
+class ONEPIECE_API AEvaluationTrigger : public AActor
 {
 	GENERATED_BODY()
 
 public:
-	ATeleportTrigger();
+	AEvaluationTrigger();
 	
 protected:
 	virtual void BeginPlay() override;
@@ -24,20 +25,12 @@ public:
 	void OnActivate();
 
 	virtual void OnActivate_Implementation();
+	void OnResponseEvaluationResult(FResponseEvaluationResult& ResponseData, bool bWasSuccessful);
 
-	
 protected:
 	/// @brief 트리거 영역을 정의하는 박스 컴포넌트
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Trigger")
 	TObjectPtr<class UBoxComponent> TriggerBox;
-
-	/// @brief 텔레포트 목표 위치를 나타내는 TeleportOut Actor
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Teleport")
-	TObjectPtr<class ATeleportOut> TeleportOut;
-
-	/// @brief 원샷 모드 활성화 여부 (true = 한 번만 작동, false = 반복 작동 가능)
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Trigger")
-	bool bIsOneShot;
 
 	/// @brief 트리거 활성화 상태 (false = 활성화, true = 비활성화)
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Trigger")

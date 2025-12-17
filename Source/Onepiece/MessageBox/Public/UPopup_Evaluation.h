@@ -35,6 +35,9 @@ private:
 	UFUNCTION(BlueprintCallable, Category = "Evaluation")
 	void OnClickClose();
 
+	/// @brief MsgBox OK 버튼 클릭 시 Lobby로 이동
+	void OnMsgBoxOk_MoveToLobby();
+
 protected:
 	/// @brief 닫기 버튼
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)

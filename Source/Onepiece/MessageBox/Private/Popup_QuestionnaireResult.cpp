@@ -9,6 +9,7 @@
 #include "GameLogging.h"
 #include "Components/Spacer.h"
 #include "Popup_QuestionnaireResultItem.h"
+#include "UBroadcastManager.h"
 #include "UPopupManager.h"
 #include "Components/ScrollBox.h"
 #include "UImageButton.h"
@@ -152,5 +153,5 @@ void UPopup_QuestionnaireResult::OnClickClose()
 		PopupMgr->HideCurrentPopup();
 	}
 
-	ANetworkBroadcastActor::Get(GetWorld())->SendDoorMessage(DoorGroup::Step4_End, true, GetOwningPlayer());
+	UBroadcastManager::Get(GetWorld())->SendDoorMessage(DoorGroup::Step4_End, true);
 }

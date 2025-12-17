@@ -1,12 +1,12 @@
 // Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
 
 #include "UPopup_Evaluation.h"
-#include "Components/WidgetSwitcher.h"
 #include "UTabButtonGroup.h"
 #include "UEvaluationScenario.h"
 #include "UEvaluationTotal.h"
 #include "UImageButton.h"
 #include "UPopupManager.h"
+#include "Kismet/GameplayStatics.h"
 
 void UPopup_Evaluation::NativeConstruct()
 {
@@ -54,5 +54,22 @@ void UPopup_Evaluation::OnClickClose()
 	if (UPopupManager* PopupMgr = UPopupManager::Get(GetWorld()))
 	{
 		PopupMgr->HidePopup(EPopupType::Evaluation);
+
+		// MsgBox OK 버튼 클릭 시 Lobby로 이동하는 콜백 바인딩
+		FOnMsgBoxOkDelegate OnOkDelegate;
+		OnOkDelegate.BindUObject(this, &UPopup_Evaluation::OnMsgBoxOk_MoveToLobby);
+
+		UPopupManager::Get(GetWorld())->ShowMsgBox(TEXT("Notice"), TEXT("Thank you For Playing"),
+			EMsgBoxType::OK,
+			OnOkDelegate);
+	}
+}
+
+void UPopup_Evaluation::OnMsgBoxOk_MoveToLobby()
+{
+	// Lobby 맵으로 이동
+	if (UWorld* World = GetWorld())
+	{
+		UGameplayStatics::OpenLevel(World, FName("/Game/CustomContents/Maps/LobbyMap"));
 	}
 }

@@ -150,7 +150,7 @@ void AFoodHolder::OnFoodBoxOverlapBegin(
 			FTimerHandle TimerHandle;
 			GetWorldTimerManager().SetTimer(TimerHandle, [this]
 			{
-				ANetworkBroadcastActor::Get(GetWorld())->SendDoorMessage(DoorIndex, true, this);
+				ANetworkBroadcastActor::Get(GetWorld())->SendDoorMessage(DoorGroup::Step2_End, true, this);
 				
 				// 모든 클라이언트에 정답 인덱스와 함께 결과 팝업 표시
 				Multicast_ShowResultPopup(TryIdx);

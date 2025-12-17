@@ -86,9 +86,6 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	int32 Index = 0;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Visual")
-	float DoorIndex = 100.0f;
-	
 protected:
 	// 시도 횟수
 	UPROPERTY(Replicated)
