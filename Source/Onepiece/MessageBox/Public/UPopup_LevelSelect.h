@@ -31,6 +31,14 @@ protected:
 	 */
 	void ShowLevels();
 
+	/**
+	 * @brief 레벨 선택 이벤트 핸들러
+	 * @param SelectedLevel 선택된 레벨
+	 * @param SelectedLevelName 선택된 레벨 이름
+	 */
+	void OnLevelSelected(int32 SelectedLevel, const FString& SelectedLevelName);
+	void OnClickClose();
+
 public:
 	/** 레벨 아이템들이 배치될 Horizontal Box */
 	UPROPERTY(meta = (BindWidget))
@@ -49,7 +57,7 @@ protected:
 	UPROPERTY(EditAnywhere, Category = "PopupLevelSelect")
 	TArray<FString> LevelNames = {TEXT("Begginer"), TEXT("Intermediate"), TEXT("Advanced")};
 
-	/** 생성된 LevelSelectItem 위젯들 */
-	UPROPERTY()
-	TArray<TObjectPtr<class ULevelSelectItem>> LevelSelectItems;
+	/** 팝업 닫기 버튼 (우측 상단) */
+	UPROPERTY(meta = (BindWidget))
+	TObjectPtr<class UTextureButton> Btn_Close;
 };

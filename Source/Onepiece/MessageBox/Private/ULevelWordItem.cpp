@@ -22,7 +22,7 @@ void ULevelWordItem::InitInfo( EWordType WordType, int32 WordCode )
 		Image_Target->SetBrushFromTexture(LoadedTexture, true);
 		Image_Target->SetColorAndOpacity( FLinearColor::White );
 
-		Txt_Title->SetText( FText::FromString( ReadData.Word));
+		Txt_Title->SetText( FText::FromString( ReadData.Eng));
 	}
 	else if( WordType == EWordType::Color )
 	{
@@ -33,7 +33,7 @@ void ULevelWordItem::InitInfo( EWordType WordType, int32 WordCode )
 		Image_Target->SetBrushFromTexture(ColorTexture, true);
 		Image_Target->SetColorAndOpacity( ColorData.GetLinearColor());
 		
-		Txt_Title->SetText( FText::FromString( ColorData.Desc));
+		Txt_Title->SetText( FText::FromString( ColorData.Eng));
 	}
 	else if( WordType == EWordType::Region )
 	{
@@ -49,7 +49,7 @@ void ULevelWordItem::InitInfo( EWordType WordType, int32 WordCode )
 		Image_Target->SetBrushFromTexture(LoadedTexture, true);
 		Image_Target->SetColorAndOpacity( FLinearColor::White );
 
-		Txt_Title->SetText( FText::FromString( ListenData.Word));
+		Txt_Title->SetText( FText::FromString( ListenData.Eng));
 	}
 	else if( WordType == EWordType::Food )
 	{
@@ -65,6 +65,16 @@ void ULevelWordItem::InitInfo( EWordType WordType, int32 WordCode )
 		Image_Target->SetBrushFromTexture(LoadedTexture, true);
 		Image_Target->SetColorAndOpacity( FLinearColor::White );
 
-		Txt_Title->SetText( FText::FromString( ListenData.Word ));
+		Txt_Title->SetText( FText::FromString( ListenData.Eng ));
+	}
+}
+
+void ULevelWordItem::SetItemColor(bool bIsCurrentLevel)
+{
+	FLinearColor TargetColor = bIsCurrentLevel ? FLinearColor::Black : FLinearColor(0.5f, 0.5f, 0.5f, 1.0f);
+
+	if (Txt_Title)
+	{
+		Txt_Title->SetColorAndOpacity(TargetColor);
 	}
 }

@@ -6,6 +6,8 @@
 #include "Blueprint/UserWidget.h"
 #include "ULevelSelectItem.generated.h"
 
+DECLARE_DELEGATE_TwoParams(FOnLevelSelectedDelegate, int32 /*Level*/, const FString& /*LevelName*/);
+
 /**
  * @brief 레벨 선택 아이템 위젯
  * @details 특정 레벨의 단어 그룹들(Animal, Color, Region, Food)을 표시하고 선택할 수 있는 위젯
@@ -14,7 +16,10 @@ UCLASS()
 class ONEPIECE_API ULevelSelectItem : public UUserWidget
 {
 	GENERATED_BODY()
-
+	
+protected:
+	virtual void NativeConstruct() override;
+	
 public:
 	/**
 	 * @brief 레벨 정보를 초기화하고 단어 그룹들을 생성
@@ -25,35 +30,20 @@ public:
 	void InitLevelItem(int32 InLevel, const FString& InLevelName);
 
 protected:
-	/**
-	 * @brief 레벨 타이틀을 업데이트
-	 */
-	void UpdateLevelTitle();
-
-	/**
-	 * @brief Animal 그룹 생성 (FReadData 사용)
-	 */
 	void CreateAnimalGroup();
-
-	/**
-	 * @brief Color 그룹 생성 (FColorData 사용)
-	 */
 	void CreateColorGroup();
-
-	/**
-	 * @brief Region 그룹 생성 (FListenData - Category=Region)
-	 */
 	void CreateRegionGroup();
-
-	/**
-	 * @brief Food 그룹 생성 (FListenData - Category=Food)
-	 */
 	void CreateFoodGroup();
 
 	/**
-	 * @brief 단어 그룹들을 Vertical Box에 추가
+	 * @brief 선택 버튼 클릭 이벤트
 	 */
-	void PopulateWordGroups();
+	UFUNCTION()
+	void OnSelectButtonClicked();
+
+public:
+	/** 레벨 선택 델리게이트 */
+	FOnLevelSelectedDelegate OnLevelSelected;
 
 public:
 	/** 레벨 타이틀 텍스트 (Begginer, Intermediate 등) */
@@ -80,8 +70,4 @@ protected:
 	/** 생성할 WordGroup 위젯 클래스 */
 	UPROPERTY(EditAnywhere, Category = "LevelSelectItem")
 	TSubclassOf<class ULevelWordGroup> WordGroupClass;
-
-	/** 생성된 WordGroup 위젯들 */
-	UPROPERTY()
-	TArray<TObjectPtr<class ULevelWordGroup>> WordGroups;
 };

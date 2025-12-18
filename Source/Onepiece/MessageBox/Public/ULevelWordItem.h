@@ -17,7 +17,13 @@ class ONEPIECE_API ULevelWordItem : public UUserWidget
 	
 public:
 	void InitInfo( EWordType WordType, int32 WordCode );
-	
+
+	/**
+	 * @brief 아이템의 색상을 설정 (현재 레벨: 녹색, 하위 레벨: 회색)
+	 * @param bIsCurrentLevel true면 녹색, false면 회색
+	 */
+	void SetItemColor(bool bIsCurrentLevel);
+
 public:
 	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<class UImage> Image_Target;

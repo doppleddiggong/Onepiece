@@ -20,9 +20,9 @@ public:
 	/**
 	 * @brief 그룹 정보를 초기화하고 아이템들을 생성
 	 * @param InWordType 단어 타입 (Animal, Color, Region, Food)
-	 * @param InWordCodes 표시할 단어 코드 배열
+	 * @param InCurrentLevel 현재 선택된 레벨 (이 레벨 이하의 모든 단어를 표시)
 	 */
-	void InitGroup(EWordType InWordType, const TArray<int32>& InWordCodes);
+	void InitGroup(EWordType InWordType, int32 InCurrentLevel);
 
 	/**
 	 * @brief 그리드에 표시할 열의 개수를 설정
@@ -59,9 +59,9 @@ protected:
 	UPROPERTY()
 	EWordType WordType;
 
-	/** 표시할 단어 코드 배열 */
+	/** 현재 선택된 레벨 */
 	UPROPERTY()
-	TArray<int32> WordCodes;
+	int32 CurrentLevel = 1;
 
 	/** 그리드 열 개수 (기본값: 2) */
 	UPROPERTY(EditAnywhere, Category = "LevelWordGroup")
