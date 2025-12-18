@@ -285,3 +285,12 @@ void ALingoPlayerState::SetWriteQuestIng(bool bInProgress)
 
 	RefreshQuestState();
 }
+
+void ALingoPlayerState::OnRep_QuestState()
+{
+	// 클라이언트에서 퀘스트 상태가 변경되었을 때 PlayerController의 위젯 업데이트 함수 호출
+	if (APlayerControl* PC = Cast<APlayerControl>(GetOwner()))
+	{
+		PC->UpdateQuestInfoWidget();
+	}
+}

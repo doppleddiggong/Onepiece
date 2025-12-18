@@ -121,6 +121,12 @@ private:
 
 	void RequestSpeakResult();
 	void OnResponseSpeakResult(FResponseSpeakResult& ResponseData, bool bWasSuccessful);
+
+public:
+	/// @brief 퀘스트 상태에 따라 QuestInfoWidget 업데이트
+	void UpdateQuestInfoWidget();
+
+private:
 	
 	void TEST_DropperDropProcess();
 	void TEST_AddItemToBoxList();

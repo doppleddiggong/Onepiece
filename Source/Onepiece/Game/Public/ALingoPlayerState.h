@@ -188,36 +188,40 @@ public:
 	TArray<struct FResponseSpeakingJudes> SpeakJudesResults;
 
 
+	/// @brief 퀘스트 상태 변경 시 호출되는 복제 알림 함수
+	UFUNCTION()
+	void OnRep_QuestState();
+
 	/// @brief ReadQuest 완료 여부 플래그
-	UPROPERTY(Replicated, BlueprintReadOnly, Category = "ReadQuest")
+	UPROPERTY(ReplicatedUsing = OnRep_QuestState, BlueprintReadOnly, Category = "ReadQuest")
 	bool bReadQuestCompleted = false;
 
 	/// @brief ListenQuest 완료 여부 플래그
-	UPROPERTY(Replicated, BlueprintReadOnly, Category = "ListenQuest")
+	UPROPERTY(ReplicatedUsing = OnRep_QuestState, BlueprintReadOnly, Category = "ListenQuest")
 	bool bListenQuestCompleted = false;
 
 	/// @brief SpeakQuest 완료 여부 플래그
-	UPROPERTY(Replicated, BlueprintReadOnly, Category = "SpeakQuest")
+	UPROPERTY(ReplicatedUsing = OnRep_QuestState, BlueprintReadOnly, Category = "SpeakQuest")
 	bool bSpeakQuestCompleted = false;
-	
+
 	/// @brief WriteQuest 완료 여부 플래그
-	UPROPERTY(Replicated, BlueprintReadOnly, Category = "WriteQuest")
+	UPROPERTY(ReplicatedUsing = OnRep_QuestState, BlueprintReadOnly, Category = "WriteQuest")
 	bool bWriteQuestCompleted = false;
 
 
 	/// @brief ReadQuest 진행 여부 플래그
-	UPROPERTY(Replicated, BlueprintReadOnly, Category = "ReadQuest")
+	UPROPERTY(ReplicatedUsing = OnRep_QuestState, BlueprintReadOnly, Category = "ReadQuest")
 	bool bReadQuestIng = false;
 
 	/// @brief ListenQuest 진행 여부 플래그
-	UPROPERTY(Replicated, BlueprintReadOnly, Category = "ListenQuest")
+	UPROPERTY(ReplicatedUsing = OnRep_QuestState, BlueprintReadOnly, Category = "ListenQuest")
 	bool bListenQuestIng = false;
 
 	/// @brief SpeakQuest 진행 여부 플래그
-	UPROPERTY(Replicated, BlueprintReadOnly, Category = "ListenQuest")
+	UPROPERTY(ReplicatedUsing = OnRep_QuestState, BlueprintReadOnly, Category = "SpeakQuest")
 	bool bSpeakQuestIng = false;
-	
+
 	/// @brief WriteQuest 진행 여부 플래그
-	UPROPERTY(Replicated, BlueprintReadOnly, Category = "WriteQuest")
+	UPROPERTY(ReplicatedUsing = OnRep_QuestState, BlueprintReadOnly, Category = "WriteQuest")
 	bool bWriteQuestIng  = false;
 };

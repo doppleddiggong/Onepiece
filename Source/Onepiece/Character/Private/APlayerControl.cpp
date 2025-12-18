@@ -9,6 +9,7 @@
 #include "APlayerActor.h"
 #include "IControllable.h"
 #include "UMainWidget.h"
+#include "UQuestInfoWidget.h"
 #include "AWheatly.h"
 #include "UKLingoNetworkSystem.h"
 
@@ -607,5 +608,97 @@ void APlayerControl::OnDoorMessage(int32 InDoorIndex, bool bInOpen)
 	else if (InDoorIndex == DoorGroup::Step4_End)
 	{
 		PS->SetWriteQuestCompleted();
+	}
+}
+
+void APlayerControl::UpdateQuestInfoWidget()
+{
+	// PlayerActor 가져오기
+	APlayerActor* PlayerActor = Cast<APlayerActor>(GetPawn());
+	if (!PlayerActor)
+		return;
+
+	// MainWidget 가져오기
+	UMainWidget* MainWidget = PlayerActor->GetMainWidget();
+	if (!MainWidget)
+		return;
+
+	// QuestInfoWidget 가져오기
+	UQuestInfoWidget* QuestWidget = MainWidget->GetQuestInfoWidget();
+	if (!QuestWidget)
+		return;
+
+	// PlayerState 가져오기
+	ALingoPlayerState* PS = GetPlayerState<ALingoPlayerState>();
+	if (!PS)
+		return;
+
+	// 퀘스트 상태 확인 및 위젯 업데이트
+	FString Title;
+	FString Description;
+	bool bShouldShow = false;
+
+	// ReadQuest 상태 확인
+	if (PS->bReadQuestIng && !PS->bReadQuestCompleted)
+	{
+		Title = TEXT("Mission Goal");
+		Description = TEXT("Place the object on the switch to open the gate");
+		bShouldShow = true;
+	}
+	else if (PS->bReadQuestCompleted && !PS->bListenQuestIng)
+	{
+		Title = TEXT("Move FoodCurt");
+		Description = TEXT("Move Food Curt With Friend");
+		bShouldShow = true;
+	}
+	// ListenQuest 상태 확인
+	else if (PS->bListenQuestIng && !PS->bListenQuestCompleted)
+	{
+		Title = TEXT("Move Next Goal");
+		Description = TEXT("Place the object on the switch to open the gate");
+		bShouldShow = true;
+	}
+	else if (PS->bListenQuestCompleted && !PS->bSpeakQuestIng)
+	{
+		Title = TEXT("Move Jugdes");
+		Description = TEXT("Move Judes And Talk");
+		bShouldShow = true;
+	}
+	// SpeakQuest 상태 확인
+	else if (PS->bSpeakQuestIng && !PS->bSpeakQuestCompleted)
+	{
+		Title = TEXT("Press V Key And Talk");
+		Description = TEXT("Answer Judes Question");
+		bShouldShow = true;
+	}
+	else if (PS->bSpeakQuestCompleted && !PS->bWriteQuestIng)
+	{
+		// Speak 종료 후 바로 Write로 이어지는 경우 처리
+		// 잠시 숨김 처리 (또는 다른 메시지 표시)
+		bShouldShow = false;
+	}
+	// WriteQuest 상태 확인
+	else if (PS->bWriteQuestIng && !PS->bWriteQuestCompleted)
+	{
+		Title = TEXT("Move Paper");
+		Description = TEXT("Find Wirte Kiosk And Interaction");
+		bShouldShow = true;
+	}
+	else if (PS->bWriteQuestCompleted)
+	{
+		Title = TEXT("Move End Point");
+		Description = TEXT("Get Evalution");
+		bShouldShow = true;
+	}
+
+	// 위젯 업데이트
+	if (bShouldShow)
+	{
+		QuestWidget->UpdateQuestText(Title, Description);
+		QuestWidget->SetVisibility(ESlateVisibility::Visible);
+	}
+	else
+	{
+		QuestWidget->SetVisibility(ESlateVisibility::Collapsed);
 	}
 }
