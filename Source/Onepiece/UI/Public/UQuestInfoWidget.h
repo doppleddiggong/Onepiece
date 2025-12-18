@@ -38,7 +38,6 @@ public:
 
 	UPROPERTY(meta = (BindWidgetOptional), BlueprintReadOnly, Category = "Style")
 	TObjectPtr<class UImage> Image_Symbol;
-
 	
 	FDelegateHandle QuestScenarioDataDelegateHandle;
 	FDelegateHandle ReadResultDelegateHandle;
