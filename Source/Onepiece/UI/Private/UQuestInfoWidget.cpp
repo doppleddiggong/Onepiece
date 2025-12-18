@@ -4,7 +4,7 @@
 #include "UQuestInfoWidget.h"
 #include "Components/TextBlock.h"
 
-void UQuestInfoWidget::UpdateQuestText(FString InTitle, FString InMessage);
+void UQuestInfoWidget::UpdateQuestText(FString InTitle, FString InMessage)
 {
 	Txt_Title->SetText(FText::FromString(InTitle));
 	Txt_Message->SetText(FText::FromString(InMessage));

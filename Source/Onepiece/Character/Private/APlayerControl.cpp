@@ -647,8 +647,8 @@ void APlayerControl::UpdateQuestInfoWidget()
 	}
 	else if (PS->bReadQuestCompleted && !PS->bListenQuestIng)
 	{
-		Title = TEXT("Move FoodCurt");
-		Description = TEXT("Move Food Curt With Friend");
+		Title = TEXT("Move Food Court");
+		Description = TEXT("Move Food Court With Friend");
 		bShouldShow = true;
 	}
 	// ListenQuest 상태 확인

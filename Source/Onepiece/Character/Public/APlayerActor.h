@@ -11,6 +11,7 @@
 #include "GameFramework/Character.h"
 #include "IControllable.h"
 #include "NetworkData.h"
+#include "EQuestRole.h"
 #include "APlayerActor.generated.h"
 
 /**
@@ -185,11 +186,11 @@ private:
 	UFUNCTION()
 	void OnFadeOutCompleteForTeleport();
 
-	UFUNCTION()
-	void OnUpdateQuestInfo();
-	
-	UFUNCTION()
-	void OnUpdateQuestRole(EQuestRole QuestRole);
+	// UFUNCTION()
+	// void OnUpdateQuestInfo();
+	//
+	// UFUNCTION()
+	// void OnUpdateQuestRole(EQuestRole QuestRole);
 
 	UFUNCTION()
 	void OnRoomIdUpdated(int64 NewRoomId);
@@ -197,11 +198,11 @@ private:
 	UFUNCTION()
 	void OnRoomLevelUpdated(int32 NewRoomLevel);
 
-	UFUNCTION()
-	void OnListenResultUpdated( const FResponseListenResult& Result);
-
-	UFUNCTION()
-	void OnReadResultUpdated(const FResponseReadResult& Result);
+	// UFUNCTION()
+	// void OnListenResultUpdated( const FResponseListenResult& Result);
+	//
+	// UFUNCTION()
+	// void OnReadResultUpdated(const FResponseReadResult& Result);
 
 protected:
 	// 서버쪽 pitch 수동으로 동기화

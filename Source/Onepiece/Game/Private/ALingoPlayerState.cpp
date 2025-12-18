@@ -68,6 +68,15 @@ void ALingoPlayerState::RefreshQuestState()
 		GetQuestStatus(bWriteQuestCompleted, bWriteQuestIng));
 
 	PRINT_STRING( TEXT("%s"), *StatusMsg);
+
+	// Host(서버)의 위젯 업데이트 (OnRep는 클라이언트에서만 호출됨)
+	if (HasAuthority())
+	{
+		if (APlayerControl* PC = Cast<APlayerControl>(GetOwner()))
+		{
+			PC->UpdateQuestInfoWidget();
+		}
+	}
 }
 
 //--------------------------------------------------------------//

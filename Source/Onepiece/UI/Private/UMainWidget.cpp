@@ -123,16 +123,16 @@ void UMainWidget::OnUpdateMissionTimerState(bool bIsActive, float TimeLimit)
 	if (CachedGameState && bIsActive && TimeLimit > 0.0f)
 		CachedGameState->UpdateRemainMissionTime( TimeLimit );
 
-	if (!QuestInfoWidget)
-		return;
+	// if (!QuestInfoWidget)
+	// 	return;
 
-	QuestInfoWidget->SetVisibility(bIsActive ? ESlateVisibility::Visible : ESlateVisibility::Collapsed );
+	// QuestInfoWidget->SetVisibility(bIsActive ? ESlateVisibility::Visible : ESlateVisibility::Collapsed );
 	HookTargetIndicator->SetVisibility(ESlateVisibility::Visible);
 	
 	if (bIsActive)
 	{
 		WidgetSwitcher->SetActiveWidgetIndex(0);
-		QuestInfoWidget->InitQuestInfo();
+		// QuestInfoWidget->InitQuestInfo();
 	}
 
 	SetMissionTimerState(bIsActive);
