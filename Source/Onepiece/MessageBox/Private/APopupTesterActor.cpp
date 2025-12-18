@@ -18,6 +18,7 @@
 #include "UCommonFunctionLibrary.h"
 #include "UPopup_Evaluation.h"
 #include "UPopup_InterviewHello.h"
+#include "UPopup_LevelSelect.h"
 
 
 APopupTesterActor::APopupTesterActor()
@@ -169,7 +170,14 @@ void APopupTesterActor::TestEvaluationPopup()
 		Popup->InitPopup(TestData);
 }
 
-
+void APopupTesterActor::PopupLevelSelect()
+{
+	if (auto Popup = UPopupManager::ShowPopupAs<UPopup_LevelSelect>(GetWorld(), EPopupType::LevelSelect))
+	{
+		Popup->InitPopup();
+		PRINTLOG(TEXT("[PopupTester] Level Select popup opened"));
+	}
+}
 
 void APopupTesterActor::OnOK()
 {

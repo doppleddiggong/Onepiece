@@ -5,27 +5,29 @@
 #include "CoreMinimal.h"
 #include "EWordType.h"
 #include "Blueprint/UserWidget.h"
-#include "UWordItem.generated.h"
+#include "ULevelWordItem.generated.h"
 
+/**
+ * 
+ */
 UCLASS()
-class ONEPIECE_API UWordItem : public UUserWidget
+class ONEPIECE_API ULevelWordItem : public UUserWidget
 {
 	GENERATED_BODY()
-
-public:
-	void InitInfo( EWordType WordType, int32 WordCode );
-	void SetTextColor(FLinearColor InColor);
 	
 public:
-	UPROPERTY(meta = (BindWidget))
-	TObjectPtr<class UHorizontalBox> Target;
-
+	void InitInfo( EWordType WordType, int32 WordCode );
+	
+public:
 	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<class UImage> Image_Target;
 
 	UPROPERTY(meta = (BindWidget))
-	TObjectPtr<class UTextBlock> Txt_Kor;
+	TObjectPtr<class USizeBox> SizeBox;
 
 	UPROPERTY(meta = (BindWidget))
-	TObjectPtr<class UTextBlock> Txt_Eng;
+	TObjectPtr<class UScaleBox> ScaleBox;
+	
+	UPROPERTY(meta = (BindWidget))
+	TObjectPtr<class UTextBlock> Txt_Title;
 };

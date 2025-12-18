@@ -1,0 +1,55 @@
+// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
+
+#pragma once
+
+#include "CoreMinimal.h"
+#include "UBasePopup.h"
+#include "UPopup_LevelSelect.generated.h"
+
+/**
+ * @brief 레벨 선택 팝업 위젯
+ * @details 여러 난이도 레벨을 선택할 수 있는 팝업. 3개의 레벨 아이템을 표시하고 좌우 버튼으로 페이지 이동
+ */
+UCLASS()
+class ONEPIECE_API UPopup_LevelSelect : public UBasePopup
+{
+	GENERATED_BODY()
+
+protected:
+	virtual void NativeConstruct() override;
+
+public:
+	/**
+	 * @brief 팝업을 초기화하고 레벨 아이템들을 생성
+	 */
+	UFUNCTION(BlueprintCallable, Category = "PopupLevelSelect")
+	void InitPopup();
+
+protected:
+	/**
+	 * @brief 현재 페이지의 레벨들을 표시
+	 */
+	void ShowLevels();
+
+public:
+	/** 레벨 아이템들이 배치될 Horizontal Box */
+	UPROPERTY(meta = (BindWidget))
+	TObjectPtr<class UHorizontalBox> HorizontalBox;
+
+protected:
+	/** 생성할 LevelSelectItem 위젯 클래스 */
+	UPROPERTY(EditAnywhere, Category = "PopupLevelSelect")
+	TSubclassOf<class ULevelSelectItem> LevelSelectItemClass;
+
+	/** 전체 레벨 개수 */
+	UPROPERTY(EditAnywhere, Category = "PopupLevelSelect")
+	int32 TotalLevels = 3;
+
+	/** 레벨 이름 배열 */
+	UPROPERTY(EditAnywhere, Category = "PopupLevelSelect")
+	TArray<FString> LevelNames = {TEXT("Begginer"), TEXT("Intermediate"), TEXT("Advanced")};
+
+	/** 생성된 LevelSelectItem 위젯들 */
+	UPROPERTY()
+	TArray<TObjectPtr<class ULevelSelectItem>> LevelSelectItems;
+};
