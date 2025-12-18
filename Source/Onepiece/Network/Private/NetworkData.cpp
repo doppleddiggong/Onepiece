@@ -838,7 +838,7 @@ bool FRequestReadResult::ToJsonString(FString& OutJson) const
 
 void FResponseReadResult::SetFromHttpResponse(const TSharedPtr<class IHttpResponse, ESPMode::ThreadSafe>& Response)
 {
-	if (Response.IsValid())
+	if (!Response.IsValid())
 	{
 		return;
 	}
@@ -849,9 +849,26 @@ void FResponseReadResult::SetFromHttpResponse(const TSharedPtr<class IHttpRespon
 
 	if (FJsonSerializer::Deserialize(Reader, JsonObject) && JsonObject.IsValid())
 	{
-		grade = JsonObject->GetStringField(TEXT("grade"));
-		average_score = JsonObject->GetIntegerField(TEXT("average_score"));
-		top_percent = JsonObject->GetNumberField(TEXT("top_percent"));
+		JsonObject->TryGetStringField(TEXT("grade"), grade);
+		JsonObject->TryGetNumberField(TEXT("average_score"), average_score);
+		JsonObject->TryGetNumberField(TEXT("top_percent"), top_percent);
+
+		// scores 배열 파싱
+		if (JsonObject->HasTypedField<EJson::Array>(TEXT("scores")))
+		{
+			TArray<TSharedPtr<FJsonValue>> JsonArray = JsonObject->GetArrayField(TEXT("scores"));
+			for (const auto& ScoreValue : JsonArray)
+			{
+				if (ScoreValue->Type == EJson::Object)
+				{
+					TSharedPtr<FJsonObject> ScoreObj = ScoreValue->AsObject();
+					FReadScoreDetail Entry;
+					ScoreObj->TryGetNumberField(TEXT("score"), Entry.score);
+					ScoreObj->TryGetStringField(TEXT("desc"), Entry.desc);
+					scores.Add(Entry);
+				}
+			}
+		}
 	}
 }
 
@@ -1031,7 +1048,7 @@ bool FRequestListenResult::ToJsonString(FString& OutJson) const
 
 void FResponseListenResult::SetFromHttpResponse(const TSharedPtr<class IHttpResponse, ESPMode::ThreadSafe>& Response)
 {
-	if (Response.IsValid())
+	if (!Response.IsValid())
 	{
 		return;
 	}
@@ -1042,9 +1059,26 @@ void FResponseListenResult::SetFromHttpResponse(const TSharedPtr<class IHttpResp
 
 	if (FJsonSerializer::Deserialize(Reader, JsonObject) && JsonObject.IsValid())
 	{
-		grade = JsonObject->GetStringField(TEXT("grade"));
-		average_score = JsonObject->GetIntegerField(TEXT("average_score"));
-		top_percent = JsonObject->GetNumberField(TEXT("top_percent"));
+		JsonObject->TryGetStringField(TEXT("grade"), grade);
+		JsonObject->TryGetNumberField(TEXT("average_score"), average_score);
+		JsonObject->TryGetNumberField(TEXT("top_percent"), top_percent);
+
+		// scores 배열 파싱
+		if (JsonObject->HasTypedField<EJson::Array>(TEXT("scores")))
+		{
+			TArray<TSharedPtr<FJsonValue>> JsonArray = JsonObject->GetArrayField(TEXT("scores"));
+			for (const auto& ScoreValue : JsonArray)
+			{
+				if (ScoreValue->Type == EJson::Object)
+				{
+					TSharedPtr<FJsonObject> ScoreObj = ScoreValue->AsObject();
+					FListenScoreDetail Entry;
+					ScoreObj->TryGetNumberField(TEXT("score"), Entry.score);
+					ScoreObj->TryGetStringField(TEXT("desc"), Entry.desc);
+					scores.Add(Entry);
+				}
+			}
+		}
 	}
 }
 

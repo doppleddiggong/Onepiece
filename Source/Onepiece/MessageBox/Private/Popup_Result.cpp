@@ -197,7 +197,7 @@ void UPopup_Result::InitReadResult(const FResponseReadResult& ResponseData)
 	AverageScoreResultData.ColorType = EColorStyleType::Gray;
 	AverageScoreResultData.TitleText = FText::FromString(TEXT("Score"));
 	AverageScoreResultData.SymbolTextureType = EResourceTextureType::Score;
-	AverageScoreResultData.SymbolValue = FString::Printf(TEXT("%d"), ResponseData.average_score);
+	AverageScoreResultData.SymbolValue = FString::Printf(TEXT("%d"), static_cast<int>(ResponseData.average_score));
 	Result_AverageScore->InitData(AverageScoreResultData);
 }
 
@@ -238,7 +238,7 @@ void UPopup_Result::InitListenResult(const FResponseListenResult& ResponseData)
 	AverageScoreResultData.ColorType = EColorStyleType::Purple;
 	AverageScoreResultData.TitleText = FText::FromString(TEXT("SCORE"));
 	AverageScoreResultData.SymbolTextureType = EResourceTextureType::Score;
-	AverageScoreResultData.SymbolValue = FString::Printf(TEXT("%d"), ResponseData.average_score);
+	AverageScoreResultData.SymbolValue = FString::Printf(TEXT("%d"), static_cast<int>(ResponseData.average_score));
 	Result_AverageScore->InitData(AverageScoreResultData);
 }
 
@@ -307,7 +307,7 @@ void UPopup_Result::OnResponseReadResult(FResponseReadResult& ResponseData, bool
 {
 	if (bWasSuccessful)
 	{
-		PRINTLOG(TEXT("[Result] Grade: %s, average_score: %d, Top Percent: %.2f%%"),
+		PRINTLOG(TEXT("[Result] Grade: %s, average_score: %.2f%%, Top Percent: %.2f%%"),
 			*ResponseData.grade, ResponseData.average_score, ResponseData.top_percent);
 
 		// GameState에 결과 저장 (자동으로 복제됨)
