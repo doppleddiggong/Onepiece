@@ -119,10 +119,10 @@ $(document).ready(function(){initNavTree('structFMathHelper.html',''); initResiz
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 정적 Public 멤버 함수</h2></td></tr>
-<tr class="memitem:a4baca9166815847daff432d9575a9e60" id="r_a4baca9166815847daff432d9575a9e60"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structFMathHelper.html#a4baca9166815847daff432d9575a9e60">DrawParabolaDebug</a> (UWorld *World, const FVector &amp;Start, const FVector &amp;End, const float Height, const int32 NumSegments=20, const float LifeTime=2.0f, const FColor <a class="el" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2acb5feb1b7314637725a2e73bdc9f7295">Color</a>=FColor::Green)</td></tr>
+<tr class="memitem:a4baca9166815847daff432d9575a9e60" id="r_a4baca9166815847daff432d9575a9e60"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structFMathHelper.html#a4baca9166815847daff432d9575a9e60">DrawParabolaDebug</a> (UWorld *World, const FVector &amp;Start, const FVector &amp;End, const float Height, const int32 NumSegments=20, const float LifeTime=2.0f, const FColor <a class="el" href="EWordType_8h.html#aa7a4aeeaf4a040114515f256df9c15a3acb5feb1b7314637725a2e73bdc9f7295">Color</a>=FColor::Green)</td></tr>
 <tr class="memdesc:a4baca9166815847daff432d9575a9e60"><td class="mdescLeft">&#160;</td><td class="mdescRight">두 점(Start → End)을 잇는 곡선을 디버그 라인으로 그립니다.  <br /></td></tr>
 <tr class="separator:a4baca9166815847daff432d9575a9e60"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa813d7b30358c0116f1816a2f05b3ca7" id="r_aa813d7b30358c0116f1816a2f05b3ca7"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structFMathHelper.html#aa813d7b30358c0116f1816a2f05b3ca7">DrawProjectileArcDebug</a> (UWorld *World, const FVector &amp;Start, const FVector &amp;V0, float GravityZ=-980.f, int32 NumSegments=20, float StepTime=0.1f, float LifeTime=2.0f, FColor <a class="el" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2acb5feb1b7314637725a2e73bdc9f7295">Color</a>=FColor::Red)</td></tr>
+<tr class="memitem:aa813d7b30358c0116f1816a2f05b3ca7" id="r_aa813d7b30358c0116f1816a2f05b3ca7"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structFMathHelper.html#aa813d7b30358c0116f1816a2f05b3ca7">DrawProjectileArcDebug</a> (UWorld *World, const FVector &amp;Start, const FVector &amp;V0, float GravityZ=-980.f, int32 NumSegments=20, float StepTime=0.1f, float LifeTime=2.0f, FColor <a class="el" href="EWordType_8h.html#aa7a4aeeaf4a040114515f256df9c15a3acb5feb1b7314637725a2e73bdc9f7295">Color</a>=FColor::Red)</td></tr>
 <tr class="memdesc:aa813d7b30358c0116f1816a2f05b3ca7"><td class="mdescLeft">&#160;</td><td class="mdescRight">초기 속도 V0를 이용해 물리 기반 포물선 궤적을 디버그 라인으로 그립니다.  <br /></td></tr>
 <tr class="separator:aa813d7b30358c0116f1816a2f05b3ca7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acdb08b61cfe310f5684d30ebb69204d2" id="r_acdb08b61cfe310f5684d30ebb69204d2"><td class="memItemLeft" align="right" valign="top">static FVector&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structFMathHelper.html#acdb08b61cfe310f5684d30ebb69204d2">InterpArcSin</a> (const FVector &amp;Start, const FVector &amp;End, float Height, float Alpha)</td></tr>
@@ -230,14 +230,14 @@ $(document).ready(function(){initNavTree('structFMathHelper.html',''); initResiz
 <div class="line"><span class="lineno">  144</span>            <span class="keyword">const</span> <span class="keywordtype">float</span> Alpha = (float)i / (<span class="keywordtype">float</span>)NumSegments;</div>
 <div class="line"><span class="lineno">  145</span>            FVector CurrPos = <a class="code hl_function" href="structFMathHelper.html#acdb08b61cfe310f5684d30ebb69204d2">InterpArcSin</a>(Start, End, Height, Alpha);</div>
 <div class="line"><span class="lineno">  146</span> </div>
-<div class="line"><span class="lineno">  147</span>            DrawDebugLine(World, PrevPos, CurrPos, <a class="code hl_enumvalue" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2acb5feb1b7314637725a2e73bdc9f7295">Color</a>, <span class="keyword">false</span>, LifeTime, 0, 1.5f);</div>
+<div class="line"><span class="lineno">  147</span>            DrawDebugLine(World, PrevPos, CurrPos, <a class="code hl_enumvalue" href="EWordType_8h.html#aa7a4aeeaf4a040114515f256df9c15a3acb5feb1b7314637725a2e73bdc9f7295">Color</a>, <span class="keyword">false</span>, LifeTime, 0, 1.5f);</div>
 <div class="line"><span class="lineno">  148</span>            PrevPos = CurrPos;</div>
 <div class="line"><span class="lineno">  149</span>        }</div>
 <div class="line"><span class="lineno">  150</span>    }</div>
-<div class="ttc" id="aFResourceTextureData_8h_html_a98b8b3000fb3fc86e37c624651589cb2acb5feb1b7314637725a2e73bdc9f7295"><div class="ttname"><a href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2acb5feb1b7314637725a2e73bdc9f7295">EResourceTextureType::Color</a></div><div class="ttdeci">@ Color</div></div>
+<div class="ttc" id="aEWordType_8h_html_aa7a4aeeaf4a040114515f256df9c15a3acb5feb1b7314637725a2e73bdc9f7295"><div class="ttname"><a href="EWordType_8h.html#aa7a4aeeaf4a040114515f256df9c15a3acb5feb1b7314637725a2e73bdc9f7295">EWordType::Color</a></div><div class="ttdeci">@ Color</div></div>
 <div class="ttc" id="astructFMathHelper_html_acdb08b61cfe310f5684d30ebb69204d2"><div class="ttname"><a href="structFMathHelper.html#acdb08b61cfe310f5684d30ebb69204d2">FMathHelper::InterpArcSin</a></div><div class="ttdeci">static FVector InterpArcSin(const FVector &amp;Start, const FVector &amp;End, float Height, float Alpha)</div><div class="ttdoc">선형 보간 경로에 사인 함수를 더해 아치 형태의 곡선을 생성합니다.</div><div class="ttdef"><b>Definition</b> <a href="FMathHelper_8h_source.html#l00052">FMathHelper.h:52</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2acb5feb1b7314637725a2e73bdc9f7295">Color</a>, <a class="el" href="FMathHelper_8h_source.html#l00052">InterpArcSin()</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="EWordType_8h.html#aa7a4aeeaf4a040114515f256df9c15a3acb5feb1b7314637725a2e73bdc9f7295">Color</a>, <a class="el" href="FMathHelper_8h_source.html#l00052">InterpArcSin()</a>.</p>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
@@ -349,13 +349,13 @@ $(document).ready(function(){initNavTree('structFMathHelper.html',''); initResiz
 <div class="line"><span class="lineno">  102</span>            FVector CurrPos = <a class="code hl_function" href="structFMathHelper.html#af785a923a1e6a2f0601649e37cb28cf3">SolveV0ForProjectile</a>(PrevPos, CurrPos, t, GravityZ);</div>
 <div class="line"><span class="lineno">  103</span>            <span class="comment">// Start + V0 * t + 0.5f * g * t * t;</span></div>
 <div class="line"><span class="lineno">  104</span> </div>
-<div class="line"><span class="lineno">  105</span>            DrawDebugLine(World, PrevPos, CurrPos, <a class="code hl_enumvalue" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2acb5feb1b7314637725a2e73bdc9f7295">Color</a>, <span class="keyword">false</span>, LifeTime, 0, 1.5f);</div>
+<div class="line"><span class="lineno">  105</span>            DrawDebugLine(World, PrevPos, CurrPos, <a class="code hl_enumvalue" href="EWordType_8h.html#aa7a4aeeaf4a040114515f256df9c15a3acb5feb1b7314637725a2e73bdc9f7295">Color</a>, <span class="keyword">false</span>, LifeTime, 0, 1.5f);</div>
 <div class="line"><span class="lineno">  106</span>            PrevPos = CurrPos;</div>
 <div class="line"><span class="lineno">  107</span>        }</div>
 <div class="line"><span class="lineno">  108</span>    }</div>
 <div class="ttc" id="astructFMathHelper_html_af785a923a1e6a2f0601649e37cb28cf3"><div class="ttname"><a href="structFMathHelper.html#af785a923a1e6a2f0601649e37cb28cf3">FMathHelper::SolveV0ForProjectile</a></div><div class="ttdeci">static FVector SolveV0ForProjectile(const FVector &amp;Start, const FVector &amp;End, float Time, float GravityZ=-980.f)</div><div class="ttdoc">주어진 시간 안에 목표 지점에 도달하기 위한 초기 속도를 계산합니다.</div><div class="ttdef"><b>Definition</b> <a href="FMathHelper_8h_source.html#l00024">FMathHelper.h:24</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2acb5feb1b7314637725a2e73bdc9f7295">Color</a>, <a class="el" href="FMathHelper_8h_source.html#l00024">SolveV0ForProjectile()</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="EWordType_8h.html#aa7a4aeeaf4a040114515f256df9c15a3acb5feb1b7314637725a2e73bdc9f7295">Color</a>, <a class="el" href="FMathHelper_8h_source.html#l00024">SolveV0ForProjectile()</a>.</p>
 <div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-2-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
@@ -530,7 +530,7 @@ $(document).ready(function(){initNavTree('structFMathHelper.html',''); initResiz
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="structFMathHelper.html">FMathHelper</a></li>
-    <li class="footer">생성시간 : 목 12월 18 2025 08:59:02, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 목 12월 18 2025 14:41:30, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

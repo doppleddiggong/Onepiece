@@ -50,10 +50,15 @@ var searchData=
   ['convertscenariotexture_47',['ConvertScenarioTexture',['../classULingoGameHelper.html#a48f0d5f3480d80fd4ca3e517b2824572',1,'ULingoGameHelper']]],
   ['convertstereotomono_48',['ConvertStereoToMono',['../classUVoiceFunctionLibrary.html#aa20f24ee3c303d4652adeef2ff9e9dee',1,'UVoiceFunctionLibrary']]],
   ['convertworddatatorichtext_49',['ConvertWordDataToRichText',['../classUPopup__ReadQuest.html#a8e0124163d2d989731fb74cff601e304',1,'UPopup_ReadQuest']]],
-  ['createmainwidget_50',['CreateMainWidget',['../classAPlayerActor.html#a63641fed19fdb23e32cb16fed3ba2d79',1,'APlayerActor']]],
-  ['createmysession_51',['CreateMySession',['../classULingoGameInstance.html#a094b7b917f1aa7eca5989d86616a69b4',1,'ULingoGameInstance']]],
-  ['createproceduralsoundwavefromwavdata_52',['CreateProceduralSoundWaveFromWavData',['../classUVoiceFunctionLibrary.html#adf741678fa5eeadc6dbe30624ef6888b',1,'UVoiceFunctionLibrary']]],
-  ['createsoundwavefromwavdata_53',['CreateSoundWaveFromWavData',['../classUVoiceFunctionLibrary.html#a0a42913d3f8f356e575bf9805e6e7af3',1,'UVoiceFunctionLibrary']]],
-  ['createtestdata_54',['CreateTestData',['../classAQuestionnaireKiosk.html#ae5d6e0a31a0e264e6c20162ad0f33bc9',1,'AQuestionnaireKiosk']]],
-  ['createtoastwidget_55',['CreateToastWidget',['../classAPlayerActor.html#a2f07dd7eee5e4a05fa2457ca52382f3e',1,'APlayerActor']]]
+  ['createanimalgroup_50',['CreateAnimalGroup',['../classULevelSelectItem.html#ae244c79924936668df3748a2f3e3755e',1,'ULevelSelectItem']]],
+  ['createchatbox_51',['CreateChatBox',['../classUChatWidget.html#ab4d2683f3aba96eee38548bf261bc09a',1,'UChatWidget']]],
+  ['createcolorgroup_52',['CreateColorGroup',['../classULevelSelectItem.html#a8cb876be8d0d26370c0f4841e8b224f5',1,'ULevelSelectItem']]],
+  ['createfoodgroup_53',['CreateFoodGroup',['../classULevelSelectItem.html#ae50659f449474eb7485b8d8fac40de5e',1,'ULevelSelectItem']]],
+  ['createmainwidget_54',['CreateMainWidget',['../classAPlayerActor.html#a63641fed19fdb23e32cb16fed3ba2d79',1,'APlayerActor']]],
+  ['createmysession_55',['CreateMySession',['../classULingoGameInstance.html#a094b7b917f1aa7eca5989d86616a69b4',1,'ULingoGameInstance']]],
+  ['createproceduralsoundwavefromwavdata_56',['CreateProceduralSoundWaveFromWavData',['../classUVoiceFunctionLibrary.html#adf741678fa5eeadc6dbe30624ef6888b',1,'UVoiceFunctionLibrary']]],
+  ['createregiongroup_57',['CreateRegionGroup',['../classULevelSelectItem.html#aa65334bddb3ac593a7ac688f3c4b34bd',1,'ULevelSelectItem']]],
+  ['createsoundwavefromwavdata_58',['CreateSoundWaveFromWavData',['../classUVoiceFunctionLibrary.html#a0a42913d3f8f356e575bf9805e6e7af3',1,'UVoiceFunctionLibrary']]],
+  ['createtestdata_59',['CreateTestData',['../classAQuestionnaireKiosk.html#ae5d6e0a31a0e264e6c20162ad0f33bc9',1,'AQuestionnaireKiosk']]],
+  ['createtoastwidget_60',['CreateToastWidget',['../classAPlayerActor.html#a2f07dd7eee5e4a05fa2457ca52382f3e',1,'APlayerActor']]]
 ];

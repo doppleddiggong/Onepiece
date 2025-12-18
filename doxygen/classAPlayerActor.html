@@ -460,35 +460,35 @@ Private 속성</h2></td></tr>
 
 <p>Another 머티리얼 파라미터를 실제로 적용합니다 (서버/클라이언트 공통) </p>
 
-<p class="definition"><a class="el" href="APlayerActor_8cpp_source.html">APlayerActor.cpp</a> 파일의 <a class="el" href="APlayerActor_8cpp_source.html#l00336">336</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  337</span>{</div>
-<div class="line"><span class="lineno">  338</span>    USkeletalMeshComponent* MeshComp = GetMesh();</div>
-<div class="line"><span class="lineno">  339</span>    <span class="keywordflow">if</span> (!MeshComp)</div>
-<div class="line"><span class="lineno">  340</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  341</span> </div>
-<div class="line"><span class="lineno">  342</span>    <span class="comment">// Dynamic Material Instance 생성 및 파라미터 설정</span></div>
-<div class="line"><span class="lineno">  343</span>    <span class="keywordflow">for</span> (int32 i = 0; i &lt; MeshComp-&gt;GetNumMaterials(); ++i)</div>
-<div class="line"><span class="lineno">  344</span>    {</div>
-<div class="line"><span class="lineno">  345</span>        UMaterialInterface* Material = MeshComp-&gt;GetMaterial(i);</div>
-<div class="line"><span class="lineno">  346</span>        <span class="keywordflow">if</span> (!Material)</div>
-<div class="line"><span class="lineno">  347</span>            <span class="keywordflow">continue</span>;</div>
-<div class="line"><span class="lineno">  348</span> </div>
-<div class="line"><span class="lineno">  349</span>        UMaterialInstanceDynamic* DynamicMaterial = Cast&lt;UMaterialInstanceDynamic&gt;(Material);</div>
-<div class="line"><span class="lineno">  350</span>        <span class="keywordflow">if</span> (!DynamicMaterial)</div>
-<div class="line"><span class="lineno">  351</span>            DynamicMaterial = MeshComp-&gt;CreateAndSetMaterialInstanceDynamic(i);</div>
-<div class="line"><span class="lineno">  352</span> </div>
-<div class="line"><span class="lineno">  353</span>        <span class="keywordflow">if</span> (DynamicMaterial)</div>
-<div class="line"><span class="lineno">  354</span>            DynamicMaterial-&gt;SetScalarParameterValue(FName(<span class="stringliteral">&quot;Another&quot;</span>), <a class="code hl_variable" href="classAPlayerActor.html#a57d536023470eebddc11f8c929d6dfd5">AnotherValue</a>);</div>
-<div class="line"><span class="lineno">  355</span>    }</div>
-<div class="line"><span class="lineno">  356</span> </div>
-<div class="line"><span class="lineno">  357</span> </div>
-<div class="line"><span class="lineno">  358</span>    <span class="keyword">auto</span> PS = GetPlayerState&lt;ALingoPlayerState&gt;();</div>
-<div class="line"><span class="lineno">  359</span>    PS-&gt;RefreshQuestState();</div>
-<div class="line"><span class="lineno">  360</span>}</div>
+<p class="definition"><a class="el" href="APlayerActor_8cpp_source.html">APlayerActor.cpp</a> 파일의 <a class="el" href="APlayerActor_8cpp_source.html#l00338">338</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  339</span>{</div>
+<div class="line"><span class="lineno">  340</span>    USkeletalMeshComponent* MeshComp = GetMesh();</div>
+<div class="line"><span class="lineno">  341</span>    <span class="keywordflow">if</span> (!MeshComp)</div>
+<div class="line"><span class="lineno">  342</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  343</span> </div>
+<div class="line"><span class="lineno">  344</span>    <span class="comment">// Dynamic Material Instance 생성 및 파라미터 설정</span></div>
+<div class="line"><span class="lineno">  345</span>    <span class="keywordflow">for</span> (int32 i = 0; i &lt; MeshComp-&gt;GetNumMaterials(); ++i)</div>
+<div class="line"><span class="lineno">  346</span>    {</div>
+<div class="line"><span class="lineno">  347</span>        UMaterialInterface* Material = MeshComp-&gt;GetMaterial(i);</div>
+<div class="line"><span class="lineno">  348</span>        <span class="keywordflow">if</span> (!Material)</div>
+<div class="line"><span class="lineno">  349</span>            <span class="keywordflow">continue</span>;</div>
+<div class="line"><span class="lineno">  350</span> </div>
+<div class="line"><span class="lineno">  351</span>        UMaterialInstanceDynamic* DynamicMaterial = Cast&lt;UMaterialInstanceDynamic&gt;(Material);</div>
+<div class="line"><span class="lineno">  352</span>        <span class="keywordflow">if</span> (!DynamicMaterial)</div>
+<div class="line"><span class="lineno">  353</span>            DynamicMaterial = MeshComp-&gt;CreateAndSetMaterialInstanceDynamic(i);</div>
+<div class="line"><span class="lineno">  354</span> </div>
+<div class="line"><span class="lineno">  355</span>        <span class="keywordflow">if</span> (DynamicMaterial)</div>
+<div class="line"><span class="lineno">  356</span>            DynamicMaterial-&gt;SetScalarParameterValue(FName(<span class="stringliteral">&quot;Another&quot;</span>), <a class="code hl_variable" href="classAPlayerActor.html#a57d536023470eebddc11f8c929d6dfd5">AnotherValue</a>);</div>
+<div class="line"><span class="lineno">  357</span>    }</div>
+<div class="line"><span class="lineno">  358</span> </div>
+<div class="line"><span class="lineno">  359</span> </div>
+<div class="line"><span class="lineno">  360</span>    <span class="keyword">auto</span> PS = GetPlayerState&lt;ALingoPlayerState&gt;();</div>
+<div class="line"><span class="lineno">  361</span>    PS-&gt;RefreshQuestState();</div>
+<div class="line"><span class="lineno">  362</span>}</div>
 </div><!-- fragment -->
 <p class="reference">다음을 참조함 :  <a class="el" href="APlayerActor_8h_source.html#l00215">AnotherValue</a>.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerActor_8cpp_source.html#l00331">OnRep_AnotherValue()</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00275">PossessedBy()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerActor_8cpp_source.html#l00333">OnRep_AnotherValue()</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00277">PossessedBy()</a>.</p>
 <div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-3-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
@@ -568,17 +568,17 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">  175</span>            <a class="code hl_function" href="classULingoGameHelper.html#a569e70240af4850b5b1a0dafd26d4033">ULingoGameHelper::HideMouseCursor</a>(<span class="keyword">this</span>);</div>
 <div class="line"><span class="lineno">  176</span>    }</div>
 <div class="line"><span class="lineno">  177</span>}</div>
-<div class="ttc" id="aclassAPlayerActor_html_a22532b0f65738f7a51494a5476638af1"><div class="ttname"><a href="classAPlayerActor.html#a22532b0f65738f7a51494a5476638af1">APlayerActor::OnTeleportAllPlayers</a></div><div class="ttdeci">void OnTeleportAllPlayers(FVector TargetLocation)</div><div class="ttdoc">텔레포트 이벤트 핸들러</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8cpp_source.html#l00641">APlayerActor.cpp:641</a></div></div>
-<div class="ttc" id="aclassAPlayerActor_html_a2f07dd7eee5e4a05fa2457ca52382f3e"><div class="ttname"><a href="classAPlayerActor.html#a2f07dd7eee5e4a05fa2457ca52382f3e">APlayerActor::CreateToastWidget</a></div><div class="ttdeci">void CreateToastWidget()</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8cpp_source.html#l00258">APlayerActor.cpp:258</a></div></div>
+<div class="ttc" id="aclassAPlayerActor_html_a22532b0f65738f7a51494a5476638af1"><div class="ttname"><a href="classAPlayerActor.html#a22532b0f65738f7a51494a5476638af1">APlayerActor::OnTeleportAllPlayers</a></div><div class="ttdeci">void OnTeleportAllPlayers(FVector TargetLocation)</div><div class="ttdoc">텔레포트 이벤트 핸들러</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8cpp_source.html#l00643">APlayerActor.cpp:643</a></div></div>
+<div class="ttc" id="aclassAPlayerActor_html_a2f07dd7eee5e4a05fa2457ca52382f3e"><div class="ttname"><a href="classAPlayerActor.html#a2f07dd7eee5e4a05fa2457ca52382f3e">APlayerActor::CreateToastWidget</a></div><div class="ttdeci">void CreateToastWidget()</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8cpp_source.html#l00260">APlayerActor.cpp:260</a></div></div>
 <div class="ttc" id="aclassAPlayerActor_html_a3fb4598e21a9c5af2d9b3007adab9496"><div class="ttname"><a href="classAPlayerActor.html#a3fb4598e21a9c5af2d9b3007adab9496">APlayerActor::MoveComp</a></div><div class="ttdeci">TObjectPtr&lt; class UCharacterMovementComponent &gt; MoveComp</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8h_source.html#l00077">APlayerActor.h:77</a></div></div>
 <div class="ttc" id="aclassAPlayerActor_html_a4e1f651cec20acf4d8098787767f3a3f"><div class="ttname"><a href="classAPlayerActor.html#a4e1f651cec20acf4d8098787767f3a3f">APlayerActor::IsMainMap</a></div><div class="ttdeci">bool IsMainMap()</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8cpp_source.html#l00200">APlayerActor.cpp:200</a></div></div>
 <div class="ttc" id="aclassAPlayerActor_html_a63641fed19fdb23e32cb16fed3ba2d79"><div class="ttname"><a href="classAPlayerActor.html#a63641fed19fdb23e32cb16fed3ba2d79">APlayerActor::CreateMainWidget</a></div><div class="ttdeci">void CreateMainWidget()</div><div class="ttdoc">메인 위젯을 생성하고 뷰포트에 추가합니다.</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8cpp_source.html#l00215">APlayerActor.cpp:215</a></div></div>
-<div class="ttc" id="aclassAPlayerActor_html_abf6656a8cf611561c5dd3c87a35279c8"><div class="ttname"><a href="classAPlayerActor.html#abf6656a8cf611561c5dd3c87a35279c8">APlayerActor::OnRoomIdUpdated</a></div><div class="ttdeci">void OnRoomIdUpdated(int64 NewRoomId)</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8cpp_source.html#l00755">APlayerActor.cpp:755</a></div></div>
-<div class="ttc" id="aclassAPlayerActor_html_afded5d0746cf27f2177f5ca8cfef33b4"><div class="ttname"><a href="classAPlayerActor.html#afded5d0746cf27f2177f5ca8cfef33b4">APlayerActor::OnRoomLevelUpdated</a></div><div class="ttdeci">void OnRoomLevelUpdated(int32 NewRoomLevel)</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8cpp_source.html#l00772">APlayerActor.cpp:772</a></div></div>
+<div class="ttc" id="aclassAPlayerActor_html_abf6656a8cf611561c5dd3c87a35279c8"><div class="ttname"><a href="classAPlayerActor.html#abf6656a8cf611561c5dd3c87a35279c8">APlayerActor::OnRoomIdUpdated</a></div><div class="ttdeci">void OnRoomIdUpdated(int64 NewRoomId)</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8cpp_source.html#l00757">APlayerActor.cpp:757</a></div></div>
+<div class="ttc" id="aclassAPlayerActor_html_afded5d0746cf27f2177f5ca8cfef33b4"><div class="ttname"><a href="classAPlayerActor.html#afded5d0746cf27f2177f5ca8cfef33b4">APlayerActor::OnRoomLevelUpdated</a></div><div class="ttdeci">void OnRoomLevelUpdated(int32 NewRoomLevel)</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8cpp_source.html#l00774">APlayerActor.cpp:774</a></div></div>
 <div class="ttc" id="aclassULingoGameHelper_html_a569e70240af4850b5b1a0dafd26d4033"><div class="ttname"><a href="classULingoGameHelper.html#a569e70240af4850b5b1a0dafd26d4033">ULingoGameHelper::HideMouseCursor</a></div><div class="ttdeci">static void HideMouseCursor(const UObject *WorldContextObject)</div><div class="ttdoc">마우스 커서를 숨기고 게임 전용 입력 모드로 설정합니다.</div><div class="ttdef"><b>Definition</b> <a href="ULingoGameHelper_8cpp_source.html#l00238">ULingoGameHelper.cpp:238</a></div></div>
 <div class="ttc" id="aclassULingoGameHelper_html_aae5e9443e2249c16219279d75b62cb46"><div class="ttname"><a href="classULingoGameHelper.html#aae5e9443e2249c16219279d75b62cb46">ULingoGameHelper::GetLingoGameState</a></div><div class="ttdeci">static class ALingoGameState * GetLingoGameState(const UObject *WorldContextObject)</div><div class="ttdef"><b>Definition</b> <a href="ULingoGameHelper_8cpp_source.html#l00048">ULingoGameHelper.cpp:48</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="APlayerActor_8cpp_source.html#l00215">CreateMainWidget()</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00258">CreateToastWidget()</a>, <a class="el" href="ULingoGameHelper_8cpp_source.html#l00048">ULingoGameHelper::GetLingoGameState()</a>, <a class="el" href="ULingoGameHelper_8cpp_source.html#l00238">ULingoGameHelper::HideMouseCursor()</a>, <a class="el" href="APlayerActor_8h_source.html#l00057">HookCable</a>, <a class="el" href="APlayerActor_8h_source.html#l00060">HookProjectileMesh</a>, <a class="el" href="APlayerActor_8h_source.html#l00054">HookSystem</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00200">IsMainMap()</a>, <a class="el" href="APlayerActor_8h_source.html#l00077">MoveComp</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00755">OnRoomIdUpdated()</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00772">OnRoomLevelUpdated()</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00641">OnTeleportAllPlayers()</a>, <a class="el" href="APlayerActor_8h_source.html#l00080">VoiceConversationSystem</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="APlayerActor_8cpp_source.html#l00215">CreateMainWidget()</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00260">CreateToastWidget()</a>, <a class="el" href="ULingoGameHelper_8cpp_source.html#l00048">ULingoGameHelper::GetLingoGameState()</a>, <a class="el" href="ULingoGameHelper_8cpp_source.html#l00238">ULingoGameHelper::HideMouseCursor()</a>, <a class="el" href="APlayerActor_8h_source.html#l00057">HookCable</a>, <a class="el" href="APlayerActor_8h_source.html#l00060">HookProjectileMesh</a>, <a class="el" href="APlayerActor_8h_source.html#l00054">HookSystem</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00200">IsMainMap()</a>, <a class="el" href="APlayerActor_8h_source.html#l00077">MoveComp</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00757">OnRoomIdUpdated()</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00774">OnRoomLevelUpdated()</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00643">OnTeleportAllPlayers()</a>, <a class="el" href="APlayerActor_8h_source.html#l00080">VoiceConversationSystem</a>.</p>
 <div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-4-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-4-summary" class="dynsummary" style="display:block;">
@@ -613,7 +613,7 @@ Private 속성</h2></td></tr>
   </dd>
 </dl>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerActor_8cpp_source.html#l00617">OnGameMessage()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerActor_8cpp_source.html#l00619">OnGameMessage()</a>.</p>
 <div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-5-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-5-summary" class="dynsummary" style="display:block;">
@@ -896,26 +896,28 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">  239</span>            <span class="keywordflow">if</span> (PC-&gt;HasUserInfo() )</div>
 <div class="line"><span class="lineno">  240</span>            {</div>
 <div class="line"><span class="lineno">  241</span>                <a class="code hl_variable" href="classAPlayerActor.html#a21817a3bc97f6962b8ece7941b67996d">MainWidget</a>-&gt;UpdateStateWidget( PC-&gt;GetUserId(), PC-&gt;GetUserName());</div>
-<div class="line"><span class="lineno">  242</span>                <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  243</span>            }</div>
-<div class="line"><span class="lineno">  244</span> </div>
-<div class="line"><span class="lineno">  245</span>            <span class="comment">// UserInfo 로드 대기 후 재시도 (0.5초 후 한 번)</span></div>
-<div class="line"><span class="lineno">  246</span>            FTimerHandle RetryTimer;</div>
-<div class="line"><span class="lineno">  247</span>            GetWorld()-&gt;GetTimerManager().SetTimer(RetryTimer, [<span class="keyword">this</span>, PC]()</div>
-<div class="line"><span class="lineno">  248</span>            {</div>
-<div class="line"><span class="lineno">  249</span>                <span class="keywordflow">if</span> ( PC-&gt;GetUserId())</div>
-<div class="line"><span class="lineno">  250</span>                {</div>
-<div class="line"><span class="lineno">  251</span>                    MainWidget-&gt;UpdateStateWidget( PC-&gt;GetUserId(), PC-&gt;GetUserName());</div>
-<div class="line"><span class="lineno">  252</span>                }</div>
-<div class="line"><span class="lineno">  253</span>            }, 0.5f, <span class="keyword">false</span>);</div>
-<div class="line"><span class="lineno">  254</span>        }</div>
-<div class="line"><span class="lineno">  255</span>    }</div>
-<div class="line"><span class="lineno">  256</span>}</div>
+<div class="line"><span class="lineno">  242</span>                <a class="code hl_variable" href="classAPlayerActor.html#a21817a3bc97f6962b8ece7941b67996d">MainWidget</a>-&gt;UpdateChatWidget();</div>
+<div class="line"><span class="lineno">  243</span>                <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  244</span>            }</div>
+<div class="line"><span class="lineno">  245</span> </div>
+<div class="line"><span class="lineno">  246</span>            <span class="comment">// UserInfo 로드 대기 후 재시도 (0.5초 후 한 번)</span></div>
+<div class="line"><span class="lineno">  247</span>            FTimerHandle RetryTimer;</div>
+<div class="line"><span class="lineno">  248</span>            GetWorld()-&gt;GetTimerManager().SetTimer(RetryTimer, [<span class="keyword">this</span>, PC]()</div>
+<div class="line"><span class="lineno">  249</span>            {</div>
+<div class="line"><span class="lineno">  250</span>                <span class="keywordflow">if</span> ( PC-&gt;GetUserId())</div>
+<div class="line"><span class="lineno">  251</span>                {</div>
+<div class="line"><span class="lineno">  252</span>                    MainWidget-&gt;UpdateStateWidget( PC-&gt;GetUserId(), PC-&gt;GetUserName());</div>
+<div class="line"><span class="lineno">  253</span>                }</div>
+<div class="line"><span class="lineno">  254</span>                <a class="code hl_variable" href="classAPlayerActor.html#a21817a3bc97f6962b8ece7941b67996d">MainWidget</a>-&gt;UpdateChatWidget();</div>
+<div class="line"><span class="lineno">  255</span>            }, 0.5f, <span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">  256</span>        }</div>
+<div class="line"><span class="lineno">  257</span>    }</div>
+<div class="line"><span class="lineno">  258</span>}</div>
 <div class="ttc" id="aclassAPlayerActor_html_a21817a3bc97f6962b8ece7941b67996d"><div class="ttname"><a href="classAPlayerActor.html#a21817a3bc97f6962b8ece7941b67996d">APlayerActor::MainWidget</a></div><div class="ttdeci">TObjectPtr&lt; class UMainWidget &gt; MainWidget</div><div class="ttdoc">메인 UI 위젯 인스턴스</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8h_source.html#l00224">APlayerActor.h:224</a></div></div>
 </div><!-- fragment -->
 <p class="reference">다음을 참조함 :  <a class="el" href="ULingoGameHelper_8cpp_source.html#l00048">ULingoGameHelper::GetLingoGameState()</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00200">IsMainMap()</a>, <a class="el" href="APlayerActor_8h_source.html#l00224">MainWidget</a>, <a class="el" href="APlayerActor_8h_source.html#l00220">MainWidgetClass</a>.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerActor_8cpp_source.html#l00132">BeginPlay()</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00307">OnRep_Controller()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerActor_8cpp_source.html#l00132">BeginPlay()</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00309">OnRep_Controller()</a>.</p>
 <div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-6-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-6-summary" class="dynsummary" style="display:block;">
@@ -956,28 +958,28 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="APlayerActor_8cpp_source.html">APlayerActor.cpp</a> 파일의 <a class="el" href="APlayerActor_8cpp_source.html#l00258">258</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  259</span>{</div>
-<div class="line"><span class="lineno">  260</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classAPlayerActor.html#a61c0d769522fe0960b2f15d456d8f68d">ToastWidgetClass</a>)</div>
-<div class="line"><span class="lineno">  261</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  262</span> </div>
-<div class="line"><span class="lineno">  263</span>    <span class="keywordflow">if</span>(<a class="code hl_variable" href="classAPlayerActor.html#ae8fbec6d1c7f5d41e2e5c333d35d3a17">ToastWidget</a>)</div>
-<div class="line"><span class="lineno">  264</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  265</span> </div>
-<div class="line"><span class="lineno">  266</span>    APlayerController* PC = Cast&lt;APlayerController&gt;(GetController());</div>
-<div class="line"><span class="lineno">  267</span>    <span class="keywordflow">if</span> (!PC)</div>
-<div class="line"><span class="lineno">  268</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  269</span> </div>
-<div class="line"><span class="lineno">  270</span>    <a class="code hl_variable" href="classAPlayerActor.html#ae8fbec6d1c7f5d41e2e5c333d35d3a17">ToastWidget</a> = CreateWidget&lt;UToastWidget&gt;(PC, <a class="code hl_variable" href="classAPlayerActor.html#a61c0d769522fe0960b2f15d456d8f68d">ToastWidgetClass</a>);</div>
-<div class="line"><span class="lineno">  271</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAPlayerActor.html#ae8fbec6d1c7f5d41e2e5c333d35d3a17">ToastWidget</a>)</div>
-<div class="line"><span class="lineno">  272</span>        <a class="code hl_variable" href="classAPlayerActor.html#ae8fbec6d1c7f5d41e2e5c333d35d3a17">ToastWidget</a>-&gt;AddToViewport(<a class="code hl_variable" href="namespaceGameLayer.html#a57a60d2bc3fea246d06c27e4939c7c6e">GameLayer::Toast</a>);</div>
-<div class="line"><span class="lineno">  273</span>}</div>
+<p class="definition"><a class="el" href="APlayerActor_8cpp_source.html">APlayerActor.cpp</a> 파일의 <a class="el" href="APlayerActor_8cpp_source.html#l00260">260</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  261</span>{</div>
+<div class="line"><span class="lineno">  262</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classAPlayerActor.html#a61c0d769522fe0960b2f15d456d8f68d">ToastWidgetClass</a>)</div>
+<div class="line"><span class="lineno">  263</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  264</span> </div>
+<div class="line"><span class="lineno">  265</span>    <span class="keywordflow">if</span>(<a class="code hl_variable" href="classAPlayerActor.html#ae8fbec6d1c7f5d41e2e5c333d35d3a17">ToastWidget</a>)</div>
+<div class="line"><span class="lineno">  266</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  267</span> </div>
+<div class="line"><span class="lineno">  268</span>    APlayerController* PC = Cast&lt;APlayerController&gt;(GetController());</div>
+<div class="line"><span class="lineno">  269</span>    <span class="keywordflow">if</span> (!PC)</div>
+<div class="line"><span class="lineno">  270</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  271</span> </div>
+<div class="line"><span class="lineno">  272</span>    <a class="code hl_variable" href="classAPlayerActor.html#ae8fbec6d1c7f5d41e2e5c333d35d3a17">ToastWidget</a> = CreateWidget&lt;UToastWidget&gt;(PC, <a class="code hl_variable" href="classAPlayerActor.html#a61c0d769522fe0960b2f15d456d8f68d">ToastWidgetClass</a>);</div>
+<div class="line"><span class="lineno">  273</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAPlayerActor.html#ae8fbec6d1c7f5d41e2e5c333d35d3a17">ToastWidget</a>)</div>
+<div class="line"><span class="lineno">  274</span>        <a class="code hl_variable" href="classAPlayerActor.html#ae8fbec6d1c7f5d41e2e5c333d35d3a17">ToastWidget</a>-&gt;AddToViewport(<a class="code hl_variable" href="namespaceGameLayer.html#a57a60d2bc3fea246d06c27e4939c7c6e">GameLayer::Toast</a>);</div>
+<div class="line"><span class="lineno">  275</span>}</div>
 <div class="ttc" id="aclassAPlayerActor_html_ae8fbec6d1c7f5d41e2e5c333d35d3a17"><div class="ttname"><a href="classAPlayerActor.html#ae8fbec6d1c7f5d41e2e5c333d35d3a17">APlayerActor::ToastWidget</a></div><div class="ttdeci">TObjectPtr&lt; class UToastWidget &gt; ToastWidget</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8h_source.html#l00230">APlayerActor.h:230</a></div></div>
 <div class="ttc" id="anamespaceGameLayer_html_a57a60d2bc3fea246d06c27e4939c7c6e"><div class="ttname"><a href="namespaceGameLayer.html#a57a60d2bc3fea246d06c27e4939c7c6e">GameLayer::Toast</a></div><div class="ttdeci">static const int32 Toast</div><div class="ttdef"><b>Definition</b> <a href="Onepiece_8h_source.html#l00010">Onepiece.h:10</a></div></div>
 </div><!-- fragment -->
 <p class="reference">다음을 참조함 :  <a class="el" href="Onepiece_8h_source.html#l00010">GameLayer::Toast</a>, <a class="el" href="APlayerActor_8h_source.html#l00230">ToastWidget</a>, <a class="el" href="APlayerActor_8h_source.html#l00227">ToastWidgetClass</a>.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerActor_8cpp_source.html#l00132">BeginPlay()</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00307">OnRep_Controller()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerActor_8cpp_source.html#l00132">BeginPlay()</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00309">OnRep_Controller()</a>.</p>
 <div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-8-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-8-summary" class="dynsummary" style="display:block;">
@@ -1112,13 +1114,13 @@ Private 속성</h2></td></tr>
 <p class="definition"><a class="el" href="APlayerActor_8h_source.html">APlayerActor.h</a> 파일의 <a class="el" href="APlayerActor_8h_source.html#l00157">157</a> 번째 라인에서 정의되었습니다.</p>
 <div class="fragment"><div class="line"><span class="lineno">  157</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classAPlayerActor.html#a21817a3bc97f6962b8ece7941b67996d">MainWidget</a>; }</div>
 </div><!-- fragment -->
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerControl_8cpp_source.html#l00614">APlayerControl::UpdateQuestInfoWidget()</a>, <a class="el" href="APlayerControl_8cpp_source.html#l00461">APlayerControl::UpdateSpeakWidget()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerControl_8cpp_source.html#l00297">APlayerControl::OnChat()</a>, <a class="el" href="APlayerControl_8cpp_source.html#l00628">APlayerControl::UpdateQuestInfoWidget()</a>, <a class="el" href="APlayerControl_8cpp_source.html#l00475">APlayerControl::UpdateSpeakWidget()</a>.</p>
 <div id="dynsection-9" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-9-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-9-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-9-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classAPlayerActor_a71880110b3fc29d4a2560edfaa57cb60_icgraph.svg" width="488" height="115"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classAPlayerActor_a71880110b3fc29d4a2560edfaa57cb60_icgraph.svg" width="100%" height="429"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -1138,11 +1140,11 @@ Private 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="APlayerActor_8cpp_source.html">APlayerActor.cpp</a> 파일의 <a class="el" href="APlayerActor_8cpp_source.html#l00503">503</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  504</span>{</div>
-<div class="line"><span class="lineno">  505</span>    <a class="code hl_class" href="classALingoPlayerState.html">ALingoPlayerState</a>* PS = GetPlayerState&lt;ALingoPlayerState&gt;();</div>
-<div class="line"><span class="lineno">  506</span>    <span class="keywordflow">return</span> PS-&gt;<a class="code hl_variable" href="classALingoPlayerState.html#abd97c5fbf5a4be586808c892ec02586b">QuestRole</a>;</div>
-<div class="line"><span class="lineno">  507</span>}</div>
+<p class="definition"><a class="el" href="APlayerActor_8cpp_source.html">APlayerActor.cpp</a> 파일의 <a class="el" href="APlayerActor_8cpp_source.html#l00505">505</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  506</span>{</div>
+<div class="line"><span class="lineno">  507</span>    <a class="code hl_class" href="classALingoPlayerState.html">ALingoPlayerState</a>* PS = GetPlayerState&lt;ALingoPlayerState&gt;();</div>
+<div class="line"><span class="lineno">  508</span>    <span class="keywordflow">return</span> PS-&gt;<a class="code hl_variable" href="classALingoPlayerState.html#abd97c5fbf5a4be586808c892ec02586b">QuestRole</a>;</div>
+<div class="line"><span class="lineno">  509</span>}</div>
 <div class="ttc" id="aclassALingoPlayerState_html"><div class="ttname"><a href="classALingoPlayerState.html">ALingoPlayerState</a></div><div class="ttdef"><b>Definition</b> <a href="ALingoPlayerState_8h_source.html#l00012">ALingoPlayerState.h:13</a></div></div>
 <div class="ttc" id="aclassALingoPlayerState_html_abd97c5fbf5a4be586808c892ec02586b"><div class="ttname"><a href="classALingoPlayerState.html#abd97c5fbf5a4be586808c892ec02586b">ALingoPlayerState::QuestRole</a></div><div class="ttdeci">EQuestRole QuestRole</div><div class="ttdoc">플레이어 역할 (싱글/멀티에서 문제1, 문제2 구분)</div><div class="ttdef"><b>Definition</b> <a href="ALingoPlayerState_8h_source.html#l00149">ALingoPlayerState.h:149</a></div></div>
 </div><!-- fragment -->
@@ -1327,36 +1329,36 @@ Private 속성</h2></td></tr>
 
 <p>페이드 아웃 완료 후 텔레포트 실행 </p>
 
-<p class="definition"><a class="el" href="APlayerActor_8cpp_source.html">APlayerActor.cpp</a> 파일의 <a class="el" href="APlayerActor_8cpp_source.html#l00703">703</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  704</span>{</div>
-<div class="line"><span class="lineno">  705</span>    <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;APlayerActor::OnFadeOutCompleteForTeleport - Teleporting to %s&quot;</span>), *<a class="code hl_variable" href="classAPlayerActor.html#af642d2936891008c201f850f9cd76509">PendingTeleportLocation</a>.ToString());</div>
-<div class="line"><span class="lineno">  706</span> </div>
-<div class="line"><span class="lineno">  707</span>    <span class="comment">// 텔레포트 실행</span></div>
-<div class="line"><span class="lineno">  708</span>    SetActorLocation(<a class="code hl_variable" href="classAPlayerActor.html#af642d2936891008c201f850f9cd76509">PendingTeleportLocation</a>);</div>
-<div class="line"><span class="lineno">  709</span> </div>
-<div class="line"><span class="lineno">  710</span>    <span class="comment">// FadeWidget 가져오기</span></div>
-<div class="line"><span class="lineno">  711</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classAPlayerActor.html#a21817a3bc97f6962b8ece7941b67996d">MainWidget</a>)</div>
-<div class="line"><span class="lineno">  712</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  713</span> </div>
-<div class="line"><span class="lineno">  714</span>    <a class="code hl_class" href="classUFadeWidget.html">UFadeWidget</a>* FadeWidget = <a class="code hl_variable" href="classAPlayerActor.html#a21817a3bc97f6962b8ece7941b67996d">MainWidget</a>-&gt;GetFadeWidget();</div>
-<div class="line"><span class="lineno">  715</span>    <span class="keywordflow">if</span> (!FadeWidget)</div>
-<div class="line"><span class="lineno">  716</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  717</span> </div>
-<div class="line"><span class="lineno">  718</span>    <span class="comment">// FadeOut 델리게이트 해제</span></div>
-<div class="line"><span class="lineno">  719</span>    FadeWidget-&gt;<a class="code hl_variable" href="classUFadeWidget.html#a18532b40c5afc773309952b6c08b9642">OnFadeOutComplete</a>.RemoveDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classAPlayerActor.html#ac114c2627877ad4ba81cf41466885856">APlayerActor::OnFadeOutCompleteForTeleport</a>);</div>
-<div class="line"><span class="lineno">  720</span> </div>
-<div class="line"><span class="lineno">  721</span>    <span class="comment">// FadeIn 시작</span></div>
-<div class="line"><span class="lineno">  722</span>    <a class="code hl_variable" href="classAPlayerActor.html#a21817a3bc97f6962b8ece7941b67996d">MainWidget</a>-&gt;FadeIn(0.5f);</div>
-<div class="line"><span class="lineno">  723</span>}</div>
+<p class="definition"><a class="el" href="APlayerActor_8cpp_source.html">APlayerActor.cpp</a> 파일의 <a class="el" href="APlayerActor_8cpp_source.html#l00705">705</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  706</span>{</div>
+<div class="line"><span class="lineno">  707</span>    <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;APlayerActor::OnFadeOutCompleteForTeleport - Teleporting to %s&quot;</span>), *<a class="code hl_variable" href="classAPlayerActor.html#af642d2936891008c201f850f9cd76509">PendingTeleportLocation</a>.ToString());</div>
+<div class="line"><span class="lineno">  708</span> </div>
+<div class="line"><span class="lineno">  709</span>    <span class="comment">// 텔레포트 실행</span></div>
+<div class="line"><span class="lineno">  710</span>    SetActorLocation(<a class="code hl_variable" href="classAPlayerActor.html#af642d2936891008c201f850f9cd76509">PendingTeleportLocation</a>);</div>
+<div class="line"><span class="lineno">  711</span> </div>
+<div class="line"><span class="lineno">  712</span>    <span class="comment">// FadeWidget 가져오기</span></div>
+<div class="line"><span class="lineno">  713</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classAPlayerActor.html#a21817a3bc97f6962b8ece7941b67996d">MainWidget</a>)</div>
+<div class="line"><span class="lineno">  714</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  715</span> </div>
+<div class="line"><span class="lineno">  716</span>    <a class="code hl_class" href="classUFadeWidget.html">UFadeWidget</a>* FadeWidget = <a class="code hl_variable" href="classAPlayerActor.html#a21817a3bc97f6962b8ece7941b67996d">MainWidget</a>-&gt;GetFadeWidget();</div>
+<div class="line"><span class="lineno">  717</span>    <span class="keywordflow">if</span> (!FadeWidget)</div>
+<div class="line"><span class="lineno">  718</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  719</span> </div>
+<div class="line"><span class="lineno">  720</span>    <span class="comment">// FadeOut 델리게이트 해제</span></div>
+<div class="line"><span class="lineno">  721</span>    FadeWidget-&gt;<a class="code hl_variable" href="classUFadeWidget.html#a18532b40c5afc773309952b6c08b9642">OnFadeOutComplete</a>.RemoveDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classAPlayerActor.html#ac114c2627877ad4ba81cf41466885856">APlayerActor::OnFadeOutCompleteForTeleport</a>);</div>
+<div class="line"><span class="lineno">  722</span> </div>
+<div class="line"><span class="lineno">  723</span>    <span class="comment">// FadeIn 시작</span></div>
+<div class="line"><span class="lineno">  724</span>    <a class="code hl_variable" href="classAPlayerActor.html#a21817a3bc97f6962b8ece7941b67996d">MainWidget</a>-&gt;FadeIn(0.5f);</div>
+<div class="line"><span class="lineno">  725</span>}</div>
 <div class="ttc" id="aGameLogging_8h_html_a9998c8beb11a6bad6ffada2e701fc0cf"><div class="ttname"><a href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a></div><div class="ttdeci">#define PRINTLOG(fmt,...)</div><div class="ttdef"><b>Definition</b> <a href="GameLogging_8h_source.html#l00030">GameLogging.h:30</a></div></div>
-<div class="ttc" id="aclassAPlayerActor_html_ac114c2627877ad4ba81cf41466885856"><div class="ttname"><a href="classAPlayerActor.html#ac114c2627877ad4ba81cf41466885856">APlayerActor::OnFadeOutCompleteForTeleport</a></div><div class="ttdeci">void OnFadeOutCompleteForTeleport()</div><div class="ttdoc">페이드 아웃 완료 후 텔레포트 실행</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8cpp_source.html#l00703">APlayerActor.cpp:703</a></div></div>
+<div class="ttc" id="aclassAPlayerActor_html_ac114c2627877ad4ba81cf41466885856"><div class="ttname"><a href="classAPlayerActor.html#ac114c2627877ad4ba81cf41466885856">APlayerActor::OnFadeOutCompleteForTeleport</a></div><div class="ttdeci">void OnFadeOutCompleteForTeleport()</div><div class="ttdoc">페이드 아웃 완료 후 텔레포트 실행</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8cpp_source.html#l00705">APlayerActor.cpp:705</a></div></div>
 <div class="ttc" id="aclassAPlayerActor_html_af642d2936891008c201f850f9cd76509"><div class="ttname"><a href="classAPlayerActor.html#af642d2936891008c201f850f9cd76509">APlayerActor::PendingTeleportLocation</a></div><div class="ttdeci">FVector PendingTeleportLocation</div><div class="ttdoc">텔레포트 목표 위치</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8h_source.html#l00233">APlayerActor.h:233</a></div></div>
 <div class="ttc" id="aclassUFadeWidget_html"><div class="ttname"><a href="classUFadeWidget.html">UFadeWidget</a></div><div class="ttdoc">화면 페이드 인/아웃 효과를 제공하는 위젯</div><div class="ttdef"><b>Definition</b> <a href="UFadeWidget_8h_source.html#l00021">UFadeWidget.h:22</a></div></div>
 <div class="ttc" id="aclassUFadeWidget_html_a18532b40c5afc773309952b6c08b9642"><div class="ttname"><a href="classUFadeWidget.html#a18532b40c5afc773309952b6c08b9642">UFadeWidget::OnFadeOutComplete</a></div><div class="ttdeci">FOnFadeComplete OnFadeOutComplete</div><div class="ttdoc">페이드 아웃 완료 시 호출되는 델리게이트</div><div class="ttdef"><b>Definition</b> <a href="UFadeWidget_8h_source.html#l00047">UFadeWidget.h:47</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="APlayerActor_8h_source.html#l00224">MainWidget</a>, <a class="el" href="UFadeWidget_8h_source.html#l00047">UFadeWidget::OnFadeOutComplete</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00703">OnFadeOutCompleteForTeleport()</a>, <a class="el" href="APlayerActor_8h_source.html#l00233">PendingTeleportLocation</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="APlayerActor_8h_source.html#l00224">MainWidget</a>, <a class="el" href="UFadeWidget_8h_source.html#l00047">UFadeWidget::OnFadeOutComplete</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00705">OnFadeOutCompleteForTeleport()</a>, <a class="el" href="APlayerActor_8h_source.html#l00233">PendingTeleportLocation</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerActor_8cpp_source.html#l00703">OnFadeOutCompleteForTeleport()</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00641">OnTeleportAllPlayers()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerActor_8cpp_source.html#l00705">OnFadeOutCompleteForTeleport()</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00643">OnTeleportAllPlayers()</a>.</p>
 <div id="dynsection-11" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-11-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-11-summary" class="dynsummary" style="display:block;">
@@ -1398,20 +1400,20 @@ Private 속성</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition"><a class="el" href="APlayerActor_8cpp_source.html">APlayerActor.cpp</a> 파일의 <a class="el" href="APlayerActor_8cpp_source.html#l00617">617</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  618</span>{</div>
-<div class="line"><span class="lineno">  619</span>    <a class="code hl_define" href="GameLogging_8h.html#ac50b407bb34c70a0be1fccc74730d143">PRINT_STRING</a>(TEXT(<span class="stringliteral">&quot;Event Received: %s&quot;</span>), *Message);</div>
-<div class="line"><span class="lineno">  620</span> </div>
-<div class="line"><span class="lineno">  621</span>    <span class="comment">// 서버에서 호출되면 클라이언트 RPC로 전달</span></div>
-<div class="line"><span class="lineno">  622</span>    <span class="keywordflow">if</span> (HasAuthority())</div>
-<div class="line"><span class="lineno">  623</span>    {</div>
-<div class="line"><span class="lineno">  624</span>        <a class="code hl_function" href="classAPlayerActor.html#a9a0da1264f0f61d8b908de643e010de7">ClientRPC_ShowGameMessage</a>(Message);</div>
-<div class="line"><span class="lineno">  625</span>    }</div>
-<div class="line"><span class="lineno">  626</span>    <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  627</span>    {</div>
-<div class="line"><span class="lineno">  628</span>        ClientRPC_ShowGameMessage_Implementation(Message);</div>
-<div class="line"><span class="lineno">  629</span>    }</div>
-<div class="line"><span class="lineno">  630</span>}</div>
+<p class="definition"><a class="el" href="APlayerActor_8cpp_source.html">APlayerActor.cpp</a> 파일의 <a class="el" href="APlayerActor_8cpp_source.html#l00619">619</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  620</span>{</div>
+<div class="line"><span class="lineno">  621</span>    <a class="code hl_define" href="GameLogging_8h.html#ac50b407bb34c70a0be1fccc74730d143">PRINT_STRING</a>(TEXT(<span class="stringliteral">&quot;Event Received: %s&quot;</span>), *Message);</div>
+<div class="line"><span class="lineno">  622</span> </div>
+<div class="line"><span class="lineno">  623</span>    <span class="comment">// 서버에서 호출되면 클라이언트 RPC로 전달</span></div>
+<div class="line"><span class="lineno">  624</span>    <span class="keywordflow">if</span> (HasAuthority())</div>
+<div class="line"><span class="lineno">  625</span>    {</div>
+<div class="line"><span class="lineno">  626</span>        <a class="code hl_function" href="classAPlayerActor.html#a9a0da1264f0f61d8b908de643e010de7">ClientRPC_ShowGameMessage</a>(Message);</div>
+<div class="line"><span class="lineno">  627</span>    }</div>
+<div class="line"><span class="lineno">  628</span>    <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  629</span>    {</div>
+<div class="line"><span class="lineno">  630</span>        ClientRPC_ShowGameMessage_Implementation(Message);</div>
+<div class="line"><span class="lineno">  631</span>    }</div>
+<div class="line"><span class="lineno">  632</span>}</div>
 <div class="ttc" id="aGameLogging_8h_html_ac50b407bb34c70a0be1fccc74730d143"><div class="ttname"><a href="GameLogging_8h.html#ac50b407bb34c70a0be1fccc74730d143">PRINT_STRING</a></div><div class="ttdeci">#define PRINT_STRING(fmt,...)</div><div class="ttdef"><b>Definition</b> <a href="GameLogging_8h_source.html#l00045">GameLogging.h:45</a></div></div>
 <div class="ttc" id="aclassAPlayerActor_html_a9a0da1264f0f61d8b908de643e010de7"><div class="ttname"><a href="classAPlayerActor.html#a9a0da1264f0f61d8b908de643e010de7">APlayerActor::ClientRPC_ShowGameMessage</a></div><div class="ttdeci">void ClientRPC_ShowGameMessage(const FString &amp;Message)</div><div class="ttdoc">클라이언트에서 게임 메시지를 표시합니다.</div></div>
 </div><!-- fragment -->
@@ -1449,13 +1451,13 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="APlayerActor_8cpp_source.html">APlayerActor.cpp</a> 파일의 <a class="el" href="APlayerActor_8cpp_source.html#l00331">331</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  332</span>{</div>
-<div class="line"><span class="lineno">  333</span>    <a class="code hl_function" href="classAPlayerActor.html#a079c2390a56476586e0ced1a5df2ce72">ApplyAnotherValue</a>();</div>
-<div class="line"><span class="lineno">  334</span>}</div>
-<div class="ttc" id="aclassAPlayerActor_html_a079c2390a56476586e0ced1a5df2ce72"><div class="ttname"><a href="classAPlayerActor.html#a079c2390a56476586e0ced1a5df2ce72">APlayerActor::ApplyAnotherValue</a></div><div class="ttdeci">void ApplyAnotherValue()</div><div class="ttdoc">Another 머티리얼 파라미터를 실제로 적용합니다 (서버/클라이언트 공통)</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8cpp_source.html#l00336">APlayerActor.cpp:336</a></div></div>
+<p class="definition"><a class="el" href="APlayerActor_8cpp_source.html">APlayerActor.cpp</a> 파일의 <a class="el" href="APlayerActor_8cpp_source.html#l00333">333</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  334</span>{</div>
+<div class="line"><span class="lineno">  335</span>    <a class="code hl_function" href="classAPlayerActor.html#a079c2390a56476586e0ced1a5df2ce72">ApplyAnotherValue</a>();</div>
+<div class="line"><span class="lineno">  336</span>}</div>
+<div class="ttc" id="aclassAPlayerActor_html_a079c2390a56476586e0ced1a5df2ce72"><div class="ttname"><a href="classAPlayerActor.html#a079c2390a56476586e0ced1a5df2ce72">APlayerActor::ApplyAnotherValue</a></div><div class="ttdeci">void ApplyAnotherValue()</div><div class="ttdoc">Another 머티리얼 파라미터를 실제로 적용합니다 (서버/클라이언트 공통)</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8cpp_source.html#l00338">APlayerActor.cpp:338</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="APlayerActor_8cpp_source.html#l00336">ApplyAnotherValue()</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="APlayerActor_8cpp_source.html#l00338">ApplyAnotherValue()</a>.</p>
 <div id="dynsection-14" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-14-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-14-summary" class="dynsummary" style="display:block;">
@@ -1489,18 +1491,18 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="APlayerActor_8cpp_source.html">APlayerActor.cpp</a> 파일의 <a class="el" href="APlayerActor_8cpp_source.html#l00307">307</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  308</span>{</div>
-<div class="line"><span class="lineno">  309</span>    Super::OnRep_Controller();</div>
-<div class="line"><span class="lineno">  310</span> </div>
-<div class="line"><span class="lineno">  311</span>    <span class="keywordflow">if</span> (IsLocallyControlled())</div>
-<div class="line"><span class="lineno">  312</span>    {</div>
-<div class="line"><span class="lineno">  313</span>        <a class="code hl_function" href="classAPlayerActor.html#a63641fed19fdb23e32cb16fed3ba2d79">CreateMainWidget</a>();</div>
-<div class="line"><span class="lineno">  314</span>        <a class="code hl_function" href="classAPlayerActor.html#a2f07dd7eee5e4a05fa2457ca52382f3e">CreateToastWidget</a>();</div>
-<div class="line"><span class="lineno">  315</span>    }</div>
-<div class="line"><span class="lineno">  316</span>}</div>
+<p class="definition"><a class="el" href="APlayerActor_8cpp_source.html">APlayerActor.cpp</a> 파일의 <a class="el" href="APlayerActor_8cpp_source.html#l00309">309</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  310</span>{</div>
+<div class="line"><span class="lineno">  311</span>    Super::OnRep_Controller();</div>
+<div class="line"><span class="lineno">  312</span> </div>
+<div class="line"><span class="lineno">  313</span>    <span class="keywordflow">if</span> (IsLocallyControlled())</div>
+<div class="line"><span class="lineno">  314</span>    {</div>
+<div class="line"><span class="lineno">  315</span>        <a class="code hl_function" href="classAPlayerActor.html#a63641fed19fdb23e32cb16fed3ba2d79">CreateMainWidget</a>();</div>
+<div class="line"><span class="lineno">  316</span>        <a class="code hl_function" href="classAPlayerActor.html#a2f07dd7eee5e4a05fa2457ca52382f3e">CreateToastWidget</a>();</div>
+<div class="line"><span class="lineno">  317</span>    }</div>
+<div class="line"><span class="lineno">  318</span>}</div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="APlayerActor_8cpp_source.html#l00215">CreateMainWidget()</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00258">CreateToastWidget()</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="APlayerActor_8cpp_source.html#l00215">CreateMainWidget()</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00260">CreateToastWidget()</a>.</p>
 <div id="dynsection-15" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-15-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-15-summary" class="dynsummary" style="display:block;">
@@ -1534,18 +1536,18 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="APlayerActor_8cpp_source.html">APlayerActor.cpp</a> 파일의 <a class="el" href="APlayerActor_8cpp_source.html#l00318">318</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  319</span>{</div>
-<div class="line"><span class="lineno">  320</span>    <span class="comment">// if (SpringArmComp)</span></div>
-<div class="line"><span class="lineno">  321</span>    <span class="comment">// {</span></div>
-<div class="line"><span class="lineno">  322</span>    <span class="comment">//  // 다른 클라이언트에서 보이는 서버 캐릭터의 복제본의 설정 변경</span></div>
-<div class="line"><span class="lineno">  323</span>    <span class="comment">//  SpringArmComp-&gt;bUsePawnControlRotation = false;</span></div>
-<div class="line"><span class="lineno">  324</span>    <span class="comment">//</span></div>
-<div class="line"><span class="lineno">  325</span>    <span class="comment">//  FRotator CurrentRotation = SpringArmComp-&gt;GetRelativeRotation();</span></div>
-<div class="line"><span class="lineno">  326</span>    <span class="comment">//  CurrentRotation.Pitch = LookPitch;</span></div>
-<div class="line"><span class="lineno">  327</span>    <span class="comment">//  SpringArmComp-&gt;SetRelativeRotation(CurrentRotation);</span></div>
-<div class="line"><span class="lineno">  328</span>    <span class="comment">// }</span></div>
-<div class="line"><span class="lineno">  329</span>}</div>
+<p class="definition"><a class="el" href="APlayerActor_8cpp_source.html">APlayerActor.cpp</a> 파일의 <a class="el" href="APlayerActor_8cpp_source.html#l00320">320</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  321</span>{</div>
+<div class="line"><span class="lineno">  322</span>    <span class="comment">// if (SpringArmComp)</span></div>
+<div class="line"><span class="lineno">  323</span>    <span class="comment">// {</span></div>
+<div class="line"><span class="lineno">  324</span>    <span class="comment">//  // 다른 클라이언트에서 보이는 서버 캐릭터의 복제본의 설정 변경</span></div>
+<div class="line"><span class="lineno">  325</span>    <span class="comment">//  SpringArmComp-&gt;bUsePawnControlRotation = false;</span></div>
+<div class="line"><span class="lineno">  326</span>    <span class="comment">//</span></div>
+<div class="line"><span class="lineno">  327</span>    <span class="comment">//  FRotator CurrentRotation = SpringArmComp-&gt;GetRelativeRotation();</span></div>
+<div class="line"><span class="lineno">  328</span>    <span class="comment">//  CurrentRotation.Pitch = LookPitch;</span></div>
+<div class="line"><span class="lineno">  329</span>    <span class="comment">//  SpringArmComp-&gt;SetRelativeRotation(CurrentRotation);</span></div>
+<div class="line"><span class="lineno">  330</span>    <span class="comment">// }</span></div>
+<div class="line"><span class="lineno">  331</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1583,24 +1585,24 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="APlayerActor_8cpp_source.html">APlayerActor.cpp</a> 파일의 <a class="el" href="APlayerActor_8cpp_source.html#l00525">525</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  526</span>{</div>
-<div class="line"><span class="lineno">  527</span>    <a class="code hl_variable" href="classAPlayerActor.html#a98978cab98af6b0bff70b65be2b0d5d5">bIsRequest</a> = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  528</span> </div>
-<div class="line"><span class="lineno">  529</span>    <span class="keywordflow">if</span> (bWasSuccessful)</div>
-<div class="line"><span class="lineno">  530</span>    {</div>
-<div class="line"><span class="lineno">  531</span>        this-&gt;<a class="code hl_function" href="classAPlayerActor.html#adb01d4a0bb1c938f419029317ccae1dd">PlayTTSAudio</a>(ResponseData.<a class="code hl_variable" href="structFResponseListenAudio.html#a39dfdd52ce3770dfbccf800986ce4607">audio_base64</a>);</div>
-<div class="line"><span class="lineno">  532</span>        UDialogManager::Get(GetWorld())-&gt;ShowToast(*ResponseData.<a class="code hl_variable" href="structFResponseListenAudio.html#ac98fb8b7db5c2bbb9bd42bf9fd72f71f">audio_text</a>);</div>
-<div class="line"><span class="lineno">  533</span>    }</div>
-<div class="line"><span class="lineno">  534</span>}</div>
+<p class="definition"><a class="el" href="APlayerActor_8cpp_source.html">APlayerActor.cpp</a> 파일의 <a class="el" href="APlayerActor_8cpp_source.html#l00527">527</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  528</span>{</div>
+<div class="line"><span class="lineno">  529</span>    <a class="code hl_variable" href="classAPlayerActor.html#a98978cab98af6b0bff70b65be2b0d5d5">bIsRequest</a> = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  530</span> </div>
+<div class="line"><span class="lineno">  531</span>    <span class="keywordflow">if</span> (bWasSuccessful)</div>
+<div class="line"><span class="lineno">  532</span>    {</div>
+<div class="line"><span class="lineno">  533</span>        this-&gt;<a class="code hl_function" href="classAPlayerActor.html#adb01d4a0bb1c938f419029317ccae1dd">PlayTTSAudio</a>(ResponseData.<a class="code hl_variable" href="structFResponseListenAudio.html#a39dfdd52ce3770dfbccf800986ce4607">audio_base64</a>);</div>
+<div class="line"><span class="lineno">  534</span>        UDialogManager::Get(GetWorld())-&gt;ShowToast(*ResponseData.<a class="code hl_variable" href="structFResponseListenAudio.html#ac98fb8b7db5c2bbb9bd42bf9fd72f71f">audio_text</a>);</div>
+<div class="line"><span class="lineno">  535</span>    }</div>
+<div class="line"><span class="lineno">  536</span>}</div>
 <div class="ttc" id="aclassAPlayerActor_html_a98978cab98af6b0bff70b65be2b0d5d5"><div class="ttname"><a href="classAPlayerActor.html#a98978cab98af6b0bff70b65be2b0d5d5">APlayerActor::bIsRequest</a></div><div class="ttdeci">bool bIsRequest</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8h_source.html#l00241">APlayerActor.h:241</a></div></div>
-<div class="ttc" id="aclassAPlayerActor_html_adb01d4a0bb1c938f419029317ccae1dd"><div class="ttname"><a href="classAPlayerActor.html#adb01d4a0bb1c938f419029317ccae1dd">APlayerActor::PlayTTSAudio</a></div><div class="ttdeci">void PlayTTSAudio(const TArray&lt; uint8 &gt; &amp;AudioData)</div><div class="ttdoc">TTS 오디오를 재생합니다. VoiceConversationSystem으로 전달합니다.</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8cpp_source.html#l00375">APlayerActor.cpp:375</a></div></div>
+<div class="ttc" id="aclassAPlayerActor_html_adb01d4a0bb1c938f419029317ccae1dd"><div class="ttname"><a href="classAPlayerActor.html#adb01d4a0bb1c938f419029317ccae1dd">APlayerActor::PlayTTSAudio</a></div><div class="ttdeci">void PlayTTSAudio(const TArray&lt; uint8 &gt; &amp;AudioData)</div><div class="ttdoc">TTS 오디오를 재생합니다. VoiceConversationSystem으로 전달합니다.</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8cpp_source.html#l00377">APlayerActor.cpp:377</a></div></div>
 <div class="ttc" id="astructFResponseListenAudio_html_a39dfdd52ce3770dfbccf800986ce4607"><div class="ttname"><a href="structFResponseListenAudio.html#a39dfdd52ce3770dfbccf800986ce4607">FResponseListenAudio::audio_base64</a></div><div class="ttdeci">TArray&lt; uint8 &gt; audio_base64</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00801">NetworkData.h:801</a></div></div>
 <div class="ttc" id="astructFResponseListenAudio_html_ac98fb8b7db5c2bbb9bd42bf9fd72f71f"><div class="ttname"><a href="structFResponseListenAudio.html#ac98fb8b7db5c2bbb9bd42bf9fd72f71f">FResponseListenAudio::audio_text</a></div><div class="ttdeci">FString audio_text</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00798">NetworkData.h:798</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="NetworkData_8h_source.html#l00801">FResponseListenAudio::audio_base64</a>, <a class="el" href="NetworkData_8h_source.html#l00798">FResponseListenAudio::audio_text</a>, <a class="el" href="APlayerActor_8h_source.html#l00241">bIsRequest</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00375">PlayTTSAudio()</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="NetworkData_8h_source.html#l00801">FResponseListenAudio::audio_base64</a>, <a class="el" href="NetworkData_8h_source.html#l00798">FResponseListenAudio::audio_text</a>, <a class="el" href="APlayerActor_8h_source.html#l00241">bIsRequest</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00377">PlayTTSAudio()</a>.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerActor_8cpp_source.html#l00509">RequestListenAudio()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerActor_8cpp_source.html#l00511">RequestListenAudio()</a>.</p>
 <div id="dynsection-16" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-16-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-16-summary" class="dynsummary" style="display:block;">
@@ -1652,19 +1654,19 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="APlayerActor_8cpp_source.html">APlayerActor.cpp</a> 파일의 <a class="el" href="APlayerActor_8cpp_source.html#l00553">553</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  554</span>{</div>
-<div class="line"><span class="lineno">  555</span>    <a class="code hl_variable" href="classAPlayerActor.html#a98978cab98af6b0bff70b65be2b0d5d5">bIsRequest</a> = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  556</span> </div>
-<div class="line"><span class="lineno">  557</span>    <span class="keywordflow">if</span> (bWasSuccessful)</div>
-<div class="line"><span class="lineno">  558</span>    {</div>
-<div class="line"><span class="lineno">  559</span>        this-&gt;<a class="code hl_function" href="classAPlayerActor.html#adb01d4a0bb1c938f419029317ccae1dd">PlayTTSAudio</a>(ResponseData.<a class="code hl_variable" href="structFResponseListenAudio.html#a39dfdd52ce3770dfbccf800986ce4607">audio_base64</a>);</div>
-<div class="line"><span class="lineno">  560</span>    }</div>
-<div class="line"><span class="lineno">  561</span>}</div>
+<p class="definition"><a class="el" href="APlayerActor_8cpp_source.html">APlayerActor.cpp</a> 파일의 <a class="el" href="APlayerActor_8cpp_source.html#l00555">555</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  556</span>{</div>
+<div class="line"><span class="lineno">  557</span>    <a class="code hl_variable" href="classAPlayerActor.html#a98978cab98af6b0bff70b65be2b0d5d5">bIsRequest</a> = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  558</span> </div>
+<div class="line"><span class="lineno">  559</span>    <span class="keywordflow">if</span> (bWasSuccessful)</div>
+<div class="line"><span class="lineno">  560</span>    {</div>
+<div class="line"><span class="lineno">  561</span>        this-&gt;<a class="code hl_function" href="classAPlayerActor.html#adb01d4a0bb1c938f419029317ccae1dd">PlayTTSAudio</a>(ResponseData.<a class="code hl_variable" href="structFResponseListenAudio.html#a39dfdd52ce3770dfbccf800986ce4607">audio_base64</a>);</div>
+<div class="line"><span class="lineno">  562</span>    }</div>
+<div class="line"><span class="lineno">  563</span>}</div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="NetworkData_8h_source.html#l00801">FResponseListenAudio::audio_base64</a>, <a class="el" href="APlayerActor_8h_source.html#l00241">bIsRequest</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00375">PlayTTSAudio()</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="NetworkData_8h_source.html#l00801">FResponseListenAudio::audio_base64</a>, <a class="el" href="APlayerActor_8h_source.html#l00241">bIsRequest</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00377">PlayTTSAudio()</a>.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerActor_8cpp_source.html#l00537">RequestSpeakAudio()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerActor_8cpp_source.html#l00539">RequestSpeakAudio()</a>.</p>
 <div id="dynsection-18" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-18-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-18-summary" class="dynsummary" style="display:block;">
@@ -1706,22 +1708,22 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="APlayerActor_8cpp_source.html">APlayerActor.cpp</a> 파일의 <a class="el" href="APlayerActor_8cpp_source.html#l00755">755</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  756</span>{</div>
-<div class="line"><span class="lineno">  757</span>    <span class="keywordflow">if</span> (!IsLocallyControlled())</div>
-<div class="line"><span class="lineno">  758</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  759</span> </div>
-<div class="line"><span class="lineno">  760</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAPlayerActor.html#a21817a3bc97f6962b8ece7941b67996d">MainWidget</a>)</div>
-<div class="line"><span class="lineno">  761</span>    {</div>
-<div class="line"><span class="lineno">  762</span>        <span class="keywordflow">if</span> (<span class="keyword">auto</span> GS = <a class="code hl_function" href="classULingoGameHelper.html#aae5e9443e2249c16219279d75b62cb46">ULingoGameHelper::GetLingoGameState</a>(GetWorld()))</div>
-<div class="line"><span class="lineno">  763</span>        {</div>
-<div class="line"><span class="lineno">  764</span>            <span class="keyword">const</span> <span class="keywordtype">int</span> RoomLevel = GS-&gt;GetRoomLevel();</div>
-<div class="line"><span class="lineno">  765</span>            <span class="keyword">const</span> <span class="keywordtype">int</span> RoomId = NewRoomId;</div>
-<div class="line"><span class="lineno">  766</span>            </div>
-<div class="line"><span class="lineno">  767</span>            <a class="code hl_variable" href="classAPlayerActor.html#a21817a3bc97f6962b8ece7941b67996d">MainWidget</a>-&gt;UpdateRoomWidget(RoomLevel, RoomId);</div>
-<div class="line"><span class="lineno">  768</span>        }</div>
-<div class="line"><span class="lineno">  769</span>    }</div>
-<div class="line"><span class="lineno">  770</span>}</div>
+<p class="definition"><a class="el" href="APlayerActor_8cpp_source.html">APlayerActor.cpp</a> 파일의 <a class="el" href="APlayerActor_8cpp_source.html#l00757">757</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  758</span>{</div>
+<div class="line"><span class="lineno">  759</span>    <span class="keywordflow">if</span> (!IsLocallyControlled())</div>
+<div class="line"><span class="lineno">  760</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  761</span> </div>
+<div class="line"><span class="lineno">  762</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAPlayerActor.html#a21817a3bc97f6962b8ece7941b67996d">MainWidget</a>)</div>
+<div class="line"><span class="lineno">  763</span>    {</div>
+<div class="line"><span class="lineno">  764</span>        <span class="keywordflow">if</span> (<span class="keyword">auto</span> GS = <a class="code hl_function" href="classULingoGameHelper.html#aae5e9443e2249c16219279d75b62cb46">ULingoGameHelper::GetLingoGameState</a>(GetWorld()))</div>
+<div class="line"><span class="lineno">  765</span>        {</div>
+<div class="line"><span class="lineno">  766</span>            <span class="keyword">const</span> <span class="keywordtype">int</span> RoomLevel = GS-&gt;GetRoomLevel();</div>
+<div class="line"><span class="lineno">  767</span>            <span class="keyword">const</span> <span class="keywordtype">int</span> RoomId = NewRoomId;</div>
+<div class="line"><span class="lineno">  768</span>            </div>
+<div class="line"><span class="lineno">  769</span>            <a class="code hl_variable" href="classAPlayerActor.html#a21817a3bc97f6962b8ece7941b67996d">MainWidget</a>-&gt;UpdateRoomWidget(RoomLevel, RoomId);</div>
+<div class="line"><span class="lineno">  770</span>        }</div>
+<div class="line"><span class="lineno">  771</span>    }</div>
+<div class="line"><span class="lineno">  772</span>}</div>
 </div><!-- fragment -->
 <p class="reference">다음을 참조함 :  <a class="el" href="ULingoGameHelper_8cpp_source.html#l00048">ULingoGameHelper::GetLingoGameState()</a>, <a class="el" href="APlayerActor_8h_source.html#l00224">MainWidget</a>.</p>
 
@@ -1767,22 +1769,22 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="APlayerActor_8cpp_source.html">APlayerActor.cpp</a> 파일의 <a class="el" href="APlayerActor_8cpp_source.html#l00772">772</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  773</span>{</div>
-<div class="line"><span class="lineno">  774</span>    <span class="keywordflow">if</span> (!IsLocallyControlled())</div>
-<div class="line"><span class="lineno">  775</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  776</span> </div>
-<div class="line"><span class="lineno">  777</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAPlayerActor.html#a21817a3bc97f6962b8ece7941b67996d">MainWidget</a>)</div>
-<div class="line"><span class="lineno">  778</span>    {</div>
-<div class="line"><span class="lineno">  779</span>        <span class="keywordflow">if</span> (<span class="keyword">auto</span> GS = <a class="code hl_function" href="classULingoGameHelper.html#aae5e9443e2249c16219279d75b62cb46">ULingoGameHelper::GetLingoGameState</a>(GetWorld()))</div>
-<div class="line"><span class="lineno">  780</span>        {</div>
-<div class="line"><span class="lineno">  781</span>            <span class="keyword">const</span> <span class="keywordtype">int</span> RoomLevel = NewRoomLevel;</div>
-<div class="line"><span class="lineno">  782</span>            <span class="keyword">const</span> <span class="keywordtype">int</span> RoomId = GS-&gt;GetRoomId();</div>
-<div class="line"><span class="lineno">  783</span>            </div>
-<div class="line"><span class="lineno">  784</span>            <a class="code hl_variable" href="classAPlayerActor.html#a21817a3bc97f6962b8ece7941b67996d">MainWidget</a>-&gt;UpdateRoomWidget(RoomLevel, RoomId);</div>
-<div class="line"><span class="lineno">  785</span>        }</div>
-<div class="line"><span class="lineno">  786</span>    }</div>
-<div class="line"><span class="lineno">  787</span>}</div>
+<p class="definition"><a class="el" href="APlayerActor_8cpp_source.html">APlayerActor.cpp</a> 파일의 <a class="el" href="APlayerActor_8cpp_source.html#l00774">774</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  775</span>{</div>
+<div class="line"><span class="lineno">  776</span>    <span class="keywordflow">if</span> (!IsLocallyControlled())</div>
+<div class="line"><span class="lineno">  777</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  778</span> </div>
+<div class="line"><span class="lineno">  779</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAPlayerActor.html#a21817a3bc97f6962b8ece7941b67996d">MainWidget</a>)</div>
+<div class="line"><span class="lineno">  780</span>    {</div>
+<div class="line"><span class="lineno">  781</span>        <span class="keywordflow">if</span> (<span class="keyword">auto</span> GS = <a class="code hl_function" href="classULingoGameHelper.html#aae5e9443e2249c16219279d75b62cb46">ULingoGameHelper::GetLingoGameState</a>(GetWorld()))</div>
+<div class="line"><span class="lineno">  782</span>        {</div>
+<div class="line"><span class="lineno">  783</span>            <span class="keyword">const</span> <span class="keywordtype">int</span> RoomLevel = NewRoomLevel;</div>
+<div class="line"><span class="lineno">  784</span>            <span class="keyword">const</span> <span class="keywordtype">int</span> RoomId = GS-&gt;GetRoomId();</div>
+<div class="line"><span class="lineno">  785</span>            </div>
+<div class="line"><span class="lineno">  786</span>            <a class="code hl_variable" href="classAPlayerActor.html#a21817a3bc97f6962b8ece7941b67996d">MainWidget</a>-&gt;UpdateRoomWidget(RoomLevel, RoomId);</div>
+<div class="line"><span class="lineno">  787</span>        }</div>
+<div class="line"><span class="lineno">  788</span>    }</div>
+<div class="line"><span class="lineno">  789</span>}</div>
 </div><!-- fragment -->
 <p class="reference">다음을 참조함 :  <a class="el" href="ULingoGameHelper_8cpp_source.html#l00048">ULingoGameHelper::GetLingoGameState()</a>, <a class="el" href="APlayerActor_8h_source.html#l00224">MainWidget</a>.</p>
 
@@ -1836,43 +1838,43 @@ Private 속성</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition"><a class="el" href="APlayerActor_8cpp_source.html">APlayerActor.cpp</a> 파일의 <a class="el" href="APlayerActor_8cpp_source.html#l00641">641</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  642</span>{</div>
-<div class="line"><span class="lineno">  643</span>    <span class="comment">// 서버에 텔레포트 요청</span></div>
-<div class="line"><span class="lineno">  644</span>    <a class="code hl_function" href="classAPlayerActor.html#ab0295b2e46c5bacfb9524cb08d3ba0c7">ServerRPC_Teleport</a>(TargetLocation);</div>
-<div class="line"><span class="lineno">  645</span> </div>
-<div class="line"><span class="lineno">  646</span>    <span class="comment">// 로컬 플레이어만 페이드 처리</span></div>
-<div class="line"><span class="lineno">  647</span>    <span class="keywordflow">if</span> (!IsLocallyControlled())</div>
-<div class="line"><span class="lineno">  648</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  649</span> </div>
-<div class="line"><span class="lineno">  650</span>    <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;APlayerActor::OnTeleportAllPlayers - Start teleport to %s&quot;</span>), *TargetLocation.ToString());</div>
+<p class="definition"><a class="el" href="APlayerActor_8cpp_source.html">APlayerActor.cpp</a> 파일의 <a class="el" href="APlayerActor_8cpp_source.html#l00643">643</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  644</span>{</div>
+<div class="line"><span class="lineno">  645</span>    <span class="comment">// 서버에 텔레포트 요청</span></div>
+<div class="line"><span class="lineno">  646</span>    <a class="code hl_function" href="classAPlayerActor.html#ab0295b2e46c5bacfb9524cb08d3ba0c7">ServerRPC_Teleport</a>(TargetLocation);</div>
+<div class="line"><span class="lineno">  647</span> </div>
+<div class="line"><span class="lineno">  648</span>    <span class="comment">// 로컬 플레이어만 페이드 처리</span></div>
+<div class="line"><span class="lineno">  649</span>    <span class="keywordflow">if</span> (!IsLocallyControlled())</div>
+<div class="line"><span class="lineno">  650</span>        <span class="keywordflow">return</span>;</div>
 <div class="line"><span class="lineno">  651</span> </div>
-<div class="line"><span class="lineno">  652</span>    <span class="comment">// 목표 위치 저장</span></div>
-<div class="line"><span class="lineno">  653</span>    <a class="code hl_variable" href="classAPlayerActor.html#af642d2936891008c201f850f9cd76509">PendingTeleportLocation</a> = TargetLocation;</div>
-<div class="line"><span class="lineno">  654</span> </div>
-<div class="line"><span class="lineno">  655</span>    <span class="comment">// FadeWidget 가져오기</span></div>
-<div class="line"><span class="lineno">  656</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classAPlayerActor.html#a21817a3bc97f6962b8ece7941b67996d">MainWidget</a>)</div>
-<div class="line"><span class="lineno">  657</span>    {</div>
-<div class="line"><span class="lineno">  658</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;APlayerActor::OnTeleportAllPlayers - MainWidget is null&quot;</span>));</div>
-<div class="line"><span class="lineno">  659</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  660</span>    }</div>
-<div class="line"><span class="lineno">  661</span> </div>
-<div class="line"><span class="lineno">  662</span>    <a class="code hl_class" href="classUFadeWidget.html">UFadeWidget</a>* FadeWidget = <a class="code hl_variable" href="classAPlayerActor.html#a21817a3bc97f6962b8ece7941b67996d">MainWidget</a>-&gt;GetFadeWidget();</div>
-<div class="line"><span class="lineno">  663</span>    <span class="keywordflow">if</span> (!FadeWidget)</div>
-<div class="line"><span class="lineno">  664</span>    {</div>
-<div class="line"><span class="lineno">  665</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;APlayerActor::OnTeleportAllPlayers - FadeWidget is null&quot;</span>));</div>
-<div class="line"><span class="lineno">  666</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  667</span>    }</div>
-<div class="line"><span class="lineno">  668</span> </div>
-<div class="line"><span class="lineno">  669</span>    <span class="comment">// FadeOut 완료 시 텔레포트 실행</span></div>
-<div class="line"><span class="lineno">  670</span>    FadeWidget-&gt;<a class="code hl_variable" href="classUFadeWidget.html#a18532b40c5afc773309952b6c08b9642">OnFadeOutComplete</a>.AddDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classAPlayerActor.html#ac114c2627877ad4ba81cf41466885856">APlayerActor::OnFadeOutCompleteForTeleport</a>);</div>
-<div class="line"><span class="lineno">  671</span> </div>
-<div class="line"><span class="lineno">  672</span>    <span class="comment">// FadeOut 시작</span></div>
-<div class="line"><span class="lineno">  673</span>    <a class="code hl_variable" href="classAPlayerActor.html#a21817a3bc97f6962b8ece7941b67996d">MainWidget</a>-&gt;FadeOut(0.5f);</div>
-<div class="line"><span class="lineno">  674</span>}</div>
+<div class="line"><span class="lineno">  652</span>    <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;APlayerActor::OnTeleportAllPlayers - Start teleport to %s&quot;</span>), *TargetLocation.ToString());</div>
+<div class="line"><span class="lineno">  653</span> </div>
+<div class="line"><span class="lineno">  654</span>    <span class="comment">// 목표 위치 저장</span></div>
+<div class="line"><span class="lineno">  655</span>    <a class="code hl_variable" href="classAPlayerActor.html#af642d2936891008c201f850f9cd76509">PendingTeleportLocation</a> = TargetLocation;</div>
+<div class="line"><span class="lineno">  656</span> </div>
+<div class="line"><span class="lineno">  657</span>    <span class="comment">// FadeWidget 가져오기</span></div>
+<div class="line"><span class="lineno">  658</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classAPlayerActor.html#a21817a3bc97f6962b8ece7941b67996d">MainWidget</a>)</div>
+<div class="line"><span class="lineno">  659</span>    {</div>
+<div class="line"><span class="lineno">  660</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;APlayerActor::OnTeleportAllPlayers - MainWidget is null&quot;</span>));</div>
+<div class="line"><span class="lineno">  661</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  662</span>    }</div>
+<div class="line"><span class="lineno">  663</span> </div>
+<div class="line"><span class="lineno">  664</span>    <a class="code hl_class" href="classUFadeWidget.html">UFadeWidget</a>* FadeWidget = <a class="code hl_variable" href="classAPlayerActor.html#a21817a3bc97f6962b8ece7941b67996d">MainWidget</a>-&gt;GetFadeWidget();</div>
+<div class="line"><span class="lineno">  665</span>    <span class="keywordflow">if</span> (!FadeWidget)</div>
+<div class="line"><span class="lineno">  666</span>    {</div>
+<div class="line"><span class="lineno">  667</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;APlayerActor::OnTeleportAllPlayers - FadeWidget is null&quot;</span>));</div>
+<div class="line"><span class="lineno">  668</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  669</span>    }</div>
+<div class="line"><span class="lineno">  670</span> </div>
+<div class="line"><span class="lineno">  671</span>    <span class="comment">// FadeOut 완료 시 텔레포트 실행</span></div>
+<div class="line"><span class="lineno">  672</span>    FadeWidget-&gt;<a class="code hl_variable" href="classUFadeWidget.html#a18532b40c5afc773309952b6c08b9642">OnFadeOutComplete</a>.AddDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classAPlayerActor.html#ac114c2627877ad4ba81cf41466885856">APlayerActor::OnFadeOutCompleteForTeleport</a>);</div>
+<div class="line"><span class="lineno">  673</span> </div>
+<div class="line"><span class="lineno">  674</span>    <span class="comment">// FadeOut 시작</span></div>
+<div class="line"><span class="lineno">  675</span>    <a class="code hl_variable" href="classAPlayerActor.html#a21817a3bc97f6962b8ece7941b67996d">MainWidget</a>-&gt;FadeOut(0.5f);</div>
+<div class="line"><span class="lineno">  676</span>}</div>
 <div class="ttc" id="aclassAPlayerActor_html_ab0295b2e46c5bacfb9524cb08d3ba0c7"><div class="ttname"><a href="classAPlayerActor.html#ab0295b2e46c5bacfb9524cb08d3ba0c7">APlayerActor::ServerRPC_Teleport</a></div><div class="ttdeci">void ServerRPC_Teleport(FVector TargetLocation)</div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="APlayerActor_8h_source.html#l00224">MainWidget</a>, <a class="el" href="UFadeWidget_8h_source.html#l00047">UFadeWidget::OnFadeOutComplete</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00703">OnFadeOutCompleteForTeleport()</a>, <a class="el" href="APlayerActor_8h_source.html#l00233">PendingTeleportLocation</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>, <a class="el" href="classAPlayerActor.html#ab0295b2e46c5bacfb9524cb08d3ba0c7">ServerRPC_Teleport()</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="APlayerActor_8h_source.html#l00224">MainWidget</a>, <a class="el" href="UFadeWidget_8h_source.html#l00047">UFadeWidget::OnFadeOutComplete</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00705">OnFadeOutCompleteForTeleport()</a>, <a class="el" href="APlayerActor_8h_source.html#l00233">PendingTeleportLocation</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>, <a class="el" href="classAPlayerActor.html#ab0295b2e46c5bacfb9524cb08d3ba0c7">ServerRPC_Teleport()</a>.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerActor_8cpp_source.html#l00132">BeginPlay()</a>.</p>
 <div id="dynsection-24" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -1908,26 +1910,26 @@ Private 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="APlayerActor_8cpp_source.html">APlayerActor.cpp</a> 파일의 <a class="el" href="APlayerActor_8cpp_source.html#l00489">489</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  490</span>{</div>
-<div class="line"><span class="lineno">  491</span>    <span class="keyword">auto</span> PS = GetPlayerState&lt;ALingoPlayerState&gt;();</div>
-<div class="line"><span class="lineno">  492</span> </div>
-<div class="line"><span class="lineno">  493</span>    <a class="code hl_struct" href="structFSpeakStageQuestion.html">FSpeakStageQuestion</a> CurrentSpeakQuestion;</div>
-<div class="line"><span class="lineno">  494</span>    <span class="keywordflow">if</span> (PS-&gt;GetCurrentSpeakQuestion(StepIndex, CurrentSpeakQuestion))</div>
-<div class="line"><span class="lineno">  495</span>    {</div>
-<div class="line"><span class="lineno">  496</span>        <span class="keywordflow">if</span> (<a class="code hl_class" href="classUDialogManager.html">UDialogManager</a>* DM = UDialogManager::Get(GetWorld()))</div>
-<div class="line"><span class="lineno">  497</span>            DM-&gt;ShowToast(*CurrentSpeakQuestion.<a class="code hl_function" href="structFSpeakStageQuestion.html#a30d7ab1b5a12e8c02febcde46397092a">GetQuestionMessage</a>());</div>
-<div class="line"><span class="lineno">  498</span> </div>
-<div class="line"><span class="lineno">  499</span>        <a class="code hl_function" href="classAPlayerActor.html#a182d5478895ad51a12b3b342c7f0294f">RequestSpeakAudio</a>(CurrentSpeakQuestion.<a class="code hl_variable" href="structFSpeakStageQuestion.html#ac07b038c028b38e260e8ef224685e64c">kor</a>);</div>
-<div class="line"><span class="lineno">  500</span>    }</div>
-<div class="line"><span class="lineno">  501</span>}</div>
-<div class="ttc" id="aclassAPlayerActor_html_a182d5478895ad51a12b3b342c7f0294f"><div class="ttname"><a href="classAPlayerActor.html#a182d5478895ad51a12b3b342c7f0294f">APlayerActor::RequestSpeakAudio</a></div><div class="ttdeci">void RequestSpeakAudio(const FString &amp;AudioText)</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8cpp_source.html#l00537">APlayerActor.cpp:537</a></div></div>
+<p class="definition"><a class="el" href="APlayerActor_8cpp_source.html">APlayerActor.cpp</a> 파일의 <a class="el" href="APlayerActor_8cpp_source.html#l00491">491</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  492</span>{</div>
+<div class="line"><span class="lineno">  493</span>    <span class="keyword">auto</span> PS = GetPlayerState&lt;ALingoPlayerState&gt;();</div>
+<div class="line"><span class="lineno">  494</span> </div>
+<div class="line"><span class="lineno">  495</span>    <a class="code hl_struct" href="structFSpeakStageQuestion.html">FSpeakStageQuestion</a> CurrentSpeakQuestion;</div>
+<div class="line"><span class="lineno">  496</span>    <span class="keywordflow">if</span> (PS-&gt;GetCurrentSpeakQuestion(StepIndex, CurrentSpeakQuestion))</div>
+<div class="line"><span class="lineno">  497</span>    {</div>
+<div class="line"><span class="lineno">  498</span>        <span class="keywordflow">if</span> (<a class="code hl_class" href="classUDialogManager.html">UDialogManager</a>* DM = UDialogManager::Get(GetWorld()))</div>
+<div class="line"><span class="lineno">  499</span>            DM-&gt;ShowToast(*CurrentSpeakQuestion.<a class="code hl_function" href="structFSpeakStageQuestion.html#a30d7ab1b5a12e8c02febcde46397092a">GetQuestionMessage</a>());</div>
+<div class="line"><span class="lineno">  500</span> </div>
+<div class="line"><span class="lineno">  501</span>        <a class="code hl_function" href="classAPlayerActor.html#a182d5478895ad51a12b3b342c7f0294f">RequestSpeakAudio</a>(CurrentSpeakQuestion.<a class="code hl_variable" href="structFSpeakStageQuestion.html#ac07b038c028b38e260e8ef224685e64c">kor</a>);</div>
+<div class="line"><span class="lineno">  502</span>    }</div>
+<div class="line"><span class="lineno">  503</span>}</div>
+<div class="ttc" id="aclassAPlayerActor_html_a182d5478895ad51a12b3b342c7f0294f"><div class="ttname"><a href="classAPlayerActor.html#a182d5478895ad51a12b3b342c7f0294f">APlayerActor::RequestSpeakAudio</a></div><div class="ttdeci">void RequestSpeakAudio(const FString &amp;AudioText)</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8cpp_source.html#l00539">APlayerActor.cpp:539</a></div></div>
 <div class="ttc" id="aclassUDialogManager_html"><div class="ttname"><a href="classUDialogManager.html">UDialogManager</a></div><div class="ttdoc">토스트 메시지와 같은 간단한 다이얼로그 위젯의 표시를 관리하는 LocalPlayer 서브시스템입니다.</div><div class="ttdef"><b>Definition</b> <a href="UDialogManager_8h_source.html#l00018">UDialogManager.h:19</a></div></div>
 <div class="ttc" id="astructFSpeakStageQuestion_html"><div class="ttname"><a href="structFSpeakStageQuestion.html">FSpeakStageQuestion</a></div><div class="ttdoc">SpeakQuest 오디오 질문 데이터 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l01134">NetworkData.h:1135</a></div></div>
 <div class="ttc" id="astructFSpeakStageQuestion_html_a30d7ab1b5a12e8c02febcde46397092a"><div class="ttname"><a href="structFSpeakStageQuestion.html#a30d7ab1b5a12e8c02febcde46397092a">FSpeakStageQuestion::GetQuestionMessage</a></div><div class="ttdeci">FString GetQuestionMessage() const</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8cpp_source.html#l01203">NetworkData.cpp:1203</a></div></div>
 <div class="ttc" id="astructFSpeakStageQuestion_html_ac07b038c028b38e260e8ef224685e64c"><div class="ttname"><a href="structFSpeakStageQuestion.html#ac07b038c028b38e260e8ef224685e64c">FSpeakStageQuestion::kor</a></div><div class="ttdeci">FString kor</div><div class="ttdoc">한국어 질문</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l01140">NetworkData.h:1140</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="NetworkData_8cpp_source.html#l01203">FSpeakStageQuestion::GetQuestionMessage()</a>, <a class="el" href="NetworkData_8h_source.html#l01140">FSpeakStageQuestion::kor</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00537">RequestSpeakAudio()</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="NetworkData_8cpp_source.html#l01203">FSpeakStageQuestion::GetQuestionMessage()</a>, <a class="el" href="NetworkData_8h_source.html#l01140">FSpeakStageQuestion::kor</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00539">RequestSpeakAudio()</a>.</p>
 <div id="dynsection-26" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-26-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-26-summary" class="dynsummary" style="display:block;">
@@ -1963,14 +1965,14 @@ Private 속성</h2></td></tr>
 </dl>
 <dl class="section return"><dt>반환값</dt><dd>재생 성공 여부 </dd></dl>
 
-<p class="definition"><a class="el" href="APlayerActor_8cpp_source.html">APlayerActor.cpp</a> 파일의 <a class="el" href="APlayerActor_8cpp_source.html#l00375">375</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  376</span>{</div>
-<div class="line"><span class="lineno">  377</span>    <a class="code hl_variable" href="classAPlayerActor.html#a0c1400db5f943254071089e512a2bb25">VoiceConversationSystem</a>-&gt;PlayVoiceAudio(AudioData);</div>
-<div class="line"><span class="lineno">  378</span>}</div>
+<p class="definition"><a class="el" href="APlayerActor_8cpp_source.html">APlayerActor.cpp</a> 파일의 <a class="el" href="APlayerActor_8cpp_source.html#l00377">377</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  378</span>{</div>
+<div class="line"><span class="lineno">  379</span>    <a class="code hl_variable" href="classAPlayerActor.html#a0c1400db5f943254071089e512a2bb25">VoiceConversationSystem</a>-&gt;PlayVoiceAudio(AudioData);</div>
+<div class="line"><span class="lineno">  380</span>}</div>
 </div><!-- fragment -->
 <p class="reference">다음을 참조함 :  <a class="el" href="APlayerActor_8h_source.html#l00080">VoiceConversationSystem</a>.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerActor_8cpp_source.html#l00525">OnResponseListenAudio()</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00553">OnResponseSpeakAudio()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerActor_8cpp_source.html#l00527">OnResponseListenAudio()</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00555">OnResponseSpeakAudio()</a>.</p>
 <div id="dynsection-27" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-27-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-27-summary" class="dynsummary" style="display:block;">
@@ -2005,26 +2007,26 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="APlayerActor_8cpp_source.html">APlayerActor.cpp</a> 파일의 <a class="el" href="APlayerActor_8cpp_source.html#l00275">275</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  276</span>{</div>
-<div class="line"><span class="lineno">  277</span>    Super::PossessedBy(NewController);</div>
-<div class="line"><span class="lineno">  278</span>    </div>
-<div class="line"><span class="lineno">  279</span>    APlayerState* PS = GetPlayerState();</div>
-<div class="line"><span class="lineno">  280</span>    <span class="keywordflow">if</span> (!PS)</div>
-<div class="line"><span class="lineno">  281</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  282</span> </div>
-<div class="line"><span class="lineno">  283</span>    <span class="comment">// 플레이어 인덱스 확인 (GameState의 PlayerArray 사용)</span></div>
-<div class="line"><span class="lineno">  284</span>    int32 PlayerIndex = -1;</div>
-<div class="line"><span class="lineno">  285</span>    <span class="keywordflow">if</span> (AGameStateBase* GS = GetWorld()-&gt;GetGameState())</div>
-<div class="line"><span class="lineno">  286</span>        PlayerIndex = GS-&gt;PlayerArray.IndexOfByKey(PS);</div>
-<div class="line"><span class="lineno">  287</span> </div>
-<div class="line"><span class="lineno">  288</span>    <span class="comment">// 2P에게 Another = 1 적용 (1P는 0)</span></div>
-<div class="line"><span class="lineno">  289</span>    <a class="code hl_variable" href="classAPlayerActor.html#a57d536023470eebddc11f8c929d6dfd5">AnotherValue</a> = (PlayerIndex == 0) ? 0.0f : 1.0f;</div>
-<div class="line"><span class="lineno">  290</span> </div>
-<div class="line"><span class="lineno">  291</span>    <a class="code hl_function" href="classAPlayerActor.html#a079c2390a56476586e0ced1a5df2ce72">ApplyAnotherValue</a>();</div>
-<div class="line"><span class="lineno">  292</span>}</div>
+<p class="definition"><a class="el" href="APlayerActor_8cpp_source.html">APlayerActor.cpp</a> 파일의 <a class="el" href="APlayerActor_8cpp_source.html#l00277">277</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  278</span>{</div>
+<div class="line"><span class="lineno">  279</span>    Super::PossessedBy(NewController);</div>
+<div class="line"><span class="lineno">  280</span>    </div>
+<div class="line"><span class="lineno">  281</span>    APlayerState* PS = GetPlayerState();</div>
+<div class="line"><span class="lineno">  282</span>    <span class="keywordflow">if</span> (!PS)</div>
+<div class="line"><span class="lineno">  283</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  284</span> </div>
+<div class="line"><span class="lineno">  285</span>    <span class="comment">// 플레이어 인덱스 확인 (GameState의 PlayerArray 사용)</span></div>
+<div class="line"><span class="lineno">  286</span>    int32 PlayerIndex = -1;</div>
+<div class="line"><span class="lineno">  287</span>    <span class="keywordflow">if</span> (AGameStateBase* GS = GetWorld()-&gt;GetGameState())</div>
+<div class="line"><span class="lineno">  288</span>        PlayerIndex = GS-&gt;PlayerArray.IndexOfByKey(PS);</div>
+<div class="line"><span class="lineno">  289</span> </div>
+<div class="line"><span class="lineno">  290</span>    <span class="comment">// 2P에게 Another = 1 적용 (1P는 0)</span></div>
+<div class="line"><span class="lineno">  291</span>    <a class="code hl_variable" href="classAPlayerActor.html#a57d536023470eebddc11f8c929d6dfd5">AnotherValue</a> = (PlayerIndex == 0) ? 0.0f : 1.0f;</div>
+<div class="line"><span class="lineno">  292</span> </div>
+<div class="line"><span class="lineno">  293</span>    <a class="code hl_function" href="classAPlayerActor.html#a079c2390a56476586e0ced1a5df2ce72">ApplyAnotherValue</a>();</div>
+<div class="line"><span class="lineno">  294</span>}</div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="APlayerActor_8h_source.html#l00215">AnotherValue</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00336">ApplyAnotherValue()</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="APlayerActor_8h_source.html#l00215">AnotherValue</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00338">ApplyAnotherValue()</a>.</p>
 <div id="dynsection-28" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-28-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-28-summary" class="dynsummary" style="display:block;">
@@ -2059,18 +2061,18 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="APlayerActor_8cpp_source.html">APlayerActor.cpp</a> 파일의 <a class="el" href="APlayerActor_8cpp_source.html#l00362">362</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  363</span>{</div>
-<div class="line"><span class="lineno">  364</span>    <span class="keywordflow">if</span> ( InMovementMode == MOVE_None)</div>
-<div class="line"><span class="lineno">  365</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  366</span>    </div>
-<div class="line"><span class="lineno">  367</span>    <span class="keyword">auto</span> Movement = this-&gt;GetCharacterMovement();</div>
-<div class="line"><span class="lineno">  368</span> </div>
-<div class="line"><span class="lineno">  369</span>    Movement-&gt;SetMovementMode( InMovementMode );</div>
-<div class="line"><span class="lineno">  370</span>    this-&gt;bUseControllerRotationYaw = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  371</span>    this-&gt;bUseControllerRotationPitch = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  372</span>    Movement-&gt;bOrientRotationToMovement = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  373</span>}</div>
+<p class="definition"><a class="el" href="APlayerActor_8cpp_source.html">APlayerActor.cpp</a> 파일의 <a class="el" href="APlayerActor_8cpp_source.html#l00364">364</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  365</span>{</div>
+<div class="line"><span class="lineno">  366</span>    <span class="keywordflow">if</span> ( InMovementMode == MOVE_None)</div>
+<div class="line"><span class="lineno">  367</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  368</span>    </div>
+<div class="line"><span class="lineno">  369</span>    <span class="keyword">auto</span> Movement = this-&gt;GetCharacterMovement();</div>
+<div class="line"><span class="lineno">  370</span> </div>
+<div class="line"><span class="lineno">  371</span>    Movement-&gt;SetMovementMode( InMovementMode );</div>
+<div class="line"><span class="lineno">  372</span>    this-&gt;bUseControllerRotationYaw = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  373</span>    this-&gt;bUseControllerRotationPitch = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  374</span>    Movement-&gt;bOrientRotationToMovement = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  375</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -2090,24 +2092,24 @@ Private 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="APlayerActor_8cpp_source.html">APlayerActor.cpp</a> 파일의 <a class="el" href="APlayerActor_8cpp_source.html#l00509">509</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  510</span>{</div>
-<div class="line"><span class="lineno">  511</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAPlayerActor.html#a98978cab98af6b0bff70b65be2b0d5d5">bIsRequest</a>)</div>
-<div class="line"><span class="lineno">  512</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  513</span> </div>
-<div class="line"><span class="lineno">  514</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> KLingoNetwork = UKLingoNetworkSystem::Get(GetWorld()))</div>
-<div class="line"><span class="lineno">  515</span>    {</div>
-<div class="line"><span class="lineno">  516</span>        <a class="code hl_variable" href="classAPlayerActor.html#a98978cab98af6b0bff70b65be2b0d5d5">bIsRequest</a> = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  517</span> </div>
-<div class="line"><span class="lineno">  518</span>        KLingoNetwork-&gt;RequestListenAudio(</div>
-<div class="line"><span class="lineno">  519</span>            AudioText,</div>
-<div class="line"><span class="lineno">  520</span>            FResponseListenAudioDelegate::CreateUObject(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classAPlayerActor.html#a948d23feda2fd36d69bfd32369b4c8a1">APlayerActor::OnResponseListenAudio</a>)</div>
-<div class="line"><span class="lineno">  521</span>        );</div>
-<div class="line"><span class="lineno">  522</span>    }</div>
-<div class="line"><span class="lineno">  523</span>}</div>
-<div class="ttc" id="aclassAPlayerActor_html_a948d23feda2fd36d69bfd32369b4c8a1"><div class="ttname"><a href="classAPlayerActor.html#a948d23feda2fd36d69bfd32369b4c8a1">APlayerActor::OnResponseListenAudio</a></div><div class="ttdeci">void OnResponseListenAudio(FResponseListenAudio &amp;ResponseData, bool bWasSuccessful)</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8cpp_source.html#l00525">APlayerActor.cpp:525</a></div></div>
+<p class="definition"><a class="el" href="APlayerActor_8cpp_source.html">APlayerActor.cpp</a> 파일의 <a class="el" href="APlayerActor_8cpp_source.html#l00511">511</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  512</span>{</div>
+<div class="line"><span class="lineno">  513</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAPlayerActor.html#a98978cab98af6b0bff70b65be2b0d5d5">bIsRequest</a>)</div>
+<div class="line"><span class="lineno">  514</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  515</span> </div>
+<div class="line"><span class="lineno">  516</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> KLingoNetwork = UKLingoNetworkSystem::Get(GetWorld()))</div>
+<div class="line"><span class="lineno">  517</span>    {</div>
+<div class="line"><span class="lineno">  518</span>        <a class="code hl_variable" href="classAPlayerActor.html#a98978cab98af6b0bff70b65be2b0d5d5">bIsRequest</a> = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  519</span> </div>
+<div class="line"><span class="lineno">  520</span>        KLingoNetwork-&gt;RequestListenAudio(</div>
+<div class="line"><span class="lineno">  521</span>            AudioText,</div>
+<div class="line"><span class="lineno">  522</span>            FResponseListenAudioDelegate::CreateUObject(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classAPlayerActor.html#a948d23feda2fd36d69bfd32369b4c8a1">APlayerActor::OnResponseListenAudio</a>)</div>
+<div class="line"><span class="lineno">  523</span>        );</div>
+<div class="line"><span class="lineno">  524</span>    }</div>
+<div class="line"><span class="lineno">  525</span>}</div>
+<div class="ttc" id="aclassAPlayerActor_html_a948d23feda2fd36d69bfd32369b4c8a1"><div class="ttname"><a href="classAPlayerActor.html#a948d23feda2fd36d69bfd32369b4c8a1">APlayerActor::OnResponseListenAudio</a></div><div class="ttdeci">void OnResponseListenAudio(FResponseListenAudio &amp;ResponseData, bool bWasSuccessful)</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8cpp_source.html#l00527">APlayerActor.cpp:527</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="APlayerActor_8h_source.html#l00241">bIsRequest</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00525">OnResponseListenAudio()</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="APlayerActor_8h_source.html#l00241">bIsRequest</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00527">OnResponseListenAudio()</a>.</p>
 <div id="dynsection-29" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-29-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-29-summary" class="dynsummary" style="display:block;">
@@ -2134,26 +2136,26 @@ Private 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="APlayerActor_8cpp_source.html">APlayerActor.cpp</a> 파일의 <a class="el" href="APlayerActor_8cpp_source.html#l00537">537</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  538</span>{</div>
-<div class="line"><span class="lineno">  539</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAPlayerActor.html#a98978cab98af6b0bff70b65be2b0d5d5">bIsRequest</a>)</div>
-<div class="line"><span class="lineno">  540</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  541</span> </div>
-<div class="line"><span class="lineno">  542</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> KLingoNetwork = UKLingoNetworkSystem::Get(GetWorld()))</div>
-<div class="line"><span class="lineno">  543</span>    {</div>
-<div class="line"><span class="lineno">  544</span>        <a class="code hl_variable" href="classAPlayerActor.html#a98978cab98af6b0bff70b65be2b0d5d5">bIsRequest</a> = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  545</span> </div>
-<div class="line"><span class="lineno">  546</span>        KLingoNetwork-&gt;RequestListenAudio(</div>
-<div class="line"><span class="lineno">  547</span>            AudioText,</div>
-<div class="line"><span class="lineno">  548</span>            FResponseListenAudioDelegate::CreateUObject(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classAPlayerActor.html#a13fdad9af25588c40508ec8a87c50993">APlayerActor::OnResponseSpeakAudio</a>)</div>
-<div class="line"><span class="lineno">  549</span>        );</div>
-<div class="line"><span class="lineno">  550</span>    }</div>
-<div class="line"><span class="lineno">  551</span>}</div>
-<div class="ttc" id="aclassAPlayerActor_html_a13fdad9af25588c40508ec8a87c50993"><div class="ttname"><a href="classAPlayerActor.html#a13fdad9af25588c40508ec8a87c50993">APlayerActor::OnResponseSpeakAudio</a></div><div class="ttdeci">void OnResponseSpeakAudio(FResponseListenAudio &amp;ResponseData, bool bWasSuccessful)</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8cpp_source.html#l00553">APlayerActor.cpp:553</a></div></div>
+<p class="definition"><a class="el" href="APlayerActor_8cpp_source.html">APlayerActor.cpp</a> 파일의 <a class="el" href="APlayerActor_8cpp_source.html#l00539">539</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  540</span>{</div>
+<div class="line"><span class="lineno">  541</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAPlayerActor.html#a98978cab98af6b0bff70b65be2b0d5d5">bIsRequest</a>)</div>
+<div class="line"><span class="lineno">  542</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  543</span> </div>
+<div class="line"><span class="lineno">  544</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> KLingoNetwork = UKLingoNetworkSystem::Get(GetWorld()))</div>
+<div class="line"><span class="lineno">  545</span>    {</div>
+<div class="line"><span class="lineno">  546</span>        <a class="code hl_variable" href="classAPlayerActor.html#a98978cab98af6b0bff70b65be2b0d5d5">bIsRequest</a> = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  547</span> </div>
+<div class="line"><span class="lineno">  548</span>        KLingoNetwork-&gt;RequestListenAudio(</div>
+<div class="line"><span class="lineno">  549</span>            AudioText,</div>
+<div class="line"><span class="lineno">  550</span>            FResponseListenAudioDelegate::CreateUObject(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classAPlayerActor.html#a13fdad9af25588c40508ec8a87c50993">APlayerActor::OnResponseSpeakAudio</a>)</div>
+<div class="line"><span class="lineno">  551</span>        );</div>
+<div class="line"><span class="lineno">  552</span>    }</div>
+<div class="line"><span class="lineno">  553</span>}</div>
+<div class="ttc" id="aclassAPlayerActor_html_a13fdad9af25588c40508ec8a87c50993"><div class="ttname"><a href="classAPlayerActor.html#a13fdad9af25588c40508ec8a87c50993">APlayerActor::OnResponseSpeakAudio</a></div><div class="ttdeci">void OnResponseSpeakAudio(FResponseListenAudio &amp;ResponseData, bool bWasSuccessful)</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8cpp_source.html#l00555">APlayerActor.cpp:555</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="APlayerActor_8h_source.html#l00241">bIsRequest</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00553">OnResponseSpeakAudio()</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="APlayerActor_8h_source.html#l00241">bIsRequest</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00555">OnResponseSpeakAudio()</a>.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerActor_8cpp_source.html#l00489">PlaySpeakInfo()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerActor_8cpp_source.html#l00491">PlaySpeakInfo()</a>.</p>
 <div id="dynsection-30" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-30-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-30-summary" class="dynsummary" style="display:block;">
@@ -2281,7 +2283,7 @@ Private 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerActor_8cpp_source.html#l00641">OnTeleportAllPlayers()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerActor_8cpp_source.html#l00643">OnTeleportAllPlayers()</a>.</p>
 <div id="dynsection-32" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-32-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-32-summary" class="dynsummary" style="display:block;">
@@ -2316,18 +2318,18 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="APlayerActor_8cpp_source.html">APlayerActor.cpp</a> 파일의 <a class="el" href="APlayerActor_8cpp_source.html#l00294">294</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  295</span>{</div>
-<div class="line"><span class="lineno">  296</span>    Super::Tick(DeltaTime);</div>
-<div class="line"><span class="lineno">  297</span> </div>
-<div class="line"><span class="lineno">  298</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAPlayerActor.html#a21817a3bc97f6962b8ece7941b67996d">MainWidget</a>)</div>
-<div class="line"><span class="lineno">  299</span>    {</div>
-<div class="line"><span class="lineno">  300</span>        <a class="code hl_class" href="classUCompassWidget.html">UCompassWidget</a>* Compass = <a class="code hl_variable" href="classAPlayerActor.html#a21817a3bc97f6962b8ece7941b67996d">MainWidget</a>-&gt;CompassWidget;</div>
-<div class="line"><span class="lineno">  301</span>        <span class="keywordtype">float</span> CameraRotationZ = <a class="code hl_variable" href="classAPlayerActor.html#a856ef7f26d46648083f0fcacdc3c0b5d">FollowCamera</a>-&gt;GetComponentRotation().Yaw;</div>
-<div class="line"><span class="lineno">  302</span>        </div>
-<div class="line"><span class="lineno">  303</span>        Compass-&gt;<a class="code hl_function" href="classUCompassWidget.html#a2f5b3c8719d5832f7f56ee548be14f49">RotateCompass</a>(CameraRotationZ);</div>
-<div class="line"><span class="lineno">  304</span>    }</div>
-<div class="line"><span class="lineno">  305</span>}</div>
+<p class="definition"><a class="el" href="APlayerActor_8cpp_source.html">APlayerActor.cpp</a> 파일의 <a class="el" href="APlayerActor_8cpp_source.html#l00296">296</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  297</span>{</div>
+<div class="line"><span class="lineno">  298</span>    Super::Tick(DeltaTime);</div>
+<div class="line"><span class="lineno">  299</span> </div>
+<div class="line"><span class="lineno">  300</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAPlayerActor.html#a21817a3bc97f6962b8ece7941b67996d">MainWidget</a>)</div>
+<div class="line"><span class="lineno">  301</span>    {</div>
+<div class="line"><span class="lineno">  302</span>        <a class="code hl_class" href="classUCompassWidget.html">UCompassWidget</a>* Compass = <a class="code hl_variable" href="classAPlayerActor.html#a21817a3bc97f6962b8ece7941b67996d">MainWidget</a>-&gt;CompassWidget;</div>
+<div class="line"><span class="lineno">  303</span>        <span class="keywordtype">float</span> CameraRotationZ = <a class="code hl_variable" href="classAPlayerActor.html#a856ef7f26d46648083f0fcacdc3c0b5d">FollowCamera</a>-&gt;GetComponentRotation().Yaw;</div>
+<div class="line"><span class="lineno">  304</span>        </div>
+<div class="line"><span class="lineno">  305</span>        Compass-&gt;<a class="code hl_function" href="classUCompassWidget.html#a2f5b3c8719d5832f7f56ee548be14f49">RotateCompass</a>(CameraRotationZ);</div>
+<div class="line"><span class="lineno">  306</span>    }</div>
+<div class="line"><span class="lineno">  307</span>}</div>
 <div class="ttc" id="aclassUCompassWidget_html"><div class="ttname"><a href="classUCompassWidget.html">UCompassWidget</a></div><div class="ttdef"><b>Definition</b> <a href="CompassWidget_8h_source.html#l00025">CompassWidget.h:26</a></div></div>
 <div class="ttc" id="aclassUCompassWidget_html_a2f5b3c8719d5832f7f56ee548be14f49"><div class="ttname"><a href="classUCompassWidget.html#a2f5b3c8719d5832f7f56ee548be14f49">UCompassWidget::RotateCompass</a></div><div class="ttdeci">void RotateCompass(float ZRotation)</div><div class="ttdef"><b>Definition</b> <a href="CompassWidget_8cpp_source.html#l00014">CompassWidget.cpp:14</a></div></div>
 </div><!-- fragment -->
@@ -2367,7 +2369,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="APlayerActor_8h_source.html">APlayerActor.h</a> 파일의 <a class="el" href="APlayerActor_8h_source.html#l00215">215</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerActor_8cpp_source.html#l00051">APlayerActor()</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00336">ApplyAnotherValue()</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00179">GetLifetimeReplicatedProps()</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00275">PossessedBy()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerActor_8cpp_source.html#l00051">APlayerActor()</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00338">ApplyAnotherValue()</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00179">GetLifetimeReplicatedProps()</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00277">PossessedBy()</a>.</p>
 
 </div>
 </div>
@@ -2417,7 +2419,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="APlayerActor_8h_source.html">APlayerActor.h</a> 파일의 <a class="el" href="APlayerActor_8h_source.html#l00241">241</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerActor_8cpp_source.html#l00525">OnResponseListenAudio()</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00553">OnResponseSpeakAudio()</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00509">RequestListenAudio()</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00537">RequestSpeakAudio()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerActor_8cpp_source.html#l00527">OnResponseListenAudio()</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00555">OnResponseSpeakAudio()</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00511">RequestListenAudio()</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00539">RequestSpeakAudio()</a>.</p>
 
 </div>
 </div>
@@ -2467,7 +2469,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="APlayerActor_8h_source.html">APlayerActor.h</a> 파일의 <a class="el" href="APlayerActor_8h_source.html#l00071">71</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerActor_8cpp_source.html#l00051">APlayerActor()</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00294">Tick()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerActor_8cpp_source.html#l00051">APlayerActor()</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00296">Tick()</a>.</p>
 
 </div>
 </div>
@@ -2635,7 +2637,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="APlayerActor_8h_source.html">APlayerActor.h</a> 파일의 <a class="el" href="APlayerActor_8h_source.html#l00224">224</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerActor_8cpp_source.html#l00215">CreateMainWidget()</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00703">OnFadeOutCompleteForTeleport()</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00755">OnRoomIdUpdated()</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00772">OnRoomLevelUpdated()</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00641">OnTeleportAllPlayers()</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00294">Tick()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerActor_8cpp_source.html#l00215">CreateMainWidget()</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00705">OnFadeOutCompleteForTeleport()</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00757">OnRoomIdUpdated()</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00774">OnRoomLevelUpdated()</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00643">OnTeleportAllPlayers()</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00296">Tick()</a>.</p>
 
 </div>
 </div>
@@ -2717,7 +2719,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="APlayerActor_8h_source.html">APlayerActor.h</a> 파일의 <a class="el" href="APlayerActor_8h_source.html#l00233">233</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerActor_8cpp_source.html#l00703">OnFadeOutCompleteForTeleport()</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00641">OnTeleportAllPlayers()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerActor_8cpp_source.html#l00705">OnFadeOutCompleteForTeleport()</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00643">OnTeleportAllPlayers()</a>.</p>
 
 </div>
 </div>
@@ -2791,7 +2793,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="APlayerActor_8h_source.html">APlayerActor.h</a> 파일의 <a class="el" href="APlayerActor_8h_source.html#l00230">230</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerActor_8cpp_source.html#l00258">CreateToastWidget()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerActor_8cpp_source.html#l00260">CreateToastWidget()</a>.</p>
 
 </div>
 </div>
@@ -2817,7 +2819,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="APlayerActor_8h_source.html">APlayerActor.h</a> 파일의 <a class="el" href="APlayerActor_8h_source.html#l00227">227</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerActor_8cpp_source.html#l00051">APlayerActor()</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00258">CreateToastWidget()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerActor_8cpp_source.html#l00051">APlayerActor()</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00260">CreateToastWidget()</a>.</p>
 
 </div>
 </div>
@@ -2843,7 +2845,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="APlayerActor_8h_source.html">APlayerActor.h</a> 파일의 <a class="el" href="APlayerActor_8h_source.html#l00080">80</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerActor_8cpp_source.html#l00051">APlayerActor()</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00132">BeginPlay()</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00375">PlayTTSAudio()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerActor_8cpp_source.html#l00051">APlayerActor()</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00132">BeginPlay()</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00377">PlayTTSAudio()</a>.</p>
 
 </div>
 </div>
@@ -2883,7 +2885,7 @@ Private 속성</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classAPlayerActor.html">APlayerActor</a></li>
-    <li class="footer">생성시간 : 목 12월 18 2025 08:59:02, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 목 12월 18 2025 14:41:30, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

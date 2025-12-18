@@ -127,7 +127,7 @@ $(document).ready(function(){initNavTree('classUWordItem.html',''); initResizabl
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public 멤버 함수</h2></td></tr>
-<tr class="memitem:ae040a195758593109942693a077292be" id="r_ae040a195758593109942693a077292be"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUWordItem.html#ae040a195758593109942693a077292be">InitInfo</a> (<a class="el" href="UWordItem_8h.html#aa7a4aeeaf4a040114515f256df9c15a3">EWordType</a> WordType, int32 WordCode)</td></tr>
+<tr class="memitem:ae040a195758593109942693a077292be" id="r_ae040a195758593109942693a077292be"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUWordItem.html#ae040a195758593109942693a077292be">InitInfo</a> (<a class="el" href="EWordType_8h.html#aa7a4aeeaf4a040114515f256df9c15a3">EWordType</a> WordType, int32 WordCode)</td></tr>
 <tr class="separator:ae040a195758593109942693a077292be"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad3ea616727137008e1e8f8ebee89c08a" id="r_ad3ea616727137008e1e8f8ebee89c08a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUWordItem.html#ad3ea616727137008e1e8f8ebee89c08a">SetTextColor</a> (FLinearColor InColor)</td></tr>
 <tr class="separator:ad3ea616727137008e1e8f8ebee89c08a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -145,7 +145,7 @@ Public 속성</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">상세한 설명</h2>
 <div class="textblock">
-<p class="definition"><a class="el" href="UWordItem_8h_source.html">UWordItem.h</a> 파일의 <a class="el" href="UWordItem_8h_source.html#l00019">19</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="UWordItem_8h_source.html">UWordItem.h</a> 파일의 <a class="el" href="UWordItem_8h_source.html#l00011">11</a> 번째 라인에서 정의되었습니다.</p>
 </div><h2 class="groupheader">멤버 함수 문서화</h2>
 <a id="ae040a195758593109942693a077292be" name="ae040a195758593109942693a077292be"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae040a195758593109942693a077292be">&#9670;&#160;</a></span>InitInfo()</h2>
@@ -156,7 +156,7 @@ Public 속성</h2></td></tr>
         <tr>
           <td class="memname">void UWordItem::InitInfo </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="UWordItem_8h.html#aa7a4aeeaf4a040114515f256df9c15a3">EWordType</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="EWordType_8h.html#aa7a4aeeaf4a040114515f256df9c15a3">EWordType</a>&#160;</td>
           <td class="paramname"><em>WordType</em>, </td>
         </tr>
         <tr>
@@ -175,7 +175,7 @@ Public 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="UWordItem_8cpp_source.html">UWordItem.cpp</a> 파일의 <a class="el" href="UWordItem_8cpp_source.html#l00011">11</a> 번째 라인에서 정의되었습니다.</p>
 <div class="fragment"><div class="line"><span class="lineno">   12</span>{</div>
-<div class="line"><span class="lineno">   13</span>    <span class="keywordflow">if</span>( WordType == <a class="code hl_enumvalue" href="UWordItem_8h.html#aa7a4aeeaf4a040114515f256df9c15a3a161e7ce7bfdc89ab4b9f52c1d4c94212">EWordType::Animal</a> )</div>
+<div class="line"><span class="lineno">   13</span>    <span class="keywordflow">if</span>( WordType == <a class="code hl_enumvalue" href="EWordType_8h.html#aa7a4aeeaf4a040114515f256df9c15a3a161e7ce7bfdc89ab4b9f52c1d4c94212">EWordType::Animal</a> )</div>
 <div class="line"><span class="lineno">   14</span>    {</div>
 <div class="line"><span class="lineno">   15</span>        <a class="code hl_struct" href="structFReadData.html">FReadData</a> ReadData;</div>
 <div class="line"><span class="lineno">   16</span>        UGameDataManager::Get(GetWorld())-&gt;GetReadData(WordCode, ReadData);</div>
@@ -192,7 +192,7 @@ Public 속성</h2></td></tr>
 <div class="line"><span class="lineno">   27</span>        <a class="code hl_variable" href="classUWordItem.html#a5e67576d2b21b6a4c578f0237516f581">Txt_Kor</a>-&gt;SetText( FText::FromString( ReadData.<a class="code hl_variable" href="structFReadData.html#a0cfdeafbbdaa3e836fe7d9b95f513ff1">Word</a>));</div>
 <div class="line"><span class="lineno">   28</span>        <a class="code hl_variable" href="classUWordItem.html#ad038e709ecf1e00de46fb8ae273a6fda">Txt_Eng</a>-&gt;SetText( FText::Format( FText::FromString(TEXT(<span class="stringliteral">&quot;[{0}]&quot;</span>)), FText::FromString( ReadData.<a class="code hl_variable" href="structFReadData.html#a073cad0b3148cf5ad77003b52824b371">Eng</a>) ));</div>
 <div class="line"><span class="lineno">   29</span>    }</div>
-<div class="line"><span class="lineno">   30</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span>( WordType == <a class="code hl_enumvalue" href="UWordItem_8h.html#aa7a4aeeaf4a040114515f256df9c15a3acb5feb1b7314637725a2e73bdc9f7295">EWordType::Color</a> )</div>
+<div class="line"><span class="lineno">   30</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span>( WordType == <a class="code hl_enumvalue" href="EWordType_8h.html#aa7a4aeeaf4a040114515f256df9c15a3acb5feb1b7314637725a2e73bdc9f7295">EWordType::Color</a> )</div>
 <div class="line"><span class="lineno">   31</span>    {</div>
 <div class="line"><span class="lineno">   32</span>        <a class="code hl_struct" href="structFColorData.html">FColorData</a> ColorData;</div>
 <div class="line"><span class="lineno">   33</span>        UGameDataManager::Get(GetWorld())-&gt;GetColorData(WordCode, ColorData);</div>
@@ -204,7 +204,7 @@ Public 속성</h2></td></tr>
 <div class="line"><span class="lineno">   39</span>        <a class="code hl_variable" href="classUWordItem.html#a5e67576d2b21b6a4c578f0237516f581">Txt_Kor</a>-&gt;SetText( FText::FromString( ColorData.<a class="code hl_variable" href="structFColorData.html#a737d45b830f9ada3aa7ccd44c32babb1">Desc</a>));</div>
 <div class="line"><span class="lineno">   40</span>        <a class="code hl_variable" href="classUWordItem.html#ad038e709ecf1e00de46fb8ae273a6fda">Txt_Eng</a>-&gt;SetText( FText::Format( FText::FromString(TEXT(<span class="stringliteral">&quot;[{0}]&quot;</span>)), FText::FromString( ColorData.<a class="code hl_variable" href="structFColorData.html#a71a039f64c7b0061005be904a1a1ea90">Eng</a>) ));</div>
 <div class="line"><span class="lineno">   41</span>    }</div>
-<div class="line"><span class="lineno">   42</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span>( WordType == <a class="code hl_enumvalue" href="UWordItem_8h.html#aa7a4aeeaf4a040114515f256df9c15a3af447ac856e7e72435904956e3b15f433">EWordType::Region</a> )</div>
+<div class="line"><span class="lineno">   42</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span>( WordType == <a class="code hl_enumvalue" href="EWordType_8h.html#aa7a4aeeaf4a040114515f256df9c15a3af447ac856e7e72435904956e3b15f433">EWordType::Region</a> )</div>
 <div class="line"><span class="lineno">   43</span>    {</div>
 <div class="line"><span class="lineno">   44</span>        <a class="code hl_struct" href="structFListenData.html">FListenData</a> ListenData;</div>
 <div class="line"><span class="lineno">   45</span>        UGameDataManager::Get(GetWorld())-&gt;GetListenData(WordCode, ListenData);</div>
@@ -221,7 +221,7 @@ Public 속성</h2></td></tr>
 <div class="line"><span class="lineno">   56</span>        <a class="code hl_variable" href="classUWordItem.html#a5e67576d2b21b6a4c578f0237516f581">Txt_Kor</a>-&gt;SetText( FText::FromString( ListenData.<a class="code hl_variable" href="structFListenData.html#a12a623aa35ab6c6938eadf8a3de15649">Word</a>));</div>
 <div class="line"><span class="lineno">   57</span>        <a class="code hl_variable" href="classUWordItem.html#ad038e709ecf1e00de46fb8ae273a6fda">Txt_Eng</a>-&gt;SetText( FText::Format( FText::FromString(TEXT(<span class="stringliteral">&quot;[{0}]&quot;</span>)), FText::FromString(ListenData.<a class="code hl_variable" href="structFListenData.html#a3fca0efe2fa3e75b660ccbf391daa7a1">Eng</a>) ));</div>
 <div class="line"><span class="lineno">   58</span>    }</div>
-<div class="line"><span class="lineno">   59</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span>( WordType == <a class="code hl_enumvalue" href="UWordItem_8h.html#aa7a4aeeaf4a040114515f256df9c15a3a0a38e7286ebbb560354992b3ce62be67">EWordType::Food</a> )</div>
+<div class="line"><span class="lineno">   59</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span>( WordType == <a class="code hl_enumvalue" href="EWordType_8h.html#aa7a4aeeaf4a040114515f256df9c15a3a0a38e7286ebbb560354992b3ce62be67">EWordType::Food</a> )</div>
 <div class="line"><span class="lineno">   60</span>    {</div>
 <div class="line"><span class="lineno">   61</span>        <a class="code hl_struct" href="structFListenData.html">FListenData</a> ListenData;</div>
 <div class="line"><span class="lineno">   62</span>        UGameDataManager::Get(GetWorld())-&gt;GetListenData(WordCode, ListenData);</div>
@@ -238,14 +238,14 @@ Public 속성</h2></td></tr>
 <div class="line"><span class="lineno">   73</span>        <a class="code hl_variable" href="classUWordItem.html#ad038e709ecf1e00de46fb8ae273a6fda">Txt_Eng</a>-&gt;SetText( FText::Format( FText::FromString(TEXT(<span class="stringliteral">&quot;[{0}]&quot;</span>)), FText::FromString(ListenData.<a class="code hl_variable" href="structFListenData.html#a3fca0efe2fa3e75b660ccbf391daa7a1">Eng</a>)));</div>
 <div class="line"><span class="lineno">   74</span>    }</div>
 <div class="line"><span class="lineno">   75</span>}</div>
+<div class="ttc" id="aEWordType_8h_html_aa7a4aeeaf4a040114515f256df9c15a3a0a38e7286ebbb560354992b3ce62be67"><div class="ttname"><a href="EWordType_8h.html#aa7a4aeeaf4a040114515f256df9c15a3a0a38e7286ebbb560354992b3ce62be67">EWordType::Food</a></div><div class="ttdeci">@ Food</div></div>
+<div class="ttc" id="aEWordType_8h_html_aa7a4aeeaf4a040114515f256df9c15a3a161e7ce7bfdc89ab4b9f52c1d4c94212"><div class="ttname"><a href="EWordType_8h.html#aa7a4aeeaf4a040114515f256df9c15a3a161e7ce7bfdc89ab4b9f52c1d4c94212">EWordType::Animal</a></div><div class="ttdeci">@ Animal</div></div>
+<div class="ttc" id="aEWordType_8h_html_aa7a4aeeaf4a040114515f256df9c15a3acb5feb1b7314637725a2e73bdc9f7295"><div class="ttname"><a href="EWordType_8h.html#aa7a4aeeaf4a040114515f256df9c15a3acb5feb1b7314637725a2e73bdc9f7295">EWordType::Color</a></div><div class="ttdeci">@ Color</div></div>
+<div class="ttc" id="aEWordType_8h_html_aa7a4aeeaf4a040114515f256df9c15a3af447ac856e7e72435904956e3b15f433"><div class="ttname"><a href="EWordType_8h.html#aa7a4aeeaf4a040114515f256df9c15a3af447ac856e7e72435904956e3b15f433">EWordType::Region</a></div><div class="ttdeci">@ Region</div></div>
 <div class="ttc" id="aFResourceTextureData_8h_html_a98b8b3000fb3fc86e37c624651589cb2acb5feb1b7314637725a2e73bdc9f7295"><div class="ttname"><a href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2acb5feb1b7314637725a2e73bdc9f7295">EResourceTextureType::Color</a></div><div class="ttdeci">@ Color</div></div>
-<div class="ttc" id="aUWordItem_8h_html_aa7a4aeeaf4a040114515f256df9c15a3a0a38e7286ebbb560354992b3ce62be67"><div class="ttname"><a href="UWordItem_8h.html#aa7a4aeeaf4a040114515f256df9c15a3a0a38e7286ebbb560354992b3ce62be67">EWordType::Food</a></div><div class="ttdeci">@ Food</div></div>
-<div class="ttc" id="aUWordItem_8h_html_aa7a4aeeaf4a040114515f256df9c15a3a161e7ce7bfdc89ab4b9f52c1d4c94212"><div class="ttname"><a href="UWordItem_8h.html#aa7a4aeeaf4a040114515f256df9c15a3a161e7ce7bfdc89ab4b9f52c1d4c94212">EWordType::Animal</a></div><div class="ttdeci">@ Animal</div></div>
-<div class="ttc" id="aUWordItem_8h_html_aa7a4aeeaf4a040114515f256df9c15a3acb5feb1b7314637725a2e73bdc9f7295"><div class="ttname"><a href="UWordItem_8h.html#aa7a4aeeaf4a040114515f256df9c15a3acb5feb1b7314637725a2e73bdc9f7295">EWordType::Color</a></div><div class="ttdeci">@ Color</div></div>
-<div class="ttc" id="aUWordItem_8h_html_aa7a4aeeaf4a040114515f256df9c15a3af447ac856e7e72435904956e3b15f433"><div class="ttname"><a href="UWordItem_8h.html#aa7a4aeeaf4a040114515f256df9c15a3af447ac856e7e72435904956e3b15f433">EWordType::Region</a></div><div class="ttdeci">@ Region</div></div>
-<div class="ttc" id="aclassUWordItem_html_a30aca2af46a15e256b8bf4fda77207d0"><div class="ttname"><a href="classUWordItem.html#a30aca2af46a15e256b8bf4fda77207d0">UWordItem::Image_Target</a></div><div class="ttdeci">TObjectPtr&lt; class UImage &gt; Image_Target</div><div class="ttdef"><b>Definition</b> <a href="UWordItem_8h_source.html#l00032">UWordItem.h:32</a></div></div>
-<div class="ttc" id="aclassUWordItem_html_a5e67576d2b21b6a4c578f0237516f581"><div class="ttname"><a href="classUWordItem.html#a5e67576d2b21b6a4c578f0237516f581">UWordItem::Txt_Kor</a></div><div class="ttdeci">TObjectPtr&lt; class UTextBlock &gt; Txt_Kor</div><div class="ttdef"><b>Definition</b> <a href="UWordItem_8h_source.html#l00035">UWordItem.h:35</a></div></div>
-<div class="ttc" id="aclassUWordItem_html_ad038e709ecf1e00de46fb8ae273a6fda"><div class="ttname"><a href="classUWordItem.html#ad038e709ecf1e00de46fb8ae273a6fda">UWordItem::Txt_Eng</a></div><div class="ttdeci">TObjectPtr&lt; class UTextBlock &gt; Txt_Eng</div><div class="ttdef"><b>Definition</b> <a href="UWordItem_8h_source.html#l00038">UWordItem.h:38</a></div></div>
+<div class="ttc" id="aclassUWordItem_html_a30aca2af46a15e256b8bf4fda77207d0"><div class="ttname"><a href="classUWordItem.html#a30aca2af46a15e256b8bf4fda77207d0">UWordItem::Image_Target</a></div><div class="ttdeci">TObjectPtr&lt; class UImage &gt; Image_Target</div><div class="ttdef"><b>Definition</b> <a href="UWordItem_8h_source.html#l00024">UWordItem.h:24</a></div></div>
+<div class="ttc" id="aclassUWordItem_html_a5e67576d2b21b6a4c578f0237516f581"><div class="ttname"><a href="classUWordItem.html#a5e67576d2b21b6a4c578f0237516f581">UWordItem::Txt_Kor</a></div><div class="ttdeci">TObjectPtr&lt; class UTextBlock &gt; Txt_Kor</div><div class="ttdef"><b>Definition</b> <a href="UWordItem_8h_source.html#l00027">UWordItem.h:27</a></div></div>
+<div class="ttc" id="aclassUWordItem_html_ad038e709ecf1e00de46fb8ae273a6fda"><div class="ttname"><a href="classUWordItem.html#ad038e709ecf1e00de46fb8ae273a6fda">UWordItem::Txt_Eng</a></div><div class="ttdeci">TObjectPtr&lt; class UTextBlock &gt; Txt_Eng</div><div class="ttdef"><b>Definition</b> <a href="UWordItem_8h_source.html#l00030">UWordItem.h:30</a></div></div>
 <div class="ttc" id="astructFColorData_html"><div class="ttname"><a href="structFColorData.html">FColorData</a></div><div class="ttdoc">색상 데이터를 정의하는 구조체</div><div class="ttdef"><b>Definition</b> <a href="FColorData_8h_source.html#l00018">FColorData.h:19</a></div></div>
 <div class="ttc" id="astructFColorData_html_a71a039f64c7b0061005be904a1a1ea90"><div class="ttname"><a href="structFColorData.html#a71a039f64c7b0061005be904a1a1ea90">FColorData::Eng</a></div><div class="ttdeci">FString Eng</div><div class="ttdef"><b>Definition</b> <a href="FColorData_8h_source.html#l00039">FColorData.h:39</a></div></div>
 <div class="ttc" id="astructFColorData_html_a737d45b830f9ada3aa7ccd44c32babb1"><div class="ttname"><a href="structFColorData.html#a737d45b830f9ada3aa7ccd44c32babb1">FColorData::Desc</a></div><div class="ttdeci">FString Desc</div><div class="ttdoc">색상 설명 (한글명)</div><div class="ttdef"><b>Definition</b> <a href="FColorData_8h_source.html#l00032">FColorData.h:32</a></div></div>
@@ -259,7 +259,7 @@ Public 속성</h2></td></tr>
 <div class="ttc" id="astructFReadData_html_a0cfdeafbbdaa3e836fe7d9b95f513ff1"><div class="ttname"><a href="structFReadData.html#a0cfdeafbbdaa3e836fe7d9b95f513ff1">FReadData::Word</a></div><div class="ttdeci">FString Word</div><div class="ttdoc">학습 단어</div><div class="ttdef"><b>Definition</b> <a href="FReadData_8h_source.html#l00032">FReadData.h:32</a></div></div>
 <div class="ttc" id="astructFReadData_html_a5c8d28fbe4c3617ea9d338197a11d30c"><div class="ttname"><a href="structFReadData.html#a5c8d28fbe4c3617ea9d338197a11d30c">FReadData::Texture</a></div><div class="ttdeci">TSoftObjectPtr&lt; UTexture2D &gt; Texture</div><div class="ttdef"><b>Definition</b> <a href="FReadData_8h_source.html#l00035">FReadData.h:35</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="UWordItem_8h.html#aa7a4aeeaf4a040114515f256df9c15a3a161e7ce7bfdc89ab4b9f52c1d4c94212">Animal</a>, <a class="el" href="UWordItem_8h.html#aa7a4aeeaf4a040114515f256df9c15a3acb5feb1b7314637725a2e73bdc9f7295">Color</a>, <a class="el" href="FColorData_8h_source.html#l00032">FColorData::Desc</a>, <a class="el" href="FColorData_8h_source.html#l00039">FColorData::Eng</a>, <a class="el" href="FListenData_8h_source.html#l00043">FListenData::Eng</a>, <a class="el" href="FReadData_8h_source.html#l00039">FReadData::Eng</a>, <a class="el" href="UWordItem_8h.html#aa7a4aeeaf4a040114515f256df9c15a3a0a38e7286ebbb560354992b3ce62be67">Food</a>, <a class="el" href="FColorData_8h_source.html#l00043">FColorData::GetLinearColor()</a>, <a class="el" href="UWordItem_8h_source.html#l00032">Image_Target</a>, <a class="el" href="UWordItem_8h.html#aa7a4aeeaf4a040114515f256df9c15a3af447ac856e7e72435904956e3b15f433">Region</a>, <a class="el" href="FListenData_8h_source.html#l00049">FListenData::Texture</a>, <a class="el" href="FReadData_8h_source.html#l00035">FReadData::Texture</a>, <a class="el" href="UWordItem_8h_source.html#l00038">Txt_Eng</a>, <a class="el" href="UWordItem_8h_source.html#l00035">Txt_Kor</a>, <a class="el" href="FListenData_8h_source.html#l00040">FListenData::Word</a>, <a class="el" href="FReadData_8h_source.html#l00032">FReadData::Word</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="EWordType_8h.html#aa7a4aeeaf4a040114515f256df9c15a3a161e7ce7bfdc89ab4b9f52c1d4c94212">Animal</a>, <a class="el" href="EWordType_8h.html#aa7a4aeeaf4a040114515f256df9c15a3acb5feb1b7314637725a2e73bdc9f7295">Color</a>, <a class="el" href="FColorData_8h_source.html#l00032">FColorData::Desc</a>, <a class="el" href="FColorData_8h_source.html#l00039">FColorData::Eng</a>, <a class="el" href="FListenData_8h_source.html#l00043">FListenData::Eng</a>, <a class="el" href="FReadData_8h_source.html#l00039">FReadData::Eng</a>, <a class="el" href="EWordType_8h.html#aa7a4aeeaf4a040114515f256df9c15a3a0a38e7286ebbb560354992b3ce62be67">Food</a>, <a class="el" href="FColorData_8h_source.html#l00043">FColorData::GetLinearColor()</a>, <a class="el" href="UWordItem_8h_source.html#l00024">Image_Target</a>, <a class="el" href="EWordType_8h.html#aa7a4aeeaf4a040114515f256df9c15a3af447ac856e7e72435904956e3b15f433">Region</a>, <a class="el" href="FListenData_8h_source.html#l00049">FListenData::Texture</a>, <a class="el" href="FReadData_8h_source.html#l00035">FReadData::Texture</a>, <a class="el" href="UWordItem_8h_source.html#l00030">Txt_Eng</a>, <a class="el" href="UWordItem_8h_source.html#l00027">Txt_Kor</a>, <a class="el" href="FListenData_8h_source.html#l00040">FListenData::Word</a>, <a class="el" href="FReadData_8h_source.html#l00032">FReadData::Word</a>.</p>
 <div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-2-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
@@ -292,7 +292,7 @@ Public 속성</h2></td></tr>
 <div class="line"><span class="lineno">   80</span>    <a class="code hl_variable" href="classUWordItem.html#ad038e709ecf1e00de46fb8ae273a6fda">Txt_Eng</a>-&gt;SetColorAndOpacity(InColor);</div>
 <div class="line"><span class="lineno">   81</span>}</div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="UWordItem_8h_source.html#l00038">Txt_Eng</a>, <a class="el" href="UWordItem_8h_source.html#l00035">Txt_Kor</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="UWordItem_8h_source.html#l00030">Txt_Eng</a>, <a class="el" href="UWordItem_8h_source.html#l00027">Txt_Kor</a>.</p>
 
 </div>
 </div>
@@ -309,7 +309,7 @@ Public 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="UWordItem_8h_source.html">UWordItem.h</a> 파일의 <a class="el" href="UWordItem_8h_source.html#l00032">32</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="UWordItem_8h_source.html">UWordItem.h</a> 파일의 <a class="el" href="UWordItem_8h_source.html#l00024">24</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UWordItem_8cpp_source.html#l00011">InitInfo()</a>.</p>
 
@@ -327,7 +327,7 @@ Public 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="UWordItem_8h_source.html">UWordItem.h</a> 파일의 <a class="el" href="UWordItem_8h_source.html#l00029">29</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="UWordItem_8h_source.html">UWordItem.h</a> 파일의 <a class="el" href="UWordItem_8h_source.html#l00021">21</a> 번째 라인에서 정의되었습니다.</p>
 
 </div>
 </div>
@@ -343,7 +343,7 @@ Public 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="UWordItem_8h_source.html">UWordItem.h</a> 파일의 <a class="el" href="UWordItem_8h_source.html#l00038">38</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="UWordItem_8h_source.html">UWordItem.h</a> 파일의 <a class="el" href="UWordItem_8h_source.html#l00030">30</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UWordItem_8cpp_source.html#l00011">InitInfo()</a>, <a class="el" href="UWordItem_8cpp_source.html#l00077">SetTextColor()</a>.</p>
 
@@ -361,7 +361,7 @@ Public 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="UWordItem_8h_source.html">UWordItem.h</a> 파일의 <a class="el" href="UWordItem_8h_source.html#l00035">35</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="UWordItem_8h_source.html">UWordItem.h</a> 파일의 <a class="el" href="UWordItem_8h_source.html#l00027">27</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UWordItem_8cpp_source.html#l00011">InitInfo()</a>, <a class="el" href="UWordItem_8cpp_source.html#l00077">SetTextColor()</a>.</p>
 
@@ -377,7 +377,7 @@ Public 속성</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classUWordItem.html">UWordItem</a></li>
-    <li class="footer">생성시간 : 목 12월 18 2025 08:59:02, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 목 12월 18 2025 14:41:30, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

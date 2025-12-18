@@ -116,20 +116,24 @@ $(document).ready(function(){initNavTree('classUChatInputBox.html',''); initResi
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classUChatInputBox__inherit__graph.svg" width="224" height="284"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classUChatInputBox__inherit__graph.svg" width="224" height="324"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="closed.png" alt="+"/> UChatInputBox에 대한 협력 다이어그램:</div>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classUChatInputBox__coll__graph.svg" width="224" height="284"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classUChatInputBox__coll__graph.svg" width="224" height="324"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public 멤버 함수</h2></td></tr>
 <tr class="memitem:a7ba44143ce5e97966eec4a9f0c8f2831" id="r_a7ba44143ce5e97966eec4a9f0c8f2831"><td class="memItemLeft" align="right" valign="top">FText&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUChatInputBox.html#a7ba44143ce5e97966eec4a9f0c8f2831">FlushMessage</a> ()</td></tr>
 <tr class="separator:a7ba44143ce5e97966eec4a9f0c8f2831"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ee2714cf4ef836492524fde8b03ec6e" id="r_a3ee2714cf4ef836492524fde8b03ec6e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUChatInputBox.html#a3ee2714cf4ef836492524fde8b03ec6e">FocusInput</a> ()</td></tr>
+<tr class="separator:a3ee2714cf4ef836492524fde8b03ec6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a80c2b10544c1739a2f9701b8c47ff211" id="r_a80c2b10544c1739a2f9701b8c47ff211"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUChatInputBox.html#a80c2b10544c1739a2f9701b8c47ff211">NativeOnFocusLost</a> (const FFocusEvent &amp;InFocusEvent) override</td></tr>
+<tr class="separator:a80c2b10544c1739a2f9701b8c47ff211"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a21745edd73ef2138632b3188ad4c71da" id="r_a21745edd73ef2138632b3188ad4c71da"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUChatInputBox.html#a21745edd73ef2138632b3188ad4c71da">NativeOnInitialized</a> () override</td></tr>
 <tr class="separator:a21745edd73ef2138632b3188ad4c71da"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab18654c43748ccb4af6bc9bd33d7e797" id="r_ab18654c43748ccb4af6bc9bd33d7e797"><td class="memItemLeft" align="right" valign="top">virtual FReply&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUChatInputBox.html#ab18654c43748ccb4af6bc9bd33d7e797">NativeOnPreviewKeyDown</a> (const FGeometry &amp;InGeometry, const FKeyEvent &amp;InKeyEvent) override</td></tr>
@@ -166,19 +170,20 @@ Private 멤버 함수</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ChatInputBox_8cpp_source.html">ChatInputBox.cpp</a> 파일의 <a class="el" href="ChatInputBox_8cpp_source.html#l00030">30</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   31</span>{</div>
-<div class="line"><span class="lineno">   32</span>    <span class="comment">// message에 저장 &amp; 텍스트 칸 비우기</span></div>
-<div class="line"><span class="lineno">   33</span>    FText message = <a class="code hl_variable" href="classUChatInputBox.html#a90c68ef60681e4cd1f949923eb63df75">MultiLineEditableTextBox_Input</a>-&gt;GetText();</div>
-<div class="line"><span class="lineno">   34</span>    <a class="code hl_variable" href="classUChatInputBox.html#a90c68ef60681e4cd1f949923eb63df75">MultiLineEditableTextBox_Input</a>-&gt;SetText(FText::GetEmpty());</div>
-<div class="line"><span class="lineno">   35</span>    </div>
-<div class="line"><span class="lineno">   36</span>    <span class="keywordflow">return</span> message;</div>
-<div class="line"><span class="lineno">   37</span>}</div>
-<div class="ttc" id="aclassUChatInputBox_html_a90c68ef60681e4cd1f949923eb63df75"><div class="ttname"><a href="classUChatInputBox.html#a90c68ef60681e4cd1f949923eb63df75">UChatInputBox::MultiLineEditableTextBox_Input</a></div><div class="ttdeci">TObjectPtr&lt; class UMultiLineEditableTextBox &gt; MultiLineEditableTextBox_Input</div><div class="ttdef"><b>Definition</b> <a href="ChatInputBox_8h_source.html#l00026">ChatInputBox.h:26</a></div></div>
+<p class="definition"><a class="el" href="ChatInputBox_8cpp_source.html">ChatInputBox.cpp</a> 파일의 <a class="el" href="ChatInputBox_8cpp_source.html#l00041">41</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   42</span>{</div>
+<div class="line"><span class="lineno">   43</span>    <span class="comment">// message에 저장 &amp; 텍스트 칸 비우기</span></div>
+<div class="line"><span class="lineno">   44</span>    FText message = <a class="code hl_variable" href="classUChatInputBox.html#a90c68ef60681e4cd1f949923eb63df75">MultiLineEditableTextBox_Input</a>-&gt;GetText();</div>
+<div class="line"><span class="lineno">   45</span>    </div>
+<div class="line"><span class="lineno">   46</span>    <a class="code hl_variable" href="classUChatInputBox.html#a90c68ef60681e4cd1f949923eb63df75">MultiLineEditableTextBox_Input</a>-&gt;SetText(FText::GetEmpty());</div>
+<div class="line"><span class="lineno">   47</span>    </div>
+<div class="line"><span class="lineno">   48</span>    <span class="keywordflow">return</span> message;</div>
+<div class="line"><span class="lineno">   49</span>}</div>
+<div class="ttc" id="aclassUChatInputBox_html_a90c68ef60681e4cd1f949923eb63df75"><div class="ttname"><a href="classUChatInputBox.html#a90c68ef60681e4cd1f949923eb63df75">UChatInputBox::MultiLineEditableTextBox_Input</a></div><div class="ttdeci">TObjectPtr&lt; class UMultiLineEditableTextBox &gt; MultiLineEditableTextBox_Input</div><div class="ttdef"><b>Definition</b> <a href="ChatInputBox_8h_source.html#l00028">ChatInputBox.h:28</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="ChatInputBox_8h_source.html#l00026">MultiLineEditableTextBox_Input</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="ChatInputBox_8h_source.html#l00028">MultiLineEditableTextBox_Input</a>.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ChatInputBox_8cpp_source.html#l00039">HandleSendClicked()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ChatInputBox_8cpp_source.html#l00056">HandleSendClicked()</a>.</p>
 <div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-2-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
@@ -186,6 +191,30 @@ Private 멤버 함수</h2></td></tr>
 <div id="dynsection-2-content" class="dyncontent" style="display:none;">
 <div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classUChatInputBox_a7ba44143ce5e97966eec4a9f0c8f2831_icgraph.svg" width="100%" height="376"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
+
+</div>
+</div>
+<a id="a3ee2714cf4ef836492524fde8b03ec6e" name="a3ee2714cf4ef836492524fde8b03ec6e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ee2714cf4ef836492524fde8b03ec6e">&#9670;&#160;</a></span>FocusInput()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void UChatInputBox::FocusInput </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="ChatInputBox_8cpp_source.html">ChatInputBox.cpp</a> 파일의 <a class="el" href="ChatInputBox_8cpp_source.html#l00051">51</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   52</span>{</div>
+<div class="line"><span class="lineno">   53</span>    <a class="code hl_variable" href="classUChatInputBox.html#a90c68ef60681e4cd1f949923eb63df75">MultiLineEditableTextBox_Input</a>-&gt;SetKeyboardFocus();</div>
+<div class="line"><span class="lineno">   54</span>}</div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="ChatInputBox_8h_source.html#l00028">MultiLineEditableTextBox_Input</a>.</p>
 
 </div>
 </div>
@@ -212,23 +241,23 @@ Private 멤버 함수</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ChatInputBox_8cpp_source.html">ChatInputBox.cpp</a> 파일의 <a class="el" href="ChatInputBox_8cpp_source.html#l00039">39</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   40</span>{</div>
-<div class="line"><span class="lineno">   41</span>    <span class="comment">// 텍스트가 비어있지 않다면 Broadcast</span></div>
-<div class="line"><span class="lineno">   42</span>    FText message = <a class="code hl_function" href="classUChatInputBox.html#a7ba44143ce5e97966eec4a9f0c8f2831">FlushMessage</a>();</div>
-<div class="line"><span class="lineno">   43</span>    <span class="keywordflow">if</span> (!message.IsEmpty())</div>
-<div class="line"><span class="lineno">   44</span>    {       </div>
-<div class="line"><span class="lineno">   45</span>        <span class="keywordflow">if</span> (<span class="keyword">auto</span>* PC = Cast&lt;APlayerControl&gt;(GetWorld()-&gt;GetFirstPlayerController&lt;APlayerController&gt;()))</div>
-<div class="line"><span class="lineno">   46</span>        {</div>
-<div class="line"><span class="lineno">   47</span>            PC-&gt;ServerRPC_SendChat(message);</div>
-<div class="line"><span class="lineno">   48</span>        }</div>
-<div class="line"><span class="lineno">   49</span>    }</div>
-<div class="line"><span class="lineno">   50</span>}</div>
-<div class="ttc" id="aclassUChatInputBox_html_a7ba44143ce5e97966eec4a9f0c8f2831"><div class="ttname"><a href="classUChatInputBox.html#a7ba44143ce5e97966eec4a9f0c8f2831">UChatInputBox::FlushMessage</a></div><div class="ttdeci">FText FlushMessage()</div><div class="ttdef"><b>Definition</b> <a href="ChatInputBox_8cpp_source.html#l00030">ChatInputBox.cpp:30</a></div></div>
+<p class="definition"><a class="el" href="ChatInputBox_8cpp_source.html">ChatInputBox.cpp</a> 파일의 <a class="el" href="ChatInputBox_8cpp_source.html#l00056">56</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   57</span>{</div>
+<div class="line"><span class="lineno">   58</span>    <span class="comment">// 텍스트가 비어있지 않다면 Broadcast</span></div>
+<div class="line"><span class="lineno">   59</span>    FText message = <a class="code hl_function" href="classUChatInputBox.html#a7ba44143ce5e97966eec4a9f0c8f2831">FlushMessage</a>();</div>
+<div class="line"><span class="lineno">   60</span>    <span class="keywordflow">if</span> (!message.IsEmpty())</div>
+<div class="line"><span class="lineno">   61</span>    {       </div>
+<div class="line"><span class="lineno">   62</span>        <span class="keywordflow">if</span> (<span class="keyword">auto</span>* PC = Cast&lt;APlayerControl&gt;(GetWorld()-&gt;GetFirstPlayerController&lt;APlayerController&gt;()))</div>
+<div class="line"><span class="lineno">   63</span>        {</div>
+<div class="line"><span class="lineno">   64</span>            PC-&gt;ServerRPC_SendChat(message);</div>
+<div class="line"><span class="lineno">   65</span>        }</div>
+<div class="line"><span class="lineno">   66</span>    }</div>
+<div class="line"><span class="lineno">   67</span>}</div>
+<div class="ttc" id="aclassUChatInputBox_html_a7ba44143ce5e97966eec4a9f0c8f2831"><div class="ttname"><a href="classUChatInputBox.html#a7ba44143ce5e97966eec4a9f0c8f2831">UChatInputBox::FlushMessage</a></div><div class="ttdeci">FText FlushMessage()</div><div class="ttdef"><b>Definition</b> <a href="ChatInputBox_8cpp_source.html#l00041">ChatInputBox.cpp:41</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="ChatInputBox_8cpp_source.html#l00030">FlushMessage()</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="ChatInputBox_8cpp_source.html#l00041">FlushMessage()</a>.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ChatInputBox_8cpp_source.html#l00011">NativeOnInitialized()</a>, <a class="el" href="ChatInputBox_8cpp_source.html#l00018">NativeOnPreviewKeyDown()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ChatInputBox_8cpp_source.html#l00011">NativeOnInitialized()</a>, <a class="el" href="ChatInputBox_8cpp_source.html#l00029">NativeOnPreviewKeyDown()</a>.</p>
 <div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-3-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
@@ -244,6 +273,44 @@ Private 멤버 함수</h2></td></tr>
 <div class="center"><iframe scrolling="no" frameborder="0" src="classUChatInputBox_ab0e955ead352543a4480bc46fddf7029_icgraph.svg" width="519" height="102"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
+</div>
+</div>
+<a id="a80c2b10544c1739a2f9701b8c47ff211" name="a80c2b10544c1739a2f9701b8c47ff211"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a80c2b10544c1739a2f9701b8c47ff211">&#9670;&#160;</a></span>NativeOnFocusLost()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void UChatInputBox::NativeOnFocusLost </td>
+          <td>(</td>
+          <td class="paramtype">const FFocusEvent &amp;&#160;</td>
+          <td class="paramname"><em>InFocusEvent</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="ChatInputBox_8cpp_source.html">ChatInputBox.cpp</a> 파일의 <a class="el" href="ChatInputBox_8cpp_source.html#l00018">18</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   19</span>{</div>
+<div class="line"><span class="lineno">   20</span>    Super::NativeOnFocusLost(InFocusEvent);</div>
+<div class="line"><span class="lineno">   21</span>    </div>
+<div class="line"><span class="lineno">   22</span>    <span class="keywordflow">if</span> (<a class="code hl_class" href="classAPlayerControl.html">APlayerControl</a>* PC = Cast&lt;APlayerControl&gt;(GetOwningPlayer()))</div>
+<div class="line"><span class="lineno">   23</span>    {</div>
+<div class="line"><span class="lineno">   24</span>        FInputModeGameOnly inputMode;</div>
+<div class="line"><span class="lineno">   25</span>        PC-&gt;SetInputMode(inputMode);</div>
+<div class="line"><span class="lineno">   26</span>    }</div>
+<div class="line"><span class="lineno">   27</span>}</div>
+<div class="ttc" id="aclassAPlayerControl_html"><div class="ttname"><a href="classAPlayerControl.html">APlayerControl</a></div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8h_source.html#l00017">APlayerControl.h:18</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a21745edd73ef2138632b3188ad4c71da" name="a21745edd73ef2138632b3188ad4c71da"></a>
@@ -275,10 +342,10 @@ Private 멤버 함수</h2></td></tr>
 <div class="line"><span class="lineno">   14</span>    </div>
 <div class="line"><span class="lineno">   15</span>    <a class="code hl_variable" href="classUChatInputBox.html#ae0533d766d0dc39730fb7c02f4a6d542">Button_Send</a>-&gt;OnClicked.AddDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUChatInputBox.html#ab0e955ead352543a4480bc46fddf7029">UChatInputBox::HandleSendClicked</a>);</div>
 <div class="line"><span class="lineno">   16</span>}</div>
-<div class="ttc" id="aclassUChatInputBox_html_ab0e955ead352543a4480bc46fddf7029"><div class="ttname"><a href="classUChatInputBox.html#ab0e955ead352543a4480bc46fddf7029">UChatInputBox::HandleSendClicked</a></div><div class="ttdeci">void HandleSendClicked()</div><div class="ttdef"><b>Definition</b> <a href="ChatInputBox_8cpp_source.html#l00039">ChatInputBox.cpp:39</a></div></div>
-<div class="ttc" id="aclassUChatInputBox_html_ae0533d766d0dc39730fb7c02f4a6d542"><div class="ttname"><a href="classUChatInputBox.html#ae0533d766d0dc39730fb7c02f4a6d542">UChatInputBox::Button_Send</a></div><div class="ttdeci">TObjectPtr&lt; class UButton &gt; Button_Send</div><div class="ttdef"><b>Definition</b> <a href="ChatInputBox_8h_source.html#l00029">ChatInputBox.h:29</a></div></div>
+<div class="ttc" id="aclassUChatInputBox_html_ab0e955ead352543a4480bc46fddf7029"><div class="ttname"><a href="classUChatInputBox.html#ab0e955ead352543a4480bc46fddf7029">UChatInputBox::HandleSendClicked</a></div><div class="ttdeci">void HandleSendClicked()</div><div class="ttdef"><b>Definition</b> <a href="ChatInputBox_8cpp_source.html#l00056">ChatInputBox.cpp:56</a></div></div>
+<div class="ttc" id="aclassUChatInputBox_html_ae0533d766d0dc39730fb7c02f4a6d542"><div class="ttname"><a href="classUChatInputBox.html#ae0533d766d0dc39730fb7c02f4a6d542">UChatInputBox::Button_Send</a></div><div class="ttdeci">TObjectPtr&lt; class UButton &gt; Button_Send</div><div class="ttdef"><b>Definition</b> <a href="ChatInputBox_8h_source.html#l00031">ChatInputBox.h:31</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="ChatInputBox_8h_source.html#l00029">Button_Send</a>, <a class="el" href="ChatInputBox_8cpp_source.html#l00039">HandleSendClicked()</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="ChatInputBox_8h_source.html#l00031">Button_Send</a>, <a class="el" href="ChatInputBox_8cpp_source.html#l00056">HandleSendClicked()</a>.</p>
 <div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-5-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-5-summary" class="dynsummary" style="display:block;">
@@ -323,19 +390,19 @@ Private 멤버 함수</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ChatInputBox_8cpp_source.html">ChatInputBox.cpp</a> 파일의 <a class="el" href="ChatInputBox_8cpp_source.html#l00018">18</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   19</span>{</div>
-<div class="line"><span class="lineno">   20</span>    <span class="comment">// Enter 키 감지 &amp; Shift+Enter는 줄바꿈 허용</span></div>
-<div class="line"><span class="lineno">   21</span>    <span class="keywordflow">if</span> (InKeyEvent.GetKey() == EKeys::Enter &amp;&amp; !InKeyEvent.IsShiftDown())</div>
-<div class="line"><span class="lineno">   22</span>    {</div>
-<div class="line"><span class="lineno">   23</span>        <a class="code hl_function" href="classUChatInputBox.html#ab0e955ead352543a4480bc46fddf7029">HandleSendClicked</a>();</div>
-<div class="line"><span class="lineno">   24</span>        <span class="keywordflow">return</span> FReply::Handled();</div>
-<div class="line"><span class="lineno">   25</span>    }</div>
-<div class="line"><span class="lineno">   26</span>    </div>
-<div class="line"><span class="lineno">   27</span>    <span class="keywordflow">return</span> Super::NativeOnPreviewKeyDown(InGeometry, InKeyEvent);</div>
-<div class="line"><span class="lineno">   28</span>}</div>
+<p class="definition"><a class="el" href="ChatInputBox_8cpp_source.html">ChatInputBox.cpp</a> 파일의 <a class="el" href="ChatInputBox_8cpp_source.html#l00029">29</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   30</span>{</div>
+<div class="line"><span class="lineno">   31</span>    <span class="comment">// Enter 키 감지 &amp; Shift+Enter는 줄바꿈 허용</span></div>
+<div class="line"><span class="lineno">   32</span>    <span class="keywordflow">if</span> (InKeyEvent.GetKey() == EKeys::Enter &amp;&amp; !InKeyEvent.IsShiftDown())</div>
+<div class="line"><span class="lineno">   33</span>    {</div>
+<div class="line"><span class="lineno">   34</span>        <a class="code hl_function" href="classUChatInputBox.html#ab0e955ead352543a4480bc46fddf7029">HandleSendClicked</a>();</div>
+<div class="line"><span class="lineno">   35</span>        <span class="keywordflow">return</span> FReply::Handled();</div>
+<div class="line"><span class="lineno">   36</span>    }</div>
+<div class="line"><span class="lineno">   37</span>    </div>
+<div class="line"><span class="lineno">   38</span>    <span class="keywordflow">return</span> Super::NativeOnPreviewKeyDown(InGeometry, InKeyEvent);</div>
+<div class="line"><span class="lineno">   39</span>}</div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="ChatInputBox_8cpp_source.html#l00039">HandleSendClicked()</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="ChatInputBox_8cpp_source.html#l00056">HandleSendClicked()</a>.</p>
 <div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-6-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-6-summary" class="dynsummary" style="display:block;">
@@ -367,7 +434,7 @@ Private 멤버 함수</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ChatInputBox_8h_source.html">ChatInputBox.h</a> 파일의 <a class="el" href="ChatInputBox_8h_source.html#l00029">29</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="ChatInputBox_8h_source.html">ChatInputBox.h</a> 파일의 <a class="el" href="ChatInputBox_8h_source.html#l00031">31</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ChatInputBox_8cpp_source.html#l00011">NativeOnInitialized()</a>.</p>
 
@@ -393,9 +460,9 @@ Private 멤버 함수</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ChatInputBox_8h_source.html">ChatInputBox.h</a> 파일의 <a class="el" href="ChatInputBox_8h_source.html#l00026">26</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="ChatInputBox_8h_source.html">ChatInputBox.h</a> 파일의 <a class="el" href="ChatInputBox_8h_source.html#l00028">28</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ChatInputBox_8cpp_source.html#l00030">FlushMessage()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ChatInputBox_8cpp_source.html#l00041">FlushMessage()</a>, <a class="el" href="ChatInputBox_8cpp_source.html#l00051">FocusInput()</a>.</p>
 
 </div>
 </div>
@@ -409,7 +476,7 @@ Private 멤버 함수</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classUChatInputBox.html">UChatInputBox</a></li>
-    <li class="footer">생성시간 : 목 12월 18 2025 08:59:02, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 목 12월 18 2025 14:41:30, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>
