@@ -222,50 +222,52 @@ $(document).ready(function(){initNavTree('LobbyWidget_8cpp_source.html',''); ini
 <div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    FString sessionName = <a class="code hl_variable" href="classULobbyWidget.html#adbc588bbd79766a16f50de5bd410c868">EdtTxt_SessionName</a>-&gt;GetText().ToString();</div>
 <div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    <span class="comment">// 세션 생성</span></div>
 <div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    <a class="code hl_variable" href="classULobbyWidget.html#ab2a809ece4ef11c5a103558a69947ce3">GI</a>-&gt;<a class="code hl_function" href="classULingoGameInstance.html#a094b7b917f1aa7eca5989d86616a69b4">CreateMySession</a>(sessionName);</div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>}</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    UDialogManager::Get(GetWorld())-&gt;ShowToast(TEXT(<span class="stringliteral">&quot;Create Session Success&quot;</span>));</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>}</div>
 </div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span> </div>
-<div class="foldopen" id="foldopen00105" data-start="{" data-end="}">
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno"><a class="line" href="classULobbyWidget.html#a19688e892381b0af770c0e50a9678e54">  105</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classULobbyWidget.html#a19688e892381b0af770c0e50a9678e54">ULobbyWidget::OnValueChangedSessionName</a>(<span class="keyword">const</span> FText&amp; Text)</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>{</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    <span class="comment">// text 값의 길이에 따른 생성 버튼 활성 / 비활성</span></div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    <span class="comment">// text.IsEmpty()</span></div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    <a class="code hl_variable" href="classULobbyWidget.html#ac269be527b9914bcf24923f5a15690f9">Btn_Create</a>-&gt;SetIsEnabled(Text.ToString().Len() &gt; 0);</div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>}</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span> </div>
+<div class="foldopen" id="foldopen00107" data-start="{" data-end="}">
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno"><a class="line" href="classULobbyWidget.html#a19688e892381b0af770c0e50a9678e54">  107</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classULobbyWidget.html#a19688e892381b0af770c0e50a9678e54">ULobbyWidget::OnValueChangedSessionName</a>(<span class="keyword">const</span> FText&amp; Text)</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>{</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    <span class="comment">// text 값의 길이에 따른 생성 버튼 활성 / 비활성</span></div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    <span class="comment">// text.IsEmpty()</span></div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    <a class="code hl_variable" href="classULobbyWidget.html#ac269be527b9914bcf24923f5a15690f9">Btn_Create</a>-&gt;SetIsEnabled(Text.ToString().Len() &gt; 0);</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>}</div>
 </div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span> </div>
-<div class="foldopen" id="foldopen00112" data-start="{" data-end="}">
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno"><a class="line" href="classULobbyWidget.html#ae19628adc8297e76a4edd5452099c2e4">  112</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classULobbyWidget.html#ae19628adc8297e76a4edd5452099c2e4">ULobbyWidget::OnClickFind</a>()</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>{</div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    <a class="code hl_variable" href="classULobbyWidget.html#a42de44172e6a96acbae7313fac0af009">Scrl_SessionList</a>-&gt;ClearChildren();</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>    <span class="comment">// 버튼 비활성화</span></div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>    <a class="code hl_variable" href="classULobbyWidget.html#a9f7d94fabb5cf7886e9a8763cb4beb6f">Txt_Update</a>-&gt;SetText(FText::FromString(TEXT(<span class="stringliteral">&quot;Updating ...&quot;</span>)));</div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>    <a class="code hl_variable" href="classULobbyWidget.html#a2e16854a2544658fa63f5957d290f014">Btn_Update</a>-&gt;SetIsEnabled(<span class="keyword">false</span>);</div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span> </div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    <a class="code hl_variable" href="classULobbyWidget.html#ab2a809ece4ef11c5a103558a69947ce3">GI</a>-&gt;<a class="code hl_function" href="classULingoGameInstance.html#a5addb30790cffdff624033f5ebe36fb5">FindOtherSession</a>();</div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>}</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span> </div>
+<div class="foldopen" id="foldopen00114" data-start="{" data-end="}">
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno"><a class="line" href="classULobbyWidget.html#ae19628adc8297e76a4edd5452099c2e4">  114</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classULobbyWidget.html#ae19628adc8297e76a4edd5452099c2e4">ULobbyWidget::OnClickFind</a>()</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>{</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>    <a class="code hl_variable" href="classULobbyWidget.html#a42de44172e6a96acbae7313fac0af009">Scrl_SessionList</a>-&gt;ClearChildren();</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>    <span class="comment">// 버튼 비활성화</span></div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    <a class="code hl_variable" href="classULobbyWidget.html#a9f7d94fabb5cf7886e9a8763cb4beb6f">Txt_Update</a>-&gt;SetText(FText::FromString(TEXT(<span class="stringliteral">&quot;Updating ...&quot;</span>)));</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    <a class="code hl_variable" href="classULobbyWidget.html#a2e16854a2544658fa63f5957d290f014">Btn_Update</a>-&gt;SetIsEnabled(<span class="keyword">false</span>);</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span> </div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    <a class="code hl_variable" href="classULobbyWidget.html#ab2a809ece4ef11c5a103558a69947ce3">GI</a>-&gt;<a class="code hl_function" href="classULingoGameInstance.html#a5addb30790cffdff624033f5ebe36fb5">FindOtherSession</a>();</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>}</div>
 </div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span> </div>
-<div class="foldopen" id="foldopen00122" data-start="{" data-end="}">
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno"><a class="line" href="classULobbyWidget.html#a000f1806ccfae80bea829ad0e3c424c1">  122</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classULobbyWidget.html#a000f1806ccfae80bea829ad0e3c424c1">ULobbyWidget::OnFindComplete</a>(int32 idx, FString sessionName)</div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>{</div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>    <span class="keywordflow">if</span> (idx == -1)</div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>    {</div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>        <span class="comment">// 조회 버튼 문구 변경</span></div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>        <a class="code hl_variable" href="classULobbyWidget.html#a9f7d94fabb5cf7886e9a8763cb4beb6f">Txt_Update</a>-&gt;SetText(FText::FromString(TEXT(<span class="stringliteral">&quot;Update Session&quot;</span>)));</div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>        <span class="comment">// 조회 버튼 활성화</span></div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>        <a class="code hl_variable" href="classULobbyWidget.html#a2e16854a2544658fa63f5957d290f014">Btn_Update</a>-&gt;SetIsEnabled(<span class="keyword">true</span>); </div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>    }</div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>    <span class="keywordflow">else</span></div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    {</div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>        <span class="comment">// sessionInfoWidget 만들자.</span></div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>        <a class="code hl_class" href="classUSessionInfoWidget.html">USessionInfoWidget</a>* item = CreateWidget&lt;USessionInfoWidget&gt;(GetWorld(), <a class="code hl_variable" href="classULobbyWidget.html#ae2dc5e331b153d1dfef548a2b694b4cb">sessionInfoWidget</a>);</div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>        <span class="comment">// 만들어진 item 을 scrollSessionList 에 추가</span></div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>        <a class="code hl_variable" href="classULobbyWidget.html#a42de44172e6a96acbae7313fac0af009">Scrl_SessionList</a>-&gt;AddChild(item);</div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>        <span class="comment">// 만들어지 item 정보 설정</span></div>
-<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>        item-&gt;<a class="code hl_function" href="classUSessionInfoWidget.html#a1fcc55f0382d83ce9c94b83cc881d12f">SetSessionInfo</a>(idx, sessionName);</div>
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>    }</div>
-<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>}</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span> </div>
+<div class="foldopen" id="foldopen00124" data-start="{" data-end="}">
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno"><a class="line" href="classULobbyWidget.html#a000f1806ccfae80bea829ad0e3c424c1">  124</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classULobbyWidget.html#a000f1806ccfae80bea829ad0e3c424c1">ULobbyWidget::OnFindComplete</a>(int32 idx, FString sessionName)</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>{</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>    <span class="keywordflow">if</span> (idx == -1)</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>    {</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>        <span class="comment">// 조회 버튼 문구 변경</span></div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>        <a class="code hl_variable" href="classULobbyWidget.html#a9f7d94fabb5cf7886e9a8763cb4beb6f">Txt_Update</a>-&gt;SetText(FText::FromString(TEXT(<span class="stringliteral">&quot;Update Session&quot;</span>)));</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>        <span class="comment">// 조회 버튼 활성화</span></div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>        <a class="code hl_variable" href="classULobbyWidget.html#a2e16854a2544658fa63f5957d290f014">Btn_Update</a>-&gt;SetIsEnabled(<span class="keyword">true</span>); </div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    }</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>    <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>    {</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>        <span class="comment">// sessionInfoWidget 만들자.</span></div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>        <a class="code hl_class" href="classUSessionInfoWidget.html">USessionInfoWidget</a>* item = CreateWidget&lt;USessionInfoWidget&gt;(GetWorld(), <a class="code hl_variable" href="classULobbyWidget.html#ae2dc5e331b153d1dfef548a2b694b4cb">sessionInfoWidget</a>);</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>        <span class="comment">// 만들어진 item 을 scrollSessionList 에 추가</span></div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>        <a class="code hl_variable" href="classULobbyWidget.html#a42de44172e6a96acbae7313fac0af009">Scrl_SessionList</a>-&gt;AddChild(item);</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>        <span class="comment">// 만들어지 item 정보 설정</span></div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>        item-&gt;<a class="code hl_function" href="classUSessionInfoWidget.html#a1fcc55f0382d83ce9c94b83cc881d12f">SetSessionInfo</a>(idx, sessionName);</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>    }</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>}</div>
 </div>
 <div class="ttc" id="aLobbyWidget_8h_html"><div class="ttname"><a href="LobbyWidget_8h.html">LobbyWidget.h</a></div></div>
 <div class="ttc" id="aSessionInfoWidget_8h_html"><div class="ttname"><a href="SessionInfoWidget_8h.html">SessionInfoWidget.h</a></div></div>
@@ -281,9 +283,9 @@ $(document).ready(function(){initNavTree('LobbyWidget_8cpp_source.html',''); ini
 <div class="ttc" id="aclassULingoGameInstance_html_a094b7b917f1aa7eca5989d86616a69b4"><div class="ttname"><a href="classULingoGameInstance.html#a094b7b917f1aa7eca5989d86616a69b4">ULingoGameInstance::CreateMySession</a></div><div class="ttdeci">void CreateMySession(FString displayName)</div><div class="ttdef"><b>Definition</b> <a href="ULingoGameInstance_8cpp_source.html#l00169">ULingoGameInstance.cpp:169</a></div></div>
 <div class="ttc" id="aclassULingoGameInstance_html_a5addb30790cffdff624033f5ebe36fb5"><div class="ttname"><a href="classULingoGameInstance.html#a5addb30790cffdff624033f5ebe36fb5">ULingoGameInstance::FindOtherSession</a></div><div class="ttdeci">void FindOtherSession()</div><div class="ttdef"><b>Definition</b> <a href="ULingoGameInstance_8cpp_source.html#l00217">ULingoGameInstance.cpp:217</a></div></div>
 <div class="ttc" id="aclassULingoGameInstance_html_aa6c095d06ead65ddac325cf705779752"><div class="ttname"><a href="classULingoGameInstance.html#aa6c095d06ead65ddac325cf705779752">ULingoGameInstance::onFindComplete</a></div><div class="ttdeci">FFindComplete onFindComplete</div><div class="ttdef"><b>Definition</b> <a href="ULingoGameInstance_8h_source.html#l00094">ULingoGameInstance.h:94</a></div></div>
-<div class="ttc" id="aclassULobbyWidget_html_a000f1806ccfae80bea829ad0e3c424c1"><div class="ttname"><a href="classULobbyWidget.html#a000f1806ccfae80bea829ad0e3c424c1">ULobbyWidget::OnFindComplete</a></div><div class="ttdeci">void OnFindComplete(int32 idx, FString sessionName)</div><div class="ttdef"><b>Definition</b> <a href="LobbyWidget_8cpp_source.html#l00122">LobbyWidget.cpp:122</a></div></div>
+<div class="ttc" id="aclassULobbyWidget_html_a000f1806ccfae80bea829ad0e3c424c1"><div class="ttname"><a href="classULobbyWidget.html#a000f1806ccfae80bea829ad0e3c424c1">ULobbyWidget::OnFindComplete</a></div><div class="ttdeci">void OnFindComplete(int32 idx, FString sessionName)</div><div class="ttdef"><b>Definition</b> <a href="LobbyWidget_8cpp_source.html#l00124">LobbyWidget.cpp:124</a></div></div>
 <div class="ttc" id="aclassULobbyWidget_html_a10378421a5314d3bd877994740a035d6"><div class="ttname"><a href="classULobbyWidget.html#a10378421a5314d3bd877994740a035d6">ULobbyWidget::NativeConstruct</a></div><div class="ttdeci">virtual void NativeConstruct() override</div><div class="ttdef"><b>Definition</b> <a href="LobbyWidget_8cpp_source.html#l00019">LobbyWidget.cpp:19</a></div></div>
-<div class="ttc" id="aclassULobbyWidget_html_a19688e892381b0af770c0e50a9678e54"><div class="ttname"><a href="classULobbyWidget.html#a19688e892381b0af770c0e50a9678e54">ULobbyWidget::OnValueChangedSessionName</a></div><div class="ttdeci">void OnValueChangedSessionName(const FText &amp;Text)</div><div class="ttdef"><b>Definition</b> <a href="LobbyWidget_8cpp_source.html#l00105">LobbyWidget.cpp:105</a></div></div>
+<div class="ttc" id="aclassULobbyWidget_html_a19688e892381b0af770c0e50a9678e54"><div class="ttname"><a href="classULobbyWidget.html#a19688e892381b0af770c0e50a9678e54">ULobbyWidget::OnValueChangedSessionName</a></div><div class="ttdeci">void OnValueChangedSessionName(const FText &amp;Text)</div><div class="ttdef"><b>Definition</b> <a href="LobbyWidget_8cpp_source.html#l00107">LobbyWidget.cpp:107</a></div></div>
 <div class="ttc" id="aclassULobbyWidget_html_a2a1e923537fd35cd5a2cb7b2542168cb"><div class="ttname"><a href="classULobbyWidget.html#a2a1e923537fd35cd5a2cb7b2542168cb">ULobbyWidget::OnCreateClicked</a></div><div class="ttdeci">void OnCreateClicked()</div><div class="ttdef"><b>Definition</b> <a href="LobbyWidget_8cpp_source.html#l00097">LobbyWidget.cpp:97</a></div></div>
 <div class="ttc" id="aclassULobbyWidget_html_a2e16854a2544658fa63f5957d290f014"><div class="ttname"><a href="classULobbyWidget.html#a2e16854a2544658fa63f5957d290f014">ULobbyWidget::Btn_Update</a></div><div class="ttdeci">class UTextureButton * Btn_Update</div><div class="ttdef"><b>Definition</b> <a href="LobbyWidget_8h_source.html#l00073">LobbyWidget.h:73</a></div></div>
 <div class="ttc" id="aclassULobbyWidget_html_a2f521fce81c9bbbcf6d565ae4b309d19"><div class="ttname"><a href="classULobbyWidget.html#a2f521fce81c9bbbcf6d565ae4b309d19">ULobbyWidget::Btn_Single</a></div><div class="ttdeci">class UHoverButton * Btn_Single</div><div class="ttdef"><b>Definition</b> <a href="LobbyWidget_8h_source.html#l00030">LobbyWidget.h:30</a></div></div>
@@ -298,12 +300,12 @@ $(document).ready(function(){initNavTree('LobbyWidget_8cpp_source.html',''); ini
 <div class="ttc" id="aclassULobbyWidget_html_ab2a809ece4ef11c5a103558a69947ce3"><div class="ttname"><a href="classULobbyWidget.html#ab2a809ece4ef11c5a103558a69947ce3">ULobbyWidget::GI</a></div><div class="ttdeci">class ULingoGameInstance * GI</div><div class="ttdef"><b>Definition</b> <a href="LobbyWidget_8h_source.html#l00022">LobbyWidget.h:22</a></div></div>
 <div class="ttc" id="aclassULobbyWidget_html_ac269be527b9914bcf24923f5a15690f9"><div class="ttname"><a href="classULobbyWidget.html#ac269be527b9914bcf24923f5a15690f9">ULobbyWidget::Btn_Create</a></div><div class="ttdeci">class UImageButton * Btn_Create</div><div class="ttdef"><b>Definition</b> <a href="LobbyWidget_8h_source.html#l00059">LobbyWidget.h:59</a></div></div>
 <div class="ttc" id="aclassULobbyWidget_html_adbc588bbd79766a16f50de5bd410c868"><div class="ttname"><a href="classULobbyWidget.html#adbc588bbd79766a16f50de5bd410c868">ULobbyWidget::EdtTxt_SessionName</a></div><div class="ttdeci">class UEditableTextBox * EdtTxt_SessionName</div><div class="ttdef"><b>Definition</b> <a href="LobbyWidget_8h_source.html#l00056">LobbyWidget.h:56</a></div></div>
-<div class="ttc" id="aclassULobbyWidget_html_ae19628adc8297e76a4edd5452099c2e4"><div class="ttname"><a href="classULobbyWidget.html#ae19628adc8297e76a4edd5452099c2e4">ULobbyWidget::OnClickFind</a></div><div class="ttdeci">void OnClickFind()</div><div class="ttdef"><b>Definition</b> <a href="LobbyWidget_8cpp_source.html#l00112">LobbyWidget.cpp:112</a></div></div>
+<div class="ttc" id="aclassULobbyWidget_html_ae19628adc8297e76a4edd5452099c2e4"><div class="ttname"><a href="classULobbyWidget.html#ae19628adc8297e76a4edd5452099c2e4">ULobbyWidget::OnClickFind</a></div><div class="ttdeci">void OnClickFind()</div><div class="ttdef"><b>Definition</b> <a href="LobbyWidget_8cpp_source.html#l00114">LobbyWidget.cpp:114</a></div></div>
 <div class="ttc" id="aclassULobbyWidget_html_ae2dc5e331b153d1dfef548a2b694b4cb"><div class="ttname"><a href="classULobbyWidget.html#ae2dc5e331b153d1dfef548a2b694b4cb">ULobbyWidget::sessionInfoWidget</a></div><div class="ttdeci">TSubclassOf&lt; class USessionInfoWidget &gt; sessionInfoWidget</div><div class="ttdef"><b>Definition</b> <a href="LobbyWidget_8h_source.html#l00079">LobbyWidget.h:79</a></div></div>
 <div class="ttc" id="aclassULobbyWidget_html_ae6e541e2364ae253225d51117656df8a"><div class="ttname"><a href="classULobbyWidget.html#ae6e541e2364ae253225d51117656df8a">ULobbyWidget::Btn_LogOut</a></div><div class="ttdeci">class UHoverButton * Btn_LogOut</div><div class="ttdef"><b>Definition</b> <a href="LobbyWidget_8h_source.html#l00039">LobbyWidget.h:39</a></div></div>
 <div class="ttc" id="aclassULobbyWidget_html_afbaf44dd0987d901bf9a91aafdbe5885"><div class="ttname"><a href="classULobbyWidget.html#afbaf44dd0987d901bf9a91aafdbe5885">ULobbyWidget::OnHostClicked</a></div><div class="ttdeci">void OnHostClicked()</div><div class="ttdef"><b>Definition</b> <a href="LobbyWidget_8cpp_source.html#l00078">LobbyWidget.cpp:78</a></div></div>
 <div class="ttc" id="aclassUSessionInfoWidget_html"><div class="ttname"><a href="classUSessionInfoWidget.html">USessionInfoWidget</a></div><div class="ttdef"><b>Definition</b> <a href="SessionInfoWidget_8h_source.html#l00013">SessionInfoWidget.h:14</a></div></div>
-<div class="ttc" id="aclassUSessionInfoWidget_html_a1fcc55f0382d83ce9c94b83cc881d12f"><div class="ttname"><a href="classUSessionInfoWidget.html#a1fcc55f0382d83ce9c94b83cc881d12f">USessionInfoWidget::SetSessionInfo</a></div><div class="ttdeci">void SetSessionInfo(int32 idx, FString sessionName)</div><div class="ttdef"><b>Definition</b> <a href="SessionInfoWidget_8cpp_source.html#l00031">SessionInfoWidget.cpp:31</a></div></div>
+<div class="ttc" id="aclassUSessionInfoWidget_html_a1fcc55f0382d83ce9c94b83cc881d12f"><div class="ttname"><a href="classUSessionInfoWidget.html#a1fcc55f0382d83ce9c94b83cc881d12f">USessionInfoWidget::SetSessionInfo</a></div><div class="ttdeci">void SetSessionInfo(int32 idx, FString sessionName)</div><div class="ttdef"><b>Definition</b> <a href="SessionInfoWidget_8cpp_source.html#l00034">SessionInfoWidget.cpp:34</a></div></div>
 <div class="ttc" id="aclassUTextureButton_html_a32f336807b28bc369a5dccaf31385e4e"><div class="ttname"><a href="classUTextureButton.html#a32f336807b28bc369a5dccaf31385e4e">UTextureButton::OnButtonClickedEvent</a></div><div class="ttdeci">FOnTextureButtonClickedEvent OnButtonClickedEvent</div><div class="ttdoc">버튼 클릭 이벤트</div><div class="ttdef"><b>Definition</b> <a href="UTextureButton_8h_source.html#l00079">UTextureButton.h:79</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
@@ -311,7 +313,7 @@ $(document).ready(function(){initNavTree('LobbyWidget_8cpp_source.html',''); ini
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_55b064ed9f704d76d3805f2fda876350.html">UI</a></li><li class="navelem"><a class="el" href="dir_550f083bbe519bd985f450628c1369b6.html">Private</a></li><li class="navelem"><a class="el" href="LobbyWidget_8cpp.html">LobbyWidget.cpp</a></li>
-    <li class="footer">생성시간 : 수 12월 17 2025 23:46:59, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 목 12월 18 2025 05:19:58, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

@@ -1105,370 +1105,403 @@ $(document).ready(function(){initNavTree('NetworkData_8h_source.html',''); initR
 <div class="line"><a id="l00972" name="l00972"></a><span class="lineno">  972</span>};</div>
 </div>
 <div class="line"><a id="l00973" name="l00973"></a><span class="lineno">  973</span> </div>
-<div class="line"><a id="l00974" name="l00974"></a><span class="lineno">  974</span> </div>
-<div class="line"><a id="l00975" name="l00975"></a><span class="lineno"><a class="line" href="NetworkData_8h.html#a98b38d00e46e9203854bfccfc21f37bc">  975</a></span><a class="code hl_function" href="NetworkData_8h.html#a697e7be88961f9eeb98db05dc466b4c1">DECLARE_DELEGATE_TwoParams</a>(FResponseReadResultDelegate, <a class="code hl_struct" href="structFResponseReadResult.html">FResponseReadResult</a>&amp;, <span class="keywordtype">bool</span>);</div>
-<div class="line"><a id="l00976" name="l00976"></a><span class="lineno">  976</span>USTRUCT(BlueprintType)</div>
-<div class="foldopen" id="foldopen00977" data-start="{" data-end="};">
-<div class="line"><a id="l00977" name="l00977"></a><span class="lineno"><a class="line" href="structFResponseReadResult.html">  977</a></span>struct <a class="code hl_struct" href="structFResponseReadResult.html">FResponseReadResult</a></div>
-<div class="line"><a id="l00978" name="l00978"></a><span class="lineno">  978</span>{</div>
-<div class="line"><a id="l00979" name="l00979"></a><span class="lineno">  979</span>    GENERATED_BODY()</div>
-<div class="line"><a id="l00980" name="l00980"></a><span class="lineno">  980</span> </div>
-<div class="line"><a id="l00981" name="l00981"></a><span class="lineno">  981</span>    UPROPERTY(BlueprintReadWrite, Category = <span class="stringliteral">&quot;QuestResult&quot;</span>)</div>
-<div class="line"><a id="l00982" name="l00982"></a><span class="lineno"><a class="line" href="structFResponseReadResult.html#ac494d096b2250e595c8e6c82d456875b">  982</a></span>    FString grade;</div>
-<div class="line"><a id="l00983" name="l00983"></a><span class="lineno">  983</span> </div>
-<div class="line"><a id="l00984" name="l00984"></a><span class="lineno">  984</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;QuestResult&quot;)</div>
-<div class="line"><a id="l00985" name="l00985"></a><span class="lineno"><a class="line" href="structFResponseReadResult.html#a025804546c05d43d63298beac5cda57b">  985</a></span>    int32 average_score;</div>
-<div class="line"><a id="l00986" name="l00986"></a><span class="lineno">  986</span> </div>
-<div class="line"><a id="l00987" name="l00987"></a><span class="lineno">  987</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;QuestResult&quot;)</div>
-<div class="line"><a id="l00988" name="l00988"></a><span class="lineno"><a class="line" href="structFResponseReadResult.html#a9b90bad45b2659ddf80b40e083b15168">  988</a></span>    <span class="keywordtype">float</span> top_percent;</div>
-<div class="line"><a id="l00989" name="l00989"></a><span class="lineno">  989</span> </div>
-<div class="line"><a id="l00991" name="l00991"></a><span class="lineno">  991</span>    <span class="keywordtype">void</span> SetFromHttpResponse(const TSharedPtr&lt;class IHttpResponse, ESPMode::ThreadSafe&gt;&amp; Response);</div>
-<div class="line"><a id="l00992" name="l00992"></a><span class="lineno">  992</span> </div>
-<div class="line"><a id="l00994" name="l00994"></a><span class="lineno">  994</span>    <span class="keywordtype">void</span> PrintData() const;</div>
-<div class="line"><a id="l00995" name="l00995"></a><span class="lineno">  995</span>};</div>
+<div class="line"><a id="l00975" name="l00975"></a><span class="lineno">  975</span>USTRUCT(BlueprintType)</div>
+<div class="foldopen" id="foldopen00976" data-start="{" data-end="};">
+<div class="line"><a id="l00976" name="l00976"></a><span class="lineno"><a class="line" href="structFReadScoreDetail.html">  976</a></span>struct <a class="code hl_struct" href="structFReadScoreDetail.html">FReadScoreDetail</a></div>
+<div class="line"><a id="l00977" name="l00977"></a><span class="lineno">  977</span>{</div>
+<div class="line"><a id="l00978" name="l00978"></a><span class="lineno">  978</span>    GENERATED_BODY()</div>
+<div class="line"><a id="l00979" name="l00979"></a><span class="lineno">  979</span> </div>
+<div class="line"><a id="l00980" name="l00980"></a><span class="lineno">  980</span>    UPROPERTY(BlueprintReadWrite, Category = <span class="stringliteral">&quot;QuestResult&quot;</span>)</div>
+<div class="line"><a id="l00981" name="l00981"></a><span class="lineno"><a class="line" href="structFReadScoreDetail.html#ab1e8f066d84b3a07f8767eb8e2959113">  981</a></span>    float score = 0.0f;</div>
+<div class="line"><a id="l00982" name="l00982"></a><span class="lineno">  982</span> </div>
+<div class="line"><a id="l00983" name="l00983"></a><span class="lineno">  983</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;QuestResult&quot;)</div>
+<div class="line"><a id="l00984" name="l00984"></a><span class="lineno"><a class="line" href="structFReadScoreDetail.html#a3ec52dc383db5a2c648b890d78093b00">  984</a></span>    FString desc;</div>
+<div class="line"><a id="l00985" name="l00985"></a><span class="lineno">  985</span>};</div>
 </div>
-<div class="line"><a id="l00996" name="l00996"></a><span class="lineno">  996</span> </div>
-<div class="line"><a id="l00997" name="l00997"></a><span class="lineno">  997</span> </div>
-<div class="line"><a id="l00998" name="l00998"></a><span class="lineno"><a class="line" href="NetworkData_8h.html#a21a9039f180f652e7c54be193aa39c7f">  998</a></span><a class="code hl_function" href="NetworkData_8h.html#a697e7be88961f9eeb98db05dc466b4c1">DECLARE_DELEGATE_TwoParams</a>(FResponseListenScenarioDelegate, <a class="code hl_struct" href="structFResponseListenScenario.html">FResponseListenScenario</a>&amp;, <span class="keywordtype">bool</span>);</div>
-<div class="line"><a id="l00999" name="l00999"></a><span class="lineno">  999</span>USTRUCT(BlueprintType)</div>
-<div class="foldopen" id="foldopen01000" data-start="{" data-end="};">
-<div class="line"><a id="l01000" name="l01000"></a><span class="lineno"><a class="line" href="structFResponseListenScenario.html"> 1000</a></span>struct <a class="code hl_struct" href="structFResponseListenScenario.html">FResponseListenScenario</a></div>
-<div class="line"><a id="l01001" name="l01001"></a><span class="lineno"> 1001</span>{</div>
-<div class="line"><a id="l01002" name="l01002"></a><span class="lineno"> 1002</span>    GENERATED_BODY()</div>
-<div class="line"><a id="l01003" name="l01003"></a><span class="lineno"> 1003</span> </div>
-<div class="line"><a id="l01004" name="l01004"></a><span class="lineno"> 1004</span>    UPROPERTY(BlueprintReadWrite, Category = <span class="stringliteral">&quot;Listen&quot;</span>)</div>
-<div class="line"><a id="l01005" name="l01005"></a><span class="lineno"><a class="line" href="structFResponseListenScenario.html#a058905f1b6c43218e6a6344ec93ffdba"> 1005</a></span>    int32 index = 0;</div>
-<div class="line"><a id="l01006" name="l01006"></a><span class="lineno"> 1006</span> </div>
-<div class="line"><a id="l01007" name="l01007"></a><span class="lineno"> 1007</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;<a class="code hl_enumvalue" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2ace6802b46091c31e2ec2363883fe8369">Listen</a>&quot;)</div>
-<div class="line"><a id="l01008" name="l01008"></a><span class="lineno"><a class="line" href="structFResponseListenScenario.html#a043c39c8cf4212154435f073ad9cca4e"> 1008</a></span>    int32 dificulity = 0;</div>
-<div class="line"><a id="l01009" name="l01009"></a><span class="lineno"> 1009</span> </div>
-<div class="line"><a id="l01010" name="l01010"></a><span class="lineno"> 1010</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;<a class="code hl_enumvalue" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2ace6802b46091c31e2ec2363883fe8369">Listen</a>&quot;)</div>
-<div class="line"><a id="l01011" name="l01011"></a><span class="lineno"><a class="line" href="structFResponseListenScenario.html#add9478a14beab9aec16cba41e3768dc9"> 1011</a></span>    int32 room_id = 0;</div>
+<div class="line"><a id="l00986" name="l00986"></a><span class="lineno">  986</span> </div>
+<div class="line"><a id="l00987" name="l00987"></a><span class="lineno"><a class="line" href="NetworkData_8h.html#a98b38d00e46e9203854bfccfc21f37bc">  987</a></span><a class="code hl_function" href="NetworkData_8h.html#a697e7be88961f9eeb98db05dc466b4c1">DECLARE_DELEGATE_TwoParams</a>(FResponseReadResultDelegate, <a class="code hl_struct" href="structFResponseReadResult.html">FResponseReadResult</a>&amp;, <span class="keywordtype">bool</span>);</div>
+<div class="line"><a id="l00988" name="l00988"></a><span class="lineno">  988</span>USTRUCT(BlueprintType)</div>
+<div class="foldopen" id="foldopen00989" data-start="{" data-end="};">
+<div class="line"><a id="l00989" name="l00989"></a><span class="lineno"><a class="line" href="structFResponseReadResult.html">  989</a></span>struct <a class="code hl_struct" href="structFResponseReadResult.html">FResponseReadResult</a></div>
+<div class="line"><a id="l00990" name="l00990"></a><span class="lineno">  990</span>{</div>
+<div class="line"><a id="l00991" name="l00991"></a><span class="lineno">  991</span>    GENERATED_BODY()</div>
+<div class="line"><a id="l00992" name="l00992"></a><span class="lineno">  992</span> </div>
+<div class="line"><a id="l00993" name="l00993"></a><span class="lineno">  993</span>    UPROPERTY(BlueprintReadWrite, Category = <span class="stringliteral">&quot;QuestResult&quot;</span>)</div>
+<div class="line"><a id="l00994" name="l00994"></a><span class="lineno"><a class="line" href="structFResponseReadResult.html#ac494d096b2250e595c8e6c82d456875b">  994</a></span>    FString grade;</div>
+<div class="line"><a id="l00995" name="l00995"></a><span class="lineno">  995</span> </div>
+<div class="line"><a id="l00996" name="l00996"></a><span class="lineno">  996</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;QuestResult&quot;)</div>
+<div class="line"><a id="l00997" name="l00997"></a><span class="lineno"><a class="line" href="structFResponseReadResult.html#ace546aa7a22da04f789890587359e514">  997</a></span>    <span class="keywordtype">float</span> average_score;</div>
+<div class="line"><a id="l00998" name="l00998"></a><span class="lineno">  998</span> </div>
+<div class="line"><a id="l00999" name="l00999"></a><span class="lineno">  999</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;QuestResult&quot;)</div>
+<div class="line"><a id="l01000" name="l01000"></a><span class="lineno"><a class="line" href="structFResponseReadResult.html#a9b90bad45b2659ddf80b40e083b15168"> 1000</a></span>    <span class="keywordtype">float</span> top_percent;</div>
+<div class="line"><a id="l01001" name="l01001"></a><span class="lineno"> 1001</span> </div>
+<div class="line"><a id="l01002" name="l01002"></a><span class="lineno"> 1002</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;QuestResult&quot;)</div>
+<div class="line"><a id="l01003" name="l01003"></a><span class="lineno"><a class="line" href="structFResponseReadResult.html#a7e2a452a0b8342baa606b03f6720bd2b"> 1003</a></span>    TArray&lt;<a class="code hl_struct" href="structFReadScoreDetail.html">FReadScoreDetail</a>&gt; scores;</div>
+<div class="line"><a id="l01004" name="l01004"></a><span class="lineno"> 1004</span> </div>
+<div class="line"><a id="l01006" name="l01006"></a><span class="lineno"> 1006</span>    <span class="keywordtype">void</span> SetFromHttpResponse(const TSharedPtr&lt;class IHttpResponse, ESPMode::ThreadSafe&gt;&amp; Response);</div>
+<div class="line"><a id="l01007" name="l01007"></a><span class="lineno"> 1007</span> </div>
+<div class="line"><a id="l01009" name="l01009"></a><span class="lineno"> 1009</span>    <span class="keywordtype">void</span> PrintData() const;</div>
+<div class="line"><a id="l01010" name="l01010"></a><span class="lineno"> 1010</span>};</div>
+</div>
+<div class="line"><a id="l01011" name="l01011"></a><span class="lineno"> 1011</span> </div>
 <div class="line"><a id="l01012" name="l01012"></a><span class="lineno"> 1012</span> </div>
-<div class="line"><a id="l01013" name="l01013"></a><span class="lineno"> 1013</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;<a class="code hl_enumvalue" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2ace6802b46091c31e2ec2363883fe8369">Listen</a>&quot;)</div>
-<div class="line"><a id="l01014" name="l01014"></a><span class="lineno"><a class="line" href="structFResponseListenScenario.html#acb666ef0e5c937213f5e1ea20f71af21"> 1014</a></span>    TArray&lt;<a class="code hl_struct" href="structFScenarioTargetData.html">FScenarioTargetData</a>&gt; target_data;</div>
-<div class="line"><a id="l01015" name="l01015"></a><span class="lineno"> 1015</span> </div>
-<div class="line"><a id="l01016" name="l01016"></a><span class="lineno"> 1016</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;<a class="code hl_enumvalue" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2ace6802b46091c31e2ec2363883fe8369">Listen</a>&quot;)</div>
-<div class="line"><a id="l01017" name="l01017"></a><span class="lineno"><a class="line" href="structFResponseListenScenario.html#ad57537cc7504a8cc73c37c350640d491"> 1017</a></span>    int32 correct_answer_index = 0;</div>
+<div class="line"><a id="l01013" name="l01013"></a><span class="lineno"><a class="line" href="NetworkData_8h.html#a21a9039f180f652e7c54be193aa39c7f"> 1013</a></span><a class="code hl_function" href="NetworkData_8h.html#a697e7be88961f9eeb98db05dc466b4c1">DECLARE_DELEGATE_TwoParams</a>(FResponseListenScenarioDelegate, <a class="code hl_struct" href="structFResponseListenScenario.html">FResponseListenScenario</a>&amp;, <span class="keywordtype">bool</span>);</div>
+<div class="line"><a id="l01014" name="l01014"></a><span class="lineno"> 1014</span>USTRUCT(BlueprintType)</div>
+<div class="foldopen" id="foldopen01015" data-start="{" data-end="};">
+<div class="line"><a id="l01015" name="l01015"></a><span class="lineno"><a class="line" href="structFResponseListenScenario.html"> 1015</a></span>struct <a class="code hl_struct" href="structFResponseListenScenario.html">FResponseListenScenario</a></div>
+<div class="line"><a id="l01016" name="l01016"></a><span class="lineno"> 1016</span>{</div>
+<div class="line"><a id="l01017" name="l01017"></a><span class="lineno"> 1017</span>    GENERATED_BODY()</div>
 <div class="line"><a id="l01018" name="l01018"></a><span class="lineno"> 1018</span> </div>
-<div class="line"><a id="l01019" name="l01019"></a><span class="lineno"> 1019</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;<a class="code hl_enumvalue" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2ace6802b46091c31e2ec2363883fe8369">Listen</a>&quot;)</div>
-<div class="line"><a id="l01020" name="l01020"></a><span class="lineno"><a class="line" href="structFResponseListenScenario.html#ae5ee14f23d89fc1ef762e21375c2264a"> 1020</a></span>    <a class="code hl_struct" href="structFWordData.html">FWordData</a> word_data1;</div>
+<div class="line"><a id="l01019" name="l01019"></a><span class="lineno"> 1019</span>    UPROPERTY(BlueprintReadWrite, Category = <span class="stringliteral">&quot;Listen&quot;</span>)</div>
+<div class="line"><a id="l01020" name="l01020"></a><span class="lineno"><a class="line" href="structFResponseListenScenario.html#a058905f1b6c43218e6a6344ec93ffdba"> 1020</a></span>    int32 index = 0;</div>
 <div class="line"><a id="l01021" name="l01021"></a><span class="lineno"> 1021</span> </div>
 <div class="line"><a id="l01022" name="l01022"></a><span class="lineno"> 1022</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;<a class="code hl_enumvalue" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2ace6802b46091c31e2ec2363883fe8369">Listen</a>&quot;)</div>
-<div class="line"><a id="l01023" name="l01023"></a><span class="lineno"><a class="line" href="structFResponseListenScenario.html#aac9b1ddf40c8183677692d86a4eae2ff"> 1023</a></span>    <a class="code hl_struct" href="structFWordData.html">FWordData</a> word_data2;</div>
+<div class="line"><a id="l01023" name="l01023"></a><span class="lineno"><a class="line" href="structFResponseListenScenario.html#a043c39c8cf4212154435f073ad9cca4e"> 1023</a></span>    int32 dificulity = 0;</div>
 <div class="line"><a id="l01024" name="l01024"></a><span class="lineno"> 1024</span> </div>
 <div class="line"><a id="l01025" name="l01025"></a><span class="lineno"> 1025</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;<a class="code hl_enumvalue" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2ace6802b46091c31e2ec2363883fe8369">Listen</a>&quot;)</div>
-<div class="line"><a id="l01026" name="l01026"></a><span class="lineno"><a class="line" href="structFResponseListenScenario.html#a75544300df8dfd58442360cb0348a0f8"> 1026</a></span>    <a class="code hl_struct" href="structFWordData.html">FWordData</a> full_data;</div>
+<div class="line"><a id="l01026" name="l01026"></a><span class="lineno"><a class="line" href="structFResponseListenScenario.html#add9478a14beab9aec16cba41e3768dc9"> 1026</a></span>    int32 room_id = 0;</div>
 <div class="line"><a id="l01027" name="l01027"></a><span class="lineno"> 1027</span> </div>
-<div class="line"><a id="l01028" name="l01028"></a><span class="lineno"> 1028</span>    UPROPERTY(BlueprintReadWrite, NotReplicated, Category = &quot;<a class="code hl_enumvalue" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2ace6802b46091c31e2ec2363883fe8369">Listen</a>&quot;)</div>
-<div class="line"><a id="l01029" name="l01029"></a><span class="lineno"><a class="line" href="structFResponseListenScenario.html#a9c8e3fba71820be4e99598a41a4f0369"> 1029</a></span>    TArray&lt;uint8&gt; voice_data;</div>
+<div class="line"><a id="l01028" name="l01028"></a><span class="lineno"> 1028</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;<a class="code hl_enumvalue" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2ace6802b46091c31e2ec2363883fe8369">Listen</a>&quot;)</div>
+<div class="line"><a id="l01029" name="l01029"></a><span class="lineno"><a class="line" href="structFResponseListenScenario.html#acb666ef0e5c937213f5e1ea20f71af21"> 1029</a></span>    TArray&lt;<a class="code hl_struct" href="structFScenarioTargetData.html">FScenarioTargetData</a>&gt; target_data;</div>
 <div class="line"><a id="l01030" name="l01030"></a><span class="lineno"> 1030</span> </div>
-<div class="line"><a id="l01032" name="l01032"></a><span class="lineno"> 1032</span>    <span class="keywordtype">void</span> SetFromHttpResponse(const TSharedPtr&lt;class IHttpResponse, ESPMode::ThreadSafe&gt;&amp; Response);</div>
+<div class="line"><a id="l01031" name="l01031"></a><span class="lineno"> 1031</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;<a class="code hl_enumvalue" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2ace6802b46091c31e2ec2363883fe8369">Listen</a>&quot;)</div>
+<div class="line"><a id="l01032" name="l01032"></a><span class="lineno"><a class="line" href="structFResponseListenScenario.html#ad57537cc7504a8cc73c37c350640d491"> 1032</a></span>    int32 correct_answer_index = 0;</div>
 <div class="line"><a id="l01033" name="l01033"></a><span class="lineno"> 1033</span> </div>
-<div class="line"><a id="l01035" name="l01035"></a><span class="lineno"> 1035</span>    <span class="keywordtype">void</span> PrintData() const;</div>
+<div class="line"><a id="l01034" name="l01034"></a><span class="lineno"> 1034</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;<a class="code hl_enumvalue" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2ace6802b46091c31e2ec2363883fe8369">Listen</a>&quot;)</div>
+<div class="line"><a id="l01035" name="l01035"></a><span class="lineno"><a class="line" href="structFResponseListenScenario.html#ae5ee14f23d89fc1ef762e21375c2264a"> 1035</a></span>    <a class="code hl_struct" href="structFWordData.html">FWordData</a> word_data1;</div>
 <div class="line"><a id="l01036" name="l01036"></a><span class="lineno"> 1036</span> </div>
-<div class="line"><a id="l01037" name="l01037"></a><span class="lineno"> 1037</span>    TArray&lt;FString&gt; GetWord1List() const;</div>
-<div class="line"><a id="l01038" name="l01038"></a><span class="lineno"> 1038</span>    TArray&lt;FString&gt; GetWord2List() const;</div>
+<div class="line"><a id="l01037" name="l01037"></a><span class="lineno"> 1037</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;<a class="code hl_enumvalue" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2ace6802b46091c31e2ec2363883fe8369">Listen</a>&quot;)</div>
+<div class="line"><a id="l01038" name="l01038"></a><span class="lineno"><a class="line" href="structFResponseListenScenario.html#aac9b1ddf40c8183677692d86a4eae2ff"> 1038</a></span>    <a class="code hl_struct" href="structFWordData.html">FWordData</a> word_data2;</div>
 <div class="line"><a id="l01039" name="l01039"></a><span class="lineno"> 1039</span> </div>
-<div class="line"><a id="l01040" name="l01040"></a><span class="lineno"> 1040</span>    <a class="code hl_struct" href="structFScenarioTargetData.html">FScenarioTargetData</a> GetCorrectAnswerData() const;</div>
-<div class="line"><a id="l01041" name="l01041"></a><span class="lineno"> 1041</span>};</div>
-</div>
+<div class="line"><a id="l01040" name="l01040"></a><span class="lineno"> 1040</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;<a class="code hl_enumvalue" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2ace6802b46091c31e2ec2363883fe8369">Listen</a>&quot;)</div>
+<div class="line"><a id="l01041" name="l01041"></a><span class="lineno"><a class="line" href="structFResponseListenScenario.html#a75544300df8dfd58442360cb0348a0f8"> 1041</a></span>    <a class="code hl_struct" href="structFWordData.html">FWordData</a> full_data;</div>
 <div class="line"><a id="l01042" name="l01042"></a><span class="lineno"> 1042</span> </div>
-<div class="line"><a id="l01043" name="l01043"></a><span class="lineno"> 1043</span>USTRUCT(BlueprintType)</div>
-<div class="foldopen" id="foldopen01044" data-start="{" data-end="};">
-<div class="line"><a id="l01044" name="l01044"></a><span class="lineno"><a class="line" href="structFRequestListenResult.html"> 1044</a></span>struct <a class="code hl_struct" href="structFRequestListenResult.html">FRequestListenResult</a></div>
-<div class="line"><a id="l01045" name="l01045"></a><span class="lineno"> 1045</span>{</div>
-<div class="line"><a id="l01046" name="l01046"></a><span class="lineno"> 1046</span>    GENERATED_BODY()</div>
-<div class="line"><a id="l01047" name="l01047"></a><span class="lineno"> 1047</span> </div>
-<div class="line"><a id="l01048" name="l01048"></a><span class="lineno"> 1048</span>    UPROPERTY(BlueprintReadWrite, Category = <span class="stringliteral">&quot;QuestResult&quot;</span>)</div>
-<div class="line"><a id="l01049" name="l01049"></a><span class="lineno"><a class="line" href="structFRequestListenResult.html#a44c6cc83062a86dd7e3b75b73f4dfa36"> 1049</a></span>    int32 room_id;</div>
-<div class="line"><a id="l01050" name="l01050"></a><span class="lineno"> 1050</span>    </div>
-<div class="line"><a id="l01051" name="l01051"></a><span class="lineno"> 1051</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;QuestResult&quot;)</div>
-<div class="line"><a id="l01052" name="l01052"></a><span class="lineno"><a class="line" href="structFRequestListenResult.html#a2f474a8dc34007f446a9aedca4b5240b"> 1052</a></span>    int32 user_id;</div>
-<div class="line"><a id="l01053" name="l01053"></a><span class="lineno"> 1053</span> </div>
-<div class="line"><a id="l01054" name="l01054"></a><span class="lineno"> 1054</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;QuestResult&quot;)</div>
-<div class="line"><a id="l01055" name="l01055"></a><span class="lineno"><a class="line" href="structFRequestListenResult.html#a443e9389976ade8ed5c219a5d08dc6ae"> 1055</a></span>    int32 scenario_id;</div>
-<div class="line"><a id="l01056" name="l01056"></a><span class="lineno"> 1056</span> </div>
-<div class="line"><a id="l01057" name="l01057"></a><span class="lineno"> 1057</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;QuestResult&quot;)</div>
-<div class="line"><a id="l01058" name="l01058"></a><span class="lineno"><a class="line" href="structFRequestListenResult.html#a4f0d3c15a3b7bf4d667febd00681134d"> 1058</a></span>    int32 stage_type;</div>
-<div class="line"><a id="l01059" name="l01059"></a><span class="lineno"> 1059</span> </div>
-<div class="line"><a id="l01060" name="l01060"></a><span class="lineno"> 1060</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;QuestResult&quot;)</div>
-<div class="line"><a id="l01061" name="l01061"></a><span class="lineno"><a class="line" href="structFRequestListenResult.html#a2f66d41e212b5018567f7a93dc71d6a7"> 1061</a></span>    int32 state_type;</div>
+<div class="line"><a id="l01043" name="l01043"></a><span class="lineno"> 1043</span>    UPROPERTY(BlueprintReadWrite, NotReplicated, Category = &quot;<a class="code hl_enumvalue" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2ace6802b46091c31e2ec2363883fe8369">Listen</a>&quot;)</div>
+<div class="line"><a id="l01044" name="l01044"></a><span class="lineno"><a class="line" href="structFResponseListenScenario.html#a9c8e3fba71820be4e99598a41a4f0369"> 1044</a></span>    TArray&lt;uint8&gt; voice_data;</div>
+<div class="line"><a id="l01045" name="l01045"></a><span class="lineno"> 1045</span> </div>
+<div class="line"><a id="l01047" name="l01047"></a><span class="lineno"> 1047</span>    <span class="keywordtype">void</span> SetFromHttpResponse(const TSharedPtr&lt;class IHttpResponse, ESPMode::ThreadSafe&gt;&amp; Response);</div>
+<div class="line"><a id="l01048" name="l01048"></a><span class="lineno"> 1048</span> </div>
+<div class="line"><a id="l01050" name="l01050"></a><span class="lineno"> 1050</span>    <span class="keywordtype">void</span> PrintData() const;</div>
+<div class="line"><a id="l01051" name="l01051"></a><span class="lineno"> 1051</span> </div>
+<div class="line"><a id="l01052" name="l01052"></a><span class="lineno"> 1052</span>    TArray&lt;FString&gt; GetWord1List() const;</div>
+<div class="line"><a id="l01053" name="l01053"></a><span class="lineno"> 1053</span>    TArray&lt;FString&gt; GetWord2List() const;</div>
+<div class="line"><a id="l01054" name="l01054"></a><span class="lineno"> 1054</span> </div>
+<div class="line"><a id="l01055" name="l01055"></a><span class="lineno"> 1055</span>    <a class="code hl_struct" href="structFScenarioTargetData.html">FScenarioTargetData</a> GetCorrectAnswerData() const;</div>
+<div class="line"><a id="l01056" name="l01056"></a><span class="lineno"> 1056</span>};</div>
+</div>
+<div class="line"><a id="l01057" name="l01057"></a><span class="lineno"> 1057</span> </div>
+<div class="line"><a id="l01058" name="l01058"></a><span class="lineno"> 1058</span>USTRUCT(BlueprintType)</div>
+<div class="foldopen" id="foldopen01059" data-start="{" data-end="};">
+<div class="line"><a id="l01059" name="l01059"></a><span class="lineno"><a class="line" href="structFRequestListenResult.html"> 1059</a></span>struct <a class="code hl_struct" href="structFRequestListenResult.html">FRequestListenResult</a></div>
+<div class="line"><a id="l01060" name="l01060"></a><span class="lineno"> 1060</span>{</div>
+<div class="line"><a id="l01061" name="l01061"></a><span class="lineno"> 1061</span>    GENERATED_BODY()</div>
 <div class="line"><a id="l01062" name="l01062"></a><span class="lineno"> 1062</span> </div>
-<div class="line"><a id="l01063" name="l01063"></a><span class="lineno"> 1063</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;QuestResult&quot;)</div>
-<div class="line"><a id="l01064" name="l01064"></a><span class="lineno"><a class="line" href="structFRequestListenResult.html#ab515ca1c23d24e29a30ea22a65e8b9ee"> 1064</a></span>    int32 result_time;</div>
-<div class="line"><a id="l01065" name="l01065"></a><span class="lineno"> 1065</span> </div>
+<div class="line"><a id="l01063" name="l01063"></a><span class="lineno"> 1063</span>    UPROPERTY(BlueprintReadWrite, Category = <span class="stringliteral">&quot;QuestResult&quot;</span>)</div>
+<div class="line"><a id="l01064" name="l01064"></a><span class="lineno"><a class="line" href="structFRequestListenResult.html#a44c6cc83062a86dd7e3b75b73f4dfa36"> 1064</a></span>    int32 room_id;</div>
+<div class="line"><a id="l01065" name="l01065"></a><span class="lineno"> 1065</span>    </div>
 <div class="line"><a id="l01066" name="l01066"></a><span class="lineno"> 1066</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;QuestResult&quot;)</div>
-<div class="line"><a id="l01067" name="l01067"></a><span class="lineno"><a class="line" href="structFRequestListenResult.html#a70c9502a9ea77420756130e194ae3f03"> 1067</a></span>    TArray&lt;int32&gt; wrong_idx;</div>
-<div class="line"><a id="l01068" name="l01068"></a><span class="lineno"> 1068</span>    </div>
-<div class="line"><a id="l01070" name="l01070"></a><span class="lineno"> 1070</span>    <span class="keywordtype">bool</span> ToJsonString(FString&amp; OutJson) const;</div>
-<div class="line"><a id="l01071" name="l01071"></a><span class="lineno"> 1071</span>};</div>
+<div class="line"><a id="l01067" name="l01067"></a><span class="lineno"><a class="line" href="structFRequestListenResult.html#a2f474a8dc34007f446a9aedca4b5240b"> 1067</a></span>    int32 user_id;</div>
+<div class="line"><a id="l01068" name="l01068"></a><span class="lineno"> 1068</span> </div>
+<div class="line"><a id="l01069" name="l01069"></a><span class="lineno"> 1069</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;QuestResult&quot;)</div>
+<div class="line"><a id="l01070" name="l01070"></a><span class="lineno"><a class="line" href="structFRequestListenResult.html#a443e9389976ade8ed5c219a5d08dc6ae"> 1070</a></span>    int32 scenario_id;</div>
+<div class="line"><a id="l01071" name="l01071"></a><span class="lineno"> 1071</span> </div>
+<div class="line"><a id="l01072" name="l01072"></a><span class="lineno"> 1072</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;QuestResult&quot;)</div>
+<div class="line"><a id="l01073" name="l01073"></a><span class="lineno"><a class="line" href="structFRequestListenResult.html#a4f0d3c15a3b7bf4d667febd00681134d"> 1073</a></span>    int32 stage_type;</div>
+<div class="line"><a id="l01074" name="l01074"></a><span class="lineno"> 1074</span> </div>
+<div class="line"><a id="l01075" name="l01075"></a><span class="lineno"> 1075</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;QuestResult&quot;)</div>
+<div class="line"><a id="l01076" name="l01076"></a><span class="lineno"><a class="line" href="structFRequestListenResult.html#a2f66d41e212b5018567f7a93dc71d6a7"> 1076</a></span>    int32 state_type;</div>
+<div class="line"><a id="l01077" name="l01077"></a><span class="lineno"> 1077</span> </div>
+<div class="line"><a id="l01078" name="l01078"></a><span class="lineno"> 1078</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;QuestResult&quot;)</div>
+<div class="line"><a id="l01079" name="l01079"></a><span class="lineno"><a class="line" href="structFRequestListenResult.html#ab515ca1c23d24e29a30ea22a65e8b9ee"> 1079</a></span>    int32 result_time;</div>
+<div class="line"><a id="l01080" name="l01080"></a><span class="lineno"> 1080</span> </div>
+<div class="line"><a id="l01081" name="l01081"></a><span class="lineno"> 1081</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;QuestResult&quot;)</div>
+<div class="line"><a id="l01082" name="l01082"></a><span class="lineno"><a class="line" href="structFRequestListenResult.html#a70c9502a9ea77420756130e194ae3f03"> 1082</a></span>    TArray&lt;int32&gt; wrong_idx;</div>
+<div class="line"><a id="l01083" name="l01083"></a><span class="lineno"> 1083</span>    </div>
+<div class="line"><a id="l01085" name="l01085"></a><span class="lineno"> 1085</span>    <span class="keywordtype">bool</span> ToJsonString(FString&amp; OutJson) const;</div>
+<div class="line"><a id="l01086" name="l01086"></a><span class="lineno"> 1086</span>};</div>
 </div>
-<div class="line"><a id="l01072" name="l01072"></a><span class="lineno"> 1072</span> </div>
-<div class="line"><a id="l01073" name="l01073"></a><span class="lineno"><a class="line" href="NetworkData_8h.html#a11ec14f6b284a4e7ed79cbc372e3362a"> 1073</a></span><a class="code hl_function" href="NetworkData_8h.html#a697e7be88961f9eeb98db05dc466b4c1">DECLARE_DELEGATE_TwoParams</a>(FResponseListenResultDelegate, <a class="code hl_struct" href="structFResponseListenResult.html">FResponseListenResult</a>&amp;, <span class="keywordtype">bool</span>);</div>
-<div class="line"><a id="l01074" name="l01074"></a><span class="lineno"> 1074</span>USTRUCT(BlueprintType)</div>
-<div class="foldopen" id="foldopen01075" data-start="{" data-end="};">
-<div class="line"><a id="l01075" name="l01075"></a><span class="lineno"><a class="line" href="structFResponseListenResult.html"> 1075</a></span>struct <a class="code hl_struct" href="structFResponseListenResult.html">FResponseListenResult</a></div>
-<div class="line"><a id="l01076" name="l01076"></a><span class="lineno"> 1076</span>{</div>
-<div class="line"><a id="l01077" name="l01077"></a><span class="lineno"> 1077</span>    GENERATED_BODY()</div>
-<div class="line"><a id="l01078" name="l01078"></a><span class="lineno"> 1078</span> </div>
-<div class="line"><a id="l01079" name="l01079"></a><span class="lineno"> 1079</span>    UPROPERTY(BlueprintReadWrite, Category = <span class="stringliteral">&quot;QuestResult&quot;</span>)</div>
-<div class="line"><a id="l01080" name="l01080"></a><span class="lineno"><a class="line" href="structFResponseListenResult.html#a5c88d18880d3e2835e9abda76d86da1f"> 1080</a></span>    FString grade;</div>
-<div class="line"><a id="l01081" name="l01081"></a><span class="lineno"> 1081</span> </div>
-<div class="line"><a id="l01082" name="l01082"></a><span class="lineno"> 1082</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;QuestResult&quot;)</div>
-<div class="line"><a id="l01083" name="l01083"></a><span class="lineno"><a class="line" href="structFResponseListenResult.html#a4d6596e5d6792ec688f04e019771f5c0"> 1083</a></span>    int32 average_score;</div>
-<div class="line"><a id="l01084" name="l01084"></a><span class="lineno"> 1084</span> </div>
-<div class="line"><a id="l01085" name="l01085"></a><span class="lineno"> 1085</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;QuestResult&quot;)</div>
-<div class="line"><a id="l01086" name="l01086"></a><span class="lineno"><a class="line" href="structFResponseListenResult.html#aae6c06d4425ff61d2bafb08f04ae5c5f"> 1086</a></span>    <span class="keywordtype">float</span> top_percent;</div>
 <div class="line"><a id="l01087" name="l01087"></a><span class="lineno"> 1087</span> </div>
-<div class="line"><a id="l01089" name="l01089"></a><span class="lineno"> 1089</span>    <span class="keywordtype">void</span> SetFromHttpResponse(const TSharedPtr&lt;class IHttpResponse, ESPMode::ThreadSafe&gt;&amp; Response);</div>
-<div class="line"><a id="l01090" name="l01090"></a><span class="lineno"> 1090</span> </div>
-<div class="line"><a id="l01092" name="l01092"></a><span class="lineno"> 1092</span>    <span class="keywordtype">void</span> PrintData() const;</div>
-<div class="line"><a id="l01093" name="l01093"></a><span class="lineno"> 1093</span>};</div>
+<div class="line"><a id="l01089" name="l01089"></a><span class="lineno"> 1089</span>USTRUCT(BlueprintType)</div>
+<div class="foldopen" id="foldopen01090" data-start="{" data-end="};">
+<div class="line"><a id="l01090" name="l01090"></a><span class="lineno"><a class="line" href="structFListenScoreDetail.html"> 1090</a></span>struct <a class="code hl_struct" href="structFListenScoreDetail.html">FListenScoreDetail</a></div>
+<div class="line"><a id="l01091" name="l01091"></a><span class="lineno"> 1091</span>{</div>
+<div class="line"><a id="l01092" name="l01092"></a><span class="lineno"> 1092</span>    GENERATED_BODY()</div>
+<div class="line"><a id="l01093" name="l01093"></a><span class="lineno"> 1093</span> </div>
+<div class="line"><a id="l01094" name="l01094"></a><span class="lineno"> 1094</span>    UPROPERTY(BlueprintReadWrite, Category = <span class="stringliteral">&quot;QuestResult&quot;</span>)</div>
+<div class="line"><a id="l01095" name="l01095"></a><span class="lineno"><a class="line" href="structFListenScoreDetail.html#a8791ad06e5cfc8cd0332208716fc331d"> 1095</a></span>    float score = 0.0f;</div>
+<div class="line"><a id="l01096" name="l01096"></a><span class="lineno"> 1096</span> </div>
+<div class="line"><a id="l01097" name="l01097"></a><span class="lineno"> 1097</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;QuestResult&quot;)</div>
+<div class="line"><a id="l01098" name="l01098"></a><span class="lineno"><a class="line" href="structFListenScoreDetail.html#a01335623e555898397a9110a4979ba34"> 1098</a></span>    FString desc;</div>
+<div class="line"><a id="l01099" name="l01099"></a><span class="lineno"> 1099</span>};</div>
 </div>
-<div class="line"><a id="l01094" name="l01094"></a><span class="lineno"> 1094</span> </div>
-<div class="line"><a id="l01095" name="l01095"></a><span class="lineno"> 1095</span> </div>
-<div class="line"><a id="l01096" name="l01096"></a><span class="lineno"> 1096</span><span class="comment">// =================================================================================</span></div>
-<div class="line"><a id="l01097" name="l01097"></a><span class="lineno"> 1097</span><span class="comment">// Speak Quest Structures (KLingo SpeakStage)</span></div>
-<div class="line"><a id="l01098" name="l01098"></a><span class="lineno"> 1098</span><span class="comment">// =================================================================================</span></div>
-<div class="line"><a id="l01099" name="l01099"></a><span class="lineno"> 1099</span> </div>
+<div class="line"><a id="l01100" name="l01100"></a><span class="lineno"> 1100</span> </div>
+<div class="line"><a id="l01101" name="l01101"></a><span class="lineno"><a class="line" href="NetworkData_8h.html#a11ec14f6b284a4e7ed79cbc372e3362a"> 1101</a></span><a class="code hl_function" href="NetworkData_8h.html#a697e7be88961f9eeb98db05dc466b4c1">DECLARE_DELEGATE_TwoParams</a>(FResponseListenResultDelegate, <a class="code hl_struct" href="structFResponseListenResult.html">FResponseListenResult</a>&amp;, <span class="keywordtype">bool</span>);</div>
 <div class="line"><a id="l01102" name="l01102"></a><span class="lineno"> 1102</span>USTRUCT(BlueprintType)</div>
 <div class="foldopen" id="foldopen01103" data-start="{" data-end="};">
-<div class="line"><a id="l01103" name="l01103"></a><span class="lineno"><a class="line" href="structFSpeakStageQuestion.html"> 1103</a></span>struct <a class="code hl_struct" href="structFSpeakStageQuestion.html">FSpeakStageQuestion</a></div>
+<div class="line"><a id="l01103" name="l01103"></a><span class="lineno"><a class="line" href="structFResponseListenResult.html"> 1103</a></span>struct <a class="code hl_struct" href="structFResponseListenResult.html">FResponseListenResult</a></div>
 <div class="line"><a id="l01104" name="l01104"></a><span class="lineno"> 1104</span>{</div>
 <div class="line"><a id="l01105" name="l01105"></a><span class="lineno"> 1105</span>    GENERATED_BODY()</div>
 <div class="line"><a id="l01106" name="l01106"></a><span class="lineno"> 1106</span> </div>
-<div class="line"><a id="l01107" name="l01107"></a><span class="lineno"> 1107</span>    </div>
-<div class="line"><a id="l01108" name="l01108"></a><span class="lineno"> 1108</span>    UPROPERTY(BlueprintReadWrite, Category = <span class="stringliteral">&quot;SpeakQuest&quot;</span>)</div>
-<div class="line"><a id="l01109" name="l01109"></a><span class="lineno"><a class="line" href="structFSpeakStageQuestion.html#ac07b038c028b38e260e8ef224685e64c"> 1109</a></span>    FString kor;</div>
-<div class="line"><a id="l01110" name="l01110"></a><span class="lineno"> 1110</span> </div>
-<div class="line"><a id="l01112" name="l01112"></a><span class="lineno"> 1112</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;SpeakQuest&quot;)</div>
-<div class="line"><a id="l01113" name="l01113"></a><span class="lineno"><a class="line" href="structFSpeakStageQuestion.html#a0ff3bffbca92b6e169decf3ffc56592f"> 1113</a></span>    FString eng;</div>
-<div class="line"><a id="l01114" name="l01114"></a><span class="lineno"> 1114</span> </div>
-<div class="line"><a id="l01116" name="l01116"></a><span class="lineno"> 1116</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;SpeakQuest&quot;)</div>
-<div class="line"><a id="l01117" name="l01117"></a><span class="lineno"><a class="line" href="structFSpeakStageQuestion.html#ac8f5c2a47f113e9f7b9fc4f93ba2ec97"> 1117</a></span>    FString pronunciation;</div>
+<div class="line"><a id="l01107" name="l01107"></a><span class="lineno"> 1107</span>    UPROPERTY(BlueprintReadWrite, Category = <span class="stringliteral">&quot;QuestResult&quot;</span>)</div>
+<div class="line"><a id="l01108" name="l01108"></a><span class="lineno"><a class="line" href="structFResponseListenResult.html#a5c88d18880d3e2835e9abda76d86da1f"> 1108</a></span>    FString grade;</div>
+<div class="line"><a id="l01109" name="l01109"></a><span class="lineno"> 1109</span> </div>
+<div class="line"><a id="l01110" name="l01110"></a><span class="lineno"> 1110</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;QuestResult&quot;)</div>
+<div class="line"><a id="l01111" name="l01111"></a><span class="lineno"><a class="line" href="structFResponseListenResult.html#a3d0fb97307c703f98ca5da90c6189957"> 1111</a></span>    <span class="keywordtype">float</span> average_score;</div>
+<div class="line"><a id="l01112" name="l01112"></a><span class="lineno"> 1112</span> </div>
+<div class="line"><a id="l01113" name="l01113"></a><span class="lineno"> 1113</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;QuestResult&quot;)</div>
+<div class="line"><a id="l01114" name="l01114"></a><span class="lineno"><a class="line" href="structFResponseListenResult.html#aae6c06d4425ff61d2bafb08f04ae5c5f"> 1114</a></span>    <span class="keywordtype">float</span> top_percent;</div>
+<div class="line"><a id="l01115" name="l01115"></a><span class="lineno"> 1115</span> </div>
+<div class="line"><a id="l01116" name="l01116"></a><span class="lineno"> 1116</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;QuestResult&quot;)</div>
+<div class="line"><a id="l01117" name="l01117"></a><span class="lineno"><a class="line" href="structFResponseListenResult.html#a670b3881b50c0710568be524a06112e5"> 1117</a></span>    TArray&lt;<a class="code hl_struct" href="structFListenScoreDetail.html">FListenScoreDetail</a>&gt; scores;</div>
 <div class="line"><a id="l01118" name="l01118"></a><span class="lineno"> 1118</span> </div>
-<div class="line"><a id="l01120" name="l01120"></a><span class="lineno"> 1120</span>    UPROPERTY(BlueprintReadWrite, NotReplicated, Category = &quot;SpeakQuest&quot;)</div>
-<div class="line"><a id="l01121" name="l01121"></a><span class="lineno"><a class="line" href="structFSpeakStageQuestion.html#aa47e1c27d2f0a6916dab29f72d1cd453"> 1121</a></span>    TArray&lt;uint8&gt; voice_data;</div>
-<div class="line"><a id="l01122" name="l01122"></a><span class="lineno"> 1122</span> </div>
-<div class="line"><a id="l01123" name="l01123"></a><span class="lineno"> 1123</span>    FString GetQuestionMessage() const;</div>
+<div class="line"><a id="l01120" name="l01120"></a><span class="lineno"> 1120</span>    <span class="keywordtype">void</span> SetFromHttpResponse(const TSharedPtr&lt;class IHttpResponse, ESPMode::ThreadSafe&gt;&amp; Response);</div>
+<div class="line"><a id="l01121" name="l01121"></a><span class="lineno"> 1121</span> </div>
+<div class="line"><a id="l01123" name="l01123"></a><span class="lineno"> 1123</span>    <span class="keywordtype">void</span> PrintData() const;</div>
 <div class="line"><a id="l01124" name="l01124"></a><span class="lineno"> 1124</span>};</div>
 </div>
 <div class="line"><a id="l01125" name="l01125"></a><span class="lineno"> 1125</span> </div>
-<div class="line"><a id="l01126" name="l01126"></a><span class="lineno"> 1126</span><span class="comment">// =================================================================================</span></div>
-<div class="line"><a id="l01127" name="l01127"></a><span class="lineno"> 1127</span><span class="comment">// Speak Scenario API Structures</span></div>
-<div class="line"><a id="l01128" name="l01128"></a><span class="lineno"> 1128</span><span class="comment">// =================================================================================</span></div>
-<div class="line"><a id="l01129" name="l01129"></a><span class="lineno"> 1129</span> </div>
-<div class="line"><a id="l01131" name="l01131"></a><span class="lineno"><a class="line" href="NetworkData_8h.html#ada54ec253bf3565ea12de7b76434af37"> 1131</a></span><a class="code hl_function" href="NetworkData_8h.html#a697e7be88961f9eeb98db05dc466b4c1">DECLARE_DELEGATE_TwoParams</a>(FResponseSpeakScenarioDelegate, <a class="code hl_struct" href="structFResponseSpeakScenario.html">FResponseSpeakScenario</a>&amp;, <span class="keywordtype">bool</span>);</div>
+<div class="line"><a id="l01126" name="l01126"></a><span class="lineno"> 1126</span> </div>
+<div class="line"><a id="l01127" name="l01127"></a><span class="lineno"> 1127</span><span class="comment">// =================================================================================</span></div>
+<div class="line"><a id="l01128" name="l01128"></a><span class="lineno"> 1128</span><span class="comment">// Speak Quest Structures (KLingo SpeakStage)</span></div>
+<div class="line"><a id="l01129" name="l01129"></a><span class="lineno"> 1129</span><span class="comment">// =================================================================================</span></div>
+<div class="line"><a id="l01130" name="l01130"></a><span class="lineno"> 1130</span> </div>
 <div class="line"><a id="l01133" name="l01133"></a><span class="lineno"> 1133</span>USTRUCT(BlueprintType)</div>
 <div class="foldopen" id="foldopen01134" data-start="{" data-end="};">
-<div class="line"><a id="l01134" name="l01134"></a><span class="lineno"><a class="line" href="structFResponseSpeakScenario.html"> 1134</a></span>struct <a class="code hl_struct" href="structFResponseSpeakScenario.html">FResponseSpeakScenario</a></div>
+<div class="line"><a id="l01134" name="l01134"></a><span class="lineno"><a class="line" href="structFSpeakStageQuestion.html"> 1134</a></span>struct <a class="code hl_struct" href="structFSpeakStageQuestion.html">FSpeakStageQuestion</a></div>
 <div class="line"><a id="l01135" name="l01135"></a><span class="lineno"> 1135</span>{</div>
 <div class="line"><a id="l01136" name="l01136"></a><span class="lineno"> 1136</span>    GENERATED_BODY()</div>
 <div class="line"><a id="l01137" name="l01137"></a><span class="lineno"> 1137</span> </div>
-<div class="line"><a id="l01138" name="l01138"></a><span class="lineno"> 1138</span>    UPROPERTY(BlueprintReadWrite, Category = <span class="stringliteral">&quot;Speak&quot;</span>)</div>
-<div class="line"><a id="l01139" name="l01139"></a><span class="lineno"><a class="line" href="structFResponseSpeakScenario.html#ab47897f53f4a152e64dbd1b65c22f504"> 1139</a></span>    int32 index = 0;</div>
-<div class="line"><a id="l01140" name="l01140"></a><span class="lineno"> 1140</span> </div>
-<div class="line"><a id="l01141" name="l01141"></a><span class="lineno"> 1141</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;<a class="code hl_enumvalue" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2a8b1e2b9b342dd37344c6343dc23a6733">Speak</a>&quot;)</div>
-<div class="line"><a id="l01142" name="l01142"></a><span class="lineno"><a class="line" href="structFResponseSpeakScenario.html#aa66cc7a5d6fe19171c6e1efd603d8000"> 1142</a></span>    int32 difficulty = 0;</div>
-<div class="line"><a id="l01143" name="l01143"></a><span class="lineno"> 1143</span> </div>
-<div class="line"><a id="l01144" name="l01144"></a><span class="lineno"> 1144</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;<a class="code hl_enumvalue" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2a8b1e2b9b342dd37344c6343dc23a6733">Speak</a>&quot;)</div>
-<div class="line"><a id="l01145" name="l01145"></a><span class="lineno"><a class="line" href="structFResponseSpeakScenario.html#ad8a474a8868d134dbb040c70e8c51f12"> 1145</a></span>    int32 room_id = 0;</div>
-<div class="line"><a id="l01146" name="l01146"></a><span class="lineno"> 1146</span> </div>
-<div class="line"><a id="l01148" name="l01148"></a><span class="lineno"> 1148</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;<a class="code hl_enumvalue" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2a8b1e2b9b342dd37344c6343dc23a6733">Speak</a>&quot;)</div>
-<div class="line"><a id="l01149" name="l01149"></a><span class="lineno"><a class="line" href="structFResponseSpeakScenario.html#ad0fa47150d34f787e323ae340136530a"> 1149</a></span>    TArray&lt;<a class="code hl_struct" href="structFSpeakStageQuestion.html">FSpeakStageQuestion</a>&gt; speak_quest_data;</div>
-<div class="line"><a id="l01150" name="l01150"></a><span class="lineno"> 1150</span> </div>
-<div class="line"><a id="l01152" name="l01152"></a><span class="lineno"> 1152</span>    <span class="keywordtype">void</span> SetFromHttpResponse(const TSharedPtr&lt;class IHttpResponse, ESPMode::ThreadSafe&gt;&amp; Response);</div>
+<div class="line"><a id="l01138" name="l01138"></a><span class="lineno"> 1138</span>    </div>
+<div class="line"><a id="l01139" name="l01139"></a><span class="lineno"> 1139</span>    UPROPERTY(BlueprintReadWrite, Category = <span class="stringliteral">&quot;SpeakQuest&quot;</span>)</div>
+<div class="line"><a id="l01140" name="l01140"></a><span class="lineno"><a class="line" href="structFSpeakStageQuestion.html#ac07b038c028b38e260e8ef224685e64c"> 1140</a></span>    FString kor;</div>
+<div class="line"><a id="l01141" name="l01141"></a><span class="lineno"> 1141</span> </div>
+<div class="line"><a id="l01143" name="l01143"></a><span class="lineno"> 1143</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;SpeakQuest&quot;)</div>
+<div class="line"><a id="l01144" name="l01144"></a><span class="lineno"><a class="line" href="structFSpeakStageQuestion.html#a0ff3bffbca92b6e169decf3ffc56592f"> 1144</a></span>    FString eng;</div>
+<div class="line"><a id="l01145" name="l01145"></a><span class="lineno"> 1145</span> </div>
+<div class="line"><a id="l01147" name="l01147"></a><span class="lineno"> 1147</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;SpeakQuest&quot;)</div>
+<div class="line"><a id="l01148" name="l01148"></a><span class="lineno"><a class="line" href="structFSpeakStageQuestion.html#ac8f5c2a47f113e9f7b9fc4f93ba2ec97"> 1148</a></span>    FString pronunciation;</div>
+<div class="line"><a id="l01149" name="l01149"></a><span class="lineno"> 1149</span> </div>
+<div class="line"><a id="l01151" name="l01151"></a><span class="lineno"> 1151</span>    UPROPERTY(BlueprintReadWrite, NotReplicated, Category = &quot;SpeakQuest&quot;)</div>
+<div class="line"><a id="l01152" name="l01152"></a><span class="lineno"><a class="line" href="structFSpeakStageQuestion.html#aa47e1c27d2f0a6916dab29f72d1cd453"> 1152</a></span>    TArray&lt;uint8&gt; voice_data;</div>
 <div class="line"><a id="l01153" name="l01153"></a><span class="lineno"> 1153</span> </div>
-<div class="line"><a id="l01155" name="l01155"></a><span class="lineno"> 1155</span>    <span class="keywordtype">void</span> PrintData() const;</div>
-<div class="line"><a id="l01156" name="l01156"></a><span class="lineno"> 1156</span>};</div>
+<div class="line"><a id="l01154" name="l01154"></a><span class="lineno"> 1154</span>    FString GetQuestionMessage() const;</div>
+<div class="line"><a id="l01155" name="l01155"></a><span class="lineno"> 1155</span>};</div>
 </div>
-<div class="line"><a id="l01157" name="l01157"></a><span class="lineno"> 1157</span> </div>
-<div class="line"><a id="l01158" name="l01158"></a><span class="lineno"> 1158</span> </div>
-<div class="line"><a id="l01159" name="l01159"></a><span class="lineno"> 1159</span>USTRUCT(BlueprintType)</div>
-<div class="foldopen" id="foldopen01160" data-start="{" data-end="};">
-<div class="line"><a id="l01160" name="l01160"></a><span class="lineno"><a class="line" href="structFRequestSpeakResult.html"> 1160</a></span>struct <a class="code hl_struct" href="structFRequestSpeakResult.html">FRequestSpeakResult</a></div>
-<div class="line"><a id="l01161" name="l01161"></a><span class="lineno"> 1161</span>{</div>
-<div class="line"><a id="l01162" name="l01162"></a><span class="lineno"> 1162</span>    GENERATED_BODY()</div>
-<div class="line"><a id="l01163" name="l01163"></a><span class="lineno"> 1163</span> </div>
-<div class="line"><a id="l01164" name="l01164"></a><span class="lineno"> 1164</span>    UPROPERTY(BlueprintReadWrite, Category = <span class="stringliteral">&quot;QuestResult&quot;</span>)</div>
-<div class="line"><a id="l01165" name="l01165"></a><span class="lineno"><a class="line" href="structFRequestSpeakResult.html#a3be4d351851b62b9c6d1a076235dfa08"> 1165</a></span>    int32 room_id;</div>
-<div class="line"><a id="l01166" name="l01166"></a><span class="lineno"> 1166</span>    </div>
-<div class="line"><a id="l01167" name="l01167"></a><span class="lineno"> 1167</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;QuestResult&quot;)</div>
-<div class="line"><a id="l01168" name="l01168"></a><span class="lineno"><a class="line" href="structFRequestSpeakResult.html#abd2b6f22827f1a4e27d3315b6847fc14"> 1168</a></span>    int32 user_id;</div>
-<div class="line"><a id="l01169" name="l01169"></a><span class="lineno"> 1169</span> </div>
-<div class="line"><a id="l01170" name="l01170"></a><span class="lineno"> 1170</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;QuestResult&quot;)</div>
-<div class="line"><a id="l01171" name="l01171"></a><span class="lineno"><a class="line" href="structFRequestSpeakResult.html#a60f9e1a90cd91359b2c2e31369eef7d5"> 1171</a></span>    int32 scenario_id;</div>
-<div class="line"><a id="l01172" name="l01172"></a><span class="lineno"> 1172</span> </div>
-<div class="line"><a id="l01173" name="l01173"></a><span class="lineno"> 1173</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;QuestResult&quot;)</div>
-<div class="line"><a id="l01174" name="l01174"></a><span class="lineno"><a class="line" href="structFRequestSpeakResult.html#a45c76ec8ce364e7cbf1353418cd26dea"> 1174</a></span>    int32 stage_type;</div>
-<div class="line"><a id="l01175" name="l01175"></a><span class="lineno"> 1175</span> </div>
-<div class="line"><a id="l01176" name="l01176"></a><span class="lineno"> 1176</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;QuestResult&quot;)</div>
-<div class="line"><a id="l01177" name="l01177"></a><span class="lineno"><a class="line" href="structFRequestSpeakResult.html#ad5acab0b9ab1ba157d5c5da555b9ea20"> 1177</a></span>    int32 state_type;</div>
-<div class="line"><a id="l01178" name="l01178"></a><span class="lineno"> 1178</span> </div>
-<div class="line"><a id="l01179" name="l01179"></a><span class="lineno"> 1179</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;QuestResult&quot;)</div>
-<div class="line"><a id="l01180" name="l01180"></a><span class="lineno"><a class="line" href="structFRequestSpeakResult.html#ad7e303b758963f8b646601530fe44c88"> 1180</a></span>    int32 result_time;</div>
+<div class="line"><a id="l01156" name="l01156"></a><span class="lineno"> 1156</span> </div>
+<div class="line"><a id="l01157" name="l01157"></a><span class="lineno"> 1157</span><span class="comment">// =================================================================================</span></div>
+<div class="line"><a id="l01158" name="l01158"></a><span class="lineno"> 1158</span><span class="comment">// Speak Scenario API Structures</span></div>
+<div class="line"><a id="l01159" name="l01159"></a><span class="lineno"> 1159</span><span class="comment">// =================================================================================</span></div>
+<div class="line"><a id="l01160" name="l01160"></a><span class="lineno"> 1160</span> </div>
+<div class="line"><a id="l01162" name="l01162"></a><span class="lineno"><a class="line" href="NetworkData_8h.html#ada54ec253bf3565ea12de7b76434af37"> 1162</a></span><a class="code hl_function" href="NetworkData_8h.html#a697e7be88961f9eeb98db05dc466b4c1">DECLARE_DELEGATE_TwoParams</a>(FResponseSpeakScenarioDelegate, <a class="code hl_struct" href="structFResponseSpeakScenario.html">FResponseSpeakScenario</a>&amp;, <span class="keywordtype">bool</span>);</div>
+<div class="line"><a id="l01164" name="l01164"></a><span class="lineno"> 1164</span>USTRUCT(BlueprintType)</div>
+<div class="foldopen" id="foldopen01165" data-start="{" data-end="};">
+<div class="line"><a id="l01165" name="l01165"></a><span class="lineno"><a class="line" href="structFResponseSpeakScenario.html"> 1165</a></span>struct <a class="code hl_struct" href="structFResponseSpeakScenario.html">FResponseSpeakScenario</a></div>
+<div class="line"><a id="l01166" name="l01166"></a><span class="lineno"> 1166</span>{</div>
+<div class="line"><a id="l01167" name="l01167"></a><span class="lineno"> 1167</span>    GENERATED_BODY()</div>
+<div class="line"><a id="l01168" name="l01168"></a><span class="lineno"> 1168</span> </div>
+<div class="line"><a id="l01169" name="l01169"></a><span class="lineno"> 1169</span>    UPROPERTY(BlueprintReadWrite, Category = <span class="stringliteral">&quot;Speak&quot;</span>)</div>
+<div class="line"><a id="l01170" name="l01170"></a><span class="lineno"><a class="line" href="structFResponseSpeakScenario.html#ab47897f53f4a152e64dbd1b65c22f504"> 1170</a></span>    int32 index = 0;</div>
+<div class="line"><a id="l01171" name="l01171"></a><span class="lineno"> 1171</span> </div>
+<div class="line"><a id="l01172" name="l01172"></a><span class="lineno"> 1172</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;<a class="code hl_enumvalue" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2a8b1e2b9b342dd37344c6343dc23a6733">Speak</a>&quot;)</div>
+<div class="line"><a id="l01173" name="l01173"></a><span class="lineno"><a class="line" href="structFResponseSpeakScenario.html#aa66cc7a5d6fe19171c6e1efd603d8000"> 1173</a></span>    int32 difficulty = 0;</div>
+<div class="line"><a id="l01174" name="l01174"></a><span class="lineno"> 1174</span> </div>
+<div class="line"><a id="l01175" name="l01175"></a><span class="lineno"> 1175</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;<a class="code hl_enumvalue" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2a8b1e2b9b342dd37344c6343dc23a6733">Speak</a>&quot;)</div>
+<div class="line"><a id="l01176" name="l01176"></a><span class="lineno"><a class="line" href="structFResponseSpeakScenario.html#ad8a474a8868d134dbb040c70e8c51f12"> 1176</a></span>    int32 room_id = 0;</div>
+<div class="line"><a id="l01177" name="l01177"></a><span class="lineno"> 1177</span> </div>
+<div class="line"><a id="l01179" name="l01179"></a><span class="lineno"> 1179</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;<a class="code hl_enumvalue" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2a8b1e2b9b342dd37344c6343dc23a6733">Speak</a>&quot;)</div>
+<div class="line"><a id="l01180" name="l01180"></a><span class="lineno"><a class="line" href="structFResponseSpeakScenario.html#ad0fa47150d34f787e323ae340136530a"> 1180</a></span>    TArray&lt;<a class="code hl_struct" href="structFSpeakStageQuestion.html">FSpeakStageQuestion</a>&gt; speak_quest_data;</div>
 <div class="line"><a id="l01181" name="l01181"></a><span class="lineno"> 1181</span> </div>
-<div class="line"><a id="l01182" name="l01182"></a><span class="lineno"> 1182</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;QuestResult&quot;)</div>
-<div class="line"><a id="l01183" name="l01183"></a><span class="lineno"><a class="line" href="structFRequestSpeakResult.html#a1899ccbc61ed14f81394d9d53b01c274"> 1183</a></span>    TArray&lt;int32&gt; wrong_idx;</div>
-<div class="line"><a id="l01184" name="l01184"></a><span class="lineno"> 1184</span>    </div>
-<div class="line"><a id="l01186" name="l01186"></a><span class="lineno"> 1186</span>    <span class="keywordtype">bool</span> ToJsonString(FString&amp; OutJson) const;</div>
+<div class="line"><a id="l01183" name="l01183"></a><span class="lineno"> 1183</span>    <span class="keywordtype">void</span> SetFromHttpResponse(const TSharedPtr&lt;class IHttpResponse, ESPMode::ThreadSafe&gt;&amp; Response);</div>
+<div class="line"><a id="l01184" name="l01184"></a><span class="lineno"> 1184</span> </div>
+<div class="line"><a id="l01186" name="l01186"></a><span class="lineno"> 1186</span>    <span class="keywordtype">void</span> PrintData() const;</div>
 <div class="line"><a id="l01187" name="l01187"></a><span class="lineno"> 1187</span>};</div>
 </div>
 <div class="line"><a id="l01188" name="l01188"></a><span class="lineno"> 1188</span> </div>
+<div class="line"><a id="l01189" name="l01189"></a><span class="lineno"> 1189</span> </div>
 <div class="line"><a id="l01190" name="l01190"></a><span class="lineno"> 1190</span>USTRUCT(BlueprintType)</div>
 <div class="foldopen" id="foldopen01191" data-start="{" data-end="};">
-<div class="line"><a id="l01191" name="l01191"></a><span class="lineno"><a class="line" href="structFSpeakScoreDetail.html"> 1191</a></span>struct <a class="code hl_struct" href="structFSpeakScoreDetail.html">FSpeakScoreDetail</a></div>
+<div class="line"><a id="l01191" name="l01191"></a><span class="lineno"><a class="line" href="structFRequestSpeakResult.html"> 1191</a></span>struct <a class="code hl_struct" href="structFRequestSpeakResult.html">FRequestSpeakResult</a></div>
 <div class="line"><a id="l01192" name="l01192"></a><span class="lineno"> 1192</span>{</div>
 <div class="line"><a id="l01193" name="l01193"></a><span class="lineno"> 1193</span>    GENERATED_BODY()</div>
 <div class="line"><a id="l01194" name="l01194"></a><span class="lineno"> 1194</span> </div>
 <div class="line"><a id="l01195" name="l01195"></a><span class="lineno"> 1195</span>    UPROPERTY(BlueprintReadWrite, Category = <span class="stringliteral">&quot;QuestResult&quot;</span>)</div>
-<div class="line"><a id="l01196" name="l01196"></a><span class="lineno"><a class="line" href="structFSpeakScoreDetail.html#a967347f12f00efa8f52c85ecb199f4bf"> 1196</a></span>    int32 score = 0;</div>
-<div class="line"><a id="l01197" name="l01197"></a><span class="lineno"> 1197</span> </div>
+<div class="line"><a id="l01196" name="l01196"></a><span class="lineno"><a class="line" href="structFRequestSpeakResult.html#a3be4d351851b62b9c6d1a076235dfa08"> 1196</a></span>    int32 room_id;</div>
+<div class="line"><a id="l01197" name="l01197"></a><span class="lineno"> 1197</span>    </div>
 <div class="line"><a id="l01198" name="l01198"></a><span class="lineno"> 1198</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;QuestResult&quot;)</div>
-<div class="line"><a id="l01199" name="l01199"></a><span class="lineno"><a class="line" href="structFSpeakScoreDetail.html#aeee86eb73e0f3c4dd58585f9c7c4bf21"> 1199</a></span>    FString desc;</div>
-<div class="line"><a id="l01200" name="l01200"></a><span class="lineno"> 1200</span>};</div>
+<div class="line"><a id="l01199" name="l01199"></a><span class="lineno"><a class="line" href="structFRequestSpeakResult.html#abd2b6f22827f1a4e27d3315b6847fc14"> 1199</a></span>    int32 user_id;</div>
+<div class="line"><a id="l01200" name="l01200"></a><span class="lineno"> 1200</span> </div>
+<div class="line"><a id="l01201" name="l01201"></a><span class="lineno"> 1201</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;QuestResult&quot;)</div>
+<div class="line"><a id="l01202" name="l01202"></a><span class="lineno"><a class="line" href="structFRequestSpeakResult.html#a60f9e1a90cd91359b2c2e31369eef7d5"> 1202</a></span>    int32 scenario_id;</div>
+<div class="line"><a id="l01203" name="l01203"></a><span class="lineno"> 1203</span> </div>
+<div class="line"><a id="l01204" name="l01204"></a><span class="lineno"> 1204</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;QuestResult&quot;)</div>
+<div class="line"><a id="l01205" name="l01205"></a><span class="lineno"><a class="line" href="structFRequestSpeakResult.html#a45c76ec8ce364e7cbf1353418cd26dea"> 1205</a></span>    int32 stage_type;</div>
+<div class="line"><a id="l01206" name="l01206"></a><span class="lineno"> 1206</span> </div>
+<div class="line"><a id="l01207" name="l01207"></a><span class="lineno"> 1207</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;QuestResult&quot;)</div>
+<div class="line"><a id="l01208" name="l01208"></a><span class="lineno"><a class="line" href="structFRequestSpeakResult.html#ad5acab0b9ab1ba157d5c5da555b9ea20"> 1208</a></span>    int32 state_type;</div>
+<div class="line"><a id="l01209" name="l01209"></a><span class="lineno"> 1209</span> </div>
+<div class="line"><a id="l01210" name="l01210"></a><span class="lineno"> 1210</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;QuestResult&quot;)</div>
+<div class="line"><a id="l01211" name="l01211"></a><span class="lineno"><a class="line" href="structFRequestSpeakResult.html#ad7e303b758963f8b646601530fe44c88"> 1211</a></span>    int32 result_time;</div>
+<div class="line"><a id="l01212" name="l01212"></a><span class="lineno"> 1212</span> </div>
+<div class="line"><a id="l01213" name="l01213"></a><span class="lineno"> 1213</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;QuestResult&quot;)</div>
+<div class="line"><a id="l01214" name="l01214"></a><span class="lineno"><a class="line" href="structFRequestSpeakResult.html#a1899ccbc61ed14f81394d9d53b01c274"> 1214</a></span>    TArray&lt;int32&gt; wrong_idx;</div>
+<div class="line"><a id="l01215" name="l01215"></a><span class="lineno"> 1215</span>    </div>
+<div class="line"><a id="l01217" name="l01217"></a><span class="lineno"> 1217</span>    <span class="keywordtype">bool</span> ToJsonString(FString&amp; OutJson) const;</div>
+<div class="line"><a id="l01218" name="l01218"></a><span class="lineno"> 1218</span>};</div>
 </div>
-<div class="line"><a id="l01201" name="l01201"></a><span class="lineno"> 1201</span> </div>
-<div class="line"><a id="l01202" name="l01202"></a><span class="lineno"> 1202</span> </div>
-<div class="line"><a id="l01203" name="l01203"></a><span class="lineno"><a class="line" href="NetworkData_8h.html#acea9de3a7bc465591109b5268ae3a87a"> 1203</a></span><a class="code hl_function" href="NetworkData_8h.html#a697e7be88961f9eeb98db05dc466b4c1">DECLARE_DELEGATE_TwoParams</a>(FResponseSpeakResultDelegate, <a class="code hl_struct" href="structFResponseSpeakResult.html">FResponseSpeakResult</a>&amp;, <span class="keywordtype">bool</span>);</div>
-<div class="line"><a id="l01204" name="l01204"></a><span class="lineno"> 1204</span>USTRUCT(BlueprintType)</div>
-<div class="foldopen" id="foldopen01205" data-start="{" data-end="};">
-<div class="line"><a id="l01205" name="l01205"></a><span class="lineno"><a class="line" href="structFResponseSpeakResult.html"> 1205</a></span>struct <a class="code hl_struct" href="structFResponseSpeakResult.html">FResponseSpeakResult</a></div>
-<div class="line"><a id="l01206" name="l01206"></a><span class="lineno"> 1206</span>{</div>
-<div class="line"><a id="l01207" name="l01207"></a><span class="lineno"> 1207</span>    GENERATED_BODY()</div>
-<div class="line"><a id="l01208" name="l01208"></a><span class="lineno"> 1208</span> </div>
-<div class="line"><a id="l01209" name="l01209"></a><span class="lineno"> 1209</span>    UPROPERTY(BlueprintReadWrite, Category = <span class="stringliteral">&quot;QuestResult&quot;</span>)</div>
-<div class="line"><a id="l01210" name="l01210"></a><span class="lineno"><a class="line" href="structFResponseSpeakResult.html#a6357dc3076be902e25bca85712d531a9"> 1210</a></span>    FString grade;</div>
-<div class="line"><a id="l01211" name="l01211"></a><span class="lineno"> 1211</span> </div>
-<div class="line"><a id="l01212" name="l01212"></a><span class="lineno"> 1212</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;QuestResult&quot;)</div>
-<div class="line"><a id="l01213" name="l01213"></a><span class="lineno"><a class="line" href="structFResponseSpeakResult.html#af44cf5eda612e2418894cd870d4cccf7"> 1213</a></span>    int32 average_score;</div>
-<div class="line"><a id="l01214" name="l01214"></a><span class="lineno"> 1214</span> </div>
-<div class="line"><a id="l01215" name="l01215"></a><span class="lineno"> 1215</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;QuestResult&quot;)</div>
-<div class="line"><a id="l01216" name="l01216"></a><span class="lineno"><a class="line" href="structFResponseSpeakResult.html#a5a5b67ce30931a1969cdcc4383926f8d"> 1216</a></span>    <span class="keywordtype">float</span> top_percent;</div>
-<div class="line"><a id="l01217" name="l01217"></a><span class="lineno"> 1217</span> </div>
-<div class="line"><a id="l01218" name="l01218"></a><span class="lineno"> 1218</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;QuestResult&quot;)</div>
-<div class="line"><a id="l01219" name="l01219"></a><span class="lineno"><a class="line" href="structFResponseSpeakResult.html#a45281cfa2bc17f30bdf0c9570dd35806"> 1219</a></span>    TArray&lt;<a class="code hl_struct" href="structFSpeakScoreDetail.html">FSpeakScoreDetail</a>&gt; scores;</div>
-<div class="line"><a id="l01220" name="l01220"></a><span class="lineno"> 1220</span> </div>
-<div class="line"><a id="l01222" name="l01222"></a><span class="lineno"> 1222</span>    <span class="keywordtype">void</span> SetFromHttpResponse(const TSharedPtr&lt;class IHttpResponse, ESPMode::ThreadSafe&gt;&amp; Response);</div>
-<div class="line"><a id="l01223" name="l01223"></a><span class="lineno"> 1223</span> </div>
-<div class="line"><a id="l01225" name="l01225"></a><span class="lineno"> 1225</span>    <span class="keywordtype">void</span> PrintData() const;</div>
-<div class="line"><a id="l01226" name="l01226"></a><span class="lineno"> 1226</span> </div>
-<div class="line"><a id="l01227" name="l01227"></a><span class="lineno"> 1227</span>    TArray&lt;<a class="code hl_struct" href="structFResultStatData.html">FResultStatData</a>&gt; GetResultStatData() const;</div>
-<div class="line"><a id="l01228" name="l01228"></a><span class="lineno"> 1228</span>};</div>
+<div class="line"><a id="l01219" name="l01219"></a><span class="lineno"> 1219</span> </div>
+<div class="line"><a id="l01221" name="l01221"></a><span class="lineno"> 1221</span>USTRUCT(BlueprintType)</div>
+<div class="foldopen" id="foldopen01222" data-start="{" data-end="};">
+<div class="line"><a id="l01222" name="l01222"></a><span class="lineno"><a class="line" href="structFSpeakScoreDetail.html"> 1222</a></span>struct <a class="code hl_struct" href="structFSpeakScoreDetail.html">FSpeakScoreDetail</a></div>
+<div class="line"><a id="l01223" name="l01223"></a><span class="lineno"> 1223</span>{</div>
+<div class="line"><a id="l01224" name="l01224"></a><span class="lineno"> 1224</span>    GENERATED_BODY()</div>
+<div class="line"><a id="l01225" name="l01225"></a><span class="lineno"> 1225</span> </div>
+<div class="line"><a id="l01226" name="l01226"></a><span class="lineno"> 1226</span>    UPROPERTY(BlueprintReadWrite, Category = <span class="stringliteral">&quot;QuestResult&quot;</span>)</div>
+<div class="line"><a id="l01227" name="l01227"></a><span class="lineno"><a class="line" href="structFSpeakScoreDetail.html#a967347f12f00efa8f52c85ecb199f4bf"> 1227</a></span>    int32 score = 0;</div>
+<div class="line"><a id="l01228" name="l01228"></a><span class="lineno"> 1228</span> </div>
+<div class="line"><a id="l01229" name="l01229"></a><span class="lineno"> 1229</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;QuestResult&quot;)</div>
+<div class="line"><a id="l01230" name="l01230"></a><span class="lineno"><a class="line" href="structFSpeakScoreDetail.html#aeee86eb73e0f3c4dd58585f9c7c4bf21"> 1230</a></span>    FString desc;</div>
+<div class="line"><a id="l01231" name="l01231"></a><span class="lineno"> 1231</span>};</div>
 </div>
-<div class="line"><a id="l01229" name="l01229"></a><span class="lineno"> 1229</span> </div>
-<div class="line"><a id="l01230" name="l01230"></a><span class="lineno"> 1230</span> </div>
-<div class="line"><a id="l01231" name="l01231"></a><span class="lineno"> 1231</span><span class="comment">// =================================================================================</span></div>
-<div class="line"><a id="l01232" name="l01232"></a><span class="lineno"> 1232</span><span class="comment">// Evaluation API Structures</span></div>
-<div class="line"><a id="l01233" name="l01233"></a><span class="lineno"> 1233</span><span class="comment">// =================================================================================</span></div>
-<div class="line"><a id="l01234" name="l01234"></a><span class="lineno"> 1234</span> </div>
-<div class="line"><a id="l01236" name="l01236"></a><span class="lineno"> 1236</span>UENUM(BlueprintType)</div>
-<div class="foldopen" id="foldopen01237" data-start="{" data-end="};">
-<div class="line"><a id="l01237" name="l01237"></a><span class="lineno"><a class="line" href="NetworkData_8h.html#a89d484500632d06d10ab21aefde0efda"> 1237</a></span>enum class <a class="code hl_enumeration" href="NetworkData_8h.html#a89d484500632d06d10ab21aefde0efda">EScenarioType</a> : uint8</div>
-<div class="line"><a id="l01238" name="l01238"></a><span class="lineno"> 1238</span>{</div>
-<div class="line"><a id="l01239" name="l01239"></a><span class="lineno"> 1239</span>    READING <a class="code hl_enumvalue" href="NetworkData_8h.html#a89d484500632d06d10ab21aefde0efdaaa3f80d8f0f1b4ffa8c475f5d60ea5635">UMETA</a>(DisplayName = <span class="stringliteral">&quot;Reading&quot;</span>),</div>
-<div class="line"><a id="l01240" name="l01240"></a><span class="lineno"> 1240</span>    LISTENING <a class="code hl_enumvalue" href="NetworkData_8h.html#a89d484500632d06d10ab21aefde0efdaaa3f80d8f0f1b4ffa8c475f5d60ea5635">UMETA</a>(DisplayName = <span class="stringliteral">&quot;Listening&quot;</span>),</div>
-<div class="line"><a id="l01241" name="l01241"></a><span class="lineno"> 1241</span>    WRITING <a class="code hl_enumvalue" href="NetworkData_8h.html#a89d484500632d06d10ab21aefde0efdaaa3f80d8f0f1b4ffa8c475f5d60ea5635">UMETA</a>(DisplayName = <span class="stringliteral">&quot;Writing&quot;</span>),</div>
-<div class="line"><a id="l01242" name="l01242"></a><span class="lineno"> 1242</span>    SPEAKING <a class="code hl_enumvalue" href="NetworkData_8h.html#a89d484500632d06d10ab21aefde0efdaaa3f80d8f0f1b4ffa8c475f5d60ea5635">UMETA</a>(DisplayName = <span class="stringliteral">&quot;Speaking&quot;</span>)</div>
-<div class="line"><a id="l01243" name="l01243"></a><span class="lineno"> 1243</span>};</div>
-</div>
-<div class="line"><a id="l01244" name="l01244"></a><span class="lineno"> 1244</span> </div>
-<div class="line"><a id="l01246" name="l01246"></a><span class="lineno"> 1246</span>USTRUCT(BlueprintType)</div>
-<div class="foldopen" id="foldopen01247" data-start="{" data-end="};">
-<div class="line"><a id="l01247" name="l01247"></a><span class="lineno"><a class="line" href="structFFeedbackSummary.html"> 1247</a></span>struct <a class="code hl_struct" href="structFFeedbackSummary.html">FFeedbackSummary</a></div>
-<div class="line"><a id="l01248" name="l01248"></a><span class="lineno"> 1248</span>{</div>
-<div class="line"><a id="l01249" name="l01249"></a><span class="lineno"> 1249</span>    GENERATED_BODY()</div>
-<div class="line"><a id="l01250" name="l01250"></a><span class="lineno"> 1250</span> </div>
-<div class="line"><a id="l01251" name="l01251"></a><span class="lineno"> 1251</span>    UPROPERTY(BlueprintReadWrite, Category = <span class="stringliteral">&quot;Evaluation&quot;</span>)</div>
-<div class="line"><a id="l01252" name="l01252"></a><span class="lineno"><a class="line" href="structFFeedbackSummary.html#acb79c686cba78320589ce22e9cce2c3a"> 1252</a></span>    FString title;</div>
-<div class="line"><a id="l01253" name="l01253"></a><span class="lineno"> 1253</span> </div>
-<div class="line"><a id="l01254" name="l01254"></a><span class="lineno"> 1254</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;Evaluation&quot;)</div>
-<div class="line"><a id="l01255" name="l01255"></a><span class="lineno"><a class="line" href="structFFeedbackSummary.html#abd5890a75687dcc72de1c62f29424a7a"> 1255</a></span>    FString message;</div>
-<div class="line"><a id="l01256" name="l01256"></a><span class="lineno"> 1256</span>};</div>
-</div>
+<div class="line"><a id="l01232" name="l01232"></a><span class="lineno"> 1232</span> </div>
+<div class="line"><a id="l01233" name="l01233"></a><span class="lineno"> 1233</span> </div>
+<div class="line"><a id="l01234" name="l01234"></a><span class="lineno"><a class="line" href="NetworkData_8h.html#acea9de3a7bc465591109b5268ae3a87a"> 1234</a></span><a class="code hl_function" href="NetworkData_8h.html#a697e7be88961f9eeb98db05dc466b4c1">DECLARE_DELEGATE_TwoParams</a>(FResponseSpeakResultDelegate, <a class="code hl_struct" href="structFResponseSpeakResult.html">FResponseSpeakResult</a>&amp;, <span class="keywordtype">bool</span>);</div>
+<div class="line"><a id="l01235" name="l01235"></a><span class="lineno"> 1235</span>USTRUCT(BlueprintType)</div>
+<div class="foldopen" id="foldopen01236" data-start="{" data-end="};">
+<div class="line"><a id="l01236" name="l01236"></a><span class="lineno"><a class="line" href="structFResponseSpeakResult.html"> 1236</a></span>struct <a class="code hl_struct" href="structFResponseSpeakResult.html">FResponseSpeakResult</a></div>
+<div class="line"><a id="l01237" name="l01237"></a><span class="lineno"> 1237</span>{</div>
+<div class="line"><a id="l01238" name="l01238"></a><span class="lineno"> 1238</span>    GENERATED_BODY()</div>
+<div class="line"><a id="l01239" name="l01239"></a><span class="lineno"> 1239</span> </div>
+<div class="line"><a id="l01240" name="l01240"></a><span class="lineno"> 1240</span>    UPROPERTY(BlueprintReadWrite, Category = <span class="stringliteral">&quot;QuestResult&quot;</span>)</div>
+<div class="line"><a id="l01241" name="l01241"></a><span class="lineno"><a class="line" href="structFResponseSpeakResult.html#a6357dc3076be902e25bca85712d531a9"> 1241</a></span>    FString grade;</div>
+<div class="line"><a id="l01242" name="l01242"></a><span class="lineno"> 1242</span> </div>
+<div class="line"><a id="l01243" name="l01243"></a><span class="lineno"> 1243</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;QuestResult&quot;)</div>
+<div class="line"><a id="l01244" name="l01244"></a><span class="lineno"><a class="line" href="structFResponseSpeakResult.html#af44cf5eda612e2418894cd870d4cccf7"> 1244</a></span>    int32 average_score;</div>
+<div class="line"><a id="l01245" name="l01245"></a><span class="lineno"> 1245</span> </div>
+<div class="line"><a id="l01246" name="l01246"></a><span class="lineno"> 1246</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;QuestResult&quot;)</div>
+<div class="line"><a id="l01247" name="l01247"></a><span class="lineno"><a class="line" href="structFResponseSpeakResult.html#a5a5b67ce30931a1969cdcc4383926f8d"> 1247</a></span>    <span class="keywordtype">float</span> top_percent;</div>
+<div class="line"><a id="l01248" name="l01248"></a><span class="lineno"> 1248</span> </div>
+<div class="line"><a id="l01249" name="l01249"></a><span class="lineno"> 1249</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;QuestResult&quot;)</div>
+<div class="line"><a id="l01250" name="l01250"></a><span class="lineno"><a class="line" href="structFResponseSpeakResult.html#a45281cfa2bc17f30bdf0c9570dd35806"> 1250</a></span>    TArray&lt;<a class="code hl_struct" href="structFSpeakScoreDetail.html">FSpeakScoreDetail</a>&gt; scores;</div>
+<div class="line"><a id="l01251" name="l01251"></a><span class="lineno"> 1251</span> </div>
+<div class="line"><a id="l01253" name="l01253"></a><span class="lineno"> 1253</span>    <span class="keywordtype">void</span> SetFromHttpResponse(const TSharedPtr&lt;class IHttpResponse, ESPMode::ThreadSafe&gt;&amp; Response);</div>
+<div class="line"><a id="l01254" name="l01254"></a><span class="lineno"> 1254</span> </div>
+<div class="line"><a id="l01256" name="l01256"></a><span class="lineno"> 1256</span>    <span class="keywordtype">void</span> PrintData() const;</div>
 <div class="line"><a id="l01257" name="l01257"></a><span class="lineno"> 1257</span> </div>
-<div class="line"><a id="l01259" name="l01259"></a><span class="lineno"> 1259</span>USTRUCT(BlueprintType)</div>
-<div class="foldopen" id="foldopen01260" data-start="{" data-end="};">
-<div class="line"><a id="l01260" name="l01260"></a><span class="lineno"><a class="line" href="structFScenarioResult.html"> 1260</a></span>struct <a class="code hl_struct" href="structFScenarioResult.html">FScenarioResult</a></div>
-<div class="line"><a id="l01261" name="l01261"></a><span class="lineno"> 1261</span>{</div>
-<div class="line"><a id="l01262" name="l01262"></a><span class="lineno"> 1262</span>    GENERATED_BODY()</div>
-<div class="line"><a id="l01263" name="l01263"></a><span class="lineno"> 1263</span> </div>
-<div class="line"><a id="l01264" name="l01264"></a><span class="lineno"> 1264</span>    UPROPERTY(BlueprintReadWrite, Category = <span class="stringliteral">&quot;Evaluation&quot;</span>)</div>
-<div class="line"><a id="l01265" name="l01265"></a><span class="lineno"><a class="line" href="structFScenarioResult.html#a85380ca5516e4d591017b59af2892127"> 1265</a></span>    <a class="code hl_enumeration" href="NetworkData_8h.html#a89d484500632d06d10ab21aefde0efda">EScenarioType</a> scenario_type;</div>
-<div class="line"><a id="l01266" name="l01266"></a><span class="lineno"> 1266</span> </div>
-<div class="line"><a id="l01267" name="l01267"></a><span class="lineno"> 1267</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;Evaluation&quot;)</div>
-<div class="line"><a id="l01268" name="l01268"></a><span class="lineno"><a class="line" href="structFScenarioResult.html#a1ad8b060a27d5d18e9b06b0fdb48c640"> 1268</a></span>    FString display_name;</div>
-<div class="line"><a id="l01269" name="l01269"></a><span class="lineno"> 1269</span> </div>
-<div class="line"><a id="l01270" name="l01270"></a><span class="lineno"> 1270</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;Evaluation&quot;)</div>
-<div class="line"><a id="l01271" name="l01271"></a><span class="lineno"><a class="line" href="structFScenarioResult.html#a0ad89ab325e737aa1d57b42b247b9ca9"> 1271</a></span>    int32 final_score = 0;</div>
-<div class="line"><a id="l01272" name="l01272"></a><span class="lineno"> 1272</span> </div>
-<div class="line"><a id="l01273" name="l01273"></a><span class="lineno"> 1273</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;Evaluation&quot;)</div>
-<div class="line"><a id="l01274" name="l01274"></a><span class="lineno"><a class="line" href="structFScenarioResult.html#ac1f6da78793403be447b321268206667"> 1274</a></span>    FString grade;</div>
+<div class="line"><a id="l01258" name="l01258"></a><span class="lineno"> 1258</span>    TArray&lt;<a class="code hl_struct" href="structFResultStatData.html">FResultStatData</a>&gt; GetResultStatData() const;</div>
+<div class="line"><a id="l01259" name="l01259"></a><span class="lineno"> 1259</span>};</div>
+</div>
+<div class="line"><a id="l01260" name="l01260"></a><span class="lineno"> 1260</span> </div>
+<div class="line"><a id="l01261" name="l01261"></a><span class="lineno"> 1261</span> </div>
+<div class="line"><a id="l01262" name="l01262"></a><span class="lineno"> 1262</span><span class="comment">// =================================================================================</span></div>
+<div class="line"><a id="l01263" name="l01263"></a><span class="lineno"> 1263</span><span class="comment">// Evaluation API Structures</span></div>
+<div class="line"><a id="l01264" name="l01264"></a><span class="lineno"> 1264</span><span class="comment">// =================================================================================</span></div>
+<div class="line"><a id="l01265" name="l01265"></a><span class="lineno"> 1265</span> </div>
+<div class="line"><a id="l01267" name="l01267"></a><span class="lineno"> 1267</span>UENUM(BlueprintType)</div>
+<div class="foldopen" id="foldopen01268" data-start="{" data-end="};">
+<div class="line"><a id="l01268" name="l01268"></a><span class="lineno"><a class="line" href="NetworkData_8h.html#a89d484500632d06d10ab21aefde0efda"> 1268</a></span>enum class <a class="code hl_enumeration" href="NetworkData_8h.html#a89d484500632d06d10ab21aefde0efda">EScenarioType</a> : uint8</div>
+<div class="line"><a id="l01269" name="l01269"></a><span class="lineno"> 1269</span>{</div>
+<div class="line"><a id="l01270" name="l01270"></a><span class="lineno"> 1270</span>    READING <a class="code hl_enumvalue" href="NetworkData_8h.html#a89d484500632d06d10ab21aefde0efdaaa3f80d8f0f1b4ffa8c475f5d60ea5635">UMETA</a>(DisplayName = <span class="stringliteral">&quot;Reading&quot;</span>),</div>
+<div class="line"><a id="l01271" name="l01271"></a><span class="lineno"> 1271</span>    LISTENING <a class="code hl_enumvalue" href="NetworkData_8h.html#a89d484500632d06d10ab21aefde0efdaaa3f80d8f0f1b4ffa8c475f5d60ea5635">UMETA</a>(DisplayName = <span class="stringliteral">&quot;Listening&quot;</span>),</div>
+<div class="line"><a id="l01272" name="l01272"></a><span class="lineno"> 1272</span>    WRITING <a class="code hl_enumvalue" href="NetworkData_8h.html#a89d484500632d06d10ab21aefde0efdaaa3f80d8f0f1b4ffa8c475f5d60ea5635">UMETA</a>(DisplayName = <span class="stringliteral">&quot;Writing&quot;</span>),</div>
+<div class="line"><a id="l01273" name="l01273"></a><span class="lineno"> 1273</span>    SPEAKING <a class="code hl_enumvalue" href="NetworkData_8h.html#a89d484500632d06d10ab21aefde0efdaaa3f80d8f0f1b4ffa8c475f5d60ea5635">UMETA</a>(DisplayName = <span class="stringliteral">&quot;Speaking&quot;</span>)</div>
+<div class="line"><a id="l01274" name="l01274"></a><span class="lineno"> 1274</span>};</div>
+</div>
 <div class="line"><a id="l01275" name="l01275"></a><span class="lineno"> 1275</span> </div>
-<div class="line"><a id="l01276" name="l01276"></a><span class="lineno"> 1276</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;Evaluation&quot;)</div>
-<div class="line"><a id="l01277" name="l01277"></a><span class="lineno"><a class="line" href="structFScenarioResult.html#a4cd8f8c790246d8aa1771bc2afe5e284"> 1277</a></span>    <a class="code hl_struct" href="structFFeedbackSummary.html">FFeedbackSummary</a> feedback_summary;</div>
-<div class="line"><a id="l01278" name="l01278"></a><span class="lineno"> 1278</span> </div>
-<div class="line"><a id="l01279" name="l01279"></a><span class="lineno"> 1279</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;Evaluation&quot;)</div>
-<div class="line"><a id="l01280" name="l01280"></a><span class="lineno"><a class="line" href="structFScenarioResult.html#a2c1306814ec692275e337f065b0cf932"> 1280</a></span>    FString action_item;</div>
-<div class="line"><a id="l01281" name="l01281"></a><span class="lineno"> 1281</span>};</div>
+<div class="line"><a id="l01277" name="l01277"></a><span class="lineno"> 1277</span>USTRUCT(BlueprintType)</div>
+<div class="foldopen" id="foldopen01278" data-start="{" data-end="};">
+<div class="line"><a id="l01278" name="l01278"></a><span class="lineno"><a class="line" href="structFFeedbackSummary.html"> 1278</a></span>struct <a class="code hl_struct" href="structFFeedbackSummary.html">FFeedbackSummary</a></div>
+<div class="line"><a id="l01279" name="l01279"></a><span class="lineno"> 1279</span>{</div>
+<div class="line"><a id="l01280" name="l01280"></a><span class="lineno"> 1280</span>    GENERATED_BODY()</div>
+<div class="line"><a id="l01281" name="l01281"></a><span class="lineno"> 1281</span> </div>
+<div class="line"><a id="l01282" name="l01282"></a><span class="lineno"> 1282</span>    UPROPERTY(BlueprintReadWrite, Category = <span class="stringliteral">&quot;Evaluation&quot;</span>)</div>
+<div class="line"><a id="l01283" name="l01283"></a><span class="lineno"><a class="line" href="structFFeedbackSummary.html#acb79c686cba78320589ce22e9cce2c3a"> 1283</a></span>    FString title;</div>
+<div class="line"><a id="l01284" name="l01284"></a><span class="lineno"> 1284</span> </div>
+<div class="line"><a id="l01285" name="l01285"></a><span class="lineno"> 1285</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;Evaluation&quot;)</div>
+<div class="line"><a id="l01286" name="l01286"></a><span class="lineno"><a class="line" href="structFFeedbackSummary.html#abd5890a75687dcc72de1c62f29424a7a"> 1286</a></span>    FString message;</div>
+<div class="line"><a id="l01287" name="l01287"></a><span class="lineno"> 1287</span>};</div>
 </div>
-<div class="line"><a id="l01282" name="l01282"></a><span class="lineno"> 1282</span> </div>
-<div class="line"><a id="l01284" name="l01284"></a><span class="lineno"> 1284</span>USTRUCT(BlueprintType)</div>
-<div class="foldopen" id="foldopen01285" data-start="{" data-end="};">
-<div class="line"><a id="l01285" name="l01285"></a><span class="lineno"><a class="line" href="structFTotalResult.html"> 1285</a></span>struct <a class="code hl_struct" href="structFTotalResult.html">FTotalResult</a></div>
-<div class="line"><a id="l01286" name="l01286"></a><span class="lineno"> 1286</span>{</div>
-<div class="line"><a id="l01287" name="l01287"></a><span class="lineno"> 1287</span>    GENERATED_BODY()</div>
 <div class="line"><a id="l01288" name="l01288"></a><span class="lineno"> 1288</span> </div>
-<div class="line"><a id="l01289" name="l01289"></a><span class="lineno"> 1289</span>    UPROPERTY(BlueprintReadWrite, Category = <span class="stringliteral">&quot;Evaluation&quot;</span>)</div>
-<div class="line"><a id="l01290" name="l01290"></a><span class="lineno"><a class="line" href="structFTotalResult.html#ade81ef1cb5bf1ab69d793a5233d76dad"> 1290</a></span>    int32 final_score = 0;</div>
-<div class="line"><a id="l01291" name="l01291"></a><span class="lineno"> 1291</span> </div>
-<div class="line"><a id="l01292" name="l01292"></a><span class="lineno"> 1292</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;Evaluation&quot;)</div>
-<div class="line"><a id="l01293" name="l01293"></a><span class="lineno"><a class="line" href="structFTotalResult.html#a315ba1941395daa05401349df15239de"> 1293</a></span>    FString grade;</div>
+<div class="line"><a id="l01290" name="l01290"></a><span class="lineno"> 1290</span>USTRUCT(BlueprintType)</div>
+<div class="foldopen" id="foldopen01291" data-start="{" data-end="};">
+<div class="line"><a id="l01291" name="l01291"></a><span class="lineno"><a class="line" href="structFScenarioResult.html"> 1291</a></span>struct <a class="code hl_struct" href="structFScenarioResult.html">FScenarioResult</a></div>
+<div class="line"><a id="l01292" name="l01292"></a><span class="lineno"> 1292</span>{</div>
+<div class="line"><a id="l01293" name="l01293"></a><span class="lineno"> 1293</span>    GENERATED_BODY()</div>
 <div class="line"><a id="l01294" name="l01294"></a><span class="lineno"> 1294</span> </div>
-<div class="line"><a id="l01295" name="l01295"></a><span class="lineno"> 1295</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;Evaluation&quot;)</div>
-<div class="line"><a id="l01296" name="l01296"></a><span class="lineno"><a class="line" href="structFTotalResult.html#a0a257592b0428abfbc296fbfb1b002a9"> 1296</a></span>    FString feedback_summary;</div>
-<div class="line"><a id="l01297" name="l01297"></a><span class="lineno"> 1297</span>};</div>
-</div>
-<div class="line"><a id="l01298" name="l01298"></a><span class="lineno"> 1298</span> </div>
-<div class="line"><a id="l01300" name="l01300"></a><span class="lineno"><a class="line" href="NetworkData_8h.html#a354a1837ba4da4ff03c88181313c3dc1"> 1300</a></span><a class="code hl_function" href="NetworkData_8h.html#a697e7be88961f9eeb98db05dc466b4c1">DECLARE_DELEGATE_TwoParams</a>(FResponseEvaluationResultDelegate, <a class="code hl_struct" href="structFResponseEvaluationResult.html">FResponseEvaluationResult</a>&amp;, <span class="keywordtype">bool</span>);</div>
-<div class="line"><a id="l01302" name="l01302"></a><span class="lineno"> 1302</span>USTRUCT(BlueprintType)</div>
-<div class="foldopen" id="foldopen01303" data-start="{" data-end="};">
-<div class="line"><a id="l01303" name="l01303"></a><span class="lineno"><a class="line" href="structFResponseEvaluationResult.html"> 1303</a></span>struct <a class="code hl_struct" href="structFResponseEvaluationResult.html">FResponseEvaluationResult</a></div>
-<div class="line"><a id="l01304" name="l01304"></a><span class="lineno"> 1304</span>{</div>
-<div class="line"><a id="l01305" name="l01305"></a><span class="lineno"> 1305</span>    GENERATED_BODY()</div>
+<div class="line"><a id="l01295" name="l01295"></a><span class="lineno"> 1295</span>    UPROPERTY(BlueprintReadWrite, Category = <span class="stringliteral">&quot;Evaluation&quot;</span>)</div>
+<div class="line"><a id="l01296" name="l01296"></a><span class="lineno"><a class="line" href="structFScenarioResult.html#a85380ca5516e4d591017b59af2892127"> 1296</a></span>    <a class="code hl_enumeration" href="NetworkData_8h.html#a89d484500632d06d10ab21aefde0efda">EScenarioType</a> scenario_type;</div>
+<div class="line"><a id="l01297" name="l01297"></a><span class="lineno"> 1297</span> </div>
+<div class="line"><a id="l01298" name="l01298"></a><span class="lineno"> 1298</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;Evaluation&quot;)</div>
+<div class="line"><a id="l01299" name="l01299"></a><span class="lineno"><a class="line" href="structFScenarioResult.html#a1ad8b060a27d5d18e9b06b0fdb48c640"> 1299</a></span>    FString display_name;</div>
+<div class="line"><a id="l01300" name="l01300"></a><span class="lineno"> 1300</span> </div>
+<div class="line"><a id="l01301" name="l01301"></a><span class="lineno"> 1301</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;Evaluation&quot;)</div>
+<div class="line"><a id="l01302" name="l01302"></a><span class="lineno"><a class="line" href="structFScenarioResult.html#a0ad89ab325e737aa1d57b42b247b9ca9"> 1302</a></span>    int32 final_score = 0;</div>
+<div class="line"><a id="l01303" name="l01303"></a><span class="lineno"> 1303</span> </div>
+<div class="line"><a id="l01304" name="l01304"></a><span class="lineno"> 1304</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;Evaluation&quot;)</div>
+<div class="line"><a id="l01305" name="l01305"></a><span class="lineno"><a class="line" href="structFScenarioResult.html#ac1f6da78793403be447b321268206667"> 1305</a></span>    FString grade;</div>
 <div class="line"><a id="l01306" name="l01306"></a><span class="lineno"> 1306</span> </div>
-<div class="line"><a id="l01307" name="l01307"></a><span class="lineno"> 1307</span>    UPROPERTY(BlueprintReadWrite, Category = <span class="stringliteral">&quot;Evaluation&quot;</span>)</div>
-<div class="line"><a id="l01308" name="l01308"></a><span class="lineno"><a class="line" href="structFResponseEvaluationResult.html#a4049b2c738543b1e02d22d6cff63bba2"> 1308</a></span>    <a class="code hl_struct" href="structFTotalResult.html">FTotalResult</a> total_result;</div>
+<div class="line"><a id="l01307" name="l01307"></a><span class="lineno"> 1307</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;Evaluation&quot;)</div>
+<div class="line"><a id="l01308" name="l01308"></a><span class="lineno"><a class="line" href="structFScenarioResult.html#a4cd8f8c790246d8aa1771bc2afe5e284"> 1308</a></span>    <a class="code hl_struct" href="structFFeedbackSummary.html">FFeedbackSummary</a> feedback_summary;</div>
 <div class="line"><a id="l01309" name="l01309"></a><span class="lineno"> 1309</span> </div>
 <div class="line"><a id="l01310" name="l01310"></a><span class="lineno"> 1310</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;Evaluation&quot;)</div>
-<div class="line"><a id="l01311" name="l01311"></a><span class="lineno"><a class="line" href="structFResponseEvaluationResult.html#a5103da5ab7e5d6030a965510a2b3a06c"> 1311</a></span>    TArray&lt;<a class="code hl_struct" href="structFScenarioResult.html">FScenarioResult</a>&gt; scenario_results;</div>
-<div class="line"><a id="l01312" name="l01312"></a><span class="lineno"> 1312</span> </div>
-<div class="line"><a id="l01314" name="l01314"></a><span class="lineno"> 1314</span>    <span class="keywordtype">void</span> SetFromHttpResponse(const TSharedPtr&lt;class IHttpResponse, ESPMode::ThreadSafe&gt;&amp; Response);</div>
-<div class="line"><a id="l01315" name="l01315"></a><span class="lineno"> 1315</span> </div>
-<div class="line"><a id="l01317" name="l01317"></a><span class="lineno"> 1317</span>    <span class="keywordtype">void</span> PrintData() const;</div>
-<div class="line"><a id="l01318" name="l01318"></a><span class="lineno"> 1318</span>};</div>
+<div class="line"><a id="l01311" name="l01311"></a><span class="lineno"><a class="line" href="structFScenarioResult.html#a2c1306814ec692275e337f065b0cf932"> 1311</a></span>    FString action_item;</div>
+<div class="line"><a id="l01312" name="l01312"></a><span class="lineno"> 1312</span>};</div>
 </div>
+<div class="line"><a id="l01313" name="l01313"></a><span class="lineno"> 1313</span> </div>
+<div class="line"><a id="l01315" name="l01315"></a><span class="lineno"> 1315</span>USTRUCT(BlueprintType)</div>
+<div class="foldopen" id="foldopen01316" data-start="{" data-end="};">
+<div class="line"><a id="l01316" name="l01316"></a><span class="lineno"><a class="line" href="structFTotalResult.html"> 1316</a></span>struct <a class="code hl_struct" href="structFTotalResult.html">FTotalResult</a></div>
+<div class="line"><a id="l01317" name="l01317"></a><span class="lineno"> 1317</span>{</div>
+<div class="line"><a id="l01318" name="l01318"></a><span class="lineno"> 1318</span>    GENERATED_BODY()</div>
 <div class="line"><a id="l01319" name="l01319"></a><span class="lineno"> 1319</span> </div>
-<div class="line"><a id="l01320" name="l01320"></a><span class="lineno"> 1320</span> </div>
-<div class="line"><a id="l01321" name="l01321"></a><span class="lineno"> 1321</span><span class="comment">// =================================================================================</span></div>
-<div class="line"><a id="l01322" name="l01322"></a><span class="lineno"> 1322</span><span class="comment">// Chat Answers API Structures</span></div>
-<div class="line"><a id="l01323" name="l01323"></a><span class="lineno"> 1323</span><span class="comment">// =================================================================================</span></div>
-<div class="line"><a id="l01324" name="l01324"></a><span class="lineno"> 1324</span> </div>
-<div class="line"><a id="l01326" name="l01326"></a><span class="lineno"><a class="line" href="NetworkData_8h.html#a88c6f7be0436c9e3a387a23410101479"> 1326</a></span><a class="code hl_function" href="NetworkData_8h.html#a697e7be88961f9eeb98db05dc466b4c1">DECLARE_DELEGATE_TwoParams</a>(FResponseChatAnswersDelegate, <a class="code hl_struct" href="structFResponseChatAnswers.html">FResponseChatAnswers</a>&amp;, <span class="keywordtype">bool</span>);</div>
-<div class="line"><a id="l01328" name="l01328"></a><span class="lineno"> 1328</span>USTRUCT(BlueprintType)</div>
-<div class="foldopen" id="foldopen01329" data-start="{" data-end="};">
-<div class="line"><a id="l01329" name="l01329"></a><span class="lineno"><a class="line" href="structFResponseChatAnswers.html"> 1329</a></span>struct <a class="code hl_struct" href="structFResponseChatAnswers.html">FResponseChatAnswers</a></div>
-<div class="line"><a id="l01330" name="l01330"></a><span class="lineno"> 1330</span>{</div>
-<div class="line"><a id="l01331" name="l01331"></a><span class="lineno"> 1331</span>    GENERATED_BODY()</div>
-<div class="line"><a id="l01332" name="l01332"></a><span class="lineno"> 1332</span> </div>
-<div class="line"><a id="l01333" name="l01333"></a><span class="lineno"> 1333</span>    UPROPERTY(BlueprintReadWrite, Category = <span class="stringliteral">&quot;Chat&quot;</span>)</div>
-<div class="line"><a id="l01334" name="l01334"></a><span class="lineno"><a class="line" href="structFResponseChatAnswers.html#abbd36f4a6cd6408901bd1652e09ea706"> 1334</a></span>    FString answer;</div>
-<div class="line"><a id="l01335" name="l01335"></a><span class="lineno"> 1335</span> </div>
-<div class="line"><a id="l01337" name="l01337"></a><span class="lineno"> 1337</span>    <span class="keywordtype">void</span> SetFromHttpResponse(const TSharedPtr&lt;class IHttpResponse, ESPMode::ThreadSafe&gt;&amp; Response);</div>
-<div class="line"><a id="l01338" name="l01338"></a><span class="lineno"> 1338</span> </div>
-<div class="line"><a id="l01340" name="l01340"></a><span class="lineno"> 1340</span>    <span class="keywordtype">void</span> PrintData() const;</div>
-<div class="line"><a id="l01341" name="l01341"></a><span class="lineno"> 1341</span>};</div>
+<div class="line"><a id="l01320" name="l01320"></a><span class="lineno"> 1320</span>    UPROPERTY(BlueprintReadWrite, Category = <span class="stringliteral">&quot;Evaluation&quot;</span>)</div>
+<div class="line"><a id="l01321" name="l01321"></a><span class="lineno"><a class="line" href="structFTotalResult.html#ade81ef1cb5bf1ab69d793a5233d76dad"> 1321</a></span>    int32 final_score = 0;</div>
+<div class="line"><a id="l01322" name="l01322"></a><span class="lineno"> 1322</span> </div>
+<div class="line"><a id="l01323" name="l01323"></a><span class="lineno"> 1323</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;Evaluation&quot;)</div>
+<div class="line"><a id="l01324" name="l01324"></a><span class="lineno"><a class="line" href="structFTotalResult.html#a315ba1941395daa05401349df15239de"> 1324</a></span>    FString grade;</div>
+<div class="line"><a id="l01325" name="l01325"></a><span class="lineno"> 1325</span> </div>
+<div class="line"><a id="l01326" name="l01326"></a><span class="lineno"> 1326</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;Evaluation&quot;)</div>
+<div class="line"><a id="l01327" name="l01327"></a><span class="lineno"><a class="line" href="structFTotalResult.html#a0a257592b0428abfbc296fbfb1b002a9"> 1327</a></span>    FString feedback_summary;</div>
+<div class="line"><a id="l01328" name="l01328"></a><span class="lineno"> 1328</span>};</div>
+</div>
+<div class="line"><a id="l01329" name="l01329"></a><span class="lineno"> 1329</span> </div>
+<div class="line"><a id="l01331" name="l01331"></a><span class="lineno"><a class="line" href="NetworkData_8h.html#a354a1837ba4da4ff03c88181313c3dc1"> 1331</a></span><a class="code hl_function" href="NetworkData_8h.html#a697e7be88961f9eeb98db05dc466b4c1">DECLARE_DELEGATE_TwoParams</a>(FResponseEvaluationResultDelegate, <a class="code hl_struct" href="structFResponseEvaluationResult.html">FResponseEvaluationResult</a>&amp;, <span class="keywordtype">bool</span>);</div>
+<div class="line"><a id="l01333" name="l01333"></a><span class="lineno"> 1333</span>USTRUCT(BlueprintType)</div>
+<div class="foldopen" id="foldopen01334" data-start="{" data-end="};">
+<div class="line"><a id="l01334" name="l01334"></a><span class="lineno"><a class="line" href="structFResponseEvaluationResult.html"> 1334</a></span>struct <a class="code hl_struct" href="structFResponseEvaluationResult.html">FResponseEvaluationResult</a></div>
+<div class="line"><a id="l01335" name="l01335"></a><span class="lineno"> 1335</span>{</div>
+<div class="line"><a id="l01336" name="l01336"></a><span class="lineno"> 1336</span>    GENERATED_BODY()</div>
+<div class="line"><a id="l01337" name="l01337"></a><span class="lineno"> 1337</span> </div>
+<div class="line"><a id="l01338" name="l01338"></a><span class="lineno"> 1338</span>    UPROPERTY(BlueprintReadWrite, Category = <span class="stringliteral">&quot;Evaluation&quot;</span>)</div>
+<div class="line"><a id="l01339" name="l01339"></a><span class="lineno"><a class="line" href="structFResponseEvaluationResult.html#a4049b2c738543b1e02d22d6cff63bba2"> 1339</a></span>    <a class="code hl_struct" href="structFTotalResult.html">FTotalResult</a> total_result;</div>
+<div class="line"><a id="l01340" name="l01340"></a><span class="lineno"> 1340</span> </div>
+<div class="line"><a id="l01341" name="l01341"></a><span class="lineno"> 1341</span>    UPROPERTY(BlueprintReadWrite, Category = &quot;Evaluation&quot;)</div>
+<div class="line"><a id="l01342" name="l01342"></a><span class="lineno"><a class="line" href="structFResponseEvaluationResult.html#a5103da5ab7e5d6030a965510a2b3a06c"> 1342</a></span>    TArray&lt;<a class="code hl_struct" href="structFScenarioResult.html">FScenarioResult</a>&gt; scenario_results;</div>
+<div class="line"><a id="l01343" name="l01343"></a><span class="lineno"> 1343</span> </div>
+<div class="line"><a id="l01345" name="l01345"></a><span class="lineno"> 1345</span>    <span class="keywordtype">void</span> SetFromHttpResponse(const TSharedPtr&lt;class IHttpResponse, ESPMode::ThreadSafe&gt;&amp; Response);</div>
+<div class="line"><a id="l01346" name="l01346"></a><span class="lineno"> 1346</span> </div>
+<div class="line"><a id="l01348" name="l01348"></a><span class="lineno"> 1348</span>    <span class="keywordtype">void</span> PrintData() const;</div>
+<div class="line"><a id="l01349" name="l01349"></a><span class="lineno"> 1349</span>};</div>
+</div>
+<div class="line"><a id="l01350" name="l01350"></a><span class="lineno"> 1350</span> </div>
+<div class="line"><a id="l01351" name="l01351"></a><span class="lineno"> 1351</span> </div>
+<div class="line"><a id="l01352" name="l01352"></a><span class="lineno"> 1352</span><span class="comment">// =================================================================================</span></div>
+<div class="line"><a id="l01353" name="l01353"></a><span class="lineno"> 1353</span><span class="comment">// Chat Answers API Structures</span></div>
+<div class="line"><a id="l01354" name="l01354"></a><span class="lineno"> 1354</span><span class="comment">// =================================================================================</span></div>
+<div class="line"><a id="l01355" name="l01355"></a><span class="lineno"> 1355</span> </div>
+<div class="line"><a id="l01357" name="l01357"></a><span class="lineno"><a class="line" href="NetworkData_8h.html#a88c6f7be0436c9e3a387a23410101479"> 1357</a></span><a class="code hl_function" href="NetworkData_8h.html#a697e7be88961f9eeb98db05dc466b4c1">DECLARE_DELEGATE_TwoParams</a>(FResponseChatAnswersDelegate, <a class="code hl_struct" href="structFResponseChatAnswers.html">FResponseChatAnswers</a>&amp;, <span class="keywordtype">bool</span>);</div>
+<div class="line"><a id="l01359" name="l01359"></a><span class="lineno"> 1359</span>USTRUCT(BlueprintType)</div>
+<div class="foldopen" id="foldopen01360" data-start="{" data-end="};">
+<div class="line"><a id="l01360" name="l01360"></a><span class="lineno"><a class="line" href="structFResponseChatAnswers.html"> 1360</a></span>struct <a class="code hl_struct" href="structFResponseChatAnswers.html">FResponseChatAnswers</a></div>
+<div class="line"><a id="l01361" name="l01361"></a><span class="lineno"> 1361</span>{</div>
+<div class="line"><a id="l01362" name="l01362"></a><span class="lineno"> 1362</span>    GENERATED_BODY()</div>
+<div class="line"><a id="l01363" name="l01363"></a><span class="lineno"> 1363</span> </div>
+<div class="line"><a id="l01364" name="l01364"></a><span class="lineno"> 1364</span>    UPROPERTY(BlueprintReadWrite, Category = <span class="stringliteral">&quot;Chat&quot;</span>)</div>
+<div class="line"><a id="l01365" name="l01365"></a><span class="lineno"><a class="line" href="structFResponseChatAnswers.html#abbd36f4a6cd6408901bd1652e09ea706"> 1365</a></span>    FString answer;</div>
+<div class="line"><a id="l01366" name="l01366"></a><span class="lineno"> 1366</span> </div>
+<div class="line"><a id="l01368" name="l01368"></a><span class="lineno"> 1368</span>    <span class="keywordtype">void</span> SetFromHttpResponse(const TSharedPtr&lt;class IHttpResponse, ESPMode::ThreadSafe&gt;&amp; Response);</div>
+<div class="line"><a id="l01369" name="l01369"></a><span class="lineno"> 1369</span> </div>
+<div class="line"><a id="l01371" name="l01371"></a><span class="lineno"> 1371</span>    <span class="keywordtype">void</span> PrintData() const;</div>
+<div class="line"><a id="l01372" name="l01372"></a><span class="lineno"> 1372</span>};</div>
 </div>
 <div class="ttc" id="aFResourceTextureData_8h_html_a98b8b3000fb3fc86e37c624651589cb2a1129c0e4d43f2d121652a7302712cff6"><div class="ttname"><a href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2a1129c0e4d43f2d121652a7302712cff6">EResourceTextureType::Write</a></div><div class="ttdeci">@ Write</div></div>
 <div class="ttc" id="aFResourceTextureData_8h_html_a98b8b3000fb3fc86e37c624651589cb2a7a1a5f3e79fdc91edf2f5ead9d66abb4"><div class="ttname"><a href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2a7a1a5f3e79fdc91edf2f5ead9d66abb4">EResourceTextureType::Read</a></div><div class="ttdeci">@ Read</div></div>
@@ -1477,7 +1510,7 @@ $(document).ready(function(){initNavTree('NetworkData_8h_source.html',''); initR
 <div class="ttc" id="aFResourceTextureData_8h_html_a98b8b3000fb3fc86e37c624651589cb2ace6802b46091c31e2ec2363883fe8369"><div class="ttname"><a href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2ace6802b46091c31e2ec2363883fe8369">EResourceTextureType::Listen</a></div><div class="ttdeci">@ Listen</div></div>
 <div class="ttc" id="aFResultStatData_8h_html"><div class="ttname"><a href="FResultStatData_8h.html">FResultStatData.h</a></div></div>
 <div class="ttc" id="aNetworkData_8h_html_a697e7be88961f9eeb98db05dc466b4c1"><div class="ttname"><a href="NetworkData_8h.html#a697e7be88961f9eeb98db05dc466b4c1">DECLARE_DELEGATE_TwoParams</a></div><div class="ttdeci">DECLARE_DELEGATE_TwoParams(FResponseWriteQuestionDelegate, FQuestWriteInfo &amp;, bool)</div><div class="ttdoc">Write Submit 응답 델리게이트입니다.</div></div>
-<div class="ttc" id="aNetworkData_8h_html_a89d484500632d06d10ab21aefde0efda"><div class="ttname"><a href="NetworkData_8h.html#a89d484500632d06d10ab21aefde0efda">EScenarioType</a></div><div class="ttdeci">EScenarioType</div><div class="ttdoc">시나리오 타입 열거형</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l01237">NetworkData.h:1238</a></div></div>
+<div class="ttc" id="aNetworkData_8h_html_a89d484500632d06d10ab21aefde0efda"><div class="ttname"><a href="NetworkData_8h.html#a89d484500632d06d10ab21aefde0efda">EScenarioType</a></div><div class="ttdeci">EScenarioType</div><div class="ttdoc">시나리오 타입 열거형</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l01268">NetworkData.h:1269</a></div></div>
 <div class="ttc" id="aNetworkData_8h_html_a89d484500632d06d10ab21aefde0efdaaa3f80d8f0f1b4ffa8c475f5d60ea5635"><div class="ttname"><a href="NetworkData_8h.html#a89d484500632d06d10ab21aefde0efdaaa3f80d8f0f1b4ffa8c475f5d60ea5635">EScenarioType::UMETA</a></div><div class="ttdeci">@ UMETA</div></div>
 <div class="ttc" id="aNetworkData_8h_html_ad4c5a68d47d81d6afcc936e867855cf7"><div class="ttname"><a href="NetworkData_8h.html#ad4c5a68d47d81d6afcc936e867855cf7">GetTypeHash</a></div><div class="ttdeci">uint32 GetTypeHash(const FWordInfo &amp;Info)</div><div class="ttdoc">TSet에서 사용하기 위한 해시 함수</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00635">NetworkData.h:635</a></div></div>
 <div class="ttc" id="aUCustomNetworkSettings_8h_html"><div class="ttname"><a href="UCustomNetworkSettings_8h.html">UCustomNetworkSettings.h</a></div><div class="ttdoc">서버 환경별 네트워크 설정을 노출하는 DeveloperSettings를 선언합니다.</div></div>
@@ -1504,10 +1537,11 @@ $(document).ready(function(){initNavTree('NetworkData_8h_source.html',''); initR
 <div class="ttc" id="anamespaceRequestAPI_html_ae683aef1f6770a15bcad8cce46f40456"><div class="ttname"><a href="namespaceRequestAPI.html#ae683aef1f6770a15bcad8cce46f40456">RequestAPI::scenario</a></div><div class="ttdeci">static FString scenario</div><div class="ttdoc">Scenario 조회 엔드포인트입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00096">NetworkData.h:96</a></div></div>
 <div class="ttc" id="anamespaceRequestAPI_html_aee732573aa0bc733fedaab927a273dcd"><div class="ttname"><a href="namespaceRequestAPI.html#aee732573aa0bc733fedaab927a273dcd">RequestAPI::users_me</a></div><div class="ttdeci">static FString users_me</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00084">NetworkData.h:84</a></div></div>
 <div class="ttc" id="anamespaceRequestAPI_html_af908b99f78364328aca763f362236454"><div class="ttname"><a href="namespaceRequestAPI.html#af908b99f78364328aca763f362236454">RequestAPI::users_token</a></div><div class="ttdeci">static FString users_token</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00083">NetworkData.h:83</a></div></div>
-<div class="ttc" id="astructFFeedbackSummary_html"><div class="ttname"><a href="structFFeedbackSummary.html">FFeedbackSummary</a></div><div class="ttdoc">피드백 요약 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l01247">NetworkData.h:1248</a></div></div>
+<div class="ttc" id="astructFFeedbackSummary_html"><div class="ttname"><a href="structFFeedbackSummary.html">FFeedbackSummary</a></div><div class="ttdoc">피드백 요약 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l01278">NetworkData.h:1279</a></div></div>
 <div class="ttc" id="astructFInterviewAnswerData_html"><div class="ttname"><a href="structFInterviewAnswerData.html">FInterviewAnswerData</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00863">NetworkData.h:864</a></div></div>
 <div class="ttc" id="astructFInterviewData_html"><div class="ttname"><a href="structFInterviewData.html">FInterviewData</a></div><div class="ttdoc">Read 퀘스트 정보 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00147">NetworkData.h:148</a></div></div>
 <div class="ttc" id="astructFInterviewQuestionData_html"><div class="ttname"><a href="structFInterviewQuestionData.html">FInterviewQuestionData</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00112">NetworkData.h:113</a></div></div>
+<div class="ttc" id="astructFListenScoreDetail_html"><div class="ttname"><a href="structFListenScoreDetail.html">FListenScoreDetail</a></div><div class="ttdoc">Listen 퀘스트의 개별 점수 상세 정보를 담는 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l01090">NetworkData.h:1091</a></div></div>
 <div class="ttc" id="astructFListenTargetData_html"><div class="ttname"><a href="structFListenTargetData.html">FListenTargetData</a></div><div class="ttdoc">Listen 퀘스트 타겟 데이터입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00273">NetworkData.h:274</a></div></div>
 <div class="ttc" id="astructFPhonemeData_html"><div class="ttname"><a href="structFPhonemeData.html">FPhonemeData</a></div><div class="ttdoc">단어 데이터 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00191">NetworkData.h:192</a></div></div>
 <div class="ttc" id="astructFPlayerInfo_html"><div class="ttname"><a href="structFPlayerInfo.html">FPlayerInfo</a></div><div class="ttdoc">플레이어 정보 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00163">NetworkData.h:164</a></div></div>
@@ -1516,24 +1550,25 @@ $(document).ready(function(){initNavTree('NetworkData_8h_source.html',''); initR
 <div class="ttc" id="astructFQuestSpeakInfo_html"><div class="ttname"><a href="structFQuestSpeakInfo.html">FQuestSpeakInfo</a></div><div class="ttdoc">Speak 퀘스트 정보 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00384">NetworkData.h:385</a></div></div>
 <div class="ttc" id="astructFQuestWriteInfo_html"><div class="ttname"><a href="structFQuestWriteInfo.html">FQuestWriteInfo</a></div><div class="ttdoc">Write 퀘스트 정보 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00355">NetworkData.h:356</a></div></div>
 <div class="ttc" id="astructFReadQuestResult_html"><div class="ttname"><a href="structFReadQuestResult.html">FReadQuestResult</a></div><div class="ttdoc">Read 퀘스트의 플레이어 결과 기록입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00407">NetworkData.h:408</a></div></div>
+<div class="ttc" id="astructFReadScoreDetail_html"><div class="ttname"><a href="structFReadScoreDetail.html">FReadScoreDetail</a></div><div class="ttdoc">Read 퀘스트의 개별 점수 상세 정보를 담는 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00976">NetworkData.h:977</a></div></div>
 <div class="ttc" id="astructFReadTargetData_html"><div class="ttname"><a href="structFReadTargetData.html">FReadTargetData</a></div><div class="ttdoc">Read 퀘스트 타겟 데이터입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00228">NetworkData.h:229</a></div></div>
 <div class="ttc" id="astructFRequestInterviewAnswer_html"><div class="ttname"><a href="structFRequestInterviewAnswer.html">FRequestInterviewAnswer</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00878">NetworkData.h:879</a></div></div>
-<div class="ttc" id="astructFRequestListenResult_html"><div class="ttname"><a href="structFRequestListenResult.html">FRequestListenResult</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l01044">NetworkData.h:1045</a></div></div>
+<div class="ttc" id="astructFRequestListenResult_html"><div class="ttname"><a href="structFRequestListenResult.html">FRequestListenResult</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l01059">NetworkData.h:1060</a></div></div>
 <div class="ttc" id="astructFRequestReadResult_html"><div class="ttname"><a href="structFRequestReadResult.html">FRequestReadResult</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00945">NetworkData.h:946</a></div></div>
-<div class="ttc" id="astructFRequestSpeakResult_html"><div class="ttname"><a href="structFRequestSpeakResult.html">FRequestSpeakResult</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l01160">NetworkData.h:1161</a></div></div>
+<div class="ttc" id="astructFRequestSpeakResult_html"><div class="ttname"><a href="structFRequestSpeakResult.html">FRequestSpeakResult</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l01191">NetworkData.h:1192</a></div></div>
 <div class="ttc" id="astructFRequestWriteResult_html"><div class="ttname"><a href="structFRequestWriteResult.html">FRequestWriteResult</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00721">NetworkData.h:722</a></div></div>
-<div class="ttc" id="astructFResponseChatAnswers_html"><div class="ttname"><a href="structFResponseChatAnswers.html">FResponseChatAnswers</a></div><div class="ttdoc">Chat Answers 응답 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l01329">NetworkData.h:1330</a></div></div>
-<div class="ttc" id="astructFResponseEvaluationResult_html"><div class="ttname"><a href="structFResponseEvaluationResult.html">FResponseEvaluationResult</a></div><div class="ttdoc">Evaluation 결과 응답 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l01303">NetworkData.h:1304</a></div></div>
+<div class="ttc" id="astructFResponseChatAnswers_html"><div class="ttname"><a href="structFResponseChatAnswers.html">FResponseChatAnswers</a></div><div class="ttdoc">Chat Answers 응답 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l01360">NetworkData.h:1361</a></div></div>
+<div class="ttc" id="astructFResponseEvaluationResult_html"><div class="ttname"><a href="structFResponseEvaluationResult.html">FResponseEvaluationResult</a></div><div class="ttdoc">Evaluation 결과 응답 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l01334">NetworkData.h:1335</a></div></div>
 <div class="ttc" id="astructFResponseHealth_html"><div class="ttname"><a href="structFResponseHealth.html">FResponseHealth</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00433">NetworkData.h:434</a></div></div>
 <div class="ttc" id="astructFResponseInterviewAnswer_html"><div class="ttname"><a href="structFResponseInterviewAnswer.html">FResponseInterviewAnswer</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00891">NetworkData.h:892</a></div></div>
 <div class="ttc" id="astructFResponseInterviewHello_html"><div class="ttname"><a href="structFResponseInterviewHello.html">FResponseInterviewHello</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00848">NetworkData.h:849</a></div></div>
 <div class="ttc" id="astructFResponseListenAudio_html"><div class="ttname"><a href="structFResponseListenAudio.html">FResponseListenAudio</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00793">NetworkData.h:794</a></div></div>
-<div class="ttc" id="astructFResponseListenResult_html"><div class="ttname"><a href="structFResponseListenResult.html">FResponseListenResult</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l01075">NetworkData.h:1076</a></div></div>
-<div class="ttc" id="astructFResponseListenScenario_html"><div class="ttname"><a href="structFResponseListenScenario.html">FResponseListenScenario</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l01000">NetworkData.h:1001</a></div></div>
-<div class="ttc" id="astructFResponseReadResult_html"><div class="ttname"><a href="structFResponseReadResult.html">FResponseReadResult</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00977">NetworkData.h:978</a></div></div>
+<div class="ttc" id="astructFResponseListenResult_html"><div class="ttname"><a href="structFResponseListenResult.html">FResponseListenResult</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l01103">NetworkData.h:1104</a></div></div>
+<div class="ttc" id="astructFResponseListenScenario_html"><div class="ttname"><a href="structFResponseListenScenario.html">FResponseListenScenario</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l01015">NetworkData.h:1016</a></div></div>
+<div class="ttc" id="astructFResponseReadResult_html"><div class="ttname"><a href="structFResponseReadResult.html">FResponseReadResult</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00989">NetworkData.h:990</a></div></div>
 <div class="ttc" id="astructFResponseReadScenario_html"><div class="ttname"><a href="structFResponseReadScenario.html">FResponseReadScenario</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00904">NetworkData.h:905</a></div></div>
-<div class="ttc" id="astructFResponseSpeakResult_html"><div class="ttname"><a href="structFResponseSpeakResult.html">FResponseSpeakResult</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l01205">NetworkData.h:1206</a></div></div>
-<div class="ttc" id="astructFResponseSpeakScenario_html"><div class="ttname"><a href="structFResponseSpeakScenario.html">FResponseSpeakScenario</a></div><div class="ttdoc">Speak 시나리오 응답 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l01134">NetworkData.h:1135</a></div></div>
+<div class="ttc" id="astructFResponseSpeakResult_html"><div class="ttname"><a href="structFResponseSpeakResult.html">FResponseSpeakResult</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l01236">NetworkData.h:1237</a></div></div>
+<div class="ttc" id="astructFResponseSpeakScenario_html"><div class="ttname"><a href="structFResponseSpeakScenario.html">FResponseSpeakScenario</a></div><div class="ttdoc">Speak 시나리오 응답 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l01165">NetworkData.h:1166</a></div></div>
 <div class="ttc" id="astructFResponseSpeakingJudes_html"><div class="ttname"><a href="structFResponseSpeakingJudes.html">FResponseSpeakingJudes</a></div><div class="ttdoc">Speaking Questions 응답 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00820">NetworkData.h:821</a></div></div>
 <div class="ttc" id="astructFResponseUserHost_html"><div class="ttname"><a href="structFResponseUserHost.html">FResponseUserHost</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00525">NetworkData.h:526</a></div></div>
 <div class="ttc" id="astructFResponseUserMe_html"><div class="ttname"><a href="structFResponseUserMe.html">FResponseUserMe</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00493">NetworkData.h:494</a></div></div>
@@ -1544,14 +1579,14 @@ $(document).ready(function(){initNavTree('NetworkData_8h_source.html',''); initR
 <div class="ttc" id="astructFResponseWriteScores_html"><div class="ttname"><a href="structFResponseWriteScores.html">FResponseWriteScores</a></div><div class="ttdoc">Write 최종 결과 점수 정보 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00754">NetworkData.h:755</a></div></div>
 <div class="ttc" id="astructFResponseWriteSubmit_html"><div class="ttname"><a href="structFResponseWriteSubmit.html">FResponseWriteSubmit</a></div><div class="ttdoc">Write Submit 응답 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00706">NetworkData.h:707</a></div></div>
 <div class="ttc" id="astructFResultStatData_html"><div class="ttname"><a href="structFResultStatData.html">FResultStatData</a></div><div class="ttdoc">Result Stat 위젯 통합 데이터 구조 위젯 타입, 색상 스타일, 각 타입별 데이터를 통합 관리</div><div class="ttdef"><b>Definition</b> <a href="FResultStatData_8h_source.html#l00022">FResultStatData.h:23</a></div></div>
-<div class="ttc" id="astructFScenarioResult_html"><div class="ttname"><a href="structFScenarioResult.html">FScenarioResult</a></div><div class="ttdoc">시나리오별 결과 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l01260">NetworkData.h:1261</a></div></div>
+<div class="ttc" id="astructFScenarioResult_html"><div class="ttname"><a href="structFScenarioResult.html">FScenarioResult</a></div><div class="ttdoc">시나리오별 결과 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l01291">NetworkData.h:1292</a></div></div>
 <div class="ttc" id="astructFScenarioTargetData_html"><div class="ttname"><a href="structFScenarioTargetData.html">FScenarioTargetData</a></div><div class="ttdoc">Scenario 타겟 데이터입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00642">NetworkData.h:643</a></div></div>
 <div class="ttc" id="astructFServerConfig_html"><div class="ttname"><a href="structFServerConfig.html">FServerConfig</a></div><div class="ttdoc">서버 접속 정보를 담는 설정 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="UCustomNetworkSettings_8h_source.html#l00022">UCustomNetworkSettings.h:23</a></div></div>
 <div class="ttc" id="astructFServerConfig_html_a192542ce9a719e9f4a9dd468e1e69aea"><div class="ttname"><a href="structFServerConfig.html#a192542ce9a719e9f4a9dd468e1e69aea">FServerConfig::WebSocketUrl</a></div><div class="ttdeci">FString WebSocketUrl</div><div class="ttdef"><b>Definition</b> <a href="UCustomNetworkSettings_8h_source.html#l00033">UCustomNetworkSettings.h:33</a></div></div>
 <div class="ttc" id="astructFServerConfig_html_ab65e0b73b4679e5efb155dd6f98bac3d"><div class="ttname"><a href="structFServerConfig.html#ab65e0b73b4679e5efb155dd6f98bac3d">FServerConfig::GetFullUrl</a></div><div class="ttdeci">FString GetFullUrl(const FString &amp;Endpoint) const</div><div class="ttdoc">엔드포인트를 결합한 전체 URL을 반환합니다.</div><div class="ttdef"><b>Definition</b> <a href="UCustomNetworkSettings_8h_source.html#l00037">UCustomNetworkSettings.h:37</a></div></div>
-<div class="ttc" id="astructFSpeakScoreDetail_html"><div class="ttname"><a href="structFSpeakScoreDetail.html">FSpeakScoreDetail</a></div><div class="ttdoc">Speak 퀘스트의 개별 점수 상세 정보를 담는 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l01191">NetworkData.h:1192</a></div></div>
-<div class="ttc" id="astructFSpeakStageQuestion_html"><div class="ttname"><a href="structFSpeakStageQuestion.html">FSpeakStageQuestion</a></div><div class="ttdoc">SpeakQuest 오디오 질문 데이터 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l01103">NetworkData.h:1104</a></div></div>
-<div class="ttc" id="astructFTotalResult_html"><div class="ttname"><a href="structFTotalResult.html">FTotalResult</a></div><div class="ttdoc">전체 결과 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l01285">NetworkData.h:1286</a></div></div>
+<div class="ttc" id="astructFSpeakScoreDetail_html"><div class="ttname"><a href="structFSpeakScoreDetail.html">FSpeakScoreDetail</a></div><div class="ttdoc">Speak 퀘스트의 개별 점수 상세 정보를 담는 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l01222">NetworkData.h:1223</a></div></div>
+<div class="ttc" id="astructFSpeakStageQuestion_html"><div class="ttname"><a href="structFSpeakStageQuestion.html">FSpeakStageQuestion</a></div><div class="ttdoc">SpeakQuest 오디오 질문 데이터 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l01134">NetworkData.h:1135</a></div></div>
+<div class="ttc" id="astructFTotalResult_html"><div class="ttname"><a href="structFTotalResult.html">FTotalResult</a></div><div class="ttdoc">전체 결과 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l01316">NetworkData.h:1317</a></div></div>
 <div class="ttc" id="astructFWordData_html"><div class="ttname"><a href="structFWordData.html">FWordData</a></div><div class="ttdoc">단어 데이터 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00206">NetworkData.h:207</a></div></div>
 <div class="ttc" id="astructFWordInfo_html"><div class="ttname"><a href="structFWordInfo.html">FWordInfo</a></div><div class="ttdoc">단어 정보 구조체</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00543">NetworkData.h:544</a></div></div>
 <div class="ttc" id="astructFWordInfo_html_a0b915efc0c37a2798ecf2bd8ef0f0bed"><div class="ttname"><a href="structFWordInfo.html#a0b915efc0c37a2798ecf2bd8ef0f0bed">FWordInfo::GetRandomAnimal</a></div><div class="ttdeci">static FWordInfo GetRandomAnimal()</div><div class="ttdoc">랜덤 동물 선택 - CSV 기반 하드코딩</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00589">NetworkData.h:589</a></div></div>
@@ -1569,7 +1604,7 @@ $(document).ready(function(){initNavTree('NetworkData_8h_source.html',''); initR
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_db6231b890a14ef22abfc7e4cac87d3d.html">Network</a></li><li class="navelem"><a class="el" href="dir_220b20a97e4e155a19f3af1d93d62cb0.html">Public</a></li><li class="navelem"><a class="el" href="NetworkData_8h.html">NetworkData.h</a></li>
-    <li class="footer">생성시간 : 수 12월 17 2025 23:46:59, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 목 12월 18 2025 05:19:58, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

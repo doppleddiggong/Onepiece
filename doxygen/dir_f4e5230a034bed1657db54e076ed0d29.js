@@ -1,6 +1,7 @@
 var dir_f4e5230a034bed1657db54e076ed0d29 =
 [
     [ "ECharacterType.h", "ECharacterType_8h.html", "ECharacterType_8h" ],
+    [ "ECompassMarkerType.h", "ECompassMarkerType_8h.html", "ECompassMarkerType_8h" ],
     [ "EDamageType.h", "EDamageType_8h.html", "EDamageType_8h" ],
     [ "EGameSoundType.h", "EGameSoundType_8h.html", "EGameSoundType_8h" ],
     [ "EMontageType.h", "EMontageType_8h.html", "EMontageType_8h" ],

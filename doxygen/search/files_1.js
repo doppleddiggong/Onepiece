@@ -12,10 +12,12 @@ var searchData=
   ['citynamewidget_2eh_9',['CityNameWidget.h',['../CityNameWidget_8h.html',1,'']]],
   ['coffeelibrary_2ecpp_10',['CoffeeLibrary.cpp',['../CoffeeLibrary_8cpp.html',1,'']]],
   ['coffeelibrary_2eh_11',['CoffeeLibrary.h',['../CoffeeLibrary_8h.html',1,'']]],
-  ['converyorbuttonaniminstance_2ecpp_12',['ConveryorButtonAnimInstance.cpp',['../ConveryorButtonAnimInstance_8cpp.html',1,'']]],
-  ['converyorbuttonaniminstance_2eh_13',['ConveryorButtonAnimInstance.h',['../ConveryorButtonAnimInstance_8h.html',1,'']]],
-  ['conveyorbelt_2ecpp_14',['ConveyorBelt.cpp',['../ConveyorBelt_8cpp.html',1,'']]],
-  ['conveyorbelt_2eh_15',['ConveyorBelt.h',['../ConveyorBelt_8h.html',1,'']]],
-  ['conveyorbutton_2ecpp_16',['ConveyorButton.cpp',['../ConveyorButton_8cpp.html',1,'']]],
-  ['conveyorbutton_2eh_17',['ConveyorButton.h',['../ConveyorButton_8h.html',1,'']]]
+  ['compasswidget_2ecpp_12',['CompassWidget.cpp',['../CompassWidget_8cpp.html',1,'']]],
+  ['compasswidget_2eh_13',['CompassWidget.h',['../CompassWidget_8h.html',1,'']]],
+  ['converyorbuttonaniminstance_2ecpp_14',['ConveryorButtonAnimInstance.cpp',['../ConveryorButtonAnimInstance_8cpp.html',1,'']]],
+  ['converyorbuttonaniminstance_2eh_15',['ConveryorButtonAnimInstance.h',['../ConveryorButtonAnimInstance_8h.html',1,'']]],
+  ['conveyorbelt_2ecpp_16',['ConveyorBelt.cpp',['../ConveyorBelt_8cpp.html',1,'']]],
+  ['conveyorbelt_2eh_17',['ConveyorBelt.h',['../ConveyorBelt_8h.html',1,'']]],
+  ['conveyorbutton_2ecpp_18',['ConveyorButton.cpp',['../ConveyorButton_8cpp.html',1,'']]],
+  ['conveyorbutton_2eh_19',['ConveyorButton.h',['../ConveyorButton_8h.html',1,'']]]
 ];

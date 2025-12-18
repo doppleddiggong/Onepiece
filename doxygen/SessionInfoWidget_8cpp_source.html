@@ -114,63 +114,67 @@ $(document).ready(function(){initNavTree('SessionInfoWidget_8cpp_source.html',''
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;<a class="code" href="SessionInfoWidget_8h.html">SessionInfoWidget.h</a>&quot;</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;<a class="code" href="UHoverButton_8h.html">UHoverButton.h</a>&quot;</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;<a class="code" href="ULingoGameInstance_8h.html">ULingoGameInstance.h</a>&quot;</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;Components/Button.h&quot;</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;Components/TextBlock.h&quot;</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
-<div class="foldopen" id="foldopen00011" data-start="{" data-end="}">
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="classUSessionInfoWidget.html#af7f908a299b306fe470c54c65da8b61d">   11</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUSessionInfoWidget.html#af7f908a299b306fe470c54c65da8b61d">USessionInfoWidget::NativeConstruct</a>()</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>{</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    Super::NativeConstruct();</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <span class="comment">// 중복 바인딩 방지</span></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUSessionInfoWidget.html#a22e57e4bc7caedb331979b3448858fd0">Btn_Join</a>)</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    {</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>        <a class="code hl_variable" href="classUSessionInfoWidget.html#a22e57e4bc7caedb331979b3448858fd0">Btn_Join</a>-&gt;<a class="code hl_variable" href="classUHoverButton.html#aa0342f25841a662df6599a83af1684b1">OnButtonClickedEvent</a>.RemoveDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUSessionInfoWidget.html#a1f92c0fccae94c61e9daa8a9fda4f523">USessionInfoWidget::OnClickJoin</a>);</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        <a class="code hl_variable" href="classUSessionInfoWidget.html#a22e57e4bc7caedb331979b3448858fd0">Btn_Join</a>-&gt;<a class="code hl_variable" href="classUHoverButton.html#aa0342f25841a662df6599a83af1684b1">OnButtonClickedEvent</a>.AddDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUSessionInfoWidget.html#a1f92c0fccae94c61e9daa8a9fda4f523">USessionInfoWidget::OnClickJoin</a>);</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    }</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>}</div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;<a class="code" href="UDialogManager_8h.html">UDialogManager.h</a>&quot;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;<a class="code" href="UHoverButton_8h.html">UHoverButton.h</a>&quot;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;<a class="code" href="ULingoGameInstance_8h.html">ULingoGameInstance.h</a>&quot;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;Components/Button.h&quot;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;Components/TextBlock.h&quot;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="foldopen" id="foldopen00012" data-start="{" data-end="}">
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="classUSessionInfoWidget.html#af7f908a299b306fe470c54c65da8b61d">   12</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUSessionInfoWidget.html#af7f908a299b306fe470c54c65da8b61d">USessionInfoWidget::NativeConstruct</a>()</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>{</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    Super::NativeConstruct();</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <span class="comment">// 중복 바인딩 방지</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUSessionInfoWidget.html#a22e57e4bc7caedb331979b3448858fd0">Btn_Join</a>)</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    {</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        <a class="code hl_variable" href="classUSessionInfoWidget.html#a22e57e4bc7caedb331979b3448858fd0">Btn_Join</a>-&gt;<a class="code hl_variable" href="classUHoverButton.html#aa0342f25841a662df6599a83af1684b1">OnButtonClickedEvent</a>.RemoveDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUSessionInfoWidget.html#a1f92c0fccae94c61e9daa8a9fda4f523">USessionInfoWidget::OnClickJoin</a>);</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        <a class="code hl_variable" href="classUSessionInfoWidget.html#a22e57e4bc7caedb331979b3448858fd0">Btn_Join</a>-&gt;<a class="code hl_variable" href="classUHoverButton.html#aa0342f25841a662df6599a83af1684b1">OnButtonClickedEvent</a>.AddDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUSessionInfoWidget.html#a1f92c0fccae94c61e9daa8a9fda4f523">USessionInfoWidget::OnClickJoin</a>);</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    }</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>}</div>
 </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
-<div class="foldopen" id="foldopen00023" data-start="{" data-end="}">
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="classUSessionInfoWidget.html#a1f92c0fccae94c61e9daa8a9fda4f523">   23</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUSessionInfoWidget.html#a1f92c0fccae94c61e9daa8a9fda4f523">USessionInfoWidget::OnClickJoin</a>()</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>{</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="comment">// Game Instance 가져오자</span></div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <a class="code hl_class" href="classULingoGameInstance.html">ULingoGameInstance</a>* gi = Cast&lt;ULingoGameInstance&gt;(GetGameInstance());</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="comment">// sessionIdx 번째 세션에 참여</span></div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    gi-&gt;<a class="code hl_function" href="classULingoGameInstance.html#a0bdb0fd769fbe982dc2f5e033afbe789">JoinOtherSession</a>(<a class="code hl_variable" href="classUSessionInfoWidget.html#ad7b5ab7bdefcf1215521bca09f37f489">sessionIdx</a>);</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>}</div>
-</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
+<div class="foldopen" id="foldopen00024" data-start="{" data-end="}">
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="classUSessionInfoWidget.html#a1f92c0fccae94c61e9daa8a9fda4f523">   24</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUSessionInfoWidget.html#a1f92c0fccae94c61e9daa8a9fda4f523">USessionInfoWidget::OnClickJoin</a>()</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>{</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <span class="comment">// Game Instance 가져오자</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <a class="code hl_class" href="classULingoGameInstance.html">ULingoGameInstance</a>* gi = Cast&lt;ULingoGameInstance&gt;(GetGameInstance());</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="comment">// sessionIdx 번째 세션에 참여</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    gi-&gt;<a class="code hl_function" href="classULingoGameInstance.html#a0bdb0fd769fbe982dc2f5e033afbe789">JoinOtherSession</a>(<a class="code hl_variable" href="classUSessionInfoWidget.html#ad7b5ab7bdefcf1215521bca09f37f489">sessionIdx</a>);</div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
-<div class="foldopen" id="foldopen00031" data-start="{" data-end="}">
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="classUSessionInfoWidget.html#a1fcc55f0382d83ce9c94b83cc881d12f">   31</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUSessionInfoWidget.html#a1fcc55f0382d83ce9c94b83cc881d12f">USessionInfoWidget::SetSessionInfo</a>(int32 idx, FString sessionName)</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>{</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="comment">// 세션 순서 설정</span></div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <a class="code hl_variable" href="classUSessionInfoWidget.html#ad7b5ab7bdefcf1215521bca09f37f489">sessionIdx</a> = idx;</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="comment">// 세션 이름 설정</span></div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <a class="code hl_variable" href="classUSessionInfoWidget.html#a43cdf4dfd3bf7a87cf128adad830a7a6">Txt_SessionName</a>-&gt;SetText(FText::FromString(sessionName));</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>}</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    UDialogManager::Get(GetWorld())-&gt;ShowToast(TEXT(<span class="stringliteral">&quot;Session Join Success&quot;</span>));</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>}</div>
+</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="foldopen" id="foldopen00034" data-start="{" data-end="}">
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="classUSessionInfoWidget.html#a1fcc55f0382d83ce9c94b83cc881d12f">   34</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUSessionInfoWidget.html#a1fcc55f0382d83ce9c94b83cc881d12f">USessionInfoWidget::SetSessionInfo</a>(int32 idx, FString sessionName)</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>{</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="comment">// 세션 순서 설정</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <a class="code hl_variable" href="classUSessionInfoWidget.html#ad7b5ab7bdefcf1215521bca09f37f489">sessionIdx</a> = idx;</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="comment">// 세션 이름 설정</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <a class="code hl_variable" href="classUSessionInfoWidget.html#a43cdf4dfd3bf7a87cf128adad830a7a6">Txt_SessionName</a>-&gt;SetText(FText::FromString(sessionName));</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>}</div>
 </div>
 <div class="ttc" id="aSessionInfoWidget_8h_html"><div class="ttname"><a href="SessionInfoWidget_8h.html">SessionInfoWidget.h</a></div></div>
+<div class="ttc" id="aUDialogManager_8h_html"><div class="ttname"><a href="UDialogManager_8h.html">UDialogManager.h</a></div><div class="ttdoc">UDialogManager 클래스를 선언합니다.</div></div>
 <div class="ttc" id="aUHoverButton_8h_html"><div class="ttname"><a href="UHoverButton_8h.html">UHoverButton.h</a></div></div>
 <div class="ttc" id="aULingoGameInstance_8h_html"><div class="ttname"><a href="ULingoGameInstance_8h.html">ULingoGameInstance.h</a></div></div>
 <div class="ttc" id="aclassUHoverButton_html_aa0342f25841a662df6599a83af1684b1"><div class="ttname"><a href="classUHoverButton.html#aa0342f25841a662df6599a83af1684b1">UHoverButton::OnButtonClickedEvent</a></div><div class="ttdeci">FOnHoverButtonClickedEvent OnButtonClickedEvent</div><div class="ttdef"><b>Definition</b> <a href="UHoverButton_8h_source.html#l00045">UHoverButton.h:45</a></div></div>
 <div class="ttc" id="aclassULingoGameInstance_html"><div class="ttname"><a href="classULingoGameInstance.html">ULingoGameInstance</a></div><div class="ttdef"><b>Definition</b> <a href="ULingoGameInstance_8h_source.html#l00032">ULingoGameInstance.h:33</a></div></div>
 <div class="ttc" id="aclassULingoGameInstance_html_a0bdb0fd769fbe982dc2f5e033afbe789"><div class="ttname"><a href="classULingoGameInstance.html#a0bdb0fd769fbe982dc2f5e033afbe789">ULingoGameInstance::JoinOtherSession</a></div><div class="ttdeci">void JoinOtherSession(int32 sessionIdx)</div><div class="ttdef"><b>Definition</b> <a href="ULingoGameInstance_8cpp_source.html#l00262">ULingoGameInstance.cpp:262</a></div></div>
-<div class="ttc" id="aclassUSessionInfoWidget_html_a1f92c0fccae94c61e9daa8a9fda4f523"><div class="ttname"><a href="classUSessionInfoWidget.html#a1f92c0fccae94c61e9daa8a9fda4f523">USessionInfoWidget::OnClickJoin</a></div><div class="ttdeci">void OnClickJoin()</div><div class="ttdef"><b>Definition</b> <a href="SessionInfoWidget_8cpp_source.html#l00023">SessionInfoWidget.cpp:23</a></div></div>
-<div class="ttc" id="aclassUSessionInfoWidget_html_a1fcc55f0382d83ce9c94b83cc881d12f"><div class="ttname"><a href="classUSessionInfoWidget.html#a1fcc55f0382d83ce9c94b83cc881d12f">USessionInfoWidget::SetSessionInfo</a></div><div class="ttdeci">void SetSessionInfo(int32 idx, FString sessionName)</div><div class="ttdef"><b>Definition</b> <a href="SessionInfoWidget_8cpp_source.html#l00031">SessionInfoWidget.cpp:31</a></div></div>
+<div class="ttc" id="aclassUSessionInfoWidget_html_a1f92c0fccae94c61e9daa8a9fda4f523"><div class="ttname"><a href="classUSessionInfoWidget.html#a1f92c0fccae94c61e9daa8a9fda4f523">USessionInfoWidget::OnClickJoin</a></div><div class="ttdeci">void OnClickJoin()</div><div class="ttdef"><b>Definition</b> <a href="SessionInfoWidget_8cpp_source.html#l00024">SessionInfoWidget.cpp:24</a></div></div>
+<div class="ttc" id="aclassUSessionInfoWidget_html_a1fcc55f0382d83ce9c94b83cc881d12f"><div class="ttname"><a href="classUSessionInfoWidget.html#a1fcc55f0382d83ce9c94b83cc881d12f">USessionInfoWidget::SetSessionInfo</a></div><div class="ttdeci">void SetSessionInfo(int32 idx, FString sessionName)</div><div class="ttdef"><b>Definition</b> <a href="SessionInfoWidget_8cpp_source.html#l00034">SessionInfoWidget.cpp:34</a></div></div>
 <div class="ttc" id="aclassUSessionInfoWidget_html_a22e57e4bc7caedb331979b3448858fd0"><div class="ttname"><a href="classUSessionInfoWidget.html#a22e57e4bc7caedb331979b3448858fd0">USessionInfoWidget::Btn_Join</a></div><div class="ttdeci">class UHoverButton * Btn_Join</div><div class="ttdef"><b>Definition</b> <a href="SessionInfoWidget_8h_source.html#l00025">SessionInfoWidget.h:25</a></div></div>
 <div class="ttc" id="aclassUSessionInfoWidget_html_a43cdf4dfd3bf7a87cf128adad830a7a6"><div class="ttname"><a href="classUSessionInfoWidget.html#a43cdf4dfd3bf7a87cf128adad830a7a6">USessionInfoWidget::Txt_SessionName</a></div><div class="ttdeci">class UTextBlock * Txt_SessionName</div><div class="ttdef"><b>Definition</b> <a href="SessionInfoWidget_8h_source.html#l00022">SessionInfoWidget.h:22</a></div></div>
 <div class="ttc" id="aclassUSessionInfoWidget_html_ad7b5ab7bdefcf1215521bca09f37f489"><div class="ttname"><a href="classUSessionInfoWidget.html#ad7b5ab7bdefcf1215521bca09f37f489">USessionInfoWidget::sessionIdx</a></div><div class="ttdeci">int32 sessionIdx</div><div class="ttdef"><b>Definition</b> <a href="SessionInfoWidget_8h_source.html#l00033">SessionInfoWidget.h:33</a></div></div>
-<div class="ttc" id="aclassUSessionInfoWidget_html_af7f908a299b306fe470c54c65da8b61d"><div class="ttname"><a href="classUSessionInfoWidget.html#af7f908a299b306fe470c54c65da8b61d">USessionInfoWidget::NativeConstruct</a></div><div class="ttdeci">virtual void NativeConstruct() override</div><div class="ttdef"><b>Definition</b> <a href="SessionInfoWidget_8cpp_source.html#l00011">SessionInfoWidget.cpp:11</a></div></div>
+<div class="ttc" id="aclassUSessionInfoWidget_html_af7f908a299b306fe470c54c65da8b61d"><div class="ttname"><a href="classUSessionInfoWidget.html#af7f908a299b306fe470c54c65da8b61d">USessionInfoWidget::NativeConstruct</a></div><div class="ttdeci">virtual void NativeConstruct() override</div><div class="ttdef"><b>Definition</b> <a href="SessionInfoWidget_8cpp_source.html#l00012">SessionInfoWidget.cpp:12</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_55b064ed9f704d76d3805f2fda876350.html">UI</a></li><li class="navelem"><a class="el" href="dir_550f083bbe519bd985f450628c1369b6.html">Private</a></li><li class="navelem"><a class="el" href="SessionInfoWidget_8cpp.html">SessionInfoWidget.cpp</a></li>
-    <li class="footer">생성시간 : 수 12월 17 2025 23:46:59, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 목 12월 18 2025 05:19:58, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

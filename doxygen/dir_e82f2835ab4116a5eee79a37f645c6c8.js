@@ -4,6 +4,7 @@ var dir_e82f2835ab4116a5eee79a37f645c6c8 =
     [ "ChatInputBox.h", "ChatInputBox_8h.html", "ChatInputBox_8h" ],
     [ "ChatWidget.h", "ChatWidget_8h.html", "ChatWidget_8h" ],
     [ "CityNameWidget.h", "CityNameWidget_8h.html", "CityNameWidget_8h" ],
+    [ "CompassWidget.h", "CompassWidget_8h.html", "CompassWidget_8h" ],
     [ "DrawingBoardWidget.h", "DrawingBoardWidget_8h.html", "DrawingBoardWidget_8h" ],
     [ "LobbyWidget.h", "LobbyWidget_8h.html", "LobbyWidget_8h" ],
     [ "SessionInfoWidget.h", "SessionInfoWidget_8h.html", "SessionInfoWidget_8h" ],

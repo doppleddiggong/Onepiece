@@ -60,6 +60,7 @@ var hierarchy =
     [ "APlayerState", null, [
       [ "ALingoPlayerState", "classALingoPlayerState.html", null ]
     ] ],
+    [ "FCompassInfo", "structFCompassInfo.html", null ],
     [ "FComponentHelper", "structFComponentHelper.html", null ],
     [ "FDelayHandle", "structFDelayHandle.html", null ],
     [ "FEaseFloatTrack", "structFEaseFloatTrack.html", null ],
@@ -75,6 +76,7 @@ var hierarchy =
     [ "FInterviewData", "structFInterviewData.html", null ],
     [ "FInterviewQuestionData", "structFInterviewQuestionData.html", null ],
     [ "FListenAnswerData", "structFListenAnswerData.html", null ],
+    [ "FListenScoreDetail", "structFListenScoreDetail.html", null ],
     [ "FListenTargetData", "structFListenTargetData.html", null ],
     [ "FLogWriter", "classFLogWriter.html", null ],
     [ "FLuggageData", "structFLuggageData.html", null ],
@@ -89,6 +91,7 @@ var hierarchy =
     [ "FQuestSpeakInfo", "structFQuestSpeakInfo.html", null ],
     [ "FQuestWriteInfo", "structFQuestWriteInfo.html", null ],
     [ "FReadQuestResult", "structFReadQuestResult.html", null ],
+    [ "FReadScoreDetail", "structFReadScoreDetail.html", null ],
     [ "FReadTargetData", "structFReadTargetData.html", null ],
     [ "FRequestInterviewAnswer", "structFRequestInterviewAnswer.html", null ],
     [ "FRequestListenResult", "structFRequestListenResult.html", null ],
@@ -228,6 +231,7 @@ var hierarchy =
       [ "UChatWidget", "classUChatWidget.html", null ],
       [ "UCircularProgressBar", "classUCircularProgressBar.html", null ],
       [ "UCityNameWidget", "classUCityNameWidget.html", null ],
+      [ "UCompassWidget", "classUCompassWidget.html", null ],
       [ "UDespawnItem", "classUDespawnItem.html", null ],
       [ "UDialogWidget", "classUDialogWidget.html", null ],
       [ "UDrawingBoardWidget", "classUDrawingBoardWidget.html", null ],
