@@ -28,7 +28,7 @@ void UQuestInfoWidget::InitQuestInfo()
 	{
 		const FResponseReadScenario& ReadScenario = GS->GetReadScenarioData();
 
-		Txt_Message->SetText(FText::FromString("Press to view the text again."));
+		Txt_Message->SetText(FText::FromString("Place the object on the switch to open the gate"));
 		
 		// if (QuestRole == EQuestRole::Both)
 		// 	SetQuestText(ReadScenario.full_data);
@@ -41,7 +41,7 @@ void UQuestInfoWidget::InitQuestInfo()
 	{
 		const FResponseListenScenario& ListenScenario = GS->GetListenScenarioData();
 
-		Txt_Message->SetText(FText::FromString("Press to listen again"));
+		Txt_Message->SetText(FText::FromString("Place the object on the switch to open the gate"));
 		
 		// if (QuestRole == EQuestRole::Both)
 		// 	SetQuestText(ListenScenario.full_data);

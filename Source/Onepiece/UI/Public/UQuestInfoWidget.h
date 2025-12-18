@@ -31,11 +31,15 @@ private:
 	
 public:
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly, Category = "Style")
+	TObjectPtr<class UTextBlock> Txt_Title;
+
+	UPROPERTY(meta = (BindWidget), BlueprintReadOnly, Category = "Style")
 	TObjectPtr<class UTextBlock> Txt_Message;
 
 	UPROPERTY(meta = (BindWidgetOptional), BlueprintReadOnly, Category = "Style")
-	TObjectPtr<class UImage> Image_Synbol;
+	TObjectPtr<class UImage> Image_Symbol;
 
+	
 	FDelegateHandle QuestScenarioDataDelegateHandle;
 	FDelegateHandle ReadResultDelegateHandle;
 	FDelegateHandle ListenResultDelegateHandle;
