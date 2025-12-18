@@ -81,7 +81,7 @@ void AConveyorBelt::ServerRPC_ChangeConveyorMovement_Implementation()
 void AConveyorBelt::MulticastRPC_ChangeConveyorMovement_Implementation()
 {
 	bIsForward = !bIsForward;
-	PRINT_STRING(TEXT("%d"), bIsForward);
+	// PRINT_STRING(TEXT("%d"), bIsForward);
 }
 
 void AConveyorBelt::ChangeConveyorSpeed(float NewSpeed)
