@@ -241,6 +241,7 @@ void APlayerActor::CreateMainWidget()
 			if (PC->HasUserInfo() )
 			{
 				MainWidget->UpdateStateWidget( PC->GetUserId(), PC->GetUserName());
+				MainWidget->UpdateChatWidget();
 				return;
 			}
 
@@ -252,6 +253,7 @@ void APlayerActor::CreateMainWidget()
 				{
 					MainWidget->UpdateStateWidget( PC->GetUserId(), PC->GetUserName());
 				}
+				MainWidget->UpdateChatWidget();
 			}, 0.5f, false);
 		}
 	}

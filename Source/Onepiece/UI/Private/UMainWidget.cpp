@@ -103,6 +103,11 @@ void UMainWidget::SendChatMessage(FResponseUserMe sendUser,const FText& inMessag
 	ChatWidget->SendMessage(sendUser, inMessage);
 }
 
+void UMainWidget::SetFocusOnChat()
+{
+	ChatWidget->FocusInput();
+}
+
 void UMainWidget::UpdateTimerDisplay() const
 {
 	if (!CachedGameState || !PlayTimer)
@@ -181,6 +186,11 @@ bool UMainWidget::CanShowSpeakWidget( ASpeakStageActor*& OutSpeakStage,	ALingoPl
 		return false;
 
 	return (OutLocalPlayerState == CurrentSpeaker);
+}
+
+void UMainWidget::UpdateChatWidget()
+{
+	ChatWidget->SetVisibility(ESlateVisibility::Visible);
 }
 
 void UMainWidget::FadeOut(float Duration)

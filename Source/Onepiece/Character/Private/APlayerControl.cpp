@@ -46,6 +46,7 @@
 #define IA_RUN_PATH					TEXT("/Game/CustomContents/Input/IA_Game_Run.IA_Game_Run")
 #define IA_INFO_PATH				TEXT("/Game/CustomContents/Input/IA_Game_Info.IA_Game_Info")
 #define IA_HOOK_PATH				TEXT("/Game/CustomContents/Input/IA_Game_Hook.IA_Game_Hook")
+#define IA_CHAT_PATH				TEXT("/Game/CustomContents/Input/IA_EnterChat.IA_EnterChat")
 
 
 APlayerControl::APlayerControl()
@@ -61,6 +62,7 @@ APlayerControl::APlayerControl()
 	IA_Run = FComponentHelper::LoadAsset<UInputAction>(IA_RUN_PATH);
 	IA_Info = FComponentHelper::LoadAsset<UInputAction>(IA_INFO_PATH);
 	IA_Hook = FComponentHelper::LoadAsset<UInputAction>(IA_HOOK_PATH);
+	IA_Chat = FComponentHelper::LoadAsset<UInputAction>(IA_CHAT_PATH);
 
 	TutorialComponent = CreateDefaultSubobject<UTutorialComponent>(TEXT("TutorialComponent"));
 }
@@ -111,6 +113,8 @@ void APlayerControl::SetupInputComponent()
 		EIC->BindAction(IA_Info, ETriggerEvent::Started, this, &APlayerControl::OnInfo);
 		
 		EIC->BindAction(IA_Hook, ETriggerEvent::Started, this, &APlayerControl::OnHook);
+		
+		EIC->BindAction(IA_Chat, ETriggerEvent::Started, this, &APlayerControl::OnChat);
 	}
 }
 
@@ -280,6 +284,16 @@ void APlayerControl::Server_OnInteract_Implementation()
 void APlayerControl::OnHook(const FInputActionValue& Value)
 {
 	Server_OnHook();
+}
+
+void APlayerControl::OnChat(const FInputActionValue& Value)
+{
+	// GameAndUI로??
+	FInputModeUIOnly uiInputMode;
+	SetInputMode(uiInputMode);
+	
+	APlayerActor* player = Cast<APlayerActor>(GetPawn());
+	player->GetMainWidget()->SetFocusOnChat();
 }
 
 void APlayerControl::Server_OnHook_Implementation()
