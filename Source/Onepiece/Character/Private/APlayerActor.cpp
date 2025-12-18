@@ -186,6 +186,19 @@ void APlayerActor::GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& O
 	DOREPLIFETIME(APlayerActor, AnotherValue);
 }
 
+bool APlayerActor::IsControlEnabled() const
+{
+	// 팝업이 열려있고 조작을 차단해야 하면 false 반환
+	if (UPopupManager* PopupMgr = UPopupManager::Get(GetWorld()))
+	{
+		if (PopupMgr->ShouldBlockPlayerControl())
+			return false;
+	}
+
+	// 팝업이 없거나 조작 허용 팝업이면 true 반환
+	return true;
+}
+
 bool APlayerActor::IsMainMap()
 {
 	FString MapName = GetWorld()->GetMapName();
@@ -369,11 +382,17 @@ void APlayerActor::Cmd_StopMove_Implementation()
 
 void APlayerActor::Cmd_Run_Implementation()
 {
+	if (!IsControlEnabled())
+		return;
+
 	ServerRPC_DoRun();
 }
 
 void APlayerActor::Cmd_Move_Implementation(const FVector2D& Axis)
 {
+	if (!IsControlEnabled())
+		return;
+
 	if ( !Controller)
 	{
 		return;
@@ -391,7 +410,7 @@ void APlayerActor::Cmd_Move_Implementation(const FVector2D& Axis)
 		// Calculate forward and right vectors based on the Yaw rotation.
 		const FVector ForwardDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::X);
 		const FVector RightDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::Y);
-	
+
 		AddMovementInput(ForwardDirection, Axis.Y);
 		AddMovementInput(RightDirection, Axis.X);
 	}
@@ -399,17 +418,26 @@ void APlayerActor::Cmd_Move_Implementation(const FVector2D& Axis)
 
 void APlayerActor::Cmd_Look_Implementation(const FVector2D& Axis)
 {
+	if (!IsControlEnabled())
+		return;
+
 	AddControllerYawInput(Axis.X);
 	AddControllerPitchInput(Axis.Y);
 }
 
 void APlayerActor::Cmd_Jump_Implementation()
 {
+	if (!IsControlEnabled())
+		return;
+
 	ServerRPC_DoJumpStart();
 }
 
 void APlayerActor::Cmd_RecordStart_Implementation()
 {
+	if (!IsControlEnabled())
+		return;
+
 	VoiceConversationSystem->StartRecording();
 }
 
@@ -420,6 +448,9 @@ void APlayerActor::Cmd_RecordEnd_Implementation()
 
 void APlayerActor::Cmd_Info_Implementation()
 {
+	if (!IsControlEnabled())
+		return;
+
 	auto GS = ULingoGameHelper::GetLingoGameState(GetWorld());
 	auto PS = GetPlayerState<ALingoPlayerState>();
 
@@ -440,7 +471,7 @@ void APlayerActor::Cmd_Info_Implementation()
 		if (auto Popup = UPopupManager::ShowPopupAs<UPopup_ReadQuest>(GetWorld(), EPopupType::ReadQuest))
 			Popup->InitRead(GS->ReadScenarioData);
 	}
-	else
+	else if ( GS->GetCurrentQuestType() == EQuestType::Listen)
 	{
 		auto QuestRole = GetQuestRole();
 

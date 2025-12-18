@@ -65,4 +65,13 @@ protected:
 	/** 애니메이션 중심점 (0~1 범위) */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Popup|Animation")
 	FVector2D OpenPivot = FVector2D(0.5f, 0.5f);
+
+public:
+	/**
+	 * @brief 이 팝업이 활성화되어 있을 때 플레이어 조작을 허용할지 여부
+	 * @details true면 이 팝업이 열려있어도 플레이어가 캐릭터를 조작할 수 있습니다.
+	 *          기본값은 false (대부분의 팝업은 플레이어 조작을 차단)
+	 */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Popup|Control")
+	bool bAllowPlayerControl = false;
 };

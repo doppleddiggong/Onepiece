@@ -207,6 +207,28 @@ int32 UPopupManager::GetPopupStackCount() const
 	return PopupStack.Num();
 }
 
+bool UPopupManager::ShouldBlockPlayerControl() const
+{
+	// 팝업이 없으면 조작 허용
+	if (PopupStack.Num() == 0)
+		return false;
+
+	// 현재 팝업 위젯 가져오기
+	UUserWidget* CurrentWidget = GetCurrentPopupWidget();
+	if (!CurrentWidget)
+		return false;
+
+	// UBasePopup으로 캐스팅하여 bAllowPlayerControl 확인
+	if (UBasePopup* BasePopup = Cast<UBasePopup>(CurrentWidget))
+	{
+		// bAllowPlayerControl이 true면 조작 허용 (차단하지 않음)
+		return !BasePopup->bAllowPlayerControl;
+	}
+
+	// UBasePopup이 아닌 팝업은 기본적으로 조작 차단
+	return true;
+}
+
 // ========================================
 // 메시지 박스 전용 함수
 // ========================================

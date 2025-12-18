@@ -157,7 +157,12 @@ public:
 
 	void RequestListenAudio(const FString& AudioText);
 	void RequestSpeakAudio(const FString& AudioText);
-	
+
+	/// @brief 플레이어 조작이 가능한지 확인합니다
+	/// @return true면 조작 가능, false면 팝업으로 인해 조작 차단됨
+	/// @details 팝업이 열려있고 해당 팝업이 플레이어 조작을 차단하는 경우 false 반환
+	bool IsControlEnabled() const;
+
 private:
 	bool IsMainMap();
 

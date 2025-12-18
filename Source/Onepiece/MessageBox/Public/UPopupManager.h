@@ -180,6 +180,14 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Popup")
 	int32 GetPopupStackCount() const;
 
+	/**
+	 * @brief 현재 팝업이 플레이어 조작을 차단해야 하는지 확인
+	 * @return true면 플레이어 조작을 차단해야 함, false면 조작 허용
+	 * @details 팝업이 없거나, 현재 팝업이 bAllowPlayerControl=true면 false 반환
+	 */
+	UFUNCTION(BlueprintCallable, Category = "Popup")
+	bool ShouldBlockPlayerControl() const;
+
 	// ========================================
 	// 메시지 박스 전용 함수 (편의 함수)
 	// ========================================
