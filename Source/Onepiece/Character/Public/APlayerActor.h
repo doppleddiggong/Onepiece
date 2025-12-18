@@ -31,6 +31,8 @@ protected:
 	virtual void GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const override;
 
 	virtual void PossessedBy(AController* NewController) override;
+
+	virtual void Tick(float DeltaTime) override;
 	
 	virtual void OnRep_Controller() override;
 

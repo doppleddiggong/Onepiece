@@ -101,6 +101,11 @@ protected:
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
 	TObjectPtr<class UChatWidget> ChatWidget;
 
+public:
+	/// @breif Compass
+	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
+	TObjectPtr<class UCompassWidget> CompassWidget;
+
 private:
 	/// @brief 훅 타겟 감지 시 이미지 (파란색)
 	UPROPERTY(EditDefaultsOnly, Category = "Hook")
