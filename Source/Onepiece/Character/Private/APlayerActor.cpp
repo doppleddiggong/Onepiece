@@ -11,6 +11,8 @@
 #include "FComponentHelper.h"
 
 // Shared
+#include <functional>
+
 #include "GameLogging.h"
 #include "InputCoreTypes.h"
 #include "UDialogManager.h"
@@ -23,6 +25,7 @@
 #include "ALingoGameState.h"
 #include "APlayerControl.h"
 #include "ASpeakStageActor.h"
+#include "CompassWidget.h"
 #include "UToastWidget.h"
 #include "UBroadcastManager.h"
 #include "UFadeWidget.h"
@@ -49,7 +52,7 @@
 
 APlayerActor::APlayerActor()
 {
-	PrimaryActorTick.bCanEverTick = false;
+	PrimaryActorTick.bCanEverTick = true;
 	
 	GetCapsuleComponent()->InitCapsuleSize(45.f, 102.0f);
 	GetMesh()->SetRelativeLocationAndRotation(FVector(0, 0, -100), FRotator(0, -90, 0));
@@ -275,6 +278,19 @@ void APlayerActor::PossessedBy(AController* NewController)
 	AnotherValue = (PlayerIndex == 0) ? 0.0f : 1.0f;
 
 	ApplyAnotherValue();
+}
+
+void APlayerActor::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+
+	if (MainWidget)
+	{
+		UCompassWidget* Compass = MainWidget->CompassWidget;
+		float CameraRotationZ = FollowCamera->GetComponentRotation().Yaw;
+		
+		Compass->RotateCompass(CameraRotationZ);
+	}
 }
 
 void APlayerActor::OnRep_Controller()
