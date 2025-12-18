@@ -9,6 +9,7 @@
 #include "APlayerActor.h"
 #include "IControllable.h"
 #include "UMainWidget.h"
+#include "UQuestInfoWidget.h"
 #include "AWheatly.h"
 #include "UKLingoNetworkSystem.h"
 
@@ -35,6 +36,7 @@
 #include "UPopupManager.h"
 #include "UPopup_SpeakQuest.h"
 #include "UPopup_SpeakResult.h"
+#include "Onepiece/Onepiece.h"
 
 #define IMC_DEFAULT_PATH			TEXT("/Game/CustomContents/Input/IMC_Game_Player.IMC_Game_Player")
 #define IA_MOVE_PATH				TEXT("/Game/CustomContents/Input/IA_Game_Movement.IA_Game_Movement")
@@ -86,6 +88,12 @@ void APlayerControl::BeginPlay()
 	{
 		UserInfo = ULingoGameInstanceSubsystem::Get(GetWorld())->GetUserInfo();
 		Server_SetUserInfo(UserInfo);
+	}
+
+	// 서버에서만 DoorMessage 구독
+	if (HasAuthority())
+	{
+		UBroadcastManager::Get(GetWorld())->OnDoorMessage.AddDynamic(this, &APlayerControl::OnDoorMessage);
 	}
 }
 
@@ -452,6 +460,12 @@ void APlayerControl::Server_SyncSpeakScenarioData_Implementation(AWheatly* Wheat
 		return;
 	}
 
+	// SpeakQuest 진행 상태 설정
+	if (ALingoPlayerState* PS = GetPlayerState<ALingoPlayerState>())
+	{
+		PS->SetSpeakQuestIng(true);
+	}
+
 	// Wheatly에 데이터 전달 (Server에서 실행됨)
 	Wheatly->SyncSpeakScenarioData(PlayerActor, Data);
 
@@ -574,5 +588,131 @@ void APlayerControl::ServerRPC_SendChat_Implementation(const FText& inMessage)
 	{
 		// PRINTLOG(TEXT("[SendChat] APlayerControl::ServerRPC_SendChat: %s"), *inMessage.ToString());
 		GS->MulticastRPC_SendChat(UserInfo, inMessage);
+	}
+}
+
+void APlayerControl::OnDoorMessage(int32 InDoorIndex, bool bInOpen)
+{
+	// 서버에서만 실행
+	if (!HasAuthority())
+		return;
+
+	// 문이 열릴 때만 처리
+	if (!bInOpen)
+		return;
+
+	// PlayerState 가져오기
+	ALingoPlayerState* PS = GetPlayerState<ALingoPlayerState>();
+	if (!PS)
+		return;
+
+	// End DoorIndex에 따라 퀘스트 완료 처리
+	if (InDoorIndex == DoorGroup::Step1_End)
+	{
+		PS->SetReadQuestCompleted();
+	}
+	else if (InDoorIndex == DoorGroup::Step2_End)
+	{
+		PS->SetListenQuestCompleted();
+	}
+	else if (InDoorIndex == DoorGroup::Step3_End)
+	{
+		PS->SetSpeakQuestCompleted();
+	}
+	else if (InDoorIndex == DoorGroup::Step4_End)
+	{
+		PS->SetWriteQuestCompleted();
+	}
+}
+
+void APlayerControl::UpdateQuestInfoWidget()
+{
+	// PlayerActor 가져오기
+	APlayerActor* PlayerActor = Cast<APlayerActor>(GetPawn());
+	if (!PlayerActor)
+		return;
+
+	// MainWidget 가져오기
+	UMainWidget* MainWidget = PlayerActor->GetMainWidget();
+	if (!MainWidget)
+		return;
+
+	// QuestInfoWidget 가져오기
+	UQuestInfoWidget* QuestWidget = MainWidget->GetQuestInfoWidget();
+	if (!QuestWidget)
+		return;
+
+	// PlayerState 가져오기
+	ALingoPlayerState* PS = GetPlayerState<ALingoPlayerState>();
+	if (!PS)
+		return;
+
+	// 퀘스트 상태 확인 및 위젯 업데이트
+	FString Title;
+	FString Description;
+	bool bShouldShow = false;
+
+	// ReadQuest 상태 확인
+	if (PS->bReadQuestIng && !PS->bReadQuestCompleted)
+	{
+		Title = TEXT("Mission Goal");
+		Description = TEXT("Place the object on the switch to open the gate");
+		bShouldShow = true;
+	}
+	else if (PS->bReadQuestCompleted && !PS->bListenQuestIng)
+	{
+		Title = TEXT("Move Food Court");
+		Description = TEXT("Move Food Court With Friend");
+		bShouldShow = true;
+	}
+	// ListenQuest 상태 확인
+	else if (PS->bListenQuestIng && !PS->bListenQuestCompleted)
+	{
+		Title = TEXT("Move Next Goal");
+		Description = TEXT("Place the object on the switch to open the gate");
+		bShouldShow = true;
+	}
+	else if (PS->bListenQuestCompleted && !PS->bSpeakQuestIng)
+	{
+		Title = TEXT("Move Jugdes");
+		Description = TEXT("Move Judes And Talk");
+		bShouldShow = true;
+	}
+	// SpeakQuest 상태 확인
+	else if (PS->bSpeakQuestIng && !PS->bSpeakQuestCompleted)
+	{
+		Title = TEXT("Press V Key And Talk");
+		Description = TEXT("Answer Judes Question");
+		bShouldShow = true;
+	}
+	else if (PS->bSpeakQuestCompleted && !PS->bWriteQuestIng)
+	{
+		// Speak 종료 후 바로 Write로 이어지는 경우 처리
+		// 잠시 숨김 처리 (또는 다른 메시지 표시)
+		bShouldShow = false;
+	}
+	// WriteQuest 상태 확인
+	else if (PS->bWriteQuestIng && !PS->bWriteQuestCompleted)
+	{
+		Title = TEXT("Move Paper");
+		Description = TEXT("Find Wirte Kiosk And Interaction");
+		bShouldShow = true;
+	}
+	else if (PS->bWriteQuestCompleted)
+	{
+		Title = TEXT("Move End Point");
+		Description = TEXT("Get Evalution");
+		bShouldShow = true;
+	}
+
+	// 위젯 업데이트
+	if (bShouldShow)
+	{
+		QuestWidget->UpdateQuestText(Title, Description);
+		QuestWidget->SetVisibility(ESlateVisibility::Visible);
+	}
+	else
+	{
+		QuestWidget->SetVisibility(ESlateVisibility::Collapsed);
 	}
 }

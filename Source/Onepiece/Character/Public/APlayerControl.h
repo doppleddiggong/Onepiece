@@ -58,6 +58,10 @@ protected:
     virtual void BeginPlay() override;
     virtual void SetupInputComponent() override;
 
+	/// @brief DoorMessage 이벤트 핸들러
+	UFUNCTION()
+	void OnDoorMessage(int32 InDoorIndex, bool bInOpen);
+
 	// --- Input Assets ---
 	UPROPERTY(EditDefaultsOnly, Category="Input")
 	TObjectPtr<class UInputMappingContext> IMC_Default;	
@@ -120,6 +124,12 @@ private:
 
 	void RequestSpeakResult();
 	void OnResponseSpeakResult(FResponseSpeakResult& ResponseData, bool bWasSuccessful);
+
+public:
+	/// @brief 퀘스트 상태에 따라 QuestInfoWidget 업데이트
+	void UpdateQuestInfoWidget();
+
+private:
 	
 	void TEST_DropperDropProcess();
 	void TEST_AddItemToBoxList();

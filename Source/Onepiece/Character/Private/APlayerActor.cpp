@@ -11,8 +11,6 @@
 #include "FComponentHelper.h"
 
 // Shared
-#include <functional>
-
 #include "GameLogging.h"
 #include "InputCoreTypes.h"
 #include "UDialogManager.h"
@@ -146,20 +144,20 @@ void APlayerActor::BeginPlay()
 		DM->OnTeleport.RemoveDynamic(this, &APlayerActor::OnTeleportAllPlayers);
 		DM->OnTeleport.AddDynamic(this, &APlayerActor::OnTeleportAllPlayers);
 
-		DM->OnUpdateQuestRole.RemoveDynamic(this, &APlayerActor::OnUpdateQuestRole);
-		DM->OnUpdateQuestRole.AddDynamic(this, &APlayerActor::OnUpdateQuestRole);
+		// DM->OnUpdateQuestRole.RemoveDynamic(this, &APlayerActor::OnUpdateQuestRole);
+		// DM->OnUpdateQuestRole.AddDynamic(this, &APlayerActor::OnUpdateQuestRole);
 	}
 
 	if (auto GS = ULingoGameHelper::GetLingoGameState(GetWorld()))
 	{
-		GS->OnQuestScenarioDataUpdated.RemoveDynamic(this, &APlayerActor::OnUpdateQuestInfo);
-		GS->OnQuestScenarioDataUpdated.AddDynamic(this, &APlayerActor::OnUpdateQuestInfo);
-
-		GS->OnReadResultUpdated.RemoveDynamic(this, &APlayerActor::OnReadResultUpdated);
-		GS->OnReadResultUpdated.AddDynamic(this, &APlayerActor::OnReadResultUpdated);
-
-		GS->OnListenResultUpdated.RemoveDynamic(this, &APlayerActor::OnListenResultUpdated);
-		GS->OnListenResultUpdated.AddDynamic(this, &APlayerActor::OnListenResultUpdated);
+		// GS->OnQuestScenarioDataUpdated.RemoveDynamic(this, &APlayerActor::OnUpdateQuestInfo);
+		// GS->OnQuestScenarioDataUpdated.AddDynamic(this, &APlayerActor::OnUpdateQuestInfo);
+		//
+		// GS->OnReadResultUpdated.RemoveDynamic(this, &APlayerActor::OnReadResultUpdated);
+		// GS->OnReadResultUpdated.AddDynamic(this, &APlayerActor::OnReadResultUpdated);
+		//
+		// GS->OnListenResultUpdated.RemoveDynamic(this, &APlayerActor::OnListenResultUpdated);
+		// GS->OnListenResultUpdated.AddDynamic(this, &APlayerActor::OnListenResultUpdated);
 
 		GS->OnRoomIdUpdated.RemoveDynamic(this, &APlayerActor::OnRoomIdUpdated);
 		GS->OnRoomIdUpdated.AddDynamic(this, &APlayerActor::OnRoomIdUpdated);
@@ -357,6 +355,10 @@ void APlayerActor::ApplyAnotherValue()
 		if (DynamicMaterial)
 			DynamicMaterial->SetScalarParameterValue(FName("Another"), AnotherValue);
 	}
+
+
+	auto PS = GetPlayerState<ALingoPlayerState>();
+	PS->RefreshQuestState();
 }
 
 void APlayerActor::RecoveryMovementMode(const EMovementMode InMovementMode)
@@ -722,35 +724,35 @@ void APlayerActor::OnFadeOutCompleteForTeleport()
 	MainWidget->FadeIn(0.5f);
 }
 
-void APlayerActor::OnUpdateQuestInfo()
-{
-	if (!IsLocallyControlled())
-		return;
-	MainWidget->GetQuestInfoWidget()->InitQuestInfo();
-}
-
-void APlayerActor::OnUpdateQuestRole(EQuestRole QuestRole)
-{
-	if (!IsLocallyControlled())
-		return;
-	MainWidget->GetQuestInfoWidget()->InitQuestInfo();
-}
-
-void APlayerActor::OnReadResultUpdated(const FResponseReadResult& Result)
-{
-	if (!IsLocallyControlled())
-		return;
-	
-	MainWidget->GetQuestInfoWidget()->SetVisibility(ESlateVisibility::Collapsed);
-}
-
-void APlayerActor::OnListenResultUpdated( const FResponseListenResult& Result)
-{
-	if (!IsLocallyControlled())
-		return;
-	
-	MainWidget->GetQuestInfoWidget()->SetVisibility(ESlateVisibility::Collapsed);
-}
+// void APlayerActor::OnUpdateQuestInfo()
+// {
+// 	if (!IsLocallyControlled())
+// 		return;
+// 	MainWidget->GetQuestInfoWidget()->InitQuestInfo();
+// }
+//
+// void APlayerActor::OnUpdateQuestRole(EQuestRole QuestRole)
+// {
+// 	if (!IsLocallyControlled())
+// 		return;
+// 	MainWidget->GetQuestInfoWidget()->InitQuestInfo();
+// }
+//
+// void APlayerActor::OnReadResultUpdated(const FResponseReadResult& Result)
+// {
+// 	if (!IsLocallyControlled())
+// 		return;
+// 	
+// 	MainWidget->GetQuestInfoWidget()->SetVisibility(ESlateVisibility::Collapsed);
+// }
+//
+// void APlayerActor::OnListenResultUpdated( const FResponseListenResult& Result)
+// {
+// 	if (!IsLocallyControlled())
+// 		return;
+// 	
+// 	MainWidget->GetQuestInfoWidget()->SetVisibility(ESlateVisibility::Collapsed);
+// }
 
 void APlayerActor::OnRoomIdUpdated(int64 NewRoomId)
 {

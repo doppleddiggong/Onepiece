@@ -42,6 +42,12 @@ private:
 	
 protected:
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
+	TObjectPtr<class UTextBlock> Txt_Title;
+
+	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
+	TObjectPtr<class UImage> Image_Symbol;
+
+	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
 	TObjectPtr<class UImageButton> Btn_Confirm;
 	
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
