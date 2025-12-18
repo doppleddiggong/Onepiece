@@ -12,15 +12,17 @@ void UPopup_LevelSelect::NativeConstruct()
 {
 	Super::NativeConstruct();
 
+
+}
+
+void UPopup_LevelSelect::InitPopup()
+{
 	if (Btn_Close)
 	{
 		Btn_Close->OnButtonClickedEvent.RemoveDynamic(this, &UPopup_LevelSelect::OnClickClose);
 		Btn_Close->OnButtonClickedEvent.AddDynamic(this, &UPopup_LevelSelect::OnClickClose);
 	}
-}
-
-void UPopup_LevelSelect::InitPopup()
-{
+	
 	// 기존 아이템들 제거
 	HorizontalBox->ClearChildren();
 

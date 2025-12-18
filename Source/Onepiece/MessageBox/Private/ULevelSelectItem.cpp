@@ -6,6 +6,7 @@
 #include "Components/TextBlock.h"
 #include "Components/VerticalBox.h"
 #include "UImageButton.h"
+#include "Components/Spacer.h"
 
 void ULevelSelectItem::NativeConstruct()
 {
@@ -45,6 +46,13 @@ void ULevelSelectItem::CreateAnimalGroup()
 	{
 		WordGroup->InitGroup(EWordType::Animal, Level);
 		VerticalBox->AddChildToVerticalBox(WordGroup);
+
+		USpacer* Spacer = NewObject<USpacer>(this);
+		if (Spacer)
+		{
+			Spacer->SetSize(FVector2D(0.0f, 15.0f));
+			VerticalBox->AddChildToVerticalBox(Spacer);
+		}
 	}
 }
 
@@ -55,6 +63,13 @@ void ULevelSelectItem::CreateColorGroup()
 	{
 		WordGroup->InitGroup(EWordType::Color, Level);
 		VerticalBox->AddChildToVerticalBox(WordGroup);
+
+		USpacer* Spacer = NewObject<USpacer>(this);
+		if (Spacer)
+		{
+			Spacer->SetSize(FVector2D(0.0f, 15.0f));
+			VerticalBox->AddChildToVerticalBox(Spacer);
+		}
 	}
 }
 
@@ -65,6 +80,13 @@ void ULevelSelectItem::CreateRegionGroup()
 	{
 		WordGroup->InitGroup(EWordType::Region, Level);
 		VerticalBox->AddChildToVerticalBox(WordGroup);
+
+		USpacer* Spacer = NewObject<USpacer>(this);
+		if (Spacer)
+		{
+			Spacer->SetSize(FVector2D(0.0f, 15.0f));
+			VerticalBox->AddChildToVerticalBox(Spacer);
+		}
 	}
 }
 

@@ -37,6 +37,8 @@ protected:
 	 * @param SelectedLevelName 선택된 레벨 이름
 	 */
 	void OnLevelSelected(int32 SelectedLevel, const FString& SelectedLevelName);
+
+	UFUNCTION()
 	void OnClickClose();
 
 public:

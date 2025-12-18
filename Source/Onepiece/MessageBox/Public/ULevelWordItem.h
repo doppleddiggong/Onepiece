@@ -24,6 +24,31 @@ public:
 	 */
 	void SetItemColor(bool bIsCurrentLevel);
 
+protected:
+	/**
+	 * @brief 긴 텍스트를 축약하여 반환 (방법 2: 단순 절삭)
+	 * @param OriginalText 원본 텍스트
+	 * @param MaxLength 최대 길이
+	 * @return 축약된 텍스트
+	 */
+	FString TruncateText(const FString& OriginalText, int32 MaxLength = 12);
+
+	/**
+	 * @brief ScaleBox를 사용한 텍스트 크기 자동 조절 (방법 1)
+	 */
+	void ApplyScaleBoxMode();
+
+	/**
+	 * @brief 텍스트 절삭 방식 적용 (방법 2)
+	 * @param Text 표시할 텍스트
+	 */
+	void ApplyTruncateMode(const FString& Text);
+
+public:
+	/** 텍스트 처리 방식 (true: ScaleBox 사용, false: 단순 절삭) */
+	UPROPERTY(EditAnywhere, Category = "LevelWordItem")
+	bool bUseScaleBox = false;
+
 public:
 	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<class UImage> Image_Target;
