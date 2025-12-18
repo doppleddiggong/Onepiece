@@ -18,8 +18,10 @@ class ONEPIECE_API UChatInputBox : public UUserWidget
 	
 public:
 	virtual void NativeOnInitialized() override;
+	virtual void NativeOnFocusLost(const FFocusEvent& InFocusEvent) override;
 	virtual FReply NativeOnPreviewKeyDown(const FGeometry& InGeometry, const FKeyEvent& InKeyEvent) override;
 	FText FlushMessage();
+	void FocusInput();
 	
 protected:
 	UPROPERTY(meta=(BindWidget))

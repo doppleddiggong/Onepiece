@@ -15,6 +15,17 @@ void UChatInputBox::NativeOnInitialized()
 	Button_Send->OnClicked.AddDynamic(this, &UChatInputBox::HandleSendClicked);
 }
 
+void UChatInputBox::NativeOnFocusLost(const FFocusEvent& InFocusEvent)
+{
+	Super::NativeOnFocusLost(InFocusEvent);
+	
+	if (APlayerControl* PC = Cast<APlayerControl>(GetOwningPlayer()))
+	{
+		FInputModeGameOnly inputMode;
+		PC->SetInputMode(inputMode);
+	}
+}
+
 FReply UChatInputBox::NativeOnPreviewKeyDown(const FGeometry& InGeometry, const FKeyEvent& InKeyEvent)
 {
 	// Enter 키 감지 & Shift+Enter는 줄바꿈 허용
@@ -31,9 +42,15 @@ FText UChatInputBox::FlushMessage()
 {
 	// message에 저장 & 텍스트 칸 비우기
 	FText message = MultiLineEditableTextBox_Input->GetText();
+	
 	MultiLineEditableTextBox_Input->SetText(FText::GetEmpty());
 	
 	return message;
+}
+
+void UChatInputBox::FocusInput()
+{
+	MultiLineEditableTextBox_Input->SetKeyboardFocus();
 }
 
 void UChatInputBox::HandleSendClicked()
