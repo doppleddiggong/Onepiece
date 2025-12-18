@@ -123,6 +123,22 @@ public:
 	UFUNCTION(BlueprintPure, Category = "WriteQuest")
 	bool IsWriteQuestCompleted() const { return bWriteQuestCompleted; }
 
+	/// @brief ReadQuest 진행 상태 설정 (서버에서만 호출)
+	UFUNCTION(BlueprintCallable, Category = "ReadQuest")
+	void SetReadQuestIng(bool bInProgress);
+
+	/// @brief ListenQuest 진행 상태 설정 (서버에서만 호출)
+	UFUNCTION(BlueprintCallable, Category = "ListenQuest")
+	void SetListenQuestIng(bool bInProgress);
+
+	/// @brief SpeakQuest 진행 상태 설정 (서버에서만 호출)
+	UFUNCTION(BlueprintCallable, Category = "SpeakQuest")
+	void SetSpeakQuestIng(bool bInProgress);
+
+	/// @brief WriteQuest 진행 상태 설정 (서버에서만 호출)
+	UFUNCTION(BlueprintCallable, Category = "WriteQuest")
+	void SetWriteQuestIng(bool bInProgress);
+
 	/// @brief SpeakScenarioData 복제 알림 함수
 	UFUNCTION()
 	void OnRep_SpeakScenarioData();

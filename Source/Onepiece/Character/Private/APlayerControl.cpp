@@ -6,7 +6,6 @@
  */
 #include "APlayerControl.h"
 
-#include "Onepiece.h"
 #include "APlayerActor.h"
 #include "IControllable.h"
 #include "UMainWidget.h"
@@ -36,6 +35,7 @@
 #include "UPopupManager.h"
 #include "UPopup_SpeakQuest.h"
 #include "UPopup_SpeakResult.h"
+#include "Onepiece/Onepiece.h"
 
 #define IMC_DEFAULT_PATH			TEXT("/Game/CustomContents/Input/IMC_Game_Player.IMC_Game_Player")
 #define IA_MOVE_PATH				TEXT("/Game/CustomContents/Input/IA_Game_Movement.IA_Game_Movement")
@@ -443,6 +443,12 @@ void APlayerControl::Server_SyncSpeakScenarioData_Implementation(AWheatly* Wheat
 	{
 		PRINTLOG(TEXT("[APlayerControl] Server_SyncSpeakScenarioData: PlayerActor is null"));
 		return;
+	}
+
+	// SpeakQuest 진행 상태 설정
+	if (ALingoPlayerState* PS = GetPlayerState<ALingoPlayerState>())
+	{
+		PS->SetSpeakQuestIng(true);
 	}
 
 	// Wheatly에 데이터 전달 (Server에서 실행됨)

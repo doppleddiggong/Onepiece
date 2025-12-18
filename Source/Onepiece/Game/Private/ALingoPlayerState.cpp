@@ -245,3 +245,43 @@ void ALingoPlayerState::SetWriteQuestCompleted()
 
 	RefreshQuestState();
 }
+
+void ALingoPlayerState::SetReadQuestIng(bool bInProgress)
+{
+	if (!HasAuthority())
+		return;
+
+	bReadQuestIng = bInProgress;
+
+	RefreshQuestState();
+}
+
+void ALingoPlayerState::SetListenQuestIng(bool bInProgress)
+{
+	if (!HasAuthority())
+		return;
+
+	bListenQuestIng = bInProgress;
+
+	RefreshQuestState();
+}
+
+void ALingoPlayerState::SetSpeakQuestIng(bool bInProgress)
+{
+	if (!HasAuthority())
+		return;
+
+	bSpeakQuestIng = bInProgress;
+
+	RefreshQuestState();
+}
+
+void ALingoPlayerState::SetWriteQuestIng(bool bInProgress)
+{
+	if (!HasAuthority())
+		return;
+
+	bWriteQuestIng = bInProgress;
+
+	RefreshQuestState();
+}

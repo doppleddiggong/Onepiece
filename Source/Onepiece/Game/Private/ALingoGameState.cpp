@@ -106,12 +106,21 @@ void ALingoGameState::SetReadScenarioData( const FResponseReadScenario& InRespon
 	// 반드시 서버 전용
 	if (!HasAuthority())
 		return;
-	
+
 	this->QuestType = EQuestType::Read;
 	this->ReadScenarioData = InResponseData;
 
 	// 미션 타이머 시작
 	this->StartMissionTimer( ULingoGameHelper::GetMissionPlayTime() );
+
+	// 모든 플레이어의 ReadQuest 진행 상태 설정
+	for (APlayerState* PS : PlayerArray)
+	{
+		if (ALingoPlayerState* LingoPS = Cast<ALingoPlayerState>(PS))
+		{
+			LingoPS->SetReadQuestIng(true);
+		}
+	}
 
 	if (HasAuthority())
 	{
@@ -125,12 +134,21 @@ void ALingoGameState::SetListenScenarioData( const FResponseListenScenario& InRe
 	// 반드시 서버 전용
 	if (!HasAuthority())
 		return;
-	
+
 	this->QuestType = EQuestType::Listen;
 	this->ListenScenarioData = InResponseData;
 
 	// 미션 타이머 시작
 	this->StartMissionTimer( ULingoGameHelper::GetMissionPlayTime() );
+
+	// 모든 플레이어의 ListenQuest 진행 상태 설정
+	for (APlayerState* PS : PlayerArray)
+	{
+		if (ALingoPlayerState* LingoPS = Cast<ALingoPlayerState>(PS))
+		{
+			LingoPS->SetListenQuestIng(true);
+		}
+	}
 
 	if (HasAuthority())
 	{
