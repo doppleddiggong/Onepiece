@@ -1,7 +1,5 @@
 var NAVTREEINDEX10 =
 {
-"classULingoGameInstance.html#a0bdb0fd769fbe982dc2f5e033afbe789":[2,0,166,5],
-"classULingoGameInstance.html#a0da394f50c70f08879396db0c858d67f":[2,0,166,16],
 "classULingoGameInstance.html#a17232e7c2128d3f8af2561f649b27473":[2,0,166,13],
 "classULingoGameInstance.html#a196bfa207c29f00ebf799cd69e7bb18b":[2,0,166,10],
 "classULingoGameInstance.html#a26a1c2285fdf102cd5019a4742b37ea8":[2,0,166,0],
@@ -249,5 +247,7 @@ var NAVTREEINDEX10 =
 "classUPopup__Interview.html#af8bc9c6aedb5cd8de9d939840811381e":[2,0,179,14],
 "classUPopup__Interview.html#afe75f5ef94f97fbcc8ea1ad9e801524c":[2,0,179,16],
 "classUPopup__InterviewHello.html":[2,0,180],
-"classUPopup__InterviewHello.html#a0cd3b9b3a42a7c1dbf11b6f1b7304919":[2,0,180,21]
+"classUPopup__InterviewHello.html#a0cd3b9b3a42a7c1dbf11b6f1b7304919":[2,0,180,21],
+"classUPopup__InterviewHello.html#a0ec1442a83ada70e487001ca7c875d42":[2,0,180,30],
+"classUPopup__InterviewHello.html#a0ee14f674a28cf54e5f40e3cbb46551d":[2,0,180,38]
 };

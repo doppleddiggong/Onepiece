@@ -17,6 +17,7 @@ var classUPopup__Result =
     [ "bAllowPlayerControl", "classUPopup__Result.html#a6ac288312766fb96aa9acf7ece8a630e", null ],
     [ "bIsOpenAnim", "classUPopup__Result.html#a807985dccb3305b1004c611401b7b551", null ],
     [ "Btn_Confirm", "classUPopup__Result.html#abfa0db686cba0ac9337ecadf1beaa185", null ],
+    [ "Image_Symbol", "classUPopup__Result.html#a4e169c76e8d9d4bb90d7240769f37d0c", null ],
     [ "OpenDuration", "classUPopup__Result.html#a5a4c2b75560a3e2d07ed3aa52837278e", null ],
     [ "OpenEaseExponent", "classUPopup__Result.html#afe75f5ef94f97fbcc8ea1ad9e801524c", null ],
     [ "OpenElapsedTime", "classUPopup__Result.html#a6124aff28b2b2a0b810bb693ebcd81ad", null ],
@@ -31,5 +32,6 @@ var classUPopup__Result =
     [ "Result_TopRate", "classUPopup__Result.html#a9fd7243319715d3171361087db73550b", null ],
     [ "Txt_Eng", "classUPopup__Result.html#a3ae771cb94df4c758020d094c7aea236", null ],
     [ "Txt_Kor", "classUPopup__Result.html#a8cfafa30b850b06c274d16d5f10a7ff5", null ],
+    [ "Txt_Title", "classUPopup__Result.html#a01a6c8e5e15fe7da10155e24623ebc4f", null ],
     [ "VerticalBox", "classUPopup__Result.html#af4922f4128555f24f4f4b1a0f9cc87c1", null ]
 ];

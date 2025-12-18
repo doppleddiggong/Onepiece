@@ -22,7 +22,7 @@ var searchData=
   ['scrl_5fsessionlist_19',['Scrl_SessionList',['../classULobbyWidget.html#a42de44172e6a96acbae7313fac0af009',1,'ULobbyWidget']]],
   ['scrollbox_20',['scrollbox',['../classUPopup__Questionnaire.html#aeb2374c2209c93983144044c0fe3cb7c',1,'UPopup_Questionnaire::ScrollBox'],['../classUPopup__Interview.html#a031ade5b6fd0e1834b7f68467cddf131',1,'UPopup_Interview::ScrollBox']]],
   ['scrollbox_5fchatbox_21',['ScrollBox_ChatBox',['../classUChatWidget.html#ac728c3ed29723e99b7f00c4951077141',1,'UChatWidget']]],
-  ['scrollbox_5fresult_22',['ScrollBox_Result',['../classUPopup__QuestionnaireResult.html#af67bf2288f18445713ef6a12e61548f6',1,'UPopup_QuestionnaireResult']]],
+  ['scrollbox_5fresult_22',['ScrollBox_Result',['../classUPopup__QuestionnaireResult.html#a2e105c2c97a1569d588e0d89a184a408',1,'UPopup_QuestionnaireResult']]],
   ['selectcharacter_23',['selectCharacter',['../classULingoGameInstance.html#a6dce121978db2d3b2504e9068c694527',1,'ULingoGameInstance']]],
   ['selectedcolor_24',['SelectedColor',['../structFReadQuestResult.html#a73d2fb79bb0ab3daf13f34e9e3f3ae8b',1,'FReadQuestResult']]],
   ['selectedsymbol_25',['SelectedSymbol',['../structFReadQuestResult.html#a086b2cc576670b7cdc6d5582a3a842d0',1,'FReadQuestResult']]],

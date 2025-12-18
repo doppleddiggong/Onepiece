@@ -1,7 +1,5 @@
 var NAVTREEINDEX6 =
 {
-"classANetworkBroadcastActor.html#a2afe4cf7a2a1da17f267fd44acea7377":[2,0,25,9],
-"classANetworkBroadcastActor.html#a39fe94510873c1f8103bfd2d61b7efc7":[2,0,25,1],
 "classANetworkBroadcastActor.html#a41422693e2b0fea00e33e843fa62da1d":[2,0,25,14],
 "classANetworkBroadcastActor.html#a42f4256cf37cb76389c6fb6cb8012a2e":[2,0,25,25],
 "classANetworkBroadcastActor.html#a4de0b7e9e5bf9292e988b38e2261443d":[2,0,25,13],
@@ -249,5 +247,7 @@ var NAVTREEINDEX6 =
 "classAPopupTesterActor.html":[2,0,35],
 "classAPopupTesterActor.html#a079a1b85d12c4486e83d3306ee96fc81":[2,0,35,1],
 "classAPopupTesterActor.html#a196f61f8a6968f0e31b045d8432e1f5b":[2,0,35,0],
-"classAPopupTesterActor.html#a1cb826db020b0ed66da3f0a8df1453a7":[2,0,35,10]
+"classAPopupTesterActor.html#a1cb826db020b0ed66da3f0a8df1453a7":[2,0,35,10],
+"classAPopupTesterActor.html#a3405fb657b929d0cbea77cb386953834":[2,0,35,8],
+"classAPopupTesterActor.html#a4d162bd274c2f1bc89a1f01530682672":[2,0,35,2]
 };

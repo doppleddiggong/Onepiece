@@ -28,6 +28,6 @@ var classUPopup__QuestionnaireResult =
     [ "Result_Grade", "classUPopup__QuestionnaireResult.html#a66966b2a55cc5377d439c7110e5ebfec", null ],
     [ "Result_Time", "classUPopup__QuestionnaireResult.html#a60c02f36f121d5463c114326e76883a8", null ],
     [ "Result_TopRate", "classUPopup__QuestionnaireResult.html#aacac1aa8d118a4c852bb3158f6a1fc13", null ],
-    [ "ScrollBox_Result", "classUPopup__QuestionnaireResult.html#af67bf2288f18445713ef6a12e61548f6", null ],
+    [ "ScrollBox_Result", "classUPopup__QuestionnaireResult.html#a2e105c2c97a1569d588e0d89a184a408", null ],
     [ "WriteImagePath", "classUPopup__QuestionnaireResult.html#ae8a31c8ef9645592b5d1210cefcb5d04", null ]
 ];
