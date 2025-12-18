@@ -433,10 +433,10 @@ Private 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ALingoGameState_8cpp_source.html">ALingoGameState.cpp</a> 파일의 <a class="el" href="ALingoGameState_8cpp_source.html#l00170">170</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  171</span>{</div>
-<div class="line"><span class="lineno">  172</span>    this-&gt;<a class="code hl_variable" href="classALingoGameState.html#abf8b596488b55e3933d5d3fcf016307f">RemainMissionTime</a> = FMath::Max(0.f, <a class="code hl_variable" href="classALingoGameState.html#abf8b596488b55e3933d5d3fcf016307f">RemainMissionTime</a> - InValue);</div>
-<div class="line"><span class="lineno">  173</span>}</div>
+<p class="definition"><a class="el" href="ALingoGameState_8cpp_source.html">ALingoGameState.cpp</a> 파일의 <a class="el" href="ALingoGameState_8cpp_source.html#l00188">188</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  189</span>{</div>
+<div class="line"><span class="lineno">  190</span>    this-&gt;<a class="code hl_variable" href="classALingoGameState.html#abf8b596488b55e3933d5d3fcf016307f">RemainMissionTime</a> = FMath::Max(0.f, <a class="code hl_variable" href="classALingoGameState.html#abf8b596488b55e3933d5d3fcf016307f">RemainMissionTime</a> - InValue);</div>
+<div class="line"><span class="lineno">  191</span>}</div>
 </div><!-- fragment -->
 <p class="reference">다음을 참조함 :  <a class="el" href="ALingoGameState_8h_source.html#l00148">RemainMissionTime</a>.</p>
 
@@ -836,7 +836,7 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALingoGameState_8cpp_source.html#l00123">SetListenScenarioData()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALingoGameState_8cpp_source.html#l00132">SetListenScenarioData()</a>.</p>
 <div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-7-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-7-summary" class="dynsummary" style="display:block;">
@@ -906,7 +906,7 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALingoGameState_8cpp_source.html#l00123">SetListenScenarioData()</a>, <a class="el" href="ALingoGameState_8cpp_source.html#l00104">SetReadScenarioData()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALingoGameState_8cpp_source.html#l00132">SetListenScenarioData()</a>, <a class="el" href="ALingoGameState_8cpp_source.html#l00104">SetReadScenarioData()</a>.</p>
 <div id="dynsection-9" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-9-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-9-summary" class="dynsummary" style="display:block;">
@@ -970,39 +970,39 @@ Private 속성</h2></td></tr>
 
 <p>타이머 종료 시 호출됩니다 (서버에서만 실행) </p>
 
-<p class="definition"><a class="el" href="ALingoGameState_8cpp_source.html">ALingoGameState.cpp</a> 파일의 <a class="el" href="ALingoGameState_8cpp_source.html#l00181">181</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  182</span>{</div>
-<div class="line"><span class="lineno">  183</span>    <span class="keywordflow">if</span> (!HasAuthority())</div>
-<div class="line"><span class="lineno">  184</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  185</span> </div>
-<div class="line"><span class="lineno">  186</span>    <a class="code hl_variable" href="classALingoGameState.html#ab2b1dfcaf07b61dd099209f135ff97fa">bIsTimerActive</a> = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  187</span> </div>
-<div class="line"><span class="lineno">  188</span>    <span class="comment">// NetworkBroadcastActor를 통해 모든 클라이언트에 타이머 종료 알림</span></div>
-<div class="line"><span class="lineno">  189</span>    <span class="keywordflow">if</span> (<a class="code hl_class" href="classANetworkBroadcastActor.html">ANetworkBroadcastActor</a>* BroadcastActor = <a class="code hl_function" href="classANetworkBroadcastActor.html#a39fe94510873c1f8103bfd2d61b7efc7">ANetworkBroadcastActor::Get</a>(<span class="keyword">this</span>))</div>
-<div class="line"><span class="lineno">  190</span>        BroadcastActor-&gt;SendUpdateMissionTimerState(<span class="keyword">false</span>, 0.0f, <span class="keyword">this</span>);</div>
-<div class="line"><span class="lineno">  191</span> </div>
-<div class="line"><span class="lineno">  192</span>    <span class="keyword">auto</span> EndMessage = <a class="code hl_function" href="classULingoGameHelper.html#aedcd84af73f7741c04bdd74e617366e8">ULingoGameHelper::GetStageEndMessage</a>(<a class="code hl_variable" href="classALingoGameState.html#ae109b2cf1bcd0d8f737531b8e26a08dc">QuestType</a>);</div>
-<div class="line"><span class="lineno">  193</span> </div>
-<div class="line"><span class="lineno">  194</span>    <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>( TEXT(<span class="stringliteral">&quot;[GameState] Mission Timer Ended - Sending: %s&quot;</span>), *EndMessage);</div>
-<div class="line"><span class="lineno">  195</span> </div>
-<div class="line"><span class="lineno">  196</span>    <span class="comment">// 모든 플레이어에게 메시지 전송</span></div>
-<div class="line"><span class="lineno">  197</span>    <span class="keywordflow">if</span> (UWorld* World = GetWorld())</div>
-<div class="line"><span class="lineno">  198</span>    {</div>
-<div class="line"><span class="lineno">  199</span>        <span class="keywordflow">for</span> (FConstPlayerControllerIterator It = World-&gt;GetPlayerControllerIterator(); It; ++It)</div>
-<div class="line"><span class="lineno">  200</span>        {</div>
-<div class="line"><span class="lineno">  201</span>            <span class="keywordflow">if</span> (APlayerController* PC = It-&gt;Get())</div>
-<div class="line"><span class="lineno">  202</span>            {</div>
-<div class="line"><span class="lineno">  203</span>                <span class="keywordflow">if</span> (<a class="code hl_class" href="classAPlayerActor.html">APlayerActor</a>* PlayerActor = Cast&lt;APlayerActor&gt;(PC-&gt;GetPawn()))</div>
-<div class="line"><span class="lineno">  204</span>                {</div>
-<div class="line"><span class="lineno">  205</span>                    PlayerActor-&gt;OnGameMessage(EndMessage);</div>
-<div class="line"><span class="lineno">  206</span>                }</div>
-<div class="line"><span class="lineno">  207</span>            }</div>
-<div class="line"><span class="lineno">  208</span>        }</div>
-<div class="line"><span class="lineno">  209</span>    }</div>
-<div class="line"><span class="lineno">  210</span>}</div>
+<p class="definition"><a class="el" href="ALingoGameState_8cpp_source.html">ALingoGameState.cpp</a> 파일의 <a class="el" href="ALingoGameState_8cpp_source.html#l00199">199</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  200</span>{</div>
+<div class="line"><span class="lineno">  201</span>    <span class="keywordflow">if</span> (!HasAuthority())</div>
+<div class="line"><span class="lineno">  202</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  203</span> </div>
+<div class="line"><span class="lineno">  204</span>    <a class="code hl_variable" href="classALingoGameState.html#ab2b1dfcaf07b61dd099209f135ff97fa">bIsTimerActive</a> = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  205</span> </div>
+<div class="line"><span class="lineno">  206</span>    <span class="comment">// NetworkBroadcastActor를 통해 모든 클라이언트에 타이머 종료 알림</span></div>
+<div class="line"><span class="lineno">  207</span>    <span class="keywordflow">if</span> (<a class="code hl_class" href="classANetworkBroadcastActor.html">ANetworkBroadcastActor</a>* BroadcastActor = <a class="code hl_function" href="classANetworkBroadcastActor.html#a39fe94510873c1f8103bfd2d61b7efc7">ANetworkBroadcastActor::Get</a>(<span class="keyword">this</span>))</div>
+<div class="line"><span class="lineno">  208</span>        BroadcastActor-&gt;SendUpdateMissionTimerState(<span class="keyword">false</span>, 0.0f, <span class="keyword">this</span>);</div>
+<div class="line"><span class="lineno">  209</span> </div>
+<div class="line"><span class="lineno">  210</span>    <span class="keyword">auto</span> EndMessage = <a class="code hl_function" href="classULingoGameHelper.html#aedcd84af73f7741c04bdd74e617366e8">ULingoGameHelper::GetStageEndMessage</a>(<a class="code hl_variable" href="classALingoGameState.html#ae109b2cf1bcd0d8f737531b8e26a08dc">QuestType</a>);</div>
+<div class="line"><span class="lineno">  211</span> </div>
+<div class="line"><span class="lineno">  212</span>    <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>( TEXT(<span class="stringliteral">&quot;[GameState] Mission Timer Ended - Sending: %s&quot;</span>), *EndMessage);</div>
+<div class="line"><span class="lineno">  213</span> </div>
+<div class="line"><span class="lineno">  214</span>    <span class="comment">// 모든 플레이어에게 메시지 전송</span></div>
+<div class="line"><span class="lineno">  215</span>    <span class="keywordflow">if</span> (UWorld* World = GetWorld())</div>
+<div class="line"><span class="lineno">  216</span>    {</div>
+<div class="line"><span class="lineno">  217</span>        <span class="keywordflow">for</span> (FConstPlayerControllerIterator It = World-&gt;GetPlayerControllerIterator(); It; ++It)</div>
+<div class="line"><span class="lineno">  218</span>        {</div>
+<div class="line"><span class="lineno">  219</span>            <span class="keywordflow">if</span> (APlayerController* PC = It-&gt;Get())</div>
+<div class="line"><span class="lineno">  220</span>            {</div>
+<div class="line"><span class="lineno">  221</span>                <span class="keywordflow">if</span> (<a class="code hl_class" href="classAPlayerActor.html">APlayerActor</a>* PlayerActor = Cast&lt;APlayerActor&gt;(PC-&gt;GetPawn()))</div>
+<div class="line"><span class="lineno">  222</span>                {</div>
+<div class="line"><span class="lineno">  223</span>                    PlayerActor-&gt;OnGameMessage(EndMessage);</div>
+<div class="line"><span class="lineno">  224</span>                }</div>
+<div class="line"><span class="lineno">  225</span>            }</div>
+<div class="line"><span class="lineno">  226</span>        }</div>
+<div class="line"><span class="lineno">  227</span>    }</div>
+<div class="line"><span class="lineno">  228</span>}</div>
 <div class="ttc" id="aclassANetworkBroadcastActor_html"><div class="ttname"><a href="classANetworkBroadcastActor.html">ANetworkBroadcastActor</a></div><div class="ttdoc">네트워크 복제를 위한 전역 브로드캐스트 Actor</div><div class="ttdef"><b>Definition</b> <a href="ANetworkBroadcastActor_8h_source.html#l00024">ANetworkBroadcastActor.h:25</a></div></div>
 <div class="ttc" id="aclassANetworkBroadcastActor_html_a39fe94510873c1f8103bfd2d61b7efc7"><div class="ttname"><a href="classANetworkBroadcastActor.html#a39fe94510873c1f8103bfd2d61b7efc7">ANetworkBroadcastActor::Get</a></div><div class="ttdeci">static ANetworkBroadcastActor * Get(const UObject *WorldContextObject)</div><div class="ttdoc">싱글톤 인스턴스 가져오기</div><div class="ttdef"><b>Definition</b> <a href="ANetworkBroadcastActor_8cpp_source.html#l00028">ANetworkBroadcastActor.cpp:28</a></div></div>
-<div class="ttc" id="aclassAPlayerActor_html"><div class="ttname"><a href="classAPlayerActor.html">APlayerActor</a></div><div class="ttdoc">Main character driven directly by the player.</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8h_source.html#l00022">APlayerActor.h:23</a></div></div>
+<div class="ttc" id="aclassAPlayerActor_html"><div class="ttname"><a href="classAPlayerActor.html">APlayerActor</a></div><div class="ttdoc">Main character driven directly by the player.</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8h_source.html#l00023">APlayerActor.h:24</a></div></div>
 <div class="ttc" id="aclassULingoGameHelper_html_aedcd84af73f7741c04bdd74e617366e8"><div class="ttname"><a href="classULingoGameHelper.html#aedcd84af73f7741c04bdd74e617366e8">ULingoGameHelper::GetStageEndMessage</a></div><div class="ttdeci">static FString GetStageEndMessage(const EQuestType QuestType)</div><div class="ttdef"><b>Definition</b> <a href="ULingoGameHelper_8cpp_source.html#l00142">ULingoGameHelper.cpp:142</a></div></div>
 </div><!-- fragment -->
 <p class="reference">다음을 참조함 :  <a class="el" href="ALingoGameState_8h_source.html#l00152">bIsTimerActive</a>, <a class="el" href="ANetworkBroadcastActor_8cpp_source.html#l00028">ANetworkBroadcastActor::Get()</a>, <a class="el" href="ULingoGameHelper_8cpp_source.html#l00142">ULingoGameHelper::GetStageEndMessage()</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>, <a class="el" href="ALingoGameState_8h_source.html#l00155">QuestType</a>.</p>
@@ -1048,10 +1048,10 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ALingoGameState_8cpp_source.html">ALingoGameState.cpp</a> 파일의 <a class="el" href="ALingoGameState_8cpp_source.html#l00288">288</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  289</span>{</div>
-<div class="line"><span class="lineno">  290</span>    <a class="code hl_variable" href="classALingoGameState.html#ad821d0da0b11aec76f97e9be6e84d91f">OnListenResultUpdated</a>.Broadcast(<a class="code hl_variable" href="classALingoGameState.html#a6b3f912f049b42e768067404fcff418a">ListenResult</a>);</div>
-<div class="line"><span class="lineno">  291</span>}</div>
+<p class="definition"><a class="el" href="ALingoGameState_8cpp_source.html">ALingoGameState.cpp</a> 파일의 <a class="el" href="ALingoGameState_8cpp_source.html#l00306">306</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  307</span>{</div>
+<div class="line"><span class="lineno">  308</span>    <a class="code hl_variable" href="classALingoGameState.html#ad821d0da0b11aec76f97e9be6e84d91f">OnListenResultUpdated</a>.Broadcast(<a class="code hl_variable" href="classALingoGameState.html#a6b3f912f049b42e768067404fcff418a">ListenResult</a>);</div>
+<div class="line"><span class="lineno">  309</span>}</div>
 <div class="ttc" id="aclassALingoGameState_html_ad821d0da0b11aec76f97e9be6e84d91f"><div class="ttname"><a href="classALingoGameState.html#ad821d0da0b11aec76f97e9be6e84d91f">ALingoGameState::OnListenResultUpdated</a></div><div class="ttdeci">FOnListenResultUpdated OnListenResultUpdated</div><div class="ttdef"><b>Definition</b> <a href="ALingoGameState_8h_source.html#l00106">ALingoGameState.h:106</a></div></div>
 </div><!-- fragment -->
 <p class="reference">다음을 참조함 :  <a class="el" href="ALingoGameState_8h_source.html#l00143">ListenResult</a>, <a class="el" href="ALingoGameState_8h_source.html#l00106">OnListenResultUpdated</a>.</p>
@@ -1081,10 +1081,10 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ALingoGameState_8cpp_source.html">ALingoGameState.cpp</a> 파일의 <a class="el" href="ALingoGameState_8cpp_source.html#l00283">283</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  284</span>{</div>
-<div class="line"><span class="lineno">  285</span>    <a class="code hl_variable" href="classALingoGameState.html#a976d75973b49576e435409c8e23a378a">OnQuestScenarioDataUpdated</a>.Broadcast();</div>
-<div class="line"><span class="lineno">  286</span>}</div>
+<p class="definition"><a class="el" href="ALingoGameState_8cpp_source.html">ALingoGameState.cpp</a> 파일의 <a class="el" href="ALingoGameState_8cpp_source.html#l00301">301</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  302</span>{</div>
+<div class="line"><span class="lineno">  303</span>    <a class="code hl_variable" href="classALingoGameState.html#a976d75973b49576e435409c8e23a378a">OnQuestScenarioDataUpdated</a>.Broadcast();</div>
+<div class="line"><span class="lineno">  304</span>}</div>
 <div class="ttc" id="aclassALingoGameState_html_a976d75973b49576e435409c8e23a378a"><div class="ttname"><a href="classALingoGameState.html#a976d75973b49576e435409c8e23a378a">ALingoGameState::OnQuestScenarioDataUpdated</a></div><div class="ttdeci">FOnQuestScenarioDataUpdated OnQuestScenarioDataUpdated</div><div class="ttdef"><b>Definition</b> <a href="ALingoGameState_8h_source.html#l00107">ALingoGameState.h:107</a></div></div>
 </div><!-- fragment -->
 <p class="reference">다음을 참조함 :  <a class="el" href="ALingoGameState_8h_source.html#l00107">OnQuestScenarioDataUpdated</a>.</p>
@@ -1114,10 +1114,10 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ALingoGameState_8cpp_source.html">ALingoGameState.cpp</a> 파일의 <a class="el" href="ALingoGameState_8cpp_source.html#l00278">278</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  279</span>{</div>
-<div class="line"><span class="lineno">  280</span>    <a class="code hl_variable" href="classALingoGameState.html#ada8ce049489e728db762ee7a5f3b6bc3">OnReadResultUpdated</a>.Broadcast(<a class="code hl_variable" href="classALingoGameState.html#a8fe961564c1a1b861042b362e524e88f">ReadResult</a>);</div>
-<div class="line"><span class="lineno">  281</span>}</div>
+<p class="definition"><a class="el" href="ALingoGameState_8cpp_source.html">ALingoGameState.cpp</a> 파일의 <a class="el" href="ALingoGameState_8cpp_source.html#l00296">296</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  297</span>{</div>
+<div class="line"><span class="lineno">  298</span>    <a class="code hl_variable" href="classALingoGameState.html#ada8ce049489e728db762ee7a5f3b6bc3">OnReadResultUpdated</a>.Broadcast(<a class="code hl_variable" href="classALingoGameState.html#a8fe961564c1a1b861042b362e524e88f">ReadResult</a>);</div>
+<div class="line"><span class="lineno">  299</span>}</div>
 <div class="ttc" id="aclassALingoGameState_html_ada8ce049489e728db762ee7a5f3b6bc3"><div class="ttname"><a href="classALingoGameState.html#ada8ce049489e728db762ee7a5f3b6bc3">ALingoGameState::OnReadResultUpdated</a></div><div class="ttdeci">FOnReadResultUpdated OnReadResultUpdated</div><div class="ttdef"><b>Definition</b> <a href="ALingoGameState_8h_source.html#l00105">ALingoGameState.h:105</a></div></div>
 </div><!-- fragment -->
 <p class="reference">다음을 참조함 :  <a class="el" href="ALingoGameState_8h_source.html#l00105">OnReadResultUpdated</a>, <a class="el" href="ALingoGameState_8h_source.html#l00124">ReadResult</a>.</p>
@@ -1147,10 +1147,10 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ALingoGameState_8cpp_source.html">ALingoGameState.cpp</a> 파일의 <a class="el" href="ALingoGameState_8cpp_source.html#l00273">273</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  274</span>{</div>
-<div class="line"><span class="lineno">  275</span>    <a class="code hl_variable" href="classALingoGameState.html#a976d75973b49576e435409c8e23a378a">OnQuestScenarioDataUpdated</a>.Broadcast();</div>
-<div class="line"><span class="lineno">  276</span>}</div>
+<p class="definition"><a class="el" href="ALingoGameState_8cpp_source.html">ALingoGameState.cpp</a> 파일의 <a class="el" href="ALingoGameState_8cpp_source.html#l00291">291</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  292</span>{</div>
+<div class="line"><span class="lineno">  293</span>    <a class="code hl_variable" href="classALingoGameState.html#a976d75973b49576e435409c8e23a378a">OnQuestScenarioDataUpdated</a>.Broadcast();</div>
+<div class="line"><span class="lineno">  294</span>}</div>
 </div><!-- fragment -->
 <p class="reference">다음을 참조함 :  <a class="el" href="ALingoGameState_8h_source.html#l00107">OnQuestScenarioDataUpdated</a>.</p>
 
@@ -1179,10 +1179,10 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ALingoGameState_8cpp_source.html">ALingoGameState.cpp</a> 파일의 <a class="el" href="ALingoGameState_8cpp_source.html#l00293">293</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  294</span>{</div>
-<div class="line"><span class="lineno">  295</span>    <a class="code hl_variable" href="classALingoGameState.html#ae6af66ce18ee2c46bc67df445c17a796">OnRoomIdUpdated</a>.Broadcast(<a class="code hl_variable" href="classALingoGameState.html#a098f78f856c35102786b2109ca20c576">RoomId</a>);</div>
-<div class="line"><span class="lineno">  296</span>}</div>
+<p class="definition"><a class="el" href="ALingoGameState_8cpp_source.html">ALingoGameState.cpp</a> 파일의 <a class="el" href="ALingoGameState_8cpp_source.html#l00311">311</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  312</span>{</div>
+<div class="line"><span class="lineno">  313</span>    <a class="code hl_variable" href="classALingoGameState.html#ae6af66ce18ee2c46bc67df445c17a796">OnRoomIdUpdated</a>.Broadcast(<a class="code hl_variable" href="classALingoGameState.html#a098f78f856c35102786b2109ca20c576">RoomId</a>);</div>
+<div class="line"><span class="lineno">  314</span>}</div>
 <div class="ttc" id="aclassALingoGameState_html_ae6af66ce18ee2c46bc67df445c17a796"><div class="ttname"><a href="classALingoGameState.html#ae6af66ce18ee2c46bc67df445c17a796">ALingoGameState::OnRoomIdUpdated</a></div><div class="ttdeci">FOnRoomIdUpdated OnRoomIdUpdated</div><div class="ttdef"><b>Definition</b> <a href="ALingoGameState_8h_source.html#l00108">ALingoGameState.h:108</a></div></div>
 </div><!-- fragment -->
 <p class="reference">다음을 참조함 :  <a class="el" href="ALingoGameState_8h_source.html#l00108">OnRoomIdUpdated</a>, <a class="el" href="ALingoGameState_8h_source.html#l00159">RoomId</a>.</p>
@@ -1212,10 +1212,10 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ALingoGameState_8cpp_source.html">ALingoGameState.cpp</a> 파일의 <a class="el" href="ALingoGameState_8cpp_source.html#l00298">298</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  299</span>{</div>
-<div class="line"><span class="lineno">  300</span>    <a class="code hl_variable" href="classALingoGameState.html#a546e07f96b312b03092f2dbc82e9846c">OnRoomLevelUpdated</a>.Broadcast(<a class="code hl_variable" href="classALingoGameState.html#ae3c5cc4c0d111910c3078336b7839eea">RoomLevel</a>);</div>
-<div class="line"><span class="lineno">  301</span>}</div>
+<p class="definition"><a class="el" href="ALingoGameState_8cpp_source.html">ALingoGameState.cpp</a> 파일의 <a class="el" href="ALingoGameState_8cpp_source.html#l00316">316</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  317</span>{</div>
+<div class="line"><span class="lineno">  318</span>    <a class="code hl_variable" href="classALingoGameState.html#a546e07f96b312b03092f2dbc82e9846c">OnRoomLevelUpdated</a>.Broadcast(<a class="code hl_variable" href="classALingoGameState.html#ae3c5cc4c0d111910c3078336b7839eea">RoomLevel</a>);</div>
+<div class="line"><span class="lineno">  319</span>}</div>
 <div class="ttc" id="aclassALingoGameState_html_a546e07f96b312b03092f2dbc82e9846c"><div class="ttname"><a href="classALingoGameState.html#a546e07f96b312b03092f2dbc82e9846c">ALingoGameState::OnRoomLevelUpdated</a></div><div class="ttdeci">FOnRoomLevelUpdated OnRoomLevelUpdated</div><div class="ttdef"><b>Definition</b> <a href="ALingoGameState_8h_source.html#l00109">ALingoGameState.h:109</a></div></div>
 </div><!-- fragment -->
 <p class="reference">다음을 참조함 :  <a class="el" href="ALingoGameState_8h_source.html#l00109">OnRoomLevelUpdated</a>, <a class="el" href="ALingoGameState_8h_source.html#l00162">RoomLevel</a>.</p>
@@ -1238,31 +1238,41 @@ Private 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ALingoGameState_8cpp_source.html">ALingoGameState.cpp</a> 파일의 <a class="el" href="ALingoGameState_8cpp_source.html#l00123">123</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  124</span>{</div>
-<div class="line"><span class="lineno">  125</span>    <span class="comment">// 반드시 서버 전용</span></div>
-<div class="line"><span class="lineno">  126</span>    <span class="keywordflow">if</span> (!HasAuthority())</div>
-<div class="line"><span class="lineno">  127</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  128</span>    </div>
-<div class="line"><span class="lineno">  129</span>    this-&gt;<a class="code hl_variable" href="classALingoGameState.html#ae109b2cf1bcd0d8f737531b8e26a08dc">QuestType</a> = <a class="code hl_enumvalue" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921ace6802b46091c31e2ec2363883fe8369">EQuestType::Listen</a>;</div>
-<div class="line"><span class="lineno">  130</span>    this-&gt;<a class="code hl_variable" href="classALingoGameState.html#aab5501acc9337bcd9004f5fa89df7949">ListenScenarioData</a> = InResponseData;</div>
-<div class="line"><span class="lineno">  131</span> </div>
-<div class="line"><span class="lineno">  132</span>    <span class="comment">// 미션 타이머 시작</span></div>
-<div class="line"><span class="lineno">  133</span>    this-&gt;<a class="code hl_function" href="classALingoGameState.html#adb613d0ae85fcd2a8d8f3f777566c98c">StartMissionTimer</a>( <a class="code hl_function" href="classULingoGameHelper.html#a8e35e8f50c72c9cbb4f258f64255c0b3">ULingoGameHelper::GetMissionPlayTime</a>() );</div>
-<div class="line"><span class="lineno">  134</span> </div>
-<div class="line"><span class="lineno">  135</span>    <span class="keywordflow">if</span> (HasAuthority())</div>
-<div class="line"><span class="lineno">  136</span>    {</div>
-<div class="line"><span class="lineno">  137</span>        <a class="code hl_function" href="classALingoGameState.html#a525363eb5907c6beb87fcf7f7e7db467">Multicast_UpdateQuestType</a>(<a class="code hl_variable" href="classALingoGameState.html#ae109b2cf1bcd0d8f737531b8e26a08dc">QuestType</a>);</div>
-<div class="line"><span class="lineno">  138</span>        <a class="code hl_function" href="classALingoGameState.html#a6c5c93188b76ad8d9271c692c739b03d">Multicast_ShowListenQuestPopup</a>(<a class="code hl_variable" href="classALingoGameState.html#aab5501acc9337bcd9004f5fa89df7949">ListenScenarioData</a>);</div>
-<div class="line"><span class="lineno">  139</span>    }</div>
-<div class="line"><span class="lineno">  140</span>}</div>
+<p class="definition"><a class="el" href="ALingoGameState_8cpp_source.html">ALingoGameState.cpp</a> 파일의 <a class="el" href="ALingoGameState_8cpp_source.html#l00132">132</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  133</span>{</div>
+<div class="line"><span class="lineno">  134</span>    <span class="comment">// 반드시 서버 전용</span></div>
+<div class="line"><span class="lineno">  135</span>    <span class="keywordflow">if</span> (!HasAuthority())</div>
+<div class="line"><span class="lineno">  136</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  137</span> </div>
+<div class="line"><span class="lineno">  138</span>    this-&gt;<a class="code hl_variable" href="classALingoGameState.html#ae109b2cf1bcd0d8f737531b8e26a08dc">QuestType</a> = <a class="code hl_enumvalue" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921ace6802b46091c31e2ec2363883fe8369">EQuestType::Listen</a>;</div>
+<div class="line"><span class="lineno">  139</span>    this-&gt;<a class="code hl_variable" href="classALingoGameState.html#aab5501acc9337bcd9004f5fa89df7949">ListenScenarioData</a> = InResponseData;</div>
+<div class="line"><span class="lineno">  140</span> </div>
+<div class="line"><span class="lineno">  141</span>    <span class="comment">// 미션 타이머 시작</span></div>
+<div class="line"><span class="lineno">  142</span>    this-&gt;<a class="code hl_function" href="classALingoGameState.html#adb613d0ae85fcd2a8d8f3f777566c98c">StartMissionTimer</a>( <a class="code hl_function" href="classULingoGameHelper.html#a8e35e8f50c72c9cbb4f258f64255c0b3">ULingoGameHelper::GetMissionPlayTime</a>() );</div>
+<div class="line"><span class="lineno">  143</span> </div>
+<div class="line"><span class="lineno">  144</span>    <span class="comment">// 모든 플레이어의 ListenQuest 진행 상태 설정</span></div>
+<div class="line"><span class="lineno">  145</span>    <span class="keywordflow">for</span> (APlayerState* PS : PlayerArray)</div>
+<div class="line"><span class="lineno">  146</span>    {</div>
+<div class="line"><span class="lineno">  147</span>        <span class="keywordflow">if</span> (<a class="code hl_class" href="classALingoPlayerState.html">ALingoPlayerState</a>* LingoPS = Cast&lt;ALingoPlayerState&gt;(PS))</div>
+<div class="line"><span class="lineno">  148</span>        {</div>
+<div class="line"><span class="lineno">  149</span>            LingoPS-&gt;SetListenQuestIng(<span class="keyword">true</span>);</div>
+<div class="line"><span class="lineno">  150</span>        }</div>
+<div class="line"><span class="lineno">  151</span>    }</div>
+<div class="line"><span class="lineno">  152</span> </div>
+<div class="line"><span class="lineno">  153</span>    <span class="keywordflow">if</span> (HasAuthority())</div>
+<div class="line"><span class="lineno">  154</span>    {</div>
+<div class="line"><span class="lineno">  155</span>        <a class="code hl_function" href="classALingoGameState.html#a525363eb5907c6beb87fcf7f7e7db467">Multicast_UpdateQuestType</a>(<a class="code hl_variable" href="classALingoGameState.html#ae109b2cf1bcd0d8f737531b8e26a08dc">QuestType</a>);</div>
+<div class="line"><span class="lineno">  156</span>        <a class="code hl_function" href="classALingoGameState.html#a6c5c93188b76ad8d9271c692c739b03d">Multicast_ShowListenQuestPopup</a>(<a class="code hl_variable" href="classALingoGameState.html#aab5501acc9337bcd9004f5fa89df7949">ListenScenarioData</a>);</div>
+<div class="line"><span class="lineno">  157</span>    }</div>
+<div class="line"><span class="lineno">  158</span>}</div>
 <div class="ttc" id="aALingoGameState_8h_html_a1a866ca8104ebd47ce462347a6125921ace6802b46091c31e2ec2363883fe8369"><div class="ttname"><a href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921ace6802b46091c31e2ec2363883fe8369">EQuestType::Listen</a></div><div class="ttdeci">@ Listen</div></div>
 <div class="ttc" id="aclassALingoGameState_html_a525363eb5907c6beb87fcf7f7e7db467"><div class="ttname"><a href="classALingoGameState.html#a525363eb5907c6beb87fcf7f7e7db467">ALingoGameState::Multicast_UpdateQuestType</a></div><div class="ttdeci">void Multicast_UpdateQuestType(const EQuestType InQuestType)</div></div>
 <div class="ttc" id="aclassALingoGameState_html_a6c5c93188b76ad8d9271c692c739b03d"><div class="ttname"><a href="classALingoGameState.html#a6c5c93188b76ad8d9271c692c739b03d">ALingoGameState::Multicast_ShowListenQuestPopup</a></div><div class="ttdeci">void Multicast_ShowListenQuestPopup(const FResponseListenScenario &amp;InScenarioData)</div></div>
-<div class="ttc" id="aclassALingoGameState_html_adb613d0ae85fcd2a8d8f3f777566c98c"><div class="ttname"><a href="classALingoGameState.html#adb613d0ae85fcd2a8d8f3f777566c98c">ALingoGameState::StartMissionTimer</a></div><div class="ttdeci">void StartMissionTimer(float TimeLimit)</div><div class="ttdoc">미션 타이머를 시작합니다 (서버에서만 호출)</div><div class="ttdef"><b>Definition</b> <a href="ALingoGameState_8cpp_source.html#l00142">ALingoGameState.cpp:142</a></div></div>
+<div class="ttc" id="aclassALingoGameState_html_adb613d0ae85fcd2a8d8f3f777566c98c"><div class="ttname"><a href="classALingoGameState.html#adb613d0ae85fcd2a8d8f3f777566c98c">ALingoGameState::StartMissionTimer</a></div><div class="ttdeci">void StartMissionTimer(float TimeLimit)</div><div class="ttdoc">미션 타이머를 시작합니다 (서버에서만 호출)</div><div class="ttdef"><b>Definition</b> <a href="ALingoGameState_8cpp_source.html#l00160">ALingoGameState.cpp:160</a></div></div>
+<div class="ttc" id="aclassALingoPlayerState_html"><div class="ttname"><a href="classALingoPlayerState.html">ALingoPlayerState</a></div><div class="ttdef"><b>Definition</b> <a href="ALingoPlayerState_8h_source.html#l00012">ALingoPlayerState.h:13</a></div></div>
 <div class="ttc" id="aclassULingoGameHelper_html_a8e35e8f50c72c9cbb4f258f64255c0b3"><div class="ttname"><a href="classULingoGameHelper.html#a8e35e8f50c72c9cbb4f258f64255c0b3">ULingoGameHelper::GetMissionPlayTime</a></div><div class="ttdeci">static float GetMissionPlayTime()</div><div class="ttdef"><b>Definition</b> <a href="ULingoGameHelper_8cpp_source.html#l00169">ULingoGameHelper.cpp:169</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="ULingoGameHelper_8cpp_source.html#l00169">ULingoGameHelper::GetMissionPlayTime()</a>, <a class="el" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921ace6802b46091c31e2ec2363883fe8369">Listen</a>, <a class="el" href="ALingoGameState_8h_source.html#l00131">ListenScenarioData</a>, <a class="el" href="classALingoGameState.html#a6c5c93188b76ad8d9271c692c739b03d">Multicast_ShowListenQuestPopup()</a>, <a class="el" href="classALingoGameState.html#a525363eb5907c6beb87fcf7f7e7db467">Multicast_UpdateQuestType()</a>, <a class="el" href="ALingoGameState_8h_source.html#l00155">QuestType</a>, <a class="el" href="ALingoGameState_8cpp_source.html#l00142">StartMissionTimer()</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="ULingoGameHelper_8cpp_source.html#l00169">ULingoGameHelper::GetMissionPlayTime()</a>, <a class="el" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921ace6802b46091c31e2ec2363883fe8369">Listen</a>, <a class="el" href="ALingoGameState_8h_source.html#l00131">ListenScenarioData</a>, <a class="el" href="classALingoGameState.html#a6c5c93188b76ad8d9271c692c739b03d">Multicast_ShowListenQuestPopup()</a>, <a class="el" href="classALingoGameState.html#a525363eb5907c6beb87fcf7f7e7db467">Multicast_UpdateQuestType()</a>, <a class="el" href="ALingoGameState_8h_source.html#l00155">QuestType</a>, <a class="el" href="ALingoGameState_8cpp_source.html#l00160">StartMissionTimer()</a>.</p>
 <div id="dynsection-12" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-12-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-12-summary" class="dynsummary" style="display:block;">
@@ -1294,23 +1304,32 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">  106</span>    <span class="comment">// 반드시 서버 전용</span></div>
 <div class="line"><span class="lineno">  107</span>    <span class="keywordflow">if</span> (!HasAuthority())</div>
 <div class="line"><span class="lineno">  108</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  109</span>    </div>
+<div class="line"><span class="lineno">  109</span> </div>
 <div class="line"><span class="lineno">  110</span>    this-&gt;<a class="code hl_variable" href="classALingoGameState.html#ae109b2cf1bcd0d8f737531b8e26a08dc">QuestType</a> = <a class="code hl_enumvalue" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a7a1a5f3e79fdc91edf2f5ead9d66abb4">EQuestType::Read</a>;</div>
 <div class="line"><span class="lineno">  111</span>    this-&gt;<a class="code hl_variable" href="classALingoGameState.html#a2f6a9d1ea728c1a4ba1ebbc84543bbaf">ReadScenarioData</a> = InResponseData;</div>
 <div class="line"><span class="lineno">  112</span> </div>
 <div class="line"><span class="lineno">  113</span>    <span class="comment">// 미션 타이머 시작</span></div>
 <div class="line"><span class="lineno">  114</span>    this-&gt;<a class="code hl_function" href="classALingoGameState.html#adb613d0ae85fcd2a8d8f3f777566c98c">StartMissionTimer</a>( <a class="code hl_function" href="classULingoGameHelper.html#a8e35e8f50c72c9cbb4f258f64255c0b3">ULingoGameHelper::GetMissionPlayTime</a>() );</div>
 <div class="line"><span class="lineno">  115</span> </div>
-<div class="line"><span class="lineno">  116</span>    <span class="keywordflow">if</span> (HasAuthority())</div>
-<div class="line"><span class="lineno">  117</span>    {</div>
-<div class="line"><span class="lineno">  118</span>        <a class="code hl_function" href="classALingoGameState.html#a525363eb5907c6beb87fcf7f7e7db467">Multicast_UpdateQuestType</a>(<a class="code hl_variable" href="classALingoGameState.html#ae109b2cf1bcd0d8f737531b8e26a08dc">QuestType</a>);</div>
-<div class="line"><span class="lineno">  119</span>        <a class="code hl_function" href="classALingoGameState.html#ae04b20ae5d76608071712d86c3907819">Multicast_ShowReadQuestPopup</a>(<a class="code hl_variable" href="classALingoGameState.html#a2f6a9d1ea728c1a4ba1ebbc84543bbaf">ReadScenarioData</a>);</div>
-<div class="line"><span class="lineno">  120</span>    }</div>
-<div class="line"><span class="lineno">  121</span>}</div>
+<div class="line"><span class="lineno">  116</span>    <span class="comment">// 모든 플레이어의 ReadQuest 진행 상태 설정</span></div>
+<div class="line"><span class="lineno">  117</span>    <span class="keywordflow">for</span> (APlayerState* PS : PlayerArray)</div>
+<div class="line"><span class="lineno">  118</span>    {</div>
+<div class="line"><span class="lineno">  119</span>        <span class="keywordflow">if</span> (<a class="code hl_class" href="classALingoPlayerState.html">ALingoPlayerState</a>* LingoPS = Cast&lt;ALingoPlayerState&gt;(PS))</div>
+<div class="line"><span class="lineno">  120</span>        {</div>
+<div class="line"><span class="lineno">  121</span>            LingoPS-&gt;SetReadQuestIng(<span class="keyword">true</span>);</div>
+<div class="line"><span class="lineno">  122</span>        }</div>
+<div class="line"><span class="lineno">  123</span>    }</div>
+<div class="line"><span class="lineno">  124</span> </div>
+<div class="line"><span class="lineno">  125</span>    <span class="keywordflow">if</span> (HasAuthority())</div>
+<div class="line"><span class="lineno">  126</span>    {</div>
+<div class="line"><span class="lineno">  127</span>        <a class="code hl_function" href="classALingoGameState.html#a525363eb5907c6beb87fcf7f7e7db467">Multicast_UpdateQuestType</a>(<a class="code hl_variable" href="classALingoGameState.html#ae109b2cf1bcd0d8f737531b8e26a08dc">QuestType</a>);</div>
+<div class="line"><span class="lineno">  128</span>        <a class="code hl_function" href="classALingoGameState.html#ae04b20ae5d76608071712d86c3907819">Multicast_ShowReadQuestPopup</a>(<a class="code hl_variable" href="classALingoGameState.html#a2f6a9d1ea728c1a4ba1ebbc84543bbaf">ReadScenarioData</a>);</div>
+<div class="line"><span class="lineno">  129</span>    }</div>
+<div class="line"><span class="lineno">  130</span>}</div>
 <div class="ttc" id="aALingoGameState_8h_html_a1a866ca8104ebd47ce462347a6125921a7a1a5f3e79fdc91edf2f5ead9d66abb4"><div class="ttname"><a href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a7a1a5f3e79fdc91edf2f5ead9d66abb4">EQuestType::Read</a></div><div class="ttdeci">@ Read</div></div>
 <div class="ttc" id="aclassALingoGameState_html_ae04b20ae5d76608071712d86c3907819"><div class="ttname"><a href="classALingoGameState.html#ae04b20ae5d76608071712d86c3907819">ALingoGameState::Multicast_ShowReadQuestPopup</a></div><div class="ttdeci">void Multicast_ShowReadQuestPopup(const FResponseReadScenario &amp;InScenarioData)</div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="ULingoGameHelper_8cpp_source.html#l00169">ULingoGameHelper::GetMissionPlayTime()</a>, <a class="el" href="classALingoGameState.html#ae04b20ae5d76608071712d86c3907819">Multicast_ShowReadQuestPopup()</a>, <a class="el" href="classALingoGameState.html#a525363eb5907c6beb87fcf7f7e7db467">Multicast_UpdateQuestType()</a>, <a class="el" href="ALingoGameState_8h_source.html#l00155">QuestType</a>, <a class="el" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a7a1a5f3e79fdc91edf2f5ead9d66abb4">Read</a>, <a class="el" href="ALingoGameState_8h_source.html#l00115">ReadScenarioData</a>, <a class="el" href="ALingoGameState_8cpp_source.html#l00142">StartMissionTimer()</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="ULingoGameHelper_8cpp_source.html#l00169">ULingoGameHelper::GetMissionPlayTime()</a>, <a class="el" href="classALingoGameState.html#ae04b20ae5d76608071712d86c3907819">Multicast_ShowReadQuestPopup()</a>, <a class="el" href="classALingoGameState.html#a525363eb5907c6beb87fcf7f7e7db467">Multicast_UpdateQuestType()</a>, <a class="el" href="ALingoGameState_8h_source.html#l00155">QuestType</a>, <a class="el" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a7a1a5f3e79fdc91edf2f5ead9d66abb4">Read</a>, <a class="el" href="ALingoGameState_8h_source.html#l00115">ReadScenarioData</a>, <a class="el" href="ALingoGameState_8cpp_source.html#l00160">StartMissionTimer()</a>.</p>
 <div id="dynsection-13" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-13-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-13-summary" class="dynsummary" style="display:block;">
@@ -1339,23 +1358,23 @@ Private 속성</h2></td></tr>
 
 <p>미션 타이머를 시작합니다 (서버에서만 호출) </p>
 
-<p class="definition"><a class="el" href="ALingoGameState_8cpp_source.html">ALingoGameState.cpp</a> 파일의 <a class="el" href="ALingoGameState_8cpp_source.html#l00142">142</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  143</span>{</div>
-<div class="line"><span class="lineno">  144</span>    <span class="comment">// 서버에서만 실행</span></div>
-<div class="line"><span class="lineno">  145</span>    <span class="keywordflow">if</span> (!HasAuthority())</div>
-<div class="line"><span class="lineno">  146</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  147</span> </div>
-<div class="line"><span class="lineno">  148</span>    this-&gt;<a class="code hl_variable" href="classALingoGameState.html#a6f7476b0799155bba7594e1fcbc3daf5">TimeLimit</a> = InTimeLimit;</div>
-<div class="line"><span class="lineno">  149</span>    this-&gt;<a class="code hl_variable" href="classALingoGameState.html#abf8b596488b55e3933d5d3fcf016307f">RemainMissionTime</a> = InTimeLimit;</div>
-<div class="line"><span class="lineno">  150</span>    this-&gt;<a class="code hl_variable" href="classALingoGameState.html#ab2b1dfcaf07b61dd099209f135ff97fa">bIsTimerActive</a> = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  151</span> </div>
-<div class="line"><span class="lineno">  152</span>    <span class="keywordflow">if</span> (<a class="code hl_class" href="classANetworkBroadcastActor.html">ANetworkBroadcastActor</a>* BroadcastActor = <a class="code hl_function" href="classANetworkBroadcastActor.html#a39fe94510873c1f8103bfd2d61b7efc7">ANetworkBroadcastActor::Get</a>(<span class="keyword">this</span>))</div>
-<div class="line"><span class="lineno">  153</span>        BroadcastActor-&gt;SendUpdateMissionTimerState(<span class="keyword">true</span>, InTimeLimit, <span class="keyword">this</span>);</div>
-<div class="line"><span class="lineno">  154</span>}</div>
+<p class="definition"><a class="el" href="ALingoGameState_8cpp_source.html">ALingoGameState.cpp</a> 파일의 <a class="el" href="ALingoGameState_8cpp_source.html#l00160">160</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  161</span>{</div>
+<div class="line"><span class="lineno">  162</span>    <span class="comment">// 서버에서만 실행</span></div>
+<div class="line"><span class="lineno">  163</span>    <span class="keywordflow">if</span> (!HasAuthority())</div>
+<div class="line"><span class="lineno">  164</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  165</span> </div>
+<div class="line"><span class="lineno">  166</span>    this-&gt;<a class="code hl_variable" href="classALingoGameState.html#a6f7476b0799155bba7594e1fcbc3daf5">TimeLimit</a> = InTimeLimit;</div>
+<div class="line"><span class="lineno">  167</span>    this-&gt;<a class="code hl_variable" href="classALingoGameState.html#abf8b596488b55e3933d5d3fcf016307f">RemainMissionTime</a> = InTimeLimit;</div>
+<div class="line"><span class="lineno">  168</span>    this-&gt;<a class="code hl_variable" href="classALingoGameState.html#ab2b1dfcaf07b61dd099209f135ff97fa">bIsTimerActive</a> = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  169</span> </div>
+<div class="line"><span class="lineno">  170</span>    <span class="keywordflow">if</span> (<a class="code hl_class" href="classANetworkBroadcastActor.html">ANetworkBroadcastActor</a>* BroadcastActor = <a class="code hl_function" href="classANetworkBroadcastActor.html#a39fe94510873c1f8103bfd2d61b7efc7">ANetworkBroadcastActor::Get</a>(<span class="keyword">this</span>))</div>
+<div class="line"><span class="lineno">  171</span>        BroadcastActor-&gt;SendUpdateMissionTimerState(<span class="keyword">true</span>, InTimeLimit, <span class="keyword">this</span>);</div>
+<div class="line"><span class="lineno">  172</span>}</div>
 </div><!-- fragment -->
 <p class="reference">다음을 참조함 :  <a class="el" href="ALingoGameState_8h_source.html#l00152">bIsTimerActive</a>, <a class="el" href="ANetworkBroadcastActor_8cpp_source.html#l00028">ANetworkBroadcastActor::Get()</a>, <a class="el" href="ALingoGameState_8h_source.html#l00148">RemainMissionTime</a>, <a class="el" href="ALingoGameState_8h_source.html#l00165">TimeLimit</a>.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALingoGameState_8cpp_source.html#l00123">SetListenScenarioData()</a>, <a class="el" href="ALingoGameState_8cpp_source.html#l00104">SetReadScenarioData()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALingoGameState_8cpp_source.html#l00132">SetListenScenarioData()</a>, <a class="el" href="ALingoGameState_8cpp_source.html#l00104">SetReadScenarioData()</a>.</p>
 <div id="dynsection-14" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-14-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-14-summary" class="dynsummary" style="display:block;">
@@ -1390,19 +1409,19 @@ Private 속성</h2></td></tr>
 
 <p>미션 타이머를 중지합니다 </p>
 
-<p class="definition"><a class="el" href="ALingoGameState_8cpp_source.html">ALingoGameState.cpp</a> 파일의 <a class="el" href="ALingoGameState_8cpp_source.html#l00156">156</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  157</span>{</div>
-<div class="line"><span class="lineno">  158</span>    <span class="keywordflow">if</span> (!HasAuthority())</div>
-<div class="line"><span class="lineno">  159</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  160</span> </div>
-<div class="line"><span class="lineno">  161</span>    <a class="code hl_variable" href="classALingoGameState.html#ab2b1dfcaf07b61dd099209f135ff97fa">bIsTimerActive</a> = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  162</span> </div>
-<div class="line"><span class="lineno">  163</span>    <span class="comment">// NetworkBroadcastActor를 통해 모든 클라이언트에 타이머 중지 알림</span></div>
-<div class="line"><span class="lineno">  164</span>    <span class="keywordflow">if</span> (<a class="code hl_class" href="classANetworkBroadcastActor.html">ANetworkBroadcastActor</a>* BroadcastActor = <a class="code hl_function" href="classANetworkBroadcastActor.html#a39fe94510873c1f8103bfd2d61b7efc7">ANetworkBroadcastActor::Get</a>(<span class="keyword">this</span>))</div>
-<div class="line"><span class="lineno">  165</span>    {</div>
-<div class="line"><span class="lineno">  166</span>        BroadcastActor-&gt;SendUpdateMissionTimerState(<span class="keyword">false</span>, 0.0f, <span class="keyword">this</span>);</div>
-<div class="line"><span class="lineno">  167</span>    }</div>
-<div class="line"><span class="lineno">  168</span>}</div>
+<p class="definition"><a class="el" href="ALingoGameState_8cpp_source.html">ALingoGameState.cpp</a> 파일의 <a class="el" href="ALingoGameState_8cpp_source.html#l00174">174</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  175</span>{</div>
+<div class="line"><span class="lineno">  176</span>    <span class="keywordflow">if</span> (!HasAuthority())</div>
+<div class="line"><span class="lineno">  177</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  178</span> </div>
+<div class="line"><span class="lineno">  179</span>    <a class="code hl_variable" href="classALingoGameState.html#ab2b1dfcaf07b61dd099209f135ff97fa">bIsTimerActive</a> = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  180</span> </div>
+<div class="line"><span class="lineno">  181</span>    <span class="comment">// NetworkBroadcastActor를 통해 모든 클라이언트에 타이머 중지 알림</span></div>
+<div class="line"><span class="lineno">  182</span>    <span class="keywordflow">if</span> (<a class="code hl_class" href="classANetworkBroadcastActor.html">ANetworkBroadcastActor</a>* BroadcastActor = <a class="code hl_function" href="classANetworkBroadcastActor.html#a39fe94510873c1f8103bfd2d61b7efc7">ANetworkBroadcastActor::Get</a>(<span class="keyword">this</span>))</div>
+<div class="line"><span class="lineno">  183</span>    {</div>
+<div class="line"><span class="lineno">  184</span>        BroadcastActor-&gt;SendUpdateMissionTimerState(<span class="keyword">false</span>, 0.0f, <span class="keyword">this</span>);</div>
+<div class="line"><span class="lineno">  185</span>    }</div>
+<div class="line"><span class="lineno">  186</span>}</div>
 </div><!-- fragment -->
 <p class="reference">다음을 참조함 :  <a class="el" href="ALingoGameState_8h_source.html#l00152">bIsTimerActive</a>, <a class="el" href="ANetworkBroadcastActor_8cpp_source.html#l00028">ANetworkBroadcastActor::Get()</a>.</p>
 
@@ -1464,9 +1483,9 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">   84</span>        <a class="code hl_function" href="classALingoGameState.html#a559e1cc5340dab3ab3fe0baeeea47676">OnMissionTimerEnd</a>();</div>
 <div class="line"><span class="lineno">   85</span>    }</div>
 <div class="line"><span class="lineno">   86</span>}</div>
-<div class="ttc" id="aclassALingoGameState_html_a559e1cc5340dab3ab3fe0baeeea47676"><div class="ttname"><a href="classALingoGameState.html#a559e1cc5340dab3ab3fe0baeeea47676">ALingoGameState::OnMissionTimerEnd</a></div><div class="ttdeci">void OnMissionTimerEnd()</div><div class="ttdoc">타이머 종료 시 호출됩니다 (서버에서만 실행)</div><div class="ttdef"><b>Definition</b> <a href="ALingoGameState_8cpp_source.html#l00181">ALingoGameState.cpp:181</a></div></div>
+<div class="ttc" id="aclassALingoGameState_html_a559e1cc5340dab3ab3fe0baeeea47676"><div class="ttname"><a href="classALingoGameState.html#a559e1cc5340dab3ab3fe0baeeea47676">ALingoGameState::OnMissionTimerEnd</a></div><div class="ttdeci">void OnMissionTimerEnd()</div><div class="ttdoc">타이머 종료 시 호출됩니다 (서버에서만 실행)</div><div class="ttdef"><b>Definition</b> <a href="ALingoGameState_8cpp_source.html#l00199">ALingoGameState.cpp:199</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="ALingoGameState_8h_source.html#l00152">bIsTimerActive</a>, <a class="el" href="ALingoGameState_8cpp_source.html#l00181">OnMissionTimerEnd()</a>, <a class="el" href="ALingoGameState_8h_source.html#l00148">RemainMissionTime</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="ALingoGameState_8h_source.html#l00152">bIsTimerActive</a>, <a class="el" href="ALingoGameState_8cpp_source.html#l00199">OnMissionTimerEnd()</a>, <a class="el" href="ALingoGameState_8h_source.html#l00148">RemainMissionTime</a>.</p>
 <div id="dynsection-18" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-18-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-18-summary" class="dynsummary" style="display:block;">
@@ -1493,11 +1512,11 @@ Private 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ALingoGameState_8cpp_source.html">ALingoGameState.cpp</a> 파일의 <a class="el" href="ALingoGameState_8cpp_source.html#l00175">175</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  176</span>{</div>
-<div class="line"><span class="lineno">  177</span>    this-&gt;<a class="code hl_variable" href="classALingoGameState.html#a6f7476b0799155bba7594e1fcbc3daf5">TimeLimit</a> = InTimeLimit;</div>
-<div class="line"><span class="lineno">  178</span>    this-&gt;<a class="code hl_variable" href="classALingoGameState.html#abf8b596488b55e3933d5d3fcf016307f">RemainMissionTime</a> = InTimeLimit;</div>
-<div class="line"><span class="lineno">  179</span>}</div>
+<p class="definition"><a class="el" href="ALingoGameState_8cpp_source.html">ALingoGameState.cpp</a> 파일의 <a class="el" href="ALingoGameState_8cpp_source.html#l00193">193</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  194</span>{</div>
+<div class="line"><span class="lineno">  195</span>    this-&gt;<a class="code hl_variable" href="classALingoGameState.html#a6f7476b0799155bba7594e1fcbc3daf5">TimeLimit</a> = InTimeLimit;</div>
+<div class="line"><span class="lineno">  196</span>    this-&gt;<a class="code hl_variable" href="classALingoGameState.html#abf8b596488b55e3933d5d3fcf016307f">RemainMissionTime</a> = InTimeLimit;</div>
+<div class="line"><span class="lineno">  197</span>}</div>
 </div><!-- fragment -->
 <p class="reference">다음을 참조함 :  <a class="el" href="ALingoGameState_8h_source.html#l00148">RemainMissionTime</a>, <a class="el" href="ALingoGameState_8h_source.html#l00165">TimeLimit</a>.</p>
 
@@ -1537,7 +1556,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="ALingoGameState_8h_source.html">ALingoGameState.h</a> 파일의 <a class="el" href="ALingoGameState_8h_source.html#l00152">152</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALingoGameState_8cpp_source.html#l00021">ALingoGameState()</a>, <a class="el" href="ALingoGameState_8cpp_source.html#l00033">GetLifetimeReplicatedProps()</a>, <a class="el" href="ALingoGameState_8cpp_source.html#l00181">OnMissionTimerEnd()</a>, <a class="el" href="ALingoGameState_8cpp_source.html#l00142">StartMissionTimer()</a>, <a class="el" href="ALingoGameState_8cpp_source.html#l00156">StopMissionTimer()</a>, <a class="el" href="ALingoGameState_8cpp_source.html#l00071">Tick()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALingoGameState_8cpp_source.html#l00021">ALingoGameState()</a>, <a class="el" href="ALingoGameState_8cpp_source.html#l00033">GetLifetimeReplicatedProps()</a>, <a class="el" href="ALingoGameState_8cpp_source.html#l00199">OnMissionTimerEnd()</a>, <a class="el" href="ALingoGameState_8cpp_source.html#l00160">StartMissionTimer()</a>, <a class="el" href="ALingoGameState_8cpp_source.html#l00174">StopMissionTimer()</a>, <a class="el" href="ALingoGameState_8cpp_source.html#l00071">Tick()</a>.</p>
 
 </div>
 </div>
@@ -1555,7 +1574,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="ALingoGameState_8h_source.html">ALingoGameState.h</a> 파일의 <a class="el" href="ALingoGameState_8h_source.html#l00143">143</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALingoGameState_8cpp_source.html#l00033">GetLifetimeReplicatedProps()</a>, <a class="el" href="ALingoGameState_8cpp_source.html#l00288">OnRep_ListenResult()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALingoGameState_8cpp_source.html#l00033">GetLifetimeReplicatedProps()</a>, <a class="el" href="ALingoGameState_8cpp_source.html#l00306">OnRep_ListenResult()</a>.</p>
 
 </div>
 </div>
@@ -1573,7 +1592,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="ALingoGameState_8h_source.html">ALingoGameState.h</a> 파일의 <a class="el" href="ALingoGameState_8h_source.html#l00131">131</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALingoGameState_8cpp_source.html#l00033">GetLifetimeReplicatedProps()</a>, <a class="el" href="ALingoGameState_8cpp_source.html#l00123">SetListenScenarioData()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALingoGameState_8cpp_source.html#l00033">GetLifetimeReplicatedProps()</a>, <a class="el" href="ALingoGameState_8cpp_source.html#l00132">SetListenScenarioData()</a>.</p>
 
 </div>
 </div>
@@ -1591,7 +1610,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="ALingoGameState_8h_source.html">ALingoGameState.h</a> 파일의 <a class="el" href="ALingoGameState_8h_source.html#l00106">106</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALingoGameState_8cpp_source.html#l00288">OnRep_ListenResult()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALingoGameState_8cpp_source.html#l00306">OnRep_ListenResult()</a>.</p>
 
 </div>
 </div>
@@ -1609,7 +1628,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="ALingoGameState_8h_source.html">ALingoGameState.h</a> 파일의 <a class="el" href="ALingoGameState_8h_source.html#l00107">107</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALingoGameState_8cpp_source.html#l00283">OnRep_ListenScenarioData()</a>, <a class="el" href="ALingoGameState_8cpp_source.html#l00273">OnRep_ReadScenarioData()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALingoGameState_8cpp_source.html#l00301">OnRep_ListenScenarioData()</a>, <a class="el" href="ALingoGameState_8cpp_source.html#l00291">OnRep_ReadScenarioData()</a>.</p>
 
 </div>
 </div>
@@ -1627,7 +1646,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="ALingoGameState_8h_source.html">ALingoGameState.h</a> 파일의 <a class="el" href="ALingoGameState_8h_source.html#l00105">105</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALingoGameState_8cpp_source.html#l00278">OnRep_ReadResult()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALingoGameState_8cpp_source.html#l00296">OnRep_ReadResult()</a>.</p>
 
 </div>
 </div>
@@ -1645,7 +1664,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="ALingoGameState_8h_source.html">ALingoGameState.h</a> 파일의 <a class="el" href="ALingoGameState_8h_source.html#l00108">108</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALingoGameState_8cpp_source.html#l00293">OnRep_RoomId()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALingoGameState_8cpp_source.html#l00311">OnRep_RoomId()</a>.</p>
 
 </div>
 </div>
@@ -1663,7 +1682,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="ALingoGameState_8h_source.html">ALingoGameState.h</a> 파일의 <a class="el" href="ALingoGameState_8h_source.html#l00109">109</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALingoGameState_8cpp_source.html#l00298">OnRep_RoomLevel()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALingoGameState_8cpp_source.html#l00316">OnRep_RoomLevel()</a>.</p>
 
 </div>
 </div>
@@ -1689,7 +1708,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="ALingoGameState_8h_source.html">ALingoGameState.h</a> 파일의 <a class="el" href="ALingoGameState_8h_source.html#l00155">155</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALingoGameState_8cpp_source.html#l00033">GetLifetimeReplicatedProps()</a>, <a class="el" href="ALingoGameState_8cpp_source.html#l00181">OnMissionTimerEnd()</a>, <a class="el" href="ALingoGameState_8cpp_source.html#l00123">SetListenScenarioData()</a>, <a class="el" href="ALingoGameState_8cpp_source.html#l00104">SetReadScenarioData()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALingoGameState_8cpp_source.html#l00033">GetLifetimeReplicatedProps()</a>, <a class="el" href="ALingoGameState_8cpp_source.html#l00199">OnMissionTimerEnd()</a>, <a class="el" href="ALingoGameState_8cpp_source.html#l00132">SetListenScenarioData()</a>, <a class="el" href="ALingoGameState_8cpp_source.html#l00104">SetReadScenarioData()</a>.</p>
 
 </div>
 </div>
@@ -1707,7 +1726,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="ALingoGameState_8h_source.html">ALingoGameState.h</a> 파일의 <a class="el" href="ALingoGameState_8h_source.html#l00124">124</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALingoGameState_8cpp_source.html#l00033">GetLifetimeReplicatedProps()</a>, <a class="el" href="ALingoGameState_8cpp_source.html#l00278">OnRep_ReadResult()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALingoGameState_8cpp_source.html#l00033">GetLifetimeReplicatedProps()</a>, <a class="el" href="ALingoGameState_8cpp_source.html#l00296">OnRep_ReadResult()</a>.</p>
 
 </div>
 </div>
@@ -1751,7 +1770,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="ALingoGameState_8h_source.html">ALingoGameState.h</a> 파일의 <a class="el" href="ALingoGameState_8h_source.html#l00148">148</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALingoGameState_8cpp_source.html#l00021">ALingoGameState()</a>, <a class="el" href="ALingoGameState_8cpp_source.html#l00170">DecreaseMissionTimer()</a>, <a class="el" href="ALingoGameState_8cpp_source.html#l00033">GetLifetimeReplicatedProps()</a>, <a class="el" href="ALingoGameState_8cpp_source.html#l00142">StartMissionTimer()</a>, <a class="el" href="ALingoGameState_8cpp_source.html#l00071">Tick()</a>, <a class="el" href="ALingoGameState_8cpp_source.html#l00175">UpdateRemainMissionTime()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALingoGameState_8cpp_source.html#l00021">ALingoGameState()</a>, <a class="el" href="ALingoGameState_8cpp_source.html#l00188">DecreaseMissionTimer()</a>, <a class="el" href="ALingoGameState_8cpp_source.html#l00033">GetLifetimeReplicatedProps()</a>, <a class="el" href="ALingoGameState_8cpp_source.html#l00160">StartMissionTimer()</a>, <a class="el" href="ALingoGameState_8cpp_source.html#l00071">Tick()</a>, <a class="el" href="ALingoGameState_8cpp_source.html#l00193">UpdateRemainMissionTime()</a>.</p>
 
 </div>
 </div>
@@ -1815,7 +1834,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="ALingoGameState_8h_source.html">ALingoGameState.h</a> 파일의 <a class="el" href="ALingoGameState_8h_source.html#l00159">159</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALingoGameState_8cpp_source.html#l00021">ALingoGameState()</a>, <a class="el" href="ALingoGameState_8cpp_source.html#l00055">BeginPlay()</a>, <a class="el" href="ALingoGameState_8cpp_source.html#l00033">GetLifetimeReplicatedProps()</a>, <a class="el" href="ALingoGameState_8cpp_source.html#l00293">OnRep_RoomId()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALingoGameState_8cpp_source.html#l00021">ALingoGameState()</a>, <a class="el" href="ALingoGameState_8cpp_source.html#l00055">BeginPlay()</a>, <a class="el" href="ALingoGameState_8cpp_source.html#l00033">GetLifetimeReplicatedProps()</a>, <a class="el" href="ALingoGameState_8cpp_source.html#l00311">OnRep_RoomId()</a>.</p>
 
 </div>
 </div>
@@ -1841,7 +1860,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="ALingoGameState_8h_source.html">ALingoGameState.h</a> 파일의 <a class="el" href="ALingoGameState_8h_source.html#l00162">162</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALingoGameState_8cpp_source.html#l00021">ALingoGameState()</a>, <a class="el" href="ALingoGameState_8cpp_source.html#l00055">BeginPlay()</a>, <a class="el" href="ALingoGameState_8cpp_source.html#l00033">GetLifetimeReplicatedProps()</a>, <a class="el" href="ALingoGameState_8cpp_source.html#l00298">OnRep_RoomLevel()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALingoGameState_8cpp_source.html#l00021">ALingoGameState()</a>, <a class="el" href="ALingoGameState_8cpp_source.html#l00055">BeginPlay()</a>, <a class="el" href="ALingoGameState_8cpp_source.html#l00033">GetLifetimeReplicatedProps()</a>, <a class="el" href="ALingoGameState_8cpp_source.html#l00316">OnRep_RoomLevel()</a>.</p>
 
 </div>
 </div>
@@ -1867,7 +1886,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="ALingoGameState_8h_source.html">ALingoGameState.h</a> 파일의 <a class="el" href="ALingoGameState_8h_source.html#l00165">165</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALingoGameState_8cpp_source.html#l00142">StartMissionTimer()</a>, <a class="el" href="ALingoGameState_8cpp_source.html#l00175">UpdateRemainMissionTime()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALingoGameState_8cpp_source.html#l00160">StartMissionTimer()</a>, <a class="el" href="ALingoGameState_8cpp_source.html#l00193">UpdateRemainMissionTime()</a>.</p>
 
 </div>
 </div>
@@ -1935,7 +1954,7 @@ Private 속성</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classALingoGameState.html">ALingoGameState</a></li>
-    <li class="footer">생성시간 : 목 12월 18 2025 07:24:25, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 목 12월 18 2025 08:59:02, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>
