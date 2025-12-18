@@ -4,12 +4,13 @@
 #include "ChatInputBox.h"
 
 #include "APlayerControl.h"
+#include "GameLogging.h"
 #include "Components/Button.h"
 #include "Components/MultiLineEditableTextBox.h"
 
-void UChatInputBox::NativeConstruct()
+void UChatInputBox::NativeOnInitialized()
 {
-	Super::NativeConstruct();
+	Super::NativeOnInitialized();
 	
 	Button_Send->OnClicked.AddDynamic(this, &UChatInputBox::HandleSendClicked);
 }
