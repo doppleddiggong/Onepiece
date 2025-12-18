@@ -8,28 +8,15 @@
 #include "Blueprint/UserWidget.h"
 #include "UQuestInfoWidget.generated.h"
 
-
-struct FResponseListenResult;
-struct FResponseReadResult;
-struct FWordData;
-
 UCLASS()
 class ONEPIECE_API UQuestInfoWidget : public UUserWidget
 {
 	GENERATED_BODY()
-	
-public:
-	UFUNCTION()
-	void InitQuestInfo();
 
-private:
-	void SetQuestText(const FWordData& WordData) const;
-
-	void OnQuestScenarioDataReceived();
-	void OnReadResultReceived(const FResponseReadResult& ResponseData);
-	void OnListenResultReceived(const FResponseListenResult& ResponseData);
-	
 public:
+	void UpdateQuestText(FString InTitle, FString InDescription);
+	
+protected:
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly, Category = "Style")
 	TObjectPtr<class UTextBlock> Txt_Title;
 
@@ -38,8 +25,4 @@ public:
 
 	UPROPERTY(meta = (BindWidgetOptional), BlueprintReadOnly, Category = "Style")
 	TObjectPtr<class UImage> Image_Symbol;
-	
-	FDelegateHandle QuestScenarioDataDelegateHandle;
-	FDelegateHandle ReadResultDelegateHandle;
-	FDelegateHandle ListenResultDelegateHandle;
 };
