@@ -76,4 +76,11 @@ private:
 	UFUNCTION()
 	void OnTrolleyHit(UPrimitiveComponent* HitComponent, AActor* OtherActor,
 		UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
+
+	/**
+	 * @brief InteractableComponent의 아웃라인 상태 변경 이벤트 핸들러
+	 * @param bShouldShowOutline [in] true면 아웃라인 표시, false면 숨김
+	 */
+	UFUNCTION()
+	void OnOutlineStateChanged(bool bShouldShowOutline);
 };

@@ -40,6 +40,7 @@ void ATrolley::BeginPlay()
 	if (InteractableComp)
 	{
 		InteractableComp->OnInteractionTriggered.AddDynamic(this, &ATrolley::OnPushed);
+		InteractableComp->OnOutlineStateChanged.AddDynamic(this, &ATrolley::OnOutlineStateChanged);
 	}
 
 	// Bind collision delegate
@@ -112,4 +113,12 @@ void ATrolley::OnTrolleyHit(UPrimitiveComponent* HitComponent, AActor* OtherActo
 
 	// Add velocity in push direction with reduced force
 	CurrentVelocity += PushDirection * PushForce * CollisionPushMultiplier;
+}
+
+void ATrolley::OnOutlineStateChanged(bool bShouldShowOutline)
+{
+	if (MeshComp)
+	{
+		MeshComp->SetRenderCustomDepth(bShouldShowOutline);
+	}
 }

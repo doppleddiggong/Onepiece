@@ -51,9 +51,15 @@ AFood::AFood()
 void AFood::BeginPlay()
 {
 	Super::BeginPlay();
-	
+
 	CityName->AttachToComponent(GetRootComponent(), FAttachmentTransformRules::KeepRelativeTransform);
 	CityName->SetRelativeLocation(FVector(0, 0, 0));
+
+	// 델리게이트 바인딩
+	if (InteractableComp)
+	{
+		InteractableComp->OnOutlineStateChanged.AddDynamic(this, &AFood::OnOutlineStateChanged);
+	}
 }
 
 void AFood::GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const
@@ -143,6 +149,18 @@ void AFood::SetFoodMesh(FWordInfo InWord, UStaticMesh* InMesh)
 	if (HasAuthority())
 	{
 		UpdateMesh();
+	}
+}
+
+void AFood::OnOutlineStateChanged(bool bShouldShowOutline)
+{
+	if (Mesh)
+	{
+		Mesh->SetRenderCustomDepth(bShouldShowOutline);
+	}
+	if (FoodMesh)
+	{
+		FoodMesh->SetRenderCustomDepth(bShouldShowOutline);
 	}
 }
 

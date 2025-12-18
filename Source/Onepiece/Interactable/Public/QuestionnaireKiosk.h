@@ -52,9 +52,12 @@ protected:
 	
 	UFUNCTION()
 	void OnResponseData(FQuestWriteInfo& InResponseData, bool bWasSuccessful);
-	
+
+	UFUNCTION()
+	void OnOutlineStateChanged(bool bShouldShowOutline);
+
 	void ShowPopup();
-	
+
 	void CreateTestData(FQuestWriteInfo& TestData);
 	
 public:

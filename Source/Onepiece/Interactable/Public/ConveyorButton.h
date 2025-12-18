@@ -48,6 +48,9 @@ protected:
 	// Interaction
 	UFUNCTION()
 	void OnInteractionTriggered(AActor* Interactor);
+
+	UFUNCTION()
+	void OnOutlineStateChanged(bool bShouldShowOutline);
 	
 	UFUNCTION(Server, Reliable)
 	void ServerRPC_OnInteractionTriggered(AActor* Interactor);

@@ -52,6 +52,12 @@ void AListenAnswer::BeginPlay()
 
 	NameWidgetComp->AttachToComponent(GetRootComponent(), FAttachmentTransformRules::KeepRelativeTransform);
 	NameWidgetComp->SetRelativeLocation(FVector(0, 0, 10));
+
+	// 델리게이트 바인딩
+	if (InteractableComp)
+	{
+		InteractableComp->OnOutlineStateChanged.AddDynamic(this, &AListenAnswer::OnOutlineStateChanged);
+	}
 }
 
 void AListenAnswer::GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const
@@ -113,5 +119,9 @@ void AListenAnswer::UpdateNameWidget()
 	{
 		NameWidget->SetCityName(AnswerData.word1.name);
 	}
+}
+
+void AListenAnswer::OnOutlineStateChanged(bool bShouldShowOutline)
+{
 }
 

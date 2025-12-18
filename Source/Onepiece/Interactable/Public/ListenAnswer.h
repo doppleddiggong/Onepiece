@@ -76,6 +76,9 @@ public:
 	
 	void SetSpawnData(const FListenAnswerData& InData) { AnswerData = InData; }
 
+	UFUNCTION()
+	void OnOutlineStateChanged(bool bShouldShowOutline);
+
 	void UpdateMesh();
 	void UpdateNameWidget();
 	

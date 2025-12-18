@@ -131,6 +131,7 @@ void AWheatly::BeginPlay()
 
 		InteractableComp->OnInteractionTriggered.RemoveDynamic(this, &AWheatly::OnInteractionTriggered);
 		InteractableComp->OnInteractionTriggered.AddDynamic(this, &AWheatly::OnInteractionTriggered);
+		InteractableComp->OnOutlineStateChanged.AddDynamic(this, &AWheatly::OnOutlineStateChanged);
 	}
 
 	// SpeakStage 자동 연결 (서버에서만)
@@ -364,6 +365,14 @@ void AWheatly::OnInteractionTriggered(AActor* InteractingActor)
 
 	if ( PC )
 		PC->Client_RequestSpeakScenario(this);
+}
+
+void AWheatly::OnOutlineStateChanged(bool bShouldShowOutline)
+{
+	if (MeshComponent)
+	{
+		MeshComponent->SetRenderCustomDepth(bShouldShowOutline);
+	}
 }
 
 void AWheatly::OnSpeakStageSpeakerChanged(APlayerState* NewSpeaker)

@@ -55,6 +55,7 @@ void AQuestionnaireKiosk::BeginPlay()
 	// 델리게이트 바인딩
 	InteractableComp->InitWidget(WidgetComp);
 	InteractableComp->OnInteractionTriggered.AddDynamic(this, &AQuestionnaireKiosk::OnInteractionTriggered);
+	InteractableComp->OnOutlineStateChanged.AddDynamic(this, &AQuestionnaireKiosk::OnOutlineStateChanged);
 }
 
 void AQuestionnaireKiosk::GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const
@@ -178,4 +179,12 @@ void AQuestionnaireKiosk::CreateTestData(FQuestWriteInfo& TestData)
 	TestData.question.Add(Q4);
 	
 	TestData.bIsValid = true;
+}
+
+void AQuestionnaireKiosk::OnOutlineStateChanged(bool bShouldShowOutline)
+{
+	if (KioskMeshComp)
+	{
+		KioskMeshComp->SetRenderCustomDepth(bShouldShowOutline);
+	}
 }

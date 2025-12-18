@@ -24,6 +24,9 @@ public:
 	UFUNCTION()
 	void OnInteractionTriggered(AActor* Interactor);
 
+	UFUNCTION()
+	void OnOutlineStateChanged(bool bShouldShowOutline);
+
 	UFUNCTION(BlueprintNativeEvent, Category = "Interaction")
 	void OnActivate();
 	virtual void OnActivate_Implementation();

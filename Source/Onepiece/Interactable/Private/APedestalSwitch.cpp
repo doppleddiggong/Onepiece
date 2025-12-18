@@ -46,6 +46,7 @@ void APedestalSwitch::BeginPlay()
 	// 델리게이트 바인딩
 	InteractableComp->InitWidget(WidgetComp);
 	InteractableComp->OnInteractionTriggered.AddDynamic(this, &APedestalSwitch::OnInteractionTriggered);
+	InteractableComp->OnOutlineStateChanged.AddDynamic(this, &APedestalSwitch::OnOutlineStateChanged);
 }
 
 void APedestalSwitch::InitSwitch()
@@ -100,4 +101,12 @@ void APedestalSwitch::RecoveryButton()
 void APedestalSwitch::OnActivate_Implementation()
 {
 	PRINT_STRING(TEXT("Pedestal Switch Activated"));
+}
+
+void APedestalSwitch::OnOutlineStateChanged(bool bShouldShowOutline)
+{
+	if (SwitchBody)
+	{
+		SwitchBody->SetRenderCustomDepth(bShouldShowOutline);
+	}
 }
