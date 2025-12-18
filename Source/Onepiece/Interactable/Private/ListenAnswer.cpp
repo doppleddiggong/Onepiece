@@ -123,5 +123,9 @@ void AListenAnswer::UpdateNameWidget()
 
 void AListenAnswer::OnOutlineStateChanged(bool bShouldShowOutline)
 {
+	if (Mesh)
+	{
+		Mesh->SetRenderCustomDepth(bShouldShowOutline);
+	}
 }
 

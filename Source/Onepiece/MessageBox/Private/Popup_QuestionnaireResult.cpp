@@ -15,6 +15,7 @@
 #include "UImageButton.h"
 #include "ULingoGameHelper.h"
 #include "UResultStatWidget.h"
+#include "Components/VerticalBox.h"
 #include "Onepiece/Onepiece.h"
 
 UPopup_QuestionnaireResult::UPopup_QuestionnaireResult(const FObjectInitializer& ObjectInitializer)

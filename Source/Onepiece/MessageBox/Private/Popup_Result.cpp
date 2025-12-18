@@ -14,10 +14,12 @@
 #include "UResultStatWidget.h"
 #include "UTextureButton.h"
 #include "UAnswerItem.h"
+#include "UGameDataManager.h"
 #include "Components/HorizontalBox.h"
 #include "Components/ScrollBox.h"
 #include "Components/TextBlock.h"
 #include "Blueprint/UserWidget.h"
+#include "Components/Image.h"
 #include "Components/Spacer.h"
 #include "Components/VerticalBox.h"
 
@@ -97,11 +99,19 @@ void UPopup_Result::InitWordWidget()
 		{
 			Txt_Kor->SetText(FText::FromString(GS->ReadScenarioData.full_data.Kor));
 			Txt_Eng->SetText(FText::FromString(GS->ReadScenarioData.full_data.Eng));
+
+			Txt_Title->SetText(FText::FromString(TEXT("Read Quest")));
+			if (UTexture2D* Texture = UGameDataManager::Get(this)->GetTexture(EResourceTextureType::Read))
+				Image_Symbol->SetBrushFromTexture(Texture);
 		}
 		else if ( QuestType == EQuestType::Listen )
 		{
 			Txt_Kor->SetText(FText::FromString(GS->ListenScenarioData.full_data.Kor));
 			Txt_Eng->SetText(FText::FromString(GS->ListenScenarioData.full_data.Eng));
+
+			Txt_Title->SetText(FText::FromString(TEXT("Listen Quest")));
+			if (UTexture2D* Texture = UGameDataManager::Get(this)->GetTexture(EResourceTextureType::Listen))
+				Image_Symbol->SetBrushFromTexture(Texture);
 		}
 	}
 }
