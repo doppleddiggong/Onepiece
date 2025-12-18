@@ -27,6 +27,12 @@ enum class EInteractionType : uint8
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnInteractionTriggered, AActor*, Interactor);
 
 /**
+ * @brief 아웃라인 상태 변경 델리게이트
+ * @param bShouldShowOutline true면 아웃라인 표시, false면 아웃라인 숨김
+ */
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnOutlineStateChanged, bool, bShouldShowOutline);
+
+/**
  * @brief 상호작용 가능한 객체의 공통 컴포넌트
  * @details Overlap 기반 근접 감지 + Player LineTrace 확정 방식 사용
  */
@@ -83,6 +89,10 @@ public:
 	UPROPERTY(BlueprintAssignable, Category = "Interaction")
 	FOnInteractionTriggered OnInteractionTriggered;
 
+	/** 아웃라인 상태 변경 시 브로드캐스트 */
+	UPROPERTY(BlueprintAssignable, Category = "Interaction")
+	FOnOutlineStateChanged OnOutlineStateChanged;
+
 public:
 	UFUNCTION()
 	void OnRep_HoldingOwner();
@@ -134,6 +144,14 @@ public:
 	/** 상호작용 트리거 (델리게이트 발생) */
 	UFUNCTION(BlueprintCallable, Category = "Interaction")
 	void TriggerInteraction(AActor* Interactor);
+
+	/**
+	 * @brief 아웃라인 상태 설정 (델리게이트 브로드캐스트)
+	 * @param bEnabled true면 아웃라인 표시, false면 숨김
+	 * @details Widget 표시/숨김 시 호출되며, Actor가 델리게이트를 바인드하여 실제 렌더링 처리
+	 */
+	UFUNCTION(BlueprintCallable, Category = "Interaction")
+	void SetOutlineState(bool bEnabled);
 	
 public:
 	// Interaction

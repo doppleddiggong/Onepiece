@@ -371,7 +371,7 @@ void UHookSystem::DetectHookTarget()
 				// [개선] 타겟이 바뀌면 이전 타겟의 Outline 끄기
 				if (CurHookTarget_Luggage && CurHookTarget != HitActor)
 				{
-					CurHookTarget_Luggage->SetOutlineState(false);
+					CurHookTarget_Luggage->OnOutlineStateChanged(false);
 					PRINTLOG(TEXT("DetectHookTarget: Previous target %s OutlineOff"), *CurHookTarget_Luggage->GetName());
 				}
 
@@ -385,7 +385,7 @@ void UHookSystem::DetectHookTarget()
 	// [개선] 타겟을 잃었을 때 이전 타겟의 Outline 끄기
 	if (CurHookTarget_Luggage)
 	{
-		CurHookTarget_Luggage->SetOutlineState(false);
+		CurHookTarget_Luggage->OnOutlineStateChanged(false);
 		PRINTLOG(TEXT("DetectHookTarget: Lost target %s, OutlineOff"), *CurHookTarget_Luggage->GetName());
 	}
 
@@ -520,7 +520,7 @@ void UHookSystem::UpdateHookTargetUI()
 		// 여기서는 현재 타겟에 대해서만 켜주면 됨
 		if ( CurHookTarget_Luggage != nullptr )
 		{
-			CurHookTarget_Luggage->SetOutlineState(true);
+			CurHookTarget_Luggage->OnOutlineStateChanged(true);
 		}
 
 		// 디버그 표시
