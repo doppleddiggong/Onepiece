@@ -9,6 +9,7 @@ var classUPopup__WriteBoard =
     [ "GetLocalMousePos", "classUPopup__WriteBoard.html#a8f1e36c2fd12f01979387c0f0e776e2c", null ],
     [ "GetPrevMousePos", "classUPopup__WriteBoard.html#a90594597792bc89d79e7dc6aa083b1c0", null ],
     [ "InitPopup", "classUPopup__WriteBoard.html#a204daa214fc4ebd3ee89053840cc29ce", null ],
+    [ "NativeConstruct", "classUPopup__WriteBoard.html#ab5723841a8172946af1c17cd3e31f140", null ],
     [ "NativeOnInitialized", "classUPopup__WriteBoard.html#a1e9975497227381917282816e18c7381", null ],
     [ "NativeOnMouseButtonDown", "classUPopup__WriteBoard.html#aeb35df82201aecc89e27ad19726b9215", null ],
     [ "NativeOnMouseButtonUp", "classUPopup__WriteBoard.html#a952e7f1f71e00904dc5a06bdd3c51291", null ],

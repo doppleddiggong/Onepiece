@@ -1,5 +1,6 @@
 var NAVTREEINDEX14 =
 {
+"functions_func_w.html":[2,3,1,20],
 "functions_func_~.html":[2,3,1,21],
 "functions_g.html":[2,3,0,6],
 "functions_h.html":[2,3,0,7],
@@ -49,8 +50,8 @@ var NAVTREEINDEX14 =
 "globals_func.html":[3,1,1],
 "globals_vars.html":[3,1,2],
 "hierarchy.html":[2,2],
-"index.html":[],
 "index.html":[0],
+"index.html":[],
 "index.html#autotoc_md10":[0,2],
 "index.html#autotoc_md11":[0,2,0],
 "index.html#autotoc_md12":[0,2,1],
@@ -248,6 +249,5 @@ var NAVTREEINDEX14 =
 "structFListenAnswerData.html#a191580551f03bded2a1d7c81181cff6b":[2,0,65,1],
 "structFListenAnswerData.html#a8c9c855125bb82a24ebec7a10fa6cd54":[2,0,65,2],
 "structFListenAnswerData.html#ab3554c9e8daf6d4c6149d52fae35192d":[2,0,65,0],
-"structFListenData.html":[2,0,66],
-"structFListenData.html#a12a623aa35ab6c6938eadf8a3de15649":[2,0,66,7]
+"structFListenData.html":[2,0,66]
 };

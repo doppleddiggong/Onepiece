@@ -115,66 +115,68 @@ $(document).ready(function(){initNavTree('ChatInputBox_8cpp_source.html',''); in
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;<a class="code" href="ChatInputBox_8h.html">ChatInputBox.h</a>&quot;</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;<a class="code" href="APlayerControl_8h.html">APlayerControl.h</a>&quot;</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;Components/Button.h&quot;</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;Components/MultiLineEditableTextBox.h&quot;</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
-<div class="foldopen" id="foldopen00010" data-start="{" data-end="}">
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="classUChatInputBox.html#ada7df093f9d0464af9bea6d9a36334e7">   10</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUChatInputBox.html#ada7df093f9d0464af9bea6d9a36334e7">UChatInputBox::NativeConstruct</a>()</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>{</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    Super::NativeConstruct();</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    </div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    <a class="code hl_variable" href="classUChatInputBox.html#ae0533d766d0dc39730fb7c02f4a6d542">Button_Send</a>-&gt;OnClicked.AddDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUChatInputBox.html#ab0e955ead352543a4480bc46fddf7029">UChatInputBox::HandleSendClicked</a>);</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>}</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;<a class="code" href="GameLogging_8h.html">GameLogging.h</a>&quot;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;Components/Button.h&quot;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;Components/MultiLineEditableTextBox.h&quot;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="foldopen" id="foldopen00011" data-start="{" data-end="}">
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="classUChatInputBox.html#a21745edd73ef2138632b3188ad4c71da">   11</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUChatInputBox.html#a21745edd73ef2138632b3188ad4c71da">UChatInputBox::NativeOnInitialized</a>()</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>{</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    Super::NativeOnInitialized();</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <a class="code hl_variable" href="classUChatInputBox.html#ae0533d766d0dc39730fb7c02f4a6d542">Button_Send</a>-&gt;OnClicked.AddDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUChatInputBox.html#ab0e955ead352543a4480bc46fddf7029">UChatInputBox::HandleSendClicked</a>);</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>}</div>
 </div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
-<div class="foldopen" id="foldopen00017" data-start="{" data-end="}">
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="classUChatInputBox.html#ab18654c43748ccb4af6bc9bd33d7e797">   17</a></span>FReply <a class="code hl_function" href="classUChatInputBox.html#ab18654c43748ccb4af6bc9bd33d7e797">UChatInputBox::NativeOnPreviewKeyDown</a>(<span class="keyword">const</span> FGeometry&amp; InGeometry, <span class="keyword">const</span> FKeyEvent&amp; InKeyEvent)</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>{</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <span class="comment">// Enter 키 감지 &amp; Shift+Enter는 줄바꿈 허용</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <span class="keywordflow">if</span> (InKeyEvent.GetKey() == EKeys::Enter &amp;&amp; !InKeyEvent.IsShiftDown())</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    {</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        <a class="code hl_function" href="classUChatInputBox.html#ab0e955ead352543a4480bc46fddf7029">HandleSendClicked</a>();</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        <span class="keywordflow">return</span> FReply::Handled();</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    }</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <span class="keywordflow">return</span> Super::NativeOnPreviewKeyDown(InGeometry, InKeyEvent);</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>}</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="foldopen" id="foldopen00018" data-start="{" data-end="}">
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="classUChatInputBox.html#ab18654c43748ccb4af6bc9bd33d7e797">   18</a></span>FReply <a class="code hl_function" href="classUChatInputBox.html#ab18654c43748ccb4af6bc9bd33d7e797">UChatInputBox::NativeOnPreviewKeyDown</a>(<span class="keyword">const</span> FGeometry&amp; InGeometry, <span class="keyword">const</span> FKeyEvent&amp; InKeyEvent)</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>{</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <span class="comment">// Enter 키 감지 &amp; Shift+Enter는 줄바꿈 허용</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="keywordflow">if</span> (InKeyEvent.GetKey() == EKeys::Enter &amp;&amp; !InKeyEvent.IsShiftDown())</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    {</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        <a class="code hl_function" href="classUChatInputBox.html#ab0e955ead352543a4480bc46fddf7029">HandleSendClicked</a>();</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        <span class="keywordflow">return</span> FReply::Handled();</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    }</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="keywordflow">return</span> Super::NativeOnPreviewKeyDown(InGeometry, InKeyEvent);</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>}</div>
 </div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
-<div class="foldopen" id="foldopen00029" data-start="{" data-end="}">
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="classUChatInputBox.html#a7ba44143ce5e97966eec4a9f0c8f2831">   29</a></span>FText <a class="code hl_function" href="classUChatInputBox.html#a7ba44143ce5e97966eec4a9f0c8f2831">UChatInputBox::FlushMessage</a>()</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>{</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="comment">// message에 저장 &amp; 텍스트 칸 비우기</span></div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    FText message = <a class="code hl_variable" href="classUChatInputBox.html#a90c68ef60681e4cd1f949923eb63df75">MultiLineEditableTextBox_Input</a>-&gt;GetText();</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <a class="code hl_variable" href="classUChatInputBox.html#a90c68ef60681e4cd1f949923eb63df75">MultiLineEditableTextBox_Input</a>-&gt;SetText(FText::GetEmpty());</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    </div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="keywordflow">return</span> message;</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>}</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
+<div class="foldopen" id="foldopen00030" data-start="{" data-end="}">
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="classUChatInputBox.html#a7ba44143ce5e97966eec4a9f0c8f2831">   30</a></span>FText <a class="code hl_function" href="classUChatInputBox.html#a7ba44143ce5e97966eec4a9f0c8f2831">UChatInputBox::FlushMessage</a>()</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>{</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <span class="comment">// message에 저장 &amp; 텍스트 칸 비우기</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    FText message = <a class="code hl_variable" href="classUChatInputBox.html#a90c68ef60681e4cd1f949923eb63df75">MultiLineEditableTextBox_Input</a>-&gt;GetText();</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <a class="code hl_variable" href="classUChatInputBox.html#a90c68ef60681e4cd1f949923eb63df75">MultiLineEditableTextBox_Input</a>-&gt;SetText(FText::GetEmpty());</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="keywordflow">return</span> message;</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>}</div>
 </div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
-<div class="foldopen" id="foldopen00038" data-start="{" data-end="}">
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="classUChatInputBox.html#ab0e955ead352543a4480bc46fddf7029">   38</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUChatInputBox.html#ab0e955ead352543a4480bc46fddf7029">UChatInputBox::HandleSendClicked</a>()</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>{</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="comment">// 텍스트가 비어있지 않다면 Broadcast</span></div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    FText message = <a class="code hl_function" href="classUChatInputBox.html#a7ba44143ce5e97966eec4a9f0c8f2831">FlushMessage</a>();</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="keywordflow">if</span> (!message.IsEmpty())</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    {       </div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        <span class="keywordflow">if</span> (<span class="keyword">auto</span>* PC = Cast&lt;APlayerControl&gt;(GetWorld()-&gt;GetFirstPlayerController&lt;APlayerController&gt;()))</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        {</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>            PC-&gt;ServerRPC_SendChat(message);</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        }</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    }</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>}</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
+<div class="foldopen" id="foldopen00039" data-start="{" data-end="}">
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="classUChatInputBox.html#ab0e955ead352543a4480bc46fddf7029">   39</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUChatInputBox.html#ab0e955ead352543a4480bc46fddf7029">UChatInputBox::HandleSendClicked</a>()</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>{</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="comment">// 텍스트가 비어있지 않다면 Broadcast</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    FText message = <a class="code hl_function" href="classUChatInputBox.html#a7ba44143ce5e97966eec4a9f0c8f2831">FlushMessage</a>();</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="keywordflow">if</span> (!message.IsEmpty())</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    {       </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        <span class="keywordflow">if</span> (<span class="keyword">auto</span>* PC = Cast&lt;APlayerControl&gt;(GetWorld()-&gt;GetFirstPlayerController&lt;APlayerController&gt;()))</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        {</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>            PC-&gt;ServerRPC_SendChat(message);</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        }</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    }</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>}</div>
 </div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
 <div class="ttc" id="aAPlayerControl_8h_html"><div class="ttname"><a href="APlayerControl_8h.html">APlayerControl.h</a></div><div class="ttdoc">APlayerControl 선언에 대한 Doxygen 주석을 제공합니다.</div></div>
 <div class="ttc" id="aChatInputBox_8h_html"><div class="ttname"><a href="ChatInputBox_8h.html">ChatInputBox.h</a></div></div>
-<div class="ttc" id="aclassUChatInputBox_html_a7ba44143ce5e97966eec4a9f0c8f2831"><div class="ttname"><a href="classUChatInputBox.html#a7ba44143ce5e97966eec4a9f0c8f2831">UChatInputBox::FlushMessage</a></div><div class="ttdeci">FText FlushMessage()</div><div class="ttdef"><b>Definition</b> <a href="ChatInputBox_8cpp_source.html#l00029">ChatInputBox.cpp:29</a></div></div>
+<div class="ttc" id="aGameLogging_8h_html"><div class="ttname"><a href="GameLogging_8h.html">GameLogging.h</a></div><div class="ttdoc">YiSan 전반에서 사용하는 공용 인터페이스를 선언합니다.</div></div>
+<div class="ttc" id="aclassUChatInputBox_html_a21745edd73ef2138632b3188ad4c71da"><div class="ttname"><a href="classUChatInputBox.html#a21745edd73ef2138632b3188ad4c71da">UChatInputBox::NativeOnInitialized</a></div><div class="ttdeci">virtual void NativeOnInitialized() override</div><div class="ttdef"><b>Definition</b> <a href="ChatInputBox_8cpp_source.html#l00011">ChatInputBox.cpp:11</a></div></div>
+<div class="ttc" id="aclassUChatInputBox_html_a7ba44143ce5e97966eec4a9f0c8f2831"><div class="ttname"><a href="classUChatInputBox.html#a7ba44143ce5e97966eec4a9f0c8f2831">UChatInputBox::FlushMessage</a></div><div class="ttdeci">FText FlushMessage()</div><div class="ttdef"><b>Definition</b> <a href="ChatInputBox_8cpp_source.html#l00030">ChatInputBox.cpp:30</a></div></div>
 <div class="ttc" id="aclassUChatInputBox_html_a90c68ef60681e4cd1f949923eb63df75"><div class="ttname"><a href="classUChatInputBox.html#a90c68ef60681e4cd1f949923eb63df75">UChatInputBox::MultiLineEditableTextBox_Input</a></div><div class="ttdeci">TObjectPtr&lt; class UMultiLineEditableTextBox &gt; MultiLineEditableTextBox_Input</div><div class="ttdef"><b>Definition</b> <a href="ChatInputBox_8h_source.html#l00026">ChatInputBox.h:26</a></div></div>
-<div class="ttc" id="aclassUChatInputBox_html_ab0e955ead352543a4480bc46fddf7029"><div class="ttname"><a href="classUChatInputBox.html#ab0e955ead352543a4480bc46fddf7029">UChatInputBox::HandleSendClicked</a></div><div class="ttdeci">void HandleSendClicked()</div><div class="ttdef"><b>Definition</b> <a href="ChatInputBox_8cpp_source.html#l00038">ChatInputBox.cpp:38</a></div></div>
-<div class="ttc" id="aclassUChatInputBox_html_ab18654c43748ccb4af6bc9bd33d7e797"><div class="ttname"><a href="classUChatInputBox.html#ab18654c43748ccb4af6bc9bd33d7e797">UChatInputBox::NativeOnPreviewKeyDown</a></div><div class="ttdeci">virtual FReply NativeOnPreviewKeyDown(const FGeometry &amp;InGeometry, const FKeyEvent &amp;InKeyEvent) override</div><div class="ttdef"><b>Definition</b> <a href="ChatInputBox_8cpp_source.html#l00017">ChatInputBox.cpp:17</a></div></div>
-<div class="ttc" id="aclassUChatInputBox_html_ada7df093f9d0464af9bea6d9a36334e7"><div class="ttname"><a href="classUChatInputBox.html#ada7df093f9d0464af9bea6d9a36334e7">UChatInputBox::NativeConstruct</a></div><div class="ttdeci">virtual void NativeConstruct() override</div><div class="ttdef"><b>Definition</b> <a href="ChatInputBox_8cpp_source.html#l00010">ChatInputBox.cpp:10</a></div></div>
+<div class="ttc" id="aclassUChatInputBox_html_ab0e955ead352543a4480bc46fddf7029"><div class="ttname"><a href="classUChatInputBox.html#ab0e955ead352543a4480bc46fddf7029">UChatInputBox::HandleSendClicked</a></div><div class="ttdeci">void HandleSendClicked()</div><div class="ttdef"><b>Definition</b> <a href="ChatInputBox_8cpp_source.html#l00039">ChatInputBox.cpp:39</a></div></div>
+<div class="ttc" id="aclassUChatInputBox_html_ab18654c43748ccb4af6bc9bd33d7e797"><div class="ttname"><a href="classUChatInputBox.html#ab18654c43748ccb4af6bc9bd33d7e797">UChatInputBox::NativeOnPreviewKeyDown</a></div><div class="ttdeci">virtual FReply NativeOnPreviewKeyDown(const FGeometry &amp;InGeometry, const FKeyEvent &amp;InKeyEvent) override</div><div class="ttdef"><b>Definition</b> <a href="ChatInputBox_8cpp_source.html#l00018">ChatInputBox.cpp:18</a></div></div>
 <div class="ttc" id="aclassUChatInputBox_html_ae0533d766d0dc39730fb7c02f4a6d542"><div class="ttname"><a href="classUChatInputBox.html#ae0533d766d0dc39730fb7c02f4a6d542">UChatInputBox::Button_Send</a></div><div class="ttdeci">TObjectPtr&lt; class UButton &gt; Button_Send</div><div class="ttdef"><b>Definition</b> <a href="ChatInputBox_8h_source.html#l00029">ChatInputBox.h:29</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
@@ -182,7 +184,7 @@ $(document).ready(function(){initNavTree('ChatInputBox_8cpp_source.html',''); in
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_55b064ed9f704d76d3805f2fda876350.html">UI</a></li><li class="navelem"><a class="el" href="dir_550f083bbe519bd985f450628c1369b6.html">Private</a></li><li class="navelem"><a class="el" href="ChatInputBox_8cpp.html">ChatInputBox.cpp</a></li>
-    <li class="footer">생성시간 : 목 12월 18 2025 05:19:58, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 목 12월 18 2025 06:31:41, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>
