@@ -355,6 +355,10 @@ void APlayerActor::ApplyAnotherValue()
 		if (DynamicMaterial)
 			DynamicMaterial->SetScalarParameterValue(FName("Another"), AnotherValue);
 	}
+
+
+	auto PS = GetPlayerState<ALingoPlayerState>();
+	PS->RefreshQuestState();
 }
 
 void APlayerActor::RecoveryMovementMode(const EMovementMode InMovementMode)

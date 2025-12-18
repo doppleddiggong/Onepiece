@@ -58,6 +58,10 @@ protected:
     virtual void BeginPlay() override;
     virtual void SetupInputComponent() override;
 
+	/// @brief DoorMessage 이벤트 핸들러
+	UFUNCTION()
+	void OnDoorMessage(int32 InDoorIndex, bool bInOpen);
+
 	// --- Input Assets ---
 	UPROPERTY(EditDefaultsOnly, Category="Input")
 	TObjectPtr<class UInputMappingContext> IMC_Default;	

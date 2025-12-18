@@ -6,6 +6,7 @@
  */
 #include "APlayerControl.h"
 
+#include "Onepiece.h"
 #include "APlayerActor.h"
 #include "IControllable.h"
 #include "UMainWidget.h"
@@ -84,6 +85,12 @@ void APlayerControl::BeginPlay()
 	{
 		UserInfo = ULingoGameInstanceSubsystem::Get(GetWorld())->GetUserInfo();
 		Server_SetUserInfo(UserInfo);
+	}
+
+	// 서버에서만 DoorMessage 구독
+	if (HasAuthority())
+	{
+		UBroadcastManager::Get(GetWorld())->OnDoorMessage.AddDynamic(this, &APlayerControl::OnDoorMessage);
 	}
 }
 
@@ -560,5 +567,39 @@ void APlayerControl::ServerRPC_SendChat_Implementation(const FText& inMessage)
 	{
 		// PRINTLOG(TEXT("[SendChat] APlayerControl::ServerRPC_SendChat: %s"), *inMessage.ToString());
 		GS->MulticastRPC_SendChat(UserInfo, inMessage);
+	}
+}
+
+void APlayerControl::OnDoorMessage(int32 InDoorIndex, bool bInOpen)
+{
+	// 서버에서만 실행
+	if (!HasAuthority())
+		return;
+
+	// 문이 열릴 때만 처리
+	if (!bInOpen)
+		return;
+
+	// PlayerState 가져오기
+	ALingoPlayerState* PS = GetPlayerState<ALingoPlayerState>();
+	if (!PS)
+		return;
+
+	// End DoorIndex에 따라 퀘스트 완료 처리
+	if (InDoorIndex == DoorGroup::Step1_End)
+	{
+		PS->SetReadQuestCompleted();
+	}
+	else if (InDoorIndex == DoorGroup::Step2_End)
+	{
+		PS->SetListenQuestCompleted();
+	}
+	else if (InDoorIndex == DoorGroup::Step3_End)
+	{
+		PS->SetSpeakQuestCompleted();
+	}
+	else if (InDoorIndex == DoorGroup::Step4_End)
+	{
+		PS->SetWriteQuestCompleted();
 	}
 }

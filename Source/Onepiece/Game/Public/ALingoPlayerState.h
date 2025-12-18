@@ -29,6 +29,8 @@ public:
 	/// @return Chat AI에게 전달할 Context 문자열
 	FString GetChatContext() const;
 
+	void RefreshQuestState();
+	
 private:
 	FString AccessToken;
 
@@ -97,6 +99,30 @@ public:
 	UFUNCTION(BlueprintPure, Category = "SpeakQuest")
 	bool IsSpeakQuestCompleted() const { return bSpeakQuestCompleted; }
 
+	/// @brief ReadQuest 완료 처리 (서버에서만 호출)
+	UFUNCTION(BlueprintCallable, Category = "ReadQuest")
+	void SetReadQuestCompleted();
+
+	/// @brief ReadQuest 완료 여부 확인
+	UFUNCTION(BlueprintPure, Category = "ReadQuest")
+	bool IsReadQuestCompleted() const { return bReadQuestCompleted; }
+
+	/// @brief ListenQuest 완료 처리 (서버에서만 호출)
+	UFUNCTION(BlueprintCallable, Category = "ListenQuest")
+	void SetListenQuestCompleted();
+
+	/// @brief ListenQuest 완료 여부 확인
+	UFUNCTION(BlueprintPure, Category = "ListenQuest")
+	bool IsListenQuestCompleted() const { return bListenQuestCompleted; }
+
+	/// @brief WriteQuest 완료 처리 (서버에서만 호출)
+	UFUNCTION(BlueprintCallable, Category = "WriteQuest")
+	void SetWriteQuestCompleted();
+
+	/// @brief WriteQuest 완료 여부 확인
+	UFUNCTION(BlueprintPure, Category = "WriteQuest")
+	bool IsWriteQuestCompleted() const { return bWriteQuestCompleted; }
+
 	/// @brief SpeakScenarioData 복제 알림 함수
 	UFUNCTION()
 	void OnRep_SpeakScenarioData();
@@ -146,9 +172,36 @@ public:
 	TArray<struct FResponseSpeakingJudes> SpeakJudesResults;
 
 
+	/// @brief ReadQuest 완료 여부 플래그
+	UPROPERTY(Replicated, BlueprintReadOnly, Category = "ReadQuest")
+	bool bReadQuestCompleted = false;
 
-	
+	/// @brief ListenQuest 완료 여부 플래그
+	UPROPERTY(Replicated, BlueprintReadOnly, Category = "ListenQuest")
+	bool bListenQuestCompleted = false;
+
 	/// @brief SpeakQuest 완료 여부 플래그
 	UPROPERTY(Replicated, BlueprintReadOnly, Category = "SpeakQuest")
 	bool bSpeakQuestCompleted = false;
+	
+	/// @brief WriteQuest 완료 여부 플래그
+	UPROPERTY(Replicated, BlueprintReadOnly, Category = "WriteQuest")
+	bool bWriteQuestCompleted = false;
+
+
+	/// @brief ReadQuest 진행 여부 플래그
+	UPROPERTY(Replicated, BlueprintReadOnly, Category = "ReadQuest")
+	bool bReadQuestIng = false;
+
+	/// @brief ListenQuest 진행 여부 플래그
+	UPROPERTY(Replicated, BlueprintReadOnly, Category = "ListenQuest")
+	bool bListenQuestIng = false;
+
+	/// @brief SpeakQuest 진행 여부 플래그
+	UPROPERTY(Replicated, BlueprintReadOnly, Category = "ListenQuest")
+	bool bSpeakQuestIng = false;
+	
+	/// @brief WriteQuest 진행 여부 플래그
+	UPROPERTY(Replicated, BlueprintReadOnly, Category = "WriteQuest")
+	bool bWriteQuestIng  = false;
 };
