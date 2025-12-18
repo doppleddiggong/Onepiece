@@ -9,6 +9,7 @@ var classAWheatly =
     [ "IsInRange", "classAWheatly.html#a024a2ee9a57c8ffeb4bb26e735be37c2", null ],
     [ "Multicast_PlayAnimation", "classAWheatly.html#a512a171176b7c9415b6ca06bc224145c", null ],
     [ "OnInteractionTriggered", "classAWheatly.html#a6be73e48c13e16e1067f5e0c1ecc8e14", null ],
+    [ "OnOutlineStateChanged", "classAWheatly.html#a44beceb66f8876e6f82c988e256ee541", null ],
     [ "OnRep_EyeColor", "classAWheatly.html#a02e74e0635b687afd982c2e2a820cf10", null ],
     [ "OnRep_EyeSightState", "classAWheatly.html#abc886bbcabd177c7e537a9a2f1c2ad87", null ],
     [ "OnSpeakStageSpeakerChanged", "classAWheatly.html#aab5ee709d119366163acf099a27d06cb", null ],

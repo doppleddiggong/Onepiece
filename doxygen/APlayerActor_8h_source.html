@@ -247,74 +247,76 @@ $(document).ready(function(){initNavTree('APlayerActor_8h_source.html',''); init
 <div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span> </div>
 <div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>    <span class="keywordtype">void</span> RequestListenAudio(<span class="keyword">const</span> FString&amp; AudioText);</div>
 <div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>    <span class="keywordtype">void</span> RequestSpeakAudio(<span class="keyword">const</span> FString&amp; AudioText);</div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>    </div>
-<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>    <span class="keywordtype">bool</span> IsMainMap();</div>
-<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span> </div>
-<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>    <span class="keywordtype">void</span> ApplyAnotherValue();</div>
-<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>    </div>
-<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>    <span class="keywordtype">void</span> CreateMainWidget();</div>
-<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>    <span class="keywordtype">void</span> CreateToastWidget();</div>
-<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span> </div>
-<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>    <span class="keywordtype">void</span> OnResponseListenAudio(<a class="code hl_struct" href="structFResponseListenAudio.html">FResponseListenAudio</a>&amp; ResponseData, <span class="keywordtype">bool</span> bWasSuccessful);</div>
-<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>    <span class="keywordtype">void</span> OnResponseSpeakAudio(<a class="code hl_struct" href="structFResponseListenAudio.html">FResponseListenAudio</a>&amp; ResponseData, <span class="keywordtype">bool</span> bWasSuccessful);</div>
-<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>    </div>
-<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>    UFUNCTION()</div>
-<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>    void OnTeleportAllPlayers(FVector TargetLocation);</div>
-<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span> </div>
-<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>    UFUNCTION()</div>
-<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>    <span class="keywordtype">void</span> OnFadeOutCompleteForTeleport();</div>
-<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span> </div>
-<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>    UFUNCTION()</div>
-<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>    <span class="keywordtype">void</span> OnUpdateQuestInfo();</div>
-<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>    </div>
-<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>    UFUNCTION()</div>
-<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>    <span class="keywordtype">void</span> OnUpdateQuestRole(<a class="code hl_enumeration" href="EQuestRole_8h.html#af9534ca095b724046bf40abddcbb95e9">EQuestRole</a> QuestRole);</div>
-<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span> </div>
-<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>    UFUNCTION()</div>
-<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>    <span class="keywordtype">void</span> OnRoomIdUpdated(int64 NewRoomId);</div>
-<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span> </div>
-<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>    UFUNCTION()</div>
-<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>    <span class="keywordtype">void</span> OnRoomLevelUpdated(int32 NewRoomLevel);</div>
-<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span> </div>
-<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>    UFUNCTION()</div>
-<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>    <span class="keywordtype">void</span> OnListenResultUpdated( const <a class="code hl_struct" href="structFResponseListenResult.html">FResponseListenResult</a>&amp; Result);</div>
-<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span> </div>
-<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>    UFUNCTION()</div>
-<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>    <span class="keywordtype">void</span> OnReadResultUpdated(const <a class="code hl_struct" href="structFResponseReadResult.html">FResponseReadResult</a>&amp; Result);</div>
-<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span> </div>
-<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>protected:</div>
-<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>    <span class="comment">// 서버쪽 pitch 수동으로 동기화</span></div>
-<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>    <span class="comment">// bUsePawnControlRotation은 서버-&gt;클라로 전달 안됨</span></div>
-<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>    UPROPERTY(ReplicatedUsing=OnRep_LookPitch)</div>
-<div class="line"><a id="l00205" name="l00205"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#a60fe9ba6d54052fad6f9c4a8305fd023">  205</a></span>    <span class="keywordtype">float</span> LookPitch;</div>
-<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span> </div>
-<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>    UPROPERTY(ReplicatedUsing=OnRep_AnotherValue)</div>
-<div class="line"><a id="l00209" name="l00209"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#a57d536023470eebddc11f8c929d6dfd5">  209</a></span>    <span class="keywordtype">float</span> AnotherValue;</div>
-<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span> </div>
-<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>private:</div>
-<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>    UPROPERTY(EditDefaultsOnly, Category = &quot;UI&quot;)</div>
-<div class="line"><a id="l00214" name="l00214"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#a7dad1553f9372858902bdd65e2f77243">  214</a></span>    TSubclassOf&lt;class <a class="code hl_class" href="classUMainWidget.html">UMainWidget</a>&gt; MainWidgetClass;</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span> </div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>    <span class="keywordtype">bool</span> IsControlEnabled() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span> </div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>    <span class="keywordtype">bool</span> IsMainMap();</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span> </div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>    <span class="keywordtype">void</span> ApplyAnotherValue();</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>    </div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>    <span class="keywordtype">void</span> CreateMainWidget();</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>    <span class="keywordtype">void</span> CreateToastWidget();</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span> </div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>    <span class="keywordtype">void</span> OnResponseListenAudio(<a class="code hl_struct" href="structFResponseListenAudio.html">FResponseListenAudio</a>&amp; ResponseData, <span class="keywordtype">bool</span> bWasSuccessful);</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>    <span class="keywordtype">void</span> OnResponseSpeakAudio(<a class="code hl_struct" href="structFResponseListenAudio.html">FResponseListenAudio</a>&amp; ResponseData, <span class="keywordtype">bool</span> bWasSuccessful);</div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>    </div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>    UFUNCTION()</div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>    void OnTeleportAllPlayers(FVector TargetLocation);</div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span> </div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>    UFUNCTION()</div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>    <span class="keywordtype">void</span> OnFadeOutCompleteForTeleport();</div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span> </div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>    UFUNCTION()</div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>    <span class="keywordtype">void</span> OnUpdateQuestInfo();</div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>    </div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>    UFUNCTION()</div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>    <span class="keywordtype">void</span> OnUpdateQuestRole(<a class="code hl_enumeration" href="EQuestRole_8h.html#af9534ca095b724046bf40abddcbb95e9">EQuestRole</a> QuestRole);</div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span> </div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>    UFUNCTION()</div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>    <span class="keywordtype">void</span> OnRoomIdUpdated(int64 NewRoomId);</div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span> </div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>    UFUNCTION()</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>    <span class="keywordtype">void</span> OnRoomLevelUpdated(int32 NewRoomLevel);</div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span> </div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>    UFUNCTION()</div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>    <span class="keywordtype">void</span> OnListenResultUpdated( const <a class="code hl_struct" href="structFResponseListenResult.html">FResponseListenResult</a>&amp; Result);</div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span> </div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>    UFUNCTION()</div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>    <span class="keywordtype">void</span> OnReadResultUpdated(const <a class="code hl_struct" href="structFResponseReadResult.html">FResponseReadResult</a>&amp; Result);</div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span> </div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>protected:</div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>    <span class="comment">// 서버쪽 pitch 수동으로 동기화</span></div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>    <span class="comment">// bUsePawnControlRotation은 서버-&gt;클라로 전달 안됨</span></div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>    UPROPERTY(ReplicatedUsing=OnRep_LookPitch)</div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#a60fe9ba6d54052fad6f9c4a8305fd023">  210</a></span>    <span class="keywordtype">float</span> LookPitch;</div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span> </div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>    UPROPERTY(ReplicatedUsing=OnRep_AnotherValue)</div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#a57d536023470eebddc11f8c929d6dfd5">  214</a></span>    <span class="keywordtype">float</span> AnotherValue;</div>
 <div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span> </div>
-<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>    UPROPERTY()</div>
-<div class="line"><a id="l00218" name="l00218"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#a21817a3bc97f6962b8ece7941b67996d">  218</a></span>    TObjectPtr&lt;class <a class="code hl_class" href="classUMainWidget.html">UMainWidget</a>&gt; MainWidget;</div>
-<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span> </div>
-<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>    UPROPERTY(EditDefaultsOnly, Category = &quot;UI&quot;)</div>
-<div class="line"><a id="l00221" name="l00221"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#a61c0d769522fe0960b2f15d456d8f68d">  221</a></span>    TSubclassOf&lt;class <a class="code hl_class" href="classUToastWidget.html">UToastWidget</a>&gt; ToastWidgetClass;</div>
-<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span> </div>
-<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>    UPROPERTY()</div>
-<div class="line"><a id="l00224" name="l00224"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#ae8fbec6d1c7f5d41e2e5c333d35d3a17">  224</a></span>    TObjectPtr&lt;class <a class="code hl_class" href="classUToastWidget.html">UToastWidget</a>&gt; ToastWidget;</div>
-<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span> </div>
-<div class="line"><a id="l00227" name="l00227"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#af642d2936891008c201f850f9cd76509">  227</a></span>    FVector PendingTeleportLocation;</div>
-<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>    </div>
-<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>    <span class="comment">// Movement 관련 변수</span></div>
-<div class="line"><a id="l00230" name="l00230"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#a1ea19f988738aada96a8f3637338163f">  230</a></span>    <span class="keywordtype">float</span> WalkSpeed = 200.f;</div>
-<div class="line"><a id="l00231" name="l00231"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#a0e9166eaab407919546d8accca997855">  231</a></span>    <span class="keywordtype">float</span> RunSpeed = 500.f;</div>
-<div class="line"><a id="l00232" name="l00232"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#aece858bea4efda77305623144f2bad45">  232</a></span>    <span class="keywordtype">bool</span> bIsRunning = false;</div>
-<div class="line"><a id="l00233" name="l00233"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#ab2162e911aea12e7e720e5bfcb3dbf8f">  233</a></span>    <span class="keywordtype">bool</span> bIsJumpStart = false;</div>
-<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span> </div>
-<div class="line"><a id="l00235" name="l00235"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#a98978cab98af6b0bff70b65be2b0d5d5">  235</a></span>    <span class="keywordtype">bool</span> bIsRequest = false;</div>
-<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>};</div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>private:</div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>    UPROPERTY(EditDefaultsOnly, Category = &quot;UI&quot;)</div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#a7dad1553f9372858902bdd65e2f77243">  219</a></span>    TSubclassOf&lt;class <a class="code hl_class" href="classUMainWidget.html">UMainWidget</a>&gt; MainWidgetClass;</div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span> </div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>    UPROPERTY()</div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#a21817a3bc97f6962b8ece7941b67996d">  223</a></span>    TObjectPtr&lt;class <a class="code hl_class" href="classUMainWidget.html">UMainWidget</a>&gt; MainWidget;</div>
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span> </div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>    UPROPERTY(EditDefaultsOnly, Category = &quot;UI&quot;)</div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#a61c0d769522fe0960b2f15d456d8f68d">  226</a></span>    TSubclassOf&lt;class <a class="code hl_class" href="classUToastWidget.html">UToastWidget</a>&gt; ToastWidgetClass;</div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span> </div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>    UPROPERTY()</div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#ae8fbec6d1c7f5d41e2e5c333d35d3a17">  229</a></span>    TObjectPtr&lt;class <a class="code hl_class" href="classUToastWidget.html">UToastWidget</a>&gt; ToastWidget;</div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span> </div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#af642d2936891008c201f850f9cd76509">  232</a></span>    FVector PendingTeleportLocation;</div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>    </div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>    <span class="comment">// Movement 관련 변수</span></div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#a1ea19f988738aada96a8f3637338163f">  235</a></span>    <span class="keywordtype">float</span> WalkSpeed = 200.f;</div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#a0e9166eaab407919546d8accca997855">  236</a></span>    <span class="keywordtype">float</span> RunSpeed = 500.f;</div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#aece858bea4efda77305623144f2bad45">  237</a></span>    <span class="keywordtype">bool</span> bIsRunning = false;</div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#ab2162e911aea12e7e720e5bfcb3dbf8f">  238</a></span>    <span class="keywordtype">bool</span> bIsJumpStart = false;</div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span> </div>
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#a98978cab98af6b0bff70b65be2b0d5d5">  240</a></span>    <span class="keywordtype">bool</span> bIsRequest = false;</div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>};</div>
 </div>
 <div class="ttc" id="aEQuestRole_8h_html_af9534ca095b724046bf40abddcbb95e9"><div class="ttname"><a href="EQuestRole_8h.html#af9534ca095b724046bf40abddcbb95e9">EQuestRole</a></div><div class="ttdeci">EQuestRole</div><div class="ttdoc">Read 퀘스트에서 플레이어의 역할을 정의합니다.</div><div class="ttdef"><b>Definition</b> <a href="EQuestRole_8h_source.html#l00005">EQuestRole.h:6</a></div></div>
 <div class="ttc" id="aIControllable_8h_html"><div class="ttname"><a href="IControllable_8h.html">IControllable.h</a></div><div class="ttdoc">UControllable 클래스를 선언합니다.</div></div>
@@ -334,7 +336,7 @@ $(document).ready(function(){initNavTree('APlayerActor_8h_source.html',''); init
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_71a9f6b769ee24fe8598c19ea2d70480.html">Character</a></li><li class="navelem"><a class="el" href="dir_82ba722683279238407f867a1ffc0276.html">Public</a></li><li class="navelem"><a class="el" href="APlayerActor_8h.html">APlayerActor.h</a></li>
-    <li class="footer">생성시간 : 목 12월 18 2025 06:31:40, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 목 12월 18 2025 06:32:40, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

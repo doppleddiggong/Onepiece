@@ -457,7 +457,7 @@ $(document).ready(function(){initNavTree('UHookSystem_8cpp_source.html',''); ini
 <div class="line"><a id="l00371" name="l00371"></a><span class="lineno">  371</span>                <span class="comment">// [개선] 타겟이 바뀌면 이전 타겟의 Outline 끄기</span></div>
 <div class="line"><a id="l00372" name="l00372"></a><span class="lineno">  372</span>                <span class="keywordflow">if</span> (CurHookTarget_Luggage &amp;&amp; CurHookTarget != HitActor)</div>
 <div class="line"><a id="l00373" name="l00373"></a><span class="lineno">  373</span>                {</div>
-<div class="line"><a id="l00374" name="l00374"></a><span class="lineno">  374</span>                    CurHookTarget_Luggage-&gt;OutlineOff();</div>
+<div class="line"><a id="l00374" name="l00374"></a><span class="lineno">  374</span>                    CurHookTarget_Luggage-&gt;OnOutlineStateChanged(<span class="keyword">false</span>);</div>
 <div class="line"><a id="l00375" name="l00375"></a><span class="lineno">  375</span>                    <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;DetectHookTarget: Previous target %s OutlineOff&quot;</span>), *CurHookTarget_Luggage-&gt;GetName());</div>
 <div class="line"><a id="l00376" name="l00376"></a><span class="lineno">  376</span>                }</div>
 <div class="line"><a id="l00377" name="l00377"></a><span class="lineno">  377</span> </div>
@@ -471,7 +471,7 @@ $(document).ready(function(){initNavTree('UHookSystem_8cpp_source.html',''); ini
 <div class="line"><a id="l00385" name="l00385"></a><span class="lineno">  385</span>    <span class="comment">// [개선] 타겟을 잃었을 때 이전 타겟의 Outline 끄기</span></div>
 <div class="line"><a id="l00386" name="l00386"></a><span class="lineno">  386</span>    <span class="keywordflow">if</span> (CurHookTarget_Luggage)</div>
 <div class="line"><a id="l00387" name="l00387"></a><span class="lineno">  387</span>    {</div>
-<div class="line"><a id="l00388" name="l00388"></a><span class="lineno">  388</span>        CurHookTarget_Luggage-&gt;OutlineOff();</div>
+<div class="line"><a id="l00388" name="l00388"></a><span class="lineno">  388</span>        CurHookTarget_Luggage-&gt;OnOutlineStateChanged(<span class="keyword">false</span>);</div>
 <div class="line"><a id="l00389" name="l00389"></a><span class="lineno">  389</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;DetectHookTarget: Lost target %s, OutlineOff&quot;</span>), *CurHookTarget_Luggage-&gt;GetName());</div>
 <div class="line"><a id="l00390" name="l00390"></a><span class="lineno">  390</span>    }</div>
 <div class="line"><a id="l00391" name="l00391"></a><span class="lineno">  391</span> </div>
@@ -596,7 +596,7 @@ $(document).ready(function(){initNavTree('UHookSystem_8cpp_source.html',''); ini
 <div class="line"><a id="l00520" name="l00520"></a><span class="lineno">  520</span>        <span class="comment">// 여기서는 현재 타겟에 대해서만 켜주면 됨</span></div>
 <div class="line"><a id="l00521" name="l00521"></a><span class="lineno">  521</span>        <span class="keywordflow">if</span> ( CurHookTarget_Luggage != <span class="keyword">nullptr</span> )</div>
 <div class="line"><a id="l00522" name="l00522"></a><span class="lineno">  522</span>        {</div>
-<div class="line"><a id="l00523" name="l00523"></a><span class="lineno">  523</span>            CurHookTarget_Luggage-&gt;OutlineOn();</div>
+<div class="line"><a id="l00523" name="l00523"></a><span class="lineno">  523</span>            CurHookTarget_Luggage-&gt;OnOutlineStateChanged(<span class="keyword">true</span>);</div>
 <div class="line"><a id="l00524" name="l00524"></a><span class="lineno">  524</span>        }</div>
 <div class="line"><a id="l00525" name="l00525"></a><span class="lineno">  525</span> </div>
 <div class="line"><a id="l00526" name="l00526"></a><span class="lineno">  526</span>        <span class="comment">// 디버그 표시</span></div>
@@ -912,7 +912,7 @@ $(document).ready(function(){initNavTree('UHookSystem_8cpp_source.html',''); ini
 <div class="ttc" id="aUInteractionSystem_8h_html"><div class="ttname"><a href="UInteractionSystem_8h.html">UInteractionSystem.h</a></div><div class="ttdoc">플레이어의 상호작용 감지 및 처리 시스템</div></div>
 <div class="ttc" id="aUMainWidget_8h_html"><div class="ttname"><a href="UMainWidget_8h.html">UMainWidget.h</a></div></div>
 <div class="ttc" id="aclassAluggage_html"><div class="ttname"><a href="classAluggage.html">Aluggage</a></div><div class="ttdoc">상호작용 가능한 수하물 액터</div><div class="ttdef"><b>Definition</b> <a href="luggage_8h_source.html#l00014">luggage.h:15</a></div></div>
-<div class="ttc" id="aclassAluggage_html_a3789494fc0c2605502fce38011914042"><div class="ttname"><a href="classAluggage.html#a3789494fc0c2605502fce38011914042">Aluggage::PlayTTSAudio</a></div><div class="ttdeci">void PlayTTSAudio()</div><div class="ttdef"><b>Definition</b> <a href="luggage_8cpp_source.html#l00420">luggage.cpp:420</a></div></div>
+<div class="ttc" id="aclassAluggage_html_a3789494fc0c2605502fce38011914042"><div class="ttname"><a href="classAluggage.html#a3789494fc0c2605502fce38011914042">Aluggage::PlayTTSAudio</a></div><div class="ttdeci">void PlayTTSAudio()</div><div class="ttdef"><b>Definition</b> <a href="luggage_8cpp_source.html#l00419">luggage.cpp:419</a></div></div>
 <div class="ttc" id="aclassAluggage_html_a3bb4871ec229b35443c41bd539f1c9a7"><div class="ttname"><a href="classAluggage.html#a3bb4871ec229b35443c41bd539f1c9a7">Aluggage::bIsBeingHooked</a></div><div class="ttdeci">bool bIsBeingHooked</div><div class="ttdoc">훅 중 플래그 (복제됨)</div><div class="ttdef"><b>Definition</b> <a href="luggage_8h_source.html#l00055">luggage.h:55</a></div></div>
 <div class="ttc" id="aclassAluggage_html_a555315380e2dd75038c0d2aea8fe9b02"><div class="ttname"><a href="classAluggage.html#a555315380e2dd75038c0d2aea8fe9b02">Aluggage::InteractableComp</a></div><div class="ttdeci">TObjectPtr&lt; class UInteractableComponent &gt; InteractableComp</div><div class="ttdef"><b>Definition</b> <a href="luggage_8h_source.html#l00038">luggage.h:38</a></div></div>
 <div class="ttc" id="aclassAluggage_html_ae04cf58842e9bf680682da60e0c7d584"><div class="ttname"><a href="classAluggage.html#ae04cf58842e9bf680682da60e0c7d584">Aluggage::HookedBy</a></div><div class="ttdeci">TObjectPtr&lt; AActor &gt; HookedBy</div><div class="ttdoc">현재 이 Luggage를 훅하고 있는 플레이어</div><div class="ttdef"><b>Definition</b> <a href="luggage_8h_source.html#l00062">luggage.h:62</a></div></div>
@@ -923,7 +923,7 @@ $(document).ready(function(){initNavTree('UHookSystem_8cpp_source.html',''); ini
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_71a9f6b769ee24fe8598c19ea2d70480.html">Character</a></li><li class="navelem"><a class="el" href="dir_a846a28747c2ebe05b4ec9782ab892b2.html">Private</a></li><li class="navelem"><a class="el" href="UHookSystem_8cpp.html">UHookSystem.cpp</a></li>
-    <li class="footer">생성시간 : 목 12월 18 2025 06:31:40, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 목 12월 18 2025 06:32:40, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

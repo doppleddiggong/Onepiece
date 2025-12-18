@@ -160,69 +160,80 @@ $(document).ready(function(){initNavTree('APedestalSwitch_8cpp_source.html','');
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="comment">// 델리게이트 바인딩</span></div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <a class="code hl_variable" href="classAPedestalSwitch.html#acb994507d5e7528a73d3aae325c38eda">InteractableComp</a>-&gt;InitWidget(<a class="code hl_variable" href="classAPedestalSwitch.html#a781bf2f8168ac87b729704885f894ef6">WidgetComp</a>);</div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <a class="code hl_variable" href="classAPedestalSwitch.html#acb994507d5e7528a73d3aae325c38eda">InteractableComp</a>-&gt;OnInteractionTriggered.AddDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classAPedestalSwitch.html#a07f9cd162ed771ea2165e798609665f1">APedestalSwitch::OnInteractionTriggered</a>);</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>}</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <a class="code hl_variable" href="classAPedestalSwitch.html#acb994507d5e7528a73d3aae325c38eda">InteractableComp</a>-&gt;OnOutlineStateChanged.AddDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classAPedestalSwitch.html#adffcdf0a8a582bf0903913729a12f8cb">APedestalSwitch::OnOutlineStateChanged</a>);</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>}</div>
 </div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
-<div class="foldopen" id="foldopen00051" data-start="{" data-end="}">
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="classAPedestalSwitch.html#adf0b505e152cd8fc8f509e835af122f5">   51</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAPedestalSwitch.html#adf0b505e152cd8fc8f509e835af122f5">APedestalSwitch::InitSwitch</a>()</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>{</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    UAnimInstance* AnimInstance = <a class="code hl_variable" href="classAPedestalSwitch.html#ab59bac74f3a20b63ba4d8f39c0cf607f">SwitchBody</a>-&gt;GetAnimInstance();</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="keywordflow">if</span> (!AnimInstance)</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    {</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>( TEXT(<span class="stringliteral">&quot;AnimInstance is null&quot;</span>));</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    }</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <a class="code hl_class" href="classUTweenAnimInstance.html">UTweenAnimInstance</a>* AnimBP = Cast&lt;UTweenAnimInstance&gt;(AnimInstance);</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="keywordflow">if</span> (AnimBP)</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    {</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        <a class="code hl_variable" href="classAPedestalSwitch.html#aedb898332b945a4197112796cf848896">AnimBlueprint</a> = AnimBP;</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    }</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <span class="keywordflow">else</span></div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    {</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>( TEXT(<span class="stringliteral">&quot;Failed to cast to AnimBP&quot;</span>));</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    }</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>}</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
+<div class="foldopen" id="foldopen00052" data-start="{" data-end="}">
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="classAPedestalSwitch.html#adf0b505e152cd8fc8f509e835af122f5">   52</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAPedestalSwitch.html#adf0b505e152cd8fc8f509e835af122f5">APedestalSwitch::InitSwitch</a>()</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>{</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    UAnimInstance* AnimInstance = <a class="code hl_variable" href="classAPedestalSwitch.html#ab59bac74f3a20b63ba4d8f39c0cf607f">SwitchBody</a>-&gt;GetAnimInstance();</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="keywordflow">if</span> (!AnimInstance)</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    {</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>( TEXT(<span class="stringliteral">&quot;AnimInstance is null&quot;</span>));</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    }</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <a class="code hl_class" href="classUTweenAnimInstance.html">UTweenAnimInstance</a>* AnimBP = Cast&lt;UTweenAnimInstance&gt;(AnimInstance);</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="keywordflow">if</span> (AnimBP)</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    {</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        <a class="code hl_variable" href="classAPedestalSwitch.html#aedb898332b945a4197112796cf848896">AnimBlueprint</a> = AnimBP;</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    }</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    {</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>( TEXT(<span class="stringliteral">&quot;Failed to cast to AnimBP&quot;</span>));</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    }</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>}</div>
 </div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
-<div class="foldopen" id="foldopen00071" data-start="{" data-end="}">
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno"><a class="line" href="classAPedestalSwitch.html#a07f9cd162ed771ea2165e798609665f1">   71</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAPedestalSwitch.html#a07f9cd162ed771ea2165e798609665f1">APedestalSwitch::OnInteractionTriggered</a>(AActor* Interactor)</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>{</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAPedestalSwitch.html#aedb898332b945a4197112796cf848896">AnimBlueprint</a>)</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    {</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        <span class="comment">// 버튼 눌림 애니메이션</span></div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        <a class="code hl_variable" href="classAPedestalSwitch.html#aedb898332b945a4197112796cf848896">AnimBlueprint</a>-&gt;ChangeState(<span class="keyword">true</span>);</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        </div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        <span class="comment">// 딜레이 후 버튼 리커버리</span></div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        GetWorld()-&gt;GetTimerManager().SetTimer(</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>            <a class="code hl_variable" href="classAPedestalSwitch.html#a0ce7441834cfdcca58a88c9cbbb8d086">RecoveryTimerHandle</a>,</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>            <span class="keyword">this</span>,</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>            &amp;<a class="code hl_function" href="classAPedestalSwitch.html#a449acc40a37cc79da51dbf51b0456f77">APedestalSwitch::RecoveryButton</a>,</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>            <a class="code hl_variable" href="classAPedestalSwitch.html#a4683b50b0e2b47da0352fea4c25d9c40">RecoveryDelay</a>,</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>            <span class="keyword">false</span></div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        );</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    }</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    <span class="keywordflow">else</span></div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    {</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>( TEXT(<span class="stringliteral">&quot;AnimBlueprint is null&quot;</span>));</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    }</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    <a class="code hl_function" href="classAPedestalSwitch.html#acd82c70fe4565508974d63d3263439f2">OnActivate</a>();</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>}</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
+<div class="foldopen" id="foldopen00072" data-start="{" data-end="}">
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno"><a class="line" href="classAPedestalSwitch.html#a07f9cd162ed771ea2165e798609665f1">   72</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAPedestalSwitch.html#a07f9cd162ed771ea2165e798609665f1">APedestalSwitch::OnInteractionTriggered</a>(AActor* Interactor)</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>{</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAPedestalSwitch.html#aedb898332b945a4197112796cf848896">AnimBlueprint</a>)</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    {</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        <span class="comment">// 버튼 눌림 애니메이션</span></div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        <a class="code hl_variable" href="classAPedestalSwitch.html#aedb898332b945a4197112796cf848896">AnimBlueprint</a>-&gt;ChangeState(<span class="keyword">true</span>);</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        </div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        <span class="comment">// 딜레이 후 버튼 리커버리</span></div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        GetWorld()-&gt;GetTimerManager().SetTimer(</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>            <a class="code hl_variable" href="classAPedestalSwitch.html#a0ce7441834cfdcca58a88c9cbbb8d086">RecoveryTimerHandle</a>,</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>            <span class="keyword">this</span>,</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>            &amp;<a class="code hl_function" href="classAPedestalSwitch.html#a449acc40a37cc79da51dbf51b0456f77">APedestalSwitch::RecoveryButton</a>,</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>            <a class="code hl_variable" href="classAPedestalSwitch.html#a4683b50b0e2b47da0352fea4c25d9c40">RecoveryDelay</a>,</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>            <span class="keyword">false</span></div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        );</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    }</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    {</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>( TEXT(<span class="stringliteral">&quot;AnimBlueprint is null&quot;</span>));</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    }</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    <a class="code hl_function" href="classAPedestalSwitch.html#acd82c70fe4565508974d63d3263439f2">OnActivate</a>();</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>}</div>
 </div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
-<div class="foldopen" id="foldopen00095" data-start="{" data-end="}">
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno"><a class="line" href="classAPedestalSwitch.html#a449acc40a37cc79da51dbf51b0456f77">   95</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAPedestalSwitch.html#a449acc40a37cc79da51dbf51b0456f77">APedestalSwitch::RecoveryButton</a>()</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>{</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    <a class="code hl_variable" href="classAPedestalSwitch.html#aedb898332b945a4197112796cf848896">AnimBlueprint</a>-&gt;ChangeState(<span class="keyword">false</span>);</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>}</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> </div>
+<div class="foldopen" id="foldopen00096" data-start="{" data-end="}">
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno"><a class="line" href="classAPedestalSwitch.html#a449acc40a37cc79da51dbf51b0456f77">   96</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAPedestalSwitch.html#a449acc40a37cc79da51dbf51b0456f77">APedestalSwitch::RecoveryButton</a>()</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>{</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    <a class="code hl_variable" href="classAPedestalSwitch.html#aedb898332b945a4197112796cf848896">AnimBlueprint</a>-&gt;ChangeState(<span class="keyword">false</span>);</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>}</div>
 </div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span> </div>
-<div class="foldopen" id="foldopen00100" data-start="{" data-end="}">
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno"><a class="line" href="classAPedestalSwitch.html#a8fb40368d256cfdca7cbbbe08e06ad62">  100</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAPedestalSwitch.html#a8fb40368d256cfdca7cbbbe08e06ad62">APedestalSwitch::OnActivate_Implementation</a>()</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>{</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    <a class="code hl_define" href="GameLogging_8h.html#ac50b407bb34c70a0be1fccc74730d143">PRINT_STRING</a>(TEXT(<span class="stringliteral">&quot;Pedestal Switch Activated&quot;</span>));</div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>}</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span> </div>
+<div class="foldopen" id="foldopen00101" data-start="{" data-end="}">
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno"><a class="line" href="classAPedestalSwitch.html#a8fb40368d256cfdca7cbbbe08e06ad62">  101</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAPedestalSwitch.html#a8fb40368d256cfdca7cbbbe08e06ad62">APedestalSwitch::OnActivate_Implementation</a>()</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>{</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    <a class="code hl_define" href="GameLogging_8h.html#ac50b407bb34c70a0be1fccc74730d143">PRINT_STRING</a>(TEXT(<span class="stringliteral">&quot;Pedestal Switch Activated&quot;</span>));</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>}</div>
+</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span> </div>
+<div class="foldopen" id="foldopen00106" data-start="{" data-end="}">
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno"><a class="line" href="classAPedestalSwitch.html#adffcdf0a8a582bf0903913729a12f8cb">  106</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAPedestalSwitch.html#adffcdf0a8a582bf0903913729a12f8cb">APedestalSwitch::OnOutlineStateChanged</a>(<span class="keywordtype">bool</span> bShouldShowOutline)</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>{</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAPedestalSwitch.html#ab59bac74f3a20b63ba4d8f39c0cf607f">SwitchBody</a>)</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    {</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>        <a class="code hl_variable" href="classAPedestalSwitch.html#ab59bac74f3a20b63ba4d8f39c0cf607f">SwitchBody</a>-&gt;SetRenderCustomDepth(bShouldShowOutline);</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    }</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>}</div>
 </div>
 <div class="ttc" id="aAPedestalSwitch_8cpp_html_a55b6865d8563376fde56fd22937cef0f"><div class="ttname"><a href="APedestalSwitch_8cpp.html#a55b6865d8563376fde56fd22937cef0f">INTERACT_WIDGET_PATH</a></div><div class="ttdeci">#define INTERACT_WIDGET_PATH</div><div class="ttdef"><b>Definition</b> <a href="APedestalSwitch_8cpp_source.html#l00012">APedestalSwitch.cpp:12</a></div></div>
 <div class="ttc" id="aAPedestalSwitch_8h_html"><div class="ttname"><a href="APedestalSwitch_8h.html">APedestalSwitch.h</a></div></div>
@@ -232,19 +243,20 @@ $(document).ready(function(){initNavTree('APedestalSwitch_8cpp_source.html','');
 <div class="ttc" id="aInteractableComponent_8h_html"><div class="ttname"><a href="InteractableComponent_8h.html">InteractableComponent.h</a></div></div>
 <div class="ttc" id="aUInteractWidget_8h_html"><div class="ttname"><a href="UInteractWidget_8h.html">UInteractWidget.h</a></div></div>
 <div class="ttc" id="aUTweenAnimInstance_8h_html"><div class="ttname"><a href="UTweenAnimInstance_8h.html">UTweenAnimInstance.h</a></div><div class="ttdoc">UTweenAnimInstance 클래스를 선언합니다.</div></div>
-<div class="ttc" id="aclassAPedestalSwitch_html_a07f9cd162ed771ea2165e798609665f1"><div class="ttname"><a href="classAPedestalSwitch.html#a07f9cd162ed771ea2165e798609665f1">APedestalSwitch::OnInteractionTriggered</a></div><div class="ttdeci">void OnInteractionTriggered(AActor *Interactor)</div><div class="ttdoc">상호작용 콜백 (InteractableComponent 델리게이트용)</div><div class="ttdef"><b>Definition</b> <a href="APedestalSwitch_8cpp_source.html#l00071">APedestalSwitch.cpp:71</a></div></div>
-<div class="ttc" id="aclassAPedestalSwitch_html_a0ce7441834cfdcca58a88c9cbbb8d086"><div class="ttname"><a href="classAPedestalSwitch.html#a0ce7441834cfdcca58a88c9cbbb8d086">APedestalSwitch::RecoveryTimerHandle</a></div><div class="ttdeci">FTimerHandle RecoveryTimerHandle</div><div class="ttdoc">버튼을 원래 상태로 되돌리는 타이머</div><div class="ttdef"><b>Definition</b> <a href="APedestalSwitch_8h_source.html#l00049">APedestalSwitch.h:49</a></div></div>
+<div class="ttc" id="aclassAPedestalSwitch_html_a07f9cd162ed771ea2165e798609665f1"><div class="ttname"><a href="classAPedestalSwitch.html#a07f9cd162ed771ea2165e798609665f1">APedestalSwitch::OnInteractionTriggered</a></div><div class="ttdeci">void OnInteractionTriggered(AActor *Interactor)</div><div class="ttdoc">상호작용 콜백 (InteractableComponent 델리게이트용)</div><div class="ttdef"><b>Definition</b> <a href="APedestalSwitch_8cpp_source.html#l00072">APedestalSwitch.cpp:72</a></div></div>
+<div class="ttc" id="aclassAPedestalSwitch_html_a0ce7441834cfdcca58a88c9cbbb8d086"><div class="ttname"><a href="classAPedestalSwitch.html#a0ce7441834cfdcca58a88c9cbbb8d086">APedestalSwitch::RecoveryTimerHandle</a></div><div class="ttdeci">FTimerHandle RecoveryTimerHandle</div><div class="ttdoc">버튼을 원래 상태로 되돌리는 타이머</div><div class="ttdef"><b>Definition</b> <a href="APedestalSwitch_8h_source.html#l00052">APedestalSwitch.h:52</a></div></div>
 <div class="ttc" id="aclassAPedestalSwitch_html_a2f78fa842608b27dfc98c30a112accfd"><div class="ttname"><a href="classAPedestalSwitch.html#a2f78fa842608b27dfc98c30a112accfd">APedestalSwitch::APedestalSwitch</a></div><div class="ttdeci">APedestalSwitch()</div><div class="ttdef"><b>Definition</b> <a href="APedestalSwitch_8cpp_source.html#l00014">APedestalSwitch.cpp:14</a></div></div>
-<div class="ttc" id="aclassAPedestalSwitch_html_a449acc40a37cc79da51dbf51b0456f77"><div class="ttname"><a href="classAPedestalSwitch.html#a449acc40a37cc79da51dbf51b0456f77">APedestalSwitch::RecoveryButton</a></div><div class="ttdeci">void RecoveryButton()</div><div class="ttdoc">버튼을 원래 상태로 되돌림</div><div class="ttdef"><b>Definition</b> <a href="APedestalSwitch_8cpp_source.html#l00095">APedestalSwitch.cpp:95</a></div></div>
-<div class="ttc" id="aclassAPedestalSwitch_html_a4683b50b0e2b47da0352fea4c25d9c40"><div class="ttname"><a href="classAPedestalSwitch.html#a4683b50b0e2b47da0352fea4c25d9c40">APedestalSwitch::RecoveryDelay</a></div><div class="ttdeci">float RecoveryDelay</div><div class="ttdef"><b>Definition</b> <a href="APedestalSwitch_8h_source.html#l00045">APedestalSwitch.h:45</a></div></div>
-<div class="ttc" id="aclassAPedestalSwitch_html_a781bf2f8168ac87b729704885f894ef6"><div class="ttname"><a href="classAPedestalSwitch.html#a781bf2f8168ac87b729704885f894ef6">APedestalSwitch::WidgetComp</a></div><div class="ttdeci">TObjectPtr&lt; class UWidgetComponent &gt; WidgetComp</div><div class="ttdef"><b>Definition</b> <a href="APedestalSwitch_8h_source.html#l00039">APedestalSwitch.h:39</a></div></div>
+<div class="ttc" id="aclassAPedestalSwitch_html_a449acc40a37cc79da51dbf51b0456f77"><div class="ttname"><a href="classAPedestalSwitch.html#a449acc40a37cc79da51dbf51b0456f77">APedestalSwitch::RecoveryButton</a></div><div class="ttdeci">void RecoveryButton()</div><div class="ttdoc">버튼을 원래 상태로 되돌림</div><div class="ttdef"><b>Definition</b> <a href="APedestalSwitch_8cpp_source.html#l00096">APedestalSwitch.cpp:96</a></div></div>
+<div class="ttc" id="aclassAPedestalSwitch_html_a4683b50b0e2b47da0352fea4c25d9c40"><div class="ttname"><a href="classAPedestalSwitch.html#a4683b50b0e2b47da0352fea4c25d9c40">APedestalSwitch::RecoveryDelay</a></div><div class="ttdeci">float RecoveryDelay</div><div class="ttdef"><b>Definition</b> <a href="APedestalSwitch_8h_source.html#l00048">APedestalSwitch.h:48</a></div></div>
+<div class="ttc" id="aclassAPedestalSwitch_html_a781bf2f8168ac87b729704885f894ef6"><div class="ttname"><a href="classAPedestalSwitch.html#a781bf2f8168ac87b729704885f894ef6">APedestalSwitch::WidgetComp</a></div><div class="ttdeci">TObjectPtr&lt; class UWidgetComponent &gt; WidgetComp</div><div class="ttdef"><b>Definition</b> <a href="APedestalSwitch_8h_source.html#l00042">APedestalSwitch.h:42</a></div></div>
 <div class="ttc" id="aclassAPedestalSwitch_html_a8365b739403d879b121a8c6ece199016"><div class="ttname"><a href="classAPedestalSwitch.html#a8365b739403d879b121a8c6ece199016">APedestalSwitch::BeginPlay</a></div><div class="ttdeci">virtual void BeginPlay() override</div><div class="ttdef"><b>Definition</b> <a href="APedestalSwitch_8cpp_source.html#l00039">APedestalSwitch.cpp:39</a></div></div>
-<div class="ttc" id="aclassAPedestalSwitch_html_a8fb40368d256cfdca7cbbbe08e06ad62"><div class="ttname"><a href="classAPedestalSwitch.html#a8fb40368d256cfdca7cbbbe08e06ad62">APedestalSwitch::OnActivate_Implementation</a></div><div class="ttdeci">virtual void OnActivate_Implementation()</div><div class="ttdef"><b>Definition</b> <a href="APedestalSwitch_8cpp_source.html#l00100">APedestalSwitch.cpp:100</a></div></div>
-<div class="ttc" id="aclassAPedestalSwitch_html_ab59bac74f3a20b63ba4d8f39c0cf607f"><div class="ttname"><a href="classAPedestalSwitch.html#ab59bac74f3a20b63ba4d8f39c0cf607f">APedestalSwitch::SwitchBody</a></div><div class="ttdeci">TObjectPtr&lt; class USkeletalMeshComponent &gt; SwitchBody</div><div class="ttdef"><b>Definition</b> <a href="APedestalSwitch_8h_source.html#l00033">APedestalSwitch.h:33</a></div></div>
-<div class="ttc" id="aclassAPedestalSwitch_html_acb994507d5e7528a73d3aae325c38eda"><div class="ttname"><a href="classAPedestalSwitch.html#acb994507d5e7528a73d3aae325c38eda">APedestalSwitch::InteractableComp</a></div><div class="ttdeci">TObjectPtr&lt; class UInteractableComponent &gt; InteractableComp</div><div class="ttdoc">InteractableComponent - 상호작용 시스템</div><div class="ttdef"><b>Definition</b> <a href="APedestalSwitch_8h_source.html#l00037">APedestalSwitch.h:37</a></div></div>
+<div class="ttc" id="aclassAPedestalSwitch_html_a8fb40368d256cfdca7cbbbe08e06ad62"><div class="ttname"><a href="classAPedestalSwitch.html#a8fb40368d256cfdca7cbbbe08e06ad62">APedestalSwitch::OnActivate_Implementation</a></div><div class="ttdeci">virtual void OnActivate_Implementation()</div><div class="ttdef"><b>Definition</b> <a href="APedestalSwitch_8cpp_source.html#l00101">APedestalSwitch.cpp:101</a></div></div>
+<div class="ttc" id="aclassAPedestalSwitch_html_ab59bac74f3a20b63ba4d8f39c0cf607f"><div class="ttname"><a href="classAPedestalSwitch.html#ab59bac74f3a20b63ba4d8f39c0cf607f">APedestalSwitch::SwitchBody</a></div><div class="ttdeci">TObjectPtr&lt; class USkeletalMeshComponent &gt; SwitchBody</div><div class="ttdef"><b>Definition</b> <a href="APedestalSwitch_8h_source.html#l00036">APedestalSwitch.h:36</a></div></div>
+<div class="ttc" id="aclassAPedestalSwitch_html_acb994507d5e7528a73d3aae325c38eda"><div class="ttname"><a href="classAPedestalSwitch.html#acb994507d5e7528a73d3aae325c38eda">APedestalSwitch::InteractableComp</a></div><div class="ttdeci">TObjectPtr&lt; class UInteractableComponent &gt; InteractableComp</div><div class="ttdoc">InteractableComponent - 상호작용 시스템</div><div class="ttdef"><b>Definition</b> <a href="APedestalSwitch_8h_source.html#l00040">APedestalSwitch.h:40</a></div></div>
 <div class="ttc" id="aclassAPedestalSwitch_html_acd82c70fe4565508974d63d3263439f2"><div class="ttname"><a href="classAPedestalSwitch.html#acd82c70fe4565508974d63d3263439f2">APedestalSwitch::OnActivate</a></div><div class="ttdeci">void OnActivate()</div></div>
-<div class="ttc" id="aclassAPedestalSwitch_html_adf0b505e152cd8fc8f509e835af122f5"><div class="ttname"><a href="classAPedestalSwitch.html#adf0b505e152cd8fc8f509e835af122f5">APedestalSwitch::InitSwitch</a></div><div class="ttdeci">void InitSwitch()</div><div class="ttdef"><b>Definition</b> <a href="APedestalSwitch_8cpp_source.html#l00051">APedestalSwitch.cpp:51</a></div></div>
-<div class="ttc" id="aclassAPedestalSwitch_html_aedb898332b945a4197112796cf848896"><div class="ttname"><a href="classAPedestalSwitch.html#aedb898332b945a4197112796cf848896">APedestalSwitch::AnimBlueprint</a></div><div class="ttdeci">TObjectPtr&lt; class UTweenAnimInstance &gt; AnimBlueprint</div><div class="ttdef"><b>Definition</b> <a href="APedestalSwitch_8h_source.html#l00042">APedestalSwitch.h:42</a></div></div>
+<div class="ttc" id="aclassAPedestalSwitch_html_adf0b505e152cd8fc8f509e835af122f5"><div class="ttname"><a href="classAPedestalSwitch.html#adf0b505e152cd8fc8f509e835af122f5">APedestalSwitch::InitSwitch</a></div><div class="ttdeci">void InitSwitch()</div><div class="ttdef"><b>Definition</b> <a href="APedestalSwitch_8cpp_source.html#l00052">APedestalSwitch.cpp:52</a></div></div>
+<div class="ttc" id="aclassAPedestalSwitch_html_adffcdf0a8a582bf0903913729a12f8cb"><div class="ttname"><a href="classAPedestalSwitch.html#adffcdf0a8a582bf0903913729a12f8cb">APedestalSwitch::OnOutlineStateChanged</a></div><div class="ttdeci">void OnOutlineStateChanged(bool bShouldShowOutline)</div><div class="ttdef"><b>Definition</b> <a href="APedestalSwitch_8cpp_source.html#l00106">APedestalSwitch.cpp:106</a></div></div>
+<div class="ttc" id="aclassAPedestalSwitch_html_aedb898332b945a4197112796cf848896"><div class="ttname"><a href="classAPedestalSwitch.html#aedb898332b945a4197112796cf848896">APedestalSwitch::AnimBlueprint</a></div><div class="ttdeci">TObjectPtr&lt; class UTweenAnimInstance &gt; AnimBlueprint</div><div class="ttdef"><b>Definition</b> <a href="APedestalSwitch_8h_source.html#l00045">APedestalSwitch.h:45</a></div></div>
 <div class="ttc" id="aclassUTweenAnimInstance_html"><div class="ttname"><a href="classUTweenAnimInstance.html">UTweenAnimInstance</a></div><div class="ttdoc">블루프린트에서 사용할 수 있는 간단한 트윈 애님 인스턴스.</div><div class="ttdef"><b>Definition</b> <a href="UTweenAnimInstance_8h_source.html#l00019">UTweenAnimInstance.h:20</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
@@ -252,7 +264,7 @@ $(document).ready(function(){initNavTree('APedestalSwitch_8cpp_source.html','');
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_b7459e4428712e32d7c860db6e401a05.html">Interactable</a></li><li class="navelem"><a class="el" href="dir_77257aedd361f850f8a01079e914567e.html">Private</a></li><li class="navelem"><a class="el" href="APedestalSwitch_8cpp.html">APedestalSwitch.cpp</a></li>
-    <li class="footer">생성시간 : 목 12월 18 2025 06:31:40, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 목 12월 18 2025 06:32:40, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

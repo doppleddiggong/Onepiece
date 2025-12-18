@@ -160,16 +160,19 @@ $(document).ready(function(){initNavTree('ConveyorButton_8h_source.html',''); in
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="comment">// Interaction</span></div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    UFUNCTION()</div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="keywordtype">void</span> OnInteractionTriggered(AActor* Interactor);</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    </div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    UFUNCTION(Server, Reliable)</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="classAConveyorButton.html#a9b21e688a894b9000c7fd22a92e47c93">   53</a></span>    <span class="keywordtype">void</span> ServerRPC_OnInteractionTriggered(AActor* Interactor);</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    UFUNCTION()</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="keywordtype">void</span> OnOutlineStateChanged(<span class="keywordtype">bool</span> bShouldShowOutline);</div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    </div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    UFUNCTION(NetMulticast, Reliable)</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="classAConveyorButton.html#a905ad29ca369326302e43a5f8bf573c6">   56</a></span>    <span class="keywordtype">void</span> MultiCastRPC_OnInteractionTriggered(AActor* Interactor);</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    UFUNCTION(Server, Reliable)</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="classAConveyorButton.html#a9b21e688a894b9000c7fd22a92e47c93">   56</a></span>    <span class="keywordtype">void</span> ServerRPC_OnInteractionTriggered(AActor* Interactor);</div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    </div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    UPROPERTY(Replicated)</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="classAConveyorButton.html#adbff4e28f4feaee676747fcc2052226d">   59</a></span>    <span class="keywordtype">bool</span> bIsButtonOn = false;</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>};</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    UFUNCTION(NetMulticast, Reliable)</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="classAConveyorButton.html#a905ad29ca369326302e43a5f8bf573c6">   59</a></span>    <span class="keywordtype">void</span> MultiCastRPC_OnInteractionTriggered(AActor* Interactor);</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    </div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    UPROPERTY(Replicated)</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="classAConveyorButton.html#adbff4e28f4feaee676747fcc2052226d">   62</a></span>    <span class="keywordtype">bool</span> bIsButtonOn = false;</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>};</div>
 </div>
 <div class="ttc" id="aclassAConveyorButton_html"><div class="ttname"><a href="classAConveyorButton.html">AConveyorButton</a></div><div class="ttdef"><b>Definition</b> <a href="ConveyorButton_8h_source.html#l00010">ConveyorButton.h:11</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
@@ -178,7 +181,7 @@ $(document).ready(function(){initNavTree('ConveyorButton_8h_source.html',''); in
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_b7459e4428712e32d7c860db6e401a05.html">Interactable</a></li><li class="navelem"><a class="el" href="dir_37565cbf0e4835105e22b7540e7cc414.html">Public</a></li><li class="navelem"><a class="el" href="ConveyorButton_8h.html">ConveyorButton.h</a></li>
-    <li class="footer">생성시간 : 목 12월 18 2025 06:31:40, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 목 12월 18 2025 06:32:40, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

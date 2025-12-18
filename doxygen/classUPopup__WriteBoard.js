@@ -20,6 +20,7 @@ var classUPopup__WriteBoard =
     [ "UpdateAnimation", "classUPopup__WriteBoard.html#a830a08b15d00e418f351f096fc5a8790", null ],
     [ "AnswerIdx", "classUPopup__WriteBoard.html#ad7248b239cc38bc59882838396270883", null ],
     [ "AnswerKr", "classUPopup__WriteBoard.html#aef752b96a2643aa627c594a6489ea8b6", null ],
+    [ "bAllowPlayerControl", "classUPopup__WriteBoard.html#a6ac288312766fb96aa9acf7ece8a630e", null ],
     [ "bIsDrawing", "classUPopup__WriteBoard.html#a7fe327a3dbb67b8fd3cee421bf5e08c7", null ],
     [ "bIsOpenAnim", "classUPopup__WriteBoard.html#a807985dccb3305b1004c611401b7b551", null ],
     [ "borderMinWidth", "classUPopup__WriteBoard.html#a6365cd22808aabbe3be861a852876658", null ],

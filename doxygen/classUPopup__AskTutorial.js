@@ -6,6 +6,7 @@ var classUPopup__AskTutorial =
     [ "OnClickYes", "classUPopup__AskTutorial.html#ac55371a36a6c8f504f908f59809820c7", null ],
     [ "OpenAnimation", "classUPopup__AskTutorial.html#a2c3d2b47f8255c0172cf9f218790fcc8", null ],
     [ "UpdateAnimation", "classUPopup__AskTutorial.html#a830a08b15d00e418f351f096fc5a8790", null ],
+    [ "bAllowPlayerControl", "classUPopup__AskTutorial.html#a6ac288312766fb96aa9acf7ece8a630e", null ],
     [ "bIsOpenAnim", "classUPopup__AskTutorial.html#a807985dccb3305b1004c611401b7b551", null ],
     [ "Btn_Skip", "classUPopup__AskTutorial.html#a5ef033845d19fcc15da2ba8c99378561", null ],
     [ "Btn_Yes", "classUPopup__AskTutorial.html#a82d12d8c04c7edc4a1d10b18dadb41ee", null ],

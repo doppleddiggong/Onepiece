@@ -5,6 +5,7 @@ var classUPopup__SpeakQuest =
     [ "OnClickOk", "classUPopup__SpeakQuest.html#aeed9d6719cc537284999fe189891a761", null ],
     [ "OpenAnimation", "classUPopup__SpeakQuest.html#a2c3d2b47f8255c0172cf9f218790fcc8", null ],
     [ "UpdateAnimation", "classUPopup__SpeakQuest.html#a830a08b15d00e418f351f096fc5a8790", null ],
+    [ "bAllowPlayerControl", "classUPopup__SpeakQuest.html#a6ac288312766fb96aa9acf7ece8a630e", null ],
     [ "bIsOpenAnim", "classUPopup__SpeakQuest.html#a807985dccb3305b1004c611401b7b551", null ],
     [ "Btn_Ok", "classUPopup__SpeakQuest.html#af0c2147cefe2a943a7bd0c14ac8c7d3f", null ],
     [ "OnOkDelegate", "classUPopup__SpeakQuest.html#a113785f402816a21488e8ce01ddb6c7b", null ],

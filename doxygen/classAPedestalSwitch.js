@@ -6,6 +6,7 @@ var classAPedestalSwitch =
     [ "OnActivate", "classAPedestalSwitch.html#acd82c70fe4565508974d63d3263439f2", null ],
     [ "OnActivate_Implementation", "classAPedestalSwitch.html#a8fb40368d256cfdca7cbbbe08e06ad62", null ],
     [ "OnInteractionTriggered", "classAPedestalSwitch.html#a07f9cd162ed771ea2165e798609665f1", null ],
+    [ "OnOutlineStateChanged", "classAPedestalSwitch.html#adffcdf0a8a582bf0903913729a12f8cb", null ],
     [ "RecoveryButton", "classAPedestalSwitch.html#a449acc40a37cc79da51dbf51b0456f77", null ],
     [ "AnimBlueprint", "classAPedestalSwitch.html#aedb898332b945a4197112796cf848896", null ],
     [ "InteractableComp", "classAPedestalSwitch.html#acb994507d5e7528a73d3aae325c38eda", null ],

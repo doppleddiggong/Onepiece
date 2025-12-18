@@ -13,6 +13,7 @@ var classUPopupManager =
     [ "IsPopupInStack", "classUPopupManager.html#a80d7a93868caf4c572c3cae990633094", null ],
     [ "PushPopupToStack", "classUPopupManager.html#a5b4d233a64c6b05a992fb39a64ea62fa", null ],
     [ "RemovePopupFromStack", "classUPopupManager.html#a8ad2411c5a690182acc6258c1bec7dea", null ],
+    [ "ShouldBlockPlayerControl", "classUPopupManager.html#ace614cb717c1801ec511039b89630f75", null ],
     [ "ShowMsgBox", "classUPopupManager.html#ac465e4223d51ce7106f426d0ce3a2605", null ],
     [ "ShowMsgBox", "classUPopupManager.html#af4a2cd13f4ec91e3c7f87b1b3033857a", null ],
     [ "ShowMsgBoxSimple", "classUPopupManager.html#a38f8ff06e48688a9c9bfa99ed9bf891b", null ],

@@ -7,6 +7,7 @@ var classUPopup__Evaluation =
     [ "OnMsgBoxOk_MoveToLobby", "classUPopup__Evaluation.html#a5b6cc85d4517ce741f3f5c352a23725e", null ],
     [ "OpenAnimation", "classUPopup__Evaluation.html#a2c3d2b47f8255c0172cf9f218790fcc8", null ],
     [ "UpdateAnimation", "classUPopup__Evaluation.html#a830a08b15d00e418f351f096fc5a8790", null ],
+    [ "bAllowPlayerControl", "classUPopup__Evaluation.html#a6ac288312766fb96aa9acf7ece8a630e", null ],
     [ "bIsOpenAnim", "classUPopup__Evaluation.html#a807985dccb3305b1004c611401b7b551", null ],
     [ "Btn_Confirm", "classUPopup__Evaluation.html#a92038d97b485f53e9e2f13ee64e78b16", null ],
     [ "OpenDuration", "classUPopup__Evaluation.html#a5a4c2b75560a3e2d07ed3aa52837278e", null ],

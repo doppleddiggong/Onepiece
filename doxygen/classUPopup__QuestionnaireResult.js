@@ -8,6 +8,7 @@ var classUPopup__QuestionnaireResult =
     [ "OnClickClose", "classUPopup__QuestionnaireResult.html#a1466c60e05a29fcddec6b332bf908fd1", null ],
     [ "OpenAnimation", "classUPopup__QuestionnaireResult.html#a2c3d2b47f8255c0172cf9f218790fcc8", null ],
     [ "UpdateAnimation", "classUPopup__QuestionnaireResult.html#a830a08b15d00e418f351f096fc5a8790", null ],
+    [ "bAllowPlayerControl", "classUPopup__QuestionnaireResult.html#a6ac288312766fb96aa9acf7ece8a630e", null ],
     [ "bIsOpenAnim", "classUPopup__QuestionnaireResult.html#a807985dccb3305b1004c611401b7b551", null ],
     [ "Btn_Confirm", "classUPopup__QuestionnaireResult.html#a5c1c6137f8ff4d31917b206a163f7b05", null ],
     [ "ItemSpacing", "classUPopup__QuestionnaireResult.html#a2d48cb27d02b234d65cc8cc4284a32cd", null ],

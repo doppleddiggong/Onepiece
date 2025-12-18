@@ -116,14 +116,14 @@ $(document).ready(function(){initNavTree('classAConveyorButton.html',''); initRe
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classAConveyorButton__inherit__graph.svg" width="272" height="464"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classAConveyorButton__inherit__graph.svg" width="272" height="484"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="closed.png" alt="+"/> AConveyorButton에 대한 협력 다이어그램:</div>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classAConveyorButton__coll__graph.svg" width="272" height="464"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classAConveyorButton__coll__graph.svg" width="272" height="484"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -145,6 +145,8 @@ Protected 멤버 함수</h2></td></tr>
 <tr class="separator:a905ad29ca369326302e43a5f8bf573c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af4efd00b07d9f56b1c17d309f3b939f4" id="r_af4efd00b07d9f56b1c17d309f3b939f4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAConveyorButton.html#af4efd00b07d9f56b1c17d309f3b939f4">OnInteractionTriggered</a> (AActor *Interactor)</td></tr>
 <tr class="separator:af4efd00b07d9f56b1c17d309f3b939f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1db2dc94fb092313757270f48134a8e8" id="r_a1db2dc94fb092313757270f48134a8e8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAConveyorButton.html#a1db2dc94fb092313757270f48134a8e8">OnOutlineStateChanged</a> (bool bShouldShowOutline)</td></tr>
+<tr class="separator:a1db2dc94fb092313757270f48134a8e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9b21e688a894b9000c7fd22a92e47c93" id="r_a9b21e688a894b9000c7fd22a92e47c93"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAConveyorButton.html#a9b21e688a894b9000c7fd22a92e47c93">ServerRPC_OnInteractionTriggered</a> (AActor *Interactor)</td></tr>
 <tr class="separator:a9b21e688a894b9000c7fd22a92e47c93"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -270,17 +272,19 @@ Protected 속성</h2></td></tr>
 <div class="line"><span class="lineno">   68</span>    <span class="comment">// Bind Delegate</span></div>
 <div class="line"><span class="lineno">   69</span>    <a class="code hl_variable" href="classAConveyorButton.html#a65c01716b559a99de3ae8b92c0670c50">InteractableComp</a>-&gt;InitWidget(<a class="code hl_variable" href="classAConveyorButton.html#a2a9b1343dc28a4e7cde57e23b2feedfe">WidgetComp</a>);</div>
 <div class="line"><span class="lineno">   70</span>    <a class="code hl_variable" href="classAConveyorButton.html#a65c01716b559a99de3ae8b92c0670c50">InteractableComp</a>-&gt;OnInteractionTriggered.AddDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classAConveyorButton.html#af4efd00b07d9f56b1c17d309f3b939f4">AConveyorButton::OnInteractionTriggered</a>);</div>
-<div class="line"><span class="lineno">   71</span>}</div>
+<div class="line"><span class="lineno">   71</span>    <a class="code hl_variable" href="classAConveyorButton.html#a65c01716b559a99de3ae8b92c0670c50">InteractableComp</a>-&gt;OnOutlineStateChanged.AddDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classAConveyorButton.html#a1db2dc94fb092313757270f48134a8e8">AConveyorButton::OnOutlineStateChanged</a>);</div>
+<div class="line"><span class="lineno">   72</span>}</div>
+<div class="ttc" id="aclassAConveyorButton_html_a1db2dc94fb092313757270f48134a8e8"><div class="ttname"><a href="classAConveyorButton.html#a1db2dc94fb092313757270f48134a8e8">AConveyorButton::OnOutlineStateChanged</a></div><div class="ttdeci">void OnOutlineStateChanged(bool bShouldShowOutline)</div><div class="ttdef"><b>Definition</b> <a href="ConveyorButton_8cpp_source.html#l00117">ConveyorButton.cpp:117</a></div></div>
 <div class="ttc" id="aclassAConveyorButton_html_aa0528792440b0dd40e355b9effafce98"><div class="ttname"><a href="classAConveyorButton.html#aa0528792440b0dd40e355b9effafce98">AConveyorButton::ConveyorBeltActors</a></div><div class="ttdeci">TArray&lt; class AActor * &gt; ConveyorBeltActors</div><div class="ttdef"><b>Definition</b> <a href="ConveyorButton_8h_source.html#l00046">ConveyorButton.h:46</a></div></div>
-<div class="ttc" id="aclassAConveyorButton_html_af4efd00b07d9f56b1c17d309f3b939f4"><div class="ttname"><a href="classAConveyorButton.html#af4efd00b07d9f56b1c17d309f3b939f4">AConveyorButton::OnInteractionTriggered</a></div><div class="ttdeci">void OnInteractionTriggered(AActor *Interactor)</div><div class="ttdef"><b>Definition</b> <a href="ConveyorButton_8cpp_source.html#l00092">ConveyorButton.cpp:92</a></div></div>
+<div class="ttc" id="aclassAConveyorButton_html_af4efd00b07d9f56b1c17d309f3b939f4"><div class="ttname"><a href="classAConveyorButton.html#af4efd00b07d9f56b1c17d309f3b939f4">AConveyorButton::OnInteractionTriggered</a></div><div class="ttdeci">void OnInteractionTriggered(AActor *Interactor)</div><div class="ttdef"><b>Definition</b> <a href="ConveyorButton_8cpp_source.html#l00093">ConveyorButton.cpp:93</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="ConveyorButton_8h_source.html#l00046">ConveyorBeltActors</a>, <a class="el" href="ConveyorButton_8h_source.html#l00036">InteractableComp</a>, <a class="el" href="ConveyorButton_8cpp_source.html#l00092">OnInteractionTriggered()</a>, <a class="el" href="ConveyorButton_8h_source.html#l00039">WidgetComp</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="ConveyorButton_8h_source.html#l00046">ConveyorBeltActors</a>, <a class="el" href="ConveyorButton_8h_source.html#l00036">InteractableComp</a>, <a class="el" href="ConveyorButton_8cpp_source.html#l00093">OnInteractionTriggered()</a>, <a class="el" href="ConveyorButton_8cpp_source.html#l00117">OnOutlineStateChanged()</a>, <a class="el" href="ConveyorButton_8h_source.html#l00039">WidgetComp</a>.</p>
 <div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-2-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classAConveyorButton_a82fb3094eb809ad45aa6a2e347ae9e25_cgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classAConveyorButton_a82fb3094eb809ad45aa6a2e347ae9e25_cgraph.svg" width="100%" height="386"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -300,13 +304,13 @@ Protected 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ConveyorButton_8cpp_source.html">ConveyorButton.cpp</a> 파일의 <a class="el" href="ConveyorButton_8cpp_source.html#l00087">87</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   88</span>{</div>
-<div class="line"><span class="lineno">   89</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classAConveyorButton.html#adbff4e28f4feaee676747fcc2052226d">bIsButtonOn</a>;</div>
-<div class="line"><span class="lineno">   90</span>}</div>
-<div class="ttc" id="aclassAConveyorButton_html_adbff4e28f4feaee676747fcc2052226d"><div class="ttname"><a href="classAConveyorButton.html#adbff4e28f4feaee676747fcc2052226d">AConveyorButton::bIsButtonOn</a></div><div class="ttdeci">bool bIsButtonOn</div><div class="ttdef"><b>Definition</b> <a href="ConveyorButton_8h_source.html#l00059">ConveyorButton.h:59</a></div></div>
+<p class="definition"><a class="el" href="ConveyorButton_8cpp_source.html">ConveyorButton.cpp</a> 파일의 <a class="el" href="ConveyorButton_8cpp_source.html#l00088">88</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   89</span>{</div>
+<div class="line"><span class="lineno">   90</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classAConveyorButton.html#adbff4e28f4feaee676747fcc2052226d">bIsButtonOn</a>;</div>
+<div class="line"><span class="lineno">   91</span>}</div>
+<div class="ttc" id="aclassAConveyorButton_html_adbff4e28f4feaee676747fcc2052226d"><div class="ttname"><a href="classAConveyorButton.html#adbff4e28f4feaee676747fcc2052226d">AConveyorButton::bIsButtonOn</a></div><div class="ttdeci">bool bIsButtonOn</div><div class="ttdef"><b>Definition</b> <a href="ConveyorButton_8h_source.html#l00062">ConveyorButton.h:62</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="ConveyorButton_8h_source.html#l00059">bIsButtonOn</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="ConveyorButton_8h_source.html#l00062">bIsButtonOn</a>.</p>
 
 </div>
 </div>
@@ -334,16 +338,16 @@ Protected 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ConveyorButton_8cpp_source.html">ConveyorButton.cpp</a> 파일의 <a class="el" href="ConveyorButton_8cpp_source.html#l00073">73</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   74</span>{</div>
-<div class="line"><span class="lineno">   75</span>    Super::GetLifetimeReplicatedProps(OutLifetimeProps);</div>
-<div class="line"><span class="lineno">   76</span>    </div>
-<div class="line"><span class="lineno">   77</span>    DOREPLIFETIME(<a class="code hl_class" href="classAConveyorButton.html">AConveyorButton</a>, <a class="code hl_variable" href="classAConveyorButton.html#aa0528792440b0dd40e355b9effafce98">ConveyorBeltActors</a>);</div>
-<div class="line"><span class="lineno">   78</span>    DOREPLIFETIME(<a class="code hl_class" href="classAConveyorButton.html">AConveyorButton</a>, <a class="code hl_variable" href="classAConveyorButton.html#adbff4e28f4feaee676747fcc2052226d">bIsButtonOn</a>);</div>
-<div class="line"><span class="lineno">   79</span>}</div>
+<p class="definition"><a class="el" href="ConveyorButton_8cpp_source.html">ConveyorButton.cpp</a> 파일의 <a class="el" href="ConveyorButton_8cpp_source.html#l00074">74</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   75</span>{</div>
+<div class="line"><span class="lineno">   76</span>    Super::GetLifetimeReplicatedProps(OutLifetimeProps);</div>
+<div class="line"><span class="lineno">   77</span>    </div>
+<div class="line"><span class="lineno">   78</span>    DOREPLIFETIME(<a class="code hl_class" href="classAConveyorButton.html">AConveyorButton</a>, <a class="code hl_variable" href="classAConveyorButton.html#aa0528792440b0dd40e355b9effafce98">ConveyorBeltActors</a>);</div>
+<div class="line"><span class="lineno">   79</span>    DOREPLIFETIME(<a class="code hl_class" href="classAConveyorButton.html">AConveyorButton</a>, <a class="code hl_variable" href="classAConveyorButton.html#adbff4e28f4feaee676747fcc2052226d">bIsButtonOn</a>);</div>
+<div class="line"><span class="lineno">   80</span>}</div>
 <div class="ttc" id="aclassAConveyorButton_html"><div class="ttname"><a href="classAConveyorButton.html">AConveyorButton</a></div><div class="ttdef"><b>Definition</b> <a href="ConveyorButton_8h_source.html#l00010">ConveyorButton.h:11</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="ConveyorButton_8h_source.html#l00059">bIsButtonOn</a>, <a class="el" href="ConveyorButton_8h_source.html#l00046">ConveyorBeltActors</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="ConveyorButton_8h_source.html#l00062">bIsButtonOn</a>, <a class="el" href="ConveyorButton_8h_source.html#l00046">ConveyorBeltActors</a>.</p>
 
 </div>
 </div>
@@ -397,24 +401,24 @@ Protected 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ConveyorButton_8cpp_source.html">ConveyorButton.cpp</a> 파일의 <a class="el" href="ConveyorButton_8cpp_source.html#l00092">92</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   93</span>{</div>
-<div class="line"><span class="lineno">   94</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAConveyorButton.html#aa0528792440b0dd40e355b9effafce98">ConveyorBeltActors</a>.IsEmpty()) <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">   95</span>    </div>
-<div class="line"><span class="lineno">   96</span>    <a class="code hl_variable" href="classAConveyorButton.html#adbff4e28f4feaee676747fcc2052226d">bIsButtonOn</a> = !<a class="code hl_variable" href="classAConveyorButton.html#adbff4e28f4feaee676747fcc2052226d">bIsButtonOn</a>;</div>
-<div class="line"><span class="lineno">   97</span>    <a class="code hl_define" href="GameLogging_8h.html#ac50b407bb34c70a0be1fccc74730d143">PRINT_STRING</a>(TEXT(<span class="stringliteral">&quot;%d&quot;</span>), <a class="code hl_variable" href="classAConveyorButton.html#adbff4e28f4feaee676747fcc2052226d">bIsButtonOn</a>);</div>
-<div class="line"><span class="lineno">   98</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; Belt : <a class="code hl_variable" href="classAConveyorButton.html#aa0528792440b0dd40e355b9effafce98">ConveyorBeltActors</a>)</div>
-<div class="line"><span class="lineno">   99</span>    {</div>
-<div class="line"><span class="lineno">  100</span>        <a class="code hl_class" href="classAConveyorBelt.html">AConveyorBelt</a>* ConveyorBeltActor = Cast&lt;AConveyorBelt&gt;(Belt);</div>
-<div class="line"><span class="lineno">  101</span>        ConveyorBeltActor-&gt;<a class="code hl_function" href="classAConveyorBelt.html#afd529ca236321f94d9185d5ae40c5883">ChangeConveyorMovement</a>();</div>
-<div class="line"><span class="lineno">  102</span>    }</div>
-<div class="line"><span class="lineno">  103</span>    </div>
-<div class="line"><span class="lineno">  104</span>}</div>
+<p class="definition"><a class="el" href="ConveyorButton_8cpp_source.html">ConveyorButton.cpp</a> 파일의 <a class="el" href="ConveyorButton_8cpp_source.html#l00093">93</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   94</span>{</div>
+<div class="line"><span class="lineno">   95</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAConveyorButton.html#aa0528792440b0dd40e355b9effafce98">ConveyorBeltActors</a>.IsEmpty()) <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   96</span>    </div>
+<div class="line"><span class="lineno">   97</span>    <a class="code hl_variable" href="classAConveyorButton.html#adbff4e28f4feaee676747fcc2052226d">bIsButtonOn</a> = !<a class="code hl_variable" href="classAConveyorButton.html#adbff4e28f4feaee676747fcc2052226d">bIsButtonOn</a>;</div>
+<div class="line"><span class="lineno">   98</span>    <a class="code hl_define" href="GameLogging_8h.html#ac50b407bb34c70a0be1fccc74730d143">PRINT_STRING</a>(TEXT(<span class="stringliteral">&quot;%d&quot;</span>), <a class="code hl_variable" href="classAConveyorButton.html#adbff4e28f4feaee676747fcc2052226d">bIsButtonOn</a>);</div>
+<div class="line"><span class="lineno">   99</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; Belt : <a class="code hl_variable" href="classAConveyorButton.html#aa0528792440b0dd40e355b9effafce98">ConveyorBeltActors</a>)</div>
+<div class="line"><span class="lineno">  100</span>    {</div>
+<div class="line"><span class="lineno">  101</span>        <a class="code hl_class" href="classAConveyorBelt.html">AConveyorBelt</a>* ConveyorBeltActor = Cast&lt;AConveyorBelt&gt;(Belt);</div>
+<div class="line"><span class="lineno">  102</span>        ConveyorBeltActor-&gt;<a class="code hl_function" href="classAConveyorBelt.html#afd529ca236321f94d9185d5ae40c5883">ChangeConveyorMovement</a>();</div>
+<div class="line"><span class="lineno">  103</span>    }</div>
+<div class="line"><span class="lineno">  104</span>    </div>
+<div class="line"><span class="lineno">  105</span>}</div>
 <div class="ttc" id="aGameLogging_8h_html_ac50b407bb34c70a0be1fccc74730d143"><div class="ttname"><a href="GameLogging_8h.html#ac50b407bb34c70a0be1fccc74730d143">PRINT_STRING</a></div><div class="ttdeci">#define PRINT_STRING(fmt,...)</div><div class="ttdef"><b>Definition</b> <a href="GameLogging_8h_source.html#l00045">GameLogging.h:45</a></div></div>
 <div class="ttc" id="aclassAConveyorBelt_html"><div class="ttname"><a href="classAConveyorBelt.html">AConveyorBelt</a></div><div class="ttdef"><b>Definition</b> <a href="ConveyorBelt_8h_source.html#l00010">ConveyorBelt.h:11</a></div></div>
 <div class="ttc" id="aclassAConveyorBelt_html_afd529ca236321f94d9185d5ae40c5883"><div class="ttname"><a href="classAConveyorBelt.html#afd529ca236321f94d9185d5ae40c5883">AConveyorBelt::ChangeConveyorMovement</a></div><div class="ttdeci">void ChangeConveyorMovement()</div><div class="ttdef"><b>Definition</b> <a href="ConveyorBelt_8cpp_source.html#l00071">ConveyorBelt.cpp:71</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="ConveyorButton_8h_source.html#l00059">bIsButtonOn</a>, <a class="el" href="ConveyorBelt_8cpp_source.html#l00071">AConveyorBelt::ChangeConveyorMovement()</a>, <a class="el" href="ConveyorButton_8h_source.html#l00046">ConveyorBeltActors</a>, <a class="el" href="GameLogging_8h_source.html#l00045">PRINT_STRING</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="ConveyorButton_8h_source.html#l00062">bIsButtonOn</a>, <a class="el" href="ConveyorBelt_8cpp_source.html#l00071">AConveyorBelt::ChangeConveyorMovement()</a>, <a class="el" href="ConveyorButton_8h_source.html#l00046">ConveyorBeltActors</a>, <a class="el" href="GameLogging_8h_source.html#l00045">PRINT_STRING</a>.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ConveyorButton_8cpp_source.html#l00061">BeginPlay()</a>.</p>
 <div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -430,6 +434,51 @@ Protected 속성</h2></td></tr>
 </div>
 <div id="dynsection-4-content" class="dyncontent" style="display:none;">
 <div class="center"><iframe scrolling="no" frameborder="0" src="classAConveyorButton_af4efd00b07d9f56b1c17d309f3b939f4_icgraph.svg" width="500" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a1db2dc94fb092313757270f48134a8e8" name="a1db2dc94fb092313757270f48134a8e8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1db2dc94fb092313757270f48134a8e8">&#9670;&#160;</a></span>OnOutlineStateChanged()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AConveyorButton::OnOutlineStateChanged </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>bShouldShowOutline</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="ConveyorButton_8cpp_source.html">ConveyorButton.cpp</a> 파일의 <a class="el" href="ConveyorButton_8cpp_source.html#l00117">117</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  118</span>{</div>
+<div class="line"><span class="lineno">  119</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAConveyorButton.html#a1e43c630957384b102f34b173b9fed07">ButtonMeshComp</a>)</div>
+<div class="line"><span class="lineno">  120</span>    {</div>
+<div class="line"><span class="lineno">  121</span>        <a class="code hl_variable" href="classAConveyorButton.html#a1e43c630957384b102f34b173b9fed07">ButtonMeshComp</a>-&gt;SetRenderCustomDepth(bShouldShowOutline);</div>
+<div class="line"><span class="lineno">  122</span>    }</div>
+<div class="line"><span class="lineno">  123</span>}</div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="ConveyorButton_8h_source.html#l00033">ButtonMeshComp</a>.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ConveyorButton_8cpp_source.html#l00061">BeginPlay()</a>.</p>
+<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-5-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classAConveyorButton_a1db2dc94fb092313757270f48134a8e8_icgraph.svg" width="478" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -484,10 +533,10 @@ Protected 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ConveyorButton_8cpp_source.html">ConveyorButton.cpp</a> 파일의 <a class="el" href="ConveyorButton_8cpp_source.html#l00082">82</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   83</span>{</div>
-<div class="line"><span class="lineno">   84</span>    Super::Tick(DeltaTime);</div>
-<div class="line"><span class="lineno">   85</span>}</div>
+<p class="definition"><a class="el" href="ConveyorButton_8cpp_source.html">ConveyorButton.cpp</a> 파일의 <a class="el" href="ConveyorButton_8cpp_source.html#l00083">83</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   84</span>{</div>
+<div class="line"><span class="lineno">   85</span>    Super::Tick(DeltaTime);</div>
+<div class="line"><span class="lineno">   86</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -512,9 +561,9 @@ Protected 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ConveyorButton_8h_source.html">ConveyorButton.h</a> 파일의 <a class="el" href="ConveyorButton_8h_source.html#l00059">59</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="ConveyorButton_8h_source.html">ConveyorButton.h</a> 파일의 <a class="el" href="ConveyorButton_8h_source.html#l00062">62</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ConveyorButton_8cpp_source.html#l00087">GetIsButtonOn()</a>, <a class="el" href="ConveyorButton_8cpp_source.html#l00073">GetLifetimeReplicatedProps()</a>, <a class="el" href="ConveyorButton_8cpp_source.html#l00092">OnInteractionTriggered()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ConveyorButton_8cpp_source.html#l00088">GetIsButtonOn()</a>, <a class="el" href="ConveyorButton_8cpp_source.html#l00074">GetLifetimeReplicatedProps()</a>, <a class="el" href="ConveyorButton_8cpp_source.html#l00093">OnInteractionTriggered()</a>.</p>
 
 </div>
 </div>
@@ -566,7 +615,7 @@ Protected 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="ConveyorButton_8h_source.html">ConveyorButton.h</a> 파일의 <a class="el" href="ConveyorButton_8h_source.html#l00033">33</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ConveyorButton_8cpp_source.html#l00018">AConveyorButton()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ConveyorButton_8cpp_source.html#l00018">AConveyorButton()</a>, <a class="el" href="ConveyorButton_8cpp_source.html#l00117">OnOutlineStateChanged()</a>.</p>
 
 </div>
 </div>
@@ -592,7 +641,7 @@ Protected 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="ConveyorButton_8h_source.html">ConveyorButton.h</a> 파일의 <a class="el" href="ConveyorButton_8h_source.html#l00046">46</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ConveyorButton_8cpp_source.html#l00061">BeginPlay()</a>, <a class="el" href="ConveyorButton_8cpp_source.html#l00073">GetLifetimeReplicatedProps()</a>, <a class="el" href="ConveyorButton_8cpp_source.html#l00092">OnInteractionTriggered()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ConveyorButton_8cpp_source.html#l00061">BeginPlay()</a>, <a class="el" href="ConveyorButton_8cpp_source.html#l00074">GetLifetimeReplicatedProps()</a>, <a class="el" href="ConveyorButton_8cpp_source.html#l00093">OnInteractionTriggered()</a>.</p>
 
 </div>
 </div>
@@ -684,7 +733,7 @@ Protected 속성</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classAConveyorButton.html">AConveyorButton</a></li>
-    <li class="footer">생성시간 : 목 12월 18 2025 06:31:41, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 목 12월 18 2025 06:32:41, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

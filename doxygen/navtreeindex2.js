@@ -1,5 +1,6 @@
 var NAVTREEINDEX2 =
 {
+"NetworkData_8h.html#a2d4b0c891a96c4ac2d1829ae24d01dc3":[3,0,0,2,4,1,3,89],
 "NetworkData_8h.html#a31b9e448e788009b672816b23397eaa3":[3,0,0,2,4,1,3,91],
 "NetworkData_8h.html#a354a1837ba4da4ff03c88181313c3dc1":[3,0,0,2,4,1,3,54],
 "NetworkData_8h.html#a43085442f94afcd668b994b6dd4f71d9":[3,0,0,2,4,1,3,86],
@@ -16,8 +17,8 @@ var NAVTREEINDEX2 =
 "NetworkData_8h.html#a88c6f7be0436c9e3a387a23410101479":[3,0,0,2,4,1,3,53],
 "NetworkData_8h.html#a89d484500632d06d10ab21aefde0efda":[3,0,0,2,4,1,3,52],
 "NetworkData_8h.html#a89d484500632d06d10ab21aefde0efdaaa3f80d8f0f1b4ffa8c475f5d60ea5635":[3,0,0,2,4,1,3,52,1],
-"NetworkData_8h.html#a89d484500632d06d10ab21aefde0efdaaa3f80d8f0f1b4ffa8c475f5d60ea5635":[3,0,0,2,4,1,3,52,0],
 "NetworkData_8h.html#a89d484500632d06d10ab21aefde0efdaaa3f80d8f0f1b4ffa8c475f5d60ea5635":[3,0,0,2,4,1,3,52,2],
+"NetworkData_8h.html#a89d484500632d06d10ab21aefde0efdaaa3f80d8f0f1b4ffa8c475f5d60ea5635":[3,0,0,2,4,1,3,52,0],
 "NetworkData_8h.html#a89d484500632d06d10ab21aefde0efdaaa3f80d8f0f1b4ffa8c475f5d60ea5635":[3,0,0,2,4,1,3,52,3],
 "NetworkData_8h.html#a8b76c2fcff599f635a3318ca2b0786ac":[3,0,0,2,4,1,3,57],
 "NetworkData_8h.html#a8c14fc8a3f386da9971cfe30a1b00966":[3,0,0,2,4,1,3,92],
@@ -200,7 +201,8 @@ var NAVTREEINDEX2 =
 "UDelayTaskManager_8cpp.html":[3,0,0,1,3,0,2],
 "UDelayTaskManager_8cpp_source.html":[3,0,0,1,3,0,2],
 "UDelayTaskManager_8h.html":[3,0,0,1,3,1,4],
-"UDelayTaskManager_8h.html#afa483e366e3e61c69c19946556fb96a3":[3,0,0,1,3,1,4,3],
+"UDelayTaskManager_8h.html#a2c7a66eadfe2ccfb485226675a8db2ee":[3,0,0,1,3,1,4,3],
+"UDelayTaskManager_8h.html#afa483e366e3e61c69c19946556fb96a3":[3,0,0,1,3,1,4,4],
 "UDelayTaskManager_8h_source.html":[3,0,0,1,3,1,4],
 "UDespawnItem_8cpp.html":[3,0,0,2,6,0,11],
 "UDespawnItem_8cpp_source.html":[3,0,0,2,6,0,11],
@@ -247,7 +249,5 @@ var NAVTREEINDEX2 =
 "UGameDataManager_8cpp.html#ad67093eb8f7291385c282037f38e24fc":[3,0,0,1,3,0,3,1],
 "UGameDataManager_8cpp.html#ae23d7e0273152b4b27f3c62f3b4b2a15":[3,0,0,1,3,0,3,3],
 "UGameDataManager_8cpp.html#affad115e3ab2f4304c38c5e6cbfc5346":[3,0,0,1,3,0,3,2],
-"UGameDataManager_8cpp_source.html":[3,0,0,1,3,0,3],
-"UGameDataManager_8h.html":[3,0,0,1,3,1,5],
-"UGameDataManager_8h_source.html":[3,0,0,1,3,1,5]
+"UGameDataManager_8cpp_source.html":[3,0,0,1,3,0,3]
 };

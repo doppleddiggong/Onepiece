@@ -6,6 +6,7 @@ var classAQuestionnaireKiosk =
     [ "CreateTestData", "classAQuestionnaireKiosk.html#ae5d6e0a31a0e264e6c20162ad0f33bc9", null ],
     [ "GetLifetimeReplicatedProps", "classAQuestionnaireKiosk.html#a8e9abf61ee7e182330c40fa491f32ca9", null ],
     [ "OnInteractionTriggered", "classAQuestionnaireKiosk.html#a4671d5794cc1dd9127a34d1aa241370e", null ],
+    [ "OnOutlineStateChanged", "classAQuestionnaireKiosk.html#a78eb471ef39239c272e781bd0782056e", null ],
     [ "OnResponseData", "classAQuestionnaireKiosk.html#aaacc61f5572ccd7b26cf1edcabbdc9a1", null ],
     [ "ServerRPC_OnInteractionTriggered", "classAQuestionnaireKiosk.html#a6243834b199bf5131eb6202d540c559f", null ],
     [ "ShowPopup", "classAQuestionnaireKiosk.html#a032bf43decb5816ab133f7efcbc1c519", null ],

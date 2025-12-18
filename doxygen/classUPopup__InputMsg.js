@@ -15,6 +15,7 @@ var classUPopup__InputMsg =
     [ "SetDesc", "classUPopup__InputMsg.html#a4812bae83370539dd8d5773749f1928c", null ],
     [ "SetTitle", "classUPopup__InputMsg.html#a096dd3e1c0910968a5d591ed79a8e77a", null ],
     [ "UpdateAnimation", "classUPopup__InputMsg.html#a830a08b15d00e418f351f096fc5a8790", null ],
+    [ "bAllowPlayerControl", "classUPopup__InputMsg.html#a6ac288312766fb96aa9acf7ece8a630e", null ],
     [ "bIsOpenAnim", "classUPopup__InputMsg.html#a807985dccb3305b1004c611401b7b551", null ],
     [ "Btn_Cancel", "classUPopup__InputMsg.html#abf95d2c7944da0e75eda54739279c5db", null ],
     [ "Btn_Close", "classUPopup__InputMsg.html#a3d12174bbc66b17efcc7651be32d66cc", null ],

@@ -1,5 +1,16 @@
 var NAVTREEINDEX9 =
 {
+"classUFadeWidget.html#a6899871326fc75bf72e6ce37ec862d21":[2,0,155,7],
+"classUFadeWidget.html#a848a9beac150c0f5290bf713d049a0ab":[2,0,155,0],
+"classUFadeWidget.html#a917926627efbb76cfd06700ae41d0411":[2,0,155,1],
+"classUFadeWidget.html#a95d37f2651a6e8b05a2522abf11416df":[2,0,155,5],
+"classUFadeWidget.html#a9cf3b1978bc9dc28cde55b9b117f3dfc":[2,0,155,2],
+"classUFadeWidget.html#abb064efb3cd8f1eb6799548fccd40d8d":[2,0,155,3],
+"classUGameDamageType.html":[2,0,156],
+"classUGameDamageType.html#a77d2f7e9d089db5001753dff076da14d":[2,0,156,0],
+"classUGameDataManager.html":[2,0,157],
+"classUGameDataManager.html#a013d5de56f83c3409ea138d830ac50fc":[2,0,157,33],
+"classUGameDataManager.html#a024fcc0923ff91e75ab3a98dcfb7d571":[2,0,157,43],
 "classUGameDataManager.html#a03c741b7e6e83a0a54575b1059b4f2ef":[2,0,157,31],
 "classUGameDataManager.html#a06126e08dc91b9b5ec64805f5c3774bf":[2,0,157,57],
 "classUGameDataManager.html#a0afd28aca50dbefb006efafa340999fb":[2,0,157,44],
@@ -238,16 +249,5 @@ var NAVTREEINDEX9 =
 "classULingoGameHelper.html#aedcd84af73f7741c04bdd74e617366e8":[2,0,165,19],
 "classULingoGameHelper.html#af5fbc9538e6adda28f03d547c33ecc48":[2,0,165,29],
 "classULingoGameInstance.html":[2,0,166],
-"classULingoGameInstance.html#a094b7b917f1aa7eca5989d86616a69b4":[2,0,166,1],
-"classULingoGameInstance.html#a0bdb0fd769fbe982dc2f5e033afbe789":[2,0,166,5],
-"classULingoGameInstance.html#a0da394f50c70f08879396db0c858d67f":[2,0,166,16],
-"classULingoGameInstance.html#a17232e7c2128d3f8af2561f649b27473":[2,0,166,13],
-"classULingoGameInstance.html#a196bfa207c29f00ebf799cd69e7bb18b":[2,0,166,10],
-"classULingoGameInstance.html#a26a1c2285fdf102cd5019a4742b37ea8":[2,0,166,0],
-"classULingoGameInstance.html#a410b5941f3346e986bacce837f762dd7":[2,0,166,7],
-"classULingoGameInstance.html#a5addb30790cffdff624033f5ebe36fb5":[2,0,166,2],
-"classULingoGameInstance.html#a6dce121978db2d3b2504e9068c694527":[2,0,166,15],
-"classULingoGameInstance.html#a9319d9cef4c0be3f17e125996aafcd44":[2,0,166,4],
-"classULingoGameInstance.html#a9fd24afa0669652e56d9d9f9ece5434c":[2,0,166,8],
-"classULingoGameInstance.html#aa43f70d6fffd84706bfbebb23e08db49":[2,0,166,6]
+"classULingoGameInstance.html#a094b7b917f1aa7eca5989d86616a69b4":[2,0,166,1]
 };

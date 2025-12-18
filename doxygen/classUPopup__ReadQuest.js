@@ -12,6 +12,7 @@ var classUPopup__ReadQuest =
     [ "OpenAnimation", "classUPopup__ReadQuest.html#a2c3d2b47f8255c0172cf9f218790fcc8", null ],
     [ "RequestListenAudio", "classUPopup__ReadQuest.html#a96dba17782cb0e50ce2041d8389079f3", null ],
     [ "UpdateAnimation", "classUPopup__ReadQuest.html#a830a08b15d00e418f351f096fc5a8790", null ],
+    [ "bAllowPlayerControl", "classUPopup__ReadQuest.html#a6ac288312766fb96aa9acf7ece8a630e", null ],
     [ "bIsOpenAnim", "classUPopup__ReadQuest.html#a807985dccb3305b1004c611401b7b551", null ],
     [ "bIsRequest", "classUPopup__ReadQuest.html#acbb3ac7db4f11e6586bfd50cc8c69bd9", null ],
     [ "Btn_Confirm", "classUPopup__ReadQuest.html#a1af7a8d8ea21cac1fee5df3ca42f4451", null ],

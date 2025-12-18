@@ -20,6 +20,7 @@ var classUPopup__InterviewHello =
     [ "SaveCurrentAnswer", "classUPopup__InterviewHello.html#a77b4d1552067ee7818d0e0cde4416687", null ],
     [ "ShouldSkipInterviewToday", "classUPopup__InterviewHello.html#a1ee520db04ec8e883f1b0f1d837e027a", null ],
     [ "UpdateAnimation", "classUPopup__InterviewHello.html#a830a08b15d00e418f351f096fc5a8790", null ],
+    [ "bAllowPlayerControl", "classUPopup__InterviewHello.html#a6ac288312766fb96aa9acf7ece8a630e", null ],
     [ "bCheckTodayDoNotShow", "classUPopup__InterviewHello.html#a0cd3b9b3a42a7c1dbf11b6f1b7304919", null ],
     [ "bIsOpenAnim", "classUPopup__InterviewHello.html#a807985dccb3305b1004c611401b7b551", null ],
     [ "Btn_Close", "classUPopup__InterviewHello.html#aa30a9e446927f1ef9bda5f8cb0274a29", null ],

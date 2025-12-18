@@ -7,6 +7,7 @@ var classUPopup__Word =
     [ "OnResponseListenAudio", "classUPopup__Word.html#a45dee7955aec0f230f1f72442bcecf9b", null ],
     [ "OpenAnimation", "classUPopup__Word.html#a2c3d2b47f8255c0172cf9f218790fcc8", null ],
     [ "UpdateAnimation", "classUPopup__Word.html#a830a08b15d00e418f351f096fc5a8790", null ],
+    [ "bAllowPlayerControl", "classUPopup__Word.html#a6ac288312766fb96aa9acf7ece8a630e", null ],
     [ "bIsOpenAnim", "classUPopup__Word.html#a807985dccb3305b1004c611401b7b551", null ],
     [ "bIsRequest", "classUPopup__Word.html#af1f4fcfae08c555d86fac7257b4a3fd1", null ],
     [ "Btn_Close", "classUPopup__Word.html#aaf9f27083023b222fface839eacc7a60", null ],

@@ -5,6 +5,7 @@ var classUPopup__QuestionnaireResultItem =
     [ "NativeTick", "classUPopup__QuestionnaireResultItem.html#a750c1a854f68ca16faa069645531abd6", null ],
     [ "OpenAnimation", "classUPopup__QuestionnaireResultItem.html#a2c3d2b47f8255c0172cf9f218790fcc8", null ],
     [ "UpdateAnimation", "classUPopup__QuestionnaireResultItem.html#a830a08b15d00e418f351f096fc5a8790", null ],
+    [ "bAllowPlayerControl", "classUPopup__QuestionnaireResultItem.html#a6ac288312766fb96aa9acf7ece8a630e", null ],
     [ "bIsOpenAnim", "classUPopup__QuestionnaireResultItem.html#a807985dccb3305b1004c611401b7b551", null ],
     [ "Image_Answer", "classUPopup__QuestionnaireResultItem.html#a11882983361116c0be2ea0d759cf7548", null ],
     [ "OpenDuration", "classUPopup__QuestionnaireResultItem.html#a5a4c2b75560a3e2d07ed3aa52837278e", null ],

@@ -19,6 +19,7 @@ var classAPlayerActor =
     [ "GetLifetimeReplicatedProps", "classAPlayerActor.html#a96895f47e4451ef42317ea07a4b51990", null ],
     [ "GetMainWidget", "classAPlayerActor.html#a71880110b3fc29d4a2560edfaa57cb60", null ],
     [ "GetQuestRole", "classAPlayerActor.html#a5103c0363fe48208c685cc50eb8253a1", null ],
+    [ "IsControlEnabled", "classAPlayerActor.html#a115e142270ff13d152f003cf83a034d1", null ],
     [ "IsMainMap", "classAPlayerActor.html#a4e1f651cec20acf4d8098787767f3a3f", null ],
     [ "MulticastRPC_DoJump", "classAPlayerActor.html#ab25b6b5741b8ac1c5f6e5e3f7c0dc179", null ],
     [ "MulticastRPC_DoJumpStart", "classAPlayerActor.html#a45195af3baa7076f2e881d9783023099", null ],

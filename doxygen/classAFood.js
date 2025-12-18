@@ -3,6 +3,7 @@ var classAFood =
     [ "AFood", "classAFood.html#ac6368161a64ddb23444841bc71979a1f", null ],
     [ "BeginPlay", "classAFood.html#ae3d1b4ff7a90238177025945d9621c4f", null ],
     [ "GetLifetimeReplicatedProps", "classAFood.html#a9d5469e7144ca2883d9472fd1f7c06d4", null ],
+    [ "OnOutlineStateChanged", "classAFood.html#aa43187bf89a619888cee8beacd6ee5b4", null ],
     [ "OnRep_CurrentFoodData", "classAFood.html#ac02250d240a1826d146eb16a315ad8ce", null ],
     [ "SetCityName", "classAFood.html#aebbad5e8b1fcc27be5d30e4e67bcf4f1", null ],
     [ "SetFoodMesh", "classAFood.html#a54c42f8e64c7767fa98c0380a4df1bfc", null ],

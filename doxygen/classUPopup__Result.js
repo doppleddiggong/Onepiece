@@ -14,6 +14,7 @@ var classUPopup__Result =
     [ "RequestResult", "classUPopup__Result.html#a24017325c9a2bc13cc69698adda2cce4", null ],
     [ "UpdateAnimation", "classUPopup__Result.html#a830a08b15d00e418f351f096fc5a8790", null ],
     [ "AnswerItemClass", "classUPopup__Result.html#afe1d30fae892ff933cddfac06c483fe3", null ],
+    [ "bAllowPlayerControl", "classUPopup__Result.html#a6ac288312766fb96aa9acf7ece8a630e", null ],
     [ "bIsOpenAnim", "classUPopup__Result.html#a807985dccb3305b1004c611401b7b551", null ],
     [ "Btn_Confirm", "classUPopup__Result.html#abfa0db686cba0ac9337ecadf1beaa185", null ],
     [ "OpenDuration", "classUPopup__Result.html#a5a4c2b75560a3e2d07ed3aa52837278e", null ],

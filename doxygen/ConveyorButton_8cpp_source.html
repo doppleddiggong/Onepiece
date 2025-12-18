@@ -182,59 +182,70 @@ $(document).ready(function(){initNavTree('ConveyorButton_8cpp_source.html',''); 
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <span class="comment">// Bind Delegate</span></div>
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <a class="code hl_variable" href="classAConveyorButton.html#a65c01716b559a99de3ae8b92c0670c50">InteractableComp</a>-&gt;InitWidget(<a class="code hl_variable" href="classAConveyorButton.html#a2a9b1343dc28a4e7cde57e23b2feedfe">WidgetComp</a>);</div>
 <div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <a class="code hl_variable" href="classAConveyorButton.html#a65c01716b559a99de3ae8b92c0670c50">InteractableComp</a>-&gt;OnInteractionTriggered.AddDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classAConveyorButton.html#af4efd00b07d9f56b1c17d309f3b939f4">AConveyorButton::OnInteractionTriggered</a>);</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>}</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    <a class="code hl_variable" href="classAConveyorButton.html#a65c01716b559a99de3ae8b92c0670c50">InteractableComp</a>-&gt;OnOutlineStateChanged.AddDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classAConveyorButton.html#a1db2dc94fb092313757270f48134a8e8">AConveyorButton::OnOutlineStateChanged</a>);</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>}</div>
 </div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
-<div class="foldopen" id="foldopen00073" data-start="{" data-end="}">
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno"><a class="line" href="classAConveyorButton.html#a565412015901624ea884a35b54b5c759">   73</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAConveyorButton.html#a565412015901624ea884a35b54b5c759">AConveyorButton::GetLifetimeReplicatedProps</a>(TArray&lt;class FLifetimeProperty&gt;&amp; OutLifetimeProps)<span class="keyword"> const</span></div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="keyword"></span>{</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    Super::GetLifetimeReplicatedProps(OutLifetimeProps);</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    </div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    DOREPLIFETIME(<a class="code hl_class" href="classAConveyorButton.html">AConveyorButton</a>, <a class="code hl_variable" href="classAConveyorButton.html#aa0528792440b0dd40e355b9effafce98">ConveyorBeltActors</a>);</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    DOREPLIFETIME(<a class="code hl_class" href="classAConveyorButton.html">AConveyorButton</a>, <a class="code hl_variable" href="classAConveyorButton.html#adbff4e28f4feaee676747fcc2052226d">bIsButtonOn</a>);</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>}</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="foldopen" id="foldopen00074" data-start="{" data-end="}">
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno"><a class="line" href="classAConveyorButton.html#a565412015901624ea884a35b54b5c759">   74</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAConveyorButton.html#a565412015901624ea884a35b54b5c759">AConveyorButton::GetLifetimeReplicatedProps</a>(TArray&lt;class FLifetimeProperty&gt;&amp; OutLifetimeProps)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="keyword"></span>{</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    Super::GetLifetimeReplicatedProps(OutLifetimeProps);</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    </div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    DOREPLIFETIME(<a class="code hl_class" href="classAConveyorButton.html">AConveyorButton</a>, <a class="code hl_variable" href="classAConveyorButton.html#aa0528792440b0dd40e355b9effafce98">ConveyorBeltActors</a>);</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    DOREPLIFETIME(<a class="code hl_class" href="classAConveyorButton.html">AConveyorButton</a>, <a class="code hl_variable" href="classAConveyorButton.html#adbff4e28f4feaee676747fcc2052226d">bIsButtonOn</a>);</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>}</div>
 </div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><span class="comment">// Called every frame</span></div>
-<div class="foldopen" id="foldopen00082" data-start="{" data-end="}">
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno"><a class="line" href="classAConveyorButton.html#a77884d80090f10a7ece7731fffd6cc81">   82</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAConveyorButton.html#a77884d80090f10a7ece7731fffd6cc81">AConveyorButton::Tick</a>(<span class="keywordtype">float</span> DeltaTime)</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>{</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    Super::Tick(DeltaTime);</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>}</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span><span class="comment">// Called every frame</span></div>
+<div class="foldopen" id="foldopen00083" data-start="{" data-end="}">
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno"><a class="line" href="classAConveyorButton.html#a77884d80090f10a7ece7731fffd6cc81">   83</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAConveyorButton.html#a77884d80090f10a7ece7731fffd6cc81">AConveyorButton::Tick</a>(<span class="keywordtype">float</span> DeltaTime)</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>{</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    Super::Tick(DeltaTime);</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>}</div>
 </div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
-<div class="foldopen" id="foldopen00087" data-start="{" data-end="}">
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno"><a class="line" href="classAConveyorButton.html#a061b18c556c3e1c00167ad8f4a734961">   87</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="classAConveyorButton.html#a061b18c556c3e1c00167ad8f4a734961">AConveyorButton::GetIsButtonOn</a>()</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>{</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classAConveyorButton.html#adbff4e28f4feaee676747fcc2052226d">bIsButtonOn</a>;</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>}</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
+<div class="foldopen" id="foldopen00088" data-start="{" data-end="}">
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno"><a class="line" href="classAConveyorButton.html#a061b18c556c3e1c00167ad8f4a734961">   88</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="classAConveyorButton.html#a061b18c556c3e1c00167ad8f4a734961">AConveyorButton::GetIsButtonOn</a>()</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>{</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classAConveyorButton.html#adbff4e28f4feaee676747fcc2052226d">bIsButtonOn</a>;</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>}</div>
 </div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
-<div class="foldopen" id="foldopen00092" data-start="{" data-end="}">
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno"><a class="line" href="classAConveyorButton.html#af4efd00b07d9f56b1c17d309f3b939f4">   92</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAConveyorButton.html#af4efd00b07d9f56b1c17d309f3b939f4">AConveyorButton::OnInteractionTriggered</a>(AActor* Interactor)</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>{</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAConveyorButton.html#aa0528792440b0dd40e355b9effafce98">ConveyorBeltActors</a>.IsEmpty()) <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    </div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    <a class="code hl_variable" href="classAConveyorButton.html#adbff4e28f4feaee676747fcc2052226d">bIsButtonOn</a> = !<a class="code hl_variable" href="classAConveyorButton.html#adbff4e28f4feaee676747fcc2052226d">bIsButtonOn</a>;</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    <a class="code hl_define" href="GameLogging_8h.html#ac50b407bb34c70a0be1fccc74730d143">PRINT_STRING</a>(TEXT(<span class="stringliteral">&quot;%d&quot;</span>), <a class="code hl_variable" href="classAConveyorButton.html#adbff4e28f4feaee676747fcc2052226d">bIsButtonOn</a>);</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; Belt : <a class="code hl_variable" href="classAConveyorButton.html#aa0528792440b0dd40e355b9effafce98">ConveyorBeltActors</a>)</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    {</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>        <a class="code hl_class" href="classAConveyorBelt.html">AConveyorBelt</a>* ConveyorBeltActor = Cast&lt;AConveyorBelt&gt;(Belt);</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>        ConveyorBeltActor-&gt;<a class="code hl_function" href="classAConveyorBelt.html#afd529ca236321f94d9185d5ae40c5883">ChangeConveyorMovement</a>();</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    }</div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    </div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>}</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
+<div class="foldopen" id="foldopen00093" data-start="{" data-end="}">
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno"><a class="line" href="classAConveyorButton.html#af4efd00b07d9f56b1c17d309f3b939f4">   93</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAConveyorButton.html#af4efd00b07d9f56b1c17d309f3b939f4">AConveyorButton::OnInteractionTriggered</a>(AActor* Interactor)</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>{</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAConveyorButton.html#aa0528792440b0dd40e355b9effafce98">ConveyorBeltActors</a>.IsEmpty()) <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    </div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    <a class="code hl_variable" href="classAConveyorButton.html#adbff4e28f4feaee676747fcc2052226d">bIsButtonOn</a> = !<a class="code hl_variable" href="classAConveyorButton.html#adbff4e28f4feaee676747fcc2052226d">bIsButtonOn</a>;</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    <a class="code hl_define" href="GameLogging_8h.html#ac50b407bb34c70a0be1fccc74730d143">PRINT_STRING</a>(TEXT(<span class="stringliteral">&quot;%d&quot;</span>), <a class="code hl_variable" href="classAConveyorButton.html#adbff4e28f4feaee676747fcc2052226d">bIsButtonOn</a>);</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; Belt : <a class="code hl_variable" href="classAConveyorButton.html#aa0528792440b0dd40e355b9effafce98">ConveyorBeltActors</a>)</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    {</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>        <a class="code hl_class" href="classAConveyorBelt.html">AConveyorBelt</a>* ConveyorBeltActor = Cast&lt;AConveyorBelt&gt;(Belt);</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>        ConveyorBeltActor-&gt;<a class="code hl_function" href="classAConveyorBelt.html#afd529ca236321f94d9185d5ae40c5883">ChangeConveyorMovement</a>();</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    }</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    </div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>}</div>
 </div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span> </div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span><span class="keywordtype">void</span> AConveyorButton::ServerRPC_OnInteractionTriggered_Implementation(AActor* Interactor)</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>{</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    </div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>}</div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span> </div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span><span class="keywordtype">void</span> AConveyorButton::MultiCastRPC_OnInteractionTriggered_Implementation(AActor* Interactor)</div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>{</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    </div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>}</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span> </div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span><span class="keywordtype">void</span> AConveyorButton::ServerRPC_OnInteractionTriggered_Implementation(AActor* Interactor)</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>{</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    </div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>}</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span> </div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span><span class="keywordtype">void</span> AConveyorButton::MultiCastRPC_OnInteractionTriggered_Implementation(AActor* Interactor)</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>{</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span> </div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>}</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span> </div>
+<div class="foldopen" id="foldopen00117" data-start="{" data-end="}">
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno"><a class="line" href="classAConveyorButton.html#a1db2dc94fb092313757270f48134a8e8">  117</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAConveyorButton.html#a1db2dc94fb092313757270f48134a8e8">AConveyorButton::OnOutlineStateChanged</a>(<span class="keywordtype">bool</span> bShouldShowOutline)</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>{</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAConveyorButton.html#a1e43c630957384b102f34b173b9fed07">ButtonMeshComp</a>)</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    {</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>        <a class="code hl_variable" href="classAConveyorButton.html#a1e43c630957384b102f34b173b9fed07">ButtonMeshComp</a>-&gt;SetRenderCustomDepth(bShouldShowOutline);</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>    }</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>}</div>
+</div>
 <div class="ttc" id="aAPedestalSwitch_8cpp_html_a55b6865d8563376fde56fd22937cef0f"><div class="ttname"><a href="APedestalSwitch_8cpp.html#a55b6865d8563376fde56fd22937cef0f">INTERACT_WIDGET_PATH</a></div><div class="ttdeci">#define INTERACT_WIDGET_PATH</div><div class="ttdef"><b>Definition</b> <a href="APedestalSwitch_8cpp_source.html#l00012">APedestalSwitch.cpp:12</a></div></div>
 <div class="ttc" id="aConveyorBelt_8h_html"><div class="ttname"><a href="ConveyorBelt_8h.html">ConveyorBelt.h</a></div></div>
 <div class="ttc" id="aConveyorButton_8h_html"><div class="ttname"><a href="ConveyorButton_8h.html">ConveyorButton.h</a></div></div>
@@ -245,26 +256,27 @@ $(document).ready(function(){initNavTree('ConveyorButton_8cpp_source.html',''); 
 <div class="ttc" id="aclassAConveyorBelt_html"><div class="ttname"><a href="classAConveyorBelt.html">AConveyorBelt</a></div><div class="ttdef"><b>Definition</b> <a href="ConveyorBelt_8h_source.html#l00010">ConveyorBelt.h:11</a></div></div>
 <div class="ttc" id="aclassAConveyorBelt_html_afd529ca236321f94d9185d5ae40c5883"><div class="ttname"><a href="classAConveyorBelt.html#afd529ca236321f94d9185d5ae40c5883">AConveyorBelt::ChangeConveyorMovement</a></div><div class="ttdeci">void ChangeConveyorMovement()</div><div class="ttdef"><b>Definition</b> <a href="ConveyorBelt_8cpp_source.html#l00071">ConveyorBelt.cpp:71</a></div></div>
 <div class="ttc" id="aclassAConveyorButton_html"><div class="ttname"><a href="classAConveyorButton.html">AConveyorButton</a></div><div class="ttdef"><b>Definition</b> <a href="ConveyorButton_8h_source.html#l00010">ConveyorButton.h:11</a></div></div>
-<div class="ttc" id="aclassAConveyorButton_html_a061b18c556c3e1c00167ad8f4a734961"><div class="ttname"><a href="classAConveyorButton.html#a061b18c556c3e1c00167ad8f4a734961">AConveyorButton::GetIsButtonOn</a></div><div class="ttdeci">bool GetIsButtonOn()</div><div class="ttdef"><b>Definition</b> <a href="ConveyorButton_8cpp_source.html#l00087">ConveyorButton.cpp:87</a></div></div>
+<div class="ttc" id="aclassAConveyorButton_html_a061b18c556c3e1c00167ad8f4a734961"><div class="ttname"><a href="classAConveyorButton.html#a061b18c556c3e1c00167ad8f4a734961">AConveyorButton::GetIsButtonOn</a></div><div class="ttdeci">bool GetIsButtonOn()</div><div class="ttdef"><b>Definition</b> <a href="ConveyorButton_8cpp_source.html#l00088">ConveyorButton.cpp:88</a></div></div>
+<div class="ttc" id="aclassAConveyorButton_html_a1db2dc94fb092313757270f48134a8e8"><div class="ttname"><a href="classAConveyorButton.html#a1db2dc94fb092313757270f48134a8e8">AConveyorButton::OnOutlineStateChanged</a></div><div class="ttdeci">void OnOutlineStateChanged(bool bShouldShowOutline)</div><div class="ttdef"><b>Definition</b> <a href="ConveyorButton_8cpp_source.html#l00117">ConveyorButton.cpp:117</a></div></div>
 <div class="ttc" id="aclassAConveyorButton_html_a1e43c630957384b102f34b173b9fed07"><div class="ttname"><a href="classAConveyorButton.html#a1e43c630957384b102f34b173b9fed07">AConveyorButton::ButtonMeshComp</a></div><div class="ttdeci">TObjectPtr&lt; class USkeletalMeshComponent &gt; ButtonMeshComp</div><div class="ttdef"><b>Definition</b> <a href="ConveyorButton_8h_source.html#l00033">ConveyorButton.h:33</a></div></div>
 <div class="ttc" id="aclassAConveyorButton_html_a1e4e1433ebfb711d13bc1260e65d3ca5"><div class="ttname"><a href="classAConveyorButton.html#a1e4e1433ebfb711d13bc1260e65d3ca5">AConveyorButton::RootSceneComp</a></div><div class="ttdeci">TObjectPtr&lt; class USceneComponent &gt; RootSceneComp</div><div class="ttdef"><b>Definition</b> <a href="ConveyorButton_8h_source.html#l00030">ConveyorButton.h:30</a></div></div>
 <div class="ttc" id="aclassAConveyorButton_html_a2a9b1343dc28a4e7cde57e23b2feedfe"><div class="ttname"><a href="classAConveyorButton.html#a2a9b1343dc28a4e7cde57e23b2feedfe">AConveyorButton::WidgetComp</a></div><div class="ttdeci">TObjectPtr&lt; class UWidgetComponent &gt; WidgetComp</div><div class="ttdef"><b>Definition</b> <a href="ConveyorButton_8h_source.html#l00039">ConveyorButton.h:39</a></div></div>
-<div class="ttc" id="aclassAConveyorButton_html_a565412015901624ea884a35b54b5c759"><div class="ttname"><a href="classAConveyorButton.html#a565412015901624ea884a35b54b5c759">AConveyorButton::GetLifetimeReplicatedProps</a></div><div class="ttdeci">virtual void GetLifetimeReplicatedProps(TArray&lt; class FLifetimeProperty &gt; &amp;OutLifetimeProps) const override</div><div class="ttdef"><b>Definition</b> <a href="ConveyorButton_8cpp_source.html#l00073">ConveyorButton.cpp:73</a></div></div>
+<div class="ttc" id="aclassAConveyorButton_html_a565412015901624ea884a35b54b5c759"><div class="ttname"><a href="classAConveyorButton.html#a565412015901624ea884a35b54b5c759">AConveyorButton::GetLifetimeReplicatedProps</a></div><div class="ttdeci">virtual void GetLifetimeReplicatedProps(TArray&lt; class FLifetimeProperty &gt; &amp;OutLifetimeProps) const override</div><div class="ttdef"><b>Definition</b> <a href="ConveyorButton_8cpp_source.html#l00074">ConveyorButton.cpp:74</a></div></div>
 <div class="ttc" id="aclassAConveyorButton_html_a5ec74136086d05387dc61acb3c6b6270"><div class="ttname"><a href="classAConveyorButton.html#a5ec74136086d05387dc61acb3c6b6270">AConveyorButton::BoxComp</a></div><div class="ttdeci">TObjectPtr&lt; class UBoxComponent &gt; BoxComp</div><div class="ttdef"><b>Definition</b> <a href="ConveyorButton_8h_source.html#l00042">ConveyorButton.h:42</a></div></div>
 <div class="ttc" id="aclassAConveyorButton_html_a65c01716b559a99de3ae8b92c0670c50"><div class="ttname"><a href="classAConveyorButton.html#a65c01716b559a99de3ae8b92c0670c50">AConveyorButton::InteractableComp</a></div><div class="ttdeci">TObjectPtr&lt; class UInteractableComponent &gt; InteractableComp</div><div class="ttdef"><b>Definition</b> <a href="ConveyorButton_8h_source.html#l00036">ConveyorButton.h:36</a></div></div>
-<div class="ttc" id="aclassAConveyorButton_html_a77884d80090f10a7ece7731fffd6cc81"><div class="ttname"><a href="classAConveyorButton.html#a77884d80090f10a7ece7731fffd6cc81">AConveyorButton::Tick</a></div><div class="ttdeci">virtual void Tick(float DeltaTime) override</div><div class="ttdef"><b>Definition</b> <a href="ConveyorButton_8cpp_source.html#l00082">ConveyorButton.cpp:82</a></div></div>
+<div class="ttc" id="aclassAConveyorButton_html_a77884d80090f10a7ece7731fffd6cc81"><div class="ttname"><a href="classAConveyorButton.html#a77884d80090f10a7ece7731fffd6cc81">AConveyorButton::Tick</a></div><div class="ttdeci">virtual void Tick(float DeltaTime) override</div><div class="ttdef"><b>Definition</b> <a href="ConveyorButton_8cpp_source.html#l00083">ConveyorButton.cpp:83</a></div></div>
 <div class="ttc" id="aclassAConveyorButton_html_a7e3314a35f3b42f12689a50194d6cba3"><div class="ttname"><a href="classAConveyorButton.html#a7e3314a35f3b42f12689a50194d6cba3">AConveyorButton::AConveyorButton</a></div><div class="ttdeci">AConveyorButton()</div><div class="ttdef"><b>Definition</b> <a href="ConveyorButton_8cpp_source.html#l00018">ConveyorButton.cpp:18</a></div></div>
 <div class="ttc" id="aclassAConveyorButton_html_a82fb3094eb809ad45aa6a2e347ae9e25"><div class="ttname"><a href="classAConveyorButton.html#a82fb3094eb809ad45aa6a2e347ae9e25">AConveyorButton::BeginPlay</a></div><div class="ttdeci">virtual void BeginPlay() override</div><div class="ttdef"><b>Definition</b> <a href="ConveyorButton_8cpp_source.html#l00061">ConveyorButton.cpp:61</a></div></div>
 <div class="ttc" id="aclassAConveyorButton_html_aa0528792440b0dd40e355b9effafce98"><div class="ttname"><a href="classAConveyorButton.html#aa0528792440b0dd40e355b9effafce98">AConveyorButton::ConveyorBeltActors</a></div><div class="ttdeci">TArray&lt; class AActor * &gt; ConveyorBeltActors</div><div class="ttdef"><b>Definition</b> <a href="ConveyorButton_8h_source.html#l00046">ConveyorButton.h:46</a></div></div>
-<div class="ttc" id="aclassAConveyorButton_html_adbff4e28f4feaee676747fcc2052226d"><div class="ttname"><a href="classAConveyorButton.html#adbff4e28f4feaee676747fcc2052226d">AConveyorButton::bIsButtonOn</a></div><div class="ttdeci">bool bIsButtonOn</div><div class="ttdef"><b>Definition</b> <a href="ConveyorButton_8h_source.html#l00059">ConveyorButton.h:59</a></div></div>
-<div class="ttc" id="aclassAConveyorButton_html_af4efd00b07d9f56b1c17d309f3b939f4"><div class="ttname"><a href="classAConveyorButton.html#af4efd00b07d9f56b1c17d309f3b939f4">AConveyorButton::OnInteractionTriggered</a></div><div class="ttdeci">void OnInteractionTriggered(AActor *Interactor)</div><div class="ttdef"><b>Definition</b> <a href="ConveyorButton_8cpp_source.html#l00092">ConveyorButton.cpp:92</a></div></div>
+<div class="ttc" id="aclassAConveyorButton_html_adbff4e28f4feaee676747fcc2052226d"><div class="ttname"><a href="classAConveyorButton.html#adbff4e28f4feaee676747fcc2052226d">AConveyorButton::bIsButtonOn</a></div><div class="ttdeci">bool bIsButtonOn</div><div class="ttdef"><b>Definition</b> <a href="ConveyorButton_8h_source.html#l00062">ConveyorButton.h:62</a></div></div>
+<div class="ttc" id="aclassAConveyorButton_html_af4efd00b07d9f56b1c17d309f3b939f4"><div class="ttname"><a href="classAConveyorButton.html#af4efd00b07d9f56b1c17d309f3b939f4">AConveyorButton::OnInteractionTriggered</a></div><div class="ttdeci">void OnInteractionTriggered(AActor *Interactor)</div><div class="ttdef"><b>Definition</b> <a href="ConveyorButton_8cpp_source.html#l00093">ConveyorButton.cpp:93</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_b7459e4428712e32d7c860db6e401a05.html">Interactable</a></li><li class="navelem"><a class="el" href="dir_77257aedd361f850f8a01079e914567e.html">Private</a></li><li class="navelem"><a class="el" href="ConveyorButton_8cpp.html">ConveyorButton.cpp</a></li>
-    <li class="footer">생성시간 : 목 12월 18 2025 06:31:40, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 목 12월 18 2025 06:32:40, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

@@ -1,5 +1,16 @@
 var NAVTREEINDEX8 =
 {
+"classUBasePopup.html#a5a4c2b75560a3e2d07ed3aa52837278e":[2,0,134,5],
+"classUBasePopup.html#a6124aff28b2b2a0b810bb693ebcd81ad":[2,0,134,7],
+"classUBasePopup.html#a6ac288312766fb96aa9acf7ece8a630e":[2,0,134,3],
+"classUBasePopup.html#a750c1a854f68ca16faa069645531abd6":[2,0,134,0],
+"classUBasePopup.html#a7e537a0dd751df11990ed46947f09d42":[2,0,134,11],
+"classUBasePopup.html#a807985dccb3305b1004c611401b7b551":[2,0,134,4],
+"classUBasePopup.html#a830a08b15d00e418f351f096fc5a8790":[2,0,134,2],
+"classUBasePopup.html#a9a4bc6d6e03adc7396c7960c41dae0b2":[2,0,134,9],
+"classUBasePopup.html#aa3d6a21b30e9b40280f1219b567232b5":[2,0,134,8],
+"classUBasePopup.html#add357075245f0843320c0b74af0f2697":[2,0,134,10],
+"classUBasePopup.html#afe75f5ef94f97fbcc8ea1ad9e801524c":[2,0,134,6],
 "classUBroadcastManager.html":[2,0,135],
 "classUBroadcastManager.html#a00f1e060d6484abaac382de9390652c1":[2,0,135,30],
 "classUBroadcastManager.html#a09bff79efc2de58aaba8c031aeddf7f2":[2,0,135,24],
@@ -238,16 +249,5 @@ var NAVTREEINDEX8 =
 "classUFadeWidget.html#a0ade441aa073c45ac5371e855270d868":[2,0,155,8],
 "classUFadeWidget.html#a18532b40c5afc773309952b6c08b9642":[2,0,155,9],
 "classUFadeWidget.html#a19457296b9efe7cbbd5b0a6e8ebf5e7e":[2,0,155,4],
-"classUFadeWidget.html#a67300363b24afc6633febd75663431bf":[2,0,155,6],
-"classUFadeWidget.html#a6899871326fc75bf72e6ce37ec862d21":[2,0,155,7],
-"classUFadeWidget.html#a848a9beac150c0f5290bf713d049a0ab":[2,0,155,0],
-"classUFadeWidget.html#a917926627efbb76cfd06700ae41d0411":[2,0,155,1],
-"classUFadeWidget.html#a95d37f2651a6e8b05a2522abf11416df":[2,0,155,5],
-"classUFadeWidget.html#a9cf3b1978bc9dc28cde55b9b117f3dfc":[2,0,155,2],
-"classUFadeWidget.html#abb064efb3cd8f1eb6799548fccd40d8d":[2,0,155,3],
-"classUGameDamageType.html":[2,0,156],
-"classUGameDamageType.html#a77d2f7e9d089db5001753dff076da14d":[2,0,156,0],
-"classUGameDataManager.html":[2,0,157],
-"classUGameDataManager.html#a013d5de56f83c3409ea138d830ac50fc":[2,0,157,33],
-"classUGameDataManager.html#a024fcc0923ff91e75ab3a98dcfb7d571":[2,0,157,43]
+"classUFadeWidget.html#a67300363b24afc6633febd75663431bf":[2,0,155,6]
 };

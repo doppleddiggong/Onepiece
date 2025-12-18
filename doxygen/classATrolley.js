@@ -2,6 +2,7 @@ var classATrolley =
 [
     [ "ATrolley", "classATrolley.html#a4a57eb77581c912584e0ba67e6406c37", null ],
     [ "BeginPlay", "classATrolley.html#ab06d8fb39909ab65b2ded23e1c6036f8", null ],
+    [ "OnOutlineStateChanged", "classATrolley.html#a83de2ce0e499d4edb1fc6ef73aaeb37c", null ],
     [ "OnPushed", "classATrolley.html#a9ed66da20fa54b4faed4b5ea3bdf291e", null ],
     [ "OnTrolleyHit", "classATrolley.html#a8d219e93aa5b93e44a1e8c760c42db63", null ],
     [ "Tick", "classATrolley.html#a0497221f9e52b0af9bce77137ba9fad2", null ],

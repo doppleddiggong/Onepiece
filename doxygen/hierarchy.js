@@ -222,6 +222,7 @@ var hierarchy =
         [ "UPopup_ReadQuest", "classUPopup__ReadQuest.html", null ],
         [ "UPopup_Result", "classUPopup__Result.html", null ],
         [ "UPopup_SpeakQuest", "classUPopup__SpeakQuest.html", null ],
+        [ "UPopup_SpeakQuestJudes", "classUPopup__SpeakQuestJudes.html", null ],
         [ "UPopup_SpeakResult", "classUPopup__SpeakResult.html", null ],
         [ "UPopup_Word", "classUPopup__Word.html", null ],
         [ "UPopup_WriteBoard", "classUPopup__WriteBoard.html", null ]
@@ -249,7 +250,6 @@ var hierarchy =
       [ "UPlayTimer", "classUPlayTimer.html", null ],
       [ "UPopup_InterviewItem", "classUPopup__InterviewItem.html", null ],
       [ "UPopup_QuestionnaireItem", "classUPopup__QuestionnaireItem.html", null ],
-      [ "UPopup_SpeakQuestJudes", "classUPopup__SpeakQuestJudes.html", null ],
       [ "UPopup_SpeakResultItem", "classUPopup__SpeakResultItem.html", null ],
       [ "UQuestInfoWidget", "classUQuestInfoWidget.html", null ],
       [ "UResultStatWidget", "classUResultStatWidget.html", null ],

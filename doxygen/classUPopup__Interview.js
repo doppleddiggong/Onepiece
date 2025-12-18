@@ -8,6 +8,7 @@ var classUPopup__Interview =
     [ "OnResponseInterviewAnswer", "classUPopup__Interview.html#a017f4585e4709e2a6494f24c83b7ae8c", null ],
     [ "OpenAnimation", "classUPopup__Interview.html#a2c3d2b47f8255c0172cf9f218790fcc8", null ],
     [ "UpdateAnimation", "classUPopup__Interview.html#a830a08b15d00e418f351f096fc5a8790", null ],
+    [ "bAllowPlayerControl", "classUPopup__Interview.html#a6ac288312766fb96aa9acf7ece8a630e", null ],
     [ "bIsOpenAnim", "classUPopup__Interview.html#a807985dccb3305b1004c611401b7b551", null ],
     [ "Btn_Close", "classUPopup__Interview.html#adbc4b1bc708fca8b8528bfeafaf4fa8d", null ],
     [ "Btn_Submit", "classUPopup__Interview.html#ae1e5a127e84c35184be7830aa403532a", null ],

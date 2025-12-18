@@ -6,6 +6,7 @@ var classAConveyorButton =
     [ "GetLifetimeReplicatedProps", "classAConveyorButton.html#a565412015901624ea884a35b54b5c759", null ],
     [ "MultiCastRPC_OnInteractionTriggered", "classAConveyorButton.html#a905ad29ca369326302e43a5f8bf573c6", null ],
     [ "OnInteractionTriggered", "classAConveyorButton.html#af4efd00b07d9f56b1c17d309f3b939f4", null ],
+    [ "OnOutlineStateChanged", "classAConveyorButton.html#a1db2dc94fb092313757270f48134a8e8", null ],
     [ "ServerRPC_OnInteractionTriggered", "classAConveyorButton.html#a9b21e688a894b9000c7fd22a92e47c93", null ],
     [ "Tick", "classAConveyorButton.html#a77884d80090f10a7ece7731fffd6cc81", null ],
     [ "bIsButtonOn", "classAConveyorButton.html#adbff4e28f4feaee676747fcc2052226d", null ],
