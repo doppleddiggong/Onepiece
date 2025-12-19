@@ -201,6 +201,8 @@ var annotated_dup =
     [ "UPopup_WriteBoard", "classUPopup__WriteBoard.html", "classUPopup__WriteBoard" ],
     [ "UPopupManager", "classUPopupManager.html", "classUPopupManager" ],
     [ "UQuestInfoWidget", "classUQuestInfoWidget.html", "classUQuestInfoWidget" ],
+    [ "UQuestOrderSlotWidget", "classUQuestOrderSlotWidget.html", "classUQuestOrderSlotWidget" ],
+    [ "UQuestOrderWidget", "classUQuestOrderWidget.html", "classUQuestOrderWidget" ],
     [ "UResultStatWidget", "classUResultStatWidget.html", "classUResultStatWidget" ],
     [ "URichText", "classURichText.html", "classURichText" ],
     [ "URobotAnimInstance", "classURobotAnimInstance.html", "classURobotAnimInstance" ],

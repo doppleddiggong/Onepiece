@@ -19,7 +19,6 @@ var classUMainWidget =
     [ "UpdateStateWidget", "classUMainWidget.html#a7b24fc5d83920b4a1b62e9cf9b34ff02", null ],
     [ "UpdateTimerDisplay", "classUMainWidget.html#a9239722afccf53cb761984ce87f32228", null ],
     [ "CachedGameState", "classUMainWidget.html#aa0abca549ef2be9c4610d4890d5c0448", null ],
-    [ "CanvasPanel_Main", "classUMainWidget.html#adba70d9f7ac11a201af34fa335241e64", null ],
     [ "ChatWidget", "classUMainWidget.html#a1c57b6f11cdc34dc6a2e3caad2fefa97", null ],
     [ "CompassWidget", "classUMainWidget.html#a0a727871d912aa9c513c0e32b5629f58", null ],
     [ "FadeWidget", "classUMainWidget.html#aa86baf5af00d6f8875fc6106bb3714e4", null ],

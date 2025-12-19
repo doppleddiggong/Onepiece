@@ -7,6 +7,8 @@ var dir_e82f2835ab4116a5eee79a37f645c6c8 =
     [ "CompassWidget.h", "CompassWidget_8h.html", "CompassWidget_8h" ],
     [ "DrawingBoardWidget.h", "DrawingBoardWidget_8h.html", "DrawingBoardWidget_8h" ],
     [ "LobbyWidget.h", "LobbyWidget_8h.html", "LobbyWidget_8h" ],
+    [ "QuestOrderSlotWidget.h", "QuestOrderSlotWidget_8h.html", "QuestOrderSlotWidget_8h" ],
+    [ "QuestOrderWidget.h", "QuestOrderWidget_8h.html", "QuestOrderWidget_8h" ],
     [ "SessionInfoWidget.h", "SessionInfoWidget_8h.html", "SessionInfoWidget_8h" ],
     [ "StartWidget.h", "StartWidget_8h.html", "StartWidget_8h" ],
     [ "UAnswerItem.h", "UAnswerItem_8h.html", "UAnswerItem_8h" ],

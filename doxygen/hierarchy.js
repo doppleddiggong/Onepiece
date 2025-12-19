@@ -256,6 +256,8 @@ var hierarchy =
       [ "UPopup_QuestionnaireItem", "classUPopup__QuestionnaireItem.html", null ],
       [ "UPopup_SpeakResultItem", "classUPopup__SpeakResultItem.html", null ],
       [ "UQuestInfoWidget", "classUQuestInfoWidget.html", null ],
+      [ "UQuestOrderSlotWidget", "classUQuestOrderSlotWidget.html", null ],
+      [ "UQuestOrderWidget", "classUQuestOrderWidget.html", null ],
       [ "UResultStatWidget", "classUResultStatWidget.html", null ],
       [ "URichText", "classURichText.html", null ],
       [ "URoomWidget", "classURoomWidget.html", null ],
