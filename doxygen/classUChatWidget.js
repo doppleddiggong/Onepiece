@@ -4,7 +4,7 @@ var classUChatWidget =
     [ "CreateChatBox", "classUChatWidget.html#aba3f013c0c2bb7310af7587c2c3411b4", null ],
     [ "FocusInput", "classUChatWidget.html#a6a91842ffdbd014a816856f2c78d0530", null ],
     [ "NativeConstruct", "classUChatWidget.html#a27bcb7fa36f2a39dcb83810967f99ee7", null ],
-    [ "SendMessage", "classUChatWidget.html#a81f4d96e817925f8b01f9a538e74f45e", null ],
+    [ "SendMessage", "classUChatWidget.html#a07a5f7cc8d4c4a588878c09be10d4923", null ],
     [ "ChatInputBox", "classUChatWidget.html#a4604508b0b8c80fd6320bc73b4d797aa", null ],
     [ "LeftChatBoxWidgetClass", "classUChatWidget.html#a6a8e74a1f549930300976a8329407931", null ],
     [ "RightChatBoxWidgetClass", "classUChatWidget.html#a334724c95349f04ae05ace13861c50cc", null ],

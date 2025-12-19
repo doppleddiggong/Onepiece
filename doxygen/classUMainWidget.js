@@ -10,7 +10,7 @@ var classUMainWidget =
     [ "NativeConstruct", "classUMainWidget.html#ab5b82b602efb97c7b4cd7a3c2d99d6e8", null ],
     [ "NativeTick", "classUMainWidget.html#a3ccf5693518d42c8c33a350b9e739396", null ],
     [ "OnUpdateMissionTimerState", "classUMainWidget.html#a087562bb275500b4085bf893720ae7b0", null ],
-    [ "SendChatMessage", "classUMainWidget.html#a6c1da8599a74b978de846061fd901dc0", null ],
+    [ "SendChatMessage", "classUMainWidget.html#a1124ab0c2b2857c0471210fe82305192", null ],
     [ "SetFocusOnChat", "classUMainWidget.html#a7c8dc7d17f97716724ddc8e9281de513", null ],
     [ "SetMissionTimerState", "classUMainWidget.html#a5a104d787c94fb051427186f6a0236fe", null ],
     [ "UpdateChatWidget", "classUMainWidget.html#ad0684e1ac5212bbd67c78194b3b2bd83", null ],

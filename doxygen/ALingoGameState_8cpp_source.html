@@ -490,7 +490,7 @@ $(document).ready(function(){initNavTree('ALingoGameState_8cpp_source.html','');
 <div class="line"><a id="l00340" name="l00340"></a><span class="lineno">  340</span>}</div>
 </div>
 <div class="line"><a id="l00341" name="l00341"></a><span class="lineno">  341</span> </div>
-<div class="line"><a id="l00342" name="l00342"></a><span class="lineno">  342</span><span class="keywordtype">void</span> ALingoGameState::MulticastRPC_SendChat_Implementation(<a class="code hl_struct" href="structFResponseUserMe.html">FResponseUserMe</a> sendUser, <span class="keyword">const</span> FText&amp; inMessage)</div>
+<div class="line"><a id="l00342" name="l00342"></a><span class="lineno">  342</span><span class="keywordtype">void</span> ALingoGameState::MulticastRPC_SendChat_Implementation(<a class="code hl_struct" href="structFResponseUserMe.html">FResponseUserMe</a> sendUser, <span class="keyword">const</span> FText&amp; inMessage, int32 PlayerIndex)</div>
 <div class="line"><a id="l00343" name="l00343"></a><span class="lineno">  343</span>{</div>
 <div class="line"><a id="l00344" name="l00344"></a><span class="lineno">  344</span>    <span class="comment">// MainWidget의 SendChatMessage() 함수 호출</span></div>
 <div class="line"><a id="l00345" name="l00345"></a><span class="lineno">  345</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span>* PC = Cast&lt;APlayerControl&gt;(GetWorld()-&gt;GetFirstPlayerController()))</div>
@@ -498,7 +498,7 @@ $(document).ready(function(){initNavTree('ALingoGameState_8cpp_source.html','');
 <div class="line"><a id="l00347" name="l00347"></a><span class="lineno">  347</span>        <span class="comment">// PRINTLOG(TEXT(&quot;[SendChat] ALingoGameState::MulticastRPC_SendChat - %s&quot;), *inMessage.ToString());</span></div>
 <div class="line"><a id="l00348" name="l00348"></a><span class="lineno">  348</span>        <span class="keywordflow">if</span> (<span class="keyword">auto</span>* player = Cast&lt;APlayerActor&gt;(PC-&gt;GetPawn()))</div>
 <div class="line"><a id="l00349" name="l00349"></a><span class="lineno">  349</span>        {</div>
-<div class="line"><a id="l00350" name="l00350"></a><span class="lineno">  350</span>            player-&gt;GetMainWidget()-&gt;SendChatMessage(sendUser, inMessage);</div>
+<div class="line"><a id="l00350" name="l00350"></a><span class="lineno">  350</span>            player-&gt;GetMainWidget()-&gt;SendChatMessage(sendUser, inMessage, PlayerIndex);</div>
 <div class="line"><a id="l00351" name="l00351"></a><span class="lineno">  351</span>        }</div>
 <div class="line"><a id="l00352" name="l00352"></a><span class="lineno">  352</span>    }</div>
 <div class="line"><a id="l00353" name="l00353"></a><span class="lineno">  353</span>}</div>
@@ -583,7 +583,7 @@ $(document).ready(function(){initNavTree('ALingoGameState_8cpp_source.html','');
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_7fb5e64dcba5cad56d11a2ce531d1e7a.html">Game</a></li><li class="navelem"><a class="el" href="dir_b965da0ac51b1f4cab906cbba28505b1.html">Private</a></li><li class="navelem"><a class="el" href="ALingoGameState_8cpp.html">ALingoGameState.cpp</a></li>
-    <li class="footer">생성시간 : 금 12월 19 2025 06:40:33, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 금 12월 19 2025 07:04:51, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

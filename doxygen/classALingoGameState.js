@@ -20,7 +20,7 @@ var classALingoGameState =
     [ "Multicast_ShowListenQuestPopup", "classALingoGameState.html#a6c5c93188b76ad8d9271c692c739b03d", null ],
     [ "Multicast_ShowReadQuestPopup", "classALingoGameState.html#ae04b20ae5d76608071712d86c3907819", null ],
     [ "Multicast_UpdateQuestType", "classALingoGameState.html#a525363eb5907c6beb87fcf7f7e7db467", null ],
-    [ "MulticastRPC_SendChat", "classALingoGameState.html#a64d0bab10f3604385e1fed18ea6309f3", null ],
+    [ "MulticastRPC_SendChat", "classALingoGameState.html#a460fdfc16bfff3925a7e78e43f314e98", null ],
     [ "OnMissionTimerEnd", "classALingoGameState.html#a559e1cc5340dab3ab3fe0baeeea47676", null ],
     [ "OnRep_ListenResult", "classALingoGameState.html#aca681dd51df99325fdf4c777a7fb5f6c", null ],
     [ "OnRep_ListenScenarioData", "classALingoGameState.html#ac0be730e11c7f442acd0c8029b67989e", null ],

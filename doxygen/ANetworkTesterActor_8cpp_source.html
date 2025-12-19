@@ -438,16 +438,17 @@ $(document).ready(function(){initNavTree('ANetworkTesterActor_8cpp_source.html',
 <div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span>        <span class="keywordflow">if</span> (<span class="keyword">auto</span>* GS = GetWorld()-&gt;GetGameState&lt;ALingoGameState&gt;())</div>
 <div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span>        {</div>
 <div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span>            FText AIAnswer = FText::FromString(ResponseData.<a class="code hl_variable" href="structFResponseChatAnswers.html#abbd36f4a6cd6408901bd1652e09ea706">answer</a>);</div>
-<div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span>            GS-&gt;MulticastRPC_SendChat(GS-&gt;GetBotInfo(), AIAnswer);</div>
-<div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span> </div>
-<div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span>            <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[AI Chat] AI Answer: %s&quot;</span>), *ResponseData.<a class="code hl_variable" href="structFResponseChatAnswers.html#abbd36f4a6cd6408901bd1652e09ea706">answer</a>);</div>
-<div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span>        }</div>
-<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span>    }</div>
-<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span>    <span class="keywordflow">else</span></div>
-<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span>    {</div>
-<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;--- Chat Answers FAILED ---&quot;</span>));</div>
-<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span>    }</div>
-<div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span>}</div>
+<div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span>            <span class="comment">// Bot은 PlayerIndex -1 사용</span></div>
+<div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span>            GS-&gt;MulticastRPC_SendChat(GS-&gt;GetBotInfo(), AIAnswer, -1);</div>
+<div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span> </div>
+<div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span>            <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[AI Chat] AI Answer: %s&quot;</span>), *ResponseData.<a class="code hl_variable" href="structFResponseChatAnswers.html#abbd36f4a6cd6408901bd1652e09ea706">answer</a>);</div>
+<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span>        }</div>
+<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span>    }</div>
+<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span>    <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span>    {</div>
+<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;--- Chat Answers FAILED ---&quot;</span>));</div>
+<div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span>    }</div>
+<div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span>}</div>
 </div>
 <div class="ttc" id="aANetworkTesterActor_8h_html"><div class="ttname"><a href="ANetworkTesterActor_8h.html">ANetworkTesterActor.h</a></div><div class="ttdoc">네트워크 진단용 테스트 액터를 선언합니다.</div></div>
 <div class="ttc" id="aAPlayerControl_8h_html"><div class="ttname"><a href="APlayerControl_8h.html">APlayerControl.h</a></div><div class="ttdoc">APlayerControl 선언에 대한 Doxygen 주석을 제공합니다.</div></div>
@@ -514,7 +515,7 @@ $(document).ready(function(){initNavTree('ANetworkTesterActor_8cpp_source.html',
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_db6231b890a14ef22abfc7e4cac87d3d.html">Network</a></li><li class="navelem"><a class="el" href="dir_b16031943cc461ca19dafbeb0c146ace.html">Private</a></li><li class="navelem"><a class="el" href="ANetworkTesterActor_8cpp.html">ANetworkTesterActor.cpp</a></li>
-    <li class="footer">생성시간 : 금 12월 19 2025 06:40:33, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 금 12월 19 2025 07:04:51, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>
