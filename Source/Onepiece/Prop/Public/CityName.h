@@ -29,7 +29,7 @@ public:
 	UPROPERTY(EditAnywhere, Category = "Name")
 	int32 Index = 0;
 	
-	UPROPERTY(ReplicatedUsing = OnRep_FoodCourtInfo)
+	UPROPERTY(EditAnywhere, ReplicatedUsing = OnRep_FoodCourtInfo)
 	FString CityName;
 	void SetCityName(const FString& InCityName) {CityName = InCityName;};
 	

@@ -22,7 +22,8 @@ ACityName::ACityName()
 void ACityName::BeginPlay()
 {
 	Super::BeginPlay();
-	
+
+	OnRep_FoodCourtInfo();
 }
 
 // Called every frame
