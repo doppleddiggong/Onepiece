@@ -149,6 +149,9 @@ var hierarchy =
     [ "FWriteQuestionData", "structFWriteQuestionData.html", null ],
     [ "FWriteRecord", "structFWriteRecord.html", null ],
     [ "FWriteWordData", "structFWriteWordData.html", null ],
+    [ "ICompassTargetInterface", "classICompassTargetInterface.html", [
+      [ "AContactTrigger", "classAContactTrigger.html", null ]
+    ] ],
     [ "IControllable", "classIControllable.html", [
       [ "APlayerActor", "classAPlayerActor.html", null ]
     ] ],
@@ -195,6 +198,7 @@ var hierarchy =
       [ "UWebSocketSystem", "classUWebSocketSystem.html", null ]
     ] ],
     [ "UInterface", null, [
+      [ "UCompassTargetInterface", "classUCompassTargetInterface.html", null ],
       [ "UControllable", "classUControllable.html", null ],
       [ "USequenceActivatable", "classUSequenceActivatable.html", null ]
     ] ],

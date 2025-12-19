@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['icontrollable_0',['IControllable',['../classIControllable.html',1,'']]],
-  ['isequenceactivatable_1',['ISequenceActivatable',['../classISequenceActivatable.html',1,'']]]
+  ['icompasstargetinterface_0',['ICompassTargetInterface',['../classICompassTargetInterface.html',1,'']]],
+  ['icontrollable_1',['IControllable',['../classIControllable.html',1,'']]],
+  ['isequenceactivatable_2',['ISequenceActivatable',['../classISequenceActivatable.html',1,'']]]
 ];

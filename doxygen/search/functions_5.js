@@ -7,10 +7,11 @@ var searchData=
   ['findcomponentbyname_4',['FindComponentByName',['../structFComponentHelper.html#ac3cfd893c6e19a51d24e857c301f837f',1,'FComponentHelper']]],
   ['findcomponentbynamerecursive_5',['FindComponentByNameRecursive',['../structFComponentHelper.html#a0d3d7957be559acef257216e0b28bba6',1,'FComponentHelper']]],
   ['findothersession_6',['FindOtherSession',['../classULingoGameInstance.html#a5addb30790cffdff624033f5ebe36fb5',1,'ULingoGameInstance']]],
-  ['flistenanswerdata_7',['flistenanswerdata',['../structFListenAnswerData.html#ab3554c9e8daf6d4c6149d52fae35192d',1,'FListenAnswerData::FListenAnswerData()'],['../structFListenAnswerData.html#a191580551f03bded2a1d7c81181cff6b',1,'FListenAnswerData::FListenAnswerData(EAnswerType &amp;InAnswerType, const FWordInfo &amp;InWord1)']]],
-  ['flogwriter_8',['FLogWriter',['../classFLogWriter.html#a7ccfdf80f8d45c2c88f9d4409ad6c192',1,'FLogWriter']]],
-  ['fluggagedata_9',['fluggagedata',['../structFLuggageData.html#a94ab3651628c52a0cb1974faa720baaf',1,'FLuggageData::FLuggageData()'],['../structFLuggageData.html#a556e510f9f7d165b762a58bcdf2a8ed7',1,'FLuggageData::FLuggageData(const FWordInfo &amp;InWord1, const FWordInfo &amp;InWord2, int32 InSpawnIndex=-1)']]],
-  ['flushmessage_10',['FlushMessage',['../classUChatInputBox.html#a7ba44143ce5e97966eec4a9f0c8f2831',1,'UChatInputBox']]],
-  ['focusinput_11',['focusinput',['../classUChatInputBox.html#a3ee2714cf4ef836492524fde8b03ec6e',1,'UChatInputBox::FocusInput()'],['../classUChatWidget.html#a6a91842ffdbd014a816856f2c78d0530',1,'UChatWidget::FocusInput()']]],
-  ['fresultstatdata_12',['FResultStatData',['../structFResultStatData.html#a780624a8affe5aa938a7b75ee35cb4de',1,'FResultStatData']]]
+  ['findrelativerotationattarget_7',['FindRelativeRotationAtTarget',['../classAPlayerActor.html#ad78636c9a80116cef2617ae221104809',1,'APlayerActor']]],
+  ['flistenanswerdata_8',['flistenanswerdata',['../structFListenAnswerData.html#ab3554c9e8daf6d4c6149d52fae35192d',1,'FListenAnswerData::FListenAnswerData()'],['../structFListenAnswerData.html#a191580551f03bded2a1d7c81181cff6b',1,'FListenAnswerData::FListenAnswerData(EAnswerType &amp;InAnswerType, const FWordInfo &amp;InWord1)']]],
+  ['flogwriter_9',['FLogWriter',['../classFLogWriter.html#a7ccfdf80f8d45c2c88f9d4409ad6c192',1,'FLogWriter']]],
+  ['fluggagedata_10',['fluggagedata',['../structFLuggageData.html#a94ab3651628c52a0cb1974faa720baaf',1,'FLuggageData::FLuggageData()'],['../structFLuggageData.html#a556e510f9f7d165b762a58bcdf2a8ed7',1,'FLuggageData::FLuggageData(const FWordInfo &amp;InWord1, const FWordInfo &amp;InWord2, int32 InSpawnIndex=-1)']]],
+  ['flushmessage_11',['FlushMessage',['../classUChatInputBox.html#a7ba44143ce5e97966eec4a9f0c8f2831',1,'UChatInputBox']]],
+  ['focusinput_12',['focusinput',['../classUChatInputBox.html#a3ee2714cf4ef836492524fde8b03ec6e',1,'UChatInputBox::FocusInput()'],['../classUChatWidget.html#a6a91842ffdbd014a816856f2c78d0530',1,'UChatWidget::FocusInput()']]],
+  ['fresultstatdata_13',['FResultStatData',['../structFResultStatData.html#a780624a8affe5aa938a7b75ee35cb4de',1,'FResultStatData']]]
 ];

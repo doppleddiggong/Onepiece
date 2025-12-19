@@ -124,8 +124,8 @@ $(document).ready(function(){initNavTree('CompassWidget_8h_source.html',''); ini
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>{</div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    GENERATED_BODY()</div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    UPROPERTY(EditAnywhere, BlueprintReadWrite)</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="structFCompassInfo.html#a4eecb838c10befa1dc9ce5cdf4a14054">   20</a></span>    <a class="code hl_enumeration" href="ECompassMarkerType_8h.html#acc6a187307708d9ee4bfdb3e4df7dba6">ECompassMarkerType</a> MarkerType;</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="structFCompassInfo.html#a4eecb838c10befa1dc9ce5cdf4a14054">   19</a></span>    <a class="code hl_enumeration" href="ECompassMarkerType_8h.html#acc6a187307708d9ee4bfdb3e4df7dba6">ECompassMarkerType</a> MarkerType;</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="structFCompassInfo.html#adda78c6b1a77557c556b406122206710">   20</a></span>    <span class="keywordtype">float</span> RotationAtTarget;</div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    </div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>};</div>
 </div>
@@ -149,7 +149,14 @@ $(document).ready(function(){initNavTree('CompassWidget_8h_source.html',''); ini
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    UFUNCTION(BlueprintCallable)</div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="keywordtype">void</span> RotateCompass(<span class="keywordtype">float</span> ZRotation);</div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>};</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    UPROPERTY(VisibleAnywhere, BlueprintReadOnly)</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="classUCompassWidget.html#a088e5996a2f7df18b0832b32a49cc969">   43</a></span>    TArray&lt;UImage*&gt; Markers;</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    UImage* AddCompassMarker();</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="keywordtype">void</span> SetMarkerPosition(UImage* InMarker, <span class="keywordtype">float</span> TargetRotation, <span class="keywordtype">bool</span> bSideLock);</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="keywordtype">void</span> UpdateCompassMarkers(TArray&lt;<span class="keywordtype">float</span>&gt;&amp; CompassMarkers);</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>};</div>
 </div>
 <div class="ttc" id="aECompassMarkerType_8h_html"><div class="ttname"><a href="ECompassMarkerType_8h.html">ECompassMarkerType.h</a></div></div>
 <div class="ttc" id="aECompassMarkerType_8h_html_acc6a187307708d9ee4bfdb3e4df7dba6"><div class="ttname"><a href="ECompassMarkerType_8h.html#acc6a187307708d9ee4bfdb3e4df7dba6">ECompassMarkerType</a></div><div class="ttdeci">ECompassMarkerType</div><div class="ttdef"><b>Definition</b> <a href="ECompassMarkerType_8h_source.html#l00004">ECompassMarkerType.h:5</a></div></div>
@@ -161,7 +168,7 @@ $(document).ready(function(){initNavTree('CompassWidget_8h_source.html',''); ini
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_55b064ed9f704d76d3805f2fda876350.html">UI</a></li><li class="navelem"><a class="el" href="dir_e82f2835ab4116a5eee79a37f645c6c8.html">Public</a></li><li class="navelem"><a class="el" href="CompassWidget_8h.html">CompassWidget.h</a></li>
-    <li class="footer">생성시간 : 금 12월 19 2025 06:10:25, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 금 12월 19 2025 06:39:53, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

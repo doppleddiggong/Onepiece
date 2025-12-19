@@ -8,6 +8,7 @@ var dir_37565cbf0e4835105e22b7540e7cc414 =
     [ "ATeleportOut.h", "ATeleportOut_8h.html", "ATeleportOut_8h" ],
     [ "ATeleportTrigger.h", "ATeleportTrigger_8h.html", "ATeleportTrigger_8h" ],
     [ "AWeightSwitch.h", "AWeightSwitch_8h.html", "AWeightSwitch_8h" ],
+    [ "CompassTargetInterface.h", "CompassTargetInterface_8h.html", "CompassTargetInterface_8h" ],
     [ "ConveryorButtonAnimInstance.h", "ConveryorButtonAnimInstance_8h.html", "ConveryorButtonAnimInstance_8h" ],
     [ "ConveyorButton.h", "ConveyorButton_8h.html", "ConveyorButton_8h" ],
     [ "DestroyTrigger.h", "DestroyTrigger_8h.html", "DestroyTrigger_8h" ],

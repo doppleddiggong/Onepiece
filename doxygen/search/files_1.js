@@ -12,12 +12,14 @@ var searchData=
   ['citynamewidget_2eh_9',['CityNameWidget.h',['../CityNameWidget_8h.html',1,'']]],
   ['coffeelibrary_2ecpp_10',['CoffeeLibrary.cpp',['../CoffeeLibrary_8cpp.html',1,'']]],
   ['coffeelibrary_2eh_11',['CoffeeLibrary.h',['../CoffeeLibrary_8h.html',1,'']]],
-  ['compasswidget_2ecpp_12',['CompassWidget.cpp',['../CompassWidget_8cpp.html',1,'']]],
-  ['compasswidget_2eh_13',['CompassWidget.h',['../CompassWidget_8h.html',1,'']]],
-  ['converyorbuttonaniminstance_2ecpp_14',['ConveryorButtonAnimInstance.cpp',['../ConveryorButtonAnimInstance_8cpp.html',1,'']]],
-  ['converyorbuttonaniminstance_2eh_15',['ConveryorButtonAnimInstance.h',['../ConveryorButtonAnimInstance_8h.html',1,'']]],
-  ['conveyorbelt_2ecpp_16',['ConveyorBelt.cpp',['../ConveyorBelt_8cpp.html',1,'']]],
-  ['conveyorbelt_2eh_17',['ConveyorBelt.h',['../ConveyorBelt_8h.html',1,'']]],
-  ['conveyorbutton_2ecpp_18',['ConveyorButton.cpp',['../ConveyorButton_8cpp.html',1,'']]],
-  ['conveyorbutton_2eh_19',['ConveyorButton.h',['../ConveyorButton_8h.html',1,'']]]
+  ['compasstargetinterface_2ecpp_12',['CompassTargetInterface.cpp',['../CompassTargetInterface_8cpp.html',1,'']]],
+  ['compasstargetinterface_2eh_13',['CompassTargetInterface.h',['../CompassTargetInterface_8h.html',1,'']]],
+  ['compasswidget_2ecpp_14',['CompassWidget.cpp',['../CompassWidget_8cpp.html',1,'']]],
+  ['compasswidget_2eh_15',['CompassWidget.h',['../CompassWidget_8h.html',1,'']]],
+  ['converyorbuttonaniminstance_2ecpp_16',['ConveryorButtonAnimInstance.cpp',['../ConveryorButtonAnimInstance_8cpp.html',1,'']]],
+  ['converyorbuttonaniminstance_2eh_17',['ConveryorButtonAnimInstance.h',['../ConveryorButtonAnimInstance_8h.html',1,'']]],
+  ['conveyorbelt_2ecpp_18',['ConveyorBelt.cpp',['../ConveyorBelt_8cpp.html',1,'']]],
+  ['conveyorbelt_2eh_19',['ConveyorBelt.h',['../ConveyorBelt_8h.html',1,'']]],
+  ['conveyorbutton_2ecpp_20',['ConveyorButton.cpp',['../ConveyorButton_8cpp.html',1,'']]],
+  ['conveyorbutton_2eh_21',['ConveyorButton.h',['../ConveyorButton_8h.html',1,'']]]
 ];
