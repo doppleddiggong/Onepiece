@@ -831,14 +831,6 @@ FRotator APlayerActor::FindRelativeRotationAtTarget(AActor* Target)
 	return RelativeRotation;
 }
 
-void APlayerActor::OnListenResultUpdated( const FResponseListenResult& Result)
-{
-	if (!IsLocallyControlled())
-		return;
-	
-	MainWidget->GetQuestInfoWidget()->SetVisibility(ESlateVisibility::Collapsed);
-}
-
 void APlayerActor::OnRoomIdUpdated(int64 NewRoomId)
 {
 	if (!IsLocallyControlled())
