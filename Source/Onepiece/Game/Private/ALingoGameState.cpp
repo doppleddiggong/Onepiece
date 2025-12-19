@@ -10,6 +10,8 @@
 #include "ANetworkBroadcastActor.h"
 #include "APlayerControl.h"
 #include "UMainWidget.h"
+#include "UPopupManager.h"
+#include "Popup_Result.h"
 #include "GameFramework/PlayerController.h"
 #include "Engine/World.h"
 #include "Onepiece/Onepiece.h"
@@ -231,6 +233,15 @@ void ALingoGameState::OnMissionTimerEnd()
 	auto EndMessage = ULingoGameHelper::GetStageEndMessage(QuestType);
 
 	PRINTLOG( TEXT("[GameState] Mission Timer Ended - Sending: %s"), *EndMessage);
+
+	// Read, Listen Quest일 때 자동으로 결과 팝업 표시
+	if (QuestType == EQuestType::Read || QuestType == EQuestType::Listen)
+	{
+		if (auto Popup = UPopupManager::ShowPopupAs<UPopup_Result>(GetWorld(), EPopupType::Result))
+		{
+			Popup->InitPopup(QuestType);
+		}
+	}
 
 	// 모든 플레이어에게 메시지 전송
 	if (UWorld* World = GetWorld())

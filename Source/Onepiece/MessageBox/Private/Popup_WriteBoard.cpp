@@ -53,6 +53,7 @@ void UPopup_WriteBoard::InitPopup(int32 InQid, const FWriteQuestionData& InQuest
 	// Button Event
 	Button_Save->OnButtonClickedEvent.RemoveDynamic(this, &UPopup_WriteBoard::SaveCanvas);
 	Button_Save->OnButtonClickedEvent.AddDynamic(this, &UPopup_WriteBoard::SaveCanvas);
+
 	if (Text_Guide != nullptr)
 	{
 		tempFontInfo = Text_Guide->GetFont();

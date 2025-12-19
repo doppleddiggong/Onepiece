@@ -15,6 +15,7 @@
 #include "UTextureButton.h"
 #include "UAnswerItem.h"
 #include "UGameDataManager.h"
+#include "UBroadcastManager.h"
 #include "Components/HorizontalBox.h"
 #include "Components/ScrollBox.h"
 #include "Components/TextBlock.h"
@@ -30,6 +31,12 @@ void UPopup_Result::NativeDestruct()
 
 void UPopup_Result::InitPopup(const EQuestType InQuestType)
 {
+	// 결과 팝업이 뜰 때 MissionTimer 멈추고 숨기기
+	if (UBroadcastManager* BM = UBroadcastManager::Get(GetWorld()))
+	{
+		BM->SendUpdateMissionTimerState(false, 0.0f);
+	}
+
 	if (Btn_Confirm)
 	{
 		Btn_Confirm->OnButtonClickedEvent.RemoveDynamic(this, &UPopup_Result::OnClickClose);
