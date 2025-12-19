@@ -1,7 +1,5 @@
 var NAVTREEINDEX16 =
 {
-"structFParabolaBallisticTrack.html#ac65c16642b530fa41f8b174e6cb9ccf5":[2,0,73,5],
-"structFParabolaBallisticTrack.html#ad24e4c8b8e959f1f789fbdda881dbf88":[2,0,73,7],
 "structFParabolaBallisticTrack.html#addb0dcba71a55d25e4059695fc5da8d2":[2,0,73,0],
 "structFParabolaGeometricTrack.html":[2,0,74],
 "structFParabolaGeometricTrack.html#a2aab62034b1563e7cadb7c0855529b47":[2,0,74,6],
@@ -249,5 +247,7 @@ var NAVTREEINDEX16 =
 "structFResultStatData.html#a61bcfba9b5e9da91e4c34a190489907f":[2,0,112,3],
 "structFResultStatData.html#a75e66157640bcf669787b2e987ab4412":[2,0,112,1],
 "structFResultStatData.html#a780624a8affe5aa938a7b75ee35cb4de":[2,0,112,0],
-"structFResultStatData.html#a79c960d0257ca39904aba1503a1f5a5e":[2,0,112,8]
+"structFResultStatData.html#a79c960d0257ca39904aba1503a1f5a5e":[2,0,112,8],
+"structFResultStatData.html#a9c3caa803ddfbb9e059eba055c00aae9":[2,0,112,9],
+"structFResultStatData.html#aac45c5869b828c7f8cfb47807cdb968f":[2,0,112,2]
 };

@@ -1,7 +1,5 @@
 var NAVTREEINDEX17 =
 {
-"structFResultStatData.html#a9c3caa803ddfbb9e059eba055c00aae9":[2,0,112,9],
-"structFResultStatData.html#aac45c5869b828c7f8cfb47807cdb968f":[2,0,112,2],
 "structFResultStatData.html#ad1687ae0bdba36508a791b853a82dbe6":[2,0,112,5],
 "structFScenarioResult.html":[2,0,113],
 "structFScenarioResult.html#a0ad89ab325e737aa1d57b42b247b9ca9":[2,0,113,3],
