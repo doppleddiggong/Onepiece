@@ -5,7 +5,7 @@
 #include <string>
 #include <cstring> // memcpy
 
-
+//** Dummy File **//
 void PNGCombineManager::CombinePNG()
 {
     // std::string outputPath = argv[1];

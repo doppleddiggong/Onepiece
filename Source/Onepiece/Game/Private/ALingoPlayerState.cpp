@@ -8,6 +8,7 @@
 #include "UBroadcastManager.h"
 #include "Net/UnrealNetwork.h"
 #include "GameLogging.h"
+#include "UMainWidget.h"
 #include "Kismet/KismetSystemLibrary.h"
 
 ALingoPlayerState::ALingoPlayerState()
@@ -61,13 +62,18 @@ void ALingoPlayerState::RefreshQuestState()
 	};
 
 	// R-L-S-W 퀘스트 상태 출력
-	FString StatusMsg = FString::Printf(TEXT("(R[%s])-(L[%s])-(S[%s])-(W[%s])"),
+	FString StatusMsg = FString::Printf(TEXT("%s %s %s %s"),
 		GetQuestStatus(bReadQuestCompleted, bReadQuestIng),
 		GetQuestStatus(bListenQuestCompleted, bListenQuestIng),
 		GetQuestStatus(bSpeakQuestCompleted, bSpeakQuestIng),
 		GetQuestStatus(bWriteQuestCompleted, bWriteQuestIng));
 
-	PRINT_STRING( TEXT("%s"), *StatusMsg);
+	PRINT_STRING( TEXT("RLSW: %s"), *StatusMsg);
+	
+	if (APlayerControl* PC = Cast<APlayerControl>(GetOwner()))
+	{
+		PC->UpdateQuestOrderWidget(StatusMsg);
+	}
 
 	// Host(서버)의 위젯 업데이트 (OnRep는 클라이언트에서만 호출됨)
 	if (HasAuthority())

@@ -58,6 +58,9 @@ public:
 	UFUNCTION(BlueprintPure, Category = "Quest")
 	class UQuestInfoWidget* GetQuestInfoWidget() const { return QuestInfoWidget; }
 	
+	UFUNCTION(BlueprintPure, Category = "Quest")
+	class UQuestOrderWidget* GetQuestOrderWidget() const { return QuestOrderWidget; }
+	
 	UFUNCTION(Category = "Chat")
 	void SendChatMessage(FResponseUserMe sendUser, const FText& inMessage);
 	
@@ -92,6 +95,9 @@ protected:
 	// UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
 	// TObjectPtr<class UQuestOrderWidget> QuestOrderWidget;
 	
+	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
+	TObjectPtr<class UQuestOrderWidget> QuestOrderWidget;
+		
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
 	TObjectPtr<class UQuestInfoWidget> QuestInfoWidget;
 

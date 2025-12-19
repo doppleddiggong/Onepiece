@@ -14,7 +14,15 @@ class ONEPIECE_API UQuestOrderSlotWidget : public UUserWidget
 {
 	GENERATED_BODY()
 	
+public:
+	void SetQuestType(FString inQuestType);
+	void PlayQuestSlot();
+	void FinishQuestSlot();
+	
 protected:
+	UPROPERTY(meta=(BindWidget))
+	TObjectPtr<class UImage> Image_Bg;
+	
 	UPROPERTY(meta=(BindWidget))
 	TObjectPtr<class UWidgetSwitcher> WidgetSwitcher_Slot;
 	

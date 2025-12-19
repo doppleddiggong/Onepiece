@@ -15,6 +15,7 @@
 #include "ULingoGameHelper.h"
 #include "UBroadcastManager.h"
 #include "GameLogging.h"
+#include "QuestOrderWidget.h"
 #include "UQuestInfoWidget.h"
 #include "USpeakWidget.h"
 #include "UFadeWidget.h"
