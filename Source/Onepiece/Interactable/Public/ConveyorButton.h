@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "NetworkData.h"
 #include "GameFramework/Actor.h"
 #include "ConveyorButton.generated.h"
 
@@ -20,6 +21,9 @@ protected:
 
 public:
 	virtual void Tick(float DeltaTime) override;
+	
+	UFUNCTION()
+	void InitConveyorButton(const FResponseReadResult& result);
 	
 	// Get Func
 	bool GetIsButtonOn();
@@ -51,12 +55,6 @@ protected:
 
 	UFUNCTION()
 	void OnOutlineStateChanged(bool bShouldShowOutline);
-	
-	UFUNCTION(Server, Reliable)
-	void ServerRPC_OnInteractionTriggered(AActor* Interactor);
-	
-	UFUNCTION(NetMulticast, Reliable)
-	void MultiCastRPC_OnInteractionTriggered(AActor* Interactor);
 	
 	UPROPERTY(Replicated)
 	bool bIsButtonOn = false;

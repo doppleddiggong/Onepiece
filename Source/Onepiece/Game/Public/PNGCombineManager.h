@@ -1,5 +1,6 @@
 #pragma once
 
+//** Dummy File **//
 class PNGCombineManager
 {
 public:

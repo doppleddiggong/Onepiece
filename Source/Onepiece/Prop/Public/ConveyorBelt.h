@@ -20,6 +20,13 @@ protected:
 public:
 	virtual void Tick(float DeltaTime) override;
 	
+	UFUNCTION()
+	void InitConveyorBelt();
+	UFUNCTION(Server, Reliable)
+	void ServerRPC_InitConveyorBelt();
+	UFUNCTION(NetMulticast, Reliable)
+	void MulticastRPC_InitConveyorBelt();
+	
 	// Movement Func
 	void ChangeConveyorMovement();
 	UFUNCTION(Server, Reliable)

@@ -68,6 +68,21 @@ void AConveyorBelt::Tick(float DeltaTime)
 	MoveOverlappedStatics(MoveSpeed * DeltaTime);
 }
 
+void AConveyorBelt::InitConveyorBelt()
+{
+	ServerRPC_InitConveyorBelt();
+}
+
+void AConveyorBelt::ServerRPC_InitConveyorBelt_Implementation()
+{
+	MulticastRPC_InitConveyorBelt();
+}
+
+void AConveyorBelt::MulticastRPC_InitConveyorBelt_Implementation()
+{
+	bIsForward = true;
+}
+
 void AConveyorBelt::ChangeConveyorMovement()
 {
 	ServerRPC_ChangeConveyorMovement();

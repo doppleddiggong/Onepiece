@@ -128,6 +128,8 @@ private:
 public:
 	/// @brief 퀘스트 상태에 따라 QuestInfoWidget 업데이트
 	void UpdateQuestInfoWidget();
+	
+	void UpdateQuestOrderWidget(const FString& inQuestOrder);
 
 private:
 	

@@ -3,6 +3,7 @@
 
 #include "ConveyorButton.h"
 
+#include "ALingoGameState.h"
 #include "ConveyorBelt.h"
 #include "GameLogging.h"
 #include "InteractableComponent.h"
@@ -69,6 +70,9 @@ void AConveyorButton::BeginPlay()
 	InteractableComp->InitWidget(WidgetComp);
 	InteractableComp->OnInteractionTriggered.AddDynamic(this, &AConveyorButton::OnInteractionTriggered);
 	InteractableComp->OnOutlineStateChanged.AddDynamic(this, &AConveyorButton::OnOutlineStateChanged);
+	
+	ALingoGameState* GameState = Cast<ALingoGameState>(GetWorld()->GetGameState());
+	GameState->OnReadResultUpdated.AddDynamic(this, &AConveyorButton::InitConveyorButton);
 }
 
 void AConveyorButton::GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const
@@ -85,6 +89,19 @@ void AConveyorButton::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 }
 
+void AConveyorButton::InitConveyorButton(const FResponseReadResult& result)
+{
+	if (bIsButtonOn)
+	{
+		bIsButtonOn = false;
+		for (const auto& Belt : ConveyorBeltActors)
+		{
+			AConveyorBelt* ConveyorBeltActor = Cast<AConveyorBelt>(Belt);
+			ConveyorBeltActor->InitConveyorBelt();
+		}
+	}
+}
+
 bool AConveyorButton::GetIsButtonOn()
 {
 	return bIsButtonOn;
@@ -95,23 +112,12 @@ void AConveyorButton::OnInteractionTriggered(AActor* Interactor)
 	if (ConveyorBeltActors.IsEmpty()) return;
 	
 	bIsButtonOn = !bIsButtonOn;
-	PRINT_STRING(TEXT("%d"), bIsButtonOn);
+	// PRINT_STRING(TEXT("%d"), bIsButtonOn);
 	for (const auto& Belt : ConveyorBeltActors)
 	{
 		AConveyorBelt* ConveyorBeltActor = Cast<AConveyorBelt>(Belt);
 		ConveyorBeltActor->ChangeConveyorMovement();
 	}
-	
-}
-
-void AConveyorButton::ServerRPC_OnInteractionTriggered_Implementation(AActor* Interactor)
-{
-	
-}
-
-void AConveyorButton::MultiCastRPC_OnInteractionTriggered_Implementation(AActor* Interactor)
-{
-
 }
 
 void AConveyorButton::OnOutlineStateChanged(bool bShouldShowOutline)

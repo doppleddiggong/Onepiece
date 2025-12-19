@@ -30,6 +30,7 @@
 #include "EngineUtils.h"
 #include "GameLogging.h"
 #include "OrderKiosk.h"
+#include "QuestOrderWidget.h"
 #include "TutorialComponent.h"
 #include "UDialogManager.h"
 #include "ULingoGameHelper.h"
@@ -760,4 +761,32 @@ void APlayerControl::UpdateQuestInfoWidget()
 	{
 		QuestWidget->SetVisibility(ESlateVisibility::Collapsed);
 	}
+}
+
+void APlayerControl::UpdateQuestOrderWidget(const FString& inQuestOrder)
+{
+	// PlayerActor 가져오기
+	APlayerActor* PlayerActor = Cast<APlayerActor>(GetPawn());
+	if (!PlayerActor)
+		return;
+
+	// MainWidget 가져오기
+	UMainWidget* MainWidget = PlayerActor->GetMainWidget();
+	if (!MainWidget)
+		return;
+
+	// QuestInfoWidget 가져오기
+	UQuestOrderWidget* QuestOrderWidget = MainWidget->GetQuestOrderWidget();
+	if (!QuestOrderWidget)
+		return;
+
+	// PlayerState 가져오기
+	ALingoPlayerState* PS = GetPlayerState<ALingoPlayerState>();
+	if (!PS)
+		return;
+
+	// 위젯 업데이트
+	QuestOrderWidget->UpdateQuestOrder(inQuestOrder);
+	QuestOrderWidget->SetVisibility(ESlateVisibility::Visible);
+	
 }

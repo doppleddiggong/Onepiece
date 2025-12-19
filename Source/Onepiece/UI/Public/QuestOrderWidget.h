@@ -14,8 +14,11 @@ class ONEPIECE_API UQuestOrderWidget : public UUserWidget
 {
 	GENERATED_BODY()
 	
-public:
+protected:
+	virtual void NativeOnInitialized() override;
 	
+public:
+	void UpdateQuestOrder(const FString& inQuestOrder);
 	
 protected:
 	UPROPERTY(meta = (BindWidget))
@@ -32,4 +35,7 @@ protected:
 	
 	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<class UQuestOrderSlotWidget> Slot_W;
+	
+private:
+	int32 CurrentSlotIndex = 0;
 };
