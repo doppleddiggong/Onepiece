@@ -4,5 +4,7 @@ UENUM(BlueprintType)
 enum class ECompassMarkerType : uint8
 {
 	None,
-	Exclamation,
+	QuestStart,
+	QuestEnd,
+	Interaction
 };

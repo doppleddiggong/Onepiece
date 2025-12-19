@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "FResourceTextureData.h"
 #include "Blueprint/UserWidget.h"
 #include "ChatBoxWidget.generated.h"
 
@@ -15,17 +16,34 @@ class ONEPIECE_API UChatBoxWidget : public UUserWidget
 	GENERATED_BODY()
 	
 public:	
-	void SetContent(FText inMessage);
-	void SetPlayerName(FText inPlayerName);
-	void SetPlayerBGColor(FLinearColor inColor);
+	void SetPlayerName(FText InPlayerName) const;
+	void SetMessage(FText InMessage) const;
+
+	void SetPlayerProfile(
+		FLinearColor InBgColor,
+		EResourceTextureType InProfileType);
+
+	void SetChatBubbleColor(bool IsMine) const;
+
 	
 protected:
 	UPROPERTY(meta=(BindWidget))
-	TObjectPtr<class UBorder> Border_PlayerBG;
+	TObjectPtr<class UBorder> Border_ProfileBG;
+
+	UPROPERTY(meta=(BindWidget))
+	TObjectPtr<class UImage> Image_Profile;
+
 	
 	UPROPERTY(meta=(BindWidget))
-	TObjectPtr<class UTextBlock> TextBlock_PlayerName;
+	TObjectPtr<class UImage> Image_ChatTail;
+
+	UPROPERTY(meta=(BindWidget))
+	TObjectPtr<class UBorder> Border_ChatBubble;
+
 	
 	UPROPERTY(meta=(BindWidget))
-	TObjectPtr<class UTextBlock> TextBlock_MessageContent;
+	TObjectPtr<class UTextBlock> Txt_Name;
+	
+	UPROPERTY(meta=(BindWidget))
+	TObjectPtr<class UTextBlock> Txt_Message;
 };

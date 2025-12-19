@@ -139,7 +139,16 @@ private:
 public:
 	UFUNCTION(Server, Reliable)
 	void ServerRPC_SendChat(const FText& inMessage);
-	
+
+	/// @brief AI 질문을 서버로 전송하고 응답을 받아 채팅으로 표시합니다.
+	/// @param Question [in] AI에게 보낼 질문 (이미 사용자 메시지는 채팅으로 전송된 상태)
+	UFUNCTION(Server, Reliable)
+	void ServerRPC_SendAIQuestion(const FString& Question);
+
+private:
+	/// @brief AI 응답을 받았을 때 Bot 정보로 채팅에 표시합니다.
+	void OnChatAnswerReceived(FResponseChatAnswers& ResponseData, bool bWasSuccessful);
+
 private:
     class IControllable* GetControllable() const;
 	

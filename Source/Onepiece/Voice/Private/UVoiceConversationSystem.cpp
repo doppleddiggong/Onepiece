@@ -302,9 +302,13 @@ void UVoiceConversationSystem::OnResponseChatAnswers(FResponseChatAnswers& Respo
 	if (bSuccess)
 	{
 		// 메시지로 답변 표시
-		UPopupManager::Get(GetWorld())->ShowMsgBox(TEXT("CHAT"), *Response.answer,
-			EMsgBoxType::OK,
-			FOnMsgBoxOkDelegate());
+		if (auto* GS = GetWorld()->GetGameState<ALingoGameState>())
+		{
+			FText AIAnswer = FText::FromString(Response.answer);
+			GS->MulticastRPC_SendChat(GS->GetBotInfo(), AIAnswer);
+
+			PRINTLOG(TEXT("[AI Chat] AI Answer: %s"), *Response.answer);
+		}
 	}
 	else
 	{

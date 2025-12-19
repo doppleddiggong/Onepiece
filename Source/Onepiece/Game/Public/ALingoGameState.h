@@ -47,6 +47,7 @@ public:
 	FORCEINLINE EQuestType GetCurrentQuestType() const { return QuestType; }
 	FORCEINLINE const FResponseReadScenario& GetReadScenarioData() const {return ReadScenarioData;}
 	FORCEINLINE const FResponseListenScenario& GetListenScenarioData() const {return ListenScenarioData;}
+	FORCEINLINE const FResponseUserMe& GetBotInfo() const { return Bot; }
 
 	/// @brief 미션 타이머를 시작합니다 (서버에서만 호출)
 	UFUNCTION(BlueprintCallable, Category = "Mission")
@@ -63,7 +64,11 @@ public:
 
 	void SetReadScenarioData(const FResponseReadScenario& InResponseData);
 	void SetListenScenarioData(const FResponseListenScenario& InResponseData);
-	
+
+	/// @brief 방 레벨 설정 (서버 전용)
+	/// @param InRoomLevel 설정할 레벨 (1~N)
+	void SetRoomLevel(int32 InRoomLevel);
+
 protected:
 	UFUNCTION(NetMulticast, Reliable)
 	void Multicast_UpdateQuestType(const EQuestType InQuestType);
@@ -163,4 +168,6 @@ protected:
 	
 private:
 	float TimeLimit = 0;
+
+	FResponseUserMe Bot;
 };

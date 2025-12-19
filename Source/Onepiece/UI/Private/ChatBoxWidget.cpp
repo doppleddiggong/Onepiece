@@ -3,20 +3,42 @@
 
 #include "ChatBoxWidget.h"
 
+#include "FResourceTextureData.h"
+#include "UGameDataManager.h"
 #include "Components/Border.h"
+#include "Components/Image.h"
 #include "Components/TextBlock.h"
 
-void UChatBoxWidget::SetContent(FText inMessage)
+void UChatBoxWidget::SetPlayerName(FText InPlayerName) const
 {
-	TextBlock_MessageContent->SetText(inMessage);
+	Txt_Name->SetText(InPlayerName);
 }
 
-void UChatBoxWidget::SetPlayerName(FText inPlayerName)
+void UChatBoxWidget::SetMessage(FText InMessage) const
 {
-	TextBlock_PlayerName->SetText(inPlayerName);
+	Txt_Message->SetText(InMessage);
 }
 
-void UChatBoxWidget::SetPlayerBGColor(FLinearColor inColor)
+void UChatBoxWidget::SetPlayerProfile(
+	FLinearColor InBgColor,
+	EResourceTextureType InProfileType)
 {
-	Border_PlayerBG->SetBrushColor(inColor);
+	Border_ProfileBG->SetBrushColor(InBgColor);
+
+	UTexture2D* Texture = UGameDataManager::Get(this)->GetTexture(InProfileType);
+	if (!Texture)
+		return;
+
+	FSlateBrush Brush = Image_Profile->GetBrush();
+	Brush.SetResourceObject(Texture);
+	Image_Profile->SetBrush(Brush);
+}
+
+void UChatBoxWidget::SetChatBubbleColor(bool IsMine) const
+{
+	auto BubbleColor = IsMine ? FLinearColor::Green : FLinearColor::White;
+
+	Txt_Name->SetColorAndOpacity(BubbleColor);
+	Image_ChatTail->SetColorAndOpacity(BubbleColor);
+	Border_ChatBubble->SetContentColorAndOpacity(BubbleColor);
 }

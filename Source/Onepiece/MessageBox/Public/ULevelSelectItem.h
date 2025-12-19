@@ -6,7 +6,7 @@
 #include "Blueprint/UserWidget.h"
 #include "ULevelSelectItem.generated.h"
 
-DECLARE_DELEGATE_TwoParams(FOnLevelSelectedDelegate, int32 /*Level*/, const FString& /*LevelName*/);
+DECLARE_DELEGATE_OneParam(FOnLevelSelectedDelegate, int32 /*Level*/);
 
 /**
  * @brief 레벨 선택 아이템 위젯
@@ -27,7 +27,7 @@ public:
 	 * @param InLevelName 레벨 이름 (Begginer, Intermediate, Advanced)
 	 */
 	UFUNCTION(BlueprintCallable, Category = "LevelSelectItem")
-	void InitLevelItem(int32 InLevel, const FString& InLevelName);
+	void InitLevelItem(int32 InLevel, const FString& InLevelName, int32 InPlayTime);
 
 protected:
 	void CreateAnimalGroup();
@@ -50,6 +50,10 @@ public:
 	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<class UTextBlock> Txt_Title;
 
+	UPROPERTY(meta = (BindWidget))
+	TObjectPtr<class UTextBlock> Txt_PlayTime;
+
+	
 	/** 단어 그룹들이 배치될 Vertical Box */
 	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<class UVerticalBox> VerticalBox;
@@ -66,6 +70,11 @@ protected:
 	/** 레벨 이름 */
 	UPROPERTY()
 	FString LevelName;
+
+	/** 현재 레벨 */
+	UPROPERTY()
+	int32 PlayTime = 3;
+
 
 	/** 생성할 WordGroup 위젯 클래스 */
 	UPROPERTY(EditAnywhere, Category = "LevelSelectItem")

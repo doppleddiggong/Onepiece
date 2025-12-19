@@ -40,6 +40,7 @@ AContactTrigger::AContactTrigger()
 	VoiceConversationSystem = CreateDefaultSubobject<UVoiceConversationSystem>(TEXT("VoiceConversationSystem"));
 
 	QuestType = EQuestType::Read;
+	MarkerType = ECompassMarkerType::QuestStart;
 }
 
 void AContactTrigger::BeginPlay()
@@ -199,3 +200,9 @@ void AContactTrigger::OnListenResponseScenario(FResponseListenScenario& Response
 		}
 	}
 }
+
+void AContactTrigger::SetCompassMarkerInto(ECompassMarkerType InMarkerType)
+{
+	MarkerType = InMarkerType;
+}
+

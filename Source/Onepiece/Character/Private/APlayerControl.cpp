@@ -592,6 +592,43 @@ void APlayerControl::ServerRPC_SendChat_Implementation(const FText& inMessage)
 	}
 }
 
+void APlayerControl::ServerRPC_SendAIQuestion_Implementation(const FString& Question)
+{
+	// 서버에서만 실행됩니다.
+	if (!HasAuthority())
+		return;
+
+	// AI에게 질문 전송
+	if (UKLingoNetworkSystem* NetworkSystem = UKLingoNetworkSystem::Get(GetWorld()))
+	{
+		FResponseChatAnswersDelegate Delegate;
+		Delegate.BindUObject(this, &APlayerControl::OnChatAnswerReceived);
+
+		// Context는 비워둡니다 (필요시 채팅 히스토리 전달 가능)
+		NetworkSystem->RequestChatQuestion(TEXT(""), Question, Delegate);
+
+		PRINTLOG(TEXT("[AI Chat] Question sent to AI: %s"), *Question);
+	}
+}
+
+void APlayerControl::OnChatAnswerReceived(FResponseChatAnswers& ResponseData, bool bWasSuccessful)
+{
+	if (!bWasSuccessful || ResponseData.answer.IsEmpty())
+	{
+		PRINTLOG(TEXT("[AI Chat] Failed to receive AI response"));
+		return;
+	}
+
+	// AI 응답을 Bot 정보로 채팅에 표시
+	if (auto* GS = GetWorld()->GetGameState<ALingoGameState>())
+	{
+		FText AIAnswer = FText::FromString(ResponseData.answer);
+		GS->MulticastRPC_SendChat(GS->GetBotInfo(), AIAnswer);
+
+		PRINTLOG(TEXT("[AI Chat] AI Answer: %s"), *ResponseData.answer);
+	}
+}
+
 void APlayerControl::OnDoorMessage(int32 InDoorIndex, bool bInOpen)
 {
 	// 서버에서만 실행

@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "ALingoGameState.h"
+#include "CompassTargetInterface.h"
 #include "AContactTrigger.generated.h"
 
 /**
@@ -13,7 +14,7 @@
  * 한 번 발동되면 비활성화되어 재발동되지 않습니다.
  */
 UCLASS()
-class ONEPIECE_API AContactTrigger : public AActor
+class ONEPIECE_API AContactTrigger : public AActor, public ICompassTargetInterface
 {
 	GENERATED_BODY()
 
@@ -72,4 +73,8 @@ protected:
 private:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Voice", meta=(AllowPrivateAccess="true"))
 	TObjectPtr<class UVoiceConversationSystem> VoiceConversationSystem;	
+
+protected:
+	// Compass Interface
+	virtual void SetCompassMarkerInto(ECompassMarkerType InMarkerType) override;
 };

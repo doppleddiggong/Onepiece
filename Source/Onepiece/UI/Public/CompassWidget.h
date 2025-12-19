@@ -16,8 +16,8 @@ struct FCompassInfo
 {
 	GENERATED_BODY()
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	ECompassMarkerType MarkerType;
+	float RotationAtTarget;
 	
 };
 
@@ -39,4 +39,11 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void RotateCompass(float ZRotation);
 
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	TArray<UImage*> Markers;
+	
+	UImage* AddCompassMarker();
+	void SetMarkerPosition(UImage* InMarker, float TargetRotation, bool bSideLock);
+
+	void UpdateCompassMarkers(TArray<float>& CompassMarkers);
 };
