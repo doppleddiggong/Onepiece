@@ -113,14 +113,46 @@ $(document).ready(function(){initNavTree('QuestOrderSlotWidget_8cpp_source.html'
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;<a class="code" href="QuestOrderSlotWidget_8h.html">QuestOrderSlotWidget.h</a>&quot;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;Components/Image.h&quot;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;Components/TextBlock.h&quot;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;Components/WidgetSwitcher.h&quot;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
+<div class="foldopen" id="foldopen00010" data-start="{" data-end="}">
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="classUQuestOrderSlotWidget.html#af455fd5655793fdf3fb4ed34b012364a">   10</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUQuestOrderSlotWidget.html#af455fd5655793fdf3fb4ed34b012364a">UQuestOrderSlotWidget::SetQuestType</a>(FString inQuestType)</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>{</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    <a class="code hl_variable" href="classUQuestOrderSlotWidget.html#a0c5d578021281eb242304f51e8759588">Txt_QuestType</a>-&gt;SetText(FText::FromString(inQuestType));</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>}</div>
+</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="foldopen" id="foldopen00015" data-start="{" data-end="}">
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="classUQuestOrderSlotWidget.html#abc90f0eb26c466d52e6daf578d6aa5f5">   15</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUQuestOrderSlotWidget.html#abc90f0eb26c466d52e6daf578d6aa5f5">UQuestOrderSlotWidget::PlayQuestSlot</a>()</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>{</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <a class="code hl_variable" href="classUQuestOrderSlotWidget.html#abef1ec005e972695a33c1dfc28355640">Image_Bg</a>-&gt;SetColorAndOpacity(FColor::FromHex(<span class="stringliteral">&quot;00FF94FF&quot;</span>));</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>}</div>
+</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="foldopen" id="foldopen00020" data-start="{" data-end="}">
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="classUQuestOrderSlotWidget.html#a1748f2e7e66545b50f6ae89c3d4f988d">   20</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUQuestOrderSlotWidget.html#a1748f2e7e66545b50f6ae89c3d4f988d">UQuestOrderSlotWidget::FinishQuestSlot</a>()</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>{</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <a class="code hl_variable" href="classUQuestOrderSlotWidget.html#abef1ec005e972695a33c1dfc28355640">Image_Bg</a>-&gt;SetColorAndOpacity(FColor::FromHex(<span class="stringliteral">&quot;FFCA50FF&quot;</span>));</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <a class="code hl_variable" href="classUQuestOrderSlotWidget.html#a243c5b1c1215fa62ea8a7e6184b7e79c">WidgetSwitcher_Slot</a>-&gt;SetActiveWidgetIndex(1);</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>}</div>
+</div>
 <div class="ttc" id="aQuestOrderSlotWidget_8h_html"><div class="ttname"><a href="QuestOrderSlotWidget_8h.html">QuestOrderSlotWidget.h</a></div></div>
+<div class="ttc" id="aclassUQuestOrderSlotWidget_html_a0c5d578021281eb242304f51e8759588"><div class="ttname"><a href="classUQuestOrderSlotWidget.html#a0c5d578021281eb242304f51e8759588">UQuestOrderSlotWidget::Txt_QuestType</a></div><div class="ttdeci">TObjectPtr&lt; class UTextBlock &gt; Txt_QuestType</div><div class="ttdef"><b>Definition</b> <a href="QuestOrderSlotWidget_8h_source.html#l00030">QuestOrderSlotWidget.h:30</a></div></div>
+<div class="ttc" id="aclassUQuestOrderSlotWidget_html_a1748f2e7e66545b50f6ae89c3d4f988d"><div class="ttname"><a href="classUQuestOrderSlotWidget.html#a1748f2e7e66545b50f6ae89c3d4f988d">UQuestOrderSlotWidget::FinishQuestSlot</a></div><div class="ttdeci">void FinishQuestSlot()</div><div class="ttdef"><b>Definition</b> <a href="QuestOrderSlotWidget_8cpp_source.html#l00020">QuestOrderSlotWidget.cpp:20</a></div></div>
+<div class="ttc" id="aclassUQuestOrderSlotWidget_html_a243c5b1c1215fa62ea8a7e6184b7e79c"><div class="ttname"><a href="classUQuestOrderSlotWidget.html#a243c5b1c1215fa62ea8a7e6184b7e79c">UQuestOrderSlotWidget::WidgetSwitcher_Slot</a></div><div class="ttdeci">TObjectPtr&lt; class UWidgetSwitcher &gt; WidgetSwitcher_Slot</div><div class="ttdef"><b>Definition</b> <a href="QuestOrderSlotWidget_8h_source.html#l00027">QuestOrderSlotWidget.h:27</a></div></div>
+<div class="ttc" id="aclassUQuestOrderSlotWidget_html_abc90f0eb26c466d52e6daf578d6aa5f5"><div class="ttname"><a href="classUQuestOrderSlotWidget.html#abc90f0eb26c466d52e6daf578d6aa5f5">UQuestOrderSlotWidget::PlayQuestSlot</a></div><div class="ttdeci">void PlayQuestSlot()</div><div class="ttdef"><b>Definition</b> <a href="QuestOrderSlotWidget_8cpp_source.html#l00015">QuestOrderSlotWidget.cpp:15</a></div></div>
+<div class="ttc" id="aclassUQuestOrderSlotWidget_html_abef1ec005e972695a33c1dfc28355640"><div class="ttname"><a href="classUQuestOrderSlotWidget.html#abef1ec005e972695a33c1dfc28355640">UQuestOrderSlotWidget::Image_Bg</a></div><div class="ttdeci">TObjectPtr&lt; class UImage &gt; Image_Bg</div><div class="ttdef"><b>Definition</b> <a href="QuestOrderSlotWidget_8h_source.html#l00024">QuestOrderSlotWidget.h:24</a></div></div>
+<div class="ttc" id="aclassUQuestOrderSlotWidget_html_af455fd5655793fdf3fb4ed34b012364a"><div class="ttname"><a href="classUQuestOrderSlotWidget.html#af455fd5655793fdf3fb4ed34b012364a">UQuestOrderSlotWidget::SetQuestType</a></div><div class="ttdeci">void SetQuestType(FString inQuestType)</div><div class="ttdef"><b>Definition</b> <a href="QuestOrderSlotWidget_8cpp_source.html#l00010">QuestOrderSlotWidget.cpp:10</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_55b064ed9f704d76d3805f2fda876350.html">UI</a></li><li class="navelem"><a class="el" href="dir_550f083bbe519bd985f450628c1369b6.html">Private</a></li><li class="navelem"><a class="el" href="QuestOrderSlotWidget_8cpp.html">QuestOrderSlotWidget.cpp</a></li>
-    <li class="footer">생성시간 : 금 12월 19 2025 06:39:53, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 금 12월 19 2025 06:40:33, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

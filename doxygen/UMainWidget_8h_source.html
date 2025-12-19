@@ -157,65 +157,71 @@ $(document).ready(function(){initNavTree('UMainWidget_8h_source.html',''); initR
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    UFUNCTION(BlueprintPure, Category = <span class="stringliteral">&quot;Quest&quot;</span>)</div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="classUMainWidget.html#ada0273cc475322d5dc2046c4e1fdc98a">   59</a></span>    class <a class="code hl_class" href="classUQuestInfoWidget.html">UQuestInfoWidget</a>* GetQuestInfoWidget()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> QuestInfoWidget; }</div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    </div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    UFUNCTION(Category = <span class="stringliteral">&quot;Chat&quot;</span>)</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    void SendChatMessage(<a class="code hl_struct" href="structFResponseUserMe.html">FResponseUserMe</a> sendUser, const FText&amp; inMessage);</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    UFUNCTION(BlueprintPure, Category = <span class="stringliteral">&quot;Quest&quot;</span>)</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="classUMainWidget.html#ab670f6cad8c86780c78367440c5105ca">   62</a></span>    class <a class="code hl_class" href="classUQuestOrderWidget.html">UQuestOrderWidget</a>* GetQuestOrderWidget()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> QuestOrderWidget; }</div>
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    </div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    <span class="keywordtype">void</span> SetFocusOnChat();</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    </div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>private:</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <span class="keywordtype">void</span> UpdateTimerDisplay() const;</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    UFUNCTION()</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    <span class="keywordtype">void</span> OnUpdateMissionTimerState(<span class="keywordtype">bool</span> bIsActive, <span class="keywordtype">float</span> TimeLimit);</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>protected:</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    UPROPERTY(meta = (BindWidget), BlueprintReadOnly)</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno"><a class="line" href="classUMainWidget.html#a1a0b73afb95c74b5c4a79daa63af9257">   77</a></span>    TObjectPtr&lt;class <a class="code hl_class" href="classUPlayTimer.html">UPlayTimer</a>&gt; PlayTimer;</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    UFUNCTION(Category = <span class="stringliteral">&quot;Chat&quot;</span>)</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    void SendChatMessage(<a class="code hl_struct" href="structFResponseUserMe.html">FResponseUserMe</a> sendUser, const FText&amp; inMessage);</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    </div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <span class="keywordtype">void</span> SetFocusOnChat();</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>private:</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    <span class="keywordtype">void</span> UpdateTimerDisplay() const;</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    UFUNCTION()</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    <span class="keywordtype">void</span> OnUpdateMissionTimerState(<span class="keywordtype">bool</span> bIsActive, <span class="keywordtype">float</span> TimeLimit);</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>protected:</div>
 <div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    UPROPERTY(meta = (BindWidget), BlueprintReadOnly)</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno"><a class="line" href="classUMainWidget.html#af7202e75ac00efb9c8ddb5b752cc9460">   80</a></span>    TObjectPtr&lt;class <a class="code hl_class" href="classURoomWidget.html">URoomWidget</a>&gt;  RoomWidget;</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno"><a class="line" href="classUMainWidget.html#a1a0b73afb95c74b5c4a79daa63af9257">   80</a></span>    TObjectPtr&lt;class <a class="code hl_class" href="classUPlayTimer.html">UPlayTimer</a>&gt; PlayTimer;</div>
 <div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
 <div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    UPROPERTY(meta = (BindWidget), BlueprintReadOnly)</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno"><a class="line" href="classUMainWidget.html#af9eea227103d9e1ef57f35eaff2109e0">   83</a></span>    TObjectPtr&lt;class <a class="code hl_class" href="classUStateWidget.html">UStateWidget</a>&gt; StateWidget;</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno"><a class="line" href="classUMainWidget.html#af7202e75ac00efb9c8ddb5b752cc9460">   83</a></span>    TObjectPtr&lt;class <a class="code hl_class" href="classURoomWidget.html">URoomWidget</a>&gt;  RoomWidget;</div>
 <div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
 <div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    UPROPERTY(meta = (BindWidget), BlueprintReadOnly)</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno"><a class="line" href="classUMainWidget.html#a493c1e62aeb4e89c0cd85dfab3d50519">   86</a></span>    TObjectPtr&lt;class UWidgetSwitcher&gt; WidgetSwitcher;</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno"><a class="line" href="classUMainWidget.html#af9eea227103d9e1ef57f35eaff2109e0">   86</a></span>    TObjectPtr&lt;class <a class="code hl_class" href="classUStateWidget.html">UStateWidget</a>&gt; StateWidget;</div>
 <div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    UPROPERTY(meta = (BindWidget), BlueprintReadOnly)</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno"><a class="line" href="classUMainWidget.html#af4d15f040b6a31cc9fd0915a73da3539">   90</a></span>    TObjectPtr&lt;class <a class="code hl_class" href="classUSpeakWidget.html">USpeakWidget</a>&gt; SpeakWidget;</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    <span class="comment">// UPROPERTY(meta = (BindWidget), BlueprintReadOnly)</span></div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    <span class="comment">// TObjectPtr&lt;class UQuestOrderWidget&gt; QuestOrderWidget;</span></div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    </div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    UPROPERTY(meta = (BindWidget), BlueprintReadOnly)</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno"><a class="line" href="classUMainWidget.html#a5ba1fdbbe66e5a6c54e05634e254e5d3">   96</a></span>    TObjectPtr&lt;class <a class="code hl_class" href="classUQuestInfoWidget.html">UQuestInfoWidget</a>&gt; QuestInfoWidget;</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    UPROPERTY(meta = (BindWidgetOptional), BlueprintReadOnly)</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno"><a class="line" href="classUMainWidget.html#a2c5299964319e6fccda7d0ec2887ea23">  100</a></span>    TObjectPtr&lt;class UImage&gt; HookTargetIndicator;</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span> </div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    UPROPERTY(meta = (BindWidgetOptional), BlueprintReadOnly)</div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno"><a class="line" href="classUMainWidget.html#aa86baf5af00d6f8875fc6106bb3714e4">  104</a></span>    TObjectPtr&lt;class <a class="code hl_class" href="classUFadeWidget.html">UFadeWidget</a>&gt; FadeWidget;</div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    </div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    UPROPERTY(meta = (BindWidget), BlueprintReadOnly)</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno"><a class="line" href="classUMainWidget.html#a1c57b6f11cdc34dc6a2e3caad2fefa97">  108</a></span>    TObjectPtr&lt;class <a class="code hl_class" href="classUChatWidget.html">UChatWidget</a>&gt; ChatWidget;</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span> </div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>public:</div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    UPROPERTY(meta = (BindWidget), BlueprintReadOnly)</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno"><a class="line" href="classUMainWidget.html#a0a727871d912aa9c513c0e32b5629f58">  113</a></span>    TObjectPtr&lt;class <a class="code hl_class" href="classUCompassWidget.html">UCompassWidget</a>&gt; CompassWidget;</div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span> </div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>private:</div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>    UPROPERTY(EditDefaultsOnly, Category = &quot;Hook&quot;)</div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno"><a class="line" href="classUMainWidget.html#ad7de89f2b381f896001de9b8b7e407bc">  118</a></span>    TObjectPtr&lt;class UTexture2D&gt; HookAimTexture;</div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span> </div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    UPROPERTY(EditDefaultsOnly, Category = &quot;Hook&quot;)</div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno"><a class="line" href="classUMainWidget.html#a52448a9fe3ed60736a223d3129b6e3db">  122</a></span>    TObjectPtr&lt;class UTexture2D&gt; HookNoAimTexture;</div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span> </div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>    UPROPERTY(EditDefaultsOnly, Category = &quot;Item&quot;)</div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno"><a class="line" href="classUMainWidget.html#a4647b2db5b4b047684c2e67e612a693f">  126</a></span>    TSubclassOf&lt;class <a class="code hl_class" href="classUAutoDespawnItem.html">UAutoDespawnItem</a>&gt; ItemWidgetClass;</div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span> </div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>    UPROPERTY()</div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno"><a class="line" href="classUMainWidget.html#aa0abca549ef2be9c4610d4890d5c0448">  130</a></span>    TObjectPtr&lt;class <a class="code hl_class" href="classALingoGameState.html">ALingoGameState</a>&gt; CachedGameState;</div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>};</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    UPROPERTY(meta = (BindWidget), BlueprintReadOnly)</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno"><a class="line" href="classUMainWidget.html#a493c1e62aeb4e89c0cd85dfab3d50519">   89</a></span>    TObjectPtr&lt;class UWidgetSwitcher&gt; WidgetSwitcher;</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    UPROPERTY(meta = (BindWidget), BlueprintReadOnly)</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno"><a class="line" href="classUMainWidget.html#af4d15f040b6a31cc9fd0915a73da3539">   93</a></span>    TObjectPtr&lt;class <a class="code hl_class" href="classUSpeakWidget.html">USpeakWidget</a>&gt; SpeakWidget;</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    <span class="comment">// UPROPERTY(meta = (BindWidget), BlueprintReadOnly)</span></div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    <span class="comment">// TObjectPtr&lt;class UQuestOrderWidget&gt; QuestOrderWidget;</span></div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    </div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    UPROPERTY(meta = (BindWidget), BlueprintReadOnly)</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno"><a class="line" href="classUMainWidget.html#a6c0cdc5c93d18346b8c5295a03b43e05">   99</a></span>    TObjectPtr&lt;class <a class="code hl_class" href="classUQuestOrderWidget.html">UQuestOrderWidget</a>&gt; QuestOrderWidget;</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>        </div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    UPROPERTY(meta = (BindWidget), BlueprintReadOnly)</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno"><a class="line" href="classUMainWidget.html#a5ba1fdbbe66e5a6c54e05634e254e5d3">  102</a></span>    TObjectPtr&lt;class <a class="code hl_class" href="classUQuestInfoWidget.html">UQuestInfoWidget</a>&gt; QuestInfoWidget;</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    UPROPERTY(meta = (BindWidgetOptional), BlueprintReadOnly)</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno"><a class="line" href="classUMainWidget.html#a2c5299964319e6fccda7d0ec2887ea23">  106</a></span>    TObjectPtr&lt;class UImage&gt; HookTargetIndicator;</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span> </div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    UPROPERTY(meta = (BindWidgetOptional), BlueprintReadOnly)</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno"><a class="line" href="classUMainWidget.html#aa86baf5af00d6f8875fc6106bb3714e4">  110</a></span>    TObjectPtr&lt;class <a class="code hl_class" href="classUFadeWidget.html">UFadeWidget</a>&gt; FadeWidget;</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    </div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    UPROPERTY(meta = (BindWidget), BlueprintReadOnly)</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno"><a class="line" href="classUMainWidget.html#a1c57b6f11cdc34dc6a2e3caad2fefa97">  114</a></span>    TObjectPtr&lt;class <a class="code hl_class" href="classUChatWidget.html">UChatWidget</a>&gt; ChatWidget;</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span> </div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>public:</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    UPROPERTY(meta = (BindWidget), BlueprintReadOnly)</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno"><a class="line" href="classUMainWidget.html#a0a727871d912aa9c513c0e32b5629f58">  119</a></span>    TObjectPtr&lt;class <a class="code hl_class" href="classUCompassWidget.html">UCompassWidget</a>&gt; CompassWidget;</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span> </div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>private:</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>    UPROPERTY(EditDefaultsOnly, Category = &quot;Hook&quot;)</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno"><a class="line" href="classUMainWidget.html#ad7de89f2b381f896001de9b8b7e407bc">  124</a></span>    TObjectPtr&lt;class UTexture2D&gt; HookAimTexture;</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span> </div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>    UPROPERTY(EditDefaultsOnly, Category = &quot;Hook&quot;)</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno"><a class="line" href="classUMainWidget.html#a52448a9fe3ed60736a223d3129b6e3db">  128</a></span>    TObjectPtr&lt;class UTexture2D&gt; HookNoAimTexture;</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span> </div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>    UPROPERTY(EditDefaultsOnly, Category = &quot;Item&quot;)</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno"><a class="line" href="classUMainWidget.html#a4647b2db5b4b047684c2e67e612a693f">  132</a></span>    TSubclassOf&lt;class <a class="code hl_class" href="classUAutoDespawnItem.html">UAutoDespawnItem</a>&gt; ItemWidgetClass;</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span> </div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>    UPROPERTY()</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno"><a class="line" href="classUMainWidget.html#aa0abca549ef2be9c4610d4890d5c0448">  136</a></span>    TObjectPtr&lt;class <a class="code hl_class" href="classALingoGameState.html">ALingoGameState</a>&gt; CachedGameState;</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>};</div>
 </div>
 <div class="ttc" id="aALingoPlayerState_8h_html"><div class="ttname"><a href="ALingoPlayerState_8h.html">ALingoPlayerState.h</a></div></div>
 <div class="ttc" id="aASpeakStageActor_8h_html"><div class="ttname"><a href="ASpeakStageActor_8h.html">ASpeakStageActor.h</a></div></div>
@@ -229,6 +235,7 @@ $(document).ready(function(){initNavTree('UMainWidget_8h_source.html',''); initR
 <div class="ttc" id="aclassUMainWidget_html"><div class="ttname"><a href="classUMainWidget.html">UMainWidget</a></div><div class="ttdoc">메인 UI 위젯</div><div class="ttdef"><b>Definition</b> <a href="UMainWidget_8h_source.html#l00016">UMainWidget.h:17</a></div></div>
 <div class="ttc" id="aclassUPlayTimer_html"><div class="ttname"><a href="classUPlayTimer.html">UPlayTimer</a></div><div class="ttdoc">플레이 타이머를 표시하는 위젯</div><div class="ttdef"><b>Definition</b> <a href="UPlayTimer_8h_source.html#l00014">UPlayTimer.h:15</a></div></div>
 <div class="ttc" id="aclassUQuestInfoWidget_html"><div class="ttname"><a href="classUQuestInfoWidget.html">UQuestInfoWidget</a></div><div class="ttdef"><b>Definition</b> <a href="UQuestInfoWidget_8h_source.html#l00012">UQuestInfoWidget.h:13</a></div></div>
+<div class="ttc" id="aclassUQuestOrderWidget_html"><div class="ttname"><a href="classUQuestOrderWidget.html">UQuestOrderWidget</a></div><div class="ttdef"><b>Definition</b> <a href="QuestOrderWidget_8h_source.html#l00013">QuestOrderWidget.h:14</a></div></div>
 <div class="ttc" id="aclassURoomWidget_html"><div class="ttname"><a href="classURoomWidget.html">URoomWidget</a></div><div class="ttdef"><b>Definition</b> <a href="URoomWidget_8h_source.html#l00013">URoomWidget.h:14</a></div></div>
 <div class="ttc" id="aclassUSpeakWidget_html"><div class="ttname"><a href="classUSpeakWidget.html">USpeakWidget</a></div><div class="ttdoc">Speak Stage UI 위젯</div><div class="ttdef"><b>Definition</b> <a href="USpeakWidget_8h_source.html#l00022">USpeakWidget.h:23</a></div></div>
 <div class="ttc" id="aclassUStateWidget_html"><div class="ttname"><a href="classUStateWidget.html">UStateWidget</a></div><div class="ttdef"><b>Definition</b> <a href="UStateWidget_8h_source.html#l00010">UStateWidget.h:11</a></div></div>
@@ -239,7 +246,7 @@ $(document).ready(function(){initNavTree('UMainWidget_8h_source.html',''); initR
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_55b064ed9f704d76d3805f2fda876350.html">UI</a></li><li class="navelem"><a class="el" href="dir_e82f2835ab4116a5eee79a37f645c6c8.html">Public</a></li><li class="navelem"><a class="el" href="UMainWidget_8h.html">UMainWidget.h</a></li>
-    <li class="footer">생성시간 : 금 12월 19 2025 06:39:53, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 금 12월 19 2025 06:40:33, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

@@ -45,6 +45,7 @@ var classAPlayerControl =
     [ "TEST_AddItemToBoxList", "classAPlayerControl.html#a3b1610210b44fa2be6c12fa777631033", null ],
     [ "TEST_DropperDropProcess", "classAPlayerControl.html#ab98c322064b5894e5cd25113d82f617f", null ],
     [ "UpdateQuestInfoWidget", "classAPlayerControl.html#ab278cc438dd24511edae00e9a75e3023", null ],
+    [ "UpdateQuestOrderWidget", "classAPlayerControl.html#a38aa91cf1bd4fe330fbb8fcbd29f2587", null ],
     [ "UpdateQuestRole", "classAPlayerControl.html#a49c6d11314d21c34209ac16d0dabcfc3", null ],
     [ "UpdateSpeakWidget", "classAPlayerControl.html#a033802ec64bfd2178ddc93d8ead4c127", null ],
     [ "UPROPERTY", "classAPlayerControl.html#a8cdc24c697d8831750dea14b970fb3a4", null ],

@@ -123,16 +123,24 @@ $(document).ready(function(){initNavTree('QuestOrderSlotWidget_8h_source.html','
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>{</div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    GENERATED_BODY()</div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    </div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="keyword">protected</span>:</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    UPROPERTY(meta=(BindWidget))</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="classUQuestOrderSlotWidget.html#a243c5b1c1215fa62ea8a7e6184b7e79c">   19</a></span>    TObjectPtr&lt;class UWidgetSwitcher&gt; WidgetSwitcher_Slot;</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    </div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    UPROPERTY(meta=(BindWidget))</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="classUQuestOrderSlotWidget.html#a0c5d578021281eb242304f51e8759588">   22</a></span>    TObjectPtr&lt;class UTextBlock&gt; Txt_QuestType;</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    UPROPERTY(meta=(BindWidget))</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="classUQuestOrderSlotWidget.html#ae2598b3f97b91c5f50dfc4edc8781f8d">   25</a></span>    TObjectPtr&lt;class UImage&gt; Image_Complete;    </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>};</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <span class="keywordtype">void</span> SetQuestType(FString inQuestType);</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <span class="keywordtype">void</span> PlayQuestSlot();</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <span class="keywordtype">void</span> FinishQuestSlot();</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    UPROPERTY(meta=(BindWidget))</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="classUQuestOrderSlotWidget.html#abef1ec005e972695a33c1dfc28355640">   24</a></span>    TObjectPtr&lt;class UImage&gt; Image_Bg;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    UPROPERTY(meta=(BindWidget))</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="classUQuestOrderSlotWidget.html#a243c5b1c1215fa62ea8a7e6184b7e79c">   27</a></span>    TObjectPtr&lt;class UWidgetSwitcher&gt; WidgetSwitcher_Slot;</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    UPROPERTY(meta=(BindWidget))</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="classUQuestOrderSlotWidget.html#a0c5d578021281eb242304f51e8759588">   30</a></span>    TObjectPtr&lt;class UTextBlock&gt; Txt_QuestType;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    UPROPERTY(meta=(BindWidget))</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="classUQuestOrderSlotWidget.html#ae2598b3f97b91c5f50dfc4edc8781f8d">   33</a></span>    TObjectPtr&lt;class UImage&gt; Image_Complete;    </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>};</div>
 </div>
 <div class="ttc" id="aclassUQuestOrderSlotWidget_html"><div class="ttname"><a href="classUQuestOrderSlotWidget.html">UQuestOrderSlotWidget</a></div><div class="ttdef"><b>Definition</b> <a href="QuestOrderSlotWidget_8h_source.html#l00013">QuestOrderSlotWidget.h:14</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
@@ -141,7 +149,7 @@ $(document).ready(function(){initNavTree('QuestOrderSlotWidget_8h_source.html','
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_55b064ed9f704d76d3805f2fda876350.html">UI</a></li><li class="navelem"><a class="el" href="dir_e82f2835ab4116a5eee79a37f645c6c8.html">Public</a></li><li class="navelem"><a class="el" href="QuestOrderSlotWidget_8h.html">QuestOrderSlotWidget.h</a></li>
-    <li class="footer">생성시간 : 금 12월 19 2025 06:39:53, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 금 12월 19 2025 06:40:33, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

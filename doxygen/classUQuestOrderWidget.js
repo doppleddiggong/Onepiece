@@ -1,5 +1,8 @@
 var classUQuestOrderWidget =
 [
+    [ "NativeOnInitialized", "classUQuestOrderWidget.html#a5048716bf5546d80d916deb07b5aff41", null ],
+    [ "UpdateQuestOrder", "classUQuestOrderWidget.html#a29d4842fd755c8922491aebaa8f5e6e7", null ],
+    [ "CurrentSlotIndex", "classUQuestOrderWidget.html#aa2be0a52ba30a8b15cbddcb1b7c95b40", null ],
     [ "ProgressBar_Quest", "classUQuestOrderWidget.html#a228d0615f2079e0ef4940608019782e3", null ],
     [ "Slot_L", "classUQuestOrderWidget.html#ac2ba12c551db0145a2e881092e1f48f4", null ],
     [ "Slot_R", "classUQuestOrderWidget.html#a6e786046b4d8bc9c99ba07903d70093b", null ],
