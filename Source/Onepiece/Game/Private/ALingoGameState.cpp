@@ -339,7 +339,7 @@ void ALingoGameState::OnRep_RoomLevel()
 	OnRoomLevelUpdated.Broadcast(RoomLevel);
 }
 
-void ALingoGameState::MulticastRPC_SendChat_Implementation(FResponseUserMe sendUser, const FText& inMessage)
+void ALingoGameState::MulticastRPC_SendChat_Implementation(FResponseUserMe sendUser, const FText& inMessage, int32 PlayerIndex)
 {
 	// MainWidget의 SendChatMessage() 함수 호출
 	if (auto* PC = Cast<APlayerControl>(GetWorld()->GetFirstPlayerController()))
@@ -347,7 +347,7 @@ void ALingoGameState::MulticastRPC_SendChat_Implementation(FResponseUserMe sendU
 		// PRINTLOG(TEXT("[SendChat] ALingoGameState::MulticastRPC_SendChat - %s"), *inMessage.ToString());
 		if (auto* player = Cast<APlayerActor>(PC->GetPawn()))
 		{
-			player->GetMainWidget()->SendChatMessage(sendUser, inMessage);
+			player->GetMainWidget()->SendChatMessage(sendUser, inMessage, PlayerIndex);
 		}
 	}
 }

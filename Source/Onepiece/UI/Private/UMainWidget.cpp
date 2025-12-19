@@ -97,10 +97,10 @@ void UMainWidget::UpdateRoomWidget(int32 InRoomLevel, int64 InRoomId)
 	RoomWidget->UpdateRoomInfo(InRoomLevel, InRoomId);
 }
 
-void UMainWidget::SendChatMessage(FResponseUserMe sendUser,const FText& inMessage)
+void UMainWidget::SendChatMessage(FResponseUserMe sendUser, const FText& inMessage, int32 PlayerIndex)
 {
 	// PRINTLOG(TEXT("[SendChat] UMainWidget::SendChatMessage - %s"), *inMessage.ToString());
-	ChatWidget->SendMessage(sendUser, inMessage);
+	ChatWidget->SendMessage(sendUser, inMessage, PlayerIndex);
 }
 
 void UMainWidget::SetFocusOnChat()

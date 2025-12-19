@@ -296,7 +296,8 @@ void ANetworkTesterActor::OnResponseChatAnswers(FResponseChatAnswers& ResponseDa
         if (auto* GS = GetWorld()->GetGameState<ALingoGameState>())
         {
             FText AIAnswer = FText::FromString(ResponseData.answer);
-            GS->MulticastRPC_SendChat(GS->GetBotInfo(), AIAnswer);
+            // Bot은 PlayerIndex -1 사용
+            GS->MulticastRPC_SendChat(GS->GetBotInfo(), AIAnswer, -1);
 
             PRINTLOG(TEXT("[AI Chat] AI Answer: %s"), *ResponseData.answer);
         }

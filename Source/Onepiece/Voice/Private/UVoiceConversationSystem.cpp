@@ -305,7 +305,8 @@ void UVoiceConversationSystem::OnResponseChatAnswers(FResponseChatAnswers& Respo
 		if (auto* GS = GetWorld()->GetGameState<ALingoGameState>())
 		{
 			FText AIAnswer = FText::FromString(Response.answer);
-			GS->MulticastRPC_SendChat(GS->GetBotInfo(), AIAnswer);
+			// Bot은 PlayerIndex -1 사용
+			GS->MulticastRPC_SendChat(GS->GetBotInfo(), AIAnswer, -1);
 
 			PRINTLOG(TEXT("[AI Chat] AI Answer: %s"), *Response.answer);
 		}

@@ -59,7 +59,7 @@ public:
 	class UQuestInfoWidget* GetQuestInfoWidget() const { return QuestInfoWidget; }
 	
 	UFUNCTION(Category = "Chat")
-	void SendChatMessage(FResponseUserMe sendUser, const FText& inMessage);
+	void SendChatMessage(FResponseUserMe sendUser, const FText& inMessage, int32 PlayerIndex);
 	
 	void SetFocusOnChat();
 	
