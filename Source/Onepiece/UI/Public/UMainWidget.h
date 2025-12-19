@@ -74,9 +74,6 @@ private:
 protected:
 	/// @brief 플레이 타이머 위젯 (BindWidget)
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
-	TObjectPtr<class UCanvasPanel> CanvasPanel_Main;
-	
-	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
 	TObjectPtr<class UPlayTimer> PlayTimer;
 
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
@@ -92,6 +89,9 @@ protected:
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
 	TObjectPtr<class USpeakWidget> SpeakWidget;
 
+	// UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
+	// TObjectPtr<class UQuestOrderWidget> QuestOrderWidget;
+	
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
 	TObjectPtr<class UQuestInfoWidget> QuestInfoWidget;
 
