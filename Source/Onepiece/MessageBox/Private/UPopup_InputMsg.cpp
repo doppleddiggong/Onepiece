@@ -4,6 +4,7 @@
 #include "UPopup_InputMsg.h"
 
 #include "GameLogging.h"
+#include "UDialogManager.h"
 #include "UHoverButton.h"
 #include "UImageButton.h"
 #include "UKLingoNetworkSystem.h"
@@ -169,6 +170,8 @@ void UPopup_InputMsg::OnResponseUserMe(FResponseUserMe& ResponseData, bool bWasS
 		// 로비맵으로 (Seamless Travel로 PlayerState 유지)
 		if (UWorld* World = GetWorld())
 		{
+			UDialogManager::Get(GetWorld())->ShowToast(TEXT("Login Success"));
+			
 			World->ServerTravel(TEXT("/Game/CustomContents/Maps/LobbyMap?listen"), true, false);
 		}
 	}

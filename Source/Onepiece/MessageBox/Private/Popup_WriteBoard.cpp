@@ -40,18 +40,25 @@ UPopup_WriteBoard::UPopup_WriteBoard(const FObjectInitializer& ObjectInitializer
 void UPopup_WriteBoard::NativeOnInitialized()
 {
 	Super::NativeOnInitialized();
-	
+}
+
+void UPopup_WriteBoard::NativeConstruct()
+{
+	Super::NativeConstruct();
 	writeBoardObject = NewObject<UWriteBoard>();
-	tempFontInfo = Text_Guide->GetFont();
-	
-	// Button Event
-	Button_Save->OnButtonClickedEvent.AddDynamic(this, &UPopup_WriteBoard::SaveCanvas);
-	
-	Text_Guide->RemoveFromParent();
 }
 
 void UPopup_WriteBoard::InitPopup(int32 InQid, const FWriteQuestionData& InQuestionData)
 {
+	// Button Event
+	Button_Save->OnButtonClickedEvent.RemoveDynamic(this, &UPopup_WriteBoard::SaveCanvas);
+	Button_Save->OnButtonClickedEvent.AddDynamic(this, &UPopup_WriteBoard::SaveCanvas);
+	if (Text_Guide != nullptr)
+	{
+		tempFontInfo = Text_Guide->GetFont();
+		Text_Guide->RemoveFromParent();
+	}
+	
 	this->Qid = InQid;
 	this->AnswerKr = InQuestionData.answer_kor;
 	this->Text_Question_Kr->SetText(FText::FromString(InQuestionData.word_data.kor));
@@ -221,7 +228,8 @@ void UPopup_WriteBoard::SaveCanvas()
 {
 	if (const auto PopupMgr = UPopupManager::Get(GetWorld()))
 	{
-		writeBoardObject->SaveCanvas(Qid, RT_Canvas);
+		if (writeBoardObject != nullptr)
+			writeBoardObject->SaveCanvas(Qid, RT_Canvas);
 		ClearCanvas();
 		PopupMgr->HideCurrentPopup(false);
 	}

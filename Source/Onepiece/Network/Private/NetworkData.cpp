@@ -16,6 +16,7 @@
 #include "Interfaces/IHttpResponse.h"
 #include "Dom/JsonObject.h"
 #include "Dom/JsonValue.h"
+#include "Onepiece/Onepiece.h"
 #include "Serialization/JsonReader.h"
 #include "Serialization/JsonSerializer.h"
 #include "Serialization/JsonWriter.h"
@@ -216,6 +217,35 @@ void FResponseUserMe::PrintData() const
 		0
 	);
 	NETWORK_LOG( TEXT("[RES] %s"), *OutputString);
+}
+
+EResourceTextureType FResponseUserMe::GetChatProfileTextureType(int player_index) const
+{
+	if ( id == GameName::BotID)
+	{
+		return EResourceTextureType::Bot;
+	}
+
+	if ( player_index == 0)
+		return EResourceTextureType::GreenOwl;
+	else if ( player_index == 1)
+		return EResourceTextureType::RedOwl;
+	return EResourceTextureType::Bot;
+}
+
+FLinearColor FResponseUserMe::GetChatProfileBg(int player_index) const
+{
+	if ( id == GameName::BotID)
+	{
+		return FColor::FromHex(TEXT("007BE8FF"));
+	}
+	
+	if ( player_index == 0)
+		return  FColor::FromHex(TEXT("FFFFFF"));
+	if ( player_index == 1)
+		return FColor::FromHex(TEXT("E94C4CFF"));
+	else
+		return FColor::FromHex(TEXT("007BE8FF"));
 }
 
 
@@ -838,7 +868,7 @@ bool FRequestReadResult::ToJsonString(FString& OutJson) const
 
 void FResponseReadResult::SetFromHttpResponse(const TSharedPtr<class IHttpResponse, ESPMode::ThreadSafe>& Response)
 {
-	if (Response.IsValid())
+	if (!Response.IsValid())
 	{
 		return;
 	}
@@ -849,9 +879,26 @@ void FResponseReadResult::SetFromHttpResponse(const TSharedPtr<class IHttpRespon
 
 	if (FJsonSerializer::Deserialize(Reader, JsonObject) && JsonObject.IsValid())
 	{
-		grade = JsonObject->GetStringField(TEXT("grade"));
-		average_score = JsonObject->GetIntegerField(TEXT("average_score"));
-		top_percent = JsonObject->GetNumberField(TEXT("top_percent"));
+		JsonObject->TryGetStringField(TEXT("grade"), grade);
+		JsonObject->TryGetNumberField(TEXT("average_score"), average_score);
+		JsonObject->TryGetNumberField(TEXT("top_percent"), top_percent);
+
+		// scores 배열 파싱
+		if (JsonObject->HasTypedField<EJson::Array>(TEXT("scores")))
+		{
+			TArray<TSharedPtr<FJsonValue>> JsonArray = JsonObject->GetArrayField(TEXT("scores"));
+			for (const auto& ScoreValue : JsonArray)
+			{
+				if (ScoreValue->Type == EJson::Object)
+				{
+					TSharedPtr<FJsonObject> ScoreObj = ScoreValue->AsObject();
+					FReadScoreDetail Entry;
+					ScoreObj->TryGetNumberField(TEXT("score"), Entry.score);
+					ScoreObj->TryGetStringField(TEXT("desc"), Entry.desc);
+					scores.Add(Entry);
+				}
+			}
+		}
 	}
 }
 
@@ -1031,7 +1078,7 @@ bool FRequestListenResult::ToJsonString(FString& OutJson) const
 
 void FResponseListenResult::SetFromHttpResponse(const TSharedPtr<class IHttpResponse, ESPMode::ThreadSafe>& Response)
 {
-	if (Response.IsValid())
+	if (!Response.IsValid())
 	{
 		return;
 	}
@@ -1042,9 +1089,26 @@ void FResponseListenResult::SetFromHttpResponse(const TSharedPtr<class IHttpResp
 
 	if (FJsonSerializer::Deserialize(Reader, JsonObject) && JsonObject.IsValid())
 	{
-		grade = JsonObject->GetStringField(TEXT("grade"));
-		average_score = JsonObject->GetIntegerField(TEXT("average_score"));
-		top_percent = JsonObject->GetNumberField(TEXT("top_percent"));
+		JsonObject->TryGetStringField(TEXT("grade"), grade);
+		JsonObject->TryGetNumberField(TEXT("average_score"), average_score);
+		JsonObject->TryGetNumberField(TEXT("top_percent"), top_percent);
+
+		// scores 배열 파싱
+		if (JsonObject->HasTypedField<EJson::Array>(TEXT("scores")))
+		{
+			TArray<TSharedPtr<FJsonValue>> JsonArray = JsonObject->GetArrayField(TEXT("scores"));
+			for (const auto& ScoreValue : JsonArray)
+			{
+				if (ScoreValue->Type == EJson::Object)
+				{
+					TSharedPtr<FJsonObject> ScoreObj = ScoreValue->AsObject();
+					FListenScoreDetail Entry;
+					ScoreObj->TryGetNumberField(TEXT("score"), Entry.score);
+					ScoreObj->TryGetStringField(TEXT("desc"), Entry.desc);
+					scores.Add(Entry);
+				}
+			}
+		}
 	}
 }
 

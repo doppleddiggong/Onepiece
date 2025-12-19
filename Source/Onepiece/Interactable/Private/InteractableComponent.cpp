@@ -168,14 +168,10 @@ void UInteractableComponent::OnRep_HoldingOwner()
  */
 void UInteractableComponent::OnRep_IsPickedUp()
 {
-	Aluggage* luggage = Cast<Aluggage>(GetOwner());
-	if (!luggage)
-		return;
-
 	if (bIsPickedUp)
 	{
 		// 픽업 상태 - Outline/Widget 끄기
-		luggage->OutlineOff();
+		SetOutlineState(false);
 		HideInteractWidget();
 
 		PRINTLOG(TEXT("OnRep_IsPickedUp: %s picked up (visual update)"), *GetOwner()->GetName());
@@ -183,7 +179,7 @@ void UInteractableComponent::OnRep_IsPickedUp()
 	else
 	{
 		// 드롭 상태 - Outline 켜기 (Widget은 거리에 따라 OnDetectionOverlap에서 처리)
-		luggage->OutlineOn();
+		SetOutlineState(true);
 
 		PRINTLOG(TEXT("OnRep_IsPickedUp: %s dropped (visual update)"), *GetOwner()->GetName());
 	}
@@ -422,6 +418,12 @@ void UInteractableComponent::TriggerInteraction(AActor* Interactor)
 	PRINTLOG( TEXT("InteractableComponent::TriggerInteraction - %s triggered by %s"), *GetOwner()->GetName(), *Interactor->GetName());
 }
 
+void UInteractableComponent::SetOutlineState(bool bEnabled)
+{
+	// 델리게이트 브로드캐스트 - Actor가 바인드하여 아웃라인 처리
+	OnOutlineStateChanged.Broadcast(bEnabled);
+}
+
 void UInteractableComponent::OnDetectionBeginOverlap(
 	UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
 	UPrimitiveComponent* OtherComp, int32 OtherBodyIndex,
@@ -442,13 +444,10 @@ void UInteractableComponent::OnDetectionBeginOverlap(
 			bool ShowState = IsWidgetShowEnable(Character);
 			if ( ShowState)
 				ShowInteractWidget();
-		
-			// PickUp 타입이면 Luggage의 custom widget 사용
-			if (auto luggage = Cast<Aluggage>(GetOwner()))
-			{
-				if (!bIsPickedUp)
-					luggage->OutlineOn();
-			}
+
+			// 픽업되지 않은 상태면 Outline 켜기
+			if (!bIsPickedUp)
+				SetOutlineState(true);
 
 			PRINTLOG( TEXT("InteractableComponent: Player entered detection range - %s"), *GetOwner()->GetName());
 		}
@@ -486,13 +485,10 @@ void UInteractableComponent::OnDetectionEndOverlap(
 		GetWorld()->GetTimerManager().SetTimer(TimerHandle, FTimerDelegate::CreateLambda([this]
 		{
 			HideInteractWidget();
-			
-			Aluggage* luggage = Cast<Aluggage>(GetOwner());
-			if (luggage && !bIsPickedUp)
-			{
-				luggage->OutlineOff();
-				// luggage->InfoWidgetOff();
-			}
+
+			// 픽업되지 않은 상태면 Outline 끄기
+			if (!bIsPickedUp)
+				SetOutlineState(false);
 		}), 0.1f, false);
 	}
 }

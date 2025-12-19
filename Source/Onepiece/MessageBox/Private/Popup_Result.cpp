@@ -14,10 +14,12 @@
 #include "UResultStatWidget.h"
 #include "UTextureButton.h"
 #include "UAnswerItem.h"
+#include "UGameDataManager.h"
 #include "Components/HorizontalBox.h"
 #include "Components/ScrollBox.h"
 #include "Components/TextBlock.h"
 #include "Blueprint/UserWidget.h"
+#include "Components/Image.h"
 #include "Components/Spacer.h"
 #include "Components/VerticalBox.h"
 
@@ -97,11 +99,19 @@ void UPopup_Result::InitWordWidget()
 		{
 			Txt_Kor->SetText(FText::FromString(GS->ReadScenarioData.full_data.Kor));
 			Txt_Eng->SetText(FText::FromString(GS->ReadScenarioData.full_data.Eng));
+
+			Txt_Title->SetText(FText::FromString(TEXT("Read Quest")));
+			if (UTexture2D* Texture = UGameDataManager::Get(this)->GetTexture(EResourceTextureType::Read))
+				Image_Symbol->SetBrushFromTexture(Texture);
 		}
 		else if ( QuestType == EQuestType::Listen )
 		{
 			Txt_Kor->SetText(FText::FromString(GS->ListenScenarioData.full_data.Kor));
 			Txt_Eng->SetText(FText::FromString(GS->ListenScenarioData.full_data.Eng));
+
+			Txt_Title->SetText(FText::FromString(TEXT("Listen Quest")));
+			if (UTexture2D* Texture = UGameDataManager::Get(this)->GetTexture(EResourceTextureType::Listen))
+				Image_Symbol->SetBrushFromTexture(Texture);
 		}
 	}
 }
@@ -197,7 +207,7 @@ void UPopup_Result::InitReadResult(const FResponseReadResult& ResponseData)
 	AverageScoreResultData.ColorType = EColorStyleType::Gray;
 	AverageScoreResultData.TitleText = FText::FromString(TEXT("Score"));
 	AverageScoreResultData.SymbolTextureType = EResourceTextureType::Score;
-	AverageScoreResultData.SymbolValue = FString::Printf(TEXT("%d"), ResponseData.average_score);
+	AverageScoreResultData.SymbolValue = FString::Printf(TEXT("%d"), static_cast<int>(ResponseData.average_score));
 	Result_AverageScore->InitData(AverageScoreResultData);
 }
 
@@ -238,7 +248,7 @@ void UPopup_Result::InitListenResult(const FResponseListenResult& ResponseData)
 	AverageScoreResultData.ColorType = EColorStyleType::Purple;
 	AverageScoreResultData.TitleText = FText::FromString(TEXT("SCORE"));
 	AverageScoreResultData.SymbolTextureType = EResourceTextureType::Score;
-	AverageScoreResultData.SymbolValue = FString::Printf(TEXT("%d"), ResponseData.average_score);
+	AverageScoreResultData.SymbolValue = FString::Printf(TEXT("%d"), static_cast<int>(ResponseData.average_score));
 	Result_AverageScore->InitData(AverageScoreResultData);
 }
 
@@ -307,7 +317,7 @@ void UPopup_Result::OnResponseReadResult(FResponseReadResult& ResponseData, bool
 {
 	if (bWasSuccessful)
 	{
-		PRINTLOG(TEXT("[Result] Grade: %s, average_score: %d, Top Percent: %.2f%%"),
+		PRINTLOG(TEXT("[Result] Grade: %s, average_score: %.2f%%, Top Percent: %.2f%%"),
 			*ResponseData.grade, ResponseData.average_score, ResponseData.top_percent);
 
 		// GameState에 결과 저장 (자동으로 복제됨)

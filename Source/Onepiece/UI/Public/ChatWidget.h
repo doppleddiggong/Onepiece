@@ -21,10 +21,9 @@ public:
 	UFUNCTION()
 	void SendMessage(FResponseUserMe sendUser, FText inMessage);
 	
-protected:
-	UPROPERTY(meta=(BindWidget))
-	TObjectPtr<class UBorder> Border_BG;
+	void FocusInput();
 	
+protected:
 	UPROPERTY(meta=(BindWidget))
 	TObjectPtr<class UVerticalBox> VerticalBox_Content;
 	
@@ -33,9 +32,6 @@ protected:
 	
 	UPROPERTY(meta=(BindWidget))
 	TObjectPtr<class UScrollBox> ScrollBox_ChatBox;
-	
-	UPROPERTY(meta=(BindWidget))
-	TObjectPtr<class UChatBoxWidget> ChatMessage;
 	
 	UPROPERTY(meta=(BindWidget))
 	TObjectPtr<class USpacer> Spacer_Content;
@@ -49,4 +45,7 @@ protected:
 	
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	TSubclassOf<class UChatBoxWidget> RightChatBoxWidgetClass;
+	
+private:
+	class UChatBoxWidget* CreateChatBox(bool bIsSender);
 };

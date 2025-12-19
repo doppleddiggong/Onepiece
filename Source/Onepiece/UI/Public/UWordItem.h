@@ -3,17 +3,9 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "EWordType.h"
 #include "Blueprint/UserWidget.h"
 #include "UWordItem.generated.h"
-
-UENUM(Blueprintable)
-enum class EWordType : uint8
-{
-	Animal,
-	Color,
-	Region,
-	Food
-};
 
 UCLASS()
 class ONEPIECE_API UWordItem : public UUserWidget

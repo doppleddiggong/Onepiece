@@ -58,6 +58,10 @@ protected:
     virtual void BeginPlay() override;
     virtual void SetupInputComponent() override;
 
+	/// @brief DoorMessage 이벤트 핸들러
+	UFUNCTION()
+	void OnDoorMessage(int32 InDoorIndex, bool bInOpen);
+
 	// --- Input Assets ---
 	UPROPERTY(EditDefaultsOnly, Category="Input")
 	TObjectPtr<class UInputMappingContext> IMC_Default;	
@@ -71,6 +75,7 @@ protected:
 	UPROPERTY(EditDefaultsOnly, Category="Input") TObjectPtr<class UInputAction> IA_Run;
 	UPROPERTY(EditDefaultsOnly, Category="Input") TObjectPtr<class UInputAction> IA_Info;
 	UPROPERTY(EditDefaultsOnly, Category="Input") TObjectPtr<class UInputAction> IA_Hook;
+	UPROPERTY(EditDefaultsOnly, Category="Input") TObjectPtr<class UInputAction> IA_Chat;
 
 	// --- Handlers ---
 	void OnMove(const FInputActionValue& Value);
@@ -91,6 +96,8 @@ protected:
 	void OnInfo(const FInputActionValue& Value);
 
 	void OnHook(const FInputActionValue& Value);
+	
+	void OnChat(const FInputActionValue& Value);
 
 	UFUNCTION(Server, Reliable)
 	void Server_OnGrab();	
@@ -117,6 +124,12 @@ private:
 
 	void RequestSpeakResult();
 	void OnResponseSpeakResult(FResponseSpeakResult& ResponseData, bool bWasSuccessful);
+
+public:
+	/// @brief 퀘스트 상태에 따라 QuestInfoWidget 업데이트
+	void UpdateQuestInfoWidget();
+
+private:
 	
 	void TEST_DropperDropProcess();
 	void TEST_AddItemToBoxList();
@@ -124,7 +137,16 @@ private:
 public:
 	UFUNCTION(Server, Reliable)
 	void ServerRPC_SendChat(const FText& inMessage);
-	
+
+	/// @brief AI 질문을 서버로 전송하고 응답을 받아 채팅으로 표시합니다.
+	/// @param Question [in] AI에게 보낼 질문 (이미 사용자 메시지는 채팅으로 전송된 상태)
+	UFUNCTION(Server, Reliable)
+	void ServerRPC_SendAIQuestion(const FString& Question);
+
+private:
+	/// @brief AI 응답을 받았을 때 Bot 정보로 채팅에 표시합니다.
+	void OnChatAnswerReceived(FResponseChatAnswers& ResponseData, bool bWasSuccessful);
+
 private:
     class IControllable* GetControllable() const;
 	

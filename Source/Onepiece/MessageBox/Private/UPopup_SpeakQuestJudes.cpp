@@ -18,6 +18,9 @@ void UPopup_SpeakQuestJudes::NativeConstruct()
 {
 	Super::NativeConstruct();
 
+	// 이 팝업은 플레이어 조작을 허용
+	bAllowPlayerControl = true;
+
 	if (HideAnim)
 	{
 		// 이 객체에 바인딩된 모든 델리게이트 제거 (중복 방지)

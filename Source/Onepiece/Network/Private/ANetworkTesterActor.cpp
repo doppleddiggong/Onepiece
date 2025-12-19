@@ -292,9 +292,14 @@ void ANetworkTesterActor::OnResponseChatAnswers(FResponseChatAnswers& ResponseDa
     {
         PRINTLOG(TEXT("--- Chat Answers SUCCESS ---"));
         
-        UPopupManager::Get(GetWorld())->ShowMsgBox(TEXT("CHAT"), *ResponseData.answer,
-            EMsgBoxType::OK,
-            FOnMsgBoxOkDelegate());
+        // AI 응답을 Bot 정보로 채팅에 표시
+        if (auto* GS = GetWorld()->GetGameState<ALingoGameState>())
+        {
+            FText AIAnswer = FText::FromString(ResponseData.answer);
+            GS->MulticastRPC_SendChat(GS->GetBotInfo(), AIAnswer);
+
+            PRINTLOG(TEXT("[AI Chat] AI Answer: %s"), *ResponseData.answer);
+        }
     }
     else
     {

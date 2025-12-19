@@ -12,6 +12,8 @@
 #include "UPopup_MsgBox.h"
 #include "Components/BoxComponent.h"
 #include "Components/WidgetComponent.h"
+#include "ALingoGameState.h"
+#include "ALingoPlayerState.h"
 
 #define INTERACT_WIDGET_PATH TEXT("/Game/CustomContents/UI/Widgets/WBP_InteractWidget.WBP_InteractWidget_C")
 
@@ -55,6 +57,7 @@ void AQuestionnaireKiosk::BeginPlay()
 	// 델리게이트 바인딩
 	InteractableComp->InitWidget(WidgetComp);
 	InteractableComp->OnInteractionTriggered.AddDynamic(this, &AQuestionnaireKiosk::OnInteractionTriggered);
+	InteractableComp->OnOutlineStateChanged.AddDynamic(this, &AQuestionnaireKiosk::OnOutlineStateChanged);
 }
 
 void AQuestionnaireKiosk::GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const
@@ -100,10 +103,10 @@ void AQuestionnaireKiosk::OnResponseData(FQuestWriteInfo& InResponseData, bool b
 	if (bWasSuccessful)
 	{
 		PRINTLOG(TEXT("--- Write Question Response SUCCESS ---"));
-		
+
 		// 쓰기 퀘스트 json 데이터 받기 요청
 		QuestionnaireData = InResponseData;
-		
+
 		for (int32 i = 1; i <= QuestionnaireData.question.Num(); ++i)
 		{
 			FWriteQuestionData& data = QuestionnaireData.question[i - 1];
@@ -111,10 +114,22 @@ void AQuestionnaireKiosk::OnResponseData(FQuestWriteInfo& InResponseData, bool b
 			PRINTLOG(TEXT("%d kor: %s"), i, *data.word_data.kor);
 			PRINTLOG(TEXT("%d answer_kor: %s"), i, *data.answer_kor);
 		}
-			
+
 		// 테스트용 더미 데이터 생성
 		// dCreateTestData(QuestionnaireData);
-		
+
+		// 모든 플레이어의 WriteQuest 진행 상태 설정
+		if (ALingoGameState* GS = GetWorld()->GetGameState<ALingoGameState>())
+		{
+			for (APlayerState* PS : GS->PlayerArray)
+			{
+				if (ALingoPlayerState* LingoPS = Cast<ALingoPlayerState>(PS))
+				{
+					LingoPS->SetWriteQuestIng(true);
+				}
+			}
+		}
+
 		ShowPopup();
 	}
 	else
@@ -178,4 +193,12 @@ void AQuestionnaireKiosk::CreateTestData(FQuestWriteInfo& TestData)
 	TestData.question.Add(Q4);
 	
 	TestData.bIsValid = true;
+}
+
+void AQuestionnaireKiosk::OnOutlineStateChanged(bool bShouldShowOutline)
+{
+	if (KioskMeshComp)
+	{
+		KioskMeshComp->SetRenderCustomDepth(bShouldShowOutline);
+	}
 }

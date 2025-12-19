@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "UBasePopup.h"
 #include "Blueprint/UserWidget.h"
 #include "UPopup_SpeakQuestJudes.generated.h"
 
@@ -10,7 +11,7 @@
  * 
  */
 UCLASS()
-class ONEPIECE_API UPopup_SpeakQuestJudes : public UUserWidget
+class ONEPIECE_API UPopup_SpeakQuestJudes : public UBasePopup
 {
 	GENERATED_BODY()
 

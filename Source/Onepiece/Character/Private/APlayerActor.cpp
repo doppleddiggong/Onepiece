@@ -11,8 +11,6 @@
 #include "FComponentHelper.h"
 
 // Shared
-#include <functional>
-
 #include "AContactTrigger.h"
 #include "GameLogging.h"
 #include "InputCoreTypes.h"
@@ -148,20 +146,20 @@ void APlayerActor::BeginPlay()
 		DM->OnTeleport.RemoveDynamic(this, &APlayerActor::OnTeleportAllPlayers);
 		DM->OnTeleport.AddDynamic(this, &APlayerActor::OnTeleportAllPlayers);
 
-		DM->OnUpdateQuestRole.RemoveDynamic(this, &APlayerActor::OnUpdateQuestRole);
-		DM->OnUpdateQuestRole.AddDynamic(this, &APlayerActor::OnUpdateQuestRole);
+		// DM->OnUpdateQuestRole.RemoveDynamic(this, &APlayerActor::OnUpdateQuestRole);
+		// DM->OnUpdateQuestRole.AddDynamic(this, &APlayerActor::OnUpdateQuestRole);
 	}
 
 	if (auto GS = ULingoGameHelper::GetLingoGameState(GetWorld()))
 	{
-		GS->OnQuestScenarioDataUpdated.RemoveDynamic(this, &APlayerActor::OnUpdateQuestInfo);
-		GS->OnQuestScenarioDataUpdated.AddDynamic(this, &APlayerActor::OnUpdateQuestInfo);
-
-		GS->OnReadResultUpdated.RemoveDynamic(this, &APlayerActor::OnReadResultUpdated);
-		GS->OnReadResultUpdated.AddDynamic(this, &APlayerActor::OnReadResultUpdated);
-
-		GS->OnListenResultUpdated.RemoveDynamic(this, &APlayerActor::OnListenResultUpdated);
-		GS->OnListenResultUpdated.AddDynamic(this, &APlayerActor::OnListenResultUpdated);
+		// GS->OnQuestScenarioDataUpdated.RemoveDynamic(this, &APlayerActor::OnUpdateQuestInfo);
+		// GS->OnQuestScenarioDataUpdated.AddDynamic(this, &APlayerActor::OnUpdateQuestInfo);
+		//
+		// GS->OnReadResultUpdated.RemoveDynamic(this, &APlayerActor::OnReadResultUpdated);
+		// GS->OnReadResultUpdated.AddDynamic(this, &APlayerActor::OnReadResultUpdated);
+		//
+		// GS->OnListenResultUpdated.RemoveDynamic(this, &APlayerActor::OnListenResultUpdated);
+		// GS->OnListenResultUpdated.AddDynamic(this, &APlayerActor::OnListenResultUpdated);
 
 		GS->OnRoomIdUpdated.RemoveDynamic(this, &APlayerActor::OnRoomIdUpdated);
 		GS->OnRoomIdUpdated.AddDynamic(this, &APlayerActor::OnRoomIdUpdated);
@@ -186,6 +184,19 @@ void APlayerActor::GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& O
 
 	DOREPLIFETIME(APlayerActor, LookPitch);
 	DOREPLIFETIME(APlayerActor, AnotherValue);
+}
+
+bool APlayerActor::IsControlEnabled() const
+{
+	// 팝업이 열려있고 조작을 차단해야 하면 false 반환
+	if (UPopupManager* PopupMgr = UPopupManager::Get(GetWorld()))
+	{
+		if (PopupMgr->ShouldBlockPlayerControl())
+			return false;
+	}
+
+	// 팝업이 없거나 조작 허용 팝업이면 true 반환
+	return true;
 }
 
 bool APlayerActor::IsMainMap()
@@ -230,6 +241,7 @@ void APlayerActor::CreateMainWidget()
 			if (PC->HasUserInfo() )
 			{
 				MainWidget->UpdateStateWidget( PC->GetUserId(), PC->GetUserName());
+				MainWidget->UpdateChatWidget();
 				return;
 			}
 
@@ -241,6 +253,7 @@ void APlayerActor::CreateMainWidget()
 				{
 					MainWidget->UpdateStateWidget( PC->GetUserId(), PC->GetUserName());
 				}
+				MainWidget->UpdateChatWidget();
 			}, 0.5f, false);
 		}
 	}
@@ -346,6 +359,13 @@ void APlayerActor::ApplyAnotherValue()
 		if (DynamicMaterial)
 			DynamicMaterial->SetScalarParameterValue(FName("Another"), AnotherValue);
 	}
+
+
+	auto PS = GetPlayerState<ALingoPlayerState>();
+	if (PS)
+	{
+		PS->RefreshQuestState();
+	}
 }
 
 void APlayerActor::RecoveryMovementMode(const EMovementMode InMovementMode)
@@ -373,11 +393,17 @@ void APlayerActor::Cmd_StopMove_Implementation()
 
 void APlayerActor::Cmd_Run_Implementation()
 {
+	if (!IsControlEnabled())
+		return;
+
 	ServerRPC_DoRun();
 }
 
 void APlayerActor::Cmd_Move_Implementation(const FVector2D& Axis)
 {
+	if (!IsControlEnabled())
+		return;
+
 	if ( !Controller)
 	{
 		return;
@@ -395,7 +421,7 @@ void APlayerActor::Cmd_Move_Implementation(const FVector2D& Axis)
 		// Calculate forward and right vectors based on the Yaw rotation.
 		const FVector ForwardDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::X);
 		const FVector RightDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::Y);
-	
+
 		AddMovementInput(ForwardDirection, Axis.Y);
 		AddMovementInput(RightDirection, Axis.X);
 	}
@@ -403,17 +429,26 @@ void APlayerActor::Cmd_Move_Implementation(const FVector2D& Axis)
 
 void APlayerActor::Cmd_Look_Implementation(const FVector2D& Axis)
 {
+	if (!IsControlEnabled())
+		return;
+
 	AddControllerYawInput(Axis.X);
 	AddControllerPitchInput(Axis.Y);
 }
 
 void APlayerActor::Cmd_Jump_Implementation()
 {
+	if (!IsControlEnabled())
+		return;
+
 	ServerRPC_DoJumpStart();
 }
 
 void APlayerActor::Cmd_RecordStart_Implementation()
 {
+	if (!IsControlEnabled())
+		return;
+
 	VoiceConversationSystem->StartRecording();
 }
 
@@ -424,6 +459,9 @@ void APlayerActor::Cmd_RecordEnd_Implementation()
 
 void APlayerActor::Cmd_Info_Implementation()
 {
+	if (!IsControlEnabled())
+		return;
+
 	auto GS = ULingoGameHelper::GetLingoGameState(GetWorld());
 	auto PS = GetPlayerState<ALingoPlayerState>();
 
@@ -444,7 +482,7 @@ void APlayerActor::Cmd_Info_Implementation()
 		if (auto Popup = UPopupManager::ShowPopupAs<UPopup_ReadQuest>(GetWorld(), EPopupType::ReadQuest))
 			Popup->InitRead(GS->ReadScenarioData);
 	}
-	else
+	else if ( GS->GetCurrentQuestType() == EQuestType::Listen)
 	{
 		auto QuestRole = GetQuestRole();
 
@@ -693,28 +731,6 @@ void APlayerActor::OnFadeOutCompleteForTeleport()
 	MainWidget->FadeIn(0.5f);
 }
 
-void APlayerActor::OnUpdateQuestInfo()
-{
-	if (!IsLocallyControlled())
-		return;
-	MainWidget->GetQuestInfoWidget()->InitQuestInfo();
-}
-
-void APlayerActor::OnUpdateQuestRole(EQuestRole QuestRole)
-{
-	if (!IsLocallyControlled())
-		return;
-	MainWidget->GetQuestInfoWidget()->InitQuestInfo();
-}
-
-void APlayerActor::OnReadResultUpdated(const FResponseReadResult& Result)
-{
-	if (!IsLocallyControlled())
-		return;
-	
-	MainWidget->GetQuestInfoWidget()->SetVisibility(ESlateVisibility::Collapsed);
-}
-
 void APlayerActor::UpdateCompassMarkers()
 {
 	if (!MainWidget || !MainWidget->CompassWidget)
@@ -856,3 +872,34 @@ void APlayerActor::OnRoomLevelUpdated(int32 NewRoomLevel)
 		}
 	}
 }
+
+// void APlayerActor::OnUpdateQuestInfo()
+// {
+// 	if (!IsLocallyControlled())
+// 		return;
+// 	MainWidget->GetQuestInfoWidget()->InitQuestInfo();
+// }
+//
+// void APlayerActor::OnUpdateQuestRole(EQuestRole QuestRole)
+// {
+// 	if (!IsLocallyControlled())
+// 		return;
+// 	MainWidget->GetQuestInfoWidget()->InitQuestInfo();
+// }
+//
+
+// void APlayerActor::OnReadResultUpdated(const FResponseReadResult& Result)
+// {
+// 	if (!IsLocallyControlled())
+// 		return;
+// 	
+// 	MainWidget->GetQuestInfoWidget()->SetVisibility(ESlateVisibility::Collapsed);
+// }
+//
+// void APlayerActor::OnListenResultUpdated( const FResponseListenResult& Result)
+// {
+// 	if (!IsLocallyControlled())
+// 		return;
+// 	
+// 	MainWidget->GetQuestInfoWidget()->SetVisibility(ESlateVisibility::Collapsed);
+// }

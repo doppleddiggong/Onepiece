@@ -517,6 +517,9 @@ struct FResponseUserMe
 
 	/// @brief 디버그 로그에 응답 내용을 출력합니다.
 	void PrintData() const;
+
+	EResourceTextureType GetChatProfileTextureType(int player_index) const;
+	FLinearColor GetChatProfileBg(int player_index) const;
 };
 
 
@@ -971,6 +974,18 @@ struct FRequestReadResult
 	bool ToJsonString(FString& OutJson) const;
 };
 
+/// @brief Read 퀘스트의 개별 점수 상세 정보를 담는 구조체입니다.
+USTRUCT(BlueprintType)
+struct FReadScoreDetail
+{
+	GENERATED_BODY()
+
+	UPROPERTY(BlueprintReadWrite, Category = "QuestResult")
+	float score = 0.0f;
+
+	UPROPERTY(BlueprintReadWrite, Category = "QuestResult")
+	FString desc;
+};
 
 DECLARE_DELEGATE_TwoParams(FResponseReadResultDelegate, FResponseReadResult&, bool);
 USTRUCT(BlueprintType)
@@ -982,10 +997,13 @@ struct FResponseReadResult
 	FString grade;
 
 	UPROPERTY(BlueprintReadWrite, Category = "QuestResult")
-	int32 average_score;
+	float average_score;
 
 	UPROPERTY(BlueprintReadWrite, Category = "QuestResult")
 	float top_percent;
+
+	UPROPERTY(BlueprintReadWrite, Category = "QuestResult")
+	TArray<FReadScoreDetail> scores;
 
 	/// @brief HTTP 응답을 파싱해 구조체를 채웁니다.
 	void SetFromHttpResponse(const TSharedPtr<class IHttpResponse, ESPMode::ThreadSafe>& Response);
@@ -1070,6 +1088,19 @@ struct FRequestListenResult
 	bool ToJsonString(FString& OutJson) const;
 };
 
+/// @brief Listen 퀘스트의 개별 점수 상세 정보를 담는 구조체입니다.
+USTRUCT(BlueprintType)
+struct FListenScoreDetail
+{
+	GENERATED_BODY()
+
+	UPROPERTY(BlueprintReadWrite, Category = "QuestResult")
+	float score = 0.0f;
+
+	UPROPERTY(BlueprintReadWrite, Category = "QuestResult")
+	FString desc;
+};
+
 DECLARE_DELEGATE_TwoParams(FResponseListenResultDelegate, FResponseListenResult&, bool);
 USTRUCT(BlueprintType)
 struct FResponseListenResult
@@ -1080,10 +1111,13 @@ struct FResponseListenResult
 	FString grade;
 
 	UPROPERTY(BlueprintReadWrite, Category = "QuestResult")
-	int32 average_score;
+	float average_score;
 
 	UPROPERTY(BlueprintReadWrite, Category = "QuestResult")
 	float top_percent;
+
+	UPROPERTY(BlueprintReadWrite, Category = "QuestResult")
+	TArray<FListenScoreDetail> scores;
 
 	/// @brief HTTP 응답을 파싱해 구조체를 채웁니다.
 	void SetFromHttpResponse(const TSharedPtr<class IHttpResponse, ESPMode::ThreadSafe>& Response);

@@ -18,6 +18,7 @@ class ONEPIECE_API UPopup_WriteBoard : public UBasePopup
 public:
 	UPopup_WriteBoard(const FObjectInitializer& ObjectInitializer);
 	virtual void NativeOnInitialized() override;
+	virtual void NativeConstruct() override;
 	
 	// Init Popup
 	void InitPopup(int32 InQid, const FWriteQuestionData& InQuestionData);

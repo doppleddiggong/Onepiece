@@ -31,6 +31,10 @@ enum class EResourceTextureType : uint8
 	Grammar, 
 	Context,	
 	Overall,
+
+	GreenOwl,
+	RedOwl,
+	Bot,
 };
 
 USTRUCT(BlueprintType)

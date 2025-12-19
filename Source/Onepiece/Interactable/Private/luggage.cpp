@@ -79,8 +79,10 @@ void Aluggage::BeginPlay()
 
 	SetReplicateMovement(true);
 
-	// 델리게이트 바인딩
+	// 위젯 초기화
 	InteractableComp->InitWidget(WidgetComp);
+	// 아웃라인 상태 변경 델리게이트 바인딩
+	InteractableComp->OnOutlineStateChanged.AddDynamic(this, &Aluggage::OnOutlineStateChanged);
 }
 
 void Aluggage::Tick(float DeltaTime)
@@ -151,7 +153,7 @@ void Aluggage::OnRep_IsBeingHooked()
 	if (bIsBeingHooked)
 	{
 		// 훅 중 - Outline 켜기
-		OutlineOn();
+		OnOutlineStateChanged(true);
 		PRINTLOG(TEXT("OnRep_IsBeingHooked: %s is being hooked by %s"),
 			*GetName(), HookedBy ? *HookedBy->GetName() : TEXT("Unknown"));
 	}
@@ -239,14 +241,11 @@ void Aluggage::UpdateWidget()
 	}
 }
 
-void Aluggage::OutlineOn()
+void Aluggage::OnOutlineStateChanged(bool bShouldShowOutline)
 {
-	Mesh3Comp->SetRenderCustomDepth(true);
-}
-
-void Aluggage::OutlineOff()
-{
-	Mesh3Comp->SetRenderCustomDepth(false);
+	Mesh1Comp->SetRenderCustomDepth(bShouldShowOutline);
+	Mesh2Comp->SetRenderCustomDepth(bShouldShowOutline);
+	Mesh3Comp->SetRenderCustomDepth(bShouldShowOutline);
 }
 
 void Aluggage::ApplyCollisionState(bool bEnable)

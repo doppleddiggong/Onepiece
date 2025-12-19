@@ -17,10 +17,13 @@ class ONEPIECE_API UChatInputBox : public UUserWidget
 	GENERATED_BODY()
 	
 public:
-	virtual void NativeConstruct() override;
+	virtual void NativeOnInitialized() override;
+	virtual void NativeOnFocusLost(const FFocusEvent& InFocusEvent) override;
 	virtual FReply NativeOnPreviewKeyDown(const FGeometry& InGeometry, const FKeyEvent& InKeyEvent) override;
 	FText FlushMessage();
-	
+	void FocusInput();
+	bool IsAIAsk(const FString& InMessage, FString& OutQuestion) const;
+
 protected:
 	UPROPERTY(meta=(BindWidget))
 	TObjectPtr<class UMultiLineEditableTextBox> MultiLineEditableTextBox_Input;

@@ -21,6 +21,7 @@
 #include "UPopup_SpeakResult.h"
 #include "UPopup_Word.h"
 #include "UPopup_Evaluation.h"
+#include "UPopup_LevelSelect.h"
 
 #include "Onepiece/Onepiece.h"
 
@@ -39,6 +40,7 @@
 #define SPEAKRESULT_POPUP_PATH TEXT("/Game/CustomContents/UI/Widgets/WBP_SpeakResult.WBP_SpeakResult_C")
 #define EVALUATION_POPUP_PATH TEXT("/Game/CustomContents/UI/Widgets/WBP_PopupEvaluation.WBP_PopupEvaluation_C")
 #define ASKTUTORIAL_POPUP_PATH TEXT("/Game/CustomContents/UI/Widgets/WBP_PopupAskTutorial.WBP_PopupAskTutorial_C")
+#define LEVELSELECT_POPUP_PATH TEXT("/Game/CustomContents/UI/Widgets/WBP_PopupLevelSelect.WBP_PopupLevelSelect_C")
 
 UPopupManager::UPopupManager()
 {
@@ -59,6 +61,7 @@ UPopupManager::UPopupManager()
 	PopupClassMap.Add(EPopupType::SpeakResult, FComponentHelper::LoadClass<UPopup_SpeakResult>(SPEAKRESULT_POPUP_PATH));
 	PopupClassMap.Add(EPopupType::Evaluation, FComponentHelper::LoadClass<UPopup_Evaluation>(EVALUATION_POPUP_PATH));
 	PopupClassMap.Add(EPopupType::AskTutorial, FComponentHelper::LoadClass<UPopup_AskTutorial>(ASKTUTORIAL_POPUP_PATH));
+	PopupClassMap.Add(EPopupType::LevelSelect, FComponentHelper::LoadClass<UPopup_LevelSelect>(LEVELSELECT_POPUP_PATH));
 }
 
 // ========================================
@@ -205,6 +208,28 @@ bool UPopupManager::IsPopupInStack(EPopupType Type) const
 int32 UPopupManager::GetPopupStackCount() const
 {
 	return PopupStack.Num();
+}
+
+bool UPopupManager::ShouldBlockPlayerControl() const
+{
+	// 팝업이 없으면 조작 허용
+	if (PopupStack.Num() == 0)
+		return false;
+
+	// 현재 팝업 위젯 가져오기
+	UUserWidget* CurrentWidget = GetCurrentPopupWidget();
+	if (!CurrentWidget)
+		return false;
+
+	// UBasePopup으로 캐스팅하여 bAllowPlayerControl 확인
+	if (UBasePopup* BasePopup = Cast<UBasePopup>(CurrentWidget))
+	{
+		// bAllowPlayerControl이 true면 조작 허용 (차단하지 않음)
+		return !BasePopup->bAllowPlayerControl;
+	}
+
+	// UBasePopup이 아닌 팝업은 기본적으로 조작 차단
+	return true;
 }
 
 // ========================================

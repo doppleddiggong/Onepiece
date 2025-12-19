@@ -117,12 +117,6 @@ public:
 	void ApplyPatternToMesh(int32 InPatternIdx);
 
 public:
-	// Outline
-	UFUNCTION(BlueprintCallable, Category = "Outline")
-	void OutlineOn();
-	UFUNCTION(BlueprintCallable, Category = "Outline")
-	void OutlineOff();
-
 	/// @brief 모든 컴포넌트의 충돌과 물리를 설정합니다.
 	/// @param bEnable [in] true면 충돌 활성화, false면 비활성화
 	/// @details Holder에서 Luggage의 상호작용을 제어하기 위해 사용됩니다.
@@ -155,6 +149,11 @@ public:
 	/// @param Player [in] 선택한 플레이어의 PlayerState
 	UFUNCTION(Server, Reliable, WithValidation)
 	void ServerNotifySelection(class APlayerState* Player);
+
+	/// @brief InteractableComponent의 아웃라인 상태 변경 이벤트 핸들러
+	/// @param bShouldShowOutline [in] true면 아웃라인 표시, false면 숨김
+	UFUNCTION()
+	void OnOutlineStateChanged(bool bShouldShowOutline);
 
 
 

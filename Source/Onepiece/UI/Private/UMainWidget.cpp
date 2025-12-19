@@ -103,6 +103,11 @@ void UMainWidget::SendChatMessage(FResponseUserMe sendUser,const FText& inMessag
 	ChatWidget->SendMessage(sendUser, inMessage);
 }
 
+void UMainWidget::SetFocusOnChat()
+{
+	ChatWidget->FocusInput();
+}
+
 void UMainWidget::UpdateTimerDisplay() const
 {
 	if (!CachedGameState || !PlayTimer)
@@ -123,16 +128,16 @@ void UMainWidget::OnUpdateMissionTimerState(bool bIsActive, float TimeLimit)
 	if (CachedGameState && bIsActive && TimeLimit > 0.0f)
 		CachedGameState->UpdateRemainMissionTime( TimeLimit );
 
-	if (!QuestInfoWidget)
-		return;
+	// if (!QuestInfoWidget)
+	// 	return;
 
-	QuestInfoWidget->SetVisibility(bIsActive ? ESlateVisibility::Visible : ESlateVisibility::Collapsed );
+	// QuestInfoWidget->SetVisibility(bIsActive ? ESlateVisibility::Visible : ESlateVisibility::Collapsed );
 	HookTargetIndicator->SetVisibility(ESlateVisibility::Visible);
 	
 	if (bIsActive)
 	{
 		WidgetSwitcher->SetActiveWidgetIndex(0);
-		QuestInfoWidget->InitQuestInfo();
+		// QuestInfoWidget->InitQuestInfo();
 	}
 
 	SetMissionTimerState(bIsActive);
@@ -181,6 +186,11 @@ bool UMainWidget::CanShowSpeakWidget( ASpeakStageActor*& OutSpeakStage,	ALingoPl
 		return false;
 
 	return (OutLocalPlayerState == CurrentSpeaker);
+}
+
+void UMainWidget::UpdateChatWidget()
+{
+	ChatWidget->SetVisibility(ESlateVisibility::Visible);
 }
 
 void UMainWidget::FadeOut(float Duration)

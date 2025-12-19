@@ -68,6 +68,7 @@ void AConveyorButton::BeginPlay()
 	// Bind Delegate
 	InteractableComp->InitWidget(WidgetComp);
 	InteractableComp->OnInteractionTriggered.AddDynamic(this, &AConveyorButton::OnInteractionTriggered);
+	InteractableComp->OnOutlineStateChanged.AddDynamic(this, &AConveyorButton::OnOutlineStateChanged);
 }
 
 void AConveyorButton::GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const
@@ -110,5 +111,13 @@ void AConveyorButton::ServerRPC_OnInteractionTriggered_Implementation(AActor* In
 
 void AConveyorButton::MultiCastRPC_OnInteractionTriggered_Implementation(AActor* Interactor)
 {
-	
+
+}
+
+void AConveyorButton::OnOutlineStateChanged(bool bShouldShowOutline)
+{
+	if (ButtonMeshComp)
+	{
+		ButtonMeshComp->SetRenderCustomDepth(bShouldShowOutline);
+	}
 }

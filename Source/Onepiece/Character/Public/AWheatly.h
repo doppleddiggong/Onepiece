@@ -82,6 +82,11 @@ protected:
 	UFUNCTION()
 	void OnInteractionTriggered(class AActor* InteractingActor);
 
+	/// @brief Outline 상태 변경 핸들러
+	/// @param bShouldShowOutline [in] 아웃라인 표시 여부
+	UFUNCTION()
+	void OnOutlineStateChanged(bool bShouldShowOutline);
+
 	/// @brief SpeakStage의 발화자 변경 이벤트 핸들러
 	/// @param NewSpeaker [in] 새로운 발화자 (없으면 nullptr)
 	UFUNCTION()

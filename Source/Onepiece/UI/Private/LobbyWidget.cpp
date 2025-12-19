@@ -100,6 +100,8 @@ void ULobbyWidget::OnCreateClicked()
 	FString sessionName = EdtTxt_SessionName->GetText().ToString();
 	// 세션 생성
 	GI->CreateMySession(sessionName);
+
+	UDialogManager::Get(GetWorld())->ShowToast(TEXT("Create Session Success"));
 }
 
 void ULobbyWidget::OnValueChangedSessionName(const FText& Text)

@@ -34,6 +34,7 @@ public:
 	void UpdateRoomWidget(int32 InRoomLevel, int64 InRoomId);
 	void UpdateSpeakWidget(int32 StepIndex);
 	bool CanShowSpeakWidget(ASpeakStageActor*& OutSpeakStage, ALingoPlayerState*& OutLocalPlayerState) const;
+	void UpdateChatWidget();
 
 	/// @brief 훅 인디케이터 상태 업데이트 (에임/비에임)
 	/// @param bIsAiming true면 타겟 감지됨(파란색), false면 비감지(회색)
@@ -59,6 +60,8 @@ public:
 	
 	UFUNCTION(Category = "Chat")
 	void SendChatMessage(FResponseUserMe sendUser, const FText& inMessage);
+	
+	void SetFocusOnChat();
 	
 private:
 	/// @brief 타이머 텍스트를 업데이트합니다.
@@ -86,6 +89,9 @@ protected:
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
 	TObjectPtr<class USpeakWidget> SpeakWidget;
 
+	// UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
+	// TObjectPtr<class UQuestOrderWidget> QuestOrderWidget;
+	
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
 	TObjectPtr<class UQuestInfoWidget> QuestInfoWidget;
 

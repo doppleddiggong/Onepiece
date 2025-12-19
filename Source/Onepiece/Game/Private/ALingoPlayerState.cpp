@@ -8,6 +8,7 @@
 #include "UBroadcastManager.h"
 #include "Net/UnrealNetwork.h"
 #include "GameLogging.h"
+#include "Kismet/KismetSystemLibrary.h"
 
 ALingoPlayerState::ALingoPlayerState()
 {
@@ -29,7 +30,11 @@ void ALingoPlayerState::GetLifetimeReplicatedProps(TArray<class FLifetimePropert
 	// Speak Quest Data
 	DOREPLIFETIME(ALingoPlayerState, SpeakScenarioData);
 	DOREPLIFETIME(ALingoPlayerState, SpeakJudesResults);
+
+	DOREPLIFETIME(ALingoPlayerState, bReadQuestCompleted);
+	DOREPLIFETIME(ALingoPlayerState, bListenQuestCompleted);
 	DOREPLIFETIME(ALingoPlayerState, bSpeakQuestCompleted);
+	DOREPLIFETIME(ALingoPlayerState, bWriteQuestCompleted);
 }
 
 FString ALingoPlayerState::GetChatContext() const
@@ -45,6 +50,34 @@ FString ALingoPlayerState::GetChatContext() const
 	return TEXT("You are a helpful assistant.");
 }
 
+void ALingoPlayerState::RefreshQuestState()
+{
+	// 각 퀘스트 상태 결정: 완료[V], 진행중[=], 미시작[X]
+	auto GetQuestStatus = [](bool bCompleted, bool bInProgress) -> const TCHAR*
+	{
+		if (bCompleted) return TEXT("V");
+		if (bInProgress) return TEXT("=");
+		return TEXT("X");
+	};
+
+	// R-L-S-W 퀘스트 상태 출력
+	FString StatusMsg = FString::Printf(TEXT("(R[%s])-(L[%s])-(S[%s])-(W[%s])"),
+		GetQuestStatus(bReadQuestCompleted, bReadQuestIng),
+		GetQuestStatus(bListenQuestCompleted, bListenQuestIng),
+		GetQuestStatus(bSpeakQuestCompleted, bSpeakQuestIng),
+		GetQuestStatus(bWriteQuestCompleted, bWriteQuestIng));
+
+	PRINT_STRING( TEXT("%s"), *StatusMsg);
+
+	// Host(서버)의 위젯 업데이트 (OnRep는 클라이언트에서만 호출됨)
+	if (HasAuthority())
+	{
+		if (APlayerControl* PC = Cast<APlayerControl>(GetOwner()))
+		{
+			PC->UpdateQuestInfoWidget();
+		}
+	}
+}
 
 //--------------------------------------------------------------//
 // Read Quest RPC Functions
@@ -188,4 +221,85 @@ void ALingoPlayerState::SetSpeakQuestCompleted()
 		return;
 
 	bSpeakQuestCompleted = true;
+
+	RefreshQuestState();
+}
+
+void ALingoPlayerState::SetReadQuestCompleted()
+{
+	if (!HasAuthority())
+		return;
+
+	bReadQuestCompleted = true;
+
+	RefreshQuestState();
+}
+
+void ALingoPlayerState::SetListenQuestCompleted()
+{
+	if (!HasAuthority())
+		return;
+
+	bListenQuestCompleted = true;
+
+	RefreshQuestState();
+}
+
+void ALingoPlayerState::SetWriteQuestCompleted()
+{
+	if (!HasAuthority())
+		return;
+
+	bWriteQuestCompleted = true;
+
+	RefreshQuestState();
+}
+
+void ALingoPlayerState::SetReadQuestIng(bool bInProgress)
+{
+	if (!HasAuthority())
+		return;
+
+	bReadQuestIng = bInProgress;
+
+	RefreshQuestState();
+}
+
+void ALingoPlayerState::SetListenQuestIng(bool bInProgress)
+{
+	if (!HasAuthority())
+		return;
+
+	bListenQuestIng = bInProgress;
+
+	RefreshQuestState();
+}
+
+void ALingoPlayerState::SetSpeakQuestIng(bool bInProgress)
+{
+	if (!HasAuthority())
+		return;
+
+	bSpeakQuestIng = bInProgress;
+
+	RefreshQuestState();
+}
+
+void ALingoPlayerState::SetWriteQuestIng(bool bInProgress)
+{
+	if (!HasAuthority())
+		return;
+
+	bWriteQuestIng = bInProgress;
+
+	RefreshQuestState();
+}
+
+void ALingoPlayerState::OnRep_QuestState()
+{
+	// 클라이언트에서 퀘스트 상태가 변경되었을 때 PlayerController의 위젯 업데이트 함수 호출
+	if (APlayerControl* PC = Cast<APlayerControl>(GetOwner()))
+	{
+		PC->UpdateQuestInfoWidget();
+	}
 }

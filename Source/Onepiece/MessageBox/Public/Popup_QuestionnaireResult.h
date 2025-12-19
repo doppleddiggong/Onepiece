@@ -38,7 +38,7 @@ protected:
 
 	/** 인터뷰 항목들이 추가될 VerticalBox */
 	UPROPERTY(meta = (BindWidget))
-	TObjectPtr<class UScrollBox> ScrollBox_Result;
+	TObjectPtr<class UVerticalBox> ScrollBox_Result;
 	
 	/** 전체 결과 */
 	UPROPERTY(meta = (BindWidget))
