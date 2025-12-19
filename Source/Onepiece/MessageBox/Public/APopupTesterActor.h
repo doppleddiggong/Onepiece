@@ -33,7 +33,10 @@ public:
 
 	UFUNCTION(BlueprintCallable, CallInEditor, Category = "TEST|Message")
 	void TestEvaluationPopup();
-	
+
+	UFUNCTION(BlueprintCallable, CallInEditor, Category = "TEST|Message")
+	void PopupLevelSelect();
+
 	void OnOK();
 	void OnCancel();
 
