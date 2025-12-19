@@ -42,18 +42,10 @@ void ULevelWordGroup::UpdateGroupTitle()
 	FString GroupName;
 	switch (WordType)
 	{
-	case EWordType::Animal:
-		GroupName = TEXT("Animal");
-		break;
-	case EWordType::Color:
-		GroupName = TEXT("Color");
-		break;
-	case EWordType::Region:
-		GroupName = TEXT("Region");
-		break;
-	case EWordType::Food:
-		GroupName = TEXT("Food");
-		break;
+	case EWordType::Animal:		GroupName = TEXT("Animal");		break;
+	case EWordType::Color:		GroupName = TEXT("Color");		break;
+	case EWordType::Region:		GroupName = TEXT("Region");		break;
+	case EWordType::Food:		GroupName = TEXT("Food");		break;
 	default:
 		GroupName = TEXT("Unknown");
 		break;

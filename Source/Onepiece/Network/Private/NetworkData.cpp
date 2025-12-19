@@ -16,6 +16,7 @@
 #include "Interfaces/IHttpResponse.h"
 #include "Dom/JsonObject.h"
 #include "Dom/JsonValue.h"
+#include "Onepiece/Onepiece.h"
 #include "Serialization/JsonReader.h"
 #include "Serialization/JsonSerializer.h"
 #include "Serialization/JsonWriter.h"
@@ -216,6 +217,35 @@ void FResponseUserMe::PrintData() const
 		0
 	);
 	NETWORK_LOG( TEXT("[RES] %s"), *OutputString);
+}
+
+EResourceTextureType FResponseUserMe::GetChatProfileTextureType(int player_index) const
+{
+	if ( id == GameName::BotID)
+	{
+		return EResourceTextureType::Bot;
+	}
+
+	if ( player_index == 0)
+		return EResourceTextureType::GreenOwl;
+	else if ( player_index == 1)
+		return EResourceTextureType::RedOwl;
+	return EResourceTextureType::Bot;
+}
+
+FLinearColor FResponseUserMe::GetChatProfileBg(int player_index) const
+{
+	if ( id == GameName::BotID)
+	{
+		return FColor::FromHex(TEXT("007BE8FF"));
+	}
+	
+	if ( player_index == 0)
+		return  FColor::FromHex(TEXT("FFFFFF"));
+	if ( player_index == 1)
+		return FColor::FromHex(TEXT("E94C4CFF"));
+	else
+		return FColor::FromHex(TEXT("007BE8FF"));
 }
 
 

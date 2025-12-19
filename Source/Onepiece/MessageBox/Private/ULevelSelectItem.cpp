@@ -19,12 +19,14 @@ void ULevelSelectItem::NativeConstruct()
 	}
 }
 
-void ULevelSelectItem::InitLevelItem(int32 InLevel, const FString& InLevelName)
+void ULevelSelectItem::InitLevelItem(int32 InLevel, const FString& InLevelName, int32 InPlayTime)
 {
 	Level = InLevel;
 	LevelName = InLevelName;
+	PlayTime = InPlayTime;
 
 	Txt_Title->SetText(FText::FromString(LevelName));
+	Txt_PlayTime->SetText(FText::FromString(FString::Printf(TEXT("%d"), PlayTime)));
 
 	if (VerticalBox)
 		VerticalBox->ClearChildren();
@@ -103,9 +105,6 @@ void ULevelSelectItem::CreateFoodGroup()
 
 void ULevelSelectItem::OnSelectButtonClicked()
 {
-	// 델리게이트 실행: 선택된 레벨 정보를 상위 클래스에 전달
 	if (OnLevelSelected.IsBound())
-	{
-		OnLevelSelected.Execute(Level, LevelName);
-	}
+		OnLevelSelected.Execute(Level);
 }

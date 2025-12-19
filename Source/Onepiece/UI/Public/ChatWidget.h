@@ -25,9 +25,6 @@ public:
 	
 protected:
 	UPROPERTY(meta=(BindWidget))
-	TObjectPtr<class UBorder> Border_BG;
-	
-	UPROPERTY(meta=(BindWidget))
 	TObjectPtr<class UVerticalBox> VerticalBox_Content;
 	
 	UPROPERTY(meta=(BindWidget))

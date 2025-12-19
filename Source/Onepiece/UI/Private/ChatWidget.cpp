@@ -11,6 +11,7 @@
 #include "Components/ScrollBox.h"
 #include "Components/ScrollBoxSlot.h"
 #include "Components/VerticalBox.h"
+#include "GameFramework/GameStateBase.h"
 
 UChatWidget::UChatWidget(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer)
 {
@@ -47,12 +48,27 @@ void UChatWidget::SendMessage(FResponseUserMe sendUser, FText inMessage)
 	
 	// ChatBox 생성
 	UChatBoxWidget* newChat = CreateChatBox(bIsSender);
-	newChat->SetContent(inMessage);
-	
-	// TODO: 플레이어 색상 & 넣기
-	newChat->SetPlayerBGColor(FColor::FromHex(TEXT("E94C4CFF")));
-	newChat->SetPlayerName(FText::FromString(sendUser.username));
+	newChat->SetMessage(inMessage);
 
+	// 플레이어 색상 & 넣기
+	int32 PlayerIndex = -1;
+	if (ALingoPlayerState* PS = PC->GetPlayerState<ALingoPlayerState>())
+	{
+		if (AGameStateBase* GS = GetWorld()->GetGameState())
+		{
+			PlayerIndex = GS->PlayerArray.IndexOfByKey(PS);
+		}
+	}
+	
+	newChat->SetPlayerProfile(
+		sendUser.GetChatProfileBg(PlayerIndex),
+		sendUser.GetChatProfileTextureType(PlayerIndex));
+
+	newChat->SetPlayerName(FText::FromString(sendUser.username));
+	newChat->SetMessage(inMessage);
+	newChat->SetChatBubbleColor(bIsSender);
+	
+	
 	// 현재 스크롤 값 & 마지막 스크롤 값
 	float scrollOffset = ScrollBox_ChatBox->GetScrollOffset();
 	float scrollOffsetOfEnd = ScrollBox_ChatBox->GetScrollOffsetOfEnd();
@@ -61,7 +77,8 @@ void UChatWidget::SendMessage(FResponseUserMe sendUser, FText inMessage)
 	ScrollBox_ChatBox->SetScrollOffset(scrollOffsetOfEnd);
 	
 	// ChatBox에 추가 & 정렬
-	ScrollBox_ChatBox->AddChild(newChat);	
+	VerticalBox_Content->AddChild(newChat);	
+
 	UScrollBoxSlot* parentSlot = Cast<UScrollBoxSlot>(newChat->Slot);
 	if (parentSlot)
 	{
@@ -88,15 +105,8 @@ void UChatWidget::FocusInput()
 	ChatInputBox->FocusInput();
 }
 
-class UChatBoxWidget* UChatWidget::CreateChatBox(bool bIsSender)
+UChatBoxWidget* UChatWidget::CreateChatBox(bool bIsSender)
 {
-	if (bIsSender)
-	{
-		// 왼쪽 정렬
-		return CreateWidget<UChatBoxWidget>(GetWorld(), LeftChatBoxWidgetClass);
-	}
-	
-	// 오른쪽 정렬
-	return CreateWidget<UChatBoxWidget>(GetWorld(), RightChatBoxWidgetClass);
+	return CreateWidget<UChatBoxWidget>(GetWorld(), bIsSender? LeftChatBoxWidgetClass : RightChatBoxWidgetClass );
 }
 

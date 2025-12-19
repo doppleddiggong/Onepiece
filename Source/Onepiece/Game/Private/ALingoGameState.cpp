@@ -7,16 +7,12 @@
 #include "APlayerActor.h"
 #include "GameLogging.h"
 #include "ULingoGameHelper.h"
-#include "UBroadcastManager.h"
-#include "UPopupManager.h"
-#include "UPopup_MsgBox.h"
-#include "UPopup_ReadQuest.h"
 #include "ANetworkBroadcastActor.h"
 #include "APlayerControl.h"
-#include "IMediaControls.h"
 #include "UMainWidget.h"
 #include "GameFramework/PlayerController.h"
 #include "Engine/World.h"
+#include "Onepiece/Onepiece.h"
 
 ALingoGameState::ALingoGameState()
 {
@@ -28,6 +24,14 @@ ALingoGameState::ALingoGameState()
 	// RoomId, RoomLevel은  Host가 생성합니다
 	RoomId = 0;
 	RoomLevel = 1;
+
+	Bot.id = GameName::BotID;
+	Bot.username = GameName::BotName;
+	Bot.fullname = GameName::BotName;
+	Bot.is_active = true;
+
+	Bot.my_avatar = TEXT("[BOT]");
+	Bot.my_color = TEXT("[BOT]");
 }
 
 void ALingoGameState::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
@@ -155,6 +159,23 @@ void ALingoGameState::SetListenScenarioData( const FResponseListenScenario& InRe
 		Multicast_UpdateQuestType(QuestType);
 		Multicast_ShowListenQuestPopup(ListenScenarioData);
 	}
+}
+
+void ALingoGameState::SetRoomLevel(int32 InRoomLevel)
+{
+	// 서버에서만 실행
+	if (!HasAuthority())
+	{
+		PRINTLOG(TEXT("[SetRoomLevel] Failed: Not authority"));
+		return;
+	}
+
+	RoomLevel = InRoomLevel;
+	PRINTLOG(TEXT("[SetRoomLevel] RoomLevel set to %d"), RoomLevel);
+
+	// 서버(Host)는 OnRep가 호출되지 않으므로 직접 델리게이트 브로드캐스트
+	// 클라이언트는 Replication으로 인해 OnRep_RoomLevel이 호출되어 델리게이트가 브로드캐스트됨
+	OnRoomLevelUpdated.Broadcast(RoomLevel);
 }
 
 void ALingoGameState::StartMissionTimer(float InTimeLimit)

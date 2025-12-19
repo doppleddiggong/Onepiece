@@ -358,7 +358,10 @@ void APlayerActor::ApplyAnotherValue()
 
 
 	auto PS = GetPlayerState<ALingoPlayerState>();
-	PS->RefreshQuestState();
+	if (PS)
+	{
+		PS->RefreshQuestState();
+	}
 }
 
 void APlayerActor::RecoveryMovementMode(const EMovementMode InMovementMode)

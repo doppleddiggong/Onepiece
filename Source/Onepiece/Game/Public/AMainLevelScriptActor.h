@@ -18,6 +18,7 @@ public:
 
 protected:
 	virtual void BeginPlay() override;
+	void StartProcess();
 
 private:
 	void RequestInterviewHello();

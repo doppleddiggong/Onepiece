@@ -4,6 +4,8 @@
 #include "ULevelSelectItem.h"
 #include "UPopupManager.h"
 #include "UTextureButton.h"
+#include "ALingoGameState.h"
+#include "GameLogging.h"
 #include "Components/HorizontalBox.h"
 #include "Components/Button.h"
 #include "Components/Spacer.h"
@@ -11,8 +13,6 @@
 void UPopup_LevelSelect::NativeConstruct()
 {
 	Super::NativeConstruct();
-
-
 }
 
 void UPopup_LevelSelect::InitPopup()
@@ -36,7 +36,7 @@ void UPopup_LevelSelect::InitPopup()
 			int32 Level = i + 1;
 			FString LevelName = (i < LevelNames.Num()) ? LevelNames[i] : FString::Printf(TEXT("Level %d"), Level);
 
-			LevelItem->InitLevelItem(Level, LevelName);
+			LevelItem->InitLevelItem(Level, LevelName, 3);
 
 			// 델리게이트 바인딩
 			LevelItem->OnLevelSelected.BindUObject(this, &UPopup_LevelSelect::OnLevelSelected);
@@ -57,25 +57,27 @@ void UPopup_LevelSelect::InitPopup()
 	}
 }
 
-void UPopup_LevelSelect::OnLevelSelected(int32 SelectedLevel, const FString& SelectedLevelName)
+void UPopup_LevelSelect::OnLevelSelected(int32 SelectedLevel)
 {
-	// 선택된 레벨 정보를 MessageBox로 표시
-	FString Message = FString::Printf(TEXT("Selected Level: %d\nLevel Name: %s"), SelectedLevel, *SelectedLevelName);
+	// GameState의 RoomLevel 설정 (Host만 팝업을 열므로 Host에서만 실행됨)
+	if (ALingoGameState* GameState = GetWorld()->GetGameState<ALingoGameState>())
+	{
+		GameState->SetRoomLevel(SelectedLevel);
+	}
+	else
+	{
+		PRINTLOG(TEXT("Failed to get ALingoGameState"));
+	}
 
-	UPopupManager::Get(GetWorld())->ShowMsgBox(
-		TEXT("Level Selected"),
-		Message,
-		EMsgBoxType::OK,
-		FOnMsgBoxOkDelegate::CreateLambda([this]()
-		{
-			// MessageBox 확인 후 팝업 닫기
-			OnClickClose();
-		})
-	);
+	OnClickClose();
 }
 
 void UPopup_LevelSelect::OnClickClose()
 {
+	// 팝업 닫힘 델리게이트 실행
+	if (OnPopupClosed.IsBound())
+		OnPopupClosed.Execute();
+
 	// PopupManager를 통해 팝업 닫기
 	if (UPopupManager* PopupMgr = UPopupManager::Get(GetWorld()))
 	{
