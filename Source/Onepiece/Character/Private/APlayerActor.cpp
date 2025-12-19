@@ -13,6 +13,7 @@
 // Shared
 #include <functional>
 
+#include "AContactTrigger.h"
 #include "GameLogging.h"
 #include "InputCoreTypes.h"
 #include "UDialogManager.h"
@@ -43,6 +44,7 @@
 #include "Components/StaticMeshComponent.h"
 #include "Engine/StaticMesh.h"
 #include "GameFramework/PlayerState.h"
+#include "Kismet/KismetMathLibrary.h"
 #include "Onepiece/Onepiece.h"
 
 #define MAINWIDGET_PATH TEXT("/Game/CustomContents/UI/WBP_MainWidget.WBP_MainWidget_C")
@@ -284,12 +286,14 @@ void APlayerActor::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	if (MainWidget)
+	if (MainWidget && MainWidget->CompassWidget)
 	{
 		UCompassWidget* Compass = MainWidget->CompassWidget;
 		float CameraRotationZ = FollowCamera->GetComponentRotation().Yaw;
 		
 		Compass->RotateCompass(CameraRotationZ);
+
+		UpdateCompassMarkers();
 	}
 }
 
@@ -709,6 +713,77 @@ void APlayerActor::OnReadResultUpdated(const FResponseReadResult& Result)
 		return;
 	
 	MainWidget->GetQuestInfoWidget()->SetVisibility(ESlateVisibility::Collapsed);
+}
+
+void APlayerActor::UpdateCompassMarkers()
+{
+	if (!MainWidget || !MainWidget->CompassWidget)
+		return;
+
+	UCompassWidget* Compass = MainWidget->CompassWidget;
+
+	// 1. 현재 월드의 모든 트래킹 대상 수집                                                                                                                           
+	TArray<AActor*> TrackedActors;
+	UGameplayStatics::GetAllActorsOfClass(GetWorld(), AContactTrigger::StaticClass(), TrackedActors);
+
+	// 2. 각 TrackedActor에 대해 마커 생성 or 업데이트                                                                                                                
+	for (AActor* TrackedActor : TrackedActors)
+	{
+		if (!TrackedActor) continue;
+
+		// 2-1. 마커가 없으면 생성                                                                                                                                    
+		UImage* Marker = CompassMarkerMap.FindRef(TrackedActor);
+		if (!Marker)
+		{
+			Marker = Compass->AddCompassMarker();
+			CompassMarkerMap.Add(TrackedActor, Marker);
+		}
+
+		// 2-2. 상대 회전 계산 (Yaw만 필요)                                                                                                                           
+		FRotator RelativeRotation = FindRelativeRotationAtTarget(TrackedActor);
+		float TargetYaw = RelativeRotation.Yaw;
+
+		// 2-3. 마커 위치 업데이트 (bSideLock은 false로 가정)                                                                                                         
+		Compass->SetMarkerPosition(Marker, TargetYaw, false);
+	}
+
+	// 3. 제거된 액터의 마커 정리 (선택사항)                                                                                                                          
+	// TArray<AActor*> ActorsToRemove;
+	// for (auto& Pair : CompassMarkerMap)
+	// {
+	// 	if (!Pair.Key || !TrackedActors.Contains(Pair.Key))
+	// 	{
+	// 		// 마커를 UI에서 제거 (필요시 구현)                                                                                                                       
+	// 		ActorsToRemove.Add(Pair.Key);
+	// 	}
+	// }
+	// for (AActor* Actor : ActorsToRemove)
+	// {
+	// 	CompassMarkerMap.Remove(Actor);
+	// }
+}
+
+FRotator APlayerActor::FindRelativeRotationAtTarget(AActor* Target)
+{
+	// Get World Location (Capsule Component)
+	FVector CapsuleLocation = GetCapsuleComponent()->GetComponentLocation();
+
+	// Get World Rotation (Capsule Component)
+	FRotator CapsuleRotation = GetCapsuleComponent()->GetComponentRotation();
+
+	// Get World Location (Root Component)
+	FVector TargetLocation = Target->GetActorLocation();
+
+	// Find Relative Look at Rotation
+	FRotator LookAtRotation = UKismetMathLibrary::FindLookAtRotation(
+		CapsuleLocation, TargetLocation);
+
+	// 상대 회전 계산
+	FRotator RelativeRotation = UKismetMathLibrary::NormalizedDeltaRotator(
+		LookAtRotation,CapsuleRotation);
+
+	// Return Value (Roll, Pitch, Yaw)
+	return RelativeRotation;
 }
 
 void APlayerActor::OnListenResultUpdated( const FResponseListenResult& Result)

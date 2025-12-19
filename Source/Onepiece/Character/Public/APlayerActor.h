@@ -233,4 +233,11 @@ private:
 	bool bIsJumpStart = false;
 
 	bool bIsRequest = false;
+
+	// Compass
+	UPROPERTY()
+	TMap<AActor*, class UImage*> CompassMarkerMap;
+	
+	void UpdateCompassMarkers();
+	FRotator FindRelativeRotationAtTarget(AActor* Target);
 };
