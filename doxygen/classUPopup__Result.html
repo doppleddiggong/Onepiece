@@ -253,46 +253,46 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="Popup__Result_8cpp_source.html">Popup_Result.cpp</a> 파일의 <a class="el" href="Popup__Result_8cpp_source.html#l00214">214</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  215</span>{</div>
-<div class="line"><span class="lineno">  216</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> GS = Cast&lt;ALingoGameState&gt;(GetWorld()-&gt;GetGameState()))</div>
-<div class="line"><span class="lineno">  217</span>    {</div>
-<div class="line"><span class="lineno">  218</span>        <span class="comment">// Symbol로 타임 처리</span></div>
-<div class="line"><span class="lineno">  219</span>        <span class="keyword">auto</span> TimeTaken = GS-&gt;GetTimeTaken();</div>
-<div class="line"><span class="lineno">  220</span>        <span class="keyword">const</span> int32 Minutes = FMath::FloorToInt(TimeTaken / 60.f);</div>
-<div class="line"><span class="lineno">  221</span>        <span class="keyword">const</span> int32 Seconds = FMath::FloorToInt(TimeTaken) % 60;</div>
-<div class="line"><span class="lineno">  222</span> </div>
-<div class="line"><span class="lineno">  223</span>        <a class="code hl_struct" href="structFResultStatData.html">FResultStatData</a> TimeResultData;</div>
-<div class="line"><span class="lineno">  224</span>        TimeResultData.<a class="code hl_variable" href="structFResultStatData.html#a9c3caa803ddfbb9e059eba055c00aae9">WidgetType</a> = <a class="code hl_enumvalue" href="FResultStatData_8h.html#aaac025acffbbed1878d579b0b3930065a02c86eb2792f3262c21d030a87e19793">EResultItemWidgetType::Symbol</a>;</div>
-<div class="line"><span class="lineno">  225</span>        TimeResultData.<a class="code hl_variable" href="structFResultStatData.html#a75e66157640bcf669787b2e987ab4412">ColorType</a> = <a class="code hl_enumvalue" href="FColorStyleData_8h.html#aefed1c032e349fb49159bbab1f32a3eba9594eec95be70e7b1710f730fdda33d9">EColorStyleType::Blue</a>;</div>
-<div class="line"><span class="lineno">  226</span>        TimeResultData.<a class="code hl_variable" href="structFResultStatData.html#a79c960d0257ca39904aba1503a1f5a5e">TitleText</a> = FText::FromString(TEXT(<span class="stringliteral">&quot;TIME&quot;</span>));</div>
-<div class="line"><span class="lineno">  227</span>        TimeResultData.<a class="code hl_variable" href="structFResultStatData.html#a40b2ff380b44130455998b5fd7288c65">SymbolTextureType</a> = <a class="code hl_enumvalue" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2aa76d4ef5f3f6a672bbfab2865563e530">EResourceTextureType::Time</a>;</div>
-<div class="line"><span class="lineno">  228</span>        TimeResultData.<a class="code hl_variable" href="structFResultStatData.html#a5264bce607096b760b0c3b0add5641e7">SymbolValue</a> = FString::Printf(TEXT(<span class="stringliteral">&quot;%02d:%02d&quot;</span>), Minutes, Seconds);</div>
-<div class="line"><span class="lineno">  229</span>        <a class="code hl_variable" href="classUPopup__Result.html#a14b725660bcae0e76e5f71b9064badfc">Result_Time</a>-&gt;InitData(TimeResultData);</div>
-<div class="line"><span class="lineno">  230</span>    }</div>
-<div class="line"><span class="lineno">  231</span> </div>
-<div class="line"><span class="lineno">  232</span>    <a class="code hl_struct" href="structFResultStatData.html">FResultStatData</a> GradeResultData;</div>
-<div class="line"><span class="lineno">  233</span>    GradeResultData.<a class="code hl_variable" href="structFResultStatData.html#a9c3caa803ddfbb9e059eba055c00aae9">WidgetType</a> = <a class="code hl_enumvalue" href="FResultStatData_8h.html#aaac025acffbbed1878d579b0b3930065a4b3b9db8c9784468094acde0f8bf7071">EResultItemWidgetType::Grade</a>;</div>
-<div class="line"><span class="lineno">  234</span>    GradeResultData.<a class="code hl_variable" href="structFResultStatData.html#a75e66157640bcf669787b2e987ab4412">ColorType</a> = <a class="code hl_enumvalue" href="FColorStyleData_8h.html#aefed1c032e349fb49159bbab1f32a3ebad382816a3cbeed082c9e216e7392eed1">EColorStyleType::Green</a>;</div>
-<div class="line"><span class="lineno">  235</span>    GradeResultData.<a class="code hl_variable" href="structFResultStatData.html#a79c960d0257ca39904aba1503a1f5a5e">TitleText</a> = FText::FromString(TEXT(<span class="stringliteral">&quot;GRADE&quot;</span>));</div>
-<div class="line"><span class="lineno">  236</span>    GradeResultData.<a class="code hl_variable" href="structFResultStatData.html#aac45c5869b828c7f8cfb47807cdb968f">GradeTextureType</a> = <a class="code hl_function" href="classULingoGameHelper.html#a86b2f311de84ecbb0f1716e3389e4ecd">ULingoGameHelper::ConvertGradeString</a>(ResponseData.<a class="code hl_variable" href="structFResponseListenResult.html#a5c88d18880d3e2835e9abda76d86da1f">grade</a>);</div>
-<div class="line"><span class="lineno">  237</span>    <a class="code hl_variable" href="classUPopup__Result.html#a2ec287e78c62a691c3780748a1e0e94f">Result_Grade</a>-&gt;InitData(GradeResultData);</div>
+<p class="definition"><a class="el" href="Popup__Result_8cpp_source.html">Popup_Result.cpp</a> 파일의 <a class="el" href="Popup__Result_8cpp_source.html#l00221">221</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  222</span>{</div>
+<div class="line"><span class="lineno">  223</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> GS = Cast&lt;ALingoGameState&gt;(GetWorld()-&gt;GetGameState()))</div>
+<div class="line"><span class="lineno">  224</span>    {</div>
+<div class="line"><span class="lineno">  225</span>        <span class="comment">// Symbol로 타임 처리</span></div>
+<div class="line"><span class="lineno">  226</span>        <span class="keyword">auto</span> TimeTaken = GS-&gt;GetTimeTaken();</div>
+<div class="line"><span class="lineno">  227</span>        <span class="keyword">const</span> int32 Minutes = FMath::FloorToInt(TimeTaken / 60.f);</div>
+<div class="line"><span class="lineno">  228</span>        <span class="keyword">const</span> int32 Seconds = FMath::FloorToInt(TimeTaken) % 60;</div>
+<div class="line"><span class="lineno">  229</span> </div>
+<div class="line"><span class="lineno">  230</span>        <a class="code hl_struct" href="structFResultStatData.html">FResultStatData</a> TimeResultData;</div>
+<div class="line"><span class="lineno">  231</span>        TimeResultData.<a class="code hl_variable" href="structFResultStatData.html#a9c3caa803ddfbb9e059eba055c00aae9">WidgetType</a> = <a class="code hl_enumvalue" href="FResultStatData_8h.html#aaac025acffbbed1878d579b0b3930065a02c86eb2792f3262c21d030a87e19793">EResultItemWidgetType::Symbol</a>;</div>
+<div class="line"><span class="lineno">  232</span>        TimeResultData.<a class="code hl_variable" href="structFResultStatData.html#a75e66157640bcf669787b2e987ab4412">ColorType</a> = <a class="code hl_enumvalue" href="FColorStyleData_8h.html#aefed1c032e349fb49159bbab1f32a3eba9594eec95be70e7b1710f730fdda33d9">EColorStyleType::Blue</a>;</div>
+<div class="line"><span class="lineno">  233</span>        TimeResultData.<a class="code hl_variable" href="structFResultStatData.html#a79c960d0257ca39904aba1503a1f5a5e">TitleText</a> = FText::FromString(TEXT(<span class="stringliteral">&quot;TIME&quot;</span>));</div>
+<div class="line"><span class="lineno">  234</span>        TimeResultData.<a class="code hl_variable" href="structFResultStatData.html#a40b2ff380b44130455998b5fd7288c65">SymbolTextureType</a> = <a class="code hl_enumvalue" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2aa76d4ef5f3f6a672bbfab2865563e530">EResourceTextureType::Time</a>;</div>
+<div class="line"><span class="lineno">  235</span>        TimeResultData.<a class="code hl_variable" href="structFResultStatData.html#a5264bce607096b760b0c3b0add5641e7">SymbolValue</a> = FString::Printf(TEXT(<span class="stringliteral">&quot;%02d:%02d&quot;</span>), Minutes, Seconds);</div>
+<div class="line"><span class="lineno">  236</span>        <a class="code hl_variable" href="classUPopup__Result.html#a14b725660bcae0e76e5f71b9064badfc">Result_Time</a>-&gt;InitData(TimeResultData);</div>
+<div class="line"><span class="lineno">  237</span>    }</div>
 <div class="line"><span class="lineno">  238</span> </div>
-<div class="line"><span class="lineno">  239</span>    <a class="code hl_struct" href="structFResultStatData.html">FResultStatData</a> TopRateResultData;</div>
-<div class="line"><span class="lineno">  240</span>    TopRateResultData.<a class="code hl_variable" href="structFResultStatData.html#a9c3caa803ddfbb9e059eba055c00aae9">WidgetType</a> = <a class="code hl_enumvalue" href="FResultStatData_8h.html#aaac025acffbbed1878d579b0b3930065adcb66ff6e4a2517ade22183779939c9d">EResultItemWidgetType::Rate</a>;</div>
-<div class="line"><span class="lineno">  241</span>    TopRateResultData.<a class="code hl_variable" href="structFResultStatData.html#a75e66157640bcf669787b2e987ab4412">ColorType</a> = <a class="code hl_enumvalue" href="FColorStyleData_8h.html#aefed1c032e349fb49159bbab1f32a3ebaee38e4d5dd68c4e440825018d549cb47">EColorStyleType::Red</a>;</div>
-<div class="line"><span class="lineno">  242</span>    TopRateResultData.<a class="code hl_variable" href="structFResultStatData.html#a79c960d0257ca39904aba1503a1f5a5e">TitleText</a> = FText::FromString(TEXT(<span class="stringliteral">&quot;TOP&quot;</span>));</div>
-<div class="line"><span class="lineno">  243</span>    TopRateResultData.<a class="code hl_variable" href="structFResultStatData.html#a61bcfba9b5e9da91e4c34a190489907f">RatePercent</a> = ResponseData.<a class="code hl_variable" href="structFResponseListenResult.html#aae6c06d4425ff61d2bafb08f04ae5c5f">top_percent</a>;</div>
-<div class="line"><span class="lineno">  244</span>    <a class="code hl_variable" href="classUPopup__Result.html#a9fd7243319715d3171361087db73550b">Result_TopRate</a>-&gt;InitData(TopRateResultData);</div>
-<div class="line"><span class="lineno">  245</span>        </div>
-<div class="line"><span class="lineno">  246</span>    <a class="code hl_struct" href="structFResultStatData.html">FResultStatData</a> AverageScoreResultData;</div>
-<div class="line"><span class="lineno">  247</span>    AverageScoreResultData.<a class="code hl_variable" href="structFResultStatData.html#a9c3caa803ddfbb9e059eba055c00aae9">WidgetType</a> = <a class="code hl_enumvalue" href="FResultStatData_8h.html#aaac025acffbbed1878d579b0b3930065a02c86eb2792f3262c21d030a87e19793">EResultItemWidgetType::Symbol</a>;</div>
-<div class="line"><span class="lineno">  248</span>    AverageScoreResultData.<a class="code hl_variable" href="structFResultStatData.html#a75e66157640bcf669787b2e987ab4412">ColorType</a> = <a class="code hl_enumvalue" href="FColorStyleData_8h.html#aefed1c032e349fb49159bbab1f32a3ebab9ba865fec061c9706d2fd7ce49c0cc7">EColorStyleType::Purple</a>;</div>
-<div class="line"><span class="lineno">  249</span>    AverageScoreResultData.<a class="code hl_variable" href="structFResultStatData.html#a79c960d0257ca39904aba1503a1f5a5e">TitleText</a> = FText::FromString(TEXT(<span class="stringliteral">&quot;SCORE&quot;</span>));</div>
-<div class="line"><span class="lineno">  250</span>    AverageScoreResultData.<a class="code hl_variable" href="structFResultStatData.html#a40b2ff380b44130455998b5fd7288c65">SymbolTextureType</a> = <a class="code hl_enumvalue" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2a5dd135d1bcfa7f63c3b7f25425c2a4a1">EResourceTextureType::Score</a>;</div>
-<div class="line"><span class="lineno">  251</span>    AverageScoreResultData.<a class="code hl_variable" href="structFResultStatData.html#a5264bce607096b760b0c3b0add5641e7">SymbolValue</a> = FString::Printf(TEXT(<span class="stringliteral">&quot;%d&quot;</span>), <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(ResponseData.<a class="code hl_variable" href="structFResponseListenResult.html#a3d0fb97307c703f98ca5da90c6189957">average_score</a>));</div>
-<div class="line"><span class="lineno">  252</span>    <a class="code hl_variable" href="classUPopup__Result.html#a44952857c7a03cd3e097a1f28c98fb4b">Result_AverageScore</a>-&gt;InitData(AverageScoreResultData);</div>
-<div class="line"><span class="lineno">  253</span>}</div>
+<div class="line"><span class="lineno">  239</span>    <a class="code hl_struct" href="structFResultStatData.html">FResultStatData</a> GradeResultData;</div>
+<div class="line"><span class="lineno">  240</span>    GradeResultData.<a class="code hl_variable" href="structFResultStatData.html#a9c3caa803ddfbb9e059eba055c00aae9">WidgetType</a> = <a class="code hl_enumvalue" href="FResultStatData_8h.html#aaac025acffbbed1878d579b0b3930065a4b3b9db8c9784468094acde0f8bf7071">EResultItemWidgetType::Grade</a>;</div>
+<div class="line"><span class="lineno">  241</span>    GradeResultData.<a class="code hl_variable" href="structFResultStatData.html#a75e66157640bcf669787b2e987ab4412">ColorType</a> = <a class="code hl_enumvalue" href="FColorStyleData_8h.html#aefed1c032e349fb49159bbab1f32a3ebad382816a3cbeed082c9e216e7392eed1">EColorStyleType::Green</a>;</div>
+<div class="line"><span class="lineno">  242</span>    GradeResultData.<a class="code hl_variable" href="structFResultStatData.html#a79c960d0257ca39904aba1503a1f5a5e">TitleText</a> = FText::FromString(TEXT(<span class="stringliteral">&quot;GRADE&quot;</span>));</div>
+<div class="line"><span class="lineno">  243</span>    GradeResultData.<a class="code hl_variable" href="structFResultStatData.html#aac45c5869b828c7f8cfb47807cdb968f">GradeTextureType</a> = <a class="code hl_function" href="classULingoGameHelper.html#a86b2f311de84ecbb0f1716e3389e4ecd">ULingoGameHelper::ConvertGradeString</a>(ResponseData.<a class="code hl_variable" href="structFResponseListenResult.html#a5c88d18880d3e2835e9abda76d86da1f">grade</a>);</div>
+<div class="line"><span class="lineno">  244</span>    <a class="code hl_variable" href="classUPopup__Result.html#a2ec287e78c62a691c3780748a1e0e94f">Result_Grade</a>-&gt;InitData(GradeResultData);</div>
+<div class="line"><span class="lineno">  245</span> </div>
+<div class="line"><span class="lineno">  246</span>    <a class="code hl_struct" href="structFResultStatData.html">FResultStatData</a> TopRateResultData;</div>
+<div class="line"><span class="lineno">  247</span>    TopRateResultData.<a class="code hl_variable" href="structFResultStatData.html#a9c3caa803ddfbb9e059eba055c00aae9">WidgetType</a> = <a class="code hl_enumvalue" href="FResultStatData_8h.html#aaac025acffbbed1878d579b0b3930065adcb66ff6e4a2517ade22183779939c9d">EResultItemWidgetType::Rate</a>;</div>
+<div class="line"><span class="lineno">  248</span>    TopRateResultData.<a class="code hl_variable" href="structFResultStatData.html#a75e66157640bcf669787b2e987ab4412">ColorType</a> = <a class="code hl_enumvalue" href="FColorStyleData_8h.html#aefed1c032e349fb49159bbab1f32a3ebaee38e4d5dd68c4e440825018d549cb47">EColorStyleType::Red</a>;</div>
+<div class="line"><span class="lineno">  249</span>    TopRateResultData.<a class="code hl_variable" href="structFResultStatData.html#a79c960d0257ca39904aba1503a1f5a5e">TitleText</a> = FText::FromString(TEXT(<span class="stringliteral">&quot;TOP&quot;</span>));</div>
+<div class="line"><span class="lineno">  250</span>    TopRateResultData.<a class="code hl_variable" href="structFResultStatData.html#a61bcfba9b5e9da91e4c34a190489907f">RatePercent</a> = ResponseData.<a class="code hl_variable" href="structFResponseListenResult.html#aae6c06d4425ff61d2bafb08f04ae5c5f">top_percent</a>;</div>
+<div class="line"><span class="lineno">  251</span>    <a class="code hl_variable" href="classUPopup__Result.html#a9fd7243319715d3171361087db73550b">Result_TopRate</a>-&gt;InitData(TopRateResultData);</div>
+<div class="line"><span class="lineno">  252</span>        </div>
+<div class="line"><span class="lineno">  253</span>    <a class="code hl_struct" href="structFResultStatData.html">FResultStatData</a> AverageScoreResultData;</div>
+<div class="line"><span class="lineno">  254</span>    AverageScoreResultData.<a class="code hl_variable" href="structFResultStatData.html#a9c3caa803ddfbb9e059eba055c00aae9">WidgetType</a> = <a class="code hl_enumvalue" href="FResultStatData_8h.html#aaac025acffbbed1878d579b0b3930065a02c86eb2792f3262c21d030a87e19793">EResultItemWidgetType::Symbol</a>;</div>
+<div class="line"><span class="lineno">  255</span>    AverageScoreResultData.<a class="code hl_variable" href="structFResultStatData.html#a75e66157640bcf669787b2e987ab4412">ColorType</a> = <a class="code hl_enumvalue" href="FColorStyleData_8h.html#aefed1c032e349fb49159bbab1f32a3ebab9ba865fec061c9706d2fd7ce49c0cc7">EColorStyleType::Purple</a>;</div>
+<div class="line"><span class="lineno">  256</span>    AverageScoreResultData.<a class="code hl_variable" href="structFResultStatData.html#a79c960d0257ca39904aba1503a1f5a5e">TitleText</a> = FText::FromString(TEXT(<span class="stringliteral">&quot;SCORE&quot;</span>));</div>
+<div class="line"><span class="lineno">  257</span>    AverageScoreResultData.<a class="code hl_variable" href="structFResultStatData.html#a40b2ff380b44130455998b5fd7288c65">SymbolTextureType</a> = <a class="code hl_enumvalue" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2a5dd135d1bcfa7f63c3b7f25425c2a4a1">EResourceTextureType::Score</a>;</div>
+<div class="line"><span class="lineno">  258</span>    AverageScoreResultData.<a class="code hl_variable" href="structFResultStatData.html#a5264bce607096b760b0c3b0add5641e7">SymbolValue</a> = FString::Printf(TEXT(<span class="stringliteral">&quot;%d&quot;</span>), <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(ResponseData.<a class="code hl_variable" href="structFResponseListenResult.html#a3d0fb97307c703f98ca5da90c6189957">average_score</a>));</div>
+<div class="line"><span class="lineno">  259</span>    <a class="code hl_variable" href="classUPopup__Result.html#a44952857c7a03cd3e097a1f28c98fb4b">Result_AverageScore</a>-&gt;InitData(AverageScoreResultData);</div>
+<div class="line"><span class="lineno">  260</span>}</div>
 <div class="ttc" id="aFColorStyleData_8h_html_aefed1c032e349fb49159bbab1f32a3eba9594eec95be70e7b1710f730fdda33d9"><div class="ttname"><a href="FColorStyleData_8h.html#aefed1c032e349fb49159bbab1f32a3eba9594eec95be70e7b1710f730fdda33d9">EColorStyleType::Blue</a></div><div class="ttdeci">@ Blue</div></div>
 <div class="ttc" id="aFColorStyleData_8h_html_aefed1c032e349fb49159bbab1f32a3ebab9ba865fec061c9706d2fd7ce49c0cc7"><div class="ttname"><a href="FColorStyleData_8h.html#aefed1c032e349fb49159bbab1f32a3ebab9ba865fec061c9706d2fd7ce49c0cc7">EColorStyleType::Purple</a></div><div class="ttdeci">@ Purple</div></div>
 <div class="ttc" id="aFColorStyleData_8h_html_aefed1c032e349fb49159bbab1f32a3ebad382816a3cbeed082c9e216e7392eed1"><div class="ttname"><a href="FColorStyleData_8h.html#aefed1c032e349fb49159bbab1f32a3ebad382816a3cbeed082c9e216e7392eed1">EColorStyleType::Green</a></div><div class="ttdeci">@ Green</div></div>
@@ -321,7 +321,7 @@ Private 속성</h2></td></tr>
 </div><!-- fragment -->
 <p class="reference">다음을 참조함 :  <a class="el" href="NetworkData_8h_source.html#l01114">FResponseListenResult::average_score</a>, <a class="el" href="FColorStyleData_8h.html#aefed1c032e349fb49159bbab1f32a3eba9594eec95be70e7b1710f730fdda33d9">Blue</a>, <a class="el" href="FResultStatData_8h_source.html#l00032">FResultStatData::ColorType</a>, <a class="el" href="ULingoGameHelper_8cpp_source.html#l00188">ULingoGameHelper::ConvertGradeString()</a>, <a class="el" href="FResultStatData_8h.html#aaac025acffbbed1878d579b0b3930065a4b3b9db8c9784468094acde0f8bf7071">Grade</a>, <a class="el" href="NetworkData_8h_source.html#l01111">FResponseListenResult::grade</a>, <a class="el" href="FResultStatData_8h_source.html#l00040">FResultStatData::GradeTextureType</a>, <a class="el" href="FColorStyleData_8h.html#aefed1c032e349fb49159bbab1f32a3ebad382816a3cbeed082c9e216e7392eed1">Green</a>, <a class="el" href="FColorStyleData_8h.html#aefed1c032e349fb49159bbab1f32a3ebab9ba865fec061c9706d2fd7ce49c0cc7">Purple</a>, <a class="el" href="FResultStatData_8h.html#aaac025acffbbed1878d579b0b3930065adcb66ff6e4a2517ade22183779939c9d">Rate</a>, <a class="el" href="FResultStatData_8h_source.html#l00051">FResultStatData::RatePercent</a>, <a class="el" href="FColorStyleData_8h.html#aefed1c032e349fb49159bbab1f32a3ebaee38e4d5dd68c4e440825018d549cb47">Red</a>, <a class="el" href="Popup__Result_8h_source.html#l00069">Result_AverageScore</a>, <a class="el" href="Popup__Result_8h_source.html#l00065">Result_Grade</a>, <a class="el" href="Popup__Result_8h_source.html#l00063">Result_Time</a>, <a class="el" href="Popup__Result_8h_source.html#l00067">Result_TopRate</a>, <a class="el" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2a5dd135d1bcfa7f63c3b7f25425c2a4a1">Score</a>, <a class="el" href="FResultStatData_8h.html#aaac025acffbbed1878d579b0b3930065a02c86eb2792f3262c21d030a87e19793">Symbol</a>, <a class="el" href="FResultStatData_8h_source.html#l00055">FResultStatData::SymbolTextureType</a>, <a class="el" href="FResultStatData_8h_source.html#l00058">FResultStatData::SymbolValue</a>, <a class="el" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2aa76d4ef5f3f6a672bbfab2865563e530">Time</a>, <a class="el" href="FResultStatData_8h_source.html#l00036">FResultStatData::TitleText</a>, <a class="el" href="NetworkData_8h_source.html#l01117">FResponseListenResult::top_percent</a>, <a class="el" href="FResultStatData_8h_source.html#l00028">FResultStatData::WidgetType</a>.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="Popup__Result_8cpp_source.html#l00031">InitPopup()</a>, <a class="el" href="Popup__Result_8cpp_source.html#l00338">OnResponseListenResult()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="Popup__Result_8cpp_source.html#l00032">InitPopup()</a>, <a class="el" href="Popup__Result_8cpp_source.html#l00345">OnResponseListenResult()</a>.</p>
 <div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-2-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
@@ -355,70 +355,77 @@ Private 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="Popup__Result_8cpp_source.html">Popup_Result.cpp</a> 파일의 <a class="el" href="Popup__Result_8cpp_source.html#l00031">31</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   32</span>{</div>
-<div class="line"><span class="lineno">   33</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUPopup__Result.html#abfa0db686cba0ac9337ecadf1beaa185">Btn_Confirm</a>)</div>
-<div class="line"><span class="lineno">   34</span>    {</div>
-<div class="line"><span class="lineno">   35</span>        <a class="code hl_variable" href="classUPopup__Result.html#abfa0db686cba0ac9337ecadf1beaa185">Btn_Confirm</a>-&gt;OnButtonClickedEvent.RemoveDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUPopup__Result.html#a2fe50f209d27aa1c870802b99aaf7cf6">UPopup_Result::OnClickClose</a>);</div>
-<div class="line"><span class="lineno">   36</span>        <a class="code hl_variable" href="classUPopup__Result.html#abfa0db686cba0ac9337ecadf1beaa185">Btn_Confirm</a>-&gt;OnButtonClickedEvent.AddDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUPopup__Result.html#a2fe50f209d27aa1c870802b99aaf7cf6">UPopup_Result::OnClickClose</a>);</div>
-<div class="line"><span class="lineno">   37</span>    }</div>
-<div class="line"><span class="lineno">   38</span> </div>
-<div class="line"><span class="lineno">   39</span>    this-&gt;<a class="code hl_variable" href="classUPopup__Result.html#a1695150f0ab022f13a06c7f5e57f810a">QuestType</a> =InQuestType;</div>
-<div class="line"><span class="lineno">   40</span> </div>
-<div class="line"><span class="lineno">   41</span>    <a class="code hl_function" href="classUPopup__Result.html#a21f6035435a8874c83d22fae92da086b">InitWordWidget</a>();</div>
-<div class="line"><span class="lineno">   42</span>    <a class="code hl_function" href="classUPopup__Result.html#a9c36abe7275d5b3279b806b66a694241">InitWrongList</a>();</div>
-<div class="line"><span class="lineno">   43</span> </div>
-<div class="line"><span class="lineno">   44</span>    <span class="comment">// GameState에서 결과 확인</span></div>
-<div class="line"><span class="lineno">   45</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> GS = Cast&lt;ALingoGameState&gt;(GetWorld()-&gt;GetGameState()))</div>
-<div class="line"><span class="lineno">   46</span>    {</div>
-<div class="line"><span class="lineno">   47</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUPopup__Result.html#a1695150f0ab022f13a06c7f5e57f810a">QuestType</a> == <a class="code hl_enumvalue" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a7a1a5f3e79fdc91edf2f5ead9d66abb4">EQuestType::Read</a>)</div>
-<div class="line"><span class="lineno">   48</span>        {</div>
-<div class="line"><span class="lineno">   49</span>            GS-&gt;OnReadResultUpdated.RemoveDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUPopup__Result.html#aa1b939610654a6ebd59ec8e6881c6366">UPopup_Result::InitReadResult</a>);</div>
-<div class="line"><span class="lineno">   50</span>            GS-&gt;OnReadResultUpdated.AddDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUPopup__Result.html#aa1b939610654a6ebd59ec8e6881c6366">UPopup_Result::InitReadResult</a>);</div>
-<div class="line"><span class="lineno">   51</span>        }</div>
-<div class="line"><span class="lineno">   52</span>        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUPopup__Result.html#a1695150f0ab022f13a06c7f5e57f810a">QuestType</a> == <a class="code hl_enumvalue" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921ace6802b46091c31e2ec2363883fe8369">EQuestType::Listen</a>)</div>
-<div class="line"><span class="lineno">   53</span>        {</div>
-<div class="line"><span class="lineno">   54</span>            GS-&gt;OnListenResultUpdated.RemoveDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUPopup__Result.html#a89ed11f883780ebd1b9865c5126eced1">UPopup_Result::InitListenResult</a>);</div>
-<div class="line"><span class="lineno">   55</span>            GS-&gt;OnListenResultUpdated.AddDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUPopup__Result.html#a89ed11f883780ebd1b9865c5126eced1">UPopup_Result::InitListenResult</a>);</div>
-<div class="line"><span class="lineno">   56</span>        }</div>
-<div class="line"><span class="lineno">   57</span>        </div>
-<div class="line"><span class="lineno">   58</span>        <span class="keywordtype">bool</span> bHasResult = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   59</span> </div>
-<div class="line"><span class="lineno">   60</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUPopup__Result.html#a1695150f0ab022f13a06c7f5e57f810a">QuestType</a> == <a class="code hl_enumvalue" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a7a1a5f3e79fdc91edf2f5ead9d66abb4">EQuestType::Read</a> &amp;&amp; !GS-&gt;ReadResult.grade.IsEmpty())</div>
-<div class="line"><span class="lineno">   61</span>        {</div>
-<div class="line"><span class="lineno">   62</span>            <span class="comment">// 이미 결과가 있으면 바로 표시</span></div>
-<div class="line"><span class="lineno">   63</span>            <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[Popup_Result] Read result already exists in GameState&quot;</span>));</div>
-<div class="line"><span class="lineno">   64</span>            <a class="code hl_function" href="classUPopup__Result.html#aa1b939610654a6ebd59ec8e6881c6366">InitReadResult</a>(GS-&gt;ReadResult);</div>
-<div class="line"><span class="lineno">   65</span>            bHasResult = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   66</span>        }</div>
-<div class="line"><span class="lineno">   67</span>        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUPopup__Result.html#a1695150f0ab022f13a06c7f5e57f810a">QuestType</a> == <a class="code hl_enumvalue" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921ace6802b46091c31e2ec2363883fe8369">EQuestType::Listen</a> &amp;&amp; !GS-&gt;ListenResult.grade.IsEmpty())</div>
+<p class="definition"><a class="el" href="Popup__Result_8cpp_source.html">Popup_Result.cpp</a> 파일의 <a class="el" href="Popup__Result_8cpp_source.html#l00032">32</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   33</span>{</div>
+<div class="line"><span class="lineno">   34</span>    <span class="comment">// 결과 팝업이 뜰 때 MissionTimer 멈추고 숨기기</span></div>
+<div class="line"><span class="lineno">   35</span>    <span class="keywordflow">if</span> (<a class="code hl_class" href="classUBroadcastManager.html">UBroadcastManager</a>* BM = UBroadcastManager::Get(GetWorld()))</div>
+<div class="line"><span class="lineno">   36</span>    {</div>
+<div class="line"><span class="lineno">   37</span>        BM-&gt;SendUpdateMissionTimerState(<span class="keyword">false</span>, 0.0f);</div>
+<div class="line"><span class="lineno">   38</span>    }</div>
+<div class="line"><span class="lineno">   39</span> </div>
+<div class="line"><span class="lineno">   40</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUPopup__Result.html#abfa0db686cba0ac9337ecadf1beaa185">Btn_Confirm</a>)</div>
+<div class="line"><span class="lineno">   41</span>    {</div>
+<div class="line"><span class="lineno">   42</span>        <a class="code hl_variable" href="classUPopup__Result.html#abfa0db686cba0ac9337ecadf1beaa185">Btn_Confirm</a>-&gt;OnButtonClickedEvent.RemoveDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUPopup__Result.html#a2fe50f209d27aa1c870802b99aaf7cf6">UPopup_Result::OnClickClose</a>);</div>
+<div class="line"><span class="lineno">   43</span>        <a class="code hl_variable" href="classUPopup__Result.html#abfa0db686cba0ac9337ecadf1beaa185">Btn_Confirm</a>-&gt;OnButtonClickedEvent.AddDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUPopup__Result.html#a2fe50f209d27aa1c870802b99aaf7cf6">UPopup_Result::OnClickClose</a>);</div>
+<div class="line"><span class="lineno">   44</span>    }</div>
+<div class="line"><span class="lineno">   45</span> </div>
+<div class="line"><span class="lineno">   46</span>    this-&gt;<a class="code hl_variable" href="classUPopup__Result.html#a1695150f0ab022f13a06c7f5e57f810a">QuestType</a> =InQuestType;</div>
+<div class="line"><span class="lineno">   47</span> </div>
+<div class="line"><span class="lineno">   48</span>    <a class="code hl_function" href="classUPopup__Result.html#a21f6035435a8874c83d22fae92da086b">InitWordWidget</a>();</div>
+<div class="line"><span class="lineno">   49</span>    <a class="code hl_function" href="classUPopup__Result.html#a9c36abe7275d5b3279b806b66a694241">InitWrongList</a>();</div>
+<div class="line"><span class="lineno">   50</span> </div>
+<div class="line"><span class="lineno">   51</span>    <span class="comment">// GameState에서 결과 확인</span></div>
+<div class="line"><span class="lineno">   52</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> GS = Cast&lt;ALingoGameState&gt;(GetWorld()-&gt;GetGameState()))</div>
+<div class="line"><span class="lineno">   53</span>    {</div>
+<div class="line"><span class="lineno">   54</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUPopup__Result.html#a1695150f0ab022f13a06c7f5e57f810a">QuestType</a> == <a class="code hl_enumvalue" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a7a1a5f3e79fdc91edf2f5ead9d66abb4">EQuestType::Read</a>)</div>
+<div class="line"><span class="lineno">   55</span>        {</div>
+<div class="line"><span class="lineno">   56</span>            GS-&gt;OnReadResultUpdated.RemoveDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUPopup__Result.html#aa1b939610654a6ebd59ec8e6881c6366">UPopup_Result::InitReadResult</a>);</div>
+<div class="line"><span class="lineno">   57</span>            GS-&gt;OnReadResultUpdated.AddDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUPopup__Result.html#aa1b939610654a6ebd59ec8e6881c6366">UPopup_Result::InitReadResult</a>);</div>
+<div class="line"><span class="lineno">   58</span>        }</div>
+<div class="line"><span class="lineno">   59</span>        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUPopup__Result.html#a1695150f0ab022f13a06c7f5e57f810a">QuestType</a> == <a class="code hl_enumvalue" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921ace6802b46091c31e2ec2363883fe8369">EQuestType::Listen</a>)</div>
+<div class="line"><span class="lineno">   60</span>        {</div>
+<div class="line"><span class="lineno">   61</span>            GS-&gt;OnListenResultUpdated.RemoveDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUPopup__Result.html#a89ed11f883780ebd1b9865c5126eced1">UPopup_Result::InitListenResult</a>);</div>
+<div class="line"><span class="lineno">   62</span>            GS-&gt;OnListenResultUpdated.AddDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUPopup__Result.html#a89ed11f883780ebd1b9865c5126eced1">UPopup_Result::InitListenResult</a>);</div>
+<div class="line"><span class="lineno">   63</span>        }</div>
+<div class="line"><span class="lineno">   64</span>        </div>
+<div class="line"><span class="lineno">   65</span>        <span class="keywordtype">bool</span> bHasResult = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   66</span> </div>
+<div class="line"><span class="lineno">   67</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUPopup__Result.html#a1695150f0ab022f13a06c7f5e57f810a">QuestType</a> == <a class="code hl_enumvalue" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a7a1a5f3e79fdc91edf2f5ead9d66abb4">EQuestType::Read</a> &amp;&amp; !GS-&gt;ReadResult.grade.IsEmpty())</div>
 <div class="line"><span class="lineno">   68</span>        {</div>
 <div class="line"><span class="lineno">   69</span>            <span class="comment">// 이미 결과가 있으면 바로 표시</span></div>
-<div class="line"><span class="lineno">   70</span>            <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[Popup_Result] Listen result already exists in GameState&quot;</span>));</div>
-<div class="line"><span class="lineno">   71</span>            <a class="code hl_function" href="classUPopup__Result.html#a89ed11f883780ebd1b9865c5126eced1">InitListenResult</a>(GS-&gt;ListenResult);</div>
+<div class="line"><span class="lineno">   70</span>            <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[Popup_Result] Read result already exists in GameState&quot;</span>));</div>
+<div class="line"><span class="lineno">   71</span>            <a class="code hl_function" href="classUPopup__Result.html#aa1b939610654a6ebd59ec8e6881c6366">InitReadResult</a>(GS-&gt;ReadResult);</div>
 <div class="line"><span class="lineno">   72</span>            bHasResult = <span class="keyword">true</span>;</div>
 <div class="line"><span class="lineno">   73</span>        }</div>
-<div class="line"><span class="lineno">   74</span> </div>
-<div class="line"><span class="lineno">   75</span>        <span class="comment">// 결과가 없으면 Host만 요청</span></div>
-<div class="line"><span class="lineno">   76</span>        <span class="keywordflow">if</span> (!bHasResult &amp;&amp;  GetOwningPlayer()-&gt;HasAuthority())</div>
-<div class="line"><span class="lineno">   77</span>        {</div>
-<div class="line"><span class="lineno">   78</span>            <a class="code hl_function" href="classUPopup__Result.html#a24017325c9a2bc13cc69698adda2cce4">RequestResult</a>();</div>
-<div class="line"><span class="lineno">   79</span>        }</div>
-<div class="line"><span class="lineno">   80</span>    }</div>
-<div class="line"><span class="lineno">   81</span>}</div>
+<div class="line"><span class="lineno">   74</span>        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUPopup__Result.html#a1695150f0ab022f13a06c7f5e57f810a">QuestType</a> == <a class="code hl_enumvalue" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921ace6802b46091c31e2ec2363883fe8369">EQuestType::Listen</a> &amp;&amp; !GS-&gt;ListenResult.grade.IsEmpty())</div>
+<div class="line"><span class="lineno">   75</span>        {</div>
+<div class="line"><span class="lineno">   76</span>            <span class="comment">// 이미 결과가 있으면 바로 표시</span></div>
+<div class="line"><span class="lineno">   77</span>            <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[Popup_Result] Listen result already exists in GameState&quot;</span>));</div>
+<div class="line"><span class="lineno">   78</span>            <a class="code hl_function" href="classUPopup__Result.html#a89ed11f883780ebd1b9865c5126eced1">InitListenResult</a>(GS-&gt;ListenResult);</div>
+<div class="line"><span class="lineno">   79</span>            bHasResult = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   80</span>        }</div>
+<div class="line"><span class="lineno">   81</span> </div>
+<div class="line"><span class="lineno">   82</span>        <span class="comment">// 결과가 없으면 Host만 요청</span></div>
+<div class="line"><span class="lineno">   83</span>        <span class="keywordflow">if</span> (!bHasResult &amp;&amp;  GetOwningPlayer()-&gt;HasAuthority())</div>
+<div class="line"><span class="lineno">   84</span>        {</div>
+<div class="line"><span class="lineno">   85</span>            <a class="code hl_function" href="classUPopup__Result.html#a24017325c9a2bc13cc69698adda2cce4">RequestResult</a>();</div>
+<div class="line"><span class="lineno">   86</span>        }</div>
+<div class="line"><span class="lineno">   87</span>    }</div>
+<div class="line"><span class="lineno">   88</span>}</div>
 <div class="ttc" id="aALingoGameState_8h_html_a1a866ca8104ebd47ce462347a6125921a7a1a5f3e79fdc91edf2f5ead9d66abb4"><div class="ttname"><a href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a7a1a5f3e79fdc91edf2f5ead9d66abb4">EQuestType::Read</a></div><div class="ttdeci">@ Read</div></div>
 <div class="ttc" id="aALingoGameState_8h_html_a1a866ca8104ebd47ce462347a6125921ace6802b46091c31e2ec2363883fe8369"><div class="ttname"><a href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921ace6802b46091c31e2ec2363883fe8369">EQuestType::Listen</a></div><div class="ttdeci">@ Listen</div></div>
 <div class="ttc" id="aGameLogging_8h_html_a9998c8beb11a6bad6ffada2e701fc0cf"><div class="ttname"><a href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a></div><div class="ttdeci">#define PRINTLOG(fmt,...)</div><div class="ttdef"><b>Definition</b> <a href="GameLogging_8h_source.html#l00030">GameLogging.h:30</a></div></div>
+<div class="ttc" id="aclassUBroadcastManager_html"><div class="ttname"><a href="classUBroadcastManager.html">UBroadcastManager</a></div><div class="ttdoc">게임 내 전역 이벤트를 중계하는 중앙 이벤트 버스(Event Bus) 서브시스템입니다.</div><div class="ttdef"><b>Definition</b> <a href="UBroadcastManager_8h_source.html#l00025">UBroadcastManager.h:26</a></div></div>
 <div class="ttc" id="aclassUPopup__Result_html_a1695150f0ab022f13a06c7f5e57f810a"><div class="ttname"><a href="classUPopup__Result.html#a1695150f0ab022f13a06c7f5e57f810a">UPopup_Result::QuestType</a></div><div class="ttdeci">EQuestType QuestType</div><div class="ttdef"><b>Definition</b> <a href="Popup__Result_8h_source.html#l00075">Popup_Result.h:75</a></div></div>
-<div class="ttc" id="aclassUPopup__Result_html_a21f6035435a8874c83d22fae92da086b"><div class="ttname"><a href="classUPopup__Result.html#a21f6035435a8874c83d22fae92da086b">UPopup_Result::InitWordWidget</a></div><div class="ttdeci">void InitWordWidget()</div><div class="ttdef"><b>Definition</b> <a href="Popup__Result_8cpp_source.html#l00094">Popup_Result.cpp:94</a></div></div>
-<div class="ttc" id="aclassUPopup__Result_html_a24017325c9a2bc13cc69698adda2cce4"><div class="ttname"><a href="classUPopup__Result.html#a24017325c9a2bc13cc69698adda2cce4">UPopup_Result::RequestResult</a></div><div class="ttdeci">void RequestResult()</div><div class="ttdef"><b>Definition</b> <a href="Popup__Result_8cpp_source.html#l00255">Popup_Result.cpp:255</a></div></div>
-<div class="ttc" id="aclassUPopup__Result_html_a2fe50f209d27aa1c870802b99aaf7cf6"><div class="ttname"><a href="classUPopup__Result.html#a2fe50f209d27aa1c870802b99aaf7cf6">UPopup_Result::OnClickClose</a></div><div class="ttdeci">void OnClickClose()</div><div class="ttdef"><b>Definition</b> <a href="Popup__Result_8cpp_source.html#l00083">Popup_Result.cpp:83</a></div></div>
-<div class="ttc" id="aclassUPopup__Result_html_a89ed11f883780ebd1b9865c5126eced1"><div class="ttname"><a href="classUPopup__Result.html#a89ed11f883780ebd1b9865c5126eced1">UPopup_Result::InitListenResult</a></div><div class="ttdeci">void InitListenResult(const FResponseListenResult &amp;ResponseData)</div><div class="ttdef"><b>Definition</b> <a href="Popup__Result_8cpp_source.html#l00214">Popup_Result.cpp:214</a></div></div>
-<div class="ttc" id="aclassUPopup__Result_html_a9c36abe7275d5b3279b806b66a694241"><div class="ttname"><a href="classUPopup__Result.html#a9c36abe7275d5b3279b806b66a694241">UPopup_Result::InitWrongList</a></div><div class="ttdeci">void InitWrongList()</div><div class="ttdef"><b>Definition</b> <a href="Popup__Result_8cpp_source.html#l00119">Popup_Result.cpp:119</a></div></div>
-<div class="ttc" id="aclassUPopup__Result_html_aa1b939610654a6ebd59ec8e6881c6366"><div class="ttname"><a href="classUPopup__Result.html#aa1b939610654a6ebd59ec8e6881c6366">UPopup_Result::InitReadResult</a></div><div class="ttdeci">void InitReadResult(const FResponseReadResult &amp;ResponseData)</div><div class="ttdef"><b>Definition</b> <a href="Popup__Result_8cpp_source.html#l00173">Popup_Result.cpp:173</a></div></div>
+<div class="ttc" id="aclassUPopup__Result_html_a21f6035435a8874c83d22fae92da086b"><div class="ttname"><a href="classUPopup__Result.html#a21f6035435a8874c83d22fae92da086b">UPopup_Result::InitWordWidget</a></div><div class="ttdeci">void InitWordWidget()</div><div class="ttdef"><b>Definition</b> <a href="Popup__Result_8cpp_source.html#l00101">Popup_Result.cpp:101</a></div></div>
+<div class="ttc" id="aclassUPopup__Result_html_a24017325c9a2bc13cc69698adda2cce4"><div class="ttname"><a href="classUPopup__Result.html#a24017325c9a2bc13cc69698adda2cce4">UPopup_Result::RequestResult</a></div><div class="ttdeci">void RequestResult()</div><div class="ttdef"><b>Definition</b> <a href="Popup__Result_8cpp_source.html#l00262">Popup_Result.cpp:262</a></div></div>
+<div class="ttc" id="aclassUPopup__Result_html_a2fe50f209d27aa1c870802b99aaf7cf6"><div class="ttname"><a href="classUPopup__Result.html#a2fe50f209d27aa1c870802b99aaf7cf6">UPopup_Result::OnClickClose</a></div><div class="ttdeci">void OnClickClose()</div><div class="ttdef"><b>Definition</b> <a href="Popup__Result_8cpp_source.html#l00090">Popup_Result.cpp:90</a></div></div>
+<div class="ttc" id="aclassUPopup__Result_html_a89ed11f883780ebd1b9865c5126eced1"><div class="ttname"><a href="classUPopup__Result.html#a89ed11f883780ebd1b9865c5126eced1">UPopup_Result::InitListenResult</a></div><div class="ttdeci">void InitListenResult(const FResponseListenResult &amp;ResponseData)</div><div class="ttdef"><b>Definition</b> <a href="Popup__Result_8cpp_source.html#l00221">Popup_Result.cpp:221</a></div></div>
+<div class="ttc" id="aclassUPopup__Result_html_a9c36abe7275d5b3279b806b66a694241"><div class="ttname"><a href="classUPopup__Result.html#a9c36abe7275d5b3279b806b66a694241">UPopup_Result::InitWrongList</a></div><div class="ttdeci">void InitWrongList()</div><div class="ttdef"><b>Definition</b> <a href="Popup__Result_8cpp_source.html#l00126">Popup_Result.cpp:126</a></div></div>
+<div class="ttc" id="aclassUPopup__Result_html_aa1b939610654a6ebd59ec8e6881c6366"><div class="ttname"><a href="classUPopup__Result.html#aa1b939610654a6ebd59ec8e6881c6366">UPopup_Result::InitReadResult</a></div><div class="ttdeci">void InitReadResult(const FResponseReadResult &amp;ResponseData)</div><div class="ttdef"><b>Definition</b> <a href="Popup__Result_8cpp_source.html#l00180">Popup_Result.cpp:180</a></div></div>
 <div class="ttc" id="aclassUPopup__Result_html_abfa0db686cba0ac9337ecadf1beaa185"><div class="ttname"><a href="classUPopup__Result.html#abfa0db686cba0ac9337ecadf1beaa185">UPopup_Result::Btn_Confirm</a></div><div class="ttdeci">TObjectPtr&lt; class UImageButton &gt; Btn_Confirm</div><div class="ttdef"><b>Definition</b> <a href="Popup__Result_8h_source.html#l00051">Popup_Result.h:51</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="Popup__Result_8h_source.html#l00051">Btn_Confirm</a>, <a class="el" href="Popup__Result_8cpp_source.html#l00214">InitListenResult()</a>, <a class="el" href="Popup__Result_8cpp_source.html#l00173">InitReadResult()</a>, <a class="el" href="Popup__Result_8cpp_source.html#l00094">InitWordWidget()</a>, <a class="el" href="Popup__Result_8cpp_source.html#l00119">InitWrongList()</a>, <a class="el" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921ace6802b46091c31e2ec2363883fe8369">Listen</a>, <a class="el" href="Popup__Result_8cpp_source.html#l00083">OnClickClose()</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>, <a class="el" href="Popup__Result_8h_source.html#l00075">QuestType</a>, <a class="el" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a7a1a5f3e79fdc91edf2f5ead9d66abb4">Read</a>, <a class="el" href="Popup__Result_8cpp_source.html#l00255">RequestResult()</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="Popup__Result_8h_source.html#l00051">Btn_Confirm</a>, <a class="el" href="Popup__Result_8cpp_source.html#l00221">InitListenResult()</a>, <a class="el" href="Popup__Result_8cpp_source.html#l00180">InitReadResult()</a>, <a class="el" href="Popup__Result_8cpp_source.html#l00101">InitWordWidget()</a>, <a class="el" href="Popup__Result_8cpp_source.html#l00126">InitWrongList()</a>, <a class="el" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921ace6802b46091c31e2ec2363883fe8369">Listen</a>, <a class="el" href="Popup__Result_8cpp_source.html#l00090">OnClickClose()</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>, <a class="el" href="Popup__Result_8h_source.html#l00075">QuestType</a>, <a class="el" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a7a1a5f3e79fdc91edf2f5ead9d66abb4">Read</a>, <a class="el" href="Popup__Result_8cpp_source.html#l00262">RequestResult()</a>.</p>
 <div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-4-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-4-summary" class="dynsummary" style="display:block;">
@@ -453,46 +460,46 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="Popup__Result_8cpp_source.html">Popup_Result.cpp</a> 파일의 <a class="el" href="Popup__Result_8cpp_source.html#l00173">173</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  174</span>{</div>
-<div class="line"><span class="lineno">  175</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> GS = Cast&lt;ALingoGameState&gt;(GetWorld()-&gt;GetGameState()))</div>
-<div class="line"><span class="lineno">  176</span>    {</div>
-<div class="line"><span class="lineno">  177</span>        <span class="comment">// Symbol로 타임 처리</span></div>
-<div class="line"><span class="lineno">  178</span>        <span class="keyword">auto</span> TimeTaken = GS-&gt;GetTimeTaken();</div>
-<div class="line"><span class="lineno">  179</span>        <span class="keyword">const</span> int32 Minutes = FMath::FloorToInt(TimeTaken / 60.f);</div>
-<div class="line"><span class="lineno">  180</span>        <span class="keyword">const</span> int32 Seconds = FMath::FloorToInt(TimeTaken) % 60;</div>
-<div class="line"><span class="lineno">  181</span> </div>
-<div class="line"><span class="lineno">  182</span>        <a class="code hl_struct" href="structFResultStatData.html">FResultStatData</a> TimeResultData;</div>
-<div class="line"><span class="lineno">  183</span>        TimeResultData.<a class="code hl_variable" href="structFResultStatData.html#a9c3caa803ddfbb9e059eba055c00aae9">WidgetType</a> = <a class="code hl_enumvalue" href="FResultStatData_8h.html#aaac025acffbbed1878d579b0b3930065a02c86eb2792f3262c21d030a87e19793">EResultItemWidgetType::Symbol</a>;</div>
-<div class="line"><span class="lineno">  184</span>        TimeResultData.<a class="code hl_variable" href="structFResultStatData.html#a75e66157640bcf669787b2e987ab4412">ColorType</a> = <a class="code hl_enumvalue" href="FColorStyleData_8h.html#aefed1c032e349fb49159bbab1f32a3eba994ae1d9731cebe455aff211bcb25b93">EColorStyleType::Gray</a>;</div>
-<div class="line"><span class="lineno">  185</span>        TimeResultData.<a class="code hl_variable" href="structFResultStatData.html#a79c960d0257ca39904aba1503a1f5a5e">TitleText</a> = FText::FromString(TEXT(<span class="stringliteral">&quot;Time&quot;</span>));</div>
-<div class="line"><span class="lineno">  186</span>        TimeResultData.<a class="code hl_variable" href="structFResultStatData.html#a40b2ff380b44130455998b5fd7288c65">SymbolTextureType</a> = <a class="code hl_enumvalue" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2aa76d4ef5f3f6a672bbfab2865563e530">EResourceTextureType::Time</a>;</div>
-<div class="line"><span class="lineno">  187</span>        TimeResultData.<a class="code hl_variable" href="structFResultStatData.html#a5264bce607096b760b0c3b0add5641e7">SymbolValue</a> = FString::Printf(TEXT(<span class="stringliteral">&quot;%02d:%02d&quot;</span>), Minutes, Seconds);</div>
-<div class="line"><span class="lineno">  188</span>        <a class="code hl_variable" href="classUPopup__Result.html#a14b725660bcae0e76e5f71b9064badfc">Result_Time</a>-&gt;InitData(TimeResultData);</div>
-<div class="line"><span class="lineno">  189</span>    }</div>
-<div class="line"><span class="lineno">  190</span> </div>
-<div class="line"><span class="lineno">  191</span>    <a class="code hl_struct" href="structFResultStatData.html">FResultStatData</a> GradeResultData;</div>
-<div class="line"><span class="lineno">  192</span>    GradeResultData.<a class="code hl_variable" href="structFResultStatData.html#a9c3caa803ddfbb9e059eba055c00aae9">WidgetType</a> = <a class="code hl_enumvalue" href="FResultStatData_8h.html#aaac025acffbbed1878d579b0b3930065a4b3b9db8c9784468094acde0f8bf7071">EResultItemWidgetType::Grade</a>;</div>
-<div class="line"><span class="lineno">  193</span>    GradeResultData.<a class="code hl_variable" href="structFResultStatData.html#a75e66157640bcf669787b2e987ab4412">ColorType</a> = <a class="code hl_enumvalue" href="FColorStyleData_8h.html#aefed1c032e349fb49159bbab1f32a3eba994ae1d9731cebe455aff211bcb25b93">EColorStyleType::Gray</a>;</div>
-<div class="line"><span class="lineno">  194</span>    GradeResultData.<a class="code hl_variable" href="structFResultStatData.html#a79c960d0257ca39904aba1503a1f5a5e">TitleText</a> = FText::FromString(TEXT(<span class="stringliteral">&quot;Grade&quot;</span>));</div>
-<div class="line"><span class="lineno">  195</span>    GradeResultData.<a class="code hl_variable" href="structFResultStatData.html#aac45c5869b828c7f8cfb47807cdb968f">GradeTextureType</a> = <a class="code hl_function" href="classULingoGameHelper.html#a86b2f311de84ecbb0f1716e3389e4ecd">ULingoGameHelper::ConvertGradeString</a>(ResponseData.<a class="code hl_variable" href="structFResponseReadResult.html#ac494d096b2250e595c8e6c82d456875b">grade</a>);</div>
-<div class="line"><span class="lineno">  196</span>    <a class="code hl_variable" href="classUPopup__Result.html#a2ec287e78c62a691c3780748a1e0e94f">Result_Grade</a>-&gt;InitData(GradeResultData);</div>
+<p class="definition"><a class="el" href="Popup__Result_8cpp_source.html">Popup_Result.cpp</a> 파일의 <a class="el" href="Popup__Result_8cpp_source.html#l00180">180</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  181</span>{</div>
+<div class="line"><span class="lineno">  182</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> GS = Cast&lt;ALingoGameState&gt;(GetWorld()-&gt;GetGameState()))</div>
+<div class="line"><span class="lineno">  183</span>    {</div>
+<div class="line"><span class="lineno">  184</span>        <span class="comment">// Symbol로 타임 처리</span></div>
+<div class="line"><span class="lineno">  185</span>        <span class="keyword">auto</span> TimeTaken = GS-&gt;GetTimeTaken();</div>
+<div class="line"><span class="lineno">  186</span>        <span class="keyword">const</span> int32 Minutes = FMath::FloorToInt(TimeTaken / 60.f);</div>
+<div class="line"><span class="lineno">  187</span>        <span class="keyword">const</span> int32 Seconds = FMath::FloorToInt(TimeTaken) % 60;</div>
+<div class="line"><span class="lineno">  188</span> </div>
+<div class="line"><span class="lineno">  189</span>        <a class="code hl_struct" href="structFResultStatData.html">FResultStatData</a> TimeResultData;</div>
+<div class="line"><span class="lineno">  190</span>        TimeResultData.<a class="code hl_variable" href="structFResultStatData.html#a9c3caa803ddfbb9e059eba055c00aae9">WidgetType</a> = <a class="code hl_enumvalue" href="FResultStatData_8h.html#aaac025acffbbed1878d579b0b3930065a02c86eb2792f3262c21d030a87e19793">EResultItemWidgetType::Symbol</a>;</div>
+<div class="line"><span class="lineno">  191</span>        TimeResultData.<a class="code hl_variable" href="structFResultStatData.html#a75e66157640bcf669787b2e987ab4412">ColorType</a> = <a class="code hl_enumvalue" href="FColorStyleData_8h.html#aefed1c032e349fb49159bbab1f32a3eba994ae1d9731cebe455aff211bcb25b93">EColorStyleType::Gray</a>;</div>
+<div class="line"><span class="lineno">  192</span>        TimeResultData.<a class="code hl_variable" href="structFResultStatData.html#a79c960d0257ca39904aba1503a1f5a5e">TitleText</a> = FText::FromString(TEXT(<span class="stringliteral">&quot;Time&quot;</span>));</div>
+<div class="line"><span class="lineno">  193</span>        TimeResultData.<a class="code hl_variable" href="structFResultStatData.html#a40b2ff380b44130455998b5fd7288c65">SymbolTextureType</a> = <a class="code hl_enumvalue" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2aa76d4ef5f3f6a672bbfab2865563e530">EResourceTextureType::Time</a>;</div>
+<div class="line"><span class="lineno">  194</span>        TimeResultData.<a class="code hl_variable" href="structFResultStatData.html#a5264bce607096b760b0c3b0add5641e7">SymbolValue</a> = FString::Printf(TEXT(<span class="stringliteral">&quot;%02d:%02d&quot;</span>), Minutes, Seconds);</div>
+<div class="line"><span class="lineno">  195</span>        <a class="code hl_variable" href="classUPopup__Result.html#a14b725660bcae0e76e5f71b9064badfc">Result_Time</a>-&gt;InitData(TimeResultData);</div>
+<div class="line"><span class="lineno">  196</span>    }</div>
 <div class="line"><span class="lineno">  197</span> </div>
-<div class="line"><span class="lineno">  198</span>    <a class="code hl_struct" href="structFResultStatData.html">FResultStatData</a> TopRateResultData;</div>
-<div class="line"><span class="lineno">  199</span>    TopRateResultData.<a class="code hl_variable" href="structFResultStatData.html#a9c3caa803ddfbb9e059eba055c00aae9">WidgetType</a> = <a class="code hl_enumvalue" href="FResultStatData_8h.html#aaac025acffbbed1878d579b0b3930065adcb66ff6e4a2517ade22183779939c9d">EResultItemWidgetType::Rate</a>;</div>
-<div class="line"><span class="lineno">  200</span>    TopRateResultData.<a class="code hl_variable" href="structFResultStatData.html#a75e66157640bcf669787b2e987ab4412">ColorType</a> = <a class="code hl_enumvalue" href="FColorStyleData_8h.html#aefed1c032e349fb49159bbab1f32a3eba994ae1d9731cebe455aff211bcb25b93">EColorStyleType::Gray</a>;</div>
-<div class="line"><span class="lineno">  201</span>    TopRateResultData.<a class="code hl_variable" href="structFResultStatData.html#a79c960d0257ca39904aba1503a1f5a5e">TitleText</a> = FText::FromString(TEXT(<span class="stringliteral">&quot;Rate&quot;</span>));</div>
-<div class="line"><span class="lineno">  202</span>    TopRateResultData.<a class="code hl_variable" href="structFResultStatData.html#a61bcfba9b5e9da91e4c34a190489907f">RatePercent</a> = ResponseData.<a class="code hl_variable" href="structFResponseReadResult.html#a9b90bad45b2659ddf80b40e083b15168">top_percent</a>;</div>
-<div class="line"><span class="lineno">  203</span>    <a class="code hl_variable" href="classUPopup__Result.html#a9fd7243319715d3171361087db73550b">Result_TopRate</a>-&gt;InitData(TopRateResultData);</div>
-<div class="line"><span class="lineno">  204</span>        </div>
-<div class="line"><span class="lineno">  205</span>    <a class="code hl_struct" href="structFResultStatData.html">FResultStatData</a> AverageScoreResultData;</div>
-<div class="line"><span class="lineno">  206</span>    AverageScoreResultData.<a class="code hl_variable" href="structFResultStatData.html#a9c3caa803ddfbb9e059eba055c00aae9">WidgetType</a> = <a class="code hl_enumvalue" href="FResultStatData_8h.html#aaac025acffbbed1878d579b0b3930065a02c86eb2792f3262c21d030a87e19793">EResultItemWidgetType::Symbol</a>;</div>
-<div class="line"><span class="lineno">  207</span>    AverageScoreResultData.<a class="code hl_variable" href="structFResultStatData.html#a75e66157640bcf669787b2e987ab4412">ColorType</a> = <a class="code hl_enumvalue" href="FColorStyleData_8h.html#aefed1c032e349fb49159bbab1f32a3eba994ae1d9731cebe455aff211bcb25b93">EColorStyleType::Gray</a>;</div>
-<div class="line"><span class="lineno">  208</span>    AverageScoreResultData.<a class="code hl_variable" href="structFResultStatData.html#a79c960d0257ca39904aba1503a1f5a5e">TitleText</a> = FText::FromString(TEXT(<span class="stringliteral">&quot;Score&quot;</span>));</div>
-<div class="line"><span class="lineno">  209</span>    AverageScoreResultData.<a class="code hl_variable" href="structFResultStatData.html#a40b2ff380b44130455998b5fd7288c65">SymbolTextureType</a> = <a class="code hl_enumvalue" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2a5dd135d1bcfa7f63c3b7f25425c2a4a1">EResourceTextureType::Score</a>;</div>
-<div class="line"><span class="lineno">  210</span>    AverageScoreResultData.<a class="code hl_variable" href="structFResultStatData.html#a5264bce607096b760b0c3b0add5641e7">SymbolValue</a> = FString::Printf(TEXT(<span class="stringliteral">&quot;%d&quot;</span>), <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(ResponseData.<a class="code hl_variable" href="structFResponseReadResult.html#ace546aa7a22da04f789890587359e514">average_score</a>));</div>
-<div class="line"><span class="lineno">  211</span>    <a class="code hl_variable" href="classUPopup__Result.html#a44952857c7a03cd3e097a1f28c98fb4b">Result_AverageScore</a>-&gt;InitData(AverageScoreResultData);</div>
-<div class="line"><span class="lineno">  212</span>}</div>
+<div class="line"><span class="lineno">  198</span>    <a class="code hl_struct" href="structFResultStatData.html">FResultStatData</a> GradeResultData;</div>
+<div class="line"><span class="lineno">  199</span>    GradeResultData.<a class="code hl_variable" href="structFResultStatData.html#a9c3caa803ddfbb9e059eba055c00aae9">WidgetType</a> = <a class="code hl_enumvalue" href="FResultStatData_8h.html#aaac025acffbbed1878d579b0b3930065a4b3b9db8c9784468094acde0f8bf7071">EResultItemWidgetType::Grade</a>;</div>
+<div class="line"><span class="lineno">  200</span>    GradeResultData.<a class="code hl_variable" href="structFResultStatData.html#a75e66157640bcf669787b2e987ab4412">ColorType</a> = <a class="code hl_enumvalue" href="FColorStyleData_8h.html#aefed1c032e349fb49159bbab1f32a3eba994ae1d9731cebe455aff211bcb25b93">EColorStyleType::Gray</a>;</div>
+<div class="line"><span class="lineno">  201</span>    GradeResultData.<a class="code hl_variable" href="structFResultStatData.html#a79c960d0257ca39904aba1503a1f5a5e">TitleText</a> = FText::FromString(TEXT(<span class="stringliteral">&quot;Grade&quot;</span>));</div>
+<div class="line"><span class="lineno">  202</span>    GradeResultData.<a class="code hl_variable" href="structFResultStatData.html#aac45c5869b828c7f8cfb47807cdb968f">GradeTextureType</a> = <a class="code hl_function" href="classULingoGameHelper.html#a86b2f311de84ecbb0f1716e3389e4ecd">ULingoGameHelper::ConvertGradeString</a>(ResponseData.<a class="code hl_variable" href="structFResponseReadResult.html#ac494d096b2250e595c8e6c82d456875b">grade</a>);</div>
+<div class="line"><span class="lineno">  203</span>    <a class="code hl_variable" href="classUPopup__Result.html#a2ec287e78c62a691c3780748a1e0e94f">Result_Grade</a>-&gt;InitData(GradeResultData);</div>
+<div class="line"><span class="lineno">  204</span> </div>
+<div class="line"><span class="lineno">  205</span>    <a class="code hl_struct" href="structFResultStatData.html">FResultStatData</a> TopRateResultData;</div>
+<div class="line"><span class="lineno">  206</span>    TopRateResultData.<a class="code hl_variable" href="structFResultStatData.html#a9c3caa803ddfbb9e059eba055c00aae9">WidgetType</a> = <a class="code hl_enumvalue" href="FResultStatData_8h.html#aaac025acffbbed1878d579b0b3930065adcb66ff6e4a2517ade22183779939c9d">EResultItemWidgetType::Rate</a>;</div>
+<div class="line"><span class="lineno">  207</span>    TopRateResultData.<a class="code hl_variable" href="structFResultStatData.html#a75e66157640bcf669787b2e987ab4412">ColorType</a> = <a class="code hl_enumvalue" href="FColorStyleData_8h.html#aefed1c032e349fb49159bbab1f32a3eba994ae1d9731cebe455aff211bcb25b93">EColorStyleType::Gray</a>;</div>
+<div class="line"><span class="lineno">  208</span>    TopRateResultData.<a class="code hl_variable" href="structFResultStatData.html#a79c960d0257ca39904aba1503a1f5a5e">TitleText</a> = FText::FromString(TEXT(<span class="stringliteral">&quot;Rate&quot;</span>));</div>
+<div class="line"><span class="lineno">  209</span>    TopRateResultData.<a class="code hl_variable" href="structFResultStatData.html#a61bcfba9b5e9da91e4c34a190489907f">RatePercent</a> = ResponseData.<a class="code hl_variable" href="structFResponseReadResult.html#a9b90bad45b2659ddf80b40e083b15168">top_percent</a>;</div>
+<div class="line"><span class="lineno">  210</span>    <a class="code hl_variable" href="classUPopup__Result.html#a9fd7243319715d3171361087db73550b">Result_TopRate</a>-&gt;InitData(TopRateResultData);</div>
+<div class="line"><span class="lineno">  211</span>        </div>
+<div class="line"><span class="lineno">  212</span>    <a class="code hl_struct" href="structFResultStatData.html">FResultStatData</a> AverageScoreResultData;</div>
+<div class="line"><span class="lineno">  213</span>    AverageScoreResultData.<a class="code hl_variable" href="structFResultStatData.html#a9c3caa803ddfbb9e059eba055c00aae9">WidgetType</a> = <a class="code hl_enumvalue" href="FResultStatData_8h.html#aaac025acffbbed1878d579b0b3930065a02c86eb2792f3262c21d030a87e19793">EResultItemWidgetType::Symbol</a>;</div>
+<div class="line"><span class="lineno">  214</span>    AverageScoreResultData.<a class="code hl_variable" href="structFResultStatData.html#a75e66157640bcf669787b2e987ab4412">ColorType</a> = <a class="code hl_enumvalue" href="FColorStyleData_8h.html#aefed1c032e349fb49159bbab1f32a3eba994ae1d9731cebe455aff211bcb25b93">EColorStyleType::Gray</a>;</div>
+<div class="line"><span class="lineno">  215</span>    AverageScoreResultData.<a class="code hl_variable" href="structFResultStatData.html#a79c960d0257ca39904aba1503a1f5a5e">TitleText</a> = FText::FromString(TEXT(<span class="stringliteral">&quot;Score&quot;</span>));</div>
+<div class="line"><span class="lineno">  216</span>    AverageScoreResultData.<a class="code hl_variable" href="structFResultStatData.html#a40b2ff380b44130455998b5fd7288c65">SymbolTextureType</a> = <a class="code hl_enumvalue" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2a5dd135d1bcfa7f63c3b7f25425c2a4a1">EResourceTextureType::Score</a>;</div>
+<div class="line"><span class="lineno">  217</span>    AverageScoreResultData.<a class="code hl_variable" href="structFResultStatData.html#a5264bce607096b760b0c3b0add5641e7">SymbolValue</a> = FString::Printf(TEXT(<span class="stringliteral">&quot;%d&quot;</span>), <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(ResponseData.<a class="code hl_variable" href="structFResponseReadResult.html#ace546aa7a22da04f789890587359e514">average_score</a>));</div>
+<div class="line"><span class="lineno">  218</span>    <a class="code hl_variable" href="classUPopup__Result.html#a44952857c7a03cd3e097a1f28c98fb4b">Result_AverageScore</a>-&gt;InitData(AverageScoreResultData);</div>
+<div class="line"><span class="lineno">  219</span>}</div>
 <div class="ttc" id="aFColorStyleData_8h_html_aefed1c032e349fb49159bbab1f32a3eba994ae1d9731cebe455aff211bcb25b93"><div class="ttname"><a href="FColorStyleData_8h.html#aefed1c032e349fb49159bbab1f32a3eba994ae1d9731cebe455aff211bcb25b93">EColorStyleType::Gray</a></div><div class="ttdeci">@ Gray</div></div>
 <div class="ttc" id="astructFResponseReadResult_html_a9b90bad45b2659ddf80b40e083b15168"><div class="ttname"><a href="structFResponseReadResult.html#a9b90bad45b2659ddf80b40e083b15168">FResponseReadResult::top_percent</a></div><div class="ttdeci">float top_percent</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l01003">NetworkData.h:1003</a></div></div>
 <div class="ttc" id="astructFResponseReadResult_html_ac494d096b2250e595c8e6c82d456875b"><div class="ttname"><a href="structFResponseReadResult.html#ac494d096b2250e595c8e6c82d456875b">FResponseReadResult::grade</a></div><div class="ttdeci">FString grade</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00997">NetworkData.h:997</a></div></div>
@@ -500,7 +507,7 @@ Private 속성</h2></td></tr>
 </div><!-- fragment -->
 <p class="reference">다음을 참조함 :  <a class="el" href="NetworkData_8h_source.html#l01000">FResponseReadResult::average_score</a>, <a class="el" href="FResultStatData_8h_source.html#l00032">FResultStatData::ColorType</a>, <a class="el" href="ULingoGameHelper_8cpp_source.html#l00188">ULingoGameHelper::ConvertGradeString()</a>, <a class="el" href="FResultStatData_8h.html#aaac025acffbbed1878d579b0b3930065a4b3b9db8c9784468094acde0f8bf7071">Grade</a>, <a class="el" href="NetworkData_8h_source.html#l00997">FResponseReadResult::grade</a>, <a class="el" href="FResultStatData_8h_source.html#l00040">FResultStatData::GradeTextureType</a>, <a class="el" href="FColorStyleData_8h.html#aefed1c032e349fb49159bbab1f32a3eba994ae1d9731cebe455aff211bcb25b93">Gray</a>, <a class="el" href="FResultStatData_8h.html#aaac025acffbbed1878d579b0b3930065adcb66ff6e4a2517ade22183779939c9d">Rate</a>, <a class="el" href="FResultStatData_8h_source.html#l00051">FResultStatData::RatePercent</a>, <a class="el" href="Popup__Result_8h_source.html#l00069">Result_AverageScore</a>, <a class="el" href="Popup__Result_8h_source.html#l00065">Result_Grade</a>, <a class="el" href="Popup__Result_8h_source.html#l00063">Result_Time</a>, <a class="el" href="Popup__Result_8h_source.html#l00067">Result_TopRate</a>, <a class="el" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2a5dd135d1bcfa7f63c3b7f25425c2a4a1">Score</a>, <a class="el" href="FResultStatData_8h.html#aaac025acffbbed1878d579b0b3930065a02c86eb2792f3262c21d030a87e19793">Symbol</a>, <a class="el" href="FResultStatData_8h_source.html#l00055">FResultStatData::SymbolTextureType</a>, <a class="el" href="FResultStatData_8h_source.html#l00058">FResultStatData::SymbolValue</a>, <a class="el" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2aa76d4ef5f3f6a672bbfab2865563e530">Time</a>, <a class="el" href="FResultStatData_8h_source.html#l00036">FResultStatData::TitleText</a>, <a class="el" href="NetworkData_8h_source.html#l01003">FResponseReadResult::top_percent</a>, <a class="el" href="FResultStatData_8h_source.html#l00028">FResultStatData::WidgetType</a>.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="Popup__Result_8cpp_source.html#l00031">InitPopup()</a>, <a class="el" href="Popup__Result_8cpp_source.html#l00316">OnResponseReadResult()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="Popup__Result_8cpp_source.html#l00032">InitPopup()</a>, <a class="el" href="Popup__Result_8cpp_source.html#l00323">OnResponseReadResult()</a>.</p>
 <div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-5-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-5-summary" class="dynsummary" style="display:block;">
@@ -541,30 +548,30 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="Popup__Result_8cpp_source.html">Popup_Result.cpp</a> 파일의 <a class="el" href="Popup__Result_8cpp_source.html#l00094">94</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   95</span>{</div>
-<div class="line"><span class="lineno">   96</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> GS = Cast&lt;ALingoGameState&gt;(GetWorld()-&gt;GetGameState()))</div>
-<div class="line"><span class="lineno">   97</span>    {</div>
-<div class="line"><span class="lineno">   98</span>        <span class="keywordflow">if</span> ( <a class="code hl_variable" href="classUPopup__Result.html#a1695150f0ab022f13a06c7f5e57f810a">QuestType</a> == <a class="code hl_enumvalue" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a7a1a5f3e79fdc91edf2f5ead9d66abb4">EQuestType::Read</a>)</div>
-<div class="line"><span class="lineno">   99</span>        {</div>
-<div class="line"><span class="lineno">  100</span>            <a class="code hl_variable" href="classUPopup__Result.html#a8cfafa30b850b06c274d16d5f10a7ff5">Txt_Kor</a>-&gt;SetText(FText::FromString(GS-&gt;ReadScenarioData.full_data.Kor));</div>
-<div class="line"><span class="lineno">  101</span>            <a class="code hl_variable" href="classUPopup__Result.html#a3ae771cb94df4c758020d094c7aea236">Txt_Eng</a>-&gt;SetText(FText::FromString(GS-&gt;ReadScenarioData.full_data.Eng));</div>
-<div class="line"><span class="lineno">  102</span> </div>
-<div class="line"><span class="lineno">  103</span>            <a class="code hl_variable" href="classUPopup__Result.html#a01a6c8e5e15fe7da10155e24623ebc4f">Txt_Title</a>-&gt;SetText(FText::FromString(TEXT(<span class="stringliteral">&quot;Read Quest&quot;</span>)));</div>
-<div class="line"><span class="lineno">  104</span>            <span class="keywordflow">if</span> (UTexture2D* Texture = UGameDataManager::Get(<span class="keyword">this</span>)-&gt;GetTexture(<a class="code hl_enumvalue" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2a7a1a5f3e79fdc91edf2f5ead9d66abb4">EResourceTextureType::Read</a>))</div>
-<div class="line"><span class="lineno">  105</span>                <a class="code hl_variable" href="classUPopup__Result.html#a4e169c76e8d9d4bb90d7240769f37d0c">Image_Symbol</a>-&gt;SetBrushFromTexture(Texture);</div>
-<div class="line"><span class="lineno">  106</span>        }</div>
-<div class="line"><span class="lineno">  107</span>        <span class="keywordflow">else</span> <span class="keywordflow">if</span> ( <a class="code hl_variable" href="classUPopup__Result.html#a1695150f0ab022f13a06c7f5e57f810a">QuestType</a> == <a class="code hl_enumvalue" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921ace6802b46091c31e2ec2363883fe8369">EQuestType::Listen</a> )</div>
-<div class="line"><span class="lineno">  108</span>        {</div>
-<div class="line"><span class="lineno">  109</span>            <a class="code hl_variable" href="classUPopup__Result.html#a8cfafa30b850b06c274d16d5f10a7ff5">Txt_Kor</a>-&gt;SetText(FText::FromString(GS-&gt;ListenScenarioData.full_data.Kor));</div>
-<div class="line"><span class="lineno">  110</span>            <a class="code hl_variable" href="classUPopup__Result.html#a3ae771cb94df4c758020d094c7aea236">Txt_Eng</a>-&gt;SetText(FText::FromString(GS-&gt;ListenScenarioData.full_data.Eng));</div>
-<div class="line"><span class="lineno">  111</span> </div>
-<div class="line"><span class="lineno">  112</span>            <a class="code hl_variable" href="classUPopup__Result.html#a01a6c8e5e15fe7da10155e24623ebc4f">Txt_Title</a>-&gt;SetText(FText::FromString(TEXT(<span class="stringliteral">&quot;Listen Quest&quot;</span>)));</div>
-<div class="line"><span class="lineno">  113</span>            <span class="keywordflow">if</span> (UTexture2D* Texture = UGameDataManager::Get(<span class="keyword">this</span>)-&gt;GetTexture(<a class="code hl_enumvalue" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2ace6802b46091c31e2ec2363883fe8369">EResourceTextureType::Listen</a>))</div>
-<div class="line"><span class="lineno">  114</span>                <a class="code hl_variable" href="classUPopup__Result.html#a4e169c76e8d9d4bb90d7240769f37d0c">Image_Symbol</a>-&gt;SetBrushFromTexture(Texture);</div>
-<div class="line"><span class="lineno">  115</span>        }</div>
-<div class="line"><span class="lineno">  116</span>    }</div>
-<div class="line"><span class="lineno">  117</span>}</div>
+<p class="definition"><a class="el" href="Popup__Result_8cpp_source.html">Popup_Result.cpp</a> 파일의 <a class="el" href="Popup__Result_8cpp_source.html#l00101">101</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  102</span>{</div>
+<div class="line"><span class="lineno">  103</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> GS = Cast&lt;ALingoGameState&gt;(GetWorld()-&gt;GetGameState()))</div>
+<div class="line"><span class="lineno">  104</span>    {</div>
+<div class="line"><span class="lineno">  105</span>        <span class="keywordflow">if</span> ( <a class="code hl_variable" href="classUPopup__Result.html#a1695150f0ab022f13a06c7f5e57f810a">QuestType</a> == <a class="code hl_enumvalue" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a7a1a5f3e79fdc91edf2f5ead9d66abb4">EQuestType::Read</a>)</div>
+<div class="line"><span class="lineno">  106</span>        {</div>
+<div class="line"><span class="lineno">  107</span>            <a class="code hl_variable" href="classUPopup__Result.html#a8cfafa30b850b06c274d16d5f10a7ff5">Txt_Kor</a>-&gt;SetText(FText::FromString(GS-&gt;ReadScenarioData.full_data.Kor));</div>
+<div class="line"><span class="lineno">  108</span>            <a class="code hl_variable" href="classUPopup__Result.html#a3ae771cb94df4c758020d094c7aea236">Txt_Eng</a>-&gt;SetText(FText::FromString(GS-&gt;ReadScenarioData.full_data.Eng));</div>
+<div class="line"><span class="lineno">  109</span> </div>
+<div class="line"><span class="lineno">  110</span>            <a class="code hl_variable" href="classUPopup__Result.html#a01a6c8e5e15fe7da10155e24623ebc4f">Txt_Title</a>-&gt;SetText(FText::FromString(TEXT(<span class="stringliteral">&quot;Read Quest&quot;</span>)));</div>
+<div class="line"><span class="lineno">  111</span>            <span class="keywordflow">if</span> (UTexture2D* Texture = UGameDataManager::Get(<span class="keyword">this</span>)-&gt;GetTexture(<a class="code hl_enumvalue" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2a7a1a5f3e79fdc91edf2f5ead9d66abb4">EResourceTextureType::Read</a>))</div>
+<div class="line"><span class="lineno">  112</span>                <a class="code hl_variable" href="classUPopup__Result.html#a4e169c76e8d9d4bb90d7240769f37d0c">Image_Symbol</a>-&gt;SetBrushFromTexture(Texture);</div>
+<div class="line"><span class="lineno">  113</span>        }</div>
+<div class="line"><span class="lineno">  114</span>        <span class="keywordflow">else</span> <span class="keywordflow">if</span> ( <a class="code hl_variable" href="classUPopup__Result.html#a1695150f0ab022f13a06c7f5e57f810a">QuestType</a> == <a class="code hl_enumvalue" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921ace6802b46091c31e2ec2363883fe8369">EQuestType::Listen</a> )</div>
+<div class="line"><span class="lineno">  115</span>        {</div>
+<div class="line"><span class="lineno">  116</span>            <a class="code hl_variable" href="classUPopup__Result.html#a8cfafa30b850b06c274d16d5f10a7ff5">Txt_Kor</a>-&gt;SetText(FText::FromString(GS-&gt;ListenScenarioData.full_data.Kor));</div>
+<div class="line"><span class="lineno">  117</span>            <a class="code hl_variable" href="classUPopup__Result.html#a3ae771cb94df4c758020d094c7aea236">Txt_Eng</a>-&gt;SetText(FText::FromString(GS-&gt;ListenScenarioData.full_data.Eng));</div>
+<div class="line"><span class="lineno">  118</span> </div>
+<div class="line"><span class="lineno">  119</span>            <a class="code hl_variable" href="classUPopup__Result.html#a01a6c8e5e15fe7da10155e24623ebc4f">Txt_Title</a>-&gt;SetText(FText::FromString(TEXT(<span class="stringliteral">&quot;Listen Quest&quot;</span>)));</div>
+<div class="line"><span class="lineno">  120</span>            <span class="keywordflow">if</span> (UTexture2D* Texture = UGameDataManager::Get(<span class="keyword">this</span>)-&gt;GetTexture(<a class="code hl_enumvalue" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2ace6802b46091c31e2ec2363883fe8369">EResourceTextureType::Listen</a>))</div>
+<div class="line"><span class="lineno">  121</span>                <a class="code hl_variable" href="classUPopup__Result.html#a4e169c76e8d9d4bb90d7240769f37d0c">Image_Symbol</a>-&gt;SetBrushFromTexture(Texture);</div>
+<div class="line"><span class="lineno">  122</span>        }</div>
+<div class="line"><span class="lineno">  123</span>    }</div>
+<div class="line"><span class="lineno">  124</span>}</div>
 <div class="ttc" id="aFResourceTextureData_8h_html_a98b8b3000fb3fc86e37c624651589cb2a7a1a5f3e79fdc91edf2f5ead9d66abb4"><div class="ttname"><a href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2a7a1a5f3e79fdc91edf2f5ead9d66abb4">EResourceTextureType::Read</a></div><div class="ttdeci">@ Read</div></div>
 <div class="ttc" id="aFResourceTextureData_8h_html_a98b8b3000fb3fc86e37c624651589cb2ace6802b46091c31e2ec2363883fe8369"><div class="ttname"><a href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2ace6802b46091c31e2ec2363883fe8369">EResourceTextureType::Listen</a></div><div class="ttdeci">@ Listen</div></div>
 <div class="ttc" id="aclassUPopup__Result_html_a01a6c8e5e15fe7da10155e24623ebc4f"><div class="ttname"><a href="classUPopup__Result.html#a01a6c8e5e15fe7da10155e24623ebc4f">UPopup_Result::Txt_Title</a></div><div class="ttdeci">TObjectPtr&lt; class UTextBlock &gt; Txt_Title</div><div class="ttdef"><b>Definition</b> <a href="Popup__Result_8h_source.html#l00045">Popup_Result.h:45</a></div></div>
@@ -574,7 +581,7 @@ Private 속성</h2></td></tr>
 </div><!-- fragment -->
 <p class="reference">다음을 참조함 :  <a class="el" href="Popup__Result_8h_source.html#l00048">Image_Symbol</a>, <a class="el" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921ace6802b46091c31e2ec2363883fe8369">Listen</a>, <a class="el" href="Popup__Result_8h_source.html#l00075">QuestType</a>, <a class="el" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a7a1a5f3e79fdc91edf2f5ead9d66abb4">Read</a>, <a class="el" href="Popup__Result_8h_source.html#l00057">Txt_Eng</a>, <a class="el" href="Popup__Result_8h_source.html#l00054">Txt_Kor</a>, <a class="el" href="Popup__Result_8h_source.html#l00045">Txt_Title</a>.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="Popup__Result_8cpp_source.html#l00031">InitPopup()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="Popup__Result_8cpp_source.html#l00032">InitPopup()</a>.</p>
 <div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-7-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-7-summary" class="dynsummary" style="display:block;">
@@ -608,59 +615,59 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="Popup__Result_8cpp_source.html">Popup_Result.cpp</a> 파일의 <a class="el" href="Popup__Result_8cpp_source.html#l00119">119</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  120</span>{</div>
-<div class="line"><span class="lineno">  121</span>    <a class="code hl_class" href="classALingoGameState.html">ALingoGameState</a>* GS = Cast&lt;ALingoGameState&gt;(GetWorld()-&gt;GetGameState());</div>
-<div class="line"><span class="lineno">  122</span>    <span class="keywordflow">if</span> (!GS)</div>
-<div class="line"><span class="lineno">  123</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  124</span>    </div>
-<div class="line"><span class="lineno">  125</span>    <span class="comment">// 틀린 인덱스 리스트</span></div>
-<div class="line"><span class="lineno">  126</span>    TArray&lt;int32&gt; WrongList;</div>
-<div class="line"><span class="lineno">  127</span>    <span class="comment">// 전체 캐리어 정보</span></div>
-<div class="line"><span class="lineno">  128</span>    TArray&lt;FScenarioTargetData&gt; ScenarioData;</div>
-<div class="line"><span class="lineno">  129</span>    <a class="code hl_struct" href="structFScenarioTargetData.html">FScenarioTargetData</a> CorrectData;</div>
-<div class="line"><span class="lineno">  130</span>    </div>
-<div class="line"><span class="lineno">  131</span>    <span class="keywordflow">if</span> ( <a class="code hl_variable" href="classUPopup__Result.html#a1695150f0ab022f13a06c7f5e57f810a">QuestType</a> == <a class="code hl_enumvalue" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a7a1a5f3e79fdc91edf2f5ead9d66abb4">EQuestType::Read</a>)</div>
-<div class="line"><span class="lineno">  132</span>    {</div>
-<div class="line"><span class="lineno">  133</span>        WrongList = GS-&gt;<a class="code hl_variable" href="classALingoGameState.html#ac68fdc03f32358fc9ca40fc5f4ec9cc8">WrongReadAnswerList</a>;</div>
-<div class="line"><span class="lineno">  134</span>        ScenarioData = GS-&gt;<a class="code hl_function" href="classALingoGameState.html#ad05acb80ff93078c77995753905def43">GetReadScenarioData</a>().<a class="code hl_variable" href="structFResponseReadScenario.html#a92d58dfbe7a770da7236ae36d38165d0">target_data</a>;</div>
-<div class="line"><span class="lineno">  135</span>        CorrectData = GS-&gt;<a class="code hl_function" href="classALingoGameState.html#ad05acb80ff93078c77995753905def43">GetReadScenarioData</a>().<a class="code hl_function" href="structFResponseReadScenario.html#a3e12d5d43f688566fb177a5e9ce86ab5">GetCorrectAnswerData</a>();</div>
-<div class="line"><span class="lineno">  136</span>    }</div>
-<div class="line"><span class="lineno">  137</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> ( <a class="code hl_variable" href="classUPopup__Result.html#a1695150f0ab022f13a06c7f5e57f810a">QuestType</a> == <a class="code hl_enumvalue" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921ace6802b46091c31e2ec2363883fe8369">EQuestType::Listen</a> )</div>
-<div class="line"><span class="lineno">  138</span>    {</div>
-<div class="line"><span class="lineno">  139</span>        WrongList = GS-&gt;<a class="code hl_variable" href="classALingoGameState.html#a00a86de1187369b05b01f01889d78b45">WrongListenAnswerList</a>;</div>
-<div class="line"><span class="lineno">  140</span>        ScenarioData = GS-&gt;<a class="code hl_variable" href="classALingoGameState.html#a32ce9e91913292c7b8e270af75482c11">TryListenAnswerData</a>.<a class="code hl_variable" href="structFResponseListenScenario.html#acb666ef0e5c937213f5e1ea20f71af21">target_data</a>;</div>
-<div class="line"><span class="lineno">  141</span>        CorrectData = GS-&gt;<a class="code hl_function" href="classALingoGameState.html#a05dda129c32a08fc3432424f612ce50b">GetListenScenarioData</a>().<a class="code hl_function" href="structFResponseListenScenario.html#a25c51577b0a749c6711576b78e0235b6">GetCorrectAnswerData</a>();</div>
-<div class="line"><span class="lineno">  142</span>    }</div>
-<div class="line"><span class="lineno">  143</span>    </div>
-<div class="line"><span class="lineno">  144</span>    <span class="comment">// 기존 항목 제거</span></div>
-<div class="line"><span class="lineno">  145</span>    <a class="code hl_variable" href="classUPopup__Result.html#af4922f4128555f24f4f4b1a0f9cc87c1">VerticalBox</a>-&gt;ClearChildren();</div>
-<div class="line"><span class="lineno">  146</span>    <span class="comment">// WrongList의 각 항목을 UAnswerItem으로 추가</span></div>
-<div class="line"><span class="lineno">  147</span>    <span class="keywordflow">for</span> (int32 i = 0; i &lt; WrongList.Num(); i++)</div>
-<div class="line"><span class="lineno">  148</span>    {</div>
-<div class="line"><span class="lineno">  149</span>        <span class="keyword">const</span> <a class="code hl_struct" href="structFScenarioTargetData.html">FScenarioTargetData</a>&amp; SD = ScenarioData[WrongList[i]];</div>
-<div class="line"><span class="lineno">  150</span> </div>
-<div class="line"><span class="lineno">  151</span>        <span class="comment">// UAnswerItem 위젯 생성</span></div>
-<div class="line"><span class="lineno">  152</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUPopup__Result.html#afe1d30fae892ff933cddfac06c483fe3">AnswerItemClass</a>)</div>
-<div class="line"><span class="lineno">  153</span>        {</div>
-<div class="line"><span class="lineno">  154</span>            <a class="code hl_class" href="classUAnswerItem.html">UAnswerItem</a>* AnswerItem = CreateWidget&lt;UAnswerItem&gt;(<span class="keyword">this</span>, <a class="code hl_variable" href="classUPopup__Result.html#afe1d30fae892ff933cddfac06c483fe3">AnswerItemClass</a>);</div>
-<div class="line"><span class="lineno">  155</span>            <span class="keywordflow">if</span> (AnswerItem)</div>
-<div class="line"><span class="lineno">  156</span>            {</div>
-<div class="line"><span class="lineno">  157</span>                <span class="comment">// AnswerItem 초기화</span></div>
-<div class="line"><span class="lineno">  158</span>                AnswerItem-&gt;<a class="code hl_function" href="classUAnswerItem.html#a8a4c147fb51c5627e7bcf9c8713d106e">InitInfo</a>(<a class="code hl_variable" href="classUPopup__Result.html#a1695150f0ab022f13a06c7f5e57f810a">QuestType</a>, i + 1, SD, CorrectData);</div>
-<div class="line"><span class="lineno">  159</span>                </div>
-<div class="line"><span class="lineno">  160</span>                <span class="comment">// HorizontalBox에 추가</span></div>
-<div class="line"><span class="lineno">  161</span>                <a class="code hl_variable" href="classUPopup__Result.html#af4922f4128555f24f4f4b1a0f9cc87c1">VerticalBox</a>-&gt;AddChild(AnswerItem);</div>
-<div class="line"><span class="lineno">  162</span> </div>
-<div class="line"><span class="lineno">  163</span>                {</div>
-<div class="line"><span class="lineno">  164</span>                    USpacer* Spacer = NewObject&lt;USpacer&gt;(<a class="code hl_variable" href="classUPopup__Result.html#af4922f4128555f24f4f4b1a0f9cc87c1">VerticalBox</a>);</div>
-<div class="line"><span class="lineno">  165</span>                    Spacer-&gt;SetSize(FVector2D(1.f, 10.f));</div>
-<div class="line"><span class="lineno">  166</span>                    <a class="code hl_variable" href="classUPopup__Result.html#af4922f4128555f24f4f4b1a0f9cc87c1">VerticalBox</a>-&gt;AddChild(Spacer);</div>
-<div class="line"><span class="lineno">  167</span>                }</div>
-<div class="line"><span class="lineno">  168</span>            }</div>
-<div class="line"><span class="lineno">  169</span>        }</div>
-<div class="line"><span class="lineno">  170</span>    }</div>
-<div class="line"><span class="lineno">  171</span>}</div>
+<p class="definition"><a class="el" href="Popup__Result_8cpp_source.html">Popup_Result.cpp</a> 파일의 <a class="el" href="Popup__Result_8cpp_source.html#l00126">126</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  127</span>{</div>
+<div class="line"><span class="lineno">  128</span>    <a class="code hl_class" href="classALingoGameState.html">ALingoGameState</a>* GS = Cast&lt;ALingoGameState&gt;(GetWorld()-&gt;GetGameState());</div>
+<div class="line"><span class="lineno">  129</span>    <span class="keywordflow">if</span> (!GS)</div>
+<div class="line"><span class="lineno">  130</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  131</span>    </div>
+<div class="line"><span class="lineno">  132</span>    <span class="comment">// 틀린 인덱스 리스트</span></div>
+<div class="line"><span class="lineno">  133</span>    TArray&lt;int32&gt; WrongList;</div>
+<div class="line"><span class="lineno">  134</span>    <span class="comment">// 전체 캐리어 정보</span></div>
+<div class="line"><span class="lineno">  135</span>    TArray&lt;FScenarioTargetData&gt; ScenarioData;</div>
+<div class="line"><span class="lineno">  136</span>    <a class="code hl_struct" href="structFScenarioTargetData.html">FScenarioTargetData</a> CorrectData;</div>
+<div class="line"><span class="lineno">  137</span>    </div>
+<div class="line"><span class="lineno">  138</span>    <span class="keywordflow">if</span> ( <a class="code hl_variable" href="classUPopup__Result.html#a1695150f0ab022f13a06c7f5e57f810a">QuestType</a> == <a class="code hl_enumvalue" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a7a1a5f3e79fdc91edf2f5ead9d66abb4">EQuestType::Read</a>)</div>
+<div class="line"><span class="lineno">  139</span>    {</div>
+<div class="line"><span class="lineno">  140</span>        WrongList = GS-&gt;<a class="code hl_variable" href="classALingoGameState.html#ac68fdc03f32358fc9ca40fc5f4ec9cc8">WrongReadAnswerList</a>;</div>
+<div class="line"><span class="lineno">  141</span>        ScenarioData = GS-&gt;<a class="code hl_function" href="classALingoGameState.html#ad05acb80ff93078c77995753905def43">GetReadScenarioData</a>().<a class="code hl_variable" href="structFResponseReadScenario.html#a92d58dfbe7a770da7236ae36d38165d0">target_data</a>;</div>
+<div class="line"><span class="lineno">  142</span>        CorrectData = GS-&gt;<a class="code hl_function" href="classALingoGameState.html#ad05acb80ff93078c77995753905def43">GetReadScenarioData</a>().<a class="code hl_function" href="structFResponseReadScenario.html#a3e12d5d43f688566fb177a5e9ce86ab5">GetCorrectAnswerData</a>();</div>
+<div class="line"><span class="lineno">  143</span>    }</div>
+<div class="line"><span class="lineno">  144</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> ( <a class="code hl_variable" href="classUPopup__Result.html#a1695150f0ab022f13a06c7f5e57f810a">QuestType</a> == <a class="code hl_enumvalue" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921ace6802b46091c31e2ec2363883fe8369">EQuestType::Listen</a> )</div>
+<div class="line"><span class="lineno">  145</span>    {</div>
+<div class="line"><span class="lineno">  146</span>        WrongList = GS-&gt;<a class="code hl_variable" href="classALingoGameState.html#a00a86de1187369b05b01f01889d78b45">WrongListenAnswerList</a>;</div>
+<div class="line"><span class="lineno">  147</span>        ScenarioData = GS-&gt;<a class="code hl_variable" href="classALingoGameState.html#a32ce9e91913292c7b8e270af75482c11">TryListenAnswerData</a>.<a class="code hl_variable" href="structFResponseListenScenario.html#acb666ef0e5c937213f5e1ea20f71af21">target_data</a>;</div>
+<div class="line"><span class="lineno">  148</span>        CorrectData = GS-&gt;<a class="code hl_function" href="classALingoGameState.html#a05dda129c32a08fc3432424f612ce50b">GetListenScenarioData</a>().<a class="code hl_function" href="structFResponseListenScenario.html#a25c51577b0a749c6711576b78e0235b6">GetCorrectAnswerData</a>();</div>
+<div class="line"><span class="lineno">  149</span>    }</div>
+<div class="line"><span class="lineno">  150</span>    </div>
+<div class="line"><span class="lineno">  151</span>    <span class="comment">// 기존 항목 제거</span></div>
+<div class="line"><span class="lineno">  152</span>    <a class="code hl_variable" href="classUPopup__Result.html#af4922f4128555f24f4f4b1a0f9cc87c1">VerticalBox</a>-&gt;ClearChildren();</div>
+<div class="line"><span class="lineno">  153</span>    <span class="comment">// WrongList의 각 항목을 UAnswerItem으로 추가</span></div>
+<div class="line"><span class="lineno">  154</span>    <span class="keywordflow">for</span> (int32 i = 0; i &lt; WrongList.Num(); i++)</div>
+<div class="line"><span class="lineno">  155</span>    {</div>
+<div class="line"><span class="lineno">  156</span>        <span class="keyword">const</span> <a class="code hl_struct" href="structFScenarioTargetData.html">FScenarioTargetData</a>&amp; SD = ScenarioData[WrongList[i]];</div>
+<div class="line"><span class="lineno">  157</span> </div>
+<div class="line"><span class="lineno">  158</span>        <span class="comment">// UAnswerItem 위젯 생성</span></div>
+<div class="line"><span class="lineno">  159</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUPopup__Result.html#afe1d30fae892ff933cddfac06c483fe3">AnswerItemClass</a>)</div>
+<div class="line"><span class="lineno">  160</span>        {</div>
+<div class="line"><span class="lineno">  161</span>            <a class="code hl_class" href="classUAnswerItem.html">UAnswerItem</a>* AnswerItem = CreateWidget&lt;UAnswerItem&gt;(<span class="keyword">this</span>, <a class="code hl_variable" href="classUPopup__Result.html#afe1d30fae892ff933cddfac06c483fe3">AnswerItemClass</a>);</div>
+<div class="line"><span class="lineno">  162</span>            <span class="keywordflow">if</span> (AnswerItem)</div>
+<div class="line"><span class="lineno">  163</span>            {</div>
+<div class="line"><span class="lineno">  164</span>                <span class="comment">// AnswerItem 초기화</span></div>
+<div class="line"><span class="lineno">  165</span>                AnswerItem-&gt;<a class="code hl_function" href="classUAnswerItem.html#a8a4c147fb51c5627e7bcf9c8713d106e">InitInfo</a>(<a class="code hl_variable" href="classUPopup__Result.html#a1695150f0ab022f13a06c7f5e57f810a">QuestType</a>, i + 1, SD, CorrectData);</div>
+<div class="line"><span class="lineno">  166</span>                </div>
+<div class="line"><span class="lineno">  167</span>                <span class="comment">// HorizontalBox에 추가</span></div>
+<div class="line"><span class="lineno">  168</span>                <a class="code hl_variable" href="classUPopup__Result.html#af4922f4128555f24f4f4b1a0f9cc87c1">VerticalBox</a>-&gt;AddChild(AnswerItem);</div>
+<div class="line"><span class="lineno">  169</span> </div>
+<div class="line"><span class="lineno">  170</span>                {</div>
+<div class="line"><span class="lineno">  171</span>                    USpacer* Spacer = NewObject&lt;USpacer&gt;(<a class="code hl_variable" href="classUPopup__Result.html#af4922f4128555f24f4f4b1a0f9cc87c1">VerticalBox</a>);</div>
+<div class="line"><span class="lineno">  172</span>                    Spacer-&gt;SetSize(FVector2D(1.f, 10.f));</div>
+<div class="line"><span class="lineno">  173</span>                    <a class="code hl_variable" href="classUPopup__Result.html#af4922f4128555f24f4f4b1a0f9cc87c1">VerticalBox</a>-&gt;AddChild(Spacer);</div>
+<div class="line"><span class="lineno">  174</span>                }</div>
+<div class="line"><span class="lineno">  175</span>            }</div>
+<div class="line"><span class="lineno">  176</span>        }</div>
+<div class="line"><span class="lineno">  177</span>    }</div>
+<div class="line"><span class="lineno">  178</span>}</div>
 <div class="ttc" id="aclassALingoGameState_html"><div class="ttname"><a href="classALingoGameState.html">ALingoGameState</a></div><div class="ttdef"><b>Definition</b> <a href="ALingoGameState_8h_source.html#l00028">ALingoGameState.h:29</a></div></div>
 <div class="ttc" id="aclassALingoGameState_html_a00a86de1187369b05b01f01889d78b45"><div class="ttname"><a href="classALingoGameState.html#a00a86de1187369b05b01f01889d78b45">ALingoGameState::WrongListenAnswerList</a></div><div class="ttdeci">TArray&lt; int32 &gt; WrongListenAnswerList</div><div class="ttdef"><b>Definition</b> <a href="ALingoGameState_8h_source.html#l00142">ALingoGameState.h:142</a></div></div>
 <div class="ttc" id="aclassALingoGameState_html_a05dda129c32a08fc3432424f612ce50b"><div class="ttname"><a href="classALingoGameState.html#a05dda129c32a08fc3432424f612ce50b">ALingoGameState::GetListenScenarioData</a></div><div class="ttdeci">FORCEINLINE const FResponseListenScenario &amp; GetListenScenarioData() const</div><div class="ttdef"><b>Definition</b> <a href="ALingoGameState_8h_source.html#l00049">ALingoGameState.h:49</a></div></div>
@@ -679,7 +686,7 @@ Private 속성</h2></td></tr>
 </div><!-- fragment -->
 <p class="reference">다음을 참조함 :  <a class="el" href="Popup__Result_8h_source.html#l00073">AnswerItemClass</a>, <a class="el" href="NetworkData_8cpp_source.html#l00839">FResponseReadScenario::GetCorrectAnswerData()</a>, <a class="el" href="NetworkData_8cpp_source.html#l01049">FResponseListenScenario::GetCorrectAnswerData()</a>, <a class="el" href="ALingoGameState_8h_source.html#l00049">ALingoGameState::GetListenScenarioData()</a>, <a class="el" href="ALingoGameState_8h_source.html#l00048">ALingoGameState::GetReadScenarioData()</a>, <a class="el" href="UAnswerItem_8cpp_source.html#l00016">UAnswerItem::InitInfo()</a>, <a class="el" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921ace6802b46091c31e2ec2363883fe8369">Listen</a>, <a class="el" href="Popup__Result_8h_source.html#l00075">QuestType</a>, <a class="el" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a7a1a5f3e79fdc91edf2f5ead9d66abb4">Read</a>, <a class="el" href="NetworkData_8h_source.html#l00921">FResponseReadScenario::target_data</a>, <a class="el" href="NetworkData_8h_source.html#l01032">FResponseListenScenario::target_data</a>, <a class="el" href="ALingoGameState_8h_source.html#l00139">ALingoGameState::TryListenAnswerData</a>, <a class="el" href="Popup__Result_8h_source.html#l00060">VerticalBox</a>, <a class="el" href="ALingoGameState_8h_source.html#l00142">ALingoGameState::WrongListenAnswerList</a>, <a class="el" href="ALingoGameState_8h_source.html#l00123">ALingoGameState::WrongReadAnswerList</a>.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="Popup__Result_8cpp_source.html#l00031">InitPopup()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="Popup__Result_8cpp_source.html#l00032">InitPopup()</a>.</p>
 <div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-8-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-8-summary" class="dynsummary" style="display:block;">
@@ -720,10 +727,10 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="Popup__Result_8cpp_source.html">Popup_Result.cpp</a> 파일의 <a class="el" href="Popup__Result_8cpp_source.html#l00026">26</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   27</span>{</div>
-<div class="line"><span class="lineno">   28</span>    Super::NativeDestruct();</div>
-<div class="line"><span class="lineno">   29</span>}</div>
+<p class="definition"><a class="el" href="Popup__Result_8cpp_source.html">Popup_Result.cpp</a> 파일의 <a class="el" href="Popup__Result_8cpp_source.html#l00027">27</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   28</span>{</div>
+<div class="line"><span class="lineno">   29</span>    Super::NativeDestruct();</div>
+<div class="line"><span class="lineno">   30</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -807,17 +814,17 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="Popup__Result_8cpp_source.html">Popup_Result.cpp</a> 파일의 <a class="el" href="Popup__Result_8cpp_source.html#l00083">83</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   84</span>{</div>
-<div class="line"><span class="lineno">   85</span>    <span class="comment">// PopupManager를 통해 팝업 닫기 (마우스 커서 처리 포함)</span></div>
-<div class="line"><span class="lineno">   86</span>    <span class="keywordflow">if</span> (<a class="code hl_class" href="classUPopupManager.html">UPopupManager</a>* PopupMgr = UPopupManager::Get(GetWorld()))</div>
-<div class="line"><span class="lineno">   87</span>    {</div>
-<div class="line"><span class="lineno">   88</span>        PopupMgr-&gt;HideCurrentPopup();</div>
-<div class="line"><span class="lineno">   89</span>    }</div>
-<div class="line"><span class="lineno">   90</span>}</div>
+<p class="definition"><a class="el" href="Popup__Result_8cpp_source.html">Popup_Result.cpp</a> 파일의 <a class="el" href="Popup__Result_8cpp_source.html#l00090">90</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   91</span>{</div>
+<div class="line"><span class="lineno">   92</span>    <span class="comment">// PopupManager를 통해 팝업 닫기 (마우스 커서 처리 포함)</span></div>
+<div class="line"><span class="lineno">   93</span>    <span class="keywordflow">if</span> (<a class="code hl_class" href="classUPopupManager.html">UPopupManager</a>* PopupMgr = UPopupManager::Get(GetWorld()))</div>
+<div class="line"><span class="lineno">   94</span>    {</div>
+<div class="line"><span class="lineno">   95</span>        PopupMgr-&gt;HideCurrentPopup();</div>
+<div class="line"><span class="lineno">   96</span>    }</div>
+<div class="line"><span class="lineno">   97</span>}</div>
 <div class="ttc" id="aclassUPopupManager_html"><div class="ttname"><a href="classUPopupManager.html">UPopupManager</a></div><div class="ttdoc">팝업 관리자</div><div class="ttdef"><b>Definition</b> <a href="UPopupManager_8h_source.html#l00030">UPopupManager.h:31</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="Popup__Result_8cpp_source.html#l00031">InitPopup()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="Popup__Result_8cpp_source.html#l00032">InitPopup()</a>.</p>
 <div id="dynsection-11" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-11-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-11-summary" class="dynsummary" style="display:block;">
@@ -862,28 +869,28 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="Popup__Result_8cpp_source.html">Popup_Result.cpp</a> 파일의 <a class="el" href="Popup__Result_8cpp_source.html#l00338">338</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  339</span>{</div>
-<div class="line"><span class="lineno">  340</span>    <span class="keywordflow">if</span> (bWasSuccessful)</div>
-<div class="line"><span class="lineno">  341</span>    {</div>
-<div class="line"><span class="lineno">  342</span>        <span class="comment">// GameState에 결과 저장 (자동으로 복제됨)</span></div>
-<div class="line"><span class="lineno">  343</span>        <span class="keywordflow">if</span> (<span class="keyword">auto</span> GS = Cast&lt;ALingoGameState&gt;(GetWorld()-&gt;GetGameState()))</div>
-<div class="line"><span class="lineno">  344</span>        {</div>
-<div class="line"><span class="lineno">  345</span>            GS-&gt;ListenResult = ResponseData;</div>
-<div class="line"><span class="lineno">  346</span>            GS-&gt;OnListenResultUpdated.Broadcast(ResponseData);</div>
-<div class="line"><span class="lineno">  347</span>        }</div>
-<div class="line"><span class="lineno">  348</span> </div>
-<div class="line"><span class="lineno">  349</span>        this-&gt;<a class="code hl_function" href="classUPopup__Result.html#a89ed11f883780ebd1b9865c5126eced1">InitListenResult</a>(ResponseData);</div>
-<div class="line"><span class="lineno">  350</span>    }</div>
-<div class="line"><span class="lineno">  351</span>    <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  352</span>    {</div>
-<div class="line"><span class="lineno">  353</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[Result] Quest result Failed&quot;</span>));</div>
-<div class="line"><span class="lineno">  354</span>    }</div>
-<div class="line"><span class="lineno">  355</span>}</div>
+<p class="definition"><a class="el" href="Popup__Result_8cpp_source.html">Popup_Result.cpp</a> 파일의 <a class="el" href="Popup__Result_8cpp_source.html#l00345">345</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  346</span>{</div>
+<div class="line"><span class="lineno">  347</span>    <span class="keywordflow">if</span> (bWasSuccessful)</div>
+<div class="line"><span class="lineno">  348</span>    {</div>
+<div class="line"><span class="lineno">  349</span>        <span class="comment">// GameState에 결과 저장 (자동으로 복제됨)</span></div>
+<div class="line"><span class="lineno">  350</span>        <span class="keywordflow">if</span> (<span class="keyword">auto</span> GS = Cast&lt;ALingoGameState&gt;(GetWorld()-&gt;GetGameState()))</div>
+<div class="line"><span class="lineno">  351</span>        {</div>
+<div class="line"><span class="lineno">  352</span>            GS-&gt;ListenResult = ResponseData;</div>
+<div class="line"><span class="lineno">  353</span>            GS-&gt;OnListenResultUpdated.Broadcast(ResponseData);</div>
+<div class="line"><span class="lineno">  354</span>        }</div>
+<div class="line"><span class="lineno">  355</span> </div>
+<div class="line"><span class="lineno">  356</span>        this-&gt;<a class="code hl_function" href="classUPopup__Result.html#a89ed11f883780ebd1b9865c5126eced1">InitListenResult</a>(ResponseData);</div>
+<div class="line"><span class="lineno">  357</span>    }</div>
+<div class="line"><span class="lineno">  358</span>    <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  359</span>    {</div>
+<div class="line"><span class="lineno">  360</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[Result] Quest result Failed&quot;</span>));</div>
+<div class="line"><span class="lineno">  361</span>    }</div>
+<div class="line"><span class="lineno">  362</span>}</div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="Popup__Result_8cpp_source.html#l00214">InitListenResult()</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="Popup__Result_8cpp_source.html#l00221">InitListenResult()</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="Popup__Result_8cpp_source.html#l00255">RequestResult()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="Popup__Result_8cpp_source.html#l00262">RequestResult()</a>.</p>
 <div id="dynsection-12" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-12-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-12-summary" class="dynsummary" style="display:block;">
@@ -935,31 +942,31 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="Popup__Result_8cpp_source.html">Popup_Result.cpp</a> 파일의 <a class="el" href="Popup__Result_8cpp_source.html#l00316">316</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  317</span>{</div>
-<div class="line"><span class="lineno">  318</span>    <span class="keywordflow">if</span> (bWasSuccessful)</div>
-<div class="line"><span class="lineno">  319</span>    {</div>
-<div class="line"><span class="lineno">  320</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[Result] Grade: %s, average_score: %.2f%%, Top Percent: %.2f%%&quot;</span>),</div>
-<div class="line"><span class="lineno">  321</span>            *ResponseData.<a class="code hl_variable" href="structFResponseReadResult.html#ac494d096b2250e595c8e6c82d456875b">grade</a>, ResponseData.<a class="code hl_variable" href="structFResponseReadResult.html#ace546aa7a22da04f789890587359e514">average_score</a>, ResponseData.<a class="code hl_variable" href="structFResponseReadResult.html#a9b90bad45b2659ddf80b40e083b15168">top_percent</a>);</div>
-<div class="line"><span class="lineno">  322</span> </div>
-<div class="line"><span class="lineno">  323</span>        <span class="comment">// GameState에 결과 저장 (자동으로 복제됨)</span></div>
-<div class="line"><span class="lineno">  324</span>        <span class="keywordflow">if</span> (<span class="keyword">auto</span> GS = Cast&lt;ALingoGameState&gt;(GetWorld()-&gt;GetGameState()))</div>
-<div class="line"><span class="lineno">  325</span>        {</div>
-<div class="line"><span class="lineno">  326</span>            GS-&gt;ReadResult = ResponseData;</div>
-<div class="line"><span class="lineno">  327</span>            GS-&gt;OnReadResultUpdated.Broadcast(ResponseData);</div>
-<div class="line"><span class="lineno">  328</span>        }</div>
+<p class="definition"><a class="el" href="Popup__Result_8cpp_source.html">Popup_Result.cpp</a> 파일의 <a class="el" href="Popup__Result_8cpp_source.html#l00323">323</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  324</span>{</div>
+<div class="line"><span class="lineno">  325</span>    <span class="keywordflow">if</span> (bWasSuccessful)</div>
+<div class="line"><span class="lineno">  326</span>    {</div>
+<div class="line"><span class="lineno">  327</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[Result] Grade: %s, average_score: %.2f%%, Top Percent: %.2f%%&quot;</span>),</div>
+<div class="line"><span class="lineno">  328</span>            *ResponseData.<a class="code hl_variable" href="structFResponseReadResult.html#ac494d096b2250e595c8e6c82d456875b">grade</a>, ResponseData.<a class="code hl_variable" href="structFResponseReadResult.html#ace546aa7a22da04f789890587359e514">average_score</a>, ResponseData.<a class="code hl_variable" href="structFResponseReadResult.html#a9b90bad45b2659ddf80b40e083b15168">top_percent</a>);</div>
 <div class="line"><span class="lineno">  329</span> </div>
-<div class="line"><span class="lineno">  330</span>        this-&gt;<a class="code hl_function" href="classUPopup__Result.html#aa1b939610654a6ebd59ec8e6881c6366">InitReadResult</a>(ResponseData);</div>
-<div class="line"><span class="lineno">  331</span>    }</div>
-<div class="line"><span class="lineno">  332</span>    <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  333</span>    {</div>
-<div class="line"><span class="lineno">  334</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[Result] Quest result Failed&quot;</span>));</div>
-<div class="line"><span class="lineno">  335</span>    }</div>
-<div class="line"><span class="lineno">  336</span>}</div>
+<div class="line"><span class="lineno">  330</span>        <span class="comment">// GameState에 결과 저장 (자동으로 복제됨)</span></div>
+<div class="line"><span class="lineno">  331</span>        <span class="keywordflow">if</span> (<span class="keyword">auto</span> GS = Cast&lt;ALingoGameState&gt;(GetWorld()-&gt;GetGameState()))</div>
+<div class="line"><span class="lineno">  332</span>        {</div>
+<div class="line"><span class="lineno">  333</span>            GS-&gt;ReadResult = ResponseData;</div>
+<div class="line"><span class="lineno">  334</span>            GS-&gt;OnReadResultUpdated.Broadcast(ResponseData);</div>
+<div class="line"><span class="lineno">  335</span>        }</div>
+<div class="line"><span class="lineno">  336</span> </div>
+<div class="line"><span class="lineno">  337</span>        this-&gt;<a class="code hl_function" href="classUPopup__Result.html#aa1b939610654a6ebd59ec8e6881c6366">InitReadResult</a>(ResponseData);</div>
+<div class="line"><span class="lineno">  338</span>    }</div>
+<div class="line"><span class="lineno">  339</span>    <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  340</span>    {</div>
+<div class="line"><span class="lineno">  341</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[Result] Quest result Failed&quot;</span>));</div>
+<div class="line"><span class="lineno">  342</span>    }</div>
+<div class="line"><span class="lineno">  343</span>}</div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="NetworkData_8h_source.html#l01000">FResponseReadResult::average_score</a>, <a class="el" href="NetworkData_8h_source.html#l00997">FResponseReadResult::grade</a>, <a class="el" href="Popup__Result_8cpp_source.html#l00173">InitReadResult()</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>, <a class="el" href="NetworkData_8h_source.html#l01003">FResponseReadResult::top_percent</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="NetworkData_8h_source.html#l01000">FResponseReadResult::average_score</a>, <a class="el" href="NetworkData_8h_source.html#l00997">FResponseReadResult::grade</a>, <a class="el" href="Popup__Result_8cpp_source.html#l00180">InitReadResult()</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>, <a class="el" href="NetworkData_8h_source.html#l01003">FResponseReadResult::top_percent</a>.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="Popup__Result_8cpp_source.html#l00255">RequestResult()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="Popup__Result_8cpp_source.html#l00262">RequestResult()</a>.</p>
 <div id="dynsection-14" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-14-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-14-summary" class="dynsummary" style="display:block;">
@@ -1053,70 +1060,70 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="Popup__Result_8cpp_source.html">Popup_Result.cpp</a> 파일의 <a class="el" href="Popup__Result_8cpp_source.html#l00255">255</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  256</span>{</div>
-<div class="line"><span class="lineno">  257</span>    APlayerController* PC = GetOwningPlayer();</div>
-<div class="line"><span class="lineno">  258</span>    <span class="keywordflow">if</span> (!PC)</div>
-<div class="line"><span class="lineno">  259</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  260</span> </div>
-<div class="line"><span class="lineno">  261</span>    <span class="comment">// Host 플레이어(첫 번째 플레이어)인지 확인</span></div>
-<div class="line"><span class="lineno">  262</span>    <span class="keywordtype">bool</span> bIsHost = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  263</span>    <span class="keywordflow">if</span> (APlayerState* PS = PC-&gt;GetPlayerState&lt;APlayerState&gt;())</div>
-<div class="line"><span class="lineno">  264</span>    {</div>
-<div class="line"><span class="lineno">  265</span>        <span class="keywordflow">if</span> (AGameStateBase* GameStateBase = GetWorld()-&gt;GetGameState())</div>
-<div class="line"><span class="lineno">  266</span>        {</div>
-<div class="line"><span class="lineno">  267</span>            int32 PlayerIndex = GameStateBase-&gt;PlayerArray.IndexOfByKey(PS);</div>
-<div class="line"><span class="lineno">  268</span>            bIsHost = (PlayerIndex == 0);</div>
-<div class="line"><span class="lineno">  269</span>        }</div>
-<div class="line"><span class="lineno">  270</span>    }</div>
-<div class="line"><span class="lineno">  271</span> </div>
-<div class="line"><span class="lineno">  272</span>    <span class="comment">// Host가 아니면 요청하지 않음</span></div>
-<div class="line"><span class="lineno">  273</span>    <span class="keywordflow">if</span> (!bIsHost)</div>
-<div class="line"><span class="lineno">  274</span>    {</div>
-<div class="line"><span class="lineno">  275</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[Popup_Result] Guest player - skipping request, waiting for Host&quot;</span>));</div>
-<div class="line"><span class="lineno">  276</span>        <span class="keywordflow">return</span>;</div>
+<p class="definition"><a class="el" href="Popup__Result_8cpp_source.html">Popup_Result.cpp</a> 파일의 <a class="el" href="Popup__Result_8cpp_source.html#l00262">262</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  263</span>{</div>
+<div class="line"><span class="lineno">  264</span>    APlayerController* PC = GetOwningPlayer();</div>
+<div class="line"><span class="lineno">  265</span>    <span class="keywordflow">if</span> (!PC)</div>
+<div class="line"><span class="lineno">  266</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  267</span> </div>
+<div class="line"><span class="lineno">  268</span>    <span class="comment">// Host 플레이어(첫 번째 플레이어)인지 확인</span></div>
+<div class="line"><span class="lineno">  269</span>    <span class="keywordtype">bool</span> bIsHost = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  270</span>    <span class="keywordflow">if</span> (APlayerState* PS = PC-&gt;GetPlayerState&lt;APlayerState&gt;())</div>
+<div class="line"><span class="lineno">  271</span>    {</div>
+<div class="line"><span class="lineno">  272</span>        <span class="keywordflow">if</span> (AGameStateBase* GameStateBase = GetWorld()-&gt;GetGameState())</div>
+<div class="line"><span class="lineno">  273</span>        {</div>
+<div class="line"><span class="lineno">  274</span>            int32 PlayerIndex = GameStateBase-&gt;PlayerArray.IndexOfByKey(PS);</div>
+<div class="line"><span class="lineno">  275</span>            bIsHost = (PlayerIndex == 0);</div>
+<div class="line"><span class="lineno">  276</span>        }</div>
 <div class="line"><span class="lineno">  277</span>    }</div>
 <div class="line"><span class="lineno">  278</span> </div>
-<div class="line"><span class="lineno">  279</span>    <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[Popup_Result] Host player - sending result request&quot;</span>));</div>
-<div class="line"><span class="lineno">  280</span> </div>
-<div class="line"><span class="lineno">  281</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> GS = Cast&lt;ALingoGameState&gt;(GetWorld()-&gt;GetGameState()))</div>
-<div class="line"><span class="lineno">  282</span>    {</div>
-<div class="line"><span class="lineno">  283</span>        <span class="comment">// 네트워크 송신 (Host만)</span></div>
-<div class="line"><span class="lineno">  284</span>        <span class="keywordflow">if</span> (<a class="code hl_class" href="classUKLingoNetworkSystem.html">UKLingoNetworkSystem</a>* Network = UKLingoNetworkSystem::Get(GetWorld()))</div>
-<div class="line"><span class="lineno">  285</span>        {</div>
-<div class="line"><span class="lineno">  286</span>            <span class="keywordflow">if</span> ( <a class="code hl_variable" href="classUPopup__Result.html#a1695150f0ab022f13a06c7f5e57f810a">QuestType</a> == <a class="code hl_enumvalue" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a7a1a5f3e79fdc91edf2f5ead9d66abb4">EQuestType::Read</a> )</div>
-<div class="line"><span class="lineno">  287</span>            {</div>
-<div class="line"><span class="lineno">  288</span>                <a class="code hl_struct" href="structFRequestReadResult.html">FRequestReadResult</a> ReadRequest;</div>
-<div class="line"><span class="lineno">  289</span>                ReadRequest.<a class="code hl_variable" href="structFRequestReadResult.html#a53e5bf77db201971463c5bf6f6cce0b2">room_id</a> = GS-&gt;GetRoomId();</div>
-<div class="line"><span class="lineno">  290</span>                ReadRequest.<a class="code hl_variable" href="structFRequestReadResult.html#ac16a0a88dead3eeaaf8c54d069e43867">user_id</a> = Cast&lt;APlayerControl&gt;(GetOwningPlayer())-&gt;GetUserId();</div>
-<div class="line"><span class="lineno">  291</span>                ReadRequest.<a class="code hl_variable" href="structFRequestReadResult.html#a92919781f00aa0aa3fee771abf1d7fac">scenario_id</a> = 1;</div>
-<div class="line"><span class="lineno">  292</span>                ReadRequest.<a class="code hl_variable" href="structFRequestReadResult.html#af46d1d78f8160182ebeb0f552948f05d">stage_type</a> = <a class="code hl_function" href="classULingoGameHelper.html#a2ff337cf76037d417e9c4a65b1a8fc9a">ULingoGameHelper::GetStageTypeIndex</a>(<a class="code hl_variable" href="classUPopup__Result.html#a1695150f0ab022f13a06c7f5e57f810a">QuestType</a>);</div>
-<div class="line"><span class="lineno">  293</span>                ReadRequest.<a class="code hl_variable" href="structFRequestReadResult.html#ac78c52dda9dd4b760ee66874a1f05d68">state_type</a> = 0;</div>
-<div class="line"><span class="lineno">  294</span>                ReadRequest.<a class="code hl_variable" href="structFRequestReadResult.html#a6d2f33f3d09a93228c578306a8b294af">result_time</a> = GS-&gt;GetTimeTaken();</div>
-<div class="line"><span class="lineno">  295</span>                ReadRequest.<a class="code hl_variable" href="structFRequestReadResult.html#aded067bb7754fbf32abd8acf1737e0e9">wrong_idx</a> = GS-&gt;WrongReadAnswerList;</div>
-<div class="line"><span class="lineno">  296</span>                Network-&gt;RequestReadResult(ReadRequest,</div>
-<div class="line"><span class="lineno">  297</span>                        FResponseReadResultDelegate::CreateUObject(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUPopup__Result.html#ab1e3ea88567326a3dd2ce65bd4428187">UPopup_Result::OnResponseReadResult</a>));</div>
-<div class="line"><span class="lineno">  298</span>            }</div>
-<div class="line"><span class="lineno">  299</span>            <span class="keywordflow">else</span> <span class="keywordflow">if</span> ( <a class="code hl_variable" href="classUPopup__Result.html#a1695150f0ab022f13a06c7f5e57f810a">QuestType</a> == <a class="code hl_enumvalue" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921ace6802b46091c31e2ec2363883fe8369">EQuestType::Listen</a> )</div>
-<div class="line"><span class="lineno">  300</span>            {</div>
-<div class="line"><span class="lineno">  301</span>                <a class="code hl_struct" href="structFRequestListenResult.html">FRequestListenResult</a> ListenRequest;</div>
-<div class="line"><span class="lineno">  302</span>                ListenRequest.<a class="code hl_variable" href="structFRequestListenResult.html#a44c6cc83062a86dd7e3b75b73f4dfa36">room_id</a> = GS-&gt;GetRoomId();</div>
-<div class="line"><span class="lineno">  303</span>                ListenRequest.<a class="code hl_variable" href="structFRequestListenResult.html#a2f474a8dc34007f446a9aedca4b5240b">user_id</a> = Cast&lt;APlayerControl&gt;(GetOwningPlayer())-&gt;GetUserId();</div>
-<div class="line"><span class="lineno">  304</span>                ListenRequest.<a class="code hl_variable" href="structFRequestListenResult.html#a443e9389976ade8ed5c219a5d08dc6ae">scenario_id</a> = 1;</div>
-<div class="line"><span class="lineno">  305</span>                ListenRequest.<a class="code hl_variable" href="structFRequestListenResult.html#a4f0d3c15a3b7bf4d667febd00681134d">stage_type</a> = <a class="code hl_function" href="classULingoGameHelper.html#a2ff337cf76037d417e9c4a65b1a8fc9a">ULingoGameHelper::GetStageTypeIndex</a>(<a class="code hl_variable" href="classUPopup__Result.html#a1695150f0ab022f13a06c7f5e57f810a">QuestType</a>);</div>
-<div class="line"><span class="lineno">  306</span>                ListenRequest.<a class="code hl_variable" href="structFRequestListenResult.html#a2f66d41e212b5018567f7a93dc71d6a7">state_type</a> = 0;</div>
-<div class="line"><span class="lineno">  307</span>                ListenRequest.<a class="code hl_variable" href="structFRequestListenResult.html#ab515ca1c23d24e29a30ea22a65e8b9ee">result_time</a> = GS-&gt;GetTimeTaken();</div>
-<div class="line"><span class="lineno">  308</span>                ListenRequest.<a class="code hl_variable" href="structFRequestListenResult.html#a70c9502a9ea77420756130e194ae3f03">wrong_idx</a> = GS-&gt;WrongListenAnswerList;</div>
-<div class="line"><span class="lineno">  309</span>                Network-&gt;RequestListenResult(ListenRequest,</div>
-<div class="line"><span class="lineno">  310</span>                        FResponseListenResultDelegate::CreateUObject(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUPopup__Result.html#afe93201c94137aabd358a6d930897eca">UPopup_Result::OnResponseListenResult</a>));</div>
-<div class="line"><span class="lineno">  311</span>            }</div>
-<div class="line"><span class="lineno">  312</span>        }</div>
-<div class="line"><span class="lineno">  313</span>    }</div>
-<div class="line"><span class="lineno">  314</span>}</div>
+<div class="line"><span class="lineno">  279</span>    <span class="comment">// Host가 아니면 요청하지 않음</span></div>
+<div class="line"><span class="lineno">  280</span>    <span class="keywordflow">if</span> (!bIsHost)</div>
+<div class="line"><span class="lineno">  281</span>    {</div>
+<div class="line"><span class="lineno">  282</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[Popup_Result] Guest player - skipping request, waiting for Host&quot;</span>));</div>
+<div class="line"><span class="lineno">  283</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  284</span>    }</div>
+<div class="line"><span class="lineno">  285</span> </div>
+<div class="line"><span class="lineno">  286</span>    <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[Popup_Result] Host player - sending result request&quot;</span>));</div>
+<div class="line"><span class="lineno">  287</span> </div>
+<div class="line"><span class="lineno">  288</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> GS = Cast&lt;ALingoGameState&gt;(GetWorld()-&gt;GetGameState()))</div>
+<div class="line"><span class="lineno">  289</span>    {</div>
+<div class="line"><span class="lineno">  290</span>        <span class="comment">// 네트워크 송신 (Host만)</span></div>
+<div class="line"><span class="lineno">  291</span>        <span class="keywordflow">if</span> (<a class="code hl_class" href="classUKLingoNetworkSystem.html">UKLingoNetworkSystem</a>* Network = UKLingoNetworkSystem::Get(GetWorld()))</div>
+<div class="line"><span class="lineno">  292</span>        {</div>
+<div class="line"><span class="lineno">  293</span>            <span class="keywordflow">if</span> ( <a class="code hl_variable" href="classUPopup__Result.html#a1695150f0ab022f13a06c7f5e57f810a">QuestType</a> == <a class="code hl_enumvalue" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a7a1a5f3e79fdc91edf2f5ead9d66abb4">EQuestType::Read</a> )</div>
+<div class="line"><span class="lineno">  294</span>            {</div>
+<div class="line"><span class="lineno">  295</span>                <a class="code hl_struct" href="structFRequestReadResult.html">FRequestReadResult</a> ReadRequest;</div>
+<div class="line"><span class="lineno">  296</span>                ReadRequest.<a class="code hl_variable" href="structFRequestReadResult.html#a53e5bf77db201971463c5bf6f6cce0b2">room_id</a> = GS-&gt;GetRoomId();</div>
+<div class="line"><span class="lineno">  297</span>                ReadRequest.<a class="code hl_variable" href="structFRequestReadResult.html#ac16a0a88dead3eeaaf8c54d069e43867">user_id</a> = Cast&lt;APlayerControl&gt;(GetOwningPlayer())-&gt;GetUserId();</div>
+<div class="line"><span class="lineno">  298</span>                ReadRequest.<a class="code hl_variable" href="structFRequestReadResult.html#a92919781f00aa0aa3fee771abf1d7fac">scenario_id</a> = 1;</div>
+<div class="line"><span class="lineno">  299</span>                ReadRequest.<a class="code hl_variable" href="structFRequestReadResult.html#af46d1d78f8160182ebeb0f552948f05d">stage_type</a> = <a class="code hl_function" href="classULingoGameHelper.html#a2ff337cf76037d417e9c4a65b1a8fc9a">ULingoGameHelper::GetStageTypeIndex</a>(<a class="code hl_variable" href="classUPopup__Result.html#a1695150f0ab022f13a06c7f5e57f810a">QuestType</a>);</div>
+<div class="line"><span class="lineno">  300</span>                ReadRequest.<a class="code hl_variable" href="structFRequestReadResult.html#ac78c52dda9dd4b760ee66874a1f05d68">state_type</a> = 0;</div>
+<div class="line"><span class="lineno">  301</span>                ReadRequest.<a class="code hl_variable" href="structFRequestReadResult.html#a6d2f33f3d09a93228c578306a8b294af">result_time</a> = GS-&gt;GetTimeTaken();</div>
+<div class="line"><span class="lineno">  302</span>                ReadRequest.<a class="code hl_variable" href="structFRequestReadResult.html#aded067bb7754fbf32abd8acf1737e0e9">wrong_idx</a> = GS-&gt;WrongReadAnswerList;</div>
+<div class="line"><span class="lineno">  303</span>                Network-&gt;RequestReadResult(ReadRequest,</div>
+<div class="line"><span class="lineno">  304</span>                        FResponseReadResultDelegate::CreateUObject(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUPopup__Result.html#ab1e3ea88567326a3dd2ce65bd4428187">UPopup_Result::OnResponseReadResult</a>));</div>
+<div class="line"><span class="lineno">  305</span>            }</div>
+<div class="line"><span class="lineno">  306</span>            <span class="keywordflow">else</span> <span class="keywordflow">if</span> ( <a class="code hl_variable" href="classUPopup__Result.html#a1695150f0ab022f13a06c7f5e57f810a">QuestType</a> == <a class="code hl_enumvalue" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921ace6802b46091c31e2ec2363883fe8369">EQuestType::Listen</a> )</div>
+<div class="line"><span class="lineno">  307</span>            {</div>
+<div class="line"><span class="lineno">  308</span>                <a class="code hl_struct" href="structFRequestListenResult.html">FRequestListenResult</a> ListenRequest;</div>
+<div class="line"><span class="lineno">  309</span>                ListenRequest.<a class="code hl_variable" href="structFRequestListenResult.html#a44c6cc83062a86dd7e3b75b73f4dfa36">room_id</a> = GS-&gt;GetRoomId();</div>
+<div class="line"><span class="lineno">  310</span>                ListenRequest.<a class="code hl_variable" href="structFRequestListenResult.html#a2f474a8dc34007f446a9aedca4b5240b">user_id</a> = Cast&lt;APlayerControl&gt;(GetOwningPlayer())-&gt;GetUserId();</div>
+<div class="line"><span class="lineno">  311</span>                ListenRequest.<a class="code hl_variable" href="structFRequestListenResult.html#a443e9389976ade8ed5c219a5d08dc6ae">scenario_id</a> = 1;</div>
+<div class="line"><span class="lineno">  312</span>                ListenRequest.<a class="code hl_variable" href="structFRequestListenResult.html#a4f0d3c15a3b7bf4d667febd00681134d">stage_type</a> = <a class="code hl_function" href="classULingoGameHelper.html#a2ff337cf76037d417e9c4a65b1a8fc9a">ULingoGameHelper::GetStageTypeIndex</a>(<a class="code hl_variable" href="classUPopup__Result.html#a1695150f0ab022f13a06c7f5e57f810a">QuestType</a>);</div>
+<div class="line"><span class="lineno">  313</span>                ListenRequest.<a class="code hl_variable" href="structFRequestListenResult.html#a2f66d41e212b5018567f7a93dc71d6a7">state_type</a> = 0;</div>
+<div class="line"><span class="lineno">  314</span>                ListenRequest.<a class="code hl_variable" href="structFRequestListenResult.html#ab515ca1c23d24e29a30ea22a65e8b9ee">result_time</a> = GS-&gt;GetTimeTaken();</div>
+<div class="line"><span class="lineno">  315</span>                ListenRequest.<a class="code hl_variable" href="structFRequestListenResult.html#a70c9502a9ea77420756130e194ae3f03">wrong_idx</a> = GS-&gt;WrongListenAnswerList;</div>
+<div class="line"><span class="lineno">  316</span>                Network-&gt;RequestListenResult(ListenRequest,</div>
+<div class="line"><span class="lineno">  317</span>                        FResponseListenResultDelegate::CreateUObject(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUPopup__Result.html#afe93201c94137aabd358a6d930897eca">UPopup_Result::OnResponseListenResult</a>));</div>
+<div class="line"><span class="lineno">  318</span>            }</div>
+<div class="line"><span class="lineno">  319</span>        }</div>
+<div class="line"><span class="lineno">  320</span>    }</div>
+<div class="line"><span class="lineno">  321</span>}</div>
 <div class="ttc" id="aclassUKLingoNetworkSystem_html"><div class="ttname"><a href="classUKLingoNetworkSystem.html">UKLingoNetworkSystem</a></div><div class="ttdef"><b>Definition</b> <a href="UKLingoNetworkSystem_8h_source.html#l00019">UKLingoNetworkSystem.h:20</a></div></div>
 <div class="ttc" id="aclassULingoGameHelper_html_a2ff337cf76037d417e9c4a65b1a8fc9a"><div class="ttname"><a href="classULingoGameHelper.html#a2ff337cf76037d417e9c4a65b1a8fc9a">ULingoGameHelper::GetStageTypeIndex</a></div><div class="ttdeci">static int32 GetStageTypeIndex(const EQuestType QuestType)</div><div class="ttdef"><b>Definition</b> <a href="ULingoGameHelper_8cpp_source.html#l00155">ULingoGameHelper.cpp:155</a></div></div>
-<div class="ttc" id="aclassUPopup__Result_html_ab1e3ea88567326a3dd2ce65bd4428187"><div class="ttname"><a href="classUPopup__Result.html#ab1e3ea88567326a3dd2ce65bd4428187">UPopup_Result::OnResponseReadResult</a></div><div class="ttdeci">void OnResponseReadResult(FResponseReadResult &amp;ResponseData, bool bWasSuccessful)</div><div class="ttdef"><b>Definition</b> <a href="Popup__Result_8cpp_source.html#l00316">Popup_Result.cpp:316</a></div></div>
-<div class="ttc" id="aclassUPopup__Result_html_afe93201c94137aabd358a6d930897eca"><div class="ttname"><a href="classUPopup__Result.html#afe93201c94137aabd358a6d930897eca">UPopup_Result::OnResponseListenResult</a></div><div class="ttdeci">void OnResponseListenResult(FResponseListenResult &amp;ResponseData, bool bWasSuccessful)</div><div class="ttdef"><b>Definition</b> <a href="Popup__Result_8cpp_source.html#l00338">Popup_Result.cpp:338</a></div></div>
+<div class="ttc" id="aclassUPopup__Result_html_ab1e3ea88567326a3dd2ce65bd4428187"><div class="ttname"><a href="classUPopup__Result.html#ab1e3ea88567326a3dd2ce65bd4428187">UPopup_Result::OnResponseReadResult</a></div><div class="ttdeci">void OnResponseReadResult(FResponseReadResult &amp;ResponseData, bool bWasSuccessful)</div><div class="ttdef"><b>Definition</b> <a href="Popup__Result_8cpp_source.html#l00323">Popup_Result.cpp:323</a></div></div>
+<div class="ttc" id="aclassUPopup__Result_html_afe93201c94137aabd358a6d930897eca"><div class="ttname"><a href="classUPopup__Result.html#afe93201c94137aabd358a6d930897eca">UPopup_Result::OnResponseListenResult</a></div><div class="ttdeci">void OnResponseListenResult(FResponseListenResult &amp;ResponseData, bool bWasSuccessful)</div><div class="ttdef"><b>Definition</b> <a href="Popup__Result_8cpp_source.html#l00345">Popup_Result.cpp:345</a></div></div>
 <div class="ttc" id="astructFRequestListenResult_html"><div class="ttname"><a href="structFRequestListenResult.html">FRequestListenResult</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l01062">NetworkData.h:1063</a></div></div>
 <div class="ttc" id="astructFRequestListenResult_html_a2f474a8dc34007f446a9aedca4b5240b"><div class="ttname"><a href="structFRequestListenResult.html#a2f474a8dc34007f446a9aedca4b5240b">FRequestListenResult::user_id</a></div><div class="ttdeci">int32 user_id</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l01070">NetworkData.h:1070</a></div></div>
 <div class="ttc" id="astructFRequestListenResult_html_a2f66d41e212b5018567f7a93dc71d6a7"><div class="ttname"><a href="structFRequestListenResult.html#a2f66d41e212b5018567f7a93dc71d6a7">FRequestListenResult::state_type</a></div><div class="ttdeci">int32 state_type</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l01079">NetworkData.h:1079</a></div></div>
@@ -1134,9 +1141,9 @@ Private 속성</h2></td></tr>
 <div class="ttc" id="astructFRequestReadResult_html_aded067bb7754fbf32abd8acf1737e0e9"><div class="ttname"><a href="structFRequestReadResult.html#aded067bb7754fbf32abd8acf1737e0e9">FRequestReadResult::wrong_idx</a></div><div class="ttdeci">TArray&lt; int32 &gt; wrong_idx</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00971">NetworkData.h:971</a></div></div>
 <div class="ttc" id="astructFRequestReadResult_html_af46d1d78f8160182ebeb0f552948f05d"><div class="ttname"><a href="structFRequestReadResult.html#af46d1d78f8160182ebeb0f552948f05d">FRequestReadResult::stage_type</a></div><div class="ttdeci">int32 stage_type</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00962">NetworkData.h:962</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="ULingoGameHelper_8cpp_source.html#l00155">ULingoGameHelper::GetStageTypeIndex()</a>, <a class="el" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921ace6802b46091c31e2ec2363883fe8369">Listen</a>, <a class="el" href="Popup__Result_8cpp_source.html#l00338">OnResponseListenResult()</a>, <a class="el" href="Popup__Result_8cpp_source.html#l00316">OnResponseReadResult()</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>, <a class="el" href="Popup__Result_8h_source.html#l00075">QuestType</a>, <a class="el" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a7a1a5f3e79fdc91edf2f5ead9d66abb4">Read</a>, <a class="el" href="NetworkData_8h_source.html#l00968">FRequestReadResult::result_time</a>, <a class="el" href="NetworkData_8h_source.html#l01082">FRequestListenResult::result_time</a>, <a class="el" href="NetworkData_8h_source.html#l00953">FRequestReadResult::room_id</a>, <a class="el" href="NetworkData_8h_source.html#l01067">FRequestListenResult::room_id</a>, <a class="el" href="NetworkData_8h_source.html#l00959">FRequestReadResult::scenario_id</a>, <a class="el" href="NetworkData_8h_source.html#l01073">FRequestListenResult::scenario_id</a>, <a class="el" href="NetworkData_8h_source.html#l00962">FRequestReadResult::stage_type</a>, <a class="el" href="NetworkData_8h_source.html#l01076">FRequestListenResult::stage_type</a>, <a class="el" href="NetworkData_8h_source.html#l00965">FRequestReadResult::state_type</a>, <a class="el" href="NetworkData_8h_source.html#l01079">FRequestListenResult::state_type</a>, <a class="el" href="NetworkData_8h_source.html#l00956">FRequestReadResult::user_id</a>, <a class="el" href="NetworkData_8h_source.html#l01070">FRequestListenResult::user_id</a>, <a class="el" href="NetworkData_8h_source.html#l00971">FRequestReadResult::wrong_idx</a>, <a class="el" href="NetworkData_8h_source.html#l01085">FRequestListenResult::wrong_idx</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="ULingoGameHelper_8cpp_source.html#l00155">ULingoGameHelper::GetStageTypeIndex()</a>, <a class="el" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921ace6802b46091c31e2ec2363883fe8369">Listen</a>, <a class="el" href="Popup__Result_8cpp_source.html#l00345">OnResponseListenResult()</a>, <a class="el" href="Popup__Result_8cpp_source.html#l00323">OnResponseReadResult()</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>, <a class="el" href="Popup__Result_8h_source.html#l00075">QuestType</a>, <a class="el" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a7a1a5f3e79fdc91edf2f5ead9d66abb4">Read</a>, <a class="el" href="NetworkData_8h_source.html#l00968">FRequestReadResult::result_time</a>, <a class="el" href="NetworkData_8h_source.html#l01082">FRequestListenResult::result_time</a>, <a class="el" href="NetworkData_8h_source.html#l00953">FRequestReadResult::room_id</a>, <a class="el" href="NetworkData_8h_source.html#l01067">FRequestListenResult::room_id</a>, <a class="el" href="NetworkData_8h_source.html#l00959">FRequestReadResult::scenario_id</a>, <a class="el" href="NetworkData_8h_source.html#l01073">FRequestListenResult::scenario_id</a>, <a class="el" href="NetworkData_8h_source.html#l00962">FRequestReadResult::stage_type</a>, <a class="el" href="NetworkData_8h_source.html#l01076">FRequestListenResult::stage_type</a>, <a class="el" href="NetworkData_8h_source.html#l00965">FRequestReadResult::state_type</a>, <a class="el" href="NetworkData_8h_source.html#l01079">FRequestListenResult::state_type</a>, <a class="el" href="NetworkData_8h_source.html#l00956">FRequestReadResult::user_id</a>, <a class="el" href="NetworkData_8h_source.html#l01070">FRequestListenResult::user_id</a>, <a class="el" href="NetworkData_8h_source.html#l00971">FRequestReadResult::wrong_idx</a>, <a class="el" href="NetworkData_8h_source.html#l01085">FRequestListenResult::wrong_idx</a>.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="Popup__Result_8cpp_source.html#l00031">InitPopup()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="Popup__Result_8cpp_source.html#l00032">InitPopup()</a>.</p>
 <div id="dynsection-16" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-16-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-16-summary" class="dynsummary" style="display:block;">
@@ -1238,7 +1245,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="Popup__Result_8h_source.html">Popup_Result.h</a> 파일의 <a class="el" href="Popup__Result_8h_source.html#l00073">73</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="Popup__Result_8cpp_source.html#l00119">InitWrongList()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="Popup__Result_8cpp_source.html#l00126">InitWrongList()</a>.</p>
 
 </div>
 </div>
@@ -1321,7 +1328,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="Popup__Result_8h_source.html">Popup_Result.h</a> 파일의 <a class="el" href="Popup__Result_8h_source.html#l00051">51</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="Popup__Result_8cpp_source.html#l00031">InitPopup()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="Popup__Result_8cpp_source.html#l00032">InitPopup()</a>.</p>
 
 </div>
 </div>
@@ -1347,7 +1354,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="Popup__Result_8h_source.html">Popup_Result.h</a> 파일의 <a class="el" href="Popup__Result_8h_source.html#l00048">48</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="Popup__Result_8cpp_source.html#l00094">InitWordWidget()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="Popup__Result_8cpp_source.html#l00101">InitWordWidget()</a>.</p>
 
 </div>
 </div>
@@ -1567,7 +1574,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="Popup__Result_8h_source.html">Popup_Result.h</a> 파일의 <a class="el" href="Popup__Result_8h_source.html#l00075">75</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="Popup__Result_8cpp_source.html#l00031">InitPopup()</a>, <a class="el" href="Popup__Result_8cpp_source.html#l00094">InitWordWidget()</a>, <a class="el" href="Popup__Result_8cpp_source.html#l00119">InitWrongList()</a>, <a class="el" href="Popup__Result_8cpp_source.html#l00255">RequestResult()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="Popup__Result_8cpp_source.html#l00032">InitPopup()</a>, <a class="el" href="Popup__Result_8cpp_source.html#l00101">InitWordWidget()</a>, <a class="el" href="Popup__Result_8cpp_source.html#l00126">InitWrongList()</a>, <a class="el" href="Popup__Result_8cpp_source.html#l00262">RequestResult()</a>.</p>
 
 </div>
 </div>
@@ -1593,7 +1600,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="Popup__Result_8h_source.html">Popup_Result.h</a> 파일의 <a class="el" href="Popup__Result_8h_source.html#l00069">69</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="Popup__Result_8cpp_source.html#l00214">InitListenResult()</a>, <a class="el" href="Popup__Result_8cpp_source.html#l00173">InitReadResult()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="Popup__Result_8cpp_source.html#l00221">InitListenResult()</a>, <a class="el" href="Popup__Result_8cpp_source.html#l00180">InitReadResult()</a>.</p>
 
 </div>
 </div>
@@ -1619,7 +1626,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="Popup__Result_8h_source.html">Popup_Result.h</a> 파일의 <a class="el" href="Popup__Result_8h_source.html#l00065">65</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="Popup__Result_8cpp_source.html#l00214">InitListenResult()</a>, <a class="el" href="Popup__Result_8cpp_source.html#l00173">InitReadResult()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="Popup__Result_8cpp_source.html#l00221">InitListenResult()</a>, <a class="el" href="Popup__Result_8cpp_source.html#l00180">InitReadResult()</a>.</p>
 
 </div>
 </div>
@@ -1645,7 +1652,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="Popup__Result_8h_source.html">Popup_Result.h</a> 파일의 <a class="el" href="Popup__Result_8h_source.html#l00063">63</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="Popup__Result_8cpp_source.html#l00214">InitListenResult()</a>, <a class="el" href="Popup__Result_8cpp_source.html#l00173">InitReadResult()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="Popup__Result_8cpp_source.html#l00221">InitListenResult()</a>, <a class="el" href="Popup__Result_8cpp_source.html#l00180">InitReadResult()</a>.</p>
 
 </div>
 </div>
@@ -1671,7 +1678,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="Popup__Result_8h_source.html">Popup_Result.h</a> 파일의 <a class="el" href="Popup__Result_8h_source.html#l00067">67</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="Popup__Result_8cpp_source.html#l00214">InitListenResult()</a>, <a class="el" href="Popup__Result_8cpp_source.html#l00173">InitReadResult()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="Popup__Result_8cpp_source.html#l00221">InitListenResult()</a>, <a class="el" href="Popup__Result_8cpp_source.html#l00180">InitReadResult()</a>.</p>
 
 </div>
 </div>
@@ -1697,7 +1704,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="Popup__Result_8h_source.html">Popup_Result.h</a> 파일의 <a class="el" href="Popup__Result_8h_source.html#l00057">57</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="Popup__Result_8cpp_source.html#l00094">InitWordWidget()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="Popup__Result_8cpp_source.html#l00101">InitWordWidget()</a>.</p>
 
 </div>
 </div>
@@ -1723,7 +1730,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="Popup__Result_8h_source.html">Popup_Result.h</a> 파일의 <a class="el" href="Popup__Result_8h_source.html#l00054">54</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="Popup__Result_8cpp_source.html#l00094">InitWordWidget()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="Popup__Result_8cpp_source.html#l00101">InitWordWidget()</a>.</p>
 
 </div>
 </div>
@@ -1749,7 +1756,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="Popup__Result_8h_source.html">Popup_Result.h</a> 파일의 <a class="el" href="Popup__Result_8h_source.html#l00045">45</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="Popup__Result_8cpp_source.html#l00094">InitWordWidget()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="Popup__Result_8cpp_source.html#l00101">InitWordWidget()</a>.</p>
 
 </div>
 </div>
@@ -1775,7 +1782,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="Popup__Result_8h_source.html">Popup_Result.h</a> 파일의 <a class="el" href="Popup__Result_8h_source.html#l00060">60</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="Popup__Result_8cpp_source.html#l00119">InitWrongList()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="Popup__Result_8cpp_source.html#l00126">InitWrongList()</a>.</p>
 
 </div>
 </div>
@@ -1789,7 +1796,7 @@ Private 속성</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classUPopup__Result.html">UPopup_Result</a></li>
-    <li class="footer">생성시간 : 금 12월 19 2025 07:53:25, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 금 12월 19 2025 08:36:38, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>
