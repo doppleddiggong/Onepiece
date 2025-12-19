@@ -587,8 +587,15 @@ void APlayerControl::ServerRPC_SendChat_Implementation(const FText& inMessage)
 {
 	if (auto* GS = GetWorld()->GetGameState<ALingoGameState>())
 	{
+		// PlayerIndex 찾기
+		int32 PlayerIndex = -1;
+		if (ALingoPlayerState* PS = GetPlayerState<ALingoPlayerState>())
+		{
+			PlayerIndex = GS->PlayerArray.IndexOfByKey(PS);
+		}
+
 		// PRINTLOG(TEXT("[SendChat] APlayerControl::ServerRPC_SendChat: %s"), *inMessage.ToString());
-		GS->MulticastRPC_SendChat(UserInfo, inMessage);
+		GS->MulticastRPC_SendChat(UserInfo, inMessage, PlayerIndex);
 	}
 }
 
@@ -623,7 +630,8 @@ void APlayerControl::OnChatAnswerReceived(FResponseChatAnswers& ResponseData, bo
 	if (auto* GS = GetWorld()->GetGameState<ALingoGameState>())
 	{
 		FText AIAnswer = FText::FromString(ResponseData.answer);
-		GS->MulticastRPC_SendChat(GS->GetBotInfo(), AIAnswer);
+		// Bot은 PlayerIndex -1 사용
+		GS->MulticastRPC_SendChat(GS->GetBotInfo(), AIAnswer, -1);
 
 		PRINTLOG(TEXT("[AI Chat] AI Answer: %s"), *ResponseData.answer);
 	}

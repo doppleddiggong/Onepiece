@@ -44,11 +44,11 @@ protected:
 	UFUNCTION()
 	void OnInteractionTriggered(AActor* Interactor);
 	
-	UFUNCTION(Server, Reliable)
-	void ServerRPC_OnInteractionTriggered(AActor* Interactor);
-	
-	UFUNCTION(Client, Reliable)
-	void ClientRPC_OnInteractionTriggered(AActor* Interactor);
+	// UFUNCTION(Server, Reliable)
+	// void ServerRPC_OnInteractionTriggered(AActor* Interactor);
+	//
+	// UFUNCTION(Client, Reliable)
+	// void ClientRPC_OnInteractionTriggered(AActor* Interactor);
 	
 	UFUNCTION()
 	void OnResponseData(FQuestWriteInfo& InResponseData, bool bWasSuccessful);

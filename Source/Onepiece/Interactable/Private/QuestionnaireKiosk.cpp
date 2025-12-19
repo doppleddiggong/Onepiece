@@ -72,16 +72,6 @@ void AQuestionnaireKiosk::Tick(float DeltaTime)
 
 void AQuestionnaireKiosk::OnInteractionTriggered(AActor* Interactor)
 {
-	ServerRPC_OnInteractionTriggered(Interactor);
-}
-
-void AQuestionnaireKiosk::ServerRPC_OnInteractionTriggered_Implementation(AActor* Interactor)
-{
-	ClientRPC_OnInteractionTriggered(Interactor);
-}
-
-void AQuestionnaireKiosk::ClientRPC_OnInteractionTriggered_Implementation(AActor* Interactor)
-{
 	if (auto KLingoNetwork = UKLingoNetworkSystem::Get(GetWorld()))
 	{
 		// QuestionnaireData에 데이터가 있다면
@@ -96,7 +86,32 @@ void AQuestionnaireKiosk::ClientRPC_OnInteractionTriggered_Implementation(AActor
 			KLingoNetwork->RequestWriteQuestions(FResponseWriteQuestionDelegate::CreateUObject(this, &AQuestionnaireKiosk::OnResponseData));
 		}
 	}
+	
+	// ServerRPC_OnInteractionTriggered(Interactor);
 }
+//
+// void AQuestionnaireKiosk::ServerRPC_OnInteractionTriggered_Implementation(AActor* Interactor)
+// {
+// 	ClientRPC_OnInteractionTriggered(Interactor);
+// }
+//
+// void AQuestionnaireKiosk::ClientRPC_OnInteractionTriggered_Implementation(AActor* Interactor)
+// {
+// 	if (auto KLingoNetwork = UKLingoNetworkSystem::Get(GetWorld()))
+// 	{
+// 		// QuestionnaireData에 데이터가 있다면
+// 		if (QuestionnaireData.IsValid())
+// 		{
+// 			PRINTLOG(TEXT("QuestionnaireData is valid"));
+// 			ShowPopup();
+// 		}
+// 		else
+// 		{
+// 			PRINTLOG(TEXT("QuestionnaireData is invalid"));
+// 			KLingoNetwork->RequestWriteQuestions(FResponseWriteQuestionDelegate::CreateUObject(this, &AQuestionnaireKiosk::OnResponseData));
+// 		}
+// 	}
+// }
 
 void AQuestionnaireKiosk::OnResponseData(FQuestWriteInfo& InResponseData, bool bWasSuccessful)
 {

@@ -34,32 +34,22 @@ void UChatWidget::NativeConstruct()
 	SetIsFocusable(true);
 }
 
-void UChatWidget::SendMessage(FResponseUserMe sendUser, FText inMessage)
+void UChatWidget::SendMessage(FResponseUserMe sendUser, FText inMessage, int32 PlayerIndex)
 {
 	auto* PC = Cast<APlayerControl>(GetWorld()->GetFirstPlayerController<APlayerController>());
 	if (!PC)
 	{
 		PRINTLOG(TEXT("Cannot get playercontroller"));
 	}
-	
+
 	// 메시지 받은 플레이어 정보 가져오기
 	FResponseUserMe info = PC->GetUserInfo();
 	bool bIsSender = (info.id == sendUser.id);
-	
+
 	// ChatBox 생성
 	UChatBoxWidget* newChat = CreateChatBox(bIsSender);
 	newChat->SetMessage(inMessage);
 
-	// 플레이어 색상 & 넣기
-	int32 PlayerIndex = -1;
-	if (ALingoPlayerState* PS = PC->GetPlayerState<ALingoPlayerState>())
-	{
-		if (AGameStateBase* GS = GetWorld()->GetGameState())
-		{
-			PlayerIndex = GS->PlayerArray.IndexOfByKey(PS);
-		}
-	}
-	
 	newChat->SetPlayerProfile(
 		sendUser.GetChatProfileBg(PlayerIndex),
 		sendUser.GetChatProfileTextureType(PlayerIndex));

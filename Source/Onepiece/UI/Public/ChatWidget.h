@@ -19,7 +19,7 @@ public:
 	virtual void NativeConstruct() override;
 	
 	UFUNCTION()
-	void SendMessage(FResponseUserMe sendUser, FText inMessage);
+	void SendMessage(FResponseUserMe sendUser, FText inMessage, int32 PlayerIndex);
 	
 	void FocusInput();
 	

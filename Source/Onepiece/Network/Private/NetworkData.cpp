@@ -243,9 +243,9 @@ FLinearColor FResponseUserMe::GetChatProfileBg(int player_index) const
 	if ( player_index == 0)
 		return  FColor::FromHex(TEXT("FFFFFF"));
 	if ( player_index == 1)
-		return FColor::FromHex(TEXT("E94C4CFF"));
+		return  FColor::FromHex(TEXT("FFFFFF"));
 	else
-		return FColor::FromHex(TEXT("007BE8FF"));
+		return FColor::FromHex(TEXT("E94C4CFF"));
 }
 
 

@@ -100,7 +100,7 @@ protected:
 public:
 	// Chat System
 	UFUNCTION(NetMulticast, Reliable)
-	void MulticastRPC_SendChat(FResponseUserMe sendUser, const FText& inMessage);
+	void MulticastRPC_SendChat(FResponseUserMe sendUser, const FText& inMessage, int32 PlayerIndex);
 	
 private:
 	/// @brief 타이머 종료 시 호출됩니다 (서버에서만 실행)
