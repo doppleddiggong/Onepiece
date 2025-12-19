@@ -761,6 +761,35 @@ void APlayerActor::UpdateCompassMarkers()
 	// {
 	// 	CompassMarkerMap.Remove(Actor);
 	// }
+
+	 // --- 방법 2: Interface 함수 활용 (타입별 다른 마커 표시) ---
+	// 필요시 사용
+      /*                                                                                                                                                                
+      for (AActor* TrackedActor : TrackedActors)                                                                                                                        
+      {                                                                                                                                                                 
+          if (!TrackedActor) continue;                                                                                                                                  
+
+          // Interface로 캐스팅해서 정보 가져오기                                                                                                                       
+          ICompassTargetInterface* Target = Cast<ICompassTargetInterface>(TrackedActor);                                                                                
+          if (!Target) continue;                                                                                                                                        
+
+          // Interface 함수로 마커 타입 확인 (예: GetCompassMarkerType())                                                                                               
+          ECompassMarkerType MarkerType = Target->GetCompassMarkerType();                                                                                               
+
+          // 타입에 따라 다른 마커 생성/업데이트                                                                                                                        
+          UImage* Marker = CompassMarkerMap.FindRef(TrackedActor);                                                                                                      
+          if (!Marker)                                                                                                                                                  
+          {                                                                                                                                                             
+              Marker = Compass->AddCompassMarker(MarkerType); // 타입별 마커 생성                                                                                       
+              CompassMarkerMap.Add(TrackedActor, Marker);                                                                                                               
+          }                                                                                                                                                             
+
+          FRotator RelativeRotation = FindRelativeRotationAtTarget(TrackedActor);                                                                                       
+          float TargetYaw = RelativeRotation.Yaw;                                                                                                                       
+
+          Compass->SetMarkerPosition(Marker, TargetYaw, false);                                                                                                         
+      }                                                                                                                                                                 
+      */
 }
 
 FRotator APlayerActor::FindRelativeRotationAtTarget(AActor* Target)
