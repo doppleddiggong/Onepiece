@@ -161,118 +161,123 @@ $(document).ready(function(){initNavTree('ALingoGameState_8h_source.html',''); i
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="classALingoGameState.html#a61f2c80cfba92b780505415a4bf01a36">   47</a></span>    FORCEINLINE <a class="code hl_enumeration" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921">EQuestType</a> <a class="code hl_function" href="classALingoGameState.html#a61f2c80cfba92b780505415a4bf01a36">GetCurrentQuestType</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> QuestType; }</div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="classALingoGameState.html#ad05acb80ff93078c77995753905def43">   48</a></span>    FORCEINLINE <span class="keyword">const</span> <a class="code hl_struct" href="structFResponseReadScenario.html">FResponseReadScenario</a>&amp; <a class="code hl_function" href="classALingoGameState.html#ad05acb80ff93078c77995753905def43">GetReadScenarioData</a>()<span class="keyword"> const </span>{<span class="keywordflow">return</span> ReadScenarioData;}</div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="classALingoGameState.html#a05dda129c32a08fc3432424f612ce50b">   49</a></span>    FORCEINLINE <span class="keyword">const</span> <a class="code hl_struct" href="structFResponseListenScenario.html">FResponseListenScenario</a>&amp; <a class="code hl_function" href="classALingoGameState.html#a05dda129c32a08fc3432424f612ce50b">GetListenScenarioData</a>()<span class="keyword"> const </span>{<span class="keywordflow">return</span> ListenScenarioData;}</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    UFUNCTION(BlueprintCallable, Category = <span class="stringliteral">&quot;Mission&quot;</span>)</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    void StartMissionTimer(<span class="keywordtype">float</span> TimeLimit);</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    UFUNCTION(BlueprintCallable, Category = &quot;Mission&quot;)</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="keywordtype">void</span> StopMissionTimer();</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    UFUNCTION(BlueprintCallable, Category = &quot;Mission&quot;)</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="keywordtype">void</span> DecreaseMissionTimer(const <span class="keywordtype">float</span> InValue);</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="keywordtype">void</span> UpdateRemainMissionTime(const <span class="keywordtype">float</span> InTimeLimit);</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    <span class="keywordtype">void</span> SetReadScenarioData(const <a class="code hl_struct" href="structFResponseReadScenario.html">FResponseReadScenario</a>&amp; InResponseData);</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <span class="keywordtype">void</span> SetListenScenarioData(const <a class="code hl_struct" href="structFResponseListenScenario.html">FResponseListenScenario</a>&amp; InResponseData);</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    </div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>protected:</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    UFUNCTION(NetMulticast, Reliable)</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="classALingoGameState.html#a525363eb5907c6beb87fcf7f7e7db467">   69</a></span>    <span class="keywordtype">void</span> Multicast_UpdateQuestType(const <a class="code hl_enumeration" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921">EQuestType</a> InQuestType);</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    UFUNCTION(NetMulticast, Reliable)</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno"><a class="line" href="classALingoGameState.html#ae04b20ae5d76608071712d86c3907819">   72</a></span>    <span class="keywordtype">void</span> Multicast_ShowReadQuestPopup(const <a class="code hl_struct" href="structFResponseReadScenario.html">FResponseReadScenario</a>&amp; InScenarioData);</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    UFUNCTION(NetMulticast, Reliable)</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno"><a class="line" href="classALingoGameState.html#a6c5c93188b76ad8d9271c692c739b03d">   75</a></span>    <span class="keywordtype">void</span> Multicast_ShowListenQuestPopup(const <a class="code hl_struct" href="structFResponseListenScenario.html">FResponseListenScenario</a>&amp; InScenarioData);</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    UFUNCTION()</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    <span class="keywordtype">void</span> OnRep_ReadScenarioData();</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    UFUNCTION()</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    <span class="keywordtype">void</span> OnRep_ReadResult();</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    UFUNCTION()</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    <span class="keywordtype">void</span> OnRep_ListenScenarioData();</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    UFUNCTION()</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    <span class="keywordtype">void</span> OnRep_ListenResult();</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    UFUNCTION()</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    <span class="keywordtype">void</span> OnRep_RoomId();</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    UFUNCTION()</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    <span class="keywordtype">void</span> OnRep_RoomLevel();</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    </div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>public:</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    <span class="comment">// Chat System</span></div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    UFUNCTION(NetMulticast, Reliable)</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno"><a class="line" href="classALingoGameState.html#a64d0bab10f3604385e1fed18ea6309f3">   98</a></span>    <span class="keywordtype">void</span> MulticastRPC_SendChat(<a class="code hl_struct" href="structFResponseUserMe.html">FResponseUserMe</a> sendUser, const FText&amp; inMessage);</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="classALingoGameState.html#a997cdf25a093c1e43060b4a7f2330bb7">   50</a></span>    FORCEINLINE <span class="keyword">const</span> <a class="code hl_struct" href="structFResponseUserMe.html">FResponseUserMe</a>&amp; <a class="code hl_function" href="classALingoGameState.html#a997cdf25a093c1e43060b4a7f2330bb7">GetBotInfo</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2a1448e86d90e0feb307c2894c24e87767">Bot</a>; }</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    UFUNCTION(BlueprintCallable, Category = <span class="stringliteral">&quot;Mission&quot;</span>)</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    void StartMissionTimer(<span class="keywordtype">float</span> TimeLimit);</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    UFUNCTION(BlueprintCallable, Category = &quot;Mission&quot;)</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="keywordtype">void</span> StopMissionTimer();</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    UFUNCTION(BlueprintCallable, Category = &quot;Mission&quot;)</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="keywordtype">void</span> DecreaseMissionTimer(const <span class="keywordtype">float</span> InValue);</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <span class="keywordtype">void</span> UpdateRemainMissionTime(const <span class="keywordtype">float</span> InTimeLimit);</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <span class="keywordtype">void</span> SetReadScenarioData(const <a class="code hl_struct" href="structFResponseReadScenario.html">FResponseReadScenario</a>&amp; InResponseData);</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <span class="keywordtype">void</span> SetListenScenarioData(const <a class="code hl_struct" href="structFResponseListenScenario.html">FResponseListenScenario</a>&amp; InResponseData);</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <span class="keywordtype">void</span> SetRoomLevel(int32 InRoomLevel);</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>protected:</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    UFUNCTION(NetMulticast, Reliable)</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno"><a class="line" href="classALingoGameState.html#a525363eb5907c6beb87fcf7f7e7db467">   74</a></span>    <span class="keywordtype">void</span> Multicast_UpdateQuestType(const <a class="code hl_enumeration" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921">EQuestType</a> InQuestType);</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    UFUNCTION(NetMulticast, Reliable)</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno"><a class="line" href="classALingoGameState.html#ae04b20ae5d76608071712d86c3907819">   77</a></span>    <span class="keywordtype">void</span> Multicast_ShowReadQuestPopup(const <a class="code hl_struct" href="structFResponseReadScenario.html">FResponseReadScenario</a>&amp; InScenarioData);</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    UFUNCTION(NetMulticast, Reliable)</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno"><a class="line" href="classALingoGameState.html#a6c5c93188b76ad8d9271c692c739b03d">   80</a></span>    <span class="keywordtype">void</span> Multicast_ShowListenQuestPopup(const <a class="code hl_struct" href="structFResponseListenScenario.html">FResponseListenScenario</a>&amp; InScenarioData);</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    UFUNCTION()</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    <span class="keywordtype">void</span> OnRep_ReadScenarioData();</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    UFUNCTION()</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    <span class="keywordtype">void</span> OnRep_ReadResult();</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    UFUNCTION()</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    <span class="keywordtype">void</span> OnRep_ListenScenarioData();</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    UFUNCTION()</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    <span class="keywordtype">void</span> OnRep_ListenResult();</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span> </div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    UFUNCTION()</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    <span class="keywordtype">void</span> OnRep_RoomId();</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span> </div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    UFUNCTION()</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    <span class="keywordtype">void</span> OnRep_RoomLevel();</div>
 <div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    </div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>private:</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    <span class="keywordtype">void</span> OnMissionTimerEnd();</div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    </div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>public:</div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno"><a class="line" href="classALingoGameState.html#ada8ce049489e728db762ee7a5f3b6bc3">  105</a></span>    FOnReadResultUpdated OnReadResultUpdated;</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno"><a class="line" href="classALingoGameState.html#ad821d0da0b11aec76f97e9be6e84d91f">  106</a></span>    FOnListenResultUpdated OnListenResultUpdated;</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno"><a class="line" href="classALingoGameState.html#a976d75973b49576e435409c8e23a378a">  107</a></span>    FOnQuestScenarioDataUpdated OnQuestScenarioDataUpdated;</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno"><a class="line" href="classALingoGameState.html#ae6af66ce18ee2c46bc67df445c17a796">  108</a></span>    FOnRoomIdUpdated OnRoomIdUpdated;</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno"><a class="line" href="classALingoGameState.html#a546e07f96b312b03092f2dbc82e9846c">  109</a></span>    FOnRoomLevelUpdated OnRoomLevelUpdated;</div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span> </div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno"><a class="line" href="classALingoGameState.html#a31688099a4c195ede03239903b5b4119">  111</a></span>    FORCEINLINE <span class="keywordtype">int</span> GetWrongReadAnswerNum() { <span class="keywordflow">return</span> WrongReadAnswerList.Num(); }</div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    <span class="keywordtype">void</span> AddWrongReadAnswer(int32 Value);</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    </div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    UPROPERTY(ReplicatedUsing = OnRep_ReadScenarioData)</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno"><a class="line" href="classALingoGameState.html#a2f6a9d1ea728c1a4ba1ebbc84543bbaf">  115</a></span>    <a class="code hl_struct" href="structFResponseReadScenario.html">FResponseReadScenario</a> ReadScenarioData;</div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span> </div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>    UPROPERTY(Replicated)</div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno"><a class="line" href="classALingoGameState.html#ac68fdc03f32358fc9ca40fc5f4ec9cc8">  118</a></span>    TArray&lt;int32&gt; WrongReadAnswerList;</div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span> </div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    UPROPERTY(Replicated)</div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno"><a class="line" href="classALingoGameState.html#a7d8fcc515ef8d8a97ae0b40393ef2ca8">  121</a></span>    <a class="code hl_struct" href="structFResponseReadResult.html">FResponseReadResult</a> ReqReadResult;</div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>    </div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>    UPROPERTY(ReplicatedUsing = OnRep_ReadResult)</div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno"><a class="line" href="classALingoGameState.html#a8fe961564c1a1b861042b362e524e88f">  124</a></span>    <a class="code hl_struct" href="structFResponseReadResult.html">FResponseReadResult</a> ReadResult;</div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>    <span class="comment">//--------------------------------------------------------------//</span></div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>    </div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno"><a class="line" href="classALingoGameState.html#a467e27c31a28f4b25fd9939a9d0f01f5">  127</a></span>    FORCEINLINE <span class="keywordtype">int</span> GetWrongListenAnswerNum() { <span class="keywordflow">return</span> WrongListenAnswerList.Num(); }</div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>    <span class="keywordtype">void</span> AddWrongListenAnswer(int32 Value);</div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>    <span class="comment">// 서버에서 받아오는 원본</span></div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>    UPROPERTY(ReplicatedUsing = OnRep_ListenScenarioData)</div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno"><a class="line" href="classALingoGameState.html#aab5501acc9337bcd9004f5fa89df7949">  131</a></span>    <a class="code hl_struct" href="structFResponseListenScenario.html">FResponseListenScenario</a> ListenScenarioData;</div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    <span class="comment">// 시도한 선택지들 저장</span></div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>    UPROPERTY(Replicated)</div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno"><a class="line" href="classALingoGameState.html#a32ce9e91913292c7b8e270af75482c11">  134</a></span>    <a class="code hl_struct" href="structFResponseListenScenario.html">FResponseListenScenario</a> TryListenAnswerData;</div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>    <span class="comment">// 서버로 정답률 보내기 위한 형식상 인덱스 리스트</span></div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>    UPROPERTY(Replicated)</div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno"><a class="line" href="classALingoGameState.html#a00a86de1187369b05b01f01889d78b45">  137</a></span>    TArray&lt;int32&gt; WrongListenAnswerList;</div>
-<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span> </div>
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>    UPROPERTY(Replicated)</div>
-<div class="line"><a id="l00140" name="l00140"></a><span class="lineno"><a class="line" href="classALingoGameState.html#aef17548f2e3b9e228425508af5a5fb92">  140</a></span>    <a class="code hl_struct" href="structFResponseListenResult.html">FResponseListenResult</a> ReqListenResult;</div>
-<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span> </div>
-<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>    UPROPERTY(ReplicatedUsing = OnRep_ListenResult)</div>
-<div class="line"><a id="l00143" name="l00143"></a><span class="lineno"><a class="line" href="classALingoGameState.html#a6b3f912f049b42e768067404fcff418a">  143</a></span>    <a class="code hl_struct" href="structFResponseListenResult.html">FResponseListenResult</a> ListenResult;</div>
-<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>    <span class="comment">//--------------------------------------------------------------//</span></div>
-<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span> </div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>protected:</div>
-<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>    UPROPERTY(Replicated, BlueprintReadOnly, Category = &quot;Mission&quot;)</div>
-<div class="line"><a id="l00148" name="l00148"></a><span class="lineno"><a class="line" href="classALingoGameState.html#abf8b596488b55e3933d5d3fcf016307f">  148</a></span>    <span class="keywordtype">float</span> RemainMissionTime = 0.f;</div>
-<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span> </div>
-<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>    UPROPERTY(Replicated, BlueprintReadOnly, Category = &quot;Mission&quot;)</div>
-<div class="line"><a id="l00152" name="l00152"></a><span class="lineno"><a class="line" href="classALingoGameState.html#ab2b1dfcaf07b61dd099209f135ff97fa">  152</a></span>    <span class="keywordtype">bool</span> bIsTimerActive = false;</div>
-<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span> </div>
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>    UPROPERTY(Replicated, BlueprintReadOnly, Category = &quot;Quest&quot;)</div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno"><a class="line" href="classALingoGameState.html#ae109b2cf1bcd0d8f737531b8e26a08dc">  155</a></span>    <a class="code hl_enumeration" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921">EQuestType</a> QuestType;</div>
-<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span> </div>
-<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>    UPROPERTY(ReplicatedUsing=OnRep_RoomId, BlueprintReadOnly, Category = &quot;Room&quot;)</div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno"><a class="line" href="classALingoGameState.html#a098f78f856c35102786b2109ca20c576">  159</a></span>    int64 RoomId = 0;</div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span> </div>
-<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>    UPROPERTY(ReplicatedUsing=OnRep_RoomLevel, BlueprintReadOnly, Category = &quot;Room&quot;)</div>
-<div class="line"><a id="l00162" name="l00162"></a><span class="lineno"><a class="line" href="classALingoGameState.html#ae3c5cc4c0d111910c3078336b7839eea">  162</a></span>    int32 RoomLevel = 1;</div>
-<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>    </div>
-<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>private:</div>
-<div class="line"><a id="l00165" name="l00165"></a><span class="lineno"><a class="line" href="classALingoGameState.html#a6f7476b0799155bba7594e1fcbc3daf5">  165</a></span>    <span class="keywordtype">float</span> TimeLimit = 0;</div>
-<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>};</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>public:</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    <span class="comment">// Chat System</span></div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    UFUNCTION(NetMulticast, Reliable)</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno"><a class="line" href="classALingoGameState.html#a64d0bab10f3604385e1fed18ea6309f3">  103</a></span>    <span class="keywordtype">void</span> MulticastRPC_SendChat(<a class="code hl_struct" href="structFResponseUserMe.html">FResponseUserMe</a> sendUser, const FText&amp; inMessage);</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    </div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>private:</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    <span class="keywordtype">void</span> OnMissionTimerEnd();</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    </div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>public:</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno"><a class="line" href="classALingoGameState.html#ada8ce049489e728db762ee7a5f3b6bc3">  110</a></span>    FOnReadResultUpdated OnReadResultUpdated;</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno"><a class="line" href="classALingoGameState.html#ad821d0da0b11aec76f97e9be6e84d91f">  111</a></span>    FOnListenResultUpdated OnListenResultUpdated;</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno"><a class="line" href="classALingoGameState.html#a976d75973b49576e435409c8e23a378a">  112</a></span>    FOnQuestScenarioDataUpdated OnQuestScenarioDataUpdated;</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno"><a class="line" href="classALingoGameState.html#ae6af66ce18ee2c46bc67df445c17a796">  113</a></span>    FOnRoomIdUpdated OnRoomIdUpdated;</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno"><a class="line" href="classALingoGameState.html#a546e07f96b312b03092f2dbc82e9846c">  114</a></span>    FOnRoomLevelUpdated OnRoomLevelUpdated;</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span> </div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno"><a class="line" href="classALingoGameState.html#a31688099a4c195ede03239903b5b4119">  116</a></span>    FORCEINLINE <span class="keywordtype">int</span> GetWrongReadAnswerNum() { <span class="keywordflow">return</span> WrongReadAnswerList.Num(); }</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>    <span class="keywordtype">void</span> AddWrongReadAnswer(int32 Value);</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    </div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    UPROPERTY(ReplicatedUsing = OnRep_ReadScenarioData)</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno"><a class="line" href="classALingoGameState.html#a2f6a9d1ea728c1a4ba1ebbc84543bbaf">  120</a></span>    <a class="code hl_struct" href="structFResponseReadScenario.html">FResponseReadScenario</a> ReadScenarioData;</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span> </div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>    UPROPERTY(Replicated)</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno"><a class="line" href="classALingoGameState.html#ac68fdc03f32358fc9ca40fc5f4ec9cc8">  123</a></span>    TArray&lt;int32&gt; WrongReadAnswerList;</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span> </div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>    UPROPERTY(Replicated)</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno"><a class="line" href="classALingoGameState.html#a7d8fcc515ef8d8a97ae0b40393ef2ca8">  126</a></span>    <a class="code hl_struct" href="structFResponseReadResult.html">FResponseReadResult</a> ReqReadResult;</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>    </div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>    UPROPERTY(ReplicatedUsing = OnRep_ReadResult)</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno"><a class="line" href="classALingoGameState.html#a8fe961564c1a1b861042b362e524e88f">  129</a></span>    <a class="code hl_struct" href="structFResponseReadResult.html">FResponseReadResult</a> ReadResult;</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>    <span class="comment">//--------------------------------------------------------------//</span></div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>    </div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno"><a class="line" href="classALingoGameState.html#a467e27c31a28f4b25fd9939a9d0f01f5">  132</a></span>    FORCEINLINE <span class="keywordtype">int</span> GetWrongListenAnswerNum() { <span class="keywordflow">return</span> WrongListenAnswerList.Num(); }</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>    <span class="keywordtype">void</span> AddWrongListenAnswer(int32 Value);</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>    <span class="comment">// 서버에서 받아오는 원본</span></div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>    UPROPERTY(ReplicatedUsing = OnRep_ListenScenarioData)</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno"><a class="line" href="classALingoGameState.html#aab5501acc9337bcd9004f5fa89df7949">  136</a></span>    <a class="code hl_struct" href="structFResponseListenScenario.html">FResponseListenScenario</a> ListenScenarioData;</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>    <span class="comment">// 시도한 선택지들 저장</span></div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>    UPROPERTY(Replicated)</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno"><a class="line" href="classALingoGameState.html#a32ce9e91913292c7b8e270af75482c11">  139</a></span>    <a class="code hl_struct" href="structFResponseListenScenario.html">FResponseListenScenario</a> TryListenAnswerData;</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>    <span class="comment">// 서버로 정답률 보내기 위한 형식상 인덱스 리스트</span></div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>    UPROPERTY(Replicated)</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno"><a class="line" href="classALingoGameState.html#a00a86de1187369b05b01f01889d78b45">  142</a></span>    TArray&lt;int32&gt; WrongListenAnswerList;</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span> </div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>    UPROPERTY(Replicated)</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno"><a class="line" href="classALingoGameState.html#aef17548f2e3b9e228425508af5a5fb92">  145</a></span>    <a class="code hl_struct" href="structFResponseListenResult.html">FResponseListenResult</a> ReqListenResult;</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span> </div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>    UPROPERTY(ReplicatedUsing = OnRep_ListenResult)</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno"><a class="line" href="classALingoGameState.html#a6b3f912f049b42e768067404fcff418a">  148</a></span>    <a class="code hl_struct" href="structFResponseListenResult.html">FResponseListenResult</a> ListenResult;</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>    <span class="comment">//--------------------------------------------------------------//</span></div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span> </div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>protected:</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>    UPROPERTY(Replicated, BlueprintReadOnly, Category = &quot;Mission&quot;)</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno"><a class="line" href="classALingoGameState.html#abf8b596488b55e3933d5d3fcf016307f">  153</a></span>    <span class="keywordtype">float</span> RemainMissionTime = 0.f;</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span> </div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>    UPROPERTY(Replicated, BlueprintReadOnly, Category = &quot;Mission&quot;)</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno"><a class="line" href="classALingoGameState.html#ab2b1dfcaf07b61dd099209f135ff97fa">  157</a></span>    <span class="keywordtype">bool</span> bIsTimerActive = false;</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span> </div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>    UPROPERTY(Replicated, BlueprintReadOnly, Category = &quot;Quest&quot;)</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno"><a class="line" href="classALingoGameState.html#ae109b2cf1bcd0d8f737531b8e26a08dc">  160</a></span>    <a class="code hl_enumeration" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921">EQuestType</a> QuestType;</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span> </div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>    UPROPERTY(ReplicatedUsing=OnRep_RoomId, BlueprintReadOnly, Category = &quot;Room&quot;)</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno"><a class="line" href="classALingoGameState.html#a098f78f856c35102786b2109ca20c576">  164</a></span>    int64 RoomId = 0;</div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span> </div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>    UPROPERTY(ReplicatedUsing=OnRep_RoomLevel, BlueprintReadOnly, Category = &quot;Room&quot;)</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno"><a class="line" href="classALingoGameState.html#ae3c5cc4c0d111910c3078336b7839eea">  167</a></span>    int32 RoomLevel = 1;</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>    </div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>private:</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno"><a class="line" href="classALingoGameState.html#a6f7476b0799155bba7594e1fcbc3daf5">  170</a></span>    <span class="keywordtype">float</span> TimeLimit = 0;</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span> </div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno"><a class="line" href="classALingoGameState.html#af364d807ce0ae6514268e6036ed017f9">  172</a></span>    <a class="code hl_struct" href="structFResponseUserMe.html">FResponseUserMe</a> <a class="code hl_enumvalue" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2a1448e86d90e0feb307c2894c24e87767">Bot</a>;</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>};</div>
 </div>
 <div class="ttc" id="aALingoGameState_8h_html_a1a866ca8104ebd47ce462347a6125921"><div class="ttname"><a href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921">EQuestType</a></div><div class="ttdeci">EQuestType</div><div class="ttdef"><b>Definition</b> <a href="ALingoGameState_8h_source.html#l00011">ALingoGameState.h:12</a></div></div>
 <div class="ttc" id="aALingoGameState_8h_html_a1a866ca8104ebd47ce462347a6125921a1129c0e4d43f2d121652a7302712cff6"><div class="ttname"><a href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a1129c0e4d43f2d121652a7302712cff6">EQuestType::Write</a></div><div class="ttdeci">@ Write</div></div>
@@ -282,6 +287,7 @@ $(document).ready(function(){initNavTree('ALingoGameState_8h_source.html',''); i
 <div class="ttc" id="aALingoGameState_8h_html_a1a866ca8104ebd47ce462347a6125921ace6802b46091c31e2ec2363883fe8369"><div class="ttname"><a href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921ace6802b46091c31e2ec2363883fe8369">EQuestType::Listen</a></div><div class="ttdeci">@ Listen</div></div>
 <div class="ttc" id="aALingoGameState_8h_html_a8a133b5c7f62e5ee0efadc46cf6f953d"><div class="ttname"><a href="ALingoGameState_8h.html#a8a133b5c7f62e5ee0efadc46cf6f953d">DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam</a></div><div class="ttdeci">DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnReadResultUpdated, const FResponseReadResult &amp;, Result)</div></div>
 <div class="ttc" id="aALingoGameState_8h_html_ada07948b8ca722bd055251c8956f16d5"><div class="ttname"><a href="ALingoGameState_8h.html#ada07948b8ca722bd055251c8956f16d5">DECLARE_DYNAMIC_MULTICAST_DELEGATE</a></div><div class="ttdeci">DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnQuestScenarioDataUpdated)</div></div>
+<div class="ttc" id="aFResourceTextureData_8h_html_a98b8b3000fb3fc86e37c624651589cb2a1448e86d90e0feb307c2894c24e87767"><div class="ttname"><a href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2a1448e86d90e0feb307c2894c24e87767">EResourceTextureType::Bot</a></div><div class="ttdeci">@ Bot</div></div>
 <div class="ttc" id="aNetworkData_8h_html"><div class="ttname"><a href="NetworkData_8h.html">NetworkData.h</a></div><div class="ttdoc">네트워크 요청과 응답에 사용되는 구조체 및 설정을 정의합니다.</div></div>
 <div class="ttc" id="aclassALingoGameState_html"><div class="ttname"><a href="classALingoGameState.html">ALingoGameState</a></div><div class="ttdef"><b>Definition</b> <a href="ALingoGameState_8h_source.html#l00028">ALingoGameState.h:29</a></div></div>
 <div class="ttc" id="aclassALingoGameState_html_a019930883a0fc70f466a95c75b946b3e"><div class="ttname"><a href="classALingoGameState.html#a019930883a0fc70f466a95c75b946b3e">ALingoGameState::GetRoomLevel</a></div><div class="ttdeci">FORCEINLINE int32 GetRoomLevel()</div><div class="ttdef"><b>Definition</b> <a href="ALingoGameState_8h_source.html#l00043">ALingoGameState.h:43</a></div></div>
@@ -290,12 +296,13 @@ $(document).ready(function(){initNavTree('ALingoGameState_8h_source.html',''); i
 <div class="ttc" id="aclassALingoGameState_html_a61f2c80cfba92b780505415a4bf01a36"><div class="ttname"><a href="classALingoGameState.html#a61f2c80cfba92b780505415a4bf01a36">ALingoGameState::GetCurrentQuestType</a></div><div class="ttdeci">FORCEINLINE EQuestType GetCurrentQuestType() const</div><div class="ttdef"><b>Definition</b> <a href="ALingoGameState_8h_source.html#l00047">ALingoGameState.h:47</a></div></div>
 <div class="ttc" id="aclassALingoGameState_html_a6879ab856d92720dde9ec5d1a9cb2460"><div class="ttname"><a href="classALingoGameState.html#a6879ab856d92720dde9ec5d1a9cb2460">ALingoGameState::IsQuestIng</a></div><div class="ttdeci">FORCEINLINE bool IsQuestIng()</div><div class="ttdef"><b>Definition</b> <a href="ALingoGameState_8h_source.html#l00046">ALingoGameState.h:46</a></div></div>
 <div class="ttc" id="aclassALingoGameState_html_a8aff2453dbbf4bf34e5495d4341e6fe5"><div class="ttname"><a href="classALingoGameState.html#a8aff2453dbbf4bf34e5495d4341e6fe5">ALingoGameState::GetRemainMissionTime</a></div><div class="ttdeci">FORCEINLINE float GetRemainMissionTime()</div><div class="ttdef"><b>Definition</b> <a href="ALingoGameState_8h_source.html#l00044">ALingoGameState.h:44</a></div></div>
+<div class="ttc" id="aclassALingoGameState_html_a997cdf25a093c1e43060b4a7f2330bb7"><div class="ttname"><a href="classALingoGameState.html#a997cdf25a093c1e43060b4a7f2330bb7">ALingoGameState::GetBotInfo</a></div><div class="ttdeci">FORCEINLINE const FResponseUserMe &amp; GetBotInfo() const</div><div class="ttdef"><b>Definition</b> <a href="ALingoGameState_8h_source.html#l00050">ALingoGameState.h:50</a></div></div>
 <div class="ttc" id="aclassALingoGameState_html_ad05acb80ff93078c77995753905def43"><div class="ttname"><a href="classALingoGameState.html#ad05acb80ff93078c77995753905def43">ALingoGameState::GetReadScenarioData</a></div><div class="ttdeci">FORCEINLINE const FResponseReadScenario &amp; GetReadScenarioData() const</div><div class="ttdef"><b>Definition</b> <a href="ALingoGameState_8h_source.html#l00048">ALingoGameState.h:48</a></div></div>
 <div class="ttc" id="aclassALingoGameState_html_af0bac5ebb3a40e29aca6d3e298b8c0c2"><div class="ttname"><a href="classALingoGameState.html#af0bac5ebb3a40e29aca6d3e298b8c0c2">ALingoGameState::GetRoomId</a></div><div class="ttdeci">FORCEINLINE int64 GetRoomId()</div><div class="ttdef"><b>Definition</b> <a href="ALingoGameState_8h_source.html#l00042">ALingoGameState.h:42</a></div></div>
-<div class="ttc" id="astructFResponseListenResult_html"><div class="ttname"><a href="structFResponseListenResult.html">FResponseListenResult</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l01103">NetworkData.h:1104</a></div></div>
-<div class="ttc" id="astructFResponseListenScenario_html"><div class="ttname"><a href="structFResponseListenScenario.html">FResponseListenScenario</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l01015">NetworkData.h:1016</a></div></div>
-<div class="ttc" id="astructFResponseReadResult_html"><div class="ttname"><a href="structFResponseReadResult.html">FResponseReadResult</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00989">NetworkData.h:990</a></div></div>
-<div class="ttc" id="astructFResponseReadScenario_html"><div class="ttname"><a href="structFResponseReadScenario.html">FResponseReadScenario</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00904">NetworkData.h:905</a></div></div>
+<div class="ttc" id="astructFResponseListenResult_html"><div class="ttname"><a href="structFResponseListenResult.html">FResponseListenResult</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l01106">NetworkData.h:1107</a></div></div>
+<div class="ttc" id="astructFResponseListenScenario_html"><div class="ttname"><a href="structFResponseListenScenario.html">FResponseListenScenario</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l01018">NetworkData.h:1019</a></div></div>
+<div class="ttc" id="astructFResponseReadResult_html"><div class="ttname"><a href="structFResponseReadResult.html">FResponseReadResult</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00992">NetworkData.h:993</a></div></div>
+<div class="ttc" id="astructFResponseReadScenario_html"><div class="ttname"><a href="structFResponseReadScenario.html">FResponseReadScenario</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00907">NetworkData.h:908</a></div></div>
 <div class="ttc" id="astructFResponseUserMe_html"><div class="ttname"><a href="structFResponseUserMe.html">FResponseUserMe</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00493">NetworkData.h:494</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
@@ -303,7 +310,7 @@ $(document).ready(function(){initNavTree('ALingoGameState_8h_source.html',''); i
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_7fb5e64dcba5cad56d11a2ce531d1e7a.html">Game</a></li><li class="navelem"><a class="el" href="dir_7d5071b022ae16b4c5bc069534dc4de0.html">Public</a></li><li class="navelem"><a class="el" href="ALingoGameState_8h.html">ALingoGameState.h</a></li>
-    <li class="footer">생성시간 : 금 12월 19 2025 00:27:08, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 금 12월 19 2025 06:10:24, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

@@ -1,5 +1,12 @@
 var NAVTREEINDEX4 =
 {
+"URichText_8cpp.html":[3,0,0,2,8,0,3],
+"URichText_8cpp.html#a49b78dc337a3ab4e4c1a60578b98c995":[3,0,0,2,8,0,3,0],
+"URichText_8cpp_source.html":[3,0,0,2,8,0,3],
+"URichText_8h.html":[3,0,0,2,8,1,3],
+"URichText_8h.html#a842db4169468886b73d60ddf138a61e7":[3,0,0,2,8,1,3,1],
+"URichText_8h_source.html":[3,0,0,2,8,1,3],
+"URoomWidget_8cpp.html":[3,0,0,2,6,0,25],
 "URoomWidget_8cpp_source.html":[3,0,0,2,6,0,25],
 "URoomWidget_8h.html":[3,0,0,2,6,1,25],
 "URoomWidget_8h_source.html":[3,0,0,2,6,1,25],
@@ -242,12 +249,5 @@ var NAVTREEINDEX4 =
 "classAFood.html#aa43187bf89a619888cee8beacd6ee5b4":[2,0,9,3],
 "classAFood.html#ab887c7a54be058e0c86f705663633001":[2,0,9,7],
 "classAFood.html#ac02250d240a1826d146eb16a315ad8ce":[2,0,9,4],
-"classAFood.html#ac6368161a64ddb23444841bc71979a1f":[2,0,9,0],
-"classAFood.html#ad600dada8faa4bf439f7a49151b1b367":[2,0,9,12],
-"classAFood.html#ae0786f876cf1061d226cc1c6254b10c9":[2,0,9,11],
-"classAFood.html#ae3d1b4ff7a90238177025945d9621c4f":[2,0,9,1],
-"classAFood.html#aebbad5e8b1fcc27be5d30e4e67bcf4f1":[2,0,9,5],
-"classAFood.html#af585fce935c7e1cdefedf3399027521b":[2,0,9,14],
-"classAFoodCourtManager.html":[2,0,10],
-"classAFoodCourtManager.html#a0d16e6507784b78ed25f4757f99c4fdf":[2,0,10,7]
+"classAFood.html#ac6368161a64ddb23444841bc71979a1f":[2,0,9,0]
 };

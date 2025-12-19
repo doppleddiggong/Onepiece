@@ -123,7 +123,7 @@ var searchData=
   ['correctanswerindex_120',['correctanswerindex',['../structFQuestReadInfo.html#a964a3bbb41579866f6f2d84d7dde6c10',1,'FQuestReadInfo::CorrectAnswerIndex'],['../structFQuestListenInfo.html#a30660f2c732b8ffd87d7e030fcd8dd11',1,'FQuestListenInfo::CorrectAnswerIndex']]],
   ['correction_121',['correction',['../structFWriteDisplay.html#a2b8394385cd48cbe61adb29c2e34419a',1,'FWriteDisplay']]],
   ['createanimalgroup_122',['CreateAnimalGroup',['../classULevelSelectItem.html#ae244c79924936668df3748a2f3e3755e',1,'ULevelSelectItem']]],
-  ['createchatbox_123',['CreateChatBox',['../classUChatWidget.html#ab4d2683f3aba96eee38548bf261bc09a',1,'UChatWidget']]],
+  ['createchatbox_123',['CreateChatBox',['../classUChatWidget.html#aba3f013c0c2bb7310af7587c2c3411b4',1,'UChatWidget']]],
   ['createcolorgroup_124',['CreateColorGroup',['../classULevelSelectItem.html#a8cb876be8d0d26370c0f4841e8b224f5',1,'ULevelSelectItem']]],
   ['createdat_125',['CreatedAt',['../structFInterviewQuestionData.html#a7bfd7045e90f2d66a0f5a4fa9e958793',1,'FInterviewQuestionData']]],
   ['createfoodgroup_126',['CreateFoodGroup',['../classULevelSelectItem.html#ae50659f449474eb7485b8d8fac40de5e',1,'ULevelSelectItem']]],

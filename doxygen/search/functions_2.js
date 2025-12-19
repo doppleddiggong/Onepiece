@@ -51,7 +51,7 @@ var searchData=
   ['convertstereotomono_48',['ConvertStereoToMono',['../classUVoiceFunctionLibrary.html#aa20f24ee3c303d4652adeef2ff9e9dee',1,'UVoiceFunctionLibrary']]],
   ['convertworddatatorichtext_49',['ConvertWordDataToRichText',['../classUPopup__ReadQuest.html#a8e0124163d2d989731fb74cff601e304',1,'UPopup_ReadQuest']]],
   ['createanimalgroup_50',['CreateAnimalGroup',['../classULevelSelectItem.html#ae244c79924936668df3748a2f3e3755e',1,'ULevelSelectItem']]],
-  ['createchatbox_51',['CreateChatBox',['../classUChatWidget.html#ab4d2683f3aba96eee38548bf261bc09a',1,'UChatWidget']]],
+  ['createchatbox_51',['CreateChatBox',['../classUChatWidget.html#aba3f013c0c2bb7310af7587c2c3411b4',1,'UChatWidget']]],
   ['createcolorgroup_52',['CreateColorGroup',['../classULevelSelectItem.html#a8cb876be8d0d26370c0f4841e8b224f5',1,'ULevelSelectItem']]],
   ['createfoodgroup_53',['CreateFoodGroup',['../classULevelSelectItem.html#ae50659f449474eb7485b8d8fac40de5e',1,'ULevelSelectItem']]],
   ['createmainwidget_54',['CreateMainWidget',['../classAPlayerActor.html#a63641fed19fdb23e32cb16fed3ba2d79',1,'APlayerActor']]],

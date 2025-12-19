@@ -38,6 +38,11 @@ var namespaces_dup =
       [ "WriteStageEnd", "namespaceGameMessage.html#a7ba3fee42f756d5fc38136500da8239d", null ],
       [ "WriteStageStart", "namespaceGameMessage.html#a8b65fc2a15bb0f28393e8a8f681630d0", null ]
     ] ],
+    [ "GameName", "namespaceGameName.html", [
+      [ "AI", "namespaceGameName.html#a31f8ae11232de29ffffbe4a3dc637e08", null ],
+      [ "BotID", "namespaceGameName.html#ac463eed549dac63968e5826662b582d5", null ],
+      [ "BotName", "namespaceGameName.html#a302a47c641c6f71422e71e76196d731f", null ]
+    ] ],
     [ "GameTags", "namespaceGameTags.html", [
       [ "Building", "namespaceGameTags.html#abffb03d97d2c1ee92236896e77b31600", null ],
       [ "Door", "namespaceGameTags.html#a3c08adb522f39311cbf10b2efec81a35", null ],

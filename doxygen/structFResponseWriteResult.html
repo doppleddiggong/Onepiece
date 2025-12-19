@@ -137,7 +137,7 @@ Public 속성</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">상세한 설명</h2>
 <div class="textblock">
-<p class="definition"><a class="el" href="NetworkData_8h_source.html">NetworkData.h</a> 파일의 <a class="el" href="NetworkData_8h_source.html#l00766">766</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="NetworkData_8h_source.html">NetworkData.h</a> 파일의 <a class="el" href="NetworkData_8h_source.html#l00769">769</a> 번째 라인에서 정의되었습니다.</p>
 </div><h2 class="groupheader">멤버 함수 문서화</h2>
 <a id="a1a4f75b021341af380a5953411caca3c" name="a1a4f75b021341af380a5953411caca3c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1a4f75b021341af380a5953411caca3c">&#9670;&#160;</a></span>SetFromHttpResponse()</h2>
@@ -157,50 +157,50 @@ Public 속성</h2></td></tr>
 
 <p>HTTP 응답을 파싱해 구조체를 채웁니다. </p>
 
-<p class="definition"><a class="el" href="NetworkData_8cpp_source.html">NetworkData.cpp</a> 파일의 <a class="el" href="NetworkData_8cpp_source.html#l00456">456</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  457</span>{</div>
-<div class="line"><span class="lineno">  458</span>    <span class="keywordflow">if</span> (!Response.IsValid())</div>
-<div class="line"><span class="lineno">  459</span>    {</div>
-<div class="line"><span class="lineno">  460</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  461</span>    }</div>
-<div class="line"><span class="lineno">  462</span> </div>
-<div class="line"><span class="lineno">  463</span>    FString JsonString = Response-&gt;GetContentAsString();</div>
-<div class="line"><span class="lineno">  464</span>    </div>
-<div class="line"><span class="lineno">  465</span>    TSharedPtr&lt;FJsonObject&gt; JsonObject;</div>
-<div class="line"><span class="lineno">  466</span>    TSharedRef&lt;TJsonReader&lt;&gt;&gt; Reader = TJsonReaderFactory&lt;&gt;::Create(JsonString);</div>
-<div class="line"><span class="lineno">  467</span> </div>
-<div class="line"><span class="lineno">  468</span>    <span class="keywordflow">if</span> (FJsonSerializer::Deserialize(Reader, JsonObject))</div>
-<div class="line"><span class="lineno">  469</span>    {</div>
-<div class="line"><span class="lineno">  470</span>        <span class="keywordflow">if</span> (JsonObject.IsValid())</div>
-<div class="line"><span class="lineno">  471</span>        {</div>
-<div class="line"><span class="lineno">  472</span>            JsonObject-&gt;TryGetStringField(TEXT(<span class="stringliteral">&quot;grade&quot;</span>), this-&gt;<a class="code hl_variable" href="structFResponseWriteResult.html#a9561a42d1272c500d2ee3d9e7a5c8e37">grade</a>);</div>
-<div class="line"><span class="lineno">  473</span>            this-&gt;<a class="code hl_variable" href="structFResponseWriteResult.html#a7a5dc33082513c556d84d80153a0e3e4">average_score</a> = JsonObject-&gt;GetIntegerField(TEXT(<span class="stringliteral">&quot;average_score&quot;</span>));</div>
-<div class="line"><span class="lineno">  474</span>            this-&gt;<a class="code hl_variable" href="structFResponseWriteResult.html#abc6574a46e16095f68321aaab4035e85">top_percent</a> = JsonObject-&gt;GetIntegerField(TEXT(<span class="stringliteral">&quot;top_percent&quot;</span>));</div>
-<div class="line"><span class="lineno">  475</span>            </div>
-<div class="line"><span class="lineno">  476</span>            <span class="keywordflow">if</span> (JsonObject-&gt;HasTypedField&lt;EJson::Object&gt;(TEXT(<span class="stringliteral">&quot;scores&quot;</span>)))</div>
-<div class="line"><span class="lineno">  477</span>            {</div>
-<div class="line"><span class="lineno">  478</span>                TArray&lt;TSharedPtr&lt;FJsonValue&gt;&gt; JsonArray = JsonObject-&gt;GetArrayField(TEXT(<span class="stringliteral">&quot;scores&quot;</span>));</div>
-<div class="line"><span class="lineno">  479</span>                <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; score : JsonArray)</div>
-<div class="line"><span class="lineno">  480</span>                {</div>
-<div class="line"><span class="lineno">  481</span>                    <a class="code hl_struct" href="structFResponseWriteScores.html">FResponseWriteScores</a> Entry;    <span class="comment">// ResponseWriteScore를 포함하는 사용자 정의 구조체</span></div>
-<div class="line"><span class="lineno">  482</span>                    Entry.<a class="code hl_variable" href="structFResponseWriteScores.html#a60488b2faa976ac69c24053fb33fdb9a">score</a>    = score-&gt;AsObject()-&gt;GetBoolField(TEXT(<span class="stringliteral">&quot;score&quot;</span>));</div>
-<div class="line"><span class="lineno">  483</span>                    Entry.<a class="code hl_variable" href="structFResponseWriteScores.html#a7f558d57dbda95d02b417537e85ff6a5">desc</a>    = score-&gt;AsObject()-&gt;GetStringField(TEXT(<span class="stringliteral">&quot;desc&quot;</span>));</div>
-<div class="line"><span class="lineno">  484</span>                    </div>
-<div class="line"><span class="lineno">  485</span>                    <a class="code hl_variable" href="structFResponseWriteResult.html#a8084f1320a34c522075a87593a864738">scores</a>.Add(Entry);</div>
-<div class="line"><span class="lineno">  486</span>                }</div>
-<div class="line"><span class="lineno">  487</span>            }</div>
-<div class="line"><span class="lineno">  488</span>        }</div>
-<div class="line"><span class="lineno">  489</span>    }</div>
-<div class="line"><span class="lineno">  490</span>}</div>
-<div class="ttc" id="astructFResponseWriteResult_html_a7a5dc33082513c556d84d80153a0e3e4"><div class="ttname"><a href="structFResponseWriteResult.html#a7a5dc33082513c556d84d80153a0e3e4">FResponseWriteResult::average_score</a></div><div class="ttdeci">int32 average_score</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00774">NetworkData.h:774</a></div></div>
-<div class="ttc" id="astructFResponseWriteResult_html_a8084f1320a34c522075a87593a864738"><div class="ttname"><a href="structFResponseWriteResult.html#a8084f1320a34c522075a87593a864738">FResponseWriteResult::scores</a></div><div class="ttdeci">TArray&lt; FResponseWriteScores &gt; scores</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00780">NetworkData.h:780</a></div></div>
-<div class="ttc" id="astructFResponseWriteResult_html_a9561a42d1272c500d2ee3d9e7a5c8e37"><div class="ttname"><a href="structFResponseWriteResult.html#a9561a42d1272c500d2ee3d9e7a5c8e37">FResponseWriteResult::grade</a></div><div class="ttdeci">FString grade</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00771">NetworkData.h:771</a></div></div>
-<div class="ttc" id="astructFResponseWriteResult_html_abc6574a46e16095f68321aaab4035e85"><div class="ttname"><a href="structFResponseWriteResult.html#abc6574a46e16095f68321aaab4035e85">FResponseWriteResult::top_percent</a></div><div class="ttdeci">int32 top_percent</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00777">NetworkData.h:777</a></div></div>
-<div class="ttc" id="astructFResponseWriteScores_html"><div class="ttname"><a href="structFResponseWriteScores.html">FResponseWriteScores</a></div><div class="ttdoc">Write 최종 결과 점수 정보 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00754">NetworkData.h:755</a></div></div>
-<div class="ttc" id="astructFResponseWriteScores_html_a60488b2faa976ac69c24053fb33fdb9a"><div class="ttname"><a href="structFResponseWriteScores.html#a60488b2faa976ac69c24053fb33fdb9a">FResponseWriteScores::score</a></div><div class="ttdeci">int32 score</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00759">NetworkData.h:759</a></div></div>
-<div class="ttc" id="astructFResponseWriteScores_html_a7f558d57dbda95d02b417537e85ff6a5"><div class="ttname"><a href="structFResponseWriteScores.html#a7f558d57dbda95d02b417537e85ff6a5">FResponseWriteScores::desc</a></div><div class="ttdeci">FString desc</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00762">NetworkData.h:762</a></div></div>
+<p class="definition"><a class="el" href="NetworkData_8cpp_source.html">NetworkData.cpp</a> 파일의 <a class="el" href="NetworkData_8cpp_source.html#l00486">486</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  487</span>{</div>
+<div class="line"><span class="lineno">  488</span>    <span class="keywordflow">if</span> (!Response.IsValid())</div>
+<div class="line"><span class="lineno">  489</span>    {</div>
+<div class="line"><span class="lineno">  490</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  491</span>    }</div>
+<div class="line"><span class="lineno">  492</span> </div>
+<div class="line"><span class="lineno">  493</span>    FString JsonString = Response-&gt;GetContentAsString();</div>
+<div class="line"><span class="lineno">  494</span>    </div>
+<div class="line"><span class="lineno">  495</span>    TSharedPtr&lt;FJsonObject&gt; JsonObject;</div>
+<div class="line"><span class="lineno">  496</span>    TSharedRef&lt;TJsonReader&lt;&gt;&gt; Reader = TJsonReaderFactory&lt;&gt;::Create(JsonString);</div>
+<div class="line"><span class="lineno">  497</span> </div>
+<div class="line"><span class="lineno">  498</span>    <span class="keywordflow">if</span> (FJsonSerializer::Deserialize(Reader, JsonObject))</div>
+<div class="line"><span class="lineno">  499</span>    {</div>
+<div class="line"><span class="lineno">  500</span>        <span class="keywordflow">if</span> (JsonObject.IsValid())</div>
+<div class="line"><span class="lineno">  501</span>        {</div>
+<div class="line"><span class="lineno">  502</span>            JsonObject-&gt;TryGetStringField(TEXT(<span class="stringliteral">&quot;grade&quot;</span>), this-&gt;<a class="code hl_variable" href="structFResponseWriteResult.html#a9561a42d1272c500d2ee3d9e7a5c8e37">grade</a>);</div>
+<div class="line"><span class="lineno">  503</span>            this-&gt;<a class="code hl_variable" href="structFResponseWriteResult.html#a7a5dc33082513c556d84d80153a0e3e4">average_score</a> = JsonObject-&gt;GetIntegerField(TEXT(<span class="stringliteral">&quot;average_score&quot;</span>));</div>
+<div class="line"><span class="lineno">  504</span>            this-&gt;<a class="code hl_variable" href="structFResponseWriteResult.html#abc6574a46e16095f68321aaab4035e85">top_percent</a> = JsonObject-&gt;GetIntegerField(TEXT(<span class="stringliteral">&quot;top_percent&quot;</span>));</div>
+<div class="line"><span class="lineno">  505</span>            </div>
+<div class="line"><span class="lineno">  506</span>            <span class="keywordflow">if</span> (JsonObject-&gt;HasTypedField&lt;EJson::Object&gt;(TEXT(<span class="stringliteral">&quot;scores&quot;</span>)))</div>
+<div class="line"><span class="lineno">  507</span>            {</div>
+<div class="line"><span class="lineno">  508</span>                TArray&lt;TSharedPtr&lt;FJsonValue&gt;&gt; JsonArray = JsonObject-&gt;GetArrayField(TEXT(<span class="stringliteral">&quot;scores&quot;</span>));</div>
+<div class="line"><span class="lineno">  509</span>                <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; score : JsonArray)</div>
+<div class="line"><span class="lineno">  510</span>                {</div>
+<div class="line"><span class="lineno">  511</span>                    <a class="code hl_struct" href="structFResponseWriteScores.html">FResponseWriteScores</a> Entry;    <span class="comment">// ResponseWriteScore를 포함하는 사용자 정의 구조체</span></div>
+<div class="line"><span class="lineno">  512</span>                    Entry.<a class="code hl_variable" href="structFResponseWriteScores.html#a60488b2faa976ac69c24053fb33fdb9a">score</a>    = score-&gt;AsObject()-&gt;GetBoolField(TEXT(<span class="stringliteral">&quot;score&quot;</span>));</div>
+<div class="line"><span class="lineno">  513</span>                    Entry.<a class="code hl_variable" href="structFResponseWriteScores.html#a7f558d57dbda95d02b417537e85ff6a5">desc</a>    = score-&gt;AsObject()-&gt;GetStringField(TEXT(<span class="stringliteral">&quot;desc&quot;</span>));</div>
+<div class="line"><span class="lineno">  514</span>                    </div>
+<div class="line"><span class="lineno">  515</span>                    <a class="code hl_variable" href="structFResponseWriteResult.html#a8084f1320a34c522075a87593a864738">scores</a>.Add(Entry);</div>
+<div class="line"><span class="lineno">  516</span>                }</div>
+<div class="line"><span class="lineno">  517</span>            }</div>
+<div class="line"><span class="lineno">  518</span>        }</div>
+<div class="line"><span class="lineno">  519</span>    }</div>
+<div class="line"><span class="lineno">  520</span>}</div>
+<div class="ttc" id="astructFResponseWriteResult_html_a7a5dc33082513c556d84d80153a0e3e4"><div class="ttname"><a href="structFResponseWriteResult.html#a7a5dc33082513c556d84d80153a0e3e4">FResponseWriteResult::average_score</a></div><div class="ttdeci">int32 average_score</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00777">NetworkData.h:777</a></div></div>
+<div class="ttc" id="astructFResponseWriteResult_html_a8084f1320a34c522075a87593a864738"><div class="ttname"><a href="structFResponseWriteResult.html#a8084f1320a34c522075a87593a864738">FResponseWriteResult::scores</a></div><div class="ttdeci">TArray&lt; FResponseWriteScores &gt; scores</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00783">NetworkData.h:783</a></div></div>
+<div class="ttc" id="astructFResponseWriteResult_html_a9561a42d1272c500d2ee3d9e7a5c8e37"><div class="ttname"><a href="structFResponseWriteResult.html#a9561a42d1272c500d2ee3d9e7a5c8e37">FResponseWriteResult::grade</a></div><div class="ttdeci">FString grade</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00774">NetworkData.h:774</a></div></div>
+<div class="ttc" id="astructFResponseWriteResult_html_abc6574a46e16095f68321aaab4035e85"><div class="ttname"><a href="structFResponseWriteResult.html#abc6574a46e16095f68321aaab4035e85">FResponseWriteResult::top_percent</a></div><div class="ttdeci">int32 top_percent</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00780">NetworkData.h:780</a></div></div>
+<div class="ttc" id="astructFResponseWriteScores_html"><div class="ttname"><a href="structFResponseWriteScores.html">FResponseWriteScores</a></div><div class="ttdoc">Write 최종 결과 점수 정보 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00757">NetworkData.h:758</a></div></div>
+<div class="ttc" id="astructFResponseWriteScores_html_a60488b2faa976ac69c24053fb33fdb9a"><div class="ttname"><a href="structFResponseWriteScores.html#a60488b2faa976ac69c24053fb33fdb9a">FResponseWriteScores::score</a></div><div class="ttdeci">int32 score</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00762">NetworkData.h:762</a></div></div>
+<div class="ttc" id="astructFResponseWriteScores_html_a7f558d57dbda95d02b417537e85ff6a5"><div class="ttname"><a href="structFResponseWriteScores.html#a7f558d57dbda95d02b417537e85ff6a5">FResponseWriteScores::desc</a></div><div class="ttdeci">FString desc</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00765">NetworkData.h:765</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="NetworkData_8h_source.html#l00774">average_score</a>, <a class="el" href="NetworkData_8h_source.html#l00762">FResponseWriteScores::desc</a>, <a class="el" href="NetworkData_8h_source.html#l00771">grade</a>, <a class="el" href="NetworkData_8h_source.html#l00759">FResponseWriteScores::score</a>, <a class="el" href="NetworkData_8h_source.html#l00780">scores</a>, <a class="el" href="NetworkData_8h_source.html#l00777">top_percent</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="NetworkData_8h_source.html#l00777">average_score</a>, <a class="el" href="NetworkData_8h_source.html#l00765">FResponseWriteScores::desc</a>, <a class="el" href="NetworkData_8h_source.html#l00774">grade</a>, <a class="el" href="NetworkData_8h_source.html#l00762">FResponseWriteScores::score</a>, <a class="el" href="NetworkData_8h_source.html#l00783">scores</a>, <a class="el" href="NetworkData_8h_source.html#l00780">top_percent</a>.</p>
 
 </div>
 </div>
@@ -217,9 +217,9 @@ Public 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="NetworkData_8h_source.html">NetworkData.h</a> 파일의 <a class="el" href="NetworkData_8h_source.html#l00774">774</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="NetworkData_8h_source.html">NetworkData.h</a> 파일의 <a class="el" href="NetworkData_8h_source.html#l00777">777</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="Popup__QuestionnaireResult_8cpp_source.html#l00104">UPopup_QuestionnaireResult::InitWholeResult()</a>, <a class="el" href="NetworkData_8cpp_source.html#l00456">SetFromHttpResponse()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="Popup__QuestionnaireResult_8cpp_source.html#l00104">UPopup_QuestionnaireResult::InitWholeResult()</a>, <a class="el" href="NetworkData_8cpp_source.html#l00486">SetFromHttpResponse()</a>.</p>
 
 </div>
 </div>
@@ -235,9 +235,9 @@ Public 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="NetworkData_8h_source.html">NetworkData.h</a> 파일의 <a class="el" href="NetworkData_8h_source.html#l00771">771</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="NetworkData_8h_source.html">NetworkData.h</a> 파일의 <a class="el" href="NetworkData_8h_source.html#l00774">774</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="Popup__QuestionnaireResult_8cpp_source.html#l00104">UPopup_QuestionnaireResult::InitWholeResult()</a>, <a class="el" href="NetworkData_8cpp_source.html#l00456">SetFromHttpResponse()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="Popup__QuestionnaireResult_8cpp_source.html#l00104">UPopup_QuestionnaireResult::InitWholeResult()</a>, <a class="el" href="NetworkData_8cpp_source.html#l00486">SetFromHttpResponse()</a>.</p>
 
 </div>
 </div>
@@ -253,9 +253,9 @@ Public 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="NetworkData_8h_source.html">NetworkData.h</a> 파일의 <a class="el" href="NetworkData_8h_source.html#l00780">780</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="NetworkData_8h_source.html">NetworkData.h</a> 파일의 <a class="el" href="NetworkData_8h_source.html#l00783">783</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="NetworkData_8cpp_source.html#l00456">SetFromHttpResponse()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="NetworkData_8cpp_source.html#l00486">SetFromHttpResponse()</a>.</p>
 
 </div>
 </div>
@@ -271,9 +271,9 @@ Public 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="NetworkData_8h_source.html">NetworkData.h</a> 파일의 <a class="el" href="NetworkData_8h_source.html#l00777">777</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="NetworkData_8h_source.html">NetworkData.h</a> 파일의 <a class="el" href="NetworkData_8h_source.html#l00780">780</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="Popup__QuestionnaireResult_8cpp_source.html#l00104">UPopup_QuestionnaireResult::InitWholeResult()</a>, <a class="el" href="NetworkData_8cpp_source.html#l00456">SetFromHttpResponse()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="Popup__QuestionnaireResult_8cpp_source.html#l00104">UPopup_QuestionnaireResult::InitWholeResult()</a>, <a class="el" href="NetworkData_8cpp_source.html#l00486">SetFromHttpResponse()</a>.</p>
 
 </div>
 </div>
@@ -287,7 +287,7 @@ Public 속성</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="structFResponseWriteResult.html">FResponseWriteResult</a></li>
-    <li class="footer">생성시간 : 금 12월 19 2025 00:27:08, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 금 12월 19 2025 06:10:25, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

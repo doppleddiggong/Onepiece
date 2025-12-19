@@ -409,89 +409,92 @@ $(document).ready(function(){initNavTree('UVoiceConversationSystem_8cpp_source.h
 <div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span>    <span class="keywordflow">if</span> (bSuccess)</div>
 <div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span>    {</div>
 <div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span>        <span class="comment">// 메시지로 답변 표시</span></div>
-<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span>        UPopupManager::Get(GetWorld())-&gt;ShowMsgBox(TEXT(<span class="stringliteral">&quot;CHAT&quot;</span>), *Response.<a class="code hl_variable" href="structFResponseChatAnswers.html#abbd36f4a6cd6408901bd1652e09ea706">answer</a>,</div>
-<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span>            <a class="code hl_enumvalue" href="EPopupType_8h.html#a19e1d6071fbd1a8d0f3a0ac7c630df51ae0aa021e21dddbd6d8cecec71e9cf564">EMsgBoxType::OK</a>,</div>
-<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span>            FOnMsgBoxOkDelegate());</div>
-<div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span>    }</div>
-<div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span>    <span class="keywordflow">else</span></div>
-<div class="line"><a id="l00310" name="l00310"></a><span class="lineno">  310</span>    {</div>
-<div class="line"><a id="l00311" name="l00311"></a><span class="lineno">  311</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>( TEXT(<span class="stringliteral">&quot;--- Chat Answers Response Received (FAIL) ---&quot;</span>));</div>
+<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span>        <span class="keywordflow">if</span> (<span class="keyword">auto</span>* GS = GetWorld()-&gt;GetGameState&lt;ALingoGameState&gt;())</div>
+<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span>        {</div>
+<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span>            FText AIAnswer = FText::FromString(Response.<a class="code hl_variable" href="structFResponseChatAnswers.html#abbd36f4a6cd6408901bd1652e09ea706">answer</a>);</div>
+<div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span>            GS-&gt;MulticastRPC_SendChat(GS-&gt;GetBotInfo(), AIAnswer);</div>
+<div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span> </div>
+<div class="line"><a id="l00310" name="l00310"></a><span class="lineno">  310</span>            <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[AI Chat] AI Answer: %s&quot;</span>), *Response.<a class="code hl_variable" href="structFResponseChatAnswers.html#abbd36f4a6cd6408901bd1652e09ea706">answer</a>);</div>
+<div class="line"><a id="l00311" name="l00311"></a><span class="lineno">  311</span>        }</div>
 <div class="line"><a id="l00312" name="l00312"></a><span class="lineno">  312</span>    }</div>
-<div class="line"><a id="l00313" name="l00313"></a><span class="lineno">  313</span>}</div>
-<div class="line"><a id="l00314" name="l00314"></a><span class="lineno">  314</span> </div>
-<div class="line"><a id="l00315" name="l00315"></a><span class="lineno">  315</span><span class="keywordtype">bool</span> UVoiceConversationSystem::PlayVoiceAudio(<span class="keyword">const</span> TArray&lt;uint8&gt;&amp; AudioData)</div>
-<div class="line"><a id="l00316" name="l00316"></a><span class="lineno">  316</span>{</div>
-<div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span>    <span class="comment">// 녹음 중일 때는 TTS 재생 차단</span></div>
-<div class="line"><a id="l00318" name="l00318"></a><span class="lineno">  318</span>    <span class="keywordflow">if</span> (bIsRecording)</div>
-<div class="line"><a id="l00319" name="l00319"></a><span class="lineno">  319</span>    {</div>
-<div class="line"><a id="l00320" name="l00320"></a><span class="lineno">  320</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[VoiceConversation] TTS playback blocked: recording in progress&quot;</span>));</div>
-<div class="line"><a id="l00321" name="l00321"></a><span class="lineno">  321</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00322" name="l00322"></a><span class="lineno">  322</span>    }</div>
-<div class="line"><a id="l00323" name="l00323"></a><span class="lineno">  323</span> </div>
-<div class="line"><a id="l00324" name="l00324"></a><span class="lineno">  324</span>    <span class="comment">// 오디오 데이터가 없으면 재생 불가</span></div>
-<div class="line"><a id="l00325" name="l00325"></a><span class="lineno">  325</span>    <span class="keywordflow">if</span> (AudioData.Num() == 0)</div>
-<div class="line"><a id="l00326" name="l00326"></a><span class="lineno">  326</span>    {</div>
-<div class="line"><a id="l00327" name="l00327"></a><span class="lineno">  327</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[VoiceConversation] TTS playback failed: empty audio data&quot;</span>));</div>
-<div class="line"><a id="l00328" name="l00328"></a><span class="lineno">  328</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00329" name="l00329"></a><span class="lineno">  329</span>    }</div>
-<div class="line"><a id="l00330" name="l00330"></a><span class="lineno">  330</span> </div>
-<div class="line"><a id="l00331" name="l00331"></a><span class="lineno">  331</span>    <span class="comment">// SoundWave 생성 (Procedural 사용)</span></div>
-<div class="line"><a id="l00332" name="l00332"></a><span class="lineno">  332</span>    <span class="keyword">auto</span> SoundWave = <a class="code hl_function" href="classUVoiceFunctionLibrary.html#adf741678fa5eeadc6dbe30624ef6888b">UVoiceFunctionLibrary::CreateProceduralSoundWaveFromWavData</a>(AudioData);</div>
-<div class="line"><a id="l00333" name="l00333"></a><span class="lineno">  333</span>    <span class="keywordflow">if</span> (!IsValid(SoundWave))</div>
-<div class="line"><a id="l00334" name="l00334"></a><span class="lineno">  334</span>    {</div>
-<div class="line"><a id="l00335" name="l00335"></a><span class="lineno">  335</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[VoiceConversation] TTS playback failed: invalid sound wave&quot;</span>));</div>
-<div class="line"><a id="l00336" name="l00336"></a><span class="lineno">  336</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00337" name="l00337"></a><span class="lineno">  337</span>    }</div>
-<div class="line"><a id="l00338" name="l00338"></a><span class="lineno">  338</span> </div>
-<div class="line"><a id="l00339" name="l00339"></a><span class="lineno">  339</span>    <span class="comment">// UGameSoundManager를 통해 대화 음성 재생 (기존 음성 자동 중지)</span></div>
-<div class="line"><a id="l00340" name="l00340"></a><span class="lineno">  340</span>    <span class="keyword">auto</span> SoundManager = UGameSoundManager::Get(GetWorld());</div>
-<div class="line"><a id="l00341" name="l00341"></a><span class="lineno">  341</span>    <span class="keywordflow">if</span> (!SoundManager)</div>
-<div class="line"><a id="l00342" name="l00342"></a><span class="lineno">  342</span>    {</div>
-<div class="line"><a id="l00343" name="l00343"></a><span class="lineno">  343</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[VoiceConversation] TTS playback failed: could not get sound manager&quot;</span>));</div>
-<div class="line"><a id="l00344" name="l00344"></a><span class="lineno">  344</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00345" name="l00345"></a><span class="lineno">  345</span>    }</div>
-<div class="line"><a id="l00346" name="l00346"></a><span class="lineno">  346</span> </div>
-<div class="line"><a id="l00347" name="l00347"></a><span class="lineno">  347</span>    CurVoiceAudio = SoundManager-&gt;PlayConversationVoice(SoundWave);</div>
-<div class="line"><a id="l00348" name="l00348"></a><span class="lineno">  348</span>    <span class="keywordflow">if</span> (!CurVoiceAudio)</div>
-<div class="line"><a id="l00349" name="l00349"></a><span class="lineno">  349</span>    {</div>
-<div class="line"><a id="l00350" name="l00350"></a><span class="lineno">  350</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00351" name="l00351"></a><span class="lineno">  351</span>    }</div>
-<div class="line"><a id="l00352" name="l00352"></a><span class="lineno">  352</span> </div>
-<div class="line"><a id="l00353" name="l00353"></a><span class="lineno">  353</span>    <span class="comment">// Duration 기반 타이머로 재생 완료 감지</span></div>
-<div class="line"><a id="l00354" name="l00354"></a><span class="lineno">  354</span>    <span class="keyword">const</span> <span class="keywordtype">float</span> Duration = SoundWave-&gt;Duration;</div>
-<div class="line"><a id="l00355" name="l00355"></a><span class="lineno">  355</span>    <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[VoiceConversation] TTS audio playing (duration: %.2f seconds)&quot;</span>), Duration);</div>
+<div class="line"><a id="l00313" name="l00313"></a><span class="lineno">  313</span>    <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00314" name="l00314"></a><span class="lineno">  314</span>    {</div>
+<div class="line"><a id="l00315" name="l00315"></a><span class="lineno">  315</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>( TEXT(<span class="stringliteral">&quot;--- Chat Answers Response Received (FAIL) ---&quot;</span>));</div>
+<div class="line"><a id="l00316" name="l00316"></a><span class="lineno">  316</span>    }</div>
+<div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span>}</div>
+<div class="line"><a id="l00318" name="l00318"></a><span class="lineno">  318</span> </div>
+<div class="line"><a id="l00319" name="l00319"></a><span class="lineno">  319</span><span class="keywordtype">bool</span> UVoiceConversationSystem::PlayVoiceAudio(<span class="keyword">const</span> TArray&lt;uint8&gt;&amp; AudioData)</div>
+<div class="line"><a id="l00320" name="l00320"></a><span class="lineno">  320</span>{</div>
+<div class="line"><a id="l00321" name="l00321"></a><span class="lineno">  321</span>    <span class="comment">// 녹음 중일 때는 TTS 재생 차단</span></div>
+<div class="line"><a id="l00322" name="l00322"></a><span class="lineno">  322</span>    <span class="keywordflow">if</span> (bIsRecording)</div>
+<div class="line"><a id="l00323" name="l00323"></a><span class="lineno">  323</span>    {</div>
+<div class="line"><a id="l00324" name="l00324"></a><span class="lineno">  324</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[VoiceConversation] TTS playback blocked: recording in progress&quot;</span>));</div>
+<div class="line"><a id="l00325" name="l00325"></a><span class="lineno">  325</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00326" name="l00326"></a><span class="lineno">  326</span>    }</div>
+<div class="line"><a id="l00327" name="l00327"></a><span class="lineno">  327</span> </div>
+<div class="line"><a id="l00328" name="l00328"></a><span class="lineno">  328</span>    <span class="comment">// 오디오 데이터가 없으면 재생 불가</span></div>
+<div class="line"><a id="l00329" name="l00329"></a><span class="lineno">  329</span>    <span class="keywordflow">if</span> (AudioData.Num() == 0)</div>
+<div class="line"><a id="l00330" name="l00330"></a><span class="lineno">  330</span>    {</div>
+<div class="line"><a id="l00331" name="l00331"></a><span class="lineno">  331</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[VoiceConversation] TTS playback failed: empty audio data&quot;</span>));</div>
+<div class="line"><a id="l00332" name="l00332"></a><span class="lineno">  332</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00333" name="l00333"></a><span class="lineno">  333</span>    }</div>
+<div class="line"><a id="l00334" name="l00334"></a><span class="lineno">  334</span> </div>
+<div class="line"><a id="l00335" name="l00335"></a><span class="lineno">  335</span>    <span class="comment">// SoundWave 생성 (Procedural 사용)</span></div>
+<div class="line"><a id="l00336" name="l00336"></a><span class="lineno">  336</span>    <span class="keyword">auto</span> SoundWave = <a class="code hl_function" href="classUVoiceFunctionLibrary.html#adf741678fa5eeadc6dbe30624ef6888b">UVoiceFunctionLibrary::CreateProceduralSoundWaveFromWavData</a>(AudioData);</div>
+<div class="line"><a id="l00337" name="l00337"></a><span class="lineno">  337</span>    <span class="keywordflow">if</span> (!IsValid(SoundWave))</div>
+<div class="line"><a id="l00338" name="l00338"></a><span class="lineno">  338</span>    {</div>
+<div class="line"><a id="l00339" name="l00339"></a><span class="lineno">  339</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[VoiceConversation] TTS playback failed: invalid sound wave&quot;</span>));</div>
+<div class="line"><a id="l00340" name="l00340"></a><span class="lineno">  340</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00341" name="l00341"></a><span class="lineno">  341</span>    }</div>
+<div class="line"><a id="l00342" name="l00342"></a><span class="lineno">  342</span> </div>
+<div class="line"><a id="l00343" name="l00343"></a><span class="lineno">  343</span>    <span class="comment">// UGameSoundManager를 통해 대화 음성 재생 (기존 음성 자동 중지)</span></div>
+<div class="line"><a id="l00344" name="l00344"></a><span class="lineno">  344</span>    <span class="keyword">auto</span> SoundManager = UGameSoundManager::Get(GetWorld());</div>
+<div class="line"><a id="l00345" name="l00345"></a><span class="lineno">  345</span>    <span class="keywordflow">if</span> (!SoundManager)</div>
+<div class="line"><a id="l00346" name="l00346"></a><span class="lineno">  346</span>    {</div>
+<div class="line"><a id="l00347" name="l00347"></a><span class="lineno">  347</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[VoiceConversation] TTS playback failed: could not get sound manager&quot;</span>));</div>
+<div class="line"><a id="l00348" name="l00348"></a><span class="lineno">  348</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00349" name="l00349"></a><span class="lineno">  349</span>    }</div>
+<div class="line"><a id="l00350" name="l00350"></a><span class="lineno">  350</span> </div>
+<div class="line"><a id="l00351" name="l00351"></a><span class="lineno">  351</span>    CurVoiceAudio = SoundManager-&gt;PlayConversationVoice(SoundWave);</div>
+<div class="line"><a id="l00352" name="l00352"></a><span class="lineno">  352</span>    <span class="keywordflow">if</span> (!CurVoiceAudio)</div>
+<div class="line"><a id="l00353" name="l00353"></a><span class="lineno">  353</span>    {</div>
+<div class="line"><a id="l00354" name="l00354"></a><span class="lineno">  354</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00355" name="l00355"></a><span class="lineno">  355</span>    }</div>
 <div class="line"><a id="l00356" name="l00356"></a><span class="lineno">  356</span> </div>
-<div class="line"><a id="l00357" name="l00357"></a><span class="lineno">  357</span>    <span class="comment">// 기존 타이머 정리</span></div>
-<div class="line"><a id="l00358" name="l00358"></a><span class="lineno">  358</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> World = GetWorld())</div>
-<div class="line"><a id="l00359" name="l00359"></a><span class="lineno">  359</span>    {</div>
-<div class="line"><a id="l00360" name="l00360"></a><span class="lineno">  360</span>        World-&gt;GetTimerManager().ClearTimer(VoiceFinishTimerHandle);</div>
-<div class="line"><a id="l00361" name="l00361"></a><span class="lineno">  361</span> </div>
-<div class="line"><a id="l00362" name="l00362"></a><span class="lineno">  362</span>        <span class="comment">// Duration + 여유 시간(0.1초) 후에 OnVoiceAudioFinished 호출</span></div>
-<div class="line"><a id="l00363" name="l00363"></a><span class="lineno">  363</span>        World-&gt;GetTimerManager().SetTimer(</div>
-<div class="line"><a id="l00364" name="l00364"></a><span class="lineno">  364</span>            VoiceFinishTimerHandle,</div>
-<div class="line"><a id="l00365" name="l00365"></a><span class="lineno">  365</span>            <span class="keyword">this</span>,</div>
-<div class="line"><a id="l00366" name="l00366"></a><span class="lineno">  366</span>            &amp;UVoiceConversationSystem::OnVoiceAudioFinished,</div>
-<div class="line"><a id="l00367" name="l00367"></a><span class="lineno">  367</span>            Duration + 0.1f,</div>
-<div class="line"><a id="l00368" name="l00368"></a><span class="lineno">  368</span>            <span class="keyword">false</span></div>
-<div class="line"><a id="l00369" name="l00369"></a><span class="lineno">  369</span>        );</div>
-<div class="line"><a id="l00370" name="l00370"></a><span class="lineno">  370</span>    }</div>
-<div class="line"><a id="l00371" name="l00371"></a><span class="lineno">  371</span> </div>
-<div class="line"><a id="l00372" name="l00372"></a><span class="lineno">  372</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00373" name="l00373"></a><span class="lineno">  373</span>}</div>
-<div class="line"><a id="l00374" name="l00374"></a><span class="lineno">  374</span> </div>
-<div class="line"><a id="l00375" name="l00375"></a><span class="lineno">  375</span><span class="keywordtype">void</span> UVoiceConversationSystem::OnVoiceAudioFinished()</div>
-<div class="line"><a id="l00376" name="l00376"></a><span class="lineno">  376</span>{</div>
-<div class="line"><a id="l00377" name="l00377"></a><span class="lineno">  377</span>    <span class="comment">// 타이머 정리</span></div>
-<div class="line"><a id="l00378" name="l00378"></a><span class="lineno">  378</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> World = GetWorld())</div>
-<div class="line"><a id="l00379" name="l00379"></a><span class="lineno">  379</span>        World-&gt;GetTimerManager().ClearTimer(VoiceFinishTimerHandle);</div>
-<div class="line"><a id="l00380" name="l00380"></a><span class="lineno">  380</span> </div>
-<div class="line"><a id="l00381" name="l00381"></a><span class="lineno">  381</span>    <span class="comment">// AudioComponent 참조 초기화 (실제 파괴는 UGameSoundManager가 관리)</span></div>
-<div class="line"><a id="l00382" name="l00382"></a><span class="lineno">  382</span>    CurVoiceAudio = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00383" name="l00383"></a><span class="lineno">  383</span>}</div>
+<div class="line"><a id="l00357" name="l00357"></a><span class="lineno">  357</span>    <span class="comment">// Duration 기반 타이머로 재생 완료 감지</span></div>
+<div class="line"><a id="l00358" name="l00358"></a><span class="lineno">  358</span>    <span class="keyword">const</span> <span class="keywordtype">float</span> Duration = SoundWave-&gt;Duration;</div>
+<div class="line"><a id="l00359" name="l00359"></a><span class="lineno">  359</span>    <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[VoiceConversation] TTS audio playing (duration: %.2f seconds)&quot;</span>), Duration);</div>
+<div class="line"><a id="l00360" name="l00360"></a><span class="lineno">  360</span> </div>
+<div class="line"><a id="l00361" name="l00361"></a><span class="lineno">  361</span>    <span class="comment">// 기존 타이머 정리</span></div>
+<div class="line"><a id="l00362" name="l00362"></a><span class="lineno">  362</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> World = GetWorld())</div>
+<div class="line"><a id="l00363" name="l00363"></a><span class="lineno">  363</span>    {</div>
+<div class="line"><a id="l00364" name="l00364"></a><span class="lineno">  364</span>        World-&gt;GetTimerManager().ClearTimer(VoiceFinishTimerHandle);</div>
+<div class="line"><a id="l00365" name="l00365"></a><span class="lineno">  365</span> </div>
+<div class="line"><a id="l00366" name="l00366"></a><span class="lineno">  366</span>        <span class="comment">// Duration + 여유 시간(0.1초) 후에 OnVoiceAudioFinished 호출</span></div>
+<div class="line"><a id="l00367" name="l00367"></a><span class="lineno">  367</span>        World-&gt;GetTimerManager().SetTimer(</div>
+<div class="line"><a id="l00368" name="l00368"></a><span class="lineno">  368</span>            VoiceFinishTimerHandle,</div>
+<div class="line"><a id="l00369" name="l00369"></a><span class="lineno">  369</span>            <span class="keyword">this</span>,</div>
+<div class="line"><a id="l00370" name="l00370"></a><span class="lineno">  370</span>            &amp;UVoiceConversationSystem::OnVoiceAudioFinished,</div>
+<div class="line"><a id="l00371" name="l00371"></a><span class="lineno">  371</span>            Duration + 0.1f,</div>
+<div class="line"><a id="l00372" name="l00372"></a><span class="lineno">  372</span>            <span class="keyword">false</span></div>
+<div class="line"><a id="l00373" name="l00373"></a><span class="lineno">  373</span>        );</div>
+<div class="line"><a id="l00374" name="l00374"></a><span class="lineno">  374</span>    }</div>
+<div class="line"><a id="l00375" name="l00375"></a><span class="lineno">  375</span> </div>
+<div class="line"><a id="l00376" name="l00376"></a><span class="lineno">  376</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00377" name="l00377"></a><span class="lineno">  377</span>}</div>
+<div class="line"><a id="l00378" name="l00378"></a><span class="lineno">  378</span> </div>
+<div class="line"><a id="l00379" name="l00379"></a><span class="lineno">  379</span><span class="keywordtype">void</span> UVoiceConversationSystem::OnVoiceAudioFinished()</div>
+<div class="line"><a id="l00380" name="l00380"></a><span class="lineno">  380</span>{</div>
+<div class="line"><a id="l00381" name="l00381"></a><span class="lineno">  381</span>    <span class="comment">// 타이머 정리</span></div>
+<div class="line"><a id="l00382" name="l00382"></a><span class="lineno">  382</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> World = GetWorld())</div>
+<div class="line"><a id="l00383" name="l00383"></a><span class="lineno">  383</span>        World-&gt;GetTimerManager().ClearTimer(VoiceFinishTimerHandle);</div>
+<div class="line"><a id="l00384" name="l00384"></a><span class="lineno">  384</span> </div>
+<div class="line"><a id="l00385" name="l00385"></a><span class="lineno">  385</span>    <span class="comment">// AudioComponent 참조 초기화 (실제 파괴는 UGameSoundManager가 관리)</span></div>
+<div class="line"><a id="l00386" name="l00386"></a><span class="lineno">  386</span>    CurVoiceAudio = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00387" name="l00387"></a><span class="lineno">  387</span>}</div>
 <div class="ttc" id="aALingoPlayerState_8h_html"><div class="ttname"><a href="ALingoPlayerState_8h.html">ALingoPlayerState.h</a></div></div>
 <div class="ttc" id="aAPlayerActor_8h_html"><div class="ttname"><a href="APlayerActor_8h.html">APlayerActor.h</a></div><div class="ttdoc">Declares the player-controlled character actor.</div></div>
 <div class="ttc" id="aASpeakStageActor_8h_html"><div class="ttname"><a href="ASpeakStageActor_8h.html">ASpeakStageActor.h</a></div></div>
-<div class="ttc" id="aEPopupType_8h_html_a19e1d6071fbd1a8d0f3a0ac7c630df51ae0aa021e21dddbd6d8cecec71e9cf564"><div class="ttname"><a href="EPopupType_8h.html#a19e1d6071fbd1a8d0f3a0ac7c630df51ae0aa021e21dddbd6d8cecec71e9cf564">EMsgBoxType::OK</a></div><div class="ttdeci">@ OK</div></div>
 <div class="ttc" id="aGameLogging_8h_html"><div class="ttname"><a href="GameLogging_8h.html">GameLogging.h</a></div><div class="ttdoc">YiSan 전반에서 사용하는 공용 인터페이스를 선언합니다.</div></div>
 <div class="ttc" id="aGameLogging_8h_html_a9998c8beb11a6bad6ffada2e701fc0cf"><div class="ttname"><a href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a></div><div class="ttdeci">#define PRINTLOG(fmt,...)</div><div class="ttdef"><b>Definition</b> <a href="GameLogging_8h_source.html#l00030">GameLogging.h:30</a></div></div>
 <div class="ttc" id="aUBroadcastManager_8h_html"><div class="ttname"><a href="UBroadcastManager_8h.html">UBroadcastManager.h</a></div></div>
@@ -514,16 +517,16 @@ $(document).ready(function(){initNavTree('UVoiceConversationSystem_8cpp_source.h
 <div class="ttc" id="aclassUVoiceFunctionLibrary_html_ab7286a2381e79cda24832986f2f70964"><div class="ttname"><a href="classUVoiceFunctionLibrary.html#ab7286a2381e79cda24832986f2f70964">UVoiceFunctionLibrary::ResampleAudio</a></div><div class="ttdeci">static TArray&lt; uint8 &gt; ResampleAudio(const TArray&lt; uint8 &gt; &amp;InPCMData, int32 InSampleRate, int32 OutSampleRate, int32 InNumChannels)</div><div class="ttdoc">PCM 오디오 데이터를 다른 샘플레이트로 리샘플링합니다.</div><div class="ttdef"><b>Definition</b> <a href="UVoiceFunctionLibrary_8cpp_source.html#l00266">UVoiceFunctionLibrary.cpp:266</a></div></div>
 <div class="ttc" id="aclassUVoiceFunctionLibrary_html_adf741678fa5eeadc6dbe30624ef6888b"><div class="ttname"><a href="classUVoiceFunctionLibrary.html#adf741678fa5eeadc6dbe30624ef6888b">UVoiceFunctionLibrary::CreateProceduralSoundWaveFromWavData</a></div><div class="ttdeci">static USoundWaveProcedural * CreateProceduralSoundWaveFromWavData(const TArray&lt; uint8 &gt; &amp;AudioData)</div><div class="ttdoc">절차형 사운드 웨이브를 생성해 스트리밍 재생에 사용합니다.</div><div class="ttdef"><b>Definition</b> <a href="UVoiceFunctionLibrary_8cpp_source.html#l00178">UVoiceFunctionLibrary.cpp:178</a></div></div>
 <div class="ttc" id="aclassUVoiceFunctionLibrary_html_aefbf705777114a8667edc76347e70cda"><div class="ttname"><a href="classUVoiceFunctionLibrary.html#aefbf705777114a8667edc76347e70cda">UVoiceFunctionLibrary::ConvertPCM2WAV</a></div><div class="ttdeci">static TArray&lt; uint8 &gt; ConvertPCM2WAV(const TArray&lt; uint8 &gt; &amp;InPCMData, int32 InSampleRate, int32 InChannel, int32 InBitsPerSample)</div><div class="ttdoc">PCM 데이터를 WAV 포맷으로 감쌉니다.</div><div class="ttdef"><b>Definition</b> <a href="UVoiceFunctionLibrary_8cpp_source.html#l00026">UVoiceFunctionLibrary.cpp:26</a></div></div>
-<div class="ttc" id="astructFResponseChatAnswers_html"><div class="ttname"><a href="structFResponseChatAnswers.html">FResponseChatAnswers</a></div><div class="ttdoc">Chat Answers 응답 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l01360">NetworkData.h:1361</a></div></div>
-<div class="ttc" id="astructFResponseChatAnswers_html_abbd36f4a6cd6408901bd1652e09ea706"><div class="ttname"><a href="structFResponseChatAnswers.html#abbd36f4a6cd6408901bd1652e09ea706">FResponseChatAnswers::answer</a></div><div class="ttdeci">FString answer</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l01365">NetworkData.h:1365</a></div></div>
-<div class="ttc" id="astructFResponseSpeakingJudes_html"><div class="ttname"><a href="structFResponseSpeakingJudes.html">FResponseSpeakingJudes</a></div><div class="ttdoc">Speaking Questions 응답 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00820">NetworkData.h:821</a></div></div>
+<div class="ttc" id="astructFResponseChatAnswers_html"><div class="ttname"><a href="structFResponseChatAnswers.html">FResponseChatAnswers</a></div><div class="ttdoc">Chat Answers 응답 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l01363">NetworkData.h:1364</a></div></div>
+<div class="ttc" id="astructFResponseChatAnswers_html_abbd36f4a6cd6408901bd1652e09ea706"><div class="ttname"><a href="structFResponseChatAnswers.html#abbd36f4a6cd6408901bd1652e09ea706">FResponseChatAnswers::answer</a></div><div class="ttdeci">FString answer</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l01368">NetworkData.h:1368</a></div></div>
+<div class="ttc" id="astructFResponseSpeakingJudes_html"><div class="ttname"><a href="structFResponseSpeakingJudes.html">FResponseSpeakingJudes</a></div><div class="ttdoc">Speaking Questions 응답 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00823">NetworkData.h:824</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_73ed0ee482f9021ceb3f842221665267.html">Voice</a></li><li class="navelem"><a class="el" href="dir_5c9cdb472b01254a76b66bd2d652acac.html">Private</a></li><li class="navelem"><a class="el" href="UVoiceConversationSystem_8cpp.html">UVoiceConversationSystem.cpp</a></li>
-    <li class="footer">생성시간 : 금 12월 19 2025 00:27:08, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 금 12월 19 2025 06:10:25, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

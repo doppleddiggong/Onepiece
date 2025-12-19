@@ -1,5 +1,8 @@
 var Onepiece_8h =
 [
+    [ "AI", "Onepiece_8h.html#a31f8ae11232de29ffffbe4a3dc637e08", null ],
+    [ "BotID", "Onepiece_8h.html#ac463eed549dac63968e5826662b582d5", null ],
+    [ "BotName", "Onepiece_8h.html#a302a47c641c6f71422e71e76196d731f", null ],
     [ "Building", "Onepiece_8h.html#abffb03d97d2c1ee92236896e77b31600", null ],
     [ "Door", "Onepiece_8h.html#a3c08adb522f39311cbf10b2efec81a35", null ],
     [ "GameEnd", "Onepiece_8h.html#a2298f260adc739495b1a3938d2335243", null ],

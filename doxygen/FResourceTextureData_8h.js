@@ -17,6 +17,9 @@ var FResourceTextureData_8h =
       [ "Write", "FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2a1129c0e4d43f2d121652a7302712cff6", null ],
       [ "Grammar", "FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2ad305bbe79fb9dd87a3fda339c8b601b6", null ],
       [ "Context", "FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2aad4e206408c1c59bfb8a057ba7857446", null ],
-      [ "Overall", "FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2a9c831ae0a54d3665f982ceea6b4c9ce0", null ]
+      [ "Overall", "FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2a9c831ae0a54d3665f982ceea6b4c9ce0", null ],
+      [ "GreenOwl", "FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2a85941869a6cf0b6b6c30d67415fe9070", null ],
+      [ "RedOwl", "FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2a683cec3ef65a0f6062a23735044a3384", null ],
+      [ "Bot", "FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2a1448e86d90e0feb307c2894c24e87767", null ]
     ] ]
 ];

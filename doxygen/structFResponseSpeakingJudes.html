@@ -146,7 +146,7 @@ Public 속성</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">상세한 설명</h2>
 <div class="textblock"><p>Speaking Questions 응답 구조체입니다. </p>
 
-<p class="definition"><a class="el" href="NetworkData_8h_source.html">NetworkData.h</a> 파일의 <a class="el" href="NetworkData_8h_source.html#l00820">820</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="NetworkData_8h_source.html">NetworkData.h</a> 파일의 <a class="el" href="NetworkData_8h_source.html#l00823">823</a> 번째 라인에서 정의되었습니다.</p>
 </div><h2 class="groupheader">멤버 함수 문서화</h2>
 <a id="aa4b7759e4cf06f89b2ce05e4f468e47e" name="aa4b7759e4cf06f89b2ce05e4f468e47e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa4b7759e4cf06f89b2ce05e4f468e47e">&#9670;&#160;</a></span>GetResultStatData()</h2>
@@ -163,35 +163,35 @@ Public 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="NetworkData_8cpp_source.html">NetworkData.cpp</a> 파일의 <a class="el" href="NetworkData_8cpp_source.html#l00564">564</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  565</span>{</div>
-<div class="line"><span class="lineno">  566</span>    TArray&lt;FResultStatData&gt; StatDataList;</div>
-<div class="line"><span class="lineno">  567</span> </div>
-<div class="line"><span class="lineno">  568</span>    <span class="comment">// Grammar Score</span></div>
-<div class="line"><span class="lineno">  569</span>    <a class="code hl_struct" href="structFResultStatData.html">FResultStatData</a> GrammarData;</div>
-<div class="line"><span class="lineno">  570</span>    GrammarData.<a class="code hl_variable" href="structFResultStatData.html#a9c3caa803ddfbb9e059eba055c00aae9">WidgetType</a> = <a class="code hl_enumvalue" href="FResultStatData_8h.html#aaac025acffbbed1878d579b0b3930065a5dd135d1bcfa7f63c3b7f25425c2a4a1">EResultItemWidgetType::Score</a>;</div>
-<div class="line"><span class="lineno">  571</span>    GrammarData.<a class="code hl_variable" href="structFResultStatData.html#a75e66157640bcf669787b2e987ab4412">ColorType</a> = <a class="code hl_function" href="classULingoGameHelper.html#a9cdaff68599a2282ce6f5a346a15d688">ULingoGameHelper::GetRankColorType</a>(<a class="code hl_variable" href="structFResponseSpeakingJudes.html#aca28895168248e02526bcbc5043bebd5">grammar_score</a>);</div>
-<div class="line"><span class="lineno">  572</span>    GrammarData.<a class="code hl_variable" href="structFResultStatData.html#a79c960d0257ca39904aba1503a1f5a5e">TitleText</a> = FText::FromString(TEXT(<span class="stringliteral">&quot;Grammer&quot;</span>));</div>
-<div class="line"><span class="lineno">  573</span>    GrammarData.<a class="code hl_variable" href="structFResultStatData.html#ad1687ae0bdba36508a791b853a82dbe6">ScoreValue</a> = <a class="code hl_variable" href="structFResponseSpeakingJudes.html#aca28895168248e02526bcbc5043bebd5">grammar_score</a>;</div>
-<div class="line"><span class="lineno">  574</span>    GrammarData.<a class="code hl_variable" href="structFResultStatData.html#a4749547011acf01a0866b9d100435517">ScoreTextColor</a> = <a class="code hl_function" href="classULingoGameHelper.html#a1f18cf27c1a8cf2dd7e567cb17ed0d4e">ULingoGameHelper::GetRankColor</a>(<a class="code hl_variable" href="structFResponseSpeakingJudes.html#aca28895168248e02526bcbc5043bebd5">grammar_score</a>);</div>
-<div class="line"><span class="lineno">  575</span>    StatDataList.Add(GrammarData);</div>
-<div class="line"><span class="lineno">  576</span> </div>
-<div class="line"><span class="lineno">  577</span>    <span class="comment">// Context Score</span></div>
-<div class="line"><span class="lineno">  578</span>    <a class="code hl_struct" href="structFResultStatData.html">FResultStatData</a> ContextData;</div>
-<div class="line"><span class="lineno">  579</span>    ContextData.<a class="code hl_variable" href="structFResultStatData.html#a9c3caa803ddfbb9e059eba055c00aae9">WidgetType</a> = <a class="code hl_enumvalue" href="FResultStatData_8h.html#aaac025acffbbed1878d579b0b3930065a5dd135d1bcfa7f63c3b7f25425c2a4a1">EResultItemWidgetType::Score</a>;</div>
-<div class="line"><span class="lineno">  580</span>    ContextData.<a class="code hl_variable" href="structFResultStatData.html#a75e66157640bcf669787b2e987ab4412">ColorType</a> = <a class="code hl_function" href="classULingoGameHelper.html#a9cdaff68599a2282ce6f5a346a15d688">ULingoGameHelper::GetRankColorType</a>(<a class="code hl_variable" href="structFResponseSpeakingJudes.html#a48ca6f0034244337fa3023ee8b4ffe42">context_score</a>);</div>
-<div class="line"><span class="lineno">  581</span>    ContextData.<a class="code hl_variable" href="structFResultStatData.html#a79c960d0257ca39904aba1503a1f5a5e">TitleText</a> = FText::FromString(TEXT(<span class="stringliteral">&quot;Context&quot;</span>));</div>
-<div class="line"><span class="lineno">  582</span>    ContextData.<a class="code hl_variable" href="structFResultStatData.html#ad1687ae0bdba36508a791b853a82dbe6">ScoreValue</a> = <a class="code hl_variable" href="structFResponseSpeakingJudes.html#a48ca6f0034244337fa3023ee8b4ffe42">context_score</a>;</div>
-<div class="line"><span class="lineno">  583</span>    ContextData.<a class="code hl_variable" href="structFResultStatData.html#a4749547011acf01a0866b9d100435517">ScoreTextColor</a> = <a class="code hl_function" href="classULingoGameHelper.html#a1f18cf27c1a8cf2dd7e567cb17ed0d4e">ULingoGameHelper::GetRankColor</a>(<a class="code hl_variable" href="structFResponseSpeakingJudes.html#a48ca6f0034244337fa3023ee8b4ffe42">context_score</a>);</div>
-<div class="line"><span class="lineno">  584</span>    StatDataList.Add(ContextData);</div>
-<div class="line"><span class="lineno">  585</span> </div>
-<div class="line"><span class="lineno">  586</span>    <span class="keywordflow">return</span> StatDataList;</div>
-<div class="line"><span class="lineno">  587</span>}</div>
+<p class="definition"><a class="el" href="NetworkData_8cpp_source.html">NetworkData.cpp</a> 파일의 <a class="el" href="NetworkData_8cpp_source.html#l00594">594</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  595</span>{</div>
+<div class="line"><span class="lineno">  596</span>    TArray&lt;FResultStatData&gt; StatDataList;</div>
+<div class="line"><span class="lineno">  597</span> </div>
+<div class="line"><span class="lineno">  598</span>    <span class="comment">// Grammar Score</span></div>
+<div class="line"><span class="lineno">  599</span>    <a class="code hl_struct" href="structFResultStatData.html">FResultStatData</a> GrammarData;</div>
+<div class="line"><span class="lineno">  600</span>    GrammarData.<a class="code hl_variable" href="structFResultStatData.html#a9c3caa803ddfbb9e059eba055c00aae9">WidgetType</a> = <a class="code hl_enumvalue" href="FResultStatData_8h.html#aaac025acffbbed1878d579b0b3930065a5dd135d1bcfa7f63c3b7f25425c2a4a1">EResultItemWidgetType::Score</a>;</div>
+<div class="line"><span class="lineno">  601</span>    GrammarData.<a class="code hl_variable" href="structFResultStatData.html#a75e66157640bcf669787b2e987ab4412">ColorType</a> = <a class="code hl_function" href="classULingoGameHelper.html#a9cdaff68599a2282ce6f5a346a15d688">ULingoGameHelper::GetRankColorType</a>(<a class="code hl_variable" href="structFResponseSpeakingJudes.html#aca28895168248e02526bcbc5043bebd5">grammar_score</a>);</div>
+<div class="line"><span class="lineno">  602</span>    GrammarData.<a class="code hl_variable" href="structFResultStatData.html#a79c960d0257ca39904aba1503a1f5a5e">TitleText</a> = FText::FromString(TEXT(<span class="stringliteral">&quot;Grammer&quot;</span>));</div>
+<div class="line"><span class="lineno">  603</span>    GrammarData.<a class="code hl_variable" href="structFResultStatData.html#ad1687ae0bdba36508a791b853a82dbe6">ScoreValue</a> = <a class="code hl_variable" href="structFResponseSpeakingJudes.html#aca28895168248e02526bcbc5043bebd5">grammar_score</a>;</div>
+<div class="line"><span class="lineno">  604</span>    GrammarData.<a class="code hl_variable" href="structFResultStatData.html#a4749547011acf01a0866b9d100435517">ScoreTextColor</a> = <a class="code hl_function" href="classULingoGameHelper.html#a1f18cf27c1a8cf2dd7e567cb17ed0d4e">ULingoGameHelper::GetRankColor</a>(<a class="code hl_variable" href="structFResponseSpeakingJudes.html#aca28895168248e02526bcbc5043bebd5">grammar_score</a>);</div>
+<div class="line"><span class="lineno">  605</span>    StatDataList.Add(GrammarData);</div>
+<div class="line"><span class="lineno">  606</span> </div>
+<div class="line"><span class="lineno">  607</span>    <span class="comment">// Context Score</span></div>
+<div class="line"><span class="lineno">  608</span>    <a class="code hl_struct" href="structFResultStatData.html">FResultStatData</a> ContextData;</div>
+<div class="line"><span class="lineno">  609</span>    ContextData.<a class="code hl_variable" href="structFResultStatData.html#a9c3caa803ddfbb9e059eba055c00aae9">WidgetType</a> = <a class="code hl_enumvalue" href="FResultStatData_8h.html#aaac025acffbbed1878d579b0b3930065a5dd135d1bcfa7f63c3b7f25425c2a4a1">EResultItemWidgetType::Score</a>;</div>
+<div class="line"><span class="lineno">  610</span>    ContextData.<a class="code hl_variable" href="structFResultStatData.html#a75e66157640bcf669787b2e987ab4412">ColorType</a> = <a class="code hl_function" href="classULingoGameHelper.html#a9cdaff68599a2282ce6f5a346a15d688">ULingoGameHelper::GetRankColorType</a>(<a class="code hl_variable" href="structFResponseSpeakingJudes.html#a48ca6f0034244337fa3023ee8b4ffe42">context_score</a>);</div>
+<div class="line"><span class="lineno">  611</span>    ContextData.<a class="code hl_variable" href="structFResultStatData.html#a79c960d0257ca39904aba1503a1f5a5e">TitleText</a> = FText::FromString(TEXT(<span class="stringliteral">&quot;Context&quot;</span>));</div>
+<div class="line"><span class="lineno">  612</span>    ContextData.<a class="code hl_variable" href="structFResultStatData.html#ad1687ae0bdba36508a791b853a82dbe6">ScoreValue</a> = <a class="code hl_variable" href="structFResponseSpeakingJudes.html#a48ca6f0034244337fa3023ee8b4ffe42">context_score</a>;</div>
+<div class="line"><span class="lineno">  613</span>    ContextData.<a class="code hl_variable" href="structFResultStatData.html#a4749547011acf01a0866b9d100435517">ScoreTextColor</a> = <a class="code hl_function" href="classULingoGameHelper.html#a1f18cf27c1a8cf2dd7e567cb17ed0d4e">ULingoGameHelper::GetRankColor</a>(<a class="code hl_variable" href="structFResponseSpeakingJudes.html#a48ca6f0034244337fa3023ee8b4ffe42">context_score</a>);</div>
+<div class="line"><span class="lineno">  614</span>    StatDataList.Add(ContextData);</div>
+<div class="line"><span class="lineno">  615</span> </div>
+<div class="line"><span class="lineno">  616</span>    <span class="keywordflow">return</span> StatDataList;</div>
+<div class="line"><span class="lineno">  617</span>}</div>
 <div class="ttc" id="aFResultStatData_8h_html_aaac025acffbbed1878d579b0b3930065a5dd135d1bcfa7f63c3b7f25425c2a4a1"><div class="ttname"><a href="FResultStatData_8h.html#aaac025acffbbed1878d579b0b3930065a5dd135d1bcfa7f63c3b7f25425c2a4a1">EResultItemWidgetType::Score</a></div><div class="ttdeci">@ Score</div></div>
 <div class="ttc" id="aclassULingoGameHelper_html_a1f18cf27c1a8cf2dd7e567cb17ed0d4e"><div class="ttname"><a href="classULingoGameHelper.html#a1f18cf27c1a8cf2dd7e567cb17ed0d4e">ULingoGameHelper::GetRankColor</a></div><div class="ttdeci">static FLinearColor GetRankColor(float InScore)</div><div class="ttdef"><b>Definition</b> <a href="ULingoGameHelper_8cpp_source.html#l00340">ULingoGameHelper.cpp:340</a></div></div>
 <div class="ttc" id="aclassULingoGameHelper_html_a9cdaff68599a2282ce6f5a346a15d688"><div class="ttname"><a href="classULingoGameHelper.html#a9cdaff68599a2282ce6f5a346a15d688">ULingoGameHelper::GetRankColorType</a></div><div class="ttdeci">static EColorStyleType GetRankColorType(float InScore)</div><div class="ttdef"><b>Definition</b> <a href="ULingoGameHelper_8cpp_source.html#l00369">ULingoGameHelper.cpp:369</a></div></div>
-<div class="ttc" id="astructFResponseSpeakingJudes_html_a48ca6f0034244337fa3023ee8b4ffe42"><div class="ttname"><a href="structFResponseSpeakingJudes.html#a48ca6f0034244337fa3023ee8b4ffe42">FResponseSpeakingJudes::context_score</a></div><div class="ttdeci">int context_score</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00828">NetworkData.h:828</a></div></div>
-<div class="ttc" id="astructFResponseSpeakingJudes_html_aca28895168248e02526bcbc5043bebd5"><div class="ttname"><a href="structFResponseSpeakingJudes.html#aca28895168248e02526bcbc5043bebd5">FResponseSpeakingJudes::grammar_score</a></div><div class="ttdeci">int grammar_score</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00825">NetworkData.h:825</a></div></div>
+<div class="ttc" id="astructFResponseSpeakingJudes_html_a48ca6f0034244337fa3023ee8b4ffe42"><div class="ttname"><a href="structFResponseSpeakingJudes.html#a48ca6f0034244337fa3023ee8b4ffe42">FResponseSpeakingJudes::context_score</a></div><div class="ttdeci">int context_score</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00831">NetworkData.h:831</a></div></div>
+<div class="ttc" id="astructFResponseSpeakingJudes_html_aca28895168248e02526bcbc5043bebd5"><div class="ttname"><a href="structFResponseSpeakingJudes.html#aca28895168248e02526bcbc5043bebd5">FResponseSpeakingJudes::grammar_score</a></div><div class="ttdeci">int grammar_score</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00828">NetworkData.h:828</a></div></div>
 <div class="ttc" id="astructFResultStatData_html"><div class="ttname"><a href="structFResultStatData.html">FResultStatData</a></div><div class="ttdoc">Result Stat 위젯 통합 데이터 구조 위젯 타입, 색상 스타일, 각 타입별 데이터를 통합 관리</div><div class="ttdef"><b>Definition</b> <a href="FResultStatData_8h_source.html#l00022">FResultStatData.h:23</a></div></div>
 <div class="ttc" id="astructFResultStatData_html_a4749547011acf01a0866b9d100435517"><div class="ttname"><a href="structFResultStatData.html#a4749547011acf01a0866b9d100435517">FResultStatData::ScoreTextColor</a></div><div class="ttdeci">FLinearColor ScoreTextColor</div><div class="ttdef"><b>Definition</b> <a href="FResultStatData_8h_source.html#l00047">FResultStatData.h:47</a></div></div>
 <div class="ttc" id="astructFResultStatData_html_a75e66157640bcf669787b2e987ab4412"><div class="ttname"><a href="structFResultStatData.html#a75e66157640bcf669787b2e987ab4412">FResultStatData::ColorType</a></div><div class="ttdeci">EColorStyleType ColorType</div><div class="ttdoc">색상 스타일</div><div class="ttdef"><b>Definition</b> <a href="FResultStatData_8h_source.html#l00032">FResultStatData.h:32</a></div></div>
@@ -199,7 +199,7 @@ Public 속성</h2></td></tr>
 <div class="ttc" id="astructFResultStatData_html_a9c3caa803ddfbb9e059eba055c00aae9"><div class="ttname"><a href="structFResultStatData.html#a9c3caa803ddfbb9e059eba055c00aae9">FResultStatData::WidgetType</a></div><div class="ttdeci">EResultItemWidgetType WidgetType</div><div class="ttdoc">위젯 타입</div><div class="ttdef"><b>Definition</b> <a href="FResultStatData_8h_source.html#l00028">FResultStatData.h:28</a></div></div>
 <div class="ttc" id="astructFResultStatData_html_ad1687ae0bdba36508a791b853a82dbe6"><div class="ttname"><a href="structFResultStatData.html#ad1687ae0bdba36508a791b853a82dbe6">FResultStatData::ScoreValue</a></div><div class="ttdeci">float ScoreValue</div><div class="ttdoc">Score 타입 전용: 점수 값</div><div class="ttdef"><b>Definition</b> <a href="FResultStatData_8h_source.html#l00044">FResultStatData.h:44</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="FResultStatData_8h_source.html#l00032">FResultStatData::ColorType</a>, <a class="el" href="NetworkData_8h_source.html#l00828">context_score</a>, <a class="el" href="ULingoGameHelper_8cpp_source.html#l00340">ULingoGameHelper::GetRankColor()</a>, <a class="el" href="ULingoGameHelper_8cpp_source.html#l00369">ULingoGameHelper::GetRankColorType()</a>, <a class="el" href="NetworkData_8h_source.html#l00825">grammar_score</a>, <a class="el" href="FResultStatData_8h.html#aaac025acffbbed1878d579b0b3930065a5dd135d1bcfa7f63c3b7f25425c2a4a1">Score</a>, <a class="el" href="FResultStatData_8h_source.html#l00047">FResultStatData::ScoreTextColor</a>, <a class="el" href="FResultStatData_8h_source.html#l00044">FResultStatData::ScoreValue</a>, <a class="el" href="FResultStatData_8h_source.html#l00036">FResultStatData::TitleText</a>, <a class="el" href="FResultStatData_8h_source.html#l00028">FResultStatData::WidgetType</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="FResultStatData_8h_source.html#l00032">FResultStatData::ColorType</a>, <a class="el" href="NetworkData_8h_source.html#l00831">context_score</a>, <a class="el" href="ULingoGameHelper_8cpp_source.html#l00340">ULingoGameHelper::GetRankColor()</a>, <a class="el" href="ULingoGameHelper_8cpp_source.html#l00369">ULingoGameHelper::GetRankColorType()</a>, <a class="el" href="NetworkData_8h_source.html#l00828">grammar_score</a>, <a class="el" href="FResultStatData_8h.html#aaac025acffbbed1878d579b0b3930065a5dd135d1bcfa7f63c3b7f25425c2a4a1">Score</a>, <a class="el" href="FResultStatData_8h_source.html#l00047">FResultStatData::ScoreTextColor</a>, <a class="el" href="FResultStatData_8h_source.html#l00044">FResultStatData::ScoreValue</a>, <a class="el" href="FResultStatData_8h_source.html#l00036">FResultStatData::TitleText</a>, <a class="el" href="FResultStatData_8h_source.html#l00028">FResultStatData::WidgetType</a>.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UPopup__SpeakQuestJudes_8cpp_source.html#l00036">UPopup_SpeakQuestJudes::InitPopup()</a>.</p>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -236,17 +236,17 @@ Public 속성</h2></td></tr>
 
 <p>디버그 로그에 응답 내용을 출력합니다. </p>
 
-<p class="definition"><a class="el" href="NetworkData_8cpp_source.html">NetworkData.cpp</a> 파일의 <a class="el" href="NetworkData_8cpp_source.html#l00552">552</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  553</span>{</div>
-<div class="line"><span class="lineno">  554</span>    FString OutputString;</div>
-<div class="line"><span class="lineno">  555</span>    FJsonObjectConverter::UStructToJsonObjectString(</div>
-<div class="line"><span class="lineno">  556</span>        *<span class="keyword">this</span>,</div>
-<div class="line"><span class="lineno">  557</span>        OutputString,</div>
-<div class="line"><span class="lineno">  558</span>        0,</div>
-<div class="line"><span class="lineno">  559</span>        0</div>
-<div class="line"><span class="lineno">  560</span>    );</div>
-<div class="line"><span class="lineno">  561</span>    <a class="code hl_define" href="GameLogging_8h.html#ad8e2ccc8c20a63e091e0111987b4d3bc">NETWORK_LOG</a>( TEXT(<span class="stringliteral">&quot;[RES] %s&quot;</span>), *OutputString);</div>
-<div class="line"><span class="lineno">  562</span>}</div>
+<p class="definition"><a class="el" href="NetworkData_8cpp_source.html">NetworkData.cpp</a> 파일의 <a class="el" href="NetworkData_8cpp_source.html#l00582">582</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  583</span>{</div>
+<div class="line"><span class="lineno">  584</span>    FString OutputString;</div>
+<div class="line"><span class="lineno">  585</span>    FJsonObjectConverter::UStructToJsonObjectString(</div>
+<div class="line"><span class="lineno">  586</span>        *<span class="keyword">this</span>,</div>
+<div class="line"><span class="lineno">  587</span>        OutputString,</div>
+<div class="line"><span class="lineno">  588</span>        0,</div>
+<div class="line"><span class="lineno">  589</span>        0</div>
+<div class="line"><span class="lineno">  590</span>    );</div>
+<div class="line"><span class="lineno">  591</span>    <a class="code hl_define" href="GameLogging_8h.html#ad8e2ccc8c20a63e091e0111987b4d3bc">NETWORK_LOG</a>( TEXT(<span class="stringliteral">&quot;[RES] %s&quot;</span>), *OutputString);</div>
+<div class="line"><span class="lineno">  592</span>}</div>
 <div class="ttc" id="aGameLogging_8h_html_ad8e2ccc8c20a63e091e0111987b4d3bc"><div class="ttname"><a href="GameLogging_8h.html#ad8e2ccc8c20a63e091e0111987b4d3bc">NETWORK_LOG</a></div><div class="ttdeci">#define NETWORK_LOG(fmt,...)</div></div>
 </div><!-- fragment -->
 <p class="reference">다음을 참조함 :  <a class="el" href="GameLogging_8h.html#ad8e2ccc8c20a63e091e0111987b4d3bc">NETWORK_LOG</a>.</p>
@@ -280,29 +280,29 @@ Public 속성</h2></td></tr>
 
 <p>HTTP 응답을 파싱해 구조체를 채웁니다. </p>
 
-<p class="definition"><a class="el" href="NetworkData_8cpp_source.html">NetworkData.cpp</a> 파일의 <a class="el" href="NetworkData_8cpp_source.html#l00532">532</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  533</span>{</div>
-<div class="line"><span class="lineno">  534</span>    <span class="keywordflow">if</span> (!Response.IsValid())</div>
-<div class="line"><span class="lineno">  535</span>    {</div>
-<div class="line"><span class="lineno">  536</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  537</span>    }</div>
-<div class="line"><span class="lineno">  538</span> </div>
-<div class="line"><span class="lineno">  539</span>    FString JsonString = Response-&gt;GetContentAsString();</div>
-<div class="line"><span class="lineno">  540</span>    TSharedPtr&lt;FJsonObject&gt; JsonObject;</div>
-<div class="line"><span class="lineno">  541</span>    TSharedRef&lt;TJsonReader&lt;&gt;&gt; Reader = TJsonReaderFactory&lt;&gt;::Create(JsonString);</div>
-<div class="line"><span class="lineno">  542</span> </div>
-<div class="line"><span class="lineno">  543</span>    <span class="keywordflow">if</span> (FJsonSerializer::Deserialize(Reader, JsonObject) &amp;&amp; JsonObject.IsValid())</div>
-<div class="line"><span class="lineno">  544</span>    {</div>
-<div class="line"><span class="lineno">  545</span>        <a class="code hl_variable" href="structFResponseSpeakingJudes.html#aca28895168248e02526bcbc5043bebd5">grammar_score</a> = JsonObject-&gt;GetIntegerField(TEXT(<span class="stringliteral">&quot;grammar_score&quot;</span>));</div>
-<div class="line"><span class="lineno">  546</span>        <a class="code hl_variable" href="structFResponseSpeakingJudes.html#a48ca6f0034244337fa3023ee8b4ffe42">context_score</a> = JsonObject-&gt;GetIntegerField(TEXT(<span class="stringliteral">&quot;context_score&quot;</span>));</div>
-<div class="line"><span class="lineno">  547</span>        <a class="code hl_variable" href="structFResponseSpeakingJudes.html#ac9adb453eaf7391bd44ba0e050f2d816">final_overall_score</a> = JsonObject-&gt;GetIntegerField(TEXT(<span class="stringliteral">&quot;final_overall_score&quot;</span>));</div>
-<div class="line"><span class="lineno">  548</span>        <a class="code hl_variable" href="structFResponseSpeakingJudes.html#a23ca88ea4bc62490c1e2528014473d2d">final_feedback</a> = JsonObject-&gt;GetStringField(TEXT(<span class="stringliteral">&quot;final_feedback&quot;</span>));</div>
-<div class="line"><span class="lineno">  549</span>    }</div>
-<div class="line"><span class="lineno">  550</span>}</div>
-<div class="ttc" id="astructFResponseSpeakingJudes_html_a23ca88ea4bc62490c1e2528014473d2d"><div class="ttname"><a href="structFResponseSpeakingJudes.html#a23ca88ea4bc62490c1e2528014473d2d">FResponseSpeakingJudes::final_feedback</a></div><div class="ttdeci">FString final_feedback</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00834">NetworkData.h:834</a></div></div>
-<div class="ttc" id="astructFResponseSpeakingJudes_html_ac9adb453eaf7391bd44ba0e050f2d816"><div class="ttname"><a href="structFResponseSpeakingJudes.html#ac9adb453eaf7391bd44ba0e050f2d816">FResponseSpeakingJudes::final_overall_score</a></div><div class="ttdeci">int final_overall_score</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00831">NetworkData.h:831</a></div></div>
+<p class="definition"><a class="el" href="NetworkData_8cpp_source.html">NetworkData.cpp</a> 파일의 <a class="el" href="NetworkData_8cpp_source.html#l00562">562</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  563</span>{</div>
+<div class="line"><span class="lineno">  564</span>    <span class="keywordflow">if</span> (!Response.IsValid())</div>
+<div class="line"><span class="lineno">  565</span>    {</div>
+<div class="line"><span class="lineno">  566</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  567</span>    }</div>
+<div class="line"><span class="lineno">  568</span> </div>
+<div class="line"><span class="lineno">  569</span>    FString JsonString = Response-&gt;GetContentAsString();</div>
+<div class="line"><span class="lineno">  570</span>    TSharedPtr&lt;FJsonObject&gt; JsonObject;</div>
+<div class="line"><span class="lineno">  571</span>    TSharedRef&lt;TJsonReader&lt;&gt;&gt; Reader = TJsonReaderFactory&lt;&gt;::Create(JsonString);</div>
+<div class="line"><span class="lineno">  572</span> </div>
+<div class="line"><span class="lineno">  573</span>    <span class="keywordflow">if</span> (FJsonSerializer::Deserialize(Reader, JsonObject) &amp;&amp; JsonObject.IsValid())</div>
+<div class="line"><span class="lineno">  574</span>    {</div>
+<div class="line"><span class="lineno">  575</span>        <a class="code hl_variable" href="structFResponseSpeakingJudes.html#aca28895168248e02526bcbc5043bebd5">grammar_score</a> = JsonObject-&gt;GetIntegerField(TEXT(<span class="stringliteral">&quot;grammar_score&quot;</span>));</div>
+<div class="line"><span class="lineno">  576</span>        <a class="code hl_variable" href="structFResponseSpeakingJudes.html#a48ca6f0034244337fa3023ee8b4ffe42">context_score</a> = JsonObject-&gt;GetIntegerField(TEXT(<span class="stringliteral">&quot;context_score&quot;</span>));</div>
+<div class="line"><span class="lineno">  577</span>        <a class="code hl_variable" href="structFResponseSpeakingJudes.html#ac9adb453eaf7391bd44ba0e050f2d816">final_overall_score</a> = JsonObject-&gt;GetIntegerField(TEXT(<span class="stringliteral">&quot;final_overall_score&quot;</span>));</div>
+<div class="line"><span class="lineno">  578</span>        <a class="code hl_variable" href="structFResponseSpeakingJudes.html#a23ca88ea4bc62490c1e2528014473d2d">final_feedback</a> = JsonObject-&gt;GetStringField(TEXT(<span class="stringliteral">&quot;final_feedback&quot;</span>));</div>
+<div class="line"><span class="lineno">  579</span>    }</div>
+<div class="line"><span class="lineno">  580</span>}</div>
+<div class="ttc" id="astructFResponseSpeakingJudes_html_a23ca88ea4bc62490c1e2528014473d2d"><div class="ttname"><a href="structFResponseSpeakingJudes.html#a23ca88ea4bc62490c1e2528014473d2d">FResponseSpeakingJudes::final_feedback</a></div><div class="ttdeci">FString final_feedback</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00837">NetworkData.h:837</a></div></div>
+<div class="ttc" id="astructFResponseSpeakingJudes_html_ac9adb453eaf7391bd44ba0e050f2d816"><div class="ttname"><a href="structFResponseSpeakingJudes.html#ac9adb453eaf7391bd44ba0e050f2d816">FResponseSpeakingJudes::final_overall_score</a></div><div class="ttdeci">int final_overall_score</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00834">NetworkData.h:834</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="NetworkData_8h_source.html#l00828">context_score</a>, <a class="el" href="NetworkData_8h_source.html#l00834">final_feedback</a>, <a class="el" href="NetworkData_8h_source.html#l00831">final_overall_score</a>, <a class="el" href="NetworkData_8h_source.html#l00825">grammar_score</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="NetworkData_8h_source.html#l00831">context_score</a>, <a class="el" href="NetworkData_8h_source.html#l00837">final_feedback</a>, <a class="el" href="NetworkData_8h_source.html#l00834">final_overall_score</a>, <a class="el" href="NetworkData_8h_source.html#l00828">grammar_score</a>.</p>
 
 </div>
 </div>
@@ -319,9 +319,9 @@ Public 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="NetworkData_8h_source.html">NetworkData.h</a> 파일의 <a class="el" href="NetworkData_8h_source.html#l00828">828</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="NetworkData_8h_source.html">NetworkData.h</a> 파일의 <a class="el" href="NetworkData_8h_source.html#l00831">831</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="NetworkData_8cpp_source.html#l00564">GetResultStatData()</a>, <a class="el" href="NetworkData_8cpp_source.html#l00532">SetFromHttpResponse()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="NetworkData_8cpp_source.html#l00594">GetResultStatData()</a>, <a class="el" href="NetworkData_8cpp_source.html#l00562">SetFromHttpResponse()</a>.</p>
 
 </div>
 </div>
@@ -337,9 +337,9 @@ Public 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="NetworkData_8h_source.html">NetworkData.h</a> 파일의 <a class="el" href="NetworkData_8h_source.html#l00834">834</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="NetworkData_8h_source.html">NetworkData.h</a> 파일의 <a class="el" href="NetworkData_8h_source.html#l00837">837</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALingoPlayerState_8cpp_source.html#l00128">ALingoPlayerState::AddSpeakJudes()</a>, <a class="el" href="ANetworkTesterActor_8cpp_source.html#l00201">ANetworkTesterActor::OnResponseSpeakingJudes()</a>, <a class="el" href="NetworkData_8cpp_source.html#l00532">SetFromHttpResponse()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALingoPlayerState_8cpp_source.html#l00128">ALingoPlayerState::AddSpeakJudes()</a>, <a class="el" href="ANetworkTesterActor_8cpp_source.html#l00201">ANetworkTesterActor::OnResponseSpeakingJudes()</a>, <a class="el" href="NetworkData_8cpp_source.html#l00562">SetFromHttpResponse()</a>.</p>
 
 </div>
 </div>
@@ -355,9 +355,9 @@ Public 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="NetworkData_8h_source.html">NetworkData.h</a> 파일의 <a class="el" href="NetworkData_8h_source.html#l00831">831</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="NetworkData_8h_source.html">NetworkData.h</a> 파일의 <a class="el" href="NetworkData_8h_source.html#l00834">834</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UPopup__SpeakQuestJudes_8cpp_source.html#l00036">UPopup_SpeakQuestJudes::InitPopup()</a>, <a class="el" href="NetworkData_8cpp_source.html#l00532">SetFromHttpResponse()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UPopup__SpeakQuestJudes_8cpp_source.html#l00036">UPopup_SpeakQuestJudes::InitPopup()</a>, <a class="el" href="NetworkData_8cpp_source.html#l00562">SetFromHttpResponse()</a>.</p>
 
 </div>
 </div>
@@ -373,9 +373,9 @@ Public 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="NetworkData_8h_source.html">NetworkData.h</a> 파일의 <a class="el" href="NetworkData_8h_source.html#l00825">825</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="NetworkData_8h_source.html">NetworkData.h</a> 파일의 <a class="el" href="NetworkData_8h_source.html#l00828">828</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="NetworkData_8cpp_source.html#l00564">GetResultStatData()</a>, <a class="el" href="NetworkData_8cpp_source.html#l00532">SetFromHttpResponse()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="NetworkData_8cpp_source.html#l00594">GetResultStatData()</a>, <a class="el" href="NetworkData_8cpp_source.html#l00562">SetFromHttpResponse()</a>.</p>
 
 </div>
 </div>
@@ -389,7 +389,7 @@ Public 속성</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="structFResponseSpeakingJudes.html">FResponseSpeakingJudes</a></li>
-    <li class="footer">생성시간 : 금 12월 19 2025 00:27:08, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 금 12월 19 2025 06:10:25, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

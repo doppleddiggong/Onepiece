@@ -282,20 +282,24 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">  292</span>    {</div>
 <div class="line"><span class="lineno">  293</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;--- Chat Answers SUCCESS ---&quot;</span>));</div>
 <div class="line"><span class="lineno">  294</span>        </div>
-<div class="line"><span class="lineno">  295</span>        UPopupManager::Get(GetWorld())-&gt;ShowMsgBox(TEXT(<span class="stringliteral">&quot;CHAT&quot;</span>), *ResponseData.<a class="code hl_variable" href="structFResponseChatAnswers.html#abbd36f4a6cd6408901bd1652e09ea706">answer</a>,</div>
-<div class="line"><span class="lineno">  296</span>            <a class="code hl_enumvalue" href="EPopupType_8h.html#a19e1d6071fbd1a8d0f3a0ac7c630df51ae0aa021e21dddbd6d8cecec71e9cf564">EMsgBoxType::OK</a>,</div>
-<div class="line"><span class="lineno">  297</span>            FOnMsgBoxOkDelegate());</div>
-<div class="line"><span class="lineno">  298</span>    }</div>
-<div class="line"><span class="lineno">  299</span>    <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  300</span>    {</div>
-<div class="line"><span class="lineno">  301</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;--- Chat Answers FAILED ---&quot;</span>));</div>
-<div class="line"><span class="lineno">  302</span>    }</div>
-<div class="line"><span class="lineno">  303</span>}</div>
-<div class="ttc" id="aEPopupType_8h_html_a19e1d6071fbd1a8d0f3a0ac7c630df51ae0aa021e21dddbd6d8cecec71e9cf564"><div class="ttname"><a href="EPopupType_8h.html#a19e1d6071fbd1a8d0f3a0ac7c630df51ae0aa021e21dddbd6d8cecec71e9cf564">EMsgBoxType::OK</a></div><div class="ttdeci">@ OK</div></div>
+<div class="line"><span class="lineno">  295</span>        <span class="comment">// AI 응답을 Bot 정보로 채팅에 표시</span></div>
+<div class="line"><span class="lineno">  296</span>        <span class="keywordflow">if</span> (<span class="keyword">auto</span>* GS = GetWorld()-&gt;GetGameState&lt;ALingoGameState&gt;())</div>
+<div class="line"><span class="lineno">  297</span>        {</div>
+<div class="line"><span class="lineno">  298</span>            FText AIAnswer = FText::FromString(ResponseData.<a class="code hl_variable" href="structFResponseChatAnswers.html#abbd36f4a6cd6408901bd1652e09ea706">answer</a>);</div>
+<div class="line"><span class="lineno">  299</span>            GS-&gt;MulticastRPC_SendChat(GS-&gt;GetBotInfo(), AIAnswer);</div>
+<div class="line"><span class="lineno">  300</span> </div>
+<div class="line"><span class="lineno">  301</span>            <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[AI Chat] AI Answer: %s&quot;</span>), *ResponseData.<a class="code hl_variable" href="structFResponseChatAnswers.html#abbd36f4a6cd6408901bd1652e09ea706">answer</a>);</div>
+<div class="line"><span class="lineno">  302</span>        }</div>
+<div class="line"><span class="lineno">  303</span>    }</div>
+<div class="line"><span class="lineno">  304</span>    <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  305</span>    {</div>
+<div class="line"><span class="lineno">  306</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;--- Chat Answers FAILED ---&quot;</span>));</div>
+<div class="line"><span class="lineno">  307</span>    }</div>
+<div class="line"><span class="lineno">  308</span>}</div>
 <div class="ttc" id="aGameLogging_8h_html_a9998c8beb11a6bad6ffada2e701fc0cf"><div class="ttname"><a href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a></div><div class="ttdeci">#define PRINTLOG(fmt,...)</div><div class="ttdef"><b>Definition</b> <a href="GameLogging_8h_source.html#l00030">GameLogging.h:30</a></div></div>
-<div class="ttc" id="astructFResponseChatAnswers_html_abbd36f4a6cd6408901bd1652e09ea706"><div class="ttname"><a href="structFResponseChatAnswers.html#abbd36f4a6cd6408901bd1652e09ea706">FResponseChatAnswers::answer</a></div><div class="ttdeci">FString answer</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l01365">NetworkData.h:1365</a></div></div>
+<div class="ttc" id="astructFResponseChatAnswers_html_abbd36f4a6cd6408901bd1652e09ea706"><div class="ttname"><a href="structFResponseChatAnswers.html#abbd36f4a6cd6408901bd1652e09ea706">FResponseChatAnswers::answer</a></div><div class="ttdeci">FString answer</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l01368">NetworkData.h:1368</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="NetworkData_8h_source.html#l01365">FResponseChatAnswers::answer</a>, <a class="el" href="EPopupType_8h.html#a19e1d6071fbd1a8d0f3a0ac7c630df51ae0aa021e21dddbd6d8cecec71e9cf564">OK</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="NetworkData_8h_source.html#l01368">FResponseChatAnswers::answer</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ANetworkTesterActor_8cpp_source.html#l00255">RequestChatAnswers()</a>, <a class="el" href="ANetworkTesterActor_8cpp_source.html#l00272">RequestChatAnswersWithAudio()</a>.</p>
 <div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -359,9 +363,9 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">  246</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;--- InterViewHello Questions FAILED ---&quot;</span>));</div>
 <div class="line"><span class="lineno">  247</span>    }</div>
 <div class="line"><span class="lineno">  248</span>}</div>
-<div class="ttc" id="astructFResponseInterviewHello_html_ab940c7120e106a57d367e0fc3f0fca77"><div class="ttname"><a href="structFResponseInterviewHello.html#ab940c7120e106a57d367e0fc3f0fca77">FResponseInterviewHello::PrintData</a></div><div class="ttdeci">void PrintData() const</div><div class="ttdoc">디버그 로그에 응답 내용을 출력합니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8cpp_source.html#l00633">NetworkData.cpp:633</a></div></div>
+<div class="ttc" id="astructFResponseInterviewHello_html_ab940c7120e106a57d367e0fc3f0fca77"><div class="ttname"><a href="structFResponseInterviewHello.html#ab940c7120e106a57d367e0fc3f0fca77">FResponseInterviewHello::PrintData</a></div><div class="ttdeci">void PrintData() const</div><div class="ttdoc">디버그 로그에 응답 내용을 출력합니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8cpp_source.html#l00663">NetworkData.cpp:663</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="NetworkData_8cpp_source.html#l00633">FResponseInterviewHello::PrintData()</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="NetworkData_8cpp_source.html#l00663">FResponseInterviewHello::PrintData()</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ANetworkTesterActor_8cpp_source.html#l00171">RequestInterviewHello()</a>.</p>
 <div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -430,11 +434,11 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">  227</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;--- Listen Audio FAILED ---&quot;</span>));</div>
 <div class="line"><span class="lineno">  228</span>    }</div>
 <div class="line"><span class="lineno">  229</span>}</div>
-<div class="ttc" id="astructFResponseListenAudio_html_a107fb202d5ff583452455456bbf89748"><div class="ttname"><a href="structFResponseListenAudio.html#a107fb202d5ff583452455456bbf89748">FResponseListenAudio::PrintData</a></div><div class="ttdeci">void PrintData() const</div><div class="ttdoc">디버그 로그에 응답 내용을 출력합니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8cpp_source.html#l00514">NetworkData.cpp:514</a></div></div>
-<div class="ttc" id="astructFResponseListenAudio_html_a39dfdd52ce3770dfbccf800986ce4607"><div class="ttname"><a href="structFResponseListenAudio.html#a39dfdd52ce3770dfbccf800986ce4607">FResponseListenAudio::audio_base64</a></div><div class="ttdeci">TArray&lt; uint8 &gt; audio_base64</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00801">NetworkData.h:801</a></div></div>
-<div class="ttc" id="astructFResponseListenAudio_html_ac98fb8b7db5c2bbb9bd42bf9fd72f71f"><div class="ttname"><a href="structFResponseListenAudio.html#ac98fb8b7db5c2bbb9bd42bf9fd72f71f">FResponseListenAudio::audio_text</a></div><div class="ttdeci">FString audio_text</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00798">NetworkData.h:798</a></div></div>
+<div class="ttc" id="astructFResponseListenAudio_html_a107fb202d5ff583452455456bbf89748"><div class="ttname"><a href="structFResponseListenAudio.html#a107fb202d5ff583452455456bbf89748">FResponseListenAudio::PrintData</a></div><div class="ttdeci">void PrintData() const</div><div class="ttdoc">디버그 로그에 응답 내용을 출력합니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8cpp_source.html#l00544">NetworkData.cpp:544</a></div></div>
+<div class="ttc" id="astructFResponseListenAudio_html_a39dfdd52ce3770dfbccf800986ce4607"><div class="ttname"><a href="structFResponseListenAudio.html#a39dfdd52ce3770dfbccf800986ce4607">FResponseListenAudio::audio_base64</a></div><div class="ttdeci">TArray&lt; uint8 &gt; audio_base64</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00804">NetworkData.h:804</a></div></div>
+<div class="ttc" id="astructFResponseListenAudio_html_ac98fb8b7db5c2bbb9bd42bf9fd72f71f"><div class="ttname"><a href="structFResponseListenAudio.html#ac98fb8b7db5c2bbb9bd42bf9fd72f71f">FResponseListenAudio::audio_text</a></div><div class="ttdeci">FString audio_text</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00801">NetworkData.h:801</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="NetworkData_8h_source.html#l00801">FResponseListenAudio::audio_base64</a>, <a class="el" href="NetworkData_8h_source.html#l00798">FResponseListenAudio::audio_text</a>, <a class="el" href="NetworkData_8cpp_source.html#l00514">FResponseListenAudio::PrintData()</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>, <a class="el" href="ANetworkTesterActor_8h_source.html#l00130">VoiceConversationSystem</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="NetworkData_8h_source.html#l00804">FResponseListenAudio::audio_base64</a>, <a class="el" href="NetworkData_8h_source.html#l00801">FResponseListenAudio::audio_text</a>, <a class="el" href="NetworkData_8cpp_source.html#l00544">FResponseListenAudio::PrintData()</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>, <a class="el" href="ANetworkTesterActor_8h_source.html#l00130">VoiceConversationSystem</a>.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ANetworkTesterActor_8cpp_source.html#l00155">RequestListenAudio()</a>.</p>
 <div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -502,9 +506,9 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">  197</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;--- OCR Extract FAILED ---&quot;</span>));</div>
 <div class="line"><span class="lineno">  198</span>    }</div>
 <div class="line"><span class="lineno">  199</span>}</div>
-<div class="ttc" id="astructFResponseWriteSubmit_html_a357f0c08ed9288b12f4aba842d957d0a"><div class="ttname"><a href="structFResponseWriteSubmit.html#a357f0c08ed9288b12f4aba842d957d0a">FResponseWriteSubmit::PrintData</a></div><div class="ttdeci">void PrintData() const</div><div class="ttdoc">디버그 로그에 응답 내용을 출력합니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8cpp_source.html#l00426">NetworkData.cpp:426</a></div></div>
+<div class="ttc" id="astructFResponseWriteSubmit_html_a357f0c08ed9288b12f4aba842d957d0a"><div class="ttname"><a href="structFResponseWriteSubmit.html#a357f0c08ed9288b12f4aba842d957d0a">FResponseWriteSubmit::PrintData</a></div><div class="ttdeci">void PrintData() const</div><div class="ttdoc">디버그 로그에 응답 내용을 출력합니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8cpp_source.html#l00456">NetworkData.cpp:456</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="NetworkData_8cpp_source.html#l00426">FResponseWriteSubmit::PrintData()</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="NetworkData_8cpp_source.html#l00456">FResponseWriteSubmit::PrintData()</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>.</p>
 <div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-7-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-7-summary" class="dynsummary" style="display:block;">
@@ -562,10 +566,10 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">  211</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;--- Speaking Questions FAILED ---&quot;</span>));</div>
 <div class="line"><span class="lineno">  212</span>    }</div>
 <div class="line"><span class="lineno">  213</span>}</div>
-<div class="ttc" id="astructFResponseSpeakingJudes_html_a23ca88ea4bc62490c1e2528014473d2d"><div class="ttname"><a href="structFResponseSpeakingJudes.html#a23ca88ea4bc62490c1e2528014473d2d">FResponseSpeakingJudes::final_feedback</a></div><div class="ttdeci">FString final_feedback</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00834">NetworkData.h:834</a></div></div>
-<div class="ttc" id="astructFResponseSpeakingJudes_html_aa8c7ffb654c224aac31ca17aa84fd1db"><div class="ttname"><a href="structFResponseSpeakingJudes.html#aa8c7ffb654c224aac31ca17aa84fd1db">FResponseSpeakingJudes::PrintData</a></div><div class="ttdeci">void PrintData() const</div><div class="ttdoc">디버그 로그에 응답 내용을 출력합니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8cpp_source.html#l00552">NetworkData.cpp:552</a></div></div>
+<div class="ttc" id="astructFResponseSpeakingJudes_html_a23ca88ea4bc62490c1e2528014473d2d"><div class="ttname"><a href="structFResponseSpeakingJudes.html#a23ca88ea4bc62490c1e2528014473d2d">FResponseSpeakingJudes::final_feedback</a></div><div class="ttdeci">FString final_feedback</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00837">NetworkData.h:837</a></div></div>
+<div class="ttc" id="astructFResponseSpeakingJudes_html_aa8c7ffb654c224aac31ca17aa84fd1db"><div class="ttname"><a href="structFResponseSpeakingJudes.html#aa8c7ffb654c224aac31ca17aa84fd1db">FResponseSpeakingJudes::PrintData</a></div><div class="ttdeci">void PrintData() const</div><div class="ttdoc">디버그 로그에 응답 내용을 출력합니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8cpp_source.html#l00582">NetworkData.cpp:582</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="NetworkData_8h_source.html#l00834">FResponseSpeakingJudes::final_feedback</a>, <a class="el" href="NetworkData_8cpp_source.html#l00552">FResponseSpeakingJudes::PrintData()</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="NetworkData_8h_source.html#l00837">FResponseSpeakingJudes::final_feedback</a>, <a class="el" href="NetworkData_8cpp_source.html#l00582">FResponseSpeakingJudes::PrintData()</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ANetworkTesterActor_8cpp_source.html#l00139">RequestSpeakingQuestions()</a>.</p>
 <div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -701,9 +705,9 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">   88</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;--- User Register FAILED ---&quot;</span>));</div>
 <div class="line"><span class="lineno">   89</span>    }</div>
 <div class="line"><span class="lineno">   90</span>}</div>
-<div class="ttc" id="astructFResponseUserRegister_html_a7c482c31b7c20aef498681e9fe743659"><div class="ttname"><a href="structFResponseUserRegister.html#a7c482c31b7c20aef498681e9fe743659">FResponseUserRegister::PrintData</a></div><div class="ttdeci">void PrintData() const</div><div class="ttdoc">디버그 로그에 응답 내용을 출력합니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8cpp_source.html#l00143">NetworkData.cpp:143</a></div></div>
+<div class="ttc" id="astructFResponseUserRegister_html_a7c482c31b7c20aef498681e9fe743659"><div class="ttname"><a href="structFResponseUserRegister.html#a7c482c31b7c20aef498681e9fe743659">FResponseUserRegister::PrintData</a></div><div class="ttdeci">void PrintData() const</div><div class="ttdoc">디버그 로그에 응답 내용을 출력합니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8cpp_source.html#l00144">NetworkData.cpp:144</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="NetworkData_8cpp_source.html#l00143">FResponseUserRegister::PrintData()</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="NetworkData_8cpp_source.html#l00144">FResponseUserRegister::PrintData()</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ANetworkTesterActor_8cpp_source.html#l00034">RequestUserRegister()</a>.</p>
 <div id="dynsection-12" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -1393,7 +1397,7 @@ Private 속성</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classANetworkTesterActor.html">ANetworkTesterActor</a></li>
-    <li class="footer">생성시간 : 금 12월 19 2025 00:27:08, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 금 12월 19 2025 06:10:25, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

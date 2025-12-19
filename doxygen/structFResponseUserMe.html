@@ -115,11 +115,15 @@ $(document).ready(function(){initNavTree('structFResponseUserMe.html',''); initR
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="structFResponseUserMe__coll__graph.svg" width="195" height="196"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="structFResponseUserMe__coll__graph.svg" width="222" height="236"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public 멤버 함수</h2></td></tr>
+<tr class="memitem:a75e93c1e9c6e7cf876b679a7e57f1fb4" id="r_a75e93c1e9c6e7cf876b679a7e57f1fb4"><td class="memItemLeft" align="right" valign="top">FLinearColor&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structFResponseUserMe.html#a75e93c1e9c6e7cf876b679a7e57f1fb4">GetChatProfileBg</a> (int player_index) const</td></tr>
+<tr class="separator:a75e93c1e9c6e7cf876b679a7e57f1fb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a94e7821cccd42414176bc20e1b7be4d2" id="r_a94e7821cccd42414176bc20e1b7be4d2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2">EResourceTextureType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structFResponseUserMe.html#a94e7821cccd42414176bc20e1b7be4d2">GetChatProfileTextureType</a> (int player_index) const</td></tr>
+<tr class="separator:a94e7821cccd42414176bc20e1b7be4d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab4a0a718327902ae76090959785c7eb8" id="r_ab4a0a718327902ae76090959785c7eb8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structFResponseUserMe.html#ab4a0a718327902ae76090959785c7eb8">PrintData</a> () const</td></tr>
 <tr class="memdesc:ab4a0a718327902ae76090959785c7eb8"><td class="mdescLeft">&#160;</td><td class="mdescRight">디버그 로그에 응답 내용을 출력합니다.  <br /></td></tr>
 <tr class="separator:ab4a0a718327902ae76090959785c7eb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -146,6 +150,97 @@ Public 속성</h2></td></tr>
 <div class="textblock">
 <p class="definition"><a class="el" href="NetworkData_8h_source.html">NetworkData.h</a> 파일의 <a class="el" href="NetworkData_8h_source.html#l00493">493</a> 번째 라인에서 정의되었습니다.</p>
 </div><h2 class="groupheader">멤버 함수 문서화</h2>
+<a id="a75e93c1e9c6e7cf876b679a7e57f1fb4" name="a75e93c1e9c6e7cf876b679a7e57f1fb4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a75e93c1e9c6e7cf876b679a7e57f1fb4">&#9670;&#160;</a></span>GetChatProfileBg()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">FLinearColor FResponseUserMe::GetChatProfileBg </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>player_index</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="NetworkData_8cpp_source.html">NetworkData.cpp</a> 파일의 <a class="el" href="NetworkData_8cpp_source.html#l00236">236</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  237</span>{</div>
+<div class="line"><span class="lineno">  238</span>    <span class="keywordflow">if</span> ( <span class="keywordtype">id</span> == <a class="code hl_variable" href="namespaceGameName.html#ac463eed549dac63968e5826662b582d5">GameName::BotID</a>)</div>
+<div class="line"><span class="lineno">  239</span>    {</div>
+<div class="line"><span class="lineno">  240</span>        <span class="keywordflow">return</span> FColor::FromHex(TEXT(<span class="stringliteral">&quot;007BE8FF&quot;</span>));</div>
+<div class="line"><span class="lineno">  241</span>    }</div>
+<div class="line"><span class="lineno">  242</span>    </div>
+<div class="line"><span class="lineno">  243</span>    <span class="keywordflow">if</span> ( player_index == 0)</div>
+<div class="line"><span class="lineno">  244</span>        <span class="keywordflow">return</span>  FColor::FromHex(TEXT(<span class="stringliteral">&quot;FFFFFF&quot;</span>));</div>
+<div class="line"><span class="lineno">  245</span>    <span class="keywordflow">if</span> ( player_index == 1)</div>
+<div class="line"><span class="lineno">  246</span>        <span class="keywordflow">return</span> FColor::FromHex(TEXT(<span class="stringliteral">&quot;E94C4CFF&quot;</span>));</div>
+<div class="line"><span class="lineno">  247</span>    <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  248</span>        <span class="keywordflow">return</span> FColor::FromHex(TEXT(<span class="stringliteral">&quot;007BE8FF&quot;</span>));</div>
+<div class="line"><span class="lineno">  249</span>}</div>
+<div class="ttc" id="anamespaceGameName_html_ac463eed549dac63968e5826662b582d5"><div class="ttname"><a href="namespaceGameName.html#ac463eed549dac63968e5826662b582d5">GameName::BotID</a></div><div class="ttdeci">static const int32 BotID</div><div class="ttdef"><b>Definition</b> <a href="Onepiece_8h_source.html#l00052">Onepiece.h:52</a></div></div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="Onepiece_8h_source.html#l00052">GameName::BotID</a>.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ChatWidget_8cpp_source.html#l00037">UChatWidget::SendMessage()</a>.</p>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="structFResponseUserMe_a75e93c1e9c6e7cf876b679a7e57f1fb4_icgraph.svg" width="470" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a94e7821cccd42414176bc20e1b7be4d2" name="a94e7821cccd42414176bc20e1b7be4d2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a94e7821cccd42414176bc20e1b7be4d2">&#9670;&#160;</a></span>GetChatProfileTextureType()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2">EResourceTextureType</a> FResponseUserMe::GetChatProfileTextureType </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>player_index</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="NetworkData_8cpp_source.html">NetworkData.cpp</a> 파일의 <a class="el" href="NetworkData_8cpp_source.html#l00222">222</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  223</span>{</div>
+<div class="line"><span class="lineno">  224</span>    <span class="keywordflow">if</span> ( <span class="keywordtype">id</span> == <a class="code hl_variable" href="namespaceGameName.html#ac463eed549dac63968e5826662b582d5">GameName::BotID</a>)</div>
+<div class="line"><span class="lineno">  225</span>    {</div>
+<div class="line"><span class="lineno">  226</span>        <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2a1448e86d90e0feb307c2894c24e87767">EResourceTextureType::Bot</a>;</div>
+<div class="line"><span class="lineno">  227</span>    }</div>
+<div class="line"><span class="lineno">  228</span> </div>
+<div class="line"><span class="lineno">  229</span>    <span class="keywordflow">if</span> ( player_index == 0)</div>
+<div class="line"><span class="lineno">  230</span>        <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2a85941869a6cf0b6b6c30d67415fe9070">EResourceTextureType::GreenOwl</a>;</div>
+<div class="line"><span class="lineno">  231</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> ( player_index == 1)</div>
+<div class="line"><span class="lineno">  232</span>        <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2a683cec3ef65a0f6062a23735044a3384">EResourceTextureType::RedOwl</a>;</div>
+<div class="line"><span class="lineno">  233</span>    <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2a1448e86d90e0feb307c2894c24e87767">EResourceTextureType::Bot</a>;</div>
+<div class="line"><span class="lineno">  234</span>}</div>
+<div class="ttc" id="aFResourceTextureData_8h_html_a98b8b3000fb3fc86e37c624651589cb2a1448e86d90e0feb307c2894c24e87767"><div class="ttname"><a href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2a1448e86d90e0feb307c2894c24e87767">EResourceTextureType::Bot</a></div><div class="ttdeci">@ Bot</div></div>
+<div class="ttc" id="aFResourceTextureData_8h_html_a98b8b3000fb3fc86e37c624651589cb2a683cec3ef65a0f6062a23735044a3384"><div class="ttname"><a href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2a683cec3ef65a0f6062a23735044a3384">EResourceTextureType::RedOwl</a></div><div class="ttdeci">@ RedOwl</div></div>
+<div class="ttc" id="aFResourceTextureData_8h_html_a98b8b3000fb3fc86e37c624651589cb2a85941869a6cf0b6b6c30d67415fe9070"><div class="ttname"><a href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2a85941869a6cf0b6b6c30d67415fe9070">EResourceTextureType::GreenOwl</a></div><div class="ttdeci">@ GreenOwl</div></div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2a1448e86d90e0feb307c2894c24e87767">Bot</a>, <a class="el" href="Onepiece_8h_source.html#l00052">GameName::BotID</a>, <a class="el" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2a85941869a6cf0b6b6c30d67415fe9070">GreenOwl</a>, <a class="el" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2a683cec3ef65a0f6062a23735044a3384">RedOwl</a>.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ChatWidget_8cpp_source.html#l00037">UChatWidget::SendMessage()</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="structFResponseUserMe_a94e7821cccd42414176bc20e1b7be4d2_icgraph.svg" width="470" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
 <a id="ab4a0a718327902ae76090959785c7eb8" name="ab4a0a718327902ae76090959785c7eb8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab4a0a718327902ae76090959785c7eb8">&#9670;&#160;</a></span>PrintData()</h2>
 
@@ -163,27 +258,27 @@ Public 속성</h2></td></tr>
 
 <p>디버그 로그에 응답 내용을 출력합니다. </p>
 
-<p class="definition"><a class="el" href="NetworkData_8cpp_source.html">NetworkData.cpp</a> 파일의 <a class="el" href="NetworkData_8cpp_source.html#l00209">209</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  210</span>{</div>
-<div class="line"><span class="lineno">  211</span>    FString OutputString;</div>
-<div class="line"><span class="lineno">  212</span>    FJsonObjectConverter::UStructToJsonObjectString(</div>
-<div class="line"><span class="lineno">  213</span>        *<span class="keyword">this</span>,</div>
-<div class="line"><span class="lineno">  214</span>        OutputString,</div>
-<div class="line"><span class="lineno">  215</span>        0,</div>
-<div class="line"><span class="lineno">  216</span>        0</div>
-<div class="line"><span class="lineno">  217</span>    );</div>
-<div class="line"><span class="lineno">  218</span>    <a class="code hl_define" href="GameLogging_8h.html#ad8e2ccc8c20a63e091e0111987b4d3bc">NETWORK_LOG</a>( TEXT(<span class="stringliteral">&quot;[RES] %s&quot;</span>), *OutputString);</div>
-<div class="line"><span class="lineno">  219</span>}</div>
+<p class="definition"><a class="el" href="NetworkData_8cpp_source.html">NetworkData.cpp</a> 파일의 <a class="el" href="NetworkData_8cpp_source.html#l00210">210</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  211</span>{</div>
+<div class="line"><span class="lineno">  212</span>    FString OutputString;</div>
+<div class="line"><span class="lineno">  213</span>    FJsonObjectConverter::UStructToJsonObjectString(</div>
+<div class="line"><span class="lineno">  214</span>        *<span class="keyword">this</span>,</div>
+<div class="line"><span class="lineno">  215</span>        OutputString,</div>
+<div class="line"><span class="lineno">  216</span>        0,</div>
+<div class="line"><span class="lineno">  217</span>        0</div>
+<div class="line"><span class="lineno">  218</span>    );</div>
+<div class="line"><span class="lineno">  219</span>    <a class="code hl_define" href="GameLogging_8h.html#ad8e2ccc8c20a63e091e0111987b4d3bc">NETWORK_LOG</a>( TEXT(<span class="stringliteral">&quot;[RES] %s&quot;</span>), *OutputString);</div>
+<div class="line"><span class="lineno">  220</span>}</div>
 <div class="ttc" id="aGameLogging_8h_html_ad8e2ccc8c20a63e091e0111987b4d3bc"><div class="ttname"><a href="GameLogging_8h.html#ad8e2ccc8c20a63e091e0111987b4d3bc">NETWORK_LOG</a></div><div class="ttdeci">#define NETWORK_LOG(fmt,...)</div></div>
 </div><!-- fragment -->
 <p class="reference">다음을 참조함 :  <a class="el" href="GameLogging_8h.html#ad8e2ccc8c20a63e091e0111987b4d3bc">NETWORK_LOG</a>.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00281">UKLingoNetworkSystem::RequestUserMe()</a>.</p>
-<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
-<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
 <div class="center"><iframe scrolling="no" frameborder="0" src="structFResponseUserMe_ab4a0a718327902ae76090959785c7eb8_icgraph.svg" width="451" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
@@ -207,27 +302,27 @@ Public 속성</h2></td></tr>
 
 <p>HTTP 응답을 파싱해 상태 정보를 갱신합니다. </p>
 
-<p class="definition"><a class="el" href="NetworkData_8cpp_source.html">NetworkData.cpp</a> 파일의 <a class="el" href="NetworkData_8cpp_source.html#l00187">187</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  188</span>{</div>
-<div class="line"><span class="lineno">  189</span>    <span class="keywordflow">if</span> (!Response.IsValid())</div>
-<div class="line"><span class="lineno">  190</span>    {</div>
-<div class="line"><span class="lineno">  191</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  192</span>    }</div>
-<div class="line"><span class="lineno">  193</span> </div>
-<div class="line"><span class="lineno">  194</span>    FString JsonString = Response-&gt;GetContentAsString();</div>
-<div class="line"><span class="lineno">  195</span>    TSharedPtr&lt;FJsonObject&gt; JsonObject;</div>
-<div class="line"><span class="lineno">  196</span>    TSharedRef&lt;TJsonReader&lt;&gt;&gt; Reader = TJsonReaderFactory&lt;&gt;::Create(JsonString);</div>
-<div class="line"><span class="lineno">  197</span> </div>
-<div class="line"><span class="lineno">  198</span>    <span class="keywordflow">if</span> (FJsonSerializer::Deserialize(Reader, JsonObject) &amp;&amp; JsonObject.IsValid())</div>
-<div class="line"><span class="lineno">  199</span>    {</div>
-<div class="line"><span class="lineno">  200</span>        <span class="keywordtype">id</span> = JsonObject-&gt;GetIntegerField(TEXT(<span class="stringliteral">&quot;id&quot;</span>));</div>
-<div class="line"><span class="lineno">  201</span>        <a class="code hl_variable" href="structFResponseUserMe.html#ae5540a9cbe35f9d9fd23045f17bb68e8">username</a> = JsonObject-&gt;GetStringField(TEXT(<span class="stringliteral">&quot;username&quot;</span>));</div>
-<div class="line"><span class="lineno">  202</span>        <a class="code hl_variable" href="structFResponseUserMe.html#abd1ef38a53fdde39a4a5a5610d84c938">fullname</a> = JsonObject-&gt;GetStringField(TEXT(<span class="stringliteral">&quot;fullname&quot;</span>));</div>
-<div class="line"><span class="lineno">  203</span>        <a class="code hl_variable" href="structFResponseUserMe.html#aae761cb89ba3679b02d2ab7dcfb7aecc">is_active</a> = JsonObject-&gt;GetBoolField(TEXT(<span class="stringliteral">&quot;is_active&quot;</span>));</div>
-<div class="line"><span class="lineno">  204</span>        <a class="code hl_variable" href="structFResponseUserMe.html#a9f05c5cadc14501568877dc317be6412">my_avatar</a> = JsonObject-&gt;GetStringField(TEXT(<span class="stringliteral">&quot;my_avatar&quot;</span>));</div>
-<div class="line"><span class="lineno">  205</span>        <a class="code hl_variable" href="structFResponseUserMe.html#acb142b22e095f2e30a8461dd67db1001">my_color</a> = JsonObject-&gt;GetStringField(TEXT(<span class="stringliteral">&quot;my_color&quot;</span>));</div>
-<div class="line"><span class="lineno">  206</span>    }</div>
-<div class="line"><span class="lineno">  207</span>}</div>
+<p class="definition"><a class="el" href="NetworkData_8cpp_source.html">NetworkData.cpp</a> 파일의 <a class="el" href="NetworkData_8cpp_source.html#l00188">188</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  189</span>{</div>
+<div class="line"><span class="lineno">  190</span>    <span class="keywordflow">if</span> (!Response.IsValid())</div>
+<div class="line"><span class="lineno">  191</span>    {</div>
+<div class="line"><span class="lineno">  192</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  193</span>    }</div>
+<div class="line"><span class="lineno">  194</span> </div>
+<div class="line"><span class="lineno">  195</span>    FString JsonString = Response-&gt;GetContentAsString();</div>
+<div class="line"><span class="lineno">  196</span>    TSharedPtr&lt;FJsonObject&gt; JsonObject;</div>
+<div class="line"><span class="lineno">  197</span>    TSharedRef&lt;TJsonReader&lt;&gt;&gt; Reader = TJsonReaderFactory&lt;&gt;::Create(JsonString);</div>
+<div class="line"><span class="lineno">  198</span> </div>
+<div class="line"><span class="lineno">  199</span>    <span class="keywordflow">if</span> (FJsonSerializer::Deserialize(Reader, JsonObject) &amp;&amp; JsonObject.IsValid())</div>
+<div class="line"><span class="lineno">  200</span>    {</div>
+<div class="line"><span class="lineno">  201</span>        <span class="keywordtype">id</span> = JsonObject-&gt;GetIntegerField(TEXT(<span class="stringliteral">&quot;id&quot;</span>));</div>
+<div class="line"><span class="lineno">  202</span>        <a class="code hl_variable" href="structFResponseUserMe.html#ae5540a9cbe35f9d9fd23045f17bb68e8">username</a> = JsonObject-&gt;GetStringField(TEXT(<span class="stringliteral">&quot;username&quot;</span>));</div>
+<div class="line"><span class="lineno">  203</span>        <a class="code hl_variable" href="structFResponseUserMe.html#abd1ef38a53fdde39a4a5a5610d84c938">fullname</a> = JsonObject-&gt;GetStringField(TEXT(<span class="stringliteral">&quot;fullname&quot;</span>));</div>
+<div class="line"><span class="lineno">  204</span>        <a class="code hl_variable" href="structFResponseUserMe.html#aae761cb89ba3679b02d2ab7dcfb7aecc">is_active</a> = JsonObject-&gt;GetBoolField(TEXT(<span class="stringliteral">&quot;is_active&quot;</span>));</div>
+<div class="line"><span class="lineno">  205</span>        <a class="code hl_variable" href="structFResponseUserMe.html#a9f05c5cadc14501568877dc317be6412">my_avatar</a> = JsonObject-&gt;GetStringField(TEXT(<span class="stringliteral">&quot;my_avatar&quot;</span>));</div>
+<div class="line"><span class="lineno">  206</span>        <a class="code hl_variable" href="structFResponseUserMe.html#acb142b22e095f2e30a8461dd67db1001">my_color</a> = JsonObject-&gt;GetStringField(TEXT(<span class="stringliteral">&quot;my_color&quot;</span>));</div>
+<div class="line"><span class="lineno">  207</span>    }</div>
+<div class="line"><span class="lineno">  208</span>}</div>
 <div class="ttc" id="astructFResponseUserMe_html_a9f05c5cadc14501568877dc317be6412"><div class="ttname"><a href="structFResponseUserMe.html#a9f05c5cadc14501568877dc317be6412">FResponseUserMe::my_avatar</a></div><div class="ttdeci">FString my_avatar</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00510">NetworkData.h:510</a></div></div>
 <div class="ttc" id="astructFResponseUserMe_html_aae761cb89ba3679b02d2ab7dcfb7aecc"><div class="ttname"><a href="structFResponseUserMe.html#aae761cb89ba3679b02d2ab7dcfb7aecc">FResponseUserMe::is_active</a></div><div class="ttdeci">bool is_active</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00507">NetworkData.h:507</a></div></div>
 <div class="ttc" id="astructFResponseUserMe_html_abd1ef38a53fdde39a4a5a5610d84c938"><div class="ttname"><a href="structFResponseUserMe.html#abd1ef38a53fdde39a4a5a5610d84c938">FResponseUserMe::fullname</a></div><div class="ttdeci">FString fullname</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00504">NetworkData.h:504</a></div></div>
@@ -237,11 +332,11 @@ Public 속성</h2></td></tr>
 <p class="reference">다음을 참조함 :  <a class="el" href="NetworkData_8h_source.html#l00504">fullname</a>, <a class="el" href="NetworkData_8h_source.html#l00507">is_active</a>, <a class="el" href="NetworkData_8h_source.html#l00510">my_avatar</a>, <a class="el" href="NetworkData_8h_source.html#l00513">my_color</a>, <a class="el" href="NetworkData_8h_source.html#l00501">username</a>.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00281">UKLingoNetworkSystem::RequestUserMe()</a>.</p>
-<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
-<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
 <div class="center"><iframe scrolling="no" frameborder="0" src="structFResponseUserMe_a92c11f93c8178da89bd734fb284dfb6f_icgraph.svg" width="444" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
@@ -262,7 +357,7 @@ Public 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="NetworkData_8h_source.html">NetworkData.h</a> 파일의 <a class="el" href="NetworkData_8h_source.html#l00504">504</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="NetworkData_8cpp_source.html#l00187">SetFromHttpResponse()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALingoGameState_8cpp_source.html#l00017">ALingoGameState::ALingoGameState()</a>, <a class="el" href="NetworkData_8cpp_source.html#l00188">SetFromHttpResponse()</a>.</p>
 
 </div>
 </div>
@@ -280,7 +375,7 @@ Public 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="NetworkData_8h_source.html">NetworkData.h</a> 파일의 <a class="el" href="NetworkData_8h_source.html#l00498">498</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ChatWidget_8cpp_source.html#l00036">UChatWidget::SendMessage()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALingoGameState_8cpp_source.html#l00017">ALingoGameState::ALingoGameState()</a>, <a class="el" href="ChatWidget_8cpp_source.html#l00037">UChatWidget::SendMessage()</a>.</p>
 
 </div>
 </div>
@@ -298,7 +393,7 @@ Public 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="NetworkData_8h_source.html">NetworkData.h</a> 파일의 <a class="el" href="NetworkData_8h_source.html#l00507">507</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="NetworkData_8cpp_source.html#l00187">SetFromHttpResponse()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALingoGameState_8cpp_source.html#l00017">ALingoGameState::ALingoGameState()</a>, <a class="el" href="NetworkData_8cpp_source.html#l00188">SetFromHttpResponse()</a>.</p>
 
 </div>
 </div>
@@ -316,7 +411,7 @@ Public 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="NetworkData_8h_source.html">NetworkData.h</a> 파일의 <a class="el" href="NetworkData_8h_source.html#l00510">510</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="NetworkData_8cpp_source.html#l00187">SetFromHttpResponse()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALingoGameState_8cpp_source.html#l00017">ALingoGameState::ALingoGameState()</a>, <a class="el" href="NetworkData_8cpp_source.html#l00188">SetFromHttpResponse()</a>.</p>
 
 </div>
 </div>
@@ -334,7 +429,7 @@ Public 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="NetworkData_8h_source.html">NetworkData.h</a> 파일의 <a class="el" href="NetworkData_8h_source.html#l00513">513</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="NetworkData_8cpp_source.html#l00187">SetFromHttpResponse()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALingoGameState_8cpp_source.html#l00017">ALingoGameState::ALingoGameState()</a>, <a class="el" href="NetworkData_8cpp_source.html#l00188">SetFromHttpResponse()</a>.</p>
 
 </div>
 </div>
@@ -352,7 +447,7 @@ Public 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="NetworkData_8h_source.html">NetworkData.h</a> 파일의 <a class="el" href="NetworkData_8h_source.html#l00501">501</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ChatWidget_8cpp_source.html#l00036">UChatWidget::SendMessage()</a>, <a class="el" href="NetworkData_8cpp_source.html#l00187">SetFromHttpResponse()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALingoGameState_8cpp_source.html#l00017">ALingoGameState::ALingoGameState()</a>, <a class="el" href="ChatWidget_8cpp_source.html#l00037">UChatWidget::SendMessage()</a>, <a class="el" href="NetworkData_8cpp_source.html#l00188">SetFromHttpResponse()</a>.</p>
 
 </div>
 </div>
@@ -366,7 +461,7 @@ Public 속성</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="structFResponseUserMe.html">FResponseUserMe</a></li>
-    <li class="footer">생성시간 : 금 12월 19 2025 00:27:08, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 금 12월 19 2025 06:10:25, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

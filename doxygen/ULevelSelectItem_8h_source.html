@@ -117,7 +117,7 @@ $(document).ready(function(){initNavTree('ULevelSelectItem_8h_source.html',''); 
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;Blueprint/UserWidget.h&quot;</span></div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;ULevelSelectItem.generated.h&quot;</span></div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="ULevelSelectItem_8h.html#afb76d53c1ffae6b9fc691c05c781777b">    9</a></span><a class="code hl_function" href="ULevelSelectItem_8h.html#afb76d53c1ffae6b9fc691c05c781777b">DECLARE_DELEGATE_TwoParams</a>(FOnLevelSelectedDelegate, int32 <span class="comment">/*Level*/</span>, <span class="keyword">const</span> FString&amp; <span class="comment">/*LevelName*/</span>);</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="ULevelSelectItem_8h.html#a260b05feb14a5aa43361a3cdaaaacae3">    9</a></span><a class="code hl_function" href="ULevelSelectItem_8h.html#a260b05feb14a5aa43361a3cdaaaacae3">DECLARE_DELEGATE_OneParam</a>(FOnLevelSelectedDelegate, int32 <span class="comment">/*Level*/</span>);</div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>UCLASS()</div>
 <div class="foldopen" id="foldopen00016" data-start="{" data-end="};">
@@ -130,7 +130,7 @@ $(document).ready(function(){initNavTree('ULevelSelectItem_8h_source.html',''); 
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    </div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="keyword">public</span>:</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    UFUNCTION(BlueprintCallable, Category = <span class="stringliteral">&quot;LevelSelectItem&quot;</span>)</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="keywordtype">void</span> InitLevelItem(int32 InLevel, <span class="keyword">const</span> FString&amp; InLevelName);</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="keywordtype">void</span> InitLevelItem(int32 InLevel, <span class="keyword">const</span> FString&amp; InLevelName, int32 InPlayTime);</div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="keyword">protected</span>:</div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="keywordtype">void</span> CreateAnimalGroup();</div>
@@ -148,24 +148,32 @@ $(document).ready(function(){initNavTree('ULevelSelectItem_8h_source.html',''); 
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    UPROPERTY(meta = (BindWidget))</div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="classULevelSelectItem.html#abab2941979c84971e543bf1eafddf769">   51</a></span>    TObjectPtr&lt;class UTextBlock&gt; Txt_Title;</div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    UPROPERTY(meta = (BindWidget))</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="classULevelSelectItem.html#a149cb06c6ef121f65f699584bb9e7478">   55</a></span>    TObjectPtr&lt;class UVerticalBox&gt; VerticalBox;</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    UPROPERTY(meta = (BindWidget))</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="classULevelSelectItem.html#a4cb737f1252345ac55c971a84d0766fc">   54</a></span>    TObjectPtr&lt;class UTextBlock&gt; Txt_PlayTime;</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    </div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    UPROPERTY(meta = (BindWidget))</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="classULevelSelectItem.html#a8dc75c8cbd6e09f53853fbcbdfc36b38">   59</a></span>    TObjectPtr&lt;class <a class="code hl_class" href="classUImageButton.html">UImageButton</a>&gt; Btn_Select;</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="classULevelSelectItem.html#a149cb06c6ef121f65f699584bb9e7478">   59</a></span>    TObjectPtr&lt;class UVerticalBox&gt; VerticalBox;</div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>protected:</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    UPROPERTY()</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="classULevelSelectItem.html#a99c6d44beb4f242225ba0d7ff1007b2b">   64</a></span>    int32 Level = 1;</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    UPROPERTY(meta = (BindWidget))</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="classULevelSelectItem.html#a8dc75c8cbd6e09f53853fbcbdfc36b38">   63</a></span>    TObjectPtr&lt;class <a class="code hl_class" href="classUImageButton.html">UImageButton</a>&gt; Btn_Select;</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>protected:</div>
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    UPROPERTY()</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno"><a class="line" href="classULevelSelectItem.html#a107123d6574b40b63f2dd0aa61aaf3be">   68</a></span>    FString LevelName;</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno"><a class="line" href="classULevelSelectItem.html#a99c6d44beb4f242225ba0d7ff1007b2b">   68</a></span>    int32 Level = 1;</div>
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    UPROPERTY(EditAnywhere, Category = &quot;LevelSelectItem&quot;)</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno"><a class="line" href="classULevelSelectItem.html#ab84d704cec19cd084aab052ad15b71cd">   72</a></span>    TSubclassOf&lt;class <a class="code hl_class" href="classULevelWordGroup.html">ULevelWordGroup</a>&gt; WordGroupClass;</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>};</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    UPROPERTY()</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno"><a class="line" href="classULevelSelectItem.html#a107123d6574b40b63f2dd0aa61aaf3be">   72</a></span>    FString LevelName;</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    UPROPERTY()</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno"><a class="line" href="classULevelSelectItem.html#ad2cd03188e8ba0ff43291506e13f0118">   76</a></span>    int32 PlayTime = 3;</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    UPROPERTY(EditAnywhere, Category = &quot;LevelSelectItem&quot;)</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno"><a class="line" href="classULevelSelectItem.html#ab84d704cec19cd084aab052ad15b71cd">   81</a></span>    TSubclassOf&lt;class <a class="code hl_class" href="classULevelWordGroup.html">ULevelWordGroup</a>&gt; WordGroupClass;</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>};</div>
 </div>
-<div class="ttc" id="aULevelSelectItem_8h_html_afb76d53c1ffae6b9fc691c05c781777b"><div class="ttname"><a href="ULevelSelectItem_8h.html#afb76d53c1ffae6b9fc691c05c781777b">DECLARE_DELEGATE_TwoParams</a></div><div class="ttdeci">DECLARE_DELEGATE_TwoParams(FOnLevelSelectedDelegate, int32, const FString &amp;)</div></div>
+<div class="ttc" id="aULevelSelectItem_8h_html_a260b05feb14a5aa43361a3cdaaaacae3"><div class="ttname"><a href="ULevelSelectItem_8h.html#a260b05feb14a5aa43361a3cdaaaacae3">DECLARE_DELEGATE_OneParam</a></div><div class="ttdeci">DECLARE_DELEGATE_OneParam(FOnLevelSelectedDelegate, int32)</div></div>
 <div class="ttc" id="aclassUImageButton_html"><div class="ttname"><a href="classUImageButton.html">UImageButton</a></div><div class="ttdoc">UImageButton</div><div class="ttdef"><b>Definition</b> <a href="UImageButton_8h_source.html#l00018">UImageButton.h:19</a></div></div>
 <div class="ttc" id="aclassULevelSelectItem_html"><div class="ttname"><a href="classULevelSelectItem.html">ULevelSelectItem</a></div><div class="ttdoc">레벨 선택 아이템 위젯</div><div class="ttdef"><b>Definition</b> <a href="ULevelSelectItem_8h_source.html#l00016">ULevelSelectItem.h:17</a></div></div>
 <div class="ttc" id="aclassULevelSelectItem_html_a812ef179c8b49bfe66d99a5578b4ee7e"><div class="ttname"><a href="classULevelSelectItem.html#a812ef179c8b49bfe66d99a5578b4ee7e">ULevelSelectItem::OnLevelSelected</a></div><div class="ttdeci">FOnLevelSelectedDelegate OnLevelSelected</div><div class="ttdoc">레벨 선택 델리게이트</div><div class="ttdef"><b>Definition</b> <a href="ULevelSelectItem_8h_source.html#l00046">ULevelSelectItem.h:46</a></div></div>
@@ -176,7 +184,7 @@ $(document).ready(function(){initNavTree('ULevelSelectItem_8h_source.html',''); 
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_47ae9c23f27029060c39af29b069b73d.html">MessageBox</a></li><li class="navelem"><a class="el" href="dir_244820c19557decdcbf6fc4000b77b7e.html">Public</a></li><li class="navelem"><a class="el" href="ULevelSelectItem_8h.html">ULevelSelectItem.h</a></li>
-    <li class="footer">생성시간 : 금 12월 19 2025 00:27:08, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 금 12월 19 2025 06:10:25, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>
