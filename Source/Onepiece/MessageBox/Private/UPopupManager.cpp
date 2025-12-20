@@ -102,10 +102,15 @@ UUserWidget* UPopupManager::ShowPopup(EPopupType Type)
 	// 스택에 추가
 	PushPopupToStack(Type);
 
-	// 첫 팝업이 열렸다면 마우스 커서 표시
-	if (bIsFirstPopup)
+	if ( Type == EPopupType::SpeakQuestJudes )
+	{}
+	else
 	{
-		ULingoGameHelper::ShowMouseCursor(GetWorld());
+		// 첫 팝업이 열렸다면 마우스 커서 표시
+		if (bIsFirstPopup)
+		{
+			ULingoGameHelper::ShowMouseCursor(GetWorld());
+		}
 	}
 
 	return PopupWidget;
