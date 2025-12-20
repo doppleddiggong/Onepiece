@@ -18,13 +18,22 @@ class ONEPIECE_API UChatInputBox : public UUserWidget
 	
 public:
 	virtual void NativeOnInitialized() override;
-	virtual void NativeOnFocusLost(const FFocusEvent& InFocusEvent) override;
+	virtual void NativeTick(const FGeometry& MyGeometry, float InDeltaTime) override;
 	virtual FReply NativeOnPreviewKeyDown(const FGeometry& InGeometry, const FKeyEvent& InKeyEvent) override;
+
+	void SetOwningChatWidget(class UChatWidget* InChatWidget) { OwningChatWidget = InChatWidget; }
+
+	void SetInputFocus(bool bFocus);
+	bool HasKeyboardFocus();
+
+private:
 	FText FlushMessage();
-	void FocusInput();
 	bool IsAIAsk(const FString& InMessage, FString& OutQuestion) const;
 
-protected:
+	UFUNCTION()
+	void HandleSendClicked();
+
+public:
 	UPROPERTY(meta=(BindWidget))
 	TObjectPtr<class UMultiLineEditableTextBox> MultiLineEditableTextBox_Input;
 	
@@ -32,6 +41,10 @@ protected:
 	TObjectPtr<class UButton> Button_Send;
 	
 private:
-	UFUNCTION()
-	void HandleSendClicked();
+	// 이전 프레임의 포커스 상태 추적
+	bool bWasFocused = false;
+
+	// 부모 ChatWidget 참조
+	UPROPERTY()
+	TObjectPtr<class UChatWidget> OwningChatWidget = nullptr;
 };

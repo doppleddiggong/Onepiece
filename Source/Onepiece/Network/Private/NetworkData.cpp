@@ -1207,21 +1207,21 @@ TArray<FResultStatData> FResponseSpeakResult::GetResultStatData() const
 	
 	FResultStatData GradeResultData;
 	GradeResultData.WidgetType = EResultItemWidgetType::Grade;
-	GradeResultData.ColorType = EColorStyleType::Green;
+	GradeResultData.ColorType = EColorStyleType::Gray;
 	GradeResultData.TitleText = FText::FromString(TEXT("Grade"));
 	GradeResultData.GradeTextureType = ULingoGameHelper::ConvertGradeString(grade);
 	StatDataList.Add(GradeResultData);
 
 	FResultStatData TopRateResultData;
 	TopRateResultData.WidgetType = EResultItemWidgetType::Rate;
-	TopRateResultData.ColorType = EColorStyleType::Red;
+	TopRateResultData.ColorType = EColorStyleType::Gray;
 	TopRateResultData.TitleText = FText::FromString(TEXT("Top"));
 	TopRateResultData.RatePercent = top_percent;
 	StatDataList.Add(TopRateResultData);
 		
 	FResultStatData AverageScoreResultData;
 	AverageScoreResultData.WidgetType = EResultItemWidgetType::Symbol;
-	AverageScoreResultData.ColorType = EColorStyleType::Purple;
+	AverageScoreResultData.ColorType = EColorStyleType::Gray;
 	AverageScoreResultData.TitleText = FText::FromString(TEXT("Score"));
 	AverageScoreResultData.SymbolTextureType = EResourceTextureType::Score;
 	AverageScoreResultData.SymbolValue = FString::Printf(TEXT("%d"), average_score);

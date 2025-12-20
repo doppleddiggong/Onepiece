@@ -8,6 +8,7 @@
 #include "ChatInputBox.h"
 #include "GameLogging.h"
 #include "Blueprint/WidgetBlueprintLibrary.h"
+#include "Components/MultiLineEditableTextBox.h"
 #include "Components/ScrollBox.h"
 #include "Components/ScrollBoxSlot.h"
 #include "Components/VerticalBox.h"
@@ -30,8 +31,47 @@ UChatWidget::UChatWidget(const FObjectInitializer& ObjectInitializer) : Super(Ob
 void UChatWidget::NativeConstruct()
 {
 	Super::NativeConstruct();
-	
+
 	SetIsFocusable(true);
+
+	// 초기 상태는 페이드아웃 (약간 투명하게)
+	SetRenderOpacity(0.2f);
+	CurrentOpacity = 0.2f;
+	TargetOpacity = 0.2f;
+
+	// ChatInputBox에 자신을 설정
+	if (ChatInputBox)
+	{
+		ChatInputBox->SetOwningChatWidget(this);
+	}
+}
+
+void UChatWidget::NativeTick(const FGeometry& MyGeometry, float InDeltaTime)
+{
+	Super::NativeTick(MyGeometry, InDeltaTime);
+
+	// 페이드 처리
+	if (bIsFading && CurrentOpacity != TargetOpacity)
+	{
+		// 부드럽게 Opacity 변경
+		float Delta = FadeSpeed * InDeltaTime;
+		if (CurrentOpacity > TargetOpacity)
+		{
+			CurrentOpacity = FMath::Max(CurrentOpacity - Delta, TargetOpacity);
+		}
+		else
+		{
+			CurrentOpacity = FMath::Min(CurrentOpacity + Delta, TargetOpacity);
+		}
+
+		SetRenderOpacity(CurrentOpacity);
+
+		// 목표 도달 시 페이드 종료
+		if (FMath::IsNearlyEqual(CurrentOpacity, TargetOpacity, 0.01f))
+		{
+			bIsFading = false;
+		}
+	}
 }
 
 void UChatWidget::SendMessage(FResponseUserMe sendUser, FText inMessage, int32 PlayerIndex)
@@ -57,42 +97,117 @@ void UChatWidget::SendMessage(FResponseUserMe sendUser, FText inMessage, int32 P
 	newChat->SetPlayerName(FText::FromString(sendUser.username));
 	newChat->SetMessage(inMessage);
 	newChat->SetChatBubbleColor(bIsSender);
-	
-	
-	// 현재 스크롤 값 & 마지막 스크롤 값
-	float scrollOffset = ScrollBox_ChatBox->GetScrollOffset();
-	float scrollOffsetOfEnd = ScrollBox_ChatBox->GetScrollOffsetOfEnd();
-	PRINTLOG(TEXT("before scrollend - ScrollOffset: %f, ScrollOffsetOfEnd: %f"), scrollOffset, scrollOffsetOfEnd);
-	
-	ScrollBox_ChatBox->SetScrollOffset(scrollOffsetOfEnd);
-	
+
 	// ChatBox에 추가 & 정렬
-	VerticalBox_Content->AddChild(newChat);	
+	VerticalBox_Content->AddChild(newChat);
 
 	UScrollBoxSlot* parentSlot = Cast<UScrollBoxSlot>(newChat->Slot);
 	if (parentSlot)
 	{
 		parentSlot->SetHorizontalAlignment((bIsSender ? HAlign_Left : HAlign_Right));
 	}
+
+	// 위젯의 레이아웃을 강제로 갱신하여 정확한 크기 계산
+	newChat->ForceLayoutPrepass();
+
+	// 부모 위젯들의 레이아웃을 무효화하여 다음 틱에 재계산
+	VerticalBox_Content->InvalidateLayoutAndVolatility();
+	ScrollBox_ChatBox->InvalidateLayoutAndVolatility();
+
+	// 현재 스크롤 값 & 마지막 스크롤 값
+	float scrollOffset = ScrollBox_ChatBox->GetScrollOffset();
+	float scrollOffsetOfEnd = ScrollBox_ChatBox->GetScrollOffsetOfEnd();
 	
-	// 메시지 받은 자가 Sender일 때 or 스크롤이 맨 마지막일 때
 	if (bIsSender || scrollOffset == scrollOffsetOfEnd)
-	{		
-		FTimerHandle handle;
-		GetWorld()->GetTimerManager().SetTimer(handle, [this]()
+	{
+		// 레이아웃 갱신 후 스크롤 (타이머 사용)
+		FTimerHandle ScrollTimerHandle;
+		GetWorld()->GetTimerManager().SetTimer(ScrollTimerHandle, [this, newChat]()
 		{
-			// 스크롤 위치를 맨 끝으로 해라!
+			// 마지막 위젯을 뷰에 표시
+			ScrollBox_ChatBox->ScrollWidgetIntoView(newChat, true, EDescendantScrollDestination::BottomOrRight);
+
+			// 추가로 ScrollToEnd도 실행
 			ScrollBox_ChatBox->ScrollToEnd();
 		}, 0.1f, false);
 	}
-	
+
 	UWidgetBlueprintLibrary::SetFocusToGameViewport();
 	PC->SetInputMode(FInputModeGameOnly());
+	PC->SetShowMouseCursor(false);
+
+	// 채팅창을 완전히 보이게 하고 5초 후 페이드아웃 타이머 시작
+	TargetOpacity = 1.0f;
+	CurrentOpacity = 1.0f;
+	SetRenderOpacity(1.0f);
+	bIsFading = false;
+	
+	StartFadeOutTimer();
 }
 
 void UChatWidget::FocusInput()
 {
-	ChatInputBox->FocusInput();
+	ChatInputBox->SetInputFocus(true);
+
+	// 입력 포커스를 얻을 때 완전히 보이게 하고 타이머 중단
+	TargetOpacity = 1.0f;
+	CurrentOpacity = 1.0f;
+	SetRenderOpacity(1.0f);
+	bIsFading = false;
+
+	// 타이머 중단
+	if (GetWorld() && GetWorld()->GetTimerManager().IsTimerActive(FadeOutTimerHandle))
+	{
+		GetWorld()->GetTimerManager().ClearTimer(FadeOutTimerHandle);
+	}
+}
+
+void UChatWidget::OnInputFocusChanged(bool bHasFocus)
+{
+	if (bHasFocus)
+	{
+		// 포커스를 얻으면 완전히 보이게 하고 타이머 중단
+		TargetOpacity = 1.0f;
+		CurrentOpacity = 1.0f;
+		SetRenderOpacity(1.0f);
+		bIsFading = false;
+
+		if (GetWorld() && GetWorld()->GetTimerManager().IsTimerActive(FadeOutTimerHandle))
+		{
+			GetWorld()->GetTimerManager().ClearTimer(FadeOutTimerHandle);
+		}
+	}
+	else
+	{
+		// 포커스를 잃으면 5초 후 페이드아웃 시작
+		StartFadeOutTimer();
+	}
+}
+
+void UChatWidget::StartFadeOutTimer()
+{
+	if (!GetWorld())
+		return;
+
+	// 기존 타이머가 있으면 취소
+	if (GetWorld()->GetTimerManager().IsTimerActive(FadeOutTimerHandle))
+	{
+		GetWorld()->GetTimerManager().ClearTimer(FadeOutTimerHandle);
+	}
+
+	// 5초 후 페이드아웃 시작
+	GetWorld()->GetTimerManager().SetTimer(FadeOutTimerHandle, this, &UChatWidget::OnFadeOutTimerComplete, AutoHideDelay, false);
+}
+
+void UChatWidget::OnFadeOutTimerComplete()
+{
+	// 입력창에 포커스가 있으면 페이드아웃하지 않음
+	if (ChatInputBox && ChatInputBox->HasKeyboardFocus())
+		return;
+
+	// 페이드아웃 시작
+	TargetOpacity = 0.2f; // 완전히 투명하게 하지 않고 약간 보이게
+	bIsFading = true;
 }
 
 UChatBoxWidget* UChatWidget::CreateChatBox(bool bIsSender)

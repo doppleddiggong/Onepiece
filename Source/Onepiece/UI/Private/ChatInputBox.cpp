@@ -4,27 +4,60 @@
 #include "ChatInputBox.h"
 
 #include "APlayerControl.h"
+#include "ChatWidget.h"
 #include "GameLogging.h"
 #include "Components/Button.h"
 #include "Components/MultiLineEditableTextBox.h"
+#include "Framework/Application/SlateApplication.h"
 #include "Onepiece/Onepiece.h"
 
 void UChatInputBox::NativeOnInitialized()
 {
 	Super::NativeOnInitialized();
-	
+
 	Button_Send->OnClicked.AddDynamic(this, &UChatInputBox::HandleSendClicked);
 }
 
-void UChatInputBox::NativeOnFocusLost(const FFocusEvent& InFocusEvent)
+void UChatInputBox::NativeTick(const FGeometry& MyGeometry, float InDeltaTime)
 {
-	Super::NativeOnFocusLost(InFocusEvent);
-	
-	if (APlayerControl* PC = Cast<APlayerControl>(GetOwningPlayer()))
+	Super::NativeTick(MyGeometry, InDeltaTime);
+
+	// 현재 포커스 상태 확인
+	bool bIsFocused = MultiLineEditableTextBox_Input && MultiLineEditableTextBox_Input->HasKeyboardFocus();
+
+	// 포커스 상태 변화 감지
+	if (bWasFocused != bIsFocused)
 	{
-		FInputModeGameOnly inputMode;
-		PC->SetInputMode(inputMode);
+		PRINTLOG(TEXT("[ChatInputBox] Focus changed: %d -> %d"), bWasFocused, bIsFocused);
+
+		// 포커스를 잃었을 때만 처리 (화면 클릭 등)
+		if (bWasFocused && !bIsFocused)
+		{
+			PRINTLOG(TEXT("[ChatInputBox] Focus lost - switching to GameOnly mode"));
+
+			// GameOnly 모드로 전환
+			if (APlayerControl* PC = Cast<APlayerControl>(GetOwningPlayer()))
+			{
+				FInputModeGameOnly InputMode;
+				PC->SetInputMode(InputMode);
+				PC->SetShowMouseCursor(false);
+				FSlateApplication::Get().SetAllUserFocusToGameViewport();
+			}
+
+			// ChatWidget에 포커스 해제 알림
+			if (OwningChatWidget)
+			{
+				PRINTLOG(TEXT("[ChatInputBox] Notifying ChatWidget of focus loss"));
+				OwningChatWidget->OnInputFocusChanged(false);
+			}
+			else
+			{
+				PRINTLOG(TEXT("[ChatInputBox] ERROR: OwningChatWidget is null!"));
+			}
+		}
 	}
+
+	bWasFocused = bIsFocused;
 }
 
 FReply UChatInputBox::NativeOnPreviewKeyDown(const FGeometry& InGeometry, const FKeyEvent& InKeyEvent)
@@ -35,7 +68,14 @@ FReply UChatInputBox::NativeOnPreviewKeyDown(const FGeometry& InGeometry, const 
 		HandleSendClicked();
 		return FReply::Handled();
 	}
-	
+
+	// ESC 키로 포커스 해제
+	if (InKeyEvent.GetKey() == EKeys::Escape)
+	{
+		SetInputFocus(false);
+		return FReply::Handled();
+	}
+
 	return Super::NativeOnPreviewKeyDown(InGeometry, InKeyEvent);
 }
 
@@ -49,9 +89,51 @@ FText UChatInputBox::FlushMessage()
 	return message;
 }
 
-void UChatInputBox::FocusInput()
+void UChatInputBox::SetInputFocus(bool bFocus)
 {
-	MultiLineEditableTextBox_Input->SetKeyboardFocus();
+	if ( bFocus )
+	{
+		// 먼저 포커스 설정
+		MultiLineEditableTextBox_Input->SetKeyboardFocus();
+
+		// UI 입력 모드로 전환
+		if (APlayerControl* PC = Cast<APlayerControl>(GetOwningPlayer()))
+		{
+			FInputModeUIOnly InputMode;
+			InputMode.SetWidgetToFocus(MultiLineEditableTextBox_Input->TakeWidget());
+			PC->SetInputMode(InputMode);
+			PC->SetShowMouseCursor(true);
+		}
+
+		// ChatWidget에 포커스 획득 알림
+		if (OwningChatWidget)
+		{
+			OwningChatWidget->OnInputFocusChanged(true);
+		}
+
+		bWasFocused = true;
+	}
+	else
+	{
+		// GameOnly 모드로 전환 및 포커스 해제
+		if (APlayerControl* PC = Cast<APlayerControl>(GetOwningPlayer()))
+		{
+			FInputModeGameOnly InputMode;
+			PC->SetInputMode(InputMode);
+			PC->SetShowMouseCursor(false);
+
+			// 뷰포트로 포커스 이동 (자동으로 입력창 포커스 해제됨)
+			FSlateApplication::Get().SetAllUserFocusToGameViewport();
+		}
+
+		// ChatWidget에 포커스 해제 알림
+		if (OwningChatWidget)
+		{
+			OwningChatWidget->OnInputFocusChanged(false);
+		}
+
+		bWasFocused = false;
+	}
 }
 
 bool UChatInputBox::IsAIAsk(const FString& InMessage, FString& OutQuestion) const
@@ -76,7 +158,11 @@ void UChatInputBox::HandleSendClicked()
 	// 텍스트가 비어있지 않다면 처리
 	FText Message = FlushMessage();
 	if (Message.IsEmpty())
+	{
+		// 빈 메시지면 포커스만 해제
+		SetInputFocus(false);
 		return;
+	}
 
 	auto* PC = Cast<APlayerControl>(GetWorld()->GetFirstPlayerController());
 	if (!PC)
@@ -100,4 +186,13 @@ void UChatInputBox::HandleSendClicked()
 		// 2. 일반 채팅 메시지 전송
 		PC->ServerRPC_SendChat(Message);
 	}
+
+	// 메시지 전송 후 포커스 해제 및 게임 모드로 복원
+	SetInputFocus(false);
+
+}
+
+bool UChatInputBox::HasKeyboardFocus()
+{
+	return MultiLineEditableTextBox_Input && MultiLineEditableTextBox_Input->HasKeyboardFocus();
 }

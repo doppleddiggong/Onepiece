@@ -235,9 +235,17 @@ void ALuggageHolder::Multicast_ShowResultPopup_Implementation(int32 CorrectAnswe
 void ALuggageHolder::Multicast_ShowWrongPopup_Implementation(const FString& LuggageColor, const FString& LuggagePattern)
 {
 	// 모든 클라이언트(호스트 포함)에서 오답 메시지 표시
-	FString Message = FString::Printf(TEXT("Wrong Answer\nThis is not the correct Answer.\n\nColor: %s\nPattern: %s"),
-		*LuggageColor, *LuggagePattern);
+	FString StyledMessage = FString::Printf(
+			TEXT("WRONG ANSWER\n")
+			TEXT("------------------\n")
+			TEXT("The selected item does not match.\n")
+			TEXT("Color  : %s\n")
+			TEXT("Pattern: %s\n")
+			TEXT("------------------\n")
+			TEXT("Please try another luggage."),
+			*LuggageColor, *LuggagePattern
+			);
 
 	if (auto DM = UBroadcastManager::Get(this))
-		DM->SendTutorMessage(FText::FromString(Message));
+		DM->SendTutorMessage(FText::FromString(StyledMessage));
 }

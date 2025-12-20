@@ -17,11 +17,13 @@ class ONEPIECE_API UChatWidget : public UUserWidget
 public:
 	UChatWidget(const FObjectInitializer& ObjectInitializer);
 	virtual void NativeConstruct() override;
-	
+	virtual void NativeTick(const FGeometry& MyGeometry, float InDeltaTime) override;
+
 	UFUNCTION()
 	void SendMessage(FResponseUserMe sendUser, FText inMessage, int32 PlayerIndex);
-	
+
 	void FocusInput();
+	void OnInputFocusChanged(bool bHasFocus);
 	
 protected:
 	UPROPERTY(meta=(BindWidget))
@@ -48,4 +50,20 @@ protected:
 	
 private:
 	class UChatBoxWidget* CreateChatBox(bool bIsSender);
+	void StartFadeOutTimer();
+	void OnFadeOutTimerComplete();
+
+	// 페이드 아웃 타이머
+	FTimerHandle FadeOutTimerHandle;
+
+	// 페이드 상태
+	bool bIsFading = false;
+	float CurrentOpacity = 1.0f;
+	float TargetOpacity = 1.0f;
+
+	// 페이드 속도 (초당 변화량)
+	float FadeSpeed = 2.0f;
+
+	// 자동 숨김 대기 시간
+	float AutoHideDelay = 5.0f;
 };

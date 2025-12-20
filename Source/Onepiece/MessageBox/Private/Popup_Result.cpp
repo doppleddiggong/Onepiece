@@ -229,7 +229,7 @@ void UPopup_Result::InitListenResult(const FResponseListenResult& ResponseData)
 
 		FResultStatData TimeResultData;
 		TimeResultData.WidgetType = EResultItemWidgetType::Symbol;
-		TimeResultData.ColorType = EColorStyleType::Blue;
+		TimeResultData.ColorType = EColorStyleType::Gray;
 		TimeResultData.TitleText = FText::FromString(TEXT("TIME"));
 		TimeResultData.SymbolTextureType = EResourceTextureType::Time;
 		TimeResultData.SymbolValue = FString::Printf(TEXT("%02d:%02d"), Minutes, Seconds);
@@ -238,21 +238,21 @@ void UPopup_Result::InitListenResult(const FResponseListenResult& ResponseData)
 
 	FResultStatData GradeResultData;
 	GradeResultData.WidgetType = EResultItemWidgetType::Grade;
-	GradeResultData.ColorType = EColorStyleType::Green;
+	GradeResultData.ColorType = EColorStyleType::Gray;
 	GradeResultData.TitleText = FText::FromString(TEXT("GRADE"));
 	GradeResultData.GradeTextureType = ULingoGameHelper::ConvertGradeString(ResponseData.grade);
 	Result_Grade->InitData(GradeResultData);
 
 	FResultStatData TopRateResultData;
 	TopRateResultData.WidgetType = EResultItemWidgetType::Rate;
-	TopRateResultData.ColorType = EColorStyleType::Red;
+	TopRateResultData.ColorType = EColorStyleType::Gray;
 	TopRateResultData.TitleText = FText::FromString(TEXT("TOP"));
 	TopRateResultData.RatePercent = ResponseData.top_percent;
 	Result_TopRate->InitData(TopRateResultData);
 		
 	FResultStatData AverageScoreResultData;
 	AverageScoreResultData.WidgetType = EResultItemWidgetType::Symbol;
-	AverageScoreResultData.ColorType = EColorStyleType::Purple;
+	AverageScoreResultData.ColorType = EColorStyleType::Gray;
 	AverageScoreResultData.TitleText = FText::FromString(TEXT("SCORE"));
 	AverageScoreResultData.SymbolTextureType = EResourceTextureType::Score;
 	AverageScoreResultData.SymbolValue = FString::Printf(TEXT("%d"), static_cast<int>(ResponseData.average_score));
