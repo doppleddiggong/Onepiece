@@ -352,12 +352,20 @@ $(document).ready(function(){initNavTree('ALuggageHolder_8cpp_source.html',''); 
 <div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span><span class="keywordtype">void</span> ALuggageHolder::Multicast_ShowWrongPopup_Implementation(<span class="keyword">const</span> FString&amp; LuggageColor, <span class="keyword">const</span> FString&amp; LuggagePattern)</div>
 <div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>{</div>
 <div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>    <span class="comment">// 모든 클라이언트(호스트 포함)에서 오답 메시지 표시</span></div>
-<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>    FString Message = FString::Printf(TEXT(<span class="stringliteral">&quot;Wrong Answer\nThis is not the correct Answer.\n\nColor: %s\nPattern: %s&quot;</span>),</div>
-<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>        *LuggageColor, *LuggagePattern);</div>
-<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span> </div>
-<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> DM = UBroadcastManager::Get(<span class="keyword">this</span>))</div>
-<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>        DM-&gt;SendTutorMessage(FText::FromString(Message));</div>
-<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>}</div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>    FString StyledMessage = FString::Printf(</div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>            TEXT(<span class="stringliteral">&quot;WRONG ANSWER\n&quot;</span>)</div>
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>            TEXT(<span class="stringliteral">&quot;------------------\n&quot;</span>)</div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>            TEXT(<span class="stringliteral">&quot;The selected item does not match.\n&quot;</span>)</div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>            TEXT(<span class="stringliteral">&quot;Color  : %s\n&quot;</span>)</div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>            TEXT(<span class="stringliteral">&quot;Pattern: %s\n&quot;</span>)</div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>            TEXT(<span class="stringliteral">&quot;------------------\n&quot;</span>)</div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>            TEXT(<span class="stringliteral">&quot;Please try another luggage.&quot;</span>),</div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>            *LuggageColor, *LuggagePattern</div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>            );</div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span> </div>
+<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> DM = UBroadcastManager::Get(<span class="keyword">this</span>))</div>
+<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>        DM-&gt;SendTutorMessage(FText::FromString(StyledMessage));</div>
+<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>}</div>
 <div class="ttc" id="aALingoGameState_8h_html"><div class="ttname"><a href="ALingoGameState_8h.html">ALingoGameState.h</a></div></div>
 <div class="ttc" id="aALingoGameState_8h_html_a1a866ca8104ebd47ce462347a6125921a7a1a5f3e79fdc91edf2f5ead9d66abb4"><div class="ttname"><a href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a7a1a5f3e79fdc91edf2f5ead9d66abb4">EQuestType::Read</a></div><div class="ttdeci">@ Read</div></div>
 <div class="ttc" id="aALuggageHolder_8h_html"><div class="ttname"><a href="ALuggageHolder_8h.html">ALuggageHolder.h</a></div></div>
@@ -402,7 +410,7 @@ $(document).ready(function(){initNavTree('ALuggageHolder_8cpp_source.html',''); 
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_2268d321c547a1269f0f0801cfba1f77.html">Prop</a></li><li class="navelem"><a class="el" href="dir_1d7bfdd86517d83f393675eb912eaf09.html">Private</a></li><li class="navelem"><a class="el" href="ALuggageHolder_8cpp.html">ALuggageHolder.cpp</a></li>
-    <li class="footer">생성시간 : 토 12월 20 2025 11:59:11, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 토 12월 20 2025 12:17:15, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>
