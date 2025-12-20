@@ -3,6 +3,7 @@ var classAPlayerControl =
     [ "APlayerControl", "classAPlayerControl.html#ad52af79fddcd1253723313ab75eec84c", null ],
     [ "BeginPlay", "classAPlayerControl.html#a4cf368d1cfadfd50d83c8af1b10cc623", null ],
     [ "Client_EndSpeakQuest", "classAPlayerControl.html#a8896d6eb0704bd0d031b76df7c314737", null ],
+    [ "Client_InteractKiosk", "classAPlayerControl.html#af5d4d695ae6e7e6f4ff4f06fca53a99f", null ],
     [ "Client_RequestSpeakScenario", "classAPlayerControl.html#aa3559ccdd030dc1db9eeab36d5f18663", null ],
     [ "Client_ToastMessage", "classAPlayerControl.html#a50f77b6862b6575c355a439c33868248", null ],
     [ "Client_UpdateSpeakQuest", "classAPlayerControl.html#a929e3d96c907329ff90ae7bb0bc56ec8", null ],

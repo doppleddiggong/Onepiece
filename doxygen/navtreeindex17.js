@@ -1,5 +1,7 @@
 var NAVTREEINDEX17 =
 {
+"structFResponseWriteScores.html#a60488b2faa976ac69c24053fb33fdb9a":[2,0,110,1],
+"structFResponseWriteScores.html#a7f558d57dbda95d02b417537e85ff6a5":[2,0,110,0],
 "structFResponseWriteSubmit.html":[2,0,111],
 "structFResponseWriteSubmit.html#a2a464e0f68f0f5825d964da99d53d16b":[2,0,111,2],
 "structFResponseWriteSubmit.html#a357f0c08ed9288b12f4aba842d957d0a":[2,0,111,0],
