@@ -31,7 +31,7 @@ var searchData=
   ['delay_28',['Delay',['../classUDelayTaskManager.html#af60e83e9adeabf8b9b309c40da8a60be',1,'UDelayTaskManager']]],
   ['delaycallback_29',['DelayCallBack',['../classUDelayTaskManager.html#acfa854974c5945327224f2f77287abf2',1,'UDelayTaskManager']]],
   ['delaytimerhandle_30',['DelayTimerHandle',['../classADropper.html#ac72f7e826877b273487c4c04778b88bb',1,'ADropper']]],
-  ['desc_31',['desc',['../structFListenScoreDetail.html#a01335623e555898397a9110a4979ba34',1,'FListenScoreDetail::desc'],['../structFResponseWriteScores.html#a7f558d57dbda95d02b417537e85ff6a5',1,'FResponseWriteScores::desc'],['../structFReadScoreDetail.html#a3ec52dc383db5a2c648b890d78093b00',1,'FReadScoreDetail::desc'],['../structFSpeakScoreDetail.html#aeee86eb73e0f3c4dd58585f9c7c4bf21',1,'FSpeakScoreDetail::desc'],['../structFColorData.html#a737d45b830f9ada3aa7ccd44c32babb1',1,'FColorData::Desc']]],
+  ['desc_31',['desc',['../structFReadScoreDetail.html#a3ec52dc383db5a2c648b890d78093b00',1,'FReadScoreDetail::desc'],['../structFColorData.html#a737d45b830f9ada3aa7ccd44c32babb1',1,'FColorData::Desc'],['../structFResponseWriteScores.html#a7f558d57dbda95d02b417537e85ff6a5',1,'FResponseWriteScores::desc'],['../structFListenScoreDetail.html#a01335623e555898397a9110a4979ba34',1,'FListenScoreDetail::desc'],['../structFSpeakScoreDetail.html#aeee86eb73e0f3c4dd58585f9c7c4bf21',1,'FSpeakScoreDetail::desc']]],
   ['destroytrigger_2ecpp_32',['DestroyTrigger.cpp',['../DestroyTrigger_8cpp.html',1,'']]],
   ['destroytrigger_2eh_33',['DestroyTrigger.h',['../DestroyTrigger_8h.html',1,'']]],
   ['detectedplayer_34',['DetectedPlayer',['../classANPCExaminer.html#afd4e507514297633cb789783c6139194',1,'ANPCExaminer']]],

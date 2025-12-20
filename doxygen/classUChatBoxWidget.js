@@ -1,8 +1,8 @@
 var classUChatBoxWidget =
 [
     [ "SetChatBubbleColor", "classUChatBoxWidget.html#ae650adff1667df726cd9d7b6e41551f8", null ],
-    [ "SetMessage", "classUChatBoxWidget.html#adea6d78e09b5c213375591003aa0525e", null ],
-    [ "SetPlayerName", "classUChatBoxWidget.html#aaa41e3bbbbf1ad7d2c461144f5ecdef4", null ],
+    [ "SetMessage", "classUChatBoxWidget.html#a8537181d383fe8e1497e37d137c736b8", null ],
+    [ "SetPlayerName", "classUChatBoxWidget.html#ab58717bbfc345935c86ebbea99787c16", null ],
     [ "SetPlayerProfile", "classUChatBoxWidget.html#abb868e54756a4e7a549145eab6a0c93b", null ],
     [ "Border_ChatBubble", "classUChatBoxWidget.html#a184c98674d6401269d2aa4ea309da17d", null ],
     [ "Border_ProfileBG", "classUChatBoxWidget.html#a24d09df17452fc1e5d863d8830ba515e", null ],

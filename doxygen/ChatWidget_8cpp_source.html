@@ -119,108 +119,231 @@ $(document).ready(function(){initNavTree('ChatWidget_8cpp_source.html',''); init
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;<a class="code" href="ChatInputBox_8h.html">ChatInputBox.h</a>&quot;</span></div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;<a class="code" href="GameLogging_8h.html">GameLogging.h</a>&quot;</span></div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;Blueprint/WidgetBlueprintLibrary.h&quot;</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;Components/ScrollBox.h&quot;</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;Components/ScrollBoxSlot.h&quot;</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;Components/VerticalBox.h&quot;</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &quot;GameFramework/GameStateBase.h&quot;</span></div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
-<div class="foldopen" id="foldopen00016" data-start="{" data-end="}">
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="classUChatWidget.html#aa8ba630f820e5883a0c3bdc26f5ff60e">   16</a></span><a class="code hl_function" href="classUChatWidget.html#aa8ba630f820e5883a0c3bdc26f5ff60e">UChatWidget::UChatWidget</a>(<span class="keyword">const</span> FObjectInitializer&amp; ObjectInitializer) : Super(ObjectInitializer)</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>{</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    ConstructorHelpers::FClassFinder&lt;UChatBoxWidget&gt; LeftChatBoxWidgetClassRef(TEXT(<span class="stringliteral">&quot;/Game/CustomContents/UI/Widgets/Chat/WBP_LeftChatMessage.WBP_LeftChatMessage_C&quot;</span>));</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <span class="keywordflow">if</span> (LeftChatBoxWidgetClassRef.Succeeded())</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    {</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>        <a class="code hl_variable" href="classUChatWidget.html#a6a8e74a1f549930300976a8329407931">LeftChatBoxWidgetClass</a> = LeftChatBoxWidgetClassRef.Class;</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    }</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    ConstructorHelpers::FClassFinder&lt;UChatBoxWidget&gt; RightChatBoxWidgetClassRef(TEXT(<span class="stringliteral">&quot;/Game/CustomContents/UI/Widgets/Chat/WBP_RightChatMessage.WBP_RightChatMessage_C&quot;</span>));</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="keywordflow">if</span> (RightChatBoxWidgetClassRef.Succeeded())</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    {</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        <a class="code hl_variable" href="classUChatWidget.html#a334724c95349f04ae05ace13861c50cc">RightChatBoxWidgetClass</a> = RightChatBoxWidgetClassRef.Class;</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    }</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>}</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;Components/MultiLineEditableTextBox.h&quot;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;Components/ScrollBox.h&quot;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;Components/ScrollBoxSlot.h&quot;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &quot;Components/VerticalBox.h&quot;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &quot;GameFramework/GameStateBase.h&quot;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
+<div class="foldopen" id="foldopen00017" data-start="{" data-end="}">
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="classUChatWidget.html#aa8ba630f820e5883a0c3bdc26f5ff60e">   17</a></span><a class="code hl_function" href="classUChatWidget.html#aa8ba630f820e5883a0c3bdc26f5ff60e">UChatWidget::UChatWidget</a>(<span class="keyword">const</span> FObjectInitializer&amp; ObjectInitializer) : Super(ObjectInitializer)</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>{</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    ConstructorHelpers::FClassFinder&lt;UChatBoxWidget&gt; LeftChatBoxWidgetClassRef(TEXT(<span class="stringliteral">&quot;/Game/CustomContents/UI/Widgets/Chat/WBP_LeftChatMessage.WBP_LeftChatMessage_C&quot;</span>));</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <span class="keywordflow">if</span> (LeftChatBoxWidgetClassRef.Succeeded())</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    {</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        <a class="code hl_variable" href="classUChatWidget.html#a6a8e74a1f549930300976a8329407931">LeftChatBoxWidgetClass</a> = LeftChatBoxWidgetClassRef.Class;</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    }</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    ConstructorHelpers::FClassFinder&lt;UChatBoxWidget&gt; RightChatBoxWidgetClassRef(TEXT(<span class="stringliteral">&quot;/Game/CustomContents/UI/Widgets/Chat/WBP_RightChatMessage.WBP_RightChatMessage_C&quot;</span>));</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="keywordflow">if</span> (RightChatBoxWidgetClassRef.Succeeded())</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    {</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        <a class="code hl_variable" href="classUChatWidget.html#a334724c95349f04ae05ace13861c50cc">RightChatBoxWidgetClass</a> = RightChatBoxWidgetClassRef.Class;</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    }</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>}</div>
 </div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
-<div class="foldopen" id="foldopen00030" data-start="{" data-end="}">
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="classUChatWidget.html#a27bcb7fa36f2a39dcb83810967f99ee7">   30</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUChatWidget.html#a27bcb7fa36f2a39dcb83810967f99ee7">UChatWidget::NativeConstruct</a>()</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>{</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    Super::NativeConstruct();</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    SetIsFocusable(<span class="keyword">true</span>);</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>}</div>
-</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="foldopen" id="foldopen00031" data-start="{" data-end="}">
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="classUChatWidget.html#a27bcb7fa36f2a39dcb83810967f99ee7">   31</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUChatWidget.html#a27bcb7fa36f2a39dcb83810967f99ee7">UChatWidget::NativeConstruct</a>()</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>{</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    Super::NativeConstruct();</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    SetIsFocusable(<span class="keyword">true</span>);</div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
-<div class="foldopen" id="foldopen00037" data-start="{" data-end="}">
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="classUChatWidget.html#a07a5f7cc8d4c4a588878c09be10d4923">   37</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUChatWidget.html#a07a5f7cc8d4c4a588878c09be10d4923">UChatWidget::SendMessage</a>(<a class="code hl_struct" href="structFResponseUserMe.html">FResponseUserMe</a> sendUser, FText inMessage, int32 PlayerIndex)</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>{</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="keyword">auto</span>* PC = Cast&lt;APlayerControl&gt;(GetWorld()-&gt;GetFirstPlayerController&lt;APlayerController&gt;());</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="keywordflow">if</span> (!PC)</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    {</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;Cannot get playercontroller&quot;</span>));</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    }</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="comment">// 메시지 받은 플레이어 정보 가져오기</span></div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <a class="code hl_struct" href="structFResponseUserMe.html">FResponseUserMe</a> info = PC-&gt;GetUserInfo();</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keywordtype">bool</span> bIsSender = (info.<a class="code hl_variable" href="structFResponseUserMe.html#a4481df4d35a0fd13d5c0989e3404c8a4">id</a> == sendUser.<a class="code hl_variable" href="structFResponseUserMe.html#a4481df4d35a0fd13d5c0989e3404c8a4">id</a>);</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="comment">// 초기 상태는 페이드아웃 (약간 투명하게)</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    SetRenderOpacity(0.2f);</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <a class="code hl_variable" href="classUChatWidget.html#abacc0e23730e2af7425bf13388e93f58">CurrentOpacity</a> = 0.2f;</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <a class="code hl_variable" href="classUChatWidget.html#ac817886bd8ed66eec60a4e4a33ac02c5">TargetOpacity</a> = 0.2f;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="comment">// ChatInputBox에 자신을 설정</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUChatWidget.html#a4604508b0b8c80fd6320bc73b4d797aa">ChatInputBox</a>)</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    {</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        <a class="code hl_variable" href="classUChatWidget.html#a4604508b0b8c80fd6320bc73b4d797aa">ChatInputBox</a>-&gt;SetOwningChatWidget(<span class="keyword">this</span>);</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    }</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>}</div>
+</div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="comment">// ChatBox 생성</span></div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <a class="code hl_class" href="classUChatBoxWidget.html">UChatBoxWidget</a>* newChat = <a class="code hl_function" href="classUChatWidget.html#aba3f013c0c2bb7310af7587c2c3411b4">CreateChatBox</a>(bIsSender);</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    newChat-&gt;<a class="code hl_function" href="classUChatBoxWidget.html#adea6d78e09b5c213375591003aa0525e">SetMessage</a>(inMessage);</div>
+<div class="foldopen" id="foldopen00049" data-start="{" data-end="}">
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="classUChatWidget.html#a8187c074a7b762ee7522f2e86701465b">   49</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUChatWidget.html#a8187c074a7b762ee7522f2e86701465b">UChatWidget::NativeTick</a>(<span class="keyword">const</span> FGeometry&amp; MyGeometry, <span class="keywordtype">float</span> InDeltaTime)</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>{</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    Super::NativeTick(MyGeometry, InDeltaTime);</div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    newChat-&gt;<a class="code hl_function" href="classUChatBoxWidget.html#abb868e54756a4e7a549145eab6a0c93b">SetPlayerProfile</a>(</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        sendUser.<a class="code hl_function" href="structFResponseUserMe.html#a75e93c1e9c6e7cf876b679a7e57f1fb4">GetChatProfileBg</a>(PlayerIndex),</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        sendUser.<a class="code hl_function" href="structFResponseUserMe.html#a94e7821cccd42414176bc20e1b7be4d2">GetChatProfileTextureType</a>(PlayerIndex));</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    newChat-&gt;<a class="code hl_function" href="classUChatBoxWidget.html#aaa41e3bbbbf1ad7d2c461144f5ecdef4">SetPlayerName</a>(FText::FromString(sendUser.<a class="code hl_variable" href="structFResponseUserMe.html#ae5540a9cbe35f9d9fd23045f17bb68e8">username</a>));</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    newChat-&gt;<a class="code hl_function" href="classUChatBoxWidget.html#adea6d78e09b5c213375591003aa0525e">SetMessage</a>(inMessage);</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    newChat-&gt;<a class="code hl_function" href="classUChatBoxWidget.html#ae650adff1667df726cd9d7b6e41551f8">SetChatBubbleColor</a>(bIsSender);</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    </div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    </div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="comment">// 현재 스크롤 값 &amp; 마지막 스크롤 값</span></div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <span class="keywordtype">float</span> scrollOffset = <a class="code hl_variable" href="classUChatWidget.html#ac728c3ed29723e99b7f00c4951077141">ScrollBox_ChatBox</a>-&gt;GetScrollOffset();</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    <span class="keywordtype">float</span> scrollOffsetOfEnd = <a class="code hl_variable" href="classUChatWidget.html#ac728c3ed29723e99b7f00c4951077141">ScrollBox_ChatBox</a>-&gt;GetScrollOffsetOfEnd();</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;before scrollend - ScrollOffset: %f, ScrollOffsetOfEnd: %f&quot;</span>), scrollOffset, scrollOffsetOfEnd);</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    </div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <a class="code hl_variable" href="classUChatWidget.html#ac728c3ed29723e99b7f00c4951077141">ScrollBox_ChatBox</a>-&gt;SetScrollOffset(scrollOffsetOfEnd);</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    </div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <span class="comment">// ChatBox에 추가 &amp; 정렬</span></div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <a class="code hl_variable" href="classUChatWidget.html#acf814cb1fb3dcc8be745319cff4fb030">VerticalBox_Content</a>-&gt;AddChild(newChat); </div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    UScrollBoxSlot* parentSlot = Cast&lt;UScrollBoxSlot&gt;(newChat-&gt;Slot);</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    <span class="keywordflow">if</span> (parentSlot)</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    {</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        parentSlot-&gt;SetHorizontalAlignment((bIsSender ? HAlign_Left : HAlign_Right));</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    }</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    </div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    <span class="comment">// 메시지 받은 자가 Sender일 때 or 스크롤이 맨 마지막일 때</span></div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    <span class="keywordflow">if</span> (bIsSender || scrollOffset == scrollOffsetOfEnd)</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    {       </div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        FTimerHandle handle;</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        GetWorld()-&gt;GetTimerManager().SetTimer(handle, [<span class="keyword">this</span>]()</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        {</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>            <span class="comment">// 스크롤 위치를 맨 끝으로 해라!</span></div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>            <a class="code hl_variable" href="classUChatWidget.html#ac728c3ed29723e99b7f00c4951077141">ScrollBox_ChatBox</a>-&gt;ScrollToEnd();</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        }, 0.1f, <span class="keyword">false</span>);</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    }</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    </div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    UWidgetBlueprintLibrary::SetFocusToGameViewport();</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    PC-&gt;SetInputMode(FInputModeGameOnly());</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>}</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="comment">// 페이드 처리</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUChatWidget.html#ad5394003bb57334d668ee5a6780cd3ed">bIsFading</a> &amp;&amp; <a class="code hl_variable" href="classUChatWidget.html#abacc0e23730e2af7425bf13388e93f58">CurrentOpacity</a> != <a class="code hl_variable" href="classUChatWidget.html#ac817886bd8ed66eec60a4e4a33ac02c5">TargetOpacity</a>)</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    {</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        <span class="comment">// 부드럽게 Opacity 변경</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        <span class="keywordtype">float</span> Delta = <a class="code hl_variable" href="classUChatWidget.html#aa210d801c1e7ed40492eae3755528009">FadeSpeed</a> * InDeltaTime;</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUChatWidget.html#abacc0e23730e2af7425bf13388e93f58">CurrentOpacity</a> &gt; <a class="code hl_variable" href="classUChatWidget.html#ac817886bd8ed66eec60a4e4a33ac02c5">TargetOpacity</a>)</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        {</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>            <a class="code hl_variable" href="classUChatWidget.html#abacc0e23730e2af7425bf13388e93f58">CurrentOpacity</a> = FMath::Max(<a class="code hl_variable" href="classUChatWidget.html#abacc0e23730e2af7425bf13388e93f58">CurrentOpacity</a> - Delta, <a class="code hl_variable" href="classUChatWidget.html#ac817886bd8ed66eec60a4e4a33ac02c5">TargetOpacity</a>);</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        }</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        {</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>            <a class="code hl_variable" href="classUChatWidget.html#abacc0e23730e2af7425bf13388e93f58">CurrentOpacity</a> = FMath::Min(<a class="code hl_variable" href="classUChatWidget.html#abacc0e23730e2af7425bf13388e93f58">CurrentOpacity</a> + Delta, <a class="code hl_variable" href="classUChatWidget.html#ac817886bd8ed66eec60a4e4a33ac02c5">TargetOpacity</a>);</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        }</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        SetRenderOpacity(<a class="code hl_variable" href="classUChatWidget.html#abacc0e23730e2af7425bf13388e93f58">CurrentOpacity</a>);</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        <span class="comment">// 목표 도달 시 페이드 종료</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        <span class="keywordflow">if</span> (FMath::IsNearlyEqual(<a class="code hl_variable" href="classUChatWidget.html#abacc0e23730e2af7425bf13388e93f58">CurrentOpacity</a>, <a class="code hl_variable" href="classUChatWidget.html#ac817886bd8ed66eec60a4e4a33ac02c5">TargetOpacity</a>, 0.01f))</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        {</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>            <a class="code hl_variable" href="classUChatWidget.html#ad5394003bb57334d668ee5a6780cd3ed">bIsFading</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        }</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    }</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>}</div>
 </div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
+<div class="foldopen" id="foldopen00077" data-start="{" data-end="}">
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno"><a class="line" href="classUChatWidget.html#a07a5f7cc8d4c4a588878c09be10d4923">   77</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUChatWidget.html#a07a5f7cc8d4c4a588878c09be10d4923">UChatWidget::SendMessage</a>(<a class="code hl_struct" href="structFResponseUserMe.html">FResponseUserMe</a> sendUser, FText inMessage, int32 PlayerIndex)</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>{</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    <span class="keyword">auto</span>* PC = Cast&lt;APlayerControl&gt;(GetWorld()-&gt;GetFirstPlayerController&lt;APlayerController&gt;());</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    <span class="keywordflow">if</span> (!PC)</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    {</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;Cannot get playercontroller&quot;</span>));</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    }</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    <span class="comment">// 메시지 받은 플레이어 정보 가져오기</span></div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    <a class="code hl_struct" href="structFResponseUserMe.html">FResponseUserMe</a> info = PC-&gt;GetUserInfo();</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    <span class="keywordtype">bool</span> bIsSender = (info.<a class="code hl_variable" href="structFResponseUserMe.html#a4481df4d35a0fd13d5c0989e3404c8a4">id</a> == sendUser.<a class="code hl_variable" href="structFResponseUserMe.html#a4481df4d35a0fd13d5c0989e3404c8a4">id</a>);</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    <span class="comment">// ChatBox 생성</span></div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    <a class="code hl_class" href="classUChatBoxWidget.html">UChatBoxWidget</a>* newChat = <a class="code hl_function" href="classUChatWidget.html#aba3f013c0c2bb7310af7587c2c3411b4">CreateChatBox</a>(bIsSender);</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    newChat-&gt;<a class="code hl_function" href="classUChatBoxWidget.html#a8537181d383fe8e1497e37d137c736b8">SetMessage</a>(inMessage);</div>
 <div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
-<div class="foldopen" id="foldopen00093" data-start="{" data-end="}">
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno"><a class="line" href="classUChatWidget.html#a6a91842ffdbd014a816856f2c78d0530">   93</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUChatWidget.html#a6a91842ffdbd014a816856f2c78d0530">UChatWidget::FocusInput</a>()</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>{</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    <a class="code hl_variable" href="classUChatWidget.html#a4604508b0b8c80fd6320bc73b4d797aa">ChatInputBox</a>-&gt;FocusInput();</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>}</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    newChat-&gt;<a class="code hl_function" href="classUChatBoxWidget.html#abb868e54756a4e7a549145eab6a0c93b">SetPlayerProfile</a>(</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        sendUser.<a class="code hl_function" href="structFResponseUserMe.html#a75e93c1e9c6e7cf876b679a7e57f1fb4">GetChatProfileBg</a>(PlayerIndex),</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>        sendUser.<a class="code hl_function" href="structFResponseUserMe.html#a94e7821cccd42414176bc20e1b7be4d2">GetChatProfileTextureType</a>(PlayerIndex));</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span> </div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    newChat-&gt;<a class="code hl_function" href="classUChatBoxWidget.html#ab58717bbfc345935c86ebbea99787c16">SetPlayerName</a>(FText::FromString(sendUser.<a class="code hl_variable" href="structFResponseUserMe.html#ae5540a9cbe35f9d9fd23045f17bb68e8">username</a>));</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    newChat-&gt;<a class="code hl_function" href="classUChatBoxWidget.html#a8537181d383fe8e1497e37d137c736b8">SetMessage</a>(inMessage);</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    newChat-&gt;<a class="code hl_function" href="classUChatBoxWidget.html#ae650adff1667df726cd9d7b6e41551f8">SetChatBubbleColor</a>(bIsSender);</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span> </div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    <span class="comment">// ChatBox에 추가 &amp; 정렬</span></div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    <a class="code hl_variable" href="classUChatWidget.html#acf814cb1fb3dcc8be745319cff4fb030">VerticalBox_Content</a>-&gt;AddChild(newChat);</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    UScrollBoxSlot* parentSlot = Cast&lt;UScrollBoxSlot&gt;(newChat-&gt;Slot);</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    <span class="keywordflow">if</span> (parentSlot)</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    {</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>        parentSlot-&gt;SetHorizontalAlignment((bIsSender ? HAlign_Left : HAlign_Right));</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    }</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span> </div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    <span class="comment">// 위젯의 레이아웃을 강제로 갱신하여 정확한 크기 계산</span></div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    newChat-&gt;ForceLayoutPrepass();</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span> </div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    <span class="comment">// 부모 위젯들의 레이아웃을 무효화하여 다음 틱에 재계산</span></div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    <a class="code hl_variable" href="classUChatWidget.html#acf814cb1fb3dcc8be745319cff4fb030">VerticalBox_Content</a>-&gt;InvalidateLayoutAndVolatility();</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>    <a class="code hl_variable" href="classUChatWidget.html#ac728c3ed29723e99b7f00c4951077141">ScrollBox_ChatBox</a>-&gt;InvalidateLayoutAndVolatility();</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span> </div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>    <span class="comment">// 현재 스크롤 값 &amp; 마지막 스크롤 값</span></div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    <span class="keywordtype">float</span> scrollOffset = <a class="code hl_variable" href="classUChatWidget.html#ac728c3ed29723e99b7f00c4951077141">ScrollBox_ChatBox</a>-&gt;GetScrollOffset();</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    <span class="keywordtype">float</span> scrollOffsetOfEnd = <a class="code hl_variable" href="classUChatWidget.html#ac728c3ed29723e99b7f00c4951077141">ScrollBox_ChatBox</a>-&gt;GetScrollOffsetOfEnd();</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    </div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    <span class="keywordflow">if</span> (bIsSender || scrollOffset == scrollOffsetOfEnd)</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>    {</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>        <span class="comment">// 레이아웃 갱신 후 스크롤 (타이머 사용)</span></div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>        FTimerHandle ScrollTimerHandle;</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>        GetWorld()-&gt;GetTimerManager().SetTimer(ScrollTimerHandle, [<span class="keyword">this</span>, newChat]()</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>        {</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>            <span class="comment">// 마지막 위젯을 뷰에 표시</span></div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>            <a class="code hl_variable" href="classUChatWidget.html#ac728c3ed29723e99b7f00c4951077141">ScrollBox_ChatBox</a>-&gt;ScrollWidgetIntoView(newChat, <span class="keyword">true</span>, EDescendantScrollDestination::BottomOrRight);</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span> </div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>            <span class="comment">// 추가로 ScrollToEnd도 실행</span></div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>            <a class="code hl_variable" href="classUChatWidget.html#ac728c3ed29723e99b7f00c4951077141">ScrollBox_ChatBox</a>-&gt;ScrollToEnd();</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>        }, 0.1f, <span class="keyword">false</span>);</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>    }</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span> </div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>    UWidgetBlueprintLibrary::SetFocusToGameViewport();</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>    PC-&gt;SetInputMode(FInputModeGameOnly());</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>    PC-&gt;SetShowMouseCursor(<span class="keyword">false</span>);</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span> </div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>    <span class="comment">// 채팅창을 완전히 보이게 하고 5초 후 페이드아웃 타이머 시작</span></div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>    <a class="code hl_variable" href="classUChatWidget.html#ac817886bd8ed66eec60a4e4a33ac02c5">TargetOpacity</a> = 1.0f;</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>    <a class="code hl_variable" href="classUChatWidget.html#abacc0e23730e2af7425bf13388e93f58">CurrentOpacity</a> = 1.0f;</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>    SetRenderOpacity(1.0f);</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>    <a class="code hl_variable" href="classUChatWidget.html#ad5394003bb57334d668ee5a6780cd3ed">bIsFading</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>    </div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>    <a class="code hl_function" href="classUChatWidget.html#a04d5ad0561a0f5a7252a585f0a0eab04">StartFadeOutTimer</a>();</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>}</div>
 </div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
-<div class="foldopen" id="foldopen00098" data-start="{" data-end="}">
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno"><a class="line" href="classUChatWidget.html#aba3f013c0c2bb7310af7587c2c3411b4">   98</a></span><a class="code hl_class" href="classUChatBoxWidget.html">UChatBoxWidget</a>* <a class="code hl_function" href="classUChatWidget.html#aba3f013c0c2bb7310af7587c2c3411b4">UChatWidget::CreateChatBox</a>(<span class="keywordtype">bool</span> bIsSender)</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>{</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    <span class="keywordflow">return</span> CreateWidget&lt;UChatBoxWidget&gt;(GetWorld(), bIsSender? <a class="code hl_variable" href="classUChatWidget.html#a6a8e74a1f549930300976a8329407931">LeftChatBoxWidgetClass</a> : <a class="code hl_variable" href="classUChatWidget.html#a334724c95349f04ae05ace13861c50cc">RightChatBoxWidgetClass</a> );</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>}</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span> </div>
+<div class="foldopen" id="foldopen00148" data-start="{" data-end="}">
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno"><a class="line" href="classUChatWidget.html#a6a91842ffdbd014a816856f2c78d0530">  148</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUChatWidget.html#a6a91842ffdbd014a816856f2c78d0530">UChatWidget::FocusInput</a>()</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>{</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>    <a class="code hl_variable" href="classUChatWidget.html#a4604508b0b8c80fd6320bc73b4d797aa">ChatInputBox</a>-&gt;SetInputFocus(<span class="keyword">true</span>);</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span> </div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>    <span class="comment">// 입력 포커스를 얻을 때 완전히 보이게 하고 타이머 중단</span></div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>    <a class="code hl_variable" href="classUChatWidget.html#ac817886bd8ed66eec60a4e4a33ac02c5">TargetOpacity</a> = 1.0f;</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>    <a class="code hl_variable" href="classUChatWidget.html#abacc0e23730e2af7425bf13388e93f58">CurrentOpacity</a> = 1.0f;</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>    SetRenderOpacity(1.0f);</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>    <a class="code hl_variable" href="classUChatWidget.html#ad5394003bb57334d668ee5a6780cd3ed">bIsFading</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span> </div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>    <span class="comment">// 타이머 중단</span></div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>    <span class="keywordflow">if</span> (GetWorld() &amp;&amp; GetWorld()-&gt;GetTimerManager().IsTimerActive(<a class="code hl_variable" href="classUChatWidget.html#abf3af765c64886026aca83208592d9e1">FadeOutTimerHandle</a>))</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>    {</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>        GetWorld()-&gt;GetTimerManager().ClearTimer(<a class="code hl_variable" href="classUChatWidget.html#abf3af765c64886026aca83208592d9e1">FadeOutTimerHandle</a>);</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>    }</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>}</div>
 </div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span> </div>
+<div class="foldopen" id="foldopen00165" data-start="{" data-end="}">
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno"><a class="line" href="classUChatWidget.html#ab0c1ab993ffdcfe8098f044a278637e5">  165</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUChatWidget.html#ab0c1ab993ffdcfe8098f044a278637e5">UChatWidget::OnInputFocusChanged</a>(<span class="keywordtype">bool</span> bHasFocus)</div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>{</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>    <span class="keywordflow">if</span> (bHasFocus)</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>    {</div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>        <span class="comment">// 포커스를 얻으면 완전히 보이게 하고 타이머 중단</span></div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>        <a class="code hl_variable" href="classUChatWidget.html#ac817886bd8ed66eec60a4e4a33ac02c5">TargetOpacity</a> = 1.0f;</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>        <a class="code hl_variable" href="classUChatWidget.html#abacc0e23730e2af7425bf13388e93f58">CurrentOpacity</a> = 1.0f;</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>        SetRenderOpacity(1.0f);</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>        <a class="code hl_variable" href="classUChatWidget.html#ad5394003bb57334d668ee5a6780cd3ed">bIsFading</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span> </div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>        <span class="keywordflow">if</span> (GetWorld() &amp;&amp; GetWorld()-&gt;GetTimerManager().IsTimerActive(<a class="code hl_variable" href="classUChatWidget.html#abf3af765c64886026aca83208592d9e1">FadeOutTimerHandle</a>))</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>        {</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>            GetWorld()-&gt;GetTimerManager().ClearTimer(<a class="code hl_variable" href="classUChatWidget.html#abf3af765c64886026aca83208592d9e1">FadeOutTimerHandle</a>);</div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>        }</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>    }</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>    <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>    {</div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>        <span class="comment">// 포커스를 잃으면 5초 후 페이드아웃 시작</span></div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>        <a class="code hl_function" href="classUChatWidget.html#a04d5ad0561a0f5a7252a585f0a0eab04">StartFadeOutTimer</a>();</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>    }</div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>}</div>
+</div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span> </div>
+<div class="foldopen" id="foldopen00187" data-start="{" data-end="}">
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno"><a class="line" href="classUChatWidget.html#a04d5ad0561a0f5a7252a585f0a0eab04">  187</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUChatWidget.html#a04d5ad0561a0f5a7252a585f0a0eab04">UChatWidget::StartFadeOutTimer</a>()</div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>{</div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>    <span class="keywordflow">if</span> (!GetWorld())</div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span> </div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>    <span class="comment">// 기존 타이머가 있으면 취소</span></div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>    <span class="keywordflow">if</span> (GetWorld()-&gt;GetTimerManager().IsTimerActive(<a class="code hl_variable" href="classUChatWidget.html#abf3af765c64886026aca83208592d9e1">FadeOutTimerHandle</a>))</div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>    {</div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>        GetWorld()-&gt;GetTimerManager().ClearTimer(<a class="code hl_variable" href="classUChatWidget.html#abf3af765c64886026aca83208592d9e1">FadeOutTimerHandle</a>);</div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>    }</div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span> </div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>    <span class="comment">// 5초 후 페이드아웃 시작</span></div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>    GetWorld()-&gt;GetTimerManager().SetTimer(<a class="code hl_variable" href="classUChatWidget.html#abf3af765c64886026aca83208592d9e1">FadeOutTimerHandle</a>, <span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUChatWidget.html#a38e09494f969ca9f946cfc761fc78155">UChatWidget::OnFadeOutTimerComplete</a>, <a class="code hl_variable" href="classUChatWidget.html#ae2d074ee10951912a194b86de723f987">AutoHideDelay</a>, <span class="keyword">false</span>);</div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>}</div>
+</div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span> </div>
+<div class="foldopen" id="foldopen00202" data-start="{" data-end="}">
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno"><a class="line" href="classUChatWidget.html#a38e09494f969ca9f946cfc761fc78155">  202</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUChatWidget.html#a38e09494f969ca9f946cfc761fc78155">UChatWidget::OnFadeOutTimerComplete</a>()</div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>{</div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>    <span class="comment">// 입력창에 포커스가 있으면 페이드아웃하지 않음</span></div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUChatWidget.html#a4604508b0b8c80fd6320bc73b4d797aa">ChatInputBox</a> &amp;&amp; <a class="code hl_variable" href="classUChatWidget.html#a4604508b0b8c80fd6320bc73b4d797aa">ChatInputBox</a>-&gt;HasKeyboardFocus())</div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span> </div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>    <span class="comment">// 페이드아웃 시작</span></div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>    <a class="code hl_variable" href="classUChatWidget.html#ac817886bd8ed66eec60a4e4a33ac02c5">TargetOpacity</a> = 0.2f; <span class="comment">// 완전히 투명하게 하지 않고 약간 보이게</span></div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>    <a class="code hl_variable" href="classUChatWidget.html#ad5394003bb57334d668ee5a6780cd3ed">bIsFading</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>}</div>
+</div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span> </div>
+<div class="foldopen" id="foldopen00213" data-start="{" data-end="}">
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno"><a class="line" href="classUChatWidget.html#aba3f013c0c2bb7310af7587c2c3411b4">  213</a></span><a class="code hl_class" href="classUChatBoxWidget.html">UChatBoxWidget</a>* <a class="code hl_function" href="classUChatWidget.html#aba3f013c0c2bb7310af7587c2c3411b4">UChatWidget::CreateChatBox</a>(<span class="keywordtype">bool</span> bIsSender)</div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>{</div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>    <span class="keywordflow">return</span> CreateWidget&lt;UChatBoxWidget&gt;(GetWorld(), bIsSender? <a class="code hl_variable" href="classUChatWidget.html#a6a8e74a1f549930300976a8329407931">LeftChatBoxWidgetClass</a> : <a class="code hl_variable" href="classUChatWidget.html#a334724c95349f04ae05ace13861c50cc">RightChatBoxWidgetClass</a> );</div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>}</div>
+</div>
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span> </div>
 <div class="ttc" id="aAPlayerControl_8h_html"><div class="ttname"><a href="APlayerControl_8h.html">APlayerControl.h</a></div><div class="ttdoc">APlayerControl 선언에 대한 Doxygen 주석을 제공합니다.</div></div>
 <div class="ttc" id="aChatBoxWidget_8h_html"><div class="ttname"><a href="ChatBoxWidget_8h.html">ChatBoxWidget.h</a></div></div>
 <div class="ttc" id="aChatInputBox_8h_html"><div class="ttname"><a href="ChatInputBox_8h.html">ChatInputBox.h</a></div></div>
@@ -228,20 +351,30 @@ $(document).ready(function(){initNavTree('ChatWidget_8cpp_source.html',''); init
 <div class="ttc" id="aGameLogging_8h_html"><div class="ttname"><a href="GameLogging_8h.html">GameLogging.h</a></div><div class="ttdoc">YiSan 전반에서 사용하는 공용 인터페이스를 선언합니다.</div></div>
 <div class="ttc" id="aGameLogging_8h_html_a9998c8beb11a6bad6ffada2e701fc0cf"><div class="ttname"><a href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a></div><div class="ttdeci">#define PRINTLOG(fmt,...)</div><div class="ttdef"><b>Definition</b> <a href="GameLogging_8h_source.html#l00030">GameLogging.h:30</a></div></div>
 <div class="ttc" id="aclassUChatBoxWidget_html"><div class="ttname"><a href="classUChatBoxWidget.html">UChatBoxWidget</a></div><div class="ttdef"><b>Definition</b> <a href="ChatBoxWidget_8h_source.html#l00014">ChatBoxWidget.h:15</a></div></div>
-<div class="ttc" id="aclassUChatBoxWidget_html_aaa41e3bbbbf1ad7d2c461144f5ecdef4"><div class="ttname"><a href="classUChatBoxWidget.html#aaa41e3bbbbf1ad7d2c461144f5ecdef4">UChatBoxWidget::SetPlayerName</a></div><div class="ttdeci">void SetPlayerName(FText InPlayerName) const</div><div class="ttdef"><b>Definition</b> <a href="ChatBoxWidget_8cpp_source.html#l00012">ChatBoxWidget.cpp:12</a></div></div>
-<div class="ttc" id="aclassUChatBoxWidget_html_abb868e54756a4e7a549145eab6a0c93b"><div class="ttname"><a href="classUChatBoxWidget.html#abb868e54756a4e7a549145eab6a0c93b">UChatBoxWidget::SetPlayerProfile</a></div><div class="ttdeci">void SetPlayerProfile(FLinearColor InBgColor, EResourceTextureType InProfileType)</div><div class="ttdef"><b>Definition</b> <a href="ChatBoxWidget_8cpp_source.html#l00022">ChatBoxWidget.cpp:22</a></div></div>
-<div class="ttc" id="aclassUChatBoxWidget_html_adea6d78e09b5c213375591003aa0525e"><div class="ttname"><a href="classUChatBoxWidget.html#adea6d78e09b5c213375591003aa0525e">UChatBoxWidget::SetMessage</a></div><div class="ttdeci">void SetMessage(FText InMessage) const</div><div class="ttdef"><b>Definition</b> <a href="ChatBoxWidget_8cpp_source.html#l00017">ChatBoxWidget.cpp:17</a></div></div>
-<div class="ttc" id="aclassUChatBoxWidget_html_ae650adff1667df726cd9d7b6e41551f8"><div class="ttname"><a href="classUChatBoxWidget.html#ae650adff1667df726cd9d7b6e41551f8">UChatBoxWidget::SetChatBubbleColor</a></div><div class="ttdeci">void SetChatBubbleColor(bool IsMine) const</div><div class="ttdef"><b>Definition</b> <a href="ChatBoxWidget_8cpp_source.html#l00037">ChatBoxWidget.cpp:37</a></div></div>
-<div class="ttc" id="aclassUChatWidget_html_a07a5f7cc8d4c4a588878c09be10d4923"><div class="ttname"><a href="classUChatWidget.html#a07a5f7cc8d4c4a588878c09be10d4923">UChatWidget::SendMessage</a></div><div class="ttdeci">void SendMessage(FResponseUserMe sendUser, FText inMessage, int32 PlayerIndex)</div><div class="ttdef"><b>Definition</b> <a href="ChatWidget_8cpp_source.html#l00037">ChatWidget.cpp:37</a></div></div>
-<div class="ttc" id="aclassUChatWidget_html_a27bcb7fa36f2a39dcb83810967f99ee7"><div class="ttname"><a href="classUChatWidget.html#a27bcb7fa36f2a39dcb83810967f99ee7">UChatWidget::NativeConstruct</a></div><div class="ttdeci">virtual void NativeConstruct() override</div><div class="ttdef"><b>Definition</b> <a href="ChatWidget_8cpp_source.html#l00030">ChatWidget.cpp:30</a></div></div>
-<div class="ttc" id="aclassUChatWidget_html_a334724c95349f04ae05ace13861c50cc"><div class="ttname"><a href="classUChatWidget.html#a334724c95349f04ae05ace13861c50cc">UChatWidget::RightChatBoxWidgetClass</a></div><div class="ttdeci">TSubclassOf&lt; class UChatBoxWidget &gt; RightChatBoxWidgetClass</div><div class="ttdef"><b>Definition</b> <a href="ChatWidget_8h_source.html#l00047">ChatWidget.h:47</a></div></div>
-<div class="ttc" id="aclassUChatWidget_html_a4604508b0b8c80fd6320bc73b4d797aa"><div class="ttname"><a href="classUChatWidget.html#a4604508b0b8c80fd6320bc73b4d797aa">UChatWidget::ChatInputBox</a></div><div class="ttdeci">TObjectPtr&lt; class UChatInputBox &gt; ChatInputBox</div><div class="ttdef"><b>Definition</b> <a href="ChatWidget_8h_source.html#l00040">ChatWidget.h:40</a></div></div>
-<div class="ttc" id="aclassUChatWidget_html_a6a8e74a1f549930300976a8329407931"><div class="ttname"><a href="classUChatWidget.html#a6a8e74a1f549930300976a8329407931">UChatWidget::LeftChatBoxWidgetClass</a></div><div class="ttdeci">TSubclassOf&lt; class UChatBoxWidget &gt; LeftChatBoxWidgetClass</div><div class="ttdef"><b>Definition</b> <a href="ChatWidget_8h_source.html#l00044">ChatWidget.h:44</a></div></div>
-<div class="ttc" id="aclassUChatWidget_html_a6a91842ffdbd014a816856f2c78d0530"><div class="ttname"><a href="classUChatWidget.html#a6a91842ffdbd014a816856f2c78d0530">UChatWidget::FocusInput</a></div><div class="ttdeci">void FocusInput()</div><div class="ttdef"><b>Definition</b> <a href="ChatWidget_8cpp_source.html#l00093">ChatWidget.cpp:93</a></div></div>
-<div class="ttc" id="aclassUChatWidget_html_aa8ba630f820e5883a0c3bdc26f5ff60e"><div class="ttname"><a href="classUChatWidget.html#aa8ba630f820e5883a0c3bdc26f5ff60e">UChatWidget::UChatWidget</a></div><div class="ttdeci">UChatWidget(const FObjectInitializer &amp;ObjectInitializer)</div><div class="ttdef"><b>Definition</b> <a href="ChatWidget_8cpp_source.html#l00016">ChatWidget.cpp:16</a></div></div>
-<div class="ttc" id="aclassUChatWidget_html_aba3f013c0c2bb7310af7587c2c3411b4"><div class="ttname"><a href="classUChatWidget.html#aba3f013c0c2bb7310af7587c2c3411b4">UChatWidget::CreateChatBox</a></div><div class="ttdeci">class UChatBoxWidget * CreateChatBox(bool bIsSender)</div><div class="ttdef"><b>Definition</b> <a href="ChatWidget_8cpp_source.html#l00098">ChatWidget.cpp:98</a></div></div>
-<div class="ttc" id="aclassUChatWidget_html_ac728c3ed29723e99b7f00c4951077141"><div class="ttname"><a href="classUChatWidget.html#ac728c3ed29723e99b7f00c4951077141">UChatWidget::ScrollBox_ChatBox</a></div><div class="ttdeci">TObjectPtr&lt; class UScrollBox &gt; ScrollBox_ChatBox</div><div class="ttdef"><b>Definition</b> <a href="ChatWidget_8h_source.html#l00034">ChatWidget.h:34</a></div></div>
-<div class="ttc" id="aclassUChatWidget_html_acf814cb1fb3dcc8be745319cff4fb030"><div class="ttname"><a href="classUChatWidget.html#acf814cb1fb3dcc8be745319cff4fb030">UChatWidget::VerticalBox_Content</a></div><div class="ttdeci">TObjectPtr&lt; class UVerticalBox &gt; VerticalBox_Content</div><div class="ttdef"><b>Definition</b> <a href="ChatWidget_8h_source.html#l00028">ChatWidget.h:28</a></div></div>
+<div class="ttc" id="aclassUChatBoxWidget_html_a8537181d383fe8e1497e37d137c736b8"><div class="ttname"><a href="classUChatBoxWidget.html#a8537181d383fe8e1497e37d137c736b8">UChatBoxWidget::SetMessage</a></div><div class="ttdeci">void SetMessage(FText InMessage)</div><div class="ttdef"><b>Definition</b> <a href="ChatBoxWidget_8cpp_source.html#l00017">ChatBoxWidget.cpp:17</a></div></div>
+<div class="ttc" id="aclassUChatBoxWidget_html_ab58717bbfc345935c86ebbea99787c16"><div class="ttname"><a href="classUChatBoxWidget.html#ab58717bbfc345935c86ebbea99787c16">UChatBoxWidget::SetPlayerName</a></div><div class="ttdeci">void SetPlayerName(FText InPlayerName)</div><div class="ttdef"><b>Definition</b> <a href="ChatBoxWidget_8cpp_source.html#l00012">ChatBoxWidget.cpp:12</a></div></div>
+<div class="ttc" id="aclassUChatBoxWidget_html_abb868e54756a4e7a549145eab6a0c93b"><div class="ttname"><a href="classUChatBoxWidget.html#abb868e54756a4e7a549145eab6a0c93b">UChatBoxWidget::SetPlayerProfile</a></div><div class="ttdeci">void SetPlayerProfile(FLinearColor InBgColor, EResourceTextureType InProfileType)</div><div class="ttdef"><b>Definition</b> <a href="ChatBoxWidget_8cpp_source.html#l00028">ChatBoxWidget.cpp:28</a></div></div>
+<div class="ttc" id="aclassUChatBoxWidget_html_ae650adff1667df726cd9d7b6e41551f8"><div class="ttname"><a href="classUChatBoxWidget.html#ae650adff1667df726cd9d7b6e41551f8">UChatBoxWidget::SetChatBubbleColor</a></div><div class="ttdeci">void SetChatBubbleColor(bool IsMine) const</div><div class="ttdef"><b>Definition</b> <a href="ChatBoxWidget_8cpp_source.html#l00043">ChatBoxWidget.cpp:43</a></div></div>
+<div class="ttc" id="aclassUChatWidget_html_a04d5ad0561a0f5a7252a585f0a0eab04"><div class="ttname"><a href="classUChatWidget.html#a04d5ad0561a0f5a7252a585f0a0eab04">UChatWidget::StartFadeOutTimer</a></div><div class="ttdeci">void StartFadeOutTimer()</div><div class="ttdef"><b>Definition</b> <a href="ChatWidget_8cpp_source.html#l00187">ChatWidget.cpp:187</a></div></div>
+<div class="ttc" id="aclassUChatWidget_html_a07a5f7cc8d4c4a588878c09be10d4923"><div class="ttname"><a href="classUChatWidget.html#a07a5f7cc8d4c4a588878c09be10d4923">UChatWidget::SendMessage</a></div><div class="ttdeci">void SendMessage(FResponseUserMe sendUser, FText inMessage, int32 PlayerIndex)</div><div class="ttdef"><b>Definition</b> <a href="ChatWidget_8cpp_source.html#l00077">ChatWidget.cpp:77</a></div></div>
+<div class="ttc" id="aclassUChatWidget_html_a27bcb7fa36f2a39dcb83810967f99ee7"><div class="ttname"><a href="classUChatWidget.html#a27bcb7fa36f2a39dcb83810967f99ee7">UChatWidget::NativeConstruct</a></div><div class="ttdeci">virtual void NativeConstruct() override</div><div class="ttdef"><b>Definition</b> <a href="ChatWidget_8cpp_source.html#l00031">ChatWidget.cpp:31</a></div></div>
+<div class="ttc" id="aclassUChatWidget_html_a334724c95349f04ae05ace13861c50cc"><div class="ttname"><a href="classUChatWidget.html#a334724c95349f04ae05ace13861c50cc">UChatWidget::RightChatBoxWidgetClass</a></div><div class="ttdeci">TSubclassOf&lt; class UChatBoxWidget &gt; RightChatBoxWidgetClass</div><div class="ttdef"><b>Definition</b> <a href="ChatWidget_8h_source.html#l00049">ChatWidget.h:49</a></div></div>
+<div class="ttc" id="aclassUChatWidget_html_a38e09494f969ca9f946cfc761fc78155"><div class="ttname"><a href="classUChatWidget.html#a38e09494f969ca9f946cfc761fc78155">UChatWidget::OnFadeOutTimerComplete</a></div><div class="ttdeci">void OnFadeOutTimerComplete()</div><div class="ttdef"><b>Definition</b> <a href="ChatWidget_8cpp_source.html#l00202">ChatWidget.cpp:202</a></div></div>
+<div class="ttc" id="aclassUChatWidget_html_a4604508b0b8c80fd6320bc73b4d797aa"><div class="ttname"><a href="classUChatWidget.html#a4604508b0b8c80fd6320bc73b4d797aa">UChatWidget::ChatInputBox</a></div><div class="ttdeci">TObjectPtr&lt; class UChatInputBox &gt; ChatInputBox</div><div class="ttdef"><b>Definition</b> <a href="ChatWidget_8h_source.html#l00042">ChatWidget.h:42</a></div></div>
+<div class="ttc" id="aclassUChatWidget_html_a6a8e74a1f549930300976a8329407931"><div class="ttname"><a href="classUChatWidget.html#a6a8e74a1f549930300976a8329407931">UChatWidget::LeftChatBoxWidgetClass</a></div><div class="ttdeci">TSubclassOf&lt; class UChatBoxWidget &gt; LeftChatBoxWidgetClass</div><div class="ttdef"><b>Definition</b> <a href="ChatWidget_8h_source.html#l00046">ChatWidget.h:46</a></div></div>
+<div class="ttc" id="aclassUChatWidget_html_a6a91842ffdbd014a816856f2c78d0530"><div class="ttname"><a href="classUChatWidget.html#a6a91842ffdbd014a816856f2c78d0530">UChatWidget::FocusInput</a></div><div class="ttdeci">void FocusInput()</div><div class="ttdef"><b>Definition</b> <a href="ChatWidget_8cpp_source.html#l00148">ChatWidget.cpp:148</a></div></div>
+<div class="ttc" id="aclassUChatWidget_html_a8187c074a7b762ee7522f2e86701465b"><div class="ttname"><a href="classUChatWidget.html#a8187c074a7b762ee7522f2e86701465b">UChatWidget::NativeTick</a></div><div class="ttdeci">virtual void NativeTick(const FGeometry &amp;MyGeometry, float InDeltaTime) override</div><div class="ttdef"><b>Definition</b> <a href="ChatWidget_8cpp_source.html#l00049">ChatWidget.cpp:49</a></div></div>
+<div class="ttc" id="aclassUChatWidget_html_aa210d801c1e7ed40492eae3755528009"><div class="ttname"><a href="classUChatWidget.html#aa210d801c1e7ed40492eae3755528009">UChatWidget::FadeSpeed</a></div><div class="ttdeci">float FadeSpeed</div><div class="ttdef"><b>Definition</b> <a href="ChatWidget_8h_source.html#l00065">ChatWidget.h:65</a></div></div>
+<div class="ttc" id="aclassUChatWidget_html_aa8ba630f820e5883a0c3bdc26f5ff60e"><div class="ttname"><a href="classUChatWidget.html#aa8ba630f820e5883a0c3bdc26f5ff60e">UChatWidget::UChatWidget</a></div><div class="ttdeci">UChatWidget(const FObjectInitializer &amp;ObjectInitializer)</div><div class="ttdef"><b>Definition</b> <a href="ChatWidget_8cpp_source.html#l00017">ChatWidget.cpp:17</a></div></div>
+<div class="ttc" id="aclassUChatWidget_html_ab0c1ab993ffdcfe8098f044a278637e5"><div class="ttname"><a href="classUChatWidget.html#ab0c1ab993ffdcfe8098f044a278637e5">UChatWidget::OnInputFocusChanged</a></div><div class="ttdeci">void OnInputFocusChanged(bool bHasFocus)</div><div class="ttdef"><b>Definition</b> <a href="ChatWidget_8cpp_source.html#l00165">ChatWidget.cpp:165</a></div></div>
+<div class="ttc" id="aclassUChatWidget_html_aba3f013c0c2bb7310af7587c2c3411b4"><div class="ttname"><a href="classUChatWidget.html#aba3f013c0c2bb7310af7587c2c3411b4">UChatWidget::CreateChatBox</a></div><div class="ttdeci">class UChatBoxWidget * CreateChatBox(bool bIsSender)</div><div class="ttdef"><b>Definition</b> <a href="ChatWidget_8cpp_source.html#l00213">ChatWidget.cpp:213</a></div></div>
+<div class="ttc" id="aclassUChatWidget_html_abacc0e23730e2af7425bf13388e93f58"><div class="ttname"><a href="classUChatWidget.html#abacc0e23730e2af7425bf13388e93f58">UChatWidget::CurrentOpacity</a></div><div class="ttdeci">float CurrentOpacity</div><div class="ttdef"><b>Definition</b> <a href="ChatWidget_8h_source.html#l00061">ChatWidget.h:61</a></div></div>
+<div class="ttc" id="aclassUChatWidget_html_abf3af765c64886026aca83208592d9e1"><div class="ttname"><a href="classUChatWidget.html#abf3af765c64886026aca83208592d9e1">UChatWidget::FadeOutTimerHandle</a></div><div class="ttdeci">FTimerHandle FadeOutTimerHandle</div><div class="ttdef"><b>Definition</b> <a href="ChatWidget_8h_source.html#l00057">ChatWidget.h:57</a></div></div>
+<div class="ttc" id="aclassUChatWidget_html_ac728c3ed29723e99b7f00c4951077141"><div class="ttname"><a href="classUChatWidget.html#ac728c3ed29723e99b7f00c4951077141">UChatWidget::ScrollBox_ChatBox</a></div><div class="ttdeci">TObjectPtr&lt; class UScrollBox &gt; ScrollBox_ChatBox</div><div class="ttdef"><b>Definition</b> <a href="ChatWidget_8h_source.html#l00036">ChatWidget.h:36</a></div></div>
+<div class="ttc" id="aclassUChatWidget_html_ac817886bd8ed66eec60a4e4a33ac02c5"><div class="ttname"><a href="classUChatWidget.html#ac817886bd8ed66eec60a4e4a33ac02c5">UChatWidget::TargetOpacity</a></div><div class="ttdeci">float TargetOpacity</div><div class="ttdef"><b>Definition</b> <a href="ChatWidget_8h_source.html#l00062">ChatWidget.h:62</a></div></div>
+<div class="ttc" id="aclassUChatWidget_html_acf814cb1fb3dcc8be745319cff4fb030"><div class="ttname"><a href="classUChatWidget.html#acf814cb1fb3dcc8be745319cff4fb030">UChatWidget::VerticalBox_Content</a></div><div class="ttdeci">TObjectPtr&lt; class UVerticalBox &gt; VerticalBox_Content</div><div class="ttdef"><b>Definition</b> <a href="ChatWidget_8h_source.html#l00030">ChatWidget.h:30</a></div></div>
+<div class="ttc" id="aclassUChatWidget_html_ad5394003bb57334d668ee5a6780cd3ed"><div class="ttname"><a href="classUChatWidget.html#ad5394003bb57334d668ee5a6780cd3ed">UChatWidget::bIsFading</a></div><div class="ttdeci">bool bIsFading</div><div class="ttdef"><b>Definition</b> <a href="ChatWidget_8h_source.html#l00060">ChatWidget.h:60</a></div></div>
+<div class="ttc" id="aclassUChatWidget_html_ae2d074ee10951912a194b86de723f987"><div class="ttname"><a href="classUChatWidget.html#ae2d074ee10951912a194b86de723f987">UChatWidget::AutoHideDelay</a></div><div class="ttdeci">float AutoHideDelay</div><div class="ttdef"><b>Definition</b> <a href="ChatWidget_8h_source.html#l00068">ChatWidget.h:68</a></div></div>
 <div class="ttc" id="astructFResponseUserMe_html"><div class="ttname"><a href="structFResponseUserMe.html">FResponseUserMe</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00493">NetworkData.h:494</a></div></div>
 <div class="ttc" id="astructFResponseUserMe_html_a4481df4d35a0fd13d5c0989e3404c8a4"><div class="ttname"><a href="structFResponseUserMe.html#a4481df4d35a0fd13d5c0989e3404c8a4">FResponseUserMe::id</a></div><div class="ttdeci">int id</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00498">NetworkData.h:498</a></div></div>
 <div class="ttc" id="astructFResponseUserMe_html_a75e93c1e9c6e7cf876b679a7e57f1fb4"><div class="ttname"><a href="structFResponseUserMe.html#a75e93c1e9c6e7cf876b679a7e57f1fb4">FResponseUserMe::GetChatProfileBg</a></div><div class="ttdeci">FLinearColor GetChatProfileBg(int player_index) const</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8cpp_source.html#l00236">NetworkData.cpp:236</a></div></div>
@@ -253,7 +386,7 @@ $(document).ready(function(){initNavTree('ChatWidget_8cpp_source.html',''); init
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_55b064ed9f704d76d3805f2fda876350.html">UI</a></li><li class="navelem"><a class="el" href="dir_550f083bbe519bd985f450628c1369b6.html">Private</a></li><li class="navelem"><a class="el" href="ChatWidget_8cpp.html">ChatWidget.cpp</a></li>
-    <li class="footer">생성시간 : 금 12월 19 2025 08:36:37, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 토 12월 20 2025 11:59:11, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

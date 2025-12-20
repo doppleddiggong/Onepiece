@@ -52,5 +52,6 @@ var searchData=
   ['owner_49',['Owner',['../structUDelayTaskManager_1_1FEntry.html#a24356fd0a14572e4ad702bcb62cda31f',1,'UDelayTaskManager::FEntry']]],
   ['ownerindex_50',['OwnerIndex',['../classUDelayTaskManager.html#a871566c190df1aee76947f4a8a443c80',1,'UDelayTaskManager']]],
   ['ownertabgroup_51',['OwnerTabGroup',['../classUTabButton.html#a81ed92b29990cefe4af7b6fec5f1658d',1,'UTabButton']]],
-  ['owningrobot_52',['OwningRobot',['../classURobotAnimInstance.html#a534ccb0e72cc3f5a4fd01c65f8da1a7b',1,'URobotAnimInstance']]]
+  ['owningchatwidget_52',['OwningChatWidget',['../classUChatInputBox.html#aef97764cc5a4c92c537abd1d713ed4c4',1,'UChatInputBox']]],
+  ['owningrobot_53',['OwningRobot',['../classURobotAnimInstance.html#a534ccb0e72cc3f5a4fd01c65f8da1a7b',1,'URobotAnimInstance']]]
 ];

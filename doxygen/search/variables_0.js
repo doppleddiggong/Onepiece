@@ -43,5 +43,6 @@ var searchData=
   ['audio_5fbase64_40',['audio_base64',['../structFResponseListenAudio.html#a39dfdd52ce3770dfbccf800986ce4607',1,'FResponseListenAudio']]],
   ['audio_5ftext_41',['audio_text',['../structFResponseListenAudio.html#ac98fb8b7db5c2bbb9bd42bf9fd72f71f',1,'FResponseListenAudio']]],
   ['audiotext_42',['AudioText',['../classANetworkTesterActor.html#a996eb18cfc8d22f19124b0d1915be991',1,'ANetworkTesterActor']]],
-  ['average_5fscore_43',['average_score',['../structFResponseWriteResult.html#a7a5dc33082513c556d84d80153a0e3e4',1,'FResponseWriteResult::average_score'],['../structFResponseReadResult.html#ace546aa7a22da04f789890587359e514',1,'FResponseReadResult::average_score'],['../structFResponseListenResult.html#a3d0fb97307c703f98ca5da90c6189957',1,'FResponseListenResult::average_score'],['../structFResponseSpeakResult.html#af44cf5eda612e2418894cd870d4cccf7',1,'FResponseSpeakResult::average_score']]]
+  ['autohidedelay_43',['AutoHideDelay',['../classUChatWidget.html#ae2d074ee10951912a194b86de723f987',1,'UChatWidget']]],
+  ['average_5fscore_44',['average_score',['../structFResponseWriteResult.html#a7a5dc33082513c556d84d80153a0e3e4',1,'FResponseWriteResult::average_score'],['../structFResponseReadResult.html#ace546aa7a22da04f789890587359e514',1,'FResponseReadResult::average_score'],['../structFResponseListenResult.html#a3d0fb97307c703f98ca5da90c6189957',1,'FResponseListenResult::average_score'],['../structFResponseSpeakResult.html#af44cf5eda612e2418894cd870d4cccf7',1,'FResponseSpeakResult::average_score']]]
 ];

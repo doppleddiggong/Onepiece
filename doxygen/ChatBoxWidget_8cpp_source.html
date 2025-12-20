@@ -121,45 +121,51 @@ $(document).ready(function(){initNavTree('ChatBoxWidget_8cpp_source.html',''); i
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;Components/TextBlock.h&quot;</span></div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
 <div class="foldopen" id="foldopen00012" data-start="{" data-end="}">
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="classUChatBoxWidget.html#aaa41e3bbbbf1ad7d2c461144f5ecdef4">   12</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUChatBoxWidget.html#aaa41e3bbbbf1ad7d2c461144f5ecdef4">UChatBoxWidget::SetPlayerName</a>(FText InPlayerName)<span class="keyword"> const</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="keyword"></span>{</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="classUChatBoxWidget.html#ab58717bbfc345935c86ebbea99787c16">   12</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUChatBoxWidget.html#ab58717bbfc345935c86ebbea99787c16">UChatBoxWidget::SetPlayerName</a>(FText InPlayerName)</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>{</div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    <a class="code hl_variable" href="classUChatBoxWidget.html#a805bb7a9e91386041053d7d08cd7385a">Txt_Name</a>-&gt;SetText(InPlayerName);</div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>}</div>
 </div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
 <div class="foldopen" id="foldopen00017" data-start="{" data-end="}">
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="classUChatBoxWidget.html#adea6d78e09b5c213375591003aa0525e">   17</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUChatBoxWidget.html#adea6d78e09b5c213375591003aa0525e">UChatBoxWidget::SetMessage</a>(FText InMessage)<span class="keyword"> const</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="keyword"></span>{</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="classUChatBoxWidget.html#a8537181d383fe8e1497e37d137c736b8">   17</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUChatBoxWidget.html#a8537181d383fe8e1497e37d137c736b8">UChatBoxWidget::SetMessage</a>(FText InMessage)</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>{</div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <a class="code hl_variable" href="classUChatBoxWidget.html#ae77756bf0e548c71d713cbbf530a2e82">Txt_Message</a>-&gt;SetText(InMessage);</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>}</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="comment">// 여러 줄 텍스트의 경우 레이아웃을 강제로 갱신</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    ForceLayoutPrepass();</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="comment">// 메시지를 포함하는 Border의 레이아웃 무효화</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <a class="code hl_variable" href="classUChatBoxWidget.html#a184c98674d6401269d2aa4ea309da17d">Border_ChatBubble</a>-&gt;InvalidateLayoutAndVolatility();</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>}</div>
 </div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
-<div class="foldopen" id="foldopen00022" data-start="{" data-end="}">
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="classUChatBoxWidget.html#abb868e54756a4e7a549145eab6a0c93b">   22</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUChatBoxWidget.html#abb868e54756a4e7a549145eab6a0c93b">UChatBoxWidget::SetPlayerProfile</a>(</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    FLinearColor InBgColor,</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <a class="code hl_enumeration" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2">EResourceTextureType</a> InProfileType)</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>{</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <a class="code hl_variable" href="classUChatBoxWidget.html#a24d09df17452fc1e5d863d8830ba515e">Border_ProfileBG</a>-&gt;SetBrushColor(InBgColor);</div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    UTexture2D* Texture = UGameDataManager::Get(<span class="keyword">this</span>)-&gt;GetTexture(InProfileType);</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="keywordflow">if</span> (!Texture)</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    FSlateBrush Brush = <a class="code hl_variable" href="classUChatBoxWidget.html#a44ad42be3f09f6ae805fe0fff894eab2">Image_Profile</a>-&gt;GetBrush();</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    Brush.SetResourceObject(Texture);</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <a class="code hl_variable" href="classUChatBoxWidget.html#a44ad42be3f09f6ae805fe0fff894eab2">Image_Profile</a>-&gt;SetBrush(Brush);</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>}</div>
+<div class="foldopen" id="foldopen00028" data-start="{" data-end="}">
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="classUChatBoxWidget.html#abb868e54756a4e7a549145eab6a0c93b">   28</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUChatBoxWidget.html#abb868e54756a4e7a549145eab6a0c93b">UChatBoxWidget::SetPlayerProfile</a>(</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    FLinearColor InBgColor,</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <a class="code hl_enumeration" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2">EResourceTextureType</a> InProfileType)</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>{</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <a class="code hl_variable" href="classUChatBoxWidget.html#a24d09df17452fc1e5d863d8830ba515e">Border_ProfileBG</a>-&gt;SetBrushColor(InBgColor);</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    UTexture2D* Texture = UGameDataManager::Get(<span class="keyword">this</span>)-&gt;GetTexture(InProfileType);</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="keywordflow">if</span> (!Texture)</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    FSlateBrush Brush = <a class="code hl_variable" href="classUChatBoxWidget.html#a44ad42be3f09f6ae805fe0fff894eab2">Image_Profile</a>-&gt;GetBrush();</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    Brush.SetResourceObject(Texture);</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <a class="code hl_variable" href="classUChatBoxWidget.html#a44ad42be3f09f6ae805fe0fff894eab2">Image_Profile</a>-&gt;SetBrush(Brush);</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>}</div>
 </div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
-<div class="foldopen" id="foldopen00037" data-start="{" data-end="}">
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="classUChatBoxWidget.html#ae650adff1667df726cd9d7b6e41551f8">   37</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUChatBoxWidget.html#ae650adff1667df726cd9d7b6e41551f8">UChatBoxWidget::SetChatBubbleColor</a>(<span class="keywordtype">bool</span> IsMine)<span class="keyword"> const</span></div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="keyword"></span>{</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="keyword">auto</span> BubbleColor = IsMine ? FLinearColor::Green : FLinearColor::White;</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <a class="code hl_variable" href="classUChatBoxWidget.html#a805bb7a9e91386041053d7d08cd7385a">Txt_Name</a>-&gt;SetColorAndOpacity(BubbleColor);</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <a class="code hl_variable" href="classUChatBoxWidget.html#ae3c3c1b1d6f7d66357b8550cb1991c08">Image_ChatTail</a>-&gt;SetColorAndOpacity(BubbleColor);</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <a class="code hl_variable" href="classUChatBoxWidget.html#a184c98674d6401269d2aa4ea309da17d">Border_ChatBubble</a>-&gt;SetContentColorAndOpacity(BubbleColor);</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>}</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
+<div class="foldopen" id="foldopen00043" data-start="{" data-end="}">
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="classUChatBoxWidget.html#ae650adff1667df726cd9d7b6e41551f8">   43</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUChatBoxWidget.html#ae650adff1667df726cd9d7b6e41551f8">UChatBoxWidget::SetChatBubbleColor</a>(<span class="keywordtype">bool</span> IsMine)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="keyword"></span>{</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="keyword">auto</span> BubbleColor = IsMine ? FLinearColor::Green : FLinearColor::White;</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <a class="code hl_variable" href="classUChatBoxWidget.html#a805bb7a9e91386041053d7d08cd7385a">Txt_Name</a>-&gt;SetColorAndOpacity(BubbleColor);</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <a class="code hl_variable" href="classUChatBoxWidget.html#ae3c3c1b1d6f7d66357b8550cb1991c08">Image_ChatTail</a>-&gt;SetColorAndOpacity(BubbleColor);</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <a class="code hl_variable" href="classUChatBoxWidget.html#a184c98674d6401269d2aa4ea309da17d">Border_ChatBubble</a>-&gt;SetContentColorAndOpacity(BubbleColor);</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>}</div>
 </div>
 <div class="ttc" id="aChatBoxWidget_8h_html"><div class="ttname"><a href="ChatBoxWidget_8h.html">ChatBoxWidget.h</a></div></div>
 <div class="ttc" id="aFResourceTextureData_8h_html"><div class="ttname"><a href="FResourceTextureData_8h.html">FResourceTextureData.h</a></div></div>
@@ -169,11 +175,11 @@ $(document).ready(function(){initNavTree('ChatBoxWidget_8cpp_source.html',''); i
 <div class="ttc" id="aclassUChatBoxWidget_html_a24d09df17452fc1e5d863d8830ba515e"><div class="ttname"><a href="classUChatBoxWidget.html#a24d09df17452fc1e5d863d8830ba515e">UChatBoxWidget::Border_ProfileBG</a></div><div class="ttdeci">TObjectPtr&lt; class UBorder &gt; Border_ProfileBG</div><div class="ttdef"><b>Definition</b> <a href="ChatBoxWidget_8h_source.html#l00031">ChatBoxWidget.h:31</a></div></div>
 <div class="ttc" id="aclassUChatBoxWidget_html_a44ad42be3f09f6ae805fe0fff894eab2"><div class="ttname"><a href="classUChatBoxWidget.html#a44ad42be3f09f6ae805fe0fff894eab2">UChatBoxWidget::Image_Profile</a></div><div class="ttdeci">TObjectPtr&lt; class UImage &gt; Image_Profile</div><div class="ttdef"><b>Definition</b> <a href="ChatBoxWidget_8h_source.html#l00034">ChatBoxWidget.h:34</a></div></div>
 <div class="ttc" id="aclassUChatBoxWidget_html_a805bb7a9e91386041053d7d08cd7385a"><div class="ttname"><a href="classUChatBoxWidget.html#a805bb7a9e91386041053d7d08cd7385a">UChatBoxWidget::Txt_Name</a></div><div class="ttdeci">TObjectPtr&lt; class UTextBlock &gt; Txt_Name</div><div class="ttdef"><b>Definition</b> <a href="ChatBoxWidget_8h_source.html#l00045">ChatBoxWidget.h:45</a></div></div>
-<div class="ttc" id="aclassUChatBoxWidget_html_aaa41e3bbbbf1ad7d2c461144f5ecdef4"><div class="ttname"><a href="classUChatBoxWidget.html#aaa41e3bbbbf1ad7d2c461144f5ecdef4">UChatBoxWidget::SetPlayerName</a></div><div class="ttdeci">void SetPlayerName(FText InPlayerName) const</div><div class="ttdef"><b>Definition</b> <a href="ChatBoxWidget_8cpp_source.html#l00012">ChatBoxWidget.cpp:12</a></div></div>
-<div class="ttc" id="aclassUChatBoxWidget_html_abb868e54756a4e7a549145eab6a0c93b"><div class="ttname"><a href="classUChatBoxWidget.html#abb868e54756a4e7a549145eab6a0c93b">UChatBoxWidget::SetPlayerProfile</a></div><div class="ttdeci">void SetPlayerProfile(FLinearColor InBgColor, EResourceTextureType InProfileType)</div><div class="ttdef"><b>Definition</b> <a href="ChatBoxWidget_8cpp_source.html#l00022">ChatBoxWidget.cpp:22</a></div></div>
-<div class="ttc" id="aclassUChatBoxWidget_html_adea6d78e09b5c213375591003aa0525e"><div class="ttname"><a href="classUChatBoxWidget.html#adea6d78e09b5c213375591003aa0525e">UChatBoxWidget::SetMessage</a></div><div class="ttdeci">void SetMessage(FText InMessage) const</div><div class="ttdef"><b>Definition</b> <a href="ChatBoxWidget_8cpp_source.html#l00017">ChatBoxWidget.cpp:17</a></div></div>
+<div class="ttc" id="aclassUChatBoxWidget_html_a8537181d383fe8e1497e37d137c736b8"><div class="ttname"><a href="classUChatBoxWidget.html#a8537181d383fe8e1497e37d137c736b8">UChatBoxWidget::SetMessage</a></div><div class="ttdeci">void SetMessage(FText InMessage)</div><div class="ttdef"><b>Definition</b> <a href="ChatBoxWidget_8cpp_source.html#l00017">ChatBoxWidget.cpp:17</a></div></div>
+<div class="ttc" id="aclassUChatBoxWidget_html_ab58717bbfc345935c86ebbea99787c16"><div class="ttname"><a href="classUChatBoxWidget.html#ab58717bbfc345935c86ebbea99787c16">UChatBoxWidget::SetPlayerName</a></div><div class="ttdeci">void SetPlayerName(FText InPlayerName)</div><div class="ttdef"><b>Definition</b> <a href="ChatBoxWidget_8cpp_source.html#l00012">ChatBoxWidget.cpp:12</a></div></div>
+<div class="ttc" id="aclassUChatBoxWidget_html_abb868e54756a4e7a549145eab6a0c93b"><div class="ttname"><a href="classUChatBoxWidget.html#abb868e54756a4e7a549145eab6a0c93b">UChatBoxWidget::SetPlayerProfile</a></div><div class="ttdeci">void SetPlayerProfile(FLinearColor InBgColor, EResourceTextureType InProfileType)</div><div class="ttdef"><b>Definition</b> <a href="ChatBoxWidget_8cpp_source.html#l00028">ChatBoxWidget.cpp:28</a></div></div>
 <div class="ttc" id="aclassUChatBoxWidget_html_ae3c3c1b1d6f7d66357b8550cb1991c08"><div class="ttname"><a href="classUChatBoxWidget.html#ae3c3c1b1d6f7d66357b8550cb1991c08">UChatBoxWidget::Image_ChatTail</a></div><div class="ttdeci">TObjectPtr&lt; class UImage &gt; Image_ChatTail</div><div class="ttdef"><b>Definition</b> <a href="ChatBoxWidget_8h_source.html#l00038">ChatBoxWidget.h:38</a></div></div>
-<div class="ttc" id="aclassUChatBoxWidget_html_ae650adff1667df726cd9d7b6e41551f8"><div class="ttname"><a href="classUChatBoxWidget.html#ae650adff1667df726cd9d7b6e41551f8">UChatBoxWidget::SetChatBubbleColor</a></div><div class="ttdeci">void SetChatBubbleColor(bool IsMine) const</div><div class="ttdef"><b>Definition</b> <a href="ChatBoxWidget_8cpp_source.html#l00037">ChatBoxWidget.cpp:37</a></div></div>
+<div class="ttc" id="aclassUChatBoxWidget_html_ae650adff1667df726cd9d7b6e41551f8"><div class="ttname"><a href="classUChatBoxWidget.html#ae650adff1667df726cd9d7b6e41551f8">UChatBoxWidget::SetChatBubbleColor</a></div><div class="ttdeci">void SetChatBubbleColor(bool IsMine) const</div><div class="ttdef"><b>Definition</b> <a href="ChatBoxWidget_8cpp_source.html#l00043">ChatBoxWidget.cpp:43</a></div></div>
 <div class="ttc" id="aclassUChatBoxWidget_html_ae77756bf0e548c71d713cbbf530a2e82"><div class="ttname"><a href="classUChatBoxWidget.html#ae77756bf0e548c71d713cbbf530a2e82">UChatBoxWidget::Txt_Message</a></div><div class="ttdeci">TObjectPtr&lt; class UTextBlock &gt; Txt_Message</div><div class="ttdef"><b>Definition</b> <a href="ChatBoxWidget_8h_source.html#l00048">ChatBoxWidget.h:48</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
@@ -181,7 +187,7 @@ $(document).ready(function(){initNavTree('ChatBoxWidget_8cpp_source.html',''); i
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_55b064ed9f704d76d3805f2fda876350.html">UI</a></li><li class="navelem"><a class="el" href="dir_550f083bbe519bd985f450628c1369b6.html">Private</a></li><li class="navelem"><a class="el" href="ChatBoxWidget_8cpp.html">ChatBoxWidget.cpp</a></li>
-    <li class="footer">생성시간 : 금 12월 19 2025 08:36:37, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 토 12월 20 2025 11:59:11, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>
