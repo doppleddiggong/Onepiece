@@ -14,6 +14,8 @@
 #include "Components/WidgetComponent.h"
 #include "ALingoGameState.h"
 #include "ALingoPlayerState.h"
+#include "APlayerActor.h"
+#include "APlayerControl.h"
 
 #define INTERACT_WIDGET_PATH TEXT("/Game/CustomContents/UI/Widgets/WBP_InteractWidget.WBP_InteractWidget_C")
 
@@ -31,7 +33,7 @@ AQuestionnaireKiosk::AQuestionnaireKiosk()
 	KioskMeshComp->SetupAttachment(RootComponent);
 	
 	InteractableComp = CreateDefaultSubobject<UInteractableComponent>(TEXT("InteractableComp"));
-	InteractableComp->InteractionType = EInteractionType::Button;
+	InteractableComp->InteractionType = EInteractionType::Kiosk;
 	InteractableComp->InteractionPrompt = TEXT("Activate");
 	
 	BoxComp = CreateDefaultSubobject<UBoxComponent>(TEXT("BoxComp"));
@@ -72,6 +74,14 @@ void AQuestionnaireKiosk::Tick(float DeltaTime)
 
 void AQuestionnaireKiosk::OnInteractionTriggered(AActor* Interactor)
 {
+	if (APlayerActor* player = Cast<APlayerActor>(Interactor))
+	{
+		if (APlayerControl* pc = Cast<APlayerControl>(player->GetController()))
+		{
+			
+		}
+	}
+	
 	if (auto KLingoNetwork = UKLingoNetworkSystem::Get(GetWorld()))
 	{
 		// QuestionnaireData에 데이터가 있다면
@@ -86,32 +96,7 @@ void AQuestionnaireKiosk::OnInteractionTriggered(AActor* Interactor)
 			KLingoNetwork->RequestWriteQuestions(FResponseWriteQuestionDelegate::CreateUObject(this, &AQuestionnaireKiosk::OnResponseData));
 		}
 	}
-	
-	// ServerRPC_OnInteractionTriggered(Interactor);
 }
-//
-// void AQuestionnaireKiosk::ServerRPC_OnInteractionTriggered_Implementation(AActor* Interactor)
-// {
-// 	ClientRPC_OnInteractionTriggered(Interactor);
-// }
-//
-// void AQuestionnaireKiosk::ClientRPC_OnInteractionTriggered_Implementation(AActor* Interactor)
-// {
-// 	if (auto KLingoNetwork = UKLingoNetworkSystem::Get(GetWorld()))
-// 	{
-// 		// QuestionnaireData에 데이터가 있다면
-// 		if (QuestionnaireData.IsValid())
-// 		{
-// 			PRINTLOG(TEXT("QuestionnaireData is valid"));
-// 			ShowPopup();
-// 		}
-// 		else
-// 		{
-// 			PRINTLOG(TEXT("QuestionnaireData is invalid"));
-// 			KLingoNetwork->RequestWriteQuestions(FResponseWriteQuestionDelegate::CreateUObject(this, &AQuestionnaireKiosk::OnResponseData));
-// 		}
-// 	}
-// }
 
 void AQuestionnaireKiosk::OnResponseData(FQuestWriteInfo& InResponseData, bool bWasSuccessful)
 {

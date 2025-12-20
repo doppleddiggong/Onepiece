@@ -18,6 +18,7 @@ enum class EInteractionType : uint8
 	None		UMETA(DisplayName = "None"),
 	PickUp		UMETA(DisplayName = "Pick Up"),			// 집어올리기
 	Button		UMETA(DisplayName = "Button"),			// 버튼 누르기
+	Kiosk		UMETA(DisplayName = "Kiosk"),
 };
 
 /**

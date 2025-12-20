@@ -29,6 +29,7 @@
 #include "luggage.h"
 #include "EngineUtils.h"
 #include "GameLogging.h"
+#include "InteractableComponent.h"
 #include "OrderKiosk.h"
 #include "QuestOrderWidget.h"
 #include "TutorialComponent.h"
@@ -398,6 +399,26 @@ void APlayerControl::Client_EndSpeakQuest_Implementation()
 	// if (auto PopupManager = UPopupManager::Get(GetWorld()))
 	// 	PopupManager->ShowMsgBox(TEXT("SpeakQuest"), TEXT("QUEST COMPLETE"), EMsgBoxType::OK, FOnMsgBoxOkDelegate());
 	RequestSpeakResult();
+}
+
+void APlayerControl::Client_InteractKiosk_Implementation()
+{
+	APlayerActor* MyPlayer = Cast<APlayerActor>(GetPawn());
+	UInteractableComponent* component = nullptr;
+	if (MyPlayer)
+	{
+		component = MyPlayer->InteractionSystem->CurrentTarget;
+	}
+	if (!component->bCanInteract)
+		return;
+	
+	// 델리게이트 브로드캐스트
+	component->OnInteractionTriggered.Broadcast(GetPawn());
+
+	if (HasAuthority())
+	{
+		PRINTLOG( TEXT("InteractableComponent::TriggerInteraction server server"));
+	}
 }
 
 void APlayerControl::Client_RequestSpeakScenario_Implementation(AWheatly* Wheatly)

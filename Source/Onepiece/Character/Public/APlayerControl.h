@@ -42,6 +42,9 @@ public:
 	/// @brief SpeakQuest 완료를 클라이언트에게 알리고 관련 UI를 최종 처리합니다.
 	UFUNCTION(Client, Reliable)
 	void Client_EndSpeakQuest();
+	
+	UFUNCTION(Client, Reliable)
+	void Client_InteractKiosk();
 
 	/// @brief Client에게 Speak 시나리오 데이터를 요청하도록 지시 (Client RPC)
 	/// @param Wheatly [in] 요청을 시작한 Wheatly 액터

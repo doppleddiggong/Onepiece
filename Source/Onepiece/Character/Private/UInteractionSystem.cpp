@@ -8,6 +8,7 @@
 #include "UInteractionSystem.h"
 
 #include "APlayerActor.h"
+#include "APlayerControl.h"
 #include "GameLogging.h"
 #include "InteractableComponent.h"
 #include "Camera/PlayerCameraManager.h"
@@ -65,9 +66,18 @@ void UInteractionSystem::TryInteract()
 
 		case EInteractionType::Button:
 			// PRINT_STRING(TEXT("부엉 부엉 %s"), *OwnerPlayer->GetName());
+			PRINTLOG(TEXT("UInteractionSystem: Interacting with %s, %s"), *GetOwner()->GetName(), *OwnerPlayer->GetName());
 			CurrentTarget->TriggerInteraction(OwnerPlayer);
 			break;
-
+		
+		case EInteractionType::Kiosk:
+			PRINTLOG(TEXT("UInteractionSystem: Interacting with %s"), *GetOwner()->GetName());
+			if (APlayerControl* pc = Cast<APlayerControl>(OwnerPlayer->GetController()))
+			{
+				pc->Client_InteractKiosk();
+			}
+			break;
+		
 		default:
 			break;
 	}
