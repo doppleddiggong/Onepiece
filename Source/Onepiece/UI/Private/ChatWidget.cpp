@@ -30,7 +30,7 @@ UChatWidget::UChatWidget(const FObjectInitializer& ObjectInitializer) : Super(Ob
 void UChatWidget::NativeConstruct()
 {
 	Super::NativeConstruct();
-	
+
 	SetIsFocusable(true);
 }
 
@@ -57,42 +57,50 @@ void UChatWidget::SendMessage(FResponseUserMe sendUser, FText inMessage, int32 P
 	newChat->SetPlayerName(FText::FromString(sendUser.username));
 	newChat->SetMessage(inMessage);
 	newChat->SetChatBubbleColor(bIsSender);
-	
-	
-	// 현재 스크롤 값 & 마지막 스크롤 값
-	float scrollOffset = ScrollBox_ChatBox->GetScrollOffset();
-	float scrollOffsetOfEnd = ScrollBox_ChatBox->GetScrollOffsetOfEnd();
-	PRINTLOG(TEXT("before scrollend - ScrollOffset: %f, ScrollOffsetOfEnd: %f"), scrollOffset, scrollOffsetOfEnd);
-	
-	ScrollBox_ChatBox->SetScrollOffset(scrollOffsetOfEnd);
-	
+
 	// ChatBox에 추가 & 정렬
-	VerticalBox_Content->AddChild(newChat);	
+	VerticalBox_Content->AddChild(newChat);
 
 	UScrollBoxSlot* parentSlot = Cast<UScrollBoxSlot>(newChat->Slot);
 	if (parentSlot)
 	{
 		parentSlot->SetHorizontalAlignment((bIsSender ? HAlign_Left : HAlign_Right));
 	}
+
+	// 위젯의 레이아웃을 강제로 갱신하여 정확한 크기 계산
+	newChat->ForceLayoutPrepass();
+
+	// 부모 위젯들의 레이아웃을 무효화하여 다음 틱에 재계산
+	VerticalBox_Content->InvalidateLayoutAndVolatility();
+	ScrollBox_ChatBox->InvalidateLayoutAndVolatility();
+
+	// 현재 스크롤 값 & 마지막 스크롤 값
+	float scrollOffset = ScrollBox_ChatBox->GetScrollOffset();
+	float scrollOffsetOfEnd = ScrollBox_ChatBox->GetScrollOffsetOfEnd();
+	PRINTLOG(TEXT("before scrollend - ScrollOffset: %f, ScrollOffsetOfEnd: %f"), scrollOffset, scrollOffsetOfEnd);
 	
-	// 메시지 받은 자가 Sender일 때 or 스크롤이 맨 마지막일 때
 	if (bIsSender || scrollOffset == scrollOffsetOfEnd)
-	{		
-		FTimerHandle handle;
-		GetWorld()->GetTimerManager().SetTimer(handle, [this]()
+	{
+		// 레이아웃 갱신 후 스크롤 (타이머 사용)
+		FTimerHandle ScrollTimerHandle;
+		GetWorld()->GetTimerManager().SetTimer(ScrollTimerHandle, [this, newChat]()
 		{
-			// 스크롤 위치를 맨 끝으로 해라!
+			// 마지막 위젯을 뷰에 표시
+			ScrollBox_ChatBox->ScrollWidgetIntoView(newChat, true, EDescendantScrollDestination::BottomOrRight);
+
+			// 추가로 ScrollToEnd도 실행
 			ScrollBox_ChatBox->ScrollToEnd();
 		}, 0.1f, false);
 	}
-	
+
 	UWidgetBlueprintLibrary::SetFocusToGameViewport();
 	PC->SetInputMode(FInputModeGameOnly());
+	PC->SetShowMouseCursor(false);
 }
 
 void UChatWidget::FocusInput()
 {
-	ChatInputBox->FocusInput();
+	ChatInputBox->SetInputFocus(true);
 }
 
 UChatBoxWidget* UChatWidget::CreateChatBox(bool bIsSender)

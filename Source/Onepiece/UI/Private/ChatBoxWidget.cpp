@@ -9,14 +9,20 @@
 #include "Components/Image.h"
 #include "Components/TextBlock.h"
 
-void UChatBoxWidget::SetPlayerName(FText InPlayerName) const
+void UChatBoxWidget::SetPlayerName(FText InPlayerName)
 {
 	Txt_Name->SetText(InPlayerName);
 }
 
-void UChatBoxWidget::SetMessage(FText InMessage) const
+void UChatBoxWidget::SetMessage(FText InMessage)
 {
 	Txt_Message->SetText(InMessage);
+
+	// 여러 줄 텍스트의 경우 레이아웃을 강제로 갱신
+	ForceLayoutPrepass();
+
+	// 메시지를 포함하는 Border의 레이아웃 무효화
+	Border_ChatBubble->InvalidateLayoutAndVolatility();
 }
 
 void UChatBoxWidget::SetPlayerProfile(

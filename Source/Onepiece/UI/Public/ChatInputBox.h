@@ -18,10 +18,10 @@ class ONEPIECE_API UChatInputBox : public UUserWidget
 	
 public:
 	virtual void NativeOnInitialized() override;
-	virtual void NativeOnFocusLost(const FFocusEvent& InFocusEvent) override;
+	virtual void NativeTick(const FGeometry& MyGeometry, float InDeltaTime) override;
 	virtual FReply NativeOnPreviewKeyDown(const FGeometry& InGeometry, const FKeyEvent& InKeyEvent) override;
 	FText FlushMessage();
-	void FocusInput();
+	void SetInputFocus(bool bFocus);
 	bool IsAIAsk(const FString& InMessage, FString& OutQuestion) const;
 
 protected:
@@ -34,4 +34,7 @@ protected:
 private:
 	UFUNCTION()
 	void HandleSendClicked();
+
+	// 이전 프레임의 포커스 상태 추적
+	bool bWasFocused = false;
 };

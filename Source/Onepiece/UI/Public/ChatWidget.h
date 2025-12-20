@@ -17,10 +17,10 @@ class ONEPIECE_API UChatWidget : public UUserWidget
 public:
 	UChatWidget(const FObjectInitializer& ObjectInitializer);
 	virtual void NativeConstruct() override;
-	
+
 	UFUNCTION()
 	void SendMessage(FResponseUserMe sendUser, FText inMessage, int32 PlayerIndex);
-	
+
 	void FocusInput();
 	
 protected:

@@ -15,9 +15,9 @@ class ONEPIECE_API UChatBoxWidget : public UUserWidget
 {
 	GENERATED_BODY()
 	
-public:	
-	void SetPlayerName(FText InPlayerName) const;
-	void SetMessage(FText InMessage) const;
+public:
+	void SetPlayerName(FText InPlayerName);
+	void SetMessage(FText InMessage);
 
 	void SetPlayerProfile(
 		FLinearColor InBgColor,
