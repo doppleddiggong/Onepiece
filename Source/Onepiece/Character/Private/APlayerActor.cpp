@@ -475,7 +475,7 @@ void APlayerActor::Cmd_Info_Implementation()
 			Popup->InitRead(GS->ReadScenarioData);
 	}
 	else if (
-		PS->bReadQuestIng &&
+		PS->bListenQuestIng &&
 		!PS->bListenQuestCompleted )
 	{
 		auto QuestRole = GetQuestRole();
