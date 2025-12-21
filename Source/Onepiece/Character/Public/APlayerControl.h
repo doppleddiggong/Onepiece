@@ -57,13 +57,19 @@ public:
 	UFUNCTION(Server, Reliable)
 	void Server_SyncSpeakScenarioData(class AWheatly* Wheatly, const struct FResponseSpeakScenario& Data);
 
+	/// @brief Door 메시지를 서버를 통해 전송 (Server RPC)
+	/// @param InDoorIndex [in] Door 인덱스
+	/// @param bOpen [in] 열기 여부
+	UFUNCTION(Server, Reliable)
+	void Server_SendDoorMessage(int32 InDoorIndex, bool bOpen);
+
 protected:
     virtual void BeginPlay() override;
     virtual void SetupInputComponent() override;
 
 	/// @brief DoorMessage 이벤트 핸들러
 	UFUNCTION()
-	void OnDoorMessage(int32 InDoorIndex, bool bInOpen);
+	void OnDoorMessage(int32 InDoorIndex, bool bInOpen, AActor* EventInstigator);
 
 	// --- Input Assets ---
 	UPROPERTY(EditDefaultsOnly, Category="Input")

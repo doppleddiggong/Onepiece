@@ -348,7 +348,7 @@ void AWheatly::OnInteractionTriggered(AActor* InteractingActor)
 		if (PS->IsSpeakQuestCompleted())
 		{
 			if ( PC )
-				PC->Client_ToastMessage(TEXT("Alreay Clear SpeakQuest"));
+				PC->Client_ToastMessage(TEXT("Already Clear SpeakQuest"));
 
 			return;
 		}

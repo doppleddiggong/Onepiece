@@ -70,7 +70,7 @@ void ADoor::UpdateDoor(float InAlpha)
 	}
 }
 
-void ADoor::OnDoorMessage(int32 InDoorIndex, bool bInOpen)
+void ADoor::OnDoorMessage(int32 InDoorIndex, bool bInOpen, AActor* EventInstigator)
 {
 	if (InDoorIndex != DoorIndex)
 		return;

@@ -26,6 +26,7 @@
 #include "ULingoGameInstanceSubsystem.h"
 #include "ADropper.h"
 #include "ALingoGameState.h"
+#include "ANetworkBroadcastActor.h"
 #include "luggage.h"
 #include "EngineUtils.h"
 #include "GameLogging.h"
@@ -494,6 +495,19 @@ void APlayerControl::Server_SyncSpeakScenarioData_Implementation(AWheatly* Wheat
 	PRINTLOG(TEXT("[APlayerControl] Server successfully synced scenario data to Wheatly"));
 }
 
+void APlayerControl::Server_SendDoorMessage_Implementation(int32 InDoorIndex, bool bOpen)
+{
+	if (!HasAuthority())
+		return;
+
+	// Pawn을 EventInstigator로 전달
+	if (APawn* MyPawn = GetPawn())
+	{
+		ANetworkBroadcastActor::Get(GetWorld())->SendDoorMessage(InDoorIndex, bOpen, MyPawn);
+		PRINTLOG(TEXT("[APlayerControl] Server sending DoorMessage: Index=%d, Open=%d"), InDoorIndex, bOpen);
+	}
+}
+
 void APlayerControl::UpdateSpeakWidget(int32 StepIndex)
 {
 	if (APlayerActor* PlayerActor = Cast<APlayerActor>(GetPawn()))
@@ -658,7 +672,7 @@ void APlayerControl::OnChatAnswerReceived(FResponseChatAnswers& ResponseData, bo
 	}
 }
 
-void APlayerControl::OnDoorMessage(int32 InDoorIndex, bool bInOpen)
+void APlayerControl::OnDoorMessage(int32 InDoorIndex, bool bInOpen, AActor* EventInstigator)
 {
 	// 서버에서만 실행
 	if (!HasAuthority())
@@ -676,18 +690,28 @@ void APlayerControl::OnDoorMessage(int32 InDoorIndex, bool bInOpen)
 	// End DoorIndex에 따라 퀘스트 완료 처리
 	if (InDoorIndex == DoorGroup::Step1_End)
 	{
+		// ReadQuest: 협력 퀘스트, 모든 플레이어 완료
 		PS->SetReadQuestCompleted();
 	}
 	else if (InDoorIndex == DoorGroup::Step2_End)
 	{
+		// ListenQuest: 협력 퀘스트, 모든 플레이어 완료
 		PS->SetListenQuestCompleted();
 	}
 	else if (InDoorIndex == DoorGroup::Step3_End)
 	{
+		// SpeakQuest: 개인 퀘스트, EventInstigator 확인
+		if (EventInstigator != nullptr && EventInstigator != GetPawn())
+			return;
+		
 		PS->SetSpeakQuestCompleted();
 	}
 	else if (InDoorIndex == DoorGroup::Step4_End)
 	{
+		// WriteQuest: 개인 퀘스트, EventInstigator 확인
+		if (EventInstigator != nullptr && EventInstigator != GetPawn())
+			return;
+		
 		PS->SetWriteQuestCompleted();
 	}
 }

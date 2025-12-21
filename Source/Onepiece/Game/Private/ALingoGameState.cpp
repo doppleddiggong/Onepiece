@@ -276,7 +276,11 @@ void ALingoGameState::Multicast_UpdateQuestType_Implementation(const EQuestType 
 
 void ALingoGameState::Multicast_ShowReadQuestPopup_Implementation(const FResponseReadScenario& InScenarioData)
 {
-	// 0.5초 딜레이 후 팝업 표시 (플레이어 Role 동기화를 위함)
+	// 서버에서만 실행 (클라이언트는 OnRep_ReadScenarioData에서 처리)
+	if (!HasAuthority())
+		return;
+	
+	// 1.0초 딜레이 후 팝업 표시 (플레이어 Role 동기화를 위함)
 	if (UWorld* World = GetWorld())
 	{
 		FTimerHandle TimerHandle;
@@ -293,13 +297,17 @@ void ALingoGameState::Multicast_ShowReadQuestPopup_Implementation(const FRespons
 				}
 			}
 			
-		}, 0.5f, false);
+		}, 1.0f, false);
 	}
 }
 
 void ALingoGameState::Multicast_ShowListenQuestPopup_Implementation(const FResponseListenScenario& InScenarioData)
 {
-	// 0.5초 딜레이 후 팝업 표시 (플레이어 Role 동기화를 위함)
+	// 서버에서만 실행 (클라이언트는 OnRep_ListenScenarioData에서 처리)
+	if (!HasAuthority())
+		return;
+	
+	// 1.0초 딜레이 후 팝업 표시 (플레이어 Role 동기화를 위함)
 	if (UWorld* World = GetWorld())
 	{
 		FTimerHandle TimerHandle;
@@ -316,13 +324,43 @@ void ALingoGameState::Multicast_ShowListenQuestPopup_Implementation(const FRespo
 				}
 			}
 			
-		}, 0.5f, false);
+		}, 1.0f, false);
 	}
 }
 
 void ALingoGameState::OnRep_ReadScenarioData()
 {
 	OnQuestScenarioDataUpdated.Broadcast();
+	
+	// 클라이언트에서 데이터가 복제된 후 팝업 표시
+	if (!HasAuthority())
+	{
+		// 데이터 유효성 확인
+		if (ReadScenarioData.target_data.Num() == 0)
+		{
+			PRINTLOG(TEXT("[OnRep_ReadScenarioData] Data is empty, skipping Cmd_Info"));
+			return;
+		}
+		
+		// 1.0초 딜레이 후 Cmd_Info 호출 (플레이어 Role 동기화를 위함)
+		if (UWorld* World = GetWorld())
+		{
+			FTimerHandle TimerHandle;
+			World->GetTimerManager().SetTimer(TimerHandle, [this]()
+			{
+				for (FConstPlayerControllerIterator It = GetWorld()->GetPlayerControllerIterator(); It; ++It)
+				{
+					if (APlayerController* PC = It->Get())
+					{
+						if (APlayerActor* PlayerActor = Cast<APlayerActor>(PC->GetPawn()))
+						{
+							PlayerActor->Cmd_Info();
+						}
+					}
+				}
+			}, 1.0f, false);
+		}
+	}
 }
 
 void ALingoGameState::OnRep_ReadResult()
@@ -333,6 +371,38 @@ void ALingoGameState::OnRep_ReadResult()
 void ALingoGameState::OnRep_ListenScenarioData()
 {
 	OnQuestScenarioDataUpdated.Broadcast();
+	
+	// 클라이언트에서 데이터가 복제된 후 팝업 표시
+	if (!HasAuthority())
+	{
+		// 데이터 유효성 확인
+		if (ListenScenarioData.full_data.Kor.IsEmpty() && 
+			ListenScenarioData.word_data1.Kor.IsEmpty() && 
+			ListenScenarioData.word_data2.Kor.IsEmpty())
+		{
+			PRINTLOG(TEXT("[OnRep_ListenScenarioData] Data is empty, skipping Cmd_Info"));
+			return;
+		}
+		
+		// 1.0초 딜레이 후 Cmd_Info 호출 (플레이어 Role 동기화를 위함)
+		if (UWorld* World = GetWorld())
+		{
+			FTimerHandle TimerHandle;
+			World->GetTimerManager().SetTimer(TimerHandle, [this]()
+			{
+				for (FConstPlayerControllerIterator It = GetWorld()->GetPlayerControllerIterator(); It; ++It)
+				{
+					if (APlayerController* PC = It->Get())
+					{
+						if (APlayerActor* PlayerActor = Cast<APlayerActor>(PC->GetPawn()))
+						{
+							PlayerActor->Cmd_Info();
+						}
+					}
+				}
+			}, 1.0f, false);
+		}
+	}
 }
 
 void ALingoGameState::OnRep_ListenResult()

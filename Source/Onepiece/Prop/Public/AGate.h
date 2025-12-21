@@ -35,7 +35,7 @@ protected:
     /// @param InGateID [in] 대상 게이트 식별자입니다.
     /// @param Open [in] true이면 문을 열고 false이면 닫습니다.
     UFUNCTION()
-    void OnDoorMessage(int32 InGateID, bool Open);
+    void OnDoorMessage(int32 InGateID, bool Open, AActor* EventInstigator);
 
     /// @brief 플레이어가 감지 범위에 들어왔을 때 호출됩니다.
     UFUNCTION()

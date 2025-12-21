@@ -117,10 +117,10 @@ void ANetworkBroadcastActor::Server_SendDoorMessage_Implementation(int InDoorInd
 	PRINTLOG(TEXT("NetworkBroadcastActor: Server received DoorMessage - Index: %d, Open: %d"), InDoorIndex, bOpen);
 
 	// Multicast로 모든 클라이언트에게 전파
-	Multicast_SendDoorMessage(InDoorIndex, bOpen);
+	Multicast_SendDoorMessage(InDoorIndex, bOpen, EventInstigator);
 }
 
-void ANetworkBroadcastActor::Multicast_SendDoorMessage_Implementation(int InDoorIndex, bool bOpen)
+void ANetworkBroadcastActor::Multicast_SendDoorMessage_Implementation(int InDoorIndex, bool bOpen, AActor* EventInstigator)
 {
 	PRINTLOG(TEXT("NetworkBroadcastActor: Multicast DoorMessage - Index: %d, Open: %d, Role: %s"),
 		InDoorIndex, bOpen, GetLocalRole() == ROLE_Authority ? TEXT("Server") : TEXT("Client"));
@@ -128,7 +128,7 @@ void ANetworkBroadcastActor::Multicast_SendDoorMessage_Implementation(int InDoor
 	UBroadcastManager* LocalBroadcast = GetLocalBroadcastManager();
 	if (LocalBroadcast)
 	{
-		LocalBroadcast->SendDoorMessage(InDoorIndex, bOpen);
+		LocalBroadcast->SendDoorMessage(InDoorIndex, bOpen, EventInstigator);
 		PRINTLOG(TEXT("NetworkBroadcastActor: Local BroadcastManager triggered for DoorMessage"));
 	}
 	else

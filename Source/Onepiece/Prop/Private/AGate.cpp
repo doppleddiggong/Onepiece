@@ -59,7 +59,7 @@ void AGate::BeginPlay()
  * @param InGateID 조작할 게이트 식별자입니다.
  * @param Open 게이트를 열지 닫을지 여부입니다.
  */
-void AGate::OnDoorMessage(const int32 InGateID, const bool Open)
+void AGate::OnDoorMessage(const int32 InGateID, const bool Open, AActor* EventInstigator)
 {
     if ( InGateID != this->GateID)
     {

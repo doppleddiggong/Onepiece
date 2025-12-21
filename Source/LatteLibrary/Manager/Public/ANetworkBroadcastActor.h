@@ -54,7 +54,7 @@ protected:
 	void Server_SendDoorMessage(int InDoorIndex, bool bOpen, AActor* EventInstigator);
 
 	UFUNCTION(NetMulticast, Reliable)
-	void Multicast_SendDoorMessage(int InDoorIndex, bool bOpen);
+	void Multicast_SendDoorMessage(int InDoorIndex, bool bOpen, AActor* EventInstigator);
 
 public:
 	// ========================================

@@ -702,8 +702,8 @@ void APlayerActor::Server_NotifySpeakJudgeComplete_Implementation(const FRespons
 	{
 		PS->AddSpeakJudes(Response);
 
-		if (auto Popup = UPopupManager::ShowPopupAs<UPopup_SpeakQuestJudes>(GetWorld(), EPopupType::SpeakQuestJudes))
-			Popup->InitPopup(Response);
+		// 클라이언트에게 팝업 표시 지시 (Client RPC)
+		Client_ShowSpeakJudesPopup(Response);
 
 		
 		// SpeakStage에 답변 완료 알림
@@ -711,6 +711,15 @@ void APlayerActor::Server_NotifySpeakJudgeComplete_Implementation(const FRespons
 		{
 			SpeakStage->NotifyAnswerComplete(PS);
 		}
+	}
+}
+
+void APlayerActor::Client_ShowSpeakJudesPopup_Implementation(const FResponseSpeakingJudes& Response)
+{
+	// 클라이언트에서 팝업 표시
+	if (auto Popup = UPopupManager::ShowPopupAs<UPopup_SpeakQuestJudes>(GetWorld(), EPopupType::SpeakQuestJudes))
+	{
+		Popup->InitPopup(Response);
 	}
 }
 

@@ -19,7 +19,7 @@ protected:
 	
 public:
 	UFUNCTION()
-	void OnDoorMessage(int32 InDoorIndex, bool bInOpen);
+	void OnDoorMessage(int32 InDoorIndex, bool bInOpen, AActor* EventInstigator);
 
 	UFUNCTION(BlueprintCallable)
 	void UpdateDoor(float InAlpha);

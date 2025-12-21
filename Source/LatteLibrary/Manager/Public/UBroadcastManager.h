@@ -82,12 +82,12 @@ public:
 
 
 
-	DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnDoorMessage, int, DoorIndex, bool, Open);
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE_ThreeParams(FOnDoorMessage, int, DoorIndex, bool, Open, AActor*, EventInstigator);
 	UPROPERTY(BlueprintAssignable, Category="Events")
 	FOnDoorMessage OnDoorMessage;
 
 	UFUNCTION(BlueprintCallable, Category="Events")
-	void SendDoorMessage(int InDoorIndex, bool InOpen);
+	void SendDoorMessage(int InDoorIndex, bool InOpen, AActor* EventInstigator);
 
 
 	DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FWeightSwitch, int, ButtonIndex, bool, bIsActive);
