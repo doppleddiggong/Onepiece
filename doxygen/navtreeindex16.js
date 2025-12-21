@@ -1,5 +1,8 @@
 var NAVTREEINDEX16 =
 {
+"structFListenScoreDetail.html#a8791ad06e5cfc8cd0332208716fc331d":[2,0,67,1],
+"structFListenTargetData.html":[2,0,68],
+"structFListenTargetData.html#a18e63321df15950d4060c85a58eedc53":[2,0,68,0],
 "structFListenTargetData.html#a444862ebfce47c3dd4a1af7b151fc041":[2,0,68,1],
 "structFLuggageData.html":[2,0,70],
 "structFLuggageData.html#a193a064c0977170ec7831f8196f4ff9c":[2,0,70,3],
@@ -246,8 +249,5 @@ var NAVTREEINDEX16 =
 "structFResponseUserRegister.html#ad9694a94a61bda11bfbe3d278555faf3":[2,0,106,3],
 "structFResponseUserToken.html":[2,0,107],
 "structFResponseUserToken.html#a2cf3b3fcc2df219d7ebdc5e1341950a4":[2,0,107,2],
-"structFResponseUserToken.html#a65a555949e2ac9075bc44b2cfc7779bb":[2,0,107,0],
-"structFResponseUserToken.html#a9d00d514e295c13406b14963e7c7a4ea":[2,0,107,1],
-"structFResponseWriteData.html":[2,0,108],
-"structFResponseWriteData.html#a2c4673766372a8260cb2e56ff8e965c0":[2,0,108,0]
+"structFResponseUserToken.html#a65a555949e2ac9075bc44b2cfc7779bb":[2,0,107,0]
 };

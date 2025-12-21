@@ -184,12 +184,12 @@ $(document).ready(function(){initNavTree('UBroadcastManager_8h_source.html','');
 <div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
 <div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
 <div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno"><a class="line" href="classUBroadcastManager.html#a67a295550c1ead6b3224e4e147872c4d">   85</a></span>    DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnDoorMessage, <span class="keywordtype">int</span>, DoorIndex, <span class="keywordtype">bool</span>, Open);</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno"><a class="line" href="classUBroadcastManager.html#abac991f0ebf159e6615169c758728938">   85</a></span>    DECLARE_DYNAMIC_MULTICAST_DELEGATE_ThreeParams(FOnDoorMessage, <span class="keywordtype">int</span>, DoorIndex, <span class="keywordtype">bool</span>, Open, AActor*, EventInstigator);</div>
 <div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    UPROPERTY(BlueprintAssignable, Category=&quot;Events&quot;)</div>
 <div class="line"><a id="l00087" name="l00087"></a><span class="lineno"><a class="line" href="classUBroadcastManager.html#a1d306318cbe7d73bb1ab6d9f427658d9">   87</a></span>    FOnDoorMessage OnDoorMessage;</div>
 <div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
 <div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    UFUNCTION(BlueprintCallable, Category=&quot;Events&quot;)</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    <span class="keywordtype">void</span> SendDoorMessage(<span class="keywordtype">int</span> InDoorIndex, <span class="keywordtype">bool</span> InOpen);</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    <span class="keywordtype">void</span> SendDoorMessage(<span class="keywordtype">int</span> InDoorIndex, <span class="keywordtype">bool</span> InOpen, AActor* EventInstigator);</div>
 <div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
 <div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
 <div class="line"><a id="l00093" name="l00093"></a><span class="lineno"><a class="line" href="classUBroadcastManager.html#a3429649c7670232f16dacf76d038eed4">   93</a></span>    DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FWeightSwitch, <span class="keywordtype">int</span>, ButtonIndex, <span class="keywordtype">bool</span>, bIsActive);</div>
@@ -291,7 +291,7 @@ $(document).ready(function(){initNavTree('UBroadcastManager_8h_source.html','');
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_399370037b6f5ff6b0840148d18ec8d9.html">LatteLibrary</a></li><li class="navelem"><a class="el" href="dir_3895d977c26767e128462eaa7d00849f.html">Manager</a></li><li class="navelem"><a class="el" href="dir_ece11de4a6442a77ccaf0d9d7adf8213.html">Public</a></li><li class="navelem"><a class="el" href="UBroadcastManager_8h.html">UBroadcastManager.h</a></li>
-    <li class="footer">생성시간 : 일 12월 21 2025 10:02:41, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 일 12월 21 2025 11:14:30, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

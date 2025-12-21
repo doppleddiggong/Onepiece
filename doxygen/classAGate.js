@@ -4,7 +4,7 @@ var classAGate =
     [ "BeginPlay", "classAGate.html#a15d812fadd17df2b56d3157df555727f", null ],
     [ "CloseDoor", "classAGate.html#ab83a2e573215c998455f7edf71aa5807", null ],
     [ "IsPlayerActor", "classAGate.html#a0aac26a835f62650db64de1cb0e691f2", null ],
-    [ "OnDoorMessage", "classAGate.html#a889b91ba704a598adbf0d443b3f74f4c", null ],
+    [ "OnDoorMessage", "classAGate.html#a7005fdd23cdadf59721c0d346ce8e2d0", null ],
     [ "OnOverlapBegin", "classAGate.html#ad25807f4959f5d5ad657205a62f1a673", null ],
     [ "OnOverlapEnd", "classAGate.html#abcc031c1aefc68dc90ffbdb3b2d246e4", null ],
     [ "OpenDoor", "classAGate.html#a4dd94b3647126dcfce64c972ebb8667f", null ],

@@ -135,8 +135,8 @@ Public 멤버 함수</h2></td></tr>
 <tr class="separator:ac83075fce74a091a3316ee4f0a906156"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3fd0eaa1a7e1e7aca20d64d89f6192f8" id="r_a3fd0eaa1a7e1e7aca20d64d89f6192f8"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classADoor.html#a3fd0eaa1a7e1e7aca20d64d89f6192f8">CloseDoor_Implementation</a> ()</td></tr>
 <tr class="separator:a3fd0eaa1a7e1e7aca20d64d89f6192f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a032c2f3cecd82c880fddd13dea3573cd" id="r_a032c2f3cecd82c880fddd13dea3573cd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classADoor.html#a032c2f3cecd82c880fddd13dea3573cd">OnDoorMessage</a> (int32 InDoorIndex, bool bInOpen)</td></tr>
-<tr class="separator:a032c2f3cecd82c880fddd13dea3573cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8304a8cb735bc86dd63d4e827085d6a4" id="r_a8304a8cb735bc86dd63d4e827085d6a4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classADoor.html#a8304a8cb735bc86dd63d4e827085d6a4">OnDoorMessage</a> (int32 InDoorIndex, bool bInOpen, AActor *EventInstigator)</td></tr>
+<tr class="separator:a8304a8cb735bc86dd63d4e827085d6a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa91e930c088a603a3a07694063bd4b55" id="r_aa91e930c088a603a3a07694063bd4b55"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classADoor.html#aa91e930c088a603a3a07694063bd4b55">OpenDoor</a> ()</td></tr>
 <tr class="separator:aa91e930c088a603a3a07694063bd4b55"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afe9bad8f51e54c0228a79287ce70410b" id="r_afe9bad8f51e54c0228a79287ce70410b"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classADoor.html#afe9bad8f51e54c0228a79287ce70410b">OpenDoor_Implementation</a> ()</td></tr>
@@ -264,7 +264,7 @@ Private 속성</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">   32</span>{</div>
 <div class="line"><span class="lineno">   33</span>    Super::BeginPlay();</div>
 <div class="line"><span class="lineno">   34</span> </div>
-<div class="line"><span class="lineno">   35</span>    UBroadcastManager::Get(GetWorld())-&gt;OnDoorMessage.AddDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classADoor.html#a032c2f3cecd82c880fddd13dea3573cd">ADoor::OnDoorMessage</a>);</div>
+<div class="line"><span class="lineno">   35</span>    UBroadcastManager::Get(GetWorld())-&gt;OnDoorMessage.AddDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classADoor.html#a8304a8cb735bc86dd63d4e827085d6a4">ADoor::OnDoorMessage</a>);</div>
 <div class="line"><span class="lineno">   36</span> </div>
 <div class="line"><span class="lineno">   37</span>    <span class="comment">// 맵 배치 시 설정한 초기 상태 적용</span></div>
 <div class="line"><span class="lineno">   38</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classADoor.html#a7da53aef19eba9e0ca4c1368de54f782">bStartOpened</a>)</div>
@@ -278,10 +278,10 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">   46</span>        <a class="code hl_function" href="classADoor.html#a4ba5b25cac1027264fd35252ab18ea12">UpdateDoor</a>(<a class="code hl_variable" href="classADoor.html#a6a5a3d6a33a240c534fba618ab4ae703">Alpha</a>);</div>
 <div class="line"><span class="lineno">   47</span>    }</div>
 <div class="line"><span class="lineno">   48</span>}</div>
-<div class="ttc" id="aclassADoor_html_a032c2f3cecd82c880fddd13dea3573cd"><div class="ttname"><a href="classADoor.html#a032c2f3cecd82c880fddd13dea3573cd">ADoor::OnDoorMessage</a></div><div class="ttdeci">void OnDoorMessage(int32 InDoorIndex, bool bInOpen)</div><div class="ttdef"><b>Definition</b> <a href="ADoor_8cpp_source.html#l00073">ADoor.cpp:73</a></div></div>
 <div class="ttc" id="aclassADoor_html_a4ba5b25cac1027264fd35252ab18ea12"><div class="ttname"><a href="classADoor.html#a4ba5b25cac1027264fd35252ab18ea12">ADoor::UpdateDoor</a></div><div class="ttdeci">void UpdateDoor(float InAlpha)</div><div class="ttdef"><b>Definition</b> <a href="ADoor_8cpp_source.html#l00050">ADoor.cpp:50</a></div></div>
 <div class="ttc" id="aclassADoor_html_a6a5a3d6a33a240c534fba618ab4ae703"><div class="ttname"><a href="classADoor.html#a6a5a3d6a33a240c534fba618ab4ae703">ADoor::Alpha</a></div><div class="ttdeci">float Alpha</div><div class="ttdef"><b>Definition</b> <a href="ADoor_8h_source.html#l00066">ADoor.h:66</a></div></div>
 <div class="ttc" id="aclassADoor_html_a7da53aef19eba9e0ca4c1368de54f782"><div class="ttname"><a href="classADoor.html#a7da53aef19eba9e0ca4c1368de54f782">ADoor::bStartOpened</a></div><div class="ttdeci">bool bStartOpened</div><div class="ttdoc">맵 배치 시 문이 열린 상태로 시작할지 여부</div><div class="ttdef"><b>Definition</b> <a href="ADoor_8h_source.html#l00057">ADoor.h:57</a></div></div>
+<div class="ttc" id="aclassADoor_html_a8304a8cb735bc86dd63d4e827085d6a4"><div class="ttname"><a href="classADoor.html#a8304a8cb735bc86dd63d4e827085d6a4">ADoor::OnDoorMessage</a></div><div class="ttdeci">void OnDoorMessage(int32 InDoorIndex, bool bInOpen, AActor *EventInstigator)</div><div class="ttdef"><b>Definition</b> <a href="ADoor_8cpp_source.html#l00073">ADoor.cpp:73</a></div></div>
 </div><!-- fragment -->
 <p class="reference">다음을 참조함 :  <a class="el" href="ADoor_8h_source.html#l00066">Alpha</a>, <a class="el" href="ADoor_8h_source.html#l00057">bStartOpened</a>, <a class="el" href="ADoor_8cpp_source.html#l00073">OnDoorMessage()</a>, <a class="el" href="ADoor_8cpp_source.html#l00050">UpdateDoor()</a>.</p>
 <div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -349,8 +349,8 @@ Private 속성</h2></td></tr>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="a032c2f3cecd82c880fddd13dea3573cd" name="a032c2f3cecd82c880fddd13dea3573cd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a032c2f3cecd82c880fddd13dea3573cd">&#9670;&#160;</a></span>OnDoorMessage()</h2>
+<a id="a8304a8cb735bc86dd63d4e827085d6a4" name="a8304a8cb735bc86dd63d4e827085d6a4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8304a8cb735bc86dd63d4e827085d6a4">&#9670;&#160;</a></span>OnDoorMessage()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -365,7 +365,13 @@ Private 속성</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>bInOpen</em>&#160;</td>
+          <td class="paramname"><em>bInOpen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">AActor *&#160;</td>
+          <td class="paramname"><em>EventInstigator</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -402,14 +408,14 @@ Private 속성</h2></td></tr>
 <div id="dynsection-5-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-5-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classADoor_a032c2f3cecd82c880fddd13dea3573cd_cgraph.svg" width="374" height="86"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classADoor_a8304a8cb735bc86dd63d4e827085d6a4_cgraph.svg" width="374" height="86"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-6-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-6-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-6-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classADoor_a032c2f3cecd82c880fddd13dea3573cd_icgraph.svg" width="371" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classADoor_a8304a8cb735bc86dd63d4e827085d6a4_icgraph.svg" width="371" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -766,7 +772,7 @@ Private 속성</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classADoor.html">ADoor</a></li>
-    <li class="footer">생성시간 : 일 12월 21 2025 10:02:42, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 일 12월 21 2025 11:14:30, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

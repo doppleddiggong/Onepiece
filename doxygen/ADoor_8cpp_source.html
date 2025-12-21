@@ -146,7 +146,7 @@ $(document).ready(function(){initNavTree('ADoor_8cpp_source.html',''); initResiz
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>{</div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    Super::BeginPlay();</div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    UBroadcastManager::Get(GetWorld())-&gt;OnDoorMessage.AddDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classADoor.html#a032c2f3cecd82c880fddd13dea3573cd">ADoor::OnDoorMessage</a>);</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    UBroadcastManager::Get(GetWorld())-&gt;OnDoorMessage.AddDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classADoor.html#a8304a8cb735bc86dd63d4e827085d6a4">ADoor::OnDoorMessage</a>);</div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="comment">// 맵 배치 시 설정한 초기 상태 적용</span></div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classADoor.html#a7da53aef19eba9e0ca4c1368de54f782">bStartOpened</a>)</div>
@@ -188,7 +188,7 @@ $(document).ready(function(){initNavTree('ADoor_8cpp_source.html',''); initResiz
 </div>
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
 <div class="foldopen" id="foldopen00073" data-start="{" data-end="}">
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno"><a class="line" href="classADoor.html#a032c2f3cecd82c880fddd13dea3573cd">   73</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classADoor.html#a032c2f3cecd82c880fddd13dea3573cd">ADoor::OnDoorMessage</a>(int32 InDoorIndex, <span class="keywordtype">bool</span> bInOpen)</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno"><a class="line" href="classADoor.html#a8304a8cb735bc86dd63d4e827085d6a4">   73</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classADoor.html#a8304a8cb735bc86dd63d4e827085d6a4">ADoor::OnDoorMessage</a>(int32 InDoorIndex, <span class="keywordtype">bool</span> bInOpen, AActor* EventInstigator)</div>
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>{</div>
 <div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    <span class="keywordflow">if</span> (InDoorIndex != <a class="code hl_variable" href="classADoor.html#a23bedd91319f5420c4ba7c77cfc22db4">DoorIndex</a>)</div>
 <div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        <span class="keywordflow">return</span>;</div>
@@ -220,7 +220,6 @@ $(document).ready(function(){initNavTree('ADoor_8cpp_source.html',''); initResiz
 <div class="ttc" id="aADoor_8h_html"><div class="ttname"><a href="ADoor_8h.html">ADoor.h</a></div></div>
 <div class="ttc" id="aFComponentHelper_8h_html"><div class="ttname"><a href="FComponentHelper_8h.html">FComponentHelper.h</a></div><div class="ttdoc">FComponentHelper 구조체를 선언합니다.</div></div>
 <div class="ttc" id="aUBroadcastManager_8h_html"><div class="ttname"><a href="UBroadcastManager_8h.html">UBroadcastManager.h</a></div></div>
-<div class="ttc" id="aclassADoor_html_a032c2f3cecd82c880fddd13dea3573cd"><div class="ttname"><a href="classADoor.html#a032c2f3cecd82c880fddd13dea3573cd">ADoor::OnDoorMessage</a></div><div class="ttdeci">void OnDoorMessage(int32 InDoorIndex, bool bInOpen)</div><div class="ttdef"><b>Definition</b> <a href="ADoor_8cpp_source.html#l00073">ADoor.cpp:73</a></div></div>
 <div class="ttc" id="aclassADoor_html_a1abd1e1a41541b79f767fed937f31a54"><div class="ttname"><a href="classADoor.html#a1abd1e1a41541b79f767fed937f31a54">ADoor::SM_Right</a></div><div class="ttdeci">TObjectPtr&lt; UStaticMeshComponent &gt; SM_Right</div><div class="ttdef"><b>Definition</b> <a href="ADoor_8h_source.html#l00044">ADoor.h:44</a></div></div>
 <div class="ttc" id="aclassADoor_html_a23bedd91319f5420c4ba7c77cfc22db4"><div class="ttname"><a href="classADoor.html#a23bedd91319f5420c4ba7c77cfc22db4">ADoor::DoorIndex</a></div><div class="ttdeci">int32 DoorIndex</div><div class="ttdef"><b>Definition</b> <a href="ADoor_8h_source.html#l00047">ADoor.h:47</a></div></div>
 <div class="ttc" id="aclassADoor_html_a2b88304b40b526981227fffdcfe6992a"><div class="ttname"><a href="classADoor.html#a2b88304b40b526981227fffdcfe6992a">ADoor::SM_Left</a></div><div class="ttdeci">TObjectPtr&lt; UStaticMeshComponent &gt; SM_Left</div><div class="ttdef"><b>Definition</b> <a href="ADoor_8h_source.html#l00042">ADoor.h:42</a></div></div>
@@ -232,6 +231,7 @@ $(document).ready(function(){initNavTree('ADoor_8cpp_source.html',''); initResiz
 <div class="ttc" id="aclassADoor_html_a58a76e91232834c1f9be0f6f0aea3c6e"><div class="ttname"><a href="classADoor.html#a58a76e91232834c1f9be0f6f0aea3c6e">ADoor::ADoor</a></div><div class="ttdeci">ADoor()</div><div class="ttdef"><b>Definition</b> <a href="ADoor_8cpp_source.html#l00013">ADoor.cpp:13</a></div></div>
 <div class="ttc" id="aclassADoor_html_a6a5a3d6a33a240c534fba618ab4ae703"><div class="ttname"><a href="classADoor.html#a6a5a3d6a33a240c534fba618ab4ae703">ADoor::Alpha</a></div><div class="ttdeci">float Alpha</div><div class="ttdef"><b>Definition</b> <a href="ADoor_8h_source.html#l00066">ADoor.h:66</a></div></div>
 <div class="ttc" id="aclassADoor_html_a7da53aef19eba9e0ca4c1368de54f782"><div class="ttname"><a href="classADoor.html#a7da53aef19eba9e0ca4c1368de54f782">ADoor::bStartOpened</a></div><div class="ttdeci">bool bStartOpened</div><div class="ttdoc">맵 배치 시 문이 열린 상태로 시작할지 여부</div><div class="ttdef"><b>Definition</b> <a href="ADoor_8h_source.html#l00057">ADoor.h:57</a></div></div>
+<div class="ttc" id="aclassADoor_html_a8304a8cb735bc86dd63d4e827085d6a4"><div class="ttname"><a href="classADoor.html#a8304a8cb735bc86dd63d4e827085d6a4">ADoor::OnDoorMessage</a></div><div class="ttdeci">void OnDoorMessage(int32 InDoorIndex, bool bInOpen, AActor *EventInstigator)</div><div class="ttdef"><b>Definition</b> <a href="ADoor_8cpp_source.html#l00073">ADoor.cpp:73</a></div></div>
 <div class="ttc" id="aclassADoor_html_a83d17f7530a82669aba8055f297aa76a"><div class="ttname"><a href="classADoor.html#a83d17f7530a82669aba8055f297aa76a">ADoor::CurCount</a></div><div class="ttdeci">int32 CurCount</div><div class="ttdef"><b>Definition</b> <a href="ADoor_8h_source.html#l00065">ADoor.h:65</a></div></div>
 <div class="ttc" id="aclassADoor_html_a8ff307d5acd13d7080fdb51f1300d68f"><div class="ttname"><a href="classADoor.html#a8ff307d5acd13d7080fdb51f1300d68f">ADoor::LeftOpen</a></div><div class="ttdeci">FVector LeftOpen</div><div class="ttdef"><b>Definition</b> <a href="ADoor_8h_source.html#l00060">ADoor.h:60</a></div></div>
 <div class="ttc" id="aclassADoor_html_aa91e930c088a603a3a07694063bd4b55"><div class="ttname"><a href="classADoor.html#aa91e930c088a603a3a07694063bd4b55">ADoor::OpenDoor</a></div><div class="ttdeci">void OpenDoor()</div></div>
@@ -246,7 +246,7 @@ $(document).ready(function(){initNavTree('ADoor_8cpp_source.html',''); initResiz
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_b7459e4428712e32d7c860db6e401a05.html">Interactable</a></li><li class="navelem"><a class="el" href="dir_77257aedd361f850f8a01079e914567e.html">Private</a></li><li class="navelem"><a class="el" href="ADoor_8cpp.html">ADoor.cpp</a></li>
-    <li class="footer">생성시간 : 일 12월 21 2025 10:02:41, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 일 12월 21 2025 11:14:30, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

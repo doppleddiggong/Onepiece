@@ -150,9 +150,9 @@ Protected 멤버 함수</h2></td></tr>
 <tr class="memitem:a0aac26a835f62650db64de1cb0e691f2" id="r_a0aac26a835f62650db64de1cb0e691f2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAGate.html#a0aac26a835f62650db64de1cb0e691f2">IsPlayerActor</a> (const AActor *OtherActor) const</td></tr>
 <tr class="memdesc:a0aac26a835f62650db64de1cb0e691f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">겹친 액터가 플레이어인지 판별합니다.  <br /></td></tr>
 <tr class="separator:a0aac26a835f62650db64de1cb0e691f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a889b91ba704a598adbf0d443b3f74f4c" id="r_a889b91ba704a598adbf0d443b3f74f4c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAGate.html#a889b91ba704a598adbf0d443b3f74f4c">OnDoorMessage</a> (int32 InGateID, bool Open)</td></tr>
-<tr class="memdesc:a889b91ba704a598adbf0d443b3f74f4c"><td class="mdescLeft">&#160;</td><td class="mdescRight">외부 시스템에서 전달된 개폐 메시지를 처리합니다.  <br /></td></tr>
-<tr class="separator:a889b91ba704a598adbf0d443b3f74f4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7005fdd23cdadf59721c0d346ce8e2d0" id="r_a7005fdd23cdadf59721c0d346ce8e2d0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAGate.html#a7005fdd23cdadf59721c0d346ce8e2d0">OnDoorMessage</a> (int32 InGateID, bool Open, AActor *EventInstigator)</td></tr>
+<tr class="memdesc:a7005fdd23cdadf59721c0d346ce8e2d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">외부 시스템에서 전달된 개폐 메시지를 처리합니다.  <br /></td></tr>
+<tr class="separator:a7005fdd23cdadf59721c0d346ce8e2d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad25807f4959f5d5ad657205a62f1a673" id="r_ad25807f4959f5d5ad657205a62f1a673"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAGate.html#ad25807f4959f5d5ad657205a62f1a673">OnOverlapBegin</a> (UPrimitiveComponent *OverlappedComp, AActor *OtherActor, UPrimitiveComponent *OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult &amp;SweepResult)</td></tr>
 <tr class="memdesc:ad25807f4959f5d5ad657205a62f1a673"><td class="mdescLeft">&#160;</td><td class="mdescRight">플레이어가 감지 범위에 들어왔을 때 호출됩니다.  <br /></td></tr>
 <tr class="separator:ad25807f4959f5d5ad657205a62f1a673"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -289,10 +289,10 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">   50</span> </div>
 <div class="line"><span class="lineno">   51</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> EventManager = UBroadcastManager::Get(<span class="keyword">this</span>))</div>
 <div class="line"><span class="lineno">   52</span>    {</div>
-<div class="line"><span class="lineno">   53</span>        EventManager-&gt;OnDoorMessage.AddDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classAGate.html#a889b91ba704a598adbf0d443b3f74f4c">AGate::OnDoorMessage</a>);</div>
+<div class="line"><span class="lineno">   53</span>        EventManager-&gt;OnDoorMessage.AddDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classAGate.html#a7005fdd23cdadf59721c0d346ce8e2d0">AGate::OnDoorMessage</a>);</div>
 <div class="line"><span class="lineno">   54</span>    }</div>
 <div class="line"><span class="lineno">   55</span>}</div>
-<div class="ttc" id="aclassAGate_html_a889b91ba704a598adbf0d443b3f74f4c"><div class="ttname"><a href="classAGate.html#a889b91ba704a598adbf0d443b3f74f4c">AGate::OnDoorMessage</a></div><div class="ttdeci">void OnDoorMessage(int32 InGateID, bool Open)</div><div class="ttdoc">외부 시스템에서 전달된 개폐 메시지를 처리합니다.</div><div class="ttdef"><b>Definition</b> <a href="AGate_8cpp_source.html#l00062">AGate.cpp:62</a></div></div>
+<div class="ttc" id="aclassAGate_html_a7005fdd23cdadf59721c0d346ce8e2d0"><div class="ttname"><a href="classAGate.html#a7005fdd23cdadf59721c0d346ce8e2d0">AGate::OnDoorMessage</a></div><div class="ttdeci">void OnDoorMessage(int32 InGateID, bool Open, AActor *EventInstigator)</div><div class="ttdoc">외부 시스템에서 전달된 개폐 메시지를 처리합니다.</div><div class="ttdef"><b>Definition</b> <a href="AGate_8cpp_source.html#l00062">AGate.cpp:62</a></div></div>
 </div><!-- fragment -->
 <p class="reference">다음을 참조함 :  <a class="el" href="AGate_8cpp_source.html#l00062">OnDoorMessage()</a>.</p>
 <div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -415,8 +415,8 @@ Private 속성</h2></td></tr>
 
 </div>
 </div>
-<a id="a889b91ba704a598adbf0d443b3f74f4c" name="a889b91ba704a598adbf0d443b3f74f4c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a889b91ba704a598adbf0d443b3f74f4c">&#9670;&#160;</a></span>OnDoorMessage()</h2>
+<a id="a7005fdd23cdadf59721c0d346ce8e2d0" name="a7005fdd23cdadf59721c0d346ce8e2d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7005fdd23cdadf59721c0d346ce8e2d0">&#9670;&#160;</a></span>OnDoorMessage()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -434,7 +434,13 @@ Private 속성</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>Open</em>&#160;</td>
+          <td class="paramname"><em>Open</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">AActor *&#160;</td>
+          <td class="paramname"><em>EventInstigator</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -495,14 +501,14 @@ Private 속성</h2></td></tr>
 <div id="dynsection-7-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-7-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classAGate_a889b91ba704a598adbf0d443b3f74f4c_cgraph.svg" width="654" height="86"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classAGate_a7005fdd23cdadf59721c0d346ce8e2d0_cgraph.svg" width="654" height="86"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-8-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-8-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-8-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classAGate_a889b91ba704a598adbf0d443b3f74f4c_icgraph.svg" width="371" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classAGate_a7005fdd23cdadf59721c0d346ce8e2d0_icgraph.svg" width="371" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -998,7 +1004,7 @@ Private 속성</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classAGate.html">AGate</a></li>
-    <li class="footer">생성시간 : 일 12월 21 2025 10:02:42, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 일 12월 21 2025 11:14:30, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

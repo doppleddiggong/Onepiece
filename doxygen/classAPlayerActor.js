@@ -3,6 +3,7 @@ var classAPlayerActor =
     [ "APlayerActor", "classAPlayerActor.html#addb91f2966d3e68a79699ba89be0a659", null ],
     [ "ApplyAnotherValue", "classAPlayerActor.html#a079c2390a56476586e0ced1a5df2ce72", null ],
     [ "BeginPlay", "classAPlayerActor.html#afc3ace6de521cfc26c3a4395215e7ce9", null ],
+    [ "Client_ShowSpeakJudesPopup", "classAPlayerActor.html#a8e98195e55b9fd5a932a38feb650a5e4", null ],
     [ "ClientRPC_ShowGameMessage", "classAPlayerActor.html#a9a0da1264f0f61d8b908de643e010de7", null ],
     [ "Cmd_Info", "classAPlayerActor.html#a145afa6a2e3058f74d9268588cf56ddf", null ],
     [ "Cmd_Jump", "classAPlayerActor.html#a4bbf9c7d111a15814b99b4e32a79cfda", null ],
