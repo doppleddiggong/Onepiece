@@ -32,10 +32,6 @@ private:
 	void OnClickClose();
 
 protected:
-	/** 팝업 전체 배경 */
-	UPROPERTY(meta = (BindWidget))
-	TObjectPtr<class UImage> Popup_BaseBg;
-
 	/** 인터뷰 항목들이 추가될 VerticalBox */
 	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<class UVerticalBox> ScrollBox_Result;
@@ -43,8 +39,6 @@ protected:
 	/** 전체 결과 */
 	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<class UResultStatWidget> Result_AverageScore;
-	UPROPERTY(meta = (BindWidget))
-	TObjectPtr<class UResultStatWidget> Result_Time;
 	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<class UResultStatWidget> Result_Grade;
 	UPROPERTY(meta = (BindWidget))

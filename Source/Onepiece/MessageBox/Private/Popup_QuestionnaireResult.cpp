@@ -9,9 +9,7 @@
 #include "GameLogging.h"
 #include "Components/Spacer.h"
 #include "Popup_QuestionnaireResultItem.h"
-#include "UBroadcastManager.h"
 #include "UPopupManager.h"
-#include "Components/ScrollBox.h"
 #include "UImageButton.h"
 #include "ULingoGameHelper.h"
 #include "UResultStatWidget.h"
@@ -59,6 +57,8 @@ void UPopup_QuestionnaireResult::InitPopup(const FResponseWriteSubmit& InRespons
 			PRINTLOG(TEXT("[Popup_Result] 없어요"));
 		}
 	}
+
+	ScrollBox_Result->ClearChildren();
 	
 	// 피드백 팝업 창 생성
 	// for (const FResponseOcrData& data : ResponseData.ResponseOcrDataArray)
@@ -78,7 +78,7 @@ void UPopup_QuestionnaireResult::InitPopup(const FResponseWriteSubmit& InRespons
 		// 인터뷰 항목 위젯 생성
 		UPopup_QuestionnaireResultItem* ItemWidget = CreateWidget<UPopup_QuestionnaireResultItem>(
 			GetWorld(), QuestionnaireResultItemClass);
-		ItemWidget->InitItem(i, QuestionsKor[i - 1], data);
+		ItemWidget->InitItem(i, QuestionsEng[i - 1], data);
 		ScrollBox_Result->AddChild(ItemWidget);
 	
 		// 마지막 항목이 아니면 Spacer 추가
@@ -103,23 +103,6 @@ void UPopup_QuestionnaireResult::NativeConstruct()
 
 void UPopup_QuestionnaireResult::InitWholeResult(const FResponseWriteResult& InResponseData)
 {
-	if (auto GS = Cast<ALingoGameState>(GetWorld()->GetGameState()))
-	{
-		// Symbol로 타임 처리
-		auto TimeTaken = GS->GetTimeTaken();
-		const int32 Minutes = FMath::FloorToInt(TimeTaken / 60.f);
-		const int32 Seconds = FMath::FloorToInt(TimeTaken) % 60;
-
-		FResultStatData TimeResultData;
-		TimeResultData.WidgetType = EResultItemWidgetType::Symbol;
-		TimeResultData.ColorType = EColorStyleType::Gray;
-		TimeResultData.TitleText = FText::FromString(TEXT("Time"));
-		TimeResultData.SymbolTextureType = EResourceTextureType::Time;
-		TimeResultData.SymbolValue = FString::Printf(TEXT("%02d:%02d"), Minutes, Seconds);
-		Result_Time->InitData(TimeResultData);
-		PRINTLOG(TEXT("[Popup_Result] Time: %d:%d"), Minutes, Seconds);
-	}
-
 	FResultStatData GradeResultData;
 	GradeResultData.WidgetType = EResultItemWidgetType::Grade;
 	GradeResultData.ColorType = EColorStyleType::Gray;
@@ -154,5 +137,6 @@ void UPopup_QuestionnaireResult::OnClickClose()
 		PopupMgr->HideCurrentPopup();
 	}
 
-	UBroadcastManager::Get(GetWorld())->SendDoorMessage(DoorGroup::Step4_End, true);
+	// PlayerController의 Server RPC 호출
+	ANetworkBroadcastActor::Get(GetWorld())->SendDoorMessage(DoorGroup::Step4_End, true, GetOwningPlayer());
 }

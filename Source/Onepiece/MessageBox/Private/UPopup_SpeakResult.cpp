@@ -38,7 +38,7 @@ void UPopup_SpeakResult::OnClickClose()
 		PopupMgr->HideCurrentPopup();
 	}
 
-	UBroadcastManager::Get(GetWorld())->SendDoorMessage(DoorGroup::Step3_End, true);
+	ANetworkBroadcastActor::Get(GetWorld())->SendDoorMessage(DoorGroup::Step3_End, true, GetOwningPlayer());
 }
 
 void UPopup_SpeakResult::InitScore() const

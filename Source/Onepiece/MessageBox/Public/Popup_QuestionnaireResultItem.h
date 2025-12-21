@@ -38,10 +38,7 @@ protected:
 	
 	/** "What is your current country..." 같은 질문 내용 */
 	UPROPERTY(meta = (BindWidget))
-	TObjectPtr<class UTextBlock> Text_Message;
-	
-	UPROPERTY(meta = (BindWidget))
-	TObjectPtr<class UTextBlock> Text_Correction;
+	TObjectPtr<class UTextBlock> Text_Feedback;
 
 private:
 	FResponseWriteData QuestionData;
