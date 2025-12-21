@@ -227,6 +227,7 @@ void ALingoPlayerState::SetSpeakQuestCompleted()
 		return;
 
 	bSpeakQuestCompleted = true;
+	bSpeakQuestIng  = !bSpeakQuestCompleted;
 
 	RefreshQuestState();
 }
@@ -237,6 +238,7 @@ void ALingoPlayerState::SetReadQuestCompleted()
 		return;
 
 	bReadQuestCompleted = true;
+	bReadQuestIng  = !bReadQuestCompleted;
 
 	RefreshQuestState();
 }
@@ -247,6 +249,7 @@ void ALingoPlayerState::SetListenQuestCompleted()
 		return;
 
 	bListenQuestCompleted = true;
+	bListenQuestIng  = !bListenQuestCompleted;
 
 	RefreshQuestState();
 }
@@ -257,6 +260,7 @@ void ALingoPlayerState::SetWriteQuestCompleted()
 		return;
 
 	bWriteQuestCompleted = true;
+	bWriteQuestIng  = !bWriteQuestCompleted;
 
 	RefreshQuestState();
 }
@@ -267,7 +271,7 @@ void ALingoPlayerState::SetReadQuestIng(bool bInProgress)
 		return;
 
 	bReadQuestIng = bInProgress;
-
+	
 	RefreshQuestState();
 }
 
