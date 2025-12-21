@@ -32,6 +32,7 @@ var classUPopup__WriteBoard =
     [ "HorizontalBox_DotLine", "classUPopup__WriteBoard.html#ad5b3fc538d9e7d8213decf2b87436201", null ],
     [ "HorizontalBox_Guide", "classUPopup__WriteBoard.html#a896837d856fca12ae961b6d76ebc3dbe", null ],
     [ "Image_Canvas", "classUPopup__WriteBoard.html#a0483981b6e42904153cfb42d5e2d0fcb", null ],
+    [ "OnCanvasSaved", "classUPopup__WriteBoard.html#a84007f42e310cd9cbf24003aadd530ce", null ],
     [ "OpenDuration", "classUPopup__WriteBoard.html#a5a4c2b75560a3e2d07ed3aa52837278e", null ],
     [ "OpenEaseExponent", "classUPopup__WriteBoard.html#afe75f5ef94f97fbcc8ea1ad9e801524c", null ],
     [ "OpenElapsedTime", "classUPopup__WriteBoard.html#a6124aff28b2b2a0b810bb693ebcd81ad", null ],
@@ -48,7 +49,6 @@ var classUPopup__WriteBoard =
     [ "stepLength", "classUPopup__WriteBoard.html#a0459caf983f9ebbcb72a110a86623694", null ],
     [ "tempFontInfo", "classUPopup__WriteBoard.html#a5294d856668e986192b29d75c14b07ce", null ],
     [ "Text_Guide", "classUPopup__WriteBoard.html#a76914a30b60fb39ad586aa28dbdab54d", null ],
-    [ "Text_Question_En", "classUPopup__WriteBoard.html#a1f7dcb749a9281f299414fd364e57b71", null ],
-    [ "Text_Question_Kr", "classUPopup__WriteBoard.html#afe664b9793a6bf53d0747f827ebbd24e", null ],
+    [ "Text_Question", "classUPopup__WriteBoard.html#a5114cc5515965ad96e6fe6b72965fb1b", null ],
     [ "writeBoardObject", "classUPopup__WriteBoard.html#a4920c2dcaf665043c1565f61ed7145da", null ]
 ];

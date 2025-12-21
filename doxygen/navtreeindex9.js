@@ -1,5 +1,7 @@
 var NAVTREEINDEX9 =
 {
+"classUCompassWidget.html#ae84b056314ca5c69abb7b88ef7d7fc21":[2,0,145,4],
+"classUControllable.html":[2,0,146],
 "classUConveryorButtonAnimInstance.html":[2,0,147],
 "classUConveryorButtonAnimInstance.html#a277ad5ff9caf284e9dd7307d2b33e202":[2,0,147,1],
 "classUConveryorButtonAnimInstance.html#a5862f523250035340ef7fe9f6c93cc37":[2,0,147,2],
@@ -247,7 +249,5 @@ var NAVTREEINDEX9 =
 "classUHoverButton.html#ad3adaebdf420f7c37208a7bf82288edf":[2,0,163,14],
 "classUHoverButton.html#af04af24b8ab1eb2f9b264284b3858d86":[2,0,163,0],
 "classUHoverButton.html#af53cb133619b860ed621047903b79d1f":[2,0,163,12],
-"classUHoverButton.html#af632bfb8278f6e64318437bd758ac76e":[2,0,163,2],
-"classUImageButton.html":[2,0,164],
-"classUImageButton.html#a11eaa595e3618b718caae2356f049489":[2,0,164,19]
+"classUHoverButton.html#af632bfb8278f6e64318437bd758ac76e":[2,0,163,2]
 };

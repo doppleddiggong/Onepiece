@@ -118,113 +118,117 @@ $(document).ready(function(){initNavTree('Popup__WriteBoard_8h_source.html','');
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;<a class="code" href="UBasePopup_8h.html">UBasePopup.h</a>&quot;</span></div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;Popup_WriteBoard.generated.h&quot;</span></div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>UCLASS()</div>
-<div class="foldopen" id="foldopen00014" data-start="{" data-end="};">
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="classUPopup__WriteBoard.html">   14</a></span>class ONEPIECE_API <a class="code hl_class" href="classUPopup__WriteBoard.html">UPopup_WriteBoard</a> : public <a class="code hl_class" href="classUBasePopup.html">UBasePopup</a></div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>{</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    GENERATED_BODY()</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    </div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <a class="code hl_class" href="classUPopup__WriteBoard.html">UPopup_WriteBoard</a>(<span class="keyword">const</span> FObjectInitializer&amp; ObjectInitializer);</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> NativeOnInitialized() <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> NativeConstruct() <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    </div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="comment">// Init Popup</span></div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="keywordtype">void</span> InitPopup(int32 InQid, <span class="keyword">const</span> <a class="code hl_struct" href="structFWriteQuestionData.html">FWriteQuestionData</a>&amp; InQuestionData);</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    FVector2D GetPrevMousePos();</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    </div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="keyword">protected</span>:</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="comment">// Objects</span></div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    UPROPERTY(VisibleAnywhere, BlueprintReadOnly)</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="classUPopup__WriteBoard.html#a3b8840464e57c2ac855c51b4683b7872">   31</a></span>    TObjectPtr&lt;class UTextureRenderTarget2D&gt; RT_Canvas;</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    </div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="comment">// Widgets</span></div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    UPROPERTY(BlueprintReadOnly, meta=(BindWidget))</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="classUPopup__WriteBoard.html#ae6d9a36e7c6dd8b508f680b3208afcf2">   35</a></span>    TObjectPtr&lt;class UOverlay&gt; Overlay_WriteBoard;</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    UPROPERTY(BlueprintReadOnly, meta=(BindWidget))</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="classUPopup__WriteBoard.html#aa77e292fb9899c7eda7a244bd786550f">   37</a></span>    TObjectPtr&lt;class USizeBox&gt; SizeBox_Border;</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    UPROPERTY(BlueprintReadOnly, meta=(BindWidget))</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="classUPopup__WriteBoard.html#afe664b9793a6bf53d0747f827ebbd24e">   39</a></span>    TObjectPtr&lt;class UTextBlock&gt; Text_Question_Kr;</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    UPROPERTY(BlueprintReadOnly, meta=(BindWidget))</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="classUPopup__WriteBoard.html#a1f7dcb749a9281f299414fd364e57b71">   41</a></span>    TObjectPtr&lt;class UTextBlock&gt; Text_Question_En;</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    UPROPERTY(BlueprintReadOnly, meta=(BindWidget))</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="classUPopup__WriteBoard.html#aa84dbecf5405949dd3202d24f1588c43">   43</a></span>    TObjectPtr&lt;class USizeBox&gt; SizeBox_Canvas;</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    UPROPERTY(BlueprintReadOnly, meta=(BindWidget))</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="classUPopup__WriteBoard.html#a7eeac8a6940781cd04ec58dfacdcfb77">   45</a></span>    TObjectPtr&lt;class <a class="code hl_class" href="classUImageButton.html">UImageButton</a>&gt; Button_Save;</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    </div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="comment">// WriteBoard Widgets</span></div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    UPROPERTY(BlueprintReadOnly, meta=(BindWidget))</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="classUPopup__WriteBoard.html#ad5b3fc538d9e7d8213decf2b87436201">   49</a></span>    TObjectPtr&lt;class UHorizontalBox&gt; HorizontalBox_DotLine;</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    UPROPERTY()</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="classUPopup__WriteBoard.html#a8522d6fc57c32d2b953b0a90a61e9211">   51</a></span>    TArray&lt;class UImage*&gt; DotLineImages;</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    </div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="Popup__WriteBoard_8h.html#a1f3da83908054a1684a621418215526a">   11</a></span><a class="code hl_function" href="Popup__WriteBoard_8h.html#a1f3da83908054a1684a621418215526a">DECLARE_DYNAMIC_MULTICAST_DELEGATE</a>(FOnCanvasSaved);</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>UCLASS()</div>
+<div class="foldopen" id="foldopen00017" data-start="{" data-end="};">
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="classUPopup__WriteBoard.html">   17</a></span>class ONEPIECE_API <a class="code hl_class" href="classUPopup__WriteBoard.html">UPopup_WriteBoard</a> : public <a class="code hl_class" href="classUBasePopup.html">UBasePopup</a></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>{</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    GENERATED_BODY()</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <a class="code hl_class" href="classUPopup__WriteBoard.html">UPopup_WriteBoard</a>(<span class="keyword">const</span> FObjectInitializer&amp; ObjectInitializer);</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> NativeOnInitialized() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> NativeConstruct() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <span class="comment">// Init Popup</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="keywordtype">void</span> InitPopup(int32 InQid, <span class="keyword">const</span> <a class="code hl_struct" href="structFWriteQuestionData.html">FWriteQuestionData</a>&amp; InQuestionData);</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    FVector2D GetPrevMousePos();</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    UPROPERTY(BlueprintAssignable)</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="classUPopup__WriteBoard.html#a84007f42e310cd9cbf24003aadd530ce">   33</a></span>    FOnCanvasSaved OnCanvasSaved;</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>protected:</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="comment">// Objects</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    UPROPERTY(VisibleAnywhere, BlueprintReadOnly)</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="classUPopup__WriteBoard.html#a3b8840464e57c2ac855c51b4683b7872">   38</a></span>    TObjectPtr&lt;class UTextureRenderTarget2D&gt; RT_Canvas;</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="comment">// Widgets</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    UPROPERTY(BlueprintReadOnly, meta=(BindWidget))</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="classUPopup__WriteBoard.html#ae6d9a36e7c6dd8b508f680b3208afcf2">   42</a></span>    TObjectPtr&lt;class UOverlay&gt; Overlay_WriteBoard;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    UPROPERTY(BlueprintReadOnly, meta=(BindWidget))</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="classUPopup__WriteBoard.html#aa77e292fb9899c7eda7a244bd786550f">   44</a></span>    TObjectPtr&lt;class USizeBox&gt; SizeBox_Border;</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    UPROPERTY(BlueprintReadOnly, meta=(BindWidget))</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="classUPopup__WriteBoard.html#a5114cc5515965ad96e6fe6b72965fb1b">   46</a></span>    TObjectPtr&lt;class UTextBlock&gt; Text_Question;</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    UPROPERTY(BlueprintReadOnly, meta=(BindWidget))</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="classUPopup__WriteBoard.html#aa84dbecf5405949dd3202d24f1588c43">   48</a></span>    TObjectPtr&lt;class USizeBox&gt; SizeBox_Canvas;</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    UPROPERTY(BlueprintReadOnly, meta=(BindWidget))</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="classUPopup__WriteBoard.html#a7eeac8a6940781cd04ec58dfacdcfb77">   50</a></span>    TObjectPtr&lt;class <a class="code hl_class" href="classUImageButton.html">UImageButton</a>&gt; Button_Save;</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="comment">// WriteBoard Widgets</span></div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    UPROPERTY(BlueprintReadOnly, meta=(BindWidget))</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="classUPopup__WriteBoard.html#a896837d856fca12ae961b6d76ebc3dbe">   54</a></span>    TObjectPtr&lt;class UHorizontalBox&gt; HorizontalBox_Guide;</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="classUPopup__WriteBoard.html#ad5b3fc538d9e7d8213decf2b87436201">   54</a></span>    TObjectPtr&lt;class UHorizontalBox&gt; HorizontalBox_DotLine;</div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    UPROPERTY()</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="classUPopup__WriteBoard.html#a06757e08d1d1e1e5bed74465e35993ce">   56</a></span>    TArray&lt;class UTextBlock*&gt; GuideTexts;</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    UPROPERTY(BlueprintReadOnly, meta=(BindWidget))</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="classUPopup__WriteBoard.html#a76914a30b60fb39ad586aa28dbdab54d">   58</a></span>    TObjectPtr&lt;class UTextBlock&gt; Text_Guide;</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="classUPopup__WriteBoard.html#a5294d856668e986192b29d75c14b07ce">   59</a></span>    FSlateFontInfo tempFontInfo;</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    </div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    UPROPERTY(BlueprintReadOnly, meta=(BindWidget))</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="classUPopup__WriteBoard.html#a0483981b6e42904153cfb42d5e2d0fcb">   62</a></span>    TObjectPtr&lt;class UImage&gt; Image_Canvas;</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    </div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    <span class="comment">// Values</span></div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    UPROPERTY(BlueprintReadOnly)</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="classUPopup__WriteBoard.html#a7ec145a99cff70ac35b7a867f93fb10d">   66</a></span>    FVector2D prevMousePos;</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    UPROPERTY(BlueprintReadOnly)</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno"><a class="line" href="classUPopup__WriteBoard.html#a7fe327a3dbb67b8fd3cee421bf5e08c7">   68</a></span>    <span class="keywordtype">bool</span> bIsDrawing;</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    </div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <span class="comment">// Mouse Event</span></div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    virtual FReply NativeOnMouseButtonDown(const FGeometry&amp; InGeometry, const FPointerEvent&amp; InMouseEvent) override;</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    virtual FReply NativeOnMouseButtonUp(const FGeometry&amp; InGeometry, const FPointerEvent&amp; InMouseEvent) override;</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    virtual FReply NativeOnMouseMove(const FGeometry&amp; InGeometry, const FPointerEvent&amp; InMouseEvent) override;</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="classUPopup__WriteBoard.html#a8522d6fc57c32d2b953b0a90a61e9211">   56</a></span>    TArray&lt;class UImage*&gt; DotLineImages;</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    </div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    UPROPERTY(BlueprintReadOnly, meta=(BindWidget))</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="classUPopup__WriteBoard.html#a896837d856fca12ae961b6d76ebc3dbe">   59</a></span>    TObjectPtr&lt;class UHorizontalBox&gt; HorizontalBox_Guide;</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    UPROPERTY()</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="classUPopup__WriteBoard.html#a06757e08d1d1e1e5bed74465e35993ce">   61</a></span>    TArray&lt;class UTextBlock*&gt; GuideTexts;</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    UPROPERTY(BlueprintReadOnly, meta=(BindWidget))</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="classUPopup__WriteBoard.html#a76914a30b60fb39ad586aa28dbdab54d">   63</a></span>    TObjectPtr&lt;class UTextBlock&gt; Text_Guide;</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="classUPopup__WriteBoard.html#a5294d856668e986192b29d75c14b07ce">   64</a></span>    FSlateFontInfo tempFontInfo;</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    UPROPERTY(BlueprintReadOnly, meta=(BindWidget))</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="classUPopup__WriteBoard.html#a0483981b6e42904153cfb42d5e2d0fcb">   67</a></span>    TObjectPtr&lt;class UImage&gt; Image_Canvas;</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <span class="comment">// Values</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    UPROPERTY(BlueprintReadOnly)</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno"><a class="line" href="classUPopup__WriteBoard.html#a7ec145a99cff70ac35b7a867f93fb10d">   71</a></span>    FVector2D prevMousePos;</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    UPROPERTY(BlueprintReadOnly)</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno"><a class="line" href="classUPopup__WriteBoard.html#a7fe327a3dbb67b8fd3cee421bf5e08c7">   73</a></span>    <span class="keywordtype">bool</span> bIsDrawing;</div>
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    </div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    <span class="comment">// Adjust WriteBoard Length</span></div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    <span class="keywordtype">void</span> AdjustLength();</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    </div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    <span class="comment">// Clear WriteBoard</span></div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    <span class="keywordtype">void</span> ClearWriteBoard();</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    </div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>private:</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    <span class="comment">// WriteBoard</span></div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    UPROPERTY()</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno"><a class="line" href="classUPopup__WriteBoard.html#a4920c2dcaf665043c1565f61ed7145da">   84</a></span>    TObjectPtr&lt;class <a class="code hl_class" href="classUWriteBoard.html">UWriteBoard</a>&gt; writeBoardObject;</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    <span class="comment">// Mouse Event</span></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    virtual FReply NativeOnMouseButtonDown(const FGeometry&amp; InGeometry, const FPointerEvent&amp; InMouseEvent) override;</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    virtual FReply NativeOnMouseButtonUp(const FGeometry&amp; InGeometry, const FPointerEvent&amp; InMouseEvent) override;</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    virtual FReply NativeOnMouseMove(const FGeometry&amp; InGeometry, const FPointerEvent&amp; InMouseEvent) override;</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    </div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    <span class="comment">// Adjust WriteBoard Length</span></div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    <span class="keywordtype">void</span> AdjustLength();</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    </div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    <span class="comment">// Clear WriteBoard</span></div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    <span class="keywordtype">void</span> ClearWriteBoard();</div>
 <div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    </div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    <span class="comment">// Question Id</span></div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno"><a class="line" href="classUPopup__WriteBoard.html#ab61bf4fbad9590d8808c16db52f45c42">   87</a></span>    int32 Qid;</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno"><a class="line" href="classUPopup__WriteBoard.html#aef752b96a2643aa627c594a6489ea8b6">   88</a></span>    FString AnswerKr;</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    </div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    <span class="comment">// Now Answer Index</span></div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno"><a class="line" href="classUPopup__WriteBoard.html#ad7248b239cc38bc59882838396270883">   91</a></span>    int32 AnswerIdx = 0;</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    <span class="comment">// Canvas Step Length</span></div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno"><a class="line" href="classUPopup__WriteBoard.html#a0459caf983f9ebbcb72a110a86623694">   93</a></span>    <span class="keywordtype">float</span> stepLength = 360;</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    <span class="comment">// Border Min Width</span></div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno"><a class="line" href="classUPopup__WriteBoard.html#a6365cd22808aabbe3be861a852876658">   95</a></span>    <span class="keywordtype">float</span> borderMinWidth = 560;</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    </div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    <span class="comment">// DotLine Image</span></div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    UPROPERTY()</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno"><a class="line" href="classUPopup__WriteBoard.html#a59f4be23c607a6b06088a5e299f2f825">   99</a></span>    TObjectPtr&lt;class UTexture2D&gt; dotLineTexture;</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    UPROPERTY()</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno"><a class="line" href="classUPopup__WriteBoard.html#ad6803709042e6f10b973636dadf49f19">  101</a></span>    TObjectPtr&lt;class UFont&gt; guideTextFont;</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    </div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    <span class="comment">// Draw Functions</span></div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    <span class="keywordtype">void</span> DrawLines(FVector2D mousePos, FLinearColor drawColor);</div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    <span class="keywordtype">void</span> DrawPoint(FVector2D mousePos, FLinearColor drawColor);</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    FVector2D GetLocalMousePos(FVector2D mousePos);</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>private:</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    <span class="comment">// WriteBoard</span></div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    UPROPERTY()</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno"><a class="line" href="classUPopup__WriteBoard.html#a4920c2dcaf665043c1565f61ed7145da">   89</a></span>    TObjectPtr&lt;class <a class="code hl_class" href="classUWriteBoard.html">UWriteBoard</a>&gt; writeBoardObject;</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    </div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    <span class="comment">// Question Id</span></div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno"><a class="line" href="classUPopup__WriteBoard.html#ab61bf4fbad9590d8808c16db52f45c42">   92</a></span>    int32 Qid;</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno"><a class="line" href="classUPopup__WriteBoard.html#aef752b96a2643aa627c594a6489ea8b6">   93</a></span>    FString AnswerKr;</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    </div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    <span class="comment">// Now Answer Index</span></div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno"><a class="line" href="classUPopup__WriteBoard.html#ad7248b239cc38bc59882838396270883">   96</a></span>    int32 AnswerIdx = 0;</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    <span class="comment">// Canvas Step Length</span></div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno"><a class="line" href="classUPopup__WriteBoard.html#a0459caf983f9ebbcb72a110a86623694">   98</a></span>    <span class="keywordtype">float</span> stepLength = 360;</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    <span class="comment">// Border Min Width</span></div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno"><a class="line" href="classUPopup__WriteBoard.html#a6365cd22808aabbe3be861a852876658">  100</a></span>    <span class="keywordtype">float</span> borderMinWidth = 560;</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    </div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    <span class="comment">// DotLine Image</span></div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    UPROPERTY()</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno"><a class="line" href="classUPopup__WriteBoard.html#a59f4be23c607a6b06088a5e299f2f825">  104</a></span>    TObjectPtr&lt;class UTexture2D&gt; dotLineTexture;</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    UPROPERTY()</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno"><a class="line" href="classUPopup__WriteBoard.html#ad6803709042e6f10b973636dadf49f19">  106</a></span>    TObjectPtr&lt;class UFont&gt; guideTextFont;</div>
 <div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    </div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    UFUNCTION()</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    <span class="keywordtype">void</span> SaveCanvas();</div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    </div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    <span class="keywordtype">void</span> ClearCanvas();</div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>};</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    <span class="comment">// Draw Functions</span></div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    <span class="keywordtype">void</span> DrawLines(FVector2D mousePos, FLinearColor drawColor);</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    <span class="keywordtype">void</span> DrawPoint(FVector2D mousePos, FLinearColor drawColor);</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    FVector2D GetLocalMousePos(FVector2D mousePos);</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    </div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    UFUNCTION()</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    <span class="keywordtype">void</span> SaveCanvas();</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>    </div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>    <span class="keywordtype">void</span> ClearCanvas();</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>};</div>
 </div>
 <div class="ttc" id="aNetworkData_8h_html"><div class="ttname"><a href="NetworkData_8h.html">NetworkData.h</a></div><div class="ttdoc">네트워크 요청과 응답에 사용되는 구조체 및 설정을 정의합니다.</div></div>
+<div class="ttc" id="aPopup__WriteBoard_8h_html_a1f3da83908054a1684a621418215526a"><div class="ttname"><a href="Popup__WriteBoard_8h.html#a1f3da83908054a1684a621418215526a">DECLARE_DYNAMIC_MULTICAST_DELEGATE</a></div><div class="ttdeci">DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnCanvasSaved)</div><div class="ttdoc">캔버스 저장 완료 델리게이트</div></div>
 <div class="ttc" id="aUBasePopup_8h_html"><div class="ttname"><a href="UBasePopup_8h.html">UBasePopup.h</a></div></div>
 <div class="ttc" id="aclassUBasePopup_html"><div class="ttname"><a href="classUBasePopup.html">UBasePopup</a></div><div class="ttdoc">모든 팝업의 기본 클래스</div><div class="ttdef"><b>Definition</b> <a href="UBasePopup_8h_source.html#l00016">UBasePopup.h:17</a></div></div>
 <div class="ttc" id="aclassUImageButton_html"><div class="ttname"><a href="classUImageButton.html">UImageButton</a></div><div class="ttdoc">UImageButton</div><div class="ttdef"><b>Definition</b> <a href="UImageButton_8h_source.html#l00018">UImageButton.h:19</a></div></div>
-<div class="ttc" id="aclassUPopup__WriteBoard_html"><div class="ttname"><a href="classUPopup__WriteBoard.html">UPopup_WriteBoard</a></div><div class="ttdef"><b>Definition</b> <a href="Popup__WriteBoard_8h_source.html#l00014">Popup_WriteBoard.h:15</a></div></div>
+<div class="ttc" id="aclassUPopup__WriteBoard_html"><div class="ttname"><a href="classUPopup__WriteBoard.html">UPopup_WriteBoard</a></div><div class="ttdef"><b>Definition</b> <a href="Popup__WriteBoard_8h_source.html#l00017">Popup_WriteBoard.h:18</a></div></div>
 <div class="ttc" id="aclassUWriteBoard_html"><div class="ttname"><a href="classUWriteBoard.html">UWriteBoard</a></div><div class="ttdef"><b>Definition</b> <a href="WriteBoard_8h_source.html#l00014">WriteBoard.h:15</a></div></div>
 <div class="ttc" id="astructFWriteQuestionData_html"><div class="ttname"><a href="structFWriteQuestionData.html">FWriteQuestionData</a></div><div class="ttdoc">Write 질문 및 정답 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00334">NetworkData.h:335</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
@@ -233,7 +237,7 @@ $(document).ready(function(){initNavTree('Popup__WriteBoard_8h_source.html','');
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_47ae9c23f27029060c39af29b069b73d.html">MessageBox</a></li><li class="navelem"><a class="el" href="dir_244820c19557decdcbf6fc4000b77b7e.html">Public</a></li><li class="navelem"><a class="el" href="Popup__WriteBoard_8h.html">Popup_WriteBoard.h</a></li>
-    <li class="footer">생성시간 : 토 12월 20 2025 13:39:57, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 일 12월 21 2025 07:33:07, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

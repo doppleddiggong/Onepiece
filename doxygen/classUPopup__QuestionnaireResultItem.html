@@ -182,14 +182,12 @@ Protected 속성</h2></td></tr>
 <tr class="separator:a7e537a0dd751df11990ed46947f09d42"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2ba55501e91b3cf4326aea411af780af" id="r_a2ba55501e91b3cf4326aea411af780af"><td class="memItemLeft" align="right" valign="top">TObjectPtr&lt; class USizeBox &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUPopup__QuestionnaireResultItem.html#a2ba55501e91b3cf4326aea411af780af">SizeBox_Answer</a></td></tr>
 <tr class="separator:a2ba55501e91b3cf4326aea411af780af"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aed21b32677674546650f0cd9d76f38db" id="r_aed21b32677674546650f0cd9d76f38db"><td class="memItemLeft" align="right" valign="top">TObjectPtr&lt; class UTextBlock &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUPopup__QuestionnaireResultItem.html#aed21b32677674546650f0cd9d76f38db">Text_Correction</a></td></tr>
-<tr class="separator:aed21b32677674546650f0cd9d76f38db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a083361c12071b09a36b72f5e39274595" id="r_a083361c12071b09a36b72f5e39274595"><td class="memItemLeft" align="right" valign="top">TObjectPtr&lt; class UTextBlock &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUPopup__QuestionnaireResultItem.html#a083361c12071b09a36b72f5e39274595">Text_Feedback</a></td></tr>
+<tr class="memdesc:a083361c12071b09a36b72f5e39274595"><td class="mdescLeft">&#160;</td><td class="mdescRight">"What is your current country..." 같은 질문 내용  <br /></td></tr>
+<tr class="separator:a083361c12071b09a36b72f5e39274595"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9e5aef966ec6fe0f132217b71942369d" id="r_a9e5aef966ec6fe0f132217b71942369d"><td class="memItemLeft" align="right" valign="top">TObjectPtr&lt; class UTextBlock &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUPopup__QuestionnaireResultItem.html#a9e5aef966ec6fe0f132217b71942369d">Text_Index</a></td></tr>
 <tr class="memdesc:a9e5aef966ec6fe0f132217b71942369d"><td class="mdescLeft">&#160;</td><td class="mdescRight">"Question.01" 같은 질문 인덱스  <br /></td></tr>
 <tr class="separator:a9e5aef966ec6fe0f132217b71942369d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abf1839d7c62193bc91a8842c24644995" id="r_abf1839d7c62193bc91a8842c24644995"><td class="memItemLeft" align="right" valign="top">TObjectPtr&lt; class UTextBlock &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUPopup__QuestionnaireResultItem.html#abf1839d7c62193bc91a8842c24644995">Text_Message</a></td></tr>
-<tr class="memdesc:abf1839d7c62193bc91a8842c24644995"><td class="mdescLeft">&#160;</td><td class="mdescRight">"What is your current country..." 같은 질문 내용  <br /></td></tr>
-<tr class="separator:abf1839d7c62193bc91a8842c24644995"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a94a4a73f142ead527c6d7e9789758bb7" id="r_a94a4a73f142ead527c6d7e9789758bb7"><td class="memItemLeft" align="right" valign="top">TObjectPtr&lt; class UTextBlock &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUPopup__QuestionnaireResultItem.html#a94a4a73f142ead527c6d7e9789758bb7">Text_Question</a></td></tr>
 <tr class="separator:a94a4a73f142ead527c6d7e9789758bb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -248,7 +246,7 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">   15</span>    <span class="comment">// 질문 인덱스 설정 (예: &quot;Question.01&quot;)</span></div>
 <div class="line"><span class="lineno">   16</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUPopup__QuestionnaireResultItem.html#a9e5aef966ec6fe0f132217b71942369d">Text_Index</a>)</div>
 <div class="line"><span class="lineno">   17</span>    {</div>
-<div class="line"><span class="lineno">   18</span>        FString IndexText = FString::Printf(TEXT(<span class="stringliteral">&quot;Question.%02d&quot;</span>), index);</div>
+<div class="line"><span class="lineno">   18</span>        FString IndexText = FString::Printf(TEXT(<span class="stringliteral">&quot;Q%d&quot;</span>), index);</div>
 <div class="line"><span class="lineno">   19</span>        <a class="code hl_variable" href="classUPopup__QuestionnaireResultItem.html#a9e5aef966ec6fe0f132217b71942369d">Text_Index</a>-&gt;SetText(FText::FromString(IndexText));</div>
 <div class="line"><span class="lineno">   20</span>    }</div>
 <div class="line"><span class="lineno">   21</span>    </div>
@@ -261,46 +259,63 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">   28</span>    <span class="comment">// 이미지 불러와서 적용</span></div>
 <div class="line"><span class="lineno">   29</span>    FString FileName = FString::Printf(TEXT(<span class="stringliteral">&quot;Answer%d.PNG&quot;</span>), index);</div>
 <div class="line"><span class="lineno">   30</span>    UTexture2D* LoadedTexture = <a class="code hl_function" href="classUPopup__QuestionnaireResultItem.html#a80b4c03ce4639035157cd00d90faac73">LoadTextureFromFile</a>(<a class="code hl_variable" href="classUPopup__QuestionnaireResultItem.html#a597e4e3647cf5adb2b1685a626164732">WriteImagePath</a> / FileName);</div>
-<div class="line"><span class="lineno">   31</span>    <span class="keywordflow">if</span> (LoadedTexture)</div>
-<div class="line"><span class="lineno">   32</span>    {</div>
-<div class="line"><span class="lineno">   33</span>        <span class="comment">// SizeBox 비율 이미지에 맞게 수정</span></div>
-<div class="line"><span class="lineno">   34</span>        <span class="keywordtype">float</span> aspectRatio = LoadedTexture-&gt;GetSizeX() / LoadedTexture-&gt;GetSizeY();</div>
-<div class="line"><span class="lineno">   35</span>        <a class="code hl_variable" href="classUPopup__QuestionnaireResultItem.html#a2ba55501e91b3cf4326aea411af780af">SizeBox_Answer</a>-&gt;SetMinAspectRatio(aspectRatio);</div>
-<div class="line"><span class="lineno">   36</span>        <a class="code hl_variable" href="classUPopup__QuestionnaireResultItem.html#a2ba55501e91b3cf4326aea411af780af">SizeBox_Answer</a>-&gt;SetMaxAspectRatio(aspectRatio);</div>
-<div class="line"><span class="lineno">   37</span>        <span class="comment">// Image X 사이즈가 1080보다 크면 1080에, 아니면 Image X 사이즈에 1/ratio를 곱한다.</span></div>
-<div class="line"><span class="lineno">   38</span>        <a class="code hl_variable" href="classUPopup__QuestionnaireResultItem.html#a2ba55501e91b3cf4326aea411af780af">SizeBox_Answer</a>-&gt;SetHeightOverride(<a class="code hl_variable" href="classUPopup__QuestionnaireResultItem.html#a11882983361116c0be2ea0d759cf7548">Image_Answer</a>-&gt;GetBrush().GetImageSize().X &gt; <a class="code hl_variable" href="classUPopup__QuestionnaireResultItem.html#a2ba55501e91b3cf4326aea411af780af">SizeBox_Answer</a>-&gt;GetMaxDesiredWidth() ? <a class="code hl_variable" href="classUPopup__QuestionnaireResultItem.html#a2ba55501e91b3cf4326aea411af780af">SizeBox_Answer</a>-&gt;GetMaxDesiredWidth() / aspectRatio : <a class="code hl_variable" href="classUPopup__QuestionnaireResultItem.html#a11882983361116c0be2ea0d759cf7548">Image_Answer</a>-&gt;GetBrush().GetImageSize().<a class="code hl_enumvalue" href="UParabolaComponent_8h.html#a160b3db1967ea71bee24abc7f977594fa02129bb861061d1a052c592e2dc6b383">X</a> / aspectRatio);</div>
-<div class="line"><span class="lineno">   39</span>        <a class="code hl_variable" href="classUPopup__QuestionnaireResultItem.html#a11882983361116c0be2ea0d759cf7548">Image_Answer</a>-&gt;SetBrushFromTexture(LoadedTexture);</div>
-<div class="line"><span class="lineno">   40</span>    }</div>
-<div class="line"><span class="lineno">   41</span>    </div>
-<div class="line"><span class="lineno">   42</span>    <span class="comment">// 피드백 내용 설정</span></div>
-<div class="line"><span class="lineno">   43</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUPopup__QuestionnaireResultItem.html#abf1839d7c62193bc91a8842c24644995">Text_Message</a>)</div>
-<div class="line"><span class="lineno">   44</span>    {</div>
-<div class="line"><span class="lineno">   45</span>        FString text = data.<a class="code hl_variable" href="structFResponseWriteData.html#a2c4673766372a8260cb2e56ff8e965c0">display</a>.<a class="code hl_variable" href="structFWriteDisplay.html#aaf4e2f27ed43c801864ce7b6a8f2fb67">message</a>;</div>
-<div class="line"><span class="lineno">   46</span>        <a class="code hl_variable" href="classUPopup__QuestionnaireResultItem.html#abf1839d7c62193bc91a8842c24644995">Text_Message</a>-&gt;SetText(FText::FromString(text));</div>
-<div class="line"><span class="lineno">   47</span>    }</div>
-<div class="line"><span class="lineno">   48</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUPopup__QuestionnaireResultItem.html#aed21b32677674546650f0cd9d76f38db">Text_Correction</a>)</div>
-<div class="line"><span class="lineno">   49</span>    {</div>
-<div class="line"><span class="lineno">   50</span>        FString text = data.<a class="code hl_variable" href="structFResponseWriteData.html#a2c4673766372a8260cb2e56ff8e965c0">display</a>.<a class="code hl_variable" href="structFWriteDisplay.html#a2b8394385cd48cbe61adb29c2e34419a">correction</a>;</div>
-<div class="line"><span class="lineno">   51</span>        <a class="code hl_variable" href="classUPopup__QuestionnaireResultItem.html#aed21b32677674546650f0cd9d76f38db">Text_Correction</a>-&gt;SetText(FText::FromString(text));</div>
-<div class="line"><span class="lineno">   52</span>    }</div>
-<div class="line"><span class="lineno">   53</span>}</div>
+<div class="line"><span class="lineno">   31</span>    </div>
+<div class="line"><span class="lineno">   32</span>    <span class="keywordflow">if</span> (LoadedTexture)</div>
+<div class="line"><span class="lineno">   33</span>    {</div>
+<div class="line"><span class="lineno">   34</span>        <span class="comment">// SizeBox 비율 이미지에 맞게 수정</span></div>
+<div class="line"><span class="lineno">   35</span>        <span class="keyword">const</span> <span class="keywordtype">float</span> MaxWidthLimit = 1080.0f;</div>
+<div class="line"><span class="lineno">   36</span>        <span class="keyword">const</span> <span class="keywordtype">float</span> TargetHeight = 360.0f;</div>
+<div class="line"><span class="lineno">   37</span> </div>
+<div class="line"><span class="lineno">   38</span>        <span class="keyword">const</span> <span class="keywordtype">float</span> TextureWidth = <span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(LoadedTexture-&gt;GetSizeX());</div>
+<div class="line"><span class="lineno">   39</span>        <span class="keyword">const</span> <span class="keywordtype">float</span> TextureHeight = <span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(LoadedTexture-&gt;GetSizeY());</div>
+<div class="line"><span class="lineno">   40</span>        <span class="keyword">const</span> <span class="keywordtype">float</span> AspectRatio = TextureWidth / TextureHeight;</div>
+<div class="line"><span class="lineno">   41</span> </div>
+<div class="line"><span class="lineno">   42</span>        <span class="comment">// 1. 이미지 위젯의 브러시 정보를 가져와서 텍스처와 사이즈를 일치시킴</span></div>
+<div class="line"><span class="lineno">   43</span>        <span class="comment">// 이 작업이 빠지면 이미지는 이전 브러시 사이즈(360x360)에 텍스처를 맞춥니다.</span></div>
+<div class="line"><span class="lineno">   44</span>        FSlateBrush NewBrush = <a class="code hl_variable" href="classUPopup__QuestionnaireResultItem.html#a11882983361116c0be2ea0d759cf7548">Image_Answer</a>-&gt;GetBrush();</div>
+<div class="line"><span class="lineno">   45</span>        NewBrush.SetResourceObject(LoadedTexture);</div>
+<div class="line"><span class="lineno">   46</span>        NewBrush.ImageSize = FVector2D(TextureWidth, TextureHeight); <span class="comment">// 브러시 자체 크기를 원본으로 설정</span></div>
+<div class="line"><span class="lineno">   47</span>        <a class="code hl_variable" href="classUPopup__QuestionnaireResultItem.html#a11882983361116c0be2ea0d759cf7548">Image_Answer</a>-&gt;SetBrush(NewBrush);</div>
+<div class="line"><span class="lineno">   48</span>        </div>
+<div class="line"><span class="lineno">   49</span>        <span class="keywordtype">float</span> NewWidth = TargetHeight * AspectRatio;</div>
+<div class="line"><span class="lineno">   50</span>        <span class="keywordtype">float</span> NewHeight = TargetHeight;</div>
+<div class="line"><span class="lineno">   51</span>        </div>
+<div class="line"><span class="lineno">   52</span>        <span class="comment">// 가로 제한을 넘을 경우 비율 유지하며 축소</span></div>
+<div class="line"><span class="lineno">   53</span>        <span class="keywordflow">if</span> (NewWidth &gt; MaxWidthLimit)</div>
+<div class="line"><span class="lineno">   54</span>        {</div>
+<div class="line"><span class="lineno">   55</span>            NewWidth = MaxWidthLimit;</div>
+<div class="line"><span class="lineno">   56</span>            NewHeight = NewWidth / AspectRatio;</div>
+<div class="line"><span class="lineno">   57</span>        }</div>
+<div class="line"><span class="lineno">   58</span> </div>
+<div class="line"><span class="lineno">   59</span>        <span class="comment">// 3. SizeBox의 가로/세로를 모두 명시적으로 고정</span></div>
+<div class="line"><span class="lineno">   60</span>        <a class="code hl_variable" href="classUPopup__QuestionnaireResultItem.html#a2ba55501e91b3cf4326aea411af780af">SizeBox_Answer</a>-&gt;SetWidthOverride(NewWidth);</div>
+<div class="line"><span class="lineno">   61</span>        <a class="code hl_variable" href="classUPopup__QuestionnaireResultItem.html#a2ba55501e91b3cf4326aea411af780af">SizeBox_Answer</a>-&gt;SetHeightOverride(NewHeight);</div>
+<div class="line"><span class="lineno">   62</span> </div>
+<div class="line"><span class="lineno">   63</span>        <a class="code hl_variable" href="classUPopup__QuestionnaireResultItem.html#a11882983361116c0be2ea0d759cf7548">Image_Answer</a>-&gt;SetBrushFromTexture(LoadedTexture);</div>
+<div class="line"><span class="lineno">   64</span>    }</div>
+<div class="line"><span class="lineno">   65</span>    </div>
+<div class="line"><span class="lineno">   66</span>    <span class="comment">// 피드백 내용 설정</span></div>
+<div class="line"><span class="lineno">   67</span>    FString Description = FString::Printf(TEXT(<span class="stringliteral">&quot;%s\n\n[Correction]\n%s&quot;</span>),</div>
+<div class="line"><span class="lineno">   68</span>        *data.<a class="code hl_variable" href="structFResponseWriteData.html#a2c4673766372a8260cb2e56ff8e965c0">display</a>.<a class="code hl_variable" href="structFWriteDisplay.html#aaf4e2f27ed43c801864ce7b6a8f2fb67">message</a>,</div>
+<div class="line"><span class="lineno">   69</span>        *data.<a class="code hl_variable" href="structFResponseWriteData.html#a2c4673766372a8260cb2e56ff8e965c0">display</a>.<a class="code hl_variable" href="structFWriteDisplay.html#a2b8394385cd48cbe61adb29c2e34419a">correction</a>);</div>
+<div class="line"><span class="lineno">   70</span> </div>
+<div class="line"><span class="lineno">   71</span>    <a class="code hl_variable" href="classUPopup__QuestionnaireResultItem.html#a083361c12071b09a36b72f5e39274595">Text_Feedback</a>-&gt;SetText(FText::FromString(Description)); </div>
+<div class="line"><span class="lineno">   72</span>}</div>
 <div class="ttc" id="aGameLogging_8h_html_a9998c8beb11a6bad6ffada2e701fc0cf"><div class="ttname"><a href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a></div><div class="ttdeci">#define PRINTLOG(fmt,...)</div><div class="ttdef"><b>Definition</b> <a href="GameLogging_8h_source.html#l00030">GameLogging.h:30</a></div></div>
-<div class="ttc" id="aUParabolaComponent_8h_html_a160b3db1967ea71bee24abc7f977594fa02129bb861061d1a052c592e2dc6b383"><div class="ttname"><a href="UParabolaComponent_8h.html#a160b3db1967ea71bee24abc7f977594fa02129bb861061d1a052c592e2dc6b383">EForwardAxis::X</a></div><div class="ttdeci">@ X</div></div>
+<div class="ttc" id="aclassUPopup__QuestionnaireResultItem_html_a083361c12071b09a36b72f5e39274595"><div class="ttname"><a href="classUPopup__QuestionnaireResultItem.html#a083361c12071b09a36b72f5e39274595">UPopup_QuestionnaireResultItem::Text_Feedback</a></div><div class="ttdeci">TObjectPtr&lt; class UTextBlock &gt; Text_Feedback</div><div class="ttdoc">&quot;What is your current country...&quot; 같은 질문 내용</div><div class="ttdef"><b>Definition</b> <a href="Popup__QuestionnaireResultItem_8h_source.html#l00041">Popup_QuestionnaireResultItem.h:41</a></div></div>
 <div class="ttc" id="aclassUPopup__QuestionnaireResultItem_html_a11882983361116c0be2ea0d759cf7548"><div class="ttname"><a href="classUPopup__QuestionnaireResultItem.html#a11882983361116c0be2ea0d759cf7548">UPopup_QuestionnaireResultItem::Image_Answer</a></div><div class="ttdeci">TObjectPtr&lt; class UImage &gt; Image_Answer</div><div class="ttdoc">플레이어가 작성한 답안 이미지</div><div class="ttdef"><b>Definition</b> <a href="Popup__QuestionnaireResultItem_8h_source.html#l00037">Popup_QuestionnaireResultItem.h:37</a></div></div>
 <div class="ttc" id="aclassUPopup__QuestionnaireResultItem_html_a2ba55501e91b3cf4326aea411af780af"><div class="ttname"><a href="classUPopup__QuestionnaireResultItem.html#a2ba55501e91b3cf4326aea411af780af">UPopup_QuestionnaireResultItem::SizeBox_Answer</a></div><div class="ttdeci">TObjectPtr&lt; class USizeBox &gt; SizeBox_Answer</div><div class="ttdef"><b>Definition</b> <a href="Popup__QuestionnaireResultItem_8h_source.html#l00033">Popup_QuestionnaireResultItem.h:33</a></div></div>
-<div class="ttc" id="aclassUPopup__QuestionnaireResultItem_html_a597e4e3647cf5adb2b1685a626164732"><div class="ttname"><a href="classUPopup__QuestionnaireResultItem.html#a597e4e3647cf5adb2b1685a626164732">UPopup_QuestionnaireResultItem::WriteImagePath</a></div><div class="ttdeci">FString WriteImagePath</div><div class="ttdef"><b>Definition</b> <a href="Popup__QuestionnaireResultItem_8h_source.html#l00048">Popup_QuestionnaireResultItem.h:48</a></div></div>
-<div class="ttc" id="aclassUPopup__QuestionnaireResultItem_html_a80b4c03ce4639035157cd00d90faac73"><div class="ttname"><a href="classUPopup__QuestionnaireResultItem.html#a80b4c03ce4639035157cd00d90faac73">UPopup_QuestionnaireResultItem::LoadTextureFromFile</a></div><div class="ttdeci">UTexture2D * LoadTextureFromFile(const FString &amp;filePath)</div><div class="ttdef"><b>Definition</b> <a href="Popup__QuestionnaireResultItem_8cpp_source.html#l00055">Popup_QuestionnaireResultItem.cpp:55</a></div></div>
+<div class="ttc" id="aclassUPopup__QuestionnaireResultItem_html_a597e4e3647cf5adb2b1685a626164732"><div class="ttname"><a href="classUPopup__QuestionnaireResultItem.html#a597e4e3647cf5adb2b1685a626164732">UPopup_QuestionnaireResultItem::WriteImagePath</a></div><div class="ttdeci">FString WriteImagePath</div><div class="ttdef"><b>Definition</b> <a href="Popup__QuestionnaireResultItem_8h_source.html#l00045">Popup_QuestionnaireResultItem.h:45</a></div></div>
+<div class="ttc" id="aclassUPopup__QuestionnaireResultItem_html_a80b4c03ce4639035157cd00d90faac73"><div class="ttname"><a href="classUPopup__QuestionnaireResultItem.html#a80b4c03ce4639035157cd00d90faac73">UPopup_QuestionnaireResultItem::LoadTextureFromFile</a></div><div class="ttdeci">UTexture2D * LoadTextureFromFile(const FString &amp;filePath)</div><div class="ttdef"><b>Definition</b> <a href="Popup__QuestionnaireResultItem_8cpp_source.html#l00074">Popup_QuestionnaireResultItem.cpp:74</a></div></div>
 <div class="ttc" id="aclassUPopup__QuestionnaireResultItem_html_a94a4a73f142ead527c6d7e9789758bb7"><div class="ttname"><a href="classUPopup__QuestionnaireResultItem.html#a94a4a73f142ead527c6d7e9789758bb7">UPopup_QuestionnaireResultItem::Text_Question</a></div><div class="ttdeci">TObjectPtr&lt; class UTextBlock &gt; Text_Question</div><div class="ttdef"><b>Definition</b> <a href="Popup__QuestionnaireResultItem_8h_source.html#l00030">Popup_QuestionnaireResultItem.h:30</a></div></div>
 <div class="ttc" id="aclassUPopup__QuestionnaireResultItem_html_a9e5aef966ec6fe0f132217b71942369d"><div class="ttname"><a href="classUPopup__QuestionnaireResultItem.html#a9e5aef966ec6fe0f132217b71942369d">UPopup_QuestionnaireResultItem::Text_Index</a></div><div class="ttdeci">TObjectPtr&lt; class UTextBlock &gt; Text_Index</div><div class="ttdoc">&quot;Question.01&quot; 같은 질문 인덱스</div><div class="ttdef"><b>Definition</b> <a href="Popup__QuestionnaireResultItem_8h_source.html#l00027">Popup_QuestionnaireResultItem.h:27</a></div></div>
-<div class="ttc" id="aclassUPopup__QuestionnaireResultItem_html_abf1839d7c62193bc91a8842c24644995"><div class="ttname"><a href="classUPopup__QuestionnaireResultItem.html#abf1839d7c62193bc91a8842c24644995">UPopup_QuestionnaireResultItem::Text_Message</a></div><div class="ttdeci">TObjectPtr&lt; class UTextBlock &gt; Text_Message</div><div class="ttdoc">&quot;What is your current country...&quot; 같은 질문 내용</div><div class="ttdef"><b>Definition</b> <a href="Popup__QuestionnaireResultItem_8h_source.html#l00041">Popup_QuestionnaireResultItem.h:41</a></div></div>
-<div class="ttc" id="aclassUPopup__QuestionnaireResultItem_html_aed21b32677674546650f0cd9d76f38db"><div class="ttname"><a href="classUPopup__QuestionnaireResultItem.html#aed21b32677674546650f0cd9d76f38db">UPopup_QuestionnaireResultItem::Text_Correction</a></div><div class="ttdeci">TObjectPtr&lt; class UTextBlock &gt; Text_Correction</div><div class="ttdef"><b>Definition</b> <a href="Popup__QuestionnaireResultItem_8h_source.html#l00044">Popup_QuestionnaireResultItem.h:44</a></div></div>
 <div class="ttc" id="astructFResponseWriteData_html_a2c4673766372a8260cb2e56ff8e965c0"><div class="ttname"><a href="structFResponseWriteData.html#a2c4673766372a8260cb2e56ff8e965c0">FResponseWriteData::display</a></div><div class="ttdeci">FWriteDisplay display</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00699">NetworkData.h:699</a></div></div>
 <div class="ttc" id="astructFWriteDisplay_html_a2b8394385cd48cbe61adb29c2e34419a"><div class="ttname"><a href="structFWriteDisplay.html#a2b8394385cd48cbe61adb29c2e34419a">FWriteDisplay::correction</a></div><div class="ttdeci">FString correction</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00672">NetworkData.h:672</a></div></div>
 <div class="ttc" id="astructFWriteDisplay_html_aaf4e2f27ed43c801864ce7b6a8f2fb67"><div class="ttname"><a href="structFWriteDisplay.html#aaf4e2f27ed43c801864ce7b6a8f2fb67">FWriteDisplay::message</a></div><div class="ttdeci">FString message</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00669">NetworkData.h:669</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="NetworkData_8h_source.html#l00672">FWriteDisplay::correction</a>, <a class="el" href="NetworkData_8h_source.html#l00699">FResponseWriteData::display</a>, <a class="el" href="Popup__QuestionnaireResultItem_8h_source.html#l00037">Image_Answer</a>, <a class="el" href="Popup__QuestionnaireResultItem_8cpp_source.html#l00055">LoadTextureFromFile()</a>, <a class="el" href="NetworkData_8h_source.html#l00669">FWriteDisplay::message</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>, <a class="el" href="Popup__QuestionnaireResultItem_8h_source.html#l00033">SizeBox_Answer</a>, <a class="el" href="Popup__QuestionnaireResultItem_8h_source.html#l00044">Text_Correction</a>, <a class="el" href="Popup__QuestionnaireResultItem_8h_source.html#l00027">Text_Index</a>, <a class="el" href="Popup__QuestionnaireResultItem_8h_source.html#l00041">Text_Message</a>, <a class="el" href="Popup__QuestionnaireResultItem_8h_source.html#l00030">Text_Question</a>, <a class="el" href="Popup__QuestionnaireResultItem_8h_source.html#l00048">WriteImagePath</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="NetworkData_8h_source.html#l00672">FWriteDisplay::correction</a>, <a class="el" href="NetworkData_8h_source.html#l00699">FResponseWriteData::display</a>, <a class="el" href="Popup__QuestionnaireResultItem_8h_source.html#l00037">Image_Answer</a>, <a class="el" href="Popup__QuestionnaireResultItem_8cpp_source.html#l00074">LoadTextureFromFile()</a>, <a class="el" href="NetworkData_8h_source.html#l00669">FWriteDisplay::message</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>, <a class="el" href="Popup__QuestionnaireResultItem_8h_source.html#l00033">SizeBox_Answer</a>, <a class="el" href="Popup__QuestionnaireResultItem_8h_source.html#l00041">Text_Feedback</a>, <a class="el" href="Popup__QuestionnaireResultItem_8h_source.html#l00027">Text_Index</a>, <a class="el" href="Popup__QuestionnaireResultItem_8h_source.html#l00030">Text_Question</a>, <a class="el" href="Popup__QuestionnaireResultItem_8h_source.html#l00045">WriteImagePath</a>.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="Popup__QuestionnaireResult_8cpp_source.html#l00030">UPopup_QuestionnaireResult::InitPopup()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="Popup__QuestionnaireResult_8cpp_source.html#l00028">UPopup_QuestionnaireResult::InitPopup()</a>.</p>
 <div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-2-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
@@ -342,44 +357,44 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="Popup__QuestionnaireResultItem_8cpp_source.html">Popup_QuestionnaireResultItem.cpp</a> 파일의 <a class="el" href="Popup__QuestionnaireResultItem_8cpp_source.html#l00055">55</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   56</span>{</div>
-<div class="line"><span class="lineno">   57</span>    TArray&lt;uint8&gt; RawFileData;</div>
-<div class="line"><span class="lineno">   58</span>    <span class="keywordflow">if</span> (!FFileHelper::LoadFileToArray(RawFileData, *filePath))</div>
-<div class="line"><span class="lineno">   59</span>    {</div>
-<div class="line"><span class="lineno">   60</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;Failed to load file: %s&quot;</span>), *filePath);</div>
-<div class="line"><span class="lineno">   61</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">   62</span>    }</div>
-<div class="line"><span class="lineno">   63</span> </div>
-<div class="line"><span class="lineno">   64</span>    IImageWrapperModule&amp; ImageWrapperModule = FModuleManager::LoadModuleChecked&lt;IImageWrapperModule&gt;(FName(<span class="stringliteral">&quot;ImageWrapper&quot;</span>));</div>
-<div class="line"><span class="lineno">   65</span>    TSharedPtr&lt;IImageWrapper&gt; ImageWrapper = ImageWrapperModule.CreateImageWrapper(EImageFormat::PNG);</div>
-<div class="line"><span class="lineno">   66</span> </div>
-<div class="line"><span class="lineno">   67</span>    <span class="keywordflow">if</span> (!ImageWrapper.IsValid() || !ImageWrapper-&gt;SetCompressed(RawFileData.GetData(), RawFileData.Num()))</div>
-<div class="line"><span class="lineno">   68</span>    {</div>
-<div class="line"><span class="lineno">   69</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;Failed to parse PNG: %s&quot;</span>), *filePath);</div>
-<div class="line"><span class="lineno">   70</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">   71</span>    }</div>
-<div class="line"><span class="lineno">   72</span> </div>
-<div class="line"><span class="lineno">   73</span>    TArray&lt;uint8&gt; UncompressedBGRA;</div>
-<div class="line"><span class="lineno">   74</span>    <span class="keywordflow">if</span> (!ImageWrapper-&gt;GetRaw(ERGBFormat::BGRA, 8, UncompressedBGRA))</div>
-<div class="line"><span class="lineno">   75</span>    {</div>
-<div class="line"><span class="lineno">   76</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;Failed to decompress PNG: %s&quot;</span>), *filePath);</div>
-<div class="line"><span class="lineno">   77</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">   78</span>    }</div>
-<div class="line"><span class="lineno">   79</span> </div>
-<div class="line"><span class="lineno">   80</span>    UTexture2D* Texture = UTexture2D::CreateTransient(ImageWrapper-&gt;GetWidth(), ImageWrapper-&gt;GetHeight(), PF_B8G8R8A8);</div>
-<div class="line"><span class="lineno">   81</span>    <span class="keywordflow">if</span> (!Texture)</div>
-<div class="line"><span class="lineno">   82</span>    {</div>
-<div class="line"><span class="lineno">   83</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">   84</span>    }</div>
+<p class="definition"><a class="el" href="Popup__QuestionnaireResultItem_8cpp_source.html">Popup_QuestionnaireResultItem.cpp</a> 파일의 <a class="el" href="Popup__QuestionnaireResultItem_8cpp_source.html#l00074">74</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   75</span>{</div>
+<div class="line"><span class="lineno">   76</span>    TArray&lt;uint8&gt; RawFileData;</div>
+<div class="line"><span class="lineno">   77</span>    <span class="keywordflow">if</span> (!FFileHelper::LoadFileToArray(RawFileData, *filePath))</div>
+<div class="line"><span class="lineno">   78</span>    {</div>
+<div class="line"><span class="lineno">   79</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;Failed to load file: %s&quot;</span>), *filePath);</div>
+<div class="line"><span class="lineno">   80</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">   81</span>    }</div>
+<div class="line"><span class="lineno">   82</span> </div>
+<div class="line"><span class="lineno">   83</span>    IImageWrapperModule&amp; ImageWrapperModule = FModuleManager::LoadModuleChecked&lt;IImageWrapperModule&gt;(FName(<span class="stringliteral">&quot;ImageWrapper&quot;</span>));</div>
+<div class="line"><span class="lineno">   84</span>    TSharedPtr&lt;IImageWrapper&gt; ImageWrapper = ImageWrapperModule.CreateImageWrapper(EImageFormat::PNG);</div>
 <div class="line"><span class="lineno">   85</span> </div>
-<div class="line"><span class="lineno">   86</span>    <span class="keywordtype">void</span>* TextureData = Texture-&gt;GetPlatformData()-&gt;Mips[0].BulkData.Lock(LOCK_READ_WRITE);</div>
-<div class="line"><span class="lineno">   87</span>    FMemory::Memcpy(TextureData, UncompressedBGRA.GetData(), UncompressedBGRA.Num());</div>
-<div class="line"><span class="lineno">   88</span>    Texture-&gt;GetPlatformData()-&gt;Mips[0].BulkData.Unlock();</div>
-<div class="line"><span class="lineno">   89</span>    Texture-&gt;UpdateResource();</div>
-<div class="line"><span class="lineno">   90</span> </div>
-<div class="line"><span class="lineno">   91</span>    <span class="keywordflow">return</span> Texture;</div>
-<div class="line"><span class="lineno">   92</span>}</div>
+<div class="line"><span class="lineno">   86</span>    <span class="keywordflow">if</span> (!ImageWrapper.IsValid() || !ImageWrapper-&gt;SetCompressed(RawFileData.GetData(), RawFileData.Num()))</div>
+<div class="line"><span class="lineno">   87</span>    {</div>
+<div class="line"><span class="lineno">   88</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;Failed to parse PNG: %s&quot;</span>), *filePath);</div>
+<div class="line"><span class="lineno">   89</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">   90</span>    }</div>
+<div class="line"><span class="lineno">   91</span> </div>
+<div class="line"><span class="lineno">   92</span>    TArray&lt;uint8&gt; UncompressedBGRA;</div>
+<div class="line"><span class="lineno">   93</span>    <span class="keywordflow">if</span> (!ImageWrapper-&gt;GetRaw(ERGBFormat::BGRA, 8, UncompressedBGRA))</div>
+<div class="line"><span class="lineno">   94</span>    {</div>
+<div class="line"><span class="lineno">   95</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;Failed to decompress PNG: %s&quot;</span>), *filePath);</div>
+<div class="line"><span class="lineno">   96</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">   97</span>    }</div>
+<div class="line"><span class="lineno">   98</span> </div>
+<div class="line"><span class="lineno">   99</span>    UTexture2D* Texture = UTexture2D::CreateTransient(ImageWrapper-&gt;GetWidth(), ImageWrapper-&gt;GetHeight(), PF_B8G8R8A8);</div>
+<div class="line"><span class="lineno">  100</span>    <span class="keywordflow">if</span> (!Texture)</div>
+<div class="line"><span class="lineno">  101</span>    {</div>
+<div class="line"><span class="lineno">  102</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">  103</span>    }</div>
+<div class="line"><span class="lineno">  104</span> </div>
+<div class="line"><span class="lineno">  105</span>    <span class="keywordtype">void</span>* TextureData = Texture-&gt;GetPlatformData()-&gt;Mips[0].BulkData.Lock(LOCK_READ_WRITE);</div>
+<div class="line"><span class="lineno">  106</span>    FMemory::Memcpy(TextureData, UncompressedBGRA.GetData(), UncompressedBGRA.Num());</div>
+<div class="line"><span class="lineno">  107</span>    Texture-&gt;GetPlatformData()-&gt;Mips[0].BulkData.Unlock();</div>
+<div class="line"><span class="lineno">  108</span>    Texture-&gt;UpdateResource();</div>
+<div class="line"><span class="lineno">  109</span> </div>
+<div class="line"><span class="lineno">  110</span>    <span class="keywordflow">return</span> Texture;</div>
+<div class="line"><span class="lineno">  111</span>}</div>
 </div><!-- fragment -->
 <p class="reference">다음을 참조함 :  <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>.</p>
 
@@ -865,7 +880,7 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="Popup__QuestionnaireResultItem_8h_source.html">Popup_QuestionnaireResultItem.h</a> 파일의 <a class="el" href="Popup__QuestionnaireResultItem_8h_source.html#l00047">47</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="Popup__QuestionnaireResultItem_8h_source.html">Popup_QuestionnaireResultItem.h</a> 파일의 <a class="el" href="Popup__QuestionnaireResultItem_8h_source.html#l00044">44</a> 번째 라인에서 정의되었습니다.</p>
 
 </div>
 </div>
@@ -895,8 +910,8 @@ Private 속성</h2></td></tr>
 
 </div>
 </div>
-<a id="aed21b32677674546650f0cd9d76f38db" name="aed21b32677674546650f0cd9d76f38db"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aed21b32677674546650f0cd9d76f38db">&#9670;&#160;</a></span>Text_Correction</h2>
+<a id="a083361c12071b09a36b72f5e39274595" name="a083361c12071b09a36b72f5e39274595"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a083361c12071b09a36b72f5e39274595">&#9670;&#160;</a></span>Text_Feedback</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -905,7 +920,7 @@ Private 속성</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">TObjectPtr&lt;class UTextBlock&gt; UPopup_QuestionnaireResultItem::Text_Correction</td>
+          <td class="memname">TObjectPtr&lt;class UTextBlock&gt; UPopup_QuestionnaireResultItem::Text_Feedback</td>
         </tr>
       </table>
   </td>
@@ -915,7 +930,9 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="Popup__QuestionnaireResultItem_8h_source.html">Popup_QuestionnaireResultItem.h</a> 파일의 <a class="el" href="Popup__QuestionnaireResultItem_8h_source.html#l00044">44</a> 번째 라인에서 정의되었습니다.</p>
+<p>"What is your current country..." 같은 질문 내용 </p>
+
+<p class="definition"><a class="el" href="Popup__QuestionnaireResultItem_8h_source.html">Popup_QuestionnaireResultItem.h</a> 파일의 <a class="el" href="Popup__QuestionnaireResultItem_8h_source.html#l00041">41</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="Popup__QuestionnaireResultItem_8cpp_source.html#l00013">InitItem()</a>.</p>
 
@@ -944,34 +961,6 @@ Private 속성</h2></td></tr>
 <p>"Question.01" 같은 질문 인덱스 </p>
 
 <p class="definition"><a class="el" href="Popup__QuestionnaireResultItem_8h_source.html">Popup_QuestionnaireResultItem.h</a> 파일의 <a class="el" href="Popup__QuestionnaireResultItem_8h_source.html#l00027">27</a> 번째 라인에서 정의되었습니다.</p>
-
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="Popup__QuestionnaireResultItem_8cpp_source.html#l00013">InitItem()</a>.</p>
-
-</div>
-</div>
-<a id="abf1839d7c62193bc91a8842c24644995" name="abf1839d7c62193bc91a8842c24644995"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abf1839d7c62193bc91a8842c24644995">&#9670;&#160;</a></span>Text_Message</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">TObjectPtr&lt;class UTextBlock&gt; UPopup_QuestionnaireResultItem::Text_Message</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>"What is your current country..." 같은 질문 내용 </p>
-
-<p class="definition"><a class="el" href="Popup__QuestionnaireResultItem_8h_source.html">Popup_QuestionnaireResultItem.h</a> 파일의 <a class="el" href="Popup__QuestionnaireResultItem_8h_source.html#l00041">41</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="Popup__QuestionnaireResultItem_8cpp_source.html#l00013">InitItem()</a>.</p>
 
@@ -1023,7 +1012,7 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="Popup__QuestionnaireResultItem_8h_source.html">Popup_QuestionnaireResultItem.h</a> 파일의 <a class="el" href="Popup__QuestionnaireResultItem_8h_source.html#l00048">48</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="Popup__QuestionnaireResultItem_8h_source.html">Popup_QuestionnaireResultItem.h</a> 파일의 <a class="el" href="Popup__QuestionnaireResultItem_8h_source.html#l00045">45</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="Popup__QuestionnaireResultItem_8cpp_source.html#l00013">InitItem()</a>.</p>
 
@@ -1039,7 +1028,7 @@ Private 속성</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classUPopup__QuestionnaireResultItem.html">UPopup_QuestionnaireResultItem</a></li>
-    <li class="footer">생성시간 : 토 12월 20 2025 13:39:57, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 일 12월 21 2025 07:33:08, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

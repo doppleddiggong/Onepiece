@@ -17,9 +17,8 @@ var classUPopup__QuestionnaireResultItem =
     [ "PopupType", "classUPopup__QuestionnaireResultItem.html#a7e537a0dd751df11990ed46947f09d42", null ],
     [ "QuestionData", "classUPopup__QuestionnaireResultItem.html#a356c64331cbc417e7855acef15952212", null ],
     [ "SizeBox_Answer", "classUPopup__QuestionnaireResultItem.html#a2ba55501e91b3cf4326aea411af780af", null ],
-    [ "Text_Correction", "classUPopup__QuestionnaireResultItem.html#aed21b32677674546650f0cd9d76f38db", null ],
+    [ "Text_Feedback", "classUPopup__QuestionnaireResultItem.html#a083361c12071b09a36b72f5e39274595", null ],
     [ "Text_Index", "classUPopup__QuestionnaireResultItem.html#a9e5aef966ec6fe0f132217b71942369d", null ],
-    [ "Text_Message", "classUPopup__QuestionnaireResultItem.html#abf1839d7c62193bc91a8842c24644995", null ],
     [ "Text_Question", "classUPopup__QuestionnaireResultItem.html#a94a4a73f142ead527c6d7e9789758bb7", null ],
     [ "WriteImagePath", "classUPopup__QuestionnaireResultItem.html#a597e4e3647cf5adb2b1685a626164732", null ]
 ];

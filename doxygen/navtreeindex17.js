@@ -1,5 +1,13 @@
 var NAVTREEINDEX17 =
 {
+"structFResponseWriteData.html#a5f6f396597c7d71de07ffa00e26e9af7":[2,0,108,1],
+"structFResponseWriteResult.html":[2,0,109],
+"structFResponseWriteResult.html#a1a4f75b021341af380a5953411caca3c":[2,0,109,0],
+"structFResponseWriteResult.html#a7a5dc33082513c556d84d80153a0e3e4":[2,0,109,1],
+"structFResponseWriteResult.html#a8084f1320a34c522075a87593a864738":[2,0,109,3],
+"structFResponseWriteResult.html#a9561a42d1272c500d2ee3d9e7a5c8e37":[2,0,109,2],
+"structFResponseWriteResult.html#abc6574a46e16095f68321aaab4035e85":[2,0,109,4],
+"structFResponseWriteScores.html":[2,0,110],
 "structFResponseWriteScores.html#a60488b2faa976ac69c24053fb33fdb9a":[2,0,110,1],
 "structFResponseWriteScores.html#a7f558d57dbda95d02b417537e85ff6a5":[2,0,110,0],
 "structFResponseWriteSubmit.html":[2,0,111],
