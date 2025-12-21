@@ -31,12 +31,19 @@ private:
 
 	UFUNCTION()
 	void OnClickSubmit();
-	
+
 	UFUNCTION()
 	void OnResponseOcrExtract(FResponseWriteSubmit& ResponseData, bool bWasSuccessful);
 
 	UFUNCTION()
 	void OnResponseWriteResult(FResponseWriteResult& ResponseData, bool bWasSuccessful);
+
+	/** 항목의 답변 상태 변경 콜백 */
+	UFUNCTION()
+	void OnItemAnswerStateChanged(bool bIsAnswered);
+
+	/** 제출 버튼 활성화 상태 업데이트 */
+	void UpdateSubmitButtonState();
 
 protected:
 	/* ------------------- Layout ------------------- */
@@ -67,6 +74,10 @@ private:
 	/* ------------------- Data ---------------------- */
 	/** 저장된 인터뷰 질문 데이터 */
 	TArray<FWriteQuestionData> SavedQuestions;
-	
+
+	/** 생성된 설문 항목 위젯들 */
+	UPROPERTY()
+	TArray<TObjectPtr<class UPopup_QuestionnaireItem>> QuestionnaireItems;
+
 	FString WriteImagePath = FPaths::ProjectSavedDir() / TEXT("WriteImage/");
 };

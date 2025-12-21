@@ -34,6 +34,9 @@ void UPopup_Questionnaire::NativeConstruct()
 	{
 		Btn_Submit->OnButtonClickedEvent.RemoveDynamic(this, &UPopup_Questionnaire::OnClickSubmit);
 		Btn_Submit->OnButtonClickedEvent.AddDynamic(this, &UPopup_Questionnaire::OnClickSubmit);
+
+		// 초기 상태는 비활성화
+		Btn_Submit->SetIsEnabled(false);
 	}
 }
 
@@ -48,6 +51,7 @@ void UPopup_Questionnaire::InitPopup(const FQuestWriteInfo& QuestionData)
 
 	// 기존 항목 제거
 	VerticalBox->ClearChildren();
+	QuestionnaireItems.Empty();
 
 	// 각 질문에 대해 항목 위젯 생성
 	for (int32 i = 0; i < SavedQuestions.Num(); ++i)
@@ -58,6 +62,13 @@ void UPopup_Questionnaire::InitPopup(const FQuestWriteInfo& QuestionData)
 		UPopup_QuestionnaireItem* ItemWidget = CreateWidget<UPopup_QuestionnaireItem>(
 			GetWorld(), QuestionnaireItemClass);
 		ItemWidget->InitItem(Data);
+
+		// 답변 상태 변경 델리게이트 바인딩
+		ItemWidget->OnAnswerStateChanged.AddDynamic(this, &UPopup_Questionnaire::OnItemAnswerStateChanged);
+
+		// 배열에 저장
+		QuestionnaireItems.Add(ItemWidget);
+
 		VerticalBox->AddChildToVerticalBox(ItemWidget);
 
 		// 마지막 항목이 아니면 Spacer 추가
@@ -71,6 +82,9 @@ void UPopup_Questionnaire::InitPopup(const FQuestWriteInfo& QuestionData)
 			}
 		}
 	}
+
+	// 초기 버튼 상태 업데이트
+	UpdateSubmitButtonState();
 }
 
 void UPopup_Questionnaire::OnClickClose()
@@ -157,19 +171,19 @@ void UPopup_Questionnaire::OnResponseWriteResult(FResponseWriteResult& ResponseD
 	if (bWasSuccessful)
 	{
 		PRINTLOG(TEXT("--- OCR Extract SUCCESS ---"));
-		
+
 		ALingoPlayerState* lps = ULingoGameHelper::GetLingoPlayerState(GetWorld());
 		if (lps)
 		{
 			lps->WriteWholeResultData = ResponseData;
 		}
-		
+
 		// 피드백 팝업 창 생성
 		if (auto Popup = UPopupManager::ShowPopupAs<UPopup_QuestionnaireResult>(GetWorld(), EPopupType::QuestionnaireResult))
 		{
 			// 팝업 초기화
 			Popup->InitPopup(lps->WriteSubmitResultData, ResponseData);
-		
+
 			PRINTLOG(TEXT("[PopupTester] Result popup opened"));
 		}
 	}
@@ -177,4 +191,32 @@ void UPopup_Questionnaire::OnResponseWriteResult(FResponseWriteResult& ResponseD
 	{
 		PRINTLOG(TEXT("--- OCR Extract FAILED ---"));
 	}
+}
+
+void UPopup_Questionnaire::OnItemAnswerStateChanged(bool bIsAnswered)
+{
+	// 항목의 답변 상태가 변경되었으므로 제출 버튼 상태 업데이트
+	UpdateSubmitButtonState();
+}
+
+void UPopup_Questionnaire::UpdateSubmitButtonState()
+{
+	if (!Btn_Submit)
+	{
+		return;
+	}
+
+	// 모든 항목이 답변되었는지 확인
+	bool bAllAnswered = true;
+	for (const auto& Item : QuestionnaireItems)
+	{
+		if (Item && !Item->IsAnswered())
+		{
+			bAllAnswered = false;
+			break;
+		}
+	}
+
+	// 모든 항목이 답변되었으면 버튼 활성화, 아니면 비활성화
+	Btn_Submit->SetIsEnabled(bAllAnswered);
 }

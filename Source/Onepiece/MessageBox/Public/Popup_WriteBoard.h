@@ -7,23 +7,30 @@
 #include "UBasePopup.h"
 #include "Popup_WriteBoard.generated.h"
 
+/** 캔버스 저장 완료 델리게이트 */
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnCanvasSaved);
+
 /**
- * 
+ *
  */
 UCLASS()
 class ONEPIECE_API UPopup_WriteBoard : public UBasePopup
 {
 	GENERATED_BODY()
-	
+
 public:
 	UPopup_WriteBoard(const FObjectInitializer& ObjectInitializer);
 	virtual void NativeOnInitialized() override;
 	virtual void NativeConstruct() override;
-	
+
 	// Init Popup
 	void InitPopup(int32 InQid, const FWriteQuestionData& InQuestionData);
-	
+
 	FVector2D GetPrevMousePos();
+
+	/** 캔버스 저장 완료 시 호출되는 델리게이트 */
+	UPROPERTY(BlueprintAssignable)
+	FOnCanvasSaved OnCanvasSaved;
 	
 protected:
 	// Objects

@@ -230,6 +230,10 @@ void UPopup_WriteBoard::SaveCanvas()
 	{
 		if (writeBoardObject != nullptr)
 			writeBoardObject->SaveCanvas(Qid, RT_Canvas);
+
+		// 캔버스 저장 완료 델리게이트 브로드캐스트
+		OnCanvasSaved.Broadcast();
+
 		ClearCanvas();
 		PopupMgr->HideCurrentPopup(false);
 	}
