@@ -68,7 +68,7 @@ void ALingoPlayerState::RefreshQuestState()
 		GetQuestStatus(bSpeakQuestCompleted, bSpeakQuestIng),
 		GetQuestStatus(bWriteQuestCompleted, bWriteQuestIng));
 
-	PRINT_STRING( TEXT("RLSW: %s"), *StatusMsg);
+	// PRINT_STRING( TEXT("RLSW: %s"), *StatusMsg);
 	
 	if (APlayerControl* PC = Cast<APlayerControl>(GetOwner()))
 	{
