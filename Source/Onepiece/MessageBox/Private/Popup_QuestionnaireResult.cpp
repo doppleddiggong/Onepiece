@@ -5,6 +5,7 @@
 
 #include "ALingoPlayerState.h"
 #include "ANetworkBroadcastActor.h"
+#include "APlayerControl.h"
 #include "FResultStatData.h"
 #include "GameLogging.h"
 #include "Components/Spacer.h"
@@ -137,6 +138,12 @@ void UPopup_QuestionnaireResult::OnClickClose()
 		PopupMgr->HideCurrentPopup();
 	}
 
-	// PlayerController의 Server RPC 호출
-	ANetworkBroadcastActor::Get(GetWorld())->SendDoorMessage(DoorGroup::Step4_End, true, GetOwningPlayer());
+	// PlayerController를 통해 서버에 Door 메시지 전송 요청
+	if (APlayerController* PC = GetOwningPlayer())
+	{
+		if (APlayerControl* PlayerControl = Cast<APlayerControl>(PC))
+		{
+			PlayerControl->Server_SendDoorMessage(DoorGroup::Step4_End, true);
+		}
+	}
 }

@@ -5,6 +5,7 @@
 
 #include "ALingoPlayerState.h"
 #include "ANetworkBroadcastActor.h"
+#include "APlayerControl.h"
 #include "FResultStatData.h"
 #include "UAnswerItem.h"
 #include "UBroadcastManager.h"
@@ -38,7 +39,14 @@ void UPopup_SpeakResult::OnClickClose()
 		PopupMgr->HideCurrentPopup();
 	}
 
-	ANetworkBroadcastActor::Get(GetWorld())->SendDoorMessage(DoorGroup::Step3_End, true, GetOwningPlayer());
+	// PlayerController를 통해 서버에 Door 메시지 전송 요청
+	if (APlayerController* PC = GetOwningPlayer())
+	{
+		if (APlayerControl* PlayerControl = Cast<APlayerControl>(PC))
+		{
+			PlayerControl->Server_SendDoorMessage(DoorGroup::Step3_End, true);
+		}
+	}
 }
 
 void UPopup_SpeakResult::InitScore() const
