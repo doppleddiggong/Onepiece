@@ -62,8 +62,7 @@ void UPopup_WriteBoard::InitPopup(int32 InQid, const FWriteQuestionData& InQuest
 	
 	this->Qid = InQid;
 	this->AnswerKr = InQuestionData.answer_kor;
-	this->Text_Question_Kr->SetText(FText::FromString(InQuestionData.word_data.kor));
-	this->Text_Question_En->SetText(FText::FromString(InQuestionData.word_data.eng));
+	this->Text_Question->SetText(FText::FromString(InQuestionData.word_data.eng));
 	
 	ClearWriteBoard();
 	AdjustLength();

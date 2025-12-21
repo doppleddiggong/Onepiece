@@ -36,9 +36,7 @@ protected:
 	UPROPERTY(BlueprintReadOnly, meta=(BindWidget))
 	TObjectPtr<class USizeBox> SizeBox_Border;
 	UPROPERTY(BlueprintReadOnly, meta=(BindWidget))
-	TObjectPtr<class UTextBlock> Text_Question_Kr;
-	UPROPERTY(BlueprintReadOnly, meta=(BindWidget))
-	TObjectPtr<class UTextBlock> Text_Question_En;
+	TObjectPtr<class UTextBlock> Text_Question;
 	UPROPERTY(BlueprintReadOnly, meta=(BindWidget))
 	TObjectPtr<class USizeBox> SizeBox_Canvas;
 	UPROPERTY(BlueprintReadOnly, meta=(BindWidget))
