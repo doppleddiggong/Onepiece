@@ -41,10 +41,6 @@ private:
 protected:
 	/* ------------------- Layout ------------------- */
 
-	/** 팝업 전체 배경 */
-	UPROPERTY(meta = (BindWidget))
-	TObjectPtr<class UImage> Popup_BaseBg;
-
 	/** 제출 버튼 */
 	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<class UImageButton> Btn_Submit;

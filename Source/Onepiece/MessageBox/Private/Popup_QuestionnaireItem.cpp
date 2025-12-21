@@ -6,18 +6,20 @@
 #include "GameLogging.h"
 #include "NetworkData.h"
 #include "Popup_WriteBoard.h"
+#include "UImageButton.h"
 #include "UPopupManager.h"
 #include "Components/Button.h"
 #include "Components/TextBlock.h"
 
 
-void UPopup_QuestionnaireItem::NativeOnInitialized()
+void UPopup_QuestionnaireItem::NativeConstruct()
 {
-	Super::NativeOnInitialized();
+	Super::NativeConstruct();
 	
 	if (Button_Answer)
 	{
-		Button_Answer->OnClicked.AddDynamic(this, &UPopup_QuestionnaireItem::OnClickButton);
+		Button_Answer->OnButtonClickedEvent.RemoveDynamic(this, &UPopup_QuestionnaireItem::OnClickButton);
+		Button_Answer->OnButtonClickedEvent.AddDynamic(this, &UPopup_QuestionnaireItem::OnClickButton);
 	}
 }
 
@@ -26,23 +28,20 @@ void UPopup_QuestionnaireItem::InitItem(const FWriteQuestionData& Data)
 	this->QuestionData = Data;
 	
 	// 질문 인덱스 설정 (예: "Question.01")
-	if (Txt_Index)
+	if (Text_Index)
 	{
-		FString IndexText = FString::Printf(TEXT("Question.%02d"), Data.Id);
-		Txt_Index->SetText(FText::FromString(IndexText));
+		FString IndexText = FString::Printf(TEXT("Q%d"), Data.Id);
+		Text_Index->SetText(FText::FromString(IndexText));
 	}
 
-	// 질문 내용 설정
-	if (Text_Question_Kr)
-	{
-		FString QuestionText = Data.word_data.kor;
-		Text_Question_Kr->SetText(FText::FromString(QuestionText));
-	}
-	if (Text_Question_En)
-	{
-		FString QuestionText = Data.word_data.eng;
-		Text_Question_En->SetText(FText::FromString(QuestionText));
-	}
+	// FString Description = FString::Printf(TEXT("%s\n[%s]"),
+	// 	*Data.word_data.kor,
+	// 	*Data.word_data.eng);
+	//
+	// // 질문 내용 설정
+	// Text_Question->SetText(FText::FromString(Description));
+
+	Text_Question->SetText(FText::FromString(Data.word_data.eng));
 }
 
 void UPopup_QuestionnaireItem::OnClickButton()
@@ -52,13 +51,13 @@ void UPopup_QuestionnaireItem::OnClickButton()
 		// TODO: 단어 수 및 글자 수 구하기
 		TArray<FString> Tokens;
 		QuestionData.answer_kor.ParseIntoArrayWS(Tokens);
-		for (const auto& token : Tokens)
-		{
-			PRINT_STRING(TEXT("Question 글 : %s"), *token);
-		}
-		PRINT_STRING(TEXT("Question 단어 수 : %d"), Tokens.Num());
-		PRINT_STRING(TEXT("Question 글자 수 : %d"), QuestionData.answer_kor.Len());
-		PRINT_STRING(TEXT("Question 첫 단어 글자 수 : %d"), Tokens[0].Len());
+		// for (const auto& token : Tokens)
+		// {
+		// 	PRINT_STRING(TEXT("Question 글 : %s"), *token);
+		// }
+		// PRINT_STRING(TEXT("Question 단어 수 : %d"), Tokens.Num());
+		// PRINT_STRING(TEXT("Question 글자 수 : %d"), QuestionData.answer_kor.Len());
+		// PRINT_STRING(TEXT("Question 첫 단어 글자 수 : %d"), Tokens[0].Len());
 		
 		Popup->InitPopup(QuestionData.Id, QuestionData);
 	}
