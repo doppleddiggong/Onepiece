@@ -12,6 +12,7 @@
 #include "ALingoPlayerState.h"
 #include "ASpeakStageActor.h"
 #include "ChatWidget.h"
+#include "CompassWidget.h"
 #include "ULingoGameHelper.h"
 #include "UBroadcastManager.h"
 #include "GameLogging.h"
@@ -60,6 +61,8 @@ void UMainWidget::NativeConstruct()
 	
 	QuestInfoWidget->SetVisibility( ESlateVisibility::Collapsed );
 
+	CompassWidget->SetVisibility( ESlateVisibility::Collapsed );
+	
 	// 훅 타겟 인디케이터 초기 숨김
 	HookTargetIndicator->SetVisibility(ESlateVisibility::Hidden);
 

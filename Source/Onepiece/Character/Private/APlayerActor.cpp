@@ -237,6 +237,8 @@ void APlayerActor::CreateMainWidget()
 			if (auto GS = ULingoGameHelper::GetLingoGameState(GetWorld()))
 				MainWidget->UpdateRoomWidget( GS->GetRoomLevel(), GS->GetRoomId());
 
+			MainWidget->CompassWidget->SetVisibility( ESlateVisibility::Visible );
+			
 			// UserInfo가 로드되었으면 즉시 업데이트, 아니면 재시도
 			if (PC->HasUserInfo() )
 			{
