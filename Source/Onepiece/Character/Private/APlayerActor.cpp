@@ -462,27 +462,19 @@ void APlayerActor::Cmd_Info_Implementation()
 	if (!IsControlEnabled())
 		return;
 
+	
 	auto GS = ULingoGameHelper::GetLingoGameState(GetWorld());
 	auto PS = GetPlayerState<ALingoPlayerState>();
 
-	if ( !GS->IsQuestIng() )
-	{
-		if (auto SpeakStageActor = ULingoGameHelper::GetSpeakStageActor(GetWorld()))
-		{
-			if ( SpeakStageActor->IsMyTurn(PS) )
-			{
-				PlaySpeakInfo( SpeakStageActor->GetCurrentStepIndex() );
-			}
-		}
-		return;
-	}
-
-	if ( GS->GetCurrentQuestType() == EQuestType::Read)
+	if ( PS->bReadQuestIng &&
+		!PS->bReadQuestCompleted )
 	{
 		if (auto Popup = UPopupManager::ShowPopupAs<UPopup_ReadQuest>(GetWorld(), EPopupType::ReadQuest))
 			Popup->InitRead(GS->ReadScenarioData);
 	}
-	else if ( GS->GetCurrentQuestType() == EQuestType::Listen)
+	else if (
+		PS->bReadQuestIng &&
+		!PS->bListenQuestCompleted )
 	{
 		auto QuestRole = GetQuestRole();
 
@@ -492,6 +484,17 @@ void APlayerActor::Cmd_Info_Implementation()
 			RequestListenAudio( GS->ListenScenarioData.word_data1.Kor); 
 		else if ( QuestRole == EQuestRole::OnlyQuestion2)
 			RequestListenAudio( GS->ListenScenarioData.word_data2.Kor); 
+	}
+	else if ( PS->bSpeakQuestIng &&
+		!PS->bSpeakQuestCompleted )
+	{
+		if (auto SpeakStageActor = ULingoGameHelper::GetSpeakStageActor(GetWorld()))
+		{
+			if ( SpeakStageActor->IsMyTurn(PS) )
+			{
+				PlaySpeakInfo( SpeakStageActor->GetCurrentStepIndex() );
+			}
+		}
 	}
 }
 
