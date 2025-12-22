@@ -44,7 +44,6 @@ var classUPopup__WriteBoard =
     [ "prevMousePos", "classUPopup__WriteBoard.html#a7ec145a99cff70ac35b7a867f93fb10d", null ],
     [ "Qid", "classUPopup__WriteBoard.html#ab61bf4fbad9590d8808c16db52f45c42", null ],
     [ "RT_Canvas", "classUPopup__WriteBoard.html#a3b8840464e57c2ac855c51b4683b7872", null ],
-    [ "SizeBox_Border", "classUPopup__WriteBoard.html#aa77e292fb9899c7eda7a244bd786550f", null ],
     [ "SizeBox_Canvas", "classUPopup__WriteBoard.html#aa84dbecf5405949dd3202d24f1588c43", null ],
     [ "stepLength", "classUPopup__WriteBoard.html#a0459caf983f9ebbcb72a110a86623694", null ],
     [ "tempFontInfo", "classUPopup__WriteBoard.html#a5294d856668e986192b29d75c14b07ce", null ],

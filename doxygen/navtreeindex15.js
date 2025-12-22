@@ -1,7 +1,5 @@
 var NAVTREEINDEX15 =
 {
-"functions_t.html":[2,3,0,19],
-"functions_u.html":[2,3,0,20],
 "functions_v.html":[2,3,0,21],
 "functions_vars.html":[2,3,2],
 "functions_vars.html":[2,3,2,0],
@@ -35,8 +33,8 @@ var NAVTREEINDEX15 =
 "globals_func.html":[3,1,1],
 "globals_vars.html":[3,1,2],
 "hierarchy.html":[2,2],
-"index.html":[0],
 "index.html":[],
+"index.html":[0],
 "index.html#autotoc_md10":[0,2],
 "index.html#autotoc_md11":[0,2,0],
 "index.html#autotoc_md12":[0,2,1],
@@ -249,5 +247,7 @@ var NAVTREEINDEX15 =
 "structFListenData.html#ab586b44a9daa6a3c5b60dd6b0d3e6c82":[2,0,66,5],
 "structFListenData.html#aed8fac2a59cd7cb80f8e4f3cc112fb59":[2,0,66,3],
 "structFListenScoreDetail.html":[2,0,67],
-"structFListenScoreDetail.html#a01335623e555898397a9110a4979ba34":[2,0,67,0]
+"structFListenScoreDetail.html#a01335623e555898397a9110a4979ba34":[2,0,67,0],
+"structFListenScoreDetail.html#a8791ad06e5cfc8cd0332208716fc331d":[2,0,67,1],
+"structFListenTargetData.html":[2,0,68]
 };
