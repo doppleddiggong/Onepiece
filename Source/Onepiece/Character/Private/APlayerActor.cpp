@@ -29,7 +29,7 @@
 #include "UBroadcastManager.h"
 #include "UFadeWidget.h"
 #include "UKLingoNetworkSystem.h"
-#include "UPopup_SpeakQuestJudes.h"
+#include "UPopup_SpeakJudes.h"
 #include "UQuestInfoWidget.h"
 #include "UVoiceRecording.h"
 
@@ -719,7 +719,7 @@ void APlayerActor::Server_NotifySpeakJudgeComplete_Implementation(const FRespons
 void APlayerActor::Client_ShowSpeakJudesPopup_Implementation(const FResponseSpeakingJudes& Response)
 {
 	// 클라이언트에서 팝업 표시
-	if (auto Popup = UPopupManager::ShowPopupAs<UPopup_SpeakQuestJudes>(GetWorld(), EPopupType::SpeakQuestJudes))
+	if (auto Popup = UPopupManager::ShowPopupAs<UPopup_SpeakJudes>(GetWorld(), EPopupType::SpeakJudes))
 	{
 		Popup->InitPopup(Response);
 	}

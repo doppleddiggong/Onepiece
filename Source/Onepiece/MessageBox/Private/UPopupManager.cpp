@@ -23,6 +23,7 @@
 #include "UPopup_Evaluation.h"
 #include "UPopup_LevelSelect.h"
 #include "UPopup_History.h"
+#include "UPopup_SpeakJudes.h"
 
 #include "Onepiece/Onepiece.h"
 
@@ -43,6 +44,8 @@
 #define ASKTUTORIAL_POPUP_PATH TEXT("/Game/CustomContents/UI/Widgets/WBP_PopupAskTutorial.WBP_PopupAskTutorial_C")
 #define LEVELSELECT_POPUP_PATH TEXT("/Game/CustomContents/UI/Widgets/WBP_PopupLevelSelect.WBP_PopupLevelSelect_C")
 #define HISTORY_POPUP_PATH TEXT("/Game/CustomContents/UI/Widgets/WBP_PopupHistory.WBP_PopupHistory_C")
+#define SPEAKJUDES_POPUP_PATH TEXT("/Game/CustomContents/UI/Widgets/WBP_PopupSpeakJudes.WBP_PopupSpeakJudes_C")
+
 
 UPopupManager::UPopupManager()
 {
@@ -65,6 +68,7 @@ UPopupManager::UPopupManager()
 	PopupClassMap.Add(EPopupType::AskTutorial, FComponentHelper::LoadClass<UPopup_AskTutorial>(ASKTUTORIAL_POPUP_PATH));
 	PopupClassMap.Add(EPopupType::LevelSelect, FComponentHelper::LoadClass<UPopup_LevelSelect>(LEVELSELECT_POPUP_PATH));
 	PopupClassMap.Add(EPopupType::History, FComponentHelper::LoadClass<UPopup_History>(HISTORY_POPUP_PATH));
+	PopupClassMap.Add(EPopupType::SpeakJudes, FComponentHelper::LoadClass<UPopup_SpeakJudes>(SPEAKJUDES_POPUP_PATH));
 }
 
 // ========================================
@@ -105,15 +109,10 @@ UUserWidget* UPopupManager::ShowPopup(EPopupType Type)
 	// 스택에 추가
 	PushPopupToStack(Type);
 
-	if ( Type == EPopupType::SpeakQuestJudes )
-	{}
-	else
+	// 첫 팝업이 열렸다면 마우스 커서 표시
+	if (bIsFirstPopup)
 	{
-		// 첫 팝업이 열렸다면 마우스 커서 표시
-		if (bIsFirstPopup)
-		{
-			ULingoGameHelper::ShowMouseCursor(GetWorld());
-		}
+		ULingoGameHelper::ShowMouseCursor(GetWorld());
 	}
 
 	return PopupWidget;

@@ -19,6 +19,7 @@
 #include "APlayerControl.h"
 #include "UChatHistorySystem.h"
 #include "UPopupManager.h"
+#include "UPopup_SpeakJudes.h"
 #include "Sound/SoundWaveProcedural.h"
 #include "GameFramework/PlayerState.h"
 #include "Onepiece/Onepiece.h"
@@ -288,6 +289,12 @@ void UVoiceConversationSystem::OnResponseSpeakingsJudges(FResponseSpeakingJudes&
 
 	if (bSuccess)
 	{
+		// 팝업 표시
+		if (auto Popup = UPopupManager::ShowPopupAs<UPopup_SpeakJudes>(GetWorld(), EPopupType::SpeakJudes))
+		{
+			Popup->InitPopup(Response);
+		}
+
 		// PlayerActor의 Server RPC 호출 (PlayerActor는 Client 소유!)
 		if (Owner)
 			Owner->Server_NotifySpeakJudgeComplete(Response);

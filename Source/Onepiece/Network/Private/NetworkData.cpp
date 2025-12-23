@@ -598,7 +598,7 @@ TArray<FResultStatData> FResponseSpeakingJudes::GetResultStatData() const
 	// Grammar Score
 	FResultStatData GrammarData;
 	GrammarData.WidgetType = EResultItemWidgetType::Score;
-	GrammarData.ColorType = ULingoGameHelper::GetRankColorType(grammar_score);
+	GrammarData.ColorType = EColorStyleType::Gray;
 	GrammarData.TitleText = FText::FromString(TEXT("Grammer"));
 	GrammarData.ScoreValue = grammar_score;
 	GrammarData.ScoreTextColor = ULingoGameHelper::GetRankColor(grammar_score);
@@ -607,12 +607,21 @@ TArray<FResultStatData> FResponseSpeakingJudes::GetResultStatData() const
 	// Context Score
 	FResultStatData ContextData;
 	ContextData.WidgetType = EResultItemWidgetType::Score;
-	ContextData.ColorType = ULingoGameHelper::GetRankColorType(context_score);
+	ContextData.ColorType = EColorStyleType::Gray;
 	ContextData.TitleText = FText::FromString(TEXT("Context"));
 	ContextData.ScoreValue = context_score;
 	ContextData.ScoreTextColor = ULingoGameHelper::GetRankColor(context_score);
 	StatDataList.Add(ContextData);
 
+
+	FResultStatData OverallData;
+	OverallData.WidgetType = EResultItemWidgetType::Score;
+	OverallData.ColorType = EColorStyleType::Gray;
+	OverallData.TitleText = FText::FromString(TEXT("Score"));
+	OverallData.ScoreValue = final_overall_score;
+	OverallData.ScoreTextColor = ULingoGameHelper::GetRankColor(final_overall_score);
+	StatDataList.Add(OverallData);
+	
 	return StatDataList;
 }
 
