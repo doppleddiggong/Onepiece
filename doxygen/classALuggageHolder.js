@@ -2,6 +2,7 @@ var classALuggageHolder =
 [
     [ "ALuggageHolder", "classALuggageHolder.html#a291912aeaa5b488f432b11807273aaca", null ],
     [ "BeginPlay", "classALuggageHolder.html#a0c20c4037870c7a4c2ff23cde967eefe", null ],
+    [ "BillboardInteractWidget", "classALuggageHolder.html#a032a7c031cbaab33f04405ef25c4ede1", null ],
     [ "CheckLuggage", "classALuggageHolder.html#a2d66a7428b93c7189b96aac44c40f6ea", null ],
     [ "GetLifetimeReplicatedProps", "classALuggageHolder.html#a96e41e12203a244763f8dab19a34e058", null ],
     [ "Multicast_ShowResultPopup", "classALuggageHolder.html#a5232191a346c7392871fc1fe06a30def", null ],
@@ -18,5 +19,6 @@ var classALuggageHolder =
     [ "CurTarget", "classALuggageHolder.html#aa3217f0b4f3c24098a9c4cee7826f881", null ],
     [ "HoldPos", "classALuggageHolder.html#a37adf1b2bbe4888fc4512eb9afad0fa1", null ],
     [ "MeshComponent", "classALuggageHolder.html#ae20cb4c15a7ce93da7a3bc26c8d8cf09", null ],
-    [ "RotationSpeed", "classALuggageHolder.html#af37d6b2b11e6e6e0dcc012ed6b17fb05", null ]
+    [ "RotationSpeed", "classALuggageHolder.html#af37d6b2b11e6e6e0dcc012ed6b17fb05", null ],
+    [ "WidgetComp", "classALuggageHolder.html#a1e7e4144134f89b3849bbb66ae9b893e", null ]
 ];

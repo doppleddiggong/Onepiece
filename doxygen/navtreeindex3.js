@@ -41,6 +41,7 @@ var NAVTREEINDEX3 =
 "UGameDataManager_8cpp.html#affad115e3ab2f4304c38c5e6cbfc5346":[3,0,0,1,3,0,3,2],
 "UGameDataManager_8cpp_source.html":[3,0,0,1,3,0,3],
 "UGameDataManager_8h.html":[3,0,0,1,3,1,5],
+"UGameDataManager_8h.html#a2c7a66eadfe2ccfb485226675a8db2ee":[3,0,0,1,3,1,5,1],
 "UGameDataManager_8h_source.html":[3,0,0,1,3,1,5],
 "UGameFunctionLibrary_8cpp.html":[3,0,0,1,1,0,0],
 "UGameFunctionLibrary_8cpp_source.html":[3,0,0,1,1,0,0],
@@ -72,8 +73,8 @@ var NAVTREEINDEX3 =
 "UHookSystem_8cpp_source.html":[3,0,0,2,0,0,10],
 "UHookSystem_8h.html":[3,0,0,2,0,1,11],
 "UHookSystem_8h.html#a1c673a19776054c0693b8177e71c5426":[3,0,0,2,0,1,11,0],
-"UHookSystem_8h.html#a1c673a19776054c0693b8177e71c5426aa3f80d8f0f1b4ffa8c475f5d60ea5635":[3,0,0,2,0,1,11,0,1],
 "UHookSystem_8h.html#a1c673a19776054c0693b8177e71c5426aa3f80d8f0f1b4ffa8c475f5d60ea5635":[3,0,0,2,0,1,11,0,2],
+"UHookSystem_8h.html#a1c673a19776054c0693b8177e71c5426aa3f80d8f0f1b4ffa8c475f5d60ea5635":[3,0,0,2,0,1,11,0,1],
 "UHookSystem_8h.html#a1c673a19776054c0693b8177e71c5426aa3f80d8f0f1b4ffa8c475f5d60ea5635":[3,0,0,2,0,1,11,0,0],
 "UHookSystem_8h_source.html":[3,0,0,2,0,1,11],
 "UHoverButton_8cpp.html":[3,0,0,2,8,0,1],
@@ -248,6 +249,5 @@ var NAVTREEINDEX3 =
 "UPopup__ReadQuest_8cpp.html":[3,0,0,2,3,0,23],
 "UPopup__ReadQuest_8cpp_source.html":[3,0,0,2,3,0,23],
 "UPopup__ReadQuest_8h.html":[3,0,0,2,3,1,24],
-"UPopup__ReadQuest_8h_source.html":[3,0,0,2,3,1,24],
-"UPopup__SpeakJudes_8cpp.html":[3,0,0,2,3,0,24]
+"UPopup__ReadQuest_8h_source.html":[3,0,0,2,3,1,24]
 };

@@ -1,5 +1,12 @@
 var NAVTREEINDEX17 =
 {
+"structFResponseEvaluationResult.html#a5ce972a9b6ef5cc44b5860ae6478db7a":[2,0,93,0],
+"structFResponseHealth.html":[2,0,94],
+"structFResponseHealth.html#a21bcca6ff52ce04957bebbde5e67174e":[2,0,94,2],
+"structFResponseHealth.html#a649fdef3c5c114642f944a5e9f83f312":[2,0,94,1],
+"structFResponseHealth.html#ac4ebadbf0eb1966aff6360b239120a50":[2,0,94,0],
+"structFResponseInterviewAnswer.html":[2,0,95],
+"structFResponseInterviewAnswer.html#a2244546c18f0759e4c13554043e599e9":[2,0,95,1],
 "structFResponseInterviewAnswer.html#ac7a93f9221e737e65dc5effa2a2904e7":[2,0,95,0],
 "structFResponseInterviewHello.html":[2,0,96],
 "structFResponseInterviewHello.html#a0baa747a4a6d22474fb01593913e4e14":[2,0,96,1],

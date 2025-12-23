@@ -117,42 +117,81 @@ $(document).ready(function(){initNavTree('QuestOrderSlotWidget_8cpp_source.html'
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;Components/Image.h&quot;</span></div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;Components/TextBlock.h&quot;</span></div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;Components/WidgetSwitcher.h&quot;</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
-<div class="foldopen" id="foldopen00010" data-start="{" data-end="}">
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="classUQuestOrderSlotWidget.html#af455fd5655793fdf3fb4ed34b012364a">   10</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUQuestOrderSlotWidget.html#af455fd5655793fdf3fb4ed34b012364a">UQuestOrderSlotWidget::SetQuestType</a>(FString inQuestType)</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>{</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    <a class="code hl_variable" href="classUQuestOrderSlotWidget.html#a0c5d578021281eb242304f51e8759588">Txt_QuestType</a>-&gt;SetText(FText::FromString(inQuestType));</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>}</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;Math/UnrealMathUtility.h&quot;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="foldopen" id="foldopen00011" data-start="{" data-end="}">
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="classUQuestOrderSlotWidget.html#af455fd5655793fdf3fb4ed34b012364a">   11</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUQuestOrderSlotWidget.html#af455fd5655793fdf3fb4ed34b012364a">UQuestOrderSlotWidget::SetQuestType</a>(FString inQuestType)</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>{</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    <a class="code hl_variable" href="classUQuestOrderSlotWidget.html#a0c5d578021281eb242304f51e8759588">Txt_QuestType</a>-&gt;SetText(FText::FromString(inQuestType));</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>}</div>
 </div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
-<div class="foldopen" id="foldopen00015" data-start="{" data-end="}">
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="classUQuestOrderSlotWidget.html#abc90f0eb26c466d52e6daf578d6aa5f5">   15</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUQuestOrderSlotWidget.html#abc90f0eb26c466d52e6daf578d6aa5f5">UQuestOrderSlotWidget::PlayQuestSlot</a>()</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>{</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <a class="code hl_variable" href="classUQuestOrderSlotWidget.html#abef1ec005e972695a33c1dfc28355640">Image_Bg</a>-&gt;SetColorAndOpacity(FColor::FromHex(<span class="stringliteral">&quot;00FF94FF&quot;</span>));</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>}</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="foldopen" id="foldopen00016" data-start="{" data-end="}">
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="classUQuestOrderSlotWidget.html#abc90f0eb26c466d52e6daf578d6aa5f5">   16</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUQuestOrderSlotWidget.html#abc90f0eb26c466d52e6daf578d6aa5f5">UQuestOrderSlotWidget::PlayQuestSlot</a>()</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>{</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <a class="code hl_variable" href="classUQuestOrderSlotWidget.html#abef1ec005e972695a33c1dfc28355640">Image_Bg</a>-&gt;SetColorAndOpacity(FColor::FromHex(<span class="stringliteral">&quot;00FF94FF&quot;</span>));</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>}</div>
 </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
-<div class="foldopen" id="foldopen00020" data-start="{" data-end="}">
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="classUQuestOrderSlotWidget.html#a1748f2e7e66545b50f6ae89c3d4f988d">   20</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUQuestOrderSlotWidget.html#a1748f2e7e66545b50f6ae89c3d4f988d">UQuestOrderSlotWidget::FinishQuestSlot</a>()</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>{</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <a class="code hl_variable" href="classUQuestOrderSlotWidget.html#abef1ec005e972695a33c1dfc28355640">Image_Bg</a>-&gt;SetColorAndOpacity(FColor::FromHex(<span class="stringliteral">&quot;FFCA50FF&quot;</span>));</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <a class="code hl_variable" href="classUQuestOrderSlotWidget.html#a243c5b1c1215fa62ea8a7e6184b7e79c">WidgetSwitcher_Slot</a>-&gt;SetActiveWidgetIndex(1);</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>}</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="foldopen" id="foldopen00021" data-start="{" data-end="}">
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="classUQuestOrderSlotWidget.html#a1748f2e7e66545b50f6ae89c3d4f988d">   21</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUQuestOrderSlotWidget.html#a1748f2e7e66545b50f6ae89c3d4f988d">UQuestOrderSlotWidget::FinishQuestSlot</a>()</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>{</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <a class="code hl_variable" href="classUQuestOrderSlotWidget.html#abef1ec005e972695a33c1dfc28355640">Image_Bg</a>-&gt;SetColorAndOpacity(FColor::FromHex(<span class="stringliteral">&quot;FFCA50FF&quot;</span>));</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <a class="code hl_variable" href="classUQuestOrderSlotWidget.html#a243c5b1c1215fa62ea8a7e6184b7e79c">WidgetSwitcher_Slot</a>-&gt;SetActiveWidgetIndex(1);</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <a class="code hl_function" href="classUQuestOrderSlotWidget.html#a34424ddb98e9181bab34e13aeab52218">PlayStampAnimation</a>(GetWorld()-&gt;DeltaTimeSeconds);</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>}</div>
+</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="foldopen" id="foldopen00028" data-start="{" data-end="}">
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="classUQuestOrderSlotWidget.html#a34424ddb98e9181bab34e13aeab52218">   28</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUQuestOrderSlotWidget.html#a34424ddb98e9181bab34e13aeab52218">UQuestOrderSlotWidget::PlayStampAnimation</a>(<span class="keywordtype">float</span> InDeltaTime)</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>{</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="keyword">auto</span> easeOutElastic = [](<span class="keywordtype">float</span> x)-&gt;<span class="keywordtype">float</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    {</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        <span class="keyword">const</span> <span class="keywordtype">float</span> c4 = (2 * PI) / 3;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>            </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        <span class="keywordflow">if</span> (x == 0)</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        {</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>            <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        }</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        <span class="keywordflow">if</span> (x == 1)</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        {</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>            <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        }</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>            </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        <span class="keywordflow">return</span> FMath::Pow(2, -10 * x) * FMath::Sin((x * 10 - 0.75) * c4) + 1;</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    };</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    GetWorld()-&gt;GetTimerManager().SetTimer(<a class="code hl_variable" href="classUQuestOrderSlotWidget.html#a91bc8e88443d6cb9e3756dfd2e1ba763">StampTimerHandle</a>, [<span class="keyword">this</span>, easeOutElastic, InDeltaTime]()</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    {</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        <a class="code hl_variable" href="classUQuestOrderSlotWidget.html#ae2598b3f97b91c5f50dfc4edc8781f8d">Image_Complete</a>-&gt;SetRenderScale(FVector2D(<a class="code hl_variable" href="classUQuestOrderSlotWidget.html#a315e253ee49da738a982ab47de2f9c04">StampStartScale</a> - easeOutElastic(<a class="code hl_variable" href="classUQuestOrderSlotWidget.html#adb678bbbfc6ea5760e1012f7bff0f950">StampDX</a>)));</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        <a class="code hl_variable" href="classUQuestOrderSlotWidget.html#adb678bbbfc6ea5760e1012f7bff0f950">StampDX</a> += InDeltaTime;</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUQuestOrderSlotWidget.html#adb678bbbfc6ea5760e1012f7bff0f950">StampDX</a> &gt;= 1.0f)</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        {</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>            GetWorld()-&gt;GetTimerManager().ClearTimer(<a class="code hl_variable" href="classUQuestOrderSlotWidget.html#a91bc8e88443d6cb9e3756dfd2e1ba763">StampTimerHandle</a>);</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>            <a class="code hl_variable" href="classUQuestOrderSlotWidget.html#adb678bbbfc6ea5760e1012f7bff0f950">StampDX</a> = 0;</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        }</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    }, InDeltaTime, <span class="keyword">true</span>);</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>}</div>
 </div>
 <div class="ttc" id="aQuestOrderSlotWidget_8h_html"><div class="ttname"><a href="QuestOrderSlotWidget_8h.html">QuestOrderSlotWidget.h</a></div></div>
 <div class="ttc" id="aclassUQuestOrderSlotWidget_html_a0c5d578021281eb242304f51e8759588"><div class="ttname"><a href="classUQuestOrderSlotWidget.html#a0c5d578021281eb242304f51e8759588">UQuestOrderSlotWidget::Txt_QuestType</a></div><div class="ttdeci">TObjectPtr&lt; class UTextBlock &gt; Txt_QuestType</div><div class="ttdef"><b>Definition</b> <a href="QuestOrderSlotWidget_8h_source.html#l00030">QuestOrderSlotWidget.h:30</a></div></div>
-<div class="ttc" id="aclassUQuestOrderSlotWidget_html_a1748f2e7e66545b50f6ae89c3d4f988d"><div class="ttname"><a href="classUQuestOrderSlotWidget.html#a1748f2e7e66545b50f6ae89c3d4f988d">UQuestOrderSlotWidget::FinishQuestSlot</a></div><div class="ttdeci">void FinishQuestSlot()</div><div class="ttdef"><b>Definition</b> <a href="QuestOrderSlotWidget_8cpp_source.html#l00020">QuestOrderSlotWidget.cpp:20</a></div></div>
+<div class="ttc" id="aclassUQuestOrderSlotWidget_html_a1748f2e7e66545b50f6ae89c3d4f988d"><div class="ttname"><a href="classUQuestOrderSlotWidget.html#a1748f2e7e66545b50f6ae89c3d4f988d">UQuestOrderSlotWidget::FinishQuestSlot</a></div><div class="ttdeci">void FinishQuestSlot()</div><div class="ttdef"><b>Definition</b> <a href="QuestOrderSlotWidget_8cpp_source.html#l00021">QuestOrderSlotWidget.cpp:21</a></div></div>
 <div class="ttc" id="aclassUQuestOrderSlotWidget_html_a243c5b1c1215fa62ea8a7e6184b7e79c"><div class="ttname"><a href="classUQuestOrderSlotWidget.html#a243c5b1c1215fa62ea8a7e6184b7e79c">UQuestOrderSlotWidget::WidgetSwitcher_Slot</a></div><div class="ttdeci">TObjectPtr&lt; class UWidgetSwitcher &gt; WidgetSwitcher_Slot</div><div class="ttdef"><b>Definition</b> <a href="QuestOrderSlotWidget_8h_source.html#l00027">QuestOrderSlotWidget.h:27</a></div></div>
-<div class="ttc" id="aclassUQuestOrderSlotWidget_html_abc90f0eb26c466d52e6daf578d6aa5f5"><div class="ttname"><a href="classUQuestOrderSlotWidget.html#abc90f0eb26c466d52e6daf578d6aa5f5">UQuestOrderSlotWidget::PlayQuestSlot</a></div><div class="ttdeci">void PlayQuestSlot()</div><div class="ttdef"><b>Definition</b> <a href="QuestOrderSlotWidget_8cpp_source.html#l00015">QuestOrderSlotWidget.cpp:15</a></div></div>
+<div class="ttc" id="aclassUQuestOrderSlotWidget_html_a315e253ee49da738a982ab47de2f9c04"><div class="ttname"><a href="classUQuestOrderSlotWidget.html#a315e253ee49da738a982ab47de2f9c04">UQuestOrderSlotWidget::StampStartScale</a></div><div class="ttdeci">float StampStartScale</div><div class="ttdef"><b>Definition</b> <a href="QuestOrderSlotWidget_8h_source.html#l00036">QuestOrderSlotWidget.h:36</a></div></div>
+<div class="ttc" id="aclassUQuestOrderSlotWidget_html_a34424ddb98e9181bab34e13aeab52218"><div class="ttname"><a href="classUQuestOrderSlotWidget.html#a34424ddb98e9181bab34e13aeab52218">UQuestOrderSlotWidget::PlayStampAnimation</a></div><div class="ttdeci">void PlayStampAnimation(float InDeltaTime)</div><div class="ttdef"><b>Definition</b> <a href="QuestOrderSlotWidget_8cpp_source.html#l00028">QuestOrderSlotWidget.cpp:28</a></div></div>
+<div class="ttc" id="aclassUQuestOrderSlotWidget_html_a91bc8e88443d6cb9e3756dfd2e1ba763"><div class="ttname"><a href="classUQuestOrderSlotWidget.html#a91bc8e88443d6cb9e3756dfd2e1ba763">UQuestOrderSlotWidget::StampTimerHandle</a></div><div class="ttdeci">FTimerHandle StampTimerHandle</div><div class="ttdef"><b>Definition</b> <a href="QuestOrderSlotWidget_8h_source.html#l00038">QuestOrderSlotWidget.h:38</a></div></div>
+<div class="ttc" id="aclassUQuestOrderSlotWidget_html_abc90f0eb26c466d52e6daf578d6aa5f5"><div class="ttname"><a href="classUQuestOrderSlotWidget.html#abc90f0eb26c466d52e6daf578d6aa5f5">UQuestOrderSlotWidget::PlayQuestSlot</a></div><div class="ttdeci">void PlayQuestSlot()</div><div class="ttdef"><b>Definition</b> <a href="QuestOrderSlotWidget_8cpp_source.html#l00016">QuestOrderSlotWidget.cpp:16</a></div></div>
 <div class="ttc" id="aclassUQuestOrderSlotWidget_html_abef1ec005e972695a33c1dfc28355640"><div class="ttname"><a href="classUQuestOrderSlotWidget.html#abef1ec005e972695a33c1dfc28355640">UQuestOrderSlotWidget::Image_Bg</a></div><div class="ttdeci">TObjectPtr&lt; class UImage &gt; Image_Bg</div><div class="ttdef"><b>Definition</b> <a href="QuestOrderSlotWidget_8h_source.html#l00024">QuestOrderSlotWidget.h:24</a></div></div>
-<div class="ttc" id="aclassUQuestOrderSlotWidget_html_af455fd5655793fdf3fb4ed34b012364a"><div class="ttname"><a href="classUQuestOrderSlotWidget.html#af455fd5655793fdf3fb4ed34b012364a">UQuestOrderSlotWidget::SetQuestType</a></div><div class="ttdeci">void SetQuestType(FString inQuestType)</div><div class="ttdef"><b>Definition</b> <a href="QuestOrderSlotWidget_8cpp_source.html#l00010">QuestOrderSlotWidget.cpp:10</a></div></div>
+<div class="ttc" id="aclassUQuestOrderSlotWidget_html_adb678bbbfc6ea5760e1012f7bff0f950"><div class="ttname"><a href="classUQuestOrderSlotWidget.html#adb678bbbfc6ea5760e1012f7bff0f950">UQuestOrderSlotWidget::StampDX</a></div><div class="ttdeci">float StampDX</div><div class="ttdef"><b>Definition</b> <a href="QuestOrderSlotWidget_8h_source.html#l00037">QuestOrderSlotWidget.h:37</a></div></div>
+<div class="ttc" id="aclassUQuestOrderSlotWidget_html_ae2598b3f97b91c5f50dfc4edc8781f8d"><div class="ttname"><a href="classUQuestOrderSlotWidget.html#ae2598b3f97b91c5f50dfc4edc8781f8d">UQuestOrderSlotWidget::Image_Complete</a></div><div class="ttdeci">TObjectPtr&lt; class UImage &gt; Image_Complete</div><div class="ttdef"><b>Definition</b> <a href="QuestOrderSlotWidget_8h_source.html#l00033">QuestOrderSlotWidget.h:33</a></div></div>
+<div class="ttc" id="aclassUQuestOrderSlotWidget_html_af455fd5655793fdf3fb4ed34b012364a"><div class="ttname"><a href="classUQuestOrderSlotWidget.html#af455fd5655793fdf3fb4ed34b012364a">UQuestOrderSlotWidget::SetQuestType</a></div><div class="ttdeci">void SetQuestType(FString inQuestType)</div><div class="ttdef"><b>Definition</b> <a href="QuestOrderSlotWidget_8cpp_source.html#l00011">QuestOrderSlotWidget.cpp:11</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_55b064ed9f704d76d3805f2fda876350.html">UI</a></li><li class="navelem"><a class="el" href="dir_550f083bbe519bd985f450628c1369b6.html">Private</a></li><li class="navelem"><a class="el" href="QuestOrderSlotWidget_8cpp.html">QuestOrderSlotWidget.cpp</a></li>
-    <li class="footer">생성시간 : 화 12월 23 2025 08:58:28, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 화 12월 23 2025 11:33:05, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

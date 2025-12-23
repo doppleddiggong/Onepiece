@@ -1,5 +1,6 @@
 var NAVTREEINDEX4 =
 {
+"UPopup__SpeakJudes_8cpp.html":[3,0,0,2,3,0,24],
 "UPopup__SpeakJudes_8cpp_source.html":[3,0,0,2,3,0,24],
 "UPopup__SpeakJudes_8h.html":[3,0,0,2,3,1,25],
 "UPopup__SpeakJudes_8h.html#ae16af2f3803bbca442210a08d2c0ea1d":[3,0,0,2,3,1,25,1],
@@ -248,6 +249,5 @@ var NAVTREEINDEX4 =
 "classADropper.html#a0ca196ef13ac8207543cba52a266a325":[2,0,7,7],
 "classADropper.html#a120a5316924fd35c0ae10b3e89a92959":[2,0,7,9],
 "classADropper.html#a157c62ea5ca44a107413f475f4a47e61":[2,0,7,11],
-"classADropper.html#a20445470333fec9dda88adeda63439b8":[2,0,7,4],
-"classADropper.html#a38cf91439f0672dae16e4c62a8c9b3ed":[2,0,7,21]
+"classADropper.html#a20445470333fec9dda88adeda63439b8":[2,0,7,4]
 };

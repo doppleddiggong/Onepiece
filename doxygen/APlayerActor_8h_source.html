@@ -232,7 +232,7 @@ $(document).ready(function(){initNavTree('APlayerActor_8h_source.html',''); init
 <div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>    void OnGameMessage(const FString&amp; Message);</div>
 <div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span> </div>
 <div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>    UFUNCTION(Server, Reliable)</div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#ab0295b2e46c5bacfb9524cb08d3ba0c7">  136</a></span>    <span class="keywordtype">void</span> ServerRPC_Teleport(FVector TargetLocation);</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#a97167b3920e7282712a5100dd4ceb490">  136</a></span>    <span class="keywordtype">void</span> ServerRPC_Teleport(FTransform TargetTransform);</div>
 <div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span> </div>
 <div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>    UFUNCTION(Server, Reliable)</div>
 <div class="line"><a id="l00141" name="l00141"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#a0e64c5423cfba3cf1261581d2da13b85">  141</a></span>    <span class="keywordtype">void</span> Server_NotifySpeakJudgeComplete(const struct <a class="code hl_struct" href="structFResponseSpeakingJudes.html">FResponseSpeakingJudes</a>&amp; Response);</div>
@@ -269,7 +269,7 @@ $(document).ready(function(){initNavTree('APlayerActor_8h_source.html',''); init
 <div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>    <span class="keywordtype">void</span> OnResponseSpeakAudio(<a class="code hl_struct" href="structFResponseListenAudio.html">FResponseListenAudio</a>&amp; ResponseData, <span class="keywordtype">bool</span> bWasSuccessful);</div>
 <div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>    </div>
 <div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>    UFUNCTION()</div>
-<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>    void OnTeleportAllPlayers(FVector TargetLocation);</div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>    void OnTeleportAllPlayers(FTransform TargetTransform);</div>
 <div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span> </div>
 <div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>    UFUNCTION()</div>
 <div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>    <span class="keywordtype">void</span> OnFadeOutCompleteForTeleport();</div>
@@ -314,7 +314,7 @@ $(document).ready(function(){initNavTree('APlayerActor_8h_source.html',''); init
 <div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>    UPROPERTY()</div>
 <div class="line"><a id="l00240" name="l00240"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#ae8fbec6d1c7f5d41e2e5c333d35d3a17">  240</a></span>    TObjectPtr&lt;class <a class="code hl_class" href="classUToastWidget.html">UToastWidget</a>&gt; ToastWidget;</div>
 <div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span> </div>
-<div class="line"><a id="l00243" name="l00243"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#af642d2936891008c201f850f9cd76509">  243</a></span>    FVector PendingTeleportLocation;</div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#a136c78d18fcbe6722ea230395550ff55">  243</a></span>    FTransform PendingTeleportTransform;</div>
 <div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>    </div>
 <div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>    <span class="comment">// Movement 관련 변수</span></div>
 <div class="line"><a id="l00246" name="l00246"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#a1ea19f988738aada96a8f3637338163f">  246</a></span>    <span class="keywordtype">float</span> WalkSpeed = 200.f;</div>
@@ -350,7 +350,7 @@ $(document).ready(function(){initNavTree('APlayerActor_8h_source.html',''); init
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_71a9f6b769ee24fe8598c19ea2d70480.html">Character</a></li><li class="navelem"><a class="el" href="dir_82ba722683279238407f867a1ffc0276.html">Public</a></li><li class="navelem"><a class="el" href="APlayerActor_8h.html">APlayerActor.h</a></li>
-    <li class="footer">생성시간 : 화 12월 23 2025 08:58:27, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 화 12월 23 2025 11:33:05, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>
