@@ -3,7 +3,10 @@
 
 #include "UPopup_SpeakQuest.h"
 
+#include "APlayerActor.h"
 #include "UImageButton.h"
+#include "UKLingoNetworkSystem.h"
+#include "ULingoGameHelper.h"
 #include "UPopupManager.h"
 
 void UPopup_SpeakQuest::InitPopup(const FOnMsgBoxOkDelegate& InOkDelegate)
@@ -16,7 +19,38 @@ void UPopup_SpeakQuest::InitPopup(const FOnMsgBoxOkDelegate& InOkDelegate)
 	}
 
 	OnOkDelegate = InOkDelegate;
+
+
+	RequestListenAudio( TEXT("Please answer the officer’s question.")); 
 }
+
+void UPopup_SpeakQuest::RequestListenAudio(const FString& AudioText)
+{
+	if (bIsRequest)
+		return;
+
+	if (auto KLingoNetwork = UKLingoNetworkSystem::Get(GetWorld()))
+	{
+		bIsRequest = true;
+
+		KLingoNetwork->RequestListenAudio(
+			AudioText,
+			FResponseListenAudioDelegate::CreateUObject(this, &UPopup_SpeakQuest::OnResponseListenAudio)
+		);
+	}
+}
+
+void UPopup_SpeakQuest::OnResponseListenAudio(FResponseListenAudio& ResponseData, bool bWasSuccessful)
+{
+	bIsRequest = false;
+
+	if (bWasSuccessful)
+	{
+		if (auto PlayerActor = ULingoGameHelper::GetPlayerActor(this))
+			PlayerActor->PlayTTSAudio(ResponseData.audio_base64);
+	}
+}
+
 
 void UPopup_SpeakQuest::OnClickOk()
 {
