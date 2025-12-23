@@ -173,14 +173,14 @@ public:
 	 * @param EventInstigator 이벤트를 발생시킨 Actor (권한 검증용)
 	 */
 	UFUNCTION(BlueprintCallable, Category = "Network Events")
-	void SendTeleportAllPlayers(const FVector& TargetLocation, AActor* EventInstigator);
+	void SendTeleportAllPlayers(const FTransform& TargetTransform, AActor* EventInstigator);
 
 protected:
 	UFUNCTION(Server, Reliable)
-	void Server_SendTeleportAllPlayers(const FVector& TargetLocation, AActor* EventInstigator);
+	void Server_SendTeleportAllPlayers(const FTransform& TargetTransform, AActor* EventInstigator);
 
 	UFUNCTION(NetMulticast, Reliable)
-	void Multicast_SendTeleportAllPlayers(const FVector& TargetLocation);
+	void Multicast_SendTeleportAllPlayers(const FTransform& TargetTransform);
 
 private:
 	/**

@@ -18,7 +18,7 @@ public:
 	void SetQuestType(FString inQuestType);
 	void PlayQuestSlot();
 	void FinishQuestSlot();
-	
+
 protected:
 	UPROPERTY(meta=(BindWidget))
 	TObjectPtr<class UImage> Image_Bg;
@@ -30,5 +30,12 @@ protected:
 	TObjectPtr<class UTextBlock> Txt_QuestType;
 	
 	UPROPERTY(meta=(BindWidget))
-	TObjectPtr<class UImage> Image_Complete;	
+	TObjectPtr<class UImage> Image_Complete;
+	
+private:
+	float StampStartScale = 2.f;
+	float StampDX = 0;
+	FTimerHandle StampTimerHandle;
+	
+	void PlayStampAnimation(float InDeltaTime);
 };

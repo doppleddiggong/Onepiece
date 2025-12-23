@@ -345,7 +345,7 @@ void ANetworkBroadcastActor::Multicast_SendTutorMessage_Implementation(const FTe
 // Teleport All Players
 // ========================================
 
-void ANetworkBroadcastActor::SendTeleportAllPlayers(const FVector& TargetLocation, AActor* EventInstigator)
+void ANetworkBroadcastActor::SendTeleportAllPlayers(const FTransform& TargetTransform, AActor* EventInstigator)
 {
 	if (!EventInstigator)
 	{
@@ -354,12 +354,12 @@ void ANetworkBroadcastActor::SendTeleportAllPlayers(const FVector& TargetLocatio
 	}
 
 	PRINTLOG(TEXT("NetworkBroadcastActor: SendTeleportAllPlayers called - Location: %s, EventInstigator: %s"),
-		*TargetLocation.ToString(), *EventInstigator->GetName());
+		*TargetTransform.ToString(), *EventInstigator->GetName());
 
-	Server_SendTeleportAllPlayers(TargetLocation, EventInstigator);
+	Server_SendTeleportAllPlayers(TargetTransform, EventInstigator);
 }
 
-void ANetworkBroadcastActor::Server_SendTeleportAllPlayers_Implementation(const FVector& TargetLocation, AActor* EventInstigator)
+void ANetworkBroadcastActor::Server_SendTeleportAllPlayers_Implementation(const FTransform& TargetTransform, AActor* EventInstigator)
 {
 	if (!ValidateInstigator(EventInstigator))
 	{
@@ -367,20 +367,20 @@ void ANetworkBroadcastActor::Server_SendTeleportAllPlayers_Implementation(const 
 		return;
 	}
 
-	PRINTLOG(TEXT("NetworkBroadcastActor: Server received TeleportAllPlayers - Location: %s"), *TargetLocation.ToString());
+	PRINTLOG(TEXT("NetworkBroadcastActor: Server received TeleportAllPlayers - Location: %s"), *TargetTransform.ToString());
 
-	Multicast_SendTeleportAllPlayers(TargetLocation);
+	Multicast_SendTeleportAllPlayers(TargetTransform);
 }
 
-void ANetworkBroadcastActor::Multicast_SendTeleportAllPlayers_Implementation(const FVector& TargetLocation)
+void ANetworkBroadcastActor::Multicast_SendTeleportAllPlayers_Implementation(const FTransform& TargetTransform)
 {
-	PRINTLOG(TEXT("NetworkBroadcastActor: Multicast TeleportAllPlayers - Location: %s, Role: %s"),
-		*TargetLocation.ToString(), GetLocalRole() == ROLE_Authority ? TEXT("Server") : TEXT("Client"));
+	PRINTLOG(TEXT("NetworkBroadcastActor: Multicast TeleportAllPlayers - Transform: %s, Role: %s"),
+		*TargetTransform.ToString(), GetLocalRole() == ROLE_Authority ? TEXT("Server") : TEXT("Client"));
 
 	UBroadcastManager* LocalBroadcast = GetLocalBroadcastManager();
 	if (LocalBroadcast)
 	{
-		LocalBroadcast->SendTeleport(TargetLocation);
+		LocalBroadcast->SendTeleport(TargetTransform);
 		PRINTLOG(TEXT("NetworkBroadcastActor: Local BroadcastManager triggered for TeleportAllPlayers"));
 	}
 }

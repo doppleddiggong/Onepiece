@@ -14,6 +14,9 @@
 #include "Components/StaticMeshComponent.h"
 #include "Components/SkeletalMeshComponent.h"
 #include "Animation/AnimationAsset.h"
+#include "Components/WidgetComponent.h"
+#include "Kismet/GameplayStatics.h"
+#include "Kismet/KismetMathLibrary.h"
 #include "Net/UnrealNetwork.h"
 
 ALuggageHolder::ALuggageHolder()
@@ -41,6 +44,16 @@ ALuggageHolder::ALuggageHolder()
 	// HoldPos component
 	HoldPos = CreateDefaultSubobject<USceneComponent>(TEXT("HoldPos"));
 	HoldPos->SetupAttachment(MeshComponent);
+	
+	WidgetComp = CreateDefaultSubobject<UWidgetComponent>(TEXT("WidgetComp"));
+	WidgetComp->SetupAttachment(RootComponent);
+	WidgetComp->SetRelativeLocation(FVector(0.f, 0.f, 210.f));
+	WidgetComp->SetPivot(FVector2D(0.5f, 0));
+	ConstructorHelpers::FClassFinder<UUserWidget> widgetClassRef(TEXT("/Game/CustomContents/UI/Widgets/WBP_LuggageSlotWidget.WBP_LuggageSlotWidget_C"));
+	if (widgetClassRef.Succeeded())
+	{
+		WidgetComp->SetWidgetClass(widgetClassRef.Class);
+	}
 }
 
 void ALuggageHolder::BeginPlay()
@@ -64,6 +77,8 @@ void ALuggageHolder::Tick(float DeltaTime)
 		CurrentRotation.Yaw += RotationSpeed * DeltaTime;
 		CurTarget->SetActorRotation(CurrentRotation);
 	}
+	
+	BillboardInteractWidget();
 }
 
 void ALuggageHolder::GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const
@@ -203,6 +218,29 @@ void ALuggageHolder::UpdateActivateState(bool State)
 		if (DynamicMaterial)
 			DynamicMaterial->SetScalarParameterValue(FName("Activate"), State ? 1.0f : 0.0f);
 	}
+}
+
+void ALuggageHolder::BillboardInteractWidget()
+{
+	// 위젯이 없으면 빌보드화 안 함
+	if (!WidgetComp)
+		return;
+
+	// Visibility 체크 - 보이지 않으면 빌보드화 안 함
+	if (!WidgetComp->IsVisible())
+		return;
+
+	// 카메라 가져오기
+	AActor* Camera = UGameplayStatics::GetPlayerCameraManager(GetWorld(), 0);
+	if (!Camera)
+		return;
+
+	// 카메라를 향하도록 회전 계산
+	FRotator Rotation = UKismetMathLibrary::MakeRotFromXZ( -Camera->GetActorForwardVector(), Camera->GetActorUpVector() );
+	Rotation.Pitch = 0;
+
+	// 위젯 회전 설정
+	WidgetComp->SetWorldRotation(Rotation);
 }
 
 /**
