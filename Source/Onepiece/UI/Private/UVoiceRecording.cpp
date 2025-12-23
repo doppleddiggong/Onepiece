@@ -46,7 +46,7 @@ void UVoiceRecording::UpdateSpectrumVisual(float DeltaTime)
 	CircularProgressBar->SetPercent(FMath::Clamp(NewPercent, 0.0f, 1.0f));
 
 	// Image_Symbol 스케일 업데이트
-	const float Scale = FMath::Lerp(0.95f, 1.05f, NewPercent);
+	const float Scale = FMath::Lerp(1.0f, 1.75f, NewPercent);
 	Image_Symbol->SetRenderScale(FVector2D(Scale, Scale));
 }
 
