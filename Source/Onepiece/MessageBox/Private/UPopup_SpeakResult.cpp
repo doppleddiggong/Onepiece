@@ -61,14 +61,31 @@ void UPopup_SpeakResult::InitScore() const
 void UPopup_SpeakResult::InitQuestionList()
 {
 	auto PS= ULingoGameHelper::GetLingoPlayerState(GetWorld());
+	if (!PS)
+	{
+		PRINTLOG(TEXT("[UPopup_SpeakResult] Failed to get LingoPlayerState"));
+		return;
+	}
 
 	VerticalBox->ClearChildren();
-	
+
 	for (int32 i = 0; i < SpeakResult.scores.Num(); ++i)
 	{
 		FSpeakResultItem InItemData;
 		InItemData.Index = i+1;
-		InItemData.Question = PS->SpeakScenarioData.speak_quest_data[i].eng;
+
+		// 배열 범위 체크
+		if (i < PS->SpeakScenarioData.speak_quest_data.Num())
+		{
+			InItemData.Question = PS->SpeakScenarioData.speak_quest_data[i].eng;
+		}
+		else
+		{
+			PRINTLOG(TEXT("[UPopup_SpeakResult] speak_quest_data index %d out of range (size: %d)"),
+				i, PS->SpeakScenarioData.speak_quest_data.Num());
+			InItemData.Question = FString::Printf(TEXT("Question %d"), i + 1);
+		}
+
 		InItemData.Feedback = SpeakResult.scores[i].desc;
 		InItemData.Score = SpeakResult.scores[i].score;
 
