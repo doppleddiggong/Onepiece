@@ -115,13 +115,13 @@ void ATeleportTrigger::OnTriggerBeginOverlap(
 		}
 
 		// TeleportOut의 위치 가져오기
-		FVector TargetLocation = TeleportOut->GetActorLocation();
+		FTransform TargetTransform = TeleportOut->GetActorTransform();
 
 		// NetworkBroadcastActor를 통해 모든 플레이어 텔레포트
 		if (ANetworkBroadcastActor* BroadcastActor = ANetworkBroadcastActor::Get(this))
 		{
-			BroadcastActor->SendTeleportAllPlayers(TargetLocation, this);
-			PRINTLOG( TEXT("텔레포트 요청: %s"), *TargetLocation.ToString());
+			BroadcastActor->SendTeleportAllPlayers(TargetTransform, this);
+			PRINTLOG( TEXT("텔레포트 요청: %s"), *TargetTransform.ToString());
 		}
 		else
 		{

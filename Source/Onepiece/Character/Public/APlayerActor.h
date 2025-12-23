@@ -133,7 +133,7 @@ public:
 	void OnGameMessage(const FString& Message);
 
 	UFUNCTION(Server, Reliable)
-	void ServerRPC_Teleport(FVector TargetLocation);
+	void ServerRPC_Teleport(FTransform TargetTransform);
 
 	/// @brief SpeakJudge 결과를 서버로 전달하여 처리합니다 (Server RPC)
 	/// @param Response [in] Client에서 받은 SpeakJudge 평가 결과
@@ -185,7 +185,7 @@ private:
 	/// @brief 텔레포트 이벤트 핸들러
 	/// @param TargetLocation 목표 위치
 	UFUNCTION()
-	void OnTeleportAllPlayers(FVector TargetLocation);
+	void OnTeleportAllPlayers(FTransform TargetTransform);
 
 	/// @brief 페이드 아웃 완료 후 텔레포트 실행
 	UFUNCTION()
@@ -235,7 +235,7 @@ private:
 	TObjectPtr<class UToastWidget> ToastWidget;
 
 	/// @brief 텔레포트 목표 위치
-	FVector PendingTeleportLocation;
+	FTransform PendingTeleportTransform;
 	
 	// Movement 관련 변수
 	float WalkSpeed = 200.f;

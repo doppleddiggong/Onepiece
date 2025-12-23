@@ -81,9 +81,9 @@ void UBroadcastManager::SendAddItemToBoxList(const TArray<FResultStatData>& Item
 	OnAddItemToBoxList.Broadcast(ItemDataList);
 }
 
-void UBroadcastManager::SendTeleport(const FVector& TargetLocation)
+void UBroadcastManager::SendTeleport(const FTransform& TargetTransform)
 {
-	OnTeleport.Broadcast(TargetLocation);
+	OnTeleport.Broadcast(TargetTransform);
 }
 
 void UBroadcastManager::SendTutorialStepChanged(APlayerController* Player, ETutorialStep NewStep)

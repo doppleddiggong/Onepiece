@@ -38,8 +38,7 @@ void UPopup_QuestionnaireResult::InitPopup(const FResponseWriteSubmit& InRespons
 		QuestionsEng.Add(question.word_data.eng);
 	}
 	
-	// TODO: 최종 Result 불러오기
-	// GameState에서 결과 확인
+	// 최종 Result 불러오기
 	if (auto PS = ULingoGameHelper::GetLingoPlayerState(GetWorld()))
 	{
 		bool bHasResult = false;
@@ -83,7 +82,7 @@ void UPopup_QuestionnaireResult::InitPopup(const FResponseWriteSubmit& InRespons
 		ScrollBox_Result->AddChild(ItemWidget);
 	
 		// 마지막 항목이 아니면 Spacer 추가
-		if (i < ResponseData.ResponseWriteDataArray.Num() - 1)
+		if (i < ResponseData.ResponseWriteDataArray.Num())
 		{
 			USpacer* Spacer = NewObject<USpacer>(this);
 			if (Spacer)

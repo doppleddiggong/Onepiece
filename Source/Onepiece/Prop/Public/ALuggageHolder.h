@@ -59,6 +59,9 @@ private:
 
 	void UpdateActivateState(bool State);
 	
+	/** 상호작용 위젯 빌보드화 (카메라를 향하도록) */
+	void BillboardInteractWidget();
+	
 public:
 	// Components
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Components")
@@ -69,6 +72,9 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Spawning")
 	TObjectPtr<class USceneComponent> HoldPos;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Widget")
+	TObjectPtr<class UWidgetComponent> WidgetComp;
 
 protected:
 	// 현재 올라가 있는 액터

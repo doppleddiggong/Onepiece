@@ -652,19 +652,19 @@ void APlayerActor::ClientRPC_ShowGameMessage_Implementation(const FString& Messa
 	}
 }
 
-void APlayerActor::OnTeleportAllPlayers(FVector TargetLocation)
+void APlayerActor::OnTeleportAllPlayers(FTransform TargetTransform)
 {
 	// 서버에 텔레포트 요청
-	ServerRPC_Teleport(TargetLocation);
+	ServerRPC_Teleport(TargetTransform);
 
 	// 로컬 플레이어만 페이드 처리
 	if (!IsLocallyControlled())
 		return;
 
-	PRINTLOG(TEXT("APlayerActor::OnTeleportAllPlayers - Start teleport to %s"), *TargetLocation.ToString());
+	PRINTLOG(TEXT("APlayerActor::OnTeleportAllPlayers - Start teleport to %s"), *TargetTransform.ToString());
 
 	// 목표 위치 저장
-	PendingTeleportLocation = TargetLocation;
+	PendingTeleportTransform = TargetTransform;
 
 	// FadeWidget 가져오기
 	if (!MainWidget)
@@ -687,9 +687,9 @@ void APlayerActor::OnTeleportAllPlayers(FVector TargetLocation)
 	MainWidget->FadeOut(0.5f);
 }
 
-void APlayerActor::ServerRPC_Teleport_Implementation(FVector TargetLocation)
+void APlayerActor::ServerRPC_Teleport_Implementation(FTransform TargetTransform)
 {
-	SetActorLocation(TargetLocation);
+	SetActorTransform(TargetTransform);
 }
 
 void APlayerActor::Server_NotifySpeakJudgeComplete_Implementation(const FResponseSpeakingJudes& Response)
@@ -725,10 +725,10 @@ void APlayerActor::Client_ShowSpeakJudesPopup_Implementation(const FResponseSpea
 
 void APlayerActor::OnFadeOutCompleteForTeleport()
 {
-	PRINTLOG(TEXT("APlayerActor::OnFadeOutCompleteForTeleport - Teleporting to %s"), *PendingTeleportLocation.ToString());
+	PRINTLOG(TEXT("APlayerActor::OnFadeOutCompleteForTeleport - Teleporting to %s"), *PendingTeleportTransform.ToString());
 
 	// 텔레포트 실행
-	SetActorLocation(PendingTeleportLocation);
+	SetActorTransform(PendingTeleportTransform);
 
 	// FadeWidget 가져오기
 	if (!MainWidget)
