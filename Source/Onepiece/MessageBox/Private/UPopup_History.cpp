@@ -7,9 +7,8 @@
 #include "ULingoGameHelper.h"
 #include "GameLogging.h"
 #include "Components/TextBlock.h"
-#include "Components/Button.h"
-#include "Components/ImageButton.h"
-#include "Components/TextureButton.h"
+#include "UImageButton.h"
+#include "UTextureButton.h"
 #include "Components/ScrollBox.h"
 #include "Components/VerticalBox.h"
 #include "Components/Spacer.h"
@@ -22,14 +21,14 @@ void UPopup_History::NativeConstruct()
 	// 버튼 바인딩
 	if (Btn_Close)
 	{
-		Btn_Close->OnClicked.RemoveDynamic(this, &UPopup_History::OnClickClose);
-		Btn_Close->OnClicked.AddDynamic(this, &UPopup_History::OnClickClose);
+		Btn_Close->OnButtonClickedEvent.RemoveDynamic(this, &UPopup_History::OnClickClose);
+		Btn_Close->OnButtonClickedEvent.AddDynamic(this, &UPopup_History::OnClickClose);
 	}
 
 	if (Btn_Clear)
 	{
-		Btn_Clear->OnClicked.RemoveDynamic(this, &UPopup_History::OnClickClear);
-		Btn_Clear->OnClicked.AddDynamic(this, &UPopup_History::OnClickClear);
+		Btn_Clear->OnButtonClickedEvent.RemoveDynamic(this, &UPopup_History::OnClickClear);
+		Btn_Clear->OnButtonClickedEvent.AddDynamic(this, &UPopup_History::OnClickClear);
 	}
 }
 
