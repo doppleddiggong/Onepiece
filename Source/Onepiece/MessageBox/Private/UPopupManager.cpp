@@ -22,6 +22,7 @@
 #include "UPopup_Word.h"
 #include "UPopup_Evaluation.h"
 #include "UPopup_LevelSelect.h"
+#include "UPopup_History.h"
 
 #include "Onepiece/Onepiece.h"
 
@@ -41,6 +42,7 @@
 #define EVALUATION_POPUP_PATH TEXT("/Game/CustomContents/UI/Widgets/WBP_PopupEvaluation.WBP_PopupEvaluation_C")
 #define ASKTUTORIAL_POPUP_PATH TEXT("/Game/CustomContents/UI/Widgets/WBP_PopupAskTutorial.WBP_PopupAskTutorial_C")
 #define LEVELSELECT_POPUP_PATH TEXT("/Game/CustomContents/UI/Widgets/WBP_PopupLevelSelect.WBP_PopupLevelSelect_C")
+#define HISTORY_POPUP_PATH TEXT("/Game/CustomContents/UI/Widgets/WBP_PopupHistory.WBP_PopupHistory_C")
 
 UPopupManager::UPopupManager()
 {
@@ -62,6 +64,7 @@ UPopupManager::UPopupManager()
 	PopupClassMap.Add(EPopupType::Evaluation, FComponentHelper::LoadClass<UPopup_Evaluation>(EVALUATION_POPUP_PATH));
 	PopupClassMap.Add(EPopupType::AskTutorial, FComponentHelper::LoadClass<UPopup_AskTutorial>(ASKTUTORIAL_POPUP_PATH));
 	PopupClassMap.Add(EPopupType::LevelSelect, FComponentHelper::LoadClass<UPopup_LevelSelect>(LEVELSELECT_POPUP_PATH));
+	PopupClassMap.Add(EPopupType::History, FComponentHelper::LoadClass<UPopup_History>(HISTORY_POPUP_PATH));
 }
 
 // ========================================

@@ -19,6 +19,7 @@
 #include "UPopup_Evaluation.h"
 #include "UPopup_InterviewHello.h"
 #include "UPopup_LevelSelect.h"
+#include "UPopup_History.h"
 
 
 APopupTesterActor::APopupTesterActor()
@@ -176,6 +177,15 @@ void APopupTesterActor::PopupLevelSelect()
 	{
 		Popup->InitPopup();
 		PRINTLOG(TEXT("[PopupTester] Level Select popup opened"));
+	}
+}
+
+void APopupTesterActor::TestPopupHistory()
+{
+	if (auto Popup = UPopupManager::ShowPopupAs<UPopup_History>(GetWorld(), EPopupType::History))
+	{
+		Popup->InitPopup();
+		PRINTLOG(TEXT("[PopupTester] Chat History popup opened"));
 	}
 }
 

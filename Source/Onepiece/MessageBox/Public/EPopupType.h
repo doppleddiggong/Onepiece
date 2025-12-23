@@ -38,6 +38,8 @@ enum class EPopupType : uint8
 	AskTutorial			UMETA(DisplayName = "AskTutorial"),
 
 	LevelSelect			UMETA(DisplayName = "LevelSelect"),
+
+	History				UMETA(DisplayName = "History"),
 };
 
 UENUM(BlueprintType)

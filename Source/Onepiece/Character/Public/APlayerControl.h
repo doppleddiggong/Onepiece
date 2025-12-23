@@ -85,6 +85,7 @@ protected:
 	UPROPERTY(EditDefaultsOnly, Category="Input") TObjectPtr<class UInputAction> IA_Info;
 	UPROPERTY(EditDefaultsOnly, Category="Input") TObjectPtr<class UInputAction> IA_Hook;
 	UPROPERTY(EditDefaultsOnly, Category="Input") TObjectPtr<class UInputAction> IA_Chat;
+	UPROPERTY(EditDefaultsOnly, Category="Input") TObjectPtr<class UInputAction> IA_HISTORY;
 
 	// --- Handlers ---
 	void OnMove(const FInputActionValue& Value);
@@ -105,8 +106,10 @@ protected:
 	void OnInfo(const FInputActionValue& Value);
 
 	void OnHook(const FInputActionValue& Value);
-	
+
 	void OnChat(const FInputActionValue& Value);
+
+	void OnHistory(const FInputActionValue& Value);
 
 	UFUNCTION(Server, Reliable)
 	void Server_OnGrab();	
@@ -126,6 +129,10 @@ protected:
 public:
 	UFUNCTION(Server, Reliable)
 	void Server_SetUserInfo(const FResponseUserMe& InUserInfo);
+
+	/// @brief Chat History System에 접근합니다.
+	UFUNCTION(BlueprintCallable, Category = "Chat")
+	class UChatHistorySystem* GetChatHistorySystem() const { return ChatHistorySystem; }
 	
 private:
 	void RequestDrop(APlayerControl* Requester);
@@ -174,4 +181,9 @@ public:
 	void StartTutorialManually();
 	// 튜토리얼 완료 콜백
 	void OnTutorialCompleted();
+
+private:
+	/// @brief Chat History 관리 컴포넌트
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Chat", meta = (AllowPrivateAccess = "true"))
+	TObjectPtr<class UChatHistorySystem> ChatHistorySystem;
 };

@@ -39,6 +39,8 @@
 #include "UPopupManager.h"
 #include "UPopup_SpeakQuest.h"
 #include "UPopup_SpeakResult.h"
+#include "UChatHistorySystem.h"
+#include "UPopup_History.h"
 #include "Onepiece/Onepiece.h"
 
 #define IMC_DEFAULT_PATH			TEXT("/Game/CustomContents/Input/IMC_Game_Player.IMC_Game_Player")
@@ -70,6 +72,7 @@ APlayerControl::APlayerControl()
 	IA_Chat = FComponentHelper::LoadAsset<UInputAction>(IA_CHAT_PATH);
 
 	TutorialComponent = CreateDefaultSubobject<UTutorialComponent>(TEXT("TutorialComponent"));
+	ChatHistorySystem = CreateDefaultSubobject<UChatHistorySystem>(TEXT("ChatHistorySystem"));
 }
 
 void APlayerControl::BeginPlay()
@@ -124,8 +127,13 @@ void APlayerControl::SetupInputComponent()
 		EIC->BindAction(IA_Info, ETriggerEvent::Started, this, &APlayerControl::OnInfo);
 		
 		EIC->BindAction(IA_Hook, ETriggerEvent::Started, this, &APlayerControl::OnHook);
-		
+
 		EIC->BindAction(IA_Chat, ETriggerEvent::Started, this, &APlayerControl::OnChat);
+
+		if (IA_HISTORY)
+		{
+			EIC->BindAction(IA_HISTORY, ETriggerEvent::Started, this, &APlayerControl::OnHistory);
+		}
 	}
 }
 
@@ -302,9 +310,18 @@ void APlayerControl::OnChat(const FInputActionValue& Value)
 	// GameAndUI로??
 	FInputModeUIOnly uiInputMode;
 	SetInputMode(uiInputMode);
-	
+
 	APlayerActor* player = Cast<APlayerActor>(GetPawn());
 	player->GetMainWidget()->SetFocusOnChat();
+}
+
+void APlayerControl::OnHistory(const FInputActionValue& Value)
+{
+	// ShowPopupAs 템플릿 함수를 사용하여 History 팝업 표시
+	if (auto Popup = UPopupManager::ShowPopupAs<UPopup_History>(GetWorld(), EPopupType::History))
+	{
+		Popup->InitPopup();
+	}
 }
 
 void APlayerControl::Server_OnHook_Implementation()
@@ -669,6 +686,12 @@ void APlayerControl::OnChatAnswerReceived(FResponseChatAnswers& ResponseData, bo
 		GS->MulticastRPC_SendChat(GS->GetBotInfo(), AIAnswer, -1);
 
 		PRINTLOG(TEXT("[AI Chat] AI Answer: %s"), *ResponseData.answer);
+	}
+
+	// Chat History 저장
+	if (ChatHistorySystem)
+	{
+		ChatHistorySystem->SaveChatHistory(ResponseData.question, ResponseData.answer);
 	}
 }
 

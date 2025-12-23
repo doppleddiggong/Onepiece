@@ -37,6 +37,9 @@ public:
 	UFUNCTION(BlueprintCallable, CallInEditor, Category = "TEST|Message")
 	void PopupLevelSelect();
 
+	UFUNCTION(BlueprintCallable, CallInEditor, Category = "TEST|Message")
+	void TestPopupHistory();
+
 	void OnOK();
 	void OnCancel();
 
