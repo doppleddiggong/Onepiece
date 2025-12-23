@@ -1,6 +1,5 @@
 var NAVTREEINDEX10 =
 {
-"classUGameSoundManager.html#ad68ae454c6d8f2fbb53ad089cbd49310":[2,0,162,1],
 "classUGameVFXManager.html":[2,0,163],
 "classUGameVFXManager.html#a1911c371a4f46d408add1283d701aafd":[2,0,163,4],
 "classUGameVFXManager.html#a36f7d7d4e4b07418214f460ac8f9812f":[2,0,163,0],
@@ -249,5 +248,6 @@ var NAVTREEINDEX10 =
 "classULobbyWidget.html#a2e16854a2544658fa63f5957d290f014":[2,0,177,14],
 "classULobbyWidget.html#a2f521fce81c9bbbcf6d565ae4b309d19":[2,0,177,13],
 "classULobbyWidget.html#a3d709383d31fc4f1a2ccf4ceae0daf77":[2,0,177,6],
-"classULobbyWidget.html#a42de44172e6a96acbae7313fac0af009":[2,0,177,17]
+"classULobbyWidget.html#a42de44172e6a96acbae7313fac0af009":[2,0,177,17],
+"classULobbyWidget.html#a5edcb46b3862c945f5143702a43f9cf8":[2,0,177,7]
 };
