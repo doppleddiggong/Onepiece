@@ -85,8 +85,6 @@ protected:
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
 	TObjectPtr<class UStateWidget> StateWidget;
 
-	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
-	TObjectPtr<class UVoiceRecording> VoiceRecording;
 
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
 	TObjectPtr<class UWidgetSwitcher> WidgetSwitcher;
@@ -94,9 +92,6 @@ protected:
 	/// @brief Speak Stage UI 위젯 (옵션, BindWidgetOptional)
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
 	TObjectPtr<class USpeakWidget> SpeakWidget;
-
-	// UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
-	// TObjectPtr<class UQuestOrderWidget> QuestOrderWidget;
 	
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
 	TObjectPtr<class UQuestOrderWidget> QuestOrderWidget;
@@ -121,6 +116,9 @@ public:
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
 	TObjectPtr<class UCompassWidget> CompassWidget;
 
+	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
+	TObjectPtr<class UVoiceRecording> VoiceRecording;
+	
 private:
 	/// @brief 훅 타겟 감지 시 이미지 (파란색)
 	UPROPERTY(EditDefaultsOnly, Category = "Hook")

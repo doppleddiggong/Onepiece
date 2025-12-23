@@ -85,7 +85,7 @@ protected:
 	UPROPERTY(EditDefaultsOnly, Category="Input") TObjectPtr<class UInputAction> IA_Info;
 	UPROPERTY(EditDefaultsOnly, Category="Input") TObjectPtr<class UInputAction> IA_Hook;
 	UPROPERTY(EditDefaultsOnly, Category="Input") TObjectPtr<class UInputAction> IA_Chat;
-	UPROPERTY(EditDefaultsOnly, Category="Input") TObjectPtr<class UInputAction> IA_HISTORY;
+	UPROPERTY(EditDefaultsOnly, Category="Input") TObjectPtr<class UInputAction> IA_Histroy;
 
 	// --- Handlers ---
 	void OnMove(const FInputActionValue& Value);
@@ -182,7 +182,7 @@ public:
 	// 튜토리얼 완료 콜백
 	void OnTutorialCompleted();
 
-private:
+public:
 	/// @brief Chat History 관리 컴포넌트
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Chat", meta = (AllowPrivateAccess = "true"))
 	TObjectPtr<class UChatHistorySystem> ChatHistorySystem;

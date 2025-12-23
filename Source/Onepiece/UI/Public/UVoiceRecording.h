@@ -38,6 +38,9 @@ private:
 protected:
 	/// @brief 원형 프로그레스바 위젯
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly, Category = "VoiceRecording|UI")
+	TObjectPtr<class UImage> Image_Symbol;
+
+	UPROPERTY(meta = (BindWidget), BlueprintReadOnly, Category = "VoiceRecording|UI")
 	TObjectPtr<class UCircularProgressBar> CircularProgressBar;
 
 	/// @brief 스펙트럼 감쇠 속도
@@ -55,4 +58,7 @@ protected:
 private:
 	/// @brief 스펙트럼 표시 값
 	float SpectrumDisplayValue = 0.f;
+
+	FLinearColor StartRecordingColor;
+	FLinearColor StopRecordingColor;
 };

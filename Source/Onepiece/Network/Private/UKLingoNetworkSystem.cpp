@@ -1342,6 +1342,7 @@ void UKLingoNetworkSystem::RequestChatQuestion(const FString& Context, const FSt
 				{
 					ResponseData.SetFromHttpResponse(HttpResponse);
 					ResponseData.PrintData();
+
 					InDelegate.ExecuteIfBound(ResponseData, true);
 				}
 				else

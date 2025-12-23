@@ -8,18 +8,22 @@
 
 #include "UBroadcastManager.h"
 #include "UCircularProgressBar.h"
+#include "Components/Image.h"
 
 void UVoiceRecording::InitWidget()
 {
-	// 초기에는 숨김 상태로 시작
-	SetVisibility(ESlateVisibility::Hidden);
-
 	// 브로드캐스트 매니저에 이벤트 등록
 	if (auto EventManager = UBroadcastManager::Get(GetWorld()))
 	{
+		EventManager->OnAudioCapture.RemoveDynamic(this, &UVoiceRecording::OnAudioCapture);
 		EventManager->OnAudioCapture.AddDynamic(this, &UVoiceRecording::OnAudioCapture);
+
+		EventManager->OnAudioSpectrum.RemoveDynamic(this, &UVoiceRecording::OnAudioSpectrum);
 		EventManager->OnAudioSpectrum.AddDynamic(this, &UVoiceRecording::OnAudioSpectrum);
 	}
+
+	StartRecordingColor = FColor::FromHex(TEXT("CEF97CFF"));
+	StopRecordingColor = FColor::FromHex(TEXT("A3A3A3FF"));
 }
 
 void UVoiceRecording::NativeTick(const FGeometry& MyGeometry, float InDeltaTime)
@@ -31,7 +35,7 @@ void UVoiceRecording::NativeTick(const FGeometry& MyGeometry, float InDeltaTime)
 
 void UVoiceRecording::UpdateSpectrumVisual(float DeltaTime)
 {
-	if (!CircularProgressBar || !CircularProgressBar->IsVisible())
+	if ( !Image_Symbol->IsVisible())
 		return;
 
 	const float Delta = FMath::Max(DeltaTime, 0.0f);
@@ -40,24 +44,20 @@ void UVoiceRecording::UpdateSpectrumVisual(float DeltaTime)
 	const float InterpSpeed = TargetValue > CurrentValue ? SpectrumRiseSpeed : SpectrumDecaySpeed;
 	const float NewPercent = FMath::FInterpConstantTo(CurrentValue, TargetValue, Delta, InterpSpeed);
 	CircularProgressBar->SetPercent(FMath::Clamp(NewPercent, 0.0f, 1.0f));
+
+	// Image_Symbol 스케일 업데이트
+	const float Scale = FMath::Lerp(0.95f, 1.05f, NewPercent);
+	Image_Symbol->SetRenderScale(FVector2D(Scale, Scale));
 }
 
 void UVoiceRecording::OnAudioCapture(bool bRecording)
 {
-	if (!CircularProgressBar)
-		return;
+	Image_Symbol->SetColorAndOpacity(bRecording ? StartRecordingColor : StopRecordingColor );
 
-	if (bRecording)
+	if ( bRecording == false )
 	{
-		// StartAudioRecording: 흰색(알파 100%)으로 보임
-		SetVisibility(ESlateVisibility::Visible);
-		SetRenderOpacity(1.0f);
-		CircularProgressBar->SetVisibility(ESlateVisibility::Visible);
-	}
-	else
-	{
-		// StopAudioRecording: 흰색(알파 25%)으로 보임
-		SetRenderOpacity(0.25f);
+		SpectrumDisplayValue = 0.0f;
+		CircularProgressBar->SetPercent(0.0f);
 	}
 }
 

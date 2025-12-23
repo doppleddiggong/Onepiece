@@ -27,11 +27,9 @@
 #include "ADropper.h"
 #include "ALingoGameState.h"
 #include "ANetworkBroadcastActor.h"
-#include "luggage.h"
 #include "EngineUtils.h"
 #include "GameLogging.h"
 #include "InteractableComponent.h"
-#include "OrderKiosk.h"
 #include "QuestOrderWidget.h"
 #include "TutorialComponent.h"
 #include "UDialogManager.h"
@@ -54,6 +52,7 @@
 #define IA_INFO_PATH				TEXT("/Game/CustomContents/Input/IA_Game_Info.IA_Game_Info")
 #define IA_HOOK_PATH				TEXT("/Game/CustomContents/Input/IA_Game_Hook.IA_Game_Hook")
 #define IA_CHAT_PATH				TEXT("/Game/CustomContents/Input/IA_EnterChat.IA_EnterChat")
+#define IA_HISTORY_PATH				TEXT("/Game/CustomContents/Input/IA_EnterChat.IA_History")
 
 
 APlayerControl::APlayerControl()
@@ -70,6 +69,7 @@ APlayerControl::APlayerControl()
 	IA_Info = FComponentHelper::LoadAsset<UInputAction>(IA_INFO_PATH);
 	IA_Hook = FComponentHelper::LoadAsset<UInputAction>(IA_HOOK_PATH);
 	IA_Chat = FComponentHelper::LoadAsset<UInputAction>(IA_CHAT_PATH);
+	IA_Histroy = FComponentHelper::LoadAsset<UInputAction>(IA_HISTORY_PATH);
 
 	TutorialComponent = CreateDefaultSubobject<UTutorialComponent>(TEXT("TutorialComponent"));
 	ChatHistorySystem = CreateDefaultSubobject<UChatHistorySystem>(TEXT("ChatHistorySystem"));
@@ -129,11 +129,7 @@ void APlayerControl::SetupInputComponent()
 		EIC->BindAction(IA_Hook, ETriggerEvent::Started, this, &APlayerControl::OnHook);
 
 		EIC->BindAction(IA_Chat, ETriggerEvent::Started, this, &APlayerControl::OnChat);
-
-		if (IA_HISTORY)
-		{
-			EIC->BindAction(IA_HISTORY, ETriggerEvent::Started, this, &APlayerControl::OnHistory);
-		}
+		EIC->BindAction(IA_Histroy, ETriggerEvent::Started, this, &APlayerControl::OnHistory);
 	}
 }
 
@@ -685,13 +681,9 @@ void APlayerControl::OnChatAnswerReceived(FResponseChatAnswers& ResponseData, bo
 		// Bot은 PlayerIndex -1 사용
 		GS->MulticastRPC_SendChat(GS->GetBotInfo(), AIAnswer, -1);
 
-		PRINTLOG(TEXT("[AI Chat] AI Answer: %s"), *ResponseData.answer);
-	}
-
-	// Chat History 저장
-	if (ChatHistorySystem)
-	{
-		ChatHistorySystem->SaveChatHistory(ResponseData.question, ResponseData.answer);
+		// Chat History 저장
+		if (ChatHistorySystem)
+			ChatHistorySystem->SaveChatHistory(ResponseData.question, ResponseData.answer);
 	}
 }
 
@@ -856,5 +848,4 @@ void APlayerControl::UpdateQuestOrderWidget(const FString& inQuestOrder)
 	// 위젯 업데이트
 	QuestOrderWidget->UpdateQuestOrder(inQuestOrder);
 	QuestOrderWidget->SetVisibility(ESlateVisibility::Visible);
-	
 }

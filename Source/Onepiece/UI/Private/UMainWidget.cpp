@@ -57,14 +57,15 @@ void UMainWidget::NativeConstruct()
 	StateWidget->InitWidget();
 	StateWidget->SetVisibility( ESlateVisibility::Collapsed);
 
-	VoiceRecording->InitWidget();
-
 	RoomWidget->InitWidget();
 	RoomWidget->SetVisibility( ESlateVisibility::Collapsed);
 	
 	QuestInfoWidget->SetVisibility( ESlateVisibility::Collapsed );
 
 	CompassWidget->SetVisibility( ESlateVisibility::Collapsed );
+
+	VoiceRecording->InitWidget();
+	VoiceRecording->SetVisibility( ESlateVisibility::Collapsed);
 	
 	// 훅 타겟 인디케이터 초기 숨김
 	HookTargetIndicator->SetVisibility(ESlateVisibility::Hidden);

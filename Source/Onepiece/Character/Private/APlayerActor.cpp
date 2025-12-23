@@ -31,6 +31,7 @@
 #include "UKLingoNetworkSystem.h"
 #include "UPopup_SpeakQuestJudes.h"
 #include "UQuestInfoWidget.h"
+#include "UVoiceRecording.h"
 
 #include "Camera/CameraComponent.h"
 #include "Components/InputComponent.h"
@@ -238,7 +239,8 @@ void APlayerActor::CreateMainWidget()
 				MainWidget->UpdateRoomWidget( GS->GetRoomLevel(), GS->GetRoomId());
 
 			MainWidget->CompassWidget->SetVisibility( ESlateVisibility::Visible );
-			
+			MainWidget->VoiceRecording->SetVisibility( ESlateVisibility::Visible );
+
 			// UserInfo가 로드되었으면 즉시 업데이트, 아니면 재시도
 			if (PC->HasUserInfo() )
 			{

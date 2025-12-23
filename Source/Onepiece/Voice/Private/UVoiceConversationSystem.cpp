@@ -16,6 +16,8 @@
 #include "UKLingoNetworkSystem.h"
 #include "ASpeakStageActor.h"
 #include "APlayerActor.h"
+#include "APlayerControl.h"
+#include "UChatHistorySystem.h"
 #include "UPopupManager.h"
 #include "Sound/SoundWaveProcedural.h"
 #include "GameFramework/PlayerState.h"
@@ -308,6 +310,11 @@ void UVoiceConversationSystem::OnResponseChatAnswers(FResponseChatAnswers& Respo
 			// Bot은 PlayerIndex -1 사용
 			GS->MulticastRPC_SendChat(GS->GetBotInfo(), AIAnswer, -1);
 
+			// Chat History 저장
+			APlayerControl* PC = Cast<APlayerControl>(Owner->GetController());
+			if ( PC != nullptr )
+				PC->GetChatHistorySystem()->SaveChatHistory(Response.question, Response.answer);
+			
 			PRINTLOG(TEXT("[AI Chat] AI Answer: %s"), *Response.answer);
 		}
 	}
