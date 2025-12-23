@@ -86,6 +86,9 @@ protected:
 	TObjectPtr<class UStateWidget> StateWidget;
 
 	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
+	TObjectPtr<class UVoiceRecording> VoiceRecording;
+
+	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
 	TObjectPtr<class UWidgetSwitcher> WidgetSwitcher;
 
 	/// @brief Speak Stage UI 위젯 (옵션, BindWidgetOptional)

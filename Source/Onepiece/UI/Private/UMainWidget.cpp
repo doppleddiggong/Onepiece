@@ -8,6 +8,7 @@
 #include "Input/Reply.h"
 #include "UPlayTimer.h"
 #include "UStateWidget.h"
+#include "UVoiceRecording.h"
 #include "ALingoGameState.h"
 #include "ALingoPlayerState.h"
 #include "ASpeakStageActor.h"
@@ -55,6 +56,8 @@ void UMainWidget::NativeConstruct()
 
 	StateWidget->InitWidget();
 	StateWidget->SetVisibility( ESlateVisibility::Collapsed);
+
+	VoiceRecording->InitWidget();
 
 	RoomWidget->InitWidget();
 	RoomWidget->SetVisibility( ESlateVisibility::Collapsed);
