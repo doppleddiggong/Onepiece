@@ -198,6 +198,7 @@ var annotated_dup =
     [ "UPopup_QuestionnaireResultItem", "classUPopup__QuestionnaireResultItem.html", "classUPopup__QuestionnaireResultItem" ],
     [ "UPopup_ReadQuest", "classUPopup__ReadQuest.html", "classUPopup__ReadQuest" ],
     [ "UPopup_Result", "classUPopup__Result.html", "classUPopup__Result" ],
+    [ "UPopup_SpeakJudes", "classUPopup__SpeakJudes.html", "classUPopup__SpeakJudes" ],
     [ "UPopup_SpeakQuest", "classUPopup__SpeakQuest.html", "classUPopup__SpeakQuest" ],
     [ "UPopup_SpeakQuestJudes", "classUPopup__SpeakQuestJudes.html", "classUPopup__SpeakQuestJudes" ],
     [ "UPopup_SpeakResult", "classUPopup__SpeakResult.html", "classUPopup__SpeakResult" ],

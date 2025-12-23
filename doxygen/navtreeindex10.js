@@ -1,5 +1,11 @@
 var NAVTREEINDEX10 =
 {
+"classUGameVFXManager.html#a36f7d7d4e4b07418214f460ac8f9812f":[2,0,163,0],
+"classUGameVFXManager.html#a4a3fa49a54db5e2caff041e9e1ba8818":[2,0,163,1],
+"classUGameVFXManager.html#a4f7a82ca570424be468311bcba163759":[2,0,163,2],
+"classUGameVFXManager.html#a82ec4762316fce080ebf78579154ef30":[2,0,163,3],
+"classUGameVFXManager.html#aaa8a39ad90780ff3bffc4af06971f806":[2,0,163,6],
+"classUGameVFXManager.html#aca745efb451e8000491a3d262f15724b":[2,0,163,5],
 "classUHistoryItem.html":[2,0,164],
 "classUHistoryItem.html#a36cd60d8d245d3e3ba0f453df86b334c":[2,0,164,0],
 "classUHistoryItem.html#a4e7e1c6837917fd51611a2cf2f01422c":[2,0,164,4],
@@ -243,11 +249,5 @@ var NAVTREEINDEX10 =
 "classULobbyWidget.html#a42de44172e6a96acbae7313fac0af009":[2,0,177,17],
 "classULobbyWidget.html#a5edcb46b3862c945f5143702a43f9cf8":[2,0,177,7],
 "classULobbyWidget.html#a93bfc42c7f6e65f1817ec727e60824c3":[2,0,177,10],
-"classULobbyWidget.html#a9aa8c021f1b4fcd8c44b91a3ae5ef9d3":[2,0,177,11],
-"classULobbyWidget.html#a9c2e3e55a8bd35acdcd938c459a81c0d":[2,0,177,5],
-"classULobbyWidget.html#a9f7d94fabb5cf7886e9a8763cb4beb6f":[2,0,177,19],
-"classULobbyWidget.html#aa3515ca1f6392165f1810ae7525717c6":[2,0,177,20],
-"classULobbyWidget.html#ab2a809ece4ef11c5a103558a69947ce3":[2,0,177,16],
-"classULobbyWidget.html#ac269be527b9914bcf24923f5a15690f9":[2,0,177,9],
-"classULobbyWidget.html#adbc588bbd79766a16f50de5bd410c868":[2,0,177,15]
+"classULobbyWidget.html#a9aa8c021f1b4fcd8c44b91a3ae5ef9d3":[2,0,177,11]
 };

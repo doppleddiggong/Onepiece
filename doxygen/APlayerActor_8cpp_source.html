@@ -135,7 +135,7 @@ $(document).ready(function(){initNavTree('APlayerActor_8cpp_source.html',''); in
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="preprocessor">#include &quot;<a class="code" href="UBroadcastManager_8h.html">UBroadcastManager.h</a>&quot;</span></div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="preprocessor">#include &quot;<a class="code" href="UFadeWidget_8h.html">UFadeWidget.h</a>&quot;</span></div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="preprocessor">#include &quot;<a class="code" href="UKLingoNetworkSystem_8h.html">UKLingoNetworkSystem.h</a>&quot;</span></div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="preprocessor">#include &quot;<a class="code" href="UPopup__SpeakQuestJudes_8h.html">UPopup_SpeakQuestJudes.h</a>&quot;</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="preprocessor">#include &quot;<a class="code" href="UPopup__SpeakJudes_8h.html">UPopup_SpeakJudes.h</a>&quot;</span></div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="preprocessor">#include &quot;<a class="code" href="UQuestInfoWidget_8h.html">UQuestInfoWidget.h</a>&quot;</span></div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="preprocessor">#include &quot;<a class="code" href="UVoiceRecording_8h.html">UVoiceRecording.h</a>&quot;</span></div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
@@ -858,221 +858,236 @@ $(document).ready(function(){initNavTree('APlayerActor_8cpp_source.html',''); in
 <div class="line"><a id="l00706" name="l00706"></a><span class="lineno">  706</span> </div>
 <div class="line"><a id="l00707" name="l00707"></a><span class="lineno">  707</span>        <span class="comment">// 클라이언트에게 팝업 표시 지시 (Client RPC)</span></div>
 <div class="line"><a id="l00708" name="l00708"></a><span class="lineno">  708</span>        <a class="code hl_function" href="classAPlayerActor.html#a8e98195e55b9fd5a932a38feb650a5e4">Client_ShowSpeakJudesPopup</a>(Response);</div>
-<div class="line"><a id="l00709" name="l00709"></a><span class="lineno">  709</span> </div>
-<div class="line"><a id="l00710" name="l00710"></a><span class="lineno">  710</span>        </div>
-<div class="line"><a id="l00711" name="l00711"></a><span class="lineno">  711</span>        <span class="comment">// SpeakStage에 답변 완료 알림</span></div>
-<div class="line"><a id="l00712" name="l00712"></a><span class="lineno">  712</span>        <span class="keywordflow">if</span> (<span class="keyword">auto</span> SpeakStage = <a class="code hl_function" href="classULingoGameHelper.html#a7841ecb4e3125ad48efba9920250bf1a">ULingoGameHelper::GetSpeakStageActor</a>(GetWorld()))</div>
-<div class="line"><a id="l00713" name="l00713"></a><span class="lineno">  713</span>        {</div>
-<div class="line"><a id="l00714" name="l00714"></a><span class="lineno">  714</span>            SpeakStage-&gt;NotifyAnswerComplete(PS);</div>
-<div class="line"><a id="l00715" name="l00715"></a><span class="lineno">  715</span>        }</div>
-<div class="line"><a id="l00716" name="l00716"></a><span class="lineno">  716</span>    }</div>
-<div class="line"><a id="l00717" name="l00717"></a><span class="lineno">  717</span>}</div>
-<div class="line"><a id="l00718" name="l00718"></a><span class="lineno">  718</span> </div>
-<div class="line"><a id="l00719" name="l00719"></a><span class="lineno">  719</span><span class="keywordtype">void</span> APlayerActor::Client_ShowSpeakJudesPopup_Implementation(<span class="keyword">const</span> <a class="code hl_struct" href="structFResponseSpeakingJudes.html">FResponseSpeakingJudes</a>&amp; Response)</div>
-<div class="line"><a id="l00720" name="l00720"></a><span class="lineno">  720</span>{</div>
-<div class="line"><a id="l00721" name="l00721"></a><span class="lineno">  721</span>    <span class="comment">// 클라이언트에서 팝업 표시</span></div>
-<div class="line"><a id="l00722" name="l00722"></a><span class="lineno">  722</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> Popup = UPopupManager::ShowPopupAs&lt;UPopup_SpeakQuestJudes&gt;(GetWorld(), EPopupType::SpeakQuestJudes))</div>
-<div class="line"><a id="l00723" name="l00723"></a><span class="lineno">  723</span>    {</div>
-<div class="line"><a id="l00724" name="l00724"></a><span class="lineno">  724</span>        Popup-&gt;InitPopup(Response);</div>
-<div class="line"><a id="l00725" name="l00725"></a><span class="lineno">  725</span>    }</div>
-<div class="line"><a id="l00726" name="l00726"></a><span class="lineno">  726</span>}</div>
-<div class="line"><a id="l00727" name="l00727"></a><span class="lineno">  727</span> </div>
-<div class="foldopen" id="foldopen00728" data-start="{" data-end="}">
-<div class="line"><a id="l00728" name="l00728"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#ac114c2627877ad4ba81cf41466885856">  728</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAPlayerActor.html#ac114c2627877ad4ba81cf41466885856">APlayerActor::OnFadeOutCompleteForTeleport</a>()</div>
-<div class="line"><a id="l00729" name="l00729"></a><span class="lineno">  729</span>{</div>
-<div class="line"><a id="l00730" name="l00730"></a><span class="lineno">  730</span>    <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;APlayerActor::OnFadeOutCompleteForTeleport - Teleporting to %s&quot;</span>), *<a class="code hl_variable" href="classAPlayerActor.html#af642d2936891008c201f850f9cd76509">PendingTeleportLocation</a>.ToString());</div>
-<div class="line"><a id="l00731" name="l00731"></a><span class="lineno">  731</span> </div>
-<div class="line"><a id="l00732" name="l00732"></a><span class="lineno">  732</span>    <span class="comment">// 텔레포트 실행</span></div>
-<div class="line"><a id="l00733" name="l00733"></a><span class="lineno">  733</span>    SetActorLocation(<a class="code hl_variable" href="classAPlayerActor.html#af642d2936891008c201f850f9cd76509">PendingTeleportLocation</a>);</div>
-<div class="line"><a id="l00734" name="l00734"></a><span class="lineno">  734</span> </div>
-<div class="line"><a id="l00735" name="l00735"></a><span class="lineno">  735</span>    <span class="comment">// FadeWidget 가져오기</span></div>
-<div class="line"><a id="l00736" name="l00736"></a><span class="lineno">  736</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classAPlayerActor.html#a21817a3bc97f6962b8ece7941b67996d">MainWidget</a>)</div>
-<div class="line"><a id="l00737" name="l00737"></a><span class="lineno">  737</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00709" name="l00709"></a><span class="lineno">  709</span>    }</div>
+<div class="line"><a id="l00710" name="l00710"></a><span class="lineno">  710</span>}</div>
+<div class="line"><a id="l00711" name="l00711"></a><span class="lineno">  711</span> </div>
+<div class="line"><a id="l00712" name="l00712"></a><span class="lineno">  712</span><span class="keywordtype">void</span> APlayerActor::Server_NotifyConfirmSpeakJudes_Implementation()</div>
+<div class="line"><a id="l00713" name="l00713"></a><span class="lineno">  713</span>{</div>
+<div class="line"><a id="l00714" name="l00714"></a><span class="lineno">  714</span>    <span class="keywordflow">if</span> (!HasAuthority())</div>
+<div class="line"><a id="l00715" name="l00715"></a><span class="lineno">  715</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00716" name="l00716"></a><span class="lineno">  716</span> </div>
+<div class="line"><a id="l00717" name="l00717"></a><span class="lineno">  717</span>    <span class="comment">// SpeakStage에 답변 완료 알림</span></div>
+<div class="line"><a id="l00718" name="l00718"></a><span class="lineno">  718</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> PS = GetPlayerState&lt;ALingoPlayerState&gt;())</div>
+<div class="line"><a id="l00719" name="l00719"></a><span class="lineno">  719</span>    {</div>
+<div class="line"><a id="l00720" name="l00720"></a><span class="lineno">  720</span>        <span class="keywordflow">if</span> (<span class="keyword">auto</span> SpeakStage = <a class="code hl_function" href="classULingoGameHelper.html#a7841ecb4e3125ad48efba9920250bf1a">ULingoGameHelper::GetSpeakStageActor</a>(GetWorld()))</div>
+<div class="line"><a id="l00721" name="l00721"></a><span class="lineno">  721</span>        {</div>
+<div class="line"><a id="l00722" name="l00722"></a><span class="lineno">  722</span>            SpeakStage-&gt;NotifyAnswerComplete(PS);</div>
+<div class="line"><a id="l00723" name="l00723"></a><span class="lineno">  723</span>        }</div>
+<div class="line"><a id="l00724" name="l00724"></a><span class="lineno">  724</span>    }</div>
+<div class="line"><a id="l00725" name="l00725"></a><span class="lineno">  725</span>}</div>
+<div class="line"><a id="l00726" name="l00726"></a><span class="lineno">  726</span> </div>
+<div class="line"><a id="l00727" name="l00727"></a><span class="lineno">  727</span><span class="keywordtype">void</span> APlayerActor::Client_ShowSpeakJudesPopup_Implementation(<span class="keyword">const</span> <a class="code hl_struct" href="structFResponseSpeakingJudes.html">FResponseSpeakingJudes</a>&amp; Response)</div>
+<div class="line"><a id="l00728" name="l00728"></a><span class="lineno">  728</span>{</div>
+<div class="line"><a id="l00729" name="l00729"></a><span class="lineno">  729</span>    <span class="comment">// 클라이언트에서 팝업 표시</span></div>
+<div class="line"><a id="l00730" name="l00730"></a><span class="lineno">  730</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> Popup = UPopupManager::ShowPopupAs&lt;UPopup_SpeakJudes&gt;(GetWorld(), EPopupType::SpeakJudes))</div>
+<div class="line"><a id="l00731" name="l00731"></a><span class="lineno">  731</span>    {</div>
+<div class="line"><a id="l00732" name="l00732"></a><span class="lineno">  732</span>        <span class="comment">// Confirm 버튼 클릭 시 서버에 알리는 델리게이트 설정</span></div>
+<div class="line"><a id="l00733" name="l00733"></a><span class="lineno">  733</span>        FOnSpeakJudesConfirmDelegate OnConfirm;</div>
+<div class="line"><a id="l00734" name="l00734"></a><span class="lineno">  734</span>        OnConfirm.BindLambda([<span class="keyword">this</span>]()</div>
+<div class="line"><a id="l00735" name="l00735"></a><span class="lineno">  735</span>        {</div>
+<div class="line"><a id="l00736" name="l00736"></a><span class="lineno">  736</span>            <a class="code hl_function" href="classAPlayerActor.html#a6df9bf3bc899e8c1aaa0f4489816ca00">Server_NotifyConfirmSpeakJudes</a>();</div>
+<div class="line"><a id="l00737" name="l00737"></a><span class="lineno">  737</span>        });</div>
 <div class="line"><a id="l00738" name="l00738"></a><span class="lineno">  738</span> </div>
-<div class="line"><a id="l00739" name="l00739"></a><span class="lineno">  739</span>    <a class="code hl_class" href="classUFadeWidget.html">UFadeWidget</a>* FadeWidget = <a class="code hl_variable" href="classAPlayerActor.html#a21817a3bc97f6962b8ece7941b67996d">MainWidget</a>-&gt;GetFadeWidget();</div>
-<div class="line"><a id="l00740" name="l00740"></a><span class="lineno">  740</span>    <span class="keywordflow">if</span> (!FadeWidget)</div>
-<div class="line"><a id="l00741" name="l00741"></a><span class="lineno">  741</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00739" name="l00739"></a><span class="lineno">  739</span>        Popup-&gt;InitPopup(Response, OnConfirm);</div>
+<div class="line"><a id="l00740" name="l00740"></a><span class="lineno">  740</span>    }</div>
+<div class="line"><a id="l00741" name="l00741"></a><span class="lineno">  741</span>}</div>
 <div class="line"><a id="l00742" name="l00742"></a><span class="lineno">  742</span> </div>
-<div class="line"><a id="l00743" name="l00743"></a><span class="lineno">  743</span>    <span class="comment">// FadeOut 델리게이트 해제</span></div>
-<div class="line"><a id="l00744" name="l00744"></a><span class="lineno">  744</span>    FadeWidget-&gt;<a class="code hl_variable" href="classUFadeWidget.html#a18532b40c5afc773309952b6c08b9642">OnFadeOutComplete</a>.RemoveDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classAPlayerActor.html#ac114c2627877ad4ba81cf41466885856">APlayerActor::OnFadeOutCompleteForTeleport</a>);</div>
-<div class="line"><a id="l00745" name="l00745"></a><span class="lineno">  745</span> </div>
-<div class="line"><a id="l00746" name="l00746"></a><span class="lineno">  746</span>    <span class="comment">// FadeIn 시작</span></div>
-<div class="line"><a id="l00747" name="l00747"></a><span class="lineno">  747</span>    <a class="code hl_variable" href="classAPlayerActor.html#a21817a3bc97f6962b8ece7941b67996d">MainWidget</a>-&gt;FadeIn(0.5f);</div>
-<div class="line"><a id="l00748" name="l00748"></a><span class="lineno">  748</span>}</div>
-</div>
+<div class="foldopen" id="foldopen00743" data-start="{" data-end="}">
+<div class="line"><a id="l00743" name="l00743"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#ac114c2627877ad4ba81cf41466885856">  743</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAPlayerActor.html#ac114c2627877ad4ba81cf41466885856">APlayerActor::OnFadeOutCompleteForTeleport</a>()</div>
+<div class="line"><a id="l00744" name="l00744"></a><span class="lineno">  744</span>{</div>
+<div class="line"><a id="l00745" name="l00745"></a><span class="lineno">  745</span>    <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;APlayerActor::OnFadeOutCompleteForTeleport - Teleporting to %s&quot;</span>), *<a class="code hl_variable" href="classAPlayerActor.html#af642d2936891008c201f850f9cd76509">PendingTeleportLocation</a>.ToString());</div>
+<div class="line"><a id="l00746" name="l00746"></a><span class="lineno">  746</span> </div>
+<div class="line"><a id="l00747" name="l00747"></a><span class="lineno">  747</span>    <span class="comment">// 텔레포트 실행</span></div>
+<div class="line"><a id="l00748" name="l00748"></a><span class="lineno">  748</span>    SetActorLocation(<a class="code hl_variable" href="classAPlayerActor.html#af642d2936891008c201f850f9cd76509">PendingTeleportLocation</a>);</div>
 <div class="line"><a id="l00749" name="l00749"></a><span class="lineno">  749</span> </div>
-<div class="foldopen" id="foldopen00750" data-start="{" data-end="}">
-<div class="line"><a id="l00750" name="l00750"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#acd9f3b4b27082e534b027c985e608dbb">  750</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAPlayerActor.html#acd9f3b4b27082e534b027c985e608dbb">APlayerActor::UpdateCompassMarkers</a>()</div>
-<div class="line"><a id="l00751" name="l00751"></a><span class="lineno">  751</span>{</div>
-<div class="line"><a id="l00752" name="l00752"></a><span class="lineno">  752</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classAPlayerActor.html#a21817a3bc97f6962b8ece7941b67996d">MainWidget</a> || !<a class="code hl_variable" href="classAPlayerActor.html#a21817a3bc97f6962b8ece7941b67996d">MainWidget</a>-&gt;CompassWidget)</div>
-<div class="line"><a id="l00753" name="l00753"></a><span class="lineno">  753</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00754" name="l00754"></a><span class="lineno">  754</span> </div>
-<div class="line"><a id="l00755" name="l00755"></a><span class="lineno">  755</span>    <a class="code hl_class" href="classUCompassWidget.html">UCompassWidget</a>* Compass = <a class="code hl_variable" href="classAPlayerActor.html#a21817a3bc97f6962b8ece7941b67996d">MainWidget</a>-&gt;CompassWidget;</div>
-<div class="line"><a id="l00756" name="l00756"></a><span class="lineno">  756</span> </div>
-<div class="line"><a id="l00757" name="l00757"></a><span class="lineno">  757</span>    <span class="comment">// 1. 현재 월드의 모든 트래킹 대상 수집                                                                                                                           </span></div>
-<div class="line"><a id="l00758" name="l00758"></a><span class="lineno">  758</span>    TArray&lt;AActor*&gt; TrackedActors;</div>
-<div class="line"><a id="l00759" name="l00759"></a><span class="lineno">  759</span>    UGameplayStatics::GetAllActorsOfClass(GetWorld(), AContactTrigger::StaticClass(), TrackedActors);</div>
+<div class="line"><a id="l00750" name="l00750"></a><span class="lineno">  750</span>    <span class="comment">// FadeWidget 가져오기</span></div>
+<div class="line"><a id="l00751" name="l00751"></a><span class="lineno">  751</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classAPlayerActor.html#a21817a3bc97f6962b8ece7941b67996d">MainWidget</a>)</div>
+<div class="line"><a id="l00752" name="l00752"></a><span class="lineno">  752</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00753" name="l00753"></a><span class="lineno">  753</span> </div>
+<div class="line"><a id="l00754" name="l00754"></a><span class="lineno">  754</span>    <a class="code hl_class" href="classUFadeWidget.html">UFadeWidget</a>* FadeWidget = <a class="code hl_variable" href="classAPlayerActor.html#a21817a3bc97f6962b8ece7941b67996d">MainWidget</a>-&gt;GetFadeWidget();</div>
+<div class="line"><a id="l00755" name="l00755"></a><span class="lineno">  755</span>    <span class="keywordflow">if</span> (!FadeWidget)</div>
+<div class="line"><a id="l00756" name="l00756"></a><span class="lineno">  756</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00757" name="l00757"></a><span class="lineno">  757</span> </div>
+<div class="line"><a id="l00758" name="l00758"></a><span class="lineno">  758</span>    <span class="comment">// FadeOut 델리게이트 해제</span></div>
+<div class="line"><a id="l00759" name="l00759"></a><span class="lineno">  759</span>    FadeWidget-&gt;<a class="code hl_variable" href="classUFadeWidget.html#a18532b40c5afc773309952b6c08b9642">OnFadeOutComplete</a>.RemoveDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classAPlayerActor.html#ac114c2627877ad4ba81cf41466885856">APlayerActor::OnFadeOutCompleteForTeleport</a>);</div>
 <div class="line"><a id="l00760" name="l00760"></a><span class="lineno">  760</span> </div>
-<div class="line"><a id="l00761" name="l00761"></a><span class="lineno">  761</span>    <span class="comment">// 2. 각 TrackedActor에 대해 마커 생성 or 업데이트                                                                                                                </span></div>
-<div class="line"><a id="l00762" name="l00762"></a><span class="lineno">  762</span>    <span class="keywordflow">for</span> (AActor* TrackedActor : TrackedActors)</div>
-<div class="line"><a id="l00763" name="l00763"></a><span class="lineno">  763</span>    {</div>
-<div class="line"><a id="l00764" name="l00764"></a><span class="lineno">  764</span>        <span class="keywordflow">if</span> (!TrackedActor) <span class="keywordflow">continue</span>;</div>
-<div class="line"><a id="l00765" name="l00765"></a><span class="lineno">  765</span> </div>
-<div class="line"><a id="l00766" name="l00766"></a><span class="lineno">  766</span>        <span class="comment">// 2-1. 마커가 없으면 생성                                                                                                                                    </span></div>
-<div class="line"><a id="l00767" name="l00767"></a><span class="lineno">  767</span>        UImage* Marker = <a class="code hl_variable" href="classAPlayerActor.html#a5c7dc9dc861dd6eaacf0f74d63ec66f9">CompassMarkerMap</a>.FindRef(TrackedActor);</div>
-<div class="line"><a id="l00768" name="l00768"></a><span class="lineno">  768</span>        <span class="keywordflow">if</span> (!Marker)</div>
-<div class="line"><a id="l00769" name="l00769"></a><span class="lineno">  769</span>        {</div>
-<div class="line"><a id="l00770" name="l00770"></a><span class="lineno">  770</span>            Marker = Compass-&gt;<a class="code hl_function" href="classUCompassWidget.html#a2caf632622df6fee1e804c396fad3af7">AddCompassMarker</a>();</div>
-<div class="line"><a id="l00771" name="l00771"></a><span class="lineno">  771</span>            <a class="code hl_variable" href="classAPlayerActor.html#a5c7dc9dc861dd6eaacf0f74d63ec66f9">CompassMarkerMap</a>.Add(TrackedActor, Marker);</div>
-<div class="line"><a id="l00772" name="l00772"></a><span class="lineno">  772</span>        }</div>
-<div class="line"><a id="l00773" name="l00773"></a><span class="lineno">  773</span> </div>
-<div class="line"><a id="l00774" name="l00774"></a><span class="lineno">  774</span>        <span class="comment">// 2-2. 상대 회전 계산 (Yaw만 필요)                                                                                                                           </span></div>
-<div class="line"><a id="l00775" name="l00775"></a><span class="lineno">  775</span>        FRotator RelativeRotation = <a class="code hl_function" href="classAPlayerActor.html#ad78636c9a80116cef2617ae221104809">FindRelativeRotationAtTarget</a>(TrackedActor);</div>
-<div class="line"><a id="l00776" name="l00776"></a><span class="lineno">  776</span>        <span class="keywordtype">float</span> TargetYaw = RelativeRotation.Yaw;</div>
-<div class="line"><a id="l00777" name="l00777"></a><span class="lineno">  777</span> </div>
-<div class="line"><a id="l00778" name="l00778"></a><span class="lineno">  778</span>        <span class="comment">// 2-3. 마커 위치 업데이트 (bSideLock은 false로 가정)                                                                                                         </span></div>
-<div class="line"><a id="l00779" name="l00779"></a><span class="lineno">  779</span>        Compass-&gt;<a class="code hl_function" href="classUCompassWidget.html#ac2e18811028d52a4f9088161fafb8736">SetMarkerPosition</a>(Marker, TargetYaw, <span class="keyword">false</span>);</div>
-<div class="line"><a id="l00780" name="l00780"></a><span class="lineno">  780</span>    }</div>
-<div class="line"><a id="l00781" name="l00781"></a><span class="lineno">  781</span> </div>
-<div class="line"><a id="l00782" name="l00782"></a><span class="lineno">  782</span>    <span class="comment">// 3. 제거된 액터의 마커 정리 (선택사항)                                                                                                                          </span></div>
-<div class="line"><a id="l00783" name="l00783"></a><span class="lineno">  783</span>    <span class="comment">// TArray&lt;AActor*&gt; ActorsToRemove;</span></div>
-<div class="line"><a id="l00784" name="l00784"></a><span class="lineno">  784</span>    <span class="comment">// for (auto&amp; Pair : CompassMarkerMap)</span></div>
-<div class="line"><a id="l00785" name="l00785"></a><span class="lineno">  785</span>    <span class="comment">// {</span></div>
-<div class="line"><a id="l00786" name="l00786"></a><span class="lineno">  786</span>    <span class="comment">//  if (!Pair.Key || !TrackedActors.Contains(Pair.Key))</span></div>
-<div class="line"><a id="l00787" name="l00787"></a><span class="lineno">  787</span>    <span class="comment">//  {</span></div>
-<div class="line"><a id="l00788" name="l00788"></a><span class="lineno">  788</span>    <span class="comment">//      // 마커를 UI에서 제거 (필요시 구현)                                                                                                                       </span></div>
-<div class="line"><a id="l00789" name="l00789"></a><span class="lineno">  789</span>    <span class="comment">//      ActorsToRemove.Add(Pair.Key);</span></div>
-<div class="line"><a id="l00790" name="l00790"></a><span class="lineno">  790</span>    <span class="comment">//  }</span></div>
-<div class="line"><a id="l00791" name="l00791"></a><span class="lineno">  791</span>    <span class="comment">// }</span></div>
-<div class="line"><a id="l00792" name="l00792"></a><span class="lineno">  792</span>    <span class="comment">// for (AActor* Actor : ActorsToRemove)</span></div>
-<div class="line"><a id="l00793" name="l00793"></a><span class="lineno">  793</span>    <span class="comment">// {</span></div>
-<div class="line"><a id="l00794" name="l00794"></a><span class="lineno">  794</span>    <span class="comment">//  CompassMarkerMap.Remove(Actor);</span></div>
-<div class="line"><a id="l00795" name="l00795"></a><span class="lineno">  795</span>    <span class="comment">// }</span></div>
+<div class="line"><a id="l00761" name="l00761"></a><span class="lineno">  761</span>    <span class="comment">// FadeIn 시작</span></div>
+<div class="line"><a id="l00762" name="l00762"></a><span class="lineno">  762</span>    <a class="code hl_variable" href="classAPlayerActor.html#a21817a3bc97f6962b8ece7941b67996d">MainWidget</a>-&gt;FadeIn(0.5f);</div>
+<div class="line"><a id="l00763" name="l00763"></a><span class="lineno">  763</span>}</div>
+</div>
+<div class="line"><a id="l00764" name="l00764"></a><span class="lineno">  764</span> </div>
+<div class="foldopen" id="foldopen00765" data-start="{" data-end="}">
+<div class="line"><a id="l00765" name="l00765"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#acd9f3b4b27082e534b027c985e608dbb">  765</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAPlayerActor.html#acd9f3b4b27082e534b027c985e608dbb">APlayerActor::UpdateCompassMarkers</a>()</div>
+<div class="line"><a id="l00766" name="l00766"></a><span class="lineno">  766</span>{</div>
+<div class="line"><a id="l00767" name="l00767"></a><span class="lineno">  767</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classAPlayerActor.html#a21817a3bc97f6962b8ece7941b67996d">MainWidget</a> || !<a class="code hl_variable" href="classAPlayerActor.html#a21817a3bc97f6962b8ece7941b67996d">MainWidget</a>-&gt;CompassWidget)</div>
+<div class="line"><a id="l00768" name="l00768"></a><span class="lineno">  768</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00769" name="l00769"></a><span class="lineno">  769</span> </div>
+<div class="line"><a id="l00770" name="l00770"></a><span class="lineno">  770</span>    <a class="code hl_class" href="classUCompassWidget.html">UCompassWidget</a>* Compass = <a class="code hl_variable" href="classAPlayerActor.html#a21817a3bc97f6962b8ece7941b67996d">MainWidget</a>-&gt;CompassWidget;</div>
+<div class="line"><a id="l00771" name="l00771"></a><span class="lineno">  771</span> </div>
+<div class="line"><a id="l00772" name="l00772"></a><span class="lineno">  772</span>    <span class="comment">// 1. 현재 월드의 모든 트래킹 대상 수집                                                                                                                           </span></div>
+<div class="line"><a id="l00773" name="l00773"></a><span class="lineno">  773</span>    TArray&lt;AActor*&gt; TrackedActors;</div>
+<div class="line"><a id="l00774" name="l00774"></a><span class="lineno">  774</span>    UGameplayStatics::GetAllActorsOfClass(GetWorld(), AContactTrigger::StaticClass(), TrackedActors);</div>
+<div class="line"><a id="l00775" name="l00775"></a><span class="lineno">  775</span> </div>
+<div class="line"><a id="l00776" name="l00776"></a><span class="lineno">  776</span>    <span class="comment">// 2. 각 TrackedActor에 대해 마커 생성 or 업데이트                                                                                                                </span></div>
+<div class="line"><a id="l00777" name="l00777"></a><span class="lineno">  777</span>    <span class="keywordflow">for</span> (AActor* TrackedActor : TrackedActors)</div>
+<div class="line"><a id="l00778" name="l00778"></a><span class="lineno">  778</span>    {</div>
+<div class="line"><a id="l00779" name="l00779"></a><span class="lineno">  779</span>        <span class="keywordflow">if</span> (!TrackedActor) <span class="keywordflow">continue</span>;</div>
+<div class="line"><a id="l00780" name="l00780"></a><span class="lineno">  780</span> </div>
+<div class="line"><a id="l00781" name="l00781"></a><span class="lineno">  781</span>        <span class="comment">// 2-1. 마커가 없으면 생성                                                                                                                                    </span></div>
+<div class="line"><a id="l00782" name="l00782"></a><span class="lineno">  782</span>        UImage* Marker = <a class="code hl_variable" href="classAPlayerActor.html#a5c7dc9dc861dd6eaacf0f74d63ec66f9">CompassMarkerMap</a>.FindRef(TrackedActor);</div>
+<div class="line"><a id="l00783" name="l00783"></a><span class="lineno">  783</span>        <span class="keywordflow">if</span> (!Marker)</div>
+<div class="line"><a id="l00784" name="l00784"></a><span class="lineno">  784</span>        {</div>
+<div class="line"><a id="l00785" name="l00785"></a><span class="lineno">  785</span>            Marker = Compass-&gt;<a class="code hl_function" href="classUCompassWidget.html#a2caf632622df6fee1e804c396fad3af7">AddCompassMarker</a>();</div>
+<div class="line"><a id="l00786" name="l00786"></a><span class="lineno">  786</span>            <a class="code hl_variable" href="classAPlayerActor.html#a5c7dc9dc861dd6eaacf0f74d63ec66f9">CompassMarkerMap</a>.Add(TrackedActor, Marker);</div>
+<div class="line"><a id="l00787" name="l00787"></a><span class="lineno">  787</span>        }</div>
+<div class="line"><a id="l00788" name="l00788"></a><span class="lineno">  788</span> </div>
+<div class="line"><a id="l00789" name="l00789"></a><span class="lineno">  789</span>        <span class="comment">// 2-2. 상대 회전 계산 (Yaw만 필요)                                                                                                                           </span></div>
+<div class="line"><a id="l00790" name="l00790"></a><span class="lineno">  790</span>        FRotator RelativeRotation = <a class="code hl_function" href="classAPlayerActor.html#ad78636c9a80116cef2617ae221104809">FindRelativeRotationAtTarget</a>(TrackedActor);</div>
+<div class="line"><a id="l00791" name="l00791"></a><span class="lineno">  791</span>        <span class="keywordtype">float</span> TargetYaw = RelativeRotation.Yaw;</div>
+<div class="line"><a id="l00792" name="l00792"></a><span class="lineno">  792</span> </div>
+<div class="line"><a id="l00793" name="l00793"></a><span class="lineno">  793</span>        <span class="comment">// 2-3. 마커 위치 업데이트 (bSideLock은 false로 가정)                                                                                                         </span></div>
+<div class="line"><a id="l00794" name="l00794"></a><span class="lineno">  794</span>        Compass-&gt;<a class="code hl_function" href="classUCompassWidget.html#ac2e18811028d52a4f9088161fafb8736">SetMarkerPosition</a>(Marker, TargetYaw, <span class="keyword">false</span>);</div>
+<div class="line"><a id="l00795" name="l00795"></a><span class="lineno">  795</span>    }</div>
 <div class="line"><a id="l00796" name="l00796"></a><span class="lineno">  796</span> </div>
-<div class="line"><a id="l00797" name="l00797"></a><span class="lineno">  797</span>     <span class="comment">// --- 방법 2: Interface 함수 활용 (타입별 다른 마커 표시) ---</span></div>
-<div class="line"><a id="l00798" name="l00798"></a><span class="lineno">  798</span>    <span class="comment">// 필요시 사용</span></div>
-<div class="line"><a id="l00799" name="l00799"></a><span class="lineno">  799</span>      <span class="comment">/*                                                                                                                                                                </span></div>
-<div class="line"><a id="l00800" name="l00800"></a><span class="lineno">  800</span><span class="comment">      for (AActor* TrackedActor : TrackedActors)                                                                                                                        </span></div>
-<div class="line"><a id="l00801" name="l00801"></a><span class="lineno">  801</span><span class="comment">      {                                                                                                                                                                 </span></div>
-<div class="line"><a id="l00802" name="l00802"></a><span class="lineno">  802</span><span class="comment">          if (!TrackedActor) continue;                                                                                                                                  </span></div>
-<div class="line"><a id="l00803" name="l00803"></a><span class="lineno">  803</span><span class="comment"></span> </div>
-<div class="line"><a id="l00804" name="l00804"></a><span class="lineno">  804</span><span class="comment">          // Interface로 캐스팅해서 정보 가져오기                                                                                                                       </span></div>
-<div class="line"><a id="l00805" name="l00805"></a><span class="lineno">  805</span><span class="comment">          ICompassTargetInterface* Target = Cast&lt;ICompassTargetInterface&gt;(TrackedActor);                                                                                </span></div>
-<div class="line"><a id="l00806" name="l00806"></a><span class="lineno">  806</span><span class="comment">          if (!Target) continue;                                                                                                                                        </span></div>
-<div class="line"><a id="l00807" name="l00807"></a><span class="lineno">  807</span><span class="comment"></span> </div>
-<div class="line"><a id="l00808" name="l00808"></a><span class="lineno">  808</span><span class="comment">          // Interface 함수로 마커 타입 확인 (예: GetCompassMarkerType())                                                                                               </span></div>
-<div class="line"><a id="l00809" name="l00809"></a><span class="lineno">  809</span><span class="comment">          ECompassMarkerType MarkerType = Target-&gt;GetCompassMarkerType();                                                                                               </span></div>
-<div class="line"><a id="l00810" name="l00810"></a><span class="lineno">  810</span><span class="comment"></span> </div>
-<div class="line"><a id="l00811" name="l00811"></a><span class="lineno">  811</span><span class="comment">          // 타입에 따라 다른 마커 생성/업데이트                                                                                                                        </span></div>
-<div class="line"><a id="l00812" name="l00812"></a><span class="lineno">  812</span><span class="comment">          UImage* Marker = CompassMarkerMap.FindRef(TrackedActor);                                                                                                      </span></div>
-<div class="line"><a id="l00813" name="l00813"></a><span class="lineno">  813</span><span class="comment">          if (!Marker)                                                                                                                                                  </span></div>
-<div class="line"><a id="l00814" name="l00814"></a><span class="lineno">  814</span><span class="comment">          {                                                                                                                                                             </span></div>
-<div class="line"><a id="l00815" name="l00815"></a><span class="lineno">  815</span><span class="comment">              Marker = Compass-&gt;AddCompassMarker(MarkerType); // 타입별 마커 생성                                                                                       </span></div>
-<div class="line"><a id="l00816" name="l00816"></a><span class="lineno">  816</span><span class="comment">              CompassMarkerMap.Add(TrackedActor, Marker);                                                                                                               </span></div>
-<div class="line"><a id="l00817" name="l00817"></a><span class="lineno">  817</span><span class="comment">          }                                                                                                                                                             </span></div>
+<div class="line"><a id="l00797" name="l00797"></a><span class="lineno">  797</span>    <span class="comment">// 3. 제거된 액터의 마커 정리 (선택사항)                                                                                                                          </span></div>
+<div class="line"><a id="l00798" name="l00798"></a><span class="lineno">  798</span>    <span class="comment">// TArray&lt;AActor*&gt; ActorsToRemove;</span></div>
+<div class="line"><a id="l00799" name="l00799"></a><span class="lineno">  799</span>    <span class="comment">// for (auto&amp; Pair : CompassMarkerMap)</span></div>
+<div class="line"><a id="l00800" name="l00800"></a><span class="lineno">  800</span>    <span class="comment">// {</span></div>
+<div class="line"><a id="l00801" name="l00801"></a><span class="lineno">  801</span>    <span class="comment">//  if (!Pair.Key || !TrackedActors.Contains(Pair.Key))</span></div>
+<div class="line"><a id="l00802" name="l00802"></a><span class="lineno">  802</span>    <span class="comment">//  {</span></div>
+<div class="line"><a id="l00803" name="l00803"></a><span class="lineno">  803</span>    <span class="comment">//      // 마커를 UI에서 제거 (필요시 구현)                                                                                                                       </span></div>
+<div class="line"><a id="l00804" name="l00804"></a><span class="lineno">  804</span>    <span class="comment">//      ActorsToRemove.Add(Pair.Key);</span></div>
+<div class="line"><a id="l00805" name="l00805"></a><span class="lineno">  805</span>    <span class="comment">//  }</span></div>
+<div class="line"><a id="l00806" name="l00806"></a><span class="lineno">  806</span>    <span class="comment">// }</span></div>
+<div class="line"><a id="l00807" name="l00807"></a><span class="lineno">  807</span>    <span class="comment">// for (AActor* Actor : ActorsToRemove)</span></div>
+<div class="line"><a id="l00808" name="l00808"></a><span class="lineno">  808</span>    <span class="comment">// {</span></div>
+<div class="line"><a id="l00809" name="l00809"></a><span class="lineno">  809</span>    <span class="comment">//  CompassMarkerMap.Remove(Actor);</span></div>
+<div class="line"><a id="l00810" name="l00810"></a><span class="lineno">  810</span>    <span class="comment">// }</span></div>
+<div class="line"><a id="l00811" name="l00811"></a><span class="lineno">  811</span> </div>
+<div class="line"><a id="l00812" name="l00812"></a><span class="lineno">  812</span>     <span class="comment">// --- 방법 2: Interface 함수 활용 (타입별 다른 마커 표시) ---</span></div>
+<div class="line"><a id="l00813" name="l00813"></a><span class="lineno">  813</span>    <span class="comment">// 필요시 사용</span></div>
+<div class="line"><a id="l00814" name="l00814"></a><span class="lineno">  814</span>      <span class="comment">/*                                                                                                                                                                </span></div>
+<div class="line"><a id="l00815" name="l00815"></a><span class="lineno">  815</span><span class="comment">      for (AActor* TrackedActor : TrackedActors)                                                                                                                        </span></div>
+<div class="line"><a id="l00816" name="l00816"></a><span class="lineno">  816</span><span class="comment">      {                                                                                                                                                                 </span></div>
+<div class="line"><a id="l00817" name="l00817"></a><span class="lineno">  817</span><span class="comment">          if (!TrackedActor) continue;                                                                                                                                  </span></div>
 <div class="line"><a id="l00818" name="l00818"></a><span class="lineno">  818</span><span class="comment"></span> </div>
-<div class="line"><a id="l00819" name="l00819"></a><span class="lineno">  819</span><span class="comment">          FRotator RelativeRotation = FindRelativeRotationAtTarget(TrackedActor);                                                                                       </span></div>
-<div class="line"><a id="l00820" name="l00820"></a><span class="lineno">  820</span><span class="comment">          float TargetYaw = RelativeRotation.Yaw;                                                                                                                       </span></div>
-<div class="line"><a id="l00821" name="l00821"></a><span class="lineno">  821</span><span class="comment"></span> </div>
-<div class="line"><a id="l00822" name="l00822"></a><span class="lineno">  822</span><span class="comment">          Compass-&gt;SetMarkerPosition(Marker, TargetYaw, false);                                                                                                         </span></div>
-<div class="line"><a id="l00823" name="l00823"></a><span class="lineno">  823</span><span class="comment">      }                                                                                                                                                                 </span></div>
-<div class="line"><a id="l00824" name="l00824"></a><span class="lineno">  824</span><span class="comment">      */</span></div>
-<div class="line"><a id="l00825" name="l00825"></a><span class="lineno">  825</span>}</div>
+<div class="line"><a id="l00819" name="l00819"></a><span class="lineno">  819</span><span class="comment">          // Interface로 캐스팅해서 정보 가져오기                                                                                                                       </span></div>
+<div class="line"><a id="l00820" name="l00820"></a><span class="lineno">  820</span><span class="comment">          ICompassTargetInterface* Target = Cast&lt;ICompassTargetInterface&gt;(TrackedActor);                                                                                </span></div>
+<div class="line"><a id="l00821" name="l00821"></a><span class="lineno">  821</span><span class="comment">          if (!Target) continue;                                                                                                                                        </span></div>
+<div class="line"><a id="l00822" name="l00822"></a><span class="lineno">  822</span><span class="comment"></span> </div>
+<div class="line"><a id="l00823" name="l00823"></a><span class="lineno">  823</span><span class="comment">          // Interface 함수로 마커 타입 확인 (예: GetCompassMarkerType())                                                                                               </span></div>
+<div class="line"><a id="l00824" name="l00824"></a><span class="lineno">  824</span><span class="comment">          ECompassMarkerType MarkerType = Target-&gt;GetCompassMarkerType();                                                                                               </span></div>
+<div class="line"><a id="l00825" name="l00825"></a><span class="lineno">  825</span><span class="comment"></span> </div>
+<div class="line"><a id="l00826" name="l00826"></a><span class="lineno">  826</span><span class="comment">          // 타입에 따라 다른 마커 생성/업데이트                                                                                                                        </span></div>
+<div class="line"><a id="l00827" name="l00827"></a><span class="lineno">  827</span><span class="comment">          UImage* Marker = CompassMarkerMap.FindRef(TrackedActor);                                                                                                      </span></div>
+<div class="line"><a id="l00828" name="l00828"></a><span class="lineno">  828</span><span class="comment">          if (!Marker)                                                                                                                                                  </span></div>
+<div class="line"><a id="l00829" name="l00829"></a><span class="lineno">  829</span><span class="comment">          {                                                                                                                                                             </span></div>
+<div class="line"><a id="l00830" name="l00830"></a><span class="lineno">  830</span><span class="comment">              Marker = Compass-&gt;AddCompassMarker(MarkerType); // 타입별 마커 생성                                                                                       </span></div>
+<div class="line"><a id="l00831" name="l00831"></a><span class="lineno">  831</span><span class="comment">              CompassMarkerMap.Add(TrackedActor, Marker);                                                                                                               </span></div>
+<div class="line"><a id="l00832" name="l00832"></a><span class="lineno">  832</span><span class="comment">          }                                                                                                                                                             </span></div>
+<div class="line"><a id="l00833" name="l00833"></a><span class="lineno">  833</span><span class="comment"></span> </div>
+<div class="line"><a id="l00834" name="l00834"></a><span class="lineno">  834</span><span class="comment">          FRotator RelativeRotation = FindRelativeRotationAtTarget(TrackedActor);                                                                                       </span></div>
+<div class="line"><a id="l00835" name="l00835"></a><span class="lineno">  835</span><span class="comment">          float TargetYaw = RelativeRotation.Yaw;                                                                                                                       </span></div>
+<div class="line"><a id="l00836" name="l00836"></a><span class="lineno">  836</span><span class="comment"></span> </div>
+<div class="line"><a id="l00837" name="l00837"></a><span class="lineno">  837</span><span class="comment">          Compass-&gt;SetMarkerPosition(Marker, TargetYaw, false);                                                                                                         </span></div>
+<div class="line"><a id="l00838" name="l00838"></a><span class="lineno">  838</span><span class="comment">      }                                                                                                                                                                 </span></div>
+<div class="line"><a id="l00839" name="l00839"></a><span class="lineno">  839</span><span class="comment">      */</span></div>
+<div class="line"><a id="l00840" name="l00840"></a><span class="lineno">  840</span>}</div>
 </div>
-<div class="line"><a id="l00826" name="l00826"></a><span class="lineno">  826</span> </div>
-<div class="foldopen" id="foldopen00827" data-start="{" data-end="}">
-<div class="line"><a id="l00827" name="l00827"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#ad78636c9a80116cef2617ae221104809">  827</a></span>FRotator <a class="code hl_function" href="classAPlayerActor.html#ad78636c9a80116cef2617ae221104809">APlayerActor::FindRelativeRotationAtTarget</a>(AActor* Target)</div>
-<div class="line"><a id="l00828" name="l00828"></a><span class="lineno">  828</span>{</div>
-<div class="line"><a id="l00829" name="l00829"></a><span class="lineno">  829</span>    <span class="comment">// Get World Location (Capsule Component)</span></div>
-<div class="line"><a id="l00830" name="l00830"></a><span class="lineno">  830</span>    FVector CapsuleLocation = GetCapsuleComponent()-&gt;GetComponentLocation();</div>
-<div class="line"><a id="l00831" name="l00831"></a><span class="lineno">  831</span> </div>
-<div class="line"><a id="l00832" name="l00832"></a><span class="lineno">  832</span>    <span class="comment">// Get World Rotation (Capsule Component)</span></div>
-<div class="line"><a id="l00833" name="l00833"></a><span class="lineno">  833</span>    FRotator CapsuleRotation = GetCapsuleComponent()-&gt;GetComponentRotation();</div>
-<div class="line"><a id="l00834" name="l00834"></a><span class="lineno">  834</span> </div>
-<div class="line"><a id="l00835" name="l00835"></a><span class="lineno">  835</span>    <span class="comment">// Get World Location (Root Component)</span></div>
-<div class="line"><a id="l00836" name="l00836"></a><span class="lineno">  836</span>    FVector TargetLocation = Target-&gt;GetActorLocation();</div>
-<div class="line"><a id="l00837" name="l00837"></a><span class="lineno">  837</span> </div>
-<div class="line"><a id="l00838" name="l00838"></a><span class="lineno">  838</span>    <span class="comment">// Find Relative Look at Rotation</span></div>
-<div class="line"><a id="l00839" name="l00839"></a><span class="lineno">  839</span>    FRotator LookAtRotation = UKismetMathLibrary::FindLookAtRotation(</div>
-<div class="line"><a id="l00840" name="l00840"></a><span class="lineno">  840</span>        CapsuleLocation, TargetLocation);</div>
 <div class="line"><a id="l00841" name="l00841"></a><span class="lineno">  841</span> </div>
-<div class="line"><a id="l00842" name="l00842"></a><span class="lineno">  842</span>    <span class="comment">// 상대 회전 계산</span></div>
-<div class="line"><a id="l00843" name="l00843"></a><span class="lineno">  843</span>    FRotator RelativeRotation = UKismetMathLibrary::NormalizedDeltaRotator(</div>
-<div class="line"><a id="l00844" name="l00844"></a><span class="lineno">  844</span>        LookAtRotation,CapsuleRotation);</div>
-<div class="line"><a id="l00845" name="l00845"></a><span class="lineno">  845</span> </div>
-<div class="line"><a id="l00846" name="l00846"></a><span class="lineno">  846</span>    <span class="comment">// Return Value (Roll, Pitch, Yaw)</span></div>
-<div class="line"><a id="l00847" name="l00847"></a><span class="lineno">  847</span>    <span class="keywordflow">return</span> RelativeRotation;</div>
-<div class="line"><a id="l00848" name="l00848"></a><span class="lineno">  848</span>}</div>
-</div>
+<div class="foldopen" id="foldopen00842" data-start="{" data-end="}">
+<div class="line"><a id="l00842" name="l00842"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#ad78636c9a80116cef2617ae221104809">  842</a></span>FRotator <a class="code hl_function" href="classAPlayerActor.html#ad78636c9a80116cef2617ae221104809">APlayerActor::FindRelativeRotationAtTarget</a>(AActor* Target)</div>
+<div class="line"><a id="l00843" name="l00843"></a><span class="lineno">  843</span>{</div>
+<div class="line"><a id="l00844" name="l00844"></a><span class="lineno">  844</span>    <span class="comment">// Get World Location (Capsule Component)</span></div>
+<div class="line"><a id="l00845" name="l00845"></a><span class="lineno">  845</span>    FVector CapsuleLocation = GetCapsuleComponent()-&gt;GetComponentLocation();</div>
+<div class="line"><a id="l00846" name="l00846"></a><span class="lineno">  846</span> </div>
+<div class="line"><a id="l00847" name="l00847"></a><span class="lineno">  847</span>    <span class="comment">// Get World Rotation (Capsule Component)</span></div>
+<div class="line"><a id="l00848" name="l00848"></a><span class="lineno">  848</span>    FRotator CapsuleRotation = GetCapsuleComponent()-&gt;GetComponentRotation();</div>
 <div class="line"><a id="l00849" name="l00849"></a><span class="lineno">  849</span> </div>
-<div class="foldopen" id="foldopen00850" data-start="{" data-end="}">
-<div class="line"><a id="l00850" name="l00850"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#abf6656a8cf611561c5dd3c87a35279c8">  850</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAPlayerActor.html#abf6656a8cf611561c5dd3c87a35279c8">APlayerActor::OnRoomIdUpdated</a>(int64 NewRoomId)</div>
-<div class="line"><a id="l00851" name="l00851"></a><span class="lineno">  851</span>{</div>
-<div class="line"><a id="l00852" name="l00852"></a><span class="lineno">  852</span>    <span class="keywordflow">if</span> (!IsLocallyControlled())</div>
-<div class="line"><a id="l00853" name="l00853"></a><span class="lineno">  853</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00854" name="l00854"></a><span class="lineno">  854</span> </div>
-<div class="line"><a id="l00855" name="l00855"></a><span class="lineno">  855</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAPlayerActor.html#a21817a3bc97f6962b8ece7941b67996d">MainWidget</a>)</div>
-<div class="line"><a id="l00856" name="l00856"></a><span class="lineno">  856</span>    {</div>
-<div class="line"><a id="l00857" name="l00857"></a><span class="lineno">  857</span>        <span class="keywordflow">if</span> (<span class="keyword">auto</span> GS = <a class="code hl_function" href="classULingoGameHelper.html#aae5e9443e2249c16219279d75b62cb46">ULingoGameHelper::GetLingoGameState</a>(GetWorld()))</div>
-<div class="line"><a id="l00858" name="l00858"></a><span class="lineno">  858</span>        {</div>
-<div class="line"><a id="l00859" name="l00859"></a><span class="lineno">  859</span>            <span class="keyword">const</span> <span class="keywordtype">int</span> RoomLevel = GS-&gt;GetRoomLevel();</div>
-<div class="line"><a id="l00860" name="l00860"></a><span class="lineno">  860</span>            <span class="keyword">const</span> <span class="keywordtype">int</span> RoomId = NewRoomId;</div>
-<div class="line"><a id="l00861" name="l00861"></a><span class="lineno">  861</span>            </div>
-<div class="line"><a id="l00862" name="l00862"></a><span class="lineno">  862</span>            <a class="code hl_variable" href="classAPlayerActor.html#a21817a3bc97f6962b8ece7941b67996d">MainWidget</a>-&gt;UpdateRoomWidget(RoomLevel, RoomId);</div>
-<div class="line"><a id="l00863" name="l00863"></a><span class="lineno">  863</span>        }</div>
-<div class="line"><a id="l00864" name="l00864"></a><span class="lineno">  864</span>    }</div>
-<div class="line"><a id="l00865" name="l00865"></a><span class="lineno">  865</span>}</div>
+<div class="line"><a id="l00850" name="l00850"></a><span class="lineno">  850</span>    <span class="comment">// Get World Location (Root Component)</span></div>
+<div class="line"><a id="l00851" name="l00851"></a><span class="lineno">  851</span>    FVector TargetLocation = Target-&gt;GetActorLocation();</div>
+<div class="line"><a id="l00852" name="l00852"></a><span class="lineno">  852</span> </div>
+<div class="line"><a id="l00853" name="l00853"></a><span class="lineno">  853</span>    <span class="comment">// Find Relative Look at Rotation</span></div>
+<div class="line"><a id="l00854" name="l00854"></a><span class="lineno">  854</span>    FRotator LookAtRotation = UKismetMathLibrary::FindLookAtRotation(</div>
+<div class="line"><a id="l00855" name="l00855"></a><span class="lineno">  855</span>        CapsuleLocation, TargetLocation);</div>
+<div class="line"><a id="l00856" name="l00856"></a><span class="lineno">  856</span> </div>
+<div class="line"><a id="l00857" name="l00857"></a><span class="lineno">  857</span>    <span class="comment">// 상대 회전 계산</span></div>
+<div class="line"><a id="l00858" name="l00858"></a><span class="lineno">  858</span>    FRotator RelativeRotation = UKismetMathLibrary::NormalizedDeltaRotator(</div>
+<div class="line"><a id="l00859" name="l00859"></a><span class="lineno">  859</span>        LookAtRotation,CapsuleRotation);</div>
+<div class="line"><a id="l00860" name="l00860"></a><span class="lineno">  860</span> </div>
+<div class="line"><a id="l00861" name="l00861"></a><span class="lineno">  861</span>    <span class="comment">// Return Value (Roll, Pitch, Yaw)</span></div>
+<div class="line"><a id="l00862" name="l00862"></a><span class="lineno">  862</span>    <span class="keywordflow">return</span> RelativeRotation;</div>
+<div class="line"><a id="l00863" name="l00863"></a><span class="lineno">  863</span>}</div>
 </div>
-<div class="line"><a id="l00866" name="l00866"></a><span class="lineno">  866</span> </div>
-<div class="foldopen" id="foldopen00867" data-start="{" data-end="}">
-<div class="line"><a id="l00867" name="l00867"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#afded5d0746cf27f2177f5ca8cfef33b4">  867</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAPlayerActor.html#afded5d0746cf27f2177f5ca8cfef33b4">APlayerActor::OnRoomLevelUpdated</a>(int32 NewRoomLevel)</div>
-<div class="line"><a id="l00868" name="l00868"></a><span class="lineno">  868</span>{</div>
-<div class="line"><a id="l00869" name="l00869"></a><span class="lineno">  869</span>    <span class="keywordflow">if</span> (!IsLocallyControlled())</div>
-<div class="line"><a id="l00870" name="l00870"></a><span class="lineno">  870</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00871" name="l00871"></a><span class="lineno">  871</span> </div>
-<div class="line"><a id="l00872" name="l00872"></a><span class="lineno">  872</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAPlayerActor.html#a21817a3bc97f6962b8ece7941b67996d">MainWidget</a>)</div>
-<div class="line"><a id="l00873" name="l00873"></a><span class="lineno">  873</span>    {</div>
-<div class="line"><a id="l00874" name="l00874"></a><span class="lineno">  874</span>        <span class="keywordflow">if</span> (<span class="keyword">auto</span> GS = <a class="code hl_function" href="classULingoGameHelper.html#aae5e9443e2249c16219279d75b62cb46">ULingoGameHelper::GetLingoGameState</a>(GetWorld()))</div>
-<div class="line"><a id="l00875" name="l00875"></a><span class="lineno">  875</span>        {</div>
-<div class="line"><a id="l00876" name="l00876"></a><span class="lineno">  876</span>            <span class="keyword">const</span> <span class="keywordtype">int</span> RoomLevel = NewRoomLevel;</div>
-<div class="line"><a id="l00877" name="l00877"></a><span class="lineno">  877</span>            <span class="keyword">const</span> <span class="keywordtype">int</span> RoomId = GS-&gt;GetRoomId();</div>
-<div class="line"><a id="l00878" name="l00878"></a><span class="lineno">  878</span>            </div>
-<div class="line"><a id="l00879" name="l00879"></a><span class="lineno">  879</span>            <a class="code hl_variable" href="classAPlayerActor.html#a21817a3bc97f6962b8ece7941b67996d">MainWidget</a>-&gt;UpdateRoomWidget(RoomLevel, RoomId);</div>
-<div class="line"><a id="l00880" name="l00880"></a><span class="lineno">  880</span>        }</div>
-<div class="line"><a id="l00881" name="l00881"></a><span class="lineno">  881</span>    }</div>
-<div class="line"><a id="l00882" name="l00882"></a><span class="lineno">  882</span>}</div>
+<div class="line"><a id="l00864" name="l00864"></a><span class="lineno">  864</span> </div>
+<div class="foldopen" id="foldopen00865" data-start="{" data-end="}">
+<div class="line"><a id="l00865" name="l00865"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#abf6656a8cf611561c5dd3c87a35279c8">  865</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAPlayerActor.html#abf6656a8cf611561c5dd3c87a35279c8">APlayerActor::OnRoomIdUpdated</a>(int64 NewRoomId)</div>
+<div class="line"><a id="l00866" name="l00866"></a><span class="lineno">  866</span>{</div>
+<div class="line"><a id="l00867" name="l00867"></a><span class="lineno">  867</span>    <span class="keywordflow">if</span> (!IsLocallyControlled())</div>
+<div class="line"><a id="l00868" name="l00868"></a><span class="lineno">  868</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00869" name="l00869"></a><span class="lineno">  869</span> </div>
+<div class="line"><a id="l00870" name="l00870"></a><span class="lineno">  870</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAPlayerActor.html#a21817a3bc97f6962b8ece7941b67996d">MainWidget</a>)</div>
+<div class="line"><a id="l00871" name="l00871"></a><span class="lineno">  871</span>    {</div>
+<div class="line"><a id="l00872" name="l00872"></a><span class="lineno">  872</span>        <span class="keywordflow">if</span> (<span class="keyword">auto</span> GS = <a class="code hl_function" href="classULingoGameHelper.html#aae5e9443e2249c16219279d75b62cb46">ULingoGameHelper::GetLingoGameState</a>(GetWorld()))</div>
+<div class="line"><a id="l00873" name="l00873"></a><span class="lineno">  873</span>        {</div>
+<div class="line"><a id="l00874" name="l00874"></a><span class="lineno">  874</span>            <span class="keyword">const</span> <span class="keywordtype">int</span> RoomLevel = GS-&gt;GetRoomLevel();</div>
+<div class="line"><a id="l00875" name="l00875"></a><span class="lineno">  875</span>            <span class="keyword">const</span> <span class="keywordtype">int</span> RoomId = NewRoomId;</div>
+<div class="line"><a id="l00876" name="l00876"></a><span class="lineno">  876</span>            </div>
+<div class="line"><a id="l00877" name="l00877"></a><span class="lineno">  877</span>            <a class="code hl_variable" href="classAPlayerActor.html#a21817a3bc97f6962b8ece7941b67996d">MainWidget</a>-&gt;UpdateRoomWidget(RoomLevel, RoomId);</div>
+<div class="line"><a id="l00878" name="l00878"></a><span class="lineno">  878</span>        }</div>
+<div class="line"><a id="l00879" name="l00879"></a><span class="lineno">  879</span>    }</div>
+<div class="line"><a id="l00880" name="l00880"></a><span class="lineno">  880</span>}</div>
 </div>
-<div class="line"><a id="l00883" name="l00883"></a><span class="lineno">  883</span> </div>
-<div class="line"><a id="l00884" name="l00884"></a><span class="lineno">  884</span><span class="comment">// void APlayerActor::OnUpdateQuestInfo()</span></div>
-<div class="line"><a id="l00885" name="l00885"></a><span class="lineno">  885</span><span class="comment">// {</span></div>
-<div class="line"><a id="l00886" name="l00886"></a><span class="lineno">  886</span><span class="comment">//  if (!IsLocallyControlled())</span></div>
-<div class="line"><a id="l00887" name="l00887"></a><span class="lineno">  887</span><span class="comment">//      return;</span></div>
-<div class="line"><a id="l00888" name="l00888"></a><span class="lineno">  888</span><span class="comment">//  MainWidget-&gt;GetQuestInfoWidget()-&gt;InitQuestInfo();</span></div>
-<div class="line"><a id="l00889" name="l00889"></a><span class="lineno">  889</span><span class="comment">// }</span></div>
-<div class="line"><a id="l00890" name="l00890"></a><span class="lineno">  890</span><span class="comment">//</span></div>
-<div class="line"><a id="l00891" name="l00891"></a><span class="lineno">  891</span><span class="comment">// void APlayerActor::OnUpdateQuestRole(EQuestRole QuestRole)</span></div>
-<div class="line"><a id="l00892" name="l00892"></a><span class="lineno">  892</span><span class="comment">// {</span></div>
-<div class="line"><a id="l00893" name="l00893"></a><span class="lineno">  893</span><span class="comment">//  if (!IsLocallyControlled())</span></div>
-<div class="line"><a id="l00894" name="l00894"></a><span class="lineno">  894</span><span class="comment">//      return;</span></div>
-<div class="line"><a id="l00895" name="l00895"></a><span class="lineno">  895</span><span class="comment">//  MainWidget-&gt;GetQuestInfoWidget()-&gt;InitQuestInfo();</span></div>
-<div class="line"><a id="l00896" name="l00896"></a><span class="lineno">  896</span><span class="comment">// }</span></div>
-<div class="line"><a id="l00897" name="l00897"></a><span class="lineno">  897</span><span class="comment">//</span></div>
+<div class="line"><a id="l00881" name="l00881"></a><span class="lineno">  881</span> </div>
+<div class="foldopen" id="foldopen00882" data-start="{" data-end="}">
+<div class="line"><a id="l00882" name="l00882"></a><span class="lineno"><a class="line" href="classAPlayerActor.html#afded5d0746cf27f2177f5ca8cfef33b4">  882</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAPlayerActor.html#afded5d0746cf27f2177f5ca8cfef33b4">APlayerActor::OnRoomLevelUpdated</a>(int32 NewRoomLevel)</div>
+<div class="line"><a id="l00883" name="l00883"></a><span class="lineno">  883</span>{</div>
+<div class="line"><a id="l00884" name="l00884"></a><span class="lineno">  884</span>    <span class="keywordflow">if</span> (!IsLocallyControlled())</div>
+<div class="line"><a id="l00885" name="l00885"></a><span class="lineno">  885</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00886" name="l00886"></a><span class="lineno">  886</span> </div>
+<div class="line"><a id="l00887" name="l00887"></a><span class="lineno">  887</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAPlayerActor.html#a21817a3bc97f6962b8ece7941b67996d">MainWidget</a>)</div>
+<div class="line"><a id="l00888" name="l00888"></a><span class="lineno">  888</span>    {</div>
+<div class="line"><a id="l00889" name="l00889"></a><span class="lineno">  889</span>        <span class="keywordflow">if</span> (<span class="keyword">auto</span> GS = <a class="code hl_function" href="classULingoGameHelper.html#aae5e9443e2249c16219279d75b62cb46">ULingoGameHelper::GetLingoGameState</a>(GetWorld()))</div>
+<div class="line"><a id="l00890" name="l00890"></a><span class="lineno">  890</span>        {</div>
+<div class="line"><a id="l00891" name="l00891"></a><span class="lineno">  891</span>            <span class="keyword">const</span> <span class="keywordtype">int</span> RoomLevel = NewRoomLevel;</div>
+<div class="line"><a id="l00892" name="l00892"></a><span class="lineno">  892</span>            <span class="keyword">const</span> <span class="keywordtype">int</span> RoomId = GS-&gt;GetRoomId();</div>
+<div class="line"><a id="l00893" name="l00893"></a><span class="lineno">  893</span>            </div>
+<div class="line"><a id="l00894" name="l00894"></a><span class="lineno">  894</span>            <a class="code hl_variable" href="classAPlayerActor.html#a21817a3bc97f6962b8ece7941b67996d">MainWidget</a>-&gt;UpdateRoomWidget(RoomLevel, RoomId);</div>
+<div class="line"><a id="l00895" name="l00895"></a><span class="lineno">  895</span>        }</div>
+<div class="line"><a id="l00896" name="l00896"></a><span class="lineno">  896</span>    }</div>
+<div class="line"><a id="l00897" name="l00897"></a><span class="lineno">  897</span>}</div>
+</div>
 <div class="line"><a id="l00898" name="l00898"></a><span class="lineno">  898</span> </div>
-<div class="line"><a id="l00899" name="l00899"></a><span class="lineno">  899</span><span class="comment">// void APlayerActor::OnReadResultUpdated(const FResponseReadResult&amp; Result)</span></div>
+<div class="line"><a id="l00899" name="l00899"></a><span class="lineno">  899</span><span class="comment">// void APlayerActor::OnUpdateQuestInfo()</span></div>
 <div class="line"><a id="l00900" name="l00900"></a><span class="lineno">  900</span><span class="comment">// {</span></div>
 <div class="line"><a id="l00901" name="l00901"></a><span class="lineno">  901</span><span class="comment">//  if (!IsLocallyControlled())</span></div>
 <div class="line"><a id="l00902" name="l00902"></a><span class="lineno">  902</span><span class="comment">//      return;</span></div>
-<div class="line"><a id="l00903" name="l00903"></a><span class="lineno">  903</span><span class="comment">//  </span></div>
-<div class="line"><a id="l00904" name="l00904"></a><span class="lineno">  904</span><span class="comment">//  MainWidget-&gt;GetQuestInfoWidget()-&gt;SetVisibility(ESlateVisibility::Collapsed);</span></div>
-<div class="line"><a id="l00905" name="l00905"></a><span class="lineno">  905</span><span class="comment">// }</span></div>
-<div class="line"><a id="l00906" name="l00906"></a><span class="lineno">  906</span><span class="comment">//</span></div>
-<div class="line"><a id="l00907" name="l00907"></a><span class="lineno">  907</span><span class="comment">// void APlayerActor::OnListenResultUpdated( const FResponseListenResult&amp; Result)</span></div>
-<div class="line"><a id="l00908" name="l00908"></a><span class="lineno">  908</span><span class="comment">// {</span></div>
-<div class="line"><a id="l00909" name="l00909"></a><span class="lineno">  909</span><span class="comment">//  if (!IsLocallyControlled())</span></div>
-<div class="line"><a id="l00910" name="l00910"></a><span class="lineno">  910</span><span class="comment">//      return;</span></div>
-<div class="line"><a id="l00911" name="l00911"></a><span class="lineno">  911</span><span class="comment">//  </span></div>
-<div class="line"><a id="l00912" name="l00912"></a><span class="lineno">  912</span><span class="comment">//  MainWidget-&gt;GetQuestInfoWidget()-&gt;SetVisibility(ESlateVisibility::Collapsed);</span></div>
-<div class="line"><a id="l00913" name="l00913"></a><span class="lineno">  913</span><span class="comment">// }</span></div>
+<div class="line"><a id="l00903" name="l00903"></a><span class="lineno">  903</span><span class="comment">//  MainWidget-&gt;GetQuestInfoWidget()-&gt;InitQuestInfo();</span></div>
+<div class="line"><a id="l00904" name="l00904"></a><span class="lineno">  904</span><span class="comment">// }</span></div>
+<div class="line"><a id="l00905" name="l00905"></a><span class="lineno">  905</span><span class="comment">//</span></div>
+<div class="line"><a id="l00906" name="l00906"></a><span class="lineno">  906</span><span class="comment">// void APlayerActor::OnUpdateQuestRole(EQuestRole QuestRole)</span></div>
+<div class="line"><a id="l00907" name="l00907"></a><span class="lineno">  907</span><span class="comment">// {</span></div>
+<div class="line"><a id="l00908" name="l00908"></a><span class="lineno">  908</span><span class="comment">//  if (!IsLocallyControlled())</span></div>
+<div class="line"><a id="l00909" name="l00909"></a><span class="lineno">  909</span><span class="comment">//      return;</span></div>
+<div class="line"><a id="l00910" name="l00910"></a><span class="lineno">  910</span><span class="comment">//  MainWidget-&gt;GetQuestInfoWidget()-&gt;InitQuestInfo();</span></div>
+<div class="line"><a id="l00911" name="l00911"></a><span class="lineno">  911</span><span class="comment">// }</span></div>
+<div class="line"><a id="l00912" name="l00912"></a><span class="lineno">  912</span><span class="comment">//</span></div>
+<div class="line"><a id="l00913" name="l00913"></a><span class="lineno">  913</span> </div>
+<div class="line"><a id="l00914" name="l00914"></a><span class="lineno">  914</span><span class="comment">// void APlayerActor::OnReadResultUpdated(const FResponseReadResult&amp; Result)</span></div>
+<div class="line"><a id="l00915" name="l00915"></a><span class="lineno">  915</span><span class="comment">// {</span></div>
+<div class="line"><a id="l00916" name="l00916"></a><span class="lineno">  916</span><span class="comment">//  if (!IsLocallyControlled())</span></div>
+<div class="line"><a id="l00917" name="l00917"></a><span class="lineno">  917</span><span class="comment">//      return;</span></div>
+<div class="line"><a id="l00918" name="l00918"></a><span class="lineno">  918</span><span class="comment">//  </span></div>
+<div class="line"><a id="l00919" name="l00919"></a><span class="lineno">  919</span><span class="comment">//  MainWidget-&gt;GetQuestInfoWidget()-&gt;SetVisibility(ESlateVisibility::Collapsed);</span></div>
+<div class="line"><a id="l00920" name="l00920"></a><span class="lineno">  920</span><span class="comment">// }</span></div>
+<div class="line"><a id="l00921" name="l00921"></a><span class="lineno">  921</span><span class="comment">//</span></div>
+<div class="line"><a id="l00922" name="l00922"></a><span class="lineno">  922</span><span class="comment">// void APlayerActor::OnListenResultUpdated( const FResponseListenResult&amp; Result)</span></div>
+<div class="line"><a id="l00923" name="l00923"></a><span class="lineno">  923</span><span class="comment">// {</span></div>
+<div class="line"><a id="l00924" name="l00924"></a><span class="lineno">  924</span><span class="comment">//  if (!IsLocallyControlled())</span></div>
+<div class="line"><a id="l00925" name="l00925"></a><span class="lineno">  925</span><span class="comment">//      return;</span></div>
+<div class="line"><a id="l00926" name="l00926"></a><span class="lineno">  926</span><span class="comment">//  </span></div>
+<div class="line"><a id="l00927" name="l00927"></a><span class="lineno">  927</span><span class="comment">//  MainWidget-&gt;GetQuestInfoWidget()-&gt;SetVisibility(ESlateVisibility::Collapsed);</span></div>
+<div class="line"><a id="l00928" name="l00928"></a><span class="lineno">  928</span><span class="comment">// }</span></div>
 <div class="ttc" id="aAContactTrigger_8h_html"><div class="ttname"><a href="AContactTrigger_8h.html">AContactTrigger.h</a></div></div>
 <div class="ttc" id="aALingoGameState_8h_html"><div class="ttname"><a href="ALingoGameState_8h.html">ALingoGameState.h</a></div></div>
 <div class="ttc" id="aAPlayerActor_8cpp_html_a8a594718303599604d201d83db618bae"><div class="ttname"><a href="APlayerActor_8cpp.html#a8a594718303599604d201d83db618bae">MAINWIDGET_PATH</a></div><div class="ttdeci">#define MAINWIDGET_PATH</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8cpp_source.html#l00049">APlayerActor.cpp:49</a></div></div>
@@ -1098,7 +1113,7 @@ $(document).ready(function(){initNavTree('APlayerActor_8cpp_source.html',''); in
 <div class="ttc" id="aUMainWidget_8h_html"><div class="ttname"><a href="UMainWidget_8h.html">UMainWidget.h</a></div></div>
 <div class="ttc" id="aUPopupManager_8h_html"><div class="ttname"><a href="UPopupManager_8h.html">UPopupManager.h</a></div></div>
 <div class="ttc" id="aUPopup__ReadQuest_8h_html"><div class="ttname"><a href="UPopup__ReadQuest_8h.html">UPopup_ReadQuest.h</a></div></div>
-<div class="ttc" id="aUPopup__SpeakQuestJudes_8h_html"><div class="ttname"><a href="UPopup__SpeakQuestJudes_8h.html">UPopup_SpeakQuestJudes.h</a></div></div>
+<div class="ttc" id="aUPopup__SpeakJudes_8h_html"><div class="ttname"><a href="UPopup__SpeakJudes_8h.html">UPopup_SpeakJudes.h</a></div></div>
 <div class="ttc" id="aUQuestInfoWidget_8h_html"><div class="ttname"><a href="UQuestInfoWidget_8h.html">UQuestInfoWidget.h</a></div></div>
 <div class="ttc" id="aUToastWidget_8h_html"><div class="ttname"><a href="UToastWidget_8h.html">UToastWidget.h</a></div></div>
 <div class="ttc" id="aUVoiceConversationSystem_8h_html"><div class="ttname"><a href="UVoiceConversationSystem_8h.html">UVoiceConversationSystem.h</a></div><div class="ttdoc">STT·GPT·TTS 파이프라인을 연결하는 음성 대화 컴포넌트를 선언합니다.</div></div>
@@ -1108,14 +1123,14 @@ $(document).ready(function(){initNavTree('APlayerActor_8cpp_source.html',''); in
 <div class="ttc" id="aclassAPlayerActor_html"><div class="ttname"><a href="classAPlayerActor.html">APlayerActor</a></div><div class="ttdoc">Main character driven directly by the player.</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8h_source.html#l00023">APlayerActor.h:24</a></div></div>
 <div class="ttc" id="aclassAPlayerActor_html_a079c2390a56476586e0ced1a5df2ce72"><div class="ttname"><a href="classAPlayerActor.html#a079c2390a56476586e0ced1a5df2ce72">APlayerActor::ApplyAnotherValue</a></div><div class="ttdeci">void ApplyAnotherValue()</div><div class="ttdoc">Another 머티리얼 파라미터를 실제로 적용합니다 (서버/클라이언트 공통)</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8cpp_source.html#l00346">APlayerActor.cpp:346</a></div></div>
 <div class="ttc" id="aclassAPlayerActor_html_a0c1400db5f943254071089e512a2bb25"><div class="ttname"><a href="classAPlayerActor.html#a0c1400db5f943254071089e512a2bb25">APlayerActor::VoiceConversationSystem</a></div><div class="ttdeci">TObjectPtr&lt; class UVoiceConversationSystem &gt; VoiceConversationSystem</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8h_source.html#l00080">APlayerActor.h:80</a></div></div>
-<div class="ttc" id="aclassAPlayerActor_html_a0e9166eaab407919546d8accca997855"><div class="ttname"><a href="classAPlayerActor.html#a0e9166eaab407919546d8accca997855">APlayerActor::RunSpeed</a></div><div class="ttdeci">float RunSpeed</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8h_source.html#l00242">APlayerActor.h:242</a></div></div>
+<div class="ttc" id="aclassAPlayerActor_html_a0e9166eaab407919546d8accca997855"><div class="ttname"><a href="classAPlayerActor.html#a0e9166eaab407919546d8accca997855">APlayerActor::RunSpeed</a></div><div class="ttdeci">float RunSpeed</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8h_source.html#l00247">APlayerActor.h:247</a></div></div>
 <div class="ttc" id="aclassAPlayerActor_html_a0eead9bb46d45cfb20b9da0f545ede81"><div class="ttname"><a href="classAPlayerActor.html#a0eead9bb46d45cfb20b9da0f545ede81">APlayerActor::OnGameMessage</a></div><div class="ttdeci">void OnGameMessage(const FString &amp;Message)</div><div class="ttdoc">게임 이벤트 메시지를 수신합니다.</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8cpp_source.html#l00633">APlayerActor.cpp:633</a></div></div>
 <div class="ttc" id="aclassAPlayerActor_html_a0fe75e4f0a646205d3f08422a7eb5831"><div class="ttname"><a href="classAPlayerActor.html#a0fe75e4f0a646205d3f08422a7eb5831">APlayerActor::HookSystem</a></div><div class="ttdeci">TObjectPtr&lt; class UHookSystem &gt; HookSystem</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8h_source.html#l00054">APlayerActor.h:54</a></div></div>
 <div class="ttc" id="aclassAPlayerActor_html_a115e142270ff13d152f003cf83a034d1"><div class="ttname"><a href="classAPlayerActor.html#a115e142270ff13d152f003cf83a034d1">APlayerActor::IsControlEnabled</a></div><div class="ttdeci">bool IsControlEnabled() const</div><div class="ttdoc">플레이어 조작이 가능한지 확인합니다</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8cpp_source.html#l00190">APlayerActor.cpp:190</a></div></div>
 <div class="ttc" id="aclassAPlayerActor_html_a13fdad9af25588c40508ec8a87c50993"><div class="ttname"><a href="classAPlayerActor.html#a13fdad9af25588c40508ec8a87c50993">APlayerActor::OnResponseSpeakAudio</a></div><div class="ttdeci">void OnResponseSpeakAudio(FResponseListenAudio &amp;ResponseData, bool bWasSuccessful)</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8cpp_source.html#l00569">APlayerActor.cpp:569</a></div></div>
 <div class="ttc" id="aclassAPlayerActor_html_a182d5478895ad51a12b3b342c7f0294f"><div class="ttname"><a href="classAPlayerActor.html#a182d5478895ad51a12b3b342c7f0294f">APlayerActor::RequestSpeakAudio</a></div><div class="ttdeci">void RequestSpeakAudio(const FString &amp;AudioText)</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8cpp_source.html#l00553">APlayerActor.cpp:553</a></div></div>
-<div class="ttc" id="aclassAPlayerActor_html_a1ea19f988738aada96a8f3637338163f"><div class="ttname"><a href="classAPlayerActor.html#a1ea19f988738aada96a8f3637338163f">APlayerActor::WalkSpeed</a></div><div class="ttdeci">float WalkSpeed</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8h_source.html#l00241">APlayerActor.h:241</a></div></div>
-<div class="ttc" id="aclassAPlayerActor_html_a21817a3bc97f6962b8ece7941b67996d"><div class="ttname"><a href="classAPlayerActor.html#a21817a3bc97f6962b8ece7941b67996d">APlayerActor::MainWidget</a></div><div class="ttdeci">TObjectPtr&lt; class UMainWidget &gt; MainWidget</div><div class="ttdoc">메인 UI 위젯 인스턴스</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8h_source.html#l00229">APlayerActor.h:229</a></div></div>
+<div class="ttc" id="aclassAPlayerActor_html_a1ea19f988738aada96a8f3637338163f"><div class="ttname"><a href="classAPlayerActor.html#a1ea19f988738aada96a8f3637338163f">APlayerActor::WalkSpeed</a></div><div class="ttdeci">float WalkSpeed</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8h_source.html#l00246">APlayerActor.h:246</a></div></div>
+<div class="ttc" id="aclassAPlayerActor_html_a21817a3bc97f6962b8ece7941b67996d"><div class="ttname"><a href="classAPlayerActor.html#a21817a3bc97f6962b8ece7941b67996d">APlayerActor::MainWidget</a></div><div class="ttdeci">TObjectPtr&lt; class UMainWidget &gt; MainWidget</div><div class="ttdoc">메인 UI 위젯 인스턴스</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8h_source.html#l00234">APlayerActor.h:234</a></div></div>
 <div class="ttc" id="aclassAPlayerActor_html_a22532b0f65738f7a51494a5476638af1"><div class="ttname"><a href="classAPlayerActor.html#a22532b0f65738f7a51494a5476638af1">APlayerActor::OnTeleportAllPlayers</a></div><div class="ttdeci">void OnTeleportAllPlayers(FVector TargetLocation)</div><div class="ttdoc">텔레포트 이벤트 핸들러</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8cpp_source.html#l00657">APlayerActor.cpp:657</a></div></div>
 <div class="ttc" id="aclassAPlayerActor_html_a2f07dd7eee5e4a05fa2457ca52382f3e"><div class="ttname"><a href="classAPlayerActor.html#a2f07dd7eee5e4a05fa2457ca52382f3e">APlayerActor::CreateToastWidget</a></div><div class="ttdeci">void CreateToastWidget()</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8cpp_source.html#l00266">APlayerActor.cpp:266</a></div></div>
 <div class="ttc" id="aclassAPlayerActor_html_a35e67f9f2f0a0c5ee8589213b5a65b63"><div class="ttname"><a href="classAPlayerActor.html#a35e67f9f2f0a0c5ee8589213b5a65b63">APlayerActor::PossessedBy</a></div><div class="ttdeci">virtual void PossessedBy(AController *NewController) override</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8cpp_source.html#l00283">APlayerActor.cpp:283</a></div></div>
@@ -1126,45 +1141,46 @@ $(document).ready(function(){initNavTree('APlayerActor_8cpp_source.html',''); in
 <div class="ttc" id="aclassAPlayerActor_html_a4e1f651cec20acf4d8098787767f3a3f"><div class="ttname"><a href="classAPlayerActor.html#a4e1f651cec20acf4d8098787767f3a3f">APlayerActor::IsMainMap</a></div><div class="ttdeci">bool IsMainMap()</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8cpp_source.html#l00203">APlayerActor.cpp:203</a></div></div>
 <div class="ttc" id="aclassAPlayerActor_html_a5103c0363fe48208c685cc50eb8253a1"><div class="ttname"><a href="classAPlayerActor.html#a5103c0363fe48208c685cc50eb8253a1">APlayerActor::GetQuestRole</a></div><div class="ttdeci">EQuestRole GetQuestRole()</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8cpp_source.html#l00519">APlayerActor.cpp:519</a></div></div>
 <div class="ttc" id="aclassAPlayerActor_html_a56fd76fe4979f537c112d32ebbc44f72"><div class="ttname"><a href="classAPlayerActor.html#a56fd76fe4979f537c112d32ebbc44f72">APlayerActor::OnRep_Controller</a></div><div class="ttdeci">virtual void OnRep_Controller() override</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8cpp_source.html#l00317">APlayerActor.cpp:317</a></div></div>
-<div class="ttc" id="aclassAPlayerActor_html_a57d536023470eebddc11f8c929d6dfd5"><div class="ttname"><a href="classAPlayerActor.html#a57d536023470eebddc11f8c929d6dfd5">APlayerActor::AnotherValue</a></div><div class="ttdeci">float AnotherValue</div><div class="ttdoc">2P 구분을 위한 머티리얼 파라미터 (0=1P, 1=2P)</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8h_source.html#l00220">APlayerActor.h:220</a></div></div>
+<div class="ttc" id="aclassAPlayerActor_html_a57d536023470eebddc11f8c929d6dfd5"><div class="ttname"><a href="classAPlayerActor.html#a57d536023470eebddc11f8c929d6dfd5">APlayerActor::AnotherValue</a></div><div class="ttdeci">float AnotherValue</div><div class="ttdoc">2P 구분을 위한 머티리얼 파라미터 (0=1P, 1=2P)</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8h_source.html#l00225">APlayerActor.h:225</a></div></div>
 <div class="ttc" id="aclassAPlayerActor_html_a587bdab86f6358b5597a15572e282cfd"><div class="ttname"><a href="classAPlayerActor.html#a587bdab86f6358b5597a15572e282cfd">APlayerActor::HookProjectileMesh</a></div><div class="ttdeci">TObjectPtr&lt; class UStaticMeshComponent &gt; HookProjectileMesh</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8h_source.html#l00060">APlayerActor.h:60</a></div></div>
-<div class="ttc" id="aclassAPlayerActor_html_a5c7dc9dc861dd6eaacf0f74d63ec66f9"><div class="ttname"><a href="classAPlayerActor.html#a5c7dc9dc861dd6eaacf0f74d63ec66f9">APlayerActor::CompassMarkerMap</a></div><div class="ttdeci">TMap&lt; AActor *, class UImage * &gt; CompassMarkerMap</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8h_source.html#l00250">APlayerActor.h:250</a></div></div>
+<div class="ttc" id="aclassAPlayerActor_html_a5c7dc9dc861dd6eaacf0f74d63ec66f9"><div class="ttname"><a href="classAPlayerActor.html#a5c7dc9dc861dd6eaacf0f74d63ec66f9">APlayerActor::CompassMarkerMap</a></div><div class="ttdeci">TMap&lt; AActor *, class UImage * &gt; CompassMarkerMap</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8h_source.html#l00255">APlayerActor.h:255</a></div></div>
 <div class="ttc" id="aclassAPlayerActor_html_a60acdb239d255dc9a92b058c9a64b60e"><div class="ttname"><a href="classAPlayerActor.html#a60acdb239d255dc9a92b058c9a64b60e">APlayerActor::Tick</a></div><div class="ttdeci">virtual void Tick(float DeltaTime) override</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8cpp_source.html#l00302">APlayerActor.cpp:302</a></div></div>
-<div class="ttc" id="aclassAPlayerActor_html_a60fe9ba6d54052fad6f9c4a8305fd023"><div class="ttname"><a href="classAPlayerActor.html#a60fe9ba6d54052fad6f9c4a8305fd023">APlayerActor::LookPitch</a></div><div class="ttdeci">float LookPitch</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8h_source.html#l00216">APlayerActor.h:216</a></div></div>
-<div class="ttc" id="aclassAPlayerActor_html_a61c0d769522fe0960b2f15d456d8f68d"><div class="ttname"><a href="classAPlayerActor.html#a61c0d769522fe0960b2f15d456d8f68d">APlayerActor::ToastWidgetClass</a></div><div class="ttdeci">TSubclassOf&lt; class UToastWidget &gt; ToastWidgetClass</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8h_source.html#l00232">APlayerActor.h:232</a></div></div>
+<div class="ttc" id="aclassAPlayerActor_html_a60fe9ba6d54052fad6f9c4a8305fd023"><div class="ttname"><a href="classAPlayerActor.html#a60fe9ba6d54052fad6f9c4a8305fd023">APlayerActor::LookPitch</a></div><div class="ttdeci">float LookPitch</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8h_source.html#l00221">APlayerActor.h:221</a></div></div>
+<div class="ttc" id="aclassAPlayerActor_html_a61c0d769522fe0960b2f15d456d8f68d"><div class="ttname"><a href="classAPlayerActor.html#a61c0d769522fe0960b2f15d456d8f68d">APlayerActor::ToastWidgetClass</a></div><div class="ttdeci">TSubclassOf&lt; class UToastWidget &gt; ToastWidgetClass</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8h_source.html#l00237">APlayerActor.h:237</a></div></div>
 <div class="ttc" id="aclassAPlayerActor_html_a63641fed19fdb23e32cb16fed3ba2d79"><div class="ttname"><a href="classAPlayerActor.html#a63641fed19fdb23e32cb16fed3ba2d79">APlayerActor::CreateMainWidget</a></div><div class="ttdeci">void CreateMainWidget()</div><div class="ttdoc">메인 위젯을 생성하고 뷰포트에 추가합니다.</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8cpp_source.html#l00218">APlayerActor.cpp:218</a></div></div>
 <div class="ttc" id="aclassAPlayerActor_html_a64eb3d279996dbda427e45acbc5de350"><div class="ttname"><a href="classAPlayerActor.html#a64eb3d279996dbda427e45acbc5de350">APlayerActor::InteractionSystem</a></div><div class="ttdeci">TObjectPtr&lt; class UInteractionSystem &gt; InteractionSystem</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8h_source.html#l00051">APlayerActor.h:51</a></div></div>
+<div class="ttc" id="aclassAPlayerActor_html_a6df9bf3bc899e8c1aaa0f4489816ca00"><div class="ttname"><a href="classAPlayerActor.html#a6df9bf3bc899e8c1aaa0f4489816ca00">APlayerActor::Server_NotifyConfirmSpeakJudes</a></div><div class="ttdeci">void Server_NotifyConfirmSpeakJudes()</div><div class="ttdoc">SpeakJudge 팝업 확인 버튼 클릭을 서버에 알립니다 (Server RPC)</div></div>
 <div class="ttc" id="aclassAPlayerActor_html_a74ace42a1c30a53a2e2a93972710052c"><div class="ttname"><a href="classAPlayerActor.html#a74ace42a1c30a53a2e2a93972710052c">APlayerActor::HookCable</a></div><div class="ttdeci">TObjectPtr&lt; class UStaticMeshComponent &gt; HookCable</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8h_source.html#l00057">APlayerActor.h:57</a></div></div>
-<div class="ttc" id="aclassAPlayerActor_html_a7dad1553f9372858902bdd65e2f77243"><div class="ttname"><a href="classAPlayerActor.html#a7dad1553f9372858902bdd65e2f77243">APlayerActor::MainWidgetClass</a></div><div class="ttdeci">TSubclassOf&lt; class UMainWidget &gt; MainWidgetClass</div><div class="ttdoc">메인 위젯 블루프린트 클래스</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8h_source.html#l00225">APlayerActor.h:225</a></div></div>
+<div class="ttc" id="aclassAPlayerActor_html_a7dad1553f9372858902bdd65e2f77243"><div class="ttname"><a href="classAPlayerActor.html#a7dad1553f9372858902bdd65e2f77243">APlayerActor::MainWidgetClass</a></div><div class="ttdeci">TSubclassOf&lt; class UMainWidget &gt; MainWidgetClass</div><div class="ttdoc">메인 위젯 블루프린트 클래스</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8h_source.html#l00230">APlayerActor.h:230</a></div></div>
 <div class="ttc" id="aclassAPlayerActor_html_a856ef7f26d46648083f0fcacdc3c0b5d"><div class="ttname"><a href="classAPlayerActor.html#a856ef7f26d46648083f0fcacdc3c0b5d">APlayerActor::FollowCamera</a></div><div class="ttdeci">TObjectPtr&lt; class UCameraComponent &gt; FollowCamera</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8h_source.html#l00071">APlayerActor.h:71</a></div></div>
 <div class="ttc" id="aclassAPlayerActor_html_a8e98195e55b9fd5a932a38feb650a5e4"><div class="ttname"><a href="classAPlayerActor.html#a8e98195e55b9fd5a932a38feb650a5e4">APlayerActor::Client_ShowSpeakJudesPopup</a></div><div class="ttdeci">void Client_ShowSpeakJudesPopup(const struct FResponseSpeakingJudes &amp;Response)</div><div class="ttdoc">SpeakJudge 결과 팝업을 클라이언트에 표시합니다 (Client RPC)</div></div>
 <div class="ttc" id="aclassAPlayerActor_html_a948d23feda2fd36d69bfd32369b4c8a1"><div class="ttname"><a href="classAPlayerActor.html#a948d23feda2fd36d69bfd32369b4c8a1">APlayerActor::OnResponseListenAudio</a></div><div class="ttdeci">void OnResponseListenAudio(FResponseListenAudio &amp;ResponseData, bool bWasSuccessful)</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8cpp_source.html#l00541">APlayerActor.cpp:541</a></div></div>
 <div class="ttc" id="aclassAPlayerActor_html_a95eacfc2a9907a40bd83fe6383969ae2"><div class="ttname"><a href="classAPlayerActor.html#a95eacfc2a9907a40bd83fe6383969ae2">APlayerActor::ServerRPC_DoRun</a></div><div class="ttdeci">void ServerRPC_DoRun()</div></div>
 <div class="ttc" id="aclassAPlayerActor_html_a96895f47e4451ef42317ea07a4b51990"><div class="ttname"><a href="classAPlayerActor.html#a96895f47e4451ef42317ea07a4b51990">APlayerActor::GetLifetimeReplicatedProps</a></div><div class="ttdeci">virtual void GetLifetimeReplicatedProps(TArray&lt; class FLifetimeProperty &gt; &amp;OutLifetimeProps) const override</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8cpp_source.html#l00182">APlayerActor.cpp:182</a></div></div>
-<div class="ttc" id="aclassAPlayerActor_html_a98978cab98af6b0bff70b65be2b0d5d5"><div class="ttname"><a href="classAPlayerActor.html#a98978cab98af6b0bff70b65be2b0d5d5">APlayerActor::bIsRequest</a></div><div class="ttdeci">bool bIsRequest</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8h_source.html#l00246">APlayerActor.h:246</a></div></div>
+<div class="ttc" id="aclassAPlayerActor_html_a98978cab98af6b0bff70b65be2b0d5d5"><div class="ttname"><a href="classAPlayerActor.html#a98978cab98af6b0bff70b65be2b0d5d5">APlayerActor::bIsRequest</a></div><div class="ttdeci">bool bIsRequest</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8h_source.html#l00251">APlayerActor.h:251</a></div></div>
 <div class="ttc" id="aclassAPlayerActor_html_a9a0da1264f0f61d8b908de643e010de7"><div class="ttname"><a href="classAPlayerActor.html#a9a0da1264f0f61d8b908de643e010de7">APlayerActor::ClientRPC_ShowGameMessage</a></div><div class="ttdeci">void ClientRPC_ShowGameMessage(const FString &amp;Message)</div><div class="ttdoc">클라이언트에서 게임 메시지를 표시합니다.</div></div>
 <div class="ttc" id="aclassAPlayerActor_html_aa27cf7568aa88610162d86a2362eb5d4"><div class="ttname"><a href="classAPlayerActor.html#aa27cf7568aa88610162d86a2362eb5d4">APlayerActor::PlaySpeakInfo</a></div><div class="ttdeci">void PlaySpeakInfo(int32 QuestStep)</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8cpp_source.html#l00505">APlayerActor.cpp:505</a></div></div>
 <div class="ttc" id="aclassAPlayerActor_html_aa480da64460a46fe061c63c3c00cc78f"><div class="ttname"><a href="classAPlayerActor.html#aa480da64460a46fe061c63c3c00cc78f">APlayerActor::RequestListenAudio</a></div><div class="ttdeci">void RequestListenAudio(const FString &amp;AudioText)</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8cpp_source.html#l00525">APlayerActor.cpp:525</a></div></div>
 <div class="ttc" id="aclassAPlayerActor_html_aad1b768bb94774991c12719d0287c4b0"><div class="ttname"><a href="classAPlayerActor.html#aad1b768bb94774991c12719d0287c4b0">APlayerActor::ServerRPC_DoJumpStart</a></div><div class="ttdeci">void ServerRPC_DoJumpStart()</div></div>
 <div class="ttc" id="aclassAPlayerActor_html_ab0295b2e46c5bacfb9524cb08d3ba0c7"><div class="ttname"><a href="classAPlayerActor.html#ab0295b2e46c5bacfb9524cb08d3ba0c7">APlayerActor::ServerRPC_Teleport</a></div><div class="ttdeci">void ServerRPC_Teleport(FVector TargetLocation)</div></div>
-<div class="ttc" id="aclassAPlayerActor_html_ab2162e911aea12e7e720e5bfcb3dbf8f"><div class="ttname"><a href="classAPlayerActor.html#ab2162e911aea12e7e720e5bfcb3dbf8f">APlayerActor::bIsJumpStart</a></div><div class="ttdeci">bool bIsJumpStart</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8h_source.html#l00244">APlayerActor.h:244</a></div></div>
+<div class="ttc" id="aclassAPlayerActor_html_ab2162e911aea12e7e720e5bfcb3dbf8f"><div class="ttname"><a href="classAPlayerActor.html#ab2162e911aea12e7e720e5bfcb3dbf8f">APlayerActor::bIsJumpStart</a></div><div class="ttdeci">bool bIsJumpStart</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8h_source.html#l00249">APlayerActor.h:249</a></div></div>
 <div class="ttc" id="aclassAPlayerActor_html_ab25b6b5741b8ac1c5f6e5e3f7c0dc179"><div class="ttname"><a href="classAPlayerActor.html#ab25b6b5741b8ac1c5f6e5e3f7c0dc179">APlayerActor::MulticastRPC_DoJump</a></div><div class="ttdeci">void MulticastRPC_DoJump()</div></div>
-<div class="ttc" id="aclassAPlayerActor_html_abf6656a8cf611561c5dd3c87a35279c8"><div class="ttname"><a href="classAPlayerActor.html#abf6656a8cf611561c5dd3c87a35279c8">APlayerActor::OnRoomIdUpdated</a></div><div class="ttdeci">void OnRoomIdUpdated(int64 NewRoomId)</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8cpp_source.html#l00850">APlayerActor.cpp:850</a></div></div>
-<div class="ttc" id="aclassAPlayerActor_html_ac114c2627877ad4ba81cf41466885856"><div class="ttname"><a href="classAPlayerActor.html#ac114c2627877ad4ba81cf41466885856">APlayerActor::OnFadeOutCompleteForTeleport</a></div><div class="ttdeci">void OnFadeOutCompleteForTeleport()</div><div class="ttdoc">페이드 아웃 완료 후 텔레포트 실행</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8cpp_source.html#l00728">APlayerActor.cpp:728</a></div></div>
+<div class="ttc" id="aclassAPlayerActor_html_abf6656a8cf611561c5dd3c87a35279c8"><div class="ttname"><a href="classAPlayerActor.html#abf6656a8cf611561c5dd3c87a35279c8">APlayerActor::OnRoomIdUpdated</a></div><div class="ttdeci">void OnRoomIdUpdated(int64 NewRoomId)</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8cpp_source.html#l00865">APlayerActor.cpp:865</a></div></div>
+<div class="ttc" id="aclassAPlayerActor_html_ac114c2627877ad4ba81cf41466885856"><div class="ttname"><a href="classAPlayerActor.html#ac114c2627877ad4ba81cf41466885856">APlayerActor::OnFadeOutCompleteForTeleport</a></div><div class="ttdeci">void OnFadeOutCompleteForTeleport()</div><div class="ttdoc">페이드 아웃 완료 후 텔레포트 실행</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8cpp_source.html#l00743">APlayerActor.cpp:743</a></div></div>
 <div class="ttc" id="aclassAPlayerActor_html_acc728e14fea51ff3fabeef5d283a4ab7"><div class="ttname"><a href="classAPlayerActor.html#acc728e14fea51ff3fabeef5d283a4ab7">APlayerActor::OnRep_LookPitch</a></div><div class="ttdeci">void OnRep_LookPitch()</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8cpp_source.html#l00328">APlayerActor.cpp:328</a></div></div>
-<div class="ttc" id="aclassAPlayerActor_html_acd9f3b4b27082e534b027c985e608dbb"><div class="ttname"><a href="classAPlayerActor.html#acd9f3b4b27082e534b027c985e608dbb">APlayerActor::UpdateCompassMarkers</a></div><div class="ttdeci">void UpdateCompassMarkers()</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8cpp_source.html#l00750">APlayerActor.cpp:750</a></div></div>
+<div class="ttc" id="aclassAPlayerActor_html_acd9f3b4b27082e534b027c985e608dbb"><div class="ttname"><a href="classAPlayerActor.html#acd9f3b4b27082e534b027c985e608dbb">APlayerActor::UpdateCompassMarkers</a></div><div class="ttdeci">void UpdateCompassMarkers()</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8cpp_source.html#l00765">APlayerActor.cpp:765</a></div></div>
 <div class="ttc" id="aclassAPlayerActor_html_acf32c4c8132af669acecfe0d7064b2ef"><div class="ttname"><a href="classAPlayerActor.html#acf32c4c8132af669acecfe0d7064b2ef">APlayerActor::OnRep_AnotherValue</a></div><div class="ttdeci">void OnRep_AnotherValue()</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8cpp_source.html#l00341">APlayerActor.cpp:341</a></div></div>
 <div class="ttc" id="aclassAPlayerActor_html_ad59248b5127a5210bd143cfd2050f859"><div class="ttname"><a href="classAPlayerActor.html#ad59248b5127a5210bd143cfd2050f859">APlayerActor::HoldPosition</a></div><div class="ttdeci">TObjectPtr&lt; class USceneComponent &gt; HoldPosition</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8h_source.html#l00064">APlayerActor.h:64</a></div></div>
-<div class="ttc" id="aclassAPlayerActor_html_ad78636c9a80116cef2617ae221104809"><div class="ttname"><a href="classAPlayerActor.html#ad78636c9a80116cef2617ae221104809">APlayerActor::FindRelativeRotationAtTarget</a></div><div class="ttdeci">FRotator FindRelativeRotationAtTarget(AActor *Target)</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8cpp_source.html#l00827">APlayerActor.cpp:827</a></div></div>
+<div class="ttc" id="aclassAPlayerActor_html_ad78636c9a80116cef2617ae221104809"><div class="ttname"><a href="classAPlayerActor.html#ad78636c9a80116cef2617ae221104809">APlayerActor::FindRelativeRotationAtTarget</a></div><div class="ttdeci">FRotator FindRelativeRotationAtTarget(AActor *Target)</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8cpp_source.html#l00842">APlayerActor.cpp:842</a></div></div>
 <div class="ttc" id="aclassAPlayerActor_html_ada6306389e194acaca75e83abe129cab"><div class="ttname"><a href="classAPlayerActor.html#ada6306389e194acaca75e83abe129cab">APlayerActor::ServerRPC_StopMove</a></div><div class="ttdeci">void ServerRPC_StopMove()</div></div>
 <div class="ttc" id="aclassAPlayerActor_html_adb01d4a0bb1c938f419029317ccae1dd"><div class="ttname"><a href="classAPlayerActor.html#adb01d4a0bb1c938f419029317ccae1dd">APlayerActor::PlayTTSAudio</a></div><div class="ttdeci">void PlayTTSAudio(const TArray&lt; uint8 &gt; &amp;AudioData)</div><div class="ttdoc">TTS 오디오를 재생합니다. VoiceConversationSystem으로 전달합니다.</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8cpp_source.html#l00388">APlayerActor.cpp:388</a></div></div>
 <div class="ttc" id="aclassAPlayerActor_html_addb91f2966d3e68a79699ba89be0a659"><div class="ttname"><a href="classAPlayerActor.html#addb91f2966d3e68a79699ba89be0a659">APlayerActor::APlayerActor</a></div><div class="ttdeci">APlayerActor()</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8cpp_source.html#l00054">APlayerActor.cpp:54</a></div></div>
-<div class="ttc" id="aclassAPlayerActor_html_ae8fbec6d1c7f5d41e2e5c333d35d3a17"><div class="ttname"><a href="classAPlayerActor.html#ae8fbec6d1c7f5d41e2e5c333d35d3a17">APlayerActor::ToastWidget</a></div><div class="ttdeci">TObjectPtr&lt; class UToastWidget &gt; ToastWidget</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8h_source.html#l00235">APlayerActor.h:235</a></div></div>
+<div class="ttc" id="aclassAPlayerActor_html_ae8fbec6d1c7f5d41e2e5c333d35d3a17"><div class="ttname"><a href="classAPlayerActor.html#ae8fbec6d1c7f5d41e2e5c333d35d3a17">APlayerActor::ToastWidget</a></div><div class="ttdeci">TObjectPtr&lt; class UToastWidget &gt; ToastWidget</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8h_source.html#l00240">APlayerActor.h:240</a></div></div>
 <div class="ttc" id="aclassAPlayerActor_html_ae9fa9da786c134b11e0fb9bdb1cf56d0"><div class="ttname"><a href="classAPlayerActor.html#ae9fa9da786c134b11e0fb9bdb1cf56d0">APlayerActor::MulticastRPC_StopMove</a></div><div class="ttdeci">void MulticastRPC_StopMove()</div></div>
-<div class="ttc" id="aclassAPlayerActor_html_aece858bea4efda77305623144f2bad45"><div class="ttname"><a href="classAPlayerActor.html#aece858bea4efda77305623144f2bad45">APlayerActor::bIsRunning</a></div><div class="ttdeci">bool bIsRunning</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8h_source.html#l00243">APlayerActor.h:243</a></div></div>
-<div class="ttc" id="aclassAPlayerActor_html_af642d2936891008c201f850f9cd76509"><div class="ttname"><a href="classAPlayerActor.html#af642d2936891008c201f850f9cd76509">APlayerActor::PendingTeleportLocation</a></div><div class="ttdeci">FVector PendingTeleportLocation</div><div class="ttdoc">텔레포트 목표 위치</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8h_source.html#l00238">APlayerActor.h:238</a></div></div>
+<div class="ttc" id="aclassAPlayerActor_html_aece858bea4efda77305623144f2bad45"><div class="ttname"><a href="classAPlayerActor.html#aece858bea4efda77305623144f2bad45">APlayerActor::bIsRunning</a></div><div class="ttdeci">bool bIsRunning</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8h_source.html#l00248">APlayerActor.h:248</a></div></div>
+<div class="ttc" id="aclassAPlayerActor_html_af642d2936891008c201f850f9cd76509"><div class="ttname"><a href="classAPlayerActor.html#af642d2936891008c201f850f9cd76509">APlayerActor::PendingTeleportLocation</a></div><div class="ttdeci">FVector PendingTeleportLocation</div><div class="ttdoc">텔레포트 목표 위치</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8h_source.html#l00243">APlayerActor.h:243</a></div></div>
 <div class="ttc" id="aclassAPlayerActor_html_afc3ace6de521cfc26c3a4395215e7ce9"><div class="ttname"><a href="classAPlayerActor.html#afc3ace6de521cfc26c3a4395215e7ce9">APlayerActor::BeginPlay</a></div><div class="ttdeci">virtual void BeginPlay() override</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8cpp_source.html#l00135">APlayerActor.cpp:135</a></div></div>
-<div class="ttc" id="aclassAPlayerActor_html_afded5d0746cf27f2177f5ca8cfef33b4"><div class="ttname"><a href="classAPlayerActor.html#afded5d0746cf27f2177f5ca8cfef33b4">APlayerActor::OnRoomLevelUpdated</a></div><div class="ttdeci">void OnRoomLevelUpdated(int32 NewRoomLevel)</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8cpp_source.html#l00867">APlayerActor.cpp:867</a></div></div>
+<div class="ttc" id="aclassAPlayerActor_html_afded5d0746cf27f2177f5ca8cfef33b4"><div class="ttname"><a href="classAPlayerActor.html#afded5d0746cf27f2177f5ca8cfef33b4">APlayerActor::OnRoomLevelUpdated</a></div><div class="ttdeci">void OnRoomLevelUpdated(int32 NewRoomLevel)</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8cpp_source.html#l00882">APlayerActor.cpp:882</a></div></div>
 <div class="ttc" id="aclassUCompassWidget_html"><div class="ttname"><a href="classUCompassWidget.html">UCompassWidget</a></div><div class="ttdef"><b>Definition</b> <a href="CompassWidget_8h_source.html#l00025">CompassWidget.h:26</a></div></div>
 <div class="ttc" id="aclassUCompassWidget_html_a2caf632622df6fee1e804c396fad3af7"><div class="ttname"><a href="classUCompassWidget.html#a2caf632622df6fee1e804c396fad3af7">UCompassWidget::AddCompassMarker</a></div><div class="ttdeci">UImage * AddCompassMarker()</div><div class="ttdef"><b>Definition</b> <a href="CompassWidget_8cpp_source.html#l00027">CompassWidget.cpp:27</a></div></div>
 <div class="ttc" id="aclassUCompassWidget_html_a2f5b3c8719d5832f7f56ee548be14f49"><div class="ttname"><a href="classUCompassWidget.html#a2f5b3c8719d5832f7f56ee548be14f49">UCompassWidget::RotateCompass</a></div><div class="ttdeci">void RotateCompass(float ZRotation)</div><div class="ttdef"><b>Definition</b> <a href="CompassWidget_8cpp_source.html#l00015">CompassWidget.cpp:15</a></div></div>
@@ -1183,7 +1199,7 @@ $(document).ready(function(){initNavTree('APlayerActor_8cpp_source.html',''); in
 <div class="ttc" id="astructFResponseListenAudio_html_ac98fb8b7db5c2bbb9bd42bf9fd72f71f"><div class="ttname"><a href="structFResponseListenAudio.html#ac98fb8b7db5c2bbb9bd42bf9fd72f71f">FResponseListenAudio::audio_text</a></div><div class="ttdeci">FString audio_text</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00801">NetworkData.h:801</a></div></div>
 <div class="ttc" id="astructFResponseSpeakingJudes_html"><div class="ttname"><a href="structFResponseSpeakingJudes.html">FResponseSpeakingJudes</a></div><div class="ttdoc">Speaking Questions 응답 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00823">NetworkData.h:824</a></div></div>
 <div class="ttc" id="astructFSpeakStageQuestion_html"><div class="ttname"><a href="structFSpeakStageQuestion.html">FSpeakStageQuestion</a></div><div class="ttdoc">SpeakQuest 오디오 질문 데이터 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l01137">NetworkData.h:1138</a></div></div>
-<div class="ttc" id="astructFSpeakStageQuestion_html_a30d7ab1b5a12e8c02febcde46397092a"><div class="ttname"><a href="structFSpeakStageQuestion.html#a30d7ab1b5a12e8c02febcde46397092a">FSpeakStageQuestion::GetQuestionMessage</a></div><div class="ttdeci">FString GetQuestionMessage() const</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8cpp_source.html#l01233">NetworkData.cpp:1233</a></div></div>
+<div class="ttc" id="astructFSpeakStageQuestion_html_a30d7ab1b5a12e8c02febcde46397092a"><div class="ttname"><a href="structFSpeakStageQuestion.html#a30d7ab1b5a12e8c02febcde46397092a">FSpeakStageQuestion::GetQuestionMessage</a></div><div class="ttdeci">FString GetQuestionMessage() const</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8cpp_source.html#l01242">NetworkData.cpp:1242</a></div></div>
 <div class="ttc" id="astructFSpeakStageQuestion_html_ac07b038c028b38e260e8ef224685e64c"><div class="ttname"><a href="structFSpeakStageQuestion.html#ac07b038c028b38e260e8ef224685e64c">FSpeakStageQuestion::kor</a></div><div class="ttdeci">FString kor</div><div class="ttdoc">한국어 질문</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l01143">NetworkData.h:1143</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
@@ -1191,7 +1207,7 @@ $(document).ready(function(){initNavTree('APlayerActor_8cpp_source.html',''); in
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_71a9f6b769ee24fe8598c19ea2d70480.html">Character</a></li><li class="navelem"><a class="el" href="dir_a846a28747c2ebe05b4ec9782ab892b2.html">Private</a></li><li class="navelem"><a class="el" href="APlayerActor_8cpp.html">APlayerActor.cpp</a></li>
-    <li class="footer">생성시간 : 화 12월 23 2025 07:34:25, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 화 12월 23 2025 08:58:27, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

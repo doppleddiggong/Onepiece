@@ -228,6 +228,7 @@ var hierarchy =
         [ "UPopup_QuestionnaireResultItem", "classUPopup__QuestionnaireResultItem.html", null ],
         [ "UPopup_ReadQuest", "classUPopup__ReadQuest.html", null ],
         [ "UPopup_Result", "classUPopup__Result.html", null ],
+        [ "UPopup_SpeakJudes", "classUPopup__SpeakJudes.html", null ],
         [ "UPopup_SpeakQuest", "classUPopup__SpeakQuest.html", null ],
         [ "UPopup_SpeakQuestJudes", "classUPopup__SpeakQuestJudes.html", null ],
         [ "UPopup_SpeakResult", "classUPopup__SpeakResult.html", null ],

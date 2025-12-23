@@ -159,10 +159,10 @@ Public 속성</h2></td></tr>
 
 <p>디버그 로그에 응답 내용을 출력합니다. </p>
 
-<p class="definition"><a class="el" href="NetworkData_8cpp_source.html">NetworkData.cpp</a> 파일의 <a class="el" href="NetworkData_8cpp_source.html#l01421">1421</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno"> 1422</span>{</div>
-<div class="line"><span class="lineno"> 1423</span>    <a class="code hl_define" href="GameLogging_8h.html#ad8e2ccc8c20a63e091e0111987b4d3bc">NETWORK_LOG</a>(TEXT(<span class="stringliteral">&quot;[RES] Chat Answers - Answer: %s&quot;</span>), *<a class="code hl_variable" href="structFResponseChatAnswers.html#abbd36f4a6cd6408901bd1652e09ea706">answer</a>);</div>
-<div class="line"><span class="lineno"> 1424</span>}</div>
+<p class="definition"><a class="el" href="NetworkData_8cpp_source.html">NetworkData.cpp</a> 파일의 <a class="el" href="NetworkData_8cpp_source.html#l01430">1430</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno"> 1431</span>{</div>
+<div class="line"><span class="lineno"> 1432</span>    <a class="code hl_define" href="GameLogging_8h.html#ad8e2ccc8c20a63e091e0111987b4d3bc">NETWORK_LOG</a>(TEXT(<span class="stringliteral">&quot;[RES] Chat Answers - Answer: %s&quot;</span>), *<a class="code hl_variable" href="structFResponseChatAnswers.html#abbd36f4a6cd6408901bd1652e09ea706">answer</a>);</div>
+<div class="line"><span class="lineno"> 1433</span>}</div>
 <div class="ttc" id="aGameLogging_8h_html_ad8e2ccc8c20a63e091e0111987b4d3bc"><div class="ttname"><a href="GameLogging_8h.html#ad8e2ccc8c20a63e091e0111987b4d3bc">NETWORK_LOG</a></div><div class="ttdeci">#define NETWORK_LOG(fmt,...)</div></div>
 <div class="ttc" id="astructFResponseChatAnswers_html_abbd36f4a6cd6408901bd1652e09ea706"><div class="ttname"><a href="structFResponseChatAnswers.html#abbd36f4a6cd6408901bd1652e09ea706">FResponseChatAnswers::answer</a></div><div class="ttdeci">FString answer</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l01371">NetworkData.h:1371</a></div></div>
 </div><!-- fragment -->
@@ -188,30 +188,30 @@ Public 속성</h2></td></tr>
 
 <p>HTTP 응답을 파싱해 구조체를 채웁니다. </p>
 
-<p class="definition"><a class="el" href="NetworkData_8cpp_source.html">NetworkData.cpp</a> 파일의 <a class="el" href="NetworkData_8cpp_source.html#l01396">1396</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno"> 1397</span>{</div>
-<div class="line"><span class="lineno"> 1398</span>    <span class="keywordflow">if</span> (!Response.IsValid())</div>
-<div class="line"><span class="lineno"> 1399</span>    {</div>
-<div class="line"><span class="lineno"> 1400</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno"> 1401</span>    }</div>
-<div class="line"><span class="lineno"> 1402</span> </div>
-<div class="line"><span class="lineno"> 1403</span>    FString JsonString = Response-&gt;GetContentAsString();</div>
-<div class="line"><span class="lineno"> 1404</span>    TSharedPtr&lt;FJsonObject&gt; JsonObject;</div>
-<div class="line"><span class="lineno"> 1405</span>    TSharedRef&lt;TJsonReader&lt;&gt;&gt; Reader = TJsonReaderFactory&lt;&gt;::Create(JsonString);</div>
-<div class="line"><span class="lineno"> 1406</span> </div>
-<div class="line"><span class="lineno"> 1407</span>    <span class="keywordflow">if</span> (FJsonSerializer::Deserialize(Reader, JsonObject) &amp;&amp; JsonObject.IsValid())</div>
+<p class="definition"><a class="el" href="NetworkData_8cpp_source.html">NetworkData.cpp</a> 파일의 <a class="el" href="NetworkData_8cpp_source.html#l01405">1405</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno"> 1406</span>{</div>
+<div class="line"><span class="lineno"> 1407</span>    <span class="keywordflow">if</span> (!Response.IsValid())</div>
 <div class="line"><span class="lineno"> 1408</span>    {</div>
-<div class="line"><span class="lineno"> 1409</span>        <span class="keywordflow">if</span> (JsonObject-&gt;HasField(TEXT(<span class="stringliteral">&quot;question&quot;</span>)))</div>
-<div class="line"><span class="lineno"> 1410</span>        {</div>
-<div class="line"><span class="lineno"> 1411</span>            <a class="code hl_variable" href="structFResponseChatAnswers.html#a47967c5f8507c3c2c2de17344be3ac53">question</a> = JsonObject-&gt;GetStringField(TEXT(<span class="stringliteral">&quot;question&quot;</span>));</div>
-<div class="line"><span class="lineno"> 1412</span>        }</div>
-<div class="line"><span class="lineno"> 1413</span>        </div>
-<div class="line"><span class="lineno"> 1414</span>        <span class="keywordflow">if</span> (JsonObject-&gt;HasField(TEXT(<span class="stringliteral">&quot;answer&quot;</span>)))</div>
-<div class="line"><span class="lineno"> 1415</span>        {</div>
-<div class="line"><span class="lineno"> 1416</span>            <a class="code hl_variable" href="structFResponseChatAnswers.html#abbd36f4a6cd6408901bd1652e09ea706">answer</a> = JsonObject-&gt;GetStringField(TEXT(<span class="stringliteral">&quot;answer&quot;</span>));</div>
-<div class="line"><span class="lineno"> 1417</span>        }</div>
-<div class="line"><span class="lineno"> 1418</span>    }</div>
-<div class="line"><span class="lineno"> 1419</span>}</div>
+<div class="line"><span class="lineno"> 1409</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno"> 1410</span>    }</div>
+<div class="line"><span class="lineno"> 1411</span> </div>
+<div class="line"><span class="lineno"> 1412</span>    FString JsonString = Response-&gt;GetContentAsString();</div>
+<div class="line"><span class="lineno"> 1413</span>    TSharedPtr&lt;FJsonObject&gt; JsonObject;</div>
+<div class="line"><span class="lineno"> 1414</span>    TSharedRef&lt;TJsonReader&lt;&gt;&gt; Reader = TJsonReaderFactory&lt;&gt;::Create(JsonString);</div>
+<div class="line"><span class="lineno"> 1415</span> </div>
+<div class="line"><span class="lineno"> 1416</span>    <span class="keywordflow">if</span> (FJsonSerializer::Deserialize(Reader, JsonObject) &amp;&amp; JsonObject.IsValid())</div>
+<div class="line"><span class="lineno"> 1417</span>    {</div>
+<div class="line"><span class="lineno"> 1418</span>        <span class="keywordflow">if</span> (JsonObject-&gt;HasField(TEXT(<span class="stringliteral">&quot;question&quot;</span>)))</div>
+<div class="line"><span class="lineno"> 1419</span>        {</div>
+<div class="line"><span class="lineno"> 1420</span>            <a class="code hl_variable" href="structFResponseChatAnswers.html#a47967c5f8507c3c2c2de17344be3ac53">question</a> = JsonObject-&gt;GetStringField(TEXT(<span class="stringliteral">&quot;question&quot;</span>));</div>
+<div class="line"><span class="lineno"> 1421</span>        }</div>
+<div class="line"><span class="lineno"> 1422</span>        </div>
+<div class="line"><span class="lineno"> 1423</span>        <span class="keywordflow">if</span> (JsonObject-&gt;HasField(TEXT(<span class="stringliteral">&quot;answer&quot;</span>)))</div>
+<div class="line"><span class="lineno"> 1424</span>        {</div>
+<div class="line"><span class="lineno"> 1425</span>            <a class="code hl_variable" href="structFResponseChatAnswers.html#abbd36f4a6cd6408901bd1652e09ea706">answer</a> = JsonObject-&gt;GetStringField(TEXT(<span class="stringliteral">&quot;answer&quot;</span>));</div>
+<div class="line"><span class="lineno"> 1426</span>        }</div>
+<div class="line"><span class="lineno"> 1427</span>    }</div>
+<div class="line"><span class="lineno"> 1428</span>}</div>
 <div class="ttc" id="astructFResponseChatAnswers_html_a47967c5f8507c3c2c2de17344be3ac53"><div class="ttname"><a href="structFResponseChatAnswers.html#a47967c5f8507c3c2c2de17344be3ac53">FResponseChatAnswers::question</a></div><div class="ttdeci">FString question</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l01368">NetworkData.h:1368</a></div></div>
 </div><!-- fragment -->
 <p class="reference">다음을 참조함 :  <a class="el" href="NetworkData_8h_source.html#l01371">answer</a>, <a class="el" href="NetworkData_8h_source.html#l01368">question</a>.</p>
@@ -233,7 +233,7 @@ Public 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="NetworkData_8h_source.html">NetworkData.h</a> 파일의 <a class="el" href="NetworkData_8h_source.html#l01371">1371</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerControl_8cpp_source.html#l00669">APlayerControl::OnChatAnswerReceived()</a>, <a class="el" href="ANetworkTesterActor_8cpp_source.html#l00290">ANetworkTesterActor::OnResponseChatAnswers()</a>, <a class="el" href="NetworkData_8cpp_source.html#l01421">PrintData()</a>, <a class="el" href="NetworkData_8cpp_source.html#l01396">SetFromHttpResponse()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerControl_8cpp_source.html#l00669">APlayerControl::OnChatAnswerReceived()</a>, <a class="el" href="ANetworkTesterActor_8cpp_source.html#l00290">ANetworkTesterActor::OnResponseChatAnswers()</a>, <a class="el" href="NetworkData_8cpp_source.html#l01430">PrintData()</a>, <a class="el" href="NetworkData_8cpp_source.html#l01405">SetFromHttpResponse()</a>.</p>
 
 </div>
 </div>
@@ -251,7 +251,7 @@ Public 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="NetworkData_8h_source.html">NetworkData.h</a> 파일의 <a class="el" href="NetworkData_8h_source.html#l01368">1368</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerControl_8cpp_source.html#l00669">APlayerControl::OnChatAnswerReceived()</a>, <a class="el" href="NetworkData_8cpp_source.html#l01396">SetFromHttpResponse()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerControl_8cpp_source.html#l00669">APlayerControl::OnChatAnswerReceived()</a>, <a class="el" href="NetworkData_8cpp_source.html#l01405">SetFromHttpResponse()</a>.</p>
 
 </div>
 </div>
@@ -265,7 +265,7 @@ Public 속성</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="structFResponseChatAnswers.html">FResponseChatAnswers</a></li>
-    <li class="footer">생성시간 : 화 12월 23 2025 07:34:26, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 화 12월 23 2025 08:58:28, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

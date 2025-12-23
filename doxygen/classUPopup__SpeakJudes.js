@@ -1,0 +1,24 @@
+var classUPopup__SpeakJudes =
+[
+    [ "InitPopup", "classUPopup__SpeakJudes.html#a3e1eb3c26d4673dc7cb75c3f7015d72e", null ],
+    [ "NativeTick", "classUPopup__SpeakJudes.html#a750c1a854f68ca16faa069645531abd6", null ],
+    [ "OnClickClose", "classUPopup__SpeakJudes.html#ad08600ea1032fd7a91f339e68e0fbe14", null ],
+    [ "OpenAnimation", "classUPopup__SpeakJudes.html#a2c3d2b47f8255c0172cf9f218790fcc8", null ],
+    [ "UpdateAnimation", "classUPopup__SpeakJudes.html#a830a08b15d00e418f351f096fc5a8790", null ],
+    [ "bAllowPlayerControl", "classUPopup__SpeakJudes.html#a6ac288312766fb96aa9acf7ece8a630e", null ],
+    [ "bIsOpenAnim", "classUPopup__SpeakJudes.html#a807985dccb3305b1004c611401b7b551", null ],
+    [ "Btn_Close", "classUPopup__SpeakJudes.html#a2b6116f54ac42175448deaaa6a761a2a", null ],
+    [ "Btn_Confirm", "classUPopup__SpeakJudes.html#af21db0b00897fb27598e6ca658764784", null ],
+    [ "OnConfirmDelegate", "classUPopup__SpeakJudes.html#af1cab60d85364ec72326055876546bd7", null ],
+    [ "OpenDuration", "classUPopup__SpeakJudes.html#a5a4c2b75560a3e2d07ed3aa52837278e", null ],
+    [ "OpenEaseExponent", "classUPopup__SpeakJudes.html#afe75f5ef94f97fbcc8ea1ad9e801524c", null ],
+    [ "OpenElapsedTime", "classUPopup__SpeakJudes.html#a6124aff28b2b2a0b810bb693ebcd81ad", null ],
+    [ "OpenPivot", "classUPopup__SpeakJudes.html#aa3d6a21b30e9b40280f1219b567232b5", null ],
+    [ "OpenStartScale", "classUPopup__SpeakJudes.html#a9a4bc6d6e03adc7396c7960c41dae0b2", null ],
+    [ "OpenTargetScale", "classUPopup__SpeakJudes.html#add357075245f0843320c0b74af0f2697", null ],
+    [ "PopupType", "classUPopup__SpeakJudes.html#a7e537a0dd751df11990ed46947f09d42", null ],
+    [ "Result_Context", "classUPopup__SpeakJudes.html#a0a83ebf52389f267f25c42733148bc9e", null ],
+    [ "Result_Grammer", "classUPopup__SpeakJudes.html#a62a7bfce2cf9bfbcec0b02449dc9f835", null ],
+    [ "Result_Overall", "classUPopup__SpeakJudes.html#a2bfdb8835950cd4c356e91a61ebd7828", null ],
+    [ "Txt_Feedback", "classUPopup__SpeakJudes.html#a32e8e1817fd7639e381c8e72c51040d1", null ]
+];
