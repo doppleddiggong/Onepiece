@@ -7,6 +7,7 @@
 #include "ANetworkBroadcastActor.h"
 #include "APlayerControl.h"
 #include "FResultStatData.h"
+#include "GameLogging.h"
 #include "UAnswerItem.h"
 #include "UBroadcastManager.h"
 #include "UImageButton.h"
