@@ -145,6 +145,11 @@ public:
 	UFUNCTION(Client, Reliable)
 	void Client_ShowSpeakJudesPopup(const struct FResponseSpeakingJudes& Response);
 
+	/// @brief SpeakJudge 팝업 확인 버튼 클릭을 서버에 알립니다 (Server RPC)
+	/// @details 사용자가 결과를 확인한 후 다음 질문으로 진행하도록 SpeakStage에 알림
+	UFUNCTION(Server, Reliable)
+	void Server_NotifyConfirmSpeakJudes();
+
 	/// @brief 클라이언트에서 게임 메시지를 표시합니다.
 	/// @param Message [in] 표시할 메시지
 	UFUNCTION(Client, Reliable)

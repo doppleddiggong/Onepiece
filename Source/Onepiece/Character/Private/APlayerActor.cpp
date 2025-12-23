@@ -706,9 +706,17 @@ void APlayerActor::Server_NotifySpeakJudgeComplete_Implementation(const FRespons
 
 		// 클라이언트에게 팝업 표시 지시 (Client RPC)
 		Client_ShowSpeakJudesPopup(Response);
+	}
+}
 
-		
-		// SpeakStage에 답변 완료 알림
+void APlayerActor::Server_NotifyConfirmSpeakJudes_Implementation()
+{
+	if (!HasAuthority())
+		return;
+
+	// SpeakStage에 답변 완료 알림
+	if (auto PS = GetPlayerState<ALingoPlayerState>())
+	{
 		if (auto SpeakStage = ULingoGameHelper::GetSpeakStageActor(GetWorld()))
 		{
 			SpeakStage->NotifyAnswerComplete(PS);
@@ -721,7 +729,14 @@ void APlayerActor::Client_ShowSpeakJudesPopup_Implementation(const FResponseSpea
 	// 클라이언트에서 팝업 표시
 	if (auto Popup = UPopupManager::ShowPopupAs<UPopup_SpeakJudes>(GetWorld(), EPopupType::SpeakJudes))
 	{
-		Popup->InitPopup(Response);
+		// Confirm 버튼 클릭 시 서버에 알리는 델리게이트 설정
+		FOnSpeakJudesConfirmDelegate OnConfirm;
+		OnConfirm.BindLambda([this]()
+		{
+			Server_NotifyConfirmSpeakJudes();
+		});
+
+		Popup->InitPopup(Response, OnConfirm);
 	}
 }
 

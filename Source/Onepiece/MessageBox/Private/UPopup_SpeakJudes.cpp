@@ -10,8 +10,11 @@
 #include "UTextureButton.h"
 #include "Components/TextBlock.h"
 
-void UPopup_SpeakJudes::InitPopup(const FResponseSpeakingJudes& Response)
+void UPopup_SpeakJudes::InitPopup(const FResponseSpeakingJudes& Response, const FOnSpeakJudesConfirmDelegate& InOnConfirm)
 {
+	// 델리게이트 저장
+	OnConfirmDelegate = InOnConfirm;
+
 	if (Btn_Close)
 	{
 		Btn_Close->OnButtonClickedEvent.RemoveDynamic(this, &UPopup_SpeakJudes::OnClickClose);
@@ -24,7 +27,7 @@ void UPopup_SpeakJudes::InitPopup(const FResponseSpeakingJudes& Response)
 		Btn_Confirm->OnButtonClickedEvent.AddDynamic(this, &UPopup_SpeakJudes::OnClickClose);
 	}
 
-	
+
 	// GetResultStatData로 Grammar, Context 데이터 가져오기
 	auto ResultList = Response.GetResultStatData();
 
@@ -39,6 +42,12 @@ void UPopup_SpeakJudes::InitPopup(const FResponseSpeakingJudes& Response)
 
 void UPopup_SpeakJudes::OnClickClose()
 {
+	// 델리게이트가 바인딩되어 있으면 실행
+	if (OnConfirmDelegate.IsBound())
+	{
+		OnConfirmDelegate.Execute();
+	}
+
 	// PopupManager를 통해 팝업 닫기 (마우스 커서 처리 포함)
 	if (UPopupManager* PopupMgr = UPopupManager::Get(GetWorld()))
 	{

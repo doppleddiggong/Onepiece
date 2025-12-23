@@ -7,6 +7,9 @@
 #include "Blueprint/UserWidget.h"
 #include "UPopup_SpeakJudes.generated.h"
 
+/// @brief SpeakJudes 팝업 확인 버튼 클릭 시 호출되는 델리게이트
+DECLARE_DELEGATE(FOnSpeakJudesConfirmDelegate);
+
 /**
  * @brief Speaking Judges 결과를 표시하는 팝업
  *
@@ -21,8 +24,9 @@ public:
 	/**
 	 * @brief 팝업을 초기화하고 데이터를 설정합니다
 	 * @param Response SpeakingJudes 응답 데이터
+	 * @param InOnConfirm 확인 버튼 클릭 시 호출될 델리게이트
 	 */
-	void InitPopup(const struct FResponseSpeakingJudes& Response);
+	void InitPopup(const struct FResponseSpeakingJudes& Response, const FOnSpeakJudesConfirmDelegate& InOnConfirm = FOnSpeakJudesConfirmDelegate());
 
 	/// @brief 확인 버튼 클릭 시 호출
 	UFUNCTION()
@@ -50,4 +54,8 @@ protected:
 
 	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<class UImageButton> Btn_Confirm;
+
+private:
+	/// @brief 확인 버튼 클릭 시 호출될 델리게이트
+	FOnSpeakJudesConfirmDelegate OnConfirmDelegate;
 };
