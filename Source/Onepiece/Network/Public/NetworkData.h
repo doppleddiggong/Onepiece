@@ -1365,6 +1365,9 @@ struct FResponseChatAnswers
 	GENERATED_BODY()
 
 	UPROPERTY(BlueprintReadWrite, Category = "Chat")
+	FString question;
+	
+	UPROPERTY(BlueprintReadWrite, Category = "Chat")
 	FString answer;
 
 	/// @brief HTTP 응답을 파싱해 구조체를 채웁니다.

@@ -1406,6 +1406,11 @@ void FResponseChatAnswers::SetFromHttpResponse(const TSharedPtr<class IHttpRespo
 
 	if (FJsonSerializer::Deserialize(Reader, JsonObject) && JsonObject.IsValid())
 	{
+		if (JsonObject->HasField(TEXT("question")))
+		{
+			question = JsonObject->GetStringField(TEXT("question"));
+		}
+		
 		if (JsonObject->HasField(TEXT("answer")))
 		{
 			answer = JsonObject->GetStringField(TEXT("answer"));
