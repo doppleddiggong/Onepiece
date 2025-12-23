@@ -33,5 +33,6 @@ var classUMainWidget =
     [ "RoomWidget", "classUMainWidget.html#af7202e75ac00efb9c8ddb5b752cc9460", null ],
     [ "SpeakWidget", "classUMainWidget.html#af4d15f040b6a31cc9fd0915a73da3539", null ],
     [ "StateWidget", "classUMainWidget.html#af9eea227103d9e1ef57f35eaff2109e0", null ],
+    [ "VoiceRecording", "classUMainWidget.html#aea879a95db890aee2d9ff371af2e4860", null ],
     [ "WidgetSwitcher", "classUMainWidget.html#a493c1e62aeb4e89c0cd85dfab3d50519", null ]
 ];

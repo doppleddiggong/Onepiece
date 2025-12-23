@@ -60,6 +60,7 @@ var hierarchy =
     [ "APlayerState", null, [
       [ "ALingoPlayerState", "classALingoPlayerState.html", null ]
     ] ],
+    [ "FChatHistoryItem", "structFChatHistoryItem.html", null ],
     [ "FCompassInfo", "structFCompassInfo.html", null ],
     [ "FComponentHelper", "structFComponentHelper.html", null ],
     [ "FDelayHandle", "structFDelayHandle.html", null ],
@@ -216,6 +217,7 @@ var hierarchy =
       [ "UBasePopup", "classUBasePopup.html", [
         [ "UPopup_AskTutorial", "classUPopup__AskTutorial.html", null ],
         [ "UPopup_Evaluation", "classUPopup__Evaluation.html", null ],
+        [ "UPopup_History", "classUPopup__History.html", null ],
         [ "UPopup_InputMsg", "classUPopup__InputMsg.html", null ],
         [ "UPopup_Interview", "classUPopup__Interview.html", null ],
         [ "UPopup_InterviewHello", "classUPopup__InterviewHello.html", null ],
@@ -244,6 +246,7 @@ var hierarchy =
       [ "UEvaluationScenario", "classUEvaluationScenario.html", null ],
       [ "UEvaluationTotal", "classUEvaluationTotal.html", null ],
       [ "UFadeWidget", "classUFadeWidget.html", null ],
+      [ "UHistoryItem", "classUHistoryItem.html", null ],
       [ "UHoverButton", "classUHoverButton.html", null ],
       [ "UImageButton", "classUImageButton.html", null ],
       [ "UInteractWidget", "classUInteractWidget.html", [
@@ -277,6 +280,7 @@ var hierarchy =
       [ "UTextureButton", "classUTextureButton.html", null ],
       [ "UToastWidget", "classUToastWidget.html", null ],
       [ "UTutorMessage", "classUTutorMessage.html", null ],
+      [ "UVoiceRecording", "classUVoiceRecording.html", null ],
       [ "UWordButton", "classUWordButton.html", null ],
       [ "UWordItem", "classUWordItem.html", null ],
       [ "UWordWidget", "classUWordWidget.html", null ]

@@ -113,101 +113,37 @@ $(document).ready(function(){initNavTree('UStateWidget_8cpp_source.html',''); in
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;<a class="code" href="UStateWidget_8h.html">UStateWidget.h</a>&quot;</span></div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;Blueprint/WidgetTree.h&quot;</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;Components/ProgressBar.h&quot;</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;Components/TextBlock.h&quot;</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;TimerManager.h&quot;</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;<a class="code" href="UBroadcastManager_8h.html">UBroadcastManager.h</a>&quot;</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &quot;Misc/DateTime.h&quot;</span></div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
-<div class="foldopen" id="foldopen00017" data-start="{" data-end="}">
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="classUStateWidget.html#a7b98cd0b23c91b6039ef92df2e3b7590">   17</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUStateWidget.html#a7b98cd0b23c91b6039ef92df2e3b7590">UStateWidget::InitWidget</a>()</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>{</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUStateWidget.html#aa257ffa67c76995a29cca5c8cb5821e2">SpectrumProgressBar</a>)</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        <a class="code hl_variable" href="classUStateWidget.html#aa257ffa67c76995a29cca5c8cb5821e2">SpectrumProgressBar</a>-&gt;SetVisibility(ESlateVisibility::Hidden);</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <a class="code hl_variable" href="classUStateWidget.html#ad70d0b674c10bcadf965bf56bb19714b">Txt_UserId</a>-&gt;SetText(FText::FromString(<span class="stringliteral">&quot;&quot;</span>));</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <a class="code hl_variable" href="classUStateWidget.html#aee7011ec10de352c3afc0d69df29adda">Txt_UserName</a>-&gt;SetText(FText::FromString(<span class="stringliteral">&quot;&quot;</span>));</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    </div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> EventManager = UBroadcastManager::Get(GetWorld()))</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    {</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        EventManager-&gt;OnAudioCapture.AddDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUStateWidget.html#a55f0280eebae242e661a12cd7cdfc74e">UStateWidget::OnAudioCapture</a>);</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        EventManager-&gt;OnAudioSpectrum.AddDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUStateWidget.html#af137bdc4035d09b3606ed8f8fa04c8a7">UStateWidget::OnAudioSpectrum</a>);</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    }</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>}</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;Components/TextBlock.h&quot;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="foldopen" id="foldopen00012" data-start="{" data-end="}">
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="classUStateWidget.html#a7b98cd0b23c91b6039ef92df2e3b7590">   12</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUStateWidget.html#a7b98cd0b23c91b6039ef92df2e3b7590">UStateWidget::InitWidget</a>()</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>{</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    <a class="code hl_variable" href="classUStateWidget.html#ad70d0b674c10bcadf965bf56bb19714b">Txt_UserId</a>-&gt;SetText(FText::FromString(<span class="stringliteral">&quot;&quot;</span>));</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <a class="code hl_variable" href="classUStateWidget.html#aee7011ec10de352c3afc0d69df29adda">Txt_UserName</a>-&gt;SetText(FText::FromString(<span class="stringliteral">&quot;&quot;</span>));</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>}</div>
 </div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
-<div class="foldopen" id="foldopen00032" data-start="{" data-end="}">
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="classUStateWidget.html#a8b85cca360aac2b05d9a455fe3e91a96">   32</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUStateWidget.html#a8b85cca360aac2b05d9a455fe3e91a96">UStateWidget::NativeTick</a>(<span class="keyword">const</span> FGeometry&amp; MyGeometry, <span class="keywordtype">float</span> InDeltaTime)</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>{</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    Super::NativeTick(MyGeometry, InDeltaTime);</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <a class="code hl_function" href="classUStateWidget.html#afb72f9557bc61ed82d39c472096fc8ef">UpdateSpectrumVisual</a>(InDeltaTime);</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>}</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="foldopen" id="foldopen00018" data-start="{" data-end="}">
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="classUStateWidget.html#a2f98803de340bd3be6dd0e53d20bf5ee">   18</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUStateWidget.html#a2f98803de340bd3be6dd0e53d20bf5ee">UStateWidget::UpdateUserName</a>(int32 InUserId, <span class="keyword">const</span> FString&amp; InUserName)</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>{</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <span class="keyword">const</span> FString Result = FString::Format(TEXT(<span class="stringliteral">&quot;[{0}]&quot;</span>),{ InUserId });</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <a class="code hl_variable" href="classUStateWidget.html#ad70d0b674c10bcadf965bf56bb19714b">Txt_UserId</a>-&gt;SetText(FText::FromString(Result));</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <a class="code hl_variable" href="classUStateWidget.html#aee7011ec10de352c3afc0d69df29adda">Txt_UserName</a>-&gt;SetText(FText::FromString(InUserName));</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>}</div>
 </div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
-<div class="foldopen" id="foldopen00039" data-start="{" data-end="}">
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="classUStateWidget.html#afb72f9557bc61ed82d39c472096fc8ef">   39</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUStateWidget.html#afb72f9557bc61ed82d39c472096fc8ef">UStateWidget::UpdateSpectrumVisual</a>(<span class="keywordtype">float</span> DeltaTime)</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>{</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classUStateWidget.html#aa257ffa67c76995a29cca5c8cb5821e2">SpectrumProgressBar</a> || !<a class="code hl_variable" href="classUStateWidget.html#aa257ffa67c76995a29cca5c8cb5821e2">SpectrumProgressBar</a>-&gt;IsVisible())</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="keyword">const</span> <span class="keywordtype">float</span> Delta = FMath::Max(DeltaTime, 0.0f);</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="keyword">const</span> <span class="keywordtype">float</span> TargetValue = <a class="code hl_variable" href="classUStateWidget.html#ad026856d0a3798564414700b6465c9e0">SpectrumDisplayValue</a>;</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="keyword">const</span> <span class="keywordtype">float</span> CurrentValue = <a class="code hl_variable" href="classUStateWidget.html#aa257ffa67c76995a29cca5c8cb5821e2">SpectrumProgressBar</a>-&gt;GetPercent();</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keyword">const</span> <span class="keywordtype">float</span> InterpSpeed = TargetValue &gt; CurrentValue ? <a class="code hl_variable" href="classUStateWidget.html#a93bb3941f0a0b23755f02cd2a575df20">SpectrumRiseSpeed</a> : <a class="code hl_variable" href="classUStateWidget.html#a3a3c78fc6182f15af70380513b88d807">SpectrumDecaySpeed</a>;</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="keyword">const</span> <span class="keywordtype">float</span> NewPercent = FMath::FInterpConstantTo(CurrentValue, TargetValue, Delta, InterpSpeed);</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <a class="code hl_variable" href="classUStateWidget.html#aa257ffa67c76995a29cca5c8cb5821e2">SpectrumProgressBar</a>-&gt;SetPercent(FMath::Clamp(NewPercent, 0.0f, 1.0f));</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>}</div>
-</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
-<div class="foldopen" id="foldopen00052" data-start="{" data-end="}">
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="classUStateWidget.html#a2f98803de340bd3be6dd0e53d20bf5ee">   52</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUStateWidget.html#a2f98803de340bd3be6dd0e53d20bf5ee">UStateWidget::UpdateUserName</a>(int32 InUserId, <span class="keyword">const</span> FString&amp; InUserName)</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>{</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="keyword">const</span> FString Result = FString::Format(TEXT(<span class="stringliteral">&quot;[{0}]&quot;</span>),{ InUserId });</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <a class="code hl_variable" href="classUStateWidget.html#ad70d0b674c10bcadf965bf56bb19714b">Txt_UserId</a>-&gt;SetText(FText::FromString(Result));</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <a class="code hl_variable" href="classUStateWidget.html#aee7011ec10de352c3afc0d69df29adda">Txt_UserName</a>-&gt;SetText(FText::FromString(InUserName));</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>}</div>
-</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
-<div class="foldopen" id="foldopen00059" data-start="{" data-end="}">
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="classUStateWidget.html#a55f0280eebae242e661a12cd7cdfc74e">   59</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUStateWidget.html#a55f0280eebae242e661a12cd7cdfc74e">UStateWidget::OnAudioCapture</a>(<span class="keywordtype">bool</span> bRecording)</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>{</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classUStateWidget.html#aa257ffa67c76995a29cca5c8cb5821e2">SpectrumProgressBar</a>)</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    <a class="code hl_variable" href="classUStateWidget.html#aa257ffa67c76995a29cca5c8cb5821e2">SpectrumProgressBar</a>-&gt;SetVisibility(bRecording ? ESlateVisibility::Visible : ESlateVisibility::Hidden);</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>}</div>
-</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
-<div class="foldopen" id="foldopen00067" data-start="{" data-end="}">
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="classUStateWidget.html#af137bdc4035d09b3606ed8f8fa04c8a7">   67</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUStateWidget.html#af137bdc4035d09b3606ed8f8fa04c8a7">UStateWidget::OnAudioSpectrum</a>(<span class="keywordtype">float</span> Spectrum)</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>{</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <a class="code hl_variable" href="classUStateWidget.html#ad026856d0a3798564414700b6465c9e0">SpectrumDisplayValue</a> = Spectrum;</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>}</div>
-</div>
-<div class="ttc" id="aUBroadcastManager_8h_html"><div class="ttname"><a href="UBroadcastManager_8h.html">UBroadcastManager.h</a></div></div>
 <div class="ttc" id="aUStateWidget_8h_html"><div class="ttname"><a href="UStateWidget_8h.html">UStateWidget.h</a></div></div>
-<div class="ttc" id="aclassUStateWidget_html_a2f98803de340bd3be6dd0e53d20bf5ee"><div class="ttname"><a href="classUStateWidget.html#a2f98803de340bd3be6dd0e53d20bf5ee">UStateWidget::UpdateUserName</a></div><div class="ttdeci">void UpdateUserName(int32 InUserId, const FString &amp;InUserName)</div><div class="ttdef"><b>Definition</b> <a href="UStateWidget_8cpp_source.html#l00052">UStateWidget.cpp:52</a></div></div>
-<div class="ttc" id="aclassUStateWidget_html_a3a3c78fc6182f15af70380513b88d807"><div class="ttname"><a href="classUStateWidget.html#a3a3c78fc6182f15af70380513b88d807">UStateWidget::SpectrumDecaySpeed</a></div><div class="ttdeci">float SpectrumDecaySpeed</div><div class="ttdef"><b>Definition</b> <a href="UStateWidget_8h_source.html#l00044">UStateWidget.h:44</a></div></div>
-<div class="ttc" id="aclassUStateWidget_html_a55f0280eebae242e661a12cd7cdfc74e"><div class="ttname"><a href="classUStateWidget.html#a55f0280eebae242e661a12cd7cdfc74e">UStateWidget::OnAudioCapture</a></div><div class="ttdeci">void OnAudioCapture(bool bRecording)</div><div class="ttdef"><b>Definition</b> <a href="UStateWidget_8cpp_source.html#l00059">UStateWidget.cpp:59</a></div></div>
-<div class="ttc" id="aclassUStateWidget_html_a7b98cd0b23c91b6039ef92df2e3b7590"><div class="ttname"><a href="classUStateWidget.html#a7b98cd0b23c91b6039ef92df2e3b7590">UStateWidget::InitWidget</a></div><div class="ttdeci">void InitWidget()</div><div class="ttdef"><b>Definition</b> <a href="UStateWidget_8cpp_source.html#l00017">UStateWidget.cpp:17</a></div></div>
-<div class="ttc" id="aclassUStateWidget_html_a8b85cca360aac2b05d9a455fe3e91a96"><div class="ttname"><a href="classUStateWidget.html#a8b85cca360aac2b05d9a455fe3e91a96">UStateWidget::NativeTick</a></div><div class="ttdeci">virtual void NativeTick(const FGeometry &amp;MyGeometry, float InDeltaTime) override</div><div class="ttdef"><b>Definition</b> <a href="UStateWidget_8cpp_source.html#l00032">UStateWidget.cpp:32</a></div></div>
-<div class="ttc" id="aclassUStateWidget_html_a93bb3941f0a0b23755f02cd2a575df20"><div class="ttname"><a href="classUStateWidget.html#a93bb3941f0a0b23755f02cd2a575df20">UStateWidget::SpectrumRiseSpeed</a></div><div class="ttdeci">float SpectrumRiseSpeed</div><div class="ttdef"><b>Definition</b> <a href="UStateWidget_8h_source.html#l00047">UStateWidget.h:47</a></div></div>
-<div class="ttc" id="aclassUStateWidget_html_aa257ffa67c76995a29cca5c8cb5821e2"><div class="ttname"><a href="classUStateWidget.html#aa257ffa67c76995a29cca5c8cb5821e2">UStateWidget::SpectrumProgressBar</a></div><div class="ttdeci">TObjectPtr&lt; class UProgressBar &gt; SpectrumProgressBar</div><div class="ttdef"><b>Definition</b> <a href="UStateWidget_8h_source.html#l00041">UStateWidget.h:41</a></div></div>
-<div class="ttc" id="aclassUStateWidget_html_ad026856d0a3798564414700b6465c9e0"><div class="ttname"><a href="classUStateWidget.html#ad026856d0a3798564414700b6465c9e0">UStateWidget::SpectrumDisplayValue</a></div><div class="ttdeci">float SpectrumDisplayValue</div><div class="ttdef"><b>Definition</b> <a href="UStateWidget_8h_source.html#l00053">UStateWidget.h:53</a></div></div>
-<div class="ttc" id="aclassUStateWidget_html_ad70d0b674c10bcadf965bf56bb19714b"><div class="ttname"><a href="classUStateWidget.html#ad70d0b674c10bcadf965bf56bb19714b">UStateWidget::Txt_UserId</a></div><div class="ttdeci">TObjectPtr&lt; class UTextBlock &gt; Txt_UserId</div><div class="ttdef"><b>Definition</b> <a href="UStateWidget_8h_source.html#l00035">UStateWidget.h:35</a></div></div>
-<div class="ttc" id="aclassUStateWidget_html_aee7011ec10de352c3afc0d69df29adda"><div class="ttname"><a href="classUStateWidget.html#aee7011ec10de352c3afc0d69df29adda">UStateWidget::Txt_UserName</a></div><div class="ttdeci">TObjectPtr&lt; class UTextBlock &gt; Txt_UserName</div><div class="ttdef"><b>Definition</b> <a href="UStateWidget_8h_source.html#l00038">UStateWidget.h:38</a></div></div>
-<div class="ttc" id="aclassUStateWidget_html_af137bdc4035d09b3606ed8f8fa04c8a7"><div class="ttname"><a href="classUStateWidget.html#af137bdc4035d09b3606ed8f8fa04c8a7">UStateWidget::OnAudioSpectrum</a></div><div class="ttdeci">void OnAudioSpectrum(float Spectrum)</div><div class="ttdef"><b>Definition</b> <a href="UStateWidget_8cpp_source.html#l00067">UStateWidget.cpp:67</a></div></div>
-<div class="ttc" id="aclassUStateWidget_html_afb72f9557bc61ed82d39c472096fc8ef"><div class="ttname"><a href="classUStateWidget.html#afb72f9557bc61ed82d39c472096fc8ef">UStateWidget::UpdateSpectrumVisual</a></div><div class="ttdeci">void UpdateSpectrumVisual(float DeltaTime)</div><div class="ttdef"><b>Definition</b> <a href="UStateWidget_8cpp_source.html#l00039">UStateWidget.cpp:39</a></div></div>
+<div class="ttc" id="aclassUStateWidget_html_a2f98803de340bd3be6dd0e53d20bf5ee"><div class="ttname"><a href="classUStateWidget.html#a2f98803de340bd3be6dd0e53d20bf5ee">UStateWidget::UpdateUserName</a></div><div class="ttdeci">void UpdateUserName(int32 InUserId, const FString &amp;InUserName)</div><div class="ttdef"><b>Definition</b> <a href="UStateWidget_8cpp_source.html#l00018">UStateWidget.cpp:18</a></div></div>
+<div class="ttc" id="aclassUStateWidget_html_a7b98cd0b23c91b6039ef92df2e3b7590"><div class="ttname"><a href="classUStateWidget.html#a7b98cd0b23c91b6039ef92df2e3b7590">UStateWidget::InitWidget</a></div><div class="ttdeci">void InitWidget()</div><div class="ttdef"><b>Definition</b> <a href="UStateWidget_8cpp_source.html#l00012">UStateWidget.cpp:12</a></div></div>
+<div class="ttc" id="aclassUStateWidget_html_ad70d0b674c10bcadf965bf56bb19714b"><div class="ttname"><a href="classUStateWidget.html#ad70d0b674c10bcadf965bf56bb19714b">UStateWidget::Txt_UserId</a></div><div class="ttdeci">TObjectPtr&lt; class UTextBlock &gt; Txt_UserId</div><div class="ttdef"><b>Definition</b> <a href="UStateWidget_8h_source.html#l00024">UStateWidget.h:24</a></div></div>
+<div class="ttc" id="aclassUStateWidget_html_aee7011ec10de352c3afc0d69df29adda"><div class="ttname"><a href="classUStateWidget.html#aee7011ec10de352c3afc0d69df29adda">UStateWidget::Txt_UserName</a></div><div class="ttdeci">TObjectPtr&lt; class UTextBlock &gt; Txt_UserName</div><div class="ttdef"><b>Definition</b> <a href="UStateWidget_8h_source.html#l00027">UStateWidget.h:27</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_55b064ed9f704d76d3805f2fda876350.html">UI</a></li><li class="navelem"><a class="el" href="dir_550f083bbe519bd985f450628c1369b6.html">Private</a></li><li class="navelem"><a class="el" href="UStateWidget_8cpp.html">UStateWidget.cpp</a></li>
-    <li class="footer">생성시간 : 월 12월 22 2025 00:46:03, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 화 12월 23 2025 07:34:25, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

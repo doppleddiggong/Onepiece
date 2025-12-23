@@ -114,40 +114,48 @@ $(document).ready(function(){initNavTree('UPopup__SpeakQuest_8h_source.html','')
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;CoreMinimal.h&quot;</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;<a class="code" href="UBasePopup_8h.html">UBasePopup.h</a>&quot;</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;UPopup_SpeakQuest.generated.h&quot;</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>UCLASS()</div>
-<div class="foldopen" id="foldopen00013" data-start="{" data-end="};">
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="classUPopup__SpeakQuest.html">   13</a></span>class ONEPIECE_API <a class="code hl_class" href="classUPopup__SpeakQuest.html">UPopup_SpeakQuest</a> : public <a class="code hl_class" href="classUBasePopup.html">UBasePopup</a></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>{</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    GENERATED_BODY()</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <span class="keywordtype">void</span> InitPopup(<span class="keyword">const</span> FOnMsgBoxOkDelegate&amp; InOkDelegate);</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    </div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    UFUNCTION()</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <span class="keywordtype">void</span> OnClickOk();</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    UPROPERTY(meta = (BindWidget))</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="classUPopup__SpeakQuest.html#af0c2147cefe2a943a7bd0c14ac8c7d3f">   26</a></span>    TObjectPtr&lt;class <a class="code hl_class" href="classUImageButton.html">UImageButton</a>&gt; Btn_Ok;</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="classUPopup__SpeakQuest.html#a113785f402816a21488e8ce01ddb6c7b">   28</a></span>    FOnMsgBoxOkDelegate OnOkDelegate;</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>};</div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;<a class="code" href="NetworkData_8h.html">NetworkData.h</a>&quot;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;<a class="code" href="UBasePopup_8h.html">UBasePopup.h</a>&quot;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;UPopup_SpeakQuest.generated.h&quot;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>UCLASS()</div>
+<div class="foldopen" id="foldopen00014" data-start="{" data-end="};">
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="classUPopup__SpeakQuest.html">   14</a></span>class ONEPIECE_API <a class="code hl_class" href="classUPopup__SpeakQuest.html">UPopup_SpeakQuest</a> : public <a class="code hl_class" href="classUBasePopup.html">UBasePopup</a></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>{</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    GENERATED_BODY()</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <span class="keywordtype">void</span> InitPopup(<span class="keyword">const</span> FOnMsgBoxOkDelegate&amp; InOkDelegate);</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <span class="keywordtype">void</span> OnResponseListenAudio(<a class="code hl_struct" href="structFResponseListenAudio.html">FResponseListenAudio</a>&amp; ResponseListenAudio, <span class="keywordtype">bool</span> bArg);</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="keywordtype">void</span> RequestListenAudio(<span class="keyword">const</span> FString&amp; AudioText);</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    UFUNCTION()</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="keywordtype">void</span> OnClickOk();</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    UPROPERTY(meta = (BindWidget))</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="classUPopup__SpeakQuest.html#af0c2147cefe2a943a7bd0c14ac8c7d3f">   29</a></span>    TObjectPtr&lt;class <a class="code hl_class" href="classUImageButton.html">UImageButton</a>&gt; Btn_Ok;</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>private:</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="classUPopup__SpeakQuest.html#a113785f402816a21488e8ce01ddb6c7b">   32</a></span>    FOnMsgBoxOkDelegate OnOkDelegate;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="classUPopup__SpeakQuest.html#a4c65c049148d57b5944de25a13ccc23a">   34</a></span>    <span class="keywordtype">bool</span> bIsRequest;</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>};</div>
 </div>
+<div class="ttc" id="aNetworkData_8h_html"><div class="ttname"><a href="NetworkData_8h.html">NetworkData.h</a></div><div class="ttdoc">네트워크 요청과 응답에 사용되는 구조체 및 설정을 정의합니다.</div></div>
 <div class="ttc" id="aUBasePopup_8h_html"><div class="ttname"><a href="UBasePopup_8h.html">UBasePopup.h</a></div></div>
 <div class="ttc" id="aclassUBasePopup_html"><div class="ttname"><a href="classUBasePopup.html">UBasePopup</a></div><div class="ttdoc">모든 팝업의 기본 클래스</div><div class="ttdef"><b>Definition</b> <a href="UBasePopup_8h_source.html#l00016">UBasePopup.h:17</a></div></div>
 <div class="ttc" id="aclassUImageButton_html"><div class="ttname"><a href="classUImageButton.html">UImageButton</a></div><div class="ttdoc">UImageButton</div><div class="ttdef"><b>Definition</b> <a href="UImageButton_8h_source.html#l00018">UImageButton.h:19</a></div></div>
-<div class="ttc" id="aclassUPopup__SpeakQuest_html"><div class="ttname"><a href="classUPopup__SpeakQuest.html">UPopup_SpeakQuest</a></div><div class="ttdef"><b>Definition</b> <a href="UPopup__SpeakQuest_8h_source.html#l00013">UPopup_SpeakQuest.h:14</a></div></div>
+<div class="ttc" id="aclassUPopup__SpeakQuest_html"><div class="ttname"><a href="classUPopup__SpeakQuest.html">UPopup_SpeakQuest</a></div><div class="ttdef"><b>Definition</b> <a href="UPopup__SpeakQuest_8h_source.html#l00014">UPopup_SpeakQuest.h:15</a></div></div>
+<div class="ttc" id="astructFResponseListenAudio_html"><div class="ttname"><a href="structFResponseListenAudio.html">FResponseListenAudio</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00796">NetworkData.h:797</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_47ae9c23f27029060c39af29b069b73d.html">MessageBox</a></li><li class="navelem"><a class="el" href="dir_244820c19557decdcbf6fc4000b77b7e.html">Public</a></li><li class="navelem"><a class="el" href="UPopup__SpeakQuest_8h.html">UPopup_SpeakQuest.h</a></li>
-    <li class="footer">생성시간 : 월 12월 22 2025 00:46:03, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 화 12월 23 2025 07:34:25, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

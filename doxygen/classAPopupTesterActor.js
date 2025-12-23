@@ -11,6 +11,7 @@ var classAPopupTesterActor =
     [ "PopupLevelSelect", "classAPopupTesterActor.html#ad633a63420d4ea2e545455a1c54e1031", null ],
     [ "ReadQuest", "classAPopupTesterActor.html#a3405fb657b929d0cbea77cb386953834", null ],
     [ "TestEvaluationPopup", "classAPopupTesterActor.html#ac4e80085f09e82818fcc7b844696b609", null ],
+    [ "TestPopupHistory", "classAPopupTesterActor.html#a9f5da432a291bfaf0489cd2cd971711e", null ],
     [ "ToastMsg", "classAPopupTesterActor.html#a1cb826db020b0ed66da3f0a8df1453a7", null ],
     [ "MD5", "classAPopupTesterActor.html#a7a72b63419fa4c4bcc1e7b12c99b1a1a", null ]
 ];

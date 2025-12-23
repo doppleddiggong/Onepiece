@@ -7,6 +7,7 @@ var dir_a846a28747c2ebe05b4ec9782ab892b2 =
     [ "AWheatly.cpp", "AWheatly_8cpp.html", "AWheatly_8cpp" ],
     [ "NPCExaminer.cpp", "NPCExaminer_8cpp.html", null ],
     [ "RobotPlayerController.cpp", "RobotPlayerController_8cpp.html", null ],
+    [ "UChatHistorySystem.cpp", "UChatHistorySystem_8cpp.html", null ],
     [ "UHitStopSystem.cpp", "UHitStopSystem_8cpp.html", null ],
     [ "UHookComponent.cpp", "UHookComponent_8cpp.html", null ],
     [ "UHookSystem.cpp", "UHookSystem_8cpp.html", null ],

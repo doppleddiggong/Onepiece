@@ -128,11 +128,9 @@ $(document).ready(function(){initNavTree('APlayerControl_8cpp.html',''); initRes
 <code>#include &quot;<a class="el" href="ADropper_8h_source.html">ADropper.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="ALingoGameState_8h_source.html">ALingoGameState.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="ANetworkBroadcastActor_8h_source.html">ANetworkBroadcastActor.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="luggage_8h_source.html">luggage.h</a>&quot;</code><br />
 <code>#include &quot;EngineUtils.h&quot;</code><br />
 <code>#include &quot;<a class="el" href="GameLogging_8h_source.html">GameLogging.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="InteractableComponent_8h_source.html">InteractableComponent.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="OrderKiosk_8h_source.html">OrderKiosk.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="QuestOrderWidget_8h_source.html">QuestOrderWidget.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="TutorialComponent_8h_source.html">TutorialComponent.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="UDialogManager_8h_source.html">UDialogManager.h</a>&quot;</code><br />
@@ -140,6 +138,8 @@ $(document).ready(function(){initNavTree('APlayerControl_8cpp.html',''); initRes
 <code>#include &quot;<a class="el" href="UPopupManager_8h_source.html">UPopupManager.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="UPopup__SpeakQuest_8h_source.html">UPopup_SpeakQuest.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="UPopup__SpeakResult_8h_source.html">UPopup_SpeakResult.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="UChatHistorySystem_8h_source.html">UChatHistorySystem.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="UPopup__History_8h_source.html">UPopup_History.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="Onepiece_8h_source.html">Onepiece/Onepiece.h</a>&quot;</code><br />
 </div><div class="textblock"><div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> APlayerControl.cpp에 대한 include 의존 그래프</div>
@@ -157,6 +157,8 @@ $(document).ready(function(){initNavTree('APlayerControl_8cpp.html',''); initRes
 <tr class="separator:ae91a61d891b12e8de8d4b13544cafe03"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae48e8c8531b0052bfe745b145e850c0e" id="r_ae48e8c8531b0052bfe745b145e850c0e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="APlayerControl_8cpp.html#ae48e8c8531b0052bfe745b145e850c0e">IA_GRAB_PATH</a>&#160;&#160;&#160;TEXT(&quot;/Game/CustomContents/Input/IA_Game_Grab.IA_Game_Grab&quot;)</td></tr>
 <tr class="separator:ae48e8c8531b0052bfe745b145e850c0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a241a1af3ef25a7f8904ae9525629372e" id="r_a241a1af3ef25a7f8904ae9525629372e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="APlayerControl_8cpp.html#a241a1af3ef25a7f8904ae9525629372e">IA_HISTORY_PATH</a>&#160;&#160;&#160;TEXT(&quot;/Game/CustomContents/Input/IA_Game_History.IA_Game_History&quot;)</td></tr>
+<tr class="separator:a241a1af3ef25a7f8904ae9525629372e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af944d1d5c0903b37a61292741d43558a" id="r_af944d1d5c0903b37a61292741d43558a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="APlayerControl_8cpp.html#af944d1d5c0903b37a61292741d43558a">IA_HOOK_PATH</a>&#160;&#160;&#160;TEXT(&quot;/Game/CustomContents/Input/IA_Game_Hook.IA_Game_Hook&quot;)</td></tr>
 <tr class="separator:af944d1d5c0903b37a61292741d43558a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a28ccfc8a8fa88862f5b5759780fcef13" id="r_a28ccfc8a8fa88862f5b5759780fcef13"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="APlayerControl_8cpp.html#a28ccfc8a8fa88862f5b5759780fcef13">IA_INFO_PATH</a>&#160;&#160;&#160;TEXT(&quot;/Game/CustomContents/Input/IA_Game_Info.IA_Game_Info&quot;)</td></tr>
@@ -210,6 +212,22 @@ $(document).ready(function(){initNavTree('APlayerControl_8cpp.html',''); initRes
 </div><div class="memdoc">
 
 <p class="definition"><a class="el" href="APlayerControl_8cpp_source.html">APlayerControl.cpp</a> 파일의 <a class="el" href="APlayerControl_8cpp_source.html#l00049">49</a> 번째 라인에서 정의되었습니다.</p>
+
+</div>
+</div>
+<a id="a241a1af3ef25a7f8904ae9525629372e" name="a241a1af3ef25a7f8904ae9525629372e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a241a1af3ef25a7f8904ae9525629372e">&#9670;&#160;</a></span>IA_HISTORY_PATH</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define IA_HISTORY_PATH&#160;&#160;&#160;TEXT(&quot;/Game/CustomContents/Input/IA_Game_History.IA_Game_History&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="APlayerControl_8cpp_source.html">APlayerControl.cpp</a> 파일의 <a class="el" href="APlayerControl_8cpp_source.html#l00055">55</a> 번째 라인에서 정의되었습니다.</p>
 
 </div>
 </div>
@@ -363,7 +381,7 @@ $(document).ready(function(){initNavTree('APlayerControl_8cpp.html',''); initRes
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_71a9f6b769ee24fe8598c19ea2d70480.html">Character</a></li><li class="navelem"><a class="el" href="dir_a846a28747c2ebe05b4ec9782ab892b2.html">Private</a></li><li class="navelem"><a class="el" href="APlayerControl_8cpp.html">APlayerControl.cpp</a></li>
-    <li class="footer">생성시간 : 월 12월 22 2025 00:46:03, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 화 12월 23 2025 07:34:26, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

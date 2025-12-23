@@ -24,7 +24,7 @@ var searchData=
   ['animtoplay_21',['AnimToPlay',['../classADropper.html#a5a49c1c7e8db3bc33eb575a252bcad9d',1,'ADropper']]],
   ['animtype_22',['AnimType',['../classAWheatly.html#afe17baf42cca00180cfe4aaf0dc7b98c',1,'AWheatly']]],
   ['anothervalue_23',['AnotherValue',['../classAPlayerActor.html#a57d536023470eebddc11f8c929d6dfd5',1,'APlayerActor']]],
-  ['answer_24',['answer',['../structFInterviewAnswerData.html#a5575841760326adcc7ba83fa26137328',1,'FInterviewAnswerData::answer'],['../structFResponseChatAnswers.html#abbd36f4a6cd6408901bd1652e09ea706',1,'FResponseChatAnswers::answer'],['../structFRequestInterviewAnswer.html#a6f9bb74ac56aa1ad3d48a4a98a017eac',1,'FRequestInterviewAnswer::answer'],['../structFWriteQuestionData.html#ae289bc3e0549e4ed83fcfd9a64ac8782',1,'FWriteQuestionData::answer']]],
+  ['answer_24',['answer',['../structFWriteQuestionData.html#ae289bc3e0549e4ed83fcfd9a64ac8782',1,'FWriteQuestionData::answer'],['../structFResponseChatAnswers.html#abbd36f4a6cd6408901bd1652e09ea706',1,'FResponseChatAnswers::answer'],['../structFInterviewAnswerData.html#a5575841760326adcc7ba83fa26137328',1,'FInterviewAnswerData::answer'],['../structFChatHistoryItem.html#af9b7f6f9b5740ccde335a53f5cb71125',1,'FChatHistoryItem::Answer'],['../structFRequestInterviewAnswer.html#a6f9bb74ac56aa1ad3d48a4a98a017eac',1,'FRequestInterviewAnswer::answer']]],
   ['answer_5fkor_25',['answer_kor',['../structFWriteQuestionData.html#a5b2bbe49b267606522779a32e9cc6382',1,'FWriteQuestionData']]],
   ['answercoloridx_26',['AnswerColorIdx',['../classAHolder.html#a4ff9df4654d1cdfc7ec42fd47aaa8d24',1,'AHolder']]],
   ['answerdata_27',['AnswerData',['../classAListenAnswer.html#a8f38c24b843483b4311627d757a07a55',1,'AListenAnswer']]],

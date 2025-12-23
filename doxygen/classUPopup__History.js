@@ -1,0 +1,26 @@
+var classUPopup__History =
+[
+    [ "InitPopup", "classUPopup__History.html#ad987cf42b9a81c5b7c25e07126208e49", null ],
+    [ "NativeConstruct", "classUPopup__History.html#a644857a1e3f2a285ba207f2c8c7bfd77", null ],
+    [ "NativeTick", "classUPopup__History.html#a750c1a854f68ca16faa069645531abd6", null ],
+    [ "OnClickClose", "classUPopup__History.html#a48afa40fe1782ed7744e8dbb1f7a7a94", null ],
+    [ "OpenAnimation", "classUPopup__History.html#a2c3d2b47f8255c0172cf9f218790fcc8", null ],
+    [ "RefreshHistoryList", "classUPopup__History.html#ab0ce15974c64501831d2b356e78dcea6", null ],
+    [ "UpdateAnimation", "classUPopup__History.html#a830a08b15d00e418f351f096fc5a8790", null ],
+    [ "bAllowPlayerControl", "classUPopup__History.html#a6ac288312766fb96aa9acf7ece8a630e", null ],
+    [ "bIsOpenAnim", "classUPopup__History.html#a807985dccb3305b1004c611401b7b551", null ],
+    [ "Border_NoData", "classUPopup__History.html#adfe19e42d6b0da9267c272c6694561e0", null ],
+    [ "Btn_Close", "classUPopup__History.html#aa2bf98d46d5dd28bf6eec82bacd08d63", null ],
+    [ "HistoryItemClass", "classUPopup__History.html#a5effe51a4b26f8e34bb969f3a93d8338", null ],
+    [ "ItemSpacing", "classUPopup__History.html#a07abccc88a770d9515ab03af5859018d", null ],
+    [ "OpenDuration", "classUPopup__History.html#a5a4c2b75560a3e2d07ed3aa52837278e", null ],
+    [ "OpenEaseExponent", "classUPopup__History.html#afe75f5ef94f97fbcc8ea1ad9e801524c", null ],
+    [ "OpenElapsedTime", "classUPopup__History.html#a6124aff28b2b2a0b810bb693ebcd81ad", null ],
+    [ "OpenPivot", "classUPopup__History.html#aa3d6a21b30e9b40280f1219b567232b5", null ],
+    [ "OpenStartScale", "classUPopup__History.html#a9a4bc6d6e03adc7396c7960c41dae0b2", null ],
+    [ "OpenTargetScale", "classUPopup__History.html#add357075245f0843320c0b74af0f2697", null ],
+    [ "PopupType", "classUPopup__History.html#a7e537a0dd751df11990ed46947f09d42", null ],
+    [ "ScrollBox", "classUPopup__History.html#adfb44c7cced2b2a4e76f057ce92cf1d3", null ],
+    [ "Txt_Title", "classUPopup__History.html#ac87a6c0b3b680e53f3b2791d7c15dcc1", null ],
+    [ "VerticalBox", "classUPopup__History.html#ae1d17c510c5e08675c15c1ced3cba47e", null ]
+];
