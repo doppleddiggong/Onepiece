@@ -7,7 +7,7 @@
 
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
-#include "NetworkData.h"
+#include "FChatHistoryItem.h"
 #include "UHistoryItem.generated.h"
 
 /// @brief Chat History 개별 아이템 위젯
@@ -40,10 +40,6 @@ protected:
 	/// @brief 타임스탬프
 	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<class UTextBlock> Txt_Timestamp;
-
-	/// @brief 인덱스 표시 (선택사항)
-	UPROPERTY(meta = (BindWidget))
-	TObjectPtr<class UTextBlock> Txt_Index;
 
 private:
 	FChatHistoryItem HistoryData;

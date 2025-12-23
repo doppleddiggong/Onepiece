@@ -52,7 +52,7 @@
 #define IA_INFO_PATH				TEXT("/Game/CustomContents/Input/IA_Game_Info.IA_Game_Info")
 #define IA_HOOK_PATH				TEXT("/Game/CustomContents/Input/IA_Game_Hook.IA_Game_Hook")
 #define IA_CHAT_PATH				TEXT("/Game/CustomContents/Input/IA_EnterChat.IA_EnterChat")
-#define IA_HISTORY_PATH				TEXT("/Game/CustomContents/Input/IA_EnterChat.IA_History")
+#define IA_HISTORY_PATH				TEXT("/Game/CustomContents/Input/IA_Game_History.IA_Game_History")
 
 
 APlayerControl::APlayerControl()
@@ -679,7 +679,7 @@ void APlayerControl::OnChatAnswerReceived(FResponseChatAnswers& ResponseData, bo
 	{
 		FText AIAnswer = FText::FromString(ResponseData.answer);
 		// Bot은 PlayerIndex -1 사용
-		GS->MulticastRPC_SendChat(GS->GetBotInfo(), AIAnswer, -1);
+		GS->MulticastRPC_SendChat(GS->GetBotInfo(), AIAnswer, GameName::BotID);
 
 		// Chat History 저장
 		if (ChatHistorySystem)

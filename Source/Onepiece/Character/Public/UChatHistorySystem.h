@@ -7,8 +7,9 @@
 
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
-#include "NetworkData.h"
+#include "FChatHistoryItem.h"
 #include "UChatHistorySystem.generated.h"
+
 
 /// @brief Chat 대화 기록을 GConfig로 저장/로드하는 컴포넌트
 /// @details UserId 기반으로 각 유저의 대화 히스토리를 독립적으로 관리합니다.

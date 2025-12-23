@@ -21,6 +21,7 @@
 #include "UPopupManager.h"
 #include "Sound/SoundWaveProcedural.h"
 #include "GameFramework/PlayerState.h"
+#include "Onepiece/Onepiece.h"
 
 UVoiceConversationSystem::UVoiceConversationSystem()
 {
@@ -306,15 +307,21 @@ void UVoiceConversationSystem::OnResponseChatAnswers(FResponseChatAnswers& Respo
 		// 메시지로 답변 표시
 		if (auto* GS = GetWorld()->GetGameState<ALingoGameState>())
 		{
-			FText AIAnswer = FText::FromString(Response.answer);
-			// Bot은 PlayerIndex -1 사용
-			GS->MulticastRPC_SendChat(GS->GetBotInfo(), AIAnswer, -1);
-
-			// Chat History 저장
 			APlayerControl* PC = Cast<APlayerControl>(Owner->GetController());
 			if ( PC != nullptr )
+			{
+				// Chat History 저장
 				PC->GetChatHistorySystem()->SaveChatHistory(Response.question, Response.answer);
-			
+				
+				FText PlayerQuestion  = FText::FromString(Response.question);
+				// Bot은 PlayerIndex -1 사용
+				GS->MulticastRPC_SendChat(PC->GetUserInfo(), PlayerQuestion, PC->GetUserId());
+
+				FText AIAnswer = FText::FromString(Response.answer);
+				// Bot은 PlayerIndex -1 사용
+				GS->MulticastRPC_SendChat(GS->GetBotInfo(), AIAnswer, GameName::BotID);
+			}
+
 			PRINTLOG(TEXT("[AI Chat] AI Answer: %s"), *Response.answer);
 		}
 	}

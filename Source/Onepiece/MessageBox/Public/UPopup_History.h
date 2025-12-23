@@ -7,7 +7,6 @@
 
 #include "CoreMinimal.h"
 #include "UBasePopup.h"
-#include "NetworkData.h"
 #include "UPopup_History.generated.h"
 
 /// @brief Chat History 팝업
@@ -32,9 +31,6 @@ private:
 	UFUNCTION()
 	void OnClickClose();
 
-	UFUNCTION()
-	void OnClickClear();
-
 protected:
 	/* ------------------- Layout ------------------- */
 
@@ -46,10 +42,6 @@ protected:
 	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<class UTextureButton> Btn_Close;
 
-	/// @brief 전체 삭제 버튼
-	UPROPERTY(meta = (BindWidget))
-	TObjectPtr<class UImageButton> Btn_Clear;
-
 	/// @brief 스크롤 가능한 히스토리 패널
 	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<class UScrollBox> ScrollBox;
@@ -60,7 +52,7 @@ protected:
 
 	/// @brief 데이터가 없을 때 표시할 텍스트
 	UPROPERTY(meta = (BindWidget))
-	TObjectPtr<class UTextBlock> Txt_NoData;
+	TObjectPtr<class UBorder> Border_NoData;
 
 	/* ------------------- Classes ------------------- */
 

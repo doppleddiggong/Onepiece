@@ -19,6 +19,7 @@
 #include "UPopup_MsgBox.h"
 #include "UVoiceConversationSystem.h"
 #include "Engine/Engine.h"
+#include "Onepiece/Onepiece.h"
 
 ANetworkTesterActor::ANetworkTesterActor()
 {
@@ -297,7 +298,7 @@ void ANetworkTesterActor::OnResponseChatAnswers(FResponseChatAnswers& ResponseDa
         {
             FText AIAnswer = FText::FromString(ResponseData.answer);
             // Bot은 PlayerIndex -1 사용
-            GS->MulticastRPC_SendChat(GS->GetBotInfo(), AIAnswer, -1);
+            GS->MulticastRPC_SendChat(GS->GetBotInfo(), AIAnswer, GameName::BotID);
 
             PRINTLOG(TEXT("[AI Chat] AI Answer: %s"), *ResponseData.answer);
         }

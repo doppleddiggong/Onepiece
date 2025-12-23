@@ -2,6 +2,7 @@
 
 #include "UChatHistorySystem.h"
 #include "ULingoGameHelper.h"
+#include "FChatHistoryItem.h"
 #include "GameLogging.h"
 
 UChatHistorySystem::UChatHistorySystem()
@@ -85,8 +86,8 @@ int32 UChatHistorySystem::LoadAllChatHistory(TArray<FChatHistoryItem>& OutHistor
 		return 0;
 	}
 
-	// 모든 히스토리 읽기
-	for (int32 i = 0; i < Count; ++i)
+	// 모든 히스토리 읽기 (최신순으로 정렬하기 위해 역순으로 로드)
+	for (int32 i = Count - 1; i >= 0; --i)
 	{
 		FChatHistoryItem Item;
 		Item.Index = i;
