@@ -1,5 +1,7 @@
 var NAVTREEINDEX3 =
 {
+"UDialogManager_8cpp.html":[3,0,0,2,6,0,14],
+"UDialogManager_8cpp.html#aa7879dc7ba7c875b95eb1ff744d09d58":[3,0,0,2,6,0,14,0],
 "UDialogManager_8cpp_source.html":[3,0,0,2,6,0,14],
 "UDialogManager_8h.html":[3,0,0,2,6,1,14],
 "UDialogManager_8h_source.html":[3,0,0,2,6,1,14],
@@ -72,9 +74,9 @@ var NAVTREEINDEX3 =
 "UHookSystem_8cpp_source.html":[3,0,0,2,0,0,10],
 "UHookSystem_8h.html":[3,0,0,2,0,1,11],
 "UHookSystem_8h.html#a1c673a19776054c0693b8177e71c5426":[3,0,0,2,0,1,11,0],
-"UHookSystem_8h.html#a1c673a19776054c0693b8177e71c5426aa3f80d8f0f1b4ffa8c475f5d60ea5635":[3,0,0,2,0,1,11,0,0],
 "UHookSystem_8h.html#a1c673a19776054c0693b8177e71c5426aa3f80d8f0f1b4ffa8c475f5d60ea5635":[3,0,0,2,0,1,11,0,2],
 "UHookSystem_8h.html#a1c673a19776054c0693b8177e71c5426aa3f80d8f0f1b4ffa8c475f5d60ea5635":[3,0,0,2,0,1,11,0,1],
+"UHookSystem_8h.html#a1c673a19776054c0693b8177e71c5426aa3f80d8f0f1b4ffa8c475f5d60ea5635":[3,0,0,2,0,1,11,0,0],
 "UHookSystem_8h_source.html":[3,0,0,2,0,1,11],
 "UHoverButton_8cpp.html":[3,0,0,2,8,0,1],
 "UHoverButton_8cpp_source.html":[3,0,0,2,8,0,1],
@@ -247,7 +249,5 @@ var NAVTREEINDEX3 =
 "UPopup__MsgBox_8h_source.html":[3,0,0,2,3,1,23],
 "UPopup__ReadQuest_8cpp.html":[3,0,0,2,3,0,23],
 "UPopup__ReadQuest_8cpp_source.html":[3,0,0,2,3,0,23],
-"UPopup__ReadQuest_8h.html":[3,0,0,2,3,1,24],
-"UPopup__ReadQuest_8h_source.html":[3,0,0,2,3,1,24],
-"UPopup__SpeakJudes_8cpp.html":[3,0,0,2,3,0,24]
+"UPopup__ReadQuest_8h.html":[3,0,0,2,3,1,24]
 };

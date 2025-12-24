@@ -1,5 +1,11 @@
 var namespaces_dup =
 [
+    [ "DefineData", "namespaceDefineData.html", [
+      [ "AI", "namespaceDefineData.html#ade2334d6b1536c55ed99e75e5a5c0076", null ],
+      [ "BotID", "namespaceDefineData.html#aa27e976521e38c0858f3d0437d48a9b0", null ],
+      [ "BotName", "namespaceDefineData.html#aeb5c1c68e7ad5bf3b490fef2fc654e7f", null ],
+      [ "LineHeightPercentage", "namespaceDefineData.html#a0931d9478a2dce145ca0a0b7faba847b", null ]
+    ] ],
     [ "DoorGroup", "namespaceDoorGroup.html", [
       [ "Intro", "namespaceDoorGroup.html#ab763a363d3e8fc13d51ae5637e65a8fa", null ],
       [ "Step1_End", "namespaceDoorGroup.html#aa5f8813b0ddba77c8062a9dca6f794c2", null ],
@@ -37,11 +43,6 @@ var namespaces_dup =
       [ "SpeakStageStart", "namespaceGameMessage.html#ad15591c0eea3f6303d1f2113ed903741", null ],
       [ "WriteStageEnd", "namespaceGameMessage.html#a7ba3fee42f756d5fc38136500da8239d", null ],
       [ "WriteStageStart", "namespaceGameMessage.html#a8b65fc2a15bb0f28393e8a8f681630d0", null ]
-    ] ],
-    [ "GameName", "namespaceGameName.html", [
-      [ "AI", "namespaceGameName.html#a31f8ae11232de29ffffbe4a3dc637e08", null ],
-      [ "BotID", "namespaceGameName.html#ac463eed549dac63968e5826662b582d5", null ],
-      [ "BotName", "namespaceGameName.html#a302a47c641c6f71422e71e76196d731f", null ]
     ] ],
     [ "GameTags", "namespaceGameTags.html", [
       [ "Building", "namespaceGameTags.html#abffb03d97d2c1ee92236896e77b31600", null ],

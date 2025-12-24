@@ -162,12 +162,15 @@ Protected 속성</h2></td></tr>
 <tr class="memitem:a807985dccb3305b1004c611401b7b551" id="r_a807985dccb3305b1004c611401b7b551"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUBasePopup.html#a807985dccb3305b1004c611401b7b551">bIsOpenAnim</a> = false</td></tr>
 <tr class="memdesc:a807985dccb3305b1004c611401b7b551"><td class="mdescLeft">&#160;</td><td class="mdescRight">애니메이션 재생 중 여부  <br /></td></tr>
 <tr class="separator:a807985dccb3305b1004c611401b7b551"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5a4c2b75560a3e2d07ed3aa52837278e" id="r_a5a4c2b75560a3e2d07ed3aa52837278e"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUBasePopup.html#a5a4c2b75560a3e2d07ed3aa52837278e">OpenDuration</a> = 0.1f</td></tr>
+<tr class="memitem:af02f20e1ad1dd8c9672e1164b8aedf64" id="r_af02f20e1ad1dd8c9672e1164b8aedf64"><td class="memItemLeft" align="right" valign="top">UWidgetAnimation *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUBasePopup.html#af02f20e1ad1dd8c9672e1164b8aedf64">BlueprintOpenAnimation</a></td></tr>
+<tr class="memdesc:af02f20e1ad1dd8c9672e1164b8aedf64"><td class="mdescLeft">&#160;</td><td class="mdescRight">블루프린트에서 정의한 오픈 애니메이션  <br /></td></tr>
+<tr class="separator:af02f20e1ad1dd8c9672e1164b8aedf64"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a4c2b75560a3e2d07ed3aa52837278e" id="r_a5a4c2b75560a3e2d07ed3aa52837278e"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUBasePopup.html#a5a4c2b75560a3e2d07ed3aa52837278e">OpenDuration</a> = 0.2f</td></tr>
 <tr class="memdesc:a5a4c2b75560a3e2d07ed3aa52837278e"><td class="mdescLeft">&#160;</td><td class="mdescRight">애니메이션 지속 시간  <br /></td></tr>
 <tr class="separator:a5a4c2b75560a3e2d07ed3aa52837278e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afe75f5ef94f97fbcc8ea1ad9e801524c" id="r_afe75f5ef94f97fbcc8ea1ad9e801524c"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUBasePopup.html#afe75f5ef94f97fbcc8ea1ad9e801524c">OpenEaseExponent</a> = 2.0f</td></tr>
-<tr class="memdesc:afe75f5ef94f97fbcc8ea1ad9e801524c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ease 지수 (값이 클수록 더 급격하게 가속)  <br /></td></tr>
-<tr class="separator:afe75f5ef94f97fbcc8ea1ad9e801524c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3e47d26e447e53b60f1dd909ab9eeec" id="r_ab3e47d26e447e53b60f1dd909ab9eeec"><td class="memItemLeft" align="right" valign="top"><a class="el" href="FEaseHelper_8h.html#a00738a3dc2c357519e7f9422d3093fe0">EEaseType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUBasePopup.html#ab3e47d26e447e53b60f1dd909ab9eeec">OpenEaseType</a> = EEaseType::EaseOutBack</td></tr>
+<tr class="memdesc:ab3e47d26e447e53b60f1dd909ab9eeec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Easing 타입  <br /></td></tr>
+<tr class="separator:ab3e47d26e447e53b60f1dd909ab9eeec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6124aff28b2b2a0b810bb693ebcd81ad" id="r_a6124aff28b2b2a0b810bb693ebcd81ad"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUBasePopup.html#a6124aff28b2b2a0b810bb693ebcd81ad">OpenElapsedTime</a> = 0.0f</td></tr>
 <tr class="memdesc:a6124aff28b2b2a0b810bb693ebcd81ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">경과 시간  <br /></td></tr>
 <tr class="separator:a6124aff28b2b2a0b810bb693ebcd81ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -288,16 +291,16 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">   12</span>        <a class="code hl_function" href="classUBasePopup.html#a830a08b15d00e418f351f096fc5a8790">UpdateAnimation</a>(InDeltaTime);</div>
 <div class="line"><span class="lineno">   13</span>    }</div>
 <div class="line"><span class="lineno">   14</span>}</div>
-<div class="ttc" id="aclassUBasePopup_html_a807985dccb3305b1004c611401b7b551"><div class="ttname"><a href="classUBasePopup.html#a807985dccb3305b1004c611401b7b551">UBasePopup::bIsOpenAnim</a></div><div class="ttdeci">bool bIsOpenAnim</div><div class="ttdoc">애니메이션 재생 중 여부</div><div class="ttdef"><b>Definition</b> <a href="UBasePopup_8h_source.html#l00044">UBasePopup.h:44</a></div></div>
-<div class="ttc" id="aclassUBasePopup_html_a830a08b15d00e418f351f096fc5a8790"><div class="ttname"><a href="classUBasePopup.html#a830a08b15d00e418f351f096fc5a8790">UBasePopup::UpdateAnimation</a></div><div class="ttdeci">void UpdateAnimation(float InDeltaTime)</div><div class="ttdoc">스크립트 오픈 애니메이션 업데이트</div><div class="ttdef"><b>Definition</b> <a href="UBasePopup_8cpp_source.html#l00035">UBasePopup.cpp:35</a></div></div>
+<div class="ttc" id="aclassUBasePopup_html_a807985dccb3305b1004c611401b7b551"><div class="ttname"><a href="classUBasePopup.html#a807985dccb3305b1004c611401b7b551">UBasePopup::bIsOpenAnim</a></div><div class="ttdeci">bool bIsOpenAnim</div><div class="ttdoc">애니메이션 재생 중 여부</div><div class="ttdef"><b>Definition</b> <a href="UBasePopup_8h_source.html#l00056">UBasePopup.h:56</a></div></div>
+<div class="ttc" id="aclassUBasePopup_html_a830a08b15d00e418f351f096fc5a8790"><div class="ttname"><a href="classUBasePopup.html#a830a08b15d00e418f351f096fc5a8790">UBasePopup::UpdateAnimation</a></div><div class="ttdeci">void UpdateAnimation(float InDeltaTime)</div><div class="ttdoc">스크립트 오픈 애니메이션 업데이트</div><div class="ttdef"><b>Definition</b> <a href="UBasePopup_8cpp_source.html#l00043">UBasePopup.cpp:43</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="UBasePopup_8h_source.html#l00044">UBasePopup::bIsOpenAnim</a>, <a class="el" href="UBasePopup_8cpp_source.html#l00035">UBasePopup::UpdateAnimation()</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="UBasePopup_8h_source.html#l00056">UBasePopup::bIsOpenAnim</a>, <a class="el" href="UBasePopup_8cpp_source.html#l00043">UBasePopup::UpdateAnimation()</a>.</p>
 <div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-3-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-3-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classUBasePopup_a750c1a854f68ca16faa069645531abd6_cgraph.svg" width="468" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classUBasePopup_a750c1a854f68ca16faa069645531abd6_cgraph.svg" width="659" height="60"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -442,24 +445,33 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">   20</span>        AddToViewport();</div>
 <div class="line"><span class="lineno">   21</span>    }</div>
 <div class="line"><span class="lineno">   22</span> </div>
-<div class="line"><span class="lineno">   23</span>    SetRenderTransformPivot(<a class="code hl_variable" href="classUBasePopup.html#aa3d6a21b30e9b40280f1219b567232b5">OpenPivot</a>);</div>
-<div class="line"><span class="lineno">   24</span>    SetRenderScale(FVector2D(<a class="code hl_variable" href="classUBasePopup.html#a9a4bc6d6e03adc7396c7960c41dae0b2">OpenStartScale</a>, <a class="code hl_variable" href="classUBasePopup.html#a9a4bc6d6e03adc7396c7960c41dae0b2">OpenStartScale</a>));</div>
-<div class="line"><span class="lineno">   25</span> </div>
-<div class="line"><span class="lineno">   26</span>    <a class="code hl_variable" href="classUBasePopup.html#a807985dccb3305b1004c611401b7b551">bIsOpenAnim</a> = <a class="code hl_variable" href="classUBasePopup.html#a5a4c2b75560a3e2d07ed3aa52837278e">OpenDuration</a> &gt; KINDA_SMALL_NUMBER;</div>
-<div class="line"><span class="lineno">   27</span>    <a class="code hl_variable" href="classUBasePopup.html#a6124aff28b2b2a0b810bb693ebcd81ad">OpenElapsedTime</a> = 0.0f;</div>
-<div class="line"><span class="lineno">   28</span> </div>
-<div class="line"><span class="lineno">   29</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classUBasePopup.html#a807985dccb3305b1004c611401b7b551">bIsOpenAnim</a>)</div>
-<div class="line"><span class="lineno">   30</span>    {</div>
-<div class="line"><span class="lineno">   31</span>        SetRenderScale(FVector2D(<a class="code hl_variable" href="classUBasePopup.html#add357075245f0843320c0b74af0f2697">OpenTargetScale</a>, <a class="code hl_variable" href="classUBasePopup.html#add357075245f0843320c0b74af0f2697">OpenTargetScale</a>));</div>
-<div class="line"><span class="lineno">   32</span>    }</div>
-<div class="line"><span class="lineno">   33</span>}</div>
-<div class="ttc" id="aclassUBasePopup_html_a5a4c2b75560a3e2d07ed3aa52837278e"><div class="ttname"><a href="classUBasePopup.html#a5a4c2b75560a3e2d07ed3aa52837278e">UBasePopup::OpenDuration</a></div><div class="ttdeci">float OpenDuration</div><div class="ttdoc">애니메이션 지속 시간</div><div class="ttdef"><b>Definition</b> <a href="UBasePopup_8h_source.html#l00051">UBasePopup.h:51</a></div></div>
-<div class="ttc" id="aclassUBasePopup_html_a6124aff28b2b2a0b810bb693ebcd81ad"><div class="ttname"><a href="classUBasePopup.html#a6124aff28b2b2a0b810bb693ebcd81ad">UBasePopup::OpenElapsedTime</a></div><div class="ttdeci">float OpenElapsedTime</div><div class="ttdoc">경과 시간</div><div class="ttdef"><b>Definition</b> <a href="UBasePopup_8h_source.html#l00047">UBasePopup.h:47</a></div></div>
-<div class="ttc" id="aclassUBasePopup_html_a9a4bc6d6e03adc7396c7960c41dae0b2"><div class="ttname"><a href="classUBasePopup.html#a9a4bc6d6e03adc7396c7960c41dae0b2">UBasePopup::OpenStartScale</a></div><div class="ttdeci">float OpenStartScale</div><div class="ttdoc">시작 스케일</div><div class="ttdef"><b>Definition</b> <a href="UBasePopup_8h_source.html#l00055">UBasePopup.h:55</a></div></div>
-<div class="ttc" id="aclassUBasePopup_html_aa3d6a21b30e9b40280f1219b567232b5"><div class="ttname"><a href="classUBasePopup.html#aa3d6a21b30e9b40280f1219b567232b5">UBasePopup::OpenPivot</a></div><div class="ttdeci">FVector2D OpenPivot</div><div class="ttdoc">애니메이션 중심점 (0~1 범위)</div><div class="ttdef"><b>Definition</b> <a href="UBasePopup_8h_source.html#l00067">UBasePopup.h:67</a></div></div>
-<div class="ttc" id="aclassUBasePopup_html_add357075245f0843320c0b74af0f2697"><div class="ttname"><a href="classUBasePopup.html#add357075245f0843320c0b74af0f2697">UBasePopup::OpenTargetScale</a></div><div class="ttdeci">float OpenTargetScale</div><div class="ttdoc">목표 스케일</div><div class="ttdef"><b>Definition</b> <a href="UBasePopup_8h_source.html#l00059">UBasePopup.h:59</a></div></div>
+<div class="line"><span class="lineno">   23</span>    <span class="comment">// 블루프린트에서 정의한 애니메이션이 있으면 해당 애니메이션 재생</span></div>
+<div class="line"><span class="lineno">   24</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUBasePopup.html#af02f20e1ad1dd8c9672e1164b8aedf64">BlueprintOpenAnimation</a>)</div>
+<div class="line"><span class="lineno">   25</span>    {</div>
+<div class="line"><span class="lineno">   26</span>        PlayAnimation(<a class="code hl_variable" href="classUBasePopup.html#af02f20e1ad1dd8c9672e1164b8aedf64">BlueprintOpenAnimation</a>);</div>
+<div class="line"><span class="lineno">   27</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   28</span>    }</div>
+<div class="line"><span class="lineno">   29</span> </div>
+<div class="line"><span class="lineno">   30</span>    <span class="comment">// 블루프린트 애니메이션이 없으면 기본 스크립트 애니메이션 사용</span></div>
+<div class="line"><span class="lineno">   31</span>    SetRenderTransformPivot(<a class="code hl_variable" href="classUBasePopup.html#aa3d6a21b30e9b40280f1219b567232b5">OpenPivot</a>);</div>
+<div class="line"><span class="lineno">   32</span>    SetRenderScale(FVector2D(<a class="code hl_variable" href="classUBasePopup.html#a9a4bc6d6e03adc7396c7960c41dae0b2">OpenStartScale</a>, <a class="code hl_variable" href="classUBasePopup.html#a9a4bc6d6e03adc7396c7960c41dae0b2">OpenStartScale</a>));</div>
+<div class="line"><span class="lineno">   33</span> </div>
+<div class="line"><span class="lineno">   34</span>    <a class="code hl_variable" href="classUBasePopup.html#a807985dccb3305b1004c611401b7b551">bIsOpenAnim</a> = <a class="code hl_variable" href="classUBasePopup.html#a5a4c2b75560a3e2d07ed3aa52837278e">OpenDuration</a> &gt; KINDA_SMALL_NUMBER;</div>
+<div class="line"><span class="lineno">   35</span>    <a class="code hl_variable" href="classUBasePopup.html#a6124aff28b2b2a0b810bb693ebcd81ad">OpenElapsedTime</a> = 0.0f;</div>
+<div class="line"><span class="lineno">   36</span> </div>
+<div class="line"><span class="lineno">   37</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classUBasePopup.html#a807985dccb3305b1004c611401b7b551">bIsOpenAnim</a>)</div>
+<div class="line"><span class="lineno">   38</span>    {</div>
+<div class="line"><span class="lineno">   39</span>        SetRenderScale(FVector2D(<a class="code hl_variable" href="classUBasePopup.html#add357075245f0843320c0b74af0f2697">OpenTargetScale</a>, <a class="code hl_variable" href="classUBasePopup.html#add357075245f0843320c0b74af0f2697">OpenTargetScale</a>));</div>
+<div class="line"><span class="lineno">   40</span>    }</div>
+<div class="line"><span class="lineno">   41</span>}</div>
+<div class="ttc" id="aclassUBasePopup_html_a5a4c2b75560a3e2d07ed3aa52837278e"><div class="ttname"><a href="classUBasePopup.html#a5a4c2b75560a3e2d07ed3aa52837278e">UBasePopup::OpenDuration</a></div><div class="ttdeci">float OpenDuration</div><div class="ttdoc">애니메이션 지속 시간</div><div class="ttdef"><b>Definition</b> <a href="UBasePopup_8h_source.html#l00063">UBasePopup.h:63</a></div></div>
+<div class="ttc" id="aclassUBasePopup_html_a6124aff28b2b2a0b810bb693ebcd81ad"><div class="ttname"><a href="classUBasePopup.html#a6124aff28b2b2a0b810bb693ebcd81ad">UBasePopup::OpenElapsedTime</a></div><div class="ttdeci">float OpenElapsedTime</div><div class="ttdoc">경과 시간</div><div class="ttdef"><b>Definition</b> <a href="UBasePopup_8h_source.html#l00059">UBasePopup.h:59</a></div></div>
+<div class="ttc" id="aclassUBasePopup_html_a9a4bc6d6e03adc7396c7960c41dae0b2"><div class="ttname"><a href="classUBasePopup.html#a9a4bc6d6e03adc7396c7960c41dae0b2">UBasePopup::OpenStartScale</a></div><div class="ttdeci">float OpenStartScale</div><div class="ttdoc">시작 스케일</div><div class="ttdef"><b>Definition</b> <a href="UBasePopup_8h_source.html#l00067">UBasePopup.h:67</a></div></div>
+<div class="ttc" id="aclassUBasePopup_html_aa3d6a21b30e9b40280f1219b567232b5"><div class="ttname"><a href="classUBasePopup.html#aa3d6a21b30e9b40280f1219b567232b5">UBasePopup::OpenPivot</a></div><div class="ttdeci">FVector2D OpenPivot</div><div class="ttdoc">애니메이션 중심점 (0~1 범위)</div><div class="ttdef"><b>Definition</b> <a href="UBasePopup_8h_source.html#l00075">UBasePopup.h:75</a></div></div>
+<div class="ttc" id="aclassUBasePopup_html_add357075245f0843320c0b74af0f2697"><div class="ttname"><a href="classUBasePopup.html#add357075245f0843320c0b74af0f2697">UBasePopup::OpenTargetScale</a></div><div class="ttdeci">float OpenTargetScale</div><div class="ttdoc">목표 스케일</div><div class="ttdef"><b>Definition</b> <a href="UBasePopup_8h_source.html#l00071">UBasePopup.h:71</a></div></div>
+<div class="ttc" id="aclassUBasePopup_html_af02f20e1ad1dd8c9672e1164b8aedf64"><div class="ttname"><a href="classUBasePopup.html#af02f20e1ad1dd8c9672e1164b8aedf64">UBasePopup::BlueprintOpenAnimation</a></div><div class="ttdeci">UWidgetAnimation * BlueprintOpenAnimation</div><div class="ttdoc">블루프린트에서 정의한 오픈 애니메이션</div><div class="ttdef"><b>Definition</b> <a href="UBasePopup_8h_source.html#l00044">UBasePopup.h:44</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="UBasePopup_8h_source.html#l00044">UBasePopup::bIsOpenAnim</a>, <a class="el" href="UBasePopup_8h_source.html#l00051">UBasePopup::OpenDuration</a>, <a class="el" href="UBasePopup_8h_source.html#l00047">UBasePopup::OpenElapsedTime</a>, <a class="el" href="UBasePopup_8h_source.html#l00067">UBasePopup::OpenPivot</a>, <a class="el" href="UBasePopup_8h_source.html#l00055">UBasePopup::OpenStartScale</a>, <a class="el" href="UBasePopup_8h_source.html#l00059">UBasePopup::OpenTargetScale</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="UBasePopup_8h_source.html#l00056">UBasePopup::bIsOpenAnim</a>, <a class="el" href="UBasePopup_8h_source.html#l00044">UBasePopup::BlueprintOpenAnimation</a>, <a class="el" href="UBasePopup_8h_source.html#l00063">UBasePopup::OpenDuration</a>, <a class="el" href="UBasePopup_8h_source.html#l00059">UBasePopup::OpenElapsedTime</a>, <a class="el" href="UBasePopup_8h_source.html#l00075">UBasePopup::OpenPivot</a>, <a class="el" href="UBasePopup_8h_source.html#l00067">UBasePopup::OpenStartScale</a>, <a class="el" href="UBasePopup_8h_source.html#l00071">UBasePopup::OpenTargetScale</a>.</p>
 
 </div>
 </div>
@@ -542,36 +554,44 @@ Private 속성</h2></td></tr>
 
 <p>스크립트 오픈 애니메이션 업데이트 </p>
 
-<p class="definition"><a class="el" href="UBasePopup_8cpp_source.html">UBasePopup.cpp</a> 파일의 <a class="el" href="UBasePopup_8cpp_source.html#l00035">35</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   36</span>{</div>
-<div class="line"><span class="lineno">   37</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classUBasePopup.html#a807985dccb3305b1004c611401b7b551">bIsOpenAnim</a>)</div>
-<div class="line"><span class="lineno">   38</span>    {</div>
-<div class="line"><span class="lineno">   39</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">   40</span>    }</div>
-<div class="line"><span class="lineno">   41</span> </div>
-<div class="line"><span class="lineno">   42</span>    <a class="code hl_variable" href="classUBasePopup.html#a6124aff28b2b2a0b810bb693ebcd81ad">OpenElapsedTime</a> += InDeltaTime;</div>
-<div class="line"><span class="lineno">   43</span> </div>
-<div class="line"><span class="lineno">   44</span>    <span class="keyword">const</span> <span class="keywordtype">float</span> Alpha = FMath::Clamp(<a class="code hl_variable" href="classUBasePopup.html#a6124aff28b2b2a0b810bb693ebcd81ad">OpenElapsedTime</a> / <a class="code hl_variable" href="classUBasePopup.html#a5a4c2b75560a3e2d07ed3aa52837278e">OpenDuration</a>, 0.0f, 1.0f);</div>
-<div class="line"><span class="lineno">   45</span>    <span class="keyword">const</span> <span class="keywordtype">float</span> EasedAlpha = FMath::InterpEaseOut(0.0f, 1.0f, Alpha, <a class="code hl_variable" href="classUBasePopup.html#afe75f5ef94f97fbcc8ea1ad9e801524c">OpenEaseExponent</a>);</div>
-<div class="line"><span class="lineno">   46</span>    <span class="keyword">const</span> <span class="keywordtype">float</span> NewScale = FMath::Lerp(<a class="code hl_variable" href="classUBasePopup.html#a9a4bc6d6e03adc7396c7960c41dae0b2">OpenStartScale</a>, <a class="code hl_variable" href="classUBasePopup.html#add357075245f0843320c0b74af0f2697">OpenTargetScale</a>, EasedAlpha);</div>
-<div class="line"><span class="lineno">   47</span> </div>
-<div class="line"><span class="lineno">   48</span>    SetRenderScale(FVector2D(NewScale, NewScale));</div>
+<p class="definition"><a class="el" href="UBasePopup_8cpp_source.html">UBasePopup.cpp</a> 파일의 <a class="el" href="UBasePopup_8cpp_source.html#l00043">43</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   44</span>{</div>
+<div class="line"><span class="lineno">   45</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classUBasePopup.html#a807985dccb3305b1004c611401b7b551">bIsOpenAnim</a>)</div>
+<div class="line"><span class="lineno">   46</span>    {</div>
+<div class="line"><span class="lineno">   47</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   48</span>    }</div>
 <div class="line"><span class="lineno">   49</span> </div>
-<div class="line"><span class="lineno">   50</span>    <span class="keywordflow">if</span> (Alpha &gt;= 1.0f)</div>
-<div class="line"><span class="lineno">   51</span>    {</div>
-<div class="line"><span class="lineno">   52</span>        <a class="code hl_variable" href="classUBasePopup.html#a807985dccb3305b1004c611401b7b551">bIsOpenAnim</a> = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   53</span>    }</div>
-<div class="line"><span class="lineno">   54</span>}</div>
-<div class="ttc" id="aclassUBasePopup_html_afe75f5ef94f97fbcc8ea1ad9e801524c"><div class="ttname"><a href="classUBasePopup.html#afe75f5ef94f97fbcc8ea1ad9e801524c">UBasePopup::OpenEaseExponent</a></div><div class="ttdeci">float OpenEaseExponent</div><div class="ttdoc">Ease 지수 (값이 클수록 더 급격하게 가속)</div><div class="ttdef"><b>Definition</b> <a href="UBasePopup_8h_source.html#l00063">UBasePopup.h:63</a></div></div>
+<div class="line"><span class="lineno">   50</span>    <a class="code hl_variable" href="classUBasePopup.html#a6124aff28b2b2a0b810bb693ebcd81ad">OpenElapsedTime</a> += InDeltaTime;</div>
+<div class="line"><span class="lineno">   51</span> </div>
+<div class="line"><span class="lineno">   52</span>    <span class="keyword">const</span> <span class="keywordtype">float</span> Alpha = FMath::Clamp(<a class="code hl_variable" href="classUBasePopup.html#a6124aff28b2b2a0b810bb693ebcd81ad">OpenElapsedTime</a> / <a class="code hl_variable" href="classUBasePopup.html#a5a4c2b75560a3e2d07ed3aa52837278e">OpenDuration</a>, 0.0f, 1.0f);</div>
+<div class="line"><span class="lineno">   53</span>    <span class="keyword">const</span> <span class="keywordtype">float</span> EasedAlpha = <a class="code hl_function" href="structFEaseHelper.html#a2a09be8079b0151cad5b52c4250e299f">FEaseHelper::Ease</a>(Alpha, <a class="code hl_variable" href="classUBasePopup.html#ab3e47d26e447e53b60f1dd909ab9eeec">OpenEaseType</a>);</div>
+<div class="line"><span class="lineno">   54</span>    <span class="keyword">const</span> <span class="keywordtype">float</span> NewScale = FMath::Lerp(<a class="code hl_variable" href="classUBasePopup.html#a9a4bc6d6e03adc7396c7960c41dae0b2">OpenStartScale</a>, <a class="code hl_variable" href="classUBasePopup.html#add357075245f0843320c0b74af0f2697">OpenTargetScale</a>, EasedAlpha);</div>
+<div class="line"><span class="lineno">   55</span> </div>
+<div class="line"><span class="lineno">   56</span>    SetRenderScale(FVector2D(NewScale, NewScale));</div>
+<div class="line"><span class="lineno">   57</span> </div>
+<div class="line"><span class="lineno">   58</span>    <span class="keywordflow">if</span> (Alpha &gt;= 1.0f)</div>
+<div class="line"><span class="lineno">   59</span>    {</div>
+<div class="line"><span class="lineno">   60</span>        <a class="code hl_variable" href="classUBasePopup.html#a807985dccb3305b1004c611401b7b551">bIsOpenAnim</a> = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   61</span>    }</div>
+<div class="line"><span class="lineno">   62</span>}</div>
+<div class="ttc" id="aclassUBasePopup_html_ab3e47d26e447e53b60f1dd909ab9eeec"><div class="ttname"><a href="classUBasePopup.html#ab3e47d26e447e53b60f1dd909ab9eeec">UBasePopup::OpenEaseType</a></div><div class="ttdeci">EEaseType OpenEaseType</div><div class="ttdoc">Easing 타입</div><div class="ttdef"><b>Definition</b> <a href="UBasePopup_8h_source.html#l00082">UBasePopup.h:82</a></div></div>
+<div class="ttc" id="astructFEaseHelper_html_a2a09be8079b0151cad5b52c4250e299f"><div class="ttname"><a href="structFEaseHelper.html#a2a09be8079b0151cad5b52c4250e299f">FEaseHelper::Ease</a></div><div class="ttdeci">static float Ease(float Alpha, EEaseType Type)</div><div class="ttdef"><b>Definition</b> <a href="FEaseHelper_8h_source.html#l00045">FEaseHelper.h:45</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="UBasePopup_8h_source.html#l00044">UBasePopup::bIsOpenAnim</a>, <a class="el" href="UBasePopup_8h_source.html#l00051">UBasePopup::OpenDuration</a>, <a class="el" href="UBasePopup_8h_source.html#l00063">UBasePopup::OpenEaseExponent</a>, <a class="el" href="UBasePopup_8h_source.html#l00047">UBasePopup::OpenElapsedTime</a>, <a class="el" href="UBasePopup_8h_source.html#l00055">UBasePopup::OpenStartScale</a>, <a class="el" href="UBasePopup_8h_source.html#l00059">UBasePopup::OpenTargetScale</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="UBasePopup_8h_source.html#l00056">UBasePopup::bIsOpenAnim</a>, <a class="el" href="FEaseHelper_8h_source.html#l00045">FEaseHelper::Ease()</a>, <a class="el" href="UBasePopup_8h_source.html#l00063">UBasePopup::OpenDuration</a>, <a class="el" href="UBasePopup_8h_source.html#l00082">UBasePopup::OpenEaseType</a>, <a class="el" href="UBasePopup_8h_source.html#l00059">UBasePopup::OpenElapsedTime</a>, <a class="el" href="UBasePopup_8h_source.html#l00067">UBasePopup::OpenStartScale</a>, <a class="el" href="UBasePopup_8h_source.html#l00071">UBasePopup::OpenTargetScale</a>.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UBasePopup_8cpp_source.html#l00006">UBasePopup::NativeTick()</a>.</p>
 <div id="dynsection-9" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-9-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+  <img id="dynsection-9-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-9-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-9-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classUBasePopup_a830a08b15d00e418f351f096fc5a8790_cgraph.svg" width="428" height="60"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div id="dynsection-10" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-10-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-10-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-10-content" class="dyncontent" style="display:none;">
 <div class="center"><iframe scrolling="no" frameborder="0" src="classUBasePopup_a830a08b15d00e418f351f096fc5a8790_icgraph.svg" width="468" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
@@ -601,7 +621,7 @@ Private 속성</h2></td></tr>
 <p>이 팝업이 활성화되어 있을 때 플레이어 조작을 허용할지 여부 </p>
 <p>true면 이 팝업이 열려있어도 플레이어가 캐릭터를 조작할 수 있습니다. 기본값은 false (대부분의 팝업은 플레이어 조작을 차단) </p>
 
-<p class="definition"><a class="el" href="UBasePopup_8h_source.html">UBasePopup.h</a> 파일의 <a class="el" href="UBasePopup_8h_source.html#l00076">76</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="UBasePopup_8h_source.html">UBasePopup.h</a> 파일의 <a class="el" href="UBasePopup_8h_source.html#l00091">91</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UPopup__SpeakQuestJudes_8cpp_source.html#l00017">UPopup_SpeakQuestJudes::NativeConstruct()</a>.</p>
 
@@ -629,9 +649,9 @@ Private 속성</h2></td></tr>
 
 <p>애니메이션 재생 중 여부 </p>
 
-<p class="definition"><a class="el" href="UBasePopup_8h_source.html">UBasePopup.h</a> 파일의 <a class="el" href="UBasePopup_8h_source.html#l00044">44</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="UBasePopup_8h_source.html">UBasePopup.h</a> 파일의 <a class="el" href="UBasePopup_8h_source.html#l00056">56</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UBasePopup_8cpp_source.html#l00006">UBasePopup::NativeTick()</a>, <a class="el" href="UBasePopup_8cpp_source.html#l00016">UBasePopup::OpenAnimation()</a>, <a class="el" href="UBasePopup_8cpp_source.html#l00035">UBasePopup::UpdateAnimation()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UBasePopup_8cpp_source.html#l00006">UBasePopup::NativeTick()</a>, <a class="el" href="UBasePopup_8cpp_source.html#l00016">UBasePopup::OpenAnimation()</a>, <a class="el" href="UBasePopup_8cpp_source.html#l00043">UBasePopup::UpdateAnimation()</a>.</p>
 
 </div>
 </div>
@@ -658,6 +678,35 @@ Private 속성</h2></td></tr>
 <p class="definition"><a class="el" href="UPopup__SpeakQuest_8h_source.html">UPopup_SpeakQuest.h</a> 파일의 <a class="el" href="UPopup__SpeakQuest_8h_source.html#l00034">34</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UPopup__SpeakQuest_8cpp_source.html#l00043">OnResponseListenAudio()</a>, <a class="el" href="UPopup__SpeakQuest_8cpp_source.html#l00027">RequestListenAudio()</a>.</p>
+
+</div>
+</div>
+<a id="af02f20e1ad1dd8c9672e1164b8aedf64" name="af02f20e1ad1dd8c9672e1164b8aedf64"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af02f20e1ad1dd8c9672e1164b8aedf64">&#9670;&#160;</a></span>BlueprintOpenAnimation</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">UWidgetAnimation* UBasePopup::BlueprintOpenAnimation</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>블루프린트에서 정의한 오픈 애니메이션 </p>
+<p>설정된 경우 스크립트 애니메이션 대신 이 애니메이션을 재생합니다. </p>
+
+<p class="definition"><a class="el" href="UBasePopup_8h_source.html">UBasePopup.h</a> 파일의 <a class="el" href="UBasePopup_8h_source.html#l00044">44</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UBasePopup_8cpp_source.html#l00016">UBasePopup::OpenAnimation()</a>.</p>
 
 </div>
 </div>
@@ -715,7 +764,7 @@ Private 속성</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">float UBasePopup::OpenDuration = 0.1f</td>
+          <td class="memname">float UBasePopup::OpenDuration = 0.2f</td>
         </tr>
       </table>
   </td>
@@ -727,14 +776,14 @@ Private 속성</h2></td></tr>
 
 <p>애니메이션 지속 시간 </p>
 
-<p class="definition"><a class="el" href="UBasePopup_8h_source.html">UBasePopup.h</a> 파일의 <a class="el" href="UBasePopup_8h_source.html#l00051">51</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="UBasePopup_8h_source.html">UBasePopup.h</a> 파일의 <a class="el" href="UBasePopup_8h_source.html#l00063">63</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UBasePopup_8cpp_source.html#l00016">UBasePopup::OpenAnimation()</a>, <a class="el" href="UBasePopup_8cpp_source.html#l00035">UBasePopup::UpdateAnimation()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UBasePopup_8cpp_source.html#l00016">UBasePopup::OpenAnimation()</a>, <a class="el" href="UBasePopup_8cpp_source.html#l00043">UBasePopup::UpdateAnimation()</a>.</p>
 
 </div>
 </div>
-<a id="afe75f5ef94f97fbcc8ea1ad9e801524c" name="afe75f5ef94f97fbcc8ea1ad9e801524c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afe75f5ef94f97fbcc8ea1ad9e801524c">&#9670;&#160;</a></span>OpenEaseExponent</h2>
+<a id="ab3e47d26e447e53b60f1dd909ab9eeec" name="ab3e47d26e447e53b60f1dd909ab9eeec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab3e47d26e447e53b60f1dd909ab9eeec">&#9670;&#160;</a></span>OpenEaseType</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -743,7 +792,7 @@ Private 속성</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">float UBasePopup::OpenEaseExponent = 2.0f</td>
+          <td class="memname"><a class="el" href="FEaseHelper_8h.html#a00738a3dc2c357519e7f9422d3093fe0">EEaseType</a> UBasePopup::OpenEaseType = EEaseType::EaseOutBack</td>
         </tr>
       </table>
   </td>
@@ -753,11 +802,12 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Ease 지수 (값이 클수록 더 급격하게 가속) </p>
+<p>Easing 타입 </p>
+<p>애니메이션의 보간 곡선을 선택합니다. 기본값은 EaseOutBack (탄성 효과) </p>
 
-<p class="definition"><a class="el" href="UBasePopup_8h_source.html">UBasePopup.h</a> 파일의 <a class="el" href="UBasePopup_8h_source.html#l00063">63</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="UBasePopup_8h_source.html">UBasePopup.h</a> 파일의 <a class="el" href="UBasePopup_8h_source.html#l00082">82</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UBasePopup_8cpp_source.html#l00035">UBasePopup::UpdateAnimation()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UBasePopup_8cpp_source.html#l00043">UBasePopup::UpdateAnimation()</a>.</p>
 
 </div>
 </div>
@@ -783,9 +833,9 @@ Private 속성</h2></td></tr>
 
 <p>경과 시간 </p>
 
-<p class="definition"><a class="el" href="UBasePopup_8h_source.html">UBasePopup.h</a> 파일의 <a class="el" href="UBasePopup_8h_source.html#l00047">47</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="UBasePopup_8h_source.html">UBasePopup.h</a> 파일의 <a class="el" href="UBasePopup_8h_source.html#l00059">59</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UBasePopup_8cpp_source.html#l00016">UBasePopup::OpenAnimation()</a>, <a class="el" href="UBasePopup_8cpp_source.html#l00035">UBasePopup::UpdateAnimation()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UBasePopup_8cpp_source.html#l00016">UBasePopup::OpenAnimation()</a>, <a class="el" href="UBasePopup_8cpp_source.html#l00043">UBasePopup::UpdateAnimation()</a>.</p>
 
 </div>
 </div>
@@ -811,7 +861,7 @@ Private 속성</h2></td></tr>
 
 <p>애니메이션 중심점 (0~1 범위) </p>
 
-<p class="definition"><a class="el" href="UBasePopup_8h_source.html">UBasePopup.h</a> 파일의 <a class="el" href="UBasePopup_8h_source.html#l00067">67</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="UBasePopup_8h_source.html">UBasePopup.h</a> 파일의 <a class="el" href="UBasePopup_8h_source.html#l00075">75</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UBasePopup_8cpp_source.html#l00016">UBasePopup::OpenAnimation()</a>.</p>
 
@@ -839,9 +889,9 @@ Private 속성</h2></td></tr>
 
 <p>시작 스케일 </p>
 
-<p class="definition"><a class="el" href="UBasePopup_8h_source.html">UBasePopup.h</a> 파일의 <a class="el" href="UBasePopup_8h_source.html#l00055">55</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="UBasePopup_8h_source.html">UBasePopup.h</a> 파일의 <a class="el" href="UBasePopup_8h_source.html#l00067">67</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UBasePopup_8cpp_source.html#l00016">UBasePopup::OpenAnimation()</a>, <a class="el" href="UBasePopup_8cpp_source.html#l00035">UBasePopup::UpdateAnimation()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UBasePopup_8cpp_source.html#l00016">UBasePopup::OpenAnimation()</a>, <a class="el" href="UBasePopup_8cpp_source.html#l00043">UBasePopup::UpdateAnimation()</a>.</p>
 
 </div>
 </div>
@@ -867,9 +917,9 @@ Private 속성</h2></td></tr>
 
 <p>목표 스케일 </p>
 
-<p class="definition"><a class="el" href="UBasePopup_8h_source.html">UBasePopup.h</a> 파일의 <a class="el" href="UBasePopup_8h_source.html#l00059">59</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="UBasePopup_8h_source.html">UBasePopup.h</a> 파일의 <a class="el" href="UBasePopup_8h_source.html#l00071">71</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UBasePopup_8cpp_source.html#l00016">UBasePopup::OpenAnimation()</a>, <a class="el" href="UBasePopup_8cpp_source.html#l00035">UBasePopup::UpdateAnimation()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UBasePopup_8cpp_source.html#l00016">UBasePopup::OpenAnimation()</a>, <a class="el" href="UBasePopup_8cpp_source.html#l00043">UBasePopup::UpdateAnimation()</a>.</p>
 
 </div>
 </div>
@@ -893,7 +943,7 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="UBasePopup_8h_source.html">UBasePopup.h</a> 파일의 <a class="el" href="UBasePopup_8h_source.html#l00032">32</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="UBasePopup_8h_source.html">UBasePopup.h</a> 파일의 <a class="el" href="UBasePopup_8h_source.html#l00033">33</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UPopup__InputMsg_8cpp_source.html#l00051">UPopup_InputMsg::InitPopup()</a>, <a class="el" href="UPopup__InputMsg_8cpp_source.html#l00026">UPopup_InputMsg::OnClickOk()</a>.</p>
 
@@ -909,7 +959,7 @@ Private 속성</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classUPopup__SpeakQuest.html">UPopup_SpeakQuest</a></li>
-    <li class="footer">생성시간 : 수 12월 24 2025 02:40:01, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 수 12월 24 2025 09:09:42, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

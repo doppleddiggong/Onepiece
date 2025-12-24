@@ -1,5 +1,7 @@
 var NAVTREEINDEX4 =
 {
+"UPopup__ReadQuest_8h_source.html":[3,0,0,2,3,1,24],
+"UPopup__SpeakJudes_8cpp.html":[3,0,0,2,3,0,24],
 "UPopup__SpeakJudes_8cpp_source.html":[3,0,0,2,3,0,24],
 "UPopup__SpeakJudes_8h.html":[3,0,0,2,3,1,25],
 "UPopup__SpeakJudes_8h.html#ae16af2f3803bbca442210a08d2c0ea1d":[3,0,0,2,3,1,25,1],
@@ -166,7 +168,6 @@ var NAVTREEINDEX4 =
 "classAContactTrigger.html#a20a76abdb1837b44a13e326860d475f7":[2,0,2,12],
 "classAContactTrigger.html#a3f9f5f820f8dfa7baa5de8f675ea0296":[2,0,2,15],
 "classAContactTrigger.html#a46cb478496173bbaa22088cc5d231fd0":[2,0,2,5],
-"classAContactTrigger.html#a4cc3502666c683ce510c4ec6b2b7e6d3":[2,0,2,2],
 "classAContactTrigger.html#a5f50fda23fc46735106bfb993c64ea35":[2,0,2,17],
 "classAContactTrigger.html#a63adace094bcb480873d33bb59e36bc2":[2,0,2,1],
 "classAContactTrigger.html#a6bb2c924b60c4d544f52dbcc93796e67":[2,0,2,10],
@@ -175,6 +176,7 @@ var NAVTREEINDEX4 =
 "classAContactTrigger.html#aa89ad954304153421bf9ff31bf97ff7a":[2,0,2,8],
 "classAContactTrigger.html#aaf47be0afbd396aceb6da9c95bbec8b7":[2,0,2,13],
 "classAContactTrigger.html#ab402eea2b6e7365ec8a47ec11db1f035":[2,0,2,11],
+"classAContactTrigger.html#abb415ce2d41dab4779fdf9fb5d962e30":[2,0,2,2],
 "classAContactTrigger.html#ac475b9f5bb07cfd21b598ad87e6d019c":[2,0,2,16],
 "classAContactTrigger.html#ad95a80dee6308cafc2ba071e0b63d1c2":[2,0,2,7],
 "classAContactTrigger.html#ae388db0378df16528c92d3a7ef69281a":[2,0,2,6],
@@ -247,7 +249,5 @@ var NAVTREEINDEX4 =
 "classADropper.html":[2,0,7],
 "classADropper.html#a0ca196ef13ac8207543cba52a266a325":[2,0,7,7],
 "classADropper.html#a120a5316924fd35c0ae10b3e89a92959":[2,0,7,9],
-"classADropper.html#a157c62ea5ca44a107413f475f4a47e61":[2,0,7,11],
-"classADropper.html#a20445470333fec9dda88adeda63439b8":[2,0,7,4],
-"classADropper.html#a38cf91439f0672dae16e4c62a8c9b3ed":[2,0,7,21]
+"classADropper.html#a157c62ea5ca44a107413f475f4a47e61":[2,0,7,11]
 };

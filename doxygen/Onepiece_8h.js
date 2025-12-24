@@ -1,8 +1,8 @@
 var Onepiece_8h =
 [
-    [ "AI", "Onepiece_8h.html#a31f8ae11232de29ffffbe4a3dc637e08", null ],
-    [ "BotID", "Onepiece_8h.html#ac463eed549dac63968e5826662b582d5", null ],
-    [ "BotName", "Onepiece_8h.html#a302a47c641c6f71422e71e76196d731f", null ],
+    [ "AI", "Onepiece_8h.html#ade2334d6b1536c55ed99e75e5a5c0076", null ],
+    [ "BotID", "Onepiece_8h.html#aa27e976521e38c0858f3d0437d48a9b0", null ],
+    [ "BotName", "Onepiece_8h.html#aeb5c1c68e7ad5bf3b490fef2fc654e7f", null ],
     [ "Building", "Onepiece_8h.html#abffb03d97d2c1ee92236896e77b31600", null ],
     [ "Door", "Onepiece_8h.html#a3c08adb522f39311cbf10b2efec81a35", null ],
     [ "GameEnd", "Onepiece_8h.html#a2298f260adc739495b1a3938d2335243", null ],
@@ -11,6 +11,7 @@ var Onepiece_8h =
     [ "Holder_Success", "Onepiece_8h.html#a86e12002bb715fd26393367cd22a64d1", null ],
     [ "Intro", "Onepiece_8h.html#ab763a363d3e8fc13d51ae5637e65a8fa", null ],
     [ "IntroStart", "Onepiece_8h.html#aa9bd2204f84bf0f0e6a421b6c102dc60", null ],
+    [ "LineHeightPercentage", "Onepiece_8h.html#a0931d9478a2dce145ca0a0b7faba847b", null ],
     [ "ListenStageEnd", "Onepiece_8h.html#ad442f83af10ff3e4c202f2e7d0dbc885", null ],
     [ "ListenStageStart", "Onepiece_8h.html#a501440b711be64c54604eca0ed677cee", null ],
     [ "Loading", "Onepiece_8h.html#ae4c4bd33e56196bb1e54f458059d5345", null ],

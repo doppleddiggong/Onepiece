@@ -27,6 +27,7 @@ var classUKLingoNetworkSystem =
     [ "RequestWriteResult", "classUKLingoNetworkSystem.html#aef1bcb9d5e7bc07c1cc43a1ae963c27b", null ],
     [ "RequestWriteSubmit", "classUKLingoNetworkSystem.html#af33057e42c5ce4c185dedf73ecb4f67c", null ],
     [ "SetupHttpRequest", "classUKLingoNetworkSystem.html#a0bfd5f1b3523947877ba5c4e7ef9aa2f", null ],
+    [ "ShowLoadingCircle", "classUKLingoNetworkSystem.html#af0b1628624b05c56818ccf3b3e2a729d", null ],
     [ "ShowNetworkErrorPopup", "classUKLingoNetworkSystem.html#a5a16995fb8341967b36b704966c70558", null ],
     [ "access_token", "classUKLingoNetworkSystem.html#acf7da28577586f19559ef3d7af8ea7ea", null ],
     [ "NetworkWaitCount", "classUKLingoNetworkSystem.html#ae2884d2ebde0f80ae6ff84d5f27a706e", null ]

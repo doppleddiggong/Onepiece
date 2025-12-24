@@ -4,6 +4,7 @@ var classALuggageHolder =
     [ "BeginPlay", "classALuggageHolder.html#a0c20c4037870c7a4c2ff23cde967eefe", null ],
     [ "BillboardInteractWidget", "classALuggageHolder.html#a032a7c031cbaab33f04405ef25c4ede1", null ],
     [ "CheckLuggage", "classALuggageHolder.html#a2d66a7428b93c7189b96aac44c40f6ea", null ],
+    [ "GetCompassMarkerType", "classALuggageHolder.html#abb415ce2d41dab4779fdf9fb5d962e30", null ],
     [ "GetLifetimeReplicatedProps", "classALuggageHolder.html#a96e41e12203a244763f8dab19a34e058", null ],
     [ "Multicast_ShowResultPopup", "classALuggageHolder.html#a5232191a346c7392871fc1fe06a30def", null ],
     [ "Multicast_ShowWrongPopup", "classALuggageHolder.html#a33a0d12b7420dcd881b5b03a7cf2235c", null ],
@@ -11,6 +12,7 @@ var classALuggageHolder =
     [ "OnBoxOverlapBegin", "classALuggageHolder.html#a3dadab8a062db3db4316a56909ed489b", null ],
     [ "OnRep_CurTarget", "classALuggageHolder.html#a4ba5f80b2639cf402725b65b9ef256ed", null ],
     [ "OnRep_IsActivated", "classALuggageHolder.html#af1269670fbe8b2f98c05d27e2a148c7f", null ],
+    [ "SetCompassMarkerInto", "classALuggageHolder.html#a3ab3d5a4d56ec8b8a6c29f24c5fd813c", null ],
     [ "Tick", "classALuggageHolder.html#a57533de28472aeb357ef72c371d0b506", null ],
     [ "UpdateActivateState", "classALuggageHolder.html#a38db790f0dda731912202818138a7892", null ],
     [ "ActivatedHeightOffset", "classALuggageHolder.html#a2fbb800f217376aa32bdee69f32a34f2", null ],
@@ -18,6 +20,7 @@ var classALuggageHolder =
     [ "BoxCollision", "classALuggageHolder.html#aea98e8e5e385e56d7f945900619bc73a", null ],
     [ "CurTarget", "classALuggageHolder.html#aa3217f0b4f3c24098a9c4cee7826f881", null ],
     [ "HoldPos", "classALuggageHolder.html#a37adf1b2bbe4888fc4512eb9afad0fa1", null ],
+    [ "MarkerType", "classALuggageHolder.html#afab55eb3a8c206914d440493384e9401", null ],
     [ "MeshComponent", "classALuggageHolder.html#ae20cb4c15a7ce93da7a3bc26c8d8cf09", null ],
     [ "RotationSpeed", "classALuggageHolder.html#af37d6b2b11e6e6e0dcc012ed6b17fb05", null ],
     [ "WidgetComp", "classALuggageHolder.html#a1e7e4144134f89b3849bbb66ae9b893e", null ]

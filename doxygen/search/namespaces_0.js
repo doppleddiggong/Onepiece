@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['doorgroup_0',['DoorGroup',['../namespaceDoorGroup.html',1,'']]]
+  ['definedata_0',['DefineData',['../namespaceDefineData.html',1,'']]],
+  ['doorgroup_1',['DoorGroup',['../namespaceDoorGroup.html',1,'']]]
 ];

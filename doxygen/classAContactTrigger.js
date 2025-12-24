@@ -2,7 +2,7 @@ var classAContactTrigger =
 [
     [ "AContactTrigger", "classAContactTrigger.html#a008310e9e2eef785bab5fe954c8c9449", null ],
     [ "BeginPlay", "classAContactTrigger.html#a63adace094bcb480873d33bb59e36bc2", null ],
-    [ "GetCompassMarkerInfo", "classAContactTrigger.html#a4cc3502666c683ce510c4ec6b2b7e6d3", null ],
+    [ "GetCompassMarkerType", "classAContactTrigger.html#abb415ce2d41dab4779fdf9fb5d962e30", null ],
     [ "OnListenResponseScenario", "classAContactTrigger.html#a1cb1807d88acc9953623ba5f0c57d053", null ],
     [ "OnReadResponseScenario", "classAContactTrigger.html#a98853c812355fff404cced1f8245bd7b", null ],
     [ "OnTriggerBeginOverlap", "classAContactTrigger.html#a46cb478496173bbaa22088cc5d231fd0", null ],
