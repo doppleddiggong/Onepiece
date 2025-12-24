@@ -2,6 +2,7 @@ var classAQuestionnaireKiosk =
 [
     [ "AQuestionnaireKiosk", "classAQuestionnaireKiosk.html#aa8162a5c3cfc01d7db64ab079eac2e46", null ],
     [ "BeginPlay", "classAQuestionnaireKiosk.html#abeefa4db1129be93cf3e1ae50ace2873", null ],
+    [ "BillboardInteractWidget", "classAQuestionnaireKiosk.html#af7c0ec60093a43765099bc5ce01be624", null ],
     [ "CreateTestData", "classAQuestionnaireKiosk.html#ae5d6e0a31a0e264e6c20162ad0f33bc9", null ],
     [ "GetLifetimeReplicatedProps", "classAQuestionnaireKiosk.html#a8e9abf61ee7e182330c40fa491f32ca9", null ],
     [ "OnInteractionTriggered", "classAQuestionnaireKiosk.html#a4671d5794cc1dd9127a34d1aa241370e", null ],
@@ -14,5 +15,6 @@ var classAQuestionnaireKiosk =
     [ "KioskMeshComp", "classAQuestionnaireKiosk.html#a977328e35abee2657fc8ef9c15817c31", null ],
     [ "QuestionnaireData", "classAQuestionnaireKiosk.html#ae8b07970c59983d1c7c323ea457046b5", null ],
     [ "RootSceneComp", "classAQuestionnaireKiosk.html#ace76f7ef86756597d28ee517e0d1b83f", null ],
-    [ "WidgetComp", "classAQuestionnaireKiosk.html#afc65215c146db0d615009f4075c4ae2a", null ]
+    [ "WidgetComp", "classAQuestionnaireKiosk.html#afc65215c146db0d615009f4075c4ae2a", null ],
+    [ "WidgetGuideComp", "classAQuestionnaireKiosk.html#a5956e5b4e8c7a147263e68d01ac198ee", null ]
 ];

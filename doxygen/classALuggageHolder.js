@@ -23,5 +23,5 @@ var classALuggageHolder =
     [ "MarkerType", "classALuggageHolder.html#afab55eb3a8c206914d440493384e9401", null ],
     [ "MeshComponent", "classALuggageHolder.html#ae20cb4c15a7ce93da7a3bc26c8d8cf09", null ],
     [ "RotationSpeed", "classALuggageHolder.html#af37d6b2b11e6e6e0dcc012ed6b17fb05", null ],
-    [ "WidgetComp", "classALuggageHolder.html#a1e7e4144134f89b3849bbb66ae9b893e", null ]
+    [ "WidgetGuideComp", "classALuggageHolder.html#a849e5acd8a9285c7a2b0d27caf77d7cd", null ]
 ];

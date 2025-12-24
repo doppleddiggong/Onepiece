@@ -22,7 +22,7 @@ var searchData=
   ['beyesightvisible_19',['bEyeSightVisible',['../classAWheatly.html#aa802cc6bd8e1a573cc4f3afe34966768',1,'AWheatly']]],
   ['bgcolor_20',['BGColor',['../structFColorStyleData.html#a64586e832edd9c7c3992d407ab96b3df',1,'FColorStyleData']]],
   ['bhaspendingmessage_21',['bHasPendingMessage',['../classUToastWidget.html#aa7221e8f5696460c1c8ad9e745488fa5',1,'UToastWidget']]],
-  ['billboardinteractwidget_22',['BillboardInteractWidget',['../classALuggageHolder.html#a032a7c031cbaab33f04405ef25c4ede1',1,'ALuggageHolder']]],
+  ['billboardinteractwidget_22',['billboardinteractwidget',['../classAQuestionnaireKiosk.html#af7c0ec60093a43765099bc5ce01be624',1,'AQuestionnaireKiosk::BillboardInteractWidget()'],['../classALuggageHolder.html#a032a7c031cbaab33f04405ef25c4ede1',1,'ALuggageHolder::BillboardInteractWidget()']]],
   ['bind_5fdynamic_5fdelegate_23',['BIND_DYNAMIC_DELEGATE',['../Macro_8h.html#a07b4fc90b0e9c2eda0d2f632d01954c4',1,'Macro.h']]],
   ['bisactivated_24',['bisactivated',['../classAFoodHolder.html#aed2ca3859d2e7e048117990933022b2e',1,'AFoodHolder::bIsActivated'],['../classAHolder.html#ad738de032520334305505a746e524aa4',1,'AHolder::bIsActivated'],['../classALuggageHolder.html#ad8f96e926c40503e6700e367b3205ff3',1,'ALuggageHolder::bIsActivated']]],
   ['bisair_25',['bIsAir',['../classURobotAnimInstance.html#a5fc33cfc25a1240a31b61335e849bd8d',1,'URobotAnimInstance']]],

@@ -1,5 +1,12 @@
 var NAVTREEINDEX18 =
 {
+"structFWriteQuestionData.html#a5b2bbe49b267606522779a32e9cc6382":[2,0,127,1],
+"structFWriteQuestionData.html#aa0920a7007582124473c2a60379caf25":[2,0,127,3],
+"structFWriteQuestionData.html#ac9e8bb279d987684842a0441c1fd3dcf":[2,0,127,2],
+"structFWriteQuestionData.html#ae289bc3e0549e4ed83fcfd9a64ac8782":[2,0,127,0],
+"structFWriteRecord.html":[2,0,128],
+"structFWriteRecord.html#a03568800cc6f8fe1e91982e63829c791":[2,0,128,0],
+"structFWriteRecord.html#a591ceecc17cb064becd753ea9d16d756":[2,0,128,3],
 "structFWriteRecord.html#a751222e370b73954a54e9a3a62bfe855":[2,0,128,1],
 "structFWriteRecord.html#aaa9d853fd20eb96bddd52b6c547d4147":[2,0,128,2],
 "structFWriteWordData.html":[2,0,129],

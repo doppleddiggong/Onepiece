@@ -1,5 +1,7 @@
 var NAVTREEINDEX10 =
 {
+"classUGameDataManager.html#ada47673bf369f355729fe8b2e04a3e90":[2,0,160,37],
+"classUGameDataManager.html#adc750b8b0c8f6a6be4d1173406eb52aa":[2,0,160,72],
 "classUGameDataManager.html#add991fe3638f89c2dea41fc801efd14f":[2,0,160,64],
 "classUGameDataManager.html#ade9d0449c3889143bc8adcc5029f547d":[2,0,160,36],
 "classUGameDataManager.html#adf72cf62298bc613581042c7e86bfbde":[2,0,160,38],
@@ -247,7 +249,5 @@ var NAVTREEINDEX10 =
 "classULoadginCircle.html#a3894e2b3aa110cd497ada643824e95d8":[2,0,175,7],
 "classULoadginCircle.html#a5654b222ef21cf658e8d44998f747cf0":[2,0,175,9],
 "classULoadginCircle.html#a5d2b30a8a5d543b581d785e700c69b89":[2,0,175,5],
-"classULoadginCircle.html#a7e714f65f74d3fca56c7e21aa2c49588":[2,0,175,8],
-"classULoadginCircle.html#aa038362824273d86551e34d773e84ab2":[2,0,175,6],
-"classULoadginCircle.html#ab546cc86c738e8f315f288dda9240e55":[2,0,175,4]
+"classULoadginCircle.html#a7e714f65f74d3fca56c7e21aa2c49588":[2,0,175,8]
 };
