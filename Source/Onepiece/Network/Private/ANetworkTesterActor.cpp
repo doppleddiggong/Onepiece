@@ -298,7 +298,7 @@ void ANetworkTesterActor::OnResponseChatAnswers(FResponseChatAnswers& ResponseDa
         {
             FText AIAnswer = FText::FromString(ResponseData.answer);
             // Bot은 PlayerIndex -1 사용
-            GS->MulticastRPC_SendChat(GS->GetBotInfo(), AIAnswer, GameName::BotID);
+            GS->MulticastRPC_SendChat(GS->GetBotInfo(), AIAnswer, DefineData::BotID);
 
             PRINTLOG(TEXT("[AI Chat] AI Answer: %s"), *ResponseData.answer);
         }

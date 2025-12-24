@@ -45,14 +45,19 @@ ALuggageHolder::ALuggageHolder()
 	HoldPos = CreateDefaultSubobject<USceneComponent>(TEXT("HoldPos"));
 	HoldPos->SetupAttachment(MeshComponent);
 	
-	WidgetComp = CreateDefaultSubobject<UWidgetComponent>(TEXT("WidgetComp"));
-	WidgetComp->SetupAttachment(RootComponent);
-	WidgetComp->SetRelativeLocation(FVector(0.f, 0.f, 210.f));
-	WidgetComp->SetPivot(FVector2D(0.5f, 0));
-	ConstructorHelpers::FClassFinder<UUserWidget> widgetClassRef(TEXT("/Game/CustomContents/UI/Widgets/WBP_LuggageSlotWidget.WBP_LuggageSlotWidget_C"));
-	if (widgetClassRef.Succeeded())
+	WidgetGuideComp = CreateDefaultSubobject<UWidgetComponent>(TEXT("WidgetGuideComp"));
+	WidgetGuideComp->SetupAttachment(RootComponent);
+	WidgetGuideComp->SetRelativeLocation(FVector(0.f, 0.f, 180.f));
+	WidgetGuideComp->SetDrawAtDesiredSize(true);
+	ConstructorHelpers::FClassFinder<UUserWidget> widgetGuideClassRef(TEXT("/Game/CustomContents/UI/Widgets/WBP_LuggageSlotWidget.WBP_LuggageSlotWidget_C"));
+	if (widgetGuideClassRef.Succeeded())
 	{
-		WidgetComp->SetWidgetClass(widgetClassRef.Class);
+		WidgetGuideComp->SetWidgetClass(widgetGuideClassRef.Class);
+	}
+	ConstructorHelpers::FObjectFinder<UMaterialInterface> materialRef(TEXT("/Script/Engine.MaterialInstanceConstant'/Engine/EngineMaterials/Widget3DPassThrough_Masked_OneSided.Widget3DPassThrough_Masked_OneSided'"));
+	if (materialRef.Succeeded())
+	{
+		WidgetGuideComp->SetMaterial(0, materialRef.Object);
 	}
 
 	MarkerType = ECompassMarkerType::QuestEnd;
@@ -231,11 +236,11 @@ void ALuggageHolder::UpdateActivateState(bool State)
 void ALuggageHolder::BillboardInteractWidget()
 {
 	// 위젯이 없으면 빌보드화 안 함
-	if (!WidgetComp)
+	if (!WidgetGuideComp)
 		return;
 
 	// Visibility 체크 - 보이지 않으면 빌보드화 안 함
-	if (!WidgetComp->IsVisible())
+	if (!WidgetGuideComp->IsVisible())
 		return;
 
 	// 카메라 가져오기
@@ -248,7 +253,7 @@ void ALuggageHolder::BillboardInteractWidget()
 	Rotation.Pitch = 0;
 
 	// 위젯 회전 설정
-	WidgetComp->SetWorldRotation(Rotation);
+	WidgetGuideComp->SetWorldRotation(Rotation);
 }
 
 void ALuggageHolder::SetCompassMarkerInto(ECompassMarkerType InMarkerType)

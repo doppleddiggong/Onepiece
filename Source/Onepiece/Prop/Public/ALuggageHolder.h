@@ -75,7 +75,7 @@ public:
 	TObjectPtr<class USceneComponent> HoldPos;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Widget")
-	TObjectPtr<class UWidgetComponent> WidgetComp;
+	TObjectPtr<class UWidgetComponent> WidgetGuideComp;
 
 protected:
 	// 현재 올라가 있는 액터

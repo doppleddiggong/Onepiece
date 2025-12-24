@@ -8,9 +8,41 @@
 #include "Components/WidgetSwitcher.h"
 #include "Math/UnrealMathUtility.h"
 
-void UQuestOrderSlotWidget::SetQuestType(FString inQuestType)
+
+UQuestOrderSlotWidget::UQuestOrderSlotWidget(FObjectInitializer const& ObjectInitializer) : Super(ObjectInitializer)
 {
-	Txt_QuestType->SetText(FText::FromString(inQuestType));
+	ConstructorHelpers::FObjectFinder<UTexture2D> readQuestTextureRef(TEXT("/Script/Engine.Texture2D'/Game/CustomContents/UI/Texture/Resource/Icon_Read.Icon_Read'"));
+	if (readQuestTextureRef.Succeeded())
+	{
+		ReadQuestTexture = readQuestTextureRef.Object;
+	}
+	ConstructorHelpers::FObjectFinder<UTexture2D> listenQuestTextureRef(TEXT("/Script/Engine.Texture2D'/Game/CustomContents/UI/Texture/Resource/Icon_Listen.Icon_Listen'"));
+	if (listenQuestTextureRef.Succeeded())
+	{
+		ListenQuestTexture = listenQuestTextureRef.Object;
+	}
+	ConstructorHelpers::FObjectFinder<UTexture2D> speakQuestTextureRef(TEXT("/Script/Engine.Texture2D'/Game/CustomContents/UI/Texture/Resource/Icon_Speak.Icon_Speak'"));
+	if (speakQuestTextureRef.Succeeded())
+	{
+		SpeakQuestTexture = speakQuestTextureRef.Object;
+	}
+	ConstructorHelpers::FObjectFinder<UTexture2D> writeQuestTextureRef(TEXT("/Script/Engine.Texture2D'/Game/CustomContents/UI/Texture/Resource/Icon_Write.Icon_Write'"));
+	if (writeQuestTextureRef.Succeeded())
+	{
+		WriteQuestTexture = writeQuestTextureRef.Object;
+	}
+}
+
+void UQuestOrderSlotWidget::SetQuestType(const char inQuestType)
+{
+	switch (inQuestType)
+	{
+		case 'R': Image_QuestType->SetBrushFromTexture(ReadQuestTexture); break;
+		case 'L': Image_QuestType->SetBrushFromTexture(ListenQuestTexture); break;
+		case 'S': Image_QuestType->SetBrushFromTexture(SpeakQuestTexture); break;
+		case 'W': Image_QuestType->SetBrushFromTexture(WriteQuestTexture); break;
+		default: break;
+	}
 }
 
 void UQuestOrderSlotWidget::PlayQuestSlot()

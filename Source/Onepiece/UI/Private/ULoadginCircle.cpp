@@ -28,11 +28,6 @@ void ULoadginCircle::NativeConstruct()
 	UpdateVisibility(false);
 }
 
-void ULoadginCircle::NativeDestruct()
-{
-	Super::NativeDestruct();
-}
-
 void ULoadginCircle::NativeTick(const FGeometry& MyGeometry, float InDeltaTime)
 {
 	Super::NativeTick(MyGeometry, InDeltaTime);
@@ -42,13 +37,11 @@ void ULoadginCircle::NativeTick(const FGeometry& MyGeometry, float InDeltaTime)
 
 void ULoadginCircle::Show()
 {
-	// PRINTLOG(TEXT("[LoadingCircle] Show()"));
 	UpdateVisibility(true);
 }
 
 void ULoadginCircle::Hide()
 {
-	// PRINTLOG(TEXT("[LoadingCircle] Hide()"));
 	UpdateVisibility(false);
 }
 
@@ -65,12 +58,8 @@ void ULoadginCircle::UpdateVisibility(bool bShouldShow)
 {
 	if (!RootOverlay)
 	{
-		PRINTLOG(TEXT("[LoadingCircle] UpdateVisibility: RootOverlay is nullptr!"));
 		return;
 	}
-
-	// PRINTLOG(TEXT("[LoadingCircle] UpdateVisibility - Visible: %s"),
-	// 	bShouldShow ? TEXT("TRUE") : TEXT("FALSE"));
 
 	if (bShouldShow)
 	{

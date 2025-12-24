@@ -22,6 +22,7 @@
 #include "UPopup_MsgBox.h"
 #include "UAudioCacheManager.h"
 #include "ULingoGameInstanceSubsystem.h"
+#include "ULoadingCircleManager.h"
 #include "Misc/Paths.h"
 #include "Dom/JsonObject.h"
 #include "GenericPlatform/GenericPlatformHttp.h"
@@ -86,6 +87,15 @@ void UKLingoNetworkSystem::AddNetworkWaitCount(int Value)
 
 	if ( auto BroadcastManager = UBroadcastManager::Get(World) )
 		BroadcastManager->SendNetworkWaitCount(NetworkWaitCount);
+}
+
+void UKLingoNetworkSystem::ShowLoadingCircle(bool bShow)
+{
+	if (UWorld* World = GetWorld())
+	{
+		if (ULoadingCircleManager* LoadingManager = ULoadingCircleManager::Get(World))
+			LoadingManager->LoadingCircle(bShow);
+	}
 }
 
 void UKLingoNetworkSystem::ShowNetworkErrorPopup(int32 ResponseCode, const FString& ResponseContent)
@@ -427,7 +437,7 @@ void UKLingoNetworkSystem::RequestWriteSubmit(const TArray<FString>& ImageNameAr
 			if (!WeakThis.IsValid() || IsEngineExitRequested())
 				return;
 
-			WeakThis->AddNetworkWaitCount(-1);
+			WeakThis->ShowLoadingCircle(false);
 			FResponseWriteSubmit ResponseData;
 
 			if (bWasSuccessful && ResPtr.IsValid())
@@ -461,7 +471,7 @@ void UKLingoNetworkSystem::RequestWriteSubmit(const TArray<FString>& ImageNameAr
 			}
 		});
 
-	AddNetworkWaitCount(1);
+	ShowLoadingCircle(true);
 	Request->ProcessRequest();
 }
 
@@ -483,7 +493,8 @@ void UKLingoNetworkSystem::RequestWriteResult(const FRequestWriteResult& Result,
 			if (!WeakThis.IsValid() || IsEngineExitRequested())
 				return;
 
-			WeakThis->AddNetworkWaitCount(-1);
+			WeakThis->ShowLoadingCircle(false);
+
 			FResponseWriteResult ResponseData;
 
 			if (bWasSuccessful && ResPtr.IsValid())
@@ -517,7 +528,7 @@ void UKLingoNetworkSystem::RequestWriteResult(const FRequestWriteResult& Result,
 			}
 		});
 
-	AddNetworkWaitCount(1);
+	ShowLoadingCircle(true);
 	Request->ProcessRequest();
 }
 
@@ -653,7 +664,7 @@ void UKLingoNetworkSystem::RequestSpeakingJudges(
 			if (!WeakThis.IsValid() || IsEngineExitRequested())
 				return;
 
-			WeakThis->AddNetworkWaitCount(-1);
+			WeakThis->ShowLoadingCircle(false);
 			FResponseSpeakingJudes ResponseData;
 
 			if (bWasSuccessful && ResPtr.IsValid())
@@ -688,7 +699,7 @@ void UKLingoNetworkSystem::RequestSpeakingJudges(
 			}
 		});
 
-	AddNetworkWaitCount(1);
+	ShowLoadingCircle(true);
 	Request->ProcessRequest();
 }
 
@@ -975,7 +986,8 @@ void UKLingoNetworkSystem::RequestReadResult( const FRequestReadResult& Result, 
 	      if (!WeakThis.IsValid() || IsEngineExitRequested())
 	          return;
 
-	      WeakThis->AddNetworkWaitCount(-1);
+	      WeakThis->ShowLoadingCircle(false);
+
 	      FResponseReadResult ResponseData;
 
 	      if (bWasSuccessful && ResPtr.IsValid())
@@ -1011,7 +1023,7 @@ void UKLingoNetworkSystem::RequestReadResult( const FRequestReadResult& Result, 
 	      }
 	  });
 
-	AddNetworkWaitCount(1);
+	ShowLoadingCircle(true);
 	Request->ProcessRequest();
 }
 
@@ -1092,7 +1104,8 @@ void UKLingoNetworkSystem::RequestListenResult( const FRequestListenResult& Resu
 	      if (!WeakThis.IsValid() || IsEngineExitRequested())
 	          return;
 
-	      WeakThis->AddNetworkWaitCount(-1);
+	      WeakThis->ShowLoadingCircle(false);
+
 	      FResponseListenResult ResponseData;
 
 	      if (bWasSuccessful && ResPtr.IsValid())
@@ -1128,7 +1141,7 @@ void UKLingoNetworkSystem::RequestListenResult( const FRequestListenResult& Resu
 	      }
 	  });
 
-	AddNetworkWaitCount(1);
+	ShowLoadingCircle(true);
 	Request->ProcessRequest();
 }
 
@@ -1209,7 +1222,8 @@ void UKLingoNetworkSystem::RequestSpeakResult( const FRequestSpeakResult& Result
 	      if (!WeakThis.IsValid() || IsEngineExitRequested())
 	          return;
 
-	      WeakThis->AddNetworkWaitCount(-1);
+	      WeakThis->ShowLoadingCircle(false);
+
 	      FResponseSpeakResult ResponseData;
 
 	      if (bWasSuccessful && ResPtr.IsValid())
@@ -1245,7 +1259,7 @@ void UKLingoNetworkSystem::RequestSpeakResult( const FRequestSpeakResult& Result
 	      }
 	  });
 
-	AddNetworkWaitCount(1);
+	ShowLoadingCircle(true);
 	Request->ProcessRequest();
 }
 
@@ -1265,7 +1279,7 @@ void UKLingoNetworkSystem::RequestEvaluationResult(int32 RoomId, FResponseEvalua
 	Request->OnProcessRequestComplete().BindLambda(
 		[this, InDelegate](FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSuccess)
 		{
-			AddNetworkWaitCount(-1);
+			ShowLoadingCircle(false);
 
 			FResponseEvaluationResult ResponseData;
 
@@ -1302,7 +1316,7 @@ void UKLingoNetworkSystem::RequestEvaluationResult(int32 RoomId, FResponseEvalua
 			}
 		});
 
-	AddNetworkWaitCount(1);
+	ShowLoadingCircle(true);
 	Request->ProcessRequest();
 }
 

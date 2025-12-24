@@ -6,6 +6,7 @@
 #include "UGameDataManager.h"
 #include "Components/TextBlock.h"
 #include "Components/Image.h"
+#include "Onepiece/Onepiece.h"
 
 void UPopup_SpeakResultItem::InitData(const FSpeakResultItem& InItemData)
 {
@@ -13,6 +14,9 @@ void UPopup_SpeakResultItem::InitData(const FSpeakResultItem& InItemData)
 	Txt_Question->SetText(FText::FromString(InItemData.Question));
 	Txt_Feedback->SetText(FText::FromString(InItemData.Feedback));
 
+	Txt_Feedback->SetLineHeightPercentage( DefineData::LineHeightPercentage );
+
+	
 	auto GradeTexture = ULingoGameHelper::ConvertGradeScore(InItemData.Score);
 	if (UTexture2D* Texture = UGameDataManager::Get(this)->GetTexture(GradeTexture))
 	{

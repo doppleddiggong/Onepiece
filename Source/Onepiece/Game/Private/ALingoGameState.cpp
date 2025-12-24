@@ -30,9 +30,9 @@ ALingoGameState::ALingoGameState()
 	RoomId = 0;
 	RoomLevel = 1;
 
-	Bot.id = GameName::BotID;
-	Bot.username = GameName::BotName;
-	Bot.fullname = GameName::BotName;
+	Bot.id = DefineData::BotID;
+	Bot.username = DefineData::BotName;
+	Bot.fullname = DefineData::BotName;
 	Bot.is_active = true;
 
 	Bot.my_avatar = TEXT("[BOT]");

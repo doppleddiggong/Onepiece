@@ -9,6 +9,7 @@
 #include "Components/Image.h"
 #include "Components/SizeBox.h"
 #include "Components/TextBlock.h"
+#include "Onepiece/Onepiece.h"
 
 void UPopup_QuestionnaireResultItem::InitItem(int32 index, FString questionKor, const FResponseWriteData& data)
 {
@@ -68,7 +69,8 @@ void UPopup_QuestionnaireResultItem::InitItem(int32 index, FString questionKor, 
 		*data.display.message,
 		*data.display.correction);
 
-	Text_Feedback->SetText(FText::FromString(Description));	
+	Text_Feedback->SetText(FText::FromString(Description));
+	Text_Feedback->SetLineHeightPercentage( DefineData::LineHeightPercentage );
 }
 
 UTexture2D* UPopup_QuestionnaireResultItem::LoadTextureFromFile(const FString& filePath)

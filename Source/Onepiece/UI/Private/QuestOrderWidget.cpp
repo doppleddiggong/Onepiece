@@ -13,10 +13,10 @@ void UQuestOrderWidget::NativeOnInitialized()
 	
 	ProgressBar_Quest->SetPercent(1.f/4);
 	Slot_R->PlayQuestSlot();
-	Slot_R->SetQuestType("R");
-	Slot_L->SetQuestType("L");
-	Slot_S->SetQuestType("S");
-	Slot_W->SetQuestType("W");
+	Slot_R->SetQuestType('R');
+	Slot_L->SetQuestType('L');
+	Slot_S->SetQuestType('S');
+	Slot_W->SetQuestType('W');
 }
 
 void UQuestOrderWidget::UpdateQuestOrder(const FString& inQuestOrder)

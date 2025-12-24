@@ -221,7 +221,7 @@ void FResponseUserMe::PrintData() const
 
 EResourceTextureType FResponseUserMe::GetChatProfileTextureType(int player_index) const
 {
-	if ( id == GameName::BotID)
+	if ( id == DefineData::BotID)
 	{
 		return EResourceTextureType::Bot;
 	}
@@ -235,7 +235,7 @@ EResourceTextureType FResponseUserMe::GetChatProfileTextureType(int player_index
 
 FLinearColor FResponseUserMe::GetChatProfileBg(int player_index) const
 {
-	if ( id == GameName::BotID)
+	if ( id == DefineData::BotID)
 	{
 		return FColor::FromHex(TEXT("007BE8FF"));
 	}
