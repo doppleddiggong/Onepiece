@@ -20,6 +20,14 @@ void UBasePopup::OpenAnimation()
 		AddToViewport();
 	}
 
+	// 블루프린트에서 정의한 애니메이션이 있으면 해당 애니메이션 재생
+	if (BlueprintOpenAnimation)
+	{
+		PlayAnimation(BlueprintOpenAnimation);
+		return;
+	}
+
+	// 블루프린트 애니메이션이 없으면 기본 스크립트 애니메이션 사용
 	SetRenderTransformPivot(OpenPivot);
 	SetRenderScale(FVector2D(OpenStartScale, OpenStartScale));
 
@@ -42,7 +50,7 @@ void UBasePopup::UpdateAnimation(float InDeltaTime)
 	OpenElapsedTime += InDeltaTime;
 
 	const float Alpha = FMath::Clamp(OpenElapsedTime / OpenDuration, 0.0f, 1.0f);
-	const float EasedAlpha = FMath::InterpEaseOut(0.0f, 1.0f, Alpha, OpenEaseExponent);
+	const float EasedAlpha = FEaseHelper::Ease(Alpha, OpenEaseType);
 	const float NewScale = FMath::Lerp(OpenStartScale, OpenTargetScale, EasedAlpha);
 
 	SetRenderScale(FVector2D(NewScale, NewScale));
