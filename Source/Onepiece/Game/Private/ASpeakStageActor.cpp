@@ -79,12 +79,12 @@ void ASpeakStageActor::StartStageForPlayer(ALingoPlayerState* Player)
 
 void ASpeakStageActor::Multicast_NotifySpeakQuestStarted_Implementation(const FString& PlayerName)
 {
-	// 모든 클라이언트에서 Toast 메시지 표시
-	if (UDialogManager* DM = UDialogManager::Get(GetWorld()))
-	{
-		FString Message = FString::Printf(TEXT("[%s] has started the inspection quest with the officer."), *PlayerName);
-		DM->ShowToast(Message);
-	}
+	// // 모든 클라이언트에서 Toast 메시지 표시
+	// if (UDialogManager* DM = UDialogManager::Get(GetWorld()))
+	// {
+	// 	FString Message = FString::Printf(TEXT("[%s] has started the inspection quest with the officer."), *PlayerName);
+	// 	DM->ShowToast(Message);
+	// }
 }
 
 void ASpeakStageActor::NotifyAnswerComplete(ALingoPlayerState* Player)
