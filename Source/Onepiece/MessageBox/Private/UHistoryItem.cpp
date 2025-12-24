@@ -2,10 +2,14 @@
 
 #include "UHistoryItem.h"
 #include "Components/TextBlock.h"
+#include "Onepiece/Onepiece.h"
 
 void UHistoryItem::NativeConstruct()
 {
 	Super::NativeConstruct();
+
+	Txt_Question->SetLineHeightPercentage( DefineData::LineHeightPercentage );
+	Txt_Answer->SetLineHeightPercentage( DefineData::LineHeightPercentage );
 }
 
 void UHistoryItem::InitItem(const FChatHistoryItem& Data)

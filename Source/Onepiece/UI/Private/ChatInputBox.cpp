@@ -144,7 +144,7 @@ bool UChatInputBox::IsAIAsk(const FString& InMessage, FString& OutQuestion) cons
 	if (InMessage.Split(TEXT(":"), &LeftPart, &RightPart))
 	{
 		// 왼쪽 파트의 공백을 제거하고 "AI"와 일치하는지 확인 (대소문자 무시)
-		if (LeftPart.TrimStartAndEnd().Equals(GameName::AI, ESearchCase::IgnoreCase))
+		if (LeftPart.TrimStartAndEnd().Equals(DefineData::AI, ESearchCase::IgnoreCase))
 		{
 			OutQuestion = RightPart.TrimStart();
 			return !OutQuestion.IsEmpty(); // 내용이 비어있지 않아야 true

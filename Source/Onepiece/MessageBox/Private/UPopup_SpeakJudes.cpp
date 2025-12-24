@@ -5,10 +5,12 @@
 #include "NetworkData.h"
 #include "UImageButton.h"
 #include "NetworkData.h"
+#include "UDialogManager.h"
 #include "UPopupManager.h"
 #include "UResultStatWidget.h"
 #include "UTextureButton.h"
 #include "Components/TextBlock.h"
+#include "Onepiece/Onepiece.h"
 
 void UPopup_SpeakJudes::InitPopup(const FResponseSpeakingJudes& Response, const FOnSpeakJudesConfirmDelegate& InOnConfirm)
 {
@@ -27,6 +29,7 @@ void UPopup_SpeakJudes::InitPopup(const FResponseSpeakingJudes& Response, const 
 		Btn_Confirm->OnButtonClickedEvent.AddDynamic(this, &UPopup_SpeakJudes::OnClickClose);
 	}
 
+	UDialogManager::Get(GetWorld())->HideToastImmediately();
 
 	// GetResultStatData로 Grammar, Context 데이터 가져오기
 	auto ResultList = Response.GetResultStatData();
@@ -38,6 +41,7 @@ void UPopup_SpeakJudes::InitPopup(const FResponseSpeakingJudes& Response, const 
 
 	// 피드백 텍스트 설정
 	Txt_Feedback->SetText(FText::FromString(Response.final_feedback));
+	Txt_Feedback->SetLineHeightPercentage( DefineData::LineHeightPercentage );
 }
 
 void UPopup_SpeakJudes::OnClickClose()

@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "EPopupType.h"
 #include "Blueprint/UserWidget.h"
+#include "FEaseHelper.h"
 #include "UBasePopup.generated.h"
 
 /**
@@ -32,6 +33,17 @@ protected:
 	EPopupType PopupType;
 
 	// ========================================
+	// Blueprint Open Animation
+	// ========================================
+
+	/**
+	 * @brief 블루프린트에서 정의한 오픈 애니메이션
+	 * @details 설정된 경우 스크립트 애니메이션 대신 이 애니메이션을 재생합니다.
+	 */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Popup|Animation", meta = (BindWidgetOptional))
+	UWidgetAnimation* BlueprintOpenAnimation;
+
+	// ========================================
 	// Script Open Animation
 	// ========================================
 
@@ -48,7 +60,7 @@ protected:
 
 	/** 애니메이션 지속 시간 */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Popup|Animation")
-	float OpenDuration = 0.1f;
+	float OpenDuration = 0.2f;
 
 	/** 시작 스케일 */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Popup|Animation")
@@ -58,13 +70,16 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Popup|Animation")
 	float OpenTargetScale = 1.0f;
 
-	/** Ease 지수 (값이 클수록 더 급격하게 가속) */
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Popup|Animation")
-	float OpenEaseExponent = 2.0f;
-
 	/** 애니메이션 중심점 (0~1 범위) */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Popup|Animation")
 	FVector2D OpenPivot = FVector2D(0.5f, 0.5f);
+
+	/**
+	 * @brief Easing 타입
+	 * @details 애니메이션의 보간 곡선을 선택합니다. 기본값은 EaseOutBack (탄성 효과)
+	 */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Popup|Animation")
+	EEaseType OpenEaseType = EEaseType::EaseOutBack;
 
 public:
 	/**

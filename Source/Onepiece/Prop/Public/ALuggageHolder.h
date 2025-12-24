@@ -3,11 +3,12 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "CompassTargetInterface.h"
 #include "GameFramework/Actor.h"
 #include "ALuggageHolder.generated.h"
 
 UCLASS()
-class ONEPIECE_API ALuggageHolder : public AActor
+class ONEPIECE_API ALuggageHolder : public AActor, public ICompassTargetInterface
 {
 	GENERATED_BODY()
 
@@ -92,5 +93,7 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Visual")
 	float RotationSpeed = 90.0f;
 	
-
+protected:
+	// Compass Interface
+	virtual void SetCompassMarkerInto(ECompassMarkerType InMarkerType) override;
 };

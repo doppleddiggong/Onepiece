@@ -59,6 +59,8 @@ ALuggageHolder::ALuggageHolder()
 	{
 		WidgetGuideComp->SetMaterial(0, materialRef.Object);
 	}
+
+	MarkerType = ECompassMarkerType::QuestEnd;
 }
 
 void ALuggageHolder::BeginPlay()
@@ -246,6 +248,11 @@ void ALuggageHolder::BillboardInteractWidget()
 
 	// 위젯 회전 설정
 	WidgetGuideComp->SetWorldRotation(Rotation);
+}
+
+void ALuggageHolder::SetCompassMarkerInto(ECompassMarkerType InMarkerType)
+{
+	MarkerType = InMarkerType;
 }
 
 /**

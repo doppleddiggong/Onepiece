@@ -6,6 +6,7 @@
 #include "ULingoGameHelper.h"
 #include "Components/Image.h"
 #include "Components/TextBlock.h"
+#include "Onepiece/Onepiece.h"
 
 void UEvaluationScenario::InitPanel(const FScenarioResult& InScenarioResult)
 {
@@ -22,6 +23,7 @@ void UEvaluationScenario::InitPanel(const FScenarioResult& InScenarioResult)
 		*InScenarioResult.action_item);
 
 	Txt_Desc->SetText(FText::FromString(Description));
+	Txt_Desc->SetLineHeightPercentage( DefineData::LineHeightPercentage );
 	
 	auto GradeTexture = ULingoGameHelper::ConvertGradeString(InScenarioResult.grade);
 	if (UTexture2D* Texture = UGameDataManager::Get(this)->GetTexture(GradeTexture))

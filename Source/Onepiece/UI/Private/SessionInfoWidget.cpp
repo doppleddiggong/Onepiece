@@ -28,7 +28,7 @@ void USessionInfoWidget::OnClickJoin()
 	// sessionIdx 번째 세션에 참여
 	gi->JoinOtherSession(sessionIdx);
 
-	UDialogManager::Get(GetWorld())->ShowToast(TEXT("Session Join Success"));
+	UDialogManager::Get(GetWorld())->ShowToast(TEXT("Room created successfully"));
 }
 
 void USessionInfoWidget::SetSessionInfo(int32 idx, FString sessionName)

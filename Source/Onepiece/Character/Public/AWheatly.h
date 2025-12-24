@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "CompassTargetInterface.h"
 #include "GameFramework/Actor.h"
 #include "AWheatly.generated.h"
 
@@ -26,7 +27,7 @@ enum class EWheatlyAnim : uint8
 /// - 애니메이션 재생 및 네트워크 동기화
 /// - 상태에 따른 시각적 피드백 (눈 색상 변경)
 UCLASS()
-class ONEPIECE_API AWheatly : public AActor
+class ONEPIECE_API AWheatly : public AActor, public ICompassTargetInterface
 {
 	GENERATED_BODY()
 
@@ -163,4 +164,8 @@ private:
 
 	float IndicatorBaseLength = 1.0f;
 	float IndicatorBaseRadius = 1.0f;
+
+protected:
+	// Compass Interface
+	virtual void SetCompassMarkerInto(ECompassMarkerType InMarkerType) override;
 };

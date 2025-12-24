@@ -88,7 +88,11 @@ private:
 	/// @param Value [in] 증감할 값입니다.
 	void AddNetworkWaitCount(int Value);
 
-	
+	/// @brief LoadingCircle을 표시하거나 숨깁니다.
+	/// @param bShow [in] true면 표시, false면 숨김
+	void ShowLoadingCircle(bool bShow);
+
+
 	TSharedRef<IHttpRequest, ESPMode::ThreadSafe> SetupHttpRequest( const FString& Url, const FString& Verb );
 
 private:

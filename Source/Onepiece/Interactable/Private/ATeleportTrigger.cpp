@@ -34,6 +34,8 @@ ATeleportTrigger::ATeleportTrigger()
 	bIsTriggered = false;
 	bShowDebugBox = true;
 	DebugBoxColor = FColor::Green;
+
+	MarkerType = ECompassMarkerType::Teleporter;
 }
 
 void ATeleportTrigger::BeginPlay()
@@ -134,6 +136,11 @@ void ATeleportTrigger::OnTriggerBeginOverlap(
 		if (bIsOneShot)
 			bIsTriggered = true;
 	}
+}
+
+void ATeleportTrigger::SetCompassMarkerInto(ECompassMarkerType InMarkerType)
+{
+	MarkerType = InMarkerType;
 }
 
 void ATeleportTrigger::OnActivate_Implementation()
