@@ -690,8 +690,12 @@ void APlayerActor::OnTeleportAllPlayers(FTransform TargetTransform)
 }
 
 void APlayerActor::ServerRPC_Teleport_Implementation(FTransform TargetTransform)
-{
-	SetActorTransform(TargetTransform);
+{	
+	SetActorLocation(TargetTransform.GetLocation());
+	if (APlayerControl* PC = Cast<APlayerControl>(Controller))
+	{
+		PC->SetControlRotation(PendingTeleportTransform.Rotator());
+	}
 }
 
 void APlayerActor::Server_NotifySpeakJudgeComplete_Implementation(const FResponseSpeakingJudes& Response)
@@ -742,11 +746,13 @@ void APlayerActor::Client_ShowSpeakJudesPopup_Implementation(const FResponseSpea
 
 void APlayerActor::OnFadeOutCompleteForTeleport()
 {
-	PRINTLOG(TEXT("APlayerActor::OnFadeOutCompleteForTeleport - Teleporting to %s"), *PendingTeleportTransform.ToString());
-
 	// 텔레포트 실행
-	SetActorTransform(PendingTeleportTransform);
-
+	SetActorLocation(PendingTeleportTransform.GetLocation());
+	if (APlayerControl* PC = Cast<APlayerControl>(Controller))
+	{
+		PC->SetControlRotation(PendingTeleportTransform.Rotator());
+	}
+	
 	// FadeWidget 가져오기
 	if (!MainWidget)
 		return;
