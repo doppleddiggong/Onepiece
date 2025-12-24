@@ -15,7 +15,9 @@ class ONEPIECE_API UQuestOrderSlotWidget : public UUserWidget
 	GENERATED_BODY()
 	
 public:
-	void SetQuestType(FString inQuestType);
+	UQuestOrderSlotWidget(FObjectInitializer const& ObjectInitializer);
+	
+	void SetQuestType(const char inQuestType);
 	void PlayQuestSlot();
 	void FinishQuestSlot();
 
@@ -27,12 +29,24 @@ protected:
 	TObjectPtr<class UWidgetSwitcher> WidgetSwitcher_Slot;
 	
 	UPROPERTY(meta=(BindWidget))
-	TObjectPtr<class UTextBlock> Txt_QuestType;
+	TObjectPtr<class UImage> Image_QuestType;
 	
 	UPROPERTY(meta=(BindWidget))
 	TObjectPtr<class UImage> Image_Complete;
 	
 private:
+	UPROPERTY()
+	TObjectPtr<class UTexture2D> ReadQuestTexture;
+	
+	UPROPERTY()
+	TObjectPtr<class UTexture2D> ListenQuestTexture;
+	
+	UPROPERTY()
+	TObjectPtr<class UTexture2D> SpeakQuestTexture;
+	
+	UPROPERTY()
+	TObjectPtr<class UTexture2D> WriteQuestTexture;
+	
 	float StampStartScale = 2.f;
 	float StampDX = 0;
 	FTimerHandle StampTimerHandle;

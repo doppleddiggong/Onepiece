@@ -16,6 +16,8 @@
 #include "ALingoPlayerState.h"
 #include "APlayerActor.h"
 #include "APlayerControl.h"
+#include "Kismet/GameplayStatics.h"
+#include "Kismet/KismetMathLibrary.h"
 
 #define INTERACT_WIDGET_PATH TEXT("/Game/CustomContents/UI/Widgets/WBP_InteractWidget.WBP_InteractWidget_C")
 
@@ -31,6 +33,21 @@ AQuestionnaireKiosk::AQuestionnaireKiosk()
 	
 	KioskMeshComp = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("KioskMeshComp"));
 	KioskMeshComp->SetupAttachment(RootComponent);
+	
+	WidgetGuideComp = CreateDefaultSubobject<UWidgetComponent>(TEXT("WidgetGuideComp"));
+	WidgetGuideComp->SetupAttachment(RootComponent);
+	WidgetGuideComp->SetRelativeLocationAndRotation(FVector(0, 0, 220), FRotator(0, 90, 0));
+	WidgetGuideComp->SetDrawAtDesiredSize(true);
+	ConstructorHelpers::FClassFinder<UUserWidget> widgetGuideRef(TEXT("/Game/CustomContents/UI/Widgets/WBP_QuestionnaireKioskGuideWidget.WBP_QuestionnaireKioskGuideWidget_C"));
+	if (widgetGuideRef.Succeeded())
+	{
+		WidgetGuideComp->SetWidgetClass(widgetGuideRef.Class);
+	}
+	ConstructorHelpers::FObjectFinder<UMaterialInterface> materialRef(TEXT("/Script/Engine.MaterialInstanceConstant'/Engine/EngineMaterials/Widget3DPassThrough_Masked_OneSided.Widget3DPassThrough_Masked_OneSided'"));
+	if (materialRef.Succeeded())
+	{
+		WidgetGuideComp->SetMaterial(0, materialRef.Object);
+	}
 	
 	InteractableComp = CreateDefaultSubobject<UInteractableComponent>(TEXT("InteractableComp"));
 	InteractableComp->InteractionType = EInteractionType::Kiosk;
@@ -70,6 +87,8 @@ void AQuestionnaireKiosk::GetLifetimeReplicatedProps(TArray<class FLifetimePrope
 void AQuestionnaireKiosk::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+	
+	BillboardInteractWidget();
 }
 
 void AQuestionnaireKiosk::OnInteractionTriggered(AActor* Interactor)
@@ -193,6 +212,29 @@ void AQuestionnaireKiosk::CreateTestData(FQuestWriteInfo& TestData)
 	TestData.question.Add(Q4);
 	
 	TestData.bIsValid = true;
+}
+
+void AQuestionnaireKiosk::BillboardInteractWidget()
+{
+	// 위젯이 없으면 빌보드화 안 함
+	if (!WidgetGuideComp)
+		return;
+
+	// Visibility 체크 - 보이지 않으면 빌보드화 안 함
+	if (!WidgetGuideComp->IsVisible())
+		return;
+
+	// 카메라 가져오기
+	AActor* Camera = UGameplayStatics::GetPlayerCameraManager(GetWorld(), 0);
+	if (!Camera)
+		return;
+
+	// 카메라를 향하도록 회전 계산
+	FRotator Rotation = UKismetMathLibrary::MakeRotFromXZ( -Camera->GetActorForwardVector(), Camera->GetActorUpVector() );
+	Rotation.Pitch = 0;
+
+	// 위젯 회전 설정
+	WidgetGuideComp->SetWorldRotation(Rotation);
 }
 
 void AQuestionnaireKiosk::OnOutlineStateChanged(bool bShouldShowOutline)

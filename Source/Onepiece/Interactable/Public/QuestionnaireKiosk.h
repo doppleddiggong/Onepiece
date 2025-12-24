@@ -32,6 +32,9 @@ protected:
 	TObjectPtr<class UStaticMeshComponent> KioskMeshComp;
 	
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	TObjectPtr<class UWidgetComponent> WidgetGuideComp;
+	
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	TObjectPtr<class UInteractableComponent> InteractableComp;
 	
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
@@ -59,6 +62,9 @@ protected:
 	void ShowPopup();
 
 	void CreateTestData(FQuestWriteInfo& TestData);
+	
+private:
+	void BillboardInteractWidget();
 	
 public:
 	FQuestWriteInfo QuestionnaireData;
