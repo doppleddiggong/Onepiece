@@ -5,6 +5,7 @@
 #include "NetworkData.h"
 #include "UImageButton.h"
 #include "NetworkData.h"
+#include "UDialogManager.h"
 #include "UPopupManager.h"
 #include "UResultStatWidget.h"
 #include "UTextureButton.h"
@@ -27,6 +28,7 @@ void UPopup_SpeakJudes::InitPopup(const FResponseSpeakingJudes& Response, const 
 		Btn_Confirm->OnButtonClickedEvent.AddDynamic(this, &UPopup_SpeakJudes::OnClickClose);
 	}
 
+	UDialogManager::Get(GetWorld())->HideToastImmediately();
 
 	// GetResultStatData로 Grammar, Context 데이터 가져오기
 	auto ResultList = Response.GetResultStatData();
