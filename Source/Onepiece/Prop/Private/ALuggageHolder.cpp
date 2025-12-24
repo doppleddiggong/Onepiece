@@ -147,11 +147,17 @@ void ALuggageHolder::OnBoxOverlapBegin(
 		{
 			// 정답인 경우
 			int32 CorrectIdx = Luggage->GetSpawnIdx();
+
+			// 마커 표시
+			GS->SetAllCompassVisibility(false);
+			GS->SetCompassVisibilityByTag("ReadQuestEnd", true);
+			
 			FTimerHandle TimerHandle;
 			GetWorldTimerManager().SetTimer(TimerHandle, [this, CorrectIdx]
 			{
 				// 모든 클라이언트에 정답 인덱스와 함께 결과 팝업 표시
 				Multicast_ShowResultPopup(CorrectIdx);
+				
 			}, 0.5f, false);
 		}
 		else

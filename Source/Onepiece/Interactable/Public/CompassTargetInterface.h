@@ -24,11 +24,11 @@ class ONEPIECE_API ICompassTargetInterface
 	// Add interface functions to this class. This is the class that will be inherited to implement this interface.
 public:
 	ECompassMarkerType MarkerType;
+	bool bShowOnCompass = true;
 	
-	ECompassMarkerType GetCompassMarkerType()
-	{
-		return MarkerType;
-	}
+	ECompassMarkerType GetCompassMarkerType() {return MarkerType;}
 	virtual void SetCompassMarkerInto(ECompassMarkerType InMarkerType)=0;
-	
+
+	virtual bool ShouldShowOnCompass() const {return bShowOnCompass;}
+	virtual void SetShowOnCompass(bool bShow) {bShowOnCompass = bShow;}
 };

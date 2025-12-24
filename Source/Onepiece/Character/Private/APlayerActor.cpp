@@ -29,7 +29,9 @@
 #include "ATeleportTrigger.h"
 #include "AWheatly.h"
 #include "CompassWidget.h"
+#include "HairStrandsInterface.h"
 #include "OrderKiosk.h"
+#include "QuestionnaireKiosk.h"
 #include "UToastWidget.h"
 #include "UBroadcastManager.h"
 #include "UFadeWidget.h"
@@ -779,20 +781,29 @@ void APlayerActor::UpdateCompassMarkers()
 	TArray<AActor*> TrackedActors;
 	// GetAllActorsOfClass 시 배열 안에 있는건 clear됨. 임시배열 필요
 	TArray<AActor*> TempActors;
+
 	// AContactTrigger
 	UGameplayStatics::GetAllActorsOfClass(GetWorld(), AContactTrigger::StaticClass(), TempActors);
 	TrackedActors.Append(TempActors);
+
 	// ALuggageHolder
-	UGameplayStatics::GetAllActorsOfClass(GetWorld(), ALuggageHolder::StaticClass(), TrackedActors);
+	UGameplayStatics::GetAllActorsOfClass(GetWorld(), ALuggageHolder::StaticClass(), TempActors);
 	TrackedActors.Append(TempActors);
+
 	// AOrderKiosk
-	UGameplayStatics::GetAllActorsOfClass(GetWorld(), AOrderKiosk::StaticClass(), TrackedActors);
+	UGameplayStatics::GetAllActorsOfClass(GetWorld(), AOrderKiosk::StaticClass(), TempActors);
 	TrackedActors.Append(TempActors);
+
 	// Wheatly
-	UGameplayStatics::GetAllActorsOfClass(GetWorld(), AWheatly::StaticClass(), TrackedActors);
+	UGameplayStatics::GetAllActorsOfClass(GetWorld(), AWheatly::StaticClass(), TempActors);
 	TrackedActors.Append(TempActors);
+
 	// Teleporter
-	UGameplayStatics::GetAllActorsOfClass(GetWorld(), ATeleportTrigger::StaticClass(), TrackedActors);
+	UGameplayStatics::GetAllActorsOfClass(GetWorld(), ATeleportTrigger::StaticClass(), TempActors);
+	TrackedActors.Append(TempActors);
+
+	// QuestionnaireKiosk
+	UGameplayStatics::GetAllActorsOfClass(GetWorld(), AQuestionnaireKiosk::StaticClass(), TempActors);
 	TrackedActors.Append(TempActors);
 
 	// 2. 각 TrackedActor에 대해 마커 생성 or 업데이트                                                                                                                
@@ -803,6 +814,15 @@ void APlayerActor::UpdateCompassMarkers()
 		// Interface로 캐스팅해서 타입 정보 가져오기
 		ICompassTargetInterface* Target = Cast<ICompassTargetInterface>(TrackedActor);
 		if (!Target) continue;
+
+		if (!Target->ShouldShowOnCompass())
+		{
+			if (UImage* ExistingMarker = CompassMarkerMap.FindRef(TrackedActor))
+			{
+				ExistingMarker->SetVisibility(ESlateVisibility::Hidden);
+			}
+			continue;
+		}
 
 		// Interface 함수로 마커 타입 확인
 		ECompassMarkerType MarkerType = Target->GetCompassMarkerType();
@@ -816,11 +836,15 @@ void APlayerActor::UpdateCompassMarkers()
 		}
 		else
 		{
+			// 기존 마커 텍스처 업데이트
 			UTexture2D* NewTexture = Compass->GetTextureForMarkerType(MarkerType);
 			if (NewTexture)
 			{
 				Marker->SetBrushFromTexture(NewTexture);
 			}
+
+			// 다시 보이게 설정 (Hidden 상태였을 수 있음)
+			Marker->SetVisibility(ESlateVisibility::Visible);
 		}
 
 		// 2-2. 상대 회전 계산 (Yaw만 필요)

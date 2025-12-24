@@ -2,6 +2,8 @@
 
 
 #include "ATeleportTrigger.h"
+
+#include "ALingoGameState.h"
 #include "Components/BoxComponent.h"
 #include "DrawDebugHelpers.h"
 #include "APlayerActor.h"
@@ -124,6 +126,21 @@ void ATeleportTrigger::OnTriggerBeginOverlap(
 		{
 			BroadcastActor->SendTeleportAllPlayers(TargetTransform, this);
 			PRINTLOG( TEXT("텔레포트 요청: %s"), *TargetTransform.ToString());
+
+			// 마커 변경
+			if (ALingoGameState* GS = GetWorld()->GetGameState<ALingoGameState>())
+			{
+				if (ActorHasTag(FName("ReadQuestEnd")))
+				{
+					GS->SetAllCompassVisibility(false);
+					GS->SetCompassVisibilityByTag("ListenQuestStart", true);
+				}
+				else if (ActorHasTag(FName("ListenQuestEnd")))
+				{
+					GS->SetAllCompassVisibility(false);
+					GS->SetCompassVisibilityByTag("Whitney", true);
+				}
+			}
 		}
 		else
 		{

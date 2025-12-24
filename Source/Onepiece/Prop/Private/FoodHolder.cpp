@@ -145,7 +145,10 @@ void AFoodHolder::OnFoodBoxOverlapBegin(
 		if (bSuccess)
 		{
 			UE_LOG(LogTemp, Warning, TEXT("[FoodHolder] Correct"));
-		
+			
+			GS->SetAllCompassVisibility(false);
+			GS->SetCompassVisibilityByTag("ListenQuestEnd", true);
+			
 			// 정답인 경우
 			FTimerHandle TimerHandle;
 			GetWorldTimerManager().SetTimer(TimerHandle, [this]

@@ -29,12 +29,12 @@ void ALingoGameMode::PostLogin(APlayerController* NewPlayer)
 {
 	Super::PostLogin(NewPlayer);
 
-	// 튜토리얼 시작
-	// if (APlayerControl* PC = Cast<APlayerControl>(NewPlayer))
-	// {
-	// 	if (PC->IsLocalController() && PC->TutorialComponent)
-	// 		PC->TutorialComponent->StartTutorial();
-	// }
+	// ReadQuest 시작 마커
+	if (ALingoGameState* GS = GetWorld()->GetGameState<ALingoGameState>())
+	{
+		GS->SetAllCompassVisibility(false);
+		GS->SetCompassVisibilityByTag("ReadQuestStart", true);
+	}
 }
 
 void ALingoGameMode::UpdateQuestRole()
@@ -61,7 +61,12 @@ void ALingoGameMode::BeginReadQuest( const FResponseReadScenario& InResponseData
 	UpdateQuestRole();
 
 	if (auto GS = GetGameState<ALingoGameState>())
+	{
 		GS->SetReadScenarioData(InResponseData);
+
+		GS->SetAllCompassVisibility(false);
+		GS->SetCompassVisibilityByTag("ReadQuest", true);
+	}
 }
 
 void ALingoGameMode::BeginListenQuest(const FResponseListenScenario& InResponseData)
@@ -72,7 +77,12 @@ void ALingoGameMode::BeginListenQuest(const FResponseListenScenario& InResponseD
 	UpdateQuestRole();
 
 	if (auto GS = GetGameState<ALingoGameState>())
+	{
 		GS->SetListenScenarioData(InResponseData);
+		
+		GS->SetAllCompassVisibility(false);
+		GS->SetCompassVisibilityByTag("ListenQuest", true);
+	}
 }
 
 void ALingoGameMode::HandleLuggageSelection(APlayerState* Player, Aluggage* luggage)

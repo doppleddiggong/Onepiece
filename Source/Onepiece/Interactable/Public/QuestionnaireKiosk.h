@@ -3,13 +3,14 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "CompassTargetInterface.h"
 #include "NetworkData.h"
 #include "GameFramework/Actor.h"
 #include "QuestionnaireKiosk.generated.h"
 
 
 UCLASS()
-class ONEPIECE_API AQuestionnaireKiosk : public AActor
+class ONEPIECE_API AQuestionnaireKiosk : public AActor, public ICompassTargetInterface
 {
 	GENERATED_BODY()
 
@@ -62,4 +63,8 @@ protected:
 	
 public:
 	FQuestWriteInfo QuestionnaireData;
+
+protected:
+	// Compass Interface
+	virtual void SetCompassMarkerInto(ECompassMarkerType InMarkerType) override;
 };

@@ -50,6 +50,8 @@ AQuestionnaireKiosk::AQuestionnaireKiosk()
 		WidgetComp->SetWidgetSpace(EWidgetSpace::Screen);
 		WidgetComp->SetDrawSize(FVector2D(2048.0f, 1024.0f));
 	}
+
+	MarkerType = ECompassMarkerType::QuestEnd;
 }
 
 void AQuestionnaireKiosk::BeginPlay()
@@ -95,6 +97,13 @@ void AQuestionnaireKiosk::OnInteractionTriggered(AActor* Interactor)
 			PRINTLOG(TEXT("QuestionnaireData is invalid"));
 			KLingoNetwork->RequestWriteQuestions(FResponseWriteQuestionDelegate::CreateUObject(this, &AQuestionnaireKiosk::OnResponseData));
 		}
+	}
+
+	// 마커 변경
+	if (ALingoGameState* GS = GetWorld()->GetGameState<ALingoGameState>())
+	{
+		GS->SetAllCompassVisibility(false);
+		GS->SetCompassVisibilityByTag("FinalResult", true);
 	}
 }
 
@@ -193,6 +202,11 @@ void AQuestionnaireKiosk::CreateTestData(FQuestWriteInfo& TestData)
 	TestData.question.Add(Q4);
 	
 	TestData.bIsValid = true;
+}
+
+void AQuestionnaireKiosk::SetCompassMarkerInto(ECompassMarkerType InMarkerType)
+{
+	MarkerType= InMarkerType;
 }
 
 void AQuestionnaireKiosk::OnOutlineStateChanged(bool bShouldShowOutline)

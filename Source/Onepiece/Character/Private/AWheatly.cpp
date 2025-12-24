@@ -351,7 +351,7 @@ void AWheatly::OnInteractionTriggered(AActor* InteractingActor)
 		{
 			if ( PC )
 				PC->Client_ToastMessage(TEXT("Already Clear SpeakQuest"));
-
+			
 			return;
 		}
 	}
@@ -367,6 +367,13 @@ void AWheatly::OnInteractionTriggered(AActor* InteractingActor)
 
 	if ( PC )
 		PC->Client_RequestSpeakScenario(this);
+
+	// 마커 표시
+	if (ALingoGameState* GS = GetWorld()->GetGameState<ALingoGameState>())
+	{
+		GS->SetAllCompassVisibility(false);
+		GS->SetCompassVisibilityByTag("WriteQuest", true);
+	}
 }
 
 void AWheatly::OnOutlineStateChanged(bool bShouldShowOutline)

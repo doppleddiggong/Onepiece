@@ -170,4 +170,16 @@ private:
 	float TimeLimit = 0;
 
 	FResponseUserMe Bot;
+
+public:
+	// Quest Tag
+	UFUNCTION(BlueprintCallable, Category = "Compass")
+	void SetCompassVisibilityByTag(FName Tag, bool bVisible);
+
+	UFUNCTION(BlueprintCallable, Category = "Compass")
+	void SetCompassVisibilityByClass(TSubclassOf<AActor> ActorClass, bool bVisible);
+
+	UFUNCTION(BlueprintCallable, Category = "Compass")
+	void SetAllCompassVisibility(bool bVisible);
+	
 };

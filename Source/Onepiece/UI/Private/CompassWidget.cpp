@@ -20,7 +20,7 @@ void UCompassWidget::NativeConstruct()
 		MarkerTextureMap.Add(ECompassMarkerType::Wheatly,
 			LoadObject<UTexture2D>(nullptr, TEXT("/Game/CustomContents/UI/Texture/Resource/Icon_Whitney.Icon_Whitney")));
 		MarkerTextureMap.Add(ECompassMarkerType::Teleporter,
-					LoadObject<UTexture2D>(nullptr, TEXT("/Game/CustomContents/UI/Texture/Resource/resource_score.resource_score")));
+			LoadObject<UTexture2D>(nullptr, TEXT("/Game/CustomContents/UI/Texture/Resource/resource_score.resource_score")));
 	}
 }
 

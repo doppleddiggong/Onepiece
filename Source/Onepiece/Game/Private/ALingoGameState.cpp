@@ -9,11 +9,14 @@
 #include "ULingoGameHelper.h"
 #include "ANetworkBroadcastActor.h"
 #include "APlayerControl.h"
+#include "CompassTargetInterface.h"
+#include "EngineUtils.h"
 #include "UMainWidget.h"
 #include "UPopupManager.h"
 #include "Popup_Result.h"
 #include "GameFramework/PlayerController.h"
 #include "Engine/World.h"
+#include "Kismet/GameplayStatics.h"
 #include "Onepiece/Onepiece.h"
 
 ALingoGameState::ALingoGameState()
@@ -104,6 +107,45 @@ void ALingoGameState::AddWrongListenAnswer(const int32 InValue)
 	if (!WrongListenAnswerList.Contains(InValue))
 	{
 		WrongListenAnswerList.Add(InValue);
+	}
+}
+
+void ALingoGameState::SetCompassVisibilityByTag(FName Tag, bool bVisible)
+{
+	TArray<AActor*> FoundActors;
+	UGameplayStatics::GetAllActorsWithTag(GetWorld(), Tag, FoundActors);
+
+	for (AActor* Actor : FoundActors)
+	{
+		if (ICompassTargetInterface* Target = Cast<ICompassTargetInterface>(Actor))
+		{
+			Target->SetShowOnCompass(bVisible);
+		}
+	}
+}
+
+void ALingoGameState::SetCompassVisibilityByClass(TSubclassOf<AActor> ActorClass, bool bVisible)
+{
+	TArray<AActor*> FoundActors;
+	UGameplayStatics::GetAllActorsOfClass(GetWorld(), ActorClass, FoundActors);
+
+	for (AActor* Actor : FoundActors)
+	{
+		if (ICompassTargetInterface* Target = Cast<ICompassTargetInterface>(Actor))
+		{
+			Target->SetShowOnCompass(bVisible);
+		}
+	}
+}
+
+void ALingoGameState::SetAllCompassVisibility(bool bVisible)
+{   
+	for (TActorIterator<AActor> It(GetWorld()); It; ++It)
+	{
+		if (ICompassTargetInterface* Target = Cast<ICompassTargetInterface>(*It))
+		{
+			Target->SetShowOnCompass(bVisible);
+		}
 	}
 }
 
