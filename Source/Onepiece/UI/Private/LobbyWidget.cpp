@@ -101,7 +101,7 @@ void ULobbyWidget::OnCreateClicked()
 	// 세션 생성
 	GI->CreateMySession(sessionName);
 
-	UDialogManager::Get(GetWorld())->ShowToast(TEXT("Create Session Success"));
+	UDialogManager::Get(GetWorld())->ShowToast(TEXT("Room created successfully"));
 }
 
 void ULobbyWidget::OnValueChangedSessionName(const FText& Text)
