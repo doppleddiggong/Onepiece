@@ -27,48 +27,18 @@ ULoadingCircleManager::ULoadingCircleManager()
 	CircleWidgetClass = FComponentHelper::LoadClass<ULoadginCircle>(LOADINGCIRCLEWIDGET_PATH);
 }
 
-void ULoadingCircleManager::Initialize(FSubsystemCollectionBase& Collection)
-{
-	Super::Initialize(Collection);
-
-	// // UBroadcastManager의 OnNetworkWaitCount 구독
-	// if (UGameInstance* GameInstance = GetWorld()->GetGameInstance() )
-	// {
-	// 	if (UBroadcastManager* BroadcastManager = UBroadcastManager::Get(GameInstance))
-	// 	{
-	// 		BroadcastManager->OnNetworkWaitCount.AddDynamic(this, &ULoadingCircleManager::OnNetworkWaitCount);
-	// 		PRINTLOG(TEXT("[LoadingCircleManager] Subscribed to OnNetworkWaitCount"));
-	// 	}
-	// }
-}
-
-void ULoadingCircleManager::Deinitialize()
-{
-	// // OnNetworkWaitCount 구독 해제
-	// if (UGameInstance* GameInstance = GetWorld()->GetGameInstance())
-	// {
-	// 	if (UBroadcastManager* BroadcastManager = UBroadcastManager::Get(GameInstance))
-	// 	{
-	// 		BroadcastManager->OnNetworkWaitCount.RemoveDynamic(this, &ULoadingCircleManager::OnNetworkWaitCount);
-	// 		PRINTLOG(TEXT("[LoadingCircleManager] Unsubscribed from OnNetworkWaitCount"));
-	// 	}
-	// }
-
-	Super::Deinitialize();
-}
-
 void ULoadingCircleManager::EnsureWidgetForWorld(UWorld* World)
 {
 	if (World == nullptr || !World->IsGameWorld())
 		return;
 
 	// 위젯이 유효하고 같은 월드이며, 뷰포트에 추가되어 있는지 확인
-	const bool bIsValid = IsValid(CircleWidget);
-	const bool bSameWorld = bIsValid && CircleWidget->GetWorld() == World;
-	const bool bInViewport = bIsValid && CircleWidget->IsInViewport();
-
-	if (bIsValid && bSameWorld && bInViewport)
+	if (IsValid(CircleWidget) &&
+		CircleWidget->GetWorld() == World &&
+		CircleWidget->IsInViewport())
+	{
 		return;
+	}
 
 	// 기존 위젯이 있으면 정리
 	if (CircleWidget)
@@ -83,7 +53,6 @@ void ULoadingCircleManager::EnsureWidgetForWorld(UWorld* World)
 	if (LocalPlayer == nullptr)
 		return;
 
-	// 멀티플레이 대응: PlayerController 사용
 	APlayerController* PC = LocalPlayer->GetPlayerController(World);
 	if (PC == nullptr)
 		return;
@@ -91,21 +60,22 @@ void ULoadingCircleManager::EnsureWidgetForWorld(UWorld* World)
 	if (!CircleWidgetClass)
 		return;
 
-	if (ULoadginCircle* NewWidget = CreateWidget<ULoadginCircle>(PC, CircleWidgetClass))
-	{
-		// Game Viewport에 추가하여 레벨 전환 시에도 유지
-		NewWidget->AddToGameViewport(GameLayer::LoadingCircle);
-		CircleWidget = NewWidget;
+	ULoadginCircle* NewWidget = CreateWidget<ULoadginCircle>(PC, CircleWidgetClass);
+	if (!NewWidget)
+		return;
 
-		// 위젯 재생성 시 현재 카운트에 따라 표시 상태 복원
-		if (LoadingCount > 0)
-		{
-			CircleWidget->Show();
-		}
-		else
-		{
-			CircleWidget->Hide();
-		}
+	// Game Viewport에 추가하여 레벨 전환 시에도 유지
+	NewWidget->AddToGameViewport(GameLayer::LoadingCircle);
+	CircleWidget = NewWidget;
+
+	// 위젯 재생성 시 현재 카운트에 따라 표시 상태 복원
+	if (LoadingCount > 0)
+	{
+		CircleWidget->Show();
+	}
+	else
+	{
+		CircleWidget->Hide();
 	}
 }
 
@@ -165,11 +135,9 @@ int32 ULoadingCircleManager::GetLoadingCount() const
 	return LoadingCount;
 }
 
-void ULoadingCircleManager::OnNetworkWaitCount(int RequestCount)
+void ULoadingCircleManager::LoadingCircle(bool bShow)
 {
-	PRINTLOG(TEXT("[LoadingCircleManager] HandleNetworkWaitCount - RequestCount: %d"), RequestCount);
-
-	if (RequestCount > 0)
+	if (bShow)
 	{
 		Show();
 	}

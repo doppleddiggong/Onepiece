@@ -23,9 +23,6 @@ public:
 	/// @brief 위젯 생성 시 초기화 작업을 수행합니다.
 	virtual void NativeConstruct() override;
 
-	/// @brief 위젯 파괴 시 타이머와 델리게이트를 정리합니다.
-	virtual void NativeDestruct() override;
-
 	/// @brief 매 프레임 상태 표시를 갱신합니다.
 	virtual void NativeTick(const FGeometry& MyGeometry, float InDeltaTime) override;
 
