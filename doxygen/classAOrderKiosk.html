@@ -117,7 +117,7 @@ $(document).ready(function(){initNavTree('classAOrderKiosk.html',''); initResiza
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classAOrderKiosk__inherit__graph.svg" width="299" height="470"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classAOrderKiosk__inherit__graph.svg" width="299" height="530"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="closed.png" alt="+"/> AOrderKiosk에 대한 협력 다이어그램:</div>
@@ -137,11 +137,17 @@ Public 멤버 함수</h2></td></tr>
 <tr class="separator:ae22a9ab0ca71061d881ba35394bc31bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abb415ce2d41dab4779fdf9fb5d962e30" id="r_abb415ce2d41dab4779fdf9fb5d962e30"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ECompassMarkerType_8h.html#acc6a187307708d9ee4bfdb3e4df7dba6">ECompassMarkerType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classICompassTargetInterface.html#abb415ce2d41dab4779fdf9fb5d962e30">GetCompassMarkerType</a> ()</td></tr>
 <tr class="separator:abb415ce2d41dab4779fdf9fb5d962e30"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3807797b2156ffdf09802d3b8f1dd812" id="r_a3807797b2156ffdf09802d3b8f1dd812"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classICompassTargetInterface.html#a3807797b2156ffdf09802d3b8f1dd812">SetShowOnCompass</a> (bool bShow)</td></tr>
+<tr class="separator:a3807797b2156ffdf09802d3b8f1dd812"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6ca87eb035438649532297283644173" id="r_aa6ca87eb035438649532297283644173"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classICompassTargetInterface.html#aa6ca87eb035438649532297283644173">ShouldShowOnCompass</a> () const</td></tr>
+<tr class="separator:aa6ca87eb035438649532297283644173"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2559037890cac62eb1d3c60753977c5d" id="r_a2559037890cac62eb1d3c60753977c5d"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAOrderKiosk.html#a2559037890cac62eb1d3c60753977c5d">Tick</a> (float DeltaTime) override</td></tr>
 <tr class="separator:a2559037890cac62eb1d3c60753977c5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public 속성</h2></td></tr>
+<tr class="memitem:a055bb4c9611ef550e3a9c6762f0b3e8c" id="r_a055bb4c9611ef550e3a9c6762f0b3e8c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classICompassTargetInterface.html#a055bb4c9611ef550e3a9c6762f0b3e8c">bShowOnCompass</a> = true</td></tr>
+<tr class="separator:a055bb4c9611ef550e3a9c6762f0b3e8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1647771f3fb56e4c2649b7b4f1706ccf" id="r_a1647771f3fb56e4c2649b7b4f1706ccf"><td class="memItemLeft" align="right" valign="top">class UBoxComponent *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAOrderKiosk.html#a1647771f3fb56e4c2649b7b4f1706ccf">FoodCollision</a></td></tr>
 <tr class="separator:a1647771f3fb56e4c2649b7b4f1706ccf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a52093b104e74e81ee763569fe8f69579" id="r_a52093b104e74e81ee763569fe8f69579"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAOrderKiosk.html#a52093b104e74e81ee763569fe8f69579">IsOnceStopped</a> = false</td></tr>
@@ -517,12 +523,10 @@ Protected 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="CompassTargetInterface_8h_source.html">CompassTargetInterface.h</a> 파일의 <a class="el" href="CompassTargetInterface_8h_source.html#l00028">28</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   29</span>    {</div>
-<div class="line"><span class="lineno">   30</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="classICompassTargetInterface.html#afab55eb3a8c206914d440493384e9401">MarkerType</a>;</div>
-<div class="line"><span class="lineno">   31</span>    }</div>
+<p class="definition"><a class="el" href="CompassTargetInterface_8h_source.html">CompassTargetInterface.h</a> 파일의 <a class="el" href="CompassTargetInterface_8h_source.html#l00029">29</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   29</span>{<span class="keywordflow">return</span> <a class="code hl_variable" href="classICompassTargetInterface.html#afab55eb3a8c206914d440493384e9401">MarkerType</a>;}</div>
 </div><!-- fragment -->
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerActor_8cpp_source.html#l00777">APlayerActor::UpdateCompassMarkers()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerActor_8cpp_source.html#l00779">APlayerActor::UpdateCompassMarkers()</a>.</p>
 <div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-6-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-6-summary" class="dynsummary" style="display:block;">
@@ -638,6 +642,73 @@ Protected 속성</h2></td></tr>
 
 </div>
 </div>
+<a id="a3807797b2156ffdf09802d3b8f1dd812" name="a3807797b2156ffdf09802d3b8f1dd812"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3807797b2156ffdf09802d3b8f1dd812">&#9670;&#160;</a></span>SetShowOnCompass()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void ICompassTargetInterface::SetShowOnCompass </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>bShow</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="CompassTargetInterface_8h_source.html">CompassTargetInterface.h</a> 파일의 <a class="el" href="CompassTargetInterface_8h_source.html#l00033">33</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   33</span>{<a class="code hl_variable" href="classICompassTargetInterface.html#a055bb4c9611ef550e3a9c6762f0b3e8c">bShowOnCompass</a> = bShow;}</div>
+<div class="ttc" id="aclassICompassTargetInterface_html_a055bb4c9611ef550e3a9c6762f0b3e8c"><div class="ttname"><a href="classICompassTargetInterface.html#a055bb4c9611ef550e3a9c6762f0b3e8c">ICompassTargetInterface::bShowOnCompass</a></div><div class="ttdeci">bool bShowOnCompass</div><div class="ttdef"><b>Definition</b> <a href="CompassTargetInterface_8h_source.html#l00027">CompassTargetInterface.h:27</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="aa6ca87eb035438649532297283644173" name="aa6ca87eb035438649532297283644173"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa6ca87eb035438649532297283644173">&#9670;&#160;</a></span>ShouldShowOnCompass()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool ICompassTargetInterface::ShouldShowOnCompass </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="CompassTargetInterface_8h_source.html">CompassTargetInterface.h</a> 파일의 <a class="el" href="CompassTargetInterface_8h_source.html#l00032">32</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   32</span>{<span class="keywordflow">return</span> <a class="code hl_variable" href="classICompassTargetInterface.html#a055bb4c9611ef550e3a9c6762f0b3e8c">bShowOnCompass</a>;}</div>
+</div><!-- fragment -->
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerActor_8cpp_source.html#l00779">APlayerActor::UpdateCompassMarkers()</a>.</p>
+<div id="dynsection-9" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-9-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-9-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-9-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classICompassTargetInterface_aa6ca87eb035438649532297283644173_icgraph.svg" width="656" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
 <a id="a2559037890cac62eb1d3c60753977c5d" name="a2559037890cac62eb1d3c60753977c5d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2559037890cac62eb1d3c60753977c5d">&#9670;&#160;</a></span>Tick()</h2>
 
@@ -670,6 +741,30 @@ Protected 속성</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">멤버 데이터 문서화</h2>
+<a id="a055bb4c9611ef550e3a9c6762f0b3e8c" name="a055bb4c9611ef550e3a9c6762f0b3e8c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a055bb4c9611ef550e3a9c6762f0b3e8c">&#9670;&#160;</a></span>bShowOnCompass</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ICompassTargetInterface::bShowOnCompass = true</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="CompassTargetInterface_8h_source.html">CompassTargetInterface.h</a> 파일의 <a class="el" href="CompassTargetInterface_8h_source.html#l00027">27</a> 번째 라인에서 정의되었습니다.</p>
+
+</div>
+</div>
 <a id="afeceb0eed1ac97cdd8dadb298d2bfc31" name="afeceb0eed1ac97cdd8dadb298d2bfc31"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#afeceb0eed1ac97cdd8dadb298d2bfc31">&#9670;&#160;</a></span>ConveyorsToControl</h2>
 
@@ -806,7 +901,7 @@ Protected 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="CompassTargetInterface_8h_source.html">CompassTargetInterface.h</a> 파일의 <a class="el" href="CompassTargetInterface_8h_source.html#l00026">26</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AContactTrigger_8cpp_source.html#l00017">AContactTrigger::AContactTrigger()</a>, <a class="el" href="ALuggageHolder_8cpp_source.html#l00022">ALuggageHolder::ALuggageHolder()</a>, <a class="el" href="OrderKiosk_8cpp_source.html#l00017">AOrderKiosk()</a>, <a class="el" href="ATeleportTrigger_8cpp_source.html#l00014">ATeleportTrigger::ATeleportTrigger()</a>, <a class="el" href="AWheatly_8cpp_source.html#l00031">AWheatly::AWheatly()</a>, <a class="el" href="AWheatly_8cpp_source.html#l00458">AWheatly::SetCompassMarkerInto()</a>, <a class="el" href="AContactTrigger_8cpp_source.html#l00204">AContactTrigger::SetCompassMarkerInto()</a>, <a class="el" href="ATeleportTrigger_8cpp_source.html#l00141">ATeleportTrigger::SetCompassMarkerInto()</a>, <a class="el" href="OrderKiosk_8cpp_source.html#l00137">SetCompassMarkerInto()</a>, <a class="el" href="ALuggageHolder_8cpp_source.html#l00253">ALuggageHolder::SetCompassMarkerInto()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AContactTrigger_8cpp_source.html#l00017">AContactTrigger::AContactTrigger()</a>, <a class="el" href="ALuggageHolder_8cpp_source.html#l00022">ALuggageHolder::ALuggageHolder()</a>, <a class="el" href="OrderKiosk_8cpp_source.html#l00017">AOrderKiosk()</a>, <a class="el" href="QuestionnaireKiosk_8cpp_source.html#l00026">AQuestionnaireKiosk::AQuestionnaireKiosk()</a>, <a class="el" href="ATeleportTrigger_8cpp_source.html#l00016">ATeleportTrigger::ATeleportTrigger()</a>, <a class="el" href="AWheatly_8cpp_source.html#l00031">AWheatly::AWheatly()</a>, <a class="el" href="AWheatly_8cpp_source.html#l00465">AWheatly::SetCompassMarkerInto()</a>, <a class="el" href="AContactTrigger_8cpp_source.html#l00204">AContactTrigger::SetCompassMarkerInto()</a>, <a class="el" href="ATeleportTrigger_8cpp_source.html#l00158">ATeleportTrigger::SetCompassMarkerInto()</a>, <a class="el" href="OrderKiosk_8cpp_source.html#l00137">SetCompassMarkerInto()</a>, <a class="el" href="QuestionnaireKiosk_8cpp_source.html#l00257">AQuestionnaireKiosk::SetCompassMarkerInto()</a>, <a class="el" href="ALuggageHolder_8cpp_source.html#l00259">ALuggageHolder::SetCompassMarkerInto()</a>.</p>
 
 </div>
 </div>
@@ -854,7 +949,7 @@ Protected 속성</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classAOrderKiosk.html">AOrderKiosk</a></li>
-    <li class="footer">생성시간 : 수 12월 24 2025 09:45:29, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 수 12월 24 2025 10:42:59, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

@@ -154,6 +154,7 @@ var hierarchy =
       [ "AContactTrigger", "classAContactTrigger.html", null ],
       [ "ALuggageHolder", "classALuggageHolder.html", null ],
       [ "AOrderKiosk", "classAOrderKiosk.html", null ],
+      [ "AQuestionnaireKiosk", "classAQuestionnaireKiosk.html", null ],
       [ "ATeleportTrigger", "classATeleportTrigger.html", null ],
       [ "AWheatly", "classAWheatly.html", null ]
     ] ],
