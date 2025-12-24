@@ -10,6 +10,7 @@
 #include "OnlineSessionSettings.h"
 #include "Online/OnlineSessionNames.h"
 #include "GameLogging.h"
+#include "ULoadingCircleManager.h"
 
 ULingoGameInstance::ULingoGameInstance()
 {
@@ -168,6 +169,13 @@ void ULingoGameInstance::Shutdown()
 
 void ULingoGameInstance::CreateMySession(FString displayName)
 {
+	// 로딩 서클 표시
+	if (UWorld* World = GetWorld())
+	{
+		if (ULoadingCircleManager* LoadingManager = ULoadingCircleManager::Get(World))
+			LoadingManager->LoadingCircle(true);
+	}
+
 	// 세션을 만들기 위한 옵션 담을 변수
 	FOnlineSessionSettings sessionSettings;
 	// 현재 사용중인 서브시스템 이름 가져오자.
@@ -205,12 +213,19 @@ void ULingoGameInstance::OnCreateSessionComplete(FName sessionName, bool bWasSuc
 	if (bWasSuccessful)
 	{
 		UE_LOG(LogTemp, Warning, TEXT("[%s] 세션 생성 성공"), *sessionName.ToString());
-		// 맵 으로 이동
+		// 맵 으로 이동 (로딩 서클은 맵 로딩 완료 후에 숨김)
 		GetWorld()->ServerTravel(TEXT("/Game/StarterBundle/CollectionMaps/Map1?listen"));
 	}
 	else
 	{
 		UE_LOG(LogTemp, Warning, TEXT("[%s] 세션 생성 실패"), *sessionName.ToString());
+
+		// 세션 생성 실패 시 로딩 서클 숨김
+		if (UWorld* World = GetWorld())
+		{
+			if (ULoadingCircleManager* LoadingManager = ULoadingCircleManager::Get(World))
+				LoadingManager->LoadingCircle(false);
+		}
 	}
 }
 
@@ -261,6 +276,13 @@ void ULingoGameInstance::OnFindSessionComplete(bool bWasSuccessful)
 
 void ULingoGameInstance::JoinOtherSession(int32 sessionIdx)
 {
+	// 로딩 서클 표시
+	if (UWorld* World = GetWorld())
+	{
+		if (ULoadingCircleManager* LoadingManager = ULoadingCircleManager::Get(World))
+			LoadingManager->LoadingCircle(true);
+	}
+
 	// 검색된 세션 결과들
 	auto results = sessionSearch->SearchResults;
 	// 5.5 이후 부터 바꼈다...
@@ -284,9 +306,20 @@ void ULingoGameInstance::OnJoinSessionComplete(FName sessionName, EOnJoinSession
 		FString url;
 		sessionInterface->GetResolvedConnectString(sessionName, url);
 		UE_LOG(LogTemp, Warning, TEXT("URL : %s"), *url);
-		// 서버가 있는 맵으로 이동 (최초 1번)
+		// 서버가 있는 맵으로 이동 (로딩 서클은 맵 로딩 완료 후에 숨김)
 		APlayerController* pc = GetWorld()->GetFirstPlayerController();
 		pc->ClientTravel(url, TRAVEL_Absolute);
+	}
+	else
+	{
+		UE_LOG(LogTemp, Warning, TEXT("[%s] 세션 참여 실패"), *sessionName.ToString());
+
+		// 세션 참여 실패 시 로딩 서클 숨김
+		if (UWorld* World = GetWorld())
+		{
+			if (ULoadingCircleManager* LoadingManager = ULoadingCircleManager::Get(World))
+				LoadingManager->LoadingCircle(false);
+		}
 	}
 }
 

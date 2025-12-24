@@ -24,6 +24,7 @@
 #include "UInteractionSystem.h"
 #include "UHookSystem.h"
 #include "ULingoGameInstanceSubsystem.h"
+#include "ULoadingCircleManager.h"
 #include "ADropper.h"
 #include "ALingoGameState.h"
 #include "ANetworkBroadcastActor.h"
@@ -94,6 +95,10 @@ void APlayerControl::BeginPlay()
 	{
 		UserInfo = ULingoGameInstanceSubsystem::Get(GetWorld())->GetUserInfo();
 		Server_SetUserInfo(UserInfo);
+
+		// 맵 로딩 완료 시 로딩 서클 숨김
+		if (ULoadingCircleManager* LoadingManager = ULoadingCircleManager::Get(GetWorld()))
+			LoadingManager->LoadingCircle(false);
 	}
 
 	// 서버에서만 DoorMessage 구독
