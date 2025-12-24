@@ -10,6 +10,7 @@
 #include "UResultStatWidget.h"
 #include "UTextureButton.h"
 #include "Components/TextBlock.h"
+#include "Onepiece/Onepiece.h"
 
 void UPopup_SpeakJudes::InitPopup(const FResponseSpeakingJudes& Response, const FOnSpeakJudesConfirmDelegate& InOnConfirm)
 {
@@ -40,6 +41,7 @@ void UPopup_SpeakJudes::InitPopup(const FResponseSpeakingJudes& Response, const 
 
 	// 피드백 텍스트 설정
 	Txt_Feedback->SetText(FText::FromString(Response.final_feedback));
+	Txt_Feedback->SetLineHeightPercentage( DefineData::LineHeightPercentage );
 }
 
 void UPopup_SpeakJudes::OnClickClose()

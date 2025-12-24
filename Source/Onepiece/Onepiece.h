@@ -54,7 +54,7 @@ namespace DefineData
 
 	static const FString AI = TEXT("AI");
 
-	static const float LineHeightPercentage = 1.15f;
+	static const float LineHeightPercentage = 1.2f;
 }
 
 namespace GameMessage
