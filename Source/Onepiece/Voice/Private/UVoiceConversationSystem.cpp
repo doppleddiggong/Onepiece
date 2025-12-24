@@ -320,7 +320,7 @@ void UVoiceConversationSystem::OnResponseChatAnswers(FResponseChatAnswers& Respo
 
 				FText AIAnswer = FText::FromString(Response.answer);
 				// Bot은 PlayerIndex -1 사용
-				GS->MulticastRPC_SendChat(GS->GetBotInfo(), AIAnswer, GameName::BotID);
+				GS->MulticastRPC_SendChat(GS->GetBotInfo(), AIAnswer, DefineData::BotID);
 			}
 
 			PRINTLOG(TEXT("[AI Chat] AI Answer: %s"), *Response.answer);

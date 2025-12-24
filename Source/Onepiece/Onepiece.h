@@ -47,13 +47,14 @@ namespace GameTags
 	static const FName Building = TEXT("Building");
 }
 
-namespace GameName
+namespace DefineData
 {
 	static const int32 BotID = 99999;
 	static const FString BotName = TEXT("[KLingo]");
 
 	static const FString AI = TEXT("AI");
-	
+
+	static const float LineHeightPercentage = 1.15f;
 }
 
 namespace GameMessage

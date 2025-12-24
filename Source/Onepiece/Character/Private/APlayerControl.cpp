@@ -679,7 +679,7 @@ void APlayerControl::OnChatAnswerReceived(FResponseChatAnswers& ResponseData, bo
 	{
 		FText AIAnswer = FText::FromString(ResponseData.answer);
 		// Bot은 PlayerIndex -1 사용
-		GS->MulticastRPC_SendChat(GS->GetBotInfo(), AIAnswer, GameName::BotID);
+		GS->MulticastRPC_SendChat(GS->GetBotInfo(), AIAnswer, DefineData::BotID);
 
 		// Chat History 저장
 		if (ChatHistorySystem)
