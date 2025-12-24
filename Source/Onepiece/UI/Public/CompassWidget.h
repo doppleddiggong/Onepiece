@@ -42,8 +42,13 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	TArray<UImage*> Markers;
 	
-	UImage* AddCompassMarker();
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Compass|Markers")
+	TMap<ECompassMarkerType, UTexture2D*> MarkerTextureMap;
+	// 마커 이미지 설정
+	UImage* AddCompassMarker(ECompassMarkerType MarkerType);
+	UTexture2D*  GetTextureForMarkerType(ECompassMarkerType MarkerType);
+	// 마커 회전값
 	void SetMarkerPosition(UImage* InMarker, float TargetRotation, bool bSideLock);
-
-	void UpdateCompassMarkers(TArray<float>& CompassMarkers);
+	// 마커들 업데이트
+	//void UpdateCompassMarkers(TArray<FCompassInfo>& CompassInfos);
 };

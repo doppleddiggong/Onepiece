@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "ADropper.h"
+#include "CompassTargetInterface.h"
 #include "ListenAnswer.h"
 #include "GameFramework/Actor.h"
 #include "OrderKiosk.generated.h"
@@ -14,7 +15,7 @@
  */
 
 UCLASS()
-class ONEPIECE_API AOrderKiosk : public AActor
+class ONEPIECE_API AOrderKiosk : public AActor, public ICompassTargetInterface
 {
 	GENERATED_BODY()
 
@@ -70,5 +71,9 @@ protected:
 
 	UFUNCTION(Server, Reliable)
 	void Server_MoveFoodContainer(AActor* ActorToMove);
+
+protected:
+	// Compass Interface
+	virtual void SetCompassMarkerInto(ECompassMarkerType InMarkerType) override;
 };
 

@@ -3,11 +3,12 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "CompassTargetInterface.h"
 #include "GameFramework/Actor.h"
 #include "ATeleportTrigger.generated.h"
 
 UCLASS()
-class ONEPIECE_API ATeleportTrigger : public AActor
+class ONEPIECE_API ATeleportTrigger : public AActor, public ICompassTargetInterface
 {
 	GENERATED_BODY()
 
@@ -56,4 +57,8 @@ protected:
 	UFUNCTION()
 	void OnTriggerBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
 		UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
+
+protected:
+	// Compass Interface
+	virtual void SetCompassMarkerInto(ECompassMarkerType InMarkerType) override;
 };

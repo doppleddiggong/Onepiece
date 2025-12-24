@@ -25,10 +25,10 @@ class ONEPIECE_API ICompassTargetInterface
 public:
 	ECompassMarkerType MarkerType;
 	
-	ECompassMarkerType GetCompassMarkerInfo()
+	ECompassMarkerType GetCompassMarkerType()
 	{
 		return MarkerType;
-	};
+	}
 	virtual void SetCompassMarkerInto(ECompassMarkerType InMarkerType)=0;
 	
 };
