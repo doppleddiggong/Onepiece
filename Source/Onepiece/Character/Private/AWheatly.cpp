@@ -94,6 +94,8 @@ AWheatly::AWheatly()
 	
 	// 초기값 설정
 	CurAnimDuration = 0.0f;
+	MarkerType = ECompassMarkerType::Wheatly;
+	
 }
 
 void AWheatly::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
@@ -451,6 +453,11 @@ void AWheatly::ApplyEyeSight()
 
 	const FVector StartLocation = EyeMesh->GetComponentLocation();
 	UpdateEyeSight(StartLocation, ReplicatedEyeSightEnd);
+}
+
+void AWheatly::SetCompassMarkerInto(ECompassMarkerType InMarkerType)
+{
+	MarkerType = InMarkerType;
 }
 
 //----------------------------------------------------------//

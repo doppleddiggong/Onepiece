@@ -25,6 +25,8 @@ AOrderKiosk::AOrderKiosk()
 
 	SubmitCollision = CreateDefaultSubobject<UBoxComponent>(TEXT("SubmitCollision"));
 	SubmitCollision->SetupAttachment(GetRootComponent());
+
+	MarkerType = ECompassMarkerType::QuestEnd;
 }
 
 // Called when the game starts or when spawned
@@ -130,6 +132,11 @@ void AOrderKiosk::BeginSubmitOverlap(UPrimitiveComponent* OverlappedComponent, A
 	{
 		UE_LOG(LogTemp, Warning, TEXT("[OrderKiosk::BeginSubmitOverlap] OtherActor is not a ListenAnswer"));
 	}
+}
+
+void AOrderKiosk::SetCompassMarkerInto(ECompassMarkerType InMarkerType)
+{
+	MarkerType = InMarkerType;
 }
 
 void AOrderKiosk::Server_MoveFoodContainer_Implementation(AActor* ActorToMove)

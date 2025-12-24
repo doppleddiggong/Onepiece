@@ -10,6 +10,18 @@
 void UCompassWidget::NativeConstruct()
 {
 	Super::NativeConstruct();
+
+	if (MarkerTextureMap.Num() == 0)
+	{
+		MarkerTextureMap.Add(ECompassMarkerType::QuestStart,
+			LoadObject<UTexture2D>(nullptr, TEXT("/Game/CustomContents/UI/Texture/Resource/Icon_Listen.Icon_Listen")));
+		MarkerTextureMap.Add(ECompassMarkerType::QuestEnd,
+			LoadObject<UTexture2D>(nullptr, TEXT("/Game/StarterBundle/Image/mark1.mark1")));
+		MarkerTextureMap.Add(ECompassMarkerType::Wheatly,
+			LoadObject<UTexture2D>(nullptr, TEXT("/Game/CustomContents/UI/Texture/Resource/Icon_Whitney.Icon_Whitney")));
+		MarkerTextureMap.Add(ECompassMarkerType::Teleporter,
+					LoadObject<UTexture2D>(nullptr, TEXT("/Game/CustomContents/UI/Texture/Resource/resource_score.resource_score")));
+	}
 }
 
 void UCompassWidget::RotateCompass(float ZRotation)
@@ -24,13 +36,12 @@ void UCompassWidget::RotateCompass(float ZRotation)
 	}
 }
 
-UImage* UCompassWidget::AddCompassMarker()
+UImage* UCompassWidget::AddCompassMarker(ECompassMarkerType MarkerType)
 {
 	UImage* NewMarker = NewObject<UImage>(this);
 	if (NewMarker)
 	{
-		UTexture2D* CompassTex = LoadObject<UTexture2D>(nullptr,
-			TEXT("/Game/StarterBundle/Image/mark1.mark1"));
+		UTexture2D* CompassTex = GetTextureForMarkerType(MarkerType);
 		if (CompassTex)
 		{
 			NewMarker->SetBrushFromTexture(CompassTex);
@@ -38,9 +49,7 @@ UImage* UCompassWidget::AddCompassMarker()
 		
 		Pnl_Compass->AddChild(NewMarker);
 
-		UCanvasPanelSlot* MarkerSlot =
-			Cast<UCanvasPanelSlot>(NewMarker->Slot);
-
+		UCanvasPanelSlot* MarkerSlot = Cast<UCanvasPanelSlot>(NewMarker->Slot);
 		if (MarkerSlot)
 		{
 			MarkerSlot->SetAnchors(FAnchors(0.5, 0.5, 0.5, 0.5));
@@ -55,6 +64,17 @@ UImage* UCompassWidget::AddCompassMarker()
 	}
 
 	return nullptr;
+}
+
+UTexture2D* UCompassWidget::GetTextureForMarkerType(ECompassMarkerType MarkerType)
+{
+	UTexture2D** FoundTexture = MarkerTextureMap.Find(MarkerType);
+	if (FoundTexture && *FoundTexture)
+	{
+		return *FoundTexture;
+	}
+
+	return LoadObject<UTexture2D>(nullptr, TEXT("/Game/StarterBundle/Image/mark1.mark1"));
 }
 
 void UCompassWidget::SetMarkerPosition(UImage* InMarker, float TargetRotation, bool bSideLock)
@@ -95,30 +115,30 @@ void UCompassWidget::SetMarkerPosition(UImage* InMarker, float TargetRotation, b
 	
 }
 
-void UCompassWidget::UpdateCompassMarkers(TArray<float>& CompassMarkers)
-{
-	for (int32 i=0; i<CompassMarkers.Num(); i++)
-	{
-		if (Markers[i])
-		{
-			SetMarkerPosition(Markers[i], CompassMarkers[i], false);
-			Markers[i]->SetVisibility(ESlateVisibility::Visible);
-		}
-		else
-		{
-			UImage* NewImage = AddCompassMarker();
-			SetMarkerPosition(NewImage, CompassMarkers[i], false);
-		}
-	}
-
-	if (CompassMarkers.Num() < Markers.Num())
-	{
-		for (int32 i=CompassMarkers.Num(); i<Markers.Num(); i++)
-		{
-			Markers[i]->SetVisibility(ESlateVisibility::Hidden);
-		}
-	}
-}
+// void UCompassWidget::UpdateCompassMarkers(TArray<FCompassInfo>& CompassInfos)
+// {
+// 	for (int32 i=0; i<CompassMarkers.Num(); i++)
+// 	{
+// 		if (Markers[i])
+// 		{
+// 			SetMarkerPosition(Markers[i], CompassMarkers[i], false);
+// 			Markers[i]->SetVisibility(ESlateVisibility::Visible);
+// 		}
+// 		else
+// 		{
+// 			UImage* NewImage = AddCompassMarker();
+// 			SetMarkerPosition(NewImage, CompassMarkers[i], false);
+// 		}
+// 	}
+//
+// 	if (CompassMarkers.Num() < Markers.Num())
+// 	{
+// 		for (int32 i=CompassMarkers.Num(); i<Markers.Num(); i++)
+// 		{
+// 			Markers[i]->SetVisibility(ESlateVisibility::Hidden);
+// 		}
+// 	}
+// }
 
 
 

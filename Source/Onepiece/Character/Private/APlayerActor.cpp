@@ -22,9 +22,14 @@
 #include "UPopupManager.h"
 #include "UPopup_ReadQuest.h"
 #include "ALingoGameState.h"
+#include "ALuggageHolder.h"
 #include "APlayerControl.h"
 #include "ASpeakStageActor.h"
+#include "ATeleportOut.h"
+#include "ATeleportTrigger.h"
+#include "AWheatly.h"
 #include "CompassWidget.h"
+#include "OrderKiosk.h"
 #include "UToastWidget.h"
 #include "UBroadcastManager.h"
 #include "UFadeWidget.h"
@@ -40,6 +45,7 @@
 #include "GameFramework/PlayerController.h"
 #include "Net/UnrealNetwork.h"
 #include "Blueprint/UserWidget.h"
+#include "Components/Image.h"
 #include "Components/StaticMeshComponent.h"
 #include "Engine/StaticMesh.h"
 #include "GameFramework/PlayerState.h"
@@ -769,24 +775,55 @@ void APlayerActor::UpdateCompassMarkers()
 
 	UCompassWidget* Compass = MainWidget->CompassWidget;
 
-	// 1. 현재 월드의 모든 트래킹 대상 수집                                                                                                                           
+	// 1. 현재 월드의 모든 트래킹 대상 수집
 	TArray<AActor*> TrackedActors;
-	UGameplayStatics::GetAllActorsOfClass(GetWorld(), AContactTrigger::StaticClass(), TrackedActors);
+	// GetAllActorsOfClass 시 배열 안에 있는건 clear됨. 임시배열 필요
+	TArray<AActor*> TempActors;
+	// AContactTrigger
+	UGameplayStatics::GetAllActorsOfClass(GetWorld(), AContactTrigger::StaticClass(), TempActors);
+	TrackedActors.Append(TempActors);
+	// ALuggageHolder
+	UGameplayStatics::GetAllActorsOfClass(GetWorld(), ALuggageHolder::StaticClass(), TrackedActors);
+	TrackedActors.Append(TempActors);
+	// AOrderKiosk
+	UGameplayStatics::GetAllActorsOfClass(GetWorld(), AOrderKiosk::StaticClass(), TrackedActors);
+	TrackedActors.Append(TempActors);
+	// Wheatly
+	UGameplayStatics::GetAllActorsOfClass(GetWorld(), AWheatly::StaticClass(), TrackedActors);
+	TrackedActors.Append(TempActors);
+	// Teleporter
+	UGameplayStatics::GetAllActorsOfClass(GetWorld(), ATeleportTrigger::StaticClass(), TrackedActors);
+	TrackedActors.Append(TempActors);
 
 	// 2. 각 TrackedActor에 대해 마커 생성 or 업데이트                                                                                                                
 	for (AActor* TrackedActor : TrackedActors)
 	{
 		if (!TrackedActor) continue;
 
-		// 2-1. 마커가 없으면 생성                                                                                                                                    
+		// Interface로 캐스팅해서 타입 정보 가져오기
+		ICompassTargetInterface* Target = Cast<ICompassTargetInterface>(TrackedActor);
+		if (!Target) continue;
+
+		// Interface 함수로 마커 타입 확인
+		ECompassMarkerType MarkerType = Target->GetCompassMarkerType();
+		
+		// 2-1. 마커가 없으면 생성
 		UImage* Marker = CompassMarkerMap.FindRef(TrackedActor);
 		if (!Marker)
 		{
-			Marker = Compass->AddCompassMarker();
+			Marker = Compass->AddCompassMarker(MarkerType);
 			CompassMarkerMap.Add(TrackedActor, Marker);
 		}
+		else
+		{
+			UTexture2D* NewTexture = Compass->GetTextureForMarkerType(MarkerType);
+			if (NewTexture)
+			{
+				Marker->SetBrushFromTexture(NewTexture);
+			}
+		}
 
-		// 2-2. 상대 회전 계산 (Yaw만 필요)                                                                                                                           
+		// 2-2. 상대 회전 계산 (Yaw만 필요)
 		FRotator RelativeRotation = FindRelativeRotationAtTarget(TrackedActor);
 		float TargetYaw = RelativeRotation.Yaw;
 
@@ -794,49 +831,24 @@ void APlayerActor::UpdateCompassMarkers()
 		Compass->SetMarkerPosition(Marker, TargetYaw, false);
 	}
 
-	// 3. 제거된 액터의 마커 정리 (선택사항)                                                                                                                          
-	// TArray<AActor*> ActorsToRemove;
-	// for (auto& Pair : CompassMarkerMap)
-	// {
-	// 	if (!Pair.Key || !TrackedActors.Contains(Pair.Key))
-	// 	{
-	// 		// 마커를 UI에서 제거 (필요시 구현)                                                                                                                       
-	// 		ActorsToRemove.Add(Pair.Key);
-	// 	}
-	// }
-	// for (AActor* Actor : ActorsToRemove)
-	// {
-	// 	CompassMarkerMap.Remove(Actor);
-	// }
+	// 제거된 액터의 마커 정리
+	TArray<AActor*> ActorsToRemove;
+	for (auto& Pair : CompassMarkerMap)
+	{
+		if (!Pair.Key || !TrackedActors.Contains(Pair.Key))
+		{
+			if (Pair.Value)
+			{
+				Pair.Value->SetVisibility(ESlateVisibility::Hidden);	
+			}
+			ActorsToRemove.Add(Pair.Key);
+		}
+	}
 
-	 // --- 방법 2: Interface 함수 활용 (타입별 다른 마커 표시) ---
-	// 필요시 사용
-      /*                                                                                                                                                                
-      for (AActor* TrackedActor : TrackedActors)                                                                                                                        
-      {                                                                                                                                                                 
-          if (!TrackedActor) continue;                                                                                                                                  
-
-          // Interface로 캐스팅해서 정보 가져오기                                                                                                                       
-          ICompassTargetInterface* Target = Cast<ICompassTargetInterface>(TrackedActor);                                                                                
-          if (!Target) continue;                                                                                                                                        
-
-          // Interface 함수로 마커 타입 확인 (예: GetCompassMarkerType())                                                                                               
-          ECompassMarkerType MarkerType = Target->GetCompassMarkerType();                                                                                               
-
-          // 타입에 따라 다른 마커 생성/업데이트                                                                                                                        
-          UImage* Marker = CompassMarkerMap.FindRef(TrackedActor);                                                                                                      
-          if (!Marker)                                                                                                                                                  
-          {                                                                                                                                                             
-              Marker = Compass->AddCompassMarker(MarkerType); // 타입별 마커 생성                                                                                       
-              CompassMarkerMap.Add(TrackedActor, Marker);                                                                                                               
-          }                                                                                                                                                             
-
-          FRotator RelativeRotation = FindRelativeRotationAtTarget(TrackedActor);                                                                                       
-          float TargetYaw = RelativeRotation.Yaw;                                                                                                                       
-
-          Compass->SetMarkerPosition(Marker, TargetYaw, false);                                                                                                         
-      }                                                                                                                                                                 
-      */
+	for (AActor* Actor : ActorsToRemove)
+	{
+		CompassMarkerMap.Remove(Actor);
+	}
 }
 
 FRotator APlayerActor::FindRelativeRotationAtTarget(AActor* Target)
