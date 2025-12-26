@@ -23,6 +23,7 @@
 #include "UPopup_Evaluation.h"
 #include "UPopup_LevelSelect.h"
 #include "UPopup_History.h"
+#include "UPopup_HowToPlay.h"
 #include "UPopup_SpeakJudes.h"
 
 #include "Onepiece/Onepiece.h"
@@ -45,6 +46,7 @@
 #define LEVELSELECT_POPUP_PATH TEXT("/Game/CustomContents/UI/Widgets/WBP_PopupLevelSelect.WBP_PopupLevelSelect_C")
 #define HISTORY_POPUP_PATH TEXT("/Game/CustomContents/UI/Widgets/WBP_PopupHistory.WBP_PopupHistory_C")
 #define SPEAKJUDES_POPUP_PATH TEXT("/Game/CustomContents/UI/Widgets/WBP_PopupSpeakJudes.WBP_PopupSpeakJudes_C")
+#define HOWTOPLAY_POPUP_PATH TEXT("/Game/CustomContents/UI/Widgets/WBP_PopupHowToPlay.WBP_PopupHowToPlay_C")
 
 
 UPopupManager::UPopupManager()
@@ -69,6 +71,7 @@ UPopupManager::UPopupManager()
 	PopupClassMap.Add(EPopupType::LevelSelect, FComponentHelper::LoadClass<UPopup_LevelSelect>(LEVELSELECT_POPUP_PATH));
 	PopupClassMap.Add(EPopupType::History, FComponentHelper::LoadClass<UPopup_History>(HISTORY_POPUP_PATH));
 	PopupClassMap.Add(EPopupType::SpeakJudes, FComponentHelper::LoadClass<UPopup_SpeakJudes>(SPEAKJUDES_POPUP_PATH));
+	PopupClassMap.Add(EPopupType::HowToPlay, FComponentHelper::LoadClass<UPopup_HowToPlay>(HOWTOPLAY_POPUP_PATH));
 }
 
 // ========================================

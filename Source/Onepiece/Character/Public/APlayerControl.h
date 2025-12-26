@@ -86,6 +86,7 @@ protected:
 	UPROPERTY(EditDefaultsOnly, Category="Input") TObjectPtr<class UInputAction> IA_Hook;
 	UPROPERTY(EditDefaultsOnly, Category="Input") TObjectPtr<class UInputAction> IA_Chat;
 	UPROPERTY(EditDefaultsOnly, Category="Input") TObjectPtr<class UInputAction> IA_Histroy;
+	UPROPERTY(EditDefaultsOnly, Category="Input") TObjectPtr<class UInputAction> IA_HowToPlay;
 
 	// --- Handlers ---
 	void OnMove(const FInputActionValue& Value);
@@ -110,6 +111,8 @@ protected:
 	void OnChat(const FInputActionValue& Value);
 
 	void OnHistory(const FInputActionValue& Value);
+
+	void OnHowToPlay(const FInputActionValue& Value);
 
 	UFUNCTION(Server, Reliable)
 	void Server_OnGrab();	

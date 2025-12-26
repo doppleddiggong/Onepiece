@@ -31,16 +31,15 @@ enum class EPopupType : uint8
 
 	SpeakQuest			UMETA(DisplayName = "SpeakQuest"),
 	SpeakQuestJudes		UMETA(DisplayName = "SpeakQuestJudes"),
-	SpeakJudes			UMETA(DisplayName = "SpeakJudes"),
 	SpeakResult			UMETA(DisplayName = "SpeakResult"),
 
 	Evaluation			UMETA(DisplayName = "Evaluation"),
-
 	AskTutorial			UMETA(DisplayName = "AskTutorial"),
-
 	LevelSelect			UMETA(DisplayName = "LevelSelect"),
-
 	History				UMETA(DisplayName = "History"),
+	SpeakJudes			UMETA(DisplayName = "SpeakJudes"),
+
+	HowToPlay			UMETA(DisplayName = "HowToPlay"),
 };
 
 UENUM(BlueprintType)

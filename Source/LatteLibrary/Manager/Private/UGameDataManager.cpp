@@ -20,6 +20,8 @@
 #define LISTENDATA_PATH  TEXT("/Game/CustomContents/MasterData/DT_ListenData.DT_ListenData")
 #define READDATA_PATH  TEXT("/Game/CustomContents/MasterData/DT_ReadData.DT_ReadData")
 #define WORDDATA_PATH  TEXT("/Game/CustomContents/MasterData/DT_WordData.DT_WordData")
+#define HOWTOPLAYDATA_PATH  TEXT("/Game/CustomContents/MasterData/DT_HowToPlayPageData.DT_HowToPlayPageData")
+
 
 UGameDataManager::UGameDataManager()
 {
@@ -30,6 +32,7 @@ UGameDataManager::UGameDataManager()
     ListenDataTable  = FComponentHelper::LoadAsset<UDataTable>(LISTENDATA_PATH);
     ReadDataTable = FComponentHelper::LoadAsset<UDataTable>(READDATA_PATH);
     WordStudyDataTable = FComponentHelper::LoadAsset<UDataTable>(WORDDATA_PATH);
+    HowToPlayPageDataTable = FComponentHelper::LoadAsset<UDataTable>(HOWTOPLAYDATA_PATH);
 }
 
 void UGameDataManager::Initialize(FSubsystemCollectionBase& Collection)
@@ -52,6 +55,7 @@ void UGameDataManager::Deinitialize()
     Clear_ListenData();
     Clear_ReadData();
     Clear_WordStudyData();
+    Clear_HowToPlayPageData();
 
     Super::Deinitialize();
 }
@@ -69,6 +73,7 @@ void UGameDataManager::ReloadMasterData()
     LoadData_ListenData();
     LoadData_ReadData();
     LoadData_WordStudyData();
+    LoadData_HowToPlayPageData();
 }
 
 #pragma region HIT_STOP
@@ -711,7 +716,7 @@ bool UGameDataManager::GetWordStudyData(int32 Index, FWordStudyData& Out) const
 TArray<FWordStudyData> UGameDataManager::GetAllWordStudyData() const
 {
     TArray<FWordStudyData> Result;
-    
+
     if (!bLoadWordStudyData)
         return Result;
 
@@ -723,3 +728,71 @@ TArray<FWordStudyData> UGameDataManager::GetAllWordStudyData() const
     return Result;
 }
 #pragma endregion WORD_DATA
+
+#pragma region HOW_TO_PLAY_DATA
+void UGameDataManager::Clear_HowToPlayPageData()
+{
+    HowToPlayPageDataCache.Reset();
+    bLoadHowToPlayPageData = false;
+}
+
+void UGameDataManager::LoadData_HowToPlayPageData()
+{
+    HowToPlayPageDataCache.Reset();
+    bLoadHowToPlayPageData = false;
+
+    UDataTable* TableObj = HowToPlayPageDataTable.LoadSynchronous();
+    if (!TableObj)
+    {
+        PRINTLOG(TEXT("Load failed: %s"), *HowToPlayPageDataTable.ToString());
+        return;
+    }
+
+    static const FString ContextString(TEXT("HowToPlayPageDataTable"));
+    for (const FName& RowName : TableObj->GetRowNames())
+    {
+        if (const FHowToPlayPageData* Row = TableObj->FindRow<FHowToPlayPageData>(RowName, ContextString, true))
+        {
+            // RowName을 Enum으로 변환
+            FString EnumString = RowName.ToString();
+            EHowToPlayPageType PageType = static_cast<EHowToPlayPageType>(
+                StaticEnum<EHowToPlayPageType>()->GetValueByNameString(EnumString)
+            );
+
+            HowToPlayPageDataCache.Add(PageType, *Row);
+        }
+    }
+
+    bLoadHowToPlayPageData = true;
+}
+
+bool UGameDataManager::GetHowToPlayPageData(EHowToPlayPageType Type, FHowToPlayPageData& Out) const
+{
+    if (!bLoadHowToPlayPageData)
+        return false;
+
+    if (const FHowToPlayPageData* Found = HowToPlayPageDataCache.Find(Type))
+    {
+        Out = *Found;
+        return true;
+    }
+
+    PRINTLOG(TEXT("DataGetFail : HowToPlayPageData Type %s"), *UEnum::GetValueAsString(Type));
+    return false;
+}
+
+TArray<FHowToPlayPageData> UGameDataManager::GetAllHowToPlayPageData() const
+{
+    TArray<FHowToPlayPageData> Result;
+
+    if (!bLoadHowToPlayPageData)
+        return Result;
+
+    for (const auto& Pair : HowToPlayPageDataCache)
+    {
+        Result.Add(Pair.Value);
+    }
+
+    return Result;
+}
+#pragma endregion HOW_TO_PLAY_DATA

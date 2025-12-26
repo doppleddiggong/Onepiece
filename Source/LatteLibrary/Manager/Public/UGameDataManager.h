@@ -20,6 +20,7 @@
 #include "FListenData.h"
 #include "FReadData.h"
 #include "FWordStudyData.h"
+#include "FHowToPlayPageData.h"
 
 #include "Subsystems/GameInstanceSubsystem.h"
 #include "UGameDataManager.generated.h"
@@ -253,4 +254,24 @@ private:
 	UPROPERTY(VisibleAnywhere, Category = "Cache", meta = (AllowPrivateAccess = "true"))
 	TMap<int32, FWordStudyData> WordStudyDataCache;
 #pragma endregion WORD_DATA
+
+#pragma region HOW_TO_PLAY_DATA
+public:
+	UPROPERTY(EditAnywhere, Category="MasterData|HowToPlay")
+	TSoftObjectPtr<UDataTable> HowToPlayPageDataTable;
+
+	UFUNCTION(BlueprintCallable, Category="MasterData|HowToPlay")
+	bool GetHowToPlayPageData(EHowToPlayPageType Type, FHowToPlayPageData& Out) const;
+
+	UFUNCTION(BlueprintCallable, Category="MasterData|HowToPlay")
+	TArray<FHowToPlayPageData> GetAllHowToPlayPageData() const;
+
+private:
+	void Clear_HowToPlayPageData();
+	void LoadData_HowToPlayPageData();
+	bool bLoadHowToPlayPageData = false;
+
+	UPROPERTY(VisibleAnywhere, Category = "Cache", meta = (AllowPrivateAccess = "true"))
+	TMap<EHowToPlayPageType, FHowToPlayPageData> HowToPlayPageDataCache;
+#pragma endregion HOW_TO_PLAY_DATA
 };

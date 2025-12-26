@@ -40,6 +40,7 @@
 #include "UPopup_SpeakResult.h"
 #include "UChatHistorySystem.h"
 #include "UPopup_History.h"
+#include "UPopup_HowToPlay.h"
 #include "Onepiece/Onepiece.h"
 
 #define IMC_DEFAULT_PATH			TEXT("/Game/CustomContents/Input/IMC_Game_Player.IMC_Game_Player")
@@ -54,6 +55,7 @@
 #define IA_HOOK_PATH				TEXT("/Game/CustomContents/Input/IA_Game_Hook.IA_Game_Hook")
 #define IA_CHAT_PATH				TEXT("/Game/CustomContents/Input/IA_EnterChat.IA_EnterChat")
 #define IA_HISTORY_PATH				TEXT("/Game/CustomContents/Input/IA_Game_History.IA_Game_History")
+#define IA_HOWTOPLAY_PATH			TEXT("/Game/CustomContents/Input/IA_Game_HowToPlay.IA_Game_HowToPlay")
 
 
 APlayerControl::APlayerControl()
@@ -71,6 +73,7 @@ APlayerControl::APlayerControl()
 	IA_Hook = FComponentHelper::LoadAsset<UInputAction>(IA_HOOK_PATH);
 	IA_Chat = FComponentHelper::LoadAsset<UInputAction>(IA_CHAT_PATH);
 	IA_Histroy = FComponentHelper::LoadAsset<UInputAction>(IA_HISTORY_PATH);
+	IA_HowToPlay  = FComponentHelper::LoadAsset<UInputAction>(IA_HOWTOPLAY_PATH);
 
 	TutorialComponent = CreateDefaultSubobject<UTutorialComponent>(TEXT("TutorialComponent"));
 	ChatHistorySystem = CreateDefaultSubobject<UChatHistorySystem>(TEXT("ChatHistorySystem"));
@@ -135,6 +138,7 @@ void APlayerControl::SetupInputComponent()
 
 		EIC->BindAction(IA_Chat, ETriggerEvent::Started, this, &APlayerControl::OnChat);
 		EIC->BindAction(IA_Histroy, ETriggerEvent::Started, this, &APlayerControl::OnHistory);
+		EIC->BindAction(IA_HowToPlay, ETriggerEvent::Started, this, &APlayerControl::OnHowToPlay);
 	}
 }
 
@@ -320,6 +324,14 @@ void APlayerControl::OnHistory(const FInputActionValue& Value)
 {
 	// ShowPopupAs 템플릿 함수를 사용하여 History 팝업 표시
 	if (auto Popup = UPopupManager::ShowPopupAs<UPopup_History>(GetWorld(), EPopupType::History))
+	{
+		Popup->InitPopup();
+	}
+}
+
+void APlayerControl::OnHowToPlay(const FInputActionValue& Value)
+{
+	if (auto Popup = UPopupManager::ShowPopupAs<UPopup_HowToPlay>(GetWorld(), EPopupType::HowToPlay))
 	{
 		Popup->InitPopup();
 	}
