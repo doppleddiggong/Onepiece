@@ -6,7 +6,6 @@ var classALingoGameMode =
     [ "HandleCorrectAnswer", "classALingoGameMode.html#a11e7cf43757f20d1d9f0d5d1d9751ab7", null ],
     [ "HandleLuggageSelection", "classALingoGameMode.html#a5a1abf7a283ddd9f6ac8b2db142bd49f", null ],
     [ "HandleWrongAnswer", "classALingoGameMode.html#a2afd7939b5c4dc08f353aa1a00cd3967", null ],
-    [ "PostLogin", "classALingoGameMode.html#a20061fc3207a360bcf7909ada0d8d02c", null ],
     [ "UpdateQuestRole", "classALingoGameMode.html#a66c0084d4eca03c65a47c202e1ae65fc", null ],
     [ "ValidateAnswer", "classALingoGameMode.html#a910e19df50b7f45058b55af455212e19", null ]
 ];

@@ -152,8 +152,10 @@ var hierarchy =
     [ "FWriteWordData", "structFWriteWordData.html", null ],
     [ "ICompassTargetInterface", "classICompassTargetInterface.html", [
       [ "AContactTrigger", "classAContactTrigger.html", null ],
+      [ "AEvaluationTrigger", "classAEvaluationTrigger.html", null ],
       [ "ALuggageHolder", "classALuggageHolder.html", null ],
       [ "AOrderKiosk", "classAOrderKiosk.html", null ],
+      [ "APlayerActor", "classAPlayerActor.html", null ],
       [ "AQuestionnaireKiosk", "classAQuestionnaireKiosk.html", null ],
       [ "ATeleportTrigger", "classATeleportTrigger.html", null ],
       [ "AWheatly", "classAWheatly.html", null ]

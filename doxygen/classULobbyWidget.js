@@ -1,6 +1,7 @@
 var classULobbyWidget =
 [
     [ "NativeConstruct", "classULobbyWidget.html#a10378421a5314d3bd877994740a035d6", null ],
+    [ "OnBackPressed", "classULobbyWidget.html#a04a0c678218a57f7f3a59a352544d447", null ],
     [ "OnClickFind", "classULobbyWidget.html#ae19628adc8297e76a4edd5452099c2e4", null ],
     [ "OnCreateClicked", "classULobbyWidget.html#a2a1e923537fd35cd5a2cb7b2542168cb", null ],
     [ "OnFindComplete", "classULobbyWidget.html#a000f1806ccfae80bea829ad0e3c424c1", null ],
@@ -9,6 +10,8 @@ var classULobbyWidget =
     [ "OnLogOutClicked", "classULobbyWidget.html#a3d709383d31fc4f1a2ccf4ceae0daf77", null ],
     [ "OnSingleClicked", "classULobbyWidget.html#a5edcb46b3862c945f5143702a43f9cf8", null ],
     [ "OnValueChangedSessionName", "classULobbyWidget.html#a19688e892381b0af770c0e50a9678e54", null ],
+    [ "Btn_Back1", "classULobbyWidget.html#a30fe3da10f73cf3a6f8c5267e9d69824", null ],
+    [ "Btn_Back2", "classULobbyWidget.html#abde4b03badd2869ac89547bd4fdb3f6d", null ],
     [ "Btn_Create", "classULobbyWidget.html#ac269be527b9914bcf24923f5a15690f9", null ],
     [ "Btn_Host", "classULobbyWidget.html#a93bfc42c7f6e65f1817ec727e60824c3", null ],
     [ "Btn_Join", "classULobbyWidget.html#a9aa8c021f1b4fcd8c44b91a3ae5ef9d3", null ],

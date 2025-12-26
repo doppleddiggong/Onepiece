@@ -288,8 +288,17 @@ $(document).ready(function(){initNavTree('ALingoGameState_8h_source.html',''); i
 <div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span> </div>
 <div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>    UFUNCTION(BlueprintCallable, Category = &quot;Compass&quot;)</div>
 <div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>    <span class="keywordtype">void</span> SetAllCompassVisibility(<span class="keywordtype">bool</span> bVisible);</div>
-<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>    </div>
-<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>};</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span> </div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>    UFUNCTION(NetMulticast, Reliable)</div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno"><a class="line" href="classALingoGameState.html#a187eb1e4402343fb0feeb815509ba037">  186</a></span>    <span class="keywordtype">void</span> Multicast_SetCompassVisibilityByTag(FName Tag, <span class="keywordtype">bool</span> bVisible);</div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span> </div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>    UFUNCTION(NetMulticast, Reliable)</div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno"><a class="line" href="classALingoGameState.html#a59622f36329351c6cb53dba33668c122">  189</a></span>    <span class="keywordtype">void</span> Multicast_SetCompassVisibilityByClass(TSubclassOf&lt;AActor&gt; ActorClass, <span class="keywordtype">bool</span> bVisible);</div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span> </div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>    UFUNCTION(NetMulticast, Reliable)</div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno"><a class="line" href="classALingoGameState.html#a2ed31b0f42b32340d299412ae17b8b4d">  192</a></span>    <span class="keywordtype">void</span> Multicast_SetAllCompassVisibility(<span class="keywordtype">bool</span> bVisible);</div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>    </div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>};</div>
 </div>
 <div class="ttc" id="aALingoGameState_8h_html_a1a866ca8104ebd47ce462347a6125921"><div class="ttname"><a href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921">EQuestType</a></div><div class="ttdeci">EQuestType</div><div class="ttdef"><b>Definition</b> <a href="ALingoGameState_8h_source.html#l00011">ALingoGameState.h:12</a></div></div>
 <div class="ttc" id="aALingoGameState_8h_html_a1a866ca8104ebd47ce462347a6125921a1129c0e4d43f2d121652a7302712cff6"><div class="ttname"><a href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a1129c0e4d43f2d121652a7302712cff6">EQuestType::Write</a></div><div class="ttdeci">@ Write</div></div>
@@ -322,7 +331,7 @@ $(document).ready(function(){initNavTree('ALingoGameState_8h_source.html',''); i
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_7fb5e64dcba5cad56d11a2ce531d1e7a.html">Game</a></li><li class="navelem"><a class="el" href="dir_7d5071b022ae16b4c5bc069534dc4de0.html">Public</a></li><li class="navelem"><a class="el" href="ALingoGameState_8h.html">ALingoGameState.h</a></li>
-    <li class="footer">생성시간 : 수 12월 24 2025 10:42:59, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 금 12월 26 2025 07:26:36, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

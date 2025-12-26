@@ -9,7 +9,7 @@ var classAQuestionnaireKiosk =
     [ "OnInteractionTriggered", "classAQuestionnaireKiosk.html#a4671d5794cc1dd9127a34d1aa241370e", null ],
     [ "OnOutlineStateChanged", "classAQuestionnaireKiosk.html#a78eb471ef39239c272e781bd0782056e", null ],
     [ "OnResponseData", "classAQuestionnaireKiosk.html#aaacc61f5572ccd7b26cf1edcabbdc9a1", null ],
-    [ "SetCompassMarkerInto", "classAQuestionnaireKiosk.html#a0b63efe2795a5f11f0c06580f9415619", null ],
+    [ "SetCompassMarkerInto", "classAQuestionnaireKiosk.html#af8c2cdaa8f76f567731bbb6a99a09a89", null ],
     [ "SetShowOnCompass", "classAQuestionnaireKiosk.html#a3807797b2156ffdf09802d3b8f1dd812", null ],
     [ "ShouldShowOnCompass", "classAQuestionnaireKiosk.html#aa6ca87eb035438649532297283644173", null ],
     [ "ShowPopup", "classAQuestionnaireKiosk.html#a032bf43decb5816ab133f7efcbc1c519", null ],

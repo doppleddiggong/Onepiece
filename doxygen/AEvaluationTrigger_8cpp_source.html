@@ -146,148 +146,152 @@ $(document).ready(function(){initNavTree('AEvaluationTrigger_8cpp_source.html','
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <a class="code hl_variable" href="classAEvaluationTrigger.html#af5cfdfdc29c7cf482ad5e1b58b41bc56">bIsTriggered</a> = <span class="keyword">false</span>;</div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <a class="code hl_variable" href="classAEvaluationTrigger.html#ac2d5d3b5f9d400a71c2a5d9b7844772b">bShowDebugBox</a> = <span class="keyword">true</span>;</div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <a class="code hl_variable" href="classAEvaluationTrigger.html#a1053d93474020d63a6d9c17abf2a4771">DebugBoxColor</a> = FColor::Green;</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>}</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <a class="code hl_variable" href="classICompassTargetInterface.html#afab55eb3a8c206914d440493384e9401">MarkerType</a> = <a class="code hl_enumvalue" href="ECompassMarkerType_8h.html#acc6a187307708d9ee4bfdb3e4df7dba6a7f03799d2c1afc573db3451a36a96513">ECompassMarkerType::FinalResult</a>;</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>}</div>
 </div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
-<div class="foldopen" id="foldopen00039" data-start="{" data-end="}">
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="classAEvaluationTrigger.html#a065c0db09eb9dda0c105ea588f083fbb">   39</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAEvaluationTrigger.html#a065c0db09eb9dda0c105ea588f083fbb">AEvaluationTrigger::BeginPlay</a>()</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>{</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    Super::BeginPlay();</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAEvaluationTrigger.html#adc2fce620934610bbf1d49bcb5def206">TriggerBox</a>)</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        <a class="code hl_variable" href="classAEvaluationTrigger.html#adc2fce620934610bbf1d49bcb5def206">TriggerBox</a>-&gt;OnComponentBeginOverlap.AddDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classAEvaluationTrigger.html#a9a85ea637ee8321c55cb475ae9a40113">AEvaluationTrigger::OnTriggerBeginOverlap</a>);</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>}</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="foldopen" id="foldopen00041" data-start="{" data-end="}">
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="classAEvaluationTrigger.html#a065c0db09eb9dda0c105ea588f083fbb">   41</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAEvaluationTrigger.html#a065c0db09eb9dda0c105ea588f083fbb">AEvaluationTrigger::BeginPlay</a>()</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>{</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    Super::BeginPlay();</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAEvaluationTrigger.html#adc2fce620934610bbf1d49bcb5def206">TriggerBox</a>)</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        <a class="code hl_variable" href="classAEvaluationTrigger.html#adc2fce620934610bbf1d49bcb5def206">TriggerBox</a>-&gt;OnComponentBeginOverlap.AddDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classAEvaluationTrigger.html#a9a85ea637ee8321c55cb475ae9a40113">AEvaluationTrigger::OnTriggerBeginOverlap</a>);</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>}</div>
 </div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
-<div class="foldopen" id="foldopen00047" data-start="{" data-end="}">
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="classAEvaluationTrigger.html#a31682c30e68ca09edeca4b795da985a0">   47</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAEvaluationTrigger.html#a31682c30e68ca09edeca4b795da985a0">AEvaluationTrigger::Tick</a>(<span class="keywordtype">float</span> DeltaTime)</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>{</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    Super::Tick(DeltaTime);</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAEvaluationTrigger.html#ac2d5d3b5f9d400a71c2a5d9b7844772b">bShowDebugBox</a> &amp;&amp; <a class="code hl_variable" href="classAEvaluationTrigger.html#adc2fce620934610bbf1d49bcb5def206">TriggerBox</a>)</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    {</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        FVector BoxCenter = <a class="code hl_variable" href="classAEvaluationTrigger.html#adc2fce620934610bbf1d49bcb5def206">TriggerBox</a>-&gt;GetComponentLocation();</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        FVector BoxExtent = <a class="code hl_variable" href="classAEvaluationTrigger.html#adc2fce620934610bbf1d49bcb5def206">TriggerBox</a>-&gt;GetScaledBoxExtent();</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        FRotator BoxRotation = <a class="code hl_variable" href="classAEvaluationTrigger.html#adc2fce620934610bbf1d49bcb5def206">TriggerBox</a>-&gt;GetComponentRotation();</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        <span class="comment">// 디버그 박스 표시 (트리거 활성화 상태일 때만)</span></div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classAEvaluationTrigger.html#af5cfdfdc29c7cf482ad5e1b58b41bc56">bIsTriggered</a>)</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        {</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>            DrawDebugBox(</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>                GetWorld(),</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>                BoxCenter,</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>                BoxExtent,</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>                BoxRotation.Quaternion(),</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>                <a class="code hl_variable" href="classAEvaluationTrigger.html#a1053d93474020d63a6d9c17abf2a4771">DebugBoxColor</a>,</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>                <span class="keyword">false</span>,</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>                -1.0f,</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>                0,</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>                2.0f</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>            );</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        }</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        <span class="comment">// 트리거 정보를 텍스트로 표시</span></div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>        FString StatusText = <a class="code hl_variable" href="classAEvaluationTrigger.html#af5cfdfdc29c7cf482ad5e1b58b41bc56">bIsTriggered</a> ? TEXT(<span class="stringliteral">&quot;[TRIGGERED]&quot;</span>) : TEXT(<span class="stringliteral">&quot;[ACTIVE]&quot;</span>);</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        FColor TextColor = <a class="code hl_variable" href="classAEvaluationTrigger.html#af5cfdfdc29c7cf482ad5e1b58b41bc56">bIsTriggered</a> ? FColor::Red : FColor::Green;</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        FVector TextLocation = BoxCenter + FVector(0.0f, 0.0f, BoxExtent.Z + 50.0f);</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
+<div class="foldopen" id="foldopen00049" data-start="{" data-end="}">
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="classAEvaluationTrigger.html#a31682c30e68ca09edeca4b795da985a0">   49</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAEvaluationTrigger.html#a31682c30e68ca09edeca4b795da985a0">AEvaluationTrigger::Tick</a>(<span class="keywordtype">float</span> DeltaTime)</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>{</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    Super::Tick(DeltaTime);</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAEvaluationTrigger.html#ac2d5d3b5f9d400a71c2a5d9b7844772b">bShowDebugBox</a> &amp;&amp; <a class="code hl_variable" href="classAEvaluationTrigger.html#adc2fce620934610bbf1d49bcb5def206">TriggerBox</a>)</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    {</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        FVector BoxCenter = <a class="code hl_variable" href="classAEvaluationTrigger.html#adc2fce620934610bbf1d49bcb5def206">TriggerBox</a>-&gt;GetComponentLocation();</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        FVector BoxExtent = <a class="code hl_variable" href="classAEvaluationTrigger.html#adc2fce620934610bbf1d49bcb5def206">TriggerBox</a>-&gt;GetScaledBoxExtent();</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        FRotator BoxRotation = <a class="code hl_variable" href="classAEvaluationTrigger.html#adc2fce620934610bbf1d49bcb5def206">TriggerBox</a>-&gt;GetComponentRotation();</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        <span class="comment">// 디버그 박스 표시 (트리거 활성화 상태일 때만)</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classAEvaluationTrigger.html#af5cfdfdc29c7cf482ad5e1b58b41bc56">bIsTriggered</a>)</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        {</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>            DrawDebugBox(</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>                GetWorld(),</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>                BoxCenter,</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>                BoxExtent,</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>                BoxRotation.Quaternion(),</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>                <a class="code hl_variable" href="classAEvaluationTrigger.html#a1053d93474020d63a6d9c17abf2a4771">DebugBoxColor</a>,</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>                <span class="keyword">false</span>,</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>                -1.0f,</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>                0,</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>                2.0f</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>            );</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        }</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        <span class="comment">// 트리거 정보를 텍스트로 표시</span></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        FString StatusText = <a class="code hl_variable" href="classAEvaluationTrigger.html#af5cfdfdc29c7cf482ad5e1b58b41bc56">bIsTriggered</a> ? TEXT(<span class="stringliteral">&quot;[TRIGGERED]&quot;</span>) : TEXT(<span class="stringliteral">&quot;[ACTIVE]&quot;</span>);</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        FColor TextColor = <a class="code hl_variable" href="classAEvaluationTrigger.html#af5cfdfdc29c7cf482ad5e1b58b41bc56">bIsTriggered</a> ? FColor::Red : FColor::Green;</div>
 <div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        <span class="comment">// 상태 표시</span></div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        DrawDebugString(</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>            GetWorld(),</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>            TextLocation,</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>            StatusText,</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>            <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>            TextColor,</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>            0.0f,</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>            <span class="keyword">true</span>,</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>            1.2f</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>        );</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    }</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>}</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        FVector TextLocation = BoxCenter + FVector(0.0f, 0.0f, BoxExtent.Z + 50.0f);</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        <span class="comment">// 상태 표시</span></div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        DrawDebugString(</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>            GetWorld(),</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>            TextLocation,</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>            StatusText,</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>            <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>            TextColor,</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>            0.0f,</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>            <span class="keyword">true</span>,</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>            1.2f</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        );</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    }</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>}</div>
 </div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
-<div class="foldopen" id="foldopen00093" data-start="{" data-end="}">
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno"><a class="line" href="classAEvaluationTrigger.html#a9a85ea637ee8321c55cb475ae9a40113">   93</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAEvaluationTrigger.html#a9a85ea637ee8321c55cb475ae9a40113">AEvaluationTrigger::OnTriggerBeginOverlap</a>(</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    UPrimitiveComponent* OtherComp, int32 OtherBodyIndex,</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    <span class="keywordtype">bool</span> bFromSweep, <span class="keyword">const</span> FHitResult&amp; SweepResult)</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>{</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    <span class="comment">// 서버에서만 처리</span></div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    <span class="keywordflow">if</span> (!HasAuthority())</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span> </div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    <span class="comment">// 원샷 모드이고 이미 트리거되었으면 무시</span></div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    <span class="keywordflow">if</span> ( <a class="code hl_variable" href="classAEvaluationTrigger.html#af5cfdfdc29c7cf482ad5e1b58b41bc56">bIsTriggered</a>)</div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span> </div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    <span class="comment">// PlayerActor인지 확인</span></div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    <a class="code hl_class" href="classAPlayerActor.html">APlayerActor</a>* PlayerActor = Cast&lt;APlayerActor&gt;(OtherActor);</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    <span class="keywordflow">if</span> (PlayerActor)</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    {</div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>        <a class="code hl_function" href="classAEvaluationTrigger.html#a6373ef6c1feb24d9c2690e8fa755b535">OnActivate</a>();</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>        </div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>        <a class="code hl_variable" href="classAEvaluationTrigger.html#af5cfdfdc29c7cf482ad5e1b58b41bc56">bIsTriggered</a> = <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    }</div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>}</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
+<div class="foldopen" id="foldopen00095" data-start="{" data-end="}">
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno"><a class="line" href="classAEvaluationTrigger.html#a9a85ea637ee8321c55cb475ae9a40113">   95</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAEvaluationTrigger.html#a9a85ea637ee8321c55cb475ae9a40113">AEvaluationTrigger::OnTriggerBeginOverlap</a>(</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    UPrimitiveComponent* OtherComp, int32 OtherBodyIndex,</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    <span class="keywordtype">bool</span> bFromSweep, <span class="keyword">const</span> FHitResult&amp; SweepResult)</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>{</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    <span class="comment">// 서버에서만 처리</span></div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    <span class="keywordflow">if</span> (!HasAuthority())</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    <span class="comment">// 원샷 모드이고 이미 트리거되었으면 무시</span></div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    <span class="keywordflow">if</span> ( <a class="code hl_variable" href="classAEvaluationTrigger.html#af5cfdfdc29c7cf482ad5e1b58b41bc56">bIsTriggered</a>)</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span> </div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    <span class="comment">// PlayerActor인지 확인</span></div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    <a class="code hl_class" href="classAPlayerActor.html">APlayerActor</a>* PlayerActor = Cast&lt;APlayerActor&gt;(OtherActor);</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    <span class="keywordflow">if</span> (PlayerActor)</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    {</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>        <a class="code hl_function" href="classAEvaluationTrigger.html#a6373ef6c1feb24d9c2690e8fa755b535">OnActivate</a>();</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>        </div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>        <a class="code hl_variable" href="classAEvaluationTrigger.html#af5cfdfdc29c7cf482ad5e1b58b41bc56">bIsTriggered</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>    }</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>}</div>
 </div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span> </div>
-<div class="foldopen" id="foldopen00116" data-start="{" data-end="}">
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno"><a class="line" href="classAEvaluationTrigger.html#a5c3ece4ac9a1c5e623daac9f30c85116">  116</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAEvaluationTrigger.html#a5c3ece4ac9a1c5e623daac9f30c85116">AEvaluationTrigger::OnActivate_Implementation</a>()</div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>{</div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> KLingoNetwork = UKLingoNetworkSystem::Get(GetWorld()))</div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    {</div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>        <span class="keywordflow">if</span> (<span class="keyword">auto</span> GS = <a class="code hl_function" href="classULingoGameHelper.html#aae5e9443e2249c16219279d75b62cb46">ULingoGameHelper::GetLingoGameState</a>(GetWorld()))</div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>        {</div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>            KLingoNetwork-&gt;RequestEvaluationResult(</div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>                GS-&gt;GetRoomId(),</div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>                FResponseEvaluationResultDelegate::CreateUObject(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classAEvaluationTrigger.html#a09849f197732a4d88e6d3be39b3e6b44">AEvaluationTrigger::OnResponseEvaluationResult</a>)</div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>            );</div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>        }</div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>    }</div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>    <span class="keywordflow">else</span></div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>    {</div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;UKLingoNetworkSystem not found!&quot;</span>));</div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>    }</div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>}</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span> </div>
+<div class="foldopen" id="foldopen00118" data-start="{" data-end="}">
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno"><a class="line" href="classAEvaluationTrigger.html#a5c3ece4ac9a1c5e623daac9f30c85116">  118</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAEvaluationTrigger.html#a5c3ece4ac9a1c5e623daac9f30c85116">AEvaluationTrigger::OnActivate_Implementation</a>()</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>{</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> KLingoNetwork = UKLingoNetworkSystem::Get(GetWorld()))</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    {</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>        <span class="keywordflow">if</span> (<span class="keyword">auto</span> GS = <a class="code hl_function" href="classULingoGameHelper.html#aae5e9443e2249c16219279d75b62cb46">ULingoGameHelper::GetLingoGameState</a>(GetWorld()))</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>        {</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>            KLingoNetwork-&gt;RequestEvaluationResult(</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>                GS-&gt;GetRoomId(),</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>                FResponseEvaluationResultDelegate::CreateUObject(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classAEvaluationTrigger.html#a09849f197732a4d88e6d3be39b3e6b44">AEvaluationTrigger::OnResponseEvaluationResult</a>)</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>            );</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>        }</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>    }</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>    <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>    {</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;UKLingoNetworkSystem not found!&quot;</span>));</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>    }</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>}</div>
 </div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span> </div>
-<div class="foldopen" id="foldopen00134" data-start="{" data-end="}">
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno"><a class="line" href="classAEvaluationTrigger.html#a09849f197732a4d88e6d3be39b3e6b44">  134</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAEvaluationTrigger.html#a09849f197732a4d88e6d3be39b3e6b44">AEvaluationTrigger::OnResponseEvaluationResult</a>(<a class="code hl_struct" href="structFResponseEvaluationResult.html">FResponseEvaluationResult</a>&amp; ResponseData, <span class="keywordtype">bool</span> bWasSuccessful)</div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>{</div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>    <span class="keywordflow">if</span> (bWasSuccessful)</div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>    {</div>
-<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;--- Evaluation Result SUCCESS ---&quot;</span>));</div>
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span> </div>
-<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>        <span class="keywordflow">if</span> (<span class="keyword">auto</span> Popup = UPopupManager::ShowPopupAs&lt;UPopup_Evaluation&gt;( GetWorld(), EPopupType::Evaluation))</div>
-<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>            Popup-&gt;InitPopup(ResponseData);</div>
-<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>    }</div>
-<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>    <span class="keywordflow">else</span></div>
-<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>    {</div>
-<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;--- OCR Extract FAILED ---&quot;</span>));</div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>    }</div>
-<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>}</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span> </div>
+<div class="foldopen" id="foldopen00136" data-start="{" data-end="}">
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno"><a class="line" href="classAEvaluationTrigger.html#a09849f197732a4d88e6d3be39b3e6b44">  136</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAEvaluationTrigger.html#a09849f197732a4d88e6d3be39b3e6b44">AEvaluationTrigger::OnResponseEvaluationResult</a>(<a class="code hl_struct" href="structFResponseEvaluationResult.html">FResponseEvaluationResult</a>&amp; ResponseData, <span class="keywordtype">bool</span> bWasSuccessful)</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>{</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>    <span class="keywordflow">if</span> (bWasSuccessful)</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>    {</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;--- Evaluation Result SUCCESS ---&quot;</span>));</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span> </div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>        <span class="keywordflow">if</span> (<span class="keyword">auto</span> Popup = UPopupManager::ShowPopupAs&lt;UPopup_Evaluation&gt;( GetWorld(), EPopupType::Evaluation))</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>            Popup-&gt;InitPopup(ResponseData);</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>    }</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>    <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>    {</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;--- OCR Extract FAILED ---&quot;</span>));</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>    }</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>}</div>
 </div>
 <div class="ttc" id="aAEvaluationTrigger_8h_html"><div class="ttname"><a href="AEvaluationTrigger_8h.html">AEvaluationTrigger.h</a></div></div>
 <div class="ttc" id="aAPlayerActor_8h_html"><div class="ttname"><a href="APlayerActor_8h.html">APlayerActor.h</a></div><div class="ttdoc">Declares the player-controlled character actor.</div></div>
+<div class="ttc" id="aECompassMarkerType_8h_html_acc6a187307708d9ee4bfdb3e4df7dba6a7f03799d2c1afc573db3451a36a96513"><div class="ttname"><a href="ECompassMarkerType_8h.html#acc6a187307708d9ee4bfdb3e4df7dba6a7f03799d2c1afc573db3451a36a96513">ECompassMarkerType::FinalResult</a></div><div class="ttdeci">@ FinalResult</div></div>
 <div class="ttc" id="aGameLogging_8h_html"><div class="ttname"><a href="GameLogging_8h.html">GameLogging.h</a></div><div class="ttdoc">YiSan 전반에서 사용하는 공용 인터페이스를 선언합니다.</div></div>
 <div class="ttc" id="aGameLogging_8h_html_a9998c8beb11a6bad6ffada2e701fc0cf"><div class="ttname"><a href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a></div><div class="ttdeci">#define PRINTLOG(fmt,...)</div><div class="ttdef"><b>Definition</b> <a href="GameLogging_8h_source.html#l00030">GameLogging.h:30</a></div></div>
 <div class="ttc" id="aUKLingoNetworkSystem_8h_html"><div class="ttname"><a href="UKLingoNetworkSystem_8h.html">UKLingoNetworkSystem.h</a></div><div class="ttdoc">KLingo API 요청을 담당하는 서브시스템을 선언합니다.</div></div>
 <div class="ttc" id="aULingoGameHelper_8h_html"><div class="ttname"><a href="ULingoGameHelper_8h.html">ULingoGameHelper.h</a></div></div>
 <div class="ttc" id="aUPopupManager_8h_html"><div class="ttname"><a href="UPopupManager_8h.html">UPopupManager.h</a></div></div>
 <div class="ttc" id="aUPopup__Evaluation_8h_html"><div class="ttname"><a href="UPopup__Evaluation_8h.html">UPopup_Evaluation.h</a></div></div>
-<div class="ttc" id="aclassAEvaluationTrigger_html_a065c0db09eb9dda0c105ea588f083fbb"><div class="ttname"><a href="classAEvaluationTrigger.html#a065c0db09eb9dda0c105ea588f083fbb">AEvaluationTrigger::BeginPlay</a></div><div class="ttdeci">virtual void BeginPlay() override</div><div class="ttdef"><b>Definition</b> <a href="AEvaluationTrigger_8cpp_source.html#l00039">AEvaluationTrigger.cpp:39</a></div></div>
+<div class="ttc" id="aclassAEvaluationTrigger_html_a065c0db09eb9dda0c105ea588f083fbb"><div class="ttname"><a href="classAEvaluationTrigger.html#a065c0db09eb9dda0c105ea588f083fbb">AEvaluationTrigger::BeginPlay</a></div><div class="ttdeci">virtual void BeginPlay() override</div><div class="ttdef"><b>Definition</b> <a href="AEvaluationTrigger_8cpp_source.html#l00041">AEvaluationTrigger.cpp:41</a></div></div>
 <div class="ttc" id="aclassAEvaluationTrigger_html_a09645b355d71c19edf045ca86f66dcdc"><div class="ttname"><a href="classAEvaluationTrigger.html#a09645b355d71c19edf045ca86f66dcdc">AEvaluationTrigger::AEvaluationTrigger</a></div><div class="ttdeci">AEvaluationTrigger()</div><div class="ttdef"><b>Definition</b> <a href="AEvaluationTrigger_8cpp_source.html#l00015">AEvaluationTrigger.cpp:15</a></div></div>
-<div class="ttc" id="aclassAEvaluationTrigger_html_a09849f197732a4d88e6d3be39b3e6b44"><div class="ttname"><a href="classAEvaluationTrigger.html#a09849f197732a4d88e6d3be39b3e6b44">AEvaluationTrigger::OnResponseEvaluationResult</a></div><div class="ttdeci">void OnResponseEvaluationResult(FResponseEvaluationResult &amp;ResponseData, bool bWasSuccessful)</div><div class="ttdef"><b>Definition</b> <a href="AEvaluationTrigger_8cpp_source.html#l00134">AEvaluationTrigger.cpp:134</a></div></div>
-<div class="ttc" id="aclassAEvaluationTrigger_html_a1053d93474020d63a6d9c17abf2a4771"><div class="ttname"><a href="classAEvaluationTrigger.html#a1053d93474020d63a6d9c17abf2a4771">AEvaluationTrigger::DebugBoxColor</a></div><div class="ttdeci">FColor DebugBoxColor</div><div class="ttdoc">디버그 박스 색상</div><div class="ttdef"><b>Definition</b> <a href="AEvaluationTrigger_8h_source.html#l00045">AEvaluationTrigger.h:45</a></div></div>
-<div class="ttc" id="aclassAEvaluationTrigger_html_a31682c30e68ca09edeca4b795da985a0"><div class="ttname"><a href="classAEvaluationTrigger.html#a31682c30e68ca09edeca4b795da985a0">AEvaluationTrigger::Tick</a></div><div class="ttdeci">virtual void Tick(float DeltaTime) override</div><div class="ttdef"><b>Definition</b> <a href="AEvaluationTrigger_8cpp_source.html#l00047">AEvaluationTrigger.cpp:47</a></div></div>
-<div class="ttc" id="aclassAEvaluationTrigger_html_a5c3ece4ac9a1c5e623daac9f30c85116"><div class="ttname"><a href="classAEvaluationTrigger.html#a5c3ece4ac9a1c5e623daac9f30c85116">AEvaluationTrigger::OnActivate_Implementation</a></div><div class="ttdeci">virtual void OnActivate_Implementation()</div><div class="ttdef"><b>Definition</b> <a href="AEvaluationTrigger_8cpp_source.html#l00116">AEvaluationTrigger.cpp:116</a></div></div>
+<div class="ttc" id="aclassAEvaluationTrigger_html_a09849f197732a4d88e6d3be39b3e6b44"><div class="ttname"><a href="classAEvaluationTrigger.html#a09849f197732a4d88e6d3be39b3e6b44">AEvaluationTrigger::OnResponseEvaluationResult</a></div><div class="ttdeci">void OnResponseEvaluationResult(FResponseEvaluationResult &amp;ResponseData, bool bWasSuccessful)</div><div class="ttdef"><b>Definition</b> <a href="AEvaluationTrigger_8cpp_source.html#l00136">AEvaluationTrigger.cpp:136</a></div></div>
+<div class="ttc" id="aclassAEvaluationTrigger_html_a1053d93474020d63a6d9c17abf2a4771"><div class="ttname"><a href="classAEvaluationTrigger.html#a1053d93474020d63a6d9c17abf2a4771">AEvaluationTrigger::DebugBoxColor</a></div><div class="ttdeci">FColor DebugBoxColor</div><div class="ttdoc">디버그 박스 색상</div><div class="ttdef"><b>Definition</b> <a href="AEvaluationTrigger_8h_source.html#l00046">AEvaluationTrigger.h:46</a></div></div>
+<div class="ttc" id="aclassAEvaluationTrigger_html_a31682c30e68ca09edeca4b795da985a0"><div class="ttname"><a href="classAEvaluationTrigger.html#a31682c30e68ca09edeca4b795da985a0">AEvaluationTrigger::Tick</a></div><div class="ttdeci">virtual void Tick(float DeltaTime) override</div><div class="ttdef"><b>Definition</b> <a href="AEvaluationTrigger_8cpp_source.html#l00049">AEvaluationTrigger.cpp:49</a></div></div>
+<div class="ttc" id="aclassAEvaluationTrigger_html_a5c3ece4ac9a1c5e623daac9f30c85116"><div class="ttname"><a href="classAEvaluationTrigger.html#a5c3ece4ac9a1c5e623daac9f30c85116">AEvaluationTrigger::OnActivate_Implementation</a></div><div class="ttdeci">virtual void OnActivate_Implementation()</div><div class="ttdef"><b>Definition</b> <a href="AEvaluationTrigger_8cpp_source.html#l00118">AEvaluationTrigger.cpp:118</a></div></div>
 <div class="ttc" id="aclassAEvaluationTrigger_html_a6373ef6c1feb24d9c2690e8fa755b535"><div class="ttname"><a href="classAEvaluationTrigger.html#a6373ef6c1feb24d9c2690e8fa755b535">AEvaluationTrigger::OnActivate</a></div><div class="ttdeci">void OnActivate()</div></div>
-<div class="ttc" id="aclassAEvaluationTrigger_html_a9a85ea637ee8321c55cb475ae9a40113"><div class="ttname"><a href="classAEvaluationTrigger.html#a9a85ea637ee8321c55cb475ae9a40113">AEvaluationTrigger::OnTriggerBeginOverlap</a></div><div class="ttdeci">void OnTriggerBeginOverlap(UPrimitiveComponent *OverlappedComponent, AActor *OtherActor, UPrimitiveComponent *OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult &amp;SweepResult)</div><div class="ttdoc">트리거 박스 Overlap 시작 이벤트 핸들러</div><div class="ttdef"><b>Definition</b> <a href="AEvaluationTrigger_8cpp_source.html#l00093">AEvaluationTrigger.cpp:93</a></div></div>
-<div class="ttc" id="aclassAEvaluationTrigger_html_ac2d5d3b5f9d400a71c2a5d9b7844772b"><div class="ttname"><a href="classAEvaluationTrigger.html#ac2d5d3b5f9d400a71c2a5d9b7844772b">AEvaluationTrigger::bShowDebugBox</a></div><div class="ttdeci">bool bShowDebugBox</div><div class="ttdoc">디버그 드로우 표시 여부</div><div class="ttdef"><b>Definition</b> <a href="AEvaluationTrigger_8h_source.html#l00041">AEvaluationTrigger.h:41</a></div></div>
-<div class="ttc" id="aclassAEvaluationTrigger_html_adc2fce620934610bbf1d49bcb5def206"><div class="ttname"><a href="classAEvaluationTrigger.html#adc2fce620934610bbf1d49bcb5def206">AEvaluationTrigger::TriggerBox</a></div><div class="ttdeci">TObjectPtr&lt; class UBoxComponent &gt; TriggerBox</div><div class="ttdoc">트리거 영역을 정의하는 박스 컴포넌트</div><div class="ttdef"><b>Definition</b> <a href="AEvaluationTrigger_8h_source.html#l00033">AEvaluationTrigger.h:33</a></div></div>
-<div class="ttc" id="aclassAEvaluationTrigger_html_af5cfdfdc29c7cf482ad5e1b58b41bc56"><div class="ttname"><a href="classAEvaluationTrigger.html#af5cfdfdc29c7cf482ad5e1b58b41bc56">AEvaluationTrigger::bIsTriggered</a></div><div class="ttdeci">bool bIsTriggered</div><div class="ttdoc">트리거 활성화 상태 (false = 활성화, true = 비활성화)</div><div class="ttdef"><b>Definition</b> <a href="AEvaluationTrigger_8h_source.html#l00037">AEvaluationTrigger.h:37</a></div></div>
-<div class="ttc" id="aclassAPlayerActor_html"><div class="ttname"><a href="classAPlayerActor.html">APlayerActor</a></div><div class="ttdoc">Main character driven directly by the player.</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8h_source.html#l00023">APlayerActor.h:24</a></div></div>
+<div class="ttc" id="aclassAEvaluationTrigger_html_a9a85ea637ee8321c55cb475ae9a40113"><div class="ttname"><a href="classAEvaluationTrigger.html#a9a85ea637ee8321c55cb475ae9a40113">AEvaluationTrigger::OnTriggerBeginOverlap</a></div><div class="ttdeci">void OnTriggerBeginOverlap(UPrimitiveComponent *OverlappedComponent, AActor *OtherActor, UPrimitiveComponent *OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult &amp;SweepResult)</div><div class="ttdoc">트리거 박스 Overlap 시작 이벤트 핸들러</div><div class="ttdef"><b>Definition</b> <a href="AEvaluationTrigger_8cpp_source.html#l00095">AEvaluationTrigger.cpp:95</a></div></div>
+<div class="ttc" id="aclassAEvaluationTrigger_html_ac2d5d3b5f9d400a71c2a5d9b7844772b"><div class="ttname"><a href="classAEvaluationTrigger.html#ac2d5d3b5f9d400a71c2a5d9b7844772b">AEvaluationTrigger::bShowDebugBox</a></div><div class="ttdeci">bool bShowDebugBox</div><div class="ttdoc">디버그 드로우 표시 여부</div><div class="ttdef"><b>Definition</b> <a href="AEvaluationTrigger_8h_source.html#l00042">AEvaluationTrigger.h:42</a></div></div>
+<div class="ttc" id="aclassAEvaluationTrigger_html_adc2fce620934610bbf1d49bcb5def206"><div class="ttname"><a href="classAEvaluationTrigger.html#adc2fce620934610bbf1d49bcb5def206">AEvaluationTrigger::TriggerBox</a></div><div class="ttdeci">TObjectPtr&lt; class UBoxComponent &gt; TriggerBox</div><div class="ttdoc">트리거 영역을 정의하는 박스 컴포넌트</div><div class="ttdef"><b>Definition</b> <a href="AEvaluationTrigger_8h_source.html#l00034">AEvaluationTrigger.h:34</a></div></div>
+<div class="ttc" id="aclassAEvaluationTrigger_html_af5cfdfdc29c7cf482ad5e1b58b41bc56"><div class="ttname"><a href="classAEvaluationTrigger.html#af5cfdfdc29c7cf482ad5e1b58b41bc56">AEvaluationTrigger::bIsTriggered</a></div><div class="ttdeci">bool bIsTriggered</div><div class="ttdoc">트리거 활성화 상태 (false = 활성화, true = 비활성화)</div><div class="ttdef"><b>Definition</b> <a href="AEvaluationTrigger_8h_source.html#l00038">AEvaluationTrigger.h:38</a></div></div>
+<div class="ttc" id="aclassAPlayerActor_html"><div class="ttname"><a href="classAPlayerActor.html">APlayerActor</a></div><div class="ttdoc">Main character driven directly by the player.</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8h_source.html#l00024">APlayerActor.h:25</a></div></div>
+<div class="ttc" id="aclassICompassTargetInterface_html_afab55eb3a8c206914d440493384e9401"><div class="ttname"><a href="classICompassTargetInterface.html#afab55eb3a8c206914d440493384e9401">ICompassTargetInterface::MarkerType</a></div><div class="ttdeci">ECompassMarkerType MarkerType</div><div class="ttdef"><b>Definition</b> <a href="CompassTargetInterface_8h_source.html#l00026">CompassTargetInterface.h:26</a></div></div>
 <div class="ttc" id="aclassULingoGameHelper_html_aae5e9443e2249c16219279d75b62cb46"><div class="ttname"><a href="classULingoGameHelper.html#aae5e9443e2249c16219279d75b62cb46">ULingoGameHelper::GetLingoGameState</a></div><div class="ttdeci">static class ALingoGameState * GetLingoGameState(const UObject *WorldContextObject)</div><div class="ttdef"><b>Definition</b> <a href="ULingoGameHelper_8cpp_source.html#l00048">ULingoGameHelper.cpp:48</a></div></div>
 <div class="ttc" id="astructFResponseEvaluationResult_html"><div class="ttname"><a href="structFResponseEvaluationResult.html">FResponseEvaluationResult</a></div><div class="ttdoc">Evaluation 결과 응답 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l01337">NetworkData.h:1338</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
@@ -296,7 +300,7 @@ $(document).ready(function(){initNavTree('AEvaluationTrigger_8cpp_source.html','
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_b7459e4428712e32d7c860db6e401a05.html">Interactable</a></li><li class="navelem"><a class="el" href="dir_77257aedd361f850f8a01079e914567e.html">Private</a></li><li class="navelem"><a class="el" href="AEvaluationTrigger_8cpp.html">AEvaluationTrigger.cpp</a></li>
-    <li class="footer">생성시간 : 수 12월 24 2025 10:42:59, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 금 12월 26 2025 07:26:36, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>
