@@ -253,8 +253,3 @@ void AQuestionnaireKiosk::OnOutlineStateChanged(bool bShouldShowOutline)
 		KioskMeshComp->SetRenderCustomDepth(bShouldShowOutline);
 	}
 }
-
-void AQuestionnaireKiosk::SetCompassMarkerInto(ECompassMarkerType InMarkerType)
-{
-	MarkerType = InMarkerType;
-}

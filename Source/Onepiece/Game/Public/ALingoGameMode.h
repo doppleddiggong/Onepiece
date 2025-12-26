@@ -13,9 +13,7 @@ class ONEPIECE_API ALingoGameMode : public AGameMode
 
 public:
 	ALingoGameMode();
-
-	virtual void PostLogin(APlayerController* NewPlayer);
-
+	
 	UFUNCTION(BlueprintCallable, Category = "Quest")
 	void BeginReadQuest(const FResponseReadScenario& InResponseData);
 

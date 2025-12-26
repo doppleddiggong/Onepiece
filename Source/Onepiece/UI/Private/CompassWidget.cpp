@@ -6,6 +6,7 @@
 #include "Components/CanvasPanel.h"
 #include "Components/CanvasPanelSlot.h"
 #include "Components/Image.h"
+#include "Components/TextBlock.h"
 
 void UCompassWidget::NativeConstruct()
 {
@@ -21,6 +22,10 @@ void UCompassWidget::NativeConstruct()
 			LoadObject<UTexture2D>(nullptr, TEXT("/Game/CustomContents/UI/Texture/Resource/Icon_Whitney.Icon_Whitney")));
 		MarkerTextureMap.Add(ECompassMarkerType::Teleporter,
 			LoadObject<UTexture2D>(nullptr, TEXT("/Game/CustomContents/UI/Texture/Resource/resource_score.resource_score")));
+		MarkerTextureMap.Add(ECompassMarkerType::FinalResult,
+			LoadObject<UTexture2D>(nullptr, TEXT("/Game/CustomContents/UI/Texture/Resource/Icon_Overall.Icon_Overall")));
+		MarkerTextureMap.Add(ECompassMarkerType::OtherPlayer,
+			LoadObject<UTexture2D>(nullptr, TEXT("/Game/CustomContents/UI/Texture/Resource/Icon_RedOwl.Icon_RedOwl")));
 	}
 }
 
@@ -46,7 +51,7 @@ UImage* UCompassWidget::AddCompassMarker(ECompassMarkerType MarkerType)
 		{
 			NewMarker->SetBrushFromTexture(CompassTex);
 		}
-		
+
 		Pnl_Compass->AddChild(NewMarker);
 
 		UCanvasPanelSlot* MarkerSlot = Cast<UCanvasPanelSlot>(NewMarker->Slot);
@@ -56,6 +61,38 @@ UImage* UCompassWidget::AddCompassMarker(ECompassMarkerType MarkerType)
 			MarkerSlot->SetSize(FVector2D(60.f, 60.f));
 			MarkerSlot->SetAlignment(FVector2D(0.5f, 0.5f));
 			MarkerSlot->SetPosition(FVector2D(0.f, 0.f));
+		}
+
+		// 거리 텍스트 생성
+		UTextBlock* DistanceText = NewObject<UTextBlock>(this);
+		if (DistanceText)
+		{
+			Pnl_Compass->AddChild(DistanceText);
+
+			UCanvasPanelSlot* TextSlot = Cast<UCanvasPanelSlot>(DistanceText->Slot);
+			if (TextSlot)
+			{
+				TextSlot->SetAnchors(FAnchors(0.5, 0.5, 0.5, 0.5));
+				TextSlot->SetSize(FVector2D(100.f, 20.f));
+				TextSlot->SetAlignment(FVector2D(0.5f, -0.8f)); // 하단 중앙 정렬
+				TextSlot->SetPosition(FVector2D(0.f, -5.f)); // 마커 위에 배치
+				TextSlot->SetZOrder(100); // 최상위로 설정
+			}
+
+			// 텍스트 스타일 설정
+			FSlateFontInfo FontInfo = DistanceText->GetFont();
+			FontInfo.Size = 14;
+			DistanceText->SetFont(FontInfo);
+			DistanceText->SetJustification(ETextJustify::Center);
+			DistanceText->SetColorAndOpacity(FLinearColor::White);
+			DistanceText->SetText(FText::FromString(TEXT("0m")));
+			DistanceText->SetVisibility(ESlateVisibility::Visible);
+
+			// 텍스트에 그림자 추가 (가독성 향상)
+			DistanceText->SetShadowOffset(FVector2D(1.f, 1.f));
+			DistanceText->SetShadowColorAndOpacity(FLinearColor::Black);
+
+			MarkerDistanceMap.Add(NewMarker, DistanceText);
 		}
 
 		Markers.Add(NewMarker);
@@ -85,9 +122,12 @@ void UCompassWidget::SetMarkerPosition(UImage* InMarker, float TargetRotation, b
 	UCanvasPanelSlot* MarkerSlot = Cast<UCanvasPanelSlot>(InMarker->Slot);
 	if (MarkerSlot)
 	{
+		FVector2D FinalPosition;
+
 		if (!bSideLock)
 		{
-			MarkerSlot->SetPosition(FVector2D(MarkerRotation, 0.f));
+			FinalPosition = FVector2D(MarkerRotation, 0.f);
+			MarkerSlot->SetPosition(FinalPosition);
 		}
 		else
 		{
@@ -95,24 +135,74 @@ void UCompassWidget::SetMarkerPosition(UImage* InMarker, float TargetRotation, b
 			if (CompassSlot)
 			{
 				float PositionX = (CompassSlot->GetSize().X / 2);
-				
+
 				if (FMath::Abs(MarkerRotation) < PositionX)
 				{
-					MarkerSlot->SetPosition(FVector2D(MarkerRotation, 0.f));
+					FinalPosition = FVector2D(MarkerRotation, 0.f);
 				}
 				else if (MarkerRotation > PositionX)
 				{
-					MarkerSlot->SetPosition(FVector2D(PositionX, 0.f));
+					FinalPosition = FVector2D(PositionX, 0.f);
 				}
 				else
 				{
-					MarkerSlot->SetPosition(FVector2D(-PositionX, 0.f));
+					FinalPosition = FVector2D(-PositionX, 0.f);
 				}
-			
+
+				MarkerSlot->SetPosition(FinalPosition);
+			}
+		}
+
+		// 거리 텍스트도 같이 이동
+		if (UTextBlock** FoundText = MarkerDistanceMap.Find(InMarker))
+		{
+			UCanvasPanelSlot* TextSlot = Cast<UCanvasPanelSlot>((*FoundText)->Slot);
+			if (TextSlot)
+			{
+				TextSlot->SetPosition(FVector2D(FinalPosition.X, -5.f)); // 마커 위에 배치
 			}
 		}
 	}
-	
+}
+
+void UCompassWidget::SetMarkerDistance(UImage* InMarker, float Distance)
+{
+	if (UTextBlock** FoundText = MarkerDistanceMap.Find(InMarker))
+	{
+		// 거리를 미터 단위로 변환 (언리얼은 센티미터 단위)
+		float DistanceInMeters = Distance / 100.f;
+
+		FString DistanceStr;
+		if (DistanceInMeters >= 1000.f)
+		{
+			// 1km 이상이면 km 단위로 표시
+			DistanceStr = FString::Printf(TEXT("%.1fkm"), DistanceInMeters / 1000.f);
+		}
+		else
+		{
+			// 1m 이상이면 m 단위로 표시
+			DistanceStr = FString::Printf(TEXT("%.0fm"), DistanceInMeters);
+		}
+
+		(*FoundText)->SetText(FText::FromString(DistanceStr));
+	}
+}
+
+void UCompassWidget::SetMarkerVisibility(UImage* InMarker, ESlateVisibility InVisibility)
+{
+	if (InMarker)
+	{
+		InMarker->SetVisibility(InVisibility);
+	}
+
+	// 거리 텍스트도 같은 Visibility 적용
+	if (UTextBlock** FoundText = MarkerDistanceMap.Find(InMarker))
+	{
+		if (*FoundText)
+		{
+			(*FoundText)->SetVisibility(InVisibility);
+		}
+	}
 }
 
 // void UCompassWidget::UpdateCompassMarkers(TArray<FCompassInfo>& CompassInfos)

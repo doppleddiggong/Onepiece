@@ -34,6 +34,8 @@ AEvaluationTrigger::AEvaluationTrigger()
 	bIsTriggered = false;
 	bShowDebugBox = true;
 	DebugBoxColor = FColor::Green;
+	MarkerType = ECompassMarkerType::FinalResult;
+	
 }
 
 void AEvaluationTrigger::BeginPlay()

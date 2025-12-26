@@ -58,11 +58,17 @@ public:
 	UPROPERTY(meta = (BindWidget))
 	class UImageButton* Btn_Create;
 
+	UPROPERTY(meta = (BindWidget))
+	class UHoverButton* Btn_Back1;
+
 	UFUNCTION()
 	void OnCreateClicked();
 	// EdtTxt_SessionName의 내용 변경 시 호출
 	UFUNCTION()
 	void OnValueChangedSessionName(const FText& Text);
+
+	UFUNCTION()
+	void OnBackPressed();
 
 public:
 	// 2 : Join Canvas
@@ -74,6 +80,10 @@ public:
 
 	UPROPERTY(meta = (BindWidget))
 	class UTextBlock* Txt_Update;
+
+	UPROPERTY(meta = (BindWidget))
+	class UHoverButton* Btn_Back2;
+	
 	// 세션 위젯
 	UPROPERTY(EditAnywhere)
 	TSubclassOf<class USessionInfoWidget> sessionInfoWidget;

@@ -112,19 +112,42 @@ void ALingoGameState::AddWrongListenAnswer(const int32 InValue)
 
 void ALingoGameState::SetCompassVisibilityByTag(FName Tag, bool bVisible)
 {
-	TArray<AActor*> FoundActors;
-	UGameplayStatics::GetAllActorsWithTag(GetWorld(), Tag, FoundActors);
+	if (!HasAuthority()) return;
+	
+	Multicast_SetCompassVisibilityByTag(Tag, bVisible);
+}
 
-	for (AActor* Actor : FoundActors)
+void ALingoGameState::SetCompassVisibilityByClass(TSubclassOf<AActor> ActorClass, bool bVisible)
+{
+	if (!HasAuthority()) return;
+	
+	Multicast_SetCompassVisibilityByClass(ActorClass, bVisible);
+}
+
+void ALingoGameState::SetAllCompassVisibility(bool bVisible)
+{
+	if (!HasAuthority()) return;
+	
+	Multicast_SetAllCompassVisibility(bVisible);
+}
+
+void ALingoGameState::Multicast_SetAllCompassVisibility_Implementation(bool bVisible)
+{
+	for (TActorIterator<AActor> It(GetWorld()); It; ++It)
 	{
-		if (ICompassTargetInterface* Target = Cast<ICompassTargetInterface>(Actor))
+		// 플레이어는 제외 (항상 표시)
+		if (It->IsA(APlayerActor::StaticClass()))
+			continue;
+
+		if (ICompassTargetInterface* Target = Cast<ICompassTargetInterface>(*It))
 		{
 			Target->SetShowOnCompass(bVisible);
 		}
 	}
 }
 
-void ALingoGameState::SetCompassVisibilityByClass(TSubclassOf<AActor> ActorClass, bool bVisible)
+void ALingoGameState::Multicast_SetCompassVisibilityByClass_Implementation(TSubclassOf<AActor> ActorClass,
+                                                                           bool bVisible)
 {
 	TArray<AActor*> FoundActors;
 	UGameplayStatics::GetAllActorsOfClass(GetWorld(), ActorClass, FoundActors);
@@ -138,11 +161,14 @@ void ALingoGameState::SetCompassVisibilityByClass(TSubclassOf<AActor> ActorClass
 	}
 }
 
-void ALingoGameState::SetAllCompassVisibility(bool bVisible)
-{   
-	for (TActorIterator<AActor> It(GetWorld()); It; ++It)
+void ALingoGameState::Multicast_SetCompassVisibilityByTag_Implementation(FName Tag, bool bVisible)
+{
+	TArray<AActor*> FoundActors;
+	UGameplayStatics::GetAllActorsWithTag(GetWorld(), Tag, FoundActors);
+
+	for (AActor* Actor : FoundActors)
 	{
-		if (ICompassTargetInterface* Target = Cast<ICompassTargetInterface>(*It))
+		if (ICompassTargetInterface* Target = Cast<ICompassTargetInterface>(Actor))
 		{
 			Target->SetShowOnCompass(bVisible);
 		}

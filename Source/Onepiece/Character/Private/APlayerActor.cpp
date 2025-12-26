@@ -12,6 +12,7 @@
 
 // Shared
 #include "AContactTrigger.h"
+#include "AEvaluationTrigger.h"
 #include "GameLogging.h"
 #include "InputCoreTypes.h"
 #include "UDialogManager.h"
@@ -135,6 +136,9 @@ APlayerActor::APlayerActor()
 
 	ToastWidgetClass = FComponentHelper::LoadClass<UMainWidget>(TOASTWIDGET_PATH);
 
+	// Compass 마커
+	MarkerType = ECompassMarkerType::OtherPlayer;
+	bShowOnCompass = true;
 	
 	// 3인칭 메쉬는 플레이어에게 보이지 않도록
 	GetMesh()->SetOwnerNoSee(true);
@@ -175,7 +179,17 @@ void APlayerActor::BeginPlay()
 
 		GS->OnRoomLevelUpdated.RemoveDynamic(this, &APlayerActor::OnRoomLevelUpdated);
 		GS->OnRoomLevelUpdated.AddDynamic(this, &APlayerActor::OnRoomLevelUpdated);
+
+		// 방향계 업데이트
+		FTimerHandle TimerHandle;
+		GetWorldTimerManager().SetTimer(TimerHandle, FTimerDelegate::CreateLambda([this, GS]
+		{
+			GS->SetAllCompassVisibility(false);
+			GS->SetCompassVisibilityByTag("ReadQuestStart", true);
+			
+		}), 0.5f, false);
 	}
+
 	
 	if (IsLocallyControlled())
 	{
@@ -812,6 +826,18 @@ void APlayerActor::UpdateCompassMarkers()
 	UGameplayStatics::GetAllActorsOfClass(GetWorld(), AQuestionnaireKiosk::StaticClass(), TempActors);
 	TrackedActors.Append(TempActors);
 
+	// Evaluation Trigger
+	UGameplayStatics::GetAllActorsOfClass(GetWorld(), AEvaluationTrigger::StaticClass(), TempActors);
+	TrackedActors.Append(TempActors);
+
+	// Other player
+	UGameplayStatics::GetAllActorsOfClass(GetWorld(), APlayerActor::StaticClass(), TempActors);
+	for (AActor* OtherActor : TempActors)
+	{
+		if (OtherActor != this)
+			TrackedActors.Add(OtherActor);
+	}
+
 	// 2. 각 TrackedActor에 대해 마커 생성 or 업데이트                                                                                                                
 	for (AActor* TrackedActor : TrackedActors)
 	{
@@ -825,40 +851,44 @@ void APlayerActor::UpdateCompassMarkers()
 		{
 			if (UImage* ExistingMarker = CompassMarkerMap.FindRef(TrackedActor))
 			{
-				ExistingMarker->SetVisibility(ESlateVisibility::Hidden);
+				Compass->SetMarkerVisibility(ExistingMarker, ESlateVisibility::Hidden);
 			}
 			continue;
 		}
 
 		// Interface 함수로 마커 타입 확인
-		ECompassMarkerType MarkerType = Target->GetCompassMarkerType();
+		ECompassMarkerType CompassMarkerType = Target->GetCompassMarkerType();
 		
 		// 2-1. 마커가 없으면 생성
 		UImage* Marker = CompassMarkerMap.FindRef(TrackedActor);
 		if (!Marker)
 		{
-			Marker = Compass->AddCompassMarker(MarkerType);
+			Marker = Compass->AddCompassMarker(CompassMarkerType);
 			CompassMarkerMap.Add(TrackedActor, Marker);
 		}
 		else
 		{
 			// 기존 마커 텍스처 업데이트
-			UTexture2D* NewTexture = Compass->GetTextureForMarkerType(MarkerType);
+			UTexture2D* NewTexture = Compass->GetTextureForMarkerType(CompassMarkerType);
 			if (NewTexture)
 			{
 				Marker->SetBrushFromTexture(NewTexture);
 			}
 
 			// 다시 보이게 설정 (Hidden 상태였을 수 있음)
-			Marker->SetVisibility(ESlateVisibility::Visible);
+			Compass->SetMarkerVisibility(Marker, ESlateVisibility::Visible);
 		}
 
 		// 2-2. 상대 회전 계산 (Yaw만 필요)
 		FRotator RelativeRotation = FindRelativeRotationAtTarget(TrackedActor);
 		float TargetYaw = RelativeRotation.Yaw;
 
-		// 2-3. 마커 위치 업데이트 (bSideLock은 false로 가정)                                                                                                         
+		// 2-3. 마커 위치 업데이트 (bSideLock은 false로 가정)
 		Compass->SetMarkerPosition(Marker, TargetYaw, false);
+
+		// 2-4. 거리 계산 및 표시
+		float Distance = FVector::Dist(GetActorLocation(), TrackedActor->GetActorLocation());
+		Compass->SetMarkerDistance(Marker, Distance);
 	}
 
 	// 제거된 액터의 마커 정리
@@ -869,7 +899,7 @@ void APlayerActor::UpdateCompassMarkers()
 		{
 			if (Pair.Value)
 			{
-				Pair.Value->SetVisibility(ESlateVisibility::Hidden);	
+				Compass->SetMarkerVisibility(Pair.Value, ESlateVisibility::Hidden);
 			}
 			ActorsToRemove.Add(Pair.Key);
 		}

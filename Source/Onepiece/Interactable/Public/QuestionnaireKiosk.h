@@ -69,8 +69,5 @@ private:
 	
 public:
 	FQuestWriteInfo QuestionnaireData;
-
-protected:
-	// Compass Interface
-	virtual void SetCompassMarkerInto(ECompassMarkerType InMarkerType) override;
+	
 };

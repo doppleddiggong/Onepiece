@@ -8,6 +8,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "CompassTargetInterface.h"
 #include "GameFramework/Character.h"
 #include "IControllable.h"
 #include "NetworkData.h"
@@ -20,7 +21,7 @@
  * @ingroup Character
  */
 UCLASS(Blueprintable, BlueprintType, ClassGroup=(Dopple))
-class ONEPIECE_API APlayerActor : public ACharacter, public IControllable
+class ONEPIECE_API APlayerActor : public ACharacter, public IControllable, public ICompassTargetInterface
 {
 	GENERATED_BODY()
 
