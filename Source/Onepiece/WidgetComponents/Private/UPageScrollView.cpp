@@ -209,6 +209,9 @@ void UPageScrollView::SetNumberOfPages(int32 ItemCount)
 	if (PageDotIndicator)
 	{
 		PageDotIndicator->SetNumberOfPages(ItemCount);
+
+		// 페이지가 1개 이하면 인디케이터 숨김
+		PageDotIndicator->SetVisibility(ItemCount > 1 ? ESlateVisibility::Visible : ESlateVisibility::Collapsed);
 	}
 
 	// 기본 페이지로 이동
