@@ -25,18 +25,6 @@ ALingoGameMode::ALingoGameMode()
 	PrimaryActorTick.bCanEverTick = false;
 }
 
-void ALingoGameMode::PostLogin(APlayerController* NewPlayer)
-{
-	Super::PostLogin(NewPlayer);
-
-	// ReadQuest 시작 마커
-	if (ALingoGameState* GS = GetWorld()->GetGameState<ALingoGameState>())
-	{
-		GS->SetAllCompassVisibility(false);
-		GS->SetCompassVisibilityByTag("ReadQuestStart", true);
-	}
-}
-
 void ALingoGameMode::UpdateQuestRole()
 {
 	auto PSList = ULingoGameHelper::GetLingoPlayerStateList(GetWorld());

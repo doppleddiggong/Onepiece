@@ -12,6 +12,7 @@
 
 // Shared
 #include "AContactTrigger.h"
+#include "AEvaluationTrigger.h"
 #include "GameLogging.h"
 #include "InputCoreTypes.h"
 #include "UDialogManager.h"
@@ -135,6 +136,9 @@ APlayerActor::APlayerActor()
 
 	ToastWidgetClass = FComponentHelper::LoadClass<UMainWidget>(TOASTWIDGET_PATH);
 
+	// Compass 마커
+	MarkerType = ECompassMarkerType::OtherPlayer;
+	bShowOnCompass = true;
 	
 	// 3인칭 메쉬는 플레이어에게 보이지 않도록
 	GetMesh()->SetOwnerNoSee(true);
@@ -175,7 +179,17 @@ void APlayerActor::BeginPlay()
 
 		GS->OnRoomLevelUpdated.RemoveDynamic(this, &APlayerActor::OnRoomLevelUpdated);
 		GS->OnRoomLevelUpdated.AddDynamic(this, &APlayerActor::OnRoomLevelUpdated);
+
+		// 방향계 업데이트
+		FTimerHandle TimerHandle;
+		GetWorldTimerManager().SetTimer(TimerHandle, FTimerDelegate::CreateLambda([this, GS]
+		{
+			GS->SetAllCompassVisibility(false);
+			GS->SetCompassVisibilityByTag("ReadQuestStart", true);
+			
+		}), 0.5f, false);
 	}
+
 	
 	if (IsLocallyControlled())
 	{
@@ -812,6 +826,18 @@ void APlayerActor::UpdateCompassMarkers()
 	UGameplayStatics::GetAllActorsOfClass(GetWorld(), AQuestionnaireKiosk::StaticClass(), TempActors);
 	TrackedActors.Append(TempActors);
 
+	// Evaluation Trigger
+	UGameplayStatics::GetAllActorsOfClass(GetWorld(), AEvaluationTrigger::StaticClass(), TempActors);
+	TrackedActors.Append(TempActors);
+
+	// Other player
+	UGameplayStatics::GetAllActorsOfClass(GetWorld(), APlayerActor::StaticClass(), TempActors);
+	for (AActor* OtherActor : TempActors)
+	{
+		if (OtherActor != this)
+			TrackedActors.Add(OtherActor);
+	}
+
 	// 2. 각 TrackedActor에 대해 마커 생성 or 업데이트                                                                                                                
 	for (AActor* TrackedActor : TrackedActors)
 	{
@@ -831,19 +857,19 @@ void APlayerActor::UpdateCompassMarkers()
 		}
 
 		// Interface 함수로 마커 타입 확인
-		ECompassMarkerType MarkerType = Target->GetCompassMarkerType();
+		ECompassMarkerType CompassMarkerType = Target->GetCompassMarkerType();
 		
 		// 2-1. 마커가 없으면 생성
 		UImage* Marker = CompassMarkerMap.FindRef(TrackedActor);
 		if (!Marker)
 		{
-			Marker = Compass->AddCompassMarker(MarkerType);
+			Marker = Compass->AddCompassMarker(CompassMarkerType);
 			CompassMarkerMap.Add(TrackedActor, Marker);
 		}
 		else
 		{
 			// 기존 마커 텍스처 업데이트
-			UTexture2D* NewTexture = Compass->GetTextureForMarkerType(MarkerType);
+			UTexture2D* NewTexture = Compass->GetTextureForMarkerType(CompassMarkerType);
 			if (NewTexture)
 			{
 				Marker->SetBrushFromTexture(NewTexture);

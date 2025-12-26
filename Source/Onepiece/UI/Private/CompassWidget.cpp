@@ -21,6 +21,10 @@ void UCompassWidget::NativeConstruct()
 			LoadObject<UTexture2D>(nullptr, TEXT("/Game/CustomContents/UI/Texture/Resource/Icon_Whitney.Icon_Whitney")));
 		MarkerTextureMap.Add(ECompassMarkerType::Teleporter,
 			LoadObject<UTexture2D>(nullptr, TEXT("/Game/CustomContents/UI/Texture/Resource/resource_score.resource_score")));
+		MarkerTextureMap.Add(ECompassMarkerType::FinalResult,
+			LoadObject<UTexture2D>(nullptr, TEXT("/Game/CustomContents/UI/Texture/Resource/Icon_Overall.Icon_Overall")));
+		MarkerTextureMap.Add(ECompassMarkerType::OtherPlayer,
+			LoadObject<UTexture2D>(nullptr, TEXT("/Game/CustomContents/UI/Texture/Resource/Icon_RedOwl.Icon_RedOwl")));
 	}
 }
 

@@ -3,12 +3,13 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "CompassTargetInterface.h"
 #include "NetworkData.h"
 #include "GameFramework/Actor.h"
 #include "AEvaluationTrigger.generated.h"
 
 UCLASS()
-class ONEPIECE_API AEvaluationTrigger : public AActor
+class ONEPIECE_API AEvaluationTrigger : public AActor, public ICompassTargetInterface
 {
 	GENERATED_BODY()
 
@@ -49,4 +50,6 @@ protected:
 	UFUNCTION()
 	void OnTriggerBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
 		UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
+
+
 };

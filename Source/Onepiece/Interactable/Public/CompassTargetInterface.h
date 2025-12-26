@@ -27,7 +27,7 @@ public:
 	bool bShowOnCompass = true;
 	
 	ECompassMarkerType GetCompassMarkerType() {return MarkerType;}
-	virtual void SetCompassMarkerInto(ECompassMarkerType InMarkerType)=0;
+	virtual void SetCompassMarkerInto(ECompassMarkerType InMarkerType) {MarkerType = InMarkerType;}
 
 	virtual bool ShouldShowOnCompass() const {return bShowOnCompass;}
 	virtual void SetShowOnCompass(bool bShow) {bShowOnCompass = bShow;}

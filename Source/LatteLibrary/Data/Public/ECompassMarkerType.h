@@ -8,4 +8,6 @@ enum class ECompassMarkerType : uint8
 	QuestEnd,
 	Wheatly,
 	Teleporter,
+	FinalResult,
+	OtherPlayer
 };

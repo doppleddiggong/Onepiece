@@ -181,5 +181,14 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "Compass")
 	void SetAllCompassVisibility(bool bVisible);
+
+	UFUNCTION(NetMulticast, Reliable)
+	void Multicast_SetCompassVisibilityByTag(FName Tag, bool bVisible);
+
+	UFUNCTION(NetMulticast, Reliable)
+	void Multicast_SetCompassVisibilityByClass(TSubclassOf<AActor> ActorClass, bool bVisible);
+
+	UFUNCTION(NetMulticast, Reliable)
+	void Multicast_SetAllCompassVisibility(bool bVisible);
 	
 };
