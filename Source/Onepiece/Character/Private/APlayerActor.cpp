@@ -851,7 +851,7 @@ void APlayerActor::UpdateCompassMarkers()
 		{
 			if (UImage* ExistingMarker = CompassMarkerMap.FindRef(TrackedActor))
 			{
-				ExistingMarker->SetVisibility(ESlateVisibility::Hidden);
+				Compass->SetMarkerVisibility(ExistingMarker, ESlateVisibility::Hidden);
 			}
 			continue;
 		}
@@ -876,15 +876,19 @@ void APlayerActor::UpdateCompassMarkers()
 			}
 
 			// 다시 보이게 설정 (Hidden 상태였을 수 있음)
-			Marker->SetVisibility(ESlateVisibility::Visible);
+			Compass->SetMarkerVisibility(Marker, ESlateVisibility::Visible);
 		}
 
 		// 2-2. 상대 회전 계산 (Yaw만 필요)
 		FRotator RelativeRotation = FindRelativeRotationAtTarget(TrackedActor);
 		float TargetYaw = RelativeRotation.Yaw;
 
-		// 2-3. 마커 위치 업데이트 (bSideLock은 false로 가정)                                                                                                         
+		// 2-3. 마커 위치 업데이트 (bSideLock은 false로 가정)
 		Compass->SetMarkerPosition(Marker, TargetYaw, false);
+
+		// 2-4. 거리 계산 및 표시
+		float Distance = FVector::Dist(GetActorLocation(), TrackedActor->GetActorLocation());
+		Compass->SetMarkerDistance(Marker, Distance);
 	}
 
 	// 제거된 액터의 마커 정리
@@ -895,7 +899,7 @@ void APlayerActor::UpdateCompassMarkers()
 		{
 			if (Pair.Value)
 			{
-				Pair.Value->SetVisibility(ESlateVisibility::Hidden);	
+				Compass->SetMarkerVisibility(Pair.Value, ESlateVisibility::Hidden);
 			}
 			ActorsToRemove.Add(Pair.Key);
 		}
