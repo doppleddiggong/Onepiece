@@ -18,6 +18,8 @@ var dir_244820c19557decdcbf6fc4000b77b7e =
     [ "ULevelWordItem.h", "ULevelWordItem_8h.html", "ULevelWordItem_8h" ],
     [ "UPopup_Evaluation.h", "UPopup__Evaluation_8h.html", "UPopup__Evaluation_8h" ],
     [ "UPopup_History.h", "UPopup__History_8h.html", "UPopup__History_8h" ],
+    [ "UPopup_HowToPlay.h", "UPopup__HowToPlay_8h.html", "UPopup__HowToPlay_8h" ],
+    [ "UPopup_HowToPlayItem.h", "UPopup__HowToPlayItem_8h.html", "UPopup__HowToPlayItem_8h" ],
     [ "UPopup_InputMsg.h", "UPopup__InputMsg_8h.html", "UPopup__InputMsg_8h" ],
     [ "UPopup_Interview.h", "UPopup__Interview_8h.html", "UPopup__Interview_8h" ],
     [ "UPopup_InterviewHello.h", "UPopup__InterviewHello_8h.html", "UPopup__InterviewHello_8h" ],

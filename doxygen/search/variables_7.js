@@ -30,5 +30,7 @@ var searchData=
   ['hoverbuttoncolor_27',['hoverbuttoncolor',['../classUHoverButton.html#aa1613f8687681535f17ab6cf8b5f4345',1,'UHoverButton::HoverButtonColor'],['../classUImageButton.html#a856c872043187ec7e70f27b2b04ee359',1,'UImageButton::HoverButtonColor']]],
   ['hoversymbolcolor_28',['HoverSymbolColor',['../classUTextureButton.html#a65849b0128ebc14a265be347db225746',1,'UTextureButton']]],
   ['hovertextcolor_29',['hovertextcolor',['../classUHoverButton.html#a207ba0caf0e2abd24084eedf69c45205',1,'UHoverButton::HoverTextColor'],['../classUImageButton.html#ae2ee07b318c9f2e011d67b3f680ce1b2',1,'UImageButton::HoverTextColor']]],
-  ['hp_30',['HP',['../structFCharacterInfoData.html#aaa15d7a56092cd0d73ea3a7274d92368',1,'FCharacterInfoData']]]
+  ['howtoplaypagedatacache_30',['HowToPlayPageDataCache',['../classUGameDataManager.html#a5187a6285a0a2a2d1d0446780f89d760',1,'UGameDataManager']]],
+  ['howtoplaypagedatatable_31',['HowToPlayPageDataTable',['../classUGameDataManager.html#ad1778e996d20976c548e9adf7182682d',1,'UGameDataManager']]],
+  ['hp_32',['HP',['../structFCharacterInfoData.html#aaa15d7a56092cd0d73ea3a7274d92368',1,'FCharacterInfoData']]]
 ];

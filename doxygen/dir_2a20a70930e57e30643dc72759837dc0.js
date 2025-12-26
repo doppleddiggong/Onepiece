@@ -17,6 +17,8 @@ var dir_2a20a70930e57e30643dc72759837dc0 =
     [ "ULevelWordItem.cpp", "ULevelWordItem_8cpp.html", null ],
     [ "UPopup_Evaluation.cpp", "UPopup__Evaluation_8cpp.html", null ],
     [ "UPopup_History.cpp", "UPopup__History_8cpp.html", null ],
+    [ "UPopup_HowToPlay.cpp", "UPopup__HowToPlay_8cpp.html", null ],
+    [ "UPopup_HowToPlayItem.cpp", "UPopup__HowToPlayItem_8cpp.html", null ],
     [ "UPopup_InputMsg.cpp", "UPopup__InputMsg_8cpp.html", null ],
     [ "UPopup_Interview.cpp", "UPopup__Interview_8cpp.html", null ],
     [ "UPopup_InterviewHello.cpp", "UPopup__InterviewHello_8cpp.html", null ],

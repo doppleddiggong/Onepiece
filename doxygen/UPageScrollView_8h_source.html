@@ -1,0 +1,271 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>KLingo Project Documentation: Source/Onepiece/WidgetComponents/Public/UPageScrollView.h 소스 파일</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript">
+window.MathJax = {
+  options: {
+    ignoreHtmlClass: 'tex2jax_ignore',
+    processHtmlClass: 'tex2jax_process'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<script type="text/javascript" src="darkmode_toggle.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">KLingo Project Documentation<span id="projectnumber">&#160;1.0.0</span>
+   </div>
+   <div id="projectbrief">Unreal Engine 5.6 C++ Project Documentation</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 다음에 의해 생성됨 :  Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','검색');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(0); });
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('UPageScrollView_8h_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">로딩중...</div>
+<div class="SRStatus" id="Searching">검색중...</div>
+<div class="SRStatus" id="NoMatches">일치하는것 없음</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">UPageScrollView.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="UPageScrollView_8h.html">이 파일의 문서화 페이지로 가기</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;CoreMinimal.h&quot;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;Blueprint/UserWidget.h&quot;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;<a class="code" href="EPageScrollDirection_8h.html">EPageScrollDirection.h</a>&quot;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;UPageScrollView.generated.h&quot;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="UPageScrollView_8h.html#ace8d635eabb73fedd9b2625921047295">   11</a></span><a class="code hl_function" href="UPageScrollView_8h.html#ace8d635eabb73fedd9b2625921047295">DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams</a>(FOnPageChanged, int32, PrevPage, int32, CurrentPage);</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>UCLASS()</div>
+<div class="foldopen" id="foldopen00018" data-start="{" data-end="};">
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="classUPageScrollView.html">   18</a></span>class ONEPIECE_API <a class="code hl_class" href="classUPageScrollView.html">UPageScrollView</a> : public UUserWidget</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>{</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    GENERATED_BODY()</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> NativeConstruct() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> NativeDestruct() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="keyword">virtual</span> FReply NativeOnMouseButtonDown(<span class="keyword">const</span> FGeometry&amp; InGeometry, <span class="keyword">const</span> FPointerEvent&amp; InMouseEvent) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="keyword">virtual</span> FReply NativeOnMouseButtonUp(<span class="keyword">const</span> FGeometry&amp; InGeometry, <span class="keyword">const</span> FPointerEvent&amp; InMouseEvent) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="keyword">virtual</span> FReply NativeOnMouseMove(<span class="keyword">const</span> FGeometry&amp; InGeometry, <span class="keyword">const</span> FPointerEvent&amp; InMouseEvent) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    UFUNCTION(BlueprintCallable, Category = <span class="stringliteral">&quot;PageScrollView&quot;</span>)</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="keywordtype">void</span> MovePage(int32 PageIndex, <span class="keywordtype">bool</span> bAnimate = <span class="keyword">true</span>);</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    UFUNCTION(BlueprintCallable, Category = <span class="stringliteral">&quot;PageScrollView&quot;</span>)</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="keywordtype">void</span> SetNumberOfPages(int32 ItemCount);</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    UFUNCTION(BlueprintCallable, Category = <span class="stringliteral">&quot;PageScrollView&quot;</span>)</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="keywordtype">void</span> NextPage();</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    UFUNCTION(BlueprintCallable, Category = <span class="stringliteral">&quot;PageScrollView&quot;</span>)</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="keywordtype">void</span> PrevPage();</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    UFUNCTION(BlueprintCallable, BlueprintPure, Category = <span class="stringliteral">&quot;PageScrollView&quot;</span>)</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="classUPageScrollView.html#adf858a588967b698eb4d930cc0762003">   58</a></span>    int32 GetCurrentPage()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> CurPageIndex; }</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    UFUNCTION(BlueprintCallable, BlueprintPure, Category = <span class="stringliteral">&quot;PageScrollView&quot;</span>)</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="classUPageScrollView.html#a609ef21fc1c8c9f2e1a3065863eb1487">   63</a></span>    int32 GetTotalPages()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> pageItemList.Num(); }</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    UFUNCTION(BlueprintCallable, BlueprintPure, Category = <span class="stringliteral">&quot;PageScrollView&quot;</span>)</div>
+<div class="foldopen" id="foldopen00069" data-start="{" data-end="}">
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="classUPageScrollView.html#a96139647605e9ca7757c22973fa00aff">   69</a></span>    <a class="code hl_class" href="classUPageScrollItem.html">UPageScrollItem</a>* GetPageAt(int32 Index)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        <span class="keywordflow">return</span> pageItemList.IsValidIndex(Index) ? pageItemList[Index] : <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    }</div>
+</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    </div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    int32 CalculateTargetPage(FVector2D DragDelta, <span class="keywordtype">float</span> Velocity) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    <span class="keywordtype">void</span> TickSnapAnimation();</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    <span class="keywordtype">void</span> StopAnimation();</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    FVector2D GetPagePosition(int32 PageIndex) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
+<div class="foldopen" id="foldopen00094" data-start="{" data-end="}">
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno"><a class="line" href="classUPageScrollView.html#a3d8c40414f34af47dbd8f3b9b1bf224c">   94</a></span>    FORCEINLINE <span class="keywordtype">float</span> <a class="code hl_function" href="classUPageScrollView.html#a3d8c40414f34af47dbd8f3b9b1bf224c">GetPageStride</a>()<span class="keyword"> const</span></div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span><span class="keyword">    </span>{</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        <span class="keywordflow">return</span> (ScrollDirection == EPageScrollDirection::Horizontal)</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>            ? (PageSize.X + PageSpacing)</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>            : (PageSize.Y + PageSpacing);</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    }</div>
+</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span> </div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    <span class="keywordtype">void</span> SetContainerPosition(FVector2D Position);</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span> </div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    <span class="keywordtype">void</span> UpdatePageDotIndicator();</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span> </div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    <span class="keywordtype">void</span> UpdateItemScales();</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span> </div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    <span class="keywordtype">void</span> UpdateContainerPositionDuringDrag();</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span> </div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = <span class="stringliteral">&quot;PageScrollView|Layout&quot;</span>)</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno"><a class="line" href="classUPageScrollView.html#a8522712a661e6c73af5fb357f290b5b0">  117</a></span>    <a class="code hl_enumeration" href="EPageScrollDirection_8h.html#a7f0969e5ced4b0fd4bdaa342c9ae3b99">EPageScrollDirection</a> ScrollDirection = <a class="code hl_enumeration" href="EPageScrollDirection_8h.html#a7f0969e5ced4b0fd4bdaa342c9ae3b99">EPageScrollDirection</a>::Horizontal;</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span> </div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = &quot;PageScrollView|Layout&quot;)</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno"><a class="line" href="classUPageScrollView.html#a05e76f6f4aba17643b46595927e16b80">  121</a></span>    FVector2D PageSize = FVector2D(1920.0f, 1080.0f);</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span> </div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = &quot;PageScrollView|Layout&quot;)</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno"><a class="line" href="classUPageScrollView.html#a90cb5368f96561a96e5a11a47afadd30">  125</a></span>    <span class="keywordtype">float</span> PageSpacing = 0.0f;</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span> </div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = &quot;PageScrollView|Behavior&quot;)</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno"><a class="line" href="classUPageScrollView.html#acb3d98be29c89f933241b2f10ee337ad">  129</a></span>    <span class="keywordtype">float</span> FastSwipeThreshold = 500.0f;</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span> </div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = &quot;PageScrollView|Behavior&quot;)</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno"><a class="line" href="classUPageScrollView.html#ae4ae976fcbf2af4b5b70b3f6bc583d4b">  133</a></span>    <span class="keywordtype">float</span> SnapAnimationSpeed = 0.3f;</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span> </div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = &quot;PageScrollView|Behavior&quot;)</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno"><a class="line" href="classUPageScrollView.html#ae6d929a069e997a80c2f93871ced2c02">  137</a></span>    <span class="keywordtype">bool</span> bEnableScaleEffect = false;</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span> </div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = &quot;PageScrollView|Behavior&quot;, meta=(EditCondition=&quot;bEnableScaleEffect&quot;))</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno"><a class="line" href="classUPageScrollView.html#a3ab313872bf004760735b4e09ca44f47">  141</a></span>    <span class="keywordtype">float</span> FocusScale = 1.0f;</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span> </div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = &quot;PageScrollView|Behavior&quot;, meta=(EditCondition=&quot;bEnableScaleEffect&quot;))</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno"><a class="line" href="classUPageScrollView.html#a2e9a5ce445260422422dbc456ea39a44">  145</a></span>    <span class="keywordtype">float</span> SideScale = 0.8f;</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span> </div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = &quot;PageScrollView|Data&quot;)</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno"><a class="line" href="classUPageScrollView.html#a78316cf6bfea3e77e590c92f5e0d8e36">  149</a></span>    TSubclassOf&lt;class <a class="code hl_class" href="classUPageScrollItem.html">UPageScrollItem</a>&gt; PageItemClass;</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span> </div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = &quot;PageScrollView|Data&quot;)</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno"><a class="line" href="classUPageScrollView.html#af58b7dc3f9762a856db992402489d5ca">  153</a></span>    int32 DefaultPageIndex = 0;</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span> </div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>    UPROPERTY(BlueprintReadOnly, meta = (BindWidget))</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno"><a class="line" href="classUPageScrollView.html#a711e776a5c9c565077e5e70d214b2d2d">  157</a></span>    TObjectPtr&lt;class UCanvasPanel&gt; PageContainer;</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span> </div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>    UPROPERTY(BlueprintReadOnly, meta = (BindWidgetOptional))</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno"><a class="line" href="classUPageScrollView.html#a1b2290730492e39b6f7f648ba843056e">  161</a></span>    TObjectPtr&lt;class <a class="code hl_class" href="classUPageScrollDot.html">UPageScrollDot</a>&gt; PageDotIndicator;</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span> </div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>    UPROPERTY(BlueprintAssignable, Category = &quot;PageScrollView|Events&quot;)</div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno"><a class="line" href="classUPageScrollView.html#a8a6c63d14139e2d7917c261900f0c26f">  165</a></span>    FOnPageChanged OnPageChanged;</div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span> </div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>private:</div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno"><a class="line" href="classUPageScrollView.html#a36f000fe4bead11edc6da48caf4fd92b">  169</a></span>    int32 CurPageIndex = 0;</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span> </div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno"><a class="line" href="classUPageScrollView.html#a23405706761f84de934028902f75c5b7">  172</a></span>    int32 PrevPageIndex = 0;</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span> </div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>    UPROPERTY()</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno"><a class="line" href="classUPageScrollView.html#afdb2121dfc597c24356dc98e584a742f">  176</a></span>    TArray&lt;TObjectPtr&lt;class <a class="code hl_class" href="classUPageScrollItem.html">UPageScrollItem</a>&gt;&gt; pageItemList;</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span> </div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno"><a class="line" href="classUPageScrollView.html#a4832e3cf511ed67d950f1a8250afa8d7">  179</a></span>    <span class="keywordtype">bool</span> bIsDragging = false;</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno"><a class="line" href="classUPageScrollView.html#a9072ce56e7fd819651bfd6ce450dcbbe">  180</a></span>    FVector2D dragStartPosition = FVector2D::ZeroVector;</div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno"><a class="line" href="classUPageScrollView.html#a3705a7db6c121c341ffac6d5521189ea">  181</a></span>    FVector2D dragCurrentPosition = FVector2D::ZeroVector;</div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno"><a class="line" href="classUPageScrollView.html#a7f5d09f03f28db41b1e74923e2ef5f08">  182</a></span>    <span class="keywordtype">float</span> dragStartTime = 0.0f;</div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span> </div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno"><a class="line" href="classUPageScrollView.html#aaac1eff8743c22e4043e729b7aab6d7c">  185</a></span>    FTimerHandle snapAnimTimerHandle;</div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno"><a class="line" href="classUPageScrollView.html#a6c140f9b5d94181f19d60080ee039117">  186</a></span>    FVector2D animStartPosition = FVector2D::ZeroVector;</div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno"><a class="line" href="classUPageScrollView.html#a097bb24441ea618ecbaf8d605c9b42d5">  187</a></span>    FVector2D animTargetPosition = FVector2D::ZeroVector;</div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno"><a class="line" href="classUPageScrollView.html#ac1f6d44be0b14f4869e39282868e437e">  188</a></span>    <span class="keywordtype">float</span> animElapsedTime = 0.0f;</div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno"><a class="line" href="classUPageScrollView.html#add8d5ffe48d1889bce7d29dda327206e">  189</a></span>    <span class="keywordtype">bool</span> bIsAnimating = false;</div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span> </div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno"><a class="line" href="classUPageScrollView.html#a97888b08546a0bec77e3789810321123">  192</a></span>    FVector2D ViewportSize = FVector2D::ZeroVector;</div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>};</div>
+</div>
+<div class="ttc" id="aEPageScrollDirection_8h_html"><div class="ttname"><a href="EPageScrollDirection_8h.html">EPageScrollDirection.h</a></div></div>
+<div class="ttc" id="aEPageScrollDirection_8h_html_a7f0969e5ced4b0fd4bdaa342c9ae3b99"><div class="ttname"><a href="EPageScrollDirection_8h.html#a7f0969e5ced4b0fd4bdaa342c9ae3b99">EPageScrollDirection</a></div><div class="ttdeci">EPageScrollDirection</div><div class="ttdoc">페이지 스크롤 방향을 정의하는 열거형</div><div class="ttdef"><b>Definition</b> <a href="EPageScrollDirection_8h_source.html#l00010">EPageScrollDirection.h:11</a></div></div>
+<div class="ttc" id="aUPageScrollView_8h_html_ace8d635eabb73fedd9b2625921047295"><div class="ttname"><a href="UPageScrollView_8h.html#ace8d635eabb73fedd9b2625921047295">DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams</a></div><div class="ttdeci">DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnPageChanged, int32, PrevPage, int32, CurrentPage)</div><div class="ttdoc">페이지 변경 이벤트 델리게이트</div></div>
+<div class="ttc" id="aclassUPageScrollDot_html"><div class="ttname"><a href="classUPageScrollDot.html">UPageScrollDot</a></div><div class="ttdoc">페이지 스크롤 뷰의 인디케이터 위젯 현재 페이지를 시각적으로 표시하는 도트 인디케이터입니다.</div><div class="ttdef"><b>Definition</b> <a href="UPageScrollDot_8h_source.html#l00014">UPageScrollDot.h:15</a></div></div>
+<div class="ttc" id="aclassUPageScrollItem_html"><div class="ttname"><a href="classUPageScrollItem.html">UPageScrollItem</a></div><div class="ttdoc">페이지 스크롤 뷰의 개별 페이지 아이템 UPageScrollView에 의해 동적으로 생성되며, 개별 페이지의 콘텐츠를 담는 컨테이너입니다.</div><div class="ttdef"><b>Definition</b> <a href="UPageScrollItem_8h_source.html#l00017">UPageScrollItem.h:18</a></div></div>
+<div class="ttc" id="aclassUPageScrollView_html"><div class="ttname"><a href="classUPageScrollView.html">UPageScrollView</a></div><div class="ttdoc">페이지 단위 스크롤 뷰 위젯 드래그 기반 스크롤과 자동 스냅 기능을 제공하는 메인 컨트롤러 위젯입니다.</div><div class="ttdef"><b>Definition</b> <a href="UPageScrollView_8h_source.html#l00018">UPageScrollView.h:19</a></div></div>
+<div class="ttc" id="aclassUPageScrollView_html_a3d8c40414f34af47dbd8f3b9b1bf224c"><div class="ttname"><a href="classUPageScrollView.html#a3d8c40414f34af47dbd8f3b9b1bf224c">UPageScrollView::GetPageStride</a></div><div class="ttdeci">FORCEINLINE float GetPageStride() const</div><div class="ttdoc">페이지 간 거리를 계산합니다.</div><div class="ttdef"><b>Definition</b> <a href="UPageScrollView_8h_source.html#l00094">UPageScrollView.h:94</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_b6750dbdff08df84555f1c91e851278f.html">WidgetComponents</a></li><li class="navelem"><a class="el" href="dir_d6381c14211658f973554019171aa369.html">Public</a></li><li class="navelem"><a class="el" href="UPageScrollView_8h.html">UPageScrollView.h</a></li>
+    <li class="footer">생성시간 : 금 12월 26 2025 11:01:59, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
+</body>
+</html>

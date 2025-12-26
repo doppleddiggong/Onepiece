@@ -1,0 +1,157 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>KLingo Project Documentation: Source/Onepiece/WidgetComponents/Private/UPageScrollItem.cpp 소스 파일</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript">
+window.MathJax = {
+  options: {
+    ignoreHtmlClass: 'tex2jax_ignore',
+    processHtmlClass: 'tex2jax_process'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<script type="text/javascript" src="darkmode_toggle.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">KLingo Project Documentation<span id="projectnumber">&#160;1.0.0</span>
+   </div>
+   <div id="projectbrief">Unreal Engine 5.6 C++ Project Documentation</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 다음에 의해 생성됨 :  Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','검색');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(0); });
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('UPageScrollItem_8cpp_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">로딩중...</div>
+<div class="SRStatus" id="Searching">검색중...</div>
+<div class="SRStatus" id="NoMatches">일치하는것 없음</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">UPageScrollItem.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="UPageScrollItem_8cpp.html">이 파일의 문서화 페이지로 가기</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;<a class="code" href="UPageScrollItem_8h.html">UPageScrollItem.h</a>&quot;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;<a class="code" href="UPageScrollView_8h.html">UPageScrollView.h</a>&quot;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
+<div class="foldopen" id="foldopen00006" data-start="{" data-end="}">
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno"><a class="line" href="classUPageScrollItem.html#a63207cd32d3cc745aad79476bad3ebe6">    6</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUPageScrollItem.html#a63207cd32d3cc745aad79476bad3ebe6">UPageScrollItem::InitData</a>(int32 InIndex, <a class="code hl_class" href="classUPageScrollView.html">UPageScrollView</a>* InOwner)</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>{</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>    <a class="code hl_variable" href="classUPageScrollItem.html#a6a643e16cbe59c02e28dbd72536ef29b">pageIndex</a> = InIndex;</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>    <a class="code hl_variable" href="classUPageScrollItem.html#a17a8d0a479536b1eea6a09f03b2544cf">ownerScrollView</a> = InOwner;</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    <span class="comment">// Blueprint에서 구현할 SetPageContent 호출</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    <a class="code hl_function" href="classUPageScrollItem.html#ab3aaf5d242b87c2365f4ce6cf08f3f14">SetPageContent</a>(InIndex);</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>}</div>
+</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="keywordtype">void</span> UPageScrollItem::UpdateFocusState_Implementation(<span class="keywordtype">bool</span> bInFocused, <span class="keywordtype">float</span> InScale)</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>{</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUPageScrollItem.html#a2a44ef7ca5e8f6f4afb752827e7f8c6c">bIsFocused</a> == bInFocused)</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <a class="code hl_variable" href="classUPageScrollItem.html#a2a44ef7ca5e8f6f4afb752827e7f8c6c">bIsFocused</a> = bInFocused;</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <span class="comment">// 포커스 변경 이벤트 발생</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <a class="code hl_variable" href="classUPageScrollItem.html#ad5880cbed223a453453d1158d124b12c">OnItemFocusChanged</a>.Broadcast(<a class="code hl_variable" href="classUPageScrollItem.html#a2a44ef7ca5e8f6f4afb752827e7f8c6c">bIsFocused</a>);</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>}</div>
+<div class="ttc" id="aUPageScrollItem_8h_html"><div class="ttname"><a href="UPageScrollItem_8h.html">UPageScrollItem.h</a></div></div>
+<div class="ttc" id="aUPageScrollView_8h_html"><div class="ttname"><a href="UPageScrollView_8h.html">UPageScrollView.h</a></div></div>
+<div class="ttc" id="aclassUPageScrollItem_html_a17a8d0a479536b1eea6a09f03b2544cf"><div class="ttname"><a href="classUPageScrollItem.html#a17a8d0a479536b1eea6a09f03b2544cf">UPageScrollItem::ownerScrollView</a></div><div class="ttdeci">TWeakObjectPtr&lt; class UPageScrollView &gt; ownerScrollView</div><div class="ttdoc">이 페이지를 소유한 부모 ScrollView</div><div class="ttdef"><b>Definition</b> <a href="UPageScrollItem_8h_source.html#l00055">UPageScrollItem.h:55</a></div></div>
+<div class="ttc" id="aclassUPageScrollItem_html_a2a44ef7ca5e8f6f4afb752827e7f8c6c"><div class="ttname"><a href="classUPageScrollItem.html#a2a44ef7ca5e8f6f4afb752827e7f8c6c">UPageScrollItem::bIsFocused</a></div><div class="ttdeci">bool bIsFocused</div><div class="ttdoc">현재 포커스 상태</div><div class="ttdef"><b>Definition</b> <a href="UPageScrollItem_8h_source.html#l00061">UPageScrollItem.h:61</a></div></div>
+<div class="ttc" id="aclassUPageScrollItem_html_a63207cd32d3cc745aad79476bad3ebe6"><div class="ttname"><a href="classUPageScrollItem.html#a63207cd32d3cc745aad79476bad3ebe6">UPageScrollItem::InitData</a></div><div class="ttdeci">virtual void InitData(int32 InIndex, class UPageScrollView *InOwner)</div><div class="ttdoc">페이지 아이템을 초기화합니다.</div><div class="ttdef"><b>Definition</b> <a href="UPageScrollItem_8cpp_source.html#l00006">UPageScrollItem.cpp:6</a></div></div>
+<div class="ttc" id="aclassUPageScrollItem_html_a6a643e16cbe59c02e28dbd72536ef29b"><div class="ttname"><a href="classUPageScrollItem.html#a6a643e16cbe59c02e28dbd72536ef29b">UPageScrollItem::pageIndex</a></div><div class="ttdeci">int32 pageIndex</div><div class="ttdoc">이 페이지의 인덱스</div><div class="ttdef"><b>Definition</b> <a href="UPageScrollItem_8h_source.html#l00058">UPageScrollItem.h:58</a></div></div>
+<div class="ttc" id="aclassUPageScrollItem_html_ab3aaf5d242b87c2365f4ce6cf08f3f14"><div class="ttname"><a href="classUPageScrollItem.html#ab3aaf5d242b87c2365f4ce6cf08f3f14">UPageScrollItem::SetPageContent</a></div><div class="ttdeci">void SetPageContent(int32 Index)</div><div class="ttdoc">페이지 콘텐츠를 설정합니다 (Blueprint에서 재정의).</div></div>
+<div class="ttc" id="aclassUPageScrollItem_html_ad5880cbed223a453453d1158d124b12c"><div class="ttname"><a href="classUPageScrollItem.html#ad5880cbed223a453453d1158d124b12c">UPageScrollItem::OnItemFocusChanged</a></div><div class="ttdeci">FOnItemFocusChanged OnItemFocusChanged</div><div class="ttdoc">포커스 변경 이벤트</div><div class="ttdef"><b>Definition</b> <a href="UPageScrollItem_8h_source.html#l00051">UPageScrollItem.h:51</a></div></div>
+<div class="ttc" id="aclassUPageScrollView_html"><div class="ttname"><a href="classUPageScrollView.html">UPageScrollView</a></div><div class="ttdoc">페이지 단위 스크롤 뷰 위젯 드래그 기반 스크롤과 자동 스냅 기능을 제공하는 메인 컨트롤러 위젯입니다.</div><div class="ttdef"><b>Definition</b> <a href="UPageScrollView_8h_source.html#l00018">UPageScrollView.h:19</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_b6750dbdff08df84555f1c91e851278f.html">WidgetComponents</a></li><li class="navelem"><a class="el" href="dir_f37bb5af0a6b6a37fa69422f56c0ab7c.html">Private</a></li><li class="navelem"><a class="el" href="UPageScrollItem_8cpp.html">UPageScrollItem.cpp</a></li>
+    <li class="footer">생성시간 : 금 12월 26 2025 11:01:59, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -15,6 +15,7 @@ var classATeleportTrigger =
     [ "bShowDebugBox", "classATeleportTrigger.html#a54efec3ef015fa374000c1bb68c8a435", null ],
     [ "bShowOnCompass", "classATeleportTrigger.html#a055bb4c9611ef550e3a9c6762f0b3e8c", null ],
     [ "DebugBoxColor", "classATeleportTrigger.html#a3cf960e2c68d768763cc821a05aabaca", null ],
+    [ "DoorIndex", "classATeleportTrigger.html#a3e491330d630d93a3254dbff59023638", null ],
     [ "MarkerType", "classATeleportTrigger.html#afab55eb3a8c206914d440493384e9401", null ],
     [ "TeleportOut", "classATeleportTrigger.html#a292f4773398cd36de0754cd7687bf836", null ],
     [ "TriggerBox", "classATeleportTrigger.html#a7ec427962e7600493d55a10ec6db386f", null ]

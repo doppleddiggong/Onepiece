@@ -116,14 +116,14 @@ $(document).ready(function(){initNavTree('classAMainLevelScriptActor.html',''); 
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classAMainLevelScriptActor__inherit__graph.svg" width="226" height="270"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classAMainLevelScriptActor__inherit__graph.svg" width="226" height="290"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="closed.png" alt="+"/> AMainLevelScriptActor에 대한 협력 다이어그램:</div>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classAMainLevelScriptActor__coll__graph.svg" width="226" height="270"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classAMainLevelScriptActor__coll__graph.svg" width="226" height="290"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -137,6 +137,8 @@ Protected 멤버 함수</h2></td></tr>
 <tr class="separator:a5d50f17362a3dc45311dc86fc709e965"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4bea17c7761c16af4a3f3d7e6cc31d55" id="r_a4bea17c7761c16af4a3f3d7e6cc31d55"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAMainLevelScriptActor.html#a4bea17c7761c16af4a3f3d7e6cc31d55">StartProcess</a> ()</td></tr>
 <tr class="separator:a4bea17c7761c16af4a3f3d7e6cc31d55"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a636daaffbe60b98c6956c9a70faa0557" id="r_a636daaffbe60b98c6956c9a70faa0557"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAMainLevelScriptActor.html#a636daaffbe60b98c6956c9a70faa0557">TutorialProcess</a> ()</td></tr>
+<tr class="separator:a636daaffbe60b98c6956c9a70faa0557"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private 멤버 함수</h2></td></tr>
@@ -164,10 +166,10 @@ Private 멤버 함수</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="AMainLevelScriptActor_8cpp_source.html">AMainLevelScriptActor.cpp</a> 파일의 <a class="el" href="AMainLevelScriptActor_8cpp_source.html#l00015">15</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   16</span>{</div>
-<div class="line"><span class="lineno">   17</span>    PrimaryActorTick.bCanEverTick = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   18</span>}</div>
+<p class="definition"><a class="el" href="AMainLevelScriptActor_8cpp_source.html">AMainLevelScriptActor.cpp</a> 파일의 <a class="el" href="AMainLevelScriptActor_8cpp_source.html#l00016">16</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   17</span>{</div>
+<div class="line"><span class="lineno">   18</span>    PrimaryActorTick.bCanEverTick = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   19</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -195,19 +197,19 @@ Private 멤버 함수</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="AMainLevelScriptActor_8cpp_source.html">AMainLevelScriptActor.cpp</a> 파일의 <a class="el" href="AMainLevelScriptActor_8cpp_source.html#l00020">20</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   21</span>{</div>
-<div class="line"><span class="lineno">   22</span>    Super::BeginPlay();</div>
-<div class="line"><span class="lineno">   23</span> </div>
-<div class="line"><span class="lineno">   24</span>    FTimerHandle TimerHandle;</div>
-<div class="line"><span class="lineno">   25</span>    GetWorldTimerManager().SetTimer(TimerHandle, [<span class="keyword">this</span>]()</div>
-<div class="line"><span class="lineno">   26</span>    {</div>
-<div class="line"><span class="lineno">   27</span>        <a class="code hl_function" href="classAMainLevelScriptActor.html#a4bea17c7761c16af4a3f3d7e6cc31d55">StartProcess</a>();</div>
-<div class="line"><span class="lineno">   28</span>    }, 1.0f, <span class="keyword">false</span>);</div>
-<div class="line"><span class="lineno">   29</span>}</div>
-<div class="ttc" id="aclassAMainLevelScriptActor_html_a4bea17c7761c16af4a3f3d7e6cc31d55"><div class="ttname"><a href="classAMainLevelScriptActor.html#a4bea17c7761c16af4a3f3d7e6cc31d55">AMainLevelScriptActor::StartProcess</a></div><div class="ttdeci">void StartProcess()</div><div class="ttdef"><b>Definition</b> <a href="AMainLevelScriptActor_8cpp_source.html#l00031">AMainLevelScriptActor.cpp:31</a></div></div>
+<p class="definition"><a class="el" href="AMainLevelScriptActor_8cpp_source.html">AMainLevelScriptActor.cpp</a> 파일의 <a class="el" href="AMainLevelScriptActor_8cpp_source.html#l00021">21</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   22</span>{</div>
+<div class="line"><span class="lineno">   23</span>    Super::BeginPlay();</div>
+<div class="line"><span class="lineno">   24</span> </div>
+<div class="line"><span class="lineno">   25</span>    FTimerHandle TimerHandle;</div>
+<div class="line"><span class="lineno">   26</span>    GetWorldTimerManager().SetTimer(TimerHandle, [<span class="keyword">this</span>]()</div>
+<div class="line"><span class="lineno">   27</span>    {</div>
+<div class="line"><span class="lineno">   28</span>        <a class="code hl_function" href="classAMainLevelScriptActor.html#a636daaffbe60b98c6956c9a70faa0557">TutorialProcess</a>();</div>
+<div class="line"><span class="lineno">   29</span>    }, 1.0f, <span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">   30</span>}</div>
+<div class="ttc" id="aclassAMainLevelScriptActor_html_a636daaffbe60b98c6956c9a70faa0557"><div class="ttname"><a href="classAMainLevelScriptActor.html#a636daaffbe60b98c6956c9a70faa0557">AMainLevelScriptActor::TutorialProcess</a></div><div class="ttdeci">void TutorialProcess()</div><div class="ttdef"><b>Definition</b> <a href="AMainLevelScriptActor_8cpp_source.html#l00032">AMainLevelScriptActor.cpp:32</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="AMainLevelScriptActor_8cpp_source.html#l00031">StartProcess()</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="AMainLevelScriptActor_8cpp_source.html#l00032">TutorialProcess()</a>.</p>
 <div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-2-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
@@ -252,23 +254,23 @@ Private 멤버 함수</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="AMainLevelScriptActor_8cpp_source.html">AMainLevelScriptActor.cpp</a> 파일의 <a class="el" href="AMainLevelScriptActor_8cpp_source.html#l00076">76</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   77</span>{</div>
-<div class="line"><span class="lineno">   78</span>    <span class="keywordflow">if</span> (bWasSuccessful)</div>
-<div class="line"><span class="lineno">   79</span>    {</div>
-<div class="line"><span class="lineno">   80</span>        <span class="keywordflow">if</span> (<span class="keyword">auto</span> Popup = UPopupManager::ShowPopupAs&lt;UPopup_InterviewHello&gt;(GetWorld(), EPopupType::InterviewHello))</div>
-<div class="line"><span class="lineno">   81</span>            Popup-&gt;InitPopup(ResponseData);</div>
-<div class="line"><span class="lineno">   82</span>    }</div>
-<div class="line"><span class="lineno">   83</span>    <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">   84</span>    {</div>
-<div class="line"><span class="lineno">   85</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;--- InterviewHello Questions FAILED ---&quot;</span>));</div>
-<div class="line"><span class="lineno">   86</span>    }</div>
-<div class="line"><span class="lineno">   87</span>}</div>
+<p class="definition"><a class="el" href="AMainLevelScriptActor_8cpp_source.html">AMainLevelScriptActor.cpp</a> 파일의 <a class="el" href="AMainLevelScriptActor_8cpp_source.html#l00098">98</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   99</span>{</div>
+<div class="line"><span class="lineno">  100</span>    <span class="keywordflow">if</span> (bWasSuccessful)</div>
+<div class="line"><span class="lineno">  101</span>    {</div>
+<div class="line"><span class="lineno">  102</span>        <span class="keywordflow">if</span> (<span class="keyword">auto</span> Popup = UPopupManager::ShowPopupAs&lt;UPopup_InterviewHello&gt;(GetWorld(), EPopupType::InterviewHello))</div>
+<div class="line"><span class="lineno">  103</span>            Popup-&gt;InitPopup(ResponseData);</div>
+<div class="line"><span class="lineno">  104</span>    }</div>
+<div class="line"><span class="lineno">  105</span>    <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  106</span>    {</div>
+<div class="line"><span class="lineno">  107</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;--- InterviewHello Questions FAILED ---&quot;</span>));</div>
+<div class="line"><span class="lineno">  108</span>    }</div>
+<div class="line"><span class="lineno">  109</span>}</div>
 <div class="ttc" id="aGameLogging_8h_html_a9998c8beb11a6bad6ffada2e701fc0cf"><div class="ttname"><a href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a></div><div class="ttdeci">#define PRINTLOG(fmt,...)</div><div class="ttdef"><b>Definition</b> <a href="GameLogging_8h_source.html#l00030">GameLogging.h:30</a></div></div>
 </div><!-- fragment -->
 <p class="reference">다음을 참조함 :  <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AMainLevelScriptActor_8cpp_source.html#l00060">RequestInterviewHello()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AMainLevelScriptActor_8cpp_source.html#l00082">RequestInterviewHello()</a>.</p>
 <div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-3-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
@@ -302,27 +304,27 @@ Private 멤버 함수</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="AMainLevelScriptActor_8cpp_source.html">AMainLevelScriptActor.cpp</a> 파일의 <a class="el" href="AMainLevelScriptActor_8cpp_source.html#l00060">60</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   61</span>{</div>
-<div class="line"><span class="lineno">   62</span>    <span class="comment">// &quot;오늘 보지 않기&quot; 체크</span></div>
-<div class="line"><span class="lineno">   63</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="classUPopup__InterviewHello.html#a1ee520db04ec8e883f1b0f1d837e027a">UPopup_InterviewHello::ShouldSkipInterviewToday</a>(GetWorld()))</div>
-<div class="line"><span class="lineno">   64</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">   65</span> </div>
-<div class="line"><span class="lineno">   66</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> KLingoNetwork = UKLingoNetworkSystem::Get(GetWorld()))</div>
-<div class="line"><span class="lineno">   67</span>    {</div>
-<div class="line"><span class="lineno">   68</span>        KLingoNetwork-&gt;RequestInterviewHello( FResponseInterviewHelloDelegate::CreateUObject(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classAMainLevelScriptActor.html#a0f543b12536566ce7ef56852bfacdf6d">AMainLevelScriptActor::OnResponseInterviewHello</a>) );</div>
-<div class="line"><span class="lineno">   69</span>    }</div>
-<div class="line"><span class="lineno">   70</span>    <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">   71</span>    {</div>
-<div class="line"><span class="lineno">   72</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;UKLingoNetworkSystem not found!&quot;</span>));</div>
-<div class="line"><span class="lineno">   73</span>    }</div>
-<div class="line"><span class="lineno">   74</span>}</div>
-<div class="ttc" id="aclassAMainLevelScriptActor_html_a0f543b12536566ce7ef56852bfacdf6d"><div class="ttname"><a href="classAMainLevelScriptActor.html#a0f543b12536566ce7ef56852bfacdf6d">AMainLevelScriptActor::OnResponseInterviewHello</a></div><div class="ttdeci">void OnResponseInterviewHello(FResponseInterviewHello &amp;ResponseData, bool bWasSuccessful)</div><div class="ttdef"><b>Definition</b> <a href="AMainLevelScriptActor_8cpp_source.html#l00076">AMainLevelScriptActor.cpp:76</a></div></div>
+<p class="definition"><a class="el" href="AMainLevelScriptActor_8cpp_source.html">AMainLevelScriptActor.cpp</a> 파일의 <a class="el" href="AMainLevelScriptActor_8cpp_source.html#l00082">82</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   83</span>{</div>
+<div class="line"><span class="lineno">   84</span>    <span class="comment">// &quot;오늘 보지 않기&quot; 체크</span></div>
+<div class="line"><span class="lineno">   85</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="classUPopup__InterviewHello.html#a1ee520db04ec8e883f1b0f1d837e027a">UPopup_InterviewHello::ShouldSkipInterviewToday</a>(GetWorld()))</div>
+<div class="line"><span class="lineno">   86</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   87</span> </div>
+<div class="line"><span class="lineno">   88</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> KLingoNetwork = UKLingoNetworkSystem::Get(GetWorld()))</div>
+<div class="line"><span class="lineno">   89</span>    {</div>
+<div class="line"><span class="lineno">   90</span>        KLingoNetwork-&gt;RequestInterviewHello( FResponseInterviewHelloDelegate::CreateUObject(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classAMainLevelScriptActor.html#a0f543b12536566ce7ef56852bfacdf6d">AMainLevelScriptActor::OnResponseInterviewHello</a>) );</div>
+<div class="line"><span class="lineno">   91</span>    }</div>
+<div class="line"><span class="lineno">   92</span>    <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">   93</span>    {</div>
+<div class="line"><span class="lineno">   94</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;UKLingoNetworkSystem not found!&quot;</span>));</div>
+<div class="line"><span class="lineno">   95</span>    }</div>
+<div class="line"><span class="lineno">   96</span>}</div>
+<div class="ttc" id="aclassAMainLevelScriptActor_html_a0f543b12536566ce7ef56852bfacdf6d"><div class="ttname"><a href="classAMainLevelScriptActor.html#a0f543b12536566ce7ef56852bfacdf6d">AMainLevelScriptActor::OnResponseInterviewHello</a></div><div class="ttdeci">void OnResponseInterviewHello(FResponseInterviewHello &amp;ResponseData, bool bWasSuccessful)</div><div class="ttdef"><b>Definition</b> <a href="AMainLevelScriptActor_8cpp_source.html#l00098">AMainLevelScriptActor.cpp:98</a></div></div>
 <div class="ttc" id="aclassUPopup__InterviewHello_html_a1ee520db04ec8e883f1b0f1d837e027a"><div class="ttname"><a href="classUPopup__InterviewHello.html#a1ee520db04ec8e883f1b0f1d837e027a">UPopup_InterviewHello::ShouldSkipInterviewToday</a></div><div class="ttdeci">static bool ShouldSkipInterviewToday(const UObject *WorldContextObject)</div><div class="ttdoc">오늘 Interview 팝업을 건너뛸지 확인</div><div class="ttdef"><b>Definition</b> <a href="UPopup__InterviewHello_8cpp_source.html#l00385">UPopup_InterviewHello.cpp:385</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="AMainLevelScriptActor_8cpp_source.html#l00076">OnResponseInterviewHello()</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>, <a class="el" href="UPopup__InterviewHello_8cpp_source.html#l00385">UPopup_InterviewHello::ShouldSkipInterviewToday()</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="AMainLevelScriptActor_8cpp_source.html#l00098">OnResponseInterviewHello()</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>, <a class="el" href="UPopup__InterviewHello_8cpp_source.html#l00385">UPopup_InterviewHello::ShouldSkipInterviewToday()</a>.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AMainLevelScriptActor_8cpp_source.html#l00031">StartProcess()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AMainLevelScriptActor_8cpp_source.html#l00053">StartProcess()</a>.</p>
 <div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-4-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-4-summary" class="dynsummary" style="display:block;">
@@ -335,7 +337,7 @@ Private 멤버 함수</h2></td></tr>
 <div id="dynsection-5-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-5-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classAMainLevelScriptActor_a7680980909fb26ba3f63877ae4dd9373_icgraph.svg" width="624" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classAMainLevelScriptActor_a7680980909fb26ba3f63877ae4dd9373_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -363,39 +365,39 @@ Private 멤버 함수</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="AMainLevelScriptActor_8cpp_source.html">AMainLevelScriptActor.cpp</a> 파일의 <a class="el" href="AMainLevelScriptActor_8cpp_source.html#l00031">31</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   32</span>{</div>
-<div class="line"><span class="lineno">   33</span>    <span class="comment">// Host(서버)인지 확인</span></div>
-<div class="line"><span class="lineno">   34</span>    <span class="keywordflow">if</span> (HasAuthority())</div>
-<div class="line"><span class="lineno">   35</span>    {</div>
-<div class="line"><span class="lineno">   36</span>        <span class="comment">// Host인 경우: 레벨 선택 팝업 표시</span></div>
-<div class="line"><span class="lineno">   37</span>        <span class="keywordflow">if</span> (<span class="keyword">auto</span> Popup = UPopupManager::ShowPopupAs&lt;UPopup_LevelSelect&gt;(GetWorld(), EPopupType::LevelSelect))</div>
-<div class="line"><span class="lineno">   38</span>        {</div>
-<div class="line"><span class="lineno">   39</span>            <span class="comment">// 팝업 초기화</span></div>
-<div class="line"><span class="lineno">   40</span>            Popup-&gt;InitPopup();</div>
-<div class="line"><span class="lineno">   41</span> </div>
-<div class="line"><span class="lineno">   42</span>            <span class="comment">// 팝업이 닫힐 때 RequestInterviewHello 호출</span></div>
-<div class="line"><span class="lineno">   43</span>            Popup-&gt;OnPopupClosed.BindLambda([<span class="keyword">this</span>]()</div>
-<div class="line"><span class="lineno">   44</span>            {</div>
-<div class="line"><span class="lineno">   45</span>                this-&gt;<a class="code hl_function" href="classAMainLevelScriptActor.html#a7680980909fb26ba3f63877ae4dd9373">RequestInterviewHello</a>();</div>
-<div class="line"><span class="lineno">   46</span>            });</div>
-<div class="line"><span class="lineno">   47</span>        }</div>
-<div class="line"><span class="lineno">   48</span>        <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">   49</span>        {</div>
-<div class="line"><span class="lineno">   50</span>            <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;Failed to show LevelSelect popup&quot;</span>));</div>
-<div class="line"><span class="lineno">   51</span>        }</div>
-<div class="line"><span class="lineno">   52</span>    }</div>
-<div class="line"><span class="lineno">   53</span>    <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">   54</span>    {</div>
-<div class="line"><span class="lineno">   55</span>        <span class="comment">// Host가 아닌 경우: 바로 RequestInterviewHello 호출</span></div>
-<div class="line"><span class="lineno">   56</span>        this-&gt;<a class="code hl_function" href="classAMainLevelScriptActor.html#a7680980909fb26ba3f63877ae4dd9373">RequestInterviewHello</a>();</div>
-<div class="line"><span class="lineno">   57</span>    }</div>
-<div class="line"><span class="lineno">   58</span>}</div>
-<div class="ttc" id="aclassAMainLevelScriptActor_html_a7680980909fb26ba3f63877ae4dd9373"><div class="ttname"><a href="classAMainLevelScriptActor.html#a7680980909fb26ba3f63877ae4dd9373">AMainLevelScriptActor::RequestInterviewHello</a></div><div class="ttdeci">void RequestInterviewHello()</div><div class="ttdef"><b>Definition</b> <a href="AMainLevelScriptActor_8cpp_source.html#l00060">AMainLevelScriptActor.cpp:60</a></div></div>
+<p class="definition"><a class="el" href="AMainLevelScriptActor_8cpp_source.html">AMainLevelScriptActor.cpp</a> 파일의 <a class="el" href="AMainLevelScriptActor_8cpp_source.html#l00053">53</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   54</span>{</div>
+<div class="line"><span class="lineno">   55</span>    <span class="comment">// Host(서버)인지 확인</span></div>
+<div class="line"><span class="lineno">   56</span>    <span class="keywordflow">if</span> (HasAuthority())</div>
+<div class="line"><span class="lineno">   57</span>    {</div>
+<div class="line"><span class="lineno">   58</span>        <span class="comment">// Host인 경우: 레벨 선택 팝업 표시</span></div>
+<div class="line"><span class="lineno">   59</span>        <span class="keywordflow">if</span> (<span class="keyword">auto</span> Popup = UPopupManager::ShowPopupAs&lt;UPopup_LevelSelect&gt;(GetWorld(), EPopupType::LevelSelect))</div>
+<div class="line"><span class="lineno">   60</span>        {</div>
+<div class="line"><span class="lineno">   61</span>            <span class="comment">// 팝업 초기화</span></div>
+<div class="line"><span class="lineno">   62</span>            Popup-&gt;InitPopup();</div>
+<div class="line"><span class="lineno">   63</span> </div>
+<div class="line"><span class="lineno">   64</span>            <span class="comment">// 팝업이 닫힐 때 RequestInterviewHello 호출</span></div>
+<div class="line"><span class="lineno">   65</span>            Popup-&gt;OnPopupClosed.BindLambda([<span class="keyword">this</span>]()</div>
+<div class="line"><span class="lineno">   66</span>            {</div>
+<div class="line"><span class="lineno">   67</span>                this-&gt;<a class="code hl_function" href="classAMainLevelScriptActor.html#a7680980909fb26ba3f63877ae4dd9373">RequestInterviewHello</a>();</div>
+<div class="line"><span class="lineno">   68</span>            });</div>
+<div class="line"><span class="lineno">   69</span>        }</div>
+<div class="line"><span class="lineno">   70</span>        <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">   71</span>        {</div>
+<div class="line"><span class="lineno">   72</span>            <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;Failed to show LevelSelect popup&quot;</span>));</div>
+<div class="line"><span class="lineno">   73</span>        }</div>
+<div class="line"><span class="lineno">   74</span>    }</div>
+<div class="line"><span class="lineno">   75</span>    <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">   76</span>    {</div>
+<div class="line"><span class="lineno">   77</span>        <span class="comment">// Host가 아닌 경우: 바로 RequestInterviewHello 호출</span></div>
+<div class="line"><span class="lineno">   78</span>        this-&gt;<a class="code hl_function" href="classAMainLevelScriptActor.html#a7680980909fb26ba3f63877ae4dd9373">RequestInterviewHello</a>();</div>
+<div class="line"><span class="lineno">   79</span>    }</div>
+<div class="line"><span class="lineno">   80</span>}</div>
+<div class="ttc" id="aclassAMainLevelScriptActor_html_a7680980909fb26ba3f63877ae4dd9373"><div class="ttname"><a href="classAMainLevelScriptActor.html#a7680980909fb26ba3f63877ae4dd9373">AMainLevelScriptActor::RequestInterviewHello</a></div><div class="ttdeci">void RequestInterviewHello()</div><div class="ttdef"><b>Definition</b> <a href="AMainLevelScriptActor_8cpp_source.html#l00082">AMainLevelScriptActor.cpp:82</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>, <a class="el" href="AMainLevelScriptActor_8cpp_source.html#l00060">RequestInterviewHello()</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>, <a class="el" href="AMainLevelScriptActor_8cpp_source.html#l00082">RequestInterviewHello()</a>.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AMainLevelScriptActor_8cpp_source.html#l00020">BeginPlay()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AMainLevelScriptActor_8cpp_source.html#l00032">TutorialProcess()</a>.</p>
 <div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-6-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-6-summary" class="dynsummary" style="display:block;">
@@ -408,7 +410,71 @@ Private 멤버 함수</h2></td></tr>
 <div id="dynsection-7-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-7-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classAMainLevelScriptActor_a4bea17c7761c16af4a3f3d7e6cc31d55_icgraph.svg" width="398" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classAMainLevelScriptActor_a4bea17c7761c16af4a3f3d7e6cc31d55_icgraph.svg" width="615" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a636daaffbe60b98c6956c9a70faa0557" name="a636daaffbe60b98c6956c9a70faa0557"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a636daaffbe60b98c6956c9a70faa0557">&#9670;&#160;</a></span>TutorialProcess()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AMainLevelScriptActor::TutorialProcess </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="AMainLevelScriptActor_8cpp_source.html">AMainLevelScriptActor.cpp</a> 파일의 <a class="el" href="AMainLevelScriptActor_8cpp_source.html#l00032">32</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   33</span>{</div>
+<div class="line"><span class="lineno">   34</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> Popup = UPopupManager::ShowPopupAs&lt;UPopup_HowToPlay&gt;(GetWorld(), EPopupType::HowToPlay))</div>
+<div class="line"><span class="lineno">   35</span>    {</div>
+<div class="line"><span class="lineno">   36</span>        TArray&lt;EHowToPlayPageType&gt; PageTypes;</div>
+<div class="line"><span class="lineno">   37</span>        PageTypes.Add(EHowToPlayPageType::Control_P1);</div>
+<div class="line"><span class="lineno">   38</span>        PageTypes.Add(EHowToPlayPageType::Control_P2);</div>
+<div class="line"><span class="lineno">   39</span>        PageTypes.Add(EHowToPlayPageType::Control_P3);</div>
+<div class="line"><span class="lineno">   40</span>        PageTypes.Add(EHowToPlayPageType::Control_P4);</div>
+<div class="line"><span class="lineno">   41</span>        PageTypes.Add(EHowToPlayPageType::Control_P5);</div>
+<div class="line"><span class="lineno">   42</span>        PageTypes.Add(EHowToPlayPageType::Control_P6);</div>
+<div class="line"><span class="lineno">   43</span>        </div>
+<div class="line"><span class="lineno">   44</span>        Popup-&gt;InitPopup(PageTypes);</div>
+<div class="line"><span class="lineno">   45</span> </div>
+<div class="line"><span class="lineno">   46</span>        Popup-&gt;OnClosedDelegate.BindLambda([<span class="keyword">this</span>]() {</div>
+<div class="line"><span class="lineno">   47</span>            this-&gt;<a class="code hl_function" href="classAMainLevelScriptActor.html#a4bea17c7761c16af4a3f3d7e6cc31d55">StartProcess</a>();</div>
+<div class="line"><span class="lineno">   48</span>        });</div>
+<div class="line"><span class="lineno">   49</span>    }</div>
+<div class="line"><span class="lineno">   50</span>}</div>
+<div class="ttc" id="aclassAMainLevelScriptActor_html_a4bea17c7761c16af4a3f3d7e6cc31d55"><div class="ttname"><a href="classAMainLevelScriptActor.html#a4bea17c7761c16af4a3f3d7e6cc31d55">AMainLevelScriptActor::StartProcess</a></div><div class="ttdeci">void StartProcess()</div><div class="ttdef"><b>Definition</b> <a href="AMainLevelScriptActor_8cpp_source.html#l00053">AMainLevelScriptActor.cpp:53</a></div></div>
+</div><!-- fragment -->
+<p class="reference">다음을 참조함 :  <a class="el" href="AMainLevelScriptActor_8cpp_source.html#l00053">StartProcess()</a>.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AMainLevelScriptActor_8cpp_source.html#l00021">BeginPlay()</a>.</p>
+<div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-8-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-8-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-8-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classAMainLevelScriptActor_a636daaffbe60b98c6956c9a70faa0557_cgraph.svg" width="100%" height="386"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+<div id="dynsection-9" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-9-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-9-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-9-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classAMainLevelScriptActor_a636daaffbe60b98c6956c9a70faa0557_icgraph.svg" width="398" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -423,7 +489,7 @@ Private 멤버 함수</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classAMainLevelScriptActor.html">AMainLevelScriptActor</a></li>
-    <li class="footer">생성시간 : 금 12월 26 2025 07:26:36, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 금 12월 26 2025 11:01:59, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

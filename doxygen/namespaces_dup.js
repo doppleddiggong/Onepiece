@@ -10,9 +10,13 @@ var namespaces_dup =
       [ "Intro", "namespaceDoorGroup.html#ab763a363d3e8fc13d51ae5637e65a8fa", null ],
       [ "Step1_End", "namespaceDoorGroup.html#aa5f8813b0ddba77c8062a9dca6f794c2", null ],
       [ "Step1_Mid", "namespaceDoorGroup.html#aff55658bddb83a770edb95988a287b2c", null ],
+      [ "Step1_Tutorial", "namespaceDoorGroup.html#a46ea8b980567f25c0faa57ce918aa7d7", null ],
       [ "Step2_End", "namespaceDoorGroup.html#acea2dc917c33512d0d28a0599b384a23", null ],
+      [ "Step2_Tutorial", "namespaceDoorGroup.html#a7e9c7cfba68d64eab773a003588bad8b", null ],
       [ "Step3_End", "namespaceDoorGroup.html#a382bc5ba9c89bbe22f7a3a78c7c5a04c", null ],
-      [ "Step4_End", "namespaceDoorGroup.html#acd2dab97b4b719d2f28f731f96e89d36", null ]
+      [ "Step3_Tutorial", "namespaceDoorGroup.html#ae980b3d55fb7560bca35c16c1cc7d954", null ],
+      [ "Step4_End", "namespaceDoorGroup.html#acd2dab97b4b719d2f28f731f96e89d36", null ],
+      [ "Step4_Tutorial", "namespaceDoorGroup.html#a0d40ea6a3e84b5ce2d3da094c4d93e1c", null ]
     ] ],
     [ "GameColor", "namespaceGameColor.html", [
       [ "Blue", "namespaceGameColor.html#aba495ad0b2bb0e48100c5ad01c51fd01", null ],

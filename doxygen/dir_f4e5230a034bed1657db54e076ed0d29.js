@@ -13,6 +13,7 @@ var dir_f4e5230a034bed1657db54e076ed0d29 =
     [ "FColorData.h", "FColorData_8h.html", "FColorData_8h" ],
     [ "FColorStyleData.h", "FColorStyleData_8h.html", "FColorStyleData_8h" ],
     [ "FHitStopData.h", "FHitStopData_8h.html", "FHitStopData_8h" ],
+    [ "FHowToPlayPageData.h", "FHowToPlayPageData_8h.html", "FHowToPlayPageData_8h" ],
     [ "FKnockbackData.h", "FKnockbackData_8h.html", "FKnockbackData_8h" ],
     [ "FLevelData.h", "FLevelData_8h.html", "FLevelData_8h" ],
     [ "FListenData.h", "FListenData_8h.html", "FListenData_8h" ],

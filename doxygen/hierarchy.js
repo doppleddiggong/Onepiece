@@ -134,6 +134,7 @@ var hierarchy =
       [ "FColorData", "structFColorData.html", null ],
       [ "FColorStyleData", "structFColorStyleData.html", null ],
       [ "FHitStopData", "structFHitStopData.html", null ],
+      [ "FHowToPlayPageData", "structFHowToPlayPageData.html", null ],
       [ "FKnockbackData", "structFKnockbackData.html", null ],
       [ "FLevelData", "structFLevelData.html", null ],
       [ "FListenData", "structFListenData.html", null ],
@@ -225,6 +226,7 @@ var hierarchy =
         [ "UPopup_AskTutorial", "classUPopup__AskTutorial.html", null ],
         [ "UPopup_Evaluation", "classUPopup__Evaluation.html", null ],
         [ "UPopup_History", "classUPopup__History.html", null ],
+        [ "UPopup_HowToPlay", "classUPopup__HowToPlay.html", null ],
         [ "UPopup_InputMsg", "classUPopup__InputMsg.html", null ],
         [ "UPopup_Interview", "classUPopup__Interview.html", null ],
         [ "UPopup_InterviewHello", "classUPopup__InterviewHello.html", null ],
@@ -266,6 +268,11 @@ var hierarchy =
       [ "ULoadginCircle", "classULoadginCircle.html", null ],
       [ "ULobbyWidget", "classULobbyWidget.html", null ],
       [ "UMainWidget", "classUMainWidget.html", null ],
+      [ "UPageScrollDot", "classUPageScrollDot.html", null ],
+      [ "UPageScrollItem", "classUPageScrollItem.html", [
+        [ "UPopup_HowToPlayItem", "classUPopup__HowToPlayItem.html", null ]
+      ] ],
+      [ "UPageScrollView", "classUPageScrollView.html", null ],
       [ "UPlayTimer", "classUPlayTimer.html", null ],
       [ "UPopup_InterviewItem", "classUPopup__InterviewItem.html", null ],
       [ "UPopup_QuestionnaireItem", "classUPopup__QuestionnaireItem.html", null ],

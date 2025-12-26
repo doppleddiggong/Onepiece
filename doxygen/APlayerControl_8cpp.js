@@ -4,6 +4,8 @@ var APlayerControl_8cpp =
     [ "IA_GRAB_PATH", "APlayerControl_8cpp.html#ae48e8c8531b0052bfe745b145e850c0e", null ],
     [ "IA_HISTORY_PATH", "APlayerControl_8cpp.html#a241a1af3ef25a7f8904ae9525629372e", null ],
     [ "IA_HOOK_PATH", "APlayerControl_8cpp.html#af944d1d5c0903b37a61292741d43558a", null ],
+    [ "IA_HOWTOCTRL_PATH", "APlayerControl_8cpp.html#a102fe813d15ad54993f229967e63c7fe", null ],
+    [ "IA_HOWTOPLAY_PATH", "APlayerControl_8cpp.html#a9033fe526a8f2c7d8fe47382e74f66dd", null ],
     [ "IA_INFO_PATH", "APlayerControl_8cpp.html#a28ccfc8a8fa88862f5b5759780fcef13", null ],
     [ "IA_INTERACT_PATH", "APlayerControl_8cpp.html#a3ab8a9725d785bd80a3ec21f7fe064e0", null ],
     [ "IA_JUMP_PATH", "APlayerControl_8cpp.html#a56b2a02cd847f2f8531199c9cb9b066a", null ],
