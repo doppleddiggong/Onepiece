@@ -7,9 +7,11 @@
 #include "FHowToPlayPageData.h"
 #include "UPopup_HowToPlay.generated.h"
 
+/// @brief 팝업 닫힘 이벤트 델리게이트
+DECLARE_DELEGATE(FOnHowToPlayClosedDelegate);
+
 /**
  * @brief HowToPlay 팝업 위젯
- * @details Control, Read, Listen, Speak, Write 5개 페이지로 구성된 게임 가이드 팝업
  */
 UCLASS()
 class ONEPIECE_API UPopup_HowToPlay : public UBasePopup
@@ -18,8 +20,13 @@ class ONEPIECE_API UPopup_HowToPlay : public UBasePopup
 
 public:
 	/// @brief 팝업을 초기화합니다.
-	UFUNCTION(BlueprintCallable, Category = "PopupHowToPlay")
-	void InitPopup();
+	/// @param [in] InPageTypes 표시할 페이지 타입 목록
+	void InitPopup(const TArray<EHowToPlayPageType>& InPageTypes);
+
+	/// @brief 팝업을 초기화합니다.
+	/// @param [in] InPageTypes 표시할 페이지 타입 목록
+	/// @param [in] InOnClosedDelegate 팝업 닫힘 시 호출될 델리게이트
+	void InitPopup(const TArray<EHowToPlayPageType>& InPageTypes, FOnHowToPlayClosedDelegate InOnClosedDelegate);
 
 private:
 	void InitPageScrollView();
@@ -65,11 +72,8 @@ protected:
 	TObjectPtr<class UTextureButton> Btn_Next;
 
 private:
-	TArray<EHowToPlayPageType> pageTypes = {
-		EHowToPlayPageType::Control,
-		EHowToPlayPageType::Read,
-		EHowToPlayPageType::Listen,
-		EHowToPlayPageType::Speak,
-		EHowToPlayPageType::Write
-	};
+	TArray<EHowToPlayPageType> PageTypes;
+
+	/// @brief 팝업 닫힘 시 호출될 델리게이트
+	FOnHowToPlayClosedDelegate OnClosedDelegate;
 };

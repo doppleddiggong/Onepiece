@@ -8,7 +8,12 @@
 #include "UTextureButton.h"
 #include "UGameDataManager.h"
 
-void UPopup_HowToPlay::InitPopup()
+void UPopup_HowToPlay::InitPopup(const TArray<EHowToPlayPageType>& InPageTypes)
+{
+	InitPopup(InPageTypes, FOnHowToPlayClosedDelegate());
+}
+
+void UPopup_HowToPlay::InitPopup(const TArray<EHowToPlayPageType>& InPageTypes, FOnHowToPlayClosedDelegate InOnClosedDelegate)
 {
 	// 버튼 이벤트 바인딩
 	if (Btn_Close)
@@ -29,7 +34,9 @@ void UPopup_HowToPlay::InitPopup()
 		Btn_Next->OnButtonClickedEvent.AddDynamic(this, &UPopup_HowToPlay::OnClickNext);
 	}
 
-	
+	PageTypes = InPageTypes;
+	OnClosedDelegate = InOnClosedDelegate;
+
 	InitPageScrollView();
 
 	UpdateNavigationButtons();
@@ -41,7 +48,7 @@ void UPopup_HowToPlay::InitPageScrollView()
 		return;
 
 	// 5개 페이지 생성
-	PageScrollView->SetNumberOfPages(pageTypes.Num());
+	PageScrollView->SetNumberOfPages(PageTypes.Num());
 
 	// 페이지 변경 이벤트 바인딩
 	PageScrollView->OnPageChanged.RemoveDynamic(this, &UPopup_HowToPlay::OnPageChanged);
@@ -75,6 +82,12 @@ void UPopup_HowToPlay::UpdateNavigationButtons()
 
 void UPopup_HowToPlay::OnClickClose()
 {
+	// 델리게이트 호출
+	if (OnClosedDelegate.IsBound())
+	{
+		OnClosedDelegate.Execute();
+	}
+
 	// PopupManager를 통해 팝업 닫기
 	if (UPopupManager* PopupMgr = UPopupManager::Get(GetWorld()))
 	{
@@ -104,7 +117,7 @@ TArray<FHowToPlayPageData> UPopup_HowToPlay::GetPageDataArray() const
 
 	if ( auto DM = UGameDataManager::Get(GetWorld()) )
 	{
-		for (const EHowToPlayPageType& pageType : pageTypes)
+		for (const EHowToPlayPageType& pageType : PageTypes)
 		{
 			FHowToPlayPageData pageData;
 			if (DM->GetHowToPlayPageData(pageType, pageData))

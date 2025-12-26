@@ -55,6 +55,7 @@
 #define IA_HOOK_PATH				TEXT("/Game/CustomContents/Input/IA_Game_Hook.IA_Game_Hook")
 #define IA_CHAT_PATH				TEXT("/Game/CustomContents/Input/IA_EnterChat.IA_EnterChat")
 #define IA_HISTORY_PATH				TEXT("/Game/CustomContents/Input/IA_Game_History.IA_Game_History")
+#define IA_HOWTOCTRL_PATH			TEXT("/Game/CustomContents/Input/IA_Game_HowToCtrl.IA_Game_HowToCtrl")
 #define IA_HOWTOPLAY_PATH			TEXT("/Game/CustomContents/Input/IA_Game_HowToPlay.IA_Game_HowToPlay")
 
 
@@ -72,7 +73,8 @@ APlayerControl::APlayerControl()
 	IA_Info = FComponentHelper::LoadAsset<UInputAction>(IA_INFO_PATH);
 	IA_Hook = FComponentHelper::LoadAsset<UInputAction>(IA_HOOK_PATH);
 	IA_Chat = FComponentHelper::LoadAsset<UInputAction>(IA_CHAT_PATH);
-	IA_Histroy = FComponentHelper::LoadAsset<UInputAction>(IA_HISTORY_PATH);
+	IA_History = FComponentHelper::LoadAsset<UInputAction>(IA_HISTORY_PATH);
+	IA_HowToCtrl  = FComponentHelper::LoadAsset<UInputAction>(IA_HOWTOCTRL_PATH);
 	IA_HowToPlay  = FComponentHelper::LoadAsset<UInputAction>(IA_HOWTOPLAY_PATH);
 
 	TutorialComponent = CreateDefaultSubobject<UTutorialComponent>(TEXT("TutorialComponent"));
@@ -137,7 +139,8 @@ void APlayerControl::SetupInputComponent()
 		EIC->BindAction(IA_Hook, ETriggerEvent::Started, this, &APlayerControl::OnHook);
 
 		EIC->BindAction(IA_Chat, ETriggerEvent::Started, this, &APlayerControl::OnChat);
-		EIC->BindAction(IA_Histroy, ETriggerEvent::Started, this, &APlayerControl::OnHistory);
+		EIC->BindAction(IA_History, ETriggerEvent::Started, this, &APlayerControl::OnHistory);
+		EIC->BindAction(IA_HowToCtrl, ETriggerEvent::Started, this, &APlayerControl::OnHowToCtrl);
 		EIC->BindAction(IA_HowToPlay, ETriggerEvent::Started, this, &APlayerControl::OnHowToPlay);
 	}
 }
@@ -329,11 +332,60 @@ void APlayerControl::OnHistory(const FInputActionValue& Value)
 	}
 }
 
+
+void APlayerControl::OnHowToCtrl(const FInputActionValue& Value)
+{
+	if (auto Popup = UPopupManager::ShowPopupAs<UPopup_HowToPlay>(GetWorld(), EPopupType::HowToPlay))
+	{
+		TArray<EHowToPlayPageType> PageTypes = {
+			EHowToPlayPageType::Control,
+			EHowToPlayPageType::Read,
+			EHowToPlayPageType::Listen
+		};
+		
+		Popup->InitPopup(PageTypes, nullptr);
+	}
+}
+
+
 void APlayerControl::OnHowToPlay(const FInputActionValue& Value)
 {
 	if (auto Popup = UPopupManager::ShowPopupAs<UPopup_HowToPlay>(GetWorld(), EPopupType::HowToPlay))
 	{
-		Popup->InitPopup();
+		TArray<EHowToPlayPageType> PageTypes;
+
+		// Control은 항상 포함
+		PageTypes.Add(EHowToPlayPageType::Control);
+
+		// 현재 진행 중인 퀘스트 타입 확인
+		if (auto PS = GetPlayerState<ALingoPlayerState>())
+		{
+			// Read 퀘스트 진행 중
+			if (PS->bReadQuestIng && !PS->bReadQuestCompleted)
+			{
+				PageTypes.Add(EHowToPlayPageType::Read);
+			}
+
+			// Listen 퀘스트 진행 중
+			if (PS->bListenQuestIng && !PS->bListenQuestCompleted)
+			{
+				PageTypes.Add(EHowToPlayPageType::Listen);
+			}
+
+			// Speak 퀘스트 진행 중
+			if (PS->bSpeakQuestIng && !PS->bSpeakQuestCompleted)
+			{
+				PageTypes.Add(EHowToPlayPageType::Speak);
+			}
+
+			// Write 퀘스트 진행 중 (있다면)
+			if (PS->bWriteQuestIng && !PS->bWriteQuestCompleted)
+			{
+				PageTypes.Add(EHowToPlayPageType::Write);
+			}
+		}
+
+		Popup->InitPopup(PageTypes);
 	}
 }
 
