@@ -34,7 +34,12 @@ void AMainLevelScriptActor::TutorialProcess()
 	if (auto Popup = UPopupManager::ShowPopupAs<UPopup_HowToPlay>(GetWorld(), EPopupType::HowToPlay))
 	{
 		TArray<EHowToPlayPageType> PageTypes;
-		PageTypes.Add(EHowToPlayPageType::Control);			
+		PageTypes.Add(EHowToPlayPageType::Control_P1);
+		PageTypes.Add(EHowToPlayPageType::Control_P2);
+		PageTypes.Add(EHowToPlayPageType::Control_P3);
+		PageTypes.Add(EHowToPlayPageType::Control_P4);
+		PageTypes.Add(EHowToPlayPageType::Control_P5);
+		PageTypes.Add(EHowToPlayPageType::Control_P6);
 		
 		Popup->InitPopup(PageTypes);
 

@@ -372,23 +372,38 @@ void APlayerControl::OpenHowToPlay(EQuestType QuestType)
 
 		if ( QuestType == EQuestType::None )
 		{
-			PageTypes.Add(EHowToPlayPageType::Control);
+			PageTypes.Add(EHowToPlayPageType::Control_P1);
+			PageTypes.Add(EHowToPlayPageType::Control_P2);
+			PageTypes.Add(EHowToPlayPageType::Control_P3);
+			PageTypes.Add(EHowToPlayPageType::Control_P4);
+			PageTypes.Add(EHowToPlayPageType::Control_P5);
+			PageTypes.Add(EHowToPlayPageType::Control_P6);
 		}
 		else if ( QuestType == EQuestType::Read )
 		{
-			PageTypes.Add(EHowToPlayPageType::Read);			
+			PageTypes.Add(EHowToPlayPageType::Read_P1);			
+			PageTypes.Add(EHowToPlayPageType::Read_P2);
+			PageTypes.Add(EHowToPlayPageType::Read_P3);
+			PageTypes.Add(EHowToPlayPageType::Read_P4);
 		}
 		else if ( QuestType == EQuestType::Listen )
 		{
-			PageTypes.Add(EHowToPlayPageType::Listen);			
+			PageTypes.Add(EHowToPlayPageType::Listen_P1);			
+			PageTypes.Add(EHowToPlayPageType::Listen_P2);			
+			PageTypes.Add(EHowToPlayPageType::Listen_P3);			
+			PageTypes.Add(EHowToPlayPageType::Listen_P4);			
 		}
 		else if ( QuestType == EQuestType::Speak )
 		{
-			PageTypes.Add(EHowToPlayPageType::Speak);			
+			PageTypes.Add(EHowToPlayPageType::Speak_P1);			
+			PageTypes.Add(EHowToPlayPageType::Speak_P2);			
+			PageTypes.Add(EHowToPlayPageType::Speak_P3);			
 		}
 		else if ( QuestType == EQuestType::Write )
 		{
-			PageTypes.Add(EHowToPlayPageType::Write);			
+			PageTypes.Add(EHowToPlayPageType::Write_P1);			
+			PageTypes.Add(EHowToPlayPageType::Write_P2);			
+			PageTypes.Add(EHowToPlayPageType::Write_P3);			
 		}
 		
 		Popup->InitPopup(PageTypes);

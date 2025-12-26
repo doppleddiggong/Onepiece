@@ -10,11 +10,33 @@
 UENUM(BlueprintType)
 enum class EHowToPlayPageType : uint8
 {
-	Control		UMETA(DisplayName = "Control"),
-	Read		UMETA(DisplayName = "Read"),
-	Listen		UMETA(DisplayName = "Listen"),
-	Speak		UMETA(DisplayName = "Speak"),
-	Write		UMETA(DisplayName = "Write")
+	Control_P1		UMETA(DisplayName = "Control_P1"),
+	Control_P2		UMETA(DisplayName = "Control_P2"),
+	Control_P3		UMETA(DisplayName = "Control_P3"),
+	Control_P4		UMETA(DisplayName = "Control_P4"),
+	Control_P5		UMETA(DisplayName = "Control_P5"),
+	Control_P6		UMETA(DisplayName = "Control_P6"),
+
+	Read_P1		UMETA(DisplayName = "Read_P1"),
+	Read_P2		UMETA(DisplayName = "Read_P2"),
+	Read_P3		UMETA(DisplayName = "Read_P3"),
+	Read_P4		UMETA(DisplayName = "Read_P4"),
+
+
+	Listen_P1		UMETA(DisplayName = "Listen_P1"),
+	Listen_P2		UMETA(DisplayName = "Listen_P2"),
+	Listen_P3		UMETA(DisplayName = "Listen_P3"),
+	Listen_P4		UMETA(DisplayName = "Listen_P4"),
+
+
+	Speak_P1		UMETA(DisplayName = "Speak_P1"),
+	Speak_P2		UMETA(DisplayName = "Speak_P2"),
+	Speak_P3		UMETA(DisplayName = "Speak_P3"),
+
+
+	Write_P1		UMETA(DisplayName = "Write_P1"),
+	Write_P2		UMETA(DisplayName = "Write_P2"),
+	Write_P3		UMETA(DisplayName = "Write_P3")
 };
 
 /// @brief HowToPlay 페이지 데이터
@@ -25,7 +47,7 @@ struct FHowToPlayPageData : public FTableRowBase
 
 	/// @brief 페이지 타입
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "HowToPlay")
-	EHowToPlayPageType PageType = EHowToPlayPageType::Control;
+	EHowToPlayPageType PageType = EHowToPlayPageType::Control_P1;
 
 	/// @brief 페이지 제목
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "HowToPlay")
