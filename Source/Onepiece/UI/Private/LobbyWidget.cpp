@@ -61,12 +61,22 @@ void ULobbyWidget::NativeConstruct()
 		EdtTxt_SessionName->OnTextChanged.RemoveDynamic(this, &ULobbyWidget::OnValueChangedSessionName);
 		EdtTxt_SessionName->OnTextChanged.AddDynamic(this, &ULobbyWidget::OnValueChangedSessionName);
 	}
+	if (Btn_Back1)
+	{
+		Btn_Back1->OnButtonClickedEvent.RemoveDynamic(this, &ULobbyWidget::OnBackPressed);
+		Btn_Back1->OnButtonClickedEvent.AddDynamic(this, &ULobbyWidget::OnBackPressed);
+	}
 
 	// Join Canvas - 중복 바인딩 방지
 	if (Btn_Update)
 	{
 		Btn_Update->OnButtonClickedEvent.RemoveDynamic(this, &ULobbyWidget::OnClickFind);
 		Btn_Update->OnButtonClickedEvent.AddDynamic(this, &ULobbyWidget::OnClickFind);
+	}
+	if (Btn_Back2)
+	{
+		Btn_Back2->OnButtonClickedEvent.RemoveDynamic(this, &ULobbyWidget::OnBackPressed);
+		Btn_Back2->OnButtonClickedEvent.AddDynamic(this, &ULobbyWidget::OnBackPressed);
 	}
 }
 
@@ -109,6 +119,11 @@ void ULobbyWidget::OnValueChangedSessionName(const FText& Text)
 	// text 값의 길이에 따른 생성 버튼 활성 / 비활성
 	// text.IsEmpty()
 	Btn_Create->SetIsEnabled(Text.ToString().Len() > 0);
+}
+
+void ULobbyWidget::OnBackPressed()
+{
+	widgetSwitcher->SetActiveWidgetIndex(0);
 }
 
 void ULobbyWidget::OnClickFind()
