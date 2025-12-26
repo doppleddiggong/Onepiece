@@ -335,59 +335,66 @@ void APlayerControl::OnHistory(const FInputActionValue& Value)
 
 void APlayerControl::OnHowToCtrl(const FInputActionValue& Value)
 {
-	if (auto Popup = UPopupManager::ShowPopupAs<UPopup_HowToPlay>(GetWorld(), EPopupType::HowToPlay))
-	{
-		TArray<EHowToPlayPageType> PageTypes = {
-			EHowToPlayPageType::Control,
-			EHowToPlayPageType::Read,
-			EHowToPlayPageType::Listen
-		};
-		
-		Popup->InitPopup(PageTypes, nullptr);
-	}
+	this->OpenHowToPlay(EQuestType::None);
 }
 
 
 void APlayerControl::OnHowToPlay(const FInputActionValue& Value)
 {
+	// 현재 진행 중인 퀘스트 타입 확인
+	if (auto PS = GetPlayerState<ALingoPlayerState>())
+	{
+		// Read 퀘스트 진행 중
+		if (PS->bReadQuestIng && !PS->bReadQuestCompleted)
+		{
+			this->OpenHowToPlay(EQuestType::Read);
+		}
+		else if (PS->bListenQuestIng && !PS->bListenQuestCompleted)
+		{
+			this->OpenHowToPlay(EQuestType::Listen);
+		}
+		else if (PS->bSpeakQuestIng && !PS->bSpeakQuestCompleted)
+		{
+			this->OpenHowToPlay(EQuestType::Speak);
+		}
+		else if (PS->bWriteQuestIng && !PS->bWriteQuestCompleted)
+		{
+			this->OpenHowToPlay(EQuestType::Write);
+		}
+	}
+}
+
+void APlayerControl::OpenHowToPlay(EQuestType QuestType)
+{
 	if (auto Popup = UPopupManager::ShowPopupAs<UPopup_HowToPlay>(GetWorld(), EPopupType::HowToPlay))
 	{
 		TArray<EHowToPlayPageType> PageTypes;
 
-		// Control은 항상 포함
-		PageTypes.Add(EHowToPlayPageType::Control);
-
-		// 현재 진행 중인 퀘스트 타입 확인
-		if (auto PS = GetPlayerState<ALingoPlayerState>())
+		if ( QuestType == EQuestType::None )
 		{
-			// Read 퀘스트 진행 중
-			if (PS->bReadQuestIng && !PS->bReadQuestCompleted)
-			{
-				PageTypes.Add(EHowToPlayPageType::Read);
-			}
-
-			// Listen 퀘스트 진행 중
-			if (PS->bListenQuestIng && !PS->bListenQuestCompleted)
-			{
-				PageTypes.Add(EHowToPlayPageType::Listen);
-			}
-
-			// Speak 퀘스트 진행 중
-			if (PS->bSpeakQuestIng && !PS->bSpeakQuestCompleted)
-			{
-				PageTypes.Add(EHowToPlayPageType::Speak);
-			}
-
-			// Write 퀘스트 진행 중 (있다면)
-			if (PS->bWriteQuestIng && !PS->bWriteQuestCompleted)
-			{
-				PageTypes.Add(EHowToPlayPageType::Write);
-			}
+			PageTypes.Add(EHowToPlayPageType::Control);
 		}
-
+		else if ( QuestType == EQuestType::Read )
+		{
+			PageTypes.Add(EHowToPlayPageType::Read);			
+		}
+		else if ( QuestType == EQuestType::Listen )
+		{
+			PageTypes.Add(EHowToPlayPageType::Listen);			
+		}
+		else if ( QuestType == EQuestType::Speak )
+		{
+			PageTypes.Add(EHowToPlayPageType::Speak);			
+		}
+		else if ( QuestType == EQuestType::Write )
+		{
+			PageTypes.Add(EHowToPlayPageType::Write);			
+		}
+		
 		Popup->InitPopup(PageTypes);
 	}
 }
+
 
 void APlayerControl::Server_OnHook_Implementation()
 {
@@ -787,7 +794,7 @@ void APlayerControl::OnDoorMessage(int32 InDoorIndex, bool bInOpen, AActor* Even
 		// SpeakQuest: 개인 퀘스트, EventInstigator 확인
 		if (EventInstigator != nullptr && EventInstigator != GetPawn())
 			return;
-		
+
 		PS->SetSpeakQuestCompleted();
 	}
 	else if (InDoorIndex == DoorGroup::Step4_End)
@@ -795,8 +802,31 @@ void APlayerControl::OnDoorMessage(int32 InDoorIndex, bool bInOpen, AActor* Even
 		// WriteQuest: 개인 퀘스트, EventInstigator 확인
 		if (EventInstigator != nullptr && EventInstigator != GetPawn())
 			return;
-		
+
 		PS->SetWriteQuestCompleted();
+	}
+
+	if (InDoorIndex == DoorGroup::Step1_Tutorial)
+	{
+		OpenHowToPlay(EQuestType::Read);
+	}
+	else if (InDoorIndex == DoorGroup::Step2_Tutorial)
+	{
+		OpenHowToPlay(EQuestType::Listen);
+	}
+	else if (InDoorIndex == DoorGroup::Step3_Tutorial)
+	{
+		if (EventInstigator != nullptr && EventInstigator != GetPawn())
+			return;
+		
+		OpenHowToPlay(EQuestType::Speak);
+	}
+	else if ( InDoorIndex == DoorGroup::Step4_Tutorial )
+	{
+		if (EventInstigator != nullptr && EventInstigator != GetPawn())
+			return;
+
+		OpenHowToPlay(EQuestType::Write);		
 	}
 }
 

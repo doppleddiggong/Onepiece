@@ -141,11 +141,20 @@ void ATeleportTrigger::OnTriggerBeginOverlap(
 					GS->SetCompassVisibilityByTag("Whitney", true);
 				}
 			}
+
+
+			if ( DoorIndex > 0 )
+			{
+				BroadcastActor->SendDoorMessage(DoorIndex, true, this);
+			}
 		}
 		else
 		{
 			PRINTLOG(TEXT("ATeleportTrigger: NetworkBroadcastActor를 찾을 수 없습니다!"));
 		}
+
+
+		
 
 		OnActivate();
 		

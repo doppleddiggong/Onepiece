@@ -17,6 +17,7 @@ namespace DoorGroup
 {
 	// door_0 : 입구
 	static const int32 Intro = 0;
+	static const int32 Step1_Tutorial = 0;
 
 	// door_1 : Step1(Read) 중간 게이트
 	static const int32 Step1_Mid = 1;
@@ -24,11 +25,14 @@ namespace DoorGroup
 	static const int32 Step1_End = 2;
 
 	// door_100 : Step2(Listen) 엔드 게이트
+	static const int32 Step2_Tutorial = 99;
 	static const int32 Step2_End = 100;
 
 	// door_200 : Step3(Speak) 엔드 게이트
+	static const int32 Step3_Tutorial = 199;
 	static const int32 Step3_End = 200;
 
+	static const int32 Step4_Tutorial = 200;
 	// door_300 : Step4(Write) 엔드 게이트
 	static const int32 Step4_End = 300;
 }

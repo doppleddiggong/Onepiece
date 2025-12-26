@@ -26,6 +26,9 @@ public:
 
 	virtual void OnActivate_Implementation();
 
+public:
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int32 DoorIndex = 0;
 	
 protected:
 	/// @brief 트리거 영역을 정의하는 박스 컴포넌트

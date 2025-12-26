@@ -7,6 +7,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "ALingoGameState.h"
 #include "ALingoPlayerState.h"
 #include "NetworkData.h"
 #include "InputActionValue.h"
@@ -187,6 +188,9 @@ public:
 	void StartTutorialManually();
 	// 튜토리얼 완료 콜백
 	void OnTutorialCompleted();
+
+private:
+	void OpenHowToPlay(EQuestType QuestType);
 
 public:
 	/// @brief Chat History 관리 컴포넌트

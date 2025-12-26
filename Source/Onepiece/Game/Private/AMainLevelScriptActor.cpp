@@ -3,11 +3,12 @@
 
 #include "AMainLevelScriptActor.h"
 
+#include "FHowToPlayPageData.h"
 #include "GameLogging.h"
 #include "NetworkData.h"
 #include "UKLingoNetworkSystem.h"
 #include "UPopupManager.h"
-#include "UPopup_Interview.h"
+#include "UPopup_HowToPlay.h"
 #include "UPopup_InterviewHello.h"
 #include "UPopup_LevelSelect.h"
 
@@ -24,9 +25,25 @@ void AMainLevelScriptActor::BeginPlay()
 	FTimerHandle TimerHandle;
 	GetWorldTimerManager().SetTimer(TimerHandle, [this]()
 	{
-		StartProcess();
+		TutorialProcess();
 	}, 1.0f, false);
 }
+
+void AMainLevelScriptActor::TutorialProcess()
+{
+	if (auto Popup = UPopupManager::ShowPopupAs<UPopup_HowToPlay>(GetWorld(), EPopupType::HowToPlay))
+	{
+		TArray<EHowToPlayPageType> PageTypes;
+		PageTypes.Add(EHowToPlayPageType::Control);			
+		
+		Popup->InitPopup(PageTypes);
+
+		Popup->OnClosedDelegate.BindLambda([this]()	{
+			this->StartProcess();
+		});
+	}
+}
+
 
 void AMainLevelScriptActor::StartProcess()
 {

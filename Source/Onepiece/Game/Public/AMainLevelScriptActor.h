@@ -18,6 +18,7 @@ public:
 
 protected:
 	virtual void BeginPlay() override;
+	void TutorialProcess();
 	void StartProcess();
 
 private:

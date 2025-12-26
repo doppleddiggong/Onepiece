@@ -8,12 +8,7 @@
 #include "UTextureButton.h"
 #include "UGameDataManager.h"
 
-void UPopup_HowToPlay::InitPopup(const TArray<EHowToPlayPageType>& InPageTypes)
-{
-	InitPopup(InPageTypes, FOnHowToPlayClosedDelegate());
-}
-
-void UPopup_HowToPlay::InitPopup(const TArray<EHowToPlayPageType>& InPageTypes, FOnHowToPlayClosedDelegate InOnClosedDelegate)
+void UPopup_HowToPlay::InitPopup(const TArray<EHowToPlayPageType>& InPageTypes )
 {
 	// 버튼 이벤트 바인딩
 	if (Btn_Close)
@@ -35,7 +30,6 @@ void UPopup_HowToPlay::InitPopup(const TArray<EHowToPlayPageType>& InPageTypes, 
 	}
 
 	PageTypes = InPageTypes;
-	OnClosedDelegate = InOnClosedDelegate;
 
 	InitPageScrollView();
 
@@ -70,6 +64,9 @@ void UPopup_HowToPlay::UpdateNavigationButtons()
 	if (!PageScrollView)
 		return;
 
+	Btn_Prev->SetVisibility( PageTypes.Num() > 1 ? ESlateVisibility::Visible : ESlateVisibility::Hidden );
+	Btn_Next->SetVisibility( PageTypes.Num() > 1 ? ESlateVisibility::Visible : ESlateVisibility::Hidden );
+	
 	int32 CurPage = PageScrollView->GetCurrentPage();
 	int32 TotalPages = PageScrollView->GetTotalPages();
 
@@ -82,16 +79,17 @@ void UPopup_HowToPlay::UpdateNavigationButtons()
 
 void UPopup_HowToPlay::OnClickClose()
 {
-	// 델리게이트 호출
-	if (OnClosedDelegate.IsBound())
-	{
-		OnClosedDelegate.Execute();
-	}
-
 	// PopupManager를 통해 팝업 닫기
 	if (UPopupManager* PopupMgr = UPopupManager::Get(GetWorld()))
 	{
 		PopupMgr->HideCurrentPopup();
+	}
+
+	// 델리게이트 호출
+	if (OnClosedDelegate.IsBound())
+	{
+		OnClosedDelegate.Execute();
+		OnClosedDelegate = nullptr;
 	}
 }
 

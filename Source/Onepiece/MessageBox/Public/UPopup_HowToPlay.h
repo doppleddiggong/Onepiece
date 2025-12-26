@@ -23,11 +23,6 @@ public:
 	/// @param [in] InPageTypes 표시할 페이지 타입 목록
 	void InitPopup(const TArray<EHowToPlayPageType>& InPageTypes);
 
-	/// @brief 팝업을 초기화합니다.
-	/// @param [in] InPageTypes 표시할 페이지 타입 목록
-	/// @param [in] InOnClosedDelegate 팝업 닫힘 시 호출될 델리게이트
-	void InitPopup(const TArray<EHowToPlayPageType>& InPageTypes, FOnHowToPlayClosedDelegate InOnClosedDelegate);
-
 private:
 	void InitPageScrollView();
 
@@ -53,6 +48,10 @@ private:
 	/// @brief 페이지 변경 이벤트
 	UFUNCTION()
 	void OnPageChanged(int32 PrevPage, int32 CurrentPage);
+
+public:
+	/// @brief 팝업 닫힘 시 호출될 델리게이트
+	FOnHowToPlayClosedDelegate OnClosedDelegate;
 	
 protected:
 	/// @brief 페이지 스크롤 뷰
@@ -73,7 +72,4 @@ protected:
 
 private:
 	TArray<EHowToPlayPageType> PageTypes;
-
-	/// @brief 팝업 닫힘 시 호출될 델리게이트
-	FOnHowToPlayClosedDelegate OnClosedDelegate;
 };
