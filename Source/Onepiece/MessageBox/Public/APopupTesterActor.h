@@ -40,6 +40,8 @@ public:
 	UFUNCTION(BlueprintCallable, CallInEditor, Category = "TEST|Message")
 	void TestPopupHistory();
 
+	UFUNCTION(BlueprintCallable, CallInEditor, Category = "TEST|Message")
+	void TestPopupDaily();
 
 	void OnOK();
 	void OnCancel();

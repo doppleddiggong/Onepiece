@@ -16,6 +16,7 @@
 #include "NetworkData.h"
 #include "Popup_Result.h"
 #include "UCommonFunctionLibrary.h"
+#include "UPopup_DailyStudy.h"
 #include "UPopup_Evaluation.h"
 #include "UPopup_InterviewHello.h"
 #include "UPopup_LevelSelect.h"
@@ -188,6 +189,15 @@ void APopupTesterActor::TestPopupHistory()
 		PRINTLOG(TEXT("[PopupTester] Chat History popup opened"));
 	}
 }
+
+void APopupTesterActor::TestPopupDaily()
+{
+	if (auto Popup = UPopupManager::ShowPopupAs<UPopup_DailyStudy>(GetWorld(), EPopupType::DailyStudy))
+	{
+		Popup->InitPopup();
+	}
+}
+
 
 void APopupTesterActor::OnOK()
 {

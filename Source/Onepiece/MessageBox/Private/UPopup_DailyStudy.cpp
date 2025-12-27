@@ -1,5 +1,4 @@
 // Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
-// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
 
 #include "UPopup_DailyStudy.h"
 
@@ -14,11 +13,14 @@
 #include "UImageButton.h"
 #include "Components/ProgressBar.h"
 #include "UTextureButton.h"
+#include "UVoiceRecording.h"
 #include "Misc/FileHelper.h"
 #include "Misc/Paths.h"
 
 void UPopup_DailyStudy::NativeConstruct()
 {
+	bAllowPlayerControl = true;
+	
 	Super::NativeConstruct();
 
 	if (Btn_Close)
@@ -43,6 +45,8 @@ void UPopup_DailyStudy::InitPopup()
 {
 	// 초기화
 	CurIndex = 0;
+
+	Widget_VoiceRecording->InitWidget();
 
 	// 일일 최고 득점 로드 및 표시
 	InitBestScore();
@@ -192,11 +196,14 @@ void UPopup_DailyStudy::LoadCurQuestion()
 	else if (!WordData.Texture.IsNull())
 		LoadedTexture = WordData.Texture.LoadSynchronous();
 
-	Img_Display->SetBrushFromTexture(LoadedTexture, true);
+	FSlateBrush Brush;
+	Brush.SetResourceObject(LoadedTexture);
+	Brush.ImageSize = FVector2D::ZeroVector; // 핵심
+	Img_Display->SetBrush(Brush);
 
 	// 진행 상황 업데이트
 	Txt_Progress->SetText(FText::FromString(
-		FString::Printf(TEXT("%d/%d"),
+		FString::Printf(TEXT("%02d/%02d"),
 			CurIndex + 1,
 			QuestionList.Num())));
 
