@@ -39,7 +39,9 @@ enum class EPopupType : uint8
 	History				UMETA(DisplayName = "History"),
 	SpeakJudes			UMETA(DisplayName = "SpeakJudes"),
 
-	HowToPlay			UMETA(DisplayName = "HowToPlay"),
+	HowToPlay		UMETA(DisplayName = "HowToPlay"),
+	DailyStudy		UMETA(DisplayName = "DailyStudy"),
+	DailyResult		UMETA(DisplayName = "DailyResult"),
 };
 
 UENUM(BlueprintType)
