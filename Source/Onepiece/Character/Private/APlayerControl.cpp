@@ -38,6 +38,7 @@
 #include "UPopupManager.h"
 #include "UPopup_SpeakQuest.h"
 #include "UPopup_SpeakResult.h"
+#include "UConfigLibrary.h"
 #include "UChatHistorySystem.h"
 #include "UPopup_History.h"
 #include "UPopup_HowToPlay.h"
@@ -166,17 +167,11 @@ IControllable* APlayerControl::GetControllable() const
 bool APlayerControl::ShouldSkipTutorial() const
 {
 	const int32 UserId = ULingoGameHelper::GetUserId(GetWorld());
-	const FString ConfigSection = TEXT("/Script/Onepiece.TutorialSystem");
-	const FString ConfigKey = FString::Printf(TEXT("TutorialCompleted_%d"), UserId);
 
-	FString bCompleted;
-	if (GConfig->GetString(*ConfigSection, *ConfigKey, bCompleted, GGameUserSettingsIni))
+	if (UConfigLibrary::GetUserBool(UserId, TEXT("TutorialCompleted"), false))
 	{
-		if (bCompleted == TEXT("true"))
-		{
-			PRINTLOG(TEXT("[Tutorial] User %d already completed tutorial"), UserId);
-			return true;  // 스킵
-		}
+		PRINTLOG(TEXT("[Tutorial] User %d already completed tutorial"), UserId);
+		return true;  // 스킵
 	}
 
 	return false; // 튜토리얼 진행
@@ -195,16 +190,7 @@ void APlayerControl::OnTutorialCompleted()
 {
 	// 세이브 시스템에 여부 저장
 	const int32 UserId = ULingoGameHelper::GetUserId(GetWorld());
-	const FString ConfigSection = TEXT("/Script/Onepiece.TutorialSystem");
-	const FString ConfigKey = FString::Printf(TEXT("TutorialCompleted_%d"), UserId);
-
-	GConfig->SetString(
-				*ConfigSection,
-				*ConfigKey,
-				TEXT("true"),
-				GGameUserSettingsIni
-			);
-	GConfig->Flush(false, GGameUserSettingsIni);
+	UConfigLibrary::SetUserBool(UserId, TEXT("TutorialCompleted"), true);
 }
 
 void APlayerControl::OnMove(const FInputActionValue& Value)

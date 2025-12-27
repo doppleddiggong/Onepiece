@@ -2,13 +2,10 @@
 
 #include "UChatHistorySystem.h"
 #include "ULingoGameHelper.h"
+#include "UConfigLibrary.h"
 #include "FChatHistoryItem.h"
 #include "GameLogging.h"
-
-UChatHistorySystem::UChatHistorySystem()
-{
-	PrimaryComponentTick.bCanEverTick = false;
-}
+#include "Algo/Reverse.h"
 
 void UChatHistorySystem::SaveChatHistory(const FString& Question, const FString& Answer)
 {
@@ -19,45 +16,25 @@ void UChatHistorySystem::SaveChatHistory(const FString& Question, const FString&
 		return;
 	}
 
-	const int32 NextIndex = GetNextIndex();
-	const FString ConfigSection = GetConfigSection();
-	const FString Timestamp = GetCurrentTimestamp();
+	// 1. 현재 Count 가져오기 (O(1))
+	const int32 CurrentCount = UConfigLibrary::GetUserInt(UserId, TEXT("ChatHistoryCount"), 0);
 
-	// 질문 저장
-	GConfig->SetString(
-		*ConfigSection,
-		*GetConfigKey(UserId, TEXT("Question"), NextIndex),
-		*Question,
-		GGameUserSettingsIni
-	);
+	// 2. 새 항목 생성
+	FChatHistoryItem NewItem;
+	NewItem.Index = CurrentCount;
+	NewItem.Question = Question;
+	NewItem.Answer = Answer;
+	NewItem.Timestamp = FChatHistoryItem::CurrentTimestamp();
 
-	// 답변 저장
-	GConfig->SetString(
-		*ConfigSection,
-		*GetConfigKey(UserId, TEXT("Answer"), NextIndex),
-		*Answer,
-		GGameUserSettingsIni
-	);
+	// 3. JSON으로 직렬화
+	const FString JsonString = NewItem.ToJson();
 
-	// 타임스탬프 저장
-	GConfig->SetString(
-		*ConfigSection,
-		*GetConfigKey(UserId, TEXT("Timestamp"), NextIndex),
-		*Timestamp,
-		GGameUserSettingsIni
-	);
+	// 4. 개별 키로 저장 (새 항목만!)
+	const FString ItemKey = FString::Printf(TEXT("ChatHistory_%d"), CurrentCount);
+	UConfigLibrary::SetUserString(UserId, ItemKey, JsonString, false);
 
-	// Count 업데이트
-	GConfig->SetInt(
-		*ConfigSection,
-		*GetConfigKey(UserId, TEXT("Count")),
-		NextIndex + 1,
-		GGameUserSettingsIni
-	);
-
-	GConfig->Flush(false, GGameUserSettingsIni);
-
-	PRINTLOG(TEXT("[ChatHistory] Saved Index=%d, Q=%s, A=%s"), NextIndex, *Question, *Answer);
+	// 5. Count 증가 (한 번에 저장)
+	UConfigLibrary::SetUserInt(UserId, TEXT("ChatHistoryCount"), CurrentCount + 1);
 }
 
 int32 UChatHistorySystem::LoadAllChatHistory(TArray<FChatHistoryItem>& OutHistoryList)
@@ -70,54 +47,33 @@ int32 UChatHistorySystem::LoadAllChatHistory(TArray<FChatHistoryItem>& OutHistor
 		return 0;
 	}
 
-	const FString ConfigSection = GetConfigSection();
-	int32 Count = 0;
-
-	// Count 읽기
-	GConfig->GetInt(
-		*ConfigSection,
-		*GetConfigKey(UserId, TEXT("Count")),
-		Count,
-		GGameUserSettingsIni
-	);
-
-	if (Count <= 0)
+	// 1. Count 가져오기
+	const int32 Count = UConfigLibrary::GetUserInt(UserId, TEXT("ChatHistoryCount"), 0);
+	if (Count == 0)
 	{
 		return 0;
 	}
 
-	// 모든 히스토리 읽기 (최신순으로 정렬하기 위해 역순으로 로드)
-	for (int32 i = Count - 1; i >= 0; --i)
+	// 2. 각 항목을 개별적으로 로드
+	for (int32 i = 0; i < Count; ++i)
 	{
-		FChatHistoryItem Item;
-		Item.Index = i;
+		const FString ItemKey = FString::Printf(TEXT("ChatHistory_%d"), i);
+		const FString JsonString = UConfigLibrary::GetUserString(UserId, ItemKey, TEXT(""));
 
-		GConfig->GetString(
-			*ConfigSection,
-			*GetConfigKey(UserId, TEXT("Question"), i),
-			Item.Question,
-			GGameUserSettingsIni
-		);
-
-		GConfig->GetString(
-			*ConfigSection,
-			*GetConfigKey(UserId, TEXT("Answer"), i),
-			Item.Answer,
-			GGameUserSettingsIni
-		);
-
-		GConfig->GetString(
-			*ConfigSection,
-			*GetConfigKey(UserId, TEXT("Timestamp"), i),
-			Item.Timestamp,
-			GGameUserSettingsIni
-		);
-
-		OutHistoryList.Add(Item);
+		if (!JsonString.IsEmpty())
+		{
+			FChatHistoryItem Item;
+			if (FChatHistoryItem::FromJson(JsonString, Item))
+			{
+				OutHistoryList.Add(Item);
+			}
+		}
 	}
 
-	PRINTLOG(TEXT("[ChatHistory] Loaded %d items for User %d"), Count, UserId);
-	return Count;
+	// 3. 최신순으로 정렬 (역순)
+	Algo::Reverse(OutHistoryList);
+
+	return OutHistoryList.Num();
 }
 
 void UChatHistorySystem::ClearChatHistory()
@@ -128,28 +84,18 @@ void UChatHistorySystem::ClearChatHistory()
 		return;
 	}
 
-	const FString ConfigSection = GetConfigSection();
-	const int32 Count = GetHistoryCount();
+	// 1. Count 가져오기
+	const int32 Count = UConfigLibrary::GetUserInt(UserId, TEXT("ChatHistoryCount"), 0);
 
-	// 모든 히스토리 데이터 삭제
+	// 2. 모든 항목 키 삭제
 	for (int32 i = 0; i < Count; ++i)
 	{
-		GConfig->RemoveKey(*ConfigSection, *GetConfigKey(UserId, TEXT("Question"), i), GGameUserSettingsIni);
-		GConfig->RemoveKey(*ConfigSection, *GetConfigKey(UserId, TEXT("Answer"), i), GGameUserSettingsIni);
-		GConfig->RemoveKey(*ConfigSection, *GetConfigKey(UserId, TEXT("Timestamp"), i), GGameUserSettingsIni);
+		const FString ItemKey = FString::Printf(TEXT("ChatHistory_%d"), i);
+		UConfigLibrary::DeleteUserKey(UserId, ItemKey, false); // 마지막에 한 번만 저장
 	}
 
-	// Count 초기화
-	GConfig->SetInt(
-		*ConfigSection,
-		*GetConfigKey(UserId, TEXT("Count")),
-		0,
-		GGameUserSettingsIni
-	);
-
-	GConfig->Flush(false, GGameUserSettingsIni);
-
-	PRINTLOG(TEXT("[ChatHistory] Cleared all history for User %d"), UserId);
+	// 3. Count 삭제 (한 번에 저장)
+	UConfigLibrary::DeleteUserKey(UserId, TEXT("ChatHistoryCount"));
 }
 
 int32 UChatHistorySystem::GetHistoryCount() const
@@ -160,58 +106,12 @@ int32 UChatHistorySystem::GetHistoryCount() const
 		return 0;
 	}
 
-	const FString ConfigSection = GetConfigSection();
-	int32 Count = 0;
-
-	GConfig->GetInt(
-		*ConfigSection,
-		*GetConfigKey(UserId, TEXT("Count")),
-		Count,
-		GGameUserSettingsIni
-	);
-
-	return Count;
+	// Count를 직접 반환 (O(1))
+	return UConfigLibrary::GetUserInt(UserId, TEXT("ChatHistoryCount"), 0);
 }
 
-int32 UChatHistorySystem::GetNextIndex()
+int32 UChatHistorySystem::GetNextIndex() const
 {
-	const int32 UserId = ULingoGameHelper::GetUserId(GetWorld());
-	const FString ConfigSection = GetConfigSection();
-	int32 Count = 0;
-
-	GConfig->GetInt(
-		*ConfigSection,
-		*GetConfigKey(UserId, TEXT("Count")),
-		Count,
-		GGameUserSettingsIni
-	);
-
-	return Count;
-}
-
-FString UChatHistorySystem::GetCurrentTimestamp() const
-{
-	const FDateTime Now = FDateTime::Now();
-	return FString::Printf(TEXT("%04d-%02d-%02d %02d:%02d:%02d"),
-		Now.GetYear(), Now.GetMonth(), Now.GetDay(),
-		Now.GetHour(), Now.GetMinute(), Now.GetSecond());
-}
-
-FString UChatHistorySystem::GetConfigSection() const
-{
-	return TEXT("/Script/Onepiece.ChatHistory");
-}
-
-FString UChatHistorySystem::GetConfigKey(int32 UserId, const FString& KeyType, int32 Index) const
-{
-	if (Index < 0)
-	{
-		// Count 키
-		return FString::Printf(TEXT("ChatHistory_%d_%s"), UserId, *KeyType);
-	}
-	else
-	{
-		// Question, Answer, Timestamp 키
-		return FString::Printf(TEXT("ChatHistory_%d_%s_%d"), UserId, *KeyType, Index);
-	}
+	// GetHistoryCount()가 다음 Index를 반환
+	return GetHistoryCount();
 }

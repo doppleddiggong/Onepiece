@@ -19,8 +19,6 @@ class ONEPIECE_API UChatHistorySystem : public UActorComponent
 	GENERATED_BODY()
 
 public:
-	UChatHistorySystem();
-
 	/// @brief Chat 대화를 히스토리에 저장합니다.
 	/// @param Question [in] 질문 내용
 	/// @param Answer [in] 답변 내용
@@ -43,19 +41,5 @@ public:
 
 private:
 	/// @brief GConfig에서 다음 인덱스를 가져오거나 생성합니다.
-	int32 GetNextIndex();
-
-	/// @brief 현재 시간을 "YYYY-MM-DD HH:MM:SS" 형식으로 반환합니다.
-	FString GetCurrentTimestamp() const;
-
-	/// @brief Config Section 이름을 반환합니다.
-	/// @return "/Script/Onepiece.ChatHistory"
-	FString GetConfigSection() const;
-
-	/// @brief Config Key를 생성합니다.
-	/// @param UserId [in] 유저 ID
-	/// @param KeyType [in] "Count", "Question", "Answer", "Timestamp"
-	/// @param Index [in] 히스토리 인덱스 (Count일 때는 -1)
-	/// @return "ChatHistory_<UserId>_<KeyType>_<Index>"
-	FString GetConfigKey(int32 UserId, const FString& KeyType, int32 Index = -1) const;
+	int32 GetNextIndex() const;
 };

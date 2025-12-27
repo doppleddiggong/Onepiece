@@ -26,4 +26,16 @@ struct FChatHistoryItem
 	/// @brief 저장 시간 (YYYY-MM-DD HH:MM:SS 형식)
 	UPROPERTY(BlueprintReadWrite, Category = "ChatHistory")
 	FString Timestamp;
+
+	static FString CurrentTimestamp();
+
+	/// @brief 구조체를 JSON 문자열로 변환합니다.
+	/// @return JSON 문자열
+	FString ToJson() const;
+
+	/// @brief JSON 문자열을 구조체로 변환합니다.
+	/// @param JsonString [in] JSON 문자열
+	/// @param OutItem [out] 변환된 구조체
+	/// @return 변환 성공 여부
+	static bool FromJson(const FString& JsonString, FChatHistoryItem& OutItem);
 };

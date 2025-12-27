@@ -17,6 +17,7 @@
 #include "Components/EditableText.h"
 #include "Components/ProgressBar.h"
 #include "Components/CheckBox.h"
+#include "UConfigLibrary.h"
 
 void UPopup_InterviewHello::NativeConstruct()
 {
@@ -328,20 +329,12 @@ void UPopup_InterviewHello::OnResponseInterviewAnswer(FResponseInterviewAnswer& 
 		if (bCheckTodayDoNotShow)
 		{
 			const int32 UserId = ULingoGameHelper::GetUserId(GetWorld());
-			const FString ConfigSection = TEXT("/Script/Onepiece.InterviewPopup");
-			const FString ConfigKey = FString::Printf(TEXT("SkipInterviewDate_%d"), UserId);
 
 			// 현재 날짜를 "YYYY-MM-DD" 형식으로 저장
 			const FDateTime Now = FDateTime::Now();
 			const FString TodayDate = FString::Printf(TEXT("%04d-%02d-%02d"), Now.GetYear(), Now.GetMonth(), Now.GetDay());
 
-			GConfig->SetString(
-				*ConfigSection,
-				*ConfigKey,
-				*TodayDate,
-				GGameUserSettingsIni
-			);
-			GConfig->Flush(false, GGameUserSettingsIni);
+			UConfigLibrary::SetUserString(UserId, TEXT("InterviewSkipDate"), TodayDate);
 
 			if (auto DM = UDialogManager::Get(GetWorld()))
 			{
@@ -385,12 +378,10 @@ void UPopup_InterviewHello::OnResponseInterviewAnswer(FResponseInterviewAnswer& 
 bool UPopup_InterviewHello::ShouldSkipInterviewToday(const UObject* WorldContextObject)
 {
 	const int32 UserId = ULingoGameHelper::GetUserId(WorldContextObject);
-	const FString ConfigSection = TEXT("/Script/Onepiece.InterviewPopup");
-	const FString ConfigKey = FString::Printf(TEXT("SkipInterviewDate_%d"), UserId);
 
 	// 저장된 날짜 읽기
-	FString SavedDate;
-	if (!GConfig->GetString(*ConfigSection, *ConfigKey, SavedDate, GGameUserSettingsIni))
+	const FString SavedDate = UConfigLibrary::GetUserString(UserId, TEXT("InterviewSkipDate"), TEXT(""));
+	if (SavedDate.IsEmpty())
 	{
 		// 저장된 날짜 없음 → 보여줌
 		return false;
