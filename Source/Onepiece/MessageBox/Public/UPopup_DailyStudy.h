@@ -6,6 +6,7 @@
 #include "UBasePopup.h"
 #include "FDailyStudy.h"
 #include "EWordType.h"
+#include "NetworkData.h"
 #include "UPopup_DailyStudy.generated.h"
 
 /**
@@ -17,9 +18,6 @@ namespace DailyStudyConfig
 {
 	/** 한 세션당 문제 개수 (조정 가능) */
 	static constexpr int32 QUESTIONS_PER_SESSION = 5;
-
-	/** 녹음 최대 지속 시간 (초) */
-	static constexpr float RECORDING_MAX_DURATION = 5.0f;
 
 	static constexpr int32 MAX_CATEGORY = 24;
 
@@ -53,6 +51,11 @@ protected:
 public:
 	UFUNCTION(BlueprintCallable, Category = "Popup")
 	void InitPopup();
+
+	FString GetCurrentQuestionText() const;
+	
+	void OnResponseSpeakingsJudges(const FResponseSpeakingJudes& JudgeResult);
+
 
 private:
 	/** 10개 랜덤 단어 생성 */

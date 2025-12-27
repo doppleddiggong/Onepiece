@@ -284,3 +284,29 @@ void UPopup_DailyStudy::OnClickClose()
 		PopupMgr->HideCurrentPopup();
 	}
 }
+
+FString UPopup_DailyStudy::GetCurrentQuestionText() const
+{
+	if (QuestionList.IsValidIndex(CurIndex))
+	{
+		return QuestionList[CurIndex].Eng;
+	}
+	return FString();
+}
+
+void UPopup_DailyStudy::OnResponseSpeakingsJudges(const FResponseSpeakingJudes& JudgeResult)
+{
+	if (QuestionList.IsValidIndex(CurIndex))
+	{
+		FDailyStudyAnswer Answer;
+		Answer.QuestionIndex = CurIndex;
+		Answer.ExpectedAnswer = QuestionList[CurIndex].Eng;
+		Answer.JudgeResult = JudgeResult;
+		Answer.bCompleted = true;
+		
+		AnswerList.Add(Answer);
+	}
+
+	// 1초 후 다음 문제로 이동
+	GetWorld()->GetTimerManager().SetTimer(NextTimerHandle, this, &UPopup_DailyStudy::MoveToNextQuestion, 1.0f, false);
+}
