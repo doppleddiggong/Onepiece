@@ -126,29 +126,21 @@ $(document).ready(function(){initNavTree('UChatHistorySystem_8h_source.html','')
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    GENERATED_BODY()</div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>public:</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    UChatHistorySystem();</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    UFUNCTION(BlueprintCallable, Category = &quot;ChatHistory&quot;)</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="keywordtype">void</span> SaveChatHistory(const FString&amp; Question, const FString&amp; Answer);</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    UFUNCTION(BlueprintCallable, Category = &quot;ChatHistory&quot;)</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    int32 LoadAllChatHistory(TArray&lt;<a class="code hl_struct" href="structFChatHistoryItem.html">FChatHistoryItem</a>&gt;&amp; OutHistoryList);</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    UFUNCTION(BlueprintCallable, Category = &quot;ChatHistory&quot;)</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keywordtype">void</span> ClearChatHistory();</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    UFUNCTION(BlueprintCallable, Category = &quot;ChatHistory&quot;)</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    int32 GetHistoryCount() const;</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>private:</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    int32 GetNextIndex();</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    FString GetCurrentTimestamp() const;</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    FString GetConfigSection() const;</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    FString GetConfigKey(int32 UserId, const FString&amp; KeyType, int32 Index = -1) const;</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>};</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    UFUNCTION(BlueprintCallable, Category = &quot;ChatHistory&quot;)</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <span class="keywordtype">void</span> SaveChatHistory(const FString&amp; Question, const FString&amp; Answer);</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    UFUNCTION(BlueprintCallable, Category = &quot;ChatHistory&quot;)</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    int32 LoadAllChatHistory(TArray&lt;<a class="code hl_struct" href="structFChatHistoryItem.html">FChatHistoryItem</a>&gt;&amp; OutHistoryList);</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    UFUNCTION(BlueprintCallable, Category = &quot;ChatHistory&quot;)</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="keywordtype">void</span> ClearChatHistory();</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    UFUNCTION(BlueprintCallable, Category = &quot;ChatHistory&quot;)</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    int32 GetHistoryCount() const;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>private:</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    int32 GetNextIndex() const;</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>};</div>
 <div class="ttc" id="aFChatHistoryItem_8h_html"><div class="ttname"><a href="FChatHistoryItem_8h.html">FChatHistoryItem.h</a></div></div>
 <div class="ttc" id="astructFChatHistoryItem_html"><div class="ttname"><a href="structFChatHistoryItem.html">FChatHistoryItem</a></div><div class="ttdoc">Chat 히스토리 아이템 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="FChatHistoryItem_8h_source.html#l00010">FChatHistoryItem.h:11</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
@@ -157,7 +149,7 @@ $(document).ready(function(){initNavTree('UChatHistorySystem_8h_source.html','')
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_71a9f6b769ee24fe8598c19ea2d70480.html">Character</a></li><li class="navelem"><a class="el" href="dir_82ba722683279238407f867a1ffc0276.html">Public</a></li><li class="navelem"><a class="el" href="UChatHistorySystem_8h.html">UChatHistorySystem.h</a></li>
-    <li class="footer">생성시간 : 금 12월 26 2025 11:01:59, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 토 12월 27 2025 04:20:01, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

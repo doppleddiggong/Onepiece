@@ -118,88 +118,82 @@ $(document).ready(function(){initNavTree('Popup__AskTutorial_8cpp_source.html','
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;<a class="code" href="UImageButton_8h.html">UImageButton.h</a>&quot;</span></div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;<a class="code" href="ULingoGameHelper_8h.html">ULingoGameHelper.h</a>&quot;</span></div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;<a class="code" href="UPopupManager_8h.html">UPopupManager.h</a>&quot;</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
-<div class="foldopen" id="foldopen00011" data-start="{" data-end="}">
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="classUPopup__AskTutorial.html#ab57f9a7eeff2db840f7923d04e4f35e9">   11</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUPopup__AskTutorial.html#ab57f9a7eeff2db840f7923d04e4f35e9">UPopup_AskTutorial::NativeConstruct</a>()</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>{</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    Super::NativeConstruct();</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUPopup__AskTutorial.html#a82d12d8c04c7edc4a1d10b18dadb41ee">Btn_Yes</a>)</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    {</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>        <a class="code hl_variable" href="classUPopup__AskTutorial.html#a82d12d8c04c7edc4a1d10b18dadb41ee">Btn_Yes</a>-&gt;<a class="code hl_variable" href="classUImageButton.html#a2100d61a0d0b04048d687a2fec6cc901">OnButtonClickedEvent</a>.RemoveDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUPopup__AskTutorial.html#ac55371a36a6c8f504f908f59809820c7">UPopup_AskTutorial::OnClickYes</a>);</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>        <a class="code hl_variable" href="classUPopup__AskTutorial.html#a82d12d8c04c7edc4a1d10b18dadb41ee">Btn_Yes</a>-&gt;<a class="code hl_variable" href="classUImageButton.html#a2100d61a0d0b04048d687a2fec6cc901">OnButtonClickedEvent</a>.AddDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUPopup__AskTutorial.html#ac55371a36a6c8f504f908f59809820c7">UPopup_AskTutorial::OnClickYes</a>);</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    }</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUPopup__AskTutorial.html#a5ef033845d19fcc15da2ba8c99378561">Btn_Skip</a>)</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    {</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        <a class="code hl_variable" href="classUPopup__AskTutorial.html#a5ef033845d19fcc15da2ba8c99378561">Btn_Skip</a>-&gt;<a class="code hl_variable" href="classUImageButton.html#a2100d61a0d0b04048d687a2fec6cc901">OnButtonClickedEvent</a>.RemoveDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUPopup__AskTutorial.html#a1c5349b5ad9fec212b4f56b21bbcf850">UPopup_AskTutorial::OnClickSkip</a>);</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        <a class="code hl_variable" href="classUPopup__AskTutorial.html#a5ef033845d19fcc15da2ba8c99378561">Btn_Skip</a>-&gt;<a class="code hl_variable" href="classUImageButton.html#a2100d61a0d0b04048d687a2fec6cc901">OnButtonClickedEvent</a>.AddDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUPopup__AskTutorial.html#a1c5349b5ad9fec212b4f56b21bbcf850">UPopup_AskTutorial::OnClickSkip</a>);</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    }</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>}</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;<a class="code" href="UConfigLibrary_8h.html">UConfigLibrary.h</a>&quot;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="foldopen" id="foldopen00012" data-start="{" data-end="}">
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="classUPopup__AskTutorial.html#ab57f9a7eeff2db840f7923d04e4f35e9">   12</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUPopup__AskTutorial.html#ab57f9a7eeff2db840f7923d04e4f35e9">UPopup_AskTutorial::NativeConstruct</a>()</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>{</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    Super::NativeConstruct();</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUPopup__AskTutorial.html#a82d12d8c04c7edc4a1d10b18dadb41ee">Btn_Yes</a>)</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    {</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>        <a class="code hl_variable" href="classUPopup__AskTutorial.html#a82d12d8c04c7edc4a1d10b18dadb41ee">Btn_Yes</a>-&gt;<a class="code hl_variable" href="classUImageButton.html#a2100d61a0d0b04048d687a2fec6cc901">OnButtonClickedEvent</a>.RemoveDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUPopup__AskTutorial.html#ac55371a36a6c8f504f908f59809820c7">UPopup_AskTutorial::OnClickYes</a>);</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        <a class="code hl_variable" href="classUPopup__AskTutorial.html#a82d12d8c04c7edc4a1d10b18dadb41ee">Btn_Yes</a>-&gt;<a class="code hl_variable" href="classUImageButton.html#a2100d61a0d0b04048d687a2fec6cc901">OnButtonClickedEvent</a>.AddDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUPopup__AskTutorial.html#ac55371a36a6c8f504f908f59809820c7">UPopup_AskTutorial::OnClickYes</a>);</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    }</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUPopup__AskTutorial.html#a5ef033845d19fcc15da2ba8c99378561">Btn_Skip</a>)</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    {</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        <a class="code hl_variable" href="classUPopup__AskTutorial.html#a5ef033845d19fcc15da2ba8c99378561">Btn_Skip</a>-&gt;<a class="code hl_variable" href="classUImageButton.html#a2100d61a0d0b04048d687a2fec6cc901">OnButtonClickedEvent</a>.RemoveDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUPopup__AskTutorial.html#a1c5349b5ad9fec212b4f56b21bbcf850">UPopup_AskTutorial::OnClickSkip</a>);</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        <a class="code hl_variable" href="classUPopup__AskTutorial.html#a5ef033845d19fcc15da2ba8c99378561">Btn_Skip</a>-&gt;<a class="code hl_variable" href="classUImageButton.html#a2100d61a0d0b04048d687a2fec6cc901">OnButtonClickedEvent</a>.AddDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUPopup__AskTutorial.html#a1c5349b5ad9fec212b4f56b21bbcf850">UPopup_AskTutorial::OnClickSkip</a>);</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    }</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>}</div>
 </div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
-<div class="foldopen" id="foldopen00028" data-start="{" data-end="}">
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="classUPopup__AskTutorial.html#ac55371a36a6c8f504f908f59809820c7">   28</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUPopup__AskTutorial.html#ac55371a36a6c8f504f908f59809820c7">UPopup_AskTutorial::OnClickYes</a>()</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>{</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="keywordflow">if</span> (<a class="code hl_class" href="classUPopupManager.html">UPopupManager</a>* PopupMgr = UPopupManager::Get(GetWorld()))</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    {</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        PopupMgr-&gt;HideCurrentPopup();</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    }</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="keywordflow">if</span> (APlayerController* PC = GetWorld()-&gt;GetFirstPlayerController())</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    {</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        <span class="keywordflow">if</span> (<a class="code hl_class" href="classAPlayerControl.html">APlayerControl</a>* PlayerControl = Cast&lt;APlayerControl&gt;(PC))</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        {</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>            PlayerControl-&gt;StartTutorialManually();</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        }</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    }</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>}</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="foldopen" id="foldopen00029" data-start="{" data-end="}">
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="classUPopup__AskTutorial.html#ac55371a36a6c8f504f908f59809820c7">   29</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUPopup__AskTutorial.html#ac55371a36a6c8f504f908f59809820c7">UPopup_AskTutorial::OnClickYes</a>()</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>{</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="keywordflow">if</span> (<a class="code hl_class" href="classUPopupManager.html">UPopupManager</a>* PopupMgr = UPopupManager::Get(GetWorld()))</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    {</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        PopupMgr-&gt;HideCurrentPopup();</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    }</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="keywordflow">if</span> (APlayerController* PC = GetWorld()-&gt;GetFirstPlayerController())</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    {</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        <span class="keywordflow">if</span> (<a class="code hl_class" href="classAPlayerControl.html">APlayerControl</a>* PlayerControl = Cast&lt;APlayerControl&gt;(PC))</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        {</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>            PlayerControl-&gt;StartTutorialManually();</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        }</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    }</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>}</div>
 </div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
-<div class="foldopen" id="foldopen00044" data-start="{" data-end="}">
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="classUPopup__AskTutorial.html#a1c5349b5ad9fec212b4f56b21bbcf850">   44</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUPopup__AskTutorial.html#a1c5349b5ad9fec212b4f56b21bbcf850">UPopup_AskTutorial::OnClickSkip</a>()</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>{</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="comment">// 세이브 시스템에 여부 저장</span></div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keyword">const</span> int32 UserId = <a class="code hl_function" href="classULingoGameHelper.html#a128a70c4f0e61cb82b17a1927a2c6709">ULingoGameHelper::GetUserId</a>(GetWorld());</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="keyword">const</span> FString ConfigSection = TEXT(<span class="stringliteral">&quot;/Script/Onepiece.TutorialSystem&quot;</span>);</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="keyword">const</span> FString ConfigKey = FString::Printf(TEXT(<span class="stringliteral">&quot;TutorialCompleted_%d&quot;</span>), UserId);</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="foldopen" id="foldopen00045" data-start="{" data-end="}">
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="classUPopup__AskTutorial.html#a1c5349b5ad9fec212b4f56b21bbcf850">   45</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUPopup__AskTutorial.html#a1c5349b5ad9fec212b4f56b21bbcf850">UPopup_AskTutorial::OnClickSkip</a>()</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>{</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="comment">// 세이브 시스템에 여부 저장</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="keyword">const</span> int32 UserId = <a class="code hl_function" href="classULingoGameHelper.html#a128a70c4f0e61cb82b17a1927a2c6709">ULingoGameHelper::GetUserId</a>(GetWorld());</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <a class="code hl_function" href="classUConfigLibrary.html#af8b092027e08fca96be96797d6419f98">UConfigLibrary::SetUserBool</a>(UserId, TEXT(<span class="stringliteral">&quot;TutorialCompleted&quot;</span>), <span class="keyword">true</span>);</div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    GConfig-&gt;SetString(</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>                *ConfigSection,</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>                *ConfigKey,</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>                TEXT(<span class="stringliteral">&quot;true&quot;</span>),</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>                GGameUserSettingsIni</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>            );</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    GConfig-&gt;Flush(<span class="keyword">false</span>, GGameUserSettingsIni);</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    </div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="comment">// 일단 그냥 창 닫히게</span></div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="keywordflow">if</span> (<a class="code hl_class" href="classUPopupManager.html">UPopupManager</a>* PopupMgr = UPopupManager::Get(GetWorld()))</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    {</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        PopupMgr-&gt;HideCurrentPopup();</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    }</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>}</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="comment">// 일단 그냥 창 닫히게</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="keywordflow">if</span> (<a class="code hl_class" href="classUPopupManager.html">UPopupManager</a>* PopupMgr = UPopupManager::Get(GetWorld()))</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    {</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        PopupMgr-&gt;HideCurrentPopup();</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    }</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>}</div>
 </div>
 <div class="ttc" id="aAPlayerControl_8h_html"><div class="ttname"><a href="APlayerControl_8h.html">APlayerControl.h</a></div><div class="ttdoc">APlayerControl 선언에 대한 Doxygen 주석을 제공합니다.</div></div>
 <div class="ttc" id="aPopup__AskTutorial_8h_html"><div class="ttname"><a href="Popup__AskTutorial_8h.html">Popup_AskTutorial.h</a></div></div>
+<div class="ttc" id="aUConfigLibrary_8h_html"><div class="ttname"><a href="UConfigLibrary_8h.html">UConfigLibrary.h</a></div><div class="ttdoc">GConfig 래퍼 설정 관리 시스템</div></div>
 <div class="ttc" id="aUImageButton_8h_html"><div class="ttname"><a href="UImageButton_8h.html">UImageButton.h</a></div></div>
 <div class="ttc" id="aULingoGameHelper_8h_html"><div class="ttname"><a href="ULingoGameHelper_8h.html">ULingoGameHelper.h</a></div></div>
 <div class="ttc" id="aUPopupManager_8h_html"><div class="ttname"><a href="UPopupManager_8h.html">UPopupManager.h</a></div></div>
 <div class="ttc" id="aclassAPlayerControl_html"><div class="ttname"><a href="classAPlayerControl.html">APlayerControl</a></div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8h_source.html#l00018">APlayerControl.h:19</a></div></div>
+<div class="ttc" id="aclassUConfigLibrary_html_af8b092027e08fca96be96797d6419f98"><div class="ttname"><a href="classUConfigLibrary.html#af8b092027e08fca96be96797d6419f98">UConfigLibrary::SetUserBool</a></div><div class="ttdeci">static void SetUserBool(int32 UserId, const FString &amp;Key, bool bValue, bool bAutoSave=true)</div><div class="ttdoc">유저별 불린 설정 저장</div><div class="ttdef"><b>Definition</b> <a href="UConfigLibrary_8cpp_source.html#l00261">UConfigLibrary.cpp:261</a></div></div>
 <div class="ttc" id="aclassUImageButton_html_a2100d61a0d0b04048d687a2fec6cc901"><div class="ttname"><a href="classUImageButton.html#a2100d61a0d0b04048d687a2fec6cc901">UImageButton::OnButtonClickedEvent</a></div><div class="ttdeci">FOnImageButtonClickedEvent OnButtonClickedEvent</div><div class="ttdoc">버튼 클릭 시 발생하는 이벤트</div><div class="ttdef"><b>Definition</b> <a href="UImageButton_8h_source.html#l00060">UImageButton.h:60</a></div></div>
 <div class="ttc" id="aclassULingoGameHelper_html_a128a70c4f0e61cb82b17a1927a2c6709"><div class="ttname"><a href="classULingoGameHelper.html#a128a70c4f0e61cb82b17a1927a2c6709">ULingoGameHelper::GetUserId</a></div><div class="ttdeci">static int32 GetUserId(const UObject *WorldContextObject)</div><div class="ttdef"><b>Definition</b> <a href="ULingoGameHelper_8cpp_source.html#l00024">ULingoGameHelper.cpp:24</a></div></div>
 <div class="ttc" id="aclassUPopupManager_html"><div class="ttname"><a href="classUPopupManager.html">UPopupManager</a></div><div class="ttdoc">팝업 관리자</div><div class="ttdef"><b>Definition</b> <a href="UPopupManager_8h_source.html#l00030">UPopupManager.h:31</a></div></div>
-<div class="ttc" id="aclassUPopup__AskTutorial_html_a1c5349b5ad9fec212b4f56b21bbcf850"><div class="ttname"><a href="classUPopup__AskTutorial.html#a1c5349b5ad9fec212b4f56b21bbcf850">UPopup_AskTutorial::OnClickSkip</a></div><div class="ttdeci">void OnClickSkip()</div><div class="ttdef"><b>Definition</b> <a href="Popup__AskTutorial_8cpp_source.html#l00044">Popup_AskTutorial.cpp:44</a></div></div>
+<div class="ttc" id="aclassUPopup__AskTutorial_html_a1c5349b5ad9fec212b4f56b21bbcf850"><div class="ttname"><a href="classUPopup__AskTutorial.html#a1c5349b5ad9fec212b4f56b21bbcf850">UPopup_AskTutorial::OnClickSkip</a></div><div class="ttdeci">void OnClickSkip()</div><div class="ttdef"><b>Definition</b> <a href="Popup__AskTutorial_8cpp_source.html#l00045">Popup_AskTutorial.cpp:45</a></div></div>
 <div class="ttc" id="aclassUPopup__AskTutorial_html_a5ef033845d19fcc15da2ba8c99378561"><div class="ttname"><a href="classUPopup__AskTutorial.html#a5ef033845d19fcc15da2ba8c99378561">UPopup_AskTutorial::Btn_Skip</a></div><div class="ttdeci">class UImageButton * Btn_Skip</div><div class="ttdef"><b>Definition</b> <a href="Popup__AskTutorial_8h_source.html#l00027">Popup_AskTutorial.h:27</a></div></div>
 <div class="ttc" id="aclassUPopup__AskTutorial_html_a82d12d8c04c7edc4a1d10b18dadb41ee"><div class="ttname"><a href="classUPopup__AskTutorial.html#a82d12d8c04c7edc4a1d10b18dadb41ee">UPopup_AskTutorial::Btn_Yes</a></div><div class="ttdeci">class UImageButton * Btn_Yes</div><div class="ttdef"><b>Definition</b> <a href="Popup__AskTutorial_8h_source.html#l00023">Popup_AskTutorial.h:23</a></div></div>
-<div class="ttc" id="aclassUPopup__AskTutorial_html_ab57f9a7eeff2db840f7923d04e4f35e9"><div class="ttname"><a href="classUPopup__AskTutorial.html#ab57f9a7eeff2db840f7923d04e4f35e9">UPopup_AskTutorial::NativeConstruct</a></div><div class="ttdeci">virtual void NativeConstruct() override</div><div class="ttdef"><b>Definition</b> <a href="Popup__AskTutorial_8cpp_source.html#l00011">Popup_AskTutorial.cpp:11</a></div></div>
-<div class="ttc" id="aclassUPopup__AskTutorial_html_ac55371a36a6c8f504f908f59809820c7"><div class="ttname"><a href="classUPopup__AskTutorial.html#ac55371a36a6c8f504f908f59809820c7">UPopup_AskTutorial::OnClickYes</a></div><div class="ttdeci">void OnClickYes()</div><div class="ttdef"><b>Definition</b> <a href="Popup__AskTutorial_8cpp_source.html#l00028">Popup_AskTutorial.cpp:28</a></div></div>
+<div class="ttc" id="aclassUPopup__AskTutorial_html_ab57f9a7eeff2db840f7923d04e4f35e9"><div class="ttname"><a href="classUPopup__AskTutorial.html#ab57f9a7eeff2db840f7923d04e4f35e9">UPopup_AskTutorial::NativeConstruct</a></div><div class="ttdeci">virtual void NativeConstruct() override</div><div class="ttdef"><b>Definition</b> <a href="Popup__AskTutorial_8cpp_source.html#l00012">Popup_AskTutorial.cpp:12</a></div></div>
+<div class="ttc" id="aclassUPopup__AskTutorial_html_ac55371a36a6c8f504f908f59809820c7"><div class="ttname"><a href="classUPopup__AskTutorial.html#ac55371a36a6c8f504f908f59809820c7">UPopup_AskTutorial::OnClickYes</a></div><div class="ttdeci">void OnClickYes()</div><div class="ttdef"><b>Definition</b> <a href="Popup__AskTutorial_8cpp_source.html#l00029">Popup_AskTutorial.cpp:29</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_47ae9c23f27029060c39af29b069b73d.html">MessageBox</a></li><li class="navelem"><a class="el" href="dir_2a20a70930e57e30643dc72759837dc0.html">Private</a></li><li class="navelem"><a class="el" href="Popup__AskTutorial_8cpp.html">Popup_AskTutorial.cpp</a></li>
-    <li class="footer">생성시간 : 금 12월 26 2025 11:01:59, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 토 12월 27 2025 04:20:01, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

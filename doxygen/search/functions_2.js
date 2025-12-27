@@ -37,8 +37,8 @@ var searchData=
   ['closedoor_5fimplementation_34',['CloseDoor_Implementation',['../classADoor.html#a3fd0eaa1a7e1e7aca20d64d89f6192f8',1,'ADoor']]],
   ['closedrawwindow_35',['CloseDrawWindow',['../classUDrawingBoardWidget.html#a795b11bfecbc53a377fadf35ad262408',1,'UDrawingBoardWidget']]],
   ['cmd_5finfo_36',['cmd_info',['../classIControllable.html#ad45d954ffa12ec683742f4797bc3a05a',1,'IControllable::Cmd_Info()'],['../classAPlayerActor.html#a145afa6a2e3058f74d9268588cf56ddf',1,'APlayerActor::Cmd_Info()']]],
-  ['cmd_5fjump_37',['cmd_jump',['../classIControllable.html#ac1d95ea53739c16a86f25e3bb2ee926b',1,'IControllable::Cmd_Jump()'],['../classAPlayerActor.html#a4bbf9c7d111a15814b99b4e32a79cfda',1,'APlayerActor::Cmd_Jump()']]],
-  ['cmd_5flook_38',['cmd_look',['../classIControllable.html#a45c2124ac1edc67a18538853d12d30bb',1,'IControllable::Cmd_Look()'],['../classAPlayerActor.html#a21a14eaae23da75b919b848aa87cb535',1,'APlayerActor::Cmd_Look()']]],
+  ['cmd_5fjump_37',['cmd_jump',['../classIControllable.html#ac1d95ea53739c16a86f25e3bb2ee926b',1,'IControllable::Cmd_Jump()'],['../classAPlayerActor.html#a4bbf9c7d111a15814b99b4e32a79cfda',1,'APlayerActor::Cmd_Jump() override']]],
+  ['cmd_5flook_38',['cmd_look',['../classAPlayerActor.html#a21a14eaae23da75b919b848aa87cb535',1,'APlayerActor::Cmd_Look()'],['../classIControllable.html#a45c2124ac1edc67a18538853d12d30bb',1,'IControllable::Cmd_Look(const FVector2D &amp;Axis)=0']]],
   ['cmd_5fmove_39',['cmd_move',['../classIControllable.html#a19f4250db751284d9964c9a494512fa7',1,'IControllable::Cmd_Move()'],['../classAPlayerActor.html#a0db8efea43cc28a694e55d72014642e1',1,'APlayerActor::Cmd_Move(const FVector2D &amp;Axis) override']]],
   ['cmd_5frecordend_40',['cmd_recordend',['../classAPlayerActor.html#a728c9b03094ece6b6313636335f4a6a1',1,'APlayerActor::Cmd_RecordEnd()'],['../classIControllable.html#a8055f9515674a0628221640824ca409e',1,'IControllable::Cmd_RecordEnd()']]],
   ['cmd_5frecordstart_41',['cmd_recordstart',['../classIControllable.html#aae8b02c0a353df4a45b12d05a0bb14de',1,'IControllable::Cmd_RecordStart()'],['../classAPlayerActor.html#ab442f15c0b77fdd38f7a5b7280cf2398',1,'APlayerActor::Cmd_RecordStart() override']]],
@@ -63,5 +63,6 @@ var searchData=
   ['createregiongroup_60',['CreateRegionGroup',['../classULevelSelectItem.html#aa65334bddb3ac593a7ac688f3c4b34bd',1,'ULevelSelectItem']]],
   ['createsoundwavefromwavdata_61',['CreateSoundWaveFromWavData',['../classUVoiceFunctionLibrary.html#a0a42913d3f8f356e575bf9805e6e7af3',1,'UVoiceFunctionLibrary']]],
   ['createtestdata_62',['CreateTestData',['../classAQuestionnaireKiosk.html#ae5d6e0a31a0e264e6c20162ad0f33bc9',1,'AQuestionnaireKiosk']]],
-  ['createtoastwidget_63',['CreateToastWidget',['../classAPlayerActor.html#a2f07dd7eee5e4a05fa2457ca52382f3e',1,'APlayerActor']]]
+  ['createtoastwidget_63',['CreateToastWidget',['../classAPlayerActor.html#a2f07dd7eee5e4a05fa2457ca52382f3e',1,'APlayerActor']]],
+  ['currenttimestamp_64',['CurrentTimestamp',['../structFChatHistoryItem.html#adbd67f8dd38f7b878ca6271528a495f3',1,'FChatHistoryItem']]]
 ];

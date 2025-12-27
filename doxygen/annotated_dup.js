@@ -148,6 +148,7 @@ var annotated_dup =
     [ "UCommonFunctionLibrary", "classUCommonFunctionLibrary.html", "classUCommonFunctionLibrary" ],
     [ "UCompassTargetInterface", "classUCompassTargetInterface.html", null ],
     [ "UCompassWidget", "classUCompassWidget.html", "classUCompassWidget" ],
+    [ "UConfigLibrary", "classUConfigLibrary.html", "classUConfigLibrary" ],
     [ "UControllable", "classUControllable.html", null ],
     [ "UConveryorButtonAnimInstance", "classUConveryorButtonAnimInstance.html", "classUConveryorButtonAnimInstance" ],
     [ "UCustomNetworkSettings", "classUCustomNetworkSettings.html", "classUCustomNetworkSettings" ],

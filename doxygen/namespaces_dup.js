@@ -1,5 +1,9 @@
 var namespaces_dup =
 [
+    [ "ConfigLibraryConstants", "namespaceConfigLibraryConstants.html", [
+      [ "GlobalSection", "namespaceConfigLibraryConstants.html#a0d5858db8cd7608dbc4ad22c6e8b39fd", null ],
+      [ "UserSection", "namespaceConfigLibraryConstants.html#ae621ca13f926f8e8995a22a8ffe49b38", null ]
+    ] ],
     [ "DefineData", "namespaceDefineData.html", [
       [ "AI", "namespaceDefineData.html#ade2334d6b1536c55ed99e75e5a5c0076", null ],
       [ "BotID", "namespaceDefineData.html#aa27e976521e38c0858f3d0437d48a9b0", null ],

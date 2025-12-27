@@ -14,5 +14,6 @@ var searchData=
   ['fluggagedata_11',['fluggagedata',['../structFLuggageData.html#a94ab3651628c52a0cb1974faa720baaf',1,'FLuggageData::FLuggageData()'],['../structFLuggageData.html#a556e510f9f7d165b762a58bcdf2a8ed7',1,'FLuggageData::FLuggageData(const FWordInfo &amp;InWord1, const FWordInfo &amp;InWord2, int32 InSpawnIndex=-1)']]],
   ['flushmessage_12',['FlushMessage',['../classUChatInputBox.html#a7ba44143ce5e97966eec4a9f0c8f2831',1,'UChatInputBox']]],
   ['focusinput_13',['FocusInput',['../classUChatWidget.html#a6a91842ffdbd014a816856f2c78d0530',1,'UChatWidget']]],
-  ['fresultstatdata_14',['FResultStatData',['../structFResultStatData.html#a780624a8affe5aa938a7b75ee35cb4de',1,'FResultStatData']]]
+  ['fresultstatdata_14',['FResultStatData',['../structFResultStatData.html#a780624a8affe5aa938a7b75ee35cb4de',1,'FResultStatData']]],
+  ['fromjson_15',['FromJson',['../structFChatHistoryItem.html#a3c8e1341ac2e15e1578e5eb901239758',1,'FChatHistoryItem']]]
 ];

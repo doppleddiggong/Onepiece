@@ -173,6 +173,7 @@ var hierarchy =
     ] ],
     [ "UBlueprintFunctionLibrary", null, [
       [ "UCommonFunctionLibrary", "classUCommonFunctionLibrary.html", null ],
+      [ "UConfigLibrary", "classUConfigLibrary.html", null ],
       [ "UEaseFunctionLibrary", "classUEaseFunctionLibrary.html", null ],
       [ "UGameFunctionLibrary", "classUGameFunctionLibrary.html", null ],
       [ "ULingoGameHelper", "classULingoGameHelper.html", null ],
