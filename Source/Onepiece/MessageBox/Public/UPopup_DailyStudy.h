@@ -19,6 +19,9 @@ namespace DailyStudyConfig
 	/** 한 세션당 문제 개수 (조정 가능) */
 	static constexpr int32 QUESTIONS_PER_SESSION = 5;
 
+	/** 생각할 시간 (초) */
+	static constexpr float THINK_TIME = 5.0f;
+	
 	static constexpr int32 MAX_CATEGORY = 24;
 
 }
@@ -56,7 +59,6 @@ public:
 	
 	void OnResponseSpeakingsJudges(const FResponseSpeakingJudes& JudgeResult);
 
-
 private:
 	/** 10개 랜덤 단어 생성 */
 	void GenerateQuestions();
@@ -72,10 +74,7 @@ private:
 	/** 현재 질문 UI 업데이트 */
 	void LoadCurQuestion();
 
-	FDailyStudyResult CalculateResults();
-
-	/** Progress Bar 업데이트 */
-	void RefreshProgressBar();
+	// FDailyStudyResult CalculateResults();
 
 	/** 다음 질문으로 이동 */
 	void MoveToNextQuestion();
@@ -83,12 +82,28 @@ private:
 	/** 닫기 버튼 클릭 */
 	UFUNCTION()
 	void OnClickClose();
+
+	UFUNCTION()
+	void OnAudioCapture(bool bIsRecording);
+
+	UFUNCTION()
+	void OnResponseListenAudio(FResponseListenAudio& Response, bool bWasSuccessful);
+
+	void StartThinkTimer();
+	void UpdateThinkTimer();
+	void OnThinkTimeFinished();
+	
+	void StartCountDown(const int InCountDownValue);
+	void UpdateCountDown();
 	
 protected:
 	// ===================================================================
 	// UI Widgets (BindWidget)
 	// ===================================================================
 
+	UPROPERTY(meta = (BindWidget))
+	TObjectPtr<class UTextBlock> Txt_CurScore;
+	
 	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<class UTextBlock> Txt_BestScore;
 
@@ -98,19 +113,24 @@ protected:
 
 	/** 진행 상황 ("1/10") */
 	UPROPERTY(meta = (BindWidget))
-	TObjectPtr<class UTextBlock> Txt_Progress;
-
-	/** 전체 진행률 표시 */
-	UPROPERTY(meta = (BindWidget))
-	TObjectPtr<class UProgressBar> ProgressBar;
+	TObjectPtr<class UTextBlock> Txt_QuestionProgress;
 
 	/** 팝업 닫기 (우측 상단) */
 	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<class UTextureButton> Btn_Close;
 
 	UPROPERTY(meta = (BindWidget))
-	TObjectPtr<class UVoiceRecording> Widget_VoiceRecording;
+	TObjectPtr<class UCircularProgressBar> ProgressBar_RemainTime;
 
+	UPROPERTY(meta = (BindWidget))
+	TObjectPtr<class UTextBlock> Txt_RemainTime;
+
+	UPROPERTY(meta = (BindWidget))
+	TObjectPtr<class UBorder> Border_CorrectAnswer;
+	
+	UPROPERTY(meta = (BindWidget))
+	TObjectPtr<class UTextBlock> Txt_CorrectAnswer;
+	
 private:
 	// ===================================================================
 	// Member Variables
@@ -122,7 +142,15 @@ private:
 	
 	/** 현재 질문 인덱스 (0-based) */
 	int32 CurIndex = 0;
+	
+	int32 CurrentScore = 0;
 
 	/** 다음 문제 이동 타이머 */
 	FTimerHandle NextTimerHandle;
+	FTimerHandle ThinkingTimerHandle;
+	FTimerHandle CountdownTimerHandle;
+
+	int32 CountDownValue = 0;
+	float RemainingThinkTime = 0.f;
+	FString CurrentKorAnswer;
 };

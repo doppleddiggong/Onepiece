@@ -40,6 +40,7 @@
 #include "UPopup_SpeakResult.h"
 #include "UConfigLibrary.h"
 #include "UChatHistorySystem.h"
+#include "UPopup_DailyStudy.h"
 #include "UPopup_History.h"
 #include "UPopup_HowToPlay.h"
 #include "Onepiece/Onepiece.h"
@@ -311,11 +312,15 @@ void APlayerControl::OnChat(const FInputActionValue& Value)
 
 void APlayerControl::OnHistory(const FInputActionValue& Value)
 {
-	// ShowPopupAs 템플릿 함수를 사용하여 History 팝업 표시
-	if (auto Popup = UPopupManager::ShowPopupAs<UPopup_History>(GetWorld(), EPopupType::History))
+	if (auto Popup = UPopupManager::ShowPopupAs<UPopup_DailyStudy>(GetWorld(), EPopupType::DailyStudy))
 	{
 		Popup->InitPopup();
 	}
+
+	// if (auto Popup = UPopupManager::ShowPopupAs<UPopup_History>(GetWorld(), EPopupType::History))
+	// {
+	// 	Popup->InitPopup();
+	// }
 }
 
 
