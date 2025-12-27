@@ -122,7 +122,7 @@ void UCompassWidget::SetMarkerPosition(UImage* InMarker, float TargetRotation, b
 	UCanvasPanelSlot* MarkerSlot = Cast<UCanvasPanelSlot>(InMarker->Slot);
 	if (MarkerSlot)
 	{
-		FVector2D FinalPosition;
+		FVector2D FinalPosition = FVector2D::ZeroVector;
 
 		if (!bSideLock)
 		{
