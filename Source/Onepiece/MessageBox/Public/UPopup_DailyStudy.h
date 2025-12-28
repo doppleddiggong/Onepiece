@@ -7,6 +7,7 @@
 #include "FDailyStudy.h"
 #include "EWordType.h"
 #include "NetworkData.h"
+#include "UCountDown.h"
 #include "UPopup_DailyStudy.generated.h"
 
 /**
@@ -24,6 +25,7 @@ namespace DailyStudyConfig
 	
 	static constexpr int32 MAX_CATEGORY = 24;
 
+	static constexpr float NEXT_QUESTION = 1.5f;
 }
 
 // ========================================
@@ -79,6 +81,8 @@ private:
 	/** 다음 질문으로 이동 */
 	void MoveToNextQuestion();
 
+	void ShowCorrectData();
+	
 	/** 닫기 버튼 클릭 */
 	UFUNCTION()
 	void OnClickClose();
@@ -92,44 +96,51 @@ private:
 	void StartThinkTimer();
 	void UpdateThinkTimer();
 	void OnThinkTimeFinished();
-	
-	void StartCountDown(const int InCountDownValue);
-	void UpdateCountDown();
+
+	UFUNCTION()
+	void OnCountDownFinished();
 	
 protected:
-	// ===================================================================
-	// UI Widgets (BindWidget)
-	// ===================================================================
-
 	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<class UTextBlock> Txt_CurScore;
 	
 	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<class UTextBlock> Txt_BestScore;
 
-	/** 단어 이미지 표시 */
-	UPROPERTY(meta = (BindWidget))
-	TObjectPtr<class UImage> Img_Display;
-
-	/** 진행 상황 ("1/10") */
-	UPROPERTY(meta = (BindWidget))
-	TObjectPtr<class UTextBlock> Txt_QuestionProgress;
-
-	/** 팝업 닫기 (우측 상단) */
 	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<class UTextureButton> Btn_Close;
 
+
+	
 	UPROPERTY(meta = (BindWidget))
-	TObjectPtr<class UCircularProgressBar> ProgressBar_RemainTime;
+	TObjectPtr<class UCanvasPanel> Canvas_Question;
+
+	UPROPERTY(meta = (BindWidget))
+	TObjectPtr<class UTextBlock> Txt_Question;
+	
+	UPROPERTY(meta = (BindWidget))
+	TObjectPtr<class UTextBlock> Txt_QuestionProgress;
 
 	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<class UTextBlock> Txt_RemainTime;
 
 	UPROPERTY(meta = (BindWidget))
-	TObjectPtr<class UBorder> Border_CorrectAnswer;
+	TObjectPtr<class UCircularProgressBar> ProgressBar_RemainTime;
+
+
+
+	UPROPERTY(meta = (BindWidget))
+	TObjectPtr<class UCanvasPanel> Canvas_Correct;
+
+	UPROPERTY(meta = (BindWidget))
+	TObjectPtr<class UImage> Img_Correct;
+
+	UPROPERTY(meta = (BindWidget))
+	TObjectPtr<class UTextBlock> Txt_Correct;
+
 	
 	UPROPERTY(meta = (BindWidget))
-	TObjectPtr<class UTextBlock> Txt_CorrectAnswer;
+	TObjectPtr<class UCountDown> CountDown_Widget;
 	
 private:
 	// ===================================================================
@@ -144,13 +155,13 @@ private:
 	int32 CurIndex = 0;
 	
 	int32 CurrentScore = 0;
+	int32 BestScore = 0;
 
 	/** 다음 문제 이동 타이머 */
 	FTimerHandle NextTimerHandle;
 	FTimerHandle ThinkingTimerHandle;
-	FTimerHandle CountdownTimerHandle;
 
-	int32 CountDownValue = 0;
 	float RemainingThinkTime = 0.f;
-	FString CurrentKorAnswer;
+
+	FDailyStudyWordItem CorrectData;
 };

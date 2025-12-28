@@ -12,11 +12,13 @@
 #include "UCircularProgressBar.h"
 #include "UKLingoNetworkSystem.h"
 #include "UDialogManager.h"
+#include "UGameSoundManager.h"
 
 #include "Components/Image.h"
 #include "Components/TextBlock.h"
 #include "UTextureButton.h"
 #include "Components/Border.h"
+#include "Components/CanvasPanel.h"
 #include "Misc/FileHelper.h"
 #include "Misc/Paths.h"
 
@@ -36,7 +38,6 @@ void UPopup_DailyStudy::NativeDestruct()
 	{
 		GetWorld()->GetTimerManager().ClearTimer(NextTimerHandle);
 		GetWorld()->GetTimerManager().ClearTimer(ThinkingTimerHandle);
-		GetWorld()->GetTimerManager().ClearTimer(CountdownTimerHandle);
 	}
 }
 
@@ -53,12 +54,21 @@ void UPopup_DailyStudy::InitPopup()
 		DM->OnAudioCapture.RemoveDynamic(this, &UPopup_DailyStudy::OnAudioCapture);
 		DM->OnAudioCapture.AddDynamic(this, &UPopup_DailyStudy::OnAudioCapture);
 	}
-	
+
+	if (CountDown_Widget)
+	{
+		CountDown_Widget->OnCountDownFinished.RemoveDynamic(this, &UPopup_DailyStudy::OnCountDownFinished);
+		CountDown_Widget->OnCountDownFinished.AddDynamic(this, &UPopup_DailyStudy::OnCountDownFinished);
+	}
+
 	// 초기화
 	CurIndex = 0;
 	AnswerList.Empty();
 	CurrentScore = 0;
 
+	Canvas_Correct->SetVisibility(ESlateVisibility::Hidden);
+	Canvas_Question->SetVisibility(ESlateVisibility::Hidden);
+	
 	Txt_CurScore->SetText(FText::FromString(FString::Printf(TEXT("Score : %d"), CurrentScore)));
 
 	// 일일 최고 득점 로드 및 표시
@@ -67,25 +77,89 @@ void UPopup_DailyStudy::InitPopup()
 	// 10개 랜덤 단어 생성
 	GenerateQuestions();
 
-	StartCountDown(3);
+	// 카운트다운 시작
+	CountDown_Widget->StartCountDown(3);
 }
 
 void UPopup_DailyStudy::GenerateQuestions()
 {
 	QuestionList.Empty();
 
+	UGameDataManager* DataManager = UGameDataManager::Get(GetWorld());
+	if (!DataManager)
+	{
+		PRINTLOG(TEXT("[DailyStudy] Error: GameDataManager not found"));
+		return;
+	}
+
+	// 각 타입별 사용 가능한 key 리스트 가져오기
+	TArray<int32> ReadDataKeys = DataManager->GetAllReadDataKeys();    // Animal/Food용
+	TArray<int32> ListenDataKeys = DataManager->GetAllListenDataKeys(); // Region용
+
+	// 데이터가 충분한지 확인
+	if (ReadDataKeys.Num() == 0 && ListenDataKeys.Num() == 0)
+	{
+		PRINTLOG(TEXT("[DailyStudy] Error: No data available for questions"));
+		return;
+	}
+
+	// 중복 방지를 위해 이미 사용한 항목 추적
+	TSet<TPair<EWordType, int32>> UsedItems;
+
+	// 필요한 문제 개수만큼 생성
 	for (int32 i = 0; i < DailyStudyConfig::QUESTIONS_PER_SESSION; ++i)
 	{
-		EWordType RandomType = static_cast<EWordType>( FMath::RandRange(0, static_cast<int32>(EWordType::Food)));
-		int32 MaxCode = DailyStudyConfig::MAX_CATEGORY;
-		int32 RandomCode = FMath::RandRange(0, MaxCode - 1);
+		// 사용 가능한 타입 리스트 구성
+		TArray<EWordType> AvailableTypes;
+		if (ReadDataKeys.Num() > 0) AvailableTypes.Add(EWordType::Animal);
+		if (ListenDataKeys.Num() > 0) AvailableTypes.Add(EWordType::Region);
+
+		if (AvailableTypes.Num() == 0)
+		{
+			PRINTLOG(TEXT("[DailyStudy] Warning: Not enough data to generate %d questions, only %d generated"),
+				DailyStudyConfig::QUESTIONS_PER_SESSION, i);
+			break;
+		}
+
+		// 랜덤 타입 선택
+		EWordType RandomType = AvailableTypes[FMath::RandRange(0, AvailableTypes.Num() - 1)];
+
+		// 해당 타입에서 랜덤 key 선택
+		int32 RandomKey = -1;
+		if (RandomType == EWordType::Animal || RandomType == EWordType::Food)
+		{
+			if (ReadDataKeys.Num() > 0)
+			{
+				int32 RandomIndex = FMath::RandRange(0, ReadDataKeys.Num() - 1);
+				RandomKey = ReadDataKeys[RandomIndex];
+				ReadDataKeys.RemoveAt(RandomIndex); // 중복 방지
+			}
+		}
+		else if (RandomType == EWordType::Region)
+		{
+			if (ListenDataKeys.Num() > 0)
+			{
+				int32 RandomIndex = FMath::RandRange(0, ListenDataKeys.Num() - 1);
+				RandomKey = ListenDataKeys[RandomIndex];
+				ListenDataKeys.RemoveAt(RandomIndex); // 중복 방지
+			}
+		}
+
+		// 유효한 key를 찾지 못한 경우
+		if (RandomKey == -1)
+		{
+			PRINTLOG(TEXT("[DailyStudy] Warning: Failed to find valid key for type %d"), static_cast<int32>(RandomType));
+			continue;
+		}
 
 		// 데이터 로드
 		FDailyStudyWordItem WordItem;
-		LoadWordData(RandomType, RandomCode, WordItem);
+		LoadWordData(RandomType, RandomKey, WordItem);
 
 		QuestionList.Add(WordItem);
 	}
+
+	PRINTLOG(TEXT("[DailyStudy] Generated %d questions"), QuestionList.Num());
 }
 
 void UPopup_DailyStudy::LoadWordData(EWordType Type, int32 Code, FDailyStudyWordItem& OutItem)
@@ -100,9 +174,8 @@ void UPopup_DailyStudy::LoadWordData(EWordType Type, int32 Code, FDailyStudyWord
 		return;
 	}
 
-	if (Type == EWordType::Animal || Type == EWordType::Food)
+	if (Type == EWordType::Animal)
 	{
-		// Read 계열 데이터 사용
 		FReadData ReadData;
 		if (DataManager->GetReadData(Code, ReadData))
 		{
@@ -111,15 +184,14 @@ void UPopup_DailyStudy::LoadWordData(EWordType Type, int32 Code, FDailyStudyWord
 			OutItem.Texture = ReadData.Texture;
 		}
 	}
-	else if (Type == EWordType::Color)
+	else if (Type == EWordType::Food)
 	{
-		// Color 데이터 사용
-		FColorData ColorData;
-		if (DataManager->GetColorData(Code, ColorData))
+		FReadData ReadData;
+		if (DataManager->GetReadData(Code, ReadData))
 		{
-			OutItem.Eng = ColorData.Eng;
-			OutItem.Kor = ColorData.Desc;
-			// Color는 이미지 대신 색상 표시
+			OutItem.Eng = ReadData.Eng;
+			OutItem.Kor = ReadData.Word;
+			OutItem.Texture = ReadData.Texture;
 		}
 	}
 	else if (Type == EWordType::Region)
@@ -141,7 +213,7 @@ void UPopup_DailyStudy::InitBestScore()
 	FString Today = FDateTime::Now().ToString(TEXT("%Y-%m-%d"));
 	FString BestScoreDate = UConfigLibrary::GetUserString(UserId, TEXT("DailyStudyBestScoreDate"), TEXT(""));
 
-	int32 BestScore = 0;
+	BestScore = 0;
 	if (BestScoreDate == Today)
 	{
 		// 오늘의 최고 점수 로드
@@ -199,22 +271,10 @@ void UPopup_DailyStudy::LoadCurQuestion()
 		return;
 	}
 
-	const FDailyStudyWordItem& WordData = QuestionList[CurIndex];
+	CorrectData = QuestionList[CurIndex];
 
-	CurrentKorAnswer = WordData.Kor;
+	Txt_Question->SetText(FText::FromString(CorrectData.Kor));
 	
-	// 이미지 로드
-	UTexture2D* LoadedTexture = nullptr;
-	if (WordData.Texture.IsValid())
-		LoadedTexture = WordData.Texture.Get();
-	else if (!WordData.Texture.IsNull())
-		LoadedTexture = WordData.Texture.LoadSynchronous();
-
-	FSlateBrush Brush;
-	Brush.SetResourceObject(LoadedTexture);
-	Brush.ImageSize = FVector2D::ZeroVector; // 핵심
-	Img_Display->SetBrush(Brush);
-
 	// 진행 상황 업데이트
 	Txt_QuestionProgress->SetText(FText::FromString(
 		FString::Printf(TEXT("%02d/%02d"),
@@ -222,64 +282,6 @@ void UPopup_DailyStudy::LoadCurQuestion()
 			QuestionList.Num())));
 
 	StartThinkTimer();
-}
-
-
-// FDailyStudyResult UPopup_DailyStudy::CalculateResults()
-// {
-// 	FDailyStudyResult Summary;
-//
-// 	int32 TotalGrammarScore = 0;
-// 	int32 TotalContextScore = 0;
-// 	int32 TotalFinalScore = 0;
-//
-// 	for (const FDailyStudyAnswer& Answer : AnswerList)
-// 	{
-// 		if (Answer.bCompleted)
-// 		{
-// 			TotalGrammarScore += Answer.JudgeResult.grammar_score;
-// 			TotalContextScore += Answer.JudgeResult.context_score;
-// 			TotalFinalScore += Answer.JudgeResult.final_overall_score;
-// 			Summary.CompletedCount++;
-// 		}
-// 		else if (Answer.bSkipped)
-// 		{
-// 			Summary.SkippedCount++;
-// 		}
-// 	}
-//
-// 	Summary.TotalCount = AnswerList.Num();
-//
-// 	if (Summary.CompletedCount > 0)
-// 	{
-// 		Summary.AvgGrammarScore = TotalGrammarScore / Summary.CompletedCount;
-// 		Summary.AvgContextScore = TotalContextScore / Summary.CompletedCount;
-// 		Summary.AvgFinalScore = TotalFinalScore / Summary.CompletedCount;
-// 	}
-//
-// 	return Summary;
-// }
-
-void UPopup_DailyStudy::MoveToNextQuestion()
-{
-	Border_CorrectAnswer->SetVisibility(ESlateVisibility::Hidden);
-
-	CurIndex++;
-
-	if (CurIndex < QuestionList.Num())
-	{
-		LoadCurQuestion();
-	}
-	else
-	{
-		OnClickClose();
-
-		// auto Result = CalculateResults();
-		
-		this->SaveProgress(CurrentScore);
-		
-		// ShowResultPopup();
-	}
 }
 
 void UPopup_DailyStudy::OnClickClose()
@@ -319,7 +321,7 @@ void UPopup_DailyStudy::OnResponseSpeakingsJudges(const FResponseSpeakingJudes& 
 	// Request TTS for the Korean answer
 	if (UKLingoNetworkSystem* NetworkSystem = UKLingoNetworkSystem::Get(GetWorld()))
 	{
-		NetworkSystem->RequestListenAudio(CurrentKorAnswer, FResponseListenAudioDelegate::CreateUObject(this, &UPopup_DailyStudy::OnResponseListenAudio));
+		NetworkSystem->RequestListenAudio(CorrectData.Kor, FResponseListenAudioDelegate::CreateUObject(this, &UPopup_DailyStudy::OnResponseListenAudio));
 	}
 }
 
@@ -345,15 +347,8 @@ void UPopup_DailyStudy::UpdateThinkTimer()
 		OnThinkTimeFinished();
 	}
 
-	if (ProgressBar_RemainTime)
-	{
-		ProgressBar_RemainTime->SetPercent(RemainingThinkTime / DailyStudyConfig::THINK_TIME);
-	}
-	
-	if (Txt_RemainTime)
-	{
-		Txt_RemainTime->SetText(FText::FromString(FString::Printf(TEXT("%.1f"), RemainingThinkTime)));
-	}
+	ProgressBar_RemainTime->SetPercent(RemainingThinkTime / DailyStudyConfig::THINK_TIME);
+	Txt_RemainTime->SetText(FText::FromString(FString::Printf(TEXT("%.1f"), RemainingThinkTime)));
 }
 
 void UPopup_DailyStudy::OnThinkTimeFinished()
@@ -370,21 +365,15 @@ void UPopup_DailyStudy::OnThinkTimeFinished()
 		AnswerList.Add(Answer);
 	}
 	
-	MoveToNextQuestion();
+	if (UKLingoNetworkSystem* NetworkSystem = UKLingoNetworkSystem::Get(GetWorld()))
+		NetworkSystem->RequestListenAudio(CorrectData.Kor, FResponseListenAudioDelegate::CreateUObject(this, &UPopup_DailyStudy::OnResponseListenAudio));
 }
 
 void UPopup_DailyStudy::OnAudioCapture(bool bIsRecording)
 {
 	if (bIsRecording)
 	{
-		// Stop the thinking timer
 		GetWorld()->GetTimerManager().ClearTimer(ThinkingTimerHandle);
-		
-		if (ProgressBar_RemainTime)
-			ProgressBar_RemainTime->SetPercent(0.0f);
-		
-		if (Txt_RemainTime)
-			Txt_RemainTime->SetText(FText::FromString(TEXT("")));
 	}
 }
 
@@ -392,49 +381,66 @@ void UPopup_DailyStudy::OnResponseListenAudio(FResponseListenAudio& ResponseData
 {
 	if (bWasSuccessful)
 	{
-		if (UDialogManager* DM = UDialogManager::Get(GetWorld()))
-		{
-			Border_CorrectAnswer->SetVisibility(ESlateVisibility::Visible);
-			Txt_CorrectAnswer->SetText(FText::FromString(CurrentKorAnswer));
-		}
+		ShowCorrectData();
 
+		if ( auto DM = UDialogManager::Get(GetWorld()))
+			DM->HideToastImmediately();
+		
 		if (auto PlayerActor = ULingoGameHelper::GetPlayerActor(this))
 		{
 			PlayerActor->PlayTTSAudio(ResponseData.audio_base64);
 
-			GetWorld()->GetTimerManager().SetTimer(NextTimerHandle, this, &UPopup_DailyStudy::MoveToNextQuestion, 1.0f, false);
+			GetWorld()->GetTimerManager().SetTimer(NextTimerHandle, this, &UPopup_DailyStudy::MoveToNextQuestion, DailyStudyConfig::NEXT_QUESTION, false);
 		}
 	}
 	else
 	{
-		GetWorld()->GetTimerManager().SetTimer(NextTimerHandle, this, &UPopup_DailyStudy::MoveToNextQuestion, 1.0f, false);
+		GetWorld()->GetTimerManager().SetTimer(NextTimerHandle, this, &UPopup_DailyStudy::MoveToNextQuestion, DailyStudyConfig::NEXT_QUESTION, false);
 	}
 }
 
-void UPopup_DailyStudy::StartCountDown(const int InCountDownValue)
+void UPopup_DailyStudy::ShowCorrectData()
 {
-	this->CountDownValue = InCountDownValue;
+	Canvas_Correct->SetVisibility(ESlateVisibility::Visible);
+		
+	Txt_Correct->SetText(FText::FromString(CorrectData.Eng));
 
-	Border_CorrectAnswer->SetVisibility(ESlateVisibility::Visible);
-	Txt_CorrectAnswer->SetText(FText::AsNumber(CountDownValue));
-
-	GetWorld()->GetTimerManager().SetTimer(CountdownTimerHandle, this, &UPopup_DailyStudy::UpdateCountDown, 1.0f, true);
+	FSlateBrush Brush;
+	Brush.SetResourceObject(CorrectData.LoadedTexture());
+	Brush.ImageSize = FVector2D::ZeroVector;
+	Img_Correct->SetBrush(Brush);
 }
 
-void UPopup_DailyStudy::UpdateCountDown()
+void UPopup_DailyStudy::OnCountDownFinished()
 {
-	CountDownValue--;
+	Canvas_Question->SetVisibility(ESlateVisibility::Visible);
 
-	if (CountDownValue > 0)
+	UGameSoundManager::Get(GetWorld())->PlaySound2D(EGameSoundType::Speak_the_Word_in_korean);
+	
+	LoadCurQuestion();
+}
+
+void UPopup_DailyStudy::MoveToNextQuestion()
+{
+	Canvas_Correct->SetVisibility(ESlateVisibility::Hidden);
+
+	CurIndex++;
+
+	if (CurIndex < QuestionList.Num())
 	{
-		Txt_CorrectAnswer->SetText(FText::AsNumber(CountDownValue));
+		LoadCurQuestion();
 	}
 	else
 	{
-		GetWorld()->GetTimerManager().ClearTimer(CountdownTimerHandle);
+		OnClickClose();
 
-		Border_CorrectAnswer->SetVisibility(ESlateVisibility::Hidden);
+		this->SaveProgress(CurrentScore);
 
-		LoadCurQuestion();
+		// 결과 메시지 구성
+		FString ResultMessage = FString::Printf(TEXT("Score: %d\nBest: %d"), CurrentScore, BestScore);
+		
+		UPopupManager::Get(GetWorld())->ShowMsgBox(TEXT("Result"), ResultMessage,
+			EMsgBoxType::OK,
+			FOnMsgBoxOkDelegate::CreateUObject(this, &UPopup_DailyStudy::OnClickClose));
 	}
 }

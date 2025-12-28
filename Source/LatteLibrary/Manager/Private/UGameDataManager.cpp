@@ -325,7 +325,7 @@ bool UGameDataManager::GetColorData(int32 Index, FColorData& Out) const
 TArray<FColorData> UGameDataManager::GetColorDataByLevel(int32 Level) const
 {
     TArray<FColorData> Result;
-    
+
     if (!bLoadColorData)
         return Result;
 
@@ -338,6 +338,17 @@ TArray<FColorData> UGameDataManager::GetColorDataByLevel(int32 Level) const
     }
 
     return Result;
+}
+
+TArray<int32> UGameDataManager::GetAllColorDataKeys() const
+{
+    TArray<int32> Keys;
+
+    if (!bLoadColorData)
+        return Keys;
+
+    ColorDataCache.GetKeys(Keys);
+    return Keys;
 }
 #pragma endregion COLOR_DATA
 
@@ -600,6 +611,17 @@ TArray<FListenData> UGameDataManager::GetListenDataByCategory(const FString& Cat
 
     return Result;
 }
+
+TArray<int32> UGameDataManager::GetAllListenDataKeys() const
+{
+    TArray<int32> Keys;
+
+    if (!bLoadListenData)
+        return Keys;
+
+    ListenDataCache.GetKeys(Keys);
+    return Keys;
+}
 #pragma endregion LISTEN_DATA
 
 #pragma region READ_DATA
@@ -664,6 +686,17 @@ TArray<FReadData> UGameDataManager::GetReadDataByLevel(int32 Level) const
     }
 
     return Result;
+}
+
+TArray<int32> UGameDataManager::GetAllReadDataKeys() const
+{
+    TArray<int32> Keys;
+
+    if (!bLoadReadData)
+        return Keys;
+
+    ReadDataCache.GetKeys(Keys);
+    return Keys;
 }
 #pragma endregion READ_DATA
 
