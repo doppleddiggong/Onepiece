@@ -190,15 +190,6 @@ void APopupTesterActor::TestPopupHistory()
 	}
 }
 
-void APopupTesterActor::TestPopupDaily()
-{
-	if (auto Popup = UPopupManager::ShowPopupAs<UPopup_DailyStudy>(GetWorld(), EPopupType::DailyStudy))
-	{
-		Popup->InitPopup();
-	}
-}
-
-
 void APopupTesterActor::OnOK()
 {
 	PRINT_STRING(TEXT("I'M OK"));

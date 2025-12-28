@@ -37,7 +37,6 @@ struct FDailyStudyWordItem
 	/** 단어 이미지 */
 	UPROPERTY(BlueprintReadWrite, Category = "DailyStudy")
 	TSoftObjectPtr<UTexture2D> Texture;
-
 	
 	UTexture2D* LoadedTexture();
 };

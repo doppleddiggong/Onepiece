@@ -6,7 +6,6 @@
 #include "UPopupManager.h"
 #include "UPopup_DailyResult.h"
 #include "ULingoGameHelper.h"
-#include "UGameDataManager.h"
 #include "GameLogging.h"
 #include "UBroadcastManager.h"
 #include "UCircularProgressBar.h"
@@ -25,6 +24,7 @@
 #include "MediaPlayer.h"
 #include "MediaTexture.h"
 #include "MediaSource.h"
+#include "Components/Border.h"
 
 void UPopup_DailyStudy::NativeConstruct()
 {
@@ -49,10 +49,13 @@ void UPopup_DailyStudy::NativeConstruct()
 	}
 
 	// Img_Correct에 미디어 텍스처 바인딩
-	FSlateBrush Brush;
-	Brush.SetResourceObject(MediaTexture);
-	Brush.ImageSize = FVector2D(1920, 1080); // 영상 해상도에 맞게 조정
-	Img_Correct->SetBrush(Brush);
+	if (Img_Correct && MediaTexture)
+	{
+		FSlateBrush Brush;
+		Brush.SetResourceObject(MediaTexture);
+		Brush.ImageSize = FVector2D(1920, 1080); // 영상 해상도에 맞게 조정
+		Img_Correct->SetBrush(Brush);
+	}
 }
 
 void UPopup_DailyStudy::NativeDestruct()
@@ -69,40 +72,6 @@ void UPopup_DailyStudy::NativeDestruct()
 
 	// 미디어 플레이어 정리
 	MediaPlayer->Close();
-}
-
-void UPopup_DailyStudy::InitPopup()
-{
-	if (Btn_Close)
-	{
-		Btn_Close->OnButtonClickedEvent.RemoveDynamic(this, &UPopup_DailyStudy::OnClickClose);
-		Btn_Close->OnButtonClickedEvent.AddDynamic(this, &UPopup_DailyStudy::OnClickClose);
-	}
-
-	if (auto DM = UBroadcastManager::Get(GetWorld()))
-	{
-		DM->OnAudioCapture.RemoveDynamic(this, &UPopup_DailyStudy::OnAudioCapture);
-		DM->OnAudioCapture.AddDynamic(this, &UPopup_DailyStudy::OnAudioCapture);
-	}
-
-	if (CountDown_Widget)
-	{
-		CountDown_Widget->OnCountDownFinished.RemoveDynamic(this, &UPopup_DailyStudy::OnCountDownFinished);
-		CountDown_Widget->OnCountDownFinished.AddDynamic(this, &UPopup_DailyStudy::OnCountDownFinished);
-	}
-
-	// 초기화
-	CurIndex = 0;
-	AnswerList.Empty();
-	CurrentScore = 0;
-
-	Canvas_Correct->SetVisibility(ESlateVisibility::Hidden);
-	Canvas_Question->SetVisibility(ESlateVisibility::Hidden);
-	
-	Txt_CurScore->SetText(FText::FromString(FString::Printf(TEXT("Score : %d"), CurrentScore)));
-
-	// 카운트다운 시작
-	CountDown_Widget->StartCountDown(3);
 }
 
 void UPopup_DailyStudy::InitPopup(const TArray<FString>& Words)
@@ -126,13 +95,15 @@ void UPopup_DailyStudy::InitPopup(const TArray<FString>& Words)
 		CountDown_Widget->OnCountDownFinished.AddDynamic(this, &UPopup_DailyStudy::OnCountDownFinished);
 	}
 
-	
 	// 초기화
 	CurIndex = 0;
-	AnswerList.Empty();
 	CurrentScore = 0;
+	CorrectAnswerCount = 0;
+
 	QuestionList.Empty();
 	QuestionList.Append(Words);
+
+	AnswerList.Empty();
 
 	Canvas_Correct->SetVisibility(ESlateVisibility::Hidden);
 	Canvas_Question->SetVisibility(ESlateVisibility::Hidden);
@@ -146,11 +117,10 @@ void UPopup_DailyStudy::InitPopup(const TArray<FString>& Words)
 void UPopup_DailyStudy::LoadCurQuestion()
 {
 	if (!QuestionList.IsValidIndex(CurIndex))
-	{
-		PRINTLOG(TEXT("[DailyStudy] Error: Invalid question index %d"), CurIndex);
 		return;
-	}
 
+	Border_Question->SetVisibility(ESlateVisibility::Visible);
+	Txt_Infomation->SetVisibility(ESlateVisibility::Visible);
 	Txt_Question->SetText(FText::FromString(QuestionList[CurIndex]));
 	
 	// 진행 상황 업데이트
@@ -173,18 +143,15 @@ void UPopup_DailyStudy::OnClickClose()
 FString UPopup_DailyStudy::GetCurrentQuestionText() const
 {
 	if (QuestionList.IsValidIndex(CurIndex))
-	{
 		return QuestionList[CurIndex];
-	}
+
 	return FString();
 }
 
 void UPopup_DailyStudy::OnResponseSpeakingsJudges(const FResponseSpeakingJudes& JudgeResult)
 {
 	if (!QuestionList.IsValidIndex(CurIndex))
-	{
 		return;
-	}
 	
 	FDailyStudyAnswer Answer;
 	Answer.QuestionIndex = CurIndex;
@@ -198,16 +165,12 @@ void UPopup_DailyStudy::OnResponseSpeakingsJudges(const FResponseSpeakingJudes& 
 
 	// 정답/오답 판별 (50점 미만이면 오답)
 	bLastAnswerCorrect = (JudgeResult.final_overall_score >= 50);
-	
-	PRINTLOG(TEXT("[DailyStudy] OnResponseSpeakingsJudges - Score: %d, IsCorrect: %s"), 
-		JudgeResult.final_overall_score, 
-		bLastAnswerCorrect ? TEXT("TRUE") : TEXT("FALSE"));
 
-	// Request TTS for the Korean answer
-	if (UKLingoNetworkSystem* NetworkSystem = UKLingoNetworkSystem::Get(GetWorld()))
-	{
-		NetworkSystem->RequestListenAudio(QuestionList[CurIndex], FResponseListenAudioDelegate::CreateUObject(this, &UPopup_DailyStudy::OnResponseListenAudio));
-	}
+	if ( bLastAnswerCorrect )
+		CorrectAnswerCount++;
+	
+	// 정답/오답 화면 표시 (영상 + TTS)
+	ShowCorrectData(bLastAnswerCorrect);
 }
 
 void UPopup_DailyStudy::StartThinkTimer()
@@ -215,7 +178,6 @@ void UPopup_DailyStudy::StartThinkTimer()
 	RemainingThinkTime = DailyStudyConfig::THINK_TIME;
 	
 	ProgressBar_RemainTime->SetPercent(1.0f);
-
 	Txt_RemainTime->SetText(FText::FromString(FString::Printf(TEXT("%.1f"), RemainingThinkTime)));
 
 	GetWorld()->GetTimerManager().SetTimer(ThinkingTimerHandle, this, &UPopup_DailyStudy::UpdateThinkTimer, 0.1f, true);
@@ -240,7 +202,7 @@ void UPopup_DailyStudy::OnThinkTimeFinished()
 
 	// 타임업 = 오답 처리
 	bLastAnswerCorrect = false;
-
+	
 	// Add a skipped answer
 	if (QuestionList.IsValidIndex(CurIndex))
 	{
@@ -251,8 +213,8 @@ void UPopup_DailyStudy::OnThinkTimeFinished()
 		AnswerList.Add(Answer);
 	}
 	
-	if (UKLingoNetworkSystem* NetworkSystem = UKLingoNetworkSystem::Get(GetWorld()))
-		NetworkSystem->RequestListenAudio(QuestionList[CurIndex], FResponseListenAudioDelegate::CreateUObject(this, &UPopup_DailyStudy::OnResponseListenAudio));
+	// 오답 화면 표시 (영상 + TTS)
+	ShowCorrectData(false);
 }
 
 void UPopup_DailyStudy::OnAudioCapture(bool bIsRecording)
@@ -267,27 +229,49 @@ void UPopup_DailyStudy::OnResponseListenAudio(FResponseListenAudio& ResponseData
 {
 	if (bWasSuccessful)
 	{
-		// 저장된 정답/오답 판별 결과 사용
-		ShowCorrectData(bLastAnswerCorrect);
-
-		if ( auto DM = UDialogManager::Get(GetWorld()))
-			DM->HideToastImmediately();
-		
 		if (auto PlayerActor = ULingoGameHelper::GetPlayerActor(this))
 			PlayerActor->PlayTTSAudio(ResponseData.audio_base64);
+
+		// 다음 문제로 이동 (기존 타이머 로직 사용)
+		GetWorld()->GetTimerManager().SetTimer(
+			NextTimerHandle,
+			this, &UPopup_DailyStudy::MoveToNextQuestion,
+			DailyStudyConfig::NEXT_QUESTION,
+			false
+		);
 	}
 	else
 	{
-		ShowCorrectData(bLastAnswerCorrect);
+		// 다음 문제로 이동 (기존 타이머 로직 사용)
+		GetWorld()->GetTimerManager().SetTimer(
+			NextTimerHandle,
+			this, &UPopup_DailyStudy::MoveToNextQuestion,
+			DailyStudyConfig::NEXT_QUESTION,
+			false
+		);
 	}
 }
 
 void UPopup_DailyStudy::ShowCorrectData(bool bIsCorrect)
 {
+	if ( auto DM = UDialogManager::Get(GetWorld()))
+		DM->HideToastImmediately();
+	
 	Canvas_Correct->SetVisibility(ESlateVisibility::Visible);
 		
-	Txt_Correct->SetText(FText::FromString(""));
+	Txt_Correct->SetText(FText::FromString(QuestionList[CurIndex]));
+
+	Border_Question->SetVisibility(ESlateVisibility::Hidden);
+	Txt_Infomation->SetVisibility(ESlateVisibility::Hidden);
 	Txt_Question->SetText(FText::FromString(""));
+
+	if (UKLingoNetworkSystem* NetworkSystem = UKLingoNetworkSystem::Get(GetWorld()))
+	{
+		NetworkSystem->RequestListenAudio(
+			QuestionList[CurIndex], 
+			FResponseListenAudioDelegate::CreateUObject(this, &UPopup_DailyStudy::OnResponseListenAudio)
+		);
+	}
 	
 	PlayVideo(bIsCorrect);
 }
@@ -314,12 +298,13 @@ void UPopup_DailyStudy::MoveToNextQuestion()
 	else
 	{
 		// 모든 문제 완료 - 점수 계산 및 표시
-		int32 AverageScore = QuestionList.Num() > 0 ? (CurrentScore / QuestionList.Num()) : 0;
+		const int32 AverageScore = QuestionList.Num() > 0 ? (CurrentScore / QuestionList.Num()) : 0;
 
-		FString ResultMessage = FString::Printf(
-			TEXT("Score: %d\nAverage: %d\nSolved: %d"),
+		const FString ResultMessage = FString::Printf(
+			TEXT("Score: %d\nAverage: %d\nSolved: %d/%d"),
 			CurrentScore,
 			AverageScore,
+			CorrectAnswerCount,
 			QuestionList.Num()
 		);
 
@@ -350,6 +335,7 @@ void UPopup_DailyStudy::PlayVideo(bool bIsCorrect)
 		return;
 	}
 
+	// Img_Correct 표시
 	Img_Correct->SetVisibility(ESlateVisibility::Visible);
 
 	// 영상 열기 및 재생
@@ -360,12 +346,15 @@ void UPopup_DailyStudy::PlayVideo(bool bIsCorrect)
 	MediaPlayer->Seek(FTimespan::FromSeconds(VideoStartTime));
 
 	// 재생 시간 체크 타이머 시작 (0.1초마다 체크)
-	GetWorld()->GetTimerManager().SetTimer(
-		VideoCheckTimerHandle,
-		this, &UPopup_DailyStudy::CheckVideoPlayback,
-		0.1f,
-		true  // 반복
-	);
+	if (GetWorld())
+	{
+		GetWorld()->GetTimerManager().SetTimer(
+			VideoCheckTimerHandle,
+			this, &UPopup_DailyStudy::CheckVideoPlayback,
+			0.1f,
+			true  // 반복
+		);
+	}
 }
 
 void UPopup_DailyStudy::CheckVideoPlayback()
@@ -400,12 +389,4 @@ void UPopup_DailyStudy::OnVideoFinished()
 
 	// 타이머 정리
 	GetWorld()->GetTimerManager().ClearTimer(VideoCheckTimerHandle);
-
-	// 다음 문제로 이동 (기존 타이머 로직 사용)
-	GetWorld()->GetTimerManager().SetTimer(
-		NextTimerHandle,
-		this, &UPopup_DailyStudy::MoveToNextQuestion,
-		DailyStudyConfig::NEXT_QUESTION,
-		false
-	);
 }

@@ -312,15 +312,10 @@ void APlayerControl::OnChat(const FInputActionValue& Value)
 
 void APlayerControl::OnHistory(const FInputActionValue& Value)
 {
-	if (auto Popup = UPopupManager::ShowPopupAs<UPopup_DailyStudy>(GetWorld(), EPopupType::DailyStudy))
+	if (auto Popup = UPopupManager::ShowPopupAs<UPopup_History>(GetWorld(), EPopupType::History))
 	{
 		Popup->InitPopup();
 	}
-
-	// if (auto Popup = UPopupManager::ShowPopupAs<UPopup_History>(GetWorld(), EPopupType::History))
-	// {
-	// 	Popup->InitPopup();
-	// }
 }
 
 

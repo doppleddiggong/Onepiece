@@ -48,9 +48,6 @@ protected:
 	virtual void NativeDestruct() override;
 	
 public:
-	UFUNCTION(BlueprintCallable, Category = "Popup")
-	void InitPopup();
-
 	/**
 	 * @brief AI 생성 단어로 Daily Study 초기화
 	 * @param Words AI가 생성한 한국어 단어 배열
@@ -99,7 +96,13 @@ protected:
 	TObjectPtr<class UCanvasPanel> Canvas_Question;
 
 	UPROPERTY(meta = (BindWidget))
+	TObjectPtr<class UBorder> Border_Question;
+	
+	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<class UTextBlock> Txt_Question;
+
+	UPROPERTY(meta = (BindWidget))
+	TObjectPtr<class UTextBlock> Txt_Infomation;
 	
 	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<class UTextBlock> Txt_QuestionProgress;
@@ -139,6 +142,7 @@ private:
 	
 	int32 CurrentScore = 0;
 	int32 BestScore = 0;
+	int32 CorrectAnswerCount = 0;
 
 	/** 다음 문제 이동 타이머 */
 	FTimerHandle NextTimerHandle;
@@ -148,7 +152,7 @@ private:
 
 	/** 마지막 답변이 정답인지 여부 (타임업 또는 50점 미만 = false) */
 	bool bLastAnswerCorrect = false;
-
+	
 	// ===================================================================
 	// Media Player - 정답/오답 영상 재생
 	// ===================================================================
