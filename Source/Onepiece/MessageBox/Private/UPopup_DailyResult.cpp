@@ -30,13 +30,6 @@ void UPopup_DailyResult::InitPopup(const FDailyStudyResult& Result)
 	// 데이터 저장
 	StudyResult = Result;
 
-	// 점수 표시
-	if (Txt_FinalScore)
-	{
-		Txt_FinalScore->SetText(FText::FromString(
-			FString::Printf(TEXT("Score: %d"), Result.CurrentScore)));
-	}
-
 	// 질문 리스트 초기화
 	InitQuestionList();
 }
@@ -77,6 +70,7 @@ void UPopup_DailyResult::InitQuestionList()
 		{
 			// 간단하게 3개 파라미터만 전달 (FWordData에서 한글 단어 추출)
 			ItemWidget->InitData(
+				i+1,
 				StudyResult.QuestionList[i].Kor,                      // Question (한글)
 				StudyResult.AnswerList[i].final_feedback,             // FeedBack
 				StudyResult.AnswerList[i].final_overall_score         // Score

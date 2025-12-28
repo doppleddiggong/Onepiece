@@ -51,8 +51,7 @@
 #define HOWTOPLAY_POPUP_PATH TEXT("/Game/CustomContents/UI/Widgets/WBP_PopupHowToPlay.WBP_PopupHowToPlay_C")
 #define DAILYSTUDY_POPUP_PATH TEXT("/Game/CustomContents/UI/Widgets/WBP_PopupDailyStudy.WBP_PopupDailyStudy_C")
 #define DAILYRESULT_POPUP_PATH TEXT("/Game/CustomContents/UI/Widgets/WBP_PopupDailyResult.WBP_PopupDailyResult_C")
-
-
+                
 UPopupManager::UPopupManager()
 {
 	// 기본 팝업 클래스 등록
@@ -78,6 +77,8 @@ UPopupManager::UPopupManager()
 	PopupClassMap.Add(EPopupType::HowToPlay, FComponentHelper::LoadClass<UPopup_HowToPlay>(HOWTOPLAY_POPUP_PATH));
 	PopupClassMap.Add(EPopupType::DailyStudy, FComponentHelper::LoadClass<UPopup_DailyStudy>(DAILYSTUDY_POPUP_PATH));
 	PopupClassMap.Add(EPopupType::DailyResult, FComponentHelper::LoadClass<UPopup_DailyResult>(DAILYRESULT_POPUP_PATH));
+
+
 }
 
 // ========================================

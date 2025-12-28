@@ -38,10 +38,6 @@ private:
 	void InitQuestionList();
 
 protected:
-	/** 최종 점수 */
-	UPROPERTY(meta = (BindWidget))
-	TObjectPtr<class UTextBlock> Txt_FinalScore;
-
 	/** 결과 리스트를 담는 VerticalBox (스크롤 가능) */
 	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<class UVerticalBox> VerticalBox;

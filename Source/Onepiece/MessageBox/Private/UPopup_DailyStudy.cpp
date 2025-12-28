@@ -115,6 +115,7 @@ void UPopup_DailyStudy::InitPopup(const TArray<FWordData>& WordDataArray)
 	Txt_CurScore->SetText(FText::FromString(FString::Printf(TEXT("Score : %d"), CurrentScore)));
 
 	// 카운트다운 시작
+	UGameSoundManager::Get(GetWorld())->PlaySound2D(EGameSoundType::Speak_the_Word_in_korean);
 	CountDown_Widget->StartCountDown(3);
 }
 
@@ -283,8 +284,6 @@ void UPopup_DailyStudy::ShowCorrectData(bool bIsCorrect)
 void UPopup_DailyStudy::OnCountDownFinished()
 {
 	Canvas_Question->SetVisibility(ESlateVisibility::Visible);
-
-	UGameSoundManager::Get(GetWorld())->PlaySound2D(EGameSoundType::Speak_the_Word_in_korean);
 	
 	LoadCurQuestion();
 }
@@ -301,6 +300,9 @@ void UPopup_DailyStudy::MoveToNextQuestion()
 	}
 	else
 	{
+		// 현재 팝업 닫기
+		OnClickClose();
+		
 		// 모든 문제 완료 - DailyResult 팝업 표시
 		if (auto DailyResultPopup = UPopupManager::Get(GetWorld())->ShowPopupAs<UPopup_DailyResult>(EPopupType::DailyResult))
 		{
@@ -312,9 +314,6 @@ void UPopup_DailyStudy::MoveToNextQuestion()
 			
 			DailyResultPopup->InitPopup(Result);
 		}
-
-		// 현재 팝업 닫기
-		OnClickClose();
 	}
 }
 

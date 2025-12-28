@@ -24,7 +24,7 @@ public:
 	 * @param FeedBack 피드백 메시지
 	 * @param Score 점수
 	 */
-	void InitData(const FString& Question, const FString& FeedBack, const int32 Score);
+	void InitData(const int32 Index, const FString& Question, const FString& FeedBack, const int32 Score);
 
 protected:
 	/** 문제 번호 텍스트 */
