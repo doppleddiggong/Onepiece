@@ -175,3 +175,32 @@ void UCommonFunctionLibrary::SetCollisionDebugVisible(UPrimitiveComponent* Targe
 	Target->SetHiddenInGame(!bVisible);
 	Target->SetVisibility(bVisible);
 }
+
+bool UCommonFunctionLibrary::IsValidKoreanWord(const FString& Word)
+{
+	if (Word.IsEmpty())
+		return false;
+
+	// 한글 유니코드 범위 체크
+	// - 완성형 한글: AC00-D7A3 (가-힣)
+	// - 한글 자음/모음: 1100-11FF, 3130-318F
+	for (const TCHAR& Char : Word)
+	{
+		// 완성형 한글 (가-힣)
+		if (Char >= 0xAC00 && Char <= 0xD7A3)
+			continue;
+		
+		// 한글 자음/모음
+		if ((Char >= 0x1100 && Char <= 0x11FF) || (Char >= 0x3130 && Char <= 0x318F))
+			continue;
+
+		// 공백 허용
+		if (Char == TEXT(' '))
+			continue;
+
+		// 한글이 아닌 문자 발견
+		return false;
+	}
+
+	return true;
+}

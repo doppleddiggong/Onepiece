@@ -51,6 +51,10 @@ public:
 	UFUNCTION(BlueprintPure, Category="CoffeeLibrary|Utilities")
 	static FString RemoveLineBreaks(const FString& InText);
 
+	/** @brief 한국어 단어 검증 (한글만 포함되어 있는지 확인) */
+	UFUNCTION(BlueprintPure, Category="CoffeeLibrary|String", meta=(DisplayName="Is Valid Korean Word"))
+	static bool IsValidKoreanWord(const FString& Word);
+
 	UFUNCTION(BlueprintCallable, Category="Debug|Collision")
 	static void SetCollisionDebugVisible(UPrimitiveComponent* Target, bool bVisible);
 };
