@@ -244,10 +244,10 @@ var NAVTREEINDEX0 =
 "EDamageType_8h_source.html":[3,0,0,1,2,1,2],
 "EGameSoundType_8h.html":[3,0,0,1,2,1,3],
 "EGameSoundType_8h.html#af4a7536fe94049720d6e9d21c1b2ec80":[3,0,0,1,2,1,3,0],
+"EGameSoundType_8h.html#af4a7536fe94049720d6e9d21c1b2ec80a11d0fe2bccefa573cbca1587d88fe66d":[3,0,0,1,2,1,3,0,11],
 "EGameSoundType_8h.html#af4a7536fe94049720d6e9d21c1b2ec80a2663b7a0e1cf2e3f9b03765f1c20a188":[3,0,0,1,2,1,3,0,1],
 "EGameSoundType_8h.html#af4a7536fe94049720d6e9d21c1b2ec80a2ebf0023074c978bcc7cc2fe76e2b188":[3,0,0,1,2,1,3,0,10],
 "EGameSoundType_8h.html#af4a7536fe94049720d6e9d21c1b2ec80a316853cc3718335f11c048e33b9be98a":[3,0,0,1,2,1,3,0,0],
 "EGameSoundType_8h.html#af4a7536fe94049720d6e9d21c1b2ec80a3f0df3a7b3fc629430d3367d068f5f25":[3,0,0,1,2,1,3,0,9],
-"EGameSoundType_8h.html#af4a7536fe94049720d6e9d21c1b2ec80a42cc89dc27a8fa1d019b54665af7a902":[3,0,0,1,2,1,3,0,5],
-"EGameSoundType_8h.html#af4a7536fe94049720d6e9d21c1b2ec80a5ba0bedf5411b3de3df9fa80165f345c":[3,0,0,1,2,1,3,0,3]
+"EGameSoundType_8h.html#af4a7536fe94049720d6e9d21c1b2ec80a42cc89dc27a8fa1d019b54665af7a902":[3,0,0,1,2,1,3,0,5]
 };

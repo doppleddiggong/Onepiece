@@ -1,6 +1,7 @@
 var dir_2a20a70930e57e30643dc72759837dc0 =
 [
     [ "APopupTesterActor.cpp", "APopupTesterActor_8cpp.html", null ],
+    [ "FDailyStudyResult.cpp", "FDailyStudyResult_8cpp.html", null ],
     [ "Popup_AskTutorial.cpp", "Popup__AskTutorial_8cpp.html", null ],
     [ "Popup_Questionnaire.cpp", "Popup__Questionnaire_8cpp.html", null ],
     [ "Popup_QuestionnaireItem.cpp", "Popup__QuestionnaireItem_8cpp.html", null ],
@@ -15,6 +16,9 @@ var dir_2a20a70930e57e30643dc72759837dc0 =
     [ "ULevelSelectItem.cpp", "ULevelSelectItem_8cpp.html", null ],
     [ "ULevelWordGroup.cpp", "ULevelWordGroup_8cpp.html", null ],
     [ "ULevelWordItem.cpp", "ULevelWordItem_8cpp.html", null ],
+    [ "UPopup_DailyResult.cpp", "UPopup__DailyResult_8cpp.html", null ],
+    [ "UPopup_DailyResultItem.cpp", "UPopup__DailyResultItem_8cpp.html", null ],
+    [ "UPopup_DailyStudy.cpp", "UPopup__DailyStudy_8cpp.html", null ],
     [ "UPopup_Evaluation.cpp", "UPopup__Evaluation_8cpp.html", null ],
     [ "UPopup_History.cpp", "UPopup__History_8cpp.html", null ],
     [ "UPopup_HowToPlay.cpp", "UPopup__HowToPlay_8cpp.html", null ],

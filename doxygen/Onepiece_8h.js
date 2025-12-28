@@ -4,6 +4,8 @@ var Onepiece_8h =
     [ "BotID", "Onepiece_8h.html#aa27e976521e38c0858f3d0437d48a9b0", null ],
     [ "BotName", "Onepiece_8h.html#aeb5c1c68e7ad5bf3b490fef2fc654e7f", null ],
     [ "Building", "Onepiece_8h.html#abffb03d97d2c1ee92236896e77b31600", null ],
+    [ "Daily", "Onepiece_8h.html#a0e7fabb99296c797486c52ba89a66cd1", null ],
+    [ "DailySystemPrompt", "Onepiece_8h.html#a69c9c5a9e428fef85251113d4151ffd0", null ],
     [ "Door", "Onepiece_8h.html#a3c08adb522f39311cbf10b2efec81a35", null ],
     [ "GameEnd", "Onepiece_8h.html#a2298f260adc739495b1a3938d2335243", null ],
     [ "GameStart", "Onepiece_8h.html#a5dbedc9538ba6d1baa996c8c59666487", null ],

@@ -2,6 +2,7 @@ var dir_244820c19557decdcbf6fc4000b77b7e =
 [
     [ "APopupTesterActor.h", "APopupTesterActor_8h.html", "APopupTesterActor_8h" ],
     [ "EPopupType.h", "EPopupType_8h.html", "EPopupType_8h" ],
+    [ "FDailyStudyResult.h", "FDailyStudyResult_8h.html", "FDailyStudyResult_8h" ],
     [ "Popup_AskTutorial.h", "Popup__AskTutorial_8h.html", "Popup__AskTutorial_8h" ],
     [ "Popup_Questionnaire.h", "Popup__Questionnaire_8h.html", "Popup__Questionnaire_8h" ],
     [ "Popup_QuestionnaireItem.h", "Popup__QuestionnaireItem_8h.html", "Popup__QuestionnaireItem_8h" ],
@@ -16,6 +17,9 @@ var dir_244820c19557decdcbf6fc4000b77b7e =
     [ "ULevelSelectItem.h", "ULevelSelectItem_8h.html", "ULevelSelectItem_8h" ],
     [ "ULevelWordGroup.h", "ULevelWordGroup_8h.html", "ULevelWordGroup_8h" ],
     [ "ULevelWordItem.h", "ULevelWordItem_8h.html", "ULevelWordItem_8h" ],
+    [ "UPopup_DailyResult.h", "UPopup__DailyResult_8h.html", "UPopup__DailyResult_8h" ],
+    [ "UPopup_DailyResultItem.h", "UPopup__DailyResultItem_8h.html", "UPopup__DailyResultItem_8h" ],
+    [ "UPopup_DailyStudy.h", "UPopup__DailyStudy_8h.html", "UPopup__DailyStudy_8h" ],
     [ "UPopup_Evaluation.h", "UPopup__Evaluation_8h.html", "UPopup__Evaluation_8h" ],
     [ "UPopup_History.h", "UPopup__History_8h.html", "UPopup__History_8h" ],
     [ "UPopup_HowToPlay.h", "UPopup__HowToPlay_8h.html", "UPopup__HowToPlay_8h" ],

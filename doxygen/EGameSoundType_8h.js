@@ -11,6 +11,7 @@ var EGameSoundType_8h =
       [ "Where_are_you_from", "EGameSoundType_8h.html#af4a7536fe94049720d6e9d21c1b2ec80aa5d82b1c80c2818c5d7d201c23616bd8", null ],
       [ "What_is_the_purpose_of_your_visit", "EGameSoundType_8h.html#af4a7536fe94049720d6e9d21c1b2ec80af9a9bd2a73c3766e1539844ff8c054ea", null ],
       [ "How_long_will_you_stay", "EGameSoundType_8h.html#af4a7536fe94049720d6e9d21c1b2ec80a3f0df3a7b3fc629430d3367d068f5f25", null ],
-      [ "Where_will_you_be_staying", "EGameSoundType_8h.html#af4a7536fe94049720d6e9d21c1b2ec80a2ebf0023074c978bcc7cc2fe76e2b188", null ]
+      [ "Where_will_you_be_staying", "EGameSoundType_8h.html#af4a7536fe94049720d6e9d21c1b2ec80a2ebf0023074c978bcc7cc2fe76e2b188", null ],
+      [ "Speak_the_Word_in_korean", "EGameSoundType_8h.html#af4a7536fe94049720d6e9d21c1b2ec80a11d0fe2bccefa573cbca1587d88fe66d", null ]
     ] ]
 ];

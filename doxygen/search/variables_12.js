@@ -8,7 +8,7 @@ var searchData=
   ['scenario_5fresults_5',['scenario_results',['../structFResponseEvaluationResult.html#a5103da5ab7e5d6030a965510a2b3a06c',1,'FResponseEvaluationResult']]],
   ['scenario_5ftype_6',['scenario_type',['../structFScenarioResult.html#a85380ca5516e4d591017b59af2892127',1,'FScenarioResult']]],
   ['sceneroot_7',['SceneRoot',['../classADoor.html#a3e53623c2ad98795f4560a3bdef648b3',1,'ADoor']]],
-  ['score_8',['score',['../structFWriteRecord.html#a751222e370b73954a54e9a3a62bfe855',1,'FWriteRecord::score'],['../structFResponseWriteScores.html#a60488b2faa976ac69c24053fb33fdb9a',1,'FResponseWriteScores::score'],['../structFReadScoreDetail.html#ab1e8f066d84b3a07f8767eb8e2959113',1,'FReadScoreDetail::score'],['../structFListenScoreDetail.html#a8791ad06e5cfc8cd0332208716fc331d',1,'FListenScoreDetail::score'],['../structFSpeakScoreDetail.html#a967347f12f00efa8f52c85ecb199f4bf',1,'FSpeakScoreDetail::score'],['../structFSpeakResultItem.html#a4404d7b02c8594ebfa7bbe93ad511e3f',1,'FSpeakResultItem::Score']]],
+  ['score_8',['score',['../structFSpeakResultItem.html#a4404d7b02c8594ebfa7bbe93ad511e3f',1,'FSpeakResultItem::Score'],['../structFWriteRecord.html#a751222e370b73954a54e9a3a62bfe855',1,'FWriteRecord::score'],['../structFResponseWriteScores.html#a60488b2faa976ac69c24053fb33fdb9a',1,'FResponseWriteScores::score'],['../structFReadScoreDetail.html#ab1e8f066d84b3a07f8767eb8e2959113',1,'FReadScoreDetail::score'],['../structFListenScoreDetail.html#a8791ad06e5cfc8cd0332208716fc331d',1,'FListenScoreDetail::score'],['../structFSpeakScoreDetail.html#a967347f12f00efa8f52c85ecb199f4bf',1,'FSpeakScoreDetail::score']]],
   ['scores_9',['scores',['../structFResponseWriteResult.html#a8084f1320a34c522075a87593a864738',1,'FResponseWriteResult::scores'],['../structFResponseReadResult.html#a7e2a452a0b8342baa606b03f6720bd2b',1,'FResponseReadResult::scores'],['../structFResponseListenResult.html#a670b3881b50c0710568be524a06112e5',1,'FResponseListenResult::scores'],['../structFResponseSpeakResult.html#a45281cfa2bc17f30bdf0c9570dd35806',1,'FResponseSpeakResult::scores']]],
   ['scoretextcolor_10',['scoretextcolor',['../structFResultStatData.html#a4749547011acf01a0866b9d100435517',1,'FResultStatData::ScoreTextColor'],['../classUResultStatWidget.html#ad26891bb7cc08fd9b0d6086347e5339f',1,'UResultStatWidget::ScoreTextColor']]],
   ['scorevalue_11',['scorevalue',['../classUResultStatWidget.html#abac3c30634cc6240243b9101f2f7d6dc',1,'UResultStatWidget::ScoreValue'],['../structFResultStatData.html#ad1687ae0bdba36508a791b853a82dbe6',1,'FResultStatData::ScoreValue']]],
@@ -104,11 +104,12 @@ var searchData=
   ['stepinterval_101',['StepInterval',['../classUSequenceManager.html#a8eb73739b36d010f3ed073bb28ab0d3e',1,'USequenceManager']]],
   ['steplength_102',['stepLength',['../classUPopup__WriteBoard.html#a0459caf983f9ebbcb72a110a86623694',1,'UPopup_WriteBoard']]],
   ['stoprecordingcolor_103',['StopRecordingColor',['../classUVoiceRecording.html#a6a36cc8dbf1dc2acf319caad24892187',1,'UVoiceRecording']]],
-  ['styletable_104',['StyleTable',['../classUResultStatWidget.html#a7bf2e54a68c5232d8e0c0716f18f9963',1,'UResultStatWidget']]],
-  ['submitcollision_105',['SubmitCollision',['../classAOrderKiosk.html#a01cfd2345d53581831de3968f1c71d1b',1,'AOrderKiosk']]],
-  ['switchbody_106',['switchbody',['../classAWeightSwitch.html#a564c3f6e4dbeebb734ce7e30ced14ff0',1,'AWeightSwitch::SwitchBody'],['../classAPedestalSwitch.html#ab59bac74f3a20b63ba4d8f39c0cf607f',1,'APedestalSwitch::SwitchBody']]],
-  ['switchcollision_107',['SwitchCollision',['../classAWeightSwitch.html#a8aa0923f95fb929f34168d3d30267d4a',1,'AWeightSwitch']]],
-  ['symboltexture_108',['SymbolTexture',['../classUTextureButton.html#a9da5ec9e3c95bb0eab8324f9485bdbcc',1,'UTextureButton']]],
-  ['symboltexturetype_109',['SymbolTextureType',['../structFResultStatData.html#a40b2ff380b44130455998b5fd7288c65',1,'FResultStatData']]],
-  ['symbolvalue_110',['symbolvalue',['../classUResultStatWidget.html#ac23cd359c404e95976063ea78fde2c5a',1,'UResultStatWidget::SymbolValue'],['../structFResultStatData.html#a5264bce607096b760b0c3b0add5641e7',1,'FResultStatData::SymbolValue']]]
+  ['studyresult_104',['StudyResult',['../classUPopup__DailyResult.html#ae4df101aff0b473774f68e3d5c8034e2',1,'UPopup_DailyResult']]],
+  ['styletable_105',['StyleTable',['../classUResultStatWidget.html#a7bf2e54a68c5232d8e0c0716f18f9963',1,'UResultStatWidget']]],
+  ['submitcollision_106',['SubmitCollision',['../classAOrderKiosk.html#a01cfd2345d53581831de3968f1c71d1b',1,'AOrderKiosk']]],
+  ['switchbody_107',['switchbody',['../classAWeightSwitch.html#a564c3f6e4dbeebb734ce7e30ced14ff0',1,'AWeightSwitch::SwitchBody'],['../classAPedestalSwitch.html#ab59bac74f3a20b63ba4d8f39c0cf607f',1,'APedestalSwitch::SwitchBody']]],
+  ['switchcollision_108',['SwitchCollision',['../classAWeightSwitch.html#a8aa0923f95fb929f34168d3d30267d4a',1,'AWeightSwitch']]],
+  ['symboltexture_109',['SymbolTexture',['../classUTextureButton.html#a9da5ec9e3c95bb0eab8324f9485bdbcc',1,'UTextureButton']]],
+  ['symboltexturetype_110',['SymbolTextureType',['../structFResultStatData.html#a40b2ff380b44130455998b5fd7288c65',1,'FResultStatData']]],
+  ['symbolvalue_111',['symbolvalue',['../classUResultStatWidget.html#ac23cd359c404e95976063ea78fde2c5a',1,'UResultStatWidget::SymbolValue'],['../structFResultStatData.html#a5264bce607096b760b0c3b0add5641e7',1,'FResultStatData::SymbolValue']]]
 ];

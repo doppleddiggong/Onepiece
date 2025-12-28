@@ -1,6 +1,8 @@
 var UPopupManager_8cpp =
 [
     [ "ASKTUTORIAL_POPUP_PATH", "UPopupManager_8cpp.html#a1b82a89b5305ab947560b8581eda4129", null ],
+    [ "DAILYRESULT_POPUP_PATH", "UPopupManager_8cpp.html#a6f929f924d1c92aa2eaad50a10868590", null ],
+    [ "DAILYSTUDY_POPUP_PATH", "UPopupManager_8cpp.html#a75d9b32e1cc78ac95ffd739143bf28e1", null ],
     [ "EVALUATION_POPUP_PATH", "UPopupManager_8cpp.html#ab2efd31df0eed2c760895741b986dda0", null ],
     [ "HISTORY_POPUP_PATH", "UPopupManager_8cpp.html#a092c73e95c470f4b2170212631f376f9", null ],
     [ "HOWTOPLAY_POPUP_PATH", "UPopupManager_8cpp.html#a06e3b19a77246313c3444447fe51024f", null ],

@@ -302,6 +302,37 @@ $(document).ready(function(){initNavTree('UCommonFunctionLibrary_8cpp_source.htm
 <div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>    Target-&gt;SetVisibility(bVisible);</div>
 <div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>}</div>
 </div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span> </div>
+<div class="foldopen" id="foldopen00179" data-start="{" data-end="}">
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno"><a class="line" href="classUCommonFunctionLibrary.html#af0e6c114e3b893c3ab8d059e46b840c3">  179</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="classUCommonFunctionLibrary.html#af0e6c114e3b893c3ab8d059e46b840c3">UCommonFunctionLibrary::IsValidKoreanWord</a>(<span class="keyword">const</span> FString&amp; Word)</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>{</div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>    <span class="keywordflow">if</span> (Word.IsEmpty())</div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span> </div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>    <span class="comment">// 한글 유니코드 범위 체크</span></div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>    <span class="comment">// - 완성형 한글: AC00-D7A3 (가-힣)</span></div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>    <span class="comment">// - 한글 자음/모음: 1100-11FF, 3130-318F</span></div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> TCHAR&amp; Char : Word)</div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>    {</div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>        <span class="comment">// 완성형 한글 (가-힣)</span></div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>        <span class="keywordflow">if</span> (Char &gt;= 0xAC00 &amp;&amp; Char &lt;= 0xD7A3)</div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>            <span class="keywordflow">continue</span>;</div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>        </div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>        <span class="comment">// 한글 자음/모음</span></div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>        <span class="keywordflow">if</span> ((Char &gt;= 0x1100 &amp;&amp; Char &lt;= 0x11FF) || (Char &gt;= 0x3130 &amp;&amp; Char &lt;= 0x318F))</div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>            <span class="keywordflow">continue</span>;</div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span> </div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>        <span class="comment">// 공백 허용</span></div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>        <span class="keywordflow">if</span> (Char == TEXT(<span class="charliteral">&#39; &#39;</span>))</div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>            <span class="keywordflow">continue</span>;</div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span> </div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>        <span class="comment">// 한글이 아닌 문자 발견</span></div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>    }</div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span> </div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>}</div>
+</div>
 <div class="ttc" id="aUCommonFunctionLibrary_8h_html"><div class="ttname"><a href="UCommonFunctionLibrary_8h.html">UCommonFunctionLibrary.h</a></div><div class="ttdoc">UCommonFunctionLibrary 클래스를 선언합니다.</div></div>
 <div class="ttc" id="aclassUCommonFunctionLibrary_html_a35bb41872ea90dee13812610cec812f0"><div class="ttname"><a href="classUCommonFunctionLibrary.html#a35bb41872ea90dee13812610cec812f0">UCommonFunctionLibrary::PlayLocationSound</a></div><div class="ttdeci">static void PlayLocationSound(const AActor *Actor, USoundBase *Sound, const float RetriggerDelay)</div><div class="ttdoc">지정된 위치에서 사운드를 재생한다.</div><div class="ttdef"><b>Definition</b> <a href="UCommonFunctionLibrary_8cpp_source.html#l00127">UCommonFunctionLibrary.cpp:127</a></div></div>
 <div class="ttc" id="aclassUCommonFunctionLibrary_html_a4f7f78dd3de3b1879464ef4e54679198"><div class="ttname"><a href="classUCommonFunctionLibrary.html#a4f7f78dd3de3b1879464ef4e54679198">UCommonFunctionLibrary::InBounds</a></div><div class="ttdeci">static bool InBounds(const int32 Index, const int32 Count)</div><div class="ttdoc">주어진 인덱스가 배열 범위 안에 있는지 확인한다.</div><div class="ttdef"><b>Definition</b> <a href="UCommonFunctionLibrary_8cpp_source.html#l00071">UCommonFunctionLibrary.cpp:71</a></div></div>
@@ -313,13 +344,14 @@ $(document).ready(function(){initNavTree('UCommonFunctionLibrary_8cpp_source.htm
 <div class="ttc" id="aclassUCommonFunctionLibrary_html_ac56071bf50394ef58a818381f44fb587"><div class="ttname"><a href="classUCommonFunctionLibrary.html#ac56071bf50394ef58a818381f44fb587">UCommonFunctionLibrary::RemoveLineBreaks</a></div><div class="ttdeci">static FString RemoveLineBreaks(const FString &amp;InText)</div><div class="ttdoc">줄바꿈 문자들을 모두 공백으로 치환한 문자열을 반환</div><div class="ttdef"><b>Definition</b> <a href="UCommonFunctionLibrary_8cpp_source.html#l00161">UCommonFunctionLibrary.cpp:161</a></div></div>
 <div class="ttc" id="aclassUCommonFunctionLibrary_html_ad2ec914d77dde0dae8c6775aece90a7e"><div class="ttname"><a href="classUCommonFunctionLibrary.html#ad2ec914d77dde0dae8c6775aece90a7e">UCommonFunctionLibrary::GetOrCreateMID</a></div><div class="ttdeci">static class UMaterialInstanceDynamic * GetOrCreateMID(class UPrimitiveComponent *Target, int32 ElementIndex, FName OptionalName=NAME_None)</div><div class="ttdoc">머티리얼 인스턴스 다이내믹을 얻거나 새로 생성한다.</div><div class="ttdef"><b>Definition</b> <a href="UCommonFunctionLibrary_8cpp_source.html#l00103">UCommonFunctionLibrary.cpp:103</a></div></div>
 <div class="ttc" id="aclassUCommonFunctionLibrary_html_ae227baaa155eeed6f78431e9c4b1adb8"><div class="ttname"><a href="classUCommonFunctionLibrary.html#ae227baaa155eeed6f78431e9c4b1adb8">UCommonFunctionLibrary::GetDistance</a></div><div class="ttdeci">static float GetDistance(AActor *A, AActor *B)</div><div class="ttdoc">두 액터 사이의 거리를 계산한다.</div><div class="ttdef"><b>Definition</b> <a href="UCommonFunctionLibrary_8cpp_source.html#l00153">UCommonFunctionLibrary.cpp:153</a></div></div>
+<div class="ttc" id="aclassUCommonFunctionLibrary_html_af0e6c114e3b893c3ab8d059e46b840c3"><div class="ttname"><a href="classUCommonFunctionLibrary.html#af0e6c114e3b893c3ab8d059e46b840c3">UCommonFunctionLibrary::IsValidKoreanWord</a></div><div class="ttdeci">static bool IsValidKoreanWord(const FString &amp;Word)</div><div class="ttdoc">한국어 단어 검증 (한글만 포함되어 있는지 확인)</div><div class="ttdef"><b>Definition</b> <a href="UCommonFunctionLibrary_8cpp_source.html#l00179">UCommonFunctionLibrary.cpp:179</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_2270f6753238979635db772f09123181.html">CoffeeLibrary</a></li><li class="navelem"><a class="el" href="dir_bdb59af66e4cc8a58e36d91983bdf962.html">Features</a></li><li class="navelem"><a class="el" href="dir_7b9937ea1401d072157412173f027791.html">Private</a></li><li class="navelem"><a class="el" href="UCommonFunctionLibrary_8cpp.html">UCommonFunctionLibrary.cpp</a></li>
-    <li class="footer">생성시간 : 토 12월 27 2025 04:20:01, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 일 12월 28 2025 11:13:58, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

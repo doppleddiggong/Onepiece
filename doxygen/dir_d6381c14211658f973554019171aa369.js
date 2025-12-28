@@ -2,6 +2,7 @@ var dir_d6381c14211658f973554019171aa369 =
 [
     [ "EPageScrollDirection.h", "EPageScrollDirection_8h.html", "EPageScrollDirection_8h" ],
     [ "UCircularProgressBar.h", "UCircularProgressBar_8h.html", "UCircularProgressBar_8h" ],
+    [ "UCountDown.h", "UCountDown_8h.html", "UCountDown_8h" ],
     [ "UHoverButton.h", "UHoverButton_8h.html", "UHoverButton_8h" ],
     [ "UImageButton.h", "UImageButton_8h.html", "UImageButton_8h" ],
     [ "UPageScrollDot.h", "UPageScrollDot_8h.html", "UPageScrollDot_8h" ],

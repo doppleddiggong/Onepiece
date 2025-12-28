@@ -1,0 +1,626 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>KLingo Project Documentation: Source/Onepiece/MessageBox/Private/UPopup_DailyStudy.cpp 소스 파일</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript">
+window.MathJax = {
+  options: {
+    ignoreHtmlClass: 'tex2jax_ignore',
+    processHtmlClass: 'tex2jax_process'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<script type="text/javascript" src="darkmode_toggle.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">KLingo Project Documentation<span id="projectnumber">&#160;1.0.0</span>
+   </div>
+   <div id="projectbrief">Unreal Engine 5.6 C++ Project Documentation</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 다음에 의해 생성됨 :  Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','검색');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(0); });
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('UPopup__DailyStudy_8cpp_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">로딩중...</div>
+<div class="SRStatus" id="Searching">검색중...</div>
+<div class="SRStatus" id="NoMatches">일치하는것 없음</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">UPopup_DailyStudy.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="UPopup__DailyStudy_8cpp.html">이 파일의 문서화 페이지로 가기</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;<a class="code" href="UPopup__DailyStudy_8h.html">UPopup_DailyStudy.h</a>&quot;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;<a class="code" href="APlayerActor_8h.html">APlayerActor.h</a>&quot;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;<a class="code" href="UPopupManager_8h.html">UPopupManager.h</a>&quot;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;<a class="code" href="UPopup__DailyResult_8h.html">UPopup_DailyResult.h</a>&quot;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;<a class="code" href="ULingoGameHelper_8h.html">ULingoGameHelper.h</a>&quot;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;<a class="code" href="GameLogging_8h.html">GameLogging.h</a>&quot;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;<a class="code" href="UBroadcastManager_8h.html">UBroadcastManager.h</a>&quot;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;<a class="code" href="UCircularProgressBar_8h.html">UCircularProgressBar.h</a>&quot;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;<a class="code" href="UKLingoNetworkSystem_8h.html">UKLingoNetworkSystem.h</a>&quot;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;<a class="code" href="UDialogManager_8h.html">UDialogManager.h</a>&quot;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &quot;<a class="code" href="UGameSoundManager_8h.html">UGameSoundManager.h</a>&quot;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &quot;Components/Image.h&quot;</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &quot;Components/TextBlock.h&quot;</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &quot;Components/RichTextBlock.h&quot;</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#include &quot;<a class="code" href="UTextureButton_8h.html">UTextureButton.h</a>&quot;</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#include &quot;Components/CanvasPanel.h&quot;</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#include &quot;Misc/FileHelper.h&quot;</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#include &quot;Misc/Paths.h&quot;</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="comment">// HyperLink Plugin</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">#include &quot;HyperLinkPluginBPLibrary.h&quot;</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="comment">// Media Player</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">#include &quot;MediaPlayer.h&quot;</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="preprocessor">#include &quot;MediaTexture.h&quot;</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="preprocessor">#include &quot;MediaSource.h&quot;</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="preprocessor">#include &quot;Components/Border.h&quot;</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="foldopen" id="foldopen00033" data-start="{" data-end="}">
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="classUPopup__DailyStudy.html#a1a11a86129a0e76411a1e2db72564d23">   33</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUPopup__DailyStudy.html#a1a11a86129a0e76411a1e2db72564d23">UPopup_DailyStudy::NativeConstruct</a>()</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>{</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <a class="code hl_variable" href="classUBasePopup.html#a6ac288312766fb96aa9acf7ece8a630e">bAllowPlayerControl</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    Super::NativeConstruct();</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="comment">// 미디어 플레이어 초기화</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classUPopup__DailyStudy.html#ab238bc60cfa62ee2ca6142fd5e02cd55">MediaPlayer</a>)</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    {</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        <a class="code hl_variable" href="classUPopup__DailyStudy.html#ab238bc60cfa62ee2ca6142fd5e02cd55">MediaPlayer</a> = NewObject&lt;UMediaPlayer&gt;(<span class="keyword">this</span>);</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        <a class="code hl_variable" href="classUPopup__DailyStudy.html#ab238bc60cfa62ee2ca6142fd5e02cd55">MediaPlayer</a>-&gt;SetLooping(<span class="keyword">false</span>);</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        <a class="code hl_variable" href="classUPopup__DailyStudy.html#ab238bc60cfa62ee2ca6142fd5e02cd55">MediaPlayer</a>-&gt;OnEndReached.AddDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUPopup__DailyStudy.html#aa27f9e6188a93611e4e9118a05ffa93f">UPopup_DailyStudy::OnVideoFinished</a>);</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    }</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="comment">// 미디어 텍스처 생성</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classUPopup__DailyStudy.html#acbb1bb488336c2a64ea687d466831850">MediaTexture</a>)</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    {</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        <a class="code hl_variable" href="classUPopup__DailyStudy.html#acbb1bb488336c2a64ea687d466831850">MediaTexture</a> = NewObject&lt;UMediaTexture&gt;(<span class="keyword">this</span>);</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        <a class="code hl_variable" href="classUPopup__DailyStudy.html#acbb1bb488336c2a64ea687d466831850">MediaTexture</a>-&gt;SetMediaPlayer(<a class="code hl_variable" href="classUPopup__DailyStudy.html#ab238bc60cfa62ee2ca6142fd5e02cd55">MediaPlayer</a>);</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        <a class="code hl_variable" href="classUPopup__DailyStudy.html#acbb1bb488336c2a64ea687d466831850">MediaTexture</a>-&gt;UpdateResource();</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    }</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="comment">// Img_Correct에 미디어 텍스처 바인딩</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUPopup__DailyStudy.html#a9eebb5057be3568f9c8e35a3bb529408">Img_Correct</a> &amp;&amp; <a class="code hl_variable" href="classUPopup__DailyStudy.html#acbb1bb488336c2a64ea687d466831850">MediaTexture</a>)</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    {</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        FSlateBrush Brush;</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        Brush.SetResourceObject(<a class="code hl_variable" href="classUPopup__DailyStudy.html#acbb1bb488336c2a64ea687d466831850">MediaTexture</a>);</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        Brush.ImageSize = FVector2D(1920, 1080); <span class="comment">// 영상 해상도에 맞게 조정</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        <a class="code hl_variable" href="classUPopup__DailyStudy.html#a9eebb5057be3568f9c8e35a3bb529408">Img_Correct</a>-&gt;SetBrush(Brush);</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    }</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>}</div>
+</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
+<div class="foldopen" id="foldopen00065" data-start="{" data-end="}">
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno"><a class="line" href="classUPopup__DailyStudy.html#a70482f504fdf6b9b33e55e884a6306ea">   65</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUPopup__DailyStudy.html#a70482f504fdf6b9b33e55e884a6306ea">UPopup_DailyStudy::NativeDestruct</a>()</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>{</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    Super::NativeDestruct();</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <span class="comment">// 타이머 정리</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <span class="keywordflow">if</span> (GetWorld())</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    {</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        GetWorld()-&gt;GetTimerManager().ClearTimer(<a class="code hl_variable" href="classUPopup__DailyStudy.html#aada5e8035987df38bdcf0840077fb0b4">NextTimerHandle</a>);</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        GetWorld()-&gt;GetTimerManager().ClearTimer(<a class="code hl_variable" href="classUPopup__DailyStudy.html#af8833fc73c8d2613e502cf05670c1c58">ThinkingTimerHandle</a>);</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>        GetWorld()-&gt;GetTimerManager().ClearTimer(<a class="code hl_variable" href="classUPopup__DailyStudy.html#ab9343e0654da3e07cc607a26e01e6031">VideoCheckTimerHandle</a>);</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    }</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    <span class="comment">// 미디어 플레이어 정리</span></div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    <a class="code hl_variable" href="classUPopup__DailyStudy.html#ab238bc60cfa62ee2ca6142fd5e02cd55">MediaPlayer</a>-&gt;Close();</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>}</div>
+</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
+<div class="foldopen" id="foldopen00081" data-start="{" data-end="}">
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno"><a class="line" href="classUPopup__DailyStudy.html#ae86b6eab7114c0d51564145dbb38f2eb">   81</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUPopup__DailyStudy.html#ae86b6eab7114c0d51564145dbb38f2eb">UPopup_DailyStudy::InitPopup</a>(<span class="keyword">const</span> TArray&lt;FWordData&gt;&amp; WordDataArray)</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>{</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    <span class="comment">// 기본 초기화 (델리게이트 바인딩 등)</span></div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUPopup__DailyStudy.html#aad2cf3f6d3c973144b0c3a11b3e48147">Btn_Close</a>)</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    {</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        <a class="code hl_variable" href="classUPopup__DailyStudy.html#aad2cf3f6d3c973144b0c3a11b3e48147">Btn_Close</a>-&gt;OnButtonClickedEvent.RemoveDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUPopup__DailyStudy.html#abd9e6e53bb288428ff288027c511bf2e">UPopup_DailyStudy::OnClickClose</a>);</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>        <a class="code hl_variable" href="classUPopup__DailyStudy.html#aad2cf3f6d3c973144b0c3a11b3e48147">Btn_Close</a>-&gt;OnButtonClickedEvent.AddDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUPopup__DailyStudy.html#abd9e6e53bb288428ff288027c511bf2e">UPopup_DailyStudy::OnClickClose</a>);</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    }</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> DM = UBroadcastManager::Get(GetWorld()))</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    {</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>        DM-&gt;OnAudioCapture.RemoveDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUPopup__DailyStudy.html#ae94501413cdd46a158cc20e34b39e080">UPopup_DailyStudy::OnAudioCapture</a>);</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>        DM-&gt;OnAudioCapture.AddDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUPopup__DailyStudy.html#ae94501413cdd46a158cc20e34b39e080">UPopup_DailyStudy::OnAudioCapture</a>);</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    }</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> </div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUPopup__DailyStudy.html#ae965e86e96832b375b5d2286da55ba77">CountDown_Widget</a>)</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    {</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>        <a class="code hl_variable" href="classUPopup__DailyStudy.html#ae965e86e96832b375b5d2286da55ba77">CountDown_Widget</a>-&gt;OnCountDownFinished.RemoveDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUPopup__DailyStudy.html#abad87a20bbe50e73a65cb205e689f613">UPopup_DailyStudy::OnCountDownFinished</a>);</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>        <a class="code hl_variable" href="classUPopup__DailyStudy.html#ae965e86e96832b375b5d2286da55ba77">CountDown_Widget</a>-&gt;OnCountDownFinished.AddDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUPopup__DailyStudy.html#abad87a20bbe50e73a65cb205e689f613">UPopup_DailyStudy::OnCountDownFinished</a>);</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    }</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span> </div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    <span class="comment">// 초기화</span></div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    <a class="code hl_variable" href="classUPopup__DailyStudy.html#abde27c21796c1c3f337875109e09b0a9">CurIndex</a> = 0;</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    <a class="code hl_variable" href="classUPopup__DailyStudy.html#aa5078967cb7c1b9b6c1996d6a6c91f29">CurrentScore</a> = 0;</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    <a class="code hl_variable" href="classUPopup__DailyStudy.html#a87307cbad3edeae3c28d006ddaefc0ab">CorrectAnswerCount</a> = 0;</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span> </div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    <a class="code hl_variable" href="classUPopup__DailyStudy.html#a728e7065b4090ecb8729afa2786f37d6">QuestionList</a>.Empty();</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    <a class="code hl_variable" href="classUPopup__DailyStudy.html#a728e7065b4090ecb8729afa2786f37d6">QuestionList</a>.Append(WordDataArray);</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span> </div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    <a class="code hl_variable" href="classUPopup__DailyStudy.html#a5d1c15b7ae1f52e78b819dcf1b96ae67">AnswerList</a>.Empty();</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span> </div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    <a class="code hl_variable" href="classUPopup__DailyStudy.html#ab7cd6894e497a61d37f9fc0b76e4d4aa">Canvas_Correct</a>-&gt;SetVisibility(ESlateVisibility::Hidden);</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    <a class="code hl_variable" href="classUPopup__DailyStudy.html#a3b12206aa2fbf8ebe8475e8b781816dc">Canvas_Question</a>-&gt;SetVisibility(ESlateVisibility::Hidden);</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    </div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>    <a class="code hl_variable" href="classUPopup__DailyStudy.html#aa29bd1c196ebfce62fe1210e0d76efce">Txt_CurScore</a>-&gt;SetText(FText::FromString(FString::Printf(TEXT(<span class="stringliteral">&quot;Score : %d&quot;</span>), <a class="code hl_variable" href="classUPopup__DailyStudy.html#aa5078967cb7c1b9b6c1996d6a6c91f29">CurrentScore</a>)));</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span> </div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>    <span class="comment">// 카운트다운 시작</span></div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    UGameSoundManager::Get(GetWorld())-&gt;PlaySound2D(<a class="code hl_enumvalue" href="EGameSoundType_8h.html#af4a7536fe94049720d6e9d21c1b2ec80a11d0fe2bccefa573cbca1587d88fe66d">EGameSoundType::Speak_the_Word_in_korean</a>);</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    <a class="code hl_variable" href="classUPopup__DailyStudy.html#ae965e86e96832b375b5d2286da55ba77">CountDown_Widget</a>-&gt;StartCountDown(3);</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>}</div>
+</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span> </div>
+<div class="foldopen" id="foldopen00122" data-start="{" data-end="}">
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno"><a class="line" href="classUPopup__DailyStudy.html#a3ebafbd87f1b7cdad67856f7b0b13c59">  122</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUPopup__DailyStudy.html#a3ebafbd87f1b7cdad67856f7b0b13c59">UPopup_DailyStudy::LoadCurQuestion</a>()</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>{</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classUPopup__DailyStudy.html#a728e7065b4090ecb8729afa2786f37d6">QuestionList</a>.IsValidIndex(<a class="code hl_variable" href="classUPopup__DailyStudy.html#abde27c21796c1c3f337875109e09b0a9">CurIndex</a>))</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span> </div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>    <a class="code hl_variable" href="classUPopup__DailyStudy.html#a8cc6cefbeefbae89dec996774678235f">Border_Question</a>-&gt;SetVisibility(ESlateVisibility::Visible);</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>    <a class="code hl_variable" href="classUPopup__DailyStudy.html#af15204da122b5ebed8cc3e89bc8e0ede">Txt_Infomation</a>-&gt;SetVisibility(ESlateVisibility::Visible);</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>    </div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>    <a class="code hl_variable" href="classUPopup__DailyStudy.html#aef12cc3aa48142aa43420d4a6f688754">Rich_Text</a>-&gt;SetText(FText::FromString(<a class="code hl_variable" href="classUPopup__DailyStudy.html#a728e7065b4090ecb8729afa2786f37d6">QuestionList</a>[<a class="code hl_variable" href="classUPopup__DailyStudy.html#abde27c21796c1c3f337875109e09b0a9">CurIndex</a>].Kor));</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>    <a class="code hl_variable" href="classUPopup__DailyStudy.html#a4167e7fab3eb37e043f3eac561dacdb8">Txt_SubTitle</a>-&gt;SetText(FText::FromString(<a class="code hl_variable" href="classUPopup__DailyStudy.html#a728e7065b4090ecb8729afa2786f37d6">QuestionList</a>[<a class="code hl_variable" href="classUPopup__DailyStudy.html#abde27c21796c1c3f337875109e09b0a9">CurIndex</a>].Pronunciation));</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    </div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>    <span class="comment">// 진행 상황 업데이트</span></div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>    <a class="code hl_variable" href="classUPopup__DailyStudy.html#ac0fc9a9e73fa57c86ac09ed1da3ec87d">Txt_QuestionProgress</a>-&gt;SetText(FText::FromString(</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>        FString::Printf(TEXT(<span class="stringliteral">&quot;%02d/%02d&quot;</span>),</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>            <a class="code hl_variable" href="classUPopup__DailyStudy.html#abde27c21796c1c3f337875109e09b0a9">CurIndex</a> + 1,</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>            <a class="code hl_variable" href="classUPopup__DailyStudy.html#a728e7065b4090ecb8729afa2786f37d6">QuestionList</a>.Num())));</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span> </div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>    <a class="code hl_function" href="classUPopup__DailyStudy.html#a2cf4cbe161bde6095cc9e1cbb96672c7">StartThinkTimer</a>();</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>}</div>
+</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span> </div>
+<div class="foldopen" id="foldopen00142" data-start="{" data-end="}">
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno"><a class="line" href="classUPopup__DailyStudy.html#abd9e6e53bb288428ff288027c511bf2e">  142</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUPopup__DailyStudy.html#abd9e6e53bb288428ff288027c511bf2e">UPopup_DailyStudy::OnClickClose</a>()</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>{</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>    <span class="keywordflow">if</span> ( <span class="keyword">auto</span> PopupMgr = UPopupManager::Get(GetWorld()) )</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>    {</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>        PopupMgr-&gt;HideCurrentPopup();</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>    }</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>}</div>
+</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span> </div>
+<div class="foldopen" id="foldopen00150" data-start="{" data-end="}">
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno"><a class="line" href="classUPopup__DailyStudy.html#a5dfde0013a07b5ca84c27b87f59a7e8e">  150</a></span>FString <a class="code hl_function" href="classUPopup__DailyStudy.html#a5dfde0013a07b5ca84c27b87f59a7e8e">UPopup_DailyStudy::GetCurrentQuestionText</a>()<span class="keyword"> const</span></div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span><span class="keyword"></span>{</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUPopup__DailyStudy.html#a728e7065b4090ecb8729afa2786f37d6">QuestionList</a>.IsValidIndex(<a class="code hl_variable" href="classUPopup__DailyStudy.html#abde27c21796c1c3f337875109e09b0a9">CurIndex</a>))</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="classUPopup__DailyStudy.html#a728e7065b4090ecb8729afa2786f37d6">QuestionList</a>[<a class="code hl_variable" href="classUPopup__DailyStudy.html#abde27c21796c1c3f337875109e09b0a9">CurIndex</a>].Kor;</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span> </div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>    <span class="keywordflow">return</span> FString();</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>}</div>
+</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span> </div>
+<div class="foldopen" id="foldopen00158" data-start="{" data-end="}">
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno"><a class="line" href="classUPopup__DailyStudy.html#ae4cac0665a9fb6acccee435eb7c8061e">  158</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUPopup__DailyStudy.html#ae4cac0665a9fb6acccee435eb7c8061e">UPopup_DailyStudy::OnResponseSpeakingsJudges</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structFResponseSpeakingJudes.html">FResponseSpeakingJudes</a>&amp; JudgeResult)</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>{</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classUPopup__DailyStudy.html#a728e7065b4090ecb8729afa2786f37d6">QuestionList</a>.IsValidIndex(<a class="code hl_variable" href="classUPopup__DailyStudy.html#abde27c21796c1c3f337875109e09b0a9">CurIndex</a>))</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>    </div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>    <span class="comment">// 답변 리스트에 추가</span></div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>    <a class="code hl_variable" href="classUPopup__DailyStudy.html#a5d1c15b7ae1f52e78b819dcf1b96ae67">AnswerList</a>.Add(JudgeResult);</div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span> </div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>    <a class="code hl_variable" href="classUPopup__DailyStudy.html#aa5078967cb7c1b9b6c1996d6a6c91f29">CurrentScore</a> += JudgeResult.<a class="code hl_variable" href="structFResponseSpeakingJudes.html#ac9adb453eaf7391bd44ba0e050f2d816">final_overall_score</a>;</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>    <a class="code hl_variable" href="classUPopup__DailyStudy.html#aa29bd1c196ebfce62fe1210e0d76efce">Txt_CurScore</a>-&gt;SetText(FText::FromString(FString::Printf(TEXT(<span class="stringliteral">&quot;Score : %d&quot;</span>), <a class="code hl_variable" href="classUPopup__DailyStudy.html#aa5078967cb7c1b9b6c1996d6a6c91f29">CurrentScore</a>)));</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span> </div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>    <span class="comment">// 정답/오답 판별 (50점 미만이면 오답)</span></div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>    <a class="code hl_variable" href="classUPopup__DailyStudy.html#a762355cd2d7caa3445e2b2ff5a0b6fa5">bLastAnswerCorrect</a> = (JudgeResult.<a class="code hl_variable" href="structFResponseSpeakingJudes.html#ac9adb453eaf7391bd44ba0e050f2d816">final_overall_score</a> &gt;= 50);</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span> </div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>    <span class="keywordflow">if</span> ( <a class="code hl_variable" href="classUPopup__DailyStudy.html#a762355cd2d7caa3445e2b2ff5a0b6fa5">bLastAnswerCorrect</a> )</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>        <a class="code hl_variable" href="classUPopup__DailyStudy.html#a87307cbad3edeae3c28d006ddaefc0ab">CorrectAnswerCount</a>++;</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>    </div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>    <span class="comment">// 정답/오답 화면 표시 (영상 + TTS)</span></div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>    <a class="code hl_function" href="classUPopup__DailyStudy.html#abbcbd1e7d91be03815ae1becca445a4d">ShowCorrectData</a>(<a class="code hl_variable" href="classUPopup__DailyStudy.html#a762355cd2d7caa3445e2b2ff5a0b6fa5">bLastAnswerCorrect</a>);</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>}</div>
+</div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span> </div>
+<div class="foldopen" id="foldopen00179" data-start="{" data-end="}">
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno"><a class="line" href="classUPopup__DailyStudy.html#a2cf4cbe161bde6095cc9e1cbb96672c7">  179</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUPopup__DailyStudy.html#a2cf4cbe161bde6095cc9e1cbb96672c7">UPopup_DailyStudy::StartThinkTimer</a>()</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>{</div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>    <a class="code hl_variable" href="classUPopup__DailyStudy.html#a9ef9ab591c0b98e53a01b5005a2ebc49">RemainingThinkTime</a> = <a class="code hl_variable" href="namespaceDailyStudyConfig.html#a3511e4a22589a30e8505b3f9ff39d0f6">DailyStudyConfig::THINK_TIME</a>;</div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>    </div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>    <a class="code hl_variable" href="classUPopup__DailyStudy.html#a1e7db9afdc95f767757be6ef96755ff7">ProgressBar_RemainTime</a>-&gt;SetPercent(1.0f);</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>    <a class="code hl_variable" href="classUPopup__DailyStudy.html#acce3af1cdae27f4335e0a6665e43de6e">Txt_RemainTime</a>-&gt;SetText(FText::FromString(FString::Printf(TEXT(<span class="stringliteral">&quot;%.1f&quot;</span>), <a class="code hl_variable" href="classUPopup__DailyStudy.html#a9ef9ab591c0b98e53a01b5005a2ebc49">RemainingThinkTime</a>)));</div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span> </div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>    GetWorld()-&gt;GetTimerManager().SetTimer(<a class="code hl_variable" href="classUPopup__DailyStudy.html#af8833fc73c8d2613e502cf05670c1c58">ThinkingTimerHandle</a>, <span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUPopup__DailyStudy.html#a026de575f48ad143ad18f7045ae1beb2">UPopup_DailyStudy::UpdateThinkTimer</a>, 0.1f, <span class="keyword">true</span>);</div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>}</div>
+</div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span> </div>
+<div class="foldopen" id="foldopen00189" data-start="{" data-end="}">
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno"><a class="line" href="classUPopup__DailyStudy.html#a026de575f48ad143ad18f7045ae1beb2">  189</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUPopup__DailyStudy.html#a026de575f48ad143ad18f7045ae1beb2">UPopup_DailyStudy::UpdateThinkTimer</a>()</div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>{</div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>    <a class="code hl_variable" href="classUPopup__DailyStudy.html#a9ef9ab591c0b98e53a01b5005a2ebc49">RemainingThinkTime</a> -= 0.1f;</div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUPopup__DailyStudy.html#a9ef9ab591c0b98e53a01b5005a2ebc49">RemainingThinkTime</a> &lt;= 0.f)</div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>    {</div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>        <a class="code hl_variable" href="classUPopup__DailyStudy.html#a9ef9ab591c0b98e53a01b5005a2ebc49">RemainingThinkTime</a> = 0.f;</div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>        <a class="code hl_function" href="classUPopup__DailyStudy.html#a9917b7f5d4d661f1124b42aeaf1f5c95">OnThinkTimeFinished</a>();</div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>    }</div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span> </div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>    <a class="code hl_variable" href="classUPopup__DailyStudy.html#a1e7db9afdc95f767757be6ef96755ff7">ProgressBar_RemainTime</a>-&gt;SetPercent(<a class="code hl_variable" href="classUPopup__DailyStudy.html#a9ef9ab591c0b98e53a01b5005a2ebc49">RemainingThinkTime</a> / <a class="code hl_variable" href="namespaceDailyStudyConfig.html#a3511e4a22589a30e8505b3f9ff39d0f6">DailyStudyConfig::THINK_TIME</a>);</div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>    <a class="code hl_variable" href="classUPopup__DailyStudy.html#acce3af1cdae27f4335e0a6665e43de6e">Txt_RemainTime</a>-&gt;SetText(FText::FromString(FString::Printf(TEXT(<span class="stringliteral">&quot;%.1f&quot;</span>), <a class="code hl_variable" href="classUPopup__DailyStudy.html#a9ef9ab591c0b98e53a01b5005a2ebc49">RemainingThinkTime</a>)));</div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>}</div>
+</div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span> </div>
+<div class="foldopen" id="foldopen00202" data-start="{" data-end="}">
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno"><a class="line" href="classUPopup__DailyStudy.html#a9917b7f5d4d661f1124b42aeaf1f5c95">  202</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUPopup__DailyStudy.html#a9917b7f5d4d661f1124b42aeaf1f5c95">UPopup_DailyStudy::OnThinkTimeFinished</a>()</div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>{</div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>    GetWorld()-&gt;GetTimerManager().ClearTimer(<a class="code hl_variable" href="classUPopup__DailyStudy.html#af8833fc73c8d2613e502cf05670c1c58">ThinkingTimerHandle</a>);</div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span> </div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>    <span class="comment">// 타임업 = 오답 처리</span></div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>    <a class="code hl_variable" href="classUPopup__DailyStudy.html#a762355cd2d7caa3445e2b2ff5a0b6fa5">bLastAnswerCorrect</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>    </div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>    <span class="comment">// 빈 답변 추가 (건너뜀 처리)</span></div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUPopup__DailyStudy.html#a728e7065b4090ecb8729afa2786f37d6">QuestionList</a>.IsValidIndex(<a class="code hl_variable" href="classUPopup__DailyStudy.html#abde27c21796c1c3f337875109e09b0a9">CurIndex</a>))</div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>    {</div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>        <a class="code hl_struct" href="structFResponseSpeakingJudes.html">FResponseSpeakingJudes</a> EmptyAnswer;</div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>        EmptyAnswer.<a class="code hl_variable" href="structFResponseSpeakingJudes.html#ac9adb453eaf7391bd44ba0e050f2d816">final_overall_score</a> = 0;</div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>        EmptyAnswer.<a class="code hl_variable" href="structFResponseSpeakingJudes.html#aca28895168248e02526bcbc5043bebd5">grammar_score</a> = 0;</div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>        EmptyAnswer.<a class="code hl_variable" href="structFResponseSpeakingJudes.html#a48ca6f0034244337fa3023ee8b4ffe42">context_score</a> = 0;</div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>        EmptyAnswer.<a class="code hl_variable" href="structFResponseSpeakingJudes.html#a23ca88ea4bc62490c1e2528014473d2d">final_feedback</a> = TEXT(<span class="stringliteral">&quot;Time Over&quot;</span>);</div>
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>        <a class="code hl_variable" href="classUPopup__DailyStudy.html#a5d1c15b7ae1f52e78b819dcf1b96ae67">AnswerList</a>.Add(EmptyAnswer);</div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>    }</div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>    </div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>    <span class="comment">// 오답 화면 표시 (영상 + TTS)</span></div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>    <a class="code hl_function" href="classUPopup__DailyStudy.html#abbcbd1e7d91be03815ae1becca445a4d">ShowCorrectData</a>(<span class="keyword">false</span>);</div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>}</div>
+</div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span> </div>
+<div class="foldopen" id="foldopen00224" data-start="{" data-end="}">
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno"><a class="line" href="classUPopup__DailyStudy.html#ae94501413cdd46a158cc20e34b39e080">  224</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUPopup__DailyStudy.html#ae94501413cdd46a158cc20e34b39e080">UPopup_DailyStudy::OnAudioCapture</a>(<span class="keywordtype">bool</span> bIsRecording)</div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>{</div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>    <span class="keywordflow">if</span> (bIsRecording)</div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>    {</div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>        GetWorld()-&gt;GetTimerManager().ClearTimer(<a class="code hl_variable" href="classUPopup__DailyStudy.html#af8833fc73c8d2613e502cf05670c1c58">ThinkingTimerHandle</a>);</div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>    }</div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>}</div>
+</div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span> </div>
+<div class="foldopen" id="foldopen00232" data-start="{" data-end="}">
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno"><a class="line" href="classUPopup__DailyStudy.html#ac64714c71d3be266a0be70c28c4adc7f">  232</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUPopup__DailyStudy.html#ac64714c71d3be266a0be70c28c4adc7f">UPopup_DailyStudy::OnResponseListenAudio</a>(<a class="code hl_struct" href="structFResponseListenAudio.html">FResponseListenAudio</a>&amp; ResponseData, <span class="keywordtype">bool</span> bWasSuccessful)</div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>{</div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>    <span class="keywordflow">if</span> (bWasSuccessful)</div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>    {</div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>        <span class="keywordflow">if</span> (<span class="keyword">auto</span> PlayerActor = <a class="code hl_function" href="classULingoGameHelper.html#aedc78e0ec65a7aad312693bd1719bff8">ULingoGameHelper::GetPlayerActor</a>(<span class="keyword">this</span>))</div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>            PlayerActor-&gt;PlayTTSAudio(ResponseData.<a class="code hl_variable" href="structFResponseListenAudio.html#a39dfdd52ce3770dfbccf800986ce4607">audio_base64</a>);</div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span> </div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>        <span class="comment">// 다음 문제로 이동 (기존 타이머 로직 사용)</span></div>
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>        GetWorld()-&gt;GetTimerManager().SetTimer(</div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>            <a class="code hl_variable" href="classUPopup__DailyStudy.html#aada5e8035987df38bdcf0840077fb0b4">NextTimerHandle</a>,</div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>            <span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUPopup__DailyStudy.html#a19c749db22282632c80b13fe7955f21b">UPopup_DailyStudy::MoveToNextQuestion</a>,</div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>            <a class="code hl_variable" href="namespaceDailyStudyConfig.html#afb92fb6f59aaba2d2382c1b10214d956">DailyStudyConfig::NEXT_QUESTION</a>,</div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>            <span class="keyword">false</span></div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>        );</div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>    }</div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>    <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>    {</div>
+<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>        <span class="comment">// 다음 문제로 이동 (기존 타이머 로직 사용)</span></div>
+<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>        GetWorld()-&gt;GetTimerManager().SetTimer(</div>
+<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>            <a class="code hl_variable" href="classUPopup__DailyStudy.html#aada5e8035987df38bdcf0840077fb0b4">NextTimerHandle</a>,</div>
+<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>            <span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUPopup__DailyStudy.html#a19c749db22282632c80b13fe7955f21b">UPopup_DailyStudy::MoveToNextQuestion</a>,</div>
+<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span>            <a class="code hl_variable" href="namespaceDailyStudyConfig.html#afb92fb6f59aaba2d2382c1b10214d956">DailyStudyConfig::NEXT_QUESTION</a>,</div>
+<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span>            <span class="keyword">false</span></div>
+<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span>        );</div>
+<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>    }</div>
+<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span>}</div>
+</div>
+<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span> </div>
+<div class="foldopen" id="foldopen00259" data-start="{" data-end="}">
+<div class="line"><a id="l00259" name="l00259"></a><span class="lineno"><a class="line" href="classUPopup__DailyStudy.html#abbcbd1e7d91be03815ae1becca445a4d">  259</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUPopup__DailyStudy.html#abbcbd1e7d91be03815ae1becca445a4d">UPopup_DailyStudy::ShowCorrectData</a>(<span class="keywordtype">bool</span> bIsCorrect)</div>
+<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>{</div>
+<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>    <span class="keywordflow">if</span> ( <span class="keyword">auto</span> DM = UDialogManager::Get(GetWorld()))</div>
+<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span>        DM-&gt;HideToastImmediately();</div>
+<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span>    </div>
+<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span>    <a class="code hl_variable" href="classUPopup__DailyStudy.html#ab7cd6894e497a61d37f9fc0b76e4d4aa">Canvas_Correct</a>-&gt;SetVisibility(ESlateVisibility::Visible);</div>
+<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span>        </div>
+<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span>    <span class="comment">// FWordData에서 한글 단어 표시</span></div>
+<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span>    <a class="code hl_variable" href="classUPopup__DailyStudy.html#add807e9a6c489b6edfb478c05175ab06">Txt_Correct</a>-&gt;SetText(FText::FromString(<a class="code hl_variable" href="classUPopup__DailyStudy.html#a728e7065b4090ecb8729afa2786f37d6">QuestionList</a>[<a class="code hl_variable" href="classUPopup__DailyStudy.html#abde27c21796c1c3f337875109e09b0a9">CurIndex</a>].Kor));</div>
+<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span> </div>
+<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span>    <a class="code hl_variable" href="classUPopup__DailyStudy.html#a8cc6cefbeefbae89dec996774678235f">Border_Question</a>-&gt;SetVisibility(ESlateVisibility::Hidden);</div>
+<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span>    <a class="code hl_variable" href="classUPopup__DailyStudy.html#af15204da122b5ebed8cc3e89bc8e0ede">Txt_Infomation</a>-&gt;SetVisibility(ESlateVisibility::Hidden);</div>
+<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span> </div>
+<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span>    <span class="keywordflow">if</span> (<a class="code hl_class" href="classUKLingoNetworkSystem.html">UKLingoNetworkSystem</a>* NetworkSystem = UKLingoNetworkSystem::Get(GetWorld()))</div>
+<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span>    {</div>
+<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span>        <span class="comment">// 한글 단어를 음성으로 요청</span></div>
+<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span>        NetworkSystem-&gt;RequestListenAudio(</div>
+<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span>            <a class="code hl_variable" href="classUPopup__DailyStudy.html#a728e7065b4090ecb8729afa2786f37d6">QuestionList</a>[<a class="code hl_variable" href="classUPopup__DailyStudy.html#abde27c21796c1c3f337875109e09b0a9">CurIndex</a>].Kor, </div>
+<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span>            FResponseListenAudioDelegate::CreateUObject(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUPopup__DailyStudy.html#ac64714c71d3be266a0be70c28c4adc7f">UPopup_DailyStudy::OnResponseListenAudio</a>)</div>
+<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span>        );</div>
+<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span>    }</div>
+<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span>    </div>
+<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span>    <a class="code hl_function" href="classUPopup__DailyStudy.html#ae3d689611cf391da26f322f82985aab1">PlayVideo</a>(bIsCorrect);</div>
+<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span>}</div>
+</div>
+<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span> </div>
+<div class="foldopen" id="foldopen00284" data-start="{" data-end="}">
+<div class="line"><a id="l00284" name="l00284"></a><span class="lineno"><a class="line" href="classUPopup__DailyStudy.html#abad87a20bbe50e73a65cb205e689f613">  284</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUPopup__DailyStudy.html#abad87a20bbe50e73a65cb205e689f613">UPopup_DailyStudy::OnCountDownFinished</a>()</div>
+<div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span>{</div>
+<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span>    <a class="code hl_variable" href="classUPopup__DailyStudy.html#a3b12206aa2fbf8ebe8475e8b781816dc">Canvas_Question</a>-&gt;SetVisibility(ESlateVisibility::Visible);</div>
+<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span>    </div>
+<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span>    <a class="code hl_function" href="classUPopup__DailyStudy.html#a3ebafbd87f1b7cdad67856f7b0b13c59">LoadCurQuestion</a>();</div>
+<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span>}</div>
+</div>
+<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span> </div>
+<div class="foldopen" id="foldopen00291" data-start="{" data-end="}">
+<div class="line"><a id="l00291" name="l00291"></a><span class="lineno"><a class="line" href="classUPopup__DailyStudy.html#a19c749db22282632c80b13fe7955f21b">  291</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUPopup__DailyStudy.html#a19c749db22282632c80b13fe7955f21b">UPopup_DailyStudy::MoveToNextQuestion</a>()</div>
+<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span>{</div>
+<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span>    <a class="code hl_variable" href="classUPopup__DailyStudy.html#ab7cd6894e497a61d37f9fc0b76e4d4aa">Canvas_Correct</a>-&gt;SetVisibility(ESlateVisibility::Hidden);</div>
+<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span> </div>
+<div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span>    <a class="code hl_variable" href="classUPopup__DailyStudy.html#abde27c21796c1c3f337875109e09b0a9">CurIndex</a>++;</div>
+<div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span> </div>
+<div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classUPopup__DailyStudy.html#abde27c21796c1c3f337875109e09b0a9">CurIndex</a> &lt; <a class="code hl_variable" href="classUPopup__DailyStudy.html#a728e7065b4090ecb8729afa2786f37d6">QuestionList</a>.Num())</div>
+<div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span>    {</div>
+<div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span>        <a class="code hl_function" href="classUPopup__DailyStudy.html#a3ebafbd87f1b7cdad67856f7b0b13c59">LoadCurQuestion</a>();</div>
+<div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span>    }</div>
+<div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span>    <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span>    {</div>
+<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span>        <span class="comment">// 현재 팝업 닫기</span></div>
+<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span>        <a class="code hl_function" href="classUPopup__DailyStudy.html#abd9e6e53bb288428ff288027c511bf2e">OnClickClose</a>();</div>
+<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span>        </div>
+<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span>        <span class="comment">// 모든 문제 완료 - DailyResult 팝업 표시</span></div>
+<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span>        <span class="keywordflow">if</span> (<span class="keyword">auto</span> DailyResultPopup = UPopupManager::Get(GetWorld())-&gt;ShowPopupAs&lt;UPopup_DailyResult&gt;(EPopupType::DailyResult))</div>
+<div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span>        {</div>
+<div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span>            <span class="comment">// FDailyStudyResult 생성</span></div>
+<div class="line"><a id="l00310" name="l00310"></a><span class="lineno">  310</span>            <a class="code hl_struct" href="structFDailyStudyResult.html">FDailyStudyResult</a> Result;</div>
+<div class="line"><a id="l00311" name="l00311"></a><span class="lineno">  311</span>            Result.<a class="code hl_variable" href="structFDailyStudyResult.html#a80a03ad362cbb9d300e91a02e82ff2e5">CurrentScore</a> = <a class="code hl_variable" href="classUPopup__DailyStudy.html#aa5078967cb7c1b9b6c1996d6a6c91f29">CurrentScore</a>;</div>
+<div class="line"><a id="l00312" name="l00312"></a><span class="lineno">  312</span>            Result.<a class="code hl_variable" href="structFDailyStudyResult.html#a6fd0bc01ce8fa6a7b71ded010c5f4d43">QuestionList</a> = <a class="code hl_variable" href="classUPopup__DailyStudy.html#a728e7065b4090ecb8729afa2786f37d6">QuestionList</a>;</div>
+<div class="line"><a id="l00313" name="l00313"></a><span class="lineno">  313</span>            Result.<a class="code hl_variable" href="structFDailyStudyResult.html#aaeb6de2a333a3833e207f37c6974b6ec">AnswerList</a> = <a class="code hl_variable" href="classUPopup__DailyStudy.html#a5d1c15b7ae1f52e78b819dcf1b96ae67">AnswerList</a>;</div>
+<div class="line"><a id="l00314" name="l00314"></a><span class="lineno">  314</span>            </div>
+<div class="line"><a id="l00315" name="l00315"></a><span class="lineno">  315</span>            DailyResultPopup-&gt;InitPopup(Result);</div>
+<div class="line"><a id="l00316" name="l00316"></a><span class="lineno">  316</span>        }</div>
+<div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span>    }</div>
+<div class="line"><a id="l00318" name="l00318"></a><span class="lineno">  318</span>}</div>
+</div>
+<div class="line"><a id="l00319" name="l00319"></a><span class="lineno">  319</span> </div>
+<div class="foldopen" id="foldopen00320" data-start="{" data-end="}">
+<div class="line"><a id="l00320" name="l00320"></a><span class="lineno"><a class="line" href="classUPopup__DailyStudy.html#ae3d689611cf391da26f322f82985aab1">  320</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUPopup__DailyStudy.html#ae3d689611cf391da26f322f82985aab1">UPopup_DailyStudy::PlayVideo</a>(<span class="keywordtype">bool</span> bIsCorrect)</div>
+<div class="line"><a id="l00321" name="l00321"></a><span class="lineno">  321</span>{</div>
+<div class="line"><a id="l00322" name="l00322"></a><span class="lineno">  322</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classUPopup__DailyStudy.html#ab238bc60cfa62ee2ca6142fd5e02cd55">MediaPlayer</a> || !<a class="code hl_variable" href="classUPopup__DailyStudy.html#a9eebb5057be3568f9c8e35a3bb529408">Img_Correct</a>)</div>
+<div class="line"><a id="l00323" name="l00323"></a><span class="lineno">  323</span>    {</div>
+<div class="line"><a id="l00324" name="l00324"></a><span class="lineno">  324</span>        <span class="comment">// 영상 재생 실패 시 바로 다음 문제로</span></div>
+<div class="line"><a id="l00325" name="l00325"></a><span class="lineno">  325</span>        <a class="code hl_function" href="classUPopup__DailyStudy.html#aa27f9e6188a93611e4e9118a05ffa93f">OnVideoFinished</a>();</div>
+<div class="line"><a id="l00326" name="l00326"></a><span class="lineno">  326</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00327" name="l00327"></a><span class="lineno">  327</span>    }</div>
+<div class="line"><a id="l00328" name="l00328"></a><span class="lineno">  328</span> </div>
+<div class="line"><a id="l00329" name="l00329"></a><span class="lineno">  329</span>    <span class="comment">// 재생할 영상 소스 선택</span></div>
+<div class="line"><a id="l00330" name="l00330"></a><span class="lineno">  330</span>    UMediaSource* SourceToPlay = bIsCorrect ? <a class="code hl_variable" href="classUPopup__DailyStudy.html#afac65849da93f980da1e9636d2d0008b">CorrectVideoSource</a> : <a class="code hl_variable" href="classUPopup__DailyStudy.html#a93320063fd065183c5d5435e0d68f22b">WrongVideoSource</a>;</div>
+<div class="line"><a id="l00331" name="l00331"></a><span class="lineno">  331</span> </div>
+<div class="line"><a id="l00332" name="l00332"></a><span class="lineno">  332</span>    <span class="keywordflow">if</span> (!SourceToPlay)</div>
+<div class="line"><a id="l00333" name="l00333"></a><span class="lineno">  333</span>    {</div>
+<div class="line"><a id="l00334" name="l00334"></a><span class="lineno">  334</span>        <span class="comment">// 영상이 없으면 바로 다음 문제로 이동</span></div>
+<div class="line"><a id="l00335" name="l00335"></a><span class="lineno">  335</span>        <a class="code hl_function" href="classUPopup__DailyStudy.html#aa27f9e6188a93611e4e9118a05ffa93f">OnVideoFinished</a>();</div>
+<div class="line"><a id="l00336" name="l00336"></a><span class="lineno">  336</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00337" name="l00337"></a><span class="lineno">  337</span>    }</div>
+<div class="line"><a id="l00338" name="l00338"></a><span class="lineno">  338</span> </div>
+<div class="line"><a id="l00339" name="l00339"></a><span class="lineno">  339</span>    <span class="comment">// Img_Correct 표시</span></div>
+<div class="line"><a id="l00340" name="l00340"></a><span class="lineno">  340</span>    <a class="code hl_variable" href="classUPopup__DailyStudy.html#a9eebb5057be3568f9c8e35a3bb529408">Img_Correct</a>-&gt;SetVisibility(ESlateVisibility::Visible);</div>
+<div class="line"><a id="l00341" name="l00341"></a><span class="lineno">  341</span> </div>
+<div class="line"><a id="l00342" name="l00342"></a><span class="lineno">  342</span>    <span class="comment">// 영상 열기 및 재생</span></div>
+<div class="line"><a id="l00343" name="l00343"></a><span class="lineno">  343</span>    <a class="code hl_variable" href="classUPopup__DailyStudy.html#ab238bc60cfa62ee2ca6142fd5e02cd55">MediaPlayer</a>-&gt;OpenSource(SourceToPlay);</div>
+<div class="line"><a id="l00344" name="l00344"></a><span class="lineno">  344</span>    <a class="code hl_variable" href="classUPopup__DailyStudy.html#ab238bc60cfa62ee2ca6142fd5e02cd55">MediaPlayer</a>-&gt;Play();</div>
+<div class="line"><a id="l00345" name="l00345"></a><span class="lineno">  345</span> </div>
+<div class="line"><a id="l00346" name="l00346"></a><span class="lineno">  346</span>    <span class="comment">// 시작 위치로 Seek</span></div>
+<div class="line"><a id="l00347" name="l00347"></a><span class="lineno">  347</span>    <a class="code hl_variable" href="classUPopup__DailyStudy.html#ab238bc60cfa62ee2ca6142fd5e02cd55">MediaPlayer</a>-&gt;Seek(FTimespan::FromSeconds(<a class="code hl_variable" href="classUPopup__DailyStudy.html#ae38f25805c0fc48d28f0a9bfd0b6b05d">VideoStartTime</a>));</div>
+<div class="line"><a id="l00348" name="l00348"></a><span class="lineno">  348</span> </div>
+<div class="line"><a id="l00349" name="l00349"></a><span class="lineno">  349</span>    <span class="comment">// 재생 시간 체크 타이머 시작 (0.1초마다 체크)</span></div>
+<div class="line"><a id="l00350" name="l00350"></a><span class="lineno">  350</span>    <span class="keywordflow">if</span> (GetWorld())</div>
+<div class="line"><a id="l00351" name="l00351"></a><span class="lineno">  351</span>    {</div>
+<div class="line"><a id="l00352" name="l00352"></a><span class="lineno">  352</span>        GetWorld()-&gt;GetTimerManager().SetTimer(</div>
+<div class="line"><a id="l00353" name="l00353"></a><span class="lineno">  353</span>            <a class="code hl_variable" href="classUPopup__DailyStudy.html#ab9343e0654da3e07cc607a26e01e6031">VideoCheckTimerHandle</a>,</div>
+<div class="line"><a id="l00354" name="l00354"></a><span class="lineno">  354</span>            <span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUPopup__DailyStudy.html#a04c9a41250066f201ac6c2543f347376">UPopup_DailyStudy::CheckVideoPlayback</a>,</div>
+<div class="line"><a id="l00355" name="l00355"></a><span class="lineno">  355</span>            0.1f,</div>
+<div class="line"><a id="l00356" name="l00356"></a><span class="lineno">  356</span>            <span class="keyword">true</span>  <span class="comment">// 반복</span></div>
+<div class="line"><a id="l00357" name="l00357"></a><span class="lineno">  357</span>        );</div>
+<div class="line"><a id="l00358" name="l00358"></a><span class="lineno">  358</span>    }</div>
+<div class="line"><a id="l00359" name="l00359"></a><span class="lineno">  359</span>}</div>
+</div>
+<div class="line"><a id="l00360" name="l00360"></a><span class="lineno">  360</span> </div>
+<div class="foldopen" id="foldopen00361" data-start="{" data-end="}">
+<div class="line"><a id="l00361" name="l00361"></a><span class="lineno"><a class="line" href="classUPopup__DailyStudy.html#a04c9a41250066f201ac6c2543f347376">  361</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUPopup__DailyStudy.html#a04c9a41250066f201ac6c2543f347376">UPopup_DailyStudy::CheckVideoPlayback</a>()</div>
+<div class="line"><a id="l00362" name="l00362"></a><span class="lineno">  362</span>{</div>
+<div class="line"><a id="l00363" name="l00363"></a><span class="lineno">  363</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classUPopup__DailyStudy.html#ab238bc60cfa62ee2ca6142fd5e02cd55">MediaPlayer</a>)</div>
+<div class="line"><a id="l00364" name="l00364"></a><span class="lineno">  364</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00365" name="l00365"></a><span class="lineno">  365</span> </div>
+<div class="line"><a id="l00366" name="l00366"></a><span class="lineno">  366</span>    <span class="comment">// 현재 재생 시간 확인</span></div>
+<div class="line"><a id="l00367" name="l00367"></a><span class="lineno">  367</span>    FTimespan CurrentTime = <a class="code hl_variable" href="classUPopup__DailyStudy.html#ab238bc60cfa62ee2ca6142fd5e02cd55">MediaPlayer</a>-&gt;GetTime();</div>
+<div class="line"><a id="l00368" name="l00368"></a><span class="lineno">  368</span>    <span class="keywordtype">float</span> CurrentSeconds = CurrentTime.GetTotalSeconds();</div>
+<div class="line"><a id="l00369" name="l00369"></a><span class="lineno">  369</span> </div>
+<div class="line"><a id="l00370" name="l00370"></a><span class="lineno">  370</span>    <span class="comment">// 종료 시간 도달 체크</span></div>
+<div class="line"><a id="l00371" name="l00371"></a><span class="lineno">  371</span>    <span class="keywordflow">if</span> (CurrentSeconds &gt;= <a class="code hl_variable" href="classUPopup__DailyStudy.html#a804d64c95f3610ca8a5f4341b8e13fdd">VideoEndTime</a>)</div>
+<div class="line"><a id="l00372" name="l00372"></a><span class="lineno">  372</span>    {</div>
+<div class="line"><a id="l00373" name="l00373"></a><span class="lineno">  373</span>        <span class="comment">// 타이머 중지</span></div>
+<div class="line"><a id="l00374" name="l00374"></a><span class="lineno">  374</span>        GetWorld()-&gt;GetTimerManager().ClearTimer(<a class="code hl_variable" href="classUPopup__DailyStudy.html#ab9343e0654da3e07cc607a26e01e6031">VideoCheckTimerHandle</a>);</div>
+<div class="line"><a id="l00375" name="l00375"></a><span class="lineno">  375</span> </div>
+<div class="line"><a id="l00376" name="l00376"></a><span class="lineno">  376</span>        <span class="comment">// 영상 종료 처리</span></div>
+<div class="line"><a id="l00377" name="l00377"></a><span class="lineno">  377</span>        <a class="code hl_function" href="classUPopup__DailyStudy.html#aa27f9e6188a93611e4e9118a05ffa93f">OnVideoFinished</a>();</div>
+<div class="line"><a id="l00378" name="l00378"></a><span class="lineno">  378</span>    }</div>
+<div class="line"><a id="l00379" name="l00379"></a><span class="lineno">  379</span>}</div>
+</div>
+<div class="line"><a id="l00380" name="l00380"></a><span class="lineno">  380</span> </div>
+<div class="foldopen" id="foldopen00381" data-start="{" data-end="}">
+<div class="line"><a id="l00381" name="l00381"></a><span class="lineno"><a class="line" href="classUPopup__DailyStudy.html#aa27f9e6188a93611e4e9118a05ffa93f">  381</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classUPopup__DailyStudy.html#aa27f9e6188a93611e4e9118a05ffa93f">UPopup_DailyStudy::OnVideoFinished</a>()</div>
+<div class="line"><a id="l00382" name="l00382"></a><span class="lineno">  382</span>{</div>
+<div class="line"><a id="l00383" name="l00383"></a><span class="lineno">  383</span>    <span class="comment">// 영상 숨기기</span></div>
+<div class="line"><a id="l00384" name="l00384"></a><span class="lineno">  384</span>    <a class="code hl_variable" href="classUPopup__DailyStudy.html#a9eebb5057be3568f9c8e35a3bb529408">Img_Correct</a>-&gt;SetVisibility(ESlateVisibility::Hidden);</div>
+<div class="line"><a id="l00385" name="l00385"></a><span class="lineno">  385</span> </div>
+<div class="line"><a id="l00386" name="l00386"></a><span class="lineno">  386</span>    <span class="comment">// 미디어 플레이어 정지</span></div>
+<div class="line"><a id="l00387" name="l00387"></a><span class="lineno">  387</span>    <a class="code hl_variable" href="classUPopup__DailyStudy.html#ab238bc60cfa62ee2ca6142fd5e02cd55">MediaPlayer</a>-&gt;Close();</div>
+<div class="line"><a id="l00388" name="l00388"></a><span class="lineno">  388</span> </div>
+<div class="line"><a id="l00389" name="l00389"></a><span class="lineno">  389</span>    <span class="comment">// 타이머 정리</span></div>
+<div class="line"><a id="l00390" name="l00390"></a><span class="lineno">  390</span>    GetWorld()-&gt;GetTimerManager().ClearTimer(<a class="code hl_variable" href="classUPopup__DailyStudy.html#ab9343e0654da3e07cc607a26e01e6031">VideoCheckTimerHandle</a>);</div>
+<div class="line"><a id="l00391" name="l00391"></a><span class="lineno">  391</span>}</div>
+</div>
+<div class="ttc" id="aAPlayerActor_8h_html"><div class="ttname"><a href="APlayerActor_8h.html">APlayerActor.h</a></div><div class="ttdoc">Declares the player-controlled character actor.</div></div>
+<div class="ttc" id="aEGameSoundType_8h_html_af4a7536fe94049720d6e9d21c1b2ec80a11d0fe2bccefa573cbca1587d88fe66d"><div class="ttname"><a href="EGameSoundType_8h.html#af4a7536fe94049720d6e9d21c1b2ec80a11d0fe2bccefa573cbca1587d88fe66d">EGameSoundType::Speak_the_Word_in_korean</a></div><div class="ttdeci">@ Speak_the_Word_in_korean</div></div>
+<div class="ttc" id="aGameLogging_8h_html"><div class="ttname"><a href="GameLogging_8h.html">GameLogging.h</a></div><div class="ttdoc">YiSan 전반에서 사용하는 공용 인터페이스를 선언합니다.</div></div>
+<div class="ttc" id="aUBroadcastManager_8h_html"><div class="ttname"><a href="UBroadcastManager_8h.html">UBroadcastManager.h</a></div></div>
+<div class="ttc" id="aUCircularProgressBar_8h_html"><div class="ttname"><a href="UCircularProgressBar_8h.html">UCircularProgressBar.h</a></div></div>
+<div class="ttc" id="aUDialogManager_8h_html"><div class="ttname"><a href="UDialogManager_8h.html">UDialogManager.h</a></div><div class="ttdoc">UDialogManager 클래스를 선언합니다.</div></div>
+<div class="ttc" id="aUGameSoundManager_8h_html"><div class="ttname"><a href="UGameSoundManager_8h.html">UGameSoundManager.h</a></div><div class="ttdoc">UGameSoundManager 클래스를 선언합니다.</div></div>
+<div class="ttc" id="aUKLingoNetworkSystem_8h_html"><div class="ttname"><a href="UKLingoNetworkSystem_8h.html">UKLingoNetworkSystem.h</a></div><div class="ttdoc">KLingo API 요청을 담당하는 서브시스템을 선언합니다.</div></div>
+<div class="ttc" id="aULingoGameHelper_8h_html"><div class="ttname"><a href="ULingoGameHelper_8h.html">ULingoGameHelper.h</a></div></div>
+<div class="ttc" id="aUPopupManager_8h_html"><div class="ttname"><a href="UPopupManager_8h.html">UPopupManager.h</a></div></div>
+<div class="ttc" id="aUPopup__DailyResult_8h_html"><div class="ttname"><a href="UPopup__DailyResult_8h.html">UPopup_DailyResult.h</a></div></div>
+<div class="ttc" id="aUPopup__DailyStudy_8h_html"><div class="ttname"><a href="UPopup__DailyStudy_8h.html">UPopup_DailyStudy.h</a></div></div>
+<div class="ttc" id="aUTextureButton_8h_html"><div class="ttname"><a href="UTextureButton_8h.html">UTextureButton.h</a></div></div>
+<div class="ttc" id="aclassUBasePopup_html_a6ac288312766fb96aa9acf7ece8a630e"><div class="ttname"><a href="classUBasePopup.html#a6ac288312766fb96aa9acf7ece8a630e">UBasePopup::bAllowPlayerControl</a></div><div class="ttdeci">bool bAllowPlayerControl</div><div class="ttdoc">이 팝업이 활성화되어 있을 때 플레이어 조작을 허용할지 여부</div><div class="ttdef"><b>Definition</b> <a href="UBasePopup_8h_source.html#l00091">UBasePopup.h:91</a></div></div>
+<div class="ttc" id="aclassUKLingoNetworkSystem_html"><div class="ttname"><a href="classUKLingoNetworkSystem.html">UKLingoNetworkSystem</a></div><div class="ttdef"><b>Definition</b> <a href="UKLingoNetworkSystem_8h_source.html#l00019">UKLingoNetworkSystem.h:20</a></div></div>
+<div class="ttc" id="aclassULingoGameHelper_html_aedc78e0ec65a7aad312693bd1719bff8"><div class="ttname"><a href="classULingoGameHelper.html#aedc78e0ec65a7aad312693bd1719bff8">ULingoGameHelper::GetPlayerActor</a></div><div class="ttdeci">static class APlayerActor * GetPlayerActor(const UObject *WorldContextObject)</div><div class="ttdoc">첫 번째 플레이어의 PlayerActor를 가져옵니다.</div><div class="ttdef"><b>Definition</b> <a href="ULingoGameHelper_8cpp_source.html#l00255">ULingoGameHelper.cpp:255</a></div></div>
+<div class="ttc" id="aclassUPopup__DailyStudy_html_a026de575f48ad143ad18f7045ae1beb2"><div class="ttname"><a href="classUPopup__DailyStudy.html#a026de575f48ad143ad18f7045ae1beb2">UPopup_DailyStudy::UpdateThinkTimer</a></div><div class="ttdeci">void UpdateThinkTimer()</div><div class="ttdef"><b>Definition</b> <a href="UPopup__DailyStudy_8cpp_source.html#l00189">UPopup_DailyStudy.cpp:189</a></div></div>
+<div class="ttc" id="aclassUPopup__DailyStudy_html_a04c9a41250066f201ac6c2543f347376"><div class="ttname"><a href="classUPopup__DailyStudy.html#a04c9a41250066f201ac6c2543f347376">UPopup_DailyStudy::CheckVideoPlayback</a></div><div class="ttdeci">void CheckVideoPlayback()</div><div class="ttdoc">영상 재생 시간 체크</div><div class="ttdef"><b>Definition</b> <a href="UPopup__DailyStudy_8cpp_source.html#l00361">UPopup_DailyStudy.cpp:361</a></div></div>
+<div class="ttc" id="aclassUPopup__DailyStudy_html_a19c749db22282632c80b13fe7955f21b"><div class="ttname"><a href="classUPopup__DailyStudy.html#a19c749db22282632c80b13fe7955f21b">UPopup_DailyStudy::MoveToNextQuestion</a></div><div class="ttdeci">void MoveToNextQuestion()</div><div class="ttdoc">다음 질문으로 이동</div><div class="ttdef"><b>Definition</b> <a href="UPopup__DailyStudy_8cpp_source.html#l00291">UPopup_DailyStudy.cpp:291</a></div></div>
+<div class="ttc" id="aclassUPopup__DailyStudy_html_a1a11a86129a0e76411a1e2db72564d23"><div class="ttname"><a href="classUPopup__DailyStudy.html#a1a11a86129a0e76411a1e2db72564d23">UPopup_DailyStudy::NativeConstruct</a></div><div class="ttdeci">virtual void NativeConstruct() override</div><div class="ttdef"><b>Definition</b> <a href="UPopup__DailyStudy_8cpp_source.html#l00033">UPopup_DailyStudy.cpp:33</a></div></div>
+<div class="ttc" id="aclassUPopup__DailyStudy_html_a1e7db9afdc95f767757be6ef96755ff7"><div class="ttname"><a href="classUPopup__DailyStudy.html#a1e7db9afdc95f767757be6ef96755ff7">UPopup_DailyStudy::ProgressBar_RemainTime</a></div><div class="ttdeci">TObjectPtr&lt; class UCircularProgressBar &gt; ProgressBar_RemainTime</div><div class="ttdef"><b>Definition</b> <a href="UPopup__DailyStudy_8h_source.html#l00117">UPopup_DailyStudy.h:117</a></div></div>
+<div class="ttc" id="aclassUPopup__DailyStudy_html_a2cf4cbe161bde6095cc9e1cbb96672c7"><div class="ttname"><a href="classUPopup__DailyStudy.html#a2cf4cbe161bde6095cc9e1cbb96672c7">UPopup_DailyStudy::StartThinkTimer</a></div><div class="ttdeci">void StartThinkTimer()</div><div class="ttdef"><b>Definition</b> <a href="UPopup__DailyStudy_8cpp_source.html#l00179">UPopup_DailyStudy.cpp:179</a></div></div>
+<div class="ttc" id="aclassUPopup__DailyStudy_html_a3b12206aa2fbf8ebe8475e8b781816dc"><div class="ttname"><a href="classUPopup__DailyStudy.html#a3b12206aa2fbf8ebe8475e8b781816dc">UPopup_DailyStudy::Canvas_Question</a></div><div class="ttdeci">TObjectPtr&lt; class UCanvasPanel &gt; Canvas_Question</div><div class="ttdef"><b>Definition</b> <a href="UPopup__DailyStudy_8h_source.html#l00096">UPopup_DailyStudy.h:96</a></div></div>
+<div class="ttc" id="aclassUPopup__DailyStudy_html_a3ebafbd87f1b7cdad67856f7b0b13c59"><div class="ttname"><a href="classUPopup__DailyStudy.html#a3ebafbd87f1b7cdad67856f7b0b13c59">UPopup_DailyStudy::LoadCurQuestion</a></div><div class="ttdeci">void LoadCurQuestion()</div><div class="ttdoc">현재 질문 UI 업데이트</div><div class="ttdef"><b>Definition</b> <a href="UPopup__DailyStudy_8cpp_source.html#l00122">UPopup_DailyStudy.cpp:122</a></div></div>
+<div class="ttc" id="aclassUPopup__DailyStudy_html_a4167e7fab3eb37e043f3eac561dacdb8"><div class="ttname"><a href="classUPopup__DailyStudy.html#a4167e7fab3eb37e043f3eac561dacdb8">UPopup_DailyStudy::Txt_SubTitle</a></div><div class="ttdeci">TObjectPtr&lt; class UTextBlock &gt; Txt_SubTitle</div><div class="ttdef"><b>Definition</b> <a href="UPopup__DailyStudy_8h_source.html#l00105">UPopup_DailyStudy.h:105</a></div></div>
+<div class="ttc" id="aclassUPopup__DailyStudy_html_a5d1c15b7ae1f52e78b819dcf1b96ae67"><div class="ttname"><a href="classUPopup__DailyStudy.html#a5d1c15b7ae1f52e78b819dcf1b96ae67">UPopup_DailyStudy::AnswerList</a></div><div class="ttdeci">TArray&lt; FResponseSpeakingJudes &gt; AnswerList</div><div class="ttdoc">답변 리스트 (FResponseSpeakingJudes)</div><div class="ttdef"><b>Definition</b> <a href="UPopup__DailyStudy_8h_source.html#l00143">UPopup_DailyStudy.h:143</a></div></div>
+<div class="ttc" id="aclassUPopup__DailyStudy_html_a5dfde0013a07b5ca84c27b87f59a7e8e"><div class="ttname"><a href="classUPopup__DailyStudy.html#a5dfde0013a07b5ca84c27b87f59a7e8e">UPopup_DailyStudy::GetCurrentQuestionText</a></div><div class="ttdeci">FString GetCurrentQuestionText() const</div><div class="ttdef"><b>Definition</b> <a href="UPopup__DailyStudy_8cpp_source.html#l00150">UPopup_DailyStudy.cpp:150</a></div></div>
+<div class="ttc" id="aclassUPopup__DailyStudy_html_a70482f504fdf6b9b33e55e884a6306ea"><div class="ttname"><a href="classUPopup__DailyStudy.html#a70482f504fdf6b9b33e55e884a6306ea">UPopup_DailyStudy::NativeDestruct</a></div><div class="ttdeci">virtual void NativeDestruct() override</div><div class="ttdef"><b>Definition</b> <a href="UPopup__DailyStudy_8cpp_source.html#l00065">UPopup_DailyStudy.cpp:65</a></div></div>
+<div class="ttc" id="aclassUPopup__DailyStudy_html_a728e7065b4090ecb8729afa2786f37d6"><div class="ttname"><a href="classUPopup__DailyStudy.html#a728e7065b4090ecb8729afa2786f37d6">UPopup_DailyStudy::QuestionList</a></div><div class="ttdeci">TArray&lt; struct FWordData &gt; QuestionList</div><div class="ttdoc">AI 생성 단어 데이터 목록 (한글/영어/발음)</div><div class="ttdef"><b>Definition</b> <a href="UPopup__DailyStudy_8h_source.html#l00140">UPopup_DailyStudy.h:140</a></div></div>
+<div class="ttc" id="aclassUPopup__DailyStudy_html_a762355cd2d7caa3445e2b2ff5a0b6fa5"><div class="ttname"><a href="classUPopup__DailyStudy.html#a762355cd2d7caa3445e2b2ff5a0b6fa5">UPopup_DailyStudy::bLastAnswerCorrect</a></div><div class="ttdeci">bool bLastAnswerCorrect</div><div class="ttdoc">마지막 답변이 정답인지 여부 (타임업 또는 50점 미만 = false)</div><div class="ttdef"><b>Definition</b> <a href="UPopup__DailyStudy_8h_source.html#l00158">UPopup_DailyStudy.h:158</a></div></div>
+<div class="ttc" id="aclassUPopup__DailyStudy_html_a804d64c95f3610ca8a5f4341b8e13fdd"><div class="ttname"><a href="classUPopup__DailyStudy.html#a804d64c95f3610ca8a5f4341b8e13fdd">UPopup_DailyStudy::VideoEndTime</a></div><div class="ttdeci">float VideoEndTime</div><div class="ttdoc">영상 재생 종료 시간 (초)</div><div class="ttdef"><b>Definition</b> <a href="UPopup__DailyStudy_8h_source.html#l00186">UPopup_DailyStudy.h:186</a></div></div>
+<div class="ttc" id="aclassUPopup__DailyStudy_html_a87307cbad3edeae3c28d006ddaefc0ab"><div class="ttname"><a href="classUPopup__DailyStudy.html#a87307cbad3edeae3c28d006ddaefc0ab">UPopup_DailyStudy::CorrectAnswerCount</a></div><div class="ttdeci">int32 CorrectAnswerCount</div><div class="ttdef"><b>Definition</b> <a href="UPopup__DailyStudy_8h_source.html#l00149">UPopup_DailyStudy.h:149</a></div></div>
+<div class="ttc" id="aclassUPopup__DailyStudy_html_a8cc6cefbeefbae89dec996774678235f"><div class="ttname"><a href="classUPopup__DailyStudy.html#a8cc6cefbeefbae89dec996774678235f">UPopup_DailyStudy::Border_Question</a></div><div class="ttdeci">TObjectPtr&lt; class UBorder &gt; Border_Question</div><div class="ttdef"><b>Definition</b> <a href="UPopup__DailyStudy_8h_source.html#l00099">UPopup_DailyStudy.h:99</a></div></div>
+<div class="ttc" id="aclassUPopup__DailyStudy_html_a93320063fd065183c5d5435e0d68f22b"><div class="ttname"><a href="classUPopup__DailyStudy.html#a93320063fd065183c5d5435e0d68f22b">UPopup_DailyStudy::WrongVideoSource</a></div><div class="ttdeci">TObjectPtr&lt; class UMediaSource &gt; WrongVideoSource</div><div class="ttdoc">오답 영상 소스</div><div class="ttdef"><b>Definition</b> <a href="UPopup__DailyStudy_8h_source.html#l00178">UPopup_DailyStudy.h:178</a></div></div>
+<div class="ttc" id="aclassUPopup__DailyStudy_html_a9917b7f5d4d661f1124b42aeaf1f5c95"><div class="ttname"><a href="classUPopup__DailyStudy.html#a9917b7f5d4d661f1124b42aeaf1f5c95">UPopup_DailyStudy::OnThinkTimeFinished</a></div><div class="ttdeci">void OnThinkTimeFinished()</div><div class="ttdef"><b>Definition</b> <a href="UPopup__DailyStudy_8cpp_source.html#l00202">UPopup_DailyStudy.cpp:202</a></div></div>
+<div class="ttc" id="aclassUPopup__DailyStudy_html_a9eebb5057be3568f9c8e35a3bb529408"><div class="ttname"><a href="classUPopup__DailyStudy.html#a9eebb5057be3568f9c8e35a3bb529408">UPopup_DailyStudy::Img_Correct</a></div><div class="ttdeci">TObjectPtr&lt; class UImage &gt; Img_Correct</div><div class="ttdef"><b>Definition</b> <a href="UPopup__DailyStudy_8h_source.html#l00125">UPopup_DailyStudy.h:125</a></div></div>
+<div class="ttc" id="aclassUPopup__DailyStudy_html_a9ef9ab591c0b98e53a01b5005a2ebc49"><div class="ttname"><a href="classUPopup__DailyStudy.html#a9ef9ab591c0b98e53a01b5005a2ebc49">UPopup_DailyStudy::RemainingThinkTime</a></div><div class="ttdeci">float RemainingThinkTime</div><div class="ttdef"><b>Definition</b> <a href="UPopup__DailyStudy_8h_source.html#l00155">UPopup_DailyStudy.h:155</a></div></div>
+<div class="ttc" id="aclassUPopup__DailyStudy_html_aa27f9e6188a93611e4e9118a05ffa93f"><div class="ttname"><a href="classUPopup__DailyStudy.html#aa27f9e6188a93611e4e9118a05ffa93f">UPopup_DailyStudy::OnVideoFinished</a></div><div class="ttdeci">void OnVideoFinished()</div><div class="ttdoc">영상 재생 완료 콜백</div><div class="ttdef"><b>Definition</b> <a href="UPopup__DailyStudy_8cpp_source.html#l00381">UPopup_DailyStudy.cpp:381</a></div></div>
+<div class="ttc" id="aclassUPopup__DailyStudy_html_aa29bd1c196ebfce62fe1210e0d76efce"><div class="ttname"><a href="classUPopup__DailyStudy.html#aa29bd1c196ebfce62fe1210e0d76efce">UPopup_DailyStudy::Txt_CurScore</a></div><div class="ttdeci">TObjectPtr&lt; class UTextBlock &gt; Txt_CurScore</div><div class="ttdef"><b>Definition</b> <a href="UPopup__DailyStudy_8h_source.html#l00090">UPopup_DailyStudy.h:90</a></div></div>
+<div class="ttc" id="aclassUPopup__DailyStudy_html_aa5078967cb7c1b9b6c1996d6a6c91f29"><div class="ttname"><a href="classUPopup__DailyStudy.html#aa5078967cb7c1b9b6c1996d6a6c91f29">UPopup_DailyStudy::CurrentScore</a></div><div class="ttdeci">int32 CurrentScore</div><div class="ttdef"><b>Definition</b> <a href="UPopup__DailyStudy_8h_source.html#l00148">UPopup_DailyStudy.h:148</a></div></div>
+<div class="ttc" id="aclassUPopup__DailyStudy_html_aad2cf3f6d3c973144b0c3a11b3e48147"><div class="ttname"><a href="classUPopup__DailyStudy.html#aad2cf3f6d3c973144b0c3a11b3e48147">UPopup_DailyStudy::Btn_Close</a></div><div class="ttdeci">TObjectPtr&lt; class UTextureButton &gt; Btn_Close</div><div class="ttdef"><b>Definition</b> <a href="UPopup__DailyStudy_8h_source.html#l00093">UPopup_DailyStudy.h:93</a></div></div>
+<div class="ttc" id="aclassUPopup__DailyStudy_html_aada5e8035987df38bdcf0840077fb0b4"><div class="ttname"><a href="classUPopup__DailyStudy.html#aada5e8035987df38bdcf0840077fb0b4">UPopup_DailyStudy::NextTimerHandle</a></div><div class="ttdeci">FTimerHandle NextTimerHandle</div><div class="ttdoc">다음 문제 이동 타이머</div><div class="ttdef"><b>Definition</b> <a href="UPopup__DailyStudy_8h_source.html#l00152">UPopup_DailyStudy.h:152</a></div></div>
+<div class="ttc" id="aclassUPopup__DailyStudy_html_ab238bc60cfa62ee2ca6142fd5e02cd55"><div class="ttname"><a href="classUPopup__DailyStudy.html#ab238bc60cfa62ee2ca6142fd5e02cd55">UPopup_DailyStudy::MediaPlayer</a></div><div class="ttdeci">TObjectPtr&lt; class UMediaPlayer &gt; MediaPlayer</div><div class="ttdoc">미디어 플레이어</div><div class="ttdef"><b>Definition</b> <a href="UPopup__DailyStudy_8h_source.html#l00166">UPopup_DailyStudy.h:166</a></div></div>
+<div class="ttc" id="aclassUPopup__DailyStudy_html_ab7cd6894e497a61d37f9fc0b76e4d4aa"><div class="ttname"><a href="classUPopup__DailyStudy.html#ab7cd6894e497a61d37f9fc0b76e4d4aa">UPopup_DailyStudy::Canvas_Correct</a></div><div class="ttdeci">TObjectPtr&lt; class UCanvasPanel &gt; Canvas_Correct</div><div class="ttdef"><b>Definition</b> <a href="UPopup__DailyStudy_8h_source.html#l00122">UPopup_DailyStudy.h:122</a></div></div>
+<div class="ttc" id="aclassUPopup__DailyStudy_html_ab9343e0654da3e07cc607a26e01e6031"><div class="ttname"><a href="classUPopup__DailyStudy.html#ab9343e0654da3e07cc607a26e01e6031">UPopup_DailyStudy::VideoCheckTimerHandle</a></div><div class="ttdeci">FTimerHandle VideoCheckTimerHandle</div><div class="ttdoc">영상 재생 시간 체크 타이머</div><div class="ttdef"><b>Definition</b> <a href="UPopup__DailyStudy_8h_source.html#l00189">UPopup_DailyStudy.h:189</a></div></div>
+<div class="ttc" id="aclassUPopup__DailyStudy_html_abad87a20bbe50e73a65cb205e689f613"><div class="ttname"><a href="classUPopup__DailyStudy.html#abad87a20bbe50e73a65cb205e689f613">UPopup_DailyStudy::OnCountDownFinished</a></div><div class="ttdeci">void OnCountDownFinished()</div><div class="ttdef"><b>Definition</b> <a href="UPopup__DailyStudy_8cpp_source.html#l00284">UPopup_DailyStudy.cpp:284</a></div></div>
+<div class="ttc" id="aclassUPopup__DailyStudy_html_abbcbd1e7d91be03815ae1becca445a4d"><div class="ttname"><a href="classUPopup__DailyStudy.html#abbcbd1e7d91be03815ae1becca445a4d">UPopup_DailyStudy::ShowCorrectData</a></div><div class="ttdeci">void ShowCorrectData(bool bIsCorrect)</div><div class="ttdoc">정답 데이터 표시 (정답/오답 판별)</div><div class="ttdef"><b>Definition</b> <a href="UPopup__DailyStudy_8cpp_source.html#l00259">UPopup_DailyStudy.cpp:259</a></div></div>
+<div class="ttc" id="aclassUPopup__DailyStudy_html_abd9e6e53bb288428ff288027c511bf2e"><div class="ttname"><a href="classUPopup__DailyStudy.html#abd9e6e53bb288428ff288027c511bf2e">UPopup_DailyStudy::OnClickClose</a></div><div class="ttdeci">void OnClickClose()</div><div class="ttdoc">닫기 버튼 클릭</div><div class="ttdef"><b>Definition</b> <a href="UPopup__DailyStudy_8cpp_source.html#l00142">UPopup_DailyStudy.cpp:142</a></div></div>
+<div class="ttc" id="aclassUPopup__DailyStudy_html_abde27c21796c1c3f337875109e09b0a9"><div class="ttname"><a href="classUPopup__DailyStudy.html#abde27c21796c1c3f337875109e09b0a9">UPopup_DailyStudy::CurIndex</a></div><div class="ttdeci">int32 CurIndex</div><div class="ttdoc">현재 질문 인덱스 (0-based)</div><div class="ttdef"><b>Definition</b> <a href="UPopup__DailyStudy_8h_source.html#l00146">UPopup_DailyStudy.h:146</a></div></div>
+<div class="ttc" id="aclassUPopup__DailyStudy_html_ac0fc9a9e73fa57c86ac09ed1da3ec87d"><div class="ttname"><a href="classUPopup__DailyStudy.html#ac0fc9a9e73fa57c86ac09ed1da3ec87d">UPopup_DailyStudy::Txt_QuestionProgress</a></div><div class="ttdeci">TObjectPtr&lt; class UTextBlock &gt; Txt_QuestionProgress</div><div class="ttdef"><b>Definition</b> <a href="UPopup__DailyStudy_8h_source.html#l00111">UPopup_DailyStudy.h:111</a></div></div>
+<div class="ttc" id="aclassUPopup__DailyStudy_html_ac64714c71d3be266a0be70c28c4adc7f"><div class="ttname"><a href="classUPopup__DailyStudy.html#ac64714c71d3be266a0be70c28c4adc7f">UPopup_DailyStudy::OnResponseListenAudio</a></div><div class="ttdeci">void OnResponseListenAudio(FResponseListenAudio &amp;Response, bool bWasSuccessful)</div><div class="ttdef"><b>Definition</b> <a href="UPopup__DailyStudy_8cpp_source.html#l00232">UPopup_DailyStudy.cpp:232</a></div></div>
+<div class="ttc" id="aclassUPopup__DailyStudy_html_acbb1bb488336c2a64ea687d466831850"><div class="ttname"><a href="classUPopup__DailyStudy.html#acbb1bb488336c2a64ea687d466831850">UPopup_DailyStudy::MediaTexture</a></div><div class="ttdeci">TObjectPtr&lt; class UMediaTexture &gt; MediaTexture</div><div class="ttdoc">미디어 텍스처</div><div class="ttdef"><b>Definition</b> <a href="UPopup__DailyStudy_8h_source.html#l00170">UPopup_DailyStudy.h:170</a></div></div>
+<div class="ttc" id="aclassUPopup__DailyStudy_html_acce3af1cdae27f4335e0a6665e43de6e"><div class="ttname"><a href="classUPopup__DailyStudy.html#acce3af1cdae27f4335e0a6665e43de6e">UPopup_DailyStudy::Txt_RemainTime</a></div><div class="ttdeci">TObjectPtr&lt; class UTextBlock &gt; Txt_RemainTime</div><div class="ttdef"><b>Definition</b> <a href="UPopup__DailyStudy_8h_source.html#l00114">UPopup_DailyStudy.h:114</a></div></div>
+<div class="ttc" id="aclassUPopup__DailyStudy_html_add807e9a6c489b6edfb478c05175ab06"><div class="ttname"><a href="classUPopup__DailyStudy.html#add807e9a6c489b6edfb478c05175ab06">UPopup_DailyStudy::Txt_Correct</a></div><div class="ttdeci">TObjectPtr&lt; class UTextBlock &gt; Txt_Correct</div><div class="ttdef"><b>Definition</b> <a href="UPopup__DailyStudy_8h_source.html#l00128">UPopup_DailyStudy.h:128</a></div></div>
+<div class="ttc" id="aclassUPopup__DailyStudy_html_ae38f25805c0fc48d28f0a9bfd0b6b05d"><div class="ttname"><a href="classUPopup__DailyStudy.html#ae38f25805c0fc48d28f0a9bfd0b6b05d">UPopup_DailyStudy::VideoStartTime</a></div><div class="ttdeci">float VideoStartTime</div><div class="ttdoc">영상 재생 시작 시간 (초)</div><div class="ttdef"><b>Definition</b> <a href="UPopup__DailyStudy_8h_source.html#l00182">UPopup_DailyStudy.h:182</a></div></div>
+<div class="ttc" id="aclassUPopup__DailyStudy_html_ae3d689611cf391da26f322f82985aab1"><div class="ttname"><a href="classUPopup__DailyStudy.html#ae3d689611cf391da26f322f82985aab1">UPopup_DailyStudy::PlayVideo</a></div><div class="ttdeci">void PlayVideo(bool bIsCorrect)</div><div class="ttdoc">영상 재생 (정답/오답)</div><div class="ttdef"><b>Definition</b> <a href="UPopup__DailyStudy_8cpp_source.html#l00320">UPopup_DailyStudy.cpp:320</a></div></div>
+<div class="ttc" id="aclassUPopup__DailyStudy_html_ae4cac0665a9fb6acccee435eb7c8061e"><div class="ttname"><a href="classUPopup__DailyStudy.html#ae4cac0665a9fb6acccee435eb7c8061e">UPopup_DailyStudy::OnResponseSpeakingsJudges</a></div><div class="ttdeci">void OnResponseSpeakingsJudges(const FResponseSpeakingJudes &amp;JudgeResult)</div><div class="ttdef"><b>Definition</b> <a href="UPopup__DailyStudy_8cpp_source.html#l00158">UPopup_DailyStudy.cpp:158</a></div></div>
+<div class="ttc" id="aclassUPopup__DailyStudy_html_ae86b6eab7114c0d51564145dbb38f2eb"><div class="ttname"><a href="classUPopup__DailyStudy.html#ae86b6eab7114c0d51564145dbb38f2eb">UPopup_DailyStudy::InitPopup</a></div><div class="ttdeci">void InitPopup(const TArray&lt; struct FWordData &gt; &amp;WordDataArray)</div><div class="ttdoc">AI 생성 단어 데이터로 Daily Study 초기화</div><div class="ttdef"><b>Definition</b> <a href="UPopup__DailyStudy_8cpp_source.html#l00081">UPopup_DailyStudy.cpp:81</a></div></div>
+<div class="ttc" id="aclassUPopup__DailyStudy_html_ae94501413cdd46a158cc20e34b39e080"><div class="ttname"><a href="classUPopup__DailyStudy.html#ae94501413cdd46a158cc20e34b39e080">UPopup_DailyStudy::OnAudioCapture</a></div><div class="ttdeci">void OnAudioCapture(bool bIsRecording)</div><div class="ttdef"><b>Definition</b> <a href="UPopup__DailyStudy_8cpp_source.html#l00224">UPopup_DailyStudy.cpp:224</a></div></div>
+<div class="ttc" id="aclassUPopup__DailyStudy_html_ae965e86e96832b375b5d2286da55ba77"><div class="ttname"><a href="classUPopup__DailyStudy.html#ae965e86e96832b375b5d2286da55ba77">UPopup_DailyStudy::CountDown_Widget</a></div><div class="ttdeci">TObjectPtr&lt; class UCountDown &gt; CountDown_Widget</div><div class="ttdef"><b>Definition</b> <a href="UPopup__DailyStudy_8h_source.html#l00132">UPopup_DailyStudy.h:132</a></div></div>
+<div class="ttc" id="aclassUPopup__DailyStudy_html_aef12cc3aa48142aa43420d4a6f688754"><div class="ttname"><a href="classUPopup__DailyStudy.html#aef12cc3aa48142aa43420d4a6f688754">UPopup_DailyStudy::Rich_Text</a></div><div class="ttdeci">TObjectPtr&lt; class URichTextBlock &gt; Rich_Text</div><div class="ttdef"><b>Definition</b> <a href="UPopup__DailyStudy_8h_source.html#l00102">UPopup_DailyStudy.h:102</a></div></div>
+<div class="ttc" id="aclassUPopup__DailyStudy_html_af15204da122b5ebed8cc3e89bc8e0ede"><div class="ttname"><a href="classUPopup__DailyStudy.html#af15204da122b5ebed8cc3e89bc8e0ede">UPopup_DailyStudy::Txt_Infomation</a></div><div class="ttdeci">TObjectPtr&lt; class UTextBlock &gt; Txt_Infomation</div><div class="ttdef"><b>Definition</b> <a href="UPopup__DailyStudy_8h_source.html#l00108">UPopup_DailyStudy.h:108</a></div></div>
+<div class="ttc" id="aclassUPopup__DailyStudy_html_af8833fc73c8d2613e502cf05670c1c58"><div class="ttname"><a href="classUPopup__DailyStudy.html#af8833fc73c8d2613e502cf05670c1c58">UPopup_DailyStudy::ThinkingTimerHandle</a></div><div class="ttdeci">FTimerHandle ThinkingTimerHandle</div><div class="ttdef"><b>Definition</b> <a href="UPopup__DailyStudy_8h_source.html#l00153">UPopup_DailyStudy.h:153</a></div></div>
+<div class="ttc" id="aclassUPopup__DailyStudy_html_afac65849da93f980da1e9636d2d0008b"><div class="ttname"><a href="classUPopup__DailyStudy.html#afac65849da93f980da1e9636d2d0008b">UPopup_DailyStudy::CorrectVideoSource</a></div><div class="ttdeci">TObjectPtr&lt; class UMediaSource &gt; CorrectVideoSource</div><div class="ttdoc">정답 영상 소스</div><div class="ttdef"><b>Definition</b> <a href="UPopup__DailyStudy_8h_source.html#l00174">UPopup_DailyStudy.h:174</a></div></div>
+<div class="ttc" id="anamespaceDailyStudyConfig_html_a3511e4a22589a30e8505b3f9ff39d0f6"><div class="ttname"><a href="namespaceDailyStudyConfig.html#a3511e4a22589a30e8505b3f9ff39d0f6">DailyStudyConfig::THINK_TIME</a></div><div class="ttdeci">static constexpr float THINK_TIME</div><div class="ttdef"><b>Definition</b> <a href="UPopup__DailyStudy_8h_source.html#l00020">UPopup_DailyStudy.h:20</a></div></div>
+<div class="ttc" id="anamespaceDailyStudyConfig_html_afb92fb6f59aaba2d2382c1b10214d956"><div class="ttname"><a href="namespaceDailyStudyConfig.html#afb92fb6f59aaba2d2382c1b10214d956">DailyStudyConfig::NEXT_QUESTION</a></div><div class="ttdeci">static constexpr float NEXT_QUESTION</div><div class="ttdef"><b>Definition</b> <a href="UPopup__DailyStudy_8h_source.html#l00022">UPopup_DailyStudy.h:22</a></div></div>
+<div class="ttc" id="astructFDailyStudyResult_html"><div class="ttname"><a href="structFDailyStudyResult.html">FDailyStudyResult</a></div><div class="ttdef"><b>Definition</b> <a href="FDailyStudyResult_8h_source.html#l00010">FDailyStudyResult.h:11</a></div></div>
+<div class="ttc" id="astructFDailyStudyResult_html_a6fd0bc01ce8fa6a7b71ded010c5f4d43"><div class="ttname"><a href="structFDailyStudyResult.html#a6fd0bc01ce8fa6a7b71ded010c5f4d43">FDailyStudyResult::QuestionList</a></div><div class="ttdeci">TArray&lt; FWordData &gt; QuestionList</div><div class="ttdoc">질문 단어 데이터 리스트 (한글/영어/발음)</div><div class="ttdef"><b>Definition</b> <a href="FDailyStudyResult_8h_source.html#l00020">FDailyStudyResult.h:20</a></div></div>
+<div class="ttc" id="astructFDailyStudyResult_html_a80a03ad362cbb9d300e91a02e82ff2e5"><div class="ttname"><a href="structFDailyStudyResult.html#a80a03ad362cbb9d300e91a02e82ff2e5">FDailyStudyResult::CurrentScore</a></div><div class="ttdeci">int32 CurrentScore</div><div class="ttdoc">현재 점수</div><div class="ttdef"><b>Definition</b> <a href="FDailyStudyResult_8h_source.html#l00016">FDailyStudyResult.h:16</a></div></div>
+<div class="ttc" id="astructFDailyStudyResult_html_aaeb6de2a333a3833e207f37c6974b6ec"><div class="ttname"><a href="structFDailyStudyResult.html#aaeb6de2a333a3833e207f37c6974b6ec">FDailyStudyResult::AnswerList</a></div><div class="ttdeci">TArray&lt; FResponseSpeakingJudes &gt; AnswerList</div><div class="ttdoc">답변 리스트</div><div class="ttdef"><b>Definition</b> <a href="FDailyStudyResult_8h_source.html#l00024">FDailyStudyResult.h:24</a></div></div>
+<div class="ttc" id="astructFResponseListenAudio_html"><div class="ttname"><a href="structFResponseListenAudio.html">FResponseListenAudio</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00796">NetworkData.h:797</a></div></div>
+<div class="ttc" id="astructFResponseListenAudio_html_a39dfdd52ce3770dfbccf800986ce4607"><div class="ttname"><a href="structFResponseListenAudio.html#a39dfdd52ce3770dfbccf800986ce4607">FResponseListenAudio::audio_base64</a></div><div class="ttdeci">TArray&lt; uint8 &gt; audio_base64</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00804">NetworkData.h:804</a></div></div>
+<div class="ttc" id="astructFResponseSpeakingJudes_html"><div class="ttname"><a href="structFResponseSpeakingJudes.html">FResponseSpeakingJudes</a></div><div class="ttdoc">Speaking Questions 응답 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00823">NetworkData.h:824</a></div></div>
+<div class="ttc" id="astructFResponseSpeakingJudes_html_a23ca88ea4bc62490c1e2528014473d2d"><div class="ttname"><a href="structFResponseSpeakingJudes.html#a23ca88ea4bc62490c1e2528014473d2d">FResponseSpeakingJudes::final_feedback</a></div><div class="ttdeci">FString final_feedback</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00837">NetworkData.h:837</a></div></div>
+<div class="ttc" id="astructFResponseSpeakingJudes_html_a48ca6f0034244337fa3023ee8b4ffe42"><div class="ttname"><a href="structFResponseSpeakingJudes.html#a48ca6f0034244337fa3023ee8b4ffe42">FResponseSpeakingJudes::context_score</a></div><div class="ttdeci">int context_score</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00831">NetworkData.h:831</a></div></div>
+<div class="ttc" id="astructFResponseSpeakingJudes_html_ac9adb453eaf7391bd44ba0e050f2d816"><div class="ttname"><a href="structFResponseSpeakingJudes.html#ac9adb453eaf7391bd44ba0e050f2d816">FResponseSpeakingJudes::final_overall_score</a></div><div class="ttdeci">int final_overall_score</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00834">NetworkData.h:834</a></div></div>
+<div class="ttc" id="astructFResponseSpeakingJudes_html_aca28895168248e02526bcbc5043bebd5"><div class="ttname"><a href="structFResponseSpeakingJudes.html#aca28895168248e02526bcbc5043bebd5">FResponseSpeakingJudes::grammar_score</a></div><div class="ttdeci">int grammar_score</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00828">NetworkData.h:828</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_47ae9c23f27029060c39af29b069b73d.html">MessageBox</a></li><li class="navelem"><a class="el" href="dir_2a20a70930e57e30643dc72759837dc0.html">Private</a></li><li class="navelem"><a class="el" href="UPopup__DailyStudy_8cpp.html">UPopup_DailyStudy.cpp</a></li>
+    <li class="footer">생성시간 : 일 12월 28 2025 11:13:59, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
+</body>
+</html>

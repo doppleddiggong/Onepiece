@@ -37,13 +37,14 @@ var searchData=
   ['popuptype_34',['PopupType',['../classUBasePopup.html#a7e537a0dd751df11990ed46947f09d42',1,'UBasePopup']]],
   ['popupwidgetmap_35',['PopupWidgetMap',['../classUPopupManager.html#acd192c5957f063bd632bd00a2dcc3c3d',1,'UPopupManager']]],
   ['port_36',['Port',['../structFServerConfig.html#a0921d17b91705fa9f1ffc75c204daab5',1,'FServerConfig']]],
-  ['pressbuttoncolor_37',['pressbuttoncolor',['../classUImageButton.html#a48b2cee61022cdc6c1e4c6c06e8e659e',1,'UImageButton::PressButtonColor'],['../classUHoverButton.html#a1544723a1b04d904272ef89100c4bbd3',1,'UHoverButton::PressButtonColor']]],
+  ['pressbuttoncolor_37',['pressbuttoncolor',['../classUHoverButton.html#a1544723a1b04d904272ef89100c4bbd3',1,'UHoverButton::PressButtonColor'],['../classUImageButton.html#a48b2cee61022cdc6c1e4c6c06e8e659e',1,'UImageButton::PressButtonColor']]],
   ['presssymbolcolor_38',['PressSymbolColor',['../classUTextureButton.html#aa4222076d277a2b99e570ca4cab066c5',1,'UTextureButton']]],
-  ['presstextcolor_39',['presstextcolor',['../classUImageButton.html#af9cbc311d9b12be2471153df515ac5b4',1,'UImageButton::PressTextColor'],['../classUHoverButton.html#a7adc17c16fce25a270933889e23e0f94',1,'UHoverButton::PressTextColor']]],
-  ['prevmousepos_40',['prevmousepos',['../classUPopup__WriteBoard.html#a7ec145a99cff70ac35b7a867f93fb10d',1,'UPopup_WriteBoard::prevMousePos'],['../classUDrawingBoardWidget.html#ab7b6f878a2113366f4b5b011462ec075',1,'UDrawingBoardWidget::prevMousePos']]],
+  ['presstextcolor_39',['presstextcolor',['../classUHoverButton.html#a7adc17c16fce25a270933889e23e0f94',1,'UHoverButton::PressTextColor'],['../classUImageButton.html#af9cbc311d9b12be2471153df515ac5b4',1,'UImageButton::PressTextColor']]],
+  ['prevmousepos_40',['prevmousepos',['../classUDrawingBoardWidget.html#ab7b6f878a2113366f4b5b011462ec075',1,'UDrawingBoardWidget::prevMousePos'],['../classUPopup__WriteBoard.html#a7ec145a99cff70ac35b7a867f93fb10d',1,'UPopup_WriteBoard::prevMousePos']]],
   ['prevpageindex_41',['PrevPageIndex',['../classUPageScrollView.html#a23405706761f84de934028902f75c5b7',1,'UPageScrollView']]],
   ['progressbar_5fquest_42',['ProgressBar_Quest',['../classUQuestOrderWidget.html#a228d0615f2079e0ef4940608019782e3',1,'UQuestOrderWidget']]],
   ['progressbar_5fquestion_43',['ProgressBar_Question',['../classUPopup__InterviewHello.html#a0ee14f674a28cf54e5f40e3cbb46551d',1,'UPopup_InterviewHello']]],
-  ['pronunciation_44',['pronunciation',['../structFWriteWordData.html#ad69711b344df568882689623b239cbd4',1,'FWriteWordData::pronunciation'],['../structFSpeakStageQuestion.html#ac8f5c2a47f113e9f7b9fc4f93ba2ec97',1,'FSpeakStageQuestion::pronunciation'],['../structFWordStudyData.html#aeb3e85dc6ad5e931155e69084c27f3df',1,'FWordStudyData::Pronunciation'],['../structFPhonemeData.html#a276f029e26bfaf07af337ce6d35b3f40',1,'FPhonemeData::Pronunciation'],['../structFWordData.html#a8a359d2cf5e79ca20cbdfe904076dc41',1,'FWordData::Pronunciation']]],
-  ['pushforce_45',['PushForce',['../classATrolley.html#aa3c04590e0f1df04b81255dbb1dccd97',1,'ATrolley']]]
+  ['progressbar_5fremaintime_44',['ProgressBar_RemainTime',['../classUPopup__DailyStudy.html#a1e7db9afdc95f767757be6ef96755ff7',1,'UPopup_DailyStudy']]],
+  ['pronunciation_45',['pronunciation',['../structFWriteWordData.html#ad69711b344df568882689623b239cbd4',1,'FWriteWordData::pronunciation'],['../structFSpeakStageQuestion.html#ac8f5c2a47f113e9f7b9fc4f93ba2ec97',1,'FSpeakStageQuestion::pronunciation'],['../structFWordStudyData.html#aeb3e85dc6ad5e931155e69084c27f3df',1,'FWordStudyData::Pronunciation'],['../structFPhonemeData.html#a276f029e26bfaf07af337ce6d35b3f40',1,'FPhonemeData::Pronunciation'],['../structFWordData.html#a8a359d2cf5e79ca20cbdfe904076dc41',1,'FWordData::Pronunciation']]],
+  ['pushforce_46',['PushForce',['../classATrolley.html#aa3c04590e0f1df04b81255dbb1dccd97',1,'ATrolley']]]
 ];

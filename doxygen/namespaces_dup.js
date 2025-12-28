@@ -4,10 +4,16 @@ var namespaces_dup =
       [ "GlobalSection", "namespaceConfigLibraryConstants.html#a0d5858db8cd7608dbc4ad22c6e8b39fd", null ],
       [ "UserSection", "namespaceConfigLibraryConstants.html#ae621ca13f926f8e8995a22a8ffe49b38", null ]
     ] ],
+    [ "DailyStudyConfig", "namespaceDailyStudyConfig.html", [
+      [ "NEXT_QUESTION", "namespaceDailyStudyConfig.html#afb92fb6f59aaba2d2382c1b10214d956", null ],
+      [ "THINK_TIME", "namespaceDailyStudyConfig.html#a3511e4a22589a30e8505b3f9ff39d0f6", null ]
+    ] ],
     [ "DefineData", "namespaceDefineData.html", [
       [ "AI", "namespaceDefineData.html#ade2334d6b1536c55ed99e75e5a5c0076", null ],
       [ "BotID", "namespaceDefineData.html#aa27e976521e38c0858f3d0437d48a9b0", null ],
       [ "BotName", "namespaceDefineData.html#aeb5c1c68e7ad5bf3b490fef2fc654e7f", null ],
+      [ "Daily", "namespaceDefineData.html#a0e7fabb99296c797486c52ba89a66cd1", null ],
+      [ "DailySystemPrompt", "namespaceDefineData.html#a69c9c5a9e428fef85251113d4151ffd0", null ],
       [ "LineHeightPercentage", "namespaceDefineData.html#a0931d9478a2dce145ca0a0b7faba847b", null ]
     ] ],
     [ "DoorGroup", "namespaceDoorGroup.html", [
