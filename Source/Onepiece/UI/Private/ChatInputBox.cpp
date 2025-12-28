@@ -7,6 +7,10 @@
 #include "ChatWidget.h"
 #include "GameLogging.h"
 #include "UKLingoNetworkSystem.h"
+#include "UPopupManager.h"
+#include "UPopup_DailyStudy.h"
+#include "UGameDataManager.h"
+#include "UCommonFunctionLibrary.h"
 #include "Components/Button.h"
 #include "Components/MultiLineEditableTextBox.h"
 #include "Framework/Application/SlateApplication.h"
@@ -229,22 +233,108 @@ bool UChatInputBox::HasKeyboardFocus()
 	return MultiLineEditableTextBox_Input && MultiLineEditableTextBox_Input->HasKeyboardFocus();
 }
 
-void UChatInputBox::OnDailyAnswerReceived(FResponseChatAnswers& ResponseData, bool bWasSuccessful)
+TArray<FString> UChatInputBox::GetRandomKoreanWords(int32 Count)
 {
-	if (bWasSuccessful)
-	{
-		PRINTLOG(TEXT("--- Chat Answers SUCCESS ---"));
-        
-		// AI 응답을 Bot 정보로 채팅에 표시
-		if (auto* GS = GetWorld()->GetGameState<ALingoGameState>())
-		{
-			FText AIAnswer = FText::FromString(ResponseData.answer);
+	TArray<FString> RandomWords;
 
-			PRINTLOG(TEXT("[AI Chat] AI Answer: %s"), *ResponseData.answer);
+	UGameDataManager* DataManager = UGameDataManager::Get(GetWorld());
+	if (!DataManager)
+	{
+		PRINTLOG(TEXT("[Daily] Error: GameDataManager not found"));
+		return RandomWords;
+	}
+
+	// ReadData에서 모든 키 가져오기
+	TArray<int32> AllKeys = DataManager->GetAllReadDataKeys();
+	
+	if (AllKeys.Num() == 0)
+	{
+		PRINTLOG(TEXT("[Daily] Error: No ReadData available"));
+		return RandomWords;
+	}
+
+	// 요청한 개수만큼 랜덤 단어 선택
+	int32 WordsToGenerate = FMath::Min(Count, AllKeys.Num());
+	
+	for (int32 i = 0; i < WordsToGenerate; ++i)
+	{
+		// 랜덤 인덱스 선택
+		int32 RandomIndex = FMath::RandRange(0, AllKeys.Num() - 1);
+		int32 RandomKey = AllKeys[RandomIndex];
+		AllKeys.RemoveAt(RandomIndex); // 중복 방지
+
+		// 데이터 로드
+		FReadData ReadData;
+		if (DataManager->GetReadData(RandomKey, ReadData))
+		{
+			RandomWords.Add(ReadData.Word);
 		}
 	}
-	else
+
+	PRINTLOG(TEXT("[Daily] Generated %d random words from ReadData"), RandomWords.Num());
+	return RandomWords;
+}
+
+void UChatInputBox::OnDailyAnswerReceived(FResponseChatAnswers& ResponseData, bool bWasSuccessful)
+{
+	const int32 MIN_REQUIRED_WORDS = 3;
+
+	if (!bWasSuccessful)
 	{
-		PRINTLOG(TEXT("--- Chat Answers FAILED ---"));
+		// 네트워크 실패 시 랜덤 단어로 대체
+		TArray<FString> FallbackWords = GetRandomKoreanWords(MIN_REQUIRED_WORDS);
+		
+		if (FallbackWords.Num() > 0)
+		{
+			if (UPopup_DailyStudy* DailyStudyPopup = UPopupManager::Get(GetWorld())->ShowPopupAs<UPopup_DailyStudy>(EPopupType::DailyStudy))
+			{
+				DailyStudyPopup->InitPopup(FallbackWords);
+			}
+		}
+
+		return;
+	}
+
+	// AI 응답을 | 구분자로 파싱
+	TArray<FString> RawWords;
+	ResponseData.answer.ParseIntoArray(RawWords, TEXT("|"), true);
+
+	// 한국어 단어만 필터링
+	TArray<FString> ValidKoreanWords;
+	for (const FString& Word : RawWords)
+	{
+		FString TrimmedWord = Word.TrimStartAndEnd();
+		
+		// 빈 문자열 체크
+		if (TrimmedWord.IsEmpty())
+		{
+			PRINTLOG(TEXT("[Daily] Skipped: Empty word"));
+			continue;
+		}
+
+		// 한국어 검증
+		if (!UCommonFunctionLibrary::IsValidKoreanWord(TrimmedWord))
+		{
+			PRINTLOG(TEXT("[Daily] Skipped: Non-Korean word '%s'"), *TrimmedWord);
+			continue;
+		}
+
+		ValidKoreanWords.Add(TrimmedWord);
+	}
+
+	// 유효한 단어가 부족하면 GameDataManager에서 보충
+	if (ValidKoreanWords.Num() < MIN_REQUIRED_WORDS)
+	{
+		int32 WordsNeeded = MIN_REQUIRED_WORDS - ValidKoreanWords.Num();
+
+		TArray<FString> AdditionalWords = GetRandomKoreanWords(WordsNeeded);
+		ValidKoreanWords.Append(AdditionalWords);
+	}
+
+	// 최종 검증
+	if (ValidKoreanWords.Num() > 0)
+	{
+		if (UPopup_DailyStudy* DailyStudyPopup = UPopupManager::Get(GetWorld())->ShowPopupAs<UPopup_DailyStudy>(EPopupType::DailyStudy))
+			DailyStudyPopup->InitPopup(ValidKoreanWords);
 	}
 }

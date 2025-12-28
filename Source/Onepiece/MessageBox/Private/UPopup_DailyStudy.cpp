@@ -7,7 +7,6 @@
 #include "UPopup_DailyResult.h"
 #include "ULingoGameHelper.h"
 #include "UGameDataManager.h"
-#include "UConfigLibrary.h"
 #include "GameLogging.h"
 #include "UBroadcastManager.h"
 #include "UCircularProgressBar.h"
@@ -18,16 +17,45 @@
 #include "Components/Image.h"
 #include "Components/TextBlock.h"
 #include "UTextureButton.h"
-#include "Components/Border.h"
 #include "Components/CanvasPanel.h"
 #include "Misc/FileHelper.h"
 #include "Misc/Paths.h"
+
+// Media Player
+#include "MediaPlayer.h"
+#include "MediaTexture.h"
+#include "MediaSource.h"
 
 void UPopup_DailyStudy::NativeConstruct()
 {
 	bAllowPlayerControl = true;
 	
 	Super::NativeConstruct();
+
+	// 미디어 플레이어 초기화
+	if (!MediaPlayer)
+	{
+		MediaPlayer = NewObject<UMediaPlayer>(this);
+		MediaPlayer->SetLooping(false);
+		MediaPlayer->OnEndReached.AddDynamic(this, &UPopup_DailyStudy::OnVideoFinished);
+	}
+
+	// 미디어 텍스처 생성
+	if (!MediaTexture)
+	{
+		MediaTexture = NewObject<UMediaTexture>(this);
+		MediaTexture->SetMediaPlayer(MediaPlayer);
+		MediaTexture->UpdateResource();
+	}
+
+	// Img_Correct에 미디어 텍스처 바인딩
+	if (Img_Correct && MediaTexture)
+	{
+		FSlateBrush Brush;
+		Brush.SetResourceObject(MediaTexture);
+		Brush.ImageSize = FVector2D(1920, 1080); // 영상 해상도에 맞게 조정
+		Img_Correct->SetBrush(Brush);
+	}
 }
 
 void UPopup_DailyStudy::NativeDestruct()
@@ -39,6 +67,13 @@ void UPopup_DailyStudy::NativeDestruct()
 	{
 		GetWorld()->GetTimerManager().ClearTimer(NextTimerHandle);
 		GetWorld()->GetTimerManager().ClearTimer(ThinkingTimerHandle);
+		GetWorld()->GetTimerManager().ClearTimer(VideoCheckTimerHandle);
+	}
+
+	// 미디어 플레이어 정리
+	if (MediaPlayer)
+	{
+		MediaPlayer->Close();
 	}
 }
 
@@ -72,96 +107,147 @@ void UPopup_DailyStudy::InitPopup()
 	
 	Txt_CurScore->SetText(FText::FromString(FString::Printf(TEXT("Score : %d"), CurrentScore)));
 
-	// 일일 최고 득점 로드 및 표시
-	InitBestScore();
+	// // 일일 최고 득점 로드 및 표시
+	// InitBestScore();
 
-	// 10개 랜덤 단어 생성
-	GenerateQuestions();
+	// // 10개 랜덤 단어 생성
+	// GenerateQuestions();
 
 	// 카운트다운 시작
 	CountDown_Widget->StartCountDown(3);
 }
 
-void UPopup_DailyStudy::GenerateQuestions()
+void UPopup_DailyStudy::InitPopup(const TArray<FString>& Words)
 {
+	// 기본 초기화 (델리게이트 바인딩 등)
+	if (Btn_Close)
+	{
+		Btn_Close->OnButtonClickedEvent.RemoveDynamic(this, &UPopup_DailyStudy::OnClickClose);
+		Btn_Close->OnButtonClickedEvent.AddDynamic(this, &UPopup_DailyStudy::OnClickClose);
+	}
+
+	if (auto DM = UBroadcastManager::Get(GetWorld()))
+	{
+		DM->OnAudioCapture.RemoveDynamic(this, &UPopup_DailyStudy::OnAudioCapture);
+		DM->OnAudioCapture.AddDynamic(this, &UPopup_DailyStudy::OnAudioCapture);
+	}
+
+	if (CountDown_Widget)
+	{
+		CountDown_Widget->OnCountDownFinished.RemoveDynamic(this, &UPopup_DailyStudy::OnCountDownFinished);
+		CountDown_Widget->OnCountDownFinished.AddDynamic(this, &UPopup_DailyStudy::OnCountDownFinished);
+	}
+
+	// 초기화
+	CurIndex = 0;
+	AnswerList.Empty();
+	CurrentScore = 0;
 	QuestionList.Empty();
 
-	UGameDataManager* DataManager = UGameDataManager::Get(GetWorld());
-	if (!DataManager)
+	Canvas_Correct->SetVisibility(ESlateVisibility::Hidden);
+	Canvas_Question->SetVisibility(ESlateVisibility::Hidden);
+	
+	Txt_CurScore->SetText(FText::FromString(FString::Printf(TEXT("Score : %d"), CurrentScore)));
+
+	// AI 생성 단어를 QuestionList로 변환
+	for (int32 i = 0; i < Words.Num(); ++i)
 	{
-		PRINTLOG(TEXT("[DailyStudy] Error: GameDataManager not found"));
-		return;
-	}
-
-	// 각 타입별 사용 가능한 key 리스트 가져오기
-	TArray<int32> ReadDataKeys = DataManager->GetAllReadDataKeys();    // Animal/Food용
-	TArray<int32> ListenDataKeys = DataManager->GetAllListenDataKeys(); // Region용
-
-	// 데이터가 충분한지 확인
-	if (ReadDataKeys.Num() == 0 && ListenDataKeys.Num() == 0)
-	{
-		PRINTLOG(TEXT("[DailyStudy] Error: No data available for questions"));
-		return;
-	}
-
-	// 중복 방지를 위해 이미 사용한 항목 추적
-	TSet<TPair<EWordType, int32>> UsedItems;
-
-	// 필요한 문제 개수만큼 생성
-	for (int32 i = 0; i < DailyStudyConfig::QUESTIONS_PER_SESSION; ++i)
-	{
-		// 사용 가능한 타입 리스트 구성
-		TArray<EWordType> AvailableTypes;
-		if (ReadDataKeys.Num() > 0) AvailableTypes.Add(EWordType::Animal);
-		if (ListenDataKeys.Num() > 0) AvailableTypes.Add(EWordType::Region);
-
-		if (AvailableTypes.Num() == 0)
-		{
-			PRINTLOG(TEXT("[DailyStudy] Warning: Not enough data to generate %d questions, only %d generated"),
-				DailyStudyConfig::QUESTIONS_PER_SESSION, i);
-			break;
-		}
-
-		// 랜덤 타입 선택
-		EWordType RandomType = AvailableTypes[FMath::RandRange(0, AvailableTypes.Num() - 1)];
-
-		// 해당 타입에서 랜덤 key 선택
-		int32 RandomKey = -1;
-		if (RandomType == EWordType::Animal || RandomType == EWordType::Food)
-		{
-			if (ReadDataKeys.Num() > 0)
-			{
-				int32 RandomIndex = FMath::RandRange(0, ReadDataKeys.Num() - 1);
-				RandomKey = ReadDataKeys[RandomIndex];
-				ReadDataKeys.RemoveAt(RandomIndex); // 중복 방지
-			}
-		}
-		else if (RandomType == EWordType::Region)
-		{
-			if (ListenDataKeys.Num() > 0)
-			{
-				int32 RandomIndex = FMath::RandRange(0, ListenDataKeys.Num() - 1);
-				RandomKey = ListenDataKeys[RandomIndex];
-				ListenDataKeys.RemoveAt(RandomIndex); // 중복 방지
-			}
-		}
-
-		// 유효한 key를 찾지 못한 경우
-		if (RandomKey == -1)
-		{
-			PRINTLOG(TEXT("[DailyStudy] Warning: Failed to find valid key for type %d"), static_cast<int32>(RandomType));
-			continue;
-		}
-
-		// 데이터 로드
 		FDailyStudyWordItem WordItem;
-		LoadWordData(RandomType, RandomKey, WordItem);
+		WordItem.WordType = EWordType::Color; // AI 생성 단어는 Color 타입으로 설정
+		WordItem.WordCode = i;
+		WordItem.Kor = Words[i].TrimStartAndEnd();
+		WordItem.Eng = WordItem.Kor; // 한국어 음성 인식이므로 동일하게 설정
+		WordItem.Texture = nullptr; // 이미지 없음
 
 		QuestionList.Add(WordItem);
 	}
 
-	PRINTLOG(TEXT("[DailyStudy] Generated %d questions"), QuestionList.Num());
+	PRINTLOG(TEXT("[DailyStudy] Initialized with %d AI-generated words"), QuestionList.Num());
+
+	// 카운트다운 시작
+	CountDown_Widget->StartCountDown(3);
 }
+
+// void UPopup_DailyStudy::GenerateQuestions()
+// {
+// 	QuestionList.Empty();
+//
+// 	UGameDataManager* DataManager = UGameDataManager::Get(GetWorld());
+// 	if (!DataManager)
+// 	{
+// 		PRINTLOG(TEXT("[DailyStudy] Error: GameDataManager not found"));
+// 		return;
+// 	}
+//
+// 	// 각 타입별 사용 가능한 key 리스트 가져오기
+// 	TArray<int32> ReadDataKeys = DataManager->GetAllReadDataKeys();    // Animal/Food용
+// 	TArray<int32> ListenDataKeys = DataManager->GetAllListenDataKeys(); // Region용
+//
+// 	// 데이터가 충분한지 확인
+// 	if (ReadDataKeys.Num() == 0 && ListenDataKeys.Num() == 0)
+// 	{
+// 		PRINTLOG(TEXT("[DailyStudy] Error: No data available for questions"));
+// 		return;
+// 	}
+//
+// 	// 중복 방지를 위해 이미 사용한 항목 추적
+// 	TSet<TPair<EWordType, int32>> UsedItems;
+//
+// 	// 필요한 문제 개수만큼 생성
+// 	for (int32 i = 0; i < DailyStudyConfig::QUESTIONS_PER_SESSION; ++i)
+// 	{
+// 		// 사용 가능한 타입 리스트 구성
+// 		TArray<EWordType> AvailableTypes;
+// 		if (ReadDataKeys.Num() > 0) AvailableTypes.Add(EWordType::Animal);
+// 		if (ListenDataKeys.Num() > 0) AvailableTypes.Add(EWordType::Region);
+//
+// 		if (AvailableTypes.Num() == 0)
+// 		{
+// 			PRINTLOG(TEXT("[DailyStudy] Warning: Not enough data to generate %d questions, only %d generated"),
+// 				DailyStudyConfig::QUESTIONS_PER_SESSION, i);
+// 			break;
+// 		}
+//
+// 		// 랜덤 타입 선택
+// 		EWordType RandomType = AvailableTypes[FMath::RandRange(0, AvailableTypes.Num() - 1)];
+//
+// 		// 해당 타입에서 랜덤 key 선택
+// 		int32 RandomKey = -1;
+// 		if (RandomType == EWordType::Animal || RandomType == EWordType::Food)
+// 		{
+// 			if (ReadDataKeys.Num() > 0)
+// 			{
+// 				int32 RandomIndex = FMath::RandRange(0, ReadDataKeys.Num() - 1);
+// 				RandomKey = ReadDataKeys[RandomIndex];
+// 				ReadDataKeys.RemoveAt(RandomIndex); // 중복 방지
+// 			}
+// 		}
+// 		else if (RandomType == EWordType::Region)
+// 		{
+// 			if (ListenDataKeys.Num() > 0)
+// 			{
+// 				int32 RandomIndex = FMath::RandRange(0, ListenDataKeys.Num() - 1);
+// 				RandomKey = ListenDataKeys[RandomIndex];
+// 				ListenDataKeys.RemoveAt(RandomIndex); // 중복 방지
+// 			}
+// 		}
+//
+// 		// 유효한 key를 찾지 못한 경우
+// 		if (RandomKey == -1)
+// 		{
+// 			PRINTLOG(TEXT("[DailyStudy] Warning: Failed to find valid key for type %d"), static_cast<int32>(RandomType));
+// 			continue;
+// 		}
+//
+// 		// 데이터 로드
+// 		FDailyStudyWordItem WordItem;
+// 		LoadWordData(RandomType, RandomKey, WordItem);
+//
+// 		QuestionList.Add(WordItem);
+// 	}
+//
+// 	PRINTLOG(TEXT("[DailyStudy] Generated %d questions"), QuestionList.Num());
+// }
 
 void UPopup_DailyStudy::LoadWordData(EWordType Type, int32 Code, FDailyStudyWordItem& OutItem)
 {
@@ -208,60 +294,60 @@ void UPopup_DailyStudy::LoadWordData(EWordType Type, int32 Code, FDailyStudyWord
 	}
 }
 
-void UPopup_DailyStudy::InitBestScore()
-{
-	int32 UserId = ULingoGameHelper::GetUserId(GetWorld());
-	FString Today = FDateTime::Now().ToString(TEXT("%Y-%m-%d"));
-	FString BestScoreDate = UConfigLibrary::GetUserString(UserId, TEXT("DailyStudyBestScoreDate"), TEXT(""));
-
-	BestScore = 0;
-	if (BestScoreDate == Today)
-	{
-		// 오늘의 최고 점수 로드
-		BestScore = UConfigLibrary::GetUserInt(UserId, TEXT("DailyStudyBestScore"), 0);
-	}
-
-	Txt_BestScore->SetText( FText::FromString( FString::Printf(TEXT("Best : %d"), BestScore)));
-}
-
-void UPopup_DailyStudy::SaveProgress(int32 FinalScore)
-{
-	int32 UserId = ULingoGameHelper::GetUserId(GetWorld());
-
-	// 플레이 횟수 증가
-	int32 CurrentCount = UConfigLibrary::GetUserInt(UserId, TEXT("DailyStudyCount"), 0);
-	UConfigLibrary::SetUserInt(UserId, TEXT("DailyStudyCount"), CurrentCount + 1);
-
-	// 마지막 점수 저장
-	UConfigLibrary::SetUserInt(UserId, TEXT("DailyStudyLastScore"), FinalScore);
-
-	// 일일 최고 득점 업데이트
-	FString Today = FDateTime::Now().ToString(TEXT("%Y-%m-%d"));
-	FString LastBestDate = UConfigLibrary::GetUserString(UserId, TEXT("DailyStudyBestScoreDate"), TEXT(""));
-
-	if (LastBestDate != Today)
-	{
-		// 새로운 날, 오늘의 최고 점수로 설정
-		UConfigLibrary::SetUserInt(UserId, TEXT("DailyStudyBestScore"), FinalScore);
-		UConfigLibrary::SetUserString(UserId, TEXT("DailyStudyBestScoreDate"), Today);
-		PRINTLOG(TEXT("[DailyResult] New best score for today: %d"), FinalScore);
-	}
-	else
-	{
-		// 같은 날, 기존 최고 점수와 비교
-		int32 CurrentBest = UConfigLibrary::GetUserInt(UserId, TEXT("DailyStudyBestScore"), 0);
-		if (FinalScore > CurrentBest)
-		{
-			UConfigLibrary::SetUserInt(UserId, TEXT("DailyStudyBestScore"), FinalScore);
-			PRINTLOG(TEXT("[DailyResult] Updated best score: %d -> %d"), CurrentBest, FinalScore);
-		}
-	}
-
-	// 마지막 플레이 날짜 저장
-	UConfigLibrary::SetUserString(UserId, TEXT("DailyStudyLastDate"), Today);
-
-	PRINTLOG(TEXT("[DailyResult] Progress saved for User %d, Score: %d"), UserId, FinalScore);
-}
+// void UPopup_DailyStudy::InitBestScore()
+// {
+// 	int32 UserId = ULingoGameHelper::GetUserId(GetWorld());
+// 	FString Today = FDateTime::Now().ToString(TEXT("%Y-%m-%d"));
+// 	FString BestScoreDate = UConfigLibrary::GetUserString(UserId, TEXT("DailyStudyBestScoreDate"), TEXT(""));
+//
+// 	BestScore = 0;
+// 	if (BestScoreDate == Today)
+// 	{
+// 		// 오늘의 최고 점수 로드
+// 		BestScore = UConfigLibrary::GetUserInt(UserId, TEXT("DailyStudyBestScore"), 0);
+// 	}
+//
+// 	Txt_BestScore->SetText( FText::FromString( FString::Printf(TEXT("Best : %d"), BestScore)));
+// }
+//
+// void UPopup_DailyStudy::SaveProgress(int32 FinalScore)
+// {
+// 	int32 UserId = ULingoGameHelper::GetUserId(GetWorld());
+//
+// 	// 플레이 횟수 증가
+// 	int32 CurrentCount = UConfigLibrary::GetUserInt(UserId, TEXT("DailyStudyCount"), 0);
+// 	UConfigLibrary::SetUserInt(UserId, TEXT("DailyStudyCount"), CurrentCount + 1);
+//
+// 	// 마지막 점수 저장
+// 	UConfigLibrary::SetUserInt(UserId, TEXT("DailyStudyLastScore"), FinalScore);
+//
+// 	// 일일 최고 득점 업데이트
+// 	FString Today = FDateTime::Now().ToString(TEXT("%Y-%m-%d"));
+// 	FString LastBestDate = UConfigLibrary::GetUserString(UserId, TEXT("DailyStudyBestScoreDate"), TEXT(""));
+//
+// 	if (LastBestDate != Today)
+// 	{
+// 		// 새로운 날, 오늘의 최고 점수로 설정
+// 		UConfigLibrary::SetUserInt(UserId, TEXT("DailyStudyBestScore"), FinalScore);
+// 		UConfigLibrary::SetUserString(UserId, TEXT("DailyStudyBestScoreDate"), Today);
+// 		PRINTLOG(TEXT("[DailyResult] New best score for today: %d"), FinalScore);
+// 	}
+// 	else
+// 	{
+// 		// 같은 날, 기존 최고 점수와 비교
+// 		int32 CurrentBest = UConfigLibrary::GetUserInt(UserId, TEXT("DailyStudyBestScore"), 0);
+// 		if (FinalScore > CurrentBest)
+// 		{
+// 			UConfigLibrary::SetUserInt(UserId, TEXT("DailyStudyBestScore"), FinalScore);
+// 			PRINTLOG(TEXT("[DailyResult] Updated best score: %d -> %d"), CurrentBest, FinalScore);
+// 		}
+// 	}
+//
+// 	// 마지막 플레이 날짜 저장
+// 	UConfigLibrary::SetUserString(UserId, TEXT("DailyStudyLastDate"), Today);
+//
+// 	PRINTLOG(TEXT("[DailyResult] Progress saved for User %d, Score: %d"), UserId, FinalScore);
+// }
 
 
 void UPopup_DailyStudy::LoadCurQuestion()
@@ -319,6 +405,9 @@ void UPopup_DailyStudy::OnResponseSpeakingsJudges(const FResponseSpeakingJudes& 
 	CurrentScore += JudgeResult.final_overall_score;
 	Txt_CurScore->SetText(FText::FromString(FString::Printf(TEXT("Score : %d"), CurrentScore)));
 
+	// 정답/오답 판별 (50점 미만이면 오답)
+	bLastAnswerCorrect = (JudgeResult.final_overall_score >= 50);
+
 	// Request TTS for the Korean answer
 	if (UKLingoNetworkSystem* NetworkSystem = UKLingoNetworkSystem::Get(GetWorld()))
 	{
@@ -356,6 +445,9 @@ void UPopup_DailyStudy::OnThinkTimeFinished()
 {
 	GetWorld()->GetTimerManager().ClearTimer(ThinkingTimerHandle);
 
+	// 타임업 = 오답 처리
+	bLastAnswerCorrect = false;
+	
 	// Add a skipped answer
 	if (QuestionList.IsValidIndex(CurIndex))
 	{
@@ -382,7 +474,8 @@ void UPopup_DailyStudy::OnResponseListenAudio(FResponseListenAudio& ResponseData
 {
 	if (bWasSuccessful)
 	{
-		ShowCorrectData();
+		// 저장된 정답/오답 판별 결과 사용
+		ShowCorrectData(bLastAnswerCorrect);
 
 		if ( auto DM = UDialogManager::Get(GetWorld()))
 			DM->HideToastImmediately();
@@ -400,16 +493,13 @@ void UPopup_DailyStudy::OnResponseListenAudio(FResponseListenAudio& ResponseData
 	}
 }
 
-void UPopup_DailyStudy::ShowCorrectData()
+void UPopup_DailyStudy::ShowCorrectData(bool bIsCorrect)
 {
 	Canvas_Correct->SetVisibility(ESlateVisibility::Visible);
 		
 	Txt_Correct->SetText(FText::FromString(CorrectData.Eng));
 
-	FSlateBrush Brush;
-	Brush.SetResourceObject(CorrectData.LoadedTexture());
-	Brush.ImageSize = FVector2D::ZeroVector;
-	Img_Correct->SetBrush(Brush);
+	PlayVideo(bIsCorrect);
 }
 
 void UPopup_DailyStudy::OnCountDownFinished()
@@ -433,68 +523,87 @@ void UPopup_DailyStudy::MoveToNextQuestion()
 	}
 	else
 	{
-		OnClickClose();
+		// 모든 문제 완료 - 점수 계산 및 표시
+		int32 AverageScore = QuestionList.Num() > 0 ? (CurrentScore / QuestionList.Num()) : 0;
 
-		this->SaveProgress(CurrentScore);
+		FString ResultMessage = FString::Printf(
+			TEXT("Score: %d\nAverage: %d\nSolved: %d"),
+			CurrentScore,
+			AverageScore,
+			QuestionList.Num()
+		);
 
-		// 최고 점수 읽기 (SaveProgress 후 업데이트된 값)
-		int32 UserId = ULingoGameHelper::GetUserId(GetWorld());
-		FString Today = FDateTime::Now().ToString(TEXT("%Y-%m-%d"));
-		FString BestScoreDate = UConfigLibrary::GetUserString(UserId, TEXT("DailyStudyBestScoreDate"), TEXT(""));
+		UPopupManager::Get(GetWorld())->ShowMsgBox(
+			TEXT("Daily Result"),
+			ResultMessage,
+			EMsgBoxType::OK,
+			FOnMsgBoxOkDelegate::CreateUObject(this, &UPopup_DailyStudy::OnClickClose));
 
-		BestScore = 0;
-		if (BestScoreDate == Today)
-		{
-			BestScore = UConfigLibrary::GetUserInt(UserId, TEXT("DailyStudyBestScore"), 0);
-		}
+		// OnClickClose();
 
-		// 결과 데이터 구성
-		FDailyStudyResult ResultData;
-		ResultData.CurrentScore = CurrentScore;
-		ResultData.BestScore = BestScore;
-		ResultData.QuestionList = QuestionList;
-		ResultData.AnswerList = AnswerList;
-		ResultData.TotalCount = QuestionList.Num();
+
+
 		
-		// 완료/건너뛰기 카운트 계산
-		ResultData.CompletedCount = 0;
-		ResultData.SkippedCount = 0;
-		for (const FDailyStudyAnswer& Answer : AnswerList)
-		{
-			if (Answer.bSkipped)
-				ResultData.SkippedCount++;
-			else if (Answer.bCompleted)
-				ResultData.CompletedCount++;
-		}
+		// this->SaveProgress(CurrentScore);
 
-		// 평균 점수 계산
-		int32 TotalGrammar = 0;
-		int32 TotalContext = 0;
-		int32 TotalFinal = 0;
-		int32 CompletedAnswers = 0;
-		
-		for (const FDailyStudyAnswer& Answer : AnswerList)
-		{
-			if (Answer.bCompleted)
-			{
-				TotalGrammar += Answer.JudgeResult.grammar_score;
-				TotalContext += Answer.JudgeResult.context_score;
-				TotalFinal += Answer.JudgeResult.final_overall_score;
-				CompletedAnswers++;
-			}
-		}
-		
-		if (CompletedAnswers > 0)
-		{
-			ResultData.AvgGrammarScore = TotalGrammar / CompletedAnswers;
-			ResultData.AvgContextScore = TotalContext / CompletedAnswers;
-			ResultData.AvgFinalScore = TotalFinal / CompletedAnswers;
-		}
+		// // 최고 점수 읽기 (SaveProgress 후 업데이트된 값)
+		// int32 UserId = ULingoGameHelper::GetUserId(GetWorld());
+		// FString Today = FDateTime::Now().ToString(TEXT("%Y-%m-%d"));
+		// FString BestScoreDate = UConfigLibrary::GetUserString(UserId, TEXT("DailyStudyBestScoreDate"), TEXT(""));
+		//
+		// BestScore = 0;
+		// if (BestScoreDate == Today)
+		// {
+		// 	BestScore = UConfigLibrary::GetUserInt(UserId, TEXT("DailyStudyBestScore"), 0);
+		// }
+		//
+		// // 결과 데이터 구성
+		// FDailyStudyResult ResultData;
+		// ResultData.CurrentScore = CurrentScore;
+		// ResultData.BestScore = BestScore;
+		// ResultData.QuestionList = QuestionList;
+		// ResultData.AnswerList = AnswerList;
+		// ResultData.TotalCount = QuestionList.Num();
+		//
+		// // 완료/건너뛰기 카운트 계산
+		// ResultData.CompletedCount = 0;
+		// ResultData.SkippedCount = 0;
+		// for (const FDailyStudyAnswer& Answer : AnswerList)
+		// {
+		// 	if (Answer.bSkipped)
+		// 		ResultData.SkippedCount++;
+		// 	else if (Answer.bCompleted)
+		// 		ResultData.CompletedCount++;
+		// }
+		//
+		// // 평균 점수 계산
+		// int32 TotalGrammar = 0;
+		// int32 TotalContext = 0;
+		// int32 TotalFinal = 0;
+		// int32 CompletedAnswers = 0;
+		//
+		// for (const FDailyStudyAnswer& Answer : AnswerList)
+		// {
+		// 	if (Answer.bCompleted)
+		// 	{
+		// 		TotalGrammar += Answer.JudgeResult.grammar_score;
+		// 		TotalContext += Answer.JudgeResult.context_score;
+		// 		TotalFinal += Answer.JudgeResult.final_overall_score;
+		// 		CompletedAnswers++;
+		// 	}
+		// }
+		//
+		// if (CompletedAnswers > 0)
+		// {
+		// 	ResultData.AvgGrammarScore = TotalGrammar / CompletedAnswers;
+		// 	ResultData.AvgContextScore = TotalContext / CompletedAnswers;
+		// 	ResultData.AvgFinalScore = TotalFinal / CompletedAnswers;
+		// }
 
-		// 결과 팝업 표시
-		if (UPopup_DailyResult* ResultPopup = UPopupManager::Get(GetWorld())->ShowPopupAs<UPopup_DailyResult>(EPopupType::DailyResult))
-		{
-			ResultPopup->InitPopup(ResultData);
-		}
+		// // 결과 팝업 표시
+		// if (UPopup_DailyResult* ResultPopup = UPopupManager::Get(GetWorld())->ShowPopupAs<UPopup_DailyResult>(EPopupType::DailyResult))
+		// {
+		// 	ResultPopup->InitPopup(ResultData);
+		// }
 	}
 }

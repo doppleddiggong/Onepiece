@@ -17,13 +17,7 @@
  */
 namespace DailyStudyConfig
 {
-	/** 한 세션당 문제 개수 (조정 가능) */
-	static constexpr int32 QUESTIONS_PER_SESSION = 5;
-
-	/** 생각할 시간 (초) */
-	static constexpr float THINK_TIME = 5.0f;
-	
-	static constexpr int32 MAX_CATEGORY = 24;
+	static constexpr float THINK_TIME = 3.0f;
 
 	static constexpr float NEXT_QUESTION = 1.5f;
 }
@@ -57,31 +51,31 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Popup")
 	void InitPopup();
 
+	/**
+	 * @brief AI 생성 단어로 Daily Study 초기화
+	 * @param Words AI가 생성한 한국어 단어 배열
+	 */
+	void InitPopup(const TArray<FString>& Words);
+
 	FString GetCurrentQuestionText() const;
 	
 	void OnResponseSpeakingsJudges(const FResponseSpeakingJudes& JudgeResult);
 
 private:
-	/** 10개 랜덤 단어 생성 */
-	void GenerateQuestions();
+	// /** 10개 랜덤 단어 생성 */
+	// void GenerateQuestions();
 
 	/** WordType에 맞는 데이터 로드 */
 	void LoadWordData(EWordType Type, int32 Code, FDailyStudyWordItem& OutItem);
 
-	/** 일일 최고 득점 로드 및 표시 */
-	void InitBestScore();
-	
-	void SaveProgress(int32 FinalScore);
-
 	/** 현재 질문 UI 업데이트 */
 	void LoadCurQuestion();
-
-	// FDailyStudyResult CalculateResults();
 
 	/** 다음 질문으로 이동 */
 	void MoveToNextQuestion();
 
-	void ShowCorrectData();
+	/** 정답 데이터 표시 (정답/오답 판별) */
+	void ShowCorrectData(bool bIsCorrect);
 	
 	/** 닫기 버튼 클릭 */
 	UFUNCTION()
@@ -103,15 +97,10 @@ private:
 protected:
 	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<class UTextBlock> Txt_CurScore;
-	
-	UPROPERTY(meta = (BindWidget))
-	TObjectPtr<class UTextBlock> Txt_BestScore;
 
 	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<class UTextureButton> Btn_Close;
 
-
-	
 	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<class UCanvasPanel> Canvas_Question;
 
@@ -164,4 +153,49 @@ private:
 	float RemainingThinkTime = 0.f;
 
 	FDailyStudyWordItem CorrectData;
+
+	/** 마지막 답변이 정답인지 여부 (타임업 또는 50점 미만 = false) */
+	bool bLastAnswerCorrect = false;
+
+	// ===================================================================
+	// Media Player - 정답/오답 영상 재생
+	// ===================================================================
+
+	/** 미디어 플레이어 */
+	UPROPERTY()
+	TObjectPtr<class UMediaPlayer> MediaPlayer;
+
+	/** 미디어 텍스처 */
+	UPROPERTY()
+	TObjectPtr<class UMediaTexture> MediaTexture;
+
+	/** 정답 영상 소스 */
+	UPROPERTY(EditDefaultsOnly, Category = "Media")
+	TObjectPtr<class UMediaSource> CorrectVideoSource;
+
+	/** 오답 영상 소스 */
+	UPROPERTY(EditDefaultsOnly, Category = "Media")
+	TObjectPtr<class UMediaSource> WrongVideoSource;
+
+	/** 영상 재생 시작 시간 (초) */
+	UPROPERTY(EditDefaultsOnly, Category = "Media", meta = (ClampMin = "0.0"))
+	float VideoStartTime = 0.0f;
+
+	/** 영상 재생 종료 시간 (초) */
+	UPROPERTY(EditDefaultsOnly, Category = "Media", meta = (ClampMin = "0.0"))
+	float VideoEndTime = 3.0f;
+
+	/** 영상 재생 시간 체크 타이머 */
+	FTimerHandle VideoCheckTimerHandle;
+
+private:
+	/** 영상 재생 (정답/오답) */
+	void PlayVideo(bool bIsCorrect);
+
+	/** 영상 재생 시간 체크 */
+	void CheckVideoPlayback();
+
+	/** 영상 재생 완료 콜백 */
+	UFUNCTION()
+	void OnVideoFinished();
 };
