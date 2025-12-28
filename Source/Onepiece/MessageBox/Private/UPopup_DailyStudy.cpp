@@ -153,12 +153,8 @@ void UPopup_DailyStudy::OnResponseSpeakingsJudges(const FResponseSpeakingJudes& 
 	if (!QuestionList.IsValidIndex(CurIndex))
 		return;
 	
-	FDailyStudyAnswer Answer;
-	Answer.QuestionIndex = CurIndex;
-	Answer.ExpectedAnswer = QuestionList[CurIndex];
-	Answer.JudgeResult = JudgeResult;
-	Answer.bCompleted = true;
-	AnswerList.Add(Answer);
+	// 답변 리스트에 추가
+	AnswerList.Add(JudgeResult);
 
 	CurrentScore += JudgeResult.final_overall_score;
 	Txt_CurScore->SetText(FText::FromString(FString::Printf(TEXT("Score : %d"), CurrentScore)));
@@ -203,14 +199,15 @@ void UPopup_DailyStudy::OnThinkTimeFinished()
 	// 타임업 = 오답 처리
 	bLastAnswerCorrect = false;
 	
-	// Add a skipped answer
+	// 빈 답변 추가 (건너뜀 처리)
 	if (QuestionList.IsValidIndex(CurIndex))
 	{
-		FDailyStudyAnswer Answer;
-		Answer.QuestionIndex = CurIndex;
-		Answer.ExpectedAnswer = QuestionList[CurIndex];
-		Answer.bSkipped = true;
-		AnswerList.Add(Answer);
+		FResponseSpeakingJudes EmptyAnswer;
+		EmptyAnswer.final_overall_score = 0;
+		EmptyAnswer.grammar_score = 0;
+		EmptyAnswer.context_score = 0;
+		EmptyAnswer.final_feedback = TEXT("Time Over");
+		AnswerList.Add(EmptyAnswer);
 	}
 	
 	// 오답 화면 표시 (영상 + TTS)
@@ -297,22 +294,20 @@ void UPopup_DailyStudy::MoveToNextQuestion()
 	}
 	else
 	{
-		// 모든 문제 완료 - 점수 계산 및 표시
-		const int32 AverageScore = QuestionList.Num() > 0 ? (CurrentScore / QuestionList.Num()) : 0;
+		// 모든 문제 완료 - DailyResult 팝업 표시
+		if (auto DailyResultPopup = UPopupManager::Get(GetWorld())->ShowPopupAs<UPopup_DailyResult>(EPopupType::DailyResult))
+		{
+			// FDailyStudyResult 생성
+			FDailyStudyResult Result;
+			Result.CurrentScore = CurrentScore;
+			Result.QuestionList = QuestionList;
+			Result.AnswerList = AnswerList;
+			
+			DailyResultPopup->InitPopup(Result);
+		}
 
-		const FString ResultMessage = FString::Printf(
-			TEXT("Score: %d\nAverage: %d\nSolved: %d/%d"),
-			CurrentScore,
-			AverageScore,
-			CorrectAnswerCount,
-			QuestionList.Num()
-		);
-
-		UPopupManager::Get(GetWorld())->ShowMsgBox(
-			TEXT("Daily Result"),
-			ResultMessage,
-			EMsgBoxType::OK,
-			FOnMsgBoxOkDelegate::CreateUObject(this, &UPopup_DailyStudy::OnClickClose));
+		// 현재 팝업 닫기
+		OnClickClose();
 	}
 }
 
@@ -379,8 +374,6 @@ void UPopup_DailyStudy::CheckVideoPlayback()
 
 void UPopup_DailyStudy::OnVideoFinished()
 {
-	PRINTLOG(TEXT("[DailyStudy] Video playback finished"));
-
 	// 영상 숨기기
 	Img_Correct->SetVisibility(ESlateVisibility::Hidden);
 

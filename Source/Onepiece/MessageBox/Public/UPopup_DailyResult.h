@@ -4,17 +4,27 @@
 
 #include "CoreMinimal.h"
 #include "UBasePopup.h"
-#include "FDailyStudy.h"
+#include "FDailyStudyResult.h"
 #include "UPopup_DailyResult.generated.h"
 
+/**
+ * @brief Daily Study 결과 팝업
+ * 
+ * Daily Study에서 학습한 단어들의 결과를 스크롤 가능한 리스트로 표시합니다.
+ * UPopup_SpeakResult를 참조하여 구현되었습니다.
+ */
 UCLASS()
 class ONEPIECE_API UPopup_DailyResult : public UBasePopup
 {
 	GENERATED_BODY()
 
 public:
+	/**
+	 * @brief Daily Study 결과로 팝업 초기화
+	 * @param Result Daily Study 결과 데이터
+	 */
 	UFUNCTION(BlueprintCallable, Category = "Popup")
-	void InitPopup(const FDailyStudyResult& InResult);
+	void InitPopup(const FDailyStudyResult& Result);
 
 protected:
 	virtual void NativeConstruct() override;
@@ -24,35 +34,27 @@ private:
 	UFUNCTION()
 	void OnClickConfirm();
 
+	/** 질문 리스트 초기화 (스크롤 가능한 아이템 생성) */
+	void InitQuestionList();
+
 protected:
-	/** 최종 점수 ("Your Score: 85/100") */
+	/** 최종 점수 */
 	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<class UTextBlock> Txt_FinalScore;
 
-	/** 최고 점수 ("Best Score: 90") */
+	/** 결과 리스트를 담는 VerticalBox (스크롤 가능) */
 	UPROPERTY(meta = (BindWidget))
-	TObjectPtr<class UTextBlock> Txt_BestScore;
-
-	/** 완료/총 개수 ("Completed: 9/10") */
-	UPROPERTY(meta = (BindWidget))
-	TObjectPtr<class UTextBlock> Txt_CompletedCount;
-
-	/** 안내 메시지 */
-	UPROPERTY(meta = (BindWidget))
-	TObjectPtr<class UTextBlock> Txt_GuideMessage;
-
-	/** 단어 목록 스크롤박스 */
-	UPROPERTY(meta = (BindWidget))
-	TObjectPtr<class UScrollBox> ScrollBox_WordList;
+	TObjectPtr<class UVerticalBox> VerticalBox;
 
 	/** 확인 버튼 (팝업 닫기) */
 	UPROPERTY(meta = (BindWidget))
-	TObjectPtr<class UTextureButton> Btn_Confirm;
+	TObjectPtr<class UImageButton> Btn_Confirm;
 
 private:
-	/** 결과 요약 데이터 */
-	FDailyStudyResult DailyResult;
+	/** 아이템 위젯 클래스 */
+	UPROPERTY(EditDefaultsOnly, Category = "UI")
+	TSubclassOf<class UPopup_DailyResultItem> AnswerItemClass;
 
-	/** 단어 항목 위젯 생성 */
-	void CreateWordItemWidget(const FDailyStudyWordItem& WordItem, const FDailyStudyAnswer& Answer, int32 Index);
+	/** Daily Study 결과 데이터 */
+	FDailyStudyResult StudyResult;
 };

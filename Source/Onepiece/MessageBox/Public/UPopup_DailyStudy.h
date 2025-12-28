@@ -4,7 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "UBasePopup.h"
-#include "FDailyStudy.h"
+#include "FDailyStudyResult.h"
 #include "EWordType.h"
 #include "NetworkData.h"
 #include "UCountDown.h"
@@ -135,13 +135,14 @@ private:
 
 	/** 10개 랜덤 단어 목록 */
 	TArray<FString> QuestionList;
-	TArray<FDailyStudyAnswer> AnswerList;
+	
+	/** 답변 리스트 (FResponseSpeakingJudes) */
+	TArray<FResponseSpeakingJudes> AnswerList;
 	
 	/** 현재 질문 인덱스 (0-based) */
 	int32 CurIndex = 0;
 	
 	int32 CurrentScore = 0;
-	int32 BestScore = 0;
 	int32 CorrectAnswerCount = 0;
 
 	/** 다음 문제 이동 타이머 */

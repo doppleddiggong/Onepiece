@@ -1,17 +1,13 @@
 // Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
 
 #include "UPopup_DailyResult.h"
-
-#include "UPopup_DailyStudy.h"
+#include "UPopup_DailyResultItem.h"
 #include "UPopupManager.h"
-#include "UTextureButton.h"
+#include "UImageButton.h"
 
 #include "Components/TextBlock.h"
-#include "Components/ScrollBox.h"
 #include "Components/VerticalBox.h"
-#include "Components/HorizontalBox.h"
-#include "Components/Image.h"
-#include "Components/Border.h"
+#include "Components/Spacer.h"
 
 void UPopup_DailyResult::NativeConstruct()
 {
@@ -29,42 +25,20 @@ void UPopup_DailyResult::NativeConstruct()
 // Public Methods
 // ========================================
 
-void UPopup_DailyResult::InitPopup(const FDailyStudyResult& InResult)
+void UPopup_DailyResult::InitPopup(const FDailyStudyResult& Result)
 {
-	// 결과 집계
-	DailyResult = InResult;
+	// 데이터 저장
+	StudyResult = Result;
 
 	// 점수 표시
-	Txt_FinalScore->SetText(FText::FromString(
-		FString::Printf(TEXT("Score: %d"), DailyResult.CurrentScore)));
-	
-	Txt_BestScore->SetText(FText::FromString(
-		FString::Printf(TEXT("Best: %d"), DailyResult.BestScore)));
-	
-	Txt_CompletedCount->SetText(FText::FromString(
-		FString::Printf(TEXT("Completed: %d/%d"), DailyResult.CompletedCount, DailyResult.TotalCount)));
-
-	// 안내 메시지 설정
-	if (Txt_GuideMessage)
+	if (Txt_FinalScore)
 	{
-		Txt_GuideMessage->SetText(FText::FromString(
-			TEXT("이번 게임에서 배웠던 단어는 다음과 같습니다.\n각각의 단어별로 획득한 점수와 평가는 다음과 같습니다.\n모르는 것은 AI와 대화하면서 차근차근 학습해봅시다.")));
+		Txt_FinalScore->SetText(FText::FromString(
+			FString::Printf(TEXT("Score: %d"), Result.CurrentScore)));
 	}
 
-	// 단어 목록 초기화
-	if (ScrollBox_WordList)
-	{
-		ScrollBox_WordList->ClearChildren();
-
-		// 각 단어별 항목 생성
-		for (int32 i = 0; i < DailyResult.QuestionList.Num(); ++i)
-		{
-			if (DailyResult.AnswerList.IsValidIndex(i))
-			{
-				CreateWordItemWidget(DailyResult.QuestionList[i], DailyResult.AnswerList[i], i);
-			}
-		}
-	}
+	// 질문 리스트 초기화
+	InitQuestionList();
 }
 
 // ========================================
@@ -73,75 +47,53 @@ void UPopup_DailyResult::InitPopup(const FDailyStudyResult& InResult)
 
 void UPopup_DailyResult::OnClickConfirm()
 {
-	if ( auto PopupMgr = UPopupManager::Get(GetWorld()) )
+	if (auto PopupMgr = UPopupManager::Get(GetWorld()))
 	{
 		PopupMgr->HideCurrentPopup();
 	}
 }
 
 // ========================================
-// Word Item Widget Creation
+// Question List Initialization
 // ========================================
 
-void UPopup_DailyResult::CreateWordItemWidget(const FDailyStudyWordItem& WordItem, const FDailyStudyAnswer& Answer, int32 Index)
+void UPopup_DailyResult::InitQuestionList()
 {
-	if (!ScrollBox_WordList)
+	if (!VerticalBox)
 		return;
 
-	// HorizontalBox 생성 (단어 항목 컨테이너)
-	UHorizontalBox* ItemBox = NewObject<UHorizontalBox>(this);
-	if (!ItemBox)
-		return;
+	// 기존 아이템 제거
+	VerticalBox->ClearChildren();
 
-	// 번호 텍스트 (예: "1.")
-	UTextBlock* Txt_Index = NewObject<UTextBlock>(this);
-	if (Txt_Index)
+	// QuestionList와 AnswerList를 페어로 사용하여 아이템 생성
+	for (int32 i = 0; i < StudyResult.QuestionList.Num(); ++i)
 	{
-		Txt_Index->SetText(FText::FromString(FString::Printf(TEXT("%d."), Index + 1)));
-		Txt_Index->SetMinDesiredWidth(40.0f);
-		ItemBox->AddChild(Txt_Index);
-	}
+		// AnswerList 범위 체크
+		if (!StudyResult.AnswerList.IsValidIndex(i))
+			continue;
 
-	// 단어 정보 VerticalBox
-	UVerticalBox* WordInfoBox = NewObject<UVerticalBox>(this);
-	if (WordInfoBox)
-	{
-		// 한국어/영어 단어
-		UTextBlock* Txt_Word = NewObject<UTextBlock>(this);
-		if (Txt_Word)
+		// 아이템 위젯 생성 및 초기화
+		if (auto ItemWidget = CreateWidget<UPopup_DailyResultItem>(GetWorld(), AnswerItemClass))
 		{
-			FString WordText = FString::Printf(TEXT("%s (%s)"), *WordItem.Kor, *WordItem.Eng);
-			Txt_Word->SetText(FText::FromString(WordText));
-			WordInfoBox->AddChild(Txt_Word);
-		}
+			// 간단하게 3개 파라미터만 전달
+			ItemWidget->InitData(
+				StudyResult.QuestionList[i],                          // Question
+				StudyResult.AnswerList[i].final_feedback,             // FeedBack
+				StudyResult.AnswerList[i].final_overall_score         // Score
+			);
+			
+			VerticalBox->AddChildToVerticalBox(ItemWidget);
 
-		// 점수 및 평가
-		UTextBlock* Txt_Score = NewObject<UTextBlock>(this);
-		if (Txt_Score)
-		{
-			FString ScoreText;
-			if (Answer.bSkipped)
+			// 마지막 아이템이 아니면 Spacer 추가 (아이템 간 간격)
+			if (i < StudyResult.QuestionList.Num() - 1)
 			{
-				ScoreText = TEXT("건너뜀 (점수: 0)");
+				USpacer* Spacer = NewObject<USpacer>(this);
+				if (Spacer)
+				{
+					Spacer->SetSize(FVector2D(1.0f, 15.0f));
+					VerticalBox->AddChildToVerticalBox(Spacer);
+				}
 			}
-			else if (Answer.bCompleted)
-			{
-				ScoreText = FString::Printf(TEXT("점수: %d | 문법: %d | 맥락: %d"),
-					Answer.JudgeResult.final_overall_score,
-					Answer.JudgeResult.grammar_score,
-					Answer.JudgeResult.context_score);
-			}
-			else
-			{
-				ScoreText = TEXT("미완료");
-			}
-			Txt_Score->SetText(FText::FromString(ScoreText));
-			WordInfoBox->AddChild(Txt_Score);
 		}
-
-		ItemBox->AddChild(WordInfoBox);
 	}
-
-	// ScrollBox에 추가
-	ScrollBox_WordList->AddChild(ItemBox);
 }
