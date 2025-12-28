@@ -126,79 +126,21 @@ void UPopup_DailyStudy::InitPopup(const TArray<FString>& Words)
 		CountDown_Widget->OnCountDownFinished.AddDynamic(this, &UPopup_DailyStudy::OnCountDownFinished);
 	}
 
+	
 	// 초기화
 	CurIndex = 0;
 	AnswerList.Empty();
 	CurrentScore = 0;
 	QuestionList.Empty();
+	QuestionList.Append(Words);
 
 	Canvas_Correct->SetVisibility(ESlateVisibility::Hidden);
 	Canvas_Question->SetVisibility(ESlateVisibility::Hidden);
 	
 	Txt_CurScore->SetText(FText::FromString(FString::Printf(TEXT("Score : %d"), CurrentScore)));
 
-	// AI 생성 단어를 QuestionList로 변환
-	for (int32 i = 0; i < Words.Num(); ++i)
-	{
-		FDailyStudyWordItem WordItem;
-		WordItem.WordType = EWordType::Color; // AI 생성 단어는 Color 타입으로 설정
-		WordItem.WordCode = i;
-		WordItem.Kor = Words[i].TrimStartAndEnd();
-		WordItem.Eng = WordItem.Kor; // 한국어 음성 인식이므로 동일하게 설정
-		WordItem.Texture = nullptr; // 이미지 없음
-
-		QuestionList.Add(WordItem);
-	}
-
-	PRINTLOG(TEXT("[DailyStudy] Initialized with %d AI-generated words"), QuestionList.Num());
-
 	// 카운트다운 시작
 	CountDown_Widget->StartCountDown(3);
-}
-
-void UPopup_DailyStudy::LoadWordData(EWordType Type, int32 Code, FDailyStudyWordItem& OutItem)
-{
-	OutItem.WordType = Type;
-	OutItem.WordCode = Code;
-
-	UGameDataManager* DataManager = UGameDataManager::Get(GetWorld());
-	if (!DataManager)
-	{
-		PRINTLOG(TEXT("[DailyStudy] Error: GameDataManager not found"));
-		return;
-	}
-
-	if (Type == EWordType::Animal)
-	{
-		FReadData ReadData;
-		if (DataManager->GetReadData(Code, ReadData))
-		{
-			OutItem.Eng = ReadData.Eng;
-			OutItem.Kor = ReadData.Word;
-			OutItem.Texture = ReadData.Texture;
-		}
-	}
-	else if (Type == EWordType::Food)
-	{
-		FReadData ReadData;
-		if (DataManager->GetReadData(Code, ReadData))
-		{
-			OutItem.Eng = ReadData.Eng;
-			OutItem.Kor = ReadData.Word;
-			OutItem.Texture = ReadData.Texture;
-		}
-	}
-	else if (Type == EWordType::Region)
-	{
-		// Listen 데이터 사용
-		FListenData ListenData;
-		if (DataManager->GetListenData(Code, ListenData))
-		{
-			OutItem.Eng = ListenData.Eng;
-			OutItem.Kor = ListenData.Word;
-			OutItem.Texture = ListenData.Texture;
-		}
-	}
 }
 
 void UPopup_DailyStudy::LoadCurQuestion()
@@ -209,9 +151,7 @@ void UPopup_DailyStudy::LoadCurQuestion()
 		return;
 	}
 
-	CorrectData = QuestionList[CurIndex];
-
-	Txt_Question->SetText(FText::FromString(CorrectData.Kor));
+	Txt_Question->SetText(FText::FromString(QuestionList[CurIndex]));
 	
 	// 진행 상황 업데이트
 	Txt_QuestionProgress->SetText(FText::FromString(
@@ -234,7 +174,7 @@ FString UPopup_DailyStudy::GetCurrentQuestionText() const
 {
 	if (QuestionList.IsValidIndex(CurIndex))
 	{
-		return QuestionList[CurIndex].Eng;
+		return QuestionList[CurIndex];
 	}
 	return FString();
 }
@@ -248,7 +188,7 @@ void UPopup_DailyStudy::OnResponseSpeakingsJudges(const FResponseSpeakingJudes& 
 	
 	FDailyStudyAnswer Answer;
 	Answer.QuestionIndex = CurIndex;
-	Answer.ExpectedAnswer = QuestionList[CurIndex].Eng;
+	Answer.ExpectedAnswer = QuestionList[CurIndex];
 	Answer.JudgeResult = JudgeResult;
 	Answer.bCompleted = true;
 	AnswerList.Add(Answer);
@@ -266,7 +206,7 @@ void UPopup_DailyStudy::OnResponseSpeakingsJudges(const FResponseSpeakingJudes& 
 	// Request TTS for the Korean answer
 	if (UKLingoNetworkSystem* NetworkSystem = UKLingoNetworkSystem::Get(GetWorld()))
 	{
-		NetworkSystem->RequestListenAudio(CorrectData.Kor, FResponseListenAudioDelegate::CreateUObject(this, &UPopup_DailyStudy::OnResponseListenAudio));
+		NetworkSystem->RequestListenAudio(QuestionList[CurIndex], FResponseListenAudioDelegate::CreateUObject(this, &UPopup_DailyStudy::OnResponseListenAudio));
 	}
 }
 
@@ -306,13 +246,13 @@ void UPopup_DailyStudy::OnThinkTimeFinished()
 	{
 		FDailyStudyAnswer Answer;
 		Answer.QuestionIndex = CurIndex;
-		Answer.ExpectedAnswer = QuestionList[CurIndex].Eng;
+		Answer.ExpectedAnswer = QuestionList[CurIndex];
 		Answer.bSkipped = true;
 		AnswerList.Add(Answer);
 	}
 	
 	if (UKLingoNetworkSystem* NetworkSystem = UKLingoNetworkSystem::Get(GetWorld()))
-		NetworkSystem->RequestListenAudio(CorrectData.Kor, FResponseListenAudioDelegate::CreateUObject(this, &UPopup_DailyStudy::OnResponseListenAudio));
+		NetworkSystem->RequestListenAudio(QuestionList[CurIndex], FResponseListenAudioDelegate::CreateUObject(this, &UPopup_DailyStudy::OnResponseListenAudio));
 }
 
 void UPopup_DailyStudy::OnAudioCapture(bool bIsRecording)
@@ -346,8 +286,9 @@ void UPopup_DailyStudy::ShowCorrectData(bool bIsCorrect)
 {
 	Canvas_Correct->SetVisibility(ESlateVisibility::Visible);
 		
-	Txt_Correct->SetText(FText::FromString(CorrectData.Eng));
-
+	Txt_Correct->SetText(FText::FromString(""));
+	Txt_Question->SetText(FText::FromString(""));
+	
 	PlayVideo(bIsCorrect);
 }
 

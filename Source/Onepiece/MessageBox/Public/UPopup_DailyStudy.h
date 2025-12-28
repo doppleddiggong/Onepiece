@@ -62,12 +62,6 @@ public:
 	void OnResponseSpeakingsJudges(const FResponseSpeakingJudes& JudgeResult);
 
 private:
-	// /** 10개 랜덤 단어 생성 */
-	// void GenerateQuestions();
-
-	/** WordType에 맞는 데이터 로드 */
-	void LoadWordData(EWordType Type, int32 Code, FDailyStudyWordItem& OutItem);
-
 	/** 현재 질문 UI 업데이트 */
 	void LoadCurQuestion();
 
@@ -137,7 +131,7 @@ private:
 	// ===================================================================
 
 	/** 10개 랜덤 단어 목록 */
-	TArray<FDailyStudyWordItem> QuestionList;
+	TArray<FString> QuestionList;
 	TArray<FDailyStudyAnswer> AnswerList;
 	
 	/** 현재 질문 인덱스 (0-based) */
@@ -151,8 +145,6 @@ private:
 	FTimerHandle ThinkingTimerHandle;
 
 	float RemainingThinkTime = 0.f;
-
-	FDailyStudyWordItem CorrectData;
 
 	/** 마지막 답변이 정답인지 여부 (타임업 또는 50점 미만 = false) */
 	bool bLastAnswerCorrect = false;
