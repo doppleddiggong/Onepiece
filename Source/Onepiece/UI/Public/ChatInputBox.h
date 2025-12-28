@@ -28,8 +28,16 @@ public:
 
 private:
 	FText FlushMessage();
-	bool IsAIAsk(const FString& InMessage, FString& OutQuestion) const;
 
+	bool IsAIAsk(const FString& InMessage, FString& OutQuestion) const;
+	bool IsDailyAsk(const FString& InMessage, FString& OutQuestion) const;
+
+	/** GameDataManager에서 랜덤 한국어 단어 데이터 가져오기 (FWordData 형태) */
+	TArray<struct FWordData> GetRandomKoreanWords(int32 Count);
+
+	UFUNCTION()
+	void OnDailyAnswerReceived(FResponseChatAnswers& ResponseData, bool bWasSuccessful);
+	
 	UFUNCTION()
 	void HandleSendClicked();
 

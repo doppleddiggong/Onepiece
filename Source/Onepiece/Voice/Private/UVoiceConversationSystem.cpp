@@ -20,6 +20,7 @@
 #include "UChatHistorySystem.h"
 #include "UPopupManager.h"
 #include "UPopup_SpeakJudes.h"
+#include "UPopup_DailyStudy.h"
 #include "Sound/SoundWaveProcedural.h"
 #include "GameFramework/PlayerState.h"
 #include "Onepiece/Onepiece.h"
@@ -253,6 +254,20 @@ void UVoiceConversationSystem::StopRecording()
 			LastRecordedFilePath,
 			FResponseSpeakingJudesDelegate::CreateUObject(this, &UVoiceConversationSystem::OnResponseSpeakingsJudges));
 	}
+	else if (auto* PopupMgr = UPopupManager::Get(GetWorld()))
+	{
+		if (auto* DailyStudyPopup = Cast<UPopup_DailyStudy>(PopupMgr->GetCurrentPopupWidget()))
+		{
+			// Toast 메시지 표시: 답변 분석 중
+			if (UDialogManager* DM = UDialogManager::Get(GetWorld()))
+				DM->ShowToast(TEXT("The officer is reviewing your answer"));
+
+			KLingoNetwork->RequestSpeakingJudges(
+				DailyStudyPopup->GetCurrentQuestionText(),
+				LastRecordedFilePath,
+				FResponseSpeakingJudesDelegate::CreateUObject(this, &UVoiceConversationSystem::OnResponseSpeakingsJudges));
+		}
+	}
 	else
 	{
 		// Toast 메시지 표시: 답변 분석 중
@@ -289,6 +304,12 @@ void UVoiceConversationSystem::OnResponseSpeakingsJudges(FResponseSpeakingJudes&
 
 	if (bSuccess)
 	{
+		if (auto* DailyStudyPopup = Cast<UPopup_DailyStudy>(UPopupManager::Get(GetWorld())->GetCurrentPopupWidget()))
+		{
+			DailyStudyPopup->OnResponseSpeakingsJudges(Response);
+			return;
+		}
+		
 		// PlayerActor의 Server RPC 호출 (PlayerActor는 Client 소유!)
 		if (Owner)
 			Owner->Server_NotifySpeakJudgeComplete(Response);

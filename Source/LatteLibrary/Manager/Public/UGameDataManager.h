@@ -126,6 +126,9 @@ public:
 	UFUNCTION(BlueprintCallable, Category="MasterData|Color")
 	TArray<FColorData> GetColorDataByLevel(int32 Level) const;
 
+	UFUNCTION(BlueprintCallable, Category="MasterData|Color")
+	TArray<int32> GetAllColorDataKeys() const;
+
 private:
 	void Clear_ColorData();
 	void LoadData_ColorData();
@@ -206,6 +209,9 @@ public:
 	UFUNCTION(BlueprintCallable, Category="MasterData|Listen")
 	TArray<FListenData> GetListenDataByCategory(const FString& Category) const;
 
+	UFUNCTION(BlueprintCallable, Category="MasterData|Listen")
+	TArray<int32> GetAllListenDataKeys() const;
+
 private:
 	void Clear_ListenData();
 	void LoadData_ListenData();
@@ -225,6 +231,9 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category="MasterData|Read")
 	TArray<FReadData> GetReadDataByLevel(int32 Level) const;
+
+	UFUNCTION(BlueprintCallable, Category="MasterData|Read")
+	TArray<int32> GetAllReadDataKeys() const;
 
 private:
 	void Clear_ReadData();

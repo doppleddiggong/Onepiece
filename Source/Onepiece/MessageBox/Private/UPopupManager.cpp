@@ -24,6 +24,8 @@
 #include "UPopup_LevelSelect.h"
 #include "UPopup_History.h"
 #include "UPopup_HowToPlay.h"
+#include "UPopup_DailyStudy.h"
+#include "UPopup_DailyResult.h"
 #include "UPopup_SpeakJudes.h"
 
 #include "Onepiece/Onepiece.h"
@@ -47,8 +49,9 @@
 #define HISTORY_POPUP_PATH TEXT("/Game/CustomContents/UI/Widgets/WBP_PopupHistory.WBP_PopupHistory_C")
 #define SPEAKJUDES_POPUP_PATH TEXT("/Game/CustomContents/UI/Widgets/WBP_PopupSpeakJudes.WBP_PopupSpeakJudes_C")
 #define HOWTOPLAY_POPUP_PATH TEXT("/Game/CustomContents/UI/Widgets/WBP_PopupHowToPlay.WBP_PopupHowToPlay_C")
-
-
+#define DAILYSTUDY_POPUP_PATH TEXT("/Game/CustomContents/UI/Widgets/WBP_PopupDailyStudy.WBP_PopupDailyStudy_C")
+#define DAILYRESULT_POPUP_PATH TEXT("/Game/CustomContents/UI/Widgets/WBP_PopupDailyResult.WBP_PopupDailyResult_C")
+                
 UPopupManager::UPopupManager()
 {
 	// 기본 팝업 클래스 등록
@@ -72,6 +75,10 @@ UPopupManager::UPopupManager()
 	PopupClassMap.Add(EPopupType::History, FComponentHelper::LoadClass<UPopup_History>(HISTORY_POPUP_PATH));
 	PopupClassMap.Add(EPopupType::SpeakJudes, FComponentHelper::LoadClass<UPopup_SpeakJudes>(SPEAKJUDES_POPUP_PATH));
 	PopupClassMap.Add(EPopupType::HowToPlay, FComponentHelper::LoadClass<UPopup_HowToPlay>(HOWTOPLAY_POPUP_PATH));
+	PopupClassMap.Add(EPopupType::DailyStudy, FComponentHelper::LoadClass<UPopup_DailyStudy>(DAILYSTUDY_POPUP_PATH));
+	PopupClassMap.Add(EPopupType::DailyResult, FComponentHelper::LoadClass<UPopup_DailyResult>(DAILYRESULT_POPUP_PATH));
+
+
 }
 
 // ========================================

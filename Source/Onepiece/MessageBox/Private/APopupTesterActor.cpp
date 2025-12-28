@@ -16,6 +16,7 @@
 #include "NetworkData.h"
 #include "Popup_Result.h"
 #include "UCommonFunctionLibrary.h"
+#include "UPopup_DailyStudy.h"
 #include "UPopup_Evaluation.h"
 #include "UPopup_InterviewHello.h"
 #include "UPopup_LevelSelect.h"
