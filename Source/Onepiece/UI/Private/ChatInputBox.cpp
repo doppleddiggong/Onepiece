@@ -6,6 +6,7 @@
 #include "APlayerControl.h"
 #include "ChatWidget.h"
 #include "GameLogging.h"
+#include "NetworkData.h"
 #include "UKLingoNetworkSystem.h"
 #include "UPopupManager.h"
 #include "UPopup_DailyStudy.h"
@@ -233,15 +234,15 @@ bool UChatInputBox::HasKeyboardFocus()
 	return MultiLineEditableTextBox_Input && MultiLineEditableTextBox_Input->HasKeyboardFocus();
 }
 
-TArray<FString> UChatInputBox::GetRandomKoreanWords(int32 Count)
+TArray<FWordData> UChatInputBox::GetRandomKoreanWords(int32 Count)
 {
-	TArray<FString> RandomWords;
+	TArray<FWordData> RandomWordDataArray;
 
 	UGameDataManager* DataManager = UGameDataManager::Get(GetWorld());
 	if (!DataManager)
 	{
 		PRINTLOG(TEXT("[Daily] Error: GameDataManager not found"));
-		return RandomWords;
+		return RandomWordDataArray;
 	}
 
 	// ReadData에서 모든 키 가져오기
@@ -250,7 +251,7 @@ TArray<FString> UChatInputBox::GetRandomKoreanWords(int32 Count)
 	if (AllKeys.Num() == 0)
 	{
 		PRINTLOG(TEXT("[Daily] Error: No ReadData available"));
-		return RandomWords;
+		return RandomWordDataArray;
 	}
 
 	// 요청한 개수만큼 랜덤 단어 선택
@@ -267,12 +268,18 @@ TArray<FString> UChatInputBox::GetRandomKoreanWords(int32 Count)
 		FReadData ReadData;
 		if (DataManager->GetReadData(RandomKey, ReadData))
 		{
-			RandomWords.Add(ReadData.Word);
+			// FWordData 생성 (ReadData에는 Pronunciation이 없으므로 Eng로 임시 설정)
+			FWordData WordData;
+			WordData.Kor = ReadData.Word;
+			WordData.Eng = ReadData.Eng;
+			WordData.Pronunciation = ReadData.Eng; // TODO: 나중에 실제 발음 데이터로 교체
+			
+			RandomWordDataArray.Add(WordData);
 		}
 	}
 
-	PRINTLOG(TEXT("[Daily] Generated %d random words from ReadData"), RandomWords.Num());
-	return RandomWords;
+	PRINTLOG(TEXT("[Daily] Generated %d random word data from ReadData"), RandomWordDataArray.Num());
+	return RandomWordDataArray;
 }
 
 void UChatInputBox::OnDailyAnswerReceived(FResponseChatAnswers& ResponseData, bool bWasSuccessful)
@@ -281,60 +288,74 @@ void UChatInputBox::OnDailyAnswerReceived(FResponseChatAnswers& ResponseData, bo
 
 	if (!bWasSuccessful)
 	{
-		// 네트워크 실패 시 랜덤 단어로 대체
-		TArray<FString> FallbackWords = GetRandomKoreanWords(MIN_REQUIRED_WORDS);
+		// 네트워크 실패 시 랜덤 단어 데이터로 대체
+		TArray<FWordData> FallbackWordData = GetRandomKoreanWords(MIN_REQUIRED_WORDS);
 		
-		if (FallbackWords.Num() > 0)
+		if (FallbackWordData.Num() > 0)
 		{
 			if (UPopup_DailyStudy* DailyStudyPopup = UPopupManager::Get(GetWorld())->ShowPopupAs<UPopup_DailyStudy>(EPopupType::DailyStudy))
 			{
-				DailyStudyPopup->InitPopup(FallbackWords);
+				DailyStudyPopup->InitPopup(FallbackWordData);
 			}
 		}
 
 		return;
 	}
 
-	// AI 응답을 | 구분자로 파싱
-	TArray<FString> RawWords;
-	ResponseData.answer.ParseIntoArray(RawWords, TEXT("|"), true);
+	// AI 응답을 | 구분자로 파싱 (형식: "개|DOG|Gae|고양이|CAT|Go-yang-i")
+	TArray<FString> RawTokens;
+	ResponseData.answer.ParseIntoArray(RawTokens, TEXT("|"), true);
 
-	// 한국어 단어만 필터링
-	TArray<FString> ValidKoreanWords;
-	for (const FString& Word : RawWords)
+	// 3개씩 묶어서 FWordData로 변환 (Kor|Eng|Pronunciation)
+	TArray<FWordData> ValidWordDataArray;
+	for (int32 i = 0; i + 2 < RawTokens.Num(); i += 3)
 	{
-		FString TrimmedWord = Word.TrimStartAndEnd();
-		
+		FString Kor = RawTokens[i].TrimStartAndEnd();
+		FString Eng = RawTokens[i + 1].TrimStartAndEnd();
+		FString Pronunciation = RawTokens[i + 2].TrimStartAndEnd();
+
 		// 빈 문자열 체크
-		if (TrimmedWord.IsEmpty())
+		if (Kor.IsEmpty() || Eng.IsEmpty() || Pronunciation.IsEmpty())
 		{
-			PRINTLOG(TEXT("[Daily] Skipped: Empty word"));
+			PRINTLOG(TEXT("[Daily] Skipped: Empty field (Kor: '%s', Eng: '%s', Phon: '%s')"), *Kor, *Eng, *Pronunciation);
 			continue;
 		}
 
-		// 한국어 검증
-		if (!UCommonFunctionLibrary::IsValidKoreanWord(TrimmedWord))
+		// 한국어 검증 (Kor 필드만)
+		if (!UCommonFunctionLibrary::IsValidKoreanWord(Kor))
 		{
-			PRINTLOG(TEXT("[Daily] Skipped: Non-Korean word '%s'"), *TrimmedWord);
+			PRINTLOG(TEXT("[Daily] Skipped: Invalid Korean word '%s'"), *Kor);
 			continue;
 		}
 
-		ValidKoreanWords.Add(TrimmedWord);
+		// FWordData 생성
+		FWordData WordData;
+		WordData.Kor = Kor;
+		WordData.Eng = Eng;
+		WordData.Pronunciation = Pronunciation;
+
+		ValidWordDataArray.Add(WordData);
+		PRINTLOG(TEXT("[Daily] Parsed Word: Kor='%s', Eng='%s', Phon='%s'"), *Kor, *Eng, *Pronunciation);
 	}
 
 	// 유효한 단어가 부족하면 GameDataManager에서 보충
-	if (ValidKoreanWords.Num() < MIN_REQUIRED_WORDS)
+	if (ValidWordDataArray.Num() < MIN_REQUIRED_WORDS)
 	{
-		int32 WordsNeeded = MIN_REQUIRED_WORDS - ValidKoreanWords.Num();
+		int32 WordsNeeded = MIN_REQUIRED_WORDS - ValidWordDataArray.Num();
 
-		TArray<FString> AdditionalWords = GetRandomKoreanWords(WordsNeeded);
-		ValidKoreanWords.Append(AdditionalWords);
+		TArray<FWordData> AdditionalWordData = GetRandomKoreanWords(WordsNeeded);
+		ValidWordDataArray.Append(AdditionalWordData);
+
+		PRINTLOG(TEXT("[Daily] Added %d fallback words from ReadData"), AdditionalWordData.Num());
 	}
 
-	// 최종 검증
-	if (ValidKoreanWords.Num() > 0)
+	// 최종 검증 및 팝업 표시
+	if (ValidWordDataArray.Num() > 0)
 	{
 		if (UPopup_DailyStudy* DailyStudyPopup = UPopupManager::Get(GetWorld())->ShowPopupAs<UPopup_DailyStudy>(EPopupType::DailyStudy))
-			DailyStudyPopup->InitPopup(ValidKoreanWords);
+		{
+			DailyStudyPopup->InitPopup(ValidWordDataArray);
+			PRINTLOG(TEXT("[Daily] Initialized DailyStudy popup with %d words"), ValidWordDataArray.Num());
+		}
 	}
 }

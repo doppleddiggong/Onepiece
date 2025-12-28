@@ -15,10 +15,14 @@
 
 #include "Components/Image.h"
 #include "Components/TextBlock.h"
+#include "Components/RichTextBlock.h"
 #include "UTextureButton.h"
 #include "Components/CanvasPanel.h"
 #include "Misc/FileHelper.h"
 #include "Misc/Paths.h"
+
+// HyperLink Plugin
+#include "HyperLinkPluginBPLibrary.h"
 
 // Media Player
 #include "MediaPlayer.h"
@@ -74,7 +78,7 @@ void UPopup_DailyStudy::NativeDestruct()
 	MediaPlayer->Close();
 }
 
-void UPopup_DailyStudy::InitPopup(const TArray<FString>& Words)
+void UPopup_DailyStudy::InitPopup(const TArray<FWordData>& WordDataArray)
 {
 	// 기본 초기화 (델리게이트 바인딩 등)
 	if (Btn_Close)
@@ -101,7 +105,7 @@ void UPopup_DailyStudy::InitPopup(const TArray<FString>& Words)
 	CorrectAnswerCount = 0;
 
 	QuestionList.Empty();
-	QuestionList.Append(Words);
+	QuestionList.Append(WordDataArray);
 
 	AnswerList.Empty();
 
@@ -121,7 +125,9 @@ void UPopup_DailyStudy::LoadCurQuestion()
 
 	Border_Question->SetVisibility(ESlateVisibility::Visible);
 	Txt_Infomation->SetVisibility(ESlateVisibility::Visible);
-	Txt_Question->SetText(FText::FromString(QuestionList[CurIndex]));
+	
+	Rich_Text->SetText(FText::FromString(QuestionList[CurIndex].Kor));
+	Txt_SubTitle->SetText(FText::FromString(QuestionList[CurIndex].Pronunciation));
 	
 	// 진행 상황 업데이트
 	Txt_QuestionProgress->SetText(FText::FromString(
@@ -143,7 +149,7 @@ void UPopup_DailyStudy::OnClickClose()
 FString UPopup_DailyStudy::GetCurrentQuestionText() const
 {
 	if (QuestionList.IsValidIndex(CurIndex))
-		return QuestionList[CurIndex];
+		return QuestionList[CurIndex].Kor;
 
 	return FString();
 }
@@ -256,16 +262,17 @@ void UPopup_DailyStudy::ShowCorrectData(bool bIsCorrect)
 	
 	Canvas_Correct->SetVisibility(ESlateVisibility::Visible);
 		
-	Txt_Correct->SetText(FText::FromString(QuestionList[CurIndex]));
+	// FWordData에서 한글 단어 표시
+	Txt_Correct->SetText(FText::FromString(QuestionList[CurIndex].Kor));
 
 	Border_Question->SetVisibility(ESlateVisibility::Hidden);
 	Txt_Infomation->SetVisibility(ESlateVisibility::Hidden);
-	Txt_Question->SetText(FText::FromString(""));
 
 	if (UKLingoNetworkSystem* NetworkSystem = UKLingoNetworkSystem::Get(GetWorld()))
 	{
+		// 한글 단어를 음성으로 요청
 		NetworkSystem->RequestListenAudio(
-			QuestionList[CurIndex], 
+			QuestionList[CurIndex].Kor, 
 			FResponseListenAudioDelegate::CreateUObject(this, &UPopup_DailyStudy::OnResponseListenAudio)
 		);
 	}

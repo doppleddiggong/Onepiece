@@ -49,10 +49,10 @@ protected:
 	
 public:
 	/**
-	 * @brief AI 생성 단어로 Daily Study 초기화
-	 * @param Words AI가 생성한 한국어 단어 배열
+	 * @brief AI 생성 단어 데이터로 Daily Study 초기화
+	 * @param WordDataArray AI가 생성한 단어 데이터 배열 (한글/영어/발음)
 	 */
-	void InitPopup(const TArray<FString>& Words);
+	void InitPopup(const TArray<struct FWordData>& WordDataArray);
 
 	FString GetCurrentQuestionText() const;
 	
@@ -98,8 +98,11 @@ protected:
 	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<class UBorder> Border_Question;
 	
-	UPROPERTY(meta = (BindWidget))
-	TObjectPtr<class UTextBlock> Txt_Question;
+	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
+	TObjectPtr<class URichTextBlock> Rich_Text;
+
+	UPROPERTY(meta = (BindWidget), BlueprintReadOnly)
+	TObjectPtr<class UTextBlock> Txt_SubTitle;
 
 	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<class UTextBlock> Txt_Infomation;
@@ -133,8 +136,8 @@ private:
 	// Member Variables
 	// ===================================================================
 
-	/** 10개 랜덤 단어 목록 */
-	TArray<FString> QuestionList;
+	/** AI 생성 단어 데이터 목록 (한글/영어/발음) */
+	TArray<struct FWordData> QuestionList;
 	
 	/** 답변 리스트 (FResponseSpeakingJudes) */
 	TArray<FResponseSpeakingJudes> AnswerList;

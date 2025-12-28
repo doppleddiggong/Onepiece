@@ -75,9 +75,9 @@ void UPopup_DailyResult::InitQuestionList()
 		// 아이템 위젯 생성 및 초기화
 		if (auto ItemWidget = CreateWidget<UPopup_DailyResultItem>(GetWorld(), AnswerItemClass))
 		{
-			// 간단하게 3개 파라미터만 전달
+			// 간단하게 3개 파라미터만 전달 (FWordData에서 한글 단어 추출)
 			ItemWidget->InitData(
-				StudyResult.QuestionList[i],                          // Question
+				StudyResult.QuestionList[i].Kor,                      // Question (한글)
 				StudyResult.AnswerList[i].final_feedback,             // FeedBack
 				StudyResult.AnswerList[i].final_overall_score         // Score
 			);

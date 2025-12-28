@@ -15,9 +15,9 @@ struct FDailyStudyResult
 	UPROPERTY(BlueprintReadWrite, Category = "DailyStudy")
 	int32 CurrentScore = 0;
 
-	/** 질문 단어 리스트 */
+	/** 질문 단어 데이터 리스트 (한글/영어/발음) */
 	UPROPERTY(BlueprintReadWrite, Category = "DailyStudy")
-	TArray<FString> QuestionList;
+	TArray<FWordData> QuestionList;
 
 	/** 답변 리스트 */
 	UPROPERTY(BlueprintReadWrite, Category = "DailyStudy")
