@@ -106,4 +106,20 @@ struct FDailyStudyResult
 	/** 총 문제 개수 */
 	UPROPERTY(BlueprintReadWrite, Category = "DailyStudy")
 	int32 TotalCount = 0;
+
+	/** 질문 단어 리스트 */
+	UPROPERTY(BlueprintReadWrite, Category = "DailyStudy")
+	TArray<FDailyStudyWordItem> QuestionList;
+
+	/** 답변 리스트 */
+	UPROPERTY(BlueprintReadWrite, Category = "DailyStudy")
+	TArray<FDailyStudyAnswer> AnswerList;
+
+	/** 현재 점수 */
+	UPROPERTY(BlueprintReadWrite, Category = "DailyStudy")
+	int32 CurrentScore = 0;
+
+	/** 최고 점수 */
+	UPROPERTY(BlueprintReadWrite, Category = "DailyStudy")
+	int32 BestScore = 0;
 };

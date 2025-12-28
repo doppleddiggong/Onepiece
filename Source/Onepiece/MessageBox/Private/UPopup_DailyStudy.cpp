@@ -4,6 +4,7 @@
 
 #include "APlayerActor.h"
 #include "UPopupManager.h"
+#include "UPopup_DailyResult.h"
 #include "ULingoGameHelper.h"
 #include "UGameDataManager.h"
 #include "UConfigLibrary.h"
@@ -436,11 +437,64 @@ void UPopup_DailyStudy::MoveToNextQuestion()
 
 		this->SaveProgress(CurrentScore);
 
-		// 결과 메시지 구성
-		FString ResultMessage = FString::Printf(TEXT("Score: %d\nBest: %d"), CurrentScore, BestScore);
+		// 최고 점수 읽기 (SaveProgress 후 업데이트된 값)
+		int32 UserId = ULingoGameHelper::GetUserId(GetWorld());
+		FString Today = FDateTime::Now().ToString(TEXT("%Y-%m-%d"));
+		FString BestScoreDate = UConfigLibrary::GetUserString(UserId, TEXT("DailyStudyBestScoreDate"), TEXT(""));
+
+		BestScore = 0;
+		if (BestScoreDate == Today)
+		{
+			BestScore = UConfigLibrary::GetUserInt(UserId, TEXT("DailyStudyBestScore"), 0);
+		}
+
+		// 결과 데이터 구성
+		FDailyStudyResult ResultData;
+		ResultData.CurrentScore = CurrentScore;
+		ResultData.BestScore = BestScore;
+		ResultData.QuestionList = QuestionList;
+		ResultData.AnswerList = AnswerList;
+		ResultData.TotalCount = QuestionList.Num();
 		
-		UPopupManager::Get(GetWorld())->ShowMsgBox(TEXT("Result"), ResultMessage,
-			EMsgBoxType::OK,
-			FOnMsgBoxOkDelegate::CreateUObject(this, &UPopup_DailyStudy::OnClickClose));
+		// 완료/건너뛰기 카운트 계산
+		ResultData.CompletedCount = 0;
+		ResultData.SkippedCount = 0;
+		for (const FDailyStudyAnswer& Answer : AnswerList)
+		{
+			if (Answer.bSkipped)
+				ResultData.SkippedCount++;
+			else if (Answer.bCompleted)
+				ResultData.CompletedCount++;
+		}
+
+		// 평균 점수 계산
+		int32 TotalGrammar = 0;
+		int32 TotalContext = 0;
+		int32 TotalFinal = 0;
+		int32 CompletedAnswers = 0;
+		
+		for (const FDailyStudyAnswer& Answer : AnswerList)
+		{
+			if (Answer.bCompleted)
+			{
+				TotalGrammar += Answer.JudgeResult.grammar_score;
+				TotalContext += Answer.JudgeResult.context_score;
+				TotalFinal += Answer.JudgeResult.final_overall_score;
+				CompletedAnswers++;
+			}
+		}
+		
+		if (CompletedAnswers > 0)
+		{
+			ResultData.AvgGrammarScore = TotalGrammar / CompletedAnswers;
+			ResultData.AvgContextScore = TotalContext / CompletedAnswers;
+			ResultData.AvgFinalScore = TotalFinal / CompletedAnswers;
+		}
+
+		// 결과 팝업 표시
+		if (UPopup_DailyResult* ResultPopup = UPopupManager::Get(GetWorld())->ShowPopupAs<UPopup_DailyResult>(EPopupType::DailyResult))
+		{
+			ResultPopup->InitPopup(ResultData);
+		}
 	}
 }

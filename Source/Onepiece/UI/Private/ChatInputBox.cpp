@@ -6,10 +6,14 @@
 #include "APlayerControl.h"
 #include "ChatWidget.h"
 #include "GameLogging.h"
+#include "UKLingoNetworkSystem.h"
 #include "Components/Button.h"
 #include "Components/MultiLineEditableTextBox.h"
 #include "Framework/Application/SlateApplication.h"
 #include "Onepiece/Onepiece.h"
+
+
+
 
 void UChatInputBox::NativeOnInitialized()
 {
@@ -153,6 +157,21 @@ bool UChatInputBox::IsAIAsk(const FString& InMessage, FString& OutQuestion) cons
 	return false;
 }
 
+bool UChatInputBox::IsDailyAsk(const FString& InMessage, FString& OutQuestion) const
+{
+	FString LeftPart, RightPart;
+
+	if (InMessage.Split(TEXT(":"), &LeftPart, &RightPart))
+	{
+		if (LeftPart.TrimStartAndEnd().Equals(DefineData::Daily, ESearchCase::IgnoreCase))
+		{
+			OutQuestion = RightPart.TrimStart();
+			return !OutQuestion.IsEmpty(); // 내용이 비어있지 않아야 true
+		}
+	}
+	return false;
+}
+
 void UChatInputBox::HandleSendClicked()
 {
 	// 텍스트가 비어있지 않다면 처리
@@ -181,6 +200,19 @@ void UChatInputBox::HandleSendClicked()
 
 		PRINTLOG(TEXT("[AI Chat] User question: %s"), *CleanQuestion);
 	}
+	else if (IsDailyAsk(MessageStr, CleanQuestion))
+	{
+		// Daily 단어 생성 요청
+		if (UKLingoNetworkSystem* NetworkSystem = UKLingoNetworkSystem::Get(GetWorld()))
+		{
+			CleanQuestion = TEXT("[Generate Korean words only] ") + CleanQuestion;
+			
+			NetworkSystem->RequestChatQuestion(DefineData::DailySystemPrompt, CleanQuestion,
+				FResponseChatAnswersDelegate::CreateUObject(this, &UChatInputBox::OnDailyAnswerReceived));
+
+			PRINTLOG(TEXT("[Daily] Word generation request: %s"), *CleanQuestion);
+		}
+	}
 	else
 	{
 		// 2. 일반 채팅 메시지 전송
@@ -195,4 +227,24 @@ void UChatInputBox::HandleSendClicked()
 bool UChatInputBox::HasKeyboardFocus()
 {
 	return MultiLineEditableTextBox_Input && MultiLineEditableTextBox_Input->HasKeyboardFocus();
+}
+
+void UChatInputBox::OnDailyAnswerReceived(FResponseChatAnswers& ResponseData, bool bWasSuccessful)
+{
+	if (bWasSuccessful)
+	{
+		PRINTLOG(TEXT("--- Chat Answers SUCCESS ---"));
+        
+		// AI 응답을 Bot 정보로 채팅에 표시
+		if (auto* GS = GetWorld()->GetGameState<ALingoGameState>())
+		{
+			FText AIAnswer = FText::FromString(ResponseData.answer);
+
+			PRINTLOG(TEXT("[AI Chat] AI Answer: %s"), *ResponseData.answer);
+		}
+	}
+	else
+	{
+		PRINTLOG(TEXT("--- Chat Answers FAILED ---"));
+	}
 }

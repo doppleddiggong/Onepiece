@@ -28,8 +28,13 @@ public:
 
 private:
 	FText FlushMessage();
-	bool IsAIAsk(const FString& InMessage, FString& OutQuestion) const;
 
+	bool IsAIAsk(const FString& InMessage, FString& OutQuestion) const;
+	bool IsDailyAsk(const FString& InMessage, FString& OutQuestion) const;
+
+	UFUNCTION()
+	void OnDailyAnswerReceived(FResponseChatAnswers& ResponseData, bool bWasSuccessful);
+	
 	UFUNCTION()
 	void HandleSendClicked();
 

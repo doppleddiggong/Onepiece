@@ -29,9 +29,21 @@ protected:
 	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<class UTextBlock> Txt_FinalScore;
 
+	/** 최고 점수 ("Best Score: 90") */
+	UPROPERTY(meta = (BindWidget))
+	TObjectPtr<class UTextBlock> Txt_BestScore;
+
 	/** 완료/총 개수 ("Completed: 9/10") */
 	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<class UTextBlock> Txt_CompletedCount;
+
+	/** 안내 메시지 */
+	UPROPERTY(meta = (BindWidget))
+	TObjectPtr<class UTextBlock> Txt_GuideMessage;
+
+	/** 단어 목록 스크롤박스 */
+	UPROPERTY(meta = (BindWidget))
+	TObjectPtr<class UScrollBox> ScrollBox_WordList;
 
 	/** 확인 버튼 (팝업 닫기) */
 	UPROPERTY(meta = (BindWidget))
@@ -40,4 +52,7 @@ protected:
 private:
 	/** 결과 요약 데이터 */
 	FDailyStudyResult DailyResult;
+
+	/** 단어 항목 위젯 생성 */
+	void CreateWordItemWidget(const FDailyStudyWordItem& WordItem, const FDailyStudyAnswer& Answer, int32 Index);
 };
