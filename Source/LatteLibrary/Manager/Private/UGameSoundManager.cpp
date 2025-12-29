@@ -132,3 +132,52 @@ bool UGameSoundManager::IsConversationVoicePlaying() const
 {
 	return ConversationVoice && ConversationVoice->IsPlaying();
 }
+
+void UGameSoundManager::PlayBGM(const EGameSoundType Type)
+{
+	// 이미 같은 BGM 타입이고, AudioComponent가 유효하며 재생 중인지 확인
+	// (레벨 전환 시 AudioComponent가 파괴되므로 IsValid 체크 필수)
+	if ( CurrentBGMType == Type &&
+		 IsValid(CurrentBGM)
+		 && CurrentBGM->IsPlaying())
+	{
+		return;
+	}
+
+	// 기존 BGM 중지
+	StopBGM();
+
+	// 새 BGM 재생
+	if (TObjectPtr<USoundBase>* FoundSound = SoundData.Find(Type))
+	{
+		if (*FoundSound)
+		{
+			// bPersistAcrossLevelTransition = true로 설정하여 레벨 전환에도 유지되도록 함
+			CurrentBGM = UGameplayStatics::CreateSound2D(
+				GetWorld(),
+				*FoundSound,
+				1.0f,  // VolumeMultiplier
+				1.0f,  // PitchMultiplier
+				0.0f,  // StartTime
+				nullptr,  // ConcurrencySettings
+				true,  // bPersistAcrossLevelTransition - 레벨 전환에도 유지
+				false  // bAutoDestroy
+			);
+
+			if (CurrentBGM)
+			{
+				CurrentBGM->Play();
+				CurrentBGMType = Type;
+			}
+		}
+	}
+}
+
+void UGameSoundManager::StopBGM()
+{
+	if (IsValid(CurrentBGM) && CurrentBGM->IsPlaying())
+	{
+		CurrentBGM->Stop();
+	}
+	CurrentBGM = nullptr;
+}

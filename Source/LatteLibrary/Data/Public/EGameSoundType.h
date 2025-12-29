@@ -21,4 +21,8 @@ enum class EGameSoundType : uint8
 	How_long_will_you_stay,
 	Where_will_you_be_staying,
 	Speak_the_Word_in_korean,
+
+
+	BGM_Start,
+	BGM_Main
 };
