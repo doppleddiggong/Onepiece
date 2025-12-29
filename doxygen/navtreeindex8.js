@@ -1,5 +1,8 @@
 var NAVTREEINDEX8 =
 {
+"classAPlayerControl.html#af5d4d695ae6e7e6f4ff4f06fca53a99f":[2,0,34,3],
+"classAPlayerControl.html#af727aa7d2f0ad872c920876e21bf3811":[2,0,34,43],
+"classAPlayerControl.html#af79e9468151b0d47e8eee1703f73af29":[2,0,34,10],
 "classAPlayerControl.html#af8c76a593d47ea58362e58220776fef6":[2,0,34,31],
 "classAPlayerControl.html#afd90706b8ae2fbec79c5c776f06d5c78":[2,0,34,15],
 "classAPopupTesterActor.html":[2,0,35],
@@ -243,11 +246,8 @@ var NAVTREEINDEX8 =
 "classFLogWriter.html#a7ccfdf80f8d45c2c88f9d4409ad6c192":[2,0,72,0],
 "classFLogWriter.html#abdd155a17720190a9c8d0b3fa45b5722":[2,0,72,2],
 "classFLogWriter.html#af7d53c71504f8090cdc6e168ae224d01":[2,0,72,1],
-"classICompassTargetInterface.html":[2,0,132],
-"classICompassTargetInterface.html#a055bb4c9611ef550e3a9c6762f0b3e8c":[2,0,132,4],
-"classICompassTargetInterface.html#a3807797b2156ffdf09802d3b8f1dd812":[2,0,132,2],
-"classICompassTargetInterface.html#aa6ca87eb035438649532297283644173":[2,0,132,3],
-"classICompassTargetInterface.html#abb415ce2d41dab4779fdf9fb5d962e30":[2,0,132,0],
-"classICompassTargetInterface.html#af8c2cdaa8f76f567731bbb6a99a09a89":[2,0,132,1],
-"classICompassTargetInterface.html#afab55eb3a8c206914d440493384e9401":[2,0,132,5]
+"classICompassTargetInterface.html":[2,0,133],
+"classICompassTargetInterface.html#a055bb4c9611ef550e3a9c6762f0b3e8c":[2,0,133,4],
+"classICompassTargetInterface.html#a3807797b2156ffdf09802d3b8f1dd812":[2,0,133,2],
+"classICompassTargetInterface.html#aa6ca87eb035438649532297283644173":[2,0,133,3]
 };

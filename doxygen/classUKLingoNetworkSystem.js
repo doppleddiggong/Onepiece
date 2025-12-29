@@ -9,6 +9,8 @@ var classUKLingoNetworkSystem =
     [ "LogNetwork", "classUKLingoNetworkSystem.html#ad71f0b7215e0d685a171bc2d8e7a0a3f", null ],
     [ "RequestChatAudio", "classUKLingoNetworkSystem.html#a513c3f20161cb51f368c82e4cc422f84", null ],
     [ "RequestChatQuestion", "classUKLingoNetworkSystem.html#a428fadc7f4e7317b68da0945cc83bfd6", null ],
+    [ "RequestDailyAudio", "classUKLingoNetworkSystem.html#ab026928024492d294972a59dbc8a5938", null ],
+    [ "RequestDailyQuestion", "classUKLingoNetworkSystem.html#aaa5aa6d5e8e836313efbc8205b610a73", null ],
     [ "RequestEvaluationResult", "classUKLingoNetworkSystem.html#ac73b37a45a5cb8abefefe4e47597d264", null ],
     [ "RequestInterviewAnswer", "classUKLingoNetworkSystem.html#a68f5d305d55ac5d34af5b0e5b5a51145", null ],
     [ "RequestInterviewHello", "classUKLingoNetworkSystem.html#a9c8d97b1b722aac6a7b9335b3f120064", null ],

@@ -101,6 +101,7 @@ var hierarchy =
     [ "FRequestSpeakResult", "structFRequestSpeakResult.html", null ],
     [ "FRequestWriteResult", "structFRequestWriteResult.html", null ],
     [ "FResponseChatAnswers", "structFResponseChatAnswers.html", null ],
+    [ "FResponseChatDailys", "structFResponseChatDailys.html", null ],
     [ "FResponseEvaluationResult", "structFResponseEvaluationResult.html", null ],
     [ "FResponseHealth", "structFResponseHealth.html", null ],
     [ "FResponseInterviewAnswer", "structFResponseInterviewAnswer.html", null ],

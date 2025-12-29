@@ -162,8 +162,8 @@ Private 멤버 함수</h2></td></tr>
 <tr class="separator:a9e798f378d439bc1b51cf8e3fa6e03e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:add622192a2ea5f1b8b9c17d17af68980" id="r_add622192a2ea5f1b8b9c17d17af68980"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUChatInputBox.html#add622192a2ea5f1b8b9c17d17af68980">IsDailyAsk</a> (const FString &amp;InMessage, FString &amp;OutQuestion) const</td></tr>
 <tr class="separator:add622192a2ea5f1b8b9c17d17af68980"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a51a1b344eb9c8b3426204bdc72b96ec4" id="r_a51a1b344eb9c8b3426204bdc72b96ec4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUChatInputBox.html#a51a1b344eb9c8b3426204bdc72b96ec4">OnDailyAnswerReceived</a> (<a class="el" href="structFResponseChatAnswers.html">FResponseChatAnswers</a> &amp;ResponseData, bool bWasSuccessful)</td></tr>
-<tr class="separator:a51a1b344eb9c8b3426204bdc72b96ec4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a17209e42ed43751486a53eaae6c20288" id="r_a17209e42ed43751486a53eaae6c20288"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUChatInputBox.html#a17209e42ed43751486a53eaae6c20288">OnDailyAnswerReceived</a> (<a class="el" href="structFResponseChatDailys.html">FResponseChatDailys</a> &amp;ResponseData, bool bWasSuccessful)</td></tr>
+<tr class="separator:a17209e42ed43751486a53eaae6c20288"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private 속성</h2></td></tr>
@@ -249,53 +249,53 @@ Private 속성</h2></td></tr>
 
 <p>GameDataManager에서 랜덤 한국어 단어 데이터 가져오기 (<a class="el" href="structFWordData.html" title="단어 데이터 구조체입니다.">FWordData</a> 형태) </p>
 
-<p class="definition"><a class="el" href="ChatInputBox_8cpp_source.html">ChatInputBox.cpp</a> 파일의 <a class="el" href="ChatInputBox_8cpp_source.html#l00237">237</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  238</span>{</div>
-<div class="line"><span class="lineno">  239</span>    TArray&lt;FWordData&gt; RandomWordDataArray;</div>
-<div class="line"><span class="lineno">  240</span> </div>
-<div class="line"><span class="lineno">  241</span>    <a class="code hl_class" href="classUGameDataManager.html">UGameDataManager</a>* DataManager = UGameDataManager::Get(GetWorld());</div>
-<div class="line"><span class="lineno">  242</span>    <span class="keywordflow">if</span> (!DataManager)</div>
-<div class="line"><span class="lineno">  243</span>    {</div>
-<div class="line"><span class="lineno">  244</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[Daily] Error: GameDataManager not found&quot;</span>));</div>
-<div class="line"><span class="lineno">  245</span>        <span class="keywordflow">return</span> RandomWordDataArray;</div>
-<div class="line"><span class="lineno">  246</span>    }</div>
-<div class="line"><span class="lineno">  247</span> </div>
-<div class="line"><span class="lineno">  248</span>    <span class="comment">// ReadData에서 모든 키 가져오기</span></div>
-<div class="line"><span class="lineno">  249</span>    TArray&lt;int32&gt; AllKeys = DataManager-&gt;<a class="code hl_function" href="classUGameDataManager.html#a9883d1c055f80511f39d7b65b0aba4fb">GetAllReadDataKeys</a>();</div>
-<div class="line"><span class="lineno">  250</span>    </div>
-<div class="line"><span class="lineno">  251</span>    <span class="keywordflow">if</span> (AllKeys.Num() == 0)</div>
-<div class="line"><span class="lineno">  252</span>    {</div>
-<div class="line"><span class="lineno">  253</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[Daily] Error: No ReadData available&quot;</span>));</div>
-<div class="line"><span class="lineno">  254</span>        <span class="keywordflow">return</span> RandomWordDataArray;</div>
-<div class="line"><span class="lineno">  255</span>    }</div>
-<div class="line"><span class="lineno">  256</span> </div>
-<div class="line"><span class="lineno">  257</span>    <span class="comment">// 요청한 개수만큼 랜덤 단어 선택</span></div>
-<div class="line"><span class="lineno">  258</span>    int32 WordsToGenerate = FMath::Min(Count, AllKeys.Num());</div>
-<div class="line"><span class="lineno">  259</span>    </div>
-<div class="line"><span class="lineno">  260</span>    <span class="keywordflow">for</span> (int32 i = 0; i &lt; WordsToGenerate; ++i)</div>
-<div class="line"><span class="lineno">  261</span>    {</div>
-<div class="line"><span class="lineno">  262</span>        <span class="comment">// 랜덤 인덱스 선택</span></div>
-<div class="line"><span class="lineno">  263</span>        int32 RandomIndex = FMath::RandRange(0, AllKeys.Num() - 1);</div>
-<div class="line"><span class="lineno">  264</span>        int32 RandomKey = AllKeys[RandomIndex];</div>
-<div class="line"><span class="lineno">  265</span>        AllKeys.RemoveAt(RandomIndex); <span class="comment">// 중복 방지</span></div>
-<div class="line"><span class="lineno">  266</span> </div>
-<div class="line"><span class="lineno">  267</span>        <span class="comment">// 데이터 로드</span></div>
-<div class="line"><span class="lineno">  268</span>        <a class="code hl_struct" href="structFReadData.html">FReadData</a> ReadData;</div>
-<div class="line"><span class="lineno">  269</span>        <span class="keywordflow">if</span> (DataManager-&gt;<a class="code hl_function" href="classUGameDataManager.html#a3811aa5797e15df489ab085c7f1ced79">GetReadData</a>(RandomKey, ReadData))</div>
-<div class="line"><span class="lineno">  270</span>        {</div>
-<div class="line"><span class="lineno">  271</span>            <span class="comment">// FWordData 생성 (ReadData에는 Pronunciation이 없으므로 Eng로 임시 설정)</span></div>
-<div class="line"><span class="lineno">  272</span>            <a class="code hl_struct" href="structFWordData.html">FWordData</a> WordData;</div>
-<div class="line"><span class="lineno">  273</span>            WordData.<a class="code hl_variable" href="structFWordData.html#a0c48a651223fd58eedb624c3837e8b3b">Kor</a> = ReadData.<a class="code hl_variable" href="structFReadData.html#a0cfdeafbbdaa3e836fe7d9b95f513ff1">Word</a>;</div>
-<div class="line"><span class="lineno">  274</span>            WordData.<a class="code hl_variable" href="structFWordData.html#ad5cbdc27da99dfca63d216196c807570">Eng</a> = ReadData.<a class="code hl_variable" href="structFReadData.html#a073cad0b3148cf5ad77003b52824b371">Eng</a>;</div>
-<div class="line"><span class="lineno">  275</span>            WordData.<a class="code hl_variable" href="structFWordData.html#a8a359d2cf5e79ca20cbdfe904076dc41">Pronunciation</a> = ReadData.<a class="code hl_variable" href="structFReadData.html#a073cad0b3148cf5ad77003b52824b371">Eng</a>; <span class="comment">// TODO: 나중에 실제 발음 데이터로 교체</span></div>
-<div class="line"><span class="lineno">  276</span>            </div>
-<div class="line"><span class="lineno">  277</span>            RandomWordDataArray.Add(WordData);</div>
-<div class="line"><span class="lineno">  278</span>        }</div>
-<div class="line"><span class="lineno">  279</span>    }</div>
-<div class="line"><span class="lineno">  280</span> </div>
-<div class="line"><span class="lineno">  281</span>    <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[Daily] Generated %d random word data from ReadData&quot;</span>), RandomWordDataArray.Num());</div>
-<div class="line"><span class="lineno">  282</span>    <span class="keywordflow">return</span> RandomWordDataArray;</div>
-<div class="line"><span class="lineno">  283</span>}</div>
+<p class="definition"><a class="el" href="ChatInputBox_8cpp_source.html">ChatInputBox.cpp</a> 파일의 <a class="el" href="ChatInputBox_8cpp_source.html#l00235">235</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  236</span>{</div>
+<div class="line"><span class="lineno">  237</span>    TArray&lt;FWordData&gt; RandomWordDataArray;</div>
+<div class="line"><span class="lineno">  238</span> </div>
+<div class="line"><span class="lineno">  239</span>    <a class="code hl_class" href="classUGameDataManager.html">UGameDataManager</a>* DataManager = UGameDataManager::Get(GetWorld());</div>
+<div class="line"><span class="lineno">  240</span>    <span class="keywordflow">if</span> (!DataManager)</div>
+<div class="line"><span class="lineno">  241</span>    {</div>
+<div class="line"><span class="lineno">  242</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[Daily] Error: GameDataManager not found&quot;</span>));</div>
+<div class="line"><span class="lineno">  243</span>        <span class="keywordflow">return</span> RandomWordDataArray;</div>
+<div class="line"><span class="lineno">  244</span>    }</div>
+<div class="line"><span class="lineno">  245</span> </div>
+<div class="line"><span class="lineno">  246</span>    <span class="comment">// ReadData에서 모든 키 가져오기</span></div>
+<div class="line"><span class="lineno">  247</span>    TArray&lt;int32&gt; AllKeys = DataManager-&gt;<a class="code hl_function" href="classUGameDataManager.html#a9883d1c055f80511f39d7b65b0aba4fb">GetAllReadDataKeys</a>();</div>
+<div class="line"><span class="lineno">  248</span>    </div>
+<div class="line"><span class="lineno">  249</span>    <span class="keywordflow">if</span> (AllKeys.Num() == 0)</div>
+<div class="line"><span class="lineno">  250</span>    {</div>
+<div class="line"><span class="lineno">  251</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[Daily] Error: No ReadData available&quot;</span>));</div>
+<div class="line"><span class="lineno">  252</span>        <span class="keywordflow">return</span> RandomWordDataArray;</div>
+<div class="line"><span class="lineno">  253</span>    }</div>
+<div class="line"><span class="lineno">  254</span> </div>
+<div class="line"><span class="lineno">  255</span>    <span class="comment">// 요청한 개수만큼 랜덤 단어 선택</span></div>
+<div class="line"><span class="lineno">  256</span>    int32 WordsToGenerate = FMath::Min(Count, AllKeys.Num());</div>
+<div class="line"><span class="lineno">  257</span>    </div>
+<div class="line"><span class="lineno">  258</span>    <span class="keywordflow">for</span> (int32 i = 0; i &lt; WordsToGenerate; ++i)</div>
+<div class="line"><span class="lineno">  259</span>    {</div>
+<div class="line"><span class="lineno">  260</span>        <span class="comment">// 랜덤 인덱스 선택</span></div>
+<div class="line"><span class="lineno">  261</span>        int32 RandomIndex = FMath::RandRange(0, AllKeys.Num() - 1);</div>
+<div class="line"><span class="lineno">  262</span>        int32 RandomKey = AllKeys[RandomIndex];</div>
+<div class="line"><span class="lineno">  263</span>        AllKeys.RemoveAt(RandomIndex); <span class="comment">// 중복 방지</span></div>
+<div class="line"><span class="lineno">  264</span> </div>
+<div class="line"><span class="lineno">  265</span>        <span class="comment">// 데이터 로드</span></div>
+<div class="line"><span class="lineno">  266</span>        <a class="code hl_struct" href="structFReadData.html">FReadData</a> ReadData;</div>
+<div class="line"><span class="lineno">  267</span>        <span class="keywordflow">if</span> (DataManager-&gt;<a class="code hl_function" href="classUGameDataManager.html#a3811aa5797e15df489ab085c7f1ced79">GetReadData</a>(RandomKey, ReadData))</div>
+<div class="line"><span class="lineno">  268</span>        {</div>
+<div class="line"><span class="lineno">  269</span>            <span class="comment">// FWordData 생성 (ReadData에는 Pronunciation이 없으므로 Eng로 임시 설정)</span></div>
+<div class="line"><span class="lineno">  270</span>            <a class="code hl_struct" href="structFWordData.html">FWordData</a> WordData;</div>
+<div class="line"><span class="lineno">  271</span>            WordData.<a class="code hl_variable" href="structFWordData.html#a0c48a651223fd58eedb624c3837e8b3b">Kor</a> = ReadData.<a class="code hl_variable" href="structFReadData.html#a0cfdeafbbdaa3e836fe7d9b95f513ff1">Word</a>;</div>
+<div class="line"><span class="lineno">  272</span>            WordData.<a class="code hl_variable" href="structFWordData.html#ad5cbdc27da99dfca63d216196c807570">Eng</a> = ReadData.<a class="code hl_variable" href="structFReadData.html#a073cad0b3148cf5ad77003b52824b371">Eng</a>;</div>
+<div class="line"><span class="lineno">  273</span>            WordData.<a class="code hl_variable" href="structFWordData.html#a8a359d2cf5e79ca20cbdfe904076dc41">Pronunciation</a> = ReadData.<a class="code hl_variable" href="structFReadData.html#a073cad0b3148cf5ad77003b52824b371">Eng</a>; <span class="comment">// TODO: 나중에 실제 발음 데이터로 교체</span></div>
+<div class="line"><span class="lineno">  274</span>            </div>
+<div class="line"><span class="lineno">  275</span>            RandomWordDataArray.Add(WordData);</div>
+<div class="line"><span class="lineno">  276</span>        }</div>
+<div class="line"><span class="lineno">  277</span>    }</div>
+<div class="line"><span class="lineno">  278</span> </div>
+<div class="line"><span class="lineno">  279</span>    <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[Daily] Generated %d random word data from ReadData&quot;</span>), RandomWordDataArray.Num());</div>
+<div class="line"><span class="lineno">  280</span>    <span class="keywordflow">return</span> RandomWordDataArray;</div>
+<div class="line"><span class="lineno">  281</span>}</div>
 <div class="ttc" id="aGameLogging_8h_html_a9998c8beb11a6bad6ffada2e701fc0cf"><div class="ttname"><a href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a></div><div class="ttdeci">#define PRINTLOG(fmt,...)</div><div class="ttdef"><b>Definition</b> <a href="GameLogging_8h_source.html#l00030">GameLogging.h:30</a></div></div>
 <div class="ttc" id="aclassUGameDataManager_html"><div class="ttname"><a href="classUGameDataManager.html">UGameDataManager</a></div><div class="ttdoc">데이터 테이블(.csv)에서 게임 데이터를 로드하고 캐시하여 런타임에 빠르게 접근할 수 있도록 제공하는 데이터 관리 서브시스템입니다.</div><div class="ttdef"><b>Definition</b> <a href="UGameDataManager_8h_source.html#l00033">UGameDataManager.h:34</a></div></div>
 <div class="ttc" id="aclassUGameDataManager_html_a3811aa5797e15df489ab085c7f1ced79"><div class="ttname"><a href="classUGameDataManager.html#a3811aa5797e15df489ab085c7f1ced79">UGameDataManager::GetReadData</a></div><div class="ttdeci">bool GetReadData(int32 Index, FReadData &amp;Out) const</div><div class="ttdef"><b>Definition</b> <a href="UGameDataManager_8cpp_source.html#l00658">UGameDataManager.cpp:658</a></div></div>
@@ -303,14 +303,14 @@ Private 속성</h2></td></tr>
 <div class="ttc" id="astructFReadData_html"><div class="ttname"><a href="structFReadData.html">FReadData</a></div><div class="ttdoc">읽기 학습 데이터를 정의하는 구조체</div><div class="ttdef"><b>Definition</b> <a href="FReadData_8h_source.html#l00018">FReadData.h:19</a></div></div>
 <div class="ttc" id="astructFReadData_html_a073cad0b3148cf5ad77003b52824b371"><div class="ttname"><a href="structFReadData.html#a073cad0b3148cf5ad77003b52824b371">FReadData::Eng</a></div><div class="ttdeci">FString Eng</div><div class="ttdoc">학습 단어</div><div class="ttdef"><b>Definition</b> <a href="FReadData_8h_source.html#l00039">FReadData.h:39</a></div></div>
 <div class="ttc" id="astructFReadData_html_a0cfdeafbbdaa3e836fe7d9b95f513ff1"><div class="ttname"><a href="structFReadData.html#a0cfdeafbbdaa3e836fe7d9b95f513ff1">FReadData::Word</a></div><div class="ttdeci">FString Word</div><div class="ttdoc">학습 단어</div><div class="ttdef"><b>Definition</b> <a href="FReadData_8h_source.html#l00032">FReadData.h:32</a></div></div>
-<div class="ttc" id="astructFWordData_html"><div class="ttname"><a href="structFWordData.html">FWordData</a></div><div class="ttdoc">단어 데이터 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00206">NetworkData.h:207</a></div></div>
-<div class="ttc" id="astructFWordData_html_a0c48a651223fd58eedb624c3837e8b3b"><div class="ttname"><a href="structFWordData.html#a0c48a651223fd58eedb624c3837e8b3b">FWordData::Kor</a></div><div class="ttdeci">FString Kor</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00211">NetworkData.h:211</a></div></div>
-<div class="ttc" id="astructFWordData_html_a8a359d2cf5e79ca20cbdfe904076dc41"><div class="ttname"><a href="structFWordData.html#a8a359d2cf5e79ca20cbdfe904076dc41">FWordData::Pronunciation</a></div><div class="ttdeci">FString Pronunciation</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00217">NetworkData.h:217</a></div></div>
-<div class="ttc" id="astructFWordData_html_ad5cbdc27da99dfca63d216196c807570"><div class="ttname"><a href="structFWordData.html#ad5cbdc27da99dfca63d216196c807570">FWordData::Eng</a></div><div class="ttdeci">FString Eng</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00214">NetworkData.h:214</a></div></div>
+<div class="ttc" id="astructFWordData_html"><div class="ttname"><a href="structFWordData.html">FWordData</a></div><div class="ttdoc">단어 데이터 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00209">NetworkData.h:210</a></div></div>
+<div class="ttc" id="astructFWordData_html_a0c48a651223fd58eedb624c3837e8b3b"><div class="ttname"><a href="structFWordData.html#a0c48a651223fd58eedb624c3837e8b3b">FWordData::Kor</a></div><div class="ttdeci">FString Kor</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00214">NetworkData.h:214</a></div></div>
+<div class="ttc" id="astructFWordData_html_a8a359d2cf5e79ca20cbdfe904076dc41"><div class="ttname"><a href="structFWordData.html#a8a359d2cf5e79ca20cbdfe904076dc41">FWordData::Pronunciation</a></div><div class="ttdeci">FString Pronunciation</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00220">NetworkData.h:220</a></div></div>
+<div class="ttc" id="astructFWordData_html_ad5cbdc27da99dfca63d216196c807570"><div class="ttname"><a href="structFWordData.html#ad5cbdc27da99dfca63d216196c807570">FWordData::Eng</a></div><div class="ttdeci">FString Eng</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00217">NetworkData.h:217</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="FReadData_8h_source.html#l00039">FReadData::Eng</a>, <a class="el" href="NetworkData_8h_source.html#l00214">FWordData::Eng</a>, <a class="el" href="UGameDataManager_8cpp_source.html#l00691">UGameDataManager::GetAllReadDataKeys()</a>, <a class="el" href="UGameDataManager_8cpp_source.html#l00658">UGameDataManager::GetReadData()</a>, <a class="el" href="NetworkData_8h_source.html#l00211">FWordData::Kor</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>, <a class="el" href="NetworkData_8h_source.html#l00217">FWordData::Pronunciation</a>, <a class="el" href="FReadData_8h_source.html#l00032">FReadData::Word</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="FReadData_8h_source.html#l00039">FReadData::Eng</a>, <a class="el" href="NetworkData_8h_source.html#l00217">FWordData::Eng</a>, <a class="el" href="UGameDataManager_8cpp_source.html#l00691">UGameDataManager::GetAllReadDataKeys()</a>, <a class="el" href="UGameDataManager_8cpp_source.html#l00658">UGameDataManager::GetReadData()</a>, <a class="el" href="NetworkData_8h_source.html#l00214">FWordData::Kor</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>, <a class="el" href="NetworkData_8h_source.html#l00220">FWordData::Pronunciation</a>, <a class="el" href="FReadData_8h_source.html#l00032">FReadData::Word</a>.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ChatInputBox_8cpp_source.html#l00285">OnDailyAnswerReceived()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ChatInputBox_8cpp_source.html#l00283">OnDailyAnswerReceived()</a>.</p>
 <div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-3-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
@@ -384,25 +384,23 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">  210</span>        <span class="comment">// Daily 단어 생성 요청</span></div>
 <div class="line"><span class="lineno">  211</span>        <span class="keywordflow">if</span> (<a class="code hl_class" href="classUKLingoNetworkSystem.html">UKLingoNetworkSystem</a>* NetworkSystem = UKLingoNetworkSystem::Get(GetWorld()))</div>
 <div class="line"><span class="lineno">  212</span>        {</div>
-<div class="line"><span class="lineno">  213</span>            CleanQuestion = TEXT(<span class="stringliteral">&quot;[Generate Korean words only] &quot;</span>) + CleanQuestion;</div>
-<div class="line"><span class="lineno">  214</span>            </div>
-<div class="line"><span class="lineno">  215</span>            NetworkSystem-&gt;RequestChatQuestion(<a class="code hl_variable" href="namespaceDefineData.html#a69c9c5a9e428fef85251113d4151ffd0">DefineData::DailySystemPrompt</a>, CleanQuestion,</div>
-<div class="line"><span class="lineno">  216</span>                FResponseChatAnswersDelegate::CreateUObject(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUChatInputBox.html#a51a1b344eb9c8b3426204bdc72b96ec4">UChatInputBox::OnDailyAnswerReceived</a>));</div>
-<div class="line"><span class="lineno">  217</span> </div>
-<div class="line"><span class="lineno">  218</span>            <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[Daily] Word generation request: %s&quot;</span>), *CleanQuestion);</div>
-<div class="line"><span class="lineno">  219</span>        }</div>
-<div class="line"><span class="lineno">  220</span>    }</div>
-<div class="line"><span class="lineno">  221</span>    <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  222</span>    {</div>
-<div class="line"><span class="lineno">  223</span>        <span class="comment">// 2. 일반 채팅 메시지 전송</span></div>
-<div class="line"><span class="lineno">  224</span>        PC-&gt;ServerRPC_SendChat(Message);</div>
-<div class="line"><span class="lineno">  225</span>    }</div>
-<div class="line"><span class="lineno">  226</span> </div>
-<div class="line"><span class="lineno">  227</span>    <span class="comment">// 메시지 전송 후 포커스 해제 및 게임 모드로 복원</span></div>
-<div class="line"><span class="lineno">  228</span>    <a class="code hl_function" href="classUChatInputBox.html#a7b7c6be61f96deed2d3c8f9691c95c97">SetInputFocus</a>(<span class="keyword">false</span>);</div>
-<div class="line"><span class="lineno">  229</span> </div>
-<div class="line"><span class="lineno">  230</span>}</div>
-<div class="ttc" id="aclassUChatInputBox_html_a51a1b344eb9c8b3426204bdc72b96ec4"><div class="ttname"><a href="classUChatInputBox.html#a51a1b344eb9c8b3426204bdc72b96ec4">UChatInputBox::OnDailyAnswerReceived</a></div><div class="ttdeci">void OnDailyAnswerReceived(FResponseChatAnswers &amp;ResponseData, bool bWasSuccessful)</div><div class="ttdef"><b>Definition</b> <a href="ChatInputBox_8cpp_source.html#l00285">ChatInputBox.cpp:285</a></div></div>
+<div class="line"><span class="lineno">  213</span>            NetworkSystem-&gt;RequestDailyQuestion(<a class="code hl_variable" href="namespaceDefineData.html#a69c9c5a9e428fef85251113d4151ffd0">DefineData::DailySystemPrompt</a>, CleanQuestion,</div>
+<div class="line"><span class="lineno">  214</span>                FResponseChatDailysDelegate::CreateUObject(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classUChatInputBox.html#a17209e42ed43751486a53eaae6c20288">UChatInputBox::OnDailyAnswerReceived</a>));</div>
+<div class="line"><span class="lineno">  215</span> </div>
+<div class="line"><span class="lineno">  216</span>            <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[Daily] Word generation request: %s&quot;</span>), *CleanQuestion);</div>
+<div class="line"><span class="lineno">  217</span>        }</div>
+<div class="line"><span class="lineno">  218</span>    }</div>
+<div class="line"><span class="lineno">  219</span>    <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  220</span>    {</div>
+<div class="line"><span class="lineno">  221</span>        <span class="comment">// 2. 일반 채팅 메시지 전송</span></div>
+<div class="line"><span class="lineno">  222</span>        PC-&gt;ServerRPC_SendChat(Message);</div>
+<div class="line"><span class="lineno">  223</span>    }</div>
+<div class="line"><span class="lineno">  224</span> </div>
+<div class="line"><span class="lineno">  225</span>    <span class="comment">// 메시지 전송 후 포커스 해제 및 게임 모드로 복원</span></div>
+<div class="line"><span class="lineno">  226</span>    <a class="code hl_function" href="classUChatInputBox.html#a7b7c6be61f96deed2d3c8f9691c95c97">SetInputFocus</a>(<span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">  227</span> </div>
+<div class="line"><span class="lineno">  228</span>}</div>
+<div class="ttc" id="aclassUChatInputBox_html_a17209e42ed43751486a53eaae6c20288"><div class="ttname"><a href="classUChatInputBox.html#a17209e42ed43751486a53eaae6c20288">UChatInputBox::OnDailyAnswerReceived</a></div><div class="ttdeci">void OnDailyAnswerReceived(FResponseChatDailys &amp;ResponseData, bool bWasSuccessful)</div><div class="ttdef"><b>Definition</b> <a href="ChatInputBox_8cpp_source.html#l00283">ChatInputBox.cpp:283</a></div></div>
 <div class="ttc" id="aclassUChatInputBox_html_a7b7c6be61f96deed2d3c8f9691c95c97"><div class="ttname"><a href="classUChatInputBox.html#a7b7c6be61f96deed2d3c8f9691c95c97">UChatInputBox::SetInputFocus</a></div><div class="ttdeci">void SetInputFocus(bool bFocus)</div><div class="ttdef"><b>Definition</b> <a href="ChatInputBox_8cpp_source.html#l00101">ChatInputBox.cpp:101</a></div></div>
 <div class="ttc" id="aclassUChatInputBox_html_a7ba44143ce5e97966eec4a9f0c8f2831"><div class="ttname"><a href="classUChatInputBox.html#a7ba44143ce5e97966eec4a9f0c8f2831">UChatInputBox::FlushMessage</a></div><div class="ttdeci">FText FlushMessage()</div><div class="ttdef"><b>Definition</b> <a href="ChatInputBox_8cpp_source.html#l00091">ChatInputBox.cpp:91</a></div></div>
 <div class="ttc" id="aclassUChatInputBox_html_a9e798f378d439bc1b51cf8e3fa6e03e4"><div class="ttname"><a href="classUChatInputBox.html#a9e798f378d439bc1b51cf8e3fa6e03e4">UChatInputBox::IsAIAsk</a></div><div class="ttdeci">bool IsAIAsk(const FString &amp;InMessage, FString &amp;OutQuestion) const</div><div class="ttdef"><b>Definition</b> <a href="ChatInputBox_8cpp_source.html#l00148">ChatInputBox.cpp:148</a></div></div>
@@ -410,7 +408,7 @@ Private 속성</h2></td></tr>
 <div class="ttc" id="aclassUKLingoNetworkSystem_html"><div class="ttname"><a href="classUKLingoNetworkSystem.html">UKLingoNetworkSystem</a></div><div class="ttdef"><b>Definition</b> <a href="UKLingoNetworkSystem_8h_source.html#l00019">UKLingoNetworkSystem.h:20</a></div></div>
 <div class="ttc" id="anamespaceDefineData_html_a69c9c5a9e428fef85251113d4151ffd0"><div class="ttname"><a href="namespaceDefineData.html#a69c9c5a9e428fef85251113d4151ffd0">DefineData::DailySystemPrompt</a></div><div class="ttdeci">static const FString DailySystemPrompt</div><div class="ttdef"><b>Definition</b> <a href="Onepiece_8h_source.html#l00065">Onepiece.h:65</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="Onepiece_8h_source.html#l00065">DefineData::DailySystemPrompt</a>, <a class="el" href="ChatInputBox_8cpp_source.html#l00091">FlushMessage()</a>, <a class="el" href="ChatInputBox_8cpp_source.html#l00148">IsAIAsk()</a>, <a class="el" href="ChatInputBox_8cpp_source.html#l00165">IsDailyAsk()</a>, <a class="el" href="ChatInputBox_8cpp_source.html#l00285">OnDailyAnswerReceived()</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>, <a class="el" href="ChatInputBox_8cpp_source.html#l00101">SetInputFocus()</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="Onepiece_8h_source.html#l00065">DefineData::DailySystemPrompt</a>, <a class="el" href="ChatInputBox_8cpp_source.html#l00091">FlushMessage()</a>, <a class="el" href="ChatInputBox_8cpp_source.html#l00148">IsAIAsk()</a>, <a class="el" href="ChatInputBox_8cpp_source.html#l00165">IsDailyAsk()</a>, <a class="el" href="ChatInputBox_8cpp_source.html#l00283">OnDailyAnswerReceived()</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>, <a class="el" href="ChatInputBox_8cpp_source.html#l00101">SetInputFocus()</a>.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ChatInputBox_8cpp_source.html#l00023">NativeOnInitialized()</a>, <a class="el" href="ChatInputBox_8cpp_source.html#l00072">NativeOnPreviewKeyDown()</a>.</p>
 <div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -445,10 +443,10 @@ Private 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ChatInputBox_8cpp_source.html">ChatInputBox.cpp</a> 파일의 <a class="el" href="ChatInputBox_8cpp_source.html#l00232">232</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  233</span>{</div>
-<div class="line"><span class="lineno">  234</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classUChatInputBox.html#a90c68ef60681e4cd1f949923eb63df75">MultiLineEditableTextBox_Input</a> &amp;&amp; <a class="code hl_variable" href="classUChatInputBox.html#a90c68ef60681e4cd1f949923eb63df75">MultiLineEditableTextBox_Input</a>-&gt;HasKeyboardFocus();</div>
-<div class="line"><span class="lineno">  235</span>}</div>
+<p class="definition"><a class="el" href="ChatInputBox_8cpp_source.html">ChatInputBox.cpp</a> 파일의 <a class="el" href="ChatInputBox_8cpp_source.html#l00230">230</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  231</span>{</div>
+<div class="line"><span class="lineno">  232</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classUChatInputBox.html#a90c68ef60681e4cd1f949923eb63df75">MultiLineEditableTextBox_Input</a> &amp;&amp; <a class="code hl_variable" href="classUChatInputBox.html#a90c68ef60681e4cd1f949923eb63df75">MultiLineEditableTextBox_Input</a>-&gt;HasKeyboardFocus();</div>
+<div class="line"><span class="lineno">  233</span>}</div>
 </div><!-- fragment -->
 <p class="reference">다음을 참조함 :  <a class="el" href="ChatInputBox_8h_source.html#l00046">MultiLineEditableTextBox_Input</a>.</p>
 
@@ -772,8 +770,8 @@ Private 속성</h2></td></tr>
 
 </div>
 </div>
-<a id="a51a1b344eb9c8b3426204bdc72b96ec4" name="a51a1b344eb9c8b3426204bdc72b96ec4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a51a1b344eb9c8b3426204bdc72b96ec4">&#9670;&#160;</a></span>OnDailyAnswerReceived()</h2>
+<a id="a17209e42ed43751486a53eaae6c20288" name="a17209e42ed43751486a53eaae6c20288"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a17209e42ed43751486a53eaae6c20288">&#9670;&#160;</a></span>OnDailyAnswerReceived()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -784,7 +782,7 @@ Private 속성</h2></td></tr>
         <tr>
           <td class="memname">void UChatInputBox::OnDailyAnswerReceived </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structFResponseChatAnswers.html">FResponseChatAnswers</a> &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="structFResponseChatDailys.html">FResponseChatDailys</a> &amp;&#160;</td>
           <td class="paramname"><em>ResponseData</em>, </td>
         </tr>
         <tr>
@@ -806,89 +804,89 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ChatInputBox_8cpp_source.html">ChatInputBox.cpp</a> 파일의 <a class="el" href="ChatInputBox_8cpp_source.html#l00285">285</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  286</span>{</div>
-<div class="line"><span class="lineno">  287</span>    <span class="keyword">const</span> int32 MIN_REQUIRED_WORDS = 3;</div>
-<div class="line"><span class="lineno">  288</span> </div>
-<div class="line"><span class="lineno">  289</span>    <span class="keywordflow">if</span> (!bWasSuccessful)</div>
-<div class="line"><span class="lineno">  290</span>    {</div>
-<div class="line"><span class="lineno">  291</span>        <span class="comment">// 네트워크 실패 시 랜덤 단어 데이터로 대체</span></div>
-<div class="line"><span class="lineno">  292</span>        TArray&lt;FWordData&gt; FallbackWordData = <a class="code hl_function" href="classUChatInputBox.html#ad070e3d9a2e04d01f7c6f52beb40a310">GetRandomKoreanWords</a>(MIN_REQUIRED_WORDS);</div>
-<div class="line"><span class="lineno">  293</span>        </div>
-<div class="line"><span class="lineno">  294</span>        <span class="keywordflow">if</span> (FallbackWordData.Num() &gt; 0)</div>
-<div class="line"><span class="lineno">  295</span>        {</div>
-<div class="line"><span class="lineno">  296</span>            <span class="keywordflow">if</span> (<a class="code hl_class" href="classUPopup__DailyStudy.html">UPopup_DailyStudy</a>* DailyStudyPopup = UPopupManager::Get(GetWorld())-&gt;ShowPopupAs&lt;UPopup_DailyStudy&gt;(EPopupType::DailyStudy))</div>
-<div class="line"><span class="lineno">  297</span>            {</div>
-<div class="line"><span class="lineno">  298</span>                DailyStudyPopup-&gt;InitPopup(FallbackWordData);</div>
-<div class="line"><span class="lineno">  299</span>            }</div>
-<div class="line"><span class="lineno">  300</span>        }</div>
-<div class="line"><span class="lineno">  301</span> </div>
-<div class="line"><span class="lineno">  302</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  303</span>    }</div>
-<div class="line"><span class="lineno">  304</span> </div>
-<div class="line"><span class="lineno">  305</span>    <span class="comment">// AI 응답을 | 구분자로 파싱 (형식: &quot;개|DOG|Gae|고양이|CAT|Go-yang-i&quot;)</span></div>
-<div class="line"><span class="lineno">  306</span>    TArray&lt;FString&gt; RawTokens;</div>
-<div class="line"><span class="lineno">  307</span>    ResponseData.<a class="code hl_variable" href="structFResponseChatAnswers.html#abbd36f4a6cd6408901bd1652e09ea706">answer</a>.ParseIntoArray(RawTokens, TEXT(<span class="stringliteral">&quot;|&quot;</span>), <span class="keyword">true</span>);</div>
-<div class="line"><span class="lineno">  308</span> </div>
-<div class="line"><span class="lineno">  309</span>    <span class="comment">// 3개씩 묶어서 FWordData로 변환 (Kor|Eng|Pronunciation)</span></div>
-<div class="line"><span class="lineno">  310</span>    TArray&lt;FWordData&gt; ValidWordDataArray;</div>
-<div class="line"><span class="lineno">  311</span>    <span class="keywordflow">for</span> (int32 i = 0; i + 2 &lt; RawTokens.Num(); i += 3)</div>
-<div class="line"><span class="lineno">  312</span>    {</div>
-<div class="line"><span class="lineno">  313</span>        FString Kor = RawTokens[i].TrimStartAndEnd();</div>
-<div class="line"><span class="lineno">  314</span>        FString Eng = RawTokens[i + 1].TrimStartAndEnd();</div>
-<div class="line"><span class="lineno">  315</span>        FString Pronunciation = RawTokens[i + 2].TrimStartAndEnd();</div>
-<div class="line"><span class="lineno">  316</span> </div>
-<div class="line"><span class="lineno">  317</span>        <span class="comment">// 빈 문자열 체크</span></div>
-<div class="line"><span class="lineno">  318</span>        <span class="keywordflow">if</span> (Kor.IsEmpty() || Eng.IsEmpty() || Pronunciation.IsEmpty())</div>
-<div class="line"><span class="lineno">  319</span>        {</div>
-<div class="line"><span class="lineno">  320</span>            <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[Daily] Skipped: Empty field (Kor: &#39;%s&#39;, Eng: &#39;%s&#39;, Phon: &#39;%s&#39;)&quot;</span>), *Kor, *Eng, *Pronunciation);</div>
-<div class="line"><span class="lineno">  321</span>            <span class="keywordflow">continue</span>;</div>
-<div class="line"><span class="lineno">  322</span>        }</div>
-<div class="line"><span class="lineno">  323</span> </div>
-<div class="line"><span class="lineno">  324</span>        <span class="comment">// 한국어 검증 (Kor 필드만)</span></div>
-<div class="line"><span class="lineno">  325</span>        <span class="keywordflow">if</span> (!<a class="code hl_function" href="classUCommonFunctionLibrary.html#af0e6c114e3b893c3ab8d059e46b840c3">UCommonFunctionLibrary::IsValidKoreanWord</a>(Kor))</div>
-<div class="line"><span class="lineno">  326</span>        {</div>
-<div class="line"><span class="lineno">  327</span>            <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[Daily] Skipped: Invalid Korean word &#39;%s&#39;&quot;</span>), *Kor);</div>
-<div class="line"><span class="lineno">  328</span>            <span class="keywordflow">continue</span>;</div>
-<div class="line"><span class="lineno">  329</span>        }</div>
-<div class="line"><span class="lineno">  330</span> </div>
-<div class="line"><span class="lineno">  331</span>        <span class="comment">// FWordData 생성</span></div>
-<div class="line"><span class="lineno">  332</span>        <a class="code hl_struct" href="structFWordData.html">FWordData</a> WordData;</div>
-<div class="line"><span class="lineno">  333</span>        WordData.<a class="code hl_variable" href="structFWordData.html#a0c48a651223fd58eedb624c3837e8b3b">Kor</a> = Kor;</div>
-<div class="line"><span class="lineno">  334</span>        WordData.<a class="code hl_variable" href="structFWordData.html#ad5cbdc27da99dfca63d216196c807570">Eng</a> = Eng;</div>
-<div class="line"><span class="lineno">  335</span>        WordData.<a class="code hl_variable" href="structFWordData.html#a8a359d2cf5e79ca20cbdfe904076dc41">Pronunciation</a> = Pronunciation;</div>
-<div class="line"><span class="lineno">  336</span> </div>
-<div class="line"><span class="lineno">  337</span>        ValidWordDataArray.Add(WordData);</div>
-<div class="line"><span class="lineno">  338</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[Daily] Parsed Word: Kor=&#39;%s&#39;, Eng=&#39;%s&#39;, Phon=&#39;%s&#39;&quot;</span>), *Kor, *Eng, *Pronunciation);</div>
-<div class="line"><span class="lineno">  339</span>    }</div>
-<div class="line"><span class="lineno">  340</span> </div>
-<div class="line"><span class="lineno">  341</span>    <span class="comment">// 유효한 단어가 부족하면 GameDataManager에서 보충</span></div>
-<div class="line"><span class="lineno">  342</span>    <span class="keywordflow">if</span> (ValidWordDataArray.Num() &lt; MIN_REQUIRED_WORDS)</div>
-<div class="line"><span class="lineno">  343</span>    {</div>
-<div class="line"><span class="lineno">  344</span>        int32 WordsNeeded = MIN_REQUIRED_WORDS - ValidWordDataArray.Num();</div>
-<div class="line"><span class="lineno">  345</span> </div>
-<div class="line"><span class="lineno">  346</span>        TArray&lt;FWordData&gt; AdditionalWordData = <a class="code hl_function" href="classUChatInputBox.html#ad070e3d9a2e04d01f7c6f52beb40a310">GetRandomKoreanWords</a>(WordsNeeded);</div>
-<div class="line"><span class="lineno">  347</span>        ValidWordDataArray.Append(AdditionalWordData);</div>
-<div class="line"><span class="lineno">  348</span> </div>
-<div class="line"><span class="lineno">  349</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[Daily] Added %d fallback words from ReadData&quot;</span>), AdditionalWordData.Num());</div>
-<div class="line"><span class="lineno">  350</span>    }</div>
-<div class="line"><span class="lineno">  351</span> </div>
-<div class="line"><span class="lineno">  352</span>    <span class="comment">// 최종 검증 및 팝업 표시</span></div>
-<div class="line"><span class="lineno">  353</span>    <span class="keywordflow">if</span> (ValidWordDataArray.Num() &gt; 0)</div>
-<div class="line"><span class="lineno">  354</span>    {</div>
-<div class="line"><span class="lineno">  355</span>        <span class="keywordflow">if</span> (<a class="code hl_class" href="classUPopup__DailyStudy.html">UPopup_DailyStudy</a>* DailyStudyPopup = UPopupManager::Get(GetWorld())-&gt;ShowPopupAs&lt;UPopup_DailyStudy&gt;(EPopupType::DailyStudy))</div>
-<div class="line"><span class="lineno">  356</span>        {</div>
-<div class="line"><span class="lineno">  357</span>            DailyStudyPopup-&gt;InitPopup(ValidWordDataArray);</div>
-<div class="line"><span class="lineno">  358</span>            <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[Daily] Initialized DailyStudy popup with %d words&quot;</span>), ValidWordDataArray.Num());</div>
-<div class="line"><span class="lineno">  359</span>        }</div>
-<div class="line"><span class="lineno">  360</span>    }</div>
-<div class="line"><span class="lineno">  361</span>}</div>
-<div class="ttc" id="aclassUChatInputBox_html_ad070e3d9a2e04d01f7c6f52beb40a310"><div class="ttname"><a href="classUChatInputBox.html#ad070e3d9a2e04d01f7c6f52beb40a310">UChatInputBox::GetRandomKoreanWords</a></div><div class="ttdeci">TArray&lt; struct FWordData &gt; GetRandomKoreanWords(int32 Count)</div><div class="ttdoc">GameDataManager에서 랜덤 한국어 단어 데이터 가져오기 (FWordData 형태)</div><div class="ttdef"><b>Definition</b> <a href="ChatInputBox_8cpp_source.html#l00237">ChatInputBox.cpp:237</a></div></div>
+<p class="definition"><a class="el" href="ChatInputBox_8cpp_source.html">ChatInputBox.cpp</a> 파일의 <a class="el" href="ChatInputBox_8cpp_source.html#l00283">283</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  284</span>{</div>
+<div class="line"><span class="lineno">  285</span>    <span class="keyword">const</span> int32 MIN_REQUIRED_WORDS = 3;</div>
+<div class="line"><span class="lineno">  286</span> </div>
+<div class="line"><span class="lineno">  287</span>    <span class="keywordflow">if</span> (!bWasSuccessful)</div>
+<div class="line"><span class="lineno">  288</span>    {</div>
+<div class="line"><span class="lineno">  289</span>        <span class="comment">// 네트워크 실패 시 랜덤 단어 데이터로 대체</span></div>
+<div class="line"><span class="lineno">  290</span>        TArray&lt;FWordData&gt; FallbackWordData = <a class="code hl_function" href="classUChatInputBox.html#ad070e3d9a2e04d01f7c6f52beb40a310">GetRandomKoreanWords</a>(MIN_REQUIRED_WORDS);</div>
+<div class="line"><span class="lineno">  291</span>        </div>
+<div class="line"><span class="lineno">  292</span>        <span class="keywordflow">if</span> (FallbackWordData.Num() &gt; 0)</div>
+<div class="line"><span class="lineno">  293</span>        {</div>
+<div class="line"><span class="lineno">  294</span>            <span class="keywordflow">if</span> (<a class="code hl_class" href="classUPopup__DailyStudy.html">UPopup_DailyStudy</a>* DailyStudyPopup = UPopupManager::Get(GetWorld())-&gt;ShowPopupAs&lt;UPopup_DailyStudy&gt;(EPopupType::DailyStudy))</div>
+<div class="line"><span class="lineno">  295</span>            {</div>
+<div class="line"><span class="lineno">  296</span>                DailyStudyPopup-&gt;InitPopup(FallbackWordData);</div>
+<div class="line"><span class="lineno">  297</span>            }</div>
+<div class="line"><span class="lineno">  298</span>        }</div>
+<div class="line"><span class="lineno">  299</span> </div>
+<div class="line"><span class="lineno">  300</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  301</span>    }</div>
+<div class="line"><span class="lineno">  302</span> </div>
+<div class="line"><span class="lineno">  303</span>    <span class="comment">// AI 응답을 | 구분자로 파싱 (형식: &quot;개|DOG|Gae|고양이|CAT|Go-yang-i&quot;)</span></div>
+<div class="line"><span class="lineno">  304</span>    TArray&lt;FString&gt; RawTokens;</div>
+<div class="line"><span class="lineno">  305</span>    ResponseData.<a class="code hl_variable" href="structFResponseChatDailys.html#a67900c69df3ea11798f19364d3ac2ea3">answer</a>.ParseIntoArray(RawTokens, TEXT(<span class="stringliteral">&quot;|&quot;</span>), <span class="keyword">true</span>);</div>
+<div class="line"><span class="lineno">  306</span> </div>
+<div class="line"><span class="lineno">  307</span>    <span class="comment">// 3개씩 묶어서 FWordData로 변환 (Kor|Eng|Pronunciation)</span></div>
+<div class="line"><span class="lineno">  308</span>    TArray&lt;FWordData&gt; ValidWordDataArray;</div>
+<div class="line"><span class="lineno">  309</span>    <span class="keywordflow">for</span> (int32 i = 0; i + 2 &lt; RawTokens.Num(); i += 3)</div>
+<div class="line"><span class="lineno">  310</span>    {</div>
+<div class="line"><span class="lineno">  311</span>        FString Kor = RawTokens[i].TrimStartAndEnd();</div>
+<div class="line"><span class="lineno">  312</span>        FString Eng = RawTokens[i + 1].TrimStartAndEnd();</div>
+<div class="line"><span class="lineno">  313</span>        FString Pronunciation = RawTokens[i + 2].TrimStartAndEnd();</div>
+<div class="line"><span class="lineno">  314</span> </div>
+<div class="line"><span class="lineno">  315</span>        <span class="comment">// 빈 문자열 체크</span></div>
+<div class="line"><span class="lineno">  316</span>        <span class="keywordflow">if</span> (Kor.IsEmpty() || Eng.IsEmpty() || Pronunciation.IsEmpty())</div>
+<div class="line"><span class="lineno">  317</span>        {</div>
+<div class="line"><span class="lineno">  318</span>            <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[Daily] Skipped: Empty field (Kor: &#39;%s&#39;, Eng: &#39;%s&#39;, Phon: &#39;%s&#39;)&quot;</span>), *Kor, *Eng, *Pronunciation);</div>
+<div class="line"><span class="lineno">  319</span>            <span class="keywordflow">continue</span>;</div>
+<div class="line"><span class="lineno">  320</span>        }</div>
+<div class="line"><span class="lineno">  321</span> </div>
+<div class="line"><span class="lineno">  322</span>        <span class="comment">// 한국어 검증 (Kor 필드만)</span></div>
+<div class="line"><span class="lineno">  323</span>        <span class="keywordflow">if</span> (!<a class="code hl_function" href="classUCommonFunctionLibrary.html#af0e6c114e3b893c3ab8d059e46b840c3">UCommonFunctionLibrary::IsValidKoreanWord</a>(Kor))</div>
+<div class="line"><span class="lineno">  324</span>        {</div>
+<div class="line"><span class="lineno">  325</span>            <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[Daily] Skipped: Invalid Korean word &#39;%s&#39;&quot;</span>), *Kor);</div>
+<div class="line"><span class="lineno">  326</span>            <span class="keywordflow">continue</span>;</div>
+<div class="line"><span class="lineno">  327</span>        }</div>
+<div class="line"><span class="lineno">  328</span> </div>
+<div class="line"><span class="lineno">  329</span>        <span class="comment">// FWordData 생성</span></div>
+<div class="line"><span class="lineno">  330</span>        <a class="code hl_struct" href="structFWordData.html">FWordData</a> WordData;</div>
+<div class="line"><span class="lineno">  331</span>        WordData.<a class="code hl_variable" href="structFWordData.html#a0c48a651223fd58eedb624c3837e8b3b">Kor</a> = Kor;</div>
+<div class="line"><span class="lineno">  332</span>        WordData.<a class="code hl_variable" href="structFWordData.html#ad5cbdc27da99dfca63d216196c807570">Eng</a> = Eng;</div>
+<div class="line"><span class="lineno">  333</span>        WordData.<a class="code hl_variable" href="structFWordData.html#a8a359d2cf5e79ca20cbdfe904076dc41">Pronunciation</a> = Pronunciation;</div>
+<div class="line"><span class="lineno">  334</span> </div>
+<div class="line"><span class="lineno">  335</span>        ValidWordDataArray.Add(WordData);</div>
+<div class="line"><span class="lineno">  336</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[Daily] Parsed Word: Kor=&#39;%s&#39;, Eng=&#39;%s&#39;, Phon=&#39;%s&#39;&quot;</span>), *Kor, *Eng, *Pronunciation);</div>
+<div class="line"><span class="lineno">  337</span>    }</div>
+<div class="line"><span class="lineno">  338</span> </div>
+<div class="line"><span class="lineno">  339</span>    <span class="comment">// 유효한 단어가 부족하면 GameDataManager에서 보충</span></div>
+<div class="line"><span class="lineno">  340</span>    <span class="keywordflow">if</span> (ValidWordDataArray.Num() &lt; MIN_REQUIRED_WORDS)</div>
+<div class="line"><span class="lineno">  341</span>    {</div>
+<div class="line"><span class="lineno">  342</span>        int32 WordsNeeded = MIN_REQUIRED_WORDS - ValidWordDataArray.Num();</div>
+<div class="line"><span class="lineno">  343</span> </div>
+<div class="line"><span class="lineno">  344</span>        TArray&lt;FWordData&gt; AdditionalWordData = <a class="code hl_function" href="classUChatInputBox.html#ad070e3d9a2e04d01f7c6f52beb40a310">GetRandomKoreanWords</a>(WordsNeeded);</div>
+<div class="line"><span class="lineno">  345</span>        ValidWordDataArray.Append(AdditionalWordData);</div>
+<div class="line"><span class="lineno">  346</span> </div>
+<div class="line"><span class="lineno">  347</span>        <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[Daily] Added %d fallback words from ReadData&quot;</span>), AdditionalWordData.Num());</div>
+<div class="line"><span class="lineno">  348</span>    }</div>
+<div class="line"><span class="lineno">  349</span> </div>
+<div class="line"><span class="lineno">  350</span>    <span class="comment">// 최종 검증 및 팝업 표시</span></div>
+<div class="line"><span class="lineno">  351</span>    <span class="keywordflow">if</span> (ValidWordDataArray.Num() &gt; 0)</div>
+<div class="line"><span class="lineno">  352</span>    {</div>
+<div class="line"><span class="lineno">  353</span>        <span class="keywordflow">if</span> (<a class="code hl_class" href="classUPopup__DailyStudy.html">UPopup_DailyStudy</a>* DailyStudyPopup = UPopupManager::Get(GetWorld())-&gt;ShowPopupAs&lt;UPopup_DailyStudy&gt;(EPopupType::DailyStudy))</div>
+<div class="line"><span class="lineno">  354</span>        {</div>
+<div class="line"><span class="lineno">  355</span>            DailyStudyPopup-&gt;InitPopup(ValidWordDataArray);</div>
+<div class="line"><span class="lineno">  356</span>            <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;[Daily] Initialized DailyStudy popup with %d words&quot;</span>), ValidWordDataArray.Num());</div>
+<div class="line"><span class="lineno">  357</span>        }</div>
+<div class="line"><span class="lineno">  358</span>    }</div>
+<div class="line"><span class="lineno">  359</span>}</div>
+<div class="ttc" id="aclassUChatInputBox_html_ad070e3d9a2e04d01f7c6f52beb40a310"><div class="ttname"><a href="classUChatInputBox.html#ad070e3d9a2e04d01f7c6f52beb40a310">UChatInputBox::GetRandomKoreanWords</a></div><div class="ttdeci">TArray&lt; struct FWordData &gt; GetRandomKoreanWords(int32 Count)</div><div class="ttdoc">GameDataManager에서 랜덤 한국어 단어 데이터 가져오기 (FWordData 형태)</div><div class="ttdef"><b>Definition</b> <a href="ChatInputBox_8cpp_source.html#l00235">ChatInputBox.cpp:235</a></div></div>
 <div class="ttc" id="aclassUCommonFunctionLibrary_html_af0e6c114e3b893c3ab8d059e46b840c3"><div class="ttname"><a href="classUCommonFunctionLibrary.html#af0e6c114e3b893c3ab8d059e46b840c3">UCommonFunctionLibrary::IsValidKoreanWord</a></div><div class="ttdeci">static bool IsValidKoreanWord(const FString &amp;Word)</div><div class="ttdoc">한국어 단어 검증 (한글만 포함되어 있는지 확인)</div><div class="ttdef"><b>Definition</b> <a href="UCommonFunctionLibrary_8cpp_source.html#l00179">UCommonFunctionLibrary.cpp:179</a></div></div>
 <div class="ttc" id="aclassUPopup__DailyStudy_html"><div class="ttname"><a href="classUPopup__DailyStudy.html">UPopup_DailyStudy</a></div><div class="ttdoc">Daily Study 팝업</div><div class="ttdef"><b>Definition</b> <a href="UPopup__DailyStudy_8h_source.html#l00042">UPopup_DailyStudy.h:43</a></div></div>
-<div class="ttc" id="astructFResponseChatAnswers_html_abbd36f4a6cd6408901bd1652e09ea706"><div class="ttname"><a href="structFResponseChatAnswers.html#abbd36f4a6cd6408901bd1652e09ea706">FResponseChatAnswers::answer</a></div><div class="ttdeci">FString answer</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l01371">NetworkData.h:1371</a></div></div>
+<div class="ttc" id="astructFResponseChatDailys_html_a67900c69df3ea11798f19364d3ac2ea3"><div class="ttname"><a href="structFResponseChatDailys.html#a67900c69df3ea11798f19364d3ac2ea3">FResponseChatDailys::answer</a></div><div class="ttdeci">FString answer</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l01400">NetworkData.h:1400</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="NetworkData_8h_source.html#l01371">FResponseChatAnswers::answer</a>, <a class="el" href="NetworkData_8h_source.html#l00214">FWordData::Eng</a>, <a class="el" href="ChatInputBox_8cpp_source.html#l00237">GetRandomKoreanWords()</a>, <a class="el" href="UCommonFunctionLibrary_8cpp_source.html#l00179">UCommonFunctionLibrary::IsValidKoreanWord()</a>, <a class="el" href="NetworkData_8h_source.html#l00211">FWordData::Kor</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>, <a class="el" href="NetworkData_8h_source.html#l00217">FWordData::Pronunciation</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="NetworkData_8h_source.html#l01400">FResponseChatDailys::answer</a>, <a class="el" href="NetworkData_8h_source.html#l00217">FWordData::Eng</a>, <a class="el" href="ChatInputBox_8cpp_source.html#l00235">GetRandomKoreanWords()</a>, <a class="el" href="UCommonFunctionLibrary_8cpp_source.html#l00179">UCommonFunctionLibrary::IsValidKoreanWord()</a>, <a class="el" href="NetworkData_8h_source.html#l00214">FWordData::Kor</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>, <a class="el" href="NetworkData_8h_source.html#l00220">FWordData::Pronunciation</a>.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ChatInputBox_8cpp_source.html#l00180">HandleSendClicked()</a>.</p>
 <div id="dynsection-11" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -896,14 +894,14 @@ Private 속성</h2></td></tr>
 <div id="dynsection-11-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-11-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classUChatInputBox_a51a1b344eb9c8b3426204bdc72b96ec4_cgraph.svg" width="100%" height="407"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classUChatInputBox_a17209e42ed43751486a53eaae6c20288_cgraph.svg" width="100%" height="407"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 <div id="dynsection-12" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-12-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-12-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-12-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classUChatInputBox_a51a1b344eb9c8b3426204bdc72b96ec4_icgraph.svg" width="100%" height="376"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classUChatInputBox_a17209e42ed43751486a53eaae6c20288_icgraph.svg" width="100%" height="376"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -1072,7 +1070,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="ChatInputBox_8h_source.html">ChatInputBox.h</a> 파일의 <a class="el" href="ChatInputBox_8h_source.html#l00046">46</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ChatInputBox_8cpp_source.html#l00091">FlushMessage()</a>, <a class="el" href="ChatInputBox_8cpp_source.html#l00232">HasKeyboardFocus()</a>, <a class="el" href="ChatInputBox_8cpp_source.html#l00030">NativeTick()</a>, <a class="el" href="ChatInputBox_8cpp_source.html#l00101">SetInputFocus()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ChatInputBox_8cpp_source.html#l00091">FlushMessage()</a>, <a class="el" href="ChatInputBox_8cpp_source.html#l00230">HasKeyboardFocus()</a>, <a class="el" href="ChatInputBox_8cpp_source.html#l00030">NativeTick()</a>, <a class="el" href="ChatInputBox_8cpp_source.html#l00101">SetInputFocus()</a>.</p>
 
 </div>
 </div>
@@ -1112,7 +1110,7 @@ Private 속성</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classUChatInputBox.html">UChatInputBox</a></li>
-    <li class="footer">생성시간 : 일 12월 28 2025 11:13:59, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 월 12월 29 2025 03:02:08, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

@@ -9,7 +9,7 @@ var classUChatInputBox =
     [ "NativeOnInitialized", "classUChatInputBox.html#a21745edd73ef2138632b3188ad4c71da", null ],
     [ "NativeOnPreviewKeyDown", "classUChatInputBox.html#ab18654c43748ccb4af6bc9bd33d7e797", null ],
     [ "NativeTick", "classUChatInputBox.html#ad1ea021820b15529d5ca91c5d408edf4", null ],
-    [ "OnDailyAnswerReceived", "classUChatInputBox.html#a51a1b344eb9c8b3426204bdc72b96ec4", null ],
+    [ "OnDailyAnswerReceived", "classUChatInputBox.html#a17209e42ed43751486a53eaae6c20288", null ],
     [ "SetInputFocus", "classUChatInputBox.html#a7b7c6be61f96deed2d3c8f9691c95c97", null ],
     [ "SetOwningChatWidget", "classUChatInputBox.html#a4cf3057d17b8e4f2b05156a871ef0474", null ],
     [ "Button_Send", "classUChatInputBox.html#ae0533d766d0dc39730fb7c02f4a6d542", null ],

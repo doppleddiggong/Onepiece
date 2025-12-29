@@ -70,6 +70,7 @@ var namespaces_dup =
     ] ],
     [ "RequestAPI", "namespaceRequestAPI.html", [
       [ "chats_answers", "namespaceRequestAPI.html#a9d0b152ffca83b4b8289f1b6da6f2aa4", null ],
+      [ "chats_daily", "namespaceRequestAPI.html#a3b67de576da5de7a513d7d971794770a", null ],
       [ "evaluations_rooms", "namespaceRequestAPI.html#ab35a143dc8865f6bf07bc269a00b075d", null ],
       [ "Health", "namespaceRequestAPI.html#ae1061ff9836b3127b56024d0a0f6fd65", null ],
       [ "interview_answer", "namespaceRequestAPI.html#ac23f8020a8a24f9d640a8aefbe9e56e5", null ],

@@ -95,6 +95,7 @@ var annotated_dup =
     [ "FRequestWriteResult", "structFRequestWriteResult.html", "structFRequestWriteResult" ],
     [ "FResourceTextureData", "structFResourceTextureData.html", "structFResourceTextureData" ],
     [ "FResponseChatAnswers", "structFResponseChatAnswers.html", "structFResponseChatAnswers" ],
+    [ "FResponseChatDailys", "structFResponseChatDailys.html", "structFResponseChatDailys" ],
     [ "FResponseEvaluationResult", "structFResponseEvaluationResult.html", "structFResponseEvaluationResult" ],
     [ "FResponseHealth", "structFResponseHealth.html", "structFResponseHealth" ],
     [ "FResponseInterviewAnswer", "structFResponseInterviewAnswer.html", "structFResponseInterviewAnswer" ],

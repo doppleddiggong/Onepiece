@@ -1,5 +1,8 @@
 var NAVTREEINDEX6 =
 {
+"classALingoGameState.html#a098f78f856c35102786b2109ca20c576":[2,0,15,56],
+"classALingoGameState.html#a0f5e853326a3d577b919b467f241bcff":[2,0,15,36],
+"classALingoGameState.html#a187eb1e4402343fb0feeb815509ba037":[2,0,15,19],
 "classALingoGameState.html#a2b420a9c376c3fe0fd3fa1f006615e70":[2,0,15,34],
 "classALingoGameState.html#a2ed31b0f42b32340d299412ae17b8b4d":[2,0,15,17],
 "classALingoGameState.html#a2f6a9d1ea728c1a4ba1ebbc84543bbaf":[2,0,15,52],
@@ -246,8 +249,5 @@ var NAVTREEINDEX6 =
 "classANetworkBroadcastActor.html#ae7190f8c54506852b6e80cfe9bf97c7e":[2,0,25,10],
 "classANetworkBroadcastActor.html#af00dd84408a70910788aa14d8f9f3445":[2,0,25,2],
 "classANetworkBroadcastActor.html#afb654979a8742de764a7fdc59d403668":[2,0,25,17],
-"classANetworkTesterActor.html":[2,0,26],
-"classANetworkTesterActor.html#a0070a4fc0909e776aabf2ea57949036f":[2,0,26,20],
-"classANetworkTesterActor.html#a02ff1581891a931b644040b2fe7f5959":[2,0,26,13],
-"classANetworkTesterActor.html#a112a573b43579514a0ab6f87d492a630":[2,0,26,26]
+"classANetworkTesterActor.html":[2,0,26]
 };

@@ -21,6 +21,7 @@ var NetworkData_8h =
     [ "FRequestSpeakResult", "structFRequestSpeakResult.html", "structFRequestSpeakResult" ],
     [ "FRequestWriteResult", "structFRequestWriteResult.html", "structFRequestWriteResult" ],
     [ "FResponseChatAnswers", "structFResponseChatAnswers.html", "structFResponseChatAnswers" ],
+    [ "FResponseChatDailys", "structFResponseChatDailys.html", "structFResponseChatDailys" ],
     [ "FResponseEvaluationResult", "structFResponseEvaluationResult.html", "structFResponseEvaluationResult" ],
     [ "FResponseHealth", "structFResponseHealth.html", "structFResponseHealth" ],
     [ "FResponseInterviewAnswer", "structFResponseInterviewAnswer.html", "structFResponseInterviewAnswer" ],
@@ -59,6 +60,7 @@ var NetworkData_8h =
       [ "UMETA", "NetworkData_8h.html#a89d484500632d06d10ab21aefde0efdaaa3f80d8f0f1b4ffa8c475f5d60ea5635", null ]
     ] ],
     [ "DECLARE_DELEGATE_TwoParams", "NetworkData_8h.html#a88c6f7be0436c9e3a387a23410101479", null ],
+    [ "DECLARE_DELEGATE_TwoParams", "NetworkData_8h.html#afdc3e2bf00099f6fa8893c933b006040", null ],
     [ "DECLARE_DELEGATE_TwoParams", "NetworkData_8h.html#a354a1837ba4da4ff03c88181313c3dc1", null ],
     [ "DECLARE_DELEGATE_TwoParams", "NetworkData_8h.html#a176f0d72d06ab65295baec529c15ad9f", null ],
     [ "DECLARE_DELEGATE_TwoParams", "NetworkData_8h.html#a026b18721a9480e911876ad4ee276fac", null ],
@@ -83,6 +85,7 @@ var NetworkData_8h =
     [ "GetSocketURL", "NetworkData_8h.html#a948647fad9ed84a91de549757a7a0e74", null ],
     [ "GetTypeHash", "NetworkData_8h.html#ad4c5a68d47d81d6afcc936e867855cf7", null ],
     [ "chats_answers", "NetworkData_8h.html#a9d0b152ffca83b4b8289f1b6da6f2aa4", null ],
+    [ "chats_daily", "NetworkData_8h.html#a3b67de576da5de7a513d7d971794770a", null ],
     [ "evaluations_rooms", "NetworkData_8h.html#ab35a143dc8865f6bf07bc269a00b075d", null ],
     [ "Health", "NetworkData_8h.html#ae1061ff9836b3127b56024d0a0f6fd65", null ],
     [ "interview_answer", "NetworkData_8h.html#ac23f8020a8a24f9d640a8aefbe9e56e5", null ],
