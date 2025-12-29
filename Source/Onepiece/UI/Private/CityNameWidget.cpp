@@ -14,3 +14,8 @@ void UCityNameWidget::SetCityName(FString InCityName)
 {
 	Txt_CityName->SetText(FText::FromString(InCityName));
 }
+
+void UCityNameWidget::SetTextColor(FLinearColor InColor)
+{
+	Txt_CityName->SetColorAndOpacity(InColor);
+}

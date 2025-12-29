@@ -22,4 +22,5 @@ public:
 	class UTextBlock* Txt_CityName;
 
 	void SetCityName(FString InCityName);
+	void SetTextColor(FLinearColor InColor);
 };

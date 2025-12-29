@@ -72,6 +72,10 @@ protected:
 	UFUNCTION(Server, Reliable)
 	void Server_MoveFoodContainer(AActor* ActorToMove);
 
+	// 위젯 디스플레이 액터
+	class ACityName* FoodDisplay;
+	class ACityName* CityDisplay;
+	
 protected:
 	// Compass Interface
 	virtual void SetCompassMarkerInto(ECompassMarkerType InMarkerType) override;

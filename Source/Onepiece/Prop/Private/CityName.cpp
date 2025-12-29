@@ -23,7 +23,11 @@ void ACityName::BeginPlay()
 {
 	Super::BeginPlay();
 
-	OnRep_FoodCourtInfo();
+	FTimerHandle TimerHandle;
+	GetWorldTimerManager().SetTimer(TimerHandle, FTimerDelegate::CreateLambda([this]
+	{
+		SetDefaultText();
+	}), 0.5f, false);
 }
 
 // Called every frame
@@ -39,12 +43,43 @@ void ACityName::GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutL
 	DOREPLIFETIME(ACityName, CityName);
 }
 
-void ACityName::OnRep_FoodCourtInfo()
+void ACityName::SetDefaultText()
+{
+	if (Index == 0)	CityName = TEXT("Food Here");
+	else if (Index == 1) CityName = TEXT("City Here");
+
+	if (HasAuthority())
+	{
+		OnRep_CityName();
+	}
+}
+
+void ACityName::SetChecked()
+{
+	CityName = TEXT("OK!");
+
+	if (HasAuthority())
+	{
+		OnRep_CityName();
+	}
+}
+
+void ACityName::OnRep_CityName()
 {
 	UUserWidget* CityNameWidget = WidgetComp->GetWidget();
 	if (UCityNameWidget* CNW = Cast<UCityNameWidget>(CityNameWidget))
 	{
 		CNW->SetCityName(CityName);
+
+		// 텍스트 색 설정
+		if (CityName == TEXT("OK!"))
+		{
+			CNW->SetTextColor(FLinearColor::Green);
+		}
+		else
+		{
+			CNW->SetTextColor(FLinearColor::White);
+		}
 	}
 }
 

@@ -8,6 +8,7 @@
 #include "Food.h"
 #include "GameLogging.h"
 #include "ANetworkBroadcastActor.h"
+#include "CityName.h"
 #include "FoodCourtManager.h"
 #include "OrderKiosk.h"
 #include "Popup_Result.h"
@@ -184,6 +185,18 @@ void AFoodHolder::OnFoodBoxOverlapBegin(
 		
 				// 모든 클라이언트에 오답 메시지 표시
 				Multicast_ShowWrongPopup(Food->CurrentFoodData.word1.name);
+
+				// 컨베이어 투입구 텍스트 원상복구
+				TArray<AActor*> CityNames;
+				UGameplayStatics::GetAllActorsOfClass(GetWorld(), ACityName::StaticClass(), CityNames);
+
+				for (AActor* Actor : CityNames)
+				{
+					if (ACityName* CN = Cast<ACityName>(Actor))
+					{
+						CN->SetDefaultText();
+					}
+				}
 		
 				// Food 소거 (서버에서만, 자동 복제됨)
 				Food->Destroy();
