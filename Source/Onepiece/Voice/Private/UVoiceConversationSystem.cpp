@@ -254,19 +254,16 @@ void UVoiceConversationSystem::StopRecording()
 			LastRecordedFilePath,
 			FResponseSpeakingJudesDelegate::CreateUObject(this, &UVoiceConversationSystem::OnResponseSpeakingsJudges));
 	}
-	else if (auto* PopupMgr = UPopupManager::Get(GetWorld()))
+	else if (auto* DailyStudyPopup = Cast<UPopup_DailyStudy>(UPopupManager::Get(GetWorld())->GetCurrentPopupWidget()))
 	{
-		if (auto* DailyStudyPopup = Cast<UPopup_DailyStudy>(PopupMgr->GetCurrentPopupWidget()))
-		{
-			// Toast 메시지 표시: 답변 분석 중
-			if (UDialogManager* DM = UDialogManager::Get(GetWorld()))
-				DM->ShowToast(TEXT("The officer is reviewing your answer"));
+		// Toast 메시지 표시: 답변 분석 중
+		if (UDialogManager* DM = UDialogManager::Get(GetWorld()))
+			DM->ShowToast(TEXT("The officer is reviewing your answer"));
 
-			KLingoNetwork->RequestSpeakingJudges(
-				DailyStudyPopup->GetCurrentQuestionText(),
-				LastRecordedFilePath,
-				FResponseSpeakingJudesDelegate::CreateUObject(this, &UVoiceConversationSystem::OnResponseSpeakingsJudges));
-		}
+		KLingoNetwork->RequestSpeakingJudges(
+			DailyStudyPopup->GetCurrentQuestionText(),
+			LastRecordedFilePath,
+			FResponseSpeakingJudesDelegate::CreateUObject(this, &UVoiceConversationSystem::OnResponseSpeakingsJudges));
 	}
 	else
 	{

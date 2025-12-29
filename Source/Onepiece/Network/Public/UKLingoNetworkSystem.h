@@ -67,6 +67,18 @@ public:
 	/// @param InDelegate [in] 응답 콜백입니다.
 	void RequestChatAudio(const FString& Context, const FString& AudioPath, FResponseChatAnswersDelegate InDelegate);
 
+	/// @brief Daily Chat 답변을 요청합니다 (텍스트 질문). POST /chats/dailys
+	/// @param Context [in] 대화 컨텍스트입니다.
+	/// @param Question [in] 사용자 질문입니다.
+	/// @param InDelegate [in] 응답 콜백입니다.
+	void RequestDailyQuestion(const FString& Context, const FString& Question, FResponseChatDailysDelegate InDelegate);
+
+	/// @brief Daily Chat 답변을 요청합니다 (음성 질문). POST /chats/dailys
+	/// @param Context [in] 대화 컨텍스트입니다.
+	/// @param AudioPath [in] 음성 파일 경로입니다.
+	/// @param InDelegate [in] 응답 콜백입니다.
+	void RequestDailyAudio(const FString& Context, const FString& AudioPath, FResponseChatDailysDelegate InDelegate);
+
 private:
 	/// @brief 공통 네트워크 로그 메시지를 출력합니다.
 	/// @param InLogType [in] 로그 타입입니다.

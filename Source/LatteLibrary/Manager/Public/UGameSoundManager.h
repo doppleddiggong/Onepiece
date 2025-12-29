@@ -49,6 +49,19 @@ public:
 	UFUNCTION(BlueprintCallable, Category="Sound")
 	bool IsConversationVoicePlaying() const;
 
+	/**
+	 * @brief BGM을 재생합니다. 이미 같은 BGM이 재생 중이면 유지하고, 다른 BGM이면 전환합니다.
+	 * @param Type 재생할 BGM 타입
+	 */
+	UFUNCTION(BlueprintCallable, Category="Sound")
+	void PlayBGM(EGameSoundType Type);
+
+	/**
+	 * @brief 현재 재생 중인 BGM을 중지합니다.
+	 */
+	UFUNCTION(BlueprintCallable, Category="Sound")
+	void StopBGM();
+
 private:
 	UPROPERTY(EditDefaultsOnly, Category = "Sound", meta = (AllowPrivateAccess = "true"))
 	TObjectPtr<class USoundData> SoundAsset;
@@ -62,4 +75,11 @@ private:
 	// 현재 재생 중인 대화 음성 (MegaPopup, DasanExplain, PlayerAsk 공유)
 	UPROPERTY()
 	TObjectPtr<UAudioComponent> ConversationVoice;
+
+	// 현재 재생 중인 BGM
+	UPROPERTY()
+	TObjectPtr<UAudioComponent> CurrentBGM;
+
+	// 현재 재생 중인 BGM 타입
+	EGameSoundType CurrentBGMType;
 };

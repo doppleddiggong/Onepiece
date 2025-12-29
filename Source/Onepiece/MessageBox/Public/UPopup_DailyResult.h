@@ -46,6 +46,9 @@ protected:
 	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<class UImageButton> Btn_Confirm;
 
+	UPROPERTY(meta = (BindWidget))
+	TObjectPtr<class UTextureButton> Btn_Close;
+	
 private:
 	/** 아이템 위젯 클래스 */
 	UPROPERTY(EditDefaultsOnly, Category = "UI")

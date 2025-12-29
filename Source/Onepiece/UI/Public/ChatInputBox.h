@@ -36,7 +36,7 @@ private:
 	TArray<struct FWordData> GetRandomKoreanWords(int32 Count);
 
 	UFUNCTION()
-	void OnDailyAnswerReceived(FResponseChatAnswers& ResponseData, bool bWasSuccessful);
+	void OnDailyAnswerReceived(FResponseChatDailys& ResponseData, bool bWasSuccessful);
 	
 	UFUNCTION()
 	void HandleSendClicked();

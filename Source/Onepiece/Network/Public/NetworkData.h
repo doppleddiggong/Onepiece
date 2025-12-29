@@ -105,6 +105,9 @@ namespace RequestAPI
 
 	/// @brief Chat 답변 요청 엔드포인트입니다. POST /chats/answers
 	static FString chats_answers = FString("/chats/answers");
+
+	static FString chats_daily = FString("/chats/dailys");
+
 }
 
 
@@ -1361,6 +1364,32 @@ DECLARE_DELEGATE_TwoParams(FResponseChatAnswersDelegate, FResponseChatAnswers&, 
 /// @brief Chat Answers 응답 구조체입니다.
 USTRUCT(BlueprintType)
 struct FResponseChatAnswers
+{
+	GENERATED_BODY()
+
+	UPROPERTY(BlueprintReadWrite, Category = "Chat")
+	FString question;
+
+	UPROPERTY(BlueprintReadWrite, Category = "Chat")
+	FString answer;
+
+	/// @brief HTTP 응답을 파싱해 구조체를 채웁니다.
+	void SetFromHttpResponse(const TSharedPtr<class IHttpResponse, ESPMode::ThreadSafe>& Response);
+
+	/// @brief 디버그 로그에 응답 내용을 출력합니다.
+	void PrintData() const;
+};
+
+
+// =================================================================================
+// Chat Dailys API Structures
+// =================================================================================
+
+/// @brief Chat Dailys 응답 델리게이트입니다.
+DECLARE_DELEGATE_TwoParams(FResponseChatDailysDelegate, FResponseChatDailys&, bool);
+/// @brief Chat Dailys 응답 구조체입니다.
+USTRUCT(BlueprintType)
+struct FResponseChatDailys
 {
 	GENERATED_BODY()
 
