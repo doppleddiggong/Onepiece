@@ -47,15 +47,21 @@ public:
 	// 듣기 선택지 스폰 및 데이터 전달
 	void SpawnListenAnswer();
 	// 첫번째 스폰 위치 기준으로 나머지 스폰 위치 구하기
-	void GetCurrentSpawnLocation(int32 Index, FVector& OutSpawnLocation);
+	void GetCurrentSpawnLocation(int32 Index, FVector InitialLocation, int32 Dir,
+		FVector& OutSpawnLocation);
 	
 protected:
 	UPROPERTY(EditDefaultsOnly, Category = "Item")
 	TSubclassOf<class AListenAnswer> ListenAnswerClass;
 	
-	// 선택지 첫번째 스폰 위치
+	// 음식 선택지 스폰 위치
 	UPROPERTY(EditAnywhere, Category = "Spawn")
-	FVector AnswerSpawnLocation = FVector(1743.168217,-5194.291382,-4552.637340);
+	FVector FoodSpawnLocation = FVector(2074.407733,-5199.513819,-4559.096513);
+
+	// 도시 선택지 스폰 위치
+	UPROPERTY(EditAnywhere, Category = "Spawn")
+	FVector CitySpawnLocation = FVector(1064.733696,-5547.531142,-4124.149377);
+
 	// 스폰 간격
 	UPROPERTY(EditAnywhere, Category = "Spawn")
 	float SpawnDistance = 150.f;
