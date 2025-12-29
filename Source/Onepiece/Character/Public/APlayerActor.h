@@ -123,7 +123,9 @@ public: // Control Interface
 public:
 	FORCEINLINE bool GetIsRunning() { return bIsRunning; }
 	FORCEINLINE bool GetIsJumpStart() { return bIsJumpStart; }
-
+	FVector GetCameraForwardVector() const;
+	FVector GetCameraPosition() const;
+	
 	void PlaySpeakInfo(int32 QuestStep);
 
 	EQuestRole GetQuestRole();

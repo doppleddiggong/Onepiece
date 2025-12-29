@@ -155,7 +155,20 @@ public:
 	UFUNCTION()
 	void OnOutlineStateChanged(bool bShouldShowOutline);
 
-
+	// Update Dissolve
+	bool UpdateDissolve();
+	
+protected:
+	// Dissolve Value
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Dissolve")
+	TObjectPtr<class UMaterialParameterCollection> dissolveMPC;
+	
+	UPROPERTY()
+	TObjectPtr<class UMaterialParameterCollectionInstance> dissolveMPCInstance;
+	
+	const float dissolveMaxVal = 3.2f;
+	float dissolveVal = -1.1f;
+	float dissolveSpeed = 0.08f;
 
 public:
 	void PlayTTSAudio();
