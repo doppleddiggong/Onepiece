@@ -210,9 +210,10 @@ void UChatInputBox::HandleSendClicked()
 		// Daily 단어 생성 요청
 		if (UKLingoNetworkSystem* NetworkSystem = UKLingoNetworkSystem::Get(GetWorld()))
 		{
-			CleanQuestion = TEXT("[Generate Korean words only] ") + CleanQuestion;
+			CleanQuestion = TEXT("## 절대로 **한자**를 사용하지 말것 ##") + CleanQuestion;
 			
 			NetworkSystem->RequestChatQuestion(DefineData::DailySystemPrompt, CleanQuestion,
+				
 				FResponseChatAnswersDelegate::CreateUObject(this, &UChatInputBox::OnDailyAnswerReceived));
 
 			PRINTLOG(TEXT("[Daily] Word generation request: %s"), *CleanQuestion);

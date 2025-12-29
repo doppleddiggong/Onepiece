@@ -1330,6 +1330,7 @@ void UKLingoNetworkSystem::RequestChatQuestion(const FString& Context, const FSt
 	TMap<FString, FString> Query;
 	Query.Add(TEXT("context"), Context);
 	Query.Add(TEXT("question"), Question);
+	Query.Add(TEXT("level"), FString::FromInt(ULingoGameHelper::GetLingoGameState(GetWorld())->GetRoomLevel()));
 	FString Url = NetworkConfig::GetFullUrlWithQuery( RequestAPI::chats_answers, Query );
 	auto Request = SetupHttpRequest(Url, NETWORK_POST);
 	
@@ -1402,6 +1403,7 @@ void UKLingoNetworkSystem::RequestChatAudio(const FString& Context, const FStrin
 	// multipart/form-data로 context와 audio 파일 전송
 	FHttpMultipartFormData Form;
 	Form.AddText(TEXT("context"), Context);
+	Form.AddText(TEXT("level"), FString::FromInt(ULingoGameHelper::GetLingoGameState(GetWorld())->GetRoomLevel()));
 
 	if (!Form.AddFile(TEXT("audio"), AbsoluteAudioPath))
 	{

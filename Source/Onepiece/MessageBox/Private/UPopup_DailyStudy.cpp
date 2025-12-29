@@ -127,8 +127,8 @@ void UPopup_DailyStudy::LoadCurQuestion()
 	Border_Question->SetVisibility(ESlateVisibility::Visible);
 	Txt_Infomation->SetVisibility(ESlateVisibility::Visible);
 	
-	Rich_Text->SetText(FText::FromString(QuestionList[CurIndex].Kor));
-	Txt_SubTitle->SetText(FText::FromString(QuestionList[CurIndex].Pronunciation));
+	Rich_Text->SetText(FText::FromString(QuestionList[CurIndex].Eng));
+	Txt_SubTitle->SetText(FText::FromString(FString::Printf(TEXT("[%s]"), *QuestionList[CurIndex].Pronunciation)));
 	
 	// 진행 상황 업데이트
 	Txt_QuestionProgress->SetText(FText::FromString(

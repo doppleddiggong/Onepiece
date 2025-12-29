@@ -19,6 +19,13 @@ void UPopup_DailyResult::NativeConstruct()
 		Btn_Confirm->OnButtonClickedEvent.RemoveDynamic(this, &UPopup_DailyResult::OnClickConfirm);
 		Btn_Confirm->OnButtonClickedEvent.AddDynamic(this, &UPopup_DailyResult::OnClickConfirm);
 	}
+
+	if (Btn_Close)
+	{
+		Btn_Confirm->OnButtonClickedEvent.RemoveDynamic(this, &UPopup_DailyResult::OnClickConfirm);
+		Btn_Confirm->OnButtonClickedEvent.AddDynamic(this, &UPopup_DailyResult::OnClickConfirm);
+	}
+
 }
 
 // ========================================
