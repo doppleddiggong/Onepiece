@@ -1,5 +1,10 @@
 var NAVTREEINDEX13 =
 {
+"classUPopup__DailyResult.html#aa4ff1823962b239cae1f744258846658":[2,0,195,12],
+"classUPopup__DailyResult.html#ab3e47d26e447e53b60f1dd909ab9eeec":[2,0,195,14],
+"classUPopup__DailyResult.html#ac79f559994bcd9160e98f9f3c246da4a":[2,0,195,1],
+"classUPopup__DailyResult.html#add357075245f0843320c0b74af0f2697":[2,0,195,18],
+"classUPopup__DailyResult.html#ae4df101aff0b473774f68e3d5c8034e2":[2,0,195,20],
 "classUPopup__DailyResult.html#af02f20e1ad1dd8c9672e1164b8aedf64":[2,0,195,10],
 "classUPopup__DailyResult.html#af5da58ea1b5c2068c54ccd358fd8ba93":[2,0,195,7],
 "classUPopup__DailyResult.html#afc82d7d2ab2582aff1c7102303ebba32":[2,0,195,0],
@@ -244,10 +249,5 @@ var NAVTREEINDEX13 =
 "classUPopup__InterviewHello.html#a6124aff28b2b2a0b810bb693ebcd81ad":[2,0,204,34],
 "classUPopup__InterviewHello.html#a6403552e53d92dcd8572ffee8b9ab986":[2,0,204,4],
 "classUPopup__InterviewHello.html#a68e5d7722023899e87226a26138d199f":[2,0,204,15],
-"classUPopup__InterviewHello.html#a6ac288312766fb96aa9acf7ece8a630e":[2,0,204,20],
-"classUPopup__InterviewHello.html#a6c248418e21f624f6042c7c0599223fa":[2,0,204,10],
-"classUPopup__InterviewHello.html#a750c1a854f68ca16faa069645531abd6":[2,0,204,3],
-"classUPopup__InterviewHello.html#a77b4d1552067ee7818d0e0cde4416687":[2,0,204,17],
-"classUPopup__InterviewHello.html#a7cb90cbc12118117ac329eed2db22e6d":[2,0,204,28],
-"classUPopup__InterviewHello.html#a7e537a0dd751df11990ed46947f09d42":[2,0,204,38]
+"classUPopup__InterviewHello.html#a6ac288312766fb96aa9acf7ece8a630e":[2,0,204,20]
 };

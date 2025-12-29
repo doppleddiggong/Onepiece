@@ -116,7 +116,7 @@ $(document).ready(function(){initNavTree('classAListenAnswer.html',''); initResi
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classAListenAnswer__inherit__graph.svg" width="232" height="430"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classAListenAnswer__inherit__graph.svg" width="232" height="450"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="closed.png" alt="+"/> AListenAnswer에 대한 협력 다이어그램:</div>
@@ -147,6 +147,8 @@ Public 멤버 함수</h2></td></tr>
 Public 속성</h2></td></tr>
 <tr class="memitem:a8f38c24b843483b4311627d757a07a55" id="r_a8f38c24b843483b4311627d757a07a55"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structFListenAnswerData.html">FListenAnswerData</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAListenAnswer.html#a8f38c24b843483b4311627d757a07a55">AnswerData</a></td></tr>
 <tr class="separator:a8f38c24b843483b4311627d757a07a55"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4de9f7d79d9997005f3defa1a7f86dd0" id="r_a4de9f7d79d9997005f3defa1a7f86dd0"><td class="memItemLeft" align="right" valign="top">TObjectPtr&lt; class UHookComponent &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAListenAnswer.html#a4de9f7d79d9997005f3defa1a7f86dd0">HookComp</a></td></tr>
+<tr class="separator:a4de9f7d79d9997005f3defa1a7f86dd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ade1ac7c17f756ce5e6880c56400b4b0d" id="r_ade1ac7c17f756ce5e6880c56400b4b0d"><td class="memItemLeft" align="right" valign="top">TObjectPtr&lt; class UInteractableComponent &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAListenAnswer.html#ade1ac7c17f756ce5e6880c56400b4b0d">InteractableComp</a></td></tr>
 <tr class="separator:ade1ac7c17f756ce5e6880c56400b4b0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4e854afad03cb4e6f48f797a8b18d266" id="r_a4e854afad03cb4e6f48f797a8b18d266"><td class="memItemLeft" align="right" valign="top">class UDataTable *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAListenAnswer.html#a4e854afad03cb4e6f48f797a8b18d266">ListenDataTable</a></td></tr>
@@ -182,43 +184,46 @@ Protected 멤버 함수</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ListenAnswer_8cpp_source.html">ListenAnswer.cpp</a> 파일의 <a class="el" href="ListenAnswer_8cpp_source.html#l00015">15</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   16</span>{</div>
-<div class="line"><span class="lineno">   17</span>    <span class="comment">// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don&#39;t need it.</span></div>
-<div class="line"><span class="lineno">   18</span>    PrimaryActorTick.bCanEverTick = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   19</span> </div>
-<div class="line"><span class="lineno">   20</span>    <a class="code hl_variable" href="classAListenAnswer.html#a3a631c5670a77fd2a985f04fce64cb3c">Mesh</a> = CreateDefaultSubobject&lt;UStaticMeshComponent&gt;(TEXT(<span class="stringliteral">&quot;Mesh&quot;</span>));</div>
-<div class="line"><span class="lineno">   21</span>    SetRootComponent(<a class="code hl_variable" href="classAListenAnswer.html#a3a631c5670a77fd2a985f04fce64cb3c">Mesh</a>);</div>
-<div class="line"><span class="lineno">   22</span> </div>
-<div class="line"><span class="lineno">   23</span>    <a class="code hl_variable" href="classAListenAnswer.html#a660f2d73075dbb056a3b904635a040df">NameWidgetComp</a> = CreateDefaultSubobject&lt;UWidgetComponent&gt;(TEXT(<span class="stringliteral">&quot;NameWidget&quot;</span>));</div>
-<div class="line"><span class="lineno">   24</span>    <a class="code hl_variable" href="classAListenAnswer.html#a660f2d73075dbb056a3b904635a040df">NameWidgetComp</a>-&gt;SetupAttachment(GetRootComponent());</div>
-<div class="line"><span class="lineno">   25</span> </div>
-<div class="line"><span class="lineno">   26</span>    <a class="code hl_variable" href="classAListenAnswer.html#ade1ac7c17f756ce5e6880c56400b4b0d">InteractableComp</a> = CreateDefaultSubobject&lt;UInteractableComponent&gt;(TEXT(<span class="stringliteral">&quot;Interactable&quot;</span>));</div>
-<div class="line"><span class="lineno">   27</span>    <a class="code hl_variable" href="classAListenAnswer.html#ade1ac7c17f756ce5e6880c56400b4b0d">InteractableComp</a>-&gt;InteractionType = EInteractionType::PickUp;</div>
-<div class="line"><span class="lineno">   28</span>    <a class="code hl_variable" href="classAListenAnswer.html#ade1ac7c17f756ce5e6880c56400b4b0d">InteractableComp</a>-&gt;InteractionPrompt = TEXT(<span class="stringliteral">&quot;Pick Up&quot;</span>);</div>
-<div class="line"><span class="lineno">   29</span> </div>
-<div class="line"><span class="lineno">   30</span>    <span class="comment">// Initial settings</span></div>
-<div class="line"><span class="lineno">   31</span>    <a class="code hl_variable" href="classAListenAnswer.html#a3a631c5670a77fd2a985f04fce64cb3c">Mesh</a>-&gt;SetSimulatePhysics(<span class="keyword">true</span>);</div>
-<div class="line"><span class="lineno">   32</span>    <a class="code hl_variable" href="classAListenAnswer.html#a3a631c5670a77fd2a985f04fce64cb3c">Mesh</a>-&gt;SetEnableGravity(<span class="keyword">true</span>);</div>
-<div class="line"><span class="lineno">   33</span>    <a class="code hl_variable" href="classAListenAnswer.html#a3a631c5670a77fd2a985f04fce64cb3c">Mesh</a>-&gt;SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);</div>
-<div class="line"><span class="lineno">   34</span>    <a class="code hl_variable" href="classAListenAnswer.html#a3a631c5670a77fd2a985f04fce64cb3c">Mesh</a>-&gt;SetCollisionProfileName(TEXT(<span class="stringliteral">&quot;PhysicsActor&quot;</span>));</div>
-<div class="line"><span class="lineno">   35</span>    </div>
-<div class="line"><span class="lineno">   36</span>    <span class="comment">// 무게 설정</span></div>
-<div class="line"><span class="lineno">   37</span>    <a class="code hl_variable" href="classAListenAnswer.html#a3a631c5670a77fd2a985f04fce64cb3c">Mesh</a>-&gt;SetMassOverrideInKg(NAME_None, 50.f, <span class="keyword">true</span>);</div>
-<div class="line"><span class="lineno">   38</span> </div>
-<div class="line"><span class="lineno">   39</span>    <span class="comment">// 물리 복제 설정</span></div>
-<div class="line"><span class="lineno">   40</span>    <a class="code hl_variable" href="classAListenAnswer.html#a3a631c5670a77fd2a985f04fce64cb3c">Mesh</a>-&gt;SetIsReplicated(<span class="keyword">true</span>);</div>
+<p class="definition"><a class="el" href="ListenAnswer_8cpp_source.html">ListenAnswer.cpp</a> 파일의 <a class="el" href="ListenAnswer_8cpp_source.html#l00016">16</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   17</span>{</div>
+<div class="line"><span class="lineno">   18</span>    <span class="comment">// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don&#39;t need it.</span></div>
+<div class="line"><span class="lineno">   19</span>    PrimaryActorTick.bCanEverTick = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   20</span> </div>
+<div class="line"><span class="lineno">   21</span>    <a class="code hl_variable" href="classAListenAnswer.html#a3a631c5670a77fd2a985f04fce64cb3c">Mesh</a> = CreateDefaultSubobject&lt;UStaticMeshComponent&gt;(TEXT(<span class="stringliteral">&quot;Mesh&quot;</span>));</div>
+<div class="line"><span class="lineno">   22</span>    SetRootComponent(<a class="code hl_variable" href="classAListenAnswer.html#a3a631c5670a77fd2a985f04fce64cb3c">Mesh</a>);</div>
+<div class="line"><span class="lineno">   23</span> </div>
+<div class="line"><span class="lineno">   24</span>    <a class="code hl_variable" href="classAListenAnswer.html#a660f2d73075dbb056a3b904635a040df">NameWidgetComp</a> = CreateDefaultSubobject&lt;UWidgetComponent&gt;(TEXT(<span class="stringliteral">&quot;NameWidget&quot;</span>));</div>
+<div class="line"><span class="lineno">   25</span>    <a class="code hl_variable" href="classAListenAnswer.html#a660f2d73075dbb056a3b904635a040df">NameWidgetComp</a>-&gt;SetupAttachment(GetRootComponent());</div>
+<div class="line"><span class="lineno">   26</span> </div>
+<div class="line"><span class="lineno">   27</span>    <a class="code hl_variable" href="classAListenAnswer.html#ade1ac7c17f756ce5e6880c56400b4b0d">InteractableComp</a> = CreateDefaultSubobject&lt;UInteractableComponent&gt;(TEXT(<span class="stringliteral">&quot;Interactable&quot;</span>));</div>
+<div class="line"><span class="lineno">   28</span>    <a class="code hl_variable" href="classAListenAnswer.html#ade1ac7c17f756ce5e6880c56400b4b0d">InteractableComp</a>-&gt;InteractionType = EInteractionType::PickUp;</div>
+<div class="line"><span class="lineno">   29</span>    <a class="code hl_variable" href="classAListenAnswer.html#ade1ac7c17f756ce5e6880c56400b4b0d">InteractableComp</a>-&gt;InteractionPrompt = TEXT(<span class="stringliteral">&quot;Pick Up&quot;</span>);</div>
+<div class="line"><span class="lineno">   30</span> </div>
+<div class="line"><span class="lineno">   31</span>    <span class="comment">// Initial settings</span></div>
+<div class="line"><span class="lineno">   32</span>    <a class="code hl_variable" href="classAListenAnswer.html#a3a631c5670a77fd2a985f04fce64cb3c">Mesh</a>-&gt;SetSimulatePhysics(<span class="keyword">true</span>);</div>
+<div class="line"><span class="lineno">   33</span>    <a class="code hl_variable" href="classAListenAnswer.html#a3a631c5670a77fd2a985f04fce64cb3c">Mesh</a>-&gt;SetEnableGravity(<span class="keyword">true</span>);</div>
+<div class="line"><span class="lineno">   34</span>    <a class="code hl_variable" href="classAListenAnswer.html#a3a631c5670a77fd2a985f04fce64cb3c">Mesh</a>-&gt;SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);</div>
+<div class="line"><span class="lineno">   35</span>    <a class="code hl_variable" href="classAListenAnswer.html#a3a631c5670a77fd2a985f04fce64cb3c">Mesh</a>-&gt;SetCollisionProfileName(TEXT(<span class="stringliteral">&quot;PhysicsActor&quot;</span>));</div>
+<div class="line"><span class="lineno">   36</span> </div>
+<div class="line"><span class="lineno">   37</span>    <a class="code hl_variable" href="classAListenAnswer.html#a4de9f7d79d9997005f3defa1a7f86dd0">HookComp</a> = CreateDefaultSubobject&lt;UHookComponent&gt;(TEXT(<span class="stringliteral">&quot;Hook&quot;</span>));</div>
+<div class="line"><span class="lineno">   38</span>    </div>
+<div class="line"><span class="lineno">   39</span>    <span class="comment">// 무게 설정</span></div>
+<div class="line"><span class="lineno">   40</span>    <a class="code hl_variable" href="classAListenAnswer.html#a3a631c5670a77fd2a985f04fce64cb3c">Mesh</a>-&gt;SetMassOverrideInKg(NAME_None, 50.f, <span class="keyword">true</span>);</div>
 <div class="line"><span class="lineno">   41</span> </div>
-<div class="line"><span class="lineno">   42</span>    <span class="comment">// Replication</span></div>
-<div class="line"><span class="lineno">   43</span>    bReplicates = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   44</span>    SetNetUpdateFrequency(100.0f);      <span class="comment">// 높은 업데이트 빈도로 부드러운 네트워크 동기화</span></div>
-<div class="line"><span class="lineno">   45</span>    SetMinNetUpdateFrequency(33.0f);    <span class="comment">// 최소 30fps 업데이트 보장</span></div>
-<div class="line"><span class="lineno">   46</span>}</div>
+<div class="line"><span class="lineno">   42</span>    <span class="comment">// 물리 복제 설정</span></div>
+<div class="line"><span class="lineno">   43</span>    <a class="code hl_variable" href="classAListenAnswer.html#a3a631c5670a77fd2a985f04fce64cb3c">Mesh</a>-&gt;SetIsReplicated(<span class="keyword">true</span>);</div>
+<div class="line"><span class="lineno">   44</span> </div>
+<div class="line"><span class="lineno">   45</span>    <span class="comment">// Replication</span></div>
+<div class="line"><span class="lineno">   46</span>    bReplicates = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   47</span>    SetNetUpdateFrequency(100.0f);      <span class="comment">// 높은 업데이트 빈도로 부드러운 네트워크 동기화</span></div>
+<div class="line"><span class="lineno">   48</span>    SetMinNetUpdateFrequency(33.0f);    <span class="comment">// 최소 30fps 업데이트 보장</span></div>
+<div class="line"><span class="lineno">   49</span>}</div>
 <div class="ttc" id="aclassAListenAnswer_html_a3a631c5670a77fd2a985f04fce64cb3c"><div class="ttname"><a href="classAListenAnswer.html#a3a631c5670a77fd2a985f04fce64cb3c">AListenAnswer::Mesh</a></div><div class="ttdeci">class UStaticMeshComponent * Mesh</div><div class="ttdef"><b>Definition</b> <a href="ListenAnswer_8h_source.html#l00055">ListenAnswer.h:55</a></div></div>
+<div class="ttc" id="aclassAListenAnswer_html_a4de9f7d79d9997005f3defa1a7f86dd0"><div class="ttname"><a href="classAListenAnswer.html#a4de9f7d79d9997005f3defa1a7f86dd0">AListenAnswer::HookComp</a></div><div class="ttdeci">TObjectPtr&lt; class UHookComponent &gt; HookComp</div><div class="ttdef"><b>Definition</b> <a href="ListenAnswer_8h_source.html#l00064">ListenAnswer.h:64</a></div></div>
 <div class="ttc" id="aclassAListenAnswer_html_a660f2d73075dbb056a3b904635a040df"><div class="ttname"><a href="classAListenAnswer.html#a660f2d73075dbb056a3b904635a040df">AListenAnswer::NameWidgetComp</a></div><div class="ttdeci">class UWidgetComponent * NameWidgetComp</div><div class="ttdef"><b>Definition</b> <a href="ListenAnswer_8h_source.html#l00058">ListenAnswer.h:58</a></div></div>
 <div class="ttc" id="aclassAListenAnswer_html_ade1ac7c17f756ce5e6880c56400b4b0d"><div class="ttname"><a href="classAListenAnswer.html#ade1ac7c17f756ce5e6880c56400b4b0d">AListenAnswer::InteractableComp</a></div><div class="ttdeci">TObjectPtr&lt; class UInteractableComponent &gt; InteractableComp</div><div class="ttdef"><b>Definition</b> <a href="ListenAnswer_8h_source.html#l00061">ListenAnswer.h:61</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="ListenAnswer_8h_source.html#l00061">InteractableComp</a>, <a class="el" href="ListenAnswer_8h_source.html#l00055">Mesh</a>, <a class="el" href="ListenAnswer_8h_source.html#l00058">NameWidgetComp</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="ListenAnswer_8h_source.html#l00064">HookComp</a>, <a class="el" href="ListenAnswer_8h_source.html#l00061">InteractableComp</a>, <a class="el" href="ListenAnswer_8h_source.html#l00055">Mesh</a>, <a class="el" href="ListenAnswer_8h_source.html#l00058">NameWidgetComp</a>.</p>
 
 </div>
 </div>
@@ -246,22 +251,22 @@ Protected 멤버 함수</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ListenAnswer_8cpp_source.html">ListenAnswer.cpp</a> 파일의 <a class="el" href="ListenAnswer_8cpp_source.html#l00049">49</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   50</span>{</div>
-<div class="line"><span class="lineno">   51</span>    Super::BeginPlay();</div>
-<div class="line"><span class="lineno">   52</span> </div>
-<div class="line"><span class="lineno">   53</span>    <a class="code hl_variable" href="classAListenAnswer.html#a660f2d73075dbb056a3b904635a040df">NameWidgetComp</a>-&gt;AttachToComponent(GetRootComponent(), FAttachmentTransformRules::KeepRelativeTransform);</div>
-<div class="line"><span class="lineno">   54</span>    <a class="code hl_variable" href="classAListenAnswer.html#a660f2d73075dbb056a3b904635a040df">NameWidgetComp</a>-&gt;SetRelativeLocation(FVector(0, 0, 10));</div>
+<p class="definition"><a class="el" href="ListenAnswer_8cpp_source.html">ListenAnswer.cpp</a> 파일의 <a class="el" href="ListenAnswer_8cpp_source.html#l00052">52</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   53</span>{</div>
+<div class="line"><span class="lineno">   54</span>    Super::BeginPlay();</div>
 <div class="line"><span class="lineno">   55</span> </div>
-<div class="line"><span class="lineno">   56</span>    <span class="comment">// 델리게이트 바인딩</span></div>
-<div class="line"><span class="lineno">   57</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAListenAnswer.html#ade1ac7c17f756ce5e6880c56400b4b0d">InteractableComp</a>)</div>
-<div class="line"><span class="lineno">   58</span>    {</div>
-<div class="line"><span class="lineno">   59</span>        <a class="code hl_variable" href="classAListenAnswer.html#ade1ac7c17f756ce5e6880c56400b4b0d">InteractableComp</a>-&gt;OnOutlineStateChanged.AddDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classAListenAnswer.html#a2bca278f32a00a84a800ed31bdee517f">AListenAnswer::OnOutlineStateChanged</a>);</div>
-<div class="line"><span class="lineno">   60</span>    }</div>
-<div class="line"><span class="lineno">   61</span>}</div>
-<div class="ttc" id="aclassAListenAnswer_html_a2bca278f32a00a84a800ed31bdee517f"><div class="ttname"><a href="classAListenAnswer.html#a2bca278f32a00a84a800ed31bdee517f">AListenAnswer::OnOutlineStateChanged</a></div><div class="ttdeci">void OnOutlineStateChanged(bool bShouldShowOutline)</div><div class="ttdef"><b>Definition</b> <a href="ListenAnswer_8cpp_source.html#l00124">ListenAnswer.cpp:124</a></div></div>
+<div class="line"><span class="lineno">   56</span>    <a class="code hl_variable" href="classAListenAnswer.html#a660f2d73075dbb056a3b904635a040df">NameWidgetComp</a>-&gt;AttachToComponent(GetRootComponent(), FAttachmentTransformRules::KeepRelativeTransform);</div>
+<div class="line"><span class="lineno">   57</span>    <a class="code hl_variable" href="classAListenAnswer.html#a660f2d73075dbb056a3b904635a040df">NameWidgetComp</a>-&gt;SetRelativeLocation(FVector(0, 0, 10));</div>
+<div class="line"><span class="lineno">   58</span> </div>
+<div class="line"><span class="lineno">   59</span>    <span class="comment">// 델리게이트 바인딩</span></div>
+<div class="line"><span class="lineno">   60</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAListenAnswer.html#ade1ac7c17f756ce5e6880c56400b4b0d">InteractableComp</a>)</div>
+<div class="line"><span class="lineno">   61</span>    {</div>
+<div class="line"><span class="lineno">   62</span>        <a class="code hl_variable" href="classAListenAnswer.html#ade1ac7c17f756ce5e6880c56400b4b0d">InteractableComp</a>-&gt;OnOutlineStateChanged.AddDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classAListenAnswer.html#a2bca278f32a00a84a800ed31bdee517f">AListenAnswer::OnOutlineStateChanged</a>);</div>
+<div class="line"><span class="lineno">   63</span>    }</div>
+<div class="line"><span class="lineno">   64</span>}</div>
+<div class="ttc" id="aclassAListenAnswer_html_a2bca278f32a00a84a800ed31bdee517f"><div class="ttname"><a href="classAListenAnswer.html#a2bca278f32a00a84a800ed31bdee517f">AListenAnswer::OnOutlineStateChanged</a></div><div class="ttdeci">void OnOutlineStateChanged(bool bShouldShowOutline)</div><div class="ttdef"><b>Definition</b> <a href="ListenAnswer_8cpp_source.html#l00127">ListenAnswer.cpp:127</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="ListenAnswer_8h_source.html#l00061">InteractableComp</a>, <a class="el" href="ListenAnswer_8h_source.html#l00058">NameWidgetComp</a>, <a class="el" href="ListenAnswer_8cpp_source.html#l00124">OnOutlineStateChanged()</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="ListenAnswer_8h_source.html#l00061">InteractableComp</a>, <a class="el" href="ListenAnswer_8h_source.html#l00058">NameWidgetComp</a>, <a class="el" href="ListenAnswer_8cpp_source.html#l00127">OnOutlineStateChanged()</a>.</p>
 <div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-2-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
@@ -296,16 +301,16 @@ Protected 멤버 함수</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ListenAnswer_8cpp_source.html">ListenAnswer.cpp</a> 파일의 <a class="el" href="ListenAnswer_8cpp_source.html#l00063">63</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   64</span>{</div>
-<div class="line"><span class="lineno">   65</span>    Super::GetLifetimeReplicatedProps(OutLifetimeProps);</div>
-<div class="line"><span class="lineno">   66</span> </div>
-<div class="line"><span class="lineno">   67</span>    DOREPLIFETIME(<a class="code hl_class" href="classAListenAnswer.html">AListenAnswer</a>, <a class="code hl_variable" href="classAListenAnswer.html#a8f38c24b843483b4311627d757a07a55">AnswerData</a>);</div>
-<div class="line"><span class="lineno">   68</span>}</div>
+<p class="definition"><a class="el" href="ListenAnswer_8cpp_source.html">ListenAnswer.cpp</a> 파일의 <a class="el" href="ListenAnswer_8cpp_source.html#l00066">66</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   67</span>{</div>
+<div class="line"><span class="lineno">   68</span>    Super::GetLifetimeReplicatedProps(OutLifetimeProps);</div>
+<div class="line"><span class="lineno">   69</span> </div>
+<div class="line"><span class="lineno">   70</span>    DOREPLIFETIME(<a class="code hl_class" href="classAListenAnswer.html">AListenAnswer</a>, <a class="code hl_variable" href="classAListenAnswer.html#a8f38c24b843483b4311627d757a07a55">AnswerData</a>);</div>
+<div class="line"><span class="lineno">   71</span>}</div>
 <div class="ttc" id="aclassAListenAnswer_html"><div class="ttname"><a href="classAListenAnswer.html">AListenAnswer</a></div><div class="ttdef"><b>Definition</b> <a href="ListenAnswer_8h_source.html#l00035">ListenAnswer.h:36</a></div></div>
-<div class="ttc" id="aclassAListenAnswer_html_a8f38c24b843483b4311627d757a07a55"><div class="ttname"><a href="classAListenAnswer.html#a8f38c24b843483b4311627d757a07a55">AListenAnswer::AnswerData</a></div><div class="ttdeci">FListenAnswerData AnswerData</div><div class="ttdef"><b>Definition</b> <a href="ListenAnswer_8h_source.html#l00072">ListenAnswer.h:72</a></div></div>
+<div class="ttc" id="aclassAListenAnswer_html_a8f38c24b843483b4311627d757a07a55"><div class="ttname"><a href="classAListenAnswer.html#a8f38c24b843483b4311627d757a07a55">AListenAnswer::AnswerData</a></div><div class="ttdeci">FListenAnswerData AnswerData</div><div class="ttdef"><b>Definition</b> <a href="ListenAnswer_8h_source.html#l00075">ListenAnswer.h:75</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="ListenAnswer_8h_source.html#l00072">AnswerData</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="ListenAnswer_8h_source.html#l00075">AnswerData</a>.</p>
 
 </div>
 </div>
@@ -325,17 +330,17 @@ Protected 멤버 함수</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ListenAnswer_8cpp_source.html">ListenAnswer.cpp</a> 파일의 <a class="el" href="ListenAnswer_8cpp_source.html#l00124">124</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  125</span>{</div>
-<div class="line"><span class="lineno">  126</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAListenAnswer.html#a3a631c5670a77fd2a985f04fce64cb3c">Mesh</a>)</div>
-<div class="line"><span class="lineno">  127</span>    {</div>
-<div class="line"><span class="lineno">  128</span>        <a class="code hl_variable" href="classAListenAnswer.html#a3a631c5670a77fd2a985f04fce64cb3c">Mesh</a>-&gt;SetRenderCustomDepth(bShouldShowOutline);</div>
-<div class="line"><span class="lineno">  129</span>    }</div>
-<div class="line"><span class="lineno">  130</span>}</div>
+<p class="definition"><a class="el" href="ListenAnswer_8cpp_source.html">ListenAnswer.cpp</a> 파일의 <a class="el" href="ListenAnswer_8cpp_source.html#l00127">127</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  128</span>{</div>
+<div class="line"><span class="lineno">  129</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAListenAnswer.html#a3a631c5670a77fd2a985f04fce64cb3c">Mesh</a>)</div>
+<div class="line"><span class="lineno">  130</span>    {</div>
+<div class="line"><span class="lineno">  131</span>        <a class="code hl_variable" href="classAListenAnswer.html#a3a631c5670a77fd2a985f04fce64cb3c">Mesh</a>-&gt;SetRenderCustomDepth(bShouldShowOutline);</div>
+<div class="line"><span class="lineno">  132</span>    }</div>
+<div class="line"><span class="lineno">  133</span>}</div>
 </div><!-- fragment -->
 <p class="reference">다음을 참조함 :  <a class="el" href="ListenAnswer_8h_source.html#l00055">Mesh</a>.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ListenAnswer_8cpp_source.html#l00049">BeginPlay()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ListenAnswer_8cpp_source.html#l00052">BeginPlay()</a>.</p>
 <div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-3-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
@@ -361,15 +366,15 @@ Protected 멤버 함수</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ListenAnswer_8cpp_source.html">ListenAnswer.cpp</a> 파일의 <a class="el" href="ListenAnswer_8cpp_source.html#l00076">76</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   77</span>{</div>
-<div class="line"><span class="lineno">   78</span>    <a class="code hl_function" href="classAListenAnswer.html#a96f4151413c32ae3cdfdd2e69a29e301">UpdateMesh</a>();</div>
-<div class="line"><span class="lineno">   79</span>    <a class="code hl_function" href="classAListenAnswer.html#a837d24b62f41d4409ef20ac12bb526b9">UpdateNameWidget</a>();</div>
-<div class="line"><span class="lineno">   80</span>}</div>
-<div class="ttc" id="aclassAListenAnswer_html_a837d24b62f41d4409ef20ac12bb526b9"><div class="ttname"><a href="classAListenAnswer.html#a837d24b62f41d4409ef20ac12bb526b9">AListenAnswer::UpdateNameWidget</a></div><div class="ttdeci">void UpdateNameWidget()</div><div class="ttdef"><b>Definition</b> <a href="ListenAnswer_8cpp_source.html#l00111">ListenAnswer.cpp:111</a></div></div>
-<div class="ttc" id="aclassAListenAnswer_html_a96f4151413c32ae3cdfdd2e69a29e301"><div class="ttname"><a href="classAListenAnswer.html#a96f4151413c32ae3cdfdd2e69a29e301">AListenAnswer::UpdateMesh</a></div><div class="ttdeci">void UpdateMesh()</div><div class="ttdef"><b>Definition</b> <a href="ListenAnswer_8cpp_source.html#l00082">ListenAnswer.cpp:82</a></div></div>
+<p class="definition"><a class="el" href="ListenAnswer_8cpp_source.html">ListenAnswer.cpp</a> 파일의 <a class="el" href="ListenAnswer_8cpp_source.html#l00079">79</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   80</span>{</div>
+<div class="line"><span class="lineno">   81</span>    <a class="code hl_function" href="classAListenAnswer.html#a96f4151413c32ae3cdfdd2e69a29e301">UpdateMesh</a>();</div>
+<div class="line"><span class="lineno">   82</span>    <a class="code hl_function" href="classAListenAnswer.html#a837d24b62f41d4409ef20ac12bb526b9">UpdateNameWidget</a>();</div>
+<div class="line"><span class="lineno">   83</span>}</div>
+<div class="ttc" id="aclassAListenAnswer_html_a837d24b62f41d4409ef20ac12bb526b9"><div class="ttname"><a href="classAListenAnswer.html#a837d24b62f41d4409ef20ac12bb526b9">AListenAnswer::UpdateNameWidget</a></div><div class="ttdeci">void UpdateNameWidget()</div><div class="ttdef"><b>Definition</b> <a href="ListenAnswer_8cpp_source.html#l00114">ListenAnswer.cpp:114</a></div></div>
+<div class="ttc" id="aclassAListenAnswer_html_a96f4151413c32ae3cdfdd2e69a29e301"><div class="ttname"><a href="classAListenAnswer.html#a96f4151413c32ae3cdfdd2e69a29e301">AListenAnswer::UpdateMesh</a></div><div class="ttdeci">void UpdateMesh()</div><div class="ttdef"><b>Definition</b> <a href="ListenAnswer_8cpp_source.html#l00085">ListenAnswer.cpp:85</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="ListenAnswer_8cpp_source.html#l00082">UpdateMesh()</a>, <a class="el" href="ListenAnswer_8cpp_source.html#l00111">UpdateNameWidget()</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="ListenAnswer_8cpp_source.html#l00085">UpdateMesh()</a>, <a class="el" href="ListenAnswer_8cpp_source.html#l00114">UpdateNameWidget()</a>.</p>
 <div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-4-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-4-summary" class="dynsummary" style="display:block;">
@@ -404,8 +409,8 @@ Protected 멤버 함수</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ListenAnswer_8h_source.html">ListenAnswer.h</a> 파일의 <a class="el" href="ListenAnswer_8h_source.html#l00077">77</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   77</span>{ <a class="code hl_variable" href="classAListenAnswer.html#a8f38c24b843483b4311627d757a07a55">AnswerData</a> = InData; }</div>
+<p class="definition"><a class="el" href="ListenAnswer_8h_source.html">ListenAnswer.h</a> 파일의 <a class="el" href="ListenAnswer_8h_source.html#l00080">80</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   80</span>{ <a class="code hl_variable" href="classAListenAnswer.html#a8f38c24b843483b4311627d757a07a55">AnswerData</a> = InData; }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -433,10 +438,10 @@ Protected 멤버 함수</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ListenAnswer_8cpp_source.html">ListenAnswer.cpp</a> 파일의 <a class="el" href="ListenAnswer_8cpp_source.html#l00071">71</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   72</span>{</div>
-<div class="line"><span class="lineno">   73</span>    Super::Tick(DeltaTime);</div>
-<div class="line"><span class="lineno">   74</span>}</div>
+<p class="definition"><a class="el" href="ListenAnswer_8cpp_source.html">ListenAnswer.cpp</a> 파일의 <a class="el" href="ListenAnswer_8cpp_source.html#l00074">74</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   75</span>{</div>
+<div class="line"><span class="lineno">   76</span>    Super::Tick(DeltaTime);</div>
+<div class="line"><span class="lineno">   77</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -455,42 +460,42 @@ Protected 멤버 함수</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ListenAnswer_8cpp_source.html">ListenAnswer.cpp</a> 파일의 <a class="el" href="ListenAnswer_8cpp_source.html#l00082">82</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   83</span>{</div>
-<div class="line"><span class="lineno">   84</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classAListenAnswer.html#a4e854afad03cb4e6f48f797a8b18d266">ListenDataTable</a>)</div>
-<div class="line"><span class="lineno">   85</span>    {</div>
-<div class="line"><span class="lineno">   86</span>        UE_LOG(LogTemp, Error, TEXT(<span class="stringliteral">&quot;ListenDataTable is null!&quot;</span>));</div>
-<div class="line"><span class="lineno">   87</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">   88</span>    }</div>
-<div class="line"><span class="lineno">   89</span> </div>
-<div class="line"><span class="lineno">   90</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classAListenAnswer.html#a4e854afad03cb4e6f48f797a8b18d266">ListenDataTable</a>) <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">   91</span> </div>
-<div class="line"><span class="lineno">   92</span>    TArray&lt;FListenData*&gt; AllRows;</div>
-<div class="line"><span class="lineno">   93</span>    <a class="code hl_variable" href="classAListenAnswer.html#a4e854afad03cb4e6f48f797a8b18d266">ListenDataTable</a>-&gt;GetAllRows&lt;<a class="code hl_struct" href="structFListenData.html">FListenData</a>&gt;(TEXT(<span class="stringliteral">&quot;UpdateMesh&quot;</span>), AllRows);</div>
+<p class="definition"><a class="el" href="ListenAnswer_8cpp_source.html">ListenAnswer.cpp</a> 파일의 <a class="el" href="ListenAnswer_8cpp_source.html#l00085">85</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   86</span>{</div>
+<div class="line"><span class="lineno">   87</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classAListenAnswer.html#a4e854afad03cb4e6f48f797a8b18d266">ListenDataTable</a>)</div>
+<div class="line"><span class="lineno">   88</span>    {</div>
+<div class="line"><span class="lineno">   89</span>        UE_LOG(LogTemp, Error, TEXT(<span class="stringliteral">&quot;ListenDataTable is null!&quot;</span>));</div>
+<div class="line"><span class="lineno">   90</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   91</span>    }</div>
+<div class="line"><span class="lineno">   92</span> </div>
+<div class="line"><span class="lineno">   93</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classAListenAnswer.html#a4e854afad03cb4e6f48f797a8b18d266">ListenDataTable</a>) <span class="keywordflow">return</span>;</div>
 <div class="line"><span class="lineno">   94</span> </div>
-<div class="line"><span class="lineno">   95</span>    <span class="keywordflow">for</span> (<a class="code hl_struct" href="structFListenData.html">FListenData</a>* Row : AllRows)</div>
-<div class="line"><span class="lineno">   96</span>    {</div>
-<div class="line"><span class="lineno">   97</span>        <span class="keywordflow">if</span> (Row &amp;&amp; Row-&gt;Word == <a class="code hl_variable" href="classAListenAnswer.html#a8f38c24b843483b4311627d757a07a55">AnswerData</a>.<a class="code hl_variable" href="structFListenAnswerData.html#a14865c1f246698ca6be0c869262598b6">word1</a>.<a class="code hl_variable" href="structFWordInfo.html#afa3eecf62fc7b28d50eae5edc8fc81ad">name</a>)</div>
-<div class="line"><span class="lineno">   98</span>        {</div>
-<div class="line"><span class="lineno">   99</span>            <span class="keywordflow">if</span> (Row-&gt;FoodPath)</div>
-<div class="line"><span class="lineno">  100</span>            {</div>
-<div class="line"><span class="lineno">  101</span>                <a class="code hl_variable" href="classAListenAnswer.html#a3a631c5670a77fd2a985f04fce64cb3c">Mesh</a>-&gt;SetStaticMesh(Row-&gt;FoodPath);</div>
-<div class="line"><span class="lineno">  102</span>                <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  103</span>            }</div>
-<div class="line"><span class="lineno">  104</span>        }</div>
-<div class="line"><span class="lineno">  105</span>    }</div>
-<div class="line"><span class="lineno">  106</span> </div>
-<div class="line"><span class="lineno">  107</span>    <span class="comment">// 일치하는 데이터를 찾지 못함</span></div>
-<div class="line"><span class="lineno">  108</span>    UE_LOG(LogTemp, Warning, TEXT(<span class="stringliteral">&quot;No matching ListenData found for: %s&quot;</span>), *<a class="code hl_variable" href="classAListenAnswer.html#a8f38c24b843483b4311627d757a07a55">AnswerData</a>.<a class="code hl_variable" href="structFListenAnswerData.html#a14865c1f246698ca6be0c869262598b6">word1</a>.<a class="code hl_variable" href="structFWordInfo.html#afa3eecf62fc7b28d50eae5edc8fc81ad">name</a>);</div>
-<div class="line"><span class="lineno">  109</span>}</div>
-<div class="ttc" id="aclassAListenAnswer_html_a4e854afad03cb4e6f48f797a8b18d266"><div class="ttname"><a href="classAListenAnswer.html#a4e854afad03cb4e6f48f797a8b18d266">AListenAnswer::ListenDataTable</a></div><div class="ttdeci">class UDataTable * ListenDataTable</div><div class="ttdef"><b>Definition</b> <a href="ListenAnswer_8h_source.html#l00069">ListenAnswer.h:69</a></div></div>
+<div class="line"><span class="lineno">   95</span>    TArray&lt;FListenData*&gt; AllRows;</div>
+<div class="line"><span class="lineno">   96</span>    <a class="code hl_variable" href="classAListenAnswer.html#a4e854afad03cb4e6f48f797a8b18d266">ListenDataTable</a>-&gt;GetAllRows&lt;<a class="code hl_struct" href="structFListenData.html">FListenData</a>&gt;(TEXT(<span class="stringliteral">&quot;UpdateMesh&quot;</span>), AllRows);</div>
+<div class="line"><span class="lineno">   97</span> </div>
+<div class="line"><span class="lineno">   98</span>    <span class="keywordflow">for</span> (<a class="code hl_struct" href="structFListenData.html">FListenData</a>* Row : AllRows)</div>
+<div class="line"><span class="lineno">   99</span>    {</div>
+<div class="line"><span class="lineno">  100</span>        <span class="keywordflow">if</span> (Row &amp;&amp; Row-&gt;Word == <a class="code hl_variable" href="classAListenAnswer.html#a8f38c24b843483b4311627d757a07a55">AnswerData</a>.<a class="code hl_variable" href="structFListenAnswerData.html#a14865c1f246698ca6be0c869262598b6">word1</a>.<a class="code hl_variable" href="structFWordInfo.html#afa3eecf62fc7b28d50eae5edc8fc81ad">name</a>)</div>
+<div class="line"><span class="lineno">  101</span>        {</div>
+<div class="line"><span class="lineno">  102</span>            <span class="keywordflow">if</span> (Row-&gt;FoodPath)</div>
+<div class="line"><span class="lineno">  103</span>            {</div>
+<div class="line"><span class="lineno">  104</span>                <a class="code hl_variable" href="classAListenAnswer.html#a3a631c5670a77fd2a985f04fce64cb3c">Mesh</a>-&gt;SetStaticMesh(Row-&gt;FoodPath);</div>
+<div class="line"><span class="lineno">  105</span>                <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  106</span>            }</div>
+<div class="line"><span class="lineno">  107</span>        }</div>
+<div class="line"><span class="lineno">  108</span>    }</div>
+<div class="line"><span class="lineno">  109</span> </div>
+<div class="line"><span class="lineno">  110</span>    <span class="comment">// 일치하는 데이터를 찾지 못함</span></div>
+<div class="line"><span class="lineno">  111</span>    UE_LOG(LogTemp, Warning, TEXT(<span class="stringliteral">&quot;No matching ListenData found for: %s&quot;</span>), *<a class="code hl_variable" href="classAListenAnswer.html#a8f38c24b843483b4311627d757a07a55">AnswerData</a>.<a class="code hl_variable" href="structFListenAnswerData.html#a14865c1f246698ca6be0c869262598b6">word1</a>.<a class="code hl_variable" href="structFWordInfo.html#afa3eecf62fc7b28d50eae5edc8fc81ad">name</a>);</div>
+<div class="line"><span class="lineno">  112</span>}</div>
+<div class="ttc" id="aclassAListenAnswer_html_a4e854afad03cb4e6f48f797a8b18d266"><div class="ttname"><a href="classAListenAnswer.html#a4e854afad03cb4e6f48f797a8b18d266">AListenAnswer::ListenDataTable</a></div><div class="ttdeci">class UDataTable * ListenDataTable</div><div class="ttdef"><b>Definition</b> <a href="ListenAnswer_8h_source.html#l00072">ListenAnswer.h:72</a></div></div>
 <div class="ttc" id="astructFListenAnswerData_html_a14865c1f246698ca6be0c869262598b6"><div class="ttname"><a href="structFListenAnswerData.html#a14865c1f246698ca6be0c869262598b6">FListenAnswerData::word1</a></div><div class="ttdeci">FWordInfo word1</div><div class="ttdoc">시나리오 단어 정보</div><div class="ttdef"><b>Definition</b> <a href="ListenAnswer_8h_source.html#l00026">ListenAnswer.h:26</a></div></div>
 <div class="ttc" id="astructFListenData_html"><div class="ttname"><a href="structFListenData.html">FListenData</a></div><div class="ttdoc">듣기 학습 데이터를 정의하는 구조체</div><div class="ttdef"><b>Definition</b> <a href="FListenData_8h_source.html#l00018">FListenData.h:19</a></div></div>
 <div class="ttc" id="astructFWordInfo_html_afa3eecf62fc7b28d50eae5edc8fc81ad"><div class="ttname"><a href="structFWordInfo.html#afa3eecf62fc7b28d50eae5edc8fc81ad">FWordInfo::name</a></div><div class="ttdeci">FString name</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00554">NetworkData.h:554</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="ListenAnswer_8h_source.html#l00072">AnswerData</a>, <a class="el" href="ListenAnswer_8h_source.html#l00069">ListenDataTable</a>, <a class="el" href="ListenAnswer_8h_source.html#l00055">Mesh</a>, <a class="el" href="NetworkData_8h_source.html#l00554">FWordInfo::name</a>, <a class="el" href="ListenAnswer_8h_source.html#l00026">FListenAnswerData::word1</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="ListenAnswer_8h_source.html#l00075">AnswerData</a>, <a class="el" href="ListenAnswer_8h_source.html#l00072">ListenDataTable</a>, <a class="el" href="ListenAnswer_8h_source.html#l00055">Mesh</a>, <a class="el" href="NetworkData_8h_source.html#l00554">FWordInfo::name</a>, <a class="el" href="ListenAnswer_8h_source.html#l00026">FListenAnswerData::word1</a>.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ListenAnswer_8cpp_source.html#l00076">OnRep_AnswerData()</a>, <a class="el" href="FoodCourtManager_8cpp_source.html#l00056">AFoodCourtManager::SpawnListenAnswer()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ListenAnswer_8cpp_source.html#l00079">OnRep_AnswerData()</a>, <a class="el" href="FoodCourtManager_8cpp_source.html#l00056">AFoodCourtManager::SpawnListenAnswer()</a>.</p>
 <div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-5-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-5-summary" class="dynsummary" style="display:block;">
@@ -516,24 +521,24 @@ Protected 멤버 함수</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ListenAnswer_8cpp_source.html">ListenAnswer.cpp</a> 파일의 <a class="el" href="ListenAnswer_8cpp_source.html#l00111">111</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  112</span>{</div>
-<div class="line"><span class="lineno">  113</span>    <span class="comment">// Widget이 아직 초기화되지 않았을 수 있으므로 체크</span></div>
-<div class="line"><span class="lineno">  114</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classAListenAnswer.html#a660f2d73075dbb056a3b904635a040df">NameWidgetComp</a> || !<a class="code hl_variable" href="classAListenAnswer.html#a660f2d73075dbb056a3b904635a040df">NameWidgetComp</a>-&gt;GetWidget())</div>
-<div class="line"><span class="lineno">  115</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  116</span> </div>
-<div class="line"><span class="lineno">  117</span>    <a class="code hl_class" href="classUCityNameWidget.html">UCityNameWidget</a>* NameWidget = Cast&lt;UCityNameWidget&gt;(<a class="code hl_variable" href="classAListenAnswer.html#a660f2d73075dbb056a3b904635a040df">NameWidgetComp</a>-&gt;GetWidget());</div>
-<div class="line"><span class="lineno">  118</span>    <span class="keywordflow">if</span> (NameWidget)</div>
-<div class="line"><span class="lineno">  119</span>    {</div>
-<div class="line"><span class="lineno">  120</span>        NameWidget-&gt;<a class="code hl_function" href="classUCityNameWidget.html#a02793042eefe1fbface31d2dd47cbb10">SetCityName</a>(<a class="code hl_variable" href="classAListenAnswer.html#a8f38c24b843483b4311627d757a07a55">AnswerData</a>.<a class="code hl_variable" href="structFListenAnswerData.html#a14865c1f246698ca6be0c869262598b6">word1</a>.<a class="code hl_variable" href="structFWordInfo.html#afa3eecf62fc7b28d50eae5edc8fc81ad">name</a>);</div>
-<div class="line"><span class="lineno">  121</span>    }</div>
-<div class="line"><span class="lineno">  122</span>}</div>
+<p class="definition"><a class="el" href="ListenAnswer_8cpp_source.html">ListenAnswer.cpp</a> 파일의 <a class="el" href="ListenAnswer_8cpp_source.html#l00114">114</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  115</span>{</div>
+<div class="line"><span class="lineno">  116</span>    <span class="comment">// Widget이 아직 초기화되지 않았을 수 있으므로 체크</span></div>
+<div class="line"><span class="lineno">  117</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classAListenAnswer.html#a660f2d73075dbb056a3b904635a040df">NameWidgetComp</a> || !<a class="code hl_variable" href="classAListenAnswer.html#a660f2d73075dbb056a3b904635a040df">NameWidgetComp</a>-&gt;GetWidget())</div>
+<div class="line"><span class="lineno">  118</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  119</span> </div>
+<div class="line"><span class="lineno">  120</span>    <a class="code hl_class" href="classUCityNameWidget.html">UCityNameWidget</a>* NameWidget = Cast&lt;UCityNameWidget&gt;(<a class="code hl_variable" href="classAListenAnswer.html#a660f2d73075dbb056a3b904635a040df">NameWidgetComp</a>-&gt;GetWidget());</div>
+<div class="line"><span class="lineno">  121</span>    <span class="keywordflow">if</span> (NameWidget)</div>
+<div class="line"><span class="lineno">  122</span>    {</div>
+<div class="line"><span class="lineno">  123</span>        NameWidget-&gt;<a class="code hl_function" href="classUCityNameWidget.html#a02793042eefe1fbface31d2dd47cbb10">SetCityName</a>(<a class="code hl_variable" href="classAListenAnswer.html#a8f38c24b843483b4311627d757a07a55">AnswerData</a>.<a class="code hl_variable" href="structFListenAnswerData.html#a14865c1f246698ca6be0c869262598b6">word1</a>.<a class="code hl_variable" href="structFWordInfo.html#afa3eecf62fc7b28d50eae5edc8fc81ad">name</a>);</div>
+<div class="line"><span class="lineno">  124</span>    }</div>
+<div class="line"><span class="lineno">  125</span>}</div>
 <div class="ttc" id="aclassUCityNameWidget_html"><div class="ttname"><a href="classUCityNameWidget.html">UCityNameWidget</a></div><div class="ttdef"><b>Definition</b> <a href="CityNameWidget_8h_source.html#l00013">CityNameWidget.h:14</a></div></div>
 <div class="ttc" id="aclassUCityNameWidget_html_a02793042eefe1fbface31d2dd47cbb10"><div class="ttname"><a href="classUCityNameWidget.html#a02793042eefe1fbface31d2dd47cbb10">UCityNameWidget::SetCityName</a></div><div class="ttdeci">void SetCityName(FString InCityName)</div><div class="ttdef"><b>Definition</b> <a href="CityNameWidget_8cpp_source.html#l00013">CityNameWidget.cpp:13</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="ListenAnswer_8h_source.html#l00072">AnswerData</a>, <a class="el" href="NetworkData_8h_source.html#l00554">FWordInfo::name</a>, <a class="el" href="ListenAnswer_8h_source.html#l00058">NameWidgetComp</a>, <a class="el" href="CityNameWidget_8cpp_source.html#l00013">UCityNameWidget::SetCityName()</a>, <a class="el" href="ListenAnswer_8h_source.html#l00026">FListenAnswerData::word1</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="ListenAnswer_8h_source.html#l00075">AnswerData</a>, <a class="el" href="NetworkData_8h_source.html#l00554">FWordInfo::name</a>, <a class="el" href="ListenAnswer_8h_source.html#l00058">NameWidgetComp</a>, <a class="el" href="CityNameWidget_8cpp_source.html#l00013">UCityNameWidget::SetCityName()</a>, <a class="el" href="ListenAnswer_8h_source.html#l00026">FListenAnswerData::word1</a>.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ListenAnswer_8cpp_source.html#l00076">OnRep_AnswerData()</a>, <a class="el" href="FoodCourtManager_8cpp_source.html#l00056">AFoodCourtManager::SpawnListenAnswer()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ListenAnswer_8cpp_source.html#l00079">OnRep_AnswerData()</a>, <a class="el" href="FoodCourtManager_8cpp_source.html#l00056">AFoodCourtManager::SpawnListenAnswer()</a>.</p>
 <div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-6-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-6-summary" class="dynsummary" style="display:block;">
@@ -564,9 +569,27 @@ Protected 멤버 함수</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ListenAnswer_8h_source.html">ListenAnswer.h</a> 파일의 <a class="el" href="ListenAnswer_8h_source.html#l00072">72</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="ListenAnswer_8h_source.html">ListenAnswer.h</a> 파일의 <a class="el" href="ListenAnswer_8h_source.html#l00075">75</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ListenAnswer_8cpp_source.html#l00063">GetLifetimeReplicatedProps()</a>, <a class="el" href="FoodCourtManager_8cpp_source.html#l00056">AFoodCourtManager::SpawnListenAnswer()</a>, <a class="el" href="ListenAnswer_8cpp_source.html#l00082">UpdateMesh()</a>, <a class="el" href="ListenAnswer_8cpp_source.html#l00111">UpdateNameWidget()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ListenAnswer_8cpp_source.html#l00066">GetLifetimeReplicatedProps()</a>, <a class="el" href="FoodCourtManager_8cpp_source.html#l00056">AFoodCourtManager::SpawnListenAnswer()</a>, <a class="el" href="ListenAnswer_8cpp_source.html#l00085">UpdateMesh()</a>, <a class="el" href="ListenAnswer_8cpp_source.html#l00114">UpdateNameWidget()</a>.</p>
+
+</div>
+</div>
+<a id="a4de9f7d79d9997005f3defa1a7f86dd0" name="a4de9f7d79d9997005f3defa1a7f86dd0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4de9f7d79d9997005f3defa1a7f86dd0">&#9670;&#160;</a></span>HookComp</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TObjectPtr&lt;class UHookComponent&gt; AListenAnswer::HookComp</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="ListenAnswer_8h_source.html">ListenAnswer.h</a> 파일의 <a class="el" href="ListenAnswer_8h_source.html#l00064">64</a> 번째 라인에서 정의되었습니다.</p>
+
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ListenAnswer_8cpp_source.html#l00016">AListenAnswer()</a>.</p>
 
 </div>
 </div>
@@ -584,7 +607,7 @@ Protected 멤버 함수</h2></td></tr>
 
 <p class="definition"><a class="el" href="ListenAnswer_8h_source.html">ListenAnswer.h</a> 파일의 <a class="el" href="ListenAnswer_8h_source.html#l00061">61</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ListenAnswer_8cpp_source.html#l00015">AListenAnswer()</a>, <a class="el" href="ListenAnswer_8cpp_source.html#l00049">BeginPlay()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ListenAnswer_8cpp_source.html#l00016">AListenAnswer()</a>, <a class="el" href="ListenAnswer_8cpp_source.html#l00052">BeginPlay()</a>.</p>
 
 </div>
 </div>
@@ -600,9 +623,9 @@ Protected 멤버 함수</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ListenAnswer_8h_source.html">ListenAnswer.h</a> 파일의 <a class="el" href="ListenAnswer_8h_source.html#l00069">69</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="ListenAnswer_8h_source.html">ListenAnswer.h</a> 파일의 <a class="el" href="ListenAnswer_8h_source.html#l00072">72</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ListenAnswer_8cpp_source.html#l00082">UpdateMesh()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ListenAnswer_8cpp_source.html#l00085">UpdateMesh()</a>.</p>
 
 </div>
 </div>
@@ -620,7 +643,7 @@ Protected 멤버 함수</h2></td></tr>
 
 <p class="definition"><a class="el" href="ListenAnswer_8h_source.html">ListenAnswer.h</a> 파일의 <a class="el" href="ListenAnswer_8h_source.html#l00055">55</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ListenAnswer_8cpp_source.html#l00015">AListenAnswer()</a>, <a class="el" href="ListenAnswer_8cpp_source.html#l00124">OnOutlineStateChanged()</a>, <a class="el" href="ListenAnswer_8cpp_source.html#l00082">UpdateMesh()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ListenAnswer_8cpp_source.html#l00016">AListenAnswer()</a>, <a class="el" href="ListenAnswer_8cpp_source.html#l00127">OnOutlineStateChanged()</a>, <a class="el" href="ListenAnswer_8cpp_source.html#l00085">UpdateMesh()</a>.</p>
 
 </div>
 </div>
@@ -638,7 +661,7 @@ Protected 멤버 함수</h2></td></tr>
 
 <p class="definition"><a class="el" href="ListenAnswer_8h_source.html">ListenAnswer.h</a> 파일의 <a class="el" href="ListenAnswer_8h_source.html#l00058">58</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ListenAnswer_8cpp_source.html#l00015">AListenAnswer()</a>, <a class="el" href="ListenAnswer_8cpp_source.html#l00049">BeginPlay()</a>, <a class="el" href="ListenAnswer_8cpp_source.html#l00111">UpdateNameWidget()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ListenAnswer_8cpp_source.html#l00016">AListenAnswer()</a>, <a class="el" href="ListenAnswer_8cpp_source.html#l00052">BeginPlay()</a>, <a class="el" href="ListenAnswer_8cpp_source.html#l00114">UpdateNameWidget()</a>.</p>
 
 </div>
 </div>
@@ -652,7 +675,7 @@ Protected 멤버 함수</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classAListenAnswer.html">AListenAnswer</a></li>
-    <li class="footer">생성시간 : 월 12월 29 2025 07:16:50, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 월 12월 29 2025 08:17:26, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

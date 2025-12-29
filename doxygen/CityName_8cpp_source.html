@@ -137,48 +137,90 @@ $(document).ready(function(){initNavTree('CityName_8cpp_source.html',''); initRe
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>{</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    Super::BeginPlay();</div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <a class="code hl_function" href="classACityName.html#a5828a975e0a6c89691243244405af4f5">OnRep_FoodCourtInfo</a>();</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>}</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    FTimerHandle TimerHandle;</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    GetWorldTimerManager().SetTimer(TimerHandle, FTimerDelegate::CreateLambda([<span class="keyword">this</span>]</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    {</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        <a class="code hl_function" href="classACityName.html#a823da1252c3923151f3ca7166353a2b7">SetDefaultText</a>();</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    }), 0.5f, <span class="keyword">false</span>);</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>}</div>
 </div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="comment">// Called every frame</span></div>
-<div class="foldopen" id="foldopen00030" data-start="{" data-end="}">
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="classACityName.html#ac371939359c7320e16d59d40e94c8dea">   30</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classACityName.html#ac371939359c7320e16d59d40e94c8dea">ACityName::Tick</a>(<span class="keywordtype">float</span> DeltaTime)</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>{</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    Super::Tick(DeltaTime);</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>}</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="comment">// Called every frame</span></div>
+<div class="foldopen" id="foldopen00034" data-start="{" data-end="}">
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="classACityName.html#ac371939359c7320e16d59d40e94c8dea">   34</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classACityName.html#ac371939359c7320e16d59d40e94c8dea">ACityName::Tick</a>(<span class="keywordtype">float</span> DeltaTime)</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>{</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    Super::Tick(DeltaTime);</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>}</div>
 </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
-<div class="foldopen" id="foldopen00035" data-start="{" data-end="}">
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="classACityName.html#a63dba24b46971685cff9b3217e090d17">   35</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classACityName.html#a63dba24b46971685cff9b3217e090d17">ACityName::GetLifetimeReplicatedProps</a>(TArray&lt;class FLifetimeProperty&gt;&amp; OutLifetimeProps)<span class="keyword"> const</span></div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="keyword"></span>{</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    Super::GetLifetimeReplicatedProps(OutLifetimeProps);</div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    DOREPLIFETIME(<a class="code hl_class" href="classACityName.html">ACityName</a>, <a class="code hl_variable" href="classACityName.html#a7c9580b042936c1bd45d0c0c2bfb38b9">CityName</a>);</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>}</div>
+<div class="foldopen" id="foldopen00039" data-start="{" data-end="}">
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="classACityName.html#a63dba24b46971685cff9b3217e090d17">   39</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classACityName.html#a63dba24b46971685cff9b3217e090d17">ACityName::GetLifetimeReplicatedProps</a>(TArray&lt;class FLifetimeProperty&gt;&amp; OutLifetimeProps)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="keyword"></span>{</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    Super::GetLifetimeReplicatedProps(OutLifetimeProps);</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    DOREPLIFETIME(<a class="code hl_class" href="classACityName.html">ACityName</a>, <a class="code hl_variable" href="classACityName.html#a7c9580b042936c1bd45d0c0c2bfb38b9">CityName</a>);</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>}</div>
 </div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
-<div class="foldopen" id="foldopen00042" data-start="{" data-end="}">
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="classACityName.html#a5828a975e0a6c89691243244405af4f5">   42</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classACityName.html#a5828a975e0a6c89691243244405af4f5">ACityName::OnRep_FoodCourtInfo</a>()</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>{</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    UUserWidget* CityNameWidget = <a class="code hl_variable" href="classACityName.html#a75ed30b9fb11713c3db7e71e15de30af">WidgetComp</a>-&gt;GetWidget();</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="keywordflow">if</span> (<a class="code hl_class" href="classUCityNameWidget.html">UCityNameWidget</a>* CNW = Cast&lt;UCityNameWidget&gt;(CityNameWidget))</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    {</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        CNW-&gt;SetCityName(<a class="code hl_variable" href="classACityName.html#a7c9580b042936c1bd45d0c0c2bfb38b9">CityName</a>);</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    }</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>}</div>
-</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="foldopen" id="foldopen00046" data-start="{" data-end="}">
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="classACityName.html#a823da1252c3923151f3ca7166353a2b7">   46</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classACityName.html#a823da1252c3923151f3ca7166353a2b7">ACityName::SetDefaultText</a>()</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>{</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classACityName.html#a4a042e8a8ea49b0daa683f2fdfabcddd">Index</a> == 0) <a class="code hl_variable" href="classACityName.html#a7c9580b042936c1bd45d0c0c2bfb38b9">CityName</a> = TEXT(<span class="stringliteral">&quot;Food Here&quot;</span>);</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code hl_variable" href="classACityName.html#a4a042e8a8ea49b0daa683f2fdfabcddd">Index</a> == 1) <a class="code hl_variable" href="classACityName.html#a7c9580b042936c1bd45d0c0c2bfb38b9">CityName</a> = TEXT(<span class="stringliteral">&quot;City Here&quot;</span>);</div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="keywordflow">if</span> (HasAuthority())</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    {</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        <a class="code hl_function" href="classACityName.html#afb840062569e287c1d844fb468d80455">OnRep_CityName</a>();</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    }</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>}</div>
+</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
+<div class="foldopen" id="foldopen00057" data-start="{" data-end="}">
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="classACityName.html#a89e8cbcd9550602a73487f6c4da07aee">   57</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classACityName.html#a89e8cbcd9550602a73487f6c4da07aee">ACityName::SetChecked</a>()</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>{</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <a class="code hl_variable" href="classACityName.html#a7c9580b042936c1bd45d0c0c2bfb38b9">CityName</a> = TEXT(<span class="stringliteral">&quot;OK!&quot;</span>);</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="keywordflow">if</span> (HasAuthority())</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    {</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        <a class="code hl_function" href="classACityName.html#afb840062569e287c1d844fb468d80455">OnRep_CityName</a>();</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    }</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>}</div>
+</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
+<div class="foldopen" id="foldopen00067" data-start="{" data-end="}">
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="classACityName.html#afb840062569e287c1d844fb468d80455">   67</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classACityName.html#afb840062569e287c1d844fb468d80455">ACityName::OnRep_CityName</a>()</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>{</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    UUserWidget* CityNameWidget = <a class="code hl_variable" href="classACityName.html#a75ed30b9fb11713c3db7e71e15de30af">WidgetComp</a>-&gt;GetWidget();</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <span class="keywordflow">if</span> (<a class="code hl_class" href="classUCityNameWidget.html">UCityNameWidget</a>* CNW = Cast&lt;UCityNameWidget&gt;(CityNameWidget))</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    {</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        CNW-&gt;SetCityName(<a class="code hl_variable" href="classACityName.html#a7c9580b042936c1bd45d0c0c2bfb38b9">CityName</a>);</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>        <span class="comment">// 텍스트 색 설정</span></div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="classACityName.html#a7c9580b042936c1bd45d0c0c2bfb38b9">CityName</a> == TEXT(<span class="stringliteral">&quot;OK!&quot;</span>))</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        {</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>            CNW-&gt;SetTextColor(FLinearColor::Green);</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        }</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        {</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>            CNW-&gt;SetTextColor(FLinearColor::White);</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        }</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    }</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>}</div>
+</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
 <div class="ttc" id="aCityNameWidget_8h_html"><div class="ttname"><a href="CityNameWidget_8h.html">CityNameWidget.h</a></div></div>
 <div class="ttc" id="aCityName_8h_html"><div class="ttname"><a href="CityName_8h.html">CityName.h</a></div></div>
 <div class="ttc" id="aclassACityName_html"><div class="ttname"><a href="classACityName.html">ACityName</a></div><div class="ttdef"><b>Definition</b> <a href="CityName_8h_source.html#l00010">CityName.h:11</a></div></div>
-<div class="ttc" id="aclassACityName_html_a5828a975e0a6c89691243244405af4f5"><div class="ttname"><a href="classACityName.html#a5828a975e0a6c89691243244405af4f5">ACityName::OnRep_FoodCourtInfo</a></div><div class="ttdeci">void OnRep_FoodCourtInfo()</div><div class="ttdef"><b>Definition</b> <a href="CityName_8cpp_source.html#l00042">CityName.cpp:42</a></div></div>
-<div class="ttc" id="aclassACityName_html_a63dba24b46971685cff9b3217e090d17"><div class="ttname"><a href="classACityName.html#a63dba24b46971685cff9b3217e090d17">ACityName::GetLifetimeReplicatedProps</a></div><div class="ttdeci">virtual void GetLifetimeReplicatedProps(TArray&lt; class FLifetimeProperty &gt; &amp;OutLifetimeProps) const override</div><div class="ttdef"><b>Definition</b> <a href="CityName_8cpp_source.html#l00035">CityName.cpp:35</a></div></div>
+<div class="ttc" id="aclassACityName_html_a4a042e8a8ea49b0daa683f2fdfabcddd"><div class="ttname"><a href="classACityName.html#a4a042e8a8ea49b0daa683f2fdfabcddd">ACityName::Index</a></div><div class="ttdeci">int32 Index</div><div class="ttdef"><b>Definition</b> <a href="CityName_8h_source.html#l00030">CityName.h:30</a></div></div>
+<div class="ttc" id="aclassACityName_html_a63dba24b46971685cff9b3217e090d17"><div class="ttname"><a href="classACityName.html#a63dba24b46971685cff9b3217e090d17">ACityName::GetLifetimeReplicatedProps</a></div><div class="ttdeci">virtual void GetLifetimeReplicatedProps(TArray&lt; class FLifetimeProperty &gt; &amp;OutLifetimeProps) const override</div><div class="ttdef"><b>Definition</b> <a href="CityName_8cpp_source.html#l00039">CityName.cpp:39</a></div></div>
 <div class="ttc" id="aclassACityName_html_a75ed30b9fb11713c3db7e71e15de30af"><div class="ttname"><a href="classACityName.html#a75ed30b9fb11713c3db7e71e15de30af">ACityName::WidgetComp</a></div><div class="ttdeci">class UWidgetComponent * WidgetComp</div><div class="ttdef"><b>Definition</b> <a href="CityName_8h_source.html#l00027">CityName.h:27</a></div></div>
 <div class="ttc" id="aclassACityName_html_a7c9580b042936c1bd45d0c0c2bfb38b9"><div class="ttname"><a href="classACityName.html#a7c9580b042936c1bd45d0c0c2bfb38b9">ACityName::CityName</a></div><div class="ttdeci">FString CityName</div><div class="ttdef"><b>Definition</b> <a href="CityName_8h_source.html#l00033">CityName.h:33</a></div></div>
+<div class="ttc" id="aclassACityName_html_a823da1252c3923151f3ca7166353a2b7"><div class="ttname"><a href="classACityName.html#a823da1252c3923151f3ca7166353a2b7">ACityName::SetDefaultText</a></div><div class="ttdeci">void SetDefaultText()</div><div class="ttdef"><b>Definition</b> <a href="CityName_8cpp_source.html#l00046">CityName.cpp:46</a></div></div>
 <div class="ttc" id="aclassACityName_html_a871b04f335e85f1400a0629c4f9ba995"><div class="ttname"><a href="classACityName.html#a871b04f335e85f1400a0629c4f9ba995">ACityName::ACityName</a></div><div class="ttdeci">ACityName()</div><div class="ttdef"><b>Definition</b> <a href="CityName_8cpp_source.html#l00012">CityName.cpp:12</a></div></div>
-<div class="ttc" id="aclassACityName_html_ac371939359c7320e16d59d40e94c8dea"><div class="ttname"><a href="classACityName.html#ac371939359c7320e16d59d40e94c8dea">ACityName::Tick</a></div><div class="ttdeci">virtual void Tick(float DeltaTime) override</div><div class="ttdef"><b>Definition</b> <a href="CityName_8cpp_source.html#l00030">CityName.cpp:30</a></div></div>
+<div class="ttc" id="aclassACityName_html_a89e8cbcd9550602a73487f6c4da07aee"><div class="ttname"><a href="classACityName.html#a89e8cbcd9550602a73487f6c4da07aee">ACityName::SetChecked</a></div><div class="ttdeci">void SetChecked()</div><div class="ttdef"><b>Definition</b> <a href="CityName_8cpp_source.html#l00057">CityName.cpp:57</a></div></div>
+<div class="ttc" id="aclassACityName_html_ac371939359c7320e16d59d40e94c8dea"><div class="ttname"><a href="classACityName.html#ac371939359c7320e16d59d40e94c8dea">ACityName::Tick</a></div><div class="ttdeci">virtual void Tick(float DeltaTime) override</div><div class="ttdef"><b>Definition</b> <a href="CityName_8cpp_source.html#l00034">CityName.cpp:34</a></div></div>
 <div class="ttc" id="aclassACityName_html_aeaa5b448dbfdbdf72e4e4a5147548b4b"><div class="ttname"><a href="classACityName.html#aeaa5b448dbfdbdf72e4e4a5147548b4b">ACityName::BeginPlay</a></div><div class="ttdeci">virtual void BeginPlay() override</div><div class="ttdef"><b>Definition</b> <a href="CityName_8cpp_source.html#l00022">CityName.cpp:22</a></div></div>
+<div class="ttc" id="aclassACityName_html_afb840062569e287c1d844fb468d80455"><div class="ttname"><a href="classACityName.html#afb840062569e287c1d844fb468d80455">ACityName::OnRep_CityName</a></div><div class="ttdeci">void OnRep_CityName()</div><div class="ttdef"><b>Definition</b> <a href="CityName_8cpp_source.html#l00067">CityName.cpp:67</a></div></div>
 <div class="ttc" id="aclassUCityNameWidget_html"><div class="ttname"><a href="classUCityNameWidget.html">UCityNameWidget</a></div><div class="ttdef"><b>Definition</b> <a href="CityNameWidget_8h_source.html#l00013">CityNameWidget.h:14</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
@@ -186,7 +228,7 @@ $(document).ready(function(){initNavTree('CityName_8cpp_source.html',''); initRe
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_2268d321c547a1269f0f0801cfba1f77.html">Prop</a></li><li class="navelem"><a class="el" href="dir_1d7bfdd86517d83f393675eb912eaf09.html">Private</a></li><li class="navelem"><a class="el" href="CityName_8cpp.html">CityName.cpp</a></li>
-    <li class="footer">생성시간 : 월 12월 29 2025 07:16:49, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 월 12월 29 2025 08:17:26, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

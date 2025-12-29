@@ -118,162 +118,167 @@ $(document).ready(function(){initNavTree('ListenAnswer_8cpp_source.html',''); in
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;<a class="code" href="FListenData_8h.html">FListenData.h</a>&quot;</span></div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;<a class="code" href="InteractableComponent_8h.html">InteractableComponent.h</a>&quot;</span></div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;<a class="code" href="UGameDataManager_8h.html">UGameDataManager.h</a>&quot;</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;Components/WidgetComponent.h&quot;</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;Net/UnrealNetwork.h&quot;</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;<a class="code" href="UHookComponent_8h.html">UHookComponent.h</a>&quot;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;Components/WidgetComponent.h&quot;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;Net/UnrealNetwork.h&quot;</span></div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment">// Sets default values</span></div>
-<div class="foldopen" id="foldopen00015" data-start="{" data-end="}">
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="classAListenAnswer.html#ada6f13bc24d5b20a0b93303cc10d195d">   15</a></span><a class="code hl_function" href="classAListenAnswer.html#ada6f13bc24d5b20a0b93303cc10d195d">AListenAnswer::AListenAnswer</a>()</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>{</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <span class="comment">// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don&#39;t need it.</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    PrimaryActorTick.bCanEverTick = <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <a class="code hl_variable" href="classAListenAnswer.html#a3a631c5670a77fd2a985f04fce64cb3c">Mesh</a> = CreateDefaultSubobject&lt;UStaticMeshComponent&gt;(TEXT(<span class="stringliteral">&quot;Mesh&quot;</span>));</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    SetRootComponent(<a class="code hl_variable" href="classAListenAnswer.html#a3a631c5670a77fd2a985f04fce64cb3c">Mesh</a>);</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <a class="code hl_variable" href="classAListenAnswer.html#a660f2d73075dbb056a3b904635a040df">NameWidgetComp</a> = CreateDefaultSubobject&lt;UWidgetComponent&gt;(TEXT(<span class="stringliteral">&quot;NameWidget&quot;</span>));</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <a class="code hl_variable" href="classAListenAnswer.html#a660f2d73075dbb056a3b904635a040df">NameWidgetComp</a>-&gt;SetupAttachment(GetRootComponent());</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <a class="code hl_variable" href="classAListenAnswer.html#ade1ac7c17f756ce5e6880c56400b4b0d">InteractableComp</a> = CreateDefaultSubobject&lt;UInteractableComponent&gt;(TEXT(<span class="stringliteral">&quot;Interactable&quot;</span>));</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <a class="code hl_variable" href="classAListenAnswer.html#ade1ac7c17f756ce5e6880c56400b4b0d">InteractableComp</a>-&gt;InteractionType = EInteractionType::PickUp;</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <a class="code hl_variable" href="classAListenAnswer.html#ade1ac7c17f756ce5e6880c56400b4b0d">InteractableComp</a>-&gt;InteractionPrompt = TEXT(<span class="stringliteral">&quot;Pick Up&quot;</span>);</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="comment">// Initial settings</span></div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <a class="code hl_variable" href="classAListenAnswer.html#a3a631c5670a77fd2a985f04fce64cb3c">Mesh</a>-&gt;SetSimulatePhysics(<span class="keyword">true</span>);</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <a class="code hl_variable" href="classAListenAnswer.html#a3a631c5670a77fd2a985f04fce64cb3c">Mesh</a>-&gt;SetEnableGravity(<span class="keyword">true</span>);</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <a class="code hl_variable" href="classAListenAnswer.html#a3a631c5670a77fd2a985f04fce64cb3c">Mesh</a>-&gt;SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <a class="code hl_variable" href="classAListenAnswer.html#a3a631c5670a77fd2a985f04fce64cb3c">Mesh</a>-&gt;SetCollisionProfileName(TEXT(<span class="stringliteral">&quot;PhysicsActor&quot;</span>));</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    </div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="comment">// 무게 설정</span></div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <a class="code hl_variable" href="classAListenAnswer.html#a3a631c5670a77fd2a985f04fce64cb3c">Mesh</a>-&gt;SetMassOverrideInKg(NAME_None, 50.f, <span class="keyword">true</span>);</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="comment">// 물리 복제 설정</span></div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <a class="code hl_variable" href="classAListenAnswer.html#a3a631c5670a77fd2a985f04fce64cb3c">Mesh</a>-&gt;SetIsReplicated(<span class="keyword">true</span>);</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment">// Sets default values</span></div>
+<div class="foldopen" id="foldopen00016" data-start="{" data-end="}">
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="classAListenAnswer.html#ada6f13bc24d5b20a0b93303cc10d195d">   16</a></span><a class="code hl_function" href="classAListenAnswer.html#ada6f13bc24d5b20a0b93303cc10d195d">AListenAnswer::AListenAnswer</a>()</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>{</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <span class="comment">// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don&#39;t need it.</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    PrimaryActorTick.bCanEverTick = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <a class="code hl_variable" href="classAListenAnswer.html#a3a631c5670a77fd2a985f04fce64cb3c">Mesh</a> = CreateDefaultSubobject&lt;UStaticMeshComponent&gt;(TEXT(<span class="stringliteral">&quot;Mesh&quot;</span>));</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    SetRootComponent(<a class="code hl_variable" href="classAListenAnswer.html#a3a631c5670a77fd2a985f04fce64cb3c">Mesh</a>);</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <a class="code hl_variable" href="classAListenAnswer.html#a660f2d73075dbb056a3b904635a040df">NameWidgetComp</a> = CreateDefaultSubobject&lt;UWidgetComponent&gt;(TEXT(<span class="stringliteral">&quot;NameWidget&quot;</span>));</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <a class="code hl_variable" href="classAListenAnswer.html#a660f2d73075dbb056a3b904635a040df">NameWidgetComp</a>-&gt;SetupAttachment(GetRootComponent());</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <a class="code hl_variable" href="classAListenAnswer.html#ade1ac7c17f756ce5e6880c56400b4b0d">InteractableComp</a> = CreateDefaultSubobject&lt;UInteractableComponent&gt;(TEXT(<span class="stringliteral">&quot;Interactable&quot;</span>));</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <a class="code hl_variable" href="classAListenAnswer.html#ade1ac7c17f756ce5e6880c56400b4b0d">InteractableComp</a>-&gt;InteractionType = EInteractionType::PickUp;</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <a class="code hl_variable" href="classAListenAnswer.html#ade1ac7c17f756ce5e6880c56400b4b0d">InteractableComp</a>-&gt;InteractionPrompt = TEXT(<span class="stringliteral">&quot;Pick Up&quot;</span>);</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="comment">// Initial settings</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <a class="code hl_variable" href="classAListenAnswer.html#a3a631c5670a77fd2a985f04fce64cb3c">Mesh</a>-&gt;SetSimulatePhysics(<span class="keyword">true</span>);</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <a class="code hl_variable" href="classAListenAnswer.html#a3a631c5670a77fd2a985f04fce64cb3c">Mesh</a>-&gt;SetEnableGravity(<span class="keyword">true</span>);</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <a class="code hl_variable" href="classAListenAnswer.html#a3a631c5670a77fd2a985f04fce64cb3c">Mesh</a>-&gt;SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <a class="code hl_variable" href="classAListenAnswer.html#a3a631c5670a77fd2a985f04fce64cb3c">Mesh</a>-&gt;SetCollisionProfileName(TEXT(<span class="stringliteral">&quot;PhysicsActor&quot;</span>));</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <a class="code hl_variable" href="classAListenAnswer.html#a4de9f7d79d9997005f3defa1a7f86dd0">HookComp</a> = CreateDefaultSubobject&lt;UHookComponent&gt;(TEXT(<span class="stringliteral">&quot;Hook&quot;</span>));</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="comment">// 무게 설정</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <a class="code hl_variable" href="classAListenAnswer.html#a3a631c5670a77fd2a985f04fce64cb3c">Mesh</a>-&gt;SetMassOverrideInKg(NAME_None, 50.f, <span class="keyword">true</span>);</div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="comment">// Replication</span></div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    bReplicates = <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    SetNetUpdateFrequency(100.0f);      <span class="comment">// 높은 업데이트 빈도로 부드러운 네트워크 동기화</span></div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    SetMinNetUpdateFrequency(33.0f);    <span class="comment">// 최소 30fps 업데이트 보장</span></div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>}</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="comment">// 물리 복제 설정</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <a class="code hl_variable" href="classAListenAnswer.html#a3a631c5670a77fd2a985f04fce64cb3c">Mesh</a>-&gt;SetIsReplicated(<span class="keyword">true</span>);</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="comment">// Replication</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    bReplicates = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    SetNetUpdateFrequency(100.0f);      <span class="comment">// 높은 업데이트 빈도로 부드러운 네트워크 동기화</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    SetMinNetUpdateFrequency(33.0f);    <span class="comment">// 최소 30fps 업데이트 보장</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>}</div>
 </div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="comment">// Called when the game starts or when spawned</span></div>
-<div class="foldopen" id="foldopen00049" data-start="{" data-end="}">
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="classAListenAnswer.html#a881119ad8eea95a9a22569af51f530bd">   49</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAListenAnswer.html#a881119ad8eea95a9a22569af51f530bd">AListenAnswer::BeginPlay</a>()</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>{</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    Super::BeginPlay();</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <a class="code hl_variable" href="classAListenAnswer.html#a660f2d73075dbb056a3b904635a040df">NameWidgetComp</a>-&gt;AttachToComponent(GetRootComponent(), FAttachmentTransformRules::KeepRelativeTransform);</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <a class="code hl_variable" href="classAListenAnswer.html#a660f2d73075dbb056a3b904635a040df">NameWidgetComp</a>-&gt;SetRelativeLocation(FVector(0, 0, 10));</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="comment">// Called when the game starts or when spawned</span></div>
+<div class="foldopen" id="foldopen00052" data-start="{" data-end="}">
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="classAListenAnswer.html#a881119ad8eea95a9a22569af51f530bd">   52</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAListenAnswer.html#a881119ad8eea95a9a22569af51f530bd">AListenAnswer::BeginPlay</a>()</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>{</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    Super::BeginPlay();</div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <span class="comment">// 델리게이트 바인딩</span></div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAListenAnswer.html#ade1ac7c17f756ce5e6880c56400b4b0d">InteractableComp</a>)</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    {</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        <a class="code hl_variable" href="classAListenAnswer.html#ade1ac7c17f756ce5e6880c56400b4b0d">InteractableComp</a>-&gt;OnOutlineStateChanged.AddDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classAListenAnswer.html#a2bca278f32a00a84a800ed31bdee517f">AListenAnswer::OnOutlineStateChanged</a>);</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    }</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>}</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <a class="code hl_variable" href="classAListenAnswer.html#a660f2d73075dbb056a3b904635a040df">NameWidgetComp</a>-&gt;AttachToComponent(GetRootComponent(), FAttachmentTransformRules::KeepRelativeTransform);</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <a class="code hl_variable" href="classAListenAnswer.html#a660f2d73075dbb056a3b904635a040df">NameWidgetComp</a>-&gt;SetRelativeLocation(FVector(0, 0, 10));</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="comment">// 델리게이트 바인딩</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAListenAnswer.html#ade1ac7c17f756ce5e6880c56400b4b0d">InteractableComp</a>)</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    {</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        <a class="code hl_variable" href="classAListenAnswer.html#ade1ac7c17f756ce5e6880c56400b4b0d">InteractableComp</a>-&gt;OnOutlineStateChanged.AddDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classAListenAnswer.html#a2bca278f32a00a84a800ed31bdee517f">AListenAnswer::OnOutlineStateChanged</a>);</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    }</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>}</div>
 </div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
-<div class="foldopen" id="foldopen00063" data-start="{" data-end="}">
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="classAListenAnswer.html#adb24f3cbd3116eff7ec39ff00319f985">   63</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAListenAnswer.html#adb24f3cbd3116eff7ec39ff00319f985">AListenAnswer::GetLifetimeReplicatedProps</a>(TArray&lt;class FLifetimeProperty&gt;&amp; OutLifetimeProps)<span class="keyword"> const</span></div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="keyword"></span>{</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    Super::GetLifetimeReplicatedProps(OutLifetimeProps);</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    DOREPLIFETIME(<a class="code hl_class" href="classAListenAnswer.html">AListenAnswer</a>, <a class="code hl_variable" href="classAListenAnswer.html#a8f38c24b843483b4311627d757a07a55">AnswerData</a>);</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>}</div>
-</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
+<div class="foldopen" id="foldopen00066" data-start="{" data-end="}">
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="classAListenAnswer.html#adb24f3cbd3116eff7ec39ff00319f985">   66</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAListenAnswer.html#adb24f3cbd3116eff7ec39ff00319f985">AListenAnswer::GetLifetimeReplicatedProps</a>(TArray&lt;class FLifetimeProperty&gt;&amp; OutLifetimeProps)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="keyword"></span>{</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    Super::GetLifetimeReplicatedProps(OutLifetimeProps);</div>
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="comment">// Called every frame</span></div>
-<div class="foldopen" id="foldopen00071" data-start="{" data-end="}">
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno"><a class="line" href="classAListenAnswer.html#ad22cfa2ef8ea565973957b11a6e59aad">   71</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAListenAnswer.html#ad22cfa2ef8ea565973957b11a6e59aad">AListenAnswer::Tick</a>(<span class="keywordtype">float</span> DeltaTime)</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>{</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    Super::Tick(DeltaTime);</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>}</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    DOREPLIFETIME(<a class="code hl_class" href="classAListenAnswer.html">AListenAnswer</a>, <a class="code hl_variable" href="classAListenAnswer.html#a8f38c24b843483b4311627d757a07a55">AnswerData</a>);</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>}</div>
 </div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
-<div class="foldopen" id="foldopen00076" data-start="{" data-end="}">
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno"><a class="line" href="classAListenAnswer.html#ab4e1979d0579a0ed391c765ba8b36ecb">   76</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAListenAnswer.html#ab4e1979d0579a0ed391c765ba8b36ecb">AListenAnswer::OnRep_AnswerData</a>()</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>{</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    <a class="code hl_function" href="classAListenAnswer.html#a96f4151413c32ae3cdfdd2e69a29e301">UpdateMesh</a>();</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    <a class="code hl_function" href="classAListenAnswer.html#a837d24b62f41d4409ef20ac12bb526b9">UpdateNameWidget</a>();</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>}</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="comment">// Called every frame</span></div>
+<div class="foldopen" id="foldopen00074" data-start="{" data-end="}">
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno"><a class="line" href="classAListenAnswer.html#ad22cfa2ef8ea565973957b11a6e59aad">   74</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAListenAnswer.html#ad22cfa2ef8ea565973957b11a6e59aad">AListenAnswer::Tick</a>(<span class="keywordtype">float</span> DeltaTime)</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>{</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    Super::Tick(DeltaTime);</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>}</div>
 </div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
-<div class="foldopen" id="foldopen00082" data-start="{" data-end="}">
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno"><a class="line" href="classAListenAnswer.html#a96f4151413c32ae3cdfdd2e69a29e301">   82</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAListenAnswer.html#a96f4151413c32ae3cdfdd2e69a29e301">AListenAnswer::UpdateMesh</a>()</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>{</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classAListenAnswer.html#a4e854afad03cb4e6f48f797a8b18d266">ListenDataTable</a>)</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    {</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        UE_LOG(LogTemp, Error, TEXT(<span class="stringliteral">&quot;ListenDataTable is null!&quot;</span>));</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    }</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classAListenAnswer.html#a4e854afad03cb4e6f48f797a8b18d266">ListenDataTable</a>) <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    TArray&lt;FListenData*&gt; AllRows;</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    <a class="code hl_variable" href="classAListenAnswer.html#a4e854afad03cb4e6f48f797a8b18d266">ListenDataTable</a>-&gt;GetAllRows&lt;<a class="code hl_struct" href="structFListenData.html">FListenData</a>&gt;(TEXT(<span class="stringliteral">&quot;UpdateMesh&quot;</span>), AllRows);</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
+<div class="foldopen" id="foldopen00079" data-start="{" data-end="}">
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno"><a class="line" href="classAListenAnswer.html#ab4e1979d0579a0ed391c765ba8b36ecb">   79</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAListenAnswer.html#ab4e1979d0579a0ed391c765ba8b36ecb">AListenAnswer::OnRep_AnswerData</a>()</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>{</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    <a class="code hl_function" href="classAListenAnswer.html#a96f4151413c32ae3cdfdd2e69a29e301">UpdateMesh</a>();</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    <a class="code hl_function" href="classAListenAnswer.html#a837d24b62f41d4409ef20ac12bb526b9">UpdateNameWidget</a>();</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>}</div>
+</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
+<div class="foldopen" id="foldopen00085" data-start="{" data-end="}">
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno"><a class="line" href="classAListenAnswer.html#a96f4151413c32ae3cdfdd2e69a29e301">   85</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAListenAnswer.html#a96f4151413c32ae3cdfdd2e69a29e301">AListenAnswer::UpdateMesh</a>()</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>{</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classAListenAnswer.html#a4e854afad03cb4e6f48f797a8b18d266">ListenDataTable</a>)</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    {</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>        UE_LOG(LogTemp, Error, TEXT(<span class="stringliteral">&quot;ListenDataTable is null!&quot;</span>));</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    }</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classAListenAnswer.html#a4e854afad03cb4e6f48f797a8b18d266">ListenDataTable</a>) <span class="keywordflow">return</span>;</div>
 <div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    <span class="keywordflow">for</span> (<a class="code hl_struct" href="structFListenData.html">FListenData</a>* Row : AllRows)</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    {</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>        <span class="keywordflow">if</span> (Row &amp;&amp; Row-&gt;Word == <a class="code hl_variable" href="classAListenAnswer.html#a8f38c24b843483b4311627d757a07a55">AnswerData</a>.<a class="code hl_variable" href="structFListenAnswerData.html#a14865c1f246698ca6be0c869262598b6">word1</a>.<a class="code hl_variable" href="structFWordInfo.html#afa3eecf62fc7b28d50eae5edc8fc81ad">name</a>)</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>        {</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>            <span class="keywordflow">if</span> (Row-&gt;FoodPath)</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>            {</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>                <a class="code hl_variable" href="classAListenAnswer.html#a3a631c5670a77fd2a985f04fce64cb3c">Mesh</a>-&gt;SetStaticMesh(Row-&gt;FoodPath);</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>                <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>            }</div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>        }</div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    }</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span> </div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    <span class="comment">// 일치하는 데이터를 찾지 못함</span></div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    UE_LOG(LogTemp, Warning, TEXT(<span class="stringliteral">&quot;No matching ListenData found for: %s&quot;</span>), *<a class="code hl_variable" href="classAListenAnswer.html#a8f38c24b843483b4311627d757a07a55">AnswerData</a>.<a class="code hl_variable" href="structFListenAnswerData.html#a14865c1f246698ca6be0c869262598b6">word1</a>.<a class="code hl_variable" href="structFWordInfo.html#afa3eecf62fc7b28d50eae5edc8fc81ad">name</a>);</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>}</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    TArray&lt;FListenData*&gt; AllRows;</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    <a class="code hl_variable" href="classAListenAnswer.html#a4e854afad03cb4e6f48f797a8b18d266">ListenDataTable</a>-&gt;GetAllRows&lt;<a class="code hl_struct" href="structFListenData.html">FListenData</a>&gt;(TEXT(<span class="stringliteral">&quot;UpdateMesh&quot;</span>), AllRows);</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    <span class="keywordflow">for</span> (<a class="code hl_struct" href="structFListenData.html">FListenData</a>* Row : AllRows)</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    {</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>        <span class="keywordflow">if</span> (Row &amp;&amp; Row-&gt;Word == <a class="code hl_variable" href="classAListenAnswer.html#a8f38c24b843483b4311627d757a07a55">AnswerData</a>.<a class="code hl_variable" href="structFListenAnswerData.html#a14865c1f246698ca6be0c869262598b6">word1</a>.<a class="code hl_variable" href="structFWordInfo.html#afa3eecf62fc7b28d50eae5edc8fc81ad">name</a>)</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>        {</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>            <span class="keywordflow">if</span> (Row-&gt;FoodPath)</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>            {</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>                <a class="code hl_variable" href="classAListenAnswer.html#a3a631c5670a77fd2a985f04fce64cb3c">Mesh</a>-&gt;SetStaticMesh(Row-&gt;FoodPath);</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>                <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>            }</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>        }</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    }</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span> </div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    <span class="comment">// 일치하는 데이터를 찾지 못함</span></div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    UE_LOG(LogTemp, Warning, TEXT(<span class="stringliteral">&quot;No matching ListenData found for: %s&quot;</span>), *<a class="code hl_variable" href="classAListenAnswer.html#a8f38c24b843483b4311627d757a07a55">AnswerData</a>.<a class="code hl_variable" href="structFListenAnswerData.html#a14865c1f246698ca6be0c869262598b6">word1</a>.<a class="code hl_variable" href="structFWordInfo.html#afa3eecf62fc7b28d50eae5edc8fc81ad">name</a>);</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>}</div>
 </div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span> </div>
-<div class="foldopen" id="foldopen00111" data-start="{" data-end="}">
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno"><a class="line" href="classAListenAnswer.html#a837d24b62f41d4409ef20ac12bb526b9">  111</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAListenAnswer.html#a837d24b62f41d4409ef20ac12bb526b9">AListenAnswer::UpdateNameWidget</a>()</div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>{</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    <span class="comment">// Widget이 아직 초기화되지 않았을 수 있으므로 체크</span></div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classAListenAnswer.html#a660f2d73075dbb056a3b904635a040df">NameWidgetComp</a> || !<a class="code hl_variable" href="classAListenAnswer.html#a660f2d73075dbb056a3b904635a040df">NameWidgetComp</a>-&gt;GetWidget())</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span> </div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>    <a class="code hl_class" href="classUCityNameWidget.html">UCityNameWidget</a>* NameWidget = Cast&lt;UCityNameWidget&gt;(<a class="code hl_variable" href="classAListenAnswer.html#a660f2d73075dbb056a3b904635a040df">NameWidgetComp</a>-&gt;GetWidget());</div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    <span class="keywordflow">if</span> (NameWidget)</div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    {</div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>        NameWidget-&gt;<a class="code hl_function" href="classUCityNameWidget.html#a02793042eefe1fbface31d2dd47cbb10">SetCityName</a>(<a class="code hl_variable" href="classAListenAnswer.html#a8f38c24b843483b4311627d757a07a55">AnswerData</a>.<a class="code hl_variable" href="structFListenAnswerData.html#a14865c1f246698ca6be0c869262598b6">word1</a>.<a class="code hl_variable" href="structFWordInfo.html#afa3eecf62fc7b28d50eae5edc8fc81ad">name</a>);</div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    }</div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>}</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span> </div>
+<div class="foldopen" id="foldopen00114" data-start="{" data-end="}">
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno"><a class="line" href="classAListenAnswer.html#a837d24b62f41d4409ef20ac12bb526b9">  114</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAListenAnswer.html#a837d24b62f41d4409ef20ac12bb526b9">AListenAnswer::UpdateNameWidget</a>()</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>{</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>    <span class="comment">// Widget이 아직 초기화되지 않았을 수 있으므로 체크</span></div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classAListenAnswer.html#a660f2d73075dbb056a3b904635a040df">NameWidgetComp</a> || !<a class="code hl_variable" href="classAListenAnswer.html#a660f2d73075dbb056a3b904635a040df">NameWidgetComp</a>-&gt;GetWidget())</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span> </div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    <a class="code hl_class" href="classUCityNameWidget.html">UCityNameWidget</a>* NameWidget = Cast&lt;UCityNameWidget&gt;(<a class="code hl_variable" href="classAListenAnswer.html#a660f2d73075dbb056a3b904635a040df">NameWidgetComp</a>-&gt;GetWidget());</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    <span class="keywordflow">if</span> (NameWidget)</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>    {</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>        NameWidget-&gt;<a class="code hl_function" href="classUCityNameWidget.html#a02793042eefe1fbface31d2dd47cbb10">SetCityName</a>(<a class="code hl_variable" href="classAListenAnswer.html#a8f38c24b843483b4311627d757a07a55">AnswerData</a>.<a class="code hl_variable" href="structFListenAnswerData.html#a14865c1f246698ca6be0c869262598b6">word1</a>.<a class="code hl_variable" href="structFWordInfo.html#afa3eecf62fc7b28d50eae5edc8fc81ad">name</a>);</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>    }</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>}</div>
 </div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span> </div>
-<div class="foldopen" id="foldopen00124" data-start="{" data-end="}">
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno"><a class="line" href="classAListenAnswer.html#a2bca278f32a00a84a800ed31bdee517f">  124</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAListenAnswer.html#a2bca278f32a00a84a800ed31bdee517f">AListenAnswer::OnOutlineStateChanged</a>(<span class="keywordtype">bool</span> bShouldShowOutline)</div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>{</div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAListenAnswer.html#a3a631c5670a77fd2a985f04fce64cb3c">Mesh</a>)</div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>    {</div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>        <a class="code hl_variable" href="classAListenAnswer.html#a3a631c5670a77fd2a985f04fce64cb3c">Mesh</a>-&gt;SetRenderCustomDepth(bShouldShowOutline);</div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>    }</div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>}</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span> </div>
+<div class="foldopen" id="foldopen00127" data-start="{" data-end="}">
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno"><a class="line" href="classAListenAnswer.html#a2bca278f32a00a84a800ed31bdee517f">  127</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAListenAnswer.html#a2bca278f32a00a84a800ed31bdee517f">AListenAnswer::OnOutlineStateChanged</a>(<span class="keywordtype">bool</span> bShouldShowOutline)</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>{</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAListenAnswer.html#a3a631c5670a77fd2a985f04fce64cb3c">Mesh</a>)</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>    {</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>        <a class="code hl_variable" href="classAListenAnswer.html#a3a631c5670a77fd2a985f04fce64cb3c">Mesh</a>-&gt;SetRenderCustomDepth(bShouldShowOutline);</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    }</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>}</div>
 </div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span> </div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span> </div>
 <div class="ttc" id="aCityNameWidget_8h_html"><div class="ttname"><a href="CityNameWidget_8h.html">CityNameWidget.h</a></div></div>
 <div class="ttc" id="aFListenData_8h_html"><div class="ttname"><a href="FListenData_8h.html">FListenData.h</a></div><div class="ttdoc">FListenData 구조체를 선언합니다.</div></div>
 <div class="ttc" id="aInteractableComponent_8h_html"><div class="ttname"><a href="InteractableComponent_8h.html">InteractableComponent.h</a></div></div>
 <div class="ttc" id="aListenAnswer_8h_html"><div class="ttname"><a href="ListenAnswer_8h.html">ListenAnswer.h</a></div></div>
 <div class="ttc" id="aUGameDataManager_8h_html"><div class="ttname"><a href="UGameDataManager_8h.html">UGameDataManager.h</a></div><div class="ttdoc">UGameDataManager 클래스를 선언합니다.</div></div>
+<div class="ttc" id="aUHookComponent_8h_html"><div class="ttname"><a href="UHookComponent_8h.html">UHookComponent.h</a></div><div class="ttdoc">Hook 대상 표시 컴포넌트</div></div>
 <div class="ttc" id="aclassAListenAnswer_html"><div class="ttname"><a href="classAListenAnswer.html">AListenAnswer</a></div><div class="ttdef"><b>Definition</b> <a href="ListenAnswer_8h_source.html#l00035">ListenAnswer.h:36</a></div></div>
-<div class="ttc" id="aclassAListenAnswer_html_a2bca278f32a00a84a800ed31bdee517f"><div class="ttname"><a href="classAListenAnswer.html#a2bca278f32a00a84a800ed31bdee517f">AListenAnswer::OnOutlineStateChanged</a></div><div class="ttdeci">void OnOutlineStateChanged(bool bShouldShowOutline)</div><div class="ttdef"><b>Definition</b> <a href="ListenAnswer_8cpp_source.html#l00124">ListenAnswer.cpp:124</a></div></div>
+<div class="ttc" id="aclassAListenAnswer_html_a2bca278f32a00a84a800ed31bdee517f"><div class="ttname"><a href="classAListenAnswer.html#a2bca278f32a00a84a800ed31bdee517f">AListenAnswer::OnOutlineStateChanged</a></div><div class="ttdeci">void OnOutlineStateChanged(bool bShouldShowOutline)</div><div class="ttdef"><b>Definition</b> <a href="ListenAnswer_8cpp_source.html#l00127">ListenAnswer.cpp:127</a></div></div>
 <div class="ttc" id="aclassAListenAnswer_html_a3a631c5670a77fd2a985f04fce64cb3c"><div class="ttname"><a href="classAListenAnswer.html#a3a631c5670a77fd2a985f04fce64cb3c">AListenAnswer::Mesh</a></div><div class="ttdeci">class UStaticMeshComponent * Mesh</div><div class="ttdef"><b>Definition</b> <a href="ListenAnswer_8h_source.html#l00055">ListenAnswer.h:55</a></div></div>
-<div class="ttc" id="aclassAListenAnswer_html_a4e854afad03cb4e6f48f797a8b18d266"><div class="ttname"><a href="classAListenAnswer.html#a4e854afad03cb4e6f48f797a8b18d266">AListenAnswer::ListenDataTable</a></div><div class="ttdeci">class UDataTable * ListenDataTable</div><div class="ttdef"><b>Definition</b> <a href="ListenAnswer_8h_source.html#l00069">ListenAnswer.h:69</a></div></div>
+<div class="ttc" id="aclassAListenAnswer_html_a4de9f7d79d9997005f3defa1a7f86dd0"><div class="ttname"><a href="classAListenAnswer.html#a4de9f7d79d9997005f3defa1a7f86dd0">AListenAnswer::HookComp</a></div><div class="ttdeci">TObjectPtr&lt; class UHookComponent &gt; HookComp</div><div class="ttdef"><b>Definition</b> <a href="ListenAnswer_8h_source.html#l00064">ListenAnswer.h:64</a></div></div>
+<div class="ttc" id="aclassAListenAnswer_html_a4e854afad03cb4e6f48f797a8b18d266"><div class="ttname"><a href="classAListenAnswer.html#a4e854afad03cb4e6f48f797a8b18d266">AListenAnswer::ListenDataTable</a></div><div class="ttdeci">class UDataTable * ListenDataTable</div><div class="ttdef"><b>Definition</b> <a href="ListenAnswer_8h_source.html#l00072">ListenAnswer.h:72</a></div></div>
 <div class="ttc" id="aclassAListenAnswer_html_a660f2d73075dbb056a3b904635a040df"><div class="ttname"><a href="classAListenAnswer.html#a660f2d73075dbb056a3b904635a040df">AListenAnswer::NameWidgetComp</a></div><div class="ttdeci">class UWidgetComponent * NameWidgetComp</div><div class="ttdef"><b>Definition</b> <a href="ListenAnswer_8h_source.html#l00058">ListenAnswer.h:58</a></div></div>
-<div class="ttc" id="aclassAListenAnswer_html_a837d24b62f41d4409ef20ac12bb526b9"><div class="ttname"><a href="classAListenAnswer.html#a837d24b62f41d4409ef20ac12bb526b9">AListenAnswer::UpdateNameWidget</a></div><div class="ttdeci">void UpdateNameWidget()</div><div class="ttdef"><b>Definition</b> <a href="ListenAnswer_8cpp_source.html#l00111">ListenAnswer.cpp:111</a></div></div>
-<div class="ttc" id="aclassAListenAnswer_html_a881119ad8eea95a9a22569af51f530bd"><div class="ttname"><a href="classAListenAnswer.html#a881119ad8eea95a9a22569af51f530bd">AListenAnswer::BeginPlay</a></div><div class="ttdeci">virtual void BeginPlay() override</div><div class="ttdef"><b>Definition</b> <a href="ListenAnswer_8cpp_source.html#l00049">ListenAnswer.cpp:49</a></div></div>
-<div class="ttc" id="aclassAListenAnswer_html_a8f38c24b843483b4311627d757a07a55"><div class="ttname"><a href="classAListenAnswer.html#a8f38c24b843483b4311627d757a07a55">AListenAnswer::AnswerData</a></div><div class="ttdeci">FListenAnswerData AnswerData</div><div class="ttdef"><b>Definition</b> <a href="ListenAnswer_8h_source.html#l00072">ListenAnswer.h:72</a></div></div>
-<div class="ttc" id="aclassAListenAnswer_html_a96f4151413c32ae3cdfdd2e69a29e301"><div class="ttname"><a href="classAListenAnswer.html#a96f4151413c32ae3cdfdd2e69a29e301">AListenAnswer::UpdateMesh</a></div><div class="ttdeci">void UpdateMesh()</div><div class="ttdef"><b>Definition</b> <a href="ListenAnswer_8cpp_source.html#l00082">ListenAnswer.cpp:82</a></div></div>
-<div class="ttc" id="aclassAListenAnswer_html_ab4e1979d0579a0ed391c765ba8b36ecb"><div class="ttname"><a href="classAListenAnswer.html#ab4e1979d0579a0ed391c765ba8b36ecb">AListenAnswer::OnRep_AnswerData</a></div><div class="ttdeci">void OnRep_AnswerData()</div><div class="ttdef"><b>Definition</b> <a href="ListenAnswer_8cpp_source.html#l00076">ListenAnswer.cpp:76</a></div></div>
-<div class="ttc" id="aclassAListenAnswer_html_ad22cfa2ef8ea565973957b11a6e59aad"><div class="ttname"><a href="classAListenAnswer.html#ad22cfa2ef8ea565973957b11a6e59aad">AListenAnswer::Tick</a></div><div class="ttdeci">virtual void Tick(float DeltaTime) override</div><div class="ttdef"><b>Definition</b> <a href="ListenAnswer_8cpp_source.html#l00071">ListenAnswer.cpp:71</a></div></div>
-<div class="ttc" id="aclassAListenAnswer_html_ada6f13bc24d5b20a0b93303cc10d195d"><div class="ttname"><a href="classAListenAnswer.html#ada6f13bc24d5b20a0b93303cc10d195d">AListenAnswer::AListenAnswer</a></div><div class="ttdeci">AListenAnswer()</div><div class="ttdef"><b>Definition</b> <a href="ListenAnswer_8cpp_source.html#l00015">ListenAnswer.cpp:15</a></div></div>
-<div class="ttc" id="aclassAListenAnswer_html_adb24f3cbd3116eff7ec39ff00319f985"><div class="ttname"><a href="classAListenAnswer.html#adb24f3cbd3116eff7ec39ff00319f985">AListenAnswer::GetLifetimeReplicatedProps</a></div><div class="ttdeci">virtual void GetLifetimeReplicatedProps(TArray&lt; class FLifetimeProperty &gt; &amp;OutLifetimeProps) const override</div><div class="ttdef"><b>Definition</b> <a href="ListenAnswer_8cpp_source.html#l00063">ListenAnswer.cpp:63</a></div></div>
+<div class="ttc" id="aclassAListenAnswer_html_a837d24b62f41d4409ef20ac12bb526b9"><div class="ttname"><a href="classAListenAnswer.html#a837d24b62f41d4409ef20ac12bb526b9">AListenAnswer::UpdateNameWidget</a></div><div class="ttdeci">void UpdateNameWidget()</div><div class="ttdef"><b>Definition</b> <a href="ListenAnswer_8cpp_source.html#l00114">ListenAnswer.cpp:114</a></div></div>
+<div class="ttc" id="aclassAListenAnswer_html_a881119ad8eea95a9a22569af51f530bd"><div class="ttname"><a href="classAListenAnswer.html#a881119ad8eea95a9a22569af51f530bd">AListenAnswer::BeginPlay</a></div><div class="ttdeci">virtual void BeginPlay() override</div><div class="ttdef"><b>Definition</b> <a href="ListenAnswer_8cpp_source.html#l00052">ListenAnswer.cpp:52</a></div></div>
+<div class="ttc" id="aclassAListenAnswer_html_a8f38c24b843483b4311627d757a07a55"><div class="ttname"><a href="classAListenAnswer.html#a8f38c24b843483b4311627d757a07a55">AListenAnswer::AnswerData</a></div><div class="ttdeci">FListenAnswerData AnswerData</div><div class="ttdef"><b>Definition</b> <a href="ListenAnswer_8h_source.html#l00075">ListenAnswer.h:75</a></div></div>
+<div class="ttc" id="aclassAListenAnswer_html_a96f4151413c32ae3cdfdd2e69a29e301"><div class="ttname"><a href="classAListenAnswer.html#a96f4151413c32ae3cdfdd2e69a29e301">AListenAnswer::UpdateMesh</a></div><div class="ttdeci">void UpdateMesh()</div><div class="ttdef"><b>Definition</b> <a href="ListenAnswer_8cpp_source.html#l00085">ListenAnswer.cpp:85</a></div></div>
+<div class="ttc" id="aclassAListenAnswer_html_ab4e1979d0579a0ed391c765ba8b36ecb"><div class="ttname"><a href="classAListenAnswer.html#ab4e1979d0579a0ed391c765ba8b36ecb">AListenAnswer::OnRep_AnswerData</a></div><div class="ttdeci">void OnRep_AnswerData()</div><div class="ttdef"><b>Definition</b> <a href="ListenAnswer_8cpp_source.html#l00079">ListenAnswer.cpp:79</a></div></div>
+<div class="ttc" id="aclassAListenAnswer_html_ad22cfa2ef8ea565973957b11a6e59aad"><div class="ttname"><a href="classAListenAnswer.html#ad22cfa2ef8ea565973957b11a6e59aad">AListenAnswer::Tick</a></div><div class="ttdeci">virtual void Tick(float DeltaTime) override</div><div class="ttdef"><b>Definition</b> <a href="ListenAnswer_8cpp_source.html#l00074">ListenAnswer.cpp:74</a></div></div>
+<div class="ttc" id="aclassAListenAnswer_html_ada6f13bc24d5b20a0b93303cc10d195d"><div class="ttname"><a href="classAListenAnswer.html#ada6f13bc24d5b20a0b93303cc10d195d">AListenAnswer::AListenAnswer</a></div><div class="ttdeci">AListenAnswer()</div><div class="ttdef"><b>Definition</b> <a href="ListenAnswer_8cpp_source.html#l00016">ListenAnswer.cpp:16</a></div></div>
+<div class="ttc" id="aclassAListenAnswer_html_adb24f3cbd3116eff7ec39ff00319f985"><div class="ttname"><a href="classAListenAnswer.html#adb24f3cbd3116eff7ec39ff00319f985">AListenAnswer::GetLifetimeReplicatedProps</a></div><div class="ttdeci">virtual void GetLifetimeReplicatedProps(TArray&lt; class FLifetimeProperty &gt; &amp;OutLifetimeProps) const override</div><div class="ttdef"><b>Definition</b> <a href="ListenAnswer_8cpp_source.html#l00066">ListenAnswer.cpp:66</a></div></div>
 <div class="ttc" id="aclassAListenAnswer_html_ade1ac7c17f756ce5e6880c56400b4b0d"><div class="ttname"><a href="classAListenAnswer.html#ade1ac7c17f756ce5e6880c56400b4b0d">AListenAnswer::InteractableComp</a></div><div class="ttdeci">TObjectPtr&lt; class UInteractableComponent &gt; InteractableComp</div><div class="ttdef"><b>Definition</b> <a href="ListenAnswer_8h_source.html#l00061">ListenAnswer.h:61</a></div></div>
 <div class="ttc" id="aclassUCityNameWidget_html"><div class="ttname"><a href="classUCityNameWidget.html">UCityNameWidget</a></div><div class="ttdef"><b>Definition</b> <a href="CityNameWidget_8h_source.html#l00013">CityNameWidget.h:14</a></div></div>
 <div class="ttc" id="aclassUCityNameWidget_html_a02793042eefe1fbface31d2dd47cbb10"><div class="ttname"><a href="classUCityNameWidget.html#a02793042eefe1fbface31d2dd47cbb10">UCityNameWidget::SetCityName</a></div><div class="ttdeci">void SetCityName(FString InCityName)</div><div class="ttdef"><b>Definition</b> <a href="CityNameWidget_8cpp_source.html#l00013">CityNameWidget.cpp:13</a></div></div>
@@ -286,7 +291,7 @@ $(document).ready(function(){initNavTree('ListenAnswer_8cpp_source.html',''); in
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_b7459e4428712e32d7c860db6e401a05.html">Interactable</a></li><li class="navelem"><a class="el" href="dir_77257aedd361f850f8a01079e914567e.html">Private</a></li><li class="navelem"><a class="el" href="ListenAnswer_8cpp.html">ListenAnswer.cpp</a></li>
-    <li class="footer">생성시간 : 월 12월 29 2025 07:16:49, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 월 12월 29 2025 08:17:26, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

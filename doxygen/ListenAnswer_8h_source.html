@@ -176,29 +176,32 @@ $(document).ready(function(){initNavTree('ListenAnswer_8h_source.html',''); init
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    UPROPERTY(VisibleAnywhere)</div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="classAListenAnswer.html#ade1ac7c17f756ce5e6880c56400b4b0d">   61</a></span>    TObjectPtr&lt;class UInteractableComponent&gt; InteractableComp;</div>
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>public:</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    <span class="comment">//---------------------------------------------------</span></div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <span class="comment">// Data</span></div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <span class="comment">//---------------------------------------------------</span></div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <span class="comment">// 데이터 테이블</span></div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = &quot;Data&quot;)</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="classAListenAnswer.html#a4e854afad03cb4e6f48f797a8b18d266">   69</a></span>    class UDataTable* ListenDataTable;</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <span class="comment">// 현재 입력된 데이터</span></div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    UPROPERTY(ReplicatedUsing = OnRep_AnswerData)</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno"><a class="line" href="classAListenAnswer.html#a8f38c24b843483b4311627d757a07a55">   72</a></span>    <a class="code hl_struct" href="structFListenAnswerData.html">FListenAnswerData</a> AnswerData;</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    UFUNCTION()</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    <span class="keywordtype">void</span> OnRep_AnswerData();</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    </div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno"><a class="line" href="classAListenAnswer.html#a6b989580272917ec61e9fb888c04a356">   77</a></span>    <span class="keywordtype">void</span> SetSpawnData(const <a class="code hl_struct" href="structFListenAnswerData.html">FListenAnswerData</a>&amp; InData) { AnswerData = InData; }</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    UFUNCTION()</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    void OnOutlineStateChanged(<span class="keywordtype">bool</span> bShouldShowOutline);</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="classAListenAnswer.html#a4de9f7d79d9997005f3defa1a7f86dd0">   64</a></span>    TObjectPtr&lt;class UHookComponent&gt; HookComp;</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>public:</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <span class="comment">//---------------------------------------------------</span></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <span class="comment">// Data</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <span class="comment">//---------------------------------------------------</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <span class="comment">// 데이터 테이블</span></div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = &quot;Data&quot;)</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno"><a class="line" href="classAListenAnswer.html#a4e854afad03cb4e6f48f797a8b18d266">   72</a></span>    class UDataTable* ListenDataTable;</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    <span class="comment">// 현재 입력된 데이터</span></div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    UPROPERTY(ReplicatedUsing = OnRep_AnswerData)</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno"><a class="line" href="classAListenAnswer.html#a8f38c24b843483b4311627d757a07a55">   75</a></span>    <a class="code hl_struct" href="structFListenAnswerData.html">FListenAnswerData</a> AnswerData;</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    UFUNCTION()</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    <span class="keywordtype">void</span> OnRep_AnswerData();</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    </div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno"><a class="line" href="classAListenAnswer.html#a6b989580272917ec61e9fb888c04a356">   80</a></span>    <span class="keywordtype">void</span> SetSpawnData(const <a class="code hl_struct" href="structFListenAnswerData.html">FListenAnswerData</a>&amp; InData) { AnswerData = InData; }</div>
 <div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    <span class="keywordtype">void</span> UpdateMesh();</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    <span class="keywordtype">void</span> UpdateNameWidget();</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    </div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>};</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    UFUNCTION()</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    void OnOutlineStateChanged(<span class="keywordtype">bool</span> bShouldShowOutline);</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    <span class="keywordtype">void</span> UpdateMesh();</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    <span class="keywordtype">void</span> UpdateNameWidget();</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    </div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>};</div>
 </div>
 <div class="ttc" id="aListenAnswer_8h_html_ab256f9c27c701de5d273fc77c28e6eff"><div class="ttname"><a href="ListenAnswer_8h.html#ab256f9c27c701de5d273fc77c28e6eff">EAnswerType</a></div><div class="ttdeci">EAnswerType</div><div class="ttdef"><b>Definition</b> <a href="ListenAnswer_8h_source.html#l00011">ListenAnswer.h:12</a></div></div>
 <div class="ttc" id="aListenAnswer_8h_html_ab256f9c27c701de5d273fc77c28e6effa0a38e7286ebbb560354992b3ce62be67"><div class="ttname"><a href="ListenAnswer_8h.html#ab256f9c27c701de5d273fc77c28e6effa0a38e7286ebbb560354992b3ce62be67">EAnswerType::Food</a></div><div class="ttdeci">@ Food</div></div>
@@ -215,7 +218,7 @@ $(document).ready(function(){initNavTree('ListenAnswer_8h_source.html',''); init
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_b7459e4428712e32d7c860db6e401a05.html">Interactable</a></li><li class="navelem"><a class="el" href="dir_37565cbf0e4835105e22b7540e7cc414.html">Public</a></li><li class="navelem"><a class="el" href="ListenAnswer_8h.html">ListenAnswer.h</a></li>
-    <li class="footer">생성시간 : 월 12월 29 2025 07:16:49, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 월 12월 29 2025 08:17:26, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>
