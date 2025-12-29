@@ -5,12 +5,8 @@
 
 #include "ADropper.h"
 #include "ALingoGameState.h"
-#include "CityName.h"
-#include "CityNameWidget.h"
 #include "ListenAnswer.h"
-#include "OrderKiosk.h"
 #include "ULingoGameHelper.h"
-#include "Components/WidgetComponent.h"
 #include "Kismet/GameplayStatics.h"
 
 AFoodCourtManager::AFoodCourtManager()
@@ -88,7 +84,8 @@ void AFoodCourtManager::SpawnListenAnswer()
 		GetCurrentSpawnLocation(Index, FoodSpawnLocation, 0, SpawnLocation);
 
 		AListenAnswer* NewActor = GetWorld()->SpawnActor<AListenAnswer>(ListenAnswerClass, SpawnLocation, FRotator::ZeroRotator);
-
+		SpawnedListenAnswers.Add(NewActor);
+		
 		// 데이터 전달
 		FTimerHandle TimerHandle;
 		GetWorldTimerManager().SetTimer(TimerHandle, FTimerDelegate::CreateLambda([this, NewActor, FoodInfo]
@@ -114,7 +111,8 @@ void AFoodCourtManager::SpawnListenAnswer()
 		GetCurrentSpawnLocation(Index, CitySpawnLocation, 3, SpawnLocation);
 
 		AListenAnswer* NewActor = GetWorld()->SpawnActor<AListenAnswer>(ListenAnswerClass, SpawnLocation, FRotator::ZeroRotator);
-
+		SpawnedListenAnswers.Add(NewActor);
+		
 		// 데이터 전달
 		FTimerHandle TimerHandle;
 		GetWorldTimerManager().SetTimer(TimerHandle, FTimerDelegate::CreateLambda([this, NewActor, CityInfo]
@@ -164,16 +162,17 @@ void AFoodCourtManager::GetCurrentSpawnLocation(int32 Index, FVector InitialLoca
 	OutSpawnLocation = InitialLocation + Offset;
 }
 
-// void AFoodCourtManager::GetCurrentSpawnLocation(int32 Index, FVector& OutSpawnLocation)
-// {
-// 	// 2열로 배치
-// 	int32 Row = Index / 2;
-// 	int32 Col = Index % 2;
-//
-// 	FVector Offset = FVector(Row*SpawnDistance, Col*SpawnDistance, 0.0f);
-//
-// 	OutSpawnLocation = AnswerSpawnLocation + Offset;
-// }
+void AFoodCourtManager::DisableAllListenAnswersText()
+{
+	for (AActor* Actor : SpawnedListenAnswers)
+	{
+		if (AListenAnswer* Answer = Cast<AListenAnswer>(Actor))
+		{
+			Answer->AnswerData.word1.name = "";
+			Answer->UpdateNameWidget();
+		}
+	}
+}
 
 void AFoodCourtManager::HandleQuestScenarioDataUpdated()
 {

@@ -82,7 +82,7 @@ public:
 	UFUNCTION()
 	void OnOutlineStateChanged(bool bShouldShowOutline);
 
-protected:
+public:
 	/**
 	 * @brief Widget에 음식 이름 업데이트
 	 */

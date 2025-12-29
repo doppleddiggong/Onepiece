@@ -109,4 +109,5 @@ protected:
 	// Answer Settings
 	/** 정답 Food 인덱스 (-1이면 모든 Food 허용) */
 	int32 AnswerFoodIndex = -1;
+	
 };
