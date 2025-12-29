@@ -210,11 +210,8 @@ void UChatInputBox::HandleSendClicked()
 		// Daily 단어 생성 요청
 		if (UKLingoNetworkSystem* NetworkSystem = UKLingoNetworkSystem::Get(GetWorld()))
 		{
-			CleanQuestion = TEXT("## 절대로 **한자**를 사용하지 말것 ##") + CleanQuestion;
-			
-			NetworkSystem->RequestChatQuestion(DefineData::DailySystemPrompt, CleanQuestion,
-				
-				FResponseChatAnswersDelegate::CreateUObject(this, &UChatInputBox::OnDailyAnswerReceived));
+			NetworkSystem->RequestDailyQuestion(DefineData::DailySystemPrompt, CleanQuestion,
+				FResponseChatDailysDelegate::CreateUObject(this, &UChatInputBox::OnDailyAnswerReceived));
 
 			PRINTLOG(TEXT("[Daily] Word generation request: %s"), *CleanQuestion);
 		}
@@ -283,7 +280,7 @@ TArray<FWordData> UChatInputBox::GetRandomKoreanWords(int32 Count)
 	return RandomWordDataArray;
 }
 
-void UChatInputBox::OnDailyAnswerReceived(FResponseChatAnswers& ResponseData, bool bWasSuccessful)
+void UChatInputBox::OnDailyAnswerReceived(FResponseChatDailys& ResponseData, bool bWasSuccessful)
 {
 	const int32 MIN_REQUIRED_WORDS = 3;
 
