@@ -42,7 +42,7 @@ var searchData=
   ['getcurrentquestiontext_39',['GetCurrentQuestionText',['../classUPopup__DailyStudy.html#a5dfde0013a07b5ca84c27b87f59a7e8e',1,'UPopup_DailyStudy']]],
   ['getcurrentquesttype_40',['GetCurrentQuestType',['../classALingoGameState.html#a61f2c80cfba92b780505415a4bf01a36',1,'ALingoGameState']]],
   ['getcurrentservermode_41',['GetCurrentServerMode',['../classUCustomNetworkSettings.html#aa089b67ac992ff3aee3dd62629c0df0a',1,'UCustomNetworkSettings']]],
-  ['getcurrentspawnlocation_42',['GetCurrentSpawnLocation',['../classAFoodCourtManager.html#a14dc590b2018fffaa1f75397931c38ee',1,'AFoodCourtManager']]],
+  ['getcurrentspawnlocation_42',['GetCurrentSpawnLocation',['../classAFoodCourtManager.html#aae383386cddfa77e59d52c8a9b2a8298',1,'AFoodCourtManager']]],
   ['getcurrentspeaker_43',['GetCurrentSpeaker',['../classASpeakStageActor.html#a5db3bbf2a588e80612451932b6cd63c8',1,'ASpeakStageActor']]],
   ['getcurrentspeakquestion_44',['GetCurrentSpeakQuestion',['../classALingoPlayerState.html#a242a5560c49914069e8d9cb35a721e7f',1,'ALingoPlayerState']]],
   ['getcurrentstepindex_45',['GetCurrentStepIndex',['../classASpeakStageActor.html#a496bbdee2f1cec7a663b550dcdb6f3c1',1,'ASpeakStageActor']]],

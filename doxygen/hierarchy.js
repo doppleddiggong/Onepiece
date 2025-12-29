@@ -53,6 +53,9 @@ var hierarchy =
       [ "ALobbyLevelScriptActor", "classALobbyLevelScriptActor.html", null ],
       [ "AMainLevelScriptActor", "classAMainLevelScriptActor.html", null ]
     ] ],
+    [ "APawn", null, [
+      [ "AMiniOwlBot", "classAMiniOwlBot.html", null ]
+    ] ],
     [ "APlayerController", null, [
       [ "APlayerControl", "classAPlayerControl.html", null ],
       [ "ARobotPlayerController", "classARobotPlayerController.html", null ]

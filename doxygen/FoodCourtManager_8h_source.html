@@ -159,27 +159,33 @@ $(document).ready(function(){initNavTree('FoodCourtManager_8h_source.html',''); 
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="comment">// 듣기 선택지 스폰 및 데이터 전달</span></div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="keywordtype">void</span> SpawnListenAnswer();</div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="comment">// 첫번째 스폰 위치 기준으로 나머지 스폰 위치 구하기</span></div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="keywordtype">void</span> GetCurrentSpawnLocation(int32 Index, FVector&amp; OutSpawnLocation);</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    </div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>protected:</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    UPROPERTY(EditDefaultsOnly, Category = &quot;Item&quot;)</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="classAFoodCourtManager.html#abad3fa9e30dc26c0df2e6ec49818bb09">   54</a></span>    TSubclassOf&lt;class <a class="code hl_class" href="classAListenAnswer.html">AListenAnswer</a>&gt; ListenAnswerClass;</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    </div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <span class="comment">// 선택지 첫번째 스폰 위치</span></div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    UPROPERTY(EditAnywhere, Category = &quot;Spawn&quot;)</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="classAFoodCourtManager.html#a9869554db961b23998bda6131a4a144a">   58</a></span>    FVector AnswerSpawnLocation = FVector(1743.168217,-5194.291382,-4552.637340);</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="comment">// 스폰 간격</span></div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    UPROPERTY(EditAnywhere, Category = &quot;Spawn&quot;)</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="classAFoodCourtManager.html#adeea88b87aeb6f4e591cbd748e572b38">   61</a></span>    <span class="keywordtype">float</span> SpawnDistance = 150.f;</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>private:</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    <span class="comment">//---------------------------------------------------</span></div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <span class="comment">// Handler</span></div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <span class="comment">//---------------------------------------------------</span></div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    </div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    UFUNCTION()</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <span class="keywordtype">void</span> HandleQuestScenarioDataUpdated();</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>};</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="keywordtype">void</span> GetCurrentSpawnLocation(int32 Index, FVector InitialLocation, int32 Dir,</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        FVector&amp; OutSpawnLocation);</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>protected:</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    UPROPERTY(EditDefaultsOnly, Category = &quot;Item&quot;)</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="classAFoodCourtManager.html#abad3fa9e30dc26c0df2e6ec49818bb09">   55</a></span>    TSubclassOf&lt;class <a class="code hl_class" href="classAListenAnswer.html">AListenAnswer</a>&gt; ListenAnswerClass;</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="comment">// 음식 선택지 스폰 위치</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    UPROPERTY(EditAnywhere, Category = &quot;Spawn&quot;)</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="classAFoodCourtManager.html#a8548365a6d38d71e4ac5e395b6c1b97c">   59</a></span>    FVector FoodSpawnLocation = FVector(2074.407733,-5199.513819,-4559.096513);</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="comment">// 도시 선택지 스폰 위치</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    UPROPERTY(EditAnywhere, Category = &quot;Spawn&quot;)</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="classAFoodCourtManager.html#a657a4cc2a8414e950fb3a5439d8a2928">   63</a></span>    FVector CitySpawnLocation = FVector(1064.733696,-5547.531142,-4124.149377);</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <span class="comment">// 스폰 간격</span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    UPROPERTY(EditAnywhere, Category = &quot;Spawn&quot;)</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="classAFoodCourtManager.html#adeea88b87aeb6f4e591cbd748e572b38">   67</a></span>    <span class="keywordtype">float</span> SpawnDistance = 150.f;</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>private:</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <span class="comment">//---------------------------------------------------</span></div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    <span class="comment">// Handler</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    <span class="comment">//---------------------------------------------------</span></div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    </div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    UFUNCTION()</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    <span class="keywordtype">void</span> HandleQuestScenarioDataUpdated();</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>};</div>
 </div>
 <div class="ttc" id="aclassADropper_html"><div class="ttname"><a href="classADropper.html">ADropper</a></div><div class="ttdef"><b>Definition</b> <a href="ADropper_8h_source.html#l00037">ADropper.h:38</a></div></div>
 <div class="ttc" id="aclassAFoodCourtManager_html"><div class="ttname"><a href="classAFoodCourtManager.html">AFoodCourtManager</a></div><div class="ttdef"><b>Definition</b> <a href="FoodCourtManager_8h_source.html#l00014">FoodCourtManager.h:15</a></div></div>
@@ -190,7 +196,7 @@ $(document).ready(function(){initNavTree('FoodCourtManager_8h_source.html',''); 
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_b7459e4428712e32d7c860db6e401a05.html">Interactable</a></li><li class="navelem"><a class="el" href="dir_37565cbf0e4835105e22b7540e7cc414.html">Public</a></li><li class="navelem"><a class="el" href="FoodCourtManager_8h.html">FoodCourtManager.h</a></li>
-    <li class="footer">생성시간 : 월 12월 29 2025 03:02:07, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 월 12월 29 2025 03:03:05, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

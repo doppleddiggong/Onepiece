@@ -24,6 +24,7 @@ var annotated_dup =
     [ "ALuggageHolder", "classALuggageHolder.html", "classALuggageHolder" ],
     [ "ALuggageManager", "classALuggageManager.html", "classALuggageManager" ],
     [ "AMainLevelScriptActor", "classAMainLevelScriptActor.html", "classAMainLevelScriptActor" ],
+    [ "AMiniOwlBot", "classAMiniOwlBot.html", "classAMiniOwlBot" ],
     [ "AMoviePanel", "classAMoviePanel.html", "classAMoviePanel" ],
     [ "ANetworkBroadcastActor", "classANetworkBroadcastActor.html", "classANetworkBroadcastActor" ],
     [ "ANetworkTesterActor", "classANetworkTesterActor.html", "classANetworkTesterActor" ],

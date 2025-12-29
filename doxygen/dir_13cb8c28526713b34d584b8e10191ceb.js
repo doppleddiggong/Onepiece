@@ -8,5 +8,6 @@ var dir_13cb8c28526713b34d584b8e10191ceb =
     [ "CityName.h", "CityName_8h.html", "CityName_8h" ],
     [ "ConveyorBelt.h", "ConveyorBelt_8h.html", "ConveyorBelt_8h" ],
     [ "FoodHolder.h", "FoodHolder_8h.html", "FoodHolder_8h" ],
+    [ "MiniOwlBot.h", "MiniOwlBot_8h.html", "MiniOwlBot_8h" ],
     [ "Trolley.h", "Trolley_8h.html", "Trolley_8h" ]
 ];
