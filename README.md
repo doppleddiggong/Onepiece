@@ -99,13 +99,16 @@ Onepiece/
 │   ├── CoffeeLibrary/      # 공용 유틸리티 (네트워크, 시스템)
 │   └── LatteLibrary/       # 게임플레이 로직 (이동, 전투, AI)
 ├── Plugins/
-│   └── CoffeeToolbar/      # 에디터 플러그인 (자동화 도구)
+│   ├── CoffeeToolbar/      # 에디터 플러그인 (자동화 도구)
+│   └── HyperLinkPlugin/    # 하이퍼링크 지원 플러그인
 ├── Content/
 │   └── CustomContents/     # 게임 에셋 (캐릭터, 환경, 애니메이션)
 ├── Documents/              # 개발 문서
 │   ├── DevLog/            # 일일/주간 개발 로그
 │   ├── Meeting/           # 회의록
-│   └── Planning/          # 기획 및 설계 문서
+│   ├── Planning/          # 기획 및 설계 문서
+│   ├── Guide/             # 가이드 문서
+│   └── MasterData/        # 마스터 데이터
 ├── AgentRule/             # AI 에이전트 가이드
 │   ├── PERSONA.md         # 에이전트 페르소나 정의
 │   └── Project/Onepiece/  # 프로젝트 특화 규칙
