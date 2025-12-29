@@ -6,6 +6,7 @@ var hierarchy =
       [ "AContactTrigger", "classAContactTrigger.html", null ],
       [ "AConveyorBelt", "classAConveyorBelt.html", null ],
       [ "AConveyorButton", "classAConveyorButton.html", null ],
+      [ "ADailyKiosk", "classADailyKiosk.html", null ],
       [ "ADestroyTrigger", "classADestroyTrigger.html", null ],
       [ "ADoor", "classADoor.html", null ],
       [ "ADropper", "classADropper.html", null ],
@@ -269,6 +270,7 @@ var hierarchy =
       [ "UHoverButton", "classUHoverButton.html", null ],
       [ "UImageButton", "classUImageButton.html", null ],
       [ "UInteractWidget", "classUInteractWidget.html", [
+        [ "UDailyKioskWidget", "classUDailyKioskWidget.html", null ],
         [ "ULuggageInfoWidget", "classULuggageInfoWidget.html", null ]
       ] ],
       [ "ULevelSelectItem", "classULevelSelectItem.html", null ],

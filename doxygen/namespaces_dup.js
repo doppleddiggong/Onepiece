@@ -14,7 +14,9 @@ var namespaces_dup =
       [ "BotName", "namespaceDefineData.html#aeb5c1c68e7ad5bf3b490fef2fc654e7f", null ],
       [ "Daily", "namespaceDefineData.html#a0e7fabb99296c797486c52ba89a66cd1", null ],
       [ "DailySystemPrompt", "namespaceDefineData.html#a69c9c5a9e428fef85251113d4151ffd0", null ],
-      [ "LineHeightPercentage", "namespaceDefineData.html#a0931d9478a2dce145ca0a0b7faba847b", null ]
+      [ "DailyUserPrompt", "namespaceDefineData.html#a7072c0166d73bd8ac249b0a86a1ee005", null ],
+      [ "LineHeightPercentage", "namespaceDefineData.html#a0931d9478a2dce145ca0a0b7faba847b", null ],
+      [ "MIN_REQUIRED_WORDS", "namespaceDefineData.html#a5d58df77c220210aa8cea960a62138f2", null ]
     ] ],
     [ "DoorGroup", "namespaceDoorGroup.html", [
       [ "Intro", "namespaceDoorGroup.html#ab763a363d3e8fc13d51ae5637e65a8fa", null ],

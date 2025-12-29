@@ -2,6 +2,7 @@ var classAFoodCourtManager =
 [
     [ "AFoodCourtManager", "classAFoodCourtManager.html#a4d3602f2add766186d9d9cf7c3c03a8e", null ],
     [ "BeginPlay", "classAFoodCourtManager.html#a139ea3695b1a895f475cd80bd19338ae", null ],
+    [ "DisableAllListenAnswersText", "classAFoodCourtManager.html#a53b98b96fe5a6357c1a745684dd6010c", null ],
     [ "EndPlay", "classAFoodCourtManager.html#aaa4c915e0d339c22873b553f4d005859", null ],
     [ "GetCurrentSpawnLocation", "classAFoodCourtManager.html#aae383386cddfa77e59d52c8a9b2a8298", null ],
     [ "HandleQuestScenarioDataUpdated", "classAFoodCourtManager.html#ac1cb3685954f8d236aedddff4a9fb2ab", null ],
@@ -12,5 +13,6 @@ var classAFoodCourtManager =
     [ "Dropper", "classAFoodCourtManager.html#ade85a027024e078e1a413e9c8fc8cee1", null ],
     [ "FoodSpawnLocation", "classAFoodCourtManager.html#a8548365a6d38d71e4ac5e395b6c1b97c", null ],
     [ "ListenAnswerClass", "classAFoodCourtManager.html#abad3fa9e30dc26c0df2e6ec49818bb09", null ],
-    [ "SpawnDistance", "classAFoodCourtManager.html#adeea88b87aeb6f4e591cbd748e572b38", null ]
+    [ "SpawnDistance", "classAFoodCourtManager.html#adeea88b87aeb6f4e591cbd748e572b38", null ],
+    [ "SpawnedListenAnswers", "classAFoodCourtManager.html#a0f920f4b516c4715a4b29d02f5c32382", null ]
 ];

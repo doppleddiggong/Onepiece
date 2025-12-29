@@ -994,7 +994,7 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno"> 1487</span>            <span class="keywordflow">if</span> (!WeakThis.IsValid() || IsEngineExitRequested())</div>
 <div class="line"><span class="lineno"> 1488</span>                <span class="keywordflow">return</span>;</div>
 <div class="line"><span class="lineno"> 1489</span> </div>
-<div class="line"><span class="lineno"> 1490</span>            WeakThis-&gt;AddNetworkWaitCount(-1);</div>
+<div class="line"><span class="lineno"> 1490</span>            WeakThis-&gt;ShowLoadingCircle(<span class="keyword">false</span>);</div>
 <div class="line"><span class="lineno"> 1491</span>            <a class="code hl_struct" href="structFResponseChatDailys.html">FResponseChatDailys</a> ResponseData;</div>
 <div class="line"><span class="lineno"> 1492</span> </div>
 <div class="line"><span class="lineno"> 1493</span>            <span class="keywordflow">if</span> (bSuccess &amp;&amp; HttpResponse.IsValid())</div>
@@ -1031,10 +1031,11 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno"> 1524</span>            }</div>
 <div class="line"><span class="lineno"> 1525</span>        });</div>
 <div class="line"><span class="lineno"> 1526</span> </div>
-<div class="line"><span class="lineno"> 1527</span>    <a class="code hl_function" href="classUKLingoNetworkSystem.html#accbd4084344a72623fe40deab11d1c29">AddNetworkWaitCount</a>(1);</div>
+<div class="line"><span class="lineno"> 1527</span>    <a class="code hl_function" href="classUKLingoNetworkSystem.html#af0b1628624b05c56818ccf3b3e2a729d">ShowLoadingCircle</a>(<span class="keyword">true</span>);</div>
 <div class="line"><span class="lineno"> 1528</span>    Request-&gt;ProcessRequest();</div>
 <div class="line"><span class="lineno"> 1529</span>}</div>
 <div class="ttc" id="aUKLingoNetworkSystem_8cpp_html_a6bd9e0c8add7ea4b4e756a2b78fb54f7"><div class="ttname"><a href="UKLingoNetworkSystem_8cpp.html#a6bd9e0c8add7ea4b4e756a2b78fb54f7">NETWORK_GET</a></div><div class="ttdeci">#define NETWORK_GET</div><div class="ttdef"><b>Definition</b> <a href="UKLingoNetworkSystem_8cpp_source.html#l00032">UKLingoNetworkSystem.cpp:32</a></div></div>
+<div class="ttc" id="aclassUKLingoNetworkSystem_html_af0b1628624b05c56818ccf3b3e2a729d"><div class="ttname"><a href="classUKLingoNetworkSystem.html#af0b1628624b05c56818ccf3b3e2a729d">UKLingoNetworkSystem::ShowLoadingCircle</a></div><div class="ttdeci">void ShowLoadingCircle(bool bShow)</div><div class="ttdoc">LoadingCircle을 표시하거나 숨깁니다.</div><div class="ttdef"><b>Definition</b> <a href="UKLingoNetworkSystem_8cpp_source.html#l00092">UKLingoNetworkSystem.cpp:92</a></div></div>
 </div><!-- fragment -->
 <p class="reference">다음을 참조함 :  <a class="el" href="NetworkData_8h_source.html#l00109">RequestAPI::chats_daily</a>, <a class="el" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2aad4e206408c1c59bfb8a057ba7857446">Context</a>, <a class="el" href="NetworkData_8h_source.html#l00032">NetworkConfig::GetFullUrlWithQuery()</a>, <a class="el" href="ULingoGameHelper_8cpp_source.html#l00048">ULingoGameHelper::GetLingoGameState()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00046">LogNetwork()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00032">NETWORK_GET</a>, <a class="el" href="GameLogging_8h.html#ad8e2ccc8c20a63e091e0111987b4d3bc">NETWORK_LOG</a>, <a class="el" href="ENetworkLogType_8h.html#a80aaa513e01d2ec2d4421835b09d691fa03d947a2158373c3b9d74325850cb8b9">Post</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00143">SetupHttpRequest()</a>.</p>
 <div id="dynsection-10" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -1129,7 +1130,6 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno"> 1321</span>}</div>
 <div class="ttc" id="aclassUKLingoNetworkSystem_html_a5a16995fb8341967b36b704966c70558"><div class="ttname"><a href="classUKLingoNetworkSystem.html#a5a16995fb8341967b36b704966c70558">UKLingoNetworkSystem::ShowNetworkErrorPopup</a></div><div class="ttdeci">void ShowNetworkErrorPopup(int32 ResponseCode, const FString &amp;ResponseContent)</div><div class="ttdoc">네트워크 에러 팝업을 표시합니다.</div><div class="ttdef"><b>Definition</b> <a href="UKLingoNetworkSystem_8cpp_source.html#l00101">UKLingoNetworkSystem.cpp:101</a></div></div>
 <div class="ttc" id="aclassUKLingoNetworkSystem_html_acf7d7ff1c064c3f86698a1fe131c8f00"><div class="ttname"><a href="classUKLingoNetworkSystem.html#acf7d7ff1c064c3f86698a1fe131c8f00">UKLingoNetworkSystem::IsResSuccess</a></div><div class="ttdeci">static bool IsResSuccess(const int InCode)</div><div class="ttdef"><b>Definition</b> <a href="UKLingoNetworkSystem_8cpp_source.html#l00069">UKLingoNetworkSystem.cpp:69</a></div></div>
-<div class="ttc" id="aclassUKLingoNetworkSystem_html_af0b1628624b05c56818ccf3b3e2a729d"><div class="ttname"><a href="classUKLingoNetworkSystem.html#af0b1628624b05c56818ccf3b3e2a729d">UKLingoNetworkSystem::ShowLoadingCircle</a></div><div class="ttdeci">void ShowLoadingCircle(bool bShow)</div><div class="ttdoc">LoadingCircle을 표시하거나 숨깁니다.</div><div class="ttdef"><b>Definition</b> <a href="UKLingoNetworkSystem_8cpp_source.html#l00092">UKLingoNetworkSystem.cpp:92</a></div></div>
 <div class="ttc" id="anamespaceRequestAPI_html_ab35a143dc8865f6bf07bc269a00b075d"><div class="ttname"><a href="namespaceRequestAPI.html#ab35a143dc8865f6bf07bc269a00b075d">RequestAPI::evaluations_rooms</a></div><div class="ttdeci">static FString evaluations_rooms</div><div class="ttdoc">Evaluation 결과 조회 엔드포인트입니다. GET /evaluations/rooms/{room_id}</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00104">NetworkData.h:104</a></div></div>
 <div class="ttc" id="astructFResponseEvaluationResult_html"><div class="ttname"><a href="structFResponseEvaluationResult.html">FResponseEvaluationResult</a></div><div class="ttdoc">Evaluation 결과 응답 구조체입니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l01340">NetworkData.h:1341</a></div></div>
 <div class="ttc" id="astructFResponseEvaluationResult_html_a45520c59e04ac4011accaf80b649dc3e"><div class="ttname"><a href="structFResponseEvaluationResult.html#a45520c59e04ac4011accaf80b649dc3e">FResponseEvaluationResult::SetFromHttpResponse</a></div><div class="ttdeci">void SetFromHttpResponse(const TSharedPtr&lt; class IHttpResponse, ESPMode::ThreadSafe &gt; &amp;Response)</div><div class="ttdoc">HTTP 응답을 파싱해 구조체를 채웁니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8cpp_source.html#l01311">NetworkData.cpp:1311</a></div></div>
@@ -3025,7 +3025,7 @@ Private 속성</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classUKLingoNetworkSystem.html">UKLingoNetworkSystem</a></li>
-    <li class="footer">생성시간 : 월 12월 29 2025 03:03:05, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 월 12월 29 2025 05:59:08, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>
