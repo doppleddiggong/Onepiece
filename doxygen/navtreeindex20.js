@@ -1,5 +1,10 @@
 var NAVTREEINDEX20 =
 {
+"structFWriteDisplay.html#a26c312f40ddd69969488945c31e6d836":[2,0,131,1],
+"structFWriteDisplay.html#a2b8394385cd48cbe61adb29c2e34419a":[2,0,131,0],
+"structFWriteDisplay.html#aaf4e2f27ed43c801864ce7b6a8f2fb67":[2,0,131,2],
+"structFWriteQuestionData.html":[2,0,132],
+"structFWriteQuestionData.html#a5b2bbe49b267606522779a32e9cc6382":[2,0,132,1],
 "structFWriteQuestionData.html#aa0920a7007582124473c2a60379caf25":[2,0,132,3],
 "structFWriteQuestionData.html#ac9e8bb279d987684842a0441c1fd3dcf":[2,0,132,2],
 "structFWriteQuestionData.html#ae289bc3e0549e4ed83fcfd9a64ac8782":[2,0,132,0],

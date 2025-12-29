@@ -1,5 +1,10 @@
 var NAVTREEINDEX18 =
 {
+"namespaceRequestAPI.html#a0cbbd36ccf6295dad353806ed80f5769":[1,0,9,6],
+"namespaceRequestAPI.html#a2d4b0c891a96c4ac2d1829ae24d01dc3":[1,0,9,13],
+"namespaceRequestAPI.html#a31b9e448e788009b672816b23397eaa3":[1,0,9,15],
+"namespaceRequestAPI.html#a3b67de576da5de7a513d7d971794770a":[1,0,9,1],
+"namespaceRequestAPI.html#a43085442f94afcd668b994b6dd4f71d9":[1,0,9,10],
 "namespaceRequestAPI.html#a5954e96c78c1422b8245017dccc9652d":[1,0,9,7],
 "namespaceRequestAPI.html#a72a9108a91fd78d005fe594cd7ce8818":[1,0,9,5],
 "namespaceRequestAPI.html#a8c14fc8a3f386da9971cfe30a1b00966":[1,0,9,16],
@@ -244,10 +249,5 @@ var NAVTREEINDEX18 =
 "structFReadScoreDetail.html#ab1e8f066d84b3a07f8767eb8e2959113":[2,0,88,1],
 "structFReadTargetData.html":[2,0,89],
 "structFReadTargetData.html#a121844d10bb283cc186e42a6a82a97d0":[2,0,89,0],
-"structFReadTargetData.html#af72c47f441c04b951054d0aa64998e3e":[2,0,89,1],
-"structFRequestInterviewAnswer.html":[2,0,90],
-"structFRequestInterviewAnswer.html#a216549363b85b27053c6b3866b3c457c":[2,0,90,0],
-"structFRequestInterviewAnswer.html#a6f9bb74ac56aa1ad3d48a4a98a017eac":[2,0,90,1],
-"structFRequestListenResult.html":[2,0,91],
-"structFRequestListenResult.html#a2f474a8dc34007f446a9aedca4b5240b":[2,0,91,6]
+"structFReadTargetData.html#af72c47f441c04b951054d0aa64998e3e":[2,0,89,1]
 };

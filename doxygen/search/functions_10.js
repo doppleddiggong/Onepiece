@@ -187,11 +187,12 @@ var searchData=
   ['starttutorhidetimer_184',['StartTutorHideTimer',['../classUToastWidget.html#afe800bb8d7b217084672e0f1fadeaecc',1,'UToastWidget']]],
   ['starttutorialmanually_185',['StartTutorialManually',['../classAPlayerControl.html#a4e8603d756e3da26a093ccdb44528a28',1,'APlayerControl']]],
   ['stopanimation_186',['StopAnimation',['../classUPageScrollView.html#a126f872ec7a6d0de4d75f362fc5ce079',1,'UPageScrollView']]],
-  ['stopconversationvoice_187',['StopConversationVoice',['../classUGameSoundManager.html#a2e6af49b820e18a84cb3739d42c781c6',1,'UGameSoundManager']]],
-  ['stopmissiontimer_188',['StopMissionTimer',['../classALingoGameState.html#a636940358cf8e1fbcb67bd25057a990a',1,'ALingoGameState']]],
-  ['stopprogress_189',['StopProgress',['../classUCircularProgressBar.html#adae17eef8250a62067270beaa3763ba8',1,'UCircularProgressBar']]],
-  ['stopsound2d_190',['StopSound2D',['../classUGameSoundManager.html#a1bc8389aa356e01fcdc563e01813ed02',1,'UGameSoundManager']]],
-  ['stringbase64decode_191',['StringBase64Decode',['../classULingoGameInstance.html#ad2c08929c2a4e5442b6ccc09dec73c32',1,'ULingoGameInstance']]],
-  ['stringbase64encode_192',['StringBase64Encode',['../classULingoGameInstance.html#ac5ebe67461e53d7990058be0f74277aa',1,'ULingoGameInstance']]],
-  ['syncspeakscenariodata_193',['SyncSpeakScenarioData',['../classAWheatly.html#a86b8266692f7f1a7d7a67043859c9ba0',1,'AWheatly']]]
+  ['stopbgm_187',['StopBGM',['../classUGameSoundManager.html#a79b8bd7851782c77a18e424b62ceac51',1,'UGameSoundManager']]],
+  ['stopconversationvoice_188',['StopConversationVoice',['../classUGameSoundManager.html#a2e6af49b820e18a84cb3739d42c781c6',1,'UGameSoundManager']]],
+  ['stopmissiontimer_189',['StopMissionTimer',['../classALingoGameState.html#a636940358cf8e1fbcb67bd25057a990a',1,'ALingoGameState']]],
+  ['stopprogress_190',['StopProgress',['../classUCircularProgressBar.html#adae17eef8250a62067270beaa3763ba8',1,'UCircularProgressBar']]],
+  ['stopsound2d_191',['StopSound2D',['../classUGameSoundManager.html#a1bc8389aa356e01fcdc563e01813ed02',1,'UGameSoundManager']]],
+  ['stringbase64decode_192',['StringBase64Decode',['../classULingoGameInstance.html#ad2c08929c2a4e5442b6ccc09dec73c32',1,'ULingoGameInstance']]],
+  ['stringbase64encode_193',['StringBase64Encode',['../classULingoGameInstance.html#ac5ebe67461e53d7990058be0f74277aa',1,'ULingoGameInstance']]],
+  ['syncspeakscenariodata_194',['SyncSpeakScenarioData',['../classAWheatly.html#a86b8266692f7f1a7d7a67043859c9ba0',1,'AWheatly']]]
 ];

@@ -1,5 +1,10 @@
 var NAVTREEINDEX15 =
 {
+"classUPopup__Result.html#afe93201c94137aabd358a6d930897eca":[2,0,213,8],
+"classUPopup__SpeakJudes.html":[2,0,214],
+"classUPopup__SpeakJudes.html#a0a83ebf52389f267f25c42733148bc9e":[2,0,214,18],
+"classUPopup__SpeakJudes.html#a2b6116f54ac42175448deaaa6a761a2a":[2,0,214,8],
+"classUPopup__SpeakJudes.html#a2bfdb8835950cd4c356e91a61ebd7828":[2,0,214,20],
 "classUPopup__SpeakJudes.html#a2c3d2b47f8255c0172cf9f218790fcc8":[2,0,214,3],
 "classUPopup__SpeakJudes.html#a32e8e1817fd7639e381c8e72c51040d1":[2,0,214,21],
 "classUPopup__SpeakJudes.html#a3e1eb3c26d4673dc7cb75c3f7015d72e":[2,0,214,0],
@@ -244,10 +249,5 @@ var NAVTREEINDEX15 =
 "classURichText.html#a3eff613ed1442444b27f92e8e97d3553":[2,0,226,5],
 "classURichText.html#a40f9c61a54784c5ddd5cbbd3601ecaa7":[2,0,226,8],
 "classURichText.html#a43500d328a3751da344e504d9b21d89b":[2,0,226,1],
-"classURichText.html#a4640d8e362ff48b9d2aa1e9fc358fafa":[2,0,226,3],
-"classURichText.html#a487c620056fc42f604fda9f8c815350b":[2,0,226,11],
-"classURichText.html#a505028f36a450754dc16c4df50f9fac3":[2,0,226,6],
-"classURichText.html#a8c8ce79114b39d5d8e06a4ac24b98ea1":[2,0,226,13],
-"classURichText.html#aa0f0e2dfda351face3d49284835d9a3c":[2,0,226,15],
-"classURichText.html#abb21a0e1482a2e41e16a9ae223ad1666":[2,0,226,20]
+"classURichText.html#a4640d8e362ff48b9d2aa1e9fc358fafa":[2,0,226,3]
 };
