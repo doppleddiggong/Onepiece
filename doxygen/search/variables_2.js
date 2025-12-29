@@ -85,7 +85,7 @@ var searchData=
   ['currentstepindex_82',['CurrentStepIndex',['../classASpeakStageActor.html#a73c3fe46e98225cc9d528ce281e9e2de',1,'ASpeakStageActor']]],
   ['currentvelocity_83',['CurrentVelocity',['../classATrolley.html#ad54df8fa12d857d1507ede76abb9dda5',1,'ATrolley']]],
   ['currsessionname_84',['currSessionName',['../classULingoGameInstance.html#a17232e7c2128d3f8af2561f649b27473',1,'ULingoGameInstance']]],
-  ['curtabindex_85',['CurTabIndex',['../classUTabButtonGroup.html#a20a070f2082d5ed238119ca8dc044aa1',1,'UTabButtonGroup']]],
-  ['curtarget_86',['curtarget',['../classAHolder.html#ac76a7839abbc71619286e50ba8ded371',1,'AHolder::CurTarget'],['../classALuggageHolder.html#aa3217f0b4f3c24098a9c4cee7826f881',1,'ALuggageHolder::CurTarget'],['../classAFoodHolder.html#a1fa5d938a8ad639127ea47320bacb223',1,'AFoodHolder::CurTarget']]],
-  ['cycle_87',['cycle',['../classAMiniOwlBot.html#ac9575285cd021cfd597d1af3d96d1e4e',1,'AMiniOwlBot']]]
+  ['currtarget_85',['currTarget',['../classAMiniOwlBot.html#a9095565ae3f201617867bd803eadca21',1,'AMiniOwlBot']]],
+  ['curtabindex_86',['CurTabIndex',['../classUTabButtonGroup.html#a20a070f2082d5ed238119ca8dc044aa1',1,'UTabButtonGroup']]],
+  ['curtarget_87',['curtarget',['../classAHolder.html#ac76a7839abbc71619286e50ba8ded371',1,'AHolder::CurTarget'],['../classALuggageHolder.html#aa3217f0b4f3c24098a9c4cee7826f881',1,'ALuggageHolder::CurTarget'],['../classAFoodHolder.html#a1fa5d938a8ad639127ea47320bacb223',1,'AFoodHolder::CurTarget']]]
 ];

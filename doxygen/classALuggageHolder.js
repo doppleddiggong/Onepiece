@@ -22,6 +22,7 @@ var classALuggageHolder =
     [ "BoxCollision", "classALuggageHolder.html#aea98e8e5e385e56d7f945900619bc73a", null ],
     [ "bShowOnCompass", "classALuggageHolder.html#a055bb4c9611ef550e3a9c6762f0b3e8c", null ],
     [ "CurTarget", "classALuggageHolder.html#aa3217f0b4f3c24098a9c4cee7826f881", null ],
+    [ "DestroyTimerHandle", "classALuggageHolder.html#a1ca29325d562fcca7b996ef6cb3e0321", null ],
     [ "HoldPos", "classALuggageHolder.html#a37adf1b2bbe4888fc4512eb9afad0fa1", null ],
     [ "MarkerType", "classALuggageHolder.html#afab55eb3a8c206914d440493384e9401", null ],
     [ "MeshComponent", "classALuggageHolder.html#ae20cb4c15a7ce93da7a3bc26c8d8cf09", null ],

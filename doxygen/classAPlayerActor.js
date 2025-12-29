@@ -16,6 +16,8 @@ var classAPlayerActor =
     [ "CreateMainWidget", "classAPlayerActor.html#a63641fed19fdb23e32cb16fed3ba2d79", null ],
     [ "CreateToastWidget", "classAPlayerActor.html#a2f07dd7eee5e4a05fa2457ca52382f3e", null ],
     [ "FindRelativeRotationAtTarget", "classAPlayerActor.html#ad78636c9a80116cef2617ae221104809", null ],
+    [ "GetCameraForwardVector", "classAPlayerActor.html#a8fe8e03721f72342fd9fa796584d46ea", null ],
+    [ "GetCameraPosition", "classAPlayerActor.html#a9a86905134a41a6a488eb8147ad860cd", null ],
     [ "GetCompassMarkerType", "classAPlayerActor.html#abb415ce2d41dab4779fdf9fb5d962e30", null ],
     [ "GetIsJumpStart", "classAPlayerActor.html#a12e67170b20f7eb4ff9bf4090c59db90", null ],
     [ "GetIsRunning", "classAPlayerActor.html#a1aa142689877ae7e98442e3d6c154f71", null ],
