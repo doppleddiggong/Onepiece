@@ -4,6 +4,7 @@
 #include "UPopup_DailyResultItem.h"
 #include "UPopupManager.h"
 #include "UImageButton.h"
+#include "UTextureButton.h"
 
 #include "Components/TextBlock.h"
 #include "Components/VerticalBox.h"
@@ -22,8 +23,8 @@ void UPopup_DailyResult::NativeConstruct()
 
 	if (Btn_Close)
 	{
-		Btn_Confirm->OnButtonClickedEvent.RemoveDynamic(this, &UPopup_DailyResult::OnClickConfirm);
-		Btn_Confirm->OnButtonClickedEvent.AddDynamic(this, &UPopup_DailyResult::OnClickConfirm);
+		Btn_Close->OnButtonClickedEvent.RemoveDynamic(this, &UPopup_DailyResult::OnClickConfirm);
+		Btn_Close->OnButtonClickedEvent.AddDynamic(this, &UPopup_DailyResult::OnClickConfirm);
 	}
 
 }
