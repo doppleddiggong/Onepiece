@@ -44,6 +44,9 @@ public:
 	// 선택지 스폰
 	//---------------------------------------------------
 
+	UPROPERTY()
+	TArray<AActor*> SpawnedListenAnswers;
+	
 	// 듣기 선택지 스폰 및 데이터 전달
 	void SpawnListenAnswer();
 	// 첫번째 스폰 위치 기준으로 나머지 스폰 위치 구하기
@@ -66,6 +69,10 @@ protected:
 	UPROPERTY(EditAnywhere, Category = "Spawn")
 	float SpawnDistance = 150.f;
 
+public:
+	// 스폰된 요소들 텍스트 없애기
+	void DisableAllListenAnswersText();
+	
 private:
 	//---------------------------------------------------
 	// Handler

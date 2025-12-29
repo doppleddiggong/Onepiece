@@ -151,9 +151,22 @@ void AFoodHolder::OnFoodBoxOverlapBegin(
 			
 			// 정답인 경우
 			FTimerHandle TimerHandle;
-			GetWorldTimerManager().SetTimer(TimerHandle, [this]
+			GetWorldTimerManager().SetTimer(TimerHandle, [this, Food]
 			{
 				ANetworkBroadcastActor::Get(GetWorld())->SendDoorMessage(DoorGroup::Step2_End, true, this);
+
+				// 모든 액터의 글씨 없애기
+				AActor* FoodContainerManager = UGameplayStatics::GetActorOfClass(GetWorld(), AFoodCourtManager::StaticClass());
+				if (AFoodCourtManager* FCManager = Cast<AFoodCourtManager>(FoodContainerManager))
+				{
+					FCManager->DisableAllListenAnswersText();
+				}
+
+				// Food 캡슐도 텍스트 없애기
+				Food->CurrentFoodData.word1.name = TEXT("");
+				Food->CurrentFoodData.word2.name = TEXT("");
+
+				if (HasAuthority()) Food->UpdateFoodWidget();
 				
 				// 모든 클라이언트에 정답 인덱스와 함께 결과 팝업 표시
 				Multicast_ShowResultPopup(TryIdx);
@@ -259,7 +272,6 @@ void AFoodHolder::UpdateActivateState(bool State)
 			DynamicMaterial->SetScalarParameterValue(FName("Activate"), State ? 1.0f : 0.0f);
 	}
 }
-
 
 /**
  * @brief [Multicast RPC] 모든 클라이언트에 정답 결과 팝업 표시
