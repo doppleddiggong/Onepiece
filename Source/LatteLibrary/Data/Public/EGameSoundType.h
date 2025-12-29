@@ -7,22 +7,19 @@
 UENUM(BlueprintType)
 enum class EGameSoundType : uint8
 {
-	Click,
-	Diaglog,
-	Disolve,
-
-	Cmd_Approach,
-	Enter_Game,
-	Door_Open,
-
-	What_is_your_name,
-	Where_are_you_from,
-	What_is_the_purpose_of_your_visit,
-	How_long_will_you_stay,
-	Where_will_you_be_staying,
-	Speak_the_Word_in_korean,
-
+	None,
 
 	BGM_Start,
-	BGM_Main
+	BGM_Main,
+
+	UI_PopupOpen,
+	UI_QuestStart,
+	UI_Success,
+	UI_Failure,
+	UI_Interation,
+
+	Speak_the_Word_in_korean,
+
+	Hook,
+	OpenDoor,
 };
