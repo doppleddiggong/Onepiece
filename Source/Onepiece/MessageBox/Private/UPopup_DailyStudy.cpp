@@ -115,7 +115,6 @@ void UPopup_DailyStudy::InitPopup(const TArray<FWordData>& WordDataArray)
 	Txt_CurScore->SetText(FText::FromString(FString::Printf(TEXT("Score : %d"), CurrentScore)));
 
 	// 카운트다운 시작
-	UGameSoundManager::Get(GetWorld())->PlaySound2D(EGameSoundType::Speak_the_Word_in_korean);
 	CountDown_Widget->StartCountDown(3);
 }
 
@@ -328,7 +327,8 @@ void UPopup_DailyStudy::PlayVideo(bool bIsCorrect)
 
 	// 재생할 영상 소스 선택
 	UMediaSource* SourceToPlay = bIsCorrect ? CorrectVideoSource : WrongVideoSource;
-
+	UGameSoundManager::Get(GetWorld())->PlaySound2D(bIsCorrect? EGameSoundType::UI_Success : EGameSoundType::UI_Failure);
+	
 	if (!SourceToPlay)
 	{
 		// 영상이 없으면 바로 다음 문제로 이동
