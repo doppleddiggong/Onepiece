@@ -16,6 +16,7 @@ var classUPopup__Word =
     [ "Btn_Repeat", "classUPopup__Word.html#a4eb3108bead2a3ac387e52eeddd5b6b8", null ],
     [ "Data", "classUPopup__Word.html#a16c603c2b721166f830180c0660ef544", null ],
     [ "LastRequestText", "classUPopup__Word.html#a77fac82cfa14d086eb247da0731c1095", null ],
+    [ "OpenAnimSound", "classUPopup__Word.html#a0d01a5642c88bc36e3474970f5368565", null ],
     [ "OpenDuration", "classUPopup__Word.html#a5a4c2b75560a3e2d07ed3aa52837278e", null ],
     [ "OpenEaseType", "classUPopup__Word.html#ab3e47d26e447e53b60f1dd909ab9eeec", null ],
     [ "OpenElapsedTime", "classUPopup__Word.html#a6124aff28b2b2a0b810bb693ebcd81ad", null ],

@@ -18,6 +18,7 @@ var classUPopup__HowToPlay =
     [ "Btn_Next", "classUPopup__HowToPlay.html#ab6b6c993190783774d36a16a58ec9a1d", null ],
     [ "Btn_Prev", "classUPopup__HowToPlay.html#ac866b9d89bf713ac228902a4dd1cdf5a", null ],
     [ "OnClosedDelegate", "classUPopup__HowToPlay.html#ab8e434a3e2eee9c9aca63c186ee67a45", null ],
+    [ "OpenAnimSound", "classUPopup__HowToPlay.html#a0d01a5642c88bc36e3474970f5368565", null ],
     [ "OpenDuration", "classUPopup__HowToPlay.html#a5a4c2b75560a3e2d07ed3aa52837278e", null ],
     [ "OpenEaseType", "classUPopup__HowToPlay.html#ab3e47d26e447e53b60f1dd909ab9eeec", null ],
     [ "OpenElapsedTime", "classUPopup__HowToPlay.html#a6124aff28b2b2a0b810bb693ebcd81ad", null ],

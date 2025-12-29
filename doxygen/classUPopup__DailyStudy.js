@@ -39,6 +39,7 @@ var classUPopup__DailyStudy =
     [ "MediaPlayer", "classUPopup__DailyStudy.html#ab238bc60cfa62ee2ca6142fd5e02cd55", null ],
     [ "MediaTexture", "classUPopup__DailyStudy.html#acbb1bb488336c2a64ea687d466831850", null ],
     [ "NextTimerHandle", "classUPopup__DailyStudy.html#aada5e8035987df38bdcf0840077fb0b4", null ],
+    [ "OpenAnimSound", "classUPopup__DailyStudy.html#a0d01a5642c88bc36e3474970f5368565", null ],
     [ "OpenDuration", "classUPopup__DailyStudy.html#a5a4c2b75560a3e2d07ed3aa52837278e", null ],
     [ "OpenEaseType", "classUPopup__DailyStudy.html#ab3e47d26e447e53b60f1dd909ab9eeec", null ],
     [ "OpenElapsedTime", "classUPopup__DailyStudy.html#a6124aff28b2b2a0b810bb693ebcd81ad", null ],

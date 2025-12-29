@@ -12,6 +12,7 @@ var classUPopup__SpeakResult =
     [ "bIsOpenAnim", "classUPopup__SpeakResult.html#a807985dccb3305b1004c611401b7b551", null ],
     [ "BlueprintOpenAnimation", "classUPopup__SpeakResult.html#af02f20e1ad1dd8c9672e1164b8aedf64", null ],
     [ "Btn_Confirm", "classUPopup__SpeakResult.html#a62dc7b35b280b75ebd21fd5038104356", null ],
+    [ "OpenAnimSound", "classUPopup__SpeakResult.html#a0d01a5642c88bc36e3474970f5368565", null ],
     [ "OpenDuration", "classUPopup__SpeakResult.html#a5a4c2b75560a3e2d07ed3aa52837278e", null ],
     [ "OpenEaseType", "classUPopup__SpeakResult.html#ab3e47d26e447e53b60f1dd909ab9eeec", null ],
     [ "OpenElapsedTime", "classUPopup__SpeakResult.html#a6124aff28b2b2a0b810bb693ebcd81ad", null ],

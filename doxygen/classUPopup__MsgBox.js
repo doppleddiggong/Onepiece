@@ -19,6 +19,7 @@ var classUPopup__MsgBox =
     [ "Btn_Ok", "classUPopup__MsgBox.html#a45c0844b733728cc516f8fcfe0f77f1c", null ],
     [ "OnCancelDelegate", "classUPopup__MsgBox.html#aa2e641e60d37ac21ad6738ce343a6b00", null ],
     [ "OnOkDelegate", "classUPopup__MsgBox.html#a406a132b2766683bdb4879f57c6e6925", null ],
+    [ "OpenAnimSound", "classUPopup__MsgBox.html#a0d01a5642c88bc36e3474970f5368565", null ],
     [ "OpenDuration", "classUPopup__MsgBox.html#a5a4c2b75560a3e2d07ed3aa52837278e", null ],
     [ "OpenEaseType", "classUPopup__MsgBox.html#ab3e47d26e447e53b60f1dd909ab9eeec", null ],
     [ "OpenElapsedTime", "classUPopup__MsgBox.html#a6124aff28b2b2a0b810bb693ebcd81ad", null ],

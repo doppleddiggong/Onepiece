@@ -17,6 +17,7 @@ var classUPopup__Questionnaire =
     [ "BlueprintOpenAnimation", "classUPopup__Questionnaire.html#af02f20e1ad1dd8c9672e1164b8aedf64", null ],
     [ "Btn_Submit", "classUPopup__Questionnaire.html#a5f7092f32acbc4aaa429aa5775a53b83", null ],
     [ "ItemSpacing", "classUPopup__Questionnaire.html#a24f791ba9d79fa439d6a9195e8d73f08", null ],
+    [ "OpenAnimSound", "classUPopup__Questionnaire.html#a0d01a5642c88bc36e3474970f5368565", null ],
     [ "OpenDuration", "classUPopup__Questionnaire.html#a5a4c2b75560a3e2d07ed3aa52837278e", null ],
     [ "OpenEaseType", "classUPopup__Questionnaire.html#ab3e47d26e447e53b60f1dd909ab9eeec", null ],
     [ "OpenElapsedTime", "classUPopup__Questionnaire.html#a6124aff28b2b2a0b810bb693ebcd81ad", null ],

@@ -16,6 +16,7 @@ var classUPopup__SpeakQuestJudes =
     [ "Image_Grade", "classUPopup__SpeakQuestJudes.html#a2d24d5ebf42b959afde06ea91644cfe2", null ],
     [ "Lifetime", "classUPopup__SpeakQuestJudes.html#af36e1bddca8328d6eacf11219104283e", null ],
     [ "LifetimeTimer", "classUPopup__SpeakQuestJudes.html#acc03965ccae82c66ab6dd93c4c20c959", null ],
+    [ "OpenAnimSound", "classUPopup__SpeakQuestJudes.html#a0d01a5642c88bc36e3474970f5368565", null ],
     [ "OpenDuration", "classUPopup__SpeakQuestJudes.html#a5a4c2b75560a3e2d07ed3aa52837278e", null ],
     [ "OpenEaseType", "classUPopup__SpeakQuestJudes.html#ab3e47d26e447e53b60f1dd909ab9eeec", null ],
     [ "OpenElapsedTime", "classUPopup__SpeakQuestJudes.html#a6124aff28b2b2a0b810bb693ebcd81ad", null ],

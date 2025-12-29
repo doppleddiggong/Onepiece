@@ -1,7 +1,5 @@
 var NAVTREEINDEX10 =
 {
-"classUCompassWidget.html#a088e5996a2f7df18b0832b32a49cc969":[2,0,151,9],
-"classUCompassWidget.html#a2f5b3c8719d5832f7f56ee548be14f49":[2,0,151,3],
 "classUCompassWidget.html#a39ea998a20f81ad49db2214142145148":[2,0,151,7],
 "classUCompassWidget.html#a44ab71db7ce844eadafb113823994a3a":[2,0,151,0],
 "classUCompassWidget.html#a54ec8d81c014fb8a25e4e478fd8fe269":[2,0,151,8],
@@ -249,5 +247,7 @@ var NAVTREEINDEX10 =
 "classUGameDataManager.html#aac4e855e2472379d3ed7662c82edbac2":[2,0,168,58],
 "classUGameDataManager.html#aadbfbcb1f8c50ba7799087a97c0965f0":[2,0,168,59],
 "classUGameDataManager.html#aae5deeab78ceb3f84e28804410bb266a":[2,0,168,12],
-"classUGameDataManager.html#ab12673657aa350898fe7b77c9718bf78":[2,0,168,7]
+"classUGameDataManager.html#ab12673657aa350898fe7b77c9718bf78":[2,0,168,7],
+"classUGameDataManager.html#abc07928e1e45a7018825f1f9bd6029a5":[2,0,168,83],
+"classUGameDataManager.html#abc41f3367f6e5681255ee47529efd346":[2,0,168,11]
 };

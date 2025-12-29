@@ -19,6 +19,7 @@ var classUPopup__Result =
     [ "BlueprintOpenAnimation", "classUPopup__Result.html#af02f20e1ad1dd8c9672e1164b8aedf64", null ],
     [ "Btn_Confirm", "classUPopup__Result.html#abfa0db686cba0ac9337ecadf1beaa185", null ],
     [ "Image_Symbol", "classUPopup__Result.html#a4e169c76e8d9d4bb90d7240769f37d0c", null ],
+    [ "OpenAnimSound", "classUPopup__Result.html#a0d01a5642c88bc36e3474970f5368565", null ],
     [ "OpenDuration", "classUPopup__Result.html#a5a4c2b75560a3e2d07ed3aa52837278e", null ],
     [ "OpenEaseType", "classUPopup__Result.html#ab3e47d26e447e53b60f1dd909ab9eeec", null ],
     [ "OpenElapsedTime", "classUPopup__Result.html#a6124aff28b2b2a0b810bb693ebcd81ad", null ],

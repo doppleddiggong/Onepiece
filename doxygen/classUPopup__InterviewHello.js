@@ -32,6 +32,7 @@ var classUPopup__InterviewHello =
     [ "Button_PrevArrow", "classUPopup__InterviewHello.html#a8ddb247718a000595f14f4c2025b7beb", null ],
     [ "CurQuestionIndex", "classUPopup__InterviewHello.html#a10fc847ec54494aa1cc7790c3d9fb186", null ],
     [ "Edit_Answer", "classUPopup__InterviewHello.html#a0ec1442a83ada70e487001ca7c875d42", null ],
+    [ "OpenAnimSound", "classUPopup__InterviewHello.html#a0d01a5642c88bc36e3474970f5368565", null ],
     [ "OpenDuration", "classUPopup__InterviewHello.html#a5a4c2b75560a3e2d07ed3aa52837278e", null ],
     [ "OpenEaseType", "classUPopup__InterviewHello.html#ab3e47d26e447e53b60f1dd909ab9eeec", null ],
     [ "OpenElapsedTime", "classUPopup__InterviewHello.html#a6124aff28b2b2a0b810bb693ebcd81ad", null ],

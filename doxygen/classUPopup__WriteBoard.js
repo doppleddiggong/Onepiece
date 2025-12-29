@@ -34,6 +34,7 @@ var classUPopup__WriteBoard =
     [ "HorizontalBox_Guide", "classUPopup__WriteBoard.html#a896837d856fca12ae961b6d76ebc3dbe", null ],
     [ "Image_Canvas", "classUPopup__WriteBoard.html#a0483981b6e42904153cfb42d5e2d0fcb", null ],
     [ "OnCanvasSaved", "classUPopup__WriteBoard.html#a84007f42e310cd9cbf24003aadd530ce", null ],
+    [ "OpenAnimSound", "classUPopup__WriteBoard.html#a0d01a5642c88bc36e3474970f5368565", null ],
     [ "OpenDuration", "classUPopup__WriteBoard.html#a5a4c2b75560a3e2d07ed3aa52837278e", null ],
     [ "OpenEaseType", "classUPopup__WriteBoard.html#ab3e47d26e447e53b60f1dd909ab9eeec", null ],
     [ "OpenElapsedTime", "classUPopup__WriteBoard.html#a6124aff28b2b2a0b810bb693ebcd81ad", null ],

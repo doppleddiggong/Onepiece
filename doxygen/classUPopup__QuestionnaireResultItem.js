@@ -9,6 +9,7 @@ var classUPopup__QuestionnaireResultItem =
     [ "bIsOpenAnim", "classUPopup__QuestionnaireResultItem.html#a807985dccb3305b1004c611401b7b551", null ],
     [ "BlueprintOpenAnimation", "classUPopup__QuestionnaireResultItem.html#af02f20e1ad1dd8c9672e1164b8aedf64", null ],
     [ "Image_Answer", "classUPopup__QuestionnaireResultItem.html#a11882983361116c0be2ea0d759cf7548", null ],
+    [ "OpenAnimSound", "classUPopup__QuestionnaireResultItem.html#a0d01a5642c88bc36e3474970f5368565", null ],
     [ "OpenDuration", "classUPopup__QuestionnaireResultItem.html#a5a4c2b75560a3e2d07ed3aa52837278e", null ],
     [ "OpenEaseType", "classUPopup__QuestionnaireResultItem.html#ab3e47d26e447e53b60f1dd909ab9eeec", null ],
     [ "OpenElapsedTime", "classUPopup__QuestionnaireResultItem.html#a6124aff28b2b2a0b810bb693ebcd81ad", null ],

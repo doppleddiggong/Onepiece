@@ -22,6 +22,7 @@ var classUPopup__InputMsg =
     [ "Btn_Close", "classUPopup__InputMsg.html#a3d12174bbc66b17efcc7651be32d66cc", null ],
     [ "Btn_Ok", "classUPopup__InputMsg.html#ae643a5b06d2996777b0696761c908e0a", null ],
     [ "Edit_Name", "classUPopup__InputMsg.html#ae18f7f03df6e3375398f6d152f24cdd6", null ],
+    [ "OpenAnimSound", "classUPopup__InputMsg.html#a0d01a5642c88bc36e3474970f5368565", null ],
     [ "OpenDuration", "classUPopup__InputMsg.html#a5a4c2b75560a3e2d07ed3aa52837278e", null ],
     [ "OpenEaseType", "classUPopup__InputMsg.html#ab3e47d26e447e53b60f1dd909ab9eeec", null ],
     [ "OpenElapsedTime", "classUPopup__InputMsg.html#a6124aff28b2b2a0b810bb693ebcd81ad", null ],

@@ -13,6 +13,7 @@ var classUPopup__SpeakQuest =
     [ "BlueprintOpenAnimation", "classUPopup__SpeakQuest.html#af02f20e1ad1dd8c9672e1164b8aedf64", null ],
     [ "Btn_Ok", "classUPopup__SpeakQuest.html#af0c2147cefe2a943a7bd0c14ac8c7d3f", null ],
     [ "OnOkDelegate", "classUPopup__SpeakQuest.html#a113785f402816a21488e8ce01ddb6c7b", null ],
+    [ "OpenAnimSound", "classUPopup__SpeakQuest.html#a0d01a5642c88bc36e3474970f5368565", null ],
     [ "OpenDuration", "classUPopup__SpeakQuest.html#a5a4c2b75560a3e2d07ed3aa52837278e", null ],
     [ "OpenEaseType", "classUPopup__SpeakQuest.html#ab3e47d26e447e53b60f1dd909ab9eeec", null ],
     [ "OpenElapsedTime", "classUPopup__SpeakQuest.html#a6124aff28b2b2a0b810bb693ebcd81ad", null ],

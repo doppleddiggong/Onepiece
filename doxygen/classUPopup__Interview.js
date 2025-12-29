@@ -16,6 +16,7 @@ var classUPopup__Interview =
     [ "Image_TitleFrame", "classUPopup__Interview.html#a83abf02fc633637c267bc87098b33541", null ],
     [ "InterviewItemClass", "classUPopup__Interview.html#a67150a51e4d4a8a379991f89fe49b777", null ],
     [ "ItemSpacing", "classUPopup__Interview.html#af8bc9c6aedb5cd8de9d939840811381e", null ],
+    [ "OpenAnimSound", "classUPopup__Interview.html#a0d01a5642c88bc36e3474970f5368565", null ],
     [ "OpenDuration", "classUPopup__Interview.html#a5a4c2b75560a3e2d07ed3aa52837278e", null ],
     [ "OpenEaseType", "classUPopup__Interview.html#ab3e47d26e447e53b60f1dd909ab9eeec", null ],
     [ "OpenElapsedTime", "classUPopup__Interview.html#a6124aff28b2b2a0b810bb693ebcd81ad", null ],

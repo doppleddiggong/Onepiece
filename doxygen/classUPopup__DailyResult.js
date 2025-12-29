@@ -13,6 +13,7 @@ var classUPopup__DailyResult =
     [ "BlueprintOpenAnimation", "classUPopup__DailyResult.html#af02f20e1ad1dd8c9672e1164b8aedf64", null ],
     [ "Btn_Close", "classUPopup__DailyResult.html#a68ff15ae7b6945fcfd87533fe29e45a5", null ],
     [ "Btn_Confirm", "classUPopup__DailyResult.html#aa4ff1823962b239cae1f744258846658", null ],
+    [ "OpenAnimSound", "classUPopup__DailyResult.html#a0d01a5642c88bc36e3474970f5368565", null ],
     [ "OpenDuration", "classUPopup__DailyResult.html#a5a4c2b75560a3e2d07ed3aa52837278e", null ],
     [ "OpenEaseType", "classUPopup__DailyResult.html#ab3e47d26e447e53b60f1dd909ab9eeec", null ],
     [ "OpenElapsedTime", "classUPopup__DailyResult.html#a6124aff28b2b2a0b810bb693ebcd81ad", null ],

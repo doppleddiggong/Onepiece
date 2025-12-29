@@ -11,6 +11,7 @@ var classUPopup__SpeakJudes =
     [ "Btn_Close", "classUPopup__SpeakJudes.html#a2b6116f54ac42175448deaaa6a761a2a", null ],
     [ "Btn_Confirm", "classUPopup__SpeakJudes.html#af21db0b00897fb27598e6ca658764784", null ],
     [ "OnConfirmDelegate", "classUPopup__SpeakJudes.html#af1cab60d85364ec72326055876546bd7", null ],
+    [ "OpenAnimSound", "classUPopup__SpeakJudes.html#a0d01a5642c88bc36e3474970f5368565", null ],
     [ "OpenDuration", "classUPopup__SpeakJudes.html#a5a4c2b75560a3e2d07ed3aa52837278e", null ],
     [ "OpenEaseType", "classUPopup__SpeakJudes.html#ab3e47d26e447e53b60f1dd909ab9eeec", null ],
     [ "OpenElapsedTime", "classUPopup__SpeakJudes.html#a6124aff28b2b2a0b810bb693ebcd81ad", null ],

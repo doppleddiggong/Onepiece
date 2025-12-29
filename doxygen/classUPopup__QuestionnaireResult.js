@@ -13,6 +13,7 @@ var classUPopup__QuestionnaireResult =
     [ "BlueprintOpenAnimation", "classUPopup__QuestionnaireResult.html#af02f20e1ad1dd8c9672e1164b8aedf64", null ],
     [ "Btn_Confirm", "classUPopup__QuestionnaireResult.html#a5c1c6137f8ff4d31917b206a163f7b05", null ],
     [ "ItemSpacing", "classUPopup__QuestionnaireResult.html#a2d48cb27d02b234d65cc8cc4284a32cd", null ],
+    [ "OpenAnimSound", "classUPopup__QuestionnaireResult.html#a0d01a5642c88bc36e3474970f5368565", null ],
     [ "OpenDuration", "classUPopup__QuestionnaireResult.html#a5a4c2b75560a3e2d07ed3aa52837278e", null ],
     [ "OpenEaseType", "classUPopup__QuestionnaireResult.html#ab3e47d26e447e53b60f1dd909ab9eeec", null ],
     [ "OpenElapsedTime", "classUPopup__QuestionnaireResult.html#a6124aff28b2b2a0b810bb693ebcd81ad", null ],

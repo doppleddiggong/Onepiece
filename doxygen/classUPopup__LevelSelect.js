@@ -15,6 +15,7 @@ var classUPopup__LevelSelect =
     [ "LevelNames", "classUPopup__LevelSelect.html#aa07ddeda9cc581c89beac62e3da369d8", null ],
     [ "LevelSelectItemClass", "classUPopup__LevelSelect.html#aef45304c9cdb900ce5d1b9a4b4d15f9c", null ],
     [ "OnPopupClosed", "classUPopup__LevelSelect.html#a3c9b3d3a12bcae386e0689d7d98cd591", null ],
+    [ "OpenAnimSound", "classUPopup__LevelSelect.html#a0d01a5642c88bc36e3474970f5368565", null ],
     [ "OpenDuration", "classUPopup__LevelSelect.html#a5a4c2b75560a3e2d07ed3aa52837278e", null ],
     [ "OpenEaseType", "classUPopup__LevelSelect.html#ab3e47d26e447e53b60f1dd909ab9eeec", null ],
     [ "OpenElapsedTime", "classUPopup__LevelSelect.html#a6124aff28b2b2a0b810bb693ebcd81ad", null ],

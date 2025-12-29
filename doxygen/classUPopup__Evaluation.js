@@ -11,6 +11,7 @@ var classUPopup__Evaluation =
     [ "bIsOpenAnim", "classUPopup__Evaluation.html#a807985dccb3305b1004c611401b7b551", null ],
     [ "BlueprintOpenAnimation", "classUPopup__Evaluation.html#af02f20e1ad1dd8c9672e1164b8aedf64", null ],
     [ "Btn_Confirm", "classUPopup__Evaluation.html#a92038d97b485f53e9e2f13ee64e78b16", null ],
+    [ "OpenAnimSound", "classUPopup__Evaluation.html#a0d01a5642c88bc36e3474970f5368565", null ],
     [ "OpenDuration", "classUPopup__Evaluation.html#a5a4c2b75560a3e2d07ed3aa52837278e", null ],
     [ "OpenEaseType", "classUPopup__Evaluation.html#ab3e47d26e447e53b60f1dd909ab9eeec", null ],
     [ "OpenElapsedTime", "classUPopup__Evaluation.html#a6124aff28b2b2a0b810bb693ebcd81ad", null ],

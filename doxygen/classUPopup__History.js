@@ -14,6 +14,7 @@ var classUPopup__History =
     [ "Btn_Close", "classUPopup__History.html#aa2bf98d46d5dd28bf6eec82bacd08d63", null ],
     [ "HistoryItemClass", "classUPopup__History.html#a5effe51a4b26f8e34bb969f3a93d8338", null ],
     [ "ItemSpacing", "classUPopup__History.html#a07abccc88a770d9515ab03af5859018d", null ],
+    [ "OpenAnimSound", "classUPopup__History.html#a0d01a5642c88bc36e3474970f5368565", null ],
     [ "OpenDuration", "classUPopup__History.html#a5a4c2b75560a3e2d07ed3aa52837278e", null ],
     [ "OpenEaseType", "classUPopup__History.html#ab3e47d26e447e53b60f1dd909ab9eeec", null ],
     [ "OpenElapsedTime", "classUPopup__History.html#a6124aff28b2b2a0b810bb693ebcd81ad", null ],

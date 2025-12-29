@@ -11,6 +11,7 @@ var classUPopup__AskTutorial =
     [ "BlueprintOpenAnimation", "classUPopup__AskTutorial.html#af02f20e1ad1dd8c9672e1164b8aedf64", null ],
     [ "Btn_Skip", "classUPopup__AskTutorial.html#a5ef033845d19fcc15da2ba8c99378561", null ],
     [ "Btn_Yes", "classUPopup__AskTutorial.html#a82d12d8c04c7edc4a1d10b18dadb41ee", null ],
+    [ "OpenAnimSound", "classUPopup__AskTutorial.html#a0d01a5642c88bc36e3474970f5368565", null ],
     [ "OpenDuration", "classUPopup__AskTutorial.html#a5a4c2b75560a3e2d07ed3aa52837278e", null ],
     [ "OpenEaseType", "classUPopup__AskTutorial.html#ab3e47d26e447e53b60f1dd909ab9eeec", null ],
     [ "OpenElapsedTime", "classUPopup__AskTutorial.html#a6124aff28b2b2a0b810bb693ebcd81ad", null ],
