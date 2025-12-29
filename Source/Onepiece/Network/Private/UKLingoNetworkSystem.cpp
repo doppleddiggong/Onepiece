@@ -1487,7 +1487,7 @@ void UKLingoNetworkSystem::RequestDailyQuestion(const FString& Context, const FS
 			if (!WeakThis.IsValid() || IsEngineExitRequested())
 				return;
 
-			WeakThis->AddNetworkWaitCount(-1);
+			WeakThis->ShowLoadingCircle(false);
 			FResponseChatDailys ResponseData;
 
 			if (bSuccess && HttpResponse.IsValid())
@@ -1524,7 +1524,7 @@ void UKLingoNetworkSystem::RequestDailyQuestion(const FString& Context, const FS
 			}
 		});
 
-	AddNetworkWaitCount(1);
+	ShowLoadingCircle(true);
 	Request->ProcessRequest();
 }
 

@@ -1,14 +1,21 @@
 // Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
 
 #include "UPopup_DailyResult.h"
+
+#include "ADailyKiosk.h"
 #include "UPopup_DailyResultItem.h"
 #include "UPopupManager.h"
 #include "UImageButton.h"
 #include "UTextureButton.h"
+#include "UConfigLibrary.h"
+#include "ULingoGameHelper.h"
+#include "GameLogging.h"
+#include "UDailyKioskWidget.h"
 
-#include "Components/TextBlock.h"
 #include "Components/VerticalBox.h"
 #include "Components/Spacer.h"
+#include "Components/WidgetComponent.h"
+#include "EngineUtils.h"
 
 void UPopup_DailyResult::NativeConstruct()
 {
@@ -48,6 +55,52 @@ void UPopup_DailyResult::InitPopup(const FDailyStudyResult& Result)
 
 void UPopup_DailyResult::OnClickConfirm()
 {
+	// ConfigLibrary를 이용하여 점수 저장 (플레이어 인덱스 기준)
+	const int32 UserId = ULingoGameHelper::GetUserId(this);
+	const int32 CurrentScore = StudyResult.CurrentScore;
+
+	// 기존 최고 점수 가져오기
+	const int32 BestScore = UConfigLibrary::GetUserInt(UserId, TEXT("DailyBestScore"), 0);
+
+	// 현재 점수가 최고 점수보다 높으면 저장
+	bool bScoreUpdated = false;
+	if (CurrentScore > BestScore)
+	{
+		UConfigLibrary::SetUserInt(UserId, TEXT("DailyBestScore"), CurrentScore, true);
+		PRINTLOG(TEXT("[DailyResult] New best score saved: %d (Previous: %d)"), CurrentScore, BestScore);
+		bScoreUpdated = true;
+	}
+	else
+	{
+		PRINTLOG(TEXT("[DailyResult] Current score: %d (Best: %d)"), CurrentScore, BestScore);
+	}
+
+	// 모든 DailyKiosk의 위젯 업데이트 (클라이언트 측에서만 실행)
+	// Popup은 클라이언트 UI이므로 이 코드는 각 클라이언트에서 독립적으로 실행됩니다.
+	// Screen Space Widget이므로 각 클라이언트가 자신의 화면에만 렌더링합니다.
+	if (bScoreUpdated)
+	{
+		int32 UpdateCount = 0;
+		for (TActorIterator<ADailyKiosk> It(GetWorld()); It; ++It)
+		{
+			ADailyKiosk* Kiosk = *It;
+			if (Kiosk && Kiosk->GetWidgetComp())
+			{
+				if (UDailyKioskWidget* Widget = Cast<UDailyKioskWidget>(Kiosk->GetWidgetComp()->GetWidget()))
+				{
+					Widget->UpdateBestScore();
+					UpdateCount++;
+				}
+			}
+		}
+
+		if (UpdateCount > 0)
+		{
+			PRINTLOG(TEXT("[DailyResult] Updated %d DailyKiosk widget(s) for User %d"), UpdateCount, UserId);
+		}
+	}
+
+	// 팝업 닫기
 	if (auto PopupMgr = UPopupManager::Get(GetWorld()))
 	{
 		PopupMgr->HideCurrentPopup();
