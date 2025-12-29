@@ -176,8 +176,17 @@ void ALuggageHolder::OnBoxOverlapBegin(
 				// 모든 클라이언트에 오답 메시지 표시
 				Multicast_ShowWrongPopup(Luggage->GetColor(), Luggage->GetPattern());
 
-				// 큐브 소거 (서버에서만, 자동 복제됨)
-				Luggage->Destroy();
+				// Dissolve 재생
+				GetWorldTimerManager().SetTimer(DestroyTimerHandle, [this, Luggage]
+				{
+					if (Luggage->UpdateDissolve())
+					{
+						GetWorldTimerManager().ClearTimer(DestroyTimerHandle);
+						// 큐브 소거 (서버에서만, 자동 복제됨)
+						Luggage->Destroy();
+					}
+				},GetWorld()->DeltaTimeSeconds, true);
+				
 			}, 0.5f, false);
 		}
 	}

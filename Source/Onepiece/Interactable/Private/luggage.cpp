@@ -18,6 +18,8 @@
 #include "Net/UnrealNetwork.h"
 #include "GameFramework/PlayerController.h"
 #include "Engine/World.h"
+#include "Materials/MaterialParameterCollection.h"
+#include "Materials/MaterialParameterCollectionInstance.h"
 
 #define LUGGAGE_INTERACT_WIDGET_PATH TEXT("/Game/CustomContents/UI/Widgets/WBP_InteractWidget_Luggage.WBP_InteractWidget_Luggage_C")
 
@@ -71,6 +73,12 @@ Aluggage::Aluggage()
 		WidgetComp->SetWidgetSpace(EWidgetSpace::Screen);
 		WidgetComp->SetDrawSize(FVector2D(2048.0f, 1024.0f));
 	}
+	
+	ConstructorHelpers::FObjectFinder<UMaterialParameterCollection> dissolveMPCRef(TEXT("/Script/Engine.MaterialParameterCollection'/Game/CustomContents/Materials/MPC_Dissolve.MPC_Dissolve'"));
+	if (dissolveMPCRef.Succeeded())
+	{
+		dissolveMPC = dissolveMPCRef.Object;
+	}
 }
 
 void Aluggage::BeginPlay()
@@ -83,6 +91,8 @@ void Aluggage::BeginPlay()
 	InteractableComp->InitWidget(WidgetComp);
 	// 아웃라인 상태 변경 델리게이트 바인딩
 	InteractableComp->OnOutlineStateChanged.AddDynamic(this, &Aluggage::OnOutlineStateChanged);
+	
+	dissolveMPCInstance = GetWorld()->GetParameterCollectionInstance(dissolveMPC);
 }
 
 void Aluggage::Tick(float DeltaTime)
@@ -246,6 +256,15 @@ void Aluggage::OnOutlineStateChanged(bool bShouldShowOutline)
 	Mesh1Comp->SetRenderCustomDepth(bShouldShowOutline);
 	Mesh2Comp->SetRenderCustomDepth(bShouldShowOutline);
 	Mesh3Comp->SetRenderCustomDepth(bShouldShowOutline);
+}
+
+bool Aluggage::UpdateDissolve()
+{
+	// visible value 높이기
+	dissolveVal += dissolveSpeed;
+	dissolveMPCInstance->SetScalarParameterValue(FName("VisibleValue"), dissolveVal);
+	
+	return dissolveVal >= dissolveMaxVal;
 }
 
 void Aluggage::ApplyCollisionState(bool bEnable)
