@@ -4,6 +4,7 @@
 #include "OrderKiosk.h"
 
 #include "ATeleportOut.h"
+#include "CityName.h"
 #include "ConveyorBelt.h"
 #include "Food.h"
 #include "ListenAnswer.h"
@@ -36,6 +37,17 @@ void AOrderKiosk::BeginPlay()
 
 	FoodCollision->OnComponentBeginOverlap.AddDynamic(this, &AOrderKiosk::BeginFoodOverlap);
 	SubmitCollision->OnComponentBeginOverlap.AddDynamic(this, &AOrderKiosk::BeginSubmitOverlap);
+
+	TArray<AActor*> CityNames;
+	UGameplayStatics::GetAllActorsOfClass(GetWorld(), ACityName::StaticClass(), CityNames);
+	for (AActor* Actor : CityNames)
+	{
+		if (ACityName* CN = Cast<ACityName>(Actor))
+		{
+			if (CN->Index == 0) FoodDisplay = CN;
+			else if (CN->Index == 1) CityDisplay = CN;
+		}
+	}
 }
 
 // Called every frame
@@ -97,16 +109,18 @@ void AOrderKiosk::BeginSubmitOverlap(UPrimitiveComponent* OverlappedComponent, A
 					{
 					case EAnswerType::Food:
 						CurrentFoodContainer->SetFoodMesh(Answer->AnswerData.word1, Answer->Mesh->GetStaticMesh());
+						FoodDisplay->SetChecked();
 						break;
 
 					case EAnswerType::City:
 						{
 							CurrentFoodContainer->SetCityName(Answer->AnswerData.word1);
-
+							CityDisplay->SetChecked();
+							
+							// 3초 뒤 정답 구간으로 이동
 							FTimerHandle TimerHandle;
 							GetWorldTimerManager().SetTimer(TimerHandle, FTimerDelegate::CreateLambda([this]
 							{
-
 								Server_MoveFoodContainer(CurrentFoodContainer);
 								
 							}), 3.f, false);

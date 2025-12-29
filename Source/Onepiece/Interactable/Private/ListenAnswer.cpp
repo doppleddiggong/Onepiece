@@ -7,6 +7,7 @@
 #include "FListenData.h"
 #include "InteractableComponent.h"
 #include "UGameDataManager.h"
+#include "UHookComponent.h"
 #include "Components/WidgetComponent.h"
 #include "Net/UnrealNetwork.h"
 
@@ -32,6 +33,8 @@ AListenAnswer::AListenAnswer()
 	Mesh->SetEnableGravity(true);
 	Mesh->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
 	Mesh->SetCollisionProfileName(TEXT("PhysicsActor"));
+
+	HookComp = CreateDefaultSubobject<UHookComponent>(TEXT("Hook"));
 	
 	// 무게 설정
 	Mesh->SetMassOverrideInKg(NAME_None, 50.f, true);

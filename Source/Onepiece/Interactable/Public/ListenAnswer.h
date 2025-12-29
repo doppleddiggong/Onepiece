@@ -60,6 +60,9 @@ public:
 	UPROPERTY(VisibleAnywhere)
 	TObjectPtr<class UInteractableComponent> InteractableComp;
 
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
+	TObjectPtr<class UHookComponent> HookComp;
+
 public:
 	//---------------------------------------------------
 	// Data
