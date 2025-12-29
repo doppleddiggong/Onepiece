@@ -85,7 +85,7 @@ void AFoodCourtManager::SpawnListenAnswer()
 	{
 		// 스폰하기
 		FVector SpawnLocation;
-		GetCurrentSpawnLocation(Index, SpawnLocation);
+		GetCurrentSpawnLocation(Index, FoodSpawnLocation, 0, SpawnLocation);
 
 		AListenAnswer* NewActor = GetWorld()->SpawnActor<AListenAnswer>(ListenAnswerClass, SpawnLocation, FRotator::ZeroRotator);
 
@@ -105,12 +105,13 @@ void AFoodCourtManager::SpawnListenAnswer()
 		Index++;
 	}
 
+	Index = 0;
 	// 도시 이름 선택지 스폰 및 데이터 전달
 	for (const FWordInfo& CityInfo : CityInfos)
 	{
 		// 스폰하기
 		FVector SpawnLocation;
-		GetCurrentSpawnLocation(Index, SpawnLocation);
+		GetCurrentSpawnLocation(Index, CitySpawnLocation, 3, SpawnLocation);
 
 		AListenAnswer* NewActor = GetWorld()->SpawnActor<AListenAnswer>(ListenAnswerClass, SpawnLocation, FRotator::ZeroRotator);
 
@@ -131,16 +132,48 @@ void AFoodCourtManager::SpawnListenAnswer()
 	}
 }
 
-void AFoodCourtManager::GetCurrentSpawnLocation(int32 Index, FVector& OutSpawnLocation)
+void AFoodCourtManager::GetCurrentSpawnLocation(int32 Index, FVector InitialLocation, int32 Dir, FVector& OutSpawnLocation)
 {
 	// 2열로 배치
 	int32 Row = Index / 2;
 	int32 Col = Index % 2;
 
-	FVector Offset = FVector(Row*SpawnDistance, Col*SpawnDistance, 0.0f);
+	// Dir 값에 따라 스폰 방향 변경
+	// 0: 전방-우측, 1: 전방-좌측, 2: 후방-우측, 3: 후방-좌측
+	FVector Offset;
 
-	OutSpawnLocation = AnswerSpawnLocation + Offset;
+	switch (Dir)
+	{
+	case 0:
+		Offset = FVector(Row*SpawnDistance, Col*SpawnDistance, 0.0f);
+		break;
+	case 1:
+		Offset = FVector(-Col*SpawnDistance, Row*SpawnDistance, 0.0f);
+		break;
+	case 2:
+		Offset = FVector(-Row*SpawnDistance, -Col*SpawnDistance, 0.0f);
+		break;
+	case 3:
+		Offset = FVector(Col*SpawnDistance, -Row*SpawnDistance, 0.0f);
+		break;
+	default:
+		Offset = FVector(Row*SpawnDistance, Col*SpawnDistance, 0.0f);
+		break;
+	}
+
+	OutSpawnLocation = InitialLocation + Offset;
 }
+
+// void AFoodCourtManager::GetCurrentSpawnLocation(int32 Index, FVector& OutSpawnLocation)
+// {
+// 	// 2열로 배치
+// 	int32 Row = Index / 2;
+// 	int32 Col = Index % 2;
+//
+// 	FVector Offset = FVector(Row*SpawnDistance, Col*SpawnDistance, 0.0f);
+//
+// 	OutSpawnLocation = AnswerSpawnLocation + Offset;
+// }
 
 void AFoodCourtManager::HandleQuestScenarioDataUpdated()
 {
