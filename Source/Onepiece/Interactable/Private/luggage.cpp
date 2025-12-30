@@ -46,10 +46,8 @@ Aluggage::Aluggage()
 	InteractableComp->InteractionPrompt = TEXT("Pick Up");
 
 	HookComp = CreateDefaultSubobject<UHookComponent>(TEXT("Hook"));
-	
-	// Initial settings
-	Mesh1Comp->SetSimulatePhysics(true);
-	Mesh1Comp->SetEnableGravity(true);
+
+	// Initial settings (Physics 설정은 BeginPlay에서 수행)
 	Mesh1Comp->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
 	Mesh1Comp->SetCollisionProfileName(TEXT("PhysicsActor"));
 
@@ -85,13 +83,20 @@ void Aluggage::BeginPlay()
 {
 	Super::BeginPlay();
 
+	// Physics 설정 (생성자에서 이동)
+	if (Mesh1Comp)
+	{
+		Mesh1Comp->SetSimulatePhysics(true);
+		Mesh1Comp->SetEnableGravity(true);
+	}
+
 	SetReplicateMovement(true);
 
 	// 위젯 초기화
 	InteractableComp->InitWidget(WidgetComp);
 	// 아웃라인 상태 변경 델리게이트 바인딩
 	InteractableComp->OnOutlineStateChanged.AddDynamic(this, &Aluggage::OnOutlineStateChanged);
-	
+
 	dissolveMPCInstance = GetWorld()->GetParameterCollectionInstance(dissolveMPC);
 }
 

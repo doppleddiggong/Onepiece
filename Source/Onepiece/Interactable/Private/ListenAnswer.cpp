@@ -28,9 +28,7 @@ AListenAnswer::AListenAnswer()
 	InteractableComp->InteractionType = EInteractionType::PickUp;
 	InteractableComp->InteractionPrompt = TEXT("Pick Up");
 
-	// Initial settings
-	Mesh->SetSimulatePhysics(true);
-	Mesh->SetEnableGravity(true);
+	// Initial settings (Physics 설정은 BeginPlay에서 수행)
 	Mesh->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
 	Mesh->SetCollisionProfileName(TEXT("PhysicsActor"));
 
@@ -52,6 +50,13 @@ AListenAnswer::AListenAnswer()
 void AListenAnswer::BeginPlay()
 {
 	Super::BeginPlay();
+
+	// Physics 설정 (생성자에서 이동)
+	if (Mesh)
+	{
+		Mesh->SetSimulatePhysics(true);
+		Mesh->SetEnableGravity(true);
+	}
 
 	NameWidgetComp->AttachToComponent(GetRootComponent(), FAttachmentTransformRules::KeepRelativeTransform);
 	NameWidgetComp->SetRelativeLocation(FVector(0, 0, 10));
