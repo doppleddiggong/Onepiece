@@ -31,6 +31,7 @@
 #include "EngineUtils.h"
 #include "GameLogging.h"
 #include "InteractableComponent.h"
+#include "MiniOwlBot.h"
 #include "QuestOrderWidget.h"
 #include "TutorialComponent.h"
 #include "UDialogManager.h"
@@ -761,6 +762,12 @@ void APlayerControl::OnChatAnswerReceived(FResponseChatAnswers& ResponseData, bo
 		// Chat History 저장
 		if (ChatHistorySystem)
 			ChatHistorySystem->SaveChatHistory(ResponseData.question, ResponseData.answer);
+	}
+	
+	// ai tutor 봇에 메시지 표시
+	if (auto playerActor = Cast<APlayerActor>(GetPawn()))
+	{
+		playerActor->GetMiniOwlBot()->UpdateText(ResponseData.answer);
 	}
 }
 

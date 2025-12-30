@@ -3,9 +3,11 @@
 
 #include "ChatInputBox.h"
 
+#include "APlayerActor.h"
 #include "APlayerControl.h"
 #include "ChatWidget.h"
 #include "GameLogging.h"
+#include "MiniOwlBot.h"
 #include "NetworkData.h"
 #include "UKLingoNetworkSystem.h"
 #include "UPopupManager.h"

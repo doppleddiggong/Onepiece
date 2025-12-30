@@ -31,6 +31,7 @@
 #include "AWheatly.h"
 #include "CompassWidget.h"
 #include "HairStrandsInterface.h"
+#include "MiniOwlBot.h"
 #include "OrderKiosk.h"
 #include "QuestionnaireKiosk.h"
 #include "UToastWidget.h"
@@ -130,6 +131,29 @@ APlayerActor::APlayerActor()
 		HookProjectileMesh->SetRelativeScale3D(FVector(1.0f));
 		HookProjectileMesh->SetRelativeRotation(FRotator(0, 90, 0));
 	}
+	
+	miniOwlBot = CreateDefaultSubobject<UChildActorComponent>(TEXT("miniOwlBot"));
+	miniOwlBot->SetupAttachment(GetRootComponent());
+	miniOwlBot->SetRelativeLocationAndRotation(basePos, baseRot);
+	ConstructorHelpers::FClassFinder<AMiniOwlBot> miniOwlBotRef(TEXT("/Game/CustomContents/Blueprints/BP_MiniOwlBot.BP_MiniOwlBot_C"));
+	if (miniOwlBotRef.Succeeded())
+	{
+		miniOwlBot->SetChildActorClass(miniOwlBotRef.Class);
+		// TODO: miniowlbot invisible 처리
+		// 아오 왤캐 안돼 진짜
+		miniOwlBot->OnChildActorCreated().AddLambda([this](AActor* InChildActor)
+		{
+			PRINTLOG(TEXT("%s"), Cast<AMiniOwlBot>(InChildActor) == nullptr ? TEXT("miniOwlBot is null") : TEXT("miniOwlBot is not null"));
+			if (IsLocallyControlled())
+			{
+				Cast<AMiniOwlBot>(InChildActor)->SetActorHiddenInGame(false);
+			}
+			else
+			{
+				Cast<AMiniOwlBot>(InChildActor)->SetActorHiddenInGame(true);
+			}
+		});
+	}
 
 	// MainWidget 클래스 자동 로드
 	MainWidgetClass = FComponentHelper::LoadClass<UMainWidget>(MAINWIDGET_PATH);
@@ -189,7 +213,6 @@ void APlayerActor::BeginPlay()
 			
 		}), 0.5f, false);
 	}
-
 	
 	if (IsLocallyControlled())
 	{
@@ -333,6 +356,11 @@ void APlayerActor::Tick(float DeltaTime)
 		Compass->RotateCompass(CameraRotationZ);
 
 		UpdateCompassMarkers();
+	}
+	
+	if (auto childOwlBot = Cast<AMiniOwlBot>(miniOwlBot->GetChildActor()))
+	{
+		childOwlBot->UpdateLocation(DeltaTime);
 	}
 }
 
@@ -524,14 +552,9 @@ void APlayerActor::Cmd_Info_Implementation()
 	}
 }
 
-FVector APlayerActor::GetCameraForwardVector() const
+class AMiniOwlBot* APlayerActor::GetMiniOwlBot() const
 {
-	return FollowCamera->GetForwardVector();
-}
-
-FVector APlayerActor::GetCameraPosition() const
-{
-	return FollowCamera->GetComponentLocation();
+	return Cast<AMiniOwlBot>(miniOwlBot->GetChildActor());
 }
 
 void APlayerActor::PlaySpeakInfo(int32 StepIndex)

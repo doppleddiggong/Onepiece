@@ -5,85 +5,80 @@
 
 #include "APlayerActor.h"
 #include "GameLogging.h"
-#include "Kismet/GameplayStatics.h"
-#include "Kismet/KismetMathLibrary.h"
+#include "TutorSpeechWidget.h"
+#include "Components/WidgetComponent.h"
 
 
 // Sets default values
+
+
 AMiniOwlBot::AMiniOwlBot()
 {
-	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
-	PrimaryActorTick.bCanEverTick = true;
+	rootSceneComp = CreateDefaultSubobject<USceneComponent>(TEXT("rootSceneComp"));
+	SetRootComponent(rootSceneComp);
+	
+	speechWidget = CreateDefaultSubobject<UWidgetComponent>(TEXT("speechWidget"));
+	speechWidget->SetupAttachment(rootSceneComp);
+	speechWidget->SetRelativeLocation(FVector(0.f, 0.f, 40.f));
+	speechWidget->SetWidgetSpace(EWidgetSpace::Screen);
+	speechWidget->SetDrawAtDesiredSize(true);
+	speechWidget->SetVisibility(false);
+	ConstructorHelpers::FClassFinder<UTutorSpeechWidget> speechWidgetClassRef(TEXT("/Game/CustomContents/UI/Widgets/OwlTutorBot/WBP_TutorSpeechWidget.WBP_TutorSpeechWidget_C"));
+	if (speechWidgetClassRef.Succeeded())
+	{
+		speechWidget->SetWidgetClass(speechWidgetClassRef.Class);
+	}
+	
+	meshComp = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("meshComp"));
+	meshComp->SetupAttachment(rootSceneComp);
+	ConstructorHelpers::FObjectFinder<UStaticMesh> meshRef(TEXT("/Script/Engine.StaticMesh'/Game/CustomContents/Character/Asset/MiniOwl/MiniOwlbot.MiniOwlbot'"));
+	if (meshRef.Succeeded())
+	{
+		meshComp->SetStaticMesh(meshRef.Object);
+	}
 }
 
 // Called when the game starts or when spawned
 void AMiniOwlBot::BeginPlay()
 {
 	Super::BeginPlay();
-	
-	
-	UGameplayStatics::GetAllActorsOfClass(GetWorld(), APlayerActor::StaticClass(), targets);
-	PRINTLOG(TEXT("targets : %d"), targets.Num());
-	
-	if (!targets.IsEmpty())
-	{
-		currTarget = Cast<APlayerActor>(targets[0]);
-	}
 }
 
 // Called every frame
 void AMiniOwlBot::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-	
+}
+
+void AMiniOwlBot::UpdateLocation(float DeltaTime)
+{
 	time += DeltaTime;
-	baseHeight = currTarget->GetActorLocation().Z;
 	
-	UpdateRotation();
-	UpdateLocation();
-}
-
-void AMiniOwlBot::UpdateRotation()
-{
-	// forward vector가 카메라 중심을 향하도록 회전
-	FVector targetDir = currTarget->GetCameraPosition() - GetActorLocation();
-	
-	FRotator rot = FRotationMatrix::MakeFromX(targetDir).Rotator();
-	SetActorRotation(rot);
-}
-
-void AMiniOwlBot::UpdateLocation()// float DeltaTime
-{
 	// up down
-	float valZ = amplitude * FMath::Sin(time * frequency * 2 * PI) + targetHeight + baseHeight;
-	float valX = currTarget->GetActorLocation().X;
-	float valY = currTarget->GetActorLocation().Y;
+	FVector targetPos = FVector::ZeroVector;
+	targetPos.Z = amplitude * FMath::Sin(time * frequency * 2 * PI);
 	
-	// 카메라 범위 밖으로 벗어나면
-	// if (CheckAngleOutofCamera())
-	{
-		// 특정 위치로 오게 하기
-		FVector rotatedDir = radius * currTarget->GetActorForwardVector().RotateAngleAxis(angle, FVector::UpVector);
-		valX += rotatedDir.X;
-		valY += rotatedDir.Y;
-	}
-	
-	SetActorLocation(FVector(valX, valY, valZ));
+	SetActorRelativeLocation(targetPos);
 }
 
-// 이 함수 현재 이상함
-bool AMiniOwlBot::CheckAngleOutofCamera()
+void AMiniOwlBot::UpdateText(const FString& text)
 {
-	// target의 카메라 방향 벡터
-	FVector2D targetCameraDir(currTarget->GetCameraForwardVector().X, currTarget->GetCameraForwardVector().Y);
-	targetCameraDir.Normalize();
+	ServerRPC_UpdateText(text);
+}
+
+void AMiniOwlBot::ServerRPC_UpdateText_Implementation(const FString& text)
+{
+	MulticastRPC_UpdateText(text);
+}
+
+void AMiniOwlBot::MulticastRPC_UpdateText_Implementation(const FString& text)
+{
+	speechWidget->SetVisibility(true);
+	Cast<UTutorSpeechWidget>(speechWidget->GetWidget())->SetInputText(text);
 	
-	// 자신의 방향벡터
-	FVector2D botDir(GetActorForwardVector().X, GetActorForwardVector().Y);
-	botDir.Normalize();
-	
-	// 각도 구하기
-	float dotP = FVector2D::DotProduct(targetCameraDir, botDir);
-	PRINTLOG(TEXT("dotP angle : %f, %f"), FMath::RadiansToDegrees(FMath::Acos(dotP)), angle);
-	return FMath::RadiansToDegrees(FMath::Acos(dotP)) <= angle;
+	FTimerHandle TimerHandle;
+	GetWorld()->GetTimerManager().SetTimer(TimerHandle, [this]()
+	{
+		speechWidget->SetVisibility(false);
+	}, 5.f, false);
 }

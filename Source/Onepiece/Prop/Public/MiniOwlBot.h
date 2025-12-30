@@ -18,28 +18,38 @@ protected:
 	virtual void BeginPlay() override;
 
 public:
-	virtual void Tick(float DeltaTime) override;
+	virtual void Tick(float DeltaSeconds) override;
+	
+protected:
+	UPROPERTY()
+	TObjectPtr<class USceneComponent> rootSceneComp;
+	
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Components|Widget")
+	TObjectPtr<class UWidgetComponent> speechWidget;
+	
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Components|Mesh")
+	TObjectPtr<class UStaticMeshComponent> meshComp;
+	
+public:
+	void UpdateLocation(float DeltaTime);
+	void UpdateText(const FString& text);
+	
+private:
+	UFUNCTION(Server, Reliable)
+	void ServerRPC_UpdateText(const FString& text);
+	UFUNCTION(NetMulticast, Reliable)
+	void MulticastRPC_UpdateText(const FString& text);
 	
 private:
 	// owlbot position values
-	FVector targetLocation = FVector(150, 50, 50);
-	float radius = 200.f;
-	float angle = 25.f;
-	float baseHeight;
-	float targetHeight = 50.f;
+	float radius = 280.f;
+	float angle = 28.f;
 	float amplitude = 10.f;
-	float frequency = 0.25f;
+	float frequency = 0.4f;
 	float speed = 20.f;
 	float time = 0.f;
 	
-	// target array
+	// parent
 	UPROPERTY()
-	TArray<class AActor*> targets;
-	
-	UPROPERTY()
-	TObjectPtr<class APlayerActor> currTarget;
-	
-	void UpdateRotation();
-	void UpdateLocation();
-	bool CheckAngleOutofCamera();
+	TObjectPtr<class APlayerActor> parentObj;	
 };
