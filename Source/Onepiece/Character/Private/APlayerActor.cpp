@@ -134,7 +134,7 @@ APlayerActor::APlayerActor()
 	// MainWidget 클래스 자동 로드
 	MainWidgetClass = FComponentHelper::LoadClass<UMainWidget>(MAINWIDGET_PATH);
 
-	ToastWidgetClass = FComponentHelper::LoadClass<UMainWidget>(TOASTWIDGET_PATH);
+	ToastWidgetClass = FComponentHelper::LoadClass<UToastWidget>(TOASTWIDGET_PATH);
 
 	// Compass 마커
 	MarkerType = ECompassMarkerType::OtherPlayer;

@@ -38,7 +38,7 @@ public:
 	FORCEINLINE int32 GetCurrentStepIndex() const { return CurrentStepIndex; }
 
 	UFUNCTION(BlueprintCallable, Category = "SpeakStage")
-	FORCEINLINE FString GetCurrentQuestion() const;
+	FString GetCurrentQuestion() const;
 
 	UFUNCTION(BlueprintCallable, Category = "SpeakStage")
 	int32 GetTotalQuestionsCount();

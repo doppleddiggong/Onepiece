@@ -19,7 +19,7 @@
 #define LEVELDATA_PATH  TEXT("/Game/CustomContents/MasterData/DT_LevelData.DT_LevelData")
 #define LISTENDATA_PATH  TEXT("/Game/CustomContents/MasterData/DT_ListenData.DT_ListenData")
 #define READDATA_PATH  TEXT("/Game/CustomContents/MasterData/DT_ReadData.DT_ReadData")
-#define WORDDATA_PATH  TEXT("/Game/CustomContents/MasterData/DT_WordData.DT_WordData")
+#define WORDDATA_PATH  TEXT("/Game/CustomContents/MasterData/DT_WordStudyData.DT_WordStudyData")
 #define HOWTOPLAYDATA_PATH  TEXT("/Game/CustomContents/MasterData/DT_HowToPlayPageData.DT_HowToPlayPageData")
 
 
