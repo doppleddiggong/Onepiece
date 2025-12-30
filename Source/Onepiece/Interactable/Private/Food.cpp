@@ -32,9 +32,6 @@ AFood::AFood()
 	Mesh->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
 	Mesh->SetCollisionProfileName(TEXT("PhysicsActor"));
 
-	// 무게 설정
-	Mesh->SetMassOverrideInKg(NAME_None, 50.f, true);
-
 	// 물리 복제 설정
 	Mesh->SetIsReplicated(true);
 
@@ -55,6 +52,7 @@ void AFood::BeginPlay()
 	{
 		Mesh->SetSimulatePhysics(true);
 		Mesh->SetEnableGravity(true);
+		Mesh->SetMassOverrideInKg(NAME_None, 50.f, true);
 	}
 
 	CityName->AttachToComponent(GetRootComponent(), FAttachmentTransformRules::KeepRelativeTransform);

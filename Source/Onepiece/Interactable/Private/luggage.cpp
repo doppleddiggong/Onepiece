@@ -51,9 +51,6 @@ Aluggage::Aluggage()
 	Mesh1Comp->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
 	Mesh1Comp->SetCollisionProfileName(TEXT("PhysicsActor"));
 
-	// 무게 설정
-	Mesh1Comp->SetMassOverrideInKg(NAME_None, 5.f, true);
-
 	// 물리 복제 설정
 	Mesh1Comp->SetIsReplicated(true);
 
@@ -88,6 +85,7 @@ void Aluggage::BeginPlay()
 	{
 		Mesh1Comp->SetSimulatePhysics(true);
 		Mesh1Comp->SetEnableGravity(true);
+		Mesh1Comp->SetMassOverrideInKg(NAME_None, 5.f, true);
 	}
 
 	SetReplicateMovement(true);

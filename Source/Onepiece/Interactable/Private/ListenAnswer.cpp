@@ -33,9 +33,6 @@ AListenAnswer::AListenAnswer()
 	Mesh->SetCollisionProfileName(TEXT("PhysicsActor"));
 
 	HookComp = CreateDefaultSubobject<UHookComponent>(TEXT("Hook"));
-	
-	// 무게 설정
-	Mesh->SetMassOverrideInKg(NAME_None, 50.f, true);
 
 	// 물리 복제 설정
 	Mesh->SetIsReplicated(true);
@@ -56,6 +53,7 @@ void AListenAnswer::BeginPlay()
 	{
 		Mesh->SetSimulatePhysics(true);
 		Mesh->SetEnableGravity(true);
+		Mesh->SetMassOverrideInKg(NAME_None, 50.f, true);
 	}
 
 	NameWidgetComp->AttachToComponent(GetRootComponent(), FAttachmentTransformRules::KeepRelativeTransform);
