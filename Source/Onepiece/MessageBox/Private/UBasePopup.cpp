@@ -2,6 +2,7 @@
 
 
 #include "UBasePopup.h"
+#include "UGameSoundManager.h"
 
 void UBasePopup::NativeTick(const FGeometry& MyGeometry, float InDeltaTime)
 {
@@ -18,6 +19,15 @@ void UBasePopup::OpenAnimation()
 	if (!IsInViewport())
 	{
 		AddToViewport();
+	}
+
+	// 팝업 오픈 사운드 재생 (None이 아닐 때만)
+	if (OpenAnimSound != EGameSoundType::None)
+	{
+		if (UGameSoundManager* SoundManager = UGameSoundManager::Get(this))
+		{
+			SoundManager->PlaySound2D(OpenAnimSound);
+		}
 	}
 
 	// 블루프린트에서 정의한 애니메이션이 있으면 해당 애니메이션 재생

@@ -136,12 +136,18 @@ void UMainWidget::OnUpdateMissionTimerState(bool bIsActive, float TimeLimit)
 	if (CachedGameState && bIsActive && TimeLimit > 0.0f)
 		CachedGameState->UpdateRemainMissionTime( TimeLimit );
 
+	// 타이머를 멈춰야 하는 경우 (결과 팝업 등)
+	if (CachedGameState && !bIsActive && TimeLimit == 0.0f)
+	{
+		CachedGameState->StopMissionTimer();
+	}
+
 	// if (!QuestInfoWidget)
 	// 	return;
 
 	// QuestInfoWidget->SetVisibility(bIsActive ? ESlateVisibility::Visible : ESlateVisibility::Collapsed );
 	HookTargetIndicator->SetVisibility(ESlateVisibility::Visible);
-	
+
 	if (bIsActive)
 	{
 		WidgetSwitcher->SetActiveWidgetIndex(0);

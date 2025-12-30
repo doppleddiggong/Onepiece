@@ -11,6 +11,7 @@
 #include "APlayerControl.h"
 #include "GameLogging.h"
 #include "InteractableComponent.h"
+#include "UGameSoundManager.h"
 #include "Camera/PlayerCameraManager.h"
 #include "GameFramework/PlayerController.h"
 
@@ -68,6 +69,8 @@ void UInteractionSystem::TryInteract()
 			// PRINT_STRING(TEXT("부엉 부엉 %s"), *OwnerPlayer->GetName());
 			PRINTLOG(TEXT("UInteractionSystem: Interacting with %s, %s"), *GetOwner()->GetName(), *OwnerPlayer->GetName());
 			CurrentTarget->TriggerInteraction(OwnerPlayer);
+
+			UGameSoundManager::Get(GetWorld())->PlaySound2D( EGameSoundType::UI_Interation);
 			break;
 		
 		case EInteractionType::Kiosk:
@@ -115,6 +118,8 @@ void UInteractionSystem::TryPickUp()
 
 	HoldingInteractable = CurrentTarget;
 	HoldingInteractable->PickUp(OwnerPlayer);
+
+	UGameSoundManager::Get(GetWorld())->PlaySound2D( EGameSoundType::UI_Interation);
 }
 
 void UInteractionSystem::TryDrop()

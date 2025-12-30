@@ -90,7 +90,7 @@ APlayerActor::APlayerActor()
 
 	GetCharacterMovement()->RotationRate = FRotator(0.0f, 500.0f, 0.0f);
 	GetCharacterMovement()->MaxWalkSpeed = WalkSpeed;
-	GetCharacterMovement()->bOrientRotationToMovement = true;
+	GetCharacterMovement()->bOrientRotationToMovement = false;
 
 	HoldPosition = CreateDefaultSubobject<USceneComponent>(TEXT("HoldPosition"));
 	HoldPosition->SetupAttachment(FollowCamera);
@@ -522,6 +522,16 @@ void APlayerActor::Cmd_Info_Implementation()
 			}
 		}
 	}
+}
+
+FVector APlayerActor::GetCameraForwardVector() const
+{
+	return FollowCamera->GetForwardVector();
+}
+
+FVector APlayerActor::GetCameraPosition() const
+{
+	return FollowCamera->GetComponentLocation();
 }
 
 void APlayerActor::PlaySpeakInfo(int32 StepIndex)

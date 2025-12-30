@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "EPopupType.h"
+#include "EGameSoundType.h"
 #include "Blueprint/UserWidget.h"
 #include "FEaseHelper.h"
 #include "UBasePopup.generated.h"
@@ -80,6 +81,19 @@ protected:
 	 */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Popup|Animation")
 	EEaseType OpenEaseType = EEaseType::EaseOutBack;
+
+	// ========================================
+	// Sound
+	// ========================================
+
+	/**
+	 * @brief 팝업 오픈 시 재생될 사운드 타입
+	 * @details 블루프린트에서 팝업별로 다른 사운드를 설정할 수 있습니다.
+	 *          None으로 설정하면 사운드를 재생하지 않습니다.
+	 *          기본값은 UI_PopupOpen입니다.
+	 */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Popup|Sound")
+	EGameSoundType OpenAnimSound = EGameSoundType::UI_PopupOpen;
 
 public:
 	/**

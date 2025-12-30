@@ -96,4 +96,8 @@ protected:
 protected:
 	// Compass Interface
 	virtual void SetCompassMarkerInto(ECompassMarkerType InMarkerType) override;
+	
+private:
+	// Luggage Destroy Value
+	FTimerHandle DestroyTimerHandle;
 };
