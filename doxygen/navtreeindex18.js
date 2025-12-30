@@ -1,5 +1,7 @@
 var NAVTREEINDEX18 =
 {
+"namespaceDoorGroup.html#a382bc5ba9c89bbe22f7a3a78c7c5a04c":[1,0,3,6],
+"namespaceDoorGroup.html#a46ea8b980567f25c0faa57ce918aa7d7":[1,0,3,3],
 "namespaceDoorGroup.html#a7e9c7cfba68d64eab773a003588bad8b":[1,0,3,5],
 "namespaceDoorGroup.html#aa5f8813b0ddba77c8062a9dca6f794c2":[1,0,3,1],
 "namespaceDoorGroup.html#ab763a363d3e8fc13d51ae5637e65a8fa":[1,0,3,0],
@@ -247,7 +249,5 @@ var NAVTREEINDEX18 =
 "structFPlayerInfo.html#abaedebffe371f93a76a0f68548a23caf":[2,0,81,2],
 "structFPlayerInfo.html#ad3ab5f43b45c7199b34b170a1efe1fac":[2,0,81,3],
 "structFPlayerInfo.html#ae7419638ded4d95fd57101108dcf8e50":[2,0,81,0],
-"structFQuestListenInfo.html":[2,0,82],
-"structFQuestListenInfo.html#a05c5c698f54df45fede343a6a08425db":[2,0,82,6],
-"structFQuestListenInfo.html#a30660f2c732b8ffd87d7e030fcd8dd11":[2,0,82,0]
+"structFQuestListenInfo.html":[2,0,82]
 };

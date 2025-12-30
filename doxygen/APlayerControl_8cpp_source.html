@@ -661,7 +661,7 @@ $(document).ready(function(){initNavTree('APlayerControl_8cpp_source.html',''); 
 <div class="line"><a id="l00502" name="l00502"></a><span class="lineno">  502</span>    }</div>
 <div class="line"><a id="l00503" name="l00503"></a><span class="lineno">  503</span>    <span class="keywordflow">if</span> (!component-&gt;bCanInteract)</div>
 <div class="line"><a id="l00504" name="l00504"></a><span class="lineno">  504</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00505" name="l00505"></a><span class="lineno">  505</span>    </div>
+<div class="line"><a id="l00505" name="l00505"></a><span class="lineno">  505</span> </div>
 <div class="line"><a id="l00506" name="l00506"></a><span class="lineno">  506</span>    <span class="comment">// 델리게이트 브로드캐스트</span></div>
 <div class="line"><a id="l00507" name="l00507"></a><span class="lineno">  507</span>    component-&gt;OnInteractionTriggered.Broadcast(GetPawn());</div>
 <div class="line"><a id="l00508" name="l00508"></a><span class="lineno">  508</span> </div>
@@ -981,150 +981,169 @@ $(document).ready(function(){initNavTree('APlayerControl_8cpp_source.html',''); 
 <div class="line"><a id="l00809" name="l00809"></a><span class="lineno">  809</span> </div>
 <div class="line"><a id="l00810" name="l00810"></a><span class="lineno">  810</span>    <span class="keywordflow">if</span> (InDoorIndex == <a class="code hl_variable" href="namespaceDoorGroup.html#a46ea8b980567f25c0faa57ce918aa7d7">DoorGroup::Step1_Tutorial</a>)</div>
 <div class="line"><a id="l00811" name="l00811"></a><span class="lineno">  811</span>    {</div>
-<div class="line"><a id="l00812" name="l00812"></a><span class="lineno">  812</span>        <a class="code hl_function" href="classAPlayerControl.html#ab1044d9a2d811fbecea2eaa79ddaafdc">OpenHowToPlay</a>(<a class="code hl_enumvalue" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a7a1a5f3e79fdc91edf2f5ead9d66abb4">EQuestType::Read</a>);</div>
+<div class="line"><a id="l00812" name="l00812"></a><span class="lineno">  812</span>        <a class="code hl_function" href="classAPlayerControl.html#aef194503875ee4bd404d0c02e261ca15">Multicast_OpenHowToPlay</a>(<a class="code hl_enumvalue" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a7a1a5f3e79fdc91edf2f5ead9d66abb4">EQuestType::Read</a>);</div>
 <div class="line"><a id="l00813" name="l00813"></a><span class="lineno">  813</span>    }</div>
 <div class="line"><a id="l00814" name="l00814"></a><span class="lineno">  814</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (InDoorIndex == <a class="code hl_variable" href="namespaceDoorGroup.html#a7e9c7cfba68d64eab773a003588bad8b">DoorGroup::Step2_Tutorial</a>)</div>
 <div class="line"><a id="l00815" name="l00815"></a><span class="lineno">  815</span>    {</div>
-<div class="line"><a id="l00816" name="l00816"></a><span class="lineno">  816</span>        <a class="code hl_function" href="classAPlayerControl.html#ab1044d9a2d811fbecea2eaa79ddaafdc">OpenHowToPlay</a>(<a class="code hl_enumvalue" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921ace6802b46091c31e2ec2363883fe8369">EQuestType::Listen</a>);</div>
+<div class="line"><a id="l00816" name="l00816"></a><span class="lineno">  816</span>        <a class="code hl_function" href="classAPlayerControl.html#aef194503875ee4bd404d0c02e261ca15">Multicast_OpenHowToPlay</a>(<a class="code hl_enumvalue" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921ace6802b46091c31e2ec2363883fe8369">EQuestType::Listen</a>);</div>
 <div class="line"><a id="l00817" name="l00817"></a><span class="lineno">  817</span>    }</div>
 <div class="line"><a id="l00818" name="l00818"></a><span class="lineno">  818</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (InDoorIndex == <a class="code hl_variable" href="namespaceDoorGroup.html#ae980b3d55fb7560bca35c16c1cc7d954">DoorGroup::Step3_Tutorial</a>)</div>
 <div class="line"><a id="l00819" name="l00819"></a><span class="lineno">  819</span>    {</div>
-<div class="line"><a id="l00820" name="l00820"></a><span class="lineno">  820</span>        <span class="keywordflow">if</span> (EventInstigator != <span class="keyword">nullptr</span> &amp;&amp; EventInstigator != GetPawn())</div>
-<div class="line"><a id="l00821" name="l00821"></a><span class="lineno">  821</span>            <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00822" name="l00822"></a><span class="lineno">  822</span>        </div>
-<div class="line"><a id="l00823" name="l00823"></a><span class="lineno">  823</span>        <a class="code hl_function" href="classAPlayerControl.html#ab1044d9a2d811fbecea2eaa79ddaafdc">OpenHowToPlay</a>(<a class="code hl_enumvalue" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a8b1e2b9b342dd37344c6343dc23a6733">EQuestType::Speak</a>);</div>
-<div class="line"><a id="l00824" name="l00824"></a><span class="lineno">  824</span>    }</div>
-<div class="line"><a id="l00825" name="l00825"></a><span class="lineno">  825</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> ( InDoorIndex == <a class="code hl_variable" href="namespaceDoorGroup.html#a0d40ea6a3e84b5ce2d3da094c4d93e1c">DoorGroup::Step4_Tutorial</a> )</div>
-<div class="line"><a id="l00826" name="l00826"></a><span class="lineno">  826</span>    {</div>
-<div class="line"><a id="l00827" name="l00827"></a><span class="lineno">  827</span>        <span class="keywordflow">if</span> (EventInstigator != <span class="keyword">nullptr</span> &amp;&amp; EventInstigator != GetPawn())</div>
-<div class="line"><a id="l00828" name="l00828"></a><span class="lineno">  828</span>            <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00829" name="l00829"></a><span class="lineno">  829</span> </div>
-<div class="line"><a id="l00830" name="l00830"></a><span class="lineno">  830</span>        <a class="code hl_function" href="classAPlayerControl.html#ab1044d9a2d811fbecea2eaa79ddaafdc">OpenHowToPlay</a>(<a class="code hl_enumvalue" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a1129c0e4d43f2d121652a7302712cff6">EQuestType::Write</a>);       </div>
-<div class="line"><a id="l00831" name="l00831"></a><span class="lineno">  831</span>    }</div>
-<div class="line"><a id="l00832" name="l00832"></a><span class="lineno">  832</span>}</div>
+<div class="line"><a id="l00820" name="l00820"></a><span class="lineno">  820</span>        <span class="comment">// 개인 퀘스트: Instigator가 본인인지 확인 후 해당 클라이언트에게만 알림</span></div>
+<div class="line"><a id="l00821" name="l00821"></a><span class="lineno">  821</span>        <span class="keywordflow">if</span> (EventInstigator == GetPawn())</div>
+<div class="line"><a id="l00822" name="l00822"></a><span class="lineno">  822</span>        {</div>
+<div class="line"><a id="l00823" name="l00823"></a><span class="lineno">  823</span>            <a class="code hl_function" href="classAPlayerControl.html#ad0e3bf960e2f53acba68cda16b87d608">Client_OpenHowToPlay</a>(<a class="code hl_enumvalue" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a8b1e2b9b342dd37344c6343dc23a6733">EQuestType::Speak</a>);</div>
+<div class="line"><a id="l00824" name="l00824"></a><span class="lineno">  824</span>        }</div>
+<div class="line"><a id="l00825" name="l00825"></a><span class="lineno">  825</span>    }</div>
+<div class="line"><a id="l00826" name="l00826"></a><span class="lineno">  826</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (InDoorIndex == <a class="code hl_variable" href="namespaceDoorGroup.html#ae980b3d55fb7560bca35c16c1cc7d954">DoorGroup::Step3_Tutorial</a>)</div>
+<div class="line"><a id="l00827" name="l00827"></a><span class="lineno">  827</span>    {</div>
+<div class="line"><a id="l00828" name="l00828"></a><span class="lineno">  828</span>        <span class="comment">// 개인 퀘스트: Instigator가 본인인지 확인 후 해당 클라이언트에게만 알림</span></div>
+<div class="line"><a id="l00829" name="l00829"></a><span class="lineno">  829</span>        <span class="keywordflow">if</span> (EventInstigator == GetPawn())</div>
+<div class="line"><a id="l00830" name="l00830"></a><span class="lineno">  830</span>        {</div>
+<div class="line"><a id="l00831" name="l00831"></a><span class="lineno">  831</span>            <a class="code hl_function" href="classAPlayerControl.html#ad0e3bf960e2f53acba68cda16b87d608">Client_OpenHowToPlay</a>(<a class="code hl_enumvalue" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921a1129c0e4d43f2d121652a7302712cff6">EQuestType::Write</a>);</div>
+<div class="line"><a id="l00832" name="l00832"></a><span class="lineno">  832</span>        }</div>
+<div class="line"><a id="l00833" name="l00833"></a><span class="lineno">  833</span>    }</div>
+<div class="line"><a id="l00834" name="l00834"></a><span class="lineno">  834</span>}</div>
 </div>
-<div class="line"><a id="l00833" name="l00833"></a><span class="lineno">  833</span> </div>
-<div class="foldopen" id="foldopen00834" data-start="{" data-end="}">
-<div class="line"><a id="l00834" name="l00834"></a><span class="lineno"><a class="line" href="classAPlayerControl.html#ab278cc438dd24511edae00e9a75e3023">  834</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAPlayerControl.html#ab278cc438dd24511edae00e9a75e3023">APlayerControl::UpdateQuestInfoWidget</a>()</div>
-<div class="line"><a id="l00835" name="l00835"></a><span class="lineno">  835</span>{</div>
-<div class="line"><a id="l00836" name="l00836"></a><span class="lineno">  836</span>    <span class="comment">// PlayerActor 가져오기</span></div>
-<div class="line"><a id="l00837" name="l00837"></a><span class="lineno">  837</span>    <a class="code hl_class" href="classAPlayerActor.html">APlayerActor</a>* PlayerActor = Cast&lt;APlayerActor&gt;(GetPawn());</div>
-<div class="line"><a id="l00838" name="l00838"></a><span class="lineno">  838</span>    <span class="keywordflow">if</span> (!PlayerActor)</div>
-<div class="line"><a id="l00839" name="l00839"></a><span class="lineno">  839</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00840" name="l00840"></a><span class="lineno">  840</span> </div>
-<div class="line"><a id="l00841" name="l00841"></a><span class="lineno">  841</span>    <span class="comment">// MainWidget 가져오기</span></div>
-<div class="line"><a id="l00842" name="l00842"></a><span class="lineno">  842</span>    <a class="code hl_class" href="classUMainWidget.html">UMainWidget</a>* MainWidget = PlayerActor-&gt;<a class="code hl_function" href="classAPlayerActor.html#a71880110b3fc29d4a2560edfaa57cb60">GetMainWidget</a>();</div>
-<div class="line"><a id="l00843" name="l00843"></a><span class="lineno">  843</span>    <span class="keywordflow">if</span> (!MainWidget)</div>
-<div class="line"><a id="l00844" name="l00844"></a><span class="lineno">  844</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00835" name="l00835"></a><span class="lineno">  835</span> </div>
+<div class="line"><a id="l00836" name="l00836"></a><span class="lineno">  836</span><span class="comment">// 모든 클라이언트에서 실행될 로직</span></div>
+<div class="line"><a id="l00837" name="l00837"></a><span class="lineno">  837</span><span class="keywordtype">void</span> APlayerControl::Multicast_OpenHowToPlay_Implementation(<a class="code hl_enumeration" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921">EQuestType</a> InType)</div>
+<div class="line"><a id="l00838" name="l00838"></a><span class="lineno">  838</span>{</div>
+<div class="line"><a id="l00839" name="l00839"></a><span class="lineno">  839</span>    <span class="comment">// 로컬 플레이어 컨트롤러인지 확인 (UI는 내 화면에만 띄워야 함)</span></div>
+<div class="line"><a id="l00840" name="l00840"></a><span class="lineno">  840</span>    <span class="keywordflow">if</span> (IsLocalController())</div>
+<div class="line"><a id="l00841" name="l00841"></a><span class="lineno">  841</span>    {</div>
+<div class="line"><a id="l00842" name="l00842"></a><span class="lineno">  842</span>        <a class="code hl_function" href="classAPlayerControl.html#ab1044d9a2d811fbecea2eaa79ddaafdc">OpenHowToPlay</a>(InType);</div>
+<div class="line"><a id="l00843" name="l00843"></a><span class="lineno">  843</span>    }</div>
+<div class="line"><a id="l00844" name="l00844"></a><span class="lineno">  844</span>}</div>
 <div class="line"><a id="l00845" name="l00845"></a><span class="lineno">  845</span> </div>
-<div class="line"><a id="l00846" name="l00846"></a><span class="lineno">  846</span>    <span class="comment">// QuestInfoWidget 가져오기</span></div>
-<div class="line"><a id="l00847" name="l00847"></a><span class="lineno">  847</span>    <a class="code hl_class" href="classUQuestInfoWidget.html">UQuestInfoWidget</a>* QuestWidget = MainWidget-&gt;<a class="code hl_function" href="classUMainWidget.html#ada0273cc475322d5dc2046c4e1fdc98a">GetQuestInfoWidget</a>();</div>
-<div class="line"><a id="l00848" name="l00848"></a><span class="lineno">  848</span>    <span class="keywordflow">if</span> (!QuestWidget)</div>
-<div class="line"><a id="l00849" name="l00849"></a><span class="lineno">  849</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00850" name="l00850"></a><span class="lineno">  850</span> </div>
-<div class="line"><a id="l00851" name="l00851"></a><span class="lineno">  851</span>    <span class="comment">// PlayerState 가져오기</span></div>
-<div class="line"><a id="l00852" name="l00852"></a><span class="lineno">  852</span>    <a class="code hl_class" href="classALingoPlayerState.html">ALingoPlayerState</a>* PS = GetPlayerState&lt;ALingoPlayerState&gt;();</div>
-<div class="line"><a id="l00853" name="l00853"></a><span class="lineno">  853</span>    <span class="keywordflow">if</span> (!PS)</div>
-<div class="line"><a id="l00854" name="l00854"></a><span class="lineno">  854</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00855" name="l00855"></a><span class="lineno">  855</span> </div>
-<div class="line"><a id="l00856" name="l00856"></a><span class="lineno">  856</span>    <span class="comment">// 퀘스트 상태 확인 및 위젯 업데이트</span></div>
-<div class="line"><a id="l00857" name="l00857"></a><span class="lineno">  857</span>    FString Title;</div>
-<div class="line"><a id="l00858" name="l00858"></a><span class="lineno">  858</span>    FString Description;</div>
-<div class="line"><a id="l00859" name="l00859"></a><span class="lineno">  859</span>    <span class="keywordtype">bool</span> bShouldShow = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00860" name="l00860"></a><span class="lineno">  860</span> </div>
-<div class="line"><a id="l00861" name="l00861"></a><span class="lineno">  861</span>    <span class="comment">// ReadQuest 상태 확인</span></div>
-<div class="line"><a id="l00862" name="l00862"></a><span class="lineno">  862</span>    <span class="keywordflow">if</span> (PS-&gt;<a class="code hl_variable" href="classALingoPlayerState.html#aadfd384bbe04237e4f8dc433ed816e15">bReadQuestIng</a> &amp;&amp; !PS-&gt;<a class="code hl_variable" href="classALingoPlayerState.html#af5a830375e8d2db6c8ac73a719d2f6ec">bReadQuestCompleted</a>)</div>
-<div class="line"><a id="l00863" name="l00863"></a><span class="lineno">  863</span>    {</div>
-<div class="line"><a id="l00864" name="l00864"></a><span class="lineno">  864</span>        Title = TEXT(<span class="stringliteral">&quot;Mission Goal&quot;</span>);</div>
-<div class="line"><a id="l00865" name="l00865"></a><span class="lineno">  865</span>        Description = TEXT(<span class="stringliteral">&quot;Place the object on the switch to open the gate&quot;</span>);</div>
-<div class="line"><a id="l00866" name="l00866"></a><span class="lineno">  866</span>        bShouldShow = <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00867" name="l00867"></a><span class="lineno">  867</span>    }</div>
-<div class="line"><a id="l00868" name="l00868"></a><span class="lineno">  868</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (PS-&gt;<a class="code hl_variable" href="classALingoPlayerState.html#af5a830375e8d2db6c8ac73a719d2f6ec">bReadQuestCompleted</a> &amp;&amp; !PS-&gt;<a class="code hl_variable" href="classALingoPlayerState.html#ac85b1c6817c631442b886870620e1ade">bListenQuestIng</a>)</div>
-<div class="line"><a id="l00869" name="l00869"></a><span class="lineno">  869</span>    {</div>
-<div class="line"><a id="l00870" name="l00870"></a><span class="lineno">  870</span>        Title = TEXT(<span class="stringliteral">&quot;Move Food Court&quot;</span>);</div>
-<div class="line"><a id="l00871" name="l00871"></a><span class="lineno">  871</span>        Description = TEXT(<span class="stringliteral">&quot;Move Food Court With Friend&quot;</span>);</div>
-<div class="line"><a id="l00872" name="l00872"></a><span class="lineno">  872</span>        bShouldShow = <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00873" name="l00873"></a><span class="lineno">  873</span>    }</div>
-<div class="line"><a id="l00874" name="l00874"></a><span class="lineno">  874</span>    <span class="comment">// ListenQuest 상태 확인</span></div>
-<div class="line"><a id="l00875" name="l00875"></a><span class="lineno">  875</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (PS-&gt;<a class="code hl_variable" href="classALingoPlayerState.html#ac85b1c6817c631442b886870620e1ade">bListenQuestIng</a> &amp;&amp; !PS-&gt;<a class="code hl_variable" href="classALingoPlayerState.html#adcbd8f2763564e6f37e7b9f7c5aedfcf">bListenQuestCompleted</a>)</div>
-<div class="line"><a id="l00876" name="l00876"></a><span class="lineno">  876</span>    {</div>
-<div class="line"><a id="l00877" name="l00877"></a><span class="lineno">  877</span>        Title = TEXT(<span class="stringliteral">&quot;Move Next Goal&quot;</span>);</div>
-<div class="line"><a id="l00878" name="l00878"></a><span class="lineno">  878</span>        Description = TEXT(<span class="stringliteral">&quot;Place the object on the switch to open the gate&quot;</span>);</div>
-<div class="line"><a id="l00879" name="l00879"></a><span class="lineno">  879</span>        bShouldShow = <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00880" name="l00880"></a><span class="lineno">  880</span>    }</div>
-<div class="line"><a id="l00881" name="l00881"></a><span class="lineno">  881</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (PS-&gt;<a class="code hl_variable" href="classALingoPlayerState.html#adcbd8f2763564e6f37e7b9f7c5aedfcf">bListenQuestCompleted</a> &amp;&amp; !PS-&gt;<a class="code hl_variable" href="classALingoPlayerState.html#a261e47555a84699299c3b3deb04cf110">bSpeakQuestIng</a>)</div>
+<div class="line"><a id="l00846" name="l00846"></a><span class="lineno">  846</span><span class="comment">// 특정 클라이언트에서 실행될 로직</span></div>
+<div class="line"><a id="l00847" name="l00847"></a><span class="lineno">  847</span><span class="keywordtype">void</span> APlayerControl::Client_OpenHowToPlay_Implementation(<a class="code hl_enumeration" href="ALingoGameState_8h.html#a1a866ca8104ebd47ce462347a6125921">EQuestType</a> InType)</div>
+<div class="line"><a id="l00848" name="l00848"></a><span class="lineno">  848</span>{</div>
+<div class="line"><a id="l00849" name="l00849"></a><span class="lineno">  849</span>    <span class="comment">// Client RPC는 해당 컨트롤러가 소유한 클라이언트에서만 실행됨</span></div>
+<div class="line"><a id="l00850" name="l00850"></a><span class="lineno">  850</span>    <a class="code hl_function" href="classAPlayerControl.html#ab1044d9a2d811fbecea2eaa79ddaafdc">OpenHowToPlay</a>(InType);</div>
+<div class="line"><a id="l00851" name="l00851"></a><span class="lineno">  851</span>}</div>
+<div class="line"><a id="l00852" name="l00852"></a><span class="lineno">  852</span> </div>
+<div class="foldopen" id="foldopen00853" data-start="{" data-end="}">
+<div class="line"><a id="l00853" name="l00853"></a><span class="lineno"><a class="line" href="classAPlayerControl.html#ab278cc438dd24511edae00e9a75e3023">  853</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAPlayerControl.html#ab278cc438dd24511edae00e9a75e3023">APlayerControl::UpdateQuestInfoWidget</a>()</div>
+<div class="line"><a id="l00854" name="l00854"></a><span class="lineno">  854</span>{</div>
+<div class="line"><a id="l00855" name="l00855"></a><span class="lineno">  855</span>    <span class="comment">// PlayerActor 가져오기</span></div>
+<div class="line"><a id="l00856" name="l00856"></a><span class="lineno">  856</span>    <a class="code hl_class" href="classAPlayerActor.html">APlayerActor</a>* PlayerActor = Cast&lt;APlayerActor&gt;(GetPawn());</div>
+<div class="line"><a id="l00857" name="l00857"></a><span class="lineno">  857</span>    <span class="keywordflow">if</span> (!PlayerActor)</div>
+<div class="line"><a id="l00858" name="l00858"></a><span class="lineno">  858</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00859" name="l00859"></a><span class="lineno">  859</span> </div>
+<div class="line"><a id="l00860" name="l00860"></a><span class="lineno">  860</span>    <span class="comment">// MainWidget 가져오기</span></div>
+<div class="line"><a id="l00861" name="l00861"></a><span class="lineno">  861</span>    <a class="code hl_class" href="classUMainWidget.html">UMainWidget</a>* MainWidget = PlayerActor-&gt;<a class="code hl_function" href="classAPlayerActor.html#a71880110b3fc29d4a2560edfaa57cb60">GetMainWidget</a>();</div>
+<div class="line"><a id="l00862" name="l00862"></a><span class="lineno">  862</span>    <span class="keywordflow">if</span> (!MainWidget)</div>
+<div class="line"><a id="l00863" name="l00863"></a><span class="lineno">  863</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00864" name="l00864"></a><span class="lineno">  864</span> </div>
+<div class="line"><a id="l00865" name="l00865"></a><span class="lineno">  865</span>    <span class="comment">// QuestInfoWidget 가져오기</span></div>
+<div class="line"><a id="l00866" name="l00866"></a><span class="lineno">  866</span>    <a class="code hl_class" href="classUQuestInfoWidget.html">UQuestInfoWidget</a>* QuestWidget = MainWidget-&gt;<a class="code hl_function" href="classUMainWidget.html#ada0273cc475322d5dc2046c4e1fdc98a">GetQuestInfoWidget</a>();</div>
+<div class="line"><a id="l00867" name="l00867"></a><span class="lineno">  867</span>    <span class="keywordflow">if</span> (!QuestWidget)</div>
+<div class="line"><a id="l00868" name="l00868"></a><span class="lineno">  868</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00869" name="l00869"></a><span class="lineno">  869</span> </div>
+<div class="line"><a id="l00870" name="l00870"></a><span class="lineno">  870</span>    <span class="comment">// PlayerState 가져오기</span></div>
+<div class="line"><a id="l00871" name="l00871"></a><span class="lineno">  871</span>    <a class="code hl_class" href="classALingoPlayerState.html">ALingoPlayerState</a>* PS = GetPlayerState&lt;ALingoPlayerState&gt;();</div>
+<div class="line"><a id="l00872" name="l00872"></a><span class="lineno">  872</span>    <span class="keywordflow">if</span> (!PS)</div>
+<div class="line"><a id="l00873" name="l00873"></a><span class="lineno">  873</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00874" name="l00874"></a><span class="lineno">  874</span> </div>
+<div class="line"><a id="l00875" name="l00875"></a><span class="lineno">  875</span>    <span class="comment">// 퀘스트 상태 확인 및 위젯 업데이트</span></div>
+<div class="line"><a id="l00876" name="l00876"></a><span class="lineno">  876</span>    FString Title;</div>
+<div class="line"><a id="l00877" name="l00877"></a><span class="lineno">  877</span>    FString Description;</div>
+<div class="line"><a id="l00878" name="l00878"></a><span class="lineno">  878</span>    <span class="keywordtype">bool</span> bShouldShow = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00879" name="l00879"></a><span class="lineno">  879</span> </div>
+<div class="line"><a id="l00880" name="l00880"></a><span class="lineno">  880</span>    <span class="comment">// ReadQuest 상태 확인</span></div>
+<div class="line"><a id="l00881" name="l00881"></a><span class="lineno">  881</span>    <span class="keywordflow">if</span> (PS-&gt;<a class="code hl_variable" href="classALingoPlayerState.html#aadfd384bbe04237e4f8dc433ed816e15">bReadQuestIng</a> &amp;&amp; !PS-&gt;<a class="code hl_variable" href="classALingoPlayerState.html#af5a830375e8d2db6c8ac73a719d2f6ec">bReadQuestCompleted</a>)</div>
 <div class="line"><a id="l00882" name="l00882"></a><span class="lineno">  882</span>    {</div>
-<div class="line"><a id="l00883" name="l00883"></a><span class="lineno">  883</span>        Title = TEXT(<span class="stringliteral">&quot;Move Jugdes&quot;</span>);</div>
-<div class="line"><a id="l00884" name="l00884"></a><span class="lineno">  884</span>        Description = TEXT(<span class="stringliteral">&quot;Move Judes And Talk&quot;</span>);</div>
+<div class="line"><a id="l00883" name="l00883"></a><span class="lineno">  883</span>        Title = TEXT(<span class="stringliteral">&quot;Mission Goal&quot;</span>);</div>
+<div class="line"><a id="l00884" name="l00884"></a><span class="lineno">  884</span>        Description = TEXT(<span class="stringliteral">&quot;Place the object on the switch to open the gate&quot;</span>);</div>
 <div class="line"><a id="l00885" name="l00885"></a><span class="lineno">  885</span>        bShouldShow = <span class="keyword">true</span>;</div>
 <div class="line"><a id="l00886" name="l00886"></a><span class="lineno">  886</span>    }</div>
-<div class="line"><a id="l00887" name="l00887"></a><span class="lineno">  887</span>    <span class="comment">// SpeakQuest 상태 확인</span></div>
-<div class="line"><a id="l00888" name="l00888"></a><span class="lineno">  888</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (PS-&gt;<a class="code hl_variable" href="classALingoPlayerState.html#a261e47555a84699299c3b3deb04cf110">bSpeakQuestIng</a> &amp;&amp; !PS-&gt;<a class="code hl_variable" href="classALingoPlayerState.html#a5c4815f92bedf83ef33caf6d5267b3a5">bSpeakQuestCompleted</a>)</div>
-<div class="line"><a id="l00889" name="l00889"></a><span class="lineno">  889</span>    {</div>
-<div class="line"><a id="l00890" name="l00890"></a><span class="lineno">  890</span>        Title = TEXT(<span class="stringliteral">&quot;Press V Key And Talk&quot;</span>);</div>
-<div class="line"><a id="l00891" name="l00891"></a><span class="lineno">  891</span>        Description = TEXT(<span class="stringliteral">&quot;Answer Judes Question&quot;</span>);</div>
-<div class="line"><a id="l00892" name="l00892"></a><span class="lineno">  892</span>        bShouldShow = <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00893" name="l00893"></a><span class="lineno">  893</span>    }</div>
-<div class="line"><a id="l00894" name="l00894"></a><span class="lineno">  894</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (PS-&gt;<a class="code hl_variable" href="classALingoPlayerState.html#a5c4815f92bedf83ef33caf6d5267b3a5">bSpeakQuestCompleted</a> &amp;&amp; !PS-&gt;<a class="code hl_variable" href="classALingoPlayerState.html#a69151b0cb5dd509c66a97ec51456a4eb">bWriteQuestIng</a>)</div>
+<div class="line"><a id="l00887" name="l00887"></a><span class="lineno">  887</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (PS-&gt;<a class="code hl_variable" href="classALingoPlayerState.html#af5a830375e8d2db6c8ac73a719d2f6ec">bReadQuestCompleted</a> &amp;&amp; !PS-&gt;<a class="code hl_variable" href="classALingoPlayerState.html#ac85b1c6817c631442b886870620e1ade">bListenQuestIng</a>)</div>
+<div class="line"><a id="l00888" name="l00888"></a><span class="lineno">  888</span>    {</div>
+<div class="line"><a id="l00889" name="l00889"></a><span class="lineno">  889</span>        Title = TEXT(<span class="stringliteral">&quot;Move Food Court&quot;</span>);</div>
+<div class="line"><a id="l00890" name="l00890"></a><span class="lineno">  890</span>        Description = TEXT(<span class="stringliteral">&quot;Move Food Court With Friend&quot;</span>);</div>
+<div class="line"><a id="l00891" name="l00891"></a><span class="lineno">  891</span>        bShouldShow = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00892" name="l00892"></a><span class="lineno">  892</span>    }</div>
+<div class="line"><a id="l00893" name="l00893"></a><span class="lineno">  893</span>    <span class="comment">// ListenQuest 상태 확인</span></div>
+<div class="line"><a id="l00894" name="l00894"></a><span class="lineno">  894</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (PS-&gt;<a class="code hl_variable" href="classALingoPlayerState.html#ac85b1c6817c631442b886870620e1ade">bListenQuestIng</a> &amp;&amp; !PS-&gt;<a class="code hl_variable" href="classALingoPlayerState.html#adcbd8f2763564e6f37e7b9f7c5aedfcf">bListenQuestCompleted</a>)</div>
 <div class="line"><a id="l00895" name="l00895"></a><span class="lineno">  895</span>    {</div>
-<div class="line"><a id="l00896" name="l00896"></a><span class="lineno">  896</span>        <span class="comment">// Speak 종료 후 바로 Write로 이어지는 경우 처리</span></div>
-<div class="line"><a id="l00897" name="l00897"></a><span class="lineno">  897</span>        <span class="comment">// 잠시 숨김 처리 (또는 다른 메시지 표시)</span></div>
-<div class="line"><a id="l00898" name="l00898"></a><span class="lineno">  898</span>        bShouldShow = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00896" name="l00896"></a><span class="lineno">  896</span>        Title = TEXT(<span class="stringliteral">&quot;Move Next Goal&quot;</span>);</div>
+<div class="line"><a id="l00897" name="l00897"></a><span class="lineno">  897</span>        Description = TEXT(<span class="stringliteral">&quot;Place the object on the switch to open the gate&quot;</span>);</div>
+<div class="line"><a id="l00898" name="l00898"></a><span class="lineno">  898</span>        bShouldShow = <span class="keyword">true</span>;</div>
 <div class="line"><a id="l00899" name="l00899"></a><span class="lineno">  899</span>    }</div>
-<div class="line"><a id="l00900" name="l00900"></a><span class="lineno">  900</span>    <span class="comment">// WriteQuest 상태 확인</span></div>
-<div class="line"><a id="l00901" name="l00901"></a><span class="lineno">  901</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (PS-&gt;<a class="code hl_variable" href="classALingoPlayerState.html#a69151b0cb5dd509c66a97ec51456a4eb">bWriteQuestIng</a> &amp;&amp; !PS-&gt;<a class="code hl_variable" href="classALingoPlayerState.html#a56b313a1f60ae3f34706d12bb4b29067">bWriteQuestCompleted</a>)</div>
-<div class="line"><a id="l00902" name="l00902"></a><span class="lineno">  902</span>    {</div>
-<div class="line"><a id="l00903" name="l00903"></a><span class="lineno">  903</span>        Title = TEXT(<span class="stringliteral">&quot;Move Paper&quot;</span>);</div>
-<div class="line"><a id="l00904" name="l00904"></a><span class="lineno">  904</span>        Description = TEXT(<span class="stringliteral">&quot;Find Wirte Kiosk And Interaction&quot;</span>);</div>
-<div class="line"><a id="l00905" name="l00905"></a><span class="lineno">  905</span>        bShouldShow = <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00906" name="l00906"></a><span class="lineno">  906</span>    }</div>
-<div class="line"><a id="l00907" name="l00907"></a><span class="lineno">  907</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (PS-&gt;<a class="code hl_variable" href="classALingoPlayerState.html#a56b313a1f60ae3f34706d12bb4b29067">bWriteQuestCompleted</a>)</div>
+<div class="line"><a id="l00900" name="l00900"></a><span class="lineno">  900</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (PS-&gt;<a class="code hl_variable" href="classALingoPlayerState.html#adcbd8f2763564e6f37e7b9f7c5aedfcf">bListenQuestCompleted</a> &amp;&amp; !PS-&gt;<a class="code hl_variable" href="classALingoPlayerState.html#a261e47555a84699299c3b3deb04cf110">bSpeakQuestIng</a>)</div>
+<div class="line"><a id="l00901" name="l00901"></a><span class="lineno">  901</span>    {</div>
+<div class="line"><a id="l00902" name="l00902"></a><span class="lineno">  902</span>        Title = TEXT(<span class="stringliteral">&quot;Move Jugdes&quot;</span>);</div>
+<div class="line"><a id="l00903" name="l00903"></a><span class="lineno">  903</span>        Description = TEXT(<span class="stringliteral">&quot;Move Judes And Talk&quot;</span>);</div>
+<div class="line"><a id="l00904" name="l00904"></a><span class="lineno">  904</span>        bShouldShow = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00905" name="l00905"></a><span class="lineno">  905</span>    }</div>
+<div class="line"><a id="l00906" name="l00906"></a><span class="lineno">  906</span>    <span class="comment">// SpeakQuest 상태 확인</span></div>
+<div class="line"><a id="l00907" name="l00907"></a><span class="lineno">  907</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (PS-&gt;<a class="code hl_variable" href="classALingoPlayerState.html#a261e47555a84699299c3b3deb04cf110">bSpeakQuestIng</a> &amp;&amp; !PS-&gt;<a class="code hl_variable" href="classALingoPlayerState.html#a5c4815f92bedf83ef33caf6d5267b3a5">bSpeakQuestCompleted</a>)</div>
 <div class="line"><a id="l00908" name="l00908"></a><span class="lineno">  908</span>    {</div>
-<div class="line"><a id="l00909" name="l00909"></a><span class="lineno">  909</span>        Title = TEXT(<span class="stringliteral">&quot;Move End Point&quot;</span>);</div>
-<div class="line"><a id="l00910" name="l00910"></a><span class="lineno">  910</span>        Description = TEXT(<span class="stringliteral">&quot;Get Evalution&quot;</span>);</div>
+<div class="line"><a id="l00909" name="l00909"></a><span class="lineno">  909</span>        Title = TEXT(<span class="stringliteral">&quot;Press V Key And Talk&quot;</span>);</div>
+<div class="line"><a id="l00910" name="l00910"></a><span class="lineno">  910</span>        Description = TEXT(<span class="stringliteral">&quot;Answer Judes Question&quot;</span>);</div>
 <div class="line"><a id="l00911" name="l00911"></a><span class="lineno">  911</span>        bShouldShow = <span class="keyword">true</span>;</div>
 <div class="line"><a id="l00912" name="l00912"></a><span class="lineno">  912</span>    }</div>
-<div class="line"><a id="l00913" name="l00913"></a><span class="lineno">  913</span> </div>
-<div class="line"><a id="l00914" name="l00914"></a><span class="lineno">  914</span>    <span class="comment">// 위젯 업데이트</span></div>
-<div class="line"><a id="l00915" name="l00915"></a><span class="lineno">  915</span>    <span class="keywordflow">if</span> (bShouldShow)</div>
-<div class="line"><a id="l00916" name="l00916"></a><span class="lineno">  916</span>    {</div>
-<div class="line"><a id="l00917" name="l00917"></a><span class="lineno">  917</span>        QuestWidget-&gt;<a class="code hl_function" href="classUQuestInfoWidget.html#adbcd3884f451f986609fe14f96ac7438">UpdateQuestText</a>(Title, Description);</div>
-<div class="line"><a id="l00918" name="l00918"></a><span class="lineno">  918</span>        QuestWidget-&gt;SetVisibility(ESlateVisibility::Visible);</div>
-<div class="line"><a id="l00919" name="l00919"></a><span class="lineno">  919</span>    }</div>
-<div class="line"><a id="l00920" name="l00920"></a><span class="lineno">  920</span>    <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00913" name="l00913"></a><span class="lineno">  913</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (PS-&gt;<a class="code hl_variable" href="classALingoPlayerState.html#a5c4815f92bedf83ef33caf6d5267b3a5">bSpeakQuestCompleted</a> &amp;&amp; !PS-&gt;<a class="code hl_variable" href="classALingoPlayerState.html#a69151b0cb5dd509c66a97ec51456a4eb">bWriteQuestIng</a>)</div>
+<div class="line"><a id="l00914" name="l00914"></a><span class="lineno">  914</span>    {</div>
+<div class="line"><a id="l00915" name="l00915"></a><span class="lineno">  915</span>        <span class="comment">// Speak 종료 후 바로 Write로 이어지는 경우 처리</span></div>
+<div class="line"><a id="l00916" name="l00916"></a><span class="lineno">  916</span>        <span class="comment">// 잠시 숨김 처리 (또는 다른 메시지 표시)</span></div>
+<div class="line"><a id="l00917" name="l00917"></a><span class="lineno">  917</span>        bShouldShow = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00918" name="l00918"></a><span class="lineno">  918</span>    }</div>
+<div class="line"><a id="l00919" name="l00919"></a><span class="lineno">  919</span>    <span class="comment">// WriteQuest 상태 확인</span></div>
+<div class="line"><a id="l00920" name="l00920"></a><span class="lineno">  920</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (PS-&gt;<a class="code hl_variable" href="classALingoPlayerState.html#a69151b0cb5dd509c66a97ec51456a4eb">bWriteQuestIng</a> &amp;&amp; !PS-&gt;<a class="code hl_variable" href="classALingoPlayerState.html#a56b313a1f60ae3f34706d12bb4b29067">bWriteQuestCompleted</a>)</div>
 <div class="line"><a id="l00921" name="l00921"></a><span class="lineno">  921</span>    {</div>
-<div class="line"><a id="l00922" name="l00922"></a><span class="lineno">  922</span>        QuestWidget-&gt;SetVisibility(ESlateVisibility::Collapsed);</div>
-<div class="line"><a id="l00923" name="l00923"></a><span class="lineno">  923</span>    }</div>
-<div class="line"><a id="l00924" name="l00924"></a><span class="lineno">  924</span>}</div>
-</div>
-<div class="line"><a id="l00925" name="l00925"></a><span class="lineno">  925</span> </div>
-<div class="foldopen" id="foldopen00926" data-start="{" data-end="}">
-<div class="line"><a id="l00926" name="l00926"></a><span class="lineno"><a class="line" href="classAPlayerControl.html#a38aa91cf1bd4fe330fbb8fcbd29f2587">  926</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAPlayerControl.html#a38aa91cf1bd4fe330fbb8fcbd29f2587">APlayerControl::UpdateQuestOrderWidget</a>(<span class="keyword">const</span> FString&amp; inQuestOrder)</div>
-<div class="line"><a id="l00927" name="l00927"></a><span class="lineno">  927</span>{</div>
-<div class="line"><a id="l00928" name="l00928"></a><span class="lineno">  928</span>    <span class="comment">// PlayerActor 가져오기</span></div>
-<div class="line"><a id="l00929" name="l00929"></a><span class="lineno">  929</span>    <a class="code hl_class" href="classAPlayerActor.html">APlayerActor</a>* PlayerActor = Cast&lt;APlayerActor&gt;(GetPawn());</div>
-<div class="line"><a id="l00930" name="l00930"></a><span class="lineno">  930</span>    <span class="keywordflow">if</span> (!PlayerActor)</div>
-<div class="line"><a id="l00931" name="l00931"></a><span class="lineno">  931</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00922" name="l00922"></a><span class="lineno">  922</span>        Title = TEXT(<span class="stringliteral">&quot;Move Paper&quot;</span>);</div>
+<div class="line"><a id="l00923" name="l00923"></a><span class="lineno">  923</span>        Description = TEXT(<span class="stringliteral">&quot;Find Wirte Kiosk And Interaction&quot;</span>);</div>
+<div class="line"><a id="l00924" name="l00924"></a><span class="lineno">  924</span>        bShouldShow = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00925" name="l00925"></a><span class="lineno">  925</span>    }</div>
+<div class="line"><a id="l00926" name="l00926"></a><span class="lineno">  926</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (PS-&gt;<a class="code hl_variable" href="classALingoPlayerState.html#a56b313a1f60ae3f34706d12bb4b29067">bWriteQuestCompleted</a>)</div>
+<div class="line"><a id="l00927" name="l00927"></a><span class="lineno">  927</span>    {</div>
+<div class="line"><a id="l00928" name="l00928"></a><span class="lineno">  928</span>        Title = TEXT(<span class="stringliteral">&quot;Move End Point&quot;</span>);</div>
+<div class="line"><a id="l00929" name="l00929"></a><span class="lineno">  929</span>        Description = TEXT(<span class="stringliteral">&quot;Get Evalution&quot;</span>);</div>
+<div class="line"><a id="l00930" name="l00930"></a><span class="lineno">  930</span>        bShouldShow = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00931" name="l00931"></a><span class="lineno">  931</span>    }</div>
 <div class="line"><a id="l00932" name="l00932"></a><span class="lineno">  932</span> </div>
-<div class="line"><a id="l00933" name="l00933"></a><span class="lineno">  933</span>    <span class="comment">// MainWidget 가져오기</span></div>
-<div class="line"><a id="l00934" name="l00934"></a><span class="lineno">  934</span>    <a class="code hl_class" href="classUMainWidget.html">UMainWidget</a>* MainWidget = PlayerActor-&gt;<a class="code hl_function" href="classAPlayerActor.html#a71880110b3fc29d4a2560edfaa57cb60">GetMainWidget</a>();</div>
-<div class="line"><a id="l00935" name="l00935"></a><span class="lineno">  935</span>    <span class="keywordflow">if</span> (!MainWidget)</div>
-<div class="line"><a id="l00936" name="l00936"></a><span class="lineno">  936</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00937" name="l00937"></a><span class="lineno">  937</span> </div>
-<div class="line"><a id="l00938" name="l00938"></a><span class="lineno">  938</span>    <span class="comment">// QuestInfoWidget 가져오기</span></div>
-<div class="line"><a id="l00939" name="l00939"></a><span class="lineno">  939</span>    <a class="code hl_class" href="classUQuestOrderWidget.html">UQuestOrderWidget</a>* QuestOrderWidget = MainWidget-&gt;<a class="code hl_function" href="classUMainWidget.html#ab670f6cad8c86780c78367440c5105ca">GetQuestOrderWidget</a>();</div>
-<div class="line"><a id="l00940" name="l00940"></a><span class="lineno">  940</span>    <span class="keywordflow">if</span> (!QuestOrderWidget)</div>
-<div class="line"><a id="l00941" name="l00941"></a><span class="lineno">  941</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00942" name="l00942"></a><span class="lineno">  942</span> </div>
-<div class="line"><a id="l00943" name="l00943"></a><span class="lineno">  943</span>    <span class="comment">// PlayerState 가져오기</span></div>
-<div class="line"><a id="l00944" name="l00944"></a><span class="lineno">  944</span>    <a class="code hl_class" href="classALingoPlayerState.html">ALingoPlayerState</a>* PS = GetPlayerState&lt;ALingoPlayerState&gt;();</div>
-<div class="line"><a id="l00945" name="l00945"></a><span class="lineno">  945</span>    <span class="keywordflow">if</span> (!PS)</div>
-<div class="line"><a id="l00946" name="l00946"></a><span class="lineno">  946</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00947" name="l00947"></a><span class="lineno">  947</span> </div>
-<div class="line"><a id="l00948" name="l00948"></a><span class="lineno">  948</span>    <span class="comment">// 위젯 업데이트</span></div>
-<div class="line"><a id="l00949" name="l00949"></a><span class="lineno">  949</span>    QuestOrderWidget-&gt;<a class="code hl_function" href="classUQuestOrderWidget.html#a29d4842fd755c8922491aebaa8f5e6e7">UpdateQuestOrder</a>(inQuestOrder);</div>
-<div class="line"><a id="l00950" name="l00950"></a><span class="lineno">  950</span>    QuestOrderWidget-&gt;SetVisibility(ESlateVisibility::Visible);</div>
-<div class="line"><a id="l00951" name="l00951"></a><span class="lineno">  951</span>}</div>
+<div class="line"><a id="l00933" name="l00933"></a><span class="lineno">  933</span>    <span class="comment">// 위젯 업데이트</span></div>
+<div class="line"><a id="l00934" name="l00934"></a><span class="lineno">  934</span>    <span class="keywordflow">if</span> (bShouldShow)</div>
+<div class="line"><a id="l00935" name="l00935"></a><span class="lineno">  935</span>    {</div>
+<div class="line"><a id="l00936" name="l00936"></a><span class="lineno">  936</span>        QuestWidget-&gt;<a class="code hl_function" href="classUQuestInfoWidget.html#adbcd3884f451f986609fe14f96ac7438">UpdateQuestText</a>(Title, Description);</div>
+<div class="line"><a id="l00937" name="l00937"></a><span class="lineno">  937</span>        QuestWidget-&gt;SetVisibility(ESlateVisibility::Visible);</div>
+<div class="line"><a id="l00938" name="l00938"></a><span class="lineno">  938</span>    }</div>
+<div class="line"><a id="l00939" name="l00939"></a><span class="lineno">  939</span>    <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00940" name="l00940"></a><span class="lineno">  940</span>    {</div>
+<div class="line"><a id="l00941" name="l00941"></a><span class="lineno">  941</span>        QuestWidget-&gt;SetVisibility(ESlateVisibility::Collapsed);</div>
+<div class="line"><a id="l00942" name="l00942"></a><span class="lineno">  942</span>    }</div>
+<div class="line"><a id="l00943" name="l00943"></a><span class="lineno">  943</span>}</div>
+</div>
+<div class="line"><a id="l00944" name="l00944"></a><span class="lineno">  944</span> </div>
+<div class="foldopen" id="foldopen00945" data-start="{" data-end="}">
+<div class="line"><a id="l00945" name="l00945"></a><span class="lineno"><a class="line" href="classAPlayerControl.html#a38aa91cf1bd4fe330fbb8fcbd29f2587">  945</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAPlayerControl.html#a38aa91cf1bd4fe330fbb8fcbd29f2587">APlayerControl::UpdateQuestOrderWidget</a>(<span class="keyword">const</span> FString&amp; inQuestOrder)</div>
+<div class="line"><a id="l00946" name="l00946"></a><span class="lineno">  946</span>{</div>
+<div class="line"><a id="l00947" name="l00947"></a><span class="lineno">  947</span>    <span class="comment">// PlayerActor 가져오기</span></div>
+<div class="line"><a id="l00948" name="l00948"></a><span class="lineno">  948</span>    <a class="code hl_class" href="classAPlayerActor.html">APlayerActor</a>* PlayerActor = Cast&lt;APlayerActor&gt;(GetPawn());</div>
+<div class="line"><a id="l00949" name="l00949"></a><span class="lineno">  949</span>    <span class="keywordflow">if</span> (!PlayerActor)</div>
+<div class="line"><a id="l00950" name="l00950"></a><span class="lineno">  950</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00951" name="l00951"></a><span class="lineno">  951</span> </div>
+<div class="line"><a id="l00952" name="l00952"></a><span class="lineno">  952</span>    <span class="comment">// MainWidget 가져오기</span></div>
+<div class="line"><a id="l00953" name="l00953"></a><span class="lineno">  953</span>    <a class="code hl_class" href="classUMainWidget.html">UMainWidget</a>* MainWidget = PlayerActor-&gt;<a class="code hl_function" href="classAPlayerActor.html#a71880110b3fc29d4a2560edfaa57cb60">GetMainWidget</a>();</div>
+<div class="line"><a id="l00954" name="l00954"></a><span class="lineno">  954</span>    <span class="keywordflow">if</span> (!MainWidget)</div>
+<div class="line"><a id="l00955" name="l00955"></a><span class="lineno">  955</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00956" name="l00956"></a><span class="lineno">  956</span> </div>
+<div class="line"><a id="l00957" name="l00957"></a><span class="lineno">  957</span>    <span class="comment">// QuestInfoWidget 가져오기</span></div>
+<div class="line"><a id="l00958" name="l00958"></a><span class="lineno">  958</span>    <a class="code hl_class" href="classUQuestOrderWidget.html">UQuestOrderWidget</a>* QuestOrderWidget = MainWidget-&gt;<a class="code hl_function" href="classUMainWidget.html#ab670f6cad8c86780c78367440c5105ca">GetQuestOrderWidget</a>();</div>
+<div class="line"><a id="l00959" name="l00959"></a><span class="lineno">  959</span>    <span class="keywordflow">if</span> (!QuestOrderWidget)</div>
+<div class="line"><a id="l00960" name="l00960"></a><span class="lineno">  960</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00961" name="l00961"></a><span class="lineno">  961</span> </div>
+<div class="line"><a id="l00962" name="l00962"></a><span class="lineno">  962</span>    <span class="comment">// PlayerState 가져오기</span></div>
+<div class="line"><a id="l00963" name="l00963"></a><span class="lineno">  963</span>    <a class="code hl_class" href="classALingoPlayerState.html">ALingoPlayerState</a>* PS = GetPlayerState&lt;ALingoPlayerState&gt;();</div>
+<div class="line"><a id="l00964" name="l00964"></a><span class="lineno">  964</span>    <span class="keywordflow">if</span> (!PS)</div>
+<div class="line"><a id="l00965" name="l00965"></a><span class="lineno">  965</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00966" name="l00966"></a><span class="lineno">  966</span> </div>
+<div class="line"><a id="l00967" name="l00967"></a><span class="lineno">  967</span>    <span class="comment">// 위젯 업데이트</span></div>
+<div class="line"><a id="l00968" name="l00968"></a><span class="lineno">  968</span>    QuestOrderWidget-&gt;<a class="code hl_function" href="classUQuestOrderWidget.html#a29d4842fd755c8922491aebaa8f5e6e7">UpdateQuestOrder</a>(inQuestOrder);</div>
+<div class="line"><a id="l00969" name="l00969"></a><span class="lineno">  969</span>    QuestOrderWidget-&gt;SetVisibility(ESlateVisibility::Visible);</div>
+<div class="line"><a id="l00970" name="l00970"></a><span class="lineno">  970</span>}</div>
 </div>
 <div class="ttc" id="aADropper_8h_html"><div class="ttname"><a href="ADropper_8h.html">ADropper.h</a></div></div>
 <div class="ttc" id="aALingoGameState_8h_html"><div class="ttname"><a href="ALingoGameState_8h.html">ALingoGameState.h</a></div></div>
@@ -1214,22 +1233,22 @@ $(document).ready(function(){initNavTree('APlayerControl_8cpp_source.html',''); 
 <div class="ttc" id="aclassAPlayerActor_html_a71880110b3fc29d4a2560edfaa57cb60"><div class="ttname"><a href="classAPlayerActor.html#a71880110b3fc29d4a2560edfaa57cb60">APlayerActor::GetMainWidget</a></div><div class="ttdeci">class UMainWidget * GetMainWidget() const</div><div class="ttdoc">메인 위젯을 가져옵니다.</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8h_source.html#l00170">APlayerActor.h:170</a></div></div>
 <div class="ttc" id="aclassAPlayerControl_html"><div class="ttname"><a href="classAPlayerControl.html">APlayerControl</a></div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8h_source.html#l00018">APlayerControl.h:19</a></div></div>
 <div class="ttc" id="aclassAPlayerControl_html_a033802ec64bfd2178ddc93d8ead4c127"><div class="ttname"><a href="classAPlayerControl.html#a033802ec64bfd2178ddc93d8ead4c127">APlayerControl::UpdateSpeakWidget</a></div><div class="ttdeci">void UpdateSpeakWidget(int32 StepIndex)</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8cpp_source.html#l00601">APlayerControl.cpp:601</a></div></div>
-<div class="ttc" id="aclassAPlayerControl_html_a09c91fbb1d155201fb9f3c6c0c5db251"><div class="ttname"><a href="classAPlayerControl.html#a09c91fbb1d155201fb9f3c6c0c5db251">APlayerControl::TutorialComponent</a></div><div class="ttdeci">class UTutorialComponent * TutorialComponent</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8h_source.html#l00185">APlayerControl.h:185</a></div></div>
+<div class="ttc" id="aclassAPlayerControl_html_a09c91fbb1d155201fb9f3c6c0c5db251"><div class="ttname"><a href="classAPlayerControl.html#a09c91fbb1d155201fb9f3c6c0c5db251">APlayerControl::TutorialComponent</a></div><div class="ttdeci">class UTutorialComponent * TutorialComponent</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8h_source.html#l00195">APlayerControl.h:195</a></div></div>
 <div class="ttc" id="aclassAPlayerControl_html_a0b293c41a686533e8deccbc7fee1c043"><div class="ttname"><a href="classAPlayerControl.html#a0b293c41a686533e8deccbc7fee1c043">APlayerControl::OnResponseSpeakResult</a></div><div class="ttdeci">void OnResponseSpeakResult(FResponseSpeakResult &amp;ResponseData, bool bWasSuccessful)</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8cpp_source.html#l00630">APlayerControl.cpp:630</a></div></div>
 <div class="ttc" id="aclassAPlayerControl_html_a0b8363f1c71e6644c0575985fca29ba6"><div class="ttname"><a href="classAPlayerControl.html#a0b8363f1c71e6644c0575985fca29ba6">APlayerControl::OnRecordReleased</a></div><div class="ttdeci">void OnRecordReleased(const FInputActionValue &amp;Value)</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8cpp_source.html#l00241">APlayerControl.cpp:241</a></div></div>
 <div class="ttc" id="aclassAPlayerControl_html_a1bca1ba6619ca2eb51414d2959508433"><div class="ttname"><a href="classAPlayerControl.html#a1bca1ba6619ca2eb51414d2959508433">APlayerControl::OnJump</a></div><div class="ttdeci">void OnJump(const FInputActionValue &amp;Value)</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8cpp_source.html#l00217">APlayerControl.cpp:217</a></div></div>
 <div class="ttc" id="aclassAPlayerControl_html_a28eb86790cd27a79470b7112927c4e24"><div class="ttname"><a href="classAPlayerControl.html#a28eb86790cd27a79470b7112927c4e24">APlayerControl::GetUserId</a></div><div class="ttdeci">int32 GetUserId() const</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8h_source.html#l00031">APlayerControl.h:31</a></div></div>
-<div class="ttc" id="aclassAPlayerControl_html_a38aa91cf1bd4fe330fbb8fcbd29f2587"><div class="ttname"><a href="classAPlayerControl.html#a38aa91cf1bd4fe330fbb8fcbd29f2587">APlayerControl::UpdateQuestOrderWidget</a></div><div class="ttdeci">void UpdateQuestOrderWidget(const FString &amp;inQuestOrder)</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8cpp_source.html#l00926">APlayerControl.cpp:926</a></div></div>
+<div class="ttc" id="aclassAPlayerControl_html_a38aa91cf1bd4fe330fbb8fcbd29f2587"><div class="ttname"><a href="classAPlayerControl.html#a38aa91cf1bd4fe330fbb8fcbd29f2587">APlayerControl::UpdateQuestOrderWidget</a></div><div class="ttdeci">void UpdateQuestOrderWidget(const FString &amp;inQuestOrder)</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8cpp_source.html#l00945">APlayerControl.cpp:945</a></div></div>
 <div class="ttc" id="aclassAPlayerControl_html_a3b1610210b44fa2be6c12fa777631033"><div class="ttname"><a href="classAPlayerControl.html#a3b1610210b44fa2be6c12fa777631033">APlayerControl::TEST_AddItemToBoxList</a></div><div class="ttdeci">void TEST_AddItemToBoxList()</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8cpp_source.html#l00658">APlayerControl.cpp:658</a></div></div>
 <div class="ttc" id="aclassAPlayerControl_html_a4864ed11a25d0245a4ca8daa360d81d1"><div class="ttname"><a href="classAPlayerControl.html#a4864ed11a25d0245a4ca8daa360d81d1">APlayerControl::RequestSpeakResult</a></div><div class="ttdeci">void RequestSpeakResult()</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8cpp_source.html#l00612">APlayerControl.cpp:612</a></div></div>
-<div class="ttc" id="aclassAPlayerControl_html_a48c30f588b649f969068037e3b21d45d"><div class="ttname"><a href="classAPlayerControl.html#a48c30f588b649f969068037e3b21d45d">APlayerControl::ChatHistorySystem</a></div><div class="ttdeci">TObjectPtr&lt; class UChatHistorySystem &gt; ChatHistorySystem</div><div class="ttdoc">Chat History 관리 컴포넌트</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8h_source.html#l00198">APlayerControl.h:198</a></div></div>
+<div class="ttc" id="aclassAPlayerControl_html_a48c30f588b649f969068037e3b21d45d"><div class="ttname"><a href="classAPlayerControl.html#a48c30f588b649f969068037e3b21d45d">APlayerControl::ChatHistorySystem</a></div><div class="ttdeci">TObjectPtr&lt; class UChatHistorySystem &gt; ChatHistorySystem</div><div class="ttdoc">Chat History 관리 컴포넌트</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8h_source.html#l00208">APlayerControl.h:208</a></div></div>
 <div class="ttc" id="aclassAPlayerControl_html_a49c6d11314d21c34209ac16d0dabcfc3"><div class="ttname"><a href="classAPlayerControl.html#a49c6d11314d21c34209ac16d0dabcfc3">APlayerControl::UpdateQuestRole</a></div><div class="ttdeci">void UpdateQuestRole(EQuestRole QuestRole)</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8cpp_source.html#l00150">APlayerControl.cpp:150</a></div></div>
 <div class="ttc" id="aclassAPlayerControl_html_a4a6f327d434399d3f375a5f74b5fd56b"><div class="ttname"><a href="classAPlayerControl.html#a4a6f327d434399d3f375a5f74b5fd56b">APlayerControl::OnInteract</a></div><div class="ttdeci">void OnInteract(const FInputActionValue &amp;Value)</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8cpp_source.html#l00265">APlayerControl.cpp:265</a></div></div>
 <div class="ttc" id="aclassAPlayerControl_html_a4cf368d1cfadfd50d83c8af1b10cc623"><div class="ttname"><a href="classAPlayerControl.html#a4cf368d1cfadfd50d83c8af1b10cc623">APlayerControl::BeginPlay</a></div><div class="ttdeci">virtual void BeginPlay() override</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8cpp_source.html#l00086">APlayerControl.cpp:86</a></div></div>
 <div class="ttc" id="aclassAPlayerControl_html_a4e8603d756e3da26a093ccdb44528a28"><div class="ttname"><a href="classAPlayerControl.html#a4e8603d756e3da26a093ccdb44528a28">APlayerControl::StartTutorialManually</a></div><div class="ttdeci">void StartTutorialManually()</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8cpp_source.html#l00181">APlayerControl.cpp:181</a></div></div>
 <div class="ttc" id="aclassAPlayerControl_html_a50f77b6862b6575c355a439c33868248"><div class="ttname"><a href="classAPlayerControl.html#a50f77b6862b6575c355a439c33868248">APlayerControl::Client_ToastMessage</a></div><div class="ttdeci">void Client_ToastMessage(const FString &amp;Message)</div></div>
 <div class="ttc" id="aclassAPlayerControl_html_a53ea83bb9bed9690c52806a5ae4b5657"><div class="ttname"><a href="classAPlayerControl.html#a53ea83bb9bed9690c52806a5ae4b5657">APlayerControl::OnGrabRelease</a></div><div class="ttdeci">void OnGrabRelease(const FInputActionValue &amp;Value)</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8cpp_source.html#l00260">APlayerControl.cpp:260</a></div></div>
-<div class="ttc" id="aclassAPlayerControl_html_a585aa05322aa9c59ce315bd1e01e8038"><div class="ttname"><a href="classAPlayerControl.html#a585aa05322aa9c59ce315bd1e01e8038">APlayerControl::UserInfo</a></div><div class="ttdeci">FResponseUserMe UserInfo</div><div class="ttdoc">사용자 정보 (레벨 전환에서도 유지됨)</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8h_source.html#l00180">APlayerControl.h:180</a></div></div>
+<div class="ttc" id="aclassAPlayerControl_html_a585aa05322aa9c59ce315bd1e01e8038"><div class="ttname"><a href="classAPlayerControl.html#a585aa05322aa9c59ce315bd1e01e8038">APlayerControl::UserInfo</a></div><div class="ttdeci">FResponseUserMe UserInfo</div><div class="ttdoc">사용자 정보 (레벨 전환에서도 유지됨)</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8h_source.html#l00190">APlayerControl.h:190</a></div></div>
 <div class="ttc" id="aclassAPlayerControl_html_a5de03e93a40114a3c197d31e49fa2492"><div class="ttname"><a href="classAPlayerControl.html#a5de03e93a40114a3c197d31e49fa2492">APlayerControl::OnTutorialCompleted</a></div><div class="ttdeci">void OnTutorialCompleted()</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8cpp_source.html#l00190">APlayerControl.cpp:190</a></div></div>
 <div class="ttc" id="aclassAPlayerControl_html_a6753258935f617283a3cfb653d32b84b"><div class="ttname"><a href="classAPlayerControl.html#a6753258935f617283a3cfb653d32b84b">APlayerControl::OnMove</a></div><div class="ttdeci">void OnMove(const FInputActionValue &amp;Value)</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8cpp_source.html#l00197">APlayerControl.cpp:197</a></div></div>
 <div class="ttc" id="aclassAPlayerControl_html_a6c7499f4bc744fb6e0920e5195f562c3"><div class="ttname"><a href="classAPlayerControl.html#a6c7499f4bc744fb6e0920e5195f562c3">APlayerControl::OnLook</a></div><div class="ttdeci">void OnLook(const FInputActionValue &amp;Value)</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8cpp_source.html#l00203">APlayerControl.cpp:203</a></div></div>
@@ -1243,7 +1262,7 @@ $(document).ready(function(){initNavTree('APlayerControl_8cpp_source.html',''); 
 <div class="ttc" id="aclassAPlayerControl_html_a9e4e2fa62ac57a7cb39ddc62d4b9aeb2"><div class="ttname"><a href="classAPlayerControl.html#a9e4e2fa62ac57a7cb39ddc62d4b9aeb2">APlayerControl::Server_RequestDrop</a></div><div class="ttdeci">void Server_RequestDrop()</div></div>
 <div class="ttc" id="aclassAPlayerControl_html_aa79cca5ec444d9c7add4fcecc5dde23b"><div class="ttname"><a href="classAPlayerControl.html#aa79cca5ec444d9c7add4fcecc5dde23b">APlayerControl::Server_OnGrab</a></div><div class="ttdeci">void Server_OnGrab()</div></div>
 <div class="ttc" id="aclassAPlayerControl_html_ab1044d9a2d811fbecea2eaa79ddaafdc"><div class="ttname"><a href="classAPlayerControl.html#ab1044d9a2d811fbecea2eaa79ddaafdc">APlayerControl::OpenHowToPlay</a></div><div class="ttdeci">void OpenHowToPlay(EQuestType QuestType)</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8cpp_source.html#l00353">APlayerControl.cpp:353</a></div></div>
-<div class="ttc" id="aclassAPlayerControl_html_ab278cc438dd24511edae00e9a75e3023"><div class="ttname"><a href="classAPlayerControl.html#ab278cc438dd24511edae00e9a75e3023">APlayerControl::UpdateQuestInfoWidget</a></div><div class="ttdeci">void UpdateQuestInfoWidget()</div><div class="ttdoc">퀘스트 상태에 따라 QuestInfoWidget 업데이트</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8cpp_source.html#l00834">APlayerControl.cpp:834</a></div></div>
+<div class="ttc" id="aclassAPlayerControl_html_ab278cc438dd24511edae00e9a75e3023"><div class="ttname"><a href="classAPlayerControl.html#ab278cc438dd24511edae00e9a75e3023">APlayerControl::UpdateQuestInfoWidget</a></div><div class="ttdeci">void UpdateQuestInfoWidget()</div><div class="ttdoc">퀘스트 상태에 따라 QuestInfoWidget 업데이트</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8cpp_source.html#l00853">APlayerControl.cpp:853</a></div></div>
 <div class="ttc" id="aclassAPlayerControl_html_ab2dcf9de168c0f1940c769c5c87cb864"><div class="ttname"><a href="classAPlayerControl.html#ab2dcf9de168c0f1940c769c5c87cb864">APlayerControl::OnGrab</a></div><div class="ttdeci">void OnGrab(const FInputActionValue &amp;Value)</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8cpp_source.html#l00255">APlayerControl.cpp:255</a></div></div>
 <div class="ttc" id="aclassAPlayerControl_html_ab3d4f9402f141abbda15c5f00d9a522e"><div class="ttname"><a href="classAPlayerControl.html#ab3d4f9402f141abbda15c5f00d9a522e">APlayerControl::OnHistory</a></div><div class="ttdeci">void OnHistory(const FInputActionValue &amp;Value)</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8cpp_source.html#l00313">APlayerControl.cpp:313</a></div></div>
 <div class="ttc" id="aclassAPlayerControl_html_ab98c322064b5894e5cd25113d82f617f"><div class="ttname"><a href="classAPlayerControl.html#ab98c322064b5894e5cd25113d82f617f">APlayerControl::TEST_DropperDropProcess</a></div><div class="ttdeci">void TEST_DropperDropProcess()</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8cpp_source.html#l00649">APlayerControl.cpp:649</a></div></div>
@@ -1252,12 +1271,14 @@ $(document).ready(function(){initNavTree('APlayerControl_8cpp_source.html',''); 
 <div class="ttc" id="aclassAPlayerControl_html_ac11056777562d66110ccfc7cafb744d8"><div class="ttname"><a href="classAPlayerControl.html#ac11056777562d66110ccfc7cafb744d8">APlayerControl::OnHowToCtrl</a></div><div class="ttdeci">void OnHowToCtrl(const FInputActionValue &amp;Value)</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8cpp_source.html#l00322">APlayerControl.cpp:322</a></div></div>
 <div class="ttc" id="aclassAPlayerControl_html_ac1a34aa3e6b5a59c28b7b8ae42c4d75d"><div class="ttname"><a href="classAPlayerControl.html#ac1a34aa3e6b5a59c28b7b8ae42c4d75d">APlayerControl::OnRecordPressed</a></div><div class="ttdeci">void OnRecordPressed(const FInputActionValue &amp;Value)</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8cpp_source.html#l00235">APlayerControl.cpp:235</a></div></div>
 <div class="ttc" id="aclassAPlayerControl_html_acdc532d4c270e6f0685ad4870d7463d5"><div class="ttname"><a href="classAPlayerControl.html#acdc532d4c270e6f0685ad4870d7463d5">APlayerControl::ShouldSkipTutorial</a></div><div class="ttdeci">bool ShouldSkipTutorial() const</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8cpp_source.html#l00168">APlayerControl.cpp:168</a></div></div>
+<div class="ttc" id="aclassAPlayerControl_html_ad0e3bf960e2f53acba68cda16b87d608"><div class="ttname"><a href="classAPlayerControl.html#ad0e3bf960e2f53acba68cda16b87d608">APlayerControl::Client_OpenHowToPlay</a></div><div class="ttdeci">void Client_OpenHowToPlay(EQuestType InType)</div></div>
 <div class="ttc" id="aclassAPlayerControl_html_ad52af79fddcd1253723313ab75eec84c"><div class="ttname"><a href="classAPlayerControl.html#ad52af79fddcd1253723313ab75eec84c">APlayerControl::APlayerControl</a></div><div class="ttdeci">APlayerControl()</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8cpp_source.html#l00064">APlayerControl.cpp:64</a></div></div>
 <div class="ttc" id="aclassAPlayerControl_html_ad9179af6a28b83606e927ffc0635fa27"><div class="ttname"><a href="classAPlayerControl.html#ad9179af6a28b83606e927ffc0635fa27">APlayerControl::Server_SetUserInfo</a></div><div class="ttdeci">void Server_SetUserInfo(const FResponseUserMe &amp;InUserInfo)</div></div>
 <div class="ttc" id="aclassAPlayerControl_html_adbe39822e30958a476131716276b020c"><div class="ttname"><a href="classAPlayerControl.html#adbe39822e30958a476131716276b020c">APlayerControl::Server_OnInteract</a></div><div class="ttdeci">void Server_OnInteract()</div></div>
 <div class="ttc" id="aclassAPlayerControl_html_ae9cd7f958c4cd735c6c73d9267c9f78a"><div class="ttname"><a href="classAPlayerControl.html#ae9cd7f958c4cd735c6c73d9267c9f78a">APlayerControl::OnHowToPlay</a></div><div class="ttdeci">void OnHowToPlay(const FInputActionValue &amp;Value)</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8cpp_source.html#l00328">APlayerControl.cpp:328</a></div></div>
 <div class="ttc" id="aclassAPlayerControl_html_aeb90da2f39476227c6136a9d78d45c83"><div class="ttname"><a href="classAPlayerControl.html#aeb90da2f39476227c6136a9d78d45c83">APlayerControl::Server_OnGrabRelease</a></div><div class="ttdeci">void Server_OnGrabRelease()</div></div>
 <div class="ttc" id="aclassAPlayerControl_html_aeda5eb6dcc2b2420cf2dc554a2739477"><div class="ttname"><a href="classAPlayerControl.html#aeda5eb6dcc2b2420cf2dc554a2739477">APlayerControl::GetControllable</a></div><div class="ttdeci">class IControllable * GetControllable() const</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8cpp_source.html#l00155">APlayerControl.cpp:155</a></div></div>
+<div class="ttc" id="aclassAPlayerControl_html_aef194503875ee4bd404d0c02e261ca15"><div class="ttname"><a href="classAPlayerControl.html#aef194503875ee4bd404d0c02e261ca15">APlayerControl::Multicast_OpenHowToPlay</a></div><div class="ttdeci">void Multicast_OpenHowToPlay(EQuestType InType)</div></div>
 <div class="ttc" id="aclassAPlayerControl_html_af727aa7d2f0ad872c920876e21bf3811"><div class="ttname"><a href="classAPlayerControl.html#af727aa7d2f0ad872c920876e21bf3811">APlayerControl::Server_SyncSpeakScenarioData</a></div><div class="ttdeci">void Server_SyncSpeakScenarioData(class AWheatly *Wheatly, const struct FResponseSpeakScenario &amp;Data)</div><div class="ttdoc">Client에서 받은 시나리오 데이터를 Wheatly에 전달 (Server RPC)</div></div>
 <div class="ttc" id="aclassAPlayerControl_html_af8c76a593d47ea58362e58220776fef6"><div class="ttname"><a href="classAPlayerControl.html#af8c76a593d47ea58362e58220776fef6">APlayerControl::OnStopMove</a></div><div class="ttdeci">void OnStopMove(const FInputActionValue &amp;Value)</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8cpp_source.html#l00209">APlayerControl.cpp:209</a></div></div>
 <div class="ttc" id="aclassAPlayerControl_html_afd90706b8ae2fbec79c5c776f06d5c78"><div class="ttname"><a href="classAPlayerControl.html#afd90706b8ae2fbec79c5c776f06d5c78">APlayerControl::OnDoorMessage</a></div><div class="ttdeci">void OnDoorMessage(int32 InDoorIndex, bool bInOpen, AActor *EventInstigator)</div><div class="ttdoc">DoorMessage 이벤트 핸들러</div><div class="ttdef"><b>Definition</b> <a href="APlayerControl_8cpp_source.html#l00767">APlayerControl.cpp:767</a></div></div>
@@ -1278,7 +1299,6 @@ $(document).ready(function(){initNavTree('APlayerControl_8cpp_source.html',''); 
 <div class="ttc" id="aclassUQuestOrderWidget_html"><div class="ttname"><a href="classUQuestOrderWidget.html">UQuestOrderWidget</a></div><div class="ttdef"><b>Definition</b> <a href="QuestOrderWidget_8h_source.html#l00013">QuestOrderWidget.h:14</a></div></div>
 <div class="ttc" id="aclassUQuestOrderWidget_html_a29d4842fd755c8922491aebaa8f5e6e7"><div class="ttname"><a href="classUQuestOrderWidget.html#a29d4842fd755c8922491aebaa8f5e6e7">UQuestOrderWidget::UpdateQuestOrder</a></div><div class="ttdeci">void UpdateQuestOrder(const FString &amp;inQuestOrder)</div><div class="ttdef"><b>Definition</b> <a href="QuestOrderWidget_8cpp_source.html#l00022">QuestOrderWidget.cpp:22</a></div></div>
 <div class="ttc" id="anamespaceDefineData_html_aa27e976521e38c0858f3d0437d48a9b0"><div class="ttname"><a href="namespaceDefineData.html#aa27e976521e38c0858f3d0437d48a9b0">DefineData::BotID</a></div><div class="ttdeci">static const int32 BotID</div><div class="ttdef"><b>Definition</b> <a href="Onepiece_8h_source.html#l00056">Onepiece.h:56</a></div></div>
-<div class="ttc" id="anamespaceDoorGroup_html_a0d40ea6a3e84b5ce2d3da094c4d93e1c"><div class="ttname"><a href="namespaceDoorGroup.html#a0d40ea6a3e84b5ce2d3da094c4d93e1c">DoorGroup::Step4_Tutorial</a></div><div class="ttdeci">static const int32 Step4_Tutorial</div><div class="ttdef"><b>Definition</b> <a href="Onepiece_8h_source.html#l00035">Onepiece.h:35</a></div></div>
 <div class="ttc" id="anamespaceDoorGroup_html_a382bc5ba9c89bbe22f7a3a78c7c5a04c"><div class="ttname"><a href="namespaceDoorGroup.html#a382bc5ba9c89bbe22f7a3a78c7c5a04c">DoorGroup::Step3_End</a></div><div class="ttdeci">static const int32 Step3_End</div><div class="ttdef"><b>Definition</b> <a href="Onepiece_8h_source.html#l00033">Onepiece.h:33</a></div></div>
 <div class="ttc" id="anamespaceDoorGroup_html_a46ea8b980567f25c0faa57ce918aa7d7"><div class="ttname"><a href="namespaceDoorGroup.html#a46ea8b980567f25c0faa57ce918aa7d7">DoorGroup::Step1_Tutorial</a></div><div class="ttdeci">static const int32 Step1_Tutorial</div><div class="ttdef"><b>Definition</b> <a href="Onepiece_8h_source.html#l00020">Onepiece.h:20</a></div></div>
 <div class="ttc" id="anamespaceDoorGroup_html_a7e9c7cfba68d64eab773a003588bad8b"><div class="ttname"><a href="namespaceDoorGroup.html#a7e9c7cfba68d64eab773a003588bad8b">DoorGroup::Step2_Tutorial</a></div><div class="ttdeci">static const int32 Step2_Tutorial</div><div class="ttdef"><b>Definition</b> <a href="Onepiece_8h_source.html#l00028">Onepiece.h:28</a></div></div>
@@ -1318,7 +1338,7 @@ $(document).ready(function(){initNavTree('APlayerControl_8cpp_source.html',''); 
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_71a9f6b769ee24fe8598c19ea2d70480.html">Character</a></li><li class="navelem"><a class="el" href="dir_a846a28747c2ebe05b4ec9782ab892b2.html">Private</a></li><li class="navelem"><a class="el" href="APlayerControl_8cpp.html">APlayerControl.cpp</a></li>
-    <li class="footer">생성시간 : 화 12월 30 2025 06:06:30, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 화 12월 30 2025 07:18:58, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

@@ -1,5 +1,7 @@
 var NAVTREEINDEX10 =
 {
+"classUCityNameWidget.html":[2,0,148],
+"classUCityNameWidget.html#a02793042eefe1fbface31d2dd47cbb10":[2,0,148,1],
 "classUCityNameWidget.html#a05a1e348559909e83805c91615d41cc8":[2,0,148,3],
 "classUCityNameWidget.html#a478ed41310cb5641dba04fecc90a2785":[2,0,148,2],
 "classUCityNameWidget.html#a65dd0b7311964a0e744b40e4c71ee245":[2,0,148,0],
@@ -247,7 +249,5 @@ var NAVTREEINDEX10 =
 "classUGameDataManager.html#a719bc280ef6f769f47dfffd8293fc8e2":[2,0,168,16],
 "classUGameDataManager.html#a7330e9a6967471a878094204d6c4c98f":[2,0,168,71],
 "classUGameDataManager.html#a739cb5ede53b4b3bdd9ba64fdf4c4908":[2,0,168,35],
-"classUGameDataManager.html#a767778c8c26f3fcc616ae9f0f3b65c0a":[2,0,168,3],
-"classUGameDataManager.html#a78a8d08c59663c4a87680585f555207e":[2,0,168,18],
-"classUGameDataManager.html#a7d5f4b7321bc2405f3ff9f696b7ddd75":[2,0,168,66]
+"classUGameDataManager.html#a767778c8c26f3fcc616ae9f0f3b65c0a":[2,0,168,3]
 };
