@@ -502,7 +502,7 @@ void APlayerControl::Client_InteractKiosk_Implementation()
 	}
 	if (!component->bCanInteract)
 		return;
-	
+
 	// 델리게이트 브로드캐스트
 	component->OnInteractionTriggered.Broadcast(GetPawn());
 

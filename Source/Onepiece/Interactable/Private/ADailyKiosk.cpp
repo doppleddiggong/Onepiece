@@ -27,7 +27,7 @@ ADailyKiosk::ADailyKiosk()
 	MeshComp->SetupAttachment(RootComponent);
 
 	InteractableComp = CreateDefaultSubobject<UInteractableComponent>(TEXT("Interactable"));
-	InteractableComp->InteractionType = EInteractionType::Button;
+	InteractableComp->InteractionType = EInteractionType::Kiosk;
 	InteractableComp->InteractionPrompt = TEXT("Activate");
 
 	BoxComp = CreateDefaultSubobject<UBoxComponent>(TEXT("BoxComp"));
@@ -58,9 +58,6 @@ void ADailyKiosk::BeginPlay()
 
 void ADailyKiosk::OnInteractionTriggered(AActor* Interactor)
 {
-	// 상호작용한 플레이어 저장
-	CachedInteractor = Interactor;
-
 	// ChatDaily API 요청
 	if (auto KLingoNetwork = UKLingoNetworkSystem::Get(GetWorld()))
 	{
@@ -75,28 +72,6 @@ void ADailyKiosk::OnInteractionTriggered(AActor* Interactor)
 
 void ADailyKiosk::OnResponseDailyQuestion(FResponseChatDailys& InResponseData, bool bWasSuccessful)
 {
-	// 상호작용한 플레이어의 PopupManager 가져오기
-	UPopupManager* PopupMgr = nullptr;
-	if (CachedInteractor.IsValid())
-	{
-		if (APawn* Pawn = Cast<APawn>(CachedInteractor.Get()))
-		{
-			if (APlayerController* PC = Cast<APlayerController>(Pawn->GetController()))
-			{
-				if (ULocalPlayer* LocalPlayer = PC->GetLocalPlayer())
-				{
-					PopupMgr = LocalPlayer->GetSubsystem<UPopupManager>();
-				}
-			}
-		}
-	}
-
-	if (!PopupMgr)
-	{
-		PRINTLOG(TEXT("[DailyKiosk] Failed to get PopupManager for interactor"));
-		return;
-	}
-
 	if (!bWasSuccessful)
 	{
 		PRINTLOG(TEXT("[DailyKiosk] Network request failed. Using fallback word data."));
@@ -106,7 +81,7 @@ void ADailyKiosk::OnResponseDailyQuestion(FResponseChatDailys& InResponseData, b
 
 		if (FallbackWordData.Num() > 0)
 		{
-			if (UPopup_DailyStudy* DailyStudyPopup = PopupMgr->ShowPopupAs<UPopup_DailyStudy>(EPopupType::DailyStudy))
+			if (UPopup_DailyStudy* DailyStudyPopup = UPopupManager::Get(GetWorld())->ShowPopupAs<UPopup_DailyStudy>(EPopupType::DailyStudy))
 			{
 				DailyStudyPopup->InitPopup(FallbackWordData);
 			}
@@ -167,7 +142,7 @@ void ADailyKiosk::OnResponseDailyQuestion(FResponseChatDailys& InResponseData, b
 	// 최종 검증 및 팝업 표시
 	if (ValidWordDataArray.Num() > 0)
 	{
-		if (UPopup_DailyStudy* DailyStudyPopup = PopupMgr->ShowPopupAs<UPopup_DailyStudy>(EPopupType::DailyStudy))
+		if (UPopup_DailyStudy* DailyStudyPopup = UPopupManager::Get(GetWorld())->ShowPopupAs<UPopup_DailyStudy>(EPopupType::DailyStudy))
 		{
 			DailyStudyPopup->InitPopup(ValidWordDataArray);
 			PRINTLOG(TEXT("[DailyKiosk] Initialized DailyStudy popup with %d words"), ValidWordDataArray.Num());
