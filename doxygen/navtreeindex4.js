@@ -1,5 +1,6 @@
 var NAVTREEINDEX4 =
 {
+"UPageScrollDot_8cpp.html":[3,0,0,2,8,0,4],
 "UPageScrollDot_8cpp_source.html":[3,0,0,2,8,0,4],
 "UPageScrollDot_8h.html":[3,0,0,2,8,1,5],
 "UPageScrollDot_8h_source.html":[3,0,0,2,8,1,5],
@@ -248,6 +249,5 @@ var NAVTREEINDEX4 =
 "UWordItem_8cpp_source.html":[3,0,0,2,6,0,35],
 "UWordItem_8h.html":[3,0,0,2,6,1,35],
 "UWordItem_8h_source.html":[3,0,0,2,6,1,35],
-"UWordWidget_8cpp.html":[3,0,0,2,6,0,36],
-"UWordWidget_8cpp_source.html":[3,0,0,2,6,0,36]
+"UWordWidget_8cpp.html":[3,0,0,2,6,0,36]
 };
