@@ -185,6 +185,16 @@ void Aluggage::OnRep_CollisionEnabled()
 
 void Aluggage::ApplyColorToMesh(int32 InColorIdx)
 {
+	// 게임 스레드가 아니면 게임 스레드로 dispatch
+	if (!IsInGameThread())
+	{
+		AsyncTask(ENamedThreads::GameThread, [this, InColorIdx]()
+		{
+			ApplyColorToMesh(InColorIdx);
+		});
+		return;
+	}
+
 	ColorIdx = InColorIdx;
 
 	FColorData ColorData;
@@ -212,6 +222,16 @@ void Aluggage::ApplyColorToMesh(int32 InColorIdx)
 
 void Aluggage::ApplyPatternToMesh(int32 InPatternIdx)
 {
+	// 게임 스레드가 아니면 게임 스레드로 dispatch
+	if (!IsInGameThread())
+	{
+		AsyncTask(ENamedThreads::GameThread, [this, InPatternIdx]()
+		{
+			ApplyPatternToMesh(InPatternIdx);
+		});
+		return;
+	}
+
 	PatternIdx = InPatternIdx;
 
 	// 데칼 바꾸기

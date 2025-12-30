@@ -87,6 +87,16 @@ void AListenAnswer::OnRep_AnswerData()
 
 void AListenAnswer::UpdateMesh()
 {
+	// 게임 스레드가 아니면 게임 스레드로 dispatch
+	if (!IsInGameThread())
+	{
+		AsyncTask(ENamedThreads::GameThread, [this]()
+		{
+			UpdateMesh();
+		});
+		return;
+	}
+
 	if (!ListenDataTable)
 	{
 		UE_LOG(LogTemp, Error, TEXT("ListenDataTable is null!"));
@@ -116,6 +126,16 @@ void AListenAnswer::UpdateMesh()
 
 void AListenAnswer::UpdateNameWidget()
 {
+	// 게임 스레드가 아니면 게임 스레드로 dispatch
+	if (!IsInGameThread())
+	{
+		AsyncTask(ENamedThreads::GameThread, [this]()
+		{
+			UpdateNameWidget();
+		});
+		return;
+	}
+
 	// Widget이 아직 초기화되지 않았을 수 있으므로 체크
 	if (!NameWidgetComp || !NameWidgetComp->GetWidget())
 		return;
