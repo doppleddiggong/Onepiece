@@ -1,6 +1,5 @@
 var NAVTREEINDEX20 =
 {
-"structFServerConfig.html":[2,0,122],
 "structFServerConfig.html#a0921d17b91705fa9f1ffc75c204daab5":[2,0,122,2],
 "structFServerConfig.html#a192542ce9a719e9f4a9dd468e1e69aea":[2,0,122,3],
 "structFServerConfig.html#a8abeabc5af6396f784929d66d0bd6ce7":[2,0,122,1],
