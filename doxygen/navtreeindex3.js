@@ -69,7 +69,8 @@ var NAVTREEINDEX3 =
 "UDelayTaskManager_8cpp.html":[3,0,0,1,3,0,2],
 "UDelayTaskManager_8cpp_source.html":[3,0,0,1,3,0,2],
 "UDelayTaskManager_8h.html":[3,0,0,1,3,1,4],
-"UDelayTaskManager_8h.html#afa483e366e3e61c69c19946556fb96a3":[3,0,0,1,3,1,4,3],
+"UDelayTaskManager_8h.html#a2c7a66eadfe2ccfb485226675a8db2ee":[3,0,0,1,3,1,4,3],
+"UDelayTaskManager_8h.html#afa483e366e3e61c69c19946556fb96a3":[3,0,0,1,3,1,4,4],
 "UDelayTaskManager_8h_source.html":[3,0,0,1,3,1,4],
 "UDespawnItem_8cpp.html":[3,0,0,2,6,0,14],
 "UDespawnItem_8cpp_source.html":[3,0,0,2,6,0,14],
@@ -151,8 +152,8 @@ var NAVTREEINDEX3 =
 "UHookSystem_8h.html":[3,0,0,2,0,1,11],
 "UHookSystem_8h.html#a1c673a19776054c0693b8177e71c5426":[3,0,0,2,0,1,11,0],
 "UHookSystem_8h.html#a1c673a19776054c0693b8177e71c5426aa3f80d8f0f1b4ffa8c475f5d60ea5635":[3,0,0,2,0,1,11,0,1],
-"UHookSystem_8h.html#a1c673a19776054c0693b8177e71c5426aa3f80d8f0f1b4ffa8c475f5d60ea5635":[3,0,0,2,0,1,11,0,2],
 "UHookSystem_8h.html#a1c673a19776054c0693b8177e71c5426aa3f80d8f0f1b4ffa8c475f5d60ea5635":[3,0,0,2,0,1,11,0,0],
+"UHookSystem_8h.html#a1c673a19776054c0693b8177e71c5426aa3f80d8f0f1b4ffa8c475f5d60ea5635":[3,0,0,2,0,1,11,0,2],
 "UHookSystem_8h_source.html":[3,0,0,2,0,1,11],
 "UHoverButton_8cpp.html":[3,0,0,2,8,0,2],
 "UHoverButton_8cpp_source.html":[3,0,0,2,8,0,2],
@@ -248,6 +249,5 @@ var NAVTREEINDEX3 =
 "UOrbitalBehaviorComponent_8cpp.html":[3,0,0,0,0,0,2],
 "UOrbitalBehaviorComponent_8cpp_source.html":[3,0,0,0,0,0,2],
 "UOrbitalBehaviorComponent_8h.html":[3,0,0,0,0,1,2],
-"UOrbitalBehaviorComponent_8h_source.html":[3,0,0,0,0,1,2],
-"UPageScrollDot_8cpp.html":[3,0,0,2,8,0,4]
+"UOrbitalBehaviorComponent_8h_source.html":[3,0,0,0,0,1,2]
 };

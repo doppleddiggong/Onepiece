@@ -1,5 +1,6 @@
 var NAVTREEINDEX12 =
 {
+"classULingoGameHelper.html#aae5e9443e2249c16219279d75b62cb46":[2,0,180,6],
 "classULingoGameHelper.html#aaffb56063f7fe4916e89d589c02ee8cb":[2,0,180,28],
 "classULingoGameHelper.html#ac0d0929f11e3a6e8f720beac552a2f97":[2,0,180,25],
 "classULingoGameHelper.html#ad6e98b37c3a8fe6c338ad568c2d54993":[2,0,180,22],
@@ -248,6 +249,5 @@ var NAVTREEINDEX12 =
 "classUPopup__AskTutorial.html#aa3d6a21b30e9b40280f1219b567232b5":[2,0,194,15],
 "classUPopup__AskTutorial.html#ab3e47d26e447e53b60f1dd909ab9eeec":[2,0,194,13],
 "classUPopup__AskTutorial.html#ab57f9a7eeff2db840f7923d04e4f35e9":[2,0,194,0],
-"classUPopup__AskTutorial.html#ac55371a36a6c8f504f908f59809820c7":[2,0,194,3],
-"classUPopup__AskTutorial.html#add357075245f0843320c0b74af0f2697":[2,0,194,17]
+"classUPopup__AskTutorial.html#ac55371a36a6c8f504f908f59809820c7":[2,0,194,3]
 };

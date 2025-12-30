@@ -1,5 +1,6 @@
 var NAVTREEINDEX17 =
 {
+"classUVoiceCacheManager.html#afaafa166a680c5c9204d5651311b2279":[2,0,246,6],
 "classUVoiceFunctionLibrary.html":[2,0,247],
 "classUVoiceFunctionLibrary.html#a0a42913d3f8f356e575bf9805e6e7af3":[2,0,247,3],
 "classUVoiceFunctionLibrary.html#a35f33cf7929f66d25f79916d6657d81e":[2,0,247,5],
@@ -122,15 +123,15 @@ var NAVTREEINDEX17 =
 "dir_f5c20ae920c5f83d16e1c5fb9563aee7.html":[3,0,0,1,0,0],
 "dir_f8d1c9eab1fc62a504c69287c791da47.html":[3,0,0,1,1,0],
 "files.html":[3,0],
-"functions.html":[2,3,0,0],
 "functions.html":[2,3,0],
+"functions.html":[2,3,0,0],
 "functions_b.html":[2,3,0,1],
 "functions_c.html":[2,3,0,2],
 "functions_d.html":[2,3,0,3],
 "functions_e.html":[2,3,0,4],
 "functions_f.html":[2,3,0,5],
-"functions_func.html":[2,3,1,0],
 "functions_func.html":[2,3,1],
+"functions_func.html":[2,3,1,0],
 "functions_func_b.html":[2,3,1,1],
 "functions_func_c.html":[2,3,1,2],
 "functions_func_d.html":[2,3,1,3],
@@ -168,8 +169,8 @@ var NAVTREEINDEX17 =
 "functions_t.html":[2,3,0,19],
 "functions_u.html":[2,3,0,20],
 "functions_v.html":[2,3,0,21],
-"functions_vars.html":[2,3,2,0],
 "functions_vars.html":[2,3,2],
+"functions_vars.html":[2,3,2,0],
 "functions_vars_b.html":[2,3,2,1],
 "functions_vars_c.html":[2,3,2,2],
 "functions_vars_d.html":[2,3,2,3],
@@ -200,8 +201,8 @@ var NAVTREEINDEX17 =
 "globals_func.html":[3,1,1],
 "globals_vars.html":[3,1,2],
 "hierarchy.html":[2,2],
-"index.html":[],
 "index.html":[0],
+"index.html":[],
 "index.html#autotoc_md10":[0,2],
 "index.html#autotoc_md11":[0,2,0],
 "index.html#autotoc_md12":[0,2,1],
@@ -248,6 +249,5 @@ var NAVTREEINDEX17 =
 "namespaceDoorGroup.html":[1,0,3],
 "namespaceDoorGroup.html#a0d40ea6a3e84b5ce2d3da094c4d93e1c":[1,0,3,9],
 "namespaceDoorGroup.html#a382bc5ba9c89bbe22f7a3a78c7c5a04c":[1,0,3,6],
-"namespaceDoorGroup.html#a46ea8b980567f25c0faa57ce918aa7d7":[1,0,3,3],
-"namespaceDoorGroup.html#a7e9c7cfba68d64eab773a003588bad8b":[1,0,3,5]
+"namespaceDoorGroup.html#a46ea8b980567f25c0faa57ce918aa7d7":[1,0,3,3]
 };

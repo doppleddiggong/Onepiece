@@ -1,5 +1,6 @@
 var NAVTREEINDEX13 =
 {
+"classUPopup__AskTutorial.html#add357075245f0843320c0b74af0f2697":[2,0,194,17],
 "classUPopup__AskTutorial.html#af02f20e1ad1dd8c9672e1164b8aedf64":[2,0,194,8],
 "classUPopup__DailyResult.html":[2,0,195],
 "classUPopup__DailyResult.html#a0d01a5642c88bc36e3474970f5368565":[2,0,195,13],
@@ -248,6 +249,5 @@ var NAVTREEINDEX13 =
 "classUPopup__Interview.html#abc49ed8a1e195e679d47ee78d4edc034":[2,0,203,23],
 "classUPopup__Interview.html#adbc4b1bc708fca8b8528bfeafaf4fa8d":[2,0,203,11],
 "classUPopup__Interview.html#add357075245f0843320c0b74af0f2697":[2,0,203,22],
-"classUPopup__Interview.html#ae1e5a127e84c35184be7830aa403532a":[2,0,203,12],
-"classUPopup__Interview.html#ae5c9f4a7b8a279e9ae40ef890906ede5":[2,0,203,3]
+"classUPopup__Interview.html#ae1e5a127e84c35184be7830aa403532a":[2,0,203,12]
 };
