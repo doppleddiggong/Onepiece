@@ -59,15 +59,41 @@ void AOrderKiosk::Tick(float DeltaTime)
 void AOrderKiosk::BeginFoodOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
 	UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
+	UE_LOG(LogTemp, Warning, TEXT("[OrderKiosk::BeginFoodOverlap] IsOnceStopped: %d"), IsOnceStopped);
+
 	if (IsOnceStopped) return;
-	
+
 	if (AFood* Temp = Cast<AFood>(OtherActor))
 	{
 		CurrentFoodContainer = Temp;
-		
+		FFoodCapsuleData CurrentData = CurrentFoodContainer->CurrentFoodData;
+
+		UE_LOG(LogTemp, Warning, TEXT("[OrderKiosk::BeginFoodOverlap] Food detected. InAnswerType: %d, City=%s, Food=%s"),
+			InAnswerType, *CurrentData.word1.name, *CurrentData.word2.name);
+
+		// 이미 정답 데이터가 있으면 컨베이어 계속 움직임
+		if (InAnswerType == EAnswerType::Food && CurrentData.word2.name != TEXT("")) return;
+
+		// City가 이미 있는 경우 (부분정답), 바로 3초 후 이동 타이머 설정
+		if (InAnswerType == EAnswerType::City && CurrentData.word1.name != TEXT(""))
+		{
+			UE_LOG(LogTemp, Warning, TEXT("[OrderKiosk::BeginFoodOverlap] City already set - Setting timer for teleport"));
+
+			FTimerHandle TimerHandle;
+			GetWorldTimerManager().SetTimer(TimerHandle, FTimerDelegate::CreateLambda([this]
+			{
+				UE_LOG(LogTemp, Warning, TEXT("[OrderKiosk] Timer triggered - Moving FoodContainer (from BeginFoodOverlap)"));
+				Server_MoveFoodContainer(CurrentFoodContainer);
+			}), 3.f, false);
+
+			return;
+		}
+
+		// 아직 설정 안 됐으면 컨베이어 멈추기
 		if (ConveyorsToControl.Num() <= 0) return;
-		
-		// 만약 음식 큐브일 경우, 컨베이어 멈추기
+
+		UE_LOG(LogTemp, Warning, TEXT("[OrderKiosk::BeginFoodOverlap] Stopping conveyor"));
+
 		for (auto Conveyor : ConveyorsToControl)
 		{
 			if (AConveyorBelt* CB = Cast<AConveyorBelt>(Conveyor))
@@ -81,20 +107,13 @@ void AOrderKiosk::BeginFoodOverlap(UPrimitiveComponent* OverlappedComponent, AAc
 void AOrderKiosk::BeginSubmitOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
 	UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
-	UE_LOG(LogTemp, Warning, TEXT("[OrderKiosk::BeginSubmitOverlap] Called with Actor: %s"),
-		OtherActor ? *OtherActor->GetName() : TEXT("NULL"));
-
 	// 답 제출하면 컨베이어 재개
 	if (AListenAnswer* Answer = Cast<AListenAnswer>(OtherActor))
 	{
 		UE_LOG(LogTemp, Warning, TEXT("[OrderKiosk::BeginSubmitOverlap] ListenAnswer detected. AnswerType: %d, Index: %d"),
 			Answer->AnswerData.AnswerType, InAnswerType);
 
-		if (ConveyorsToControl.Num() <= 0)
-		{
-			UE_LOG(LogTemp, Error, TEXT("[OrderKiosk::BeginSubmitOverlap] ConveyorsToControl is empty!"));
-			return;
-		}
+		if (ConveyorsToControl.Num() <= 0) return;
 
 		for (auto Conveyor : ConveyorsToControl)
 		{
@@ -105,26 +124,32 @@ void AOrderKiosk::BeginSubmitOverlap(UPrimitiveComponent* OverlappedComponent, A
 				// 인덱스 번호와 정답 타입이 일치하면 데이터 전달 후 컨베이어 움직이기
 				if (Answer->AnswerData.AnswerType == InAnswerType)
 				{
+					UE_LOG(LogTemp, Warning, TEXT("[OrderKiosk::BeginSubmitOverlap] AnswerType matched. InAnswerType: %d"), InAnswerType);
+
 					switch (InAnswerType)
 					{
 					case EAnswerType::Food:
 						CurrentFoodContainer->SetFoodMesh(Answer->AnswerData.word1, Answer->Mesh->GetStaticMesh());
+						CurrentFoodContainer->UpdateFoodWidget();
 						FoodDisplay->SetChecked();
 						break;
 
 					case EAnswerType::City:
 						{
+							UE_LOG(LogTemp, Warning, TEXT("[OrderKiosk::BeginSubmitOverlap] City case - Setting timer for teleport"));
+
 							CurrentFoodContainer->SetCityName(Answer->AnswerData.word1);
 							CityDisplay->SetChecked();
-							
+
 							// 3초 뒤 정답 구간으로 이동
 							FTimerHandle TimerHandle;
 							GetWorldTimerManager().SetTimer(TimerHandle, FTimerDelegate::CreateLambda([this]
 							{
+								UE_LOG(LogTemp, Warning, TEXT("[OrderKiosk] Timer triggered - Moving FoodContainer"));
 								Server_MoveFoodContainer(CurrentFoodContainer);
-								
+
 							}), 3.f, false);
-							
+
 							break;
 						}
 

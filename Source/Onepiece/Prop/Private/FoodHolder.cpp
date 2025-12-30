@@ -125,16 +125,17 @@ void AFoodHolder::OnFoodBoxOverlapBegin(
 		return;
 
 	ALingoGameState* GS = Cast<ALingoGameState>(GetWorld()->GetGameState());
-	if (!GS)
-		return;
+	if (!GS) return;
 
 	TryIdx++;
 
 	// Food인지 확인
 	if (AFood* Food = Cast<AFood>(OtherActor))
 	{
+		// 정답 판정
 		const bool bSuccess = CheckFood(Food);
 
+		// 제출 리스트에 제출 데이터 업데이트
 		FScenarioTargetData TempData;
 		TempData.word1 = Food->CurrentFoodData.word1;
 		TempData.word2 = Food->CurrentFoodData.word2;
@@ -142,7 +143,7 @@ void AFoodHolder::OnFoodBoxOverlapBegin(
 		
 		// 블루프린트 이벤트 호출
 		OnActivate(bSuccess);
-
+		
 		if (bSuccess)
 		{
 			UE_LOG(LogTemp, Warning, TEXT("[FoodHolder] Correct"));
@@ -181,8 +182,9 @@ void AFoodHolder::OnFoodBoxOverlapBegin(
 			FTimerHandle TimerHandle;
 			GetWorldTimerManager().SetTimer(TimerHandle, [this, Food, GS]
 			{
+				// 오답 리스트에 추가
 				GS->WrongListenAnswerList.Add(TryIdx);
-		
+
 				// 모든 클라이언트에 오답 메시지 표시
 				Multicast_ShowWrongPopup(Food->CurrentFoodData.word1.name);
 
@@ -197,10 +199,8 @@ void AFoodHolder::OnFoodBoxOverlapBegin(
 						CN->SetDefaultText();
 					}
 				}
-		
-				// Food 소거 (서버에서만, 자동 복제됨)
-				Food->Destroy();
 
+				// 투입구 상태 초기화
 				TArray<AActor*> OrderKiosks;
 				UGameplayStatics::GetAllActorsOfClass(GetWorld(), AOrderKiosk::StaticClass(), OrderKiosks);
 				for (auto OrderKiosk : OrderKiosks)
@@ -209,13 +209,56 @@ void AFoodHolder::OnFoodBoxOverlapBegin(
 						Kiosk->IsOnceStopped = false;
 				}
 
+				// 새 Food 캡슐에 부분 정답 데이터 저장
+				/* Food 또는 City만 정답일 경우 : 정답인 요소만 저장
+				 * 둘 다 오답인 경우 : 완전 초기화 */
+				FFoodCapsuleData PrevData = Food->CurrentFoodData;
+				Food->Destroy();
+				
 				// 새 FoodContainer 생성
 				AActor* FoodContainerManager = UGameplayStatics::GetActorOfClass(GetWorld(), AFoodCourtManager::StaticClass());
 				if (AFoodCourtManager* FCManager = Cast<AFoodCourtManager>(FoodContainerManager))
 				{
 					FCManager->SpawnFoodContainer();
+					
+					FTimerHandle PartialAnswerTimer;
+					GetWorldTimerManager().SetTimer(PartialAnswerTimer, [this, PrevData]
+					{
+						AFood* NewFood = Cast<AFood>(UGameplayStatics::GetActorOfClass(GetWorld(), AFood::StaticClass()));
+					if (!NewFood)
+					{
+						UE_LOG(LogTemp, Error, TEXT("[FoodHolder] NewFood is nullptr!"));
+						return;
+					}
+
+					// 부분정답 판정해서 틀리면 공백으로 되돌리기
+						bool bCityCorrect = false;
+						bool bFoodCorrect = false;
+						CheckPartialAnswer(PrevData, bCityCorrect, bFoodCorrect);
+
+						// City만 정답인 경우
+					if (bCityCorrect && !bFoodCorrect)
+					{
+						UE_LOG(LogTemp, Warning, TEXT("[FoodHolder] City Only Correct - Updating City name widget"));
+						NewFood->CurrentFoodData.word1 = PrevData.word1;
+						NewFood->UpdateFoodWidget();
+					}
+					// Food만 정답인 경우
+					else if (!bCityCorrect && bFoodCorrect)
+					{
+						UE_LOG(LogTemp, Warning, TEXT("[FoodHolder] Food Only Correct - Updating Food mesh"));
+						NewFood->CurrentFoodData.word2 = PrevData.word2;
+						NewFood->UpdateFoodWidget();
+						NewFood->UpdateMesh();
+					}
+					// 둘 다 오답: 기본 빈 상태 유지
+					else if (!bCityCorrect && !bFoodCorrect)
+					{
+						UE_LOG(LogTemp, Warning, TEXT("[FoodHolder] Both Wrong - NewFood remains empty"));
+					}
+					}, 1.0f, false);
 				}
-				
+
 			}, 0.5f, false);
 		}
 	}
@@ -270,6 +313,26 @@ bool AFoodHolder::CheckFood(AFood* TargetFood)
 	
 		return false;
 	}
+}
+
+void AFoodHolder::CheckPartialAnswer(const struct FFoodCapsuleData& TargetData, bool& bOutCityCorrect, bool& bOutFoodCorrect)
+{
+	bOutCityCorrect = false;
+	bOutFoodCorrect = false;
+	
+	// ListenQuest 정답 인덱스 가져오기
+	ALingoGameState* GS = Cast<ALingoGameState>(GetWorld()->GetGameState());
+	if (!GS) return;
+
+	const int32 CorrectIdx = GS->GetListenScenarioData().correct_answer_index;
+	const TArray<FScenarioTargetData>& ScenarioData = GS->GetListenScenarioData().target_data;
+	
+	FString CorrectCityName = ScenarioData[CorrectIdx].word1.name;
+	FString CorrectFoodName = ScenarioData[CorrectIdx].word2.name;
+	
+	// 각각 판정
+	bOutCityCorrect = (CorrectCityName == TargetData.word1.name);
+	bOutFoodCorrect = (CorrectFoodName == TargetData.word2.name);
 }
 
 void AFoodHolder::UpdateActivateState(bool State)
