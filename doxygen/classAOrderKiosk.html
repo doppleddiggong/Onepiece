@@ -278,38 +278,80 @@ Protected 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="OrderKiosk_8cpp_source.html">OrderKiosk.cpp</a> 파일의 <a class="el" href="OrderKiosk_8cpp_source.html#l00059">59</a> 번째 라인에서 정의되었습니다.</p>
 <div class="fragment"><div class="line"><span class="lineno">   61</span>{</div>
-<div class="line"><span class="lineno">   62</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAOrderKiosk.html#a52093b104e74e81ee763569fe8f69579">IsOnceStopped</a>) <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">   63</span>    </div>
-<div class="line"><span class="lineno">   64</span>    <span class="keywordflow">if</span> (<a class="code hl_class" href="classAFood.html">AFood</a>* Temp = Cast&lt;AFood&gt;(OtherActor))</div>
-<div class="line"><span class="lineno">   65</span>    {</div>
-<div class="line"><span class="lineno">   66</span>        <a class="code hl_variable" href="classAOrderKiosk.html#a4e46158f26c1e2fc4fbcc1a89c893986">CurrentFoodContainer</a> = Temp;</div>
-<div class="line"><span class="lineno">   67</span>        </div>
-<div class="line"><span class="lineno">   68</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAOrderKiosk.html#afeceb0eed1ac97cdd8dadb298d2bfc31">ConveyorsToControl</a>.Num() &lt;= 0) <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">   69</span>        </div>
-<div class="line"><span class="lineno">   70</span>        <span class="comment">// 만약 음식 큐브일 경우, 컨베이어 멈추기</span></div>
-<div class="line"><span class="lineno">   71</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span> Conveyor : <a class="code hl_variable" href="classAOrderKiosk.html#afeceb0eed1ac97cdd8dadb298d2bfc31">ConveyorsToControl</a>)</div>
-<div class="line"><span class="lineno">   72</span>        {</div>
-<div class="line"><span class="lineno">   73</span>            <span class="keywordflow">if</span> (<a class="code hl_class" href="classAConveyorBelt.html">AConveyorBelt</a>* CB = Cast&lt;AConveyorBelt&gt;(Conveyor))</div>
-<div class="line"><span class="lineno">   74</span>            {</div>
-<div class="line"><span class="lineno">   75</span>                CB-&gt;ChangeConveyorSpeed(0.f);</div>
-<div class="line"><span class="lineno">   76</span>            }</div>
-<div class="line"><span class="lineno">   77</span>        }</div>
-<div class="line"><span class="lineno">   78</span>    }</div>
-<div class="line"><span class="lineno">   79</span>}</div>
+<div class="line"><span class="lineno">   62</span>    UE_LOG(LogTemp, Warning, TEXT(<span class="stringliteral">&quot;[OrderKiosk::BeginFoodOverlap] IsOnceStopped: %d&quot;</span>), <a class="code hl_variable" href="classAOrderKiosk.html#a52093b104e74e81ee763569fe8f69579">IsOnceStopped</a>);</div>
+<div class="line"><span class="lineno">   63</span> </div>
+<div class="line"><span class="lineno">   64</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAOrderKiosk.html#a52093b104e74e81ee763569fe8f69579">IsOnceStopped</a>) <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   65</span> </div>
+<div class="line"><span class="lineno">   66</span>    <span class="keywordflow">if</span> (<a class="code hl_class" href="classAFood.html">AFood</a>* Temp = Cast&lt;AFood&gt;(OtherActor))</div>
+<div class="line"><span class="lineno">   67</span>    {</div>
+<div class="line"><span class="lineno">   68</span>        <a class="code hl_variable" href="classAOrderKiosk.html#a4e46158f26c1e2fc4fbcc1a89c893986">CurrentFoodContainer</a> = Temp;</div>
+<div class="line"><span class="lineno">   69</span>        <a class="code hl_struct" href="structFFoodCapsuleData.html">FFoodCapsuleData</a> CurrentData = <a class="code hl_variable" href="classAOrderKiosk.html#a4e46158f26c1e2fc4fbcc1a89c893986">CurrentFoodContainer</a>-&gt;<a class="code hl_variable" href="classAFood.html#ae0786f876cf1061d226cc1c6254b10c9">CurrentFoodData</a>;</div>
+<div class="line"><span class="lineno">   70</span> </div>
+<div class="line"><span class="lineno">   71</span>        UE_LOG(LogTemp, Warning, TEXT(<span class="stringliteral">&quot;[OrderKiosk::BeginFoodOverlap] Food detected. InAnswerType: %d, City=%s, Food=%s&quot;</span>),</div>
+<div class="line"><span class="lineno">   72</span>            <a class="code hl_variable" href="classAOrderKiosk.html#a39b51d1a9d1cfdaa41db7e793535420e">InAnswerType</a>, *CurrentData.<a class="code hl_variable" href="structFFoodCapsuleData.html#aee94f0e21c7e5bb41335840e4e8c242e">word1</a>.<a class="code hl_variable" href="structFWordInfo.html#afa3eecf62fc7b28d50eae5edc8fc81ad">name</a>, *CurrentData.<a class="code hl_variable" href="structFFoodCapsuleData.html#af5681c1ee31e8d57206409f9f8e6b549">word2</a>.<a class="code hl_variable" href="structFWordInfo.html#afa3eecf62fc7b28d50eae5edc8fc81ad">name</a>);</div>
+<div class="line"><span class="lineno">   73</span> </div>
+<div class="line"><span class="lineno">   74</span>        <span class="comment">// 이미 정답 데이터가 있으면 컨베이어 계속 움직임</span></div>
+<div class="line"><span class="lineno">   75</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAOrderKiosk.html#a39b51d1a9d1cfdaa41db7e793535420e">InAnswerType</a> == <a class="code hl_enumvalue" href="ListenAnswer_8h.html#ab256f9c27c701de5d273fc77c28e6effa0a38e7286ebbb560354992b3ce62be67">EAnswerType::Food</a> &amp;&amp; CurrentData.<a class="code hl_variable" href="structFFoodCapsuleData.html#af5681c1ee31e8d57206409f9f8e6b549">word2</a>.<a class="code hl_variable" href="structFWordInfo.html#afa3eecf62fc7b28d50eae5edc8fc81ad">name</a> != TEXT(<span class="stringliteral">&quot;&quot;</span>)) <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   76</span> </div>
+<div class="line"><span class="lineno">   77</span>        <span class="comment">// City가 이미 있는 경우 (부분정답), 바로 3초 후 이동 타이머 설정</span></div>
+<div class="line"><span class="lineno">   78</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAOrderKiosk.html#a39b51d1a9d1cfdaa41db7e793535420e">InAnswerType</a> == <a class="code hl_enumvalue" href="ListenAnswer_8h.html#ab256f9c27c701de5d273fc77c28e6effa57d056ed0984166336b7879c2af3657f">EAnswerType::City</a> &amp;&amp; CurrentData.<a class="code hl_variable" href="structFFoodCapsuleData.html#aee94f0e21c7e5bb41335840e4e8c242e">word1</a>.<a class="code hl_variable" href="structFWordInfo.html#afa3eecf62fc7b28d50eae5edc8fc81ad">name</a> != TEXT(<span class="stringliteral">&quot;&quot;</span>))</div>
+<div class="line"><span class="lineno">   79</span>        {</div>
+<div class="line"><span class="lineno">   80</span>            UE_LOG(LogTemp, Warning, TEXT(<span class="stringliteral">&quot;[OrderKiosk::BeginFoodOverlap] City already set - Setting timer for teleport&quot;</span>));</div>
+<div class="line"><span class="lineno">   81</span> </div>
+<div class="line"><span class="lineno">   82</span>            FTimerHandle TimerHandle;</div>
+<div class="line"><span class="lineno">   83</span>            GetWorldTimerManager().SetTimer(TimerHandle, FTimerDelegate::CreateLambda([<span class="keyword">this</span>]</div>
+<div class="line"><span class="lineno">   84</span>            {</div>
+<div class="line"><span class="lineno">   85</span>                UE_LOG(LogTemp, Warning, TEXT(<span class="stringliteral">&quot;[OrderKiosk] Timer triggered - Moving FoodContainer (from BeginFoodOverlap)&quot;</span>));</div>
+<div class="line"><span class="lineno">   86</span>                <a class="code hl_function" href="classAOrderKiosk.html#af18b42c73d78d234af55aaabd8dc32f6">Server_MoveFoodContainer</a>(<a class="code hl_variable" href="classAOrderKiosk.html#a4e46158f26c1e2fc4fbcc1a89c893986">CurrentFoodContainer</a>);</div>
+<div class="line"><span class="lineno">   87</span>            }), 3.f, <span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">   88</span> </div>
+<div class="line"><span class="lineno">   89</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   90</span>        }</div>
+<div class="line"><span class="lineno">   91</span> </div>
+<div class="line"><span class="lineno">   92</span>        <span class="comment">// 아직 설정 안 됐으면 컨베이어 멈추기</span></div>
+<div class="line"><span class="lineno">   93</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAOrderKiosk.html#afeceb0eed1ac97cdd8dadb298d2bfc31">ConveyorsToControl</a>.Num() &lt;= 0) <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   94</span> </div>
+<div class="line"><span class="lineno">   95</span>        UE_LOG(LogTemp, Warning, TEXT(<span class="stringliteral">&quot;[OrderKiosk::BeginFoodOverlap] Stopping conveyor&quot;</span>));</div>
+<div class="line"><span class="lineno">   96</span> </div>
+<div class="line"><span class="lineno">   97</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span> Conveyor : <a class="code hl_variable" href="classAOrderKiosk.html#afeceb0eed1ac97cdd8dadb298d2bfc31">ConveyorsToControl</a>)</div>
+<div class="line"><span class="lineno">   98</span>        {</div>
+<div class="line"><span class="lineno">   99</span>            <span class="keywordflow">if</span> (<a class="code hl_class" href="classAConveyorBelt.html">AConveyorBelt</a>* CB = Cast&lt;AConveyorBelt&gt;(Conveyor))</div>
+<div class="line"><span class="lineno">  100</span>            {</div>
+<div class="line"><span class="lineno">  101</span>                CB-&gt;ChangeConveyorSpeed(0.f);</div>
+<div class="line"><span class="lineno">  102</span>            }</div>
+<div class="line"><span class="lineno">  103</span>        }</div>
+<div class="line"><span class="lineno">  104</span>    }</div>
+<div class="line"><span class="lineno">  105</span>}</div>
+<div class="ttc" id="aListenAnswer_8h_html_ab256f9c27c701de5d273fc77c28e6effa0a38e7286ebbb560354992b3ce62be67"><div class="ttname"><a href="ListenAnswer_8h.html#ab256f9c27c701de5d273fc77c28e6effa0a38e7286ebbb560354992b3ce62be67">EAnswerType::Food</a></div><div class="ttdeci">@ Food</div></div>
+<div class="ttc" id="aListenAnswer_8h_html_ab256f9c27c701de5d273fc77c28e6effa57d056ed0984166336b7879c2af3657f"><div class="ttname"><a href="ListenAnswer_8h.html#ab256f9c27c701de5d273fc77c28e6effa57d056ed0984166336b7879c2af3657f">EAnswerType::City</a></div><div class="ttdeci">@ City</div></div>
 <div class="ttc" id="aclassAConveyorBelt_html"><div class="ttname"><a href="classAConveyorBelt.html">AConveyorBelt</a></div><div class="ttdef"><b>Definition</b> <a href="ConveyorBelt_8h_source.html#l00010">ConveyorBelt.h:11</a></div></div>
 <div class="ttc" id="aclassAFood_html"><div class="ttname"><a href="classAFood.html">AFood</a></div><div class="ttdef"><b>Definition</b> <a href="Food_8h_source.html#l00036">Food.h:37</a></div></div>
+<div class="ttc" id="aclassAFood_html_ae0786f876cf1061d226cc1c6254b10c9"><div class="ttname"><a href="classAFood.html#ae0786f876cf1061d226cc1c6254b10c9">AFood::CurrentFoodData</a></div><div class="ttdeci">FFoodCapsuleData CurrentFoodData</div><div class="ttdef"><b>Definition</b> <a href="Food_8h_source.html#l00077">Food.h:77</a></div></div>
+<div class="ttc" id="aclassAOrderKiosk_html_a39b51d1a9d1cfdaa41db7e793535420e"><div class="ttname"><a href="classAOrderKiosk.html#a39b51d1a9d1cfdaa41db7e793535420e">AOrderKiosk::InAnswerType</a></div><div class="ttdeci">EAnswerType InAnswerType</div><div class="ttdef"><b>Definition</b> <a href="OrderKiosk_8h_source.html#l00062">OrderKiosk.h:62</a></div></div>
 <div class="ttc" id="aclassAOrderKiosk_html_a4e46158f26c1e2fc4fbcc1a89c893986"><div class="ttname"><a href="classAOrderKiosk.html#a4e46158f26c1e2fc4fbcc1a89c893986">AOrderKiosk::CurrentFoodContainer</a></div><div class="ttdeci">class AFood * CurrentFoodContainer</div><div class="ttdef"><b>Definition</b> <a href="OrderKiosk_8h_source.html#l00059">OrderKiosk.h:59</a></div></div>
 <div class="ttc" id="aclassAOrderKiosk_html_a52093b104e74e81ee763569fe8f69579"><div class="ttname"><a href="classAOrderKiosk.html#a52093b104e74e81ee763569fe8f69579">AOrderKiosk::IsOnceStopped</a></div><div class="ttdeci">bool IsOnceStopped</div><div class="ttdef"><b>Definition</b> <a href="OrderKiosk_8h_source.html#l00054">OrderKiosk.h:54</a></div></div>
+<div class="ttc" id="aclassAOrderKiosk_html_af18b42c73d78d234af55aaabd8dc32f6"><div class="ttname"><a href="classAOrderKiosk.html#af18b42c73d78d234af55aaabd8dc32f6">AOrderKiosk::Server_MoveFoodContainer</a></div><div class="ttdeci">void Server_MoveFoodContainer(AActor *ActorToMove)</div></div>
 <div class="ttc" id="aclassAOrderKiosk_html_afeceb0eed1ac97cdd8dadb298d2bfc31"><div class="ttname"><a href="classAOrderKiosk.html#afeceb0eed1ac97cdd8dadb298d2bfc31">AOrderKiosk::ConveyorsToControl</a></div><div class="ttdeci">TArray&lt; AActor * &gt; ConveyorsToControl</div><div class="ttdef"><b>Definition</b> <a href="OrderKiosk_8h_source.html#l00067">OrderKiosk.h:67</a></div></div>
+<div class="ttc" id="astructFFoodCapsuleData_html"><div class="ttname"><a href="structFFoodCapsuleData.html">FFoodCapsuleData</a></div><div class="ttdef"><b>Definition</b> <a href="Food_8h_source.html#l00015">Food.h:16</a></div></div>
+<div class="ttc" id="astructFFoodCapsuleData_html_aee94f0e21c7e5bb41335840e4e8c242e"><div class="ttname"><a href="structFFoodCapsuleData.html#aee94f0e21c7e5bb41335840e4e8c242e">FFoodCapsuleData::word1</a></div><div class="ttdeci">FWordInfo word1</div><div class="ttdoc">시나리오 단어 정보</div><div class="ttdef"><b>Definition</b> <a href="Food_8h_source.html#l00022">Food.h:22</a></div></div>
+<div class="ttc" id="astructFFoodCapsuleData_html_af5681c1ee31e8d57206409f9f8e6b549"><div class="ttname"><a href="structFFoodCapsuleData.html#af5681c1ee31e8d57206409f9f8e6b549">FFoodCapsuleData::word2</a></div><div class="ttdeci">FWordInfo word2</div><div class="ttdef"><b>Definition</b> <a href="Food_8h_source.html#l00025">Food.h:25</a></div></div>
+<div class="ttc" id="astructFWordInfo_html_afa3eecf62fc7b28d50eae5edc8fc81ad"><div class="ttname"><a href="structFWordInfo.html#afa3eecf62fc7b28d50eae5edc8fc81ad">FWordInfo::name</a></div><div class="ttdeci">FString name</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00554">NetworkData.h:554</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="OrderKiosk_8h_source.html#l00067">ConveyorsToControl</a>, <a class="el" href="OrderKiosk_8h_source.html#l00059">CurrentFoodContainer</a>, <a class="el" href="OrderKiosk_8h_source.html#l00054">IsOnceStopped</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="ListenAnswer_8h.html#ab256f9c27c701de5d273fc77c28e6effa57d056ed0984166336b7879c2af3657f">City</a>, <a class="el" href="OrderKiosk_8h_source.html#l00067">ConveyorsToControl</a>, <a class="el" href="OrderKiosk_8h_source.html#l00059">CurrentFoodContainer</a>, <a class="el" href="Food_8h_source.html#l00077">AFood::CurrentFoodData</a>, <a class="el" href="ListenAnswer_8h.html#ab256f9c27c701de5d273fc77c28e6effa0a38e7286ebbb560354992b3ce62be67">Food</a>, <a class="el" href="OrderKiosk_8h_source.html#l00062">InAnswerType</a>, <a class="el" href="OrderKiosk_8h_source.html#l00054">IsOnceStopped</a>, <a class="el" href="NetworkData_8h_source.html#l00554">FWordInfo::name</a>, <a class="el" href="classAOrderKiosk.html#af18b42c73d78d234af55aaabd8dc32f6">Server_MoveFoodContainer()</a>, <a class="el" href="Food_8h_source.html#l00022">FFoodCapsuleData::word1</a>, <a class="el" href="Food_8h_source.html#l00025">FFoodCapsuleData::word2</a>.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="OrderKiosk_8cpp_source.html#l00034">BeginPlay()</a>.</p>
 <div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classAOrderKiosk_a5fb829e2a61bd93ea1fddc6d777d3bb1_cgraph.svg" width="448" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
 <div class="center"><iframe scrolling="no" frameborder="0" src="classAOrderKiosk_a5fb829e2a61bd93ea1fddc6d777d3bb1_icgraph.svg" width="466" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
@@ -360,15 +402,15 @@ Protected 속성</h2></td></tr>
 <div class="ttc" id="aclassAOrderKiosk_html_a21b8a1f8637daefebfa300d7d90d3d6e"><div class="ttname"><a href="classAOrderKiosk.html#a21b8a1f8637daefebfa300d7d90d3d6e">AOrderKiosk::CityDisplay</a></div><div class="ttdeci">class ACityName * CityDisplay</div><div class="ttdef"><b>Definition</b> <a href="OrderKiosk_8h_source.html#l00077">OrderKiosk.h:77</a></div></div>
 <div class="ttc" id="aclassAOrderKiosk_html_a5ed1f758842b1ca02deec5133aeecfcf"><div class="ttname"><a href="classAOrderKiosk.html#a5ed1f758842b1ca02deec5133aeecfcf">AOrderKiosk::FoodDisplay</a></div><div class="ttdeci">class ACityName * FoodDisplay</div><div class="ttdef"><b>Definition</b> <a href="OrderKiosk_8h_source.html#l00076">OrderKiosk.h:76</a></div></div>
 <div class="ttc" id="aclassAOrderKiosk_html_a5fb829e2a61bd93ea1fddc6d777d3bb1"><div class="ttname"><a href="classAOrderKiosk.html#a5fb829e2a61bd93ea1fddc6d777d3bb1">AOrderKiosk::BeginFoodOverlap</a></div><div class="ttdeci">void BeginFoodOverlap(UPrimitiveComponent *OverlappedComponent, AActor *OtherActor, UPrimitiveComponent *OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult &amp;SweepResult)</div><div class="ttdef"><b>Definition</b> <a href="OrderKiosk_8cpp_source.html#l00059">OrderKiosk.cpp:59</a></div></div>
-<div class="ttc" id="aclassAOrderKiosk_html_ae22a9ab0ca71061d881ba35394bc31bb"><div class="ttname"><a href="classAOrderKiosk.html#ae22a9ab0ca71061d881ba35394bc31bb">AOrderKiosk::BeginSubmitOverlap</a></div><div class="ttdeci">void BeginSubmitOverlap(UPrimitiveComponent *OverlappedComponent, AActor *OtherActor, UPrimitiveComponent *OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult &amp;SweepResult)</div><div class="ttdef"><b>Definition</b> <a href="OrderKiosk_8cpp_source.html#l00081">OrderKiosk.cpp:81</a></div></div>
+<div class="ttc" id="aclassAOrderKiosk_html_ae22a9ab0ca71061d881ba35394bc31bb"><div class="ttname"><a href="classAOrderKiosk.html#ae22a9ab0ca71061d881ba35394bc31bb">AOrderKiosk::BeginSubmitOverlap</a></div><div class="ttdeci">void BeginSubmitOverlap(UPrimitiveComponent *OverlappedComponent, AActor *OtherActor, UPrimitiveComponent *OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult &amp;SweepResult)</div><div class="ttdef"><b>Definition</b> <a href="OrderKiosk_8cpp_source.html#l00107">OrderKiosk.cpp:107</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="OrderKiosk_8cpp_source.html#l00059">BeginFoodOverlap()</a>, <a class="el" href="OrderKiosk_8cpp_source.html#l00081">BeginSubmitOverlap()</a>, <a class="el" href="OrderKiosk_8h_source.html#l00077">CityDisplay</a>, <a class="el" href="OrderKiosk_8h_source.html#l00038">FoodCollision</a>, <a class="el" href="OrderKiosk_8h_source.html#l00076">FoodDisplay</a>, <a class="el" href="OrderKiosk_8h_source.html#l00041">SubmitCollision</a>.</p>
-<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
-<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+<p class="reference">다음을 참조함 :  <a class="el" href="OrderKiosk_8cpp_source.html#l00059">BeginFoodOverlap()</a>, <a class="el" href="OrderKiosk_8cpp_source.html#l00107">BeginSubmitOverlap()</a>, <a class="el" href="OrderKiosk_8h_source.html#l00077">CityDisplay</a>, <a class="el" href="OrderKiosk_8h_source.html#l00038">FoodCollision</a>, <a class="el" href="OrderKiosk_8h_source.html#l00076">FoodDisplay</a>, <a class="el" href="OrderKiosk_8h_source.html#l00041">SubmitCollision</a>.</p>
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-3-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classAOrderKiosk_ad84dcabb2b97388a3fd4deb93b94309f_cgraph.svg" width="100%" height="498"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classAOrderKiosk_ad84dcabb2b97388a3fd4deb93b94309f_cgraph.svg" width="100%" height="537"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -423,99 +465,95 @@ Protected 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="OrderKiosk_8cpp_source.html">OrderKiosk.cpp</a> 파일의 <a class="el" href="OrderKiosk_8cpp_source.html#l00081">81</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   83</span>{</div>
-<div class="line"><span class="lineno">   84</span>    UE_LOG(LogTemp, Warning, TEXT(<span class="stringliteral">&quot;[OrderKiosk::BeginSubmitOverlap] Called with Actor: %s&quot;</span>),</div>
-<div class="line"><span class="lineno">   85</span>        OtherActor ? *OtherActor-&gt;GetName() : TEXT(<span class="stringliteral">&quot;NULL&quot;</span>));</div>
-<div class="line"><span class="lineno">   86</span> </div>
-<div class="line"><span class="lineno">   87</span>    <span class="comment">// 답 제출하면 컨베이어 재개</span></div>
-<div class="line"><span class="lineno">   88</span>    <span class="keywordflow">if</span> (<a class="code hl_class" href="classAListenAnswer.html">AListenAnswer</a>* Answer = Cast&lt;AListenAnswer&gt;(OtherActor))</div>
-<div class="line"><span class="lineno">   89</span>    {</div>
-<div class="line"><span class="lineno">   90</span>        UE_LOG(LogTemp, Warning, TEXT(<span class="stringliteral">&quot;[OrderKiosk::BeginSubmitOverlap] ListenAnswer detected. AnswerType: %d, Index: %d&quot;</span>),</div>
-<div class="line"><span class="lineno">   91</span>            Answer-&gt;AnswerData.AnswerType, <a class="code hl_variable" href="classAOrderKiosk.html#a39b51d1a9d1cfdaa41db7e793535420e">InAnswerType</a>);</div>
-<div class="line"><span class="lineno">   92</span> </div>
-<div class="line"><span class="lineno">   93</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAOrderKiosk.html#afeceb0eed1ac97cdd8dadb298d2bfc31">ConveyorsToControl</a>.Num() &lt;= 0)</div>
-<div class="line"><span class="lineno">   94</span>        {</div>
-<div class="line"><span class="lineno">   95</span>            UE_LOG(LogTemp, Error, TEXT(<span class="stringliteral">&quot;[OrderKiosk::BeginSubmitOverlap] ConveyorsToControl is empty!&quot;</span>));</div>
-<div class="line"><span class="lineno">   96</span>            <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">   97</span>        }</div>
-<div class="line"><span class="lineno">   98</span> </div>
-<div class="line"><span class="lineno">   99</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span> Conveyor : <a class="code hl_variable" href="classAOrderKiosk.html#afeceb0eed1ac97cdd8dadb298d2bfc31">ConveyorsToControl</a>)</div>
-<div class="line"><span class="lineno">  100</span>        {</div>
-<div class="line"><span class="lineno">  101</span>            <span class="keywordflow">if</span> (<a class="code hl_class" href="classAConveyorBelt.html">AConveyorBelt</a>* CB = Cast&lt;AConveyorBelt&gt;(Conveyor))</div>
-<div class="line"><span class="lineno">  102</span>            {</div>
-<div class="line"><span class="lineno">  103</span>                <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classAOrderKiosk.html#a4e46158f26c1e2fc4fbcc1a89c893986">CurrentFoodContainer</a>) <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  104</span> </div>
-<div class="line"><span class="lineno">  105</span>                <span class="comment">// 인덱스 번호와 정답 타입이 일치하면 데이터 전달 후 컨베이어 움직이기</span></div>
-<div class="line"><span class="lineno">  106</span>                <span class="keywordflow">if</span> (Answer-&gt;AnswerData.AnswerType == <a class="code hl_variable" href="classAOrderKiosk.html#a39b51d1a9d1cfdaa41db7e793535420e">InAnswerType</a>)</div>
-<div class="line"><span class="lineno">  107</span>                {</div>
-<div class="line"><span class="lineno">  108</span>                    <span class="keywordflow">switch</span> (<a class="code hl_variable" href="classAOrderKiosk.html#a39b51d1a9d1cfdaa41db7e793535420e">InAnswerType</a>)</div>
-<div class="line"><span class="lineno">  109</span>                    {</div>
-<div class="line"><span class="lineno">  110</span>                    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="ListenAnswer_8h.html#ab256f9c27c701de5d273fc77c28e6effa0a38e7286ebbb560354992b3ce62be67">EAnswerType::Food</a>:</div>
-<div class="line"><span class="lineno">  111</span>                        <a class="code hl_variable" href="classAOrderKiosk.html#a4e46158f26c1e2fc4fbcc1a89c893986">CurrentFoodContainer</a>-&gt;<a class="code hl_function" href="classAFood.html#a54c42f8e64c7767fa98c0380a4df1bfc">SetFoodMesh</a>(Answer-&gt;AnswerData.word1, Answer-&gt;Mesh-&gt;GetStaticMesh());</div>
-<div class="line"><span class="lineno">  112</span>                        <a class="code hl_variable" href="classAOrderKiosk.html#a5ed1f758842b1ca02deec5133aeecfcf">FoodDisplay</a>-&gt;<a class="code hl_function" href="classACityName.html#a89e8cbcd9550602a73487f6c4da07aee">SetChecked</a>();</div>
-<div class="line"><span class="lineno">  113</span>                        <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  114</span> </div>
-<div class="line"><span class="lineno">  115</span>                    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="ListenAnswer_8h.html#ab256f9c27c701de5d273fc77c28e6effa57d056ed0984166336b7879c2af3657f">EAnswerType::City</a>:</div>
-<div class="line"><span class="lineno">  116</span>                        {</div>
-<div class="line"><span class="lineno">  117</span>                            <a class="code hl_variable" href="classAOrderKiosk.html#a4e46158f26c1e2fc4fbcc1a89c893986">CurrentFoodContainer</a>-&gt;<a class="code hl_function" href="classAFood.html#aebbad5e8b1fcc27be5d30e4e67bcf4f1">SetCityName</a>(Answer-&gt;AnswerData.word1);</div>
-<div class="line"><span class="lineno">  118</span>                            <a class="code hl_variable" href="classAOrderKiosk.html#a21b8a1f8637daefebfa300d7d90d3d6e">CityDisplay</a>-&gt;<a class="code hl_function" href="classACityName.html#a89e8cbcd9550602a73487f6c4da07aee">SetChecked</a>();</div>
-<div class="line"><span class="lineno">  119</span>                            </div>
-<div class="line"><span class="lineno">  120</span>                            <span class="comment">// 3초 뒤 정답 구간으로 이동</span></div>
-<div class="line"><span class="lineno">  121</span>                            FTimerHandle TimerHandle;</div>
-<div class="line"><span class="lineno">  122</span>                            GetWorldTimerManager().SetTimer(TimerHandle, FTimerDelegate::CreateLambda([<span class="keyword">this</span>]</div>
-<div class="line"><span class="lineno">  123</span>                            {</div>
-<div class="line"><span class="lineno">  124</span>                                <a class="code hl_function" href="classAOrderKiosk.html#af18b42c73d78d234af55aaabd8dc32f6">Server_MoveFoodContainer</a>(<a class="code hl_variable" href="classAOrderKiosk.html#a4e46158f26c1e2fc4fbcc1a89c893986">CurrentFoodContainer</a>);</div>
-<div class="line"><span class="lineno">  125</span>                                </div>
-<div class="line"><span class="lineno">  126</span>                            }), 3.f, <span class="keyword">false</span>);</div>
-<div class="line"><span class="lineno">  127</span>                            </div>
-<div class="line"><span class="lineno">  128</span>                            <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  129</span>                        }</div>
-<div class="line"><span class="lineno">  130</span> </div>
-<div class="line"><span class="lineno">  131</span>                    <span class="keywordflow">default</span>:</div>
-<div class="line"><span class="lineno">  132</span>                        <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  133</span>                    }</div>
-<div class="line"><span class="lineno">  134</span> </div>
-<div class="line"><span class="lineno">  135</span>                    CB-&gt;ChangeConveyorSpeed(200.f);</div>
+<p class="definition"><a class="el" href="OrderKiosk_8cpp_source.html">OrderKiosk.cpp</a> 파일의 <a class="el" href="OrderKiosk_8cpp_source.html#l00107">107</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  109</span>{</div>
+<div class="line"><span class="lineno">  110</span>    <span class="comment">// 답 제출하면 컨베이어 재개</span></div>
+<div class="line"><span class="lineno">  111</span>    <span class="keywordflow">if</span> (<a class="code hl_class" href="classAListenAnswer.html">AListenAnswer</a>* Answer = Cast&lt;AListenAnswer&gt;(OtherActor))</div>
+<div class="line"><span class="lineno">  112</span>    {</div>
+<div class="line"><span class="lineno">  113</span>        UE_LOG(LogTemp, Warning, TEXT(<span class="stringliteral">&quot;[OrderKiosk::BeginSubmitOverlap] ListenAnswer detected. AnswerType: %d, Index: %d&quot;</span>),</div>
+<div class="line"><span class="lineno">  114</span>            Answer-&gt;AnswerData.AnswerType, <a class="code hl_variable" href="classAOrderKiosk.html#a39b51d1a9d1cfdaa41db7e793535420e">InAnswerType</a>);</div>
+<div class="line"><span class="lineno">  115</span> </div>
+<div class="line"><span class="lineno">  116</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="classAOrderKiosk.html#afeceb0eed1ac97cdd8dadb298d2bfc31">ConveyorsToControl</a>.Num() &lt;= 0) <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  117</span> </div>
+<div class="line"><span class="lineno">  118</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span> Conveyor : <a class="code hl_variable" href="classAOrderKiosk.html#afeceb0eed1ac97cdd8dadb298d2bfc31">ConveyorsToControl</a>)</div>
+<div class="line"><span class="lineno">  119</span>        {</div>
+<div class="line"><span class="lineno">  120</span>            <span class="keywordflow">if</span> (<a class="code hl_class" href="classAConveyorBelt.html">AConveyorBelt</a>* CB = Cast&lt;AConveyorBelt&gt;(Conveyor))</div>
+<div class="line"><span class="lineno">  121</span>            {</div>
+<div class="line"><span class="lineno">  122</span>                <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classAOrderKiosk.html#a4e46158f26c1e2fc4fbcc1a89c893986">CurrentFoodContainer</a>) <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  123</span> </div>
+<div class="line"><span class="lineno">  124</span>                <span class="comment">// 인덱스 번호와 정답 타입이 일치하면 데이터 전달 후 컨베이어 움직이기</span></div>
+<div class="line"><span class="lineno">  125</span>                <span class="keywordflow">if</span> (Answer-&gt;AnswerData.AnswerType == <a class="code hl_variable" href="classAOrderKiosk.html#a39b51d1a9d1cfdaa41db7e793535420e">InAnswerType</a>)</div>
+<div class="line"><span class="lineno">  126</span>                {</div>
+<div class="line"><span class="lineno">  127</span>                    UE_LOG(LogTemp, Warning, TEXT(<span class="stringliteral">&quot;[OrderKiosk::BeginSubmitOverlap] AnswerType matched. InAnswerType: %d&quot;</span>), <a class="code hl_variable" href="classAOrderKiosk.html#a39b51d1a9d1cfdaa41db7e793535420e">InAnswerType</a>);</div>
+<div class="line"><span class="lineno">  128</span> </div>
+<div class="line"><span class="lineno">  129</span>                    <span class="keywordflow">switch</span> (<a class="code hl_variable" href="classAOrderKiosk.html#a39b51d1a9d1cfdaa41db7e793535420e">InAnswerType</a>)</div>
+<div class="line"><span class="lineno">  130</span>                    {</div>
+<div class="line"><span class="lineno">  131</span>                    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="ListenAnswer_8h.html#ab256f9c27c701de5d273fc77c28e6effa0a38e7286ebbb560354992b3ce62be67">EAnswerType::Food</a>:</div>
+<div class="line"><span class="lineno">  132</span>                        <a class="code hl_variable" href="classAOrderKiosk.html#a4e46158f26c1e2fc4fbcc1a89c893986">CurrentFoodContainer</a>-&gt;<a class="code hl_function" href="classAFood.html#a54c42f8e64c7767fa98c0380a4df1bfc">SetFoodMesh</a>(Answer-&gt;AnswerData.word1, Answer-&gt;Mesh-&gt;GetStaticMesh());</div>
+<div class="line"><span class="lineno">  133</span>                        <a class="code hl_variable" href="classAOrderKiosk.html#a4e46158f26c1e2fc4fbcc1a89c893986">CurrentFoodContainer</a>-&gt;<a class="code hl_function" href="classAFood.html#a1464bf50b3bc86d1a231f264a79105a3">UpdateFoodWidget</a>();</div>
+<div class="line"><span class="lineno">  134</span>                        <a class="code hl_variable" href="classAOrderKiosk.html#a5ed1f758842b1ca02deec5133aeecfcf">FoodDisplay</a>-&gt;<a class="code hl_function" href="classACityName.html#a89e8cbcd9550602a73487f6c4da07aee">SetChecked</a>();</div>
+<div class="line"><span class="lineno">  135</span>                        <span class="keywordflow">break</span>;</div>
 <div class="line"><span class="lineno">  136</span> </div>
-<div class="line"><span class="lineno">  137</span>                    <a class="code hl_function" href="classAOrderKiosk.html#a9f1020f87f0826672d51b173a49a9433">Server_DestroyListenAnswer</a>(Answer);</div>
-<div class="line"><span class="lineno">  138</span>                    <span class="comment">//CurrentFoodContainer = nullptr;</span></div>
-<div class="line"><span class="lineno">  139</span>                }</div>
-<div class="line"><span class="lineno">  140</span>            }</div>
-<div class="line"><span class="lineno">  141</span>        }</div>
-<div class="line"><span class="lineno">  142</span> </div>
-<div class="line"><span class="lineno">  143</span>        <a class="code hl_variable" href="classAOrderKiosk.html#a52093b104e74e81ee763569fe8f69579">IsOnceStopped</a> = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  144</span>    }</div>
-<div class="line"><span class="lineno">  145</span>    <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  146</span>    {</div>
-<div class="line"><span class="lineno">  147</span>        UE_LOG(LogTemp, Warning, TEXT(<span class="stringliteral">&quot;[OrderKiosk::BeginSubmitOverlap] OtherActor is not a ListenAnswer&quot;</span>));</div>
-<div class="line"><span class="lineno">  148</span>    }</div>
-<div class="line"><span class="lineno">  149</span>}</div>
-<div class="ttc" id="aListenAnswer_8h_html_ab256f9c27c701de5d273fc77c28e6effa0a38e7286ebbb560354992b3ce62be67"><div class="ttname"><a href="ListenAnswer_8h.html#ab256f9c27c701de5d273fc77c28e6effa0a38e7286ebbb560354992b3ce62be67">EAnswerType::Food</a></div><div class="ttdeci">@ Food</div></div>
-<div class="ttc" id="aListenAnswer_8h_html_ab256f9c27c701de5d273fc77c28e6effa57d056ed0984166336b7879c2af3657f"><div class="ttname"><a href="ListenAnswer_8h.html#ab256f9c27c701de5d273fc77c28e6effa57d056ed0984166336b7879c2af3657f">EAnswerType::City</a></div><div class="ttdeci">@ City</div></div>
+<div class="line"><span class="lineno">  137</span>                    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="ListenAnswer_8h.html#ab256f9c27c701de5d273fc77c28e6effa57d056ed0984166336b7879c2af3657f">EAnswerType::City</a>:</div>
+<div class="line"><span class="lineno">  138</span>                        {</div>
+<div class="line"><span class="lineno">  139</span>                            UE_LOG(LogTemp, Warning, TEXT(<span class="stringliteral">&quot;[OrderKiosk::BeginSubmitOverlap] City case - Setting timer for teleport&quot;</span>));</div>
+<div class="line"><span class="lineno">  140</span> </div>
+<div class="line"><span class="lineno">  141</span>                            <a class="code hl_variable" href="classAOrderKiosk.html#a4e46158f26c1e2fc4fbcc1a89c893986">CurrentFoodContainer</a>-&gt;<a class="code hl_function" href="classAFood.html#aebbad5e8b1fcc27be5d30e4e67bcf4f1">SetCityName</a>(Answer-&gt;AnswerData.word1);</div>
+<div class="line"><span class="lineno">  142</span>                            <a class="code hl_variable" href="classAOrderKiosk.html#a21b8a1f8637daefebfa300d7d90d3d6e">CityDisplay</a>-&gt;<a class="code hl_function" href="classACityName.html#a89e8cbcd9550602a73487f6c4da07aee">SetChecked</a>();</div>
+<div class="line"><span class="lineno">  143</span> </div>
+<div class="line"><span class="lineno">  144</span>                            <span class="comment">// 3초 뒤 정답 구간으로 이동</span></div>
+<div class="line"><span class="lineno">  145</span>                            FTimerHandle TimerHandle;</div>
+<div class="line"><span class="lineno">  146</span>                            GetWorldTimerManager().SetTimer(TimerHandle, FTimerDelegate::CreateLambda([<span class="keyword">this</span>]</div>
+<div class="line"><span class="lineno">  147</span>                            {</div>
+<div class="line"><span class="lineno">  148</span>                                UE_LOG(LogTemp, Warning, TEXT(<span class="stringliteral">&quot;[OrderKiosk] Timer triggered - Moving FoodContainer&quot;</span>));</div>
+<div class="line"><span class="lineno">  149</span>                                <a class="code hl_function" href="classAOrderKiosk.html#af18b42c73d78d234af55aaabd8dc32f6">Server_MoveFoodContainer</a>(<a class="code hl_variable" href="classAOrderKiosk.html#a4e46158f26c1e2fc4fbcc1a89c893986">CurrentFoodContainer</a>);</div>
+<div class="line"><span class="lineno">  150</span> </div>
+<div class="line"><span class="lineno">  151</span>                            }), 3.f, <span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">  152</span> </div>
+<div class="line"><span class="lineno">  153</span>                            <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  154</span>                        }</div>
+<div class="line"><span class="lineno">  155</span> </div>
+<div class="line"><span class="lineno">  156</span>                    <span class="keywordflow">default</span>:</div>
+<div class="line"><span class="lineno">  157</span>                        <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  158</span>                    }</div>
+<div class="line"><span class="lineno">  159</span> </div>
+<div class="line"><span class="lineno">  160</span>                    CB-&gt;ChangeConveyorSpeed(200.f);</div>
+<div class="line"><span class="lineno">  161</span> </div>
+<div class="line"><span class="lineno">  162</span>                    <a class="code hl_function" href="classAOrderKiosk.html#a9f1020f87f0826672d51b173a49a9433">Server_DestroyListenAnswer</a>(Answer);</div>
+<div class="line"><span class="lineno">  163</span>                    <span class="comment">//CurrentFoodContainer = nullptr;</span></div>
+<div class="line"><span class="lineno">  164</span>                }</div>
+<div class="line"><span class="lineno">  165</span>            }</div>
+<div class="line"><span class="lineno">  166</span>        }</div>
+<div class="line"><span class="lineno">  167</span> </div>
+<div class="line"><span class="lineno">  168</span>        <a class="code hl_variable" href="classAOrderKiosk.html#a52093b104e74e81ee763569fe8f69579">IsOnceStopped</a> = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  169</span>    }</div>
+<div class="line"><span class="lineno">  170</span>    <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  171</span>    {</div>
+<div class="line"><span class="lineno">  172</span>        UE_LOG(LogTemp, Warning, TEXT(<span class="stringliteral">&quot;[OrderKiosk::BeginSubmitOverlap] OtherActor is not a ListenAnswer&quot;</span>));</div>
+<div class="line"><span class="lineno">  173</span>    }</div>
+<div class="line"><span class="lineno">  174</span>}</div>
 <div class="ttc" id="aclassACityName_html_a89e8cbcd9550602a73487f6c4da07aee"><div class="ttname"><a href="classACityName.html#a89e8cbcd9550602a73487f6c4da07aee">ACityName::SetChecked</a></div><div class="ttdeci">void SetChecked()</div><div class="ttdef"><b>Definition</b> <a href="CityName_8cpp_source.html#l00057">CityName.cpp:57</a></div></div>
+<div class="ttc" id="aclassAFood_html_a1464bf50b3bc86d1a231f264a79105a3"><div class="ttname"><a href="classAFood.html#a1464bf50b3bc86d1a231f264a79105a3">AFood::UpdateFoodWidget</a></div><div class="ttdeci">void UpdateFoodWidget()</div><div class="ttdoc">Widget에 음식 이름 업데이트</div><div class="ttdef"><b>Definition</b> <a href="Food_8cpp_source.html#l00097">Food.cpp:97</a></div></div>
 <div class="ttc" id="aclassAFood_html_a54c42f8e64c7767fa98c0380a4df1bfc"><div class="ttname"><a href="classAFood.html#a54c42f8e64c7767fa98c0380a4df1bfc">AFood::SetFoodMesh</a></div><div class="ttdeci">void SetFoodMesh(FWordInfo InWord, UStaticMesh *InMesh)</div><div class="ttdef"><b>Definition</b> <a href="Food_8cpp_source.html#l00144">Food.cpp:144</a></div></div>
 <div class="ttc" id="aclassAFood_html_aebbad5e8b1fcc27be5d30e4e67bcf4f1"><div class="ttname"><a href="classAFood.html#aebbad5e8b1fcc27be5d30e4e67bcf4f1">AFood::SetCityName</a></div><div class="ttdeci">void SetCityName(FWordInfo InWord)</div><div class="ttdef"><b>Definition</b> <a href="Food_8cpp_source.html#l00081">Food.cpp:81</a></div></div>
 <div class="ttc" id="aclassAListenAnswer_html"><div class="ttname"><a href="classAListenAnswer.html">AListenAnswer</a></div><div class="ttdef"><b>Definition</b> <a href="ListenAnswer_8h_source.html#l00035">ListenAnswer.h:36</a></div></div>
-<div class="ttc" id="aclassAOrderKiosk_html_a39b51d1a9d1cfdaa41db7e793535420e"><div class="ttname"><a href="classAOrderKiosk.html#a39b51d1a9d1cfdaa41db7e793535420e">AOrderKiosk::InAnswerType</a></div><div class="ttdeci">EAnswerType InAnswerType</div><div class="ttdef"><b>Definition</b> <a href="OrderKiosk_8h_source.html#l00062">OrderKiosk.h:62</a></div></div>
 <div class="ttc" id="aclassAOrderKiosk_html_a9f1020f87f0826672d51b173a49a9433"><div class="ttname"><a href="classAOrderKiosk.html#a9f1020f87f0826672d51b173a49a9433">AOrderKiosk::Server_DestroyListenAnswer</a></div><div class="ttdeci">void Server_DestroyListenAnswer(AActor *ActorToDestroy)</div></div>
-<div class="ttc" id="aclassAOrderKiosk_html_af18b42c73d78d234af55aaabd8dc32f6"><div class="ttname"><a href="classAOrderKiosk.html#af18b42c73d78d234af55aaabd8dc32f6">AOrderKiosk::Server_MoveFoodContainer</a></div><div class="ttdeci">void Server_MoveFoodContainer(AActor *ActorToMove)</div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="ListenAnswer_8h.html#ab256f9c27c701de5d273fc77c28e6effa57d056ed0984166336b7879c2af3657f">City</a>, <a class="el" href="OrderKiosk_8h_source.html#l00077">CityDisplay</a>, <a class="el" href="OrderKiosk_8h_source.html#l00067">ConveyorsToControl</a>, <a class="el" href="OrderKiosk_8h_source.html#l00059">CurrentFoodContainer</a>, <a class="el" href="ListenAnswer_8h.html#ab256f9c27c701de5d273fc77c28e6effa0a38e7286ebbb560354992b3ce62be67">Food</a>, <a class="el" href="OrderKiosk_8h_source.html#l00076">FoodDisplay</a>, <a class="el" href="OrderKiosk_8h_source.html#l00062">InAnswerType</a>, <a class="el" href="OrderKiosk_8h_source.html#l00054">IsOnceStopped</a>, <a class="el" href="classAOrderKiosk.html#a9f1020f87f0826672d51b173a49a9433">Server_DestroyListenAnswer()</a>, <a class="el" href="classAOrderKiosk.html#af18b42c73d78d234af55aaabd8dc32f6">Server_MoveFoodContainer()</a>, <a class="el" href="CityName_8cpp_source.html#l00057">ACityName::SetChecked()</a>, <a class="el" href="Food_8cpp_source.html#l00081">AFood::SetCityName()</a>, <a class="el" href="Food_8cpp_source.html#l00144">AFood::SetFoodMesh()</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="ListenAnswer_8h.html#ab256f9c27c701de5d273fc77c28e6effa57d056ed0984166336b7879c2af3657f">City</a>, <a class="el" href="OrderKiosk_8h_source.html#l00077">CityDisplay</a>, <a class="el" href="OrderKiosk_8h_source.html#l00067">ConveyorsToControl</a>, <a class="el" href="OrderKiosk_8h_source.html#l00059">CurrentFoodContainer</a>, <a class="el" href="ListenAnswer_8h.html#ab256f9c27c701de5d273fc77c28e6effa0a38e7286ebbb560354992b3ce62be67">Food</a>, <a class="el" href="OrderKiosk_8h_source.html#l00076">FoodDisplay</a>, <a class="el" href="OrderKiosk_8h_source.html#l00062">InAnswerType</a>, <a class="el" href="OrderKiosk_8h_source.html#l00054">IsOnceStopped</a>, <a class="el" href="classAOrderKiosk.html#a9f1020f87f0826672d51b173a49a9433">Server_DestroyListenAnswer()</a>, <a class="el" href="classAOrderKiosk.html#af18b42c73d78d234af55aaabd8dc32f6">Server_MoveFoodContainer()</a>, <a class="el" href="CityName_8cpp_source.html#l00057">ACityName::SetChecked()</a>, <a class="el" href="Food_8cpp_source.html#l00081">AFood::SetCityName()</a>, <a class="el" href="Food_8cpp_source.html#l00144">AFood::SetFoodMesh()</a>, <a class="el" href="Food_8cpp_source.html#l00097">AFood::UpdateFoodWidget()</a>.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="OrderKiosk_8cpp_source.html#l00034">BeginPlay()</a>.</p>
-<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
-<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-4-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classAOrderKiosk_ae22a9ab0ca71061d881ba35394bc31bb_cgraph.svg" width="100%" height="498"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
-</div>
 <div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-5-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-5-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classAOrderKiosk_ae22a9ab0ca71061d881ba35394bc31bb_cgraph.svg" width="100%" height="537"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+<div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-6-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-6-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-6-content" class="dyncontent" style="display:none;">
 <div class="center"><iframe scrolling="no" frameborder="0" src="classAOrderKiosk_ae22a9ab0ca71061d881ba35394bc31bb_icgraph.svg" width="430" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
@@ -548,11 +586,11 @@ Protected 속성</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">   29</span>{<span class="keywordflow">return</span> <a class="code hl_variable" href="classICompassTargetInterface.html#afab55eb3a8c206914d440493384e9401">MarkerType</a>;}</div>
 </div><!-- fragment -->
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerActor_8cpp_source.html#l00803">APlayerActor::UpdateCompassMarkers()</a>.</p>
-<div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-6-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
-<div id="dynsection-6-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-7-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-7-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-6-content" class="dyncontent" style="display:none;">
+<div id="dynsection-7-content" class="dyncontent" style="display:none;">
 <div class="center"><iframe scrolling="no" frameborder="0" src="classICompassTargetInterface_abb415ce2d41dab4779fdf9fb5d962e30_icgraph.svg" width="658" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
@@ -582,12 +620,12 @@ Protected 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="OrderKiosk_8cpp_source.html#l00081">BeginSubmitOverlap()</a>.</p>
-<div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-7-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
-<div id="dynsection-7-summary" class="dynsummary" style="display:block;">
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="OrderKiosk_8cpp_source.html#l00107">BeginSubmitOverlap()</a>.</p>
+<div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-8-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-8-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-7-content" class="dyncontent" style="display:none;">
+<div id="dynsection-8-content" class="dyncontent" style="display:none;">
 <div class="center"><iframe scrolling="no" frameborder="0" src="classAOrderKiosk_a9f1020f87f0826672d51b173a49a9433_icgraph.svg" width="644" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
@@ -617,13 +655,13 @@ Protected 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="OrderKiosk_8cpp_source.html#l00081">BeginSubmitOverlap()</a>.</p>
-<div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-8-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
-<div id="dynsection-8-summary" class="dynsummary" style="display:block;">
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="OrderKiosk_8cpp_source.html#l00059">BeginFoodOverlap()</a>, <a class="el" href="OrderKiosk_8cpp_source.html#l00107">BeginSubmitOverlap()</a>.</p>
+<div id="dynsection-9" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-9-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-9-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-8-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classAOrderKiosk_af18b42c73d78d234af55aaabd8dc32f6_icgraph.svg" width="636" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div id="dynsection-9-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classAOrderKiosk_af18b42c73d78d234af55aaabd8dc32f6_icgraph.svg" width="100%" height="376"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -654,10 +692,10 @@ Protected 속성</h2></td></tr>
 
 <p><a class="el" href="classICompassTargetInterface.html#af8c2cdaa8f76f567731bbb6a99a09a89">ICompassTargetInterface</a>(으)로부터 재구현되었습니다.</p>
 
-<p class="definition"><a class="el" href="OrderKiosk_8cpp_source.html">OrderKiosk.cpp</a> 파일의 <a class="el" href="OrderKiosk_8cpp_source.html#l00151">151</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  152</span>{</div>
-<div class="line"><span class="lineno">  153</span>    <a class="code hl_variable" href="classICompassTargetInterface.html#afab55eb3a8c206914d440493384e9401">MarkerType</a> = InMarkerType;</div>
-<div class="line"><span class="lineno">  154</span>}</div>
+<p class="definition"><a class="el" href="OrderKiosk_8cpp_source.html">OrderKiosk.cpp</a> 파일의 <a class="el" href="OrderKiosk_8cpp_source.html#l00176">176</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  177</span>{</div>
+<div class="line"><span class="lineno">  178</span>    <a class="code hl_variable" href="classICompassTargetInterface.html#afab55eb3a8c206914d440493384e9401">MarkerType</a> = InMarkerType;</div>
+<div class="line"><span class="lineno">  179</span>}</div>
 </div><!-- fragment -->
 <p class="reference">다음을 참조함 :  <a class="el" href="CompassTargetInterface_8h_source.html#l00026">ICompassTargetInterface::MarkerType</a>.</p>
 
@@ -720,11 +758,11 @@ Protected 속성</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">   32</span>{<span class="keywordflow">return</span> <a class="code hl_variable" href="classICompassTargetInterface.html#a055bb4c9611ef550e3a9c6762f0b3e8c">bShowOnCompass</a>;}</div>
 </div><!-- fragment -->
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="APlayerActor_8cpp_source.html#l00803">APlayerActor::UpdateCompassMarkers()</a>.</p>
-<div id="dynsection-9" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-9-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
-<div id="dynsection-9-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-10" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-10-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div id="dynsection-10-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-9-content" class="dyncontent" style="display:none;">
+<div id="dynsection-10-content" class="dyncontent" style="display:none;">
 <div class="center"><iframe scrolling="no" frameborder="0" src="classICompassTargetInterface_aa6ca87eb035438649532297283644173_icgraph.svg" width="656" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
@@ -810,7 +848,7 @@ Protected 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="OrderKiosk_8h_source.html">OrderKiosk.h</a> 파일의 <a class="el" href="OrderKiosk_8h_source.html#l00077">77</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="OrderKiosk_8cpp_source.html#l00034">BeginPlay()</a>, <a class="el" href="OrderKiosk_8cpp_source.html#l00081">BeginSubmitOverlap()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="OrderKiosk_8cpp_source.html#l00034">BeginPlay()</a>, <a class="el" href="OrderKiosk_8cpp_source.html#l00107">BeginSubmitOverlap()</a>.</p>
 
 </div>
 </div>
@@ -836,7 +874,7 @@ Protected 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="OrderKiosk_8h_source.html">OrderKiosk.h</a> 파일의 <a class="el" href="OrderKiosk_8h_source.html#l00067">67</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="OrderKiosk_8cpp_source.html#l00059">BeginFoodOverlap()</a>, <a class="el" href="OrderKiosk_8cpp_source.html#l00081">BeginSubmitOverlap()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="OrderKiosk_8cpp_source.html#l00059">BeginFoodOverlap()</a>, <a class="el" href="OrderKiosk_8cpp_source.html#l00107">BeginSubmitOverlap()</a>.</p>
 
 </div>
 </div>
@@ -862,7 +900,7 @@ Protected 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="OrderKiosk_8h_source.html">OrderKiosk.h</a> 파일의 <a class="el" href="OrderKiosk_8h_source.html#l00059">59</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="OrderKiosk_8cpp_source.html#l00059">BeginFoodOverlap()</a>, <a class="el" href="OrderKiosk_8cpp_source.html#l00081">BeginSubmitOverlap()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="OrderKiosk_8cpp_source.html#l00059">BeginFoodOverlap()</a>, <a class="el" href="OrderKiosk_8cpp_source.html#l00107">BeginSubmitOverlap()</a>.</p>
 
 </div>
 </div>
@@ -906,7 +944,7 @@ Protected 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="OrderKiosk_8h_source.html">OrderKiosk.h</a> 파일의 <a class="el" href="OrderKiosk_8h_source.html#l00076">76</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="OrderKiosk_8cpp_source.html#l00034">BeginPlay()</a>, <a class="el" href="OrderKiosk_8cpp_source.html#l00081">BeginSubmitOverlap()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="OrderKiosk_8cpp_source.html#l00034">BeginPlay()</a>, <a class="el" href="OrderKiosk_8cpp_source.html#l00107">BeginSubmitOverlap()</a>.</p>
 
 </div>
 </div>
@@ -932,7 +970,7 @@ Protected 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="OrderKiosk_8h_source.html">OrderKiosk.h</a> 파일의 <a class="el" href="OrderKiosk_8h_source.html#l00062">62</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="OrderKiosk_8cpp_source.html#l00081">BeginSubmitOverlap()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="OrderKiosk_8cpp_source.html#l00059">BeginFoodOverlap()</a>, <a class="el" href="OrderKiosk_8cpp_source.html#l00107">BeginSubmitOverlap()</a>.</p>
 
 </div>
 </div>
@@ -950,7 +988,7 @@ Protected 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="OrderKiosk_8h_source.html">OrderKiosk.h</a> 파일의 <a class="el" href="OrderKiosk_8h_source.html#l00054">54</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="OrderKiosk_8cpp_source.html#l00059">BeginFoodOverlap()</a>, <a class="el" href="OrderKiosk_8cpp_source.html#l00081">BeginSubmitOverlap()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="OrderKiosk_8cpp_source.html#l00059">BeginFoodOverlap()</a>, <a class="el" href="OrderKiosk_8cpp_source.html#l00107">BeginSubmitOverlap()</a>.</p>
 
 </div>
 </div>
@@ -976,7 +1014,7 @@ Protected 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="CompassTargetInterface_8h_source.html">CompassTargetInterface.h</a> 파일의 <a class="el" href="CompassTargetInterface_8h_source.html#l00026">26</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AContactTrigger_8cpp_source.html#l00017">AContactTrigger::AContactTrigger()</a>, <a class="el" href="AEvaluationTrigger_8cpp_source.html#l00015">AEvaluationTrigger::AEvaluationTrigger()</a>, <a class="el" href="ALuggageHolder_8cpp_source.html#l00022">ALuggageHolder::ALuggageHolder()</a>, <a class="el" href="OrderKiosk_8cpp_source.html#l00018">AOrderKiosk()</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00063">APlayerActor::APlayerActor()</a>, <a class="el" href="QuestionnaireKiosk_8cpp_source.html#l00026">AQuestionnaireKiosk::AQuestionnaireKiosk()</a>, <a class="el" href="ATeleportTrigger_8cpp_source.html#l00016">ATeleportTrigger::ATeleportTrigger()</a>, <a class="el" href="AWheatly_8cpp_source.html#l00031">AWheatly::AWheatly()</a>, <a class="el" href="AWheatly_8cpp_source.html#l00465">AWheatly::SetCompassMarkerInto()</a>, <a class="el" href="AContactTrigger_8cpp_source.html#l00204">AContactTrigger::SetCompassMarkerInto()</a>, <a class="el" href="ATeleportTrigger_8cpp_source.html#l00167">ATeleportTrigger::SetCompassMarkerInto()</a>, <a class="el" href="OrderKiosk_8cpp_source.html#l00151">SetCompassMarkerInto()</a>, <a class="el" href="ALuggageHolder_8cpp_source.html#l00268">ALuggageHolder::SetCompassMarkerInto()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AContactTrigger_8cpp_source.html#l00017">AContactTrigger::AContactTrigger()</a>, <a class="el" href="AEvaluationTrigger_8cpp_source.html#l00015">AEvaluationTrigger::AEvaluationTrigger()</a>, <a class="el" href="ALuggageHolder_8cpp_source.html#l00022">ALuggageHolder::ALuggageHolder()</a>, <a class="el" href="OrderKiosk_8cpp_source.html#l00018">AOrderKiosk()</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00063">APlayerActor::APlayerActor()</a>, <a class="el" href="QuestionnaireKiosk_8cpp_source.html#l00026">AQuestionnaireKiosk::AQuestionnaireKiosk()</a>, <a class="el" href="ATeleportTrigger_8cpp_source.html#l00016">ATeleportTrigger::ATeleportTrigger()</a>, <a class="el" href="AWheatly_8cpp_source.html#l00031">AWheatly::AWheatly()</a>, <a class="el" href="AWheatly_8cpp_source.html#l00465">AWheatly::SetCompassMarkerInto()</a>, <a class="el" href="AContactTrigger_8cpp_source.html#l00204">AContactTrigger::SetCompassMarkerInto()</a>, <a class="el" href="ATeleportTrigger_8cpp_source.html#l00167">ATeleportTrigger::SetCompassMarkerInto()</a>, <a class="el" href="OrderKiosk_8cpp_source.html#l00176">SetCompassMarkerInto()</a>, <a class="el" href="ALuggageHolder_8cpp_source.html#l00268">ALuggageHolder::SetCompassMarkerInto()</a>.</p>
 
 </div>
 </div>
@@ -1024,7 +1062,7 @@ Protected 속성</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classAOrderKiosk.html">AOrderKiosk</a></li>
-    <li class="footer">생성시간 : 화 12월 30 2025 05:27:07, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 화 12월 30 2025 06:06:30, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>
