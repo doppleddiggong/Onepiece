@@ -502,7 +502,7 @@ void APlayerControl::Client_InteractKiosk_Implementation()
 	}
 	if (!component->bCanInteract)
 		return;
-	
+
 	// 델리게이트 브로드캐스트
 	component->OnInteractionTriggered.Broadcast(GetPawn());
 
@@ -809,26 +809,45 @@ void APlayerControl::OnDoorMessage(int32 InDoorIndex, bool bInOpen, AActor* Even
 
 	if (InDoorIndex == DoorGroup::Step1_Tutorial)
 	{
-		OpenHowToPlay(EQuestType::Read);
+		Multicast_OpenHowToPlay(EQuestType::Read);
 	}
 	else if (InDoorIndex == DoorGroup::Step2_Tutorial)
 	{
-		OpenHowToPlay(EQuestType::Listen);
+		Multicast_OpenHowToPlay(EQuestType::Listen);
 	}
 	else if (InDoorIndex == DoorGroup::Step3_Tutorial)
 	{
-		if (EventInstigator != nullptr && EventInstigator != GetPawn())
-			return;
-		
-		OpenHowToPlay(EQuestType::Speak);
+		// 개인 퀘스트: Instigator가 본인인지 확인 후 해당 클라이언트에게만 알림
+		if (EventInstigator == GetPawn())
+		{
+			Client_OpenHowToPlay(EQuestType::Speak);
+		}
 	}
-	else if ( InDoorIndex == DoorGroup::Step4_Tutorial )
+	else if (InDoorIndex == DoorGroup::Step3_Tutorial)
 	{
-		if (EventInstigator != nullptr && EventInstigator != GetPawn())
-			return;
-
-		OpenHowToPlay(EQuestType::Write);		
+		// 개인 퀘스트: Instigator가 본인인지 확인 후 해당 클라이언트에게만 알림
+		if (EventInstigator == GetPawn())
+		{
+			Client_OpenHowToPlay(EQuestType::Write);
+		}
 	}
+}
+
+// 모든 클라이언트에서 실행될 로직
+void APlayerControl::Multicast_OpenHowToPlay_Implementation(EQuestType InType)
+{
+	// 로컬 플레이어 컨트롤러인지 확인 (UI는 내 화면에만 띄워야 함)
+	if (IsLocalController())
+	{
+		OpenHowToPlay(InType);
+	}
+}
+
+// 특정 클라이언트에서 실행될 로직
+void APlayerControl::Client_OpenHowToPlay_Implementation(EQuestType InType)
+{
+	// Client RPC는 해당 컨트롤러가 소유한 클라이언트에서만 실행됨
+	OpenHowToPlay(InType);
 }
 
 void APlayerControl::UpdateQuestInfoWidget()

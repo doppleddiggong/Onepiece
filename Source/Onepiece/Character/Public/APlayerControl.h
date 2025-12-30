@@ -149,6 +149,16 @@ private:
 	void OnResponseSpeakResult(FResponseSpeakResult& ResponseData, bool bWasSuccessful);
 
 public:
+
+	UFUNCTION(NetMulticast, Reliable)
+	void Multicast_OpenHowToPlay(EQuestType InType);
+
+	
+	UFUNCTION(Client, Reliable)
+	void Client_OpenHowToPlay(EQuestType InType);
+
+
+	
 	/// @brief 퀘스트 상태에 따라 QuestInfoWidget 업데이트
 	void UpdateQuestInfoWidget();
 	

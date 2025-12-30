@@ -31,10 +31,10 @@ void UPopup_Result::NativeDestruct()
 
 void UPopup_Result::InitPopup(const EQuestType InQuestType)
 {
-	// 결과 팝업이 뜰 때 MissionTimer 멈추고 숨기기
-	if (UBroadcastManager* BM = UBroadcastManager::Get(GetWorld()))
+	// 결과 팝업이 뜰 때 MissionTimer 멈추기
+	if (auto GS = Cast<ALingoGameState>(GetWorld()->GetGameState()))
 	{
-		BM->SendUpdateMissionTimerState(false, 0.0f);
+		GS->StopMissionTimer();
 	}
 
 	if (Btn_Confirm)
