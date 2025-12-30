@@ -62,4 +62,7 @@ protected:
 private:
 	/** 랜덤 한국어 단어 데이터 가져오기 (Fallback용) */
 	TArray<FWordData> GetRandomKoreanWords(int32 Count);
+
+	/** 상호작용한 플레이어 (캐시) */
+	TWeakObjectPtr<AActor> CachedInteractor;
 };
