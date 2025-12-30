@@ -90,7 +90,7 @@ var searchData=
   ['txt_5forder_87',['Txt_Order',['../classUAnswerItem.html#a50ed54ac4d705098bea77f4f98a6b203',1,'UAnswerItem']]],
   ['txt_5fplaytime_88',['Txt_PlayTime',['../classULevelSelectItem.html#a4cb737f1252345ac55c971a84d0766fc',1,'ULevelSelectItem']]],
   ['txt_5fproneme_89',['Txt_Proneme',['../classUPopup__Word.html#ac6eb2584b34ad29964d1b22be64df24e',1,'UPopup_Word']]],
-  ['txt_5fquestion_90',['txt_question',['../classUPopup__InterviewHello.html#a0f844839c6b09c41cb04e9193fecb154',1,'UPopup_InterviewHello::TXt_Question'],['../classUHistoryItem.html#a4e7e1c6837917fd51611a2cf2f01422c',1,'UHistoryItem::Txt_Question'],['../classUPopup__SpeakResultItem.html#a1cde45cb1d72084e58b71eade984bece',1,'UPopup_SpeakResultItem::Txt_Question'],['../classUPopup__DailyResultItem.html#a33e1934d45e416d2df925186c432a814',1,'UPopup_DailyResultItem::Txt_Question']]],
+  ['txt_5fquestion_90',['txt_question',['../classUPopup__SpeakResultItem.html#a1cde45cb1d72084e58b71eade984bece',1,'UPopup_SpeakResultItem::Txt_Question'],['../classUPopup__InterviewHello.html#a0f844839c6b09c41cb04e9193fecb154',1,'UPopup_InterviewHello::TXt_Question'],['../classUPopup__DailyResultItem.html#a33e1934d45e416d2df925186c432a814',1,'UPopup_DailyResultItem::Txt_Question'],['../classUHistoryItem.html#a4e7e1c6837917fd51611a2cf2f01422c',1,'UHistoryItem::Txt_Question']]],
   ['txt_5fquestionprogress_91',['Txt_QuestionProgress',['../classUPopup__DailyStudy.html#ac0fc9a9e73fa57c86ac09ed1da3ec87d',1,'UPopup_DailyStudy']]],
   ['txt_5frate_92',['Txt_Rate',['../classUResultStatWidget.html#a1c5994cd2432da58ad757210ea4d1ec3',1,'UResultStatWidget']]],
   ['txt_5fremaintime_93',['Txt_RemainTime',['../classUPopup__DailyStudy.html#acce3af1cdae27f4335e0a6665e43de6e',1,'UPopup_DailyStudy']]],

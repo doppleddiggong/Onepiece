@@ -1,7 +1,5 @@
 var NAVTREEINDEX19 =
 {
-"structFQuestListenInfo.html#a30660f2c732b8ffd87d7e030fcd8dd11":[2,0,82,0],
-"structFQuestListenInfo.html#a3dfd7efad985e5308c7e3b8d2d8d3ee4":[2,0,82,3],
 "structFQuestListenInfo.html#a43789bf374e44bb936c042f567ed451d":[2,0,82,4],
 "structFQuestListenInfo.html#a60280b75f7d37731dc67b1f72cf61243":[2,0,82,1],
 "structFQuestListenInfo.html#a9d56ba376ad3f026e1c290fd00ea0928":[2,0,82,5],
@@ -249,5 +247,7 @@ var NAVTREEINDEX19 =
 "structFSequenceCommand.html#aa93b55656b1db478843925f298a6ec25":[2,0,121,1],
 "structFSequenceCommand.html#ad318dca78e6cdc2fb3a5616df5e9eb64":[2,0,121,2],
 "structFServerConfig.html":[2,0,122],
-"structFServerConfig.html#a0921d17b91705fa9f1ffc75c204daab5":[2,0,122,2]
+"structFServerConfig.html#a0921d17b91705fa9f1ffc75c204daab5":[2,0,122,2],
+"structFServerConfig.html#a192542ce9a719e9f4a9dd468e1e69aea":[2,0,122,3],
+"structFServerConfig.html#a8abeabc5af6396f784929d66d0bd6ce7":[2,0,122,1]
 };
