@@ -49,7 +49,6 @@ void AMiniOwlBot::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 }
-
 void AMiniOwlBot::UpdateLocation(float DeltaTime)
 {
 	time += DeltaTime;

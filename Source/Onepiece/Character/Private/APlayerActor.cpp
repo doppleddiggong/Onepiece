@@ -139,20 +139,6 @@ APlayerActor::APlayerActor()
 	if (miniOwlBotRef.Succeeded())
 	{
 		miniOwlBot->SetChildActorClass(miniOwlBotRef.Class);
-		// TODO: miniowlbot invisible 처리
-		// 아오 왤캐 안돼 진짜
-		miniOwlBot->OnChildActorCreated().AddLambda([this](AActor* InChildActor)
-		{
-			PRINTLOG(TEXT("%s"), Cast<AMiniOwlBot>(InChildActor) == nullptr ? TEXT("miniOwlBot is null") : TEXT("miniOwlBot is not null"));
-			if (IsLocallyControlled())
-			{
-				Cast<AMiniOwlBot>(InChildActor)->SetActorHiddenInGame(false);
-			}
-			else
-			{
-				Cast<AMiniOwlBot>(InChildActor)->SetActorHiddenInGame(true);
-			}
-		});
 	}
 
 	// MainWidget 클래스 자동 로드
@@ -221,6 +207,20 @@ void APlayerActor::BeginPlay()
 
 		if ( IsMainMap() )
 			ULingoGameHelper::HideMouseCursor(this);
+	}
+	
+	// miniowlbot invisible 처리
+	PRINTLOG(TEXT("%s"), Cast<AMiniOwlBot>(miniOwlBot->GetChildActor()) == nullptr ? TEXT("miniOwlBot is null") : TEXT("miniOwlBot is not null"));
+	if (auto InChildActor = Cast<AMiniOwlBot>(miniOwlBot->GetChildActor()))
+	{
+		if (IsLocallyControlled())
+		{
+			Cast<AMiniOwlBot>(InChildActor)->SetActorHiddenInGame(false);
+		}
+		else
+		{
+			Cast<AMiniOwlBot>(InChildActor)->SetActorHiddenInGame(true);
+		}
 	}
 }
 
@@ -372,6 +372,20 @@ void APlayerActor::OnRep_Controller()
 	{
 		CreateMainWidget();
 		CreateToastWidget();
+	}
+	
+	// miniowlbot invisible 처리
+	PRINTLOG(TEXT("%s"), Cast<AMiniOwlBot>(miniOwlBot->GetChildActor()) == nullptr ? TEXT("miniOwlBot is null") : TEXT("miniOwlBot is not null"));
+	if (auto InChildActor = Cast<AMiniOwlBot>(miniOwlBot->GetChildActor()))
+	{
+		if (IsLocallyControlled())
+		{
+			Cast<AMiniOwlBot>(InChildActor)->SetActorHiddenInGame(false);
+		}
+		else
+		{
+			Cast<AMiniOwlBot>(InChildActor)->SetActorHiddenInGame(true);
+		}
 	}
 }
 
