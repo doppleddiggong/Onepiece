@@ -28,16 +28,11 @@ AListenAnswer::AListenAnswer()
 	InteractableComp->InteractionType = EInteractionType::PickUp;
 	InteractableComp->InteractionPrompt = TEXT("Pick Up");
 
-	// Initial settings
-	Mesh->SetSimulatePhysics(true);
-	Mesh->SetEnableGravity(true);
+	// Initial settings (Physics 설정은 BeginPlay에서 수행)
 	Mesh->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
 	Mesh->SetCollisionProfileName(TEXT("PhysicsActor"));
 
 	HookComp = CreateDefaultSubobject<UHookComponent>(TEXT("Hook"));
-	
-	// 무게 설정
-	Mesh->SetMassOverrideInKg(NAME_None, 50.f, true);
 
 	// 물리 복제 설정
 	Mesh->SetIsReplicated(true);
@@ -52,6 +47,14 @@ AListenAnswer::AListenAnswer()
 void AListenAnswer::BeginPlay()
 {
 	Super::BeginPlay();
+
+	// Physics 설정 (생성자에서 이동)
+	if (Mesh)
+	{
+		Mesh->SetSimulatePhysics(true);
+		Mesh->SetEnableGravity(true);
+		Mesh->SetMassOverrideInKg(NAME_None, 50.f, true);
+	}
 
 	NameWidgetComp->AttachToComponent(GetRootComponent(), FAttachmentTransformRules::KeepRelativeTransform);
 	NameWidgetComp->SetRelativeLocation(FVector(0, 0, 10));
@@ -84,6 +87,16 @@ void AListenAnswer::OnRep_AnswerData()
 
 void AListenAnswer::UpdateMesh()
 {
+	// 게임 스레드가 아니면 게임 스레드로 dispatch
+	if (!IsInGameThread())
+	{
+		AsyncTask(ENamedThreads::GameThread, [this]()
+		{
+			UpdateMesh();
+		});
+		return;
+	}
+
 	if (!ListenDataTable)
 	{
 		UE_LOG(LogTemp, Error, TEXT("ListenDataTable is null!"));
@@ -113,6 +126,16 @@ void AListenAnswer::UpdateMesh()
 
 void AListenAnswer::UpdateNameWidget()
 {
+	// 게임 스레드가 아니면 게임 스레드로 dispatch
+	if (!IsInGameThread())
+	{
+		AsyncTask(ENamedThreads::GameThread, [this]()
+		{
+			UpdateNameWidget();
+		});
+		return;
+	}
+
 	// Widget이 아직 초기화되지 않았을 수 있으므로 체크
 	if (!NameWidgetComp || !NameWidgetComp->GetWidget())
 		return;

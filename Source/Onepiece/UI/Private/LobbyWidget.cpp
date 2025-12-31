@@ -29,11 +29,6 @@ void ULobbyWidget::NativeConstruct()
 	GI->onFindComplete.BindUObject(this, &ULobbyWidget::OnFindComplete);
 
 	// Lobby Canvas - 중복 바인딩 방지
-	if (Btn_Single)
-	{
-		Btn_Single->OnButtonClickedEvent.RemoveDynamic(this, &ULobbyWidget::OnSingleClicked);
-		Btn_Single->OnButtonClickedEvent.AddDynamic(this, &ULobbyWidget::OnSingleClicked);
-	}
 	if (Btn_Host)
 	{
 		Btn_Host->OnButtonClickedEvent.RemoveDynamic(this, &ULobbyWidget::OnHostClicked);
@@ -78,11 +73,6 @@ void ULobbyWidget::NativeConstruct()
 		Btn_Back2->OnButtonClickedEvent.RemoveDynamic(this, &ULobbyWidget::OnBackPressed);
 		Btn_Back2->OnButtonClickedEvent.AddDynamic(this, &ULobbyWidget::OnBackPressed);
 	}
-}
-
-void ULobbyWidget::OnSingleClicked()
-{
-	UDialogManager::Get(GetWorld())->ShowToast(TEXT("OnSingleClicked"));
 }
 
 void ULobbyWidget::OnHostClicked()

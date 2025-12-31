@@ -140,8 +140,11 @@ void UMainWidget::OnUpdateMissionTimerState(bool bIsActive, float TimeLimit)
 	// 	return;
 
 	// QuestInfoWidget->SetVisibility(bIsActive ? ESlateVisibility::Visible : ESlateVisibility::Collapsed );
-	HookTargetIndicator->SetVisibility(ESlateVisibility::Visible);
-	
+
+	// HookTargetIndicator가 존재하는 경우에만 visibility 설정
+	if (HookTargetIndicator)
+		HookTargetIndicator->SetVisibility(bIsActive ? ESlateVisibility::Visible : ESlateVisibility::Collapsed);
+
 	if (bIsActive)
 	{
 		WidgetSwitcher->SetActiveWidgetIndex(0);

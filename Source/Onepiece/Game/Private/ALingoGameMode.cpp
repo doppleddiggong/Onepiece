@@ -62,7 +62,7 @@ void ALingoGameMode::BeginListenQuest(const FResponseListenScenario& InResponseD
 	if (!HasAuthority())
 		return;
 
-	UpdateQuestRole();
+	// UpdateQuestRole();
 
 	if (auto GS = GetGameState<ALingoGameState>())
 	{

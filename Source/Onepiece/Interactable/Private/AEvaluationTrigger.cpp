@@ -97,10 +97,6 @@ void AEvaluationTrigger::OnTriggerBeginOverlap(
 	UPrimitiveComponent* OtherComp, int32 OtherBodyIndex,
 	bool bFromSweep, const FHitResult& SweepResult)
 {
-	// 서버에서만 처리
-	if (!HasAuthority())
-		return;
-
 	// 원샷 모드이고 이미 트리거되었으면 무시
 	if ( bIsTriggered)
 		return;
@@ -109,9 +105,15 @@ void AEvaluationTrigger::OnTriggerBeginOverlap(
 	APlayerActor* PlayerActor = Cast<APlayerActor>(OtherActor);
 	if (PlayerActor)
 	{
-		OnActivate();
-		
-		bIsTriggered = true;
+		// 로컬 플레이어만 처리 (각 클라이언트가 독립적으로 Evaluation 요청)
+		if (APlayerController* PC = Cast<APlayerController>(PlayerActor->GetController()))
+		{
+			if (PC->IsLocalPlayerController())
+			{
+				OnActivate();
+				bIsTriggered = true;
+			}
+		}
 	}
 }
 

@@ -27,9 +27,6 @@ public:
 public:
 	// 0 : Lobby Canvas
 	UPROPERTY(meta = (BindWidget))
-	class UHoverButton* Btn_Single;
-
-	UPROPERTY(meta = (BindWidget))
 	class UHoverButton* Btn_Host;
 
 	UPROPERTY(meta = (BindWidget))
@@ -38,9 +35,6 @@ public:
 	UPROPERTY(meta = (BindWidget))
 	class UHoverButton* Btn_LogOut;
 
-	UFUNCTION()
-	void OnSingleClicked();
-	
 	UFUNCTION()
 	void OnHostClicked();
 	

@@ -46,15 +46,10 @@ Aluggage::Aluggage()
 	InteractableComp->InteractionPrompt = TEXT("Pick Up");
 
 	HookComp = CreateDefaultSubobject<UHookComponent>(TEXT("Hook"));
-	
-	// Initial settings
-	Mesh1Comp->SetSimulatePhysics(true);
-	Mesh1Comp->SetEnableGravity(true);
+
+	// Initial settings (Physics 설정은 BeginPlay에서 수행)
 	Mesh1Comp->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
 	Mesh1Comp->SetCollisionProfileName(TEXT("PhysicsActor"));
-
-	// 무게 설정
-	Mesh1Comp->SetMassOverrideInKg(NAME_None, 5.f, true);
 
 	// 물리 복제 설정
 	Mesh1Comp->SetIsReplicated(true);
@@ -85,13 +80,21 @@ void Aluggage::BeginPlay()
 {
 	Super::BeginPlay();
 
+	// Physics 설정 (생성자에서 이동)
+	if (Mesh1Comp)
+	{
+		Mesh1Comp->SetSimulatePhysics(true);
+		Mesh1Comp->SetEnableGravity(true);
+		Mesh1Comp->SetMassOverrideInKg(NAME_None, 5.f, true);
+	}
+
 	SetReplicateMovement(true);
 
 	// 위젯 초기화
 	InteractableComp->InitWidget(WidgetComp);
 	// 아웃라인 상태 변경 델리게이트 바인딩
 	InteractableComp->OnOutlineStateChanged.AddDynamic(this, &Aluggage::OnOutlineStateChanged);
-	
+
 	dissolveMPCInstance = GetWorld()->GetParameterCollectionInstance(dissolveMPC);
 }
 
@@ -182,6 +185,16 @@ void Aluggage::OnRep_CollisionEnabled()
 
 void Aluggage::ApplyColorToMesh(int32 InColorIdx)
 {
+	// 게임 스레드가 아니면 게임 스레드로 dispatch
+	if (!IsInGameThread())
+	{
+		AsyncTask(ENamedThreads::GameThread, [this, InColorIdx]()
+		{
+			ApplyColorToMesh(InColorIdx);
+		});
+		return;
+	}
+
 	ColorIdx = InColorIdx;
 
 	FColorData ColorData;
@@ -209,6 +222,16 @@ void Aluggage::ApplyColorToMesh(int32 InColorIdx)
 
 void Aluggage::ApplyPatternToMesh(int32 InPatternIdx)
 {
+	// 게임 스레드가 아니면 게임 스레드로 dispatch
+	if (!IsInGameThread())
+	{
+		AsyncTask(ENamedThreads::GameThread, [this, InPatternIdx]()
+		{
+			ApplyPatternToMesh(InPatternIdx);
+		});
+		return;
+	}
+
 	PatternIdx = InPatternIdx;
 
 	// 데칼 바꾸기

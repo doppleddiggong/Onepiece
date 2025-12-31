@@ -27,7 +27,7 @@ ADailyKiosk::ADailyKiosk()
 	MeshComp->SetupAttachment(RootComponent);
 
 	InteractableComp = CreateDefaultSubobject<UInteractableComponent>(TEXT("Interactable"));
-	InteractableComp->InteractionType = EInteractionType::Button;
+	InteractableComp->InteractionType = EInteractionType::Kiosk;
 	InteractableComp->InteractionPrompt = TEXT("Activate");
 
 	BoxComp = CreateDefaultSubobject<UBoxComponent>(TEXT("BoxComp"));
@@ -58,14 +58,6 @@ void ADailyKiosk::BeginPlay()
 
 void ADailyKiosk::OnInteractionTriggered(AActor* Interactor)
 {
-	// if (APlayerActor* player = Cast<APlayerActor>(Interactor))
-	// {
-	// 	if (APlayerControl* pc = Cast<APlayerControl>(player->GetController()))
-	// 	{
-	// 		// 플레이어 컨트롤러 관련 로직 (필요 시)
-	// 	}
-	// }
-
 	// ChatDaily API 요청
 	if (auto KLingoNetwork = UKLingoNetworkSystem::Get(GetWorld()))
 	{

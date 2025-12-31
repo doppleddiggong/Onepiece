@@ -14,6 +14,7 @@
 #include "DrawDebugHelpers.h"
 #include "InteractableComponent.h"
 #include "luggage.h"
+#include "UGameSoundManager.h"
 #include "Math/RotationMatrix.h"
 #include "Components/StaticMeshComponent.h"
 #include "Engine/StaticMesh.h"
@@ -154,6 +155,8 @@ void UHookSystem::TryHook()
 
 	// Server에 Hook 요청
 	ServerTryHook(HitResult);
+
+	UGameSoundManager::Get(GetWorld())->PlaySound2D( EGameSoundType::Hook );
 }
 
 /**

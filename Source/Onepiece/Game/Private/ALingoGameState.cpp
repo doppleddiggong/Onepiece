@@ -267,6 +267,10 @@ void ALingoGameState::StopMissionTimer()
 	if (!HasAuthority())
 		return;
 
+	// 이미 타이머가 멈춰있으면 중복 호출 방지
+	if (!bIsTimerActive)
+		return;
+
 	bIsTimerActive = false;
 
 	// NetworkBroadcastActor를 통해 모든 클라이언트에 타이머 중지 알림

@@ -69,6 +69,7 @@ private:
 	 * @return 정답 여부
 	 */
 	bool CheckFood(class AFood* TargetFood);
+	void CheckPartialAnswer(const struct FFoodCapsuleData& TargetData, bool& bOutCityCorrect, bool& bOutFoodCorrect);
 
 	void UpdateActivateState(bool State);
 

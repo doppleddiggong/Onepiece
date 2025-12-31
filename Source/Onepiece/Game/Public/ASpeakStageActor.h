@@ -38,13 +38,13 @@ public:
 	FORCEINLINE int32 GetCurrentStepIndex() const { return CurrentStepIndex; }
 
 	UFUNCTION(BlueprintCallable, Category = "SpeakStage")
-	FORCEINLINE FString GetCurrentQuestion() const;
+	FString GetCurrentQuestion() const;
 
 	UFUNCTION(BlueprintCallable, Category = "SpeakStage")
-	FORCEINLINE int32 GetTotalQuestionsCount();
+	int32 GetTotalQuestionsCount();
 
 	UFUNCTION(BlueprintCallable, Category = "SpeakStage")
-	FORCEINLINE int32 GetTotalQuestions() const;
+	int32 GetTotalQuestions() const;
 
 	/**
 	 * @brief 특정 플레이어에 대해 Speak Stage를 시작합니다. (서버에서만 호출)
