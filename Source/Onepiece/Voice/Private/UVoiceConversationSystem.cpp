@@ -17,6 +17,7 @@
 #include "ASpeakStageActor.h"
 #include "APlayerActor.h"
 #include "APlayerControl.h"
+#include "MiniOwlBot.h"
 #include "UChatHistorySystem.h"
 #include "UPopupManager.h"
 #include "UPopup_SpeakJudes.h"
@@ -331,6 +332,12 @@ void UVoiceConversationSystem::OnResponseChatAnswers(FResponseChatAnswers& Respo
 			{
 				// Chat History 저장
 				PC->GetChatHistorySystem()->SaveChatHistory(Response.question, Response.answer);
+				
+				// ai tutor 봇에 메시지 표시
+				if (auto playerActor = Cast<APlayerActor>(PC->GetPawn()))
+				{
+					playerActor->GetMiniOwlBot()->UpdateText(Response.answer);
+				}
 				
 				FText PlayerQuestion  = FText::FromString(Response.question);
 				// Bot은 PlayerIndex -1 사용

@@ -79,7 +79,13 @@ protected:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Voice", meta=(AllowPrivateAccess="true"))
 	TObjectPtr<class UVoiceConversationSystem> VoiceConversationSystem;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	TObjectPtr<class UChildActorComponent> miniOwlBot;
 
+private:
+	FVector basePos = FVector(238,135.5,60);
+	FRotator baseRot = FRotator(-5.53,212.2,-0.2);
 	
 public: // Control Interface
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Command")
@@ -123,8 +129,7 @@ public: // Control Interface
 public:
 	FORCEINLINE bool GetIsRunning() { return bIsRunning; }
 	FORCEINLINE bool GetIsJumpStart() { return bIsJumpStart; }
-	FVector GetCameraForwardVector() const;
-	FVector GetCameraPosition() const;
+	class AMiniOwlBot* GetMiniOwlBot() const;
 	
 	void PlaySpeakInfo(int32 QuestStep);
 
