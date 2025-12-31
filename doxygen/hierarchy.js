@@ -307,6 +307,7 @@ var hierarchy =
       [ "UTextureButton", "classUTextureButton.html", null ],
       [ "UToastWidget", "classUToastWidget.html", null ],
       [ "UTutorMessage", "classUTutorMessage.html", null ],
+      [ "UTutorSpeechWidget", "classUTutorSpeechWidget.html", null ],
       [ "UVoiceRecording", "classUVoiceRecording.html", null ],
       [ "UWordButton", "classUWordButton.html", null ],
       [ "UWordItem", "classUWordItem.html", null ],

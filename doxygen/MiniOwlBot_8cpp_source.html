@@ -116,128 +116,117 @@ $(document).ready(function(){initNavTree('MiniOwlBot_8cpp_source.html',''); init
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;<a class="code" href="APlayerActor_8h.html">APlayerActor.h</a>&quot;</span></div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;<a class="code" href="GameLogging_8h.html">GameLogging.h</a>&quot;</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;Kismet/GameplayStatics.h&quot;</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;Kismet/KismetMathLibrary.h&quot;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;<a class="code" href="TutorSpeechWidget_8h.html">TutorSpeechWidget.h</a>&quot;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;Components/WidgetComponent.h&quot;</span></div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment">// Sets default values</span></div>
-<div class="foldopen" id="foldopen00013" data-start="{" data-end="}">
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="classAMiniOwlBot.html#a172e9e0ce5d226cbba128b521e9b6784">   13</a></span><a class="code hl_function" href="classAMiniOwlBot.html#a172e9e0ce5d226cbba128b521e9b6784">AMiniOwlBot::AMiniOwlBot</a>()</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>{</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <span class="comment">// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don&#39;t need it.</span></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    PrimaryActorTick.bCanEverTick = <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>}</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="foldopen" id="foldopen00015" data-start="{" data-end="}">
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="classAMiniOwlBot.html#a172e9e0ce5d226cbba128b521e9b6784">   15</a></span><a class="code hl_function" href="classAMiniOwlBot.html#a172e9e0ce5d226cbba128b521e9b6784">AMiniOwlBot::AMiniOwlBot</a>()</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>{</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <a class="code hl_variable" href="classAMiniOwlBot.html#a0dfc6efb482135e70641dfba5a86b677">rootSceneComp</a> = CreateDefaultSubobject&lt;USceneComponent&gt;(TEXT(<span class="stringliteral">&quot;rootSceneComp&quot;</span>));</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    SetRootComponent(<a class="code hl_variable" href="classAMiniOwlBot.html#a0dfc6efb482135e70641dfba5a86b677">rootSceneComp</a>);</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <a class="code hl_variable" href="classAMiniOwlBot.html#a8edeac2c869f63923a266ccc07dad116">speechWidget</a> = CreateDefaultSubobject&lt;UWidgetComponent&gt;(TEXT(<span class="stringliteral">&quot;speechWidget&quot;</span>));</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <a class="code hl_variable" href="classAMiniOwlBot.html#a8edeac2c869f63923a266ccc07dad116">speechWidget</a>-&gt;SetupAttachment(<a class="code hl_variable" href="classAMiniOwlBot.html#a0dfc6efb482135e70641dfba5a86b677">rootSceneComp</a>);</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <a class="code hl_variable" href="classAMiniOwlBot.html#a8edeac2c869f63923a266ccc07dad116">speechWidget</a>-&gt;SetRelativeLocation(FVector(0.f, 0.f, 40.f));</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <a class="code hl_variable" href="classAMiniOwlBot.html#a8edeac2c869f63923a266ccc07dad116">speechWidget</a>-&gt;SetWidgetSpace(EWidgetSpace::Screen);</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <a class="code hl_variable" href="classAMiniOwlBot.html#a8edeac2c869f63923a266ccc07dad116">speechWidget</a>-&gt;SetDrawAtDesiredSize(<span class="keyword">true</span>);</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <a class="code hl_variable" href="classAMiniOwlBot.html#a8edeac2c869f63923a266ccc07dad116">speechWidget</a>-&gt;SetVisibility(<span class="keyword">false</span>);</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    ConstructorHelpers::FClassFinder&lt;UTutorSpeechWidget&gt; speechWidgetClassRef(TEXT(<span class="stringliteral">&quot;/Game/CustomContents/UI/Widgets/OwlTutorBot/WBP_TutorSpeechWidget.WBP_TutorSpeechWidget_C&quot;</span>));</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="keywordflow">if</span> (speechWidgetClassRef.Succeeded())</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    {</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        <a class="code hl_variable" href="classAMiniOwlBot.html#a8edeac2c869f63923a266ccc07dad116">speechWidget</a>-&gt;SetWidgetClass(speechWidgetClassRef.Class);</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    }</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <a class="code hl_variable" href="classAMiniOwlBot.html#a558e6e749720a2010a2c8d8b774cf4d2">meshComp</a> = CreateDefaultSubobject&lt;UStaticMeshComponent&gt;(TEXT(<span class="stringliteral">&quot;meshComp&quot;</span>));</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <a class="code hl_variable" href="classAMiniOwlBot.html#a558e6e749720a2010a2c8d8b774cf4d2">meshComp</a>-&gt;SetupAttachment(<a class="code hl_variable" href="classAMiniOwlBot.html#a0dfc6efb482135e70641dfba5a86b677">rootSceneComp</a>);</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    ConstructorHelpers::FObjectFinder&lt;UStaticMesh&gt; meshRef(TEXT(<span class="stringliteral">&quot;/Script/Engine.StaticMesh&#39;/Game/CustomContents/Character/Asset/MiniOwl/MiniOwlbot.MiniOwlbot&#39;&quot;</span>));</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="keywordflow">if</span> (meshRef.Succeeded())</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    {</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        <a class="code hl_variable" href="classAMiniOwlBot.html#a558e6e749720a2010a2c8d8b774cf4d2">meshComp</a>-&gt;SetStaticMesh(meshRef.Object);</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    }</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>}</div>
 </div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="comment">// Called when the game starts or when spawned</span></div>
-<div class="foldopen" id="foldopen00020" data-start="{" data-end="}">
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="classAMiniOwlBot.html#ab77202b783c32536d0f5db7b71bc9277">   20</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAMiniOwlBot.html#ab77202b783c32536d0f5db7b71bc9277">AMiniOwlBot::BeginPlay</a>()</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>{</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    Super::BeginPlay();</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    </div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    UGameplayStatics::GetAllActorsOfClass(GetWorld(), APlayerActor::StaticClass(), <a class="code hl_variable" href="classAMiniOwlBot.html#a1318edb9cfe98e1e65d2e64e0707297b">targets</a>);</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;targets : %d&quot;</span>), <a class="code hl_variable" href="classAMiniOwlBot.html#a1318edb9cfe98e1e65d2e64e0707297b">targets</a>.Num());</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    </div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classAMiniOwlBot.html#a1318edb9cfe98e1e65d2e64e0707297b">targets</a>.IsEmpty())</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    {</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        <a class="code hl_variable" href="classAMiniOwlBot.html#a9095565ae3f201617867bd803eadca21">currTarget</a> = Cast&lt;APlayerActor&gt;(<a class="code hl_variable" href="classAMiniOwlBot.html#a1318edb9cfe98e1e65d2e64e0707297b">targets</a>[0]);</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    }</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>}</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="comment">// Called when the game starts or when spawned</span></div>
+<div class="foldopen" id="foldopen00042" data-start="{" data-end="}">
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="classAMiniOwlBot.html#ab77202b783c32536d0f5db7b71bc9277">   42</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAMiniOwlBot.html#ab77202b783c32536d0f5db7b71bc9277">AMiniOwlBot::BeginPlay</a>()</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>{</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    Super::BeginPlay();</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>}</div>
 </div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="comment">// Called every frame</span></div>
-<div class="foldopen" id="foldopen00035" data-start="{" data-end="}">
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="classAMiniOwlBot.html#a3990500545614cf37a042f0a5b0de1c5">   35</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAMiniOwlBot.html#a3990500545614cf37a042f0a5b0de1c5">AMiniOwlBot::Tick</a>(<span class="keywordtype">float</span> DeltaTime)</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>{</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    Super::Tick(DeltaTime);</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    </div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <a class="code hl_variable" href="classAMiniOwlBot.html#a1a4130de33ea46dacddf2d58724efe1d">time</a> += DeltaTime;</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <a class="code hl_variable" href="classAMiniOwlBot.html#a7dbeeec44f5ba14d4c47f31e05049d6b">baseHeight</a> = <a class="code hl_variable" href="classAMiniOwlBot.html#a9095565ae3f201617867bd803eadca21">currTarget</a>-&gt;GetActorLocation().Z;</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    </div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <a class="code hl_function" href="classAMiniOwlBot.html#af5db3fcbe078b8978a18e5f6e7b5b77a">UpdateRotation</a>();</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <a class="code hl_function" href="classAMiniOwlBot.html#a55e146658ad5a2341c4907558bbd3931">UpdateLocation</a>();</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>}</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="comment">// Called every frame</span></div>
+<div class="foldopen" id="foldopen00048" data-start="{" data-end="}">
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="classAMiniOwlBot.html#a3f83f1f6dbe4f13b0a80d42f9287bdd1">   48</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAMiniOwlBot.html#a3f83f1f6dbe4f13b0a80d42f9287bdd1">AMiniOwlBot::Tick</a>(<span class="keywordtype">float</span> DeltaTime)</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>{</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    Super::Tick(DeltaTime);</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>}</div>
 </div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
-<div class="foldopen" id="foldopen00046" data-start="{" data-end="}">
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="classAMiniOwlBot.html#af5db3fcbe078b8978a18e5f6e7b5b77a">   46</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAMiniOwlBot.html#af5db3fcbe078b8978a18e5f6e7b5b77a">AMiniOwlBot::UpdateRotation</a>()</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>{</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="comment">// forward vector가 카메라 중심을 향하도록 회전</span></div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    FVector targetDir = <a class="code hl_variable" href="classAMiniOwlBot.html#a9095565ae3f201617867bd803eadca21">currTarget</a>-&gt;GetCameraPosition() - GetActorLocation();</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    </div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    FRotator rot = FRotationMatrix::MakeFromX(targetDir).Rotator();</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    SetActorRotation(rot);</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>}</div>
-</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
-<div class="foldopen" id="foldopen00055" data-start="{" data-end="}">
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="classAMiniOwlBot.html#a55e146658ad5a2341c4907558bbd3931">   55</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAMiniOwlBot.html#a55e146658ad5a2341c4907558bbd3931">AMiniOwlBot::UpdateLocation</a>()<span class="comment">// float DeltaTime</span></div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>{</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
+<div class="foldopen" id="foldopen00053" data-start="{" data-end="}">
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="classAMiniOwlBot.html#af177a0956643122cd021b0d2d481f17b">   53</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAMiniOwlBot.html#af177a0956643122cd021b0d2d481f17b">AMiniOwlBot::UpdateLocation</a>(<span class="keywordtype">float</span> DeltaTime)</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>{</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <a class="code hl_variable" href="classAMiniOwlBot.html#a1a4130de33ea46dacddf2d58724efe1d">time</a> += DeltaTime;</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    </div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="comment">// up down</span></div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="keywordtype">float</span> valZ = <a class="code hl_variable" href="classAMiniOwlBot.html#a2590eb8981c00cb5deb300603fdb3c8c">amplitude</a> * FMath::Sin(<a class="code hl_variable" href="classAMiniOwlBot.html#a1a4130de33ea46dacddf2d58724efe1d">time</a> * <a class="code hl_variable" href="classAMiniOwlBot.html#a9b486eb9991ecc1692f49d4ca616665a">frequency</a> * 2 * PI) + <a class="code hl_variable" href="classAMiniOwlBot.html#af2d67f219f704d3cf351f72027fd121b">targetHeight</a> + <a class="code hl_variable" href="classAMiniOwlBot.html#a7dbeeec44f5ba14d4c47f31e05049d6b">baseHeight</a>;</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="keywordtype">float</span> valX = <a class="code hl_variable" href="classAMiniOwlBot.html#a9095565ae3f201617867bd803eadca21">currTarget</a>-&gt;GetActorLocation().X;</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="keywordtype">float</span> valY = <a class="code hl_variable" href="classAMiniOwlBot.html#a9095565ae3f201617867bd803eadca21">currTarget</a>-&gt;GetActorLocation().Y;</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    </div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="comment">// 카메라 범위 밖으로 벗어나면</span></div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <span class="comment">// if (CheckAngleOutofCamera())</span></div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    {</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        <span class="comment">// 특정 위치로 오게 하기</span></div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        FVector rotatedDir = <a class="code hl_variable" href="classAMiniOwlBot.html#a719b31622af4fa0461822a2f9cf0d5d1">radius</a> * <a class="code hl_variable" href="classAMiniOwlBot.html#a9095565ae3f201617867bd803eadca21">currTarget</a>-&gt;GetActorForwardVector().RotateAngleAxis(<a class="code hl_variable" href="classAMiniOwlBot.html#a2495dcfed3c279a1da7300a1e20cd125">angle</a>, FVector::UpVector);</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        valX += rotatedDir.X;</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        valY += rotatedDir.Y;</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    }</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    </div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    SetActorLocation(FVector(valX, valY, valZ));</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    FVector targetPos = FVector::ZeroVector;</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    targetPos.Z = <a class="code hl_variable" href="classAMiniOwlBot.html#a2590eb8981c00cb5deb300603fdb3c8c">amplitude</a> * FMath::Sin(<a class="code hl_variable" href="classAMiniOwlBot.html#a1a4130de33ea46dacddf2d58724efe1d">time</a> * <a class="code hl_variable" href="classAMiniOwlBot.html#a9b486eb9991ecc1692f49d4ca616665a">frequency</a> * 2 * PI);</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    </div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    SetActorRelativeLocation(targetPos);</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>}</div>
+</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
+<div class="foldopen" id="foldopen00064" data-start="{" data-end="}">
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="classAMiniOwlBot.html#ac8630c4bb4959e3eff60316a86dc9bed">   64</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classAMiniOwlBot.html#ac8630c4bb4959e3eff60316a86dc9bed">AMiniOwlBot::UpdateText</a>(<span class="keyword">const</span> FString&amp; text)</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>{</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <a class="code hl_function" href="classAMiniOwlBot.html#abad6a4c3197a6e6529ed45802c5b9f66">ServerRPC_UpdateText</a>(text);</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>}</div>
+</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="keywordtype">void</span> AMiniOwlBot::ServerRPC_UpdateText_Implementation(<span class="keyword">const</span> FString&amp; text)</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>{</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    <a class="code hl_function" href="classAMiniOwlBot.html#a002cb80c1f8dea6bf910c7e306c2bb7e">MulticastRPC_UpdateText</a>(text);</div>
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>}</div>
-</div>
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="comment">// 이 함수 현재 이상함</span></div>
-<div class="foldopen" id="foldopen00075" data-start="{" data-end="}">
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno"><a class="line" href="classAMiniOwlBot.html#a45361e7f0567f286fa82d5585f4f8d5f">   75</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="classAMiniOwlBot.html#a45361e7f0567f286fa82d5585f4f8d5f">AMiniOwlBot::CheckAngleOutofCamera</a>()</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>{</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    <span class="comment">// target의 카메라 방향 벡터</span></div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    FVector2D targetCameraDir(<a class="code hl_variable" href="classAMiniOwlBot.html#a9095565ae3f201617867bd803eadca21">currTarget</a>-&gt;GetCameraForwardVector().X, <a class="code hl_variable" href="classAMiniOwlBot.html#a9095565ae3f201617867bd803eadca21">currTarget</a>-&gt;GetCameraForwardVector().Y);</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    targetCameraDir.Normalize();</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    </div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    <span class="comment">// 자신의 방향벡터</span></div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    FVector2D botDir(GetActorForwardVector().<a class="code hl_enumvalue" href="UParabolaComponent_8h.html#a160b3db1967ea71bee24abc7f977594fa02129bb861061d1a052c592e2dc6b383">X</a>, GetActorForwardVector().<a class="code hl_enumvalue" href="UParabolaComponent_8h.html#a160b3db1967ea71bee24abc7f977594fa57cec4137b614c87cb4e24a3d003a3e0">Y</a>);</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    botDir.Normalize();</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    </div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    <span class="comment">// 각도 구하기</span></div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    <span class="keywordtype">float</span> dotP = FVector2D::DotProduct(targetCameraDir, botDir);</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;dotP angle : %f, %f&quot;</span>), FMath::RadiansToDegrees(FMath::Acos(dotP)), <a class="code hl_variable" href="classAMiniOwlBot.html#a2495dcfed3c279a1da7300a1e20cd125">angle</a>);</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    <span class="keywordflow">return</span> FMath::RadiansToDegrees(FMath::Acos(dotP)) &lt;= <a class="code hl_variable" href="classAMiniOwlBot.html#a2495dcfed3c279a1da7300a1e20cd125">angle</a>;</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>}</div>
-</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="keywordtype">void</span> AMiniOwlBot::MulticastRPC_UpdateText_Implementation(<span class="keyword">const</span> FString&amp; text)</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>{</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    <a class="code hl_variable" href="classAMiniOwlBot.html#a8edeac2c869f63923a266ccc07dad116">speechWidget</a>-&gt;SetVisibility(<span class="keyword">true</span>);</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    Cast&lt;UTutorSpeechWidget&gt;(<a class="code hl_variable" href="classAMiniOwlBot.html#a8edeac2c869f63923a266ccc07dad116">speechWidget</a>-&gt;GetWidget())-&gt;SetInputText(text);</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    </div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    FTimerHandle TimerHandle;</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    GetWorld()-&gt;GetTimerManager().SetTimer(TimerHandle, [<span class="keyword">this</span>]()</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    {</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        <a class="code hl_variable" href="classAMiniOwlBot.html#a8edeac2c869f63923a266ccc07dad116">speechWidget</a>-&gt;SetVisibility(<span class="keyword">false</span>);</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    }, 5.f, <span class="keyword">false</span>);</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>}</div>
 <div class="ttc" id="aAPlayerActor_8h_html"><div class="ttname"><a href="APlayerActor_8h.html">APlayerActor.h</a></div><div class="ttdoc">Declares the player-controlled character actor.</div></div>
 <div class="ttc" id="aGameLogging_8h_html"><div class="ttname"><a href="GameLogging_8h.html">GameLogging.h</a></div><div class="ttdoc">YiSan 전반에서 사용하는 공용 인터페이스를 선언합니다.</div></div>
-<div class="ttc" id="aGameLogging_8h_html_a9998c8beb11a6bad6ffada2e701fc0cf"><div class="ttname"><a href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a></div><div class="ttdeci">#define PRINTLOG(fmt,...)</div><div class="ttdef"><b>Definition</b> <a href="GameLogging_8h_source.html#l00030">GameLogging.h:30</a></div></div>
 <div class="ttc" id="aMiniOwlBot_8h_html"><div class="ttname"><a href="MiniOwlBot_8h.html">MiniOwlBot.h</a></div></div>
-<div class="ttc" id="aUParabolaComponent_8h_html_a160b3db1967ea71bee24abc7f977594fa02129bb861061d1a052c592e2dc6b383"><div class="ttname"><a href="UParabolaComponent_8h.html#a160b3db1967ea71bee24abc7f977594fa02129bb861061d1a052c592e2dc6b383">EForwardAxis::X</a></div><div class="ttdeci">@ X</div></div>
-<div class="ttc" id="aUParabolaComponent_8h_html_a160b3db1967ea71bee24abc7f977594fa57cec4137b614c87cb4e24a3d003a3e0"><div class="ttname"><a href="UParabolaComponent_8h.html#a160b3db1967ea71bee24abc7f977594fa57cec4137b614c87cb4e24a3d003a3e0">EForwardAxis::Y</a></div><div class="ttdeci">@ Y</div></div>
-<div class="ttc" id="aclassAMiniOwlBot_html_a1318edb9cfe98e1e65d2e64e0707297b"><div class="ttname"><a href="classAMiniOwlBot.html#a1318edb9cfe98e1e65d2e64e0707297b">AMiniOwlBot::targets</a></div><div class="ttdeci">TArray&lt; class AActor * &gt; targets</div><div class="ttdef"><b>Definition</b> <a href="MiniOwlBot_8h_source.html#l00037">MiniOwlBot.h:37</a></div></div>
-<div class="ttc" id="aclassAMiniOwlBot_html_a172e9e0ce5d226cbba128b521e9b6784"><div class="ttname"><a href="classAMiniOwlBot.html#a172e9e0ce5d226cbba128b521e9b6784">AMiniOwlBot::AMiniOwlBot</a></div><div class="ttdeci">AMiniOwlBot()</div><div class="ttdef"><b>Definition</b> <a href="MiniOwlBot_8cpp_source.html#l00013">MiniOwlBot.cpp:13</a></div></div>
-<div class="ttc" id="aclassAMiniOwlBot_html_a1a4130de33ea46dacddf2d58724efe1d"><div class="ttname"><a href="classAMiniOwlBot.html#a1a4130de33ea46dacddf2d58724efe1d">AMiniOwlBot::time</a></div><div class="ttdeci">float time</div><div class="ttdef"><b>Definition</b> <a href="MiniOwlBot_8h_source.html#l00033">MiniOwlBot.h:33</a></div></div>
-<div class="ttc" id="aclassAMiniOwlBot_html_a2495dcfed3c279a1da7300a1e20cd125"><div class="ttname"><a href="classAMiniOwlBot.html#a2495dcfed3c279a1da7300a1e20cd125">AMiniOwlBot::angle</a></div><div class="ttdeci">float angle</div><div class="ttdef"><b>Definition</b> <a href="MiniOwlBot_8h_source.html#l00027">MiniOwlBot.h:27</a></div></div>
-<div class="ttc" id="aclassAMiniOwlBot_html_a2590eb8981c00cb5deb300603fdb3c8c"><div class="ttname"><a href="classAMiniOwlBot.html#a2590eb8981c00cb5deb300603fdb3c8c">AMiniOwlBot::amplitude</a></div><div class="ttdeci">float amplitude</div><div class="ttdef"><b>Definition</b> <a href="MiniOwlBot_8h_source.html#l00030">MiniOwlBot.h:30</a></div></div>
-<div class="ttc" id="aclassAMiniOwlBot_html_a3990500545614cf37a042f0a5b0de1c5"><div class="ttname"><a href="classAMiniOwlBot.html#a3990500545614cf37a042f0a5b0de1c5">AMiniOwlBot::Tick</a></div><div class="ttdeci">virtual void Tick(float DeltaTime) override</div><div class="ttdef"><b>Definition</b> <a href="MiniOwlBot_8cpp_source.html#l00035">MiniOwlBot.cpp:35</a></div></div>
-<div class="ttc" id="aclassAMiniOwlBot_html_a45361e7f0567f286fa82d5585f4f8d5f"><div class="ttname"><a href="classAMiniOwlBot.html#a45361e7f0567f286fa82d5585f4f8d5f">AMiniOwlBot::CheckAngleOutofCamera</a></div><div class="ttdeci">bool CheckAngleOutofCamera()</div><div class="ttdef"><b>Definition</b> <a href="MiniOwlBot_8cpp_source.html#l00075">MiniOwlBot.cpp:75</a></div></div>
-<div class="ttc" id="aclassAMiniOwlBot_html_a55e146658ad5a2341c4907558bbd3931"><div class="ttname"><a href="classAMiniOwlBot.html#a55e146658ad5a2341c4907558bbd3931">AMiniOwlBot::UpdateLocation</a></div><div class="ttdeci">void UpdateLocation()</div><div class="ttdef"><b>Definition</b> <a href="MiniOwlBot_8cpp_source.html#l00055">MiniOwlBot.cpp:55</a></div></div>
-<div class="ttc" id="aclassAMiniOwlBot_html_a719b31622af4fa0461822a2f9cf0d5d1"><div class="ttname"><a href="classAMiniOwlBot.html#a719b31622af4fa0461822a2f9cf0d5d1">AMiniOwlBot::radius</a></div><div class="ttdeci">float radius</div><div class="ttdef"><b>Definition</b> <a href="MiniOwlBot_8h_source.html#l00026">MiniOwlBot.h:26</a></div></div>
-<div class="ttc" id="aclassAMiniOwlBot_html_a7dbeeec44f5ba14d4c47f31e05049d6b"><div class="ttname"><a href="classAMiniOwlBot.html#a7dbeeec44f5ba14d4c47f31e05049d6b">AMiniOwlBot::baseHeight</a></div><div class="ttdeci">float baseHeight</div><div class="ttdef"><b>Definition</b> <a href="MiniOwlBot_8h_source.html#l00028">MiniOwlBot.h:28</a></div></div>
-<div class="ttc" id="aclassAMiniOwlBot_html_a9095565ae3f201617867bd803eadca21"><div class="ttname"><a href="classAMiniOwlBot.html#a9095565ae3f201617867bd803eadca21">AMiniOwlBot::currTarget</a></div><div class="ttdeci">TObjectPtr&lt; class APlayerActor &gt; currTarget</div><div class="ttdef"><b>Definition</b> <a href="MiniOwlBot_8h_source.html#l00040">MiniOwlBot.h:40</a></div></div>
-<div class="ttc" id="aclassAMiniOwlBot_html_a9b486eb9991ecc1692f49d4ca616665a"><div class="ttname"><a href="classAMiniOwlBot.html#a9b486eb9991ecc1692f49d4ca616665a">AMiniOwlBot::frequency</a></div><div class="ttdeci">float frequency</div><div class="ttdef"><b>Definition</b> <a href="MiniOwlBot_8h_source.html#l00031">MiniOwlBot.h:31</a></div></div>
-<div class="ttc" id="aclassAMiniOwlBot_html_ab77202b783c32536d0f5db7b71bc9277"><div class="ttname"><a href="classAMiniOwlBot.html#ab77202b783c32536d0f5db7b71bc9277">AMiniOwlBot::BeginPlay</a></div><div class="ttdeci">virtual void BeginPlay() override</div><div class="ttdef"><b>Definition</b> <a href="MiniOwlBot_8cpp_source.html#l00020">MiniOwlBot.cpp:20</a></div></div>
-<div class="ttc" id="aclassAMiniOwlBot_html_af2d67f219f704d3cf351f72027fd121b"><div class="ttname"><a href="classAMiniOwlBot.html#af2d67f219f704d3cf351f72027fd121b">AMiniOwlBot::targetHeight</a></div><div class="ttdeci">float targetHeight</div><div class="ttdef"><b>Definition</b> <a href="MiniOwlBot_8h_source.html#l00029">MiniOwlBot.h:29</a></div></div>
-<div class="ttc" id="aclassAMiniOwlBot_html_af5db3fcbe078b8978a18e5f6e7b5b77a"><div class="ttname"><a href="classAMiniOwlBot.html#af5db3fcbe078b8978a18e5f6e7b5b77a">AMiniOwlBot::UpdateRotation</a></div><div class="ttdeci">void UpdateRotation()</div><div class="ttdef"><b>Definition</b> <a href="MiniOwlBot_8cpp_source.html#l00046">MiniOwlBot.cpp:46</a></div></div>
+<div class="ttc" id="aTutorSpeechWidget_8h_html"><div class="ttname"><a href="TutorSpeechWidget_8h.html">TutorSpeechWidget.h</a></div></div>
+<div class="ttc" id="aclassAMiniOwlBot_html_a002cb80c1f8dea6bf910c7e306c2bb7e"><div class="ttname"><a href="classAMiniOwlBot.html#a002cb80c1f8dea6bf910c7e306c2bb7e">AMiniOwlBot::MulticastRPC_UpdateText</a></div><div class="ttdeci">void MulticastRPC_UpdateText(const FString &amp;text)</div></div>
+<div class="ttc" id="aclassAMiniOwlBot_html_a0dfc6efb482135e70641dfba5a86b677"><div class="ttname"><a href="classAMiniOwlBot.html#a0dfc6efb482135e70641dfba5a86b677">AMiniOwlBot::rootSceneComp</a></div><div class="ttdeci">TObjectPtr&lt; class USceneComponent &gt; rootSceneComp</div><div class="ttdef"><b>Definition</b> <a href="MiniOwlBot_8h_source.html#l00025">MiniOwlBot.h:25</a></div></div>
+<div class="ttc" id="aclassAMiniOwlBot_html_a172e9e0ce5d226cbba128b521e9b6784"><div class="ttname"><a href="classAMiniOwlBot.html#a172e9e0ce5d226cbba128b521e9b6784">AMiniOwlBot::AMiniOwlBot</a></div><div class="ttdeci">AMiniOwlBot()</div><div class="ttdef"><b>Definition</b> <a href="MiniOwlBot_8cpp_source.html#l00015">MiniOwlBot.cpp:15</a></div></div>
+<div class="ttc" id="aclassAMiniOwlBot_html_a1a4130de33ea46dacddf2d58724efe1d"><div class="ttname"><a href="classAMiniOwlBot.html#a1a4130de33ea46dacddf2d58724efe1d">AMiniOwlBot::time</a></div><div class="ttdeci">float time</div><div class="ttdef"><b>Definition</b> <a href="MiniOwlBot_8h_source.html#l00050">MiniOwlBot.h:50</a></div></div>
+<div class="ttc" id="aclassAMiniOwlBot_html_a2590eb8981c00cb5deb300603fdb3c8c"><div class="ttname"><a href="classAMiniOwlBot.html#a2590eb8981c00cb5deb300603fdb3c8c">AMiniOwlBot::amplitude</a></div><div class="ttdeci">float amplitude</div><div class="ttdef"><b>Definition</b> <a href="MiniOwlBot_8h_source.html#l00047">MiniOwlBot.h:47</a></div></div>
+<div class="ttc" id="aclassAMiniOwlBot_html_a3f83f1f6dbe4f13b0a80d42f9287bdd1"><div class="ttname"><a href="classAMiniOwlBot.html#a3f83f1f6dbe4f13b0a80d42f9287bdd1">AMiniOwlBot::Tick</a></div><div class="ttdeci">virtual void Tick(float DeltaSeconds) override</div><div class="ttdef"><b>Definition</b> <a href="MiniOwlBot_8cpp_source.html#l00048">MiniOwlBot.cpp:48</a></div></div>
+<div class="ttc" id="aclassAMiniOwlBot_html_a558e6e749720a2010a2c8d8b774cf4d2"><div class="ttname"><a href="classAMiniOwlBot.html#a558e6e749720a2010a2c8d8b774cf4d2">AMiniOwlBot::meshComp</a></div><div class="ttdeci">TObjectPtr&lt; class UStaticMeshComponent &gt; meshComp</div><div class="ttdef"><b>Definition</b> <a href="MiniOwlBot_8h_source.html#l00031">MiniOwlBot.h:31</a></div></div>
+<div class="ttc" id="aclassAMiniOwlBot_html_a8edeac2c869f63923a266ccc07dad116"><div class="ttname"><a href="classAMiniOwlBot.html#a8edeac2c869f63923a266ccc07dad116">AMiniOwlBot::speechWidget</a></div><div class="ttdeci">TObjectPtr&lt; class UWidgetComponent &gt; speechWidget</div><div class="ttdef"><b>Definition</b> <a href="MiniOwlBot_8h_source.html#l00028">MiniOwlBot.h:28</a></div></div>
+<div class="ttc" id="aclassAMiniOwlBot_html_a9b486eb9991ecc1692f49d4ca616665a"><div class="ttname"><a href="classAMiniOwlBot.html#a9b486eb9991ecc1692f49d4ca616665a">AMiniOwlBot::frequency</a></div><div class="ttdeci">float frequency</div><div class="ttdef"><b>Definition</b> <a href="MiniOwlBot_8h_source.html#l00048">MiniOwlBot.h:48</a></div></div>
+<div class="ttc" id="aclassAMiniOwlBot_html_ab77202b783c32536d0f5db7b71bc9277"><div class="ttname"><a href="classAMiniOwlBot.html#ab77202b783c32536d0f5db7b71bc9277">AMiniOwlBot::BeginPlay</a></div><div class="ttdeci">virtual void BeginPlay() override</div><div class="ttdef"><b>Definition</b> <a href="MiniOwlBot_8cpp_source.html#l00042">MiniOwlBot.cpp:42</a></div></div>
+<div class="ttc" id="aclassAMiniOwlBot_html_abad6a4c3197a6e6529ed45802c5b9f66"><div class="ttname"><a href="classAMiniOwlBot.html#abad6a4c3197a6e6529ed45802c5b9f66">AMiniOwlBot::ServerRPC_UpdateText</a></div><div class="ttdeci">void ServerRPC_UpdateText(const FString &amp;text)</div></div>
+<div class="ttc" id="aclassAMiniOwlBot_html_ac8630c4bb4959e3eff60316a86dc9bed"><div class="ttname"><a href="classAMiniOwlBot.html#ac8630c4bb4959e3eff60316a86dc9bed">AMiniOwlBot::UpdateText</a></div><div class="ttdeci">void UpdateText(const FString &amp;text)</div><div class="ttdef"><b>Definition</b> <a href="MiniOwlBot_8cpp_source.html#l00064">MiniOwlBot.cpp:64</a></div></div>
+<div class="ttc" id="aclassAMiniOwlBot_html_af177a0956643122cd021b0d2d481f17b"><div class="ttname"><a href="classAMiniOwlBot.html#af177a0956643122cd021b0d2d481f17b">AMiniOwlBot::UpdateLocation</a></div><div class="ttdeci">void UpdateLocation(float DeltaTime)</div><div class="ttdef"><b>Definition</b> <a href="MiniOwlBot_8cpp_source.html#l00053">MiniOwlBot.cpp:53</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_2268d321c547a1269f0f0801cfba1f77.html">Prop</a></li><li class="navelem"><a class="el" href="dir_1d7bfdd86517d83f393675eb912eaf09.html">Private</a></li><li class="navelem"><a class="el" href="MiniOwlBot_8cpp.html">MiniOwlBot.cpp</a></li>
-    <li class="footer">생성시간 : 화 12월 30 2025 08:58:44, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 수 12월 31 2025 03:44:30, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

@@ -1,5 +1,15 @@
 var NAVTREEINDEX19 =
 {
+"structFPhonemeData.html#a979ef016c1c40e3519043ec8867c6326":[2,0,80,0],
+"structFPlayerInfo.html":[2,0,81],
+"structFPlayerInfo.html#a514eadd593069c17102b272eaa2c4463":[2,0,81,4],
+"structFPlayerInfo.html#a6566751cd4dd659cf472e9493dc9afb9":[2,0,81,5],
+"structFPlayerInfo.html#a935464395dc23efef30a9cb0114efd03":[2,0,81,6],
+"structFPlayerInfo.html#ab6244d3c543075c81852257fe6ae3fec":[2,0,81,1],
+"structFPlayerInfo.html#abaedebffe371f93a76a0f68548a23caf":[2,0,81,2],
+"structFPlayerInfo.html#ad3ab5f43b45c7199b34b170a1efe1fac":[2,0,81,3],
+"structFPlayerInfo.html#ae7419638ded4d95fd57101108dcf8e50":[2,0,81,0],
+"structFQuestListenInfo.html":[2,0,82],
 "structFQuestListenInfo.html#a05c5c698f54df45fede343a6a08425db":[2,0,82,6],
 "structFQuestListenInfo.html#a30660f2c732b8ffd87d7e030fcd8dd11":[2,0,82,0],
 "structFQuestListenInfo.html#a3dfd7efad985e5308c7e3b8d2d8d3ee4":[2,0,82,3],
@@ -239,15 +249,5 @@ var NAVTREEINDEX19 =
 "structFScenarioResult.html#a0ad89ab325e737aa1d57b42b247b9ca9":[2,0,119,3],
 "structFScenarioResult.html#a1ad8b060a27d5d18e9b06b0fdb48c640":[2,0,119,1],
 "structFScenarioResult.html#a2c1306814ec692275e337f065b0cf932":[2,0,119,0],
-"structFScenarioResult.html#a4cd8f8c790246d8aa1771bc2afe5e284":[2,0,119,2],
-"structFScenarioResult.html#a85380ca5516e4d591017b59af2892127":[2,0,119,5],
-"structFScenarioResult.html#ac1f6da78793403be447b321268206667":[2,0,119,4],
-"structFScenarioTargetData.html":[2,0,120],
-"structFScenarioTargetData.html#a5532030a3a34b03b3c3aaa2c8e2c0537":[2,0,120,1],
-"structFScenarioTargetData.html#a6527a75fdea3e93009524542d759862b":[2,0,120,0],
-"structFSequenceCommand.html":[2,0,121],
-"structFSequenceCommand.html#a6180c56cf5a536855f4c4d586a91cbe1":[2,0,121,0],
-"structFSequenceCommand.html#aa93b55656b1db478843925f298a6ec25":[2,0,121,1],
-"structFSequenceCommand.html#ad318dca78e6cdc2fb3a5616df5e9eb64":[2,0,121,2],
-"structFServerConfig.html":[2,0,122]
+"structFScenarioResult.html#a4cd8f8c790246d8aa1771bc2afe5e284":[2,0,119,2]
 };

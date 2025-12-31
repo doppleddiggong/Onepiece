@@ -244,6 +244,7 @@ var annotated_dup =
     [ "UTextureButton", "classUTextureButton.html", "classUTextureButton" ],
     [ "UToastWidget", "classUToastWidget.html", "classUToastWidget" ],
     [ "UTutorMessage", "classUTutorMessage.html", "classUTutorMessage" ],
+    [ "UTutorSpeechWidget", "classUTutorSpeechWidget.html", "classUTutorSpeechWidget" ],
     [ "UTweenAnimInstance", "classUTweenAnimInstance.html", "classUTweenAnimInstance" ],
     [ "UVFXDataAsset", "classUVFXDataAsset.html", "classUVFXDataAsset" ],
     [ "UVoiceCacheManager", "classUVoiceCacheManager.html", "classUVoiceCacheManager" ],

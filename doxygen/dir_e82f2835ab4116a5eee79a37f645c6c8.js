@@ -11,6 +11,7 @@ var dir_e82f2835ab4116a5eee79a37f645c6c8 =
     [ "QuestOrderWidget.h", "QuestOrderWidget_8h.html", "QuestOrderWidget_8h" ],
     [ "SessionInfoWidget.h", "SessionInfoWidget_8h.html", "SessionInfoWidget_8h" ],
     [ "StartWidget.h", "StartWidget_8h.html", "StartWidget_8h" ],
+    [ "TutorSpeechWidget.h", "TutorSpeechWidget_8h.html", "TutorSpeechWidget_8h" ],
     [ "UAnswerItem.h", "UAnswerItem_8h.html", "UAnswerItem_8h" ],
     [ "UAutoDespawnItem.h", "UAutoDespawnItem_8h.html", "UAutoDespawnItem_8h" ],
     [ "UDailyKioskWidget.h", "UDailyKioskWidget_8h.html", "UDailyKioskWidget_8h" ],

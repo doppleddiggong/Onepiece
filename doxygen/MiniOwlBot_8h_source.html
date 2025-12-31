@@ -130,34 +130,43 @@ $(document).ready(function(){initNavTree('MiniOwlBot_8h_source.html',''); initRe
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> BeginPlay() <span class="keyword">override</span>;</div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> Tick(<span class="keywordtype">float</span> DeltaTime) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> Tick(<span class="keywordtype">float</span> DeltaSeconds) <span class="keyword">override</span>;</div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    </div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="comment">// owlbot position values</span></div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="classAMiniOwlBot.html#af2555832912d0cbbc19837cbeeeacf66">   25</a></span>    FVector targetLocation = FVector(150, 50, 50);</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="classAMiniOwlBot.html#a719b31622af4fa0461822a2f9cf0d5d1">   26</a></span>    <span class="keywordtype">float</span> radius = 200.f;</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="classAMiniOwlBot.html#a2495dcfed3c279a1da7300a1e20cd125">   27</a></span>    <span class="keywordtype">float</span> angle = 25.f;</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="classAMiniOwlBot.html#a7dbeeec44f5ba14d4c47f31e05049d6b">   28</a></span>    <span class="keywordtype">float</span> <a class="code hl_variable" href="classAMiniOwlBot.html#a7dbeeec44f5ba14d4c47f31e05049d6b">baseHeight</a>;</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="classAMiniOwlBot.html#af2d67f219f704d3cf351f72027fd121b">   29</a></span>    <span class="keywordtype">float</span> targetHeight = 50.f;</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="classAMiniOwlBot.html#a2590eb8981c00cb5deb300603fdb3c8c">   30</a></span>    <span class="keywordtype">float</span> amplitude = 10.f;</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="classAMiniOwlBot.html#a9b486eb9991ecc1692f49d4ca616665a">   31</a></span>    <span class="keywordtype">float</span> frequency = 0.25f;</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="classAMiniOwlBot.html#ad0b31808cb772e265b2844ba1f6aae7b">   32</a></span>    <span class="keywordtype">float</span> speed = 20.f;</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="classAMiniOwlBot.html#a1a4130de33ea46dacddf2d58724efe1d">   33</a></span>    <span class="keywordtype">float</span> time = 0.f;</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    </div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="comment">// target array</span></div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    UPROPERTY()</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="classAMiniOwlBot.html#a1318edb9cfe98e1e65d2e64e0707297b">   37</a></span>    TArray&lt;class AActor*&gt; targets;</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    </div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    UPROPERTY()</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="classAMiniOwlBot.html#a9095565ae3f201617867bd803eadca21">   40</a></span>    TObjectPtr&lt;class <a class="code hl_class" href="classAPlayerActor.html">APlayerActor</a>&gt; currTarget;</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    </div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="keywordtype">void</span> UpdateRotation();</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="keywordtype">void</span> UpdateLocation();</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="keywordtype">bool</span> CheckAngleOutofCamera();</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>};</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    UPROPERTY()</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="classAMiniOwlBot.html#a0dfc6efb482135e70641dfba5a86b677">   25</a></span>    TObjectPtr&lt;class USceneComponent&gt; rootSceneComp;</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=&quot;Components|Widget&quot;)</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="classAMiniOwlBot.html#a8edeac2c869f63923a266ccc07dad116">   28</a></span>    TObjectPtr&lt;class UWidgetComponent&gt; speechWidget;</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=&quot;Components|Mesh&quot;)</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="classAMiniOwlBot.html#a558e6e749720a2010a2c8d8b774cf4d2">   31</a></span>    TObjectPtr&lt;class UStaticMeshComponent&gt; meshComp;</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>public:</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="keywordtype">void</span> UpdateLocation(<span class="keywordtype">float</span> DeltaTime);</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="keywordtype">void</span> UpdateText(const FString&amp; text);</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>private:</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    UFUNCTION(Server, Reliable)</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="classAMiniOwlBot.html#abad6a4c3197a6e6529ed45802c5b9f66">   39</a></span>    <span class="keywordtype">void</span> ServerRPC_UpdateText(const FString&amp; text);</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    UFUNCTION(NetMulticast, Reliable)</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="classAMiniOwlBot.html#a002cb80c1f8dea6bf910c7e306c2bb7e">   41</a></span>    <span class="keywordtype">void</span> MulticastRPC_UpdateText(const FString&amp; text);</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>private:</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="comment">// owlbot position values</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="classAMiniOwlBot.html#a719b31622af4fa0461822a2f9cf0d5d1">   45</a></span>    <span class="keywordtype">float</span> radius = 280.f;</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="classAMiniOwlBot.html#a2495dcfed3c279a1da7300a1e20cd125">   46</a></span>    <span class="keywordtype">float</span> angle = 28.f;</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="classAMiniOwlBot.html#a2590eb8981c00cb5deb300603fdb3c8c">   47</a></span>    <span class="keywordtype">float</span> amplitude = 10.f;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="classAMiniOwlBot.html#a9b486eb9991ecc1692f49d4ca616665a">   48</a></span>    <span class="keywordtype">float</span> frequency = 0.4f;</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="classAMiniOwlBot.html#ad0b31808cb772e265b2844ba1f6aae7b">   49</a></span>    <span class="keywordtype">float</span> speed = 20.f;</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="classAMiniOwlBot.html#a1a4130de33ea46dacddf2d58724efe1d">   50</a></span>    <span class="keywordtype">float</span> time = 0.f;</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="comment">// parent</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    UPROPERTY()</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="classAMiniOwlBot.html#ac7382ffae7954d2008fc3af13b5d65c2">   54</a></span>    TObjectPtr&lt;class <a class="code hl_class" href="classAPlayerActor.html">APlayerActor</a>&gt; parentObj;   </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>};</div>
 </div>
 <div class="ttc" id="aclassAMiniOwlBot_html"><div class="ttname"><a href="classAMiniOwlBot.html">AMiniOwlBot</a></div><div class="ttdef"><b>Definition</b> <a href="MiniOwlBot_8h_source.html#l00010">MiniOwlBot.h:11</a></div></div>
-<div class="ttc" id="aclassAMiniOwlBot_html_a7dbeeec44f5ba14d4c47f31e05049d6b"><div class="ttname"><a href="classAMiniOwlBot.html#a7dbeeec44f5ba14d4c47f31e05049d6b">AMiniOwlBot::baseHeight</a></div><div class="ttdeci">float baseHeight</div><div class="ttdef"><b>Definition</b> <a href="MiniOwlBot_8h_source.html#l00028">MiniOwlBot.h:28</a></div></div>
 <div class="ttc" id="aclassAPlayerActor_html"><div class="ttname"><a href="classAPlayerActor.html">APlayerActor</a></div><div class="ttdoc">Main character driven directly by the player.</div><div class="ttdef"><b>Definition</b> <a href="APlayerActor_8h_source.html#l00024">APlayerActor.h:25</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
@@ -165,7 +174,7 @@ $(document).ready(function(){initNavTree('MiniOwlBot_8h_source.html',''); initRe
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_2268d321c547a1269f0f0801cfba1f77.html">Prop</a></li><li class="navelem"><a class="el" href="dir_13cb8c28526713b34d584b8e10191ceb.html">Public</a></li><li class="navelem"><a class="el" href="MiniOwlBot_8h.html">MiniOwlBot.h</a></li>
-    <li class="footer">생성시간 : 화 12월 30 2025 08:58:44, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 수 12월 31 2025 03:44:30, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

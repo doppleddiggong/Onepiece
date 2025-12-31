@@ -1,11 +1,15 @@
 var NAVTREEINDEX5 =
 {
-"UWordWidget_8h.html":[3,0,0,2,6,1,36],
-"UWordWidget_8h_source.html":[3,0,0,2,6,1,36],
-"WriteBoard_8cpp.html":[3,0,0,2,6,0,37],
-"WriteBoard_8cpp_source.html":[3,0,0,2,6,0,37],
-"WriteBoard_8h.html":[3,0,0,2,6,1,37],
-"WriteBoard_8h_source.html":[3,0,0,2,6,1,37],
+"UWordItem_8h.html":[3,0,0,2,6,1,36],
+"UWordItem_8h_source.html":[3,0,0,2,6,1,36],
+"UWordWidget_8cpp.html":[3,0,0,2,6,0,37],
+"UWordWidget_8cpp_source.html":[3,0,0,2,6,0,37],
+"UWordWidget_8h.html":[3,0,0,2,6,1,37],
+"UWordWidget_8h_source.html":[3,0,0,2,6,1,37],
+"WriteBoard_8cpp.html":[3,0,0,2,6,0,38],
+"WriteBoard_8cpp_source.html":[3,0,0,2,6,0,38],
+"WriteBoard_8h.html":[3,0,0,2,6,1,38],
+"WriteBoard_8h_source.html":[3,0,0,2,6,1,38],
 "annotated.html":[2,0],
 "classABroadcastTrigger.html":[2,0,0],
 "classABroadcastTrigger.html#a0676f0d94fa1a4067f645105a804ca18":[2,0,0,9],
@@ -245,9 +249,5 @@ var NAVTREEINDEX5 =
 "classAGate.html#a9eaddebb5c5dd0ad38ef60d938813e46":[2,0,13,13],
 "classAGate.html#ab83a2e573215c998455f7edf71aa5807":[2,0,13,2],
 "classAGate.html#abcc031c1aefc68dc90ffbdb3b2d246e4":[2,0,13,6],
-"classAGate.html#ad25807f4959f5d5ad657205a62f1a673":[2,0,13,5],
-"classAGate.html#ad2aaa4efd6f4604237d4a6d8532fab23":[2,0,13,15],
-"classAGate.html#af3ac65d00267956fd71ef4c5260fc030":[2,0,13,12],
-"classAHolder.html":[2,0,14],
-"classAHolder.html#a005a36c0fae7d506db1ebbcb26405162":[2,0,14,5]
+"classAGate.html#ad25807f4959f5d5ad657205a62f1a673":[2,0,13,5]
 };

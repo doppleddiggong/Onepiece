@@ -24,8 +24,8 @@ var searchData=
   ['multicast_5fsetcompassvisibilitybytag_21',['Multicast_SetCompassVisibilityByTag',['../classALingoGameState.html#a187eb1e4402343fb0feeb815509ba037',1,'ALingoGameState']]],
   ['multicast_5fshowlistenquestpopup_22',['Multicast_ShowListenQuestPopup',['../classALingoGameState.html#a6c5c93188b76ad8d9271c692c739b03d',1,'ALingoGameState']]],
   ['multicast_5fshowreadquestpopup_23',['Multicast_ShowReadQuestPopup',['../classALingoGameState.html#ae04b20ae5d76608071712d86c3907819',1,'ALingoGameState']]],
-  ['multicast_5fshowresultpopup_24',['multicast_showresultpopup',['../classAWeightSwitch.html#a457a1ce95accbe50486c8ff52c28fc82',1,'AWeightSwitch::Multicast_ShowResultPopup()'],['../classALuggageHolder.html#a5232191a346c7392871fc1fe06a30def',1,'ALuggageHolder::Multicast_ShowResultPopup()'],['../classAFoodHolder.html#a555cc5bd6fbe893c6737eff179e263d6',1,'AFoodHolder::Multicast_ShowResultPopup()']]],
-  ['multicast_5fshowwrongpopup_25',['multicast_showwrongpopup',['../classALuggageHolder.html#a33a0d12b7420dcd881b5b03a7cf2235c',1,'ALuggageHolder::Multicast_ShowWrongPopup()'],['../classAFoodHolder.html#a61a099c315b83eb124af26ea9a44fcf6',1,'AFoodHolder::Multicast_ShowWrongPopup()'],['../classAWeightSwitch.html#a8031c9cb76497d9fbbc73aa2402e2b58',1,'AWeightSwitch::Multicast_ShowWrongPopup()']]],
+  ['multicast_5fshowresultpopup_24',['multicast_showresultpopup',['../classAWeightSwitch.html#a457a1ce95accbe50486c8ff52c28fc82',1,'AWeightSwitch::Multicast_ShowResultPopup()'],['../classALuggageHolder.html#a5232191a346c7392871fc1fe06a30def',1,'ALuggageHolder::Multicast_ShowResultPopup()'],['../classAFoodHolder.html#a555cc5bd6fbe893c6737eff179e263d6',1,'AFoodHolder::Multicast_ShowResultPopup(int32 CorrectAnswerIndex)']]],
+  ['multicast_5fshowwrongpopup_25',['multicast_showwrongpopup',['../classAFoodHolder.html#a61a099c315b83eb124af26ea9a44fcf6',1,'AFoodHolder::Multicast_ShowWrongPopup()'],['../classALuggageHolder.html#a33a0d12b7420dcd881b5b03a7cf2235c',1,'ALuggageHolder::Multicast_ShowWrongPopup()'],['../classAWeightSwitch.html#a8031c9cb76497d9fbbc73aa2402e2b58',1,'AWeightSwitch::Multicast_ShowWrongPopup()']]],
   ['multicast_5fupdatequesttype_26',['Multicast_UpdateQuestType',['../classALingoGameState.html#a525363eb5907c6beb87fcf7f7e7db467',1,'ALingoGameState']]],
   ['multicastrpc_5fchangeconveyormovement_27',['MulticastRPC_ChangeConveyorMovement',['../classAConveyorBelt.html#a4d2470f9eb28fee974899fb5d6749b4f',1,'AConveyorBelt']]],
   ['multicastrpc_5fdojump_28',['MulticastRPC_DoJump',['../classAPlayerActor.html#ab25b6b5741b8ac1c5f6e5e3f7c0dc179',1,'APlayerActor']]],
@@ -33,5 +33,6 @@ var searchData=
   ['multicastrpc_5fdorun_30',['MulticastRPC_DoRun',['../classAPlayerActor.html#a3fc48077455e9035eb06979281884337',1,'APlayerActor']]],
   ['multicastrpc_5finitconveyorbelt_31',['MulticastRPC_InitConveyorBelt',['../classAConveyorBelt.html#a0b0228e98bfd5a39fa8b99918c332e0a',1,'AConveyorBelt']]],
   ['multicastrpc_5fsendchat_32',['MulticastRPC_SendChat',['../classALingoGameState.html#a460fdfc16bfff3925a7e78e43f314e98',1,'ALingoGameState']]],
-  ['multicastrpc_5fstopmove_33',['MulticastRPC_StopMove',['../classAPlayerActor.html#ae9fa9da786c134b11e0fb9bdb1cf56d0',1,'APlayerActor']]]
+  ['multicastrpc_5fstopmove_33',['MulticastRPC_StopMove',['../classAPlayerActor.html#ae9fa9da786c134b11e0fb9bdb1cf56d0',1,'APlayerActor']]],
+  ['multicastrpc_5fupdatetext_34',['MulticastRPC_UpdateText',['../classAMiniOwlBot.html#a002cb80c1f8dea6bf910c7e306c2bb7e',1,'AMiniOwlBot']]]
 ];

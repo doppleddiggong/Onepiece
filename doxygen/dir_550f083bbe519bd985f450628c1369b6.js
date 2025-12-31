@@ -11,6 +11,7 @@ var dir_550f083bbe519bd985f450628c1369b6 =
     [ "QuestOrderWidget.cpp", "QuestOrderWidget_8cpp.html", null ],
     [ "SessionInfoWidget.cpp", "SessionInfoWidget_8cpp.html", null ],
     [ "StartWidget.cpp", "StartWidget_8cpp.html", null ],
+    [ "TutorSpeechWidget.cpp", "TutorSpeechWidget_8cpp.html", null ],
     [ "UAnswerItem.cpp", "UAnswerItem_8cpp.html", null ],
     [ "UAutoDespawnItem.cpp", "UAutoDespawnItem_8cpp.html", null ],
     [ "UDailyKioskWidget.cpp", "UDailyKioskWidget_8cpp.html", null ],

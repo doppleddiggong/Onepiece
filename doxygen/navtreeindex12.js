@@ -1,5 +1,11 @@
 var NAVTREEINDEX12 =
 {
+"classULingoGameHelper.html#a6e81633de163ff51bfa37da213f6c696":[2,0,180,15],
+"classULingoGameHelper.html#a7841ecb4e3125ad48efba9920250bf1a":[2,0,180,18],
+"classULingoGameHelper.html#a83ca264d23bdfc2b67f93c8f3345852a":[2,0,180,5],
+"classULingoGameHelper.html#a86b2f311de84ecbb0f1716e3389e4ecd":[2,0,180,1],
+"classULingoGameHelper.html#a8e35e8f50c72c9cbb4f258f64255c0b3":[2,0,180,11],
+"classULingoGameHelper.html#a98136c30beb0692693a40c7b97d0199e":[2,0,180,9],
 "classULingoGameHelper.html#a9cdaff68599a2282ce6f5a346a15d688":[2,0,180,17],
 "classULingoGameHelper.html#a9ec382fad33503c5199244be20c367e6":[2,0,180,10],
 "classULingoGameHelper.html#aae5e9443e2249c16219279d75b62cb46":[2,0,180,6],
@@ -243,11 +249,5 @@ var NAVTREEINDEX12 =
 "classUPopup__AskTutorial.html#a6124aff28b2b2a0b810bb693ebcd81ad":[2,0,194,14],
 "classUPopup__AskTutorial.html#a6ac288312766fb96aa9acf7ece8a630e":[2,0,194,6],
 "classUPopup__AskTutorial.html#a750c1a854f68ca16faa069645531abd6":[2,0,194,1],
-"classUPopup__AskTutorial.html#a7e537a0dd751df11990ed46947f09d42":[2,0,194,18],
-"classUPopup__AskTutorial.html#a807985dccb3305b1004c611401b7b551":[2,0,194,7],
-"classUPopup__AskTutorial.html#a82d12d8c04c7edc4a1d10b18dadb41ee":[2,0,194,10],
-"classUPopup__AskTutorial.html#a830a08b15d00e418f351f096fc5a8790":[2,0,194,5],
-"classUPopup__AskTutorial.html#a9a4bc6d6e03adc7396c7960c41dae0b2":[2,0,194,16],
-"classUPopup__AskTutorial.html#aa3d6a21b30e9b40280f1219b567232b5":[2,0,194,15],
-"classUPopup__AskTutorial.html#ab3e47d26e447e53b60f1dd909ab9eeec":[2,0,194,13]
+"classUPopup__AskTutorial.html#a7e537a0dd751df11990ed46947f09d42":[2,0,194,18]
 };
