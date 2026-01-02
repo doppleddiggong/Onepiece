@@ -6,6 +6,7 @@
 #include "APlayerActor.h"
 #include "GameLogging.h"
 #include "luggage.h"
+#include "TutorialComponent.h" 
 #include "UInteractWidget.h"
 #include "Net/UnrealNetwork.h"
 #include "Components/BoxComponent.h"
@@ -296,6 +297,31 @@ void UInteractableComponent::Server_PickUp_Implementation(AActor* NewHoldingOwne
 	bIsPickedUp = true;
 
 	PRINTLOG(TEXT("Server_PickUp: %s picked up by %s"), *GetOwner()->GetName(), *NewHoldingOwner->GetName());
+
+	// PickUp 튜토리얼
+	if (GetOwner()->IsA(Aluggage::StaticClass()))
+	{
+		APlayerController* PC = nullptr;
+
+		// NewHoldingOwner가 Pawn인 경우 Controller를 가져옴
+		if (APawn* Pawn = Cast<APawn>(NewHoldingOwner))
+		{
+			PC = Cast<APlayerController>(Pawn->GetController());
+		}
+		// 혹시 직접 PlayerController인 경우
+		else
+		{
+			PC = Cast<APlayerController>(NewHoldingOwner);
+		}
+
+		if (PC)
+		{
+			if (UTutorialComponent* Tutorial = PC->FindComponentByClass<UTutorialComponent>())
+			{
+				Tutorial->OnObjectPickedUp(GetOwner());
+			}
+		}
+	}
 }
 
 void UInteractableComponent::Drop()

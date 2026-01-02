@@ -72,4 +72,13 @@ private:
 
 	// 이전 프레임의 카메라 회전값
 	FRotator LastControlRotation;
+
+public:
+	// Tutorial Quests
+	// Luggage 픽업 시 호출
+	void OnObjectPickedUp(AActor* PickedObject);
+
+private:
+	// Conditions
+	bool bPickedUpSomething = false;
 };

@@ -4,6 +4,7 @@
 #include "TutorialComponent.h"
 
 #include "APlayerControl.h"
+#include "luggage.h"
 #include "UBroadcastManager.h"
 #include "GameFramework/Character.h"
 
@@ -66,13 +67,16 @@ void UTutorialComponent::StartTutorial()
 
 void UTutorialComponent::AdvanceToNextStep()
 {
+	UE_LOG(LogTemp, Warning, TEXT("[AdvanceToNextStep] Called! CurrentStep: %d"), (int32)CurrentStep);
+
 	// 현재 메시지 숨김
 	if (UBroadcastManager* BM = UBroadcastManager::Get(GetWorld()))
 	{
 		BM->SendHideTutorialMessage();
 	}
-	
+
 	ETutorialStep NextStep = GetNextStep(CurrentStep);
+	UE_LOG(LogTemp, Warning, TEXT("[AdvanceToNextStep] NextStep: %d"), (int32)NextStep);
 	SetStep(NextStep);
 }
 
@@ -80,6 +84,9 @@ void UTutorialComponent::SetStep(ETutorialStep NewStep)
 {
 	CurrentStep = NewStep;
 	bInputConditionMet = false; // 플래그 초기화
+
+	// 상호작용 플래그 초기화
+	bPickedUpSomething = false;
 
 	if (UBroadcastManager* BM = UBroadcastManager::Get(GetWorld()))
 	{
@@ -145,6 +152,7 @@ void UTutorialComponent::CheckInputConditions()
 
 	if (bConditionMet && !bInputConditionMet)
 	{
+		UE_LOG(LogTemp, Warning, TEXT("[CheckInputConditions] Condition met! Advancing to next step..."));
 		bInputConditionMet = true;
 		OnInputConditionMet();
 	}
@@ -217,9 +225,8 @@ bool UTutorialComponent::CheckJumpInput() const
 
 bool UTutorialComponent::CheckPickUpInput() const
 {
-	if (!OwnerController) return false;
-	// 왼쪽 마우스 버튼 클릭
-	return OwnerController->WasInputKeyJustPressed(EKeys::LeftMouseButton);
+	//UE_LOG(LogTemp, Warning, TEXT("[CheckPickUpInput] bPickedUpSomething: %d"), bPickedUpSomething);
+	return bPickedUpSomething;
 }
 
 bool UTutorialComponent::CheckGrabGunInput() const
@@ -258,6 +265,16 @@ FText UTutorialComponent::GetTutorialMessage(ETutorialStep Step) const
 		return FText::FromString(TEXT("Tutorial finished!"));
 	default:
 		return FText::GetEmpty();
+	}
+}
+
+void UTutorialComponent::OnObjectPickedUp(AActor* PickedObject)
+{
+	if (CurrentStep != ETutorialStep::PickUp) return;
+
+	if (PickedObject && PickedObject->IsA(Aluggage::StaticClass()))
+	{
+		bPickedUpSomething = true;
 	}
 }
 
