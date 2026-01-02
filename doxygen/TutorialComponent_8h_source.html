@@ -182,7 +182,22 @@ $(document).ready(function(){initNavTree('TutorialComponent_8h_source.html','');
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    <span class="comment">// 이전 프레임의 카메라 회전값</span></div>
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    FRotator LastControlRotation;</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>};</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>public:</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    <span class="comment">// Tutorial Quests</span></div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    <span class="comment">// Luggage 그랩건 시 호출</span></div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    <span class="keywordtype">void</span> OnObjectGrabbed(AActor* GrabbedObject);</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    <span class="comment">// Luggage 픽업 시 호출</span></div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    <span class="keywordtype">void</span> OnObjectPickedUp(AActor* PickedObject);</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    <span class="comment">// E키로 스위치 상호작용 시 호출</span></div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    <span class="keywordtype">void</span> OnObjectInteracted(AActor* InteractedObject);</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>private:</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    <span class="comment">// Conditions</span></div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    <span class="keywordtype">bool</span> bGrabbedLuggage = false;</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    <span class="keywordtype">bool</span> bPickedUpSomething = false;</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    <span class="keywordtype">bool</span> bInteractedWithSwitch = false;</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>};</div>
 <div class="ttc" id="aETutorialStep_8h_html"><div class="ttname"><a href="ETutorialStep_8h.html">ETutorialStep.h</a></div></div>
 <div class="ttc" id="aETutorialStep_8h_html_aff93afa91df464b1a8dc160b1e2a9b0a"><div class="ttname"><a href="ETutorialStep_8h.html#aff93afa91df464b1a8dc160b1e2a9b0a">ETutorialStep</a></div><div class="ttdeci">ETutorialStep</div><div class="ttdoc">튜토리얼 진행 단계</div><div class="ttdef"><b>Definition</b> <a href="ETutorialStep_8h_source.html#l00010">ETutorialStep.h:11</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
@@ -191,7 +206,7 @@ $(document).ready(function(){initNavTree('TutorialComponent_8h_source.html','');
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_7fb5e64dcba5cad56d11a2ce531d1e7a.html">Game</a></li><li class="navelem"><a class="el" href="dir_7d5071b022ae16b4c5bc069534dc4de0.html">Public</a></li><li class="navelem"><a class="el" href="TutorialComponent_8h.html">TutorialComponent.h</a></li>
-    <li class="footer">생성시간 : 수 12월 31 2025 03:44:30, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 금 1월 2 2026 06:06:38, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

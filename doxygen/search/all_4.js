@@ -40,7 +40,7 @@ var searchData=
   ['ensurewidgetforworld_37',['ensurewidgetforworld',['../classULoadingCircleManager.html#a2ba7d32cbc52fd0b19b24e2197124a0f',1,'ULoadingCircleManager::EnsureWidgetForWorld()'],['../classUDialogManager.html#a08d300b0bd2a0a85ef3faf74d68242a4',1,'UDialogManager::EnsureWidgetForWorld()']]],
   ['entries_38',['Entries',['../classUDelayTaskManager.html#afc5800d645cb2888723bee5042181c5b',1,'UDelayTaskManager']]],
   ['enum_5fto_5fname_39',['ENUM_TO_NAME',['../Macro_8h.html#af2ddd5315380cee79064cc40b337ab46',1,'Macro.h']]],
-  ['enum_5fto_5ftext_40',['enum_to_text',['../UDelayTaskManager_8h.html#a2c7a66eadfe2ccfb485226675a8db2ee',1,'ENUM_TO_TEXT:&#160;UDelayTaskManager.h'],['../Macro_8h.html#a2c7a66eadfe2ccfb485226675a8db2ee',1,'ENUM_TO_TEXT:&#160;Macro.h']]],
+  ['enum_5fto_5ftext_40',['enum_to_text',['../UBroadcastManager_8h.html#a2c7a66eadfe2ccfb485226675a8db2ee',1,'ENUM_TO_TEXT:&#160;UBroadcastManager.h'],['../Macro_8h.html#a2c7a66eadfe2ccfb485226675a8db2ee',1,'ENUM_TO_TEXT:&#160;Macro.h']]],
   ['epagescrolldirection_41',['EPageScrollDirection',['../EPageScrollDirection_8h.html#a7f0969e5ced4b0fd4bdaa342c9ae3b99',1,'EPageScrollDirection.h']]],
   ['epagescrolldirection_2eh_42',['EPageScrollDirection.h',['../EPageScrollDirection_8h.html',1,'']]],
   ['eparabolatype_43',['EParabolaType',['../UParabolaComponent_8h.html#acb24f37a1795b5e9dfdbb98be4898712',1,'UParabolaComponent.h']]],
