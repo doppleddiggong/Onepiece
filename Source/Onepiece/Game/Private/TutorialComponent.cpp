@@ -3,7 +3,9 @@
 
 #include "TutorialComponent.h"
 
+#include "APedestalSwitch.h"
 #include "APlayerControl.h"
+#include "luggage.h"
 #include "UBroadcastManager.h"
 #include "GameFramework/Character.h"
 
@@ -66,13 +68,16 @@ void UTutorialComponent::StartTutorial()
 
 void UTutorialComponent::AdvanceToNextStep()
 {
+	UE_LOG(LogTemp, Warning, TEXT("[AdvanceToNextStep] Called! CurrentStep: %d"), (int32)CurrentStep);
+
 	// 현재 메시지 숨김
 	if (UBroadcastManager* BM = UBroadcastManager::Get(GetWorld()))
 	{
 		BM->SendHideTutorialMessage();
 	}
-	
+
 	ETutorialStep NextStep = GetNextStep(CurrentStep);
+	UE_LOG(LogTemp, Warning, TEXT("[AdvanceToNextStep] NextStep: %d"), (int32)NextStep);
 	SetStep(NextStep);
 }
 
@@ -80,6 +85,11 @@ void UTutorialComponent::SetStep(ETutorialStep NewStep)
 {
 	CurrentStep = NewStep;
 	bInputConditionMet = false; // 플래그 초기화
+
+	// 상호작용 플래그 초기화
+	bGrabbedLuggage = false;
+	bPickedUpSomething = false;
+	bInteractedWithSwitch = false;
 
 	if (UBroadcastManager* BM = UBroadcastManager::Get(GetWorld()))
 	{
@@ -145,6 +155,7 @@ void UTutorialComponent::CheckInputConditions()
 
 	if (bConditionMet && !bInputConditionMet)
 	{
+		UE_LOG(LogTemp, Warning, TEXT("[CheckInputConditions] Condition met! Advancing to next step..."));
 		bInputConditionMet = true;
 		OnInputConditionMet();
 	}
@@ -158,7 +169,7 @@ void UTutorialComponent::OnInputConditionMet()
 	}
 
 	GetWorld()->GetTimerManager().SetTimer(AdvanceDelayTimerHandle, this,
-		&UTutorialComponent::AdvanceToNextStep, 2.f, false);
+		&UTutorialComponent::AdvanceToNextStep, 1.5f, false);
 }
 
 ETutorialStep UTutorialComponent::GetNextStep(ETutorialStep Step) const
@@ -169,9 +180,9 @@ ETutorialStep UTutorialComponent::GetNextStep(ETutorialStep Step) const
 		case ETutorialStep::MouseLook:		return ETutorialStep::Movement;
 		case ETutorialStep::Movement:		return ETutorialStep::Sprint;
 		case ETutorialStep::Sprint:			return ETutorialStep::Jump;
-		case ETutorialStep::Jump:			return ETutorialStep::PickUp;
-		case ETutorialStep::PickUp:			return ETutorialStep::GrabGun;
-		case ETutorialStep::GrabGun:		return ETutorialStep::Interaction;
+		case ETutorialStep::Jump:			return ETutorialStep::GrabGun;
+		case ETutorialStep::GrabGun:		return ETutorialStep::PickUp;
+		case ETutorialStep::PickUp:			return ETutorialStep::Interaction;
 		case ETutorialStep::Interaction:	return ETutorialStep::Completed;
 		default: return ETutorialStep::Completed;
 	}
@@ -217,23 +228,22 @@ bool UTutorialComponent::CheckJumpInput() const
 
 bool UTutorialComponent::CheckPickUpInput() const
 {
-	if (!OwnerController) return false;
-	// 왼쪽 마우스 버튼 클릭
-	return OwnerController->WasInputKeyJustPressed(EKeys::LeftMouseButton);
+	//UE_LOG(LogTemp, Warning, TEXT("[CheckPickUpInput] bPickedUpSomething: %d"), bPickedUpSomething);
+	return bPickedUpSomething;
 }
 
 bool UTutorialComponent::CheckGrabGunInput() const
 {
-	if (!OwnerController) return false;
 	// 오른쪽 마우스 버튼 클릭
-	return OwnerController->WasInputKeyJustPressed(EKeys::RightMouseButton);
+	//return OwnerController->WasInputKeyJustPressed(EKeys::RightMouseButton);
+	return bGrabbedLuggage;
 }
 
 bool UTutorialComponent::CheckInteractionInput() const
 {
-	if (!OwnerController) return false;
 	// E키
-	return OwnerController->WasInputKeyJustPressed(EKeys::E);
+	//return OwnerController->WasInputKeyJustPressed(EKeys::E);
+	return bInteractedWithSwitch;
 }
 
 FText UTutorialComponent::GetTutorialMessage(ETutorialStep Step) const
@@ -251,13 +261,43 @@ FText UTutorialComponent::GetTutorialMessage(ETutorialStep Step) const
 	case ETutorialStep::PickUp:
 		return FText::FromString(TEXT("Left Click to pick up"));
 	case ETutorialStep::GrabGun:
-		return FText::FromString(TEXT("Right Click to grab things far away"));
+		return FText::FromString(TEXT("Right Click to grab things from far away"));
 	case ETutorialStep::Interaction:
-		return FText::FromString(TEXT("Press E to interact"));
+		return FText::FromString(TEXT("Press E to activate switch"));
 	case ETutorialStep::Completed:
 		return FText::FromString(TEXT("Tutorial finished!"));
 	default:
 		return FText::GetEmpty();
+	}
+}
+
+void UTutorialComponent::OnObjectGrabbed(AActor* GrabbedObject)
+{
+	if (CurrentStep != ETutorialStep::GrabGun) return;
+
+	if (GrabbedObject && GrabbedObject->IsA(Aluggage::StaticClass()))
+	{
+		bGrabbedLuggage = true;
+	}
+}
+
+void UTutorialComponent::OnObjectPickedUp(AActor* PickedObject)
+{
+	if (CurrentStep != ETutorialStep::PickUp) return;
+
+	if (PickedObject && PickedObject->IsA(Aluggage::StaticClass()))
+	{
+		bPickedUpSomething = true;
+	}
+}
+
+void UTutorialComponent::OnObjectInteracted(AActor* InteractedObject)
+{
+	if (CurrentStep != ETutorialStep::Interaction) return;
+
+	if (InteractedObject && InteractedObject->IsA(APedestalSwitch::StaticClass()))
+	{
+		bInteractedWithSwitch = true;
 	}
 }
 

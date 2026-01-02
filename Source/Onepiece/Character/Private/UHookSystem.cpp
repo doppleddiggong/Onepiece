@@ -14,6 +14,7 @@
 #include "DrawDebugHelpers.h"
 #include "InteractableComponent.h"
 #include "luggage.h"
+#include "TutorialComponent.h"
 #include "UGameSoundManager.h"
 #include "Math/RotationMatrix.h"
 #include "Components/StaticMeshComponent.h"
@@ -631,18 +632,19 @@ void UHookSystem::UpdateHookPulling(float DeltaTime)
 	// 목표 위치의 높이를 현재 Luggage 높이로 유지 (바닥에 떨어지도록)
 	TargetLocation.Z = CurrentLocation.Z;
 
+	// 목표 위치까지의 거리 확인
+	float DistanceToTarget = FVector::Dist(CurrentLocation, TargetLocation);
+	
 	// 서버에서만 실제 위치 업데이트 및 완료 체크
 	if (OwnerPlayer->HasAuthority())
 	{
-		// 목표 위치까지의 거리 확인
-		float DistanceToTarget = FVector::Dist(CurrentLocation, TargetLocation);
-
 		// 너무 가까우면 Hook 완료
 		if (DistanceToTarget < CompleteThreshold)
 		{
 			// 완료 전 정확한 목표 위치에 배치 (튕겨나가는 것 방지)
 			HookedTarget->SetActorLocation(TargetLocation);
 			PRINTLOG(TEXT("UHookSystem: Hook completed, placed at exact target location"));
+
 			ReleaseHook();
 			return;
 		}
@@ -657,6 +659,19 @@ void UHookSystem::UpdateHookPulling(float DeltaTime)
 
 		// 위치 업데이트 (서버에서만 실행됨)
 		HookedTarget->SetActorLocation(NewLocation);
+	}
+
+	// Tutorial: GrabGun 단계에서 Luggage를 훅으로 가져왔을 때 알림
+	if (OwnerPlayer)
+	{
+		APlayerController* PC = Cast<APlayerController>(OwnerPlayer->GetController());
+		if (PC)
+		{
+			if (UTutorialComponent* Tutorial = PC->FindComponentByClass<UTutorialComponent>())
+			{
+				Tutorial->OnObjectGrabbed(HookedTarget);
+			}
+		}
 	}
 
 	// 디버그 표시

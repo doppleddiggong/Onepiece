@@ -265,6 +265,21 @@ void APlayerControl::OnGrabRelease(const FInputActionValue& Value)
 
 void APlayerControl::OnInteract(const FInputActionValue& Value)
 {
+	// 튜토리얼 체크 (로컬 플레이어만, 실제 동작은 서버에서만)
+	APlayerActor* MyPlayer = Cast<APlayerActor>(GetPawn());
+	if (MyPlayer && MyPlayer->InteractionSystem && MyPlayer->InteractionSystem->CurrentTarget)
+	{
+		// Button 타입인 경우 튜토리얼 체크
+		if (MyPlayer->InteractionSystem->CurrentTarget->InteractionType == EInteractionType::Button)
+		{
+			AActor* TargetActor = MyPlayer->InteractionSystem->CurrentTarget->GetOwner();
+			if (UTutorialComponent* Tutorial = FindComponentByClass<UTutorialComponent>())
+			{
+				Tutorial->OnObjectInteracted(TargetActor);
+			}
+		}
+	}
+
 	Server_OnInteract();
 }
 

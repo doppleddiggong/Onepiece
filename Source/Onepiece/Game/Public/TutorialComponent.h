@@ -72,4 +72,19 @@ private:
 
 	// 이전 프레임의 카메라 회전값
 	FRotator LastControlRotation;
+
+public:
+	// Tutorial Quests
+	// Luggage 그랩건 시 호출
+	void OnObjectGrabbed(AActor* GrabbedObject);
+	// Luggage 픽업 시 호출
+	void OnObjectPickedUp(AActor* PickedObject);
+	// E키로 스위치 상호작용 시 호출
+	void OnObjectInteracted(AActor* InteractedObject);
+
+private:
+	// Conditions
+	bool bGrabbedLuggage = false;
+	bool bPickedUpSomething = false;
+	bool bInteractedWithSwitch = false;
 };

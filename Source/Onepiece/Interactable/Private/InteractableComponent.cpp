@@ -6,6 +6,7 @@
 #include "APlayerActor.h"
 #include "GameLogging.h"
 #include "luggage.h"
+#include "TutorialComponent.h" 
 #include "UInteractWidget.h"
 #include "Net/UnrealNetwork.h"
 #include "Components/BoxComponent.h"
@@ -152,6 +153,31 @@ void UInteractableComponent::OnRep_HoldingOwner()
 		{
 			// 여기서 GetOwner() == 컴포넌트가 붙어있는 액터
 			GetOwner()->AttachToComponent(MyPlayer->HoldPosition, FAttachmentTransformRules::SnapToTargetNotIncludingScale);
+
+			// PickUp 튜토리얼
+			if (GetOwner()->IsA(Aluggage::StaticClass()))
+			{
+				APlayerController* PC = nullptr;
+
+				// NewHoldingOwner가 Pawn인 경우 Controller를 가져옴
+				if (APawn* Pawn = Cast<APawn>(HoldingOwner))
+				{
+					PC = Cast<APlayerController>(Pawn->GetController());
+				}
+				// 혹시 직접 PlayerController인 경우
+				else
+				{
+					PC = Cast<APlayerController>(HoldingOwner);
+				}
+
+				if (PC)
+				{
+					if (UTutorialComponent* Tutorial = PC->FindComponentByClass<UTutorialComponent>())
+					{
+						Tutorial->OnObjectPickedUp(GetOwner());
+					}
+				}
+			}
 		}
 	}
 	else
