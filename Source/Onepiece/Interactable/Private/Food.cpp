@@ -27,15 +27,10 @@ AFood::AFood()
 	InteractableComp = CreateDefaultSubobject<UInteractableComponent>(TEXT("Interactable"));
 	InteractableComp->InteractionType = EInteractionType::PickUp;
 	InteractableComp->InteractionPrompt = TEXT("Pick Up");
-	
-	// Initial settings
-	Mesh->SetSimulatePhysics(true);
-	Mesh->SetEnableGravity(true);
+
+	// Initial settings (Physics 설정은 BeginPlay에서 수행)
 	Mesh->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
 	Mesh->SetCollisionProfileName(TEXT("PhysicsActor"));
-
-	// 무게 설정
-	Mesh->SetMassOverrideInKg(NAME_None, 50.f, true);
 
 	// 물리 복제 설정
 	Mesh->SetIsReplicated(true);
@@ -51,6 +46,14 @@ AFood::AFood()
 void AFood::BeginPlay()
 {
 	Super::BeginPlay();
+
+	// Physics 설정 (생성자에서 이동)
+	if (Mesh)
+	{
+		Mesh->SetSimulatePhysics(true);
+		Mesh->SetEnableGravity(true);
+		Mesh->SetMassOverrideInKg(NAME_None, 50.f, true);
+	}
 
 	CityName->AttachToComponent(GetRootComponent(), FAttachmentTransformRules::KeepRelativeTransform);
 	CityName->SetRelativeLocation(FVector(0, 0, 0));
@@ -96,6 +99,16 @@ void AFood::OnRep_CurrentFoodData()
 
 void AFood::UpdateFoodWidget()
 {
+	// 게임 스레드가 아니면 게임 스레드로 dispatch
+	if (!IsInGameThread())
+	{
+		AsyncTask(ENamedThreads::GameThread, [this]()
+		{
+			UpdateFoodWidget();
+		});
+		return;
+	}
+
 	// Widget이 아직 초기화되지 않았을 수 있으므로 체크
 	if (!CityName || !CityName->GetWidget())
 		return;
@@ -109,6 +122,16 @@ void AFood::UpdateFoodWidget()
 
 void AFood::UpdateMesh()
 {
+	// 게임 스레드가 아니면 게임 스레드로 dispatch
+	if (!IsInGameThread())
+	{
+		AsyncTask(ENamedThreads::GameThread, [this]()
+		{
+			UpdateMesh();
+		});
+		return;
+	}
+
 	if (!ListenDataTable)
 	{
 		UE_LOG(LogTemp, Error, TEXT("[AFood::UpdateMesh] ListenDataTable is null!"));

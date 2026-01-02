@@ -311,5 +311,22 @@ void ALingoPlayerState::OnRep_QuestState()
 	if (APlayerControl* PC = Cast<APlayerControl>(GetOwner()))
 	{
 		PC->UpdateQuestInfoWidget();
+
+		// 각 퀘스트 상태 결정: 완료[V], 진행중[=], 미시작[X]
+		auto GetQuestStatus = [](bool bCompleted, bool bInProgress) -> const TCHAR*
+		{
+			if (bCompleted) return TEXT("V");
+			if (bInProgress) return TEXT("=");
+			return TEXT("X");
+		};
+
+		// R-L-S-W 퀘스트 상태 출력
+		FString StatusMsg = FString::Printf(TEXT("%s %s %s %s"),
+			GetQuestStatus(bReadQuestCompleted, bReadQuestIng),
+			GetQuestStatus(bListenQuestCompleted, bListenQuestIng),
+			GetQuestStatus(bSpeakQuestCompleted, bSpeakQuestIng),
+			GetQuestStatus(bWriteQuestCompleted, bWriteQuestIng));
+	
+		PC->UpdateQuestOrderWidget(StatusMsg);
 	}
 }
