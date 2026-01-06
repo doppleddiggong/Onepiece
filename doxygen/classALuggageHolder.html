@@ -260,14 +260,9 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">   54</span>    {</div>
 <div class="line"><span class="lineno">   55</span>        <a class="code hl_variable" href="classALuggageHolder.html#a849e5acd8a9285c7a2b0d27caf77d7cd">WidgetGuideComp</a>-&gt;SetWidgetClass(widgetGuideClassRef.Class);</div>
 <div class="line"><span class="lineno">   56</span>    }</div>
-<div class="line"><span class="lineno">   57</span>    ConstructorHelpers::FObjectFinder&lt;UMaterialInterface&gt; materialRef(TEXT(<span class="stringliteral">&quot;/Script/Engine.MaterialInstanceConstant&#39;/Engine/EngineMaterials/Widget3DPassThrough_Masked_OneSided.Widget3DPassThrough_Masked_OneSided&#39;&quot;</span>));</div>
-<div class="line"><span class="lineno">   58</span>    <span class="keywordflow">if</span> (materialRef.Succeeded())</div>
-<div class="line"><span class="lineno">   59</span>    {</div>
-<div class="line"><span class="lineno">   60</span>        <a class="code hl_variable" href="classALuggageHolder.html#a849e5acd8a9285c7a2b0d27caf77d7cd">WidgetGuideComp</a>-&gt;SetMaterial(0, materialRef.Object);</div>
-<div class="line"><span class="lineno">   61</span>    }</div>
-<div class="line"><span class="lineno">   62</span> </div>
-<div class="line"><span class="lineno">   63</span>    <a class="code hl_variable" href="classICompassTargetInterface.html#afab55eb3a8c206914d440493384e9401">MarkerType</a> = <a class="code hl_enumvalue" href="ECompassMarkerType_8h.html#acc6a187307708d9ee4bfdb3e4df7dba6ab6c1ff86e77487aa95fe0bf947e54342">ECompassMarkerType::QuestEnd</a>;</div>
-<div class="line"><span class="lineno">   64</span>}</div>
+<div class="line"><span class="lineno">   57</span> </div>
+<div class="line"><span class="lineno">   58</span>    <a class="code hl_variable" href="classICompassTargetInterface.html#afab55eb3a8c206914d440493384e9401">MarkerType</a> = <a class="code hl_enumvalue" href="ECompassMarkerType_8h.html#acc6a187307708d9ee4bfdb3e4df7dba6ab6c1ff86e77487aa95fe0bf947e54342">ECompassMarkerType::QuestEnd</a>;</div>
+<div class="line"><span class="lineno">   59</span>}</div>
 <div class="ttc" id="aECompassMarkerType_8h_html_acc6a187307708d9ee4bfdb3e4df7dba6ab6c1ff86e77487aa95fe0bf947e54342"><div class="ttname"><a href="ECompassMarkerType_8h.html#acc6a187307708d9ee4bfdb3e4df7dba6ab6c1ff86e77487aa95fe0bf947e54342">ECompassMarkerType::QuestEnd</a></div><div class="ttdeci">@ QuestEnd</div></div>
 <div class="ttc" id="aclassALuggageHolder_html_a37adf1b2bbe4888fc4512eb9afad0fa1"><div class="ttname"><a href="classALuggageHolder.html#a37adf1b2bbe4888fc4512eb9afad0fa1">ALuggageHolder::HoldPos</a></div><div class="ttdeci">TObjectPtr&lt; class USceneComponent &gt; HoldPos</div><div class="ttdef"><b>Definition</b> <a href="ALuggageHolder_8h_source.html#l00075">ALuggageHolder.h:75</a></div></div>
 <div class="ttc" id="aclassALuggageHolder_html_a849e5acd8a9285c7a2b0d27caf77d7cd"><div class="ttname"><a href="classALuggageHolder.html#a849e5acd8a9285c7a2b0d27caf77d7cd">ALuggageHolder::WidgetGuideComp</a></div><div class="ttdeci">TObjectPtr&lt; class UWidgetComponent &gt; WidgetGuideComp</div><div class="ttdef"><b>Definition</b> <a href="ALuggageHolder_8h_source.html#l00078">ALuggageHolder.h:78</a></div></div>
@@ -303,19 +298,19 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ALuggageHolder_8cpp_source.html">ALuggageHolder.cpp</a> 파일의 <a class="el" href="ALuggageHolder_8cpp_source.html#l00066">66</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   67</span>{</div>
-<div class="line"><span class="lineno">   68</span>    Super::BeginPlay();</div>
-<div class="line"><span class="lineno">   69</span> </div>
-<div class="line"><span class="lineno">   70</span>    <a class="code hl_variable" href="classALuggageHolder.html#aea98e8e5e385e56d7f945900619bc73a">BoxCollision</a>-&gt;OnComponentBeginOverlap.AddDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classALuggageHolder.html#a3dadab8a062db3db4316a56909ed489b">ALuggageHolder::OnBoxOverlapBegin</a>);</div>
-<div class="line"><span class="lineno">   71</span> </div>
-<div class="line"><span class="lineno">   72</span>    <span class="comment">// 머티리얼 파라미터 초기화 (비활성화 상태)</span></div>
-<div class="line"><span class="lineno">   73</span>    <a class="code hl_function" href="classALuggageHolder.html#a38db790f0dda731912202818138a7892">UpdateActivateState</a>(<span class="keyword">false</span>);</div>
-<div class="line"><span class="lineno">   74</span>}</div>
-<div class="ttc" id="aclassALuggageHolder_html_a38db790f0dda731912202818138a7892"><div class="ttname"><a href="classALuggageHolder.html#a38db790f0dda731912202818138a7892">ALuggageHolder::UpdateActivateState</a></div><div class="ttdeci">void UpdateActivateState(bool State)</div><div class="ttdef"><b>Definition</b> <a href="ALuggageHolder_8cpp_source.html#l00231">ALuggageHolder.cpp:231</a></div></div>
-<div class="ttc" id="aclassALuggageHolder_html_a3dadab8a062db3db4316a56909ed489b"><div class="ttname"><a href="classALuggageHolder.html#a3dadab8a062db3db4316a56909ed489b">ALuggageHolder::OnBoxOverlapBegin</a></div><div class="ttdeci">void OnBoxOverlapBegin(UPrimitiveComponent *OverlappedComponent, AActor *OtherActor, UPrimitiveComponent *OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult &amp;SweepResult)</div><div class="ttdef"><b>Definition</b> <a href="ALuggageHolder_8cpp_source.html#l00118">ALuggageHolder.cpp:118</a></div></div>
+<p class="definition"><a class="el" href="ALuggageHolder_8cpp_source.html">ALuggageHolder.cpp</a> 파일의 <a class="el" href="ALuggageHolder_8cpp_source.html#l00061">61</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   62</span>{</div>
+<div class="line"><span class="lineno">   63</span>    Super::BeginPlay();</div>
+<div class="line"><span class="lineno">   64</span> </div>
+<div class="line"><span class="lineno">   65</span>    <a class="code hl_variable" href="classALuggageHolder.html#aea98e8e5e385e56d7f945900619bc73a">BoxCollision</a>-&gt;OnComponentBeginOverlap.AddDynamic(<span class="keyword">this</span>, &amp;<a class="code hl_function" href="classALuggageHolder.html#a3dadab8a062db3db4316a56909ed489b">ALuggageHolder::OnBoxOverlapBegin</a>);</div>
+<div class="line"><span class="lineno">   66</span> </div>
+<div class="line"><span class="lineno">   67</span>    <span class="comment">// 머티리얼 파라미터 초기화 (비활성화 상태)</span></div>
+<div class="line"><span class="lineno">   68</span>    <a class="code hl_function" href="classALuggageHolder.html#a38db790f0dda731912202818138a7892">UpdateActivateState</a>(<span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">   69</span>}</div>
+<div class="ttc" id="aclassALuggageHolder_html_a38db790f0dda731912202818138a7892"><div class="ttname"><a href="classALuggageHolder.html#a38db790f0dda731912202818138a7892">ALuggageHolder::UpdateActivateState</a></div><div class="ttdeci">void UpdateActivateState(bool State)</div><div class="ttdef"><b>Definition</b> <a href="ALuggageHolder_8cpp_source.html#l00226">ALuggageHolder.cpp:226</a></div></div>
+<div class="ttc" id="aclassALuggageHolder_html_a3dadab8a062db3db4316a56909ed489b"><div class="ttname"><a href="classALuggageHolder.html#a3dadab8a062db3db4316a56909ed489b">ALuggageHolder::OnBoxOverlapBegin</a></div><div class="ttdeci">void OnBoxOverlapBegin(UPrimitiveComponent *OverlappedComponent, AActor *OtherActor, UPrimitiveComponent *OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult &amp;SweepResult)</div><div class="ttdef"><b>Definition</b> <a href="ALuggageHolder_8cpp_source.html#l00113">ALuggageHolder.cpp:113</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="ALuggageHolder_8h_source.html#l00069">BoxCollision</a>, <a class="el" href="ALuggageHolder_8cpp_source.html#l00118">OnBoxOverlapBegin()</a>, <a class="el" href="ALuggageHolder_8cpp_source.html#l00231">UpdateActivateState()</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="ALuggageHolder_8h_source.html#l00069">BoxCollision</a>, <a class="el" href="ALuggageHolder_8cpp_source.html#l00113">OnBoxOverlapBegin()</a>, <a class="el" href="ALuggageHolder_8cpp_source.html#l00226">UpdateActivateState()</a>.</p>
 <div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-2-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
@@ -351,32 +346,32 @@ Private 속성</h2></td></tr>
 
 <p>상호작용 위젯 빌보드화 (카메라를 향하도록) </p>
 
-<p class="definition"><a class="el" href="ALuggageHolder_8cpp_source.html">ALuggageHolder.cpp</a> 파일의 <a class="el" href="ALuggageHolder_8cpp_source.html#l00245">245</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  246</span>{</div>
-<div class="line"><span class="lineno">  247</span>    <span class="comment">// 위젯이 없으면 빌보드화 안 함</span></div>
-<div class="line"><span class="lineno">  248</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classALuggageHolder.html#a849e5acd8a9285c7a2b0d27caf77d7cd">WidgetGuideComp</a>)</div>
-<div class="line"><span class="lineno">  249</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  250</span> </div>
-<div class="line"><span class="lineno">  251</span>    <span class="comment">// Visibility 체크 - 보이지 않으면 빌보드화 안 함</span></div>
-<div class="line"><span class="lineno">  252</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classALuggageHolder.html#a849e5acd8a9285c7a2b0d27caf77d7cd">WidgetGuideComp</a>-&gt;IsVisible())</div>
+<p class="definition"><a class="el" href="ALuggageHolder_8cpp_source.html">ALuggageHolder.cpp</a> 파일의 <a class="el" href="ALuggageHolder_8cpp_source.html#l00240">240</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  241</span>{</div>
+<div class="line"><span class="lineno">  242</span>    <span class="comment">// 위젯이 없으면 빌보드화 안 함</span></div>
+<div class="line"><span class="lineno">  243</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classALuggageHolder.html#a849e5acd8a9285c7a2b0d27caf77d7cd">WidgetGuideComp</a>)</div>
+<div class="line"><span class="lineno">  244</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  245</span> </div>
+<div class="line"><span class="lineno">  246</span>    <span class="comment">// Visibility 체크 - 보이지 않으면 빌보드화 안 함</span></div>
+<div class="line"><span class="lineno">  247</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classALuggageHolder.html#a849e5acd8a9285c7a2b0d27caf77d7cd">WidgetGuideComp</a>-&gt;IsVisible())</div>
+<div class="line"><span class="lineno">  248</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  249</span> </div>
+<div class="line"><span class="lineno">  250</span>    <span class="comment">// 카메라 가져오기</span></div>
+<div class="line"><span class="lineno">  251</span>    AActor* Camera = UGameplayStatics::GetPlayerCameraManager(GetWorld(), 0);</div>
+<div class="line"><span class="lineno">  252</span>    <span class="keywordflow">if</span> (!Camera)</div>
 <div class="line"><span class="lineno">  253</span>        <span class="keywordflow">return</span>;</div>
 <div class="line"><span class="lineno">  254</span> </div>
-<div class="line"><span class="lineno">  255</span>    <span class="comment">// 카메라 가져오기</span></div>
-<div class="line"><span class="lineno">  256</span>    AActor* Camera = UGameplayStatics::GetPlayerCameraManager(GetWorld(), 0);</div>
-<div class="line"><span class="lineno">  257</span>    <span class="keywordflow">if</span> (!Camera)</div>
-<div class="line"><span class="lineno">  258</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  259</span> </div>
-<div class="line"><span class="lineno">  260</span>    <span class="comment">// 카메라를 향하도록 회전 계산</span></div>
-<div class="line"><span class="lineno">  261</span>    FRotator Rotation = UKismetMathLibrary::MakeRotFromXZ( -Camera-&gt;GetActorForwardVector(), Camera-&gt;GetActorUpVector() );</div>
-<div class="line"><span class="lineno">  262</span>    Rotation.Pitch = 0;</div>
-<div class="line"><span class="lineno">  263</span> </div>
-<div class="line"><span class="lineno">  264</span>    <span class="comment">// 위젯 회전 설정</span></div>
-<div class="line"><span class="lineno">  265</span>    <a class="code hl_variable" href="classALuggageHolder.html#a849e5acd8a9285c7a2b0d27caf77d7cd">WidgetGuideComp</a>-&gt;SetWorldRotation(Rotation);</div>
-<div class="line"><span class="lineno">  266</span>}</div>
+<div class="line"><span class="lineno">  255</span>    <span class="comment">// 카메라를 향하도록 회전 계산</span></div>
+<div class="line"><span class="lineno">  256</span>    FRotator Rotation = UKismetMathLibrary::MakeRotFromXZ( -Camera-&gt;GetActorForwardVector(), Camera-&gt;GetActorUpVector() );</div>
+<div class="line"><span class="lineno">  257</span>    Rotation.Pitch = 0;</div>
+<div class="line"><span class="lineno">  258</span> </div>
+<div class="line"><span class="lineno">  259</span>    <span class="comment">// 위젯 회전 설정</span></div>
+<div class="line"><span class="lineno">  260</span>    <a class="code hl_variable" href="classALuggageHolder.html#a849e5acd8a9285c7a2b0d27caf77d7cd">WidgetGuideComp</a>-&gt;SetWorldRotation(Rotation);</div>
+<div class="line"><span class="lineno">  261</span>}</div>
 </div><!-- fragment -->
 <p class="reference">다음을 참조함 :  <a class="el" href="ALuggageHolder_8h_source.html#l00078">WidgetGuideComp</a>.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALuggageHolder_8cpp_source.html#l00076">Tick()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALuggageHolder_8cpp_source.html#l00071">Tick()</a>.</p>
 <div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-3-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
@@ -421,48 +416,48 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ALuggageHolder_8cpp_source.html">ALuggageHolder.cpp</a> 파일의 <a class="el" href="ALuggageHolder_8cpp_source.html#l00195">195</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  196</span>{</div>
-<div class="line"><span class="lineno">  197</span>    <span class="keywordflow">if</span> (!TargetLuggage)</div>
-<div class="line"><span class="lineno">  198</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  199</span> </div>
-<div class="line"><span class="lineno">  200</span>    <span class="comment">// Luggage의 모든 충돌 비활성화 (pickup, hook 등 모든 상호작용 차단)</span></div>
-<div class="line"><span class="lineno">  201</span>    TargetLuggage-&gt;SetAllCollision(<span class="keyword">false</span>);</div>
-<div class="line"><span class="lineno">  202</span> </div>
-<div class="line"><span class="lineno">  203</span>    <span class="comment">// ReadQuest 정답 인덱스 가져오기</span></div>
-<div class="line"><span class="lineno">  204</span>    <span class="keywordflow">if</span> (CorrectIndex == TargetLuggage-&gt;GetSpawnIdx())</div>
-<div class="line"><span class="lineno">  205</span>    {</div>
-<div class="line"><span class="lineno">  206</span>        <span class="comment">// Success: Luggage를 HoldPos 위치보다 살짝 위에 배치</span></div>
-<div class="line"><span class="lineno">  207</span>        FVector ActivatedLocation = <a class="code hl_variable" href="classALuggageHolder.html#a37adf1b2bbe4888fc4512eb9afad0fa1">HoldPos</a>-&gt;GetComponentLocation();</div>
-<div class="line"><span class="lineno">  208</span>        ActivatedLocation.Z += <a class="code hl_variable" href="classALuggageHolder.html#a2fbb800f217376aa32bdee69f32a34f2">ActivatedHeightOffset</a>;</div>
-<div class="line"><span class="lineno">  209</span>        TargetLuggage-&gt;SetActorLocation(ActivatedLocation);</div>
-<div class="line"><span class="lineno">  210</span>        TargetLuggage-&gt;SetActorRotation(<a class="code hl_variable" href="classALuggageHolder.html#a37adf1b2bbe4888fc4512eb9afad0fa1">HoldPos</a>-&gt;GetComponentRotation());</div>
-<div class="line"><span class="lineno">  211</span> </div>
-<div class="line"><span class="lineno">  212</span>        <span class="comment">// Activate 상태로 전환</span></div>
-<div class="line"><span class="lineno">  213</span>        <a class="code hl_variable" href="classALuggageHolder.html#ad8f96e926c40503e6700e367b3205ff3">bIsActivated</a> = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  214</span>        <a class="code hl_variable" href="classALuggageHolder.html#aa3217f0b4f3c24098a9c4cee7826f881">CurTarget</a> = TargetLuggage;</div>
-<div class="line"><span class="lineno">  215</span> </div>
-<div class="line"><span class="lineno">  216</span>        <span class="comment">// 서버에서도 머티리얼 업데이트 (클라이언트는 OnRep_IsActivated에서 호출됨)</span></div>
-<div class="line"><span class="lineno">  217</span>        <a class="code hl_function" href="classALuggageHolder.html#a38db790f0dda731912202818138a7892">UpdateActivateState</a>(<span class="keyword">true</span>);</div>
-<div class="line"><span class="lineno">  218</span> </div>
-<div class="line"><span class="lineno">  219</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  220</span>    }</div>
-<div class="line"><span class="lineno">  221</span>    <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  222</span>    {</div>
-<div class="line"><span class="lineno">  223</span>        <span class="comment">// Fail: 서버에서 머티리얼 업데이트 (오답)</span></div>
-<div class="line"><span class="lineno">  224</span>        <a class="code hl_variable" href="classALuggageHolder.html#ad8f96e926c40503e6700e367b3205ff3">bIsActivated</a> = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  225</span>        <a class="code hl_function" href="classALuggageHolder.html#a38db790f0dda731912202818138a7892">UpdateActivateState</a>(<span class="keyword">false</span>);</div>
-<div class="line"><span class="lineno">  226</span> </div>
-<div class="line"><span class="lineno">  227</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  228</span>    }</div>
-<div class="line"><span class="lineno">  229</span>}</div>
+<p class="definition"><a class="el" href="ALuggageHolder_8cpp_source.html">ALuggageHolder.cpp</a> 파일의 <a class="el" href="ALuggageHolder_8cpp_source.html#l00190">190</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  191</span>{</div>
+<div class="line"><span class="lineno">  192</span>    <span class="keywordflow">if</span> (!TargetLuggage)</div>
+<div class="line"><span class="lineno">  193</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  194</span> </div>
+<div class="line"><span class="lineno">  195</span>    <span class="comment">// Luggage의 모든 충돌 비활성화 (pickup, hook 등 모든 상호작용 차단)</span></div>
+<div class="line"><span class="lineno">  196</span>    TargetLuggage-&gt;SetAllCollision(<span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">  197</span> </div>
+<div class="line"><span class="lineno">  198</span>    <span class="comment">// ReadQuest 정답 인덱스 가져오기</span></div>
+<div class="line"><span class="lineno">  199</span>    <span class="keywordflow">if</span> (CorrectIndex == TargetLuggage-&gt;GetSpawnIdx())</div>
+<div class="line"><span class="lineno">  200</span>    {</div>
+<div class="line"><span class="lineno">  201</span>        <span class="comment">// Success: Luggage를 HoldPos 위치보다 살짝 위에 배치</span></div>
+<div class="line"><span class="lineno">  202</span>        FVector ActivatedLocation = <a class="code hl_variable" href="classALuggageHolder.html#a37adf1b2bbe4888fc4512eb9afad0fa1">HoldPos</a>-&gt;GetComponentLocation();</div>
+<div class="line"><span class="lineno">  203</span>        ActivatedLocation.Z += <a class="code hl_variable" href="classALuggageHolder.html#a2fbb800f217376aa32bdee69f32a34f2">ActivatedHeightOffset</a>;</div>
+<div class="line"><span class="lineno">  204</span>        TargetLuggage-&gt;SetActorLocation(ActivatedLocation);</div>
+<div class="line"><span class="lineno">  205</span>        TargetLuggage-&gt;SetActorRotation(<a class="code hl_variable" href="classALuggageHolder.html#a37adf1b2bbe4888fc4512eb9afad0fa1">HoldPos</a>-&gt;GetComponentRotation());</div>
+<div class="line"><span class="lineno">  206</span> </div>
+<div class="line"><span class="lineno">  207</span>        <span class="comment">// Activate 상태로 전환</span></div>
+<div class="line"><span class="lineno">  208</span>        <a class="code hl_variable" href="classALuggageHolder.html#ad8f96e926c40503e6700e367b3205ff3">bIsActivated</a> = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  209</span>        <a class="code hl_variable" href="classALuggageHolder.html#aa3217f0b4f3c24098a9c4cee7826f881">CurTarget</a> = TargetLuggage;</div>
+<div class="line"><span class="lineno">  210</span> </div>
+<div class="line"><span class="lineno">  211</span>        <span class="comment">// 서버에서도 머티리얼 업데이트 (클라이언트는 OnRep_IsActivated에서 호출됨)</span></div>
+<div class="line"><span class="lineno">  212</span>        <a class="code hl_function" href="classALuggageHolder.html#a38db790f0dda731912202818138a7892">UpdateActivateState</a>(<span class="keyword">true</span>);</div>
+<div class="line"><span class="lineno">  213</span> </div>
+<div class="line"><span class="lineno">  214</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  215</span>    }</div>
+<div class="line"><span class="lineno">  216</span>    <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  217</span>    {</div>
+<div class="line"><span class="lineno">  218</span>        <span class="comment">// Fail: 서버에서 머티리얼 업데이트 (오답)</span></div>
+<div class="line"><span class="lineno">  219</span>        <a class="code hl_variable" href="classALuggageHolder.html#ad8f96e926c40503e6700e367b3205ff3">bIsActivated</a> = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  220</span>        <a class="code hl_function" href="classALuggageHolder.html#a38db790f0dda731912202818138a7892">UpdateActivateState</a>(<span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">  221</span> </div>
+<div class="line"><span class="lineno">  222</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  223</span>    }</div>
+<div class="line"><span class="lineno">  224</span>}</div>
 <div class="ttc" id="aclassALuggageHolder_html_a2fbb800f217376aa32bdee69f32a34f2"><div class="ttname"><a href="classALuggageHolder.html#a2fbb800f217376aa32bdee69f32a34f2">ALuggageHolder::ActivatedHeightOffset</a></div><div class="ttdeci">float ActivatedHeightOffset</div><div class="ttdef"><b>Definition</b> <a href="ALuggageHolder_8h_source.html#l00091">ALuggageHolder.h:91</a></div></div>
 <div class="ttc" id="aclassALuggageHolder_html_aa3217f0b4f3c24098a9c4cee7826f881"><div class="ttname"><a href="classALuggageHolder.html#aa3217f0b4f3c24098a9c4cee7826f881">ALuggageHolder::CurTarget</a></div><div class="ttdeci">TObjectPtr&lt; class AActor &gt; CurTarget</div><div class="ttdef"><b>Definition</b> <a href="ALuggageHolder_8h_source.html#l00083">ALuggageHolder.h:83</a></div></div>
 <div class="ttc" id="aclassALuggageHolder_html_ad8f96e926c40503e6700e367b3205ff3"><div class="ttname"><a href="classALuggageHolder.html#ad8f96e926c40503e6700e367b3205ff3">ALuggageHolder::bIsActivated</a></div><div class="ttdeci">bool bIsActivated</div><div class="ttdef"><b>Definition</b> <a href="ALuggageHolder_8h_source.html#l00087">ALuggageHolder.h:87</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="ALuggageHolder_8h_source.html#l00091">ActivatedHeightOffset</a>, <a class="el" href="ALuggageHolder_8h_source.html#l00087">bIsActivated</a>, <a class="el" href="ALuggageHolder_8h_source.html#l00083">CurTarget</a>, <a class="el" href="luggage_8h_source.html#l00096">Aluggage::GetSpawnIdx()</a>, <a class="el" href="ALuggageHolder_8h_source.html#l00075">HoldPos</a>, <a class="el" href="luggage_8cpp_source.html#l00362">Aluggage::SetAllCollision()</a>, <a class="el" href="ALuggageHolder_8cpp_source.html#l00231">UpdateActivateState()</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="ALuggageHolder_8h_source.html#l00091">ActivatedHeightOffset</a>, <a class="el" href="ALuggageHolder_8h_source.html#l00087">bIsActivated</a>, <a class="el" href="ALuggageHolder_8h_source.html#l00083">CurTarget</a>, <a class="el" href="luggage_8h_source.html#l00096">Aluggage::GetSpawnIdx()</a>, <a class="el" href="ALuggageHolder_8h_source.html#l00075">HoldPos</a>, <a class="el" href="luggage_8cpp_source.html#l00365">Aluggage::SetAllCollision()</a>, <a class="el" href="ALuggageHolder_8cpp_source.html#l00226">UpdateActivateState()</a>.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALuggageHolder_8cpp_source.html#l00118">OnBoxOverlapBegin()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALuggageHolder_8cpp_source.html#l00113">OnBoxOverlapBegin()</a>.</p>
 <div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-4-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-4-summary" class="dynsummary" style="display:block;">
@@ -541,13 +536,13 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ALuggageHolder_8cpp_source.html">ALuggageHolder.cpp</a> 파일의 <a class="el" href="ALuggageHolder_8cpp_source.html#l00091">91</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   92</span>{</div>
-<div class="line"><span class="lineno">   93</span>    Super::GetLifetimeReplicatedProps(OutLifetimeProps);</div>
-<div class="line"><span class="lineno">   94</span> </div>
-<div class="line"><span class="lineno">   95</span>    DOREPLIFETIME(<a class="code hl_class" href="classALuggageHolder.html">ALuggageHolder</a>, <a class="code hl_variable" href="classALuggageHolder.html#ad8f96e926c40503e6700e367b3205ff3">bIsActivated</a>);</div>
-<div class="line"><span class="lineno">   96</span>    DOREPLIFETIME(<a class="code hl_class" href="classALuggageHolder.html">ALuggageHolder</a>, <a class="code hl_variable" href="classALuggageHolder.html#aa3217f0b4f3c24098a9c4cee7826f881">CurTarget</a>);</div>
-<div class="line"><span class="lineno">   97</span>}</div>
+<p class="definition"><a class="el" href="ALuggageHolder_8cpp_source.html">ALuggageHolder.cpp</a> 파일의 <a class="el" href="ALuggageHolder_8cpp_source.html#l00086">86</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   87</span>{</div>
+<div class="line"><span class="lineno">   88</span>    Super::GetLifetimeReplicatedProps(OutLifetimeProps);</div>
+<div class="line"><span class="lineno">   89</span> </div>
+<div class="line"><span class="lineno">   90</span>    DOREPLIFETIME(<a class="code hl_class" href="classALuggageHolder.html">ALuggageHolder</a>, <a class="code hl_variable" href="classALuggageHolder.html#ad8f96e926c40503e6700e367b3205ff3">bIsActivated</a>);</div>
+<div class="line"><span class="lineno">   91</span>    DOREPLIFETIME(<a class="code hl_class" href="classALuggageHolder.html">ALuggageHolder</a>, <a class="code hl_variable" href="classALuggageHolder.html#aa3217f0b4f3c24098a9c4cee7826f881">CurTarget</a>);</div>
+<div class="line"><span class="lineno">   92</span>}</div>
 <div class="ttc" id="aclassALuggageHolder_html"><div class="ttname"><a href="classALuggageHolder.html">ALuggageHolder</a></div><div class="ttdef"><b>Definition</b> <a href="ALuggageHolder_8h_source.html#l00011">ALuggageHolder.h:12</a></div></div>
 </div><!-- fragment -->
 <p class="reference">다음을 참조함 :  <a class="el" href="ALuggageHolder_8h_source.html#l00087">bIsActivated</a>, <a class="el" href="ALuggageHolder_8h_source.html#l00083">CurTarget</a>.</p>
@@ -578,7 +573,7 @@ Private 속성</h2></td></tr>
   </dd>
 </dl>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALuggageHolder_8cpp_source.html#l00118">OnBoxOverlapBegin()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALuggageHolder_8cpp_source.html#l00113">OnBoxOverlapBegin()</a>.</p>
 <div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-7-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-7-summary" class="dynsummary" style="display:block;">
@@ -624,7 +619,7 @@ Private 속성</h2></td></tr>
   </dd>
 </dl>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALuggageHolder_8cpp_source.html#l00118">OnBoxOverlapBegin()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALuggageHolder_8cpp_source.html#l00113">OnBoxOverlapBegin()</a>.</p>
 <div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-8-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-8-summary" class="dynsummary" style="display:block;">
@@ -651,7 +646,7 @@ Private 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALuggageHolder_8cpp_source.html#l00118">OnBoxOverlapBegin()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALuggageHolder_8cpp_source.html#l00113">OnBoxOverlapBegin()</a>.</p>
 <div id="dynsection-9" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-9-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-9-summary" class="dynsummary" style="display:block;">
@@ -720,91 +715,91 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ALuggageHolder_8cpp_source.html">ALuggageHolder.cpp</a> 파일의 <a class="el" href="ALuggageHolder_8cpp_source.html#l00118">118</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  125</span>{</div>
-<div class="line"><span class="lineno">  126</span>    <span class="keywordflow">if</span> (!OtherActor)</div>
-<div class="line"><span class="lineno">  127</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  128</span> </div>
-<div class="line"><span class="lineno">  129</span>    <span class="keywordflow">if</span> (!HasAuthority())</div>
-<div class="line"><span class="lineno">  130</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  131</span> </div>
-<div class="line"><span class="lineno">  132</span>    <span class="keywordflow">if</span> ( <a class="code hl_variable" href="classALuggageHolder.html#ad8f96e926c40503e6700e367b3205ff3">bIsActivated</a> )</div>
-<div class="line"><span class="lineno">  133</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  134</span> </div>
-<div class="line"><span class="lineno">  135</span>    <a class="code hl_class" href="classALingoGameState.html">ALingoGameState</a>* GS = Cast&lt;ALingoGameState&gt;(GetWorld()-&gt;GetGameState());</div>
-<div class="line"><span class="lineno">  136</span>    <span class="keywordflow">if</span> (!GS)</div>
-<div class="line"><span class="lineno">  137</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  138</span>    </div>
-<div class="line"><span class="lineno">  139</span>    <span class="comment">// Luggage인지 확인</span></div>
-<div class="line"><span class="lineno">  140</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> Luggage = Cast&lt;Aluggage&gt;(OtherActor))</div>
-<div class="line"><span class="lineno">  141</span>    {</div>
-<div class="line"><span class="lineno">  142</span>        <span class="comment">// Hook 중인 Luggage는 무시 (PlayerActor가 들고 있는 상태)</span></div>
-<div class="line"><span class="lineno">  143</span>        <span class="keywordflow">if</span> (Luggage-&gt;bIsBeingHooked)</div>
-<div class="line"><span class="lineno">  144</span>            <span class="keywordflow">return</span>;</div>
+<p class="definition"><a class="el" href="ALuggageHolder_8cpp_source.html">ALuggageHolder.cpp</a> 파일의 <a class="el" href="ALuggageHolder_8cpp_source.html#l00113">113</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  120</span>{</div>
+<div class="line"><span class="lineno">  121</span>    <span class="keywordflow">if</span> (!OtherActor)</div>
+<div class="line"><span class="lineno">  122</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  123</span> </div>
+<div class="line"><span class="lineno">  124</span>    <span class="keywordflow">if</span> (!HasAuthority())</div>
+<div class="line"><span class="lineno">  125</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  126</span> </div>
+<div class="line"><span class="lineno">  127</span>    <span class="keywordflow">if</span> ( <a class="code hl_variable" href="classALuggageHolder.html#ad8f96e926c40503e6700e367b3205ff3">bIsActivated</a> )</div>
+<div class="line"><span class="lineno">  128</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  129</span> </div>
+<div class="line"><span class="lineno">  130</span>    <a class="code hl_class" href="classALingoGameState.html">ALingoGameState</a>* GS = Cast&lt;ALingoGameState&gt;(GetWorld()-&gt;GetGameState());</div>
+<div class="line"><span class="lineno">  131</span>    <span class="keywordflow">if</span> (!GS)</div>
+<div class="line"><span class="lineno">  132</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  133</span>    </div>
+<div class="line"><span class="lineno">  134</span>    <span class="comment">// Luggage인지 확인</span></div>
+<div class="line"><span class="lineno">  135</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> Luggage = Cast&lt;Aluggage&gt;(OtherActor))</div>
+<div class="line"><span class="lineno">  136</span>    {</div>
+<div class="line"><span class="lineno">  137</span>        <span class="comment">// Hook 중인 Luggage는 무시 (PlayerActor가 들고 있는 상태)</span></div>
+<div class="line"><span class="lineno">  138</span>        <span class="keywordflow">if</span> (Luggage-&gt;bIsBeingHooked)</div>
+<div class="line"><span class="lineno">  139</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  140</span> </div>
+<div class="line"><span class="lineno">  141</span>        <span class="keyword">const</span> <span class="keywordtype">bool</span> bSuccess = <a class="code hl_function" href="classALuggageHolder.html#a2d66a7428b93c7189b96aac44c40f6ea">CheckLuggage</a>(Luggage, GS-&gt;<a class="code hl_function" href="classALingoGameState.html#ad05acb80ff93078c77995753905def43">GetReadScenarioData</a>().<a class="code hl_variable" href="structFResponseReadScenario.html#a6f6faa9309a1a5f3165f8c0288b1217f">correct_answer_index</a> );</div>
+<div class="line"><span class="lineno">  142</span> </div>
+<div class="line"><span class="lineno">  143</span>        <span class="comment">// 블루프린트 이벤트 호출</span></div>
+<div class="line"><span class="lineno">  144</span>        <a class="code hl_function" href="classALuggageHolder.html#a5c6784313d29869a4a17808d628add32">OnActivate</a>(bSuccess);</div>
 <div class="line"><span class="lineno">  145</span> </div>
-<div class="line"><span class="lineno">  146</span>        <span class="keyword">const</span> <span class="keywordtype">bool</span> bSuccess = <a class="code hl_function" href="classALuggageHolder.html#a2d66a7428b93c7189b96aac44c40f6ea">CheckLuggage</a>(Luggage, GS-&gt;<a class="code hl_function" href="classALingoGameState.html#ad05acb80ff93078c77995753905def43">GetReadScenarioData</a>().<a class="code hl_variable" href="structFResponseReadScenario.html#a6f6faa9309a1a5f3165f8c0288b1217f">correct_answer_index</a> );</div>
-<div class="line"><span class="lineno">  147</span> </div>
-<div class="line"><span class="lineno">  148</span>        <span class="comment">// 블루프린트 이벤트 호출</span></div>
-<div class="line"><span class="lineno">  149</span>        <a class="code hl_function" href="classALuggageHolder.html#a5c6784313d29869a4a17808d628add32">OnActivate</a>(bSuccess);</div>
+<div class="line"><span class="lineno">  146</span>        <span class="keywordflow">if</span> (bSuccess)</div>
+<div class="line"><span class="lineno">  147</span>        {</div>
+<div class="line"><span class="lineno">  148</span>            <span class="comment">// 정답인 경우</span></div>
+<div class="line"><span class="lineno">  149</span>            int32 CorrectIdx = Luggage-&gt;GetSpawnIdx();</div>
 <div class="line"><span class="lineno">  150</span> </div>
-<div class="line"><span class="lineno">  151</span>        <span class="keywordflow">if</span> (bSuccess)</div>
-<div class="line"><span class="lineno">  152</span>        {</div>
-<div class="line"><span class="lineno">  153</span>            <span class="comment">// 정답인 경우</span></div>
-<div class="line"><span class="lineno">  154</span>            int32 CorrectIdx = Luggage-&gt;GetSpawnIdx();</div>
-<div class="line"><span class="lineno">  155</span> </div>
-<div class="line"><span class="lineno">  156</span>            <span class="comment">// 마커 표시</span></div>
-<div class="line"><span class="lineno">  157</span>            GS-&gt;<a class="code hl_function" href="classALingoGameState.html#a8887538e3bd51bebaf75d626cb19ccbc">SetAllCompassVisibility</a>(<span class="keyword">false</span>);</div>
-<div class="line"><span class="lineno">  158</span>            GS-&gt;<a class="code hl_function" href="classALingoGameState.html#a7d479560d001a10c38005a8929d414fe">SetCompassVisibilityByTag</a>(<span class="stringliteral">&quot;ReadQuestEnd&quot;</span>, <span class="keyword">true</span>);</div>
-<div class="line"><span class="lineno">  159</span>            </div>
-<div class="line"><span class="lineno">  160</span>            FTimerHandle TimerHandle;</div>
-<div class="line"><span class="lineno">  161</span>            GetWorldTimerManager().SetTimer(TimerHandle, [<span class="keyword">this</span>, CorrectIdx]</div>
-<div class="line"><span class="lineno">  162</span>            {</div>
-<div class="line"><span class="lineno">  163</span>                <span class="comment">// 모든 클라이언트에 정답 인덱스와 함께 결과 팝업 표시</span></div>
-<div class="line"><span class="lineno">  164</span>                <a class="code hl_function" href="classALuggageHolder.html#a5232191a346c7392871fc1fe06a30def">Multicast_ShowResultPopup</a>(CorrectIdx);</div>
-<div class="line"><span class="lineno">  165</span>                </div>
-<div class="line"><span class="lineno">  166</span>            }, 0.5f, <span class="keyword">false</span>);</div>
-<div class="line"><span class="lineno">  167</span>        }</div>
-<div class="line"><span class="lineno">  168</span>        <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  169</span>        {</div>
-<div class="line"><span class="lineno">  170</span>            <span class="comment">// 오답인 경우</span></div>
-<div class="line"><span class="lineno">  171</span>            FTimerHandle TimerHandle;</div>
-<div class="line"><span class="lineno">  172</span>            GetWorldTimerManager().SetTimer(TimerHandle, [<span class="keyword">this</span>, Luggage, GS]</div>
-<div class="line"><span class="lineno">  173</span>            {</div>
-<div class="line"><span class="lineno">  174</span>                GS-&gt;<a class="code hl_function" href="classALingoGameState.html#aed8f9e471a4949c57f897cf247c29568">AddWrongReadAnswer</a>(Luggage-&gt;GetSpawnIdx());</div>
-<div class="line"><span class="lineno">  175</span> </div>
-<div class="line"><span class="lineno">  176</span>                <span class="comment">// 모든 클라이언트에 오답 메시지 표시</span></div>
-<div class="line"><span class="lineno">  177</span>                <a class="code hl_function" href="classALuggageHolder.html#a33a0d12b7420dcd881b5b03a7cf2235c">Multicast_ShowWrongPopup</a>(Luggage-&gt;GetColor(), Luggage-&gt;GetPattern());</div>
-<div class="line"><span class="lineno">  178</span> </div>
-<div class="line"><span class="lineno">  179</span>                <span class="comment">// Dissolve 재생</span></div>
-<div class="line"><span class="lineno">  180</span>                GetWorldTimerManager().SetTimer(<a class="code hl_variable" href="classALuggageHolder.html#a1ca29325d562fcca7b996ef6cb3e0321">DestroyTimerHandle</a>, [<span class="keyword">this</span>, Luggage]</div>
-<div class="line"><span class="lineno">  181</span>                {</div>
-<div class="line"><span class="lineno">  182</span>                    <span class="keywordflow">if</span> (Luggage-&gt;UpdateDissolve())</div>
-<div class="line"><span class="lineno">  183</span>                    {</div>
-<div class="line"><span class="lineno">  184</span>                        GetWorldTimerManager().ClearTimer(DestroyTimerHandle);</div>
-<div class="line"><span class="lineno">  185</span>                        <span class="comment">// 큐브 소거 (서버에서만, 자동 복제됨)</span></div>
-<div class="line"><span class="lineno">  186</span>                        Luggage-&gt;Destroy();</div>
-<div class="line"><span class="lineno">  187</span>                    }</div>
-<div class="line"><span class="lineno">  188</span>                },GetWorld()-&gt;DeltaTimeSeconds, <span class="keyword">true</span>);</div>
-<div class="line"><span class="lineno">  189</span>                </div>
-<div class="line"><span class="lineno">  190</span>            }, 0.5f, <span class="keyword">false</span>);</div>
-<div class="line"><span class="lineno">  191</span>        }</div>
-<div class="line"><span class="lineno">  192</span>    }</div>
-<div class="line"><span class="lineno">  193</span>}</div>
+<div class="line"><span class="lineno">  151</span>            <span class="comment">// 마커 표시</span></div>
+<div class="line"><span class="lineno">  152</span>            GS-&gt;<a class="code hl_function" href="classALingoGameState.html#a8887538e3bd51bebaf75d626cb19ccbc">SetAllCompassVisibility</a>(<span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">  153</span>            GS-&gt;<a class="code hl_function" href="classALingoGameState.html#a7d479560d001a10c38005a8929d414fe">SetCompassVisibilityByTag</a>(<span class="stringliteral">&quot;ReadQuestEnd&quot;</span>, <span class="keyword">true</span>);</div>
+<div class="line"><span class="lineno">  154</span>            </div>
+<div class="line"><span class="lineno">  155</span>            FTimerHandle TimerHandle;</div>
+<div class="line"><span class="lineno">  156</span>            GetWorldTimerManager().SetTimer(TimerHandle, [<span class="keyword">this</span>, CorrectIdx]</div>
+<div class="line"><span class="lineno">  157</span>            {</div>
+<div class="line"><span class="lineno">  158</span>                <span class="comment">// 모든 클라이언트에 정답 인덱스와 함께 결과 팝업 표시</span></div>
+<div class="line"><span class="lineno">  159</span>                <a class="code hl_function" href="classALuggageHolder.html#a5232191a346c7392871fc1fe06a30def">Multicast_ShowResultPopup</a>(CorrectIdx);</div>
+<div class="line"><span class="lineno">  160</span>                </div>
+<div class="line"><span class="lineno">  161</span>            }, 0.5f, <span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">  162</span>        }</div>
+<div class="line"><span class="lineno">  163</span>        <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  164</span>        {</div>
+<div class="line"><span class="lineno">  165</span>            <span class="comment">// 오답인 경우</span></div>
+<div class="line"><span class="lineno">  166</span>            FTimerHandle TimerHandle;</div>
+<div class="line"><span class="lineno">  167</span>            GetWorldTimerManager().SetTimer(TimerHandle, [<span class="keyword">this</span>, Luggage, GS]</div>
+<div class="line"><span class="lineno">  168</span>            {</div>
+<div class="line"><span class="lineno">  169</span>                GS-&gt;<a class="code hl_function" href="classALingoGameState.html#aed8f9e471a4949c57f897cf247c29568">AddWrongReadAnswer</a>(Luggage-&gt;GetSpawnIdx());</div>
+<div class="line"><span class="lineno">  170</span> </div>
+<div class="line"><span class="lineno">  171</span>                <span class="comment">// 모든 클라이언트에 오답 메시지 표시</span></div>
+<div class="line"><span class="lineno">  172</span>                <a class="code hl_function" href="classALuggageHolder.html#a33a0d12b7420dcd881b5b03a7cf2235c">Multicast_ShowWrongPopup</a>(Luggage-&gt;GetColor(), Luggage-&gt;GetPattern());</div>
+<div class="line"><span class="lineno">  173</span> </div>
+<div class="line"><span class="lineno">  174</span>                <span class="comment">// Dissolve 재생</span></div>
+<div class="line"><span class="lineno">  175</span>                GetWorldTimerManager().SetTimer(<a class="code hl_variable" href="classALuggageHolder.html#a1ca29325d562fcca7b996ef6cb3e0321">DestroyTimerHandle</a>, [<span class="keyword">this</span>, Luggage]</div>
+<div class="line"><span class="lineno">  176</span>                {</div>
+<div class="line"><span class="lineno">  177</span>                    <span class="keywordflow">if</span> (Luggage-&gt;UpdateDissolve())</div>
+<div class="line"><span class="lineno">  178</span>                    {</div>
+<div class="line"><span class="lineno">  179</span>                        GetWorldTimerManager().ClearTimer(DestroyTimerHandle);</div>
+<div class="line"><span class="lineno">  180</span>                        <span class="comment">// 큐브 소거 (서버에서만, 자동 복제됨)</span></div>
+<div class="line"><span class="lineno">  181</span>                        Luggage-&gt;Destroy();</div>
+<div class="line"><span class="lineno">  182</span>                    }</div>
+<div class="line"><span class="lineno">  183</span>                },GetWorld()-&gt;DeltaTimeSeconds, <span class="keyword">true</span>);</div>
+<div class="line"><span class="lineno">  184</span>                </div>
+<div class="line"><span class="lineno">  185</span>            }, 0.5f, <span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">  186</span>        }</div>
+<div class="line"><span class="lineno">  187</span>    }</div>
+<div class="line"><span class="lineno">  188</span>}</div>
 <div class="ttc" id="aclassALingoGameState_html"><div class="ttname"><a href="classALingoGameState.html">ALingoGameState</a></div><div class="ttdef"><b>Definition</b> <a href="ALingoGameState_8h_source.html#l00028">ALingoGameState.h:29</a></div></div>
 <div class="ttc" id="aclassALingoGameState_html_a7d479560d001a10c38005a8929d414fe"><div class="ttname"><a href="classALingoGameState.html#a7d479560d001a10c38005a8929d414fe">ALingoGameState::SetCompassVisibilityByTag</a></div><div class="ttdeci">void SetCompassVisibilityByTag(FName Tag, bool bVisible)</div><div class="ttdef"><b>Definition</b> <a href="ALingoGameState_8cpp_source.html#l00113">ALingoGameState.cpp:113</a></div></div>
 <div class="ttc" id="aclassALingoGameState_html_a8887538e3bd51bebaf75d626cb19ccbc"><div class="ttname"><a href="classALingoGameState.html#a8887538e3bd51bebaf75d626cb19ccbc">ALingoGameState::SetAllCompassVisibility</a></div><div class="ttdeci">void SetAllCompassVisibility(bool bVisible)</div><div class="ttdef"><b>Definition</b> <a href="ALingoGameState_8cpp_source.html#l00127">ALingoGameState.cpp:127</a></div></div>
 <div class="ttc" id="aclassALingoGameState_html_ad05acb80ff93078c77995753905def43"><div class="ttname"><a href="classALingoGameState.html#ad05acb80ff93078c77995753905def43">ALingoGameState::GetReadScenarioData</a></div><div class="ttdeci">FORCEINLINE const FResponseReadScenario &amp; GetReadScenarioData() const</div><div class="ttdef"><b>Definition</b> <a href="ALingoGameState_8h_source.html#l00048">ALingoGameState.h:48</a></div></div>
 <div class="ttc" id="aclassALingoGameState_html_aed8f9e471a4949c57f897cf247c29568"><div class="ttname"><a href="classALingoGameState.html#aed8f9e471a4949c57f897cf247c29568">ALingoGameState::AddWrongReadAnswer</a></div><div class="ttdeci">void AddWrongReadAnswer(int32 Value)</div><div class="ttdef"><b>Definition</b> <a href="ALingoGameState_8cpp_source.html#l00097">ALingoGameState.cpp:97</a></div></div>
 <div class="ttc" id="aclassALuggageHolder_html_a1ca29325d562fcca7b996ef6cb3e0321"><div class="ttname"><a href="classALuggageHolder.html#a1ca29325d562fcca7b996ef6cb3e0321">ALuggageHolder::DestroyTimerHandle</a></div><div class="ttdeci">FTimerHandle DestroyTimerHandle</div><div class="ttdef"><b>Definition</b> <a href="ALuggageHolder_8h_source.html#l00102">ALuggageHolder.h:102</a></div></div>
-<div class="ttc" id="aclassALuggageHolder_html_a2d66a7428b93c7189b96aac44c40f6ea"><div class="ttname"><a href="classALuggageHolder.html#a2d66a7428b93c7189b96aac44c40f6ea">ALuggageHolder::CheckLuggage</a></div><div class="ttdeci">bool CheckLuggage(class Aluggage *TargetLuggage, int CorrectIndex)</div><div class="ttdef"><b>Definition</b> <a href="ALuggageHolder_8cpp_source.html#l00195">ALuggageHolder.cpp:195</a></div></div>
+<div class="ttc" id="aclassALuggageHolder_html_a2d66a7428b93c7189b96aac44c40f6ea"><div class="ttname"><a href="classALuggageHolder.html#a2d66a7428b93c7189b96aac44c40f6ea">ALuggageHolder::CheckLuggage</a></div><div class="ttdeci">bool CheckLuggage(class Aluggage *TargetLuggage, int CorrectIndex)</div><div class="ttdef"><b>Definition</b> <a href="ALuggageHolder_8cpp_source.html#l00190">ALuggageHolder.cpp:190</a></div></div>
 <div class="ttc" id="aclassALuggageHolder_html_a33a0d12b7420dcd881b5b03a7cf2235c"><div class="ttname"><a href="classALuggageHolder.html#a33a0d12b7420dcd881b5b03a7cf2235c">ALuggageHolder::Multicast_ShowWrongPopup</a></div><div class="ttdeci">void Multicast_ShowWrongPopup(const FString &amp;LuggageColor, const FString &amp;LuggagePattern)</div><div class="ttdoc">[Multicast RPC] 모든 클라이언트에 오답 메시지 표시</div></div>
 <div class="ttc" id="aclassALuggageHolder_html_a5232191a346c7392871fc1fe06a30def"><div class="ttname"><a href="classALuggageHolder.html#a5232191a346c7392871fc1fe06a30def">ALuggageHolder::Multicast_ShowResultPopup</a></div><div class="ttdeci">void Multicast_ShowResultPopup(int32 CorrectAnswerIndex)</div><div class="ttdoc">[Multicast RPC] 모든 클라이언트에 정답 결과 팝업 표시</div></div>
 <div class="ttc" id="aclassALuggageHolder_html_a5c6784313d29869a4a17808d628add32"><div class="ttname"><a href="classALuggageHolder.html#a5c6784313d29869a4a17808d628add32">ALuggageHolder::OnActivate</a></div><div class="ttdeci">void OnActivate(bool bSuccess)</div></div>
 <div class="ttc" id="astructFResponseReadScenario_html_a6f6faa9309a1a5f3165f8c0288b1217f"><div class="ttname"><a href="structFResponseReadScenario.html#a6f6faa9309a1a5f3165f8c0288b1217f">FResponseReadScenario::correct_answer_index</a></div><div class="ttdeci">int32 correct_answer_index</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00927">NetworkData.h:927</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="ALingoGameState_8cpp_source.html#l00097">ALingoGameState::AddWrongReadAnswer()</a>, <a class="el" href="ALuggageHolder_8h_source.html#l00087">bIsActivated</a>, <a class="el" href="ALuggageHolder_8cpp_source.html#l00195">CheckLuggage()</a>, <a class="el" href="NetworkData_8h_source.html#l00927">FResponseReadScenario::correct_answer_index</a>, <a class="el" href="ALuggageHolder_8h_source.html#l00102">DestroyTimerHandle</a>, <a class="el" href="ALingoGameState_8h_source.html#l00048">ALingoGameState::GetReadScenarioData()</a>, <a class="el" href="classALuggageHolder.html#a5232191a346c7392871fc1fe06a30def">Multicast_ShowResultPopup()</a>, <a class="el" href="classALuggageHolder.html#a33a0d12b7420dcd881b5b03a7cf2235c">Multicast_ShowWrongPopup()</a>, <a class="el" href="classALuggageHolder.html#a5c6784313d29869a4a17808d628add32">OnActivate()</a>, <a class="el" href="ALingoGameState_8cpp_source.html#l00127">ALingoGameState::SetAllCompassVisibility()</a>, <a class="el" href="ALingoGameState_8cpp_source.html#l00113">ALingoGameState::SetCompassVisibilityByTag()</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="ALingoGameState_8cpp_source.html#l00097">ALingoGameState::AddWrongReadAnswer()</a>, <a class="el" href="ALuggageHolder_8h_source.html#l00087">bIsActivated</a>, <a class="el" href="ALuggageHolder_8cpp_source.html#l00190">CheckLuggage()</a>, <a class="el" href="NetworkData_8h_source.html#l00927">FResponseReadScenario::correct_answer_index</a>, <a class="el" href="ALuggageHolder_8h_source.html#l00102">DestroyTimerHandle</a>, <a class="el" href="ALingoGameState_8h_source.html#l00048">ALingoGameState::GetReadScenarioData()</a>, <a class="el" href="classALuggageHolder.html#a5232191a346c7392871fc1fe06a30def">Multicast_ShowResultPopup()</a>, <a class="el" href="classALuggageHolder.html#a33a0d12b7420dcd881b5b03a7cf2235c">Multicast_ShowWrongPopup()</a>, <a class="el" href="classALuggageHolder.html#a5c6784313d29869a4a17808d628add32">OnActivate()</a>, <a class="el" href="ALingoGameState_8cpp_source.html#l00127">ALingoGameState::SetAllCompassVisibility()</a>, <a class="el" href="ALingoGameState_8cpp_source.html#l00113">ALingoGameState::SetCompassVisibilityByTag()</a>.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALuggageHolder_8cpp_source.html#l00066">BeginPlay()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALuggageHolder_8cpp_source.html#l00061">BeginPlay()</a>.</p>
 <div id="dynsection-10" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-10-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-10-summary" class="dynsummary" style="display:block;">
@@ -845,18 +840,18 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ALuggageHolder_8cpp_source.html">ALuggageHolder.cpp</a> 파일의 <a class="el" href="ALuggageHolder_8cpp_source.html#l00105">105</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  106</span>{</div>
-<div class="line"><span class="lineno">  107</span>    <span class="comment">// CurTarget이 복제될 때 클라이언트에서도 충돌 비활성화</span></div>
-<div class="line"><span class="lineno">  108</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classALuggageHolder.html#aa3217f0b4f3c24098a9c4cee7826f881">CurTarget</a>)</div>
-<div class="line"><span class="lineno">  109</span>    {</div>
-<div class="line"><span class="lineno">  110</span>        <span class="keywordflow">if</span> (<a class="code hl_class" href="classAluggage.html">Aluggage</a>* Luggage = Cast&lt;Aluggage&gt;(<a class="code hl_variable" href="classALuggageHolder.html#aa3217f0b4f3c24098a9c4cee7826f881">CurTarget</a>))</div>
-<div class="line"><span class="lineno">  111</span>        {</div>
-<div class="line"><span class="lineno">  112</span>            Luggage-&gt;SetAllCollision(<span class="keyword">false</span>);</div>
-<div class="line"><span class="lineno">  113</span>            <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;AHolder::OnRep_CurTarget - Disabled collision for Luggage on client&quot;</span>));</div>
-<div class="line"><span class="lineno">  114</span>        }</div>
-<div class="line"><span class="lineno">  115</span>    }</div>
-<div class="line"><span class="lineno">  116</span>}</div>
+<p class="definition"><a class="el" href="ALuggageHolder_8cpp_source.html">ALuggageHolder.cpp</a> 파일의 <a class="el" href="ALuggageHolder_8cpp_source.html#l00100">100</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  101</span>{</div>
+<div class="line"><span class="lineno">  102</span>    <span class="comment">// CurTarget이 복제될 때 클라이언트에서도 충돌 비활성화</span></div>
+<div class="line"><span class="lineno">  103</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classALuggageHolder.html#aa3217f0b4f3c24098a9c4cee7826f881">CurTarget</a>)</div>
+<div class="line"><span class="lineno">  104</span>    {</div>
+<div class="line"><span class="lineno">  105</span>        <span class="keywordflow">if</span> (<a class="code hl_class" href="classAluggage.html">Aluggage</a>* Luggage = Cast&lt;Aluggage&gt;(<a class="code hl_variable" href="classALuggageHolder.html#aa3217f0b4f3c24098a9c4cee7826f881">CurTarget</a>))</div>
+<div class="line"><span class="lineno">  106</span>        {</div>
+<div class="line"><span class="lineno">  107</span>            Luggage-&gt;SetAllCollision(<span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">  108</span>            <a class="code hl_define" href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a>(TEXT(<span class="stringliteral">&quot;AHolder::OnRep_CurTarget - Disabled collision for Luggage on client&quot;</span>));</div>
+<div class="line"><span class="lineno">  109</span>        }</div>
+<div class="line"><span class="lineno">  110</span>    }</div>
+<div class="line"><span class="lineno">  111</span>}</div>
 <div class="ttc" id="aGameLogging_8h_html_a9998c8beb11a6bad6ffada2e701fc0cf"><div class="ttname"><a href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a></div><div class="ttdeci">#define PRINTLOG(fmt,...)</div><div class="ttdef"><b>Definition</b> <a href="GameLogging_8h_source.html#l00030">GameLogging.h:30</a></div></div>
 <div class="ttc" id="aclassAluggage_html"><div class="ttname"><a href="classAluggage.html">Aluggage</a></div><div class="ttdoc">상호작용 가능한 수하물 액터</div><div class="ttdef"><b>Definition</b> <a href="luggage_8h_source.html#l00014">luggage.h:15</a></div></div>
 </div><!-- fragment -->
@@ -887,13 +882,13 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ALuggageHolder_8cpp_source.html">ALuggageHolder.cpp</a> 파일의 <a class="el" href="ALuggageHolder_8cpp_source.html#l00099">99</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  100</span>{</div>
-<div class="line"><span class="lineno">  101</span>    <span class="comment">// bIsActivated가 복제될 때 머티리얼 업데이트</span></div>
-<div class="line"><span class="lineno">  102</span>    <a class="code hl_function" href="classALuggageHolder.html#a38db790f0dda731912202818138a7892">UpdateActivateState</a>(<a class="code hl_variable" href="classALuggageHolder.html#ad8f96e926c40503e6700e367b3205ff3">bIsActivated</a>);</div>
-<div class="line"><span class="lineno">  103</span>}</div>
+<p class="definition"><a class="el" href="ALuggageHolder_8cpp_source.html">ALuggageHolder.cpp</a> 파일의 <a class="el" href="ALuggageHolder_8cpp_source.html#l00094">94</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   95</span>{</div>
+<div class="line"><span class="lineno">   96</span>    <span class="comment">// bIsActivated가 복제될 때 머티리얼 업데이트</span></div>
+<div class="line"><span class="lineno">   97</span>    <a class="code hl_function" href="classALuggageHolder.html#a38db790f0dda731912202818138a7892">UpdateActivateState</a>(<a class="code hl_variable" href="classALuggageHolder.html#ad8f96e926c40503e6700e367b3205ff3">bIsActivated</a>);</div>
+<div class="line"><span class="lineno">   98</span>}</div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="ALuggageHolder_8h_source.html#l00087">bIsActivated</a>, <a class="el" href="ALuggageHolder_8cpp_source.html#l00231">UpdateActivateState()</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="ALuggageHolder_8h_source.html#l00087">bIsActivated</a>, <a class="el" href="ALuggageHolder_8cpp_source.html#l00226">UpdateActivateState()</a>.</p>
 <div id="dynsection-12" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-12-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-12-summary" class="dynsummary" style="display:block;">
@@ -930,10 +925,10 @@ Private 속성</h2></td></tr>
 
 <p><a class="el" href="classICompassTargetInterface.html#af8c2cdaa8f76f567731bbb6a99a09a89">ICompassTargetInterface</a>(으)로부터 재구현되었습니다.</p>
 
-<p class="definition"><a class="el" href="ALuggageHolder_8cpp_source.html">ALuggageHolder.cpp</a> 파일의 <a class="el" href="ALuggageHolder_8cpp_source.html#l00268">268</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  269</span>{</div>
-<div class="line"><span class="lineno">  270</span>    <a class="code hl_variable" href="classICompassTargetInterface.html#afab55eb3a8c206914d440493384e9401">MarkerType</a> = InMarkerType;</div>
-<div class="line"><span class="lineno">  271</span>}</div>
+<p class="definition"><a class="el" href="ALuggageHolder_8cpp_source.html">ALuggageHolder.cpp</a> 파일의 <a class="el" href="ALuggageHolder_8cpp_source.html#l00263">263</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  264</span>{</div>
+<div class="line"><span class="lineno">  265</span>    <a class="code hl_variable" href="classICompassTargetInterface.html#afab55eb3a8c206914d440493384e9401">MarkerType</a> = InMarkerType;</div>
+<div class="line"><span class="lineno">  266</span>}</div>
 </div><!-- fragment -->
 <p class="reference">다음을 참조함 :  <a class="el" href="CompassTargetInterface_8h_source.html#l00026">ICompassTargetInterface::MarkerType</a>.</p>
 
@@ -1030,24 +1025,24 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ALuggageHolder_8cpp_source.html">ALuggageHolder.cpp</a> 파일의 <a class="el" href="ALuggageHolder_8cpp_source.html#l00076">76</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   77</span>{</div>
-<div class="line"><span class="lineno">   78</span>    Super::Tick(DeltaTime);</div>
-<div class="line"><span class="lineno">   79</span> </div>
-<div class="line"><span class="lineno">   80</span>    <span class="comment">// CurrentLuggage가 유효하고 활성화된 상태라면 회전</span></div>
-<div class="line"><span class="lineno">   81</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classALuggageHolder.html#ad8f96e926c40503e6700e367b3205ff3">bIsActivated</a> &amp;&amp; <a class="code hl_variable" href="classALuggageHolder.html#aa3217f0b4f3c24098a9c4cee7826f881">CurTarget</a>)</div>
-<div class="line"><span class="lineno">   82</span>    {</div>
-<div class="line"><span class="lineno">   83</span>        FRotator CurrentRotation = <a class="code hl_variable" href="classALuggageHolder.html#aa3217f0b4f3c24098a9c4cee7826f881">CurTarget</a>-&gt;GetActorRotation();</div>
-<div class="line"><span class="lineno">   84</span>        CurrentRotation.Yaw += <a class="code hl_variable" href="classALuggageHolder.html#af37d6b2b11e6e6e0dcc012ed6b17fb05">RotationSpeed</a> * DeltaTime;</div>
-<div class="line"><span class="lineno">   85</span>        <a class="code hl_variable" href="classALuggageHolder.html#aa3217f0b4f3c24098a9c4cee7826f881">CurTarget</a>-&gt;SetActorRotation(CurrentRotation);</div>
-<div class="line"><span class="lineno">   86</span>    }</div>
-<div class="line"><span class="lineno">   87</span>    </div>
-<div class="line"><span class="lineno">   88</span>    <a class="code hl_function" href="classALuggageHolder.html#a032a7c031cbaab33f04405ef25c4ede1">BillboardInteractWidget</a>();</div>
-<div class="line"><span class="lineno">   89</span>}</div>
-<div class="ttc" id="aclassALuggageHolder_html_a032a7c031cbaab33f04405ef25c4ede1"><div class="ttname"><a href="classALuggageHolder.html#a032a7c031cbaab33f04405ef25c4ede1">ALuggageHolder::BillboardInteractWidget</a></div><div class="ttdeci">void BillboardInteractWidget()</div><div class="ttdoc">상호작용 위젯 빌보드화 (카메라를 향하도록)</div><div class="ttdef"><b>Definition</b> <a href="ALuggageHolder_8cpp_source.html#l00245">ALuggageHolder.cpp:245</a></div></div>
+<p class="definition"><a class="el" href="ALuggageHolder_8cpp_source.html">ALuggageHolder.cpp</a> 파일의 <a class="el" href="ALuggageHolder_8cpp_source.html#l00071">71</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   72</span>{</div>
+<div class="line"><span class="lineno">   73</span>    Super::Tick(DeltaTime);</div>
+<div class="line"><span class="lineno">   74</span> </div>
+<div class="line"><span class="lineno">   75</span>    <span class="comment">// CurrentLuggage가 유효하고 활성화된 상태라면 회전</span></div>
+<div class="line"><span class="lineno">   76</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classALuggageHolder.html#ad8f96e926c40503e6700e367b3205ff3">bIsActivated</a> &amp;&amp; <a class="code hl_variable" href="classALuggageHolder.html#aa3217f0b4f3c24098a9c4cee7826f881">CurTarget</a>)</div>
+<div class="line"><span class="lineno">   77</span>    {</div>
+<div class="line"><span class="lineno">   78</span>        FRotator CurrentRotation = <a class="code hl_variable" href="classALuggageHolder.html#aa3217f0b4f3c24098a9c4cee7826f881">CurTarget</a>-&gt;GetActorRotation();</div>
+<div class="line"><span class="lineno">   79</span>        CurrentRotation.Yaw += <a class="code hl_variable" href="classALuggageHolder.html#af37d6b2b11e6e6e0dcc012ed6b17fb05">RotationSpeed</a> * DeltaTime;</div>
+<div class="line"><span class="lineno">   80</span>        <a class="code hl_variable" href="classALuggageHolder.html#aa3217f0b4f3c24098a9c4cee7826f881">CurTarget</a>-&gt;SetActorRotation(CurrentRotation);</div>
+<div class="line"><span class="lineno">   81</span>    }</div>
+<div class="line"><span class="lineno">   82</span>    </div>
+<div class="line"><span class="lineno">   83</span>    <a class="code hl_function" href="classALuggageHolder.html#a032a7c031cbaab33f04405ef25c4ede1">BillboardInteractWidget</a>();</div>
+<div class="line"><span class="lineno">   84</span>}</div>
+<div class="ttc" id="aclassALuggageHolder_html_a032a7c031cbaab33f04405ef25c4ede1"><div class="ttname"><a href="classALuggageHolder.html#a032a7c031cbaab33f04405ef25c4ede1">ALuggageHolder::BillboardInteractWidget</a></div><div class="ttdeci">void BillboardInteractWidget()</div><div class="ttdoc">상호작용 위젯 빌보드화 (카메라를 향하도록)</div><div class="ttdef"><b>Definition</b> <a href="ALuggageHolder_8cpp_source.html#l00240">ALuggageHolder.cpp:240</a></div></div>
 <div class="ttc" id="aclassALuggageHolder_html_af37d6b2b11e6e6e0dcc012ed6b17fb05"><div class="ttname"><a href="classALuggageHolder.html#af37d6b2b11e6e6e0dcc012ed6b17fb05">ALuggageHolder::RotationSpeed</a></div><div class="ttdeci">float RotationSpeed</div><div class="ttdef"><b>Definition</b> <a href="ALuggageHolder_8h_source.html#l00094">ALuggageHolder.h:94</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="ALuggageHolder_8cpp_source.html#l00245">BillboardInteractWidget()</a>, <a class="el" href="ALuggageHolder_8h_source.html#l00087">bIsActivated</a>, <a class="el" href="ALuggageHolder_8h_source.html#l00083">CurTarget</a>, <a class="el" href="ALuggageHolder_8h_source.html#l00094">RotationSpeed</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="ALuggageHolder_8cpp_source.html#l00240">BillboardInteractWidget()</a>, <a class="el" href="ALuggageHolder_8h_source.html#l00087">bIsActivated</a>, <a class="el" href="ALuggageHolder_8h_source.html#l00083">CurTarget</a>, <a class="el" href="ALuggageHolder_8h_source.html#l00094">RotationSpeed</a>.</p>
 <div id="dynsection-14" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-14-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-14-summary" class="dynsummary" style="display:block;">
@@ -1082,23 +1077,23 @@ Private 속성</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="ALuggageHolder_8cpp_source.html">ALuggageHolder.cpp</a> 파일의 <a class="el" href="ALuggageHolder_8cpp_source.html#l00231">231</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  232</span>{</div>
-<div class="line"><span class="lineno">  233</span>    <span class="comment">// 머티리얼 파라미터 설정 (비활성화)</span></div>
-<div class="line"><span class="lineno">  234</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classALuggageHolder.html#ae20cb4c15a7ce93da7a3bc26c8d8cf09">MeshComponent</a> &amp;&amp; <a class="code hl_variable" href="classALuggageHolder.html#ae20cb4c15a7ce93da7a3bc26c8d8cf09">MeshComponent</a>-&gt;GetNumMaterials() &gt; 0)</div>
-<div class="line"><span class="lineno">  235</span>    {</div>
-<div class="line"><span class="lineno">  236</span>        UMaterialInstanceDynamic* DynamicMaterial = Cast&lt;UMaterialInstanceDynamic&gt;(<a class="code hl_variable" href="classALuggageHolder.html#ae20cb4c15a7ce93da7a3bc26c8d8cf09">MeshComponent</a>-&gt;GetMaterial(0));</div>
-<div class="line"><span class="lineno">  237</span>        <span class="keywordflow">if</span> (!DynamicMaterial)</div>
-<div class="line"><span class="lineno">  238</span>            DynamicMaterial = <a class="code hl_variable" href="classALuggageHolder.html#ae20cb4c15a7ce93da7a3bc26c8d8cf09">MeshComponent</a>-&gt;CreateDynamicMaterialInstance(0);</div>
-<div class="line"><span class="lineno">  239</span> </div>
-<div class="line"><span class="lineno">  240</span>        <span class="keywordflow">if</span> (DynamicMaterial)</div>
-<div class="line"><span class="lineno">  241</span>            DynamicMaterial-&gt;SetScalarParameterValue(FName(<span class="stringliteral">&quot;Activate&quot;</span>), State ? 1.0f : 0.0f);</div>
-<div class="line"><span class="lineno">  242</span>    }</div>
-<div class="line"><span class="lineno">  243</span>}</div>
+<p class="definition"><a class="el" href="ALuggageHolder_8cpp_source.html">ALuggageHolder.cpp</a> 파일의 <a class="el" href="ALuggageHolder_8cpp_source.html#l00226">226</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  227</span>{</div>
+<div class="line"><span class="lineno">  228</span>    <span class="comment">// 머티리얼 파라미터 설정 (비활성화)</span></div>
+<div class="line"><span class="lineno">  229</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classALuggageHolder.html#ae20cb4c15a7ce93da7a3bc26c8d8cf09">MeshComponent</a> &amp;&amp; <a class="code hl_variable" href="classALuggageHolder.html#ae20cb4c15a7ce93da7a3bc26c8d8cf09">MeshComponent</a>-&gt;GetNumMaterials() &gt; 0)</div>
+<div class="line"><span class="lineno">  230</span>    {</div>
+<div class="line"><span class="lineno">  231</span>        UMaterialInstanceDynamic* DynamicMaterial = Cast&lt;UMaterialInstanceDynamic&gt;(<a class="code hl_variable" href="classALuggageHolder.html#ae20cb4c15a7ce93da7a3bc26c8d8cf09">MeshComponent</a>-&gt;GetMaterial(0));</div>
+<div class="line"><span class="lineno">  232</span>        <span class="keywordflow">if</span> (!DynamicMaterial)</div>
+<div class="line"><span class="lineno">  233</span>            DynamicMaterial = <a class="code hl_variable" href="classALuggageHolder.html#ae20cb4c15a7ce93da7a3bc26c8d8cf09">MeshComponent</a>-&gt;CreateDynamicMaterialInstance(0);</div>
+<div class="line"><span class="lineno">  234</span> </div>
+<div class="line"><span class="lineno">  235</span>        <span class="keywordflow">if</span> (DynamicMaterial)</div>
+<div class="line"><span class="lineno">  236</span>            DynamicMaterial-&gt;SetScalarParameterValue(FName(<span class="stringliteral">&quot;Activate&quot;</span>), State ? 1.0f : 0.0f);</div>
+<div class="line"><span class="lineno">  237</span>    }</div>
+<div class="line"><span class="lineno">  238</span>}</div>
 </div><!-- fragment -->
 <p class="reference">다음을 참조함 :  <a class="el" href="ALuggageHolder_8h_source.html#l00072">MeshComponent</a>.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALuggageHolder_8cpp_source.html#l00066">BeginPlay()</a>, <a class="el" href="ALuggageHolder_8cpp_source.html#l00195">CheckLuggage()</a>, <a class="el" href="ALuggageHolder_8cpp_source.html#l00099">OnRep_IsActivated()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALuggageHolder_8cpp_source.html#l00061">BeginPlay()</a>, <a class="el" href="ALuggageHolder_8cpp_source.html#l00190">CheckLuggage()</a>, <a class="el" href="ALuggageHolder_8cpp_source.html#l00094">OnRep_IsActivated()</a>.</p>
 <div id="dynsection-15" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-15-trigger" src="closed.png" alt="+"/> 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-15-summary" class="dynsummary" style="display:block;">
@@ -1132,7 +1127,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="ALuggageHolder_8h_source.html">ALuggageHolder.h</a> 파일의 <a class="el" href="ALuggageHolder_8h_source.html#l00091">91</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALuggageHolder_8cpp_source.html#l00195">CheckLuggage()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALuggageHolder_8cpp_source.html#l00190">CheckLuggage()</a>.</p>
 
 </div>
 </div>
@@ -1158,7 +1153,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="ALuggageHolder_8h_source.html">ALuggageHolder.h</a> 파일의 <a class="el" href="ALuggageHolder_8h_source.html#l00087">87</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALuggageHolder_8cpp_source.html#l00195">CheckLuggage()</a>, <a class="el" href="ALuggageHolder_8cpp_source.html#l00091">GetLifetimeReplicatedProps()</a>, <a class="el" href="ALuggageHolder_8cpp_source.html#l00118">OnBoxOverlapBegin()</a>, <a class="el" href="ALuggageHolder_8cpp_source.html#l00099">OnRep_IsActivated()</a>, <a class="el" href="ALuggageHolder_8cpp_source.html#l00076">Tick()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALuggageHolder_8cpp_source.html#l00190">CheckLuggage()</a>, <a class="el" href="ALuggageHolder_8cpp_source.html#l00086">GetLifetimeReplicatedProps()</a>, <a class="el" href="ALuggageHolder_8cpp_source.html#l00113">OnBoxOverlapBegin()</a>, <a class="el" href="ALuggageHolder_8cpp_source.html#l00094">OnRep_IsActivated()</a>, <a class="el" href="ALuggageHolder_8cpp_source.html#l00071">Tick()</a>.</p>
 
 </div>
 </div>
@@ -1176,7 +1171,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="ALuggageHolder_8h_source.html">ALuggageHolder.h</a> 파일의 <a class="el" href="ALuggageHolder_8h_source.html#l00069">69</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALuggageHolder_8cpp_source.html#l00022">ALuggageHolder()</a>, <a class="el" href="ALuggageHolder_8cpp_source.html#l00066">BeginPlay()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALuggageHolder_8cpp_source.html#l00022">ALuggageHolder()</a>, <a class="el" href="ALuggageHolder_8cpp_source.html#l00061">BeginPlay()</a>.</p>
 
 </div>
 </div>
@@ -1228,7 +1223,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="ALuggageHolder_8h_source.html">ALuggageHolder.h</a> 파일의 <a class="el" href="ALuggageHolder_8h_source.html#l00083">83</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALuggageHolder_8cpp_source.html#l00195">CheckLuggage()</a>, <a class="el" href="ALuggageHolder_8cpp_source.html#l00091">GetLifetimeReplicatedProps()</a>, <a class="el" href="ALuggageHolder_8cpp_source.html#l00105">OnRep_CurTarget()</a>, <a class="el" href="ALuggageHolder_8cpp_source.html#l00076">Tick()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALuggageHolder_8cpp_source.html#l00190">CheckLuggage()</a>, <a class="el" href="ALuggageHolder_8cpp_source.html#l00086">GetLifetimeReplicatedProps()</a>, <a class="el" href="ALuggageHolder_8cpp_source.html#l00100">OnRep_CurTarget()</a>, <a class="el" href="ALuggageHolder_8cpp_source.html#l00071">Tick()</a>.</p>
 
 </div>
 </div>
@@ -1254,7 +1249,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="ALuggageHolder_8h_source.html">ALuggageHolder.h</a> 파일의 <a class="el" href="ALuggageHolder_8h_source.html#l00102">102</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALuggageHolder_8cpp_source.html#l00118">OnBoxOverlapBegin()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALuggageHolder_8cpp_source.html#l00113">OnBoxOverlapBegin()</a>.</p>
 
 </div>
 </div>
@@ -1272,7 +1267,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="ALuggageHolder_8h_source.html">ALuggageHolder.h</a> 파일의 <a class="el" href="ALuggageHolder_8h_source.html#l00075">75</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALuggageHolder_8cpp_source.html#l00022">ALuggageHolder()</a>, <a class="el" href="ALuggageHolder_8cpp_source.html#l00195">CheckLuggage()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALuggageHolder_8cpp_source.html#l00022">ALuggageHolder()</a>, <a class="el" href="ALuggageHolder_8cpp_source.html#l00190">CheckLuggage()</a>.</p>
 
 </div>
 </div>
@@ -1298,7 +1293,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="CompassTargetInterface_8h_source.html">CompassTargetInterface.h</a> 파일의 <a class="el" href="CompassTargetInterface_8h_source.html#l00026">26</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AContactTrigger_8cpp_source.html#l00017">AContactTrigger::AContactTrigger()</a>, <a class="el" href="AEvaluationTrigger_8cpp_source.html#l00015">AEvaluationTrigger::AEvaluationTrigger()</a>, <a class="el" href="ALuggageHolder_8cpp_source.html#l00022">ALuggageHolder()</a>, <a class="el" href="OrderKiosk_8cpp_source.html#l00018">AOrderKiosk::AOrderKiosk()</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00064">APlayerActor::APlayerActor()</a>, <a class="el" href="QuestionnaireKiosk_8cpp_source.html#l00026">AQuestionnaireKiosk::AQuestionnaireKiosk()</a>, <a class="el" href="ATeleportTrigger_8cpp_source.html#l00016">ATeleportTrigger::ATeleportTrigger()</a>, <a class="el" href="AWheatly_8cpp_source.html#l00031">AWheatly::AWheatly()</a>, <a class="el" href="AWheatly_8cpp_source.html#l00465">AWheatly::SetCompassMarkerInto()</a>, <a class="el" href="AContactTrigger_8cpp_source.html#l00204">AContactTrigger::SetCompassMarkerInto()</a>, <a class="el" href="ATeleportTrigger_8cpp_source.html#l00167">ATeleportTrigger::SetCompassMarkerInto()</a>, <a class="el" href="OrderKiosk_8cpp_source.html#l00176">AOrderKiosk::SetCompassMarkerInto()</a>, <a class="el" href="ALuggageHolder_8cpp_source.html#l00268">SetCompassMarkerInto()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="AContactTrigger_8cpp_source.html#l00017">AContactTrigger::AContactTrigger()</a>, <a class="el" href="AEvaluationTrigger_8cpp_source.html#l00015">AEvaluationTrigger::AEvaluationTrigger()</a>, <a class="el" href="ALuggageHolder_8cpp_source.html#l00022">ALuggageHolder()</a>, <a class="el" href="OrderKiosk_8cpp_source.html#l00018">AOrderKiosk::AOrderKiosk()</a>, <a class="el" href="APlayerActor_8cpp_source.html#l00064">APlayerActor::APlayerActor()</a>, <a class="el" href="QuestionnaireKiosk_8cpp_source.html#l00026">AQuestionnaireKiosk::AQuestionnaireKiosk()</a>, <a class="el" href="ATeleportTrigger_8cpp_source.html#l00016">ATeleportTrigger::ATeleportTrigger()</a>, <a class="el" href="AWheatly_8cpp_source.html#l00031">AWheatly::AWheatly()</a>, <a class="el" href="AWheatly_8cpp_source.html#l00465">AWheatly::SetCompassMarkerInto()</a>, <a class="el" href="AContactTrigger_8cpp_source.html#l00204">AContactTrigger::SetCompassMarkerInto()</a>, <a class="el" href="ATeleportTrigger_8cpp_source.html#l00167">ATeleportTrigger::SetCompassMarkerInto()</a>, <a class="el" href="OrderKiosk_8cpp_source.html#l00176">AOrderKiosk::SetCompassMarkerInto()</a>, <a class="el" href="ALuggageHolder_8cpp_source.html#l00263">SetCompassMarkerInto()</a>.</p>
 
 </div>
 </div>
@@ -1316,7 +1311,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="ALuggageHolder_8h_source.html">ALuggageHolder.h</a> 파일의 <a class="el" href="ALuggageHolder_8h_source.html#l00072">72</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALuggageHolder_8cpp_source.html#l00022">ALuggageHolder()</a>, <a class="el" href="ALuggageHolder_8cpp_source.html#l00231">UpdateActivateState()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALuggageHolder_8cpp_source.html#l00022">ALuggageHolder()</a>, <a class="el" href="ALuggageHolder_8cpp_source.html#l00226">UpdateActivateState()</a>.</p>
 
 </div>
 </div>
@@ -1342,7 +1337,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="ALuggageHolder_8h_source.html">ALuggageHolder.h</a> 파일의 <a class="el" href="ALuggageHolder_8h_source.html#l00094">94</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALuggageHolder_8cpp_source.html#l00076">Tick()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALuggageHolder_8cpp_source.html#l00071">Tick()</a>.</p>
 
 </div>
 </div>
@@ -1360,7 +1355,7 @@ Private 속성</h2></td></tr>
 
 <p class="definition"><a class="el" href="ALuggageHolder_8h_source.html">ALuggageHolder.h</a> 파일의 <a class="el" href="ALuggageHolder_8h_source.html#l00078">78</a> 번째 라인에서 정의되었습니다.</p>
 
-<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALuggageHolder_8cpp_source.html#l00022">ALuggageHolder()</a>, <a class="el" href="ALuggageHolder_8cpp_source.html#l00245">BillboardInteractWidget()</a>.</p>
+<p class="reference">다음에 의해서 참조됨 :  <a class="el" href="ALuggageHolder_8cpp_source.html#l00022">ALuggageHolder()</a>, <a class="el" href="ALuggageHolder_8cpp_source.html#l00240">BillboardInteractWidget()</a>.</p>
 
 </div>
 </div>
@@ -1374,7 +1369,7 @@ Private 속성</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classALuggageHolder.html">ALuggageHolder</a></li>
-    <li class="footer">생성시간 : 토 1월 3 2026 07:48:25, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 화 1월 6 2026 08:20:00, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

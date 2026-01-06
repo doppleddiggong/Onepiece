@@ -1,5 +1,6 @@
 var NAVTREEINDEX19 =
 {
+"structFPhonemeData.html#a276f029e26bfaf07af337ce6d35b3f40":[2,0,80,2],
 "structFPhonemeData.html#a979ef016c1c40e3519043ec8867c6326":[2,0,80,0],
 "structFPlayerInfo.html":[2,0,81],
 "structFPlayerInfo.html#a514eadd593069c17102b272eaa2c4463":[2,0,81,4],
@@ -248,6 +249,5 @@ var NAVTREEINDEX19 =
 "structFScenarioResult.html":[2,0,119],
 "structFScenarioResult.html#a0ad89ab325e737aa1d57b42b247b9ca9":[2,0,119,3],
 "structFScenarioResult.html#a1ad8b060a27d5d18e9b06b0fdb48c640":[2,0,119,1],
-"structFScenarioResult.html#a2c1306814ec692275e337f065b0cf932":[2,0,119,0],
-"structFScenarioResult.html#a4cd8f8c790246d8aa1771bc2afe5e284":[2,0,119,2]
+"structFScenarioResult.html#a2c1306814ec692275e337f065b0cf932":[2,0,119,0]
 };

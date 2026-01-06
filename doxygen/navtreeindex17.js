@@ -1,5 +1,6 @@
 var NAVTREEINDEX17 =
 {
+"classUVFXDataAsset.html":[2,0,246],
 "classUVFXDataAsset.html#abff13278bec23a7e68aa4153d8b20153":[2,0,246,0],
 "classUVoiceCacheManager.html":[2,0,247],
 "classUVoiceCacheManager.html#a0258e36c6d697747a97fa59f83413964":[2,0,247,1],
@@ -135,8 +136,8 @@ var NAVTREEINDEX17 =
 "dir_f5c20ae920c5f83d16e1c5fb9563aee7.html":[3,0,0,1,0,0],
 "dir_f8d1c9eab1fc62a504c69287c791da47.html":[3,0,0,1,1,0],
 "files.html":[3,0],
-"functions.html":[2,3,0],
 "functions.html":[2,3,0,0],
+"functions.html":[2,3,0],
 "functions_b.html":[2,3,0,1],
 "functions_c.html":[2,3,0,2],
 "functions_d.html":[2,3,0,3],
@@ -213,8 +214,8 @@ var NAVTREEINDEX17 =
 "globals_func.html":[3,1,1],
 "globals_vars.html":[3,1,2],
 "hierarchy.html":[2,2],
-"index.html":[],
 "index.html":[0],
+"index.html":[],
 "index.html#autotoc_md10":[0,2],
 "index.html#autotoc_md11":[0,2,0],
 "index.html#autotoc_md12":[0,2,1],
@@ -248,6 +249,5 @@ var NAVTREEINDEX17 =
 "namespaceConfigLibraryConstants.html#ae621ca13f926f8e8995a22a8ffe49b38":[1,0,0,1],
 "namespaceDailyStudyConfig.html":[1,0,1],
 "namespaceDailyStudyConfig.html#a3511e4a22589a30e8505b3f9ff39d0f6":[1,0,1,1],
-"namespaceDailyStudyConfig.html#afb92fb6f59aaba2d2382c1b10214d956":[1,0,1,0],
-"namespaceDefineData.html":[1,0,2]
+"namespaceDailyStudyConfig.html#afb92fb6f59aaba2d2382c1b10214d956":[1,0,1,0]
 };
