@@ -69,16 +69,21 @@ Aluggage::Aluggage()
 		WidgetComp->SetDrawSize(FVector2D(2048.0f, 1024.0f));
 	}
 	
-	ConstructorHelpers::FObjectFinder<UMaterialParameterCollection> dissolveMPCRef(TEXT("/Script/Engine.MaterialParameterCollection'/Game/CustomContents/Materials/MPC_Dissolve.MPC_Dissolve'"));
+	ConstructorHelpers::FObjectFinder<UMaterialInterface> dissolveMPCRef(TEXT("/Script/Engine.Material'/Game/CustomContents/Materials/M_Dissolve.M_Dissolve'"));
 	if (dissolveMPCRef.Succeeded())
 	{
-		dissolveMPC = dissolveMPCRef.Object;
+		dissolveMaterial = dissolveMPCRef.Object;
 	}
 }
 
 void Aluggage::BeginPlay()
 {
 	Super::BeginPlay();
+	
+	dissolveMID = UMaterialInstanceDynamic::Create(dissolveMaterial, this);
+	Mesh1Comp->SetMaterial(1, dissolveMID);
+	Mesh2Comp->SetMaterial(1, dissolveMID);
+	Mesh3Comp->SetMaterial(1, dissolveMID);
 
 	// Physics 설정 (생성자에서 이동)
 	if (Mesh1Comp)
@@ -94,8 +99,6 @@ void Aluggage::BeginPlay()
 	InteractableComp->InitWidget(WidgetComp);
 	// 아웃라인 상태 변경 델리게이트 바인딩
 	InteractableComp->OnOutlineStateChanged.AddDynamic(this, &Aluggage::OnOutlineStateChanged);
-
-	dissolveMPCInstance = GetWorld()->GetParameterCollectionInstance(dissolveMPC);
 }
 
 void Aluggage::Tick(float DeltaTime)
@@ -285,7 +288,7 @@ bool Aluggage::UpdateDissolve()
 {
 	// visible value 높이기
 	dissolveVal += dissolveSpeed;
-	dissolveMPCInstance->SetScalarParameterValue(FName("VisibleValue"), dissolveVal);
+	dissolveMID->SetScalarParameterValue(FName("VisibleValue"), dissolveVal);
 	
 	return dissolveVal >= dissolveMaxVal;
 }

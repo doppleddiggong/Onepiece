@@ -160,11 +160,11 @@ public:
 	
 protected:
 	// Dissolve Value
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Dissolve")
-	TObjectPtr<class UMaterialParameterCollection> dissolveMPC;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Dissolve")
+	TObjectPtr<class UMaterialInterface> dissolveMaterial;
 	
-	UPROPERTY()
-	TObjectPtr<class UMaterialParameterCollectionInstance> dissolveMPCInstance;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Dissolve")
+	TObjectPtr<class UMaterialInstanceDynamic> dissolveMID;
 	
 	const float dissolveMaxVal = 3.2f;
 	float dissolveVal = -1.1f;

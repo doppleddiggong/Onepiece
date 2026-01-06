@@ -54,11 +54,6 @@ ALuggageHolder::ALuggageHolder()
 	{
 		WidgetGuideComp->SetWidgetClass(widgetGuideClassRef.Class);
 	}
-	ConstructorHelpers::FObjectFinder<UMaterialInterface> materialRef(TEXT("/Script/Engine.MaterialInstanceConstant'/Engine/EngineMaterials/Widget3DPassThrough_Masked_OneSided.Widget3DPassThrough_Masked_OneSided'"));
-	if (materialRef.Succeeded())
-	{
-		WidgetGuideComp->SetMaterial(0, materialRef.Object);
-	}
 
 	MarkerType = ECompassMarkerType::QuestEnd;
 }

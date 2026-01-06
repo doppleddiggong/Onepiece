@@ -31,6 +31,8 @@ AMiniOwlBot::AMiniOwlBot()
 	
 	meshComp = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("meshComp"));
 	meshComp->SetupAttachment(rootSceneComp);
+	meshComp->SetCollisionProfileName(TEXT("NoCollision"));
+	meshComp->CanCharacterStepUpOn = ECB_No;
 	ConstructorHelpers::FObjectFinder<UStaticMesh> meshRef(TEXT("/Script/Engine.StaticMesh'/Game/CustomContents/Character/Asset/MiniOwl/MiniOwlbot.MiniOwlbot'"));
 	if (meshRef.Succeeded())
 	{

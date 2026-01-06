@@ -14,7 +14,7 @@
 
 #define SCREEN_PATH						TEXT("/Engine/BasicShapes/Cube.Cube")
 #define MEDIA_PLAYER_PATH				TEXT("/Game/CustomContents/Media/MP_InGame.MP_InGame")
-#define MEDIA_SOURCE_PATH				TEXT("/Game/CustomContents/Media/Source/Duolingo.Duolingo")
+#define MEDIA_SOURCE_PATH				TEXT("/Game/Movies/Duolingo.Duolingo")
 #define MEDIA_PLAYER_TEXTURE_PATH		TEXT("/Game/CustomContents/Media/MPT_InGame.MPT_InGame")
 
 AMoviePanel::AMoviePanel()
