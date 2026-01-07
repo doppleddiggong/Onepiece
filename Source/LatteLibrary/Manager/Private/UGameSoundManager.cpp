@@ -9,6 +9,7 @@
 #include "Components/AudioComponent.h"
 #include "Kismet/GameplayStatics.h"
 #include "FComponentHelper.h"
+#include "GameLogging.h"
 
 #define SOUND_DATA_PATH TEXT("/Game/CustomContents/MasterData/DA_Sound.DA_Sound")
 
@@ -143,7 +144,7 @@ void UGameSoundManager::PlayBGM(const EGameSoundType Type)
 	{
 		return;
 	}
-
+	
 	// 기존 BGM 중지
 	StopBGM();
 

@@ -1,9 +1,13 @@
 // Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.
 
 #include "UPopup_Evaluation.h"
+
+#include "GameLogging.h"
+#include "OnlineSubsystemUtils.h"
 #include "UTabButtonGroup.h"
 #include "UEvaluationScenario.h"
 #include "UEvaluationTotal.h"
+#include "UGameSoundManager.h"
 #include "UImageButton.h"
 #include "UPopupManager.h"
 #include "Kismet/GameplayStatics.h"
@@ -69,7 +73,12 @@ void UPopup_Evaluation::OnMsgBoxOk_MoveToLobby()
 {
 	// Lobby 맵으로 이동
 	if (UWorld* World = GetWorld())
-	{
+	{		
+		if ( UGameSoundManager* SoundMgr = GetGameInstance()->GetSubsystem<UGameSoundManager>())
+		{
+			SoundMgr->PlayBGM(EGameSoundType::BGM_Start);
+		}
+		
 		UGameplayStatics::OpenLevel(World, FName("/Game/CustomContents/Maps/LobbyMap"));
 	}
 }

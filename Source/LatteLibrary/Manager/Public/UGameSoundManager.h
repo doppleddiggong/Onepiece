@@ -61,6 +61,8 @@ public:
 	 */
 	UFUNCTION(BlueprintCallable, Category="Sound")
 	void StopBGM();
+	
+	EGameSoundType GetCurrentBGMType() const{ return CurrentBGMType;}
 
 private:
 	UPROPERTY(EditDefaultsOnly, Category = "Sound", meta = (AllowPrivateAccess = "true"))
