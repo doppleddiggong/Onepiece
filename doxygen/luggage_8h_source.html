@@ -246,24 +246,36 @@ $(document).ready(function(){initNavTree('luggage_8h_source.html',''); initResiz
 <div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>protected:</div>
 <div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>    <span class="comment">// Dissolve Value</span></div>
 <div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = &quot;Dissolve&quot;)</div>
-<div class="line"><a id="l00164" name="l00164"></a><span class="lineno"><a class="line" href="classAluggage.html#a93499d1bddcdd61ede242f2a8decc071">  164</a></span>    TObjectPtr&lt;class UMaterialInterface&gt; dissolveMaterial;</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno"><a class="line" href="classAluggage.html#aa7bda700166033e1c1c68e7e21552610">  164</a></span>    TObjectPtr&lt;class UMaterialInterface&gt; cubeBodyMaterial;</div>
 <div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>    </div>
-<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = &quot;Dissolve&quot;)</div>
-<div class="line"><a id="l00167" name="l00167"></a><span class="lineno"><a class="line" href="classAluggage.html#a2802ac5c454fdd1b05e5753e9b7ba7b3">  167</a></span>    TObjectPtr&lt;class UMaterialInstanceDynamic&gt; dissolveMID;</div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = &quot;Dissolve&quot;)</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno"><a class="line" href="classAluggage.html#a4b66e1cef57452774c01676076f44d6c">  167</a></span>    TObjectPtr&lt;class UMaterialInterface&gt; cubeStickerMaterial;</div>
 <div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>    </div>
-<div class="line"><a id="l00169" name="l00169"></a><span class="lineno"><a class="line" href="classAluggage.html#a4c635ef47321568489938073df677ffb">  169</a></span>    const <span class="keywordtype">float</span> dissolveMaxVal = 3.2f;</div>
-<div class="line"><a id="l00170" name="l00170"></a><span class="lineno"><a class="line" href="classAluggage.html#ae2ca25099cecb8ed6e6081cbe5bc10ac">  170</a></span>    <span class="keywordtype">float</span> dissolveVal = -1.1f;</div>
-<div class="line"><a id="l00171" name="l00171"></a><span class="lineno"><a class="line" href="classAluggage.html#add182a539ce89207f71301f4f2578e12">  171</a></span>    <span class="keywordtype">float</span> dissolveSpeed = 0.08f;</div>
-<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span> </div>
-<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>public:</div>
-<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>    <span class="keywordtype">void</span> PlayTTSAudio();</div>
-<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span> </div>
-<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>private:</div>
-<div class="line"><a id="l00177" name="l00177"></a><span class="lineno"><a class="line" href="classAluggage.html#a3b0d315c9c3009d8c645a7fdf61f11a4">  177</a></span>    <span class="keywordtype">bool</span> bIsRequest;</div>
-<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span> </div>
-<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>    <span class="keywordtype">void</span> RequestListenAudio(const FString&amp; AudioText);</div>
-<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>    <span class="keywordtype">void</span> OnResponseListenAudio(<a class="code hl_struct" href="structFResponseListenAudio.html">FResponseListenAudio</a>&amp; ResponseData, <span class="keywordtype">bool</span> bWasSuccessful);</div>
-<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>};</div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = &quot;Dissolve&quot;)</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno"><a class="line" href="classAluggage.html#af26e0dacd4f35357058f5e99d088b968">  170</a></span>    TObjectPtr&lt;class UMaterialInterface&gt; cubeCoverMaterial;</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>    </div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = &quot;Dissolve&quot;)</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno"><a class="line" href="classAluggage.html#a67467a01a1ec575e037300748d5443e9">  173</a></span>    TObjectPtr&lt;class UMaterialInstanceDynamic&gt; cubeBodyMID;</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>    </div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = &quot;Dissolve&quot;)</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno"><a class="line" href="classAluggage.html#a2a2737ec17c300e18e6078f7b25e020d">  176</a></span>    TObjectPtr&lt;class UMaterialInstanceDynamic&gt; cubeStickerMID;</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>    </div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = &quot;Dissolve&quot;)</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno"><a class="line" href="classAluggage.html#a0b472ef2d307516ab04a781e695b6a18">  179</a></span>    TObjectPtr&lt;class UMaterialInstanceDynamic&gt; cubeCoverMID;</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>    </div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno"><a class="line" href="classAluggage.html#a4c635ef47321568489938073df677ffb">  181</a></span>    const <span class="keywordtype">float</span> dissolveMaxVal = 3.2f;</div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno"><a class="line" href="classAluggage.html#ae2ca25099cecb8ed6e6081cbe5bc10ac">  182</a></span>    <span class="keywordtype">float</span> dissolveVal = -1.2f;</div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno"><a class="line" href="classAluggage.html#add182a539ce89207f71301f4f2578e12">  183</a></span>    <span class="keywordtype">float</span> dissolveSpeed = 0.08f;</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span> </div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>public:</div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>    <span class="keywordtype">void</span> PlayTTSAudio();</div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span> </div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>private:</div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno"><a class="line" href="classAluggage.html#a3b0d315c9c3009d8c645a7fdf61f11a4">  189</a></span>    <span class="keywordtype">bool</span> bIsRequest;</div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span> </div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>    <span class="keywordtype">void</span> RequestListenAudio(const FString&amp; AudioText);</div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>    <span class="keywordtype">void</span> OnResponseListenAudio(<a class="code hl_struct" href="structFResponseListenAudio.html">FResponseListenAudio</a>&amp; ResponseData, <span class="keywordtype">bool</span> bWasSuccessful);</div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>};</div>
 </div>
 <div class="ttc" id="aEGameSoundType_8h_html_af4a7536fe94049720d6e9d21c1b2ec80ab9b371458ab7c314f88b81c553f6ce51"><div class="ttname"><a href="EGameSoundType_8h.html#af4a7536fe94049720d6e9d21c1b2ec80ab9b371458ab7c314f88b81c553f6ce51">EGameSoundType::Hook</a></div><div class="ttdeci">@ Hook</div></div>
 <div class="ttc" id="aEWordType_8h_html_aa7a4aeeaf4a040114515f256df9c15a3acb5feb1b7314637725a2e73bdc9f7295"><div class="ttname"><a href="EWordType_8h.html#aa7a4aeeaf4a040114515f256df9c15a3acb5feb1b7314637725a2e73bdc9f7295">EWordType::Color</a></div><div class="ttdeci">@ Color</div></div>
@@ -278,7 +290,7 @@ $(document).ready(function(){initNavTree('luggage_8h_source.html',''); initResiz
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_b7459e4428712e32d7c860db6e401a05.html">Interactable</a></li><li class="navelem"><a class="el" href="dir_37565cbf0e4835105e22b7540e7cc414.html">Public</a></li><li class="navelem"><a class="el" href="luggage_8h.html">luggage.h</a></li>
-    <li class="footer">생성시간 : 화 1월 6 2026 08:20:00, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 수 1월 7 2026 03:16:19, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

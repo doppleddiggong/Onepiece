@@ -1,6 +1,5 @@
 var NAVTREEINDEX5 =
 {
-"UWordItem_8cpp_source.html":[3,0,0,2,6,0,36],
 "UWordItem_8h.html":[3,0,0,2,6,1,36],
 "UWordItem_8h_source.html":[3,0,0,2,6,1,36],
 "UWordWidget_8cpp.html":[3,0,0,2,6,0,37],
@@ -249,5 +248,6 @@ var NAVTREEINDEX5 =
 "classAGate.html#a77115a1ffec989893fe6f5887fdf87a2":[2,0,13,9],
 "classAGate.html#a9eaddebb5c5dd0ad38ef60d938813e46":[2,0,13,13],
 "classAGate.html#ab83a2e573215c998455f7edf71aa5807":[2,0,13,2],
-"classAGate.html#abcc031c1aefc68dc90ffbdb3b2d246e4":[2,0,13,6]
+"classAGate.html#abcc031c1aefc68dc90ffbdb3b2d246e4":[2,0,13,6],
+"classAGate.html#ad25807f4959f5d5ad657205a62f1a673":[2,0,13,5]
 };

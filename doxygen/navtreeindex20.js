@@ -1,5 +1,8 @@
 var NAVTREEINDEX20 =
 {
+"structFScenarioResult.html#a0ad89ab325e737aa1d57b42b247b9ca9":[2,0,119,3],
+"structFScenarioResult.html#a1ad8b060a27d5d18e9b06b0fdb48c640":[2,0,119,1],
+"structFScenarioResult.html#a2c1306814ec692275e337f065b0cf932":[2,0,119,0],
 "structFScenarioResult.html#a4cd8f8c790246d8aa1771bc2afe5e284":[2,0,119,2],
 "structFScenarioResult.html#a85380ca5516e4d591017b59af2892127":[2,0,119,5],
 "structFScenarioResult.html#ac1f6da78793403be447b321268206667":[2,0,119,4],

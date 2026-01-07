@@ -73,8 +73,7 @@ var NAVTREEINDEX3 =
 "UDelayTaskManager_8cpp.html":[3,0,0,1,3,0,2],
 "UDelayTaskManager_8cpp_source.html":[3,0,0,1,3,0,2],
 "UDelayTaskManager_8h.html":[3,0,0,1,3,1,4],
-"UDelayTaskManager_8h.html#a2c7a66eadfe2ccfb485226675a8db2ee":[3,0,0,1,3,1,4,3],
-"UDelayTaskManager_8h.html#afa483e366e3e61c69c19946556fb96a3":[3,0,0,1,3,1,4,4],
+"UDelayTaskManager_8h.html#afa483e366e3e61c69c19946556fb96a3":[3,0,0,1,3,1,4,3],
 "UDelayTaskManager_8h_source.html":[3,0,0,1,3,1,4],
 "UDespawnItem_8cpp.html":[3,0,0,2,6,0,15],
 "UDespawnItem_8cpp_source.html":[3,0,0,2,6,0,15],
@@ -249,5 +248,6 @@ var NAVTREEINDEX3 =
 "UObjectPoolManager_8cpp.html":[3,0,0,1,3,0,7],
 "UObjectPoolManager_8cpp_source.html":[3,0,0,1,3,0,7],
 "UObjectPoolManager_8h.html":[3,0,0,1,3,1,9],
-"UObjectPoolManager_8h_source.html":[3,0,0,1,3,1,9]
+"UObjectPoolManager_8h_source.html":[3,0,0,1,3,1,9],
+"UOrbitalBehaviorComponent_8cpp.html":[3,0,0,0,0,0,2]
 };
