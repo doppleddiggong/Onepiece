@@ -1,5 +1,6 @@
 var NAVTREEINDEX10 =
 {
+"classUCircularProgressBar.html#a65165ac1f3f9289a4f58ec94a7e4af4c":[2,0,147,9],
 "classUCircularProgressBar.html#a7318a4fda9bd22249751fe65a6db4e79":[2,0,147,14],
 "classUCircularProgressBar.html#a99dec6c9e0c6b50ceabf3947a01238c3":[2,0,147,2],
 "classUCircularProgressBar.html#aba4c7b0de5ad334914bac15ffadc3ee7":[2,0,147,0],
@@ -248,6 +249,5 @@ var NAVTREEINDEX10 =
 "classUGameDataManager.html#a51dc891a2bf6cab66eca2b4ca17a66de":[2,0,168,30],
 "classUGameDataManager.html#a52a1a40b1f8d3c2e4595cc124eb0ab33":[2,0,168,68],
 "classUGameDataManager.html#a5d0c96aebf3e41ce7bfa468a101fffa2":[2,0,168,0],
-"classUGameDataManager.html#a613cf81347fda2189e32255eae78dfc4":[2,0,168,36],
-"classUGameDataManager.html#a6353faaf48850413bf207f2d9dd5c0c8":[2,0,168,79]
+"classUGameDataManager.html#a613cf81347fda2189e32255eae78dfc4":[2,0,168,36]
 };

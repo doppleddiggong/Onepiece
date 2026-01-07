@@ -1,5 +1,6 @@
 var NAVTREEINDEX7 =
 {
+"classAMoviePanel.html#ab1c6c7f9d700a390139ad0be0317ebf1":[2,0,26,1],
 "classAMoviePanel.html#ab201e7e66127a4b06d2701ff730982ed":[2,0,26,14],
 "classAMoviePanel.html#ac9ca20b496764a36198d7c17379fd768":[2,0,26,0],
 "classAMoviePanel.html#ad27efc0cf10b5205e42f4ecb58b0cb72":[2,0,26,13],
@@ -248,6 +249,5 @@ var NAVTREEINDEX7 =
 "classAPlayerControl.html#a033802ec64bfd2178ddc93d8ead4c127":[2,0,36,56],
 "classAPlayerControl.html#a09c91fbb1d155201fb9f3c6c0c5db251":[2,0,36,72],
 "classAPlayerControl.html#a0b293c41a686533e8deccbc7fee1c043":[2,0,36,31],
-"classAPlayerControl.html#a0b8363f1c71e6644c0575985fca29ba6":[2,0,36,30],
-"classAPlayerControl.html#a0ff70a21411d931a033f375eb2763012":[2,0,36,62]
+"classAPlayerControl.html#a0b8363f1c71e6644c0575985fca29ba6":[2,0,36,30]
 };

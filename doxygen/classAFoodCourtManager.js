@@ -11,6 +11,7 @@ var classAFoodCourtManager =
     [ "Tick", "classAFoodCourtManager.html#a0d16e6507784b78ed25f4757f99c4fdf", null ],
     [ "CitySpawnLocation", "classAFoodCourtManager.html#a657a4cc2a8414e950fb3a5439d8a2928", null ],
     [ "Dropper", "classAFoodCourtManager.html#ade85a027024e078e1a413e9c8fc8cee1", null ],
+    [ "FoodClass", "classAFoodCourtManager.html#a2b72ca5a3e88b6e678a7395480346010", null ],
     [ "FoodSpawnLocation", "classAFoodCourtManager.html#a8548365a6d38d71e4ac5e395b6c1b97c", null ],
     [ "ListenAnswerClass", "classAFoodCourtManager.html#abad3fa9e30dc26c0df2e6ec49818bb09", null ],
     [ "SpawnDistance", "classAFoodCourtManager.html#adeea88b87aeb6f4e591cbd748e572b38", null ],

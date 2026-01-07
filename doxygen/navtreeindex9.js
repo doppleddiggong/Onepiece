@@ -1,5 +1,6 @@
 var NAVTREEINDEX9 =
 {
+"classAluggage.html#a17e850881f1e195228802686a326ff09":[2,0,21,43],
 "classAluggage.html#a2a2737ec17c300e18e6078f7b25e020d":[2,0,21,36],
 "classAluggage.html#a3789494fc0c2605502fce38011914042":[2,0,21,16],
 "classAluggage.html#a39a1c8e315d2b3d40ec1956e2390d6d2":[2,0,21,50],
@@ -248,6 +249,5 @@ var NAVTREEINDEX9 =
 "classUCircularProgressBar.html#a46781af4386e3d123ae2f466d38f695b":[2,0,147,15],
 "classUCircularProgressBar.html#a4fc90bbb329fcf2ef62328d04da588a6":[2,0,147,4],
 "classUCircularProgressBar.html#a51f7d0b156fcbd470450e43c8497782d":[2,0,147,12],
-"classUCircularProgressBar.html#a6314c46654080a161aaa192ecffc2106":[2,0,147,1],
-"classUCircularProgressBar.html#a65165ac1f3f9289a4f58ec94a7e4af4c":[2,0,147,9]
+"classUCircularProgressBar.html#a6314c46654080a161aaa192ecffc2106":[2,0,147,1]
 };
