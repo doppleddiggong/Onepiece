@@ -69,10 +69,22 @@ Aluggage::Aluggage()
 		WidgetComp->SetDrawSize(FVector2D(2048.0f, 1024.0f));
 	}
 	
-	ConstructorHelpers::FObjectFinder<UMaterialInterface> dissolveMPCRef(TEXT("/Script/Engine.Material'/Game/CustomContents/Materials/M_Dissolve.M_Dissolve'"));
-	if (dissolveMPCRef.Succeeded())
+	ConstructorHelpers::FObjectFinder<UMaterialInterface> cubeBodyMaterialRef(TEXT("/Script/Engine.MaterialInstanceConstant'/Game/CustomContents/Platfrom/Assets/portal_block/Materials/M_Cube_Body.M_Cube_Body'"));
+	if (cubeBodyMaterialRef.Succeeded())
 	{
-		dissolveMaterial = dissolveMPCRef.Object;
+		cubeBodyMaterial = cubeBodyMaterialRef.Object;
+	}
+	
+	ConstructorHelpers::FObjectFinder<UMaterialInterface> cubeStickerMaterialRef(TEXT("/Script/Engine.Material'/Game/CustomContents/Platfrom/Assets/portal_block/Materials/M_Cube_Sticker.M_Cube_Sticker'"));
+	if (cubeStickerMaterialRef.Succeeded())
+	{
+		cubeStickerMaterial = cubeStickerMaterialRef.Object;
+	}
+	
+	ConstructorHelpers::FObjectFinder<UMaterialInterface> cubeCoverMaterialRef(TEXT("/Script/Engine.MaterialInstanceConstant'/Game/CustomContents/Platfrom/Assets/portal_block/Materials/M_Cube_Cover.M_Cube_Cover'"));
+	if (cubeCoverMaterialRef.Succeeded())
+	{
+		cubeCoverMaterial = cubeCoverMaterialRef.Object;
 	}
 }
 
@@ -80,10 +92,8 @@ void Aluggage::BeginPlay()
 {
 	Super::BeginPlay();
 	
-	dissolveMID = UMaterialInstanceDynamic::Create(dissolveMaterial, this);
-	Mesh1Comp->SetMaterial(1, dissolveMID);
-	Mesh2Comp->SetMaterial(1, dissolveMID);
-	Mesh3Comp->SetMaterial(1, dissolveMID);
+	cubeBodyMID = UMaterialInstanceDynamic::Create(cubeBodyMaterial, this);
+	Mesh1Comp->SetMaterial(0, cubeBodyMID);
 
 	// Physics 설정 (생성자에서 이동)
 	if (Mesh1Comp)
@@ -209,16 +219,12 @@ void Aluggage::ApplyColorToMesh(int32 InColorIdx)
 		// if ( auto InfoWidget = Cast<ULuggageInfoWidget>(WidgetComp->GetWidget()))
 		// 	InfoWidget->UpdateType1Data(ColorData.Desc);
 
-		UMaterialInterface* OriginalMaterial = Mesh3Comp->GetMaterial(0);
-		if (OriginalMaterial)
+		cubeCoverMID = UMaterialInstanceDynamic::Create(cubeCoverMaterial, this);
+		if (cubeCoverMID && Mesh3Comp)
 		{
-			UMaterialInstanceDynamic* NewMaterial = UMaterialInstanceDynamic::Create(OriginalMaterial, this);
-			if (NewMaterial && Mesh3Comp)
-			{
-				// BaseColorFactor로 변경
-				NewMaterial->SetVectorParameterValue(FName("BaseColorFactor"), ColorData.GetLinearColor());
-				Mesh3Comp->SetMaterial(0, NewMaterial);
-			}
+			// BaseColorFactor로 변경
+			cubeCoverMID->SetVectorParameterValue(FName("BaseColorFactor"), ColorData.GetLinearColor());
+			Mesh3Comp->SetMaterial(0, cubeCoverMID);
 		}
 	}
 }
@@ -254,15 +260,12 @@ void Aluggage::ApplyPatternToMesh(int32 InPatternIdx)
 	else
 		LoadedTexture = ReadData.Texture.LoadSynchronous();
 
-	if ( UMaterialInterface* OriginalMaterial = Mesh2Comp->GetMaterial(0) )
+	cubeStickerMID = UMaterialInstanceDynamic::Create(cubeStickerMaterial, this);
+	if (cubeStickerMID)
 	{
-		UMaterialInstanceDynamic* NewMaterial = UMaterialInstanceDynamic::Create(OriginalMaterial, this);
-		if (NewMaterial)
-		{
-			// BaseColorFactor로 변경
-			NewMaterial->SetTextureParameterValue(FName("TextureParam"), LoadedTexture);
-			Mesh2Comp->SetMaterial(0, NewMaterial);
-		}
+		// BaseColorFactor로 변경
+		cubeStickerMID->SetTextureParameterValue(FName("TextureParam"), LoadedTexture);
+		Mesh2Comp->SetMaterial(0, cubeStickerMID);
 	}
 }
 
@@ -288,7 +291,12 @@ bool Aluggage::UpdateDissolve()
 {
 	// visible value 높이기
 	dissolveVal += dissolveSpeed;
-	dissolveMID->SetScalarParameterValue(FName("VisibleValue"), dissolveVal);
+	
+	cubeBodyMID->SetScalarParameterValue(FName("VisibleValue"), dissolveVal);
+	cubeStickerMID->SetScalarParameterValue(FName("VisibleValue"), dissolveVal);
+	cubeCoverMID->SetScalarParameterValue(FName("VisibleValue"), dissolveVal);
+	
+	PRINTLOG(TEXT("UpdateDissolve: dissolveVal: %f"), dissolveVal);
 	
 	return dissolveVal >= dissolveMaxVal;
 }

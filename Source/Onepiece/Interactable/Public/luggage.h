@@ -161,13 +161,25 @@ public:
 protected:
 	// Dissolve Value
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Dissolve")
-	TObjectPtr<class UMaterialInterface> dissolveMaterial;
+	TObjectPtr<class UMaterialInterface> cubeBodyMaterial;
+	
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Dissolve")
+	TObjectPtr<class UMaterialInterface> cubeStickerMaterial;
+	
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Dissolve")
+	TObjectPtr<class UMaterialInterface> cubeCoverMaterial;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Dissolve")
-	TObjectPtr<class UMaterialInstanceDynamic> dissolveMID;
+	TObjectPtr<class UMaterialInstanceDynamic> cubeBodyMID;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Dissolve")
+	TObjectPtr<class UMaterialInstanceDynamic> cubeStickerMID;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Dissolve")
+	TObjectPtr<class UMaterialInstanceDynamic> cubeCoverMID;
 	
 	const float dissolveMaxVal = 3.2f;
-	float dissolveVal = -1.1f;
+	float dissolveVal = -1.2f;
 	float dissolveSpeed = 0.08f;
 
 public:
