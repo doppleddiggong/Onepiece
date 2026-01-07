@@ -1,5 +1,6 @@
 var NAVTREEINDEX18 =
 {
+"namespaceConfigLibraryConstants.html#a0d5858db8cd7608dbc4ad22c6e8b39fd":[1,0,0,0],
 "namespaceConfigLibraryConstants.html#ae621ca13f926f8e8995a22a8ffe49b38":[1,0,0,1],
 "namespaceDailyStudyConfig.html":[1,0,1],
 "namespaceDailyStudyConfig.html#a3511e4a22589a30e8505b3f9ff39d0f6":[1,0,1,1],
@@ -248,6 +249,5 @@ var NAVTREEINDEX18 =
 "structFParabolaGeometricTrack.html#a2aab62034b1563e7cadb7c0855529b47":[2,0,79,6],
 "structFParabolaGeometricTrack.html#a36598782e6b390e958e2d7718eb9a4a4":[2,0,79,2],
 "structFParabolaGeometricTrack.html#a503bcee9414a24c1e70663a236639092":[2,0,79,4],
-"structFParabolaGeometricTrack.html#a615f2e19d8ee6d8ff5b391f7c171b52a":[2,0,79,0],
-"structFParabolaGeometricTrack.html#ad11200fe6fac153fe60c04cdaf02afe9":[2,0,79,1]
+"structFParabolaGeometricTrack.html#a615f2e19d8ee6d8ff5b391f7c171b52a":[2,0,79,0]
 };

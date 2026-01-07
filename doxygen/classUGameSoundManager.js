@@ -2,6 +2,7 @@ var classUGameSoundManager =
 [
     [ "UGameSoundManager", "classUGameSoundManager.html#aab6849192a6de76b26e716e21038f83c", null ],
     [ "DEFINE_SUBSYSTEM_GETTER_INLINE", "classUGameSoundManager.html#ad68ae454c6d8f2fbb53ad089cbd49310", null ],
+    [ "GetCurrentBGMType", "classUGameSoundManager.html#a70c194fd11e916cb41121009e153ad9e", null ],
     [ "Initialize", "classUGameSoundManager.html#a2ca17df93035004f10b6169e92394ba9", null ],
     [ "IsConversationVoicePlaying", "classUGameSoundManager.html#aa9bad4fe4971faa5fad6a47afaf7255d", null ],
     [ "PlayBGM", "classUGameSoundManager.html#a3a33a699e722d85746d6f7d09b4a3050", null ],
