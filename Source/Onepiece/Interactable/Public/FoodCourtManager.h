@@ -68,6 +68,10 @@ protected:
 	// 스폰 간격
 	UPROPERTY(EditAnywhere, Category = "Spawn")
 	float SpawnDistance = 150.f;
+	
+	// Food Class
+	UPROPERTY(EditAnywhere, Category = "Food")
+	TSubclassOf<AActor> FoodClass;
 
 public:
 	// 스폰된 요소들 텍스트 없애기

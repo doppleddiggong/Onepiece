@@ -5,6 +5,7 @@
 
 #include "ADropper.h"
 #include "ALingoGameState.h"
+#include "Food.h"
 #include "ListenAnswer.h"
 #include "ULingoGameHelper.h"
 #include "Kismet/GameplayStatics.h"
@@ -12,6 +13,12 @@
 AFoodCourtManager::AFoodCourtManager()
 {
 	PrimaryActorTick.bCanEverTick = true;
+	
+	ConstructorHelpers::FClassFinder<AFood> foodClass(TEXT("/Game/CustomContents/Blueprints/Interactables/BP_Food.BP_Food_C"));
+	if (foodClass.Succeeded())
+	{
+		FoodClass = foodClass.Class;
+	}
 }
 
 void AFoodCourtManager::BeginPlay()
@@ -47,7 +54,7 @@ void AFoodCourtManager::SpawnFoodContainer()
 		{
 			Dropper = Cast<ADropper>(FoundActor);
 			
-			Dropper->SetSpawnClass( LoadClass<AActor>(nullptr, TEXT("/Game/CustomContents/Blueprints/Interactables/BP_Food.BP_Food_C")));
+			Dropper->SetSpawnClass(FoodClass);
 			Dropper->RequestSpawn();
 		}
 	}
