@@ -1,230 +1,174 @@
-# KLingo - AI 기반 영어 학습 게임
+# KLingo — 실전 한국어를 배우는 AI 메타버스
 
 <p align="center">
   <a href="https://www.unrealengine.com/">
-    <img src="https://img.shields.io/badge/Unreal_Engine-5.6.1-blue.svg" alt="UE5.6.1">
+    <img src="https://img.shields.io/badge/Unreal_Engine-5.x-blue.svg" alt="UE5">
   </a>
   <a href="https://isocpp.org/">
     <img src="https://img.shields.io/badge/C++-20-blue.svg" alt="C++20">
   </a>
-  <a href="https://doppleddiggong.github.io/Onepiece/doxygen/index.html">
+  <a href="https://<Your-GitHub-Username>/KLingo/doxygen/">
     <img src="https://img.shields.io/badge/API_Docs-Doxygen-blue.svg" alt="API Docs">
   </a>
-  <a href="https://doppleddiggong.github.io/Onepiece/honkit/">
+  <a href="https://<Your-GitHub-Username>/KLingo/docs/">
     <img src="https://img.shields.io/badge/개발_문서-웹사이트-orange.svg" alt="Dev Docs">
   </a>
-  <a href="LICENSE">
-    <img src="https://img.shields.io/badge/License-MIT-green.svg" alt="License">
-  </a>
 </p>
 
-<p align="center">
-  <a href="https://youtu.be/iJ_77rZhphI">
-    <img src="https://github.com/doppleddiggong/Onepiece/blob/main/Documents/Preference/book1.png?raw=true"
-         width="500"
-         alt="Onepiece Game">
-  </a>
-  <br/>
-  <sub>이미지를 클릭하면 시연 영상으로 이동합니다</sub>
-</p>
-
----
-
-## 📖 프로젝트 소개
-
-**KLingo**는 LLM(대규모 언어 모델) 기반 AI 튜터를 활용한 협동 멀티플레이 영어 학습 게임입니다.
-Unreal Engine 5.6.1과 C++20을 기반으로 개발되며, 사용자 맞춤형 학습 경험과 실시간 협동 플레이를 통해 효과적인 영어 학습 환경을 제공합니다.
-
-**POTENUP 최종 프로젝트** (2025.11.10 ~ 2026.01.08)
-
----
-
-## 🎯 프로젝트 목표
-
-- **사용자/비즈니스 문제 해결**: 전통적인 영어 학습의 지루함을 게임과 AI 튜터를 통해 해결
-- **언리얼 개발 파트와 AI 에이전트 파트의 유기적 통합**: 게임 플레이와 AI 기반 학습 시스템의 완벽한 조화
-- **단계별 평가를 통한 점진적 개발**: 기획 → 프로토 → 알파 → 베타 → 최종 발표
-
----
-
-## ✨ 핵심 기능
-
-### 🤖 AI 기반 학습 시스템
-- **LLM 튜터**: 실시간 질문 응답 및 학습 가이드 제공
-- **단어 설명 시스템**: 클릭 한 번으로 단어 뜻/발음/예시 제공
-- **개별/전체 튜터**: 개인 학습과 팀 가이드를 모두 지원
-- **캐싱 전략**: LLM API 호출 최적화로 비용 절감
-
-### 🎮 게임플레이
-- **협동 멀티플레이**: 호스트-게스트 구조의 실시간 협동 플레이
-- **퀘스트 시스템**: 시나리오 기반 학습 미션
-- **성적 평가**: S/A/B/C 등급 기반 성취도 측정
-- **보상 시스템**: 골드/레벨 보상 및 아이템 해금
-
-### 📊 사용자 맞춤 경험
-- **질문지 시스템**: 사용자 관심사 수집 및 맞춤형 콘텐츠 제공
-- **광고 연동**: 관심사 기반 개인화 광고
-- **상점 시스템**: 골드를 활용한 아이템 구매 (향후 구현)
-
----
-
-## 🛠️ 기술 스택
-
-### 게임 엔진 & 언어
-- **Unreal Engine**: 5.6.1
-- **C++**: C++20 표준
-- **Blueprint**: UI, 시네마틱, 레벨 스크립트
-
-### 주요 기술
-- **멀티플레이**: UE Replication System (호스트-게스트)
-- **AI 통합**: LLM API, 캐싱, 실시간 응답
-- **네트워킹**: HTTP, JSON, REST API
-- **UI**: UMG (Unreal Motion Graphics)
-
-### 개발 도구
-- **IDE**: JetBrains Rider, Visual Studio
-- **문서화**: Doxygen, HonKit
-- **버전 관리**: Git, Git LFS
-- **CI/CD**: GitHub Actions
-- **자동화**: DevLog, PR 리뷰, 문서 배포
-
----
-
-## 📁 프로젝트 구조
-
-```
-Onepiece/
-├── Source/
-│   ├── Onepiece/           # 메인 게임 모듈
-│   ├── CoffeeLibrary/      # 공용 유틸리티 (네트워크, 시스템)
-│   └── LatteLibrary/       # 게임플레이 로직 (이동, 전투, AI)
-├── Plugins/
-│   └── CoffeeToolbar/      # 에디터 플러그인 (자동화 도구)
-├── Content/
-│   └── CustomContents/     # 게임 에셋 (캐릭터, 환경, 애니메이션)
-├── Documents/              # 개발 문서
-│   ├── DevLog/            # 일일/주간 개발 로그
-│   ├── Meeting/           # 회의록
-│   └── Planning/          # 기획 및 설계 문서
-├── AgentRule/             # AI 에이전트 가이드
-│   ├── PERSONA.md         # 에이전트 페르소나 정의
-│   └── Project/Onepiece/  # 프로젝트 특화 규칙
-└── Tools/                 # 개발 자동화 스크립트
-```
-
----
-
-## 🚀 시작하기
-
-### 필수 요구사항
-
-- **Unreal Engine**: 5.6.1 이상
-- **Visual Studio**: 2022 이상
-  - Windows 11 SDK (22621)
-  - MSVC v143 이상
-  - C++ Desktop Development Workload
-- **JetBrains Rider**: 2024.x (권장)
-- **Git LFS**: 대용량 에셋 관리용
-
-### 설치 및 빌드
-
-1. **저장소 클론**
-   ```bash
-   git clone https://github.com/doppleddiggong/Onepiece.git
-   cd Onepiece
-   ```
-
-2. **Git LFS 설정**
-   ```bash
-   git lfs install
-   git lfs pull
-   ```
-
-3. **프로젝트 파일 생성**
-   - `Onepiece.uproject` 우클릭
-   - "Generate Visual Studio project files" 선택
-
-4. **빌드 및 실행**
-   - **Rider**: `Onepiece.sln` 열기 → Build → Run
-   - **Visual Studio**: `Onepiece.sln` 열기 → F5 (Build & Run)
-   - **커맨드라인**:
-     ```bash
-     "<UE_ROOT>\Engine\Build\BatchFiles\Build.bat" OnepieceEditor Win64 Development -Project="<PROJECT_PATH>\Onepiece.uproject"
-     ```
-
----
-
-## 📚 문서
-
-- **[개발 문서 웹사이트](https://doppleddiggong.github.io/Onepiece/honkit/)**: DevLog, 회의록, 기획 문서
-- **[API 문서 (Doxygen)](https://doppleddiggong.github.io/Onepiece/doxygen/)**: C++ 클래스 및 함수 레퍼런스
-- **[프로젝트 개요](AgentRule/Project/Onepiece/PROJECT_OVERVIEW.md)**: 상세 프로젝트 정보
-- **[코딩 컨벤션](AgentRule/Project/Onepiece/CODING_CONVENTIONS.md)**: C++ 스타일 가이드
-- **[에이전트 가이드](AgentRule/Project/Onepiece/AGENT_GUIDE.md)**: AI 에이전트 협업 규칙
-
----
-
-## 📅 프로젝트 일정
-
-| 단계 | 날짜 | 목표 |
-|------|------|------|
-| **기획 단계** | 2025.11.18 | 프로젝트 구체화 및 핵심 기능 설계 |
-| **프로토 단계** | 2025.12.09 | 핵심 기능 최소 1개 이상 실체 구현 |
-| **알파 단계** | 2025.12.22 | 각 기능들의 실체 연동 |
-| **베타 단계** | 2026.01.05 | 기술적 완성도 평가 |
-| **최종 발표** | 2026.01.08 | 기업 초청 평가 |
-
----
-
-## ⚙️ 자동화된 개발 워크플로우
-
-- **C++ API 문서 자동 생성**: Doxygen을 통한 GitHub Pages 배포
-- **개발 문서 웹사이트 자동 배포**: HonKit 기반 자동 빌드
-- **Daily DevLog 자동 수집**: GitHub Actions를 통한 일일 커밋 로그 정리
-- **Weekly Summary 생성**: GPT-4 기반 주간 개발 요약 및 회고
-- **Pull Request 자동 리뷰**: AI 기반 코드 리뷰 및 피드백
-- **Discord 알림**: 회의록, DevLog 업데이트 실시간 알림
-
----
-
-## 👥 팀 구성
-
-### 언리얼 개발 파트
-- 클라이언트 기능 설계 및 구현
-- 캐릭터 시스템 및 상호작용
-- 멀티플레이 아키텍처
-- UI/UX 설계
-
-### AI 에이전트 파트
-- LLM 기반 튜터 시스템
-- 질문지 생성 로직
-- 단어 설명 API
-- 캐싱 및 최적화 전략
-
----
-
-## 🤝 기여하기
-
-이 프로젝트는 POTENUP 최종 프로젝트로, 현재 팀 내부 개발만 진행 중입니다.
-프로젝트 완료 후 오픈소스 기여 가이드라인을 추가할 예정입니다.
-
----
-
-## 📄 라이선스
-
-이 프로젝트는 MIT 라이선스를 따릅니다. 자세한 내용은 [LICENSE](LICENSE) 파일을 참조하세요.
-
----
-
-## 📞 연락처
-
-- **GitHub Repository**: [doppleddiggong/Onepiece](https://github.com/doppleddiggong/Onepiece)
-- **Issue Tracker**: [GitHub Issues](https://github.com/doppleddiggong/Onepiece/issues)
+> **Unreal Engine 5 기반 실시간 상호작용 학습 시스템**
+> AI는 판단을 보조하고, 모든 게임 상태와 실행은 언리얼 클라이언트가 제어합니다.
 
 ---
 
 <p align="center">
-  Made with ❤️ by KLingo Team
-  <br/>
-  <sub>POTENUP Final Project (2025.11.10 ~ 2026.01.08)</sub>
-</p>
+      <a href="https://www.youtube.com/watch?v=_DqL8BV1O6Y">
+        <img src="Documents/Preference/concept/concept_space4.png"
+             width="600"
+             alt="KLingo Title">
+      </a>
+      <br/>
+      <sub>이미지를 클릭하면 최종 시연 영상으로 이동합니다</sub>
+    </p>
+
+
+
+## 📌 프로젝트 개요
+
+`KLingo`는 언리얼 엔진 5로 구현된 공항 입국 환경에서
+외국인 학습자가 **읽기 · 듣기 · 쓰기 · 말하기**를 실제 상황처럼 경험하도록 설계된
+**실시간 상호작용 중심 학습 콘텐츠**입니다.
+
+본 프로젝트에서 AI는 게임을 직접 제어하지 않으며,
+**사용자 입력을 해석해 구조화된 결과를 반환하는 보조 시스템**으로만 사용됩니다.
+모든 게임 규칙, 상태 전이, NPC 행동 결정은 **Unreal Engine 클라이언트에서 수행**됩니다.
+
+## 🧱 Architecture Overview
+
+KLingo는 Unreal Engine의 Gameplay Framework와 모듈 시스템을 기반으로,
+게임플레이, UI, AI 연동, 네트워크를 명확히 분리한 구조로 설계되었습니다.
+
+- Gameplay Framework(GameMode, GameState, PlayerState)를 중심으로
+  모든 게임 규칙과 상태 전이를 관리
+- AI 시스템은 외부 비결정적 판단 컴포넌트로 분리하고,
+  Unreal Engine 내부의 사전 정의된 Gameplay Action으로만 반영
+- 공통 기능과 게임플레이 로직을 계층형 모듈(CoffeeLibrary / LatteLibrary)로 분리하여
+  유지보수성과 확장성을 확보
+
+---
+
+## ✨ 핵심 특징
+
+* **실시간 상호작용 중심 설계**
+  플레이어 입력 → 검증 → 상태 전이 → 피드백까지 모든 흐름을 UE5 Gameplay Framework 기반으로 처리
+
+* **결정적 게임 플레이 보장**
+  비결정적인 AI 결과를 사전 정의된 Gameplay Action으로 매핑하여
+  네트워크·프레임 안정성을 유지
+
+* **확장 가능한 구조**
+  AI, 네트워크, UI 시스템을 명확히 분리하여
+  싱글플레이 → 멀티플레이 → 서비스 확장 가능 구조 확보
+
+---
+
+## 🧠 AI 연동 아키텍처 개요
+
+```text
+Player Input
+   ↓
+Unreal Engine (Validation / State Control)
+   ↓
+AI Server (Analysis / Evaluation)
+   ↓
+Structured Result
+   ↓
+Unreal Engine (Gameplay Action Mapping)
+```
+
+* AI는 **판단 결과만 반환**
+* 행동 실행, 상태 변경, UI 반영은 **항상 UE에서 수행**
+* AI 응답 지연·실패가 게임 플레이에 영향을 주지 않도록 비동기 구조 적용
+
+---
+
+## 🎯 핵심 기술 과제 및 해결
+
+### 1. AI 연동 환경에서도 흔들리지 않는 게임 플레이
+
+**문제**
+
+* AI 응답은 비결정적이며 지연·실패 가능성 존재
+
+**해결**
+
+* AI 결과를 UE 내부의 사전 정의된 Gameplay State / Action으로 변환
+* 지연·실패 시에도 플레이 루프가 유지되도록 Fallback 처리
+
+**결과**
+
+* AI 유무와 관계없이 동일한 게임 규칙과 플레이 경험 유지
+* 멀티플레이 및 서비스 환경에서도 확장 가능한 구조 확보
+
+---
+
+### 2. 실시간 음성·텍스트 입력을 처리하는 클라이언트 구조
+
+**문제**
+
+* STT/OCR 처리 시간 불확실로 프레임 드랍·입력 블로킹 위험
+
+**해결**
+
+* 모든 AI 요청을 **비동기 처리**
+* 입력·대기·결과 수신 상태를 명확히 분리 관리
+
+**결과**
+
+* 입력 대기 중에도 플레이어 제어 및 UI 반응 유지
+* 실시간 콘텐츠에서도 프레임 안정성 확보
+
+---
+
+## 🌐 네트워크 및 멀티플레이 구조
+
+* **Listen Server 기반 멀티플레이**
+* Gameplay State는 서버 권한 기반으로 관리
+* AI 결과는 서버에서 검증 후 클라이언트에 반영 가능하도록 설계
+* Join-in-Progress 환경에서도 상태 동기화 유지
+
+---
+
+## 🛠️ 기술 스택 (요약)
+
+| 구분            | 기술                                             |
+| ------------- | ---------------------------------------------- |
+| Engine        | Unreal Engine 5                                |
+| Language      | C++20                                          |
+| Gameplay      | GameMode / GameState / PlayerState / Subsystem |
+| Networking    | Listen Server, Replication                     |
+| AI (External) | STT, TTS, LLM, RAG 기반 분석 서버                    |
+| Database      | PostgreSQL (pgvector), Redis                   |
+| Automation    | GitHub Actions, Doxygen, HonKit                |
+
+> AI 기술 상세는 **구현 수단**이며,
+> 본 프로젝트의 핵심은 **언리얼 클라이언트 아키텍처와 실행 책임 분리**입니다.
+
+---
+
+## ⚙️ 개발 및 문서화 자동화
+
+* C++ API 문서 자동 생성 (Doxygen)
+* 개발 문서 웹 배포 (HonKit)
+* DevLog 자동 수집 및 정리
+* 반복 작업 최소화를 위한 빌드·문서 파이프라인 구축
+
+---
+
+## 🔗 참고 자료
+
+* 📚 개발 문서: [https://doppleddiggong.github.io/Onepiece/honkit/](https://doppleddiggong.github.io/Onepiece/honkit/)
+* 🔍 API 문서: [https://doppleddiggong.github.io/Onepiece/doxygen/](https://doppleddiggong.github.io/Onepiece/doxygen/)
+* 📄 최종 발표 자료:
+  `Documents/Planning/Presentation/KLingo_최종 발표.pdf`
+
+---
