@@ -110,6 +110,9 @@ $(document).ready(function(){initNavTree('classUCustomNetworkSettings.html','');
 </div><!--header-->
 <div class="contents">
 
+<p>서버 환경별 네트워크 설정을 제공하는 DeveloperSettings 클래스입니다.  
+ <a href="classUCustomNetworkSettings.html#details">더 자세히 ...</a></p>
+
 <p><code>#include &lt;<a class="el" href="UCustomNetworkSettings_8h_source.html">UCustomNetworkSettings.h</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> UCustomNetworkSettings에 대한 상속 다이어그램 : </div>
@@ -141,17 +144,23 @@ Public 멤버 함수</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public 속성</h2></td></tr>
 <tr class="memitem:a52ae708d686bb8a4fc27f4c4089d9048" id="r_a52ae708d686bb8a4fc27f4c4089d9048"><td class="memItemLeft" align="right" valign="top"><a class="el" href="UCustomNetworkSettings_8h.html#a79cfeb7c9f94018b98c2415dc06d4577">EServerMode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUCustomNetworkSettings.html#a52ae708d686bb8a4fc27f4c4089d9048">DefaultMode</a> = <a class="el" href="UCustomNetworkSettings_8h.html#a79cfeb7c9f94018b98c2415dc06d4577a55f37d1fd483f6a85379640fe51aafa8">EServerMode::Dev</a></td></tr>
+<tr class="memdesc:a52ae708d686bb8a4fc27f4c4089d9048"><td class="mdescLeft">&#160;</td><td class="mdescRight">기본 서버 모드입니다.  <br /></td></tr>
 <tr class="separator:a52ae708d686bb8a4fc27f4c4089d9048"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0a6b7b5fe0199a1b58cceba3bc07dcae" id="r_a0a6b7b5fe0199a1b58cceba3bc07dcae"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structFServerConfig.html">FServerConfig</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUCustomNetworkSettings.html#a0a6b7b5fe0199a1b58cceba3bc07dcae">DevConfig</a></td></tr>
+<tr class="memdesc:a0a6b7b5fe0199a1b58cceba3bc07dcae"><td class="mdescLeft">&#160;</td><td class="mdescRight">개발 서버 설정입니다.  <br /></td></tr>
 <tr class="separator:a0a6b7b5fe0199a1b58cceba3bc07dcae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4aec66d37ef6311361d71d07ccd2fc36" id="r_a4aec66d37ef6311361d71d07ccd2fc36"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structFServerConfig.html">FServerConfig</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUCustomNetworkSettings.html#a4aec66d37ef6311361d71d07ccd2fc36">LiveConfig</a></td></tr>
+<tr class="memdesc:a4aec66d37ef6311361d71d07ccd2fc36"><td class="mdescLeft">&#160;</td><td class="mdescRight">라이브 서버 설정입니다.  <br /></td></tr>
 <tr class="separator:a4aec66d37ef6311361d71d07ccd2fc36"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a411b010243a4553694b065c6d9347236" id="r_a411b010243a4553694b065c6d9347236"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structFServerConfig.html">FServerConfig</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUCustomNetworkSettings.html#a411b010243a4553694b065c6d9347236">StageConfig</a></td></tr>
+<tr class="memdesc:a411b010243a4553694b065c6d9347236"><td class="mdescLeft">&#160;</td><td class="mdescRight">스테이징 서버 설정입니다.  <br /></td></tr>
 <tr class="separator:a411b010243a4553694b065c6d9347236"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">상세한 설명</h2>
-<div class="textblock">
-<p class="definition"><a class="el" href="UCustomNetworkSettings_8h_source.html">UCustomNetworkSettings.h</a> 파일의 <a class="el" href="UCustomNetworkSettings_8h_source.html#l00050">50</a> 번째 라인에서 정의되었습니다.</p>
+<div class="textblock"><p>서버 환경별 네트워크 설정을 제공하는 DeveloperSettings 클래스입니다. </p>
+<p>런타임에서 네트워크 요청의 대상 서버를 결정하기 위한 단일 진입점입니다. command-line 또는 config 값을 읽어 현재 모드를 선택하며, 보관용 상태를 가지지 않습니다. 사용 위치: <a class="el" href="namespaceNetworkConfig.html#ab5ac57e8f51de6d1740c7a88534a7246" title="현재 서버 모드에 맞는 HTTP 엔드포인트 URL을 생성합니다.">NetworkConfig::GetFullUrl</a>, WebSocket 연결 초기화 등. </p>
+
+<p class="definition"><a class="el" href="UCustomNetworkSettings_8h_source.html">UCustomNetworkSettings.h</a> 파일의 <a class="el" href="UCustomNetworkSettings_8h_source.html#l00096">96</a> 번째 라인에서 정의되었습니다.</p>
 </div><h2 class="groupheader">멤버 함수 문서화</h2>
 <a id="aeecf937f9eb9d2c2ef0da26a58a3918f" name="aeecf937f9eb9d2c2ef0da26a58a3918f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aeecf937f9eb9d2c2ef0da26a58a3918f">&#9670;&#160;</a></span>GetConfig()</h2>
@@ -170,7 +179,7 @@ Public 속성</h2></td></tr>
 </div><div class="memdoc">
 
 <p>서버 모드에 해당하는 설정을 반환합니다. </p>
-<dl class="params"><dt>매개변수</dt><dd>
+<p>호출자가 직접 모드를 결정해야 하는 상황에서 공통 접근을 제공합니다. </p><dl class="params"><dt>매개변수</dt><dd>
   <table class="params">
     <tr><td class="paramname">Mode</td><td>[in] 조회할 서버 모드입니다. </td></tr>
   </table>
@@ -191,11 +200,11 @@ Public 속성</h2></td></tr>
 <div class="ttc" id="aUCustomNetworkSettings_8h_html_a79cfeb7c9f94018b98c2415dc06d4577a55f37d1fd483f6a85379640fe51aafa8"><div class="ttname"><a href="UCustomNetworkSettings_8h.html#a79cfeb7c9f94018b98c2415dc06d4577a55f37d1fd483f6a85379640fe51aafa8">EServerMode::Dev</a></div><div class="ttdeci">@ Dev</div><div class="ttdoc">개발 서버 모드입니다.</div></div>
 <div class="ttc" id="aUCustomNetworkSettings_8h_html_a79cfeb7c9f94018b98c2415dc06d4577a64c6da2436465d11573858d46056b95d"><div class="ttname"><a href="UCustomNetworkSettings_8h.html#a79cfeb7c9f94018b98c2415dc06d4577a64c6da2436465d11573858d46056b95d">EServerMode::Stage</a></div><div class="ttdeci">@ Stage</div><div class="ttdoc">스테이징 서버 모드입니다.</div></div>
 <div class="ttc" id="aUCustomNetworkSettings_8h_html_a79cfeb7c9f94018b98c2415dc06d4577a955ad3298db330b5ee880c2c9e6f23a0"><div class="ttname"><a href="UCustomNetworkSettings_8h.html#a79cfeb7c9f94018b98c2415dc06d4577a955ad3298db330b5ee880c2c9e6f23a0">EServerMode::Live</a></div><div class="ttdeci">@ Live</div><div class="ttdoc">라이브 서버 모드입니다.</div></div>
-<div class="ttc" id="aclassUCustomNetworkSettings_html_a0a6b7b5fe0199a1b58cceba3bc07dcae"><div class="ttname"><a href="classUCustomNetworkSettings.html#a0a6b7b5fe0199a1b58cceba3bc07dcae">UCustomNetworkSettings::DevConfig</a></div><div class="ttdeci">FServerConfig DevConfig</div><div class="ttdef"><b>Definition</b> <a href="UCustomNetworkSettings_8h_source.html#l00062">UCustomNetworkSettings.h:62</a></div></div>
-<div class="ttc" id="aclassUCustomNetworkSettings_html_a411b010243a4553694b065c6d9347236"><div class="ttname"><a href="classUCustomNetworkSettings.html#a411b010243a4553694b065c6d9347236">UCustomNetworkSettings::StageConfig</a></div><div class="ttdeci">FServerConfig StageConfig</div><div class="ttdef"><b>Definition</b> <a href="UCustomNetworkSettings_8h_source.html#l00065">UCustomNetworkSettings.h:65</a></div></div>
-<div class="ttc" id="aclassUCustomNetworkSettings_html_a4aec66d37ef6311361d71d07ccd2fc36"><div class="ttname"><a href="classUCustomNetworkSettings.html#a4aec66d37ef6311361d71d07ccd2fc36">UCustomNetworkSettings::LiveConfig</a></div><div class="ttdeci">FServerConfig LiveConfig</div><div class="ttdef"><b>Definition</b> <a href="UCustomNetworkSettings_8h_source.html#l00068">UCustomNetworkSettings.h:68</a></div></div>
+<div class="ttc" id="aclassUCustomNetworkSettings_html_a0a6b7b5fe0199a1b58cceba3bc07dcae"><div class="ttname"><a href="classUCustomNetworkSettings.html#a0a6b7b5fe0199a1b58cceba3bc07dcae">UCustomNetworkSettings::DevConfig</a></div><div class="ttdeci">FServerConfig DevConfig</div><div class="ttdoc">개발 서버 설정입니다.</div><div class="ttdef"><b>Definition</b> <a href="UCustomNetworkSettings_8h_source.html#l00127">UCustomNetworkSettings.h:127</a></div></div>
+<div class="ttc" id="aclassUCustomNetworkSettings_html_a411b010243a4553694b065c6d9347236"><div class="ttname"><a href="classUCustomNetworkSettings.html#a411b010243a4553694b065c6d9347236">UCustomNetworkSettings::StageConfig</a></div><div class="ttdeci">FServerConfig StageConfig</div><div class="ttdoc">스테이징 서버 설정입니다.</div><div class="ttdef"><b>Definition</b> <a href="UCustomNetworkSettings_8h_source.html#l00137">UCustomNetworkSettings.h:137</a></div></div>
+<div class="ttc" id="aclassUCustomNetworkSettings_html_a4aec66d37ef6311361d71d07ccd2fc36"><div class="ttname"><a href="classUCustomNetworkSettings.html#a4aec66d37ef6311361d71d07ccd2fc36">UCustomNetworkSettings::LiveConfig</a></div><div class="ttdeci">FServerConfig LiveConfig</div><div class="ttdoc">라이브 서버 설정입니다.</div><div class="ttdef"><b>Definition</b> <a href="UCustomNetworkSettings_8h_source.html#l00147">UCustomNetworkSettings.h:147</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="UCustomNetworkSettings_8h.html#a79cfeb7c9f94018b98c2415dc06d4577a55f37d1fd483f6a85379640fe51aafa8">Dev</a>, <a class="el" href="UCustomNetworkSettings_8h_source.html#l00062">DevConfig</a>, <a class="el" href="UCustomNetworkSettings_8h.html#a79cfeb7c9f94018b98c2415dc06d4577a955ad3298db330b5ee880c2c9e6f23a0">Live</a>, <a class="el" href="UCustomNetworkSettings_8h_source.html#l00068">LiveConfig</a>, <a class="el" href="UCustomNetworkSettings_8h.html#a79cfeb7c9f94018b98c2415dc06d4577a64c6da2436465d11573858d46056b95d">Stage</a>, <a class="el" href="UCustomNetworkSettings_8h_source.html#l00065">StageConfig</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="UCustomNetworkSettings_8h.html#a79cfeb7c9f94018b98c2415dc06d4577a55f37d1fd483f6a85379640fe51aafa8">Dev</a>, <a class="el" href="UCustomNetworkSettings_8h_source.html#l00127">DevConfig</a>, <a class="el" href="UCustomNetworkSettings_8h.html#a79cfeb7c9f94018b98c2415dc06d4577a955ad3298db330b5ee880c2c9e6f23a0">Live</a>, <a class="el" href="UCustomNetworkSettings_8h_source.html#l00147">LiveConfig</a>, <a class="el" href="UCustomNetworkSettings_8h.html#a79cfeb7c9f94018b98c2415dc06d4577a64c6da2436465d11573858d46056b95d">Stage</a>, <a class="el" href="UCustomNetworkSettings_8h_source.html#l00137">StageConfig</a>.</p>
 
 </div>
 </div>
@@ -223,6 +232,7 @@ Public 속성</h2></td></tr>
 </div><div class="memdoc">
 
 <p>명령줄 또는 설정으로 선택된 서버 모드를 반환합니다. </p>
+<p>서버 전환 정책을 중앙화하기 위한 조회 API이며 내부 상태를 변경하지 않습니다. </p><dl class="section return"><dt>반환값</dt><dd>현재 선택된 서버 모드입니다. </dd></dl>
 
 <p class="definition"><a class="el" href="UCustomNetworkSettings_8cpp_source.html">UCustomNetworkSettings.cpp</a> 파일의 <a class="el" href="UCustomNetworkSettings_8cpp_source.html#l00010">10</a> 번째 라인에서 정의되었습니다.</p>
 <div class="fragment"><div class="line"><span class="lineno">   11</span>{</div>
@@ -268,7 +278,10 @@ Public 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="UCustomNetworkSettings_8h_source.html">UCustomNetworkSettings.h</a> 파일의 <a class="el" href="UCustomNetworkSettings_8h_source.html#l00059">59</a> 번째 라인에서 정의되었습니다.</p>
+<p>기본 서버 모드입니다. </p>
+<p>config에 저장되는 기본 값이며, 명령줄 옵션이 없을 때만 사용됩니다. 소유권/수명: 설정 객체에 의해 유지되며 런타임에서 읽기 전용으로 사용됩니다. 동기화: 네트워크 복제와 무관합니다. </p>
+
+<p class="definition"><a class="el" href="UCustomNetworkSettings_8h_source.html">UCustomNetworkSettings.h</a> 파일의 <a class="el" href="UCustomNetworkSettings_8h_source.html#l00117">117</a> 번째 라인에서 정의되었습니다.</p>
 
 </div>
 </div>
@@ -284,7 +297,10 @@ Public 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="UCustomNetworkSettings_8h_source.html">UCustomNetworkSettings.h</a> 파일의 <a class="el" href="UCustomNetworkSettings_8h_source.html#l00062">62</a> 번째 라인에서 정의되었습니다.</p>
+<p>개발 서버 설정입니다. </p>
+<p>개발 환경에서 사용하는 BaseUrl/Port/WebSocketUrl을 묶어둡니다. 소유권/수명: 설정 객체에 의해 유지되며 런타임에서 읽기 전용으로 사용됩니다. 동기화: 네트워크 복제와 무관합니다. </p>
+
+<p class="definition"><a class="el" href="UCustomNetworkSettings_8h_source.html">UCustomNetworkSettings.h</a> 파일의 <a class="el" href="UCustomNetworkSettings_8h_source.html#l00127">127</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UCustomNetworkSettings_8cpp_source.html#l00028">GetConfig()</a>.</p>
 
@@ -302,7 +318,10 @@ Public 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="UCustomNetworkSettings_8h_source.html">UCustomNetworkSettings.h</a> 파일의 <a class="el" href="UCustomNetworkSettings_8h_source.html#l00068">68</a> 번째 라인에서 정의되었습니다.</p>
+<p>라이브 서버 설정입니다. </p>
+<p>운영 환경에서 사용하는 접속 정보를 보관합니다. 소유권/수명: 설정 객체에 의해 유지되며 런타임에서 읽기 전용으로 사용됩니다. 동기화: 네트워크 복제와 무관합니다. </p>
+
+<p class="definition"><a class="el" href="UCustomNetworkSettings_8h_source.html">UCustomNetworkSettings.h</a> 파일의 <a class="el" href="UCustomNetworkSettings_8h_source.html#l00147">147</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UCustomNetworkSettings_8cpp_source.html#l00028">GetConfig()</a>.</p>
 
@@ -320,7 +339,10 @@ Public 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="UCustomNetworkSettings_8h_source.html">UCustomNetworkSettings.h</a> 파일의 <a class="el" href="UCustomNetworkSettings_8h_source.html#l00065">65</a> 번째 라인에서 정의되었습니다.</p>
+<p>스테이징 서버 설정입니다. </p>
+<p>QA/스테이징 환경에서 사용하는 접속 정보를 보관합니다. 소유권/수명: 설정 객체에 의해 유지되며 런타임에서 읽기 전용으로 사용됩니다. 동기화: 네트워크 복제와 무관합니다. </p>
+
+<p class="definition"><a class="el" href="UCustomNetworkSettings_8h_source.html">UCustomNetworkSettings.h</a> 파일의 <a class="el" href="UCustomNetworkSettings_8h_source.html#l00137">137</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UCustomNetworkSettings_8cpp_source.html#l00028">GetConfig()</a>.</p>
 
@@ -336,7 +358,7 @@ Public 속성</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classUCustomNetworkSettings.html">UCustomNetworkSettings</a></li>
-    <li class="footer">생성시간 : 수 1월 7 2026 08:23:57, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 금 1월 9 2026 00:25:57, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

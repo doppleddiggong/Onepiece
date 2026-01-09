@@ -111,57 +111,58 @@ $(document).ready(function(){initNavTree('UWebSocketSystem_8h_source.html',''); 
 <div class="contents">
 <a href="UWebSocketSystem_8h.html">이 파일의 문서화 페이지로 가기</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">// Copyright (c) 2025 Doppleddiggong. All rights reserved. Unauthorized copying, modification, or distribution of this file, via any medium is strictly prohibited. Proprietary and confidential.</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#pragma once</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;CoreMinimal.h&quot;</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;Subsystems/GameInstanceSubsystem.h&quot;</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;IWebSocket.h&quot;</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;<a class="code" href="Macro_8h.html">Macro.h</a>&quot;</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;UWebSocketSystem.generated.h&quot;</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>UCLASS(Blueprintable, BlueprintType)</div>
-<div class="foldopen" id="foldopen00014" data-start="{" data-end="};">
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="classUWebSocketSystem.html">   14</a></span>class ONEPIECE_API <a class="code hl_class" href="classUWebSocketSystem.html">UWebSocketSystem</a> : public UGameInstanceSubsystem</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>{</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    GENERATED_BODY()</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="classUWebSocketSystem.html#a45a2a5d855c91f82dc9c6ea5d651899f">   19</a></span>    <a class="code hl_function" href="classUWebSocketSystem.html#a45a2a5d855c91f82dc9c6ea5d651899f">DEFINE_SUBSYSTEM_GETTER_INLINE</a>(<a class="code hl_class" href="classUWebSocketSystem.html">UWebSocketSystem</a>);</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    UFUNCTION(BlueprintCallable, Category = <span class="stringliteral">&quot;WebSocket&quot;</span>)</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    void Connect();</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    UFUNCTION(BlueprintCallable, Category = &quot;WebSocket&quot;)</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="keywordtype">void</span> Disconnect();</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    UFUNCTION(BlueprintCallable, Category = &quot;WebSocket&quot;)</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="keywordtype">void</span> SendPing();</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    UFUNCTION(BlueprintPure, Category = &quot;WebSocket&quot;)</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="keywordtype">bool</span> IsConnected() const;</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>private:</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    virtual <span class="keywordtype">void</span> Initialize(FSubsystemCollectionBase&amp; Collection) override;</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    virtual <span class="keywordtype">void</span> Deinitialize() override;</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;CoreMinimal.h&quot;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;Subsystems/GameInstanceSubsystem.h&quot;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;IWebSocket.h&quot;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;<a class="code" href="Macro_8h.html">Macro.h</a>&quot;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;UWebSocketSystem.generated.h&quot;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>UCLASS(Blueprintable, BlueprintType)</div>
+<div class="foldopen" id="foldopen00023" data-start="{" data-end="};">
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="classUWebSocketSystem.html">   23</a></span>class ONEPIECE_API <a class="code hl_class" href="classUWebSocketSystem.html">UWebSocketSystem</a> : public UGameInstanceSubsystem</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>{</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    GENERATED_BODY()</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="classUWebSocketSystem.html#a45a2a5d855c91f82dc9c6ea5d651899f">   28</a></span>    <a class="code hl_function" href="classUWebSocketSystem.html#a45a2a5d855c91f82dc9c6ea5d651899f">DEFINE_SUBSYSTEM_GETTER_INLINE</a>(<a class="code hl_class" href="classUWebSocketSystem.html">UWebSocketSystem</a>);</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    UFUNCTION(BlueprintCallable, Category = <span class="stringliteral">&quot;WebSocket&quot;</span>)</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    void Connect();</div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="keywordtype">void</span> OnConnected_Native();</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="keywordtype">void</span> OnConnectionError_Native(const FString&amp; InErrorMessage);</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="keywordtype">void</span> OnClosed_Native(int32 StatusCode, const FString&amp; Reason, <span class="keywordtype">bool</span> bWasClean);</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="keywordtype">void</span> OnMessage_Native(const FString&amp; InMessage);</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="keywordtype">void</span> OnBinaryMessage_Native(const <span class="keywordtype">void</span>* Data, SIZE_T Size, <span class="keywordtype">bool</span> bIsLastFragment);</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="classUWebSocketSystem.html#a6ea6f4303102f95763988ce17e88f4cd">   63</a></span>    TSharedPtr&lt;IWebSocket&gt; WebSocket;</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="classUWebSocketSystem.html#adca509cb2a6c8cca3ce29054491eef77">   66</a></span>    <span class="keywordtype">bool</span> bIsExpectingAudio = false;</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>private:</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    static <span class="keywordtype">void</span> LogNetwork(const FString&amp; Message);</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>};</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    UFUNCTION(BlueprintCallable, Category = &quot;WebSocket&quot;)</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="keywordtype">void</span> Disconnect();</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    UFUNCTION(BlueprintCallable, Category = &quot;WebSocket&quot;)</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="keywordtype">void</span> SendPing();</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    UFUNCTION(BlueprintPure, Category = &quot;WebSocket&quot;)</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    <span class="keywordtype">bool</span> IsConnected() const;</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>private:</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    virtual <span class="keywordtype">void</span> Initialize(FSubsystemCollectionBase&amp; Collection) override;</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    virtual <span class="keywordtype">void</span> Deinitialize() override;</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <span class="keywordtype">void</span> OnConnected_Native();</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    <span class="keywordtype">void</span> OnConnectionError_Native(const FString&amp; InErrorMessage);</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    <span class="keywordtype">void</span> OnClosed_Native(int32 StatusCode, const FString&amp; Reason, <span class="keywordtype">bool</span> bWasClean);</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    <span class="keywordtype">void</span> OnMessage_Native(const FString&amp; InMessage);</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    <span class="keywordtype">void</span> OnBinaryMessage_Native(const <span class="keywordtype">void</span>* Data, SIZE_T Size, <span class="keywordtype">bool</span> bIsLastFragment);</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno"><a class="line" href="classUWebSocketSystem.html#a6ea6f4303102f95763988ce17e88f4cd">   93</a></span>    TSharedPtr&lt;IWebSocket&gt; WebSocket;</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno"><a class="line" href="classUWebSocketSystem.html#adca509cb2a6c8cca3ce29054491eef77">   96</a></span>    <span class="keywordtype">bool</span> bIsExpectingAudio = false;</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>private:</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    static <span class="keywordtype">void</span> LogNetwork(const FString&amp; Message);</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>};</div>
 </div>
 <div class="ttc" id="aMacro_8h_html"><div class="ttname"><a href="Macro_8h.html">Macro.h</a></div><div class="ttdoc">YiSan 전반에서 사용하는 공용 인터페이스를 선언합니다.</div></div>
-<div class="ttc" id="aclassUWebSocketSystem_html"><div class="ttname"><a href="classUWebSocketSystem.html">UWebSocketSystem</a></div><div class="ttdef"><b>Definition</b> <a href="UWebSocketSystem_8h_source.html#l00014">UWebSocketSystem.h:15</a></div></div>
+<div class="ttc" id="aclassUWebSocketSystem_html"><div class="ttname"><a href="classUWebSocketSystem.html">UWebSocketSystem</a></div><div class="ttdoc">WebSocket 기반 실시간 상호작용을 관리하는 게임 인스턴스 서브시스템입니다.</div><div class="ttdef"><b>Definition</b> <a href="UWebSocketSystem_8h_source.html#l00023">UWebSocketSystem.h:24</a></div></div>
 <div class="ttc" id="aclassUWebSocketSystem_html_a45a2a5d855c91f82dc9c6ea5d651899f"><div class="ttname"><a href="classUWebSocketSystem.html#a45a2a5d855c91f82dc9c6ea5d651899f">UWebSocketSystem::DEFINE_SUBSYSTEM_GETTER_INLINE</a></div><div class="ttdeci">DEFINE_SUBSYSTEM_GETTER_INLINE(UWebSocketSystem)</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
@@ -169,7 +170,7 @@ $(document).ready(function(){initNavTree('UWebSocketSystem_8h_source.html',''); 
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_74389ed8173ad57b461b9d623a1f3867.html">Source</a></li><li class="navelem"><a class="el" href="dir_86991fbdc3ffccad5ecdd4bba46f6ea3.html">Onepiece</a></li><li class="navelem"><a class="el" href="dir_db6231b890a14ef22abfc7e4cac87d3d.html">Network</a></li><li class="navelem"><a class="el" href="dir_220b20a97e4e155a19f3af1d93d62cb0.html">Public</a></li><li class="navelem"><a class="el" href="UWebSocketSystem_8h.html">UWebSocketSystem.h</a></li>
-    <li class="footer">생성시간 : 수 1월 7 2026 08:23:56, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 금 1월 9 2026 00:25:57, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

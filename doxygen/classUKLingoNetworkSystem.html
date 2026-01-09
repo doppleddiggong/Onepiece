@@ -111,6 +111,9 @@ $(document).ready(function(){initNavTree('classUKLingoNetworkSystem.html',''); i
 </div><!--header-->
 <div class="contents">
 
+<p>KLingo 서버와의 HTTP 요청을 중재하는 게임 인스턴스 서브시스템입니다.  
+ <a href="classUKLingoNetworkSystem.html#details">더 자세히 ...</a></p>
+
 <p><code>#include &lt;<a class="el" href="UKLingoNetworkSystem_8h_source.html">UKLingoNetworkSystem.h</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> UKLingoNetworkSystem에 대한 상속 다이어그램 : </div>
@@ -138,51 +141,67 @@ Public 멤버 함수</h2></td></tr>
 <tr class="memdesc:ac473610dfbbe9da74f08a1b3e6ec3dc3"><td class="mdescLeft">&#160;</td><td class="mdescRight">HTTP 모듈 초기화 및 네트워크 대기 카운터를 설정합니다.  <br /></td></tr>
 <tr class="separator:ac473610dfbbe9da74f08a1b3e6ec3dc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a513c3f20161cb51f368c82e4cc422f84" id="r_a513c3f20161cb51f368c82e4cc422f84"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUKLingoNetworkSystem.html#a513c3f20161cb51f368c82e4cc422f84">RequestChatAudio</a> (const FString &amp;<a class="el" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2aad4e206408c1c59bfb8a057ba7857446">Context</a>, const FString &amp;AudioPath, FResponseChatAnswersDelegate InDelegate)</td></tr>
-<tr class="memdesc:a513c3f20161cb51f368c82e4cc422f84"><td class="mdescLeft">&#160;</td><td class="mdescRight">Chat 답변을 요청합니다 (음성 질문). POST /chats/answers  <br /></td></tr>
+<tr class="memdesc:a513c3f20161cb51f368c82e4cc422f84"><td class="mdescLeft">&#160;</td><td class="mdescRight">Chat 답변을 요청합니다 (음성 질문).  <br /></td></tr>
 <tr class="separator:a513c3f20161cb51f368c82e4cc422f84"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a428fadc7f4e7317b68da0945cc83bfd6" id="r_a428fadc7f4e7317b68da0945cc83bfd6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUKLingoNetworkSystem.html#a428fadc7f4e7317b68da0945cc83bfd6">RequestChatQuestion</a> (const FString &amp;<a class="el" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2aad4e206408c1c59bfb8a057ba7857446">Context</a>, const FString &amp;Question, FResponseChatAnswersDelegate InDelegate)</td></tr>
-<tr class="memdesc:a428fadc7f4e7317b68da0945cc83bfd6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Chat 답변을 요청합니다 (텍스트 질문). POST /chats/answers  <br /></td></tr>
+<tr class="memdesc:a428fadc7f4e7317b68da0945cc83bfd6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Chat 답변을 요청합니다 (텍스트 질문).  <br /></td></tr>
 <tr class="separator:a428fadc7f4e7317b68da0945cc83bfd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab026928024492d294972a59dbc8a5938" id="r_ab026928024492d294972a59dbc8a5938"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUKLingoNetworkSystem.html#ab026928024492d294972a59dbc8a5938">RequestDailyAudio</a> (const FString &amp;<a class="el" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2aad4e206408c1c59bfb8a057ba7857446">Context</a>, const FString &amp;AudioPath, FResponseChatDailysDelegate InDelegate)</td></tr>
-<tr class="memdesc:ab026928024492d294972a59dbc8a5938"><td class="mdescLeft">&#160;</td><td class="mdescRight">Daily Chat 답변을 요청합니다 (음성 질문). POST /chats/dailys  <br /></td></tr>
+<tr class="memdesc:ab026928024492d294972a59dbc8a5938"><td class="mdescLeft">&#160;</td><td class="mdescRight">Daily Chat 답변을 요청합니다 (음성 질문).  <br /></td></tr>
 <tr class="separator:ab026928024492d294972a59dbc8a5938"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaa5aa6d5e8e836313efbc8205b610a73" id="r_aaa5aa6d5e8e836313efbc8205b610a73"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUKLingoNetworkSystem.html#aaa5aa6d5e8e836313efbc8205b610a73">RequestDailyQuestion</a> (const FString &amp;<a class="el" href="FResourceTextureData_8h.html#a98b8b3000fb3fc86e37c624651589cb2aad4e206408c1c59bfb8a057ba7857446">Context</a>, const FString &amp;Question, FResponseChatDailysDelegate InDelegate)</td></tr>
-<tr class="memdesc:aaa5aa6d5e8e836313efbc8205b610a73"><td class="mdescLeft">&#160;</td><td class="mdescRight">Daily Chat 답변을 요청합니다 (텍스트 질문). POST /chats/dailys  <br /></td></tr>
+<tr class="memdesc:aaa5aa6d5e8e836313efbc8205b610a73"><td class="mdescLeft">&#160;</td><td class="mdescRight">Daily Chat 답변을 요청합니다 (텍스트 질문).  <br /></td></tr>
 <tr class="separator:aaa5aa6d5e8e836313efbc8205b610a73"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac73b37a45a5cb8abefefe4e47597d264" id="r_ac73b37a45a5cb8abefefe4e47597d264"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUKLingoNetworkSystem.html#ac73b37a45a5cb8abefefe4e47597d264">RequestEvaluationResult</a> (int32 RoomId, FResponseEvaluationResultDelegate InDelegate)</td></tr>
-<tr class="memdesc:ac73b37a45a5cb8abefefe4e47597d264"><td class="mdescLeft">&#160;</td><td class="mdescRight">Evaluation 결과를 조회합니다. GET /evaluations/rooms/{room_id}  <br /></td></tr>
+<tr class="memdesc:ac73b37a45a5cb8abefefe4e47597d264"><td class="mdescLeft">&#160;</td><td class="mdescRight">Evaluation 결과를 조회합니다.  <br /></td></tr>
 <tr class="separator:ac73b37a45a5cb8abefefe4e47597d264"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a68f5d305d55ac5d34af5b0e5b5a51145" id="r_a68f5d305d55ac5d34af5b0e5b5a51145"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUKLingoNetworkSystem.html#a68f5d305d55ac5d34af5b0e5b5a51145">RequestInterviewAnswer</a> (const <a class="el" href="structFRequestInterviewAnswer.html">FRequestInterviewAnswer</a> &amp;Answer, FResponseInterviewAnswerDelegate InDelegate)</td></tr>
+<tr class="memdesc:a68f5d305d55ac5d34af5b0e5b5a51145"><td class="mdescLeft">&#160;</td><td class="mdescRight">인터뷰 답변 제출 요청을 전송합니다.  <br /></td></tr>
 <tr class="separator:a68f5d305d55ac5d34af5b0e5b5a51145"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9c8d97b1b722aac6a7b9335b3f120064" id="r_a9c8d97b1b722aac6a7b9335b3f120064"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUKLingoNetworkSystem.html#a9c8d97b1b722aac6a7b9335b3f120064">RequestInterviewHello</a> (FResponseInterviewHelloDelegate InDelegate)</td></tr>
+<tr class="memdesc:a9c8d97b1b722aac6a7b9335b3f120064"><td class="mdescLeft">&#160;</td><td class="mdescRight">인터뷰 시작 요청을 전송합니다.  <br /></td></tr>
 <tr class="separator:a9c8d97b1b722aac6a7b9335b3f120064"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afe074a06266fd96e1cf437d014a865e5" id="r_afe074a06266fd96e1cf437d014a865e5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUKLingoNetworkSystem.html#afe074a06266fd96e1cf437d014a865e5">RequestListenAudio</a> (const FString &amp;AudioText, FResponseListenAudioDelegate InDelegate)</td></tr>
+<tr class="memdesc:afe074a06266fd96e1cf437d014a865e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Listen 음성 생성 요청을 전송합니다.  <br /></td></tr>
 <tr class="separator:afe074a06266fd96e1cf437d014a865e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1d21be6d48915667d0fe3fd636870365" id="r_a1d21be6d48915667d0fe3fd636870365"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUKLingoNetworkSystem.html#a1d21be6d48915667d0fe3fd636870365">RequestListenResult</a> (const <a class="el" href="structFRequestListenResult.html">FRequestListenResult</a> &amp;Result, FResponseListenResultDelegate InDelegate)</td></tr>
+<tr class="memdesc:a1d21be6d48915667d0fe3fd636870365"><td class="mdescLeft">&#160;</td><td class="mdescRight">Listen 결과 제출 요청을 전송합니다.  <br /></td></tr>
 <tr class="separator:a1d21be6d48915667d0fe3fd636870365"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9001fbcce1bbf3dc6c143c85b391bbe0" id="r_a9001fbcce1bbf3dc6c143c85b391bbe0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUKLingoNetworkSystem.html#a9001fbcce1bbf3dc6c143c85b391bbe0">RequestListenScenario</a> (FResponseListenScenarioDelegate InDelegate)</td></tr>
+<tr class="memdesc:a9001fbcce1bbf3dc6c143c85b391bbe0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Listen 시나리오 조회 요청을 전송합니다.  <br /></td></tr>
 <tr class="separator:a9001fbcce1bbf3dc6c143c85b391bbe0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae22c1e9a3f2297bece1b7ec3364749c0" id="r_ae22c1e9a3f2297bece1b7ec3364749c0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUKLingoNetworkSystem.html#ae22c1e9a3f2297bece1b7ec3364749c0">RequestReadResult</a> (const <a class="el" href="structFRequestReadResult.html">FRequestReadResult</a> &amp;Result, FResponseReadResultDelegate InDelegate)</td></tr>
+<tr class="memdesc:ae22c1e9a3f2297bece1b7ec3364749c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read 결과 제출 요청을 전송합니다.  <br /></td></tr>
 <tr class="separator:ae22c1e9a3f2297bece1b7ec3364749c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2d54193b8c218091a2a12ff44fed1c52" id="r_a2d54193b8c218091a2a12ff44fed1c52"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUKLingoNetworkSystem.html#a2d54193b8c218091a2a12ff44fed1c52">RequestReadScenario</a> (FResponseReadScenarioDelegate InDelegate)</td></tr>
+<tr class="memdesc:a2d54193b8c218091a2a12ff44fed1c52"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read 시나리오 조회 요청을 전송합니다.  <br /></td></tr>
 <tr class="separator:a2d54193b8c218091a2a12ff44fed1c52"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0b26b72d9b13f2eff1d8a06e55141ab0" id="r_a0b26b72d9b13f2eff1d8a06e55141ab0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUKLingoNetworkSystem.html#a0b26b72d9b13f2eff1d8a06e55141ab0">RequestSpeakingJudges</a> (const FString &amp;Question, const FString &amp;AudioPath, FResponseSpeakingJudesDelegate InDelegate)</td></tr>
+<tr class="memdesc:a0b26b72d9b13f2eff1d8a06e55141ab0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Speaking 평가 요청을 전송합니다.  <br /></td></tr>
 <tr class="separator:a0b26b72d9b13f2eff1d8a06e55141ab0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6730e3aeb9944934038aad48de0fac92" id="r_a6730e3aeb9944934038aad48de0fac92"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUKLingoNetworkSystem.html#a6730e3aeb9944934038aad48de0fac92">RequestSpeakResult</a> (const <a class="el" href="structFRequestSpeakResult.html">FRequestSpeakResult</a> &amp;Result, FResponseSpeakResultDelegate InDelegate)</td></tr>
+<tr class="memdesc:a6730e3aeb9944934038aad48de0fac92"><td class="mdescLeft">&#160;</td><td class="mdescRight">Speak 결과 제출 요청을 전송합니다.  <br /></td></tr>
 <tr class="separator:a6730e3aeb9944934038aad48de0fac92"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acf2d46d08afd81380e695e69039049d9" id="r_acf2d46d08afd81380e695e69039049d9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUKLingoNetworkSystem.html#acf2d46d08afd81380e695e69039049d9">RequestSpeakScenario</a> (FResponseSpeakScenarioDelegate InDelegate)</td></tr>
+<tr class="memdesc:acf2d46d08afd81380e695e69039049d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Speak 시나리오 조회 요청을 전송합니다.  <br /></td></tr>
 <tr class="separator:acf2d46d08afd81380e695e69039049d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7bf03fe16be3fddf9a51350248bdf6b4" id="r_a7bf03fe16be3fddf9a51350248bdf6b4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUKLingoNetworkSystem.html#a7bf03fe16be3fddf9a51350248bdf6b4">RequestUserMe</a> (FResponseUserMeDelegate InDelegate)</td></tr>
+<tr class="memdesc:a7bf03fe16be3fddf9a51350248bdf6b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">현재 사용자 정보를 조회합니다.  <br /></td></tr>
 <tr class="separator:a7bf03fe16be3fddf9a51350248bdf6b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4082666ed951516c06e8dcbfdb20c484" id="r_a4082666ed951516c06e8dcbfdb20c484"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUKLingoNetworkSystem.html#a4082666ed951516c06e8dcbfdb20c484">RequestUserRegister</a> (const FString &amp;UserName, FResponseUserRegisterDelegate InDelegate)</td></tr>
+<tr class="memdesc:a4082666ed951516c06e8dcbfdb20c484"><td class="mdescLeft">&#160;</td><td class="mdescRight">사용자 등록 요청을 전송합니다.  <br /></td></tr>
 <tr class="separator:a4082666ed951516c06e8dcbfdb20c484"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2f97be279ddf5bd2878f67a55d9b8149" id="r_a2f97be279ddf5bd2878f67a55d9b8149"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUKLingoNetworkSystem.html#a2f97be279ddf5bd2878f67a55d9b8149">RequestUserToken</a> (const FString &amp;UserName, FResponseUserTokenDelegate InDelegate)</td></tr>
+<tr class="memdesc:a2f97be279ddf5bd2878f67a55d9b8149"><td class="mdescLeft">&#160;</td><td class="mdescRight">사용자 토큰 발급 요청을 전송합니다.  <br /></td></tr>
 <tr class="separator:a2f97be279ddf5bd2878f67a55d9b8149"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa7effea553f735e179a45e6c053e97f6" id="r_aa7effea553f735e179a45e6c053e97f6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUKLingoNetworkSystem.html#aa7effea553f735e179a45e6c053e97f6">RequestWriteQuestions</a> (FResponseWriteQuestionDelegate InDelegate)</td></tr>
+<tr class="memdesc:aa7effea553f735e179a45e6c053e97f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write 문제 목록을 요청합니다.  <br /></td></tr>
 <tr class="separator:aa7effea553f735e179a45e6c053e97f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aef1bcb9d5e7bc07c1cc43a1ae963c27b" id="r_aef1bcb9d5e7bc07c1cc43a1ae963c27b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUKLingoNetworkSystem.html#aef1bcb9d5e7bc07c1cc43a1ae963c27b">RequestWriteResult</a> (const <a class="el" href="structFRequestWriteResult.html">FRequestWriteResult</a> &amp;Result, FResponseWriteResultDelegate InDelegate)</td></tr>
+<tr class="memdesc:aef1bcb9d5e7bc07c1cc43a1ae963c27b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write 결과 제출 요청을 전송합니다.  <br /></td></tr>
 <tr class="separator:aef1bcb9d5e7bc07c1cc43a1ae963c27b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af33057e42c5ce4c185dedf73ecb4f67c" id="r_af33057e42c5ce4c185dedf73ecb4f67c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUKLingoNetworkSystem.html#af33057e42c5ce4c185dedf73ecb4f67c">RequestWriteSubmit</a> (const TArray&lt; FString &gt; &amp;ImagePathArray, TArray&lt; FString &gt; InTargetText, FResponseWriteSubmitDelegate InDelegate)</td></tr>
+<tr class="memdesc:af33057e42c5ce4c185dedf73ecb4f67c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write 제출 요청을 전송합니다.  <br /></td></tr>
 <tr class="separator:af33057e42c5ce4c185dedf73ecb4f67c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
@@ -220,8 +239,10 @@ Private 속성</h2></td></tr>
 <tr class="separator:ae2884d2ebde0f80ae6ff84d5f27a706e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">상세한 설명</h2>
-<div class="textblock">
-<p class="definition"><a class="el" href="UKLingoNetworkSystem_8h_source.html">UKLingoNetworkSystem.h</a> 파일의 <a class="el" href="UKLingoNetworkSystem_8h_source.html#l00019">19</a> 번째 라인에서 정의되었습니다.</p>
+<div class="textblock"><p>KLingo 서버와의 HTTP 요청을 중재하는 게임 인스턴스 서브시스템입니다. </p>
+<p>학습/퀘스트/채팅 등 여러 API 요청의 공통 진입점으로 사용됩니다. 요청 처리 중 로딩 UI 및 오류 팝업을 관리하며, 응답은 델리게이트로 전달됩니다. 사용 위치: 네트워크 요청이 필요한 게임플레이/학습 UI 전반. </p>
+
+<p class="definition"><a class="el" href="UKLingoNetworkSystem_8h_source.html">UKLingoNetworkSystem.h</a> 파일의 <a class="el" href="UKLingoNetworkSystem_8h_source.html#l00028">28</a> 번째 라인에서 정의되었습니다.</p>
 </div><h2 class="groupheader">멤버 함수 문서화</h2>
 <a id="accbd4084344a72623fe40deab11d1c29" name="accbd4084344a72623fe40deab11d1c29"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#accbd4084344a72623fe40deab11d1c29">&#9670;&#160;</a></span>AddNetworkWaitCount()</h2>
@@ -270,9 +291,9 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">   89</span>        BroadcastManager-&gt;SendNetworkWaitCount(<a class="code hl_variable" href="classUKLingoNetworkSystem.html#ae2884d2ebde0f80ae6ff84d5f27a706e">NetworkWaitCount</a>);</div>
 <div class="line"><span class="lineno">   90</span>}</div>
 <div class="ttc" id="aGameLogging_8h_html_a9998c8beb11a6bad6ffada2e701fc0cf"><div class="ttname"><a href="GameLogging_8h.html#a9998c8beb11a6bad6ffada2e701fc0cf">PRINTLOG</a></div><div class="ttdeci">#define PRINTLOG(fmt,...)</div><div class="ttdef"><b>Definition</b> <a href="GameLogging_8h_source.html#l00030">GameLogging.h:30</a></div></div>
-<div class="ttc" id="aclassUKLingoNetworkSystem_html_ae2884d2ebde0f80ae6ff84d5f27a706e"><div class="ttname"><a href="classUKLingoNetworkSystem.html#ae2884d2ebde0f80ae6ff84d5f27a706e">UKLingoNetworkSystem::NetworkWaitCount</a></div><div class="ttdeci">int NetworkWaitCount</div><div class="ttdoc">처리 중인 요청 수를 집계하는 카운터입니다.</div><div class="ttdef"><b>Definition</b> <a href="UKLingoNetworkSystem_8h_source.html#l00112">UKLingoNetworkSystem.h:112</a></div></div>
+<div class="ttc" id="aclassUKLingoNetworkSystem_html_ae2884d2ebde0f80ae6ff84d5f27a706e"><div class="ttname"><a href="classUKLingoNetworkSystem.html#ae2884d2ebde0f80ae6ff84d5f27a706e">UKLingoNetworkSystem::NetworkWaitCount</a></div><div class="ttdeci">int NetworkWaitCount</div><div class="ttdoc">처리 중인 요청 수를 집계하는 카운터입니다.</div><div class="ttdef"><b>Definition</b> <a href="UKLingoNetworkSystem_8h_source.html#l00291">UKLingoNetworkSystem.h:291</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="UKLingoNetworkSystem_8h_source.html#l00112">NetworkWaitCount</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="UKLingoNetworkSystem_8h_source.html#l00291">NetworkWaitCount</a>, <a class="el" href="GameLogging_8h_source.html#l00030">PRINTLOG</a>.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l01032">RequestListenScenario()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00913">RequestReadScenario()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l01148">RequestSpeakScenario()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00291">RequestUserMe()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00162">RequestUserRegister()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00225">RequestUserToken()</a>.</p>
 <div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -327,6 +348,7 @@ Private 속성</h2></td></tr>
 </div><div class="memdoc">
 
 <p>등록된 델리게이트를 정리하고 서브시스템을 종료합니다. </p>
+<p>잔여 네트워크 요청 상태를 정리해 안전하게 종료합니다. 사이드이펙트: 내부 상태를 해제하고 UI 대기 상태를 정리합니다. </p>
 
 <p class="definition"><a class="el" href="UKLingoNetworkSystem_8cpp_source.html">UKLingoNetworkSystem.cpp</a> 파일의 <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00041">41</a> 번째 라인에서 정의되었습니다.</p>
 <div class="fragment"><div class="line"><span class="lineno">   42</span>{</div>
@@ -413,6 +435,7 @@ Private 속성</h2></td></tr>
 </div><div class="memdoc">
 
 <p>HTTP 모듈 초기화 및 네트워크 대기 카운터를 설정합니다. </p>
+<p>서브시스템 시작 시 요청 상태 추적을 준비하기 위한 초기화 단계입니다. 사이드이펙트: 내부 카운터 및 요청 대기 상태를 초기화합니다. </p>
 
 <p class="definition"><a class="el" href="UKLingoNetworkSystem_8cpp_source.html">UKLingoNetworkSystem.cpp</a> 파일의 <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00035">35</a> 번째 라인에서 정의되었습니다.</p>
 <div class="fragment"><div class="line"><span class="lineno">   36</span>{</div>
@@ -420,7 +443,7 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">   38</span>    <a class="code hl_variable" href="classUKLingoNetworkSystem.html#ae2884d2ebde0f80ae6ff84d5f27a706e">NetworkWaitCount</a> = 0;</div>
 <div class="line"><span class="lineno">   39</span>}</div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="UKLingoNetworkSystem_8h_source.html#l00112">NetworkWaitCount</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="UKLingoNetworkSystem_8h_source.html#l00291">NetworkWaitCount</a>.</p>
 
 </div>
 </div>
@@ -582,12 +605,13 @@ Private 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Chat 답변을 요청합니다 (음성 질문). POST /chats/answers </p>
-<dl class="params"><dt>매개변수</dt><dd>
+<p>Chat 답변을 요청합니다 (음성 질문). </p>
+<p>POST /chats/answers</p>
+<p>음성 파일을 업로드해 답변을 생성합니다. </p><dl class="params"><dt>매개변수</dt><dd>
   <table class="params">
     <tr><td class="paramname">Context</td><td>[in] 대화 컨텍스트입니다. </td></tr>
     <tr><td class="paramname">AudioPath</td><td>[in] 음성 파일 경로입니다. </td></tr>
-    <tr><td class="paramname">InDelegate</td><td>[in] 응답 콜백입니다. </td></tr>
+    <tr><td class="paramname">InDelegate</td><td>[in] 응답 콜백입니다. 사이드이펙트: 네트워크 요청을 전송하고 로딩 UI 상태를 갱신합니다. </td></tr>
   </table>
   </dd>
 </dl>
@@ -723,12 +747,13 @@ Private 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Chat 답변을 요청합니다 (텍스트 질문). POST /chats/answers </p>
-<dl class="params"><dt>매개변수</dt><dd>
+<p>Chat 답변을 요청합니다 (텍스트 질문). </p>
+<p>POST /chats/answers</p>
+<p>대화 맥락과 질문을 제출해 답변을 생성합니다. </p><dl class="params"><dt>매개변수</dt><dd>
   <table class="params">
     <tr><td class="paramname">Context</td><td>[in] 대화 컨텍스트입니다. </td></tr>
     <tr><td class="paramname">Question</td><td>[in] 사용자 질문입니다. </td></tr>
-    <tr><td class="paramname">InDelegate</td><td>[in] 응답 콜백입니다. </td></tr>
+    <tr><td class="paramname">InDelegate</td><td>[in] 응답 콜백입니다. 사이드이펙트: 네트워크 요청을 전송하고 로딩 UI 상태를 갱신합니다. </td></tr>
   </table>
   </dd>
 </dl>
@@ -836,12 +861,13 @@ Private 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Daily Chat 답변을 요청합니다 (음성 질문). POST /chats/dailys </p>
-<dl class="params"><dt>매개변수</dt><dd>
+<p>Daily Chat 답변을 요청합니다 (음성 질문). </p>
+<p>POST /chats/dailys</p>
+<p>데일리 학습용 음성 질문을 업로드해 답변을 생성합니다. </p><dl class="params"><dt>매개변수</dt><dd>
   <table class="params">
     <tr><td class="paramname">Context</td><td>[in] 대화 컨텍스트입니다. </td></tr>
     <tr><td class="paramname">AudioPath</td><td>[in] 음성 파일 경로입니다. </td></tr>
-    <tr><td class="paramname">InDelegate</td><td>[in] 응답 콜백입니다. </td></tr>
+    <tr><td class="paramname">InDelegate</td><td>[in] 응답 콜백입니다. 사이드이펙트: 네트워크 요청을 전송하고 로딩 UI 상태를 갱신합니다. </td></tr>
   </table>
   </dd>
 </dl>
@@ -966,12 +992,13 @@ Private 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Daily Chat 답변을 요청합니다 (텍스트 질문). POST /chats/dailys </p>
-<dl class="params"><dt>매개변수</dt><dd>
+<p>Daily Chat 답변을 요청합니다 (텍스트 질문). </p>
+<p>POST /chats/dailys</p>
+<p>데일리 학습용 대화 컨텍스트로 답변을 생성합니다. </p><dl class="params"><dt>매개변수</dt><dd>
   <table class="params">
     <tr><td class="paramname">Context</td><td>[in] 대화 컨텍스트입니다. </td></tr>
     <tr><td class="paramname">Question</td><td>[in] 사용자 질문입니다. </td></tr>
-    <tr><td class="paramname">InDelegate</td><td>[in] 응답 콜백입니다. </td></tr>
+    <tr><td class="paramname">InDelegate</td><td>[in] 응답 콜백입니다. 사이드이펙트: 네트워크 요청을 전송하고 로딩 UI 상태를 갱신합니다. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1074,7 +1101,15 @@ Private 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Evaluation 결과를 조회합니다. GET /evaluations/rooms/{room_id} </p>
+<p>Evaluation 결과를 조회합니다. </p>
+<p>GET /evaluations/rooms/{room_id}</p>
+<p>평가 결과를 UI에 표시하기 위해 서버에서 데이터를 가져옵니다. </p><dl class="params"><dt>매개변수</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">RoomId</td><td>[in] 평가 룸 ID입니다. </td></tr>
+    <tr><td class="paramname">InDelegate</td><td>[in] 응답 콜백입니다. 사이드이펙트: 네트워크 요청을 전송하고 로딩 UI 상태를 갱신합니다. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p class="definition"><a class="el" href="UKLingoNetworkSystem_8cpp_source.html">UKLingoNetworkSystem.cpp</a> 파일의 <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l01270">1270</a> 번째 라인에서 정의되었습니다.</p>
 <div class="fragment"><div class="line"><span class="lineno"> 1271</span>{</div>
@@ -1171,6 +1206,15 @@ Private 속성</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>인터뷰 답변 제출 요청을 전송합니다. </p>
+<p>사용자 답변을 서버로 전송하여 평가/저장을 수행합니다. </p><dl class="params"><dt>매개변수</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Answer</td><td>[in] 제출할 인터뷰 답변 데이터입니다. </td></tr>
+    <tr><td class="paramname">InDelegate</td><td>[in] 응답 콜백입니다. 사이드이펙트: 네트워크 요청을 전송하고 로딩 UI 상태를 갱신합니다. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p class="definition"><a class="el" href="UKLingoNetworkSystem_8cpp_source.html">UKLingoNetworkSystem.cpp</a> 파일의 <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00768">768</a> 번째 라인에서 정의되었습니다.</p>
 <div class="fragment"><div class="line"><span class="lineno">  769</span>{</div>
@@ -1270,6 +1314,14 @@ Private 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>인터뷰 시작 요청을 전송합니다. </p>
+<p>인터뷰 시나리오를 시작하기 위한 진입 요청입니다. </p><dl class="params"><dt>매개변수</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">InDelegate</td><td>[in] 응답 콜백입니다. 사이드이펙트: 네트워크 요청을 전송하고 로딩 UI 상태를 갱신합니다. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 <p class="definition"><a class="el" href="UKLingoNetworkSystem_8cpp_source.html">UKLingoNetworkSystem.cpp</a> 파일의 <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00714">714</a> 번째 라인에서 정의되었습니다.</p>
 <div class="fragment"><div class="line"><span class="lineno">  715</span>{</div>
 <div class="line"><span class="lineno">  716</span>    FString Url = <a class="code hl_function" href="namespaceNetworkConfig.html#ab5ac57e8f51de6d1740c7a88534a7246">NetworkConfig::GetFullUrl</a>(<a class="code hl_variable" href="namespaceRequestAPI.html#a72a9108a91fd78d005fe594cd7ce8818">RequestAPI::interview_hello</a>);</div>
@@ -1360,6 +1412,15 @@ Private 속성</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Listen 음성 생성 요청을 전송합니다. </p>
+<p>텍스트를 음성으로 변환해 듣기 학습에 사용하는 요청입니다. </p><dl class="params"><dt>매개변수</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">AudioText</td><td>[in] 음성으로 변환할 텍스트입니다. </td></tr>
+    <tr><td class="paramname">InDelegate</td><td>[in] 응답 콜백입니다. 사이드이펙트: 네트워크 요청을 전송하고 로딩 UI 상태를 갱신합니다. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p class="definition"><a class="el" href="UKLingoNetworkSystem_8cpp_source.html">UKLingoNetworkSystem.cpp</a> 파일의 <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00535">535</a> 번째 라인에서 정의되었습니다.</p>
 <div class="fragment"><div class="line"><span class="lineno">  536</span>{</div>
@@ -1500,6 +1561,15 @@ Private 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Listen 결과 제출 요청을 전송합니다. </p>
+<p>듣기 학습 결과를 서버에 기록하기 위해 호출합니다. </p><dl class="params"><dt>매개변수</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Result</td><td>[in] 제출할 결과 데이터입니다. </td></tr>
+    <tr><td class="paramname">InDelegate</td><td>[in] 응답 콜백입니다. 사이드이펙트: 네트워크 요청을 전송하고 로딩 UI 상태를 갱신합니다. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 <p class="definition"><a class="el" href="UKLingoNetworkSystem_8cpp_source.html">UKLingoNetworkSystem.cpp</a> 파일의 <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l01089">1089</a> 번째 라인에서 정의되었습니다.</p>
 <div class="fragment"><div class="line"><span class="lineno"> 1090</span>{</div>
 <div class="line"><span class="lineno"> 1091</span>    FString Url = <a class="code hl_function" href="namespaceNetworkConfig.html#ab5ac57e8f51de6d1740c7a88534a7246">NetworkConfig::GetFullUrl</a>(<a class="code hl_variable" href="namespaceRequestAPI.html#a0cbbd36ccf6295dad353806ed80f5769">RequestAPI::listen_result</a>);</div>
@@ -1588,6 +1658,14 @@ Private 속성</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Listen 시나리오 조회 요청을 전송합니다. </p>
+<p>듣기 학습 단계의 시나리오 데이터를 받아오기 위한 호출입니다. </p><dl class="params"><dt>매개변수</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">InDelegate</td><td>[in] 응답 콜백입니다. 사이드이펙트: 네트워크 요청을 전송하고 로딩 UI 상태를 갱신합니다. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p class="definition"><a class="el" href="UKLingoNetworkSystem_8cpp_source.html">UKLingoNetworkSystem.cpp</a> 파일의 <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l01032">1032</a> 번째 라인에서 정의되었습니다.</p>
 <div class="fragment"><div class="line"><span class="lineno"> 1033</span>{</div>
@@ -1688,6 +1766,15 @@ Private 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Read 결과 제출 요청을 전송합니다. </p>
+<p>읽기 학습 결과를 서버에 기록하기 위해 호출합니다. </p><dl class="params"><dt>매개변수</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Result</td><td>[in] 제출할 결과 데이터입니다. </td></tr>
+    <tr><td class="paramname">InDelegate</td><td>[in] 응답 콜백입니다. 사이드이펙트: 네트워크 요청을 전송하고 로딩 UI 상태를 갱신합니다. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 <p class="definition"><a class="el" href="UKLingoNetworkSystem_8cpp_source.html">UKLingoNetworkSystem.cpp</a> 파일의 <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00971">971</a> 번째 라인에서 정의되었습니다.</p>
 <div class="fragment"><div class="line"><span class="lineno">  972</span>{</div>
 <div class="line"><span class="lineno">  973</span>    FString Url = <a class="code hl_function" href="namespaceNetworkConfig.html#ab5ac57e8f51de6d1740c7a88534a7246">NetworkConfig::GetFullUrl</a>(<a class="code hl_variable" href="namespaceRequestAPI.html#aa6ffe726a2b06feccfa128b3200d8816">RequestAPI::read_result</a>);</div>
@@ -1776,6 +1863,14 @@ Private 속성</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Read 시나리오 조회 요청을 전송합니다. </p>
+<p>읽기 학습 단계의 시나리오 데이터를 받아오기 위한 호출입니다. </p><dl class="params"><dt>매개변수</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">InDelegate</td><td>[in] 응답 콜백입니다. 사이드이펙트: 네트워크 요청을 전송하고 로딩 UI 상태를 갱신합니다. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p class="definition"><a class="el" href="UKLingoNetworkSystem_8cpp_source.html">UKLingoNetworkSystem.cpp</a> 파일의 <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00913">913</a> 번째 라인에서 정의되었습니다.</p>
 <div class="fragment"><div class="line"><span class="lineno">  914</span>{</div>
@@ -1879,6 +1974,16 @@ Private 속성</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Speaking 평가 요청을 전송합니다. </p>
+<p>질문 텍스트와 사용자의 음성 파일을 제출해 발음 평가를 요청합니다. </p><dl class="params"><dt>매개변수</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Question</td><td>[in] 평가 기준 질문 텍스트입니다. </td></tr>
+    <tr><td class="paramname">AudioPath</td><td>[in] 업로드할 음성 파일 경로입니다. </td></tr>
+    <tr><td class="paramname">InDelegate</td><td>[in] 응답 콜백입니다. 사이드이펙트: 네트워크 요청을 전송하고 로딩 UI 상태를 갱신합니다. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p class="definition"><a class="el" href="UKLingoNetworkSystem_8cpp_source.html">UKLingoNetworkSystem.cpp</a> 파일의 <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00633">633</a> 번째 라인에서 정의되었습니다.</p>
 <div class="fragment"><div class="line"><span class="lineno">  637</span>{</div>
@@ -1989,6 +2094,15 @@ Private 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Speak 결과 제출 요청을 전송합니다. </p>
+<p>말하기 학습 결과를 서버에 기록하기 위해 호출합니다. </p><dl class="params"><dt>매개변수</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Result</td><td>[in] 제출할 결과 데이터입니다. </td></tr>
+    <tr><td class="paramname">InDelegate</td><td>[in] 응답 콜백입니다. 사이드이펙트: 네트워크 요청을 전송하고 로딩 UI 상태를 갱신합니다. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 <p class="definition"><a class="el" href="UKLingoNetworkSystem_8cpp_source.html">UKLingoNetworkSystem.cpp</a> 파일의 <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l01207">1207</a> 번째 라인에서 정의되었습니다.</p>
 <div class="fragment"><div class="line"><span class="lineno"> 1208</span>{</div>
 <div class="line"><span class="lineno"> 1209</span>    FString Url = <a class="code hl_function" href="namespaceNetworkConfig.html#ab5ac57e8f51de6d1740c7a88534a7246">NetworkConfig::GetFullUrl</a>(<a class="code hl_variable" href="namespaceRequestAPI.html#a43085442f94afcd668b994b6dd4f71d9">RequestAPI::speak_result</a>);</div>
@@ -2078,6 +2192,14 @@ Private 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Speak 시나리오 조회 요청을 전송합니다. </p>
+<p>말하기 학습 단계의 시나리오 데이터를 받아오기 위한 호출입니다. </p><dl class="params"><dt>매개변수</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">InDelegate</td><td>[in] 응답 콜백입니다. 사이드이펙트: 네트워크 요청을 전송하고 로딩 UI 상태를 갱신합니다. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 <p class="definition"><a class="el" href="UKLingoNetworkSystem_8cpp_source.html">UKLingoNetworkSystem.cpp</a> 파일의 <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l01148">1148</a> 번째 라인에서 정의되었습니다.</p>
 <div class="fragment"><div class="line"><span class="lineno"> 1149</span>{</div>
 <div class="line"><span class="lineno"> 1150</span>    <span class="comment">// URL 형식: /scenario/stages/redis/{room_id}/{scenario_id}/{stage_type}/{level}</span></div>
@@ -2166,6 +2288,14 @@ Private 속성</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>현재 사용자 정보를 조회합니다. </p>
+<p>토큰 기반 인증이 유효한지 검증하는 데 사용됩니다. </p><dl class="params"><dt>매개변수</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">InDelegate</td><td>[in] 응답 콜백입니다. 사이드이펙트: 네트워크 요청을 전송하고 로딩 UI 상태를 갱신합니다. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p class="definition"><a class="el" href="UKLingoNetworkSystem_8cpp_source.html">UKLingoNetworkSystem.cpp</a> 파일의 <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00291">291</a> 번째 라인에서 정의되었습니다.</p>
 <div class="fragment"><div class="line"><span class="lineno">  292</span>{</div>
@@ -2260,6 +2390,15 @@ Private 속성</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>사용자 등록 요청을 전송합니다. </p>
+<p>신규 사용자 생성 플로우에서 계정을 생성하기 위해 사용됩니다. </p><dl class="params"><dt>매개변수</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">UserName</td><td>[in] 등록할 사용자 이름입니다. </td></tr>
+    <tr><td class="paramname">InDelegate</td><td>[in] 응답 콜백입니다. 사이드이펙트: 네트워크 요청을 전송하고 로딩 UI 상태를 갱신합니다. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p class="definition"><a class="el" href="UKLingoNetworkSystem_8cpp_source.html">UKLingoNetworkSystem.cpp</a> 파일의 <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00162">162</a> 번째 라인에서 정의되었습니다.</p>
 <div class="fragment"><div class="line"><span class="lineno">  163</span>{</div>
@@ -2363,6 +2502,15 @@ Private 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>사용자 토큰 발급 요청을 전송합니다. </p>
+<p>인증 토큰을 발급받아 이후 요청의 권한을 확보하기 위해 사용됩니다. </p><dl class="params"><dt>매개변수</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">UserName</td><td>[in] 토큰 발급 대상 사용자 이름입니다. </td></tr>
+    <tr><td class="paramname">InDelegate</td><td>[in] 응답 콜백입니다. 사이드이펙트: 네트워크 요청을 전송하고 로딩 UI 상태를 갱신합니다. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 <p class="definition"><a class="el" href="UKLingoNetworkSystem_8cpp_source.html">UKLingoNetworkSystem.cpp</a> 파일의 <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00225">225</a> 번째 라인에서 정의되었습니다.</p>
 <div class="fragment"><div class="line"><span class="lineno">  226</span>{</div>
 <div class="line"><span class="lineno">  227</span>    FString Url = <a class="code hl_function" href="namespaceNetworkConfig.html#ab5ac57e8f51de6d1740c7a88534a7246">NetworkConfig::GetFullUrl</a>(<a class="code hl_variable" href="namespaceRequestAPI.html#af908b99f78364328aca763f362236454">RequestAPI::users_token</a>);</div>
@@ -2428,7 +2576,7 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">  287</span>    Request-&gt;ProcessRequest();</div>
 <div class="line"><span class="lineno">  288</span>}</div>
 <div class="ttc" id="aFHttpMultipartFormData_8h_html_a9478332f7eef11c662f43ecca21be2f1a0421cf7b9c7d5657946d7a37929f1abc"><div class="ttname"><a href="FHttpMultipartFormData_8h.html#a9478332f7eef11c662f43ecca21be2f1a0421cf7b9c7d5657946d7a37929f1abc">EFormDataType::FormUrlEncoded</a></div><div class="ttdeci">@ FormUrlEncoded</div><div class="ttdoc">application/x-www-form-urlencoded (OAuth2 등)</div></div>
-<div class="ttc" id="aclassUKLingoNetworkSystem_html_acf7da28577586f19559ef3d7af8ea7ea"><div class="ttname"><a href="classUKLingoNetworkSystem.html#acf7da28577586f19559ef3d7af8ea7ea">UKLingoNetworkSystem::access_token</a></div><div class="ttdeci">FString access_token</div><div class="ttdoc">인증 토큰 (로그인 후 저장)</div><div class="ttdef"><b>Definition</b> <a href="UKLingoNetworkSystem_8h_source.html#l00115">UKLingoNetworkSystem.h:115</a></div></div>
+<div class="ttc" id="aclassUKLingoNetworkSystem_html_acf7da28577586f19559ef3d7af8ea7ea"><div class="ttname"><a href="classUKLingoNetworkSystem.html#acf7da28577586f19559ef3d7af8ea7ea">UKLingoNetworkSystem::access_token</a></div><div class="ttdeci">FString access_token</div><div class="ttdoc">인증 토큰 (로그인 후 저장)</div><div class="ttdef"><b>Definition</b> <a href="UKLingoNetworkSystem_8h_source.html#l00294">UKLingoNetworkSystem.h:294</a></div></div>
 <div class="ttc" id="aclassULingoGameHelper_html_a6117f2f4942b42864305def958e0c108"><div class="ttname"><a href="classULingoGameHelper.html#a6117f2f4942b42864305def958e0c108">ULingoGameHelper::GetLingoPlayerState</a></div><div class="ttdeci">static class ALingoPlayerState * GetLingoPlayerState(const UObject *WorldContextObject)</div><div class="ttdef"><b>Definition</b> <a href="ULingoGameHelper_8cpp_source.html#l00053">ULingoGameHelper.cpp:53</a></div></div>
 <div class="ttc" id="anamespaceRequestAPI_html_af908b99f78364328aca763f362236454"><div class="ttname"><a href="namespaceRequestAPI.html#af908b99f78364328aca763f362236454">RequestAPI::users_token</a></div><div class="ttdeci">static FString users_token</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00083">NetworkData.h:83</a></div></div>
 <div class="ttc" id="astructFResponseUserToken_html"><div class="ttname"><a href="structFResponseUserToken.html">FResponseUserToken</a></div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00479">NetworkData.h:480</a></div></div>
@@ -2436,7 +2584,7 @@ Private 속성</h2></td></tr>
 <div class="ttc" id="astructFResponseUserToken_html_a65a555949e2ac9075bc44b2cfc7779bb"><div class="ttname"><a href="structFResponseUserToken.html#a65a555949e2ac9075bc44b2cfc7779bb">FResponseUserToken::PrintData</a></div><div class="ttdeci">void PrintData() const</div><div class="ttdoc">디버그 로그에 응답 내용을 출력합니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8cpp_source.html#l00174">NetworkData.cpp:174</a></div></div>
 <div class="ttc" id="astructFResponseUserToken_html_a9d00d514e295c13406b14963e7c7a4ea"><div class="ttname"><a href="structFResponseUserToken.html#a9d00d514e295c13406b14963e7c7a4ea">FResponseUserToken::SetFromHttpResponse</a></div><div class="ttdeci">void SetFromHttpResponse(const TSharedPtr&lt; class IHttpResponse, ESPMode::ThreadSafe &gt; &amp;Response)</div><div class="ttdoc">HTTP 응답을 파싱해 상태 정보를 갱신합니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8cpp_source.html#l00157">NetworkData.cpp:157</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="NetworkData_8h_source.html#l00484">FResponseUserToken::access_token</a>, <a class="el" href="UKLingoNetworkSystem_8h_source.html#l00115">access_token</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00077">AddNetworkWaitCount()</a>, <a class="el" href="FHttpMultipartFormData_8cpp_source.html#l00034">FHttpMultipartFormData::AddText()</a>, <a class="el" href="FHttpMultipartFormData_8h.html#a9478332f7eef11c662f43ecca21be2f1a0421cf7b9c7d5657946d7a37929f1abc">FormUrlEncoded</a>, <a class="el" href="NetworkData_8h_source.html#l00023">NetworkConfig::GetFullUrl()</a>, <a class="el" href="ULingoGameHelper_8cpp_source.html#l00053">ULingoGameHelper::GetLingoPlayerState()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00069">IsResSuccess()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00046">LogNetwork()</a>, <a class="el" href="GameLogging_8h.html#ad8e2ccc8c20a63e091e0111987b4d3bc">NETWORK_LOG</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00033">NETWORK_POST</a>, <a class="el" href="ENetworkLogType_8h.html#a80aaa513e01d2ec2d4421835b09d691fa03d947a2158373c3b9d74325850cb8b9">Post</a>, <a class="el" href="NetworkData_8cpp_source.html#l00174">FResponseUserToken::PrintData()</a>, <a class="el" href="NetworkData_8cpp_source.html#l00157">FResponseUserToken::SetFromHttpResponse()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00143">SetupHttpRequest()</a>, <a class="el" href="FHttpMultipartFormData_8cpp_source.html#l00055">FHttpMultipartFormData::SetupHttpRequest()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00101">ShowNetworkErrorPopup()</a>, <a class="el" href="NetworkData_8h_source.html#l00083">RequestAPI::users_token</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="NetworkData_8h_source.html#l00484">FResponseUserToken::access_token</a>, <a class="el" href="UKLingoNetworkSystem_8h_source.html#l00294">access_token</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00077">AddNetworkWaitCount()</a>, <a class="el" href="FHttpMultipartFormData_8cpp_source.html#l00034">FHttpMultipartFormData::AddText()</a>, <a class="el" href="FHttpMultipartFormData_8h.html#a9478332f7eef11c662f43ecca21be2f1a0421cf7b9c7d5657946d7a37929f1abc">FormUrlEncoded</a>, <a class="el" href="NetworkData_8h_source.html#l00023">NetworkConfig::GetFullUrl()</a>, <a class="el" href="ULingoGameHelper_8cpp_source.html#l00053">ULingoGameHelper::GetLingoPlayerState()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00069">IsResSuccess()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00046">LogNetwork()</a>, <a class="el" href="GameLogging_8h.html#ad8e2ccc8c20a63e091e0111987b4d3bc">NETWORK_LOG</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00033">NETWORK_POST</a>, <a class="el" href="ENetworkLogType_8h.html#a80aaa513e01d2ec2d4421835b09d691fa03d947a2158373c3b9d74325850cb8b9">Post</a>, <a class="el" href="NetworkData_8cpp_source.html#l00174">FResponseUserToken::PrintData()</a>, <a class="el" href="NetworkData_8cpp_source.html#l00157">FResponseUserToken::SetFromHttpResponse()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00143">SetupHttpRequest()</a>, <a class="el" href="FHttpMultipartFormData_8cpp_source.html#l00055">FHttpMultipartFormData::SetupHttpRequest()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00101">ShowNetworkErrorPopup()</a>, <a class="el" href="NetworkData_8h_source.html#l00083">RequestAPI::users_token</a>.</p>
 <div id="dynsection-24" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-24-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-24-summary" class="dynsummary" style="display:block;">
@@ -2462,6 +2610,14 @@ Private 속성</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Write 문제 목록을 요청합니다. </p>
+<p>쓰기 학습 단계의 문제 리스트를 서버에서 받아옵니다. </p><dl class="params"><dt>매개변수</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">InDelegate</td><td>[in] 응답 콜백입니다. 사이드이펙트: 네트워크 요청을 전송하고 로딩 UI 상태를 갱신합니다. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p class="definition"><a class="el" href="UKLingoNetworkSystem_8cpp_source.html">UKLingoNetworkSystem.cpp</a> 파일의 <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00348">348</a> 번째 라인에서 정의되었습니다.</p>
 <div class="fragment"><div class="line"><span class="lineno">  349</span>{</div>
@@ -2559,6 +2715,15 @@ Private 속성</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Write 결과 제출 요청을 전송합니다. </p>
+<p>쓰기 학습 결과를 서버에 기록하기 위해 호출합니다. </p><dl class="params"><dt>매개변수</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Result</td><td>[in] 제출할 결과 데이터입니다. </td></tr>
+    <tr><td class="paramname">InDelegate</td><td>[in] 응답 콜백입니다. 사이드이펙트: 네트워크 요청을 전송하고 로딩 UI 상태를 갱신합니다. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p class="definition"><a class="el" href="UKLingoNetworkSystem_8cpp_source.html">UKLingoNetworkSystem.cpp</a> 파일의 <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00478">478</a> 번째 라인에서 정의되었습니다.</p>
 <div class="fragment"><div class="line"><span class="lineno">  479</span>{</div>
@@ -2662,6 +2827,16 @@ Private 속성</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Write 제출 요청을 전송합니다. </p>
+<p>이미지 경로 목록과 타겟 텍스트를 서버로 제출해 OCR/채점 처리에 사용합니다. </p><dl class="params"><dt>매개변수</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ImagePathArray</td><td>[in] 업로드할 이미지 파일 경로 배열입니다. </td></tr>
+    <tr><td class="paramname">InTargetText</td><td>[in] 비교 대상 텍스트 배열입니다. </td></tr>
+    <tr><td class="paramname">InDelegate</td><td>[in] 응답 콜백입니다. 사이드이펙트: 네트워크 요청을 전송하고 로딩 UI 상태를 갱신합니다. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p class="definition"><a class="el" href="UKLingoNetworkSystem_8cpp_source.html">UKLingoNetworkSystem.cpp</a> 파일의 <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00409">409</a> 번째 라인에서 정의되었습니다.</p>
 <div class="fragment"><div class="line"><span class="lineno">  410</span>{</div>
@@ -2792,7 +2967,7 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">  154</span>    <span class="keywordflow">return</span> RetRequest;</div>
 <div class="line"><span class="lineno">  155</span>}</div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="UKLingoNetworkSystem_8h_source.html#l00115">access_token</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="UKLingoNetworkSystem_8h_source.html#l00294">access_token</a>.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l01392">RequestChatAudio()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l01328">RequestChatQuestion()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l01536">RequestDailyAudio()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l01472">RequestDailyQuestion()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l01270">RequestEvaluationResult()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00768">RequestInterviewAnswer()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00714">RequestInterviewHello()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00535">RequestListenAudio()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l01089">RequestListenResult()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l01032">RequestListenScenario()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00971">RequestReadResult()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00913">RequestReadScenario()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00633">RequestSpeakingJudges()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l01207">RequestSpeakResult()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l01148">RequestSpeakScenario()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00291">RequestUserMe()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00162">RequestUserRegister()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00225">RequestUserToken()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00348">RequestWriteQuestions()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00478">RequestWriteResult()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00409">RequestWriteSubmit()</a>.</p>
 <div id="dynsection-28" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -2981,7 +3156,7 @@ Private 속성</h2></td></tr>
 
 <p>인증 토큰 (로그인 후 저장) </p>
 
-<p class="definition"><a class="el" href="UKLingoNetworkSystem_8h_source.html">UKLingoNetworkSystem.h</a> 파일의 <a class="el" href="UKLingoNetworkSystem_8h_source.html#l00115">115</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="UKLingoNetworkSystem_8h_source.html">UKLingoNetworkSystem.h</a> 파일의 <a class="el" href="UKLingoNetworkSystem_8h_source.html#l00294">294</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00225">RequestUserToken()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00143">SetupHttpRequest()</a>.</p>
 
@@ -3009,7 +3184,7 @@ Private 속성</h2></td></tr>
 
 <p>처리 중인 요청 수를 집계하는 카운터입니다. </p>
 
-<p class="definition"><a class="el" href="UKLingoNetworkSystem_8h_source.html">UKLingoNetworkSystem.h</a> 파일의 <a class="el" href="UKLingoNetworkSystem_8h_source.html#l00112">112</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="UKLingoNetworkSystem_8h_source.html">UKLingoNetworkSystem.h</a> 파일의 <a class="el" href="UKLingoNetworkSystem_8h_source.html#l00291">291</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00077">AddNetworkWaitCount()</a>, <a class="el" href="UKLingoNetworkSystem_8cpp_source.html#l00035">Initialize()</a>.</p>
 
@@ -3025,7 +3200,7 @@ Private 속성</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classUKLingoNetworkSystem.html">UKLingoNetworkSystem</a></li>
-    <li class="footer">생성시간 : 수 1월 7 2026 08:23:57, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 금 1월 9 2026 00:25:57, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

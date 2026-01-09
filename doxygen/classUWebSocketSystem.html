@@ -111,6 +111,9 @@ $(document).ready(function(){initNavTree('classUWebSocketSystem.html',''); initR
 </div><!--header-->
 <div class="contents">
 
+<p>WebSocket 기반 실시간 상호작용을 관리하는 게임 인스턴스 서브시스템입니다.  
+ <a href="classUWebSocketSystem.html#details">더 자세히 ...</a></p>
+
 <p><code>#include &lt;<a class="el" href="UWebSocketSystem_8h_source.html">UWebSocketSystem.h</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> UWebSocketSystem에 대한 상속 다이어그램 : </div>
@@ -141,7 +144,7 @@ Public 멤버 함수</h2></td></tr>
 <tr class="memdesc:a89bbc98f683cca370ea2e91fbd36ca7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">현재 WebSocket 연결 상태를 조회합니다.  <br /></td></tr>
 <tr class="separator:a89bbc98f683cca370ea2e91fbd36ca7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab443bc5338aeebe6481ca3659f959208" id="r_ab443bc5338aeebe6481ca3659f959208"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUWebSocketSystem.html#ab443bc5338aeebe6481ca3659f959208">SendPing</a> ()</td></tr>
-<tr class="memdesc:ab443bc5338aeebe6481ca3659f959208"><td class="mdescLeft">&#160;</td><td class="mdescRight">연결 상태를 유지하기 위해 Ping 메시지를 보냅니다.  <br /></td></tr>
+<tr class="memdesc:ab443bc5338aeebe6481ca3659f959208"><td class="mdescLeft">&#160;</td><td class="mdescRight">연결 상태 유지를 위해 Ping 메시지를 전송합니다.  <br /></td></tr>
 <tr class="separator:ab443bc5338aeebe6481ca3659f959208"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
@@ -182,8 +185,10 @@ Private 속성</h2></td></tr>
 <tr class="separator:a6ea6f4303102f95763988ce17e88f4cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">상세한 설명</h2>
-<div class="textblock">
-<p class="definition"><a class="el" href="UWebSocketSystem_8h_source.html">UWebSocketSystem.h</a> 파일의 <a class="el" href="UWebSocketSystem_8h_source.html#l00014">14</a> 번째 라인에서 정의되었습니다.</p>
+<div class="textblock"><p>WebSocket 기반 실시간 상호작용을 관리하는 게임 인스턴스 서브시스템입니다. </p>
+<p>텍스트 및 오디오 스트림을 위한 지속 연결을 유지하며 연결 상태를 게임 전역에서 공유합니다. 연결 수명은 GameInstance와 동일하며, 네트워크 교체나 종료 시 명시적으로 정리합니다. 사용 위치: 음성 대화/실시간 피드백 시스템에서 공통 연결 관리. </p>
+
+<p class="definition"><a class="el" href="UWebSocketSystem_8h_source.html">UWebSocketSystem.h</a> 파일의 <a class="el" href="UWebSocketSystem_8h_source.html#l00023">23</a> 번째 라인에서 정의되었습니다.</p>
 </div><h2 class="groupheader">멤버 함수 문서화</h2>
 <a id="ad8a09ae8c4734c4af887f138e3ccb751" name="ad8a09ae8c4734c4af887f138e3ccb751"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad8a09ae8c4734c4af887f138e3ccb751">&#9670;&#160;</a></span>Connect()</h2>
@@ -201,6 +206,7 @@ Private 속성</h2></td></tr>
 </div><div class="memdoc">
 
 <p>WebSocket 서버와 연결을 수립합니다. </p>
+<p>기존 연결이 없을 때만 새 연결을 시도하며 비동기 연결 이벤트를 발생시킵니다. 사이드이펙트: 내부 WebSocket 인스턴스를 생성하고 연결 상태를 변경합니다. </p>
 
 <p class="definition"><a class="el" href="UWebSocketSystem_8cpp_source.html">UWebSocketSystem.cpp</a> 파일의 <a class="el" href="UWebSocketSystem_8cpp_source.html#l00043">43</a> 번째 라인에서 정의되었습니다.</p>
 <div class="fragment"><div class="line"><span class="lineno">   44</span>{</div>
@@ -233,7 +239,7 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">   71</span>}</div>
 <div class="ttc" id="aclassUWebSocketSystem_html_a02b52e67a7d5cb10d8990691e83316de"><div class="ttname"><a href="classUWebSocketSystem.html#a02b52e67a7d5cb10d8990691e83316de">UWebSocketSystem::OnBinaryMessage_Native</a></div><div class="ttdeci">void OnBinaryMessage_Native(const void *Data, SIZE_T Size, bool bIsLastFragment)</div><div class="ttdoc">바이너리 메시지를 수신했을 때 호출됩니다.</div><div class="ttdef"><b>Definition</b> <a href="UWebSocketSystem_8cpp_source.html#l00165">UWebSocketSystem.cpp:165</a></div></div>
 <div class="ttc" id="aclassUWebSocketSystem_html_a193675a8b260eb5d79e535ef3f7f1192"><div class="ttname"><a href="classUWebSocketSystem.html#a193675a8b260eb5d79e535ef3f7f1192">UWebSocketSystem::OnMessage_Native</a></div><div class="ttdeci">void OnMessage_Native(const FString &amp;InMessage)</div><div class="ttdoc">텍스트 메시지를 수신했을 때 호출됩니다.</div><div class="ttdef"><b>Definition</b> <a href="UWebSocketSystem_8cpp_source.html#l00121">UWebSocketSystem.cpp:121</a></div></div>
-<div class="ttc" id="aclassUWebSocketSystem_html_a6ea6f4303102f95763988ce17e88f4cd"><div class="ttname"><a href="classUWebSocketSystem.html#a6ea6f4303102f95763988ce17e88f4cd">UWebSocketSystem::WebSocket</a></div><div class="ttdeci">TSharedPtr&lt; IWebSocket &gt; WebSocket</div><div class="ttdoc">활성 WebSocket 인스턴스입니다.</div><div class="ttdef"><b>Definition</b> <a href="UWebSocketSystem_8h_source.html#l00063">UWebSocketSystem.h:63</a></div></div>
+<div class="ttc" id="aclassUWebSocketSystem_html_a6ea6f4303102f95763988ce17e88f4cd"><div class="ttname"><a href="classUWebSocketSystem.html#a6ea6f4303102f95763988ce17e88f4cd">UWebSocketSystem::WebSocket</a></div><div class="ttdeci">TSharedPtr&lt; IWebSocket &gt; WebSocket</div><div class="ttdoc">활성 WebSocket 인스턴스입니다.</div><div class="ttdef"><b>Definition</b> <a href="UWebSocketSystem_8h_source.html#l00093">UWebSocketSystem.h:93</a></div></div>
 <div class="ttc" id="aclassUWebSocketSystem_html_a7417991ad9b907b214283443537f567a"><div class="ttname"><a href="classUWebSocketSystem.html#a7417991ad9b907b214283443537f567a">UWebSocketSystem::OnConnectionError_Native</a></div><div class="ttdeci">void OnConnectionError_Native(const FString &amp;InErrorMessage)</div><div class="ttdoc">연결 오류 발생 시 호출되는 콜백입니다.</div><div class="ttdef"><b>Definition</b> <a href="UWebSocketSystem_8cpp_source.html#l00108">UWebSocketSystem.cpp:108</a></div></div>
 <div class="ttc" id="aclassUWebSocketSystem_html_a7a88c6a90e78c24cb49759a99f461820"><div class="ttname"><a href="classUWebSocketSystem.html#a7a88c6a90e78c24cb49759a99f461820">UWebSocketSystem::OnClosed_Native</a></div><div class="ttdeci">void OnClosed_Native(int32 StatusCode, const FString &amp;Reason, bool bWasClean)</div><div class="ttdoc">연결 종료 이벤트를 처리합니다.</div><div class="ttdef"><b>Definition</b> <a href="UWebSocketSystem_8cpp_source.html#l00114">UWebSocketSystem.cpp:114</a></div></div>
 <div class="ttc" id="aclassUWebSocketSystem_html_a7f1b915b47d4df8053b658927e948009"><div class="ttname"><a href="classUWebSocketSystem.html#a7f1b915b47d4df8053b658927e948009">UWebSocketSystem::OnConnected_Native</a></div><div class="ttdeci">void OnConnected_Native()</div><div class="ttdoc">WebSocket 연결 완료 콜백입니다.</div><div class="ttdef"><b>Definition</b> <a href="UWebSocketSystem_8cpp_source.html#l00101">UWebSocketSystem.cpp:101</a></div></div>
@@ -241,7 +247,7 @@ Private 속성</h2></td></tr>
 <div class="ttc" id="aclassUWebSocketSystem_html_a89bbc98f683cca370ea2e91fbd36ca7b"><div class="ttname"><a href="classUWebSocketSystem.html#a89bbc98f683cca370ea2e91fbd36ca7b">UWebSocketSystem::IsConnected</a></div><div class="ttdeci">bool IsConnected() const</div><div class="ttdoc">현재 WebSocket 연결 상태를 조회합니다.</div><div class="ttdef"><b>Definition</b> <a href="UWebSocketSystem_8cpp_source.html#l00082">UWebSocketSystem.cpp:82</a></div></div>
 <div class="ttc" id="anamespaceNetworkConfig_html_a948647fad9ed84a91de549757a7a0e74"><div class="ttname"><a href="namespaceNetworkConfig.html#a948647fad9ed84a91de549757a7a0e74">NetworkConfig::GetSocketURL</a></div><div class="ttdeci">static FString GetSocketURL()</div><div class="ttdoc">현재 서버 모드에서 사용할 WebSocket 주소를 반환합니다.</div><div class="ttdef"><b>Definition</b> <a href="NetworkData_8h_source.html#l00068">NetworkData.h:68</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="NetworkData_8h_source.html#l00068">NetworkConfig::GetSocketURL()</a>, <a class="el" href="UWebSocketSystem_8cpp_source.html#l00082">IsConnected()</a>, <a class="el" href="UWebSocketSystem_8cpp_source.html#l00173">LogNetwork()</a>, <a class="el" href="UWebSocketSystem_8cpp_source.html#l00165">OnBinaryMessage_Native()</a>, <a class="el" href="UWebSocketSystem_8cpp_source.html#l00114">OnClosed_Native()</a>, <a class="el" href="UWebSocketSystem_8cpp_source.html#l00101">OnConnected_Native()</a>, <a class="el" href="UWebSocketSystem_8cpp_source.html#l00108">OnConnectionError_Native()</a>, <a class="el" href="UWebSocketSystem_8cpp_source.html#l00121">OnMessage_Native()</a>, <a class="el" href="UWebSocketSystem_8h_source.html#l00063">WebSocket</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="NetworkData_8h_source.html#l00068">NetworkConfig::GetSocketURL()</a>, <a class="el" href="UWebSocketSystem_8cpp_source.html#l00082">IsConnected()</a>, <a class="el" href="UWebSocketSystem_8cpp_source.html#l00173">LogNetwork()</a>, <a class="el" href="UWebSocketSystem_8cpp_source.html#l00165">OnBinaryMessage_Native()</a>, <a class="el" href="UWebSocketSystem_8cpp_source.html#l00114">OnClosed_Native()</a>, <a class="el" href="UWebSocketSystem_8cpp_source.html#l00101">OnConnected_Native()</a>, <a class="el" href="UWebSocketSystem_8cpp_source.html#l00108">OnConnectionError_Native()</a>, <a class="el" href="UWebSocketSystem_8cpp_source.html#l00121">OnMessage_Native()</a>, <a class="el" href="UWebSocketSystem_8h_source.html#l00093">WebSocket</a>.</p>
 <div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-2-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
@@ -312,7 +318,7 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">   38</span>    Super::Deinitialize();</div>
 <div class="line"><span class="lineno">   39</span>}</div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="UWebSocketSystem_8h_source.html#l00063">WebSocket</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="UWebSocketSystem_8h_source.html#l00093">WebSocket</a>.</p>
 
 </div>
 </div>
@@ -332,6 +338,7 @@ Private 속성</h2></td></tr>
 </div><div class="memdoc">
 
 <p>활성화된 WebSocket 연결을 종료합니다. </p>
+<p>연결 종료 후 관련 콜백이 호출되며 내부 상태를 초기화합니다. 사이드이펙트: 네트워크 연결을 끊고 내부 연결 상태를 변경합니다. </p>
 
 <p class="definition"><a class="el" href="UWebSocketSystem_8cpp_source.html">UWebSocketSystem.cpp</a> 파일의 <a class="el" href="UWebSocketSystem_8cpp_source.html#l00073">73</a> 번째 라인에서 정의되었습니다.</p>
 <div class="fragment"><div class="line"><span class="lineno">   74</span>{</div>
@@ -342,7 +349,7 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">   79</span>    }</div>
 <div class="line"><span class="lineno">   80</span>}</div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="UWebSocketSystem_8cpp_source.html#l00173">LogNetwork()</a>, <a class="el" href="UWebSocketSystem_8h_source.html#l00063">WebSocket</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="UWebSocketSystem_8cpp_source.html#l00173">LogNetwork()</a>, <a class="el" href="UWebSocketSystem_8h_source.html#l00093">WebSocket</a>.</p>
 <div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-3-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
@@ -382,9 +389,9 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">   18</span>    Super::Initialize(Collection);</div>
 <div class="line"><span class="lineno">   19</span>    <a class="code hl_variable" href="classUWebSocketSystem.html#adca509cb2a6c8cca3ce29054491eef77">bIsExpectingAudio</a> = <span class="keyword">false</span>;</div>
 <div class="line"><span class="lineno">   20</span>}</div>
-<div class="ttc" id="aclassUWebSocketSystem_html_adca509cb2a6c8cca3ce29054491eef77"><div class="ttname"><a href="classUWebSocketSystem.html#adca509cb2a6c8cca3ce29054491eef77">UWebSocketSystem::bIsExpectingAudio</a></div><div class="ttdeci">bool bIsExpectingAudio</div><div class="ttdoc">서버에서 오디오 스트림 시작을 예상하는지 여부입니다.</div><div class="ttdef"><b>Definition</b> <a href="UWebSocketSystem_8h_source.html#l00066">UWebSocketSystem.h:66</a></div></div>
+<div class="ttc" id="aclassUWebSocketSystem_html_adca509cb2a6c8cca3ce29054491eef77"><div class="ttname"><a href="classUWebSocketSystem.html#adca509cb2a6c8cca3ce29054491eef77">UWebSocketSystem::bIsExpectingAudio</a></div><div class="ttdeci">bool bIsExpectingAudio</div><div class="ttdoc">서버에서 오디오 스트림 시작을 예상하는지 여부입니다.</div><div class="ttdef"><b>Definition</b> <a href="UWebSocketSystem_8h_source.html#l00096">UWebSocketSystem.h:96</a></div></div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="UWebSocketSystem_8h_source.html#l00066">bIsExpectingAudio</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="UWebSocketSystem_8h_source.html#l00096">bIsExpectingAudio</a>.</p>
 
 </div>
 </div>
@@ -404,13 +411,14 @@ Private 속성</h2></td></tr>
 </div><div class="memdoc">
 
 <p>현재 WebSocket 연결 상태를 조회합니다. </p>
+<p>로컬 상태만 조회하며 네트워크 요청을 발생시키지 않습니다. </p><dl class="section return"><dt>반환값</dt><dd>연결되어 있으면 true입니다. </dd></dl>
 
 <p class="definition"><a class="el" href="UWebSocketSystem_8cpp_source.html">UWebSocketSystem.cpp</a> 파일의 <a class="el" href="UWebSocketSystem_8cpp_source.html#l00082">82</a> 번째 라인에서 정의되었습니다.</p>
 <div class="fragment"><div class="line"><span class="lineno">   83</span>{</div>
 <div class="line"><span class="lineno">   84</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classUWebSocketSystem.html#a6ea6f4303102f95763988ce17e88f4cd">WebSocket</a>.IsValid() &amp;&amp; <a class="code hl_variable" href="classUWebSocketSystem.html#a6ea6f4303102f95763988ce17e88f4cd">WebSocket</a>-&gt;IsConnected();</div>
 <div class="line"><span class="lineno">   85</span>}</div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="UWebSocketSystem_8h_source.html#l00063">WebSocket</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="UWebSocketSystem_8h_source.html#l00093">WebSocket</a>.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UWebSocketSystem_8cpp_source.html#l00043">Connect()</a>, <a class="el" href="UWebSocketSystem_8cpp_source.html#l00087">SendPing()</a>.</p>
 <div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -601,7 +609,7 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">  118</span>    <span class="comment">// OnClosed.Broadcast(StatusCode, Reason, bWasClean);</span></div>
 <div class="line"><span class="lineno">  119</span>}</div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="UWebSocketSystem_8h_source.html#l00066">bIsExpectingAudio</a>, <a class="el" href="UWebSocketSystem_8cpp_source.html#l00173">LogNetwork()</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="UWebSocketSystem_8h_source.html#l00096">bIsExpectingAudio</a>, <a class="el" href="UWebSocketSystem_8cpp_source.html#l00173">LogNetwork()</a>.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UWebSocketSystem_8cpp_source.html#l00043">Connect()</a>.</p>
 <div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -653,7 +661,7 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">  105</span>    <span class="comment">// OnConnected.Broadcast();</span></div>
 <div class="line"><span class="lineno">  106</span>}</div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="UWebSocketSystem_8h_source.html#l00066">bIsExpectingAudio</a>, <a class="el" href="UWebSocketSystem_8cpp_source.html#l00173">LogNetwork()</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="UWebSocketSystem_8h_source.html#l00096">bIsExpectingAudio</a>, <a class="el" href="UWebSocketSystem_8cpp_source.html#l00173">LogNetwork()</a>.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UWebSocketSystem_8cpp_source.html#l00043">Connect()</a>.</p>
 <div id="dynsection-10" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -842,7 +850,8 @@ Private 속성</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>연결 상태를 유지하기 위해 Ping 메시지를 보냅니다. </p>
+<p>연결 상태 유지를 위해 Ping 메시지를 전송합니다. </p>
+<p>서버의 연결 유지 정책에 따라 주기적으로 호출될 수 있습니다. 사이드이펙트: 네트워크로 Ping 프레임을 송신합니다. </p>
 
 <p class="definition"><a class="el" href="UWebSocketSystem_8cpp_source.html">UWebSocketSystem.cpp</a> 파일의 <a class="el" href="UWebSocketSystem_8cpp_source.html#l00087">87</a> 번째 라인에서 정의되었습니다.</p>
 <div class="fragment"><div class="line"><span class="lineno">   88</span>{</div>
@@ -856,7 +865,7 @@ Private 속성</h2></td></tr>
 <div class="line"><span class="lineno">   96</span>    <a class="code hl_variable" href="classUWebSocketSystem.html#a6ea6f4303102f95763988ce17e88f4cd">WebSocket</a>-&gt;Send(TEXT(<span class="stringliteral">&quot;{\&quot;type\&quot;:\&quot;ping\&quot;}&quot;</span>));</div>
 <div class="line"><span class="lineno">   97</span>}</div>
 </div><!-- fragment -->
-<p class="reference">다음을 참조함 :  <a class="el" href="UWebSocketSystem_8cpp_source.html#l00082">IsConnected()</a>, <a class="el" href="UWebSocketSystem_8cpp_source.html#l00173">LogNetwork()</a>, <a class="el" href="UWebSocketSystem_8h_source.html#l00063">WebSocket</a>.</p>
+<p class="reference">다음을 참조함 :  <a class="el" href="UWebSocketSystem_8cpp_source.html#l00082">IsConnected()</a>, <a class="el" href="UWebSocketSystem_8cpp_source.html#l00173">LogNetwork()</a>, <a class="el" href="UWebSocketSystem_8h_source.html#l00093">WebSocket</a>.</p>
 <div id="dynsection-16" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-16-trigger" src="closed.png" alt="+"/> 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div id="dynsection-16-summary" class="dynsummary" style="display:block;">
@@ -890,7 +899,7 @@ Private 속성</h2></td></tr>
 
 <p>서버에서 오디오 스트림 시작을 예상하는지 여부입니다. </p>
 
-<p class="definition"><a class="el" href="UWebSocketSystem_8h_source.html">UWebSocketSystem.h</a> 파일의 <a class="el" href="UWebSocketSystem_8h_source.html#l00066">66</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="UWebSocketSystem_8h_source.html">UWebSocketSystem.h</a> 파일의 <a class="el" href="UWebSocketSystem_8h_source.html#l00096">96</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UWebSocketSystem_8cpp_source.html#l00016">Initialize()</a>, <a class="el" href="UWebSocketSystem_8cpp_source.html#l00114">OnClosed_Native()</a>, <a class="el" href="UWebSocketSystem_8cpp_source.html#l00101">OnConnected_Native()</a>.</p>
 
@@ -918,7 +927,7 @@ Private 속성</h2></td></tr>
 
 <p>활성 WebSocket 인스턴스입니다. </p>
 
-<p class="definition"><a class="el" href="UWebSocketSystem_8h_source.html">UWebSocketSystem.h</a> 파일의 <a class="el" href="UWebSocketSystem_8h_source.html#l00063">63</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="UWebSocketSystem_8h_source.html">UWebSocketSystem.h</a> 파일의 <a class="el" href="UWebSocketSystem_8h_source.html#l00093">93</a> 번째 라인에서 정의되었습니다.</p>
 
 <p class="reference">다음에 의해서 참조됨 :  <a class="el" href="UWebSocketSystem_8cpp_source.html#l00043">Connect()</a>, <a class="el" href="UWebSocketSystem_8cpp_source.html#l00022">Deinitialize()</a>, <a class="el" href="UWebSocketSystem_8cpp_source.html#l00073">Disconnect()</a>, <a class="el" href="UWebSocketSystem_8cpp_source.html#l00082">IsConnected()</a>, <a class="el" href="UWebSocketSystem_8cpp_source.html#l00087">SendPing()</a>.</p>
 
@@ -934,7 +943,7 @@ Private 속성</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classUWebSocketSystem.html">UWebSocketSystem</a></li>
-    <li class="footer">생성시간 : 수 1월 7 2026 08:23:57, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">생성시간 : 금 1월 9 2026 00:25:57, 프로젝트명 : KLingo Project Documentation, 생성자 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>
